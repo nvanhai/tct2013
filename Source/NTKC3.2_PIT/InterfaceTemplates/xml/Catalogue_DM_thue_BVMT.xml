@@ -1,0 +1,21 @@
+﻿<Sections Version="313">
+	<Section Dynamic="0" MaxRows="0">
+		<Item Value ="101###Xăng, trừ etanol###Lít###1000"/>
+		<Item Value ="102###Nhiên liệu bay###Lít###1000"/>
+		<Item Value ="103###Dầu diezel###Lít###500"/>
+		<Item Value ="104###Dầu hỏa###Lít###300"/>
+		<Item Value ="105###Dầu mazut###Lít###300"/>
+		<Item Value ="106###Dầu nhờn###Lít###300"/>
+		<Item Value ="107###Mỡ nhờn###Kg###300"/>
+		<Item Value ="201###Than nâu###Tấn###10000"/>
+		<Item Value ="202###Than an - tra - xít (antraxit)###Tấn###20000"/>
+		<Item Value ="203###Than mỡ###Tấn###10000"/>
+		<Item Value ="204###Than đá khác###Tấn###10000"/>
+		<Item Value ="300###Dung dịch Hydro-chloro-fluoro-carbon (HCFC)###kg###4000"/>
+		<Item Value ="400###Túi ni lông thuộc diện chịu thuế###kg###40000"/>
+		<Item Value ="500###Thuốc diệt cỏ thuộc loại hạn chế sử dụng###kg###500"/>
+		<Item Value ="600###Thuốc trừ mối thuộc loại hạn chế sử dụng###kg###1000"/>
+		<Item Value ="700###Thuốc bảo quản lâm sản thuộc loại hạn chế sử dụng###kg###1000"/>
+		<Item Value ="800###Thuốc khử trùng kho thuộc loại hạn chế sử dụng###kg###1000"/>
+	</Section>	
+</Sections>

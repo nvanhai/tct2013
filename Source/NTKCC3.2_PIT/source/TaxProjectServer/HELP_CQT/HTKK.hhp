@@ -1,0 +1,30 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=HTKK_CQT.chm
+Contents file=HTKK.hhc
+Default Font=MS Sans Serif,10,0
+Default topic=Help\1_GI_I_THIÆU.htm
+Display compile progress=No
+Language=0x409 English (United States)
+
+
+[FILES]
+Help\1_1_Mã_v¡ch_2_chi_u.htm
+Help\1_2_1_C_ch_s_d_ng_trã_gi_p_trong_ng_d_ng.htm
+Help\1_2_2_1_Y_u_c§u_v_thi¿t_bË_ph§n_c_ng_và_hÇ_i_u_hành.htm
+Help\1_2_2_2_Y_u_c§u_v_c_c_ph§n_m_m_h×_trã_g_ti¿ng_ViÇt_Unicode.htm
+Help\1_2_2_Y_u_c§u_v_c¥u_hình_hÇ_thÑng.htm
+Help\1_2_3_H°Ûng_d«n_thi¿t_l­p_thông_sÑ_màn_hình.htm
+Help\1_2_4_H°Ûng_d«n_c_ch_g_ti¿ng_viÇt_có_d¥u.htm
+Help\1_2_5_Kh_i_ng_ng_d_ng.htm
+Help\1_2_6_Giao_di_n_ng_d_ng.htm
+Help\1_2_7_S_d_ng_h_th_ng_menu.htm
+Help\1_2_8_Nh_n_d_li_u_t_m_v_ch.htm
+Help\1_2_9_C_c_ch_c_n_ng_tr_n_m_n_h_nh_t_khai.htm
+Help\1_2_10_C_c_th_ng_b_o_c_a_h_th_ng.htm
+Help\1_2_H°Ûng_d«n_s_d_ng_ph§n_m_m_h×_trã_k_khai.htm
+Help\1_GI_I_THIÆU.htm
+Help\1_2_11_Chéc_n_ng_tra_céu.htm
+
+[INFOTYPES]
+

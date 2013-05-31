@@ -1,0 +1,106 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="J_4" Value=""/>
+			<Cell CellID="J_5" Value=""/>
+			<Cell CellID="J_6" Value=""/>
+			<Cell CellID="J_7" Value=""/>
+			<Cell CellID="T_7" Value=""/>
+			<Cell CellID="AC_7" Value=""/>
+			<Cell CellID="I_10" Value=""/>
+			<Cell CellID="I_12" Value=""/>
+			<Cell CellID="T_12" Value=""/>
+			<Cell CellID="AC_12" Value=""/>
+			<Cell CellID="T_10" Value="" MaxLen="20"/>
+			<Cell CellID="AC_16" Value="" MinValue="0" MaxValue="9999999999"/>
+			<Cell CellID="I_14" Value=""/>
+			<Cell CellID="T_14" Value="" MaxLen="100"/>
+			<Cell CellID="AC_10" Value="" MaxLen="60"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="M_17" Value="" MCT="1"/>
+			<Cell CellID="W_28" Value="210000000" MCT="3"/>
+			<Cell CellID="AB_28" Value="127272727.00" MCT="4"/>
+			<Cell CellID="AG_28" Value="0" MCT="5"/>
+			<Cell CellID="AJ_28" Value="0" MCT="6"/>
+			<Cell CellID="AN_28" Value="82727273" MCT="7"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_31" FirstCell="0" Value="10103" MCT="8"/>
+			<Cell CellID="O_31" Value="Kg" MCT="9"/>
+			<Cell CellID="R_31" Value="3000.00" MCT="10"/>
+			<Cell CellID="W_31" Value="210000000" MCT="11"/>
+			<Cell CellID="AB_31" Value="127272727.00" MCT="12"/>
+			<Cell CellID="AD_31" Value="65.0" MCT="13"/>
+			<Cell CellID="AG_31" Value="0" MCT="14"/>
+			<Cell CellID="AJ_31" Value="0" MCT="15"/>
+			<Cell CellID="AN_31" Value="82727273" MCT="16"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="W_33" Value="1000" MCT="17"/>
+			<Cell CellID="AB_33" Value="833.00" MCT="18"/>
+			<Cell CellID="AG_33" Value="0" MCT="19"/>
+			<Cell CellID="AJ_33" Value="0" MCT="20"/>
+			<Cell CellID="AN_33" Value="167" MCT="21"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_35" FirstCell="0" Value="20400" MCT="22"/>
+			<Cell CellID="O_35" Value="" MCT="23"/>
+			<Cell CellID="R_35" Value="1100.00" MCT="24"/>
+			<Cell CellID="W_35" Value="1000" MCT="25"/>
+			<Cell CellID="AB_35" Value="833.00" MCT="26"/>
+			<Cell CellID="AD_35" Value="20.0" MCT="27"/>
+			<Cell CellID="AG_35" Value="0" MCT="28"/>
+			<Cell CellID="AJ_35" Value="0" MCT="29"/>
+			<Cell CellID="AN_35" Value="167" MCT="30"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="W_37" Value="11111" MCT="31"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_41" FirstCell="0" Value="10203" MCT="32"/>
+			<Cell CellID="O_41" Value="Lớt" MCT="33"/>
+			<Cell CellID="R_41" Value="111.00" MCT="34"/>
+			<Cell CellID="W_41" Value="11111" MCT="35"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_45" FirstCell="0" Value="" MCT="36"/>
+			<Cell CellID="O_45" Value="" MCT="37"/>
+			<Cell CellID="R_45" Value="0.00" MCT="38"/>
+			<Cell CellID="W_45" Value="0" MCT="39"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_49" FirstCell="0" Value="" MCT="40"/>
+			<Cell CellID="O_49" Value="" MCT="41"/>
+			<Cell CellID="R_49" Value="0.00" MCT="42"/>
+			<Cell CellID="W_49" Value="0" MCT="43"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="W_51" Value="210012111" MCT="44"/>
+			<Cell CellID="AB_51" Value="127273560.00" MCT="45"/>
+			<Cell CellID="AG_51" Value="0" MCT="46"/>
+			<Cell CellID="AJ_51" Value="0" MCT="47"/>
+			<Cell CellID="AN_51" Value="82727440" MCT="48"/>
+		</Cells>
+	</Section>
+</Sections>

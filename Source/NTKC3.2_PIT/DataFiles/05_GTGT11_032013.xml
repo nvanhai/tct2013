@@ -1,0 +1,55 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_8" Value=""/>
+			<Cell CellID="G_7" Value=""/>
+			<Cell CellID="G_9" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="M_12" Value=""/>
+			<Cell CellID="V_12" Value=""/>
+			<Cell CellID="E_22" Value=""/>
+			<Cell CellID="E_24" Value=""/>
+			<Cell CellID="M_24" Value=""/>
+			<Cell CellID="V_24" Value=""/>
+			<Cell CellID="M_22" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_29" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_28" Value=""/>
+			<Cell CellID="M_28" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_22" Value=""/>
+			<Cell CellID="K_14" Value=""/>
+			<Cell CellID="G_16" Value=""/>
+			<Cell CellID="E_18" Value=""/>
+			<Cell CellID="M_18" Value=""/>
+			<Cell CellID="V_18" Value=""/>
+			<Cell CellID="I_19" Value=""/>
+			<Cell CellID="S_19" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_15" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="K_43" Value="0" MCT="21"/>
+			<Cell CellID="S_43" Value="0" MCT="22"/>
+			<Cell CellID="K_45" Value="0" MCT="25"/>
+			<Cell CellID="S_45" Value="0" MCT="26"/>
+			<Cell CellID="J_48" Value="0" MCT="27"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_61" Value=""/>
+			<Cell CellID="R_61" Value=""/>
+			<Cell CellID="G_63" Value=""/>
+			<Cell CellID="R_63" Value="03/04/2013"/>
+			<Cell CellID="C_64" Value="1"/>
+			<Cell CellID="F_64" Value=""/>
+			<Cell CellID="I_64" Value=""/>
+		</Cells>
+	</Section>
+</Sections>

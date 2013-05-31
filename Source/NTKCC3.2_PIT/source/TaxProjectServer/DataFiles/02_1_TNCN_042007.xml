@@ -1,0 +1,93 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_4" Value=""/>
+			<Cell CellID="G_5" Value=""/>
+			<Cell CellID="G_6" Value=""/>
+			<Cell CellID="E_8" Value=""/>
+			<Cell CellID="M_8" Value=""/>
+			<Cell CellID="V_8" Value=""/>
+			<Cell CellID="E_10" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="M_12" Value=""/>
+			<Cell CellID="V_12" Value=""/>
+			<Cell CellID="M_10" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_16" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_14" Value=""/>
+			<Cell CellID="M_14" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_10" Value="" MaxLen="60"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="S_22" Value="4" MCT="1"/>
+			<Cell CellID="W_24" Value="100000000" MCT="2"/>
+			<Cell CellID="W_25" Value="30000000" MCT="3"/>
+			<Cell CellID="W_26" Value="70000000" MCT="4"/>
+			<Cell CellID="W_27" Value="10000000" MCT="5"/>
+			<Cell CellID="W_28" Value="3000000" MCT="6"/>
+			<Cell CellID="W_29" Value="7000000" MCT="7"/>
+			<Cell CellID="W_30" Value="50000" MCT="8"/>
+			<Cell CellID="W_31" Value="0"/>
+			<Cell CellID="W_32" Value="9950000" MCT="9"/>
+			<Cell CellID="W_33" Value="2985000" MCT="10"/>
+			<Cell CellID="W_34" Value="6965000" MCT="11"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="B_42" FirstCell="0" Value="0" MCT="1b"/>
+			<Cell CellID="C_42" Value="ha the phuong" MCT="2b"/>
+			<Cell CellID="G_42" Value="123" MCT="3b"/>
+			<Cell CellID="L_42" Value="" MCT="4b"/>
+			<Cell CellID="P_42" Value="test" MCT="5b"/>
+			<Cell CellID="S_42" Value="10000000" MCT="6b"/>
+			<Cell CellID="W_42" Value="1000000" MCT="7b"/>
+			<Cell CellID="Z_42" Value="011111" MCT="8b"/>
+			<Cell CellID="AA_42" Value="01/01/2007" MCT="9b"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="B_43" FirstCell="1" Value="2" MCT="1b"/>
+			<Cell CellID="C_43" Value="ha the phuong1" MCT="2b"/>
+			<Cell CellID="G_43" Value="345" MCT="3b"/>
+			<Cell CellID="L_43" Value="" MCT="4b"/>
+			<Cell CellID="P_43" Value="test1" MCT="5b"/>
+			<Cell CellID="S_43" Value="20000000" MCT="6b"/>
+			<Cell CellID="W_43" Value="2000000" MCT="7b"/>
+			<Cell CellID="Z_43" Value="022222" MCT="8b"/>
+			<Cell CellID="AA_43" Value="01/02/2008" MCT="9b"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="B_47" FirstCell="0" Value="1" MCT="11b"/>
+			<Cell CellID="C_47" Value="ha the phuong3" MCT="12b"/>
+			<Cell CellID="G_47" Value="567" MCT="13b"/>
+			<Cell CellID="L_47" Value="" MCT="14b"/>
+			<Cell CellID="P_47" Value="test3" MCT="15b"/>
+			<Cell CellID="S_47" Value="30000000" MCT="16b"/>
+			<Cell CellID="W_47" Value="3000000" MCT="17b"/>
+			<Cell CellID="Z_47" Value="033333" MCT="18b"/>
+			<Cell CellID="AA_47" Value="01/03/2008" MCT="19b"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="B_48" FirstCell="1" Value="2" MCT="11b"/>
+			<Cell CellID="C_48" Value="ha the phuong4" MCT="12b"/>
+			<Cell CellID="G_48" Value="789" MCT="13b"/>
+			<Cell CellID="L_48" Value="" MCT="14b"/>
+			<Cell CellID="P_48" Value="test4" MCT="15b"/>
+			<Cell CellID="S_48" Value="40000000" MCT="16b"/>
+			<Cell CellID="W_48" Value="4000000" MCT="17b"/>
+			<Cell CellID="Z_48" Value="044444" MCT="18b"/>
+			<Cell CellID="AA_48" Value="01/03/2008" MCT="19b"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="W_53" Value="htphuong"/>
+			<Cell CellID="W_55" Value="23/03/2008"/>
+		</Cells>
+	</Section>
+</Sections>

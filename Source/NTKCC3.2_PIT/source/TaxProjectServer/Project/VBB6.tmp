@@ -1,0 +1,4 @@
+VBGROUP 5.0
+StartupProject=NTKCC.vbp
+Project=..\BusinessObjects\Tax_Business_Svr_New.vbp
+Project=..\TaxUtilitiesServer\TAX_Utilities_Svr_New.vbp

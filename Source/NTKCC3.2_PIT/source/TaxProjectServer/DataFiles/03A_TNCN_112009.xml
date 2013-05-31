@@ -1,0 +1,49 @@
+<!-- Edited by htphuong FIS_CMC-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_4" Value=""/>
+			<Cell CellID="G_5" Value=""/>
+			<Cell CellID="G_6" Value=""/>
+			<Cell CellID="E_8" Value=""/>
+			<Cell CellID="M_8" Value=""/>
+			<Cell CellID="V_8" Value=""/>
+			<Cell CellID="E_10" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="M_12" Value=""/>
+			<Cell CellID="V_12" Value=""/>
+			<Cell CellID="M_10" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_16" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_14" Value=""/>
+			<Cell CellID="M_14" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_10" Value="" MaxLen="60"/>
+			<Cell CellID="E_36" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="U_40" Value="45" MCT="1"/>
+			<Cell CellID="U_41" Value="42343" MCT="2"/>
+			<Cell CellID="U_42" Value="2117" MCT="3"/>
+			<Cell CellID="U_44" Value="9" MCT="4"/>
+			<Cell CellID="U_45" Value="4534534" MCT="5"/>
+			<Cell CellID="U_46" Value="4535" MCT="6"/>
+			<Cell CellID="U_48" Value="83" MCT="7"/>
+			<Cell CellID="U_49" Value="153453" MCT="8"/>
+			<Cell CellID="U_50" Value="4313" MCT="9"/>
+			<Cell CellID="U_52" Value="45" MCT="10"/>
+			<Cell CellID="U_53" Value="45374853" MCT="11"/>
+			<Cell CellID="U_54" Value="13131" MCT="12"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="R_56" Value=""/>
+			<Cell CellID="R_58" Value="12/11/2009"/>
+			<Cell CellID="C_61" Value=""/>
+			<Cell CellID="F_61" Value="1"/>
+			<Cell CellID="I_61" Value="1"/>
+		</Cells>
+	</Section>
+</Sections>

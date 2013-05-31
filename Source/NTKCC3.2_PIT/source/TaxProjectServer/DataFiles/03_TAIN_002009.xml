@@ -1,0 +1,81 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="K_4" Value=""/>
+			<Cell CellID="K_5" Value=""/>
+			<Cell CellID="K_6" Value=""/>
+			<Cell CellID="I_7" Value=""/>
+			<Cell CellID="T_7" Value=""/>
+			<Cell CellID="AF_7" Value=""/>
+			<Cell CellID="I_10" Value=""/>
+			<Cell CellID="I_11" Value=""/>
+			<Cell CellID="T_11" Value=""/>
+			<Cell CellID="AF_11" Value=""/>
+			<Cell CellID="T_9" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="AF_16" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="I_13" Value=""/>
+			<Cell CellID="T_13" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="AF_9" Value="" MaxLen="60"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="AN" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_38" FirstCell="0" Value="010201" MCT="2"/>
+			<Cell CellID="O_38" Value="Kg" MCT="4"/>
+			<Cell CellID="R_38" Value="122344.000" MCT="5"/>
+			<Cell CellID="U_38" Value="44.00" MCT="6"/>
+			<Cell CellID="Z_38" Value="9.0000" MCT="7"/>
+			<Cell CellID="AC_38" Value="0" MCT="8"/>
+			<Cell CellID="AI_38" Value="33" MCT="10"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_39" FirstCell="1" Value="010203" MCT="2"/>
+			<Cell CellID="O_39" Value="Kg" MCT="4"/>
+			<Cell CellID="R_39" Value="44444.000" MCT="5"/>
+			<Cell CellID="U_39" Value="2.00" MCT="6"/>
+			<Cell CellID="Z_39" Value="12.0000" MCT="7"/>
+			<Cell CellID="AC_39" Value="0" MCT="8"/>
+			<Cell CellID="AI_39" Value="0" MCT="10"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_40" FirstCell="1" Value="09040102" MCT="2"/>
+			<Cell CellID="O_40" Value="M3" MCT="4"/>
+			<Cell CellID="R_40" Value="556666.000" MCT="5"/>
+			<Cell CellID="U_40" Value="56.00" MCT="6"/>
+			<Cell CellID="Z_40" Value="5.0000" MCT="7"/>
+			<Cell CellID="AC_40" Value="0" MCT="8"/>
+			<Cell CellID="AI_40" Value="0" MCT="10"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_41" FirstCell="1" Value="09040202" MCT="2"/>
+			<Cell CellID="O_41" Value="M3" MCT="4"/>
+			<Cell CellID="R_41" Value="5656.000" MCT="5"/>
+			<Cell CellID="U_41" Value="766.00" MCT="6"/>
+			<Cell CellID="Z_41" Value="4.0000" MCT="7"/>
+			<Cell CellID="AC_41" Value="0" MCT="8"/>
+			<Cell CellID="AI_41" Value="0" MCT="10"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_42" FirstCell="1" Value="010205" MCT="2"/>
+			<Cell CellID="O_42" Value="Kg" MCT="4"/>
+			<Cell CellID="R_42" Value="67777.000" MCT="5"/>
+			<Cell CellID="U_42" Value="5555.00" MCT="6"/>
+			<Cell CellID="Z_42" Value="7.0000" MCT="7"/>
+			<Cell CellID="AC_42" Value="0" MCT="8"/>
+			<Cell CellID="AI_42" Value="0" MCT="10"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="AF_46" Value=""/>
+			<Cell CellID="AF_47" Value="14/09/2010"/>
+		</Cells>
+	</Section>
+</Sections>

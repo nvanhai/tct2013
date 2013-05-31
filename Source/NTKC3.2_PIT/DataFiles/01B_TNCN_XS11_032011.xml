@@ -1,0 +1,46 @@
+<!-- Edited by hlnam FIS_CMC-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_8" Value=""/>
+			<Cell CellID="G_7" Value=""/>
+			<Cell CellID="G_9" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="M_12" Value=""/>
+			<Cell CellID="V_12" Value=""/>
+			<Cell CellID="E_22" Value=""/>
+			<Cell CellID="E_24" Value=""/>
+			<Cell CellID="M_24" Value=""/>
+			<Cell CellID="V_24" Value=""/>
+			<Cell CellID="M_22" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_29" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_28" Value=""/>
+			<Cell CellID="M_28" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_22" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_15" Value="6868686868"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="U_54" Value="1000000000" MCT="1"/>
+			<Cell CellID="U_55" Value="100000000" MCT="2"/>
+			<Cell CellID="U_56" Value="2000000" MCT="3"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_58" Value=""/>
+			<Cell CellID="R_58" Value="test"/>
+			<Cell CellID="G_60" Value="asdasdad"/>
+			<Cell CellID="R_60" Value="08/08/2011"/>
+			<Cell CellID="C_61" Value="1"/>
+			<Cell CellID="F_61" Value=""/>
+			<Cell CellID="I_61" Value=""/>
+		</Cells>
+	</Section>
+</Sections>

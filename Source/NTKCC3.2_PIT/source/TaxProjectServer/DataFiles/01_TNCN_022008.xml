@@ -1,0 +1,49 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_4" Value=""/>
+			<Cell CellID="G_5" Value=""/>
+			<Cell CellID="G_6" Value=""/>
+			<Cell CellID="E_8" Value=""/>
+			<Cell CellID="M_8" Value=""/>
+			<Cell CellID="V_8" Value=""/>
+			<Cell CellID="E_10" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="M_12" Value=""/>
+			<Cell CellID="V_12" Value=""/>
+			<Cell CellID="M_10" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_16" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_14" Value=""/>
+			<Cell CellID="M_14" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_10" Value="" MaxLen="60"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="E_21" Value="0100000"/>
+			<Cell CellID="M_21" Value="VCB"/>
+			<Cell CellID="S_25" Value="1000" MCT="351"/>
+			<Cell CellID="S_26" Value="500" MCT="352"/>
+			<Cell CellID="S_28" Value="100" MCT="354"/>
+			<Cell CellID="S_29" Value="50" MCT="355"/>
+			<Cell CellID="X_31" Value="1000000" MCT="357"/>
+			<Cell CellID="X_32" Value="5000000" MCT="358"/>
+			<Cell CellID="X_34" Value="6000000" MCT="360"/>
+			<Cell CellID="X_35" Value="7000000" MCT="361"/>
+			<Cell CellID="O_44" Value="htphuong"/>
+			<Cell CellID="O_45" Value="23/03/2008"/>
+			<Cell CellID="S_24" Receive="0" Value="0" MCT="350"/>
+			<Cell CellID="S_27" Receive="0" Value="0" MCT="353"/>
+			<Cell CellID="X_30" Receive="0" Value="0" MCT="356"/>
+			<Cell CellID="X_33" Receive="0" Value="0" MCT="359"/>
+			<Cell CellID="X_36" Receive="0" Value="0" MCT="362"/>
+			<Cell CellID="X_37" Receive="0" Value="0" MCT="363"/>
+			<Cell CellID="X_38" Receive="0" Value="0" MCT="364"/>
+			<Cell CellID="X_39" Receive="0" Value="0" MCT="365"/>
+			<Cell CellID="X_40" Receive="0" Value="0" MCT="366"/>
+			<Cell CellID="X_41" Receive="0" Value="0" MCT="367"/>
+		</Cells>
+	</Section>
+</Sections>

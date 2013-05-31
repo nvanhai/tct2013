@@ -1,0 +1,61 @@
+<!-- edited by Htphuong CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_4" Value=""/>
+			<Cell CellID="G_5" Value=""/>
+			<Cell CellID="G_6" Value=""/>
+			<Cell CellID="E_8" Value=""/>
+			<Cell CellID="M_8" Value=""/>
+			<Cell CellID="V_8" Value=""/>
+			<Cell CellID="E_10" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="M_12" Value=""/>
+			<Cell CellID="V_12" Value=""/>
+			<Cell CellID="M_10" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_16" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_14" Value=""/>
+			<Cell CellID="M_14" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_10" Value="" MaxLen="60"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_24" FirstCell="0" Value="Thuế GTGT HHDV bán ra chịu thuế 5%"/>
+			<Cell CellID="E_24" Value="31"/>
+			<Cell CellID="C_24" Value="Thuế GTGT HHDV bán ra chịu thuế 5%                                                                  L_23                31"/>
+			<Cell CellID="F_24" Value="1754076"/>
+			<Cell CellID="G_24" Value="3000000"/>
+			<Cell CellID="H_24" Value="1245924"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_25" FirstCell="1" Value="Thuế GTGT HHDV bán ra chịu thuế 10%"/>
+			<Cell CellID="E_25" Value="33"/>
+			<Cell CellID="C_25" Value="Thuế GTGT HHDV bán ra chịu thuế 10%                                                                 L_24                33"/>
+			<Cell CellID="F_25" Value="5824100"/>
+			<Cell CellID="G_25" Value="6000000"/>
+			<Cell CellID="H_25" Value="175900"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_29" FirstCell="0" Value="Tổng số thuế GTGT được khấu trừ kỳ này"/>
+			<Cell CellID="E_29" Value="23"/>
+			<Cell CellID="C_29" Value="Tổng số thuế GTGT được khấu trừ kỳ này                                                              L_17                23"/>
+			<Cell CellID="F_29" Value="0"/>
+			<Cell CellID="G_29" Value="500000"/>
+			<Cell CellID="H_29" Value="-500000"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="E_33" Value="8"/>
+			<Cell CellID="E_34" Value="3687"/>
+			<Cell CellID="B_36" Value="tai lieu dinh kem"/>
+			<Cell CellID="G_40" Value="Hà Thế Phương"/>
+			<Cell CellID="G_41" Value="28/08/2008"/>
+			<Cell CellID="H_31" Value="921824"/>
+		</Cells>
+	</Section>
+</Sections>
