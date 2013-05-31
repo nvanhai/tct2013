@@ -1,0 +1,147 @@
+7/27/2011 4:47:06 PM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+7/27/2011 4:53:26 PM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+7/27/2011 5:12:56 PM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+8/1/2011 12:05:35 PM mdlFunctions SetupData
+ 6 : Overflow
+------------------------------------------------------------
+8/2/2011 9:57:30 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+8/5/2011 10:44:01 AM mdlFunctions SetupData
+ 6 : Overflow
+------------------------------------------------------------
+8/5/2011 10:52:28 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+8/5/2011 10:54:49 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+8/5/2011 11:14:01 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+11/30/2011 2:27:40 PM frmInterfaces LoadForm
+ 429 : ActiveX component can't create object
+------------------------------------------------------------
+11/30/2011 2:27:49 PM frmInterfaces LoadForm
+ 429 : ActiveX component can't create object
+------------------------------------------------------------
+11/30/2011 2:29:00 PM frmInterfaces LoadForm
+ 429 : ActiveX component can't create object
+------------------------------------------------------------
+11/30/2011 11:53:42 PM mdlFunctions SetupData
+ 6 : Overflow
+------------------------------------------------------------
+12/1/2011 9:37:37 AM frmInterfaces cmdSave_Click
+ 0 : 
+------------------------------------------------------------
+12/1/2011 9:37:57 AM frmInterfaces cmdSave_Click
+ 0 : 
+------------------------------------------------------------
+12/1/2011 9:38:36 AM frmInterfaces cmdSave_Click
+ 0 : 
+------------------------------------------------------------
+12/1/2011 9:39:00 AM frmInterfaces cmdSave_Click
+ 0 : 
+------------------------------------------------------------
+12/1/2011 9:44:06 AM frmInterfaces cmdSave_Click
+ 0 : 
+------------------------------------------------------------
+12/1/2011 3:50:05 PM frmInterfaces LoadForm
+ 429 : ActiveX component can't create object
+------------------------------------------------------------
+12/1/2011 3:50:13 PM frmInterfaces LoadForm
+ 429 : ActiveX component can't create object
+------------------------------------------------------------
+12/1/2011 3:52:38 PM mdlFunctions SetupData
+ 6 : Overflow
+------------------------------------------------------------
+12/6/2011 9:00:37 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+12/6/2011 9:07:54 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+12/6/2011 9:08:08 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+12/6/2011 9:09:29 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+12/6/2011 9:10:44 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+12/6/2011 9:13:02 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+12/6/2011 10:01:21 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+12/6/2011 10:04:07 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+12/6/2011 10:04:50 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+12/6/2011 10:10:28 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+12/6/2011 10:14:18 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+12/6/2011 10:17:38 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+12/6/2011 10:19:34 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+12/6/2011 10:21:21 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+12/6/2011 10:22:44 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+12/6/2011 10:25:07 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+12/6/2011 10:38:33 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+12/6/2011 10:40:33 AM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+4/11/2013 11:10:41 AM frmInterfaces SetNodeMenu
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+4/11/2013 11:10:41 AM frmInterfaces SetPeriod
+ 13 : Type mismatch
+------------------------------------------------------------
+4/11/2013 11:10:41 AM mdlFunctions LoadHeaderData
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+4/11/2013 11:10:41 AM frmInterfaces GetSheetDatas
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+4/11/2013 11:10:41 AM frmInterfaces RestoreDataFile
+ 9 : Subscript out of range
+------------------------------------------------------------
+4/11/2013 11:10:45 AM frmInterfaces SetNodeMenu
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+4/11/2013 11:10:45 AM frmInterfaces SetPeriod
+ 13 : Type mismatch
+------------------------------------------------------------
+4/11/2013 11:10:45 AM mdlFunctions LoadHeaderData
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+4/11/2013 11:10:45 AM frmInterfaces GetSheetDatas
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+4/11/2013 11:10:45 AM frmInterfaces RestoreDataFile
+ 9 : Subscript out of range
+------------------------------------------------------------

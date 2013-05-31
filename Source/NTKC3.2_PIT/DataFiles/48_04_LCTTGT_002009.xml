@@ -1,0 +1,134 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_4" Value=""/>
+			<Cell CellID="G_5" Value=""/>
+			<Cell CellID="G_6" Value=""/>
+			<Cell CellID="E_8" Value=""/>
+			<Cell CellID="M_8" Value=""/>
+			<Cell CellID="V_8" Value=""/>
+			<Cell CellID="E_10" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="M_12" Value=""/>
+			<Cell CellID="V_12" Value=""/>
+			<Cell CellID="M_10" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_16" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_14" Value=""/>
+			<Cell CellID="M_14" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_10" Value="" MaxLen="60"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="P_40" Value="" MCT="1" RowID="2"/>
+			<Cell CellID="R_40" Value="1000000" MCT="2" RowID="2"/>
+			<Cell CellID="W_40" Value="1000000" MCT="3" RowID="2"/>
+			<Cell CellID="P_42" Value="" MCT="4" RowID="4"/>
+			<Cell CellID="R_42" Value="0" MCT="5" RowID="4"/>
+			<Cell CellID="W_42" Value="0" MCT="6" RowID="4"/>
+			<Cell CellID="P_43" Value="" MCT="7" RowID="5"/>
+			<Cell CellID="R_43" Value="10000000" MCT="8" RowID="5"/>
+			<Cell CellID="W_43" Value="0" MCT="9" RowID="5"/>
+			<Cell CellID="P_44" Value="" MCT="10" RowID="6"/>
+			<Cell CellID="R_44" Value="0" MCT="11" RowID="6"/>
+			<Cell CellID="W_44" Value="0" MCT="12" RowID="6"/>
+			<Cell CellID="P_45" Value="" MCT="13" RowID="7"/>
+			<Cell CellID="R_45" Value="1000000" MCT="14" RowID="7"/>
+			<Cell CellID="W_45" Value="1000000" MCT="15" RowID="7"/>
+			<Cell CellID="P_46" Value="" MCT="16" RowID="8"/>
+			<Cell CellID="R_46" Value="0" MCT="17" RowID="8"/>
+			<Cell CellID="W_46" Value="0" MCT="18" RowID="8"/>
+			<Cell CellID="P_47" Value="" MCT="19" RowID="9"/>
+			<Cell CellID="R_47" Value="12000000" MCT="20" RowID="9"/>
+			<Cell CellID="W_47" Value="2000000" MCT="21" RowID="9"/>
+			<Cell CellID="P_48" Value="" MCT="22" RowID="10"/>
+			<Cell CellID="R_48" Value="0" MCT="23" RowID="10"/>
+			<Cell CellID="W_48" Value="0" MCT="24" RowID="10"/>
+			<Cell CellID="P_49" Value="" MCT="25" RowID="11"/>
+			<Cell CellID="R_49" Value="0" MCT="26" RowID="11"/>
+			<Cell CellID="W_49" Value="0" MCT="27" RowID="11"/>
+			<Cell CellID="P_50" Value="" MCT="28" RowID="12"/>
+			<Cell CellID="R_50" Value="1000000" MCT="29" RowID="12"/>
+			<Cell CellID="W_50" Value="0" MCT="30" RowID="12"/>
+			<Cell CellID="P_51" Value="" MCT="31" RowID="13"/>
+			<Cell CellID="R_51" Value="0" MCT="32" RowID="13"/>
+			<Cell CellID="W_51" Value="1000000" MCT="33" RowID="13"/>
+			<Cell CellID="P_52" Value="" MCT="34" RowID="14"/>
+			<Cell CellID="R_52" Value="100000" MCT="35" RowID="14"/>
+			<Cell CellID="W_52" Value="0" MCT="36" RowID="14"/>
+			<Cell CellID="P_53" Value="" MCT="37" RowID="15"/>
+			<Cell CellID="R_53" Value="0" MCT="38" RowID="15"/>
+			<Cell CellID="W_53" Value="0" MCT="39" RowID="15"/>
+			<Cell CellID="P_54" Value="" MCT="40" RowID="16"/>
+			<Cell CellID="R_54" Value="0" MCT="41" RowID="16"/>
+			<Cell CellID="W_54" Value="1000000" MCT="42" RowID="16"/>
+			<Cell CellID="P_55" Value="" MCT="43" RowID="17"/>
+			<Cell CellID="R_55" Value="10000000" MCT="44" RowID="17"/>
+			<Cell CellID="W_55" Value="0" MCT="45" RowID="17"/>
+			<Cell CellID="P_56" Value="" MCT="46" RowID="18"/>
+			<Cell CellID="R_56" Value="23100000" MCT="47" RowID="18"/>
+			<Cell CellID="W_56" Value="4000000" MCT="48" RowID="18"/>
+			<Cell CellID="P_58" Value="" MCT="49" RowID="20"/>
+			<Cell CellID="R_58" Value="0" MCT="50" RowID="20"/>
+			<Cell CellID="W_58" Value="0" MCT="51" RowID="20"/>
+			<Cell CellID="P_59" Value="" MCT="52" RowID="21"/>
+			<Cell CellID="R_59" Value="1000000" MCT="53" RowID="21"/>
+			<Cell CellID="W_59" Value="0" MCT="54" RowID="21"/>
+			<Cell CellID="P_60" Value="" MCT="55" RowID="22"/>
+			<Cell CellID="R_60" Value="0" MCT="56" RowID="22"/>
+			<Cell CellID="W_60" Value="0" MCT="57" RowID="22"/>
+			<Cell CellID="P_61" Value="" MCT="58" RowID="23"/>
+			<Cell CellID="R_61" Value="1000000" MCT="59" RowID="23"/>
+			<Cell CellID="W_61" Value="0" MCT="60" RowID="23"/>
+			<Cell CellID="P_62" Value="" MCT="61" RowID="24"/>
+			<Cell CellID="R_62" Value="0" MCT="62" RowID="24"/>
+			<Cell CellID="W_62" Value="0" MCT="63" RowID="24"/>
+			<Cell CellID="P_63" Value="" MCT="64" RowID="25"/>
+			<Cell CellID="R_63" Value="0" MCT="65" RowID="25"/>
+			<Cell CellID="W_63" Value="1000000" MCT="66" RowID="25"/>
+			<Cell CellID="P_64" Value="" MCT="67" RowID="26"/>
+			<Cell CellID="R_64" Value="0" MCT="68" RowID="26"/>
+			<Cell CellID="W_64" Value="0" MCT="69" RowID="26"/>
+			<Cell CellID="P_65" Value="" MCT="70" RowID="27"/>
+			<Cell CellID="R_65" Value="2000000" MCT="71" RowID="27"/>
+			<Cell CellID="W_65" Value="1000000" MCT="72" RowID="27"/>
+			<Cell CellID="P_67" Value="" MCT="73" RowID="29"/>
+			<Cell CellID="R_67" Value="0" MCT="74" RowID="29"/>
+			<Cell CellID="W_67" Value="0" MCT="75" RowID="29"/>
+			<Cell CellID="P_68" Value="" MCT="76" RowID="30"/>
+			<Cell CellID="R_68" Value="0" MCT="77" RowID="30"/>
+			<Cell CellID="W_68" Value="0" MCT="78" RowID="30"/>
+			<Cell CellID="P_69" Value="" MCT="79" RowID="31"/>
+			<Cell CellID="R_69" Value="0" MCT="80" RowID="31"/>
+			<Cell CellID="W_69" Value="1000000" MCT="81" RowID="31"/>
+			<Cell CellID="P_70" Value="" MCT="82" RowID="32"/>
+			<Cell CellID="R_70" Value="10000000" MCT="83" RowID="32"/>
+			<Cell CellID="W_70" Value="0" MCT="84" RowID="32"/>
+			<Cell CellID="P_71" Value="" MCT="85" RowID="33"/>
+			<Cell CellID="R_71" Value="0" MCT="86" RowID="33"/>
+			<Cell CellID="W_71" Value="0" MCT="87" RowID="33"/>
+			<Cell CellID="P_72" Value="" MCT="88" RowID="34"/>
+			<Cell CellID="R_72" Value="0" MCT="89" RowID="34"/>
+			<Cell CellID="W_72" Value="0" MCT="90" RowID="34"/>
+			<Cell CellID="P_73" Value="" MCT="91" RowID="35"/>
+			<Cell CellID="R_73" Value="10000000" MCT="92" RowID="35"/>
+			<Cell CellID="W_73" Value="1000000" MCT="93" RowID="35"/>
+			<Cell CellID="P_74" Value="" MCT="94" RowID="36"/>
+			<Cell CellID="R_74" Value="35100000" MCT="95" RowID="36"/>
+			<Cell CellID="W_74" Value="6000000" MCT="96" RowID="36"/>
+			<Cell CellID="P_75" Value="" MCT="97" RowID="37"/>
+			<Cell CellID="R_75" Value="0" MCT="98" RowID="37"/>
+			<Cell CellID="W_75" Value="0" MCT="99" RowID="37"/>
+			<Cell CellID="P_76" Value="" MCT="100" RowID="38"/>
+			<Cell CellID="R_76" Value="0" MCT="101" RowID="38"/>
+			<Cell CellID="W_76" Value="0" MCT="102" RowID="38"/>
+			<Cell CellID="P_77" Value="" MCT="103" RowID="39"/>
+			<Cell CellID="R_77" Value="35100000" MCT="104" RowID="39"/>
+			<Cell CellID="W_77" Value="6000000" MCT="105" RowID="39"/>
+			<Cell CellID="R_79" Value="toan"/>
+			<Cell CellID="R_81" Value="16/06/2010"/>
+		</Cells>
+	</Section>
+</Sections>

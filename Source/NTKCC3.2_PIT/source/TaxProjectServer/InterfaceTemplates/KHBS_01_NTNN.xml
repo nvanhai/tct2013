@@ -1,0 +1,55 @@
+<Sections Version="130">
+		<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="H_5" Value=""/>
+			<Cell CellID="G_7" Value=""/>
+			<Cell CellID="G_9" Value=""/>
+			<Cell CellID="H_11" Value=""/>
+			<Cell CellID="R_11" Value=""/>
+			<Cell CellID="AF_11" Value=""/>
+			<Cell CellID="H_13" Value=""/>			
+			<Cell CellID="H_17" Value=""/>
+			<Cell CellID="H_19" Value=""/>
+			<Cell CellID="R_19" Value=""/>
+			<Cell CellID="AF_19" Value=""/>
+			<Cell CellID="H_21" Value=""/>
+			<Cell CellID="R_21" Value=""/>
+			<Cell CellID="E_23" Value=""/>
+			<Cell CellID="R_23" Value=""/>
+			<Cell CellID="AF_23" Value=""/>
+			<Cell CellID="E_25" Value=""/>
+			<Cell CellID="R_25" Value="" />
+			<Cell CellID="AF_25" Value=""/>
+			<Cell CellID="F_27" Value=""/>
+			<Cell CellID="AF_27" Value=""/>	
+			<Cell CellID="E_29" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0" DateKHBS="" loaiKHBS="">
+		<Cells>
+			<Cell CellID="D_24"  FirstCell="0"  Value="" />
+			<Cell CellID="E_24"  Value="" />
+			<Cell CellID="F_24"  Value="0" />
+			<Cell CellID="G_24"  Value="0" />
+			<Cell CellID="H_24"  Value="0" />
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0" >
+		<Cells>
+			<Cell CellID="D_28" FirstCell="0"  Value="" />
+			<Cell CellID="E_28"   Value="" />
+			<Cell CellID="F_28"  Value="0" />
+			<Cell CellID="G_28"  Value="0" />
+			<Cell CellID="H_28"  Value="0" />
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="B_41" Value="0"/>
+			<Cell CellID="E_32" Value="0"/>
+			<Cell CellID="E_33" Value="0"/>
+			<Cell CellID="B_35" Value=""/>			
+			<Cell CellID="H_30" Value="0"/>					
+		</Cells>
+	</Section>
+</Sections>

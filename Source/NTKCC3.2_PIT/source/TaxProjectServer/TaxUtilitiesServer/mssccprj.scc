@@ -1,0 +1,8 @@
+SCC = This is a Source Code Control file
+
+[TAX_Utilities_Svr.vbp]
+SCC_Aux_Path =\\192.168.131.15\BU2-Prj\QLT-HTKK,
+SCC_Project_Name ="$/QLT-HTKK/WIP/Program/TaxProjectServer/TaxUtilitiesServer", CSAAAAAA
+[TAX_Utilities_Svr_New.vbp]
+SCC_Project_Name=this project is not under source code control
+SCC_Aux_Path=<This is an empty string for the mssccprj.scc file>

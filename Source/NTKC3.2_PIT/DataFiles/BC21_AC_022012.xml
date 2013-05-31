@@ -1,0 +1,214 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_5" Value=""/>
+			<Cell CellID="F_7" Value=""/>
+			<Cell CellID="F_9" Value=""/>
+			<Cell CellID="E_11" Value=""/>
+			<Cell CellID="S_11" Value=""/>
+			<Cell CellID="AC_11" Value=""/>
+			<Cell CellID="E_22" Value=""/>
+			<Cell CellID="E_13" Value=""/>
+			<Cell CellID="S_15" Value=""/>
+			<Cell CellID="AC_15" Value=""/>
+			<Cell CellID="S_13" Value=""/>
+			<Cell CellID="F_19" Value=""/>
+			<Cell CellID="S_19" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="AC_13" Value="" MaxLen="60"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="N_15" Value="31/01/2012"/>
+			<Cell CellID="H_15" Value="12"/>
+			<Cell CellID="K_15" Value="00"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_42" FirstCell="0" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="O_42" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="S_42" Value="AA/01T" MCT="3"/>
+			<Cell CellID="v_42" Value="0000001" MCT="4"/>
+			<Cell CellID="Y_42" Value="0000003" MCT="5"/>
+			<Cell CellID="AA_42" Value="3" MCT="6"/>
+			<Cell CellID="AE_42" Value="1" MCT="7"/>
+			<Cell CellID="AI_42" Value="MÊt ch¸y hßng hãa ®¬n ®· BC sö dông." MCT="8"/>
+			<Cell CellID="AH_42" Value="0" MCT="9"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_43" FirstCell="1" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="O_43" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="S_43" Value="AA/01T" MCT="3"/>
+			<Cell CellID="V_43" Value="0000004" MCT="4"/>
+			<Cell CellID="Y_43" Value="0000004" MCT="5"/>
+			<Cell CellID="AA_43" Value="1" MCT="6"/>
+			<Cell CellID="AE_43" Value="1" MCT="7"/>
+			<Cell CellID="AI_43" Value="MÊt ch¸y hßng hãa ®¬n ®· BC sö dông." MCT="8"/>
+			<Cell CellID="AH_43" Value="0" MCT="9"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_44" FirstCell="1" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="O_44" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="S_44" Value="AA/01T" MCT="3"/>
+			<Cell CellID="V_44" Value="0000005" MCT="4"/>
+			<Cell CellID="Y_44" Value="0000005" MCT="5"/>
+			<Cell CellID="AA_44" Value="1" MCT="6"/>
+			<Cell CellID="AE_44" Value="1" MCT="7"/>
+			<Cell CellID="AI_44" Value="MÊt ch¸y hßng hãa ®¬n ®· BC sö dông." MCT="8"/>
+			<Cell CellID="AH_44" Value="0" MCT="9"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_45" FirstCell="1" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="O_45" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="S_45" Value="AA/01T" MCT="3"/>
+			<Cell CellID="V_45" Value="0000006" MCT="4"/>
+			<Cell CellID="Y_45" Value="0000010" MCT="5"/>
+			<Cell CellID="AA_45" Value="5" MCT="6"/>
+			<Cell CellID="AE_45" Value="1" MCT="7"/>
+			<Cell CellID="AI_45" Value="MÊt ch¸y hßng hãa ®¬n ®· BC sö dông." MCT="8"/>
+			<Cell CellID="AH_45" Value="0" MCT="9"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_46" FirstCell="1" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="O_46" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="S_46" Value="AA/01T" MCT="3"/>
+			<Cell CellID="V_46" Value="0000011" MCT="4"/>
+			<Cell CellID="Y_46" Value="0000012" MCT="5"/>
+			<Cell CellID="AA_46" Value="2" MCT="6"/>
+			<Cell CellID="AE_46" Value="1" MCT="7"/>
+			<Cell CellID="AI_46" Value="MÊt ch¸y hßng hãa ®¬n ®· BC sö dông." MCT="8"/>
+			<Cell CellID="AH_46" Value="0" MCT="9"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_47" FirstCell="1" Value="Hãa ®¬n gi¸trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="O_47" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="S_47" Value="AA/01T" MCT="3"/>
+			<Cell CellID="V_47" Value="0000013" MCT="4"/>
+			<Cell CellID="Y_47" Value="0000014" MCT="5"/>
+			<Cell CellID="AA_47" Value="2" MCT="6"/>
+			<Cell CellID="AE_47" Value="1" MCT="7"/>
+			<Cell CellID="AI_47" Value="MÊt ch¸y hßng hãa ®¬n ®· BC sö dông." MCT="8"/>
+			<Cell CellID="AH_47" Value="0" MCT="9"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_48" FirstCell="1" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="O_48" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="S_48" Value="AA/01T" MCT="3"/>
+			<Cell CellID="V_48" Value="0000015" MCT="4"/>
+			<Cell CellID="Y_48" Value="0000016" MCT="5"/>
+			<Cell CellID="AA_48" Value="2" MCT="6"/>
+			<Cell CellID="AE_48" Value="1" MCT="7"/>
+			<Cell CellID="AI_48" Value="MÊt ch¸y hßng hãa ®¬n ®· BC sö dông." MCT="8"/>
+			<Cell CellID="AH_48" Value="0" MCT="9"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_49" FirstCell="1" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="O_49" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="S_49" Value="AA/01T" MCT="3"/>
+			<Cell CellID="V_49" Value="0000017" MCT="4"/>
+			<Cell CellID="Y_49" Value="0000018" MCT="5"/>
+			<Cell CellID="AA_49" Value="2" MCT="6"/>
+			<Cell CellID="AE_49" Value="1" MCT="7"/>
+			<Cell CellID="AI_49" Value="MÊt ch¸y hßng hãa ®¬n ®· BC sö dông." MCT="8"/>
+			<Cell CellID="AH_49" Value="0" MCT="9"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_50" FirstCell="1" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="O_50" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="S_50" Value="AA/01T" MCT="3"/>
+			<Cell CellID="V_50" Value="0000019" MCT="4"/>
+			<Cell CellID="Y_50" Value="0000020" MCT="5"/>
+			<Cell CellID="AA_50" Value="2" MCT="6"/>
+			<Cell CellID="AE_50" Value="1" MCT="7"/>
+			<Cell CellID="AI_50" Value="MÊt ch¸y hßng hãa ®¬n ®· BC sö dông." MCT="8"/>
+			<Cell CellID="AH_50" Value="0" MCT="9"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_51" FirstCell="1" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="O_51" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="S_51" Value="AA/01T" MCT="3"/>
+			<Cell CellID="V_51" Value="0000021" MCT="4"/>
+			<Cell CellID="Y_51" Value="0000022" MCT="5"/>
+			<Cell CellID="AA_51" Value="2" MCT="6"/>
+			<Cell CellID="AE_51" Value="1" MCT="7"/>
+			<Cell CellID="AI_51" Value="MÊt ch¸y hßng hãa ®¬n ®· BC sö dông." MCT="8"/>
+			<Cell CellID="AH_51" Value="0" MCT="9"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_52" FirstCell="1" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="O_52" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="S_52" Value="AA/01T" MCT="3"/>
+			<Cell CellID="V_52" Value="0000023" MCT="4"/>
+			<Cell CellID="Y_52" Value="0000025" MCT="5"/>
+			<Cell CellID="AA_52" Value="3" MCT="6"/>
+			<Cell CellID="AE_52" Value="1" MCT="7"/>
+			<Cell CellID="AI_52" Value="MÊt ch¸y hßng hãa ®¬n ®· BC sö dông." MCT="8"/>
+			<Cell CellID="AH_52" Value="0" MCT="9"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_53" FirstCell="1" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="O_53" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="S_53" Value="AA/01T" MCT="3"/>
+			<Cell CellID="V_53" Value="0000026" MCT="4"/>
+			<Cell CellID="Y_53" Value="0000027" MCT="5"/>
+			<Cell CellID="AA_53" Value="2" MCT="6"/>
+			<Cell CellID="AE_53" Value="1" MCT="7"/>
+			<Cell CellID="AI_53" Value="MÊt ch¸y hßng hãa ®¬n ®· BC sö dông." MCT="8"/>
+			<Cell CellID="AH_53" Value="0" MCT="9"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_54" FirstCell="1" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="O_54" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="S_54" Value="AA/01T" MCT="3"/>
+			<Cell CellID="V_54" Value="0000028" MCT="4"/>
+			<Cell CellID="Y_54" Value="0000029" MCT="5"/>
+			<Cell CellID="AA_54" Value="2" MCT="6"/>
+			<Cell CellID="AE_54" Value="1" MCT="7"/>
+			<Cell CellID="AI_54" Value="MÊt ch¸y hßng hãa ®¬n ®· BC sö dông." MCT="8"/>
+			<Cell CellID="AH_54" Value="0" MCT="9"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_55" FirstCell="1" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="O_55" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="S_55" Value="AA/01T" MCT="3"/>
+			<Cell CellID="V_55" Value="0000030" MCT="4"/>
+			<Cell CellID="Y_55" Value="0000031" MCT="5"/>
+			<Cell CellID="AA_55" Value="2" MCT="6"/>
+			<Cell CellID="AE_55" Value="1" MCT="7"/>
+			<Cell CellID="AI_55" Value="MÊt ch¸y hßng hãa ®¬n ®· BC sö dông." MCT="8"/>
+			<Cell CellID="AH_55" Value="0" MCT="9"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_56" FirstCell="1" Value="Hãa®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="O_56" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="S_56" Value="AA/01T" MCT="3"/>
+			<Cell CellID="V_56" Value="0000039" MCT="4"/>
+			<Cell CellID="Y_56" Value="0000070" MCT="5"/>
+			<Cell CellID="AA_56" Value="32" MCT="6"/>
+			<Cell CellID="AE_56" Value="1" MCT="7"/>
+			<Cell CellID="AI_56" Value="MÊt ch¸y hßng hãa ®¬n ®· BC sö dông." MCT="8"/>
+			<Cell CellID="AH_56" Value="0" MCT="9"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_57" FirstCell="1" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="O_57" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="S_57" Value="AA/01T" MCT="3"/>
+			<Cell CellID="V_57" Value="0000080" MCT="4"/>
+			<Cell CellID="Y_57" Value="0000080" MCT="5"/>
+			<Cell CellID="AA_57" Value="1" MCT="6"/>
+			<Cell CellID="AE_57" Value="1" MCT="7"/>
+			<Cell CellID="AI_57" Value="MÊt ch¸y hßng hãa ®¬n ®· BC sö dông." MCT="8"/>
+			<Cell CellID="AH_57" Value="0" MCT="9"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="I_60" Value="Háa ho¹n"/>
+			<Cell CellID="AE_63" Value="NguyÔn V¨n Thïy"/>
+			<Cell CellID="AE_65" Value="31/01/2012"/>
+		</Cells>
+	</Section>
+</Sections>

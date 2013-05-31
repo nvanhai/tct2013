@@ -1,0 +1,59 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_4" Value=""/>
+			<Cell CellID="G_5" Value=""/>
+			<Cell CellID="G_6" Value=""/>
+			<Cell CellID="E_8" Value=""/>
+			<Cell CellID="M_8" Value=""/>
+			<Cell CellID="V_8" Value=""/>
+			<Cell CellID="E_10" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="M_12" Value=""/>
+			<Cell CellID="V_12" Value=""/>
+			<Cell CellID="M_10" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_16" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_14" Value=""/>
+			<Cell CellID="M_14" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_10" Value="" MaxLen="60"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_25" FirstCell="0" Value="568568" MCT="2"/>
+			<Cell CellID="D_25" Value="0101" MCT="3"/>
+			<Cell CellID="E_25" Value="01/01/2007" MCT="4"/>
+			<Cell CellID="F_25" Value="6223623" MCT="5"/>
+			<Cell CellID="I_25" Value="20300" MCT="6"/>
+			<Cell CellID="J_25" Value="2362562" MCT="7"/>
+			<Cell CellID="N_25" Value="10000" MCT="8"/>
+			<Cell CellID="O_25" Value="1000" MCT="9"/>
+			<Cell CellID="P_25" Value="10000000" MCT="10"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_26" FirstCell="1" Value="46346" MCT="2"/>
+			<Cell CellID="D_26" Value="34634" MCT="3"/>
+			<Cell CellID="E_26" Value="01/01/2008" MCT="4"/>
+			<Cell CellID="F_26" Value="325235" MCT="5"/>
+			<Cell CellID="I_26" Value="10102" MCT="6"/>
+			<Cell CellID="J_26" Value="234626" MCT="7"/>
+			<Cell CellID="N_26" Value="1000" MCT="8"/>
+			<Cell CellID="O_26" Value="235325" MCT="9"/>
+			<Cell CellID="P_26" Value="235325000" MCT="10"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="L_30" FirstCell="0" Value="Kinh doanh giải trí có đặt cược" MCT="11"/>
+			<Cell CellID="N_30" Value="10000"/>
+			<Cell CellID="P_30" Value="10000000"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="L_31" FirstCell="1" Value="Thuốc lá điếu" MCT="11"/>
+			<Cell CellID="N_31" Value="1000"/>
+			<Cell CellID="P_31" Value="235325000"/>
+		</Cells>
+	</Section>
+</Sections>

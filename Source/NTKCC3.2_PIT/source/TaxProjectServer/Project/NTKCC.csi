@@ -1,0 +1,27 @@
+[History]
+1=#P0#=mb	#P1#=changeToLoaiToKhaiQHS	#P2#=NTKCC/frmInterfaces/changeToLoaiToKhaiQHS	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130417150250	#P7#=0	#P8#=1	.
+2=#P0#=mb	#P1#=checkActivePIT	#P2#=NTKCC/mdlFunctions/checkActivePIT	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130411114804	#P7#=0	#P8#=1	.
+3=#P0#=mb	#P1#=Command1_Click	#P2#=NTKCC/frmInterfaces/Command1_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20130228095159	#P7#=0	#P8#=33	.
+4=#P0#=mb	#P1#=InitParametersPrint	#P2#=NTKCC/frmInBienBanPhatNopCham/InitParametersPrint	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20120915085333	#P7#=0	#P8#=9	.
+5=#P0#=mb	#P1#=UpdateCell	#P2#=NTKCC/frmInterfaces_bb/UpdateCell	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20120915084843	#P7#=0	#P8#=15	.
+6=#P0#=mb	#P1#=UpdateCellPrint	#P2#=NTKCC/frmInBienBanPhatNopCham/UpdateCellPrint	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20120915084705	#P7#=0	#P8#=12	.
+7=#P0#=mb	#P1#=Prepare_In	#P2#=NTKCC/frmInterfaces/Prepare_In	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20120915084359	#P7#=0	#P8#=0	.
+8=#P0#=mb	#P1#=SetupDataPrint	#P2#=NTKCC/mdlFunctions/SetupDataPrint	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20120915084300	#P7#=0	#P8#=0	.
+9=#P0#=mb	#P1#=CmdIn_Click	#P2#=NTKCC/frmInBienBanPhatNopCham/CmdIn_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20120915084054	#P7#=0	#P8#=81	.
+10=#P0#=mb	#P1#=GetMessageCellById	#P2#=NTKCC/mdlFunctions/GetMessageCellById	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20120915083023	#P7#=0	#P8#=0	.
+11=#P0#=mb	#P1#=ResetRowPrint	#P2#=NTKCC/mdlFunctions/ResetRowPrint	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20120915082926	#P7#=0	#P8#=-1	.
+12=#P0#=mb	#P1#=InsertRowPrint	#P2#=NTKCC/mdlFunctions/InsertRowPrint	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20120915082912	#P7#=0	#P8#=0	.
+13=#P0#=mb	#P1#=SetupReportData	#P2#=NTKCC/mdlFunctions/SetupReportData	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20120915082703	#P7#=0	#P8#=170	.
+14=#P0#=mb	#P1#=Insert_QHS	#P2#=NTKCC/frmInterfaces/Insert_QHS	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20130417150056	#P7#=0	#P8#=82	.
+15=#P0#=mb	#P1#=Prepare_QLT	#P2#=NTKCC/frmInterfaces/Prepare_QLT	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20130417150116	#P7#=0	#P8#=258	.
+16=#P0#=mb	#P1#=KiemTraNopCham	#P2#=NTKCC/frmInterfaces/KiemTraNopCham	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20120904160826	#P7#=0	#P8#=0	.
+17=#P0#=mb	#P1#=hannop	#P2#=NTKCC/mdlFunctions/hannop	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20120801170802	#P7#=0	#P8#=48	.
+18=#P0#=mb	#P1#=cmdNhanTkhai_Click	#P2#=NTKCC/frmTruyennhanTK/cmdNhanTkhai_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20111206102748	#P7#=0	#P8#=18	.
+19=#P0#=mb	#P1#=LoadForm	#P2#=NTKCC/frmInterfaces/LoadForm	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20111206095633	#P7#=0	#P8#=144	.
+20=#P0#=mb	#P1#=Barcode_Scaned	#P2#=NTKCC/frmInterfaces/Barcode_Scaned	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20111206095526	#P7#=0	#P8#=1	.
+21=#P0#=mb	#P1#=GetNoiLamViec	#P2#=NTKCC/mdlFunctions/GetNoiLamViec	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20111206085816	#P7#=0	#P8#=0	.
+22=#P0#=mb	#P1#=traCuuToKhai	#P2#=NTKCC/frmTruyennhanTK/traCuuToKhai	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20111206084127	#P7#=0	#P8#=0	.
+23=#P0#=mb	#P1#=btnTraCuu_Click	#P2#=NTKCC/frmTruyennhanTK/btnTraCuu_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20111205215550	#P7#=0	#P8#=1	.
+24=#P0#=mb	#P1#=SetupData	#P2#=NTKCC/frmTruyennhanTK/SetupData	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20111205171110	#P7#=0	#P8#=39	.
+25=#P0#=mb	#P1#=cmdSave_Click	#P2#=NTKCC/frmInterfaces/cmdSave_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20111205161946	#P7#=0	#P8#=81	.
+26=#P0#=mb	#P1#=Form_Activate	#P2#=NTKCC/frmInterfaces/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20111130142822	#P7#=0	#P8#=7	.

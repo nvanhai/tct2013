@@ -1,0 +1,4 @@
+[History]
+1=#P0#=mb	#P1#=CreateConnectionString	#P2#=TAX_Utilities_Svr_New/clsADO/CreateConnectionString	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130411113638	#P7#=0	#P8#=29	.
+2=#P0#=mb	#P1#=Execute	#P2#=TAX_Utilities_Svr_New/clsADO/Execute	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130411110804	#P7#=0	#P8#=3	.
+3=#P0#=mb	#P1#=DataChanged	#P2#=TAX_Utilities_Svr_New/clsVariables/DataChanged [Get]	#P3#=	#P4#=	#P5#=MembPropertyPrivate	#P6#=20120915083251	#P7#=0	#P8#=1	.

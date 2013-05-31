@@ -1,0 +1,28 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by ThanhDX (FSS - HN) -->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_4" Value="164###10101###Xì gà###Bao###65###0###1"/>
+			<Cell CellID="C_5" Value="165###10102###Thuốc lá điếu###Bao###55###0###1"/>
+			<Cell CellID="C_7" Value="167###10201###Rượu từ 40 độ trở lên###Lit###65###0###1"/>
+			<Cell CellID="C_8" Value="168###10202###Rượu từ 20 độ đến dưới 40 độ###Lit###30###0###1"/>
+			<Cell CellID="C_9" Value="169###10203###Rượu dưới 20 độ, rượu hoa quả, rượu thuốc###Lit###20###0###1"/>
+			<Cell CellID="C_11" Value="171###10301###Bia chai###Lit###75###0###1"/>
+			<Cell CellID="C_12" Value="172###10302###Bia hộp###Lit###75###0###1"/>
+			<Cell CellID="C_13" Value="173###10303###Bia hơi, bia tươi###Lit###30###0###1"/>
+			<Cell CellID="C_15" Value="175###10401###Ô tô 5 chỗ ngồi trở xuống###Cái###50###0###1"/>
+			<Cell CellID="C_16" Value="176###10402###Ô tô từ 6 đến 15 chỗ ngồi###Cái###30###0###1"/>
+			<Cell CellID="C_17" Value="177###10403###Ôtô từ 16 đến dưới 24 chỗ ngồi (Bao gồm cả xe thiết kế vừa trở người vừa trở hàng và các loại xe lam)###Cái###15###0###1"/>
+			<Cell CellID="C_18" Value="178###10500###Xăng các loại, nap-ta (nap tha), con-đen-sát (condensate), chế phẩm tái hợp (reformade component)  và các chế phẩm khác để pha chế xăng###Lit###10###0###1"/>
+			<Cell CellID="C_19" Value="179###10600###Điều hoà nhiệt độ công suất từ 90.000 BTU trở xuống###Cái###15###0###1"/>
+			<Cell CellID="C_20" Value="180###10700###Bài lá######40###1###1"/>
+			<Cell CellID="C_21" Value="181###10800###Vàng mã, hàng mã######70###1###1"/>
+			<Cell CellID="C_22" Value="183###20100###Kinh doanh vũ trường, mát xa, ka-ra-ô-kê######30###1###1"/>
+			<Cell CellID="C_23" Value="184###20200###Kinh doanh ca-si-nô (casino), trò chơi bằng máy giắc-pót (jackpot)######25###1###1"/>
+			<Cell CellID="C_24" Value="185###20300###Kinh doanh giải trí có đặt cược######25###1###1"/>
+			<Cell CellID="C_25" Value="186###20400###Kinh doanh gôn (golf): bán thẻ hội viên, vé chơi gôn######10###1###1"/>
+			<Cell CellID="C_26" Value="187###20500###Kinh doanh xổ số######15###1###1"/>
+		</Cells>
+	</Section>
+</Sections>

@@ -1,0 +1,59 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_4" Value=""/>
+			<Cell CellID="G_5" Value=""/>
+			<Cell CellID="G_6" Value=""/>
+			<Cell CellID="E_8" Value=""/>
+			<Cell CellID="M_8" Value=""/>
+			<Cell CellID="V_8" Value=""/>
+			<Cell CellID="E_10" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="M_12" Value=""/>
+			<Cell CellID="V_12" Value=""/>
+			<Cell CellID="M_10" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_16" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_14" Value=""/>
+			<Cell CellID="M_14" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_10" Value="" MaxLen="60"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_23" FirstCell="0" Value="x"/>
+			<Cell CellID="D_24" Value="x"/>
+			<Cell CellID="D_25" Value="x"/>
+			<Cell CellID="D_26" Value="x"/>
+			<Cell CellID="D_27" Value="x"/>
+			<Cell CellID="D_29" Value="x"/>
+			<Cell CellID="D_30" Value="x"/>
+			<Cell CellID="J_33" Value="6"/>
+			<Cell CellID="J_34" Value="7"/>
+			<Cell CellID="J_35" Value="8"/>
+			<Cell CellID="S_38" Value="03/04/2008"/>
+			<Cell CellID="Q_41" Value="0.000"/>
+			<Cell CellID="N_42" Value="2"/>
+			<Cell CellID="U_42" Value="2008"/>
+			<Cell CellID="J_43" Value="1"/>
+			<Cell CellID="Q_43" Value="2010"/>
+			<Cell CellID="N_44" Value="3"/>
+			<Cell CellID="U_44" Value="2011"/>
+			<Cell CellID="U_49" Value="1000" MCT="1"/>
+			<Cell CellID="U_50" Value="2000000" MCT="2"/>
+			<Cell CellID="U_51" Value="2000000" MCT="3"/>
+			<Cell CellID="U_52" Value="4000000000" MCT="4"/>
+			<Cell CellID="U_54" Value="1120000000" MCT="5"/>
+			<Cell CellID="U_55" Value="0" MCT="6"/>
+			<Cell CellID="U_56" Value="1120000000" MCT="7"/>
+			<Cell CellID="U_58" Value="0.000" MCT="8"/>
+			<Cell CellID="U_59" Value="0" MCT="9"/>
+			<Cell CellID="U_60" Value="0.000" MCT="10"/>
+			<Cell CellID="U_61" Value="0" MCT="11"/>
+			<Cell CellID="C_48" Value="" MCT="3.0"/>
+			<Cell CellID="C_53" Value="" MCT="4.0"/>
+			<Cell CellID="C_57" Value="" MCT="5.0"/>
+		</Cells>
+	</Section>
+</Sections>

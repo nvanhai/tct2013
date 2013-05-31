@@ -1,0 +1,7 @@
+clsVariables = 132, 132, 520, 448, 
+mdlVariables = 110, 110, 498, 426, 
+clsLZWCompress = -41, 141, 618, 505, C
+frmDisplayMessage = 0, 0, 824, 488, C, 44, 58, 635, 506, C
+clsMessageBox = -44, 110, 547, 558, C
+clsADO = -116, 114, 708, 645, Z
+clsUnicodeConvert = 44, 44, 544, 221, C

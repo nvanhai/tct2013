@@ -1,0 +1,55 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_4" Value=""/>
+			<Cell CellID="G_5" Value=""/>
+			<Cell CellID="G_6" Value=""/>
+			<Cell CellID="E_8" Value=""/>
+			<Cell CellID="M_8" Value=""/>
+			<Cell CellID="V_8" Value=""/>
+			<Cell CellID="E_10" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="M_12" Value=""/>
+			<Cell CellID="V_12" Value=""/>
+			<Cell CellID="M_10" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_16" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_14" Value=""/>
+			<Cell CellID="M_14" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_10" Value="" MaxLen="60"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_26" FirstCell="" Value="6357" MCT="2b"/>
+			<Cell CellID="E_26" Value="" MCT="3b"/>
+			<Cell CellID="G_26" Value="12000000" MCT="4b"/>
+			<Cell CellID="H_26" Value="1000000" MCT="5b"/>
+			<Cell CellID="I_26" Value="10000000" MCT="6b"/>
+			<Cell CellID="J_26" Value="1000000" MCT="7b"/>
+			<Cell CellID="K_26" Value="1000000" MCT="8b"/>
+			<Cell CellID="L_26" Value="0" MCT="9b"/>
+			<Cell CellID="M_26" Value="968987" MCT="10b"/>
+			<Cell CellID="N_26" Value="87976" MCT="11b"/>
+			<Cell CellID="O_26" Value="881011" MCT="12b"/>
+			<Cell CellID="P_26" Value="" MCT="13b"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_31" FirstCell="" Value="4563456" MCT="24b"/>
+			<Cell CellID="E_31" Value="" MCT="25b"/>
+			<Cell CellID="G_31" Value="2400000" MCT="26b"/>
+			<Cell CellID="H_31" Value="200000" MCT="27b"/>
+			<Cell CellID="I_31" Value="200000" MCT="28b"/>
+			<Cell CellID="J_31" Value="2000000" MCT="29b"/>
+			<Cell CellID="K_31" Value="200000" MCT="30b"/>
+			<Cell CellID="L_31" Value="9" MCT="31b"/>
+			<Cell CellID="M_31" Value="7896787" MCT="32b"/>
+			<Cell CellID="N_31" Value="99789" MCT="33b"/>
+			<Cell CellID="O_31" Value="7796998" MCT="34b"/>
+			<Cell CellID="P_31" Value="" MCT="35b"/>
+		</Cells>
+	</Section>
+</Sections>

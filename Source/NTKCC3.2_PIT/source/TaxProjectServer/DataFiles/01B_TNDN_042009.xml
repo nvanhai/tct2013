@@ -1,0 +1,42 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_4" Value=""/>
+			<Cell CellID="G_5" Value=""/>
+			<Cell CellID="G_6" Value=""/>
+			<Cell CellID="E_8" Value=""/>
+			<Cell CellID="M_8" Value=""/>
+			<Cell CellID="V_8" Value=""/>
+			<Cell CellID="E_10" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="M_12" Value=""/>
+			<Cell CellID="V_12" Value=""/>
+			<Cell CellID="M_10" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_16" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_14" Value=""/>
+			<Cell CellID="M_14" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_10" Value="" MaxLen="60"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="V_23" Value="21000000" MCT="10"/>
+			<Cell CellID="V_24" Value="20000000" MCT="11"/>
+			<Cell CellID="V_25" Value="1000000" MCT="12"/>
+			<Cell CellID="V_26" Value="10.000" MCT="13"/>
+			<Cell CellID="V_28" Value="10.000" MCT="14"/>
+			<Cell CellID="L_29" Value=""/>
+			<Cell CellID="V_29" Value="0." MCT="15"/>
+			<Cell CellID="V_30" Value="200000" MCT="16"/>
+			<Cell CellID="V_31" Value="200000" MCT="17"/>
+			<Cell CellID="V_32" Value="0" MCT="18"/>
+			<Cell CellID="V_33" Value="0" MCT="19"/>
+			<Cell CellID="V_34" Value="200000" MCT="20"/>
+			<Cell CellID="E_17" Value=""/>
+			<Cell CellID="O_37" Value=""/>
+			<Cell CellID="O_39" Value="22/07/2010"/>
+		</Cells>
+	</Section>
+</Sections>

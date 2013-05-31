@@ -1,0 +1,53 @@
+<!-- edited by Htphuong CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_4" Value=""/>
+			<Cell CellID="G_5" Value=""/>
+			<Cell CellID="G_6" Value=""/>
+			<Cell CellID="E_8" Value=""/>
+			<Cell CellID="M_8" Value=""/>
+			<Cell CellID="V_8" Value=""/>
+			<Cell CellID="E_10" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="M_12" Value=""/>
+			<Cell CellID="V_12" Value=""/>
+			<Cell CellID="M_10" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_16" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_14" Value=""/>
+			<Cell CellID="M_14" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_10" Value="" MaxLen="60"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_24" FirstCell="0" Value="Thuế TNDN chênh lệch do áp dụng thuế suất khác mức thuế suất 28%"/>
+			<Cell CellID="E_24" Value="C3"/>
+			<Cell CellID="C_24" Value="Thuế TNDN chênh lệch do áp dụng thuế suất khác mức thuế suất 28%                                    G_43                C3"/>
+			<Cell CellID="F_24" Value="0"/>
+			<Cell CellID="G_24" Value="0"/>
+			<Cell CellID="H_24" Value="0"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_28" FirstCell="0" Value="Thuế TNDN từ hoạt động SXKD tính theo thuế suất phổ thông (C2=B30*28%)"/>
+			<Cell CellID="E_28" Value="C2"/>
+			<Cell CellID="C_28" Value="Thuế TNDN từ hoạt động SXKD tính theo thuế suất phổ thông (C2=B30*28%)                              G_42                C2"/>
+			<Cell CellID="F_28" Value="25000000"/>
+			<Cell CellID="G_28" Value="30000"/>
+			<Cell CellID="H_28" Value="-24970000"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="E_32" Value="107"/>
+			<Cell CellID="E_33" Value="0"/>
+			<Cell CellID="B_35" Value=""/>
+			<Cell CellID="G_39" Value=""/>
+			<Cell CellID="G_40" Value="16/07/2010"/>
+			<Cell CellID="H_30" Value="-24970000"/>
+		</Cells>
+	</Section>
+</Sections>
