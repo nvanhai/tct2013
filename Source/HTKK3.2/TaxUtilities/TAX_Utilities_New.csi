@@ -1,0 +1,9 @@
+[History]
+1=#P0#=mb	#P1#=StringToString	#P2#=TAX_Utilities_New/clsUnicodeConvert/StringToString	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130121110845	#P7#=0	#P8#=9	.
+2=#P0#=mb	#P1#=Convert	#P2#=TAX_Utilities_New/clsUnicodeConvert/Convert	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130121110833	#P7#=0	#P8#=14	.
+3=#P0#=mb	#P1#=GetVowels	#P2#=TAX_Utilities_New/clsUnicodeConvert/GetVowels	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130121110816	#P7#=0	#P8#=3	.
+4=#P0#=mb	#P1#=AdjustDataReDim	#P2#=TAX_Utilities_New/clsVariables/AdjustDataReDim	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20121004092628	#P7#=0	#P8#=3	.
+5=#P0#=mb	#P1#=CheckToKhaiGH	#P2#=TAX_Utilities_New/clsVariables/CheckToKhaiGH [Let]	#P3#=	#P4#=	#P5#=MembPropertyPrivate	#P6#=20120606112441	#P7#=0	#P8#=2	.
+6=#P0#=mb	#P1#=CheckNewDataBC26	#P2#=TAX_Utilities_New/clsVariables/CheckNewDataBC26 [Let]	#P3#=	#P4#=	#P5#=MembPropertyPrivate	#P6#=20120606112351	#P7#=0	#P8#=9	.
+7=#P0#=mb	#P1#=CheckNewDataBC26	#P2#=TAX_Utilities_New/clsVariables/CheckNewDataBC26 [Get]	#P3#=	#P4#=	#P5#=MembPropertyPrivate	#P6#=20120606112341	#P7#=0	#P8#=9	.
+8=#P0#=mb	#P1#=DisplayMessage	#P2#=TAX_Utilities_New/frmDisplayMessage/DisplayMessage	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20120326142949	#P7#=0	#P8#=49	.

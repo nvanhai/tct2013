@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root_of_bangke>
+	<set_data>
+		<font_name>Tahoma</font_name>
+		<font_size>10</font_size>
+		<Row1>37</Row1>
+		<Row2>17</Row2>
+		<Col>2</Col>
+		<count>1</count>
+	</set_data>
+	<cell c1="3" c2="3" type="12" numDec="0"/>
+	<cell c1="4" c2="4" type="2" numDec="0"/>
+	<cell c1="5" c2="5" type="1" numDec="0"/>
+	<cell c1="6" c2="6" type="12" numDec="0"/>
+	<cell c1="10" c2="7" type="12" numDec="0"/>
+	<cell c1="9" c2="9" type="12" numDec="0"/>
+	<cell c1="14" c2="10" type="13" numDec="0"/>
+	<cell c1="15" c2="11" type="13" numDec="0"/>
+	<cell c1="16" c2="12" type="13" numDec="0"/>
+</root_of_bangke>

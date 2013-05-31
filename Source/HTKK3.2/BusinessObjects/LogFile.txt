@@ -1,0 +1,588 @@
+12/07/2009 12:41:36 AM cls_0509TNCN InsertNode
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+12/07/2009 12:41:57 AM cls_0509TNCN InsertNode
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+12/07/2009 12:45:28 AM cls_0509TNCN InsertNode
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+12/07/2009 12:49:17 AM cls_0509TNCN InsertNode
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+12/07/2009 12:49:27 AM cls_0509TNCN InsertNode
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+12/07/2009 12:49:30 AM cls_0509TNCN InsertNode
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+12/07/2009 12:49:54 AM cls_0509TNCN InsertNode
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+12/07/2009 12:49:56 AM cls_0509TNCN InsertNode
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+12/07/2009 12:53:11 AM cls_0509TNCN InsertNode
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+12/07/2009 12:53:13 AM cls_0509TNCN InsertNode
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+12/07/2009 12:53:32 AM cls_0509TNCN InsertNode
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+12/07/2009 12:53:34 AM cls_0509TNCN InsertNode
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+12/07/2009 12:57:20 AM cls_0509TNCN InsertNode
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+05/05/2010 11:56:34 PM cls_05TNCN InsertNode 05_TNCN
+ 13 : Type mismatch
+------------------------------------------------------------
+05/05/2010 11:57:39 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_22' is duplicated.
+
+------------------------------------------------------------
+06/05/2010 12:58:06 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+13/05/2010 11:30:21 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+13/05/2010 3:00:36 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+20/05/2010 10:28:00 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+20/05/2010 10:28:02 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+20/05/2010 10:28:05 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 8:55:15 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 8:55:20 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 8:55:32 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 8:57:03 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 8:57:18 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 8:57:24 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 8:58:45 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 9:07:43 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 3:15:59 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 3:16:30 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 3:16:35 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 3:20:24 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 3:27:08 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 3:29:18 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 3:33:37 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 3:34:08 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 3:34:11 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 3:39:07 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 3:39:32 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 3:40:29 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 3:40:48 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 3:43:22 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 3:43:25 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 4:01:35 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 4:05:56 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 4:19:02 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 4:20:46 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 4:21:48 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 4:35:45 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 4:36:40 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 4:37:21 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 4:37:49 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 4:37:54 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 4:38:16 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 4:50:03 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 4:58:13 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 5:02:22 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 5:04:22 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 6:11:30 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 6:18:55 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 6:24:28 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 6:24:55 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 6:25:49 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 6:35:17 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 6:39:09 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 6:44:16 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 6:44:30 PM cls_05TNCN InsertNode 05_TNCN
+-2147024809 : The parameter Node is not a child of this Node.
+
+------------------------------------------------------------
+21/05/2010 6:47:49 PM cls_05TNCN InsertNode 05_TNCN
+-2147024809 : The parameter Node is not a child of this Node.
+
+------------------------------------------------------------
+21/05/2010 6:52:22 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 6:53:07 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 6:54:21 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 6:54:36 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+21/05/2010 6:55:34 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+23/05/2010 7:19:03 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+23/05/2010 7:19:30 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+23/05/2010 7:59:05 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+23/05/2010 8:26:08 PM cls_05TNCN InsertNode 05_TNCN
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+23/05/2010 8:57:27 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+5/24/2010 2:12:34 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+5/24/2010 2:40:58 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+5/24/2010 2:41:22 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 10:30:23 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 10:30:49 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 11:03:32 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 11:03:39 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 1:22:44 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 3:40:49 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 3:57:11 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 5:34:08 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 5:41:15 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 5:48:24 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 5:49:47 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 5:50:55 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 5:52:20 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 5:56:40 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 5:57:20 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 5:58:53 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 6:03:59 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 6:30:00 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 6:30:10 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 6:30:44 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+25/05/2010 6:35:20 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+5/25/2010 11:51:03 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+5/26/2010 1:06:01 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+5/26/2010 1:06:02 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+5/26/2010 1:06:57 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+5/26/2010 1:07:24 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+5/26/2010 10:37:30 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+5/26/2010 10:37:47 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_23' is duplicated.
+
+------------------------------------------------------------
+6/4/2010 4:33:41 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_22' is duplicated.
+
+------------------------------------------------------------
+6/4/2010 4:39:13 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'D_22' is duplicated.
+
+------------------------------------------------------------
+6/4/2010 4:39:42 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_21' is duplicated.
+
+------------------------------------------------------------
+6/4/2010 4:41:59 PM cls_05TNCN InsertNode 05_TNCN
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+6/4/2010 4:41:59 PM cls_05TNCN InsertNode 05_TNCN
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+6/4/2010 4:43:24 PM cls_05TNCN InsertNode 05_TNCN
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+6/4/2010 4:43:24 PM cls_05TNCN InsertNode 05_TNCN
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+2/2/2012 5:11:23 PM cls_05TNCN InsertNode 05_TNCN
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+2/2/2012 5:11:50 PM cls_05TNCN InsertNode 05_TNCN
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+2/2/2012 5:12:34 PM cls_05TNCN InsertNode 05_TNCN
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+2/5/2012 8:59:02 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+2/5/2012 9:14:14 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+2/5/2012 9:27:25 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+2/5/2012 11:23:53 PM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+2/28/2012 10:40:57 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+2/28/2012 10:43:45 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+2/28/2012 10:44:40 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+2/28/2012 10:55:35 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+2/28/2012 10:58:28 AM cls_05TNCN InsertNode 05_TNCN
+-2147467259 : The ID 'C_22' is duplicated.
+
+------------------------------------------------------------
+03/30/2012 2:45:51 PM cls_01NTNN InsertNode 01_NTNN
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+03/30/2012 2:52:21 PM cls_01NTNN InsertNode 01_NTNN
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+03/30/2012 3:17:41 PM cls_01NTNN InsertNode 01_NTNN
+-2147467259 : The ID 'C_57' is duplicated.
+
+------------------------------------------------------------
+03/30/2012 3:22:07 PM cls_01NTNN InsertNode 01_NTNN
+-2147467259 : The ID 'C_57' is duplicated.
+
+------------------------------------------------------------
+03/30/2012 4:52:47 PM cls_01NTNN InsertNode 01_NTNN
+-2147467259 : The ID 'AI_57' is duplicated.
+
+------------------------------------------------------------
+03/30/2012 4:55:06 PM cls_01NTNN InsertNode 01_NTNN
+-2147467259 : The ID 'AI_57' is duplicated.
+
+------------------------------------------------------------
+03/30/2012 4:57:17 PM cls_01NTNN InsertNode 01_NTNN
+-2147467259 : The ID 'AI_57' is duplicated.
+
+------------------------------------------------------------
+03/30/2012 4:59:08 PM cls_01NTNN InsertNode 01_NTNN
+-2147467259 : The ID 'C_66' is duplicated.
+
+------------------------------------------------------------
+03/30/2012 5:03:08 PM cls_01NTNN InsertNode 01_NTNN
+-2147467259 : The ID 'C_66' is duplicated.
+
+------------------------------------------------------------
+03/30/2012 5:05:59 PM cls_01NTNN InsertNode 01_NTNN
+-2147467259 : The ID 'C_66' is duplicated.
+
+------------------------------------------------------------
+03/30/2012 5:07:02 PM cls_01NTNN InsertNode 01_NTNN
+-2147467259 : The ID 'C_66' is duplicated.
+
+------------------------------------------------------------
+03/30/2012 5:13:45 PM cls_01NTNN InsertNode 01_NTNN
+-2147467259 : The ID 'C_66' is duplicated.
+
+------------------------------------------------------------
+03/30/2012 5:15:06 PM cls_01NTNN InsertNode 01_NTNN
+-2147467259 : The ID 'C_66' is duplicated.
+
+------------------------------------------------------------
+03/30/2012 5:21:36 PM cls_01NTNN InsertNode 01_NTNN
+-2147467259 : The ID 'AI_57' is duplicated.
+
+------------------------------------------------------------
+04/03/2012 9:21:53 AM cls_01NTNN InsertNode 01_NTNN
+-2147467259 : The ID 'AI_57' is duplicated.
+
+------------------------------------------------------------
+04/03/2012 9:23:24 AM cls_01NTNN InsertNode 01_NTNN
+-2147467259 : The ID 'AI_57' is duplicated.
+
+------------------------------------------------------------
+04/03/2012 9:24:16 AM cls_01NTNN InsertNode 01_NTNN
+-2147467259 : The ID 'AI_57' is duplicated.
+
+------------------------------------------------------------
+04/03/2012 9:30:32 AM cls_01NTNN InsertNode 01_NTNN
+-2147467259 : The ID 'AI_57' is duplicated.
+
+------------------------------------------------------------
+04/03/2012 9:37:17 AM cls_01NTNN InsertNode 01_NTNN
+-2147467259 : The ID 'AI_57' is duplicated.
+
+------------------------------------------------------------
+04/03/2012 9:38:44 AM cls_01NTNN InsertNode 01_NTNN
+ 13 : Type mismatch
+------------------------------------------------------------
+04/03/2012 10:04:41 AM cls_01NTNN InsertNode 01_NTNN
+-2147467259 : The ID 'AI_58' is duplicated.
+
+------------------------------------------------------------
+04/03/2012 10:06:19 AM cls_01NTNN InsertNode 01_NTNN
+-2147467259 : The ID 'AI_57' is duplicated.
+
+------------------------------------------------------------
+6/6/2013 11:45:47 AM mdlFunctions TinhHanNop_KHBS
+ 13 : Type mismatch
+------------------------------------------------------------
+6/6/2013 11:45:52 AM mdlFunctions TinhHanNop_KHBS
+ 13 : Type mismatch
+------------------------------------------------------------
+12/24/2012 11:46:41 PM cls_05TNCN InsertNode 05_TNCN
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
