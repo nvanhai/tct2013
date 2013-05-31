@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by htphuong CMCSoft -->
+<Root>
+	<Map ID ="01_GTGT">
+		<Item CellID="L_24" MCT="22" Caption="Thuế GTGT còn được khấu trừ kỳ trước chuyển sang"/>
+		<Item CellID="L_28" MCT="25" Caption="Tổng số thuế GTGT  được khấu trừ kỳ này"/>
+		<Item CellID="L_33" MCT="31" Caption="Hàng hoá, dịch vụ bán ra chịu thuế suất 5%"/>
+		<Item CellID="L_34" MCT="33" Caption="Hàng hoá, dịch vụ bán ra chịu thuế suất 10%"/>
+		<Item CellID="L_46" MCT="42" Caption="Thuế GTGT đề nghị hoàn"/>
+		<Item CellID="L_44" MCT="40" Caption="Thuế GTGT còn phải nộp trong kỳ"/>
+		<Item CellID="L_47" MCT="43" Caption="Thuế GTGT còn được khấu trừ chuyển kỳ sau"/>
+	</Map>
+	<Map ID ="02_GTGT">		
+		<Item CellID="CT_40" MCT="21" Caption="Thuế GTGT chưa được hoàn kỳ trước chuyển sang"/>		
+		<Item CellID="CT_42" MCT="23" Caption="Hàng hoá, dịch vụ mua vào trong kỳ"/>
+		<Item CellID="CT_49" MCT="30" Caption="Thuế GTGT đề nghị hoàn"/>
+		<Item CellID="CT_50" MCT="31" Caption="Thuế GTGT chưa được hoàn  bàn giao cho doanh nghiệp mới thành lập trong kỳ"/>
+	</Map>
+	<Map ID ="03_GTGT">
+		<Item CellID="M_39" MCT="30" Caption="Thuế GTGT phải nộp của Hàng hoá, dịch vụ chịu thuế suất 0%  và không chịu thuế"/>	
+		<Item CellID="P_39" MCT="31" Caption="Thuế GTGT phải nộp của Hàng hoá, dịch vụ chịu thuế suất 5%"/>
+		<Item CellID="S_39" MCT="32" Caption="Thuế GTGT phải nộp của Hàng hoá, dịch vụ chịu thuế suất 10%"/>
+	</Map>
+	<Map ID ="04_GTGT">
+		<Item CellID="L_25" MCT="30" Caption="Hàng hoá, dịch vụ chịu thuế suất 0%  và không chịu thuế"/>	
+		<Item CellID="R_25" MCT="31" Caption="Hàng hoá, dịch vụ chịu thuế suất 5%"/>
+		<Item CellID="X_25" MCT="32" Caption="Hàng hoá, dịch vụ chịu thuế suất 10%"/>
+	</Map>	
+	<Map ID ="05_GTGT">
+		<Item CellID="K_45" MCT="25" Caption="Số thuế tạm tính phải nộp kỳ này của Hàng hóa, dịch vụ chịu thuế 5%"/>	
+		<Item CellID="R_45" MCT="26" Caption="Số thuế tạm tính phải nộp kỳ này của Hàng hóa, dịch vụ chịu thuế 10%"/>
+	</Map>
+	<Map ID ="01A_TNDN">
+		<Item CellID="K_32" MCT="31" Caption="Thuế TNDN dự kiến miễn, giảm"/>
+		<Item CellID="K_33" MCT="32" Caption="Thuế TNDN phải nộp trong kỳ"/>
+	</Map>
+	<Map ID ="01B_TNDN">
+		<Item CellID="J_44" MCT="28" Caption="Thuế thu nhập doanh nghiệp tính theo thuế suất chung"/>
+		<Item CellID="J_45" MCT="29" Caption="Thuế thu nhập doanh nghiệp tính theo thuế suất ưu đãi"/>
+		<Item CellID="J_46" MCT="30" Caption="Thuế thu nhập doanh nghiệp dự kiến miễn, giảm"/>
+	</Map>
+	<Map ID ="02_TNDN">
+		<Item CellID="AW_73" MCT="37" Caption="Thuế TNDN phải nộp ([37]=[35] x [36])"/>
+		<Item CellID="AW_74" MCT="38" Caption="Thuế TNDN đã kê khai theo tiến độ"/>
+		<Item CellID="AW_75" MCT="39" Caption="Thuế TNDN bổ sung kê khai kỳ này ([39] = [37] - [38])"/>
+		<Item CellID="AW_81" MCT="44" Caption="Thuế TNDN tạm nộp"/>
+	</Map>	
+	<Map ID ="03_TNDN">
+		<Item CellID="O_46" MCT="C7" Caption="Thuế TNDN từ hoạt động SXKD tính theo thuế suất phổ thông (C7=C6 x 25%)"/>
+		<Item CellID="O_47" MCT="C8" Caption="Thuế TNDN chênh lệch do áp dụng mức thuế suất khác mức thuế suất 25% "/>
+		<Item CellID="O_48" MCT="C9" Caption="Thuế TNDN được miễn, giảm trong kỳ"/>
+		<Item CellID="O_49" MCT="C10" Caption="Số thuế thu nhập đã nộp ở nước ngoài được trừ trong kỳ tính thuế"/>
+		<Item CellID="O_51" MCT="D" Caption="Thuế TNDN từ hoạt động chuyển nhượng bất động sản còn phải nộp sau khi trừ thuế TNDN đã nộp ở địa phương khác"/>
+	</Map>
+	<Map ID="01_TAIN">
+		<Item CellID="AN_15" MCT="10" Caption="Thuế tài nguyên phát sinh phải nộp trong kỳ"/>		
+	</Map>
+	<Map ID="01_TTDB">
+		<Item CellID="AN_15" MCT="9" Caption="Thuế TTĐB phải nộp"/>
+	</Map>
+	<Map ID="02_TAIN">	
+		<Item CellID="AO_17" MCT="10" Caption="Thuế tài nguyên phát sinh phải nộp trong kỳ"/>
+	</Map>	
+	<Map ID="01_BVMT">
+		<Item CellID="T_37" MCT="6" Caption="Số phí phải nộp trong kỳ"/>	
+	</Map>	
+	<Map ID="01_TBVMT">
+		<Item CellID="T_37" MCT="6" Caption="Thuế BVMT phải nộp trong kỳ"/>	
+	</Map>	
+	<Map ID="02_BVMT">
+		<Item CellID="Q_37" MCT="6" Caption="Số phí phải nộp trong kỳ"/>	
+	</Map>	
+	<Map ID="01_PHXD">
+		<Item CellID="T_50" MCT="28" Caption="Số tiền phí xăng các loại"/>
+		<Item CellID="T_51" MCT="29" Caption="Số tiền phí dầu Diezen"/>
+		<Item CellID="T_52" MCT="30" Caption="Số tiền phí dầu mỡ nhờn"/>
+	</Map>	
+	<Map ID="01_NTNN">
+		<Item CellID="AU_48" MCT="9" Caption="Thuế GTGT phải nộp"/>
+		<Item CellID="BM_48" MCT="13" Caption="Thuế TNDN phải nộp"/>
+	</Map>
+    <Map ID="02_NTNN">
+		<Item CellID="AF_36" MCT="4a" Caption="Thuế GTGT phải nộp của nhà thầu nước ngoài"/>
+		<Item CellID="AF_37" MCT="4b" Caption="Thuế TNDN phải nộp của nhà thầu nước ngoài"/>
+	</Map>
+	<Map ID="03_NTNN">
+		<Item CellID="CG_26" MCT="9" Caption="Thuế TNDN phải nộp"/>
+	</Map>
+	<Map ID="04_NTNN">
+		<Item CellID="AB_33" MCT="4" Caption="Thuế TNDN phải nộp"/>
+	</Map>
+	<Map ID="01_TD_GTGT">
+		<Item CellID="S_47" MCT="27" Caption="Số thuế GTGT phải nộp [27]= [25]-[26]"/>
+	</Map>
+	<Map ID="03_TD_TAIN">
+		<Item CellID="S_37" MCT="28" Caption="Thuế TN phát sinh phải nộp trong kỳ"/>
+	</Map>
+</Root>
