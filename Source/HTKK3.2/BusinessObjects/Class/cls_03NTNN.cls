@@ -114,7 +114,8 @@ Public Sub Prepare2()
         .Sheet = 1
         mCurrentSheet = .Sheet
         ngay = TAX_Utilities_New.Day
-
+        
+        
         If Trim(ngay) = "" Then
             .SetText .ColLetterToNumber("S"), 26, ""
             UpdateCell fps, .ColLetterToNumber("S"), 26, ""
@@ -157,6 +158,8 @@ Public Sub Prepare2()
                 .Row = 26
                 .Text = ""
                 UpdateCell fps, .Col, .Row, .Text
+                
+                
             ElseIf Strloaitk = "TKBS" Then
                 .Col = .ColLetterToNumber("M")
                 .Row = 26
@@ -167,6 +170,8 @@ Public Sub Prepare2()
                 .Text = StrSolanBosung
                 UpdateCell fps, .Col, .Row, .Text
             End If
+            
+            
             
             '- Set to khai lan bo sung
         ElseIf StrTKThang_PS = "TK_LANPS" Then
@@ -186,6 +191,7 @@ Public Sub Prepare2()
             .Row = 26
             .Text = ""
             UpdateCell fps, .Col, .Row, .Text
+            
 
         End If
       

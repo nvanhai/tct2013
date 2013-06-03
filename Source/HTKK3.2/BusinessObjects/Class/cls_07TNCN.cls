@@ -84,7 +84,7 @@ Public Sub Prepare2()
         End If
         
         ' set up cho phep sua chi tieu 29
-          If TAX_Utilities_New.Year = 2011 And TAX_Utilities_New.Month >= 8 And TAX_Utilities_New.Month <= 12 Then
+          If TAX_Utilities_New.Year = 2011 And TAX_Utilities_New.ThreeMonths = 4 Then
           Else
                 .Sheet = 1
                 .Col = .ColLetterToNumber("R")
