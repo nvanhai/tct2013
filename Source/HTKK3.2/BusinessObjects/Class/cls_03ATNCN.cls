@@ -25,7 +25,7 @@ Private Const Col_MSTDN = "H"
 Public Sub Prepare1()
     With fps
         SetDateFormat fps, 1, 58, .ColLetterToNumber("R"), DDMMYYYY
-        
+
         .Sheet = 1 'To khai 03/TNCN
         .Row = 58
         .Col = .ColLetterToNumber("R")
