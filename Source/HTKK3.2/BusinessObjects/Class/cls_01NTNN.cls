@@ -109,11 +109,13 @@ Dim i As Integer
             .Row = 31
             .Text = 1
             UpdateCell fps, .Col, .Row, .Text
-            .SetText .ColLetterToNumber("P"), 5, kyngay
+            .SetText .ColLetterToNumber("P"), 5, kythang
             .Col = .ColLetterToNumber("L")
             .Row = 31
             .Text = ""
             UpdateCell fps, .Col, .Row, .Text
+            
+            
         End If
       
         'end
@@ -1054,7 +1056,7 @@ Public Sub InsertNode(ByVal fRow As Long, ByVal lRow As Long, ByVal mSheet As By
     
     Dim xmlNodeCellsTmp As MSXML.IXMLDOMNode
     Dim xmlNodeCellTmp As MSXML.IXMLDOMNode
-    Dim ArrRow() As String
+    Dim arrRow() As String
     Dim tmpValue As String
     Dim arrRow2() As String
     Dim tmpValue2 As String
@@ -1081,14 +1083,14 @@ Public Sub InsertNode(ByVal fRow As Long, ByVal lRow As Long, ByVal mSheet As By
     Set xmlNodeCellsTmp = TAX_Utilities_New.Data(mSheet - 1).getElementsByTagName("Cells").Item(4)
     tmpValue = "67~69~67~30~31~31~31~31"
     tmpValue2 = "65~66~71~30~31~31~31~31"
-    ArrRow = Split(tmpValue, "~")
+    arrRow = Split(tmpValue, "~")
     arrRow2 = Split(tmpValue2, "~")
     i = 0
     For Each xmlNodeCellTmp In xmlNodeCellsTmp.childNodes
-        If CDbl(ArrRow(i)) > 55 Then
+        If CDbl(arrRow(i)) > 55 Then
             ' Increase value of row attribute + 1 (CellID)
             ParserCellID fps, GetAttribute(xmlNodeCellTmp, "CellID"), lCol1, lRow1
-            SetAttribute xmlNodeCellTmp, "CellID", GetCellID(fps, lCol1, CDbl(ArrRow(i)) + lRow - fRow + 1)
+            SetAttribute xmlNodeCellTmp, "CellID", GetCellID(fps, lCol1, CDbl(arrRow(i)) + lRow - fRow + 1)
             
             ' Increase value of row attribute + 1 (CellID2)
             ParserCellID fps, GetAttribute(xmlNodeCellTmp, "CellID2"), lCol1, lRow1
@@ -1102,14 +1104,14 @@ Public Sub InsertNode(ByVal fRow As Long, ByVal lRow As Long, ByVal mSheet As By
     Set xmlNodeCellsTmp = TAX_Utilities_New.Data(mSheet - 1).getElementsByTagName("Cells").Item(2)
     tmpValue = "57~48~57~57~57~57~48~57~48"
     tmpValue2 = "55~48~55~55~55~55~48~55~48"
-    ArrRow = Split(tmpValue, "~")
+    arrRow = Split(tmpValue, "~")
     arrRow2 = Split(tmpValue2, "~")
     i = 0
     For Each xmlNodeCellTmp In xmlNodeCellsTmp.childNodes
-        If CDbl(ArrRow(i)) > 55 Then
+        If CDbl(arrRow(i)) > 55 Then
             ' Increase value of row attribute + 1 (CellID)
             ParserCellID fps, GetAttribute(xmlNodeCellTmp, "CellID"), lCol1, lRow1
-            SetAttribute xmlNodeCellTmp, "CellID", GetCellID(fps, lCol1, CDbl(ArrRow(i)) + lRow - fRow + 1)
+            SetAttribute xmlNodeCellTmp, "CellID", GetCellID(fps, lCol1, CDbl(arrRow(i)) + lRow - fRow + 1)
             
             ' Increase value of row attribute + 1 (CellID2)
             ParserCellID fps, GetAttribute(xmlNodeCellTmp, "CellID2"), lCol1, lRow1
