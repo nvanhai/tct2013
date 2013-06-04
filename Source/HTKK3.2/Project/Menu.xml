@@ -21,7 +21,11 @@
 			<Sheet ID="01_4A" Caption="PL 01-4A/GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_4A_GTGT" InterfaceIni="..\InterfaceIni\01_4A_GTGT.xml" ReportIni="..\ReportIni\01_4A_GTGT.xml"/>			
 			<Sheet ID="01_4B" Caption="PL 01-4B/GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_4B_GTGT" InterfaceIni="..\InterfaceIni\01_4B_GTGT.xml" ReportIni="..\ReportIni\01_4B_GTGT.xml"/>
 			<Sheet ID="01_5" Caption="PL 01-5/GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_5_GTGT" InterfaceIni="..\InterfaceIni\01_5_GTGT.xml" ReportIni="..\ReportIni\01_5_GTGT.xml"/>
-			<Sheet ID="01_6" Caption="PL 01-6/GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_6_GTGT" InterfaceIni="..\InterfaceIni\01_6_GTGT.xml" ReportIni="..\ReportIni\01_6_GTGT.xml"/>
+			<Sheet ID="01_6" Caption="PL 01-6/GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_6_GTGT" InterfaceIni="..\InterfaceIni\01_6_GTGT.xml" ReportIni="..\ReportIni\01_6_GTGT.xml"/>		
+			<Sheet ID="01_6B" Caption="PL 01-6B/GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_6B_GTGT" InterfaceIni="..\InterfaceIni\01_6B_GTGT.xml" ReportIni="..\ReportIni\01_6B_GTGT.xml"/>
+			<Sheet ID="01_7" Caption="PL 01-7/GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_7_GTGT" InterfaceIni="..\InterfaceIni\01_7_GTGT.xml" ReportIni="..\ReportIni\01_7_GTGT.xml"/>
+			<Sheet ID="01_1_TD" Caption="PL 01-1/TĐ-GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_1TD_GTGT" InterfaceIni="..\InterfaceIni\01_1TD_GTGT.xml" ReportIni="..\ReportIni\01_1TD_GTGT.xml"/>
+			<Sheet ID="01_2_TD" Caption="PL 01-2/TĐ-GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_2TD_GTGT" InterfaceIni="..\InterfaceIni\01_2TD_GTGT.xml" ReportIni="..\ReportIni\01_2TD_GTGT.xml"/>		
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01_GTGT" InterfaceIni="..\InterfaceIni\KHBS_01_GTGT.xml" ReportIni="..\ReportIni\KHBS_01_GTGT.xml"/>
 		</Validity>
 	</Menu>
