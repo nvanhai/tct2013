@@ -36,10 +36,10 @@ Public strTuRowDenRowPL As String
 Public Sub Prepare1()
     With fps
         'sua loi lech cot (tam thoi)
-         SetDateFormat fps, 1, 47, .ColLetterToNumber("M"), DDMMYYYY
+         SetDateFormat fps, 1, 49, .ColLetterToNumber("M"), DDMMYYYY
         
         .Sheet = 1 'To khai 02BH/TNCN
-        .Row = 47
+        .Row = 49
         .Col = .ColLetterToNumber("M")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
@@ -58,20 +58,20 @@ Public Sub Prepare2()
         
         If Strloaitk = "TKCT" And StrSolanBosung = "" Then
             .Col = .ColLetterToNumber("C")
-            .Row = 48
+            .Row = 50
             .Text = 1
             UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber("I")
-            .Row = 48
+            .Row = 50
             .Text = ""
             UpdateCell fps, .Col, .Row, .Text
         ElseIf Strloaitk = "TKCT" And Val(StrSolanBosung) > 0 Then
             .Col = .ColLetterToNumber("C")
-            .Row = 48
+            .Row = 50
             .Text = ""
             UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber("I")
-            .Row = 48
+            .Row = 50
             .Text = StrSolanBosung
             UpdateCell fps, .Col, .Row, .Text
             
@@ -147,7 +147,7 @@ Public Sub Prepare2()
     
     'check thong tin ma so thue dai ly
     'set vi tri theo thu tu MSTDL~TENNVDLT~ChungChiHN
-    viTriMSTDL = "D_22~D_45~D_47"
+    viTriMSTDL = "D_22~D_47~D_49"
     updateMSTDL fps, viTriMSTDL
     
     
@@ -350,7 +350,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
         mCurrentSheet = .Sheet
         If .ActiveSheet = 1 Then
             'check date
-            If Col = .ColLetterToNumber("M") And Row = 47 Then
+            If Col = .ColLetterToNumber("M") And Row = 49 Then
                 .GetText Col, Row, varTemp
                 If varTemp <> "" And varTemp <> "../../...." Then
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then

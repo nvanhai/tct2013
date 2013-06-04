@@ -81,9 +81,9 @@ Public Sub Prepare1()
 
         
         ' Set format va gia tri cho ngay ky
-        SetDateFormat fps, 1, 65, .ColLetterToNumber("M"), DDMMYYYY
+        SetDateFormat fps, 1, 68, .ColLetterToNumber("M"), DDMMYYYY
                 
-        .Row = 65
+        .Row = 68
         .Col = .ColLetterToNumber("M")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
@@ -137,7 +137,7 @@ Public Sub Prepare2()
         
         If Strloaitk = "TKCT" And Trim(StrSolanBosung) = "" Then
             .Col = .ColLetterToNumber("C")
-            .Row = 70
+            .Row = 73
             .Text = 1
             UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber("I")
@@ -145,7 +145,7 @@ Public Sub Prepare2()
             UpdateCell fps, .Col, .Row, .Text
         ElseIf Strloaitk = "TKCT" And Val(StrSolanBosung) > 0 Then
             .Col = .ColLetterToNumber("C")
-            .Row = 70
+            .Row = 73
             .Text = ""
             UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber("I")
@@ -218,7 +218,7 @@ Public Sub Prepare2()
         End If
         'check thong tin ma so thue dai ly
         'set vi tri theo thu tu MSTDL~TENNVDLT~ChungChiHN
-        viTriMSTDL = "D_24~D_63~D_65"
+        viTriMSTDL = "D_24~D_66~D_68"
         updateMSTDL fps, viTriMSTDL
         
         'set active vao cell tu ngay
@@ -723,9 +723,9 @@ Private Sub CheckDynamicError()
         MSTDTNT = Trim(MSTDTNT)
         'check thong tin header khong dc trong
         'lay vi tri header tren tk theo thu tu MSTDL, TENDLT, DIACHIDLT,QUAN/HUYEN,TP,SO HDDLT,NGAYDH,Ten NV DLT, CC Hanh Nghe
-        viTriHeaderTk = "D_24~D_22~D_26~D_28~M_28~D_34~M_34~D_63~D_65"
-        viTriSheetHeader = "B_68~B_69~B_70~B_71~B_72~B_73~B_74~B_75~B_76"
-        mangMessage = "E_68~E_69~E_70~E_71~E_72~E_73~E_74~E_75~E_76"
+        viTriHeaderTk = "D_24~D_22~D_26~D_28~M_28~D_34~M_34~D_66~D_68"
+        viTriSheetHeader = "B_71~B_72~B_73~B_74~B_75~B_76~B_77~B_78~B_79"
+        mangMessage = "E_71~E_72~E_73~E_74~E_75~E_76~E_77~E_78~E_79"
         'check header
         checkErrorHeader fps, viTriHeaderTk, viTriSheetHeader, mangMessage, MSTDTNT
 
@@ -819,17 +819,17 @@ Private Sub checkSheet4()
         ' Lay thong bao ve sai ve so thang duoc giam tru thue cua nguoi phu thuoc trong sheet header
         .GetText .ColLetterToNumber("E"), 22, vErrMsgSoThangGiamTru
         'lay thong bao ve nhap sai cmnd/ho chieu khi nguoi dung nhap dau cach
-        .GetText .ColLetterToNumber("E"), 61, vErrMsgCMT
+        .GetText .ColLetterToNumber("E"), 64, vErrMsgCMT
         'lay thong bao ve truong bat buoc phai nhap
-        .GetText .ColLetterToNumber("E"), 62, vErrEmpty
+        .GetText .ColLetterToNumber("E"), 65, vErrEmpty
         'lay thong bao ve truong nhap ma so thue hoac so cmnd
-        .GetText .ColLetterToNumber("E"), 63, vErrMSTSoCMND
+        .GetText .ColLetterToNumber("E"), 66, vErrMSTSoCMND
         'lay thong bao ve chi tieu 15 < chi tieu 14 * 1600000
-        .GetText .ColLetterToNumber("E"), 64, vErrCheckCT15
+        .GetText .ColLetterToNumber("E"), 67, vErrCheckCT15
         'lay thong bao ve ngay sinh cua nguoi phu thuoc phai truoc ky tinh thue
-        .GetText .ColLetterToNumber("E"), 66, mErrNgaySinhPhuThuoc
+        .GetText .ColLetterToNumber("E"), 69, mErrNgaySinhPhuThuoc
         'lay thong bao ve MST cua vo hoac chong trung voi MST  nguoi phu thuoc
-        .GetText .ColLetterToNumber("E"), 67, mErrMSTCT5Trung
+        .GetText .ColLetterToNumber("E"), 70, mErrMSTCT5Trung
         
         .Sheet = 4 'Check tinh xac thuc cua cac thong tin tren bang ke 05B/TNCN
         
@@ -1183,10 +1183,10 @@ Private Sub checkSheet4()
         ' Trong truong hop NSD k nhap mst
         If iFlagEmty = 1 Then
             .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 62, "0"
+            .SetText .ColLetterToNumber("B"), 65, "0"
         Else
             .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 62, "1"
+            .SetText .ColLetterToNumber("B"), 65, "1"
         End If
         ' Trong truong hop blCheck_S4 so thang duoc giam tru ko sai thi set lai gia tri cua Header la 1
         If blCheck_S4 = True Then
@@ -1209,42 +1209,42 @@ Private Sub checkSheet4()
         ' Trong truong hop nguoi su dung nhap dau cach khi nhap cmnd/ ho chieu thi set lai gia tri tren Header
         If iFlagCMDN_HC = 1 Then
             .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 61, "0"
-        Else
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 61, "1"
-        End If
-        'Trong truong hop nguoi su dung khong nhap ca MST va so CMND thi set lai gia tri tren Header
-        If iFlagCheckEmptyMSTCMND = 1 Then
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 63, "0"
-        Else
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 63, "1"
-        End If
-        'trong truong hop ct [15] > ct [14] * 1600000 thi set lai gia tri tren header
-        If iFlagCheckCT15 = 1 Then
-            .Sheet = .SheetCount
             .SetText .ColLetterToNumber("B"), 64, "0"
-        Else
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 64, "1"
-        End If
-        ' Trong truong hop Ngay sinh nguoi phu thuoc sau ky tinh thue set lai header
-        If iFlagNgaySinhPhuThuoc = 1 Then
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 66, "0"
         Else
             .Sheet = .SheetCount
             .SetText .ColLetterToNumber("B"), 66, "1"
         End If
-       ' Trong truong hop MST cha me trung voi mst nguoi phu thuoc thi set lai header
-        If iFlagMSTCT5Trung = 1 Then
+        'Trong truong hop nguoi su dung khong nhap ca MST va so CMND thi set lai gia tri tren Header
+        If iFlagCheckEmptyMSTCMND = 1 Then
             .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 67, "0"
+            .SetText .ColLetterToNumber("B"), 66, "0"
+        Else
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 69, "1"
+        End If
+        'trong truong hop ct [15] > ct [14] * 1600000 thi set lai gia tri tren header
+        If iFlagCheckCT15 = 1 Then
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 69, "0"
         Else
             .Sheet = .SheetCount
             .SetText .ColLetterToNumber("B"), 67, "1"
+        End If
+        ' Trong truong hop Ngay sinh nguoi phu thuoc sau ky tinh thue set lai header
+        If iFlagNgaySinhPhuThuoc = 1 Then
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 69, "0"
+        Else
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 69, "1"
+        End If
+       ' Trong truong hop MST cha me trung voi mst nguoi phu thuoc thi set lai header
+        If iFlagMSTCT5Trung = 1 Then
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 70, "0"
+        Else
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 70, "1"
         End If
         .Sheet = iCurrentSheet
     End With

@@ -32,10 +32,10 @@ Public strTuRowDenRowPL As String
 'No parameter
 Public Sub Prepare1()
     With fps
-        SetDateFormat fps, 1, 57, .ColLetterToNumber("R"), DDMMYYYY
+        SetDateFormat fps, 1, 60, .ColLetterToNumber("R"), DDMMYYYY
         
         .Sheet = 1 'To khai 02/TNCN
-        .Row = 57
+        .Row = 60
         .Col = .ColLetterToNumber("R")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
@@ -67,28 +67,28 @@ Public Sub Prepare2()
         
         If Strloaitk = "TKCT" Then
             .Col = .ColLetterToNumber("C")
-            .Row = 61
+            .Row = 64
             .Text = 1
             UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber("F")
-            .Row = 61
+            .Row = 64
             .Text = ""
             UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber("I")
-            .Row = 61
+            .Row = 64
             .Text = ""
             UpdateCell fps, .Col, .Row, .Text
         ElseIf Strloaitk = "TKBS" Then
             .Col = .ColLetterToNumber("C")
-            .Row = 61
+            .Row = 64
             .Text = ""
             UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber("F")
-            .Row = 61
+            .Row = 64
             .Text = 1
             UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber("I")
-            .Row = 61
+            .Row = 64
             .Text = StrSolanBosung
             UpdateCell fps, .Col, .Row, .Text
         End If
@@ -104,7 +104,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
         mCurrentSheet = .Sheet
         If .ActiveSheet = 1 Then
         'check date
-            If Col = .ColLetterToNumber("R") And Row = 57 Then
+            If Col = .ColLetterToNumber("R") And Row = 60 Then
                 .GetText Col, Row, varTemp
                 If varTemp <> "" And varTemp <> "../../...." Then
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
