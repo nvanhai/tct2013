@@ -24,11 +24,11 @@ Private totalRow2AXS As Long
 
 'sheet1
 Private Const tTLanDau_C As String = "C"
-Private Const tTLanDau_R As Long = 51
+Private Const tTLanDau_R As Long = 53
 Private Const tTLanThu_C As String = "I"
-Private Const tTLanThu_R As Long = 51
+Private Const tTLanThu_R As Long = 53
 Private Const ngayKy_C As String = "M"
-Private Const ngayKy_R As Long = 48
+Private Const ngayKy_R As Long = 50
 'sheet2
 
 ' Kiem tra thong tin dai ly thue
@@ -158,7 +158,7 @@ Public Sub Prepare2()
     
     'check thong tin ma so thue dai ly
     'set vi tri theo thu tu MSTDL~TENNVDLT~ChungChiHN
-    viTriMSTDL = "D_22~D_46~D_48"
+    viTriMSTDL = "D_22~D_48~D_50"
     updateMSTDL fps, viTriMSTDL
     
             ' Kiem tra xem phien ban 3.1.3 hay phien ban 3.1.2 tro xuong
