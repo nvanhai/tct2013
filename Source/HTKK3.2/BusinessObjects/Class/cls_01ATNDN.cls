@@ -1451,7 +1451,7 @@ Private Sub UpdateSheets()
         mCurrentSheet = .Sheet
         For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
            ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-               If (lRow = 12 And lCol = .ColLetterToNumber("D")) Or (lRow = 34 And lCol = .ColLetterToNumber("B")) Then
+               If (lRow = 12 And lCol = .ColLetterToNumber("D")) Or (lRow = 11 And lCol = .ColLetterToNumber("D")) Or (lRow = 34 And lCol = .ColLetterToNumber("B")) Then
                     .GetText lCol, lRow, varTemp
                     If varTemp = "1" Or UCase(CStr(varTemp)) = "X" Then
                         UpdateCell fps, lCol, lRow, "x"
