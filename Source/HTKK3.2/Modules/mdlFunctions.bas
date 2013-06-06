@@ -20,7 +20,7 @@ Global zoomindex As Integer
 'Public APP_VERSION As String
 'Public Const APP_VERSION = "3.0.0"
 'Demo
-Public Const APP_VERSION = "3.1.6"
+Public Const APP_VERSION = "9.9.9"
 Public Const KIEU_KY_THANG = "M"
 Public Const KIEU_KY_QUY = "Q"
 Public Const KIEU_KY_NAM = "Y"
