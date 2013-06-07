@@ -75,6 +75,7 @@ Private Const rowNgayKyKhbs = 23
 
 
 Private Const rowStartPL01_5 = 6
+Private Const rowStartPL01_6 = 8
 ' pl 01-1_GTGT
 Private Const rowStartKCTPL01_1 = 8
 Private Const rowStartThue_0_PL01_1 = 13
@@ -120,141 +121,143 @@ Dim fldList() As String
 
 
 
-With fps
-'  'danh sach  list cua combobox
-'    strComboHien = "0%" + Chr$(9) + "5%" + Chr$(9) + "10%" + Chr$(9)
-    '--
-    SetDateFormat fps, sheetTK01_GTGT, rowNgayKy, .ColLetterToNumber(colK), DDMMYYYY
-    
-    SetDateFormat fps, sheetPl01_5_GTGT, rowStartPL01_5, .ColLetterToNumber(colE), DDMMYYYY
-    
-    SetDateFormat fps, sheetPl01_KHBS_GTGT, rowNgayKyKhbs, .ColLetterToNumber(colBG), DDMMYYYY
-    .Sheet = sheetTK01_GTGT 'To khai GTGT
-        .Row = rowNgayKy
-        .Col = .ColLetterToNumber(colK)
-        .Text = Format(Date, "dd/mm/yyyy")
-        .TypeHAlign = TypeHAlignLeft
+    With fps
+    '  'danh sach  list cua combobox
+    '    strComboHien = "0%" + Chr$(9) + "5%" + Chr$(9) + "10%" + Chr$(9)
+        '--
+        SetDateFormat fps, sheetTK01_GTGT, rowNgayKy, .ColLetterToNumber(colK), DDMMYYYY
         
-    .Sheet = sheetPl01_1_GTGT 'PL01_1
-        .Row = 8
-        .Col = .ColLetterToNumber("C")
-        .Text = ""
-        .CellTag = .CellTag & "~1"
-        .Row = 13
-        .Text = ""
-        .CellTag = .CellTag & "~2"
-
-
-
-        .Row = 18
-        .Text = ""
-        .CellTag = .CellTag & "~3"
-
-
-
-        .Row = 23
-        .Text = ""
-        .CellTag = .CellTag & "~4"
+        SetDateFormat fps, sheetPl01_5_GTGT, rowStartPL01_5, .ColLetterToNumber(colE), DDMMYYYY
         
-        
-        
-        .Row = 28
-        .Text = ""
-        .CellTag = .CellTag & "~5"
-        
-
-    
-    .Sheet = sheetPl01_2_GTGT ''PL01_1
-        .Row = 8
-        .Col = .ColLetterToNumber("C")
-        .Text = ""
-        .CellTag = .CellTag & "~1"
-        
-        .Row = 13
-        .Text = ""
-        .CellTag = .CellTag & "~2"
-        
-        .Row = 18
-        .Text = ""
-        .CellTag = .CellTag & "~3"
-        
-        .Row = 23
-        .Text = ""
-        .CellTag = .CellTag & "~4"
-        
-        .Row = 28
-        .Text = ""
-        .CellTag = .CellTag & "~5"
-   
-    .Sheet = sheetPl01_KHBS_GTGT 'Pl KHBS
-        .Row = rowNgayKyKhbs
-        .Col = .ColLetterToNumber(colBG)
-        .Text = Format(Date, "dd/mm/yyyy")
-        .TypeHAlign = TypeHAlignLeft
-   
-    SetDateFormat fps, sheetPl01_1_GTGT, 8, .ColLetterToNumber(colE), DDMMYYYY
-    SetDateFormat fps, sheetPl01_1_GTGT, 13, .ColLetterToNumber(colE), DDMMYYYY
-    SetDateFormat fps, sheetPl01_1_GTGT, 18, .ColLetterToNumber(colE), DDMMYYYY
-    SetDateFormat fps, sheetPl01_1_GTGT, 23, .ColLetterToNumber(colE), DDMMYYYY
-    SetDateFormat fps, sheetPl01_1_GTGT, 28, .ColLetterToNumber(colE), DDMMYYYY
-    
-    SetDateFormat fps, sheetPl01_2_GTGT, 8, .ColLetterToNumber(colE), DDMMYYYY
-    SetDateFormat fps, sheetPl01_2_GTGT, 13, .ColLetterToNumber(colE), DDMMYYYY
-    SetDateFormat fps, sheetPl01_2_GTGT, 18, .ColLetterToNumber(colE), DDMMYYYY
-    SetDateFormat fps, sheetPl01_2_GTGT, 23, .ColLetterToNumber(colE), DDMMYYYY
-    SetDateFormat fps, sheetPl01_2_GTGT, 28, .ColLetterToNumber(colE), DDMMYYYY
+        SetDateFormat fps, sheetPl01_KHBS_GTGT, rowNgayKyKhbs, .ColLetterToNumber(colBG), DDMMYYYY
+        .Sheet = sheetTK01_GTGT 'To khai GTGT
+            .Row = rowNgayKy
+            .Col = .ColLetterToNumber(colK)
+            .Text = Format(Date, "dd/mm/yyyy")
+            .TypeHAlign = TypeHAlignLeft
+            
+        .Sheet = sheetPl01_1_GTGT 'PL01_1
+            .Row = 8
+            .Col = .ColLetterToNumber("C")
+            .Text = ""
+            .CellTag = .CellTag & "~1"
+            .Row = 13
+            .Text = ""
+            .CellTag = .CellTag & "~2"
     
     
-    'SetDateFormat fps, 7, 16, .ColLetterToNumber("O"), DDMMYYYY
     
-    ' Set gia tri check gia han cho to khai 01/GTGT
-    .Sheet = sheetTK01_GTGT
-    ThangKK = TAX_Utilities_New.Month
-    NamKK = TAX_Utilities_New.Year
-    If NamKK = 2012 And (ThangKK = 4 Or ThangKK = 5 Or ThangKK = 6) Then
-        Thongtu = GetAttribute(GetMessageCellById("0262"), "Msg")
-        .SetText .ColLetterToNumber("C"), 18, Thongtu
+            .Row = 18
+            .Text = ""
+            .CellTag = .CellTag & "~3"
+    
+    
+    
+            .Row = 23
+            .Text = ""
+            .CellTag = .CellTag & "~4"
+            
+            
+            
+            .Row = 28
+            .Text = ""
+            .CellTag = .CellTag & "~5"
+            
+    
         
-        ' Ky dc gia han moi set gia tri ly do gia han
-        strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_DM_Lydo_GH.xml")
-        If xmlDomData.Load(strDataFileName) Then
-             Set xmlNodeListItems = xmlDomData.getElementsByTagName("Item")
-             For Each xmlNode In xmlNodeListItems
-                 fldList = Split(GetAttribute(xmlNode, "Value"), "###")
-                 strCboLyDo = strCboLyDo + fldList(1) + Chr$(9)
-                 strCboLyDoAn = strCboLyDoAn + fldList(0) + Chr$(9)
-             Next
-         End If
-              'set ly do gia han
+        .Sheet = sheetPl01_2_GTGT ''PL01_1
+            .Row = 8
+            .Col = .ColLetterToNumber("C")
+            .Text = ""
+            .CellTag = .CellTag & "~1"
+            
+            .Row = 13
+            .Text = ""
+            .CellTag = .CellTag & "~2"
+            
+            .Row = 18
+            .Text = ""
+            .CellTag = .CellTag & "~3"
+            
+            .Row = 23
+            .Text = ""
+            .CellTag = .CellTag & "~4"
+            
+            .Row = 28
+            .Text = ""
+            .CellTag = .CellTag & "~5"
+       
+        .Sheet = sheetPl01_KHBS_GTGT 'Pl KHBS
+            .Row = rowNgayKyKhbs
+            .Col = .ColLetterToNumber(colBG)
+            .Text = Format(Date, "dd/mm/yyyy")
+            .TypeHAlign = TypeHAlignLeft
+       
+        SetDateFormat fps, sheetPl01_1_GTGT, 8, .ColLetterToNumber(colE), DDMMYYYY
+        SetDateFormat fps, sheetPl01_1_GTGT, 13, .ColLetterToNumber(colE), DDMMYYYY
+        SetDateFormat fps, sheetPl01_1_GTGT, 18, .ColLetterToNumber(colE), DDMMYYYY
+        SetDateFormat fps, sheetPl01_1_GTGT, 23, .ColLetterToNumber(colE), DDMMYYYY
+        SetDateFormat fps, sheetPl01_1_GTGT, 28, .ColLetterToNumber(colE), DDMMYYYY
+        
+        SetDateFormat fps, sheetPl01_2_GTGT, 8, .ColLetterToNumber(colE), DDMMYYYY
+        SetDateFormat fps, sheetPl01_2_GTGT, 13, .ColLetterToNumber(colE), DDMMYYYY
+        SetDateFormat fps, sheetPl01_2_GTGT, 18, .ColLetterToNumber(colE), DDMMYYYY
+        SetDateFormat fps, sheetPl01_2_GTGT, 23, .ColLetterToNumber(colE), DDMMYYYY
+        SetDateFormat fps, sheetPl01_2_GTGT, 28, .ColLetterToNumber(colE), DDMMYYYY
+        
+        
+        'SetDateFormat fps, 7, 16, .ColLetterToNumber("O"), DDMMYYYY
+        
+        ' Set gia tri check gia han cho to khai 01/GTGT
+        .Sheet = sheetTK01_GTGT
+        ThangKK = TAX_Utilities_New.Month
+        NamKK = TAX_Utilities_New.Year
+        If NamKK = 2012 And (ThangKK = 4 Or ThangKK = 5 Or ThangKK = 6) Then
+            Thongtu = GetAttribute(GetMessageCellById("0262"), "Msg")
+            .SetText .ColLetterToNumber("C"), 18, Thongtu
+            
+            ' Ky dc gia han moi set gia tri ly do gia han
+            strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_DM_Lydo_GH.xml")
+            If xmlDomData.Load(strDataFileName) Then
+                 Set xmlNodeListItems = xmlDomData.getElementsByTagName("Item")
+                 For Each xmlNode In xmlNodeListItems
+                     fldList = Split(GetAttribute(xmlNode, "Value"), "###")
+                     strCboLyDo = strCboLyDo + fldList(1) + Chr$(9)
+                     strCboLyDoAn = strCboLyDoAn + fldList(0) + Chr$(9)
+                 Next
+             End If
+                  'set ly do gia han
+                .Row = 20
+                .Col = .ColLetterToNumber("D")
+                .TypeComboBoxList = strCboLyDo
+                ' set Ma ly do gia han
+                .Col = .ColLetterToNumber("P")
+                .TypeComboBoxList = strCboLyDoAn
+        Else
+            Thongtu = GetAttribute(GetMessageCellById("0263"), "Msg")
+            .SetText .ColLetterToNumber("C"), 18, Thongtu
+            ' Ky dc gia han moi set gia tri ly do gia han
+            strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_DM_Lydo_GH_TT16.xml")
+            If xmlDomData.Load(strDataFileName) Then
+                 Set xmlNodeListItems = xmlDomData.getElementsByTagName("Item")
+                 For Each xmlNode In xmlNodeListItems
+                     fldList = Split(GetAttribute(xmlNode, "Value"), "###")
+                     strCboLyDo = strCboLyDo + fldList(1) + Chr$(9)
+                     strCboLyDoAn = strCboLyDoAn + fldList(0) + Chr$(9)
+                 Next
+             End If
+                  'set ly do gia han
             .Row = 20
             .Col = .ColLetterToNumber("D")
             .TypeComboBoxList = strCboLyDo
             ' set Ma ly do gia han
             .Col = .ColLetterToNumber("P")
             .TypeComboBoxList = strCboLyDoAn
-    Else
-        Thongtu = GetAttribute(GetMessageCellById("0263"), "Msg")
-        .SetText .ColLetterToNumber("C"), 18, Thongtu
-        ' Ky dc gia han moi set gia tri ly do gia han
-        strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_DM_Lydo_GH_TT16.xml")
-        If xmlDomData.Load(strDataFileName) Then
-             Set xmlNodeListItems = xmlDomData.getElementsByTagName("Item")
-             For Each xmlNode In xmlNodeListItems
-                 fldList = Split(GetAttribute(xmlNode, "Value"), "###")
-                 strCboLyDo = strCboLyDo + fldList(1) + Chr$(9)
-                 strCboLyDoAn = strCboLyDoAn + fldList(0) + Chr$(9)
-             Next
-         End If
-              'set ly do gia han
-        .Row = 20
-        .Col = .ColLetterToNumber("D")
-        .TypeComboBoxList = strCboLyDo
-        ' set Ma ly do gia han
-        .Col = .ColLetterToNumber("P")
-        .TypeComboBoxList = strCboLyDoAn
-    End If
+        End If
     
-End With
+    End With
+    ' set thong tin CQT quan ly
+    setCQTQuanLy
 
 End Sub
 
@@ -399,6 +402,8 @@ With fps
     
 End With
     LockCellBySheet
+    setChangeComb Col, Row
+    
 End Sub
 
 'inner class event: ButtonClicked
@@ -753,7 +758,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
         End If
         
         If .ActiveSheet = sheetPl01_5_GTGT Then
-                   If Col = .ColLetterToNumber(colD) Then
+                   If Col = .ColLetterToNumber(colE) Then
                        .GetText Col, Row, varTemp
                        If varTemp <> "" And varTemp <> "../../...." Then
                            If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
@@ -1605,7 +1610,7 @@ Private Sub CheckDynamicError()
     .Sheet = 5
     blCheck_S5 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
     
-    .Sheet = 7
+    .Sheet = sheetPl01_5_GTGT
     blCheck_S7 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
     If blCheck_S7 = True Then
     .Col = .ColLetterToNumber("B")
@@ -1613,38 +1618,16 @@ Private Sub CheckDynamicError()
     i = 1
     Do
           iWhiteRow = 1
-          .GetText .ColLetterToNumber("C"), .Row, vSoChungTu
-          .GetText .ColLetterToNumber("D"), .Row, vNgayNop
-          .GetText .ColLetterToNumber("E"), .Row, vNoiNop
-          .GetText .ColLetterToNumber("F"), .Row, vCoQuanQL
-          .GetText .ColLetterToNumber("G"), .Row, vSoTienDN
-          If Trim(vSoChungTu) <> "" Or Trim(vNgayNop) <> "" Or Trim(vNoiNop) <> "" Or Trim(vCoQuanQL) <> "" Or Trim(vSoTienDN) <> "0" Then
+          .GetText .ColLetterToNumber(colD), .Row, vNoiNop
+          .GetText .ColLetterToNumber(colE), .Row, vNgayNop
+          .GetText .ColLetterToNumber(colG), .Row, vSoTienDN
+          If Trim(vNgayNop) <> "" Or Trim(vNoiNop) <> "" Or Trim(vSoTienDN) <> "0" Then
             iWhiteRow = 0
           End If
           
-          
-          If (Trim(vSoChungTu) = "" Or vSoChungTu = vbNullString) And iWhiteRow = 0 Then
-                .Col = .ColLetterToNumber("C")
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                .CellNote = vErrorSoChungTu   'static
-                .BackColor = mErrorColor
-                iflagSoChungTu = 1
-                'capture the first error cell
-                If iFocusFlag = 0 Then
-                    strFocusSheetName = "'" & .SheetName & "'"
-                    strFocusCol = str(.Col)
-                    strFocusRow = str(.Row)
-                    iFocusFlag = 1
-                End If
-          Else
-                .Col = .ColLetterToNumber("C")
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                .CellNote = ""   'static
-                .BackColor = mNonErrorColor
-          End If
           ' Kiem tra noi nop
            If (Trim(vNoiNop) = "" Or vNoiNop = vbNullString) And iWhiteRow = 0 Then
-                .Col = .ColLetterToNumber("E")
+                .Col = .ColLetterToNumber(colD)
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = vErrorSoChungTu   'static
                 .BackColor = mErrorColor
@@ -1657,34 +1640,34 @@ Private Sub CheckDynamicError()
                     iFocusFlag = 1
                 End If
           Else
-                .Col = .ColLetterToNumber("E")
+                .Col = .ColLetterToNumber(colD)
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = ""   'static
                 .BackColor = mNonErrorColor
           End If
           ' Kiem tra co quan thue
-          If (Trim(vCoQuanQL) = "" Or vCoQuanQL = vbNullString) And iWhiteRow = 0 Then
-                .Col = .ColLetterToNumber("F")
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                .CellNote = vErrorSoChungTu   'static
-                .BackColor = mErrorColor
-                iflagSoChungTu = 1
-                'capture the first error cell
-                If iFocusFlag = 0 Then
-                    strFocusSheetName = "'" & .SheetName & "'"
-                    strFocusCol = str(.Col)
-                    strFocusRow = str(.Row)
-                    iFocusFlag = 1
-                End If
-          Else
-                .Col = .ColLetterToNumber("F")
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                .CellNote = ""   'static
-                .BackColor = mNonErrorColor
-          End If
+'          If (Trim(vCoQuanQL) = "" Or vCoQuanQL = vbNullString) And iWhiteRow = 0 Then
+'                .Col = .ColLetterToNumber("F")
+'                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                .CellNote = vErrorSoChungTu   'static
+'                .BackColor = mErrorColor
+'                iflagSoChungTu = 1
+'                'capture the first error cell
+'                If iFocusFlag = 0 Then
+'                    strFocusSheetName = "'" & .SheetName & "'"
+'                    strFocusCol = str(.Col)
+'                    strFocusRow = str(.Row)
+'                    iFocusFlag = 1
+'                End If
+'          Else
+'                .Col = .ColLetterToNumber("F")
+'                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                .CellNote = ""   'static
+'                .BackColor = mNonErrorColor
+'          End If
           ' Kiem tra so thue
           If (Trim(vSoTienDN) = "0" Or vSoTienDN = vbNullString) And iWhiteRow = 0 Then
-                .Col = .ColLetterToNumber("G")
+                .Col = .ColLetterToNumber(colG)
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = vErrorSoChungTu   'static
                 .BackColor = mErrorColor
@@ -1697,7 +1680,7 @@ Private Sub CheckDynamicError()
                     iFocusFlag = 1
                 End If
           Else
-                .Col = .ColLetterToNumber("G")
+                .Col = .ColLetterToNumber(colG)
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = ""   'static
                 .BackColor = mNonErrorColor
@@ -1705,7 +1688,7 @@ Private Sub CheckDynamicError()
           
           
           If (Trim(vNgayNop) = "" Or vNgayNop = vbNullString) And iWhiteRow = 0 Then
-                .Col = .ColLetterToNumber("D")
+                .Col = .ColLetterToNumber(colE)
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = vErrorSoChungTu   'static
                 .BackColor = mErrorColor
@@ -1720,7 +1703,7 @@ Private Sub CheckDynamicError()
           Else
                 If iWhiteRow = 0 Then
                     If DateDiff("D", Date, Format(vNgayNop, "dd/mm/yyyy")) > 0 Then
-                           .Col = .ColLetterToNumber("D")
+                           .Col = .ColLetterToNumber(colE)
                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                            .CellNote = vErrorNgayNop   'static
                            .BackColor = mErrorColor
@@ -1733,13 +1716,13 @@ Private Sub CheckDynamicError()
                                iFocusFlag = 1
                            End If
                        Else
-                            .Col = .ColLetterToNumber("D")
+                            .Col = .ColLetterToNumber(colE)
                             .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                             .CellNote = ""   'static
                             .BackColor = mNonErrorColor
                       End If
                 Else
-                            .Col = .ColLetterToNumber("D")
+                            .Col = .ColLetterToNumber(colE)
                             .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                             .CellNote = ""   'static
                             .BackColor = mNonErrorColor
@@ -1927,6 +1910,7 @@ Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
 Dim itemp As Variant, temp As Variant
 Dim cValue As Variant
 With fps
+    mCurrentSheet = .ActiveSheet
    If .ActiveSheet = .SheetCount - 1 Then
         .Col = Col
         .Row = Row
@@ -2303,7 +2287,7 @@ Public Sub SetActiveSheet() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
              Case "01_5"
               blnNullValue = True
                 'Check the last sheet
-               For Each xmlCellNode In TAX_Utilities_New.Data(6).getElementsByTagName("Cell")
+               For Each xmlCellNode In TAX_Utilities_New.Data(sheetPl01_5_GTGT - 1).getElementsByTagName("Cell")
                     ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
                     'Check value G F column
                     If lCol = fps.ColLetterToNumber("G") Then
@@ -4013,4 +3997,222 @@ Public Sub inThongTinDL()
     'TuRow_DenRow_sheet
     strTuRowDenRowPL = "9_11_2~9_11_3~11_13_4~10_12_5~10_12_6~10_11_7~9_11_8~20_30_9"
     ' end
+End Sub
+
+Private Sub setCQTQuanLy()
+        Dim xmlDomData As New MSXML.DOMDocument
+        Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+        Dim xmlNode As MSXML.IXMLDOMNode
+        Dim arrDanhsach() As String
+        Dim tenCucThue As String
+        Dim maCucThue As String
+        Dim tenChiCucThue As String
+        Dim maChiCucThue As String
+        
+        If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                    
+                    If arrDanhsach(0) = "1" Then
+                        tenCucThue = tenCucThue + arrDanhsach(3) + Chr$(9)
+                        maCucThue = maCucThue + arrDanhsach(1) + Chr$(9)
+                    End If
+                    'If arrDanhsach(0) = "0" Then
+                        tenChiCucThue = tenChiCucThue + arrDanhsach(3) + Chr$(9)
+                        maChiCucThue = maChiCucThue + arrDanhsach(1) + Chr$(9)
+                    'End If
+                End If
+            Next
+            Set xmlDomData = Nothing
+            Set xmlNodeListCell = Nothing
+            Set xmlNode = Nothing
+        End If
+        
+        
+        With fps
+            .Sheet = sheetPl01_5_GTGT 'set thong tin CQL
+            '.EventEnabled(EventAllEvents) = False
+            
+            .Row = rowStartPL01_5
+            .Col = .ColLetterToNumber("C")
+            .TypeComboBoxList = tenCucThue
+            
+            .Row = rowStartPL01_5
+            .Col = .ColLetterToNumber("I")
+            .TypeComboBoxList = maCucThue
+            
+            .Row = rowStartPL01_5
+            .Col = .ColLetterToNumber("D")
+            .TypeComboBoxList = tenChiCucThue
+    
+            .Row = rowStartPL01_5
+            .Col = .ColLetterToNumber("H")
+            .TypeComboBoxList = maChiCucThue
+            
+            ' Phu luc 01_6
+            .Sheet = sheetPl01_6_GTGT 'set thong tin CQL
+            .Row = rowStartPL01_6
+            .Col = .ColLetterToNumber(colE)
+            .TypeComboBoxList = tenCucThue
+            
+            .Row = rowStartPL01_6
+            .Col = .ColLetterToNumber(colM)
+            .TypeComboBoxList = maCucThue
+            
+            .Row = rowStartPL01_6
+            .Col = .ColLetterToNumber(colF)
+            .TypeComboBoxList = tenChiCucThue
+    
+            .Row = rowStartPL01_6
+            .Col = .ColLetterToNumber(colL)
+            .TypeComboBoxList = maChiCucThue
+    
+            '.EventEnabled(EventAllEvents) = True
+        End With
+End Sub
+
+Private Sub setChangeComb(ByVal Col As Long, Row As Long)
+    Dim varTemp As Variant
+    Dim intIndexCuc As Integer
+    Dim intIndexChiCuc As Integer
+    Dim varIdCucThue As Variant
+    
+    Dim xmlDomData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim arrDanhsach() As String
+    Dim tenChiCucThue As String
+    Dim maChiCucThue As String
+    
+  '  Dim checkDL As Variant
+    With fps
+        .EventEnabled(EventAllEvents) = False
+        If .ActiveSheet = sheetPl01_5_GTGT Then
+            .Sheet = sheetPl01_5_GTGT
+            mCurrentSheet = sheetPl01_5_GTGT
+            
+            .Col = Col
+            .Row = Row
+            
+            If Col = .ColLetterToNumber("C") Then 'Khi chon Combo
+                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+                intIndexCuc = .TypeComboBoxCurSel
+                .Col = .ColLetterToNumber("I")
+                .Row = Row
+                .TypeComboBoxCurSel = intIndexCuc
+                'Nhap lai Combo cot Q
+                .Col = .ColLetterToNumber("I")
+                UpdateCell fps, .Col, .Row, .Text
+                ' Lay Id cua cuc thue vua chon o tren
+                fps.GetText .Col, .Row, varIdCucThue
+                
+                If varIdCucThue <> "" Or varIdCucThue <> vbNullString Then
+                    ' Lay thong tin cho chi cuc thue
+                    varIdCucThue = Left$(varIdCucThue, 3)
+                    
+                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+                        For Each xmlNode In xmlNodeListCell
+                            If GetAttribute(xmlNode, "Value") <> "" Then
+                                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                                
+                                If arrDanhsach(0) = "0" And arrDanhsach(2) = varIdCucThue Then
+                                    tenChiCucThue = tenChiCucThue + arrDanhsach(3) + Chr$(9)
+                                    maChiCucThue = maChiCucThue + arrDanhsach(1) + Chr$(9)
+                                End If
+                            End If
+                        Next
+                        Set xmlDomData = Nothing
+                        Set xmlNodeListCell = Nothing
+                        Set xmlNode = Nothing
+                    End If
+                    
+                    .Row = Row
+                    .Col = .ColLetterToNumber("D")
+                    .TypeComboBoxList = tenChiCucThue
+                    
+                    .Row = Row
+                    .Col = .ColLetterToNumber("H")
+                    .TypeComboBoxList = maChiCucThue
+                   
+                End If
+            End If
+                        
+            If Col = .ColLetterToNumber("D") Then 'Khi chon Combo
+                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+                intIndexChiCuc = .TypeComboBoxCurSel
+                .Col = .ColLetterToNumber("H")
+                .Row = Row
+                .TypeComboBoxCurSel = intIndexChiCuc
+                'Nhap lai Combo cot Q
+                .Col = .ColLetterToNumber("H")
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+        ElseIf .ActiveSheet = sheetPl01_6_GTGT Then
+            .Sheet = sheetPl01_6_GTGT
+            mCurrentSheet = sheetPl01_6_GTGT
+            .Col = Col
+            .Row = Row
+            
+            If Col = .ColLetterToNumber(colE) Then 'Khi chon Combo
+                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+                intIndexCuc = .TypeComboBoxCurSel
+                .Col = .ColLetterToNumber(colM)
+                .Row = Row
+                .TypeComboBoxCurSel = intIndexCuc
+                'Nhap lai Combo cot Q
+                .Col = .ColLetterToNumber(colM)
+                UpdateCell fps, .Col, .Row, .Text
+                ' Lay Id cua cuc thue vua chon o tren
+                fps.GetText .Col, .Row, varIdCucThue
+                
+                If varIdCucThue <> "" Or varIdCucThue <> vbNullString Then
+                    ' Lay thong tin cho chi cuc thue
+                    
+                                        
+                    varIdCucThue = Left$(varIdCucThue, 3)
+                    
+                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+                        For Each xmlNode In xmlNodeListCell
+                            If GetAttribute(xmlNode, "Value") <> "" Then
+                                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                                
+                                If arrDanhsach(0) = "0" And arrDanhsach(2) = varIdCucThue Then
+                                    tenChiCucThue = tenChiCucThue + arrDanhsach(3) + Chr$(9)
+                                    maChiCucThue = maChiCucThue + arrDanhsach(1) + Chr$(9)
+                                End If
+                            End If
+                        Next
+                        Set xmlDomData = Nothing
+                        Set xmlNodeListCell = Nothing
+                        Set xmlNode = Nothing
+                    End If
+                    
+                    .Row = Row
+                    .Col = .ColLetterToNumber(colF)
+                    .TypeComboBoxList = tenChiCucThue
+                    
+                    .Row = Row
+                    .Col = .ColLetterToNumber(colL)
+                    .TypeComboBoxList = maChiCucThue
+                   
+                End If
+            End If
+                        
+            If Col = .ColLetterToNumber(colF) Then 'Khi chon Combo
+                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+                intIndexChiCuc = .TypeComboBoxCurSel
+                .Col = .ColLetterToNumber(colL)
+                .Row = Row
+                .TypeComboBoxCurSel = intIndexChiCuc
+                'Nhap lai Combo cot Q
+                .Col = .ColLetterToNumber(colL)
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+        End If
+        .EventEnabled(EventAllEvents) = True
+    End With
 End Sub
