@@ -747,7 +747,7 @@ Public Sub SetupData(pGrid As fpSpread)
                 Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "11" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "12" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "06" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "77" _
                 Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "72" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "03" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "80" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "81" _
                 Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "82" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "86" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "87" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "89" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "73" _
-                Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "83" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "85" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "90") And fso.FileExists(strDataFileNameBS) Then
+                Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "83" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "85" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "90" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "95") And fso.FileExists(strDataFileNameBS) Then
                      isNewdataBS = False
                 End If
                 
@@ -3372,14 +3372,19 @@ Public Function getTemplateTk(ByVal strId As String) As String()
         Case "02"
             ReDim strResult(3)
             strResult(0) = "AH_24~Dynamic_0"
-            strResult(1) = "CT_40~BW_42~CT_42~BW_44~CT_44~BW_45~CT_45~CT_46~CT_47~CT_48~CT_49~CT_50~CT_51~Dynamic_0"
-            strResult(2) = "V_55~CB_55~V_57~CB_57~C_59~F_59~I_59~Dynamic_0"
+            strResult(1) = "CT_40~CT_41~BW_43~CT_43~BW_45~CT_45~BW_46~CT_46~CT_47~CT_48~CT_49~CT_50~CT_51~CT_52~CT_53~Dynamic_0"
+            strResult(2) = "V_57~CB_57~V_59~CB_59~C_61~F_61~I_61~K_61~Dynamic_0"
         ' 03_GTGT / TT28
         Case "04"
             ReDim strResult(3)
             strResult(0) = "F_6~Dynamic_0"
             strResult(1) = "M_36~P_36~S_36~M_37~P_37~S_37~M_38~P_38~S_38~M_39~P_39~S_39~O_42~O_44~Dynamic_0"
             strResult(2) = "E_56~O_56~E_58~O_58~C_60~F_60~I_60~Dynamic_0"
+        Case "95"
+            ReDim strResult(3)
+            strResult(0) = "F_6~Dynamic_0"
+            strResult(1) = "M_36~P_36~S_36~M_37~P_37~S_37~M_38~P_38~S_38~M_39~P_39~S_39~M_40~P_40~S_40~M_41~P_41~S_41~M_42~P_42~S_42~O_45~O_47~Dynamic_0"
+            strResult(2) = "E_59~O_59~E_61~O_61~C_63~F_63~I_63~L_63~Dynamic_0"
         ' 04_GTGT /TT28
         Case "71"
             ReDim strResult(11)

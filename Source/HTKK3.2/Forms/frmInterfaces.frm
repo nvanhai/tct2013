@@ -2508,7 +2508,7 @@ Private Sub DeleteKHBS()
         End If
     ElseIf strKHBS = "TKBS" And (varMenuId1 = "02" Or varMenuId1 = "01" Or varMenuId1 = "04" Or varMenuId1 = "11" Or varMenuId1 = "12" Or varMenuId1 = "05" Or varMenuId1 = "06" Or varMenuId1 = "86" Or varMenuId1 = "87" _
     Or varMenuId1 = "89" Or varMenuId1 = "71" Or varMenuId1 = "72" Or varMenuId1 = "77" Or varMenuId1 = "03" Or varMenuId1 = "73" Or varMenuId1 = "80" Or varMenuId1 = "81" Or varMenuId1 = "70" Or varMenuId1 = "82" Or varMenuId1 = "83" _
-    Or varMenuId1 = "85" Or varMenuId1 = "90") Then
+    Or varMenuId1 = "85" Or varMenuId1 = "90" Or varMenuId1 = "95") Then
         If loFile.FileExists(strSheetKHBSDataFileName) = True Then
             loFile.DeleteFile strSheetKHBSDataFileName, True
         End If
@@ -3043,7 +3043,7 @@ Private Sub cmdExport_Click()
         If idToKhaiKHBS <> "01" And idToKhaiKHBS <> "02" And idToKhaiKHBS <> "03" And idToKhaiKHBS <> "04" And idToKhaiKHBS <> "05" _
         And idToKhaiKHBS <> "06" And idToKhaiKHBS <> "08" And idToKhaiKHBS <> "11" And idToKhaiKHBS <> "12" And idToKhaiKHBS <> "86" And idToKhaiKHBS <> "87" _
         And idToKhaiKHBS <> "89" And idToKhaiKHBS <> "71" And idToKhaiKHBS <> "72" And idToKhaiKHBS <> "77" And idToKhaiKHBS <> "03" And idToKhaiKHBS <> "73" _
-        And idToKhaiKHBS <> "80" And idToKhaiKHBS <> "81" And idToKhaiKHBS <> "70" And idToKhaiKHBS <> "82" And idToKhaiKHBS <> "83" And idToKhaiKHBS <> "85" And idToKhaiKHBS <> "90" Then
+        And idToKhaiKHBS <> "80" And idToKhaiKHBS <> "81" And idToKhaiKHBS <> "70" And idToKhaiKHBS <> "82" And idToKhaiKHBS <> "83" And idToKhaiKHBS <> "85" And idToKhaiKHBS <> "90" And idToKhaiKHBS <> "95" Then
                 fpSpread1.sheet = fpSpread1.SheetCount - 1
                 If fpSpread1.SheetName = "KHBS" Then
                     fpSpread1.DeleteSheets fpSpread1.SheetCount - 1, 1
@@ -4309,7 +4309,7 @@ Private Sub cmdSave_Click()
     varMenuId = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
 
     If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" _
-    Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90") Then
+    Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95") Then
         TonghopKHBS
     End If
 
@@ -4393,7 +4393,7 @@ Private Sub cmdSave_Click()
     ' Set lai co isNewDataBS sau khi bam nut ghi
     If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" _
     Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" _
-    Or varMenuId = "85" Or varMenuId = "90") Then
+    Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95") Then
         isNewdataBS = False
     End If
             
@@ -5355,7 +5355,7 @@ Private Sub Form_Load()
     ' tesst
     If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" _
     Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" _
-    Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90") Then
+    Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95") Then
         fpSpread1.sheet = fpSpread1.SheetCount - 1
         fpSpread1.SheetVisible = True
         LoadKHBS_TT28
@@ -7525,7 +7525,7 @@ Private Sub ResizeButton()
     ' set cac to khai bo sung theo TT28 moi hien thi nut tong hop to khai
     If strKHBS = "TKBS" And (menuID = "01" Or menuID = "02" Or menuID = "04" Or menuID = "71" Or menuID = "72" _
     Or menuID = "11" Or menuID = "12" Or menuID = "06" Or menuID = "05" Or menuID = "86" Or menuID = "87" Or menuID = "89" Or menuID = "77" Or menuID = "03" Or menuID = "73" _
-    Or menuID = "80" Or menuID = "81" Or menuID = "70" Or menuID = "82" Or menuID = "83" Or menuID = "85" Or menuID = "90") Then
+    Or menuID = "80" Or menuID = "81" Or menuID = "70" Or menuID = "82" Or menuID = "83" Or menuID = "85" Or menuID = "90" Or menuID = "95") Then
         Command1.Visible = True
         Command1.Left = Frame1.Width - 8460
     Else
@@ -7624,7 +7624,7 @@ Private Sub ResetData()
     'vttoan: them ID (86,87,88) cua cac to (01_BVMT,02BVMT,01_PHXD)
     'dntai : them ID 77 to 02_TAIN
     idtkhai = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
-    If (idtkhai = "01" Or idtkhai = "02" Or idtkhai = "04" Or idtkhai = "11" Or idtkhai = "12" Or idtkhai = "06" Or idtkhai = "05" Or idtkhai = "70" Or idtkhai = "72" Or idtkhai = "77" Or idtkhai = "75" Or idtkhai = "74") Then
+    If (idtkhai = "01" Or idtkhai = "02" Or idtkhai = "04" Or idtkhai = "11" Or idtkhai = "12" Or idtkhai = "06" Or idtkhai = "05" Or idtkhai = "70" Or idtkhai = "72" Or idtkhai = "77" Or idtkhai = "75" Or idtkhai = "74" Or idtkhai = "95") Then
         For Each xmlNodeReset In TAX_Utilities_New.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
             fpSpread1.sheet = mCurrentSheet
             ParserCellID fpSpread1, GetAttribute(xmlNodeReset, "CellID"), lCol, lRow
@@ -7632,7 +7632,7 @@ Private Sub ResetData()
             fpSpread1.Row = lRow
 
             If ((idtkhai = "01" And (lRow < 22 Or lRow > 48)) Or (idtkhai = "02" And (lRow < 38 Or lRow > 54)) Or (idtkhai = "04" And (lRow < 34 Or lRow > 41)) Or (idtkhai = "11" And (lRow < 20 Or lRow > 35)) Or (idtkhai = "12" And (lRow < 34 Or lRow > 49)) Or (idtkhai = "06" And (lRow < 34 Or lRow > 48 + (TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length - 11) / 13)) Or (idtkhai = "05" And (lRow < 31 Or lRow > fpSpread1.MaxRows - 15)) Or (idtkhai = "70" And (lRow < 51 Or lRow > 58 + (TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length - 19) / 14)) Or (idtkhai = "77" And (lRow < 18 Or lRow > fpSpread1.MaxRows - 11)) _
-            Or (idtkhai = "75" And (lRow < 38 Or lRow > fpSpread1.MaxRows - 5)) Or (idtkhai = "74" And (lRow < 19 Or lRow > 61)) Or (idtkhai = "72" And (lRow < 43 Or lRow > 48))) And mCurrentSheet = 1 Then
+            Or (idtkhai = "75" And (lRow < 38 Or lRow > fpSpread1.MaxRows - 5)) Or (idtkhai = "74" And (lRow < 19 Or lRow > 61)) Or (idtkhai = "72" And (lRow < 43 Or lRow > 48)) Or (idtkhai = "95" And (lRow < 34 Or lRow > 44))) And mCurrentSheet = 1 Then
 
                 GoTo nextClear1
             Else
