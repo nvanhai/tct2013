@@ -34,6 +34,23 @@ Private Const FOURTH_SHEET = 4
 Private Const THIRD_SHEET_CELL1 = "D_19"
 Private Const FOURTH_SHEET_CELL1 = "E_19"
 
+
+Private Const rowNguoiKy = 57
+Private Const rowNgayKy = 59
+Private Const rowHiddenBsLan = 61
+Private Const rowHangHoaMuaVao = 43
+
+Private Const rowCt21 = 40
+Private Const rowCt22 = 43
+Private Const rowCt23 = 43
+Private Const rowCt24 = 45
+Private Const rowCt29 = 49
+Private Const rowCt30 = 50
+Private Const rowCt31 = 52
+Private Const rowCt32 = 53
+Private Const rowHidden62 = 62
+
+
 Dim mblKeyF6 As Boolean
 Dim mblKhoiDauToKhai As Boolean
 Dim vThuephainop  As Variant
@@ -75,9 +92,9 @@ With fps
     SetDateFormat fps, 10, 8, .ColLetterToNumber("E"), DDMMYYYY
     SetDateFormat fps, 11, 8, .ColLetterToNumber("E"), DDMMYYYY
     
-    SetDateFormat fps, 1, 57, .ColLetterToNumber("CB"), DDMMYYYY
+    SetDateFormat fps, 1, rowNgayKy, .ColLetterToNumber("CB"), DDMMYYYY
     .Sheet = 1 'To khai GTGT
-        .Row = 57
+        .Row = rowNgayKy
         .Col = .ColLetterToNumber("CB")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
@@ -180,34 +197,34 @@ Public Sub Prepare2()
         .EventEnabled(EventAllEvents) = False
         .Sheet = 1
         
-        CellChange .ColLetterToNumber("BW"), 42
+        CellChange .ColLetterToNumber("BW"), rowHangHoaMuaVao
         'update MSTDN luôn bang MST tren phan TT chung
             UpdateMST fps, Col_MSTDN, Row_MSTDN
         mCurrentSheet = .Sheet
         If Strloaitk = "TKCT" Then
             .Col = .ColLetterToNumber("C")
-            .Row = 59
+            .Row = rowHiddenBsLan
             .Text = 1
             UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber("F")
-            .Row = 59
+            .Row = rowHiddenBsLan
             .Text = ""
             UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber("I")
-            .Row = 59
+            .Row = rowHiddenBsLan
             .Text = ""
             UpdateCell fps, .Col, .Row, .Text
         ElseIf Strloaitk = "TKBS" Then
             .Col = .ColLetterToNumber("C")
-            .Row = 59
+            .Row = rowHiddenBsLan
             .Text = ""
             UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber("F")
-            .Row = 59
+            .Row = rowHiddenBsLan
             .Text = 1
             UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber("I")
-            .Row = 59
+            .Row = rowHiddenBsLan
             .Text = StrSolanBosung
             UpdateCell fps, .Col, .Row, .Text
         End If
@@ -285,11 +302,11 @@ Public Sub Prepare2()
             .Sheet = 1
             mCurrentSheet = 1
             .Col = .ColLetterToNumber("CB")
-            .Row = 55
+            .Row = rowNguoiKy
             .Formula = "TRIM(Header!T5)"
             UpdateCell fps, .Col, .Row, .Text
             .Sheet = 1 'To khai GTGT
-            .Row = 57
+            .Row = rowNgayKy
             .Col = .ColLetterToNumber("CB")
             .Text = Format(Date, "dd/mm/yyyy")
             .TypeHAlign = TypeHAlignLeft
@@ -363,23 +380,6 @@ With fps
                 End If
                 
             End If
-         ' Update so chenh lech cho KHBS
-'            .GetText .ColLetterToNumber("L"), 17, varTemp
-'            If TAX_Utilities_New.NodeValidity.childNodes(.SheetCount - 2).Attributes.getNamedItem("Active").nodeValue <> "0" Then
-'                .Sheet = .SheetCount - 1
-'                Set xmlNode = TAX_Utilities_New.Data(.Sheet - 1).childNodes(2).childNodes(2).lastChild.lastChild
-'                ParserCellID fps, GetAttribute(xmlNode, "CellID"), cCol, cRow
-'                .Col = cCol
-'                .Row = cRow
-'                .Value = CDbl(varTemp) - CDbl(vThuephainop)
-'                mCurrentSheet = .SheetCount - 1
-'                UpdateCell fps, .Col, .Row, .Value
-'                .Col = .ColLetterToNumber("BG")
-'                .Row = .Row + 3
-'                UpdateCell fps, .Col, .Row, .Value
-'                .Sheet = 1
-'                 mCurrentSheet = 1
-'            End If
        fps.EventEnabled(EventAllEvents) = True
         
     End If
@@ -633,10 +633,6 @@ Dim NguoiKyCol As Long, NguoiKyRow As Long
                     .Row = 8
                     Do
                          .Text = str(i)
-'                         .Col = .ColLetterToNumber("J")
-'                         .CellType = CellTypePercent
-'                         .TypePercentDecPlaces = 0
-'                         .TypePercentMax = 100
                          .Col = .ColLetterToNumber("B")
                          .Row = i + 8
                          i = i + 1
@@ -691,7 +687,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
         mCurrentSheet = .Sheet
         .EventEnabled(EventAllEvents) = False
          If .ActiveSheet = 1 Then
-             If Col = .ColLetterToNumber("CB") And Row = 57 Then
+             If Col = .ColLetterToNumber("CB") And Row = rowNgayKy Then
                       .GetText Col, Row, varTemp
                         If varTemp <> "" And varTemp <> "../../...." Then
                             If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
@@ -841,64 +837,64 @@ Private Sub CheckDynamicError()
 '            .GetText .ColLetterToNumber("N"), 1, quyPhatHanh
 '            .GetText .ColLetterToNumber("N"), 4, namPhatHanh
             .Sheet = 1
-            .GetText .ColLetterToNumber("CT"), 40, ct21
-            .GetText .ColLetterToNumber("DO"), 40, ctCT21
-            .GetText .ColLetterToNumber("CT"), 48, ct29
-            .GetText .ColLetterToNumber("DO"), 48, ctCT29
-            .GetText .ColLetterToNumber("CT"), 49, CT30
-            .GetText .ColLetterToNumber("CT"), 50, ct31
-            .GetText .ColLetterToNumber("CT"), 51, ct32
-            .GetText .ColLetterToNumber("CB"), 57, DateNgayKy
+            .GetText .ColLetterToNumber("CT"), rowCt21, ct21
+            .GetText .ColLetterToNumber("DO"), rowCt21, ctCT21
+            .GetText .ColLetterToNumber("CT"), rowCt29, ct29
+            .GetText .ColLetterToNumber("DO"), rowCt29, ctCT29
+            .GetText .ColLetterToNumber("CT"), rowCt30, CT30
+            .GetText .ColLetterToNumber("CT"), rowCt31, ct31
+            .GetText .ColLetterToNumber("CT"), rowCt32, ct32
+            .GetText .ColLetterToNumber("CB"), rowNgayKy, DateNgayKy
             'chek ngay ky " cho phep sua nhung ko duoc lon hon ngay hien tai"
             ngayHienTai = DateSerial(Mid(Trim(DateNgayKy), 7, 4), Mid(Trim(DateNgayKy), 4, 2), Mid(Trim(DateNgayKy), 1, 2))
             strDateNHT = DateTime.Now
             CheckNgayKy = DateDiff("d", strDateNHT, ngayHienTai)
                 If CheckNgayKy > 0 Then
                     .Col = .ColLetterToNumber("CB")
-                    .Row = 57
+                    .Row = rowNgayKy
                     .CellNote = errNgayKy
                     .BackColor = mErrorColor
                     iFlagNgayKy = 1
                 Else
                     .Col = .ColLetterToNumber("CB")
-                    .Row = 57
+                    .Row = rowNgayKy
                     .CellNote = ""
                     .BackColor = mNonErrorColor
                 End If
                If Val(ct21) <> Val(ctCT21) Then
                     .Col = .ColLetterToNumber("CT")
-                    .Row = 40
+                    .Row = rowCt21
                     .CellNote = Errct21
                     .BackColor = mAlertColor
                     iFlagEmtyCT21 = 1
                 Else
                     .Col = .ColLetterToNumber("CT")
-                    .Row = 40
+                    .Row = rowCt21
                     .CellNote = ""
                     .BackColor = mNonErrorColor
                 End If
              'ct30, ct31
                 If Val(CT30) > Val(ct29) Then
                     .Col = .ColLetterToNumber("CT")
-                    .Row = 49
+                    .Row = rowCt30
                     .CellNote = Errct29
                     .BackColor = mErrorColor
                     iFlagEmtyCT29 = 1
                 Else
                     .Col = .ColLetterToNumber("CT")
-                    .Row = 49
+                    .Row = rowCt30
                     .CellNote = ""
                     .BackColor = mNonErrorColor
                 End If
                 If Val(ct31) > Val(ct29) Then
                     .Col = .ColLetterToNumber("CT")
-                    .Row = 50
+                    .Row = rowCt31
                     .CellNote = Errct31
                     .BackColor = mErrorColor
                     iFlagEmtyCT31 = 1
                 Else
                     .Col = .ColLetterToNumber("CT")
-                    .Row = 50
+                    .Row = rowCt31
                     .CellNote = ""
                     .BackColor = mNonErrorColor
                 End If
@@ -1109,16 +1105,16 @@ End Sub
 'some special data that we want to save to data files
 Public Sub SaveExceptionData()
     Dim i As Long, DataText As Variant
-    Dim ArrRow As Variant, ArrCol As Variant
+    Dim arrRow As Variant, ArrCol As Variant
     Dim arrCellTag() As String
     With fps
         .Sheet = 1
         mCurrentSheet = .Sheet
         'J10 , L10, L16, L17, L20
-        ArrRow = Array(10, 10, 16, 17, 20)
+        arrRow = Array(10, 10, 16, 17, 20)
         ArrCol = Array("J", "L", "L", "L", "L")
-        For i = 0 To UBound(ArrRow)
-            .Row = ArrRow(i)
+        For i = 0 To UBound(arrRow)
+            .Row = arrRow(i)
             .Col = .ColLetterToNumber(ArrCol(i))
             UpdateCell fps, .Col, .Row, .value
         Next
@@ -1158,56 +1154,6 @@ Public Sub finish()
          .GetText iCol, iRow, vTemp
          UpdateCell fps, iCol, iRow, vTemp
          
-        
-        
-'        Dim vF2 As Variant
-'        .GetText .ColLetterToNumber("F"), 2, vF2
-'        If vF2 <> "" Then
-'            If CDbl(vF2) < CDbl(TAX_Utilities_New.Year) Then
-'                ' update gia tri dung (khong loi) trong sheet header
-'                .Sheet = .SheetCount
-'                .SetText .ColLetterToNumber("B"), 47, "1"
-'                .SetText .ColLetterToNumber("B"), 48, "1"
-'                'Chuyen chi tieu C4 ve trang thai dung
-'                mCurrentSheet = 4
-'                .Sheet = 4
-'                .Col = .ColLetterToNumber("F")
-'                .Row = 2
-'                .CellNote = ""
-'                .BackColor = mNonErrorColor
-'            Else
-'                ' update gia tri sai (co loi) trong sheet header
-'                .Sheet = .SheetCount
-'                .SetText .ColLetterToNumber("B"), 47, "0"
-'                ' Lay thong bao loi
-'                Dim vErrMsg1 As Variant
-'                .GetText .ColLetterToNumber("E"), 47, vErrMsg1
-'                ' Chuyen chi tieu ve trang thai loi
-'                mCurrentSheet = 2
-'                .Sheet = 2
-'                .Col = .ColLetterToNumber("F")
-'                .Row = 2
-'                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-'                .CellNote = vErrMsg1 'static
-'                .BackColor = mErrorColor
-'            End If
-'        Else
-'                ' update gia tri sai (co loi) trong sheet header
-'                .Sheet = .SheetCount
-'                .SetText .ColLetterToNumber("B"), 48, "0"
-'                ' Lay thong bao loi
-'                Dim vErrMsg2 As Variant
-'                .GetText .ColLetterToNumber("E"), 48, vErrMsg2
-'                ' Chuyen chi tieu ve trang thai loi
-'                mCurrentSheet = 2
-'                .Sheet = 4
-'                .Col = .ColLetterToNumber("F")
-'                .Row = 2
-'                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-'                .CellNote = vErrMsg2 'static
-'                .BackColor = mErrorColor
-'        End If
-'
         CheckDynamicError 'Set Exception Error on cells of interface
         UpdateSheet
         .ActiveSheet = ASheet
@@ -1252,30 +1198,25 @@ Private Sub setLast25Target()
             GoTo Tidy_up
         End If
         If .Load(strDataFileName) = True Then
-            Set xmlNode = .nodeFromID("CT_51")  'L_20: col & row of 25 target
+            Set xmlNode = .nodeFromID("CT_" & rowCt32) 'L_20: col & row of 25 target
             str25Target = GetAttribute(xmlNode, "Value")
             Set xmlNode = Nothing
             
             If Trim(str25Target) <> "" And Trim(str25Target) <> "0" Then
                 fps.Sheet = 1
                 fps.Col = fps.ColLetterToNumber("CT")
-                fps.Row = 40
+                fps.Row = rowCt21
                 fps.Col = fps.ColLetterToNumber("DO")
-                fps.Row = 40
+                fps.Row = rowCt21
                 If Trim(fps.Text) = "0" Or Trim(fps.Text) = "" Then
                     fps.Text = str25Target
                     mCurrentSheet = 1
                     UpdateCell fps, fps.Col, fps.Row, fps.value
-                    'update cell L17
-'                    fps.Col = fps.ColLetterToNumber("L")
-'                    fps.Row = 17
-'                    UpdateCell fps, fps.Col, fps.Row, fps.Value
-                    'update cell L20
                     fps.Col = fps.ColLetterToNumber("CT")
-                    fps.Row = 40
+                    fps.Row = rowCt21
                     UpdateCell fps, fps.Col, fps.Row, fps.value
                     fps.Col = fps.ColLetterToNumber("DO")
-                    fps.Row = 40
+                    fps.Row = rowCt21
                     UpdateCell fps, fps.Col, fps.Row, fps.value
                 End If
             End If
@@ -1608,7 +1549,7 @@ Private Function GetLast25Previous(ByRef strValue As String) As Boolean
         '***************************************
                 
         If .Load(strDataFileName) = True Then
-            Set xmlNode = .nodeFromID("CT_51")  'L_20: col & row of 25 target
+            Set xmlNode = .nodeFromID("CT_" & rowCt32) 'L_20: col & row of 25 target
             strValue = GetAttribute(xmlNode, "Value")
             Set xmlNode = Nothing
         ElseIf .parseError.reason <> vbNullString Then
@@ -1880,15 +1821,15 @@ Public Function getValueTK(strFileLoadData As String) As String
         .validateOnParse = True
         .async = False
         If .Load(strFileLoadData) = True Then
-            Set xmlNode = .nodeFromID("CT_40")
+            Set xmlNode = .nodeFromID("CT_" & rowCt21)
             result = "CT21_" & Val(GetAttribute(xmlNode, "Value"))
-            Set xmlNode = .nodeFromID("CT_42")
+            Set xmlNode = .nodeFromID("CT_" & rowCt23)
             result = result & "~" & "CT23_" & Val(GetAttribute(xmlNode, "Value"))
 '            Set xmlNode = .nodeFromID("CT_47")
 '            result = result & "~" & "CT28a_" & Val(GetAttribute(xmlNode, "Value"))
-            Set xmlNode = .nodeFromID("CT_49")
+            Set xmlNode = .nodeFromID("CT_" & rowCt30)
             result = result & "~" & "CT30_" & Val(GetAttribute(xmlNode, "Value"))
-            Set xmlNode = .nodeFromID("CT_50")
+            Set xmlNode = .nodeFromID("CT_" & rowCt31)
             result = result & "~" & "CT31_" & Val(GetAttribute(xmlNode, "Value"))
             Set xmlNode = Nothing
         End If
@@ -1914,15 +1855,15 @@ Public Function getDieuChinhGiam(strOldValue As String) As String
     strMaCT = getMapCT
     With fps
                 .Sheet = 1
-                .GetText .ColLetterToNumber("CT"), 40, varTemp
+                .GetText .ColLetterToNumber("CT"), rowCt21, varTemp
                 strCurrentValue = "CT21_" & Trim(varTemp)
-                .GetText .ColLetterToNumber("CT"), 42, varTemp
+                .GetText .ColLetterToNumber("CT"), rowCt23, varTemp
                 strCurrentValue = strCurrentValue & "~CT23_" & Trim(varTemp)
 '                .GetText .ColLetterToNumber("CT"), 47, varTemp
 '                strCurrentValue = strCurrentValue & "~CT28a_" & Trim(varTemp)
-                .GetText .ColLetterToNumber("CT"), 49, varTemp
+                .GetText .ColLetterToNumber("CT"), rowCt30, varTemp
                 strCurrentValue = strCurrentValue & "~CT30_" & Trim(varTemp)
-                .GetText .ColLetterToNumber("CT"), 50, varTemp
+                .GetText .ColLetterToNumber("CT"), rowCt31, varTemp
                 strCurrentValue = strCurrentValue & "~CT31_" & Trim(varTemp)
                 ' tinh chenh lech giua 2 lan dieu chinh
                 tempArrOld = Split(strOldValue, "~")
@@ -2014,7 +1955,7 @@ End Function
 Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer)
     Dim i As Integer
     Dim a As Double, b As Double, c As Double
-    Dim ArrRow As Variant, ArrCol As Variant
+    Dim arrRow As Variant, ArrCol As Variant
     Dim arrCellTag() As String
     Dim cCol As Long, cRow As Long
     Dim varTemp As Variant
@@ -2055,25 +1996,25 @@ With fps
         .Sheet = 1
         ' Chi tieu 22
         .Col = .ColLetterToNumber("BW")
-        .Row = 42
+        .Row = rowCt22
         .Lock = True
-        .Formula = "H60"
+        .Formula = "H" & rowHidden62
         ' Chi tieu 23
         .Col = .ColLetterToNumber("CT")
-        .Row = 42
+        .Row = rowCt23
         .Lock = True
-        .Formula = "S60"
+        .Formula = "S" & rowHidden62
  
     Else
         .Sheet = 1
         ' chi tieu 23
         .Col = .ColLetterToNumber("BW")
-        .Row = 42
+        .Row = rowCt23
         .Lock = False
         .Formula = ""
         ' chi tieu 24
         .Col = .ColLetterToNumber("CT")
-        .Row = 42
+        .Row = rowCt24
         .Lock = False
         .Formula = ""
     
@@ -2151,7 +2092,7 @@ Public Function getChiTieuTongDC(strOldValue As String) As String
     Dim strCurrentValue As String
     With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("CT"), 51, varTemp
+        .GetText .ColLetterToNumber("CT"), rowCt32, varTemp
         strCurrentValue = Val(varTemp) - Val(strOldValue)
         getChiTieuTongDC = strCurrentValue
     End With
@@ -2176,7 +2117,7 @@ Public Function getValueCTDC(strFileLoadData As String) As String
         .validateOnParse = True
         .async = False
         If .Load(strFileLoadData) = True Then
-            Set xmlNode = .nodeFromID("CT_51")
+            Set xmlNode = .nodeFromID("CT_" & rowCt32)
             result = Val(GetAttribute(xmlNode, "Value"))
         End If
     End With
