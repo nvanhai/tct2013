@@ -46,6 +46,28 @@ Public strTuRowDenRowPL As String
 'add control, data for the control, celltag...
 'No parameter
 Public Sub Prepare1()
+        Dim strComboCQT As String
+        Dim strComboCQT_Hide As String
+        Dim strDataFileName1 As String
+        Dim arrDanhsach() As String
+        Dim strComboHien As String
+        Dim xmlDomDataCQT As New MSXML.DOMDocument, xmlDomCurrentData1 As New MSXML.DOMDocument
+        Dim xmlNodeListItemsCQT As MSXML.IXMLDOMNodeList
+        Dim xmlNodeCQT As MSXML.IXMLDOMNode
+        Dim fldListCQT() As String
+        
+        'get data combo Co quan thue
+        '05/06/2013
+        strDataFileName1 = GetAbsolutePath("..\InterfaceIni\Catalogue_DM_CoQuanThue.xml")
+            If xmlDomDataCQT.Load(strDataFileName1) Then
+                 Set xmlNodeListItemsCQT = xmlDomDataCQT.getElementsByTagName("Item")
+                 For Each xmlNodeCQT In xmlNodeListItemsCQT
+                     fldListCQT = Split(GetAttribute(xmlNodeCQT, "Value"), "###")
+                     strComboCQT = strComboCQT + fldListCQT(1) + Chr$(9)
+                     strComboCQT_Hide = strComboCQT_Hide + fldListCQT(0) + Chr$(9)
+                 Next
+             End If
+        
     With fps
         SetDateFormat fps, 1, 54, .ColLetterToNumber("I"), DDMMYYYY
         .Sheet = 1
@@ -78,7 +100,8 @@ Public Sub Prepare1()
         Dim xmlNode As MSXML.IXMLDOMNode
         Dim i As Integer
         Dim fldList() As String
-        
+                
+
         QuyKK = TAX_Utilities_New.ThreeMonths
         NamKK = TAX_Utilities_New.Year
         
@@ -154,6 +177,11 @@ Public Sub Prepare1()
         If TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0" Then
             resetFomula
         End If
+        
+        'set value combo
+        .Col = .ColLetterToNumber("G")
+        .Row = 35
+        .TypeComboBoxList = strComboCQT
         
     End With
 End Sub
@@ -319,24 +347,21 @@ Public Sub Prepare2()
         End If
         ' End set gia han
          
-         'set lai stt cho cac cot dong sheet 2
-         .Sheet = 2
-         If .SheetVisible = True Then
-                    i = 0
-                    .Col = .ColLetterToNumber("C")
-                    .Row = 39
-                    If .Row >= 39 Then
-                        Do
-                             If (.Row = 39 + i * 3) Then
-                                .Text = str(i + 3)
-                                i = i + 1
-                             End If
-                             .Col = .ColLetterToNumber("C")
-                             .Row = .Row + 1
- '                            i = i + 1
-                        Loop Until .Text = "aa"
-                    End If
-            End If
+'         'set lai stt cho cac cot dong sheet 2
+'         .Sheet = 2
+'         If .SheetVisible = True Then
+'                    i = 0
+'                    .Col = .ColLetterToNumber("C")
+'                    .Row = 35
+'                    If .Row >= 35 Then
+'                        Do
+'                             .Col = .ColLetterToNumber("C")
+'                             .Row = .Row + 1
+'                             .Text = str(i + 1)
+'                             i = i + 1
+'                        Loop Until .Text = "aa"
+'                    End If
+'            End If
         
         If TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0" Then
             setFomula
@@ -361,7 +386,7 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
         Case 1
             'Thuc hien khi chon Checkbox
             'xu ly voi checkbox doanh nghiep co hach toan phu thuoc
-            If Col = .ColLetterToNumber("E") And Row = 7 Then
+            If (Col = .ColLetterToNumber("E") And Row = 7) Or (Col = .ColLetterToNumber("E") And Row = 6) Then
                 .Sheet = .ActiveSheet
                 .Row = Row
                 .Col = Col
@@ -819,24 +844,24 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
            
            
         End If
-        If .ActiveSheet = 2 Then
-           If Col = .ColLetterToNumber("D") Then
-               .GetText Col, Row, varTemp
-               If varTemp <> "" And varTemp <> "../../...." Then
-                   If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
-                       .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
-                   Else
-                        .SetFocus
-                        .SetActiveCell Col, Row
-                   End If
-               Else
-                    .SetText Col, Row, ""
-               End If
-               .Col = Col
-               .Row = Row
-               UpdateCell fps, Col, Row, .Text
-           End If
-        End If
+'        If .ActiveSheet = 2 Then
+'           If Col = .ColLetterToNumber("D") Then
+'               .GetText Col, Row, varTemp
+'               If varTemp <> "" And varTemp <> "../../...." Then
+'                   If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+'                       .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+'                   Else
+'                        .SetFocus
+'                        .SetActiveCell Col, Row
+'                   End If
+'               Else
+'                    .SetText Col, Row, ""
+'               End If
+'               .Col = Col
+'               .Row = Row
+'               UpdateCell fps, Col, Row, .Text
+'           End If
+'        End If
         
         'KHBS
         If .ActiveSheet = .SheetCount - 1 Then
@@ -1154,7 +1179,7 @@ Private Sub CheckDynamicError()
     '    check tren sheet 2
         .Sheet = 2
         If .SheetVisible = True Then
-    
+
             mCurrentSheet = .Sheet
             Dim strTenDN As Variant, strMaST As Variant, strValue As Variant
             Dim iFlagEmpty As Integer, iFlagCheckMaST As Integer
@@ -1163,35 +1188,14 @@ Private Sub CheckDynamicError()
             iFlagCheckMaST = 0
             'MST doanh nghiep
             Dim vMSTDN As Variant
-            .GetText .ColLetterToNumber("F"), 38, vMSTDN
+            .GetText .ColLetterToNumber("F"), 35, vMSTDN
             'check not empty ten doanh nghiep
-            .Row = 39
+            .Row = 35
             Do
                 .Col = .ColLetterToNumber("F")
-               
-                'lay du lieu nhap vao
-                .GetText .ColLetterToNumber("E"), .Row, strKyHieu
-                If strKyHieu = "T" And Val(iFlagTongPhanBo) = 0 Then
-                    .Col = .ColLetterToNumber("L")
-                    .BackColor = mErrorColor
-                    .CellNote = errTongTLPB
-                ElseIf Val(iFlagTongPhanBo) = 1 Then
-                    .Col = .ColLetterToNumber("L")
-                    .BackColor = mNonErrorColor
-                    .CellNote = ""
-                End If
-                If strKyHieu = "M" And .Row <> 38 Then
-                    ' clear cell not
-                    .Col = .ColLetterToNumber("F")
-                    .BackColor = mNonErrorColor
-                    .CellNote = ""
-                
-                
-                    .Col = .ColLetterToNumber("F")
                     vMST = .Text
-                    
                     vMSTCheckTrung = vMST
-                    
+
                     If vMST <> vbNullString Then
         '                vMST = Replace(vMST, " ", "")
         '                strCheckMST = ""
@@ -1247,9 +1251,9 @@ Private Sub CheckDynamicError()
                                 .BackColor = mErrorColor
                                 .CellNote = errMST
                                 iFlagCheckMaST = 1
-                        
+
                         End If
-                        
+
                         'check MST trung nhau
                          CountRow = .SearchCol(.ColLetterToNumber("F"), -1, -1, vMSTCheckTrung, SearchFlagsNone)
                          rowDes = .SearchCol(.ColLetterToNumber("F"), CountRow, -1, vMSTCheckTrung, SearchFlagsNone)
@@ -1260,11 +1264,10 @@ Private Sub CheckDynamicError()
                             .BackColor = mErrorColor
                             iFlagMSTTrung = 1
                         End If
-        
-        
+
+
                     End If
-                End If
-                
+
                 .Col = .ColLetterToNumber("F")
                  strValue = .Text
                 'check du lieu bat buoc phai nhap
@@ -1278,12 +1281,12 @@ Private Sub CheckDynamicError()
                     .BackColor = mNonErrorColor
                     .CellNote = ""
                 End If
-                
+
                 .Col = .ColLetterToNumber("C")
                 .Row = .Row + 1
             Loop Until .Text = "aa"
         End If
-        'end
+'        'end
         blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         .Sheet = .SheetCount
             If blCheck_S2 Then
@@ -1558,7 +1561,11 @@ Public Sub UpdateChangeKHBS()
             ElseIf (lCol = .ColLetterToNumber("E") And lRow = 7) And (Trim(varTemp) = "0" Or Trim(varTemp) = "") Then
                 varTemp = ""
             End If
-            
+            If (lCol = .ColLetterToNumber("E") And lRow = 6) And (Trim(varTemp) = "1" Or Trim(varTemp) = "x") Then
+                varTemp = "x"
+            ElseIf (lCol = .ColLetterToNumber("E") And lRow = 6) And (Trim(varTemp) = "0" Or Trim(varTemp) = "") Then
+                varTemp = ""
+            End If
             If (lCol = .ColLetterToNumber("G") And lRow = 42) And (Trim(varTemp) = "1" Or Trim(varTemp) = "x") Then
                 varTemp = "x"
             ElseIf (lCol = .ColLetterToNumber("G") And lRow = 42) And (Trim(varTemp) = "0" Or Trim(varTemp) = "") Then
@@ -1595,7 +1602,7 @@ Private Sub UpdateSheets()
         mCurrentSheet = .Sheet
         For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
            ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-               If (lRow = 7 And lCol = .ColLetterToNumber("E")) Or (lRow = 48 And lCol = .ColLetterToNumber("B")) Or (lRow = 42 And lCol = .ColLetterToNumber("G")) Then
+               If (lRow = 7 And lCol = .ColLetterToNumber("E")) Or (lRow = 6 And lCol = .ColLetterToNumber("E")) Or (lRow = 48 And lCol = .ColLetterToNumber("B")) Or (lRow = 42 And lCol = .ColLetterToNumber("G")) Then
                     .GetText lCol, lRow, varTemp
                     If varTemp = "1" Or UCase(CStr(varTemp)) = "X" Then
                         UpdateCell fps, lCol, lRow, "x"
