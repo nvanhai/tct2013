@@ -3506,7 +3506,8 @@ Public Function getTemplateTk(ByVal strId As String) As String()
         Case "36"
             ReDim strResult(3)
             strResult(0) = "I_7~Dynamic_0"
-            strResult(1) = "V_41~R_43~R_44~R_45~R_46~R_47~R_48~R_49~R_50~R_51~R_52~R_53~R_55~R_56~R_57~R_59~R_60~R_61~Dynamic_0"
+            'strResult(1) = "V_41~R_43~R_44~R_45~R_46~R_47~R_48~R_49~R_50~R_51~R_52~R_53~R_55~R_56~R_57~R_59~R_60~R_61~Dynamic_0"
+            strResult(1) = "V_41~R_43~R_44~R_45~R_46~R_47~R_48~R_49~R_50~R_51~R_52~R_53~R_55~R_56~R_57~Dynamic_0"
             strResult(2) = "R_64~R_66~H_64~H_66~C_68~F_68~I_68~Dynamic_0"
         ' QT TNCN
         ' 05_TNCN \TT28
@@ -3538,13 +3539,14 @@ Public Function getTemplateTk(ByVal strId As String) As String()
         Case "74"
             ReDim strResult(3)
             strResult(0) = "G_17~Dynamic_0"
-            strResult(1) = "R_18~X_18~K_4~P_4~R_48~R_49~R_50~R_51~R_52~R_53~R_54~R_55~R_56~R_57~R_58~R_59~R_60~Dynamic_0"
+            'strResult(1) = "R_18~X_18~K_4~P_4~R_48~R_49~R_50~R_51~R_52~R_53~R_54~R_55~R_56~R_57~R_58~R_59~R_60~Dynamic_0"
+            strResult(1) = "R_48~R_49~R_50~R_51~R_52~R_53~R_54~R_55~R_56~R_57~R_58~R_59~R_60~Dynamic_0"
             strResult(2) = "R_63~R_65~H_63~H_65~C_67~I_67~Dynamic_0"
             ' 08A_TNCN  \TT28
         Case "75"
             ReDim strResult(4)
             strResult(0) = "G_17~Dynamic_0"
-            strResult(1) = "K_4~P_4~O_19~R_19~R_41~R_42~R_43~R_44~Dynamic_0"
+            strResult(1) = "R_41~R_42~R_43~R_44~Dynamic_0"
             strResult(2) = "C_51~H_51~L_51~N_51~P_51~R_51~T_51~V_51~X_51~Z_51~Dynamic_1"
             strResult(3) = "R_55~R_57~G_55~G_57~C_59~I_59~Dynamic_0"
             ' 08B_TNCN  \TT28
@@ -3612,7 +3614,7 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             strResult(0) = "Y_21~Dynamic_0"
             strResult(1) = "C_55~L_55~R_55~X_55~AD_5~AI_5~AM_5~AQ_5~AU_5~AY_5~BC_5~BG_5~BM_5~BQ_5~Dynamic_1"
             strResult(2) = "AI_5~AU_4~AU_5~AY_5~BG_5~BM_5~BM_4~BQ_5~BQ_4~Dynamic_0"
-            strResult(3) = "L_31~BC_5~S_33~O_32~Dynamic_0"
+            strResult(3) = "AT_5~BC_5~S_33~O_32~Dynamic_0"
             strResult(4) = "O_67~O_69~AX_6~AG_3~C_31~F_31~I_31~BM_3~Dynamic_0"
             
            ' 02_NTNN

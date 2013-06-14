@@ -81,36 +81,36 @@ Public Sub Prepare2()
                 UpdateCell fps, .Col, .Row, .Text
             End If
           'set thong tin header neu la to khai quy
-          If strQuy = "TK_QUY" Then
-            .SetText .ColLetterToNumber("G"), 19, 1
-            .SetText .ColLetterToNumber("O"), 19, ""
-            .SetText .ColLetterToNumber("R"), 19, ""
-          Else
-            .SetText .ColLetterToNumber("G"), 19, 0
-            'lay tu thang den thang
-            .Col = .ColLetterToNumber("U")
-            .Row = 19
-            'lay so thang quyet toan
-            .Text = DateDiff("M", Format("01/" & TAX_Utilities_New.FirstDay, "dd/mm/yyyy"), Format("01/" & TAX_Utilities_New.LastDay, "dd/mm/yyyy")) + 1
-          'set thong tin header neu la to khai tuthang denthang
-             If strLoaiTKQT = "QT_TUNG_NAM" Then
-               .Col = .ColLetterToNumber("O")
-               .Row = 19
-               .Text = 1
-               .Col = .ColLetterToNumber("R")
-               .Text = ""
-               .SetText .ColLetterToNumber("K"), 4, TAX_Utilities_New.FirstDay
-               .SetText .ColLetterToNumber("P"), 4, TAX_Utilities_New.LastDay
-            ElseIf strLoaiTKQT = "QT_NAM_DAU" Then
-               .Col = .ColLetterToNumber("R")
-               .Row = 19
-               .Text = 1
-               .Col = .ColLetterToNumber("O")
-               .Text = ""
-               .SetText .ColLetterToNumber("K"), 4, TAX_Utilities_New.FirstDay
-               .SetText .ColLetterToNumber("P"), 4, TAX_Utilities_New.LastDay
-             End If
-          End If
+'          If strQuy = "TK_QUY" Then
+'            .SetText .ColLetterToNumber("G"), 19, 1
+'            .SetText .ColLetterToNumber("O"), 19, ""
+'            .SetText .ColLetterToNumber("R"), 19, ""
+'          Else
+'            .SetText .ColLetterToNumber("G"), 19, 0
+'            'lay tu thang den thang
+'            .Col = .ColLetterToNumber("U")
+'            .Row = 19
+'            'lay so thang quyet toan
+'            .Text = DateDiff("M", Format("01/" & TAX_Utilities_New.FirstDay, "dd/mm/yyyy"), Format("01/" & TAX_Utilities_New.LastDay, "dd/mm/yyyy")) + 1
+'          'set thong tin header neu la to khai tuthang denthang
+'             If strLoaiTKQT = "QT_TUNG_NAM" Then
+'               .Col = .ColLetterToNumber("O")
+'               .Row = 19
+'               .Text = 1
+'               .Col = .ColLetterToNumber("R")
+'               .Text = ""
+'               .SetText .ColLetterToNumber("K"), 4, TAX_Utilities_New.FirstDay
+'               .SetText .ColLetterToNumber("P"), 4, TAX_Utilities_New.LastDay
+'            ElseIf strLoaiTKQT = "QT_NAM_DAU" Then
+'               .Col = .ColLetterToNumber("R")
+'               .Row = 19
+'               .Text = 1
+'               .Col = .ColLetterToNumber("O")
+'               .Text = ""
+'               .SetText .ColLetterToNumber("K"), 4, TAX_Utilities_New.FirstDay
+'               .SetText .ColLetterToNumber("P"), 4, TAX_Utilities_New.LastDay
+'             End If
+'          End If
         .EventEnabled(EventAllEvents) = True
     End With
     If Strloaitk <> "TKBS" Then

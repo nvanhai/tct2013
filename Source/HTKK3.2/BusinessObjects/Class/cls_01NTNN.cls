@@ -109,7 +109,7 @@ Dim i As Integer
             .Row = 31
             .Text = 1
             UpdateCell fps, .Col, .Row, .Text
-            .SetText .ColLetterToNumber("P"), 5, kythang
+            .SetText .ColLetterToNumber("P"), 5, kyngay
             .Col = .ColLetterToNumber("L")
             .Row = 31
             .Text = ""
