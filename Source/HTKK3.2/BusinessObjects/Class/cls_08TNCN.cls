@@ -85,49 +85,49 @@ Public Sub Prepare2()
         End If
 
         'set thong tin header neu la to khai quy
-        If strQuy = "TK_QUY" Then
-            .SetText .ColLetterToNumber("H"), 18, 1
-            .SetText .ColLetterToNumber("R"), 18, ""
-            .SetText .ColLetterToNumber("X"), 18, ""
-        Else
-            .SetText .ColLetterToNumber("H"), 18, 0
-            .SetText .ColLetterToNumber("R"), 18, ""
-            .SetText .ColLetterToNumber("X"), 18, ""
-            .SetText .ColLetterToNumber("K"), 4, TAX_Utilities_New.FirstDay
-            .SetText .ColLetterToNumber("P"), 4, TAX_Utilities_New.LastDay
-            'set thong tin header neu la to khai tuthang denthang
-            If strLoaiTKQT = "QT_TUNG_NAM" Then
-                .Col = .ColLetterToNumber("R")
-                .Row = 18
-                .Text = 1
-'                .Col = .ColLetterToNumber("X")
-'                .Text = ""
-            ElseIf strLoaiTKQT = "QT_NAM_DAU" Then
-                .Col = .ColLetterToNumber("X")
-                .Row = 18
-                .Text = 1
+'        If strQuy = "TK_QUY" Then
+'            .SetText .ColLetterToNumber("H"), 18, 1
+'            .SetText .ColLetterToNumber("R"), 18, ""
+'            .SetText .ColLetterToNumber("X"), 18, ""
+'        Else
+'            .SetText .ColLetterToNumber("H"), 18, 0
+'            .SetText .ColLetterToNumber("R"), 18, ""
+'            .SetText .ColLetterToNumber("X"), 18, ""
+'            .SetText .ColLetterToNumber("K"), 4, TAX_Utilities_New.FirstDay
+'            .SetText .ColLetterToNumber("P"), 4, TAX_Utilities_New.LastDay
+'            'set thong tin header neu la to khai tuthang denthang
+'            If strLoaiTKQT = "QT_TUNG_NAM" Then
 '                .Col = .ColLetterToNumber("R")
-'                .Text = ""
-            End If
-            
-        End If
+'                .Row = 18
+'                .Text = 1
+''                .Col = .ColLetterToNumber("X")
+''                .Text = ""
+'            ElseIf strLoaiTKQT = "QT_NAM_DAU" Then
+'                .Col = .ColLetterToNumber("X")
+'                .Row = 18
+'                .Text = 1
+''                .Col = .ColLetterToNumber("R")
+''                .Text = ""
+'            End If
+'
+'        End If
           
         'lay gia tri va set hieu thoi gian tu thang den thang
-        .GetText .ColLetterToNumber("K"), 4, tuThang
-        .GetText .ColLetterToNumber("P"), 4, denThang
-        
-        If tuThang <> vbNullString And denThang <> vbNullString Then
-            tuThang = "01/" & tuThang
-            denThang = "01/" & denThang
-            .Col = .ColLetterToNumber("AE")
-            .Row = 7
-'            .Text = DateDiff("M", Format_ddmmyyyy(CStr(tuThang)), Format_ddmmyyyy(CStr(denThang))) + 1
-            .Text = DateDiff("M", Format("01/" & TAX_Utilities_New.FirstDay, "dd/mm/yyyy"), Format("01/" & TAX_Utilities_New.LastDay, "dd/mm/yyyy")) + 1
-        Else
-            .Col = .ColLetterToNumber("AE")
-            .Row = 7
-            .Text = 1
-        End If
+'        .GetText .ColLetterToNumber("K"), 4, tuThang
+'        .GetText .ColLetterToNumber("P"), 4, denThang
+'
+'        If tuThang <> vbNullString And denThang <> vbNullString Then
+'            tuThang = "01/" & tuThang
+'            denThang = "01/" & denThang
+'            .Col = .ColLetterToNumber("AE")
+'            .Row = 7
+''            .Text = DateDiff("M", Format_ddmmyyyy(CStr(tuThang)), Format_ddmmyyyy(CStr(denThang))) + 1
+'            .Text = DateDiff("M", Format("01/" & TAX_Utilities_New.FirstDay, "dd/mm/yyyy"), Format("01/" & TAX_Utilities_New.LastDay, "dd/mm/yyyy")) + 1
+'        Else
+'            .Col = .ColLetterToNumber("AE")
+'            .Row = 7
+'            .Text = 1
+'        End If
 
         'set lai gia tri cho chi tieu [30]
         For Each xmlNode In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
@@ -607,17 +607,17 @@ Private Sub UpdateSheets()
         mCurrentSheet = .Sheet
         For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
            ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-               If (lRow = 18 And lCol = .ColLetterToNumber("R")) Or (lRow = 18 And lCol = .ColLetterToNumber("X")) Then
-                    .GetText lCol, lRow, varTemp
-                    If varTemp = "1" Or UCase(CStr(varTemp)) = "X" Then
-                        UpdateCell fps, lCol, lRow, "x"
-                    Else
-                        UpdateCell fps, lCol, lRow, ""
-                    End If
-               Else
-                    .GetText lCol, lRow, varTemp
-                    UpdateCell fps, lCol, lRow, varTemp
-               End If
+'               If (lRow = 18 And lCol = .ColLetterToNumber("R")) Or (lRow = 18 And lCol = .ColLetterToNumber("X")) Then
+'                    .GetText lCol, lRow, varTemp
+'                    If varTemp = "1" Or UCase(CStr(varTemp)) = "X" Then
+'                        UpdateCell fps, lCol, lRow, "x"
+'                    Else
+'                        UpdateCell fps, lCol, lRow, ""
+'                    End If
+'               Else
+            .GetText lCol, lRow, varTemp
+            UpdateCell fps, lCol, lRow, varTemp
+'              End If
         Next
     End With
 End Sub
