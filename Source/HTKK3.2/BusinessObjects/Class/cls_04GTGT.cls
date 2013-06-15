@@ -45,6 +45,8 @@ Public tuRowDL As Long
 Public denRowDL As Long
 Public strTuRowDenRowPL As String
 
+Private Const sheetPl01_1_GTGT = 2
+
 'Dinh nghia type luu du  Row
 Public Type MY_ROW
     tenCT As String
@@ -126,6 +128,39 @@ Public Sub Prepare1()
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
         
+        'todo 14/06/2013
+        .Sheet = sheetPl01_1_GTGT 'PL01_1
+            .Row = 8
+            .Col = .ColLetterToNumber("C")
+            .Text = ""
+            .CellTag = .CellTag & "~1"
+            .Row = 13
+            .Text = ""
+            .CellTag = .CellTag & "~2"
+    
+    
+    
+            .Row = 18
+            .Text = ""
+            .CellTag = .CellTag & "~3"
+    
+    
+    
+            .Row = 23
+            .Text = ""
+            .CellTag = .CellTag & "~4"
+            
+            
+            
+            .Row = 28
+            .Text = ""
+            .CellTag = .CellTag & "~5"
+      
+        SetDateFormat fps, sheetPl01_1_GTGT, 8, .ColLetterToNumber(colE), DDMMYYYY
+        SetDateFormat fps, sheetPl01_1_GTGT, 13, .ColLetterToNumber(colE), DDMMYYYY
+        SetDateFormat fps, sheetPl01_1_GTGT, 18, .ColLetterToNumber(colE), DDMMYYYY
+        SetDateFormat fps, sheetPl01_1_GTGT, 23, .ColLetterToNumber(colE), DDMMYYYY
+        SetDateFormat fps, sheetPl01_1_GTGT, 28, .ColLetterToNumber(colE), DDMMYYYY
         
     End With
 End Sub
@@ -212,6 +247,17 @@ Public Sub Prepare2()
               .Row = 1 + .Row
               i = i + 1
          Loop Until .Text = "dd"
+         
+         .Sheet = sheetPl01_1_GTGT 'PL1
+            .ActiveSheet = .Sheet
+                .Row = 1
+                .Col = .ColLetterToNumber("C")
+                .CellType = CellTypeButton
+                .TypeButtonTextColor = RGB(0, 0, 255)
+                .TypeButtonColor = &H8000000F
+                .TypeButtonAlign = TypeButtonAlignRight
+                .TypeButtonText = GetAttribute(GetMessageCellById("0104"), "Msg")
+                
         fps.EventEnabled(EventAllEvents) = True
         
         mCurrentSheet = .Sheet
@@ -576,6 +622,60 @@ Dim tCol As Long, tRow As Long
 '            If KeyCode = vbKeyF6 Then
 '                DeleteNode 1, fps.ActiveCol, 50
 '            End If
+
+            If .ActiveSheet = sheetPl01_1_GTGT Then
+                    mCurrentSheet = sheetPl01_1_GTGT
+                    i = 1
+                    .Col = .ColLetterToNumber("B")
+                    .Row = 8
+                    Do
+                         .Text = str(i)
+                         .Col = .ColLetterToNumber("B")
+                         .Row = i + 8
+                         i = i + 1
+                    Loop Until .Text = "aa"
+                    i = 1
+                   .Row = .Row + 4
+                    Do
+                         .Text = str(i)
+                         .Col = .ColLetterToNumber("J")
+                         .Text = "0%"
+                         UpdateCell fps, .Col, .Row, .Text
+                         .Col = .ColLetterToNumber("B")
+                         .Row = 1 + .Row
+                         i = i + 1
+                    Loop Until .Text = "bb"
+                    i = 1
+                   .Row = .Row + 4
+                    Do
+                         .Text = str(i)
+                         .Col = .ColLetterToNumber("J")
+                         .Text = "5%"
+                         UpdateCell fps, .Col, .Row, .Text
+                         .Col = .ColLetterToNumber("B")
+                         .Row = 1 + .Row
+                         i = i + 1
+                    Loop Until .Text = "cc"
+                    i = 1
+                   .Row = .Row + 4
+                    Do
+                         .Text = str(i)
+                         .Col = .ColLetterToNumber("J")
+                         .Text = "10%"
+                         UpdateCell fps, .Col, .Row, .Text
+                         .Col = .ColLetterToNumber("B")
+                         .Row = 1 + .Row
+                         i = i + 1
+                    Loop Until .Text = "dd"
+                    .SetActiveCell iCol, iRow
+                    .Row = iRow
+                    .Col = iCol
+                     
+                    .SetActiveCell iCol, iRow
+                    CellChange2
+                    CellChange3
+                    LockCellBySheet
+            End If
         End If
         fps.EventEnabled(EventAllEvents) = True
     End With
