@@ -70,6 +70,8 @@ Public tuRowDL As Long
 Public denRowDL As Long
 Public strTuRowDenRowPL As String
 
+Public strTkThangQuy As String
+
 
 'This funtion is called after an object of this class is created
 'Its functions is 1st preparing for interface sheets, such as
@@ -228,8 +230,26 @@ Public Sub Prepare2()
             .Text = StrSolanBosung
             UpdateCell fps, .Col, .Row, .Text
         End If
+        
+        ' set loai tk thang/ quy
+         If strTkThangQuy = "TK_THANG" Then
+            .Col = .ColLetterToNumber("K")
+            .Row = 61
+            .Text = "0"
+            UpdateCell fps, .Col, .Row, .Text
+        ElseIf strTkThangQuy = "TK_QUY" Then
+            .Col = .ColLetterToNumber("K")
+            .Row = 61
+            .Text = "1"
+            UpdateCell fps, .Col, .Row, .Text
+        End If
+            'end
+        
         .EventEnabled(EventAllEvents) = True
         ' end
+        
+        
+        
     'dhdang sua yc them nhieu Sheet PL 01_1
     Dim k As Variant
     For k = 2 To 11

@@ -57,6 +57,8 @@ Public tuRowDL As Long
 Public denRowDL As Long
 Public strTuRowDenRowPL As String
 
+Public strTkThangQuy As String
+
 
   
 'This funtion is called after an object of this class is created
@@ -125,6 +127,21 @@ Public Sub Prepare2()
             .Text = StrSolanBosung
             UpdateCell fps, .Col, .Row, .Text
         End If
+        
+        ' set loai tk thang/ quy
+         If strTkThangQuy = "TK_THANG" Then
+            .Col = .ColLetterToNumber("L")
+            .Row = 63
+            .Text = "0"
+            UpdateCell fps, .Col, .Row, .Text
+        ElseIf strTkThangQuy = "TK_QUY" Then
+            .Col = .ColLetterToNumber("L")
+            .Row = 63
+            .Text = "1"
+            UpdateCell fps, .Col, .Row, .Text
+        End If
+            'end
+        
         .EventEnabled(EventAllEvents) = True
         'end
         .Sheet = 1
@@ -1789,7 +1806,7 @@ Public Sub inThongTinDL()
     tuRowDL = 21
     denRowDL = 31
     'TuRow_DenRow_sheet
-    strTuRowDenRowPL = "20_30_2"
+    strTuRowDenRowPL = "9_11_2~9_11_3"
     ' end
 End Sub
 
