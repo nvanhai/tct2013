@@ -1863,10 +1863,18 @@ Public Sub cmdOK_Click()
     'set data
     TAX_Utilities_New.Year = txtYear.Text
     If strKieuKy = KIEU_KY_THANG Then
-        TAX_Utilities_New.month = txtMonth.Text
-        TAX_Utilities_New.ThreeMonths = vbNullString
-        TAX_Utilities_New.FirstDay = vbNullString
-        TAX_Utilities_New.LastDay = vbNullString
+        If TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "01" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "02" _
+        Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "04" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "95" Then
+            TAX_Utilities_New.month = txtMonth.Text
+            TAX_Utilities_New.ThreeMonths = cmbQuy.Text
+            TAX_Utilities_New.FirstDay = vbNullString
+            TAX_Utilities_New.LastDay = vbNullString
+        Else
+            TAX_Utilities_New.month = txtMonth.Text
+            TAX_Utilities_New.ThreeMonths = vbNullString
+            TAX_Utilities_New.FirstDay = vbNullString
+            TAX_Utilities_New.LastDay = vbNullString
+        End If
     ElseIf strKieuKy = KIEU_KY_QUY Then
         TAX_Utilities_New.month = vbNullString
         TAX_Utilities_New.ThreeMonths = cmbQuy.Text

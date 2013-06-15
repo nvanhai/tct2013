@@ -45,6 +45,9 @@ Public StrSolanBosung As String
 Public FlagThaydoi As String
 Public strLoaiNNKD As String
 
+Public strTkThangQuy As String
+
+
 ' Kiem tra thong tin dai ly thue
 ' Neu khong co DL thue se an cac row nay di
 Public FlagDLThue As Boolean
@@ -335,6 +338,20 @@ Public Sub Prepare2()
             .Lock = True
         End If
         ' End set gia han
+        
+        ' set loai tk thang/ quy
+         If strTkThangQuy = "TK_THANG" Then
+            .Col = .ColLetterToNumber("N")
+            .Row = 55
+            .Text = "0"
+            UpdateCell fps, .Col, .Row, .Text
+        ElseIf strTkThangQuy = "TK_QUY" Then
+            .Col = .ColLetterToNumber("N")
+            .Row = 55
+            .Text = "1"
+            UpdateCell fps, .Col, .Row, .Text
+        End If
+            'end
             
         .Sheet = sheetPl01_1_GTGT 'PL1
             .ActiveSheet = .Sheet
