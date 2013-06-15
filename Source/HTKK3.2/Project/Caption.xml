@@ -37,7 +37,7 @@
 	<frmBrowser Caption="">
 		<Item Name="lblCaption" Index="" Caption="Chän ®­êng dÉn ..."/>
 	</frmBrowser>
-	<frmInterfaces Caption="Hç trî kª khai - Phiªn b¶n 3.1.6">
+	<frmInterfaces Caption="Hç trî kª khai - Phiªn b¶n 3.2.0">
 		<Item Name="lblCaption" Index="" Caption="NhËp tê khai"/>
 	</frmInterfaces>
 	<frmCommonInterfaces Caption="">
@@ -85,7 +85,7 @@
 	<frmLogin Caption="">
 		<Item Name="lblCaption" Index="" Caption="§¨ng nhËp hÖ thèng"/>
 	</frmLogin>
-	<frmSystem Caption="Hç trî kª khai - Phiªn b¶n 3.1.6">
+	<frmSystem Caption="Hç trî kª khai - Phiªn b¶n 3.2.0">
 		<Item Name="lblUserInfo" Index="" Caption=""/>
 	</frmSystem>
 	<frmAddSheet Caption="">

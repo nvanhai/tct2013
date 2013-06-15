@@ -5264,6 +5264,13 @@ Private Sub Form_Load()
         objTaxBusiness.StrTKThang_PS = strLoaiTKThang_PS
     End If
     ' end
+    ' to khai GTGT se co to khai thang / quy
+    If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "95" Then
+        objTaxBusiness.strTkThangQuy = strQuy
+    
+    End If
+    ' end
+    
     ' To khai 08/TNCN se co to khai theo quy hoac tu thang den thang
     If idMenu = "74" Or idMenu = "75" Then
         objTaxBusiness.strLoaiTKQT = strLoaiTKQT
