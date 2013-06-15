@@ -6840,7 +6840,7 @@ Private Sub fpSpread1_KeyUp(KeyCode As Integer, Shift As Integer)
     fpSpread1.EventEnabled(EventAllEvents) = False
     If KeyCode = vbKeyF5 Then
      ' xu ly cho to khai 04GTGT
-        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Then
+        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" And fpSpread1.ActiveSheet = "1" Then
             fpSpread1.sheet = mCurrentSheet
             fpSpread1.Col = fpSpread1.ColLetterToNumber("B")
             fpSpread1.Row = 45
@@ -6865,7 +6865,7 @@ Private Sub fpSpread1_KeyUp(KeyCode As Integer, Shift As Integer)
     End If
     If KeyCode = vbKeyF6 Then
         ' xu ly cho to khai 04GTGT
-        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Then
+        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" And fpSpread1.sheet = "1" Then
              fpSpread1.sheet = mCurrentSheet
             fpSpread1.Col = fpSpread1.ColLetterToNumber("B")
             fpSpread1.Row = 45
