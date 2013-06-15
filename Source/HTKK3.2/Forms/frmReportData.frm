@@ -126,7 +126,7 @@ Begin VB.Form frmReportData
       DisplayText     =   ""
       BarWidthReduction=   -1
       TextAlignment   =   0
-      Quality         =   0
+      Quality         =   68
    End
 End
 Attribute VB_Name = "frmReportData"
@@ -644,7 +644,7 @@ nextPrinter:
     End If
         
     ' Kiem tra neu khong co DLT se an cac row DLT di
-    dsTK_checkDLT = "~01~02~04~71~72~11~12~73~03~46~47~48~49~15~16~50~51~36~74~75~70~80~81~82~17~42~43~59~76~41~06~77~05~86~87~89~90~"
+    dsTK_checkDLT = "~01~02~04~71~72~11~12~73~03~46~47~48~49~15~16~50~51~36~74~75~70~80~81~82~17~42~43~59~76~41~06~77~05~86~87~89~90~95~"
 
     If InStr(1, dsTK_checkDLT, "~" & Trim$(idToKhai) & "~", vbTextCompare) > 0 Then
         If objTaxBusiness Is Nothing Then
