@@ -380,6 +380,24 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                 UpdateCell fps, .Col, .Row, IIf(.value = 1, "x", vbNullString)
             End If
             'end
+            ' neu check thue suat 20 % thi set chi tieu 25 = 20%
+            If (Col = .ColLetterToNumber("E") And Row = 6) Then
+                .Sheet = .ActiveSheet
+                .Col = Col
+                .Row = Row
+                If (.value = 1 Or UCase$(.value) = "X") Then
+                    .Row = 41
+                    .Col = .ColLetterToNumber("J")
+                    .Text = 20
+                    UpdateCell fps, .Col, .Row, .Text
+                Else
+                    .Row = 41
+                    .Col = .ColLetterToNumber("J")
+                    .Text = 0
+                    UpdateCell fps, .Col, .Row, .Text
+                End If
+            End If
+            
             'xu ly voi checkbox doanh nghiep co hach toan phu thuoc
             If Col = .ColLetterToNumber("B") And Row = 48 Then
                 .Sheet = .ActiveSheet
@@ -1042,23 +1060,19 @@ End Sub
 'Cause this interface sheets have dynamic rows, this function will set cellnote of error for rising-error cell
 'no parameter
 Private Sub CheckDynamicError()
-    Dim MST1 As Variant, MST2 As Variant, MST3 As Variant, MST4 As Variant
-    Dim MST5 As Variant, MST6 As Variant, MST7 As Variant, MST8 As Variant
-    Dim MST9 As Variant, MST10 As Variant, MST11 As Variant, MST12 As Variant, MST13 As Variant
-    Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer, iFlagTongPhanBo As Variant, iFlagCheckDate As Integer, iFlagSoUuDai As Integer, iFlagCheckMaSTDN As Integer, iFlagCheckMaSTDN10 As Integer
+    Dim iFlagTongPhanBo As Variant, iFlagCheckDate As Integer, iFlagSoUuDai As Integer, iFlagCheckMaSTDN As Integer, iFlagCheckMaSTDN10 As Integer, iFlagCheckSoThue As Integer
     Dim strCheck As String
     Dim blCheck_S2 As Boolean
-    Dim vNgayHD, vFlag, vErrMsg As Variant
+    Dim vFlag As Variant, vErrMsg As Variant
     Dim varTemp As Variant, vMST As Variant, checkboxThue As Variant, vCT26 As Variant, arrCT26() As String
-    Dim errMST As Variant, errTongTLPB As Variant, errEmty As Variant, errDate As Variant, errSoThueUuDai As Variant, errMSTDN As Variant, errMst10 As Variant
+    Dim errMST As Variant, errTongTLPB As Variant, errEmty As Variant, errDate As Variant, errSoThueUuDai As Variant, errMSTDN As Variant, errMst10 As Variant, errTongSoThue As Variant
     Dim i As Integer
     
     ' PL 05
-    Dim CountRow As Long, rowDes As Long, iFlagMSTTrung As Integer, mErrMSTTrung As Variant
-    Dim vMSTCheckTrung As Variant
+    Dim iFlagMSTTrung As Integer, mErrMSTTrung As Variant
     
     ' check gh
-    Dim vCheckGH, vLyDoGH, vErrorCheckGH As Variant
+    Dim vCheckGH As Variant, vLyDoGH As Variant, vErrorCheckGH As Variant
     Dim iflagCheckGH As Integer
     
     With fps
@@ -1079,6 +1093,7 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 29, mErrMSTTrung
         
         .GetText .ColLetterToNumber("E"), 30, vErrorCheckGH
+        .GetText .ColLetterToNumber("E"), 32, errTongSoThue
         
         vFlag = 0
             
@@ -1087,6 +1102,7 @@ Private Sub CheckDynamicError()
         iFlagCheckDate = 0
         iFlagCheckMaSTDN = 0
         iFlagCheckMaSTDN10 = 0
+        iFlagCheckSoThue = 0
         mCurrentSheet = .Sheet
         .GetText .ColLetterToNumber("I"), 54, varTemp
         .Col = .ColLetterToNumber("I")
@@ -1141,7 +1157,7 @@ Private Sub CheckDynamicError()
         ' check ly do gia han
             .GetText .ColLetterToNumber("B"), 48, vCheckGH
             .GetText .ColLetterToNumber("D"), 50, vLyDoGH
-             If Trim(vCheckGH) = "1" Or Trim$(UCase(vCheckGH)) = "X" Then
+             If Trim$(vCheckGH) = "1" Or Trim$(UCase$(vCheckGH)) = "X" Then
                  If Trim$(vLyDoGH) = "" Then
                      .Col = .ColLetterToNumber("D")
                      .Row = 50
@@ -1168,15 +1184,23 @@ Private Sub CheckDynamicError()
         If .SheetVisible = True Then
 
             mCurrentSheet = .Sheet
-            Dim strTenDN As Variant, strMaST As Variant, strValue As Variant
             Dim iFlagEmpty As Integer, iFlagCheckMaST As Integer
-            Dim strKyHieu As Variant, strCheckMST As String
-            Dim vTenDn, vCqtCapCuc, vCqtChiCuc, vTyLe, vSoThue
+            Dim vTenDn As Variant, vCqtCapCuc As Variant, vCqtChiCuc As Variant, vTyLe As Variant, vSoThue As Variant
             Dim strFocusSheetName As String, strFocusRow As String, strFocusCol As String, iFocusFlag As Integer
             Dim iWhiteRow As Integer
+            Dim iFlagTyLe  As Integer
+            Dim vTongTyLe As Double
+            Dim vTongSoThue As Double
+            Dim vCt5 As Variant
+            Dim vColor As Variant
             iFlagEmpty = 0
+            iFlagTyLe = 0
             iFlagCheckMaST = 0
             iWhiteRow = 1
+            
+            ' lay so thue cua to khai
+            .GetText .ColLetterToNumber("F"), 7, vCt5
+            
             'check not empty ten doanh nghiep
             .Row = 35
             Do
@@ -1187,19 +1211,19 @@ Private Sub CheckDynamicError()
                 .GetText .ColLetterToNumber("M"), .Row, vTyLe
                 .GetText .ColLetterToNumber("P"), .Row, vSoThue
                 
-                If Trim(vTenDn) <> "" Or Trim(vMST) <> "" Or Trim(vCqtCapCuc) <> "" Or Trim(vCqtChiCuc) <> "" Or Trim(vTyLe) <> "0" Or Trim(vSoThue) <> "0" Then iWhiteRow = 0
+                If Trim$(vTenDn) <> "" Or Trim$(vMST) <> "" Or Trim$(vCqtCapCuc) <> "" Or Trim$(vCqtChiCuc) <> "" Or Trim$(vTyLe) <> "0" Or Trim$(vSoThue) <> "0" Then iWhiteRow = 0
 
-                If Trim(vMST) <> vbNullString Then
+                If Trim$(vMST) <> vbNullString Then
                        vMST = Replace(vMST, " ", "")
                        vMST = Replace(vMST, "-", "")
                         'vMST = Left(vMST, 10)
 
                        strCheck = ""
                        If Len(vMST) = 10 Or Len(vMST) = 13 Then
-                            strCheck = CheckTaxCode(Mid(vMST, 1, 1), Mid(vMST, 2, 1), Mid(vMST, 3, 1), Mid(vMST, 4, 1), Mid(vMST, 5, 1), Mid(vMST, 6, 1), Mid(vMST, 7, 1), Mid(vMST, 8, 1), Mid(vMST, 9, 1), Mid(vMST, 10, 1), Mid(vMST, 11, 1), Mid(vMST, 12, 1), Mid(vMST, 13, 1))
+                            strCheck = CheckTaxCode(Mid$(vMST, 1, 1), Mid$(vMST, 2, 1), Mid$(vMST, 3, 1), Mid$(vMST, 4, 1), Mid$(vMST, 5, 1), Mid$(vMST, 6, 1), Mid$(vMST, 7, 1), Mid$(vMST, 8, 1), Mid$(vMST, 9, 1), Mid$(vMST, 10, 1), Mid$(vMST, 11, 1), Mid$(vMST, 12, 1), Mid$(vMST, 13, 1))
                        End If
                        
-                       If Mid(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
+                       If Mid$(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
                             .Col = .ColLetterToNumber("F")
                             .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                             .CellNote = errMST   'static
@@ -1209,16 +1233,20 @@ Private Sub CheckDynamicError()
                             'capture the first error cell
                             If iFocusFlag = 0 Then
                                 strFocusSheetName = "'" & .SheetName & "'"
-                                strFocusCol = str(.Col)
-                                strFocusRow = str(.Row)
+                                strFocusCol = str$(.Col)
+                                strFocusRow = str$(.Row)
                                 iFocusFlag = 1
                             End If
+                        Else
+                            .Col = .ColLetterToNumber("F")
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
                         End If
-                    Else
-                        .Col = .ColLetterToNumber("F")
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                    End If
+                Else
+                    .Col = .ColLetterToNumber("F")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
 
                     'check MST trung nhau
 '                     CountRow = .SearchCol(.ColLetterToNumber("F"), -1, -1, vMSTCheckTrung, SearchFlagsNone)
@@ -1266,21 +1294,59 @@ Private Sub CheckDynamicError()
                     .CellNote = ""
                 End If
 
+                ' kiem tra tong ty le
+                vTongTyLe = vTongTyLe + CDbl(vTyLe)
+                vTongSoThue = vTongSoThue + CDbl(vSoThue)
+
                 .Col = .ColLetterToNumber("C")
                 .Row = .Row + 1
             Loop Until .Text = "aa"
+            
+            If vTongTyLe <> 100 And iWhiteRow = 0 Then
+                    .Col = .ColLetterToNumber("M")
+                    .Row = .Row + 1
+                    .BackColor = mErrorColor
+                    .CellNote = errTongTLPB
+                    iFlagTyLe = 1
+            Else
+                    .Row = .Row + 1
+                    .Col = .ColLetterToNumber("C")
+                     vColor = .BackColor
+                    .Col = .ColLetterToNumber("M")
+                    .BackColor = vColor
+                    .CellNote = ""
+            End If
+            ' Kiem tra so thue
+            If CDbl(vCt5) <> vTongSoThue Then
+                    .Col = .ColLetterToNumber("P")
+                    .BackColor = mErrorColor
+                    .CellNote = errTongSoThue
+                    iFlagCheckSoThue = 1
+            Else
+                    .Col = .ColLetterToNumber("C")
+                     vColor = .BackColor
+                    .Col = .ColLetterToNumber("P")
+                    .BackColor = vColor
+                    .CellNote = ""
+            End If
+            
+            
         End If
 '        'end
         blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         .Sheet = .SheetCount
             If blCheck_S2 Then
-            .SetText .ColLetterToNumber("B"), 20, IIf(vFlag = 1, "0", "1")
-            .SetText .ColLetterToNumber("B"), 27, IIf(iFlagCheckMaSTDN10 = 1, "0", "1")
+                .SetText .ColLetterToNumber("B"), 20, IIf(vFlag = 1, "0", "1")
+                .SetText .ColLetterToNumber("B"), 21, IIf(iFlagTyLe = 1, "0", "1")
+                .SetText .ColLetterToNumber("B"), 27, IIf(iFlagCheckMaSTDN10 = 1, "0", "1")
+                .SetText .ColLetterToNumber("B"), 32, IIf(iFlagCheckSoThue = 1, "0", "1")
             Else
-            .SetText .ColLetterToNumber("B"), 20, "1"
-            '.SetText .ColLetterToNumber("B"), 21, "1"
+                .SetText .ColLetterToNumber("B"), 20, "1"
+                .SetText .ColLetterToNumber("B"), 21, "1"
+                .SetText .ColLetterToNumber("B"), 27, "1"
+                .SetText .ColLetterToNumber("B"), 32, "1"
             End If
-            Dim temp As Variant
+            
             .SetText .ColLetterToNumber("B"), 31, IIf(iFlagCheckMaST = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 22, IIf(iFlagEmpty = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 24, IIf(iFlagCheckDate = 1, "0", "1")
