@@ -33,6 +33,8 @@ Public FlagThaydoi As String
 Private Const Row_MSTDN = 14
 Private Const Col_MSTDN = "H"
 
+Private Const colE = "E"
+
 Public strMaNhom As String
 Public strMaNhomAdd As String
 Public lViTri As Long
@@ -672,9 +674,9 @@ Dim tCol As Long, tRow As Long
                     .Col = iCol
                      
                     .SetActiveCell iCol, iRow
-                    CellChange2
-                    CellChange3
-                    LockCellBySheet
+                    'CellChange2
+                    'CellChange3
+                    'LockCellBySheet
             End If
         End If
         fps.EventEnabled(EventAllEvents) = True
