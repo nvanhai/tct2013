@@ -758,6 +758,25 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                    End If
                 .Sheet = .SheetCount - 1
         End If
+        
+        If .ActiveSheet = sheetPl01_1_GTGT Then
+                   If Col = .ColLetterToNumber(colE) Then
+                       .GetText Col, Row, varTemp
+                       If varTemp <> "" And varTemp <> "../../...." Then
+                           If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+                               .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+                           Else
+                               .SetActiveCell Col, Row
+                           End If
+                       Else
+                        .SetText Col, Row, ""
+                       End If
+                       .Col = Col
+                       .Row = Row
+                      UpdateCell fps, .Col, .Row, .Text
+                   End If
+        End If
+        
       .EventEnabled(EventAllEvents) = True
     End With
     
@@ -2038,7 +2057,7 @@ Public Sub inThongTinDL()
     tuRowDL = 13
     denRowDL = 18
     'TuRow_DenRow_sheet
-    strTuRowDenRowPL = "20_30_2"
+    strTuRowDenRowPL = "9_11_2~20_30_3"
     ' end
 End Sub
 
