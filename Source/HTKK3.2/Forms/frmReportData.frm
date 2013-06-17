@@ -1109,8 +1109,6 @@ On Error GoTo ErrHandle
                     If GetAttribute(xmlNodeSheet, "Active") <> "0" Then
                         If Val(GetAttribute(TAX_Utilities_New.NodeMenu, "ID")) = 68 Then
                             PrintSheetAC intSheet, intIndex
-                        ElseIf Val(GetAttribute(TAX_Utilities_New.NodeMenu, "ID")) = 1 Then
-                            PrintSheet01GTGT intSheet, intIndex
                         Else
                             PrintSheet intSheet, intIndex
                         End If

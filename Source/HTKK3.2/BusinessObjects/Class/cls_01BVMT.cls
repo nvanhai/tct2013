@@ -260,32 +260,29 @@ Dim tongNTNN As Variant, tienDoiThanhChu As String
 End Sub
 
 Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
-    Dim strId           As Variant, strLTN As Variant
-    Dim intIndexCombo   As Integer
-    Dim Col7            As Variant
-    Dim iRow            As Long, iCol As Long, GTSua As String
-    Dim txmlCellNode    As MSXML.IXMLDOMNode, txmlCellsNode As MSXML.IXMLDOMNode
-    Dim tCol            As Long, tRow As Long
-    Dim cCol            As Long, cRow As Long
-    Dim cValue          As Variant, temp As Variant, varTemp As Variant
-    Dim cValueG         As Variant
-    Dim cTagF           As String
-    Dim cValueF         As Variant
-    Dim i               As Integer
-    Dim mblLoi          As Boolean
+Dim strId As Variant, strLTN As Variant
+Dim intIndexCombo As Integer
+Dim Col7 As Variant
+Dim iRow As Long, iCol As Long, GTSua As String
+Dim txmlCellNode As MSXML.IXMLDOMNode, txmlCellsNode As MSXML.IXMLDOMNode
+Dim tCol As Long, tRow As Long
+Dim cCol As Long, cRow As Long
+Dim cValue As Variant, temp As Variant, varTemp As Variant
+Dim cValueG As Variant
+Dim cTagF As String
+Dim cValueF As Variant
+Dim i As Integer
+Dim mblLoi As Boolean
 
 
 
-    Dim xmlNodeH15      As MSXML.IXMLDOMNode
-    fps.EventEnabled(EventAllEvents) = False
-
+Dim xmlNodeH15 As MSXML.IXMLDOMNode
+     fps.EventEnabled(EventAllEvents) = False
     With fps
-        .Sheet = 1
-        
-
-        'vttoan
-        'khi tron danh muc khoang san mac dinh don vi tinh la kg va cho phep sua sua
-        If Col = .ColLetterToNumber("C") And .Text <> "" Then
+       .Sheet = 1
+       'vttoan
+       'khi tron danh muc khoang san mac dinh don vi tinh la kg va cho phep sua sua
+       If Col = .ColLetterToNumber("C") And .Text <> "" Then
             intIndexCombo = .TypeComboBoxCurSel
             .Col = .ColLetterToNumber("AB")
             .TypeComboBoxCurSel = intIndexCombo
@@ -296,120 +293,105 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
             .Col = .ColLetterToNumber("AC")
             .GetText .ColLetterToNumber("AB"), Row, strId
             .Text = Trim(Mid(strId, 200, 10))
-            UpdateCell fps, .Col, .Row, .Text
-            .Col = .ColLetterToNumber("AD")
-            .Text = Trim(Left(strId, 200))
-            UpdateCell fps, .Col, .Row, .Text
-            .Col = .ColLetterToNumber("J")
-            .Text = Trim(Mid(strId, 210, 10))
-            UpdateCell fps, .Col, .Row, .Text
-
-            If strId <> "" Then
+             UpdateCell fps, .Col, .Row, .Text
+             .Col = .ColLetterToNumber("AD")
+             .Text = Trim(Left(strId, 200))
+             UpdateCell fps, .Col, .Row, .Text
+             .Col = .ColLetterToNumber("J")
+             .Text = Trim(Mid(strId, 210, 10))
+             UpdateCell fps, .Col, .Row, .Text
+             If strId <> "" Then
                 .Col = .ColLetterToNumber("AE")
                 .Text = strId
                 UpdateCell fps, .Col, .Row, .Text
-            End If
-        End If
-
-        mblLoi = False
-
-        'Huy chon Combo to khai khong hop le va ra thong bao
+             End If
+       End If
+       mblLoi = False
+            'Huy chon Combo to khai khong hop le va ra thong bao
         blGiaTriCu = False
-        If blGiaTriCu And Col = .ColLetterToNumber("C") Then 'And Not mblKeyF5 Then
-            If Not .Visible Then
-                .Visible = True
-                DisplayMessage "0227", msOKOnly, miWarning
-                .Visible = False
-            Else
-                DisplayMessage "0227", msOKOnly, miWarning
-            End If
+            If blGiaTriCu And Col = .ColLetterToNumber("C") Then 'And Not mblKeyF5 Then
+                If Not .Visible Then
+                    .Visible = True
+                    DisplayMessage "0227", msOKOnly, miWarning
+                    .Visible = False
+                Else
+                    DisplayMessage "0227", msOKOnly, miWarning
+                End If
                 
-            .Sheet = 1
-            mCurrentSheet = .Sheet
-            .Row = RowGiaTriCu
-            .Col = ColGiaTriCu
-            .Text = strGiaTriCu
-            .Sheet = 1
-            mCurrentSheet = .Sheet
-            .Row = RowGiaTriCu
-            .Col = ColGiaTriCu
-            UpdateCell fps, .Col, .Row, .Text
-            blGiaTriCu = False
-            mblLoi = True
-        End If
-    
-        'KHBS
+                .Sheet = 1
+                mCurrentSheet = .Sheet
+                .Row = RowGiaTriCu
+                .Col = ColGiaTriCu
+                .Text = strGiaTriCu
+                .Sheet = 1
+                mCurrentSheet = .Sheet
+                .Row = RowGiaTriCu
+                .Col = ColGiaTriCu
+                UpdateCell fps, .Col, .Row, .Text
+                blGiaTriCu = False
+                mblLoi = True
+            End If
+'KHBS
+     If .ActiveSheet = .SheetCount - 1 Then
+         Dim cValueOld As Variant
+         Dim cellid As String
+         Dim xmlCellNodeData As MSXML.IXMLDOMNode
+        ' Dim i As Integer
+             fps.EventEnabled(EventAllEvents) = False
+             .Sheet = .SheetCount - 1
+              cCol = .Col
+              cRow = .Row
+             .Col = .ColLetterToNumber("BD")
+             .Row = .Row
+             .GetText .ColLetterToNumber("BC"), .Row, varTemp
 
-        If .ActiveSheet = .SheetCount - 1 Then
-            Dim cValueOld       As Variant
-            Dim cellid          As String
-            Dim xmlCellNodeData As MSXML.IXMLDOMNode
-            ' Dim i As Integer
-            fps.EventEnabled(EventAllEvents) = False
+       If varTemp <> "" Then
+          Dim arr() As String
+            For i = 0 To UBound(arrDanhSachKHBS)
+               If varTemp = Left(arrDanhSachKHBS(i), InStr(arrDanhSachKHBS(i), "~") - 1) Then
+                   cellid = "AN_" & Right(arrDanhSachKHBS(i), Len(arrDanhSachKHBS(i)) - InStr(arrDanhSachKHBS(i), "~") - 2)
+                  For Each xmlCellNodeData In TAX_Utilities_New.DataKHBS.getElementsByTagName("Cell")
+                       If GetAttribute(xmlCellNodeData, "CellID") = cellid Then
+                            cValue = CDbl(cValue) + CDbl(GetAttribute(xmlCellNodeData, "Value"))
+                            Exit For
+                        End If
+                   Next
+               End If
+            Next
+
+              .Col = .ColLetterToNumber("BF")
+              .Row = Row
+               .value = cValue
+               UpdateCell fps, .Col, .Row, .value
+               .Col = .ColLetterToNumber("BG")
+               .Row = Row
+               UpdateCell fps, .Col, .Row, .value
+               .Col = .ColLetterToNumber("BH")
+               .Row = Row
+               UpdateCell fps, .Col, .Row, .value
+
+
             .Sheet = .SheetCount - 1
-            cCol = .Col
-            cRow = .Row
-            .Col = .ColLetterToNumber("BD")
-            .Row = .Row
-            .GetText .ColLetterToNumber("BC"), .Row, varTemp
-
-            If varTemp <> "" Then
-                Dim arr() As String
-
-                For i = 0 To UBound(arrDanhSachKHBS)
-
-                    If varTemp = Left(arrDanhSachKHBS(i), InStr(arrDanhSachKHBS(i), "~") - 1) Then
-                        cellid = "AN_" & Right(arrDanhSachKHBS(i), Len(arrDanhSachKHBS(i)) - InStr(arrDanhSachKHBS(i), "~") - 2)
-
-                        For Each xmlCellNodeData In TAX_Utilities_New.DataKHBS.getElementsByTagName("Cell")
-
-                            If GetAttribute(xmlCellNodeData, "CellID") = cellid Then
-                                cValue = CDbl(cValue) + CDbl(GetAttribute(xmlCellNodeData, "Value"))
-                                Exit For
-                            End If
-
-                        Next
-
-                    End If
-
-                Next
-
-                .Col = .ColLetterToNumber("BF")
-                .Row = Row
-                .value = cValue
-                UpdateCell fps, .Col, .Row, .value
-                .Col = .ColLetterToNumber("BG")
-                .Row = Row
-                UpdateCell fps, .Col, .Row, .value
-                .Col = .ColLetterToNumber("BH")
-                .Row = Row
-                UpdateCell fps, .Col, .Row, .value
-
-                .Sheet = .SheetCount - 1
-                Set xmlNodeH15 = TAX_Utilities_New.Data(.Sheet - 1).childNodes(2).childNodes(2).lastChild.lastChild
-                ParserCellID fps, GetAttribute(xmlNodeH15, "CellID"), cCol, cRow
+            Set xmlNodeH15 = TAX_Utilities_New.Data(.Sheet - 1).childNodes(2).childNodes(2).lastChild.lastChild
+                 ParserCellID fps, GetAttribute(xmlNodeH15, "CellID"), cCol, cRow
                 .Col = cCol
                 .Row = cRow
                 UpdateCell fps, .Col, .Row, .value
-
                 If .value < 0 Then
                     .Col = .ColLetterToNumber("BE")
                     .Row = cRow + 3
                     .value = 0
                     UpdateCell fps, .Col, .Row, 0
-                Else
+                 Else
                     .Col = .ColLetterToNumber("BE")
                     .Row = cRow + 3
                     UpdateCell fps, .Col, .Row, .value
                 End If
-
-                fps.EventEnabled(EventAllEvents) = True
-            End If
-        End If
-
+            fps.EventEnabled(EventAllEvents) = True
+         End If
+    End If
     End With
-
-    fps.EventEnabled(EventAllEvents) = True
+   fps.EventEnabled(EventAllEvents) = True
 End Sub
 
 Private Sub doiTien2()
@@ -792,14 +774,14 @@ Dim loaiks As Variant
 Dim sluong As Variant
 Dim mphi As Variant
 Dim iFlagEmty As Variant
-Dim CountRow As Integer
+Dim countRow As Integer
     With fps
       .Sheet = .SheetCount
         .GetText .ColLetterToNumber("E"), 15, Error
       .Sheet = 1
       Dim i As Integer
      i = 1
-     CountRow = 0
+     countRow = 0
      .Row = 45
      .Col = .ColLetterToNumber("B")
       Do
@@ -826,11 +808,11 @@ Dim CountRow As Integer
       .Col = .ColLetterToNumber("B")
       .Row = 45 + i
       i = i + 1
-      CountRow = CountRow + 1
+      countRow = countRow + 1
       Loop Until .Text = "aa"
       
       i = 1
-      .Row = 48 + CountRow
+      .Row = 48 + countRow
       .Col = .ColLetterToNumber("B")
       Do
         .GetText .ColLetterToNumber("L"), .Row, sluong
@@ -854,7 +836,7 @@ Dim CountRow As Integer
                 .BackColor = mNonErrorColor
             End If
       .Col = .ColLetterToNumber("B")
-      .Row = 48 + CountRow + i
+      .Row = 48 + countRow + i
       i = i + 1
       Loop Until .Text = "aa"
      .Sheet = .SheetCount
@@ -1036,22 +1018,22 @@ Public Function ResetData() As Boolean
                 
                 Select Case fps.CellType
 
-                    Case CellTypeCheckBox
-                        fps.Text = vbNullString
-                        UpdateCell fps, lCol, lRow, vbNullString
+                        Case CellTypeCheckBox
+                            fps.Text = vbNullString
+                            UpdateCell fps, lCol, lRow, vbNullString
 
-                    Case CellTypeComboBox
-                        fps.Text = vbNullString
-                        UpdateCell fps, lCol, lRow, vbNullString
+                        Case CellTypeComboBox
+                            fps.Text = vbNullString
+                            UpdateCell fps, lCol, lRow, vbNullString
 
-                    Case CellTypeNumber
-                        fps.value = 0
-                        UpdateCell fps, lCol, lRow, vbNullString
+                        Case CellTypeNumber
+                            fps.value = 0
+                            UpdateCell fps, lCol, lRow, vbNullString
 
-                    Case Else
-                        fps.value = vbNullString
-                        UpdateCell fps, lCol, lRow, vbNullString
-                End Select
+                        Case Else
+                            fps.value = vbNullString
+                            UpdateCell fps, lCol, lRow, vbNullString
+                    End Select
 
 
                 
@@ -1060,7 +1042,6 @@ next1:
         Next
        mCurrentSheet = sheetTemp
     End With
-
 End Function
 Public Sub SetData()
 Dim tongNTNN As Variant, tienDoiThanhChu As String
