@@ -46,8 +46,6 @@
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_02_GTGT" InterfaceIni="..\InterfaceIni\KHBS_02_GTGT.xml" ReportIni="..\ReportIni\KHBS_02_GTGT.xml"/>
 		</Validity>
 	</Menu>
-	
-	
 	<Menu ID="04" PopID="101" ParentID="101_1" Caption="Tờ khai GTGT trực tiếp trên GTGT(03/GTGT)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\excel\03_GTGT.xls" ReportTemplate="..\ReportTemplates\excel\03_GTGT.xls" Class="TAX_Business.cls_03GTGT" Class2="TAX_Business.clsReport004">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_GTGT" InterfaceIni="..\InterfaceIni\03_GTGT.xml" ReportIni="..\ReportIni\03_GTGT.xml"/>
@@ -461,5 +459,5 @@
 	<Menu ID="102_4" PopID="1" ParentID="102" Caption="Bảng kê mua vào 01_2/GTGT" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>
 	<Menu ID="102_5" PopID="1" ParentID="102" Caption="Bảng kê bán ra 01_1/TTĐB" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>
 	<Menu ID="102_6" PopID="1" ParentID="102" Caption="Bảng kê mua vào 01_2/TTĐB" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>
-	<Menu ID="102_10" PopID="1" ParentID="102" Caption="Bảng kê 01/NTNN" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>
+	<Menu ID="102_10" PopID="1" ParentID="102" Caption="Tờ khai 01/NTNN" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>
 </Root>

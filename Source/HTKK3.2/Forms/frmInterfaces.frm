@@ -731,9 +731,6 @@ ElseIf Trim(varMenuId) = "05" And fpSpread1.ActiveSheet = 3 Then
 ElseIf Trim(varMenuId) = "59" And fpSpread1.ActiveSheet = 2 Then
     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_06_1_TNCN.xml"))
     colStart = 4
-ElseIf Trim(varMenuId) = "70" And fpSpread1.ActiveSheet = 1 Then
-    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_01_NTNN.xml"))
-    colStart = 2
 End If
 
 Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
@@ -1061,8 +1058,6 @@ Private Sub moveData5A()
         rowStart = rowStart - 2
     End If
         
-   
-        
     With fpSpread1
         
         Dim blockRow, stepRow  As Integer
@@ -1136,7 +1131,6 @@ Private Sub moveData5A()
                 End If
                     
                 .InsertRows (rowStart + 1 + pRow), 1
-                 
                 .CopyRowRange rowStart + pRow, rowStart + pRow, (rowStart + 1) + pRow
                 
                 If xmlSecionNode.childNodes.length > 1 Then
@@ -2660,8 +2654,6 @@ Private Sub cmdDelete_Click()
             Exit Sub
         End If
     End If
-    
-    
 
     Exit Sub
 
@@ -2937,12 +2929,10 @@ Private Sub cmdExport_Click()
         End If
         
         If GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") = "05_TNCN" Then
-           ' objTaxBusiness.flagExport = True
             With fpSpread1
                 .EventEnabled(EventAllEvents) = False
                 .sheet = 2
                 .Row = 22
-                '.AutoCalc = False
                 Do
                     .GetText .ColLetterToNumber("G"), .Row, strValue
                     If Trim(strValue) = "1" Or Trim(strValue) = "x" Then
@@ -2996,9 +2986,7 @@ Private Sub cmdExport_Click()
                 .Text = ""
                 
                 
-                
                 .EventEnabled(EventAllEvents) = True
-                '.AutoCalc = True
             End With
         ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") = "02_TNCN_BH" Or GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") = "02_TNCN_XS" Then
             With fpSpread1
@@ -3105,7 +3093,7 @@ Private Sub cmdExport_Click()
                         countRowDel = countRowDel + 1
                         fpSpread1.Row = countRowDel + 22
                     Loop Until fpSpread1.Text = "aa"
-
+                    
                     Dim arrData5A(1, 5) As Variant
                     fpSpread1.Row = fpSpread1.Row + 1
                     fpSpread1.GetText fpSpread1.ColLetterToNumber("F"), fpSpread1.Row, arrData5A(1, 0)
@@ -3127,7 +3115,7 @@ Private Sub cmdExport_Click()
 '                    fpSpread1.SetText fpSpread1.ColLetterToNumber("H"), fpSpread1.Row, "0"
 '                    fpSpread1.SetText fpSpread1.ColLetterToNumber("I"), fpSpread1.Row, "0"
 '                    fpSpread1.SetText fpSpread1.ColLetterToNumber("J"), fpSpread1.Row, "0"
-
+                    
                     fpSpread1.Row = 23
                     fpSpread1.SetText fpSpread1.ColLetterToNumber("F"), fpSpread1.Row, arrData5A(1, 0)
                     fpSpread1.SetText fpSpread1.ColLetterToNumber("G"), fpSpread1.Row, arrData5A(1, 1)
@@ -3144,6 +3132,7 @@ Private Sub cmdExport_Click()
         End If
         
         fpSpread1.ExportExcelBookEx strFileName, vbNullString, ExcelSaveFlagNoFormulas 'App.path & "\ExportLog.log"
+        
         ' chi ket xuat dong tong
          If idToKhaiKHBS = "17" And TAX_Utilities_New.Year = "2012" Then
              fpSpread1.sheet = 4
@@ -3168,7 +3157,7 @@ Private Sub cmdExport_Click()
              fpSpread1.Col = fpSpread1.ColLetterToNumber("M")
              fpSpread1.Formula = "IF(N22>0,ROUND(L22*O22/N22/2,0),0)"
              fpSpread1.RowHidden = False
-
+             
              fpSpread1.EventEnabled(EventAllEvents) = True
              If objTaxBusiness Is Nothing Then
                  Set objTaxBusiness = CreateObject(GetAttribute(TAX_Utilities_New.NodeValidity, "Class"))
@@ -3179,7 +3168,7 @@ Private Sub cmdExport_Click()
         
        
         
-        ' Chu y khi ket xuat bo Mau Excel Bang Ke, Chu y la co the bo cho nay
+'        ' Chu y khi ket xuat bo Mau Excel Bang Ke, Chu y la co the bo cho nay
 '        With fpSpread1
 '            .EventEnabled(EventAllEvents) = False
 '                If GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") = "02_TNCN_BH" Or GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") = "05_TNCN" Then
@@ -3728,11 +3717,6 @@ Private Sub convertData05KK()
             'date 08-06-2010
             'Turning Load to khai
             'CallFinish
-            ' to khai nam 2012 moi tai sheet 4
-            If TAX_Utilities_New.Year = 2012 Then
-                .sheet = 4
-                
-            End If
 
             .sheet = 1
             mCurrentSheet = .sheet
@@ -4021,7 +4005,7 @@ Private Sub convertData06KK()
 End Sub
 
 Private Sub convertData06KK10()
-   Dim varTemp As Variant
+    Dim varTemp As Variant
     With fpSpread1
         .EventEnabled(EventAllEvents) = False
             .sheet = 1
@@ -4317,7 +4301,6 @@ Private Sub convertData08B()
         .EventEnabled(EventAllEvents) = True
     End With
 End Sub
-
 ''' cmdSave_Click description
 ''' Checking business error but user can save it anyway
 ''' No parameter
@@ -4328,7 +4311,7 @@ Private Sub cmdSave_Click()
     On Error GoTo ErrorHandle
     Dim blnValid As Boolean
     
-'    Debug.Print "Bat dau ghi" & Time
+    'Debug.Print "Bat dau ghi" & Time
     Lbload.Visible = True
     
     flgloadToKhai = False
@@ -4339,13 +4322,12 @@ Private Sub cmdSave_Click()
     Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95") Then
         TonghopKHBS
     End If
-
-    ' Save KHBS
-    If strKHBS = "frmKHBS_BS" Then
-        Call objTaxBusiness.UpdateChangeKHBS
-        saveKHBS
-        Exit Sub
-    End If
+  ' Save KHBS
+            If strKHBS = "frmKHBS_BS" Then
+                Call objTaxBusiness.UpdateChangeKHBS
+                saveKHBS
+                Exit Sub
+            End If
 
     ' Doi voi cac to quyet toan TNCN thi dat co flgloadToKhai = false
     ' Muc dich la trong truong hop load bang ke thi ko tong hop lai du lieu
@@ -4353,53 +4335,46 @@ Private Sub cmdSave_Click()
     If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_10") Then
         objTaxBusiness.flgloadToKhai = flgloadToKhai
     End If
-
-    'CallFinish
-    Debug.Print "bat dau call finish" & Time
-    
-    CallFinish
-            
-    Debug.Print "ket thuc call finish" & Time
-    
-    Dim intCtrl        As Integer
-    Dim strArrActive() As String
-            
-    'Backup node validity
-    For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
-        ReDim Preserve strArrActive(intCtrl)
-        strArrActive(intCtrl) = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(intCtrl), "Active")
-    Next intCtrl
-
-    If Not objTaxBusiness Is Nothing Then
-        'For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
-        Call objTaxBusiness.SetActiveSheet '(TAX_Utilities_New.NodeValidity.childNodes(intCtrl))
-        'Next intCtrl
-    End If
-            
   
-            
-    blnValid = CheckValidData
 
-    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "36") Then
-        If objTaxBusiness.iflag = True Then
-            DisplayMessage "0225", msOKOnly, miInformation
-        End If
-    End If
+  'CallFinish
+             CallFinish
+            
+            
+            Dim intCtrl As Integer
+            Dim strArrActive() As String
+            
+            'Backup node validity
+            For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
+                ReDim Preserve strArrActive(intCtrl)
+                strArrActive(intCtrl) = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(intCtrl), "Active")
+            Next intCtrl
+            If Not objTaxBusiness Is Nothing Then
+                'For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
+                    Call objTaxBusiness.SetActiveSheet '(TAX_Utilities_New.NodeValidity.childNodes(intCtrl))
+                'Next intCtrl
+            End If
+            
+            
+            blnValid = CheckValidData
+            If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "36") Then
+                If objTaxBusiness.iflag = True Then
+                    DisplayMessage "0225", msOKOnly, miInformation
+                End If
+            End If
              
-    ' nkhoan: 02/TNDN
-    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") Then
-        If objTaxBusiness.iflag = True Then
-            DisplayMessage "0240", msOKOnly, miCriticalError
-        End If
-    End If
+             If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") Then
+                If objTaxBusiness.iflag = True Then
+                    DisplayMessage "0240", msOKOnly, miCriticalError
+                End If
+            End If
             
-    'Restore active properties of node validity
-    For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
-        SetAttribute TAX_Utilities_New.NodeValidity.childNodes(intCtrl), "Active", strArrActive(intCtrl)
-    Next intCtrl
-
-    '****************************
-    Lbload.Visible = False
+            'Restore active properties of node validity
+            For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
+                SetAttribute TAX_Utilities_New.NodeValidity.childNodes(intCtrl), "Active", strArrActive(intCtrl)
+            Next intCtrl
+            '****************************
+            Lbload.Visible = False
                 
     If Not blnValid And (checkSoCT = 1 Or checkSoCT = 2 Or checkSoCT = 3 Or checkSoCT = 4) Then
         If DisplayMessage("0184", msYesNo, miQuestion) = mrYes Then
@@ -4464,7 +4439,6 @@ Private Sub CallFinish(Optional blFinish As Boolean)
     Dim arrStrPositions As Variant, arrStrPosition() As String
     
     lblStatus.Visible = False
-    
     With fpSpread1
      If blFinish = False Then
         For i = 1 To .SheetCount - 1
@@ -4481,9 +4455,6 @@ Private Sub CallFinish(Optional blFinish As Boolean)
                     Else
                         delNullRow i - 1
                     End If
-                ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "42" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "43" Then
-                'demo ham delnullrow moi cho 2 to QT 02_TNCN BH, XS
-                    iDelNullRow i - 1
                 Else
                     delNullRow i - 1
                 End If
@@ -4646,7 +4617,6 @@ Private Sub cmdPrint_Click()
     
     CallFinish
     
-    ' nkhoan: 02/TNDN
     If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") Then
                 If objTaxBusiness.iflag = True Then
                     DisplayMessage "0240", msOKOnly, miCriticalError
@@ -5716,14 +5686,11 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
     Dim options As Integer
     Dim star As String
     Dim endd As String
-    Dim id As Variant
     
     If mOnLoad Then Exit Sub
     
     Set frmDD = New frmDuongDan
     Set frmOp_Pr = New frm_Opcheck
-    id = GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID")
-    
        
     With fpSpread1
         .sheet = mCurrentSheet
@@ -5742,16 +5709,16 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
                 Else
                     If ImportExcel(strFileName) = True Then
                     'Debug.Print Time
-                        If id = "17" Or id = "42" Or id = 43 Or id = 59 Or id = 70 Then
+                        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "17" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "59" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Then
                             'moveData5A
                             moveDataNKH
                             'dhdang edit
                             'date 08-06-2010
                             'Turning Load BK xong them moi dong(F5)
                             'CallFinish
-'                        ElseIf id = "01" And .ActiveSheet = 2 Then
+'                        ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" And .ActiveSheet = 2 Then
 '                            moveData01_2
-                        ElseIf id = "05" Then
+                        ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Then
                             moveData01TTDB
                         Else
                             moveData
@@ -5762,7 +5729,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
             End If
         End If
         'dhdang edit dieu khien cell C_19 to 05_09
-        If Row = 19 And Col = .ColLetterToNumber("C") And id = "45" Then
+        If Row = 19 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "45" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
@@ -5813,7 +5780,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         'dhdang
         'xu ly nut check chon tren to 05A(cell N20)
         
-        If Row = 20 And Col = .ColLetterToNumber("G") And id = "17" Then
+        If Row = 20 And Col = .ColLetterToNumber("G") And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "17" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
@@ -5890,7 +5857,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
             End If
         End If
         'xu ly nut chech chon 05A_C20
-        If Row = 20 And Col = .ColLetterToNumber("C") And id = "17" Then
+        If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "17" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
@@ -5948,7 +5915,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         End If
         
         'xu ly nut chech chon 05B_W19
-        If Row = 20 And Col = .ColLetterToNumber("Y") And id = "17" Then
+        If Row = 20 And Col = .ColLetterToNumber("Y") And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "17" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
@@ -6009,7 +5976,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         
         ' xu ly nut check chon tren to khai 06KK-TNCN
         'xu ly nut chech chon 06B_C20
-        If Row = 20 And Col = .ColLetterToNumber("C") And id = "59" Then
+        If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "59" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
@@ -6062,7 +6029,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         
         
         'xu ly nut chech chon 02BH_C20
-        If Row = 20 And Col = .ColLetterToNumber("C") And id = "42" Then
+        If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "42" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
@@ -6113,7 +6080,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
             End If
         End If
         'xu ly nut chech chon 02XS_C20
-        If Row = 20 And Col = .ColLetterToNumber("C") And id = "43" Then
+        If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "43" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
@@ -6720,11 +6687,7 @@ Private Sub DeleteNode(ByVal intSheet As Integer, ByVal pCol As Long, ByVal pRow
     'fpSpread1.SetActiveCell fpSpread1.ActiveCol, fpSpread1.ActiveRow - lRows
     
     ' Delete curent row on Form
-    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "43" Then 'chay ham del row moi cho 2 to 02_TNCN
-        DeleteRow_TNCN intSheet, lLRowBound, lRows
-    Else
-        DeleteRow intSheet, lLRowBound, lRows
-    End If
+    DeleteRow intSheet, lLRowBound, lRows
     'fpSpread1.SetFocus
     
     xmlNodeCells.parentNode.removeChild xmlNodeCells
@@ -7732,7 +7695,7 @@ nextClear:
             End If
             countCell = countCell + 1
         Next
-    ElseIf idtkhai = "03" Or idtkhai = "80" Or idtkhai = "81" Or idtkhai = "82" Or idtkhai = "73" Or idtkhai = "85" Or idtkhai = "71" Or idtkhai = "86" Or idtkhai = "87" Or idtkhai = "89" Or idtkhai = "90" Then
+    ElseIf idtkhai = "03" Or idtkhai = "80" Or idtkhai = "81" Or idtkhai = "82" Or idtkhai = "73" Or idtkhai = "85" Or idtkhai = "71" Or idtkhai = "86" Or idtkhai = "87" Or idtkhai = "89" Then
     Else
         For Each xmlNodeReset In TAX_Utilities_New.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
             fpSpread1.sheet = mCurrentSheet
@@ -8461,7 +8424,7 @@ Public Function delNullRow(sheet As Long)
     fpSpread1.sheet = sheet + 1
     maxRow = fpSpread1.MaxRows
     'Do While countDel <> 19
-'    Do While countDel <> maxRow
+    Do While countDel <> maxRow
         countDel = countDel + 1
         Set xmlNodeListSec = TAX_Utilities_New.Data(sheet).getElementsByTagName("Section")
 'sec
@@ -8473,7 +8436,7 @@ Public Function delNullRow(sheet As Long)
                 Row = 0
                 For Each xmlNodeRow In xmlNodeListRow
                     hasVl = 0
-                    Set xmlNodeListCell = xmlNodeRow.childNodes
+                    Set xmlNodeListCell = xmlNodeListRow.Item(Row).childNodes
                'cell
                     For Each xmlNodeCell In xmlNodeListCell
                         value = GetAttribute(xmlNodeCell, "Value")
@@ -8487,11 +8450,11 @@ Public Function delNullRow(sheet As Long)
                         If Mid(cellid, 2, 1) = "_" Then
                             fpSpread1.ActiveSheet = sheet + 1
                             DeleteNode sheet + 1, fpSpread1.ColLetterToNumber(Left(cellid, 1)), CLng(Right(cellid, Len(cellid) - 2)), True
-'                             Exit For
+                             Exit For
                         ElseIf Mid(cellid, 3, 1) = "_" Then
                             fpSpread1.ActiveSheet = sheet + 1
                             DeleteNode sheet + 1, fpSpread1.ColLetterToNumber(Left(cellid, 2)), CLng(Right(cellid, Len(cellid) - 3)), True
-'                            Exit For
+                            Exit For
                         Else
                             
                         End If
@@ -8501,7 +8464,7 @@ Public Function delNullRow(sheet As Long)
             End If
             numSec = numSec + 1
         Next
-'    Loop
+    Loop
     fpSpread1.ActiveSheet = OldSheet
     Exit Function
 ErrorHandle:
@@ -8630,6 +8593,7 @@ Public Function checkCauTrucData() As Boolean
                             Exit Function
                         End If
                     Next i
+                    
                 Else
                     If soCTTemp > soCTData Then
                         checkCauTrucData = False
@@ -9977,8 +9941,6 @@ Public Function delNullRowOn06(sheet As Long)
     Dim cellid, value As Variant
     Dim OldSheet As Long
     
-    Dim xmlNodeTemp As MSXML.IXMLDOMNode
-    
     'dntai para templ
     Dim i As Long, j As Integer, varTemp As Variant, rowStart As Long
     
@@ -11218,7 +11180,6 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
             rowStartSpread11 = rowStartSpread1
         Else
             .MaxRows = lrowCount + .MaxRows - 1
-
             ' 1. Insert row them cac dong trong
             If isFirstRow = True Then
                 .InsertRows rowStartSpread1 + 1, lrowCount - 1
@@ -11458,11 +11419,10 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
             rowStartSpread2 = rowStartSpread2 + 1
         End If
         ' end
-    
-'       4. Set format cho Grid
+'               4. Set format cho Grid
 
-'       'format max lenght cot [E]
-        .Row = rowStartSpread11
+'               'format max lenght cot [E]
+                .Row = rowStartSpread11
         .Col = .ColLetterToNumber("C")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("C")
