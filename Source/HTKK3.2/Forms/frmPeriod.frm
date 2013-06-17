@@ -432,7 +432,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":02C8
+      SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
    End
@@ -1721,9 +1721,24 @@ Public Sub cmdOK_Click()
     
     '***************************
     If strKieuKy = KIEU_KY_THANG Then
-        If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
-            txtMonth.SetFocus
-            Exit Sub
+        If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" _
+        Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+            If strQuy = "TK_THANG" Then
+                 If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
+                    txtMonth.SetFocus
+                    Exit Sub
+                End If
+            ElseIf strQuy = "TK_QUY" Then
+                If Not CheckPeriod(cmbQuy.Text, txtYear.Text) Then
+                    cmbQuy.SetFocus
+                    Exit Sub
+                End If
+            End If
+        Else
+            If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
+                txtMonth.SetFocus
+                Exit Sub
+            End If
         End If
     ElseIf strKieuKy = KIEU_KY_QUY Then
         If TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73" And chkTKLanPS.value = "1" Then
@@ -1864,11 +1879,18 @@ Public Sub cmdOK_Click()
     TAX_Utilities_New.Year = txtYear.Text
     If strKieuKy = KIEU_KY_THANG Then
         If TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "01" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "02" _
-        Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "04" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "95" Then
-            TAX_Utilities_New.month = txtMonth.Text
-            TAX_Utilities_New.ThreeMonths = cmbQuy.Text
-            TAX_Utilities_New.FirstDay = vbNullString
-            TAX_Utilities_New.LastDay = vbNullString
+        Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "04" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "95" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "71" Then
+            If strQuy = "TK_THANG" Then
+                TAX_Utilities_New.month = txtMonth.Text
+                TAX_Utilities_New.ThreeMonths = vbNullString
+                TAX_Utilities_New.FirstDay = vbNullString
+                TAX_Utilities_New.LastDay = vbNullString
+            ElseIf strQuy = "TK_QUY" Then
+                TAX_Utilities_New.month = txtMonth.Text
+                TAX_Utilities_New.ThreeMonths = cmbQuy.Text
+                TAX_Utilities_New.FirstDay = vbNullString
+                TAX_Utilities_New.LastDay = vbNullString
+            End If
         Else
             TAX_Utilities_New.month = txtMonth.Text
             TAX_Utilities_New.ThreeMonths = vbNullString
@@ -2078,6 +2100,12 @@ Public Sub cmdOK_Click()
             ' to khai nha thau nuoc ngoai
             If idToKhai = "70" Then
                 strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+            ElseIf idToKhai = "01" Or idToKhai = "02" Or idToKhai = "04" Or idToKhai = "95" Or idToKhai = "71" Then
+                If strQuy = "TK_THANG" Then
+                    strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                ElseIf strQuy = "TK_QUY" Then
+                    strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                End If
             Else
                 strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
             End If
@@ -4306,7 +4334,13 @@ On Error GoTo ErrHandle
                 ' Get name of data file
                 If blnExistData Then
                     If strKieuKy = KIEU_KY_THANG Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & txtMonth.Text & txtYear.Text & ".xml"
+                        If strQuy = "TK_THANG" Then
+                            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & txtMonth.Text & txtYear.Text & ".xml"
+                        ElseIf strQuy = "TK_QUY" Then
+                            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(xmlNode, "DataFile") & "_0" & cmbQuy.Text & txtYear.Text & ".xml"
+                        Else
+                            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & txtMonth.Text & txtYear.Text & ".xml"
+                        End If
                     ElseIf strKieuKy = KIEU_KY_QUY Then
                         If strQuy = "TK_TU_THANG" Then
                             strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & TAX_Utilities_New.FirstDay & "_" & TAX_Utilities_New.LastDay & ".xml"
