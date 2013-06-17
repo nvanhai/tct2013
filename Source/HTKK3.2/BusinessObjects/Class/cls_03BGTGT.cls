@@ -66,6 +66,9 @@ Public strTkThangQuy As String
 'add control, data for the control, celltag...
 'No parameter
 Public Sub Prepare1()
+    Dim ct36 As String
+    Dim result1 As Boolean
+    Dim arrStr() As String
 
     With fps
         SetDateFormat fps, 1, rowNgayKy, .ColLetterToNumber("O"), DDMMYYYY
@@ -80,8 +83,31 @@ Public Sub Prepare1()
         .Col = .ColLetterToNumber("BG")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
+                
+        .Sheet = 1
+        If strTkThangQuy = "TK_THANG" Then
+            If TAX_Utilities_New.Month > 1 Then
+                ' set gia tri cua ky truoc chuyen sang
+                result1 = GetMP36Previous(ct36)
+                arrStr = Split(ct36, "~")
+                .Col = .ColLetterToNumber("M")
+                 
+                .Col = .ColLetterToNumber("P")
+                
+                .Col = .ColLetterToNumber("S")
+                
+            End If
+        ElseIf strTkThangQuy = "TK_QUY" Then
+            If TAX_Utilities_New.ThreeMonths > 1 Then
+                ' set gia tri cua ky truoc chuyen sang
+                result1 = GetMP36Previous(ct36)
+                arrStr = Split(ct36, "~")
         
+            End If
+        End If
     End With
+
+
 End Sub
 
 'This funtion is called after executing function "SetupData"
@@ -1835,3 +1861,84 @@ Private Function CheckValidNgayHD(vdate As String) As Boolean
 e:
     CheckValidNgayHD = False
  End Function
+
+
+Private Function GetMP36Previous(ByRef strValue As String) As Boolean
+    Dim xmlDomLastData As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim strDataFileName As String
+    Dim strM41Target As String, strP41Target As String, strS41Target As String
+    Dim iDom As Integer
+    Dim MY As Date
+    Dim kyKkQuy As String
+    
+    iDom = 0
+    GetMP36Previous = True
+    With xmlDomLastData
+        .resolveExternals = True
+        .validateOnParse = True
+        .async = False
+        If strTkThangQuy = "TK_THANG" Then
+            MY = DateSerial(TAX_Utilities_New.Year, TAX_Utilities_New.Month, 1)
+            MY = DateAdd("M", -1, MY)
+        End If
+        
+        If strTkThangQuy = "TK_THANG" Then
+            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("95", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
+        ElseIf strTkThangQuy = "TK_QUY" Then
+            If TAX_Utilities_New.ThreeMonths > 1 Then
+                strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths - 1 & TAX_Utilities_New.Year & ".xml"
+            End If
+        End If
+        
+        If .Load(strDataFileName) = True Then
+            Set xmlNode = .nodeFromID("M_" & rowCt36_37_38)
+            strM41Target = GetAttribute(xmlNode, "Value")
+            Set xmlNode = .nodeFromID("S_" & rowCt36_37_38)
+            strS41Target = GetAttribute(xmlNode, "Value")
+            Set xmlNode = .nodeFromID("P_" & rowCt36_37_38)
+            strP41Target = GetAttribute(xmlNode, "Value")
+            If Val(strM41Target) < 0 Then
+                strValue = strValue & -Val(strM41Target)
+            Else
+                strValue = strValue & "0"
+            End If
+            
+            If Val(strP41Target) < 0 Then
+                strValue = strValue & "~" & -Val(strP41Target)
+            Else
+                strValue = strValue & "~0"
+            End If
+            
+            If CDbl(strS41Target) < 0 Then
+                strValue = strValue & "~" & -Val(strS41Target)
+            Else
+                strValue = strValue & "~0"
+            End If
+            
+'            If fps.Col = fps.ColLetterToNumber("P") Then
+'                strValue = -(Val(strM13Target))
+'            Else
+'                strValue = -(Val(strP13Target))
+'            End If
+            Set xmlNode = Nothing
+        ElseIf .parseError.reason <> vbNullString Then
+            If InStr(1, .parseError.errorCode, "2146697210") <> 0 Then
+                'file data of last month does not exist
+            Else
+                MsgBox .parseError.reason
+            End If
+            GetMP36Previous = False
+        End If
+        
+    End With
+    
+    Set xmlDomLastData = Nothing
+    Set xmlNode = Nothing
+    
+    Exit Function
+    
+ErrorHandle:
+    SaveErrorLog "cls_03BGTGT", "GetMP36Previous", Err.number, Err.Description
+End Function
