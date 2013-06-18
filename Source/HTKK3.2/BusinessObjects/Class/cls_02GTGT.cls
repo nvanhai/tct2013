@@ -379,27 +379,27 @@ With fps
         End If
         
         .GetText .ColLetterToNumber("L"), 17, varTemp
-           If loaiKHBS = "" Then
-                If varTemp <= 0 Then
-                    .Row = 18
-                    .Col = .ColLetterToNumber("L")
-                    .Text = "0"
-                    .Lock = True
-                    UpdateCell fps, .Col, .Row, .Text
-                    .Col = .ColLetterToNumber("L")
-                    .Row = 19
-                    .Text = "0"
-                    .Lock = True
-                    UpdateCell fps, .Col, .Row, .Text
-                Else
-                    .Col = .ColLetterToNumber("L")
-                    .Row = 18
-                    .Lock = False
-                    .Row = 19
-                    .Lock = False
-                End If
-                
-            End If
+'           If loaiKHBS = "" Then
+'                If varTemp <= 0 Then
+'                    .Row = 18
+'                    .Col = .ColLetterToNumber("L")
+'                    .Text = "0"
+'                    .Lock = True
+'                    UpdateCell fps, .Col, .Row, .Text
+'                    .Col = .ColLetterToNumber("L")
+'                    .Row = 19
+'                    .Text = "0"
+'                    .Lock = True
+'                    UpdateCell fps, .Col, .Row, .Text
+'                Else
+'                    .Col = .ColLetterToNumber("L")
+'                    .Row = 18
+'                    .Lock = False
+'                    .Row = 19
+'                    .Lock = False
+'                End If
+'
+'            End If
        fps.EventEnabled(EventAllEvents) = True
         
     End If
