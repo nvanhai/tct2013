@@ -715,8 +715,24 @@ Private Sub chkTkhaiThang_Click()
     Dim dTem, dtem1 As Date
     Dim q As Quy
     
+    m = month(Date)
+    Y = Year(Date)
     
     If strLoaiSacThue = "ToKhaiGTGT" Then
+        ' set gia tri default
+         If m = 1 Then
+                m = 12
+                Y = Y - 1
+            Else
+                m = m - 1
+            End If
+        txtMonth.Text = m
+        txtYear.Text = Y
+        If Len(txtMonth.Text) = 1 Then
+            txtMonth.Text = "0" & txtMonth.Text
+        End If
+        
+    
         If chkTkhaiThang.value = 1 Then
             strQuy = "TK_THANG"
             chkTKQuy.value = 0
