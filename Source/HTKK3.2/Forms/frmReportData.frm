@@ -624,7 +624,7 @@ nextPrinter:
     idToKhai = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
 
     If strKHBS = "TKBS" And (idToKhai = "01" Or idToKhai = "02" Or idToKhai = "04" Or idToKhai = "11" Or idToKhai = "12" Or idToKhai = "06" Or idToKhai = "05" Or idToKhai = "03" Or idToKhai = "71" Or idToKhai = "72" Or idToKhai = "73" Or idToKhai = "77" Or idToKhai = "80" Or idToKhai = "81" Or idToKhai = "82" Or idToKhai = "83" Or idToKhai = "85" Or idToKhai = "86" Or idToKhai = "87" Or idToKhai = "89" _
-    Or idToKhai = "90" Or idToKhai = "95") Then
+    Or idToKhai = "90" Or idToKhai = "95" Or idToKhai = "70") Then
 
         If objTaxBusiness Is Nothing Then
             Set objTaxBusiness = CreateObject(GetAttribute(TAX_Utilities_New.NodeValidity, "Class"))

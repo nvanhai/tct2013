@@ -30,6 +30,8 @@ Public tuRowDL As Long
 Public denRowDL As Long
 Public strTuRowDenRowPL As String
 
+Public FlagThaydoi As String
+
   
 'This funtion is called after an object of this class is created
 'Its functions is 1st preparing for interface sheets, such as
@@ -1229,3 +1231,44 @@ Private Sub IncreaseRowInDOM_01NTNN(fpSpread1 As fpSpread, xmlDomData As MSXML.D
 ErrorHandle:
     SaveErrorLog "mdlFunctions", "IncreaseRowInDOM_01NTNN", Err.number, Err.Description
 End Sub
+
+
+'Set trang thai Flag KHBS active
+Public Sub SetActiveKHBS() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
+    Dim xmlNodeValid As MSXML.IXMLDOMNode, xmlCellNode As MSXML.IXMLDOMNode
+    Dim lCtrl As Long, lCol As Long, lRow As Long
+    Dim blnNullValue As Boolean
+    Dim strValue As String
+    Dim strValue1 As String
+    Dim strValue2 As String
+    Dim strValue3 As String
+    'Check the second sheet
+    'Select Case GetAttribute(xmlNodeValid, "ID")
+    For Each xmlNodeValid In TAX_Utilities_New.NodeValidity.childNodes
+        Select Case GetAttribute(xmlNodeValid, "ID")
+                Case "KHBS"
+                blnNullValue = True
+                'Check value of last node in Data
+                Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 1)
+                    strValue1 = GetAttribute(xmlCellNode, "Value")
+                 Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell")(1)
+                    strValue2 = GetAttribute(xmlCellNode, "Value")
+                 Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell")(7)
+                    strValue3 = GetAttribute(xmlCellNode, "Value")
+          
+                    If (Not IsNullValue(strValue1)) Or TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length > 20 Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Then
+                            blnNullValue = False
+                    End If
+
+                    If blnNullValue Then
+                        SetAttribute xmlNodeValid, "Active", "0"
+                        FlagThaydoi = "1"
+                    End If
+        End Select
+    Next
+    
+    Set xmlCellNode = Nothing
+    Set xmlNodeValid = Nothing
+End Sub
+

@@ -2115,7 +2115,11 @@ Public Sub cmdOK_Click()
         If Trim(TAX_Utilities_New.month) <> "" Then
             ' to khai nha thau nuoc ngoai
             If idToKhai = "70" Then
-                strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                If strLoaiTKThang_PS = "TK_THANG" Then
+                    strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+                    strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                End If
             ElseIf idToKhai = "01" Or idToKhai = "02" Or idToKhai = "04" Or idToKhai = "95" Or idToKhai = "71" Then
                 If strQuy = "TK_THANG" Then
                     strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
@@ -3287,7 +3291,15 @@ Private Sub OptBosung_Click()
             ' Thu tu file bo sung tu 1 den 50
             If (varMenuId = "46" Or varMenuId = "48" Or varMenuId = "15" Or varMenuId = "50" Or varMenuId = "39" Or varMenuId = "36" Or varMenuId = "53" Or varMenuId = "54" Or varMenuId = "70" Or varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "06" Or varMenuId = "05" Or varMenuId = "71" _
             Or varMenuId = "72" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "86" Or varMenuId = "89" Or varMenuId = "90" Or varMenuId = "95") Then
-                strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                If varMenuId = "70" Then
+                    If strLoaiTKThang_PS = "TK_THANG" Then
+                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                    ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                    End If
+                Else
+                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                End If
             ElseIf (varMenuId = "47" Or varMenuId = "49" Or varMenuId = "16" Or varMenuId = "37" Or varMenuId = "51" Or varMenuId = "38" Or varMenuId = "40") Then
                 strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
             ElseIf varMenuId = "11" Or varMenuId = "12" Or varMenuId = "73" Then
