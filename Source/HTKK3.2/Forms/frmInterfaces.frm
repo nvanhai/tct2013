@@ -7682,6 +7682,8 @@ Private Sub ResetData()
             Or (idtkhai = "75" And (lRow < 38 Or lRow > fpSpread1.MaxRows - 5)) Or (idtkhai = "74" And (lRow < 19 Or lRow > 61)) Or (idtkhai = "72" And (lRow < 43 Or lRow > 48)) Or (idtkhai = "95" And (lRow < 34 Or lRow > 44))) And mCurrentSheet = 1 Then
 
                 GoTo nextClear1
+            ElseIf (idtkhai = "11" Or idtkhai = "11") And (mCurrentSheet = 2 Or mCurrentSheet = 2) And lRow < 35 Then
+                GoTo nextClear1
             Else
                 Select Case fpSpread1.CellType
                     Case CellTypeCheckBox

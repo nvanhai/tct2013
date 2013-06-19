@@ -297,6 +297,8 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
     Dim lResult As Integer
     Dim blTemp As Boolean
     
+    Dim CT26 As Variant, CT27 As Variant, CT28 As Variant, vCheck20 As Variant
+    
     fps.EventEnabled(EventAllEvents) = False
 ' set gia lock cell ly do gia han
     If fps.ActiveSheet = 1 Then
@@ -309,11 +311,53 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                     fps.Row = 31
                     fps.Col = fps.ColLetterToNumber("K")
                     fps.Text = 20
+                    fps.Lock = True
                     UpdateCell fps, fps.Col, fps.Row, fps.Text
+                    ' kiem tra rang buoc
+                    fps.Sheet = 1
+                    fps.GetText fps.ColLetterToNumber("K"), 27, CT26
+                    fps.GetText fps.ColLetterToNumber("K"), 28, CT27
+                    fps.GetText fps.ColLetterToNumber("K"), 29, CT28
+                    fps.GetText fps.ColLetterToNumber("D"), 11, vCheck20
+                    ' set chi tieu 28
+                    'sua bat loi theo chi tieu [26]<0 thi lock 28-32
+                    ' set lai gia tri 30,31,32
+                    If Val(CT26) <= 0 Then
+                       '30
+                       fps.Row = 31
+                       fps.Col = fps.ColLetterToNumber("K")
+                       fps.value = 0
+                       fps.Lock = True
+                       UpdateCell fps, fps.Col, fps.Row, 0
+                    Else
+    '                    .Row = 29
+    '                   .Col = .ColLetterToNumber("K")
+    '                   .Lock = False
+                        If Val(CT26) - Val(CT27) - Val(CT28) >= 0 Then
+                            fps.Row = 31
+                            fps.Col = fps.ColLetterToNumber("K")
+                            ' set lai thue suat
+                            If vCheck20 = "1" Or UCase$(CStr(vCheck20)) = "X" Then
+                                fps.value = 20
+                                fps.Lock = True
+                                UpdateCell fps, fps.Col, fps.Row, fps.Text
+                            End If
+                        Else
+                            fps.Row = 31
+                            fps.Col = fps.ColLetterToNumber("K")
+                            ' set lai thue suat
+                            If vCheck20 = "1" Or UCase$(CStr(vCheck20)) = "X" Then
+                                fps.value = 0
+                                fps.Lock = True
+                                UpdateCell fps, fps.Col, fps.Row, fps.Text
+                            End If
+                        End If
+                    End If
                 Else
                     fps.Row = 31
                     fps.Col = fps.ColLetterToNumber("K")
                     fps.Text = 0
+                    fps.Lock = False
                     UpdateCell fps, fps.Col, fps.Row, fps.Text
                 End If
             End If
@@ -352,8 +396,8 @@ Dim cValueF As Variant
 Dim i As Integer
 Dim xmlNodeH15 As MSXML.IXMLDOMNode
 
-Dim CT26, CT27, ct28, ct29, ct31, CT30, ct32 As Variant
-
+Dim CT26, CT27, CT28, ct29, ct31, CT30, ct32 As Variant
+Dim vCheck20 As Variant
 
 With fps
     If .ActiveSheet = .SheetCount - 1 Then
@@ -523,11 +567,12 @@ With fps
                 .Sheet = 1
                 .GetText .ColLetterToNumber("K"), 27, CT26
                 .GetText .ColLetterToNumber("K"), 28, CT27
-                .GetText .ColLetterToNumber("K"), 29, ct28
+                .GetText .ColLetterToNumber("K"), 29, CT28
                 .GetText .ColLetterToNumber("K"), 30, ct29
                 .GetText .ColLetterToNumber("K"), 31, CT30
                 .GetText .ColLetterToNumber("K"), 32, ct31
                 .GetText .ColLetterToNumber("K"), 33, ct32
+                .GetText .ColLetterToNumber("D"), 11, vCheck20
                 ' set chi tieu 28
                 'sua bat loi theo chi tieu [26]<0 thi lock 28-32
                 ' set lai gia tri 30,31,32
@@ -571,7 +616,7 @@ With fps
 '                    .Row = 29
 '                   .Col = .ColLetterToNumber("K")
 '                   .Lock = False
-                    If Val(CT26) - Val(CT27) - Val(ct28) < 0 Then
+                    If Val(CT26) - Val(CT27) - Val(CT28) < 0 Then
                         .Row = 31
                         .Col = .ColLetterToNumber("K")
                         .value = 0
@@ -590,6 +635,11 @@ With fps
                         .Row = 31
                         .Col = .ColLetterToNumber("K")
                         .Lock = False
+                        ' set lai thue suat
+                        If vCheck20 = "1" Or UCase$(CStr(vCheck20)) = "X" Then
+                            .value = 20
+                            .Lock = True
+                        End If
                         
                         .Row = 32
                         .Col = .ColLetterToNumber("K")
@@ -1347,17 +1397,12 @@ Public Sub SetData()
     With fps
         .EventEnabled(EventAllEvents) = False
         ssSheet = mCurrentSheet
-        .Sheet = 2
+        .Sheet = 1
         mCurrentSheet = .Sheet
-        .Row = 34
-        .Col = .ColLetterToNumber("L")
-        .Text = 100
-        UpdateCell fps, .Col, .Row, .Text
-        .Row = 39
-        .Col = .ColLetterToNumber("C")
-        .Text = 3
-        UpdateCell fps, .Col, .Row, .Text
-
+        ' clear checkbox
+        .Row = 11
+        .Col = .ColLetterToNumber("D")
+        .value = 0
       .Sheet = .ActiveSheet
       .EventEnabled(EventAllEvents) = True
     End With
