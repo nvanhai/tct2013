@@ -103,7 +103,8 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
         .EventEnabled(EventAllEvents) = False
         If .ActiveSheet = 1 Then
             If Col = .ColLetterToNumber("R") And Row = 49 Then
-                If TAX_Utilities_New.Year = 2011 And TAX_Utilities_New.Month >= 8 And TAX_Utilities_New.Month <= 12 Then
+                'If TAX_Utilities_New.Year = 2011 And TAX_Utilities_New.Month >= 8 And TAX_Utilities_New.Month <= 12 Then
+                If TAX_Utilities_New.Year = 2011 And TAX_Utilities_New.ThreeMonths >= 3 And TAX_Utilities_New.ThreeMonths <= 4 Then
                     .GetText .ColLetterToNumber("R"), 49, strValue
                     If Val(CStr(strValue)) <= 5000000 Then
                         .Sheet = 1
@@ -359,7 +360,16 @@ Public Function ResetData() As Boolean
 End Function
 
 Public Sub SetData()
-
+    With fps
+        .EventEnabled(EventAllEvents) = False
+        .Sheet = 1
+        mCurrentSheet = .Sheet
+        .Col = .ColLetterToNumber("R")
+        .Row = 56
+        .Text = 20
+        UpdateCell fps, .Col, .Row, .Text
+        .EventEnabled(EventAllEvents) = True
+    End With
 End Sub
 
 Private Sub UpdateSheets()
@@ -386,6 +396,7 @@ Private Sub UpdateSheets()
                End If
              Next
         End If
+        
       .Sheet = .ActiveSheet
       .EventEnabled(EventAllEvents) = True
     End With

@@ -207,7 +207,7 @@ Dim cValueF As Variant
 Dim i As Integer
 Dim xmlNodeH15 As MSXML.IXMLDOMNode
 
-Dim CT26, CT27, ct28, ct29, ct31, CT30, ct32 As Variant
+Dim CT26, CT27, CT28, ct29, ct31, CT30, ct32 As Variant
 
 
 With fps
@@ -378,7 +378,7 @@ With fps
                 .Sheet = 1
                 .GetText .ColLetterToNumber("K"), 27, CT26
                 .GetText .ColLetterToNumber("K"), 28, CT27
-                .GetText .ColLetterToNumber("K"), 29, ct28
+                .GetText .ColLetterToNumber("K"), 29, CT28
                 .GetText .ColLetterToNumber("K"), 30, ct29
                 .GetText .ColLetterToNumber("K"), 31, CT30
                 .GetText .ColLetterToNumber("K"), 32, ct31
