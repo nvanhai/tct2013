@@ -372,6 +372,26 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
         Select Case mCurrentSheet
         Case 1
             'Thuc hien khi chon Checkbox
+             ' neu check thue suat 20 % thi set chi tieu 25 = 20%
+            If (Col = fps.ColLetterToNumber("E") And Row = 6) Then
+                fps.Sheet = fps.ActiveSheet
+                fps.Col = Col
+                fps.Row = Row
+                If (fps.value = 1 Or UCase$(fps.value) = "X") Then
+                    fps.Row = 41
+                    fps.Col = fps.ColLetterToNumber("J")
+                    fps.Text = 20
+                    fps.Lock = True
+                    UpdateCell fps, fps.Col, fps.Row, fps.Text
+                Else
+                    fps.Row = 41
+                    fps.Col = fps.ColLetterToNumber("J")
+                    fps.Text = 0
+                    fps.Lock = False
+                    UpdateCell fps, fps.Col, fps.Row, fps.Text
+                End If
+            End If
+            
             'xu ly voi checkbox doanh nghiep co hach toan phu thuoc
             If (Col = .ColLetterToNumber("E") And Row = 7) Or (Col = .ColLetterToNumber("E") And Row = 6) Then
                 .Sheet = .ActiveSheet
@@ -1502,15 +1522,12 @@ Public Sub SetData()
     With fps
         .EventEnabled(EventAllEvents) = False
         ssSheet = mCurrentSheet
-        .Sheet = 2
+        .Sheet = 1
         mCurrentSheet = .Sheet
-        .Row = 34
-        .Col = .ColLetterToNumber("L")
-        .Text = 100
-        UpdateCell fps, .Col, .Row, .Text
-        .Row = 39
-        .Col = .ColLetterToNumber("C")
-        .Text = 3
+        ' clear checkbox
+        .Row = 6
+        .Col = .ColLetterToNumber("E")
+        .value = 0
         UpdateCell fps, .Col, .Row, .Text
 
       .Sheet = .ActiveSheet
