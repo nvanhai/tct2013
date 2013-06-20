@@ -1576,8 +1576,10 @@ End Sub
 Private Sub cmbQuy_LostFocus()
 'dhdang sua loi thay doi quy cap nhat lai check box phu luc
 'ngay 21/01/2011
-    If (cmbQuy.Text & "/" & txtYear.Text <> TAX_Utilities_New.ThreeMonths & "/" & yChange) And GetAttribute(TAX_Utilities_New.NodeMenu, "Year") = "1/2" And txtNgayCuoi.Enabled And txtNgayDau.Enabled Then
-        Call initNgayDauNgayCuoiKy(CInt(txtYear.Text), cmbQuy.ListIndex)
+    If (cmbQuy.Text & "/" & txtYear.Text <> TAX_Utilities_New.ThreeMonths & "/" & yChange) Then
+        If GetAttribute(TAX_Utilities_New.NodeMenu, "Year") = "1/2" And txtNgayCuoi.Enabled And txtNgayDau.Enabled Then
+            Call initNgayDauNgayCuoiKy(CInt(txtYear.Text), cmbQuy.ListIndex)
+        End If
         LoadGrid
     End If
 End Sub
