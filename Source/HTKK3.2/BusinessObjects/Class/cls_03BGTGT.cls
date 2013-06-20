@@ -263,12 +263,12 @@ Public Sub Prepare2()
         ' set loai tk thang/ quy
          If strTkThangQuy = "TK_THANG" Then
             .Col = .ColLetterToNumber("L")
-            .Row = 63
+            .Row = rowHidden63
             .Text = "0"
             UpdateCell fps, .Col, .Row, .Text
         ElseIf strTkThangQuy = "TK_QUY" Then
             .Col = .ColLetterToNumber("L")
-            .Row = 63
+            .Row = rowHidden63
             .Text = "1"
             UpdateCell fps, .Col, .Row, .Text
         End If
