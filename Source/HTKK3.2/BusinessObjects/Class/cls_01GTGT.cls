@@ -1250,21 +1250,21 @@ Private Sub CheckDynamicError()
             .SetText .ColLetterToNumber("B"), 30, IIf(iFlagvTennguoimua = 1 And blCheck_S2 = True, "0", "1")
             .SetText .ColLetterToNumber("B"), 31, IIf(iFlagvMst = 1 And blCheck_S2 = True, "0", "1")
         
-            If iFocusFlag = 1 Then
-                ' setcell for focus
-                strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
-                .Col = .ColLetterToNumber("C")
-                .Row = 27
-                .Formula = strFormula
-                .Row = 28
-                .Formula = strFormula
-                .Row = 29
-                .Formula = strFormula
-                .Row = 30
-                .Formula = strFormula
-                .Row = 31
-                .Formula = strFormula
-            End If
+'            If iFocusFlag = 1 Then
+'                ' setcell for focus
+'                strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
+'                .Col = .ColLetterToNumber("C")
+'                .Row = 27
+'                .Formula = strFormula
+'                .Row = 28
+'                .Formula = strFormula
+'                .Row = 29
+'                .Formula = strFormula
+'                .Row = 30
+'                .Formula = strFormula
+'                .Row = 31
+'                .Formula = strFormula
+'            End If
          
          'Check MST
          
@@ -1529,25 +1529,25 @@ Private Sub CheckDynamicError()
         .SetText .ColLetterToNumber("B"), 35, IIf(iFlagvTennguoimua = 1 And blCheck_S3 = True, "0", "1")
         .SetText .ColLetterToNumber("B"), 36, IIf(iFlagvMst = 1 And blCheck_S3 = True, "0", "1")
         .SetText .ColLetterToNumber("B"), 37, IIf(iFlagvThuesuat = 1 And blCheck_S3 = True, "0", "1")
-        If iFocusFlag = 1 Then
-            ' setcell for focus
-            
-            strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
-            .Col = .ColLetterToNumber("C")
-            .Row = 32
-            .Formula = strFormula
-            .Row = 33
-            .Formula = strFormula
-            .Row = 34
-            .Formula = strFormula
-            .Row = 35
-            .Formula = strFormula
-            .Row = 36
-            .Formula = strFormula
-            .Row = 37
-            .Formula = strFormula
-            
-        End If
+'        If iFocusFlag = 1 Then
+'            ' setcell for focus
+'
+'            strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
+'            .Col = .ColLetterToNumber("C")
+'            .Row = 32
+'            .Formula = strFormula
+'            .Row = 33
+'            .Formula = strFormula
+'            .Row = 34
+'            .Formula = strFormula
+'            .Row = 35
+'            .Formula = strFormula
+'            .Row = 36
+'            .Formula = strFormula
+'            .Row = 37
+'            .Formula = strFormula
+'
+'        End If
      
      .Sheet = .SheetCount
      .GetText .ColLetterToNumber("B"), 19, vTarget19
@@ -2128,6 +2128,18 @@ Private Sub CheckDynamicError()
             .SetText .ColLetterToNumber("B"), 62, IIf(flagTenCSPT = "1", "0", "1")
           End If
      End If
+     
+     
+     If iFocusFlag = 1 Then
+        ' setcell for focus
+        
+        strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
+        .Col = .ColLetterToNumber("C")
+        .Row = 62
+        .Formula = strFormula
+        
+    End If
+     
     .Sheet = iCurrentSheet
     '.ReDraw = True
     '.Visible = True
