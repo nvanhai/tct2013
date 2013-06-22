@@ -228,6 +228,10 @@ Private Sub CheckDynamicError()
     iFocusFlag = 0
     Dim iWhiteRow As Integer
     Dim mErrCheckCT30, vCT30, vCT29 As Variant, iFlagCheckCT30 As Integer
+    Dim vCT25 As Variant, vCT26 As Variant
+    Dim iFlagCt25 As Integer, iFlagCt26 As Integer
+    Dim vErrorCt25 As Variant, vErrorCt26 As Variant
+    
     With fps
 
         CheckErrorMST
@@ -236,13 +240,21 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 19, error1
         .GetText .ColLetterToNumber("E"), 20, errorThang
         .GetText .ColLetterToNumber("E"), 24, mErrCheckCT30
-       
+       .GetText .ColLetterToNumber("E"), 21, vErrorCt25
+        .GetText .ColLetterToNumber("E"), 22, vErrorCt26
 
         .Sheet = 1
         iFlagCheckCT30 = 0
+        iFlagCt25 = 0
+        iFlagCt26 = 0
         'get CT30,CT29
         .GetText .ColLetterToNumber("R"), 56, vCT29
         .GetText .ColLetterToNumber("R"), 57, vCT30
+        
+        .GetText .ColLetterToNumber("R"), 52, vCT25
+        .GetText .ColLetterToNumber("R"), 53, vCT26
+        
+                
         'check CT29 > CT30
         If vCT30 > vCT29 Then
             .Col = .ColLetterToNumber("R")
@@ -256,6 +268,64 @@ Private Sub CheckDynamicError()
             .BackColor = mNonErrorColor
             .CellNote = ""
         End If
+        ' kiem tra chi tieu 25, 26 la boi cua 9000000, 3600000
+        If TAX_Utilities_New.Year >= 2013 And TAX_Utilities_New.ThreeMonths >= 3 Then
+           ' ct25
+            If Val(vCT25) Mod 9000000 <> 0 Then
+                .Row = 52
+                .Col = .ColLetterToNumber("R")
+                .BackColor = mErrorColor
+                .CellNote = vErrorCt25
+                iFlagCt25 = 1
+            Else
+                .Row = 52
+                .Col = .ColLetterToNumber("R")
+                .BackColor = mNonErrorColor
+                .CellNote = ""
+            End If
+           ' ct26
+            If Val(vCT26) Mod 3600000 <> 0 Then
+                .Row = 53
+                .Col = .ColLetterToNumber("R")
+                .BackColor = mErrorColor
+                .CellNote = vErrorCt26
+                iFlagCt26 = 1
+            Else
+                .Row = 53
+                .Col = .ColLetterToNumber("R")
+                .BackColor = mNonErrorColor
+                .CellNote = ""
+            End If
+        Else
+            'ct25
+            If Val(vCT25) Mod 4000000 <> 0 Then
+                .Row = 52
+                .Col = .ColLetterToNumber("R")
+                .BackColor = mErrorColor
+                .CellNote = vErrorCt25
+                iFlagCt25 = 1
+            Else
+                .Row = 52
+                .Col = .ColLetterToNumber("R")
+                .BackColor = mNonErrorColor
+                .CellNote = ""
+            End If
+            'ct26
+            If Val(vCT26) Mod 1600000 <> 0 Then
+                 .Row = 53
+                .Col = .ColLetterToNumber("R")
+                .BackColor = mErrorColor
+                .CellNote = vErrorCt26
+                iFlagCt26 = 1
+            Else
+                .Row = 53
+                .Col = .ColLetterToNumber("R")
+                .BackColor = mNonErrorColor
+                .CellNote = ""
+
+            End If
+        End If
+        
         
         'check ngay ky
         .Col = .ColLetterToNumber("R")
@@ -295,6 +365,10 @@ Private Sub CheckDynamicError()
 '            .SetText .ColLetterToNumber("B"), 20, "0"
 '            .Sheet = 1
 '        End If
+        .Sheet = .SheetCount
+        .SetText .ColLetterToNumber("B"), 21, IIf(iFlagCt25 = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 22, IIf(iFlagCt26 = 1, "0", "1")
+
         .Sheet = iCurrentSheet
         '.ReDraw = True
         '.Visible = True
