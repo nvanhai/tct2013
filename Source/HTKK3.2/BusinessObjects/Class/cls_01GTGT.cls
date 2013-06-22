@@ -3435,17 +3435,50 @@ Public Sub UpdateSheet()
             Next
         End If
         
-        .Sheet = sheetPl01_KHBS_GTGT
-        mCurrentSheet = sheetPl01_KHBS_GTGT
+        .Sheet = sheetPl01_6B_GTGT
+        mCurrentSheet = sheetPl01_6B_GTGT
         blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         If blCheck_S2 = True Then
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_New.Data(sheetPl01_6B_GTGT - 1).getElementsByTagName("Cell")
                 ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                 .GetText lCol, lRow, varTemp
                 UpdateCell fps, lCol, lRow, varTemp
             Next
         End If
         
+        
+        .Sheet = sheetPl01_7_GTGT
+        mCurrentSheet = sheetPl01_7_GTGT
+        blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        If blCheck_S2 = True Then
+            For Each xmlCellNodeData In TAX_Utilities_New.Data(sheetPl01_7_GTGT - 1).getElementsByTagName("Cell")
+                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+                .GetText lCol, lRow, varTemp
+                UpdateCell fps, lCol, lRow, varTemp
+            Next
+        End If
+        
+        .Sheet = sheetPl01_1TD_GTGT
+        mCurrentSheet = sheetPl01_1TD_GTGT
+        blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        If blCheck_S2 = True Then
+            For Each xmlCellNodeData In TAX_Utilities_New.Data(sheetPl01_1TD_GTGT - 1).getElementsByTagName("Cell")
+                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+                .GetText lCol, lRow, varTemp
+                UpdateCell fps, lCol, lRow, varTemp
+            Next
+        End If
+        
+        .Sheet = sheetPl01_2TD_GTGT
+        mCurrentSheet = sheetPl01_2TD_GTGT
+        blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        If blCheck_S2 = True Then
+            For Each xmlCellNodeData In TAX_Utilities_New.Data(sheetPl01_2TD_GTGT - 1).getElementsByTagName("Cell")
+                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+                .GetText lCol, lRow, varTemp
+                UpdateCell fps, lCol, lRow, varTemp
+            Next
+        End If
         
         ' Update lai sheet KHBS
         .Sheet = .SheetCount - 1
@@ -4284,7 +4317,7 @@ Public Sub inThongTinDL()
     tuRowDL = 22
     denRowDL = 32
     'TuRow_DenRow_sheet
-    strTuRowDenRowPL = "9_11_2~9_11_3~11_13_4~10_12_5~10_12_6~10_11_7~9_11_8~20_30_9"
+    strTuRowDenRowPL = "9_11_2~9_11_3~11_13_4~10_12_5~10_12_6~10_11_7~9_11_8~9_11_9"
     ' end
 End Sub
 
