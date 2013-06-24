@@ -115,7 +115,6 @@ Public Sub Prepare1()
         .Col = .ColLetterToNumber("AE")
         .TypeComboBoxList = strCboNhomNNKDAn
 
-
         SetDateFormat fps, 1, 75, .ColLetterToNumber("T"), DDMMYYYY
         SetDateFormat fps, .SheetCount - 1, 23, .ColLetterToNumber("BG"), DDMMYYYY
         .Sheet = 1
@@ -131,38 +130,70 @@ Public Sub Prepare1()
         .TypeHAlign = TypeHAlignLeft
         
         'todo 14/06/2013
-        .Sheet = sheetPl01_1_GTGT 'PL01_1
+        .Sheet = sheetPl01_1_GTGT 'PL_04_1
             .Row = 8
             .Col = .ColLetterToNumber("C")
             .Text = ""
             .CellTag = .CellTag & "~1"
-            .Row = 13
+            .Row = 17
             .Text = ""
             .CellTag = .CellTag & "~2"
     
-    
-    
-            .Row = 18
+
+            .Row = 26
             .Text = ""
             .CellTag = .CellTag & "~3"
     
-    
-    
-            .Row = 23
+        
+            .Row = 35
             .Text = ""
             .CellTag = .CellTag & "~4"
             
             
             
-            .Row = 28
-            .Text = ""
-            .CellTag = .CellTag & "~5"
+'            .Row = 44
+'            .Text = ""
+'            .CellTag = .CellTag & "~5"
       
         SetDateFormat fps, sheetPl01_1_GTGT, 8, .ColLetterToNumber(colE), DDMMYYYY
-        SetDateFormat fps, sheetPl01_1_GTGT, 13, .ColLetterToNumber(colE), DDMMYYYY
-        SetDateFormat fps, sheetPl01_1_GTGT, 18, .ColLetterToNumber(colE), DDMMYYYY
-        SetDateFormat fps, sheetPl01_1_GTGT, 23, .ColLetterToNumber(colE), DDMMYYYY
-        SetDateFormat fps, sheetPl01_1_GTGT, 28, .ColLetterToNumber(colE), DDMMYYYY
+        SetDateFormat fps, sheetPl01_1_GTGT, 17, .ColLetterToNumber(colE), DDMMYYYY
+        SetDateFormat fps, sheetPl01_1_GTGT, 26, .ColLetterToNumber(colE), DDMMYYYY
+        SetDateFormat fps, sheetPl01_1_GTGT, 35, .ColLetterToNumber(colE), DDMMYYYY
+        'SetDateFormat fps, sheetPl01_1_GTGT, 28, .ColLetterToNumber(colE), DDMMYYYY
+        
+        'nvsu 17/06/2013 set group PL 04-1(nhom hang hoa)
+        .Sheet = 2
+        .Row = 8
+        .Col = .ColLetterToNumber("I")
+        .TypeComboBoxList = strCboNhomNNKD
+        ' set Ma nhom NNKD
+        .Col = .ColLetterToNumber("R")
+        .TypeComboBoxList = strCboNhomNNKDAn
+        
+        .Sheet = 2
+        .Row = 17
+        .Col = .ColLetterToNumber("I")
+        .TypeComboBoxList = strCboNhomNNKD
+        ' set Ma nhom NNKD
+        .Col = .ColLetterToNumber("R")
+        .TypeComboBoxList = strCboNhomNNKDAn
+        
+        .Sheet = 2
+        .Row = 26
+        .Col = .ColLetterToNumber("I")
+        .TypeComboBoxList = strCboNhomNNKD
+        ' set Ma nhom NNKD
+        .Col = .ColLetterToNumber("R")
+        .TypeComboBoxList = strCboNhomNNKDAn
+        
+        .Sheet = 2
+        .Row = 35
+        .Col = .ColLetterToNumber("I")
+        .TypeComboBoxList = strCboNhomNNKD
+        ' set Ma nhom NNKD
+        .Col = .ColLetterToNumber("R")
+        .TypeComboBoxList = strCboNhomNNKDAn
+        '-----------------------------------------------
         
     End With
 End Sub
@@ -624,8 +655,11 @@ Dim tCol As Long, tRow As Long
 '            If KeyCode = vbKeyF6 Then
 '                DeleteNode 1, fps.ActiveCol, 50
 '            End If
-
+            
+            'updated PL 04_1
             If .ActiveSheet = sheetPl01_1_GTGT Then
+                    fps.EventEnabled(EventAllEvents) = False
+                    .Sheet = 2
                     mCurrentSheet = sheetPl01_1_GTGT
                     i = 1
                     .Col = .ColLetterToNumber("B")
@@ -637,34 +671,34 @@ Dim tCol As Long, tRow As Long
                          i = i + 1
                     Loop Until .Text = "aa"
                     i = 1
-                   .Row = .Row + 4
+                   .Row = .Row + 8 '4
                     Do
                          .Text = str(i)
-                         .Col = .ColLetterToNumber("J")
-                         .Text = "0%"
-                         UpdateCell fps, .Col, .Row, .Text
+                         '.Col = .ColLetterToNumber("J")
+                         '.Text = "0%"
+                         'UpdateCell fps, .Col, .Row, .Text
                          .Col = .ColLetterToNumber("B")
                          .Row = 1 + .Row
                          i = i + 1
                     Loop Until .Text = "bb"
                     i = 1
-                   .Row = .Row + 4
+                   .Row = .Row + 8
                     Do
                          .Text = str(i)
-                         .Col = .ColLetterToNumber("J")
-                         .Text = "5%"
-                         UpdateCell fps, .Col, .Row, .Text
+                         '.Col = .ColLetterToNumber("J")
+                         '.Text = "5%"
+                         'UpdateCell fps, .Col, .Row, .Text
                          .Col = .ColLetterToNumber("B")
                          .Row = 1 + .Row
                          i = i + 1
                     Loop Until .Text = "cc"
                     i = 1
-                   .Row = .Row + 4
+                   .Row = .Row + 8
                     Do
                          .Text = str(i)
-                         .Col = .ColLetterToNumber("J")
-                         .Text = "10%"
-                         UpdateCell fps, .Col, .Row, .Text
+                        ' .Col = .ColLetterToNumber("J")
+                         '.Text = "10%"
+                         'UpdateCell fps, .Col, .Row, .Text
                          .Col = .ColLetterToNumber("B")
                          .Row = 1 + .Row
                          i = i + 1
@@ -672,17 +706,14 @@ Dim tCol As Long, tRow As Long
                     .SetActiveCell iCol, iRow
                     .Row = iRow
                     .Col = iCol
-                     
-                    .SetActiveCell iCol, iRow
-                    'CellChange2
-                    'CellChange3
-                    'LockCellBySheet
+                  fps.EventEnabled(EventAllEvents) = True
             End If
         End If
         fps.EventEnabled(EventAllEvents) = True
     End With
 
 End Sub
+
 
 Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As Long, ByVal NewRow As Long, Cancel As Boolean)
     Dim varTemp As Variant
@@ -782,6 +813,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
     
     CellChange Col, Row
 End Sub
+
 
 Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer)
     Dim vL13, vG6 As Variant
