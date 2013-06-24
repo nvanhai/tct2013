@@ -6266,6 +6266,11 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
         'End If
         If .SheetName = "PL 01-1/TTDB" Then
             fpSpread1_LeaveCell Col, Row, Col, Row, True
+        ElseIf .SheetName = "PL 04-1/GTGT" And .sheet = 2 Then
+            fpSpread1_LeaveCell_PL04_1_GTGT Col, Row, Col, Row, True, 8, 11, "aa"
+            fpSpread1_LeaveCell_PL04_1_GTGT Col, Row, Col, Row, True, 17, 20, "bb"
+            fpSpread1_LeaveCell_PL04_1_GTGT Col, Row, Col, Row, True, 26, 29, "cc"
+            fpSpread1_LeaveCell_PL04_1_GTGT Col, Row, Col, Row, True, 35, 38, "dd"
         End If
         .EventEnabled(EventAllEvents) = True
     End With
@@ -7093,6 +7098,171 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
                         .value = 0
                         UpdateCell .Col, .Row, .value
                         .Col = .ColLetterToNumber("L")
+                End If
+            End If
+        Else
+        .Refresh
+        End If
+    End With
+        fpSpread1.ArrowsExitEditMode = True
+        SetStatus NewCol, NewRow
+End Sub
+
+'tinh tong 04-1/GTGT
+Private Sub fpSpread1_LeaveCell_PL04_1_GTGT(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As Long, ByVal NewRow As Long, Cancel As Boolean, start_row As Integer, total_pos As Integer, char_end As String)
+Dim count2, count3 As Long
+Dim str(20) As Variant
+Dim sum1(20), sum2(20) As Variant
+Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
+Dim total1 As Integer
+Dim total1_1 As Integer
+Dim startRow1 As Integer
+Dim char_end1 As String
+
+startRow1 = start_row '8
+total1 = total_pos '11
+total1_1 = total_pos - 1 '10
+char_end1 = char_end
+Const end_1 As String = "aa"
+
+    With fpSpread1
+        .sheet = mCurrentSheet
+        .sheet = 2
+        .Col = Col
+        .Row = Row
+        If .CellType = CellTypeNumber Then
+            .TypeNumberNegStyle = TypeNumberNegStyle1
+        End If
+        If .SheetName = "PL 04-1/GTGT" Then
+'tinh so dong
+            .Col = .ColLetterToNumber("B")
+            .Row = startRow1 '37
+            Do While .Text <> char_end1
+                 count2 = count2 + 1
+                 .Row = count2 + startRow1 '37
+            Loop
+'tinh so dong tong
+            .Col = .ColLetterToNumber("B")
+            .Row = total1 + count2 '40
+            Do While .Text <> end_1
+                 count3 = count3 + 1
+                 .Row = count3 + total1 + count2
+            Loop
+'chuyen? vao phan tong? cong
+            .Row = startRow1 '37
+            .Col = .ColLetterToNumber("I") 'L
+       'tinh exist and move data vao str(),sum1(),sum2()
+            Do
+                If exist <> 0 Then
+                    exist1 = 0
+                    i = 0
+                    Do
+                        If .Text <> "" And .Text = str(i) Then
+                            exist1 = 1
+                            exist1_num = i
+                        Else
+                            
+                        End If
+                        i = i + 1
+                    Loop Until i = exist
+                    
+                    If exist1 = 0 And .Text <> "" Then
+                        str(exist) = .Text
+                        .Col = .ColLetterToNumber("J") 'N
+                        sum1(exist) = sum1(exist) + .value
+                        '.Col = .ColLetterToNumber("P")
+                        'sum2(exist) = .value
+                        .Col = .ColLetterToNumber("I") 'L
+                        exist = exist + 1
+                    ElseIf exist1 = 1 And .Text <> "" Then
+                        .Col = .ColLetterToNumber("J")
+                        sum1(exist1_num) = sum1(exist1_num) + Conversion.CDbl(.value)
+                        '.Col = .ColLetterToNumber("P")
+                        'sum2(exist1_num) = sum2(exist1_num) + Conversion.CDbl(.value)
+                        .Col = .ColLetterToNumber("I")
+                    End If
+                Else
+                    If .Text <> "" Then
+                        str(0) = .Text
+                        .Col = .ColLetterToNumber("J")
+                        sum1(0) = sum1(exist) + .value
+                        '.Col = .ColLetterToNumber("P")
+                        'sum2(0) = .value
+                        .Col = .ColLetterToNumber("I")
+                        exist = exist + 1
+                    End If
+                End If
+                .Row = .Row + 1
+            Loop Until .Row = startRow1 + count2
+            
+            If exist <> 0 Then
+                .Row = startRow1 + count2
+                k = count3
+'them bot dong tong
+                If exist > k Then
+                    Do
+                        InsertNode .ActiveCol, total1 + count2
+                        k = k + 1
+                    Loop Until k = exist
+                 End If
+                k = count3
+                If exist < k Then
+                    Do
+                        DeleteNode .sheet, .ActiveCol + 2, total1 + count2
+                        k = k - 1
+                        .Refresh
+                    Loop Until k = exist
+                End If
+'chuyen du lieu vao dong tong
+        
+                'dntai them bien tam de luu gia tri row
+                Dim rowTemp As Integer
+                .Row = total1 + count2
+
+                If exist >= 1 Then
+                    j = 0
+                    Do
+                        rowTemp = .Row
+                        .Col = .ColLetterToNumber("I")
+                        .value = str(j)
+                        UpdateCell .Col, .Row, .Text
+                        .Col = .ColLetterToNumber("J")
+                        .value = sum1(j)
+                        UpdateCell .Col, .Row, .value
+                        '.Col = .ColLetterToNumber("P")
+                        '.value = sum2(j)
+                        
+                        'luu lai bien row
+                        .Row = rowTemp
+                        UpdateCell .Col, .Row, .value
+                        .Col = .ColLetterToNumber("I")
+                        .Row = .Row + 1
+                        
+                        j = j + 1
+                    Loop Until j = exist
+                End If
+            Else
+                If count3 > 1 Then
+                    Do
+                        DeleteNode .sheet, .ActiveCol, total1_1 + count2 + count3
+                        count3 = count3 - 1
+                    Loop Until count3 = 1
+                    .Row = total1 + 1 '41
+                    .Col = .ColLetterToNumber("I")
+                    .value = ""
+                    UpdateCell .Col, .Row, .value
+                Else
+                        .Row = total1 '41
+                        .Col = .ColLetterToNumber("I")
+                        .value = ""
+                        UpdateCell .Col, .Row, .Text
+                        .Col = .ColLetterToNumber("J")
+                        .value = 0
+                        'UpdateCell .Col, .Row, .value
+                        '.Col = .ColLetterToNumber("P")
+                        .value = 0
+                        UpdateCell .Col, .Row, .value
+                        .Col = .ColLetterToNumber("I")
                 End If
             End If
         Else
