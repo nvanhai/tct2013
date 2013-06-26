@@ -74,6 +74,29 @@ Public strEmailDL As String
 Public strSoHopDongDL As String
 Public strNgayHopDongDL As String
 
+Private Sub DataDM(ByVal Id As String, Optional ByRef TenTN As String)
+Dim arrDanhsach() As String
+Dim strDataFileName As String
+Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+Dim xmlNode As MSXML.IXMLDOMNode
+
+       strDataFileName = "..\InterfaceTemplates\xml\Catalogue_Tinh_Thanh.xml"
+    
+       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If Id = arrDanhsach(1) Then
+                            TenTN = arrDanhsach(3)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub
+
 Public Function Prepared1() As Boolean
         Dim ThangKK As Integer
         Dim xmlDOMdata As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
@@ -160,6 +183,7 @@ End Function
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
     Dim i As Integer
     Dim varMaDM As Variant
+    Dim TenDM As String
     
     i = 0
     ReDim Preserve larrPhongXuLy(0)
@@ -171,7 +195,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .Sheet = 1
         .Col = .ColLetterToNumber(PHONG_XU_LY_COL)
         .Row = PHONG_XU_LY_ROW
-        If rsPXL.Fields.Count > 0 Then
+        If rsPXL.Fields.count > 0 Then
             Do While Not rsPXL.EOF
                 .TypeComboBoxIndex = -1
                 .TypeComboBoxString = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
@@ -218,7 +242,82 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
             .Lock = True
         End If
         ' End set gia han
-
+        
+        ' Phu luc 05
+        .Sheet = 7
+        .Col = .ColLetterToNumber("C")
+        i = 0
+        Do
+            .GetText .ColLetterToNumber("C"), i + 22, varMaDM
+            DataDM varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
+                .Col = .ColLetterToNumber("D")
+                .Row = 22 + i
+                .Text = TenDM
+            End If
+            UpdateCell fps, .Col, .Row, .Text
+             i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = i + 22
+        Loop Until .Text = "aa" Or varMaDM = ""
+        
+        ' Phu luc 06
+        
+        .Sheet = 8
+        .Col = .ColLetterToNumber("E")
+        i = 0
+        Do
+            .GetText .ColLetterToNumber("E"), 8 + i, varMaDM
+            DataDM varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
+                .Col = .ColLetterToNumber("F")
+                .Row = 8 + i
+                .Text = TenDM
+            End If
+            UpdateCell fps, .Col, .Row, .Text
+            
+             i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = i + 8
+        Loop Until .Text = "aa" Or varMaDM = ""
+        
+        ' Phu luc 6B
+        .Sheet = 9
+        .Col = .ColLetterToNumber("D")
+        i = 0
+        Do
+            .GetText .ColLetterToNumber("D"), 7 + i, varMaDM
+            DataDM varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
+                .Col = .ColLetterToNumber("E")
+                .Row = 7 + i
+                .Text = TenDM
+            End If
+            UpdateCell fps, .Col, .Row, .Text
+            
+             i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = i + 7
+        Loop Until .Text = "aa" Or varMaDM = ""
+        
+        ' Phu luc 02TD
+        .Sheet = 12
+        .Col = .ColLetterToNumber("D")
+        i = 0
+        Do
+            .GetText .ColLetterToNumber("D"), 6 + i, varMaDM
+            DataDM varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
+                .Col = .ColLetterToNumber("E")
+                .Row = 6 + i
+                .Text = TenDM
+            End If
+            UpdateCell fps, .Col, .Row, .Text
+            
+             i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = i + 6
+        Loop Until .Text = "aa" Or varMaDM = ""
     End With
     
     Prepared2 = True
@@ -602,12 +701,13 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim vPHONG_XU_LY
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
+    Dim LOAI_KYKK As String
     
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC, vNGANH_NGHE_KD, vTO_KHAI_LAN_PS, vNGAY_PS As Variant
     Dim v_CO_GIA_HAN, VMaLyDoGH
     
 On Error GoTo ErrHandle
-    strSQL = strSQL_HDR
+    strSQL = Replace$(strSQL_HDR, ")", ",LOAI_KYKK)")
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
@@ -649,6 +749,8 @@ On Error GoTo ErrHandle
                     End If
                 Case "AB_41"
                     VMaLyDoGH = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+                Case "K_78"
+                    LOAI_KYKK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
             End Select
         End If
         End With
@@ -818,10 +920,18 @@ On Error GoTo ErrHandle
     Else
         strSQL = strSQL & "null,"
     End If
+    If vLAN_BS = "" Then
+        vLAN_BS = "0"
+    End If
+    If LOAI_KYKK = "0" Then
+        LOAI_KYKK = "T"
+    Else
+        LOAI_KYKK = "Q"
+    End If
     'strSQL = strSQL & "null)"
     'strSQL = strSQL & "'" & IIf(Val(vCO_PHU_LUC6) = 1, "Y", "") & "',"
     strSQL = strSQL & v_CO_GIA_HAN & ","
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & vNGANH_NGHE_KD & "," & vTO_KHAI_LAN_PS & "," & vNGAY_PS & ")"
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & vNGANH_NGHE_KD & "," & vTO_KHAI_LAN_PS & "," & vNGAY_PS & ",'" & LOAI_KYKK & "')"
     GenerateSQL_Header = strSQL
     
     Exit Function
