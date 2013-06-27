@@ -5146,14 +5146,11 @@ Private Sub Command1_Click()
 '            fpSpread1.Formula = ""
 '    End If
     ' End set
-
-
-
-
         mCurrentSheet = tempCurrSheet
         UpdateDataKHBS_TT28 fpSpread1
         'fpSpread1.ActiveSheet = fpSpread1.SheetCount - 1
         DisplayMessage "0222", msOKOnly, miInformation
+        
         ' Bat lai event cho to khai 01A/TNDN, 01B/TNDN
         If GetAttribute(TAX_Utilities_New.NodeValidity, "Class") = "TAX_Business.cls_01BTNDN" Or GetAttribute(TAX_Utilities_New.NodeValidity, "Class") = "TAX_Business.cls_01ATNDN" Then
             fpSpread1.EventEnabled(EventAllEvents) = True
@@ -6200,7 +6197,7 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
     On Error GoTo ErrorHandle
     Dim lValue As String
     Dim IsUpdate As Boolean
-    
+    Dim retvalue As Integer
     If mOnLoad = True Then
         'This action occur only on Setttingup Data
         If mOnSetupData Then
@@ -6271,10 +6268,13 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
         If .SheetName = "PL 01-1/TTDB" Then
             fpSpread1_LeaveCell Col, Row, Col, Row, True
         ElseIf .SheetName = "PL 04-1/GTGT" And .sheet = 2 Then
-            fpSpread1_LeaveCell_PL04_1_GTGT Col, Row, Col, Row, True, 8, 11, "aa"
-            fpSpread1_LeaveCell_PL04_1_GTGT Col, Row, Col, Row, True, 17, 20, "bb"
-            fpSpread1_LeaveCell_PL04_1_GTGT Col, Row, Col, Row, True, 26, 29, "cc"
-            fpSpread1_LeaveCell_PL04_1_GTGT Col, Row, Col, Row, True, 35, 38, "dd"
+            retvalue = 0
+            If (retvalue > 0) Then
+            End If
+            retvalue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 8, 11, "aa")
+            'retValue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 17, 20, "bb") + retValue
+            'retValue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 26, 29, "cc") + retValue
+            'retValue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 35, 38, "dd") + retValue
         End If
         .EventEnabled(EventAllEvents) = True
     End With
@@ -7113,7 +7113,7 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
 End Sub
 
 'tinh tong 04-1/GTGT
-Private Sub fpSpread1_LeaveCell_PL04_1_GTGT(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As Long, ByVal NewRow As Long, Cancel As Boolean, start_row As Integer, total_pos As Integer, char_end As String)
+Private Function fpSpread1_LeaveCell_PL04_1_GTGT(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As Long, ByVal NewRow As Long, Cancel As Boolean, start_row As Integer, total_pos As Integer, char_end As String) As Integer
 Dim count2, count3 As Long
 Dim str(20) As Variant
 Dim sum1(20), sum2(20) As Variant
@@ -7238,7 +7238,7 @@ Const end_1 As String = "aa"
                         
                         'luu lai bien row
                         .Row = rowTemp
-                        UpdateCell .Col, .Row, .value
+                        'UpdateCell .Col, .Row, .value
                         .Col = .ColLetterToNumber("I")
                         .Row = .Row + 1
                         
@@ -7256,16 +7256,16 @@ Const end_1 As String = "aa"
                     .value = ""
                     UpdateCell .Col, .Row, .value
                 Else
-                        .Row = total1 '41
+                        .Row = total1 + 1 '41
                         .Col = .ColLetterToNumber("I")
                         .value = ""
                         UpdateCell .Col, .Row, .Text
                         .Col = .ColLetterToNumber("J")
                         .value = 0
-                        'UpdateCell .Col, .Row, .value
-                        '.Col = .ColLetterToNumber("P")
-                        .value = 0
                         UpdateCell .Col, .Row, .value
+                        '.Col = .ColLetterToNumber("P")
+                        '.value = 0
+                        'UpdateCell .Col, .Row, .value
                         .Col = .ColLetterToNumber("I")
                 End If
             End If
@@ -7275,7 +7275,9 @@ Const end_1 As String = "aa"
     End With
         fpSpread1.ArrowsExitEditMode = True
         SetStatus NewCol, NewRow
-End Sub
+        
+        fpSpread1_LeaveCell_PL04_1_GTGT = count3 + count2
+End Function
 
 ''' fpSpread1_SheetChanged description
 ''' Event fpSpread1_SheetChanged
