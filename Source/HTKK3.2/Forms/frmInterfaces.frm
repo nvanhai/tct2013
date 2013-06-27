@@ -5154,6 +5154,10 @@ Private Sub Command1_Click()
         UpdateDataKHBS_TT28 fpSpread1
         'fpSpread1.ActiveSheet = fpSpread1.SheetCount - 1
         DisplayMessage "0222", msOKOnly, miInformation
+        ' Bat lai event cho to khai 01A/TNDN, 01B/TNDN
+        If GetAttribute(TAX_Utilities_New.NodeValidity, "Class") = "TAX_Business.cls_01BTNDN" Or GetAttribute(TAX_Utilities_New.NodeValidity, "Class") = "TAX_Business.cls_01ATNDN" Then
+            fpSpread1.EventEnabled(EventAllEvents) = True
+        End If
     End If
 End Sub
 
