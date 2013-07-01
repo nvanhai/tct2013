@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by tuyends (FSS-HCM) -->
+<!ATTLIST Cell
+	CellID ID #REQUIRED
+	MaxLen CDATA #IMPLIED
+	MinValue CDATA #IMPLIED
+	MaxValue CDATA #IMPLIED
+	HelpContextID CDATA #REQUIRED
+>
+<!ATTLIST Sections
+	PaperOrientation CDATA #IMPLIED
+>
+<!ELEMENT Dynamic (#PCDATA)>
+<!ELEMENT First (#PCDATA)>
+<!ELEMENT Cell (#PCDATA)>
+<!ELEMENT Cells (Cell+)>
+<!ATTLIST Section
+	Dynamic CDATA #REQUIRED
+	MaxRows CDATA #REQUIRED
+>
+<!ELEMENT Section (Cells+)>
+<!ELEMENT Sections (Section+)>

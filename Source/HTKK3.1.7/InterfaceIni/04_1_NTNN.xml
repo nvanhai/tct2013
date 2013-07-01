@@ -1,0 +1,25 @@
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections >
+
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="E_24" MaxLen="" MinValue="" MaxValue="" HelpContextID="36121"/>
+			<Cell CellID="L_24" MaxLen="14" MinValue="" MaxValue="" HelpContextID="36121"/>
+			<Cell CellID="R_24" MaxLen="" MinValue="" MaxValue="" HelpContextID="36121"/>
+			<Cell CellID="Y_24" MaxLen="" MinValue="" MaxValue="" HelpContextID="36121"/>
+			<Cell CellID="AG_24" MaxLen="" MinValue="" MaxValue="" HelpContextID="36121"/>
+			<Cell CellID="AM_24" MaxLen="" MinValue="" MaxValue="" HelpContextID="36121"/>
+			<Cell CellID="AR_24" MaxLen="10" MinValue="" MaxValue="" HelpContextID="36121"/>
+			<Cell CellID="AW_24" MaxLen="" MinValue="" MaxValue="" HelpContextID="36121"/>
+			<Cell CellID="BD_24" MaxLen="15" MinValue="0" MaxValue="999999999999999" HelpContextID="36121"/>
+			<Cell CellID="BL_24" MaxLen="" MinValue="" MaxValue="" HelpContextID="36121"/>
+			<Cell CellID="BS_24" MaxLen="15" MinValue="0" MaxValue="999999999999999" HelpContextID="36121"/>			
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>			
+			<Cell CellID="BD_26" MaxLen="15" MinValue="0" MaxValue="999999999999999" HelpContextID="36121"/>		
+			<Cell CellID="BS_26" MaxLen="15" MinValue="0" MaxValue="999999999999999" HelpContextID="36121"/>		
+		</Cells>
+	</Section>
+</Sections>
