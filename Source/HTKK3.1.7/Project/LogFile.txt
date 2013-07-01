@@ -1,0 +1,36 @@
+9/16/2011 5:08:16 PM frmReportData Form_Load
+ 380 : Invalid property value
+------------------------------------------------------------
+9/16/2011 5:08:16 PM frmPreview Form_Load
+ 380 : Invalid property value
+------------------------------------------------------------
+9/16/2011 5:08:16 PM frmPreview Form_Active
+ 380 : Invalid property value
+------------------------------------------------------------
+9/16/2011 5:12:01 PM frmReportData Form_Load
+ 380 : Invalid property value
+------------------------------------------------------------
+9/16/2011 5:12:01 PM frmPreview Form_Load
+ 380 : Invalid property value
+------------------------------------------------------------
+9/16/2011 5:12:01 PM frmPreview Form_Active
+ 380 : Invalid property value
+------------------------------------------------------------
+9/16/2011 5:12:25 PM frmReportData Form_Load
+ 380 : Invalid property value
+------------------------------------------------------------
+9/16/2011 5:12:25 PM frmPreview Form_Load
+ 380 : Invalid property value
+------------------------------------------------------------
+9/16/2011 5:12:25 PM frmPreview Form_Active
+ 380 : Invalid property value
+------------------------------------------------------------
+9/16/2011 5:15:12 PM frmReportData Form_Load
+ 380 : Invalid property value
+------------------------------------------------------------
+9/16/2011 5:15:12 PM frmPreview Form_Load
+ 380 : Invalid property value
+------------------------------------------------------------
+9/16/2011 5:15:12 PM frmPreview Form_Active
+ 380 : Invalid property value
+------------------------------------------------------------
