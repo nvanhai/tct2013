@@ -1,0 +1,62 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_8" Value=""/>
+			<Cell CellID="G_7" Value=""/>
+			<Cell CellID="G_9" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="M_12" Value=""/>
+			<Cell CellID="V_12" Value=""/>
+			<Cell CellID="E_22" Value=""/>
+			<Cell CellID="E_24" Value=""/>
+			<Cell CellID="M_24" Value=""/>
+			<Cell CellID="V_24" Value=""/>
+			<Cell CellID="M_22" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_29" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_28" Value=""/>
+			<Cell CellID="M_28" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_22" Value=""/>
+			<Cell CellID="K_14" Value=""/>
+			<Cell CellID="G_16" Value=""/>
+			<Cell CellID="E_18" Value=""/>
+			<Cell CellID="M_18" Value=""/>
+			<Cell CellID="V_18" Value=""/>
+			<Cell CellID="I_19" Value=""/>
+			<Cell CellID="S_19" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_15" Value="2222222222"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="H_45" FirstCell="0" Value="LÝt" MCT="2"/>
+			<Cell CellID="J_45" Value="12.345" MCT="3"/>
+			<Cell CellID="O_45" Value="1000" MCT="4"/>
+			<Cell CellID="U_45" Value="12345" MCT="5"/>
+			<Cell CellID="AB_45" Value="101" MCT="6"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="H_46" FirstCell="1" Value="LÝt" MCT="2"/>
+			<Cell CellID="J_46" Value="15.678" MCT="3"/>
+			<Cell CellID="O_46" Value="1000" MCT="4"/>
+			<Cell CellID="U_46" Value="15678" MCT="5"/>
+			<Cell CellID="AB_46" Value="102" MCT="6"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_59" Value="fgdfg"/>
+			<Cell CellID="R_59" Value="HOA VAN KY"/>
+			<Cell CellID="G_61" Value="dfgdfgdfg"/>
+			<Cell CellID="R_61" Value="17/04/2012"/>
+			<Cell CellID="C_33" Value="1"/>
+			<Cell CellID="F_33" Value=""/>
+			<Cell CellID="I_33" Value=""/>
+		</Cells>
+	</Section>
+</Sections>
