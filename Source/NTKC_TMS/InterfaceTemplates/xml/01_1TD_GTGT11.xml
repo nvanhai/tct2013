@@ -1,0 +1,31 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="H_8" Value=""/>
+			<Cell CellID="F_10" Value=""/>
+			<Cell CellID="F_12" Value=""/>
+			<Cell CellID="F_16" Value=""/>
+			<Cell CellID="N_16" Value=""/>
+			<Cell CellID="V_16" Value=""/>
+			<Cell CellID="E_30" Value=""/>
+			<Cell CellID="E_32" Value=""/>
+			<Cell CellID="M_32" Value=""/>
+			<Cell CellID="V_32" Value=""/>
+			<Cell CellID="M_30" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_39" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_36" Value=""/>
+			<Cell CellID="M_36" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_6" FirstCell="" Value="" MCT="2"/>
+			<Cell CellID="D_6" Value="0" MCT="3"/>
+			<Cell CellID="E_6" Value="0" MCT="4"/>
+			<Cell CellID="F_6" Value="0" MCT="5"/>
+		</Cells>
+	</Section>
+</Sections>

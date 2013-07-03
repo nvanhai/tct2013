@@ -1,0 +1,823 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="E_4" Value=""/>
+			<Cell CellID="E_5" Value=""/>
+			<Cell CellID="E_6" Value=""/>
+			<Cell CellID="E_8" Value=""/>
+			<Cell CellID="K_8" Value=""/>
+			<Cell CellID="Q_8" Value=""/>
+			<Cell CellID="E_21" Value=""/>
+			<Cell CellID="E_10" Value=""/>
+			<Cell CellID="K_12" Value=""/>
+			<Cell CellID="Q_12" Value=""/>
+			<Cell CellID="K_10" Value=""/>
+			<Cell CellID="D_21" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="E_14" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="Q_10" Value=""/>
+			<Cell CellID="Q_14" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="E_16" Value=""/>
+			<Cell CellID="E_23" Value="01/07/2010"/>
+			<Cell CellID="F_23" Value="31/12/2010"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_29" FirstCell="0" Value="2600114771" MCT="1"/>
+			<Cell CellID="E_29" Value="Cty CP Lâm sản XK amp; KD tổng Hợp" MCT="2"/>
+			<Cell CellID="I_29" Value="Thọ Sơn-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_29" Value="40" MCT="4"/>
+			<Cell CellID="M_29" Value="16/07/2010" MCT="5"/>
+			<Cell CellID="O_29" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_29" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_29" Value="LS/11P" MCT="8"/>
+			<Cell CellID="V_29" Value="0000001" MCT="9"/>
+			<Cell CellID="X_29" Value="0003000" MCT="10"/>
+			<Cell CellID="Z_29" Value="3000" MCT="11"/>
+			<Cell CellID="AB_29" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_30" FirstCell="1" Value="2600623176" MCT="1"/>
+			<Cell CellID="E_30" Value="Cty TNHH Tamp;t Phú Thọ" MCT="2"/>
+			<Cell CellID="I_30" Value="Gia Cẩm-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_30" Value="42" MCT="4"/>
+			<Cell CellID="M_30" Value="19/11/2010" MCT="5"/>
+			<Cell CellID="O_30" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_30" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_30" Value="TT/11P" MCT="8"/>
+			<Cell CellID="V_30" Value="0000001" MCT="9"/>
+			<Cell CellID="X_30" Value="0000500" MCT="10"/>
+			<Cell CellID="Z_30" Value="500" MCT="11"/>
+			<Cell CellID="AB_30" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_31" FirstCell="1" Value="2600699577" MCT="1"/>
+			<Cell CellID="E_31" Value="Cty TNHH Thảo lâm" MCT="2"/>
+			<Cell CellID="I_31" Value="Vân Cơ-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_31" Value="43" MCT="4"/>
+			<Cell CellID="M_31" Value="22/11/2010" MCT="5"/>
+			<Cell CellID="O_31" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_31" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_31" Value="TL/11P" MCT="8"/>
+			<Cell CellID="V_31" Value="0000001" MCT="9"/>
+			<Cell CellID="X_31" Value="0002500" MCT="10"/>
+			<Cell CellID="Z_31" Value="2500" MCT="11"/>
+			<Cell CellID="AB_31" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_32" FirstCell="1" Value="2600267009" MCT="1"/>
+			<Cell CellID="E_32" Value="Cty CP Đức Tuấn" MCT="2"/>
+			<Cell CellID="I_32" Value="Vân Cơ-Việt Trì-phú Thọ" MCT="3"/>
+			<Cell CellID="K_32" Value="43" MCT="4"/>
+			<Cell CellID="M_32" Value="22/11/2010" MCT="5"/>
+			<Cell CellID="O_32" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_32" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_32" Value="DT/11P" MCT="8"/>
+			<Cell CellID="V_32" Value="0000001" MCT="9"/>
+			<Cell CellID="X_32" Value="0022500" MCT="10"/>
+			<Cell CellID="Z_32" Value="22500" MCT="11"/>
+			<Cell CellID="AB_32" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_33" FirstCell="1" Value="0100114184008" MCT="1"/>
+			<Cell CellID="E_33" Value="Cty CP bánh kẹo Hải Châu Tại Việt Trì,Phú Thọ" MCT="2"/>
+			<Cell CellID="I_33" Value="Thanh Miếu-Việt Trì-phú Thọ" MCT="3"/>
+			<Cell CellID="K_33" Value="34" MCT="4"/>
+			<Cell CellID="M_33" Value="23/11/2010" MCT="5"/>
+			<Cell CellID="O_33" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_33" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_33" Value="VT/11P" MCT="8"/>
+			<Cell CellID="V_33" Value="0000001" MCT="9"/>
+			<Cell CellID="X_33" Value="0004000" MCT="10"/>
+			<Cell CellID="Z_33" Value="4000" MCT="11"/>
+			<Cell CellID="AB_33" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_34" FirstCell="1" Value="2600435045" MCT="1"/>
+			<Cell CellID="E_34" Value="Cty CP gas Phú Thọ" MCT="2"/>
+			<Cell CellID="I_34" Value="Hùng Sơn-Lâm Thao-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_34" Value="44" MCT="4"/>
+			<Cell CellID="M_34" Value="24/11/2010" MCT="5"/>
+			<Cell CellID="O_34" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_34" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_34" Value="CP/11P" MCT="8"/>
+			<Cell CellID="V_34" Value="0000001" MCT="9"/>
+			<Cell CellID="X_34" Value="0005000" MCT="10"/>
+			<Cell CellID="Z_34" Value="5000" MCT="11"/>
+			<Cell CellID="AB_34" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_35" FirstCell="1" Value="2600319024" MCT="1"/>
+			<Cell CellID="E_35" Value="Cty TNHH TM Khánh Mai" MCT="2"/>
+			<Cell CellID="I_35" Value="Hùng Sơn-Lâm Thao-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_35" Value="45" MCT="4"/>
+			<Cell CellID="M_35" Value="24/11/2010" MCT="5"/>
+			<Cell CellID="O_35" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_35" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_35" Value="KM/11P" MCT="8"/>
+			<Cell CellID="V_35" Value="0000001" MCT="9"/>
+			<Cell CellID="X_35" Value="0005000" MCT="10"/>
+			<Cell CellID="Z_35" Value="5000" MCT="11"/>
+			<Cell CellID="AB_35" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_36" FirstCell="1" Value="2600103843" MCT="1"/>
+			<Cell CellID="E_36" Value="Cty CP bia rượi Viger" MCT="2"/>
+			<Cell CellID="I_36" Value="Bến Gót-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_36" Value="46" MCT="4"/>
+			<Cell CellID="M_36" Value="24/11/2010" MCT="5"/>
+			<Cell CellID="O_36" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_36" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_36" Value="VG/11P" MCT="8"/>
+			<Cell CellID="V_36" Value="0000001" MCT="9"/>
+			<Cell CellID="X_36" Value="0002500" MCT="10"/>
+			<Cell CellID="Z_36" Value="2500" MCT="11"/>
+			<Cell CellID="AB_36" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_37" FirstCell="1" Value="0101066342003" MCT="1"/>
+			<Cell CellID="E_37" Value="CN Cty TNHH TMamp;DV Hoa Hồng" MCT="2"/>
+			<Cell CellID="I_37" Value="Tiên Cát-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_37" Value="47" MCT="4"/>
+			<Cell CellID="M_37" Value="28/11/2010" MCT="5"/>
+			<Cell CellID="O_37" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_37" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_37" Value="HH/11P" MCT="8"/>
+			<Cell CellID="V_37" Value="0000001" MCT="9"/>
+			<Cell CellID="X_37" Value="0005000" MCT="10"/>
+			<Cell CellID="Z_37" Value="5000" MCT="11"/>
+			<Cell CellID="AB_37" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_38" FirstCell="1" Value="2600274729" MCT="1"/>
+			<Cell CellID="E_38" Value="Cty TNHH TM Đức Thành" MCT="2"/>
+			<Cell CellID="I_38" Value="Dữu Lâu-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_38" Value="50" MCT="4"/>
+			<Cell CellID="M_38" Value="30/11/2010" MCT="5"/>
+			<Cell CellID="O_38" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_38" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_38" Value="DT/11P" MCT="8"/>
+			<Cell CellID="V_38" Value="0000001" MCT="9"/>
+			<Cell CellID="X_38" Value="0002500" MCT="10"/>
+			<Cell CellID="Z_38" Value="2500" MCT="11"/>
+			<Cell CellID="AB_38" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_39" FirstCell="1" Value="2600343852" MCT="1"/>
+			<Cell CellID="E_39" Value="Cty TNHH Minh Phương " MCT="2"/>
+			<Cell CellID="I_39" Value="Vân Phú-Việt Trì-PhúThọ" MCT="3"/>
+			<Cell CellID="K_39" Value="51" MCT="4"/>
+			<Cell CellID="M_39" Value="01/12/2010" MCT="5"/>
+			<Cell CellID="O_39" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_39" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_39" Value="MP/11P" MCT="8"/>
+			<Cell CellID="V_39" Value="0000001" MCT="9"/>
+			<Cell CellID="X_39" Value="0000500" MCT="10"/>
+			<Cell CellID="Z_39" Value="500" MCT="11"/>
+			<Cell CellID="AB_39" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_40" FirstCell="1" Value="2600378781" MCT="1"/>
+			<Cell CellID="E_40" Value="Cty CP Tân Bảo Hưng" MCT="2"/>
+			<Cell CellID="I_40" Value="Thọ Sơn-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_40" Value="52" MCT="4"/>
+			<Cell CellID="M_40" Value="01/12/2010" MCT="5"/>
+			<Cell CellID="O_40" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_40" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_40" Value="BH/11P" MCT="8"/>
+			<Cell CellID="V_40" Value="0000001" MCT="9"/>
+			<Cell CellID="X_40" Value="0000500" MCT="10"/>
+			<Cell CellID="Z_40" Value="500" MCT="11"/>
+			<Cell CellID="AB_40" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_41" FirstCell="1" Value="2600641915" MCT="1"/>
+			<Cell CellID="E_41" Value="Cty TNHH MTV cơ khí amp;XD Hải Nga" MCT="2"/>
+			<Cell CellID="I_41" Value="Bến Gót-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_41" Value="53" MCT="4"/>
+			<Cell CellID="M_41" Value="01/12/2010" MCT="5"/>
+			<Cell CellID="O_41" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_41" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_41" Value="HN/11P" MCT="8"/>
+			<Cell CellID="V_41" Value="0000001" MCT="9"/>
+			<Cell CellID="X_41" Value="0000250" MCT="10"/>
+			<Cell CellID="Z_41" Value="250" MCT="11"/>
+			<Cell CellID="AB_41" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_42" FirstCell="1" Value="2600335770" MCT="1"/>
+			<Cell CellID="E_42" Value="Cty CP khí CN amp; DVTM Supe Lâm Thao" MCT="2"/>
+			<Cell CellID="I_42" Value="TT Lâm Thao-Lâm Thao-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_42" Value="67" MCT="4"/>
+			<Cell CellID="M_42" Value="17/12/2010" MCT="5"/>
+			<Cell CellID="O_42" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_42" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_42" Value="SP/11P" MCT="8"/>
+			<Cell CellID="V_42" Value="0000001" MCT="9"/>
+			<Cell CellID="X_42" Value="0003000" MCT="10"/>
+			<Cell CellID="Z_42" Value="3000" MCT="11"/>
+			<Cell CellID="AB_42" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_43" FirstCell="1" Value="2600424614" MCT="1"/>
+			<Cell CellID="E_43" Value="Cty TM Dựơc Phẩm Hồng Đức" MCT="2"/>
+			<Cell CellID="I_43" Value="Trưng Vương-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_43" Value="68" MCT="4"/>
+			<Cell CellID="M_43" Value="18/12/2010" MCT="5"/>
+			<Cell CellID="O_43" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_43" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_43" Value="HD/11P" MCT="8"/>
+			<Cell CellID="V_43" Value="0000001" MCT="9"/>
+			<Cell CellID="X_43" Value="0005000" MCT="10"/>
+			<Cell CellID="Z_43" Value="5000" MCT="11"/>
+			<Cell CellID="AB_43" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_44" FirstCell="1" Value="2600395018" MCT="1"/>
+			<Cell CellID="E_44" Value="Cty CP ĐT xây dựng Long Thành" MCT="2"/>
+			<Cell CellID="I_44" Value="Tiên Cát-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_44" Value="69" MCT="4"/>
+			<Cell CellID="M_44" Value="19/12/2010" MCT="5"/>
+			<Cell CellID="O_44" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_44" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_44" Value="LT/11P" MCT="8"/>
+			<Cell CellID="V_44" Value="0000001" MCT="9"/>
+			<Cell CellID="X_44" Value="0000500" MCT="10"/>
+			<Cell CellID="Z_44" Value="500" MCT="11"/>
+			<Cell CellID="AB_44" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_45" FirstCell="1" Value="2600684309" MCT="1"/>
+			<Cell CellID="E_45" Value="Cty TNHH TT đa phương tiện Tri Long" MCT="2"/>
+			<Cell CellID="I_45" Value="Dữu Lâu-Việt Trì-Phú Thọ " MCT="3"/>
+			<Cell CellID="K_45" Value="4" MCT="4"/>
+			<Cell CellID="M_45" Value="06/12/2010" MCT="5"/>
+			<Cell CellID="O_45" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_45" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_45" Value="TL/11P" MCT="8"/>
+			<Cell CellID="V_45" Value="0000001" MCT="9"/>
+			<Cell CellID="X_45" Value="0000500" MCT="10"/>
+			<Cell CellID="Z_45" Value="500" MCT="11"/>
+			<Cell CellID="AB_45" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_46" FirstCell="1" Value="2600503104" MCT="1"/>
+			<Cell CellID="E_46" Value="Cty CP xây lắp CN Tây Bắc" MCT="2"/>
+			<Cell CellID="I_46" Value="Tiên Cát-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_46" Value="10" MCT="4"/>
+			<Cell CellID="M_46" Value="06/12/2010" MCT="5"/>
+			<Cell CellID="O_46" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_46" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_46" Value="TB/11P" MCT="8"/>
+			<Cell CellID="V_46" Value="0000001" MCT="9"/>
+			<Cell CellID="X_46" Value="0000500" MCT="10"/>
+			<Cell CellID="Z_46" Value="500" MCT="11"/>
+			<Cell CellID="AB_46" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_47" FirstCell="1" Value="2600334495" MCT="1"/>
+			<Cell CellID="E_47" Value="Cty cơ khí xây lắp TM Quốc Oai" MCT="2"/>
+			<Cell CellID="I_47" Value="Tân Dân-ViệtTrì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_47" Value="14" MCT="4"/>
+			<Cell CellID="M_47" Value="06/12/2010" MCT="5"/>
+			<Cell CellID="O_47" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_47" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_47" Value="MT/11P" MCT="8"/>
+			<Cell CellID="V_47" Value="0000001" MCT="9"/>
+			<Cell CellID="X_47" Value="0000500" MCT="10"/>
+			<Cell CellID="Z_47" Value="500" MCT="11"/>
+			<Cell CellID="AB_47" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_48" FirstCell="1" Value="2600285110" MCT="1"/>
+			<Cell CellID="E_48" Value="Cty TNHH TE-VINA" MCT="2"/>
+			<Cell CellID="I_48" Value="KCN Thuỵ Vân-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_48" Value="60" MCT="4"/>
+			<Cell CellID="M_48" Value="09/12/2010" MCT="5"/>
+			<Cell CellID="O_48" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_48" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_48" Value="TE/11P" MCT="8"/>
+			<Cell CellID="V_48" Value="0000001" MCT="9"/>
+			<Cell CellID="X_48" Value="0000600" MCT="10"/>
+			<Cell CellID="Z_48" Value="600" MCT="11"/>
+			<Cell CellID="AB_48" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_49" FirstCell="1" Value="2600285110" MCT="1"/>
+			<Cell CellID="E_49" Value="Cty TNHH TE-VINA" MCT="2"/>
+			<Cell CellID="I_49" Value="KCN Thuỵ Vân-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_49" Value="60" MCT="4"/>
+			<Cell CellID="M_49" Value="09/12/2010" MCT="5"/>
+			<Cell CellID="O_49" Value="Hóa đơn xuất khẩu" MCT="6"/>
+			<Cell CellID="R_49" Value="06HDXK2/001" MCT="7"/>
+			<Cell CellID="T_49" Value="TE/11P" MCT="8"/>
+			<Cell CellID="V_49" Value="0000001" MCT="9"/>
+			<Cell CellID="X_49" Value="0000250" MCT="10"/>
+			<Cell CellID="Z_49" Value="250" MCT="11"/>
+			<Cell CellID="AB_49" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_50" FirstCell="1" Value="2600272979" MCT="1"/>
+			<Cell CellID="E_50" Value="Cty TNHH Sơn Trường" MCT="2"/>
+			<Cell CellID="I_50" Value="Thọ Sơn-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_50" Value="49" MCT="4"/>
+			<Cell CellID="M_50" Value="09/12/2010" MCT="5"/>
+			<Cell CellID="O_50" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_50" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_50" Value="ST/11P" MCT="8"/>
+			<Cell CellID="V_50" Value="0000001" MCT="9"/>
+			<Cell CellID="X_50" Value="0000600" MCT="10"/>
+			<Cell CellID="Z_50" Value="600" MCT="11"/>
+			<Cell CellID="AB_50" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_51" FirstCell="1" Value="2600284082" MCT="1"/>
+			<Cell CellID="E_51" Value="Cty TNHH Tân Hoàng Long" MCT="2"/>
+			<Cell CellID="I_51" Value="Nông Trang-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_51" Value="59" MCT="4"/>
+			<Cell CellID="M_51" Value="09/12/2010" MCT="5"/>
+			<Cell CellID="O_51" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_51" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_51" Value="HL/11P" MCT="8"/>
+			<Cell CellID="V_51" Value="0000001" MCT="9"/>
+			<Cell CellID="X_51" Value="0000600" MCT="10"/>
+			<Cell CellID="Z_51" Value="600" MCT="11"/>
+			<Cell CellID="AB_51" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_52" FirstCell="1" Value="2500238822" MCT="1"/>
+			<Cell CellID="E_52" Value="Cty TNHH TM XK Phương Nam" MCT="2"/>
+			<Cell CellID="I_52" Value="Yên Lập-Vĩnh Tường-Vĩnh Phúc" MCT="3"/>
+			<Cell CellID="K_52" Value="55" MCT="4"/>
+			<Cell CellID="M_52" Value="10/12/2010" MCT="5"/>
+			<Cell CellID="O_52" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_52" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_52" Value="PN/11P" MCT="8"/>
+			<Cell CellID="V_52" Value="0000001" MCT="9"/>
+			<Cell CellID="X_52" Value="0001000" MCT="10"/>
+			<Cell CellID="Z_52" Value="1000" MCT="11"/>
+			<Cell CellID="AB_52" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_53" FirstCell="1" Value="2500238822" MCT="1"/>
+			<Cell CellID="E_53" Value="Cty TNHH TM XK Phương Nam" MCT="2"/>
+			<Cell CellID="I_53" Value="Yên Lập-Vĩnh Tường-Vĩnh Phúc" MCT="3"/>
+			<Cell CellID="K_53" Value="55" MCT="4"/>
+			<Cell CellID="M_53" Value="10/12/2010" MCT="5"/>
+			<Cell CellID="O_53" Value="Hóa đơn xuất khẩu" MCT="6"/>
+			<Cell CellID="R_53" Value="06HDXK3/001" MCT="7"/>
+			<Cell CellID="T_53" Value="TV/11P" MCT="8"/>
+			<Cell CellID="V_53" Value="0000001" MCT="9"/>
+			<Cell CellID="X_53" Value="0001000" MCT="10"/>
+			<Cell CellID="Z_53" Value="1000" MCT="11"/>
+			<Cell CellID="AB_53" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_54" FirstCell="1" Value="2600328621" MCT="1"/>
+			<Cell CellID="E_54" Value="Cty CP Sản xuất TM Hữu Nghị" MCT="2"/>
+			<Cell CellID="I_54" Value="Nông Trang-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_54" Value="56" MCT="4"/>
+			<Cell CellID="M_54" Value="09/12/2010" MCT="5"/>
+			<Cell CellID="O_54" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_54" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_54" Value="HN/11P" MCT="8"/>
+			<Cell CellID="V_54" Value="0000001" MCT="9"/>
+			<Cell CellID="X_54" Value="0005000" MCT="10"/>
+			<Cell CellID="Z_54" Value="5000" MCT="11"/>
+			<Cell CellID="AB_54" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_55" FirstCell="1" Value="2600328621" MCT="1"/>
+			<Cell CellID="E_55" Value="Cty CP Sản xuất TM Hữu Nghị" MCT="2"/>
+			<Cell CellID="I_55" Value="Nông Trang-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_55" Value="56" MCT="4"/>
+			<Cell CellID="M_55" Value="09/12/2010" MCT="5"/>
+			<Cell CellID="O_55" Value="Hóa đơn xuất khẩu" MCT="6"/>
+			<Cell CellID="R_55" Value="06HDXK2/001" MCT="7"/>
+			<Cell CellID="T_55" Value="HN/11P" MCT="8"/>
+			<Cell CellID="V_55" Value="0000001" MCT="9"/>
+			<Cell CellID="X_55" Value="0000250" MCT="10"/>
+			<Cell CellID="Z_55" Value="250" MCT="11"/>
+			<Cell CellID="AB_55" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_56" FirstCell="1" Value="2600328621" MCT="1"/>
+			<Cell CellID="E_56" Value="Cty CP Sản xuất TM Hữu Nghị" MCT="2"/>
+			<Cell CellID="I_56" Value="Nông Trang-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_56" Value="56" MCT="4"/>
+			<Cell CellID="M_56" Value="09/12/2010" MCT="5"/>
+			<Cell CellID="O_56" Value="Phiếu xuất kho kiêm vận chuyển hàng hóa nội bộ" MCT="6"/>
+			<Cell CellID="R_56" Value="03XKNB3/001" MCT="7"/>
+			<Cell CellID="T_56" Value="HN/11P" MCT="8"/>
+			<Cell CellID="V_56" Value="0000001" MCT="9"/>
+			<Cell CellID="X_56" Value="0000500" MCT="10"/>
+			<Cell CellID="Z_56" Value="500" MCT="11"/>
+			<Cell CellID="AB_56" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_57" FirstCell="1" Value="2600327057" MCT="1"/>
+			<Cell CellID="E_57" Value="Cty TNHH Seshin Việt Nam" MCT="2"/>
+			<Cell CellID="I_57" Value=" Thuỵ Vân-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_57" Value="70" MCT="4"/>
+			<Cell CellID="M_57" Value="09/12/2010" MCT="5"/>
+			<Cell CellID="O_57" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_57" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_57" Value="SS/11P" MCT="8"/>
+			<Cell CellID="V_57" Value="0000001" MCT="9"/>
+			<Cell CellID="X_57" Value="0000500" MCT="10"/>
+			<Cell CellID="Z_57" Value="500" MCT="11"/>
+			<Cell CellID="AB_57" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_58" FirstCell="1" Value="2600327057" MCT="1"/>
+			<Cell CellID="E_58" Value="Cty TNHH Seshin Việt Nam" MCT="2"/>
+			<Cell CellID="I_58" Value=" Thuỵ Vân-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_58" Value="70" MCT="4"/>
+			<Cell CellID="M_58" Value="09/12/2010" MCT="5"/>
+			<Cell CellID="O_58" Value="Hóa đơn xuất khẩu" MCT="6"/>
+			<Cell CellID="R_58" Value="06HDXK2/001" MCT="7"/>
+			<Cell CellID="T_58" Value="SS/11P" MCT="8"/>
+			<Cell CellID="V_58" Value="0000001" MCT="9"/>
+			<Cell CellID="X_58" Value="0003500" MCT="10"/>
+			<Cell CellID="Z_58" Value="3500" MCT="11"/>
+			<Cell CellID="AB_58" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_59" FirstCell="1" Value="2600293270" MCT="1"/>
+			<Cell CellID="E_59" Value="Cty CP TM và DV Phú Hải" MCT="2"/>
+			<Cell CellID="I_59" Value="Vân Phú-Việt Trì-PhúThọ" MCT="3"/>
+			<Cell CellID="K_59" Value="57" MCT="4"/>
+			<Cell CellID="M_59" Value="09/12/2010" MCT="5"/>
+			<Cell CellID="O_59" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_59" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_59" Value="PH/11P" MCT="8"/>
+			<Cell CellID="V_59" Value="0000001" MCT="9"/>
+			<Cell CellID="X_59" Value="0003500" MCT="10"/>
+			<Cell CellID="Z_59" Value="3500" MCT="11"/>
+			<Cell CellID="AB_59" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_60" FirstCell="1" Value="2600691786" MCT="1"/>
+			<Cell CellID="E_60" Value="Cty TNHH TM Vệ Tính" MCT="2"/>
+			<Cell CellID="I_60" Value="Minh Nông-Việt Trì-Thọ Phú" MCT="3"/>
+			<Cell CellID="K_60" Value="58" MCT="4"/>
+			<Cell CellID="M_60" Value="09/12/2010" MCT="5"/>
+			<Cell CellID="O_60" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_60" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_60" Value="VT/11P" MCT="8"/>
+			<Cell CellID="V_60" Value="0000001" MCT="9"/>
+			<Cell CellID="X_60" Value="0000750" MCT="10"/>
+			<Cell CellID="Z_60" Value="750" MCT="11"/>
+			<Cell CellID="AB_60" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_61" FirstCell="1" Value="2600247242" MCT="1"/>
+			<Cell CellID="E_61" Value="Cty TNHH Việt Hoà" MCT="2"/>
+			<Cell CellID="I_61" Value="Trưng Vương-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_61" Value="59" MCT="4"/>
+			<Cell CellID="M_61" Value="15/12/2010" MCT="5"/>
+			<Cell CellID="O_61" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_61" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_61" Value="VH/11P" MCT="8"/>
+			<Cell CellID="V_61" Value="0000001" MCT="9"/>
+			<Cell CellID="X_61" Value="0000250" MCT="10"/>
+			<Cell CellID="Z_61" Value="250" MCT="11"/>
+			<Cell CellID="AB_61" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_62" FirstCell="1" Value="2600299579" MCT="1"/>
+			<Cell CellID="E_62" Value="Cty CP Phú Hưng" MCT="2"/>
+			<Cell CellID="I_62" Value="TT Thanh Sơn-Thanh Sơn-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_62" Value="60" MCT="4"/>
+			<Cell CellID="M_62" Value="15/12/2010" MCT="5"/>
+			<Cell CellID="O_62" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_62" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_62" Value="PH/11P" MCT="8"/>
+			<Cell CellID="V_62" Value="0000001" MCT="9"/>
+			<Cell CellID="X_62" Value="0000500" MCT="10"/>
+			<Cell CellID="Z_62" Value="500" MCT="11"/>
+			<Cell CellID="AB_62" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_63" FirstCell="1" Value="2600482454" MCT="1"/>
+			<Cell CellID="E_63" Value="Cty TNHH NTV Quyết Thắng" MCT="2"/>
+			<Cell CellID="I_63" Value="Tiên Cát-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_63" Value="61" MCT="4"/>
+			<Cell CellID="M_63" Value="15/12/2010" MCT="5"/>
+			<Cell CellID="O_63" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_63" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_63" Value="QT/11P" MCT="8"/>
+			<Cell CellID="V_63" Value="0000001" MCT="9"/>
+			<Cell CellID="X_63" Value="0002500" MCT="10"/>
+			<Cell CellID="Z_63" Value="2500" MCT="11"/>
+			<Cell CellID="AB_63" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_64" FirstCell="1" Value="2500240187" MCT="1"/>
+			<Cell CellID="E_64" Value="Ctry CPTM và XD Hùng Vương" MCT="2"/>
+			<Cell CellID="I_64" Value="Khai Quang-Vĩnh Yên-Vĩnh Phúc" MCT="3"/>
+			<Cell CellID="K_64" Value="64" MCT="4"/>
+			<Cell CellID="M_64" Value="15/12/2010" MCT="5"/>
+			<Cell CellID="O_64" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_64" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_64" Value="HV/11P" MCT="8"/>
+			<Cell CellID="V_64" Value="0000001" MCT="9"/>
+			<Cell CellID="X_64" Value="0001000" MCT="10"/>
+			<Cell CellID="Z_64" Value="1000" MCT="11"/>
+			<Cell CellID="AB_64" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_65" FirstCell="1" Value="2600259079" MCT="1"/>
+			<Cell CellID="E_65" Value="Cty TNHH Minh Trí" MCT="2"/>
+			<Cell CellID="I_65" Value="Thọ Sơn -Viêtị Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_65" Value="64" MCT="4"/>
+			<Cell CellID="M_65" Value="16/12/2010" MCT="5"/>
+			<Cell CellID="O_65" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_65" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_65" Value="MT/11P" MCT="8"/>
+			<Cell CellID="V_65" Value="0000001" MCT="9"/>
+			<Cell CellID="X_65" Value="0000300" MCT="10"/>
+			<Cell CellID="Z_65" Value="300" MCT="11"/>
+			<Cell CellID="AB_65" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_66" FirstCell="1" Value="2600274905" MCT="1"/>
+			<Cell CellID="E_66" Value="Cty CP TM và DV Phú Hưng" MCT="2"/>
+			<Cell CellID="I_66" Value="Bến Gót-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_66" Value="54" MCT="4"/>
+			<Cell CellID="M_66" Value="30/11/2010" MCT="5"/>
+			<Cell CellID="O_66" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_66" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_66" Value="PH/11P" MCT="8"/>
+			<Cell CellID="V_66" Value="0000001" MCT="9"/>
+			<Cell CellID="X_66" Value="0005000" MCT="10"/>
+			<Cell CellID="Z_66" Value="5000" MCT="11"/>
+			<Cell CellID="AB_66" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_67" FirstCell="1" Value="2600279452" MCT="1"/>
+			<Cell CellID="E_67" Value="Cty TNHH Lương Oanh" MCT="2"/>
+			<Cell CellID="I_67" Value="Nông Trang-viêt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_67" Value="63" MCT="4"/>
+			<Cell CellID="M_67" Value="14/12/2010" MCT="5"/>
+			<Cell CellID="O_67" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_67" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_67" Value="LD/11P" MCT="8"/>
+			<Cell CellID="V_67" Value="0000001" MCT="9"/>
+			<Cell CellID="X_67" Value="0000500" MCT="10"/>
+			<Cell CellID="Z_67" Value="500" MCT="11"/>
+			<Cell CellID="AB_67" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_68" FirstCell="1" Value="2600680181" MCT="1"/>
+			<Cell CellID="E_68" Value="Cty TNHH DV vận tải và TM Phú Thái" MCT="2"/>
+			<Cell CellID="I_68" Value="Bến Gót-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_68" Value="70" MCT="4"/>
+			<Cell CellID="M_68" Value="19/12/2010" MCT="5"/>
+			<Cell CellID="O_68" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_68" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_68" Value="PT/11P" MCT="8"/>
+			<Cell CellID="V_68" Value="0000001" MCT="9"/>
+			<Cell CellID="X_68" Value="0001000" MCT="10"/>
+			<Cell CellID="Z_68" Value="1000" MCT="11"/>
+			<Cell CellID="AB_68" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_69" FirstCell="1" Value="2600405555" MCT="1"/>
+			<Cell CellID="E_69" Value="CTy TNHH Hoàng Vân" MCT="2"/>
+			<Cell CellID="I_69" Value="Nông Trang-viêt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_69" Value="71" MCT="4"/>
+			<Cell CellID="M_69" Value="23/12/2010" MCT="5"/>
+			<Cell CellID="O_69" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_69" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_69" Value="HV/11P" MCT="8"/>
+			<Cell CellID="V_69" Value="0000001" MCT="9"/>
+			<Cell CellID="X_69" Value="0003500" MCT="10"/>
+			<Cell CellID="Z_69" Value="3500" MCT="11"/>
+			<Cell CellID="AB_69" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_70" FirstCell="1" Value="2600445910" MCT="1"/>
+			<Cell CellID="E_70" Value="Cty CP ván nhân tạo Việt Trì" MCT="2"/>
+			<Cell CellID="I_70" Value="Bến Gót-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_70" Value="73" MCT="4"/>
+			<Cell CellID="M_70" Value="23/12/2010" MCT="5"/>
+			<Cell CellID="O_70" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_70" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_70" Value="VN/11P" MCT="8"/>
+			<Cell CellID="V_70" Value="0000001" MCT="9"/>
+			<Cell CellID="X_70" Value="0000500" MCT="10"/>
+			<Cell CellID="Z_70" Value="500" MCT="11"/>
+			<Cell CellID="AB_70" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_71" FirstCell="1" Value="2600420659" MCT="1"/>
+			<Cell CellID="E_71" Value="Cty TNHH MTV Hồng Công" MCT="2"/>
+			<Cell CellID="I_71" Value="TT Thanh Sơn-Thanh Sơn-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_71" Value="74" MCT="4"/>
+			<Cell CellID="M_71" Value="27/12/2010" MCT="5"/>
+			<Cell CellID="O_71" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_71" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_71" Value="HC/11P" MCT="8"/>
+			<Cell CellID="V_71" Value="0000001" MCT="9"/>
+			<Cell CellID="X_71" Value="0000500" MCT="10"/>
+			<Cell CellID="Z_71" Value="500" MCT="11"/>
+			<Cell CellID="AB_71" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_72" FirstCell="1" Value="2500242480" MCT="1"/>
+			<Cell CellID="E_72" Value="Cty TNHH TM Cường Thịnh" MCT="2"/>
+			<Cell CellID="I_72" Value="Quất Lưu-Bình Xuyên-Vĩnh Phúc" MCT="3"/>
+			<Cell CellID="K_72" Value="75" MCT="4"/>
+			<Cell CellID="M_72" Value="28/12/2010" MCT="5"/>
+			<Cell CellID="O_72" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_72" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_72" Value="CT/11P" MCT="8"/>
+			<Cell CellID="V_72" Value="0000001" MCT="9"/>
+			<Cell CellID="X_72" Value="0000500" MCT="10"/>
+			<Cell CellID="Z_72" Value="500" MCT="11"/>
+			<Cell CellID="AB_72" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_73" FirstCell="1" Value="2500292227" MCT="1"/>
+			<Cell CellID="E_73" Value="Cty TNHH TM Hùng Dung" MCT="2"/>
+			<Cell CellID="I_73" Value="Quất Lưu-Bình Xuyên-Vĩnh Phúc" MCT="3"/>
+			<Cell CellID="K_73" Value="76" MCT="4"/>
+			<Cell CellID="M_73" Value="28/12/2010" MCT="5"/>
+			<Cell CellID="O_73" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_73" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_73" Value="HD/11P" MCT="8"/>
+			<Cell CellID="V_73" Value="0000001" MCT="9"/>
+			<Cell CellID="X_73" Value="0000500" MCT="10"/>
+			<Cell CellID="Z_73" Value="500" MCT="11"/>
+			<Cell CellID="AB_73" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_74" FirstCell="1" Value="2600397907" MCT="1"/>
+			<Cell CellID="E_74" Value="Cty TNHH THT" MCT="2"/>
+			<Cell CellID="I_74" Value="TT Đoan Hùng-Đoan Hùng-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_74" Value="77" MCT="4"/>
+			<Cell CellID="M_74" Value="28/12/2010" MCT="5"/>
+			<Cell CellID="O_74" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_74" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_74" Value="HT/11P" MCT="8"/>
+			<Cell CellID="V_74" Value="0000001" MCT="9"/>
+			<Cell CellID="X_74" Value="0002500" MCT="10"/>
+			<Cell CellID="Z_74" Value="2500" MCT="11"/>
+			<Cell CellID="AB_74" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_75" FirstCell="1" Value="2600381858" MCT="1"/>
+			<Cell CellID="E_75" Value="Cty CP Trường Thành " MCT="2"/>
+			<Cell CellID="I_75" Value="TT Đoan Hùng-Đoan Hùng-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_75" Value="78" MCT="4"/>
+			<Cell CellID="M_75" Value="28/12/2010" MCT="5"/>
+			<Cell CellID="O_75" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_75" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_75" Value="TT/11P" MCT="8"/>
+			<Cell CellID="V_75" Value="0000001" MCT="9"/>
+			<Cell CellID="X_75" Value="0002500" MCT="10"/>
+			<Cell CellID="Z_75" Value="2500" MCT="11"/>
+			<Cell CellID="AB_75" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_76" FirstCell="1" Value="2600248260" MCT="1"/>
+			<Cell CellID="E_76" Value="Cty TNHH vậnn tải Bạch Hạc" MCT="2"/>
+			<Cell CellID="I_76" Value="Tiên Cát-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_76" Value="79" MCT="4"/>
+			<Cell CellID="M_76" Value="28/12/2010" MCT="5"/>
+			<Cell CellID="O_76" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_76" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_76" Value="BH/11P" MCT="8"/>
+			<Cell CellID="V_76" Value="0000001" MCT="9"/>
+			<Cell CellID="X_76" Value="0002500" MCT="10"/>
+			<Cell CellID="Z_76" Value="2500" MCT="11"/>
+			<Cell CellID="AB_76" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_77" FirstCell="1" Value="2600687620" MCT="1"/>
+			<Cell CellID="E_77" Value="Cty TNHH XNK Âu Lạc" MCT="2"/>
+			<Cell CellID="I_77" Value="Tiên Cát-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_77" Value="80" MCT="4"/>
+			<Cell CellID="M_77" Value="28/12/2010" MCT="5"/>
+			<Cell CellID="O_77" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_77" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_77" Value="AL/11P" MCT="8"/>
+			<Cell CellID="V_77" Value="0000001" MCT="9"/>
+			<Cell CellID="X_77" Value="0000750" MCT="10"/>
+			<Cell CellID="Z_77" Value="750" MCT="11"/>
+			<Cell CellID="AB_77" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_78" FirstCell="1" Value="2600604751" MCT="1"/>
+			<Cell CellID="E_78" Value="Cty TNHH Thành Giang" MCT="2"/>
+			<Cell CellID="I_78" Value="Dữu Lâu-Việt Trì- Phú Thọ" MCT="3"/>
+			<Cell CellID="K_78" Value="81" MCT="4"/>
+			<Cell CellID="M_78" Value="28/12/2010" MCT="5"/>
+			<Cell CellID="O_78" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_78" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_78" Value="TG/11P" MCT="8"/>
+			<Cell CellID="V_78" Value="0000001" MCT="9"/>
+			<Cell CellID="X_78" Value="0000750" MCT="10"/>
+			<Cell CellID="Z_78" Value="750" MCT="11"/>
+			<Cell CellID="AB_78" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_79" FirstCell="1" Value="2600604751" MCT="1"/>
+			<Cell CellID="E_79" Value="Cty TNHH Thành Giang" MCT="2"/>
+			<Cell CellID="I_79" Value="Dữu Lâu-Việt Trì- Phú Thọ" MCT="3"/>
+			<Cell CellID="K_79" Value="81" MCT="4"/>
+			<Cell CellID="M_79" Value="28/12/2010" MCT="5"/>
+			<Cell CellID="O_79" Value="Hóa đơn xuất khẩu" MCT="6"/>
+			<Cell CellID="R_79" Value="06HDXK2/001" MCT="7"/>
+			<Cell CellID="T_79" Value="TG/11P" MCT="8"/>
+			<Cell CellID="V_79" Value="0000001" MCT="9"/>
+			<Cell CellID="X_79" Value="0000500" MCT="10"/>
+			<Cell CellID="Z_79" Value="500" MCT="11"/>
+			<Cell CellID="AB_79" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_80" FirstCell="1" Value="2600581800" MCT="1"/>
+			<Cell CellID="E_80" Value="Cty CP TM và vận tải Nhật Minh" MCT="2"/>
+			<Cell CellID="I_80" Value="Hùng Sơn-Lâm Thao-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_80" Value="7" MCT="4"/>
+			<Cell CellID="M_80" Value="25/12/2010" MCT="5"/>
+			<Cell CellID="O_80" Value="Tem vận tải đường bộ theo pp khấu trừ" MCT="6"/>
+			<Cell CellID="R_80" Value="01TEDB2/001" MCT="7"/>
+			<Cell CellID="T_80" Value="NM/11P" MCT="8"/>
+			<Cell CellID="V_80" Value="0000001" MCT="9"/>
+			<Cell CellID="X_80" Value="0020000" MCT="10"/>
+			<Cell CellID="Z_80" Value="20000" MCT="11"/>
+			<Cell CellID="AB_80" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_81" FirstCell="1" Value="2600537745" MCT="1"/>
+			<Cell CellID="E_81" Value="Cty TNHH TM Bình An" MCT="2"/>
+			<Cell CellID="I_81" Value="Vân Cơ-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_81" Value="40" MCT="4"/>
+			<Cell CellID="M_81" Value="20/12/2010" MCT="5"/>
+			<Cell CellID="O_81" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_81" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_81" Value="BA/11P" MCT="8"/>
+			<Cell CellID="V_81" Value="0000001" MCT="9"/>
+			<Cell CellID="X_81" Value="0001000" MCT="10"/>
+			<Cell CellID="Z_81" Value="1000" MCT="11"/>
+			<Cell CellID="AB_81" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_82" FirstCell="1" Value="2600203213" MCT="1"/>
+			<Cell CellID="E_82" Value="Cty TNHH TM và ĐT Việt Hà" MCT="2"/>
+			<Cell CellID="I_82" Value="Vân Cơ-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_82" Value="41" MCT="4"/>
+			<Cell CellID="M_82" Value="20/12/2010" MCT="5"/>
+			<Cell CellID="O_82" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_82" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_82" Value="VH/11P" MCT="8"/>
+			<Cell CellID="V_82" Value="0000001" MCT="9"/>
+			<Cell CellID="X_82" Value="0002500" MCT="10"/>
+			<Cell CellID="Z_82" Value="2500" MCT="11"/>
+			<Cell CellID="AB_82" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_83" FirstCell="1" Value="2500304578" MCT="1"/>
+			<Cell CellID="E_83" Value="Cty TNHH DVTM Long Vân" MCT="2"/>
+			<Cell CellID="I_83" Value="Liên Bảo-Vĩnh Yên-Vĩnh phúc" MCT="3"/>
+			<Cell CellID="K_83" Value="42" MCT="4"/>
+			<Cell CellID="M_83" Value="20/12/2010" MCT="5"/>
+			<Cell CellID="O_83" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_83" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_83" Value="LV/11P" MCT="8"/>
+			<Cell CellID="V_83" Value="0000001" MCT="9"/>
+			<Cell CellID="X_83" Value="0002500" MCT="10"/>
+			<Cell CellID="Z_83" Value="2500" MCT="11"/>
+			<Cell CellID="AB_83" Value="" MCT="12"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_84" FirstCell="1" Value="2600632639" MCT="1"/>
+			<Cell CellID="E_84" Value="Cty TNHH TM Phúc Hưng" MCT="2"/>
+			<Cell CellID="I_84" Value="Vân Cơ-Việt Trì-Phú Thọ" MCT="3"/>
+			<Cell CellID="K_84" Value="43" MCT="4"/>
+			<Cell CellID="M_84" Value="20/12/2010" MCT="5"/>
+			<Cell CellID="O_84" Value="Hóa đơn giá trị gia tăng" MCT="6"/>
+			<Cell CellID="R_84" Value="01GTKT3/001" MCT="7"/>
+			<Cell CellID="T_84" Value="PH/11P" MCT="8"/>
+			<Cell CellID="V_84" Value="0000001" MCT="9"/>
+			<Cell CellID="X_84" Value="0001000" MCT="10"/>
+			<Cell CellID="Z_84" Value="1000" MCT="11"/>
+			<Cell CellID="AB_84" Value="" MCT="12"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="S_91" Value="Vũ Thanh Sơn"/>
+			<Cell CellID="S_93" Value="12/08/2011"/>
+		</Cells>
+	</Section>
+</Sections>
