@@ -1,0 +1,84 @@
+12/15/2010 4:38:39 PM frmSystem loadListMessage
+ 429 : ActiveX component can't create object
+------------------------------------------------------------
+1/14/2011 11:42:53 AM frmSystem loadListMessage
+ 429 : ActiveX component can't create object
+------------------------------------------------------------
+1/14/2011 12:40:34 PM frmLogin checkActivePIT
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+03/31/2011 11:02:10 AM frmLogin cmdOK_Click
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+03/31/2011 11:03:50 AM frmLogin cmdOK_Click
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+03/31/2011 11:18:17 AM frmLogin cmdOK_Click
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+03/31/2011 11:18:38 AM frmLogin cmdOK_Click
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+03/31/2011 11:19:09 AM frmLogin cmdOK_Click
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+03/31/2011 11:19:12 AM frmLogin cmdOK_Click
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+03/31/2011 11:24:06 AM frmLogin cmdOK_Click
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+5/10/2011 1:43:31 PM frmLogin cmdOK_Click
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+5/10/2011 1:44:42 PM frmLogin cmdOK_Click
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+5/10/2011 1:47:27 PM frmLogin cmdOK_Click
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+6/27/2011 10:24:40 AM frmTreeviewMenu ProcessMenuAction
+ 404 : MDI child forms cannot be shown modally
+------------------------------------------------------------
+6/27/2011 10:24:44 AM frmTreeviewMenu ProcessMenuAction
+ 404 : MDI child forms cannot be shown modally
+------------------------------------------------------------
+6/27/2011 10:29:36 AM frmTreeviewMenu ProcessMenuAction
+ 404 : MDI child forms cannot be shown modally
+------------------------------------------------------------
+6/27/2011 3:55:08 PM frmInterfaces Barcode_Scaned
+ 9 : Subscript out of range
+------------------------------------------------------------
+6/27/2011 3:55:13 PM frmInterfaces Barcode_Scaned
+ 9 : Subscript out of range
+------------------------------------------------------------
+6/27/2011 3:55:13 PM frmInterfaces Barcode_Scaned
+ 9 : Subscript out of range
+------------------------------------------------------------
+6/27/2011 3:55:14 PM frmInterfaces Barcode_Scaned
+ 9 : Subscript out of range
+------------------------------------------------------------
+6/27/2011 3:55:14 PM frmInterfaces Barcode_Scaned
+ 9 : Subscript out of range
+------------------------------------------------------------
+6/27/2011 3:57:21 PM frmInterfaces Barcode_Scaned
+ 9 : Subscript out of range
+------------------------------------------------------------
+6/27/2011 3:57:22 PM frmInterfaces Barcode_Scaned
+ 9 : Subscript out of range
+------------------------------------------------------------
+6/27/2011 3:57:23 PM frmInterfaces Barcode_Scaned
+ 9 : Subscript out of range
+------------------------------------------------------------
+6/27/2011 3:57:23 PM frmInterfaces Barcode_Scaned
+ 9 : Subscript out of range
+------------------------------------------------------------
+6/27/2011 3:57:23 PM frmInterfaces Barcode_Scaned
+ 9 : Subscript out of range
+------------------------------------------------------------
+6/27/2011 4:05:00 PM frmTreeviewMenu ProcessMenuAction
+ 404 : MDI child forms cannot be shown modally
+------------------------------------------------------------
+6/27/2011 4:05:06 PM frmTreeviewMenu ProcessMenuAction
+ 404 : MDI child forms cannot be shown modally
+------------------------------------------------------------

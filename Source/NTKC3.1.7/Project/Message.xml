@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by ThanhDX (FSS - HN) -->
+<Message>
+	<Infor ID="0001" Msg="Thông tin kê khai sai, có muốn sửa lại không?"/>
+	<Infor ID="0002" Msg="Đã ghi dữ liệu thành công!"/>
+	<Infor ID="0003" Msg="Không ghi được dữ liệu."/>
+	<Infor ID="0004" Msg="Có muốn xoá không?"/>
+	<Infor ID="0005" Msg="Thông tin kê khai sai. Phải sửa đúng trước khi in"/>
+	<Infor ID="0007" Msg="Đã sao lưu dữ liệu thành công"/>
+	<Infor ID="0008" Msg="Đã phục hồi dữ liệu thành công"/>
+	<Infor ID="0010" Msg="Đường dẫn nhập sai hoặc thiết bị truy xuất không làm việc!"/>
+	<Infor ID="0011" Msg="Có muốn thoát khỏi chương trình không?"/>
+	<Infor ID="0012" Msg="Có muốn xóa tờ khai không?"/>
+	<Infor ID="0013" Msg="Có muốn ghi lại thông tin thay đổi không?"/>
+	<Infor ID="0014" Msg="Thông tin kê khai sai, có muốn sửa lại không?"/>
+	<Infor ID="0015" Msg="Thông tin kê khai sai, có muốn ghi lại không?"/>
+	<Infor ID="0016" Msg="Thông tin kê khai sai. Phải sửa đúng trước khi in!"/>
+	<Infor ID="0017" Msg="Phải nhập dữ liệu!"/>
+	<Infor ID="0018" Msg="Nhập sai dữ liệu!"/>
+	<Infor ID="0019" Msg="Nhập sai dữ liệu trường năm!"/>
+	<Infor ID="0020" Msg="Không có vị trí để in mã vạch!"/>
+	<Infor ID="0021" Msg="Thư mục này không truy xuất được!"/>
+	<Infor ID="0022" Msg="Đã kết xuất dữ liệu thành công!"/>
+	<Infor ID="0023" Msg="Phải nhập vào đường dẫn!"/>
+	<Infor ID="0024" Msg="Thư mục này không tồn tại. Có tạo mới không?"/>
+	<Infor ID="0025" Msg="Thư mục này không có quyền truy xuất!"/>
+	<Infor ID="0026" Msg="Không tìm thấy máy in hoặc máy in không hợp lệ !"/>
+	<Infor ID="0028" Msg="Thư mục này không chứa dữ liệu sao lưu!"/>
+	<Infor ID="0030" Msg="Có thực sự muốn xóa toàn bộ dữ liệu trên màn hình không?"/>
+	<Infor ID="0031" Msg="Thiết bị truy xuất không làm việc!"/>
+	<Infor ID="0032" Msg="Có muốn xóa phụ lục này không?"/>
+	<Infor ID="0033" Msg="Phải nhập vào số bản in!"/>
+	<Infor ID="0034" Msg="Có thực sự không phát sinh hoạt động mua bán trong kỳ không?"/>
+	<Infor ID="0035" Msg="Mã vạch vừa quét của tờ khai khác hoặc của lần in khác khi dữ liệu đã bị thay đổi. Bắt đầu tờ khai mới ?"/>
+	<Infor ID="0036" Msg="Mã vạch chưa đầy đủ. Bắt đầu phụ lục mới ?"/>
+	<Infor ID="0037" Msg="Dung lượng không đủ để kết xuất file. Vui lòng chọn thư mục khác!"/>
+	<Infor ID="0038" Msg="Không thể xóa được file."/>
+	<Infor ID="0039" Msg="Thông tin kê khai sai. Phải sửa đúng trước khi kết xuất!"/>
+	<Infor ID="0040" Msg="Tên hoặc mật khẩu không đúng. Đăng nhập lại?"/>
+	<Infor ID="0041" Msg="Mã số thuế sai, đề nghị liên hệ với bộ phận quản lý mã số thuế."/>
+	<Infor ID="0042" Msg="Mã số thuế đang ở trạng thái đóng cửa"/>
+	<Infor ID="0043" Msg="Đối tượng nộp thuế đã chuyển đi nơi khác"/>
+	<Infor ID="0044" Msg="Tờ khai đã quét. Hãy cập nhật dữ liệu hoặc quét tờ khai khác !"/>
+	<Infor ID="0045" Msg="Tờ khai chưa cập nhật. Bắt đầu tờ khai mới ?"/>
+	<Infor ID="0046" Msg="Dữ liệu không hợp lệ! Bạn không thể ghi được."/>
+	<Infor ID="0047" Msg="Dữ liệu của tờ khai tương ứng với kỳ tương ứng đã có trong CSDL. Bạn có muốn thay thế tờ khai không?"/>
+	<Infor ID="0048" Msg="Ghi dữ liệu thành công!"/>
+	<Infor ID="0049" Msg="Ghi dữ liệu không thành công. Bạn hãy kiểm tra lại bộ Map dữ liệu các chỉ tiêu giữa RECV và QLT."/>
+	<Infor ID="0050" Msg="Xóa dữ liệu trên màn hình và bắt đầu tờ khai mới ?"/>
+	<Infor ID="0051" Msg="Bạn có thực sự muốn Thoát?"/>
+	<Infor ID="0052" Msg="Cập nhật dữ liệu trước khi Thoát?"/>
+	<Infor ID="0053" Msg="Dữ liệu trong file  không hợp lệ !"/>
+	<Infor ID="0054" Msg="Mã vạch tờ khai không hợp lệ  !"/>
+	<Infor ID="0055" Msg="Còn tờ khai chưa được hiển thị. Bạn có muốn Thoát?"/>
+	<Infor ID="0056" Msg="Phải nhập vào trường Người sử dụng!"/>
+	<Infor ID="0057" Msg="Dữ liệu trong mã vạch tờ khai không hợp lệ"/>
+	<Infor ID="0058" Msg="Chọn file dữ liệu."/>
+	<Infor ID="0059" Msg="Người dùng không có quyền vào ứng dụng. Đăng nhập lại ?"/>
+	<Infor ID="0060" Msg="Thư mục không có quyền truy nhập."/>
+	<Infor ID="0061" Msg="Không thể đọc từ mã vạch, cổng nhận dữ liệu đang được ứng dụng khác sử dụng !"/>
+	<Infor ID="0062" Msg="Mã vạch này không  thuộc tờ khai đang quét."/>
+	<Infor ID="0063" Msg="Không thể kết nối được với cơ sở dữ liệu QLT."/>
+	<Infor ID="0064" Msg="Tờ khai không đúng mẫu quy định (mẫu không tương ứng với kỳ kê khai)."/>
+	<Infor ID="0065" Msg="Ngày bắt đầu năm tài chính không đúng. Đề nghị liên hệ bộ phận quản lý mã số thuế."/>
+	<Infor ID="0066" Msg="Doanh nghiệp chưa kê khai ngày bắt đầu năm tài chính. Đề nghị liên hệ bộ phận quản lý mã số thuế."/>
+	<Infor ID="0067" Msg="Doanh nghiệp chưa kê khai ngày bắt đầu kinh doanh. Đề nghị liên hệ bộ phận quản lý mã số thuế."/>
+	<Infor ID="0068" Msg="Giá trị từ ngày phải bằng ngày bắt đầu năm tài chính."/>
+	<Infor ID="0069" Msg="Kỳ kê khai không thể lớn hơn ngày bắt đầu kinh doanh."/>
+	<Infor ID="0070" Msg="Đã đóng sổ kỳ này. Bạn không thể ghi dữ liệu được."/>
+	<Infor ID="0071" Msg="Từ ngày phải nhỏ hơn hoặc bằng đến ngày."/>
+	<Infor ID="0072" Msg="Không có tờ khai nào thoả mãn điều kiện tra cứu."/>
+	<Infor ID="0073" Msg="Nhập sai định dạng ngày tháng năm."/>
+	<Infor ID="0074" Msg="Phiên bản ứng dụng tại cơ quan thuế nhỏ hơn phiên bản ứng dụng tại doanh nghiệp. Đề nghị hãy cập nhập bản ứng dụng NTK của CQT!"/>
+	<Infor ID="0075" Msg="Cơ sở dữ liệu chưa được nâng cấp. Đề nghị nâng cấp cơ sở dữ liệu."/>
+	<Infor ID="0076" Msg="Ứng dụng chưa nâng cấp, đề nghị nâng cấp ứng dụng trước khi sử dụng."/>
+	<Infor ID="0077" Msg="Không tồn tại phòng xử lý nào trong hệ thống."/>
+	<Infor ID="0078" Msg="Không tồn tại bảng Rcv_Thamso trong cơ sở dữ liệu."/>
+	<Infor ID="0079" Msg="Không thể lấy được thông tin tệp tờ khai."/>
+	<Infor ID="0080" Msg="Không thể lấy được thông tin về doanh nghiệp."/>
+	<Infor ID="0081" Msg="Danh mục mặt hàng của tờ khai không đúng kỳ hiệu lực."/>
+	<Infor ID="0082" Msg="Danh mục tài nguyên của tờ khai không đúng kỳ hiệu lực."/>
+	<Infor ID="0083" Msg="Bạn chưa quét tờ khai, mới chỉ có thông tin về các phụ lục. Hãy quét thông tin của tờ khai để hiển thị!."/>
+	<Infor ID="0084" Msg="'Tờ khai Bổ sung/Thay thế'. Mặc định sẽ Ghi thay thế. Nếu là TK Bổ sung đề nghị Bạn hãy Ghi BS."/>
+	<Infor ID="0085" Msg="Đây là tờ khai Bổ sung, Đề nghị bạn quét đầy đủ cả tờ khai và KHBS thì mới hiển thị được!"/>
+	<Infor ID="0086" Msg="Đây là tờ khai Bổ sung, Đề nghị bạn quét đầy đủ cả tờ khai và KHBS, sau đó mới Ghi lại được!"/>
+	<Infor ID="0087" Msg="Mã số thuế hiện đang bị mất tích, đề nghị liên hệ với bộ phận quản lý mã số thuế!"/>
+	<Infor ID="0088" Msg="Mã số thuế hiện đang tạm dừng kinh doanh có thời hạn, đề nghị liên hệ với bộ phận quản lý mã số thuế!"/>
+	<Infor ID="0089" Msg="Ứng dụng tại cơ quan thuế không nhận các TK TNCN khấu trừ theo tháng/quý của năm 2008, Đề nghị cập nhật UD HTKK phiên bản 2.1.0!"/>
+	<Infor ID="0090" Msg="Kỳ kê khai không được gia hạn thuế TNCN theo TT27/TT-BTC. Đề nghị kiểm tra lại!"/>
+	<Infor ID="0091" Msg="Gia hạn thuế TNCN theo TT27/TT-BTC chỉ hiệu lực đến hết tháng 05 năm 2009. Vì vậy từ quý 2 không được gia hạn nộp thuế!"/>
+	<Infor ID="0092" Msg="Kỳ kê khai không được gia hạn thuế TNDN theo NQ30/NQ-CP . Đề nghị kiểm tra lại!"/>
+	<Infor ID="0093" Msg="Từ tháng 2 năm 2010 sẽ hết hiệu lực đối với tờ khai 04KK/TNCN!"/>
+	<Infor ID="0094" Msg="Từ tháng 2 năm 2010 sẽ hết hiệu lực đối với tờ khai 02KK/TNCN, 03KK/TNCN theo TT84!"/>	
+	<Infor ID="0095" Msg="Nhận lại tờ khai thành công"/>
+	<Infor ID="0096" Msg="Nhận lại tờ khai bị lỗi"/>
+	<Infor ID="0097" Msg="Từ tháng 2 năm 2010 sẽ hết hiệu lực đối với tờ khai 07/TNCN theo TT84!"/>
+	<Infor ID="0098" Msg="Tờ khai quý trước có gia hạn nộp thuế, tờ khai quý này có gia hạn nộp thuế không?"/>
+	<Infor ID="0099" Msg="Tờ khai quý có gia hạn nộp thuế, tờ khai quyết toán có gia hạn nộp thuế không?"/>
+	<Infor ID="0100" Msg="Tạm thời không nhận tờ khai thuế tài nguyên có kỳ kê khai tháng 7 năm 2010 chờ nâng cấp đáp ứng biểu thuế tài nguyên mới  theo NĐ 50 2010 CP"/>
+	<Infor ID="0101" Msg="Tạm thời không nhận tờ khai quyết toán thuế tài nguyên có niên độ tài chính năm 2010 chờ nâng cấp đáp ứng biểu thuế tài nguyên mới  theo NĐ 50 2010 CP"/>
+	<Infor ID="0102" Msg="CQT không nhận tờ khai thuế tài nguyên có kỳ kê khai từ tháng 7 năm 2010 in bằng HTKK có phiên bản 2.5.2 trở xuống"/>
+	<Infor ID="0103" Msg="CQT không nhận tờ khai quyết toán thuế tài nguyên có niên độ tài chính từ năm 2010 in bằng HTKK có phiên bản 2.5.2 trở xuống"/>
+	<Infor ID="0104" Msg="Số chỉ tiêu trên mã vạch nhiều hơn số chỉ tiêu trên tờ khai. Đề nghị kiểm tra lại ứng dụng nhập tờ khai!"/>
+	<Infor ID="0105" Msg="Số chỉ tiêu trên mã vạch ít hơn số chỉ tiêu trên tờ khai. Đề nghị kiểm tra lại ứng dụng nhập tờ khai!"/>
+	<Infor ID="0106" Msg="Số chỉ tiêu trên mã vạch sai khác số chỉ tiêu trên tờ khai. Đề nghị kiểm tra lại ứng dụng nhập tờ khai!"/>
+	<Infor ID="0107" Msg="MST này có TT 02 cần kiểm tra lại trước khi ghi."/>
+	<Infor ID="0108" Msg="MST này có TT 03 cần kiểm tra lại. Bạn có muốn ghi không?"/>
+	<Infor ID="0109" Msg="Chưa triển khai PIT, tạm thời chưa sử dụng được chức năng này."/>
+	<Infor ID="0112" Msg="Kể từ năm 2010 trở đi phải kê khai Báo cáo tài chính (QĐ 15/2006-BTC) bằng HTKK phiên bản 2.5.4"/>
+	<Infor ID="0113" Msg="Kể từ 07/2011 trở đi phải kê khai tờ khai bằng HTKK phiên bản 3.0 trở lên"/>
+	<Infor ID="0114" Msg="Tờ khai đã có mẫu cũ trong hệ thông QLT"/>
+	<Infor ID="0115" Msg="Mã đại lý thuế không phải của người nộp thuế. Bạn có muốn ghi không?"/>
+	<Infor ID="0116" Msg="Chưa có tờ khai chính thức nên không thể quét tờ khai bổ sung"/>
+	<Infor ID="0117" Msg="Nhập sai định dạng tháng năm của kỳ lập bộ"/>
+	<Infor ID="0118" Msg="Không nhận tờ khai TNCN có kỳ kê khai nhỏ hơn tháng 7/2011"/>
+	<Infor ID="0119" Msg="Không nhận tờ khai TNCN có kỳ kê khai nhỏ hơn Quý 3/2011"/>
+	<Infor ID="0120" Msg="Tờ khai hết hiệu lực."/>
+	<Infor ID="0122" Msg="CQT không nhận các mẫu BC ấn chỉ in bằng HTKK phiên bản nhỏ hơn HTKK3.0.2"/>
+	<Infor ID="0123" Msg="Mất hoá đơn đầu vào"/>
+	<Infor ID="0124" Msg="Mất hoá đơn chưa BC sử dụng"/>
+	<Infor ID="0125" Msg="Mất hoá đơn đã BC sử dụng"/>	
+	<Infor ID="0126" Msg="Kể từ 15/01/2012 trở đi phải kê khai tờ khai bằng HTKK phiên bản 3.1.0 trở lên"/>
+	<Infor ID="0127" Msg="Không nhận tờ khai TNCN có kỳ kê khai từ tháng nhỏ hơn tháng 1/2011"/>	
+	<Infor ID="0128" Msg="Kỳ kê khai không được gia hạn thuế GTGT theo NQ13/NQ-CP. Đề nghị kiểm tra lại!"/>
+	<Infor ID="0129" Msg="Tờ khai theo lần phát sinh của ngày này đã có trong hệ thống. Đề nghị cán bộ thuế nhập tay vào QLT!"/>
+</Message>

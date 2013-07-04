@@ -1,0 +1,12 @@
+frmBrowser = 0, 0, 0, 0, C, 154, 154, 816, 608, C
+frmLogin = 198, 198, 665, 642, Z, 176, 176, 838, 630, C
+frmAbout = 0, 0, 0, 0, C, 198, 198, 860, 652, C
+frmSystem = 0, 0, 0, 0, C, 132, 132, 794, 586, C
+mdlFunctions = 176, 176, 787, 630, 
+frmInterfaces = 66, 66, 728, 520, , 0, 0, 662, 454, C
+frmTreeviewMenu = 0, 0, 0, 0, C, 22, 22, 684, 476, C
+frmTraCuuError = 0, 0, 0, 0, C, 44, 44, 706, 498, C
+frmTraCuu = 0, 0, 0, 0, C, 66, 66, 728, 520, C
+frmTruyennhanTK = 176, 176, 891, 630, C, 88, 88, 750, 542, C
+frmTraCuuAC = 0, 0, 0, 0, C, 198, 198, 913, 652, C
+frmTraCuuACError = 0, 0, 0, 0, C, 220, 220, 935, 674, C
