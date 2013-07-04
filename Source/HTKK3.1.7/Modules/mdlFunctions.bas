@@ -3407,19 +3407,19 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             ReDim strResult(3)
             strResult(0) = "D_7~Dynamic_0"
             strResult(1) = "I_23~L_24~J_27~L_27~L_28~J_30~J_31~L_31~J_32~J_33~L_33~J_34~L_34~J_35~L_35~L_36~L_38~L_39~L_40~L_42~L_43~L_44~L_45~L_46~L_47~Dynamic_0"
-            strResult(2) = "D_49~D_50~K_49~K_50~K_52~L_52~O_52~L_14~B_18~D_20~P_20~Dynamic_0"
+            strResult(2) = "D_49~D_50~K_49~K_50~K_52~L_52~O_52~L_14~B_18~D_20~P_20~N_52~Dynamic_0"
         ' 02_GTGT / TT28
         Case "02"
             ReDim strResult(3)
             strResult(0) = "AH_24~Dynamic_0"
             strResult(1) = "CT_40~BW_42~CT_42~BW_44~CT_44~BW_45~CT_45~CT_46~CT_47~CT_48~CT_49~CT_50~CT_51~Dynamic_0"
-            strResult(2) = "V_55~CB_55~V_57~CB_57~C_59~F_59~I_59~Dynamic_0"
+            strResult(2) = "V_55~CB_55~V_57~CB_57~C_59~F_59~I_59~K_59~Dynamic_0"
         ' 03_GTGT / TT28
         Case "04"
             ReDim strResult(3)
             strResult(0) = "F_6~Dynamic_0"
             strResult(1) = "M_36~P_36~S_36~M_37~P_37~S_37~M_38~P_38~S_38~M_39~P_39~S_39~O_42~O_44~Dynamic_0"
-            strResult(2) = "E_56~O_56~E_58~O_58~C_60~F_60~I_60~Dynamic_0"
+            strResult(2) = "E_56~O_56~E_58~O_58~C_60~F_60~I_60~M_60~Dynamic_0"
         ' 04_GTGT /TT28
         Case "71"
             ReDim strResult(11)
@@ -3433,7 +3433,7 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             strResult(7) = "L_55~R_55~X_55~L_25~R_25~X_25~Dynamic_0"
             strResult(8) = "B_57~C_57~K_57~Q_57~W_57~AE_57~Dynamic_1"
             strResult(9) = "S_60~O_62~E_25~Dynamic_0"
-            strResult(10) = "H_73~T_73~H_75~T_75~C_37~F_37~I_37~Dynamic_0"
+            strResult(10) = "H_73~T_73~H_75~T_75~C_37~F_37~I_37~K_37~Dynamic_0"
          ' 05_GTGT /TT28
         Case "72"
             ReDim strResult(3)

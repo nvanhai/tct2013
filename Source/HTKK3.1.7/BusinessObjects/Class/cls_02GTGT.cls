@@ -217,12 +217,12 @@ Public Sub Prepare2()
         ' set loai tk thang/ quy
          If strTkThangQuy = "TK_THANG" Then
             .Col = .ColLetterToNumber("K")
-            .Row = 61
+            .Row = 59
             .Text = "0"
             UpdateCell fps, .Col, .Row, .Text
         ElseIf strTkThangQuy = "TK_QUY" Then
             .Col = .ColLetterToNumber("K")
-            .Row = 61
+            .Row = 59
             .Text = "1"
             UpdateCell fps, .Col, .Row, .Text
         End If
@@ -812,7 +812,7 @@ Private Sub CheckDynamicError()
     Dim ct32 As Variant
     Dim CT22 As Variant
     Dim ct23 As Variant
-    Dim NgayHienTai As Variant
+    Dim ngayHienTai As Variant
     Dim strDateNHT As Variant
     Dim CheckNgayKy As Variant
     Dim DateNgayKy As Variant
@@ -867,9 +867,9 @@ Private Sub CheckDynamicError()
             .GetText .ColLetterToNumber("CT"), 51, ct32
             .GetText .ColLetterToNumber("CB"), 57, DateNgayKy
             'chek ngay ky " cho phep sua nhung ko duoc lon hon ngay hien tai"
-            NgayHienTai = DateSerial(Mid(Trim(DateNgayKy), 7, 4), Mid(Trim(DateNgayKy), 4, 2), Mid(Trim(DateNgayKy), 1, 2))
+            ngayHienTai = DateSerial(Mid(Trim(DateNgayKy), 7, 4), Mid(Trim(DateNgayKy), 4, 2), Mid(Trim(DateNgayKy), 1, 2))
             strDateNHT = DateTime.Now
-            CheckNgayKy = DateDiff("d", strDateNHT, NgayHienTai)
+            CheckNgayKy = DateDiff("d", strDateNHT, ngayHienTai)
                 If CheckNgayKy > 0 Then
                     .Col = .ColLetterToNumber("CB")
                     .Row = 57
