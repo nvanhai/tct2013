@@ -384,7 +384,16 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
             strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & ".xml"
         Else
             If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Day") <> "1" Then
-                strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" _
+                Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+                    If strQuy = "TK_THANG" Then
+                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                    ElseIf strQuy = "TK_QUY" Then
+                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                    End If
+                Else
+                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                End If
             ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
                 If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Then
                 ' To khai 08/TNCN co to khai tu thang va to khai quy
@@ -421,7 +430,16 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
             strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & ".xml"
         Else
             If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Day") <> "1" Then
-                strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" _
+                Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+                    If strQuy = "TK_THANG" Then
+                        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                    ElseIf strQuy = "TK_QUY" Then
+                        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                    End If
+                Else
+                    strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                End If
             ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
                 If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Then
                 ' To khai 08/TNCN co to khai tu thang va to khai quy
@@ -439,7 +457,7 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
                     End If
                 Else
                     strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
-                 End If
+                End If
             ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Month") <> "1" Then
                     'Data file contain Day from and to.
                     If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "80" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "82" Then
@@ -2400,7 +2418,16 @@ Private Sub DeleteSheet(pIndex As Integer)
         End If
     Else
         If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then
-            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+            If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" _
+            Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+                If strQuy = "TK_THANG" Then
+                    strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                ElseIf strQuy = "TK_QUY" Then
+                    strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                End If
+            Else
+                strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+            End If
         ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
             strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
         ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" Then
@@ -5225,10 +5252,18 @@ Private Sub Form_Load()
     LoadTemplate fpSpread1
     SetupSpread
     FormatGrid
+    
+    Dim idMenu As Variant
+    idMenu = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
 
     If Trim(GetAttribute(TAX_Utilities_New.NodeValidity, "Class")) <> vbNullString Then
         Set objTaxBusiness = CreateObject(GetAttribute(TAX_Utilities_New.NodeValidity, "Class"))
         Set objTaxBusiness.fps = fpSpread1
+        ' to khai GTGT se co to khai thang / quy
+        If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "95" Then
+             objTaxBusiness.strTkThangQuy = strQuy
+        End If
+        ' end
         objTaxBusiness.Prepare1
     End If
     Dim idToKhai As Variant
@@ -5253,8 +5288,6 @@ Private Sub Form_Load()
     
     ' 10062011
     ' To khai 01_TTDB va NTNN se co to khai phat sinh hoac thang
-    Dim idMenu As Variant
-    idMenu = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
     If idMenu = "70" Or idMenu = "05" Or idMenu = "81" Or idMenu = "73" Then
         objTaxBusiness.StrTKThang_PS = strLoaiTKThang_PS
     End If
@@ -8201,7 +8234,16 @@ Private Sub saveKHBS()
        
        
         If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Day") <> "1" Then
+            If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" _
+            Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+                If strQuy = "TK_THANG" Then
+                    strDataFileName = TAX_Utilities_New.DataFolder & "KHBS_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_" & TAX_Utilities_New.DateKHBS & ".xml"
+                ElseIf strQuy = "TK_QUY" Then
+                    strDataFileName = TAX_Utilities_New.DataFolder & "KHBS_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_" & TAX_Utilities_New.DateKHBS & ".xml"
+                End If
+            Else
                  strDataFileName = TAX_Utilities_New.DataFolder & "KHBS_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_" & TAX_Utilities_New.DateKHBS & ".xml"
+            End If
         ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
              strDataFileName = TAX_Utilities_New.DataFolder & "KHBS_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_" & TAX_Utilities_New.DateKHBS & ".xml"
         ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Month") <> "1" Then
@@ -10049,7 +10091,7 @@ ErrorHandle:
 End Function
 
 Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
-    Dim a As Integer
+    Dim a As Long
     a = 0
 
     With fps
@@ -10086,8 +10128,8 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
             Loop
                  
             a = 1
-            Dim dem As Integer
-            Dim du  As Integer
+            Dim dem As Long
+            Dim du  As Long
             dem = numRow \ 1024
             du = numRow Mod 1024
 
@@ -10169,7 +10211,7 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
 End Sub
 
 Public Sub copyFormulasSheet3(numRow As Long, fps As fpSpread, rowStart As Long)
-    Dim a As Integer
+    Dim a As Long
     a = 0
 
     With fps
@@ -10201,8 +10243,8 @@ Public Sub copyFormulasSheet3(numRow As Long, fps As fpSpread, rowStart As Long)
             Loop
                  
             a = 1
-            Dim dem As Integer
-            Dim du  As Integer
+            Dim dem As Long
+            Dim du  As Long
             dem = numRow \ 1024
             du = numRow Mod 1024
 
@@ -10270,7 +10312,7 @@ Public Sub copyFormulasSheet3(numRow As Long, fps As fpSpread, rowStart As Long)
 End Sub
 
 Public Sub copyFormulas06_TNCN(numRow As Long, fps As fpSpread, rowStart As Long)
-    Dim a As Integer
+    Dim a As Long
     a = 0
 
     With fps
@@ -10300,8 +10342,8 @@ Public Sub copyFormulas06_TNCN(numRow As Long, fps As fpSpread, rowStart As Long
             Loop
                  
             
-            Dim dem As Integer
-            Dim du  As Integer
+            Dim dem As Long
+            Dim du  As Long
             dem = numRow \ 1024
             du = numRow Mod 1024
             a = 1
@@ -10361,7 +10403,7 @@ Public Sub copyFormulas06_TNCN(numRow As Long, fps As fpSpread, rowStart As Long
 End Sub
 
 Public Sub copyFormulas01_NTNN(numRow As Long, fps As fpSpread, rowStart As Long)
-    Dim a As Integer
+    Dim a As Long
     a = 0
 
     With fps
@@ -10394,8 +10436,8 @@ Public Sub copyFormulas01_NTNN(numRow As Long, fps As fpSpread, rowStart As Long
             Loop
                  
             a = 1
-            Dim dem As Integer
-            Dim du  As Integer
+            Dim dem As Long
+            Dim du  As Long
             dem = numRow \ 1024
             du = numRow Mod 1024
 
@@ -10757,7 +10799,7 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
         
     ReDim fparray(lrowCount - 1, 6) As Variant
     fpSpread2.GetArray fpSpread2.ColLetterToNumber("B"), rowStartSpread2, fparray
-    Dim a                As Integer
+    Dim a                As Long
     Dim rowStartSpread11 As Long
     a = 0
     rowStartSpread11 = rowStartSpread1
@@ -11075,7 +11117,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                         numSheet As Integer, isFirstRow As Boolean)
     ReDim fparray(lrowCount - 1, 10) As Variant
     fpSpread2.GetArray fpSpread2.ColLetterToNumber("B"), rowStartSpread2, fparray
-    Dim a                As Integer
+    Dim a                As Long
     Dim rowStartSpread11 As Long
     a = 0
     rowStartSpread11 = rowStartSpread1

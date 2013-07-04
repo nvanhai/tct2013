@@ -45,6 +45,8 @@ Public tuRowDL As Long
 Public denRowDL As Long
 Public strTuRowDenRowPL As String
 
+Public strTkThangQuy As String
+
 'Dinh nghia type luu du  Row
 Public Type MY_ROW
     tenCT As String
@@ -170,6 +172,22 @@ Public Sub Prepare2()
             UpdateCell fps, .Col, .Row, .Text
         End If
         
+        
+        ' set loai tk thang/ quy
+         If strTkThangQuy = "TK_THANG" Then
+            .Col = .ColLetterToNumber("K")
+            .Row = 37
+            .Text = "0"
+            UpdateCell fps, .Col, .Row, .Text
+        ElseIf strTkThangQuy = "TK_QUY" Then
+            .Col = .ColLetterToNumber("K")
+            .Row = 37
+            .Text = "1"
+            UpdateCell fps, .Col, .Row, .Text
+        End If
+            'end
+        
+        
         ' Set so thu tu
         ' group 2
          fps.EventEnabled(EventAllEvents) = False
@@ -226,7 +244,7 @@ Dim itemp As Variant, temp As Variant
 Dim cValue As Variant
 
 Dim tempRow As MY_ROW
-Dim arrRow() As MY_ROW, arrRow2() As MY_ROW, arrRow3() As MY_ROW, arrRow4() As MY_ROW
+Dim ArrRow() As MY_ROW, arrRow2() As MY_ROW, arrRow3() As MY_ROW, arrRow4() As MY_ROW
 Dim tempValue As Variant
 
 
@@ -387,7 +405,7 @@ End Sub
 Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
 Dim i As Integer, iCol As Long, iRow As Long
 Dim countRowDyn As Long, coundtRowDel As Long
-Dim arrRow() As MY_ROW
+Dim ArrRow() As MY_ROW
 Dim tempRow As MY_ROW
 Dim tempValue As Variant, tempGroup As Variant, tempMaNhom As Variant
 Dim tCol As Long, tRow As Long
@@ -723,7 +741,7 @@ Dim itemp As Variant, temp As Variant
 Dim cValue As Variant
 
 Dim tempRow As MY_ROW
-Dim arrRow() As MY_ROW, arrRow2() As MY_ROW, arrRow3() As MY_ROW, arrRow4() As MY_ROW
+Dim ArrRow() As MY_ROW, arrRow2() As MY_ROW, arrRow3() As MY_ROW, arrRow4() As MY_ROW
 Dim tempValue As Variant
 
 
@@ -795,8 +813,8 @@ Dim tempValue As Variant
                     .GetText .ColLetterToNumber("AE"), .Row, tempValue
                     tempRow.Cot4 = Val(tempValue)
                     tempRow.Cot5 = i
-                    ReDim Preserve arrRow(i - 1)
-                    arrRow(i - 1) = tempRow
+                    ReDim Preserve ArrRow(i - 1)
+                    ArrRow(i - 1) = tempRow
                     i = i + 1
                     .Col = .ColLetterToNumber("B")
                     .Row = .Row + 1
@@ -820,7 +838,7 @@ Dim tempValue As Variant
                             .TypeComboBoxCurSel = intIndexCombo
                             UpdateCell fps, .Col, .Row, .Text
                          End If
-                        tempRow.tenCT = arrRow(i - 1).tenCT
+                        tempRow.tenCT = ArrRow(i - 1).tenCT
                         .GetText .ColLetterToNumber("K"), .Row, tempValue
                         tempRow.cot1 = Val(tempValue)
                         .GetText .ColLetterToNumber("Q"), .Row, tempValue
@@ -851,7 +869,7 @@ Dim tempValue As Variant
                             .TypeComboBoxCurSel = intIndexCombo
                             UpdateCell fps, .Col, .Row, .Text
                          End If
-                        tempRow.tenCT = arrRow(i - 1).tenCT
+                        tempRow.tenCT = ArrRow(i - 1).tenCT
                         .GetText .ColLetterToNumber("K"), .Row, tempValue
                         tempRow.cot1 = Val(tempValue)
                         .GetText .ColLetterToNumber("Q"), .Row, tempValue
@@ -882,7 +900,7 @@ Dim tempValue As Variant
                             .TypeComboBoxCurSel = intIndexCombo
                             UpdateCell fps, .Col, .Row, .Text
                          End If
-                        tempRow.tenCT = arrRow(i - 1).tenCT
+                        tempRow.tenCT = ArrRow(i - 1).tenCT
                         .GetText .ColLetterToNumber("K"), .Row, tempValue
                         tempRow.cot1 = Val(tempValue)
                         .GetText .ColLetterToNumber("Q"), .Row, tempValue
@@ -1667,14 +1685,14 @@ End Sub
 
 ' Kiem tra xem neu la group II, III, IV ma bam F5, F6 se khong them dong
 Public Function isAddRow(ByVal iCol As Integer, ByVal iRow As Integer) As Boolean
-    Dim vartemp  As Variant
+    Dim varTemp  As Variant
     With fps
         .Sheet = 1
         ' Group 1
-        .col = .ColLetterToNumber("AF")
+        .Col = .ColLetterToNumber("AF")
         .Row = iRow
-        .GetText .col, .Row, vartemp
-        If Trim$(CStr(vartemp)) = "F" Then
+        .GetText .Col, .Row, varTemp
+        If Trim$(CStr(varTemp)) = "F" Then
             isAddRow = False
         Else
             isAddRow = True
