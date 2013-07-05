@@ -744,6 +744,14 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 .Row = Row
                 UpdateCell fps, .Col, .Row, .Text
             End If
+            'chuyen cot ky hieu ve chu cai in hoa
+            If Col = .ColLetterToNumber("C") Then
+                 .GetText Col, Row, varTemp
+                 .SetText Col, Row, UCase(varTemp)
+                 .Col = Col
+                 .Row = Row
+                 UpdateCell fps, .Col, .Row, .Text
+            End If
             
         End If
 'KHBS
@@ -1815,15 +1823,23 @@ End Sub
 
 Public Sub FinishImport()
 Dim i As Integer, iCol As Long, iRow As Long
+Dim varTemp As Variant
  With fps
     fps.EventEnabled(EventAllEvents) = False
-    If .ActiveSheet = 2 Then
+    If .ActiveSheet = 2 Or .ActiveSheet = 3 Or .ActiveSheet = 4 Or .ActiveSheet = 5 Or .ActiveSheet = 6 Or .ActiveSheet = 7 _
+        Or .ActiveSheet = 8 Or .ActiveSheet = 9 Or .ActiveSheet = 10 Or .ActiveSheet = 11 Then
                 fps.EventEnabled(EventAllEvents) = True
                 i = 1
                 .Col = .ColLetterToNumber("B")
                 .Row = 8
                 Do
                      .Text = str(i)
+                     ' chuyen ky hieu thanh chu hoa
+                    .Col = .ColLetterToNumber("C")
+                    .GetText .Col, .Row, varTemp
+                    .Text = UCase$(CStr(varTemp))
+                    UpdateCell fps, .Col, .Row, .Text
+                    ' end
                      .Col = .ColLetterToNumber("B")
                      .Row = i + 8
                      i = i + 1
@@ -1834,46 +1850,46 @@ Dim i As Integer, iCol As Long, iRow As Long
                 .SetActiveCell iCol, iRow
                 fps.EventEnabled(EventAllEvents) = False
                 
-    Dim xmlCellNode As MSXML.IXMLDOMNode
-    Dim strValue1  As Variant, strValue2 As Variant
-    Dim varTemp1 As Variant, varTemp2 As Variant
-           mCurrentSheet = .Sheet
-            Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
-                          (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 2)
-            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
-            .Col = iCol
-            .Row = iRow
-            strValue1 = .value
-            UpdateCell fps, .Col, .Row, .value
-            Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
-                          (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 1)
-            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
-            .Col = iCol
-            .Row = iRow
-            strValue2 = .value
-            UpdateCell fps, .Col, .Row, .value
-            If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Then
-                     fps.EventEnabled(EventAllEvents) = False
-                    .Sheet = 1
-                    mCurrentSheet = .Sheet
-                    'Chi tieu [11]
-                    .GetText .ColLetterToNumber("C"), 24, varTemp1
-                    .Col = .ColLetterToNumber("J")
-                    .Row = 10
-                    .value = varTemp1
-                    UpdateCell fps, .Col, .Row, .value
-                    'Chi tieu [12]
-                    .GetText .ColLetterToNumber("D"), 24, varTemp2
-                    .Col = .ColLetterToNumber("L")
-                    .Row = 10
-                    .value = varTemp2
-                    UpdateCell fps, .Col, .Row, .value
-                   .Sheet = .ActiveSheet
-                    mCurrentSheet = .Sheet
-                    fps.EventEnabled(EventAllEvents) = True
-              End If
-    
-        CellChange iCol, iRow
+                Dim xmlCellNode As MSXML.IXMLDOMNode
+                Dim strValue1  As Variant, strValue2 As Variant
+                Dim varTemp1 As Variant, varTemp2 As Variant
+                       mCurrentSheet = .Sheet
+                        Set xmlCellNode = TAX_Utilities_New.Data(.ActiveSheet - 1).getElementsByTagName("Cell") _
+                                      (TAX_Utilities_New.Data(.ActiveSheet - 1).getElementsByTagName("Cell").length - 2)
+                        ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+                        .Col = iCol
+                        .Row = iRow
+                        strValue1 = .value
+                        UpdateCell fps, .Col, .Row, .value
+                        Set xmlCellNode = TAX_Utilities_New.Data(.ActiveSheet - 1).getElementsByTagName("Cell") _
+                                      (TAX_Utilities_New.Data(.ActiveSheet - 1).getElementsByTagName("Cell").length - 1)
+                        ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+                        .Col = iCol
+                        .Row = iRow
+                        strValue2 = .value
+                        UpdateCell fps, .Col, .Row, .value
+                        If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Then
+                                 fps.EventEnabled(EventAllEvents) = False
+                                .Sheet = 1
+                                mCurrentSheet = .Sheet
+                                'Chi tieu [11]
+                                .GetText .ColLetterToNumber("C"), 24, varTemp1
+                                .Col = .ColLetterToNumber("J")
+                                .Row = 10
+                                .value = varTemp1
+                                UpdateCell fps, .Col, .Row, .value
+                                'Chi tieu [12]
+                                .GetText .ColLetterToNumber("D"), 24, varTemp2
+                                .Col = .ColLetterToNumber("L")
+                                .Row = 10
+                                .value = varTemp2
+                                UpdateCell fps, .Col, .Row, .value
+                               .Sheet = .ActiveSheet
+                                mCurrentSheet = .Sheet
+                                fps.EventEnabled(EventAllEvents) = True
+                          End If
+                
+                    CellChange iCol, iRow
     End If
     fps.EventEnabled(EventAllEvents) = True
  End With

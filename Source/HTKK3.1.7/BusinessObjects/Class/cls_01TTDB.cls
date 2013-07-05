@@ -2094,6 +2094,16 @@ With fps
                .Row = Row
                 UpdateCell fps, .Col, .Row, .Text
             End If
+            
+            'chuyen cot ky hieu ve chu cai in hoa
+            If Col = .ColLetterToNumber("C") Then
+                 .GetText Col, Row, varTemp
+                 .SetText Col, Row, UCase(varTemp)
+                 .Col = Col
+                 .Row = Row
+                 UpdateCell fps, .Col, .Row, .Text
+            End If
+            
         Case 3
     'tinh so dong
         .Col = .ColLetterToNumber("B")
@@ -2118,6 +2128,15 @@ With fps
                 .Col = Col
                 .Row = Row
                 UpdateCell fps, .Col, .Row, .Text
+            End If
+            
+            'chuyen cot ky hieu ve chu cai in hoa
+            If Col = .ColLetterToNumber("C") And Row < 10 + count Then
+                 .GetText Col, Row, varTemp
+                 .SetText Col, Row, UCase(varTemp)
+                 .Col = Col
+                 .Row = Row
+                 UpdateCell fps, .Col, .Row, .Text
             End If
             
         End Select
@@ -3627,8 +3646,9 @@ Sub fps_TextTipFetch(ByVal Col As Long, ByVal Row As Long, MultiLine As Long, Ti
 End Sub
 Public Sub FinishImport()
 Dim i As Integer, iCol As Long, iRow As Long
-Dim maTM As Variant, strID As Variant
+Dim maTM As Variant, strId As Variant
 Dim idx As Integer
+Dim varTemp As Variant
 With fps
 fps.EventEnabled(EventAllEvents) = False
     If .ActiveSheet = 2 Then
@@ -3646,8 +3666,8 @@ fps.EventEnabled(EventAllEvents) = False
                          .Col = .ColLetterToNumber("K")
                          For idx = 0 To .TypeComboBoxCount
                             .TypeComboBoxCurSel = idx
-                            .GetText .ColLetterToNumber("K"), .Row, strID
-                            If Trim$(maTM) = Trim(Mid(strID, 200, 10)) Then
+                            .GetText .ColLetterToNumber("K"), .Row, strId
+                            If Trim$(maTM) = Trim(Mid(strId, 200, 10)) Then
                                 .Col = .ColLetterToNumber("L")
                                 .TypeComboBoxCurSel = idx
                                 Exit For
@@ -3655,7 +3675,12 @@ fps.EventEnabled(EventAllEvents) = False
                          Next idx
                          
                          
-                         
+                         'chuyen ky hieu thanh chu hoa
+                         .Col = .ColLetterToNumber("C")
+                         .GetText .Col, .Row, varTemp
+                         .SetText .Col, .Row, UCase(varTemp)
+                         UpdateCell fps, .Col, .Row, .Text
+                         ' end
 
                          .Col = .ColLetterToNumber("B")
                          .Row = i + 37
@@ -3667,38 +3692,30 @@ fps.EventEnabled(EventAllEvents) = False
                     coutDyn = i - 1
    
             End If
-'            If .ActiveSheet = 3 Then
-'                    i = 1
-'                    .Col = .ColLetterToNumber("B")
-'                    .Row = 8
-'                    Do
-'                         .Text = str(i)
-'                         .Col = .ColLetterToNumber("B")
-'                         .Row = i + 8
-'                         i = i + 1
-'                    Loop Until .Text = "aa"
-'                    i = 1
-'                   .Row = .Row + 4
-'                    Do
-'                         .Text = str(i)
-'                         .Col = .ColLetterToNumber("B")
-'                         .Row = 1 + .Row
-'                         i = i + 1
-'                    Loop Until .Text = "bb"
-'                    i = 1
-'                   .Row = .Row + 4
-'                    Do
-'                         .Text = str(i)
-'                         .Col = .ColLetterToNumber("B")
-'                         .Row = 1 + .Row
-'                         i = i + 1
-'                    Loop Until .Text = "cc"
-'
-'                    .SetActiveCell iCol, iRow
-'                    .Row = iRow
-'                    .Col = iCol
-'                    .SetActiveCell iCol, iRow
-'            End If
+            If .ActiveSheet = 3 Then
+                    i = 1
+                    .Col = .ColLetterToNumber("B")
+                    .Row = 10
+                    Do
+                         .Text = str(i)
+                         
+                         'chuyen ky hieu thanh chu hoa
+                         .Col = .ColLetterToNumber("C")
+                         .GetText .Col, .Row, varTemp
+                         .SetText .Col, .Row, UCase(varTemp)
+                         UpdateCell fps, .Col, .Row, .Text
+                         ' end
+                         
+                         .Col = .ColLetterToNumber("B")
+                         .Row = i + 10
+                         i = i + 1
+                    Loop Until .Text = "aa"
+
+     
+                    .Row = iRow
+                    .Col = iCol
+                    .SetActiveCell iCol, iRow
+            End If
         fps.EventEnabled(EventAllEvents) = True
         End With
     'CellChange iCol, iRow

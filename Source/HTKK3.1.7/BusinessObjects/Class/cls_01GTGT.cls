@@ -894,6 +894,15 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                        .Row = Row
                       UpdateCell fps, .Col, .Row, .Text
                    End If
+                   
+                   'chuyen cot ky hieu ve chu cai in hoa
+                   If Col = .ColLetterToNumber("C") Then
+                        .GetText Col, Row, varTemp
+                        .SetText Col, Row, UCase(varTemp)
+                        .Col = Col
+                        .Row = Row
+                        UpdateCell fps, .Col, .Row, .Text
+                   End If
         End If
         
         If .ActiveSheet = 4 Then
@@ -3516,6 +3525,7 @@ End Sub
 
 Public Sub FinishImport()
 Dim i As Integer, iCol As Long, iRow As Long
+Dim varTemp As Variant
 With fps
 fps.EventEnabled(EventAllEvents) = False
     If .ActiveSheet = 2 Then
@@ -3527,6 +3537,12 @@ fps.EventEnabled(EventAllEvents) = False
 '                         .Col = .ColLetterToNumber("K")
 '                         .Text = "0"
 '                         UpdateCell fps, .Col, .Row, .Text
+                          ' chuyen ky hieu thanh chu hoa
+                          .Col = .ColLetterToNumber("C")
+                          .GetText .Col, .Row, varTemp
+                          .Text = UCase$(CStr(varTemp))
+                          UpdateCell fps, .Col, .Row, .Text
+                          ' end
                          .Col = .ColLetterToNumber("B")
                          .Row = i + 8
                          i = i + 1
@@ -3542,6 +3558,14 @@ fps.EventEnabled(EventAllEvents) = False
                          .Col = .ColLetterToNumber("K")
                          .Text = "0"
                          UpdateCell fps, .Col, .Row, .Text
+                         
+                         ' chuyen ky hieu thanh chu hoa
+                         .Col = .ColLetterToNumber("C")
+                          .GetText .Col, .Row, varTemp
+                          .Text = UCase$(CStr(varTemp))
+                          UpdateCell fps, .Col, .Row, .Text
+                         ' end
+                         
                          .Col = .ColLetterToNumber("B")
                          .Row = 1 + .Row
                          i = i + 1
@@ -3554,6 +3578,14 @@ fps.EventEnabled(EventAllEvents) = False
 '                         .TypeHAlign = TypeHAlignCenter
 '                         .Text = "5%"
 '                         UpdateCell fps, .Col, .Row, .Text
+
+                        ' chuyen ky hieu thanh chu hoa
+                         .Col = .ColLetterToNumber("C")
+                          .GetText .Col, .Row, varTemp
+                          .Text = UCase$(CStr(varTemp))
+                          UpdateCell fps, .Col, .Row, .Text
+                         ' end
+
                          .Col = .ColLetterToNumber("B")
                          .Row = 1 + .Row
                          i = i + 1
@@ -3566,6 +3598,13 @@ fps.EventEnabled(EventAllEvents) = False
 '                         .TypeHAlign = TypeHAlignCenter
 '                         .Text = "10%"
 '                         UpdateCell fps, .Col, .Row, .Text
+                          ' chuyen ky hieu thanh chu hoa
+                         .Col = .ColLetterToNumber("C")
+                          .GetText .Col, .Row, varTemp
+                          .Text = UCase$(CStr(varTemp))
+                          UpdateCell fps, .Col, .Row, .Text
+                         ' end
+
                          .Col = .ColLetterToNumber("B")
 
                          .Row = 1 + .Row
@@ -3579,6 +3618,14 @@ fps.EventEnabled(EventAllEvents) = False
 '                         .TypeHAlign = TypeHAlignCenter
 '                         .Text = "10%"
 '                         UpdateCell fps, .Col, .Row, .Text
+
+                         ' chuyen ky hieu thanh chu hoa
+                         .Col = .ColLetterToNumber("C")
+                          .GetText .Col, .Row, varTemp
+                          .Text = UCase$(CStr(varTemp))
+                          UpdateCell fps, .Col, .Row, .Text
+                         ' end
+
                          .Col = .ColLetterToNumber("B")
                          .Row = 1 + .Row
                          i = i + 1
@@ -3597,6 +3644,14 @@ fps.EventEnabled(EventAllEvents) = False
                     .Row = 8
                     Do
                          .Text = str(i)
+                         
+                         ' chuyen ky hieu thanh chu hoa
+                         .Col = .ColLetterToNumber("C")
+                          .GetText .Col, .Row, varTemp
+                          .Text = UCase$(CStr(varTemp))
+                          UpdateCell fps, .Col, .Row, .Text
+                         ' end
+                         
                          .Col = .ColLetterToNumber("B")
                          .Row = i + 8
                          i = i + 1
@@ -3605,6 +3660,14 @@ fps.EventEnabled(EventAllEvents) = False
                    .Row = .Row + 4
                     Do
                          .Text = str(i)
+                         
+                         ' chuyen ky hieu thanh chu hoa
+                         .Col = .ColLetterToNumber("C")
+                          .GetText .Col, .Row, varTemp
+                          .Text = UCase$(CStr(varTemp))
+                          UpdateCell fps, .Col, .Row, .Text
+                         ' end
+                         
                          .Col = .ColLetterToNumber("B")
                          .Row = 1 + .Row
                          i = i + 1
@@ -3613,6 +3676,14 @@ fps.EventEnabled(EventAllEvents) = False
                    .Row = .Row + 4
                     Do
                          .Text = str(i)
+                         
+                         ' chuyen ky hieu thanh chu hoa
+                         .Col = .ColLetterToNumber("C")
+                          .GetText .Col, .Row, varTemp
+                          .Text = UCase$(CStr(varTemp))
+                          UpdateCell fps, .Col, .Row, .Text
+                         ' end
+                         
                          .Col = .ColLetterToNumber("B")
                          .Row = 1 + .Row
                          i = i + 1
@@ -3621,6 +3692,14 @@ fps.EventEnabled(EventAllEvents) = False
                     .Row = .Row + 4
                     Do
                          .Text = str(i)
+                         
+                         ' chuyen ky hieu thanh chu hoa
+                         .Col = .ColLetterToNumber("C")
+                          .GetText .Col, .Row, varTemp
+                          .Text = UCase$(CStr(varTemp))
+                          UpdateCell fps, .Col, .Row, .Text
+                         ' end
+                         
                          .Col = .ColLetterToNumber("B")
                          .Row = 1 + .Row
                          i = i + 1
@@ -3629,6 +3708,14 @@ fps.EventEnabled(EventAllEvents) = False
                     .Row = .Row + 4
                     Do
                          .Text = str(i)
+                         
+                         ' chuyen ky hieu thanh chu hoa
+                         .Col = .ColLetterToNumber("C")
+                          .GetText .Col, .Row, varTemp
+                          .Text = UCase$(CStr(varTemp))
+                          UpdateCell fps, .Col, .Row, .Text
+                         ' end
+                         
                          .Col = .ColLetterToNumber("B")
                          .Row = 1 + .Row
                          i = i + 1
