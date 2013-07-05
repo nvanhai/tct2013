@@ -964,6 +964,16 @@ Private Sub CheckDynamicError()
     Dim errCTieu, vMSTtemp, alertThueTNDN As Variant
     Dim vThuePL05 As Variant
     Dim tempRow As Long, tempRow1 As Long
+    ' kiem tra nam dc gh
+    Dim Quynamtc As Integer
+    Dim Namtc As Integer
+    Dim QuyKK As Integer
+    Dim NamKK As Integer
+    Dim iNgayTaiChinh As Integer
+    Dim iThangTaiChinh As Integer
+    Dim strNgayTaiChinh As String
+        
+    Dim isCheckGh As Boolean
     ' end
     
     ' PL 05
@@ -1014,9 +1024,41 @@ Private Sub CheckDynamicError()
        UpdateCell fps, .Col, .Row, varTemp
    
          ' check ly do gia han
+         ' cac ky khong check ly do gia han
+        QuyKK = TAX_Utilities_New.ThreeMonths
+        NamKK = TAX_Utilities_New.Year
+        
+        
+        'Lay ngay bat dau nam tai chinh
+        If GetAttribute(TAX_Utilities_New.NodeMenu, "FinanceYear") = "1" Then
+            strNgayTaiChinh = GetNgayBatDauNamTaiChinh
+                iNgayTaiChinh = GetNgayTaiChinh(strNgayTaiChinh)
+                iThangTaiChinh = GetThangTaiChinh(strNgayTaiChinh)
+        Else
+            strNgayTaiChinh = "01/01"
+            iNgayTaiChinh = 1
+            iThangTaiChinh = 1
+        End If
+        
+        Quynamtc = GetQuyNamTaiChinh(QuyKK, NamKK, iNgayTaiChinh, iThangTaiChinh, 0)
+        Namtc = GetQuyNamTaiChinh(QuyKK, NamKK, iNgayTaiChinh, iThangTaiChinh, 1)
+        If (Namtc = 2010 And Quynamtc = 4) Then
+            isCheckGh = False
+        ElseIf Namtc = 2011 And (Quynamtc = 3 Or Quynamtc = 4) Then
+            isCheckGh = False
+        ElseIf Namtc = 2011 And (Quynamtc = 1 Or Quynamtc = 2) Then
+            isCheckGh = False
+        ElseIf Namtc = 2010 And Quynamtc <> 4 Then
+            isCheckGh = False
+        ElseIf Namtc = 2009 Then
+            isCheckGh = False
+        Else
+            isCheckGh = True
+        End If
+         ' end
         .GetText .ColLetterToNumber("B"), 34, vCheckGH
         .GetText .ColLetterToNumber("D"), 38, vLyDoGH
-         If Trim(vCheckGH) = "1" Or Trim$(UCase(vCheckGH)) = "X" Then
+         If (Trim$(vCheckGH) = "1" Or Trim$(UCase$(vCheckGH)) = "X") And isCheckGh Then
              If Trim$(vLyDoGH) = "" Then
                  .Col = .ColLetterToNumber("D")
                  .Row = 38

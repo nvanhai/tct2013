@@ -1104,17 +1104,17 @@ Private Sub checkSheet4()
                 End If
                 
                 'check chi tieu [15] <= chitieu [14] * 1600000
-                vCT15 = Replace(CStr(vCT15), ".", "")
-                If (Val(vCT15) > Val(vSoThangGiamTru) * 1600000) Then
-                    .Col = .ColLetterToNumber("K")
-                    .BackColor = mErrorColor
-                    .CellNote = vErrCheckCT15
-                    iFlagCheckCT15 = 1
-                Else
-                    .Col = .ColLetterToNumber("K")
-                    .BackColor = mNonErrorColor
-                    .CellNote = ""
-                End If
+'                vCT15 = Replace(CStr(vCT15), ".", "")
+'                If (Val(vCT15) > Val(vSoThangGiamTru) * 1600000) Then
+'                    .Col = .ColLetterToNumber("K")
+'                    .BackColor = mErrorColor
+'                    .CellNote = vErrCheckCT15
+'                    iFlagCheckCT15 = 1
+'                Else
+'                    .Col = .ColLetterToNumber("K")
+'                    .BackColor = mNonErrorColor
+'                    .CellNote = ""
+'                End If
                 
                 'Check So thang duoc giam tru thue cua nguoi phu thuoc tren phu luc 09C/TNCN
                 

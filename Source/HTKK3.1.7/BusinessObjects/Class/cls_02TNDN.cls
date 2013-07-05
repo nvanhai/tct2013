@@ -45,7 +45,7 @@ Public strTuRowDenRowPL As String
 'No parameter
 Public Sub Prepare1()
         With fps
-        .sheet = 1
+        .Sheet = 1
         
         'format ngay thang
         SetDateFormat fps, 1, 91, .ColLetterToNumber("AP"), DDMMYYYY
@@ -279,7 +279,7 @@ With fps
               
               If cValueG <> "" Then
                       ParserCellID fps, Trim(Mid(strId, 100, 20)), cCol, cRow
-                      .sheet = 1
+                      .Sheet = 1
                       .SetText cCol, cRow, cValueG
                       If loaiKHBS = "frmKHBS_TT" Then
                         UpdateKHBSCell fps, cCol, cRow, cValueG
@@ -289,7 +289,7 @@ With fps
               End If
               
 ' Set lai gia tri cu cua sheet 01
-               .sheet = .SheetCount - 1
+               .Sheet = .SheetCount - 1
                .Col = .ColLetterToNumber("BF")
                .Row = Row
                
@@ -298,9 +298,9 @@ With fps
                    ' .GetText .ColLetterToNumber("F"), Row, temp
                     ParserCellID fps, Right(cTagF, Len(cTagF) - InStr(cTagF, "~")), iCol, iRow
                     UpdateKHBSCell fps, iCol, iRow, cValueF
-                    .sheet = 1
+                    .Sheet = 1
                     .SetText iCol, iRow, 0
-                    .sheet = .SheetCount - 1
+                    .Sheet = .SheetCount - 1
                     If loaiKHBS = "frmKHBS_TT" Then
                         .GetText .ColLetterToNumber("BG"), Row, varTemp
                     Else
@@ -314,9 +314,9 @@ With fps
                             UpdateKHBSCell fps, cCol, cRow, varTemp + cValueF
                         End If
                        ' UpdateKHBSCell fps, iCol, iRow, varTemp
-                        .sheet = 1
+                        .Sheet = 1
                         .SetText iCol, iRow, varTemp
-                        .sheet = .SheetCount - 1
+                        .Sheet = .SheetCount - 1
                     End If
                    End If
                End If
@@ -324,9 +324,9 @@ With fps
                If mblKeyF6 = True Then
                 ParserCellID fps, Right(cTagF, Len(cTagF) - InStr(cTagF, "~")), iCol, iRow
                 UpdateKHBSCell fps, iCol, iRow, cValueF
-                .sheet = 1
+                .Sheet = 1
                 .SetText iCol, iRow, 0
-                .sheet = .SheetCount - 1
+                .Sheet = .SheetCount - 1
                 .Col = .ColLetterToNumber("BF")
                 .Row = Row
                 .value = 0
@@ -338,10 +338,10 @@ With fps
                 .value = 0
                End If
               
-            .sheet = 1
+            .Sheet = 1
             .GetText .ColLetterToNumber("J"), 19, varTemp
-            .sheet = .SheetCount - 1
-            Set xmlNodeH15 = TAX_Utilities_New.Data(.sheet - 1).childNodes(2).childNodes(2).lastChild.lastChild
+            .Sheet = .SheetCount - 1
+            Set xmlNodeH15 = TAX_Utilities_New.Data(.Sheet - 1).childNodes(2).childNodes(2).lastChild.lastChild
                  ParserCellID fps, GetAttribute(xmlNodeH15, "CellID"), cCol, cRow
                 .Col = cCol
                 .Row = cRow
@@ -373,7 +373,7 @@ With fps
             If Col = .ColLetterToNumber("K") And (Row = 27) Then
                 ' 12062011
                 ' set lai cac rang buoc cong thuc
-                .sheet = 1
+                .Sheet = 1
                 .GetText .ColLetterToNumber("K"), 27, CT26
                 .GetText .ColLetterToNumber("K"), 28, CT27
                 .GetText .ColLetterToNumber("K"), 29, ct28
@@ -698,13 +698,13 @@ Public Sub finish()
     With fps
         .EventEnabled(EventAllEvents) = False
         ASheet = .ActiveSheet
-        SSheet = .sheet
+        SSheet = .Sheet
         
         CheckDynamicError 'Set Exception Error on cells of interface
             
         UpdateSheets
         .ActiveSheet = ASheet
-        .sheet = SSheet
+        .Sheet = SSheet
         .EventEnabled(EventAllEvents) = True
     End With
 End Sub
@@ -857,8 +857,8 @@ Sub CheckErrorMST()
     Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
     With fps
         
-        iCurrentSheet = .sheet
-        .sheet = .SheetCount
+        iCurrentSheet = .Sheet
+        .Sheet = .SheetCount
         .GetText .ColLetterToNumber("E"), 12, vError1
         .GetText .ColLetterToNumber("E"), 13, vError2
         .GetText .ColLetterToNumber("E"), 14, vError3
@@ -959,12 +959,12 @@ Public Sub CheckErrorMST2(iRow As Integer, _
     'Dim mNonErrorColor = vbWhite
     
     With fps
-        .sheet = .SheetCount
+        .Sheet = .SheetCount
         .GetText .ColLetterToNumber("E"), iRow2, vErrMsgMST
 
         iFocusFlag = 0
         
-        .sheet = isheet
+        .Sheet = isheet
         .Col = .ColLetterToNumber("B")
         .Row = iRow
         i = 1
@@ -995,7 +995,7 @@ Public Sub CheckErrorMST2(iRow As Integer, _
                         strFocusSheetName = "'" & .SheetName & "'"
                         strFocusCol = str(.Col)
                         strFocusRow = str(.Row)
-                        .sheet = .SheetCount
+                        .Sheet = .SheetCount
                         strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
                         .Col = .ColLetterToNumber("C")
                         .Row = iRow2
@@ -1003,27 +1003,27 @@ Public Sub CheckErrorMST2(iRow As Integer, _
                     End If
 
                 Else
-                    .sheet = isheet
+                    .Sheet = isheet
                     .Col = .ColLetterToNumber(iCol)
                     .CellNote = ""
                     .BackColor = mNonErrorColor
                 End If
 
             Else
-                .sheet = isheet
+                .Sheet = isheet
                 .Col = .ColLetterToNumber(iCol)
                 .CellNote = ""
                 .BackColor = mNonErrorColor
                
             End If
 
-            .sheet = isheet
+            .Sheet = isheet
             .Row = iRow + i
             i = i + 1
             .Col = .ColLetterToNumber("B")
         Loop Until .Text = "aa"
 
-        .sheet = .SheetCount
+        .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), iRow2, IIf(iFlagvMst = 1, "0", "1")
     End With
 
@@ -1051,12 +1051,12 @@ Public Sub CheckErrorMST3(iRow As Integer, _
 
     
     With fps
-        .sheet = .SheetCount
+        .Sheet = .SheetCount
         .GetText .ColLetterToNumber("E"), iRow2, vErrMsgMST
 
         iFocusFlag = 0
         
-        .sheet = isheet
+        .Sheet = isheet
        
             '----- check ma so thue  -------
             .GetText .ColLetterToNumber(iCol), iRow, vMST
@@ -1083,7 +1083,7 @@ Public Sub CheckErrorMST3(iRow As Integer, _
                     If iFocusFlag = 0 Then
                         strFocusSheetName = "'" & .SheetName & "'"
                         
-                        .sheet = .SheetCount
+                        .Sheet = .SheetCount
                         strFormula = Trim(strFocusSheetName) & "!" & iCol & iRow
                         .Col = .ColLetterToNumber("C")
                         .Row = iRow2
@@ -1091,7 +1091,7 @@ Public Sub CheckErrorMST3(iRow As Integer, _
                     End If
 
                 Else
-                    .sheet = isheet
+                    .Sheet = isheet
                     .Row = iRow
                     .Col = .ColLetterToNumber(iCol)
                     .CellNote = ""
@@ -1099,7 +1099,7 @@ Public Sub CheckErrorMST3(iRow As Integer, _
                 End If
 
             Else
-                .sheet = isheet
+                .Sheet = isheet
                 .Row = iRow
                 .Col = .ColLetterToNumber(iCol)
                 .CellNote = ""
@@ -1107,7 +1107,7 @@ Public Sub CheckErrorMST3(iRow As Integer, _
                
             End If
 
-        .sheet = .SheetCount
+        .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), iRow2, IIf(iFlagvMst = 1, "0", "1")
     End With
 
@@ -1367,7 +1367,7 @@ Private Sub UpdateSheets()
         mCurrentSheet = .Sheet
         For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
            ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-               If (lRow = 12 And lCol = .ColLetterToNumber("D")) Or (lRow = 34 And lCol = .ColLetterToNumber("B")) Then
+               If (lRow = 82 And lCol = .ColLetterToNumber("C")) Then
                     .GetText lCol, lRow, varTemp
                     If varTemp = "1" Or UCase(CStr(varTemp)) = "X" Then
                         UpdateCell fps, lCol, lRow, "x"

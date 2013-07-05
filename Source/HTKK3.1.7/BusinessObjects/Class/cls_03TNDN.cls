@@ -1024,13 +1024,13 @@ With fps
                  ValidateNumberFormat fps, lSheet03_3A, Row, Col
             End If
             If IsValidatedCell(lSheet03_3A, 38, .ColLetterToNumber("U"), Row, Col) Then
-                 ValidateDate fps, lSheet03_3A, Row, Col, yyyy
+                 validateDate fps, lSheet03_3A, Row, Col, yyyy
             End If
             If IsValidatedCell(lSheet03_3A, 39, .ColLetterToNumber("Q"), Row, Col) Then
-                 ValidateDate fps, lSheet03_3A, Row, Col, yyyy
+                 validateDate fps, lSheet03_3A, Row, Col, yyyy
             End If
             If IsValidatedCell(lSheet03_3A, 40, .ColLetterToNumber("U"), Row, Col) Then
-                 ValidateDate fps, lSheet03_3A, Row, Col, yyyy
+                 validateDate fps, lSheet03_3A, Row, Col, yyyy
             End If
             ' TOng hop len chi tieu C8
             pL_3A_U50 = Sum_Cell(lSheet03_3A, 50, .ColLetterToNumber("U")) 'PL 03-3A
@@ -1108,16 +1108,16 @@ With fps
                  ValidateNumberFormat fps, lSheet03_3B, Row, Col
             End If
             If IsValidatedCell(lSheet03_3B, 44, .ColLetterToNumber("U"), Row, Col) Then
-                 ValidateDate fps, lSheet03_3B, Row, Col, yyyy
+                 validateDate fps, lSheet03_3B, Row, Col, yyyy
             End If
             If IsValidatedCell(lSheet03_3B, 45, .ColLetterToNumber("Q"), Row, Col) Then
-                 ValidateDate fps, lSheet03_3B, Row, Col, yyyy
+                 validateDate fps, lSheet03_3B, Row, Col, yyyy
             End If
             If IsValidatedCell(lSheet03_3B, 46, .ColLetterToNumber("U"), Row, Col) Then
-                 ValidateDate fps, lSheet03_3B, Row, Col, yyyy
+                 validateDate fps, lSheet03_3B, Row, Col, yyyy
             End If
             If IsValidatedCell(lSheet03_3B, 41, .ColLetterToNumber("S"), Row, Col) Then
-                 ValidateDate fps, lSheet03_3B, Row, Col, DDMMYYYY
+                 validateDate fps, lSheet03_3B, Row, Col, DDMMYYYY
             End If
         
             ' Tong hop len chi tieu C8
@@ -1186,10 +1186,10 @@ With fps
         Case lSheet03_3C ' Phu luc 03-3C
             mCurrentSheet = .Sheet
             If IsValidatedCell(lSheet03_3C, 27, .ColLetterToNumber("V"), Row, Col) Then
-                 ValidateDate fps, lSheet03_3C, Row, Col, DDMMYYYY
+                 validateDate fps, lSheet03_3C, Row, Col, DDMMYYYY
             End If
             If IsValidatedCell(lSheet03_3C, 31, .ColLetterToNumber("Y"), Row, Col) Then
-                 ValidateDate fps, lSheet03_3C, Row, Col, DDMMYYYY
+                 validateDate fps, lSheet03_3C, Row, Col, DDMMYYYY
             End If
             
             ' TOng hop len chi tieu C9
@@ -1262,9 +1262,9 @@ End Sub
 Private Sub CheckDynamicError()
     Dim i As Integer, iCol As Long, iRow As Long
     
-    Dim Col3 As Long, Col4 As Long, Col5 As Long
-    Dim Col6 As Long, Col7 As Long, Col8 As Long
-    Dim Col9 As Long, Col10 As Long, Col11 As Long
+    Dim col3 As Long, col4 As Long, col5 As Long
+    Dim col6 As Long, Col7 As Long, col8 As Long
+    Dim col9 As Long, Col10 As Long, Col11 As Long
     
     Dim ColLoi As Long, RowLoi As Long
     Dim ColLoi7 As Long, RowLoi7 As Long
@@ -1295,7 +1295,7 @@ Private Sub CheckDynamicError()
     Dim strKyHieu As Variant, strCheckMST As String
 
     ' PL 05
-    Dim CountRow As Long, rowDes As Long, iFlagMSTTrung As Integer, mErrMSTTrung As Variant
+    Dim countRow As Long, rowDes As Long, iFlagMSTTrung As Integer, mErrMSTTrung As Variant
     Dim vMSTCheckTrung As Variant
     
     ' PL03-6
@@ -1318,6 +1318,8 @@ Private Sub CheckDynamicError()
     ' check gh
     Dim vCheckGH, vLyDoGH, vErrorCheckGH As Variant
     Dim iflagCheckGH As Integer, count As Integer
+    
+    Dim isCheckGh As Boolean
     
     lSheet03_3A = 7
     lSheet03_3B = 8
@@ -1373,7 +1375,7 @@ Private Sub CheckDynamicError()
         .Sheet = .SheetCount
         .GetText .ColLetterToNumber("E"), 25, vErrMsg1
         .GetText .ColLetterToNumber("E"), 27, errTongTLPB
-        .GetText .ColLetterToNumber("E"), 30, errMst
+        .GetText .ColLetterToNumber("E"), 30, errMST
         .GetText .ColLetterToNumber("E"), 29, errEmty
         .GetText .ColLetterToNumber("B"), 27, iFlagTongPhanBo
         .GetText .ColLetterToNumber("E"), 31, errMSTDN
@@ -1385,6 +1387,18 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 46, vErrorCheckGH
         
         ' check ly do gia han
+        If TAX_Utilities_New.Year = 2009 Then
+            isCheckGh = False
+        ElseIf TAX_Utilities_New.Year = 2010 Then
+            isCheckGh = False
+        ElseIf TAX_Utilities_New.Year = 2011 Then
+            isCheckGh = False
+        Else
+             isCheckGh = True
+        End If
+        
+        
+        
         .Sheet = 1
          count = 0
         .Row = 60
@@ -1397,7 +1411,7 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("B"), 61 + count, vCheckGH
         
         .GetText .ColLetterToNumber("D"), 62 + count, vLyDoGH
-         If Trim(vCheckGH) = "1" Or Trim$(UCase(vCheckGH)) = "X" Then
+         If (Trim(vCheckGH) = "1" Or Trim$(UCase(vCheckGH)) = "X") And isCheckGh Then
              If Trim$(vLyDoGH) = "" Then
                  .Col = .ColLetterToNumber("D")
                  .Row = 62 + count
@@ -1437,13 +1451,13 @@ Private Sub CheckDynamicError()
         If blCheck_S03_4 = True Then
             XacDinhLoi = False
             i = 1
-            Col3 = .ColLetterToNumber("O")
-            Col4 = .ColLetterToNumber("R")
-            Col5 = .ColLetterToNumber("U")
-            Col6 = .ColLetterToNumber("Z")
+            col3 = .ColLetterToNumber("O")
+            col4 = .ColLetterToNumber("R")
+            col5 = .ColLetterToNumber("U")
+            col6 = .ColLetterToNumber("Z")
             Col7 = .ColLetterToNumber("AE")
-            Col8 = .ColLetterToNumber("AH")
-            Col9 = .ColLetterToNumber("AK")
+            col8 = .ColLetterToNumber("AH")
+            col9 = .ColLetterToNumber("AK")
             Col10 = .ColLetterToNumber("AN")
             Col11 = .ColLetterToNumber("AR")
             
@@ -1451,13 +1465,13 @@ Private Sub CheckDynamicError()
             .Row = 26
             
             Do
-                 .GetText Col3, .Row, ValCol3
-                 .GetText Col4, .Row, ValCol4
-                 .GetText Col5, .Row, ValCol5
-                 .GetText Col6, .Row, ValCol6
+                 .GetText col3, .Row, ValCol3
+                 .GetText col4, .Row, ValCol4
+                 .GetText col5, .Row, ValCol5
+                 .GetText col6, .Row, ValCol6
                  .GetText Col7, .Row, ValCol7
-                 .GetText Col8, .Row, ValCol8
-                 .GetText Col9, .Row, ValCol9
+                 .GetText col8, .Row, ValCol8
+                 .GetText col9, .Row, ValCol9
                  .GetText Col10, .Row, ValCol10
                  .GetText Col11, .Row, ValCol11
                  
@@ -1558,12 +1572,12 @@ Private Sub CheckDynamicError()
                         ElseIf Len(vMST) = 10 And strCheckMST <> "000" Then
                             .Col = .ColLetterToNumber("F")
                             .BackColor = mErrorColor
-                            .CellNote = errMst
+                            .CellNote = errMST
                             iFlagCheckMaST = 1
                         ElseIf Len(vMST) = 13 And (strCheckMST <> "000" Or IsNumeric(vMST) = False) Then
                             .Col = .ColLetterToNumber("F")
                             .BackColor = mErrorColor
-                            .CellNote = errMst
+                            .CellNote = errMST
                             iFlagCheckMaST = 1
                         Else
                             .Col = .ColLetterToNumber("F")
@@ -1574,14 +1588,14 @@ Private Sub CheckDynamicError()
                     ElseIf Len(vMST) <> 10 Or Len(vMST) <> 13 Then
                            .Col = .ColLetterToNumber("F")
                             .BackColor = mErrorColor
-                            .CellNote = errMst
+                            .CellNote = errMST
                             iFlagCheckMaST = 1
                     
                     End If
                     
                       'check MST trung nhau
-                     CountRow = .SearchCol(.ColLetterToNumber("F"), -1, -1, vMSTCheckTrung, SearchFlagsNone)
-                     rowDes = .SearchCol(.ColLetterToNumber("F"), CountRow, -1, vMSTCheckTrung, SearchFlagsNone)
+                     countRow = .SearchCol(.ColLetterToNumber("F"), -1, -1, vMSTCheckTrung, SearchFlagsNone)
+                     rowDes = .SearchCol(.ColLetterToNumber("F"), countRow, -1, vMSTCheckTrung, SearchFlagsNone)
                     If rowDes > -1 Then
                         .Col = .ColLetterToNumber("F")
                         .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
@@ -1766,7 +1780,7 @@ Private Sub CheckDynamicError()
             Dim vCheckMST, vDiaChi, vTenLK As Variant
             Dim vCheck(13) As Variant
             Dim strCol As String
-            Dim arrCol() As String
+            Dim ArrCol() As String
             Dim isCheck As Boolean
             Dim iFlagCheck As Integer
             Dim errHinhThucLK As Variant
@@ -1780,7 +1794,7 @@ Private Sub CheckDynamicError()
                 .Row = 82
                 .Col = .ColLetterToNumber("B")
                 strCol = "U~V~W~X~Y~Z~AA~AB~AC~AD~AE~AF~AG"
-                arrCol = Split(strCol, "~")
+                ArrCol = Split(strCol, "~")
                 Do
                     iWhiteRow = 1
                     .GetText .ColLetterToNumber("AH"), .Row, vCheckMST
@@ -1796,10 +1810,10 @@ Private Sub CheckDynamicError()
                         .BackColor = mNonErrorColor
                         
                         isCheck = False
-                        For i = 0 To UBound(arrCol)
-                            .GetText .ColLetterToNumber(arrCol(i)), .Row, vCheck(i)
+                        For i = 0 To UBound(ArrCol)
+                            .GetText .ColLetterToNumber(ArrCol(i)), .Row, vCheck(i)
                             
-                            .Col = .ColLetterToNumber(arrCol(i))
+                            .Col = .ColLetterToNumber(ArrCol(i))
                             .CellNote = ""
                             .BackColor = mNonErrorColor
                             If UCase$(Trim(CStr(vCheck(i)))) = "X" Or Trim(CStr(vCheck(i))) = "1" Then
@@ -1838,16 +1852,16 @@ Private Sub CheckDynamicError()
                         
                         ' Kiem tra rang buoc check
                         If isCheck = False And iWhiteRow = 0 Then
-                            For i = 0 To UBound(arrCol)
-                                .Col = .ColLetterToNumber(arrCol(i))
+                            For i = 0 To UBound(ArrCol)
+                                .Col = .ColLetterToNumber(ArrCol(i))
                                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                                 .CellNote = errHinhThucLK
                                 .BackColor = mErrorColor
                             Next
                             iFlagCheck = 1
                         Else
-                            For i = 0 To UBound(arrCol)
-                                .Col = .ColLetterToNumber(arrCol(i))
+                            For i = 0 To UBound(ArrCol)
+                                .Col = .ColLetterToNumber(ArrCol(i))
                                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                                 .CellNote = ""
                                 .BackColor = mNonErrorColor

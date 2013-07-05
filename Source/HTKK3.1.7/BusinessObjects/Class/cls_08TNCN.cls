@@ -219,6 +219,12 @@ Private Sub CheckDynamicError()
     iFocusFlag = 0
     Dim iWhiteRow As Integer
     Dim mErrCheckCT30, vCT30, vCT29 As Variant, iFlagCheckCT30 As Integer
+    Dim vCT25 As Variant, vCT26 As Variant
+    Dim errCT25 As Variant, errCT26 As Variant, errCT25_1 As Variant, errCT26_1 As Variant
+    Dim iFlagCheck25 As Integer, iFlagCheck26 As Integer
+    Dim arrTuThang() As String
+    Dim arrDenThang() As String
+    
     With fps
 
         CheckErrorMST
@@ -227,13 +233,152 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 19, error1
         .GetText .ColLetterToNumber("E"), 20, errorThang
         .GetText .ColLetterToNumber("E"), 24, mErrCheckCT30
+        
+        .GetText .ColLetterToNumber("E"), 21, errCT25
+        .GetText .ColLetterToNumber("E"), 22, errCT26
+        .GetText .ColLetterToNumber("E"), 25, errCT25_1
+        .GetText .ColLetterToNumber("E"), 26, errCT26_1
+        
        
         'check ngay ky
         .Sheet = 1
         iFlagCheckCT30 = 0
+        iFlagCheck25 = 0
+        iFlagCheck26 = 0
         'get CT30,CT29
         .GetText .ColLetterToNumber("R"), 56, vCT29
         .GetText .ColLetterToNumber("R"), 57, vCT30
+        ' get CT25, CT26
+        .GetText .ColLetterToNumber("R"), 52, vCT25
+        .GetText .ColLetterToNumber("R"), 53, vCT26
+                
+        If strQuy = "TK_QUY" Then
+            If (TAX_Utilities_New.ThreeMonths >= 3 And TAX_Utilities_New.Year = 2013) Or TAX_Utilities_New.Year > 2013 Then
+                ' Kiem tra ct25
+                 If Val(vCT25) Mod 9000000 <> 0 Then
+                     .Row = 52
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mErrorColor
+                    .CellNote = errCT25_1
+                    iFlagCheck25 = 1
+                 Else
+                    .Row = 52
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                 End If
+                
+                ' Kiem tra ct26
+                If Val(vCT26) Mod 3600000 <> 0 Then
+                     .Row = 53
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mErrorColor
+                    .CellNote = errCT26_1
+                    iFlagCheck26 = 1
+                 Else
+                    .Row = 53
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                 End If
+            
+            Else
+                ' Kiem tra ct25
+                 If Val(vCT25) Mod 4000000 <> 0 Then
+                     .Row = 52
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mErrorColor
+                    .CellNote = errCT25
+                    iFlagCheck25 = 1
+                 Else
+                    .Row = 52
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                 End If
+                
+                ' Kiem tra ct26
+                If Val(vCT26) Mod 1600000 <> 0 Then
+                     .Row = 53
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mErrorColor
+                    .CellNote = errCT26
+                    iFlagCheck26 = 1
+                 Else
+                    .Row = 53
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                 End If
+            End If
+        Else
+            ' to khai tu thang den thang
+            If TAX_Utilities_New.FirstDay <> vbNullString And TAX_Utilities_New.LastDay <> vbNullString Then
+                arrTuThang = Split(TAX_Utilities_New.FirstDay, "/")
+                arrDenThang = Split(TAX_Utilities_New.LastDay, "/")
+                ' kiem tra tu thang
+                If (Val(arrTuThang(0)) >= 7 And Val(arrTuThang(1)) = 2013) Or Val(arrTuThang(1)) > 2013 Then
+                    ' Kiem tra ct25
+                     If Val(vCT25) Mod 9000000 <> 0 Then
+                        .Row = 52
+                       .Col = .ColLetterToNumber("R")
+                       .BackColor = mErrorColor
+                       .CellNote = errCT25_1
+                       iFlagCheck25 = 1
+                    Else
+                       .Row = 52
+                       .Col = .ColLetterToNumber("R")
+                       .BackColor = mNonErrorColor
+                       .CellNote = ""
+                    End If
+                    
+                    ' Kiem tra ct26
+                    If Val(vCT26) Mod 3600000 <> 0 Then
+                        .Row = 53
+                       .Col = .ColLetterToNumber("R")
+                       .BackColor = mErrorColor
+                       .CellNote = errCT26_1
+                       iFlagCheck26 = 1
+                    Else
+                       .Row = 53
+                       .Col = .ColLetterToNumber("R")
+                       .BackColor = mNonErrorColor
+                       .CellNote = ""
+                    End If
+                End If
+                ' kiem tra den thang
+                If (Val(arrDenThang(0)) < 7 And Val(arrTuThang(1)) = 2013) Or Val(arrTuThang(1)) < 2013 Then
+                    ' Kiem tra ct25
+                     If Val(vCT25) Mod 4000000 <> 0 Then
+                        .Row = 52
+                       .Col = .ColLetterToNumber("R")
+                       .BackColor = mErrorColor
+                       .CellNote = errCT25
+                       iFlagCheck25 = 1
+                    Else
+                       .Row = 52
+                       .Col = .ColLetterToNumber("R")
+                       .BackColor = mNonErrorColor
+                       .CellNote = ""
+                    End If
+                
+                    ' Kiem tra ct26
+                    If Val(vCT26) Mod 1600000 <> 0 Then
+                        .Row = 53
+                       .Col = .ColLetterToNumber("R")
+                       .BackColor = mErrorColor
+                       .CellNote = errCT26
+                       iFlagCheck26 = 1
+                    Else
+                       .Row = 53
+                       .Col = .ColLetterToNumber("R")
+                       .BackColor = mNonErrorColor
+                       .CellNote = ""
+                    End If
+                End If
+            End If
+        End If
+        
         'check CT29 > CT30
         If vCT30 > vCT29 Then
             .Col = .ColLetterToNumber("R")
@@ -272,6 +417,10 @@ Private Sub CheckDynamicError()
             .Sheet = .SheetCount
             .SetText .ColLetterToNumber("B"), 24, "1"
         End If
+        
+        .Sheet = .SheetCount
+        .SetText .ColLetterToNumber("B"), 21, IIf(iFlagCheck25 = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 22, IIf(iFlagCheck26 = 1, "0", "1")
 '        .Row = 45
 '        If .value Mod 1600000 = 0 Then
 '            .BackColor = mNonErrorColor
