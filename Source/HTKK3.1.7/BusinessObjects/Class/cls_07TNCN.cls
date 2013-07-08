@@ -20,6 +20,8 @@ Public iflag As Boolean
 Private Const Row_MSTDN = 7
 Private Const Col_MSTDN = "I"
 
+Public strTkThangQuy As String
+
 ' Kiem tra thong tin dai ly thue
 ' Neu khong co DL thue se an cac row nay di
 Public FlagDLThue As Boolean
@@ -82,6 +84,21 @@ Public Sub Prepare2()
             .Text = StrSolanBosung
             UpdateCell fps, .Col, .Row, .Text
         End If
+        
+        
+        ' set loai tk thang/ quy
+         If strTkThangQuy = "TK_THANG" Then
+            .Col = .ColLetterToNumber("L")
+            .Row = 68
+            .Text = "0"
+            UpdateCell fps, .Col, .Row, .Text
+        ElseIf strTkThangQuy = "TK_QUY" Then
+            .Col = .ColLetterToNumber("L")
+            .Row = 68
+            .Text = "1"
+            UpdateCell fps, .Col, .Row, .Text
+        End If
+            'end
         
         ' set up cho phep sua chi tieu 29
           If TAX_Utilities_New.Year = 2011 And TAX_Utilities_New.Month >= 8 And TAX_Utilities_New.Month <= 12 Then

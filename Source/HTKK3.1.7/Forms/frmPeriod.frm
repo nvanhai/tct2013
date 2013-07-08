@@ -432,7 +432,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":02C8
+      SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
    End
@@ -1896,12 +1896,13 @@ Public Sub cmdOK_Click()
     TAX_Utilities_New.Year = txtYear.Text
     If strKieuKy = KIEU_KY_THANG Then
         If TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "01" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "02" _
-        Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "04" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "95" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "71" Then
+        Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "04" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "95" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "71" _
+        Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "36" Then
             If strQuy = "TK_THANG" Then
-        TAX_Utilities_New.month = txtMonth.Text
-        TAX_Utilities_New.ThreeMonths = vbNullString
-        TAX_Utilities_New.FirstDay = vbNullString
-        TAX_Utilities_New.LastDay = vbNullString
+                TAX_Utilities_New.month = txtMonth.Text
+                TAX_Utilities_New.ThreeMonths = vbNullString
+                TAX_Utilities_New.FirstDay = vbNullString
+                TAX_Utilities_New.LastDay = vbNullString
             ElseIf strQuy = "TK_QUY" Then
                 TAX_Utilities_New.month = txtMonth.Text
                 TAX_Utilities_New.ThreeMonths = cmbQuy.Text
@@ -2122,7 +2123,7 @@ Public Sub cmdOK_Click()
                 End If
         Else
             strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
-	End If
+        End If
         ElseIf Trim(TAX_Utilities_New.ThreeMonths) <> "" Then
             strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
         ElseIf Trim(TAX_Utilities_New.Year) <> "" Then
@@ -2294,7 +2295,7 @@ Private Sub Form_Load()
         iThangTaiChinh = 1
     End If
     
-    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "15" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "16" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "37" _
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "15" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "16" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "37" _
             Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "38" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "39" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "40" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "17" _
                 Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "41" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "43" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "59" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "44" _
                     Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "46" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "47" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "48" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "49" _
@@ -2302,7 +2303,8 @@ Private Sub Form_Load()
                         Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "87" Then
         
         SetupLayoutTNCN (strKieuKy)
-    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "95" Then
+    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "95" _
+    Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "36" Then
         SetLayoutToKhaiThangQuy
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "11" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "12" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "06" _
      Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "72" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "77" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "86" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "87" _
