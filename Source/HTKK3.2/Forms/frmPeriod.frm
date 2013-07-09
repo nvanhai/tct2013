@@ -3033,6 +3033,13 @@ Private Sub SetupLayout04TBAC()
         txtMonth.Text = month(dTem)
         txtYear.Text = Year(dTem)
         
+        If Len(txtDay.Text) = 1 Then
+            txtDay.Text = "0" & txtDay.Text
+        End If
+        If Len(txtMonth.Text) = 1 Then
+            txtMonth.Text = "0" & txtMonth.Text
+        End If
+    
         Me.Top = (frmSystem.ScaleHeight - Me.ScaleHeight) / 2 - 400
     Me.Left = (frmSystem.Width - Me.Width) / 2
     
