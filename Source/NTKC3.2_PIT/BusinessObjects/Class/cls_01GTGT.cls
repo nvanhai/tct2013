@@ -890,8 +890,8 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("F"), 20, vTIN_DL
         .GetText .ColLetterToNumber(SO_HOP_DONG_DL_COL), SO_HOP_DONG_DL_ROW, vSO_HOP_DONG
         .GetText .ColLetterToNumber(NGAY_HOP_DONG_DL_COL), NGAY_HOP_DONG_DL_ROW, vNGAY_HOP_DONG
-        .GetText .ColLetterToNumber("I"), 74, vLAN_BS
-        .GetText .ColLetterToNumber("C"), 74, vCHINH_THUC
+        .GetText .ColLetterToNumber("I"), 77, vLAN_BS
+        .GetText .ColLetterToNumber("C"), 77, vCHINH_THUC
         
         .GetText .ColLetterToNumber(NGANH_NGHE_KD_COL), NGANH_NGHE_KD_ROW, vNGANH_NGHE_KD
         vNGANH_NGHE_KD = "'" & vNGANH_NGHE_KD & "'"
