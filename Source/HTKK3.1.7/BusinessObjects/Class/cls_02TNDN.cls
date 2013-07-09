@@ -58,6 +58,9 @@ Public Sub Prepare1()
         .TypeHAlign = TypeHAlignLeft
         
         
+        .SetText .ColLetterToNumber("E"), 82, GetAttribute(GetMessageCellById("0265"), "Msg")
+        
+        
         SetDateFormat fps, .SheetCount - 1, 23, .ColLetterToNumber("BG"), DDMMYYYY
          .Sheet = .SheetCount - 1 'To khai TNDN
         .Row = 23

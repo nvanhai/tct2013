@@ -255,5 +255,6 @@
 	<Infor ID="0262" Msg="Gia hạn"/>
 	<Infor ID="0263" Msg="Gia hạn"/>
 	<Infor ID="0264" Msg="Trường hợp được gia hạn:"/>
+	<Infor ID="0265" Msg=" Doanh nghiệp được phép gia hạn"/>	
 </Message>
 
