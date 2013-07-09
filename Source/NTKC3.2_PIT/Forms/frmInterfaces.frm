@@ -1050,7 +1050,7 @@ On Error GoTo ErrHandle
     
 
     If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 _
-    Or idToKhai = 36 Or idToKhai = 6 Or idToKhai = 72 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 71 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 90 Then
+    Or idToKhai = 36 Or idToKhai = 6 Or idToKhai = 72 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 71 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 90 Or idToKhai = 95 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28").nodeValue)
     ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 5 Or idToKhai = 70 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28_NNKD").nodeValue)
@@ -1371,12 +1371,46 @@ Private Sub Command1_Click()
 'str2 = "aa316013600247325   052013005011003003<S01_1_TD><S>erwrew~23432432~234324320~2342343</S></S01_1_TD>"
 'Barcode_Scaned str2
 
-' phu luc 02TD
-str2 = "aa999013600247325   05201300601200100301/0114/06/2006<S01><S></S><S>~234~0~23423~234~0~0~0~0~0~0~0~0~0~0~-234"
-Barcode_Scaned str2
-str2 = "aa999013600247325   052013006012002003~0~0~0~0~0~0~0~468~0~0~468</S><S>~~~20/06/2013~1~~~1701~~~0</S></S01>"
-Barcode_Scaned str2
-str2 = "aa999013600247325   052013006012003003<S01_2_TD><S>werwer~4~4323432~10707~</S></S01_2_TD>"
+'' phu luc 02TD
+'str2 = "aa316013600247325   05201300401500100301/0114/06/2006<S01><S></S><S>~234~0~23423~234~0~0~0~0~0~0~0~0~0~0~-234"
+'Barcode_Scaned str2
+'str2 = "aa316013600247325   052013004015002003~0~0~0~0~0~0~0~468~0~0~468</S><S>~~~20/06/2013~1~~~1701~~~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa316013600247325   052013004015003003<S01_2_TD><S>weewrew~55~3535353~10304~~fdgwer~43~43344343~11105~</S></S01_2_TD>"
+'Barcode_Scaned str2
+'
+'' To khai 02 GTGT
+'str2 = "aa316023600247325   06201300100100100101/0114/06/2006<S01><S></S><S>120~213123~32432~324320~432432~432~32423~432423~-107671~234~105338~34~324234~43~105261</S><S>ewrew~rwerwe~23423423~07/07/2013~1~~~1</S></S01>"
+'Barcode_Scaned str2
+'
+'' To khai 03 GTGT
+'str2 = "aa316043600247325   06201300100100100101/0114/06/2006<S01><S></S><S>3242~0~23432~23423~0~432423~-20181~0~-408991~0~0~0~26674~0</S><S>3424~234wer~234234~07/07/2013~1~~~0</S></S01>"
+'Barcode_Scaned str2
+
+'' To khai 03B GTGT
+'str2 = "aa316953600247325   06201300100100100101/0114/06/2006<S01><S></S><S>1~2~3~4~5~6~7~8~9~10~11~12~13~14~15~16~17~18~19~29~21~22~23</S><S>H? và tên~Ký tên~Ch?ng ch? hành ngh? s?~Ngày ký~~1~2~1</S></S01>"
+'Barcode_Scaned str2
+
+'' Phu luc 03B_1_GTGT
+'str2 = "aa316953600247325   06201300300300100201/0114/06/2006<S01><S></S><S>1~2~3~6~13~20~6~5~4~7~8~9~12~11~10~-6~3~12~0~0~1~39~1</S><S>aaa~aaaa~aq334~09/07/2013~1~~~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa316953600247325   062013003003002002<S01_1><S>11~22~01/01/2013~33~2342343243~54~65~76</S><S>10~20~01/01/2013~30~2342343243~50~60~07</S><S>8~9~01/01/2013~10~2342343243~12~13~14</S><S>15~16~01/01/2013~17~2342343243~19~20~21</S><S>45~39</S></S01_1>"
+'Barcode_Scaned str2
+'
+'' Phu luc 03B_2_GTGT
+'str2 = "aa316953600247325   06201300400400100301/0114/06/2006<S01><S></S><S>1~2~3~0~0~0~6~5~4~7~8~9~12~11~10~-12~-10~-8~0~0~0~0~0</S><S>aaa~aaaa~aq334~09/07/2013~1~~~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa316953600247325   062013004004002003<S01_2><S>11~22~33~44~55~66~0~77</S><S>111~222~333~444~555~666~0~777</S><S>123~321~111~222"
+'Barcode_Scaned str2
+'str2 = "aa316953600247325   062013004004003003~333~444~0~555</S><S>212~211~3232~431~43~3~0~4343</S><S>0~0</S></S01_2>"
+'Barcode_Scaned str2
+
+''To khai 04/GTGT
+'str2 = "aa316713600247325   06201300100200100301/0101/01/1900<S01><S></S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0</S><S>~~~09/07/2013~1~~</S></S01>"
+'Barcode_Scaned str2
+
+'To khai 01A/TNDN
+str2 = "aa316113600247325   02201300200200100101/0114/06/2006<S01><S></S><S>1~2~-1~3~4~-2~5~0~0~0~0~0~</S><S>x~</S><S>a~c~b~09/07/2013~1~0~~1052~</S></S01>"
 Barcode_Scaned str2
 
 End Sub
