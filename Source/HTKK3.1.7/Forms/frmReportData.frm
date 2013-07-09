@@ -126,7 +126,7 @@ Begin VB.Form frmReportData
       DisplayText     =   ""
       BarWidthReduction=   -1
       TextAlignment   =   0
-      Quality         =   0
+      Quality         =   68
    End
 End
 Attribute VB_Name = "frmReportData"
@@ -516,6 +516,11 @@ nextPrinter:
 '            fpsReport.Text = ""
 '            fpsReport.Lock = True
         End If
+    ElseIf (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") Then
+        fpsReport.SetText fpsReport.ColLetterToNumber("E"), 82, GetAttribute(GetMessageCellById("0265"), "Msg")
+        fpsReport.Row = 82
+        fpsReport.Col = fpsReport.ColLetterToNumber("E")
+        fpsReport.FontBold = False
     End If
     'end
     '------------------
