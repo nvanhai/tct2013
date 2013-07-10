@@ -1058,7 +1058,7 @@ On Error GoTo ErrHandle
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdr").nodeValue)
     End If
     ' xu ly de ghi cac mau an chi
-    If Val(idToKhai) = 66 Or Val(idToKhai) = 68 Or Val(idToKhai) = 67 Or Val(idToKhai) = 64 Or Val(idToKhai) = 65 Then
+    If Val(idToKhai) = 66 Or Val(idToKhai) = 68 Or Val(idToKhai) = 67 Or Val(idToKhai) = 64 Or Val(idToKhai) = 65 Or Val(idToKhai) = 91 Then
         strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl_AC").nodeValue)
     Else
         strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl").nodeValue)
@@ -1408,10 +1408,16 @@ Private Sub Command1_Click()
 ''To khai 04/GTGT
 'str2 = "aa316713600247325   06201300100200100301/0101/01/1900<S01><S></S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0</S><S>~~~09/07/2013~1~~</S></S01>"
 'Barcode_Scaned str2
+'
+''To khai 01A/TNDN
+'str2 = "aa316113600247325   02201300200200100101/0114/06/2006<S01><S></S><S>1~2~-1~3~4~-2~5~0~0~0~0~0~</S><S>x~</S><S>a~c~b~09/07/2013~1~0~~1052~</S></S01>"
+'Barcode_Scaned str2
 
-'To khai 01A/TNDN
-str2 = "aa316113600247325   02201300200200100101/0114/06/2006<S01><S></S><S>1~2~-1~3~4~-2~5~0~0~0~0~0~</S><S>x~</S><S>a~c~b~09/07/2013~1~0~~1052~</S></S01>"
+' Mau TB04/AC
+str2 = "aa316913600247325   06201300300300100101/0101/01/2009<S01><S>1~11~01DVPH~2~22~02DCTS~3~33~03Phone</S><S>01/01/2009~0102030405001~tong cuc thue~01/01/2009~nguyen van a</S></S01>"
 Barcode_Scaned str2
+'str2 = "aa316913600247325   0620130030030020021/2009~0102030405001~tong cuc thue~01/01/2009~nguyen van a</S></S01>"
+'Barcode_Scaned str2
 
 End Sub
 
@@ -2896,7 +2902,7 @@ On Error GoTo ErrHandle
     '*******************************
         'Get main content
         If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Day") <> "0" Then
-            If Trim(strID) = "70" Or Trim(strID) = "81" Then
+            If Trim(strID) = "70" Or Trim(strID) = "81" Or Trim(strID) = "91" Then
                 strData = Mid$(strData, 37)
             Else
                 strData = Mid$(strData, 57)
