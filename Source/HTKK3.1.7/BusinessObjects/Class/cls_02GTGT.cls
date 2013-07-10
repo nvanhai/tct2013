@@ -1828,7 +1828,7 @@ Dim varTemp As Variant
     fps.EventEnabled(EventAllEvents) = False
     If .ActiveSheet = 2 Or .ActiveSheet = 3 Or .ActiveSheet = 4 Or .ActiveSheet = 5 Or .ActiveSheet = 6 Or .ActiveSheet = 7 _
         Or .ActiveSheet = 8 Or .ActiveSheet = 9 Or .ActiveSheet = 10 Or .ActiveSheet = 11 Then
-                fps.EventEnabled(EventAllEvents) = True
+                fps.EventEnabled(EventAllEvents) = False
                 i = 1
                 .Col = .ColLetterToNumber("B")
                 .Row = 8
