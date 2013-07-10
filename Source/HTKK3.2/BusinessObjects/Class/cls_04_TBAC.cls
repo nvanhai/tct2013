@@ -48,8 +48,8 @@ strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_loai_ThongTinThayDo
     End If
     
      With fps
-'        SetDateFormat fps, 1, 46, .ColLetterToNumber("AA"), DDMMYYYY
-'        SetDateFormat fps, 1, 35, .ColLetterToNumber("T"), DDMMYYYY
+        SetDateFormat fps, 1, 30, .ColLetterToNumber("F"), DDMMYYYY
+        SetDateFormat fps, 1, 47, .ColLetterToNumber("Q"), DDMMYYYY
 '        SetDateFormat fps, 1, 35, .ColLetterToNumber("AE"), DDMMYYYY
         'SetKyHieuHDFormat fps, 1, 35, .ColLetterToNumber("AA")
         .Sheet = 1
@@ -62,6 +62,7 @@ strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_loai_ThongTinThayDo
         .Col = .ColLetterToNumber("AA")
         .Row = 35
         .TypeComboBoxList = strCombo
+        'set value ngay dieu chinh
         
 
     End With
@@ -251,167 +252,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
     With fps
         .EventEnabled(EventAllEvents) = False
         mCurrentSheet = .Sheet
-'        If .ActiveSheet = 1 Then
-'        ' check ngay bat dau su dung
-'            If Col = .ColLetterToNumber("T") Then
-'                .GetText Col, Row, varTemp
-'                If varTemp <> "" And varTemp <> "../../...." Then
-'                    If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
-'                        .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
-'                    Else
-'                        .SetFocus
-'                        .SetActiveCell Col, Row
-'                    End If
-'                Else
-'                 .SetText Col, Row, ""
-'                End If
-'                .Col = Col
-'                .Row = Row
-'                UpdateCell fps, Col, Row, .Text
-'            End If
-'        'check ngay in hop dong
-'            If Col = .ColLetterToNumber("AE") Then
-'                .GetText Col, Row, varTemp
-'                If varTemp <> "" And varTemp <> "../../...." Then
-'                    If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
-'                        .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
-'                    Else
-'                        .SetFocus
-'                        .SetActiveCell Col, Row
-'                    End If
-'                Else
-'                 .SetText Col, Row, ""
-'                End If
-'                .Col = Col
-'                .Row = Row
-'                UpdateCell fps, Col, Row, .Text
-'            End If
-'        ' check ngay ky TBAC
-'        .Row = 35
-'            Do
-'                countRowDynamic = countRowDynamic + 1
-'                .Col = .ColLetterToNumber("B")
-'                .Row = .Row + 1
-'            Loop Until .Text = "aa"
-'                If Col = .ColLetterToNumber("AA") And Row = countRowDynamic + 45 Then
-'                     .GetText Col, Row, varTemp
-'                     If varTemp <> "" And varTemp <> "../../...." Then
-'                         If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
-'                             .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
-'                         Else
-'                             .SetFocus
-'                             .SetActiveCell Col, Row
-'                         End If
-'                     Else
-'                      .SetText Col, Row, ""
-'                     End If
-'                     .Col = Col
-'                     .Row = Row
-'                     UpdateCell fps, Col, Row, .Text
-'                 End If
-''         'khoa o V , Z , AC, AD
-''         .GetText .ColLetterToNumber("K"), countRowDynamic + 34, strSoHieu
-''            If Mid(Trim(strSoHieu), 6, 1) <> "P" Then
-''                .Col = .ColLetterToNumber("V")
-''                .Row = countRowDynamic + 34
-''                .Lock = True
-''                .Col = .ColLetterToNumber("Z")
-''                .Row = countRowDynamic + 34
-''                .Lock = True
-''                .Col = .ColLetterToNumber("AC")
-''                .Row = countRowDynamic + 34
-''                .Lock = True
-''                .Col = .ColLetterToNumber("AD")
-''                .Row = countRowDynamic + 34
-''                .Lock = True
-''            ElseIf Mid(Trim(strSoHieu), 6, 1) = "P" Then
-''                 .Col = .ColLetterToNumber("V")
-''                .Row = countRowDynamic + 34
-''                .Lock = False
-''                .Col = .ColLetterToNumber("Z")
-''                .Row = countRowDynamic + 34
-''                .Lock = False
-''                .Col = .ColLetterToNumber("AC")
-''                .Row = countRowDynamic + 34
-''                .Lock = False
-''                .Col = .ColLetterToNumber("AD")
-''                .Row = countRowDynamic + 34
-''                .Lock = False
-''            End If
-'          ' Format dinh dang tu so den so co 7 ky tu
-'            If Col = .ColLetterToNumber("P") Or Col = .ColLetterToNumber("R") Then
-'                 .GetText Col, Row, varTemp
-'                 .SetText Col, Row, FormatSoHD(CStr(varTemp))
-'                 .Col = Col
-'                 .Row = Row
-'                UpdateCell fps, .Col, .Row, .Text
-'             End If
-'          ' Ho tro tinh so luong
-'
-'                .GetText .ColLetterToNumber("P"), Row, tuSo
-'                .GetText .ColLetterToNumber("R"), Row, denso
-'                If Trim(tuSo) <> "" And Trim(denso) <> "" Then
-'                    ' so HD 0000000 se khong tinh
-'                    If Val(tuSo) = 0 And Val(denso) = 0 Then
-'                        .SetText .ColLetterToNumber("N"), Row, 0
-'                    ElseIf Val(tuSo) = 0 And Val(denso) <> 0 Then
-'                        .SetText .ColLetterToNumber("N"), Row, Val(denso) - Val(tuSo)
-'                    Else
-'                        .SetText .ColLetterToNumber("N"), Row, Val(denso) - Val(tuSo) + 1
-'                    End If
-'                    .Col = Col
-'                    .Row = Row
-'                    UpdateCell fps, .Col, .Row, .Text
-'                ElseIf Trim(tuSo) = "" And Trim(denso) = "" Then
-'                    .SetText .ColLetterToNumber("N"), Row, ""
-'                    .Col = Col
-'                    .Row = Row
-'                    UpdateCell fps, .Col, .Row, .Text
-'                End If
-'          ' Chuyen ky hieu HD thanh chu cai in hoa
-'            If Col = .ColLetterToNumber("AA") Then
-'                 .GetText Col, Row, varTemp
-'                 .SetText Col, Row, FormatKyHieu(CStr(varTemp))
-'                 .Col = Col
-'                 .Row = Row
-'                UpdateCell fps, .Col, .Row, .Text
-'            End If
-'            strLoai = Trim(Left(strId, 1))
-'           'Kiem tra cau truc cua ky hieu neu sai set cot an =1 dung =0
-'            If Col = .ColLetterToNumber("AA") Then
-'                 .GetText Col, Row, varTemp
-'                 .SetText .ColLetterToNumber("AJ"), Row, CheckSoHD(CStr(varTemp), strLoai)
-'                 .Col = .ColLetterToNumber("AJ")
-'                 .Row = Row
-'                UpdateCell fps, .Col, .Row, .Text
-'            End If
-'           ' Chuyen Mau so thanh chu cai in hoa
-'                If Col = .ColLetterToNumber("J") Then
-'                    .GetText Col, Row, varTemp
-'                    '.SetText Col, Row, FormatKyHieu(CStr(varTemp))
-'                    .SetText Col, Row, UCase(varTemp)
-'                    .Col = Col
-'                    .Row = Row
-'                    UpdateCell fps, .Col, .Row, .Text
-'                End If
-'           'Kiem tra cau truc cua Mau so
-'           If Col = .ColLetterToNumber("J") Then
-'                .GetText .ColLetterToNumber("AA"), .Row, strId
-'                strLoai = Trim(Left(strId, 1))
-'                If strLoai = "0" Then
-'                    strTemp = Trim(Mid(strId, 11, 6))
-'                ElseIf strLoai = "4" Then
-'                    strTemp = Trim(Mid(strId, 11, 6))
-'                Else
-'                    strTemp = Trim(Mid(strId, 11, 3))
-'                End If
-'                .GetText Col, Row, varTemp
-'                 .SetText .ColLetterToNumber("AL"), Row, CheckMauSoHD(CStr(varTemp), CStr(strLoai), CStr(strTemp))
-'                 .Col = .ColLetterToNumber("AL")
-'                 .Row = Row
-'                UpdateCell fps, .Col, .Row, .Text
-'            End If
-'        End If
+
         .EventEnabled(EventAllEvents) = True
     End With
 End Sub
