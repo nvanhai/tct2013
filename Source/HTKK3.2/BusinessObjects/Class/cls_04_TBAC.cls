@@ -49,7 +49,7 @@ strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_loai_ThongTinThayDo
     
      With fps
         SetDateFormat fps, 1, 30, .ColLetterToNumber("F"), DDMMYYYY
-        SetDateFormat fps, 1, 47, .ColLetterToNumber("Q"), DDMMYYYY
+        
 '        SetDateFormat fps, 1, 35, .ColLetterToNumber("AE"), DDMMYYYY
         'SetKyHieuHDFormat fps, 1, 35, .ColLetterToNumber("AA")
         .Sheet = 1
@@ -64,6 +64,10 @@ strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_loai_ThongTinThayDo
         .TypeComboBoxList = strCombo
         'set value ngay dieu chinh
         
+        .Row = 47
+        .Col = .ColLetterToNumber("Q")
+        .Text = TAX_Utilities_New.Day & "/" & TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year
+        SetDateFormat fps, 1, 47, .ColLetterToNumber("Q"), DDMMYYYY
 
     End With
     
