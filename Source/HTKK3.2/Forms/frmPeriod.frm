@@ -3000,6 +3000,7 @@ Private Sub SetupLayout04TBAC()
     txtMonth.Visible = True
     lblYear.Visible = True
     txtYear.Visible = True
+    cmbQuy.Visible = False
     
     Set lblNgay.Container = frmKy
     lblNgay.Top = 570
