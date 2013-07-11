@@ -104,7 +104,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .Sheet = 1
         .Col = .ColLetterToNumber(PHONG_XU_LY_COL)
         .Row = PHONG_XU_LY_ROW
-        If rsPXL.Fields.Count > 0 Then
+        If rsPXL.Fields.count > 0 Then
             Do While Not rsPXL.EOF
                 .TypeComboBoxIndex = -1
                 .TypeComboBoxString = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
@@ -328,9 +328,10 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim strMaPhongXuLy As String
     Dim chkBoSung As Variant
     Dim sttBoSung As Variant
-    
+    Dim LOAI_KYKK As String
+
 On Error GoTo ErrHandle
-    strSQL = strSQL_HDR
+    strSQL = Replace$(strSQL_HDR, ")", ",LOAI_KYKK)")
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
@@ -376,7 +377,9 @@ On Error GoTo ErrHandle
                     vGHI_CHU_LOI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                     vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                
+                Case "AB_42"
+                    LOAI_KYKK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+ 
             End Select
         End If
         End With
@@ -435,7 +438,11 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & IIf(Val(vCO_GTRINH_02C) = 1, "Y", "") & "',"
     strSQL = strSQL & "'','','',"
     strSQL = strSQL & "null,null,"
-    
+    If LOAI_KYKK = "0" Then
+        LOAI_KYKK = "T"
+    Else
+        LOAI_KYKK = "Q"
+    End If
     With fps
         For i = 1 To lSoPhongXL
             If vPHONG_XU_LY = TAX_Utilities_Srv_New.Convert(larrPhongXuLy(i), UNICODE, TCVN) Then
@@ -444,7 +451,7 @@ On Error GoTo ErrHandle
             End If
         Next
     End With
-    strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null)"
+    strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null" & ",'" & LOAI_KYKK & "')"
     
     GenerateSQL_Header = strSQL
     

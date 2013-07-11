@@ -84,7 +84,6 @@ Public Function Prepared1() As Boolean
         Dim xmlNode As MSXML.IXMLDOMNode
         Dim fldList() As String
 
-
     With fps
         .Sheet = 1
         .Col = .ColLetterToNumber(HEADER_SO_TT_TRONG_TEP_COL)
@@ -132,7 +131,6 @@ Public Function Prepared1() As Boolean
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
         
-        
         ' set gia tri gia han
         ' Ky dc gia han moi set gia tri ly do gia han
         strDataFileName = GetAbsolutePath("..\InterfaceTemplates\xml\Catalogue_DM_Lydo_GH_TT16.xml")
@@ -160,7 +158,8 @@ End Function
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
     Dim i As Integer
     Dim varMaDM As Variant
-    
+    Dim LOAI_KYKK As String
+
     i = 0
     ReDim Preserve larrPhongXuLy(0)
     larrPhongXuLy(0) = "00"
@@ -171,7 +170,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .Sheet = 1
         .Col = .ColLetterToNumber(PHONG_XU_LY_COL)
         .Row = PHONG_XU_LY_ROW
-        If rsPXL.Fields.Count > 0 Then
+        If rsPXL.Fields.count > 0 Then
             Do While Not rsPXL.EOF
                 .TypeComboBoxIndex = -1
                 .TypeComboBoxString = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
@@ -218,7 +217,6 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
             .Lock = True
         End If
         ' End set gia han
-
     End With
     
     Prepared2 = True
@@ -602,12 +600,13 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim vPHONG_XU_LY
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
-    
+    Dim LOAI_KYKK As String
+
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC, vNGANH_NGHE_KD, vTO_KHAI_LAN_PS, vNGAY_PS As Variant
     Dim v_CO_GIA_HAN, VMaLyDoGH
     
 On Error GoTo ErrHandle
-    strSQL = strSQL_HDR
+    strSQL = Replace$(strSQL_HDR, ")", ",LOAI_KYKK)")
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
@@ -649,6 +648,9 @@ On Error GoTo ErrHandle
                     End If
                 Case "AB_41"
                     VMaLyDoGH = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+                Case "AB_42"
+                    LOAI_KYKK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+
             End Select
         End If
         End With
@@ -818,10 +820,15 @@ On Error GoTo ErrHandle
     Else
         strSQL = strSQL & "null,"
     End If
+    If LOAI_KYKK = "0" Then
+        LOAI_KYKK = "T"
+    Else
+        LOAI_KYKK = "Q"
+    End If
     'strSQL = strSQL & "null)"
     'strSQL = strSQL & "'" & IIf(Val(vCO_PHU_LUC6) = 1, "Y", "") & "',"
     strSQL = strSQL & v_CO_GIA_HAN & ","
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & vNGANH_NGHE_KD & "," & vTO_KHAI_LAN_PS & "," & vNGAY_PS & ")"
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & vNGANH_NGHE_KD & "," & vTO_KHAI_LAN_PS & "," & vNGAY_PS & ",'" & LOAI_KYKK & "')"
     GenerateSQL_Header = strSQL
     
     Exit Function
