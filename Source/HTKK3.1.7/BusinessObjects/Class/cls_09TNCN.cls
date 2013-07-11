@@ -93,6 +93,13 @@ Public Sub Prepare1()
         SetDateFormat fps, 4, 22, .ColLetterToNumber("E"), DDMMYYYY
               
         .Sheet = 4
+        If Val(TAX_Utilities_New.Year) >= 2013 Then
+            .Col = .ColLetterToNumber("K")
+            .Row = 22
+            .Formula = ""
+            .Lock = False
+        End If
+        
         ' Lay danh muc quan he voi NNT
         Dim xmlDocument As New MSXML.DOMDocument
         Dim xmlNode As MSXML.IXMLDOMNode

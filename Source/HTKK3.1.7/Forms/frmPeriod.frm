@@ -1637,7 +1637,11 @@ Public Sub cmdOK_Click()
     End If
     
     ' validate cho to 04TBAC
-    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "91") Then
+    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "91") Or (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "64") Then
+        If objCvt Is Nothing Then
+            Set objCvt = New DateUtils
+        End If
+        
         If (objCvt.ToDate(txtDay.Text + "/" + txtMonth.Text + "/" + txtYear.Text, "DD/MM/YYYY") > Date) Then
             DisplayMessage "0224", msOKOnly, miInformation
             Exit Sub
@@ -2330,7 +2334,7 @@ Private Sub Form_Load()
         SetupLayout02NTNN
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "75" Then
         SetupLayout08TNCN
-    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Then
+    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "64" Then
         SetupLayout04TBAC
     Else
         SetupLayout (strKieuKy)
@@ -3053,10 +3057,12 @@ Private Sub LoadDefaultInfor()
     Dim m As Integer
     Dim q As Quy
     Dim Y As Integer
+    Dim d As Integer
     
     'frmTreeviewMenu.Hide
     m = month(Date)
     Y = Year(Date)
+    d = Day(Date)
     
     Select Case strKieuKy
         Case KIEU_KY_THANG
@@ -3115,18 +3121,26 @@ Private Sub LoadDefaultInfor()
             txtYear.Text = Y
             Call initNgayDauNgayCuoi(CInt(Y))
         Case KIEU_KY_NGAY_THANG
-            If m = 1 Then
-                m = 12
-                Y = Y - 1
+            If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "64" Then
+                txtDay.Text = d
+                txtMonth.Text = m
+                txtYear.Text = Y
+                If Len(txtMonth.Text) = 1 Then
+                    txtMonth.Text = "0" & txtMonth.Text
+                End If
             Else
-                m = m - 1
+                If m = 1 Then
+                    m = 12
+                    Y = Y - 1
+                Else
+                    m = m - 1
+                End If
+                txtMonth.Text = m
+                txtYear.Text = Y
+                If Len(txtMonth.Text) = 1 Then
+                    txtMonth.Text = "0" & txtMonth.Text
+                End If
             End If
-            txtMonth.Text = m
-            txtYear.Text = Y
-            If Len(txtMonth.Text) = 1 Then
-                txtMonth.Text = "0" & txtMonth.Text
-            End If
-            
     End Select
     
     Exit Sub
