@@ -3125,7 +3125,12 @@ Private Sub LoadDefaultInfor()
                 m = 12
                 Y = Y - 1
             Else
-                m = m - 1
+                'set current month for 04/TBAC
+                If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Then
+                    m = m
+                Else
+                    m = m - 1
+                End If
             End If
             txtMonth.Text = m
             txtYear.Text = Y
