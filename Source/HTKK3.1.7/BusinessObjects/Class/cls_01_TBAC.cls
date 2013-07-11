@@ -124,7 +124,8 @@ Public Sub Prepare2()
         ' Set format ngay ky
         .Row = countRowDynamic + 45
         .Col = .ColLetterToNumber("AA")
-        .Text = Format(Date, "dd/mm/yyyy")
+        '.Text = Format(Date, "dd/mm/yyyy")
+        .Text = TAX_Utilities_New.Day & "/" & TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year
         .TypeHAlign = TypeHAlignLeft
         
         .EventEnabled(EventAllEvents) = True
@@ -454,8 +455,11 @@ Private Sub CheckDynamicError()
     Dim NgaySD As Date
     Dim strDateNHT As Date
     Dim NgayIn As Date
-    Dim NgayHienTai As Date
+    Dim ngayHienTai As Date
     Dim CheckNgaySD As Variant
+    Dim CheckNgaySD1 As Variant
+    Dim errCheckNgaySD1 As Variant
+    Dim iFlagNgayBatDau1 As Integer
     Dim CheckNgayKy As Variant
     Dim CheckNgayIn As Variant
     Dim SohieuHD As Variant
@@ -476,7 +480,7 @@ Private Sub CheckDynamicError()
     With fps
         .Sheet = .SheetCount
         .GetText .ColLetterToNumber("E"), 15, errMSTDN
-        .GetText .ColLetterToNumber("E"), 16, errMst
+        .GetText .ColLetterToNumber("E"), 16, errMST
         .GetText .ColLetterToNumber("E"), 17, errMsgMSTTrungNhau
         .GetText .ColLetterToNumber("E"), 18, errMauSoHD
         .GetText .ColLetterToNumber("E"), 19, errKyHieuHD
@@ -485,7 +489,7 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 22, errLengthHD
         .GetText .ColLetterToNumber("E"), 23, errMsgTusoDenSo
         .GetText .ColLetterToNumber("E"), 24, errEmty
-        '.GetText .ColLetterToNumber("E"), 26, errCheckNgaySD
+        .GetText .ColLetterToNumber("E"), 26, errCheckNgaySD1
         .GetText .ColLetterToNumber("E"), 28, errCheckNgayIn
         .GetText .ColLetterToNumber("E"), 27, errDVCQ
         .GetText .ColLetterToNumber("E"), 29, errThongTinDN
@@ -535,9 +539,9 @@ Private Sub CheckDynamicError()
                 .BackColor = mNonErrorColor
             End If
         'chek ngay ky " cho phep sua nhung ko duoc lon hon ngay hien tai"
-            NgayHienTai = DateSerial(Mid(Trim(DateNgayKy), 7, 4), Mid(Trim(DateNgayKy), 4, 2), Mid(Trim(DateNgayKy), 1, 2))
+            ngayHienTai = DateSerial(Mid(Trim(DateNgayKy), 7, 4), Mid(Trim(DateNgayKy), 4, 2), Mid(Trim(DateNgayKy), 1, 2))
             strDateNHT = DateTime.Now
-            CheckNgayKy = DateDiff("d", strDateNHT, NgayHienTai)
+            CheckNgayKy = DateDiff("d", strDateNHT, ngayHienTai)
             If CheckNgayKy > 0 Then
                 .Col = .ColLetterToNumber("AA")
                 .Row = countRowDynamic + 45
@@ -667,6 +671,31 @@ Private Sub CheckDynamicError()
                          .CellNote = errCheckNgaySD
                          .BackColor = mErrorColor
                          iFlagNgayIn = 1
+                      Else
+                          .Col = .ColLetterToNumber("T")
+                          .CellNote = ""
+                          .BackColor = mNonErrorColor
+                     End If
+               End If
+               
+               ' kiem tra ngay thong bao phat hanh va ngay su dung
+               If Trim(strDateSD) = "" And iWhiteRow = 0 Then
+                     .Col = .ColLetterToNumber("T")
+                     .CellNote = errEmty
+                     .BackColor = mErrorColor
+                     iFlagEmty = 1
+              Else
+                      NgaySD = DateSerial(Mid(Trim(strDateSD), 7, 4), Mid(Trim(strDateSD), 4, 2), Mid(Trim(strDateSD), 1, 2))
+                      ngayHienTai = DateSerial(Mid(Trim(DateNgayKy), 7, 4), Mid(Trim(DateNgayKy), 4, 2), Mid(Trim(DateNgayKy), 1, 2))
+                      CheckNgaySD = DateDiff("d", ngayHienTai, NgaySD)
+                     If CheckNgaySD < 5 Then
+                         .Col = .ColLetterToNumber("T")
+'                         .CellNote = errCheckNgaySD
+'                         .BackColor = mAlertColor
+'                         iFlagNgayIn = 0
+                         .CellNote = errCheckNgaySD1
+                         .BackColor = mErrorColor
+                         iFlagNgayBatDau = 1
                       Else
                           .Col = .ColLetterToNumber("T")
                           .CellNote = ""
@@ -1009,7 +1038,7 @@ Private Sub CheckDynamicError()
              .SetText .ColLetterToNumber("B"), 20, IIf(iFlagSoLienHD = 1, "0", "1")
              .SetText .ColLetterToNumber("B"), 27, IIf(iFlagDVCQ = 1, "0", "1")
              .SetText .ColLetterToNumber("B"), 30, IIf(iFlagNgayKy = 1, "0", "1")
-             '.SetText .ColLetterToNumber("B"), 26, IIf(iFlagNgayBatDau = 1, "0", "1")
+             .SetText .ColLetterToNumber("B"), 26, IIf(iFlagNgayBatDau = 1, "0", "1")
              '.SetText .ColLetterToNumber("B"), 28, IIf(iFlagNgayIn = 1, "0", "1")
              .SetText .ColLetterToNumber("B"), 28, IIf(iFlagNgayBatDau = 1, "0", "1")
              .SetText .ColLetterToNumber("B"), 23, IIf(iFlagTusoDenSo = 1, "0", "1")

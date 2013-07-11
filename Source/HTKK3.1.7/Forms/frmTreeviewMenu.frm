@@ -70,7 +70,7 @@ Begin VB.Form frmTreeviewMenu
          Strikethrough   =   0   'False
       EndProperty
       ScrollBarExtMode=   -1  'True
-      SpreadDesigner  =   "frmTreeviewMenu.frx":026C
+      SpreadDesigner  =   "frmTreeviewMenu.frx":02A8
       VirtualScrollBuffer=   -1  'True
       Appearance      =   1
    End
@@ -1529,7 +1529,7 @@ Private Sub ShowFormFunction(pNode As MSXML.IXMLDOMNode)
             frPeriod.Show
             
             ' Neu la in mau bia ho so quyet toan thi vao luon ma ko can click Ok
-            If pNode.Attributes.getNamedItem("ID").nodeValue = "52" Or pNode.Attributes.getNamedItem("ID").nodeValue = "64" Or pNode.Attributes.getNamedItem("ID").nodeValue = "66" Or pNode.Attributes.getNamedItem("ID").nodeValue = "67" Then
+            If pNode.Attributes.getNamedItem("ID").nodeValue = "52" Or pNode.Attributes.getNamedItem("ID").nodeValue = "66" Or pNode.Attributes.getNamedItem("ID").nodeValue = "67" Then
                 frPeriod.Hide
                 frPeriod.cmdOK_Click
             End If
@@ -1609,9 +1609,9 @@ ErrorHandle:
 End Sub
 
 ' Phu luc mien thue theo TT140
-Private Sub ShowPLMienThueTT140(fileName As String)
+Private Sub ShowPLMienThueTT140(FileName As String)
     On Error GoTo ErrorHandle
-    Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & fileName, "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
+    Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & FileName, "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
     Exit Sub
 ErrorHandle:
     SaveErrorLog Me.Name, "ShowPLMienThueTT140", Err.Number, Err.Description

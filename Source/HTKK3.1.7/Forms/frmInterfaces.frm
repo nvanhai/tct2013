@@ -2397,7 +2397,7 @@ Private Sub DeleteSheet(pIndex As Integer)
     Dim strDataFileName As String
     Dim loFile As New Scripting.FileSystemObject
     ' TO khai TTDB va NTNN, 02/TNDN xu ly xoa lan phat sinh
-    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Then
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "64" Then
         If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" And TAX_Utilities_New.Day = "" Then
             strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
         ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" Then
