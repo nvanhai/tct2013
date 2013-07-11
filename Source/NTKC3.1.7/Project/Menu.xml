@@ -519,6 +519,12 @@
 		</Validity>
 	</Menu>
 	
+	<Menu ID="91" PopID="101" ParentID="112" Caption="Mẫu thông báo điều chỉnh thông tin (TB04/AC)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="1" FinanceYear="0"  Icon="..\Pictures\tk_tndn.bmp">
+		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\excel\04_TBAC.xls" ReportTemplate="..\ReportTemplates\excel\04_TBAC.xls" CatalogueID="01" Class="Tax_Business_Srv.cls_04TBAC">
+			<Sheet ID="01" Caption="04_TBAC" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="04_TBAC" Ini="..\Ini\04_TBAC.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
+		</Validity>
+	</Menu>
 	<Menu ID="89" PopID="101" ParentID="113" Caption="Tờ khai phí xăng dầu" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\01_PHXD11.xls" ReportTemplate="..\ReportTemplates\excel\01_PHXD11.xls" Class="Tax_Business_Srv.cls_01PHXD">
 			<Sheet ID="01" Caption="01/PHXD" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_PHXD11" Ini="..\Ini\01_PHXD11.xml" ReportIni="..\ReportIni\01_PHXD11.xml"/>
