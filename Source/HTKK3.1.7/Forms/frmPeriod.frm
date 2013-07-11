@@ -1636,6 +1636,14 @@ Public Sub cmdOK_Click()
         Exit Sub
     End If
     
+    ' validate cho to 04TBAC
+    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "91") Then
+        If (objCvt.ToDate(txtDay.Text + "/" + txtMonth.Text + "/" + txtYear.Text, "DD/MM/YYYY") > Date) Then
+            DisplayMessage "0224", msOKOnly, miInformation
+            Exit Sub
+        End If
+    End If
+    
     If strKieuKy = KIEU_KY_NGAY_NAM Then
         txtNgayDau_LostFocus
         If Not blnValidInfo(3) Then Exit Sub
@@ -2322,6 +2330,8 @@ Private Sub Form_Load()
         SetupLayout02NTNN
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "75" Then
         SetupLayout08TNCN
+    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Then
+        SetupLayout04TBAC
     Else
         SetupLayout (strKieuKy)
     End If
@@ -2968,6 +2978,69 @@ Private Sub SetupLayout02NTNN()
 ErrorHandle:
     SaveErrorLog Me.Name, "SetupLayout02NTNN", Err.Number, Err.Description
     
+End Sub
+
+' set up layout to khai 04/TBAC
+Private Sub SetupLayout04TBAC()
+    On Error GoTo ErrorHandle
+    
+    Me.Height = 3385
+    Me.Width = 4905
+    frmKy.Height = 1400
+    
+    lblNgay.Visible = True
+    
+        lblMonth.Visible = True
+    txtMonth.Visible = True
+    lblYear.Visible = True
+    txtYear.Visible = True
+    cmbQuy.Visible = False
+    
+    Set lblNgay.Container = frmKy
+    lblNgay.Top = 570
+    lblNgay.Left = 120
+    
+    txtDay.Visible = True
+    Set txtDay.Container = frmKy
+        txtDay.Top = 540
+        txtDay.Left = 700
+    
+    
+    Set lblMonth.Container = frmKy
+        lblMonth.Top = 570
+        lblMonth.Left = 1360
+        
+        Set txtMonth.Container = frmKy
+        txtMonth.Top = 540
+        txtMonth.Left = 1930
+        
+        Set lblYear.Container = frmKy
+        lblYear.Top = 570
+        lblYear.Left = 2710
+        
+        Set txtYear.Container = frmKy
+        txtYear.Top = 540
+        txtYear.Left = 3130
+        
+        Dim dTem As Date
+        dTem = Date
+        txtDay.Text = Day(dTem)
+        txtMonth.Text = month(dTem)
+        txtYear.Text = Year(dTem)
+        
+        If Len(txtDay.Text) = 1 Then
+            txtDay.Text = "0" & txtDay.Text
+        End If
+        If Len(txtMonth.Text) = 1 Then
+            txtMonth.Text = "0" & txtMonth.Text
+        End If
+    
+        Me.Top = (frmSystem.ScaleHeight - Me.ScaleHeight) / 2 - 400
+    Me.Left = (frmSystem.Width - Me.Width) / 2
+    
+    Exit Sub
+ErrorHandle:
+    SaveErrorLog Me.Name, "SetupLayout04TBAC", Err.Number, Err.Description
 End Sub
 
 
