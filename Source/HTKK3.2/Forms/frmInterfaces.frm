@@ -2375,8 +2375,8 @@ Private Sub DeleteSheet(pIndex As Integer)
     
     Dim strDataFileName As String
     Dim loFile As New Scripting.FileSystemObject
-    ' TO khai TTDB va NTNN, 02/TNDN xu ly xoa lan phat sinh
-    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Then
+    ' TO khai TTDB va NTNN, 02/TNDN,04/TBAC  xu ly xoa lan phat sinh
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Then
         If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" And TAX_Utilities_New.Day = "" Then
             strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
         ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" Then
@@ -6268,10 +6268,11 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
         If .SheetName = "PL 01-1/TTDB" Then
             fpSpread1_LeaveCell Col, Row, Col, Row, True
         ElseIf .SheetName = "PL 04-1/GTGT" And .sheet = 2 Then
-            retvalue = 0
-            If (retvalue > 0) Then
-            End If
-            retvalue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 8, 11, "aa")
+            fpSpread1_LeaveCell Col, Row, Col, Row, True
+            'retvalue = 0
+            'If (retvalue > 0) Then
+            'End If
+            'retvalue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 8, 11, "aa")
             'retValue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 17, 20, "bb") + retValue
             'retValue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 26, 29, "cc") + retValue
             'retValue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 35, 38, "dd") + retValue
@@ -7104,6 +7105,8 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
                         .Col = .ColLetterToNumber("L")
                 End If
             End If
+        ElseIf .SheetName = "PL 04-1/GTGT" Then
+            fpSpread1_LeaveCell_PL04_1_GTGT Col, Row, Col, Row, True, 8, 11, "aa"
         Else
         .Refresh
         End If
@@ -7212,7 +7215,8 @@ Const end_1 As String = "aa"
                 k = count3
                 If exist < k Then
                     Do
-                        DeleteNode .sheet, .ActiveCol + 2, total1 + count2
+                        'DeleteNode .sheet, .ActiveCol + 2, total1 + count2
+                        DeleteNode .sheet, .ActiveCol, total1 + count2
                         k = k - 1
                         .Refresh
                     Loop Until k = exist
@@ -7266,7 +7270,7 @@ Const end_1 As String = "aa"
                         '.Col = .ColLetterToNumber("P")
                         '.value = 0
                         'UpdateCell .Col, .Row, .value
-                        .Col = .ColLetterToNumber("I")
+                        '.Col = .ColLetterToNumber("I")
                 End If
             End If
         Else
