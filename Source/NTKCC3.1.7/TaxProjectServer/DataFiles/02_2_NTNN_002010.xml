@@ -1,0 +1,77 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_10" Value=""/>
+			<Cell CellID="H_8" Value=""/>
+			<Cell CellID="F_12" Value=""/>
+			<Cell CellID="F_16" Value=""/>
+			<Cell CellID="N_16" Value=""/>
+			<Cell CellID="V_16" Value=""/>
+			<Cell CellID="E_32" Value=""/>
+			<Cell CellID="E_34" Value=""/>
+			<Cell CellID="M_34" Value=""/>
+			<Cell CellID="V_34" Value=""/>
+			<Cell CellID="M_32" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="T_39" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_38" Value=""/>
+			<Cell CellID="M_38" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_32" Value=""/>
+			<Cell CellID="H_18" Value=""/>
+			<Cell CellID="F_22" Value=""/>
+			<Cell CellID="F_28" Value=""/>
+			<Cell CellID="N_28" Value=""/>
+			<Cell CellID="V_28" Value=""/>
+			<Cell CellID="H_30" Value=""/>
+			<Cell CellID="N_30" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="E_24" FirstCell="0" Value="dfasdfadf" MCT=""/>
+			<Cell CellID="L_24" Value="" MCT=""/>
+			<Cell CellID="R_24" Value="" MCT=""/>
+			<Cell CellID="Y_24" Value="" MCT=""/>
+			<Cell CellID="AG_24" Value="" MCT=""/>
+			<Cell CellID="AM_24" Value="" MCT=""/>
+			<Cell CellID="AR_24" Value="" MCT=""/>
+			<Cell CellID="AW_24" Value="" MCT=""/>
+			<Cell CellID="BD_24" Value="342523452345" MCT=""/>
+			<Cell CellID="BL_24" Value="" MCT=""/>
+			<Cell CellID="BS_24" Value="3425324534" MCT=""/>
+		</Cells>
+		<Cells>
+			<Cell CellID="E_25" FirstCell="1" Value="¸dfasdf" MCT=""/>
+			<Cell CellID="L_25" Value="" MCT=""/>
+			<Cell CellID="R_25" Value="" MCT=""/>
+			<Cell CellID="Y_25" Value="" MCT=""/>
+			<Cell CellID="AG_25" Value="" MCT=""/>
+			<Cell CellID="AM_25" Value="" MCT=""/>
+			<Cell CellID="AR_25" Value="" MCT=""/>
+			<Cell CellID="AW_25" Value="" MCT=""/>
+			<Cell CellID="BD_25" Value="23452345" MCT=""/>
+			<Cell CellID="BL_25" Value="" MCT=""/>
+			<Cell CellID="BS_25" Value="532453245" MCT=""/>
+		</Cells>
+		<Cells>
+			<Cell CellID="E_26" FirstCell="1" Value="adsfasdf" MCT=""/>
+			<Cell CellID="L_26" Value="" MCT=""/>
+			<Cell CellID="R_26" Value="" MCT=""/>
+			<Cell CellID="Y_26" Value="" MCT=""/>
+			<Cell CellID="AG_26" Value="" MCT=""/>
+			<Cell CellID="AM_26" Value="" MCT=""/>
+			<Cell CellID="AR_26" Value="" MCT=""/>
+			<Cell CellID="AW_26" Value="" MCT=""/>
+			<Cell CellID="BD_26" Value="34252345" MCT=""/>
+			<Cell CellID="BL_26" Value="" MCT=""/>
+			<Cell CellID="BS_26" Value="2345342" MCT=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="BD_28" Value="342581157035" MCT=""/>
+			<Cell CellID="BS_28" Value="3960123121" MCT=""/>
+		</Cells>
+	</Section>
+</Sections>

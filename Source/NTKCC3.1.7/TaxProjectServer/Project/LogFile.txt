@@ -1,0 +1,84 @@
+7/27/2011 4:47:06 PM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+7/27/2011 4:53:26 PM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+7/27/2011 5:12:56 PM frmTruyennhanTK cmdNhanTkhai_Click
+ 0 : 
+------------------------------------------------------------
+8/1/2011 12:05:35 PM mdlFunctions SetupData
+ 6 : Overflow
+------------------------------------------------------------
+8/8/2011 11:06:10 AM frmLogin cmdOK_Click
+ 0 : 
+------------------------------------------------------------
+8/8/2011 11:10:01 AM frmLogin cmdOK_Click
+ 0 : 
+------------------------------------------------------------
+8/8/2011 11:25:05 AM frmLogin cmdOK_Click
+ 0 : 
+------------------------------------------------------------
+8/8/2011 2:19:39 PM mdlFunctions SetupData
+ 6 : Overflow
+------------------------------------------------------------
+9/8/2011 3:47:18 PM mdlFunctions SetupData
+ 6 : Overflow
+------------------------------------------------------------
+9/8/2011 4:53:22 PM frmInterfaces Barcode_Scaned
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+9/8/2011 4:53:34 PM frmInterfaces Barcode_Scaned
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+9/8/2011 4:53:35 PM frmInterfaces Barcode_Scaned
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+9/8/2011 4:53:57 PM frmInterfaces Barcode_Scaned
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+9/8/2011 4:54:02 PM frmInterfaces Barcode_Scaned
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+9/8/2011 4:54:03 PM frmInterfaces Barcode_Scaned
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+9/8/2011 4:54:31 PM frmInterfaces Barcode_Scaned
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+9/8/2011 11:31:04 PM mdlFunctions SetupData
+ 6 : Overflow
+------------------------------------------------------------
+9/9/2011 9:41:51 AM frmInterfaces cmdSave_Click
+ 0 : 
+------------------------------------------------------------
+9/9/2011 9:41:59 AM frmInterfaces cmdSave_Click
+ 0 : 
+------------------------------------------------------------
+9/9/2011 9:42:25 AM frmInterfaces cmdSave_Click
+ 0 : 
+------------------------------------------------------------
+9/9/2011 10:47:41 AM mdlFunctions SetupData
+ 6 : Overflow
+------------------------------------------------------------
+8/11/2011 9:00:28 AM mdlFunctions SetupData
+ 6 : Overflow
+------------------------------------------------------------
+8/11/2011 9:23:08 AM mdlFunctions SetupData
+ 6 : Overflow
+------------------------------------------------------------
+8/11/2011 10:13:49 AM mdlFunctions SetupData
+ 6 : Overflow
+------------------------------------------------------------
+8/11/2011 5:48:23 PM mdlFunctions SetupData
+ 6 : Overflow
+------------------------------------------------------------
+8/11/2011 7:27:34 PM frmInterfaces LoadForm
+ 13 : Type mismatch
+------------------------------------------------------------
+8/11/2011 7:28:05 PM frmInterfaces LoadForm
+ 13 : Type mismatch
+------------------------------------------------------------
+8/11/2011 7:28:13 PM frmInterfaces LoadForm
+ 13 : Type mismatch
+------------------------------------------------------------

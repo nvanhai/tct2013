@@ -1,0 +1,83 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_10" Value=""/>
+			<Cell CellID="H_8" Value=""/>
+			<Cell CellID="F_12" Value=""/>
+			<Cell CellID="F_16" Value=""/>
+			<Cell CellID="N_16" Value=""/>
+			<Cell CellID="V_16" Value=""/>
+			<Cell CellID="E_30" Value=""/>
+			<Cell CellID="E_32" Value=""/>
+			<Cell CellID="M_32" Value=""/>
+			<Cell CellID="V_32" Value=""/>
+			<Cell CellID="M_30" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_37" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_36" Value=""/>
+			<Cell CellID="M_36" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_30" Value=""/>			
+			
+			<Cell CellID="H_18" Value=""/>
+			<Cell CellID="F_22" Value=""/>
+			<Cell CellID="F_26" Value=""/>
+			<Cell CellID="N_26" Value=""/>
+			<Cell CellID="V_26" Value=""/>
+			<Cell CellID="H_28" Value=""/>
+			<Cell CellID="N_28" Value=""/>			
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_20" Value=""/>
+		</Cells>
+	</Section>	
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="N_42"   Value="  "  MCT="  "/> 	  		 
+  	       <Cell CellID="Q_42"   Value="  "  MCT="  "/> 	  	 
+  	       <Cell CellID="V_42"   Value="  "  MCT="  "/> 	  	 
+  	       <Cell CellID="AA_42"   Value="  "  MCT="  "/>    
+		   
+  	       <Cell CellID="N_43"   Value="  "  MCT="  "/> 	  	 
+  	       <Cell CellID="Q_43"   Value="  "  MCT="  "/> 	   
+  	       <Cell CellID="V_43"   Value="  "  MCT="  "/> 	  		 
+  	       <Cell CellID="AA_43"   Value="  "  MCT="  "/> 
+		   
+	  		 
+  	       <Cell CellID="Q_44"   Value="  "  MCT="  "/> 	   
+  	       <Cell CellID="V_44"   Value="  "  MCT="  "/> 	  		 
+
+		   
+  	       <Cell CellID="N_45"   Value="  "  MCT="  "/> 	  		 
+  	       <Cell CellID="Q_45"   Value="  "  MCT="  "/> 	  	 
+  	       <Cell CellID="V_45"   Value="  "  MCT="  "/> 	  		 
+  	       <Cell CellID="AA_45"   Value="  "  MCT="  "/> 
+		   
+  	       <Cell CellID="N_46"   Value="  "  MCT="  "/> 	  		 
+  	       <Cell CellID="Q_46"   Value="  "  MCT="  "/> 	  	 	 
+  	       <Cell CellID="V_46"   Value="  "  MCT="  "/> 	   
+  	       <Cell CellID="AA_46"   Value="  "  MCT="  "/> 	
+		   
+  	       	  		 
+  	       <Cell CellID="Q_47"   Value="  "  MCT="  "/> 	  		 
+  	       <Cell CellID="V_47"   Value="  "  MCT="  "/> 	  		 
+  	       	
+		</Cells>
+	</Section>
+		<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="H_51"   Value="  "  MCT="  "/> 	  		 
+  	       <Cell CellID="AA_51"   Value="  "  MCT="  "/> 	  	 	 
+  	       <Cell CellID="H_53"   Value="  "  MCT="  "/> 	  	 	 
+  	       <Cell CellID="AA_53"   Value="  "  MCT="  "/>
+			<Cell CellID="M_37"   Value="  "  MCT="  "/> 	  	 	 
+  	       <Cell CellID="N_37"   Value="  "  MCT="  "/> 
+		   <Cell CellID="O_37"   Value="  "  MCT="  "/> 	  	 	 
+  	       <Cell CellID="S_37"   Value="  "  MCT="  "/>
+		   <Cell CellID="Z_37"   Value="  "  MCT="  "/>		   
+			 
+		</Cells>
+	</Section>
+</Sections>
