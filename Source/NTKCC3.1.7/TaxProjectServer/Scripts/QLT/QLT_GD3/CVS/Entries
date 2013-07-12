@@ -1,0 +1,27 @@
+/Synonym_And_Grant.sql/1.1/Thu Sep 13 09:49:49 2007/-kkv/
+/alter_rcv_map_tkhai.sql/1.1/Thu Sep 13 09:49:49 2007/-kkv/
+/alter_rcv_tkhai_hdr.sql/1.1/Thu Sep 13 09:49:49 2007/-kkv/
+/cg_ref_codes_data.sql/1.1/Thu Sep 13 09:49:49 2007/-kkv/
+/rcv_dm_tkhai_alter.sql/1.1/Thu Sep 13 09:49:49 2007/-kkv/
+/rcv_dm_tkhai_data.sql/1.1/Thu Sep 13 09:49:49 2007/-kkv/
+/rcv_gdien_tkhai_data.SQL/1.1/Thu Sep 13 09:49:49 2007/-kkv/
+/rcv_map_ctieu_bthue.sql/1.1/Thu Sep 13 09:49:49 2007/-kkv/
+/rcv_map_ctieu_bthue_data.SQL/1.1/Thu Sep 13 09:49:49 2007/-kkv/
+/rcv_map_ctieu_data.SQL/1.1/Thu Sep 13 09:49:49 2007/-kkv/
+/rcv_map_tkhai_data.sql/1.1/Thu Sep 13 09:49:50 2007/-kkv/
+/rcv_pck_chuyen_dlieu_qlt.sql/1.1/Thu Sep 13 09:49:50 2007/-kkv/
+/rcv_qlt_gd3.sql/1.1/Thu Sep 13 09:49:50 2007/-kkv/
+/rcv_right_qlt_recv.sql/1.1/Thu Sep 13 09:49:50 2007/-kkv/
+/rcv_thamso_data.sql/1.1/Thu Sep 13 09:49:50 2007/-kkv/
+/rcv_tkhai_dtl_ind.sql/1.1/Thu Sep 13 09:49:50 2007/-kkv/
+/rcv_tkhai_hdr.sql/1.1/Thu Sep 13 09:49:50 2007/-kkv/
+/rcv_trg_auid_tkhai_hdr.sql/1.1/Thu Sep 13 09:49:50 2007/-kkv/
+/rcv_v_pluc_ttdb_01c.sql/1.1/Thu Sep 13 09:49:50 2007/-kkv/
+/rcv_v_tkhai_gtgt_tt.sql/1.1/Thu Sep 13 09:49:50 2007/-kkv/
+/rcv_v_tkhai_qtoan_gtgt_tt.sql/1.1/Thu Sep 13 09:49:50 2007/-kkv/
+/rcv_v_tkhai_qtoan_tnguyen.sql/1.1/Thu Sep 13 09:49:50 2007/-kkv/
+/rcv_v_tkhai_tnguyen.sql/1.1/Thu Sep 13 09:49:50 2007/-kkv/
+/rcv_v_tkhai_ttdb.sql/1.1/Thu Sep 13 09:49:50 2007/-kkv/
+/update_rcv_map_tkhai.sql/1.1/Thu Sep 13 09:49:50 2007/-kkv/
+/vssver.scc/1.1/Thu Sep 13 09:49:50 2007/-kb/
+D

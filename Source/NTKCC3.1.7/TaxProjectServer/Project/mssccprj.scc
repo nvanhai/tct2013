@@ -1,0 +1,15 @@
+SCC = This is a Source Code Control file
+
+[Tax.vbp]
+SCC_Aux_Path =\\192.168.131.15\BU2-Prj\QLT-HTKK,
+SCC_Project_Name ="$/QLT-HTKK/WIP/Program/TaxProjectServer/Project", GLAAAAAA
+
+[TaxServer.vbp]
+SCC_Aux_Path =\\192.168.131.15\BU2-Prj\QLT-HTKK,
+SCC_Project_Name ="$/QLT-HTKK/WIP/Program/TaxProjectServer/Project", GLAAAAAA
+[NTK.vbp]
+SCC_Project_Name ="$/QLT-HTKK/WIP/Program/TaxProjectServer/Project", GLAAAAAA
+SCC_Aux_Path =\\192.168.131.15\BU2-Prj\QLT-HTKK,
+[NTKCC.vbp]
+SCC_Project_Name=this project is not under source code control
+SCC_Aux_Path=<This is an empty string for the mssccprj.scc file>

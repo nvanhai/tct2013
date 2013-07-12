@@ -1,0 +1,126 @@
+[Root]
+Most Recent Package=NTK
+
+
+[Package|NTK|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=D:\Working\WIP\Program\TaxProjectServer\Project\Pakage
+
+[Package|NTK|Configure DAO ISAMs]
+Applicable=No
+
+[Package|NTK|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|NTK|Files Found]
+
+[Package|NTK|Files Released]
+
+[Package|NTK|Missing Dependency Information]
+D:\Working\WIP\Program\TaxProjectServer\References\TAX_Utilities_Svr.dll=
+C:\Program Files\Common Files\System\ado\msado20.tlb=
+D:\Working\WIP\Program\TaxProject\References\TBarCode5.ocx=
+
+[Package|NTK|Out-of-Date Dependency Information]
+C:\WINDOWS\system32\scrrun.dll=
+
+[Package|NTK|Files Added]
+
+[Package|NTK|Files Removed]
+
+[Package|NTK|Files In Project]
+D:\Working\WIP\Program\TaxProjectServer\Project\TaxServer.exe=Yes
+C:\WINDOWS\system32\MSVBVM60.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINDOWS\system32\hhctrl.ocx=Yes
+C:\WINDOWS\system32\itss.dll=Yes
+C:\WINDOWS\system32\itircl.dll=Yes
+C:\WINDOWS\hh.exe=Yes
+D:\Working\WIP\Program\TaxProject\References\TBarCode5.ocx=Yes
+C:\WINDOWS\system32\scrrun.dll=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT.DLL=Yes
+C:\WINDOWS\system32\msxml.dll=Yes
+C:\Program Files\Common Files\System\ado\msado20.tlb=Yes
+D:\Working\WIP\Program\TaxProjectServer\References\TAX_Utilities_Svr.dll=Yes
+C:\Program Files\FarPoint Technologies\Spread70\Bin\fpSpru70.ocx=Yes
+C:\WINDOWS\system32\FM20.DLL=Yes
+C:\WINDOWS\system32\MSCOMM32.OCX=Yes
+C:\WINDOWS\system32\COMCTL32.OCX=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINDOWS\system32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+
+[Package|NTK|Configure Registry Files]
+Applicable=No
+
+[Package|NTK|Configure Remote Servers]
+Applicable=No
+
+[Package|NTK|Install Locations]
+D:\Working\WIP\Program\TaxProjectServer\Project\TaxServer.exe=$(AppPath)
+C:\WINDOWS\system32\MSVBVM60.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\hhctrl.ocx=$(WinSysPath)
+C:\WINDOWS\system32\itss.dll=$(WinSysPath)
+C:\WINDOWS\system32\itircl.dll=$(WinSysPath)
+C:\WINDOWS\hh.exe=$(WinSysPath)
+D:\Working\WIP\Program\TaxProject\References\TBarCode5.ocx=$(AppPath)
+C:\WINDOWS\system32\scrrun.dll=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msxml.dll=$(WinSysPath)
+C:\Program Files\Common Files\System\ado\msado20.tlb=$(WinSysPath)
+D:\Working\WIP\Program\TaxProjectServer\References\TAX_Utilities_Svr.dll=$(AppPath)
+C:\Program Files\FarPoint Technologies\Spread70\Bin\fpSpru70.ocx=$(WinSysPath)
+C:\WINDOWS\system32\FM20.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSCOMM32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\COMCTL32.OCX=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINDOWS\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+
+[Package|NTK|Configure Shared Files]
+Applicable=Yes
+D:\Working\WIP\Program\TaxProjectServer\Project\TaxServer.exe=No
+D:\Working\WIP\Program\TaxProject\References\TBarCode5.ocx=Yes
+D:\Working\WIP\Program\TaxProjectServer\References\TAX_Utilities_Svr.dll=Yes
+
+[Package|NTK|DepFile]
+DepCabFile=NTK.CAB
+DepCabRun=NTK.INF
+
+[Package|NTK|Distribution]
+Type=single
+Size=
+Title=NTK
+
+[Package|NTK|IconGroups]
+Group0=NTK
+PrivateGroup0=-1
+Parent0=$(Programs)
+
+[Package|NTK|NTK]
+Icon1=TaxServer.exe
+Title1=NTK
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|NTK|Package]
+PackageFolder=D:\Working\WIP\Program\TaxProjectServer\Project\Pakage
+ProjectFolder=D:\Working\WIP\Program\TaxProjectServer\Project
+ServerSideCab=
+File1=D:\Working\WIP\Program\TaxProjectServer\Project\Pakage\setup.exe
+File2=D:\Working\WIP\Program\TaxProjectServer\Project\Pakage\Setup.Lst
+File3=D:\Working\WIP\Program\TaxProjectServer\Project\Pakage\TaxServer.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz

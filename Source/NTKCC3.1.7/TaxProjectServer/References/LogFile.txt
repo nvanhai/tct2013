@@ -1,0 +1,501 @@
+3/19/2007 10:33:54 AM Thuc hien cau lenh SQL ExecullteDLL
+-2147467259 : [Microsoft][ODBC Visual FoxPro Driver]Variable 'MAVACH' is not found.
+------------------------------------------------------------
+09/04/2007 10:11:09 AM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'gt042007.dbf' does not exist.
+------------------------------------------------------------
+09/04/2007 10:11:39 AM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'gt042007.dbf' does not exist.
+------------------------------------------------------------
+09/04/2007 10:11:39 AM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'gt042007.dbf' does not exist.
+------------------------------------------------------------
+09/04/2007 10:12:50 AM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'gt042007.dbf' does not exist.
+------------------------------------------------------------
+09/04/2007 10:12:50 AM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'gt042007.dbf' does not exist.
+------------------------------------------------------------
+28/03/2008 2:50:14 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:51:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Syntax error.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:53:05 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Syntax error.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'p3032008.dbf' does not exist.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'p3032008.dbf' does not exist.
+------------------------------------------------------------
+30/03/2008 1:54:30 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'p6032008.dbf' does not exist.
+------------------------------------------------------------
+30/03/2008 1:56:31 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Syntax error.
+------------------------------------------------------------
+30/03/2008 1:57:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:17 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:17 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:17 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:17 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:57:17 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'p3032008.dbf' does not exist.
+------------------------------------------------------------
+30/03/2008 1:57:17 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'p3032008.dbf' does not exist.
+------------------------------------------------------------
+30/03/2008 1:57:17 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'p6032008.dbf' does not exist.
+------------------------------------------------------------
+30/03/2008 1:57:24 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Syntax error.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217913 : [Microsoft][ODBC Visual FoxPro Driver]Data type mismatch.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'p3032008.dbf' does not exist.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'p3032008.dbf' does not exist.
+------------------------------------------------------------
+30/03/2008 1:58:37 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'p6032008.dbf' does not exist.
+------------------------------------------------------------
+30/03/2008 1:58:44 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Syntax error.
+------------------------------------------------------------
+10/6/2009 3:51:54 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field DAGHI1 does not accept null values.
+------------------------------------------------------------
+10/6/2009 3:59:59 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field AUTO_CAL does not accept null values.
+------------------------------------------------------------
+04/11/2009 9:03:25 AM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field DAGHI1 does not accept null values.
+------------------------------------------------------------
+04/11/2009 9:03:58 AM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field DAGHI1 does not accept null values.
+------------------------------------------------------------
+04/11/2009 9:04:17 AM Thuc hien cau lenh SQL ExecullteDLL
+-2147467259 : [Microsoft][ODBC Visual FoxPro Driver]Variable 'LOAIKY' is not found.
+------------------------------------------------------------
+04/11/2009 9:04:17 AM Thuc hien cau lenh SQL ExecullteDLL
+-2147467259 : [Microsoft][ODBC Visual FoxPro Driver]Variable 'LOAIKY' is not found.
+------------------------------------------------------------
+04/11/2009 9:04:17 AM Thuc hien cau lenh SQL ExecullteDLL
+-2147467259 : [Microsoft][ODBC Visual FoxPro Driver]Variable 'LOAIKY' is not found.
+------------------------------------------------------------
+04/11/2009 9:04:17 AM Thuc hien cau lenh SQL ExecullteDLL
+-2147467259 : [Microsoft][ODBC Visual FoxPro Driver]Variable 'LOAIKY' is not found.
+------------------------------------------------------------
+04/11/2009 9:04:25 AM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field MATS does not accept null values.
+------------------------------------------------------------
+04/11/2009 9:33:24 AM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field MATS does not accept null values.
+------------------------------------------------------------
+10/11/2009 6:54:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field MABDS does not accept null values.
+------------------------------------------------------------
+10/11/2009 6:54:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field MABDS does not accept null values.
+------------------------------------------------------------
+10/11/2009 6:54:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field MABDS does not accept null values.
+------------------------------------------------------------
+10/11/2009 6:54:58 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field MABDS does not accept null values.
+------------------------------------------------------------
+10/11/2009 6:55:06 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field MABDS does not accept null values.
+------------------------------------------------------------
+10/11/2009 6:55:06 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field MABDS does not accept null values.
+------------------------------------------------------------
+10/11/2009 6:55:06 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field MABDS does not accept null values.
+------------------------------------------------------------
+10/11/2009 6:55:06 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field MABDS does not accept null values.
+------------------------------------------------------------
+12/11/2009 10:48:55 AM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field MABDS does not accept null values.
+------------------------------------------------------------
+12/11/2009 10:48:55 AM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field MABDS does not accept null values.
+------------------------------------------------------------
+12/11/2009 10:48:55 AM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field MABDS does not accept null values.
+------------------------------------------------------------
+12/11/2009 10:48:55 AM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field MABDS does not accept null values.
+------------------------------------------------------------
+08/10/2009 3:08:15 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field DAGHI1 does not accept null values.
+------------------------------------------------------------
+29/03/2010 2:38:31 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217900 : [Microsoft][ODBC Visual FoxPro Driver]Field MABDS does not accept null values.
+------------------------------------------------------------
+28/04/2010 4:02:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'c7042010.dbf' does not exist.
+------------------------------------------------------------
+28/04/2010 4:02:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'c7042010.dbf' does not exist.
+------------------------------------------------------------
+28/04/2010 4:02:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'c7042010.dbf' does not exist.
+------------------------------------------------------------
+28/04/2010 4:02:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'c7042010.dbf' does not exist.
+------------------------------------------------------------
+28/04/2010 4:02:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'c7042010.dbf' does not exist.
+------------------------------------------------------------
+28/04/2010 4:02:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'c7042010.dbf' does not exist.
+------------------------------------------------------------
+28/04/2010 4:02:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'c7042010.dbf' does not exist.
+------------------------------------------------------------
+28/04/2010 4:02:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'c7042010.dbf' does not exist.
+------------------------------------------------------------
+28/04/2010 4:02:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'c7042010.dbf' does not exist.
+------------------------------------------------------------
+28/04/2010 4:02:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'c7042010.dbf' does not exist.
+------------------------------------------------------------
+28/04/2010 4:02:16 PM Thuc hien cau lenh SQL ExecullteDLL
+-2147217865 : [Microsoft][ODBC Visual FoxPro Driver]File 'c7042010.dbf' does not exist.
+------------------------------------------------------------
