@@ -20,7 +20,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkQTNamDau 
       Caption         =   "QuyÕt to¸n hÕt vµo n¨m ®Çu"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -37,7 +37,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkQTTungNam 
       Caption         =   "QuyÕt to¸n cho riªng tõng n¨m"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -54,7 +54,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkTuThangDenThang 
       Caption         =   "Tê khai tõ th¸ng ®Õn th¸ng"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -71,7 +71,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkTKQuy 
       Caption         =   "Tê khai quý"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -88,7 +88,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkTKLanPS 
       Caption         =   "Tê khai lÇn ph¸t sinh"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -105,7 +105,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkTkhaiThang 
       Caption         =   "Tê khai th¸ng"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -122,7 +122,7 @@ Begin VB.Form frmPeriod
    Begin VB.OptionButton OptTKLanPS 
       Caption         =   "Tê khai lÇn ph¸t sinh"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -139,7 +139,7 @@ Begin VB.Form frmPeriod
    Begin VB.OptionButton OptTKThang 
       Caption         =   "Tê khai th¸ng"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -155,7 +155,7 @@ Begin VB.Form frmPeriod
    End
    Begin VB.ComboBox cboNganhKD 
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -173,7 +173,7 @@ Begin VB.Form frmPeriod
    Begin VB.OptionButton OptChinhthuc 
       Caption         =   "Tê khai lÇn ®Çu"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -191,7 +191,7 @@ Begin VB.Form frmPeriod
    Begin VB.OptionButton OptBosung 
       Caption         =   "Tê khai bæ sung"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -291,7 +291,7 @@ Begin VB.Form frmPeriod
    Begin VB.CommandButton cmdClose 
       Caption         =   "§ã&ng"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -309,7 +309,7 @@ Begin VB.Form frmPeriod
       Caption         =   "§ån&g ý"
       Default         =   -1  'True
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -385,7 +385,7 @@ Begin VB.Form frmPeriod
       Begin VB.Label lblSelectAll 
          Caption         =   "Chän phô lôc kª khai"
          BeginProperty Font 
-            Name            =   "DS Sans Serif"
+            Name            =   "Arial"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -432,7 +432,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":02C8
       UserResize      =   1
       Appearance      =   1
    End
@@ -441,7 +441,7 @@ Begin VB.Form frmPeriod
       BackStyle       =   0  'Transparent
       Caption         =   "®Õn th¸ng"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -460,7 +460,7 @@ Begin VB.Form frmPeriod
       BackStyle       =   0  'Transparent
       Caption         =   "Tõ th¸ng"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -477,7 +477,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblNganhKD 
       Caption         =   "Danh môc ngµnh nghÒ"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -494,7 +494,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblSolan 
       Caption         =   "LÇn"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -511,7 +511,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblNgay 
       Caption         =   "Ngµy"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -528,7 +528,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblYear 
       Caption         =   "N¨m"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -553,7 +553,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblMonth 
       Caption         =   "Th¸ng"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -570,7 +570,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblNgayDau 
       Caption         =   "Tõ ngµy"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -587,7 +587,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblNgayCuoi 
       Caption         =   "§Õn ngµy"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -605,7 +605,7 @@ Begin VB.Form frmPeriod
       BackStyle       =   0  'Transparent
       Caption         =   "Chän kú kª khai"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -709,7 +709,6 @@ Private Sub chkSelectAll_MouseDown(Button As Integer, Shift As Integer, X As Sin
     blnClick = True
 End Sub
 
-
 Private Sub chkTkhaiThang_Click()
     Dim m, Y, d As Integer
     Dim dTem, dtem1 As Date
@@ -719,19 +718,21 @@ Private Sub chkTkhaiThang_Click()
     Y = Year(Date)
     
     If strLoaiSacThue = "ToKhaiGTGT" Then
+
         ' set gia tri default
-         If m = 1 Then
-                m = 12
-                Y = Y - 1
-            Else
-                m = m - 1
-            End If
+        If m = 1 Then
+            m = 12
+            Y = Y - 1
+        Else
+            m = m - 1
+        End If
+
         txtMonth.Text = m
         txtYear.Text = Y
+
         If Len(txtMonth.Text) = 1 Then
             txtMonth.Text = "0" & txtMonth.Text
         End If
-        
     
         If chkTkhaiThang.value = 1 Then
             strQuy = "TK_THANG"
@@ -781,7 +782,6 @@ Private Sub chkTkhaiThang_Click()
                 lblNganhKD.Top = 1600
                 lblNganhKD.Left = 120
                 
-                
                 Set cboNganhKD.Container = frmKy
                 cboNganhKD.Top = 1900
                 cboNganhKD.Left = 120
@@ -808,12 +808,14 @@ Private Sub chkTkhaiThang_Click()
             
             ' Set gia tri mac dinh cho Quy
             q = GetQuyHienTai(iNgayTaiChinh, iThangTaiChinh)
+
             If q.q = 1 Then
                 q.q = 4
                 q.Y = q.Y - 1
             Else
                 q.q = q.q - 1
             End If
+
             cmbQuy.ListIndex = q.q - 1
             txtYear.Text = q.Y
             
@@ -856,7 +858,6 @@ Private Sub chkTkhaiThang_Click()
                 lblNganhKD.Top = 1600
                 lblNganhKD.Left = 120
                 
-                
                 Set cboNganhKD.Container = frmKy
                 cboNganhKD.Top = 1900
                 cboNganhKD.Left = 120
@@ -876,11 +877,109 @@ Private Sub chkTkhaiThang_Click()
             txtNgayCuoi.Visible = False
                     
         End If
+
+    ElseIf strLoaiSacThue = "BC26" Then
+
+        ' set gia tri default
+        If m = 1 Then
+            m = 12
+            Y = Y - 1
+        Else
+            m = m - 1
+        End If
+
+        txtMonth.Text = m
+        txtYear.Text = Y
+
+        If Len(txtMonth.Text) = 1 Then
+            txtMonth.Text = "0" & txtMonth.Text
+        End If
+    
+        If chkTkhaiThang.value = 1 Then
+            strQuy = "TK_THANG"
+            chkTKQuy.value = 0
+            
+            Set lblMonth.Container = frmKy
+            lblMonth.Top = 570
+            lblMonth.Left = 960
+            
+            Set txtMonth.Container = frmKy
+            txtMonth.Top = 540
+            txtMonth.Left = 1530
+            
+            Set lblYear.Container = frmKy
+            lblYear.Top = 570
+            lblYear.Left = 2310
+            
+            Set txtYear.Container = frmKy
+            txtYear.Top = 540
+            txtYear.Left = 2730
+            SetControlCaption Me, "frmPeriod"
+
+            cmbQuy.Visible = False
+            lblQuy.Visible = False
+            lblMonth.Visible = True
+            txtMonth.Visible = True
+            txtNgayDau.Visible = False
+            txtNgayCuoi.Visible = False
+            lblNgayDau.Visible = False
+            lblNgayCuoi.Visible = False
+            frmKy.Height = 1000
+            Frame2.Top = 1300
+        Else
+            strQuy = "TK_QUY"
+            chkTKQuy.value = 1
+            Set lblQuy.Container = frmKy
+            lblQuy.Top = 570
+            lblQuy.Left = 960
+            
+            ' Set gia tri mac dinh cho Quy
+            q = GetQuyHienTai(iNgayTaiChinh, iThangTaiChinh)
+
+            If q.q = 1 Then
+                q.q = 4
+                q.Y = q.Y - 1
+            Else
+                q.q = q.q - 1
+            End If
+
+            cmbQuy.ListIndex = q.q - 1
+            txtYear.Text = q.Y
+            
+            Set cmbQuy.Container = frmKy
+            cmbQuy.Top = 540
+            cmbQuy.Left = 1530
+            
+            Set lblYear.Container = frmKy
+            lblYear.Top = 570
+            lblYear.Left = 2310
+            
+            Set txtYear.Container = frmKy
+            txtYear.Top = 540
+            txtYear.Left = 2730
+            
+            SetControlCaption Me, "frmPeriod"
+   
+            cmbQuy.Visible = True
+            lblQuy.Visible = True
+            
+            lblMonth.Visible = False
+            txtMonth.Visible = False
+            
+            txtNgayDau.Visible = True
+            txtNgayCuoi.Visible = True
+            lblNgayDau.Visible = True
+            lblNgayCuoi.Visible = True
+            frmKy.Height = 1300
+            Frame2.Top = 1600
+        End If
+
     Else
         dTem = Date
         dtem1 = DateAdd("M", -1, Date)
         lblNgay.Visible = IIf(chkTkhaiThang.value = 0, True, False)
         txtDay.Visible = IIf(chkTkhaiThang.value = 0, True, False)
+
         If chkTkhaiThang.value = 0 Then
             strLoaiTKThang_PS = "TK_LANPS"
             m = month(dTem)
@@ -889,12 +988,15 @@ Private Sub chkTkhaiThang_Click()
             txtDay.Text = d
             txtMonth.Text = m
             txtYear.Text = Y
+
             If Len(txtDay.Text) = 1 Then
                 txtDay.Text = "0" & txtDay.Text
             End If
+
             If Len(txtMonth.Text) = 1 Then
                 txtMonth.Text = "0" & txtMonth.Text
             End If
+
             chkTKLanPS.value = 1
         Else
             strLoaiTKThang_PS = "TK_THANG"
@@ -902,9 +1004,11 @@ Private Sub chkTkhaiThang_Click()
             Y = Year(dtem1)
             txtMonth.Text = m
             txtYear.Text = Y
+
             If Len(txtMonth.Text) = 1 Then
                 txtMonth.Text = "0" & txtMonth.Text
             End If
+
             chkTKLanPS.value = 0
             'chkTKLanPS.Enabled = True
             'chkTkhaiThang.Enabled = False
@@ -944,15 +1048,16 @@ Private Sub chkTkhaiThang_Click()
                     cmbQuy.Visible = True
                     ' Set gia tri mac dinh cho Quy
                     q = GetQuyHienTai(iNgayTaiChinh, iThangTaiChinh)
+
                     If q.q = 1 Then
                         q.q = 4
                         q.Y = q.Y - 1
                     Else
                         q.q = q.q - 1
                     End If
+
                     cmbQuy.ListIndex = q.q - 1
                     txtYear.Text = q.Y
-                    
                     
                     ' Set loai TK
                     frmKy.Height = 2400
@@ -962,7 +1067,6 @@ Private Sub chkTkhaiThang_Click()
                     lblNganhKD.Top = 1600
                     lblNganhKD.Left = 120
                     
-                    
                     Set cboNganhKD.Container = frmKy
                     cboNganhKD.Top = 1900
                     cboNganhKD.Left = 120
@@ -970,10 +1074,8 @@ Private Sub chkTkhaiThang_Click()
                     ' SetValueToList "73"
                 End If
                 
-                 
-                
                 Call Form_Resize
-             Else
+            Else
                 frmKy.Height = 2400
                 Frame2.Top = 2700
                 Set OptChinhthuc.Container = frmKy
@@ -1006,27 +1108,28 @@ Private Sub chkTkhaiThang_Click()
                 
                 Call Form_Resize
              
-             End If
+            End If
         End If
     End If
+
     LoadGrid
-'    If chkTKLanPS.value = 1 Then
-'         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "73" Then
-'            Frame2.Visible = False
-'            lblSelectAll.Visible = False
-'            chkSelectAll.Visible = False
-'            fpSpread1.Visible = False
-'            Call Form_Resize
-'         End If
-'    Else
-'         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "73" Then
-'            Frame2.Visible = True
-'            lblSelectAll.Visible = True
-'            chkSelectAll.Visible = True
-'            fpSpread1.Visible = True
-'            Call Form_Resize
-'         End If
-'    End If
+    '    If chkTKLanPS.value = 1 Then
+    '         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "73" Then
+    '            Frame2.Visible = False
+    '            lblSelectAll.Visible = False
+    '            chkSelectAll.Visible = False
+    '            fpSpread1.Visible = False
+    '            Call Form_Resize
+    '         End If
+    '    Else
+    '         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "73" Then
+    '            Frame2.Visible = True
+    '            lblSelectAll.Visible = True
+    '            chkSelectAll.Visible = True
+    '            fpSpread1.Visible = True
+    '            Call Form_Resize
+    '         End If
+    '    End If
 End Sub
 
 Private Sub chkTKLanPS_Click()
@@ -1173,13 +1276,13 @@ Private Sub chkTKLanPS_Click()
 End Sub
 
 Private Sub chkTKQuy_Click()
+
     If strLoaiSacThue = "ToKhaiGTGT" Then
         If chkTKQuy.value = 0 Then
             strQuy = "TK_THANG"
             chkTkhaiThang.value = 1
             
             OptChinhthuc.value = True
-            
             
             Set lblMonth.Container = frmKy
             lblMonth.Top = 570
@@ -1223,7 +1326,6 @@ Private Sub chkTKQuy_Click()
                 Set lblNganhKD.Container = frmKy
                 lblNganhKD.Top = 1600
                 lblNganhKD.Left = 120
-                
                 
                 Set cboNganhKD.Container = frmKy
                 cboNganhKD.Top = 1900
@@ -1290,7 +1392,6 @@ Private Sub chkTKQuy_Click()
                 lblNganhKD.Top = 1600
                 lblNganhKD.Left = 120
                 
-                
                 Set cboNganhKD.Container = frmKy
                 cboNganhKD.Top = 1900
                 cboNganhKD.Left = 120
@@ -1306,14 +1407,82 @@ Private Sub chkTKQuy_Click()
             lblMonth.Visible = False
             txtMonth.Visible = False
             
-             
-            
             txtNgayDau.Visible = False
             txtNgayCuoi.Visible = False
                     
         End If
 
+    ElseIf strLoaiSacThue = "BC26" Then
+
+        If chkTKQuy.value = 0 Then
+            strQuy = "TK_THANG"
+            chkTkhaiThang.value = 1
+            
+            Set lblMonth.Container = frmKy
+            lblMonth.Top = 570
+            lblMonth.Left = 960
+            
+            Set txtMonth.Container = frmKy
+            txtMonth.Top = 540
+            txtMonth.Left = 1530
+            
+            Set lblYear.Container = frmKy
+            lblYear.Top = 570
+            lblYear.Left = 2310
+            
+            Set txtYear.Container = frmKy
+            txtYear.Top = 540
+            txtYear.Left = 2730
+
+            SetControlCaption Me, "frmPeriod"
+   
+            cmbQuy.Visible = False
+            lblQuy.Visible = False
+            lblMonth.Visible = True
+            txtMonth.Visible = True
+            txtNgayDau.Visible = False
+            txtNgayCuoi.Visible = False
+            lblNgayDau.Visible = False
+            lblNgayCuoi.Visible = False
+            frmKy.Height = 1000
+            Frame2.Top = 1300
+        Else
+            strQuy = "TK_QUY"
+            chkTkhaiThang.value = 0
+                    
+            Set lblQuy.Container = frmKy
+            lblQuy.Top = 570
+            lblQuy.Left = 960
+            
+            Set cmbQuy.Container = frmKy
+            cmbQuy.Top = 540
+            cmbQuy.Left = 1530
+            
+            Set lblYear.Container = frmKy
+            lblYear.Top = 570
+            lblYear.Left = 2310
+            
+            Set txtYear.Container = frmKy
+            txtYear.Top = 540
+            txtYear.Left = 2730
+            
+            SetControlCaption Me, "frmPeriod"
+   
+            cmbQuy.Visible = True
+            lblQuy.Visible = True
+            
+            lblMonth.Visible = False
+            txtMonth.Visible = False
+            txtNgayDau.Visible = True
+            txtNgayCuoi.Visible = True
+            lblNgayDau.Visible = True
+            lblNgayCuoi.Visible = True
+            frmKy.Height = 1300
+            Frame2.Top = 1600
+        End If
+
     Else
+
         If chkTKQuy.value = 0 Then
             strQuy = "TK_TU_THANG"
             chkTuThangDenThang.value = 1
@@ -1355,7 +1524,6 @@ Private Sub chkTKQuy_Click()
             chkQTNamDau.Left = 960
             chkQTNamDau.Visible = True
             
-            
             Set OptChinhthuc.Container = frmKy
             OptChinhthuc.Top = 1500
             OptChinhthuc.Left = 960
@@ -1375,7 +1543,6 @@ Private Sub chkTKQuy_Click()
             OptBosung.Visible = True
             lblSolan.Visible = False
             txtSolan.Visible = False
-    
             
         Else
             strQuy = "TK_QUY"
@@ -1407,7 +1574,6 @@ Private Sub chkTKQuy_Click()
             txtNgayCuoi.Left = 2700
             txtNgayCuoi.Visible = False
             
-            
             Set OptChinhthuc.Container = frmKy
             OptChinhthuc.Top = 900
             OptChinhthuc.Left = 960
@@ -1432,13 +1598,13 @@ Private Sub chkTKQuy_Click()
             chkQTNamDau.Top = 10920
             chkQTNamDau.Left = 960
             chkQTNamDau.Visible = False
-    
             
             lblSolan.Visible = False
             txtSolan.Visible = False
                     
         End If
     End If
+
     Call Form_Resize
     LoadGrid
 
@@ -1751,7 +1917,7 @@ Public Sub cmdOK_Click()
     '***************************
     If strKieuKy = KIEU_KY_THANG Then
         If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" _
-        Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+        Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "68" Then
             If strQuy = "TK_THANG" Then
                  If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
                     txtMonth.SetFocus
@@ -5594,52 +5760,100 @@ End Sub
 Private Sub SetupLayoutBC26()
     On Error GoTo ErrorHandle
     
-    Me.Height = 3285
+    strLoaiSacThue = "BC26"
+    
+    Me.Height = 3500
     Me.Width = 4905
+        
+    frmKy.Height = 1100
+    Set chkTKQuy.Container = frmKy
+    chkTKQuy.Top = 200
+    chkTKQuy.Left = 2500
+    chkTKQuy.value = 0
+    chkTkhaiThang.value = 1
     
-    Set lblQuy.Container = frmKy
-    lblQuy.Top = 300
-    lblQuy.Left = 120
-    lblQuy.caption = "Ky`"
-    SetControlCaption Me, "frmPeriodHY"
-    'lblCaption.caption = GetAttribute(GetMessageCellById("0183"), "Msg")
-    Set cmbQuy.Container = frmKy
-    cmbQuy.Top = 240
-    cmbQuy.Left = 1000
+    Set chkTkhaiThang.Container = frmKy
+    chkTkhaiThang.Top = 200
+    chkTkhaiThang.Left = 120
     
-    lblYear.Visible = False
+    Set lblMonth.Container = frmKy
+    lblMonth.Top = 570
+    lblMonth.Left = 960
     
+    Set txtMonth.Container = frmKy
+    txtMonth.Top = 540
+    txtMonth.Left = 1530
+    
+    Set lblYear.Container = frmKy
+    lblYear.Top = 570
+    lblYear.Left = 2310
     
     Set txtYear.Container = frmKy
-    txtYear.Top = 240
-    txtYear.Left = 1600
-    
+    txtYear.Top = 540
+    txtYear.Left = 2730
+        
     Set lblNgayDau.Container = frmKy
-    lblNgayDau.Top = 630
+    lblNgayDau.Top = 930
     lblNgayDau.Left = 120
-    
+
     Set txtNgayDau.Container = frmKy
-    txtNgayDau.Top = 600
+    txtNgayDau.Top = 900
     txtNgayDau.Left = 1000 '1200
     'txtNgayDau.Locked = True
-    
+
     Set lblNgayCuoi.Container = frmKy
-    lblNgayCuoi.Top = 630
+    lblNgayCuoi.Top = 930
     lblNgayCuoi.Left = 2600 '2400
-    
+
     Set txtNgayCuoi.Container = frmKy
-    txtNgayCuoi.Top = 600
+    txtNgayCuoi.Top = 900
     txtNgayCuoi.Left = 3480
     
-    'SetControlCaption Me, "frmPeriodQuy"
-    
-    txtMonth.Visible = False
-    'cmbQuy.Visible = False
-     ' end
-        
+'    Set lblQuy.Container = frmKy
+'    lblQuy.Top = 300
+'    lblQuy.Left = 120
+'    lblQuy.caption = "Ky`"
+'    SetControlCaption Me, "frmPeriodHY"
+'    'lblCaption.caption = GetAttribute(GetMessageCellById("0183"), "Msg")
+'    Set cmbQuy.Container = frmKy
+'    cmbQuy.Top = 240
+'    cmbQuy.Left = 1000
+'
+'    lblYear.Visible = False
+'
+'
+'    Set txtYear.Container = frmKy
+'    txtYear.Top = 240
+'    txtYear.Left = 1600
+'
+'    Set lblNgayDau.Container = frmKy
+'    lblNgayDau.Top = 630
+'    lblNgayDau.Left = 120
+'
+'    Set txtNgayDau.Container = frmKy
+'    txtNgayDau.Top = 600
+'    txtNgayDau.Left = 1000 '1200
+'    'txtNgayDau.Locked = True
+'
+'    Set lblNgayCuoi.Container = frmKy
+'    lblNgayCuoi.Top = 630
+'    lblNgayCuoi.Left = 2600 '2400
+'
+'    Set txtNgayCuoi.Container = frmKy
+'    txtNgayCuoi.Top = 600
+'    txtNgayCuoi.Left = 3480
+'
+'    'SetControlCaption Me, "frmPeriodQuy"
+'
+'    txtMonth.Visible = False
+'    'cmbQuy.Visible = False
+'     ' end
+
+    SetControlCaption Me, "frmPeriod"
+   
     Me.Top = (frmSystem.ScaleHeight - Me.ScaleHeight) / 2
     Me.Left = (frmSystem.Width - Me.Width) / 2
-    
+
     Exit Sub
      
 ErrorHandle:
