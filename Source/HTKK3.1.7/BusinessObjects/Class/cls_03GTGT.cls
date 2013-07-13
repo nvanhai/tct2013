@@ -110,7 +110,7 @@ Public Sub Prepare2()
         
         
         ' set loai tk thang/ quy
-         If strTkThangQuy = "TK_THANG" Then
+        If strTkThangQuy = "TK_THANG" Then
             .Col = .ColLetterToNumber("M")
             .Row = 60
             .Text = "0"
