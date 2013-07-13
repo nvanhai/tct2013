@@ -20,7 +20,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkQTNamDau 
       Caption         =   "QuyÕt to¸n hÕt vµo n¨m ®Çu"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -37,7 +37,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkQTTungNam 
       Caption         =   "QuyÕt to¸n cho riªng tõng n¨m"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -54,7 +54,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkTuThangDenThang 
       Caption         =   "Tê khai tõ th¸ng ®Õn th¸ng"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -71,7 +71,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkTKQuy 
       Caption         =   "Tê khai quý"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -88,7 +88,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkTKLanPS 
       Caption         =   "Tê khai lÇn ph¸t sinh"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -105,7 +105,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkTkhaiThang 
       Caption         =   "Tê khai th¸ng"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -122,7 +122,7 @@ Begin VB.Form frmPeriod
    Begin VB.OptionButton OptTKLanPS 
       Caption         =   "Tê khai lÇn ph¸t sinh"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -139,7 +139,7 @@ Begin VB.Form frmPeriod
    Begin VB.OptionButton OptTKThang 
       Caption         =   "Tê khai th¸ng"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -155,7 +155,7 @@ Begin VB.Form frmPeriod
    End
    Begin VB.ComboBox cboNganhKD 
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -173,7 +173,7 @@ Begin VB.Form frmPeriod
    Begin VB.OptionButton OptChinhthuc 
       Caption         =   "Tê khai lÇn ®Çu"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -191,7 +191,7 @@ Begin VB.Form frmPeriod
    Begin VB.OptionButton OptBosung 
       Caption         =   "Tê khai bæ sung"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -291,7 +291,7 @@ Begin VB.Form frmPeriod
    Begin VB.CommandButton cmdClose 
       Caption         =   "§ã&ng"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -309,7 +309,7 @@ Begin VB.Form frmPeriod
       Caption         =   "§ån&g ý"
       Default         =   -1  'True
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -385,7 +385,7 @@ Begin VB.Form frmPeriod
       Begin VB.Label lblSelectAll 
          Caption         =   "Chän phô lôc kª khai"
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "DS Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -432,7 +432,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":02C8
+      SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
    End
@@ -441,7 +441,7 @@ Begin VB.Form frmPeriod
       BackStyle       =   0  'Transparent
       Caption         =   "®Õn th¸ng"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -460,7 +460,7 @@ Begin VB.Form frmPeriod
       BackStyle       =   0  'Transparent
       Caption         =   "Tõ th¸ng"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -477,7 +477,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblNganhKD 
       Caption         =   "Danh môc ngµnh nghÒ"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -494,7 +494,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblSolan 
       Caption         =   "LÇn"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -511,7 +511,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblNgay 
       Caption         =   "Ngµy"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -528,7 +528,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblYear 
       Caption         =   "N¨m"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -553,7 +553,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblMonth 
       Caption         =   "Th¸ng"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -570,7 +570,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblNgayDau 
       Caption         =   "Tõ ngµy"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -587,7 +587,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblNgayCuoi 
       Caption         =   "§Õn ngµy"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -605,7 +605,7 @@ Begin VB.Form frmPeriod
       BackStyle       =   0  'Transparent
       Caption         =   "Chän kú kª khai"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "DS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -709,6 +709,7 @@ Private Sub chkSelectAll_MouseDown(Button As Integer, Shift As Integer, X As Sin
     blnClick = True
 End Sub
 
+
 Private Sub chkTkhaiThang_Click()
     Dim m, Y, d As Integer
     Dim dTem, dtem1 As Date
@@ -718,21 +719,19 @@ Private Sub chkTkhaiThang_Click()
     Y = Year(Date)
     
     If strLoaiSacThue = "ToKhaiGTGT" Then
-
         ' set gia tri default
-        If m = 1 Then
-            m = 12
-            Y = Y - 1
-        Else
-            m = m - 1
-        End If
-
+         If m = 1 Then
+                m = 12
+                Y = Y - 1
+            Else
+                m = m - 1
+            End If
         txtMonth.Text = m
         txtYear.Text = Y
-
         If Len(txtMonth.Text) = 1 Then
             txtMonth.Text = "0" & txtMonth.Text
         End If
+        
     
         If chkTkhaiThang.value = 1 Then
             strQuy = "TK_THANG"
@@ -782,6 +781,7 @@ Private Sub chkTkhaiThang_Click()
                 lblNganhKD.Top = 1600
                 lblNganhKD.Left = 120
                 
+                
                 Set cboNganhKD.Container = frmKy
                 cboNganhKD.Top = 1900
                 cboNganhKD.Left = 120
@@ -808,14 +808,12 @@ Private Sub chkTkhaiThang_Click()
             
             ' Set gia tri mac dinh cho Quy
             q = GetQuyHienTai(iNgayTaiChinh, iThangTaiChinh)
-
             If q.q = 1 Then
                 q.q = 4
                 q.Y = q.Y - 1
             Else
                 q.q = q.q - 1
             End If
-
             cmbQuy.ListIndex = q.q - 1
             txtYear.Text = q.Y
             
@@ -857,6 +855,7 @@ Private Sub chkTkhaiThang_Click()
                 Set lblNganhKD.Container = frmKy
                 lblNganhKD.Top = 1600
                 lblNganhKD.Left = 120
+                
                 
                 Set cboNganhKD.Container = frmKy
                 cboNganhKD.Top = 1900
