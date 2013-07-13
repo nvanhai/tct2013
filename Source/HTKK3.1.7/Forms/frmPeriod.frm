@@ -2336,6 +2336,8 @@ Private Sub Form_Load()
         SetupLayout08TNCN
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "64" Then
         SetupLayout04TBAC
+    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "68" Then
+        SetupLayoutBC26
     Else
         SetupLayout (strKieuKy)
     End If
@@ -5586,4 +5588,61 @@ End Sub
 Private Sub setValueDefault()
     chkTkhaiThang.value = 1
     chkTKLanPS.value = 0
+End Sub
+
+
+Private Sub SetupLayoutBC26()
+    On Error GoTo ErrorHandle
+    
+    Me.Height = 3285
+    Me.Width = 4905
+    
+    Set lblQuy.Container = frmKy
+    lblQuy.Top = 300
+    lblQuy.Left = 120
+    lblQuy.caption = "Ky`"
+    SetControlCaption Me, "frmPeriodHY"
+    'lblCaption.caption = GetAttribute(GetMessageCellById("0183"), "Msg")
+    Set cmbQuy.Container = frmKy
+    cmbQuy.Top = 240
+    cmbQuy.Left = 1000
+    
+    lblYear.Visible = False
+    
+    
+    Set txtYear.Container = frmKy
+    txtYear.Top = 240
+    txtYear.Left = 1600
+    
+    Set lblNgayDau.Container = frmKy
+    lblNgayDau.Top = 630
+    lblNgayDau.Left = 120
+    
+    Set txtNgayDau.Container = frmKy
+    txtNgayDau.Top = 600
+    txtNgayDau.Left = 1000 '1200
+    'txtNgayDau.Locked = True
+    
+    Set lblNgayCuoi.Container = frmKy
+    lblNgayCuoi.Top = 630
+    lblNgayCuoi.Left = 2600 '2400
+    
+    Set txtNgayCuoi.Container = frmKy
+    txtNgayCuoi.Top = 600
+    txtNgayCuoi.Left = 3480
+    
+    'SetControlCaption Me, "frmPeriodQuy"
+    
+    txtMonth.Visible = False
+    'cmbQuy.Visible = False
+     ' end
+        
+    Me.Top = (frmSystem.ScaleHeight - Me.ScaleHeight) / 2
+    Me.Left = (frmSystem.Width - Me.Width) / 2
+    
+    Exit Sub
+     
+ErrorHandle:
+    SaveErrorLog Me.Name, "SetupLayoutBC26", Err.Number, Err.Description
+    
 End Sub
