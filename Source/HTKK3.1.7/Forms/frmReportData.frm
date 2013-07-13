@@ -126,7 +126,7 @@ Begin VB.Form frmReportData
       DisplayText     =   ""
       BarWidthReduction=   -1
       TextAlignment   =   0
-      Quality         =   68
+      Quality         =   0
    End
 End
 Attribute VB_Name = "frmReportData"
@@ -1252,7 +1252,16 @@ strReturn = strReturn & strTaxID
 
 'Add period
 If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then
-    strReturn = strReturn & TAX_Utilities_New.month & TAX_Utilities_New.Year
+    ' to khai thang/quy GTGT, TNCN
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "36" Then
+        If strQuy = "TK_THANG" Then
+            strReturn = strReturn & TAX_Utilities_New.month & TAX_Utilities_New.Year
+        Else
+            strReturn = strReturn & "0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year
+        End If
+    Else
+        strReturn = strReturn & TAX_Utilities_New.month & TAX_Utilities_New.Year
+    End If
 ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
     strReturn = strReturn & "0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year
 ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Year") = "1" Then
