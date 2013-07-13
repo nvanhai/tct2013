@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Begin VB.Form frmInterfaces 
    AutoRedraw      =   -1  'True
    BorderStyle     =   3  'Fixed Dialog
@@ -123,7 +123,6 @@ Begin VB.Form frmInterfaces
          Left            =   2760
          TabIndex        =   17
          Top             =   120
-         Visible         =   0   'False
          Width           =   1335
       End
       Begin ComctlLib.ProgressBar ProgressBar1 
@@ -768,7 +767,7 @@ Private Sub cmdSave_Click()
 
     ' chi kiem tra validate cho cac mau an chi
     ' Kiem tra ngay nop khong duoc lon hon ngay quet
-    If Val(menuId) >= 64 And Val(menuId) <= 68 Then
+    If (Val(menuId) >= 64 And Val(menuId) <= 68) Or Val(menuId) = 91 Then
         If CheckValidData = False Then
             MessageBox "0136", msOKOnly, miWarning
             Exit Sub
@@ -848,7 +847,7 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("E"), 30, vKYLBO
         'dntai 12/05/2011
         'lay VKYLBO cho truong to an chi 01/AC
-        ElseIf menuId >= 64 And menuId <= 68 Then
+        ElseIf (menuId >= 64 And menuId <= 68) Or menuId = 91 Then
             vKYLBO = Month(Date) & "/" & Year(Date)
         
         Else
@@ -889,7 +888,7 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("E"), 32, vNgayNop
         ElseIf menuId = 8 Then
             .GetText .ColLetterToNumber("I"), 11, vNgayNop
-        ElseIf menuId = 64 Or menuId = 65 Or menuId = 68 Then
+        ElseIf menuId = 64 Or menuId = 65 Or menuId = 68 Or menuId = 91 Then
             .GetText .ColLetterToNumber("E"), 10, vNgayNop
         ElseIf menuId = 81 Or menuId = 80 Or menuId = 82 Or menuId = 89 Then
             .GetText .ColLetterToNumber("E"), 32, vNgayNop
@@ -1182,6 +1181,8 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("K"), 12, vNGAYQUET
         ElseIf menuId = 64 Then
             .GetText .ColLetterToNumber("K"), 12, vNGAYQUET
+        ElseIf menuId = 91 Then
+            .GetText .ColLetterToNumber("K"), 12, vNGAYQUET
         ElseIf menuId = 67 Then
             .GetText .ColLetterToNumber("N"), 14, vNGAYQUET
         ElseIf menuId = 68 Then
@@ -1383,7 +1384,7 @@ Private Sub cmdSave_Click()
 
     If frmSystem.chkSaveQHS = True Then
         'dntai 13/01/2012 khong ghi cac to an chi vao QHS
-        If menuId < 64 Or menuId > 68 Then
+        If (menuId < 64 Or menuId > 68) And menuId <> 91 Then
             Insert_QHS
         End If
         
@@ -1620,8 +1621,38 @@ Private Sub Command1_Click()
 ' Barcode_Scaned str1
 '  str1 = "aa301802500132833   002010016016003003<S01-2><S>dfasdfadf~~~~~~~~342523452345~~3425324534~∏dfasdf~~~~~~~~23452345~~532453245~adsfasdf~~~~~~~~34252345~~2345342</S><S>342581157035~3960123121</S></S01-2>"
 ' Barcode_Scaned str1
-str1 = "aa316110700176898   01201300900900100101/0114/06/2006<S01><S></S><S>100000000~0~100000000~0~0~100000000~0~0~100000000~25~0~25000000~x</S><S></S><S>~~~27/02/2013~1~0~~1052~01</S></S01>"
-Barcode_Scaned str1
+'str1 = "aa316110700176898   01201300900900100101/0114/06/2006<S01><S></S><S>100000000~0~100000000~0~0~100000000~0~0~100000000~25~0~25000000~x</S><S></S><S>~~~27/02/2013~1~0~~1052~01</S></S01>"
+'Barcode_Scaned str1
+
+'' To khai 01_GTGT
+'str2 = "aa316010100100079   02201300200200100101/0114/06/2006<S01><S></S><S>~35329039~0~100000000~1000000~0~0~100000000~0~0~100000000~0~0~0~100000000~99000000~0~0~0~63670961~0~63670961~0~0~0</S><S>~~~01/03/2013~1~~~1701~x~03~1</S></S01>"
+'Barcode_Scaned str2
+
+'' To khai 02_GTGT
+'str2 = "aa315020100100079   12201200100100100101/0114/06/2006<S01><S></S><S>0~10000000~1000000~0~0~0~0~1000000~0~1000000~0~0~1000000</S><S>~Nguy‘n Phi Phong~~08/01/2013~1~~~1</S></S01>"
+'Barcode_Scaned str2
+
+'' To khai 03 GTGT
+'str2 = "aa316040100100079   06201300100100100101/0114/06/2006<S01><S></S><S>3242~0~23432~23423~0~432423~-20181~0~-408991~0~0~0~26674~0</S><S>3424~234wer~234234~07/07/2013~1~~~0</S></S01>"
+'Barcode_Scaned str2
+
+''To khai 04/GTGT
+'str2 = "aa316710100100079   06201300100200100101/0101/01/1900<S01><S></S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0</S><S>~~~09/07/2013~1~~~1</S></S01>"
+'Barcode_Scaned str2
+
+'' To khai 02/TNDN
+'str2 = "aa316730100100079   02201300000000100201/0114/06/2006<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0"
+'Barcode_Scaned str2
+'str2 = "aa316730100100079   022013000000002002~0~1~0</S><S>1~~~~~~~</S><S>~~~11/07/2013~1~~~1053~x</S></S02>"
+'Barcode_Scaned str2
+
+'' Mau TB04/AC
+'str2 = "aa316910100100079   06201300300300100101/0101/01/2009<S01><S>1~11~01DVPH~2~22~02DCTS~3~33~03Phone</S><S>01/01/2009~0102030405001~tong cuc thue~01/01/2009~nguyen van a</S></S01>"
+'Barcode_Scaned str2
+
+str2 = "aa316680100100079   02201300100100100101/0101/01/2009<S01><S>1~1~01/04/2013~30/06/2013</S><S>1~1~1~0~1~1~1~1~1~1~0~0~0~1~0~1~0~1~1~1~0~0</S><S>1~trst~12/07/2013</S></S01>"
+
+Barcode_Scaned str2
 
 End Sub
 
@@ -1919,7 +1950,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
             End If
         'chan doi voi cac to an chi
         ElseIf Val(Left$(strBarcode, 3)) < 302 Then
-            If Val(Mid$(strBarcode, 4, 2)) = 64 Or Val(Mid$(strBarcode, 4, 2)) = 65 Or Val(Mid$(strBarcode, 4, 2)) = 66 Or Val(Mid$(strBarcode, 4, 2)) = 67 Or Val(Mid$(strBarcode, 4, 2)) = 68 Then
+            If Val(Mid$(strBarcode, 4, 2)) = 64 Or Val(Mid$(strBarcode, 4, 2)) = 65 Or Val(Mid$(strBarcode, 4, 2)) = 66 Or Val(Mid$(strBarcode, 4, 2)) = 67 Or Val(Mid$(strBarcode, 4, 2)) = 68 Or Val(Mid$(strBarcode, 4, 2)) = 91 Then
                 DisplayMessage "0159", msOKOnly, miCriticalError
                 Exit Sub
             End If
@@ -2591,11 +2622,19 @@ End Sub
 'Return:
 '****************************
 Private Sub SetPeriod(ByVal strValue As String)
+    Dim TkID As String
 
-On Error GoTo ErrHandle
+    On Error GoTo ErrHandle
+    TkID = Left$(strTaxReportInfo, 2)
+
     If GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Month") = "1" Then
-        TAX_Utilities_Svr_New.Month = Left$(strValue, 2)
-        TAX_Utilities_Svr_New.ThreeMonths = ""
+        If TkID = "01" Or TkID = "02" Or TkID = "04" Or TkID = "71" Or TkID = "36" Or TkID = "68" Then
+            TAX_Utilities_Svr_New.Month = Left$(strValue, 2)
+            TAX_Utilities_Svr_New.ThreeMonths = Left$(strValue, 2)
+        Else
+            TAX_Utilities_Svr_New.Month = Left$(strValue, 2)
+            TAX_Utilities_Svr_New.ThreeMonths = ""
+        End If
     ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ThreeMonth") = 1 Then
         TAX_Utilities_Svr_New.ThreeMonths = Left$(strValue, 2)
         TAX_Utilities_Svr_New.Month = ""
@@ -3210,7 +3249,7 @@ On Error GoTo ErrHandle
 '    --------------------------
 'lay thong tin ve dai ly thue
 'bo qua cac to an chi
-    If Val(LoaiTk1) <> 64 And Val(LoaiTk1) <> 65 And Val(LoaiTk1) <> 66 And Val(LoaiTk1) <> 67 And Val(LoaiTk1) <> 68 Then
+    If Val(LoaiTk1) <> 64 And Val(LoaiTk1) <> 65 And Val(LoaiTk1) <> 66 And Val(LoaiTk1) <> 67 And Val(LoaiTk1) <> 68 And Val(LoaiTk1) <> 91 Then
         If getTTDLT = False Then
                 If MessageBox("0141", msYesNo, miQuestion) = mrNo Then
                         Exit Function
@@ -3255,7 +3294,7 @@ On Error GoTo ErrHandle
         
         ' An chi
         LoaiTk1 = Mid(strData, 4, 2)
-        If Val(LoaiTk1) >= 64 And Val(LoaiTk1) <= 68 Then
+        If (Val(LoaiTk1) >= 64 And Val(LoaiTk1) <= 68) Or Val(LoaiTk1) = 91 Then
                objTaxBusiness.strSoTTTKhai = getSoTTTK_AC(changeMaToKhai(LoaiTk1), arrStrHeaderData, strData)
                objTaxBusiness.isTKTonTai = isTonTaiAC
                objTaxBusiness.strMaBPQL = strMaPhongQuanLy
