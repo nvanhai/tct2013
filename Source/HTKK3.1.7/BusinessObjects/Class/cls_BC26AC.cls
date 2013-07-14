@@ -54,6 +54,8 @@ Private Const Col_AB = "AB"
 Private Const Col_AC = "AC"
 Private Const Col_AD = "AD"
 
+Public strTkThangQuy As String
+
 'Private strCheckTon As String
 'Private strCheckTonKhoang As String
 Private loaiHoaDonS1() As LOAI_HOA_DON
@@ -222,6 +224,8 @@ Public Sub Prepare2()
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim iCol As Long, iRow As Long
     
+    Dim tmpSheet As Integer
+    
     With fps
         .Sheet = 1
         .EventEnabled(EventAllEvents) = False
@@ -341,7 +345,23 @@ Public Sub Prepare2()
         .Col = iCol
         .Formula = ""
         
-        
+        tmpSheet = mCurrentSheet
+        mCurrentSheet = 1
+        .Sheet = 1
+        ' set loai tk thang/ quy
+        If strTkThangQuy = "TK_THANG" Then
+            .Col = .ColLetterToNumber("H")
+            .Row = 13
+            .Text = "0"
+            UpdateCell fps, .Col, .Row, .Text
+        ElseIf strTkThangQuy = "TK_QUY" Then
+            .Col = .ColLetterToNumber("H")
+            .Row = 13
+            .Text = "1"
+            UpdateCell fps, .Col, .Row, .Text
+        End If
+            'end
+        mCurrentSheet = tmpSheet
         .EventEnabled(EventAllEvents) = True
     End With
 End Sub
@@ -2033,7 +2053,7 @@ Private Sub checkSheet1()
          Dim strGroupHDTS_DS As String
          Dim arrGroupHDTS_DS() As String
          Dim arrGroupValueTS_DS() As String
-         Dim strTuso, strDenso As Variant
+         Dim strTuSo, strDenso As Variant
          Dim strTempTS_DS As String
          Dim arrGroupHDNewTS_DS As String
          
@@ -2095,12 +2115,12 @@ Private Sub checkSheet1()
                 .GetText .ColLetterToNumber(Col_D), .Row, strTenHD
                 .GetText .ColLetterToNumber(Col_E), .Row, strMauSoHD
                 .GetText .ColLetterToNumber(Col_F), .Row, strKyHieuHD
-                .GetText .ColLetterToNumber("X"), .Row, strTuso
+                .GetText .ColLetterToNumber("X"), .Row, strTuSo
                 .GetText .ColLetterToNumber("Y"), .Row, strDenso
                 hoaDon.tenHD = CStr(strTenHD)
                 hoaDon.mauSoHD = CStr(strMauSoHD)
                 hoaDon.kyHieuHD = CStr(strKyHieuHD)
-                hoaDon.tuSo = Val(CStr(strTuso))
+                hoaDon.tuSo = Val(CStr(strTuSo))
                 hoaDon.denso = Val(CStr(strDenso))
                 'If UBound(loaiHoaDon) > 0 Then
                 For i = 0 To UBound(loaiHoaDon)
@@ -2261,7 +2281,7 @@ Private Sub checkSheet2()
     Dim strCheck As String
     Dim errMauSoHD As Variant, errKyHieuHD As Variant, errSoLuong As Variant, errSoLienHD As Variant, errTon As Variant, errTonTK As Variant
     Dim errKhoangGN As Variant, errLengthHD As Variant, errEmty As Variant, errNgayKy As Variant, errNgayHuy As Variant, errTrungKhoang As Variant
-    Dim strTenHD As Variant, strMauSoHD As Variant, strKyHieuHD As Variant, strTuso As Variant, strDenso As Variant
+    Dim strTenHD As Variant, strMauSoHD As Variant, strKyHieuHD As Variant, strTuSo As Variant, strDenso As Variant
     Dim strTenHD1 As Variant, strMauSoHD1 As Variant, strKyHieuHD1 As Variant, strTuso1 As Variant, strDenso1 As Variant
     Dim strSoLuong As Variant, strNguoiKy As Variant, strNguoiLapBieu As Variant, strNgayKy As Variant, strNgayHuy As Variant
     Dim iFlagTenHD As Integer, iFlagMauSoHD As Integer, iFlagKyHieu As Integer, iFlagSoLienHD As Integer, iFlagEmty As Integer
@@ -2571,7 +2591,7 @@ Private Sub checkSheet2()
                     arrHoaDonS1 = loaiHoaDonS1(i).hoaDon
                     'If UBound(arrHoaDonS1) > 0 Then
                     For k = 0 To UBound(arrHoaDonS1)
-                        If Val(strTuso) >= arrHoaDonS1(k).tuSo And Val(strDenso) <= arrHoaDonS1(k).denso And arrHoaDonS1(k).isDelete = False Then
+                        If Val(strTuSo) >= arrHoaDonS1(k).tuSo And Val(strDenso) <= arrHoaDonS1(k).denso And arrHoaDonS1(k).isDelete = False Then
                             isTrongKhoang = True
                             isExitFor = True
                             Exit For
@@ -3206,7 +3226,7 @@ Private Sub checkSheet3()
                     arrHoaDonS1 = loaiHoaDonS1(i).hoaDon
                     'If UBound(arrHoaDonS1) > 0 Then
                     For k = 0 To UBound(arrHoaDonS1)
-                        If Val(strTuso) >= arrHoaDonS1(k).tuSo And Val(strDenso) <= arrHoaDonS1(k).denso And arrHoaDonS1(k).isDelete = False Then
+                        If Val(strTuSo) >= arrHoaDonS1(k).tuSo And Val(strDenso) <= arrHoaDonS1(k).denso And arrHoaDonS1(k).isDelete = False Then
                             isTrongKhoang = True
                             isExitFor = True
                             Exit For
