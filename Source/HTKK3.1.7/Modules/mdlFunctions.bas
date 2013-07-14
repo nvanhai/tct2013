@@ -482,6 +482,13 @@ Public Sub SetupData(pGrid As fpSpread)
                                 Else
                                     strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
                                 End If
+                            ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "68" Then
+                                ' BC 26
+                                If strQuy = "TK_THANG" Then
+                                    strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                                ElseIf strQuy = "TK_QUY" Then
+                                    strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                                End If
                             Else
                                 strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
                             End If
@@ -1894,13 +1901,25 @@ Public Function CheckPeriod(ByVal strMonth As String, ByVal strYear As String) A
     
     If GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then ' strKieuKy = KIEU_KY_QUY
         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "68" Then
-            If CInt(strYear) > CInt(Year(Date)) Then
-                DisplayMessage "0188", msOKOnly, miInformation
-                Exit Function
-            ElseIf CInt(strYear) = CInt(Year(Date)) Then
-                If GetNgayDauQuy(CInt(strMonth), CInt(strYear), iNgayTaiChinh, iThangTaiChinh) > Date Then
+            If strQuy = "TK_THANG" Then
+                If CInt(strYear) > CInt(Year(Date)) Then
+                    DisplayMessage "0044", msOKOnly, miInformation
+                    Exit Function
+                ElseIf CInt(strYear) = CInt(Year(Date)) Then
+                    If CInt(strMonth) > CInt(month(Date)) Then
+                        DisplayMessage "0044", msOKOnly, miInformation
+                        Exit Function
+                    End If
+                End If
+            Else
+                If CInt(strYear) > CInt(Year(Date)) Then
                     DisplayMessage "0188", msOKOnly, miInformation
                     Exit Function
+                ElseIf CInt(strYear) = CInt(Year(Date)) Then
+                    If GetNgayDauQuy(CInt(strMonth), CInt(strYear), iNgayTaiChinh, iThangTaiChinh) > Date Then
+                        DisplayMessage "0188", msOKOnly, miInformation
+                        Exit Function
+                    End If
                 End If
             End If
         ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "65" Then

@@ -1263,7 +1263,15 @@ If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then
         strReturn = strReturn & TAX_Utilities_New.month & TAX_Utilities_New.Year
     End If
 ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
-    strReturn = strReturn & "0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "68" Then
+        If strQuy = "TK_THANG" Then
+            strReturn = strReturn & TAX_Utilities_New.month & TAX_Utilities_New.Year
+        Else
+            strReturn = strReturn & "0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year
+        End If
+    Else
+        strReturn = strReturn & "0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year
+    End If
 ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Year") = "1" Then
     strReturn = strReturn & "00" & TAX_Utilities_New.Year
 End If
