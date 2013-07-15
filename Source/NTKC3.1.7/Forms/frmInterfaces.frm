@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Begin VB.Form frmInterfaces 
    AutoRedraw      =   -1  'True
    BorderStyle     =   3  'Fixed Dialog
@@ -378,7 +378,7 @@ On Error GoTo ErrHandle
             .CommPort = mCommPort
             .Settings = strSetting                          ' 9600 baud, no parity, 8 data, and 1 stop bit.
             .InputLen = 0                                   ' Read entire buffer
-            .RThreshold = 1                                 ' Call **_OnComm for each character
+            .RThreshold = 1                                                              ' Call **_OnComm for each character
             .InputMode = comInputModeBinary
             On Error GoTo PortOpenedErr ' Port in use
             .PortOpen = True      ' Opens the port
@@ -1286,8 +1286,11 @@ Private Sub Command1_Click()
 
 'str2 = "aa316913600247325   06201300300300100101/0101/01/2009<S01><S>1~11~01DVPH~2~22~02DCTS~3~33~03Phone</S><S>01/01/2009~0102030405001~tong cuc thue~01/01/2009~nguyen van a</S></S01>"
 'Barcode_Scaned str2
+'
+'str2 = "aa316363600247325   06201300100100100101/0101/01/2010<S07><S></S><S>x~555~4001665~4000000~0~777~888~0~0~111~0~0~222222~20~44444~444444~1~4444</S><S>hjh~13/07/2013~tydgh~56754765~1~~~0</S></S07>"
+'Barcode_Scaned str2
 
-str2 = "aa316363600247325   06201300100100100101/0101/01/2010<S07><S></S><S>x~555~4001665~4000000~0~777~888~0~0~111~0~0~222222~20~44444~444444~1~4444</S><S>hjh~13/07/2013~tydgh~56754765~1~~~0</S></S07>"
+str2 = "aa316680100100079   02201300100100100101/0101/01/2009<S01><S>1~1~01/04/2013~30/06/2013</S><S>1~1~1~0~1~1~1~1~1~1~0~0~0~1~0~1~0~1~1~1~0~0</S><S>1~trst~12/07/2013~1</S></S01>"
 Barcode_Scaned str2
 
 End Sub
