@@ -1,0 +1,51 @@
+<!-- Edited by hlnam FIS_CMC-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_4" Value=""/>
+			<Cell CellID="G_5" Value=""/>
+			<Cell CellID="G_6" Value=""/>
+			<Cell CellID="E_8" Value=""/>
+			<Cell CellID="M_8" Value=""/>
+			<Cell CellID="V_8" Value=""/>
+			<Cell CellID="E_10" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="M_12" Value=""/>
+			<Cell CellID="V_12" Value=""/>
+			<Cell CellID="M_10" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_16" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_14" Value=""/>
+			<Cell CellID="M_14" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_10" Value="" MaxLen="60"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="U_40" Value="3482422000" MCT="1"/>
+			<Cell CellID="U_41" Value="174121100" MCT="2"/>
+			<Cell CellID="U_43" Value="0" MCT="3"/>
+			<Cell CellID="U_44" Value="0" MCT="4"/>
+			<Cell CellID="U_46" Value="0" MCT="5"/>
+			<Cell CellID="U_47" Value="0" MCT="6"/>
+			<Cell CellID="U_49" Value="0" MCT="7"/>
+			<Cell CellID="U_50" Value="0" MCT="8"/>
+			<Cell CellID="U_52" Value="0" MCT="9"/>
+			<Cell CellID="U_53" Value="0" MCT="10"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="R_55" Value=""/>
+			<Cell CellID="R_57" Value=""/>
+			<Cell CellID="C_61" Value="1"/>
+			<Cell CellID="F_61" Value=""/>
+			<Cell CellID="I_61" Value=""/>
+			<Cell CellID="B_39" Value="I" MCT="I"/>
+			<Cell CellID="B_42" Value="II" MCT="II"/>
+			<Cell CellID="B_45" Value="III" MCT="III"/>
+			<Cell CellID="B_48" Value="IV" MCT="IV"/>
+			<Cell CellID="B_51" Value="V" MCT="V"/>
+		</Cells>
+	</Section>
+</Sections>

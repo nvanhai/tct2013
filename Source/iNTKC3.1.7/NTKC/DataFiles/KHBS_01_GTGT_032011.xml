@@ -1,0 +1,61 @@
+<!-- edited by nvanhai CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_10" Value="4400488942"/>
+			<Cell CellID="H_8" Value=""/>
+			<Cell CellID="F_12" Value=""/>
+			<Cell CellID="F_16" Value=""/>
+			<Cell CellID="N_16" Value=""/>
+			<Cell CellID="V_16" Value=""/>
+			<Cell CellID="E_30" Value=""/>
+			<Cell CellID="E_32" Value=""/>
+			<Cell CellID="M_32" Value=""/>
+			<Cell CellID="V_32" Value=""/>
+			<Cell CellID="M_30" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_39" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_36" Value=""/>
+			<Cell CellID="M_36" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="H_18" Value=""/>
+			<Cell CellID="F_22" Value=""/>
+			<Cell CellID="F_26" Value=""/>
+			<Cell CellID="N_26" Value=""/>
+			<Cell CellID="V_26" Value=""/>
+			<Cell CellID="H_28" Value=""/>
+			<Cell CellID="N_28" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="BD_9" FirstCell="0" Value="T?ng s? thu? GTGT  ?-?c kh?u tr? k? n?y" MCT="1"/>
+			<Cell CellID="BE_9" Value="25" MCT="2"/>
+			<Cell CellID="BF_9" Value="35924045" MCT="3"/>
+			<Cell CellID="BG_9" Value="35165303" MCT="4"/>
+			<Cell CellID="BH_9" Value="-758742" MCT="5"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="BD_13" FirstCell="0" Value="" MCT="6"/>
+			<Cell CellID="BE_13" Value="" MCT="7"/>
+			<Cell CellID="BF_13" Value="0" MCT="8"/>
+			<Cell CellID="BG_13" Value="0" MCT="9"/>
+			<Cell CellID="BH_13" Value="0" MCT="10"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="B_24" Value="19/08/2011"/>
+			<Cell CellID="BE_17" Value="121" MCT="12"/>
+			<Cell CellID="BE_18" Value="45904" MCT="13"/>
+			<Cell CellID="BD_20" Value="I. K? khai b? sung h?ng h?a, d?ch v? b?n ra kh?ng ch?u thu? GTGT:1. TL/2010B, 0012661, 01/03/2011, Kh?ch l? 31- Ph?m Thanh Hi?n, B?n s?ch, Doanh thu ch-a c? thu?: 157.500 ?;2. TL/2010B, 0012662, 01/03/2011, Kh?ch l? 20- Nguy?n Th? H-?ng, Doanh thu ch-a c? thu?: 1.512.000 ?;3. TL/2010B, 0012665, 16/03/2011, CTCP S?ch v? TBGD Mi?n B?c, MST: 0104546308, Doanh thu ch-a c? thu?: 151.984 ?;4. TL/2010B, 0012668, 18/03/2011, CTCP S?ch ??i h?c D?y ngh?, MST: 0101517669, Doanh thu ch-a c? thu?: 15.823.500 ?;5. TL/2010B, 0012673, 23/03/2011, CTCP S?ch Gi?o d?c t?i N?i, MST: 0101493714, Doanh thu ch-a c? thu?: 18.457.500 ?6. TL/2010B, 0012674, 23/03/2011, CTCP S?ch Gi?o d?c t?i TP.HCM, MST: 0303280405, Doanh thu ch-a c? thu?: 26.082.000 ?7. TL/2010B, 0012675, 23/03/2011, CTCP S?ch d?n t?c, MTS: 0102112993,  Doanh thu ch-a c? thu?: 1.948.800 ?8. TL/2010B, 0012679, 24/03/2011, Kh?ch l? 32- L? Ho?ng Vi?t, Doanh thu ch-a c? thu?: 4.759.725 ?9. TL/2010B, 0012680, 24/03/2011, Kh?ch l? 31- Ph?m Thanh Hi?n, Doanh thu ch-a c? thu?: 207.200 ?10. TL/2010B, 0012684, 28/03/2011, Xu?t Tuy?n truy?n qu?ng c?o, Doanh thu ch-a c? thu?: 639.220 ?11. TL/2010B, 0012687, 28/03/2011, Xu?t Tuy?n truy?n qu?ng c?o, Doanh thu ch-a c? thu?: 267.120 ?II. T?ng s? thu? GTGT ?-?c kh?u tr? k? n?y (s? ?i?u ch?nh): 35.165.303 ?" MCT="14"/>
+			<Cell CellID="BF_15" Value="154019025" MCT="15"/>
+			<Cell CellID="BG_15" Value="154777767" MCT="16"/>
+			<Cell CellID="BH_15" Value="758742" MCT="17"/>
+			<Cell CellID="BF_16" Value="0" MCT="18"/>
+			<Cell CellID="BG_16" Value="0" MCT="19"/>
+			<Cell CellID="BH_16" Value="0" MCT="20"/>
+		</Cells>
+	</Section>
+</Sections>

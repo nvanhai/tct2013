@@ -1,0 +1,54 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_4" Value=""/>
+			<Cell CellID="G_5" Value=""/>
+			<Cell CellID="G_6" Value=""/>
+			<Cell CellID="E_8" Value=""/>
+			<Cell CellID="M_8" Value=""/>
+			<Cell CellID="V_8" Value=""/>
+			<Cell CellID="E_10" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="M_12" Value=""/>
+			<Cell CellID="V_12" Value=""/>
+			<Cell CellID="M_10" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_16" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_14" Value=""/>
+			<Cell CellID="M_14" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_10" Value="" MaxLen="60"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_25" FirstCell="0" Value="DX/2010B" MCT="1"/>
+			<Cell CellID="D_25" Value="0021535" MCT="2"/>
+			<Cell CellID="E_25" Value="31/05/2010" MCT="3"/>
+			<Cell CellID="F_25" Value="C+ng ty TNHH SXTMamp;DV S)m Ho5ng Nh)n" MCT="4"/>
+			<Cell CellID="I_25" Value="10203" MCT="6"/>
+			<Cell CellID="J_25" Value="R-nu s)m 1.2l/1cq" MCT="5"/>
+			<Cell CellID="N_25" Value="6.48" MCT="7"/>
+			<Cell CellID="O_25" Value="37090.82" MCT="8"/>
+			<Cell CellID="P_25" Value="240349" MCT="9"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_26" FirstCell="1" Value="DX/2010B" MCT="1"/>
+			<Cell CellID="D_26" Value="0021535" MCT="2"/>
+			<Cell CellID="E_26" Value="31/05/2010" MCT="3"/>
+			<Cell CellID="F_26" Value="C+ng ty TNHH SXTMamp;DV S)m Ho5ng Nh)n" MCT="4"/>
+			<Cell CellID="I_26" Value="10203" MCT="6"/>
+			<Cell CellID="J_26" Value="R-nu s)m 700ml/1cq" MCT="5"/>
+			<Cell CellID="N_26" Value="2.52" MCT="7"/>
+			<Cell CellID="O_26" Value="57974.00" MCT="8"/>
+			<Cell CellID="P_26" Value="146094" MCT="9"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="J_30" FirstCell="0" Value="R-nu d-mi 20 .i, r-nu hoa qu6, r-nu thuhc"/>
+			<Cell CellID="N_30" Value="9.00"/>
+			<Cell CellID="P_30" Value="386443"/>
+		</Cells>
+	</Section>
+</Sections>
