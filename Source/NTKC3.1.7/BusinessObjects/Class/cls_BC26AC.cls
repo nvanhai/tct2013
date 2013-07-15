@@ -105,7 +105,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .Sheet = 1
         .Col = .ColLetterToNumber(PHONG_XU_LY_COL)
         .Row = PHONG_XU_LY_ROW
-        If rsPXL.Fields.Count > 0 Then
+        If rsPXL.Fields.count > 0 Then
             Do While Not rsPXL.EOF
                 .TypeComboBoxIndex = -1
                 .TypeComboBoxString = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
@@ -335,6 +335,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
     Dim vKyBCCuoi, vChuyenDiaDiem
+    Dim PP_HUY As Variant
     
 On Error GoTo ErrHandle
     strSQL = SqlHdr_AC
@@ -364,10 +365,18 @@ On Error GoTo ErrHandle
                     vGHI_CHU_LOI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                     vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+                Case "AF_41"
+                    PP_HUY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
             End Select
         End If
         End With
     Next
+    
+    If PP_HUY = "0" Then
+        PP_HUY = "T"
+    Else
+        PP_HUY = "Q"
+    End If
     
     vCO_BANG_KE1 = TAX_Utilities_Srv_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue
     vCO_BANG_KE2 = TAX_Utilities_Srv_New.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue
@@ -471,7 +480,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_CQ_TIEP_NHAN & "',"
     strSQL = strSQL & "'" & "" & "',"
     strSQL = strSQL & "null,"
-    strSQL = strSQL & "null,null,"
+    strSQL = strSQL & "'" & PP_HUY & "',null,"
     strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
     strSQL = strSQL & "'" & vMA_CQT & "',"
     strSQL = strSQL & "'" & vLoai_BC26 & "',"
