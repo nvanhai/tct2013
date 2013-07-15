@@ -2902,9 +2902,16 @@ End Sub
 Private Sub SetPeriod(ByVal strValue As String)
 
 On Error GoTo ErrHandle
+    Dim strID As String
+    strID = Left$(strTaxReportInfo, 2)
+    
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
         TAX_Utilities_Srv_New.Month = Left$(strValue, 2)
-        TAX_Utilities_Srv_New.ThreeMonths = ""
+        If strID = "01" Or strID = "02" Or strID = "04" Or strID = "71" Or strID = "36" Then
+            TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
+        Else
+            TAX_Utilities_Srv_New.ThreeMonths = ""
+        End If
     ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = 1 Then
         TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
         TAX_Utilities_Srv_New.Month = ""
@@ -3275,7 +3282,7 @@ On Error GoTo ErrHandle
     '*******************************
         'Get main content
         If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Day") <> "0" Then
-            If Trim(strID) = "70" Or Trim(strID) = "81" Then
+            If Trim(strID) = "70" Or Trim(strID) = "81" Or Trim(strID) = "91" Then
                 strData = Mid$(strData, 37)
             Else
                 strData = Mid$(strData, 57)

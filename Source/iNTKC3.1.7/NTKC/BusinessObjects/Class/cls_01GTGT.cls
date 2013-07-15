@@ -160,7 +160,8 @@ End Function
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
     Dim i As Integer
     Dim varMaDM As Variant
-    
+    Dim LOAI_KYKK As String
+
     i = 0
     ReDim Preserve larrPhongXuLy(0)
     larrPhongXuLy(0) = "00"
@@ -614,11 +615,13 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
     Dim vItkhai_ID, vHthuc_nop As String
+    Dim LOAI_KYKK As String
+    
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC, vNGANH_NGHE_KD, vTO_KHAI_LAN_PS, vNGAY_PS As Variant
     Dim v_CO_GIA_HAN, VMaLyDoGH
     
 On Error GoTo ErrHandle
-    strSQL = strSQL_HDR
+    strSQL = Replace$(strSQL_HDR, ")", ",LOAI_KYKK)")
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
@@ -660,6 +663,9 @@ On Error GoTo ErrHandle
                     End If
                 Case "AB_41"
                     VMaLyDoGH = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+                Case "AB_42"
+                    LOAI_KYKK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+
             End Select
         End If
         End With
@@ -840,11 +846,16 @@ On Error GoTo ErrHandle
     Else
         strSQL = strSQL & "null,"
     End If
-    'strSQL = strSQL & "null,"
+    If LOAI_KYKK = "0" Then
+        LOAI_KYKK = "T"
+    Else
+        LOAI_KYKK = "Q"
+    End If
+    'strSQL = strSQL & "null)"
     'strSQL = strSQL & "'" & IIf(Val(vCO_PHU_LUC6) = 1, "Y", "") & "',"
     strSQL = strSQL & v_CO_GIA_HAN & ","
     strSQL = strSQL & vHthuc_nop & "," & vItkhai_ID & ","
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & vNGANH_NGHE_KD & "," & vTO_KHAI_LAN_PS & "," & vNGAY_PS & ")"
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & vNGANH_NGHE_KD & "," & vTO_KHAI_LAN_PS & "," & vNGAY_PS & ",'" & LOAI_KYKK & "')"
     GenerateSQL_Header = strSQL
     
     Exit Function

@@ -12,22 +12,22 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
 Option Explicit
-Const KY_LAP_BO_ROW = 10
+Const KY_LAP_BO_ROW = 22
 Const KY_LAP_BO_COL = "E"
 Const MA_SO_TEP_ROW = 10
 Const MA_SO_TEP_COL = "M"
-Const NGAY_NHAN_TO_KHAI_ROW = 12
+Const NGAY_NHAN_TO_KHAI_ROW = 24
 Const NGAY_NHAN_TO_KHAI_COL = "E"
-Const NGUOI_SU_DUNG_ROW = 12
+Const NGUOI_SU_DUNG_ROW = 24
 Const NGUOI_SU_DUNG_COL = "V"
 
-Const HEADER_SO_TT_TRONG_TEP_ROW = 16 'Dong 16 da dc Hidden
+Const HEADER_SO_TT_TRONG_TEP_ROW = 29 'Dong 16 da dc Hidden
 Const HEADER_SO_TT_TRONG_TEP_COL = "V"
 
 Const HEADER_KY_LAP_BO_ROW = 13
 Const HEADER_KY_LAP_BO_COL = "B"
 
-Const PHONG_XU_LY_ROW = 10
+Const PHONG_XU_LY_ROW = 22
 Const PHONG_XU_LY_COL = "V"
 
 Public WithEvents fps As fpSpread
@@ -57,32 +57,32 @@ Public Function Prepared1() As Boolean
         
         'Ghi chu
         .Col = .ColLetterToNumber("M")
-        .Row = 14
+        .Row = 28
         .CellType = CellTypeEdit
         .TypeEditCharSet = TypeEditCharSetASCII
         .TypeMaxEditLen = 100
         
         'Phong xu ly
-        .Col = .ColLetterToNumber("E")
-        .Row = 16
+        .Col = .ColLetterToNumber("V")
+        .Row = 22
         .CellType = CellTypeComboBox
         .TypeEditCharSet = TypeEditCharSetASCII
         .TypeMaxEditLen = 60
         
         'Ky lap bo
-        SetDateFormat fps, 1, 10, .ColLetterToNumber("E"), MMYYYY
+        SetDateFormat fps, 1, 22, .ColLetterToNumber("E"), MMYYYY
         .TypeHAlign = TypeHAlignLeft
         
         ' Ngay nop
-        SetDateFormat fps, 1, 12, .ColLetterToNumber("E"), DDMMYYYY
-        .Row = 12
+        SetDateFormat fps, 1, 24, .ColLetterToNumber("E"), DDMMYYYY
+        .Row = 24
         .Col = .ColLetterToNumber("E")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
         
         ' Ngay quet
-        SetDateFormat fps, 1, 12, .ColLetterToNumber("M"), DDMMYYYY
-        .Row = 12
+        SetDateFormat fps, 1, 24, .ColLetterToNumber("M"), DDMMYYYY
+        .Row = 24
         .Col = .ColLetterToNumber("M")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
@@ -328,11 +328,11 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim strMaPhongXuLy As String
     Dim chkBoSung As Variant
     Dim sttBoSung As Variant
-    
+    Dim LOAI_KYKK As String
     Dim vItkhai_ID, vHthuc_nop As String
     
 On Error GoTo ErrHandle
-    strSQL = strSQL_HDR
+    strSQL = Replace$(strSQL_HDR, ")", ",LOAI_KYKK)")
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
@@ -378,7 +378,9 @@ On Error GoTo ErrHandle
                     vGHI_CHU_LOI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                     vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                
+                Case "AB_42"
+                    LOAI_KYKK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+ 
             End Select
         End If
         End With
@@ -448,7 +450,11 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & IIf(Val(vCO_GTRINH_02C) = 1, "Y", "") & "',"
     strSQL = strSQL & "'','','',"
     strSQL = strSQL & "null,null,"
-    
+    If LOAI_KYKK = "0" Then
+        LOAI_KYKK = "T"
+    Else
+        LOAI_KYKK = "Q"
+    End If
     With fps
         For i = 1 To lSoPhongXL
             If vPHONG_XU_LY = TAX_Utilities_Srv_New.Convert(larrPhongXuLy(i), UNICODE, TCVN) Then
@@ -458,7 +464,7 @@ On Error GoTo ErrHandle
         Next
     End With
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null,"
-    strSQL = strSQL & vHthuc_nop & "," & vItkhai_ID & ")"
+    strSQL = strSQL & vHthuc_nop & "," & vItkhai_ID & ",'" & LOAI_KYKK & "')"
     GenerateSQL_Header = strSQL
     
     Exit Function

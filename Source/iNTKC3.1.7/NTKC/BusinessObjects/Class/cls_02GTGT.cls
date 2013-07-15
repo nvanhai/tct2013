@@ -461,9 +461,10 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim strMaPhongXuLy As String
     Dim vItkhai_ID, vHthuc_nop As String
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
+    Dim LOAI_KYKK As String
     
 On Error GoTo ErrHandle
-    strSQL = strSQL_HDR
+    strSQL = Replace$(strSQL_HDR, ")", ",LOAI_KYKK)")
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
@@ -496,6 +497,8 @@ On Error GoTo ErrHandle
                     vGHI_CHU_LOI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                     vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+                Case "AB_40"
+                    LOAI_KYKK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
             End Select
         End If
         End With
@@ -555,6 +558,11 @@ On Error GoTo ErrHandle
         vDA_NHAN = "N"
     Else
         vDA_NHAN = vbNullString
+    End If
+    If LOAI_KYKK = "0" Then
+        LOAI_KYKK = "T"
+    Else
+        LOAI_KYKK = "Q"
     End If
     strSQL = strSQL & "'" & vDA_NHAN & "',"
     strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
@@ -617,7 +625,7 @@ On Error GoTo ErrHandle
     End If
     strSQL = strSQL & "null,"
     strSQL = strSQL & vHthuc_nop & "," & vItkhai_ID & ","
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ",'" & LOAI_KYKK & "')"
     GenerateSQL_Header = strSQL
     
     Exit Function
