@@ -298,34 +298,44 @@ Public Sub finish()
 End Sub
 
 Private Sub CheckDynamicError()
-    Dim iFlagExist               As Integer, iFlagNgayCoThongBaoPhatHanh As Integer, iFlagEmpty As Integer
-    Dim vTarget22                As Variant, vTarget21 As Variant, vPhatHanh As Variant, vDieuChinh As Variant, arrDate() As String
+    Dim iFlagExist               As Integer, iFlagNgayCoThongBaoPhatHanh As Integer, iFlagEmpty As Integer ',iFlagNgayThongBaoEmpty As Integer
+    Dim vTarget22                As Variant, vTarget20 As Variant, vTarget21 As Variant, vPhatHanh As Variant, vDieuChinh As Variant, arrDate() As String
     Dim countRow                 As Long, rowDes As Long, vErrExist As Variant
     Dim vGiaTriThayDoiCheckTrung As Variant, vGiaTriThayDoi As Variant
 
     With fps
         .Sheet = .SheetCount
+        .GetText .ColLetterToNumber("E"), 20, vTarget20 ' du lieu bat buoc phai nhap
         .GetText .ColLetterToNumber("E"), 21, vErrExist
         .GetText .ColLetterToNumber("E"), 22, vTarget22
          
         '1. Check Ngay dieu chinh
         .Sheet = 1
         .GetText .ColLetterToNumber("F"), 30, vPhatHanh
-        arrDate = Split(CStr(vPhatHanh), "/")
 
-        If DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0))) >= DateSerial(CInt(TAX_Utilities_New.Year), CInt(TAX_Utilities_New.Month), CInt(TAX_Utilities_New.Day)) Then
-            iFlagNgayCoThongBaoPhatHanh = 1
+        If (Len(vPhatHanh) > 0) Then
+            arrDate = Split(CStr(vPhatHanh), "/")
+            If DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0))) >= DateSerial(CInt(TAX_Utilities_New.Year), CInt(TAX_Utilities_New.Month), CInt(TAX_Utilities_New.Day)) Then
+                iFlagNgayCoThongBaoPhatHanh = 1
+                .Col = .ColLetterToNumber("F")
+                .Row = 30
+                .BackColor = mErrorColor
+                .CellNote = vTarget22
+            Else
+                .Col = .ColLetterToNumber("F")
+                .Row = 30
+                .CellNote = ""  'static
+                .BackColor = mNonErrorColor
+            End If
+
+        Else
+            iFlagEmpty = 1
             .Col = .ColLetterToNumber("F")
             .Row = 30
             .BackColor = mErrorColor
-            .CellNote = vTarget22
-        Else
-            .Col = .ColLetterToNumber("F")
-            .Row = 30
-            .CellNote = ""  'static
-            .BackColor = mNonErrorColor
+            .CellNote = vTarget20
         End If
-         
+
         '2. Check Exist
         .Sheet = 1
         .Row = 35
@@ -358,8 +368,7 @@ Private Sub CheckDynamicError()
                 .BackColor = mNonErrorColor
                 .CellNote = ""
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-
-                iFlagEmpty = 1
+                'iFlagEmpty = 1
             End If
 
             .Row = .Row + 1
@@ -367,6 +376,7 @@ Private Sub CheckDynamicError()
         Loop Until .Text = "aa"
          
         .Sheet = .SheetCount
+        .SetText .ColLetterToNumber("B"), 20, IIf(iFlagEmpty = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 21, IIf(iFlagExist = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 22, IIf(iFlagNgayCoThongBaoPhatHanh = 1, "0", "1")
     End With

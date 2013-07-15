@@ -9120,7 +9120,11 @@ Private Sub TonghopKHBS()
                     fpSpread1.Col = lCol_temp
                     fpSpread1.Row = lRow_temp
                     temp = lRow_temp - 18
+                    ' kiem tra neu set lai cong thuc
+                    
                     fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
+                    
+                    ' end
                     fpSpread1.value = GetAttribute(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
                                     (TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 10), "Value")
                 ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Then
@@ -9140,7 +9144,10 @@ Private Sub TonghopKHBS()
                     fpSpread1.Col = lCol_temp
                     fpSpread1.Row = lRow_temp
                     temp = lRow_temp - 18
+                    ' kiem tra set lai cong thuc
                     fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
+                    
+                    ' end
                     fpSpread1.value = GetAttribute(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
                                     (TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6), "Value")
             End If
