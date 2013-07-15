@@ -596,9 +596,9 @@ Public Function InsertHDR() As String
         ' Ghi loai to khai thang / quy
         .GetText .ColLetterToNumber("AF"), 1, Pp_huy
         If Pp_huy = "1" Then
-            Pp_huy = "Q"
+            Pp_huy = "'Q'"
         Else
-            Pp_huy = "T"
+            Pp_huy = "'T'"
         End If
         
         Dung_dn_cq = "''"
