@@ -30,8 +30,8 @@ Public dNgayDauKy As Date
 Public dNgayCuoiKy As Date
 
 Public Const SS_SORT_ORDER_ASCENDING = 1
-Public Const APP_VERSION = "3.1.6"
-Public Const HTKK_LAST_VERSION = "3.1.6"
+Public Const APP_VERSION = "9.9.9"
+Public Const HTKK_LAST_VERSION = "9.9.9"
 Public Const SS_BORDER_TYPE_NONE = 0
 Public Const SS_BORDER_TYPE_LEFT = 1
 Public Const SS_BORDER_TYPE_RIGHT = 2
@@ -63,7 +63,7 @@ Public clsDAO As New TAX_Utilities_Svr_New.clsADO
 Public arrActiveForm() As activeForm
 Public hasActiveForm As Boolean
 Public strTaxOfficeId As String                             ' Tax office id
-Public strMst As String          ' Tax id
+Public strMST As String          ' Tax id
 Public strTenGoi As String
 Public strDchi As String
 Public strNganh As String
