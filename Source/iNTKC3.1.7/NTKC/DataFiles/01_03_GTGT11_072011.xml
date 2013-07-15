@@ -1,0 +1,178 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_25" Value=""/>
+			<Cell CellID="F_27" Value=""/>
+			<Cell CellID="F_31" Value=""/>
+			<Cell CellID="N_31" Value=""/>
+			<Cell CellID="V_31" Value=""/>
+			<Cell CellID="E_45" Value=""/>
+			<Cell CellID="E_47" Value=""/>
+			<Cell CellID="M_47" Value=""/>
+			<Cell CellID="V_47" Value=""/>
+			<Cell CellID="M_45" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_54" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_51" Value=""/>
+			<Cell CellID="M_51" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_8" FirstCell="0" Value="Ford Escape 2.3 4x2 AT E2 _ Dung t?ch 2261" MCT="2"/>
+			<Cell CellID="D_8" Value="Chi?c" MCT="3"/>
+			<Cell CellID="E_8" Value="6" MCT="4"/>
+			<Cell CellID="F_8" Value="6" MCT="5"/>
+			<Cell CellID="G_8" Value="4248243700" MCT="6"/>
+			<Cell CellID="H_8" Value="" MCT="7"/>
+			<Cell CellID="I_8" Value="1" MCT="8" Receive="0"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_9" FirstCell="1" Value="Ford Escape 2.3 4x4 AT E2 _ Dung t?ch 2261" MCT="2"/>
+			<Cell CellID="D_9" Value="Chi?c" MCT="3"/>
+			<Cell CellID="E_9" Value="2" MCT="4"/>
+			<Cell CellID="F_9" Value="2" MCT="5"/>
+			<Cell CellID="G_9" Value="1589038000" MCT="6"/>
+			<Cell CellID="H_9" Value="" MCT="7"/>
+			<Cell CellID="I_9" Value="1" MCT="8" Receive="0"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_10" FirstCell="1" Value="Ford Everest 4x2  AT New _ dung t?ch 2499" MCT="2"/>
+			<Cell CellID="D_10" Value="Chi?c" MCT="3"/>
+			<Cell CellID="E_10" Value="10" MCT="4"/>
+			<Cell CellID="F_10" Value="10" MCT="5"/>
+			<Cell CellID="G_10" Value="8006091000" MCT="6"/>
+			<Cell CellID="H_10" Value="" MCT="7"/>
+			<Cell CellID="I_10" Value="1" MCT="8" Receive="0"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_11" FirstCell="1" Value="Ford Everest 4x2  MT New _ dung t?ch 2499" MCT="2"/>
+			<Cell CellID="D_11" Value="Chi?c" MCT="3"/>
+			<Cell CellID="E_11" Value="6" MCT="4"/>
+			<Cell CellID="F_11" Value="6" MCT="5"/>
+			<Cell CellID="G_11" Value="4517137000" MCT="6"/>
+			<Cell CellID="H_11" Value="" MCT="7"/>
+			<Cell CellID="I_11" Value="1" MCT="8" Receive="0"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_12" FirstCell="1" Value="Ford Fiesta 1.6 AT 4D _ dung t?ch 1596" MCT="2"/>
+			<Cell CellID="D_12" Value="Chi?c" MCT="3"/>
+			<Cell CellID="E_12" Value="11" MCT="4"/>
+			<Cell CellID="F_12" Value="11" MCT="5"/>
+			<Cell CellID="G_12" Value="5977405950" MCT="6"/>
+			<Cell CellID="H_12" Value="" MCT="7"/>
+			<Cell CellID="I_12" Value="1" MCT="8" Receive="0"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_13" FirstCell="1" Value="Ford Fiesta 1.6 AT 5D _ dung t?ch 1596" MCT="2"/>
+			<Cell CellID="D_13" Value="Chi?c" MCT="3"/>
+			<Cell CellID="E_13" Value="10" MCT="4"/>
+			<Cell CellID="F_13" Value="10" MCT="5"/>
+			<Cell CellID="G_13" Value="6058854000" MCT="6"/>
+			<Cell CellID="H_13" Value="" MCT="7"/>
+			<Cell CellID="I_13" Value="1" MCT="8" Receive="0"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_14" FirstCell="1" Value="Ford Focus 1.8 AT 5D_ dung t?ch 1798" MCT="2"/>
+			<Cell CellID="D_14" Value="Chi?c" MCT="3"/>
+			<Cell CellID="E_14" Value="10" MCT="4"/>
+			<Cell CellID="F_14" Value="10" MCT="5"/>
+			<Cell CellID="G_14" Value="6044945340" MCT="6"/>
+			<Cell CellID="H_14" Value="" MCT="7"/>
+			<Cell CellID="I_14" Value="1" MCT="8" Receive="0"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_15" FirstCell="1" Value="Ford Focus 1.8 MT 4D_ dung t?ch 1798" MCT="2"/>
+			<Cell CellID="D_15" Value="Chi?c" MCT="3"/>
+			<Cell CellID="E_15" Value="3" MCT="4"/>
+			<Cell CellID="F_15" Value="3" MCT="5"/>
+			<Cell CellID="G_15" Value="1707195000" MCT="6"/>
+			<Cell CellID="H_15" Value="" MCT="7"/>
+			<Cell CellID="I_15" Value="1" MCT="8" Receive="0"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_16" FirstCell="1" Value="Ford Focus 2.0 AT 4D_ dung t?ch 1798" MCT="2"/>
+			<Cell CellID="D_16" Value="Chi?c" MCT="3"/>
+			<Cell CellID="E_16" Value="2" MCT="4"/>
+			<Cell CellID="F_16" Value="2" MCT="5"/>
+			<Cell CellID="G_16" Value="1337681600" MCT="6"/>
+			<Cell CellID="H_16" Value="" MCT="7"/>
+			<Cell CellID="I_16" Value="1" MCT="8" Receive="0"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_17" FirstCell="1" Value="Ford Mondeo 2.3 AT _ dung t?ch 2261" MCT="2"/>
+			<Cell CellID="D_17" Value="Chi?c" MCT="3"/>
+			<Cell CellID="E_17" Value="1" MCT="4"/>
+			<Cell CellID="F_17" Value="1" MCT="5"/>
+			<Cell CellID="G_17" Value="904779000" MCT="6"/>
+			<Cell CellID="H_17" Value="" MCT="7"/>
+			<Cell CellID="I_17" Value="1" MCT="8" Receive="0"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_18" FirstCell="1" Value="Ford Ranger XL 4x2  MTBU_ dung t?ch 2499" MCT="2"/>
+			<Cell CellID="D_18" Value="Chi?c" MCT="3"/>
+			<Cell CellID="E_18" Value="1" MCT="4"/>
+			<Cell CellID="F_18" Value="1" MCT="5"/>
+			<Cell CellID="G_18" Value="531200000" MCT="6"/>
+			<Cell CellID="H_18" Value="" MCT="7"/>
+			<Cell CellID="I_18" Value="1" MCT="8" Receive="0"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_19" FirstCell="1" Value="Ford Ranger XL 4x4  MTBU_ dung t?ch 2499" MCT="2"/>
+			<Cell CellID="D_19" Value="Chi?c" MCT="3"/>
+			<Cell CellID="E_19" Value="4" MCT="4"/>
+			<Cell CellID="F_19" Value="4" MCT="5"/>
+			<Cell CellID="G_19" Value="2499068721" MCT="6"/>
+			<Cell CellID="H_19" Value="" MCT="7"/>
+			<Cell CellID="I_19" Value="1" MCT="8" Receive="0"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_20" FirstCell="1" Value="Ford Ranger XL 4x4 CT MTBU_ dung t?ch 2499" MCT="2"/>
+			<Cell CellID="D_20" Value="Chi?c" MCT="3"/>
+			<Cell CellID="E_20" Value="1" MCT="4"/>
+			<Cell CellID="F_20" Value="1" MCT="5"/>
+			<Cell CellID="G_20" Value="581766000" MCT="6"/>
+			<Cell CellID="H_20" Value="" MCT="7"/>
+			<Cell CellID="I_20" Value="1" MCT="8" Receive="0"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_21" FirstCell="1" Value="Ford Ranger XLT 4x4 CT MTBU_ dung t?ch 2499" MCT="2"/>
+			<Cell CellID="D_21" Value="Chi?c" MCT="3"/>
+			<Cell CellID="E_21" Value="1" MCT="4"/>
+			<Cell CellID="F_21" Value="1" MCT="5"/>
+			<Cell CellID="G_21" Value="668412000" MCT="6"/>
+			<Cell CellID="H_21" Value="" MCT="7"/>
+			<Cell CellID="I_21" Value="1" MCT="8" Receive="0"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_22" FirstCell="1" Value="Ford Transit Diesel 16s E2 HM_ dung t?ch 2402" MCT="2"/>
+			<Cell CellID="D_22" Value="Chi?c" MCT="3"/>
+			<Cell CellID="E_22" Value="10" MCT="4"/>
+			<Cell CellID="F_22" Value="10" MCT="5"/>
+			<Cell CellID="G_22" Value="6944303360" MCT="6"/>
+			<Cell CellID="H_22" Value="" MCT="7"/>
+			<Cell CellID="I_22" Value="1" MCT="8" Receive="0"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_23" FirstCell="1" Value="Ford Transit Diesel Van_ dung t?ch 2402" MCT="2"/>
+			<Cell CellID="D_23" Value="Chi?c" MCT="3"/>
+			<Cell CellID="E_23" Value="2" MCT="4"/>
+			<Cell CellID="F_23" Value="2" MCT="5"/>
+			<Cell CellID="G_23" Value="1132716000" MCT="6"/>
+			<Cell CellID="H_23" Value="" MCT="7"/>
+			<Cell CellID="I_23" Value="1" MCT="8" Receive="0"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_28" FirstCell="0" Value="" MCT="13"/>
+			<Cell CellID="D_28" Value="Chi?c" MCT="14"/>
+			<Cell CellID="E_28" Value="0" MCT="15"/>
+			<Cell CellID="F_28" Value="0" MCT="16"/>
+			<Cell CellID="G_28" Value="0" MCT="17"/>
+			<Cell CellID="H_28" Value="" MCT="18"/>
+			<Cell CellID="I_28" Value="2" MCT="19" Receive="0"/>
+		</Cells>
+	</Section>
+</Sections>
