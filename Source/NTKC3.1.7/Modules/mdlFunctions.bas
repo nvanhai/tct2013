@@ -3,7 +3,7 @@ Option Explicit
 
 Public Type Quy
     q As Integer
-    y As Integer
+    Y As Integer
     dNgayDauQuy As Date
     dNgayCuoiQuy As Date
 End Type
@@ -16,7 +16,7 @@ Public dNgayDauKy As Date
 Public dNgayCuoiKy As Date
 
 Public Const SS_SORT_ORDER_ASCENDING = 1
-Public Const APP_VERSION = "3.1.7"
+Public Const APP_VERSION = "999"
 
 Public Const HTKK_LAST_VERSION = "3.1.7"
 
@@ -51,7 +51,7 @@ Public clsDAO As New TAX_Utilities_Srv_New.clsADO
 Public arrActiveForm() As activeForm
 Public hasActiveForm As Boolean
 Public strTaxOfficeId As String                             ' Tax office id
-Public strMst As String                                     ' Tax id
+Public strMST As String                                     ' Tax id
 Public strDBUserName As String                              ' Userid for db QLT
 Public strDBPassword As String                              ' Password for db QLT
 Public strUserName As String                                ' Name of User
@@ -957,25 +957,25 @@ Public Function GetQuyHienTai(dNgayTaiChinh As Integer, dThangTaiChinh As Intege
     dNgayHienTai = Now - iInterval
     
     GetQuyHienTai.q = DatePart("Q", dNgayHienTai)
-    GetQuyHienTai.y = Year(dNgayHienTai)
-    GetQuyHienTai.dNgayDauQuy = GetNgayDauQuy(GetQuyHienTai.q, GetQuyHienTai.y, dNgayTaiChinh, dThangTaiChinh)
-    GetQuyHienTai.dNgayCuoiQuy = GetNgayCuoiQuy(GetQuyHienTai.q, GetQuyHienTai.y, dNgayTaiChinh, dThangTaiChinh)
+    GetQuyHienTai.Y = Year(dNgayHienTai)
+    GetQuyHienTai.dNgayDauQuy = GetNgayDauQuy(GetQuyHienTai.q, GetQuyHienTai.Y, dNgayTaiChinh, dThangTaiChinh)
+    GetQuyHienTai.dNgayCuoiQuy = GetNgayCuoiQuy(GetQuyHienTai.q, GetQuyHienTai.Y, dNgayTaiChinh, dThangTaiChinh)
 End Function
 
-Public Function GetNgayDauQuy(q As Integer, y As Integer, dNgayTaiChinh As Integer, dThangTaiChinh As Integer) As Date
+Public Function GetNgayDauQuy(q As Integer, Y As Integer, dNgayTaiChinh As Integer, dThangTaiChinh As Integer) As Date
     Dim intYear As Integer, intDay As Integer, intMonth As Integer
     
     If blnTinhTheoNamTaiChinh And (GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "FinanceYear") = "1") Then
         intDay = dNgayTaiChinh
         intMonth = (q - 1) * 3 + dThangTaiChinh
-        intYear = y
+        intYear = Y
         If intMonth > 12 Then
             intMonth = intMonth - 12
-            intYear = y + 1
+            intYear = Y + 1
         End If
     Else
         intDay = 1
-        intYear = y
+        intYear = Y
         Select Case q
             Case 1
                 intMonth = 1
@@ -990,7 +990,7 @@ Public Function GetNgayDauQuy(q As Integer, y As Integer, dNgayTaiChinh As Integ
     End If
     GetNgayDauQuy = DateSerial(intYear, intMonth, intDay)
 End Function
-Public Function GetNgayCuoiQuy(q As Integer, y As Integer, dNgayTaiChinh As Integer, dThangTaiChinh As Integer) As Date
+Public Function GetNgayCuoiQuy(q As Integer, Y As Integer, dNgayTaiChinh As Integer, dThangTaiChinh As Integer) As Date
     Dim mTaiChinhDau As Integer
     Dim mTaiChinhCuoi As Integer
     Dim yTaiChinhDau As Integer
@@ -1000,15 +1000,15 @@ Public Function GetNgayCuoiQuy(q As Integer, y As Integer, dNgayTaiChinh As Inte
     mTaiChinhDau = (q - 1) * 3 + dThangTaiChinh + 2 'Thang cuoi quy
     If dNgayTaiChinh = 1 Then
         mTaiChinhCuoi = mTaiChinhDau + 1 'Thang dau quy sau
-        yTaiChinhDau = y
-        yTaiChinhCuoi = y
+        yTaiChinhDau = Y
+        yTaiChinhCuoi = Y
         If mTaiChinhDau > 12 Then
             mTaiChinhDau = mTaiChinhDau - 12
-            yTaiChinhDau = y + 1
+            yTaiChinhDau = Y + 1
         End If
         If mTaiChinhCuoi > 12 Then
             mTaiChinhCuoi = mTaiChinhCuoi - 12
-            yTaiChinhCuoi = y + 1
+            yTaiChinhCuoi = Y + 1
         End If
     
         iInterval = DateDiff("D", DateSerial(yTaiChinhDau, mTaiChinhDau, 1), DateSerial(yTaiChinhCuoi, mTaiChinhCuoi, 1)) - 1
@@ -1018,25 +1018,25 @@ Public Function GetNgayCuoiQuy(q As Integer, y As Integer, dNgayTaiChinh As Inte
     End If
 End Function
 
-Public Function GetNgayDauNam(y As Integer, dThangTaiChinh As Integer, dNgayTaiChinh As Integer) As Date
+Public Function GetNgayDauNam(Y As Integer, dThangTaiChinh As Integer, dNgayTaiChinh As Integer) As Date
     Dim intYear As Integer, intDay As Integer, intMonth As Integer
     
     If blnTinhTheoNamTaiChinh And (GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "FinanceYear") = "1") Then
-        intYear = y
+        intYear = Y
         intMonth = dThangTaiChinh
         intDay = dNgayTaiChinh
     Else
         intDay = 1
-        intYear = y
+        intYear = Y
         intMonth = 1
     End If
     GetNgayDauNam = DateSerial(intYear, intMonth, intDay)
 End Function
 
-Function NgayCuoiNamTaiChinh(y As Integer, dThangTaiChinh As Integer, dNgayTaiChinh As Integer)
+Function NgayCuoiNamTaiChinh(Y As Integer, dThangTaiChinh As Integer, dNgayTaiChinh As Integer)
     Dim dNgayTC As Date
     
-    dNgayTC = DateSerial(y, dThangTaiChinh, dNgayTaiChinh)
+    dNgayTC = DateSerial(Y, dThangTaiChinh, dNgayTaiChinh)
     NgayCuoiNamTaiChinh = DateAdd("M", 12, dNgayTC)
     NgayCuoiNamTaiChinh = DateAdd("D", -1, NgayCuoiNamTaiChinh)
     
