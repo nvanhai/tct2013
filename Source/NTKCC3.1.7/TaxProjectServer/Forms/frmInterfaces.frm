@@ -1646,15 +1646,15 @@ Private Sub Command1_Click()
 'str2 = "aa316730100100079   022013000000002002~0~1~0</S><S>1~~~~~~~</S><S>~~~11/07/2013~1~~~1053~x</S></S02>"
 'Barcode_Scaned str2
 
-'' Mau TB04/AC
-'str2 = "aa316910100100079   06201300300300100101/0101/01/2009<S01><S>1~11~01DVPH~2~22~02DCTS~3~33~03Phone</S><S>01/01/2009~0102030405001~tong cuc thue~01/01/2009~nguyen van a</S></S01>"
-'Barcode_Scaned str2
+' Mau TB04/AC
+str2 = "aa316910100100079   07201300100100100101/0101/01/2009<S01><S>etrt~ewrewr~01DVPH~sdssssss~retrettretret~02DCTS~324234~2343242~03PHONE</S><S>01/01/2013~~~cqt~15/07/2013~test</S></S01>"
+Barcode_Scaned str2
 
 'str2 = "aa316680100100079   02201300100100100101/0101/01/2009<S01><S>1~1~01/04/2013~30/06/2013</S><S>1~1~1~0~1~1~1~1~1~1~0~0~0~1~0~1~0~1~1~1~0~0</S><S>1~trst~12/07/2013~1</S></S01>"
 'Barcode_Scaned str2
 
-str2 = "aa316360100100079   06201300100100100101/0101/01/2010<S07><S></S><S>x~555~4001665~4000000~0~777~888~0~0~111~0~0~222222~20~44444~444444~1~4444</S><S>hjh~13/07/2013~tydgh~56754765~1~~~0</S></S07>"
-Barcode_Scaned str2
+'str2 = "aa316360100100079   06201300100100100101/0101/01/2010<S07><S></S><S>x~555~4001665~4000000~0~777~888~0~0~111~0~0~222222~20~44444~444444~1~4444</S><S>hjh~13/07/2013~tydgh~56754765~1~~~0</S></S07>"
+'Barcode_Scaned str2
 
 End Sub
 
@@ -1909,15 +1909,23 @@ Private Sub Barcode_Scaned(strBarcode As String)
     On Error GoTo ErrHandle
     
     Dim intBarcodeCount As Integer, intBarcodeNo As Integer
-    Dim strPrefix As String, strBarcodeCount As String, strData As String
-    Dim idToKhai As String
-    
+    Dim strPrefix       As String, strBarcodeCount As String, strData As String
+    Dim idToKhai        As String
+
+    If Val(Right$(Left$(strBarcode, 5), 3)) <= 316 Then
+        If Mid$(strBarcode, 6, 2) = "01" Or Mid$(strBarcode, 6, 2) = "02" Or Mid$(strBarcode, 6, 2) = "04" Or Mid$(strBarcode, 6, 2) = "71" Or Mid$(strBarcode, 6, 2) = "36" Or Mid$(strBarcode, 6, 2) = "68" Then
+            strBarcode = Left$(strBarcode, Len(strBarcode) - 10) & "~0" & Right$(strBarcode, 10)
+        ElseIf Mid$(strBarcode, 6, 2) = "73" Then
+            strBarcode = Left$(strBarcode, Len(strBarcode) - 10) & "~" & Right$(strBarcode, 10)
+        End If
+    End If
     
     If Left$(strBarcode, 2) = "bs" Then
         LoaiTk = "TKBS"
     Else
         LoaiTk = ""
     End If
+
     strBarcode = TrimString(strBarcode)
     'strBarcode = TAX_Utilities_Svr_New.Convert(strBarcode, TCVN, UNICODE)
     
@@ -1926,32 +1934,40 @@ Private Sub Barcode_Scaned(strBarcode As String)
         DisplayMessage "0140", msOKOnly, miCriticalError
         Exit Sub
     End If
+
     If Left$(strBarcode, 1) <> "0" Then
+
         'Version 1.2.0 and later
         'If Val(Left$(strBarcode, 3)) > Val(Replace$(APP_VERSION, ".", "")) Then
         If Val(Left$(strBarcode, 3)) > Val(Replace$(HTKK_LAST_VERSION, ".", "")) Then
-        'Version tai doanh nghiep lon hon tai co quan thue APP_VERSION
+            'Version tai doanh nghiep lon hon tai co quan thue APP_VERSION
             DisplayMessage "0074", msOKOnly, miCriticalError
             Exit Sub
 
         ElseIf Val(Left$(strBarcode, 3)) < 310 Then         'dntai: sua chi nhan nhung version 310 tro len doi voi 03_TNDN
-                If Val(Mid$(strBarcode, 4, 2)) = 3 Then
+
+            If Val(Mid$(strBarcode, 4, 2)) = 3 Then
                 DisplayMessage "0140", msOKOnly, miCriticalError
                 Exit Sub
-                End If
+            End If
+
         ElseIf Val(Left$(strBarcode, 3)) < 300 Then         'vttoan: sua chi nhan nhung version 300 tro len
-                If Val(Mid$(strBarcode, 4, 2)) = 1 Or Val(Mid$(strBarcode, 4, 2)) = 2 Or Val(Mid$(strBarcode, 4, 2)) = 4 Or Val(Mid$(strBarcode, 4, 2)) = 11 Or Val(Mid$(strBarcode, 4, 2)) = 12 Or Val(Mid$(strBarcode, 4, 2)) = 6 Or Val(Mid$(strBarcode, 4, 2)) = 5 _
-                Or Val(Mid$(strBarcode, 4, 2)) = 15 Or Val(Mid$(strBarcode, 4, 2)) = 16 Or Val(Mid$(strBarcode, 4, 2)) = 50 Or Val(Mid$(strBarcode, 4, 2)) = 51 Or Val(Mid$(strBarcode, 4, 2)) = 36 Or Val(Mid$(strBarcode, 4, 2)) = 70 Or Val(Mid$(strBarcode, 4, 2)) = 8 Then
+
+            If Val(Mid$(strBarcode, 4, 2)) = 1 Or Val(Mid$(strBarcode, 4, 2)) = 2 Or Val(Mid$(strBarcode, 4, 2)) = 4 Or Val(Mid$(strBarcode, 4, 2)) = 11 Or Val(Mid$(strBarcode, 4, 2)) = 12 Or Val(Mid$(strBarcode, 4, 2)) = 6 Or Val(Mid$(strBarcode, 4, 2)) = 5 Or Val(Mid$(strBarcode, 4, 2)) = 15 Or Val(Mid$(strBarcode, 4, 2)) = 16 Or Val(Mid$(strBarcode, 4, 2)) = 50 Or Val(Mid$(strBarcode, 4, 2)) = 51 Or Val(Mid$(strBarcode, 4, 2)) = 36 Or Val(Mid$(strBarcode, 4, 2)) = 70 Or Val(Mid$(strBarcode, 4, 2)) = 8 Then
                 DisplayMessage "0140", msOKOnly, miCriticalError
                 Exit Sub
-                End If
+            End If
+
         ElseIf Val(Left$(strBarcode, 3)) < 200 Then ' Truong hop to khai thue TNCN duoc in bang phien ban 1.3.1 se khong con hieu luc theo luat thue TNCN moi nam 2009
+
             If Val(Mid$(strBarcode, 4, 2)) = 22 Or Val(Mid$(strBarcode, 4, 2)) = 23 Then
                 DisplayMessage "0105", msOKOnly, miCriticalError
                 Exit Sub
             End If
-        'chan doi voi cac to an chi
+
+            'chan doi voi cac to an chi
         ElseIf Val(Left$(strBarcode, 3)) < 302 Then
+
             If Val(Mid$(strBarcode, 4, 2)) = 64 Or Val(Mid$(strBarcode, 4, 2)) = 65 Or Val(Mid$(strBarcode, 4, 2)) = 66 Or Val(Mid$(strBarcode, 4, 2)) = 67 Or Val(Mid$(strBarcode, 4, 2)) = 68 Or Val(Mid$(strBarcode, 4, 2)) = 91 Then
                 DisplayMessage "0159", msOKOnly, miCriticalError
                 Exit Sub
@@ -1969,6 +1985,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
         ' To khai 04/TNCN bat dau thu thang 2 se ko nhan nua
         If Left$(strPrefix, 3) = "250" Then
             idToKhai = Mid(strPrefix, 4, 2)
+
             ' Neu la to khai 04AB/TNCN thang bat dau tu thang 2/2010 se ko nhan to khai nua
             If (Trim(idToKhai) = "39" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "40" And Val(Mid(strPrefix, 21, 4)) > 2009) Then
                 DisplayMessage "0113", msOKOnly, miInformation
@@ -1979,6 +1996,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
         ' To khai 07/TNCN phien ban 2.1.0 bat dau thu thang 2 se ko nhan nua
         If Left$(strPrefix, 3) = "210" Then
             idToKhai = Mid(strPrefix, 4, 2)
+
             ' Neu la to khai 07/TNCN thang bat dau tu thang 2/2010 se ko nhan to khai nua
             If (Trim(idToKhai) = "36" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Then
                 DisplayMessage "0116", msOKOnly, miInformation
@@ -1990,10 +2008,12 @@ Private Sub Barcode_Scaned(strBarcode As String)
         ' Dat lai cho ID cua 210 dung voi 250 de nhan vao QLT_NTK
         If Left$(strPrefix, 3) = "210" Or Left$(strPrefix, 3) = "200" Then
             idToKhai = Mid(strPrefix, 4, 2)
+
             ' Neu la to khai 02/TNCN thang cua nam 2009 co ID = 15 thi phai set lai gia tri moi co ID = 53
             If Trim(idToKhai) = "15" Then
                 strPrefix = Left$(strPrefix, 3) & "53" & Mid(strPrefix, 6, Len(strPrefix) - 5)
             End If
+
             ' Neu la to khai 03/TNCN thang cua nam 2009 co ID = 16 thi phai set lai gia tri moi co ID = 54
             If Trim(idToKhai) = "16" And UBound(Split(Mid$(strBarcode, 37), "~")) <> 11 Then
                 strPrefix = Left$(strPrefix, 3) & "54" & Mid(strPrefix, 6, Len(strPrefix) - 5)
@@ -2003,9 +2023,9 @@ Private Sub Barcode_Scaned(strBarcode As String)
         ' To khai 02/TNCN, 03/TNCN bat dau thu thang 2 se ko nhan theo TT84 nua
         If (Left$(strPrefix, 3) = "250") Or (Left$(strPrefix, 3) = "210") Then
             idToKhai = Mid(strPrefix, 4, 2)
+
             ' Neu la to khai 02AB/TNCN, 03AB/TNCN  thang bat dau tu thang 2/2010 se ko nhan to khai nua
-            If (Trim(idToKhai) = "53" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "37" And Val(Mid(strPrefix, 21, 4)) > 2009) _
-                Or (Trim(idToKhai) = "54" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "38" And Val(Mid(strPrefix, 21, 4)) > 2009) Then
+            If (Trim(idToKhai) = "53" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "37" And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "54" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "38" And Val(Mid(strPrefix, 21, 4)) > 2009) Then
                 DisplayMessage "0115", msOKOnly, miInformation
                 Exit Sub
             End If
@@ -2015,6 +2035,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
         'dhdang sua
         'ngay 22/07/2010
         idToKhai = Mid(strPrefix, 4, 2)
+
         If (Trim(idToKhai) = "06" And Val(Mid(strPrefix, 19, 2)) >= 7 And Val(Mid(strPrefix, 21, 4)) > 2009 And Val(Left$(strPrefix, 3)) <= 252) Or (Trim(idToKhai) = "09" And Val(Mid(strPrefix, 19, 2)) >= 7 And Val(Mid(strPrefix, 21, 4)) > 2009 And Val(Left$(strPrefix, 3)) <= 252) Then
             DisplayMessage "0121", msOKOnly, miInformation
             Exit Sub
@@ -2022,6 +2043,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
             DisplayMessage "0122", msOKOnly, miInformation
             Exit Sub
         End If
+
         ' Ket thuc
         
         strBarcode = Mid$(strBarcode, 37)
@@ -2034,28 +2056,32 @@ Private Sub Barcode_Scaned(strBarcode As String)
         End If
         
         If strTaxReportInfo = "" Then
-        ' Scanning
+
+            ' Scanning
             If UBound(arrStrElements()) = 0 Then
                 ProgressBar1.max = intBarcodeCount
                 ProgressBar1.Value = 0
                 arrStrElements(0) = strPrefix
                 cmdViewNow.Enabled = True
             Else
+
                 If IsDifferent(strPrefix, arrStrElements(0)) Then
+
                     'Another tax report
                     If MessageBox("0035", msYesNo, miQuestion) = mrYes Then
                         ReDim arrStrElements(0)
                         Barcode_Scaned (strPrefix & strBarcodeCount & strBarcode)
                     End If
+
                     Exit Sub
                 Else
+
                     If ProgressBar1.max <> intBarcodeCount Then
                         MessageBox "0062", msOKOnly, miCriticalError
                         Exit Sub
                     End If
                 End If
             End If
-            
             
             ReDim Preserve arrStrElements(intBarcodeCount)
             arrStrElements(intBarcodeNo) = strBarcode
@@ -2065,14 +2091,15 @@ Private Sub Barcode_Scaned(strBarcode As String)
             ReDim Preserve arrBCBuffer(intBarcodeCount)
             arrBCBuffer(intBarcodeNo) = strPrefix & strBarcodeCount & strBarcode
             
-            
             If IsCompleteData(strData) Then
                 lblLoading.Visible = False
                 lblConnecting.Visible = True
                 frmInterfaces.Refresh
+
                 If Not LoadForm(strData) Then
                     StartReceiveForm
                 End If
+
                 'Free memory
                 ReDim arrStrElements(0)
                 ' Khai bao lai mot mang rong
@@ -2082,17 +2109,22 @@ Private Sub Barcode_Scaned(strBarcode As String)
             End If
                 
         Else ' Form is loaded
+
             If strTaxReportInfo = strPrefix Then
                 MessageBox "0044", msOKOnly, miWarning
                 Exit Sub
             Else
+
                 If frmSystem.chkSaveQuestion.Value Then
                     cmdSave_Click
+
                     If blnSaveSuccess Then
                         StartReceiveForm
                         Barcode_Scaned (strPrefix & strBarcodeCount & strBarcode)
                     End If
+
                 Else
+
                     If MessageBox("0045", msYesNo, miQuestion) = mrYes Then
                         StartReceiveForm
                         Barcode_Scaned (strPrefix & strBarcodeCount & strBarcode)
@@ -2102,8 +2134,9 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 End If
             End If
         End If
+
     Else
-    'Version 1.1.0 and 1.0.0
+        'Version 1.1.0 and 1.0.0
         strPrefix = Left$(strBarcode, 25)
         strBarcodeCount = Right$(strPrefix, 4)
         strPrefix = Mid(strPrefix, 1, Len(strPrefix) - 4)
@@ -2118,20 +2151,25 @@ Private Sub Barcode_Scaned(strBarcode As String)
         End If
         
         If strTaxReportInfo = "" Then
-        ' Scanning
+
+            ' Scanning
             If UBound(arrStrElements()) = 0 Then
                 ProgressBar1.max = intBarcodeCount
                 ProgressBar1.Value = 0
                 arrStrElements(0) = strPrefix
             Else
+
                 If IsDifferent(strPrefix, arrStrElements(0)) Then
+
                     'Another tax report
                     If MessageBox("0035", msYesNo, miQuestion) = mrYes Then
                         ReDim arrStrElements(0)
                         Barcode_Scaned (strPrefix & strBarcodeCount & strBarcode)
                     End If
+
                     Exit Sub
                 Else
+
                     If ProgressBar1.max <> intBarcodeCount Then
                         MessageBox "0062", msOKOnly, miCriticalError
                         Exit Sub
@@ -2146,25 +2184,32 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 lblLoading.Visible = False
                 lblConnecting.Visible = True
                 frmInterfaces.Refresh
+
                 If Not LoadForm(strData) Then
                     StartReceiveForm
                 End If
+
                 'Free memory
                 ReDim arrStrElements(0)
             End If
                 
         Else ' Form is loaded
+
             If strTaxReportInfo = strPrefix Then
                 MessageBox "0044", msOKOnly, miWarning
                 Exit Sub
             Else
+
                 If frmSystem.chkSaveQuestion.Value Then
                     cmdSave_Click
+
                     If blnSaveSuccess Then
                         StartReceiveForm
                         Barcode_Scaned (strPrefix & strBarcodeCount & strBarcode)
                     End If
+
                 Else
+
                     If MessageBox("0045", msYesNo, miQuestion) = mrYes Then
                         StartReceiveForm
                         Barcode_Scaned (strPrefix & strBarcodeCount & strBarcode)
@@ -2175,6 +2220,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
             End If
         End If
     End If
+
     Exit Sub
 ErrHandle:
     SaveErrorLog Me.Name, "Barcode_Scaned", Err.Number, Err.Description
