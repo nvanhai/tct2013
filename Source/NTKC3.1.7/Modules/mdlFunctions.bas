@@ -57,6 +57,8 @@ Public strDBPassword As String                              ' Password for db QL
 Public strUserName As String                                ' Name of User
 Public strUserID As String                                ' ID of User
 
+Public LoaiKyKK As Boolean 'True la quy, false la thang
+
 Public isPITActive As Boolean   ' Kiem tra trang thai active cua PIT
 
 ''' GetAttribute description
