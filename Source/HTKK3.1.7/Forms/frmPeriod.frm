@@ -1916,7 +1916,7 @@ Public Sub cmdOK_Click()
     '***************************
     If strKieuKy = KIEU_KY_THANG Then
         If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" _
-        Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+        Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "36" Then
             If strQuy = "TK_THANG" Then
                  If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
                     txtMonth.SetFocus
