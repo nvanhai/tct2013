@@ -1287,10 +1287,10 @@ Private Sub Command1_Click()
 'str2 = "aa316913600247325   06201300300300100101/0101/01/2009<S01><S>1~11~01DVPH~2~22~02DCTS~3~33~03Phone</S><S>01/01/2009~0102030405001~tong cuc thue~01/01/2009~nguyen van a</S></S01>"
 'Barcode_Scaned str2
 '
-'str2 = "aa316363600247325   06201300100100100101/0101/01/2010<S07><S></S><S>x~555~4001665~4000000~0~777~888~0~0~111~0~0~222222~20~44444~444444~1~4444</S><S>hjh~13/07/2013~tydgh~56754765~1~~~0</S></S07>"
+'str2 = "aa316363600247325   06201300100100100101/0101/01/2010<S07><S></S><S>x~555~4001665~4000000~0~777~888~0~0~111~0~0~222222~20~44444~444444~1~4444</S><S>hjh~13/07/2013~tydgh~56754765~1~~~1</S></S07>"
 'Barcode_Scaned str2
 
-str2 = "aa316680100100079   02201300100100100101/0101/01/2009<S01><S>1~1~01/04/2013~30/06/2013</S><S>1~1~1~0~1~1~1~1~1~1~0~0~0~1~0~1~0~1~1~1~0~0</S><S>1~trst~12/07/2013~1</S></S01>"
+str2 = "aa317683600247325   02201300100100100101/0101/01/2009<S01><S>1~1~01/04/2013~30/06/2013</S><S>1~1~1~0~1~1~1~1~1~1~0~0~0~1~0~1~0~1~1~1~0~0</S><S>1~trst~12/07/2013~1</S></S01>"
 Barcode_Scaned str2
 
 End Sub
@@ -1538,9 +1538,11 @@ Dim idToKhai As String
 
 On Error GoTo ErrHandle
     
-    If Val(Right$(Left$(strBarcode, 5), 3)) < 316 Then
-        If Mid$(strBarcode, 6, 2) = "01" Or Mid$(strBarcode, 6, 2) = "02" Or Mid$(strBarcode, 6, 2) = "04" Or Mid$(strBarcode, 6, 2) = "71" Then
+    If Val(Right$(Left$(strBarcode, 5), 3)) <= 316 Then
+        If Mid$(strBarcode, 6, 2) = "01" Or Mid$(strBarcode, 6, 2) = "02" Or Mid$(strBarcode, 6, 2) = "04" Or Mid$(strBarcode, 6, 2) = "71" Or Mid$(strBarcode, 6, 2) = "36" Or Mid$(strBarcode, 6, 2) = "68" Then
             strBarcode = Left$(strBarcode, Len(strBarcode) - 10) & "~0" & Right$(strBarcode, 10)
+        ElseIf Mid$(strBarcode, 6, 2) = "73" Then
+            strBarcode = Left$(strBarcode, Len(strBarcode) - 10) & "~" & Right$(strBarcode, 10)
         End If
     End If
     'Convert from TCVN to UNICODE format
@@ -2435,7 +2437,7 @@ On Error GoTo ErrHandle
     
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
         TAX_Utilities_Srv_New.Month = Left$(strValue, 2)
-        If strID = "01" Or strID = "02" Or strID = "04" Or strID = "71" Or strID = "36" Then
+        If strID = "01" Or strID = "02" Or strID = "04" Or strID = "71" Or strID = "36" Or strID = "68" Then
             TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
         Else
             TAX_Utilities_Srv_New.ThreeMonths = ""
