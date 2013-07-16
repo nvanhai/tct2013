@@ -2891,6 +2891,7 @@ ErrorHandle:
     SaveErrorLog "mdlFunctions", "SetupData", Err.Number, Err.Description
 End Sub
 Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
+    
     On Error GoTo ErrorHandle
     
     Dim xmlNodeListCell As MSXML.IXMLDOMNodeList

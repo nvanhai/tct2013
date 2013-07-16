@@ -60,11 +60,11 @@ Public Sub Prepare1()
             If (Val(TAX_Utilities_New.ThreeMonths) >= 3 And Val(TAX_Utilities_New.Year) = 2013) Or Val(TAX_Utilities_New.Year) > 2013 Then
                 .Col = .ColLetterToNumber("R")
                 .Row = 45
-                .Text = "9000000"
+                .Text = "27000000"
             Else
                 .Col = .ColLetterToNumber("R")
                 .Row = 45
-                .Text = "4000000"
+                .Text = "12000000"
             End If
         End If
         'end
@@ -366,7 +366,7 @@ Private Sub CheckDynamicError()
         ElseIf strTkThangQuy = "TK_QUY" Then
             If (Val(TAX_Utilities_New.ThreeMonths) >= 3 And Val(TAX_Utilities_New.Year) = 2013) Or Val(TAX_Utilities_New.Year) > 2013 Then
                 ' chi tieu 24
-                If Val(CT24) = 9000000 Or Val(CT24) = 0 Then
+                If Val(CT24) = 27000000 Or Val(CT24) = 0 Then
                     .Row = 45
                     .Col = .ColLetterToNumber("R")
                     .BackColor = mNonErrorColor
@@ -375,7 +375,7 @@ Private Sub CheckDynamicError()
                     .Row = 45
                     .Col = .ColLetterToNumber("R")
                     .BackColor = mErrorColor
-                    .CellNote = errCT24
+                    .CellNote = errCT24_1
                     iFlagCt24 = 1
                 End If
                 ' chi tieu 25
@@ -393,7 +393,7 @@ Private Sub CheckDynamicError()
                  End If
             Else
                 ' chi tieu 24
-                If Val(CT24) = 4000000 Or Val(CT24) = 0 Then
+                If Val(CT24) = 12000000 Or Val(CT24) = 0 Then
                     .Row = 45
                     .Col = .ColLetterToNumber("R")
                     .BackColor = mNonErrorColor
