@@ -87,22 +87,22 @@ Public strTenPQL As String
 Public strSoTTTKhai As String
 Public isTKTonTai As Boolean
 
-Private Sub DataDM(ByVal Id As String, Optional ByRef TenTN As String)
+Private Sub DataDM(ByVal Id As String, Optional ByRef tenTN As String)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlDomData As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = "..\InterfaceTemplates\Catalogue_loai_ThongTinThayDoi.xml"
     
-       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                         If arrDanhsach(0) = Id Then
-                            TenTN = arrDanhsach(1)
+                            tenTN = arrDanhsach(1)
                             Exit Sub
                         End If
                 End If
@@ -547,6 +547,7 @@ Public Function InsertHDR() As String
     Dim maCQT As Variant
     Dim bln  As Boolean
     Dim combovalue() As String
+    Dim vNgay_TB_PH
     
    If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
@@ -555,7 +556,7 @@ Public Function InsertHDR() As String
     
     
     sSQLCol = "Id, Tin, Loai_bc,Ngay_nop, Ngay_cn,Nguoi_cn,So_tt_tk,da_nhan, Phong_xly,Phong_qly,"
-    sSQLCol = sSQLCol & "Ten_dv_cq, Tin_dv_cq,Ngay_bc, Nguoi_dd,Cq_nhan, Ghi_chu, MA_CQT,dung_dn_cq"
+    sSQLCol = sSQLCol & "Ten_dv_cq, Tin_dv_cq,Ngay_bc, Nguoi_dd,Cq_nhan, Ghi_chu, MA_CQT,dung_dn_cq,Ngay_tb_ph"
     
     
     'set maCQT
@@ -642,6 +643,14 @@ Public Function InsertHDR() As String
             Tin_dv_cq = "'" & Tin_dv_cq & "'"
         End If
         
+                'ngay thong bao phat hanh
+        .GetText .ColLetterToNumber("F"), 30, vNgay_TB_PH
+        If Trim(vNgay_TB_PH) = vbNullString Then
+            vNgay_TB_PH = "''"
+        Else
+            vNgay_TB_PH = Trim(CStr(vNgay_TB_PH))
+            vNgay_TB_PH = "To_date('" & vNgay_TB_PH & "','dd/mm/yyyy')"
+        End If
         
            ' Lay thong tin don vi chu quan dat in, tu in
         If Trim(Tin) = Trim(Tin_dv_cq) Then
@@ -687,7 +696,7 @@ Public Function InsertHDR() As String
         
         sSQLVal = Id & "," & Tin & "," & Loai_bc & "," & Ngay_nop & "," & Ngay_cn & "," & Nguoi_cn & "," & So_tt_tk & ",''," & _
                 Phong_xly & "," & Phong_qly & "," & Ten_dv_cq & "," & Tin_dv_cq & "," & Ngay_bc & "," & Nguoi_dd & "," & Cq_nhan & "," & _
-               Ghi_chu & "," & maCQT & "," & Dung_dn_cq
+               Ghi_chu & "," & maCQT & "," & Dung_dn_cq & "," & vNgay_TB_PH
        
         sSQL = "INSERT INTO TMP_BCAO_HDR_AC( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
