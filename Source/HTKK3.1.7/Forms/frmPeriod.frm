@@ -2052,6 +2052,23 @@ Public Sub cmdOK_Click()
         End If
     End If
     
+   ' Kiem tra to khai 07/TNCN
+   If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "36") Then
+        If strQuy = "TK_THANG" Then
+            If (Val(TAX_Utilities_New.month) >= 7 And Val(TAX_Utilities_New.Year) = 2013) Or Val(TAX_Utilities_New.Year) > 2013 Then
+                DisplayMessage "0266", msOKOnly, miCriticalError
+                txtMonth.SetFocus
+                Exit Sub
+            End If
+        ElseIf strQuy = "TK_QUY" Then
+            If (Val(TAX_Utilities_New.ThreeMonths) < 3 And Val(TAX_Utilities_New.Year) = 2013) Or Val(TAX_Utilities_New.Year) < 2013 Then
+                DisplayMessage "0267", msOKOnly, miCriticalError
+                cmbQuy.SetFocus
+                Exit Sub
+            End If
+        End If
+   End If
+    
     ' Kiem tra to khai 08 tu ngay phai nho hon den ngay
     If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "74" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "75") And strQuy = "TK_TU_THANG" Then
             If Trim(txtNgayDau.Text) <> "" Then
