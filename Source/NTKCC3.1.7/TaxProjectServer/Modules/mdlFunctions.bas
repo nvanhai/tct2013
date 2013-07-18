@@ -90,6 +90,8 @@ Public strUserID As String                                  ' ID of User
 Public TTHTK As String                                      ' Trang thai of to khai
 Public LoaiTk As String                                     ' Loai to khai (Chinh thuc,Bsung)
 
+Public LoaiKyKK As Boolean 'True la quy, false la thang
+
 ' Su dung de in BB nop cham
 Public strPrinterName As String
 Public mCurrentSheet As Integer

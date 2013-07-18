@@ -649,7 +649,7 @@ Public Function InsertHDR() As String
             vNgay_TB_PH = "''"
         Else
             vNgay_TB_PH = Trim(CStr(vNgay_TB_PH))
-            vNgay_TB_PH = "To_date('" & vNgay_TB_PH & "','dd/mm/yyyy')"
+            vNgay_TB_PH = "CTOD('" & vNgay_TB_PH & "')"
         End If
         
            ' Lay thong tin don vi chu quan dat in, tu in
