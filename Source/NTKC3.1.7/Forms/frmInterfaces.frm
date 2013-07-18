@@ -1405,7 +1405,7 @@ Private Sub Command1_Click()
 'str2 = "aa317013600247325   02201300200200100101/0114/06/2006<S01><S></S><S>~35329039~0~100000000~1000000~0~0~100000000~0~0~100000000~0~0~0~100000000~99000000~0~0~0~63670961~0~63670961~0~0~0</S><S>~~~01/03/2013~1~~~1701~x~03~1</S></S01>"
 'Barcode_Scaned str2
 
-str2 = "aa317683600247325   02201300100200100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~test~17/07/2013~0</S></S01>"
+str2 = "aa317683600247325   06201300100200100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~test~17/07/2013~0</S></S01>"
 Barcode_Scaned str2
 
 End Sub
@@ -2603,12 +2603,11 @@ Private Sub SetPeriod(ByVal strValue As String)
 
         If strID = "68" Then
             TAX_Utilities_Srv_New.Month = Left$(strValue, 2)
+            TAX_Utilities_Srv_New.ThreeMonths = ""
         Else
             TAX_Utilities_Srv_New.Month = ""
-
+            TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
         End If
-
-        TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
     End If
     
     TAX_Utilities_Srv_New.Year = Right$(strValue, 4)
