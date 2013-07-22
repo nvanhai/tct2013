@@ -258,5 +258,7 @@
 	<Infor ID="0265" Msg="Gia hạn theo NQ02"/>
 	<Infor ID="0266" Msg="Tê khai 07/TNCN chØ ®­îc kª khai theo th¸ng víi c¸c kú kª khai tõ th¸ng 6/2013 trë vÒ tr­íc"/>	
 	<Infor ID="0267" Msg="Tê khai 07/TNCN chØ ®­îc kª khai theo quý víi c¸c kú kª khai tõ th¸ng 7/2013 trë ®i"/>	
+	<Infor ID="0268" Msg="Cho người phụ thuộc (1.600.000đ x Số người phụ thuộc)"/>	
+	<Infor ID="0269" Msg="Cho người phụ thuộc (3.600.000đ x Số người phụ thuộc)"/>	
 </Message>
 

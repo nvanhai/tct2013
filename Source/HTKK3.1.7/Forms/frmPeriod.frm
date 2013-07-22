@@ -5797,7 +5797,12 @@ End Sub
 
 
 Private Sub setValueDefault()
-    chkTkhaiThang.value = 1
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "68" Then
+        chkTkhaiThang.value = 0
+        chkTKQuy.value = 1
+    Else
+        chkTkhaiThang.value = 1
+    End If
     chkTKLanPS.value = 0
 End Sub
 
@@ -5809,34 +5814,34 @@ Private Sub SetupLayoutBC26()
     
     Me.Height = 3500
     Me.Width = 4905
-        
+
     frmKy.Height = 1100
     Set chkTKQuy.Container = frmKy
     chkTKQuy.Top = 200
     chkTKQuy.Left = 2500
-    chkTKQuy.value = 0
-    chkTkhaiThang.value = 1
-    
+'    chkTKQuy.value = 0
+'    chkTkhaiThang.value = 1
+'
     Set chkTkhaiThang.Container = frmKy
     chkTkhaiThang.Top = 200
     chkTkhaiThang.Left = 120
-    
-    Set lblMonth.Container = frmKy
-    lblMonth.Top = 570
-    lblMonth.Left = 960
-    
-    Set txtMonth.Container = frmKy
-    txtMonth.Top = 540
-    txtMonth.Left = 1530
-    
-    Set lblYear.Container = frmKy
-    lblYear.Top = 570
-    lblYear.Left = 2310
-    
-    Set txtYear.Container = frmKy
-    txtYear.Top = 540
-    txtYear.Left = 2730
-        
+'
+'    Set lblMonth.Container = frmKy
+'    lblMonth.Top = 570
+'    lblMonth.Left = 960
+'
+'    Set txtMonth.Container = frmKy
+'    txtMonth.Top = 540
+'    txtMonth.Left = 1530
+'
+'    Set lblYear.Container = frmKy
+'    lblYear.Top = 570
+'    lblYear.Left = 2310
+'
+'    Set txtYear.Container = frmKy
+'    txtYear.Top = 540
+'    txtYear.Left = 2730
+'
     Set lblNgayDau.Container = frmKy
     lblNgayDau.Top = 930
     lblNgayDau.Left = 120
@@ -5853,6 +5858,39 @@ Private Sub SetupLayoutBC26()
     Set txtNgayCuoi.Container = frmKy
     txtNgayCuoi.Top = 900
     txtNgayCuoi.Left = 3480
+    strQuy = "TK_QUY"
+    chkTkhaiThang.value = 0
+    chkTKQuy.value = 1
+            
+    Set lblQuy.Container = frmKy
+    lblQuy.Top = 570
+    lblQuy.Left = 960
+    
+    Set cmbQuy.Container = frmKy
+    cmbQuy.Top = 540
+    cmbQuy.Left = 1530
+    
+    Set lblYear.Container = frmKy
+    lblYear.Top = 570
+    lblYear.Left = 2310
+    
+    Set txtYear.Container = frmKy
+    txtYear.Top = 540
+    txtYear.Left = 2730
+    
+    SetControlCaption Me, "frmPeriod"
+
+    cmbQuy.Visible = True
+    lblQuy.Visible = True
+    
+    lblMonth.Visible = False
+    txtMonth.Visible = False
+    txtNgayDau.Visible = True
+    txtNgayCuoi.Visible = True
+    lblNgayDau.Visible = True
+    lblNgayCuoi.Visible = True
+    frmKy.Height = 1300
+    Frame2.Top = 1600
     
 '    Set lblQuy.Container = frmKy
 '    lblQuy.Top = 300
