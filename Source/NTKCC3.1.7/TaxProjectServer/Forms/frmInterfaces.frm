@@ -1631,9 +1631,9 @@ Private Sub Command1_Click()
 'str1 = "aa316110700176898   01201300900900100101/0114/06/2006<S01><S></S><S>100000000~0~100000000~0~0~100000000~0~0~100000000~25~0~25000000~x</S><S></S><S>~~~27/02/2013~1~0~~1052~01</S></S01>"
 'Barcode_Scaned str1
 
-' To khai 01_GTGT
-'str2 = "aa316010100100079   02201300200200100101/0114/06/2006<S01><S></S><S>~35329039~0~100000000~1000000~0~0~100000000~0~0~100000000~0~0~0~100000000~99000000~0~0~0~63670961~0~63670961~0~0~0</S><S>~~~01/03/2013~1~~~1701~x~03~1</S></S01>"
-'Barcode_Scaned str2
+ 'To khai 01_GTGT
+str2 = "aa317010100100079   01201300200200100101/0114/06/2006<S01><S></S><S>~35329039~0~100000000~1000000~0~0~100000000~0~0~100000000~0~0~0~100000000~99000000~0~0~0~63670961~0~63670961~0~0~1</S><S>~~~01/03/2013~1~~~1701~~03~1</S></S01>"
+Barcode_Scaned str2
 
 '' To khai 02_GTGT
 'str2 = "aa315020100100079   12201200100100100101/0114/06/2006<S01><S></S><S>0~10000000~1000000~0~0~0~0~1000000~0~1000000~0~0~1000000</S><S>~Nguy‘n Phi Phong~~08/01/2013~1~~~1</S></S01>"
@@ -1660,8 +1660,8 @@ Private Sub Command1_Click()
 'str2 = "aa317680100100079   02201300100100100101/0101/01/2009<S01><S>1~1~01/04/2013~30/06/2013</S><S>1~1~1~0~1~1~1~1~1~1~0~0~0~1~0~1~0~1~1~1~0~0</S><S>1~trst~12/07/2013~1</S></S01>"
 'Barcode_Scaned str2
 '
-str2 = "aa317360100100079   06201300100100100101/0101/01/2010<S07><S></S><S>x~555~4001665~4000000~0~777~888~0~0~111~0~0~222222~20~44444~444444~1~4444</S><S>hjh~13/07/2013~tydgh~56754765~1~~0</S></S07>"
-Barcode_Scaned str2
+'str2 = "aa317360100100079   06201300100100100101/0101/01/2010<S07><S></S><S>x~555~4001665~4000000~0~777~888~0~0~111~0~0~222222~20~44444~444444~1~4444</S><S>hjh~13/07/2013~tydgh~56754765~1~~0</S></S07>"
+'Barcode_Scaned str2
 
 End Sub
 
@@ -2941,10 +2941,6 @@ Private Function InitParameters(ByVal strData As String, _
         End If
 
     ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Year") = "1" Then
-        dNgayDauKy = GetNgayDauNam(CInt(TAX_Utilities_Svr_New.Year), iThangTaiChinh, iNgayTaiChinh)
-        dNgayCuoiKy = DateAdd("m", 12, dNgayDauKy)
-        dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
-    ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Year") = "1/2" Then
         dNgayDauKy = GetNgayDauNam(CInt(TAX_Utilities_Svr_New.Year), iThangTaiChinh, iNgayTaiChinh)
         dNgayCuoiKy = DateAdd("m", 12, dNgayDauKy)
         dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)

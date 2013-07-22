@@ -1210,13 +1210,16 @@ Function hannop() As String
 Dim dNgayCuoiKy As Date
 Dim dHanNop As Date
 Dim arrDate() As String
-    If TAX_Utilities_Svr_New.Month <> "" Then
+Dim idToKhai As Variant
+
+    idToKhai = GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ID")
+    If TAX_Utilities_Svr_New.Month <> "" And LoaiKyKK = False Then
         If TAX_Utilities_Svr_New.Month = 12 Then
            hannop = "20/" & "01" & "/" & TAX_Utilities_Svr_New.Year + 1
         Else
            hannop = "20/" & Right("0" & TAX_Utilities_Svr_New.Month + 1, 2) & "/" & TAX_Utilities_Svr_New.Year
         End If
-    ElseIf TAX_Utilities_Svr_New.ThreeMonths <> "" Then
+    ElseIf TAX_Utilities_Svr_New.ThreeMonths <> "" And (LoaiKyKK = True Or (idToKhai = "01" And idToKhai <> "02" And idToKhai <> "04" And idToKhai <> "71" And idToKhai <> "36" And idToKhai <> "68")) Then
         If TAX_Utilities_Svr_New.ThreeMonths = "04" Then
            hannop = "30/" & "01" & "/" & TAX_Utilities_Svr_New.Year + 1
         ElseIf TAX_Utilities_Svr_New.ThreeMonths = "03" Then
