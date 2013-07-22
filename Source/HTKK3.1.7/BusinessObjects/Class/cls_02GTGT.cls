@@ -54,6 +54,7 @@ Public denRowDL As Long
 Public strTuRowDenRowPL As String
 
 Public strTkThangQuy As String
+Public dNgayDauQuy As Date
 
 
 'This funtion is called after an object of this class is created
@@ -1259,19 +1260,31 @@ Private Sub setLast25Target()
         .resolveExternals = True
         .validateOnParse = True
         .async = False
-        MY = DateSerial(TAX_Utilities_New.Year, TAX_Utilities_New.Month, 1)
         
-        MY = DateAdd("M", -1, MY)
-        'strOriginDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(1), "DataFile") & ".xml"
-        strCurrentDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_" & TAX_Utilities_New.Month & TAX_Utilities_New.Year & ".xml"
-        '***************************************
-        'ThanhDX added
-        'Date: 14/04/06
-        
-        'strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
-        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("02", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
-        '***************************************
-        
+        If strTkThangQuy = "TK_THANG" Then
+            MY = DateSerial(TAX_Utilities_New.Year, TAX_Utilities_New.Month, 1)
+            
+            MY = DateAdd("M", -1, MY)
+            'strOriginDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(1), "DataFile") & ".xml"
+            strCurrentDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_" & TAX_Utilities_New.Month & TAX_Utilities_New.Year & ".xml"
+            '***************************************
+            'ThanhDX added
+            'Date: 14/04/06
+            
+            'strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
+            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("02", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
+            '***************************************
+        Else
+            MY = dNgayDauQuy
+            
+            MY = DateAdd("D", -1, MY)
+            'strOriginDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(1), "DataFile") & ".xml"
+            strCurrentDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+            '***************************************
+            'strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
+            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_0" & DatePart("Q", MY) & DatePart("YYYY", MY) & ".xml"
+            '***************************************
+        End If
         
         If xmlDomCurrentData.Load(strCurrentDataFileName) = True Then
             GoTo Tidy_up
@@ -1621,16 +1634,28 @@ Private Function GetLast25Previous(ByRef strValue As String) As Boolean
         .resolveExternals = True
         .validateOnParse = True
         .async = False
-        MY = DateSerial(TAX_Utilities_New.Year, TAX_Utilities_New.Month, 1)
-        MY = DateAdd("M", -1, MY)
         
-        '***************************************
-        'ThanhDX added
-        'Date: 14/04/06
-        
-        'strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
-        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("02", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
-        '***************************************
+        If strTkThangQuy = "TK_THANG" Then
+            MY = DateSerial(TAX_Utilities_New.Year, TAX_Utilities_New.Month, 1)
+            MY = DateAdd("M", -1, MY)
+            
+            '***************************************
+            'ThanhDX added
+            'Date: 14/04/06
+            
+            'strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
+            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("02", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
+            '***************************************
+        Else
+            MY = dNgayDauQuy
+            
+            MY = DateAdd("D", -1, MY)
+            
+            'strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
+            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_0" & DatePart("Q", MY) & DatePart("YYYY", MY) & ".xml"
+            '***************************************
+        End If
+                
                 
         If .Load(strDataFileName) = True Then
             Set xmlNode = .nodeFromID("CT_51")  'L_20: col & row of 25 target
