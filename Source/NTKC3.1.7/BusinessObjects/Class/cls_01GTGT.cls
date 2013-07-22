@@ -319,13 +319,15 @@ Public Function Prepared3() As Boolean
 End Function
 
 Public Sub Prepared4(ByVal dNgayDauKy As Date)
-Dim strKyLapBo As String
-Dim blnValid As Boolean
+    Dim strKyLapBo As String
+    Dim blnValid   As Boolean
 
-Dim vNgayNop, vNgayQuet As Variant
-Dim arrDate() As String
-Dim arrDate1() As String
-
+    Dim vNgayNop, vNgayQuet As Variant
+    Dim arrDate()  As String
+    Dim arrDate1() As String
+    Dim LoaiKyKK   As Variant
+    Dim dNgayCuoiKy As Date
+    
     blnValid = True
     
     With fps
@@ -347,6 +349,9 @@ Dim arrDate1() As String
         .Row = NGAY_NHAN_TO_KHAI_ROW
         strNgayNhanToKhai = .Text
         
+        ' Get Loai ky ke khai
+        .GetText .ColLetterToNumber("AB"), 42, LoaiKyKK
+        
         ' Lay ve ngay nop to khai
         .GetText .ColLetterToNumber("E"), 32, vNgayNop
         'Lay ve thong tin ngay quet
@@ -354,48 +359,49 @@ Dim arrDate1() As String
         
         'Go to last sheet (header sheet)
         .Sheet = .SheetCount
-'        ' Kiem tra ky lap bo va ky ke khai
-'        If dNgayDauKy > DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1) Then
-'            blnValid = False
-'        End If
-'
-'        .Col = .ColLetterToNumber(HEADER_KY_LAP_BO_COL)
-'        .Row = HEADER_KY_LAP_BO_ROW
-'
-'        If Not blnValid Then
-'            .Formula = "0"
-'        Else
-'            .Formula = "1"
-'        End If
-'
-'        ' Kiem tra xem ky ke khai trong cung ky hay khac ky
-'        If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
-'            blnValid = True
-'        Else
-'            blnValid = False
-'        End If
-'
-'        .Col = .ColLetterToNumber("B")
-'        .Row = 17
-'
-'        If Not blnValid Then
-'            .Formula = "0"
-'        Else
-'            .Formula = "1"
-'        End If
-'
-'        ' Kiem tra neu ngay nop lon hon ngay quet thi thong bao loi
-'        If IsDate(vNgayNop) Then
-'            arrDate = Split(vNgayNop, "/")
-'            arrDate1 = Split(vNgayQuet, "/")
-'            .Col = .ColLetterToNumber("B")
-'            .Row = 15
-'            If DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0))) > DateSerial(CInt(arrDate1(2)), CInt(arrDate1(1)), CInt(arrDate1(0))) Then
-'                .Formula = "0"
-'            Else
-'                .Formula = "1"
-'            End If
-'        End If
+
+        '        ' Kiem tra ky lap bo va ky ke khai
+        '        If dNgayDauKy > DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1) Then
+        '            blnValid = False
+        '        End If
+        '
+        '        .Col = .ColLetterToNumber(HEADER_KY_LAP_BO_COL)
+        '        .Row = HEADER_KY_LAP_BO_ROW
+        '
+        '        If Not blnValid Then
+        '            .Formula = "0"
+        '        Else
+        '            .Formula = "1"
+        '        End If
+        '
+        '        ' Kiem tra xem ky ke khai trong cung ky hay khac ky
+        '        If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
+        '            blnValid = True
+        '        Else
+        '            blnValid = False
+        '        End If
+        '
+        '        .Col = .ColLetterToNumber("B")
+        '        .Row = 17
+        '
+        '        If Not blnValid Then
+        '            .Formula = "0"
+        '        Else
+        '            .Formula = "1"
+        '        End If
+        '
+        '        ' Kiem tra neu ngay nop lon hon ngay quet thi thong bao loi
+        '        If IsDate(vNgayNop) Then
+        '            arrDate = Split(vNgayNop, "/")
+        '            arrDate1 = Split(vNgayQuet, "/")
+        '            .Col = .ColLetterToNumber("B")
+        '            .Row = 15
+        '            If DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0))) > DateSerial(CInt(arrDate1(2)), CInt(arrDate1(1)), CInt(arrDate1(0))) Then
+        '                .Formula = "0"
+        '            Else
+        '                .Formula = "1"
+        '            End If
+        '        End If
         ' Kiem tra neu ky lap bo trang se bao loi
         If Trim(strKyLapBo) = "" Or Trim(strKyLapBo) = "../...." Then
             blnValid = False
@@ -412,6 +418,7 @@ Dim arrDate1() As String
             Else
                 blnValid = True
             End If
+
             .Col = .ColLetterToNumber(HEADER_KY_LAP_BO_COL)
             .Row = HEADER_KY_LAP_BO_ROW
             
@@ -421,12 +428,25 @@ Dim arrDate1() As String
                 .Formula = "1"
             End If
             
-            
             ' Kiem tra xem ky ke khai trong cung ky hay khac ky
-            If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
-                blnValid = True
+            dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
+            dNgayCuoiKy = DateAdd("d", 29, dNgayCuoiKy)
+            
+            If LoaiKyKK = "0" Then
+                If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
+                    blnValid = True
+                Else
+                    blnValid = False
+                End If
+
             Else
-                blnValid = False
+
+                If (dNgayDauKy <= DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) And (dNgayCuoiKy >= DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
+                    blnValid = True
+                Else
+                    blnValid = False
+                End If
+
             End If
             
             .Col = .ColLetterToNumber("B")
@@ -437,12 +457,14 @@ Dim arrDate1() As String
             Else
                 .Formula = "1"
             End If
+
             ' kiem tra ky lap bo khong duoc lon hon ky hien tai
             If DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1) > Date Then
                 blnValid = False
             Else
                 blnValid = True
             End If
+
             .Col = .ColLetterToNumber("B")
             .Row = 18
             
@@ -455,6 +477,7 @@ Dim arrDate1() As String
         
         .EventEnabled(EventAllEvents) = True
     End With
+
 End Sub
 
 Private Function GetLastMonthOfThreeMonth(strPeriod As String) As String
