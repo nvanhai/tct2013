@@ -138,18 +138,24 @@ Public Sub Prepare2()
     End With
 End Sub
 
-
-
 Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
- Dim strId As Variant
- Dim intIndexCombo As Integer
- 
+    Dim strId                    As Variant
+    Dim intIndexCombo            As Integer
+
+    Dim iFlagExist               As Integer, iFlagNgayCoThongBaoPhatHanh As Integer, iFlagEmpty As Integer ',iFlagNgayThongBaoEmpty As Integer
+    Dim i                        As Integer, j As Integer, iCol As Long, iRow As Long
+    Dim vTarget22                As Variant, vTarget20 As Variant, vTarget21 As Variant, vPhatHanh As Variant, vDieuChinh As Variant, arrDate() As String
+    Dim countRow                 As Long, rowDes As Long, vErrExist As Variant
+    Dim vGiaTriThayDoiCheckTrung As Variant, vGiaTriThayDoi As Variant
+
     fps.EventEnabled(EventAllEvents) = False
+
     With fps
         
         .Col = Col
         .Row = Row
-         If Col = .ColLetterToNumber("C") And .Text <> "" Then
+
+        If Col = .ColLetterToNumber("C") And .Text <> "" Then
             intIndexCombo = .TypeComboBoxCurSel
             .Col = .ColLetterToNumber("AA")
             .TypeComboBoxCurSel = intIndexCombo
@@ -157,49 +163,57 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
             .Col = .ColLetterToNumber("AA")
             UpdateCell fps, .Col, .Row, .Text
             
-'            .GetText .ColLetterToNumber("AA"), .Row, strId
-'
-'            .Col = .ColLetterToNumber("N")
-'            If Trim(Left(strId, 1)) = "0" Then
-'                .SetText .ColLetterToNumber("J"), .Row, Trim(Mid(strId, 11, 6))
-'                UpdateCell fps, .ColLetterToNumber("J"), .Row, .Text
-'                .Col = .ColLetterToNumber("J")
-'                .TypeMaxEditLen = 13
-'                .Col = .ColLetterToNumber("D")
-'                .SetText .ColLetterToNumber("D"), .Row, Trim(Mid(strId, 21))
-'                UpdateCell fps, .ColLetterToNumber("D"), .Row, .Text
-'            ElseIf Trim(Left(strId, 1)) = "3" Then
-'                .SetText .ColLetterToNumber("J"), .Row, ""
-'                UpdateCell_sheet fps, 1, .ColLetterToNumber("J"), .Row, .Text
-'                .Col = .ColLetterToNumber("J")
-'                .TypeMaxEditLen = 20
-'                .Col = .ColLetterToNumber("D")
-'                .SetText .ColLetterToNumber("D"), .Row, ""
-'                UpdateCell_sheet fps, 1, .ColLetterToNumber("D"), .Row, .Text
-'            ElseIf Trim(Left(strId, 1)) = "4" Then
-'                .SetText .ColLetterToNumber("J"), .Row, Trim(Mid(strId, 11, 6))
-'                UpdateCell_sheet fps, 1, .ColLetterToNumber("J"), .Row, .Text
-'                .Col = .ColLetterToNumber("J")
-'                .TypeMaxEditLen = 13
-'                .Col = .ColLetterToNumber("D")
-'                .SetText .ColLetterToNumber("D"), .Row, Trim(Mid(strId, 21))
-'                UpdateCell_sheet fps, 1, .ColLetterToNumber("D"), .Row, .Text
-'            Else
-'                .Col = .ColLetterToNumber("D")
-'                .SetText .ColLetterToNumber("D"), .Row, Trim(Mid(strId, 21))
-'                .Col = .ColLetterToNumber("J")
-'                .TypeMaxEditLen = 20
-'                UpdateCell fps, .ColLetterToNumber("D"), .Row, .Text
-'                .SetText .ColLetterToNumber("J"), .Row, Trim(Mid(strId, 11, 3))
-'                UpdateCell fps, .ColLetterToNumber("J"), .Row, .Text
-'            End If
-'            .SetText .ColLetterToNumber("AJ"), .Row, Trim(Left(strId, 1))
-'            UpdateCell fps, .ColLetterToNumber("AJ"), .Row, .Text
-'
+            .Sheet = .SheetCount
+            .GetText .ColLetterToNumber("E"), 20, vTarget20 ' du lieu bat buoc phai nhap
+            .GetText .ColLetterToNumber("E"), 21, vErrExist
+            .GetText .ColLetterToNumber("E"), 22, vTarget22
+            '2. Check Exist
+            .Sheet = 1
+            .Row = 35
+
+            Do
+                .Col = .ColLetterToNumber("C")
+                vGiaTriThayDoi = .Text
+                vGiaTriThayDoiCheckTrung = vGiaTriThayDoi
+
+                If vGiaTriThayDoi <> vbNullString Then
+                    countRow = .SearchCol(.ColLetterToNumber("C"), -1, -1, vGiaTriThayDoiCheckTrung, SearchFlagsNone)
+                    rowDes = .SearchCol(.ColLetterToNumber("C"), countRow, -1, vGiaTriThayDoiCheckTrung, SearchFlagsNone)
+
+                    If rowDes > -1 Then
+                        .Col = .ColLetterToNumber("C")
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = vErrExist      'static
+                        .BackColor = mErrorColor
+
+                        iFlagExist = 1
+                    Else
+                        .Col = .ColLetterToNumber("C")
+                        .BackColor = mNonErrorColor
+                        .CellNote = ""
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    End If
+
+                Else
+                    .Col = .ColLetterToNumber("C")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    'iFlagEmpty = 1
+                End If
+
+                .Row = .Row + 1
+                .Col = .ColLetterToNumber("B")
+            Loop Until .Text = "aa"
+
+            .SetText .ColLetterToNumber("B"), 21, IIf(iFlagExist = 1, "0", "1")
+                
             .EventEnabled(EventChange) = True
-         End If
+        End If
+
     End With
-   fps.EventEnabled(EventAllEvents) = True
+
+    fps.EventEnabled(EventAllEvents) = True
 End Sub
 
 
@@ -225,27 +239,30 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
         
         If (KeyCode = vbKeyF5) Or (KeyCode = vbKeyF6) Then
             If .ActiveSheet = 1 Then
-                   fps.EventEnabled(EventAllEvents) = True
-                    i = 1
-                    .Col = .ColLetterToNumber("B")
-                    .Row = 35
-                    Do
-                         .Text = str(i)
-                         .Col = .ColLetterToNumber("B")
-                         .Row = i + 35
-                         i = i + 1
-                    Loop Until .Text = "aa"
-                    
-                    .SetActiveCell iCol, iRow
+                fps.EventEnabled(EventAllEvents) = True
+                i = 1
+                .Col = .ColLetterToNumber("B")
+                .Row = 35
 
-                    .Row = iRow
-                    .Col = iCol
-                     fps.EventEnabled(EventAllEvents) = False
-                     .SetActiveCell iCol, iRow
+                Do
+                    .Text = str(i)
+                    .Col = .ColLetterToNumber("B")
+                    .Row = i + 35
+                    i = i + 1
+                Loop Until .Text = "aa"
+        
+                .SetActiveCell iCol, iRow
+
+                .Row = iRow
+                .Col = iCol
+                fps.EventEnabled(EventAllEvents) = False
+                .SetActiveCell iCol, iRow
             End If
-         End If
+        End If
+
         .EventEnabled(EventAllEvents) = True
     End With
+
 End Sub
 
 Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As Long, ByVal NewRow As Long, Cancel As Boolean)
@@ -374,7 +391,48 @@ Private Sub CheckDynamicError()
             .Row = .Row + 1
             .Col = .ColLetterToNumber("B")
         Loop Until .Text = "aa"
-         
+        
+        '3.validate
+        .Sheet = 1
+        .Row = 35
+        Do
+            .Col = .ColLetterToNumber("C")
+            If (.Text <> vbNullString) Then
+                .Col = .ColLetterToNumber("D")
+                If (Trim(.Text) = vbNullString) Then
+                    .Col = .ColLetterToNumber("D")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vTarget20      'static
+                    .BackColor = mErrorColor
+                    iFlagEmpty = 1
+                Else
+                    .Col = .ColLetterToNumber("D")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                End If
+            End If
+            .Col = .ColLetterToNumber("C")
+            If (.Text <> vbNullString) Then
+                .Col = .ColLetterToNumber("M")
+                If (Trim(.Text) = vbNullString) Then
+                    .Col = .ColLetterToNumber("M")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vTarget20      'static
+                    .BackColor = mErrorColor
+                    iFlagEmpty = 1
+                Else
+                    .Col = .ColLetterToNumber("M")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                End If
+            End If
+            .Row = .Row + 1
+            .Col = .ColLetterToNumber("B")
+        Loop Until .Text = "aa"
+        
+        
         .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), 20, IIf(iFlagEmpty = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 21, IIf(iFlagExist = 1, "0", "1")
