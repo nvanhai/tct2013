@@ -700,7 +700,7 @@ Public Function InsertDTL_PL1() As String
         End If
                 
         kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
-        matkhai = "'"&LOAI_TO_KHAI&"'"
+        matkhai = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         .Sheet = 2
             
