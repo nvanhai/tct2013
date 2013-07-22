@@ -2608,6 +2608,8 @@ Private Sub SetPeriod(ByVal strValue As String)
             TAX_Utilities_Srv_New.Month = ""
             TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
         End If
+
+        TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
     End If
     
     TAX_Utilities_Srv_New.Year = Right$(strValue, 4)
