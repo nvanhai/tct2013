@@ -2944,6 +2944,10 @@ Private Function InitParameters(ByVal strData As String, _
         dNgayDauKy = GetNgayDauNam(CInt(TAX_Utilities_Svr_New.Year), iThangTaiChinh, iNgayTaiChinh)
         dNgayCuoiKy = DateAdd("m", 12, dNgayDauKy)
         dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
+    ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Year") = "1/2" Then
+        dNgayDauKy = GetNgayDauNam(CInt(TAX_Utilities_Svr_New.Year), iThangTaiChinh, iNgayTaiChinh)
+        dNgayCuoiKy = DateAdd("m", 12, dNgayDauKy)
+        dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
     End If
 
     '*******************************
