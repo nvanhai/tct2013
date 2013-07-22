@@ -71,7 +71,7 @@ Const SO_HDDL_DL_X = "H"
 Const SO_HDDL_DL_Y = 28
 Const NGAY_HDDL_DL_X = "N"
 Const NGAY_HDDL_DL_Y = 28
-Const LOAI_TO_KHAI = "01/GTGT"
+
 
 Public WithEvents fps As fpSpread
 Attribute fps.VB_VarHelpID = -1
@@ -89,7 +89,7 @@ Private larrPhongXuLy() As String
 Private lSoPhongXL As Long
 Private LAN_QUET As Variant
 Private DAGHI2 As Variant
-
+Private LOAI_TO_KHAI As String
 'Longvh
 Public strMST As String
 Public strTenGoi As String
