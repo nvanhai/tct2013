@@ -374,7 +374,48 @@ Private Sub CheckDynamicError()
             .Row = .Row + 1
             .Col = .ColLetterToNumber("B")
         Loop Until .Text = "aa"
-         
+        
+        '3.validate
+        .Sheet = 1
+        .Row = 35
+        Do
+            .Col = .ColLetterToNumber("C")
+            If (.Text <> vbNullString) Then
+                .Col = .ColLetterToNumber("D")
+                If (Trim(.Text) = vbNullString) Then
+                    .Col = .ColLetterToNumber("D")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vTarget20      'static
+                    .BackColor = mErrorColor
+                    iFlagEmpty = 1
+                Else
+                    .Col = .ColLetterToNumber("D")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                End If
+            End If
+            .Col = .ColLetterToNumber("C")
+            If (.Text <> vbNullString) Then
+                .Col = .ColLetterToNumber("M")
+                If (Trim(.Text) = vbNullString) Then
+                    .Col = .ColLetterToNumber("M")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vTarget20      'static
+                    .BackColor = mErrorColor
+                    iFlagEmpty = 1
+                Else
+                    .Col = .ColLetterToNumber("M")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                End If
+            End If
+            .Row = .Row + 1
+            .Col = .ColLetterToNumber("B")
+        Loop Until .Text = "aa"
+        
+        
         .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), 20, IIf(iFlagEmpty = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 21, IIf(iFlagExist = 1, "0", "1")
