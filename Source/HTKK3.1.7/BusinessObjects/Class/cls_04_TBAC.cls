@@ -16,6 +16,7 @@ Public WithEvents fps As fpSpread
 Attribute fps.VB_VarHelpID = -1
 Public Strloaitk As String
 Public StrSolanBosung As String
+Dim strGiaTriCu As Variant, blGiaTriCu As Boolean, RowGiaTriCu As Long, ColGiaTriCu As Long
   
 'This funtion is called after an object of this class is created
 'Its functions is 1st preparing for interface sheets, such as
@@ -147,6 +148,7 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
     Dim vTarget22                As Variant, vTarget20 As Variant, vTarget21 As Variant, vPhatHanh As Variant, vDieuChinh As Variant, arrDate() As String
     Dim countRow                 As Long, rowDes As Long, vErrExist As Variant
     Dim vGiaTriThayDoiCheckTrung As Variant, vGiaTriThayDoi As Variant
+    Dim tRow As Long, tCol As Long, mblLoi As Boolean
 
     fps.EventEnabled(EventAllEvents) = False
 
@@ -167,46 +169,70 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
             .GetText .ColLetterToNumber("E"), 20, vTarget20 ' du lieu bat buoc phai nhap
             .GetText .ColLetterToNumber("E"), 21, vErrExist
             .GetText .ColLetterToNumber("E"), 22, vTarget22
+            
             '2. Check Exist
             .Sheet = 1
-            .Row = 35
-
-            Do
-                .Col = .ColLetterToNumber("C")
-                vGiaTriThayDoi = .Text
-                vGiaTriThayDoiCheckTrung = vGiaTriThayDoi
-
-                If vGiaTriThayDoi <> vbNullString Then
-                    countRow = .SearchCol(.ColLetterToNumber("C"), -1, -1, vGiaTriThayDoiCheckTrung, SearchFlagsNone)
-                    rowDes = .SearchCol(.ColLetterToNumber("C"), countRow, -1, vGiaTriThayDoiCheckTrung, SearchFlagsNone)
-
-                    If rowDes > -1 Then
-                        .Col = .ColLetterToNumber("C")
-                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                        .CellNote = vErrExist      'static
-                        .BackColor = mErrorColor
-
-                        iFlagExist = 1
-                    Else
-                        .Col = .ColLetterToNumber("C")
-                        .BackColor = mNonErrorColor
-                        .CellNote = ""
-                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                    End If
-
+            '.Row = 35
+'            Do
+'                .Col = .ColLetterToNumber("C")
+'                vGiaTriThayDoi = .Text
+'                vGiaTriThayDoiCheckTrung = vGiaTriThayDoi
+'
+'                If vGiaTriThayDoi <> vbNullString Then
+'                    countRow = .SearchCol(.ColLetterToNumber("C"), -1, -1, vGiaTriThayDoiCheckTrung, SearchFlagsNone)
+'                    rowDes = .SearchCol(.ColLetterToNumber("C"), countRow, -1, vGiaTriThayDoiCheckTrung, SearchFlagsNone)
+'
+'                    If rowDes > -1 Then
+'                        .Col = .ColLetterToNumber("C")
+'                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                        .CellNote = vErrExist      'static
+'                        .BackColor = mErrorColor
+'
+'                        iFlagExist = 1
+'                    Else
+'                        .Col = .ColLetterToNumber("C")
+'                        .BackColor = mNonErrorColor
+'                        .CellNote = ""
+'                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                    End If
+'
+'                Else
+'                    .Col = .ColLetterToNumber("C")
+'                    .BackColor = mNonErrorColor
+'                    .CellNote = ""
+'                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                    'iFlagEmpty = 1
+'                End If
+'
+'                .Row = .Row + 1
+'                .Col = .ColLetterToNumber("B")
+'            Loop Until .Text = "aa"
+'
+'            .SetText .ColLetterToNumber("B"), 21, IIf(iFlagExist = 1, "0", "1")
+                
+             If blGiaTriCu And Col = .ColLetterToNumber("C") Then 'And Not mblKeyF5 Then
+                If Not .Visible Then
+                    .Visible = True
+                    DisplayMessage "0270", msOKOnly, miWarning
+                    .Visible = False
                 Else
-                    .Col = .ColLetterToNumber("C")
-                    .BackColor = mNonErrorColor
-                    .CellNote = ""
-                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                    'iFlagEmpty = 1
+                    DisplayMessage "0270", msOKOnly, miWarning
                 End If
-
-                .Row = .Row + 1
-                .Col = .ColLetterToNumber("B")
-            Loop Until .Text = "aa"
-
-            .SetText .ColLetterToNumber("B"), 21, IIf(iFlagExist = 1, "0", "1")
+                
+                .Sheet = 1
+                mCurrentSheet = .Sheet
+                .Row = RowGiaTriCu
+                .Col = ColGiaTriCu
+                .Text = strGiaTriCu
+                .Sheet = 1
+                mCurrentSheet = .Sheet
+                .Row = RowGiaTriCu
+                .Col = ColGiaTriCu
+                UpdateCell fps, .Col, .Row, .Text
+                blGiaTriCu = False
+                mblLoi = True
+               
+            End If
                 
             .EventEnabled(EventChange) = True
         End If
@@ -216,7 +242,45 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
     fps.EventEnabled(EventAllEvents) = True
 End Sub
 
+Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
+    Dim temp As Variant, itemp As Variant, iRow As Long, iCol As Long, iColRow As String
+    Dim i    As Integer, aSection As Integer
+    
+    With fps
+        .Sheet = 1
+        .Row = 35
 
+        If Col = fps.ColLetterToNumber("C") Then
+            blGiaTriCu = False
+            fps.Col = Col
+            fps.Row = Row
+            temp = fps.Text
+
+            Do
+                .Col = .ColLetterToNumber("C")
+                itemp = .Text
+
+                If .Row <> Row Then
+                    If itemp = temp Then 'Neu co thi dat co blGiaTriCu = True
+                        RowGiaTriCu = Row
+                        ColGiaTriCu = .ColLetterToNumber("C")
+                        .Row = Row
+                        .Col = .ColLetterToNumber("C")
+                        blGiaTriCu = True
+                        Exit Sub
+                    End If
+                End If
+
+                .Col = .ColLetterToNumber("B")
+                .Row = i + iRow
+                i = i + 1
+            Loop Until .Text = "aa"
+
+        End If
+
+    End With
+
+End Sub
 
 Private Sub fps_KeyPress(KeyAscii As Integer)
      With fps
