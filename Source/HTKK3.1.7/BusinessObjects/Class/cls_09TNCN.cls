@@ -159,30 +159,7 @@ Public Sub Prepare2()
             .Text = StrSolanBosung
             UpdateCell fps, .Col, .Row, .Text
         End If
-        
-        ''       lay gia tri CT32 da ghi trong datafile neu co
-        For Each xmlNode In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
-            ParserCellID fps, GetAttribute(xmlNode, "CellID"), iCol, iRow
-
-            If iCol = .ColLetterToNumber("I") And iRow = 52 Then
-                oldValue = GetAttribute(xmlNode, "Value")
-                .Col = iCol
-                .Row = iRow
-                .Text = oldValue
-'                .Formula = ""
-            End If
-
-            ' chi tieu 57
-            ' dntai 17022012
-            If iCol = .ColLetterToNumber("I") And iRow = 57 Then
-                oldValue = GetAttribute(xmlNode, "Value")
-                .Col = iCol
-                .Row = iRow
-                .Text = oldValue
-'                .Formula = ""
-            End If
-
-        Next
+            
         
         'set so thang tinh thue neu la nam 2011 thi co tinh so thang mien giam
         .GetText .ColLetterToNumber("L"), 4, tuThang
@@ -209,6 +186,39 @@ Public Sub Prepare2()
         .Col = .ColLetterToNumber("P")
         .Row = 4
         .Text = DateDiff("M", Format(CStr(tuThang), "mm/yyyy"), Format(CStr(denThang), "mm/yyyy")) + 1
+        
+        
+        ''       lay gia tri CT32 da ghi trong datafile neu co
+        For Each xmlNode In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+            ParserCellID fps, GetAttribute(xmlNode, "CellID"), iCol, iRow
+
+            If iCol = .ColLetterToNumber("I") And iRow = 47 Then
+                oldValue = GetAttribute(xmlNode, "Value")
+                .Col = iCol
+                .Row = iRow
+                .Text = oldValue
+'                .Formula = ""
+            End If
+
+            If iCol = .ColLetterToNumber("I") And iRow = 52 Then
+                oldValue = GetAttribute(xmlNode, "Value")
+                .Col = iCol
+                .Row = iRow
+                .Text = oldValue
+'                .Formula = ""
+            End If
+
+            ' chi tieu 57
+            ' dntai 17022012
+            If iCol = .ColLetterToNumber("I") And iRow = 57 Then
+                oldValue = GetAttribute(xmlNode, "Value")
+                .Col = iCol
+                .Row = iRow
+                .Text = oldValue
+'                .Formula = ""
+            End If
+
+        Next
         
         'check CT 15 < 0 thi khong cho nhap CT 16 tren PL 09B
         .Sheet = 3

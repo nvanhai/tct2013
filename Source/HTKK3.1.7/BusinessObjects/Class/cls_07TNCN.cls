@@ -50,10 +50,20 @@ Public Sub Prepare1()
                 .Col = .ColLetterToNumber("R")
                 .Row = 45
                 .Text = "9000000"
+                
+                ' chi tieu 25 label
+                .Col = .ColLetterToNumber("D")
+                .Row = 46
+                .Text = GetAttribute(GetMessageCellById("0269"), "Msg")
             Else
                 .Col = .ColLetterToNumber("R")
                 .Row = 45
                 .Text = "4000000"
+                ' chi tieu 25 label
+                .Col = .ColLetterToNumber("D")
+                .Row = 46
+                .Text = GetAttribute(GetMessageCellById("0268"), "Msg")
+
             End If
         ElseIf strTkThangQuy = "TK_QUY" Then
             ' chi tieu 24
@@ -61,10 +71,22 @@ Public Sub Prepare1()
                 .Col = .ColLetterToNumber("R")
                 .Row = 45
                 .Text = "27000000"
+                
+                 ' chi tieu 25 label
+                .Col = .ColLetterToNumber("D")
+                .Row = 46
+                .Text = GetAttribute(GetMessageCellById("0269"), "Msg")
+
             Else
                 .Col = .ColLetterToNumber("R")
                 .Row = 45
                 .Text = "12000000"
+                
+                ' chi tieu 25 label
+                .Col = .ColLetterToNumber("D")
+                .Row = 46
+                .Text = GetAttribute(GetMessageCellById("0268"), "Msg")
+
             End If
         End If
         'end
