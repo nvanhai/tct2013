@@ -153,7 +153,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":19A5
+         SpreadDesigner  =   "frmInterfaces.frx":1969
       End
    End
    Begin VB.Frame Frame2 
@@ -302,7 +302,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1C69
+      SpreadDesigner  =   "frmInterfaces.frx":1BF1
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -5268,6 +5268,10 @@ Private Sub Form_Load()
     FormatGrid
     
     Dim idMenu As Variant
+    ' set ngay dau quy
+    Dim dNgayDauKy As Date
+    ' end
+    
     idMenu = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
 
     If Trim(GetAttribute(TAX_Utilities_New.NodeValidity, "Class")) <> vbNullString Then
@@ -5276,6 +5280,13 @@ Private Sub Form_Load()
         ' to khai GTGT se co to khai thang / quy
         If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "95" Or idMenu = "71" Or idMenu = "36" Or idMenu = "68" Then
              objTaxBusiness.strTkThangQuy = strQuy
+        End If
+        ' set ngay dau quy
+        If idMenu = "01" Or idMenu = "02" Then
+            If strQuy = "TK_QUY" Then
+                dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_New.ThreeMonths), CInt(TAX_Utilities_New.Year), iNgayTaiChinh, iThangTaiChinh)
+                objTaxBusiness.dNgayDauQuy = dNgayDauKy
+            End If
         End If
         ' end
         objTaxBusiness.Prepare1

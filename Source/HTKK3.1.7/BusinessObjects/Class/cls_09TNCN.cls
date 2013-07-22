@@ -96,7 +96,7 @@ Public Sub Prepare1()
         If Val(TAX_Utilities_New.Year) >= 2013 Then
             .Col = .ColLetterToNumber("K")
             .Row = 22
-            .Formula = ""
+            '.Formula = ""
             .Lock = False
         End If
         
