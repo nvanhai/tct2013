@@ -69,8 +69,7 @@ Const SO_HDDL_DL_X = "H"
 Const SO_HDDL_DL_Y = 28
 Const NGAY_HDDL_DL_X = "N"
 Const NGAY_HDDL_DL_Y = 28
-Const LOAI_TO_KHAI = "03/GTGT"
-
+Private LOAI_TO_KHAI As String
 Public WithEvents fps As fpSpread
 Attribute fps.VB_VarHelpID = -1
 'dhdang xu lý lay ma phong xu ly
@@ -144,7 +143,7 @@ Dim LoaiKyKK As Variant
 '        .TypeMaxEditLen = 20
         
         ' Loai ky ke khai
-        .GetText .ColLetterToNumber("AB"), 42, LoaiKyKK
+        .GetText .ColLetterToNumber("AD"), 42, LoaiKyKK
         If LoaiKyKK = "0" Then
             LOAI_TO_KHAI = "03/GTGT"
         Else
