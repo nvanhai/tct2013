@@ -365,18 +365,12 @@ On Error GoTo ErrHandle
                     vGHI_CHU_LOI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                     vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "AF_41"
+                Case "AF_1"
                     PP_HUY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
             End Select
         End If
         End With
     Next
-    
-    If PP_HUY = "0" Then
-        PP_HUY = "T"
-    Else
-        PP_HUY = "Q"
-    End If
     
     vCO_BANG_KE1 = TAX_Utilities_Srv_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue
     vCO_BANG_KE2 = TAX_Utilities_Srv_New.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue
@@ -408,6 +402,15 @@ On Error GoTo ErrHandle
                 
         .EventEnabled(EventAllEvents) = False
     End With
+        
+    If PP_HUY = "0" Then
+        PP_HUY = "T"
+        vKY_BC_TUNGAY = ""
+        vKY_BC_DENNGAY = ""
+    Else
+        PP_HUY = "Q"
+    End If
+    
     vNGUOI_LB = Trim(TAX_Utilities_Srv_New.Convert(CStr(vNGUOI_LB), UNICODE, TCVN))
     vNGUOI_DAI_DIEN = Trim(TAX_Utilities_Srv_New.Convert(CStr(vNGUOI_DAI_DIEN), UNICODE, TCVN))
     If Trim(vTEN_CQ_TIEP_NHAN) <> "" Then
