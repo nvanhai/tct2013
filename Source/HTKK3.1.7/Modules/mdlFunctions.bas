@@ -1952,13 +1952,33 @@ Public Function CheckPeriod(ByVal strMonth As String, ByVal strYear As String) A
             End If
         End If
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then 'strKieuKy = KIEU_KY_THANG
-        If CInt(strYear) > CInt(Year(Date)) Then
-            DisplayMessage "0044", msOKOnly, miInformation
-            Exit Function
-        ElseIf CInt(strYear) = CInt(Year(Date)) Then
-            If CInt(strMonth) > CInt(month(Date)) Then
+        If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" _
+            Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "36" Then
+            If strQuy = "TK_THANG" Then
+                If CInt(strYear) > CInt(Year(Date)) Then
+                    DisplayMessage "0044", msOKOnly, miInformation
+                    Exit Function
+                ElseIf CInt(strYear) = CInt(Year(Date)) Then
+                    If CInt(strMonth) > CInt(month(Date)) Then
+                        DisplayMessage "0044", msOKOnly, miInformation
+                        Exit Function
+                    End If
+                End If
+            ElseIf strQuy = "TK_QUY" Then
+                If GetNgayDauQuy(CInt(strMonth), CInt(strYear), iNgayTaiChinh, iThangTaiChinh) > Date Then
+                    DisplayMessage "0045", msOKOnly, miInformation
+                    Exit Function
+                End If
+            End If
+        Else
+            If CInt(strYear) > CInt(Year(Date)) Then
                 DisplayMessage "0044", msOKOnly, miInformation
                 Exit Function
+            ElseIf CInt(strYear) = CInt(Year(Date)) Then
+                If CInt(strMonth) > CInt(month(Date)) Then
+                    DisplayMessage "0044", msOKOnly, miInformation
+                    Exit Function
+                End If
             End If
         End If
     '************************************
