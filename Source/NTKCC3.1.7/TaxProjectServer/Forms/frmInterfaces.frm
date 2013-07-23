@@ -1653,12 +1653,12 @@ Private Sub Command1_Click()
 'str2 = "aa317730100100079   022013000000002002~0~1~0</S><S>1~~~~~~~</S><S>~~~11/07/2013~1~~~1053~x</S></S02>"
 'Barcode_Scaned str2
 
-' 'Mau TB04 / AC
-'str2 = "aa317910100100079   07201300100200100101/0101/01/2009<S01><S>~~</S><S>01/01/2013~~~test~16/07/2013~abc</S></S01>"
-'Barcode_Scaned str2
-
-str2 = "aa317680100100079   06201300100100100101/0101/01/2009<S01><S>1~1~01/04/2013~30/06/2013</S><S>1~1~1~0~1~1~1~1~1~1~0~0~0~1~0~1~0~1~1~1~0~0</S><S>1~trst~12/07/2013~0</S></S01>"
+ 'Mau TB04 / AC
+str2 = "aa317910100100079   07201300100200100101/0101/01/2009<S01><S>~~</S><S>01/01/2013~~~test~16/07/2013~abc</S></S01>"
 Barcode_Scaned str2
+
+'str2 = "aa317680100100079   06201300100100100101/0101/01/2009<S01><S>1~1~01/04/2013~30/06/2013</S><S>1~1~1~0~1~1~1~1~1~1~0~0~0~1~0~1~0~1~1~1~0~0</S><S>1~trst~12/07/2013~0</S></S01>"
+'Barcode_Scaned str2
 '
 'str2 = "aa317360100100079   06201300100100100101/0101/01/2010<S07><S></S><S>x~555~4001665~4000000~0~777~888~0~0~111~0~0~222222~20~44444~444444~1~4444</S><S>hjh~13/07/2013~tydgh~56754765~1~~0</S></S07>"
 'Barcode_Scaned str2
@@ -2099,8 +2099,10 @@ Private Sub Barcode_Scaned(strBarcode As String)
             
             If IsCompleteData(strData) Then
                 If Val(Left$(strData, 3)) <= 316 Then
-                    If Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "04" Or Mid$(strData, 4, 2) = "71" Or Mid$(strData, 4, 2) = "36" Or Mid$(strData, 4, 2) = "68" Then
+                    If Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "04" Or Mid$(strData, 4, 2) = "71" Or Mid$(strData, 4, 2) = "36" Then
                         strData = Left$(strData, Len(strData) - 10) & "~0" & Right$(strData, 10)
+                        ElseIf Mid$(strData, 4, 2) = "68" Then
+              strData = Left$(strData, Len(strData) - 10) & "~1" & Right$(strData, 10)
                     ElseIf Mid$(strData, 4, 2) = "73" Then
                         strData = Left$(strData, Len(strData) - 10) & "~" & Right$(strData, 10)
                     End If
