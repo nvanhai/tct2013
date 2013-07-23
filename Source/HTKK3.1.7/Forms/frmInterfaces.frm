@@ -4900,6 +4900,22 @@ Private Sub Command1_Click()
 '            fpSpread1.value = GetAttribute(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
 '                            (TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 10), "Value")
         ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Then
+        ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "72" Then
+            Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
+            ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+            fpSpread1.sheet = fpSpread1.SheetCount - 1
+            fpSpread1.Col = lCol_temp
+            fpSpread1.Row = lRow_temp
+            fpSpread1.Formula = "BD5"
+            
+            Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6)
+            ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+            fpSpread1.sheet = fpSpread1.SheetCount - 1
+            fpSpread1.Col = lCol_temp
+            fpSpread1.Row = lRow_temp
+            temp = lRow_temp - 18
+            fpSpread1.Formula = ""
+            fpSpread1.value = "0"
         Else
             Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
             ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
@@ -9139,6 +9155,10 @@ Private Sub TonghopKHBS()
                     fpSpread1.value = GetAttribute(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
                                     (TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 10), "Value")
                 ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Then
+                ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "72" Then
+                    fpSpread1.Formula = ""
+                    fpSpread1.value = GetAttribute(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
+                                    (TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6), "Value")
                 Else
                     Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
                     ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp

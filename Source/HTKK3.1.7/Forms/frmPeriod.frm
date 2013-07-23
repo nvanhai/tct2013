@@ -2383,6 +2383,12 @@ Public Sub cmdOK_Click()
             DisplayMessage "0224", msOKOnly, miInformation
             Exit Sub
         End If
+        'kiem tra voi ky kk
+        hanNopTk = GetHanNopTk
+        If DateDiff("D", format(hanNopTk, "dd/mm/yyyy"), strDateKHBS) < 0 Then
+            DisplayMessage "0271", msOKOnly, miInformation
+            Exit Sub
+        End If
         End With
         
         If strDateKHBS <> vbNullString Then
