@@ -1653,12 +1653,16 @@ Private Sub Command1_Click()
 'str2 = "aa317730100100079   022013000000002002~0~1~0</S><S>1~~~~~~~</S><S>~~~11/07/2013~1~~~1053~x</S></S02>"
 'Barcode_Scaned str2
 
- 'Mau TB04 / AC
-str2 = "aa317910100100079   07201300100200100101/0101/01/2009<S01><S>~~</S><S>01/01/2013~~~test~16/07/2013~abc</S></S01>"
-Barcode_Scaned str2
-
-'str2 = "aa317680100100079   06201300100100100101/0101/01/2009<S01><S>1~1~01/04/2013~30/06/2013</S><S>1~1~1~0~1~1~1~1~1~1~0~0~0~1~0~1~0~1~1~1~0~0</S><S>1~trst~12/07/2013~0</S></S01>"
+' 'Mau TB04 / AC
+'str2 = "aa317910100100079   07201300100200100101/0101/01/2009<S01><S>~~</S><S>01/01/2013~~~test~16/07/2013~abc</S></S01>"
 'Barcode_Scaned str2
+
+'str2 = "aa317680100100079   02201300100100100101/0101/01/2009<S01><S>1~1~01/04/2013~30/06/2013</S><S>1~1~1~0~1~1~1~1~1~1~0~0~0~1~0~1~0~1~1~1~0~0</S><S>1~trst~12/07/2013~1</S></S01>"
+'Barcode_Scaned str2
+
+'str2 = "aa316680100100079   02201300100100100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>test~test~23/07/2013</S></S01>"
+'Barcode_Scaned str2
+
 '
 'str2 = "aa317360100100079   06201300100100100101/0101/01/2010<S07><S></S><S>x~555~4001665~4000000~0~777~888~0~0~111~0~0~222222~20~44444~444444~1~4444</S><S>hjh~13/07/2013~tydgh~56754765~1~~0</S></S07>"
 'Barcode_Scaned str2
@@ -1666,8 +1670,13 @@ Barcode_Scaned str2
 'str2 = "aa317910100100079   07201300100300100101/0101/01/2009<S01><S>11~22~02DCTS</S><S>01/01/2013~test dvcq~0100100079~test~22/07/2013~test</S></S01>"
 'Barcode_Scaned str2
 
-'str2 = "aa317360100100079   02201300100100100101/0101/01/2010<S07><S></S><S>~0~4000000~4000000~0~0~0~0~0~0~0~0~0~20~0~0~1~0</S><S>test1~22/07/2013~test~test2~1~~~0</S></S07>"
+'str2 = "aa317360100100079   06201300100100100101/0101/01/2010<S07><S></S><S>~0~4000000~4000000~0~0~0~0~0~0~0~0~0~20~0~0~1~0</S><S>test1~22/07/2013~test~test2~1~~~0</S></S07>"
 'Barcode_Scaned str2
+
+str2 = "aa317680100100079   02201300100200100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>Hãa ®¬n b¸n hµng~02GTTT4/008~KH/13E~21~0000010~0000019~0000020~0000030~0000010~0000022~13~12~1~10~0~~0~~0000023~0000030~8~0</S><S>test~test~23/07/2013~0</S></S01>"
+Barcode_Scaned str2
+
+
 
 
 End Sub
@@ -2101,8 +2110,8 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 If Val(Left$(strData, 3)) <= 316 Then
                     If Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "04" Or Mid$(strData, 4, 2) = "71" Or Mid$(strData, 4, 2) = "36" Then
                         strData = Left$(strData, Len(strData) - 10) & "~0" & Right$(strData, 10)
-                        ElseIf Mid$(strData, 4, 2) = "68" Then
-              strData = Left$(strData, Len(strData) - 10) & "~1" & Right$(strData, 10)
+                    ElseIf Mid$(strData, 4, 2) = "68" Then
+                        strData = Left$(strData, Len(strData) - 10) & "~1" & Right$(strData, 10)
                     ElseIf Mid$(strData, 4, 2) = "73" Then
                         strData = Left$(strData, Len(strData) - 10) & "~" & Right$(strData, 10)
                     End If
@@ -6136,8 +6145,8 @@ Private Function LoaiToKhai(ByVal strData As String) As Boolean
     Dim LoaiTk As String
     
 On Error GoTo ErrHandle
-    strData = Left$(strData, Len(strData) - 10)
-    LoaiTk = Right$(strData, 1)
+    LoaiTk = Left$(strData, Len(strData) - 10)
+    LoaiTk = Right$(LoaiTk, 1)
     If LoaiTk = "1" Then
         LoaiToKhai = True
     Else
@@ -6146,7 +6155,7 @@ On Error GoTo ErrHandle
     
 ErrHandle:
     'Connect DB fail
-    SaveErrorLog Me.Name, "isMaDLT", Err.Number, Err.Description
+    SaveErrorLog Me.Name, "LoaiToKhai", Err.Number, Err.Description
     If Err.Number = -2147467259 Then _
         MessageBox "0063", msOKOnly, miCriticalError
 End Function
