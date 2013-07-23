@@ -2433,7 +2433,7 @@ Private Sub DeleteSheet(pIndex As Integer)
     Else
         If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then
             If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" _
-            Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+            Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "36" Then
                 If strQuy = "TK_THANG" Then
                     strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                 ElseIf strQuy = "TK_QUY" Then
