@@ -100,6 +100,8 @@ Public strLoaiTKQT As String
 
 Public strQuy As String
 
+Public hanNopTk As String
+
 Public strLoaiNNKD As String
 
 Public strBarcodeInPDF As String    'Chua chuoi ma vach duoc in ra file PDF cuoi cung (Them vao) dung cho iHTKK
@@ -2843,10 +2845,31 @@ Public Sub SetupDataKHBS(pGrid As fpSpread)
                  Dim dNgayCuoiKy As Date
                 
                 If TAX_Utilities_New.month <> "" Then
-                    If TAX_Utilities_New.month = 12 Then
-                        hannop = "20/" & "01" & "/" & TAX_Utilities_New.Year + 1
+                    If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" _
+                            Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+                        If strQuy = "TK_THANG" Then
+                            If TAX_Utilities_New.month = 12 Then
+                                hannop = "20/" & "01" & "/" & TAX_Utilities_New.Year + 1
+                            Else
+                                hannop = "20/" & Right("00" & TAX_Utilities_New.month + 1, 2) & "/" & TAX_Utilities_New.Year
+                            End If
+                        ElseIf strQuy = "TK_QUY" Then
+                            If TAX_Utilities_New.ThreeMonths = "04" Then
+                               hannop = "31/" & "01" & "/" & TAX_Utilities_New.Year + 1
+                            ElseIf TAX_Utilities_New.ThreeMonths = "03" Then
+                                hannop = "31/" & "10" & "/" & TAX_Utilities_New.Year
+                            ElseIf TAX_Utilities_New.ThreeMonths = "02" Then
+                                hannop = "31/" & "07" & "/" & TAX_Utilities_New.Year
+                            ElseIf TAX_Utilities_New.ThreeMonths = "01" Then
+                                hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
+                            End If
+                        End If
                     Else
-                        hannop = "20/" & Right("00" & TAX_Utilities_New.month + 1, 2) & "/" & TAX_Utilities_New.Year
+                        If TAX_Utilities_New.month = 12 Then
+                            hannop = "20/" & "01" & "/" & TAX_Utilities_New.Year + 1
+                        Else
+                            hannop = "20/" & Right("00" & TAX_Utilities_New.month + 1, 2) & "/" & TAX_Utilities_New.Year
+                        End If
                     End If
                 ElseIf TAX_Utilities_New.ThreeMonths <> "" Then
                     If TAX_Utilities_New.ThreeMonths = "04" Then
@@ -2873,7 +2896,6 @@ Public Sub SetupDataKHBS(pGrid As fpSpread)
                     hannop = DateAdd("D", 1, CDate(hannop))
                     hannop = format(hannop, "dd/mm/yyyy")
                 End If
-                
                 
                 ngayKHBS = Mid(TAX_Utilities_New.DateKHBS, 1, 2) & "/" & Mid(TAX_Utilities_New.DateKHBS, 3, 2) & "/" & Mid(TAX_Utilities_New.DateKHBS, 5, 4)
                 songaynopcham = numberb2d(hannop, ngayKHBS)
@@ -3821,3 +3843,61 @@ e:
     Format_ddmmyyyy = ""
 End Function
 
+Public Function GetHanNopTk() As String
+    Dim hannop As String
+    Dim dNgayCuoiKy As Date
+    If TAX_Utilities_New.month <> "" Then
+        If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" _
+                Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+            If strQuy = "TK_THANG" Then
+                If TAX_Utilities_New.month = 12 Then
+                    hannop = "20/" & "01" & "/" & TAX_Utilities_New.Year + 1
+                Else
+                    hannop = "20/" & Right("00" & TAX_Utilities_New.month + 1, 2) & "/" & TAX_Utilities_New.Year
+                End If
+            ElseIf strQuy = "TK_QUY" Then
+                If TAX_Utilities_New.ThreeMonths = "04" Then
+                   hannop = "31/" & "01" & "/" & TAX_Utilities_New.Year + 1
+                ElseIf TAX_Utilities_New.ThreeMonths = "03" Then
+                    hannop = "31/" & "10" & "/" & TAX_Utilities_New.Year
+                ElseIf TAX_Utilities_New.ThreeMonths = "02" Then
+                    hannop = "31/" & "07" & "/" & TAX_Utilities_New.Year
+                ElseIf TAX_Utilities_New.ThreeMonths = "01" Then
+                    hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
+                End If
+            End If
+        Else
+            If TAX_Utilities_New.month = 12 Then
+                hannop = "20/" & "01" & "/" & TAX_Utilities_New.Year + 1
+            Else
+                hannop = "20/" & Right("00" & TAX_Utilities_New.month + 1, 2) & "/" & TAX_Utilities_New.Year
+            End If
+        End If
+    ElseIf TAX_Utilities_New.ThreeMonths <> "" Then
+        If TAX_Utilities_New.ThreeMonths = "04" Then
+           hannop = "31/" & "01" & "/" & TAX_Utilities_New.Year + 1
+        ElseIf TAX_Utilities_New.ThreeMonths = "03" Then
+            hannop = "31/" & "10" & "/" & TAX_Utilities_New.Year
+        ElseIf TAX_Utilities_New.ThreeMonths = "02" Then
+            hannop = "31/" & "07" & "/" & TAX_Utilities_New.Year
+        ElseIf TAX_Utilities_New.ThreeMonths = "01" Then
+            hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
+        End If
+    '                    dNgayCuoiKy = DateAdd("D", 30, GetNgayCuoiQuy(TAX_Utilities_New.ThreeMonths, CInt(TAX_Utilities_New.Year), iNgayTaiChinh, iThangTaiChinh))
+    '                    hannop = format(dNgayCuoiKy, "dd/mm/yyyy")
+    Else
+        dNgayCuoiKy = DateAdd("D", 90, NgayCuoiNamTaiChinh(TAX_Utilities_New.Year, iThangTaiChinh, iNgayTaiChinh))
+        hannop = format(dNgayCuoiKy, "dd/mm/yyyy")
+    End If
+    
+    'Neu vao ngay thu 7 thi cong them 2 ngay,  ngay CN thi cong them mot ngay
+    If Weekday(CDate(hannop)) = 7 Then
+        hannop = DateAdd("D", 2, CDate(hannop))
+        hannop = format(hannop, "dd/mm/yyyy")
+    ElseIf Weekday(CDate(hannop)) = 1 Then
+        hannop = DateAdd("D", 1, CDate(hannop))
+        hannop = format(hannop, "dd/mm/yyyy")
+    End If
+    GetHanNopTk = hannop
+    Exit Function
+End Function
