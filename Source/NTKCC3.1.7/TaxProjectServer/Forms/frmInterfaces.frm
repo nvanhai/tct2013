@@ -1636,15 +1636,15 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '' To khai 02_GTGT
-'str2 = "aa315020100100079   12201200100100100101/0114/06/2006<S01><S></S><S>0~10000000~1000000~0~0~0~0~1000000~0~1000000~0~0~1000000</S><S>~Nguy‘n Phi Phong~~08/01/2013~1~~~1</S></S01>"
+'str2 = "aa317020100100079   02201300100100100101/0114/06/2006<S01><S></S><S>0~10000000~1000000~0~0~0~0~1000000~0~1000000~0~0~1000000</S><S>~Nguy‘n Phi Phong~~08/01/2013~1~~~0</S></S01>"
 'Barcode_Scaned str2
 
 '' To khai 03 GTGT
-'str2 = "aa316040100100079   06201300100100100101/0114/06/2006<S01><S></S><S>3242~0~23432~23423~0~432423~-20181~0~-408991~0~0~0~26674~0</S><S>3424~234wer~234234~07/07/2013~1~~~0</S></S01>"
+'str2 = "aa317040100100079   06201300100100100101/0114/06/2006<S01><S></S><S>3242~0~23432~23423~0~432423~-20181~0~-408991~0~0~0~26674~0</S><S>3424~234wer~234234~07/07/2013~1~~~0</S></S01>"
 'Barcode_Scaned str2
-
+'
 ''To khai 04/GTGT
-'str2 = "aa316710100100079   06201300100200100101/0101/01/1900<S01><S></S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0</S><S>~~~09/07/2013~1~~~1</S></S01>"
+'str2 = "aa317710100100079   06201300100200100101/0101/01/1900<S01><S></S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0</S><S>~~~09/07/2013~1~~~0</S></S01>"
 'Barcode_Scaned str2
 
 ''' To khai 02/TNDN
@@ -1657,8 +1657,8 @@ Private Sub Command1_Click()
 'str2 = "aa317910100100079   07201300100200100101/0101/01/2009<S01><S>~~</S><S>01/01/2013~~~test~16/07/2013~abc</S></S01>"
 'Barcode_Scaned str2
 
-'str2 = "aa317680100100079   02201300100100100101/0101/01/2009<S01><S>1~1~01/04/2013~30/06/2013</S><S>1~1~1~0~1~1~1~1~1~1~0~0~0~1~0~1~0~1~1~1~0~0</S><S>1~trst~12/07/2013~1</S></S01>"
-'Barcode_Scaned str2
+str2 = "aa317680100100079   06201300100100100101/0101/01/2009<S01><S>1~1~01/04/2013~30/06/2013</S><S>1~1~1~0~1~1~1~1~1~1~0~0~0~1~0~1~0~1~1~1~0~0</S><S>1~trst~12/07/2013~0</S></S01>"
+Barcode_Scaned str2
 '
 'str2 = "aa317360100100079   06201300100100100101/0101/01/2010<S07><S></S><S>x~555~4001665~4000000~0~777~888~0~0~111~0~0~222222~20~44444~444444~1~4444</S><S>hjh~13/07/2013~tydgh~56754765~1~~0</S></S07>"
 'Barcode_Scaned str2
@@ -2697,9 +2697,17 @@ Private Sub SetPeriod(ByVal strValue As String)
             TAX_Utilities_Svr_New.Month = Left$(strValue, 2)
             TAX_Utilities_Svr_New.ThreeMonths = ""
         End If
+
     ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ThreeMonth") = 1 Then
+
+        If TkID = "68" Then
+            TAX_Utilities_Svr_New.Month = Left$(strValue, 2)
+        Else
+            TAX_Utilities_Svr_New.Month = ""
+
+        End If
+
         TAX_Utilities_Svr_New.ThreeMonths = Left$(strValue, 2)
-        TAX_Utilities_Svr_New.Month = ""
     End If
     
     TAX_Utilities_Svr_New.Year = Right$(strValue, 4)
