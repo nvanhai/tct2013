@@ -1023,7 +1023,7 @@ Private Sub cmdSave_Click()
         'dhdang edit
         
         '        If GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ID") <> "11" And GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ID") <> "12" And GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ID") <> "03" Then
-        If TAX_Utilities_Svr_New.Month <> vbNullString Or TAX_Utilities_Svr_New.Month <> "" Then
+        If (TAX_Utilities_Svr_New.Month <> vbNullString Or TAX_Utilities_Svr_New.Month <> "") And LoaiKyKK = False Then
             vTHANG_CUOI_KYKK = "01/" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year
         ElseIf TAX_Utilities_Svr_New.ThreeMonths <> vbNullString Or TAX_Utilities_Svr_New.ThreeMonths <> "" Then
             vTHANG_CUOI_KYKK = "01/" & GetLastMonthOfThreeMonth(TAX_Utilities_Svr_New.ThreeMonths) & "/" & TAX_Utilities_Svr_New.Year
@@ -1631,9 +1631,9 @@ Private Sub Command1_Click()
 'str1 = "aa316110700176898   01201300900900100101/0114/06/2006<S01><S></S><S>100000000~0~100000000~0~0~100000000~0~0~100000000~25~0~25000000~x</S><S></S><S>~~~27/02/2013~1~0~~1052~01</S></S01>"
 'Barcode_Scaned str1
 
-'' To khai 01_GTGT
-'str2 = "aa316010100100079   01201300200200100101/0114/06/2006<S01><S></S><S>~35329039~0~100000000~1000000~0~0~100000000~0~0~100000000~0~0~0~100000000~99000000~0~0~0~63670961~0~63670961~0~0~1</S><S>~~~01/03/2013~1~~~1701~~03</S></S01>"
-'Barcode_Scaned str2
+' To khai 01_GTGT
+str2 = "aa317010100100079   02201300200200100101/0114/06/2006<S01><S></S><S>~35329039~0~100000000~1000000~0~0~100000000~0~0~100000000~0~0~0~100000000~99000000~0~0~0~63670961~0~63670961~0~0~1</S><S>~~~01/03/2013~1~~~1701~~03~1</S></S01>"
+Barcode_Scaned str2
 
 '' To khai 02_GTGT
 'str2 = "aa315020100100079   12201200100100100101/0114/06/2006<S01><S></S><S>0~10000000~1000000~0~0~0~0~1000000~0~1000000~0~0~1000000</S><S>~Nguy‘n Phi Phong~~08/01/2013~1~~~1</S></S01>"
@@ -1666,7 +1666,7 @@ Private Sub Command1_Click()
 'str2 = "aa317910100100079   07201300100300100101/0101/01/2009<S01><S>11~22~02DCTS</S><S>01/01/2013~test dvcq~0100100079~test~22/07/2013~test</S></S01>"
 'Barcode_Scaned str2
 
-'str2 = "aa317360100100079   02201300100100100101/0101/01/2010<S07><S></S><S>~0~4000000~4000000~0~0~0~0~0~0~0~0~0~20~0~0~1~0</S><S>test1~22/07/2013~test~test2~1~~~1</S></S07>"
+'str2 = "aa317360100100079   02201300100100100101/0101/01/2010<S07><S></S><S>~0~4000000~4000000~0~0~0~0~0~0~0~0~0~20~0~0~1~0</S><S>test1~22/07/2013~test~test2~1~~~0</S></S07>"
 'Barcode_Scaned str2
 
 
