@@ -2342,7 +2342,7 @@ Public Sub cmdOK_Click()
                 If strQuy = "TK_THANG" Then
                     strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                 ElseIf strQuy = "TK_QUY" Then
-                    strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                    strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
                 End If
         Else
             strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
@@ -4652,7 +4652,7 @@ On Error GoTo ErrHandle
                         If strQuy = "TK_THANG" Then
                             strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & txtMonth.Text & txtYear.Text & ".xml"
                         ElseIf strQuy = "TK_QUY" Then
-                            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(xmlNode, "DataFile") & "_0" & cmbQuy.Text & txtYear.Text & ".xml"
+                            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(xmlNode, "DataFile") & "_Q0" & cmbQuy.Text & txtYear.Text & ".xml"
                         Else
                             strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & txtMonth.Text & txtYear.Text & ".xml"
                         End If
