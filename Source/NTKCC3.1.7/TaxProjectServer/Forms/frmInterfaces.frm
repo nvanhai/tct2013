@@ -1673,7 +1673,7 @@ Private Sub Command1_Click()
 'str2 = "aa317360100100079   06201300100100100101/0101/01/2010<S07><S></S><S>~0~4000000~4000000~0~0~0~0~0~0~0~0~0~20~0~0~1~0</S><S>test1~22/07/2013~test~test2~1~~~0</S></S07>"
 'Barcode_Scaned str2
 
-str2 = "aa317680100100079   02201300100200100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>Hãa ®¬n b¸n hµng~02GTTT4/008~KH/13E~21~0000010~0000019~0000020~0000030~0000010~0000022~13~12~1~10~0~~0~~0000023~0000030~8~0</S><S>test~test~23/07/2013~0</S></S01>"
+str2 = "aa317680100100079   06201300100200100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>Hãa ®¬n b¸n hµng~02GTTT4/008~KH/13E~21~0000010~0000019~0000020~0000030~0000010~0000022~13~12~1~10~0~~0~~0000023~0000030~8~0</S><S>test~test~23/07/2013~0</S></S01>"
 Barcode_Scaned str2
 
 
@@ -2116,7 +2116,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
                         strData = Left$(strData, Len(strData) - 10) & "~" & Right$(strData, 10)
                     End If
                 End If
-
+                LoaiKyKK = LoaiToKhai(strData)
                 lblLoading.Visible = False
                 lblConnecting.Visible = True
                 frmInterfaces.Refresh
@@ -2938,7 +2938,7 @@ Private Function InitParameters(ByVal strData As String, _
     
     On Error GoTo ErrHandle
     
-    LoaiKyKK = LoaiToKhai(strData)
+    
     'Gan gia tri ngay dau ky
     If GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Month") = "1" Then
         dNgayDauKy = DateSerial(CInt(TAX_Utilities_Svr_New.Year), CInt(TAX_Utilities_Svr_New.Month), 1)
@@ -6152,7 +6152,7 @@ On Error GoTo ErrHandle
     Else
         LoaiToKhai = False
     End If
-    
+    Exit Function
 ErrHandle:
     'Connect DB fail
     SaveErrorLog Me.Name, "LoaiToKhai", Err.Number, Err.Description
