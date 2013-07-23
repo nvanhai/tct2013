@@ -46,6 +46,7 @@ Public Type TNCN_HDR
     so_hd_dl As Variant
     ngay_hd_dl As Variant
     lan_bs As Variant
+    loai_kykk As Variant
 End Type
 'end
 'Dinh nghia type luu du lieu bang DTL
