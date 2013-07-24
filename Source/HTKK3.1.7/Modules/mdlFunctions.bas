@@ -2959,22 +2959,56 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                 If TAX_Utilities_New.month <> "" Then
                     ' To khai 01/GTGT gia han thang 4,5,6 nam 2012 -> tinh lai han nop
                     If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Then
-                        If (TAX_Utilities_New.month = 4 Or TAX_Utilities_New.month = 5 Or TAX_Utilities_New.month = 6) And TAX_Utilities_New.Year = 2012 And TAX_Utilities_New.CheckToKhaiGH = True Then
-                            If TAX_Utilities_New.month = 4 Then
-                                hannop = "20/" & "11" & "/" & TAX_Utilities_New.Year
-                            ElseIf TAX_Utilities_New.month = 5 Then
-                                hannop = "20/" & "12" & "/" & TAX_Utilities_New.Year
-                            ElseIf TAX_Utilities_New.month = 6 Then
-                                hannop = "21/" & "01" & "/" & TAX_Utilities_New.Year + 1
+                         If strQuy = "TK_THANG" Then
+                            If (TAX_Utilities_New.month = 4 Or TAX_Utilities_New.month = 5 Or TAX_Utilities_New.month = 6) And TAX_Utilities_New.Year = 2012 And TAX_Utilities_New.CheckToKhaiGH = True Then
+                                If TAX_Utilities_New.month = 4 Then
+                                    hannop = "20/" & "11" & "/" & TAX_Utilities_New.Year
+                                ElseIf TAX_Utilities_New.month = 5 Then
+                                    hannop = "20/" & "12" & "/" & TAX_Utilities_New.Year
+                                ElseIf TAX_Utilities_New.month = 6 Then
+                                    hannop = "21/" & "01" & "/" & TAX_Utilities_New.Year + 1
+                                End If
+                            Else
+                                ' cac ky ke khai khac van tinh han nop binh thuong
+                                If TAX_Utilities_New.month = 12 Then
+                                    hannop = "20/" & "01" & "/" & TAX_Utilities_New.Year + 1
+                                ElseIf TAX_Utilities_New.month = 4 Then
+                                    hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
+                                Else
+                                    hannop = "20/" & Right("00" & TAX_Utilities_New.month + 1, 2) & "/" & TAX_Utilities_New.Year
+                                End If
                             End If
-                        Else
-                            ' cac ky ke khai khac van tinh han nop binh thuong
+                        ElseIf strQuy = "TK_QUY" Then
+                            If Val(TAX_Utilities_New.ThreeMonths) = 4 Then
+                               hannop = "31/" & "01" & "/" & TAX_Utilities_New.Year + 1
+                            ElseIf Val(TAX_Utilities_New.ThreeMonths) = 3 Then
+                                hannop = "31/" & "10" & "/" & TAX_Utilities_New.Year
+                            ElseIf Val(TAX_Utilities_New.ThreeMonths) = 2 Then
+                                hannop = "31/" & "07" & "/" & TAX_Utilities_New.Year
+                            ElseIf Val(TAX_Utilities_New.ThreeMonths) = 1 Then
+                                hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
+                            End If
+                        End If
+                    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" _
+                            Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+                        If strQuy = "TK_THANG" Then
+                             ' cac to khai thang khac van tinh binh thuong
                             If TAX_Utilities_New.month = 12 Then
                                 hannop = "20/" & "01" & "/" & TAX_Utilities_New.Year + 1
                             ElseIf TAX_Utilities_New.month = 4 Then
                                 hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
                             Else
                                 hannop = "20/" & Right("00" & TAX_Utilities_New.month + 1, 2) & "/" & TAX_Utilities_New.Year
+                            End If
+                        ElseIf strQuy = "TK_QUY" Then
+                            If Val(TAX_Utilities_New.ThreeMonths) = 4 Then
+                               hannop = "31/" & "01" & "/" & TAX_Utilities_New.Year + 1
+                            ElseIf Val(TAX_Utilities_New.ThreeMonths) = 3 Then
+                                hannop = "31/" & "10" & "/" & TAX_Utilities_New.Year
+                            ElseIf Val(TAX_Utilities_New.ThreeMonths) = 2 Then
+                                hannop = "31/" & "07" & "/" & TAX_Utilities_New.Year
+                            ElseIf Val(TAX_Utilities_New.ThreeMonths) = 1 Then
+                                hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
                             End If
                         End If
                     Else
@@ -3850,22 +3884,56 @@ Public Function GetHanNopTk() As String
     If TAX_Utilities_New.month <> "" Then
         ' To khai 01/GTGT gia han thang 4,5,6 nam 2012 -> tinh lai han nop
         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Then
-            If (TAX_Utilities_New.month = 4 Or TAX_Utilities_New.month = 5 Or TAX_Utilities_New.month = 6) And TAX_Utilities_New.Year = 2012 And TAX_Utilities_New.CheckToKhaiGH = True Then
-                If TAX_Utilities_New.month = 4 Then
-                    hannop = "20/" & "11" & "/" & TAX_Utilities_New.Year
-                ElseIf TAX_Utilities_New.month = 5 Then
-                    hannop = "20/" & "12" & "/" & TAX_Utilities_New.Year
-                ElseIf TAX_Utilities_New.month = 6 Then
-                    hannop = "21/" & "01" & "/" & TAX_Utilities_New.Year + 1
+             If strQuy = "TK_THANG" Then
+                If (TAX_Utilities_New.month = 4 Or TAX_Utilities_New.month = 5 Or TAX_Utilities_New.month = 6) And TAX_Utilities_New.Year = 2012 And TAX_Utilities_New.CheckToKhaiGH = True Then
+                    If TAX_Utilities_New.month = 4 Then
+                        hannop = "20/" & "11" & "/" & TAX_Utilities_New.Year
+                    ElseIf TAX_Utilities_New.month = 5 Then
+                        hannop = "20/" & "12" & "/" & TAX_Utilities_New.Year
+                    ElseIf TAX_Utilities_New.month = 6 Then
+                        hannop = "21/" & "01" & "/" & TAX_Utilities_New.Year + 1
+                    End If
+                Else
+                    ' cac ky ke khai khac van tinh han nop binh thuong
+                    If TAX_Utilities_New.month = 12 Then
+                        hannop = "20/" & "01" & "/" & TAX_Utilities_New.Year + 1
+                    ElseIf TAX_Utilities_New.month = 4 Then
+                        hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
+                    Else
+                        hannop = "20/" & Right("00" & TAX_Utilities_New.month + 1, 2) & "/" & TAX_Utilities_New.Year
+                    End If
                 End If
-            Else
-                ' cac ky ke khai khac van tinh han nop binh thuong
+            ElseIf strQuy = "TK_QUY" Then
+                If Val(TAX_Utilities_New.ThreeMonths) = 4 Then
+                   hannop = "31/" & "01" & "/" & TAX_Utilities_New.Year + 1
+                ElseIf Val(TAX_Utilities_New.ThreeMonths) = 3 Then
+                    hannop = "31/" & "10" & "/" & TAX_Utilities_New.Year
+                ElseIf Val(TAX_Utilities_New.ThreeMonths) = 2 Then
+                    hannop = "31/" & "07" & "/" & TAX_Utilities_New.Year
+                ElseIf Val(TAX_Utilities_New.ThreeMonths) = 1 Then
+                    hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
+                End If
+            End If
+        ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" _
+                Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+            If strQuy = "TK_THANG" Then
+                 ' cac to khai thang khac van tinh binh thuong
                 If TAX_Utilities_New.month = 12 Then
                     hannop = "20/" & "01" & "/" & TAX_Utilities_New.Year + 1
                 ElseIf TAX_Utilities_New.month = 4 Then
                     hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
                 Else
                     hannop = "20/" & Right("00" & TAX_Utilities_New.month + 1, 2) & "/" & TAX_Utilities_New.Year
+                End If
+            ElseIf strQuy = "TK_QUY" Then
+                If Val(TAX_Utilities_New.ThreeMonths) = 4 Then
+                   hannop = "31/" & "01" & "/" & TAX_Utilities_New.Year + 1
+                ElseIf Val(TAX_Utilities_New.ThreeMonths) = 3 Then
+                    hannop = "31/" & "10" & "/" & TAX_Utilities_New.Year
+                ElseIf Val(TAX_Utilities_New.ThreeMonths) = 2 Then
+                    hannop = "31/" & "07" & "/" & TAX_Utilities_New.Year
+                ElseIf Val(TAX_Utilities_New.ThreeMonths) = 1 Then
+                    hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
                 End If
             End If
         Else
@@ -3888,8 +3956,8 @@ Public Function GetHanNopTk() As String
         ElseIf Val(TAX_Utilities_New.ThreeMonths) = 1 Then
             hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
         End If
-    '                    dNgayCuoiKy = DateAdd("D", 30, GetNgayCuoiQuy(TAX_Utilities_New.ThreeMonths, CInt(TAX_Utilities_New.Year), iNgayTaiChinh, iThangTaiChinh))
-    '                    hannop = format(dNgayCuoiKy, "dd/mm/yyyy")
+'                    dNgayCuoiKy = DateAdd("D", 30, GetNgayCuoiQuy(TAX_Utilities_New.ThreeMonths, CInt(TAX_Utilities_New.Year), iNgayTaiChinh, iThangTaiChinh))
+'                    hannop = format(dNgayCuoiKy, "dd/mm/yyyy")
     Else
         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "80" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "82" Then
             strarrdate = Split(TAX_Utilities_New.LastDay, "/")
