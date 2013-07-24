@@ -65,6 +65,11 @@ Public Sub Prepare1()
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
         
+        .Row = 18
+        .Col = .ColLetterToNumber("BE")
+        .Formula = ""
+        .value = "0"
+        
     End With
 End Sub
 
