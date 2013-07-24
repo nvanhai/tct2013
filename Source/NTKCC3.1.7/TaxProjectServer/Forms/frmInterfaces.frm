@@ -1673,7 +1673,7 @@ Private Sub Command1_Click()
 'str2 = "aa317360100100079   06201300100100100101/0101/01/2010<S07><S></S><S>~0~4000000~4000000~0~0~0~0~0~0~0~0~0~20~0~0~1~0</S><S>test1~22/07/2013~test~test2~1~~~0</S></S07>"
 'Barcode_Scaned str2
 
-str2 = "aa317680100100079   06201300100200100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>Hãa ®¬n b¸n hµng~02GTTT4/008~KH/13E~21~0000010~0000019~0000020~0000030~0000010~0000022~13~12~1~10~0~~0~~0000023~0000030~8~0</S><S>test~test~23/07/2013~0</S></S01>"
+str2 = "aa317680100100079   02201300100200100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>Hãa ®¬n b¸n hµng~02GTTT4/008~KH/13E~21~0000010~0000019~0000020~0000030~0000010~0000022~13~12~1~10~0~~0~~0000023~0000030~8~0</S><S>test~test~23/07/2013~1</S></S01>"
 Barcode_Scaned str2
 
 
@@ -5898,18 +5898,18 @@ Public Function TinhLoaiThue(MAHS As String) As String
     TinhLoaiThue = loaithue
 End Function
 
-
 ' Ham lay ve so tt quet An chi
-Private Function getSoTTTK_AC(ByVal strID As String, arrStrHeaderData() As String, strData As String) As String
-    Dim rsResult As ADODB.Recordset
-    Dim strSQL As String
-    Dim clsConn As New TAX_Utilities_Svr_New.clsADO
-    
+Private Function getSoTTTK_AC(ByVal strID As String, _
+                              arrStrHeaderData() As String, _
+                              strData As String) As String
+    Dim rsResult     As ADODB.Recordset
+    Dim strSQL       As String
+    Dim clsConn      As New TAX_Utilities_Svr_New.clsADO
     
     Dim arrDeltail() As String
-    Dim arrDate() As String
-    Dim dTempDate As Date
-    Dim dTempDate1 As Date
+    Dim arrDate()    As String
+    Dim dTempDate    As Date
+    Dim dTempDate1   As Date
     
     Dim strSTT As String
     Dim vTuNgay As Date
@@ -5918,6 +5918,7 @@ Private Function getSoTTTK_AC(ByVal strID As String, arrStrHeaderData() As Strin
     On Error GoTo ErrHandle
     
     On Error GoTo ConnectErrHandle
+
     'connect to database VAT
     If Not clsConn.Connected Then
         clsConn.CreateConnectionString spathVat & "\NTK_TG\"
@@ -5926,43 +5927,46 @@ Private Function getSoTTTK_AC(ByVal strID As String, arrStrHeaderData() As Strin
 
     'Lay so TT to khai trong HDR
     vMaSoThue = Trim(Mid$(strData, 6, 13))
+
     If Len(vMaSoThue) = 13 Then
         vMaSoThue = Left(CStr(vMaSoThue), 10) & "-" & Right(CStr(vMaSoThue), 3)
     End If
+
     If strID = "01_TBAC" Then
         arrDeltail = Split(strData, "~")
         arrDeltail(UBound(arrDeltail) - 3) = Trim(arrDeltail(UBound(arrDeltail) - 3))
+
         'check neu TIN_DV_CQ = 13 thi tach
         If Len(arrDeltail(UBound(arrDeltail) - 3)) = 13 Then
             arrDeltail(UBound(arrDeltail) - 3) = Left(CStr(arrDeltail(UBound(arrDeltail) - 3)), 10) & "-" & Right(CStr(arrDeltail(UBound(arrDeltail) - 3)), 3)
         End If
+
         arrDate = Split(arrDeltail(UBound(arrDeltail) - 1), "/")
         dTempDate = DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))
         
-        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & _
-        "Where tkhai.tin = '" & vMaSoThue & "'" & _
-        "And tkhai.LOAI_BC = '" & strID & "' " & _
-        " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')" & _
-        " And tkhai.TIN_DV_CQ='" & Trim(arrDeltail(UBound(arrDeltail) - 3)) & "'"
+        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')" & " And tkhai.TIN_DV_CQ='" & Trim(arrDeltail(UBound(arrDeltail) - 3)) & "'"
     ElseIf strID = "03_TBAC" Then
         arrDeltail = Split(strData, "~")
         arrDate = Split(Left$(arrDeltail(UBound(arrDeltail)), 10), "/")
         dTempDate = DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))
         
-        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & _
-        "Where tkhai.tin = '" & vMaSoThue & "'" & _
-        "And tkhai.LOAI_BC = '" & strID & "' " & _
-        " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')"
+        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')"
+    ElseIf strID = "04_TBAC" Then
+        arrDeltail = Split(strData, "~")
+        arrDate = Split(arrDeltail(UBound(arrDeltail) - 1), "/")
+        dTempDate = DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))
+        
+        arrDate = Split(Right$(arrDeltail(UBound(arrDeltail) - 5), 10), "/")
+        dTempDate1 = DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))
+        
+        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')" & " And tkhai.NGAY_TB_PH=CTOD('" & format(dTempDate1, "mm/dd/yyyy") & "')"
         
     ElseIf strID = "BC21_AC" Then
         arrDeltail = Split(strData, "~")
         arrDate = Split(Left$(arrDeltail(UBound(arrDeltail)), 10), "/")
         dTempDate = DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))
         
-        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & _
-        "Where tkhai.tin = '" & vMaSoThue & "'" & _
-        "And tkhai.LOAI_BC = '" & strID & "' " & _
-        " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')"
+        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')"
         
     ElseIf strID = "01_AC" Then
         arrDeltail = Split(strData, "~")
@@ -5972,21 +5976,22 @@ Private Function getSoTTTK_AC(ByVal strID As String, arrStrHeaderData() As Strin
         arrDate = Split(Left$(arrDeltail(2), 10), "/")
         dTempDate1 = DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))
         
-        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & _
-        "Where tkhai.tin = '" & vMaSoThue & "'" & _
-        "And tkhai.LOAI_BC = '" & strID & "' " & _
-        "And tkhai.TU_NGAY = CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')" & _
-        "And tkhai.DEN_NGAY = CTOD('" & format(dTempDate1, "mm/dd/yyyy") & "')"
-        
+        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.TU_NGAY = CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')" & "And tkhai.DEN_NGAY = CTOD('" & format(dTempDate1, "mm/dd/yyyy") & "')"
+    ElseIf strID = "BC26_AC" Then
+
+        If LoaiKyKK = False Then
+            strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.QUY_BC = CTOD('" & format$(dNgayDauKy, "mm/dd/yyyy") & "')"
+        Else
+            strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.TU_NGAY = CTOD('" & format$(dNgayDauKy, "mm/dd/yyyy") & "')" & "And tkhai.DEN_NGAY = CTOD('" & format$(dNgayCuoiKy, "mm/dd/yyyy") & "')"
+
+        End If
+
     Else
-        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & _
-                "Where tkhai.tin = '" & vMaSoThue & "'" & _
-                "And tkhai.LOAI_BC = '" & strID & "' " & _
-                "And tkhai.TU_NGAY = CTOD('" & format$(dNgayDauKy, "mm/dd/yyyy") & "')" & _
-                "And tkhai.DEN_NGAY = CTOD('" & format$(dNgayCuoiKy, "mm/dd/yyyy") & "')"
+        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.TU_NGAY = CTOD('" & format$(dNgayDauKy, "mm/dd/yyyy") & "')" & "And tkhai.DEN_NGAY = CTOD('" & format$(dNgayCuoiKy, "mm/dd/yyyy") & "')"
     End If
     
     Set rsResult = clsConn.Execute(strSQL)
+
     If rsResult Is Nothing Then
         strSTT = 0
         isTonTaiAC = False

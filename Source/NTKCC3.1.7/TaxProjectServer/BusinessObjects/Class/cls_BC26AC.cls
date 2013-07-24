@@ -427,7 +427,7 @@ Public Function InsertHDR() As String
     Dim Nguoi_cn As Variant
     Dim So_tt_tk As Variant
     Dim DA_NHAN As Variant
-    Dim PHONG_XL As Variant
+    Dim phong_xl As Variant
     Dim PHONG_QL As Variant
     Dim CO_BANG_KE, CO_BANG_KE1, CO_BANG_KE2 As Variant
     Dim Ten_dv_cq As Variant
@@ -528,12 +528,12 @@ Public Function InsertHDR() As String
         ' Thong tin ma phong xu ly
         .GetText .ColLetterToNumber("Q"), 10, vPHONG_XU_LY
         arrPXL = Split(vPHONG_XU_LY, "{")
-        PHONG_XL = arrPXL(1)
-        PHONG_XL = Left$(PHONG_XL, Len(PHONG_XL) - 1)
-        If Trim(PHONG_XL) = vbNullString Then
-            PHONG_XL = "''"
+        phong_xl = arrPXL(1)
+        phong_xl = Left$(phong_xl, Len(phong_xl) - 1)
+        If Trim(phong_xl) = vbNullString Then
+            phong_xl = "''"
         Else
-            PHONG_XL = "'" & Trim(PHONG_XL) & "'"
+            phong_xl = "'" & Trim(phong_xl) & "'"
         End If
         
         ' Thong tin phong quan ly
@@ -599,6 +599,8 @@ Public Function InsertHDR() As String
             Pp_huy = "'Q'"
         Else
             Pp_huy = "'T'"
+            TU_NGAY = "CTOD('')"
+            DEN_NGAY = "CTOD('')"
         End If
         
         Dung_dn_cq = "''"
@@ -649,7 +651,7 @@ Public Function InsertHDR() As String
     End With
     
     sSQLVal = Id & "," & Tin & "," & Loai_bc & "," & Ngay_nop & "," & TU_NGAY & "," & DEN_NGAY & ","
-    sSQLVal = sSQLVal & Ngay_cn & "," & Nguoi_cn & "," & So_tt_tk & "," & DA_NHAN & "," & PHONG_XL
+    sSQLVal = sSQLVal & Ngay_cn & "," & Nguoi_cn & "," & So_tt_tk & "," & DA_NHAN & "," & phong_xl
     sSQLVal = sSQLVal & "," & PHONG_QL & "," & CO_BANG_KE & "," & Ten_dv_cq & "," & Tin_dv_cq & ","
     sSQLVal = sSQLVal & Ngay_bc & "," & Nguoi_dd & "," & Cq_nhan & "," & LY_DO_MAT & "," & Ngay_mat_h & ","
     sSQLVal = sSQLVal & Pp_huy & "," & Dung_dn_cq & "," & Ghi_chu & "," & MA_CQT & "," & LOAI_BC26 & "," & Nguoi_lb & "," & QUY_BC
