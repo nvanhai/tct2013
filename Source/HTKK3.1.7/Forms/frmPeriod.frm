@@ -4776,6 +4776,10 @@ On Error GoTo ErrHandle
                Frame2.Visible = True
             End If
             
+            ' to khai BS se khong co danh sach phu luc
+            If strKHBS = "TKBS" Then
+                Frame2.Visible = False
+            End If
             'Me.Height = Me.Height + Frame2.Height - 50
             'cmdOK.Top = cmdOK.Top + Frame2.Height - 50
             'cmdClose.Top = cmdClose.Top + Frame2.Height - 50
