@@ -298,6 +298,8 @@ End Function
 Public Sub Prepared4(ByVal dNgayDauKy As Date)
 Dim strKyLapBo As String
 Dim blnValid As Boolean
+    Dim LoaiKyKK   As Variant
+    Dim dNgayCuoiKy As Date
 
     blnValid = True
     
@@ -314,6 +316,9 @@ Dim blnValid As Boolean
         .Col = .ColLetterToNumber(PHONG_XU_LY_COL)
         .Row = PHONG_XU_LY_ROW
         strPhongXuLy = .Text
+        
+                ' Get Loai ky ke khai
+        .GetText .ColLetterToNumber("AB"), 42, LoaiKyKK
         
         ' Get NgayNhanToKhai
         .Col = .ColLetterToNumber(NGAY_NHAN_TO_KHAI_COL)
@@ -378,10 +383,21 @@ Dim blnValid As Boolean
             
             
             ' Kiem tra xem ky ke khai trong cung ky hay khac ky
+            dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
+            dNgayCuoiKy = DateAdd("d", 29, dNgayCuoiKy)
+            
+            If LoaiKyKK = "0" Then
             If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
                 blnValid = True
+                Else
+                    blnValid = False
+                End If
             Else
+                If (dNgayDauKy <= DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) And (dNgayCuoiKy >= DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
+                    blnValid = True
+                Else
                 blnValid = False
+                End If
             End If
             
             .Col = .ColLetterToNumber("B")
@@ -496,7 +512,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim strMaPhongXuLy As String
     Dim chkBoSung As Variant
     Dim sttBoSung As Variant
-    
+    Dim LOAI_KYKK As String
     Dim strTTGui As Integer
         Dim vItkhai_ID, vHthuc_nop As String
      Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
@@ -512,7 +528,8 @@ On Error GoTo ErrHandle
         strSQL = Mid(strSQL_HDR, 1, Len(strSQL_HDR) - 9) & ", THUE_ON_DINH)" & Right(strSQL_HDR, 8)
     End If
     ' end PIT
-    
+    strSQL = Replace$(strSQL, ")", ",LOAI_KYKK)")
+
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
@@ -561,7 +578,9 @@ On Error GoTo ErrHandle
                     vGHI_CHU_LOI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                     vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                
+                                Case "AB_42"
+                    LOAI_KYKK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+
             End Select
         End If
         End With
@@ -600,6 +619,7 @@ On Error GoTo ErrHandle
     End If
     
     'Ky/ Quy KK
+    If LOAI_KYKK = "0" Then
     If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
         'Ngay dau ky ke khai va ngay cuoi ky ke khai
         'strDate = Split(TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "/")
@@ -609,6 +629,16 @@ On Error GoTo ErrHandle
         dDate = DateAdd("m", 1, dDate)
         dDate = DateAdd("d", -1, dDate)
         strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+        End If
+    Else
+
+        If Trim(TAX_Utilities_Srv_New.ThreeMonths) <> "" Then
+            dDate = dNgayDauKy
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+            dDate = DateAdd("m", 3, dDate)
+            dDate = DateAdd("d", -1, dDate)
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+        End If
     End If
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
@@ -631,6 +661,12 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & IIf(Val(vCO_GTRINH_02C) = 1, "Y", "") & "',"
     strSQL = strSQL & "'','','',"
     strSQL = strSQL & "null,null,"
+    
+        If LOAI_KYKK = "0" Then
+        LOAI_KYKK = "T"
+    Else
+        LOAI_KYKK = "Q"
+    End If
     
     With fps
         For i = 1 To lSoPhongXL
@@ -678,9 +714,9 @@ On Error GoTo ErrHandle
     ' Neu co check cot Thu nhap hang thang on dinh thi ghi lai vao THUE_ON_DINH
     ' PIT
     If TAX_Utilities_Srv_New.isCheckPIT = True Then
-        strSQL = strSQL & vHthuc_nop & "," & vItkhai_ID & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & chkThuNhapOnDinh & "," & strTTGui & ")"
+        strSQL = strSQL & vHthuc_nop & "," & vItkhai_ID & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & chkThuNhapOnDinh & "," & strTTGui & ",'" & LOAI_KYKK & "')"
     Else
-        strSQL = strSQL & vHthuc_nop & "," & vItkhai_ID & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & chkThuNhapOnDinh & ")"
+        strSQL = strSQL & vHthuc_nop & "," & vItkhai_ID & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & chkThuNhapOnDinh &  ",'" & LOAI_KYKK & "')"
     End If
     ' end PIT
     

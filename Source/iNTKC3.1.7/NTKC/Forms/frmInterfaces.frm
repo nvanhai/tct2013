@@ -1234,15 +1234,31 @@ On Error GoTo ErrHandle
     'Ngay dau ky ke khai va ngay cuoi ky ke khai
     dDate = dNgayDauKy
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
+            If (Val(idToKhai) = 1 Or Val(idToKhai) = 2 Or Val(idToKhai) = 4 Or Val(idToKhai) = 71 Or Val(idToKhai) = 36) And LoaiKyKK = True Then
         strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
+                dDate = DateAdd("m", 3, dDate)
+                dDate = DateAdd("d", -1, dDate)
+                strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy')"
+
+            Else
+                strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
         dDate = DateAdd("m", 1, dDate)
         dDate = DateAdd("d", -1, dDate)
         strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
+            End If
     ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
+            If Val(idToKhai) = 68 And LoaiKyKK = False Then
         strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
+                dDate = DateAdd("m", 1, dDate)
+                dDate = DateAdd("d", -1, dDate)
+                strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
+
+            Else
+                strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
         dDate = DateAdd("m", 3, dDate)
         dDate = DateAdd("d", -1, dDate)
         strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy')"
+            End If
     ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
         strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
         dDate = DateAdd("m", 12, dDate)
@@ -2223,6 +2239,14 @@ On Error GoTo ErrHandle
             arrBCBuffer(intBarcodeNo) = strPrefix & strBarcodeCount & strBarcode
             ' hlnam End
             If IsCompleteData(strData) Then
+                If Val(Left$(strData, 3)) <= 316 Then
+                    If Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "04" Or Mid$(strData, 4, 2) = "71" Or Mid$(strData, 4, 2) = "36" Or Mid$(strData, 4, 2) = "68" Then
+                        strData = Left$(strData, Len(strData) - 10) & "~0" & Right$(strData, 10)
+                    ElseIf Mid$(strData, 4, 2) = "73" Then
+                        strData = Left$(strData, Len(strData) - 10) & "~" & Right$(strData, 10)
+                    End If
+                End If
+
                 lblLoading.Visible = False
                 lblConnecting.Visible = True
                 frmInterfaces.Refresh
@@ -2907,14 +2931,23 @@ On Error GoTo ErrHandle
     
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
         TAX_Utilities_Srv_New.Month = Left$(strValue, 2)
-        If strID = "01" Or strID = "02" Or strID = "04" Or strID = "71" Or strID = "36" Then
+
+        If strID = "01" Or strID = "02" Or strID = "04" Or strID = "71" Or strID = "36" Or strID = "68" Then
             TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
         Else
             TAX_Utilities_Srv_New.ThreeMonths = ""
         End If
     ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = 1 Then
+
+        If strID = "68" Then
+            TAX_Utilities_Srv_New.Month = Left$(strValue, 2)
+            TAX_Utilities_Srv_New.ThreeMonths = ""
+        Else
+            TAX_Utilities_Srv_New.Month = ""
+            TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
+        End If
+
         TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
-        TAX_Utilities_Srv_New.Month = ""
     End If
     
     TAX_Utilities_Srv_New.Year = Right$(strValue, 4)
@@ -3221,15 +3254,34 @@ On Error GoTo ErrHandle
     
     
     On Error GoTo ErrHandle
+    
+    LoaiKyKK = LoaiToKhai(strData)
+    
     'Gan gia tri ngay dau ky
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
         dNgayDauKy = DateSerial(CInt(TAX_Utilities_Srv_New.Year), CInt(TAX_Utilities_Srv_New.Month), 1)
         dNgayCuoiKy = DateAdd("m", 1, dNgayDauKy)
         dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
+
+        If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Then
+            If LoaiKyKK = True Then
+                dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
+                dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
+                dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
+            End If
+
+        End If
+
     ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
+        If Val(strIDBCTC) = 68 And LoaiKyKK = False Then
+            dNgayDauKy = DateSerial(CInt(TAX_Utilities_Srv_New.Year), CInt(TAX_Utilities_Srv_New.Month), 1)
+            dNgayCuoiKy = DateAdd("m", 1, dNgayDauKy)
+            dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
+        Else
         dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
         dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
         dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
+        End If
     ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
         dNgayDauKy = GetNgayDauNam(CInt(TAX_Utilities_Srv_New.Year), iThangTaiChinh, iNgayTaiChinh)
         dNgayCuoiKy = DateAdd("m", 12, dNgayDauKy)
@@ -5566,4 +5618,23 @@ Private Function layThongTinToKhai() As String
         thongTinTK = thongTinTK + TAX_Utilities_Srv_New.Convert(" Tê khai : ", TCVN, UNICODE) + changeMaLoaiToKhai(Trim(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue))
         layThongTinToKhai = thongTinTK
     End With
+End Function
+
+Private Function LoaiToKhai(ByVal strData As String) As Boolean
+    Dim LoaiTk As String
+    
+On Error GoTo ErrHandle
+    strData = Left$(strData, Len(strData) - 10)
+    LoaiTk = Right$(strData, 1)
+    If LoaiTk = "1" Then
+        LoaiToKhai = True
+    Else
+        LoaiToKhai = False
+    End If
+    
+ErrHandle:
+    'Connect DB fail
+    SaveErrorLog Me.Name, "isMaDLT", Err.Number, Err.Description
+    If Err.Number = -2147467259 Then _
+        MessageBox "0063", msOKOnly, miCriticalError
 End Function
