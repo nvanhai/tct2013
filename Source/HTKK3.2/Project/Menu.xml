@@ -293,7 +293,12 @@
 		</Validity>
 	</Menu>
 	
-
+	<Menu ID="92" PopID="101" ParentID="101_3" Caption="TK thuế TN tạm tính với dầu khí(01/TAIN_DK)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="1" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
+		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\excel\01_TAIN_DK.xls" ReportTemplate="..\ReportTemplates\excel\01_TAIN_DK.xls" CatalogueID="01" Class="TAX_Business.cls_01TAIN_DK" Class2="TAX_Business.clsReport002">
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_TAIN_DK" InterfaceIni="..\InterfaceIni\01_TAIN_DK.xml" ReportIni="..\ReportIni\01_TAIN_DK.xml"/>			
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01_TAIN_DK" InterfaceIni="..\InterfaceIni\KHBS_01_TAIN_DK.xml" ReportIni="..\ReportIni\KHBS_01_TAIN_DK.xml"/>
+		</Validity>
+	</Menu>
 	
 	<Menu ID="101_4" PopID="" ParentID="101" Caption="Thuế Tiêu Thụ Đặc Biệt" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\kekhai.gif"/>	
 	<Menu ID="05" PopID="101" ParentID="101_4" Caption="Tờ khai thuế tiêu thụ đặc biệt (01/TTĐB)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="1" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
