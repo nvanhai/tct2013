@@ -5281,6 +5281,10 @@ Private Sub Form_Load()
             ' to khai GTGT se co to khai thang / quy
         If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "95" Then
              objTaxBusiness.strTkThangQuy = strQuy
+        ElseIf idMenu = "92" Then
+            objTaxBusiness.chkDauTho = strDauTho
+            objTaxBusiness.chkCondensate = strCondensate
+            objTaxBusiness.chkKhiThienNhien = strKhiThienNhien
         End If
         ' end
         objTaxBusiness.Prepare1

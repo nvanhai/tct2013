@@ -17,6 +17,30 @@ Begin VB.Form frmPeriod
    ScaleWidth      =   7230
    ShowInTaskbar   =   0   'False
    Visible         =   0   'False
+   Begin VB.CheckBox chkKhiThien 
+      Caption         =   "Khi thien nhien"
+      Height          =   375
+      Left            =   3360
+      TabIndex        =   39
+      Top             =   11640
+      Width           =   1575
+   End
+   Begin VB.CheckBox chkCondensate 
+      Caption         =   "Condensate"
+      Height          =   375
+      Left            =   1680
+      TabIndex        =   38
+      Top             =   11640
+      Width           =   1335
+   End
+   Begin VB.CheckBox chkDauTho 
+      Caption         =   "Dau tho"
+      Height          =   375
+      Left            =   240
+      TabIndex        =   37
+      Top             =   11640
+      Width           =   1095
+   End
    Begin VB.CheckBox chkQTNamDau 
       Caption         =   "Quy’t to∏n h’t vµo n®m Æ«u"
       BeginProperty Font 
@@ -200,7 +224,7 @@ Begin VB.Form frmPeriod
          Strikethrough   =   0   'False
       EndProperty
       Height          =   285
-      Left            =   3510
+      Left            =   3480
       TabIndex        =   21
       Top             =   6600
       Width           =   1785
@@ -665,6 +689,40 @@ Private strLoaiSacThue As String
 
 Private Sub cboNganhKD_Click()
     strLoaiNNKD = cboNganhKD.ItemData(cboNganhKD.ListIndex)
+End Sub
+
+Private Sub chkCondensate_Click()
+    If chkCondensate.value = 1 Then
+        chkDauTho.value = 0
+        chkKhiThien.value = 0
+        
+        strCondensate = chkCondensate.value
+        strDauTho = 0
+        strKhiThienNhien = 0
+    End If
+End Sub
+
+Private Sub chkDauTho_Click()
+
+    If chkDauTho.value = 1 Then
+        chkCondensate.value = 0
+        chkKhiThien.value = 0
+        
+        strDauTho = chkDauTho.value
+        strKhiThienNhien = 0
+        strCondensate = 0
+    End If
+End Sub
+
+Private Sub chkKhiThien_Click()
+    If chkKhiThien.value = 1 Then
+        chkCondensate.value = 0
+        chkDauTho.value = 0
+        
+        strKhiThienNhien = chkKhiThien.value
+        strDauTho = 0
+        strCondensate = 0
+    End If
 End Sub
 
 Private Sub chkQTNamDau_Click()
@@ -1645,6 +1703,14 @@ Public Sub cmdOK_Click()
         End If
     End If
     
+    ' validate cho to 04TBAC
+    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92") Then
+        If (chkDauTho.value = 0 And chkCondensate.value = 0 And chkKhiThien.value = 0) Then
+            DisplayMessage "0017", msOKOnly, miInformation
+            Exit Sub
+        End If
+    End If
+    
     If strKieuKy = KIEU_KY_NGAY_NAM Then
         txtNgayDau_LostFocus
         If Not blnValidInfo(3) Then Exit Sub
@@ -2338,6 +2404,8 @@ Private Sub Form_Load()
 '        SetupLayout08TNCN
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Then
         SetupLayout04TBAC
+    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "92" Then
+        SetupLayout01_TAIN_DK
     Else
         SetupLayout (strKieuKy)
     End If
@@ -3049,6 +3117,94 @@ ErrorHandle:
     SaveErrorLog Me.Name, "SetupLayout04TBAC", Err.Number, Err.Description
 End Sub
 
+' set up layout to khai 01_TAIN_DK
+Private Sub SetupLayout01_TAIN_DK()
+    On Error GoTo ErrorHandle
+    
+    Me.Height = 4385
+    Me.Width = 4905
+    frmKy.Height = 2000
+    
+    lblNgay.Visible = True
+    
+    lblMonth.Visible = True
+    txtMonth.Visible = True
+    lblYear.Visible = True
+    txtYear.Visible = True
+    cmbQuy.Visible = False
+    
+    Set lblNgay.Container = frmKy
+    lblNgay.Top = 670
+    lblNgay.Left = 120
+    
+    txtDay.Visible = True
+    Set txtDay.Container = frmKy
+    txtDay.Top = 640
+    txtDay.Left = 700
+    
+    Set lblMonth.Container = frmKy
+    lblMonth.Top = 670
+    lblMonth.Left = 1360
+        
+    Set txtMonth.Container = frmKy
+    txtMonth.Top = 640
+    txtMonth.Left = 1930
+        
+    Set lblYear.Container = frmKy
+    lblYear.Top = 670
+    lblYear.Left = 2710
+        
+    Set txtYear.Container = frmKy
+    txtYear.Top = 640
+    txtYear.Left = 3130
+        
+    Dim dTem As Date
+    dTem = Date
+    txtDay.Text = Day(dTem)
+    txtMonth.Text = month(dTem)
+    txtYear.Text = Year(dTem)
+        
+    If Len(txtDay.Text) = 1 Then
+        txtDay.Text = "0" & txtDay.Text
+    End If
+
+    If Len(txtMonth.Text) = 1 Then
+        txtMonth.Text = "0" & txtMonth.Text
+    End If
+    
+    'option
+    chkDauTho.Visible = True
+    chkCondensate.Visible = True
+    chkKhiThien.Visible = True
+    Set chkDauTho.Container = frmKy
+    Set chkCondensate.Container = frmKy
+    Set chkKhiThien.Container = frmKy
+
+    chkDauTho.Top = 200
+    chkDauTho.Left = 120
+    
+    chkCondensate.Top = 200
+    chkCondensate.Left = 1500
+    chkKhiThien.Top = 200
+    chkKhiThien.Left = 3100
+    
+    OptBosung.Visible = True
+    OptChinhthuc.Visible = True
+    Set OptBosung.Container = frmKy
+    Set OptChinhthuc.Container = frmKy
+    
+    OptChinhthuc.Top = 1200
+    OptChinhthuc.Left = 1600
+    OptBosung.Top = 1500
+    OptBosung.Left = 1600
+    
+    Me.Top = (frmSystem.ScaleHeight - Me.ScaleHeight) / 2 - 400
+    Me.Left = (frmSystem.Width - Me.Width) / 2
+    
+    Exit Sub
+ErrorHandle:
+    SaveErrorLog Me.Name, "SetupLayout01_TAIN_DK", Err.Number, Err.Description
+End Sub
 
 '****************************************************
 'Description:LoadDefaultInfor procedure layout default information
@@ -3126,7 +3282,7 @@ Private Sub LoadDefaultInfor()
                 Y = Y - 1
             Else
                 'set current month for 04/TBAC
-                If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Then
+                If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "92" Then
                     m = m
                 Else
                     m = m - 1
@@ -3317,6 +3473,8 @@ Private Sub fpSpread1_MouseDown(Button As Integer, Shift As Integer, X As Single
     blnClick = True
 End Sub
 
+
+
 Private Sub lblSelectAll_Click()
     blnFPChange = False
     'chkSelectAll.SetFocus
@@ -3365,7 +3523,7 @@ Private Sub OptBosung_Click()
     
     varMenuId = GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID")
     If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11") Or varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "06" Or varMenuId = "05" Or varMenuId = "70" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "73" _
-    Or varMenuId = "03" Or varMenuId = "77" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95" Then
+    Or varMenuId = "03" Or varMenuId = "77" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "92" Then
         For i = 1 To 50
             ' Doi voi to khai thang neu la truong hop bo sung thi quet tat ca cac file xem lan bo sung lon nhat la bao nhieu
             ' Thu tu file bo sung tu 1 den 50
@@ -3387,6 +3545,8 @@ Private Sub OptBosung_Click()
             ElseIf varMenuId = "03" Then
                 strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.Year & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & ".xml"
             ElseIf varMenuId = "77" Or varMenuId = "87" Then
+                strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.Year & ".xml"
+            ElseIf varMenuId = "92" Then
                 strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.Year & ".xml"
             ElseIf varMenuId = "80" Or varMenuId = "82" Then
                 strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & ".xml"
@@ -4577,33 +4737,38 @@ ErrHandle:
 End Sub
 
 Private Sub SetDefaultActiveProperties()
-Dim xmlDom As New MSXML.DOMDocument
-Dim xmlNodeMenu As MSXML.IXMLDOMNode, xmlNodeValidity As MSXML.IXMLDOMNode
-Dim strTemp As String, lCtrl As Long
+    Dim xmlDom      As New MSXML.DOMDocument
+    Dim xmlNodeMenu As MSXML.IXMLDOMNode, xmlNodeValidity As MSXML.IXMLDOMNode
+    Dim strTemp     As String, lCtrl As Long
 
-xmlDom.Load App.path & "\Menu.xml"
+    xmlDom.Load App.path & "\Menu.xml"
 
-strTemp = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
-For Each xmlNodeMenu In xmlDom.getElementsByTagName("Menu")
-    If GetAttribute(xmlNodeMenu, "ID") = strTemp Then _
-        Exit For
-Next
+    strTemp = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
 
-strTemp = GetAttribute(TAX_Utilities_New.NodeValidity, "StartDate")
-For Each xmlNodeValidity In xmlNodeMenu.childNodes
-    If GetAttribute(xmlNodeValidity, "StartDate") = strTemp Then _
-        Exit For
-Next
+    For Each xmlNodeMenu In xmlDom.getElementsByTagName("Menu")
 
-For lCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
-    SetAttribute TAX_Utilities_New.NodeValidity.childNodes(lCtrl), "Active", _
-        GetAttribute(xmlNodeValidity.childNodes(lCtrl), "Active")
-Next lCtrl
+        If GetAttribute(xmlNodeMenu, "ID") = strTemp Then Exit For
+    Next
 
-Set xmlNodeMenu = Nothing
-Set xmlNodeValidity = Nothing
-Set xmlDom = Nothing
+    strTemp = GetAttribute(TAX_Utilities_New.NodeValidity, "StartDate")
 
+    For Each xmlNodeValidity In xmlNodeMenu.childNodes
+
+        If GetAttribute(xmlNodeValidity, "StartDate") = strTemp Then Exit For
+    Next
+
+    For lCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
+        SetAttribute TAX_Utilities_New.NodeValidity.childNodes(lCtrl), "Active", GetAttribute(xmlNodeValidity.childNodes(lCtrl), "Active")
+    Next lCtrl
+
+    Set xmlNodeMenu = Nothing
+    Set xmlNodeValidity = Nothing
+    Set xmlDom = Nothing
+    
+    'set value default
+    chkDauTho.value = 1
+    chkCondensate.value = 0
+    chkKhiThien.value = 0
 End Sub
 
 
