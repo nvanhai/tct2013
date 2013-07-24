@@ -339,6 +339,8 @@ Dim blnValid As Boolean
 Dim vNgayNop, vNgayQuet As Variant
 Dim arrDate() As String
 Dim arrDate1() As String
+    Dim LoaiKyKK   As Variant
+    Dim dNgayCuoiKy As Date
 
     blnValid = True
     
@@ -360,6 +362,9 @@ Dim arrDate1() As String
         .Col = .ColLetterToNumber(NGAY_NHAN_TO_KHAI_COL)
         .Row = NGAY_NHAN_TO_KHAI_ROW
         strNgayNhanToKhai = .Text
+        
+        ' Get Loai ky ke khai
+        .GetText .ColLetterToNumber("AB"), 42, LoaiKyKK
         
         ' Lay ve ngay nop to khai
         .GetText .ColLetterToNumber("E"), 32, vNgayNop
@@ -435,12 +440,25 @@ Dim arrDate1() As String
                 .Formula = "1"
             End If
             
-            
             ' Kiem tra xem ky ke khai trong cung ky hay khac ky
-            If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
-                blnValid = True
+            dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
+            dNgayCuoiKy = DateAdd("d", 29, dNgayCuoiKy)
+            
+            If LoaiKyKK = "0" Then
+                If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
+                    blnValid = True
+                Else
+                    blnValid = False
+                End If
+
             Else
-                blnValid = False
+
+                If (dNgayDauKy <= DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) And (dNgayCuoiKy >= DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
+                    blnValid = True
+                Else
+                    blnValid = False
+                End If
+
             End If
             
             .Col = .ColLetterToNumber("B")
@@ -704,13 +722,25 @@ On Error GoTo ErrHandle
     End If
     
     'Ky/ Quy KK
-    If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
-        'Ngay dau ky ke khai va ngay cuoi ky ke khai
-        dDate = dNgayDauKy
-        strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        dDate = DateAdd("m", 1, dDate)
-        dDate = DateAdd("d", -1, dDate)
-        strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    If LOAI_KYKK = "0" Then
+        If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
+            'Ngay dau ky ke khai va ngay cuoi ky ke khai
+            dDate = dNgayDauKy
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+            dDate = DateAdd("m", 1, dDate)
+            dDate = DateAdd("d", -1, dDate)
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+        End If
+
+    Else
+
+        If Trim(TAX_Utilities_Srv_New.ThreeMonths) <> "" Then
+            dDate = dNgayDauKy
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+            dDate = DateAdd("m", 3, dDate)
+            dDate = DateAdd("d", -1, dDate)
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+        End If
     End If
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
