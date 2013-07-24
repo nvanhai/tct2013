@@ -2970,6 +2970,10 @@ Private Function InitParameters(ByVal strData As String, _
         dNgayDauKy = GetNgayDauNam(CInt(TAX_Utilities_Svr_New.Year), iThangTaiChinh, iNgayTaiChinh)
         dNgayCuoiKy = DateAdd("m", 12, dNgayDauKy)
         dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
+    ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Year") = "1/2" Then
+        dNgayDauKy = GetNgayDauNam(CInt(TAX_Utilities_Svr_New.Year), iThangTaiChinh, iNgayTaiChinh)
+        dNgayCuoiKy = DateAdd("m", 12, dNgayDauKy)
+        dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
     End If
 
     '*******************************
@@ -5944,7 +5948,11 @@ Private Function getSoTTTK_AC(ByVal strID As String, _
         arrDate = Split(arrDeltail(UBound(arrDeltail) - 1), "/")
         dTempDate = DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))
         
-        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')" & " And tkhai.TIN_DV_CQ='" & Trim(arrDeltail(UBound(arrDeltail) - 3)) & "'"
+        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & _
+        "Where tkhai.tin = '" & vMaSoThue & "'" & _
+        "And tkhai.LOAI_BC = '" & strID & "' " & _
+        " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')" & _
+        " And tkhai.TIN_DV_CQ='" & Trim(arrDeltail(UBound(arrDeltail) - 3)) & "'"
     ElseIf strID = "03_TBAC" Then
         arrDeltail = Split(strData, "~")
         arrDate = Split(Left$(arrDeltail(UBound(arrDeltail)), 10), "/")
