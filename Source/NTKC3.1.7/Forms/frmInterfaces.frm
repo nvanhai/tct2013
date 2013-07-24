@@ -1880,9 +1880,13 @@ Private Sub Barcode_Scaned(strBarcode As String)
 
             ' hlnam End
             If IsCompleteData(strData) Then
+            
+                ' Check version <= 3.1.6
                 If Val(Left$(strData, 3)) <= 316 Then
-                    If Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "04" Or Mid$(strData, 4, 2) = "71" Or Mid$(strData, 4, 2) = "36" Or Mid$(strData, 4, 2) = "68" Then
+                    If Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "04" Or Mid$(strData, 4, 2) = "71" Or Mid$(strData, 4, 2) = "36" Then
                         strData = Left$(strData, Len(strData) - 10) & "~0" & Right$(strData, 10)
+                    ElseIf Mid$(strData, 4, 2) = "68" Then
+                        strData = Left$(strData, Len(strData) - 10) & "~1" & Right$(strData, 10)
                     ElseIf Mid$(strData, 4, 2) = "73" Then
                         strData = Left$(strData, Len(strData) - 10) & "~" & Right$(strData, 10)
                     End If
@@ -5038,10 +5042,10 @@ On Error GoTo ErrHandle
     Else
         LoaiToKhai = False
     End If
-    
+    Exit Function
 ErrHandle:
     'Connect DB fail
-    SaveErrorLog Me.Name, "isMaDLT", Err.Number, Err.Description
+    SaveErrorLog Me.Name, "LoaiToKhai", Err.Number, Err.Description
     If Err.Number = -2147467259 Then _
         MessageBox "0063", msOKOnly, miCriticalError
 End Function
