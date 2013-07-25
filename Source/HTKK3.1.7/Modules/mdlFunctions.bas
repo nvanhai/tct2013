@@ -102,6 +102,8 @@ Public strQuy As String
 
 Public hanNopTk As String
 
+Public ngayLapTkBs As String
+
 Public strLoaiNNKD As String
 
 Public strBarcodeInPDF As String    'Chua chuoi ma vach duoc in ra file PDF cuoi cung (Them vao) dung cho iHTKK
@@ -2414,6 +2416,12 @@ Private Function numberb2d(fd As String, td As String) As Integer
     If numberb2d <= 0 Then numberb2d = 0
 End Function
 
+' ham tinh so ngay chenh lech
+Public Function getSoNgay(fd As String, td As String) As Long
+    getSoNgay = DateDiff("d", s2d(fd), s2d(td))
+    If getSoNgay <= 0 Then getSoNgay = 0
+End Function
+
 Public Function NgayCuoiNamTaiChinh(Y As Integer, dThangTaiChinh As Integer, dNgayTaiChinh As Integer) As Date
     Dim dNgayTC As Date
     
@@ -2839,7 +2847,7 @@ Public Sub SetupDataKHBS(pGrid As fpSpread)
            End If
            If lSheet = TAX_Utilities_New.xmlDataCount Then
                 SetAttribute TAX_Utilities_New.NodeValidity.childNodes(lSheet), "Active", "1"
-                Dim songaynopcham As Long
+                Dim soNgayNopCham As Long
                 Dim hannop As String
                 Dim ngayKHBS  As String
                  Dim dNgayCuoiKy As Date
@@ -2898,14 +2906,14 @@ Public Sub SetupDataKHBS(pGrid As fpSpread)
                 End If
                 
                 ngayKHBS = Mid(TAX_Utilities_New.DateKHBS, 1, 2) & "/" & Mid(TAX_Utilities_New.DateKHBS, 3, 2) & "/" & Mid(TAX_Utilities_New.DateKHBS, 5, 4)
-                songaynopcham = numberb2d(hannop, ngayKHBS)
+                soNgayNopCham = numberb2d(hannop, ngayKHBS)
                 SetAttribute TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).nodeFromID("B_24"), "Value", hannop
-                SetAttribute TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).nodeFromID("BE_17"), "Value", CStr(songaynopcham)
+                SetAttribute TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).nodeFromID("BE_17"), "Value", CStr(soNgayNopCham)
                 SetAttribute TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).nodeFromID("BG_23"), "Value", CStr(format(Date, "dd/mm/yyyy"))
                 With pGrid
                     .sheet = .SheetCount - 1
                     .SetText .ColLetterToNumber("B"), 24, hannop
-                    .SetText .ColLetterToNumber("BE"), 17, songaynopcham
+                    .SetText .ColLetterToNumber("BE"), 17, soNgayNopCham
                     .SetText .ColLetterToNumber("BG"), 23, CStr(format(Date, "dd/mm/yyyy"))
                     .Col = .ColLetterToNumber("BG")
                     .Row = 22
@@ -2951,7 +2959,7 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
     
     Dim strarrdate() As String ' su dung cho to khai 02/NTNN va 04/NTNN
                 'SetAttribute TAX_Utilities_New.NodeValidity.childNodes(lSheet), "Active", "1"
-                Dim songaynopcham As Long
+                Dim soNgayNopCham As Long
                 Dim hannop As String
                 Dim ngayKHBS  As String
                  Dim dNgayCuoiKy As Date
@@ -2972,8 +2980,8 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                                 ' cac ky ke khai khac van tinh han nop binh thuong
                                 If TAX_Utilities_New.month = 12 Then
                                     hannop = "20/" & "01" & "/" & TAX_Utilities_New.Year + 1
-                                ElseIf TAX_Utilities_New.month = 4 Then
-                                    hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
+'                                ElseIf TAX_Utilities_New.month = 4 Then
+'                                    hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
                                 Else
                                     hannop = "20/" & Right("00" & TAX_Utilities_New.month + 1, 2) & "/" & TAX_Utilities_New.Year
                                 End If
@@ -2995,8 +3003,8 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                              ' cac to khai thang khac van tinh binh thuong
                             If TAX_Utilities_New.month = 12 Then
                                 hannop = "20/" & "01" & "/" & TAX_Utilities_New.Year + 1
-                            ElseIf TAX_Utilities_New.month = 4 Then
-                                hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
+'                            ElseIf TAX_Utilities_New.month = 4 Then
+'                                hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
                             Else
                                 hannop = "20/" & Right("00" & TAX_Utilities_New.month + 1, 2) & "/" & TAX_Utilities_New.Year
                             End If
@@ -3015,8 +3023,8 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                         ' cac to khai thang khac van tinh binh thuong
                         If TAX_Utilities_New.month = 12 Then
                             hannop = "20/" & "01" & "/" & TAX_Utilities_New.Year + 1
-                        ElseIf TAX_Utilities_New.month = 4 Then
-                            hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
+'                        ElseIf TAX_Utilities_New.month = 4 Then
+'                            hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
                         Else
                             hannop = "20/" & Right("00" & TAX_Utilities_New.month + 1, 2) & "/" & TAX_Utilities_New.Year
                         End If
@@ -3055,7 +3063,7 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                 
                 
                 ngayKHBS = Mid(TAX_Utilities_New.DateKHBS, 1, 2) & "/" & Mid(TAX_Utilities_New.DateKHBS, 3, 2) & "/" & Mid(TAX_Utilities_New.DateKHBS, 5, 4)
-                songaynopcham = numberb2d(hannop, ngayKHBS)
+                soNgayNopCham = numberb2d(hannop, ngayKHBS)
 '                SetAttribute TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).nodeFromID("B_24"), "Value", hannop
 '                SetAttribute TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).nodeFromID("BE_17"), "Value", CStr(songaynopcham)
 '                SetAttribute TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).nodeFromID("BG_23"), "Value", CStr(format(Date, "dd/mm/yyyy"))
@@ -3063,7 +3071,7 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                     .sheet = .SheetCount - 1
                     .SetText .ColLetterToNumber("E"), 24, hannop
                     .SetText .ColLetterToNumber("BG"), 5, ngayKHBS
-                    .SetText .ColLetterToNumber("BD"), 5, songaynopcham
+                    .SetText .ColLetterToNumber("BD"), 5, soNgayNopCham
                     
                     'dhdang sua load tk BS da có du lieu se ko tinh lai theo cong thuc nua
                     Dim lCol_temp As Long
@@ -3897,8 +3905,8 @@ Public Function GetHanNopTk() As String
                     ' cac ky ke khai khac van tinh han nop binh thuong
                     If TAX_Utilities_New.month = 12 Then
                         hannop = "20/" & "01" & "/" & TAX_Utilities_New.Year + 1
-                    ElseIf TAX_Utilities_New.month = 4 Then
-                        hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
+'                    ElseIf TAX_Utilities_New.month = 4 Then
+'                        hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
                     Else
                         hannop = "20/" & Right("00" & TAX_Utilities_New.month + 1, 2) & "/" & TAX_Utilities_New.Year
                     End If
@@ -3920,8 +3928,8 @@ Public Function GetHanNopTk() As String
                  ' cac to khai thang khac van tinh binh thuong
                 If TAX_Utilities_New.month = 12 Then
                     hannop = "20/" & "01" & "/" & TAX_Utilities_New.Year + 1
-                ElseIf TAX_Utilities_New.month = 4 Then
-                    hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
+'                ElseIf TAX_Utilities_New.month = 4 Then
+'                    hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
                 Else
                     hannop = "20/" & Right("00" & TAX_Utilities_New.month + 1, 2) & "/" & TAX_Utilities_New.Year
                 End If
@@ -3940,8 +3948,8 @@ Public Function GetHanNopTk() As String
             ' cac to khai thang khac van tinh binh thuong
             If TAX_Utilities_New.month = 12 Then
                 hannop = "20/" & "01" & "/" & TAX_Utilities_New.Year + 1
-            ElseIf TAX_Utilities_New.month = 4 Then
-                hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
+'            ElseIf TAX_Utilities_New.month = 4 Then
+'                hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
             Else
                 hannop = "20/" & Right("00" & TAX_Utilities_New.month + 1, 2) & "/" & TAX_Utilities_New.Year
             End If
