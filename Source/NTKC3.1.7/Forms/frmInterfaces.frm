@@ -979,7 +979,7 @@ Private Sub cmdSave_Click()
     '*************************************************************
     
     ' xu ly nhan cac mau an chi co canh bao khi quet trung
-    If Val(idToKhai) <= 68 And Val(idToKhai) >= 64 Then
+    If (Val(idToKhai) <= 68 And Val(idToKhai) >= 64) Or Val(idToKhai) = 91 Then
 
         ' xu ly an chi
         If isTonTaiAC = True Then
@@ -1386,12 +1386,12 @@ Private Sub Command1_Click()
 
 'str2 = "aa316363600247325   06201300000100100101/0101/01/2010<S07><S></S><S>~0~4000000~4000000~0~0~0~0~0~0~0~0~0~20~0~0~1~0</S><S>~16/07/2013~~~1~~</S></S07>"
 'Barcode_Scaned str2
-
-str2 = "aa317683600247325   02201300200200100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~et~16/07/2013~0</S></S01>"
-Barcode_Scaned str2
-
-'str2 = "aa317913600247325   07201300100200100101/0101/01/2009<S01><S>~~</S><S>01/01/2013~~~test~16/07/2013~abc</S></S01>"
+'
+'str2 = "aa317683600247325   02201300200200100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~et~16/07/2013~0</S></S01>"
 'Barcode_Scaned str2
+
+str2 = "aa317913600247325   07201300100200100101/0101/01/2009<S01><S>~~</S><S>01/01/2013~~~test~16/07/2013~abc</S></S01>"
+Barcode_Scaned str2
 
 'str2 = "aa316013600247325   06201300300300100101/0114/06/2006<S01><S></S><S>~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~16/07/2013~1~~~1701~~</S></S01>"
 'Barcode_Scaned str2
@@ -1405,7 +1405,7 @@ Barcode_Scaned str2
 'str2 = "aa317013600247325   02201300200200100101/0114/06/2006<S01><S></S><S>~35329039~0~100000000~1000000~0~0~100000000~0~0~100000000~0~0~0~100000000~99000000~0~0~0~63670961~0~63670961~0~0~0</S><S>~~~01/03/2013~1~~~1701~x~03~1</S></S01>"
 'Barcode_Scaned str2
 
-'str2 = "aa317683600247325   06201300100200100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~test~17/07/2013~0</S></S01>"
+'str2 = "aa317683600247325   02201300100200100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~test~17/07/2013~1</S></S01>"
 'Barcode_Scaned str2
 
 End Sub
@@ -1819,7 +1819,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
         
         '17102011 khong nhan cac mau an chi in ra bang HTKK phien ban nho hon 302
         If (Val(Left$(strPrefix, 3)) < 302) Then
-            If Trim(idToKhai) = "64" Or Trim(idToKhai) = "65" Or Trim(idToKhai) = "66" Or Trim(idToKhai) = "67" Or Trim(idToKhai) = "68" Then
+            If Trim(idToKhai) = "64" Or Trim(idToKhai) = "65" Or Trim(idToKhai) = "66" Or Trim(idToKhai) = "67" Or Trim(idToKhai) = "68" Or Trim(idToKhai) = "91" Then
                 DisplayMessage "0122", msOKOnly, miInformation
                 Exit Sub
             End If
@@ -3062,7 +3062,7 @@ Private Function InitParameters(ByVal strData As String, _
     ' Lay so thu tu cua to khai da dua vao RCV_TKHAI_HDR
     ' So thu tu nay phai lay theo cung Nguoi nop thue, ky ke khai, va cung loai to khai
     ' An chi
-    If Val(strID) >= 64 And Val(strID) <= 68 Then
+    If (Val(strID) >= 64 And Val(strID) <= 68) Or Val(strID) = 91 Then
 
         ' An chi
         If Not getSoTTTK_AC(changeMaToKhai(strID), arrStrHeaderData, strData) Then
@@ -4909,12 +4909,37 @@ Private Function getSoTTTK_AC(ByVal strID As String, arrStrHeaderData() As Strin
         "And tkhai.LOAI_BC = '" & strID & "' " & _
         "And tkhai.KYBC_TU_NGAY = to_date('" & arrDeltail(1) & "','dd/mm/rrrr')" & _
         "And tkhai.KYBC_DEN_NGAY = to_date('" & Left$(arrDeltail(2), 10) & "','dd/mm/rrrr')"
-    Else
+        
+    ElseIf strID = "04_TBAC" Then
+        arrDeltail = Split(strData, "~")
         strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
+        "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+        "And tkhai.LOAI_BC = '" & strID & "' " & _
+        " And tkhai.NGAY_BC = to_date('" & arrDeltail(UBound(arrDeltail) - 1) & "','dd/mm/rrrr')" & _
+        " And tkhai.NGAY_TB_PH = to_date('" & Right$(arrDeltail(UBound(arrDeltail) - 5), 10) & "','dd/mm/rrrr')"
+
+    ElseIf strID = "BC26_AC" Then
+
+        If LoaiKyKK = False Then
+                 strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
+                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                "And tkhai.LOAI_BC = '" & strID & "' " & _
+                "And tkhai.QUY_BC = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
+        Else
+                 strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
                 "And tkhai.LOAI_BC = '" & strID & "' " & _
                 "And tkhai.KYBC_TU_NGAY = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
                 "And tkhai.KYBC_DEN_NGAY = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
+
+        End If
+
+    Else
+        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
+                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                 "And tkhai.LOAI_BC = '" & strID & "' " & _
+                 "And tkhai.KYBC_TU_NGAY = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+                 "And tkhai.KYBC_DEN_NGAY = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
     End If
     
     Set rsResult = clsDAO.Execute(strSQL)
