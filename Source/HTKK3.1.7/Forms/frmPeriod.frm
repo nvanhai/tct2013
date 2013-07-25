@@ -2398,6 +2398,9 @@ Public Sub cmdOK_Click()
             DisplayMessage "0271", msOKOnly, miInformation
             Exit Sub
         End If
+        
+        ngayLapTkBs = strDateKHBS
+        
         End With
         
         If strDateKHBS <> vbNullString Then
