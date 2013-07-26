@@ -2239,9 +2239,13 @@ On Error GoTo ErrHandle
             arrBCBuffer(intBarcodeNo) = strPrefix & strBarcodeCount & strBarcode
             ' hlnam End
             If IsCompleteData(strData) Then
+            
+                ' Check version <= 3.1.6
                 If Val(Left$(strData, 3)) <= 316 Then
-                    If Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "04" Or Mid$(strData, 4, 2) = "71" Or Mid$(strData, 4, 2) = "36" Or Mid$(strData, 4, 2) = "68" Then
+                    If Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "04" Or Mid$(strData, 4, 2) = "71" Or Mid$(strData, 4, 2) = "36" Then
                         strData = Left$(strData, Len(strData) - 10) & "~0" & Right$(strData, 10)
+                    ElseIf Mid$(strData, 4, 2) = "68" Then
+                        strData = Left$(strData, Len(strData) - 10) & "~1" & Right$(strData, 10)
                     ElseIf Mid$(strData, 4, 2) = "73" Then
                         strData = Left$(strData, Len(strData) - 10) & "~" & Right$(strData, 10)
                     End If
@@ -3445,7 +3449,7 @@ On Error GoTo ErrHandle
     ' Lay so thu tu cua to khai da dua vao RCV_TKHAI_HDR
     ' So thu tu nay phai lay theo cung Nguoi nop thue, ky ke khai, va cung loai to khai
     ' An chi
-    If Val(strID) >= 64 And Val(strID) <= 68 Then
+    If (Val(strID) >= 64 And Val(strID) <= 68) Or Val(strID) = 91 Then
             ' An chi
             If Not getSoTTTK_AC(changeMaToKhai(strID), arrStrHeaderData, strData) Then
                 DisplayMessage "0079", msOKOnly, miCriticalError
@@ -5379,6 +5383,31 @@ Private Function getSoTTTK_AC(ByVal strID As String, arrStrHeaderData() As Strin
         "And tkhai.LOAI_BC = '" & strID & "' " & _
         "And tkhai.KYBC_TU_NGAY = to_date('" & arrDeltail(1) & "','dd/mm/rrrr')" & _
         "And tkhai.KYBC_DEN_NGAY = to_date('" & Left$(arrDeltail(2), 10) & "','dd/mm/rrrr')"
+        
+    ElseIf strID = "04_TBAC" Then
+        arrDeltail = Split(strData, "~")
+        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
+        "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+        "And tkhai.LOAI_BC = '" & strID & "' " & _
+        " And tkhai.NGAY_BC = to_date('" & arrDeltail(UBound(arrDeltail) - 1) & "','dd/mm/rrrr')" & _
+        " And tkhai.NGAY_TB_PH = to_date('" & Right$(arrDeltail(UBound(arrDeltail) - 5), 10) & "','dd/mm/rrrr')"
+
+    ElseIf strID = "BC26_AC" Then
+
+        If LoaiKyKK = False Then
+                 strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
+                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                "And tkhai.LOAI_BC = '" & strID & "' " & _
+                "And tkhai.QUY_BC = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
+        Else
+                 strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
+                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                "And tkhai.LOAI_BC = '" & strID & "' " & _
+                "And tkhai.KYBC_TU_NGAY = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+                "And tkhai.KYBC_DEN_NGAY = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
+
+        End If
+
     Else
         strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
@@ -5631,10 +5660,10 @@ On Error GoTo ErrHandle
     Else
         LoaiToKhai = False
     End If
-    
+    Exit Function
 ErrHandle:
     'Connect DB fail
-    SaveErrorLog Me.Name, "isMaDLT", Err.Number, Err.Description
+    SaveErrorLog Me.Name, "LoaiToKhai", Err.Number, Err.Description
     If Err.Number = -2147467259 Then _
         MessageBox "0063", msOKOnly, miCriticalError
 End Function
