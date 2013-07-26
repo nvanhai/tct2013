@@ -312,13 +312,14 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim dDate As Date, strDate() As String
     Dim vTIN, vTEN_DTNT, vLOAI_TKHAI, vNGAY_NOP, vPHONG_QUAN_LY, vNGUOI_DAI_DIEN, vGHI_CHU, vNGAY_BC, vLY_DO
     Dim vNGAY_CAP_NHAT, vDIA_CHI, vNGUOI_CAP_NHAT, vCO_LOI_DDANH, vNGAY_CHAY_HONG, vMA_CQT, vNGUOI_LB, vKY_BC_TUNGAY, vKY_BC_DENNGAY
-    Dim vSO_HIEU_TEP, vSO_TT_TK, vDA_NHAN, vGHI_CHU_LOI, vHTHUC_NOP, vTEN_DV_CQ, vTIN_DV_CQ, vTEN_CQ_TIEP_NHAN
+    Dim vSO_HIEU_TEP, vSO_TT_TK, vDA_NHAN, vGHI_CHU_LOI, vTEN_DV_CQ, vTIN_DV_CQ, vTEN_CQ_TIEP_NHAN
     Dim vDUNG_DN_CQ As Variant
     Dim vPHONG_XU_LY
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
     Dim vKyBCCuoi, vChuyenDiaDiem
     Dim vNgay_TB_PH
+    Dim vItkhai_ID, vHTHUC_NOP As String
     
 On Error GoTo ErrHandle
     strSQL = Replace$(SqlHdr_AC, ")", ",NGAY_TB_PH)")
@@ -373,7 +374,16 @@ On Error GoTo ErrHandle
     vTEN_DV_CQ = TAX_Utilities_Srv_New.Convert(CStr(vTEN_DV_CQ), UNICODE, TCVN)
     vTEN_CQ_TIEP_NHAN = TAX_Utilities_Srv_New.Convert(CStr(vTEN_CQ_TIEP_NHAN), UNICODE, TCVN)
     
-    
+   'Neu la to khai iHtkk thi lay ngay nop tu bang rcv_ihtkk_mvach
+    If TAX_Utilities_Srv_New.HthucNopIHTKK = True Then
+        vNGAY_NOP = TAX_Utilities_Srv_New.NgayNopIHTKK
+        vItkhai_ID = TAX_Utilities_Srv_New.IDTokhaiIHTKK
+        vHTHUC_NOP = "'I'"
+    Else
+        vItkhai_ID = "null"
+        vHTHUC_NOP = "null"
+    End If
+    ' end
     ' Tach ma so thue thanh ma 14 ky tu
     If Len(Trim(CStr(vTIN))) = 13 Then
         vTIN = Left(CStr(vTIN), 10) & "-" & Right(CStr(vTIN), 3)
@@ -419,7 +429,8 @@ On Error GoTo ErrHandle
         Next
     End With
     strSQL = strSQL & "'" & strMaPhongXuLy & "',"
-    strSQL = strSQL & "'" & vPHONG_QUAN_LY & "',null,null,null,"
+    strSQL = strSQL & "'" & vPHONG_QUAN_LY & "',0,"
+    strSQL = strSQL & vHTHUC_NOP & "," & vItkhai_ID & ","
     strSQL = strSQL & "'" & vTEN_DV_CQ & "',"
     strSQL = strSQL & "'" & vTIN_DV_CQ & "',"
     strSQL = strSQL & "To_date('" & vNGAY_BC & "','dd/mm/yyyy'),"
