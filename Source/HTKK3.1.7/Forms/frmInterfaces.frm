@@ -4910,7 +4910,7 @@ Private Sub Command1_Click()
             temp = lRow_temp - 18
             ' sua ct tinh
             fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 15 + temp, vSoTien
-            strFormula = getFormulaTienPNC(temp, CDbl(vSoTien))
+            strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp)
             
             'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
             fpSpread1.Formula = strFormula
@@ -4953,7 +4953,7 @@ Private Sub Command1_Click()
             
             ' sua ct tinh
             fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 15 + temp, vSoTien
-            strFormula = getFormulaTienPNC(temp, CDbl(vSoTien))
+            strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp)
             
             'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
             fpSpread1.Formula = strFormula
@@ -9179,7 +9179,7 @@ Private Sub TonghopKHBS()
                     ' kiem tra neu set lai cong thuc
                     ' sua ct tinh
                     fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 15 + temp, vSoTien
-                    strFormula = getFormulaTienPNC(temp, CDbl(vSoTien))
+                    strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp)
                     
                     'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
                     fpSpread1.Formula = strFormula
@@ -9225,7 +9225,7 @@ Private Sub TonghopKHBS()
                     ' kiem tra set lai cong thuc
                     ' sua ct tinh
                     fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 15 + temp, vSoTien
-                    strFormula = getFormulaTienPNC(temp, CDbl(vSoTien))
+                    strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp)
                     
                     'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
                     fpSpread1.Formula = strFormula
@@ -12014,7 +12014,7 @@ Private Sub gridData01NTNN(rowStartSpread1 As Long, _
 End Sub
 
 ' ham get formula tinh so tien phat nop cham
-Private Function getFormulaTienPNC(t As Long, soTien As Double) As String
+Private Function getFormulaTienPNC(t As Long, soTien As Double, strColRow As String) As String
     Dim soNgayNopCham As Long
     Dim soNgayNopChamTruocHl As Long
     Dim arrDate() As String
@@ -12023,7 +12023,7 @@ Private Function getFormulaTienPNC(t As Long, soTien As Double) As String
     Dim dHieuLuc As Date
     
     soNgayNopCham = getSoNgay(hanNopTk, ngayLapTkBs)
-    soNgayNopChamTruocHl = getSoNgay(hanNopTk, "01/07/2013")
+    soNgayNopChamTruocHl = getSoNgay(hanNopTk, "01/07/2013") - 1
     If hanNopTk <> "" Then
         arrDate = Split(hanNopTk, "/")
         dHanNop = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
@@ -12038,16 +12038,16 @@ Private Function getFormulaTienPNC(t As Long, soTien As Double) As String
     If DateDiff("D", dHanNop, dHieuLuc) > 0 And DateDiff("D", dNgayBs, dHieuLuc) < 0 Then
         ' neu ngay phat sinh khoan no truoc 01/07/2013
         If soNgayNopCham - soNgayNopChamTruocHl <= 90 Then
-            getFormulaTienPNC = soNgayNopCham & "*" & soTien & "* 0.05 / 100"
+            getFormulaTienPNC = soNgayNopCham & "*" & strColRow & "* 0.05 / 100"
         Else
-            getFormulaTienPNC = (soNgayNopChamTruocHl + 90) & "*" & soTien & "* 0.05 / 100 +" & (soNgayNopCham - soNgayNopChamTruocHl - 90) & "*" & soTien & "* 0.07 / 100"
+            getFormulaTienPNC = (soNgayNopChamTruocHl + 90) & "*" & strColRow & "* 0.05 / 100 +" & (soNgayNopCham - soNgayNopChamTruocHl - 90) & "*" & strColRow & "* 0.07 / 100"
         End If
     Else
         ' neu ngay phat sinh khoan no sau 01/07/2013
         If soNgayNopCham <= 90 Then
-            getFormulaTienPNC = soNgayNopCham & "*" & soTien & "*0.05/100"
+            getFormulaTienPNC = soNgayNopCham & "*" & strColRow & "*0.05/100"
         Else
-            getFormulaTienPNC = 90 & "*" & soTien & "*0.05/100+" & (soNgayNopCham - 90) & "*" & soTien & "*0.07/100"
+            getFormulaTienPNC = 90 & "*" & strColRow & "*0.05/100+" & (soNgayNopCham - 90) & "*" & strColRow & "*0.07/100"
         End If
     End If
     Exit Function
