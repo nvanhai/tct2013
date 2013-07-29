@@ -599,8 +599,6 @@ Public Function InsertHDR() As String
             Pp_huy = "'Q'"
         Else
             Pp_huy = "'T'"
-            TU_NGAY = "CTOD('')"
-            DEN_NGAY = "CTOD('')"
         End If
         
         Dung_dn_cq = "''"
