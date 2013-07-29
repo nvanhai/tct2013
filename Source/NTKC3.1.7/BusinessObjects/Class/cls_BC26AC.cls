@@ -405,8 +405,6 @@ On Error GoTo ErrHandle
         
     If PP_HUY = "0" Then
         PP_HUY = "T"
-        vKY_BC_TUNGAY = ""
-        vKY_BC_DENNGAY = ""
     Else
         PP_HUY = "Q"
     End If
