@@ -919,12 +919,29 @@ Private Sub chkTkhaiThang_Click()
             lblQuy.Visible = False
             lblMonth.Visible = True
             txtMonth.Visible = True
-            txtNgayDau.Visible = False
-            txtNgayCuoi.Visible = False
-            lblNgayDau.Visible = False
-            lblNgayCuoi.Visible = False
-            frmKy.Height = 1000
-            Frame2.Top = 1300
+            
+            txtNgayDau.Visible = True
+            txtNgayCuoi.Visible = True
+            lblNgayDau.Visible = True
+            lblNgayCuoi.Visible = True
+            ' set ngay dau
+            txtNgayDau.Text = "01/" & txtMonth.Text & "/" & txtYear.Text
+            ' set ngay cuoi
+            Dim temp  As Integer
+            Dim temp1 As Date
+            temp = CInt(txtMonth.Text) + 1
+            If txtMonth.Text = "12" Then
+                temp1 = DateSerial(CInt(txtYear.Text) + 1, 1, 1)
+                temp1 = DateAdd("D", -1, temp1)
+                txtNgayCuoi.Text = Day(temp1) & "/" & format(month(temp1), "0#") & "/" & Year(temp1)
+            Else
+                temp1 = DateSerial(CInt(txtYear.Text), temp, 1)
+                temp1 = DateAdd("D", -1, temp1)
+                txtNgayCuoi.Text = Day(temp1) & "/" & format(month(temp1), "0#") & "/" & Year(temp1)
+            End If
+            
+            frmKy.Height = 1300
+            Frame2.Top = 1600
         Else
             strQuy = "TK_QUY"
             chkTKQuy.value = 1
@@ -1439,12 +1456,30 @@ Private Sub chkTKQuy_Click()
             lblQuy.Visible = False
             lblMonth.Visible = True
             txtMonth.Visible = True
-            txtNgayDau.Visible = False
-            txtNgayCuoi.Visible = False
-            lblNgayDau.Visible = False
-            lblNgayCuoi.Visible = False
-            frmKy.Height = 1000
-            Frame2.Top = 1300
+            
+            txtNgayDau.Visible = True
+            txtNgayCuoi.Visible = True
+            lblNgayDau.Visible = True
+            lblNgayCuoi.Visible = True
+            
+            ' set ngay dau
+            txtNgayDau.Text = "01/" & txtMonth.Text & "/" & txtYear.Text
+            ' set ngay cuoi
+            Dim temp  As Integer
+            Dim temp1 As Date
+            temp = CInt(txtMonth.Text) + 1
+            If txtMonth.Text = "12" Then
+                temp1 = DateSerial(CInt(txtYear.Text) + 1, 1, 1)
+                temp1 = DateAdd("D", -1, temp1)
+                txtNgayCuoi.Text = Day(temp1) & "/" & format(month(temp1), "0#") & "/" & Year(temp1)
+            Else
+                temp1 = DateSerial(CInt(txtYear.Text), temp, 1)
+                temp1 = DateAdd("D", -1, temp1)
+                txtNgayCuoi.Text = Day(temp1) & "/" & format(month(temp1), "0#") & "/" & Year(temp1)
+            End If
+            
+            frmKy.Height = 1300
+            Frame2.Top = 1600
         Else
             strQuy = "TK_QUY"
             chkTkhaiThang.value = 0
@@ -2298,6 +2333,37 @@ Public Sub cmdOK_Click()
     ' Kiem tra tu ngay
     If idToKhai = "68" Then
         If strQuy = "TK_THANG" Then
+            dNgayDau = DateSerial(CInt(Mid$(TAX_Utilities_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_New.FirstDay, 1, 2)))
+            dNgayCuoi = DateSerial(CInt(Mid$(TAX_Utilities_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_New.LastDay, 1, 2)))
+            
+            dNgayDauQuy = DateSerial(CInt(TAX_Utilities_New.Year), CInt(TAX_Utilities_New.month), 1)
+            Dim temp As Integer
+            Dim temp1 As Date
+            temp = CInt(TAX_Utilities_New.month) + 1
+            If TAX_Utilities_New.month = "12" Then
+                temp1 = DateSerial(CInt(TAX_Utilities_New.Year) + 1, 1, 1)
+                dNgayCuoiQuy = DateAdd("D", -1, temp1)
+            Else
+                temp1 = DateSerial(CInt(TAX_Utilities_New.Year), temp, 1)
+                dNgayCuoiQuy = DateAdd("D", -1, temp1)
+            End If
+            
+            ' Ky bao cao tu ngay khong duoc lon hon ky bao cao den ngay
+            If dNgayCuoi < dNgayDau Then
+                DisplayMessage "0254", msOKOnly, miWarning
+                Exit Sub
+            End If
+            ' Ky bao cao den ngay khong duoc lon hon ngay cuoi quy
+            If dNgayCuoi > dNgayCuoiQuy Then
+                DisplayMessage "0255", msOKOnly, miWarning
+                Exit Sub
+            End If
+            ' Ky bao cao tu ngay khong duoc nho hon ngay dau quy
+            If dNgayDau < dNgayDauQuy Then
+                DisplayMessage "0256", msOKOnly, miWarning
+                txtNgayDau.SetFocus
+                Exit Sub
+            End If
         Else
             dNgayDau = DateSerial(CInt(Mid$(TAX_Utilities_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_New.FirstDay, 1, 2)))
             dNgayCuoi = DateSerial(CInt(Mid$(TAX_Utilities_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_New.LastDay, 1, 2)))

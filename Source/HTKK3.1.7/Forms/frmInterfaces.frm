@@ -2491,8 +2491,16 @@ Private Sub DeleteKHBS()
                     strSheetKHBSDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & ".xml"
                 Else
                     If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "0" Then
-                        strKHBSDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
-                        strSheetKHBSDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                        If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" _
+                            Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "36" Then
+                                If strQuy = "TK_THANG" Then
+                                    strKHBSDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                                    strSheetKHBSDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                                ElseIf strQuy = "TK_QUY" Then
+                                    strKHBSDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                                    strSheetKHBSDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                                End If
+                        End If
                     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
                         If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Then
                                     ' To khai 08/TNCN co to khai tu thang va to khai quy
