@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Begin VB.Form frmInterfaces 
    AutoRedraw      =   -1  'True
    BorderStyle     =   3  'Fixed Dialog
@@ -1653,6 +1653,10 @@ Private Sub Command1_Click()
 'str2 = "aa317730100100079   022013000000002002~0~1~0</S><S>1~~~~~~~</S><S>~~~11/07/2013~1~~~1053~x</S></S02>"
 'Barcode_Scaned str2
 
+str2 = "aa317720100100079   06201300000000100101/0114/06/2006<S01><S></S><S>0~0~0~0~0</S><S>~~~24/07/2013~1~~</S></S01>"
+Barcode_Scaned str2
+
+
 ' 'Mau TB04 / AC
 'str2 = "aa317910100100079   07201300100200100101/0101/01/2009<S01><S>~~</S><S>01/01/2013~~~test~16/07/2013~abc</S></S01>"
 'Barcode_Scaned str2
@@ -1673,8 +1677,8 @@ Private Sub Command1_Click()
 'str2 = "aa317360100100079   06201300100100100101/0101/01/2010<S07><S></S><S>~0~4000000~4000000~0~0~0~0~0~0~0~0~0~20~0~0~1~0</S><S>test1~22/07/2013~test~test2~1~~~0</S></S07>"
 'Barcode_Scaned str2
 
-str2 = "aa317680100100079   02201300100200100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>Hãa ®¬n b¸n hµng~02GTTT4/008~KH/13E~21~0000010~0000019~0000020~0000030~0000010~0000022~13~12~1~10~0~~0~~0000023~0000030~8~0</S><S>test~test~23/07/2013~1</S></S01>"
-Barcode_Scaned str2
+'str2 = "aa317680100100079   02201300100200100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>Hãa ®¬n b¸n hµng~02GTTT4/008~KH/13E~21~0000010~0000019~0000020~0000030~0000010~0000022~13~12~1~10~0~~0~~0000023~0000030~8~0</S><S>test~test~23/07/2013~1</S></S01>"
+'Barcode_Scaned str2
 
 
 
@@ -5125,13 +5129,15 @@ Private Function SinhSoHoSo(DHS_MA) As String
 End Function
 
 Private Function changeToKhaiQHS(strMaToKhai) As String
-Dim DHS_MA As String
-Dim strSQL As String
-Dim tkPhatSinh As Variant
+    Dim DHS_MA     As String
+    Dim strSQL     As String
+    Dim tkPhatSinh As Variant
 
     menuId = GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ID")
-     With fpSpread1
+
+    With fpSpread1
         .Sheet = 1
+
         If menuId = 70 Then
             .GetText .ColLetterToNumber("AD"), 3, tkPhatSinh
         End If
@@ -5148,63 +5154,108 @@ Dim tkPhatSinh As Variant
 
     On Error Resume Next
     
-         Select Case strMaToKhai
-            Case "48"
-                 DHS_MA = "425"
-            Case "46"
-                 DHS_MA = "423"
-            Case "47"
-                 DHS_MA = "424"
-            Case "49"
-                 DHS_MA = "426"
-            Case "14"
-                 DHS_MA = "173"
-            Case "07"
-                 DHS_MA = "33"
-            Case "03"
-                 DHS_MA = "31"
-            Case "08"
-                 DHS_MA = "80"
-            Case "04"
-                 DHS_MA = "17"
-            Case "05"
-                 DHS_MA = "81"
-            Case "38"
-                 DHS_MA = "271"
-            Case "54"
-                 DHS_MA = "25"
-            Case "09"
-                 DHS_MA = "177"
-            Case "02"
-                 DHS_MA = "30"
-            Case "06"
-                 DHS_MA = "27"
-            Case "37"
-                 DHS_MA = "354"
-            Case "53"
-                 DHS_MA = "22"
-            Case "11"
-                 DHS_MA = "174"
-            Case "12"
-                 DHS_MA = "75"
-            Case "01"
-                 DHS_MA = "16"
-            Case "36"
-                 DHS_MA = "23"
-            Case "40"
-                 DHS_MA = "372"
-            Case "39"
-                 DHS_MA = "24"
-            Case "50"
-                DHS_MA = "25"
-            Case "51"
-                DHS_MA = "371"
-            Case "16"
-                DHS_MA = "161"
-            Case "15"
-                DHS_MA = "21"
-            Case "17"
-                DHS_MA = "36"
+    Select Case strMaToKhai
+
+        Case "48"
+            DHS_MA = "425"
+
+        Case "46"
+            DHS_MA = "423"
+
+        Case "47"
+            DHS_MA = "424"
+
+        Case "49"
+            DHS_MA = "426"
+
+        Case "14"
+            DHS_MA = "173"
+
+        Case "07"
+            DHS_MA = "33"
+
+        Case "03"
+            DHS_MA = "31"
+
+        Case "08"
+            DHS_MA = "80"
+
+        Case "04"
+
+            If LoaiKyKK = True Then
+                DHS_MA = "529"
+            Else
+                DHS_MA = "17"
+          
+            End If
+
+        Case "05"
+            DHS_MA = "81"
+
+        Case "38"
+            DHS_MA = "271"
+
+        Case "54"
+            DHS_MA = "25"
+
+        Case "09"
+            DHS_MA = "177"
+
+        Case "02"
+
+            If LoaiKyKK = True Then
+                DHS_MA = "528"
+            Else
+                DHS_MA = "30"
+            End If
+                 
+        Case "06"
+            DHS_MA = "27"
+
+        Case "37"
+            DHS_MA = "354"
+
+        Case "53"
+            DHS_MA = "22"
+
+        Case "11"
+            DHS_MA = "174"
+
+        Case "12"
+            DHS_MA = "75"
+
+        Case "01"
+
+            If LoaiKyKK = True Then
+                DHS_MA = "527"
+            Else
+                DHS_MA = "16"
+            End If
+
+        Case "36"
+            DHS_MA = "23"
+
+        Case "40"
+            DHS_MA = "372"
+
+        Case "39"
+            DHS_MA = "24"
+
+        Case "50"
+            DHS_MA = "25"
+
+        Case "51"
+            DHS_MA = "371"
+
+        Case "16"
+            DHS_MA = "161"
+
+        Case "15"
+            DHS_MA = "21"
+
+        Case "17"
+            DHS_MA = "36"
+
         Case "80"
             DHS_MA = "83"
 
@@ -5244,38 +5295,46 @@ Dim tkPhatSinh As Variant
                 DHS_MA = "448"
             End If
 
-    Case "71"
-            DHS_MA = "490"
+        Case "71"
+
+            If LoaiKyKK = True Then
+                DHS_MA = "530"
+            Else
+                DHS_MA = "490"
+            End If
             
-    Case "72"
+        Case "72"
             DHS_MA = "441"
             
-    Case "74"
+        Case "74"
             DHS_MA = "449"
             
-    Case "75"
+        Case "75"
             DHS_MA = "454"
             
-    Case "59"
+        Case "59"
             DHS_MA = "387"
             
-    Case "77"
+        Case "77"
             DHS_MA = "450"
             
-    Case Else
+        Case Else
             DHS_MA = ""
             
     End Select
 
     changeToKhaiQHS = DHS_MA
 End Function
+
 Private Function changeToLoaiToKhaiQHS(strMaToKhai) As String
-Dim DHS_MA As String
-Dim strSQL As String
-Dim tkPhatSinh As Variant
-     menuId = GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ID")
-     With fpSpread1
+    Dim DHS_MA     As String
+    Dim strSQL     As String
+    Dim tkPhatSinh As Variant
+    menuId = GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ID")
+
+    With fpSpread1
         .Sheet = 1
+
         If menuId = 70 Then
             .GetText .ColLetterToNumber("AD"), 3, tkPhatSinh
         End If
@@ -5292,33 +5351,69 @@ Dim tkPhatSinh As Variant
 
     On Error Resume Next
     
-         Select Case strMaToKhai
-            Case "37"
-                 DHS_MA = "200514"
-            Case "37"
-                 DHS_MA = "200514"
-            Case "53"
-                 DHS_MA = "200503"
-            Case "11"
-                 DHS_MA = "200201"
-            Case "01"
-                 DHS_MA = "200101"
-            Case "12"
-                 DHS_MA = "200202"
-            Case "36"
-                 DHS_MA = "200531"
-            Case "40"
-                 DHS_MA = "200517"
-            Case "39"
-                 DHS_MA = "200504"
-            Case "50"
-                DHS_MA = "200507"
-            Case "51"
-                DHS_MA = "200516"
-            Case "16"
-                DHS_MA = "200502"
-            Case "15"
-                DHS_MA = "200501"
+    Select Case strMaToKhai
+
+        Case "37"
+            DHS_MA = "200514"
+
+        Case "53"
+            DHS_MA = "200503"
+
+        Case "11"
+            DHS_MA = "200201"
+
+        Case "01"
+
+            If LoaiKyKK = True Then
+                DHS_MA = "200121"
+            Else
+                DHS_MA = "200101"
+            End If
+
+        Case "02"
+
+            If LoaiKyKK = True Then
+                DHS_MA = "200122"
+            End If
+
+        Case "04"
+
+            If LoaiKyKK = True Then
+                DHS_MA = "200123"
+            End If
+
+        Case "71"
+
+            If LoaiKyKK = True Then
+                DHS_MA = "200124"
+            Else
+                DHS_MA = "200105"
+            End If
+
+        Case "12"
+            DHS_MA = "200202"
+
+        Case "36"
+            DHS_MA = "200531"
+
+        Case "40"
+            DHS_MA = "200517"
+
+        Case "39"
+            DHS_MA = "200504"
+
+        Case "50"
+            DHS_MA = "200507"
+
+        Case "51"
+            DHS_MA = "200516"
+
+        Case "16"
+            DHS_MA = "200502"
+
+        Case "15"
+            DHS_MA = "200501"
+
         Case "80"
             DHS_MA = "300110"
 
@@ -5348,14 +5443,6 @@ Dim tkPhatSinh As Variant
                 DHS_MA = "200902"
             Else
                 DHS_MA = "200904"
-            End If
-            
-        Case "70"
-
-            If tkPhatSinh = vbNullString Then
-                DHS_MA = "200214"
-            Else
-                DHS_MA = "200213"
             End If
 
         Case Else
