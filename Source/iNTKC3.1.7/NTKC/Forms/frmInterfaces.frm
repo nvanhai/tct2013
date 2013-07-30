@@ -115,7 +115,6 @@ Begin VB.Form frmInterfaces
          Left            =   0
          TabIndex        =   15
          Top             =   30
-         Visible         =   0   'False
          Width           =   1335
       End
       Begin ComctlLib.ProgressBar ProgressBar1 
@@ -1198,7 +1197,7 @@ On Error GoTo ErrHandle
     '*************************************************************
     
     ' xu ly nhan cac mau an chi co canh bao khi quet trung
-    If Val(IdToKhai) <= 68 And Val(IdToKhai) >= 64 Then
+    If (Val(IdToKhai) <= 68 And Val(IdToKhai) >= 64) Or Val(IdToKhai) = 91 Then
         ' xu ly an chi
         If isTonTaiAC = True Then
              If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK And TAX_Utilities_Srv_New.isCanBoXuLyGhiTK = False Then
@@ -1234,7 +1233,7 @@ On Error GoTo ErrHandle
     'Ngay dau ky ke khai va ngay cuoi ky ke khai
     dDate = dNgayDauKy
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
-            If (Val(idToKhai) = 1 Or Val(idToKhai) = 2 Or Val(idToKhai) = 4 Or Val(idToKhai) = 71 Or Val(idToKhai) = 36) And LoaiKyKK = True Then
+            If (Val(IdToKhai) = 1 Or Val(IdToKhai) = 2 Or Val(IdToKhai) = 4 Or Val(IdToKhai) = 71 Or Val(IdToKhai) = 36) And LoaiKyKK = True Then
         strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
                 dDate = DateAdd("m", 3, dDate)
                 dDate = DateAdd("d", -1, dDate)
@@ -1247,7 +1246,7 @@ On Error GoTo ErrHandle
         strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
             End If
     ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
-            If Val(idToKhai) = 68 And LoaiKyKK = False Then
+            If Val(IdToKhai) = 68 And LoaiKyKK = False Then
         strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
                 dDate = DateAdd("m", 1, dDate)
                 dDate = DateAdd("d", -1, dDate)
@@ -1425,7 +1424,7 @@ On Error GoTo ErrHandle
     End If
     'strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl").nodeValue)
  ' xu ly de ghi cac mau an chi
-    If Val(IdToKhai) = 66 Or Val(IdToKhai) = 68 Or Val(IdToKhai) = 67 Or Val(IdToKhai) = 64 Or Val(IdToKhai) = 65 Then
+    If Val(IdToKhai) = 66 Or Val(IdToKhai) = 68 Or Val(IdToKhai) = 67 Or Val(IdToKhai) = 64 Or Val(IdToKhai) = 65 Or Val(IdToKhai) = 91 Then
         strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl_AC").nodeValue)
     Else
         strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl").nodeValue)
@@ -1745,17 +1744,11 @@ Private Sub Command1_Click()
 'str1 = "aa300512300100633   03201100100100100101/0101/01/2010<S01><S>0201021271001</S><S>30000000~1500000~400000000~400000~500000000~25000000~60000000~6000000~7000000000~700000</S><S>ui87o97o~20/07/2011~test~asdasdad~1~~</S></S01>"
 ''Barcode_Scaned str1
 '
-str1 = "aa300493600278732   02201100200200100101/0101/01/2010<S01><S>6868686868</S><S>50000000~3000000~100000</S><S>ui87o97o~test~asdasdad~28/07/2011~1~~</S></S01>"
+'str1 = "aa300493600278732   02201100200200100101/0101/01/2010<S01><S>6868686868</S><S>50000000~3000000~100000</S><S>ui87o97o~test~asdasdad~28/07/2011~1~~</S></S01>"
+'Barcode_Scaned str1
 
-
-
-
-
-
-
-
-
-Barcode_Scaned str1
+str2 = "aa317912600168262   07201300100200100101/0101/01/2009<S01><S>~~</S><S>01/01/2013~~~test~16/07/2013~abc</S></S01>"
+Barcode_Scaned str2
 
 
 End Sub
@@ -2172,7 +2165,7 @@ On Error GoTo ErrHandle
         End If
          '17102011 khong nhan cac mau an chi in ra bang HTKK phien ban nho hon 302
         If (Val(Left$(strPrefix, 3)) < 302) Then
-            If Trim(IdToKhai) = "64" Or Trim(IdToKhai) = "65" Or Trim(IdToKhai) = "66" Or Trim(IdToKhai) = "67" Or Trim(IdToKhai) = "68" Then
+            If Trim(IdToKhai) = "64" Or Trim(IdToKhai) = "65" Or Trim(IdToKhai) = "66" Or Trim(IdToKhai) = "67" Or Trim(IdToKhai) = "68" Or Trim(IdToKhai) = "91" Then
                 If isIHTKK = True Then
                     bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "04")
                     isIHTKK = False
