@@ -379,9 +379,9 @@ Public Sub finish()
 End Sub
 
 Private Sub CheckDynamicError()
-    Dim iFlagExist               As Integer, iFlagNgayCoThongBaoPhatHanh As Integer, iFlagEmpty As Integer ',iFlagNgayThongBaoEmpty As Integer
-    Dim vTarget22                As Variant, vTarget20 As Variant, vTarget21 As Variant, vPhatHanh As Variant, vDieuChinh As Variant, arrDate() As String
-    Dim countRow                 As Long, rowDes As Long, vErrExist As Variant
+    Dim iFlagExist               As Integer, iFlagNgayCoThongBaoPhatHanh As Integer, iFlagEmpty As Integer ', iFlagDaiDien As Integer  ',iFlagNgayThongBaoEmpty As Integer
+    Dim vTarget22                As Variant, vTarget20 As Variant, vTarget21 As Variant, vPhatHanh As Variant, vDieuChinh As Variant, arrDate() As String, vDaiDienPL As Variant
+    Dim countRow                 As Long, rowDes As Long, vErrExist As Variant, iCountChange As Integer
     Dim vGiaTriThayDoiCheckTrung As Variant, vGiaTriThayDoi As Variant
 
     With fps
@@ -420,7 +420,7 @@ Private Sub CheckDynamicError()
         '2. Check Exist
         .Sheet = 1
         .Row = 35
-
+        iCountChange = 0
         Do
             .Col = .ColLetterToNumber("C")
             vGiaTriThayDoi = .Text
@@ -451,7 +451,8 @@ Private Sub CheckDynamicError()
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 'iFlagEmpty = 1
             End If
-
+            
+            iCountChange = iCountChange + 1
             .Row = .Row + 1
             .Col = .ColLetterToNumber("B")
         Loop Until .Text = "aa"
@@ -496,6 +497,23 @@ Private Sub CheckDynamicError()
             .Col = .ColLetterToNumber("B")
         Loop Until .Text = "aa"
         
+        '4 nguoi dai dien phap luat
+        .Sheet = 1
+        .GetText .ColLetterToNumber("Q"), 49 + iCountChange - 1, vDaiDienPL
+
+        If vDaiDienPL = vbNullString Or vDaiDienPL = "" Then
+            iFlagEmpty = 1
+            .Col = .ColLetterToNumber("Q")
+            .Row = 49 + iCountChange - 1
+            .BackColor = mErrorColor
+            .CellNote = vTarget20
+        Else
+            'iFlagEmpty = 0
+            .Col = .ColLetterToNumber("Q")
+            .Row = 49 + iCountChange - 1
+            .CellNote = ""  'static
+            .BackColor = mNonErrorColor
+        End If
         
         .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), 20, IIf(iFlagEmpty = 1, "0", "1")
