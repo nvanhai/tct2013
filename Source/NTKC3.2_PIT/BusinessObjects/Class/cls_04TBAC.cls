@@ -318,9 +318,10 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
     Dim vKyBCCuoi, vChuyenDiaDiem
+    Dim vNgay_TB_PH
     
 On Error GoTo ErrHandle
-    strSQL = SqlHdr_AC
+    strSQL = Replace$(SqlHdr_AC, ")", ",NGAY_TB_PH)")
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
@@ -347,6 +348,9 @@ On Error GoTo ErrHandle
                     vGHI_CHU_LOI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                     vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+                Case "F_30"
+                    vNgay_TB_PH = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+
             End Select
         End If
         End With
@@ -423,7 +427,10 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_CQ_TIEP_NHAN & "',null,null,null,"
     strSQL = strSQL & "'" & vDUNG_DN_CQ & "',"
     strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
-    strSQL = strSQL & "'" & vMA_CQT & "',null,null,null)"
+    strSQL = strSQL & "'" & vMA_CQT & "',null,null,null,"
+    strSQL = strSQL & "To_date('" & vNgay_TB_PH & "','dd/mm/yyyy'))"
+
+
     GenerateSQL_Header = strSQL
     Exit Function
 ErrHandle:

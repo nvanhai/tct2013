@@ -74,6 +74,29 @@ Public strEmailDL As String
 Public strSoHopDongDL As String
 Public strNgayHopDongDL As String
 
+Private Sub DataDM(ByVal Id As String, Optional ByRef TenTN As String)
+Dim arrDanhsach() As String
+Dim strDataFileName As String
+Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+Dim xmlNode As MSXML.IXMLDOMNode
+
+       strDataFileName = "..\InterfaceTemplates\xml\Catalogue_Tinh_Thanh.xml"
+    
+       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If arrDanhsach(1) = Id Then
+                            TenTN = arrDanhsach(3)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub
+
 Public Function Prepared1() As Boolean
     Dim xmlDOMdata As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
     Dim strDataFileName As String
@@ -157,6 +180,7 @@ End Function
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
     Dim i As Integer
     Dim varMaDM As Variant
+    Dim tenDM As String
     i = 0
     ReDim Preserve larrPhongXuLy(0)
     larrPhongXuLy(0) = "00"
@@ -185,8 +209,8 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .TypeComboBoxCurSel = 0
         UpdateCell fps, .Col, .Row, .Text
         lSoPhongXL = i
-        
-        'get ten chi tieu trong danh muc NNKD
+             
+                'get ten chi tieu trong danh muc NNKD
         .Sheet = 1
         .Col = .ColLetterToNumber("AB")
         .Row = 39
@@ -196,8 +220,6 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
             .Row = 39
             .Text = getTenLyDoGD(varMaDM)
         End If
-        
-        
         ' Neu khong co gia han se khong cho chon combobox
          ' Neu check gia han moi cho phep chon GT
         .Col = .ColLetterToNumber("E")
@@ -212,6 +234,22 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
             .Lock = True
         End If
         ' End set gia han
+        
+                .Sheet = 2
+        i = 0
+        Do
+            .GetText .ColLetterToNumber("E"), i + 35, varMaDM
+            DataDM varMaDM, tenDM
+            If Trim(tenDM) <> vbNullString Then
+                .Col = .ColLetterToNumber("G")
+                .Row = 35 + i
+                .Text = tenDM
+            End If
+            UpdateCell fps, .Col, .Row, .Text
+             i = i + 1
+            .Col = .ColLetterToNumber("C")
+            .Row = i + 35
+        Loop Until .Text = "aa" Or varMaDM = ""
     End With
     
     Prepared2 = True
@@ -394,11 +432,11 @@ Public Function Prepared3() As Boolean
         .Sheet = 2
         If .SheetVisible = True Then
             STT = 0
-            .Row = 39
+            .Row = 35
                    Do
                         .Col = .ColLetterToNumber("C")
-                        If (.Row = 39 + STT * 3) Then
-                           .Text = str(STT + 3)
+                        If (.Row = 35 + STT) Then
+                           .Text = str(STT + 1)
                            STT = STT + 1
                         End If
                         .Col = .ColLetterToNumber("C")

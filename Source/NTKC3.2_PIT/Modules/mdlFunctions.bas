@@ -16,9 +16,9 @@ Public dNgayDauKy As Date
 Public dNgayCuoiKy As Date
 
 Public Const SS_SORT_ORDER_ASCENDING = 1
-Public Const APP_VERSION = "3.1.6"
+Public Const APP_VERSION = "3.2.0"
 
-Public Const HTKK_LAST_VERSION = "3.1.6"
+Public Const HTKK_LAST_VERSION = "3.2.0"
 
 Public Const SS_BORDER_TYPE_NONE = 0
 Public Const SS_BORDER_TYPE_LEFT = 1
@@ -56,6 +56,8 @@ Public strDBUserName As String                              ' Userid for db QLT
 Public strDBPassword As String                              ' Password for db QLT
 Public strUserName As String                                ' Name of User
 Public strUserID As String                                ' ID of User
+
+Public LoaiKyKK As Boolean 'True la quy, false la thang
 
 Public isPITActive As Boolean   ' Kiem tra trang thai active cua PIT
 
@@ -148,46 +150,120 @@ Public Function GetValidityNode() As MSXML.IXMLDOMNode
     Dim xmlNodeListValidity As MSXML.IXMLDOMNodeList
     Dim xmlNodeValidity As MSXML.IXMLDOMNode
     
-    Dim ValidityDate As Date, StartDate As Date, MaxDate As Date
+    Dim ValidityDate        As Date, StartDate As Date, MaxDate As Date
+    Dim idToKhai            As String
     
-    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
-        Select Case TAX_Utilities_Srv_New.Month
-            Case "01"
-                ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
-            Case "02"
-                ValidityDate = format("28/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
-            Case "03"
-                ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
-            Case "04"
-                ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
-            Case "05"
-                ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
-            Case "06"
-                ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
-            Case "07"
-                ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
-            Case "08"
-                ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
-            Case "09"
-                ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
-            Case "10"
-                ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
-            Case "11"
-                ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
-            Case "12"
-                ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
-        End Select
+    idToKhai = GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")
+    
+    If idToKhai = "01" Or idToKhai = "02" Or idToKhai = "04" Or idToKhai = "71" Or idToKhai = "36" Or idToKhai = "68" Then
+        If LoaiKyKK = False Then
+
+            Select Case TAX_Utilities_Srv_New.Month
+
+                Case "01"
+                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "02"
+                    ValidityDate = format("28/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "03"
+                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "04"
+                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "05"
+                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "06"
+                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "07"
+                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "08"
+                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "09"
+                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "10"
+                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "11"
+                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "12"
+                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+            End Select
         
-    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
-        Select Case TAX_Utilities_Srv_New.ThreeMonths
-            Case "01", "02", "03", "04"
-                ValidityDate = GetNgayCuoiQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), _
-                            CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
-        End Select
-    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
-        ValidityDate = NgayCuoiNamTaiChinh(CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
+        Else
+
+            Select Case TAX_Utilities_Srv_New.ThreeMonths
+
+                Case "01", "02", "03", "04"
+                    ValidityDate = GetNgayCuoiQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
+            End Select
+
+        End If
+
     Else
-        ValidityDate = Date
+
+        If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
+
+            Select Case TAX_Utilities_Srv_New.Month
+
+                Case "01"
+                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "02"
+                    ValidityDate = format("28/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "03"
+                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "04"
+                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "05"
+                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "06"
+                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "07"
+                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "08"
+                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "09"
+                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "10"
+                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "11"
+                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+
+                Case "12"
+                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+            End Select
+        
+        ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
+
+            Select Case TAX_Utilities_Srv_New.ThreeMonths
+
+                Case "01", "02", "03", "04"
+                    ValidityDate = GetNgayCuoiQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
+            End Select
+
+        ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
+            ValidityDate = NgayCuoiNamTaiChinh(CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
+        Else
+            ValidityDate = Date
+        End If
+
     End If
     
     Set xmlNodeListValidity = TAX_Utilities_Srv_New.NodeMenu.selectNodes("Validity")
@@ -1135,6 +1211,7 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "66" Then changeMaToKhai = "BC21_AC"
     If strID = "67" Then changeMaToKhai = "03_TBAC"
     If strID = "68" Then changeMaToKhai = "BC26_AC"
+    If strID = "91" Then changeMaToKhai = "04_TBAC"
     
 End Function
 
