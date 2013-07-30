@@ -778,13 +778,25 @@ On Error GoTo ErrHandle
     End If
     
     'Ky/ Quy KK
-    If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
-        'Ngay dau ky ke khai va ngay cuoi ky ke khai
-        dDate = dNgayDauKy
-        strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        dDate = DateAdd("m", 1, dDate)
-        dDate = DateAdd("d", -1, dDate)
-        strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    If LOAI_KYKK = "0" Then
+        If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
+            'Ngay dau ky ke khai va ngay cuoi ky ke khai
+            dDate = dNgayDauKy
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+            dDate = DateAdd("m", 1, dDate)
+            dDate = DateAdd("d", -1, dDate)
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+        End If
+
+    Else
+
+        If Trim(TAX_Utilities_Srv_New.ThreeMonths) <> "" Then
+            dDate = dNgayDauKy
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+            dDate = DateAdd("m", 3, dDate)
+            dDate = DateAdd("d", -1, dDate)
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+        End If
     End If
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"

@@ -150,7 +150,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .Sheet = 1
         .Col = .ColLetterToNumber(PHONG_XU_LY_COL)
         .Row = PHONG_XU_LY_ROW
-        If rsPXL.Fields.Count > 0 Then
+        If rsPXL.Fields.count > 0 Then
             Do While Not rsPXL.EOF
                 .TypeComboBoxIndex = -1
                 .TypeComboBoxString = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
@@ -575,16 +575,10 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("I"), 49, vLAN_BS
         .GetText .ColLetterToNumber("C"), 49, vCHINH_THUC
         ' Lay ve tu ngay
-        .GetText .ColLetterToNumber("K"), 3, vTU_NGAY
-        .GetText .ColLetterToNumber("P"), 3, vDEN_NGAY
         .GetText .ColLetterToNumber("R"), 4, vQT_TUNG_NAM
         .GetText .ColLetterToNumber("R"), 5, vQT_DAU_NAM
         
-        vTKTHANG = "0"  ' TK quy
-        If Trim$(vTU_NGAY) <> "" Or Trim$(vDEN_NGAY) <> "" Then
-            vTKTHANG = "1" ' TK thang
-        End If
-        
+       
         If Trim(vCHINH_THUC) = "1" Then
             vLAN_BS = "0"
         End If
@@ -598,20 +592,6 @@ On Error GoTo ErrHandle
         Else
             vNGAY_HOP_DONG = "'" & vNGAY_HOP_DONG & "'"
             vNGAY_HOP_DONG = "to_date(" & vNGAY_HOP_DONG & ",'dd/mm/yyyy')"
-        End If
-        ' Set truong nay doi voi to khai thang
-        If Trim(vTU_NGAY) = "" Or vTU_NGAY = vbNullString Then
-            vTU_NGAY = "null"
-        Else
-            vTU_NGAY = "'" & "01/" & vTU_NGAY & "'"
-            vTU_NGAY = "to_date(" & vTU_NGAY & ",'dd/mm/yyyy')"
-        End If
-        
-        If Trim(vDEN_NGAY) = "" Or vDEN_NGAY = vbNullString Then
-            vDEN_NGAY = "null"
-        Else
-            vDEN_NGAY = "'" & "01/" & vDEN_NGAY & "'"
-            vDEN_NGAY = "to_date(" & vDEN_NGAY & ",'dd/mm/yyyy')"
         End If
         
         vHINH_THUC_QT = "''"
@@ -655,20 +635,12 @@ On Error GoTo ErrHandle
         'strDate = Split(TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "/")
         'dDate = DateSerial(Val(strDate(1)), Val(strDate(0)), 1)
         dDate = dNgayDauKy
-        If vTU_NGAY = "null" Then
-            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        Else
-            strSQL = strSQL & vTU_NGAY & ","
-        End If
+        strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
         
         dDate = DateAdd("m", 3, dDate)
         dDate = DateAdd("d", -1, dDate)
         
-        If vDEN_NGAY = "null" Then
-            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        Else
-            strSQL = strSQL & vDEN_NGAY & ","
-        End If
+        strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     End If
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
@@ -760,12 +732,14 @@ On Error GoTo ErrHandle
 '
 '    End With
     
-    strSQL = strSQL & vTU_NGAY & "," & vDEN_NGAY & ","
+'    strSQL = strSQL & vTU_NGAY & "," & vDEN_NGAY & ","
     ' PIT
+    strSQL = strSQL & "null" & "," & "null" & ","
+    
     If TAX_Utilities_Srv_New.isCheckPIT = True Then
-        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & strTTGui & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & Trim(vHINH_THUC_QT) & "," & Trim(vTKTHANG) & ")"
+        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & strTTGui & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & Trim(vHINH_THUC_QT) & ",0)"
     Else
-        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & Trim(vHINH_THUC_QT) & "," & Trim(vTKTHANG) & ")"
+        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & Trim(vHINH_THUC_QT) & ",0)"
     End If
     ' end PIT
     

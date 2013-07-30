@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Begin VB.Form frmInterfaces 
    AutoRedraw      =   -1  'True
    BorderStyle     =   3  'Fixed Dialog
@@ -937,7 +937,8 @@ On Error GoTo ErrHandle
     '*************************************************************
     
     ' xu ly nhan cac mau an chi co canh bao khi quet trung
-    If Val(idToKhai) <= 68 And Val(idToKhai) >= 64 Then
+    If (Val(idToKhai) <= 68 And Val(idToKhai) >= 64) Or Val(idToKhai) = 91 Then
+
         ' xu ly an chi
         If isTonTaiAC = True Then
             mResult = MessageBox("0047", msYesNo, miQuestion)
@@ -950,24 +951,47 @@ On Error GoTo ErrHandle
     strSQL = strSQL & " where TIN='" & strMST & "' "
     strSQL = strSQL & " and LOAI_TKHAI='" & changeMaToKhai(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue) & "' "
     
-    'Ngay dau ky ke khai va ngay cuoi ky ke khai
-    dDate = dNgayDauKy
-    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
-        strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
-        dDate = DateAdd("m", 1, dDate)
-        dDate = DateAdd("d", -1, dDate)
-        strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
-    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
-        strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
-        dDate = DateAdd("m", 3, dDate)
-        dDate = DateAdd("d", -1, dDate)
-        strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy')"
-    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
-        strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
-        dDate = DateAdd("m", 12, dDate)
-        dDate = DateAdd("d", -1, dDate)
-        strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy')"
-    End If
+        'Ngay dau ky ke khai va ngay cuoi ky ke khai
+        dDate = dNgayDauKy
+    
+        If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
+            If (Val(idToKhai) = 1 Or Val(idToKhai) = 2 Or Val(idToKhai) = 4 Or Val(idToKhai) = 71 Or Val(idToKhai) = 36) And LoaiKyKK = True Then
+                strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
+                dDate = DateAdd("m", 3, dDate)
+                dDate = DateAdd("d", -1, dDate)
+                strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy')"
+
+            Else
+            
+                strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
+                dDate = DateAdd("m", 1, dDate)
+                dDate = DateAdd("d", -1, dDate)
+                strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
+            End If
+
+        ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
+
+            If Val(idToKhai) = 68 And LoaiKyKK = False Then
+                strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
+                dDate = DateAdd("m", 1, dDate)
+                dDate = DateAdd("d", -1, dDate)
+                strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
+
+            Else
+                strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
+                dDate = DateAdd("m", 3, dDate)
+                dDate = DateAdd("d", -1, dDate)
+                strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy')"
+
+            End If
+
+        ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
+            strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
+            dDate = DateAdd("m", 12, dDate)
+            dDate = DateAdd("d", -1, dDate)
+            strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy')"
+        End If
+
         Dim flgBCTC As Boolean
     clsDAO.BeginTrans
     Set rs = clsDAO.Execute(strSQL)
@@ -1406,18 +1430,58 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 ''To khai 04/GTGT
-'str2 = "aa316713600247325   06201300100200100301/0101/01/1900<S01><S></S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0</S><S>~~~09/07/2013~1~~</S></S01>"
+'str2 = "aa316713600247325   06201300100200100301/0101/01/1900<S01><S></S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0</S><S>~~~09/07/2013~1~~~1</S></S01>"
 'Barcode_Scaned str2
 '
 ''To khai 01A/TNDN
-'str2 = "aa316113600247325   02201300200200100101/0114/06/2006<S01><S></S><S>1~2~-1~3~4~-2~5~0~0~0~0~0~</S><S>x~</S><S>a~c~b~09/07/2013~1~0~~1052~</S></S01>"
+'str2 = "aa317113600247325   02201300100300100101/0114/06/2006<S01><S></S><S>1~2~-1~3~4~-2~5~0~0~0~0~0~x</S><S>x~x</S><S>a~c~b~25/07/2013~1~0~~1052~02</S></S01>"
 'Barcode_Scaned str2
 
-' Mau TB04/AC
-str2 = "aa316913600247325   06201300300300100101/0101/01/2009<S01><S>1~11~01DVPH~2~22~02DCTS~3~33~03Phone</S><S>01/01/2009~0102030405001~tong cuc thue~01/01/2009~nguyen van a</S></S01>"
-Barcode_Scaned str2
-'str2 = "aa316913600247325   0620130030030020021/2009~0102030405001~tong cuc thue~01/01/2009~nguyen van a</S></S01>"
+'' Mau TB04/AC
+'str2 = "aa316913600247325   06201300300300100101/0101/01/2009<S01><S>1~11~01DVPH~2~22~02DCTS~3~33~03Phone</S><S>01/01/2009~0102030405001~tong cuc thue~01/01/2009~nguyen van a</S></S01>"
 'Barcode_Scaned str2
+''str2 = "aa316913600247325   0620130030030020021/2009~0102030405001~tong cuc thue~01/01/2009~nguyen van a</S></S01>"
+''Barcode_Scaned str2
+
+'' phu luc 05A/TNDN
+'str2 = "aa317113600247325   02201300100400100201/0114/06/2006<S01><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~x</S><S>~</S><S>~~~25/07/2013~1~0~~1052~02</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa317113600247325   022013001004002002<S01-1><S>2134325</S><S>test~0102030405~100~0~10101</S></S01-1>"
+'Barcode_Scaned str2
+
+'To khai 01B/TNDN
+'str2 = "aa317123600247325   02201300100100100101/0114/06/2006<S01><S></S><S>x~x~0~0~0~0~20~~0~0~0~0~0~0~x</S><S>arae~26/07/2013~tesdt~rewr~1~~1052~02</S></S01>"
+'Barcode_Scaned str2
+
+'' phu luc 05A/TNDN
+'str2 = "aa317123600247325   02201300200200100201/0114/06/2006<S01><S></S><S>x~x~0~0~0~0~20~~0~0~0~0~0~0~x</S><S>arae~26/07/2013~tesdt~rewr~1~~1052~02</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa317123600247325   022013002002002002<S01-1><S>0</S><S>wetrwe~2222222222~90~0~10301~qweqw~0102030405~10~0~10304</S></S01-1>"
+'Barcode_Scaned str2
+
+''02/TNDN
+'str2 = "aa317733600247325   02201300100100100201/0114/06/2006<S02><S></S><S>124~3897~324~2340~342~423~234~234~-3773~0~-3773~23~0~54~0~4365~5466~23~1~0"
+'Barcode_Scaned str2
+'str2 = "aa317733600247325   022013001001002002</S><S>1~~test~2222222222~tes~44~01/08/2013~02/08/2013</S><S>ttest~34~tet~28/07/2013~1~~~1053~x</S></S02>"
+'Barcode_Scaned str2
+
+''03A TNCN
+'str2 = "aa317503600247325   06201300100100100101/0101/01/2010<S01><S></S><S>12321321~616066~423432423~423432~43543543~2177177~43543543~4354354~54645654~0~54667576~0</S><S>test~29/07/2013~test~3242~1~~</S></S01>"
+'Barcode_Scaned str2
+
+''08 KK TNCN
+'str2 = "aa317742600168262   02201300100100100101/0101/01/1900<S01><S></S><S>1~2~0~11~0~0~5~6~0~0~0~0~0</S><S>test~29/07/2013~test~213~1~</S></S01>"
+'Barcode_Scaned str2
+
+'07 KK TNCN
+'str2 = "aa317362600102014   02201300000100100101/0101/01/2010<S07><S></S><S>~0~4000000~4000000~0~0~0~0~0~0~0~0~0~20~0~0~1~0</S><S>~16/07/2013~~~1~~~1</S></S07>"
+'Barcode_Scaned str2
+
+'08A KK TNCN
+str2 = "aa317752600102014   02201300000000100201/0101/01/1900<S01><S>0102030405002</S><S>0~0~0</S><S>~~0~0~0"
+Barcode_Scaned str2
+str2 = "aa317752600102014   022013000000002002~0~0~0~0~0</S><S>~30/07/2013~Nguyen Van AA~ict02~1~</S></S01>"
+Barcode_Scaned str2
 
 End Sub
 
@@ -1873,6 +1937,18 @@ On Error GoTo ErrHandle
             arrBCBuffer(intBarcodeNo) = strPrefix & strBarcodeCount & strBarcode
             ' hlnam End
             If IsCompleteData(strData) Then
+            
+                ' Check version <= 3.1.6
+                If Val(Left$(strData, 3)) <= 316 Then
+                    If Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "04" Or Mid$(strData, 4, 2) = "71" Or Mid$(strData, 4, 2) = "36" Then
+                        strData = Left$(strData, Len(strData) - 10) & "~0" & Right$(strData, 10)
+                    ElseIf Mid$(strData, 4, 2) = "68" Then
+                        strData = Left$(strData, Len(strData) - 10) & "~1" & Right$(strData, 10)
+                    ElseIf Mid$(strData, 4, 2) = "73" Then
+                        strData = Left$(strData, Len(strData) - 10) & "~" & Right$(strData, 10)
+                    End If
+                End If
+
                 lblLoading.Visible = False
                 lblConnecting.Visible = True
                 frmInterfaces.Refresh
@@ -2550,13 +2626,30 @@ End Sub
 '****************************
 Private Sub SetPeriod(ByVal strValue As String)
 
-On Error GoTo ErrHandle
+    On Error GoTo ErrHandle
+    Dim strID As String
+    strID = Left$(strTaxReportInfo, 2)
+    
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
         TAX_Utilities_Srv_New.Month = Left$(strValue, 2)
-        TAX_Utilities_Srv_New.ThreeMonths = ""
+
+        If strID = "01" Or strID = "02" Or strID = "04" Or strID = "71" Or strID = "36" Or strID = "68" Then
+            TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
+        Else
+            TAX_Utilities_Srv_New.ThreeMonths = ""
+        End If
+
     ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = 1 Then
+
+        If strID = "68" Then
+            TAX_Utilities_Srv_New.Month = Left$(strValue, 2)
+            TAX_Utilities_Srv_New.ThreeMonths = ""
+        Else
+            TAX_Utilities_Srv_New.Month = ""
+            TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
+        End If
+
         TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
-        TAX_Utilities_Srv_New.Month = ""
     End If
     
     TAX_Utilities_Srv_New.Year = Right$(strValue, 4)
@@ -2840,15 +2933,36 @@ On Error GoTo ErrHandle
     
     
     On Error GoTo ErrHandle
+    
+    LoaiKyKK = LoaiToKhai(strData)
+    
     'Gan gia tri ngay dau ky
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
         dNgayDauKy = DateSerial(CInt(TAX_Utilities_Srv_New.Year), CInt(TAX_Utilities_Srv_New.Month), 1)
         dNgayCuoiKy = DateAdd("m", 1, dNgayDauKy)
         dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
+
+        If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Then
+            If LoaiKyKK = True Then
+                dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
+                dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
+                dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
+            End If
+
+        End If
+
     ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
-        dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
-        dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
-        dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
+
+        If Val(strIDBCTC) = 68 And LoaiKyKK = False Then
+            dNgayDauKy = DateSerial(CInt(TAX_Utilities_Srv_New.Year), CInt(TAX_Utilities_Srv_New.Month), 1)
+            dNgayCuoiKy = DateAdd("m", 1, dNgayDauKy)
+            dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
+        Else
+            dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
+            dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
+            dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
+        End If
+
     ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
         dNgayDauKy = GetNgayDauNam(CInt(TAX_Utilities_Srv_New.Year), iThangTaiChinh, iNgayTaiChinh)
         dNgayCuoiKy = DateAdd("m", 12, dNgayDauKy)
@@ -2968,12 +3082,14 @@ On Error GoTo ErrHandle
     ' Lay so thu tu cua to khai da dua vao RCV_TKHAI_HDR
     ' So thu tu nay phai lay theo cung Nguoi nop thue, ky ke khai, va cung loai to khai
     ' An chi
-    If Val(strID) >= 64 And Val(strID) <= 68 Then
-            ' An chi
-            If Not getSoTTTK_AC(changeMaToKhai(strID), arrStrHeaderData, strData) Then
-                DisplayMessage "0079", msOKOnly, miCriticalError
-                Exit Function
-            End If
+    If (Val(strID) >= 64 And Val(strID) <= 68) Or Val(strID) = 91 Then
+
+        ' An chi
+        If Not getSoTTTK_AC(changeMaToKhai(strID), arrStrHeaderData, strData) Then
+            DisplayMessage "0079", msOKOnly, miCriticalError
+            Exit Function
+        End If
+
     Else
         ' cac to khai binh thuong
         isTKLanPS = False
@@ -4805,6 +4921,31 @@ Private Function getSoTTTK_AC(ByVal strID As String, arrStrHeaderData() As Strin
         "And tkhai.LOAI_BC = '" & strID & "' " & _
         "And tkhai.KYBC_TU_NGAY = to_date('" & arrDeltail(1) & "','dd/mm/rrrr')" & _
         "And tkhai.KYBC_DEN_NGAY = to_date('" & Left$(arrDeltail(2), 10) & "','dd/mm/rrrr')"
+        
+    ElseIf strID = "04_TBAC" Then
+        arrDeltail = Split(strData, "~")
+        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
+        "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+        "And tkhai.LOAI_BC = '" & strID & "' " & _
+        " And tkhai.NGAY_BC = to_date('" & arrDeltail(UBound(arrDeltail) - 1) & "','dd/mm/rrrr')" & _
+        " And tkhai.NGAY_TB_PH = to_date('" & Right$(arrDeltail(UBound(arrDeltail) - 5), 10) & "','dd/mm/rrrr')"
+
+    ElseIf strID = "BC26_AC" Then
+
+        If LoaiKyKK = False Then
+                 strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
+                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                "And tkhai.LOAI_BC = '" & strID & "' " & _
+                "And tkhai.QUY_BC = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
+        Else
+                 strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
+                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                "And tkhai.LOAI_BC = '" & strID & "' " & _
+                "And tkhai.KYBC_TU_NGAY = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+                "And tkhai.KYBC_DEN_NGAY = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
+
+        End If
+
     Else
         strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
@@ -4923,6 +5064,25 @@ On Error GoTo ErrHandle
 ErrHandle:
     'Connect DB fail
     SaveErrorLog Me.Name, "isMaDLT", Err.Number, Err.Description
+    If Err.Number = -2147467259 Then _
+        MessageBox "0063", msOKOnly, miCriticalError
+End Function
+
+Private Function LoaiToKhai(ByVal strData As String) As Boolean
+    Dim LoaiTk As String
+    
+On Error GoTo ErrHandle
+    strData = Left$(strData, Len(strData) - 10)
+    LoaiTk = Right$(strData, 1)
+    If LoaiTk = "1" Then
+        LoaiToKhai = True
+    Else
+        LoaiToKhai = False
+    End If
+    Exit Function
+ErrHandle:
+    'Connect DB fail
+    SaveErrorLog Me.Name, "LoaiToKhai", Err.Number, Err.Description
     If Err.Number = -2147467259 Then _
         MessageBox "0063", msOKOnly, miCriticalError
 End Function
