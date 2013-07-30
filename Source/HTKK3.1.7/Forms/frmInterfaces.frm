@@ -153,7 +153,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":19A5
+         SpreadDesigner  =   "frmInterfaces.frx":1969
       End
    End
    Begin VB.Frame Frame2 
@@ -302,7 +302,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1C69
+      SpreadDesigner  =   "frmInterfaces.frx":1BF1
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -9232,6 +9232,74 @@ Private Sub TonghopKHBS()
                     ' end
                     fpSpread1.value = GetAttribute(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
                                     (TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6), "Value")
+                End If
+        Else
+                If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Then
+                    Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 11)
+                    ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                    fpSpread1.sheet = fpSpread1.SheetCount - 1
+                    fpSpread1.Col = lCol_temp
+                    fpSpread1.Row = lRow_temp
+    
+                    fpSpread1.Formula = "BD5"
+                    
+    
+    
+                    Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 10)
+                    ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                    fpSpread1.sheet = fpSpread1.SheetCount - 1
+                    fpSpread1.Col = lCol_temp
+                    fpSpread1.Row = lRow_temp
+                    temp = lRow_temp - 18
+                    ' kiem tra neu set lai cong thuc
+                    ' sua ct tinh
+                    fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 15 + temp, vSoTien
+                    strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp)
+                    
+                    'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
+                    fpSpread1.Formula = strFormula
+                    ' end
+                    
+                ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Then
+                ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "72" Then
+                    Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
+                    ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                    fpSpread1.sheet = fpSpread1.SheetCount - 1
+                    fpSpread1.Col = lCol_temp
+                    fpSpread1.Row = lRow_temp
+                    fpSpread1.Formula = "BD5"
+                    
+    
+                    Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6)
+                    ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                    fpSpread1.sheet = fpSpread1.SheetCount - 1
+                    fpSpread1.Col = lCol_temp
+                    fpSpread1.Row = lRow_temp
+                    temp = lRow_temp - 18
+                    fpSpread1.Formula = ""
+                    
+                Else
+                    Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
+                    ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                    fpSpread1.sheet = fpSpread1.SheetCount - 1
+                    fpSpread1.Col = lCol_temp
+                    fpSpread1.Row = lRow_temp
+                    fpSpread1.Formula = "BD5"
+                    
+                    Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6)
+                    ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                    fpSpread1.sheet = fpSpread1.SheetCount - 1
+                    fpSpread1.Col = lCol_temp
+                    fpSpread1.Row = lRow_temp
+                    temp = lRow_temp - 18
+                    ' kiem tra set lai cong thuc
+                    ' sua ct tinh
+                    fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 15 + temp, vSoTien
+                    strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp)
+                    
+                    'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
+                    fpSpread1.Formula = strFormula
+                    ' end
                 End If
         End If
 '-------------------------------------------------------------------
