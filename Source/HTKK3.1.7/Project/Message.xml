@@ -238,7 +238,7 @@
 	<Infor ID="0245" Msg="Thu nhập chịu thuế"/>
 	<Infor ID="0246" Msg="Số thuế đã khấu trừ"/>
 	<Infor ID="0247" Msg="§Õn th¸ng ph¶i nhá h¬n hoÆc b»ng th¸ng hiÖn t¹i"/>
-	<Infor ID="0248" Msg="Th¸ng kh«ng hîp lÖ. "/>
+	<Infor ID="0248" Msg="NhËp gi¸ trÞ theo ®óng ®Þnh d¹ng mm/yyyy "/>
 	<Infor ID="0249" Msg="Hạch toán chỉ tiêu [E] vào mục 1050, tiểu mục 1052"/>
 	<Infor ID="0250" Msg="Hạch toán chỉ tiêu [E] vào mục 1050, tiểu mục 1056"/>
 	<Infor ID="0251" Msg="Hạch toán chỉ tiêu [E] vào mục 1050, tiểu mục 1057"/>
@@ -262,5 +262,6 @@
 	<Infor ID="0269" Msg="Cho người phụ thuộc (3.600.000đ x Số người phụ thuộc)"/>	
 	<Infor ID="0270" Msg="Th«ng tin nµy ®· ®­îc chän, ®Ò nghÞ chän th«ng tin thay ®æi kh¸c."/>
 	<Infor ID="0271" Msg="Ngµy lËp KHBS ph¶i sau h¹n nép tê khai"/>
+	<Infor ID="0272" Msg="Tê khai GTGT chØ ®­îc kª khai tõ quý 3/2013 trë ®i"/>
 </Message>
 
