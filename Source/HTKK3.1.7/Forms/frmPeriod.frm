@@ -1962,6 +1962,15 @@ Public Sub cmdOK_Click()
                     cmbQuy.SetFocus
                     Exit Sub
                 End If
+                
+                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" _
+                Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+                     If (Val(TAX_Utilities_New.ThreeMonths) < 3 And Val(TAX_Utilities_New.Year) = 2013) Or Val(TAX_Utilities_New.Year) < 2013 Then
+                        DisplayMessage "0272", msOKOnly, miCriticalError
+                        cmbQuy.SetFocus
+                        Exit Sub
+                     End If
+                End If
             End If
         Else
             If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
