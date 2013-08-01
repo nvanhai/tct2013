@@ -2454,16 +2454,25 @@ Public Sub cmdOK_Click()
          .SetText .ColLetterToNumber("C"), 2, format(Date, "dd/mm/yyyy")
          Exit Sub
         End If
-        If DateDiff("D", format(Date, "dd/mm/yyyy"), strDateKHBS) > 0 Then
-            DisplayMessage "0224", msOKOnly, miInformation
-            Exit Sub
-        End If
-        'kiem tra voi ky kk
-        hanNopTk = GetHanNopTk
+        
+        
+        ' kiem tra voi ngay hien tai
         Dim arrDate() As String
         Dim hn As Date
         Dim ngayBs As Date
+        Dim ngayHt As Date
         
+        arrDate = Split(strDateKHBS, "/")
+        ngayBs = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
+        ngayHt = DateSerial(Year(Date), month(Date), Day(Date))
+        
+        If DateDiff("D", ngayHt, ngayBs) > 0 Then
+            DisplayMessage "0224", msOKOnly, miInformation
+            Exit Sub
+        End If
+        
+        'kiem tra voi ky kk
+        hanNopTk = GetHanNopTk
         arrDate = Split(hanNopTk, "/")
         hn = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
         arrDate = Split(strDateKHBS, "/")
@@ -4428,6 +4437,27 @@ Private Sub txtMonth_LostFocus()
         LoadGrid
     End If
     
+    ' set lai ngay dau ky va cuoi ky
+    If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "68" Then
+        If strQuy = "TK_THANG" Then
+            ' set ngay dau
+            txtNgayDau.Text = "01/" & txtMonth.Text & "/" & txtYear.Text
+            ' set ngay cuoi
+            Dim temp  As Integer
+            Dim temp1 As Date
+            temp = CInt(txtMonth.Text) + 1
+            If txtMonth.Text = "12" Then
+                temp1 = DateSerial(CInt(txtYear.Text) + 1, 1, 1)
+                temp1 = DateAdd("D", -1, temp1)
+                txtNgayCuoi.Text = Day(temp1) & "/" & format(month(temp1), "0#") & "/" & Year(temp1)
+            Else
+                temp1 = DateSerial(CInt(txtYear.Text), temp, 1)
+                temp1 = DateAdd("D", -1, temp1)
+                txtNgayCuoi.Text = Day(temp1) & "/" & format(month(temp1), "0#") & "/" & Year(temp1)
+            End If
+        End If
+    End If
+    
     blnLostFocusCalling = False
     blnValidInfo(1) = True
     Exit Sub
@@ -4654,6 +4684,28 @@ Private Sub txtYear_LostFocus()
     
     If txtNgayDau.Enabled And txtNgayDau.Visible And Not blnClick Then
         txtNgayDau.SetFocus
+    End If
+
+
+    ' set lai ngay dau ky va cuoi ky
+    If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "68" Then
+        If strQuy = "TK_THANG" Then
+            ' set ngay dau
+            txtNgayDau.Text = "01/" & txtMonth.Text & "/" & txtYear.Text
+            ' set ngay cuoi
+            Dim temp  As Integer
+            Dim temp1 As Date
+            temp = CInt(txtMonth.Text) + 1
+            If txtMonth.Text = "12" Then
+                temp1 = DateSerial(CInt(txtYear.Text) + 1, 1, 1)
+                temp1 = DateAdd("D", -1, temp1)
+                txtNgayCuoi.Text = Day(temp1) & "/" & format(month(temp1), "0#") & "/" & Year(temp1)
+            Else
+                temp1 = DateSerial(CInt(txtYear.Text), temp, 1)
+                temp1 = DateAdd("D", -1, temp1)
+                txtNgayCuoi.Text = Day(temp1) & "/" & format(month(temp1), "0#") & "/" & Year(temp1)
+            End If
+        End If
     End If
 
     blnLostFocusCalling = False
