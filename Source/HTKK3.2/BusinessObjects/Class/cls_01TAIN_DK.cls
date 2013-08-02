@@ -36,7 +36,7 @@ Public chkKhiThienNhien As String
 Public Sub Prepare1()
 
     With fps
-        .SHEET = 1
+        .Sheet = 1
         .Row = 30
         .Col = .ColLetterToNumber("O")
         .Text = chkDauTho
@@ -58,7 +58,7 @@ Public Sub Prepare1()
 
         '--set data for phu luc 01
         '--update 25/07/2013
-        .SHEET = SHEET_PHU_LUC_01
+        .Sheet = SHEET_PHU_LUC_01
         .Row = 12
         .Col = .ColLetterToNumber("F")
         .Text = chkDauTho
@@ -75,7 +75,7 @@ Public Sub Prepare1()
         .Col = .ColLetterToNumber("I")
         .Text = TAX_Utilities_New.Day & "/" & TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year
         
-        .SHEET = SHEET_PHU_LUC_01
+        .Sheet = SHEET_PHU_LUC_01
         SetDateFormat fps, SHEET_PHU_LUC_01, 34, fps.ColLetterToNumber("AD"), DDMMYYYY
         '--end set for sheet Phu luc 01
     End With
@@ -138,7 +138,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
     'CellNguoiKy = GetAttribute(TAX_Utilities_New.Data(0).getElementsByTagName("Cell")(TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length - 1), "CellID")
     With fps
         .EventEnabled(EventAllEvents) = False
-        mCurrentSheet = .SHEET
+        mCurrentSheet = .Sheet
         If .ActiveSheet = 1 Then
             If Col = .ColLetterToNumber("AM") And Row = 29 Then
                 .GetText Col, Row, varTemp
@@ -213,14 +213,14 @@ Public Sub finish()
     With fps
         .EventEnabled(EventAllEvents) = False
         ASheet = .ActiveSheet
-        SSheet = .SHEET
+        SSheet = .Sheet
         
         CheckDynamicError 'Set Exception Error on cells of interface
         
         UpdateSheets
             
         .ActiveSheet = ASheet
-        .SHEET = SSheet
+        .Sheet = SSheet
         .EventEnabled(EventAllEvents) = True
     End With
 End Sub
@@ -237,11 +237,11 @@ Private Sub CheckDynamicError()
     With fps
     '.Visible = False
     '.ReDraw = False
-    iCurrentSheet = .SHEET
-    .SHEET = .SheetCount
+    iCurrentSheet = .Sheet
+    .Sheet = .SheetCount
     .GetText .ColLetterToNumber("E"), 15, error2
     CheckErrorMST
-    .SHEET = iCurrentSheet
+    .Sheet = iCurrentSheet
     
     '.ReDraw = True
     '.Visible = True
@@ -257,8 +257,8 @@ Sub CheckErrorMST()
     Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
     With fps
         
-        iCurrentSheet = .SHEET
-        .SHEET = .SheetCount
+        iCurrentSheet = .Sheet
+        .Sheet = .SheetCount
         .GetText .ColLetterToNumber("E"), 12, vError1
         .GetText .ColLetterToNumber("E"), 13, vError2
         .GetText .ColLetterToNumber("E"), 14, vError3
@@ -315,7 +315,7 @@ Sub CheckErrorMST()
             .Text = "1"
         End If
         
-        .SHEET = 1
+        .Sheet = 1
         .Col = .ColLetterToNumber("F")
         .Row = 5
         .CellNote = ""
@@ -332,7 +332,7 @@ Sub CheckErrorMST()
             .CellNote = .CellNote & IIf(Trim(.CellNote) = "", "", vbCrLf) & "> " & vError3
             .BackColor = mErrorColor
         End If
-        .SHEET = iCurrentSheet
+        .Sheet = iCurrentSheet
     End With
 End Sub
 
@@ -366,15 +366,15 @@ Public Sub SetData()
     With fps
         .EventEnabled(EventAllEvents) = False
         ssSheet = mCurrentSheet
-        .SHEET = 1
-        mCurrentSheet = .SHEET
+        .Sheet = 1
+        mCurrentSheet = .Sheet
         'clear checkbox
         .Row = 28
         .Col = .ColLetterToNumber("Y")
         .value = 0
         .Col = .ColLetterToNumber("AS")
         .value = 0
-        .SHEET = .ActiveSheet
+        .Sheet = .ActiveSheet
         .EventEnabled(EventAllEvents) = True
     End With
 
@@ -394,8 +394,8 @@ Private Sub UpdateSheets()
     With fps
         .EventEnabled(EventAllEvents) = False
         ssSheet = mCurrentSheet
-        .SHEET = 1
-        mCurrentSheet = .SHEET
+        .Sheet = 1
+        mCurrentSheet = .Sheet
 
         If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "Active") <> "0") Then
 
@@ -422,7 +422,7 @@ Private Sub UpdateSheets()
 
         End If
         
-        .SHEET = .ActiveSheet
+        .Sheet = .ActiveSheet
         .EventEnabled(EventAllEvents) = True
     End With
 

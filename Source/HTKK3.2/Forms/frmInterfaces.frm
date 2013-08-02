@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":19A5
+         SpreadDesigner  =   "frmInterfaces.frx":1969
       End
    End
    Begin VB.Frame Frame2 
@@ -275,7 +275,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1C69
+      SpreadDesigner  =   "frmInterfaces.frx":1BF1
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -2376,7 +2376,7 @@ Private Sub DeleteSheet(pIndex As Integer)
     Dim strDataFileName As String
     Dim loFile As New Scripting.FileSystemObject
     ' TO khai TTDB va NTNN, 02/TNDN,04/TBAC  xu ly xoa lan phat sinh
-    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Then
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "92" Then
         If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" And TAX_Utilities_New.Day = "" Then
             strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
         ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" Then
@@ -5281,7 +5281,7 @@ Private Sub Form_Load()
             ' to khai GTGT se co to khai thang / quy
         If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "95" Then
              objTaxBusiness.strTkThangQuy = strQuy
-        ElseIf idMenu = "92" Then
+        ElseIf idMenu = "92" Or idMenu = "93" Then
             objTaxBusiness.chkDauTho = strDauTho
             objTaxBusiness.chkCondensate = strCondensate
             objTaxBusiness.chkKhiThienNhien = strKhiThienNhien
