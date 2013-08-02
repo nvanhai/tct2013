@@ -349,17 +349,17 @@ Public Sub Prepare2()
         mCurrentSheet = 1
         .Sheet = 1
         ' set loai tk thang/ quy
-        If strTkThangQuy = "TK_THANG" Then
-            .Col = .ColLetterToNumber("H")
-            .Row = 13
-            .Text = "0"
-            UpdateCell fps, .Col, .Row, .Text
-        ElseIf strTkThangQuy = "TK_QUY" Then
-            .Col = .ColLetterToNumber("H")
-            .Row = 13
-            .Text = "1"
-            UpdateCell fps, .Col, .Row, .Text
-        End If
+'        If strTkThangQuy = "TK_THANG" Then
+'            .Col = .ColLetterToNumber("H")
+'            .Row = 13
+'            .Text = "0"
+'            UpdateCell fps, .Col, .Row, .Text
+'        ElseIf strTkThangQuy = "TK_QUY" Then
+        .Col = .ColLetterToNumber("H")
+        .Row = 13
+        .Text = "1"
+        UpdateCell fps, .Col, .Row, .Text
+       ' End If
             'end
         mCurrentSheet = tmpSheet
         .EventEnabled(EventAllEvents) = True

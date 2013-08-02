@@ -1730,17 +1730,17 @@ Private Sub CheckDynamicError()
                                     strFocusRow = str(.Row)
                                     iFocusFlag = 1
                                 End If
-'                             ElseIf (CheckValidNgayHD(CStr(vNgayHD)) = False) Then
-'                                .Col = .ColLetterToNumber("E")
-'                                .CellNote = GetAttribute(GetMessageCellById("0124"), "Msg") 'static
-'                                .BackColor = mAlertColor
-'                                iFlagvNgayHD = 0
-    '                             If iFocusFlag = 0 Then
-    '                                strFocusSheetName = "'" & .SheetName & "'"
-    '                                strFocusCol = str(.Col)
-    '                                strFocusRow = str(.Row)
-    '                                iFocusFlag = 1
-    '                              End If
+                             ElseIf (CheckValidNgayHD(CStr(vNgayHD)) = False) Then
+                                .Col = .ColLetterToNumber("E")
+                                .CellNote = GetAttribute(GetMessageCellById("0124"), "Msg") 'static
+                                .BackColor = mAlertColor
+                                iFlagvNgayHD = 0
+                                 If iFocusFlag = 0 Then
+                                    strFocusSheetName = "'" & .SheetName & "'"
+                                    strFocusCol = str(.Col)
+                                    strFocusRow = str(.Row)
+                                    iFocusFlag = 1
+                                  End If
                              Else
                                 .Col = .ColLetterToNumber("E")
                                 .CellNote = ""
@@ -1988,16 +1988,16 @@ Private Sub CheckDynamicError()
                                     strFocusRow = str(.Row)
                                     iFocusFlag = 1
                                 End If
-'                             ElseIf (CheckValidNgayHD(CStr(vNgayHD)) = False) And strCellTag <> "2" Then
-'                                .Col = .ColLetterToNumber("E")
-'                                .CellNote = GetAttribute(GetMessageCellById("0124"), "Msg") 'static
-'                                .BackColor = mAlertColor
-'                                 If iFocusFlag = 0 Then
-'                                    strFocusSheetName = "'" & .SheetName & "'"
-'                                    strFocusCol = str(.Col)
-'                                    strFocusRow = str(.Row)
-'                                    iFocusFlag = 1
-'                                  End If
+                             ElseIf (CheckValidNgayHD(CStr(vNgayHD)) = False) And strCellTag <> "2" Then
+                                .Col = .ColLetterToNumber("E")
+                                .CellNote = GetAttribute(GetMessageCellById("0124"), "Msg") 'static
+                                .BackColor = mAlertColor
+                                 If iFocusFlag = 0 Then
+                                    strFocusSheetName = "'" & .SheetName & "'"
+                                    strFocusCol = str(.Col)
+                                    strFocusRow = str(.Row)
+                                    iFocusFlag = 1
+                                  End If
                              Else
                                 .Col = .ColLetterToNumber("E")
                                 .CellNote = ""
