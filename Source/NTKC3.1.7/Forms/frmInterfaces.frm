@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Begin VB.Form frmInterfaces 
    AutoRedraw      =   -1  'True
    BorderStyle     =   3  'Fixed Dialog
@@ -1390,8 +1390,8 @@ Private Sub Command1_Click()
 'str2 = "aa317683600247325   02201300200200100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~et~16/07/2013~0</S></S01>"
 'Barcode_Scaned str2
 
-str2 = "aa317911000808141   07201300100200100101/0101/01/2009<S01><S>00~11~01DVPH</S><S>01/01/2013~~~test~16/07/2013~abc</S></S01>"
-Barcode_Scaned str2
+'str2 = "aa317911000808141   07201300100200100101/0101/01/2009<S01><S>00~11~01DVPH</S><S>01/01/2013~~~test~16/07/2013~abc</S></S01>"
+'Barcode_Scaned str2
 
 'str2 = "aa316013600247325   06201300300300100101/0114/06/2006<S01><S></S><S>~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~16/07/2013~1~~~1701~~</S></S01>"
 'Barcode_Scaned str2
@@ -1407,6 +1407,14 @@ Barcode_Scaned str2
 
 'str2 = "aa317683600247325   02201300100200100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~test~17/07/2013~1</S></S01>"
 'Barcode_Scaned str2
+str2 = "aa317013600247325   03201300100100100101/0114/06/2006<S01><S></S><S>~0~0~10000000~0~0~0~10000000~0~0~10000000~0~0~0~10000000~10000000~0~0~0~10000000~0~10000000~0~0~0</S><S>~~~02/08/2013~1~~~1701~~~1</S></S01>"
+Barcode_Scaned str2
+
+'str2 = "bs317013600247325   03201300300300100201/0114/06/2006<S01><S></S><S>~0~0~10000000~0~0~0~20000000~0~0~20000000~0~0~0~20000000~20000000~0~0~0~20000000~0~20000000~0~0~0</S><S>~~~02/08/2013~~1~1~1701~~~1</S></S01>"
+'Barcode_Scaned str2
+'str2 = "bs317013600247325   032013003003002002<SKHBS><S>Hµng ho∏, dﬁch vÙ b∏n ra chﬁu thu’ su t 5%~31~10000000~20000000~10000000</S><S>~~0~0~0</S><S>01/01/2014~62~310000~~10000000~20000000~10000000~0~0~0</S></SKHBS>"
+'Barcode_Scaned str2
+
 
 End Sub
 
@@ -5058,10 +5066,13 @@ End Function
 
 Private Function LoaiToKhai(ByVal strData As String) As Boolean
     Dim LoaiTk As String
+    Dim tmp As String
     
 On Error GoTo ErrHandle
-    strData = Left$(strData, Len(strData) - 10)
-    LoaiTk = Right$(strData, 1)
+    
+    tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
+    tmp = Left$(tmp, Len(tmp) - 10)
+    LoaiTk = Right$(tmp, 1)
     If LoaiTk = "1" Then
         LoaiToKhai = True
     Else
