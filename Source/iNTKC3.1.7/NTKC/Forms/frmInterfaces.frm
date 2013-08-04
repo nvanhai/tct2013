@@ -5644,10 +5644,13 @@ End Function
 
 Private Function LoaiToKhai(ByVal strData As String) As Boolean
     Dim LoaiTk As String
+    Dim tmp As String
     
 On Error GoTo ErrHandle
-    strData = Left$(strData, Len(strData) - 10)
-    LoaiTk = Right$(strData, 1)
+    
+    tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
+    tmp = Left$(tmp, Len(tmp) - 10)
+    LoaiTk = Right$(tmp, 1)
     If LoaiTk = "1" Then
         LoaiToKhai = True
     Else
