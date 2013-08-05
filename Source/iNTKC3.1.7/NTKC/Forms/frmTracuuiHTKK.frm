@@ -503,7 +503,7 @@ Private Function changeLoaiToKhai(ByVal strLoaiMaToKhai As String) As String
     If strLoaiMaToKhai = "109" Then changeLoaiToKhai = " IN ('19','24','25','26','27') "
     If strLoaiMaToKhai = "110" Then changeLoaiToKhai = " IN ('20','28','29','30','31') "
     If strLoaiMaToKhai = "111" Then changeLoaiToKhai = " IN ('21','32','33','34','35') "
-    If strLoaiMaToKhai = "112" Then changeLoaiToKhai = " IN ('64','65','66','67','68') "
+    If strLoaiMaToKhai = "112" Then changeLoaiToKhai = " IN ('64','65','66','67','68','91') "
     If strLoaiMaToKhai = "101" Then changeLoaiToKhai = " IN ('70','80','81','82') "
     If strLoaiMaToKhai = "113" Then changeLoaiToKhai = " IN ('86','87','89') "
     
