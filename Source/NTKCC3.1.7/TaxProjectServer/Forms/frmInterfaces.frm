@@ -1636,11 +1636,11 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '' To khai 02_GTGT
-'str2 = "aa317020100100079   02201300100100100101/0114/06/2006<S01><S></S><S>0~10000000~1000000~0~0~0~0~1000000~0~1000000~0~0~1000000</S><S>~Nguy‘n Phi Phong~~08/01/2013~1~~~0</S></S01>"
-'Barcode_Scaned str2
+str2 = "aa317020100100079   03201300100100100101/0114/06/2006<S01><S></S><S>0~10000000~1000000~0~0~0~0~1000000~0~1000000~0~0~1000000</S><S>~Nguy‘n Phi Phong~~08/01/2013~1~~~1</S></S01>"
+Barcode_Scaned str2
 
-'' To khai 03 GTGT
-'str2 = "aa317040100100079   06201300100100100101/0114/06/2006<S01><S></S><S>3242~0~23432~23423~0~432423~-20181~0~-408991~0~0~0~26674~0</S><S>3424~234wer~234234~07/07/2013~1~~~0</S></S01>"
+' To khai 03 GTGT
+'str2 = "aa317040100100079   02201300100100100101/0114/06/2006<S01><S></S><S>3242~0~23432~23423~0~432423~-20181~0~-408991~0~0~0~26674~0</S><S>3424~234wer~234234~07/07/2013~1~~~1</S></S01>"
 'Barcode_Scaned str2
 '
 ''To khai 04/GTGT
@@ -1648,10 +1648,10 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 ''' To khai 02/TNDN
-str2 = "aa317730100100079   02201300000000100201/0114/06/2006<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0"
-Barcode_Scaned str2
-str2 = "aa317730100100079   022013000000002002~0~1~0</S><S>1~~~~~~~</S><S>~~~11/07/2013~1~~~1053~</S></S02>"
-Barcode_Scaned str2
+'str2 = "aa317730100100079   02201300000000100201/0114/06/2006<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0"
+'Barcode_Scaned str2
+'str2 = "aa317730100100079   022013000000002002~0~1~0</S><S>1~~~~~~~</S><S>~~~11/07/2013~1~~~1053~</S></S02>"
+'Barcode_Scaned str2
 
 'str2 = "aa317720100100079   06201300000000100101/0114/06/2006<S01><S></S><S>0~0~0~0~0</S><S>~~~24/07/2013~1~~</S></S01>"
 'Barcode_Scaned str2
@@ -4846,16 +4846,28 @@ Private Function Prepare_QLT() As String
             NGAYNOP_PRINT = NGNOP ' Ngay nop hien thi tren man hinh in BB nop cham (dhdang sua)
         End If
             
-        If (Trim(TAX_Utilities_Svr_New.Month) <> vbNullString Or Trim(TAX_Utilities_Svr_New.Month) <> "") And (Trim(TAX_Utilities_Svr_New.ThreeMonths) = vbNullString Or Trim(TAX_Utilities_Svr_New.ThreeMonths) = "") Then
-            KYKKHAI = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
-            Tinhkykekkhaithang (Mid$(KYKKHAI, 2, 7))
-        ElseIf (Trim(TAX_Utilities_Svr_New.Month) = vbNullString Or Trim(TAX_Utilities_Svr_New.Month) = "") And (Trim(TAX_Utilities_Svr_New.ThreeMonths) <> vbNullString Or Trim(TAX_Utilities_Svr_New.ThreeMonths) <> "") Then
-            KYKKHAI = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
-            Tinhkykekkhaiquy (Mid$(KYKKHAI, 2, 7))
+        If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "68" Then
+            If LoaiKyKK = False Then
+                KYKKHAI = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+                Tinhkykekkhaithang (Mid$(KYKKHAI, 2, 7))
+            Else
+                KYKKHAI = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
+                Tinhkykekkhaiquy (Mid$(KYKKHAI, 2, 7))
+            End If
+            
         Else
-            KYKK_TU_NGAY = "01/01/" & TAX_Utilities_Svr_New.Year
-            KYKK_TU_NGAY_F = "01/01/" & TAX_Utilities_Svr_New.Year
-            KYKK_DEN_NGAY = "12/31/" & TAX_Utilities_Svr_New.Year
+            If (Trim(TAX_Utilities_Svr_New.Month) <> vbNullString Or Trim(TAX_Utilities_Svr_New.Month) <> "") And (Trim(TAX_Utilities_Svr_New.ThreeMonths) = vbNullString Or Trim(TAX_Utilities_Svr_New.ThreeMonths) = "") Then
+                KYKKHAI = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+                Tinhkykekkhaithang (Mid$(KYKKHAI, 2, 7))
+            ElseIf (Trim(TAX_Utilities_Svr_New.Month) = vbNullString Or Trim(TAX_Utilities_Svr_New.Month) = "") And (Trim(TAX_Utilities_Svr_New.ThreeMonths) <> vbNullString Or Trim(TAX_Utilities_Svr_New.ThreeMonths) <> "") Then
+                KYKKHAI = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
+                Tinhkykekkhaiquy (Mid$(KYKKHAI, 2, 7))
+            Else
+                KYKK_TU_NGAY = "01/01/" & TAX_Utilities_Svr_New.Year
+                KYKK_TU_NGAY_F = "01/01/" & TAX_Utilities_Svr_New.Year
+                KYKK_DEN_NGAY = "12/31/" & TAX_Utilities_Svr_New.Year
+        End If
+
         End If
         'TAX_Utilities_Svr_New.ThreeMonths
         
@@ -4968,15 +4980,24 @@ Private Function Prepare_QLT() As String
     'ngay 20/09
     '-----------------------------------------------------------
         Dim kieukykk As String
-        If GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Month") = "1" Then
-            kieukykk = "M"
-        ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ThreeMonth") = "1" Then
-            kieukykk = "Q"
-        ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Year") = "1" Then
-            kieukykk = "Y"
+        If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "68" Then
+            If LoaiKyKK = False Then
+                kieukykk = "M"
+            Else
+                kieukykk = "Q"
+            End If
         Else
-            kieukykk = "Y"
+            If GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Month") = "1" Then
+                kieukykk = "M"
+            ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ThreeMonth") = "1" Then
+                kieukykk = "Q"
+            ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Year") = "1" Then
+                kieukykk = "Y"
+            Else
+                kieukykk = "Y"
+            End If
         End If
+
         
         If CheckThanhTraKiemTra(MST_PRINT, TinhLoaiThue(DHS_MA), KYKK_TU_NGAY_F, KYKK_DEN_NGAY) = True Then
 '            If MessageBox("0130", msYesNo, miQuestion) = mrYes Then
