@@ -1636,7 +1636,7 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '' To khai 02_GTGT
-str2 = "aa317020100100079   03201300100100100101/0114/06/2006<S01><S></S><S>0~10000000~1000000~0~0~0~0~1000000~0~1000000~0~0~1000000</S><S>~Nguy‘n Phi Phong~~08/01/2013~1~~~1</S></S01>"
+str2 = "aa317020100100079   03201300100100100101/0114/06/2006<S01><S></S><S>0~10000000~1000000~0~0~0~0~1000000~0~1000000~0~0~1000000</S><S>~Nguy‘n Phi Phong~~08/01/2013~1~1~~1</S></S01>"
 Barcode_Scaned str2
 
 ' To khai 03 GTGT
@@ -4910,15 +4910,23 @@ Private Function Prepare_QLT() As String
             End If
             Set rs = clsDAO.Execute(strSQL)
             If Not rs Is Nothing Then
-           
+                
                  SO_HOSO_BSUNG = rs(0)
-                 .GetText .ColLetterToNumber("O"), 2, BSUNG
-                 If Trim(BSUNG) = "[X]" Then
-                    TRANG_THAI = "02"
+                 If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "71" Then
+                    .GetText .ColLetterToNumber("M"), 6, BSUNG
+                 ElseIf ID_TK = "04" Then
+                    .GetText .ColLetterToNumber("L"), 6, BSUNG
+                 ElseIf ID_TK = "72" Then
+                    .GetText .ColLetterToNumber("J"), 5, BSUNG
+                 Else
+                    .GetText .ColLetterToNumber("O"), 2, BSUNG
+                 End If
+                 If Trim(BSUNG) = "X" Then
+                    TRANG_THAI = "03"
                     strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & format(NGAY_XL, "mm/dd/yyyy") & "' where ID = '" & rs(0) & "'"
                     bln = clsDAO.ExecuteDLL(strSQL)
                  Else
-                    TRANG_THAI = "03"
+                    TRANG_THAI = "02"
                     strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & format(NGAY_XL, "mm/dd/yyyy") & "' where ID = '" & rs(0) & "'"
                     bln = clsDAO.ExecuteDLL(strSQL)
                  End If
