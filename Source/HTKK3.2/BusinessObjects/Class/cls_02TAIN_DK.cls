@@ -17,6 +17,13 @@ Attribute fps.VB_VarHelpID = -1
 Public Strloaitk As String
 Public StrSolanBosung As String
 
+Private Const Row_MSTDN = 49
+Private Const Col_MSTDN = "P"
+Private Const Col_TKCT = "R"
+Private Const Row_TKCT = 30
+Private Const Col_TKBS = "W"
+Private Const Row_TKBS = 30
+
 Const SHEET_PHU_LUC_01 As Integer = 2
 Const SHEET_PHU_LUC_SAN_LUONG As Integer = 3
 Private Const ROW_START_02_1 = 27
@@ -111,12 +118,48 @@ End Sub
 'Its functions is 2st preparing for interface sheets
 'No parameter
 Public Sub Prepare2()
-'    With fps
-'        .EventEnabled(EventAllEvents) = False
-'        .Sheet = 1
-'        mCurrentSheet = .Sheet
-'        .EventEnabled(EventAllEvents) = True
-'    End With
+Dim strColC As String
+    Dim i As Long
+    Dim intCtrl As Integer
+    Dim strId As Variant
+    Dim xmlNode As MSXML.IXMLDOMNode
+    With fps
+        .Sheet = 1
+        mCurrentSheet = .Sheet
+
+        'update MSTDN luôn bang MST tren phan TT chung
+        UpdateMST fps, Col_MSTDN, Row_MSTDN
+
+        'If Strloaitk = "TKCT" Then
+        If Strloaitk <> "TKBS" Then
+            .Col = .ColLetterToNumber(Col_TKCT)
+            .Row = Row_TKCT
+            .Text = 1
+            UpdateCell fps, .Col, .Row, .Text
+'            .Col = .ColLetterToNumber("F")
+'            .Row = 59
+'            .Text = ""
+'            UpdateCell fps, .Col, .Row, .Text
+            .Col = .ColLetterToNumber(Col_TKBS)
+            .Row = Row_TKBS
+            .Text = ""
+            UpdateCell fps, .Col, .Row, .Text
+        ElseIf Strloaitk = "TKBS" Then
+            .Col = .ColLetterToNumber(Col_TKCT)
+            .Row = Row_TKCT
+            .Text = ""
+'            UpdateCell fps, .Col, .Row, .Text
+'            .Col = .ColLetterToNumber("F")
+'            .Row = 59
+'            .Text = 1
+            UpdateCell fps, .Col, .Row, .Text
+            .Col = .ColLetterToNumber(Col_TKBS)
+            .Row = Row_TKBS
+            .Text = StrSolanBosung
+            UpdateCell fps, .Col, .Row, .Text
+        End If
+        mCurrentSheet = .Sheet
+    End With
 End Sub
 
 Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)

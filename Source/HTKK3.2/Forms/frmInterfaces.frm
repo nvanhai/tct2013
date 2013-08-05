@@ -5353,6 +5353,11 @@ Private Sub Form_Load()
             strSolanBS = ""
         End If
     ' Cac to khai khac
+    'Update cho to khai tai nguyen
+    'ElseIf (Parentid = "101_3") Then
+    '    If (idMenu = "92" Or idMenu = "93") Then
+    '
+    '    End If
     Else
         If strKHBS = "TKCT" Then
             objTaxBusiness.strloaitk = "TKCT"
