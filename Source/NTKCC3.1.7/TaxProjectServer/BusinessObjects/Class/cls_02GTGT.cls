@@ -409,6 +409,11 @@ Public Function Prepared3() As Boolean
             .Value = 1
         End If
         
+        'so thu tu to khai
+        .Col = .ColLetterToNumber("M")
+        .Row = 30
+        strSoTTTKhai = Trim(TinhSoLanQuet)
+        .Text = Trim(TAX_Utilities_Svr_New.Convert(strSoTTTKhai, TCVN, UNICODE))
         'Set ma BPQL
         
 ''       .Col = .ColLetterToNumber(MA_BPQL_X)
