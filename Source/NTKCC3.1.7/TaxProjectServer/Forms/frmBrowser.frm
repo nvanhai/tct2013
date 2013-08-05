@@ -134,7 +134,7 @@ Private Function FileSelected() As Boolean
     Next
 End Function
 
-Private Sub cmdOk_Click()
+Private Sub cmdOK_Click()
     Dim strFolderPath As String
     Dim intCtrl As Integer
     
@@ -192,7 +192,7 @@ End Sub
 
 Private Sub File1_KeyUp(KeyCode As Integer, Shift As Integer)
     If (Shift = 0) And (KeyCode = vbKeyReturn Or KeyCode = vbKeyExecute) Then
-        cmdOk_Click
+        cmdOK_Click
     End If
 End Sub
 
