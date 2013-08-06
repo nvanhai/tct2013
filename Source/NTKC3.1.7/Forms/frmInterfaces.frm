@@ -1390,8 +1390,8 @@ Private Sub Command1_Click()
 'str2 = "aa317683600247325   02201300200200100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~et~16/07/2013~0</S></S01>"
 'Barcode_Scaned str2
 
-'str2 = "aa317911000808141   07201300100200100101/0101/01/2009<S01><S>00~11~01DVPH</S><S>01/01/2013~~~test~16/07/2013~abc</S></S01>"
-'Barcode_Scaned str2
+str2 = "aa317911000808141   07201300100200100101/0101/01/2009<S01><S>don vi phat hanh cu~don vi phat hanh moi~01DVPH~dia chi cu~dia chi moi~02DCTS~dien thoai cu~dien thoai moi~03Phone</S><S>01/01/2013~~~test~16/07/2013~abc</S></S01>"
+Barcode_Scaned str2
 
 'str2 = "aa316013600247325   06201300300300100101/0114/06/2006<S01><S></S><S>~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~16/07/2013~1~~~1701~~</S></S01>"
 'Barcode_Scaned str2
@@ -1407,8 +1407,8 @@ Private Sub Command1_Click()
 
 'str2 = "aa317683600247325   02201300100200100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~test~17/07/2013~1</S></S01>"
 'Barcode_Scaned str2
-str2 = "aa317013600247325   03201300100100100101/0114/06/2006<S01><S></S><S>~0~0~10000000~0~0~0~10000000~0~0~10000000~0~0~0~10000000~10000000~0~0~0~10000000~0~10000000~0~0~0</S><S>~~~02/08/2013~1~~~1701~~~1</S></S01>"
-Barcode_Scaned str2
+'str2 = "aa317013600247325   03201300100100100101/0114/06/2006<S01><S></S><S>~0~0~10000000~0~0~0~10000000~0~0~10000000~0~0~0~10000000~10000000~0~0~0~10000000~0~10000000~0~0~0</S><S>~~~02/08/2013~1~~~1701~~~1</S></S01>"
+'Barcode_Scaned str2
 
 'str2 = "bs317013600247325   03201300300300100201/0114/06/2006<S01><S></S><S>~0~0~10000000~0~0~0~20000000~0~0~20000000~0~0~0~20000000~20000000~0~0~0~20000000~0~20000000~0~0~0</S><S>~~~02/08/2013~~1~1~1701~~~1</S></S01>"
 'Barcode_Scaned str2
@@ -2909,8 +2909,15 @@ Private Function InitParameters(ByVal strData As String, _
     End If
     
     On Error GoTo ErrHandle
-    
-    LoaiKyKK = LoaiToKhai(strData)
+    If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Then
+        If Val(strIDBCTC) = 36 Then
+            LoaiKyKK = LoaiToKhai(strData)
+        Else
+            Dim tmp As String
+            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
+            LoaiKyKK = LoaiToKhai(tmp)
+        End If
+    End If
     
     'Gan gia tri ngay dau ky
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
@@ -5070,9 +5077,12 @@ Private Function LoaiToKhai(ByVal strData As String) As Boolean
     
 On Error GoTo ErrHandle
     
-    tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
-    tmp = Left$(tmp, Len(tmp) - 10)
-    LoaiTk = Right$(tmp, 1)
+    
+'    tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
+'    tmp = Left$(tmp, Len(tmp) - 10)
+    'LoaiTk = Right$(tmp, 1)
+    LoaiTk = Left$(strData, Len(strData) - 10)
+    LoaiTk = Right$(LoaiTk, 1)
     If LoaiTk = "1" Then
         LoaiToKhai = True
     Else
