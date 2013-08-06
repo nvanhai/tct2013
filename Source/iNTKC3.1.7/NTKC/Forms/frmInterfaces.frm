@@ -3252,7 +3252,16 @@ On Error GoTo ErrHandle
     
     On Error GoTo ErrHandle
     
-    LoaiKyKK = LoaiToKhai(strData)
+    If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Then
+        If Val(strIDBCTC) = 36 Then
+            LoaiKyKK = LoaiToKhai(strData)
+        Else
+            Dim tmp As String
+            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
+            LoaiKyKK = LoaiToKhai(tmp)
+        End If
+    End If
+    
     
     'Gan gia tri ngay dau ky
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
@@ -5648,9 +5657,8 @@ Private Function LoaiToKhai(ByVal strData As String) As Boolean
     
 On Error GoTo ErrHandle
     
-    tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
-    tmp = Left$(tmp, Len(tmp) - 10)
-    LoaiTk = Right$(tmp, 1)
+    LoaiTk = Left$(strData, Len(strData) - 10)
+    LoaiTk = Right$(LoaiTk, 1)
     If LoaiTk = "1" Then
         LoaiToKhai = True
     Else
