@@ -1632,8 +1632,8 @@ Private Sub Command1_Click()
 'Barcode_Scaned str1
 
 '' To khai 01_GTGT
-str2 = "aa317010100100079   06201300200200100101/0114/06/2006<S01><S></S><S>~35329039~0~100000000~1000000~0~0~100000000~0~0~100000000~0~0~0~100000000~99000000~0~0~0~63670961~0~63670961~0~0~1</S><S>~~~01/03/2013~1~~~1701~~03~0</S></S01>"
-Barcode_Scaned str2
+'str2 = "aa317010100100079   06201300200200100101/0114/06/2006<S01><S></S><S>~35329039~0~100000000~1000000~0~0~100000000~0~0~100000000~0~0~0~100000000~99000000~0~0~0~63670961~0~63670961~0~0~1</S><S>~~~01/03/2013~1~~~1701~~03~0</S></S01>"
+'Barcode_Scaned str2
 
 '' To khai 02_GTGT
 'str2 = "aa317020100100079   06201300100100100101/0114/06/2006<S01><S></S><S>0~10000000~1000000~0~0~0~0~1000000~0~1000000~0~0~1000000</S><S>~Nguy‘n Phi Phong~~08/01/2013~1~1~~0</S></S01>"
@@ -1644,8 +1644,15 @@ Barcode_Scaned str2
 'Barcode_Scaned str2
 '
 ''To khai 04/GTGT
-'str2 = "aa317710100100079   06201300100200100101/0101/01/1900<S01><S></S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0</S><S>~~~09/07/2013~1~~~0</S></S01>"
+'str2 = "aa317710100100079   02201300100200100101/0101/01/1900<S01><S></S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0</S><S>~~~09/07/2013~~1~1~1</S></S01>"
 'Barcode_Scaned str2
+
+str2 = "bs317710100100079   02201300400400100301/0101/01/1900<S01><S></S><S>45351000~435435435~676345345</S><S>45351000~435435435~676345345~01</S><S>2~4~5~01</S><S>907020~17417417~33817267</"
+Barcode_Scaned str2
+str2 = "bs317710100100079   022013004004002003S><S>907020~17417417~33817267~01</S><S>0~870871~3381727</S><S>0~870871~3381727~01</S><S>1157131780~4252598</S><S>~~~05/08/2013~~1~1~1</S></S01>"
+Barcode_Scaned str2
+str2 = "bs317710100100079   022013004004003003<SKHBS><S>Hµng ho∏, dﬁch vÙ chﬁu thu’ su t 5%~31~600~870871~870271~Hµng ho∏, dﬁch vÙ chﬁu thu’ su t 10%~32~20000~3381727~3361727</S><S>~~0~0~0</S><S>05/08/2014~278~747370.8468~~4231998</S></SKHBS>"
+Barcode_Scaned str2
 
 ''' To khai 02/TNDN
 'str2 = "aa317730100100079   02201300000000100201/0114/06/2006<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0"
@@ -2120,7 +2127,15 @@ Private Sub Barcode_Scaned(strBarcode As String)
                         strData = Left$(strData, Len(strData) - 10) & "~" & Right$(strData, 10)
                     End If
                 End If
-                LoaiKyKK = LoaiToKhai(strData)
+                    If Val(idToKhai) = 1 Or Val(idToKhai) = 2 Or Val(idToKhai) = 4 Or Val(idToKhai) = 71 Or Val(idToKhai) = 36 Then
+                        If Val(idToKhai) = 36 Then
+                            LoaiKyKK = LoaiToKhai(strData)
+                        Else
+                            Dim tmp As String
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
+                            LoaiKyKK = LoaiToKhai(tmp)
+                        End If
+                    End If
                 lblLoading.Visible = False
                 lblConnecting.Visible = True
                 frmInterfaces.Refresh
@@ -6274,6 +6289,7 @@ Private Function LoaiToKhai(ByVal strData As String) As Boolean
     Dim LoaiTk As String
     
 On Error GoTo ErrHandle
+
     LoaiTk = Left$(strData, Len(strData) - 10)
     LoaiTk = Right$(LoaiTk, 1)
     If LoaiTk = "1" Then
