@@ -1571,7 +1571,7 @@ Private Sub CheckDynamicError()
     Dim iflagCheckGH As Integer
     
     Dim arrDate() As String
-    Dim vDate As Date
+    Dim vdate As Date
     Dim vNgayHt As Date
     
     With fps
@@ -1713,11 +1713,11 @@ Private Sub CheckDynamicError()
                             If strTkThangQuy = "TK_QUY" Then
                                 vNgayHt = Date
                                 arrDate = Split(vNgayHD, "/")
-                                vDate = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
+                                vdate = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
                                 If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_New.Year) Then
                                     .Col = .ColLetterToNumber("E")
                                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                    .CellNote = GetAttribute(GetMessageCellById("0274"), "Msg") 'static
+                                    .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
                                     .BackColor = mErrorColor
                                     iFlagvNgayHD = 1
                                     If iFocusFlag = 0 Then
@@ -1726,10 +1726,10 @@ Private Sub CheckDynamicError()
                                         strFocusRow = str(.Row)
                                         iFocusFlag = 1
                                     End If
-                                 ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_New.Year) And convertThang2Quy(CInt(Right("00" & Mid(vNgayHD, 4, 2), 2))) <> CInt(TAX_Utilities_New.ThreeMonths) Then
+                                 ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_New.Year) And convertThang2Quy(CInt(Right("00" & Mid(vNgayHD, 4, 2), 2))) > CInt(TAX_Utilities_New.ThreeMonths) Then
                                     .Col = .ColLetterToNumber("E")
                                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                    .CellNote = GetAttribute(GetMessageCellById("0274"), "Msg") 'static
+                                    .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
                                     .BackColor = mErrorColor
                                     iFlagvNgayHD = 1
                                     If iFocusFlag = 0 Then
@@ -1738,7 +1738,7 @@ Private Sub CheckDynamicError()
                                         strFocusRow = str(.Row)
                                         iFocusFlag = 1
                                     End If
-                                 ElseIf DateDiff("D", vNgayHt, vDate) > 0 Then
+                                 ElseIf DateDiff("D", vNgayHt, vdate) > 0 Then
                                     .Col = .ColLetterToNumber("E")
                                     .CellNote = GetAttribute(GetMessageCellById("0273"), "Msg") 'static
                                     .BackColor = mErrorColor
@@ -2018,11 +2018,11 @@ Private Sub CheckDynamicError()
                             If strTkThangQuy = "TK_QUY" Then
                                 vNgayHt = Date
                                 arrDate = Split(vNgayHD, "/")
-                                vDate = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
+                                vdate = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
                                 If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_New.Year) Then
                                        .Col = .ColLetterToNumber("E")
                                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                       .CellNote = GetAttribute(GetMessageCellById("0274"), "Msg") 'static
+                                       .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
                                        .BackColor = mErrorColor
                                        iFlagvNgayHD = 1
                                        If iFocusFlag = 0 Then
@@ -2031,10 +2031,10 @@ Private Sub CheckDynamicError()
                                            strFocusRow = str(.Row)
                                            iFocusFlag = 1
                                        End If
-                                    ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_New.Year) And convertThang2Quy(CInt(Right("00" & Mid(vNgayHD, 4, 2), 2))) <> CInt(TAX_Utilities_New.ThreeMonths) Then
+                                    ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_New.Year) And convertThang2Quy(CInt(Right("00" & Mid(vNgayHD, 4, 2), 2))) > CInt(TAX_Utilities_New.ThreeMonths) Then
                                        .Col = .ColLetterToNumber("E")
                                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                       .CellNote = GetAttribute(GetMessageCellById("0274"), "Msg") 'static
+                                       .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
                                        .BackColor = mErrorColor
                                        iFlagvNgayHD = 1
                                        If iFocusFlag = 0 Then
@@ -2043,7 +2043,7 @@ Private Sub CheckDynamicError()
                                            strFocusRow = str(.Row)
                                            iFocusFlag = 1
                                        End If
-                                    ElseIf (DateDiff("D", vNgayHt, vDate) > 0) And strCellTag <> "2" Then
+                                    ElseIf (DateDiff("D", vNgayHt, vdate) > 0) And strCellTag <> "2" Then
                                        .Col = .ColLetterToNumber("E")
                                        .CellNote = GetAttribute(GetMessageCellById("0273"), "Msg") 'static
                                        .BackColor = mErrorColor
@@ -3584,17 +3584,17 @@ Public Function InsertEnable(KeyCode As Integer, Shift As Integer) As Boolean
 End Function
 
 
-Private Function CheckValidNgayHD(vDate As String) As Boolean
+Private Function CheckValidNgayHD(vdate As String) As Boolean
   
    Dim dd As String, mm As String, yyyy As String, dDate As Date, dDateNow As Date
    Dim sDateNow As String
    On Error GoTo e
-    dd = Right("00" & Left(vDate, InStr(vDate, "/") - 1), 2)
-    mm = Right("00" & Mid(vDate, 4, 2), 2)
-    yyyy = Right("0000" & vDate, 4)
+    dd = Right("00" & Left(vdate, InStr(vdate, "/") - 1), 2)
+    mm = Right("00" & Mid(vdate, 4, 2), 2)
+    yyyy = Right("0000" & vdate, 4)
     sDateNow = "01/" & TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year
     dDateNow = Format(CDate(sDateNow), "dd/mm/yyyy")
-    dDate = Format(CDate(vDate), "dd/mm/yyyy")
+    dDate = Format(CDate(vdate), "dd/mm/yyyy")
         If CInt(yyyy) > CInt(TAX_Utilities_New.Year) Then
             CheckValidNgayHD = False
             Exit Function
