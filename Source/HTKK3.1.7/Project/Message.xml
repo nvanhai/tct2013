@@ -263,5 +263,7 @@
 	<Infor ID="0270" Msg="Th«ng tin nµy ®· ®­îc chän, ®Ò nghÞ chän th«ng tin thay ®æi kh¸c."/>
 	<Infor ID="0271" Msg="Ngµy lËp KHBS ph¶i sau h¹n nép tê khai"/>
 	<Infor ID="0272" Msg="Tê khai GTGT chØ ®­îc kª khai tõ quý 3/2013 trë ®i"/>
+	<Infor ID="0273" Msg="Ngày hóa đơn phải nhỏ hơn hoặc bằng ngày hiện tại"/>
+	<Infor ID="0274" Msg="Ngày hóa đơn phải thuộc quý kê khai"/>
 </Message>
 
