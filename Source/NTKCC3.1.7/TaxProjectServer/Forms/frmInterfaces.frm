@@ -4937,7 +4937,7 @@ Private Function Prepare_QLT() As String
                     .GetText .ColLetterToNumber("O"), 2, BSUNG
                  End If
                  If Trim(BSUNG) = "X" Then
-                    TRANG_THAI = "03"
+                    TRANG_THAI = "01"
                     strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & format(NGAY_XL, "mm/dd/yyyy") & "' where ID = '" & rs(0) & "'"
                     bln = clsDAO.ExecuteDLL(strSQL)
                  Else
