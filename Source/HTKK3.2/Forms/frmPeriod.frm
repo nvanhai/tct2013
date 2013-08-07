@@ -18,7 +18,16 @@ Begin VB.Form frmPeriod
    ShowInTaskbar   =   0   'False
    Visible         =   0   'False
    Begin VB.CheckBox chkKhiThien 
-      Caption         =   "Khi thien nhien"
+      Caption         =   "KhÝ thiªn nhiªn"
+      BeginProperty Font 
+         Name            =   "DS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   375
       Left            =   3360
       TabIndex        =   39
@@ -27,6 +36,15 @@ Begin VB.Form frmPeriod
    End
    Begin VB.CheckBox chkCondensate 
       Caption         =   "Condensate"
+      BeginProperty Font 
+         Name            =   "DS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   375
       Left            =   1680
       TabIndex        =   38
@@ -34,7 +52,16 @@ Begin VB.Form frmPeriod
       Width           =   1335
    End
    Begin VB.CheckBox chkDauTho 
-      Caption         =   "Dau tho"
+      Caption         =   "DÇu th«"
+      BeginProperty Font 
+         Name            =   "DS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   375
       Left            =   240
       TabIndex        =   37
