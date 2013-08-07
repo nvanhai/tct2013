@@ -233,7 +233,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
             isTkQuy = False
         Else
             LOAI_TO_KHAI = "03Q/GTGT"
-            isTkQuy = False
+            isTkQuy = True
         End If
     End With
     
