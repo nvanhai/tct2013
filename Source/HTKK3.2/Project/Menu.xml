@@ -183,7 +183,7 @@
 		</Validity>
 	</Menu>	
 
-	<Menu ID="36" PopID="101" ParentID="101_11" Caption="TK-TNCN Mẫu 07/KK-TNCN (Cá nhân tự khai)" FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
+	<Menu ID="36" PopID="101" ParentID="101_11" Caption="TK-TNCN Mẫu 07/KK-TNCN (Cá nhân tự khai)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="01/01/2010" InterfaceTemplate="..\InterfaceTemplates\excel\07_TNCN.xls" ReportTemplate="..\ReportTemplates\excel\07_TNCN.xls" Class="TAX_Business.cls_07TNCN" Class2="TAX_Business.clsReport008">
 			<Sheet ID="07" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="07_TNCN" InterfaceIni="..\InterfaceIni\07_TNCN.xml" ReportIni="..\ReportIni\07_TNCN.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
@@ -375,7 +375,7 @@
 	
 	
 	<Menu ID="101_7" PopID="" ParentID="101" Caption="Hóa đơn" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\kekhai.gif"/>
-	<Menu ID="64" PopID="101" ParentID="101_7" Caption="Thông báo phát hành hóa đơn (TB01/AC)" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
+	<Menu ID="64" PopID="101" ParentID="101_7" Caption="Thông báo phát hành hóa đơn (TB01/AC)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="1" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\excel\01_TBAC.xls" ReportTemplate="..\ReportTemplates\excel\01_TBAC.xls" Class="TAX_Business.cls_01TBAC">
 			<Sheet ID="01" Caption="TB01/AC" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_TBAC" InterfaceIni="..\InterfaceIni\01_TBAC.xml" ReportIni="..\ReportIni\01_TBAC.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>

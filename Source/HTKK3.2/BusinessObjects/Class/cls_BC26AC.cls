@@ -54,6 +54,8 @@ Private Const Col_AB = "AB"
 Private Const Col_AC = "AC"
 Private Const Col_AD = "AD"
 
+Public strTkThangQuy As String
+
 'Private strCheckTon As String
 'Private strCheckTonKhoang As String
 Private loaiHoaDonS1() As LOAI_HOA_DON
@@ -222,6 +224,8 @@ Public Sub Prepare2()
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim iCol As Long, iRow As Long
     
+    Dim tmpSheet As Integer
+    
     With fps
         .Sheet = 1
         .EventEnabled(EventAllEvents) = False
@@ -341,7 +345,23 @@ Public Sub Prepare2()
         .Col = iCol
         .Formula = ""
         
-        
+        tmpSheet = mCurrentSheet
+        mCurrentSheet = 1
+        .Sheet = 1
+        ' set loai tk thang/ quy
+'        If strTkThangQuy = "TK_THANG" Then
+'            .Col = .ColLetterToNumber("H")
+'            .Row = 13
+'            .Text = "0"
+'            UpdateCell fps, .Col, .Row, .Text
+'        ElseIf strTkThangQuy = "TK_QUY" Then
+        .Col = .ColLetterToNumber("H")
+        .Row = 13
+        .Text = "1"
+        UpdateCell fps, .Col, .Row, .Text
+       ' End If
+            'end
+        mCurrentSheet = tmpSheet
         .EventEnabled(EventAllEvents) = True
     End With
 End Sub

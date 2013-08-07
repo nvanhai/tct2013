@@ -1529,7 +1529,7 @@ Private Sub ShowFormFunction(pNode As MSXML.IXMLDOMNode)
             frPeriod.Show
             
             ' Neu la in mau bia ho so quyet toan thi vao luon ma ko can click Ok
-            If pNode.Attributes.getNamedItem("ID").nodeValue = "52" Or pNode.Attributes.getNamedItem("ID").nodeValue = "64" Or pNode.Attributes.getNamedItem("ID").nodeValue = "66" Or pNode.Attributes.getNamedItem("ID").nodeValue = "67" Then
+            If pNode.Attributes.getNamedItem("ID").nodeValue = "52" Or pNode.Attributes.getNamedItem("ID").nodeValue = "66" Or pNode.Attributes.getNamedItem("ID").nodeValue = "67" Then
                 frPeriod.Hide
                 frPeriod.cmdOK_Click
             End If
@@ -1680,9 +1680,6 @@ Private Sub ShowBangkeTNCN()
 ErrorHandle:
     SaveErrorLog Me.Name, "ShowBangke", Err.Number, Err.Description
 End Sub
-
-
-
 Private Sub ShowMau05TNDN()
     On Error GoTo ErrorHandle
     Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "hoahongdaily_05_TNDN.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)

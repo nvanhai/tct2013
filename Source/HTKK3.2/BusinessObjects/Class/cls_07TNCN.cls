@@ -20,6 +20,8 @@ Public iflag As Boolean
 Private Const Row_MSTDN = 7
 Private Const Col_MSTDN = "I"
 
+Public strTkThangQuy As String
+
 ' Kiem tra thong tin dai ly thue
 ' Neu khong co DL thue se an cac row nay di
 Public FlagDLThue As Boolean
@@ -32,14 +34,62 @@ Public strTuRowDenRowPL As String
 'add control, data for the control, celltag...
 'No parameter
 Public Sub Prepare1()
+    Dim tmp As Integer
     With fps
         SetDateFormat fps, 1, 66, .ColLetterToNumber("R"), DDMMYYYY
-        
-        .Sheet = 1 'To khai 02/TNCN
+        .Sheet = 1 'To khai 07/TNCN
         .Row = 66
         .Col = .ColLetterToNumber("R")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
+        
+        ' set defalt gia tri giam tru ban than
+        If strTkThangQuy = "TK_THANG" Then
+            ' chi tieu 24
+            If (Val(TAX_Utilities_New.Month) >= 7 And Val(TAX_Utilities_New.Year) = 2013) Or Val(TAX_Utilities_New.Year) > 2013 Then
+                .Col = .ColLetterToNumber("R")
+                .Row = 45
+                .Text = "9000000"
+                
+                ' chi tieu 25 label
+                .Col = .ColLetterToNumber("D")
+                .Row = 46
+                .Text = GetAttribute(GetMessageCellById("0269"), "Msg")
+            Else
+                .Col = .ColLetterToNumber("R")
+                .Row = 45
+                .Text = "4000000"
+                ' chi tieu 25 label
+                .Col = .ColLetterToNumber("D")
+                .Row = 46
+                .Text = GetAttribute(GetMessageCellById("0268"), "Msg")
+
+            End If
+        ElseIf strTkThangQuy = "TK_QUY" Then
+            ' chi tieu 24
+            If (Val(TAX_Utilities_New.ThreeMonths) >= 3 And Val(TAX_Utilities_New.Year) = 2013) Or Val(TAX_Utilities_New.Year) > 2013 Then
+                .Col = .ColLetterToNumber("R")
+                .Row = 45
+                .Text = "27000000"
+                
+                 ' chi tieu 25 label
+                .Col = .ColLetterToNumber("D")
+                .Row = 46
+                .Text = GetAttribute(GetMessageCellById("0269"), "Msg")
+
+            Else
+                .Col = .ColLetterToNumber("R")
+                .Row = 45
+                .Text = "12000000"
+                
+                ' chi tieu 25 label
+                .Col = .ColLetterToNumber("D")
+                .Row = 46
+                .Text = GetAttribute(GetMessageCellById("0268"), "Msg")
+
+            End If
+        End If
+        'end
     End With
 End Sub
 
@@ -83,8 +133,23 @@ Public Sub Prepare2()
             UpdateCell fps, .Col, .Row, .Text
         End If
         
+        
+        ' set loai tk thang/ quy
+         If strTkThangQuy = "TK_THANG" Then
+            .Col = .ColLetterToNumber("L")
+            .Row = 68
+            .Text = "0"
+            UpdateCell fps, .Col, .Row, .Text
+        ElseIf strTkThangQuy = "TK_QUY" Then
+            .Col = .ColLetterToNumber("L")
+            .Row = 68
+            .Text = "1"
+            UpdateCell fps, .Col, .Row, .Text
+        End If
+            'end
+        
         ' set up cho phep sua chi tieu 29
-          If TAX_Utilities_New.Year = 2011 And TAX_Utilities_New.ThreeMonths = 4 Then
+          If TAX_Utilities_New.Year = 2011 And TAX_Utilities_New.Month >= 8 And TAX_Utilities_New.Month <= 12 Then
           Else
                 .Sheet = 1
                 .Col = .ColLetterToNumber("R")
@@ -202,14 +267,28 @@ Private Sub CheckDynamicError()
     Dim CT30 As Variant
     Dim CT33 As Variant
     Dim CT35 As Variant
+    Dim CT24 As Variant
     Dim iFlagEmty As Variant
+    Dim iFlagCt24 As Integer, iFlagCt25 As Integer
+    Dim errCT24 As Variant, errCT24_1 As Variant
+    Dim errCT25 As Variant, errCT25_1 As Variant
+    
     With fps
         .Sheet = .SheetCount
         .GetText .ColLetterToNumber("E"), 17, errCT
+        
+        .GetText .ColLetterToNumber("E"), 18, errCT24
+        .GetText .ColLetterToNumber("E"), 16, errCT25
+        .GetText .ColLetterToNumber("E"), 25, errCT24_1
+        .GetText .ColLetterToNumber("E"), 26, errCT25_1
+        
         .Sheet = 1
         'sua yc canh bao rang buoc du lieu các muc I,II,III
 
         .GetText .ColLetterToNumber("R"), 43, CT22
+        
+        .GetText .ColLetterToNumber("R"), 45, CT24
+        
         .GetText .ColLetterToNumber("R"), 46, CT25
         .GetText .ColLetterToNumber("R"), 47, CT26
         .GetText .ColLetterToNumber("R"), 48, CT27
@@ -220,6 +299,10 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("R"), 59, CT36
         .GetText .ColLetterToNumber("R"), 60, CT37
         .GetText .ColLetterToNumber("R"), 61, CT38
+        
+        iFlagCt24 = 0
+        iFlagCt25 = 0
+        
         If Trim(CT37) <> 0 And Trim(CT37) = "1" Or Trim(CT37) = "2" Or Trim(CT37) = "5" Then
             .Col = .ColLetterToNumber("R")
             .Row = 60
@@ -246,8 +329,125 @@ Private Sub CheckDynamicError()
         Else
                 iflag = False
         End If
+        
+        If strTkThangQuy = "TK_THANG" Then
+            If (Val(TAX_Utilities_New.Month) >= 7 And Val(TAX_Utilities_New.Year) = 2013) Or Val(TAX_Utilities_New.Year) > 2013 Then
+                ' kiem tra chi tieu 24
+                If Val(CT24) = 9000000 Or Val(CT24) = 0 Then
+                    .Row = 45
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                 Else
+                    .Row = 45
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mErrorColor
+                    .CellNote = errCT24_1
+                    iFlagCt24 = 1
+                End If
+                ' kiem tra chi tieu 25
+                 If Val(CT25) Mod 3600000 <> 0 Then
+                    .Row = 46
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mErrorColor
+                    .CellNote = errCT25_1
+                    iFlagCt25 = 1
+                 Else
+                    .Row = 46
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                 End If
+            Else
+                ' kiem tra chi tieu 24
+                If Val(CT24) = 4000000 Or Val(CT24) = 0 Then
+                    .Row = 45
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                 Else
+                    .Row = 45
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mErrorColor
+                    .CellNote = errCT24
+                    iFlagCt24 = 1
+                End If
+                ' kiem tra chi tieu 25
+                If Val(CT25) Mod 1600000 <> 0 Then
+                    .Row = 46
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mErrorColor
+                    .CellNote = errCT25
+                    iFlagCt25 = 1
+                 Else
+                    .Row = 46
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                 End If
+            End If
+        ElseIf strTkThangQuy = "TK_QUY" Then
+            If (Val(TAX_Utilities_New.ThreeMonths) >= 3 And Val(TAX_Utilities_New.Year) = 2013) Or Val(TAX_Utilities_New.Year) > 2013 Then
+                ' chi tieu 24
+                If Val(CT24) = 27000000 Or Val(CT24) = 0 Then
+                    .Row = 45
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                 Else
+                    .Row = 45
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mErrorColor
+                    .CellNote = errCT24_1
+                    iFlagCt24 = 1
+                End If
+                ' chi tieu 25
+                If Val(CT25) Mod 3600000 <> 0 Then
+                    .Row = 46
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mErrorColor
+                    .CellNote = errCT25_1
+                    iFlagCt25 = 1
+                 Else
+                    .Row = 46
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                 End If
+            Else
+                ' chi tieu 24
+                If Val(CT24) = 12000000 Or Val(CT24) = 0 Then
+                    .Row = 45
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                 Else
+                    .Row = 45
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mErrorColor
+                    .CellNote = errCT24
+                    iFlagCt24 = 1
+                End If
+                ' chi tieu 25
+                If Val(CT25) Mod 1600000 <> 0 Then
+                    .Row = 46
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mErrorColor
+                    .CellNote = errCT25
+                    iFlagCt25 = 1
+                 Else
+                    .Row = 46
+                    .Col = .ColLetterToNumber("R")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                 End If
+            End If
+        End If
+        
          .Sheet = .SheetCount
          .SetText .ColLetterToNumber("B"), 17, IIf(iFlagEmty = 1, "0", "1")
+         .SetText .ColLetterToNumber("B"), 18, IIf(iFlagCt24 = 1, "0", "1")
+         .SetText .ColLetterToNumber("B"), 16, IIf(iFlagCt25 = 1, "0", "1")
     End With
     
 End Sub

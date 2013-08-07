@@ -358,11 +358,11 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
         Else
             If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Day") <> "1" Then
                 If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" _
-                Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+                Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "36" Then
                     If strQuy = "TK_THANG" Then
                         strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                     ElseIf strQuy = "TK_QUY" Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
                     End If
                 Else
                     strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
@@ -404,11 +404,11 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
         Else
             If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Day") <> "1" Then
                 If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" _
-                Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+                Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "36" Then
                     If strQuy = "TK_THANG" Then
                         strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                     ElseIf strQuy = "TK_QUY" Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
                     End If
                 Else
                     strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
@@ -426,6 +426,13 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
                     If strLoaiTKThang_PS = "TK_LANPS" Then
                         strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                     Else
+                        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                    End If
+                ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "68" Then
+                    ' BC26
+                    If strQuy = "TK_THANG" Then
+                        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_T" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                    ElseIf strQuy = "TK_QUY" Then
                         strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
                     End If
                 Else
@@ -2376,7 +2383,7 @@ Private Sub DeleteSheet(pIndex As Integer)
     Dim strDataFileName As String
     Dim loFile As New Scripting.FileSystemObject
     ' TO khai TTDB va NTNN, 02/TNDN,04/TBAC  xu ly xoa lan phat sinh
-    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "92" Then
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "64" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "92" Then
         If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" And TAX_Utilities_New.Day = "" Then
             strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
         ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" Then
@@ -2395,14 +2402,21 @@ Private Sub DeleteSheet(pIndex As Integer)
         Else
             strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
         End If
+    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "68" Then
+        'BC26
+        If strQuy = "TK_THANG" Then
+            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_T" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+        ElseIf strQuy = "TK_QUY" Then
+            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+        End If
     Else
         If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then
             If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" _
-            Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+            Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "36" Then
                 If strQuy = "TK_THANG" Then
                     strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                 ElseIf strQuy = "TK_QUY" Then
-                    strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                    strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
                 End If
             Else
                 strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
@@ -2456,8 +2470,16 @@ Private Sub DeleteKHBS()
                     strSheetKHBSDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & ".xml"
                 Else
                     If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "0" Then
-                        strKHBSDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
-                        strSheetKHBSDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                        If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" _
+                            Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "36" Then
+                                If strQuy = "TK_THANG" Then
+                                    strKHBSDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                                    strSheetKHBSDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                                ElseIf strQuy = "TK_QUY" Then
+                                    strKHBSDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                                    strSheetKHBSDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                                End If
+                        End If
                     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
                         If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Then
                                     ' To khai 08/TNCN co to khai tu thang va to khai quy
@@ -4494,9 +4516,6 @@ Private Sub CallFinish(Optional blFinish As Boolean)
                     Else
                         delNullRow i - 1
                     End If
-                ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "42" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "43" Then
-                'demo ham delnullrow moi cho 2 to QT 02_TNCN BH, XS
-                    iDelNullRow i - 1
                 Else
                     delNullRow i - 1
                 End If
@@ -4881,6 +4900,10 @@ Private Sub Command1_Click()
     Dim lCol_temp As Long
     Dim lRow_temp As Long
     Dim temp As Long
+    
+    Dim strFormula As String
+    Dim vSoTien As Variant
+    
     Dim xmlNodeCell_temp As MSXML.IXMLDOMNode
     If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Then
             Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 11)
@@ -4900,10 +4923,32 @@ Private Sub Command1_Click()
             fpSpread1.Col = lCol_temp
             fpSpread1.Row = lRow_temp
             temp = lRow_temp - 18
-            fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
+            ' sua ct tinh
+            fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 15 + temp, vSoTien
+            strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp)
+            
+            'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
+            fpSpread1.Formula = strFormula
+            ' end
 '            fpSpread1.value = GetAttribute(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
 '                            (TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 10), "Value")
         ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Then
+        ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "72" Then
+            Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
+            ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+            fpSpread1.sheet = fpSpread1.SheetCount - 1
+            fpSpread1.Col = lCol_temp
+            fpSpread1.Row = lRow_temp
+            fpSpread1.Formula = "BD5"
+            
+            Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6)
+            ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+            fpSpread1.sheet = fpSpread1.SheetCount - 1
+            fpSpread1.Col = lCol_temp
+            fpSpread1.Row = lRow_temp
+            temp = lRow_temp - 18
+            fpSpread1.Formula = ""
+            fpSpread1.value = "0"
         Else
             Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
             ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
@@ -4920,7 +4965,14 @@ Private Sub Command1_Click()
             fpSpread1.Col = lCol_temp
             fpSpread1.Row = lRow_temp
             temp = lRow_temp - 18
-            fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
+            
+            ' sua ct tinh
+            fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 15 + temp, vSoTien
+            strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp)
+            
+            'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
+            fpSpread1.Formula = strFormula
+            ' end
 '            fpSpread1.value = GetAttribute(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
 '                            (TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6), "Value")
     End If
@@ -5273,18 +5325,29 @@ Private Sub Form_Load()
     FormatGrid
 
     Dim idMenu As Variant
+    ' set ngay dau quy
+    Dim dNgayDauKy As Date
+    ' end
+    
     idMenu = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
 
     If Trim(GetAttribute(TAX_Utilities_New.NodeValidity, "Class")) <> vbNullString Then
         Set objTaxBusiness = CreateObject(GetAttribute(TAX_Utilities_New.NodeValidity, "Class"))
         Set objTaxBusiness.fps = fpSpread1
             ' to khai GTGT se co to khai thang / quy
-        If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "95" Then
+        If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "95" Or idMenu = "71" Or idMenu = "36" Or idMenu = "68" Then
              objTaxBusiness.strTkThangQuy = strQuy
         ElseIf idMenu = "92" Or idMenu = "93" Then
             objTaxBusiness.chkDauTho = strDauTho
             objTaxBusiness.chkCondensate = strCondensate
             objTaxBusiness.chkKhiThienNhien = strKhiThienNhien
+        End If
+	' set ngay dau quy
+        If idMenu = "01" Or idMenu = "02" Then
+            If strQuy = "TK_QUY" Then
+                dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_New.ThreeMonths), CInt(TAX_Utilities_New.Year), iNgayTaiChinh, iThangTaiChinh)
+                objTaxBusiness.dNgayDauQuy = dNgayDauKy
+            End If
         End If
         ' end
         objTaxBusiness.Prepare1
@@ -5353,11 +5416,6 @@ Private Sub Form_Load()
             strSolanBS = ""
         End If
     ' Cac to khai khac
-    'Update cho to khai tai nguyen
-    'ElseIf (Parentid = "101_3") Then
-    '    If (idMenu = "92" Or idMenu = "93") Then
-    '
-    '    End If
     Else
         If strKHBS = "TKCT" Then
             objTaxBusiness.strloaitk = "TKCT"
@@ -5739,14 +5797,11 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
     Dim options As Integer
     Dim star As String
     Dim endd As String
-    Dim id As Variant
     
     If mOnLoad Then Exit Sub
     
     Set frmDD = New frmDuongDan
     Set frmOp_Pr = New frm_Opcheck
-    id = GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID")
-    
        
     With fpSpread1
         .sheet = mCurrentSheet
@@ -5765,16 +5820,16 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
                 Else
                     If ImportExcel(strFileName) = True Then
                     'Debug.Print Time
-                        If id = "17" Or id = "42" Or id = 43 Or id = 59 Or id = 70 Then
+                        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "17" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "59" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Then
                             'moveData5A
                             moveDataNKH
                             'dhdang edit
                             'date 08-06-2010
                             'Turning Load BK xong them moi dong(F5)
                             'CallFinish
-'                        ElseIf id = "01" And .ActiveSheet = 2 Then
+'                        ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" And .ActiveSheet = 2 Then
 '                            moveData01_2
-                        ElseIf id = "05" Then
+                        ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Then
                             moveData01TTDB
                         Else
                             moveData
@@ -5785,7 +5840,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
             End If
         End If
         'dhdang edit dieu khien cell C_19 to 05_09
-        If Row = 19 And Col = .ColLetterToNumber("C") And id = "45" Then
+        If Row = 19 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "45" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
@@ -5836,7 +5891,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         'dhdang
         'xu ly nut check chon tren to 05A(cell N20)
         
-        If Row = 20 And Col = .ColLetterToNumber("G") And id = "17" Then
+        If Row = 20 And Col = .ColLetterToNumber("G") And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "17" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
@@ -5913,7 +5968,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
             End If
         End If
         'xu ly nut chech chon 05A_C20
-        If Row = 20 And Col = .ColLetterToNumber("C") And id = "17" Then
+        If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "17" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
@@ -5971,7 +6026,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         End If
         
         'xu ly nut chech chon 05B_W19
-        If Row = 20 And Col = .ColLetterToNumber("Y") And id = "17" Then
+        If Row = 20 And Col = .ColLetterToNumber("Y") And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "17" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
@@ -6032,7 +6087,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         
         ' xu ly nut check chon tren to khai 06KK-TNCN
         'xu ly nut chech chon 06B_C20
-        If Row = 20 And Col = .ColLetterToNumber("C") And id = "59" Then
+        If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "59" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
@@ -6085,7 +6140,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         
         
         'xu ly nut chech chon 02BH_C20
-        If Row = 20 And Col = .ColLetterToNumber("C") And id = "42" Then
+        If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "42" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
@@ -6136,7 +6191,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
             End If
         End If
         'xu ly nut chech chon 02XS_C20
-        If Row = 20 And Col = .ColLetterToNumber("C") And id = "43" Then
+        If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "43" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
@@ -6752,11 +6807,7 @@ Private Sub DeleteNode(ByVal intSheet As Integer, ByVal pCol As Long, ByVal pRow
     'fpSpread1.SetActiveCell fpSpread1.ActiveCol, fpSpread1.ActiveRow - lRows
     
     ' Delete curent row on Form
-    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "43" Then 'chay ham del row moi cho 2 to 02_TNCN
-        DeleteRow_TNCN intSheet, lLRowBound, lRows
-    Else
-        DeleteRow intSheet, lLRowBound, lRows
-    End If
+    DeleteRow intSheet, lLRowBound, lRows
     'fpSpread1.SetFocus
     
     xmlNodeCells.parentNode.removeChild xmlNodeCells
@@ -8456,7 +8507,7 @@ Private Sub saveKHBS()
                 If strQuy = "TK_THANG" Then
                     strDataFileName = TAX_Utilities_New.DataFolder & "KHBS_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_" & TAX_Utilities_New.DateKHBS & ".xml"
                 ElseIf strQuy = "TK_QUY" Then
-                    strDataFileName = TAX_Utilities_New.DataFolder & "KHBS_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_" & TAX_Utilities_New.DateKHBS & ".xml"
+                    strDataFileName = TAX_Utilities_New.DataFolder & "KHBS_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_" & TAX_Utilities_New.DateKHBS & ".xml"
                 End If
             Else
                  strDataFileName = TAX_Utilities_New.DataFolder & "KHBS_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_" & TAX_Utilities_New.DateKHBS & ".xml"
@@ -8665,7 +8716,7 @@ Public Function delNullRow(sheet As Long)
     fpSpread1.sheet = sheet + 1
     maxRow = fpSpread1.MaxRows
     'Do While countDel <> 19
-'    Do While countDel <> maxRow
+    Do While countDel <> maxRow
         countDel = countDel + 1
         Set xmlNodeListSec = TAX_Utilities_New.Data(sheet).getElementsByTagName("Section")
 'sec
@@ -8677,7 +8728,7 @@ Public Function delNullRow(sheet As Long)
                 Row = 0
                 For Each xmlNodeRow In xmlNodeListRow
                     hasVl = 0
-                    Set xmlNodeListCell = xmlNodeRow.childNodes
+                    Set xmlNodeListCell = xmlNodeListRow.Item(Row).childNodes
                'cell
                     For Each xmlNodeCell In xmlNodeListCell
                         value = GetAttribute(xmlNodeCell, "Value")
@@ -8691,11 +8742,11 @@ Public Function delNullRow(sheet As Long)
                         If Mid(cellid, 2, 1) = "_" Then
                             fpSpread1.ActiveSheet = sheet + 1
                             DeleteNode sheet + 1, fpSpread1.ColLetterToNumber(Left(cellid, 1)), CLng(Right(cellid, Len(cellid) - 2)), True
-'                             Exit For
+                             Exit For
                         ElseIf Mid(cellid, 3, 1) = "_" Then
                             fpSpread1.ActiveSheet = sheet + 1
                             DeleteNode sheet + 1, fpSpread1.ColLetterToNumber(Left(cellid, 2)), CLng(Right(cellid, Len(cellid) - 3)), True
-'                            Exit For
+                            Exit For
                         Else
                             
                         End If
@@ -8705,7 +8756,7 @@ Public Function delNullRow(sheet As Long)
             End If
             numSec = numSec + 1
         Next
-'    Loop
+    Loop
     fpSpread1.ActiveSheet = OldSheet
     Exit Function
 ErrorHandle:
@@ -9082,6 +9133,10 @@ Private Sub TonghopKHBS()
     Dim lRow_temp As Long
     Dim temp As Long
     Dim xmlNodeCell_temp As MSXML.IXMLDOMNode
+    
+    Dim strFormula As String
+    Dim vSoTien As Variant
+    
     If isNewdataBS = False Then
         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Then
                 Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 11)
@@ -9323,10 +9378,36 @@ Private Sub TonghopKHBS()
                     fpSpread1.Col = lCol_temp
                     fpSpread1.Row = lRow_temp
                     temp = lRow_temp - 18
-                    fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
+                    ' kiem tra neu set lai cong thuc
+                    ' sua ct tinh
+                    fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 15 + temp, vSoTien
+                    strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp)
+                    
+                    'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
+                    fpSpread1.Formula = strFormula
+                    ' end
                     fpSpread1.value = GetAttribute(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
                                     (TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 10), "Value")
                 ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Then
+                ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "72" Then
+                    Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
+                    ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                    fpSpread1.sheet = fpSpread1.SheetCount - 1
+                    fpSpread1.Col = lCol_temp
+                    fpSpread1.Row = lRow_temp
+                    fpSpread1.Formula = "BD5"
+                    fpSpread1.value = GetAttribute(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
+                                    (TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7), "Value")
+    
+                    Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6)
+                    ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                    fpSpread1.sheet = fpSpread1.SheetCount - 1
+                    fpSpread1.Col = lCol_temp
+                    fpSpread1.Row = lRow_temp
+                    temp = lRow_temp - 18
+                    fpSpread1.Formula = ""
+                    fpSpread1.value = GetAttribute(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
+                                    (TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6), "Value")
                 Else
                     Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
                     ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
@@ -9343,10 +9424,85 @@ Private Sub TonghopKHBS()
                     fpSpread1.Col = lCol_temp
                     fpSpread1.Row = lRow_temp
                     temp = lRow_temp - 18
-                    fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
+                    ' kiem tra set lai cong thuc
+                    ' sua ct tinh
+                    fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 15 + temp, vSoTien
+                    strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp)
+                    
+                    'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
+                    fpSpread1.Formula = strFormula
+                    ' end
                     fpSpread1.value = GetAttribute(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
                                     (TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6), "Value")
-            End If
+                End If
+        Else
+                If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Then
+                    Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 11)
+                    ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                    fpSpread1.sheet = fpSpread1.SheetCount - 1
+                    fpSpread1.Col = lCol_temp
+                    fpSpread1.Row = lRow_temp
+    
+                    fpSpread1.Formula = "BD5"
+                    
+    
+    
+                    Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 10)
+                    ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                    fpSpread1.sheet = fpSpread1.SheetCount - 1
+                    fpSpread1.Col = lCol_temp
+                    fpSpread1.Row = lRow_temp
+                    temp = lRow_temp - 18
+                    ' kiem tra neu set lai cong thuc
+                    ' sua ct tinh
+                    fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 15 + temp, vSoTien
+                    strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp)
+                    
+                    'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
+                    fpSpread1.Formula = strFormula
+                    ' end
+                    
+                ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Then
+                ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "72" Then
+                    Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
+                    ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                    fpSpread1.sheet = fpSpread1.SheetCount - 1
+                    fpSpread1.Col = lCol_temp
+                    fpSpread1.Row = lRow_temp
+                    fpSpread1.Formula = "BD5"
+                    
+    
+                    Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6)
+                    ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                    fpSpread1.sheet = fpSpread1.SheetCount - 1
+                    fpSpread1.Col = lCol_temp
+                    fpSpread1.Row = lRow_temp
+                    temp = lRow_temp - 18
+                    fpSpread1.Formula = ""
+                    
+                Else
+                    Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
+                    ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                    fpSpread1.sheet = fpSpread1.SheetCount - 1
+                    fpSpread1.Col = lCol_temp
+                    fpSpread1.Row = lRow_temp
+                    fpSpread1.Formula = "BD5"
+                    
+                    Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6)
+                    ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                    fpSpread1.sheet = fpSpread1.SheetCount - 1
+                    fpSpread1.Col = lCol_temp
+                    fpSpread1.Row = lRow_temp
+                    temp = lRow_temp - 18
+                    ' kiem tra set lai cong thuc
+                    ' sua ct tinh
+                    fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 15 + temp, vSoTien
+                    strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp)
+                    
+                    'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
+                    fpSpread1.Formula = strFormula
+                    ' end
+                End If
         End If
 '-------------------------------------------------------------------
         fpSpread1.ActiveSheet = fpSpread1.SheetCount - 1
@@ -10181,8 +10337,6 @@ Public Function delNullRowOn06(sheet As Long)
     Dim cellid, value As Variant
     Dim OldSheet As Long
     
-    Dim xmlNodeTemp As MSXML.IXMLDOMNode
-    
     'dntai para templ
     Dim i As Long, j As Integer, varTemp As Variant, rowStart As Long
     
@@ -10479,105 +10633,8 @@ Public Sub copyFormulasSheet3(numRow As Long, fps As fpSpread, rowStart As Long)
 
 End Sub
 
-
-Public Sub copyFormulas02_TNCN(numRow As Long, fps As fpSpread, rowStart As Long)
-    Dim a As Integer
-    a = 0
-
-    With fps
-
-        .sheet = 2
-
-        'truong hop so dong lon hon 10000
-        If numRow >= 10000 Then
-
-            Do While a * 2 <= 1024
-
-                If a = 0 Then
-                    .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a, .ColLetterToNumber("A"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("N"), rowStart, .ColLetterToNumber("O"), rowStart + a, .ColLetterToNumber("N"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("K"), rowStart, .ColLetterToNumber("M"), rowStart + a, .ColLetterToNumber("K"), (rowStart + a + 1)
-
-                    a = a + 2
-                ElseIf a <> 0 Then
-                    .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
-                    .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a - 1, .ColLetterToNumber("A"), rowStart + a
-                    .CopyRange .ColLetterToNumber("N"), rowStart, .ColLetterToNumber("O"), rowStart + a - 1, .ColLetterToNumber("N"), rowStart + a
-
-                    .CopyRange .ColLetterToNumber("K"), rowStart, .ColLetterToNumber("M"), rowStart + a - 1, .ColLetterToNumber("K"), rowStart + a
-
-                    a = a * 2
-                End If
-
-            Loop
-                 
-            a = 1
-            Dim dem As Integer
-            Dim du  As Integer
-            dem = numRow \ 1024
-            du = numRow Mod 1024
-
-            If dem > 0 Then
-
-                Do While a < dem
-                    .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), 1024 + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
-                    .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), 1024 + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * a
-                    .CopyRange .ColLetterToNumber("N"), rowStart, .ColLetterToNumber("O"), 1024 + rowStart - 1, .ColLetterToNumber("N"), rowStart + 1024 * a
-                      
-                    .CopyRange .ColLetterToNumber("K"), rowStart, .ColLetterToNumber("M"), 1024 + rowStart - 1, .ColLetterToNumber("K"), rowStart + 1024 * a
-                        
-                    a = a + 1
-                Loop
-                .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
-                .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), du + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * a
-                .CopyRange .ColLetterToNumber("N"), rowStart, .ColLetterToNumber("O"), du + rowStart - 1, .ColLetterToNumber("N"), rowStart + 1024 * a
-                .CopyRange .ColLetterToNumber("K"), rowStart, .ColLetterToNumber("M"), du + rowStart - 1, .ColLetterToNumber("K"), rowStart + 1024 * a
-    
-            Else
-                .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * (a - 1)
-                .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), du + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * (a - 1)
-                .CopyRange .ColLetterToNumber("N"), rowStart, .ColLetterToNumber("O"), du + rowStart - 1, .ColLetterToNumber("N"), rowStart + 1024 * (a - 1)
-                .CopyRange .ColLetterToNumber("K"), rowStart, .ColLetterToNumber("M"), du + rowStart - 1, .ColLetterToNumber("K"), rowStart + 1024 * (a - 1)
-
-            End If
-
-            ' truong hop nho hon 1024000
-        ElseIf numRow < 10000 Then
-            a = 0
-
-            Do While a * 2 < numRow
-
-                If a = 0 Then
-                    .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("K"), rowStart, .ColLetterToNumber("M"), rowStart + a, .ColLetterToNumber("K"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a, .ColLetterToNumber("A"), (rowStart + a + 1)
-                    
-                    .CopyRange .ColLetterToNumber("N"), rowStart, .ColLetterToNumber("O"), rowStart + a, .ColLetterToNumber("N"), (rowStart + a + 1)
-                    
-                    a = a + 2
-                ElseIf a <> 0 Then
-                    .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
-                    .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a - 1, .ColLetterToNumber("A"), rowStart + a
-                    .CopyRange .ColLetterToNumber("N"), rowStart, .ColLetterToNumber("O"), rowStart + a - 1, .ColLetterToNumber("N"), rowStart + a
-                    .CopyRange .ColLetterToNumber("K"), rowStart, .ColLetterToNumber("M"), rowStart + a - 1, .ColLetterToNumber("K"), rowStart + a
-                
-                    a = a * 2
-                End If
-
-            Loop
-            .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + (numRow - a - 1), .ColLetterToNumber("B"), rowStart + a
-            .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + (numRow - a - 1), .ColLetterToNumber("A"), rowStart + a
-            .CopyRange .ColLetterToNumber("N"), rowStart, .ColLetterToNumber("O"), rowStart + (numRow - a - 1), .ColLetterToNumber("N"), rowStart + a
-            .CopyRange .ColLetterToNumber("K"), rowStart, .ColLetterToNumber("M"), rowStart + (numRow - a - 1), .ColLetterToNumber("K"), rowStart + a
-
-        End If
-            
-    End With
-
-End Sub
 Public Sub copyFormulas06_TNCN(numRow As Long, fps As fpSpread, rowStart As Long)
-    Dim a As Integer
+    Dim a As Long
     a = 0
 
     With fps
@@ -10607,8 +10664,8 @@ Public Sub copyFormulas06_TNCN(numRow As Long, fps As fpSpread, rowStart As Long
             Loop
                  
             
-            Dim dem As Integer
-            Dim du  As Integer
+            Dim dem As Long
+            Dim du  As Long
             dem = numRow \ 1024
             du = numRow Mod 1024
             a = 1
@@ -10668,7 +10725,7 @@ Public Sub copyFormulas06_TNCN(numRow As Long, fps As fpSpread, rowStart As Long
 End Sub
 
 Public Sub copyFormulas01_NTNN(numRow As Long, fps As fpSpread, rowStart As Long)
-    Dim a As Integer
+    Dim a As Long
     a = 0
 
     With fps
@@ -10701,8 +10758,8 @@ Public Sub copyFormulas01_NTNN(numRow As Long, fps As fpSpread, rowStart As Long
             Loop
                  
             a = 1
-            Dim dem As Integer
-            Dim du  As Integer
+            Dim dem As Long
+            Dim du  As Long
             dem = numRow \ 1024
             du = numRow Mod 1024
 
@@ -10814,18 +10871,6 @@ Public Sub moveDataNKH()
  
         rowStartSpread1 = 22
         rowStartSpread2 = 4
-        
-    ElseIf Trim(varMenuId) = "42" And fpSpread1.ActiveSheet = 2 Then
-        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\02_TNCN_BH.xml"))
- 
-        rowStartSpread1 = 22
-        rowStartSpread2 = 3
-        
-    ElseIf Trim(varMenuId) = "43" And fpSpread1.ActiveSheet = 2 Then
-        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\02_TNCN_XS.xml"))
- 
-        rowStartSpread1 = 22
-        rowStartSpread2 = 3
     ElseIf Trim(varMenuId) = "59" And fpSpread1.ActiveSheet = 2 Then
         xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\06_TNCN10.xml"))
  
@@ -10872,7 +10917,7 @@ Public Sub moveDataNKH()
         End If
         
         ' To khai 02/BH-TNCN va to khai 02/XS-TNCN
-        If (Trim(varMenuId) = "42" Or Trim(varMenuId) = "43" Or Trim(varMenuId) = "59") Then
+        If Trim(varMenuId) = "59" Then
             If (Trim(varTemp) <> vbNullString Or Trim(varTemp) <> "") And (Trim(varTemp2) <> vbNullString Or Trim(varTemp2) <> "") Then
                     If mCurrentSheet = 2 Then
                         lrowCount = lrowCount - 2
@@ -10959,13 +11004,8 @@ Public Sub moveDataNKH()
             gridData05B rowStartSpread1, rowStartSpread2, lrowCount, 3, isFirstRown
 
         End If
-
-    ElseIf Trim(varMenuId) = "42" Or Trim(varMenuId) = "43" Then
-        gridData02TNCN rowStartSpread1, rowStartSpread2, lrowCount, 2, isFirstRown
-        
     ElseIf Trim(varMenuId) = "59" Then
-        gridData06TNCN rowStartSpread1, rowStartSpread2, lrowCount, 2, isFirstRown
-        
+        gridData06TNCN rowStartSpread1, rowStartSpread2, lrowCount, 2
     ElseIf Trim(varMenuId) = "70" And fpSpread1.ActiveSheet = 1 Then
         gridData01NTNN rowStartSpread1, rowStartSpread2, lrowCount, 1
     End If
@@ -11051,11 +11091,8 @@ Public Sub moveDataNKH()
     fpSpread1.Visible = True
     ProgressBar1.Visible = False
     fpSpread1.EventEnabled(EventAllEvents) = True
-
-    Debug.Print "Start FinishImport: " & Time
     If Not objTaxBusiness Is Nothing Then objTaxBusiness.FinishImport
-    Debug.Print "End FinishImport: " & Time
-    Exit Sub
+     Exit Sub
     Debug.Print "Total Time Out: " & Time
 
 ErrHandle:
@@ -11777,214 +11814,10 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
 
 End Sub
 
-
-Private Sub gridData02TNCN(rowStartSpread1 As Long, _
-                              rowStartSpread2 As Long, _
-                              lrowCount As Long, _
-                              numSheet As Integer, isFirstRow As Boolean)
-    ReDim fparray(lrowCount, 6) As Variant
-    fpSpread2.GetArray fpSpread2.ColLetterToNumber("B"), rowStartSpread2, fparray
-    Dim a                As Integer
-    Dim rowStartSpread11 As Long
-    a = 0
-    rowStartSpread11 = rowStartSpread1
-
-    With fpSpread1
-        .sheet = numSheet
-        .EventEnabled(0) = False
-
-        ' do hai phu luc A,B co dong bat dau 22, truong hop nay them du lieu vao grid da co du lieu
-        If rowStartSpread1 > 22 Then
-           
-            .MaxRows = lrowCount + .MaxRows
-            ' 1. Insert row them cac dong trong
-            .InsertRows rowStartSpread1 + 1, lrowCount
-            'rowStartSpread1 = rowStartSpread1 + 1
-            rowStartSpread11 = rowStartSpread1
-        Else
-            .MaxRows = lrowCount + .MaxRows - 1
-            ' 1. Insert row them cac dong trong
-            If isFirstRow = True Then
-                .InsertRows rowStartSpread1 + 1, lrowCount - 1
-            Else
-                .InsertRows rowStartSpread1 + 1, lrowCount
-            End If
-        End If
-
-        '2. Set border cho grid
-        .SetCellBorder .ColLetterToNumber("B"), rowStartSpread1, .ColLetterToNumber("J"), (lrowCount + rowStartSpread1), 15, &O0, CellBorderStyleSolid
-        
-        '3. copy du lieu Text tu spread2 sang spread1
-        fpSpread2.Row = rowStartSpread2
-        
-        If isFirstRow = False Then
-            rowStartSpread1 = rowStartSpread1 + 1
-        End If
-
-        Do While fpSpread2.Row < lrowCount + 2
-            DoEvents
-            ProgressBar1.value = a
-            fpSpread2.Row = rowStartSpread2
-            
-            
-            .Row = rowStartSpread1
-            .RowHeight(-2) = 16.5
-
-            .Col = .ColLetterToNumber("D")
-                
-            .Text = fparray(a, 0)
-            .Col = .ColLetterToNumber("E")
-            If Not IsNull(fparray(a, 1)) Then
-                .Text = Left(fparray(a, 1), IIf(InStr(1, fparray(a, 1), ".") <> 0, InStr(1, fparray(a, 1), ".") - 1, Len(fparray(a, 1))))
-            Else
-                .Text = fparray(a, 1)
-            End If
-        
-            .Col = .ColLetterToNumber("F")
-            If Not IsNull(fparray(a, 2)) Then
-                .Text = Left(fparray(a, 2), IIf(InStr(1, fparray(a, 2), ".") <> 0, InStr(1, fparray(a, 2), ".") - 1, Len(fparray(a, 2))))
-            Else
-                .Text = fparray(a, 2)
-            End If
-                                        
-            .Col = .ColLetterToNumber("G")
-
-            If IsNumeric(fparray(a, 3)) Then
-                If Val(fparray(a, 3)) > 0 Then
-                    .Text = Round(fparray(a, 3))
-                Else
-                    .Text = 0
-                End If
-            Else
-                .Text = 0
-            End If
-                        
-            .Col = .ColLetterToNumber("H")
-
-            If IsNumeric(fparray(a, 4)) Then
-                If Val(fparray(a, 4)) > 0 Then
-                    .Text = Round(fparray(a, 4))
-                Else
-                    .Text = 0
-                End If
-            Else
-                .Text = 0
-            End If
-                       
-            .Col = .ColLetterToNumber("I")
-
-            If IsNumeric(fparray(a, 5)) Then
-                If Val(fparray(a, 5)) > 0 Then
-                    .Text = Round(fparray(a, 5))
-                Else
-                    .Text = 0
-                End If
-            Else
-                .Text = 0
-            End If
-                                           
-            .Col = .ColLetterToNumber("J")
-
-            If IsNumeric(fparray(a, 6)) Then
-                If Val(fparray(a, 6)) > 0 Then
-                    .Text = Round(fparray(a, 6))
-                Else
-                    .Text = 0
-                End If
-            Else
-                .Text = 0
-            End If
-
-            a = a + 1
-            rowStartSpread1 = rowStartSpread1 + 1
-            rowStartSpread2 = rowStartSpread2 + 1
-
-        Loop
-            
-        '               4. Set format cho Grid
-        
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("C")
-        .Row2 = lrowCount + rowStartSpread11
-        .Col2 = .ColLetterToNumber("C")
-        .BlockMode = True
-        .CellType = CellTypeCheckBox
-        .BlockMode = False
-
-        '               'format max lenght cot [E]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("E")
-        .Row2 = lrowCount + rowStartSpread11
-        .Col2 = .ColLetterToNumber("E")
-        .BlockMode = True
-        .TypeMaxEditLen = 10
-        .BlockMode = False
-                
-        'format max lenght cot [F]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("F")
-        .Row2 = lrowCount + rowStartSpread11
-        .Col2 = .ColLetterToNumber("F")
-        .BlockMode = True
-        .TypeMaxEditLen = 60
-        .BlockMode = False
-
-        '               format chi tieu [8]- [9],[E]->[F]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("E")
-        .Row2 = lrowCount + rowStartSpread11
-        .Col2 = .ColLetterToNumber("F")
-        .BlockMode = True
-        .TypeHAlign = TypeHAlignLeft
-        .BlockMode = False
-        
-
-        'format tu chi tieu [10] den [13],[G]->[J]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("G")
-        .Row2 = lrowCount + rowStartSpread11
-        .Col2 = .ColLetterToNumber("J")
-        .BlockMode = True
-        .CellType = CellTypeNumber
-        .TypeNumberDecPlaces = 0
-        .TypeNumberSeparator = "."
-        .TypeNumberShowSep = True
-        .TypeHAlign = TypeHAlignRight
-        .BlockMode = False
-
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("C")
-        .Row2 = lrowCount + rowStartSpread11
-        .Col2 = .ColLetterToNumber("J")
-        .BlockMode = True
-        .TypeVAlign = TypeVAlignCenter
-        .FontSize = 8
-        .FontName = "Tahoma"
-        .Lock = False
-        .BlockMode = False
-        
-        '5. Copy Fomulas tu dong rowStartSpread1 cho cac dong con lai
-        If rowStartSpread11 > 22 Then
-            copyFormulas02_TNCN lrowCount + 1, fpSpread1, rowStartSpread11
-        Else
-            If isFirstRow = False Then
-                copyFormulas02_TNCN lrowCount + 1, fpSpread1, rowStartSpread11
-            Else
-                copyFormulas02_TNCN lrowCount, fpSpread1, rowStartSpread11
-            End If
-        End If
-
-        .EventEnabled(0) = True
-       
-    End With
-
-End Sub
-
 Private Sub gridData06TNCN(rowStartSpread1 As Long, _
                            rowStartSpread2 As Long, _
                            lrowCount As Long, _
-                           numSheet As Integer, _
-                           isFirstRow As Boolean)
+                           numSheet As Integer)
                            
     ReDim fparray(lrowCount, 4) As Variant
     fpSpread2.GetArray fpSpread2.ColLetterToNumber("B"), rowStartSpread2, fparray
@@ -12003,20 +11836,12 @@ Private Sub gridData06TNCN(rowStartSpread1 As Long, _
             .MaxRows = lrowCount + .MaxRows
             ' 1. Insert row them cac dong trong
             .InsertRows rowStartSpread1 + 1, lrowCount
+            rowStartSpread1 = rowStartSpread1 + 1
             rowStartSpread11 = rowStartSpread1
         Else
-           
-            ' 1. Insert row them cac dong trong
             .MaxRows = lrowCount + .MaxRows - 1
-
             ' 1. Insert row them cac dong trong
-            If isFirstRow = True Then
-                
-                .InsertRows rowStartSpread1 + 1, lrowCount - 1
-            Else
-                
-                .InsertRows rowStartSpread1 + 1, lrowCount
-            End If
+            .InsertRows rowStartSpread1 + 1, lrowCount - 1
         End If
 
         '2. Set border cho grid
@@ -12024,10 +11849,6 @@ Private Sub gridData06TNCN(rowStartSpread1 As Long, _
         
         '3. copy du lieu Text tu spread2 sang spread1
         fpSpread2.Row = rowStartSpread2
-        
-        If isFirstRow = False Then
-            rowStartSpread1 = rowStartSpread1 + 1
-        End If
 
         Do While fpSpread2.Row < lrowCount + 2
             DoEvents
@@ -12150,15 +11971,9 @@ Private Sub gridData06TNCN(rowStartSpread1 As Long, _
         
         '5. Copy Fomulas tu dong rowStartSpread1 cho cac dong con lai
         If rowStartSpread11 > 22 Then
-            copyFormulas06_TNCN lrowCount + 1, fpSpread1, rowStartSpread11
+            copyFormulas06_TNCN lrowCount + 1, fpSpread1, rowStartSpread11 - 1
         Else
-
-            If isFirstRow = False Then
-                copyFormulas06_TNCN lrowCount + 1, fpSpread1, rowStartSpread11
-            Else
-                copyFormulas06_TNCN lrowCount, fpSpread1, rowStartSpread11
-            End If
-           
+            copyFormulas06_TNCN lrowCount, fpSpread1, rowStartSpread11
         End If
 
         .EventEnabled(0) = True
@@ -12167,7 +11982,6 @@ Private Sub gridData06TNCN(rowStartSpread1 As Long, _
                            
                               
 End Sub
-
 Private Sub gridData01NTNN(rowStartSpread1 As Long, _
                            rowStartSpread2 As Long, _
                            lrowCount As Long, _
@@ -12421,120 +12235,42 @@ Private Sub gridData01NTNN(rowStartSpread1 As Long, _
                               
 End Sub
 
-
-Public Function iDelNullRow(sheet As Long)
-    On Error GoTo ErrorHandle
-    Dim xmlNodeListSec As MSXML.IXMLDOMNodeList
-    Dim xmlNodeListRow As MSXML.IXMLDOMNodeList
-    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
-    Dim xmlNodeSec As MSXML.IXMLDOMNode
-    Dim xmlNodeRow As MSXML.IXMLDOMNode
-    Dim xmlNodeCell As MSXML.IXMLDOMNode
-    Dim numSec, Row, row1, celllg, hasVl As Long
-    Dim sumRowDel, countDel As Long
+' ham get formula tinh so tien phat nop cham
+Private Function getFormulaTienPNC(t As Long, soTien As Double, strColRow As String) As String
+    Dim soNgayNopCham As Long
+    Dim soNgayNopChamTruocHl As Long
+    Dim arrDate() As String
+    Dim dHanNop As Date
+    Dim dNgayBs As Date
+    Dim dHieuLuc As Date
     
-    Dim cellid, value As Variant
-    Dim OldSheet As Long
+    soNgayNopCham = getSoNgay(hanNopTk, ngayLapTkBs)
+    soNgayNopChamTruocHl = getSoNgay(hanNopTk, "01/07/2013") - 1
+    If hanNopTk <> "" Then
+        arrDate = Split(hanNopTk, "/")
+        dHanNop = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
+    End If
     
-    Dim maxRow As Long
+    If ngayLapTkBs <> "" Then
+        arrDate = Split(ngayLapTkBs, "/")
+        dNgayBs = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
+    End If
     
-    sumRowDel = TAX_Utilities_New.Data(sheet).getElementsByTagName("Cell").length
-    
-    OldSheet = fpSpread1.ActiveSheet
-    ' Xem lai vi sao lai countDel <> 19
-    ' 09112011
-    fpSpread1.sheet = sheet + 1
-    maxRow = fpSpread1.MaxRows
-    'Do While countDel <> 19
-'    Do While countDel <> maxRow
-        countDel = countDel + 1
-        'lay tat ca node section
-        Set xmlNodeListSec = TAX_Utilities_New.Data(sheet).getElementsByTagName("Section")
-'sec
-        numSec = 0
-        'lay tung node section
-        For Each xmlNodeSec In xmlNodeListSec
-            'neu la section dong
-            If GetAttribute(xmlNodeSec, "Dynamic") = "1" Then
-                'lay tat ca cac node cells trong section
-                Set xmlNodeListRow = xmlNodeListSec.Item(numSec).childNodes
-        'row
-                Row = 0
-                'lay tung node cells
-                For Each xmlNodeRow In xmlNodeListRow
-                    hasVl = 0
-                    Set xmlNodeListCell = xmlNodeRow.childNodes
-                    'duyet tung node cell trong cells
-                    For Each xmlNodeCell In xmlNodeListCell
-                        value = GetAttribute(xmlNodeCell, "Value")
-                        'If GetAttribute(xmlNodeCell, "FirstCell") = "" And value <> "" And value <> "0" And value <> "cbo" And value <> "0%" And value <> "5%" And value <> "10%" Then
-                        If (GetAttribute(xmlNodeCell, "FirstCell") <> "" And value <> "") Or (GetAttribute(xmlNodeCell, "FirstCell") = "" And value <> "" And value <> "0" And value <> "cbo" And value <> "0%" And value <> "5%" And value <> "10%") Then
-                            hasVl = hasVl + 1
-                        End If
-                        cellid = GetAttribute(xmlNodeCell, "CellID")
-                    Next
-                    'neu cell ko co gia tri thi xoa
-                    If hasVl = 0 Then
-                        If Mid(cellid, 2, 1) = "_" Then
-                            fpSpread1.ActiveSheet = sheet + 1
-                            DeleteNode sheet + 1, fpSpread1.ColLetterToNumber(Left(cellid, 1)), CLng(Right(cellid, Len(cellid) - 2)), True
-'                             Exit For
-                        ElseIf Mid(cellid, 3, 1) = "_" Then
-                            fpSpread1.ActiveSheet = sheet + 1
-                            DeleteNode sheet + 1, fpSpread1.ColLetterToNumber(Left(cellid, 2)), CLng(Right(cellid, Len(cellid) - 3)), True
-'                            Exit For
-                        Else
-                            
-                        End If
-                    End If
-                    Row = Row + 1
-                Next
-            End If
-            numSec = numSec + 1
-        Next
-'    Loop
-    fpSpread1.ActiveSheet = OldSheet
-    Exit Function
-ErrorHandle:
-    SaveErrorLog Me.Name, "iDelNullRow", Err.Number, Err.Description
-End Function
-
-Private Sub DeleteRow_TNCN(ByVal intSheet As Integer, ByVal pRow As Long, ByVal lRows As Long)
-    On Error GoTo ErrorHandle
-    
-    Dim strFormular As Variant
-    Dim cRow  As Long
-    
-    With fpSpread1
-        .EventEnabled(EventChange) = False
-        .ReDraw = False
-        '.Visible = False
-        .sheet = intSheet
-        ' luu lai dong hien tai
-        cRow = .Row
-        ' lay formular cua dong xoa
-        .Row = pRow
-        .Col = .ColLetterToNumber("B")
-        strFormular = .Formula
-        .DeleteRows pRow, lRows
-        'set lai formular
-        .Row = pRow
-        .Col = .ColLetterToNumber("B")
-        If UCase(Trim(.Text)) <> "AA" Then
-            .Row = pRow
-            .Col = .ColLetterToNumber("B")
-            .Formula = Trim(strFormular)
+    dHieuLuc = DateSerial(2013, 7, 1)
+    If DateDiff("D", dHanNop, dHieuLuc) > 0 And DateDiff("D", dNgayBs, dHieuLuc) < 0 Then
+        ' neu ngay phat sinh khoan no truoc 01/07/2013
+        If soNgayNopCham - soNgayNopChamTruocHl <= 90 Then
+            getFormulaTienPNC = soNgayNopCham & "*" & strColRow & "* 0.05 / 100"
+        Else
+            getFormulaTienPNC = (soNgayNopChamTruocHl + 90) & "*" & strColRow & "* 0.05 / 100 +" & (soNgayNopCham - soNgayNopChamTruocHl - 90) & "*" & strColRow & "* 0.07 / 100"
         End If
-        .Row = cRow
-        .MaxRows = .MaxRows - lRows
-        '.Visible = True
-        .ReDraw = True
-        .EventEnabled(EventChange) = True
-    End With
-    
-    Exit Sub
-    
-ErrorHandle:
-    SaveErrorLog Me.Name, "DeleteRow_TNCN", Err.Number, Err.Description
-End Sub
-
+    Else
+        ' neu ngay phat sinh khoan no sau 01/07/2013
+        If soNgayNopCham <= 90 Then
+            getFormulaTienPNC = soNgayNopCham & "*" & strColRow & "*0.05/100"
+        Else
+            getFormulaTienPNC = 90 & "*" & strColRow & "*0.05/100+" & (soNgayNopCham - 90) & "*" & strColRow & "*0.07/100"
+        End If
+    End If
+    Exit Function
+End Function
