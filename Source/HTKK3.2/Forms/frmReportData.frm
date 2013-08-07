@@ -1280,9 +1280,26 @@ strReturn = strReturn & strTaxID
 
 'Add period
 If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then
-    strReturn = strReturn & TAX_Utilities_New.month & TAX_Utilities_New.Year
+    ' to khai thang/quy GTGT, TNCN
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "36" Then
+        If strQuy = "TK_THANG" Then
+            strReturn = strReturn & TAX_Utilities_New.month & TAX_Utilities_New.Year
+        Else
+            strReturn = strReturn & "0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year
+        End If
+    Else
+        strReturn = strReturn & TAX_Utilities_New.month & TAX_Utilities_New.Year
+    End If
 ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
-    strReturn = strReturn & "0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "68" Then
+        If strQuy = "TK_THANG" Then
+            strReturn = strReturn & TAX_Utilities_New.month & TAX_Utilities_New.Year
+        Else
+            strReturn = strReturn & "0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year
+        End If
+    Else
+        strReturn = strReturn & "0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year
+    End If
 ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Year") = "1" Then
     strReturn = strReturn & "00" & TAX_Utilities_New.Year
 End If
@@ -1725,20 +1742,6 @@ Private Function GetLastDataRow2(ByVal lngSheet As Long) As Long
     GetLastDataRow2 = lRow
 End Function
 
-' Ham lay gia tri dong de ngat trang theo so dong muon ngat
-Private Function GetLastDataRow3(ByVal lngSheet As Long, ByVal numRow As Long) As Long
-    Dim xmlNode As MSXML.IXMLDOMNode
-    Dim xmlNodeList As MSXML.IXMLDOMNodeList
-    Dim lCol As Long, lRow As Long
-    
-    Set xmlNodeList = TAX_Utilities_New.Data(lngSheet - 1).getElementsByTagName("Cell")
-    Set xmlNode = xmlNodeList(xmlNodeList.length - numRow)
-    
-    ParserCellID fpsReport, GetAttribute(xmlNode, "CellID2"), lCol, lRow
-    
-    GetLastDataRow3 = lRow
-End Function
-
 ' Tinh toan lai chuoi ma vach cho cac mau BC AC
 ' test
 Private Sub PrintSheetAC(ByVal intSheet As Integer, ByVal intBarcodeIndex As Integer)
@@ -1846,123 +1849,5 @@ ErrHandle:
     End If
     
     SaveErrorLog "frmReportData", "PrintSheetAC", Err.Number, Err.Description
-    
-End Sub
-
-
-
-' Ham kiem tra tach MV
-'*****************************************************
-'Description: Print data and barcode image by sheet parameter
-'           Step 1: Set default printer (local)
-'           Step 2: Setup printer
-'           Step 3: Print grid by sheet parameter
-'           Step 4: Print barcode if it's first sheet
-'*****************************************************
-Private Sub PrintSheet01GTGT(ByVal intSheet As Integer, ByVal intBarcodeIndex As Integer)
-Dim intPageCount As Integer, intPage As Integer ', intPageNoByBarcode As Integer
-Dim intSizeOfBarcode  As Integer, intCtrl As Integer
-Dim lXOffset As Long, lYOffset As Long
-Dim lPageBeginOfSheet As Long, lPageEndOfSheet As Long
-Dim strValue As String, strPrefix As String 'mark string
-Dim strTemp As String, intBarcodesOnPage As Integer 'Count of bacodes in one page
-Dim arrStrValue As Variant
-Dim clsConverter As New clsUnicodeTCVNConverter
-
-On Error GoTo ErrHandle
-
-    'Get string value which parser to barcode
-    strValue = strDataBarcode(intBarcodeIndex)
-    
-    'Get number of page
-    fpsReport.OwnerPrintPageCount Printer.hDC, 0, 0, Printer.Width, Printer.Height, intPageCount
-    
-    If LenB(strValue) / intPageCount <= 800 Then
-        intSizeOfBarcode = Int(LenB(strValue) / (intPageCount))
-        intBarcodesOnPage = 1
-    ElseIf LenB(strValue) / (intPageCount * 2) <= 800 Then
-        intSizeOfBarcode = Int(LenB(strValue) / (intPageCount * 2))
-        intBarcodesOnPage = 2
-    ElseIf LenB(strValue) / (intPageCount * 3) <= 800 Then
-        intSizeOfBarcode = Int(LenB(strValue) / (intPageCount * 3))
-        intBarcodesOnPage = 3
-    Else
-        intSizeOfBarcode = Int(LenB(strValue) / (intPageCount * 4))
-        intBarcodesOnPage = 4
-    End If
-    
-    arrStrValue = CutStringByNumByte(strValue, IIf(intSizeOfBarcode Mod 2 = 0, intSizeOfBarcode + 2, intSizeOfBarcode + 1))
-    
-    'Get mark string
-    strPrefix = GetPrefix(intSheet)
-    
-    'BeginPage  of sheet
-    lPageBeginOfSheet = intCurrPage
-    
-    'Add mark
-    For intCtrl = 1 To UBound(arrStrValue)
-        intCurrentBarcode = intCurrentBarcode + 1
-        'Add current barcode
-    '****************************************
-    '  added
-    ' Date: 07/04/2006
-        strTemp = strPrefix & format(intCurrentBarcode, "000")
-        strTemp = strTemp & format(lBarcodeNumber, "000")
-    '****************************************
-        'Add prefix string to barcode string
-        arrStrValue(intCtrl) = strTemp & CStr(arrStrValue(intCtrl)) & "#"
-        arrStrValue(intCtrl) = clsConverter.Convert(CStr(arrStrValue(intCtrl)), UNICODE, TCVN)   'TAX_Utilities_New.Compress(TAX_Utilities_New.Convert(CStr(arrStrValue(intCtrl)), UNICODE, TCVN))
-    Next intCtrl
-
-    'Print first page
-    If intCurrPage = 0 Then
-        intCurrPage = intCurrPage + 1
-    End If
-    
-    With fpsReport
-        For intPage = 1 To intPageCount
-            'Print page number
-            If IsPrintedPage(intCurrPage) Then
-                'Printer.CurrentX = Printer.ScaleWidth - Printer.ScaleX(20, vbMillimeters)   'Printer.ScaleX(180, vbMillimeters)
-                If Printer.Orientation = 1 Then
-                    Printer.CurrentX = Printer.ScaleX(7 * 1400, vbTwips)
-                    Printer.CurrentY = Printer.ScaleY(Printer.Height - 0.55 * 1440, vbTwips) '11.15 * 1440, vbTwips)
-                Else
-                    Printer.CurrentX = Printer.ScaleX(10.6 * 1400, vbTwips)
-                    Printer.CurrentY = Printer.ScaleY(Printer.Height - 0.55 * 1440, vbTwips)  '7.7 * 1440, vbTwips)
-                End If
-
-                'Printer.CurrentY = Printer.ScaleHeight - Printer.ScaleY(0.13, vbInches)     'Printer.ScaleY(4, vbMillimeters) ' Printer.ScaleY(280, vbMillimeters)
-                Printer.ForeColor = vbBlack
-                Printer.FontSize = 8
-                Printer.Print "Trang " & intCurrPage & "/" & lPageNumber
-            End If
-            
-            If intCurrPage < lPageNumber Then
-                PrintPage intPage, arrStrValue, intBarcodesOnPage
-                PrintNewPage
-            Else
-                PrintPage intPage, arrStrValue, intBarcodesOnPage ', True
-                intCurrPage = intCurrPage + 1
-            End If
-        Next
-    End With
-    
-'    lPageEndOfSheet = intCurrPage
-'    If Not IsValidPrintedPage(lPageBeginOfSheet, lPageEndOfSheet) Then
-'        PrinterKillDoc
-'        Exit Sub
-'    End If
-'    PrinterEndDoc
-    
-    Exit Sub
-ErrHandle:
-    
-    If Err.Number = 482 Then 'Printer error
-        DisplayMessage "0057", msOKOnly, miCriticalError
-        PrinterEndDoc
-    End If
-    
-    SaveErrorLog "frmReportData", "PrintSheet01GTGT", Err.Number, Err.Description
     
 End Sub

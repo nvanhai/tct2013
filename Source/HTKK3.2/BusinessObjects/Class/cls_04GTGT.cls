@@ -48,7 +48,7 @@ Public denRowDL As Long
 Public strTuRowDenRowPL As String
 
 Private Const sheetPl01_1_GTGT = 2
-
+Public strTkThangQuy As String
 'Dinh nghia type luu du  Row
 Public Type MY_ROW
     tenCT As String
@@ -239,6 +239,22 @@ Public Sub Prepare2()
             .Text = StrSolanBosung
             UpdateCell fps, .Col, .Row, .Text
         End If
+        
+        
+        ' set loai tk thang/ quy
+         If strTkThangQuy = "TK_THANG" Then
+            .Col = .ColLetterToNumber("K")
+            .Row = 37
+            .Text = "0"
+            UpdateCell fps, .Col, .Row, .Text
+        ElseIf strTkThangQuy = "TK_QUY" Then
+            .Col = .ColLetterToNumber("K")
+            .Row = 37
+            .Text = "1"
+            UpdateCell fps, .Col, .Row, .Text
+        End If
+            'end
+        
         
         ' Set so thu tu
         ' group 2

@@ -1321,6 +1321,8 @@ Private Sub CheckDynamicError()
     Dim vCheckGH, vLyDoGH, vErrorCheckGH As Variant
     Dim iflagCheckGH As Integer, count As Integer
     
+    Dim isCheckGh As Boolean
+    
     lSheet03_3A = 7
     lSheet03_3B = 8
     lSheet03_3C = 9
@@ -1387,6 +1389,18 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 46, vErrorCheckGH
         
         ' check ly do gia han
+        If TAX_Utilities_New.Year = 2009 Then
+            isCheckGh = False
+        ElseIf TAX_Utilities_New.Year = 2010 Then
+            isCheckGh = False
+        ElseIf TAX_Utilities_New.Year = 2011 Then
+            isCheckGh = False
+        Else
+             isCheckGh = True
+        End If
+        
+        
+        
         .Sheet = 1
          count = 0
         .Row = 60
@@ -1399,7 +1413,7 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("B"), 61 + count, vCheckGH
         
         .GetText .ColLetterToNumber("D"), 62 + count, vLyDoGH
-         If Trim(vCheckGH) = "1" Or Trim$(UCase(vCheckGH)) = "X" Then
+         If (Trim(vCheckGH) = "1" Or Trim$(UCase(vCheckGH)) = "X") And isCheckGh Then
              If Trim$(vLyDoGH) = "" Then
                  .Col = .ColLetterToNumber("D")
                  .Row = 62 + count

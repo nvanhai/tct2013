@@ -213,10 +213,10 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
              If blGiaTriCu And Col = .ColLetterToNumber("C") Then 'And Not mblKeyF5 Then
                 If Not .Visible Then
                     .Visible = True
-                    DisplayMessage "0265", msOKOnly, miWarning
+                    DisplayMessage "0270", msOKOnly, miWarning
                     .Visible = False
                 Else
-                    DisplayMessage "0265", msOKOnly, miWarning
+                    DisplayMessage "0270", msOKOnly, miWarning
                 End If
                 
                 .Sheet = 1
