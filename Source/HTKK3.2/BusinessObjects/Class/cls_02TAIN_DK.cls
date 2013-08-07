@@ -317,25 +317,85 @@ End Sub
 'Cause this interface sheets have dynamic rows, this function will set cellnote of error for rising-error cell
 'no parameter
 Private Sub CheckDynamicError()
-    Dim MST1 As Variant, MST2 As Variant, MST3 As Variant, MST4 As Variant
-    Dim MST5 As Variant, MST6 As Variant, MST7 As Variant, MST8 As Variant
-    Dim MST9 As Variant, MST10 As Variant, MST11 As Variant, MST12 As Variant, MST13 As Variant
-    Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
-    Dim strCheck As String, iCurrentSheet As Integer
-    Dim error2 As Variant
+    Dim strCheck          As String, iCurrentSheet As Integer
+    Dim iFlagCheckMaST    As Integer
+    Dim varTemp           As Variant, vMST As Variant, errMST As Variant
+    Dim strFocusSheetName As String, strFocusRow As String, strFocusCol As String, iFocusFlag As Integer
+    
     With fps
-    '.Visible = False
-    '.ReDraw = False
-    iCurrentSheet = .Sheet
-    .Sheet = .SheetCount
-    .GetText .ColLetterToNumber("E"), 15, error2
-    CheckErrorMST
-    .Sheet = iCurrentSheet
+        iCurrentSheet = .Sheet
+        .Sheet = .SheetCount
+        .GetText .ColLetterToNumber("E"), 13, errMST
+
+        iFlagCheckMaST = 0
+        
+        .Sheet = iCurrentSheet
     
-    '.ReDraw = True
-    '.Visible = True
+        'Check MST static
+        .Sheet = SHEET_PHU_LUC_01
+
+        If .SheetVisible = True Then
+            mCurrentSheet = .Sheet
+
+            iFlagCheckMaST = 0
+            'iWhiteRow = 1
+            .Row = 27
+
+            Do
+                .GetText .ColLetterToNumber("D"), .Row, vMST
+                'If Trim$(vMST) <> "" Then iWhiteRow = 0
+
+                If Trim$(vMST) <> vbNullString Then
+                    vMST = Replace(vMST, " ", "")
+                    vMST = Replace(vMST, "-", "")
+                    'vMST = Left(vMST, 10)
+
+                    strCheck = ""
+
+                    If Len(vMST) = 10 Or Len(vMST) = 13 Then
+                        strCheck = CheckTaxCode(Mid$(vMST, 1, 1), Mid$(vMST, 2, 1), Mid$(vMST, 3, 1), Mid$(vMST, 4, 1), Mid$(vMST, 5, 1), Mid$(vMST, 6, 1), Mid$(vMST, 7, 1), Mid$(vMST, 8, 1), Mid$(vMST, 9, 1), Mid$(vMST, 10, 1), Mid$(vMST, 11, 1), Mid$(vMST, 12, 1), Mid$(vMST, 13, 1))
+                    End If
+                       
+                    If Mid$(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
+                        .Col = .ColLetterToNumber("D")
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = errMST   'static
+                        .BackColor = mErrorColor
+
+                        iFlagCheckMaST = 1
+                            
+                        'capture the first error cell
+                        If iFocusFlag = 0 Then
+                            strFocusSheetName = "'" & .SheetName & "'"
+                            strFocusCol = str$(.Col)
+                            strFocusRow = str$(.Row)
+
+                            iFocusFlag = 1
+                        End If
+
+                    Else
+                        .Col = .ColLetterToNumber("D")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
+
+                Else
+                    .Col = .ColLetterToNumber("D")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
+                
+                .Col = .ColLetterToNumber("B")
+                .Row = .Row + 1
+            Loop Until .Text = "aa"
+
+        End If
+
+        .Sheet = .SheetCount
+        .SetText .ColLetterToNumber("B"), 13, IIf(iFlagCheckMaST = 1, "0", "1")
+        CheckErrorMST
     End With
-    
+
 End Sub
 Sub CheckErrorMST()
     Dim vError1 As Variant, vError2 As Variant, vError3 As Variant
