@@ -961,6 +961,120 @@ Private Sub chkTkhaiThang_Click()
             txtNgayCuoi.Visible = False
                     
         End If
+
+    ElseIf strLoaiSacThue = "BC26" Then
+
+        ' set gia tri default
+        If m = 1 Then
+            m = 12
+            Y = Y - 1
+        Else
+            m = m - 1
+        End If
+
+        txtMonth.Text = m
+        txtYear.Text = Y
+
+        If Len(txtMonth.Text) = 1 Then
+            txtMonth.Text = "0" & txtMonth.Text
+        End If
+    
+        If chkTkhaiThang.value = 1 Then
+            strQuy = "TK_THANG"
+            chkTKQuy.value = 0
+            
+            Set lblMonth.Container = frmKy
+            lblMonth.Top = 570
+            lblMonth.Left = 960
+            
+            Set txtMonth.Container = frmKy
+            txtMonth.Top = 540
+            txtMonth.Left = 1530
+            
+            Set lblYear.Container = frmKy
+            lblYear.Top = 570
+            lblYear.Left = 2310
+            
+            Set txtYear.Container = frmKy
+            txtYear.Top = 540
+            txtYear.Left = 2730
+            SetControlCaption Me, "frmPeriod"
+
+            cmbQuy.Visible = False
+            lblQuy.Visible = False
+            lblMonth.Visible = True
+            txtMonth.Visible = True
+            
+            txtNgayDau.Visible = True
+            txtNgayCuoi.Visible = True
+            lblNgayDau.Visible = True
+            lblNgayCuoi.Visible = True
+            ' set ngay dau
+            txtNgayDau.Text = "01/" & txtMonth.Text & "/" & txtYear.Text
+            ' set ngay cuoi
+            Dim temp  As Integer
+            Dim temp1 As Date
+            temp = CInt(txtMonth.Text) + 1
+            If txtMonth.Text = "12" Then
+                temp1 = DateSerial(CInt(txtYear.Text) + 1, 1, 1)
+                temp1 = DateAdd("D", -1, temp1)
+                txtNgayCuoi.Text = Day(temp1) & "/" & format(month(temp1), "0#") & "/" & Year(temp1)
+            Else
+                temp1 = DateSerial(CInt(txtYear.Text), temp, 1)
+                temp1 = DateAdd("D", -1, temp1)
+                txtNgayCuoi.Text = Day(temp1) & "/" & format(month(temp1), "0#") & "/" & Year(temp1)
+            End If
+            
+            frmKy.Height = 1300
+            Frame2.Top = 1600
+        Else
+            strQuy = "TK_QUY"
+            chkTKQuy.value = 1
+            Set lblQuy.Container = frmKy
+            lblQuy.Top = 570
+            lblQuy.Left = 960
+            
+            ' Set gia tri mac dinh cho Quy
+            q = GetQuyHienTai(iNgayTaiChinh, iThangTaiChinh)
+
+            If q.q = 1 Then
+                q.q = 4
+                q.Y = q.Y - 1
+            Else
+                q.q = q.q - 1
+            End If
+
+            cmbQuy.ListIndex = q.q - 1
+            txtYear.Text = q.Y
+            
+            Set cmbQuy.Container = frmKy
+            cmbQuy.Top = 540
+            cmbQuy.Left = 1530
+            
+            Set lblYear.Container = frmKy
+            lblYear.Top = 570
+            lblYear.Left = 2310
+            
+            Set txtYear.Container = frmKy
+            txtYear.Top = 540
+            txtYear.Left = 2730
+            
+            SetControlCaption Me, "frmPeriod"
+   
+            cmbQuy.Visible = True
+            lblQuy.Visible = True
+            
+            lblMonth.Visible = False
+            txtMonth.Visible = False
+            
+            txtNgayDau.Visible = True
+            txtNgayCuoi.Visible = True
+            lblNgayDau.Visible = True
+            lblNgayCuoi.Visible = True
+            frmKy.Height = 1300
+            Frame2.Top = 1600
+        End If
+
     Else
         dTem = Date
         dtem1 = DateAdd("M", -1, Date)
@@ -1399,6 +1513,93 @@ Private Sub chkTKQuy_Click()
                     
         End If
 
+    ElseIf strLoaiSacThue = "BC26" Then
+
+        If chkTKQuy.value = 0 Then
+            strQuy = "TK_THANG"
+            chkTkhaiThang.value = 1
+            
+            Set lblMonth.Container = frmKy
+            lblMonth.Top = 570
+            lblMonth.Left = 960
+            
+            Set txtMonth.Container = frmKy
+            txtMonth.Top = 540
+            txtMonth.Left = 1530
+            
+            Set lblYear.Container = frmKy
+            lblYear.Top = 570
+            lblYear.Left = 2310
+            
+            Set txtYear.Container = frmKy
+            txtYear.Top = 540
+            txtYear.Left = 2730
+
+            SetControlCaption Me, "frmPeriod"
+   
+            cmbQuy.Visible = False
+            lblQuy.Visible = False
+            lblMonth.Visible = True
+            txtMonth.Visible = True
+            
+            txtNgayDau.Visible = True
+            txtNgayCuoi.Visible = True
+            lblNgayDau.Visible = True
+            lblNgayCuoi.Visible = True
+            
+            ' set ngay dau
+            txtNgayDau.Text = "01/" & txtMonth.Text & "/" & txtYear.Text
+            ' set ngay cuoi
+            Dim temp  As Integer
+            Dim temp1 As Date
+            temp = CInt(txtMonth.Text) + 1
+            If txtMonth.Text = "12" Then
+                temp1 = DateSerial(CInt(txtYear.Text) + 1, 1, 1)
+                temp1 = DateAdd("D", -1, temp1)
+                txtNgayCuoi.Text = Day(temp1) & "/" & format(month(temp1), "0#") & "/" & Year(temp1)
+            Else
+                temp1 = DateSerial(CInt(txtYear.Text), temp, 1)
+                temp1 = DateAdd("D", -1, temp1)
+                txtNgayCuoi.Text = Day(temp1) & "/" & format(month(temp1), "0#") & "/" & Year(temp1)
+            End If
+            
+            frmKy.Height = 1300
+            Frame2.Top = 1600
+        Else
+            strQuy = "TK_QUY"
+            chkTkhaiThang.value = 0
+                    
+            Set lblQuy.Container = frmKy
+            lblQuy.Top = 570
+            lblQuy.Left = 960
+            
+            Set cmbQuy.Container = frmKy
+            cmbQuy.Top = 540
+            cmbQuy.Left = 1530
+            
+            Set lblYear.Container = frmKy
+            lblYear.Top = 570
+            lblYear.Left = 2310
+            
+            Set txtYear.Container = frmKy
+            txtYear.Top = 540
+            txtYear.Left = 2730
+            
+            SetControlCaption Me, "frmPeriod"
+   
+            cmbQuy.Visible = True
+            lblQuy.Visible = True
+            
+            lblMonth.Visible = False
+            txtMonth.Visible = False
+            txtNgayDau.Visible = True
+            txtNgayCuoi.Visible = True
+            lblNgayDau.Visible = True
+            lblNgayCuoi.Visible = True
+            frmKy.Height = 1300
+            Frame2.Top = 1600
+        End If
+
     Else
         If chkTKQuy.value = 0 Then
             strQuy = "TK_TU_THANG"
@@ -1723,7 +1924,11 @@ Public Sub cmdOK_Click()
     End If
     
     ' validate cho to 04TBAC
-    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "91") Then
+    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "91") Or (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "64") Then
+        If objCvt Is Nothing Then
+            Set objCvt = New DateUtils
+        End If
+        
         If (objCvt.ToDate(txtDay.Text + "/" + txtMonth.Text + "/" + txtYear.Text, "DD/MM/YYYY") > Date) Then
             DisplayMessage "0224", msOKOnly, miInformation
             Exit Sub
@@ -1841,7 +2046,7 @@ Public Sub cmdOK_Click()
     '***************************
     If strKieuKy = KIEU_KY_THANG Then
         If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" _
-        Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+        Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "36" Then
             If strQuy = "TK_THANG" Then
                  If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
                     txtMonth.SetFocus
@@ -1851,6 +2056,15 @@ Public Sub cmdOK_Click()
                 If Not CheckPeriod(cmbQuy.Text, txtYear.Text) Then
                     cmbQuy.SetFocus
                     Exit Sub
+                End If
+                
+                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" _
+                Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+                     If (Val(TAX_Utilities_New.ThreeMonths) < 3 And Val(TAX_Utilities_New.Year) = 2013) Or Val(TAX_Utilities_New.Year) < 2013 Then
+                        DisplayMessage "0272", msOKOnly, miCriticalError
+                        cmbQuy.SetFocus
+                        Exit Sub
+                     End If
                 End If
             End If
         Else
@@ -1867,6 +2081,21 @@ Public Sub cmdOK_Click()
                 Exit Sub
             End If
         End If
+        ' BC 26
+        If TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "68" Then
+            If strQuy = "TK_THANG" Then
+                 If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
+                    txtMonth.SetFocus
+                    Exit Sub
+                End If
+            ElseIf strQuy = "TK_QUY" Then
+                If Not CheckPeriod(cmbQuy.Text, txtYear.Text) Then
+                    cmbQuy.SetFocus
+                    Exit Sub
+                End If
+            End If
+        End If
+        
         ' To khai 02/TNDN
         If TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73" Then
             If txtDay.Text <> "" Then
@@ -1962,6 +2191,23 @@ Public Sub cmdOK_Click()
         End If
     End If
     
+   ' Kiem tra to khai 07/TNCN
+   If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "36") Then
+        If strQuy = "TK_THANG" Then
+            If (Val(TAX_Utilities_New.month) >= 7 And Val(TAX_Utilities_New.Year) = 2013) Or Val(TAX_Utilities_New.Year) > 2013 Then
+                DisplayMessage "0266", msOKOnly, miCriticalError
+                txtMonth.SetFocus
+                Exit Sub
+            End If
+        ElseIf strQuy = "TK_QUY" Then
+            If (Val(TAX_Utilities_New.ThreeMonths) < 3 And Val(TAX_Utilities_New.Year) = 2013) Or Val(TAX_Utilities_New.Year) < 2013 Then
+                DisplayMessage "0267", msOKOnly, miCriticalError
+                cmbQuy.SetFocus
+                Exit Sub
+            End If
+        End If
+   End If
+    
     ' Kiem tra to khai 08 tu ngay phai nho hon den ngay
     If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "74" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "75") And strQuy = "TK_TU_THANG" Then
             If Trim(txtNgayDau.Text) <> "" Then
@@ -1998,7 +2244,8 @@ Public Sub cmdOK_Click()
     TAX_Utilities_New.Year = txtYear.Text
     If strKieuKy = KIEU_KY_THANG Then
         If TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "01" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "02" _
-        Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "04" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "95" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "71" Then
+        Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "04" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "95" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "71" _
+        Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "36" Then
             If strQuy = "TK_THANG" Then
                 TAX_Utilities_New.month = txtMonth.Text
                 TAX_Utilities_New.ThreeMonths = vbNullString
@@ -2039,11 +2286,23 @@ Public Sub cmdOK_Click()
 ' phuc vu an chi
 ' dhdang comment to khai nao???
     ElseIf strKieuKy = "H_Y" Then
-        TAX_Utilities_New.month = vbNullString
-        TAX_Utilities_New.ThreeMonths = cmbQuy.Text
-        TAX_Utilities_New.FirstDay = txtNgayDau.Text
-        TAX_Utilities_New.LastDay = txtNgayCuoi.Text
-        TAX_Utilities_New.Year = txtYear.Text
+        If TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "68" Then
+'            If strQuy = "TK_THANG" Then
+'                TAX_Utilities_New.month = txtMonth.Text
+'            Else
+            TAX_Utilities_New.month = vbNullString
+            'End If
+            TAX_Utilities_New.ThreeMonths = cmbQuy.Text
+            TAX_Utilities_New.FirstDay = txtNgayDau.Text
+            TAX_Utilities_New.LastDay = txtNgayCuoi.Text
+            TAX_Utilities_New.Year = txtYear.Text
+        Else
+            TAX_Utilities_New.month = vbNullString
+            TAX_Utilities_New.ThreeMonths = cmbQuy.Text
+            TAX_Utilities_New.FirstDay = txtNgayDau.Text
+            TAX_Utilities_New.LastDay = txtNgayCuoi.Text
+            TAX_Utilities_New.Year = txtYear.Text
+        End If
  ' end
     ElseIf strKieuKy = KIEU_KY_NGAY_NAM Then
         TAX_Utilities_New.month = vbNullString
@@ -2177,33 +2436,66 @@ Public Sub cmdOK_Click()
     ' BC26
     ' Kiem tra tu ngay
     If idToKhai = "68" Then
-        dNgayDau = DateSerial(CInt(Mid$(TAX_Utilities_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_New.FirstDay, 1, 2)))
-        dNgayCuoi = DateSerial(CInt(Mid$(TAX_Utilities_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_New.LastDay, 1, 2)))
-        dNgayDauQuy = GetNgayDauQuy(CInt(TAX_Utilities_New.ThreeMonths), TAX_Utilities_New.Year, 1, 1)
-        dNgayCuoiQuy = GetNgayCuoiQuy(CInt(TAX_Utilities_New.ThreeMonths), TAX_Utilities_New.Year, 1, 1)
-        ' Ky bao cao tu ngay khong duoc lon hon ky bao cao den ngay
-        If dNgayCuoi < dNgayDau Then
-            DisplayMessage "0254", msOKOnly, miWarning
-            Exit Sub
-        End If
-        ' Ky bao cao den ngay khong duoc lon hon ngay cuoi quy
-        If dNgayCuoi > dNgayCuoiQuy Then
-            DisplayMessage "0255", msOKOnly, miWarning
-            Exit Sub
-        End If
-        ' Ky bao cao tu ngay khong duoc nho hon ngay dau quy
-        If dNgayDau < dNgayDauQuy Then
-            DisplayMessage "0256", msOKOnly, miWarning
-            txtNgayDau.SetFocus
-            Exit Sub
-        End If
-        ' Kiem tra ngay dau quy khong dc nho hon ngay 01/01/2011
-        If dNgayDau < DateSerial(2011, 1, 1) Then
-            DisplayMessage "0257", msOKOnly, miWarning
-            txtNgayDau.SetFocus
-            Exit Sub
-        End If
-        
+'        If strQuy = "TK_THANG" Then
+'            dNgayDau = DateSerial(CInt(Mid$(TAX_Utilities_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_New.FirstDay, 1, 2)))
+'            dNgayCuoi = DateSerial(CInt(Mid$(TAX_Utilities_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_New.LastDay, 1, 2)))
+'
+'            dNgayDauQuy = DateSerial(CInt(TAX_Utilities_New.Year), CInt(TAX_Utilities_New.month), 1)
+'            Dim temp As Integer
+'            Dim temp1 As Date
+'            temp = CInt(TAX_Utilities_New.month) + 1
+'            If TAX_Utilities_New.month = "12" Then
+'                temp1 = DateSerial(CInt(TAX_Utilities_New.Year) + 1, 1, 1)
+'                dNgayCuoiQuy = DateAdd("D", -1, temp1)
+'            Else
+'                temp1 = DateSerial(CInt(TAX_Utilities_New.Year), temp, 1)
+'                dNgayCuoiQuy = DateAdd("D", -1, temp1)
+'            End If
+'
+'            ' Ky bao cao tu ngay khong duoc lon hon ky bao cao den ngay
+'            If dNgayCuoi < dNgayDau Then
+'                DisplayMessage "0254", msOKOnly, miWarning
+'                Exit Sub
+'            End If
+'            ' Ky bao cao den ngay khong duoc lon hon ngay cuoi quy
+'            If dNgayCuoi > dNgayCuoiQuy Then
+'                DisplayMessage "0255", msOKOnly, miWarning
+'                Exit Sub
+'            End If
+'            ' Ky bao cao tu ngay khong duoc nho hon ngay dau quy
+'            If dNgayDau < dNgayDauQuy Then
+'                DisplayMessage "0256", msOKOnly, miWarning
+'                txtNgayDau.SetFocus
+'                Exit Sub
+'            End If
+'        Else
+            dNgayDau = DateSerial(CInt(Mid$(TAX_Utilities_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_New.FirstDay, 1, 2)))
+            dNgayCuoi = DateSerial(CInt(Mid$(TAX_Utilities_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_New.LastDay, 1, 2)))
+            dNgayDauQuy = GetNgayDauQuy(CInt(TAX_Utilities_New.ThreeMonths), TAX_Utilities_New.Year, 1, 1)
+            dNgayCuoiQuy = GetNgayCuoiQuy(CInt(TAX_Utilities_New.ThreeMonths), TAX_Utilities_New.Year, 1, 1)
+            ' Ky bao cao tu ngay khong duoc lon hon ky bao cao den ngay
+            If dNgayCuoi < dNgayDau Then
+                DisplayMessage "0254", msOKOnly, miWarning
+                Exit Sub
+            End If
+            ' Ky bao cao den ngay khong duoc lon hon ngay cuoi quy
+            If dNgayCuoi > dNgayCuoiQuy Then
+                DisplayMessage "0255", msOKOnly, miWarning
+                Exit Sub
+            End If
+            ' Ky bao cao tu ngay khong duoc nho hon ngay dau quy
+            If dNgayDau < dNgayDauQuy Then
+                DisplayMessage "0256", msOKOnly, miWarning
+                txtNgayDau.SetFocus
+                Exit Sub
+            End If
+            ' Kiem tra ngay dau quy khong dc nho hon ngay 01/01/2011
+            If dNgayDau < DateSerial(2011, 1, 1) Then
+                DisplayMessage "0257", msOKOnly, miWarning
+                txtNgayDau.SetFocus
+                Exit Sub
+            End If
+        'End If
     End If
     
     ' To khai bo sung
@@ -2227,7 +2519,7 @@ Public Sub cmdOK_Click()
                 If strQuy = "TK_THANG" Then
                     strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                 ElseIf strQuy = "TK_QUY" Then
-                    strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                    strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
                 End If
             Else
                 strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
@@ -2264,10 +2556,37 @@ Public Sub cmdOK_Click()
          .SetText .ColLetterToNumber("C"), 2, format(Date, "dd/mm/yyyy")
          Exit Sub
         End If
-        If DateDiff("D", format(Date, "dd/mm/yyyy"), strDateKHBS) > 0 Then
+        
+        
+        ' kiem tra voi ngay hien tai
+        Dim arrDate() As String
+        Dim hn As Date
+        Dim ngayBs As Date
+        Dim ngayHt As Date
+        
+        arrDate = Split(strDateKHBS, "/")
+        ngayBs = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
+        ngayHt = DateSerial(Year(Date), month(Date), Day(Date))
+        
+        If DateDiff("D", ngayHt, ngayBs) > 0 Then
             DisplayMessage "0224", msOKOnly, miInformation
             Exit Sub
         End If
+        
+        'kiem tra voi ky kk
+        hanNopTk = GetHanNopTk
+        arrDate = Split(hanNopTk, "/")
+        hn = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
+        arrDate = Split(strDateKHBS, "/")
+        ngayBs = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
+        
+        If DateDiff("D", hn, ngayBs) < 0 Then
+            DisplayMessage "0271", msOKOnly, miInformation
+            Exit Sub
+        End If
+        
+        ngayLapTkBs = strDateKHBS
+        
         End With
         
         If strDateKHBS <> vbNullString Then
@@ -2403,7 +2722,7 @@ Private Sub Form_Load()
         iThangTaiChinh = 1
     End If
     
-    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "15" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "16" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "37" _
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "15" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "16" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "37" _
             Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "38" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "39" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "40" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "17" _
                 Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "41" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "43" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "59" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "44" _
                     Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "46" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "47" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "48" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "49" _
@@ -2411,7 +2730,7 @@ Private Sub Form_Load()
                         Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "87" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "75" Then
         
         SetupLayoutTNCN (strKieuKy)
-    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "95" Then
+    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "95" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "36" Then
         SetLayoutToKhaiThangQuy
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "11" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "12" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "06" _
      Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "72" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "77" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "86" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "87" _
@@ -3360,10 +3679,12 @@ Private Sub LoadDefaultInfor()
     Dim m As Integer
     Dim q As Quy
     Dim Y As Integer
+    Dim d As Integer
     
     'frmTreeviewMenu.Hide
     m = month(Date)
     Y = Year(Date)
+    d = Day(Date)
     
     Select Case strKieuKy
         Case KIEU_KY_THANG
@@ -3415,7 +3736,6 @@ Private Sub LoadDefaultInfor()
         Case KIEU_KY_NAM
             If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "93" Then
                 Y = GetNamHienTai(iNgayTaiChinh, iThangTaiChinh)
-                Y = Y
                 txtYear.Text = Y
             Else
                 Y = GetNamHienTai(iNgayTaiChinh, iThangTaiChinh)
@@ -3428,21 +3748,28 @@ Private Sub LoadDefaultInfor()
             txtYear.Text = Y
             Call initNgayDauNgayCuoi(CInt(Y))
         Case KIEU_KY_NGAY_THANG
-            If m = 1 Then
-                m = 12
-                Y = Y - 1
+            If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "64" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "92" Then
+                txtDay.Text = d
+                txtMonth.Text = m
+                txtYear.Text = Y
+                If Len(txtDay.Text) = 1 Then
+                    txtDay.Text = "0" & txtDay.Text
+                End If
+                If Len(txtMonth.Text) = 1 Then
+                    txtMonth.Text = "0" & txtMonth.Text
+                End If
             Else
-                'set current month for 04/TBAC
-                If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "92" Then
-                    m = m
+                If m = 1 Then
+                    m = 12
+                    Y = Y - 1
                 Else
                     m = m - 1
                 End If
-            End If
-            txtMonth.Text = m
-            txtYear.Text = Y
-            If Len(txtMonth.Text) = 1 Then
-                txtMonth.Text = "0" & txtMonth.Text
+                txtMonth.Text = m
+                txtYear.Text = Y
+                If Len(txtMonth.Text) = 1 Then
+                    txtMonth.Text = "0" & txtMonth.Text
+                End If
             End If
             
     End Select
@@ -4454,6 +4781,27 @@ Private Sub txtMonth_LostFocus()
         LoadGrid
     End If
     
+    ' set lai ngay dau ky va cuoi ky
+    If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "68" Then
+        If strQuy = "TK_THANG" Then
+            ' set ngay dau
+            txtNgayDau.Text = "01/" & txtMonth.Text & "/" & txtYear.Text
+            ' set ngay cuoi
+            Dim temp  As Integer
+            Dim temp1 As Date
+            temp = CInt(txtMonth.Text) + 1
+            If txtMonth.Text = "12" Then
+                temp1 = DateSerial(CInt(txtYear.Text) + 1, 1, 1)
+                temp1 = DateAdd("D", -1, temp1)
+                txtNgayCuoi.Text = Day(temp1) & "/" & format(month(temp1), "0#") & "/" & Year(temp1)
+            Else
+                temp1 = DateSerial(CInt(txtYear.Text), temp, 1)
+                temp1 = DateAdd("D", -1, temp1)
+                txtNgayCuoi.Text = Day(temp1) & "/" & format(month(temp1), "0#") & "/" & Year(temp1)
+            End If
+        End If
+    End If
+    
     blnLostFocusCalling = False
     blnValidInfo(1) = True
     Exit Sub
@@ -4682,6 +5030,28 @@ Private Sub txtYear_LostFocus()
         txtNgayDau.SetFocus
     End If
 
+
+    ' set lai ngay dau ky va cuoi ky
+    If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "68" Then
+        If strQuy = "TK_THANG" Then
+            ' set ngay dau
+            txtNgayDau.Text = "01/" & txtMonth.Text & "/" & txtYear.Text
+            ' set ngay cuoi
+            Dim temp  As Integer
+            Dim temp1 As Date
+            temp = CInt(txtMonth.Text) + 1
+            If txtMonth.Text = "12" Then
+                temp1 = DateSerial(CInt(txtYear.Text) + 1, 1, 1)
+                temp1 = DateAdd("D", -1, temp1)
+                txtNgayCuoi.Text = Day(temp1) & "/" & format(month(temp1), "0#") & "/" & Year(temp1)
+            Else
+                temp1 = DateSerial(CInt(txtYear.Text), temp, 1)
+                temp1 = DateAdd("D", -1, temp1)
+                txtNgayCuoi.Text = Day(temp1) & "/" & format(month(temp1), "0#") & "/" & Year(temp1)
+            End If
+        End If
+    End If
+
     blnLostFocusCalling = False
     blnValidInfo(2) = True
     yChange = txtYear.Text
@@ -4771,7 +5141,7 @@ On Error GoTo ErrHandle
                         If strQuy = "TK_THANG" Then
                             strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & txtMonth.Text & txtYear.Text & ".xml"
                         ElseIf strQuy = "TK_QUY" Then
-                            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(xmlNode, "DataFile") & "_0" & cmbQuy.Text & txtYear.Text & ".xml"
+                            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(xmlNode, "DataFile") & "_Q0" & cmbQuy.Text & txtYear.Text & ".xml"
                         Else
                             strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & txtMonth.Text & txtYear.Text & ".xml"
                         End If
@@ -4880,6 +5250,10 @@ On Error GoTo ErrHandle
                Frame2.Visible = True
             End If
             
+            ' to khai BS se khong co danh sach phu luc
+            If strKHBS = "TKBS" Then
+                Frame2.Visible = False
+            End If
             'Me.Height = Me.Height + Frame2.Height - 50
             'cmdOK.Top = cmdOK.Top + Frame2.Height - 50
             'cmdClose.Top = cmdClose.Top + Frame2.Height - 50
@@ -5923,6 +6297,149 @@ End Sub
 
 
 Private Sub setValueDefault()
-    chkTkhaiThang.value = 1
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "68" Then
+        chkTkhaiThang.value = 0
+        chkTKQuy.value = 1
+    Else
+        chkTkhaiThang.value = 1
+    End If
     chkTKLanPS.value = 0
+End Sub
+
+
+Private Sub SetupLayoutBC26()
+    On Error GoTo ErrorHandle
+    
+    strLoaiSacThue = "BC26"
+    
+    Me.Height = 3500
+    Me.Width = 4905
+
+    frmKy.Height = 1100
+    Set chkTKQuy.Container = frmKy
+    chkTKQuy.Top = 200
+    chkTKQuy.Left = 2500
+'    chkTKQuy.value = 0
+'    chkTkhaiThang.value = 1
+'
+    Set chkTkhaiThang.Container = frmKy
+    chkTkhaiThang.Top = 200
+    chkTkhaiThang.Left = 120
+'
+'    Set lblMonth.Container = frmKy
+'    lblMonth.Top = 570
+'    lblMonth.Left = 960
+'
+'    Set txtMonth.Container = frmKy
+'    txtMonth.Top = 540
+'    txtMonth.Left = 1530
+'
+'    Set lblYear.Container = frmKy
+'    lblYear.Top = 570
+'    lblYear.Left = 2310
+'
+'    Set txtYear.Container = frmKy
+'    txtYear.Top = 540
+'    txtYear.Left = 2730
+'
+    Set lblNgayDau.Container = frmKy
+    lblNgayDau.Top = 930
+    lblNgayDau.Left = 120
+
+    Set txtNgayDau.Container = frmKy
+    txtNgayDau.Top = 900
+    txtNgayDau.Left = 1000 '1200
+    'txtNgayDau.Locked = True
+
+    Set lblNgayCuoi.Container = frmKy
+    lblNgayCuoi.Top = 930
+    lblNgayCuoi.Left = 2600 '2400
+
+    Set txtNgayCuoi.Container = frmKy
+    txtNgayCuoi.Top = 900
+    txtNgayCuoi.Left = 3480
+    strQuy = "TK_QUY"
+    chkTkhaiThang.value = 0
+    chkTKQuy.value = 1
+            
+    Set lblQuy.Container = frmKy
+    lblQuy.Top = 570
+    lblQuy.Left = 960
+    
+    Set cmbQuy.Container = frmKy
+    cmbQuy.Top = 540
+    cmbQuy.Left = 1530
+    
+    Set lblYear.Container = frmKy
+    lblYear.Top = 570
+    lblYear.Left = 2310
+    
+    Set txtYear.Container = frmKy
+    txtYear.Top = 540
+    txtYear.Left = 2730
+    
+    SetControlCaption Me, "frmPeriod"
+
+    cmbQuy.Visible = True
+    lblQuy.Visible = True
+    
+    lblMonth.Visible = False
+    txtMonth.Visible = False
+    txtNgayDau.Visible = True
+    txtNgayCuoi.Visible = True
+    lblNgayDau.Visible = True
+    lblNgayCuoi.Visible = True
+    frmKy.Height = 1300
+    Frame2.Top = 1600
+    
+'    Set lblQuy.Container = frmKy
+'    lblQuy.Top = 300
+'    lblQuy.Left = 120
+'    lblQuy.caption = "Ky`"
+'    SetControlCaption Me, "frmPeriodHY"
+'    'lblCaption.caption = GetAttribute(GetMessageCellById("0183"), "Msg")
+'    Set cmbQuy.Container = frmKy
+'    cmbQuy.Top = 240
+'    cmbQuy.Left = 1000
+'
+'    lblYear.Visible = False
+'
+'
+'    Set txtYear.Container = frmKy
+'    txtYear.Top = 240
+'    txtYear.Left = 1600
+'
+'    Set lblNgayDau.Container = frmKy
+'    lblNgayDau.Top = 630
+'    lblNgayDau.Left = 120
+'
+'    Set txtNgayDau.Container = frmKy
+'    txtNgayDau.Top = 600
+'    txtNgayDau.Left = 1000 '1200
+'    'txtNgayDau.Locked = True
+'
+'    Set lblNgayCuoi.Container = frmKy
+'    lblNgayCuoi.Top = 630
+'    lblNgayCuoi.Left = 2600 '2400
+'
+'    Set txtNgayCuoi.Container = frmKy
+'    txtNgayCuoi.Top = 600
+'    txtNgayCuoi.Left = 3480
+'
+'    'SetControlCaption Me, "frmPeriodQuy"
+'
+'    txtMonth.Visible = False
+'    'cmbQuy.Visible = False
+'     ' end
+
+    SetControlCaption Me, "frmPeriod"
+   
+    Me.Top = (frmSystem.ScaleHeight - Me.ScaleHeight) / 2
+    Me.Left = (frmSystem.Width - Me.Width) / 2
+
+    Exit Sub
+     
+ErrorHandle:
+    SaveErrorLog Me.Name, "SetupLayoutBC26", Err.Number, Err.Description
+    
 End Sub
