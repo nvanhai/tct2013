@@ -1818,6 +1818,11 @@ Public Sub cmdOK_Click()
     
     Dim idToKhai As String
     
+    If TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "64" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "91" Then
+        txtDay_LostFocus
+        txtMonth_LostFocus
+        txtYear_LostFocus
+    End If
     
     If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "37" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "38" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "40") And Val(txtYear.Text) >= 2010 Then
         DisplayMessage "0176", msOKOnly, miInformation
@@ -2570,6 +2575,7 @@ Private Sub Form_KeyUp(KeyCode As Integer, Shift As Integer)
     If KeyCode = vbKeyF4 And Shift = 4 Then
         cmdClose_Click
     End If
+    
 End Sub
 '****************************************************
 'Description:Form_Load procedure load form Period
@@ -3439,7 +3445,7 @@ Private Sub LoadDefaultInfor()
             txtYear.Text = Y
             Call initNgayDauNgayCuoi(CInt(Y))
         Case KIEU_KY_NGAY_THANG
-            If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "64" Then
+            If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "64" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "92" Then
                 txtDay.Text = d
                 txtMonth.Text = m
                 txtYear.Text = Y
