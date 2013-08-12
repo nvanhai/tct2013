@@ -20,6 +20,15 @@ Global zoomindex As Integer
 'Public APP_VERSION As String
 'Public Const APP_VERSION = "3.0.0"
 'Demo
+
+'Ket xuat XML
+Public Const maDVu = ""
+Public Const tenDVu = ""
+Public Const pbanDVu = ""
+Public Const ttinNhaCCapDVu = ""
+Public Const pbanTKhaiXML = ""
+'End XML
+
 Public Const APP_VERSION = "9.9.9"
 Public Const KIEU_KY_THANG = "M"
 Public Const KIEU_KY_QUY = "Q"
