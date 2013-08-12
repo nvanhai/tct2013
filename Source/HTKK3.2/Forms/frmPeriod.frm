@@ -483,7 +483,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":02C8
       UserResize      =   1
       Appearance      =   1
    End
@@ -719,6 +719,7 @@ Private Sub cboNganhKD_Click()
 End Sub
 
 Private Sub chkCondensate_Click()
+
     If chkCondensate.value = 1 Then
         chkDauTho.value = 0
         chkKhiThien.value = 0
@@ -726,7 +727,17 @@ Private Sub chkCondensate_Click()
         strCondensate = chkCondensate.value
         strDauTho = 0
         strKhiThienNhien = 0
+
+        If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92") Then
+            lblNgay.Visible = True
+            txtDay.Visible = True
+            lblMonth.Left = 1360
+            txtMonth.Left = 1930
+            lblYear.Left = 2710
+            txtYear.Left = 3130
+        End If
     End If
+
 End Sub
 
 Private Sub chkDauTho_Click()
@@ -738,10 +749,19 @@ Private Sub chkDauTho_Click()
         strDauTho = chkDauTho.value
         strKhiThienNhien = 0
         strCondensate = 0
+        If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92") Then
+        lblNgay.Visible = True
+        txtDay.Visible = True
+        lblMonth.Left = 1360
+        txtMonth.Left = 1930
+        lblYear.Left = 2710
+        txtYear.Left = 3130
+        End If
     End If
 End Sub
 
 Private Sub chkKhiThien_Click()
+
     If chkKhiThien.value = 1 Then
         chkCondensate.value = 0
         chkDauTho.value = 0
@@ -749,7 +769,17 @@ Private Sub chkKhiThien_Click()
         strKhiThienNhien = chkKhiThien.value
         strDauTho = 0
         strCondensate = 0
+
+        If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92") Then
+            lblNgay.Visible = False
+            txtDay.Visible = False
+            lblMonth.Left = 900
+            txtMonth.Left = 1500
+            lblYear.Left = 2210
+            txtYear.Left = 2630
+        End If
     End If
+
 End Sub
 
 Private Sub chkQTNamDau_Click()
@@ -1934,7 +1964,22 @@ Public Sub cmdOK_Click()
             Exit Sub
         End If
     End If
-    
+        
+    ' validate cho to 04TBAC,01/TAIN-DK
+    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92") Then
+        If (chkKhiThien.value = "1") Then
+            If (objCvt.ToDate("01" + "/" + txtMonth.Text + "/" + txtYear.Text, "DD/MM/YYYY") > Date) Then
+                DisplayMessage "0188", msOKOnly, miInformation
+                Exit Sub
+            End If
+        Else
+            If (objCvt.ToDate(txtDay.Text + "/" + txtMonth.Text + "/" + txtYear.Text, "DD/MM/YYYY") > Date) Then
+                DisplayMessage "0188", msOKOnly, miInformation
+                Exit Sub
+            End If
+        End If
+    End If
+        
     ' validate cho to 04TBAC
     If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "93") Then
         If (chkDauTho.value = 0 And chkCondensate.value = 0 And chkKhiThien.value = 0) Then

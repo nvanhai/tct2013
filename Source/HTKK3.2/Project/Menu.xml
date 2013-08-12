@@ -317,7 +317,7 @@
 	</Menu>
 	<Menu ID="96" PopID="101" ParentID="101_3" Caption="Tờ khai thuế tài nguyên(03/TĐ-TAIN)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\excel\03_TD_TAIN.xls" ReportTemplate="..\ReportTemplates\excel\03_TD_TAIN.xls" CatalogueID="01" Class="TAX_Business.cls_03_TD_TAIN" Class2="TAX_Business.clsReport002">
-			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_TD_TAIN" InterfaceIni="..\InterfaceIni\03_TD_TAIN.xml" ReportIni="..\ReportIni\03_TD_TAIN.xml"/>
+			<Sheet ID="03" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_TD_TAIN" InterfaceIni="..\InterfaceIni\03_TD_TAIN.xml" ReportIni="..\ReportIni\03_TD_TAIN.xml"/>
 			<Sheet ID="03-1" Caption="03-1/TĐ-TAIN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_1_TD_TAIN" InterfaceIni="..\InterfaceIni\03_1_TD_TAIN.xml" ReportIni="..\ReportIni\03_1_TD_TAIN.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_03_TD_TAIN" InterfaceIni="..\InterfaceIni\KHBS_01_TAIN.xml" ReportIni="..\ReportIni\KHBS_01_TAIN.xml"/>
 		</Validity>
