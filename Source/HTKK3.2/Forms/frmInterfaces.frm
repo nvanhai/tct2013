@@ -152,7 +152,15 @@ Begin VB.Form frmInterfaces
       Left            =   0
       TabIndex        =   9
       Top             =   7230
-      Width           =   11535
+      Width           =   12500
+      Begin VB.CommandButton cmdExportXML 
+         Caption         =   "&KÕt xuÊt XML"
+         Height          =   375
+         Left            =   11160
+         TabIndex        =   22
+         Top             =   210
+         Width           =   1140
+      End
       Begin VB.CommandButton Command1 
          Caption         =   "Tæng hîp KHBS"
          Height          =   375
@@ -3363,6 +3371,490 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
         
     End If
 End Function
+
+' Set gia tri mac dinh cho to khai xml
+Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
+    Dim vlue As Variant
+    On Error GoTo ErrHandle
+
+    With fpSpread1
+
+        If Val(strSolanBS) > 0 Then
+            xmlTK.getElementsByTagName("loaiTKhai")(0).firstChild.nodeValue = GetAttribute(GetMessageCellById("0115"), "Msg")
+            xmlTK.getElementsByTagName("soLan")(0).firstChild.nodeValue = Val(strSolanBS)
+        Else
+            xmlTK.getElementsByTagName("loaiTKhai")(0).firstChild.nodeValue = GetAttribute(GetMessageCellById("0266"), "Msg")
+        End If
+    
+        xmlTK.getElementsByTagName("maDVu")(0).firstChild.nodeValue = maDVu
+        xmlTK.getElementsByTagName("tenDVu")(0).firstChild.nodeValue = tenDVu
+        xmlTK.getElementsByTagName("pbanDVu")(0).firstChild.nodeValue = pbanDVu
+        xmlTK.getElementsByTagName("ttinNhaCCapDVu")(0).firstChild.nodeValue = ttinNhaCCapDVu
+        xmlTK.getElementsByTagName("pbanTKhaiXML")(0).firstChild.nodeValue = pbanTKhaiXML
+        xmlTK.getElementsByTagName("kieuKy")(0).firstChild.nodeValue = strKieuKy
+        xmlTK.getElementsByTagName("kyKKhai")(0).firstChild.nodeValue = GetKyKeKhai(GetAttribute(TAX_Utilities_New.NodeMenu, "ID"))
+        If strKieuKy = "M" Then
+            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).firstChild.nodeValue = "01/" & TAX_Utilities_New.month & "/" & TAX_Utilities_New.Year
+            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).firstChild.nodeValue = format(GetNgayCuoiThang(TAX_Utilities_New.Year, TAX_Utilities_New.month), "dd/MM/yyyy")
+        ElseIf strKieuKy = "Q" Then
+            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).firstChild.nodeValue = format(GetNgayDauQuy(TAX_Utilities_New.ThreeMonths, TAX_Utilities_New.Year, iNgayTaiChinh, iThangTaiChinh), "dd/MM/yyyy")
+            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).firstChild.nodeValue = format(GetNgayCuoiQuy(TAX_Utilities_New.ThreeMonths, TAX_Utilities_New.Year, iNgayTaiChinh, iThangTaiChinh), "dd/MM/yyyy")
+        Else
+            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).firstChild.nodeValue = "01/01/" & TAX_Utilities_New.Year
+            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).firstChild.nodeValue = "31/12/" & TAX_Utilities_New.Year
+        End If
+        
+        .sheet = .SheetCount
+        .GetText .ColLetterToNumber("R"), 7, vlue
+        xmlTK.getElementsByTagName("maCQTNoiNop")(0).firstChild.nodeValue = vlue
+        .GetText .ColLetterToNumber("R"), 9, vlue
+        xmlTK.getElementsByTagName("tenCQTNoiNop")(0).firstChild.nodeValue = vlue
+        xmlTK.getElementsByTagName("mst")(0).firstChild.nodeValue = strTaxIdString
+        .GetText .ColLetterToNumber("C"), 3, vlue
+        xmlTK.getElementsByTagName("tenNNT")(0).firstChild.nodeValue = vlue
+        .GetText .ColLetterToNumber("C"), 4, vlue
+        xmlTK.getElementsByTagName("dchiNNT")(0).firstChild.nodeValue = vlue
+        .GetText .ColLetterToNumber("C"), 5, vlue
+        xmlTK.getElementsByTagName("tenHuyenNNT")(0).firstChild.nodeValue = vlue
+        .GetText .ColLetterToNumber("C"), 6, vlue
+        xmlTK.getElementsByTagName("tenTinhNNT")(0).firstChild.nodeValue = vlue
+        .GetText .ColLetterToNumber("C"), 7, vlue
+        xmlTK.getElementsByTagName("dthoaiNNT")(0).firstChild.nodeValue = vlue
+        .GetText .ColLetterToNumber("C"), 8, vlue
+        xmlTK.getElementsByTagName("faxNNT")(0).firstChild.nodeValue = vlue
+        .GetText .ColLetterToNumber("C"), 9, vlue
+        xmlTK.getElementsByTagName("emailNNT")(0).firstChild.nodeValue = vlue
+        .GetText .ColLetterToNumber("V"), 5, vlue
+        xmlTK.getElementsByTagName("mstDLyThue")(0).firstChild.nodeValue = vlue
+        .GetText .ColLetterToNumber("V"), 6, vlue
+        xmlTK.getElementsByTagName("tenDLyThue")(0).firstChild.nodeValue = vlue
+        .GetText .ColLetterToNumber("V"), 7, vlue
+        xmlTK.getElementsByTagName("dchiDLyThue")(0).firstChild.nodeValue = vlue
+        .GetText .ColLetterToNumber("V"), 8, vlue
+        xmlTK.getElementsByTagName("tenHuyenDLyThue")(0).firstChild.nodeValue = vlue
+        .GetText .ColLetterToNumber("V"), 9, vlue
+        xmlTK.getElementsByTagName("tenTinhDLyThue")(0).firstChild.nodeValue = vlue
+        .GetText .ColLetterToNumber("V"), 10, vlue
+        xmlTK.getElementsByTagName("dthoaiDLyThue")(0).firstChild.nodeValue = vlue
+        .GetText .ColLetterToNumber("V"), 11, vlue
+        xmlTK.getElementsByTagName("faxDLyThue")(0).firstChild.nodeValue = vlue
+        .GetText .ColLetterToNumber("V"), 12, vlue
+        xmlTK.getElementsByTagName("emailDLyThue")(0).firstChild.nodeValue = vlue
+        .GetText .ColLetterToNumber("V"), 13, vlue
+        xmlTK.getElementsByTagName("soHDongDLyThue")(0).firstChild.nodeValue = vlue
+        .GetText .ColLetterToNumber("V"), 14, vlue
+        xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).firstChild.nodeValue = vlue
+        xmlTK.getElementsByTagName("ngayLapTKhai")(0).firstChild.nodeValue = format(Date, "dd/MM/yyyy")
+        
+    End With
+    Exit Sub
+ErrHandle:
+    SaveErrorLog Me.Name, "SetValueToKhaiHeader", Err.Number, Err.Description
+End Sub
+
+Private Function GetFileName() As String
+    Dim strDataFileName As String
+    Dim lSheet As Integer
+    
+    On Error GoTo ErrHandle
+    lSheet = 0
+    If strKHBS = "TKBS" Then
+        If GetAttribute(TAX_Utilities_New.NodeMenu, "Year") = vbNullString Or GetAttribute(TAX_Utilities_New.NodeMenu, "Year") = "0" Then
+            strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & ".xml"
+        Else
+
+            If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Day") <> "1" Then
+                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+
+                    If strQuy = "TK_THANG" Then
+                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                    ElseIf strQuy = "TK_QUY" Then
+                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                    End If
+
+                Else
+                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                End If
+
+            ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
+
+                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Then
+
+                    ' To khai 08/TNCN co to khai tu thang va to khai quy
+                    If strQuy = "TK_TU_THANG" Then
+                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & ".xml"
+                    Else
+                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                    End If
+
+                Else
+                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                End If
+
+            ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Month") <> "1" Then
+
+                'Data file contain Day from and to.
+                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "80" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "82" Then
+                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & ".xml"
+                Else
+                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_" & TAX_Utilities_New.Year & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & ".xml"
+                End If
+
+            ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then
+                'Data file contain Day.
+                strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+            Else
+                'Data file not contain Day from and to.
+                strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_" & TAX_Utilities_New.Year & ".xml"
+                '*********************************
+            End If
+        End If
+
+    Else
+
+        If GetAttribute(TAX_Utilities_New.NodeMenu, "Year") = vbNullString Or GetAttribute(TAX_Utilities_New.NodeMenu, "Year") = "0" Then
+            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & ".xml"
+        Else
+
+            If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Day") <> "1" Then
+                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Then
+
+                    If strQuy = "TK_THANG" Then
+                        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                    ElseIf strQuy = "TK_QUY" Then
+                        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                    End If
+
+                Else
+                    strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                End If
+
+            ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
+
+                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Then
+
+                    ' To khai 08/TNCN co to khai tu thang va to khai quy
+                    If strQuy = "TK_TU_THANG" Then
+                        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & ".xml"
+                    Else
+                        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                    End If
+
+                ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "73" Then
+
+                    ' To khai 02/TNDN
+                    If strLoaiTKThang_PS = "TK_LANPS" Then
+                        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                    Else
+                        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                    End If
+
+                Else
+                    strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                End If
+
+            ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Month") <> "1" Then
+
+                'Data file contain Day from and to.
+                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "80" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "82" Then
+                    strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & ".xml"
+                Else
+                    strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_" & TAX_Utilities_New.Year & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & ".xml"
+                End If
+
+            ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then
+                'Data file contain Day.
+                strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+            Else
+                'Data file not contain Day from and to.
+                strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_" & TAX_Utilities_New.Year & ".xml"
+                '*********************************
+            End If
+        End If
+    End If
+
+    GetFileName = strDataFileName
+    Exit Function
+ErrHandle:
+    SaveErrorLog Me.Name, "GetFileName", Err.Number, Err.Description
+
+End Function
+
+'Lay ky ke khai
+Private Function GetKyKeKhai(ByVal ID_TK As String) As String
+    Dim KYKKHAI As String
+    On Error GoTo ErrHandle
+
+    If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "68" Then
+        If strQuy = "TK_THANG" Then
+            KYKKHAI = TAX_Utilities_New.month & "/" & TAX_Utilities_New.Year
+        Else
+            KYKKHAI = TAX_Utilities_New.ThreeMonths & "/" & TAX_Utilities_New.Year
+        End If
+            
+    Else
+
+        If (Trim(TAX_Utilities_New.month) <> vbNullString Or Trim(TAX_Utilities_New.month) <> "") And (Trim(TAX_Utilities_New.ThreeMonths) = vbNullString Or Trim(TAX_Utilities_New.ThreeMonths) = "") Then
+            KYKKHAI = TAX_Utilities_New.month & "/" & TAX_Utilities_New.Year
+        ElseIf (Trim(TAX_Utilities_New.month) = vbNullString Or Trim(TAX_Utilities_New.month) = "") And (Trim(TAX_Utilities_New.ThreeMonths) <> vbNullString Or Trim(TAX_Utilities_New.ThreeMonths) <> "") Then
+            KYKKHAI = TAX_Utilities_New.ThreeMonths & "/" & TAX_Utilities_New.Year
+        Else
+            KYKKHAI = TAX_Utilities_New.Year
+        End If
+
+    End If
+        GetKyKeKhai = KYKKHAI
+
+    Exit Function
+ErrHandle:
+    SaveErrorLog Me.Name, "GetKyKeKhai", Err.Number, Err.Description
+
+End Function
+
+Private Sub cmdExportXml_Click()
+    Dim xmlMapCT     As New MSXML.DOMDocument
+    Dim xmlTK        As New MSXML.DOMDocument
+    Dim xmlPL        As New MSXML.DOMDocument
+    Dim xmlMapPL     As New MSXML.DOMDocument
+    Dim xmlNodeTK    As MSXML.IXMLDOMNode
+    Dim xmlNodeMapCT As MSXML.IXMLDOMNode
+
+    Dim cSheet       As Integer, oSheet As Integer
+    Dim strFileName  As String
+    Dim MaTK         As String
+    Dim nodeVal      As MSXML.IXMLDOMNode
+    Dim blnFinish    As Boolean
+    
+    On Error GoTo ErrHandle
+    
+    CallFinish
+    
+    blnFinish = CheckValidData
+    
+    If blnFinish = False Then
+        Exit Sub
+    End If
+        
+    MaTK = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile")
+    
+    With CommonDialog1
+        .CancelError = True
+        .InitDir = GetAbsolutePath("..")
+        .Filter = "XML file (*.xml)|*.xml"
+        .FilterIndex = 1
+        .DialogTitle = "File xml export to " & .InitDir
+        .FileName = GetFileName
+        .ShowSave
+
+        If Right$(.FileName, 4) <> ".xml" Then
+            strFileName = .FileName & ".xml"
+        Else
+            strFileName = .FileName
+        End If
+
+    End With
+        
+    xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
+    xmlMapCT.Load GetAbsolutePath("..\InterfaceIni\" & MaTK & "_xml.xml")
+    
+    SetValueToKhaiHeader xmlTK
+    
+    With fpSpread1
+        Dim cellID       As String
+        Dim cellArray()  As String
+        Dim nodeValIndex As Integer
+        Dim cellRange    As Integer
+     
+        .sheet = 1
+        
+        ' Set value cho to khai
+        For Each xmlNodeMapCT In xmlMapCT.lastChild.childNodes
+            Dim xmlCellNode   As MSXML.IXMLDOMNode
+            Dim xmlCellTKNode As MSXML.IXMLDOMNode
+            Dim currentGroup  As String
+            Dim nodePL        As MSXML.IXMLDOMNode
+            Dim Blank         As Boolean
+            Dim id            As Integer
+            Dim nodeIndex     As Integer
+            Dim CloneNode     As MSXML.IXMLDOMNode
+
+            If UCase(xmlNodeMapCT.nodeName) = "DYNAMIC" Then
+                       
+                id = 1
+                currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
+                Blank = True
+
+                Do
+                    nodeIndex = 0
+                    Blank = True
+
+                    For Each nodePL In xmlNodeMapCT.lastChild.childNodes
+                        cellID = nodePL.firstChild.nodeValue
+                        cellArray = Split(cellID, "_")
+                                
+                        .Col = .ColLetterToNumber(cellArray(0))
+                        .Row = Val(cellArray(1)) + cellRange
+
+                        If .CellType = CellTypeNumber Then
+                            CloneNode.lastChild.childNodes(nodeIndex).firstChild.nodeValue = .value
+                        Else
+                            CloneNode.lastChild.childNodes(nodeIndex).firstChild.nodeValue = .Text
+
+                        End If
+
+                        If .Text <> "" And .Text <> vbNullString Then
+                            Blank = False
+                        End If
+
+                        nodeIndex = nodeIndex + 1
+                    Next
+
+                    If Blank = False Then
+                        SetAttribute CloneNode.firstChild, "id", CStr(id)
+                        Set nodePL = xmlPL.getElementsByTagName(currentGroup)(0)
+                        nodePL.appendChild CloneNode.firstChild.CloneNode(True)
+                        id = id + 1
+                    Else
+                        Exit Do
+                    End If
+
+                    cellRange = cellRange + 1
+
+                    .Col = .ColLetterToNumber("B")
+                Loop Until .Text = "aa"
+
+                cellRange = cellRange - 1
+
+            Else
+
+                For Each xmlCellNode In xmlNodeMapCT.childNodes
+                    cellID = xmlCellNode.firstChild.nodeValue
+                    cellArray = Split(cellID, "_")
+                
+                    Set xmlCellTKNode = xmlTK.getElementsByTagName(xmlCellNode.nodeName)(0)
+
+                    If UBound(cellArray) <> 1 Then
+                        xmlCellTKNode.firstChild.nodeValue = cellID
+                    Else
+                        .Col = .ColLetterToNumber(cellArray(0))
+                        .Row = Val(cellArray(1)) + cellRange
+
+                        If .CellType = CellTypeNumber Then
+                            xmlCellTKNode.firstChild.nodeValue = .value
+                        Else
+                            xmlCellTKNode.firstChild.nodeValue = .Text
+                        End If
+                    End If
+
+                Next
+
+            End If
+
+        Next
+        
+        'Set value cho phu luc
+        For nodeValIndex = 1 To TAX_Utilities_New.NodeValidity.childNodes.length
+            Set nodeVal = TAX_Utilities_New.NodeValidity.childNodes(nodeValIndex)
+
+            If GetAttribute(nodeVal, "Active") = "1" Then
+                Dim currentRow As Integer
+                Dim xmlSection As MSXML.IXMLDOMNode
+                
+                xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & GetAttribute(nodeVal, "DataFile") & "_xml.xml")
+                xmlMapPL.Load GetAbsolutePath("..\MapCT\" & GetAttribute(nodeVal, "DataFile") & ".xml")
+                
+                cellRange = 0
+                .sheet = nodeValIndex + 1
+                
+                For Each xmlSection In xmlMapPL.lastChild.childNodes
+                    
+                    If UCase(xmlSection.nodeName) = "DYNAMIC" Then
+                        Set CloneNode = xmlSection.CloneNode(True)
+                        id = 1
+                        currentGroup = GetAttribute(xmlSection, "GroupName")
+                        Blank = True
+                
+                        Do
+                            nodeIndex = 0
+                            Blank = True
+
+                            For Each nodePL In xmlSection.lastChild.childNodes
+                                cellID = nodePL.firstChild.nodeValue
+                                cellArray = Split(cellID, "_")
+                                
+                                .Col = .ColLetterToNumber(cellArray(0))
+                                .Row = Val(cellArray(1)) + cellRange
+
+                                If .CellType = CellTypeNumber Then
+
+                                    CloneNode.lastChild.childNodes(nodeIndex).firstChild.nodeValue = .value
+                                Else
+                                    CloneNode.lastChild.childNodes(nodeIndex).firstChild.nodeValue = .Text
+                                End If
+
+                                If .Text <> "" And .Text <> vbNullString Then
+                                    Blank = False
+                                End If
+
+                                nodeIndex = nodeIndex + 1
+                            Next
+    
+                            If Blank = False Then
+                                SetAttribute CloneNode.firstChild, "id", CStr(id)
+                                Set nodePL = xmlPL.getElementsByTagName(currentGroup)(0)
+                                nodePL.appendChild CloneNode.firstChild.CloneNode(True)
+                                id = id + 1
+                            Else
+                                Exit Do
+                            End If
+
+                            cellRange = cellRange + 1
+
+                            .Col = .ColLetterToNumber("B")
+                        Loop Until .Text = "aa"
+
+                        cellRange = cellRange - 1
+
+                    Else
+
+                        For Each xmlCellNode In xmlSection.childNodes
+                            cellID = xmlCellNode.firstChild.nodeValue
+                            cellArray = Split(cellID, "_")
+                
+                            Set xmlCellTKNode = xmlPL.getElementsByTagName(xmlCellNode.nodeName)(0)
+
+                            If UBound(cellArray) <> 1 Then
+                                xmlCellTKNode.nodeValue = cellID
+                            Else
+                                .Col = .ColLetterToNumber(cellArray(0))
+                                .Row = Val(cellArray(1)) + cellRange
+
+                                If .CellType = CellTypeNumber Then
+                                    xmlCellTKNode.firstChild.nodeValue = .value
+                                Else
+                                    xmlCellTKNode.firstChild.nodeValue = .Text
+                                End If
+                            End If
+
+                        Next
+
+                    End If
+
+                Next
+
+                xmlTK.getElementsByTagName("PLuc")(0).appendChild xmlPL.getElementsByTagName("PL" & GetAttribute(nodeVal, "DataFile"))(0)
+
+            End If
+
+        Next
+
+    End With
+    
+    xmlTK.Save strFileName
+    Exit Sub
+ErrHandle:
+    SaveErrorLog Me.Name, "cmdExportXML_Click", Err.Number, Err.Description
+End Sub
 
 Private Sub cmdInsert_Click()
 '**********************************************
@@ -7760,14 +8252,15 @@ Private Sub ResizeButton()
     If GetAttribute(TAX_Utilities_New.NodeMenu, "Year") <> "0" Then
     'If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "100_1" Then
         ' Business function
-        cmdLoadToKhai.Left = Frame1.Width - 8235  ' 9425
-        cmdInsert.Left = Frame1.Width - 8235
-        cmdClear.Left = Frame1.Width - 7045
-        cmdSave.Left = Frame1.Width - 5855
-        cmdPrint.Left = Frame1.Width - 4710
-        cmdDelete.Left = Frame1.Width - 3565
-        cmdKiemTra.Left = Frame1.Width - 3565
-        cmdExport.Left = Frame1.Width - 2420
+        cmdLoadToKhai.Left = Frame1.Width - (8235 + 1200)  ' 9425
+        cmdInsert.Left = Frame1.Width - (8235 + 1200)
+        cmdClear.Left = Frame1.Width - (7045 + 1200)
+        cmdSave.Left = Frame1.Width - (5855 + 1200)
+        cmdPrint.Left = Frame1.Width - (4710 + 1200)
+        cmdDelete.Left = Frame1.Width - (3565 + 1200)
+        cmdKiemTra.Left = Frame1.Width - (3565 + 1200)
+        cmdExport.Left = Frame1.Width - (2420 + 1200)
+        cmdExportXML.Left = Frame1.Width - 2420
         cmdExit.Left = Frame1.Width - 1240
         If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_10") Then
             cmdDelete.Left = Frame1.Width - 9370
@@ -7781,18 +8274,20 @@ Private Sub ResizeButton()
         cmdPrint.Visible = False
         cmdDelete.Visible = False
         cmdExport.Visible = False
+        cmdExportXML.Visible = False
         cmdSave.Left = Frame1.Width - 2755 '2985
         cmdExit.Left = Frame1.Width - 1405 '1635
     End If
 '****************************************************
     If strKHBS = "frmKHBS_BS" Then
         cmdLoadToKhai.Visible = False
-        cmdDelete.Left = Frame1.Width - 8005 '4335
-        cmdClear.Left = Frame1.Width - 6685 '8385
-        cmdSave.Left = Frame1.Width - 5365 '7035
-        cmdPrint.Left = Frame1.Width - 4045 '5685
+        cmdDelete.Left = Frame1.Width - (8005 + 1200) '4335
+        cmdClear.Left = Frame1.Width - (6685 + 1200) '8385
+        cmdSave.Left = Frame1.Width - (5365 + 1200) '7035
+        cmdPrint.Left = Frame1.Width - (4045 + 1200) '5685
         
-        cmdExport.Left = Frame1.Width - 2725 '2985
+        cmdExport.Left = Frame1.Width - (2725 + 1200) '2985
+        cmdExportXML.Left = Frame1.Width - 2725
         cmdExit.Left = Frame1.Width - 1405 '1635
         
         cmdInsert.Visible = False
@@ -7814,7 +8309,7 @@ Private Sub ResizeButton()
     Or menuID = "11" Or menuID = "12" Or menuID = "06" Or menuID = "05" Or menuID = "86" Or menuID = "87" Or menuID = "89" Or menuID = "77" Or menuID = "03" Or menuID = "73" _
     Or menuID = "80" Or menuID = "81" Or menuID = "70" Or menuID = "82" Or menuID = "83" Or menuID = "85" Or menuID = "90" Or menuID = "95") Then
         Command1.Visible = True
-        Command1.Left = Frame1.Width - 8460
+        Command1.Left = Frame1.Width - (8460 + 1200)
     Else
         Command1.Visible = False
     End If
