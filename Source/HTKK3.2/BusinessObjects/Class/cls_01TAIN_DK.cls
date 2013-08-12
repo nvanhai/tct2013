@@ -42,6 +42,7 @@ Public chkKhiThienNhien As String
 Public Sub Prepare1()
 
     With fps
+    fps.EventEnabled(EventAllEvents) = False
         .Sheet = 1
         .Row = 30
         .Col = .ColLetterToNumber("O")
@@ -54,36 +55,54 @@ Public Sub Prepare1()
         .Row = 30
         .Col = .ColLetterToNumber("Q")
         .Text = chkKhiThienNhien
-        
+                        
         .Row = 31
-        .Col = .ColLetterToNumber("O")
-        .Text = TAX_Utilities_New.Day & "/" & TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year
+        If chkKhiThienNhien = "1" Then
+            
+            .Col = .ColLetterToNumber("O")
+            .Text = ""
+            
+            .Col = .ColLetterToNumber("W")
+            .Text = TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year ' temp
+        Else
+            .Col = .ColLetterToNumber("O")
+            .Text = TAX_Utilities_New.Day & "/" & TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year
+            
+            .Col = .ColLetterToNumber("W")
+            .Text = ""
+        End If
         
         SetDateFormat fps, 1, 29, .ColLetterToNumber("AM"), DDMMYYYY
         SetDateFormat fps, 1, 65, fps.ColLetterToNumber("AR"), DDMMYYYY
+        
+        .Row = 65
+        .Col = fps.ColLetterToNumber("AR")
+        .Text = Format(Date, "dd/mm/yyyy")
+        .TypeHAlign = TypeHAlignLeft
 
         '--set data for phu luc 01
         '--update 25/07/2013
-        .Sheet = SHEET_PHU_LUC_01
-        .Row = 12
-        .Col = .ColLetterToNumber("F")
-        .Text = chkDauTho
-        
-        .Row = 12
-        .Col = .ColLetterToNumber("G")
-        .Text = chkCondensate
-        
-        .Row = 12
-        .Col = .ColLetterToNumber("H")
-        .Text = chkKhiThienNhien
-        
-        .Row = 13
-        .Col = .ColLetterToNumber("I")
-        .Text = TAX_Utilities_New.Day & "/" & TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year
+'        .Sheet = SHEET_PHU_LUC_01
+'        .Row = 12
+'        .Col = .ColLetterToNumber("F")
+'        .Text = chkDauTho
+'
+'        .Row = 12
+'        .Col = .ColLetterToNumber("G")
+'        .Text = chkCondensate
+'
+'        .Row = 12
+'        .Col = .ColLetterToNumber("H")
+'        .Text = chkKhiThienNhien
+'
+'        .Row = 13
+'        .Col = .ColLetterToNumber("I")
+'        .Text = TAX_Utilities_New.Day & "/" & TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year
         
         .Sheet = SHEET_PHU_LUC_01
         SetDateFormat fps, SHEET_PHU_LUC_01, 34, fps.ColLetterToNumber("AD"), DDMMYYYY
         '--end set for sheet Phu luc 01
+        fps.EventEnabled(EventAllEvents) = True
     End With
 
 End Sub
@@ -101,7 +120,7 @@ Public Sub Prepare2()
     With fps
         .Sheet = 1
         mCurrentSheet = .Sheet
-
+        fps.EventEnabled(EventAllEvents) = False
         'update MSTDN luôn bang MST tren phan TT chung
         UpdateMST fps, Col_MSTDN, Row_MSTDN
 
@@ -135,6 +154,7 @@ Public Sub Prepare2()
         End If
 
         mCurrentSheet = .Sheet
+        fps.EventEnabled(EventAllEvents) = True
     End With
 
 End Sub

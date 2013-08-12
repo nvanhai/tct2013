@@ -63,52 +63,15 @@ Public Sub Prepare1()
         .Text = TAX_Utilities_New.Year
         
         SetDateFormat fps, 1, 92, fps.ColLetterToNumber("AR"), DDMMYYYY
-
-        '--set data for phu luc 01
-        '--update 25/07/2013
-        .Sheet = SHEET_PHU_LUC_01
-        .Row = 12
-        .Col = .ColLetterToNumber("F")
-        .Text = chkDauTho
+        .Row = 92
+        .Col = fps.ColLetterToNumber("AR")
+        .Text = Format(Date, "dd/mm/yyyy")
+        .TypeHAlign = TypeHAlignLeft
         
-        .Row = 12
-        .Col = .ColLetterToNumber("G")
-        .Text = chkCondensate
-        
-        .Row = 12
-        .Col = .ColLetterToNumber("H")
-        .Text = chkKhiThienNhien
-        
-        .Row = 13
-        .Col = .ColLetterToNumber("I")
-        '.Text = TAX_Utilities_New.Day & "/" & TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year
-        .Text = TAX_Utilities_New.Year
-        
-        SetDateFormat fps, SHEET_PHU_LUC_01, 34, fps.ColLetterToNumber("AD"), DDMMYYYY
-        '--end set for sheet Phu luc 01
-        
-        '--set data for phu luc 02 san luong
-        '--update 30/07/2013
-        .Sheet = SHEET_PHU_LUC_SAN_LUONG
-        .Row = 12
-        .Col = .ColLetterToNumber("F")
-        .Text = chkDauTho
-        
-        .Row = 12
-        .Col = .ColLetterToNumber("G")
-        .Text = chkCondensate
-        
-        .Row = 12
-        .Col = .ColLetterToNumber("H")
-        .Text = chkKhiThienNhien
-        
-        .Row = 13
-        .Col = .ColLetterToNumber("I")
-        .Text = TAX_Utilities_New.Year
-        
+        ' Phu luc 02-1
         SetDateFormat fps, SHEET_PHU_LUC_SAN_LUONG, ROW_START_02_1, fps.ColLetterToNumber("K"), DDMMYYYY
         SetDateFormat fps, SHEET_PHU_LUC_SAN_LUONG, ROW_START_02_1, fps.ColLetterToNumber("U"), DDMMYYYY
-        '--end set for sheet Phu luc 02
+'        '--end set for sheet Phu luc 02
         
     End With
 
