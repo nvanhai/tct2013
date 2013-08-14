@@ -1872,7 +1872,8 @@ Private Sub Barcode_Scaned(strBarcode As String)
 
             ' hlnam End
             If IsCompleteData(strData) Then
-            
+                Dim tmp As String
+
                 ' Check version <= 3.1.6
                 If Val(Left$(strData, 3)) <= 316 Then
                     If Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "04" Or Mid$(strData, 4, 2) = "71" Or Mid$(strData, 4, 2) = "36" Then
