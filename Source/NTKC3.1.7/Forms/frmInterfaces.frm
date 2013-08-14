@@ -2902,7 +2902,13 @@ Private Function InitParameters(ByVal strData As String, _
     
     On Error GoTo ErrHandle
     If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Then
-        LoaiKyKK = LoaiToKhai(strData)
+        If Val(strIDBCTC) = 36 Then
+            LoaiKyKK = LoaiToKhai(strData)
+        Else
+            Dim tmp As String
+            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
+            LoaiKyKK = LoaiToKhai(tmp)
+        End If
     End If
     
     'Gan gia tri ngay dau ky
