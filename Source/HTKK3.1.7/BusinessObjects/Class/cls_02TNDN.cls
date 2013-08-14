@@ -52,6 +52,10 @@ Public Sub Prepare1()
         SetDateFormat fps, 1, 42, .ColLetterToNumber("AC"), DDMMYYYY
         SetDateFormat fps, 1, 44, .ColLetterToNumber("AH"), DDMMYYYY
         
+        .Row = 82
+        .Col = .ColLetterToNumber("C")
+        .Text = "0"
+        
         .Row = 91
         .Col = .ColLetterToNumber("AP")
         .Text = Format(Date, "dd/mm/yyyy")
@@ -1661,4 +1665,13 @@ Public Sub inThongTinDL()
     strTuRowDenRowPL = "20_30_2"
     ' end
 End Sub
+
+Public Function isCheckGH() As Boolean
+    If TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length = 38 Then
+        isCheckGH = True
+    Else
+        isCheckGH = False
+    End If
+    Exit Function
+End Function
 
