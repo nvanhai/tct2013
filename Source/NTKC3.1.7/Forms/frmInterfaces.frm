@@ -1,8 +1,6 @@
 VERSION 5.00
-Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Begin VB.Form frmInterfaces 
    AutoRedraw      =   -1  'True
    BorderStyle     =   3  'Fixed Dialog
@@ -36,30 +34,15 @@ Begin VB.Form frmInterfaces
          _Version        =   393216
          DTREnable       =   -1  'True
       End
-      Begin FPUSpreadADO.fpSpread fpSpread1 
-         Height          =   6600
-         Left            =   30
+      Begin VB.PictureBox fpSpread1 
+         BackColor       =   &H000000FF&
+         Height          =   1000
+         Left            =   0
+         ScaleHeight     =   945
+         ScaleWidth      =   945
          TabIndex        =   2
-         Top             =   120
-         Visible         =   0   'False
-         Width           =   11475
-         _Version        =   458752
-         _ExtentX        =   20241
-         _ExtentY        =   11642
-         _StockProps     =   64
-         BorderStyle     =   0
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Arial"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         NoBeep          =   -1  'True
-         ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":0000
+         Top             =   0
+         Width           =   1000
       End
       Begin MSForms.Label lblExit 
          Height          =   945
@@ -118,16 +101,15 @@ Begin VB.Form frmInterfaces
          Top             =   30
          Width           =   1335
       End
-      Begin ComctlLib.ProgressBar ProgressBar1 
-         Height          =   315
-         Left            =   120
+      Begin VB.PictureBox ProgressBar1 
+         BackColor       =   &H000000FF&
+         Height          =   1000
+         Left            =   0
+         ScaleHeight     =   945
+         ScaleWidth      =   945
          TabIndex        =   7
-         Top             =   420
-         Width           =   5775
-         _ExtentX        =   10186
-         _ExtentY        =   556
-         _Version        =   327682
-         Appearance      =   1
+         Top             =   0
+         Width           =   1000
       End
       Begin MSForms.CommandButton cmdClear 
          Height          =   375
@@ -1390,11 +1372,11 @@ Private Sub Command1_Click()
 'str2 = "aa317683600247325   02201300200200100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~et~16/07/2013~0</S></S01>"
 'Barcode_Scaned str2
 
-str2 = "aa317911000808141   07201300100200100101/0101/01/2009<S01><S>don vi phat hanh cu~don vi phat hanh moi~01DVPH~dia chi cu~dia chi moi~02DCTS~dien thoai cu~dien thoai moi~03Phone</S><S>01/01/2013~~~test~16/07/2013~abc</S></S01>"
-Barcode_Scaned str2
-
-'str2 = "aa316013600247325   06201300300300100101/0114/06/2006<S01><S></S><S>~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~16/07/2013~1~~~1701~~</S></S01>"
+'str2 = "aa317911000808141   07201300100200100101/0101/01/2009<S01><S>don vi phat hanh cu~don vi phat hanh moi~01DVPH~dia chi cu~dia chi moi~02DCTS~dien thoai cu~dien thoai moi~03Phone</S><S>01/01/2013~~~test~16/07/2013~abc</S></S01>"
 'Barcode_Scaned str2
+
+str2 = "aa316013600247325   06201300300300100101/0114/06/2006<S01><S></S><S>~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~16/07/2013~1~~~1701~~</S></S01>"
+Barcode_Scaned str2
 
 '' To khai 02/TNDN
 'str2 = "aa316733600247325   02201300000000100201/0114/06/2006<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0"
@@ -1415,6 +1397,8 @@ Barcode_Scaned str2
 'str2 = "bs317013600247325   032013003003002002<SKHBS><S>Hµng ho∏, dﬁch vÙ b∏n ra chﬁu thu’ su t 5%~31~10000000~20000000~10000000</S><S>~~0~0~0</S><S>01/01/2014~62~310000~~10000000~20000000~10000000~0~0~0</S></SKHBS>"
 'Barcode_Scaned str2
 
+'str2 = "bs316012600151082   06201300300300100101/0114/06/2006<S01><S></S><S>~1000000~0~0~0~0~0~333333~0~0~333333~0~0~0~333333~333333~0~0~0~0~0~0~666667~0~666667</S><S>~~~14/08/2013~~1~1~1701~~</S></S01><SKHBS><S>~~0~0~0</S><S>Thu’ GTGT cﬂn Æ-Óc kh u trı k˙ tr-Ìc chuy”n sang~22~0~1000000~1000000</S><S>14/08/2013~23~0~~333333~0~-333333~0~666667~666667</S></SKHBS>"
+'Barcode_Scaned str2
 
 End Sub
 
@@ -1892,11 +1876,19 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 ' Check version <= 3.1.6
                 If Val(Left$(strData, 3)) <= 316 Then
                     If Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "04" Or Mid$(strData, 4, 2) = "71" Or Mid$(strData, 4, 2) = "36" Then
-                        strData = Left$(strData, Len(strData) - 10) & "~0" & Right$(strData, 10)
+                        If Val(idToKhai) <> 36 Then
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
+                            strData = tmp & "~0" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
+                        Else
+                            strData = Left$(strData, Len(strData) - 10) & "~1" & Right$(strData, 10)
+                        End If
+
                     ElseIf Mid$(strData, 4, 2) = "68" Then
-                        strData = Left$(strData, Len(strData) - 10) & "~1" & Right$(strData, 10)
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
+                            strData = tmp & "~0" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
                     ElseIf Mid$(strData, 4, 2) = "73" Then
-                        strData = Left$(strData, Len(strData) - 10) & "~" & Right$(strData, 10)
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
+                            strData = tmp & "~0" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
                     End If
                 End If
 
@@ -2910,13 +2902,7 @@ Private Function InitParameters(ByVal strData As String, _
     
     On Error GoTo ErrHandle
     If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Then
-        If Val(strIDBCTC) = 36 Then
-            LoaiKyKK = LoaiToKhai(strData)
-        Else
-            Dim tmp As String
-            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
-            LoaiKyKK = LoaiToKhai(tmp)
-        End If
+        LoaiKyKK = LoaiToKhai(strData)
     End If
     
     'Gan gia tri ngay dau ky
@@ -5088,6 +5074,7 @@ On Error GoTo ErrHandle
     Else
         LoaiToKhai = False
     End If
+    
     Exit Function
 ErrHandle:
     'Connect DB fail
