@@ -658,6 +658,16 @@ nextPrinter:
                 Next
             Next
         End If
+        
+        ' kiem tra to khai 02/TNDN
+        If idToKhai = "73" Then
+            If objTaxBusiness.isCheckGH = True Then
+                fpsReport.sheet = 1
+                fpsReport.Row = 82
+                fpsReport.Col = fpsReport.ColLetterToNumber("C")
+                fpsReport.Text = ""
+            End If
+        End If
     End If
 
     
@@ -1239,7 +1249,7 @@ Dim xmlNodeSheet As MSXML.IXMLDOMNode
 ' Add app version to prefix
 
 If strKHBS = "frmKHBS_BS" Or strKHBS = "TKBS" Then
-    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "73" Then
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "73" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "68" Then
         If Val(GetAttribute(TAX_Utilities_New.Data(0).lastChild, "Version")) < 317 Then
             strReturn = "bs" & "316" & GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
         Else
