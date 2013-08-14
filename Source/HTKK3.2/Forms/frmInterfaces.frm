@@ -5,10 +5,10 @@ Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Begin VB.Form frmInterfaces 
    AutoRedraw      =   -1  'True
    Caption         =   "Hç trî kª khai - Phiªn b¶n 2.5.0"
-   ClientHeight    =   8010
+   ClientHeight    =   8070
    ClientLeft      =   165
    ClientTop       =   450
-   ClientWidth     =   9825
+   ClientWidth     =   12915
    BeginProperty Font 
       Name            =   "DS Sans Serif"
       Size            =   8.25
@@ -22,8 +22,8 @@ Begin VB.Form frmInterfaces
    KeyPreview      =   -1  'True
    LinkTopic       =   "frmInterfaces"
    LockControls    =   -1  'True
-   ScaleHeight     =   8010
-   ScaleWidth      =   9825
+   ScaleHeight     =   8070
+   ScaleWidth      =   12915
    Visible         =   0   'False
    WindowState     =   2  'Maximized
    Begin VB.Frame Frame3 
@@ -494,7 +494,7 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
             If fso.FileExists(strDataFileName) Then
                 fso.GetFile(strDataFileName).Attributes = Normal
             End If
-            TAX_Utilities_New.Data(CLng(lSheet)).save strDataFileName
+            TAX_Utilities_New.Data(CLng(lSheet)).Save strDataFileName
         End If
         '*********************************
     Next
@@ -3452,7 +3452,7 @@ ErrHandle:
     SaveErrorLog Me.Name, "SetValueToKhaiHeader", Err.Number, Err.Description
 End Sub
 
-Private Function GetFileName() As String
+Private Function getFileName() As String
     Dim strDataFileName As String
     Dim lSheet As Integer
     
@@ -3573,7 +3573,7 @@ Private Function GetFileName() As String
         End If
     End If
 
-    GetFileName = strDataFileName
+    getFileName = strDataFileName
     Exit Function
 ErrHandle:
     SaveErrorLog Me.Name, "GetFileName", Err.Number, Err.Description
@@ -3643,7 +3643,7 @@ Private Sub cmdExportXml_Click()
         .Filter = "XML file (*.xml)|*.xml"
         .FilterIndex = 1
         .DialogTitle = "File xml export to " & .InitDir
-        .FileName = GetFileName
+        .FileName = getFileName
         .ShowSave
 
         If Right$(.FileName, 4) <> ".xml" Then
@@ -3660,7 +3660,7 @@ Private Sub cmdExportXml_Click()
     SetValueToKhaiHeader xmlTK
     
     With fpSpread1
-        Dim cellID       As String
+        Dim cellid       As String
         Dim cellArray()  As String
         Dim nodeValIndex As Integer
         Dim cellRange    As Integer
@@ -3689,8 +3689,8 @@ Private Sub cmdExportXml_Click()
                     Blank = True
 
                     For Each nodePL In xmlNodeMapCT.lastChild.childNodes
-                        cellID = nodePL.firstChild.nodeValue
-                        cellArray = Split(cellID, "_")
+                        cellid = nodePL.firstChild.nodeValue
+                        cellArray = Split(cellid, "_")
                                 
                         .Col = .ColLetterToNumber(cellArray(0))
                         .Row = Val(cellArray(1)) + cellRange
@@ -3726,15 +3726,30 @@ Private Sub cmdExportXml_Click()
                 cellRange = cellRange - 1
 
             Else
-
-                For Each xmlCellNode In xmlNodeMapCT.childNodes
-                    cellID = xmlCellNode.firstChild.nodeValue
-                    cellArray = Split(cellID, "_")
+                Dim xmlChildNode As MSXML.IXMLDOMNode
+                currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
                 
-                    Set xmlCellTKNode = xmlTK.getElementsByTagName(xmlCellNode.nodeName)(0)
+                For Each xmlCellNode In xmlNodeMapCT.childNodes
+                    cellid = xmlCellNode.firstChild.nodeValue
+                    cellArray = Split(cellid, "_")
+                    
+                    If currentGroup = vbNullString Or currentGroup = "" Then
+                        Set xmlCellTKNode = xmlTK.getElementsByTagName(xmlCellNode.nodeName)(0)
+                    Else
+
+                        For Each xmlChildNode In xmlTK.getElementsByTagName(xmlCellNode.nodeName)
+
+                            If xmlChildNode.parentNode.nodeName = currentGroup Then
+                                Set xmlCellTKNode = xmlChildNode
+                                Exit For
+                            End If
+
+                        Next
+
+                    End If
 
                     If UBound(cellArray) <> 1 Then
-                        xmlCellTKNode.firstChild.nodeValue = cellID
+                        xmlCellTKNode.firstChild.nodeValue = cellid
                     Else
                         .Col = .ColLetterToNumber(cellArray(0))
                         .Row = Val(cellArray(1)) + cellRange
@@ -3779,8 +3794,8 @@ Private Sub cmdExportXml_Click()
                             Blank = True
 
                             For Each nodePL In xmlSection.lastChild.childNodes
-                                cellID = nodePL.firstChild.nodeValue
-                                cellArray = Split(cellID, "_")
+                                cellid = nodePL.firstChild.nodeValue
+                                cellArray = Split(cellid, "_")
                                 
                                 .Col = .ColLetterToNumber(cellArray(0))
                                 .Row = Val(cellArray(1)) + cellRange
@@ -3816,15 +3831,30 @@ Private Sub cmdExportXml_Click()
                         cellRange = cellRange - 1
 
                     Else
+                        Dim xmlChildNodePL As MSXML.IXMLDOMNode
+                        currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
 
                         For Each xmlCellNode In xmlSection.childNodes
-                            cellID = xmlCellNode.firstChild.nodeValue
-                            cellArray = Split(cellID, "_")
+                            cellid = xmlCellNode.firstChild.nodeValue
+                            cellArray = Split(cellid, "_")
                 
-                            Set xmlCellTKNode = xmlPL.getElementsByTagName(xmlCellNode.nodeName)(0)
+                            If currentGroup = vbNullString Or currentGroup = "" Then
+                                Set xmlCellTKNode = xmlTK.getElementsByTagName(xmlCellNode.nodeName)(0)
+                            Else
+
+                                For Each xmlChildNodePL In xmlTK.getElementsByTagName(xmlCellNode.nodeName)
+
+                                    If xmlChildNodePL.parentNode.nodeName = currentGroup Then
+                                        Set xmlCellTKNode = xmlChildNodePL
+                                        Exit For
+                                    End If
+
+                                Next
+
+                            End If
 
                             If UBound(cellArray) <> 1 Then
-                                xmlCellTKNode.nodeValue = cellID
+                                xmlCellTKNode.nodeValue = cellid
                             Else
                                 .Col = .ColLetterToNumber(cellArray(0))
                                 .Row = Val(cellArray(1)) + cellRange
@@ -5834,7 +5864,7 @@ Private Sub Form_Load()
             objTaxBusiness.chkCondensate = strCondensate
             objTaxBusiness.chkKhiThienNhien = strKhiThienNhien
         End If
-	' set ngay dau quy
+        ' set ngay dau quy
         If idMenu = "01" Or idMenu = "02" Then
             If strQuy = "TK_QUY" Then
                 dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_New.ThreeMonths), CInt(TAX_Utilities_New.Year), iNgayTaiChinh, iThangTaiChinh)
@@ -7151,7 +7181,7 @@ Public Sub InsertNode(ByVal pCol As Long, ByVal pRow As Long)
     IncreaseRowInDOM fpSpread1, TAX_Utilities_New.Data(mCurrentSheet - 1), lURowBound + 1, lRows, lRow2s
     'IncreaseRowInDOM lURowBound + 1, lRows, lRow2s
 
-    Set xmlNodeNewCells = xmlNodeCells.cloneNode(True)
+    Set xmlNodeNewCells = xmlNodeCells.CloneNode(True)
     For Each xmlNodeNewCell In xmlNodeNewCells.childNodes
         ' Set new ID for node (CellID)
         ParserCellID fpSpread1, GetAttribute(xmlNodeNewCell, "CellID"), lCol, lRow
@@ -9047,7 +9077,7 @@ Private Sub saveKHBS()
         Set xmlListNodeCell = TAX_Utilities_New.Data(0).getElementsByTagName("Section")
         Dim xmlNodeNewCells As MSXML.IXMLDOMNode
         For Each xmlNodeCells In xmlListNodeCell
-         Set xmlNodeNewCells = xmlNodeCells.cloneNode(True)
+         Set xmlNodeNewCells = xmlNodeCells.CloneNode(True)
             If Not xmlNodeCell1s.nextSibling Is Nothing Then
                  xmlNodeCell1s.parentNode.insertBefore xmlNodeNewCells, xmlNodeNewCells.nextSibling
             Else
@@ -9061,7 +9091,7 @@ Private Sub saveKHBS()
 '        Else
 '            xmlNodeCell1s.parentNode.insertBefore xmlNodeCells, Null
 '        End If
-        TAX_Utilities_New.Data(CLng(TAX_Utilities_New.xmlDataCount)).save strDataFileName
+        TAX_Utilities_New.Data(CLng(TAX_Utilities_New.xmlDataCount)).Save strDataFileName
         
         DisplayMessage "0002", msOKOnly, miInformation
         Dim i As Integer
@@ -9286,7 +9316,7 @@ Private Function saveLastKHBS() As Boolean
              '*********************************
         End If
         
-        TAX_Utilities_New.DataKHBS.save strDataFileName
+        TAX_Utilities_New.DataKHBS.Save strDataFileName
         saveLastKHBS = True
 
 End Function
@@ -12732,14 +12762,14 @@ End Sub
 
 ' ham get formula tinh so tien phat nop cham
 Private Function getFormulaTienPNC(t As Long, soTien As Double, strColRow As String) As String
-    Dim soNgayNopCham As Long
+    Dim songaynopcham As Long
     Dim soNgayNopChamTruocHl As Long
     Dim arrDate() As String
     Dim dHanNop As Date
     Dim dNgayBs As Date
     Dim dHieuLuc As Date
     
-    soNgayNopCham = getSoNgay(hanNopTk, ngayLapTkBs)
+    songaynopcham = getSoNgay(hanNopTk, ngayLapTkBs)
     soNgayNopChamTruocHl = getSoNgay(hanNopTk, "01/07/2013") - 1
     If hanNopTk <> "" Then
         arrDate = Split(hanNopTk, "/")
@@ -12754,17 +12784,17 @@ Private Function getFormulaTienPNC(t As Long, soTien As Double, strColRow As Str
     dHieuLuc = DateSerial(2013, 7, 1)
     If DateDiff("D", dHanNop, dHieuLuc) > 0 And DateDiff("D", dNgayBs, dHieuLuc) < 0 Then
         ' neu ngay phat sinh khoan no truoc 01/07/2013
-        If soNgayNopCham - soNgayNopChamTruocHl <= 90 Then
-            getFormulaTienPNC = soNgayNopCham & "*" & strColRow & "* 0.05 / 100"
+        If songaynopcham - soNgayNopChamTruocHl <= 90 Then
+            getFormulaTienPNC = songaynopcham & "*" & strColRow & "* 0.05 / 100"
         Else
-            getFormulaTienPNC = (soNgayNopChamTruocHl + 90) & "*" & strColRow & "* 0.05 / 100 +" & (soNgayNopCham - soNgayNopChamTruocHl - 90) & "*" & strColRow & "* 0.07 / 100"
+            getFormulaTienPNC = (soNgayNopChamTruocHl + 90) & "*" & strColRow & "* 0.05 / 100 +" & (songaynopcham - soNgayNopChamTruocHl - 90) & "*" & strColRow & "* 0.07 / 100"
         End If
     Else
         ' neu ngay phat sinh khoan no sau 01/07/2013
-        If soNgayNopCham <= 90 Then
-            getFormulaTienPNC = soNgayNopCham & "*" & strColRow & "*0.05/100"
+        If songaynopcham <= 90 Then
+            getFormulaTienPNC = songaynopcham & "*" & strColRow & "*0.05/100"
         Else
-            getFormulaTienPNC = 90 & "*" & strColRow & "*0.05/100+" & (soNgayNopCham - 90) & "*" & strColRow & "*0.07/100"
+            getFormulaTienPNC = 90 & "*" & strColRow & "*0.05/100+" & (songaynopcham - 90) & "*" & strColRow & "*0.07/100"
         End If
     End If
     Exit Function
