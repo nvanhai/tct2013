@@ -153,7 +153,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":19A5
+         SpreadDesigner  =   "frmInterfaces.frx":1993
       End
    End
    Begin VB.Frame Frame2 
@@ -302,7 +302,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1C69
+      SpreadDesigner  =   "frmInterfaces.frx":1C45
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -8651,11 +8651,12 @@ Public Function checkCauTrucData() As Boolean
                 End If
             End If
         
+            ' to khai 01/GTGT
             If strTkhaiId = "01" Then
                 ' neu session cuoi in ra tu ban 3.1.3 se nhieu hon in tu ban 3.1.2 2 chi tieu
                 soCTData = GetElementsNoData(xmlNodeCells.childNodes(0))
                 If idx = 2 Then
-                    If soCTTemp > soCTData And soCTTemp - soCTData <> 3 Then
+                    If soCTTemp > soCTData And soCTTemp - soCTData <> 3 And soCTTemp - soCTData <> 1 Then
                         checkCauTrucData = False
                         checkSoCT = 1 ' Thieu chi tieu
                         Exit Function
@@ -8737,59 +8738,144 @@ Public Function checkCauTrucData() As Boolean
                         End If
                     Next i
                 End If
-            Else
-            soCTData = GetElementsNoData(xmlNodeCells.childNodes(0))
-            If soCTTemp > soCTData Then
-                checkCauTrucData = False
-                checkSoCT = 1 ' Thieu chi tieu
-                Exit Function
-            End If
-            If soCTTemp < soCTData Then
-                checkCauTrucData = False
-                checkSoCT = 2 ' Thua chi tieu
-                Exit Function
-            End If
-            ' Kiem tra sai vi tri cac chi tieu tren interface template
-            For i = 0 To soCTTemp - 1
-                Set xmlNodeCell = xmlNodeCells.childNodes(0)
-                Set xmlNodeCellID = xmlNodeCell.childNodes(i)
-                strKyHieuCT = GetAttribute(xmlNodeCellID, "CellID")
-                If strTkhaiId <> "03" And strTkhaiId <> "70" And strTkhaiId <> "81" And strTkhaiId <> "71" And strTkhaiId <> "77" And strTkhaiId <> "87" And strTkhaiId <> "76" And strTkhaiId <> "06" And strTkhaiId <> "05" Then
-                    strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
-                Else
-                    ' To khai 03/TNDN
-                    If strTkhaiId = "03" Then
-                        If idx = 5 Then
-                            strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & Split(strKyHieuCT, "_")(1)  ' Lay ky hieu cua temp + row cua du lieu
-                        Else
-                            strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
-                        End If
-                    ' To khai 08B/TNDN , 01_TAIN
-                    ElseIf strTkhaiId = "76" Or strTkhaiId = "06" Then
-                        If idx = 3 Then
-                            strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & Split(strKyHieuCT, "_")(1)  ' Lay ky hieu cua temp + row cua du lieu
-                        Else
-                            strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
-                        End If
-                    ' To khai 01/TTDB
-                    ElseIf strTkhaiId = "05" Then
-                        If idx = 10 Then
-                            strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & Split(strKyHieuCT, "_")(1)  ' Lay ky hieu cua temp + row cua du lieu
-                        Else
-                            strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
-                        End If
-                    Else
-                        ' Du lieu cua section tinh trong cung tk voi du lieu dong
-                        strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & Split(strKyHieuCT, "_")(1)  ' Lay ky hieu cua temp + row cua du lieu
+            ElseIf strTkhaiId = "02" Or strTkhaiId = "04" Or strTkhaiId = "71" Then
+            ' To khai 02,03,04/GTGT 02/TNDN
+                soCTData = GetElementsNoData(xmlNodeCells.childNodes(0))
+                If idx = UBound(strCauTruc) - 1 Then
+                     If soCTTemp > soCTData And soCTTemp - soCTData <> 1 Then
+                        checkCauTrucData = False
+                        checkSoCT = 1 ' Thieu chi tieu
+                        Exit Function
                     End If
+                    If soCTTemp < soCTData Then
+                        checkCauTrucData = False
+                        checkSoCT = 2 ' Thua chi tieu
+                        Exit Function
+                    End If
+                    ' Kiem tra sai vi tri cac chi tieu tren interface template
+                    For i = 0 To soCTTemp - 1
+                        Set xmlNodeCell = xmlNodeCells.childNodes(0)
+                        Set xmlNodeCellID = xmlNodeCell.childNodes(i)
+                        ' chi tieu kiem tra gia han thue se khong kiem tra
+                        If i = soCTTemp - 1 Then
+                            Exit For
+                        End If
+                        strKyHieuCT = GetAttribute(xmlNodeCellID, "CellID")
+                        
+                        strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
+                                                
+                        If strKyHieuCTTemp <> strKyHieuCT Then
+                            checkCauTrucData = False
+                            checkSoCT = 4 ' Sai vi tri chi tieu
+                            Exit Function
+                        End If
+                    Next i
+                Else
+                    If soCTTemp > soCTData Then
+                        checkCauTrucData = False
+                        checkSoCT = 1 ' Thieu chi tieu
+                        Exit Function
+                    End If
+                    If soCTTemp < soCTData Then
+                        checkCauTrucData = False
+                        checkSoCT = 2 ' Thua chi tieu
+                        Exit Function
+                    End If
+                    ' Kiem tra sai vi tri cac chi tieu tren interface template
+                    For i = 0 To soCTTemp - 1
+                        Set xmlNodeCell = xmlNodeCells.childNodes(0)
+                        Set xmlNodeCellID = xmlNodeCell.childNodes(i)
+                        strKyHieuCT = GetAttribute(xmlNodeCellID, "CellID")
+                        If strTkhaiId <> "03" And strTkhaiId <> "70" And strTkhaiId <> "81" And strTkhaiId <> "71" And strTkhaiId <> "77" And strTkhaiId <> "87" And strTkhaiId <> "76" And strTkhaiId <> "06" And strTkhaiId <> "05" Then
+                            strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
+                        Else
+                            ' To khai 03/TNDN
+                            If strTkhaiId = "03" Then
+                                If idx = 5 Then
+                                    strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & Split(strKyHieuCT, "_")(1)  ' Lay ky hieu cua temp + row cua du lieu
+                                Else
+                                    strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
+                                End If
+                            ' To khai 08B/TNDN , 01_TAIN
+                            ElseIf strTkhaiId = "76" Or strTkhaiId = "06" Then
+                                If idx = 3 Then
+                                    strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & Split(strKyHieuCT, "_")(1)  ' Lay ky hieu cua temp + row cua du lieu
+                                Else
+                                    strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
+                                End If
+                            ' To khai 01/TTDB
+                            ElseIf strTkhaiId = "05" Then
+                                If idx = 10 Then
+                                    strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & Split(strKyHieuCT, "_")(1)  ' Lay ky hieu cua temp + row cua du lieu
+                                Else
+                                    strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
+                                End If
+                            Else
+                                ' Du lieu cua section tinh trong cung tk voi du lieu dong
+                                strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & Split(strKyHieuCT, "_")(1)  ' Lay ky hieu cua temp + row cua du lieu
+                            End If
+                        End If
+                        
+                        If strKyHieuCTTemp <> strKyHieuCT Then
+                            checkCauTrucData = False
+                            checkSoCT = 4 ' Sai vi tri chi tieu
+                            Exit Function
+                        End If
+                    Next i
                 End If
-                
-                If strKyHieuCTTemp <> strKyHieuCT Then
+            Else
+                soCTData = GetElementsNoData(xmlNodeCells.childNodes(0))
+                If soCTTemp > soCTData Then
                     checkCauTrucData = False
-                    checkSoCT = 4 ' Sai vi tri chi tieu
+                    checkSoCT = 1 ' Thieu chi tieu
                     Exit Function
                 End If
-            Next i
+                If soCTTemp < soCTData Then
+                    checkCauTrucData = False
+                    checkSoCT = 2 ' Thua chi tieu
+                    Exit Function
+                End If
+                    ' Kiem tra sai vi tri cac chi tieu tren interface template
+                    For i = 0 To soCTTemp - 1
+                        Set xmlNodeCell = xmlNodeCells.childNodes(0)
+                        Set xmlNodeCellID = xmlNodeCell.childNodes(i)
+                        strKyHieuCT = GetAttribute(xmlNodeCellID, "CellID")
+                        If strTkhaiId <> "03" And strTkhaiId <> "70" And strTkhaiId <> "81" And strTkhaiId <> "71" And strTkhaiId <> "77" And strTkhaiId <> "87" And strTkhaiId <> "76" And strTkhaiId <> "06" And strTkhaiId <> "05" Then
+                            strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
+                        Else
+                            ' To khai 03/TNDN
+                            If strTkhaiId = "03" Then
+                                If idx = 5 Then
+                                    strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & Split(strKyHieuCT, "_")(1)  ' Lay ky hieu cua temp + row cua du lieu
+                                Else
+                                    strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
+                                End If
+                            ' To khai 08B/TNDN , 01_TAIN
+                            ElseIf strTkhaiId = "76" Or strTkhaiId = "06" Then
+                                If idx = 3 Then
+                                    strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & Split(strKyHieuCT, "_")(1)  ' Lay ky hieu cua temp + row cua du lieu
+                                Else
+                                    strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
+                                End If
+                            ' To khai 01/TTDB
+                            ElseIf strTkhaiId = "05" Then
+                                If idx = 10 Then
+                                    strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & Split(strKyHieuCT, "_")(1)  ' Lay ky hieu cua temp + row cua du lieu
+                                Else
+                                    strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
+                                End If
+                            Else
+                                ' Du lieu cua section tinh trong cung tk voi du lieu dong
+                                strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & Split(strKyHieuCT, "_")(1)  ' Lay ky hieu cua temp + row cua du lieu
+                            End If
+                        End If
+                        
+                        If strKyHieuCTTemp <> strKyHieuCT Then
+                            checkCauTrucData = False
+                            checkSoCT = 4 ' Sai vi tri chi tieu
+                            Exit Function
+                        End If
+                    Next i
             End If
         ' Dynamic =1
         Else
@@ -12090,6 +12176,8 @@ Private Function getFormulaTienPNC(t As Long, soTien As Double, strColRow As Str
     Dim dNgayBs As Date
     Dim dHieuLuc As Date
     
+    Dim result As String
+    
     soNgayNopCham = getSoNgay(hanNopTk, ngayLapTkBs)
     soNgayNopChamTruocHl = getSoNgay(hanNopTk, "01/07/2013") - 1
     If hanNopTk <> "" Then
@@ -12106,17 +12194,18 @@ Private Function getFormulaTienPNC(t As Long, soTien As Double, strColRow As Str
     If DateDiff("D", dHanNop, dHieuLuc) > 0 And DateDiff("D", dNgayBs, dHieuLuc) < 0 Then
         ' neu ngay phat sinh khoan no truoc 01/07/2013
         If soNgayNopCham - soNgayNopChamTruocHl <= 90 Then
-            getFormulaTienPNC = soNgayNopCham & "*" & strColRow & "* 0.05 / 100"
+            result = soNgayNopCham & "*" & strColRow & "* 0.05 / 100"
         Else
-            getFormulaTienPNC = (soNgayNopChamTruocHl + 90) & "*" & strColRow & "* 0.05 / 100 +" & (soNgayNopCham - soNgayNopChamTruocHl - 90) & "*" & strColRow & "* 0.07 / 100"
+            result = (soNgayNopChamTruocHl + 90) & "*" & strColRow & "* 0.05 / 100 +" & (soNgayNopCham - soNgayNopChamTruocHl - 90) & "*" & strColRow & "* 0.07 / 100"
         End If
     Else
         ' neu ngay phat sinh khoan no sau 01/07/2013
         If soNgayNopCham <= 90 Then
-            getFormulaTienPNC = soNgayNopCham & "*" & strColRow & "*0.05/100"
+            result = soNgayNopCham & "*" & strColRow & "*0.05/100"
         Else
-            getFormulaTienPNC = 90 & "*" & strColRow & "*0.05/100+" & (soNgayNopCham - 90) & "*" & strColRow & "*0.07/100"
+            result = 90 & "*" & strColRow & "*0.05/100+" & (soNgayNopCham - 90) & "*" & strColRow & "*0.07/100"
         End If
     End If
+    getFormulaTienPNC = "IF(" & result & ">0;ROUND(" & result & ";0);0)"  'result
     Exit Function
 End Function

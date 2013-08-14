@@ -425,6 +425,10 @@ Private Sub btnMo_Click()
         strHiddenFormName = Me.Name
         Me.Hide
         
+        ' kiem tra to khai GTGT thang/quy
+        If varId = "01" Or varId = "02" Or varId = "04" Or varId = "71" Then
+            strQuy = "TK_THANG"
+        End If
         Set frmTK = New frmInterfaces
         frmTK.Show
         
