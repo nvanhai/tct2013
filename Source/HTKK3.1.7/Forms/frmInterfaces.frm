@@ -153,7 +153,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":1993
+         SpreadDesigner  =   "frmInterfaces.frx":1969
       End
    End
    Begin VB.Frame Frame2 
@@ -302,7 +302,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1C45
+      SpreadDesigner  =   "frmInterfaces.frx":1BF1
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -8738,7 +8738,7 @@ Public Function checkCauTrucData() As Boolean
                         End If
                     Next i
                 End If
-            ElseIf strTkhaiId = "02" Or strTkhaiId = "04" Or strTkhaiId = "71" Then
+            ElseIf strTkhaiId = "02" Or strTkhaiId = "04" Or strTkhaiId = "71" Or strTkhaiId = "36" Or strTkhaiId = "73" Then
             ' To khai 02,03,04/GTGT 02/TNDN
                 soCTData = GetElementsNoData(xmlNodeCells.childNodes(0))
                 If idx = UBound(strCauTruc) - 1 Then
