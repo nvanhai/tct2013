@@ -2232,15 +2232,24 @@ On Error GoTo ErrHandle
             arrBCBuffer(intBarcodeNo) = strPrefix & strBarcodeCount & strBarcode
             ' hlnam End
             If IsCompleteData(strData) Then
-            
+                Dim tmp As String
+
                 ' Check version <= 3.1.6
                 If Val(Left$(strData, 3)) <= 316 Then
                     If Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "04" Or Mid$(strData, 4, 2) = "71" Or Mid$(strData, 4, 2) = "36" Then
-                        strData = Left$(strData, Len(strData) - 10) & "~0" & Right$(strData, 10)
+                        If Val(IdToKhai) <> 36 Then
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
+                            strData = tmp & "~0" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
+                        Else
+                            strData = Left$(strData, Len(strData) - 10) & "~1" & Right$(strData, 10)
+                        End If
+
                     ElseIf Mid$(strData, 4, 2) = "68" Then
-                        strData = Left$(strData, Len(strData) - 10) & "~1" & Right$(strData, 10)
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
+                            strData = tmp & "~0" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
                     ElseIf Mid$(strData, 4, 2) = "73" Then
-                        strData = Left$(strData, Len(strData) - 10) & "~" & Right$(strData, 10)
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
+                            strData = tmp & "~0" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
                     End If
                 End If
 
