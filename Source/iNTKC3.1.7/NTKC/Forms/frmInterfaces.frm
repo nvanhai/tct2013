@@ -1747,9 +1747,23 @@ Private Sub Command1_Click()
 'str1 = "aa300493600278732   02201100200200100101/0101/01/2010<S01><S>6868686868</S><S>50000000~3000000~100000</S><S>ui87o97o~test~asdasdad~28/07/2011~1~~</S></S01>"
 'Barcode_Scaned str1
 
-str2 = "aa317912600168262   07201300100200100101/0101/01/2009<S01><S>~~</S><S>01/01/2013~~~test~16/07/2013~abc</S></S01>"
-Barcode_Scaned str2
+'str2 = "aa317912600168262   07201300100200100101/0101/01/2009<S01><S>~~</S><S>01/01/2013~~~test~16/07/2013~abc</S></S01>"
+'Barcode_Scaned str2
 
+'str2 = "aa316682600151082   02201300500500100101/0101/01/2009<S01><S>~X~01/04/2013~30/06/2013</S><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT3/001~MN/12T~131~0000020~0000150~~~~~0~0~0~~0~~0~~0000020~0000150~131~0</S><S>~Hoµng Nam~14/08/2013</S></S01><S01_2><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT3/001~MN/12T~0000020~0000150~131</S></S01_2>"
+'Barcode_Scaned str2
+
+'str2 = "aa316682600151082   02201300400400100201/0101/01/2009<S01><S>~X~01/04/2013~30/06/2013</S><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT3/001~MN/12T~131~0000020~0000150~~~~~0~0~0~~0~~0~~0000020~0000150~131~0</S><S>~Hoµng Nam~14/08/2013</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa316682600151082   022013004004002002<S01_2><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT3/001~MN/12T~0000020~0000150~131</S></S01_2>"
+'Barcode_Scaned str2
+
+str2 = "bs316732600151082   02201300400600100301/0114/06/2006<S02><S></S><S>300000~0~0~0~0~0~0~0~300000~3333~296667~25~741"
+Barcode_Scaned str2
+str2 = "bs316732600151082   02201300400600200367~0~74167~0~0~25~1~0</S><S>1~~~~~~~</S><S>~~~14/08/2013~~1~~1053</S></S02>"
+Barcode_Scaned str2
+str2 = "bs316732600151082   022013004006003003<SKHBS><S>~~0~0~0</S><S>ThuÕ TNDN ph¶i nép ([37]=[35] x [36])~37~75000~74167~-833~ThuÕ TNDN bæ sung kª khai kú nµy ([39] = [37] - [38])~39~75000~74167~-833</S><S>14/08/2013~14~0~~-833</S></SKHBS>"
+Barcode_Scaned str2
 
 End Sub
 
@@ -2246,10 +2260,10 @@ On Error GoTo ErrHandle
 
                     ElseIf Mid$(strData, 4, 2) = "68" Then
                             tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
-                            strData = tmp & "~0" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
+                            strData = tmp & "~1" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
                     ElseIf Mid$(strData, 4, 2) = "73" Then
-                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
-                            strData = tmp & "~0" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S02>", vbTextCompare) - 5)
+                            strData = tmp & "~" & Right$(strData, Len(strData) - InStr(1, strData, "</S02>", vbTextCompare) + 5)
                     End If
                 End If
 
