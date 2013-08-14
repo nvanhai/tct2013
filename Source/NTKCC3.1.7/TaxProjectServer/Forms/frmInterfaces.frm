@@ -1675,7 +1675,7 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '
-'str2 = "aa317360100100079   06201300100100100101/0101/01/2010<S07><S></S><S>x~555~4001665~4000000~0~777~888~0~0~111~0~0~222222~20~44444~444444~1~4444</S><S>hjh~13/07/2013~tydgh~56754765~1~~0</S></S07>"
+'str2 = "bs317360100100079   03201300100100100101/0101/01/2010<S07><S></S><S>x~555~4001665~4000000~0~777~888~0~0~111~0~0~222222~20~44444~444444~1~4444</S><S>hjh~13/07/2013~tydgh~56754765~~1~1~1</S></S07>"
 'Barcode_Scaned str2
 
 'str2 = "aa317910100100079   07201300100300100101/0101/01/2009<S01><S>11~22~02DCTS</S><S>01/01/2013~test dvcq~0100100079~test~22/07/2013~test</S></S01>"
@@ -1687,10 +1687,21 @@ Private Sub Command1_Click()
 'str2 = "aa317680100100079   02201300100200100101/0101/01/2009<S01><S>~~01/04/2013~30/06/2013</S><S>H„a Æ¨n b∏n hµng~02GTTT4/008~KH/13E~21~0000010~0000019~0000020~0000030~0000010~0000022~13~12~1~10~0~~0~~0000023~0000030~8~0</S><S>test~test~23/07/2013~1</S></S01>"
 'Barcode_Scaned str2
 
-str2 = "aa317730100100079   02201300000000100201/0114/06/2006<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0~23~0~0~0~0~0~23~"
+'str2 = "aa317730100100079   02201300000000100201/0114/06/2006<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0~23~0~0~0~0~0~23~"
+'Barcode_Scaned str2
+'str2 = "aa317730100100079   0220130000000020021~0</S><S>~1~~~~~~</S><S>~~~07/08/2013~1~~07/08/2013~1053~</S></S02>"
+'Barcode_Scaned str2
+
+'str2 = "aa317110100100079   02201300100100100101/0114/06/2006<S01><S></S><S>0~0~0~0~0~0~0~0~0~25~0~0~</S><S></S><S>Nguy‘n V®n A~12345~Nguy‘n V®n B~07/08/2013~1~0~~1052~</S></S01>"
+'Barcode_Scaned str2
+
+'str2 = "bs317740100100079   02201300100100100101/0101/01/1900<S01><S></S><S>~~~~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>Nguy‘n B~07/08/2013~Nguy‘n A~12345~~1</S></S01>"
+'Barcode_Scaned str2
+
+str2 = "aa317360100100079   03201300000100100101/0101/01/2010<S07><S></S><S>~0~27000000~27000000~0~0~0~0~0~0~0~0~0~20~0~0~1~0</S><S>test~19/11/2013~test~325~1~~~1</S></S07>"
 Barcode_Scaned str2
-str2 = "aa317730100100079   0220130000000020021~0</S><S>~1~~~~~~</S><S>~~~07/08/2013~1~~07/08/2013~1053~</S></S02>"
-Barcode_Scaned str2
+'str2 = "bs317360100100079   03201300000100100101/0101/01/2010<S07><S></S><S>~0~27000000~27000000~0~0~0~0~0~0~0~0~0~20~0~0~1~0</S><S>test~19/11/2013~test~325~~1~1~1</S></S07>"
+'Barcode_Scaned str2
 
 End Sub
 
@@ -2120,24 +2131,36 @@ Private Sub Barcode_Scaned(strBarcode As String)
             arrBCBuffer(intBarcodeNo) = strPrefix & strBarcodeCount & strBarcode
             
             If IsCompleteData(strData) Then
+                Dim tmp As String
+
+                ' Check version <= 3.1.6
                 If Val(Left$(strData, 3)) <= 316 Then
                     If Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "04" Or Mid$(strData, 4, 2) = "71" Or Mid$(strData, 4, 2) = "36" Then
-                        strData = Left$(strData, Len(strData) - 10) & "~0" & Right$(strData, 10)
+                        If Val(idToKhai) <> 36 Then
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
+                            strData = tmp & "~0" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
+                        Else
+                            strData = Left$(strData, Len(strData) - 10) & "~1" & Right$(strData, 10)
+                        End If
+
                     ElseIf Mid$(strData, 4, 2) = "68" Then
-                        strData = Left$(strData, Len(strData) - 10) & "~1" & Right$(strData, 10)
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
+                            strData = tmp & "~0" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
                     ElseIf Mid$(strData, 4, 2) = "73" Then
-                        strData = Left$(strData, Len(strData) - 10) & "~" & Right$(strData, 10)
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
+                            strData = tmp & "~0" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
                     End If
                 End If
-                    If Val(idToKhai) = 1 Or Val(idToKhai) = 2 Or Val(idToKhai) = 4 Or Val(idToKhai) = 71 Or Val(idToKhai) = 36 Then
-                        If Val(idToKhai) = 36 Then
-                            LoaiKyKK = LoaiToKhai(strData)
-                        Else
-                            Dim tmp As String
-                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
-                            LoaiKyKK = LoaiToKhai(tmp)
-                        End If
+
+                If Val(idToKhai) = 1 Or Val(idToKhai) = 2 Or Val(idToKhai) = 4 Or Val(idToKhai) = 71 Or Val(idToKhai) = 36 Then
+                    If Val(idToKhai) = 36 Then
+                        LoaiKyKK = LoaiToKhai(strData)
+                    Else
+                        tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
+                        LoaiKyKK = LoaiToKhai(tmp)
                     End If
+                End If
+
                 lblLoading.Visible = False
                 lblConnecting.Visible = True
                 frmInterfaces.Refresh
