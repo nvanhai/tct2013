@@ -1886,10 +1886,10 @@ Private Sub Barcode_Scaned(strBarcode As String)
 
                     ElseIf Mid$(strData, 4, 2) = "68" Then
                             tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
-                            strData = tmp & "~0" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
+                            strData = tmp & "~1" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
                     ElseIf Mid$(strData, 4, 2) = "73" Then
-                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
-                            strData = tmp & "~0" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S02>", vbTextCompare) - 5)
+                            strData = tmp & "~" & Right$(strData, Len(strData) - InStr(1, strData, "</S02>", vbTextCompare) + 5)
                     End If
                 End If
 
