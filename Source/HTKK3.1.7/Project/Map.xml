@@ -79,6 +79,11 @@
 	<Map ID="36" FinanceYear="1" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Mẫu 07/KK-TNCN">
 		<Validity StartDate="01/01/2010" DataFile="07_TNCN" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
+	
+	<Map ID="361" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Mẫu 07/KK-TNCN theo quý">
+		<Validity StartDate="01/01/2010" DataFile="07_TNCN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
 	<Map ID="17" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Tờ khai 05/KK-TNCN">	
 		<Validity StartDate="01/01/2010" DataFile="05_TNCN,05A_TNCN,05B_TNCN" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
@@ -136,7 +141,7 @@
 	<Map ID="89" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai phí xăng dầu">
 		<Validity StartDate="01/01/1900" DataFile="01_PHXD" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
-	<Map ID="64" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Thông báo phát hành hóa đơn(01_TBAC)">
+	<Map ID="64" FinanceYear="1" Year="0" Month="0" ThreeMonth="0" Day="1" Caption="Thông báo phát hành hóa đơn(01_TBAC)">
 		<Validity StartDate="23/06/2006" DataFile="01_TBAC" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>	
 	<Map ID="65" FinanceYear="1" Year="1/2" Month="0" ThreeMonth="1" Day="0" Caption="Báo cáo tình hình nhận in hóa đơn(01_AC)">
