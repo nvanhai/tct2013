@@ -393,9 +393,14 @@ Private Sub btnMo_Click()
             
         End If
         
+
         
         If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then
             If varId = "01" Or varId = "02" Or varId = "04" Or varId = "71" Or varId = "36" Then
+                ' Neu datafile co ky tu Q la to khai quy
+                If Left$(Right$(varFileName, 7), 1) = "Q" Then
+                    strTkGTGT = "TK_QUY"
+                End If
                 If strTkGTGT = "TK_QUY" Then
                     TAX_Utilities_New.ThreeMonths = CInt(Mid$(CStr(varPeriod), 1, 2))
                     TAX_Utilities_New.month = Mid$(CStr(varPeriod), 1, 2)
@@ -1102,7 +1107,7 @@ Dim xmlDocument As New MSXML.DOMDocument
                 If Parentid = "101" Then
                     Dim strIdGTGT As String
                     strIdGTGT = arrStrId(.TypeComboBoxCurSel)
-                    If strIdGTGT = "011" Or strIdGTGT = "021" Or strIdGTGT = "041" Or strIdGTGT = "071" Then
+                    If strIdGTGT = "011" Or strIdGTGT = "021" Or strIdGTGT = "041" Or strIdGTGT = "711" Then
                         strTkGTGT = "TK_QUY"
                          If Left$(strIdGTGT, 2) = GetAttribute(xmlNode, "ID") Then
                             lstryear = GetAttribute(xmlNode, "Year")
@@ -2017,8 +2022,17 @@ Private Sub TraCuu()
         End If
     Else
         For lCtrl = 1 To UBound(arrStrId)
-            GetTaxReportsById arrStrId(lCtrl), strFromDay, _
-                    strToDay, arrStrPeriods
+            strTkGTGT = ""
+            If arrStrId(lCtrl) = "011" Or arrStrId(lCtrl) = "021" Or arrStrId(lCtrl) = "041" Or arrStrId(lCtrl) = "711" Then
+                strTkGTGT = "TK_QUY"
+                    GetTaxReportsById Left$(arrStrId(lCtrl), 2), strFromDay, _
+                strToDay, arrStrPeriods
+                        
+                strGtgtIdTmp = arrStrId(lCtrl)
+            Else
+                GetTaxReportsById arrStrId(lCtrl), strFromDay, _
+                        strToDay, arrStrPeriods
+            End If
         Next
     End If
     
