@@ -1365,6 +1365,13 @@ Private Sub UpdateSheets()
     Dim lCol As Long, lRow As Long
     Dim xmlCellNode As MSXML.IXMLDOMNodeList
     Dim xmlCellNodeData As MSXML.IXMLDOMNode
+    
+    ' insert node
+    Dim xmlNodeCells As MSXML.IXMLDOMNode
+    Dim xmlNodeNewCells As MSXML.IXMLDOMNode
+    Dim xmlNodeNewCell As MSXML.IXMLDOMNode
+    Dim testDoc As New MSXML.DOMDocument
+    ' end
 
     Dim blCheck_S2 As Boolean
     With fps
@@ -1372,6 +1379,11 @@ Private Sub UpdateSheets()
         ssSheet = mCurrentSheet
         .Sheet = 1
         mCurrentSheet = .Sheet
+        ' them 1 not vao xml
+        If TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length = 38 Then
+            testDoc.loadXML "<Cell CellID='C_82' CellID2='C_82' Encode='1' Receive='1' Value=''/>"
+            TAX_Utilities_New.Data(0).nodeFromID("T_54").parentNode.appendChild testDoc.firstChild
+        End If
         For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
            ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                If (lRow = 82 And lCol = .ColLetterToNumber("C")) Then
@@ -1666,11 +1678,11 @@ Public Sub inThongTinDL()
     ' end
 End Sub
 
-Public Function isCheckGH() As Boolean
+Public Function isCheckGh() As Boolean
     If TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length = 38 Then
-        isCheckGH = True
+        isCheckGh = True
     Else
-        isCheckGH = False
+        isCheckGh = False
     End If
     Exit Function
 End Function
