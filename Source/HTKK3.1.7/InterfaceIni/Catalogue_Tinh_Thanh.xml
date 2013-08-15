@@ -369,7 +369,8 @@
 			<Item Value ="0###40331###403###Chi cục Thuế Huyện Thanh Chương"/>
 			<Item Value ="0###40333###403###Chi cục Thuế Huyện Nghi Lộc"/>
 			<Item Value ="0###40335###403###Chi cục Thuế Huyện Nam Đàn"/>
-			<Item Value ="0###40337###403###Chi cục Thuế Huyện Hưng Nguyên"/>
+			<Item Value ="0###40337###403###Chi cục Thuế Huyện Hưng Nguyên"/>			
+			<Item Value ="0###40339###403###Chi cục Thuế Thị Xã Hoàng mai "/>			
 			<Item Value ="1###40500###405###HTI - Cục Thuế Tỉnh Hà Tĩnh"/>
 			<Item Value ="0###40500###405###Cục Thuế Tỉnh Hà Tĩnh"/>
 			<Item Value ="0###40501###405###Chi cục Thuế Thành phố Hà Tĩnh"/>
@@ -685,7 +686,8 @@
 			<Item Value ="0###80121###801###Chi cục Thuế Huyện Châu Thành"/>
 			<Item Value ="0###80123###801###Chi cục Thuế Huyện Tân Trụ"/>
 			<Item Value ="0###80125###801###Chi cục Thuế Huyện Cần Đước"/>
-			<Item Value ="0###80127###801###Chi cục Thuế Huyện Cần Giuộc"/>
+			<Item Value ="0###80127###801###Chi cục Thuế Huyện Cần Giuộc"/>			
+			<Item Value ="0###80129###801###Chi cục Thuế Thị Xã Kiến Tường"/>			
 			<Item Value ="1###80300###803###DTH - Cục Thuế Tỉnh Đồng Tháp"/>
 			<Item Value ="0###80300###803###Cục Thuế Tỉnh Đồng Tháp"/>
 			<Item Value ="0###80301###803###Chi cục Thuế Thành phố Cao Lãnh"/>
