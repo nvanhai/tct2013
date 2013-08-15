@@ -1383,6 +1383,7 @@ Private Sub UpdateSheets()
         If TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length = 38 Then
             testDoc.loadXML "<Cell CellID='C_82' CellID2='C_82' Encode='1' Receive='1' Value=''/>"
             TAX_Utilities_New.Data(0).nodeFromID("T_54").parentNode.appendChild testDoc.firstChild
+            SetAttribute TAX_Utilities_New.Data(0).lastChild, "Version", "317"
         End If
         For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
            ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
