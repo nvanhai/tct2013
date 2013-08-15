@@ -315,6 +315,9 @@ Private Const LOI_TU_NGAY_DEN_NGAY = "3"
 Private lstryear As String
 Private lstrMonth As String
 Private lstrThreemonths As String
+
+Private lstrDay As String
+
 Private arrStrId() As String
 Private Dtetun As String
 Private Dteden As String
@@ -1107,12 +1110,20 @@ Dim xmlDocument As New MSXML.DOMDocument
                 If Parentid = "101" Then
                     Dim strIdGTGT As String
                     strIdGTGT = arrStrId(.TypeComboBoxCurSel)
-                    If strIdGTGT = "011" Or strIdGTGT = "021" Or strIdGTGT = "041" Or strIdGTGT = "711" Then
+                    If strIdGTGT = "011" Or strIdGTGT = "021" Or strIdGTGT = "041" Or strIdGTGT = "711" Or strIdGTGT = "361" Then
                         strTkGTGT = "TK_QUY"
                          If Left$(strIdGTGT, 2) = GetAttribute(xmlNode, "ID") Then
                             lstryear = GetAttribute(xmlNode, "Year")
                             lstrMonth = 0
                             lstrThreemonths = 1
+                            Exit For
+                        End If
+                    ElseIf strIdGTGT = "64" Then
+                        If arrStrId(.TypeComboBoxCurSel) = GetAttribute(xmlNode, "ID") Then
+                            lstryear = GetAttribute(xmlNode, "Year")
+                            lstrMonth = GetAttribute(xmlNode, "Month")
+                            lstrThreemonths = GetAttribute(xmlNode, "ThreeMonth")
+                            lstrDay = "1"
                             Exit For
                         End If
                     Else
@@ -1163,6 +1174,39 @@ Sub CreateDkKy()
     formatPrefix vdtehientai, strarrdate
     
     With fpsDkNgay
+        
+         If lstrDay = "1" Then
+            .Col = .ColLetterToNumber(f1dteTuNCol)
+            .Row = f1dteTuNRow
+            .CellType = CellTypePic
+            .TypePicMask = "99//99//9999"
+            .Text = strarrdate(0) & "/" & strarrdate(1) & "/" & strarrdate(2)
+            
+            .Col = .ColLetterToNumber(f1dteDeNCol)
+            .Row = f1dteDeNRow
+            .CellType = CellTypePic
+            .TypePicMask = "99//99//9999"
+            .Text = strarrdate(0) & "/" & strarrdate(1) & "/" & strarrdate(2)
+            fpsDkNgay.Col = 2
+            fpsDkNgay.ColHidden = False
+            fpsDkNgay.Col = 3
+            fpsDkNgay.ColHidden = True
+            fpsDkNgay.Col = 4
+            fpsDkNgay.ColHidden = True
+            fpsDkNgay.Col = 5
+            fpsDkNgay.ColHidden = True
+            
+            fpsDkNgay.Col = 7
+            fpsDkNgay.ColHidden = False
+            fpsDkNgay.Col = 8
+            fpsDkNgay.ColHidden = True
+            fpsDkNgay.Col = 9
+            fpsDkNgay.ColHidden = True
+            fpsDkNgay.Col = 10
+            fpsDkNgay.ColHidden = True
+            Exit Sub
+        End If
+        
         If lstrMonth = "0" And lstrThreemonths = "0" Then
             If arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "80" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "82" Then
                 .Col = .ColLetterToNumber(f1dteTuNCol)
@@ -1311,6 +1355,7 @@ Sub CreateDkKy()
             fpsDkNgay.ColHidden = False
             Exit Sub
         End If
+               
     End With
 End Sub
 Private Function KiemTraDKngay() As Boolean
@@ -1438,7 +1483,7 @@ Private Function GetTaxReportsById(ByVal strId As String, ByVal strPeriodFrom As
     'Lay kieu ky ke khai
     If GetAttribute(xmlNodeMenu, "Month") = "1" Then
         ' to khai quy GTGT
-        If strId = "01" Or strId = "02" Or strId = "04" Or strId = "71" Then
+        If strId = "01" Or strId = "02" Or strId = "04" Or strId = "71" Or strId = "36" Then
             If strTkGTGT = "TK_QUY" Then
                 strKieu_Ky = KIEU_KY_QUY
             Else
@@ -1496,7 +1541,7 @@ Private Function GetTaxReportsById(ByVal strId As String, ByVal strPeriodFrom As
             If InStr(1, arrStrXMLFileNames(lngIndex), Split(strDataFile, ",")(0)) = 1 Then
                     If IsValidPeriod(strKieu_Ky, strDataFile, strNextPeriod, arrStrXMLFileNames(lngIndex), strPeriodFrom, strPeriodTo, blnValidFinanceYear, strPeriodReturn) Then
                         Dim tmpFileNam As String
-                        If strId = "01" Or strId = "02" Or strId = "04" Or strId = "71" Then
+                        If strId = "01" Or strId = "02" Or strId = "04" Or strId = "71" Or strId = "36" Then
                             If strTkGTGT = "TK_QUY" Then
                                 tmpFileNam = GetAttribute(xmlNodeMenu, "Caption") & " quý"
                             Else
@@ -2023,7 +2068,7 @@ Private Sub TraCuu()
     Else
         For lCtrl = 1 To UBound(arrStrId)
             strTkGTGT = ""
-            If arrStrId(lCtrl) = "011" Or arrStrId(lCtrl) = "021" Or arrStrId(lCtrl) = "041" Or arrStrId(lCtrl) = "711" Then
+            If arrStrId(lCtrl) = "011" Or arrStrId(lCtrl) = "021" Or arrStrId(lCtrl) = "041" Or arrStrId(lCtrl) = "711" Or arrStrId(lCtrl) = "361" Then
                 strTkGTGT = "TK_QUY"
                     GetTaxReportsById Left$(arrStrId(lCtrl), 2), strFromDay, _
                 strToDay, arrStrPeriods
