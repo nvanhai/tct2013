@@ -1881,7 +1881,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
                             tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
                             strData = tmp & "~0" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
                         Else
-                            strData = Left$(strData, Len(strData) - 10) & "~1" & Right$(strData, 10)
+                            strData = Left$(strData, Len(strData) - 10) & "~0" & Right$(strData, 10)
                         End If
 
                     ElseIf Mid$(strData, 4, 2) = "68" Then
