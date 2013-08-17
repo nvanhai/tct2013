@@ -250,111 +250,111 @@ On Error GoTo ErrorHandle
     
     
     'connect to database BMT
-    If clsDAO.Connected = False Then
-        clsDAO.CreateConnectionString [MSDAORA.1], "BMT", "LOGIN_USER", "LOGIN_USER"
-        Me.MousePointer = vbHourglass
-        frmSystem.MousePointer = vbHourglass
-        clsDAO.Connect
-        Me.MousePointer = vbDefault
-        frmSystem.MousePointer = vbDefault
-    End If
-    
-    'set key trong BMT, call prc_get_key
-    cmd.ActiveConnection = clsDAO.Connection
-    cmd.CommandType = adCmdText
-    cmd.CommandText = "{call BMT_PCK_BMHT.prc_get_key()}"
-    cmd.Execute
-    Set cmd = Nothing
-    
-    'create slq query check username and password
-    userid = clsConvert.Convert(txtUsername.Text, UNICODE, TCVN)
-    password = clsConvert.Convert(txtPassword.Text, UNICODE, TCVN)
-    strSQL = "SELECT nvl(BMT_PCK_BMHT.fnc_check_login('" & _
-                UCase(userid) & "','" & password & "'),-1)  result FROM dual"
-    
-    'check username and password
-    Set rec = clsDAO.Execute(strSQL)
-    
-    If rec.Fields(0).Value = 0 Then
-    '***********************************
-    'ThanhDX modified
-    'Date:18/04/06
-    ' Them truong ten_nguoisudung dua vao QLT
-        'get username
-        strSQL = "SELECT ten_nsd, mo_ta FROM bmt_nsd WHERE ten_nsd='" & userid & "' " & _
-        "AND MA_NSD IN (SELECT MA_NSD FROM bmt_nsd_nhom " & _
-        "WHERE MA_NHOM IN (SELECT MA_NHOM FROM BMT_NHOM_CHUC_NANG " & _
-        "WHERE MA_CHUC_NANG IN (SELECT MA_CHUC_NANG FROM bmt_chuc_nang " & _
-        "WHERE ma_ud = 'HTKK')))"
-        Set rec = clsDAO.Execute(strSQL)
-        '*******************************
-        'Modify date: 12/12/2005
-        If rec.Fields.Count > 0 Then
-            IsValidUser = 2
-            'get User ID
-            strUserID = rec.Fields(0).Value
-            'get User name
-            strUserName = clsConvert.Convert(rec.Fields(1).Value, TCVN, UNICODE)
-            '***********************************
-            ' get cqt id (Chi cuc thue)
-            strSQL = "SELECT gia_tri  FROM bmt_tham_so WHERE ten='MA_CQT'"
-            Set rec = clsDAO.Execute(strSQL)
-            ' neu chi cuc thue khong duoc dang ky su dung QLT va dung NTKC thi lay den Cuc thue
-            If rec Is Nothing Then
-                'get cqt id (Cuc thue)
-                strSQL = "SELECT gia_tri  FROM bmt_tham_so WHERE ten='MA_TINH'"
-                Set rec = clsDAO.Execute(strSQL)
-            End If
-            'get cqt id
-            strTaxOfficeId = clsConvert.Convert(rec.Fields(0).Value, TCVN, UNICODE)
-            If Len(Trim(strTaxOfficeId)) = 3 Then
-                ' ghep them 2 so 0 vao dang sau la lay duoc ma cuc thue
-                strTaxOfficeId = strTaxOfficeId & "00"
-            End If
-
-        Else
-            IsValidUser = 1
-        End If
-        '*******************************
-    ElseIf rec.Fields(0).Value = -1 Then
-        IsValidUser = 0
-    Else
-        strSQL = "SELECT ten_nsd, mo_ta FROM bmt_nsd WHERE ten_nsd='" & userid & "' " & _
-        "AND MA_NSD IN (SELECT MA_NSD FROM bmt_nsd_nhom " & _
-        "WHERE MA_NHOM IN (SELECT MA_NHOM FROM BMT_NHOM_CHUC_NANG " & _
-        "WHERE MA_CHUC_NANG IN (SELECT MA_CHUC_NANG FROM bmt_chuc_nang " & _
-        "WHERE ma_ud = 'HTKK')))"
-        Set rec = clsDAO.Execute(strSQL)
-               
-        If rec.Fields.Count > 0 Then
-            IsValidUser = 2
-            'get User ID
-            strUserID = rec.Fields(0).Value
-            'get User name
-            strUserName = clsConvert.Convert(rec.Fields(1).Value, TCVN, UNICODE)
-            ' get cqt id (Chi cuc thue)
-            strSQL = "SELECT gia_tri  FROM bmt_tham_so WHERE ten='MA_CQT'"
-            Set rec = clsDAO.Execute(strSQL)
-            ' neu chi cuc thue khong duoc dang ky su dung QLT va dung NTKC thi lay den Cuc thue
-            If rec Is Nothing Then
-                'get cqt id (Cuc thue)
-                strSQL = "SELECT gia_tri  FROM bmt_tham_so WHERE ten='MA_TINH'"
-                Set rec = clsDAO.Execute(strSQL)
-            End If
-            'get cqt id
-            strTaxOfficeId = clsConvert.Convert(rec.Fields(0).Value, TCVN, UNICODE)
-            If Len(Trim(strTaxOfficeId)) = 3 Then
-                ' ghep them 2 so 0 vao dang sau la lay duoc ma cuc thue
-                strTaxOfficeId = strTaxOfficeId & "00"
-            End If
-        End If
-        
-        IsValidUser = 2
-        
-    End If
-    rec.Close
-    Set rec = Nothing
-    
+'    If clsDAO.Connected = False Then
+'        clsDAO.CreateConnectionString [MSDAORA.1], "BMT", "LOGIN_USER", "LOGIN_USER"
+'        Me.MousePointer = vbHourglass
+'        frmSystem.MousePointer = vbHourglass
+'        clsDAO.Connect
+'        Me.MousePointer = vbDefault
+'        frmSystem.MousePointer = vbDefault
+'    End If
+'
+'    'set key trong BMT, call prc_get_key
+'    cmd.ActiveConnection = clsDAO.Connection
+'    cmd.CommandType = adCmdText
+'    cmd.CommandText = "{call BMT_PCK_BMHT.prc_get_key()}"
+'    cmd.Execute
+'    Set cmd = Nothing
+'
+'    'create slq query check username and password
+'    userid = clsConvert.Convert(txtUsername.Text, UNICODE, TCVN)
+'    password = clsConvert.Convert(txtPassword.Text, UNICODE, TCVN)
+'    strSQL = "SELECT nvl(BMT_PCK_BMHT.fnc_check_login('" & _
+'                UCase(userid) & "','" & password & "'),-1)  result FROM dual"
+'
+'    'check username and password
+'    Set rec = clsDAO.Execute(strSQL)
+'
+'    If rec.Fields(0).Value = 0 Then
+'    '***********************************
+'    'ThanhDX modified
+'    'Date:18/04/06
+'    ' Them truong ten_nguoisudung dua vao QLT
+'        'get username
+'        strSQL = "SELECT ten_nsd, mo_ta FROM bmt_nsd WHERE ten_nsd='" & userid & "' " & _
+'        "AND MA_NSD IN (SELECT MA_NSD FROM bmt_nsd_nhom " & _
+'        "WHERE MA_NHOM IN (SELECT MA_NHOM FROM BMT_NHOM_CHUC_NANG " & _
+'        "WHERE MA_CHUC_NANG IN (SELECT MA_CHUC_NANG FROM bmt_chuc_nang " & _
+'        "WHERE ma_ud = 'HTKK')))"
+'        Set rec = clsDAO.Execute(strSQL)
+'        '*******************************
+'        'Modify date: 12/12/2005
+'        If rec.Fields.Count > 0 Then
+'            IsValidUser = 2
+'            'get User ID
+'            strUserID = rec.Fields(0).Value
+'            'get User name
+'            strUserName = clsConvert.Convert(rec.Fields(1).Value, TCVN, UNICODE)
+'            '***********************************
+'            ' get cqt id (Chi cuc thue)
+'            strSQL = "SELECT gia_tri  FROM bmt_tham_so WHERE ten='MA_CQT'"
+'            Set rec = clsDAO.Execute(strSQL)
+'            ' neu chi cuc thue khong duoc dang ky su dung QLT va dung NTKC thi lay den Cuc thue
+'            If rec Is Nothing Then
+'                'get cqt id (Cuc thue)
+'                strSQL = "SELECT gia_tri  FROM bmt_tham_so WHERE ten='MA_TINH'"
+'                Set rec = clsDAO.Execute(strSQL)
+'            End If
+'            'get cqt id
+'            strTaxOfficeId = clsConvert.Convert(rec.Fields(0).Value, TCVN, UNICODE)
+'            If Len(Trim(strTaxOfficeId)) = 3 Then
+'                ' ghep them 2 so 0 vao dang sau la lay duoc ma cuc thue
+'                strTaxOfficeId = strTaxOfficeId & "00"
+'            End If
+'
+'        Else
+'            IsValidUser = 1
+'        End If
+'        '*******************************
+'    ElseIf rec.Fields(0).Value = -1 Then
+'        IsValidUser = 0
+'    Else
+'        strSQL = "SELECT ten_nsd, mo_ta FROM bmt_nsd WHERE ten_nsd='" & userid & "' " & _
+'        "AND MA_NSD IN (SELECT MA_NSD FROM bmt_nsd_nhom " & _
+'        "WHERE MA_NHOM IN (SELECT MA_NHOM FROM BMT_NHOM_CHUC_NANG " & _
+'        "WHERE MA_CHUC_NANG IN (SELECT MA_CHUC_NANG FROM bmt_chuc_nang " & _
+'        "WHERE ma_ud = 'HTKK')))"
+'        Set rec = clsDAO.Execute(strSQL)
+'
+'        If rec.Fields.Count > 0 Then
+'            IsValidUser = 2
+'            'get User ID
+'            strUserID = rec.Fields(0).Value
+'            'get User name
+'            strUserName = clsConvert.Convert(rec.Fields(1).Value, TCVN, UNICODE)
+'            ' get cqt id (Chi cuc thue)
+'            strSQL = "SELECT gia_tri  FROM bmt_tham_so WHERE ten='MA_CQT'"
+'            Set rec = clsDAO.Execute(strSQL)
+'            ' neu chi cuc thue khong duoc dang ky su dung QLT va dung NTKC thi lay den Cuc thue
+'            If rec Is Nothing Then
+'                'get cqt id (Cuc thue)
+'                strSQL = "SELECT gia_tri  FROM bmt_tham_so WHERE ten='MA_TINH'"
+'                Set rec = clsDAO.Execute(strSQL)
+'            End If
+'            'get cqt id
+'            strTaxOfficeId = clsConvert.Convert(rec.Fields(0).Value, TCVN, UNICODE)
+'            If Len(Trim(strTaxOfficeId)) = 3 Then
+'                ' ghep them 2 so 0 vao dang sau la lay duoc ma cuc thue
+'                strTaxOfficeId = strTaxOfficeId & "00"
+'            End If
+'        End If
+'
+'        IsValidUser = 2
+'
+'    End If
+'    rec.Close
+'    Set rec = Nothing
+    IsValidUser = 2
     Exit Function
 ErrorHandle:
     Me.MousePointer = vbDefault
@@ -372,41 +372,41 @@ On Error GoTo ErrorHandle
     Dim cmd As New ADODB.Command
     Dim para As New ADODB.Parameter
     
-    'connect to database BMT
-    If clsDAO.Connected = False Then
-        clsDAO.CreateConnectionString [MSDAORA.1], "BMT", "LOGIN_USER", "LOGIN_USER"
-        clsDAO.Connect
-    End If
+'    'connect to database BMT
+'    If clsDAO.Connected = False Then
+'        clsDAO.CreateConnectionString [MSDAORA.1], "BMT", "LOGIN_USER", "LOGIN_USER"
+'        clsDAO.Connect
+'    End If
     
     'set key trong BMT, call prc_get_key
-    cmd.ActiveConnection = clsDAO.Connection
-    cmd.CommandType = adCmdStoredProc
-    cmd.CommandText = "BMT_PCK_BMHT.prc_get_key"
+'    cmd.ActiveConnection = clsDAO.Connection
+'    cmd.CommandType = adCmdStoredProc
+'    cmd.CommandText = "BMT_PCK_BMHT.prc_get_key"
    
     
-    cmd.Execute
-    Set cmd = Nothing
+'    cmd.Execute
+'    Set cmd = Nothing
+'
+'    Set cmd = New ADODB.Command
+'    cmd.ActiveConnection = clsDAO.Connection
+'    cmd.CommandType = adCmdStoredProc
+'    cmd.CommandText = "BMT_PCK_BMHT.Prc_Get_App_Owner"
+'    cmd.Parameters.Append cmd.CreateParameter("P_USER_NAME", adVarChar, adParamOutput, 4000)
+'    cmd.Parameters.Append cmd.CreateParameter("P_PASSWORD", adVarChar, adParamOutput, 4000)
+'    cmd.Parameters.Append cmd.CreateParameter("P_Ma_UD", adVarChar, adParamInput, 4000)
+'    cmd.Parameters("P_Ma_UD").Value = "HTKK"
+'    cmd.Execute
     
-    Set cmd = New ADODB.Command
-    cmd.ActiveConnection = clsDAO.Connection
-    cmd.CommandType = adCmdStoredProc
-    cmd.CommandText = "BMT_PCK_BMHT.Prc_Get_App_Owner"
-    cmd.Parameters.Append cmd.CreateParameter("P_USER_NAME", adVarChar, adParamOutput, 4000)
-    cmd.Parameters.Append cmd.CreateParameter("P_PASSWORD", adVarChar, adParamOutput, 4000)
-    cmd.Parameters.Append cmd.CreateParameter("P_Ma_UD", adVarChar, adParamInput, 4000)
-    cmd.Parameters("P_Ma_UD").Value = "HTKK"
-    cmd.Execute
-    
-    strDBUserName = cmd.Parameters("P_USER_NAME").Value
-    strDBPassword = cmd.Parameters("P_PASSWORD").Value
-
-    Set cmd = Nothing
-    ' Destroy connect to BMT
-    clsDAO.Disconnect
-    
-    'connect to database QLT
-    clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-    clsDAO.Connect
+'    strDBUserName = cmd.Parameters("P_USER_NAME").Value
+'    strDBPassword = cmd.Parameters("P_PASSWORD").Value
+'
+'    Set cmd = Nothing
+'    ' Destroy connect to BMT
+'    clsDAO.Disconnect
+'
+'    'connect to database QLT
+'    clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
+'    clsDAO.Connect
     
     Exit Sub
 ErrorHandle:
@@ -443,30 +443,33 @@ Private Function CheckVersion() As Boolean
     
     On Error GoTo ErrHandle
     
-    strSQL = "SELECT rv_low_value phien_ban " & _
-           "From cg_ref_codes " & _
-           "WHERE (rv_domain = 'HTKK_ABOUT.VERSION')"
-    'connect to database BMT
-    If clsDAO.Connected Then
-        Set rsObj = clsDAO.Execute(strSQL)
-        If rsObj.Fields(0).Value = "" Then
-            'Can not found table or not exist value
-            DisplayMessage "0075", msOKOnly, miCriticalError
-            Exit Function
-        ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) > _
-               CInt(Replace(APP_VERSION, ".", "")) Then
-            'Versions is differed
-            DisplayMessage "0076", msOKOnly, miCriticalError
-            Exit Function
-        ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) < _
-               CInt(Replace(APP_VERSION, ".", "")) Then
-            DisplayMessage "0075", msOKOnly, miCriticalError
-            Exit Function
-        End If
-    Else
-        DisplayMessage "0063", msOKOnly, miCriticalError
-        Exit Function
-    End If
+'    strSQL = "SELECT rv_low_value phien_ban " & _
+'           "From cg_ref_codes " & _
+'           "WHERE (rv_domain = 'HTKK_ABOUT.VERSION')"
+'    'connect to database BMT
+'    If clsDAO.Connected Then
+'        Set rsObj = clsDAO.Execute(strSQL)
+'        If rsObj.Fields(0).Value = "" Then
+'            'Can not found table or not exist value
+'            DisplayMessage "0075", msOKOnly, miCriticalError
+'            Exit Function
+'        ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) > _
+'               CInt(Replace(APP_VERSION, ".", "")) Then
+'            'Versions is differed
+'            DisplayMessage "0076", msOKOnly, miCriticalError
+'            Exit Function
+'        ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) < _
+'               CInt(Replace(APP_VERSION, ".", "")) Then
+'            DisplayMessage "0075", msOKOnly, miCriticalError
+'            Exit Function
+'        End If
+'    Else
+'        DisplayMessage "0063", msOKOnly, miCriticalError
+'        Exit Function
+'    End If
+
+    ' Check version cua ung dung voi phien ban cua service tra ve
+    
     CheckVersion = True
     
     Exit Function

@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Begin VB.Form frmInterfaces 
    AutoRedraw      =   -1  'True
    BorderStyle     =   3  'Fixed Dialog
@@ -763,47 +763,47 @@ On Error GoTo ErrHandle
 '        End If
         ' Kiem tra quy truoc da co gia han canh bao NSD check vao gia han nop thue
         ' nvhai
-        If Val(TAX_Utilities_Srv_New.Year) = 2009 Or Val(TAX_Utilities_Srv_New.Year) = 2010 Or Val(TAX_Utilities_Srv_New.Year) = 2011 Then
-            If Val(varTemp) = 0 Then
-                'lay ngay dau nam tc va ngay ket thuc nam tc de loc de lieu
-
-                dNgayDauNamTC = GetNgayDauNam(TAX_Utilities_Srv_New.Year, iThangTaiChinh, iNgayTaiChinh)
-                'set lai dinh dang de so sanh
-                varDate1 = "'" & DatePart("D", dNgayDauNamTC) & "-" & MonthName(DatePart("M", dNgayDauNamTC), True) & "-" & DatePart("YYYY", dNgayDauNamTC) & "'"
-                dNgayCuoiNamTC = NgayCuoiNamTaiChinh(TAX_Utilities_Srv_New.Year, iThangTaiChinh, iNgayTaiChinh)
-                'set lai dinh dang de so sanh
-                varDate2 = "'" & DatePart("D", dNgayCuoiNamTC) & "-" & MonthName(DatePart("M", dNgayCuoiNamTC), True) & "-" & DatePart("YYYY", dNgayCuoiNamTC) & "'"
-                'connect to database QLT
-                If Not clsDAO.Connected Then
-                    clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-                    clsDAO.Connect
-                End If
-                ' SQL check du lieu
-                strSQL = "select ID from RCV_TKHAI_HDR "
-                strSQL = strSQL & " where TIN='" & strMST & "' "
-                strSQL = strSQL & "and KYKK_TU_NGAY >= " & varDate1 & " and KYKK_DEN_NGAY < " & varDate2
-                strSQL = strSQL & " and CO_GHAN='Y' "
-                strSQL = strSQL & " and LOAI_TKHAI='" & changeMaToKhai(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue) & "' "
-                Set rs = clsDAO.Execute(strSQL)
-            
-                If (Not rs Is Nothing) And rs.Fields.Count > 0 Then
-                    If Year(dNgayDauKy) < 2011 Or (Year(dNgayDauKy) = 2011 And DatePart("Q", dNgayDauKy) < 4) Then
-                    If MessageBox("0098", msYesNo, miQuestion) = mrYes Then
-'                        With fpSpread1
-'                            .Sheet = 1
-'                            .Col = .ColLetterToNumber("E")
-'                            .Row = 17
-'                            .Value = 1
-'                        End With
-                        Exit Sub
-                        End If
-                    End If
-                    'DisplayMessage "0098", msOKOnly, miInformation
-                    'Exit Sub
-                End If
-                Set rs = Nothing
-            End If
-        End If
+'        If Val(TAX_Utilities_Srv_New.Year) = 2009 Or Val(TAX_Utilities_Srv_New.Year) = 2010 Or Val(TAX_Utilities_Srv_New.Year) = 2011 Then
+'            If Val(varTemp) = 0 Then
+'                'lay ngay dau nam tc va ngay ket thuc nam tc de loc de lieu
+'
+'                dNgayDauNamTC = GetNgayDauNam(TAX_Utilities_Srv_New.Year, iThangTaiChinh, iNgayTaiChinh)
+'                'set lai dinh dang de so sanh
+'                varDate1 = "'" & DatePart("D", dNgayDauNamTC) & "-" & MonthName(DatePart("M", dNgayDauNamTC), True) & "-" & DatePart("YYYY", dNgayDauNamTC) & "'"
+'                dNgayCuoiNamTC = NgayCuoiNamTaiChinh(TAX_Utilities_Srv_New.Year, iThangTaiChinh, iNgayTaiChinh)
+'                'set lai dinh dang de so sanh
+'                varDate2 = "'" & DatePart("D", dNgayCuoiNamTC) & "-" & MonthName(DatePart("M", dNgayCuoiNamTC), True) & "-" & DatePart("YYYY", dNgayCuoiNamTC) & "'"
+'                'connect to database QLT
+'                If Not clsDAO.Connected Then
+'                    clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
+'                    clsDAO.Connect
+'                End If
+'                ' SQL check du lieu
+'                strSQL = "select ID from RCV_TKHAI_HDR "
+'                strSQL = strSQL & " where TIN='" & strMST & "' "
+'                strSQL = strSQL & "and KYKK_TU_NGAY >= " & varDate1 & " and KYKK_DEN_NGAY < " & varDate2
+'                strSQL = strSQL & " and CO_GHAN='Y' "
+'                strSQL = strSQL & " and LOAI_TKHAI='" & changeMaToKhai(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue) & "' "
+'                Set rs = clsDAO.Execute(strSQL)
+'
+'                If (Not rs Is Nothing) And rs.Fields.Count > 0 Then
+'                    If Year(dNgayDauKy) < 2011 Or (Year(dNgayDauKy) = 2011 And DatePart("Q", dNgayDauKy) < 4) Then
+'                    If MessageBox("0098", msYesNo, miQuestion) = mrYes Then
+''                        With fpSpread1
+''                            .Sheet = 1
+''                            .Col = .ColLetterToNumber("E")
+''                            .Row = 17
+''                            .Value = 1
+''                        End With
+'                        Exit Sub
+'                        End If
+'                    End If
+'                    'DisplayMessage "0098", msOKOnly, miInformation
+'                    'Exit Sub
+'                End If
+'                Set rs = Nothing
+'            End If
+'        End If
         
         ' end nvhai
         
@@ -845,46 +845,46 @@ On Error GoTo ErrHandle
         
         ' Kiem tra to khai quy da co gia han canh bao NSD check vao gia han nop thue tren to khai quyet toan nam
         ' nvhai
-        If Val(TAX_Utilities_Srv_New.Year) = 2009 Or Val(TAX_Utilities_Srv_New.Year) = 2010 Or Val(TAX_Utilities_Srv_New.Year) = 2011 Then
-            If Val(varTemp) = 0 Then
-                'lay ngay dau nam tc va ngay ket thuc nam tc de loc de lieu
-                dNgayDauNamTC = DateSerial(TAX_Utilities_Srv_New.Year, iThangTaiChinh, iNgayTaiChinh)
-                'set lai dinh dang de so sanh
-                varDate1 = "'" & DatePart("D", dNgayDauNamTC) & "-" & MonthName(DatePart("M", dNgayDauNamTC), True) & "-" & DatePart("YYYY", dNgayDauNamTC) & "'"
-                dNgayCuoiNamTC = NgayCuoiNamTaiChinh(TAX_Utilities_Srv_New.Year, iThangTaiChinh, iNgayTaiChinh)
-                'set lai dinh dang de so sanh
-                varDate2 = "'" & DatePart("D", dNgayCuoiNamTC) & "-" & MonthName(DatePart("M", dNgayCuoiNamTC), True) & "-" & DatePart("YYYY", dNgayCuoiNamTC) & "'"
-                'connect to database QLT
-                If Not clsDAO.Connected Then
-                    clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-                    clsDAO.Connect
-                End If
-                ' SQL check du lieu
-                strSQL = "select ID from RCV_TKHAI_HDR "
-                strSQL = strSQL & " where TIN='" & strMST & "' "
-                strSQL = strSQL & "and KYKK_TU_NGAY >= " & varDate1 & " and KYKK_DEN_NGAY < " & varDate2
-                strSQL = strSQL & " and CO_GHAN='Y' "
-                strSQL = strSQL & " and ( LOAI_TKHAI='01A_TNDN' Or LOAI_TKHAI='01B_TNDN' OR LOAI_TKHAI='01A_TNDN11' Or LOAI_TKHAI='01B_TNDN11') "
-                Set rs = clsDAO.Execute(strSQL)
-            
-                If (Not rs Is Nothing) And rs.Fields.Count > 0 Then
-                    If Year(dNgayDauKy) <= 2011 Then
-                    If MessageBox("0099", msYesNo, miQuestion) = mrYes Then
-'                        With fpSpread1
-'                            .Sheet = 1
-'                            .Col = .ColLetterToNumber("E")
-'                            .Row = 17
-'                            .Value = 1
-'                        End With
-                        Exit Sub
-                        End If
-                    End If
-                    'DisplayMessage "0098", msOKOnly, miInformation
-                    'Exit Sub
-                End If
-                Set rs = Nothing
-            End If
-        End If
+'        If Val(TAX_Utilities_Srv_New.Year) = 2009 Or Val(TAX_Utilities_Srv_New.Year) = 2010 Or Val(TAX_Utilities_Srv_New.Year) = 2011 Then
+'            If Val(varTemp) = 0 Then
+'                'lay ngay dau nam tc va ngay ket thuc nam tc de loc de lieu
+'                dNgayDauNamTC = DateSerial(TAX_Utilities_Srv_New.Year, iThangTaiChinh, iNgayTaiChinh)
+'                'set lai dinh dang de so sanh
+'                varDate1 = "'" & DatePart("D", dNgayDauNamTC) & "-" & MonthName(DatePart("M", dNgayDauNamTC), True) & "-" & DatePart("YYYY", dNgayDauNamTC) & "'"
+'                dNgayCuoiNamTC = NgayCuoiNamTaiChinh(TAX_Utilities_Srv_New.Year, iThangTaiChinh, iNgayTaiChinh)
+'                'set lai dinh dang de so sanh
+'                varDate2 = "'" & DatePart("D", dNgayCuoiNamTC) & "-" & MonthName(DatePart("M", dNgayCuoiNamTC), True) & "-" & DatePart("YYYY", dNgayCuoiNamTC) & "'"
+'                'connect to database QLT
+'                If Not clsDAO.Connected Then
+'                    clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
+'                    clsDAO.Connect
+'                End If
+'                ' SQL check du lieu
+'                strSQL = "select ID from RCV_TKHAI_HDR "
+'                strSQL = strSQL & " where TIN='" & strMST & "' "
+'                strSQL = strSQL & "and KYKK_TU_NGAY >= " & varDate1 & " and KYKK_DEN_NGAY < " & varDate2
+'                strSQL = strSQL & " and CO_GHAN='Y' "
+'                strSQL = strSQL & " and ( LOAI_TKHAI='01A_TNDN' Or LOAI_TKHAI='01B_TNDN' OR LOAI_TKHAI='01A_TNDN11' Or LOAI_TKHAI='01B_TNDN11') "
+'                Set rs = clsDAO.Execute(strSQL)
+'
+'                If (Not rs Is Nothing) And rs.Fields.Count > 0 Then
+'                    If Year(dNgayDauKy) <= 2011 Then
+'                    If MessageBox("0099", msYesNo, miQuestion) = mrYes Then
+''                        With fpSpread1
+''                            .Sheet = 1
+''                            .Col = .ColLetterToNumber("E")
+''                            .Row = 17
+''                            .Value = 1
+''                        End With
+'                        Exit Sub
+'                        End If
+'                    End If
+'                    'DisplayMessage "0098", msOKOnly, miInformation
+'                    'Exit Sub
+'                End If
+'                Set rs = Nothing
+'            End If
+'        End If
         
         ' end nvhai
         
@@ -913,127 +913,127 @@ On Error GoTo ErrHandle
 '    End If
     
     
-    If clsDAO.Connected = False Then
-        Me.MousePointer = vbHourglass
-        frmSystem.MousePointer = vbHourglass
-        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-        clsDAO.Connect
-        frmSystem.MousePointer = vbDefault
-        Me.MousePointer = vbDefault
-    End If
-    '*************************************************************
-    'Date: 25/02/2006
-    'Kiem tra khoa so
-    strSQL = GetAttribute(xmlSQL.childNodes(1), "SqlKhoaSo")
-    Set rs = clsDAO.Execute(strSQL)
-    
-    If (Not rs Is Nothing) And rs.Fields.Count > 0 Then
-        If objTaxBusiness.KiemTraKhoaSo(rs.Fields(0)) Then
-            DisplayMessage "0070", msOKOnly, miInformation
-            Exit Sub
-        End If
-    End If
-    Set rs = Nothing
+'    If clsDAO.Connected = False Then
+'        Me.MousePointer = vbHourglass
+'        frmSystem.MousePointer = vbHourglass
+'        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
+'        clsDAO.Connect
+'        frmSystem.MousePointer = vbDefault
+'        Me.MousePointer = vbDefault
+'    End If
+'    '*************************************************************
+'    'Date: 25/02/2006
+'    'Kiem tra khoa so
+'    strSQL = GetAttribute(xmlSQL.childNodes(1), "SqlKhoaSo")
+'    Set rs = clsDAO.Execute(strSQL)
+'
+'    If (Not rs Is Nothing) And rs.Fields.Count > 0 Then
+'        If objTaxBusiness.KiemTraKhoaSo(rs.Fields(0)) Then
+'            DisplayMessage "0070", msOKOnly, miInformation
+'            Exit Sub
+'        End If
+'    End If
+'    Set rs = Nothing
     '*************************************************************
     
     ' xu ly nhan cac mau an chi co canh bao khi quet trung
-    If Val(idToKhai) <= 68 And Val(idToKhai) >= 64 Then
-        ' xu ly an chi
-        If isTonTaiAC = True Then
-            mResult = MessageBox("0047", msYesNo, miQuestion)
-            If mResult = mrNo Then
-                Exit Sub
-            End If
-        End If
-    Else
-    strSQL = "select ID, DA_NHAN from RCV_TKHAI_HDR "
-    strSQL = strSQL & " where TIN='" & strMST & "' "
-    strSQL = strSQL & " and LOAI_TKHAI='" & changeMaToKhai(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue) & "' "
-    
-    'Ngay dau ky ke khai va ngay cuoi ky ke khai
-    dDate = dNgayDauKy
-    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
-        strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
-        dDate = DateAdd("m", 1, dDate)
-        dDate = DateAdd("d", -1, dDate)
-        strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
-    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
-        strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
-        dDate = DateAdd("m", 3, dDate)
-        dDate = DateAdd("d", -1, dDate)
-        strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy')"
-    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
-        strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
-        dDate = DateAdd("m", 12, dDate)
-        dDate = DateAdd("d", -1, dDate)
-        strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy')"
-    End If
-        Dim flgBCTC As Boolean
-    clsDAO.BeginTrans
-    Set rs = clsDAO.Execute(strSQL)
-    
-    ' nvhai
-    ' Xu ly cho nhan BCTC in bang HTKK 2.1.0
-    
-    If rs.Fields.Count > 0 Then
-        ' nvhai
-        ' Neu la ID cua cac BCTC in bang HTKK 2.1.0
-        ' begin
-        If (Val(idToKhai) = 24 Or Val(idToKhai) = 25 Or Val(idToKhai) = 26 Or Val(idToKhai) = 27 Or Val(idToKhai) = 28 Or Val(idToKhai) = 29 _
-            Or Val(idToKhai) = 30 Or Val(idToKhai) = 31 Or Val(idToKhai) = 32 Or Val(idToKhai) = 33 Or Val(idToKhai) = 34 Or Val(idToKhai) = 35 _
-            Or Val(idToKhai) = 55 Or Val(idToKhai) = 56 Or Val(idToKhai) = 57 Or Val(idToKhai) = 58) Then
-            flgBCTC = True
-            If verToKhai = 0 Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
-                mResult = MessageBox("0047", msYesNo, miQuestion)
-                If mResult = mrYes Then ' Neu dong y ghi la to khai thay the thi phai dat lai trang thai = 1
-                    verToKhai = 1
-                    If UCase(rs.Fields("DA_NHAN").Value) = "E" Then
-                        clsDAO.ExecuteQuery "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
-                        clsDAO.ExecuteQuery "delete from RCV_TKHAI_DTL where HDR_ID='" & rs(0).Value & "'"
-                    End If
-                    'clsDAO.Execute "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
-                    
-                Else
-                    '********************
-                    clsDAO.CommitTrans
-                    '********************
-                    Exit Sub
-                End If
-            ElseIf verToKhai = 2 Then
-                If UCase(rs.Fields("DA_NHAN").Value) = "E" Then
-                    clsDAO.ExecuteQuery "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
-                    clsDAO.ExecuteQuery "delete from RCV_TKHAI_DTL where HDR_ID='" & rs(0).Value & "'"
-                End If
-            End If
-        Else
-        ' end
-            If verToKhai = 0 And isTKTonTai = True Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
-                mResult = MessageBox("0047", msYesNo, miQuestion)
-                If mResult = mrYes Then ' Neu dong y ghi la to khai thay the thi phai dat lai trang thai = 1
-                    verToKhai = 1
-                    If UCase(rs.Fields("DA_NHAN").Value) = "E" Then
-                        clsDAO.ExecuteQuery "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
-                        clsDAO.ExecuteQuery "delete from RCV_TKHAI_DTL where HDR_ID='" & rs(0).Value & "'"
-                    End If
-                    'clsDAO.Execute "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
-                Else
-                    '********************
-                    clsDAO.CommitTrans
-                    '********************
-                    Exit Sub
-                End If
-            ElseIf verToKhai = 2 Then
-                If UCase(rs.Fields("DA_NHAN").Value) = "E" Then
-                    clsDAO.ExecuteQuery "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
-                    clsDAO.ExecuteQuery "delete from RCV_TKHAI_DTL where HDR_ID='" & rs(0).Value & "'"
-                End If
-            End If
-        End If
-    End If
-        ' su loi ghi du lieu hdr va dtl tren transaction khac nhau
-        clsDAO.CommitTrans
-        ' end xu ly to khai binh thuong
-    End If
+'    If Val(idToKhai) <= 68 And Val(idToKhai) >= 64 Then
+'        ' xu ly an chi
+'        If isTonTaiAC = True Then
+'            mResult = MessageBox("0047", msYesNo, miQuestion)
+'            If mResult = mrNo Then
+'                Exit Sub
+'            End If
+'        End If
+'    Else
+'    strSQL = "select ID, DA_NHAN from RCV_TKHAI_HDR "
+'    strSQL = strSQL & " where TIN='" & strMST & "' "
+'    strSQL = strSQL & " and LOAI_TKHAI='" & changeMaToKhai(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue) & "' "
+'
+'    'Ngay dau ky ke khai va ngay cuoi ky ke khai
+'    dDate = dNgayDauKy
+'    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
+'        strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
+'        dDate = DateAdd("m", 1, dDate)
+'        dDate = DateAdd("d", -1, dDate)
+'        strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
+'    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
+'        strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
+'        dDate = DateAdd("m", 3, dDate)
+'        dDate = DateAdd("d", -1, dDate)
+'        strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy')"
+'    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
+'        strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
+'        dDate = DateAdd("m", 12, dDate)
+'        dDate = DateAdd("d", -1, dDate)
+'        strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy')"
+'    End If
+'        Dim flgBCTC As Boolean
+'    clsDAO.BeginTrans
+'    Set rs = clsDAO.Execute(strSQL)
+'
+'    ' nvhai
+'    ' Xu ly cho nhan BCTC in bang HTKK 2.1.0
+'
+'    If rs.Fields.Count > 0 Then
+'        ' nvhai
+'        ' Neu la ID cua cac BCTC in bang HTKK 2.1.0
+'        ' begin
+'        If (Val(idToKhai) = 24 Or Val(idToKhai) = 25 Or Val(idToKhai) = 26 Or Val(idToKhai) = 27 Or Val(idToKhai) = 28 Or Val(idToKhai) = 29 _
+'            Or Val(idToKhai) = 30 Or Val(idToKhai) = 31 Or Val(idToKhai) = 32 Or Val(idToKhai) = 33 Or Val(idToKhai) = 34 Or Val(idToKhai) = 35 _
+'            Or Val(idToKhai) = 55 Or Val(idToKhai) = 56 Or Val(idToKhai) = 57 Or Val(idToKhai) = 58) Then
+'            flgBCTC = True
+'            If verToKhai = 0 Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
+'                mResult = MessageBox("0047", msYesNo, miQuestion)
+'                If mResult = mrYes Then ' Neu dong y ghi la to khai thay the thi phai dat lai trang thai = 1
+'                    verToKhai = 1
+'                    If UCase(rs.Fields("DA_NHAN").Value) = "E" Then
+'                        clsDAO.ExecuteQuery "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
+'                        clsDAO.ExecuteQuery "delete from RCV_TKHAI_DTL where HDR_ID='" & rs(0).Value & "'"
+'                    End If
+'                    'clsDAO.Execute "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
+'
+'                Else
+'                    '********************
+'                    clsDAO.CommitTrans
+'                    '********************
+'                    Exit Sub
+'                End If
+'            ElseIf verToKhai = 2 Then
+'                If UCase(rs.Fields("DA_NHAN").Value) = "E" Then
+'                    clsDAO.ExecuteQuery "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
+'                    clsDAO.ExecuteQuery "delete from RCV_TKHAI_DTL where HDR_ID='" & rs(0).Value & "'"
+'                End If
+'            End If
+'        Else
+'        ' end
+'            If verToKhai = 0 And isTKTonTai = True Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
+'                mResult = MessageBox("0047", msYesNo, miQuestion)
+'                If mResult = mrYes Then ' Neu dong y ghi la to khai thay the thi phai dat lai trang thai = 1
+'                    verToKhai = 1
+'                    If UCase(rs.Fields("DA_NHAN").Value) = "E" Then
+'                        clsDAO.ExecuteQuery "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
+'                        clsDAO.ExecuteQuery "delete from RCV_TKHAI_DTL where HDR_ID='" & rs(0).Value & "'"
+'                    End If
+'                    'clsDAO.Execute "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
+'                Else
+'                    '********************
+'                    clsDAO.CommitTrans
+'                    '********************
+'                    Exit Sub
+'                End If
+'            ElseIf verToKhai = 2 Then
+'                If UCase(rs.Fields("DA_NHAN").Value) = "E" Then
+'                    clsDAO.ExecuteQuery "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
+'                    clsDAO.ExecuteQuery "delete from RCV_TKHAI_DTL where HDR_ID='" & rs(0).Value & "'"
+'                End If
+'            End If
+'        End If
+'    End If
+'        ' su loi ghi du lieu hdr va dtl tren transaction khac nhau
+'        clsDAO.CommitTrans
+'        ' end xu ly to khai binh thuong
+'    End If
     
     ' xu ly cho 2 to khai 08, 08A/TNCN
     If idToKhai = "74" Or idToKhai = "75" Then
@@ -1046,45 +1046,45 @@ On Error GoTo ErrHandle
     End If
     
     
-    Set rs = Nothing
+    ' Set rs = Nothing
     
 
-    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 _
-    Or idToKhai = 36 Or idToKhai = 6 Or idToKhai = 72 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 71 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 90 Then
-        strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28").nodeValue)
-    ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 5 Or idToKhai = 70 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Then
-        strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28_NNKD").nodeValue)
-    Else
-        strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdr").nodeValue)
-    End If
-    ' xu ly de ghi cac mau an chi
-    If Val(idToKhai) = 66 Or Val(idToKhai) = 68 Or Val(idToKhai) = 67 Or Val(idToKhai) = 64 Or Val(idToKhai) = 65 Then
-        strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl_AC").nodeValue)
-    Else
-        strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl").nodeValue)
-    End If
-    Set rs = clsDAO.Execute("select RCV_XLTK_HDR_SEQ.NEXTVAL from dual")
-    HdrID = rs(0).Value
+'    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 _
+'    Or idToKhai = 36 Or idToKhai = 6 Or idToKhai = 72 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 71 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 90 Then
+'        strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28").nodeValue)
+'    ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 5 Or idToKhai = 70 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Then
+'        strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28_NNKD").nodeValue)
+'    Else
+'        strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdr").nodeValue)
+'    End If
+'    ' xu ly de ghi cac mau an chi
+'    If Val(idToKhai) = 66 Or Val(idToKhai) = 68 Or Val(idToKhai) = 67 Or Val(idToKhai) = 64 Or Val(idToKhai) = 65 Then
+'        strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl_AC").nodeValue)
+'    Else
+'        strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl").nodeValue)
+'    End If
+'    Set rs = clsDAO.Execute("select RCV_XLTK_HDR_SEQ.NEXTVAL from dual")
+'    HdrID = rs(0).Value
     
 
     
-    For i = 0 To TAX_Utilities_Srv_New.NodeValidity.childNodes.length - 1
-        clsDAO.BeginTrans
-        If Val(TAX_Utilities_Srv_New.NodeValidity.childNodes(i).Attributes.getNamedItem("Active").nodeValue) > 0 Then
-            If i = 0 Then
-                ' Kiem tra xem chkQuetBangKe neu = true thi day la quet them bang ke
-                If (frmSystem.chkQuetBangKe.Value = True) Then
-                    clsDAO.Execute objTaxBusiness.GenerateSQL_Header(TAX_Utilities_Srv_New.Data(i), strSQL_HDR, HdrID, verToKhai, dNgayDauKy, True)
-                Else ' Day la quet to khai thuan tuy
-                    clsDAO.Execute objTaxBusiness.GenerateSQL_Header(TAX_Utilities_Srv_New.Data(i), strSQL_HDR, HdrID, verToKhai, dNgayDauKy)
-                End If
-                ' HDR va DTL ghi tren cung 1 transaction
-                'clsDAO.CommitTrans
-            End If
-                GenerateSQL_Details TAX_Utilities_Srv_New.Data(i), strSQL_DTL, HdrID, i
-        End If
-        clsDAO.CommitTrans
-    Next
+'    For i = 0 To TAX_Utilities_Srv_New.NodeValidity.childNodes.length - 1
+'        clsDAO.BeginTrans
+'        If Val(TAX_Utilities_Srv_New.NodeValidity.childNodes(i).Attributes.getNamedItem("Active").nodeValue) > 0 Then
+'            If i = 0 Then
+'                ' Kiem tra xem chkQuetBangKe neu = true thi day la quet them bang ke
+'                If (frmSystem.chkQuetBangKe.Value = True) Then
+'                    clsDAO.Execute objTaxBusiness.GenerateSQL_Header(TAX_Utilities_Srv_New.Data(i), strSQL_HDR, HdrID, verToKhai, dNgayDauKy, True)
+'                Else ' Day la quet to khai thuan tuy
+'                    clsDAO.Execute objTaxBusiness.GenerateSQL_Header(TAX_Utilities_Srv_New.Data(i), strSQL_HDR, HdrID, verToKhai, dNgayDauKy)
+'                End If
+'                ' HDR va DTL ghi tren cung 1 transaction
+'                'clsDAO.CommitTrans
+'            End If
+'                GenerateSQL_Details TAX_Utilities_Srv_New.Data(i), strSQL_DTL, HdrID, i
+'        End If
+'        clsDAO.CommitTrans
+'    Next
 
     '***************************
     ' Clear data
@@ -1094,7 +1094,7 @@ On Error GoTo ErrHandle
     End If
     StartReceiveForm
     '***************************
-    Set rs = Nothing
+   ' Set rs = Nothing
 
     blnSaveSuccess = True
     
@@ -1353,7 +1353,7 @@ Private Sub Command1_Click()
 'str2 = "aa316013600247325   052013004009003003<S01_6B><S>test~3600247325~234~5~0~10701</S><S>~~~</S></S01_6B>"
 'Barcode_Scaned str2
 
-''phu luc 07
+'phu luc 07
 'str2 = "aa316013600247325   05201300401000100401/0114/06/2006<S01><S></S><S>~234~0~23423~234~0~0~0~0~0~0~0~0~0~0~234"
 'Barcode_Scaned str2
 'str2 = "aa316013600247325   052013004010002004~0~0~0~0~0~0~0~468~0~0~468</S><S>~~~20/06/2013~1~~~1701~~~0</S></S01>"
@@ -1371,12 +1371,16 @@ Private Sub Command1_Click()
 'str2 = "aa316013600247325   052013005011003003<S01_1_TD><S>erwrew~23432432~234324320~2342343</S></S01_1_TD>"
 'Barcode_Scaned str2
 
-' phu luc 02TD
-str2 = "aa999013600247325   05201300601200100301/0114/06/2006<S01><S></S><S>~234~0~23423~234~0~0~0~0~0~0~0~0~0~0~-234"
-Barcode_Scaned str2
-str2 = "aa999013600247325   052013006012002003~0~0~0~0~0~0~0~468~0~0~468</S><S>~~~20/06/2013~1~~~1701~~~0</S></S01>"
-Barcode_Scaned str2
-str2 = "aa999013600247325   052013006012003003<S01_2_TD><S>werwer~4~4323432~10707~</S></S01_2_TD>"
+'' phu luc 02TD
+'str2 = "aa320013600247325   05201300601200100301/0114/06/2006<S01><S></S><S>~234~0~23423~234~0~0~0~0~0~0~0~0~0~0~-234"
+'Barcode_Scaned str2
+'str2 = "aa320013600247325   052013006012002003~0~0~0~0~0~0~0~468~0~0~468</S><S>~~~20/06/2013~1~~~1701~~~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa320013600247325   052013006012003003<S01_2_TD><S>werwer~4~4323432~10707~</S></S01_2_TD>"
+'Barcode_Scaned str2
+
+' To khai 02 GTGT
+str2 = "aa317023600247325   06201300100100100101/0114/06/2006<S01><S></S><S>120~213123~32432~324320~432432~432~32423~432423~-107671~234~105338~34~324234</S><S>ewrew~rwerwe~23423423~07/07/2013~1~~</S></S01>"
 Barcode_Scaned str2
 
 End Sub
@@ -2744,23 +2748,23 @@ On Error GoTo ErrHandle
     'Danh sach to khai can kiem tra ngay bat dau nam tai chinh
     On Error GoTo ThamSoErrHandle
     
-    Set rsParams = clsDAO.Execute("select gia_tri from rcv_thamso where ten ='LOAI_TK_TAICHINH'")
-    
-    On Error GoTo ErrHandle
-    'Kiem tra ngay bat dau nam tai chinh doi voi cac loai to
-    '   khai co kiem tra ngay bat dau nam tai chinh
-    If InStr(1, "," & rsParams.Fields(0) & ",", "," & GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") & ",") <> 0 Then
-        If Not IsNull(rsTaxInfor.Fields("ngay_tchinh")) Then
-            If Mid$(rsTaxInfor("ngay_tchinh"), 1, 5) <> Mid$(strTempDate, 1, 5) Then
-                DisplayMessage "0065", msOKOnly, miCriticalError
-                Exit Function
-            End If
-            'Kiem tra ngay bat dau kinh doanh
-        Else 'Trong DB chua co gia tri ngay bat dau kinh doanh
-            DisplayMessage "0066", msOKOnly, miCriticalError
-            Exit Function
-        End If
-    End If
+'    Set rsParams = clsDAO.Execute("select gia_tri from rcv_thamso where ten ='LOAI_TK_TAICHINH'")
+'
+'    On Error GoTo ErrHandle
+'    'Kiem tra ngay bat dau nam tai chinh doi voi cac loai to
+'    '   khai co kiem tra ngay bat dau nam tai chinh
+'    If InStr(1, "," & rsParams.Fields(0) & ",", "," & GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") & ",") <> 0 Then
+'        If Not IsNull(rsTaxInfor.Fields("ngay_tchinh")) Then
+'            If Mid$(rsTaxInfor("ngay_tchinh"), 1, 5) <> Mid$(strTempDate, 1, 5) Then
+'                DisplayMessage "0065", msOKOnly, miCriticalError
+'                Exit Function
+'            End If
+'            'Kiem tra ngay bat dau kinh doanh
+'        Else 'Trong DB chua co gia tri ngay bat dau kinh doanh
+'            DisplayMessage "0066", msOKOnly, miCriticalError
+'            Exit Function
+'        End If
+'    End If
     
     'To khai ke khai tu ngay ... den ngay ...
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "FinanceYear") = "1" Then
@@ -2784,8 +2788,8 @@ On Error GoTo ErrHandle
     'Kiem tra cach thuc tinh ky ke khai la tinh theo nam duong lich hay nam tai chinh
     On Error GoTo ThamSoErrHandle
     
-    Set rsParams = clsDAO.Execute("select gia_tri from rcv_thamso where ten ='THEO_NAM_TAICHINH'")
-    blnTinhTheoNamTaiChinh = IIf(rsParams.Fields(0) = 0 Or IsNull(rsParams.Fields(0)), False, True)
+'    Set rsParams = clsDAO.Execute("select gia_tri from rcv_thamso where ten ='THEO_NAM_TAICHINH'")
+'    blnTinhTheoNamTaiChinh = IIf(rsParams.Fields(0) = 0 Or IsNull(rsParams.Fields(0)), False, True)
     
     ' Doi voi to khai TNDN quy 01A/TNDN va 01B/TNDN thi phai lay dung theo ky ke khai cua nam tai chinh
     ' Vi du MST co ngay bat dau Nam tai chinh la 01/04/2009 thi quy 1 se bat dau la 01/04/2009 va quy 4 se bat dau la ngay 01/01/2010
@@ -3550,24 +3554,52 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, ByRef blnSuccess As 
 On Error GoTo ErrHandle
 
     'connect to database QLT
-    If Not clsDAO.Connected Then
-        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-        clsDAO.Connect
-    End If
-    
-
-    ' Get SQL statement from DOM
-    strSQL = GetAttribute(xmlSQL.childNodes(1), "SqlMST")
-    strSQL = Replace(strSQL, "strTaxOfficeId", "'" & strTaxOfficeId & "'")
-    strSQL = Replace(strSQL, "strMST", "'" & strTaxIDString & "'")
-    
-    Set rsReturn = clsDAO.Execute(strSQL)
-    
-    Set GetTaxInfo = rsReturn
-    
-    Set rsReturn = Nothing
+'    If Not clsDAO.Connected Then
+'        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
+'        clsDAO.Connect
+'    End If
+'
+'
+'    ' Get SQL statement from DOM
+'    strSQL = GetAttribute(xmlSQL.childNodes(1), "SqlMST")
+'    strSQL = Replace(strSQL, "strTaxOfficeId", "'" & strTaxOfficeId & "'")
+'    strSQL = Replace(strSQL, "strMST", "'" & strTaxIDString & "'")
+'
+'    Set rsReturn = clsDAO.Execute(strSQL)
+'    rsReturn.Fields.
+'    Set GetTaxInfo = rsReturn
+'
+'    Set rsReturn = Nothing
     
     'Connect DB success
+    rsReturn.Fields.Append "trang_thai", adChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "tin", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "ten_dtnt", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "dia_chi", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "dien_thoai", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "fax", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "ky_lapbo", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "ngay_nop", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "ngay_nhap", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "ngay_tchinh", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "ngay_kdoanh", adVarChar, 50, adFldUpdatable
+    
+    rsReturn.Open
+    rsReturn.AddNew
+    rsReturn!trang_thai = "trang_thai"
+    rsReturn!tin = "tin"
+    rsReturn!ten_dtnt = "ten_dtnt"
+    rsReturn!dia_chi = "dia_chi"
+    rsReturn!dien_thoai = "dien_thoai"
+    rsReturn!fax = "fax"
+    rsReturn!ky_lapbo = "01/2013"
+    rsReturn!ngay_nop = "01/01/2013"
+    rsReturn!ngay_nhap = "01/01/2013"
+    rsReturn!ngay_tchinh = "01/01/2013"
+    rsReturn.Update
+    Set GetTaxInfo = rsReturn
+
+    Set rsReturn = Nothing
     blnSuccess = True
     
     Exit Function
@@ -3587,23 +3619,44 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, ByVal strTaxIDDLSt
 On Error GoTo ErrHandle
 
     'connect to database QLT
-    If Not clsDAO.Connected Then
-        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-        clsDAO.Connect
-    End If
+'    If Not clsDAO.Connected Then
+'        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
+'        clsDAO.Connect
+'    End If
+'
+'
+'    ' Get SQL statement from DOM
+'    strSQL = GetAttribute(xmlSQL.childNodes(1), "SqlMSTDL")
+'    strSQL = Replace(strSQL, "strMST", "'" & strTaxIDString & "'")
+'    strSQL = Replace(strSQL, "ma_dai_ly", "'" & strTaxIDDLString & "'")
+'
+'    Set rsReturn = clsDAO.Execute(strSQL)
+'
+'    Set GetTaxDLInfo = rsReturn
+'
+'    Set rsReturn = Nothing
     
+        rsReturn.Fields.Append "repr_name", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "repr_addr", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "repr_tell", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "repr_fax", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "repr_email", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "repr_cont_number", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "repr_cont_date", adVarChar, 50, adFldUpdatable
+    
+    rsReturn.Open
+    rsReturn.AddNew
+    rsReturn!repr_name = "repr_name"
+    rsReturn!repr_addr = "repr_addr"
+    rsReturn!repr_tell = "repr_tell"
+    rsReturn!repr_fax = "repr_fax"
+    rsReturn!repr_email = "repr_email"
+    rsReturn!repr_cont_number = "11"
+    rsReturn!repr_cont_date = "repr_cont_date"
+    rsReturn.Update
+            Set GetTaxDLInfo = rsReturn
 
-    ' Get SQL statement from DOM
-    strSQL = GetAttribute(xmlSQL.childNodes(1), "SqlMSTDL")
-    strSQL = Replace(strSQL, "strMST", "'" & strTaxIDString & "'")
-    strSQL = Replace(strSQL, "ma_dai_ly", "'" & strTaxIDDLString & "'")
-    
-    Set rsReturn = clsDAO.Execute(strSQL)
-    
-    Set GetTaxDLInfo = rsReturn
-    
     Set rsReturn = Nothing
-    
     'Connect DB success
     blnSuccess = True
     
@@ -3634,24 +3687,53 @@ Private Function GetTaxInfoBCTC(ByVal strTaxIDString As String, ByRef blnSuccess
 On Error GoTo ErrHandle
 
     'connect to database QLT
-    If Not clsDAO.Connected Then
-        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-        clsDAO.Connect
-    End If
+'    If Not clsDAO.Connected Then
+'        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
+'        clsDAO.Connect
+'    End If
+'
+'
+'    strSQL = "SELECT trang_thai,tin, ten_dtnt, dia_chi,dien_thoai,fax, email,to_char(sysdate,'mm/rrrr') ky_lapbo "
+'    strSQL = strSQL & ", to_char(sysdate,'dd/mm/rrrr') ngay_nop,to_char(sysdate,'dd/mm/rrrr') ngay_nhap,to_char(ngay_tchinh,'dd/mm') ngay_tchinh,to_char(ngay_kdoanh,'dd/mm/yyyy')   ngay_kdoanh "
+'    strSQL = strSQL & "FROM rcv_v_dtnt where tin =" & "'" & strTaxIDString & "'"
+'
+'
+'
+'    Set rsReturn = clsDAO.Execute(strSQL)
+'
+'    Set GetTaxInfoBCTC = rsReturn
+'
+'    Set rsReturn = Nothing
     
+    rsReturn.Fields.Append "trang_thai", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "tin", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "ten_dtnt", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "dia_chi", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "dien_thoai", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "fax", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "ky_lapbo", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "ngay_nop", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "ngay_nhap", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "ngay_tchinh", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "ngay_kdoanh", adVarChar, 50, adFldUpdatable
+    
+    rsReturn.Open
+    rsReturn.AddNew
+    rsReturn!trang_thai = "trang_thai"
+    rsReturn!tin = "tin"
+    rsReturn!ten_dtnt = "ten_dtnt"
+    rsReturn!dia_chi = "dia_chi"
+    rsReturn!dien_thoai = "dien_thoai"
+    rsReturn!fax = "fax"
+    rsReturn!ky_lapbo = "01/2013"
+    rsReturn!ngay_nop = "01/01/2013"
+    rsReturn!ngay_nhap = "01/01/2013"
+    rsReturn!ngay_tchinh = "01/01/2013"
+    rsReturn!ngay_kdoanh = "01/01/2013"
+    rsReturn.Update
+        Set GetTaxInfoBCTC = rsReturn
 
-    strSQL = "SELECT trang_thai,tin, ten_dtnt, dia_chi,dien_thoai,fax, email,to_char(sysdate,'mm/rrrr') ky_lapbo "
-    strSQL = strSQL & ", to_char(sysdate,'dd/mm/rrrr') ngay_nop,to_char(sysdate,'dd/mm/rrrr') ngay_nhap,to_char(ngay_tchinh,'dd/mm') ngay_tchinh,to_char(ngay_kdoanh,'dd/mm/yyyy')   ngay_kdoanh "
-    strSQL = strSQL & "FROM rcv_v_dtnt where tin =" & "'" & strTaxIDString & "'"
-    
-    
-    
-    Set rsReturn = clsDAO.Execute(strSQL)
-    
-    Set GetTaxInfoBCTC = rsReturn
-    
     Set rsReturn = Nothing
-    
     'Connect DB success
     blnSuccess = True
     
@@ -3673,37 +3755,37 @@ Private Sub GetPhongQuanLy(ByVal strTaxIDString As String)
 On Error GoTo ErrHandle
 
     'connect to database QLT
-    If Not clsDAO.Connected Then
-        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-        clsDAO.Connect
-    End If
-    ' Lay ma phong quan ly cua MST
-    strSQL = "select ma_phong from rcv_v_dtnt where tin = '" & Trim(strTaxIDString) & "'"
-    Set rsReturn = clsDAO.Execute(strSQL)
-    If Not (rsReturn Is Nothing) And rsReturn.Fields.Count > 0 Then
-        strPQLString = Trim(rsReturn.Fields(0).Value)
-    End If
+'    If Not clsDAO.Connected Then
+'        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
+'        clsDAO.Connect
+'    End If
+'    ' Lay ma phong quan ly cua MST
+'    strSQL = "select ma_phong from rcv_v_dtnt where tin = '" & Trim(strTaxIDString) & "'"
+'    Set rsReturn = clsDAO.Execute(strSQL)
+'    If Not (rsReturn Is Nothing) And rsReturn.Fields.Count > 0 Then
+'        strPQLString = Trim(rsReturn.Fields(0).Value)
+'    End If
+'
+'
+'    ' Get SQL statement from DOM
+'    strSQL = GetAttribute(xmlSQL.childNodes(1), "SqlPhongQuanLy")
+'
+'    '*************************************
+'    'Date: 30/05/06
+'    strSQL = Replace$(strSQL, "MA_PQL", strPQLString)
+'    '*************************************
+''    strSQL = Replace(strSQL, "strTaxOfficeId", "'" & strTaxOfficeId & "'")
+''    strSQL = Replace(strSQL, "strMST", "'" & strTaxIDString & "'")
+'
+'    Set rsReturn = clsDAO.Execute(strSQL)
+'    If Not (rsReturn Is Nothing) And rsReturn.Fields.Count > 0 Then
+'        strMaPhongQuanLy = rsReturn.Fields(0).Value
+'        strTenPhongQuanLy = rsReturn.Fields(1).Value
+'    End If
+'
+'
+'    Set rsReturn = Nothing
     
-
-    ' Get SQL statement from DOM
-    strSQL = GetAttribute(xmlSQL.childNodes(1), "SqlPhongQuanLy")
-    
-    '*************************************
-    'Date: 30/05/06
-    strSQL = Replace$(strSQL, "MA_PQL", strPQLString)
-    '*************************************
-'    strSQL = Replace(strSQL, "strTaxOfficeId", "'" & strTaxOfficeId & "'")
-'    strSQL = Replace(strSQL, "strMST", "'" & strTaxIDString & "'")
-    
-    Set rsReturn = clsDAO.Execute(strSQL)
-    If Not (rsReturn Is Nothing) And rsReturn.Fields.Count > 0 Then
-        strMaPhongQuanLy = rsReturn.Fields(0).Value
-        strTenPhongQuanLy = rsReturn.Fields(1).Value
-    End If
-    
-    
-    Set rsReturn = Nothing
-   
     Exit Sub
 ErrHandle:
     'Connect DB fail
@@ -3720,24 +3802,33 @@ Private Function GetPhongXuLy(ByVal strPXLString As String, ByRef blnSuccess As 
 On Error GoTo ErrHandle
 
     'connect to database QLT
-    If Not clsDAO.Connected Then
-        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-        clsDAO.Connect
-    End If
+'    If Not clsDAO.Connected Then
+'        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
+'        clsDAO.Connect
+'    End If
+'
+'
+'    ' Get SQL statement from DOM
+'    strSQL = GetAttribute(xmlSQL.childNodes(1), "SqlPhongXuLy")
+'
+'    '*************************************
+'    'Date: 30/05/06
+'    strSQL = Replace$(strSQL, "MA_CQT", strTaxOfficeId)
+'    '*************************************
+''    strSQL = Replace(strSQL, "strTaxOfficeId", "'" & strTaxOfficeId & "'")
+''    strSQL = Replace(strSQL, "strMST", "'" & strTaxIDString & "'")
+'
+'    Set rsReturn = clsDAO.Execute(strSQL)
     
-
-    ' Get SQL statement from DOM
-    strSQL = GetAttribute(xmlSQL.childNodes(1), "SqlPhongXuLy")
+    rsReturn.Fields.Append "ten", adVarChar, 50, adFldUpdatable
     
-    '*************************************
-    'Date: 30/05/06
-    strSQL = Replace$(strSQL, "MA_CQT", strTaxOfficeId)
-    '*************************************
-'    strSQL = Replace(strSQL, "strTaxOfficeId", "'" & strTaxOfficeId & "'")
-'    strSQL = Replace(strSQL, "strMST", "'" & strTaxIDString & "'")
+    rsReturn.Fields.Append "ma_phong", adVarChar, 50, adFldUpdatable
     
-    Set rsReturn = clsDAO.Execute(strSQL)
-    
+    rsReturn.Open
+    rsReturn.AddNew
+    rsReturn!ten = "ten"
+    rsReturn!ma_phong = "ma_phong"
+    rsReturn.Update
     Set GetPhongXuLy = rsReturn
     
     Set rsReturn = Nothing
@@ -4557,62 +4648,64 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
     
     On Error GoTo ConnectErrHandle
     'connect to database QLT_TNK
-    If Not clsDAO.Connected Then
-        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-        clsDAO.Connect
-    End If
-
-    'Lay so TT to khai trong RCV
-    If strID = "02_TNDN11" And isTKLanPS = True Then
-        strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
-                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-                "And tkhai.loai_tkhai = '" & strID & "' " & _
-                " And tkhai.ngay_ps = to_date('" & ngayPS & "','dd/mm/yyyy')"
-    ElseIf (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11") And isTKLanPS = True Then
-        strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
-                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-                "And tkhai.loai_tkhai = '" & strID & "' " & _
-                " And tkhai.ngay_ps = to_date('" & ngayPS & "','dd/mm/yyyy')"
-    ElseIf (strID = "08_TNCN11" Or strID = "08A_TNCN11") And isTKThang = True Then
-        strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
-                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-                "And tkhai.loai_tkhai = '" & strID & "' " & _
-                "And tkhai.kykk_tu_ngay = To_Date('" & "01/" & TuNgay & "','DD/MM/RRRR')" & _
-                "And tkhai.kykk_den_ngay = To_Date('" & "01/" & DenNgay & "','DD/MM/RRRR')"
-    Else
-        strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
-                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-                "And tkhai.loai_tkhai = '" & strID & "' " & _
-                "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
-                "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
-    End If
-    
-    Set rsResult = clsDAO.Execute(strSQL)
-    If rsResult Is Nothing Or IsNull(rsResult.Fields(0)) Then
-        strSTT = 0
-        isTKTonTai = False
-        ' Doi voi cac to khai 01_NTNN, 03_NTNN, 01_TTDB, 02_TNDN
-        If (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "02_TNDN11") And isTKLanPS = True Then
-            isToKhaiPsDaNhanTN = False
-        End If
-        
-    Else
-        strSTT = rsResult.Fields(0).Value + 1
-        isTKTonTai = True
-        ' Doi voi cac to khai 01_NTNN, 03_NTNN, 01_TTDB, 02_TNDN trong 1 ngay chi nhan 1 to khai
-        If (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "02_TNDN11") And isTKLanPS = True Then
-            isToKhaiPsDaNhanTN = True
-        End If
-    End If
+'    If Not clsDAO.Connected Then
+'        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
+'        clsDAO.Connect
+'    End If
+'
+'    'Lay so TT to khai trong RCV
+'    If strID = "02_TNDN11" And isTKLanPS = True Then
+'        strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
+'                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+'                "And tkhai.loai_tkhai = '" & strID & "' " & _
+'                " And tkhai.ngay_ps = to_date('" & ngayPS & "','dd/mm/yyyy')"
+'    ElseIf (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11") And isTKLanPS = True Then
+'        strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
+'                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+'                "And tkhai.loai_tkhai = '" & strID & "' " & _
+'                " And tkhai.ngay_ps = to_date('" & ngayPS & "','dd/mm/yyyy')"
+'    ElseIf (strID = "08_TNCN11" Or strID = "08A_TNCN11") And isTKThang = True Then
+'        strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
+'                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+'                "And tkhai.loai_tkhai = '" & strID & "' " & _
+'                "And tkhai.kykk_tu_ngay = To_Date('" & "01/" & TuNgay & "','DD/MM/RRRR')" & _
+'                "And tkhai.kykk_den_ngay = To_Date('" & "01/" & DenNgay & "','DD/MM/RRRR')"
+'    Else
+'        strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
+'                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+'                "And tkhai.loai_tkhai = '" & strID & "' " & _
+'                "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+'                "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
+'    End If
+'
+'    Set rsResult = clsDAO.Execute(strSQL)
+'    If rsResult Is Nothing Or IsNull(rsResult.Fields(0)) Then
+'        strSTT = 0
+'        isTKTonTai = False
+'        ' Doi voi cac to khai 01_NTNN, 03_NTNN, 01_TTDB, 02_TNDN
+'        If (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "02_TNDN11") And isTKLanPS = True Then
+'            isToKhaiPsDaNhanTN = False
+'        End If
+'
+'    Else
+'        strSTT = rsResult.Fields(0).Value + 1
+'        isTKTonTai = True
+'        ' Doi voi cac to khai 01_NTNN, 03_NTNN, 01_TTDB, 02_TNDN trong 1 ngay chi nhan 1 to khai
+'        If (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "02_TNDN11") And isTKLanPS = True Then
+'            isToKhaiPsDaNhanTN = True
+'        End If
+'    End If
     
     ' Kiem tra to khai chinh thuc
-    If strSTT = 0 Then
-        isToKhaiCT = False
-    Else
-        isToKhaiCT = True
-    End If
-    
-    
+'    If strSTT = 0 Then
+'        isToKhaiCT = False
+'    Else
+'        isToKhaiCT = True
+'    End If
+    isTKTonTai = False
+    isToKhaiCT = True
+    isToKhaiPsDaNhanTN = False
+    strSTT = 0
     'Ghep ma so tep vao chuoi
     ReDim Preserve arrStrHeaderData(lngIndex + 1)
     arrStrHeaderData(lngIndex + 1) = strSTT
@@ -4638,30 +4731,33 @@ Private Function isDA30(ByVal strID As String, arrStrHeaderData() As String) As 
     Dim rsResult As ADODB.Recordset
     Dim strSQL As String
     
-    On Error GoTo ErrHandle
-    On Error GoTo ConnectErrHandle
-    'connect to database QLT_TNK
-    If Not clsDAO.Connected Then
-        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-        clsDAO.Connect
-    End If
-
-    strSQL = "select 1 from qlt_tkhai_hdr tkhai " & _
-            "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-            "And tkhai.DTK_MA_LOAI_TKHAI = '" & changeMaToKhaiQLT(strID) & "' " & _
-            "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
-            "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
-            "And tkhai.YN_DA30 is null "
-
-    Set rsResult = clsDAO.Execute(strSQL)
-    If rsResult Is Nothing Then
-        isDA30 = False
-    Else
-        isDA30 = True
-    End If
-       
-    Set rsResult = Nothing
+    isDA30 = False
     Exit Function
+    
+'    On Error GoTo ErrHandle
+'    On Error GoTo ConnectErrHandle
+'    'connect to database QLT_TNK
+'    If Not clsDAO.Connected Then
+'        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
+'        clsDAO.Connect
+'    End If
+'
+'    strSQL = "select 1 from qlt_tkhai_hdr tkhai " & _
+'            "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+'            "And tkhai.DTK_MA_LOAI_TKHAI = '" & changeMaToKhaiQLT(strID) & "' " & _
+'            "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+'            "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+'            "And tkhai.YN_DA30 is null "
+'
+'    Set rsResult = clsDAO.Execute(strSQL)
+'    If rsResult Is Nothing Then
+'        isDA30 = False
+'    Else
+'        isDA30 = True
+'    End If
+'
+'    Set rsResult = Nothing
+'    Exit Function
 ErrHandle:
     SaveErrorLog Me.Name, "isDA30", Err.Number, Err.Description
     Exit Function
@@ -4725,63 +4821,64 @@ Private Function getSoTTTK_AC(ByVal strID As String, arrStrHeaderData() As Strin
     
     On Error GoTo ConnectErrHandle
     'connect to database QLT_TNK
-    If Not clsDAO.Connected Then
-        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-        clsDAO.Connect
-    End If
-    ' Tach ma so thue 13 thanh ma so thue 14
-    If Len(Trim(arrStrHeaderData(0))) = 13 Then
-        arrStrHeaderData(0) = Left(Trim(arrStrHeaderData(0)), 10) & "-" & Right(Trim(arrStrHeaderData(0)), 3)
-    End If
-    
-    'Lay so TT to khai trong RCV
-    If strID = "01_TBAC" Then
-        arrDeltail = Split(strData, "~")
-        If Len(Trim(arrDeltail(UBound(arrDeltail) - 3))) = 13 Then
-            arrDeltail(UBound(arrDeltail) - 3) = Left(arrDeltail(UBound(arrDeltail) - 3), 10) & "-" & Right(arrDeltail(UBound(arrDeltail) - 3), 3)
-        End If
-        
-        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
-        "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-        "And tkhai.LOAI_BC = '" & strID & "' " & _
-        " And tkhai.NGAY_BC=to_date('" & arrDeltail(UBound(arrDeltail) - 1) & "','dd/mm/rrrr')" & _
-        " And tkhai.TIN_DV_CQ='" & Trim(arrDeltail(UBound(arrDeltail) - 3)) & "'"
-    ElseIf strID = "03_TBAC" Then
-        arrDeltail = Split(strData, "~")
-        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
-        "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-        "And tkhai.LOAI_BC = '" & strID & "' " & _
-        " And tkhai.NGAY_BC=to_date('" & Left$(arrDeltail(UBound(arrDeltail)), 10) & "','dd/mm/rrrr')"
-    ElseIf strID = "BC21_AC" Then
-        arrDeltail = Split(strData, "~")
-        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
-        "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-        "And tkhai.LOAI_BC = '" & strID & "' " & _
-        " And tkhai.NGAY_BC=to_date('" & Left$(arrDeltail(UBound(arrDeltail)), 10) & "','dd/mm/rrrr')"
-    ElseIf strID = "01_AC" Then
-        arrDeltail = Split(strData, "~")
-        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
-        "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-        "And tkhai.LOAI_BC = '" & strID & "' " & _
-        "And tkhai.KYBC_TU_NGAY = to_date('" & arrDeltail(1) & "','dd/mm/rrrr')" & _
-        "And tkhai.KYBC_DEN_NGAY = to_date('" & Left$(arrDeltail(2), 10) & "','dd/mm/rrrr')"
-    Else
-        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
-                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-                "And tkhai.LOAI_BC = '" & strID & "' " & _
-                "And tkhai.KYBC_TU_NGAY = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
-                "And tkhai.KYBC_DEN_NGAY = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
-    End If
-    
-    Set rsResult = clsDAO.Execute(strSQL)
-    If rsResult Is Nothing Or IsNull(rsResult.Fields(0)) Then
-        strSTT = 0
-        isTonTaiAC = False
-    Else
-        strSTT = rsResult.Fields(0).Value + 1
-        isTonTaiAC = True
-    End If
-    
+'    If Not clsDAO.Connected Then
+'        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
+'        clsDAO.Connect
+'    End If
+'    ' Tach ma so thue 13 thanh ma so thue 14
+'    If Len(Trim(arrStrHeaderData(0))) = 13 Then
+'        arrStrHeaderData(0) = Left(Trim(arrStrHeaderData(0)), 10) & "-" & Right(Trim(arrStrHeaderData(0)), 3)
+'    End If
+'
+'    'Lay so TT to khai trong RCV
+'    If strID = "01_TBAC" Then
+'        arrDeltail = Split(strData, "~")
+'        If Len(Trim(arrDeltail(UBound(arrDeltail) - 3))) = 13 Then
+'            arrDeltail(UBound(arrDeltail) - 3) = Left(arrDeltail(UBound(arrDeltail) - 3), 10) & "-" & Right(arrDeltail(UBound(arrDeltail) - 3), 3)
+'        End If
+'
+'        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
+'        "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+'        "And tkhai.LOAI_BC = '" & strID & "' " & _
+'        " And tkhai.NGAY_BC=to_date('" & arrDeltail(UBound(arrDeltail) - 1) & "','dd/mm/rrrr')" & _
+'        " And tkhai.TIN_DV_CQ='" & Trim(arrDeltail(UBound(arrDeltail) - 3)) & "'"
+'    ElseIf strID = "03_TBAC" Then
+'        arrDeltail = Split(strData, "~")
+'        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
+'        "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+'        "And tkhai.LOAI_BC = '" & strID & "' " & _
+'        " And tkhai.NGAY_BC=to_date('" & Left$(arrDeltail(UBound(arrDeltail)), 10) & "','dd/mm/rrrr')"
+'    ElseIf strID = "BC21_AC" Then
+'        arrDeltail = Split(strData, "~")
+'        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
+'        "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+'        "And tkhai.LOAI_BC = '" & strID & "' " & _
+'        " And tkhai.NGAY_BC=to_date('" & Left$(arrDeltail(UBound(arrDeltail)), 10) & "','dd/mm/rrrr')"
+'    ElseIf strID = "01_AC" Then
+'        arrDeltail = Split(strData, "~")
+'        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
+'        "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+'        "And tkhai.LOAI_BC = '" & strID & "' " & _
+'        "And tkhai.KYBC_TU_NGAY = to_date('" & arrDeltail(1) & "','dd/mm/rrrr')" & _
+'        "And tkhai.KYBC_DEN_NGAY = to_date('" & Left$(arrDeltail(2), 10) & "','dd/mm/rrrr')"
+'    Else
+'        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
+'                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+'                "And tkhai.LOAI_BC = '" & strID & "' " & _
+'                "And tkhai.KYBC_TU_NGAY = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+'                "And tkhai.KYBC_DEN_NGAY = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
+'    End If
+'
+'    Set rsResult = clsDAO.Execute(strSQL)
+'    If rsResult Is Nothing Or IsNull(rsResult.Fields(0)) Then
+'        strSTT = 0
+'        isTonTaiAC = False
+'    Else
+'        strSTT = rsResult.Fields(0).Value + 1
+'        isTonTaiAC = True
+'    End If
+    isTonTaiAC = False
+    strSTT = 0
     'Ghep ma so tep vao chuoi
     ReDim Preserve arrStrHeaderData(lngIndex + 1)
     arrStrHeaderData(lngIndex + 1) = strSTT
@@ -4854,31 +4951,33 @@ Private Function isMaDLT(ByVal strTaxIDString As String, ByVal strTaxIDDLString 
 On Error GoTo ErrHandle
 
     'connect to database QLT
-    If Not clsDAO.Connected Then
-        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-        clsDAO.Connect
-    End If
+'    If Not clsDAO.Connected Then
+'        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
+'        clsDAO.Connect
+'    End If
+'
+'
+'    ' Get SQL statement from DOM
+'    strSQL = GetAttribute(xmlSQL.childNodes(1), "SqlMSTDL")
+'    strSQL = Replace(strSQL, "strMST", "'" & strTaxIDString & "'")
+'    strSQL = Replace(strSQL, "ma_dai_ly", "'" & strTaxIDDLString & "'")
+'
+'    Set rsReturn = clsDAO.Execute(strSQL)
+'
+'    If rsReturn Is Nothing Or rsReturn.Fields.Count = 0 Then
+'        If Trim(strTaxIDDLString) = "" Or strTaxIDDLString = vbNullString Then
+'            isMaDLT = True
+'        Else
+'            isMaDLT = False
+'        End If
+'    Else
+'        isMaDLT = True
+'    End If
     
+'    Set rsReturn = Nothing
 
-    ' Get SQL statement from DOM
-    strSQL = GetAttribute(xmlSQL.childNodes(1), "SqlMSTDL")
-    strSQL = Replace(strSQL, "strMST", "'" & strTaxIDString & "'")
-    strSQL = Replace(strSQL, "ma_dai_ly", "'" & strTaxIDDLString & "'")
-    
-    Set rsReturn = clsDAO.Execute(strSQL)
-    
-    If rsReturn Is Nothing Or rsReturn.Fields.Count = 0 Then
-        If Trim(strTaxIDDLString) = "" Or strTaxIDDLString = vbNullString Then
-            isMaDLT = True
-        Else
-            isMaDLT = False
-        End If
-    Else
-        isMaDLT = True
-    End If
-    
-    Set rsReturn = Nothing
-    
+    'Lay ham service check ma dai ly thue
+    isMaDLT = True
     Exit Function
 ErrHandle:
     'Connect DB fail
