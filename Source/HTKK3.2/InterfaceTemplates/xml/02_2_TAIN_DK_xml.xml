@@ -1,0 +1,27 @@
+<PL_02_1TAIN_DK>
+	<LoaiDKhi>
+		<ct01>true</ct01>
+		<ct02>true</ct02>
+		<ct03>true</ct03>
+	</LoaiDKhi>
+	<SLuongDThuXBan>
+		<SLuongDThu>
+			<bangKKhai>
+				<donViTinh>text</donViTinh>
+				<KhaiThacDauKhi>
+					<ngayThang>1967-08-13</ngayThang>
+					<soLuong>1</soLuong>
+				</KhaiThacDauKhi>
+				<XuatBanDauKhi>
+					<ngayThang>1967-08-13</ngayThang>
+					<sanLuong>1</sanLuong>
+					<giaTinhThue>1</giaTinhThue>
+					<doanhThu>1</doanhThu>
+				</XuatBanDauKhi>
+				<ghiChu>String</ghiChu>
+			</bangKKhai>
+		</SLuongDThu>
+		<tongCot6>1</tongCot6>
+		<tongCot8>1</tongCot8>
+	</SLuongDThuXBan>
+</PL_02_1TAIN_DK>
