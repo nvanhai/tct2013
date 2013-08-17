@@ -1,0 +1,29 @@
+<HSoKhaiThue><Static GroupName="TKhaiThue"><maTKhai>String</maTKhai>
+		<tenTKhai>token</tenTKhai>
+		<moTaBMau/>
+	</Static><Static GroupName="GiaHan"><maLyDoGiaHan>String</maLyDoGiaHan>
+		<lyDoGiaHan>String</lyDoGiaHan>
+	</Static><Static GroupName="TKhaiThue"><nguoiKy>String</nguoiKy>
+		<ngayKy>String</ngayKy>
+	</Static><Static GroupName="NNT"><maHuyenNNT>String</maHuyenNNT>
+		<maTinhNNT>String</maTinhNNT>
+	</Static><Static GroupName="DLyThue"><maHuyenDLyThue>String</maHuyenDLyThue>
+		<maTinhDLyThue>String</maTinhDLyThue>
+	</Static><Static GroupName="NVienDLy"><tenNVienDLyThue>token</tenNVienDLyThue>
+		<cchiHNghe>String</cchiHNghe>
+	</Static><Static GroupName="CTieuTKhaiChinh"><ngayDauKyBaoCao>1967-08-13</ngayDauKyBaoCao>
+		<ngayCuoiKyBaoCao>1967-08-13</ngayCuoiKyBaoCao>
+		<kyBaoCaoCuoiCung>true</kyBaoCaoCuoiCung>
+	</Static><Static GroupName="ToChucCNDatIn"><ten>String</ten>
+		<diaChi>String</diaChi>
+	</Static><Static GroupName="HopDong"><so>String</so>
+		<ngay>1967-08-13</ngay>
+	</Static><Static GroupName="ChiTietHoaDon"><tenHDon>String</tenHDon>
+		<mauHDon>String</mauHDon>
+		<kyHieu>String</kyHieu>
+		<tuSo>0</tuSo>
+		<denSo>0</denSo>
+		<soLuong>1</soLuong>
+	</Static><Static GroupName="CTieuTKhaiChinh"><nguoiDaiDien>String</nguoiDaiDien>
+		<ngayBCao>1967-08-13</ngayBCao>
+	</Static></HSoKhaiThue>

@@ -1,0 +1,41 @@
+<HSoKhaiThue><Static GroupName="TKhaiThue"><maTKhai>String</maTKhai>
+		<tenTKhai>token</tenTKhai>
+		<moTaBMau/>
+	</Static><Static GroupName="GiaHan"><maLyDoGiaHan>String</maLyDoGiaHan>
+		<lyDoGiaHan>String</lyDoGiaHan>
+	</Static><Static GroupName="TKhaiThue"><nguoiKy>String</nguoiKy>
+		<ngayKy>String</ngayKy>
+	</Static><Static GroupName="NNT"><maHuyenNNT>String</maHuyenNNT>
+		<maTinhNNT>String</maTinhNNT>
+	</Static><Static GroupName="DLyThue"><maHuyenDLyThue>String</maHuyenDLyThue>
+		<maTinhDLyThue>String</maTinhDLyThue>
+	</Static><Static GroupName="NVienDLy"><tenNVienDLyThue>token</tenNVienDLyThue>
+		<cchiHNghe>String</cchiHNghe>
+	</Static><Static GroupName="CTieuTKhaiChinh"><dnCoCSoHToanPThuoc>true</dnCoCSoHToanPThuoc>
+	</Static><Static GroupName="ThongTinChuyenNhuong"><ct12>String</ct12>
+		<ct13>String</ct13>
+		<ct14>String</ct14>
+	</Static><Static GroupName="ct15"><soHD>text</soHD>
+		<ngayHD>1967-08-13</ngayHD>
+		<ngayXN>1967-08-13</ngayXN>
+	</Static><Static GroupName="CTieuTKhaiChinh"><ct25>1</ct25>
+		<ct26>1</ct26>
+		<ct27>1</ct27>
+		<ct28>1</ct28>
+		<ct29>1</ct29>
+		<ct30>1</ct30>
+		<ct31>1</ct31>
+		<ct32>1</ct32>
+		<ct33>1</ct33>
+		<ct34>1</ct34>
+		<ct35>1</ct35>
+		<ct36>1</ct36>
+		<ct37>1</ct37>
+		<ct38>1</ct38>
+		<ct39>1</ct39>
+		<ct40>1</ct40>
+		<ct41>1</ct41>
+		<ct42>1</ct42>
+		<ct43>1</ct43>
+		<ct44>1</ct44>
+	</Static></HSoKhaiThue>

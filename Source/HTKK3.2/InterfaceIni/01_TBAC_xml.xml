@@ -1,0 +1,11 @@
+<ChiTietHoaDon><Static GroupName="ChiTietHoaDon"><tenLoaiHDon>String</tenLoaiHDon>
+		<mauSo>String</mauSo>
+		<kyHieu>String</kyHieu>
+		<soLuong>1</soLuong>
+		<tuSo>0</tuSo>
+		<denSo>0</denSo>
+		<ngayBDauSDung>1967-08-13</ngayBDauSDung>
+	</Static><Static GroupName="DoanhNghiepIn"><ten>String</ten>
+	</Static><Static GroupName="HopDongDatIn"><so>String</so>
+		<ngay>1967-08-13</ngay>
+	</Static></ChiTietHoaDon>

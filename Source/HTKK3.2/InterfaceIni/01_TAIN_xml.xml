@@ -1,0 +1,43 @@
+<HSoKhaiThue><Static GroupName="TKhaiThue"><maTKhai>String</maTKhai>
+		<tenTKhai>token</tenTKhai>
+		<moTaBMau/>
+	</Static><Static GroupName="GiaHan"><maLyDoGiaHan>String</maLyDoGiaHan>
+		<lyDoGiaHan>String</lyDoGiaHan>
+	</Static><Static GroupName="TKhaiThue"><nguoiKy>String</nguoiKy>
+		<ngayKy>String</ngayKy>
+	</Static><Static GroupName="NNT"><maHuyenNNT>String</maHuyenNNT>
+		<maTinhNNT>String</maTinhNNT>
+	</Static><Static GroupName="DLyThue"><maHuyenDLyThue>String</maHuyenDLyThue>
+		<maTinhDLyThue>String</maTinhDLyThue>
+	</Static><Static GroupName="NVienDLy"><tenNVienDLyThue>token</tenNVienDLyThue>
+		<cchiHNghe>String</cchiHNghe>
+	</Static><Dynamic GroupName="TaiNguyenKhaiThac"><ThueTaiNguyenKhaiThac id="ID_1">
+			<ct2>String</ct2>
+			<SanLuongTNguyenTinhThue>
+				<ct3>String</ct3>
+				<ct4>0.0</ct4>
+			</SanLuongTNguyenTinhThue>
+			<ct5>0.0</ct5>
+			<ct6>0.0</ct6>
+			<ct7>1</ct7>
+			<ct8>1</ct8>
+			<ct9>0.0</ct9>
+			<ct10>1</ct10>
+		</ThueTaiNguyenKhaiThac>
+	</Dynamic><Dynamic GroupName="TaiNguyenThuMuaGom"><ThueTaiNguyenThuMuaGom id="ID_2">
+			<ct2>String</ct2>
+			<SanLuongTNguyenTinhThue>
+				<ct3>String</ct3>
+				<ct4>0.0</ct4>
+			</SanLuongTNguyenTinhThue>
+			<ct5>0.0</ct5>
+			<ct6>0.0</ct6>
+			<ct7>1</ct7>
+			<ct8>1</ct8>
+			<ct9>0.0</ct9>
+			<ct10>1</ct10>
+		</ThueTaiNguyenThuMuaGom>
+	</Dynamic><Static GroupName="BangChiTietTNguyen"><tongThueTNPSinh>1</tongThueTNPSinh>
+		<tongThueMienGiam>1</tongThueMienGiam>
+		<tongThuePNop>1</tongThuePNop>
+	</Static></HSoKhaiThue>

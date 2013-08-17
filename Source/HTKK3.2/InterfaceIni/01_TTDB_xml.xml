@@ -1,0 +1,56 @@
+<HSoKhaiThue><Static GroupName="TKhaiThue"><maTKhai>String</maTKhai>
+		<tenTKhai>token</tenTKhai>
+		<moTaBMau/>
+	</Static><Static GroupName="GiaHan"><maLyDoGiaHan>String</maLyDoGiaHan>
+		<lyDoGiaHan>String</lyDoGiaHan>
+	</Static><Static GroupName="TKhaiThue"><nguoiKy>String</nguoiKy>
+		<ngayKy>String</ngayKy>
+	</Static><Static GroupName="NNT"><maHuyenNNT>String</maHuyenNNT>
+		<maTinhNNT>String</maTinhNNT>
+	</Static><Static GroupName="DLyThue"><maHuyenDLyThue>String</maHuyenDLyThue>
+		<maTinhDLyThue>String</maTinhDLyThue>
+	</Static><Static GroupName="NVienDLy"><tenNVienDLyThue>token</tenNVienDLyThue>
+		<cchiHNghe>String</cchiHNghe>
+	</Static><Static GroupName="NDungTKhaiTTDB"><ct2>String</ct2>
+		<ct3>String</ct3>
+		<ct4>1</ct4>
+		<ct5>1</ct5>
+		<ct6>1</ct6>
+		<ct7>1</ct7>
+		<ct8>1</ct8>
+		<ct9>1</ct9>
+		<ct10>1</ct10>
+	</Static><Static GroupName="HangHoaChiuThueTTDB"><tongDongIcot5>1</tongDongIcot5>
+		<tongDongIcot6>1</tongDongIcot6>
+		<tongDongIcot8>1</tongDongIcot8>
+		<tongDongIcot9>1</tongDongIcot9>
+		<tongDongIcot10>1</tongDongIcot10>
+	</Static><Static GroupName="NDungTKhaiTTDB"><ct2>String</ct2>
+		<ct3>String</ct3>
+		<ct4>1</ct4>
+		<ct5>1</ct5>
+		<ct6>1</ct6>
+		<ct7>1</ct7>
+		<ct8>1</ct8>
+		<ct9>1</ct9>
+		<ct10>1</ct10>
+	</Static><Static GroupName="DVuChiuThueTNDB"><tongDongIICot5>1</tongDongIICot5>
+		<tongDongIICot6>1</tongDongIICot6>
+		<tongDongIICot8>1</tongDongIICot8>
+		<tongDongIICot9>1</tongDongIICot9>
+		<tongDongIICot10>1</tongDongIICot10>
+	</Static><Static GroupName="HHoaKhongChiuThueTNDB"><tongDongIIICot5>1</tongDongIIICot5>
+	</Static><Static GroupName="NDungHHoaKhongThue"><tenHHoa>text</tenHHoa>
+		<donVTinh>String</donVTinh>
+		<sanLuongTThu>1</sanLuongTThu>
+		<dSoBanChuaThue>1</dSoBanChuaThue>
+	</Static><Static GroupName="HHoaKhongChiuThueTNDB"><HHBanDeXuatKhau/>
+	</Static><Static GroupName="NDungHHoaKhongThue"><tenHHoa>text</tenHHoa>
+		<donVTinh>String</donVTinh>
+		<sanLuongTThu>1</sanLuongTThu>
+		<dSoBanChuaThue>1</dSoBanChuaThue>
+	</Static><Static GroupName="BangChiTietThueTTĐB"><tongDSoBanChuaThue>1</tongDSoBanChuaThue>
+		<tongGiaThue>0.0</tongGiaThue>
+		<tongThueKTru>1</tongThueKTru>
+		<tongThuePNop>1</tongThuePNop>
+	</Static></HSoKhaiThue>

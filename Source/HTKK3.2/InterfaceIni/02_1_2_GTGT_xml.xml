@@ -1,0 +1,15 @@
+<PL01_2_2_GTGT><Dynamic GroupName="ChiTietHHDVDauTuKTru"><HDonMVao id="ID_3">
+			<kHieuHDon>String</kHieuHDon>
+			<soHDon>String</soHDon>
+			<ngayPHanh>1967-08-13</ngayPHanh>
+			<tenNBAN>String</tenNBAN>
+			<mstNBAN>0000000000</mstNBAN>
+			<matHang>String</matHang>
+			<gtriMuaChuaThue>2147483647</gtriMuaChuaThue>
+			<thueSuat>1</thueSuat>
+			<thueGTGT>2147483647</thueGTGT>
+			<ghiChu>String</ghiChu>
+		</HDonMVao>
+	</Dynamic><Static GroupName="HHDVDauTuKTru"><tongGTriHHDVMuaVao>1</tongGTriHHDVMuaVao>
+		<tThueGTGT_HHDVMuaVao>1</tThueGTGT_HHDVMuaVao>
+	</Static></PL01_2_2_GTGT>

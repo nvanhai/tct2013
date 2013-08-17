@@ -1,0 +1,22 @@
+<ChiTietTkhaiChinh><Static GroupName="ChiTietTkhaiChinh"><tenHDon>String</tenHDon>
+		<kHieuMauHDon>String</kHieuMauHDon>
+		<kHieuHDon>String</kHieuHDon>
+	</Static><Static GroupName="SoTonMuaTrKy"><tongSo>1</tongSo>
+	</Static><Static GroupName="SoTonDauKy"><tuSo>1</tuSo>
+		<denSo>1</denSo>
+	</Static><Static GroupName="MuaTrongKy"><tuSo>1</tuSo>
+		<denSo>1</denSo>
+	</Static><Static GroupName="TongSoSuDung"><tuSo>1</tuSo>
+		<denSo>1</denSo>
+		<cong>1</cong>
+	</Static><Static GroupName="TrongDo"><soDaSDung>1</soDaSDung>
+	</Static><Static GroupName="XoaBo"><soLuong>1</soLuong>
+		<so>String</so>
+	</Static><Static GroupName="Mat"><soLuong>1</soLuong>
+		<so>String</so>
+	</Static><Static GroupName="Huy"><soLuong>1</soLuong>
+		<so>String</so>
+	</Static><Static GroupName="TonCuoiKy"><tuSo>1</tuSo>
+		<denSo>1</denSo>
+		<soLuong>1</soLuong>
+	</Static></ChiTietTkhaiChinh>

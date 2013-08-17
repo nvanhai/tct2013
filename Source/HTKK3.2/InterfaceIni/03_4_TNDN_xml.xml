@@ -1,0 +1,29 @@
+<PL03_4_TNDN><Dynamic GroupName="ThueTNDNDaNopNN"><thueTNDNDaNopNN id="ID_2">
+			<ct2>String</ct2>
+			<TNhapNhanDuocONNgoai>
+				<ct3>1</ct3>
+				<ct4>1</ct4>
+			</TNhapNhanDuocONNgoai>
+			<ThueTNhapDaNop>
+				<ct5>1</ct5>
+				<ct6>1</ct6>
+			</ThueTNhapDaNop>
+			<ThuNhapChiuThue>
+				<ct7>1</ct7>
+				<ct8>1</ct8>
+			</ThuNhapChiuThue>
+			<XacDinhThueDuocTru>
+				<ct9>1</ct9>
+				<ct10>1</ct10>
+				<ct11>1</ct11>
+			</XacDinhThueDuocTru>
+		</thueTNDNDaNopNN>
+	</Dynamic><Static GroupName="PL03_4_TNDN"><tongNgoaiTeTNNN>1</tongNgoaiTeTNNN>
+		<tongDongVNTNNN>1</tongDongVNTNNN>
+		<tongNgoaiTeDaNopTNNN>1</tongNgoaiTeDaNopTNNN>
+		<tongDongVNDaNopTNNN>1</tongDongVNDaNopTNNN>
+		<tongNgoaiTeChiuThueTNDN>1</tongNgoaiTeChiuThueTNDN>
+		<tongDongVNChiuThueTNDN>1</tongDongVNChiuThueTNDN>
+		<tongThuePNopTNDN>1</tongThuePNopTNDN>
+		<tongThueDuocKhauTru>1</tongThueDuocKhauTru>
+	</Static></PL03_4_TNDN>
