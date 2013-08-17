@@ -1,19 +1,35 @@
-		<PL01_3_GTGT>
-			<XeOTo>
-				<ChiTietSoLuongXeOTo>
-				</ChiTietSoLuongXeOTo>
-				<congTongXeBRa>1</congTongXeBRa>
-				<congXeBRa>1</congXeBRa>
-				<congGiaBan>1</congGiaBan>
-			</XeOTo>
-			<XeHaiBanh>
-				<ChiTietSoLuongXeHaiBanh>
-				</ChiTietSoLuongXeHaiBanh>
-				<congTongXeBRa>1</congTongXeBRa>
-				<congXeBRa>1</congXeBRa>
-				<congGiaBan>1</congGiaBan>
-			</XeHaiBanh>
-			<congTongXeBRa>1</congTongXeBRa>
-			<congXeBRa>1</congXeBRa>
-			<congGiaBan>1</congGiaBan>
-		</PL01_3_GTGT>
+<PL01_3_GTGT>
+	<XeOTo>
+		<ChiTietSoLuongXeOTo>
+			<SoLuongXe id="ID_11">
+				<loaiXe>String</loaiXe>
+				<dviTinh>String</dviTinh>
+				<tongXeBRa>1</tongXeBRa>
+				<xeBanRa>1</xeBanRa>
+				<giaBan>1</giaBan>
+				<ghiChu>String</ghiChu>
+			</SoLuongXe>
+		</ChiTietSoLuongXeOTo>
+		<congTongXeBRa>1</congTongXeBRa>
+		<congXeBRa>1</congXeBRa>
+		<congGiaBan>1</congGiaBan>
+	</XeOTo>
+	<XeHaiBanh>
+		<ChiTietSoLuongXeHaiBanh>
+			<SoLuongXe id="ID_12">
+				<loaiXe>String</loaiXe>
+				<dviTinh>String</dviTinh>
+				<tongXeBRa>1</tongXeBRa>
+				<xeBanRa>1</xeBanRa>
+				<giaBan>1</giaBan>
+				<ghiChu>String</ghiChu>
+			</SoLuongXe>
+		</ChiTietSoLuongXeHaiBanh>
+		<congTongXeBRa>1</congTongXeBRa>
+		<congXeBRa>1</congXeBRa>
+		<congGiaBan>1</congGiaBan>
+	</XeHaiBanh>
+	<congTongXeBRa>1</congTongXeBRa>
+	<congXeBRa>1</congXeBRa>
+	<congGiaBan>1</congGiaBan>
+</PL01_3_GTGT>
