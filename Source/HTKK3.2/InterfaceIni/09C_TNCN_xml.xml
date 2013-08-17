@@ -1,0 +1,24 @@
+<PL09C-TNCN><Static GroupName="ThongTinPLuc"><kemTKChinhNam>String</kemTKChinhNam>
+	</Static><Static GroupName="chiTietNguoiPhuThuocCoMST"><ct09>String</ct09>
+		<ct10>1967-08-13</ct10>
+		<ct11>0000000000</ct11>
+		<ct12>String</ct12>
+		<ct13>String</ct13>
+		<ct14>String</ct14>
+		<ct15>String</ct15>
+		<ct16>String</ct16>
+		<ct17>1</ct17>
+	</Static><Static GroupName="chiTietNPThuocCoCoMST"><ct19>String</ct19>
+	</Static><Static GroupName="ThongTinTrenGKSinh"><ct20>String</ct20>
+		<ct21>String</ct21>
+		<ct22>String</ct22>
+	</Static><Static GroupName="NoiDKy"><ct23>String</ct23>
+		<ct24>String</ct24>
+		<ct25>String</ct25>
+		<ct26>String</ct26>
+	</Static><Static GroupName="chiTietNPThuocCoCoMST"><ct27>String</ct27>
+		<ct28>0</ct28>
+		<ct29>1</ct29>
+	</Static><Static GroupName="PL09C-TNCN"><tongCongSoThangGiamTru>1</tongCongSoThangGiamTru>
+		<tongThuNhapDuocTru>1</tongThuNhapDuocTru>
+	</Static></PL09C-TNCN>

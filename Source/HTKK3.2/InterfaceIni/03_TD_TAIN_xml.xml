@@ -1,0 +1,25 @@
+<HSoKhaiThue><Static GroupName="TKhaiThue"><maTKhai>String</maTKhai>
+		<tenTKhai>token</tenTKhai>
+		<moTaBMau/>
+	</Static><Static GroupName="GiaHan"><maLyDoGiaHan>String</maLyDoGiaHan>
+		<lyDoGiaHan>String</lyDoGiaHan>
+	</Static><Static GroupName="TKhaiThue"><nguoiKy>String</nguoiKy>
+		<ngayKy>String</ngayKy>
+	</Static><Static GroupName="NNT"><maHuyenNNT>String</maHuyenNNT>
+		<maTinhNNT>String</maTinhNNT>
+	</Static><Static GroupName="DLyThue"><maHuyenDLyThue>String</maHuyenDLyThue>
+		<maTinhDLyThue>String</maTinhDLyThue>
+	</Static><Static GroupName="NVienDLy"><tenNVienDLyThue>token</tenNVienDLyThue>
+		<cchiHNghe>String</cchiHNghe>
+	</Static><Static GroupName="CTieuTKhaiChinh"><ct21>String</ct21>
+		<ct22>0.0</ct22>
+	</Static><Static GroupName="chiTietThueTAIN"><ct23>String</ct23>
+		<ct24>String</ct24>
+		<ct25>String</ct25>
+		<ct26>1</ct26>
+		<ct27>1</ct27>
+		<ct28>1</ct28>
+	</Static><Static GroupName="CTieuTKhaiChinh"><tongct26>1</tongct26>
+		<tongct27>1</tongct27>
+		<tongct28>1</tongct28>
+	</Static></HSoKhaiThue>
