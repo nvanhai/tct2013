@@ -499,8 +499,8 @@ Private Sub cmdCommand2_Click()
 
     strFileName = "test.xml" 'getFileName
         
-    xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml_tms\" & MaTK & "_xml.xml")
-    xmlMapCT.Load GetAbsolutePath("..\Ini\xml_tms_mapping\" & MaTK & "_xml.xml")
+    xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\" & MaTK & "_xml.xml")
+    xmlMapCT.Load GetAbsolutePath("..\Ini\" & MaTK & "_xml.xml")
     
     SetValueToKhaiHeader xmlTK
     
@@ -625,8 +625,8 @@ Private Sub cmdCommand2_Click()
 '                xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & GetAttribute(nodeVal, "DataFile") & "_xml.xml")
 '                xmlMapPL.Load GetAbsolutePath("..\MapCT\" & GetAttribute(nodeVal, "DataFile") & ".xml")
 
-                xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml_tms\" & GetAttribute(nodeVal, "DataFile") & "_xml.xml")
-                xmlMapPL.Load GetAbsolutePath("..\Ini\xml_tms_mapping\" & GetAttribute(nodeVal, "DataFile") & "_xml.xml")
+                xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\" & GetAttribute(nodeVal, "DataFile") & "_xml.xml")
+                xmlMapPL.Load GetAbsolutePath("..\Ini\" & GetAttribute(nodeVal, "DataFile") & "_xml.xml")
 
                 cellRange = 0
                 .Sheet = nodeValIndex + 1
