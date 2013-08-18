@@ -17,3 +17,8 @@ Public strLastDayOfQuarter As String
 Public strFinanceStartDate As String
 
 Public isUsePIT As Boolean ' su dung PIT
+
+' Xuat XML - nshung
+Public strDataFolder As String                      ' Current data folder
+Public strDay As String
+' Ket thuc XML - nshung

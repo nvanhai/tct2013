@@ -149,3 +149,9 @@ End Property
 Public Property Let isCheckPIT(ByVal checkPIT As Boolean)
     isUsePIT = checkPIT
 End Property
+Public Property Get DataFolder() As String
+    DataFolder = strDataFolder
+End Property
+Public Property Get Day() As String
+    Day = strDay
+End Property
