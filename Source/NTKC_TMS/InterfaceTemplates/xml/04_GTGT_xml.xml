@@ -1,0 +1,99 @@
+<HSoKhaiThue>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct33>1</ct33>
+		<ct34>1</ct34>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>String</maTKhai>
+		<tenTKhai>token</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan>String</maLyDoGiaHan>
+		<lyDoGiaHan>String</lyDoGiaHan>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>String</nguoiKy>
+		<ngayKy>String</ngayKy>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT>String</maHuyenNNT>
+		<maTinhNNT>String</maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue>String</maHuyenDLyThue>
+		<maTinhDLyThue>String</maTinhDLyThue>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>token</tenNVienDLyThue>
+		<cchiHNghe>String</cchiHNghe>
+	</Static>
+	<Dynamic GroupName="DSoHHDVBRaChiuThueGTGT">
+		<ChiTietNhomNganh id="id">
+			<NhomNganh>
+				<maNhomNghanh>1</maNhomNghanh>
+				<nhomNghanh>String</nhomNghanh>
+				<ctThue0>1</ctThue0>
+				<ctThue5>1</ctThue5>
+				<ctThue10>1</ctThue10>
+			</NhomNganh>
+		</ChiTietNhomNganh>
+	</Dynamic>
+	<Static GroupName="DSoHHDVBRaChiuThueGTGT">
+		<ct21>1</ct21>
+		<ct22>1</ct22>
+		<ct23>1</ct23>
+	</Static>
+	<Dynamic GroupName="TyLeGTGTTTrenDThu">
+		<ChiTietNhomNganh id="id">
+			<NhomNganh>
+				<maNhomNghanh>1</maNhomNghanh>
+				<nhomNghanh>String</nhomNghanh>
+				<ctThue0>1</ctThue0>
+				<ctThue5>1</ctThue5>
+				<ctThue10>1</ctThue10>
+			</NhomNganh>
+		</ChiTietNhomNganh>
+	</Dynamic>
+	<Static GroupName="TyLeGTGTTTrenDThu">
+		<ct24>1</ct24>
+		<ct25>1</ct25>
+		<ct26>1</ct26>
+	</Static>
+	<Dynamic GroupName="TongGTGTTrongKy">
+		<ChiTietNhomNganh id="id">
+			<NhomNganh>
+				<maNhomNghanh>1</maNhomNghanh>
+				<nhomNghanh>String</nhomNghanh>
+				<ctThue0>1</ctThue0>
+				<ctThue5>1</ctThue5>
+				<ctThue10>1</ctThue10>
+			</NhomNganh>
+		</ChiTietNhomNganh>
+	</Dynamic>
+	<Static GroupName="TongGTGTTrongKy">
+		<ct27>1</ct27>
+		<ct28>1</ct28>
+		<ct29>1</ct29>
+	</Static>
+	<Dynamic GroupName="ThueGTGTPNop">
+		<ChiTietNhomNganh id="id">
+			<NhomNganh>
+				<maNhomNghanh>1</maNhomNghanh>
+				<nhomNghanh>String</nhomNghanh>
+				<ctThue0>1</ctThue0>
+				<ctThue5>1</ctThue5>
+				<ctThue10>1</ctThue10>
+			</NhomNganh>
+		</ChiTietNhomNganh>
+	</Dynamic>
+	<Static GroupName="ThueGTGTPNop">
+		<ct30>1</ct30>
+		<ct31>1</ct31>
+		<ct32>1</ct32>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct33>1</ct33>
+		<ct34>1</ct34>
+	</Static>
+</HSoKhaiThue>

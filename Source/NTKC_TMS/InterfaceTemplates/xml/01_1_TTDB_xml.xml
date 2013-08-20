@@ -1,0 +1,27 @@
+<PLuc01_TTDB>
+	<ThoiGianNopTKhaiChinh>
+		<ngayNopTKhaiChinh>String</ngayNopTKhaiChinh>
+		<thangNopTKhaiChinh>String</thangNopTKhaiChinh>
+		<namNopTKhaiChinh>String</namNopTKhaiChinh>
+	</ThoiGianNopTKhaiChinh>
+	<PLucBRaChiuThueTTDB>
+		<ChiTietPLucBRaChiuThueTTDB>
+			<PLucBRaChiuThue>
+				<ct2>
+					<khieuHDon>String</khieuHDon>
+					<soHDon>1</soHDon>
+					<ngayPhatHanh>1967-08-13</ngayPhatHanh>
+				</ct2>
+				<ct3>String</ct3>
+				<ct4>String</ct4>
+				<ct5>1</ct5>
+				<ct6>1</ct6>
+				<ct7>0.0</ct7>
+				<ct8>1</ct8>
+				<ct9>1</ct9>
+			</PLucBRaChiuThue>
+		</ChiTietPLucBRaChiuThueTTDB>
+		<tongSoLuong>0.0</tongSoLuong>
+		<tongDoanhSoBan>1</tongDoanhSoBan>
+	</PLucBRaChiuThueTTDB>
+</PLuc01_TTDB>
