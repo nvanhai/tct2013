@@ -1,0 +1,44 @@
+﻿<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>02/GTGT</maTKhai>
+		<tenTKhai>TỜ KHAI THUẾ GTGT DÀNH CHO DỰ ÁN ĐẦU TƯ</tenTKhai>
+		<moTaBMau></moTaBMau>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>T_59</nguoiKy>
+		<ngayKy>T_61</ngayKy>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT>F_14</maHuyenNNT>
+		<maTinhNNT>Q_14</maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue>F_24</maHuyenDLyThue>
+		<maTinhDLyThue>Q_24</maTinhDLyThue>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>H_59</tenNVienDLyThue>
+		<cchiHNghe>H_61</cchiHNghe>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct21>W_42</ct21>
+		<ct21a>W_43</ct21a>
+		<ct22>Q_45</ct22>
+		<ct23>W_45</ct23>
+		<ct24>Q_47</ct24>
+		<ct25>W_47</ct25>
+		<ct26>Q_48</ct26>
+		<ct27>W_48</ct27>
+		<ct28>W_49</ct28>
+		<ct28a>W_50</ct28a>
+		<ct29>W_51</ct29>
+		<ct30>W_52</ct30>
+		<ct30a>W_53</ct30a>
+		<ct31>W_54</ct31>
+		<ct32>W_55</ct32>
+	</Static>
+</HSoKhaiThue>
