@@ -1,0 +1,40 @@
+<PLuc02_TTDB>
+	<ThoiGianNopTKhaiChinh>
+		<ngayNopTKhaiChinh>String</ngayNopTKhaiChinh>
+		<thangNopTKhaiChinh>String</thangNopTKhaiChinh>
+		<namNopTKhaiChinh>String</namNopTKhaiChinh>
+	</ThoiGianNopTKhaiChinh>
+	<ThueNLMVao>
+		<ChiTietThueTTDBNLMVao>
+			<ThueNLMVao id="ID_1">
+				<BienLaiChungTuNopThueTTĐB>
+					<khieuNLMVao>String</khieuNLMVao>
+					<soNLMVao>String</soNLMVao>
+					<ngayPHanhNLMVao>1967-08-13</ngayPHanhNLMVao>
+				</BienLaiChungTuNopThueTTĐB>
+				<tenNLMVao>String</tenNLMVao>
+				<soLuongNLMVao>0.0</soLuongNLMVao>
+				<thueNLMVaoDNop>1</thueNLMVaoDNop>
+				<thueNLMVaoTrenDVi>1</thueNLMVaoTrenDVi>
+				<thueNLMVaoDaKTru>1</thueNLMVaoDaKTru>
+				<thueNLMVaoChuaKTru>1</thueNLMVaoChuaKTru>
+			</ThueNLMVao>
+		</ChiTietThueTTDBNLMVao>
+		<tongThueNLMVaoDNop>1</tongThueNLMVaoDNop>
+		<tongThueNLMVaoDaKTru>text</tongThueNLMVaoDaKTru>
+		<tongthueNLMVaoChuaKTru>1</tongthueNLMVaoChuaKTru>
+	</ThueNLMVao>
+	<ThueNLDuocKTru>
+		<ChiTietThueTTDBNLDuocKTru>
+			<ThueNLDuocKTru id="ID_2">
+				<tenMatHangNLKTru>String</tenMatHangNLKTru>
+				<soLuongHangNLKTru>0.0</soLuongHangNLKTru>
+				<tenNLKTru>String</tenNLKTru>
+				<luongNL1DViNLKTru>0.0</luongNL1DViNLKTru>
+				<thue1DViNLKTru>0.0</thue1DViNLKTru>
+				<tongThueTTDBDuocKTru>1</tongThueTTDBDuocKTru>
+			</ThueNLDuocKTru>
+		</ChiTietThueTTDBNLDuocKTru>
+		<tongTTDBNLDuocKTru>text</tongTTDBNLDuocKTru>
+	</ThueNLDuocKTru>
+</PLuc02_TTDB>
