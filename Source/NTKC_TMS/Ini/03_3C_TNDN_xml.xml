@@ -1,15 +1,18 @@
-<PL03_3C_TNDN><Static GroupName="PL03_3C_TNDN"><dieuKienUuDai1>true</dieuKienUuDai1>
-		<tongSoLD1>1</tongSoLD1>
-		<soXacNhanCQT1>String</soXacNhanCQT1>
-		<ngayXacNhanCQT1>1967-08-13</ngayXacNhanCQT1>
-		<dieuKienUuDai2>true</dieuKienUuDai2>
-		<tongSoLD2>1</tongSoLD2>
-		<soXacNhanCQT2>String</soXacNhanCQT2>
-		<ngayXacNhanCQT2>1967-08-13</ngayXacNhanCQT2>
-		<mucDoUuDai1>true</mucDoUuDai1>
-		<mucDoUuDai2>true</mucDoUuDai2>
-		<ct1>1</ct1>
-		<ct2>1</ct2>
-		<ct3>1</ct3>
-		<ct4>1</ct4>
-	</Static></PL03_3C_TNDN>
+<PL03_3C_TNDN>
+	<Static GroupName="PL03_3C_TNDN">
+		<dieuKienUuDai1>C_22</dieuKienUuDai1>
+		<tongSoLD1>S_23</tongSoLD1>
+		<soXacNhanCQT1>K_25</soXacNhanCQT1>
+		<ngayXacNhanCQT1>X_25</ngayXacNhanCQT1>
+		<dieuKienUuDai2>C_26</dieuKienUuDai2>
+		<tongSoLD2>R_27</tongSoLD2>
+		<soXacNhanCQT2>I_29</soXacNhanCQT2>
+		<ngayXacNhanCQT2>O_29</ngayXacNhanCQT2>
+		<mucDoUuDai1>D_32</mucDoUuDai1>
+		<mucDoUuDai2>D_33</mucDoUuDai2>
+		<ct1>V_38</ct1>
+		<ct2>V_39</ct2>
+		<ct3>V_40</ct3>
+		<ct4>V_41</ct4>
+	</Static>
+</PL03_3C_TNDN>
