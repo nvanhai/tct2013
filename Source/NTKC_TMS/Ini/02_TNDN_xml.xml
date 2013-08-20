@@ -1,0 +1,62 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>02_TNDN</maTKhai>
+		<tenTKhai>TK TNDN cho chuyển nhượng BĐS (02/TNDN)</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan>String</maLyDoGiaHan>
+		<lyDoGiaHan>String</lyDoGiaHan>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>T_78</nguoiKy>
+		<ngayKy>T_80</ngayKy>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT>String</maHuyenNNT>
+		<maTinhNNT>String</maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue>String</maHuyenDLyThue>
+		<maTinhDLyThue>String</maTinhDLyThue>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>G_78</tenNVienDLyThue>
+		<cchiHNghe>G_80</cchiHNghe>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<dnCoCSoHToanPThuoc>H_7</dnCoCSoHToanPThuoc>
+	</Static>
+	<Static GroupName="ThongTinChuyenNhuong">
+		<ct12>K_20</ct12>
+		<ct13>R_22</ct13>
+		<ct14>E_24</ct14>
+	</Static>
+	<Static GroupName="ct15">
+		<soHD>K_26</soHD>
+		<ngayHD>N_26</ngayHD>
+		<ngayXN>Q_28</ngayXN>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct25>V_55</ct25>
+		<ct26>V_56</ct26>
+		<ct27>V_57</ct27>
+		<ct28>V_58</ct28>
+		<ct29>V_59</ct29>
+		<ct30>V_60</ct30>
+		<ct31>V_61</ct31>
+		<ct32>V_62</ct32>
+		<ct33>V_63</ct33>
+		<ct34>V_64</ct34>
+		<ct35>V_65</ct35>
+		<ct36>V_66</ct36>
+		<ct37>V_67</ct37>
+		<ct38>V_68</ct38>
+		<ct39>V_69</ct39>
+		<ct40>V_71</ct40>
+		<ct41>V_72</ct41>
+		<ct42>V_73</ct42>
+		<ct43>V_74</ct43>
+		<ct44>V_75</ct44>
+	</Static>
+</HSoKhaiThue>
