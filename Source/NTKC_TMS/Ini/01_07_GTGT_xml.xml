@@ -1,0 +1,23 @@
+<PL01_7_GTGT>
+	<Dynamic GroupName="ChiTietPBoGTGTVLNT">
+		<PBoGTGTVLNT id="ID_15">
+			<ct09>C_8</ct09>
+			<ct10>D_8</ct10>
+			<ct11>E_8</ct11>
+			<ct12>F_8</ct12>
+			<ct13>G_8</ct13>
+			<ct14>H_8</ct14>
+			<ct15>I_8</ct15>
+		</PBoGTGTVLNT>
+	</Dynamic>
+	<Static GroupName="PBoGTGTVLaiNTinh">
+		<ct16>H_10</ct16>
+		<ct17>I_10</ct17>
+		<ct18>G_17</ct18>
+		<ct19>G_19</ct19>		
+	</Static>
+	<Static GroupName="PL01_7_GTGT">
+		<ct06>E_13</ct06>
+		<ct07>E_14</ct07>
+	</Static>
+</PL01_7_GTGT>
