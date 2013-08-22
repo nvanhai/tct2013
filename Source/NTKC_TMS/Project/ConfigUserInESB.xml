@@ -1,0 +1,17 @@
+﻿<Config>
+	<WsUrl>http://localhost:1387/Service1.asmx</WsUrl>
+	<SoapAction>http://tempuri.org/CheckInput</SoapAction>
+	<XmlRequest>		
+		<?xml version="1.0" encoding="utf-8"?>
+		<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+			<soap:Body>
+				<CheckInput xmlns="http://tempuri.org/">
+					<sInPut>string</sInPut>
+				</CheckInput>
+			</soap:Body>
+		</soap:Envelope>
+	</XmlRequest>
+	<TRAN_CODE>0006</TRAN_CODE>
+	<TaxOffcice>00101</TaxOffcice>
+	<ParamName>sInPut</ParamName>
+</Config>

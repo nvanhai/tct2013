@@ -20,7 +20,7 @@ Public strKieuKy As String
 Public strQuy As String
 Public strKHBS As String
 Public strLoaiTKThang_PS As String
-
+Public strCurrentVersion As String     'Current Version lay duoc tu ESB services
 'End XML
 
 Public strNgayTaiChinh As String
@@ -1589,6 +1589,15 @@ Public Function GetNgayCuoiThang(intYear As Integer, intMonth As Integer) As Dat
     End Select
     
     GetNgayCuoiThang = ValidityDate
+End Function
+
+Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument) As MSXML.DOMDocument
+    Dim XmlDocStandard As New MSXML.DOMDocument
+    XmlDocStandard.Load GetAbsolutePath("..\InterfaceTemplates\xml\TempStandard.xml")
+    If (Not xmlDoc Is Nothing) Then
+        XmlDocStandard.getElementsByTagName("ROW")(0).appendChild xmlDoc.childNodes(0)
+    End If
+    AppendXMLStandard = XmlDocStandard
 End Function
 'Ket thuc ket xuat XML - nshung
 
