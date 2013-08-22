@@ -3,7 +3,7 @@
 
 	<Section Dynamic="1" MaxRows="0">
 		<Cells>
-			<Cell CellID="E_24" MaxLen="" MinValue="" MaxValue="" HelpContextID="36121"/>
+			<Cell CellID="E_24" MaxLen="100" MinValue="" MaxValue="" HelpContextID="36121"/>
 			<Cell CellID="L_24" MaxLen="14" MinValue="" MaxValue="" HelpContextID="36121"/>
 			<Cell CellID="R_24" MaxLen="" MinValue="" MaxValue="" HelpContextID="36121"/>
 			<Cell CellID="Y_24" MaxLen="" MinValue="" MaxValue="" HelpContextID="36121"/>
