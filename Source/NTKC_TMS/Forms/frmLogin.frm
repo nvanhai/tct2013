@@ -166,9 +166,11 @@ On Error GoTo ErrorHandle
         Exit Sub
     End If
     
-    Select Case IsValidUser()
+    Dim IsValid As Integer
+    IsValid = IsValidUserESB()
+    Select Case IsValid
         Case 1
-            If DisplayMessage("0059", msYesNo, miQuestion) = mrYes Then
+            If DisplayMessage("0130", msYesNo, miQuestion) = mrYes Then
                 txtPassword.SetFocus
                 Exit Sub
             Else
@@ -186,8 +188,7 @@ On Error GoTo ErrorHandle
                 Exit Sub
             End If
     End Select
-   
-    GetDataInfor
+    
     'Set user name to system caption
     frmSystem.lblUser.caption = Mid$(frmSystem.lblUser.caption, 1, _
         InStr(1, frmSystem.lblUser.caption, ":") + 1) & _
@@ -208,11 +209,13 @@ On Error GoTo ErrorHandle
     
     Unload Me
     frmTreeviewMenu.Show
-    
     Exit Sub
+    
 ErrorHandle:
     SaveErrorLog Me.Name, "cmdOK_Click", Err.Number, Err.Description
 End Sub
+
+
 
 Private Sub Form_Activate()
     txtUsername.SetFocus
@@ -225,6 +228,225 @@ End Sub
 Private Sub Form_Resize()
     SetFormCaption Me, imgCaption, lblCaption
 End Sub
+'****************************************************
+'Description:IsValidUserESB function check if user and password are valid
+'Author:nshung
+'Modify by:
+'Date:08/20/2013
+'Input:
+'Output:
+'Return:
+'****************************************************
+Private Function IsValidUserESB() As Integer
+On Error GoTo ErrorHandle
+
+    Dim xmlESBReturn As New MSXML.DOMDocument
+    Dim strESBReturn As String
+    Dim sStatus As String
+    
+    strESBReturn = getInfoUserFromESB
+    
+    'Chuan hoa file xml ket qua - lay duoc tu ESB
+    strESBReturn = ChangeTagASSCII(strESBReturn, False)
+    
+    xmlESBReturn.loadXML strESBReturn
+
+    If (Not xmlESBReturn Is Nothing) Then
+        sStatus = xmlESBReturn.getElementsByTagName("Status")(0).Text
+        strCurrentVersion = xmlESBReturn.getElementsByTagName("NTKversion")(0).Text
+        strUserName = xmlESBReturn.getElementsByTagName("UserName")(0).Text
+        Select Case sStatus
+            Case "01"  ' Thanh cong
+                IsValidUserESB = 2  'Message login thanh cong
+                Exit Function
+            Case "02" 'Loi xac thuc NSD
+                IsValidUserESB = 0   'Message loi use, pass
+                Exit Function
+            Case "03" 'Cac loi khac cua he thong TMS
+                IsValidUserESB = 1  'Message loi khong dang nhap duoc
+                Exit Function
+            Case Else
+                IsValidUserESB = 1
+                Exit Function
+        End Select
+    Else
+        IsValidUserESB = 1
+    End If
+    
+ErrorHandle:
+    Me.MousePointer = vbDefault
+    frmSystem.MousePointer = vbDefault
+    SaveErrorLog Me.Name, "IsValidUserESB", Err.Number, Err.Description
+End Function
+Private Function ChangeTagASSCII(ByVal strTemp As String, ByVal IsTagToASSCII As Boolean) As String
+    If (strTemp <> "") Then
+        If IsTagToASSCII Then
+            strTemp = Strings.Replace$(strTemp, "<", "&lt;", 1, Len(strTemp), vbTextCompare)
+            strTemp = Strings.Replace$(strTemp, ">", "&gt;", 1, Len(strTemp), vbTextCompare)
+        Else
+            strTemp = Strings.Replace$(strTemp, "&lt;", "<", 1, Len(strTemp), vbTextCompare)
+            strTemp = Strings.Replace$(strTemp, "&gt;", ">", 1, Len(strTemp), vbTextCompare)
+        End If
+        ChangeTagASSCII = strTemp
+    End If
+End Function
+Private Function getInfoUserFromESB() As String
+On Error GoTo ErrorHandle
+    'Load file template xml --> param gui cho ESB
+    Dim paXmlDoc As New MSXML.DOMDocument
+    paXmlDoc.Load GetAbsolutePath("..\InterfaceTemplates\xml\paramNsdInESB.xml")
+    
+    'Get value config
+    Dim cfigXml As New MSXML.DOMDocument
+    cfigXml.Load GetAbsolutePath("..\Project\ConfigUserInESB.xml")
+
+
+    Dim paNode As MSXML.IXMLDOMNode
+    Dim cfigNode As MSXML.IXMLDOMNode
+    Dim CloneNode As MSXML.IXMLDOMNode
+    Dim paNodeChild As MSXML.IXMLDOMNode
+    Dim sTranCode As String
+    Dim sTaxOffice As String
+    Dim sUrlWs As String
+    Dim soapAct As String
+    Dim fldName As String
+    Dim fldValue As String
+    Dim xmlRequest As String
+    
+    sUrlWs = cfigXml.getElementsByTagName("WsUrl")(0).Text
+    soapAct = cfigXml.getElementsByTagName("SoapAction")(0).Text
+    xmlRequest = cfigXml.getElementsByTagName("XmlRequest")(0).firstChild.xml & cfigXml.getElementsByTagName("XmlRequest")(0).lastChild.xml
+    sTranCode = cfigXml.getElementsByTagName("TRAN_CODE")(0).Text
+    sTaxOffice = cfigXml.getElementsByTagName("TaxOffcice")(0).Text
+    fldName = cfigXml.getElementsByTagName("ParamName")(0).Text
+    
+    'Set value config to template xml param
+    paXmlDoc.getElementsByTagName("TRAN_CODE")(0).Text = sTranCode
+    paXmlDoc.getElementsByTagName("UserName")(0).Text = txtUsername.Text
+    paXmlDoc.getElementsByTagName("TaxOffcice")(0).Text = sTaxOffice
+    paXmlDoc.getElementsByTagName("Pass")(0).Text = txtPassword.Text
+    
+    fldValue = paXmlDoc.xml
+    fldValue = ChangeTagASSCII(fldValue, True)
+    
+    'Return value from ESB
+    getInfoUserFromESB = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+    
+ErrorHandle:
+        SaveErrorLog Me.Name, "IsValidUserESB", Err.Number, Err.Description
+End Function
+
+Private Function DataFromESB(sWebUrl As String, sSoapAct As String, sXmlSoap As String, sParam As String, sValue As String) As String
+    Dim oWsXML As New XMLRequestNuic '' initialize a new Instance of XMLRequestNuic Class
+    Dim aDatos() As String           '' Variable for store the parameters that we need to pass to de Web service
+    Dim iTotalElem As Integer        '' This is only for know how many filters o parameters we are passing to the web service
+    Dim bFlag As Boolean             '' When the value is 0 (zero,false) the XML Structure is not correct, but if the value is 1 (One,True) then the structure is correct.
+    Dim iCant As Integer             '' is a counter for replace the values into the name of parameters
+    iCant = 1
+    bFlag = 0
+    aDatos = Split(sValue, ",")
+    If Not IsArray(aDatos) Then
+        aDatos = Split(sValue, "-")
+        If Not IsArray(aDatos) Then
+            aDatos = Split(sValue, ".")
+            If Not IsArray(aDatos) Then
+                aDatos = Split(sValue, "+")
+                If Not IsArray(aDatos) Then
+                    SaveErrorLog Me.Name, "frmLogin", Err.Number, Err.Description
+                    Exit Function
+                End If
+            End If
+        End If
+    End If
+    iTotalElem = UBound(aDatos)      '' We Store the MAX index to the iTotalElem variable
+    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    '' WE VALIDATING, IF THE XML STRUCTURE IS CORRECT TO MADE THE PETITION
+    ''   bFlag=0 IS WRONG
+    ''   bFlag=1 IT IS OK
+    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    If InStr(sXmlSoap, "<?xml") > 0 And InStr(sXmlSoap, "<?xml") <= 6 Then
+         bFlag = 1
+        If InStr(sXmlSoap, "<soap:Envelope") > 0 Then
+            bFlag = 1
+            If InStr(sXmlSoap, "<soap:Body>") > 0 Then
+                bFlag = 1
+            Else
+                 bFlag = 0
+            End If
+        Else
+             bFlag = 0
+        End If
+    Else
+        bFlag = 0
+    End If
+    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    '' Starting to replace the input parameters
+    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+    If bFlag Then
+         If 1 = 1 Then
+            Dim iInicio As Integer
+            Dim iFinalParte1 As Integer
+            Dim iInicioParte2 As Integer
+            Dim iFinal As Integer
+            Dim LongURL As Integer
+            Dim oFuncion() As String
+            Dim sFuncionNombre As String
+            Dim sBuscar As String
+            Dim sInputParam As String
+            Dim tmpUrlSoap As String
+            Dim iCont As Integer
+            Dim tmpXmlSoap As String
+            Dim tmpParte1 As String
+            Dim tmpParte2 As String
+            Dim oParametro As Variant
+            
+            ''WE STORED THE ORIGINAL XML STRUCTURE IN A TEMPORARY VARIABLE
+            tmpXmlSoap = sXmlSoap
+            iCont = 1
+            Dim i As Integer
+            For i = 1 To Len(sXmlSoap)
+                If InStr(tmpXmlSoap, "string") Then
+                    ''SET the first coincidence with the "string" Word
+                    iFinalParte1 = InStr(sXmlSoap, "string")
+                     ''SET the end of the first coincidence with the "string" Word
+                    iInicioParte2 = InStr(sXmlSoap, "string") + 6
+                    tmpParte1 = Mid(tmpXmlSoap, 1, iFinalParte1 - 1)
+                    sXmlSoap = tmpParte1
+                    tmpParte2 = Mid(tmpXmlSoap, iInicioParte2, Len(tmpXmlSoap))
+                    sXmlSoap = tmpParte2
+                    tmpXmlSoap = tmpParte1 & "@Parametro" & iCont & tmpParte2
+                    sXmlSoap = tmpXmlSoap
+                    i = i + 6
+                    iCont = iCont + 1
+                End If
+
+            Next
+            ''Asignamos el resultado al txtXmlSoap.text
+            ''WE SET THE RESULT OF THE "FOR" TO THE txtXmlSoap.text CONTROL
+            sXmlSoap = tmpXmlSoap
+        End If
+        ''Replacing the "@Parametro1" with the value in the first position of the txtCriterios.text CONTROL.
+        For Each oParametro In aDatos
+            Dim Var As String
+            If InStr(sXmlSoap, "@Parametro" & iCant) > 0 Then
+                sXmlSoap = Replace(sXmlSoap, "@Parametro" & iCant, oParametro)
+            End If
+            iCant = iCant + 1
+        Next
+        ''validating if all is ok
+        If sWebUrl = "" Or sSoapAct = "" Or sXmlSoap = "" Then
+            SaveErrorLog Me.Name, "frmLogin", Err.Number, Err.Description & "Kiem tra Url webservice,soap action..."
+            Exit Function
+        Else
+            DataFromESB = oWsXML.PostWebservice(sParam, sWebUrl, sSoapAct, sXmlSoap)
+        End If
+    Else
+         'DataFromESB = "the XML Structure is not Correct. please verify your XML structura data."
+         SaveErrorLog Me.Name, "frmLogin", Err.Number, Err.Description & "the XML Structure is not Correct. please verify your XML structura data."
+         Exit Function
+    End If
+End Function
 
 '****************************************************
 'Description:IsValidUser function check if user and password are valid
@@ -249,7 +471,7 @@ On Error GoTo ErrorHandle
     Dim cmd As New ADODB.Command
     
     
-    'connect to database BMT
+'    connect to database BMT
 '    If clsDAO.Connected = False Then
 '        clsDAO.CreateConnectionString [MSDAORA.1], "BMT", "LOGIN_USER", "LOGIN_USER"
 '        Me.MousePointer = vbHourglass
@@ -469,6 +691,22 @@ Private Function CheckVersion() As Boolean
 '    End If
 
     ' Check version cua ung dung voi phien ban cua service tra ve
+        
+       If strCurrentVersion = "" Then
+            'Can not found table or not exist value
+            DisplayMessage "0075", msOKOnly, miCriticalError
+            Exit Function
+        ElseIf CInt(Replace(strCurrentVersion, ".", "")) > _
+               CInt(Replace(APP_VERSION, ".", "")) Then
+            'Versions is differed
+            DisplayMessage "0076", msOKOnly, miCriticalError
+            Exit Function
+        ElseIf CInt(Replace(strCurrentVersion, ".", "")) < _
+               CInt(Replace(APP_VERSION, ".", "")) Then
+            DisplayMessage "0075", msOKOnly, miCriticalError
+            Exit Function
+        End If
+
     
     CheckVersion = True
     

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA>
+	<HEADER>
+		<VERSION>1.0</VERSION>
+		<SENDER_CODE>NTK</SENDER_CODE>
+		<SENDER_NAME>Hệ thống nhận tờ khai mã vạch</SENDER_NAME>
+		<RECEIVER_CODE>TMS</RECEIVER_CODE>
+		<RECEIVER_NAME>Hệ thống Quản lý thuế tập trung</RECEIVER_NAME>
+		<TRAN_CODE>0008</TRAN_CODE>
+		<MSG_ID>0000000008</MSG_ID>
+		<MSG_REFID>0000000008</MSG_REFID>
+		<SEND_DATE>07-May-2012 09:21:22</SEND_DATE>
+		<ORIGINAL_CODE>NTK</ORIGINAL_CODE>
+		<ORIGINAL_NAME></ORIGINAL_NAME>
+		<ORIGINAL_DATE></ORIGINAL_DATE>
+		<ERROR_CODE/>
+		<ERROR_DESC/>
+		<SPARE1/>
+		<SPARE2/>
+		<SPARE3/>
+	</HEADER>
+	<BODY>
+		<ROW>
+			<UserName>HaiDH</UserName>
+			<TaxOffcice>10101</TaxOffcice>
+			<Pass> A5CD75C7B </Pass>
+		</ROW>
+	</BODY>
+</DATA>
