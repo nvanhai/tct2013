@@ -1,0 +1,55 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>01_AC</maTKhai>
+		<tenTKhai>Báo cáo tình hình nhận in hóa đơn</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan>String</maLyDoGiaHan>
+		<lyDoGiaHan>String</lyDoGiaHan>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>String</nguoiKy>
+		<ngayKy>String</ngayKy>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT>String</maHuyenNNT>
+		<maTinhNNT>String</maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue>String</maHuyenDLyThue>
+		<maTinhDLyThue>String</maTinhDLyThue>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>token</tenNVienDLyThue>
+		<cchiHNghe>String</cchiHNghe>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ngayDauKyBaoCao>E_23</ngayDauKyBaoCao>
+		<ngayCuoiKyBaoCao>F_23</ngayCuoiKyBaoCao>
+		<kyBaoCaoCuoiCung>E_16</kyBaoCaoCuoiCung>
+	</Static>
+	<Dynamic GroupName="HoaDon">
+		<ChiTietHoaDon id="id">
+			<ToChucCNDatIn>
+				<mst>D_29</mst>
+				<ten>E_29</ten>
+				<diaChi>I_29</diaChi>
+			</ToChucCNDatIn>
+			<HopDong>
+				<so>K_29</so>
+				<ngay>M_29</ngay>
+			</HopDong>
+			<tenHDon>O_29</tenHDon>
+			<mauHDon>R_29</mauHDon>
+			<kyHieu>T_29</kyHieu>
+			<tuSo>V_29</tuSo>
+			<denSo>X_29</denSo>
+			<soLuong>Z_29</soLuong>
+		</ChiTietHoaDon>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<nguoiDaiDien>S_36</nguoiDaiDien>
+		<ngayBCao>S_38</ngayBCao>
+	</Static>
+</HSoKhaiThue>
