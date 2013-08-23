@@ -1595,9 +1595,9 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument) As MSXML.DO
     Dim XmlDocStandard As New MSXML.DOMDocument
     XmlDocStandard.Load GetAbsolutePath("..\InterfaceTemplates\xml\TempStandard.xml")
     If (Not xmlDoc Is Nothing) Then
-        XmlDocStandard.getElementsByTagName("ROW")(0).appendChild xmlDoc.childNodes(0)
+        XmlDocStandard.getElementsByTagName("ROW")(0).appendChild xmlDoc.getElementsByTagName("HSoKhaiThue")(0) 'xmlDoc.childNodes(0)
     End If
-    AppendXMLStandard = XmlDocStandard
+    Set AppendXMLStandard = XmlDocStandard
 End Function
 'Ket thuc ket xuat XML - nshung
 
