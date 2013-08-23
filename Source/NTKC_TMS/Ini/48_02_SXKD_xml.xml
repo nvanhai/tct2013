@@ -1,0 +1,54 @@
+<PL_KQHĐXSKD>
+	<Static GroupName="ThuyetMinh">
+		<ct01_tMinh>P_39</ct01_tMinh>
+		<ct02_tMinh>P_40</ct02_tMinh>
+		<ct10_tMinh>P_41</ct10_tMinh>
+		<ct11_tMinh>P_42</ct11_tMinh>
+		<ct20_tMinh>P_43</ct20_tMinh>
+		<ct21_tMinh>P_44</ct21_tMinh>
+		<ct22_tMinh>P_45</ct22_tMinh>
+		<ct23_tMinh>P_46</ct23_tMinh>
+		<ct24_tMinh>P_47</ct24_tMinh>
+		<ct30_tMinh>P_48</ct30_tMinh>
+		<ct31_tMinh>P_49</ct31_tMinh>
+		<ct32_tMinh>P_50</ct32_tMinh>
+		<ct40_tMinh>P_51</ct40_tMinh>
+		<ct50_tMinh>P_52</ct50_tMinh>
+		<ct51_tMinh>P_53</ct51_tMinh>
+		<ct60_tMinh>P_54</ct60_tMinh>
+	</Static>
+	<Static GroupName="SoNamNay">
+		<ct01_nNay>R_39</ct01_nNay>
+		<ct02_nNay>R_40</ct02_nNay>
+		<ct10_nNay>R_41</ct10_nNay>
+		<ct11_nNay>R_42</ct11_nNay>
+		<ct20_nNay>R_43</ct20_nNay>
+		<ct21_nNay>R_44</ct21_nNay>
+		<ct22_nNay>R_45</ct22_nNay>
+		<ct23_nNay>R_46</ct23_nNay>
+		<ct24_nNay>R_47</ct24_nNay>
+		<ct30_nNay>R_48</ct30_nNay>
+		<ct31_nNay>R_49</ct31_nNay>
+		<ct32_nNay>R_50</ct32_nNay>
+		<ct40_nNay>R_51</ct40_nNay>
+		<ct50_nNay>R_52</ct50_nNay>
+		<ct51_nNay>R_53</ct51_nNay>
+		<ct60_nNay>R_54</ct60_nNay>	</Static>
+	<Static GroupName="SoNamNgoai">
+		<ct01_nNgoai>W_39</ct01_nNgoai>
+		<ct02_nNgoai>W_40</ct02_nNgoai>
+		<ct10_nNgoai>W_41</ct10_nNgoai>
+		<ct11_nNgoai>W_42</ct11_nNgoai>
+		<ct20_nNgoai>W_43</ct20_nNgoai>
+		<ct21_nNgoai>W_44</ct21_nNgoai>
+		<ct22_nNgoai>W_45</ct22_nNgoai>
+		<ct23_nNgoai>W_46</ct23_nNgoai>
+		<ct24_nNgoai>W_47</ct24_nNgoai>
+		<ct30_nNgoai>W_48</ct30_nNgoai>
+		<ct31_nNgoai>W_49</ct31_nNgoai>
+		<ct32_nNgoai>W_50</ct32_nNgoai>
+		<ct40_nNgoai>W_51</ct40_nNgoai>
+		<ct50_nNgoai>W_52</ct50_nNgoai>
+		<ct51_nNgoai>W_53</ct51_nNgoai>
+		<ct60_nNgoai>W_54</ct60_nNgoai>	</Static>
+</PL_KQHĐXSKD>

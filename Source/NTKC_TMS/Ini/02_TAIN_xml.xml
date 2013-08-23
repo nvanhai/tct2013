@@ -1,0 +1,62 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>02_TAIN</maTKhai>
+		<tenTKhai>Tờ khai thuế tài nguyên(02/TAIN)</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan>String</maLyDoGiaHan>
+		<lyDoGiaHan>String</lyDoGiaHan>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>AJ_72</nguoiKy>
+		<ngayKy>AJ_74</ngayKy>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT>String</maHuyenNNT>
+		<maTinhNNT>String</maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue>String</maHuyenDLyThue>
+		<maTinhDLyThue>String</maTinhDLyThue>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>G_72</tenNVienDLyThue>
+		<cchiHNghe>G_74</cchiHNghe>
+	</Static>
+	<Dynamic GroupName="TaiNguyenKhaiThac">
+		<NoiDungTAIN id="ID_1">
+			<ct2>C_57</ct2>
+			<SanLuongTaiNguyenTinhThue>
+				<ct3>L_57</ct3>
+				<ct4>O_57</ct4>
+			</SanLuongTaiNguyenTinhThue>
+			<ct5>R_57</ct5>
+			<ct6>W_57</ct6>
+			<ct7>Z_57</ct7>
+			<ct8>AE_57</ct8>
+			<ct9>AH_57</ct9>
+			<ct10>AL_57</ct10>
+		</NoiDungTAIN>
+	</Dynamic>
+	<Dynamic GroupName="TaiNguyenThuMuaGom">
+		<NoiDungTAIN id="ID_2">
+			<ct2>C_61</ct2>
+			<SanLuongTaiNguyenTinhThue>
+				<ct3>L_61</ct3>
+				<ct4>O_61</ct4>
+			</SanLuongTaiNguyenTinhThue>
+			<ct5>R_61</ct5>
+			<ct6>W_61</ct6>
+			<ct7>Z_61</ct7>
+			<ct8>AE_61</ct8>
+			<ct9>AH_61</ct9>
+			<ct10>AL_61</ct10>
+		</NoiDungTAIN>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tongThueTNPSinh>AE_62</tongThueTNPSinh>
+		<tongThueMienGiam>AH_63</tongThueMienGiam>
+		<tongThuePNop>AL_63</tongThuePNop>
+	</Static>
+</HSoKhaiThue>

@@ -1,0 +1,122 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>02_NTNN</maTKhai>
+		<tenTKhai>Tờ khai thuế nhà thầu nước ngoài - 02/NTNN</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan>String</maLyDoGiaHan>
+		<lyDoGiaHan>String</lyDoGiaHan>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>Y_59</nguoiKy>
+		<ngayKy>Y_61</ngayKy>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT>String</maHuyenNNT>
+		<maTinhNNT>String</maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue>String</maHuyenDLyThue>
+		<maTinhDLyThue>String</maTinhDLyThue>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>H_59</tenNVienDLyThue>
+		<cchiHNghe>H_61</cchiHNghe>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<soHopNhaThau>H_28</soHopNhaThau>
+		<ngayHopNhaThau>N_28</ngayHopNhaThau>
+	</Static>
+	<Static GroupName="GiaTriHDong">
+		<donViTinh>String</donViTinh>
+		<keKhai>1</keKhai>
+		<quyetToan>1</quyetToan>
+		<chenhLech>1</chenhLech>
+		<ghiChu>String</ghiChu>
+	</Static>
+	<Static GroupName="DThuChuaThueGTGT">
+		<donViTinh>String</donViTinh>
+		<keKhai>1</keKhai>
+		<quyetToan>1</quyetToan>
+		<chenhLech>1</chenhLech>
+		<ghiChu>String</ghiChu>
+	</Static>
+	<Static GroupName="DThuTinhThueNTPhu">
+		<donViTinh>String</donViTinh>
+		<keKhai>1</keKhai>
+		<quyetToan>1</quyetToan>
+		<chenhLech>1</chenhLech>
+		<ghiChu>String</ghiChu>
+	</Static>
+	<Static GroupName="DThuTinhThueNTNN">
+		<donViTinh>String</donViTinh>
+		<keKhai>1</keKhai>
+		<quyetToan>1</quyetToan>
+		<chenhLech>1</chenhLech>
+		<ghiChu>String</ghiChu>
+	</Static>
+	<Static GroupName="SoThuePhaiNopNTNN">
+		<donViTinh>String</donViTinh>
+		<keKhai>1</keKhai>
+		<quyetToan>1</quyetToan>
+		<chenhLech>1</chenhLech>
+		<ghiChu>String</ghiChu>
+	</Static>
+	<Static GroupName="ThueGTGTPhaiNop">
+		<donViTinh>String</donViTinh>
+		<keKhai>1</keKhai>
+		<quyetToan>1</quyetToan>
+		<chenhLech>1</chenhLech>
+		<ghiChu>String</ghiChu>
+	</Static>
+	<Static GroupName="ThueTNDNPhaiNop">
+		<donViTinh>String</donViTinh>
+		<keKhai>1</keKhai>
+		<quyetToan>1</quyetToan>
+		<chenhLech>1</chenhLech>
+		<ghiChu>String</ghiChu>
+	</Static>
+	<Static GroupName="SoThueDaNopNTNN">
+		<donViTinh>String</donViTinh>
+		<keKhai>1</keKhai>
+		<quyetToan>1</quyetToan>
+		<chenhLech>1</chenhLech>
+		<ghiChu>String</ghiChu>
+	</Static>
+	<Static GroupName="ThueGTGTDaNop">
+		<donViTinh>String</donViTinh>
+		<keKhai>1</keKhai>
+		<quyetToan>1</quyetToan>
+		<chenhLech>1</chenhLech>
+		<ghiChu>String</ghiChu>
+	</Static>
+	<Static GroupName="ThueTNDNDaNop">
+		<donViTinh>String</donViTinh>
+		<keKhai>1</keKhai>
+		<quyetToan>1</quyetToan>
+		<chenhLech>1</chenhLech>
+		<ghiChu>String</ghiChu>
+	</Static>
+	<Static GroupName="SoThueNopThuaThieu">
+		<donViTinh>String</donViTinh>
+		<keKhai>1</keKhai>
+		<quyetToan>1</quyetToan>
+		<chenhLech>1</chenhLech>
+		<ghiChu>String</ghiChu>
+	</Static>
+	<Static GroupName="ThueGTGTThuaThieu">
+		<donViTinh>String</donViTinh>
+		<keKhai>1</keKhai>
+		<quyetToan>1</quyetToan>
+		<chenhLech>1</chenhLech>
+		<ghiChu>String</ghiChu>
+	</Static>
+	<Static GroupName="ThueTNDNThuaThieu">
+		<donViTinh>String</donViTinh>
+		<keKhai>1</keKhai>
+		<quyetToan>1</quyetToan>
+		<chenhLech>1</chenhLech>
+		<ghiChu>String</ghiChu>
+	</Static>
+</HSoKhaiThue>

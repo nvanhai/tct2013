@@ -1,0 +1,40 @@
+<PLuc02_TTDB>
+	<Static GroupName="ThoiGianNopTKhaiChinh">
+		<ngayNopTKhaiChinh>C_19</ngayNopTKhaiChinh>
+		<thangNopTKhaiChinh>D_19</thangNopTKhaiChinh>
+		<namNopTKhaiChinh>E_19</namNopTKhaiChinh>
+	</Static>
+	<Dynamic GroupName="ChiTietThueTTDBNLMVao">
+		<ThueNLMVao id="ID_1">
+			<BienLaiChungTuNopThueTTĐB>
+				<khieuNLMVao>C_24</khieuNLMVao>
+				<soNLMVao>D_24</soNLMVao>
+				<ngayPHanhNLMVao>E_24</ngayPHanhNLMVao>
+			</BienLaiChungTuNopThueTTĐB>
+			<tenNLMVao>F_24</tenNLMVao>
+			<soLuongNLMVao>G_24</soLuongNLMVao>
+			<thueNLMVaoDNop>H_24</thueNLMVaoDNop>
+			<thueNLMVaoTrenDVi>I_24</thueNLMVaoTrenDVi>
+			<thueNLMVaoDaKTru>J_24</thueNLMVaoDaKTru>
+			<thueNLMVaoChuaKTru>K_24</thueNLMVaoChuaKTru>
+		</ThueNLMVao>
+	</Dynamic>
+	<Static GroupName="ThueNLMVao">
+		<tongThueNLMVaoDNop>H_26</tongThueNLMVaoDNop>
+		<tongThueNLMVaoDaKTru>J_26</tongThueNLMVaoDaKTru>
+		<tongthueNLMVaoChuaKTru>K_26</tongthueNLMVaoChuaKTru>
+	</Static>
+	<Dynamic GroupName="ChiTietThueTTDBNLDuocKTru">
+		<ThueNLDuocKTru id="ID_2">
+			<tenMatHangNLKTru>C_34</tenMatHangNLKTru>
+			<soLuongHangNLKTru>E_34</soLuongHangNLKTru>
+			<tenNLKTru>F_34</tenNLKTru>
+			<luongNL1DViNLKTru>H_34</luongNL1DViNLKTru>
+			<thue1DViNLKTru>J_34</thue1DViNLKTru>
+			<tongThueTTDBDuocKTru>K_34</tongThueTTDBDuocKTru>
+		</ThueNLDuocKTru>
+	</Dynamic>
+	<Static GroupName="ThueNLDuocKTru">
+		<tongTTDBNLDuocKTru>K_36</tongTTDBNLDuocKTru>
+	</Static>
+</PLuc02_TTDB>

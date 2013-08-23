@@ -1,0 +1,8 @@
+<PL_03_1_TD_TAIN><Static GroupName="bangPhanBoTAINThuyĐien"><tenNhaMay>String</tenNhaMay>
+		<tyLePhanBo>1</tyLePhanBo>
+		<soThueGTGTPNop>1</soThueGTGTPNop>
+	</Static><Static GroupName="cqtDiaPhuong"><tenCQT>String</tenCQT>
+		<tyLePhanBo>1</tyLePhanBo>
+		<soThueGTGTPNop>1</soThueGTGTPNop>
+	</Static><Static GroupName="PL_03_1_TD_TAIN"><tongCong>1</tongCong>
+	</Static></PL_03_1_TD_TAIN>
