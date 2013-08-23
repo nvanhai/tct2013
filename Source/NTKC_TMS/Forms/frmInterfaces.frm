@@ -718,7 +718,7 @@ Private Sub cmdCommand2_Click()
     Dim sFileName As String
     sFileName = "c:\TempXML\" & strFileName
     Dim xmlDocSave As New MSXML.DOMDocument
-    xmlDocSave = AppendXMLStandard(xmlTK)
+    Set xmlDocSave = AppendXMLStandard(xmlTK)
     xmlDocSave.save sFileName
     Exit Sub
 ErrHandle:
