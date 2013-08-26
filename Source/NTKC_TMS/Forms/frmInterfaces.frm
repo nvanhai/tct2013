@@ -507,7 +507,7 @@ Private Sub cmdCommand2_Click()
     strFileName = "test.xml" 'getFileName
         
     xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
-    xmlMapCT.Load GetAbsolutePath("..\InterfaceIni\" & MaTK & "_xml.xml")
+    xmlMapCT.Load GetAbsolutePath("..\Ini\" & MaTK & "_xml.xml")
 
     SetValueToKhaiHeader xmlTK
 
@@ -607,9 +607,18 @@ Private Sub cmdCommand2_Click()
             If GetAttribute(nodeVal, "Active") = "1" Then
                 Dim currentRow As Integer
                 Dim xmlSection As MSXML.IXMLDOMNode
+        
+                MaTK = GetAttribute(nodeVal, "DataFile")
 
-                xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & GetAttribute(nodeVal, "DataFile") & "_xml.xml")
-                xmlMapPL.Load GetAbsolutePath("..\MapCT\" & GetAttribute(nodeVal, "DataFile") & ".xml")
+                If InStr(MaTK, "11") > 0 Then
+                    MaTK = Replace$(MaTK, "11", "")
+                ElseIf InStr(MaTK, "10") > 0 Then
+                    MaTK = Replace$(MaTK, "10", "")
+                End If
+
+                xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
+
+                xmlMapPL.Load GetAbsolutePath("..\ini\" & MaTK & "_xml.xml")
 
                 cellRange = 0
                 .Sheet = nodeValIndex + 1
