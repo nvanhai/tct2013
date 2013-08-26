@@ -11,7 +11,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
-Public Function PostWebservice(ByVal Criterios As String, ByVal AsmxUrl As String, ByVal SoapActionUrl As String, ByVal XmlBody As String) As String
+Public Function PostWebservice(ByVal AsmxUrl As String, ByVal SoapActionUrl As String, ByVal XmlBody As String) As String
     Dim objDom As Object
     Dim objXmlHttp As Object
     Dim strRet As String
@@ -19,7 +19,6 @@ Public Function PostWebservice(ByVal Criterios As String, ByVal AsmxUrl As Strin
     Dim intPos2 As Integer
     Dim bDatos() As String
     Dim iCont As Integer
-    Dim sCriterios As String
     iCont = 1
     
     On Error GoTo Err_PW

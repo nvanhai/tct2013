@@ -298,7 +298,8 @@ On Error GoTo ErrorHandle
     
     'Get value config
     Dim cfigXml As New MSXML.DOMDocument
-    cfigXml.Load GetAbsolutePath("..\Project\ConfigUserInESB.xml")
+    'cfigXml.Load GetAbsolutePath("..\Project\ConfigWithESB.xml")
+    Set cfigXml = LoadConfig()
 
 
     Dim paNode As MSXML.IXMLDOMNode
@@ -338,27 +339,27 @@ End Function
 
 Private Function DataFromESB(sWebUrl As String, sSoapAct As String, sXmlSoap As String, sParam As String, sValue As String) As String
     Dim oWsXML As New XMLRequestNuic '' initialize a new Instance of XMLRequestNuic Class
-    Dim aDatos() As String           '' Variable for store the parameters that we need to pass to de Web service
+    'Dim aDatos() As String           '' Variable for store the parameters that we need to pass to de Web service
     Dim iTotalElem As Integer        '' This is only for know how many filters o parameters we are passing to the web service
     Dim bFlag As Boolean             '' When the value is 0 (zero,false) the XML Structure is not correct, but if the value is 1 (One,True) then the structure is correct.
     Dim iCant As Integer             '' is a counter for replace the values into the name of parameters
     iCant = 1
     bFlag = 0
-    aDatos = Split(sValue, ",")
-    If Not IsArray(aDatos) Then
-        aDatos = Split(sValue, "-")
-        If Not IsArray(aDatos) Then
-            aDatos = Split(sValue, ".")
-            If Not IsArray(aDatos) Then
-                aDatos = Split(sValue, "+")
-                If Not IsArray(aDatos) Then
-                    SaveErrorLog Me.Name, "frmLogin", Err.Number, Err.Description
-                    Exit Function
-                End If
-            End If
-        End If
-    End If
-    iTotalElem = UBound(aDatos)      '' We Store the MAX index to the iTotalElem variable
+'    aDatos = Split(sValue, ",")
+'    If Not IsArray(aDatos) Then
+'        aDatos = Split(sValue, "-")
+'        If Not IsArray(aDatos) Then
+'            aDatos = Split(sValue, ".")
+'            If Not IsArray(aDatos) Then
+'                aDatos = Split(sValue, "+")
+'                If Not IsArray(aDatos) Then
+'                    SaveErrorLog Me.Name, "frmLogin", Err.Number, Err.Description
+'                    Exit Function
+'                End If
+'            End If
+'        End If
+'    End If
+    'iTotalElem = UBound(aDatos)      '' We Store the MAX index to the iTotalElem variable
     ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
     '' WE VALIDATING, IF THE XML STRUCTURE IS CORRECT TO MADE THE PETITION
     ''   bFlag=0 IS WRONG
@@ -384,7 +385,7 @@ Private Function DataFromESB(sWebUrl As String, sSoapAct As String, sXmlSoap As 
     ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
     If bFlag Then
-         If 1 = 1 Then
+         
             Dim iInicio As Integer
             Dim iFinalParte1 As Integer
             Dim iInicioParte2 As Integer
@@ -425,21 +426,23 @@ Private Function DataFromESB(sWebUrl As String, sSoapAct As String, sXmlSoap As 
             ''Asignamos el resultado al txtXmlSoap.text
             ''WE SET THE RESULT OF THE "FOR" TO THE txtXmlSoap.text CONTROL
             sXmlSoap = tmpXmlSoap
-        End If
-        ''Replacing the "@Parametro1" with the value in the first position of the txtCriterios.text CONTROL.
-        For Each oParametro In aDatos
-            Dim Var As String
-            If InStr(sXmlSoap, "@Parametro" & iCant) > 0 Then
-                sXmlSoap = Replace(sXmlSoap, "@Parametro" & iCant, oParametro)
-            End If
-            iCant = iCant + 1
-        Next
+       
+'        ''Replacing the "@Parametro1" with the value in the first position of the txtCriterios.text CONTROL.
+'        For Each oParametro In aDatos
+'            Dim Var As String
+'            If InStr(sXmlSoap, "@Parametro" & iCant) > 0 Then
+'                sXmlSoap = Replace(sXmlSoap, "@Parametro" & iCant, oParametro)
+'            End If
+'            iCant = iCant + 1
+'        Next
+
+        sXmlSoap = Replace(sXmlSoap, "@Parametro1", sValue)
         ''validating if all is ok
         If sWebUrl = "" Or sSoapAct = "" Or sXmlSoap = "" Then
             SaveErrorLog Me.Name, "frmLogin", Err.Number, Err.Description & "Kiem tra Url webservice,soap action..."
             Exit Function
         Else
-            DataFromESB = oWsXML.PostWebservice(sParam, sWebUrl, sSoapAct, sXmlSoap)
+            DataFromESB = oWsXML.PostWebservice(sWebUrl, sSoapAct, sXmlSoap)
         End If
     Else
          'DataFromESB = "the XML Structure is not Correct. please verify your XML structura data."

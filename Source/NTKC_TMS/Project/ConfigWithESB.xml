@@ -1,0 +1,30 @@
+﻿<Config>
+	<!-- Doan nay cau hinh de ket noi voi webservices cua ESB -->
+	<WsUrl>http://localhost:1387/Service1.asmx</WsUrl>
+	<SoapAction>http://tempuri.org/CheckInput</SoapAction>
+	<XmlRequest>		
+		<?xml version="1.0" encoding="utf-8"?>
+		<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+			<soap:Body>
+				<CheckInput xmlns="http://tempuri.org/">
+					<sInPut>string</sInPut>
+				</CheckInput>
+			</soap:Body>
+		</soap:Envelope>
+	</XmlRequest>
+	<TRAN_CODE>0006</TRAN_CODE>
+	<TaxOffcice>00101</TaxOffcice>
+	<ParamName>sInPut</ParamName>
+	
+	<!-- Doan nay cau hinh cho phan Header cua message gui tin len ESB -->
+	<VERSION>1.0</VERSION>
+	<SENDER_CODE>NTK</SENDER_CODE>
+	<SENDER_NAME>Ứng dụng nhận tờ khai mã vạch</SENDER_NAME>
+	<RECEIVER_CODE>TMS</RECEIVER_CODE>
+	<RECEIVER_NAME></RECEIVER_NAME>
+	<TRAN_CODE>12345</TRAN_CODE>
+	
+	<!-- Doan nay cau hinh cho phan Header cua to khai -->
+	<maCQTNoiNop></maCQTNoiNop>
+	<tenCQTNoiNop></tenCQTNoiNop>
+</Config>
