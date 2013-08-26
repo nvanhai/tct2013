@@ -65,16 +65,13 @@
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
-		<ChiTietThueBVMT>
-			<ThueBVMT ID="ID_1">
-				<ct2>String</ct2>
-				<ct3>String</ct3>
-				<ct4>1</ct4>
-				<ct5>1</ct5>
-				<ct6>1</ct6>
-			</ThueBVMT>
-			<tongCot6>1</tongCot6>
-		</ChiTietThueBVMT>
+		<ct21>1</ct21>
+		<ct22>1</ct22>
+		<ct23>1</ct23>
+		<ct24>1</ct24>
+		<ct25>1</ct25>
+		<ct26>1</ct26>
+		<ct27>1</ct27>
 	</CTieuTKhaiChinh>
 	<PLuc>
 	</PLuc>

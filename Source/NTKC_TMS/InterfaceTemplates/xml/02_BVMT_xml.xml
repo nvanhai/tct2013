@@ -65,17 +65,39 @@
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
-		<ChiTietThueBVMT>
-			<ThueBVMT ID="ID_1">
-				<ct2>String</ct2>
-				<ct3>String</ct3>
-				<ct4>1</ct4>
-				<ct5>1</ct5>
-				<ct6>1</ct6>
-			</ThueBVMT>
-			<tongCot6>1</tongCot6>
-		</ChiTietThueBVMT>
+		<KhoangSan>
+			<KSCSTuKhaiThac>
+				<KhoangSan>
+					<NoiDungKS id="ID_1">
+						<maKSan>String</maKSan>
+						<donViTinh>String</donViTinh>
+						<soLuong>0.0</soLuong>
+						<mucPhi>1</mucPhi>
+						<phiPhaiNopTrongKy>1</phiPhaiNopTrongKy>
+						<phiDaKeKhaiTrongKy>1</phiDaKeKhaiTrongKy>
+					</NoiDungKS>
+				</KhoangSan>
+				<tongPhiPhaiNopTrongKyI>1</tongPhiPhaiNopTrongKyI>
+				<tongPhiDaKeKhaiTrongKyI>1</tongPhiDaKeKhaiTrongKyI>
+			</KSCSTuKhaiThac>
+			<KSCSThuMua>
+				<KhoangSan>
+					<NoiDungKS id="ID_2">
+						<maKSan>String</maKSan>
+						<donViTinh>String</donViTinh>
+						<soLuong>0.0</soLuong>
+						<mucPhi>1</mucPhi>
+						<phiPhaiNopTrongKy>1</phiPhaiNopTrongKy>
+						<phiDaKeKhaiTrongKy>1</phiDaKeKhaiTrongKy>
+					</NoiDungKS>
+				</KhoangSan>
+				<tongPhiPhaiNopTrongKyII>1</tongPhiPhaiNopTrongKyII>
+				<tongPhiDaKeKhaiTrongKyII>1</tongPhiDaKeKhaiTrongKyII>
+			</KSCSThuMua>
+		</KhoangSan>
+		<tongPhiPhaiNopTrongKy>1</tongPhiPhaiNopTrongKy>
+		<tongPhiDaKeKhaiTrongKy>1</tongPhiDaKeKhaiTrongKy>
+		<tongTienBangChu>String</tongTienBangChu>
 	</CTieuTKhaiChinh>
-	<PLuc>
-	</PLuc>
+	<PLuc/>
 </HSoKhaiThue>
