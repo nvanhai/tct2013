@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA>
+	<HEADER>
+		<VERSION>1.0</VERSION>
+		<SENDER_CODE>EXTGDTu</SENDER_CODE>
+		<SENDER_NAME>Cơ sở dữ liệu ExtGDTu</SENDER_NAME>
+		<RECEIVER_CODE>NTK</RECEIVER_CODE>
+		<RECEIVER_NAME>Hệ thống nhận tờ khai mã vạch</RECEIVER_NAME>
+		<TRAN_CODE>00011</TRAN_CODE>
+		<MSG_ID>0000000011</MSG_ID>
+		<MSG_REFID>0000000011</MSG_REFID>
+		<SEND_DATE>07-May-2012 09:21:22</SEND_DATE>
+		<ORIGINAL_CODE>EXTGDTu</ORIGINAL_CODE>
+		<ORIGINAL_NAME>Cơ sở dữ liệu ExtGDTu</ORIGINAL_NAME>
+		<ORIGINAL_DATE>07-May-2012 09:21:22</ORIGINAL_DATE>
+		<ERROR_CODE/>
+		<ERROR_DESC/>
+		<SPARE1/>
+		<SPARE2/>
+		<SPARE3/>
+	</HEADER>
+	<BODY>
+		<ROW>
+			<tin>0100109106-054</tin>
+			<ten_nnthue>Chi Nhánh Viettel Tiền Giang-Tập Đoàn Viễn  Thông Quân Đội</ten_nnthue>
+			<dia_chi>Số 66, Đường Đinh Bộ Lĩnh, Khu phố 5</dia_chi>
+			<dienthoai>84435683369.</dienthoai>
+			<fax>84435690529</fax>
+			<mail>010</mail>
+			<ngay_bdau_nam_tchinh>1056205</ngay_bdau_nam_tchinh>
+			<trang_thai/>
+		</ROW>
+	</BODY>
+</DATA>

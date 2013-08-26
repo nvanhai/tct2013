@@ -1,76 +1,76 @@
 <HSoKhaiThue>
 	<Static GroupName="TKhaiThue">
-		<maTKhai>String</maTKhai>
-		<tenTKhai>token</tenTKhai>
+		<maTKhai>KHBS</maTKhai>
+		<tenTKhai></tenTKhai>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
-		<maLyDoGiaHan>String</maLyDoGiaHan>
-		<lyDoGiaHan>String</lyDoGiaHan>
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>String</nguoiKy>
-		<ngayKy>String</ngayKy>
+		<nguoiKy></nguoiKy>
+		<ngayKy></ngayKy>
 	</Static>
 	<Static GroupName="NNT">
-		<maHuyenNNT>String</maHuyenNNT>
-		<maTinhNNT>String</maTinhNNT>
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
 	</Static>
 	<Static GroupName="DLyThue">
-		<maHuyenDLyThue>String</maHuyenDLyThue>
-		<maTinhDLyThue>String</maTinhDLyThue>
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>token</tenNVienDLyThue>
-		<cchiHNghe>String</cchiHNghe>
+		<tenNVienDLyThue></tenNVienDLyThue>
+		<cchiHNghe></cchiHNghe>
 	</Static>
 	<Dynamic GroupName="NDUNGKHAIBOSUNGDIEUCHINH">
 		<KHBSDieuChinhTang id="ID_1">
-			<ct2>String</ct2>
-			<ct3>String</ct3>
-			<ct4>1</ct4>
-			<ct5>1</ct5>
-			<ct6>1</ct6>
+			<ct2>BD_9</ct2>
+			<ct3>BE_9</ct3>
+			<ct4>BF_9</ct4>
+			<ct5>BG_9</ct5>
+			<ct6>BH_9</ct6>
 		</KHBSDieuChinhTang>
 	</Dynamic>
 	<Dynamic GroupName="NDUNGKHAIBOSUNGDIEUCHINH">
 		<KHBSDieuChinhGiam id="ID_2">
-			<ct2>String</ct2>
-			<ct3>String</ct3>
-			<ct4>1</ct4>
-			<ct5>1</ct5>
-			<ct6>1</ct6>
+			<ct2>BD_13</ct2>
+			<ct3>BE_13</ct3>
+			<ct4>BF_13</ct4>
+			<ct5>BG_13</ct5>
+			<ct6>BH_13</ct6>
 		</KHBSDieuChinhGiam>
 	</Dynamic>
 	<Dynamic GroupName="TongHopDCTangGiamPNop">
 		<DIEUCHINHSOTHUEPHAINOP id="ID_3">
-			<ct2>String</ct2>
-			<ct3>String</ct3>
-			<ct4>1</ct4>
-			<ct5>1</ct5>
-			<ct6>1</ct6>
+			<ct2></ct2>
+			<ct3></ct3>
+			<ct4></ct4>
+			<ct5></ct5>
+			<ct6></ct6>
 		</DIEUCHINHSOTHUEPHAINOP>
 	</Dynamic>
 	<Dynamic GroupName="TongHopDCTangGiamPNop">
 		<DIEUCHINHSOTHUEGTGTCHUAKTRU id="ID_4">
-			<ct2>String</ct2>
-			<ct3>String</ct3>
-			<ct4>1</ct4>
-			<ct5>1</ct5>
-			<ct6>1</ct6>
+			<ct2></ct2>
+			<ct3></ct3>
+			<ct4></ct4>
+			<ct5></ct5>
+			<ct6></ct6>
 		</DIEUCHINHSOTHUEGTGTCHUAKTRU>
 	</Dynamic>
 	<Static GroupName="SOTIENCHAMNOP">
-		<soNgayNopCham>1</soNgayNopCham>
-		<soTienPhatNopCham>1</soTienPhatNopCham>
+		<soNgayNopCham>BE_17</soNgayNopCham>
+		<soTienPhatNopCham>BE_18</soTienPhatNopCham>
 	</Static>
 	<Static GroupName="NOIDUNGGIAITHICH">
-		<tenTKhaiThue>String</tenTKhaiThue>
-		<mauSo>String</mauSo>
-		<kyTinhThue>String</kyTinhThue>
-		<soTienTraNSNN>1</soTienTraNSNN>
-		<quyetDinhHoanThueSo>String</quyetDinhHoanThueSo>
-		<ngay>1967-08-13</ngay>
-		<coQuanThue>String</coQuanThue>
+		<tenTKhaiThue></tenTKhaiThue>
+		<mauSo></mauSo>
+		<kyTinhThue></kyTinhThue>
+		<soTienTraNSNN></soTienTraNSNN>
+		<quyetDinhHoanThueSo></quyetDinhHoanThueSo>
+		<ngay></ngay>
+		<coQuanThue></coQuanThue>
 	</Static>
 </HSoKhaiThue>

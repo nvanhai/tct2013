@@ -1594,10 +1594,33 @@ End Function
 Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument) As MSXML.DOMDocument
     Dim XmlDocStandard As New MSXML.DOMDocument
     XmlDocStandard.Load GetAbsolutePath("..\InterfaceTemplates\xml\TempStandard.xml")
+    
+    'Doc file cau hinh lay thong tin header
+    Dim xmlConfig As MSXML.DOMDocument
+    Set xmlConfig = LoadConfig()
+    XmlDocStandard.getElementsByTagName("VERSION")(0).Text = xmlConfig.getElementsByTagName("VERSION")(0).Text
+    XmlDocStandard.getElementsByTagName("SENDER_CODE")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text
+    XmlDocStandard.getElementsByTagName("SENDER_NAME")(0).Text = xmlConfig.getElementsByTagName("SENDER_NAME")(0).Text
+    XmlDocStandard.getElementsByTagName("RECEIVER_CODE")(0).Text = xmlConfig.getElementsByTagName("RECEIVER_CODE")(0).Text
+    XmlDocStandard.getElementsByTagName("RECEIVER_NAME")(0).Text = xmlConfig.getElementsByTagName("RECEIVER_NAME")(0).Text
+    XmlDocStandard.getElementsByTagName("TRAN_CODE")(0).Text = xmlConfig.getElementsByTagName("TRAN_CODE")(0).Text
+    
+    XmlDocStandard.getElementsByTagName("MSG_ID")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & "123456789"
+    XmlDocStandard.getElementsByTagName("SEND_DATE")(0).Text = format(DateTime.Now, "dd-mm-yyyy HH:mm:ss")
+    
+    
     If (Not xmlDoc Is Nothing) Then
-        XmlDocStandard.getElementsByTagName("ROW")(0).appendChild xmlDoc.getElementsByTagName("HSoKhaiThue")(0) 'xmlDoc.childNodes(0)
+        'XmlDocStandard.getElementsByTagName("ROW")(0).appendChild xmlDoc.getElementsByTagName("HSoKhaiThue")(0) 'xmlDoc.childNodes(0)
+        XmlDocStandard.getElementsByTagName("ROW")(0).appendChild xmlDoc.lastChild
     End If
     Set AppendXMLStandard = XmlDocStandard
 End Function
+
+Public Function LoadConfig() As MSXML.DOMDocument
+    Dim xmlConfig As New MSXML.DOMDocument
+    xmlConfig.Load GetAbsolutePath("..\Project\ConfigWithESB.xml")
+    Set LoadConfig = xmlConfig
+End Function
+
 'Ket thuc ket xuat XML - nshung
 
