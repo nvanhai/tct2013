@@ -527,7 +527,7 @@ Private Sub cmdCommand2_Click()
             Dim nodePL        As MSXML.IXMLDOMNode
             Dim Blank         As Boolean
             Dim id            As Integer
-            Dim CloneNode     As MSXML.DOMDocument
+            Dim CloneNode     As New MSXML.DOMDocument
 
             If UCase(xmlNodeMapCT.nodeName) = "DYNAMIC" Then
                 CloneNode.loadXML xmlNodeMapCT.xml
@@ -581,7 +581,7 @@ Private Sub cmdCommand2_Click()
 
                     End If
 
-                    If UBound(cellArray) > 1 Then
+                    If UBound(cellArray) <> 1 Then
                         xmlCellTKNode.firstChild.nodeValue = cellid
                     Else
                         .Col = .ColLetterToNumber(cellArray(0))
@@ -640,9 +640,9 @@ Private Sub cmdCommand2_Click()
                             SetCloneNode CloneNode, xmlSection, Blank, cellRange
 
                             If Blank = False Then
-                                SetAttribute CloneNode.firstChild, "id", CStr(id)
+                                SetAttribute CloneNode.firstChild.firstChild, "id", CStr(id)
                                 Set nodePL = xmlPL.getElementsByTagName(currentGroup)(0)
-                                nodePL.appendChild CloneNode.firstChild.CloneNode(True)
+                                nodePL.appendChild CloneNode.firstChild.firstChild.CloneNode(True)
                                 id = id + 1
                             Else
                                 Exit Do
@@ -662,7 +662,7 @@ Private Sub cmdCommand2_Click()
                             cellArray = Split(cellid, "_")
 
                             If currentGroup = vbNullString Or currentGroup = "" Then
-                                Set xmlCellTKNode = xmlTK.getElementsByTagName(xmlCellNode.nodeName)(0)
+                                Set xmlCellTKNode = xmlPL.getElementsByTagName(xmlCellNode.nodeName)(0)
                             Else
 
                                 For Each xmlChildNodePL In xmlTK.getElementsByTagName(xmlCellNode.nodeName)
@@ -676,7 +676,7 @@ Private Sub cmdCommand2_Click()
 
                             End If
 
-                            If UBound(cellArray) > 1 Then
+                            If UBound(cellArray) <> 1 Then
                                 xmlCellTKNode.nodeValue = cellid
                             Else
                                 .Col = .ColLetterToNumber(cellArray(0))
@@ -695,7 +695,7 @@ Private Sub cmdCommand2_Click()
 
                 Next
 
-                xmlTK.getElementsByTagName("PLuc")(0).appendChild xmlPL.getElementsByTagName("PL" & GetAttribute(nodeVal, "DataFile"))(0)
+                xmlTK.getElementsByTagName("PLuc")(0).appendChild xmlPL.lastChild
             End If
 
         Next
@@ -1943,10 +1943,10 @@ Private Sub Command1_Click()
 'str2 = "aa320012222222222   0720130000020020020~17~18~19~20~21~22~22~23~24</S><S>~~~17/08/2013~1~~~1701~~~0</S></S01>"
 'Barcode_Scaned str2
 
-str2 = "aa320012222222222   07201300000000100201/0114/06/2006<S01><S></S><S>~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~"
-Barcode_Scaned str2
-str2 = "aa320012222222222   0720130000000020020~0~0~0~0~0~0~0~0~0</S><S>~~~22/08/2013~1~~~1701~~~0</S></S01>"
-Barcode_Scaned str2
+'str2 = "aa320012222222222   07201300000000100201/0114/06/2006<S01><S></S><S>~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~"
+'Barcode_Scaned str2
+'str2 = "aa320012222222222   0720130000000020020~0~0~0~0~0~0~0~0~0</S><S>~~~22/08/2013~1~~~1701~~~0</S></S01>"
+'Barcode_Scaned str2
 'str2 = "aa320692222222222   00201200000000100801/0123/06/2006<S01><S>~0~0~~0~0~V.01~0~0~~0~0~V.02~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~V.03~0~0~~0~0~~0~0~V.04~0~0~~0~0~~0~0~~0~0~~0~0~V.05~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~V.06~0~0~V.07~0~0~~0~0~~0~0~V.08~0~0~~0~0"
 'Barcode_Scaned str2
 'str2 = "aa320692222222222   002012000000002008~~0~0~V.09~0~0~~0~0~~0~0~V.10~0~0~~0~0~~0~0~V.11~0~0~V.12~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~V.13~0~0~~0~0~~0~0~V.14~0~0~V.21~0~0~~0~0~~0~0~~0~0~~0~0~V.15~0~0~~0~0~~0~0~V.16~0~0~~0~0~V.17~0~0~~0~0~~0~0~V.18~0~0~~0~0~~0~0"
@@ -1964,6 +1964,39 @@ Barcode_Scaned str2
 'str2 = "aa320692222222222   002012000000008008~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~22/08/2013</S></S01-3>"
 'Barcode_Scaned str2
 
+
+str2 = "aa320010100100079   07201301501500101601/0114/06/2006<S01><S>0102030405</S><S>~0~4000000~400000~400347~3000000~5000000~250000~0~5000000~250000~0~0~800"
+    Barcode_Scaned str2
+    str2 = "aa320010100100079   0720130150150020160000~250000~-150347~0~0~44444~0~0~0~0~150347~0~0~150347</S><S>Huy“n~234~HÔng~26/08/2013~1~~~1701~~~0</S></S01>"
+    Barcode_Scaned str2
+    str2 = "aa320010100100079   072013015015003016<S01_1><S>0034~0545~11/11/2011~sdfsdfsdf~~~3000000~0~~0034~0545~11/11/2011~sdfsdfsdf~~~3000000~0~~0034~0545~11/11/2011~sdfsdfsdf~~~3000000~0~~</S><S>~~~~~~0~0~~</S><S>008~9080~12/10/2011~xdf"
+    Barcode_Scaned str2
+    str2 = "aa320010100100079   072013015015004016sdfdsf~~~5000000~250000~</S><S>~~~~~~0~0~</S><S>~~~~~~0~0~</S><S>8000000~250000~5000000</S></S01_1>"
+    Barcode_Scaned str2
+    str2 = "aa320010100100079   072013015015005016<S01_2><S>009~3421~05/03/2011~sdfsdfsdf~~~4000000~10~400000~</S><S>~~~~~~0~0~0~</S><S"
+    Barcode_Scaned str2
+    str2 = "aa320010100100079   072013015015006016>~~~~~~0~0~0~</S><S>~~~~~~0~0~0~</S><S>~~~~~~0~0~0~</S><S>4000000~400000</S></S01_2>"
+    Barcode_Scaned str2
+    str2 = "aa320010100100079   072013015015007016<S01_3><S>sdfsdf~Chi’c~300~200~100~</S><S>~Chi’c~0~0~0~</S></S01_3>"
+    Barcode_Scaned str2
+    str2 = "aa320010100100079   072013015015008016<S01_4A><S>400000~400000~0~0~8000000~5000000~62.5~555~347</S></S01_4A>"
+    Barcode_Scaned str2
+    str2 = "aa320010100100079   072013015015009016<S01_5><S>11/12/2012~44444~11301</S></S01_5>"
+    Barcode_Scaned str2
+    str2 = "aa320010100100079   072013015015010016<S01_6><S>dsfsdfsd~~400000~20000~420000~4400"
+    Barcode_Scaned str2
+    str2 = "aa320010100100079   072013015015011016~0~10701~10700</S><S>0~3000~0~0</S></S01_6>"
+    Barcode_Scaned str2
+    str2 = "aa320010100100079   072013015015012016<S01_6B><S>DFSDFSDF~~44444~889~0~10307</S><S>0~0~0~0</S></S01_6B>"
+    Barcode_Scaned str2
+    str2 = "aa320010100100079   072013015015013016<S01_7><S>DSFSDFSDF~~555555~22222~577"
+    Barcode_Scaned str2
+    str2 = "aa320010100100079   072013015015014016777~6000~0</S><S>0~0~0~0</S></S01_7>"
+    Barcode_Scaned str2
+    str2 = "aa320010100100079   072013015015015016<S01_1_TD><S>DFSFDSFSDF~444444~22222~4444</S></S01_1_TD>"
+    Barcode_Scaned str2
+    str2 = "aa320010100100079   072013015015016016<S01_2_TD><S>SDFSDFSDF~100~300000~10300~</S></S01_2_TD>"
+    Barcode_Scaned str2
 
 End Sub
 
