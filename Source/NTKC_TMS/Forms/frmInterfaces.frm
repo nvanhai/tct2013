@@ -798,7 +798,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     xmlTK.getElementsByTagName("maCQTNoiNop")(0).firstChild.nodeValue = xmlConfig.getElementsByTagName("maCQTNoiNop")(0).Text
     xmlTK.getElementsByTagName("tenCQTNoiNop")(0).firstChild.nodeValue = xmlConfig.getElementsByTagName("tenCQTNoiNop")(0).Text
     xmlTK.getElementsByTagName("ngayLapTKhai")(0).firstChild.nodeValue = format(Date, "dd/MM/yyyy")
-    xmlTK.getElementsByTagName("mst")(0).firstChild.nodeValue = strTaxIDString
+    xmlTK.getElementsByTagName("mst")(0).firstChild.nodeValue = xmlResultNNT.getElementsByTagName("tin")(0).Text
     xmlTK.getElementsByTagName("tenNNT")(0).firstChild.nodeValue = xmlResultNNT.getElementsByTagName("ten_nnthue")(0).Text
     xmlTK.getElementsByTagName("dchiNNT")(0).firstChild.nodeValue = xmlResultNNT.getElementsByTagName("dia_chi")(0).Text
     xmlTK.getElementsByTagName("tenHuyenNNT")(0).firstChild.nodeValue = ""
