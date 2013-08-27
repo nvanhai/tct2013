@@ -4341,12 +4341,14 @@ On Error GoTo ErrHandle
 '    blnSuccess = True
 
 
-'Lay tu webservices cua ESB tra ve
-    Dim xmlConfig As New MSXML.DOMDocument
-    Set xmlConfig = LoadConfig()
-    
+    'Lay tu webservices cua ESB tra ve
     Dim xmlResultNNT As New MSXML.DOMDocument
     Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+    If (xmlResultNNT Is Nothing) Then
+        Set rsReturn = Nothing
+        Exit Function
+    End If
+    
 
     rsReturn.Fields.Append "trang_thai", adChar, 2, adFldUpdatable
     rsReturn.Fields.Append "tin", adVarChar, 14, adFldUpdatable
@@ -4362,16 +4364,16 @@ On Error GoTo ErrHandle
 
     rsReturn.Open
     rsReturn.AddNew
-    rsReturn!trang_thai = xmlResultNNT.getElementsByTagName("trang_thai")(0).Text
-    rsReturn!tin = xmlResultNNT.getElementsByTagName("tin")(0).Text
-    rsReturn!ten_dtnt = xmlResultNNT.getElementsByTagName("ten_nnthue")(0).Text
-    rsReturn!dia_chi = xmlResultNNT.getElementsByTagName("dia_chi")(0).Text
-    rsReturn!dien_thoai = xmlResultNNT.getElementsByTagName("dienthoai")(0).Text
-    rsReturn!fax = xmlResultNNT.getElementsByTagName("fax")(0).Text
-    'rsReturn!ky_lapbo = "01/2013"
-    'rsReturn!ngay_nop = "01/01/2013"
-    'rsReturn!ngay_nhap = "01/01/2013"
-    rsReturn!ngay_tchinh = xmlResultNNT.getElementsByTagName("ngay_bdau_nam_tchinh")(0).Text
+    rsReturn!trang_thai = GetStringByLength(xmlResultNNT.getElementsByTagName("trang_thai")(0).Text, 2)
+    rsReturn!tin = GetStringByLength(xmlResultNNT.getElementsByTagName("tin")(0).Text, 14)
+    rsReturn!ten_dtnt = GetStringByLength(xmlResultNNT.getElementsByTagName("ten_nnthue")(0).Text, 100)
+    rsReturn!dia_chi = GetStringByLength(xmlResultNNT.getElementsByTagName("dia_chi")(0).Text, 60)
+    rsReturn!dien_thoai = GetStringByLength(xmlResultNNT.getElementsByTagName("dienthoai")(0).Text, 20)
+    rsReturn!fax = GetStringByLength(xmlResultNNT.getElementsByTagName("fax")(0).Text, 20)
+    rsReturn!ky_lapbo = "01/2013" 'Datetime.Month
+    rsReturn!ngay_nop = "01/01/2013"
+    rsReturn!ngay_nhap = "01/01/2013"
+    rsReturn!ngay_tchinh = GetStringByLength(xmlResultNNT.getElementsByTagName("ngay_bdau_nam_tchinh")(0).Text, 50)
     rsReturn.Update
     Set GetTaxInfo = rsReturn
 
@@ -4442,6 +4444,11 @@ On Error GoTo ErrHandle
     Dim xmlResultDLT As New MSXML.DOMDocument
     Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
     
+    If (xmlResultDLT Is Nothing) Then
+        Set rsReturn = Nothing
+        Exit Function
+    End If
+    
     rsReturn.Fields.Append "repr_name", adVarWChar, 200, adFldUpdatable
     rsReturn.Fields.Append "repr_addr", adVarWChar, 200, adFldUpdatable
     rsReturn.Fields.Append "repr_tell", adVarWChar, 30, adFldUpdatable
@@ -4452,13 +4459,13 @@ On Error GoTo ErrHandle
     
     rsReturn.Open
     rsReturn.AddNew
-    rsReturn!repr_name = xmlResultDLT.getElementsByTagName("Ten_dai_ly_thue")(0).Text
-    rsReturn!repr_addr = xmlResultDLT.getElementsByTagName("Dia_chi_tru_so")(0).Text
-    rsReturn!repr_tell = xmlResultDLT.getElementsByTagName("Dien_thoai")(0).Text
-    rsReturn!repr_fax = xmlResultDLT.getElementsByTagName("Fax")(0).Text
-    rsReturn!repr_email = xmlResultDLT.getElementsByTagName("Mail")(0).Text
-    rsReturn!repr_cont_number = xmlResultDLT.getElementsByTagName("So_hop_dong")(0).Text
-    rsReturn!repr_cont_date = xmlResultDLT.getElementsByTagName("Ngay_hop_dong")(0).Text
+    rsReturn!repr_name = GetStringByLength(xmlResultDLT.getElementsByTagName("Ten_dai_ly_thue")(0).Text, 200)
+    rsReturn!repr_addr = GetStringByLength(xmlResultDLT.getElementsByTagName("Dia_chi_tru_so")(0).Text, 200)
+    rsReturn!repr_tell = GetStringByLength(xmlResultDLT.getElementsByTagName("Dien_thoai")(0).Text, 30)
+    rsReturn!repr_fax = GetStringByLength(xmlResultDLT.getElementsByTagName("Fax")(0).Text, 30)
+    rsReturn!repr_email = GetStringByLength(xmlResultDLT.getElementsByTagName("Mail")(0).Text, 60)
+    rsReturn!repr_cont_number = GetStringByLength(xmlResultDLT.getElementsByTagName("So_hop_dong")(0).Text, 30)
+    rsReturn!repr_cont_date = GetStringByLength(xmlResultDLT.getElementsByTagName("Ngay_hop_dong")(0).Text, 50)
     rsReturn.Update
     Set GetTaxDLInfo = rsReturn
 

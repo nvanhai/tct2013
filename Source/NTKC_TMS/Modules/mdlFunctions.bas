@@ -1624,7 +1624,7 @@ End Function
 
 Public Function LoadXmlTemp(ByVal xmlFileName As String) As MSXML.DOMDocument
     Dim xmlTemp As New MSXML.DOMDocument
-    xmlTemp.Load GetAbsolutePath("\InterfaceTemplates\xml\" & xmlFileName & ".xml")
+    xmlTemp.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & xmlFileName & ".xml")
     Set LoadXmlTemp = xmlTemp
 End Function
 
@@ -1633,9 +1633,9 @@ Public Function GetStringByLength(ByVal sInput As String, ByVal limited As Integ
         If Len(sInput) > limited Then
             sInput = Left$(sInput, limited)
         End If
-        Set CheckLimitedString = sInput
+        GetStringByLength = sInput
     Else
-        Set CheckLimitedString = ""
+        GetStringByLength = ""
     End If
 End Function
 
