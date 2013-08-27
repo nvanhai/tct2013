@@ -4370,9 +4370,9 @@ On Error GoTo ErrHandle
     rsReturn!dia_chi = GetStringByLength(xmlResultNNT.getElementsByTagName("dia_chi")(0).Text, 60)
     rsReturn!dien_thoai = GetStringByLength(xmlResultNNT.getElementsByTagName("dienthoai")(0).Text, 20)
     rsReturn!fax = GetStringByLength(xmlResultNNT.getElementsByTagName("fax")(0).Text, 20)
-    rsReturn!ky_lapbo = "01/2013" 'Datetime.Month
-    rsReturn!ngay_nop = "01/01/2013"
-    rsReturn!ngay_nhap = "01/01/2013"
+    rsReturn!ky_lapbo = IIf(Len(CStr(DateTime.Month)) > 1, "0" & DateTime.Month, CStr(DateTime.Month)) & "/" & CStr(DateTime.Year)
+    rsReturn!ngay_nop = IIf(Len(CStr(DateTime.Day)) > 1, "0" & DateTime.Day, CStr(DateTime.Day)) & "/" & IIf(Len(CStr(DateTime.Month)) > 1, "0" & DateTime.Month, CStr(DateTime.Month)) & "/" & CStr(DateTime.Year)
+    rsReturn!ngay_nhap = IIf(Len(CStr(DateTime.Day)) > 1, "0" & DateTime.Day, CStr(DateTime.Day)) & "/" & IIf(Len(CStr(DateTime.Month)) > 1, "0" & DateTime.Month, CStr(DateTime.Month)) & "/" & CStr(DateTime.Year)
     rsReturn!ngay_tchinh = GetStringByLength(xmlResultNNT.getElementsByTagName("ngay_bdau_nam_tchinh")(0).Text, 50)
     rsReturn.Update
     Set GetTaxInfo = rsReturn
