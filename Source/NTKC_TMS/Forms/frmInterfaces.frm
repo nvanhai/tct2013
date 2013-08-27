@@ -766,10 +766,10 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     Set xmlConfig = LoadConfig()
     
     Dim xmlResultNNT As New MSXML.DOMDocument
-    xmlResultNNT.Load GetAbsolutePath("..\InterfaceTemplates\xml\ResultNNTFromESB.xml")
+    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
     
     Dim xmlResultDLT As New MSXML.DOMDocument
-    xmlResultDLT.Load GetAbsolutePath("..\InterfaceTemplates\xml\ResultDLTFromESB.xml")
+    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
     
     'NNT
     xmlTK.getElementsByTagName("maCQTNoiNop")(0).firstChild.nodeValue = xmlConfig.getElementsByTagName("maCQTNoiNop")(0).Text
@@ -2002,7 +2002,7 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 
-str2 = "aa320010100100079   07201301501500101601/0114/06/2006<S01><S>0102030405</S><S>~0~4000000~400000~400347~3000000~5000000~250000~0~5000000~250000~0~0~800"
+    str2 = "aa320010100100079   07201301501500101601/0114/06/2006<S01><S>0102030405</S><S>~0~4000000~400000~400347~3000000~5000000~250000~0~5000000~250000~0~0~800"
     Barcode_Scaned str2
     str2 = "aa320010100100079   0720130150150020160000~250000~-150347~0~0~44444~0~0~0~0~150347~0~0~150347</S><S>Huy“n~234~HÔng~26/08/2013~1~~~1701~~~0</S></S01>"
     Barcode_Scaned str2
@@ -4223,7 +4223,45 @@ On Error GoTo ErrHandle
 '
 '    Set rsReturn = Nothing
     
-    'Connect DB success
+'    'Connect DB success
+'    rsReturn.Fields.Append "trang_thai", adChar, 50, adFldUpdatable
+'    rsReturn.Fields.Append "tin", adVarChar, 50, adFldUpdatable
+'    rsReturn.Fields.Append "ten_dtnt", adVarChar, 50, adFldUpdatable
+'    rsReturn.Fields.Append "dia_chi", adVarChar, 50, adFldUpdatable
+'    rsReturn.Fields.Append "dien_thoai", adVarChar, 50, adFldUpdatable
+'    rsReturn.Fields.Append "fax", adVarChar, 50, adFldUpdatable
+'    rsReturn.Fields.Append "ky_lapbo", adVarChar, 50, adFldUpdatable
+'    rsReturn.Fields.Append "ngay_nop", adVarChar, 50, adFldUpdatable
+'    rsReturn.Fields.Append "ngay_nhap", adVarChar, 50, adFldUpdatable
+'    rsReturn.Fields.Append "ngay_tchinh", adVarChar, 50, adFldUpdatable
+'    rsReturn.Fields.Append "ngay_kdoanh", adVarChar, 50, adFldUpdatable
+'
+'    rsReturn.Open
+'    rsReturn.AddNew
+'    rsReturn!trang_thai = "trang_thai"
+'    rsReturn!tin = "tin"
+'    rsReturn!ten_dtnt = "ten_dtnt"
+'    rsReturn!dia_chi = "dia_chi"
+'    rsReturn!dien_thoai = "dien_thoai"
+'    rsReturn!fax = "fax"
+'    rsReturn!ky_lapbo = "01/2013"
+'    rsReturn!ngay_nop = "01/01/2013"
+'    rsReturn!ngay_nhap = "01/01/2013"
+'    rsReturn!ngay_tchinh = "01/01/2013"
+'    rsReturn.Update
+'    Set GetTaxInfo = rsReturn
+'
+'    Set rsReturn = Nothing
+'    blnSuccess = True
+
+
+'Lay tu webservices cua ESB tra ve
+    Dim xmlConfig As New MSXML.DOMDocument
+    Set xmlConfig = LoadConfig()
+    
+    Dim xmlResultNNT As New MSXML.DOMDocument
+    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+
     rsReturn.Fields.Append "trang_thai", adChar, 50, adFldUpdatable
     rsReturn.Fields.Append "tin", adVarChar, 50, adFldUpdatable
     rsReturn.Fields.Append "ten_dtnt", adVarChar, 50, adFldUpdatable
@@ -4235,24 +4273,25 @@ On Error GoTo ErrHandle
     rsReturn.Fields.Append "ngay_nhap", adVarChar, 50, adFldUpdatable
     rsReturn.Fields.Append "ngay_tchinh", adVarChar, 50, adFldUpdatable
     rsReturn.Fields.Append "ngay_kdoanh", adVarChar, 50, adFldUpdatable
-    
+
     rsReturn.Open
     rsReturn.AddNew
-    rsReturn!trang_thai = "trang_thai"
-    rsReturn!tin = "tin"
-    rsReturn!ten_dtnt = "ten_dtnt"
-    rsReturn!dia_chi = "dia_chi"
-    rsReturn!dien_thoai = "dien_thoai"
-    rsReturn!fax = "fax"
-    rsReturn!ky_lapbo = "01/2013"
-    rsReturn!ngay_nop = "01/01/2013"
-    rsReturn!ngay_nhap = "01/01/2013"
-    rsReturn!ngay_tchinh = "01/01/2013"
+    rsReturn!trang_thai = xmlResultNNT.getElementsByTagName("trang_thai")(0).Text
+    rsReturn!tin = xmlResultNNT.getElementsByTagName("tin")(0).Text
+    rsReturn!ten_dtnt = xmlResultNNT.getElementsByTagName("ten_nnthue")(0).Text
+    rsReturn!dia_chi = xmlResultNNT.getElementsByTagName("dia_chi")(0).Text
+    rsReturn!dien_thoai = xmlResultNNT.getElementsByTagName("dienthoai")(0).Text
+    rsReturn!fax = xmlResultNNT.getElementsByTagName("fax")(0).Text
+    'rsReturn!ky_lapbo = "01/2013"
+    'rsReturn!ngay_nop = "01/01/2013"
+    'rsReturn!ngay_nhap = "01/01/2013"
+    rsReturn!ngay_tchinh = xmlResultNNT.getElementsByTagName("ngay_bdau_nam_tchinh")(0).Text
     rsReturn.Update
     Set GetTaxInfo = rsReturn
 
     Set rsReturn = Nothing
     blnSuccess = True
+
     
     Exit Function
 ErrHandle:
@@ -4288,7 +4327,36 @@ On Error GoTo ErrHandle
 '
 '    Set rsReturn = Nothing
     
-        rsReturn.Fields.Append "repr_name", adVarChar, 50, adFldUpdatable
+'    rsReturn.Fields.Append "repr_name", adVarChar, 50, adFldUpdatable
+'    rsReturn.Fields.Append "repr_addr", adVarChar, 50, adFldUpdatable
+'    rsReturn.Fields.Append "repr_tell", adVarChar, 50, adFldUpdatable
+'    rsReturn.Fields.Append "repr_fax", adVarChar, 50, adFldUpdatable
+'    rsReturn.Fields.Append "repr_email", adVarChar, 50, adFldUpdatable
+'    rsReturn.Fields.Append "repr_cont_number", adVarChar, 50, adFldUpdatable
+'    rsReturn.Fields.Append "repr_cont_date", adVarChar, 50, adFldUpdatable
+'
+'    rsReturn.Open
+'    rsReturn.AddNew
+'    rsReturn!repr_name = "repr_name"
+'    rsReturn!repr_addr = "repr_addr"
+'    rsReturn!repr_tell = "repr_tell"
+'    rsReturn!repr_fax = "repr_fax"
+'    rsReturn!repr_email = "repr_email"
+'    rsReturn!repr_cont_number = "11"
+'    rsReturn!repr_cont_date = "repr_cont_date"
+'    rsReturn.Update
+'    Set GetTaxDLInfo = rsReturn
+'
+'    Set rsReturn = Nothing
+'    'Connect DB success
+'    blnSuccess = True
+
+    ' Lay gia tri tra ve tu webservice cua ESB
+    
+    Dim xmlResultDLT As New MSXML.DOMDocument
+    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
+    
+    rsReturn.Fields.Append "repr_name", adVarChar, 50, adFldUpdatable
     rsReturn.Fields.Append "repr_addr", adVarChar, 50, adFldUpdatable
     rsReturn.Fields.Append "repr_tell", adVarChar, 50, adFldUpdatable
     rsReturn.Fields.Append "repr_fax", adVarChar, 50, adFldUpdatable
@@ -4298,15 +4366,15 @@ On Error GoTo ErrHandle
     
     rsReturn.Open
     rsReturn.AddNew
-    rsReturn!repr_name = "repr_name"
-    rsReturn!repr_addr = "repr_addr"
-    rsReturn!repr_tell = "repr_tell"
-    rsReturn!repr_fax = "repr_fax"
-    rsReturn!repr_email = "repr_email"
-    rsReturn!repr_cont_number = "11"
-    rsReturn!repr_cont_date = "repr_cont_date"
+    rsReturn!repr_name = xmlResultDLT.getElementsByTagName("Ten_dai_ly_thue")(0).Text
+    rsReturn!repr_addr = xmlResultDLT.getElementsByTagName("Dia_chi_tru_so")(0).Text
+    rsReturn!repr_tell = xmlResultDLT.getElementsByTagName("Dien_thoai")(0).Text
+    rsReturn!repr_fax = xmlResultDLT.getElementsByTagName("Fax")(0).Text
+    rsReturn!repr_email = xmlResultDLT.getElementsByTagName("Mail")(0).Text
+    rsReturn!repr_cont_number = xmlResultDLT.getElementsByTagName("So_hop_dong")(0).Text
+    rsReturn!repr_cont_date = xmlResultDLT.getElementsByTagName("Ngay_hop_dong")(0).Text
     rsReturn.Update
-            Set GetTaxDLInfo = rsReturn
+    Set GetTaxDLInfo = rsReturn
 
     Set rsReturn = Nothing
     'Connect DB success
