@@ -124,4 +124,6 @@
 	<Infor ID="0128" Msg="Kỳ kê khai không được gia hạn thuế GTGT theo NQ13/NQ-CP. Đề nghị kiểm tra lại!"/>
 	<Infor ID="0129" Msg="Tờ khai theo lần phát sinh của ngày này đã có trong hệ thống. Đề nghị cán bộ thuế nhập tay vào QLT!"/>
 	<Infor ID="0130" Msg="Đăng nhập không thành công! Đăng nhập lại?"/>
+	<Infor ID="0131" Msg="TỜ KHAI CHÍNH THỨC"/>
+	<Infor ID="0132" Msg="TỜ KHAI BỔ SUNG"/>
 </Message>
