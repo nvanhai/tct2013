@@ -244,6 +244,9 @@ On Error GoTo ErrorHandle
     Dim strESBReturn As String
     Dim sStatus As String
     
+    IsValidUserESB = 2
+    Exit Function
+    
     strESBReturn = getInfoUserFromESB
     
     'Chuan hoa file xml ket qua - lay duoc tu ESB
@@ -667,6 +670,9 @@ Private Function CheckVersion() As Boolean
     Dim strSQL As String
     
     On Error GoTo ErrHandle
+    
+    CheckVersion = True
+    Exit Function
     
 '    strSQL = "SELECT rv_low_value phien_ban " & _
 '           "From cg_ref_codes " & _
