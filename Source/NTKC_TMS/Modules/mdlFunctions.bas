@@ -1622,5 +1622,12 @@ Public Function LoadConfig() As MSXML.DOMDocument
     Set LoadConfig = xmlConfig
 End Function
 
+Public Function LoadXmlTemp(ByVal xmlFileName As String) As MSXML.DOMDocument
+    Dim xmlTemp As New MSXML.DOMDocument
+    xmlTemp.Load GetAbsolutePath("\InterfaceTemplates\xml\" & xmlFileName & ".xml")
+    Set LoadXmlTemp = xmlTemp
+End Function
+
+
 'Ket thuc ket xuat XML - nshung
 
