@@ -4262,17 +4262,17 @@ On Error GoTo ErrHandle
     Dim xmlResultNNT As New MSXML.DOMDocument
     Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
 
-    rsReturn.Fields.Append "trang_thai", adChar, 50, adFldUpdatable
-    rsReturn.Fields.Append "tin", adVarChar, 50, adFldUpdatable
-    rsReturn.Fields.Append "ten_dtnt", adVarChar, 50, adFldUpdatable
-    rsReturn.Fields.Append "dia_chi", adVarChar, 50, adFldUpdatable
-    rsReturn.Fields.Append "dien_thoai", adVarChar, 50, adFldUpdatable
-    rsReturn.Fields.Append "fax", adVarChar, 50, adFldUpdatable
-    rsReturn.Fields.Append "ky_lapbo", adVarChar, 50, adFldUpdatable
-    rsReturn.Fields.Append "ngay_nop", adVarChar, 50, adFldUpdatable
-    rsReturn.Fields.Append "ngay_nhap", adVarChar, 50, adFldUpdatable
-    rsReturn.Fields.Append "ngay_tchinh", adVarChar, 50, adFldUpdatable
-    rsReturn.Fields.Append "ngay_kdoanh", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "trang_thai", adChar, 2, adFldUpdatable
+    rsReturn.Fields.Append "tin", adVarChar, 14, adFldUpdatable
+    rsReturn.Fields.Append "ten_dtnt", adVarWChar, 100, adFldUpdatable
+    rsReturn.Fields.Append "dia_chi", adVarWChar, 60, adFldUpdatable
+    rsReturn.Fields.Append "dien_thoai", adVarWChar, 20, adFldUpdatable
+    rsReturn.Fields.Append "fax", adVarWChar, 20, adFldUpdatable
+    rsReturn.Fields.Append "ky_lapbo", adVarWChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "ngay_nop", adVarWChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "ngay_nhap", adVarWChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "ngay_tchinh", adVarWChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "ngay_kdoanh", adVarWChar, 50, adFldUpdatable
 
     rsReturn.Open
     rsReturn.AddNew
@@ -4356,13 +4356,13 @@ On Error GoTo ErrHandle
     Dim xmlResultDLT As New MSXML.DOMDocument
     Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
     
-    rsReturn.Fields.Append "repr_name", adVarChar, 50, adFldUpdatable
-    rsReturn.Fields.Append "repr_addr", adVarChar, 50, adFldUpdatable
-    rsReturn.Fields.Append "repr_tell", adVarChar, 50, adFldUpdatable
-    rsReturn.Fields.Append "repr_fax", adVarChar, 50, adFldUpdatable
-    rsReturn.Fields.Append "repr_email", adVarChar, 50, adFldUpdatable
-    rsReturn.Fields.Append "repr_cont_number", adVarChar, 50, adFldUpdatable
-    rsReturn.Fields.Append "repr_cont_date", adVarChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "repr_name", adVarWChar, 200, adFldUpdatable
+    rsReturn.Fields.Append "repr_addr", adVarWChar, 200, adFldUpdatable
+    rsReturn.Fields.Append "repr_tell", adVarWChar, 30, adFldUpdatable
+    rsReturn.Fields.Append "repr_fax", adVarWChar, 30, adFldUpdatable
+    rsReturn.Fields.Append "repr_email", adVarWChar, 60, adFldUpdatable
+    rsReturn.Fields.Append "repr_cont_number", adVarWChar, 30, adFldUpdatable
+    rsReturn.Fields.Append "repr_cont_date", adVarWChar, 50, adFldUpdatable
     
     rsReturn.Open
     rsReturn.AddNew
