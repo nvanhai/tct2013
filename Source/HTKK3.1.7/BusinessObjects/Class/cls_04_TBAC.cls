@@ -110,30 +110,31 @@ Public Sub Prepare2()
             .SetText .ColLetterToNumber("F"), countRowDynamic + 41, strDvcq
             .SetText .ColLetterToNumber("F"), countRowDynamic + 39, strTenDvcq
         'lay ten nguoi ky tren header
-        .Row = countRowDynamic + 47
-        .Col = .ColLetterToNumber("AA")
+        .Row = countRowDynamic + 48
+        .Col = .ColLetterToNumber("Q")
         If Trim(.Text) = "" Then
             nguoiky = GetNguoiKy()
-            .SetText .ColLetterToNumber("AA"), countRowDynamic + 47, nguoiky
+            .SetText .ColLetterToNumber("Q"), countRowDynamic + 48, nguoiky
         End If
         
-'         'Xoa cong thuc cua o Chu ky
-'        Set xmlCellNode = TAX_Utilities_New.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 35))
-'        Set xmlCellNode = xmlCellNode.parentNode
-'        Set xmlCellNode = xmlCellNode.parentNode
-'        Set xmlCellNode = xmlCellNode.parentNode.lastChild
-'        Set xmlCellNode = xmlCellNode.firstChild
-'        Set xmlCellNode = xmlCellNode.lastChild
-'        ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
-'        .Row = iRow
-'        .Col = iCol
-'        .Formula = ""
+         'Xoa cong thuc cua o Chu ky
+        Set xmlCellNode = TAX_Utilities_New.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 35))
+        Set xmlCellNode = xmlCellNode.parentNode
+        Set xmlCellNode = xmlCellNode.parentNode
+        Set xmlCellNode = xmlCellNode.parentNode.lastChild
+        Set xmlCellNode = xmlCellNode.firstChild
+        Set xmlCellNode = xmlCellNode.lastChild
+        ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+        .Row = iRow
+        .Col = iCol
+        .Formula = ""
         
-'        ' Set format ngay ky
-'        .Row = countRowDynamic + 45
-'        .Col = .ColLetterToNumber("AA")
-'        .Text = Format(Date, "dd/mm/yyyy")
-'        .TypeHAlign = TypeHAlignLeft
+        ' Set format ngay ky
+        .Row = countRowDynamic + 46
+        .Col = .ColLetterToNumber("Q")
+        '.Text = Format(Date, "dd/mm/yyyy")
+        .Text = TAX_Utilities_New.Day & "/" & TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year
+        .TypeHAlign = TypeHAlignLeft
         
         .EventEnabled(EventAllEvents) = True
     End With

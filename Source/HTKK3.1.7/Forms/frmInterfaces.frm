@@ -8762,8 +8762,15 @@ Public Function checkCauTrucData() As Boolean
                         End If
                         strKyHieuCT = GetAttribute(xmlNodeCellID, "CellID")
                         
-                        strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
-                                                
+                        If strTkhaiId = "71" Then
+                            If idx = 10 Then
+                                strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & Split(strKyHieuCT, "_")(1)  ' Lay ky hieu cua temp + row cua du lieu
+                            Else
+                                strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
+                            End If
+                        Else
+                            strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
+                        End If
                         If strKyHieuCTTemp <> strKyHieuCT Then
                             checkCauTrucData = False
                             checkSoCT = 4 ' Sai vi tri chi tieu
