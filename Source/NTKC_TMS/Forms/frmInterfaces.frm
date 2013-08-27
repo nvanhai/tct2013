@@ -469,6 +469,7 @@ Private Sub cmdCommand2_Click()
     Dim MaTK         As String
     Dim nodeVal      As MSXML.IXMLDOMNode
     Dim blnFinish    As Boolean
+    Dim sRow         As Integer
     
     On Error GoTo ErrHandle
     
@@ -512,10 +513,11 @@ Private Sub cmdCommand2_Click()
     SetValueToKhaiHeader xmlTK
 
     With fpSpread1
-        Dim cellid       As String
-        Dim cellArray()  As String
-        Dim nodeValIndex As Integer
-        Dim cellRange    As Integer
+        Dim cellid         As String
+        Dim cellArray()    As String
+        Dim nodeValIndex   As Integer
+        Dim cellRange      As Integer
+        Dim GroupCellRange As Integer
 
         .Sheet = 1
 
@@ -528,11 +530,19 @@ Private Sub cmdCommand2_Click()
             Dim Blank         As Boolean
             Dim ID            As Integer
             Dim CloneNode     As New MSXML.DOMDocument
-
+            
+            'Set gia tri cho group dong
             If UCase(xmlNodeMapCT.nodeName) = "DYNAMIC" Then
                 CloneNode.loadXML xmlNodeMapCT.xml
                 ID = 1
                 currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
+
+                If GetAttribute(xmlNodeMapCT, "GroupCellRange") = vbNullString Then
+                    GroupCellRange = 1
+                Else
+                    GroupCellRange = Val(GetAttribute(xmlNodeMapCT, "GroupCellRange"))
+                End If
+
                 Blank = True
 
                 If xmlTK.getElementsByTagName(currentGroup)(0).hasChildNodes Then
@@ -542,22 +552,23 @@ Private Sub cmdCommand2_Click()
 
                 Do
                     Blank = True
-                    SetCloneNode CloneNode, xmlNodeMapCT, Blank, cellRange
+                    SetCloneNode CloneNode, xmlNodeMapCT, Blank, cellRange, sRow
+                    .Col = .ColLetterToNumber("B")
+                    .Row = sRow
 
-                    If Blank = False Then
-                        SetAttribute CloneNode.firstChild, "id", CStr(ID)
-                        Set nodePL = xmlTK.getElementsByTagName(currentGroup)(0)
-                        nodePL.appendChild CloneNode.firstChild.CloneNode(True)
-                        ID = ID + 1
-                    Else
+                    If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
+
                         Exit Do
                     End If
 
-                    cellRange = cellRange + 1
-                    .Col = .ColLetterToNumber("B")
-                Loop Until .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff"
+                    SetAttribute CloneNode.firstChild, "id", CStr(ID)
+                    Set nodePL = xmlTK.getElementsByTagName(currentGroup)(0)
+                    nodePL.appendChild CloneNode.firstChild.CloneNode(True)
+                    ID = ID + 1
 
-                cellRange = cellRange - 1
+                    cellRange = cellRange + GroupCellRange
+                Loop
+                
             Else
                 Dim xmlChildNode As MSXML.IXMLDOMNode
                 currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
@@ -629,6 +640,13 @@ Private Sub cmdCommand2_Click()
                         CloneNode.loadXML xmlSection.xml
                         ID = 1
                         currentGroup = GetAttribute(xmlSection, "GroupName")
+
+                        If GetAttribute(xmlSection, "GroupCellRange") = vbNullString Then
+                            GroupCellRange = 1
+                        Else
+                            GroupCellRange = Val(GetAttribute(xmlSection, "GroupCellRange"))
+                        End If
+
                         Blank = True
 
                         If xmlPL.getElementsByTagName(currentGroup)(0).hasChildNodes Then
@@ -637,20 +655,22 @@ Private Sub cmdCommand2_Click()
 
                         Do
                             Blank = True
-                            SetCloneNode CloneNode, xmlSection, Blank, cellRange
+                            SetCloneNode CloneNode, xmlSection, Blank, cellRange, sRow
+                            
+                            .Col = .ColLetterToNumber("B")
+                            .Row = sRow
 
-                            If Blank = False Then
-                                SetAttribute CloneNode.firstChild.firstChild, "id", CStr(ID)
-                                Set nodePL = xmlPL.getElementsByTagName(currentGroup)(0)
-                                nodePL.appendChild CloneNode.firstChild.firstChild.CloneNode(True)
-                                ID = ID + 1
-                            Else
+                            If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
+
                                 Exit Do
                             End If
 
-                            cellRange = cellRange + 1
-                            .Col = .ColLetterToNumber("B")
-                        Loop Until .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff"
+                            SetAttribute CloneNode.firstChild.firstChild, "id", CStr(ID)
+                            Set nodePL = xmlPL.getElementsByTagName(currentGroup)(0)
+                            nodePL.appendChild CloneNode.firstChild.firstChild.CloneNode(True)
+                            ID = ID + 1
+                            cellRange = cellRange + GroupCellRange
+                        Loop
 
                         cellRange = cellRange - 1
                     Else
@@ -716,7 +736,8 @@ End Sub
 Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                          ByVal nodes As MSXML.IXMLDOMNode, _
                          ByRef Blank As Boolean, _
-                         ByVal cellRange As Integer)
+                         ByVal cellRange As Integer, _
+                         ByRef Row As Integer)
     Dim cellid      As String
     Dim cellArray() As String
     Dim cNode       As MSXML.IXMLDOMNode
@@ -727,7 +748,7 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
 
             If cNode.hasChildNodes Then
                 If cNode.firstChild.hasChildNodes Then
-                    SetCloneNode CloneNode, cNode, Blank, cellRange
+                    SetCloneNode CloneNode, cNode, Blank, cellRange, Row
                 Else
                     cellid = cNode.firstChild.nodeValue
                     cellArray = Split(cellid, "_")
@@ -745,7 +766,9 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                     If .Text <> "" And .Text <> vbNullString Then
                         Blank = False
                     End If
-
+                    
+                    Row = .Row
+                    
                 End If
            
             End If
@@ -801,10 +824,10 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     
     With fpSpread1
         If Val(strSolanBS) > 0 Then
-            xmlTK.getElementsByTagName("loaiTKhai")(0).firstChild.nodeValue = GetAttribute(GetMessageCellById("0115"), "Msg")
+            xmlTK.getElementsByTagName("loaiTKhai")(0).firstChild.nodeValue = GetAttribute(GetMessageCellById("0131"), "Msg")
             xmlTK.getElementsByTagName("soLan")(0).firstChild.nodeValue = Val(strSolanBS)
         Else
-            xmlTK.getElementsByTagName("loaiTKhai")(0).firstChild.nodeValue = GetAttribute(GetMessageCellById("0266"), "Msg")
+            xmlTK.getElementsByTagName("loaiTKhai")(0).firstChild.nodeValue = GetAttribute(GetMessageCellById("0132"), "Msg")
         End If
 
         xmlTK.getElementsByTagName("maDVu")(0).firstChild.nodeValue = maDVu
@@ -813,20 +836,12 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         xmlTK.getElementsByTagName("ttinNhaCCapDVu")(0).firstChild.nodeValue = ttinNhaCCapDVu
         
         
-        xmlTK.getElementsByTagName("kieuKy")(0).firstChild.nodeValue = strKieuKy
         xmlTK.getElementsByTagName("kyKKhai")(0).firstChild.nodeValue = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
-        If strKieuKy = "M" Then
-            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).firstChild.nodeValue = "01/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year
-            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).firstChild.nodeValue = format(GetNgayCuoiThang(TAX_Utilities_Srv_New.Year, TAX_Utilities_Srv_New.Month), "dd/MM/yyyy")
-        ElseIf strKieuKy = "Q" Then
-            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).firstChild.nodeValue = format(GetNgayDauQuy(TAX_Utilities_Srv_New.ThreeMonths, TAX_Utilities_Srv_New.Year, iNgayTaiChinh, iThangTaiChinh), "dd/MM/yyyy")
-            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).firstChild.nodeValue = format(GetNgayCuoiQuy(TAX_Utilities_Srv_New.ThreeMonths, TAX_Utilities_Srv_New.Year, iNgayTaiChinh, iThangTaiChinh), "dd/MM/yyyy")
-        Else
-            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).firstChild.nodeValue = "01/01/" & TAX_Utilities_Srv_New.Year
-            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).firstChild.nodeValue = "31/12/" & TAX_Utilities_Srv_New.Year
-        End If
+            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).firstChild.nodeValue = dNgayDauKy
+            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).firstChild.nodeValue = dNgayCuoiKy
+                    xmlTK.getElementsByTagName("kieuKy")(0).firstChild.nodeValue = strKieuKy
 
-        .Sheet = .SheetCount
+         '   .Sheet = .SheetCount
 '        .GetText .ColLetterToNumber("R"), 7, vlue
 '        xmlTK.getElementsByTagName("maCQTNoiNop")(0).firstChild.nodeValue = vlue
 '        .GetText .ColLetterToNumber("R"), 9, vlue
@@ -878,20 +893,25 @@ Private Function GetKyKeKhai(ByVal ID_TK As String) As String
     On Error GoTo ErrHandle
 
     If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "68" Then
-        If strQuy = "TK_THANG" Then
-            KYKKHAI = TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year
-        Else
+        If LoaiKyKK = True Then
             KYKKHAI = TAX_Utilities_Srv_New.ThreeMonths & "/" & TAX_Utilities_Srv_New.Year
+            strKieuKy = "Q"
+        Else
+            KYKKHAI = TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year
+            strKieuKy = "M"
         End If
             
     Else
 
         If (Trim(TAX_Utilities_Srv_New.Month) <> vbNullString Or Trim(TAX_Utilities_Srv_New.Month) <> "") And (Trim(TAX_Utilities_Srv_New.ThreeMonths) = vbNullString Or Trim(TAX_Utilities_Srv_New.ThreeMonths) = "") Then
             KYKKHAI = TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year
+            strKieuKy = "M"
         ElseIf (Trim(TAX_Utilities_Srv_New.Month) = vbNullString Or Trim(TAX_Utilities_Srv_New.Month) = "") And (Trim(TAX_Utilities_Srv_New.ThreeMonths) <> vbNullString Or Trim(TAX_Utilities_Srv_New.ThreeMonths) <> "") Then
             KYKKHAI = TAX_Utilities_Srv_New.ThreeMonths & "/" & TAX_Utilities_Srv_New.Year
+            strKieuKy = "Q"
         Else
             KYKKHAI = TAX_Utilities_Srv_New.Year
+            strKieuKy = "Y"
         End If
 
     End If
@@ -2489,6 +2509,27 @@ On Error GoTo ErrHandle
             arrBCBuffer(intBarcodeNo) = strPrefix & strBarcodeCount & strBarcode
             ' hlnam End
             If IsCompleteData(strData) Then
+                Dim tmp As String
+
+                ' Check version <= 3.1.6
+                If Val(Left$(strData, 3)) <= 316 Then
+                    If Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "04" Or Mid$(strData, 4, 2) = "71" Or Mid$(strData, 4, 2) = "36" Then
+                        If Val(idToKhai) <> 36 Then
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
+                            strData = tmp & "~0" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
+                        Else
+                            strData = Left$(strData, Len(strData) - 10) & "~0" & Right$(strData, 10)
+                        End If
+
+                    ElseIf Mid$(strData, 4, 2) = "68" Then
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
+                            strData = tmp & "~1" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
+                    ElseIf Mid$(strData, 4, 2) = "73" Then
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S02>", vbTextCompare) - 5)
+                            strData = tmp & "~" & Right$(strData, Len(strData) - InStr(1, strData, "</S02>", vbTextCompare) + 5)
+                    End If
+                End If
+
                 lblLoading.Visible = False
                 lblConnecting.Visible = True
                 frmInterfaces.Refresh
@@ -3166,13 +3207,30 @@ End Sub
 '****************************
 Private Sub SetPeriod(ByVal strValue As String)
 
-On Error GoTo ErrHandle
+    On Error GoTo ErrHandle
+    Dim strID As String
+    strID = Left$(strTaxReportInfo, 2)
+    
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
         TAX_Utilities_Srv_New.Month = Left$(strValue, 2)
-        TAX_Utilities_Srv_New.ThreeMonths = ""
+
+        If strID = "01" Or strID = "02" Or strID = "04" Or strID = "71" Or strID = "36" Or strID = "68" Then
+            TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
+        Else
+            TAX_Utilities_Srv_New.ThreeMonths = ""
+        End If
+
     ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = 1 Then
+
+        If strID = "68" Then
+            TAX_Utilities_Srv_New.Month = Left$(strValue, 2)
+            TAX_Utilities_Srv_New.ThreeMonths = ""
+        Else
+            TAX_Utilities_Srv_New.Month = ""
+            TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
+        End If
+
         TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
-        TAX_Utilities_Srv_New.Month = ""
     End If
     
     TAX_Utilities_Srv_New.Year = Right$(strValue, 4)
@@ -3456,15 +3514,43 @@ On Error GoTo ErrHandle
     
     
     On Error GoTo ErrHandle
+    If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Then
+        If Val(strIDBCTC) = 36 Then
+            LoaiKyKK = LoaiToKhai(strData)
+        Else
+            Dim tmp As String
+            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
+            LoaiKyKK = LoaiToKhai(tmp)
+        End If
+    End If
+    
     'Gan gia tri ngay dau ky
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
         dNgayDauKy = DateSerial(CInt(TAX_Utilities_Srv_New.Year), CInt(TAX_Utilities_Srv_New.Month), 1)
         dNgayCuoiKy = DateAdd("m", 1, dNgayDauKy)
         dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
+
+        If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Then
+            If LoaiKyKK = True Then
+                dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
+                dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
+                dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
+            End If
+
+        End If
+
     ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
-        dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
-        dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
-        dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
+
+        If Val(strIDBCTC) = 68 And LoaiKyKK = False Then
+            dNgayDauKy = DateSerial(CInt(TAX_Utilities_Srv_New.Year), CInt(TAX_Utilities_Srv_New.Month), 1)
+            dNgayCuoiKy = DateAdd("m", 1, dNgayDauKy)
+            dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
+        Else
+            dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
+            dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
+            dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
+        End If
+
     ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
         dNgayDauKy = GetNgayDauNam(CInt(TAX_Utilities_Srv_New.Year), iThangTaiChinh, iNgayTaiChinh)
         dNgayCuoiKy = DateAdd("m", 12, dNgayDauKy)
@@ -3518,7 +3604,7 @@ On Error GoTo ErrHandle
     '*******************************
         'Get main content
         If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Day") <> "0" Then
-            If Trim(strID) = "70" Or Trim(strID) = "81" Then
+            If Trim(strID) = "70" Or Trim(strID) = "81" Or Trim(strID) = "91" Then
                 strData = Mid$(strData, 37)
             Else
                 strData = Mid$(strData, 57)
@@ -3584,7 +3670,7 @@ On Error GoTo ErrHandle
     ' Lay so thu tu cua to khai da dua vao RCV_TKHAI_HDR
     ' So thu tu nay phai lay theo cung Nguoi nop thue, ky ke khai, va cung loai to khai
     ' An chi
-    If Val(strID) >= 64 And Val(strID) <= 68 Then
+    If (Val(strID) >= 64 And Val(strID) <= 68) Or Val(strID) = 91 Then
             ' An chi
             If Not getSoTTTK_AC(changeMaToKhai(strID), arrStrHeaderData, strData) Then
                 DisplayMessage "0079", msOKOnly, miCriticalError
@@ -5702,6 +5788,32 @@ On Error GoTo ErrHandle
 ErrHandle:
     'Connect DB fail
     SaveErrorLog Me.Name, "isMaDLT", Err.Number, Err.Description
+    If Err.Number = -2147467259 Then _
+        MessageBox "0063", msOKOnly, miCriticalError
+End Function
+
+Private Function LoaiToKhai(ByVal strData As String) As Boolean
+    Dim LoaiTk As String
+    Dim tmp As String
+    
+On Error GoTo ErrHandle
+    
+    
+'    tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
+'    tmp = Left$(tmp, Len(tmp) - 10)
+    'LoaiTk = Right$(tmp, 1)
+    LoaiTk = Left$(strData, Len(strData) - 10)
+    LoaiTk = Right$(LoaiTk, 1)
+    If LoaiTk = "1" Then
+        LoaiToKhai = True
+    Else
+        LoaiToKhai = False
+    End If
+    
+    Exit Function
+ErrHandle:
+    'Connect DB fail
+    SaveErrorLog Me.Name, "LoaiToKhai", Err.Number, Err.Description
     If Err.Number = -2147467259 Then _
         MessageBox "0063", msOKOnly, miCriticalError
 End Function
