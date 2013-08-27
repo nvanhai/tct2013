@@ -84,17 +84,17 @@
 	
 	<Menu ID="03" PopID="101" ParentID="103" Caption="Quyết toán TNDN năm (03/TNDN)" FormName="" Year="1" Month="0" ThreeMonth="0" Day="1" FinanceYear="1" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\Excel\03_TNDN11.xls" ReportTemplate="..\ReportTemplates\Excel\03_TNDN11.xls" Class="Tax_Business_Srv.cls_03TNDN">
-			<Sheet ID="03" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_TNDN11" Ini="..\Ini\03_TNDN11.xml"/>
+			<Sheet ID="03" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_TNDN13" Ini="..\Ini\03_TNDN13.xml"/>
 			<Sheet ID="03-1A" Caption="03-1A/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_1A_TNDN11" Ini="..\Ini\03_1A_TNDN11.xml"/>
 			<Sheet ID="03-1B" Caption="03-1B/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_1B_TNDN11" Ini="..\Ini\03_1B_TNDN11.xml"/>
 			<Sheet ID="03-1C" Caption="03-1C/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_1C_TNDN11" Ini="..\Ini\03_1C_TNDN11.xml"/>
 			<Sheet ID="03-2A" Caption="03-2A/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_2A_TNDN11" Ini="..\Ini\03_2A_TNDN11.xml"/>
 			<Sheet ID="03-2B" Caption="03-2B/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_2B_TNDN11" Ini="..\Ini\03_2B_TNDN11.xml"/>
-			<Sheet ID="03-3A" Caption="03-3A/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_3A_TNDN11" Ini="..\Ini\03_3A_TNDN11.xml"/>
-			<Sheet ID="03-3B" Caption="03-3B/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_3B_TNDN11" Ini="..\Ini\03_3B_TNDN11.xml"/>
+			<Sheet ID="03-3A" Caption="03-3A/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_3A_TNDN13" Ini="..\Ini\03_3A_TNDN13.xml"/>
+			<Sheet ID="03-3B" Caption="03-3B/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_3B_TNDN13" Ini="..\Ini\03_3B_TNDN13.xml"/>
 			<Sheet ID="03-3C" Caption="03-3C/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_3C_TNDN11" Ini="..\Ini\03_3C_TNDN11.xml"/>			
 			<Sheet ID="03-4" Caption="03-4/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_4_TNDN11" Ini="..\Ini\03_4_TNDN11.xml"/>
-			<Sheet ID="03-5" Caption="03-5/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_5_TNDN11" Ini="..\Ini\03_5_TNDN11.xml"/>
+			<Sheet ID="03-5" Caption="03-5/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_5_TNDN13" Ini="..\Ini\03_5_TNDN13.xml"/>
 			<Sheet ID="03-05" Caption="PL 05/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_05_TNDN11" Ini="..\Ini\03_05_TNDN11.xml"/>
 			<Sheet ID="03-6" Caption="03-6/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_6_TNDN11" Ini="..\Ini\03_6_TNDN11.xml"/>
 			<Sheet ID="03-7" Caption="GCN-01/QLT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_7_TNDN11" Ini="..\Ini\03_7_TNDN11.xml"/>
@@ -255,8 +255,8 @@
 	
 	<Menu ID="101_8" PopID="" ParentID="101" Caption="Thuế nhà thầu" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\kekhai.gif"/>
 	<Menu ID="70" PopID="101" ParentID="101_11" Caption="Tờ khai thuế nhà thầu nước ngoài - 01/NTNN" FormName="" Year="1" Month="1" ThreeMonth="0" Day="1" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
-		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\01_NTNN.xls" ReportTemplate="..\ReportTemplates\excel\01_NTNN.xls" Class="Tax_Business_Srv.cls_01NTNN" Class2="Tax_Business_Srv.clsReport008">
-			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_NTNN" Ini="..\Ini\01_NTNN.xml" ReportIni="..\ReportIni\01_NTNN.xml"/>
+		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\01_NTNN11.xls" ReportTemplate="..\ReportTemplates\excel\01_NTNN11.xls" Class="Tax_Business_Srv.cls_01NTNN" Class2="Tax_Business_Srv.clsReport008">
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_NTNN11" Ini="..\Ini\01_NTNN11.xml" ReportIni="..\ReportIni\01_NTNN11.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01_NTNN" Ini="..\Ini\KHBS_01_NTNN.xml" ReportIni="..\ReportIni\KHBS_01_NTNN.xml"/>
 		</Validity>
 	</Menu>		
