@@ -1628,6 +1628,16 @@ Public Function LoadXmlTemp(ByVal xmlFileName As String) As MSXML.DOMDocument
     Set LoadXmlTemp = xmlTemp
 End Function
 
+Public Function GetStringByLength(ByVal sInput As String, ByVal limited As Integer) As String
+    If (sInput <> "") Then
+        If Len(sInput) > limited Then
+            sInput = Left$(sInput, limited)
+        End If
+        Set CheckLimitedString = sInput
+    Else
+        Set CheckLimitedString = ""
+    End If
+End Function
 
 'Ket thuc ket xuat XML - nshung
 
