@@ -24,77 +24,78 @@
 		<tenNVienDLyThue>U_75</tenNVienDLyThue>
 		<cchiHNghe>U_77</cchiHNghe>
 	</Static>
+	<Static GroupName="HangHoaChiuThueTTDB">
+		<tongDongIcot5>X_51</tongDongIcot5>
+		<tongDongIcot6>AC_51</tongDongIcot6>
+		<tongDongIcot8>AH_51</tongDongIcot8>
+		<tongDongIcot9>AO_51</tongDongIcot9>
+		<tongDongIcot10>0</tongDongIcot10>
+	</Static>
 	<Dynamic GroupName="ChiTietHangHoaChiuThueTTDB">
 		<NDungTKhaiTTDB id="id">
-			<ct2></ct2>
-			<ct3></ct3>
-			<ct4>1</ct4>
-			<ct5>1</ct5>
-			<ct6>1</ct6>
-			<ct7>1</ct7>
-			<ct8>1</ct8>
-			<ct9>1</ct9>
-			<ct10>1</ct10>
-		</NDungTKhaiTTDB>
-	</Dynamic>
-	<Static GroupName="HangHoaChiuThueTTDB">
-		<tongDongIcot5>1</tongDongIcot5>
-		<tongDongIcot6>1</tongDongIcot6>
-		<tongDongIcot8>1</tongDongIcot8>
-		<tongDongIcot9>1</tongDongIcot9>
-		<tongDongIcot10>1</tongDongIcot10>
-	</Static>
-	<Dynamic GroupName="ChiTietDVuChiuThueTTDB">
-		<NDungTKhaiTTDB id="id">
-			<ct2></ct2>
-			<ct3></ct3>
-			<ct4>1</ct4>
-			<ct5>1</ct5>
-			<ct6>1</ct6>
-			<ct7>1</ct7>
-			<ct8>1</ct8>
-			<ct9>1</ct9>
-			<ct10>1</ct10>
+			<ct2>D_53</ct2>
+			<ct3>P_53</ct3>
+			<ct4>S_53</ct4>
+			<ct5>X_53</ct5>
+			<ct6>AC_53</ct6>
+			<ct7>AE_53</ct7>
+			<ct8>AH_53</ct8>
+			<ct9>AO_53</ct9>
+			<ct10>0</ct10>
 		</NDungTKhaiTTDB>
 	</Dynamic>
 	<Static GroupName="DVuChiuThueTNDB">
-		<tongDongIICot5>1</tongDongIICot5>
-		<tongDongIICot6>1</tongDongIICot6>
-		<tongDongIICot8>1</tongDongIICot8>
-		<tongDongIICot9>1</tongDongIICot9>
-		<tongDongIICot10>1</tongDongIICot10>
+		<tongDongIICot5>X_55</tongDongIICot5>
+		<tongDongIICot6>AC_55</tongDongIICot6>
+		<tongDongIICot8>AH_55</tongDongIICot8>
+		<tongDongIICot9>AO_55</tongDongIICot9>
+		<tongDongIICot10>0</tongDongIICot10>
 	</Static>
+	<Dynamic GroupName="ChiTietDVuChiuThueTTDB">
+		<NDungTKhaiTTDB id="id">
+			<ct2>D_57</ct2>
+			<ct3>P_57</ct3>
+			<ct4>S_57</ct4>
+			<ct5>X_57</ct5>
+			<ct6>AC_57</ct6>
+			<ct7>AE_57</ct7>
+			<ct8>AH_57</ct8>
+			<ct9>AO_57</ct9>
+			<ct10>0</ct10>
+		</NDungTKhaiTTDB>
+	</Dynamic>
+
 	<Static GroupName="HHoaKhongChiuThueTNDB">
-		<tongDongIIICot5>1</tongDongIIICot5>
+		<tongDongIIICot5>X_59</tongDongIIICot5>
 	</Static>
 	<Dynamic GroupName="HHXuatKhau">
 		<NDungHHoaKhongThue id="id">
-			<tenHHoa>text</tenHHoa>
-			<donVTinh></donVTinh>
-			<sanLuongTThu>1</sanLuongTThu>
-			<dSoBanChuaThue>1</dSoBanChuaThue>
+			<tenHHoa>D_63</tenHHoa>
+			<donVTinh>P_63</donVTinh>
+			<sanLuongTThu>S_63</sanLuongTThu>
+			<dSoBanChuaThue>X_63</dSoBanChuaThue>
 		</NDungHHoaKhongThue>
 	</Dynamic>
 	<Dynamic GroupName="HHBanDeXuatKhau">
 		<NDungHHoaKhongThue id="id">
-			<tenHHoa>text</tenHHoa>
-			<donVTinh></donVTinh>
-			<sanLuongTThu>1</sanLuongTThu>
-			<dSoBanChuaThue>1</dSoBanChuaThue>
+			<tenHHoa>D_67</tenHHoa>
+			<donVTinh>P_67</donVTinh>
+			<sanLuongTThu>S_67</sanLuongTThu>
+			<dSoBanChuaThue>X_67</dSoBanChuaThue>
 		</NDungHHoaKhongThue>
 	</Dynamic>
 	<Dynamic GroupName="HHGiaCongXuatKhau">
 		<NDungHHoaKhongThue id="id">
-			<tenHHoa>text</tenHHoa>
-			<donVTinh></donVTinh>
-			<sanLuongTThu>1</sanLuongTThu>
-			<dSoBanChuaThue>1</dSoBanChuaThue>
+			<tenHHoa>D_71</tenHHoa>
+			<donVTinh>P_71</donVTinh>
+			<sanLuongTThu>S_71</sanLuongTThu>
+			<dSoBanChuaThue>X_71</dSoBanChuaThue>
 		</NDungHHoaKhongThue>
 	</Dynamic>
 	<Static GroupName="BangChiTietThueTTĐB">
-		<tongDSoBanChuaThue>1</tongDSoBanChuaThue>
-		<tongGiaThue>0.0</tongGiaThue>
-		<tongThueKTru>1</tongThueKTru>
-		<tongThuePNop>1</tongThuePNop>
+		<tongDSoBanChuaThue>X_73</tongDSoBanChuaThue>
+		<tongGiaThue>AC_73</tongGiaThue>
+		<tongThueKTru>AH_73</tongThueKTru>
+		<tongThuePNop>AO_73</tongThuePNop>
 	</Static>
 </HSoKhaiThue>
