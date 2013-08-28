@@ -182,13 +182,24 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
                     Else
                         .Col = .ColLetterToNumber("R")
                         .Row = 50
-                        .Formula = "AC50"
+                        ' to khai quy tinh /3 * bieu thue luy tien
+                        If strTkThangQuy = "TK_THANG" Then
+                            .Formula = "AC50"
+                        Else
+                            .Formula = "AD50"
+                        End If
                     End If
                 Else
                     .Col = .ColLetterToNumber("R")
                     .Row = 50
                     .Lock = False
-                    .Formula = "AC50"
+                    '.Formula = "AC50"
+                    ' to khai quy tinh /3 * bieu thue luy tien
+                    If strTkThangQuy = "TK_THANG" Then
+                        .Formula = "AC50"
+                    Else
+                        .Formula = "AD50"
+                    End If
                 End If
             End If
         End If
