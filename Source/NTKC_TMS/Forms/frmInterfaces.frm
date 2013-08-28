@@ -477,6 +477,12 @@ Private Sub cmdCommand2_Click()
     
     blnFinish = CheckValidData
     
+    If Not objTaxBusiness Is Nothing Then
+        objTaxBusiness.Prepared4 dNgayDauKy
+        'Get Params
+        objTaxBusiness.GetParams strNgayNhanToKhai, strMaPhongXuLy 'strMaSoTep, strNgayNhanToKhai, strMaPhongXuLy
+    End If
+    
     If blnFinish = False Then
         Exit Sub
     End If
@@ -556,19 +562,21 @@ Private Sub cmdCommand2_Click()
                     .Col = .ColLetterToNumber("B")
                     .Row = sRow
 
-                    If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
+                    If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Or .Text = "gg" Or .Text = "hh" Then
 
                         Exit Do
                     End If
 
-                    SetAttribute CloneNode.firstChild, "id", CStr(ID)
+                    SetAttribute CloneNode.firstChild.firstChild, "id", CStr(ID)
                     Set nodePL = xmlTK.getElementsByTagName(currentGroup)(0)
-                    nodePL.appendChild CloneNode.firstChild.CloneNode(True)
+                    nodePL.appendChild CloneNode.firstChild.firstChild.CloneNode(True)
                     ID = ID + 1
 
                     cellRange = cellRange + GroupCellRange
                 Loop
-                
+
+                cellRange = cellRange - 1
+
             Else
                 Dim xmlChildNode As MSXML.IXMLDOMNode
                 currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
@@ -576,7 +584,7 @@ Private Sub cmdCommand2_Click()
                 For Each xmlCellNode In xmlNodeMapCT.childNodes
 
                     If xmlCellNode.hasChildNodes Then
-                        cellid = xmlCellNode.firstChild.nodeValue
+                        cellid = xmlCellNode.Text
                     Else
                         cellid = ""
                     End If
@@ -598,16 +606,19 @@ Private Sub cmdCommand2_Click()
 
                     End If
 
-                    If UBound(cellArray) <> 1 Then
-                        xmlCellTKNode.firstChild.nodeValue = cellid
+                    If InStr(cellid, "_") = 0 Then
+                        xmlCellTKNode.Text = cellid
+                    ElseIf Val(cellArray(1)) = 0 Then
+                        xmlCellTKNode.Text = cellid
+
                     Else
                         .Col = .ColLetterToNumber(cellArray(0))
                         .Row = Val(cellArray(1)) + cellRange
 
                         If .CellType = CellTypeNumber Then
-                            xmlCellTKNode.firstChild.nodeValue = .Value
+                            xmlCellTKNode.Text = .Value
                         Else
-                            xmlCellTKNode.firstChild.nodeValue = .Text
+                            xmlCellTKNode.Text = .Text
                         End If
                     End If
 
@@ -666,7 +677,7 @@ Private Sub cmdCommand2_Click()
                             .Col = .ColLetterToNumber("B")
                             .Row = sRow
 
-                            If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
+                            If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Or .Text = "gg" Or .Text = "hh" Then
 
                                 Exit Do
                             End If
@@ -686,7 +697,7 @@ Private Sub cmdCommand2_Click()
                         For Each xmlCellNode In xmlSection.childNodes
 
                             If xmlCellNode.hasChildNodes Then
-                                cellid = xmlCellNode.firstChild.nodeValue
+                                cellid = xmlCellNode.Text
                             Else
                                 cellid = ""
                             End If
@@ -708,16 +719,18 @@ Private Sub cmdCommand2_Click()
 
                             End If
 
-                            If UBound(cellArray) <> 1 Then
-                                xmlCellTKNode.nodeValue = cellid
+                            If InStr(cellid, "_") = 0 Then
+                                xmlCellTKNode.Text = cellid
+                            ElseIf Val(cellArray(1)) = 0 Then
+                                xmlCellTKNode.Text = cellid
                             Else
                                 .Col = .ColLetterToNumber(cellArray(0))
                                 .Row = Val(cellArray(1)) + cellRange
 
                                 If .CellType = CellTypeNumber Then
-                                    xmlCellTKNode.firstChild.nodeValue = .Value
+                                    xmlCellTKNode.Text = .Value
                                 Else
-                                    xmlCellTKNode.firstChild.nodeValue = .Text
+                                    xmlCellTKNode.Text = .Text
                                 End If
                             End If
 
@@ -762,17 +775,24 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                 If cNode.firstChild.hasChildNodes Then
                     SetCloneNode CloneNode, cNode, Blank, cellRange, Row
                 Else
-                    cellid = cNode.firstChild.nodeValue
+                    cellid = cNode.Text
                     cellArray = Split(cellid, "_")
-                                
-                    .Col = .ColLetterToNumber(cellArray(0))
-                    .Row = Val(cellArray(1)) + cellRange
-                        
-                    If .CellType = CellTypeNumber Then
-                        CloneNode.getElementsByTagName(cNode.nodeName)(0).firstChild.nodeValue = .Value
-                    Else
-                        CloneNode.getElementsByTagName(cNode.nodeName)(0).firstChild.nodeValue = .Text
 
+                    If InStr(cellid, "_") = 0 Then
+                        CloneNode.getElementsByTagName(cNode.nodeName)(0).Text = cellid
+                    ElseIf Val(cellArray(1)) = 0 Then
+                        CloneNode.getElementsByTagName(cNode.nodeName)(0).Text = cellid
+
+                    Else
+                        .Col = .ColLetterToNumber(cellArray(0))
+                        .Row = Val(cellArray(1)) + cellRange
+                        
+                        If .CellType = CellTypeNumber Then
+                            CloneNode.getElementsByTagName(cNode.nodeName)(0).Text = .Value
+                        Else
+                            CloneNode.getElementsByTagName(cNode.nodeName)(0).Text = .Text
+
+                        End If
                     End If
 
                     If .Text <> "" And .Text <> vbNullString Then
@@ -807,88 +827,54 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
     
     'NNT
-    xmlTK.getElementsByTagName("pbanDVu")(0).firstChild.nodeValue = APP_VERSION
+    xmlTK.getElementsByTagName("pbanDVu")(0).Text = APP_VERSION
 
-    xmlTK.getElementsByTagName("maCQTNoiNop")(0).firstChild.nodeValue = xmlConfig.getElementsByTagName("maCQTNoiNop")(0).Text
-    xmlTK.getElementsByTagName("tenCQTNoiNop")(0).firstChild.nodeValue = xmlConfig.getElementsByTagName("tenCQTNoiNop")(0).Text
-    xmlTK.getElementsByTagName("ngayLapTKhai")(0).firstChild.nodeValue = format(Date, "dd/MM/yyyy")
-    xmlTK.getElementsByTagName("mst")(0).firstChild.nodeValue = xmlResultNNT.getElementsByTagName("tin")(0).Text
-    xmlTK.getElementsByTagName("tenNNT")(0).firstChild.nodeValue = xmlResultNNT.getElementsByTagName("ten_nnthue")(0).Text
-    xmlTK.getElementsByTagName("dchiNNT")(0).firstChild.nodeValue = xmlResultNNT.getElementsByTagName("dia_chi")(0).Text
-    xmlTK.getElementsByTagName("tenHuyenNNT")(0).firstChild.nodeValue = ""
-    xmlTK.getElementsByTagName("tenTinhNNT")(0).firstChild.nodeValue = ""
-    xmlTK.getElementsByTagName("dthoaiNNT")(0).firstChild.nodeValue = xmlResultNNT.getElementsByTagName("dienthoai")(0).Text
-    xmlTK.getElementsByTagName("faxNNT")(0).firstChild.nodeValue = xmlResultNNT.getElementsByTagName("fax")(0).Text
-    xmlTK.getElementsByTagName("emailNNT")(0).firstChild.nodeValue = xmlResultNNT.getElementsByTagName("mail")(0).Text
+    xmlTK.getElementsByTagName("maCQTNoiNop")(0).Text = xmlConfig.getElementsByTagName("maCQTNoiNop")(0).Text
+    xmlTK.getElementsByTagName("tenCQTNoiNop")(0).Text = xmlConfig.getElementsByTagName("tenCQTNoiNop")(0).Text
+    xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = format(Date, "dd/MM/yyyy")
+    xmlTK.getElementsByTagName("mst")(0).Text = xmlResultNNT.getElementsByTagName("tin")(0).Text
+    xmlTK.getElementsByTagName("tenNNT")(0).Text = xmlResultNNT.getElementsByTagName("ten_nnthue")(0).Text
+    xmlTK.getElementsByTagName("dchiNNT")(0).Text = xmlResultNNT.getElementsByTagName("dia_chi")(0).Text
+    xmlTK.getElementsByTagName("tenHuyenNNT")(0).Text = ""
+    xmlTK.getElementsByTagName("tenTinhNNT")(0).Text = ""
+    xmlTK.getElementsByTagName("maHuyenNNT")(0).Text = ""
+    xmlTK.getElementsByTagName("maTinhNNT")(0).Text = ""
+    xmlTK.getElementsByTagName("dthoaiNNT")(0).Text = xmlResultNNT.getElementsByTagName("dienthoai")(0).Text
+    xmlTK.getElementsByTagName("faxNNT")(0).Text = xmlResultNNT.getElementsByTagName("fax")(0).Text
+    xmlTK.getElementsByTagName("emailNNT")(0).Text = xmlResultNNT.getElementsByTagName("mail")(0).Text
     
     'DLT
-    xmlTK.getElementsByTagName("mstDLyThue")(0).firstChild.nodeValue = strMaDaiLyThue
-    xmlTK.getElementsByTagName("tenDLyThue")(0).firstChild.nodeValue = xmlResultDLT.getElementsByTagName("Ten_dai_ly_thue")(0).Text
-    xmlTK.getElementsByTagName("dchiDLyThue")(0).firstChild.nodeValue = xmlResultDLT.getElementsByTagName("Dia_chi_tru_so")(0).Text
-    xmlTK.getElementsByTagName("dthoaiDLyThue")(0).firstChild.nodeValue = xmlResultDLT.getElementsByTagName("Dien_thoai")(0).Text
-    xmlTK.getElementsByTagName("faxDLyThue")(0).firstChild.nodeValue = xmlResultDLT.getElementsByTagName("Fax")(0).Text
-    xmlTK.getElementsByTagName("emailDLyThue")(0).firstChild.nodeValue = xmlResultDLT.getElementsByTagName("Mail")(0).Text
-    xmlTK.getElementsByTagName("soHDongDLyThue")(0).firstChild.nodeValue = xmlResultDLT.getElementsByTagName("So_hop_dong")(0).Text
-    xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).firstChild.nodeValue = xmlResultDLT.getElementsByTagName("Ngay_hop_dong")(0).Text
-    
-    xmlTK.getElementsByTagName("pbanTKhaiXML")(0).firstChild.nodeValue = "1.0"
-    
+    xmlTK.getElementsByTagName("mstDLyThue")(0).Text = strMaDaiLyThue
+    xmlTK.getElementsByTagName("tenDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Ten_dai_ly_thue")(0).Text
+    xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Dia_chi_tru_so")(0).Text
+    xmlTK.getElementsByTagName("dthoaiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Dien_thoai")(0).Text
+    xmlTK.getElementsByTagName("faxDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Fax")(0).Text
+    xmlTK.getElementsByTagName("emailDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Mail")(0).Text
+    xmlTK.getElementsByTagName("soHDongDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("So_hop_dong")(0).Text
+    xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Ngay_hop_dong")(0).Text
+    xmlTK.getElementsByTagName("tenTinhDLyThue")(0).Text = ""
+    xmlTK.getElementsByTagName("tenHuyenDLyThue")(0).Text = ""
+    xmlTK.getElementsByTagName("maHuyenDLyThue")(0).Text = ""
+    xmlTK.getElementsByTagName("maTinhDLyThue")(0).Text = ""
+    xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = "1.0"
+    xmlTK.getElementsByTagName("maDVu")(0).Text = GetAttribute(GetMessageCellById("0133"), "Msg")
+    xmlTK.getElementsByTagName("tenDVu")(0).Text = GetAttribute(GetMessageCellById("0134"), "Msg")
+    xmlTK.getElementsByTagName("ttinNhaCCapDVu")(0).Text = ""
+
     With fpSpread1
 
         If Val(strSolanBS) > 0 Then
-            xmlTK.getElementsByTagName("loaiTKhai")(0).firstChild.nodeValue = GetAttribute(GetMessageCellById("0132"), "Msg")
-            xmlTK.getElementsByTagName("soLan")(0).firstChild.nodeValue = Val(strSolanBS)
+            xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0132"), "Msg")
+            xmlTK.getElementsByTagName("soLan")(0).Text = Val(strSolanBS)
         Else
-            xmlTK.getElementsByTagName("soLan")(0).firstChild.nodeValue = ""
-            xmlTK.getElementsByTagName("loaiTKhai")(0).firstChild.nodeValue = GetAttribute(GetMessageCellById("0131"), "Msg")
+            xmlTK.getElementsByTagName("soLan")(0).Text = ""
+            xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0131"), "Msg")
         End If
         
-        xmlTK.getElementsByTagName("kyKKhai")(0).firstChild.nodeValue = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
-        xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).firstChild.nodeValue = format$(dNgayDauKy, "dd/MM/yyyy")
-        xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).firstChild.nodeValue = format$(dNgayCuoiKy, "dd/MM/yyyy")
-        xmlTK.getElementsByTagName("kieuKy")(0).firstChild.nodeValue = strKieuKy
-
-        '   .Sheet = .SheetCount
-        '        .GetText .ColLetterToNumber("R"), 7, vlue
-        '        xmlTK.getElementsByTagName("maCQTNoiNop")(0).firstChild.nodeValue = vlue
-        '        .GetText .ColLetterToNumber("R"), 9, vlue
-        '        xmlTK.getElementsByTagName("tenCQTNoiNop")(0).firstChild.nodeValue = vlue
-        'xmlTK.getElementsByTagName("mst")(0).firstChild.nodeValue = strTaxIDString
-        '.GetText .ColLetterToNumber("C"), 3, vlue
-        'xmlTK.getElementsByTagName("tenNNT")(0).firstChild.nodeValue = vlue
-        '.GetText .ColLetterToNumber("C"), 4, vlue
-        'xmlTK.getElementsByTagName("dchiNNT")(0).firstChild.nodeValue = vlue
-        '.GetText .ColLetterToNumber("C"), 5, vlue
-        'xmlTK.getElementsByTagName("tenHuyenNNT")(0).firstChild.nodeValue = vlue
-        '.GetText .ColLetterToNumber("C"), 6, vlue
-        'xmlTK.getElementsByTagName("tenTinhNNT")(0).firstChild.nodeValue = vlue
-        '.GetText .ColLetterToNumber("C"), 7, vlue
-        'xmlTK.getElementsByTagName("dthoaiNNT")(0).firstChild.nodeValue = vlue
-        '.GetText .ColLetterToNumber("C"), 8, vlue
-        'xmlTK.getElementsByTagName("faxNNT")(0).firstChild.nodeValue = vlue
-        '.GetText .ColLetterToNumber("C"), 9, vlue
-        'xmlTK.getElementsByTagName("emailNNT")(0).firstChild.nodeValue = vlue
-        '.GetText .ColLetterToNumber("V"), 5, vlue
-        'xmlTK.getElementsByTagName("mstDLyThue")(0).firstChild.nodeValue = vlue
-        '.GetText .ColLetterToNumber("V"), 6, vlue
-        'xmlTK.getElementsByTagName("tenDLyThue")(0).firstChild.nodeValue = vlue
-        '.GetText .ColLetterToNumber("V"), 7, vlue
-        'xmlTK.getElementsByTagName("dchiDLyThue")(0).firstChild.nodeValue = vlue
-        '.GetText .ColLetterToNumber("V"), 8, vlue
-        'xmlTK.getElementsByTagName("tenHuyenDLyThue")(0).firstChild.nodeValue = vlue
-        '.GetText .ColLetterToNumber("V"), 9, vlue
-        'xmlTK.getElementsByTagName("tenTinhDLyThue")(0).firstChild.nodeValue = vlue
-        '.GetText .ColLetterToNumber("V"), 10, vlue
-        'xmlTK.getElementsByTagName("dthoaiDLyThue")(0).firstChild.nodeValue = vlue
-        '.GetText .ColLetterToNumber("V"), 11, vlue
-        'xmlTK.getElementsByTagName("faxDLyThue")(0).firstChild.nodeValue = vlue
-        '.GetText .ColLetterToNumber("V"), 12, vlue
-        'xmlTK.getElementsByTagName("emailDLyThue")(0).firstChild.nodeValue = vlue
-        '.GetText .ColLetterToNumber("V"), 13, vlue
-        'xmlTK.getElementsByTagName("soHDongDLyThue")(0).firstChild.nodeValue = vlue
-        '.GetText .ColLetterToNumber("V"), 14, vlue
-        'xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).firstChild.nodeValue = vlue
-        'xmlTK.getElementsByTagName("ngayLapTKhai")(0).firstChild.nodeValue = format(Date, "dd/MM/yyyy")
+        xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
+        xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = format$(dNgayDauKy, "dd/MM/yyyy")
+        xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = format$(dNgayCuoiKy, "dd/MM/yyyy")
+        xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
     End With
 
     Exit Sub
@@ -1935,20 +1921,20 @@ Private Sub Command1_Click()
 '    Barcode_Scaned str2
 
 ' To Khai 01A/TNDN -- to khai chinh thuc
-str2 = "aa320112222222222   02201300200200100201/0114/06/2006<S01><S></S><S>1000000000~20000000~980000000~12000000~8900000~983100000~1300000~1000000~980800000~20~100000~196060000~x</S><S>x~x</S><S>Nguyen Van A~123456789~Nguyen van a~28/08/2013~1~0~~1052~01</S></S01>"
-Barcode_Scaned str2
-str2 = "aa320112222222222   022013002002002002<S01-1><S>196060000</S><S>DN1~0102030405001~40~78424000~10100~DN2~0102030405002~60~117636000~10300</S></S01-1>"
-Barcode_Scaned str2
+'str2 = "aa320112222222222   02201300200200100201/0114/06/2006<S01><S></S><S>1000000000~20000000~980000000~12000000~8900000~983100000~1300000~1000000~980800000~20~100000~196060000~x</S><S>x~x</S><S>Nguyen Van A~123456789~Nguyen van a~28/08/2013~1~0~~1052~01</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa320112222222222   022013002002002002<S01-1><S>196060000</S><S>DN1~0102030405001~40~78424000~10100~DN2~0102030405002~60~117636000~10300</S></S01-1>"
+'Barcode_Scaned str2
 
 '' To khai TTDB - To khai chinh thuc
-'str2 = "aa320052222222222   07201300100100100401/0101/01/1900<S01><S></S><S>~100100000~60662061.00~4600000~0~34830340</S><S>10101~Bao~20000.00~100000000~60606061.00~65.0~4600000~0~34793940~10102~Bao~1000.00~100000~56000.00~65.0~0~0~36400</S><S>20~14.00~0~0~6</S><S>20101~Gio~1000.00"
-'Barcode_Scaned str2
-'str2 = "aa320052222222222   072013001001002004~20~14.00~40.0~0~0~6</S><S>2400000</S><S>10103~Kg~4000.00~2000000</S><S>10200~LÝt~40000.00~100000</S><S>10200~LÝt~20000.00~300000</S><S>102500020~60662075.00~4600000~0~34830346</S><S>Nguyen van a~~~28/08/2013~1~~0~34830346~~0</S></S01>"
-'Barcode_Scaned str2
-'str2 = "aa320052222222222   072013001001003004<S01-1><S>AA/12T~12345~01/01/2013~NguyÔn v¨n a~10101~m¸y tÝnh~6~20000~120000~AA/12T~23456~02/02/2013~nguyÔn v¨n b~10102~thuèc lµ~20~1200000~24000000</S><S>    X× gµ (65 %)~6~120000~    Thuèc l¸ ®iÕu (65 %)~20~24000000</S></S01-1>"
-'Barcode_Scaned str2
-'str2 = "aa320052222222222   072013001001004004<S01-2><S>AA/12T~123~01/05/2013~Thuèc lµo~20000~10000000~100000~9900000</S><S>bia~2000~men bia~23~100</S></S01-2>"
-'Barcode_Scaned str2
+str2 = "aa320052222222222   07201300100100100401/0101/01/1900<S01><S></S><S>~100100000~60662061.00~4600000~0~34830340</S><S>10101~Bao~20000.00~100000000~60606061.00~65.0~4600000~0~34793940~10102~Bao~1000.00~100000~56000.00~65.0~0~0~36400</S><S>20~14.00~0~0~6</S><S>20101~Gio~1000.00"
+Barcode_Scaned str2
+str2 = "aa320052222222222   072013001001002004~20~14.00~40.0~0~0~6</S><S>2400000</S><S>10103~Kg~4000.00~2000000</S><S>10200~LÝt~40000.00~100000</S><S>10200~LÝt~20000.00~300000</S><S>102500020~60662075.00~4600000~0~34830346</S><S>Nguyen van a~~~28/08/2013~1~~0~34830346~~0</S></S01>"
+Barcode_Scaned str2
+str2 = "aa320052222222222   072013001001003004<S01-1><S>AA/12T~12345~01/01/2013~NguyÔn v¨n a~10101~m¸y tÝnh~6~20000~120000~AA/12T~23456~02/02/2013~nguyÔn v¨n b~10102~thuèc lµ~20~1200000~24000000</S><S>    X× gµ (65 %)~6~120000~    Thuèc l¸ ®iÕu (65 %)~20~24000000</S></S01-1>"
+Barcode_Scaned str2
+str2 = "aa320052222222222   072013001001004004<S01-2><S>AA/12T~123~01/05/2013~Thuèc lµo~20000~10000000~100000~9900000</S><S>bia~2000~men bia~23~100</S></S01-2>"
+Barcode_Scaned str2
 End Sub
 
 Private Sub Form_Activate()
