@@ -1,9 +1,9 @@
 <PL02_BVMT><Static GroupName="PL02_BVMT"><ngayNopTKhaiChinh>1967-08-13</ngayNopTKhaiChinh>
 	</Static><Dynamic GroupName="PL02_BVMT"><PBoSoThueBVMTChoDPhuong id="ID_2">
-			<ct2>String</ct2>
-			<ct3>String</ct3>
+			<ct2></ct2>
+			<ct3></ct3>
 			<ct4>0000000000</ct4>
-			<ct5>String</ct5>
+			<ct5></ct5>
 			<ct6>1</ct6>
 			<ct7>1</ct7>
 			<ct8>0.0</ct8>

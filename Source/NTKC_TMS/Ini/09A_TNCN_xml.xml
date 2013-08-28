@@ -1,6 +1,6 @@
 <PL09A-TNCN>
 	<Static GroupName="ThongTinPhuLuc">
-		<kemTKChinhNam>String</kemTKChinhNam>
+		<kemTKChinhNam></kemTKChinhNam>
 	</Static>
 	<Static GroupName="TongTNhapChiuThuePSinhTrongKy">
 		<ct05>1</ct05>

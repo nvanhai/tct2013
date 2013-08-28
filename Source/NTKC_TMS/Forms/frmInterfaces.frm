@@ -574,7 +574,13 @@ Private Sub cmdCommand2_Click()
                 currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
 
                 For Each xmlCellNode In xmlNodeMapCT.childNodes
-                    cellid = xmlCellNode.firstChild.nodeValue
+
+                    If xmlCellNode.hasChildNodes Then
+                        cellid = xmlCellNode.firstChild.nodeValue
+                    Else
+                        cellid = ""
+                    End If
+
                     cellArray = Split(cellid, "_")
 
                     If currentGroup = vbNullString Or currentGroup = "" Then
@@ -678,7 +684,13 @@ Private Sub cmdCommand2_Click()
                         currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
 
                         For Each xmlCellNode In xmlSection.childNodes
-                            cellid = xmlCellNode.firstChild.nodeValue
+
+                            If xmlCellNode.hasChildNodes Then
+                                cellid = xmlCellNode.firstChild.nodeValue
+                            Else
+                                cellid = ""
+                            End If
+
                             cellArray = Split(cellid, "_")
 
                             If currentGroup = vbNullString Or currentGroup = "" Then
@@ -795,6 +807,8 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
     
     'NNT
+    xmlTK.getElementsByTagName("pbanDVu")(0).firstChild.nodeValue = APP_VERSION
+
     xmlTK.getElementsByTagName("maCQTNoiNop")(0).firstChild.nodeValue = xmlConfig.getElementsByTagName("maCQTNoiNop")(0).Text
     xmlTK.getElementsByTagName("tenCQTNoiNop")(0).firstChild.nodeValue = xmlConfig.getElementsByTagName("tenCQTNoiNop")(0).Text
     xmlTK.getElementsByTagName("ngayLapTKhai")(0).firstChild.nodeValue = format(Date, "dd/MM/yyyy")
@@ -817,35 +831,28 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     xmlTK.getElementsByTagName("soHDongDLyThue")(0).firstChild.nodeValue = xmlResultDLT.getElementsByTagName("So_hop_dong")(0).Text
     xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).firstChild.nodeValue = xmlResultDLT.getElementsByTagName("Ngay_hop_dong")(0).Text
     
-    
-    
-    
     xmlTK.getElementsByTagName("pbanTKhaiXML")(0).firstChild.nodeValue = "1.0"
     
     With fpSpread1
+
         If Val(strSolanBS) > 0 Then
-            xmlTK.getElementsByTagName("loaiTKhai")(0).firstChild.nodeValue = GetAttribute(GetMessageCellById("0131"), "Msg")
+            xmlTK.getElementsByTagName("loaiTKhai")(0).firstChild.nodeValue = GetAttribute(GetMessageCellById("0132"), "Msg")
             xmlTK.getElementsByTagName("soLan")(0).firstChild.nodeValue = Val(strSolanBS)
         Else
-            xmlTK.getElementsByTagName("loaiTKhai")(0).firstChild.nodeValue = GetAttribute(GetMessageCellById("0132"), "Msg")
+            xmlTK.getElementsByTagName("soLan")(0).firstChild.nodeValue = ""
+            xmlTK.getElementsByTagName("loaiTKhai")(0).firstChild.nodeValue = GetAttribute(GetMessageCellById("0131"), "Msg")
         End If
-
-        xmlTK.getElementsByTagName("maDVu")(0).firstChild.nodeValue = maDVu
-        xmlTK.getElementsByTagName("tenDVu")(0).firstChild.nodeValue = tenDVu
-        xmlTK.getElementsByTagName("pbanDVu")(0).firstChild.nodeValue = pbanDVu
-        xmlTK.getElementsByTagName("ttinNhaCCapDVu")(0).firstChild.nodeValue = ttinNhaCCapDVu
-        
         
         xmlTK.getElementsByTagName("kyKKhai")(0).firstChild.nodeValue = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
-            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).firstChild.nodeValue = dNgayDauKy
-            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).firstChild.nodeValue = dNgayCuoiKy
-                    xmlTK.getElementsByTagName("kieuKy")(0).firstChild.nodeValue = strKieuKy
+        xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).firstChild.nodeValue = format$(dNgayDauKy, "dd/MM/yyyy")
+        xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).firstChild.nodeValue = format$(dNgayCuoiKy, "dd/MM/yyyy")
+        xmlTK.getElementsByTagName("kieuKy")(0).firstChild.nodeValue = strKieuKy
 
-         '   .Sheet = .SheetCount
-'        .GetText .ColLetterToNumber("R"), 7, vlue
-'        xmlTK.getElementsByTagName("maCQTNoiNop")(0).firstChild.nodeValue = vlue
-'        .GetText .ColLetterToNumber("R"), 9, vlue
-'        xmlTK.getElementsByTagName("tenCQTNoiNop")(0).firstChild.nodeValue = vlue
+        '   .Sheet = .SheetCount
+        '        .GetText .ColLetterToNumber("R"), 7, vlue
+        '        xmlTK.getElementsByTagName("maCQTNoiNop")(0).firstChild.nodeValue = vlue
+        '        .GetText .ColLetterToNumber("R"), 9, vlue
+        '        xmlTK.getElementsByTagName("tenCQTNoiNop")(0).firstChild.nodeValue = vlue
         'xmlTK.getElementsByTagName("mst")(0).firstChild.nodeValue = strTaxIDString
         '.GetText .ColLetterToNumber("C"), 3, vlue
         'xmlTK.getElementsByTagName("tenNNT")(0).firstChild.nodeValue = vlue
@@ -883,6 +890,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         'xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).firstChild.nodeValue = vlue
         'xmlTK.getElementsByTagName("ngayLapTKhai")(0).firstChild.nodeValue = format(Date, "dd/MM/yyyy")
     End With
+
     Exit Sub
 ErrHandle:
     SaveErrorLog Me.Name, "SetValueToKhaiHeader", Err.Number, Err.Description
@@ -4370,9 +4378,9 @@ On Error GoTo ErrHandle
     rsReturn!dia_chi = GetStringByLength(xmlResultNNT.getElementsByTagName("dia_chi")(0).Text, 60)
     rsReturn!dien_thoai = GetStringByLength(xmlResultNNT.getElementsByTagName("dienthoai")(0).Text, 20)
     rsReturn!fax = GetStringByLength(xmlResultNNT.getElementsByTagName("fax")(0).Text, 20)
-    rsReturn!ky_lapbo = IIf(Len(CStr(DateTime.Month)) > 1, "0" & DateTime.Month, CStr(DateTime.Month)) & "/" & CStr(DateTime.Year)
-    rsReturn!ngay_nop = IIf(Len(CStr(DateTime.Day)) > 1, "0" & DateTime.Day, CStr(DateTime.Day)) & "/" & IIf(Len(CStr(DateTime.Month)) > 1, "0" & DateTime.Month, CStr(DateTime.Month)) & "/" & CStr(DateTime.Year)
-    rsReturn!ngay_nhap = IIf(Len(CStr(DateTime.Day)) > 1, "0" & DateTime.Day, CStr(DateTime.Day)) & "/" & IIf(Len(CStr(DateTime.Month)) > 1, "0" & DateTime.Month, CStr(DateTime.Month)) & "/" & CStr(DateTime.Year)
+    rsReturn!ky_lapbo = IIf(DateTime.Month(DateTime.Now) < 10, "0" & DateTime.Month(DateTime.Now), CStr(DateTime.Month(DateTime.Now))) & "/" & CStr(DateTime.Year(DateTime.Now))
+    rsReturn!ngay_nop = IIf(Len(CStr(DateTime.Day(DateTime.Now))) > 1, "0" & DateTime.Day(DateTime.Now), CStr(DateTime.Day(DateTime.Now))) & "/" & IIf(Len(CStr(DateTime.Month(DateTime.Now))) > 1, "0" & DateTime.Month(DateTime.Now), CStr(DateTime.Month(DateTime.Now))) & "/" & CStr(DateTime.Year(DateTime.Now))
+    rsReturn!ngay_nhap = IIf(Len(CStr(DateTime.Day(DateTime.Now))) > 1, "0" & DateTime.Day(DateTime.Now), CStr(DateTime.Day(DateTime.Now))) & "/" & IIf(Len(CStr(DateTime.Month(DateTime.Now))) > 1, "0" & DateTime.Month(DateTime.Now), CStr(DateTime.Month(DateTime.Now))) & "/" & CStr(DateTime.Year(DateTime.Now))
     rsReturn!ngay_tchinh = GetStringByLength(xmlResultNNT.getElementsByTagName("ngay_bdau_nam_tchinh")(0).Text, 50)
     rsReturn.Update
     Set GetTaxInfo = rsReturn

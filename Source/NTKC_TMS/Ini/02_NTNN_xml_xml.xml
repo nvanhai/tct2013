@@ -5,20 +5,20 @@
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
-		<maLyDoGiaHan>String</maLyDoGiaHan>
-		<lyDoGiaHan>String</lyDoGiaHan>
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>Y_59</nguoiKy>
 		<ngayKy>Y_61</ngayKy>
 	</Static>
 	<Static GroupName="NNT">
-		<maHuyenNNT>String</maHuyenNNT>
-		<maTinhNNT>String</maTinhNNT>
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
 	</Static>
 	<Static GroupName="DLyThue">
-		<maHuyenDLyThue>String</maHuyenDLyThue>
-		<maTinhDLyThue>String</maTinhDLyThue>
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="NVienDLy">
 		<tenNVienDLyThue>H_59</tenNVienDLyThue>
@@ -29,94 +29,94 @@
 		<ngayHopNhaThau>N_28</ngayHopNhaThau>
 	</Static>
 	<Static GroupName="GiaTriHDong">
-		<donViTinh>String</donViTinh>
+		<donViTinh></donViTinh>
 		<keKhai>1</keKhai>
 		<quyetToan>1</quyetToan>
 		<chenhLech>1</chenhLech>
-		<ghiChu>String</ghiChu>
+		<ghiChu></ghiChu>
 	</Static>
 	<Static GroupName="DThuChuaThueGTGT">
-		<donViTinh>String</donViTinh>
+		<donViTinh></donViTinh>
 		<keKhai>1</keKhai>
 		<quyetToan>1</quyetToan>
 		<chenhLech>1</chenhLech>
-		<ghiChu>String</ghiChu>
+		<ghiChu></ghiChu>
 	</Static>
 	<Static GroupName="DThuTinhThueNTPhu">
-		<donViTinh>String</donViTinh>
+		<donViTinh></donViTinh>
 		<keKhai>1</keKhai>
 		<quyetToan>1</quyetToan>
 		<chenhLech>1</chenhLech>
-		<ghiChu>String</ghiChu>
+		<ghiChu></ghiChu>
 	</Static>
 	<Static GroupName="DThuTinhThueNTNN">
-		<donViTinh>String</donViTinh>
+		<donViTinh></donViTinh>
 		<keKhai>1</keKhai>
 		<quyetToan>1</quyetToan>
 		<chenhLech>1</chenhLech>
-		<ghiChu>String</ghiChu>
+		<ghiChu></ghiChu>
 	</Static>
 	<Static GroupName="SoThuePhaiNopNTNN">
-		<donViTinh>String</donViTinh>
+		<donViTinh></donViTinh>
 		<keKhai>1</keKhai>
 		<quyetToan>1</quyetToan>
 		<chenhLech>1</chenhLech>
-		<ghiChu>String</ghiChu>
+		<ghiChu></ghiChu>
 	</Static>
 	<Static GroupName="ThueGTGTPhaiNop">
-		<donViTinh>String</donViTinh>
+		<donViTinh></donViTinh>
 		<keKhai>1</keKhai>
 		<quyetToan>1</quyetToan>
 		<chenhLech>1</chenhLech>
-		<ghiChu>String</ghiChu>
+		<ghiChu></ghiChu>
 	</Static>
 	<Static GroupName="ThueTNDNPhaiNop">
-		<donViTinh>String</donViTinh>
+		<donViTinh></donViTinh>
 		<keKhai>1</keKhai>
 		<quyetToan>1</quyetToan>
 		<chenhLech>1</chenhLech>
-		<ghiChu>String</ghiChu>
+		<ghiChu></ghiChu>
 	</Static>
 	<Static GroupName="SoThueDaNopNTNN">
-		<donViTinh>String</donViTinh>
+		<donViTinh></donViTinh>
 		<keKhai>1</keKhai>
 		<quyetToan>1</quyetToan>
 		<chenhLech>1</chenhLech>
-		<ghiChu>String</ghiChu>
+		<ghiChu></ghiChu>
 	</Static>
 	<Static GroupName="ThueGTGTDaNop">
-		<donViTinh>String</donViTinh>
+		<donViTinh></donViTinh>
 		<keKhai>1</keKhai>
 		<quyetToan>1</quyetToan>
 		<chenhLech>1</chenhLech>
-		<ghiChu>String</ghiChu>
+		<ghiChu></ghiChu>
 	</Static>
 	<Static GroupName="ThueTNDNDaNop">
-		<donViTinh>String</donViTinh>
+		<donViTinh></donViTinh>
 		<keKhai>1</keKhai>
 		<quyetToan>1</quyetToan>
 		<chenhLech>1</chenhLech>
-		<ghiChu>String</ghiChu>
+		<ghiChu></ghiChu>
 	</Static>
 	<Static GroupName="SoThueNopThuaThieu">
-		<donViTinh>String</donViTinh>
+		<donViTinh></donViTinh>
 		<keKhai>1</keKhai>
 		<quyetToan>1</quyetToan>
 		<chenhLech>1</chenhLech>
-		<ghiChu>String</ghiChu>
+		<ghiChu></ghiChu>
 	</Static>
 	<Static GroupName="ThueGTGTThuaThieu">
-		<donViTinh>String</donViTinh>
+		<donViTinh></donViTinh>
 		<keKhai>1</keKhai>
 		<quyetToan>1</quyetToan>
 		<chenhLech>1</chenhLech>
-		<ghiChu>String</ghiChu>
+		<ghiChu></ghiChu>
 	</Static>
 	<Static GroupName="ThueTNDNThuaThieu">
-		<donViTinh>String</donViTinh>
+		<donViTinh></donViTinh>
 		<keKhai>1</keKhai>
 		<quyetToan>1</quyetToan>
 		<chenhLech>1</chenhLech>
-		<ghiChu>String</ghiChu>
+		<ghiChu></ghiChu>
 	</Static>
 </HSoKhaiThue>

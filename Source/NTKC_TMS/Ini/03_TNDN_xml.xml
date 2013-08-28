@@ -1,16 +1,16 @@
-<HSoKhaiThue><Static GroupName="TKhaiThue"><maTKhai>String</maTKhai>
+<HSoKhaiThue><Static GroupName="TKhaiThue"><maTKhai></maTKhai>
 		<tenTKhai>token</tenTKhai>
 		<moTaBMau/>
-	</Static><Static GroupName="GiaHan"><maLyDoGiaHan>String</maLyDoGiaHan>
-		<lyDoGiaHan>String</lyDoGiaHan>
-	</Static><Static GroupName="TKhaiThue"><nguoiKy>String</nguoiKy>
-		<ngayKy>String</ngayKy>
-	</Static><Static GroupName="NNT"><maHuyenNNT>String</maHuyenNNT>
-		<maTinhNNT>String</maTinhNNT>
-	</Static><Static GroupName="DLyThue"><maHuyenDLyThue>String</maHuyenDLyThue>
-		<maTinhDLyThue>String</maTinhDLyThue>
+	</Static><Static GroupName="GiaHan"><maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static><Static GroupName="TKhaiThue"><nguoiKy></nguoiKy>
+		<ngayKy></ngayKy>
+	</Static><Static GroupName="NNT"><maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static><Static GroupName="DLyThue"><maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
 	</Static><Static GroupName="NVienDLy"><tenNVienDLyThue>token</tenNVienDLyThue>
-		<cchiHNghe>String</cchiHNghe>
+		<cchiHNghe></cchiHNghe>
 	</Static><Static GroupName="CTieuTKhaiChinh"><doanhNghiepADungTSuat20>true</doanhNghiepADungTSuat20>
 		<doanhNghiepCoCSoHToanPThuoc>true</doanhNghiepCoCSoHToanPThuoc>
 		<ctA1>0</ctA1>
@@ -45,6 +45,6 @@
 		<ctE1>1</ctE1>
 		<ctE2>1</ctE2>
 	</Static><Dynamic GroupName="TaiLieu_Guikem"><TaiLieuGuikem id="ID_1">
-			<tenDocument>String</tenDocument>
+			<tenDocument></tenDocument>
 		</TaiLieuGuikem>
 	</Dynamic></HSoKhaiThue>
