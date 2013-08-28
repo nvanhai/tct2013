@@ -126,4 +126,6 @@
 	<Infor ID="0130" Msg="Đăng nhập không thành công! Đăng nhập lại?"/>
 	<Infor ID="0131" Msg="C"/>
 	<Infor ID="0132" Msg="B"/>
+	<Infor ID="0133" Msg="NTK"/>
+	<Infor ID="0134" Msg="Nhận tờ khai mã vạch"/>
 </Message>
