@@ -1,0 +1,17 @@
+<PL05A_TNDN>
+	<Static GroupName="PL05A_TNDN">
+		<ct5>F_7</ct5>
+	</Static>
+	<Dynamic GroupName="ThueTNDN">
+		<thueTNDN id="ID_1">
+			<ct6>D_35</ct6>
+			<ct7>F_35</ct7>
+			<ct8>G_35</ct8>
+			<ct9>M_35</ct9>
+			<ct10>P_35</ct10>
+		</thueTNDN>
+	</Dynamic>
+	<Static GroupName="PL05A_TNDN">
+		<ct11>P_37</ct11>
+	</Static>
+</PL05A_TNDN>
