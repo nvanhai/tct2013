@@ -5,28 +5,28 @@
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
-		<maLyDoGiaHan>String</maLyDoGiaHan>
-		<lyDoGiaHan>String</lyDoGiaHan>
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>T_68</nguoiKy>
 		<ngayKy>T_70</ngayKy>
 	</Static>
 	<Static GroupName="NNT">
-		<maHuyenNNT>String</maHuyenNNT>
-		<maTinhNNT>String</maTinhNNT>
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
 	</Static>
 	<Static GroupName="DLyThue">
-		<maHuyenDLyThue>String</maHuyenDLyThue>
-		<maTinhDLyThue>String</maTinhDLyThue>
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="NVienDLy">
 		<tenNVienDLyThue>G_68</tenNVienDLyThue>
 		<cchiHNghe>G_70</cchiHNghe>
 	</Static>
 	<Static GroupName="ct12">
-		<soTKhoanNHang>String</soTKhoanNHang>
-		<noiMo>String</noiMo>
+		<soTKhoanNHang></soTKhoanNHang>
+		<noiMo></noiMo>
 	</Static>
 	<Static GroupName="TongTNhapChiuThueTNCNTrongKy">
 		<ct22>R_42</ct22>

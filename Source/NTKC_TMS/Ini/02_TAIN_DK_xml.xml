@@ -1,20 +1,20 @@
-<HSoKhaiThue><Static GroupName="TKhaiThue"><maTKhai>String</maTKhai>
+<HSoKhaiThue><Static GroupName="TKhaiThue"><maTKhai></maTKhai>
 		<tenTKhai>token</tenTKhai>
 		<moTaBMau/>
-	</Static><Static GroupName="GiaHan"><maLyDoGiaHan>String</maLyDoGiaHan>
-		<lyDoGiaHan>String</lyDoGiaHan>
-	</Static><Static GroupName="TKhaiThue"><nguoiKy>String</nguoiKy>
-		<ngayKy>String</ngayKy>
-	</Static><Static GroupName="NNT"><maHuyenNNT>String</maHuyenNNT>
-		<maTinhNNT>String</maTinhNNT>
-	</Static><Static GroupName="DLyThue"><maHuyenDLyThue>String</maHuyenDLyThue>
-		<maTinhDLyThue>String</maTinhDLyThue>
+	</Static><Static GroupName="GiaHan"><maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static><Static GroupName="TKhaiThue"><nguoiKy></nguoiKy>
+		<ngayKy></ngayKy>
+	</Static><Static GroupName="NNT"><maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static><Static GroupName="DLyThue"><maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
 	</Static><Static GroupName="NVienDLy"><tenNVienDLyThue>token</tenNVienDLyThue>
-		<cchiHNghe>String</cchiHNghe>
+		<cchiHNghe></cchiHNghe>
 	</Static><Static GroupName="LoaiDKhi"><ct01>true</ct01>
 		<ct02>true</ct02>
 		<ct03>true</ct03>
-	</Static><Static GroupName="CTieuTKhaiChinh"><ct15>String</ct15>
+	</Static><Static GroupName="CTieuTKhaiChinh"><ct15></ct15>
 		<ct25>1</ct25>
 		<ct26>1</ct26>
 		<ct27>1</ct27>
@@ -35,6 +35,6 @@
 		<ct40>1</ct40>
 		<ct41>1</ct41>
 		<ct42>1</ct42>
-		<mucLuc>String</mucLuc>
-		<tieuMucThu>String</tieuMucThu>
+		<mucLuc></mucLuc>
+		<tieuMucThu></tieuMucThu>
 	</Static></HSoKhaiThue>

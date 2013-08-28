@@ -5,20 +5,20 @@
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
-		<maLyDoGiaHan>String</maLyDoGiaHan>
-		<lyDoGiaHan>String</lyDoGiaHan>
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>AF_75</nguoiKy>
 		<ngayKy>AF_77</ngayKy>
 	</Static>
 	<Static GroupName="NNT">
-		<maHuyenNNT>String</maHuyenNNT>
-		<maTinhNNT>String</maTinhNNT>
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
 	</Static>
 	<Static GroupName="DLyThue">
-		<maHuyenDLyThue>String</maHuyenDLyThue>
-		<maTinhDLyThue>String</maTinhDLyThue>
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="NVienDLy">
 		<tenNVienDLyThue>U_75</tenNVienDLyThue>
@@ -26,8 +26,8 @@
 	</Static>
 	<Dynamic GroupName="ChiTietHangHoaChiuThueTTDB">
 		<NDungTKhaiTTDB id="id">
-			<ct2>String</ct2>
-			<ct3>String</ct3>
+			<ct2></ct2>
+			<ct3></ct3>
 			<ct4>1</ct4>
 			<ct5>1</ct5>
 			<ct6>1</ct6>
@@ -46,8 +46,8 @@
 	</Static>
 	<Dynamic GroupName="ChiTietDVuChiuThueTTDB">
 		<NDungTKhaiTTDB id="id">
-			<ct2>String</ct2>
-			<ct3>String</ct3>
+			<ct2></ct2>
+			<ct3></ct3>
 			<ct4>1</ct4>
 			<ct5>1</ct5>
 			<ct6>1</ct6>
@@ -70,7 +70,7 @@
 	<Dynamic GroupName="HHXuatKhau">
 		<NDungHHoaKhongThue id="id">
 			<tenHHoa>text</tenHHoa>
-			<donVTinh>String</donVTinh>
+			<donVTinh></donVTinh>
 			<sanLuongTThu>1</sanLuongTThu>
 			<dSoBanChuaThue>1</dSoBanChuaThue>
 		</NDungHHoaKhongThue>
@@ -78,7 +78,7 @@
 	<Dynamic GroupName="HHBanDeXuatKhau">
 		<NDungHHoaKhongThue id="id">
 			<tenHHoa>text</tenHHoa>
-			<donVTinh>String</donVTinh>
+			<donVTinh></donVTinh>
 			<sanLuongTThu>1</sanLuongTThu>
 			<dSoBanChuaThue>1</dSoBanChuaThue>
 		</NDungHHoaKhongThue>
@@ -86,7 +86,7 @@
 	<Dynamic GroupName="HHGiaCongXuatKhau">
 		<NDungHHoaKhongThue id="id">
 			<tenHHoa>text</tenHHoa>
-			<donVTinh>String</donVTinh>
+			<donVTinh></donVTinh>
 			<sanLuongTThu>1</sanLuongTThu>
 			<dSoBanChuaThue>1</dSoBanChuaThue>
 		</NDungHHoaKhongThue>
