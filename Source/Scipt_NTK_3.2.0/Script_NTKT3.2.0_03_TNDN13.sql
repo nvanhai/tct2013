@@ -1,5 +1,5 @@
 -------------------------
----TK 03/TNDN-------
+---Phu luc 03/TNDN-------
 -------------------------
 insert into RCV_DM_TKHAI (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
 values ('03_TNDN13', 'T¿ khai quy¿t to¿n thu¿ TNDN', 'Y', '320', to_date('01-07-2011', 'dd-mm-yyyy'), null);
