@@ -219,4 +219,65 @@ values ('02_NTNN13', '8', 'N', 5551, null);
 
 insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('02_NTNN13', '9', 'N', 5551, null);
+
+-------------------------
+---02/NTNN---------------
+---PL 02-1/NTNN----------
+-------------------------
+insert into RCV_DM_TKHAI (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
+values ('02_1_NTNN13', 'PHߠLࠃ BࠎG KߠCࠃ NHߠTHࠕ N߿C NGOࠉ  ', 'M', '320', to_date('01-07-2011', 'dd-mm-yyyy'), null);
+	--RCV_GDIEN_TKHAI
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5564, 'B¿NG K¿ C¿C NH¿ TH¿U N¿¿C NGO¿I ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', 1, '02_1_NTNN13', null, '12', '13', null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5565, 'T¿ng c¿ng ', null, null, null, null, null, null, null, null, null, '14', null, 2, '02_1_NTNN13', null, '15', '16', null, null, null, null, null, null, null, null, null);
+	--RCV_MAP_CTIEU
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('02_1_NTNN13', '1', 'C', 5564, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('02_1_NTNN13', '10', 'N', 5564, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('02_1_NTNN13', '11', 'N', 5564, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('02_1_NTNN13', '12', 'N', 5564, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('02_1_NTNN13', '13', 'N', 5564, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('02_1_NTNN13', '14', 'N', 5565, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('02_1_NTNN13', '15', 'N', 5565, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('02_1_NTNN13', '16', 'N', 5565, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('02_1_NTNN13', '2', 'C', 5564, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('02_1_NTNN13', '3', 'C', 5564, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('02_1_NTNN13', '4', 'C', 5564, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('02_1_NTNN13', '5', 'C', 5564, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('02_1_NTNN13', '6', 'C', 5564, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('02_1_NTNN13', '7', 'C', 5564, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('02_1_NTNN13', '8', 'C', 5564, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('02_1_NTNN13', '9', 'N', 5564, null);
 	
