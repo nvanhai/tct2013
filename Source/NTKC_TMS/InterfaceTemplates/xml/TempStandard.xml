@@ -3,17 +3,17 @@
 	<HEADER>
 		<VERSION>1.0</VERSION>
 		<SENDER_CODE>NTK</SENDER_CODE>
-		<SENDER_NAME>Ứng dụng nhận tờ khai mã vạch</SENDER_NAME>
+		<SENDER_NAME>Hệ thống nhận tờ khai mã vạch</SENDER_NAME>
 		<RECEIVER_CODE>TMS</RECEIVER_CODE>
-		<RECEIVER_NAME></RECEIVER_NAME>
-		<TRAN_CODE>12345</TRAN_CODE>
+		<RECEIVER_NAME>Hệ thống Quản lý thuế tập trung</RECEIVER_NAME>
+		<TRAN_CODE>00006</TRAN_CODE>
 		<MSG_ID>NTK123456789</MSG_ID>
 		<MSG_REFID></MSG_REFID>
 		<ID_LINK></ID_LINK>
 		<SEND_DATE>26-08-2013 11:45:30</SEND_DATE>
-		<ORIGINAL_CODE></ORIGINAL_CODE>
-		<ORIGINAL_NAME></ORIGINAL_NAME>
-		<ORIGINAL_DATE></ORIGINAL_DATE>
+		<ORIGINAL_CODE>NTK</ORIGINAL_CODE>
+		<ORIGINAL_NAME>Hệ thống nhận tờ khai mã vạch</ORIGINAL_NAME>
+		<ORIGINAL_DATE>26-08-2013 11:45:30</ORIGINAL_DATE>
 		<ERROR_CODE></ERROR_CODE>
 		<ERROR_DESC></ERROR_DESC>
 		<SPARE1></SPARE1>
@@ -21,7 +21,16 @@
 		<SPARE3></SPARE3>
 	</HEADER>					
 	<BODY>		
-		<ROW>									
+		<ROW>
+			<ADD_INFO>
+				<ngay_nop_tk>01/01/2013</ngay_nop_tk>
+				<ky_lap_bo>01/2013</ky_lap_bo>
+				<nguon_goc_tk>iHTKK</nguon_goc_tk>
+				<nguoi_nhan_tk>NVDAT.HAN</nguoi_nhan_tk>
+				<ngay_nhan_tk>05/01/2013</ngay_nhan_tk>
+			</ADD_INFO>
+			<RETURN>
+			</RETURN>
 		</ROW>					
 	</BODY>					
 	<SECURITY>					

@@ -159,7 +159,14 @@ End Sub
 
 Private Sub cmdOk_Click()
 On Error GoTo ErrorHandle
-   
+    ' Push MQ
+    Dim MQPUT As New MQPUT
+    MQPUT.open_Conn "ESB.INT.QMGR", "INT.INBOX.QUEUE"  ' Theo tai lieu TK_ChuanKetNoi
+    MQPUT.put_Msg "<hel>Hello, world</hel>"
+    MQPUT.close_Conn
+    ' End push
+    
+    
     If Len(txtUsername.Text) = 0 Then
         DisplayMessage "0056", msOKOnly, miInformation
         txtUsername.SetFocus

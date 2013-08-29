@@ -184,40 +184,40 @@ Public Function GetValidityNode() As MSXML.IXMLDOMNode
             Select Case TAX_Utilities_Srv_New.Month
 
                 Case "01"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "02"
-                    ValidityDate = format("28/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("28/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "03"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "04"
-                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "05"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "06"
-                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "07"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "08"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "09"
-                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "10"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "11"
-                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "12"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
             End Select
         
         Else
@@ -237,40 +237,40 @@ Public Function GetValidityNode() As MSXML.IXMLDOMNode
             Select Case TAX_Utilities_Srv_New.Month
 
                 Case "01"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "02"
-                    ValidityDate = format("28/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("28/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "03"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "04"
-                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "05"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "06"
-                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "07"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "08"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "09"
-                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "10"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "11"
-                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
 
                 Case "12"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = Format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
             End Select
         
         ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
@@ -292,7 +292,7 @@ Public Function GetValidityNode() As MSXML.IXMLDOMNode
     Set xmlNodeListValidity = TAX_Utilities_Srv_New.NodeMenu.selectNodes("Validity")
 
     For Each xmlNodeValidity In xmlNodeListValidity
-        StartDate = format(GetAttribute(xmlNodeValidity, "StartDate"), "dd/mm/yyyy")
+        StartDate = Format(GetAttribute(xmlNodeValidity, "StartDate"), "dd/mm/yyyy")
 
         If ValidityDate >= StartDate Then
             If StartDate > MaxDate Then
@@ -539,16 +539,16 @@ Public Sub SetupData(pGrid As fpSpread)
                     End If
                 End If
                 TAX_Utilities_Srv_New.Data(lSheet).Load strDataFileName
-                If TAX_Utilities_Srv_New.Data(lSheet).parseError.reason <> vbNullString Then
+                If TAX_Utilities_Srv_New.Data(lSheet).parseError.Reason <> vbNullString Then
                     If InStr(1, TAX_Utilities_Srv_New.Data(lSheet).parseError.errorCode, "2146697210") <> 0 Then
                         'New data
                         blnNewData = True
                         TAX_Utilities_Srv_New.Data(lSheet).Load strOriginDataFileName
-                        If TAX_Utilities_Srv_New.Data(lSheet).parseError.reason <> vbNullString Then
-                            MsgBox TAX_Utilities_Srv_New.Data(lSheet).parseError.reason
+                        If TAX_Utilities_Srv_New.Data(lSheet).parseError.Reason <> vbNullString Then
+                            MsgBox TAX_Utilities_Srv_New.Data(lSheet).parseError.Reason
                         End If
                     Else
-                        MsgBox TAX_Utilities_Srv_New.Data(lSheet).parseError.reason
+                        MsgBox TAX_Utilities_Srv_New.Data(lSheet).parseError.Reason
                     End If
                 End If
 
@@ -835,9 +835,9 @@ End Function
 'Return:True if it is a valid number, false if it is not a valid number
 '*******************************************************
 
-Public Sub ValidFormatDate(txtDate As MSForms.TextBox, format As String)
+Public Sub ValidFormatDate(txtDate As MSForms.TextBox, Format As String)
 
-    Select Case format
+    Select Case Format
         Case "M"
             If Not ValidNumber(txtDate.Text, 12) Then
                 DisplayMessage "0018", msOKOnly
@@ -1567,33 +1567,33 @@ Public Function GetNgayCuoiThang(intYear As Integer, intMonth As Integer) As Dat
     
     Select Case intMonth
         Case 1
-            ValidityDate = format("31/" & format(intMonth, "00") & "/" & format(intYear, "0000"), "dd/mm/yyyy")
+            ValidityDate = Format("31/" & Format(intMonth, "00") & "/" & Format(intYear, "0000"), "dd/mm/yyyy")
         Case 2
-             If CInt(format(intYear, "0000")) / 4 = CInt(format(intYear, "0000")) \ 4 And CInt(format(intYear, "0000")) \ 100 <> CInt(format(intYear, "0000")) / 100 Then
-                ValidityDate = format("29/" & format(intMonth, "00") & "/" & format(intYear, "0000"), "dd/mm/yyyy")
+             If CInt(Format(intYear, "0000")) / 4 = CInt(Format(intYear, "0000")) \ 4 And CInt(Format(intYear, "0000")) \ 100 <> CInt(Format(intYear, "0000")) / 100 Then
+                ValidityDate = Format("29/" & Format(intMonth, "00") & "/" & Format(intYear, "0000"), "dd/mm/yyyy")
             Else
-                ValidityDate = format("28/" & format(intMonth, "00") & "/" & format(intYear, "0000"), "dd/mm/yyyy")
+                ValidityDate = Format("28/" & Format(intMonth, "00") & "/" & Format(intYear, "0000"), "dd/mm/yyyy")
             End If
         Case 3
-            ValidityDate = format("31/" & format(intMonth, "00") & "/" & format(intYear, "0000"), "dd/mm/yyyy")
+            ValidityDate = Format("31/" & Format(intMonth, "00") & "/" & Format(intYear, "0000"), "dd/mm/yyyy")
         Case 4
-            ValidityDate = format("30/" & format(intMonth, "00") & "/" & format(intYear, "0000"), "dd/mm/yyyy")
+            ValidityDate = Format("30/" & Format(intMonth, "00") & "/" & Format(intYear, "0000"), "dd/mm/yyyy")
         Case 5
-            ValidityDate = format("31/" & format(intMonth, "00") & "/" & format(intYear, "0000"), "dd/mm/yyyy")
+            ValidityDate = Format("31/" & Format(intMonth, "00") & "/" & Format(intYear, "0000"), "dd/mm/yyyy")
         Case 6
-            ValidityDate = format("30/" & format(intMonth, "00") & "/" & format(intYear, "0000"), "dd/mm/yyyy")
+            ValidityDate = Format("30/" & Format(intMonth, "00") & "/" & Format(intYear, "0000"), "dd/mm/yyyy")
         Case 7
-            ValidityDate = format("31/" & format(intMonth, "00") & "/" & format(intYear, "0000"), "dd/mm/yyyy")
+            ValidityDate = Format("31/" & Format(intMonth, "00") & "/" & Format(intYear, "0000"), "dd/mm/yyyy")
         Case 8
-            ValidityDate = format("31/" & format(intMonth, "00") & "/" & format(intYear, "0000"), "dd/mm/yyyy")
+            ValidityDate = Format("31/" & Format(intMonth, "00") & "/" & Format(intYear, "0000"), "dd/mm/yyyy")
         Case 9
-            ValidityDate = format("30/" & format(intMonth, "00") & "/" & format(intYear, "0000"), "dd/mm/yyyy")
+            ValidityDate = Format("30/" & Format(intMonth, "00") & "/" & Format(intYear, "0000"), "dd/mm/yyyy")
         Case 10
-            ValidityDate = format("31/" & format(intMonth, "00") & "/" & format(intYear, "0000"), "dd/mm/yyyy")
+            ValidityDate = Format("31/" & Format(intMonth, "00") & "/" & Format(intYear, "0000"), "dd/mm/yyyy")
         Case 11
-            ValidityDate = format("30/" & format(intMonth, "00") & "/" & format(intYear, "0000"), "dd/mm/yyyy")
+            ValidityDate = Format("30/" & Format(intMonth, "00") & "/" & Format(intYear, "0000"), "dd/mm/yyyy")
         Case 12
-            ValidityDate = format("31/" & format(intMonth, "00") & "/" & format(intYear, "0000"), "dd/mm/yyyy")
+            ValidityDate = Format("31/" & Format(intMonth, "00") & "/" & Format(intYear, "0000"), "dd/mm/yyyy")
     End Select
     
     GetNgayCuoiThang = ValidityDate
@@ -1612,14 +1612,18 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument) As MSXML.DO
     XmlDocStandard.getElementsByTagName("RECEIVER_CODE")(0).Text = xmlConfig.getElementsByTagName("RECEIVER_CODE")(0).Text
     XmlDocStandard.getElementsByTagName("RECEIVER_NAME")(0).Text = xmlConfig.getElementsByTagName("RECEIVER_NAME")(0).Text
     XmlDocStandard.getElementsByTagName("TRAN_CODE")(0).Text = xmlConfig.getElementsByTagName("TRAN_CODE")(0).Text
+    XmlDocStandard.getElementsByTagName("ORIGINAL_CODE")(0).Text = xmlConfig.getElementsByTagName("ORIGINAL_CODE")(0).Text
+    XmlDocStandard.getElementsByTagName("ORIGINAL_NAME")(0).Text = xmlConfig.getElementsByTagName("ORIGINAL_NAME")(0).Text
     
     XmlDocStandard.getElementsByTagName("MSG_ID")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GetGUID()
-    XmlDocStandard.getElementsByTagName("SEND_DATE")(0).Text = format(DateTime.Now, "dd-mm-yyyy HH:mm:ss")
+    XmlDocStandard.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mm-yyyy HH:mm:ss")
     
+    XmlDocStandard.getElementsByTagName("nguoi_nhan_tk")(0).Text = strUserID
+    XmlDocStandard.getElementsByTagName("ngay_nhan_tk")(0).Text = Format(DateTime.Now, "dd/MM/yyyy")
     
     If (Not xmlDoc Is Nothing) Then
         'XmlDocStandard.getElementsByTagName("ROW")(0).appendChild xmlDoc.getElementsByTagName("HSoKhaiThue")(0) 'xmlDoc.childNodes(0)
-        XmlDocStandard.getElementsByTagName("ROW")(0).appendChild xmlDoc.lastChild
+        XmlDocStandard.getElementsByTagName("RETURN")(0).appendChild xmlDoc.lastChild
     End If
     Set AppendXMLStandard = XmlDocStandard
 End Function
@@ -1669,6 +1673,22 @@ IIf((udtGUID.Data4(7) < &H10), "0", "") & Hex$(udtGUID.Data4(7))
 End If
 
 End Function
+
+'Push data to ESB
+Public Sub PushDataToESB(ByVal xmlInput As String)
+    Dim xmlConfig As New MSXML.DOMDocument
+    Set xmlConfig = LoadConfig()
+    Dim sQueueMgrName As String
+    Dim sQueueName As String
+    
+    sQueueMgrName = xmlConfig.getElementsByTagName("queue_manager_name")(0).Text
+    sQueueName = xmlConfig.getElementsByTagName("queue_name")(0).Text
+    
+    Dim MQPUT As New MQPUT
+    MQPUT.open_Conn sQueueMgrName, sQueueName  ' Theo tai lieu TK_ChuanKetNoi
+    MQPUT.put_Msg xmlInput
+    MQPUT.close_Conn
+End Sub
 
 'Ket thuc ket xuat XML - nshung
 

@@ -28,6 +28,7 @@ Begin VB.Form frmInterfaces
       Left            =   8880
       TabIndex        =   19
       Top             =   120
+      Visible         =   0   'False
       Width           =   990
    End
    Begin VB.Frame Frame1 
@@ -752,6 +753,11 @@ Private Sub cmdCommand2_Click()
     Dim xmlDocSave As New MSXML.DOMDocument
     Set xmlDocSave = AppendXMLStandard(xmlTK)
     xmlDocSave.save sFileName
+    
+    ' Push MQ
+    PushDataToESB xmlDocSave.xml
+    ' End push
+    
     Exit Sub
 ErrHandle:
     SaveErrorLog Me.Name, "cmdExportXML_Click", Err.Number, Err.Description
@@ -831,7 +837,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
 
     xmlTK.getElementsByTagName("maCQTNoiNop")(0).Text = xmlConfig.getElementsByTagName("maCQTNoiNop")(0).Text
     xmlTK.getElementsByTagName("tenCQTNoiNop")(0).Text = xmlConfig.getElementsByTagName("tenCQTNoiNop")(0).Text
-    xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = format(Date, "dd/MM/yyyy")
+    xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = Format(Date, "dd/MM/yyyy")
     xmlTK.getElementsByTagName("mst")(0).Text = xmlResultNNT.getElementsByTagName("tin")(0).Text
     xmlTK.getElementsByTagName("tenNNT")(0).Text = xmlResultNNT.getElementsByTagName("ten_nnthue")(0).Text
     xmlTK.getElementsByTagName("dchiNNT")(0).Text = xmlResultNNT.getElementsByTagName("dia_chi")(0).Text
@@ -842,6 +848,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     xmlTK.getElementsByTagName("dthoaiNNT")(0).Text = xmlResultNNT.getElementsByTagName("dienthoai")(0).Text
     xmlTK.getElementsByTagName("faxNNT")(0).Text = xmlResultNNT.getElementsByTagName("fax")(0).Text
     xmlTK.getElementsByTagName("emailNNT")(0).Text = xmlResultNNT.getElementsByTagName("mail")(0).Text
+
     
     'DLT
     xmlTK.getElementsByTagName("mstDLyThue")(0).Text = strMaDaiLyThue
@@ -870,11 +877,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             xmlTK.getElementsByTagName("soLan")(0).Text = ""
             xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0131"), "Msg")
         End If
-        
-        xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
-        xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = format$(dNgayDauKy, "dd/MM/yyyy")
-        xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = format$(dNgayCuoiKy, "dd/MM/yyyy")
-        xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
+
     End With
 
     Exit Sub
@@ -1110,10 +1113,303 @@ On Error GoTo ErrHandle
 ErrHandle:
     SaveErrorLog Me.Name, "cmdExit_Click", Err.Number, Err.Description
 End Sub
+Private Sub ExecuteSave()
+Dim xmlMapCT     As New MSXML.DOMDocument
+    Dim xmlTK        As New MSXML.DOMDocument
+    Dim xmlPL        As New MSXML.DOMDocument
+    Dim xmlMapPL     As New MSXML.DOMDocument
+    Dim xmlNodeTK    As MSXML.IXMLDOMNode
+    Dim xmlNodeMapCT As MSXML.IXMLDOMNode
 
+    Dim cSheet       As Integer, oSheet As Integer
+    Dim strFileName  As String
+    Dim MaTK         As String
+    Dim nodeVal      As MSXML.IXMLDOMNode
+    Dim blnFinish    As Boolean
+    Dim sRow         As Integer
+    
+    On Error GoTo ErrHandle
+    
+    CallFinish
+    
+    blnFinish = CheckValidData
+    
+    If blnFinish = False Then
+        Exit Sub
+    End If
+        
+    MaTK = GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(0), "DataFile")
+
+    If InStr(MaTK, "11") > 0 Then
+        MaTK = Replace$(MaTK, "11", "")
+    ElseIf InStr(MaTK, "10") > 0 Then
+        MaTK = Replace$(MaTK, "10", "")
+    End If
+    
+    '    With CommonDialog1
+    '        .CancelError = True
+    '        .InitDir = GetAbsolutePath("..")
+    '        .Filter = "XML file (*.xml)|*.xml"
+    '        .FilterIndex = 1
+    '        .DialogTitle = "File xml export to " & .InitDir
+    '        .FileName = getFileName
+    '        .ShowSave
+    '
+    '        If Right$(.FileName, 4) <> ".xml" Then
+    '            strFileName = .FileName & ".xml"
+    '        Else
+    '            strFileName = .FileName
+    '        End If
+    '    End With
+
+    strFileName = "test.xml" 'getFileName
+        
+    xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
+    xmlMapCT.Load GetAbsolutePath("..\Ini\" & MaTK & "_xml.xml")
+
+    SetValueToKhaiHeader xmlTK
+
+    With fpSpread1
+        Dim cellid         As String
+        Dim cellArray()    As String
+        Dim nodeValIndex   As Integer
+        Dim cellRange      As Integer
+        Dim GroupCellRange As Integer
+
+        .Sheet = 1
+
+        ' Set value cho to khai
+        For Each xmlNodeMapCT In xmlMapCT.lastChild.childNodes
+            Dim xmlCellNode   As MSXML.IXMLDOMNode
+            Dim xmlCellTKNode As MSXML.IXMLDOMNode
+            Dim currentGroup  As String
+            Dim nodePL        As MSXML.IXMLDOMNode
+            Dim Blank         As Boolean
+            Dim ID            As Integer
+            Dim CloneNode     As New MSXML.DOMDocument
+            
+            'Set gia tri cho group dong
+            If UCase(xmlNodeMapCT.nodeName) = "DYNAMIC" Then
+                CloneNode.loadXML xmlNodeMapCT.xml
+                ID = 1
+                currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
+
+                If GetAttribute(xmlNodeMapCT, "GroupCellRange") = vbNullString Then
+                    GroupCellRange = 1
+                Else
+                    GroupCellRange = Val(GetAttribute(xmlNodeMapCT, "GroupCellRange"))
+                End If
+
+                Blank = True
+
+                If xmlTK.getElementsByTagName(currentGroup)(0).hasChildNodes Then
+                    xmlTK.getElementsByTagName(currentGroup)(0).removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild
+
+                End If
+
+                Do
+                    Blank = True
+                    SetCloneNode CloneNode, xmlNodeMapCT, Blank, cellRange, sRow
+                    .Col = .ColLetterToNumber("B")
+                    .Row = sRow
+
+                    If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
+
+                        Exit Do
+                    End If
+
+                    SetAttribute CloneNode.firstChild, "id", CStr(ID)
+                    Set nodePL = xmlTK.getElementsByTagName(currentGroup)(0)
+                    nodePL.appendChild CloneNode.firstChild.CloneNode(True)
+                    ID = ID + 1
+
+                    cellRange = cellRange + GroupCellRange
+                Loop
+                
+            Else
+                Dim xmlChildNode As MSXML.IXMLDOMNode
+                currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
+
+                For Each xmlCellNode In xmlNodeMapCT.childNodes
+
+                    If xmlCellNode.hasChildNodes Then
+                        cellid = xmlCellNode.firstChild.nodeValue
+                    Else
+                        cellid = ""
+                    End If
+
+                    cellArray = Split(cellid, "_")
+
+                    If currentGroup = vbNullString Or currentGroup = "" Then
+                        Set xmlCellTKNode = xmlTK.getElementsByTagName(xmlCellNode.nodeName)(0)
+                    Else
+
+                        For Each xmlChildNode In xmlTK.getElementsByTagName(xmlCellNode.nodeName)
+
+                            If xmlChildNode.parentNode.nodeName = currentGroup Then
+                                Set xmlCellTKNode = xmlChildNode
+                                Exit For
+                            End If
+
+                        Next
+
+                    End If
+
+                    If UBound(cellArray) <> 1 Then
+                        xmlCellTKNode.firstChild.nodeValue = cellid
+                    Else
+                        .Col = .ColLetterToNumber(cellArray(0))
+                        .Row = Val(cellArray(1)) + cellRange
+
+                        If .CellType = CellTypeNumber Then
+                            xmlCellTKNode.firstChild.nodeValue = .Value
+                        Else
+                            xmlCellTKNode.firstChild.nodeValue = .Text
+                        End If
+                    End If
+
+                Next
+
+            End If
+
+        Next
+
+        'Set value cho phu luc
+        For nodeValIndex = 1 To TAX_Utilities_Srv_New.NodeValidity.childNodes.length
+            Set nodeVal = TAX_Utilities_Srv_New.NodeValidity.childNodes(nodeValIndex)
+
+            If GetAttribute(nodeVal, "Active") = "1" Then
+                Dim currentRow As Integer
+                Dim xmlSection As MSXML.IXMLDOMNode
+        
+                MaTK = GetAttribute(nodeVal, "DataFile")
+
+                If InStr(MaTK, "11") > 0 Then
+                    MaTK = Replace$(MaTK, "11", "")
+                ElseIf InStr(MaTK, "10") > 0 Then
+                    MaTK = Replace$(MaTK, "10", "")
+                End If
+
+                xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
+
+                xmlMapPL.Load GetAbsolutePath("..\ini\" & MaTK & "_xml.xml")
+
+                cellRange = 0
+                .Sheet = nodeValIndex + 1
+
+                For Each xmlSection In xmlMapPL.lastChild.childNodes
+
+                    If UCase(xmlSection.nodeName) = "DYNAMIC" Then
+                        CloneNode.loadXML xmlSection.xml
+                        ID = 1
+                        currentGroup = GetAttribute(xmlSection, "GroupName")
+
+                        If GetAttribute(xmlSection, "GroupCellRange") = vbNullString Then
+                            GroupCellRange = 1
+                        Else
+                            GroupCellRange = Val(GetAttribute(xmlSection, "GroupCellRange"))
+                        End If
+
+                        Blank = True
+
+                        If xmlPL.getElementsByTagName(currentGroup)(0).hasChildNodes Then
+                            xmlPL.getElementsByTagName(currentGroup)(0).removeChild xmlPL.getElementsByTagName(currentGroup)(0).firstChild
+                        End If
+
+                        Do
+                            Blank = True
+                            SetCloneNode CloneNode, xmlSection, Blank, cellRange, sRow
+                            
+                            .Col = .ColLetterToNumber("B")
+                            .Row = sRow
+
+                            If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
+
+                                Exit Do
+                            End If
+
+                            SetAttribute CloneNode.firstChild.firstChild, "id", CStr(ID)
+                            Set nodePL = xmlPL.getElementsByTagName(currentGroup)(0)
+                            nodePL.appendChild CloneNode.firstChild.firstChild.CloneNode(True)
+                            ID = ID + 1
+                            cellRange = cellRange + GroupCellRange
+                        Loop
+
+                        cellRange = cellRange - 1
+                    Else
+                        Dim xmlChildNodePL As MSXML.IXMLDOMNode
+                        currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
+
+                        For Each xmlCellNode In xmlSection.childNodes
+
+                            If xmlCellNode.hasChildNodes Then
+                                cellid = xmlCellNode.firstChild.nodeValue
+                            Else
+                                cellid = ""
+                            End If
+
+                            cellArray = Split(cellid, "_")
+
+                            If currentGroup = vbNullString Or currentGroup = "" Then
+                                Set xmlCellTKNode = xmlPL.getElementsByTagName(xmlCellNode.nodeName)(0)
+                            Else
+
+                                For Each xmlChildNodePL In xmlTK.getElementsByTagName(xmlCellNode.nodeName)
+
+                                    If xmlChildNodePL.parentNode.nodeName = currentGroup Then
+                                        Set xmlCellTKNode = xmlChildNodePL
+                                        Exit For
+                                    End If
+
+                                Next
+
+                            End If
+
+                            If UBound(cellArray) <> 1 Then
+                                xmlCellTKNode.nodeValue = cellid
+                            Else
+                                .Col = .ColLetterToNumber(cellArray(0))
+                                .Row = Val(cellArray(1)) + cellRange
+
+                                If .CellType = CellTypeNumber Then
+                                    xmlCellTKNode.firstChild.nodeValue = .Value
+                                Else
+                                    xmlCellTKNode.firstChild.nodeValue = .Text
+                                End If
+                            End If
+
+                        Next
+
+                    End If
+
+                Next
+
+                xmlTK.getElementsByTagName("PLuc")(0).appendChild xmlPL.lastChild
+            End If
+
+        Next
+
+    End With    'Save temp
+
+    Dim sFileName As String
+    sFileName = "c:\TempXML\" & strFileName
+    Dim xmlDocSave As New MSXML.DOMDocument
+    Set xmlDocSave = AppendXMLStandard(xmlTK)
+    xmlDocSave.save sFileName
+    
+    ' Push MQ
+    PushDataToESB xmlDocSave.xml
+    ' End push
+    
+    Exit Sub
+ErrHandle:
+    SaveErrorLog Me.Name, "cmdExportXML_Click", Err.Number, Err.Description
+End Sub
 Private Sub cmdSave_Click()
 
 On Error GoTo ErrHandle
+
+
 
     Dim strSQL As String, mResult As Integer, strSQL_HDR As String, strSQL_DTL As String
     Dim HdrID As Variant, strDate() As String, dDate As Date
@@ -1235,7 +1531,7 @@ On Error GoTo ErrHandle
             If qBoSung = 0 And (TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue <> "104") Then
                 ' Huy bo thi quay lai man hinh quet to khai
                 msgRs = MessageBox("0084", msYesNoCancel, miQuestion, 1)
-                If msgRs = mrCancel Then
+               If msgRs = mrCancel Then
                     If Not TAX_Utilities_Srv_New.Data(0) Is Nothing Then
                         If Not objTaxBusiness Is Nothing Then
                             objTaxBusiness.Prepared4 dNgayDauKy
@@ -1249,12 +1545,9 @@ On Error GoTo ErrHandle
                     verToKhai = 1
                 ' Neu ghi Bo sung thi phai set lai tinh trang cua to khai la 2 va phai yeu cau quet phu luc KHBS
                 ElseIf msgRs = mrNo Then
-'                    If TAX_Utilities_Srv_New.NodeValidity.childNodes(.SheetCount - 2).Attributes.getNamedItem("Active").nodeValue = 0 Then
-'                        MessageBox "0086", msOKOnly, miInformation
-'                        Exit Sub
-'                    Else
+
                         verToKhai = 2
-'                    End If
+
                 End If
             End If
             .EventEnabled(EventAllEvents) = True
@@ -1264,13 +1557,7 @@ On Error GoTo ErrHandle
         ' IdToKhai = Val(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
         If (TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue <> "104") Then
             With fpSpread1
-'                ' Neu ghi Bo sung thi phai set lai tinh trang cua to khai la 2 va phai yeu cau quet phu luc KHBS
-'                If TAX_Utilities_Srv_New.NodeValidity.childNodes(.SheetCount - 2).Attributes.getNamedItem("Active").nodeValue = 0 Then
-'                    MessageBox "0086", msOKOnly, miInformation
-'                    Exit Sub
-'                Else
                     verToKhai = 2
-'                End If
             End With
         End If
         ' 04-01-2011
@@ -1300,14 +1587,6 @@ On Error GoTo ErrHandle
                 MessageBox "0090", msOKOnly, miInformation
                 Exit Sub
             End If
-'        Else
-'            If Val(TAX_Utilities_Srv_New.Month) > 5 Then
-'                ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu lon hon thang 5 nam 2009 thi thong bao khong duoc gia han nop thue
-'                If Val(varTemp) = 1 Then
-'                    MessageBox "0090", msOKOnly, miInformation
-'                    Exit Sub
-'                End If
-'            End If
         End If
     End If
     
@@ -1326,14 +1605,6 @@ On Error GoTo ErrHandle
                 MessageBox "0090", msOKOnly, miInformation
                 Exit Sub
             End If
-'        Else
-'            If Val(TAX_Utilities_Srv_New.ThreeMonths) > 1 Then
-'                ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu lon hon thang 5 nam 2009 thi thong bao khong duoc gia han nop thue
-'                If Val(varTemp) = 1 Then
-'                    MessageBox "0091", msOKOnly, miInformation
-'                    Exit Sub
-'                End If
-'            End If
         End If
     End If
     
@@ -1341,8 +1612,6 @@ On Error GoTo ErrHandle
     ' ngoai thoi gian nay phai thong bao khong duoc gia han
     ' Do voi to khai 01A, 01B/TNDN thang
     If Val(idToKhai) = 11 Or Val(idToKhai) = 12 Then
-        ' Lay thong tin ve gia han nop thue TNDN
-        'dntai 06/03/2012 set lai vi tri cell check gia han
         If Val(idToKhai) = 11 Then
             With fpSpread1
                 .Sheet = 1
@@ -1358,60 +1627,6 @@ On Error GoTo ErrHandle
                 varTemp = .Value
             End With
         End If
-        ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2009 thi thong bao khong duoc gia han nop thue
-        ' yeu cau mo tat ca cac ky
-'        If Val(TAX_Utilities_Srv_New.Year) <> 2009 And Val(TAX_Utilities_Srv_New.Year) <> 2010 And Val(TAX_Utilities_Srv_New.Year) <> 2011 Then
-'            If Val(varTemp) = 1 Then
-'                MessageBox "0092", msOKOnly, miInformation
-'                Exit Sub
-'            End If
-'        End If
-        ' Kiem tra quy truoc da co gia han canh bao NSD check vao gia han nop thue
-        ' nvhai
-'        If Val(TAX_Utilities_Srv_New.Year) = 2009 Or Val(TAX_Utilities_Srv_New.Year) = 2010 Or Val(TAX_Utilities_Srv_New.Year) = 2011 Then
-'            If Val(varTemp) = 0 Then
-'                'lay ngay dau nam tc va ngay ket thuc nam tc de loc de lieu
-'
-'                dNgayDauNamTC = GetNgayDauNam(TAX_Utilities_Srv_New.Year, iThangTaiChinh, iNgayTaiChinh)
-'                'set lai dinh dang de so sanh
-'                varDate1 = "'" & DatePart("D", dNgayDauNamTC) & "-" & MonthName(DatePart("M", dNgayDauNamTC), True) & "-" & DatePart("YYYY", dNgayDauNamTC) & "'"
-'                dNgayCuoiNamTC = NgayCuoiNamTaiChinh(TAX_Utilities_Srv_New.Year, iThangTaiChinh, iNgayTaiChinh)
-'                'set lai dinh dang de so sanh
-'                varDate2 = "'" & DatePart("D", dNgayCuoiNamTC) & "-" & MonthName(DatePart("M", dNgayCuoiNamTC), True) & "-" & DatePart("YYYY", dNgayCuoiNamTC) & "'"
-'                'connect to database QLT
-'                If Not clsDAO.Connected Then
-'                    clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-'                    clsDAO.Connect
-'                End If
-'                ' SQL check du lieu
-'                strSQL = "select ID from RCV_TKHAI_HDR "
-'                strSQL = strSQL & " where TIN='" & strMST & "' "
-'                strSQL = strSQL & "and KYKK_TU_NGAY >= " & varDate1 & " and KYKK_DEN_NGAY < " & varDate2
-'                strSQL = strSQL & " and CO_GHAN='Y' "
-'                strSQL = strSQL & " and LOAI_TKHAI='" & changeMaToKhai(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue) & "' "
-'                Set rs = clsDAO.Execute(strSQL)
-'
-'                If (Not rs Is Nothing) And rs.Fields.Count > 0 Then
-'                    If Year(dNgayDauKy) < 2011 Or (Year(dNgayDauKy) = 2011 And DatePart("Q", dNgayDauKy) < 4) Then
-'                    If MessageBox("0098", msYesNo, miQuestion) = mrYes Then
-''                        With fpSpread1
-''                            .Sheet = 1
-''                            .Col = .ColLetterToNumber("E")
-''                            .Row = 17
-''                            .Value = 1
-''                        End With
-'                        Exit Sub
-'                        End If
-'                    End If
-'                    'DisplayMessage "0098", msOKOnly, miInformation
-'                    'Exit Sub
-'                End If
-'                Set rs = Nothing
-'            End If
-'        End If
-        
-        ' end nvhai
-        
     End If
     ' Do voi to khai 05/TNDN thang
     If Val(idToKhai) = 14 Then
@@ -1422,13 +1637,6 @@ On Error GoTo ErrHandle
             .Row = 19
             varTemp = .Value
         End With
-        ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2009 thi thong bao khong duoc gia han nop thue
-'        If Val(TAX_Utilities_Srv_New.Year) <> 2009 Then
-'            If Val(varTemp) = 1 Then
-'                MessageBox "0092", msOKOnly, miInformation
-'                Exit Sub
-'            End If
-'        End If
     End If
     ' Do voi to khai 03/TNDN thang
     If Val(idToKhai) = 3 Then
@@ -1439,207 +1647,8 @@ On Error GoTo ErrHandle
             .Row = 37
             varTemp = .Value
         End With
-        ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2009 thi thong bao khong duoc gia han nop thue
-        ' mo gia han cho cac ky ke khai
-'        If Val(TAX_Utilities_Srv_New.Year) <> 2009 And Val(TAX_Utilities_Srv_New.Year) <> 2010 And Val(TAX_Utilities_Srv_New.Year) <> 2011 Then
-'            If Val(varTemp) = 1 Then
-'                MessageBox "0092", msOKOnly, miInformation
-'                Exit Sub
-'            End If
-'        End If
-        
-        ' Kiem tra to khai quy da co gia han canh bao NSD check vao gia han nop thue tren to khai quyet toan nam
-        ' nvhai
-'        If Val(TAX_Utilities_Srv_New.Year) = 2009 Or Val(TAX_Utilities_Srv_New.Year) = 2010 Or Val(TAX_Utilities_Srv_New.Year) = 2011 Then
-'            If Val(varTemp) = 0 Then
-'                'lay ngay dau nam tc va ngay ket thuc nam tc de loc de lieu
-'                dNgayDauNamTC = DateSerial(TAX_Utilities_Srv_New.Year, iThangTaiChinh, iNgayTaiChinh)
-'                'set lai dinh dang de so sanh
-'                varDate1 = "'" & DatePart("D", dNgayDauNamTC) & "-" & MonthName(DatePart("M", dNgayDauNamTC), True) & "-" & DatePart("YYYY", dNgayDauNamTC) & "'"
-'                dNgayCuoiNamTC = NgayCuoiNamTaiChinh(TAX_Utilities_Srv_New.Year, iThangTaiChinh, iNgayTaiChinh)
-'                'set lai dinh dang de so sanh
-'                varDate2 = "'" & DatePart("D", dNgayCuoiNamTC) & "-" & MonthName(DatePart("M", dNgayCuoiNamTC), True) & "-" & DatePart("YYYY", dNgayCuoiNamTC) & "'"
-'                'connect to database QLT
-'                If Not clsDAO.Connected Then
-'                    clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-'                    clsDAO.Connect
-'                End If
-'                ' SQL check du lieu
-'                strSQL = "select ID from RCV_TKHAI_HDR "
-'                strSQL = strSQL & " where TIN='" & strMST & "' "
-'                strSQL = strSQL & "and KYKK_TU_NGAY >= " & varDate1 & " and KYKK_DEN_NGAY < " & varDate2
-'                strSQL = strSQL & " and CO_GHAN='Y' "
-'                strSQL = strSQL & " and ( LOAI_TKHAI='01A_TNDN' Or LOAI_TKHAI='01B_TNDN' OR LOAI_TKHAI='01A_TNDN11' Or LOAI_TKHAI='01B_TNDN11') "
-'                Set rs = clsDAO.Execute(strSQL)
-'
-'                If (Not rs Is Nothing) And rs.Fields.Count > 0 Then
-'                    If Year(dNgayDauKy) <= 2011 Then
-'                    If MessageBox("0099", msYesNo, miQuestion) = mrYes Then
-''                        With fpSpread1
-''                            .Sheet = 1
-''                            .Col = .ColLetterToNumber("E")
-''                            .Row = 17
-''                            .Value = 1
-''                        End With
-'                        Exit Sub
-'                        End If
-'                    End If
-'                    'DisplayMessage "0098", msOKOnly, miInformation
-'                    'Exit Sub
-'                End If
-'                Set rs = Nothing
-'            End If
-'        End If
-        
-        ' end nvhai
-        
-        
-        
     End If
-    
-    ' Kiem tra gia han to khai 01/GTGT
-    ' yeu cau mo gia han tat ca cac ky
-'    If Val(idToKhai) = 1 Then
-'         ' Lay thong tin ve gia han nop thue GTGT
-'        With fpSpread1
-'            .Sheet = 1
-'            .Col = .ColLetterToNumber("E")
-'            .Row = 38
-'            varTemp = .Value
-'        End With
-'        ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2012 thi thong bao khong duoc gia han nop thue
-'        If Val(TAX_Utilities_Srv_New.Year) = 2012 And (Val(TAX_Utilities_Srv_New.Month) = 4 Or Val(TAX_Utilities_Srv_New.Month) = 5 Or Val(TAX_Utilities_Srv_New.Month) = 6) Then
-'        Else
-'            If Val(varTemp) = 1 Then
-'                MessageBox "0128", msOKOnly, miInformation
-'                Exit Sub
-'            End If
-'        End If
-'    End If
-    
-    
-'    If clsDAO.Connected = False Then
-'        Me.MousePointer = vbHourglass
-'        frmSystem.MousePointer = vbHourglass
-'        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-'        clsDAO.Connect
-'        frmSystem.MousePointer = vbDefault
-'        Me.MousePointer = vbDefault
-'    End If
-'    '*************************************************************
-'    'Date: 25/02/2006
-'    'Kiem tra khoa so
-'    strSQL = GetAttribute(xmlSQL.childNodes(1), "SqlKhoaSo")
-'    Set rs = clsDAO.Execute(strSQL)
-'
-'    If (Not rs Is Nothing) And rs.Fields.Count > 0 Then
-'        If objTaxBusiness.KiemTraKhoaSo(rs.Fields(0)) Then
-'            DisplayMessage "0070", msOKOnly, miInformation
-'            Exit Sub
-'        End If
-'    End If
-'    Set rs = Nothing
-    '*************************************************************
-    
-    ' xu ly nhan cac mau an chi co canh bao khi quet trung
-'    If Val(idToKhai) <= 68 And Val(idToKhai) >= 64 Then
-'        ' xu ly an chi
-'        If isTonTaiAC = True Then
-'            mResult = MessageBox("0047", msYesNo, miQuestion)
-'            If mResult = mrNo Then
-'                Exit Sub
-'            End If
-'        End If
-'    Else
-'    strSQL = "select ID, DA_NHAN from RCV_TKHAI_HDR "
-'    strSQL = strSQL & " where TIN='" & strMST & "' "
-'    strSQL = strSQL & " and LOAI_TKHAI='" & changeMaToKhai(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue) & "' "
-'
-'    'Ngay dau ky ke khai va ngay cuoi ky ke khai
-'    dDate = dNgayDauKy
-'    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
-'        strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
-'        dDate = DateAdd("m", 1, dDate)
-'        dDate = DateAdd("d", -1, dDate)
-'        strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
-'    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
-'        strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
-'        dDate = DateAdd("m", 3, dDate)
-'        dDate = DateAdd("d", -1, dDate)
-'        strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy')"
-'    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
-'        strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
-'        dDate = DateAdd("m", 12, dDate)
-'        dDate = DateAdd("d", -1, dDate)
-'        strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy')"
-'    End If
-'        Dim flgBCTC As Boolean
-'    clsDAO.BeginTrans
-'    Set rs = clsDAO.Execute(strSQL)
-'
-'    ' nvhai
-'    ' Xu ly cho nhan BCTC in bang HTKK 2.1.0
-'
-'    If rs.Fields.Count > 0 Then
-'        ' nvhai
-'        ' Neu la ID cua cac BCTC in bang HTKK 2.1.0
-'        ' begin
-'        If (Val(idToKhai) = 24 Or Val(idToKhai) = 25 Or Val(idToKhai) = 26 Or Val(idToKhai) = 27 Or Val(idToKhai) = 28 Or Val(idToKhai) = 29 _
-'            Or Val(idToKhai) = 30 Or Val(idToKhai) = 31 Or Val(idToKhai) = 32 Or Val(idToKhai) = 33 Or Val(idToKhai) = 34 Or Val(idToKhai) = 35 _
-'            Or Val(idToKhai) = 55 Or Val(idToKhai) = 56 Or Val(idToKhai) = 57 Or Val(idToKhai) = 58) Then
-'            flgBCTC = True
-'            If verToKhai = 0 Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
-'                mResult = MessageBox("0047", msYesNo, miQuestion)
-'                If mResult = mrYes Then ' Neu dong y ghi la to khai thay the thi phai dat lai trang thai = 1
-'                    verToKhai = 1
-'                    If UCase(rs.Fields("DA_NHAN").Value) = "E" Then
-'                        clsDAO.ExecuteQuery "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
-'                        clsDAO.ExecuteQuery "delete from RCV_TKHAI_DTL where HDR_ID='" & rs(0).Value & "'"
-'                    End If
-'                    'clsDAO.Execute "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
-'
-'                Else
-'                    '********************
-'                    clsDAO.CommitTrans
-'                    '********************
-'                    Exit Sub
-'                End If
-'            ElseIf verToKhai = 2 Then
-'                If UCase(rs.Fields("DA_NHAN").Value) = "E" Then
-'                    clsDAO.ExecuteQuery "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
-'                    clsDAO.ExecuteQuery "delete from RCV_TKHAI_DTL where HDR_ID='" & rs(0).Value & "'"
-'                End If
-'            End If
-'        Else
-'        ' end
-'            If verToKhai = 0 And isTKTonTai = True Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
-'                mResult = MessageBox("0047", msYesNo, miQuestion)
-'                If mResult = mrYes Then ' Neu dong y ghi la to khai thay the thi phai dat lai trang thai = 1
-'                    verToKhai = 1
-'                    If UCase(rs.Fields("DA_NHAN").Value) = "E" Then
-'                        clsDAO.ExecuteQuery "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
-'                        clsDAO.ExecuteQuery "delete from RCV_TKHAI_DTL where HDR_ID='" & rs(0).Value & "'"
-'                    End If
-'                    'clsDAO.Execute "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
-'                Else
-'                    '********************
-'                    clsDAO.CommitTrans
-'                    '********************
-'                    Exit Sub
-'                End If
-'            ElseIf verToKhai = 2 Then
-'                If UCase(rs.Fields("DA_NHAN").Value) = "E" Then
-'                    clsDAO.ExecuteQuery "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
-'                    clsDAO.ExecuteQuery "delete from RCV_TKHAI_DTL where HDR_ID='" & rs(0).Value & "'"
-'                End If
-'            End If
-'        End If
-'    End If
-'        ' su loi ghi du lieu hdr va dtl tren transaction khac nhau
-'        clsDAO.CommitTrans
-'        ' end xu ly to khai binh thuong
-'    End If
-    
+
     ' xu ly cho 2 to khai 08, 08A/TNCN
     If idToKhai = "74" Or idToKhai = "75" Then
         If verToKhai = 0 And isTKTonTai = True Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
@@ -1650,48 +1659,10 @@ On Error GoTo ErrHandle
         End If
     End If
     
+    'Push data to ESB
+    ExecuteSave
+    '**********End push data to ESB*****************
     
-    ' Set rs = Nothing
-    
-
-'    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 _
-'    Or idToKhai = 36 Or idToKhai = 6 Or idToKhai = 72 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 71 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 90 Then
-'        strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28").nodeValue)
-'    ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 5 Or idToKhai = 70 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Then
-'        strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28_NNKD").nodeValue)
-'    Else
-'        strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdr").nodeValue)
-'    End If
-'    ' xu ly de ghi cac mau an chi
-'    If Val(idToKhai) = 66 Or Val(idToKhai) = 68 Or Val(idToKhai) = 67 Or Val(idToKhai) = 64 Or Val(idToKhai) = 65 Then
-'        strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl_AC").nodeValue)
-'    Else
-'        strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl").nodeValue)
-'    End If
-'    Set rs = clsDAO.Execute("select RCV_XLTK_HDR_SEQ.NEXTVAL from dual")
-'    HdrID = rs(0).Value
-    
-
-    
-'    For i = 0 To TAX_Utilities_Srv_New.NodeValidity.childNodes.length - 1
-'        clsDAO.BeginTrans
-'        If Val(TAX_Utilities_Srv_New.NodeValidity.childNodes(i).Attributes.getNamedItem("Active").nodeValue) > 0 Then
-'            If i = 0 Then
-'                ' Kiem tra xem chkQuetBangKe neu = true thi day la quet them bang ke
-'                If (frmSystem.chkQuetBangKe.Value = True) Then
-'                    clsDAO.Execute objTaxBusiness.GenerateSQL_Header(TAX_Utilities_Srv_New.Data(i), strSQL_HDR, HdrID, verToKhai, dNgayDauKy, True)
-'                Else ' Day la quet to khai thuan tuy
-'                    clsDAO.Execute objTaxBusiness.GenerateSQL_Header(TAX_Utilities_Srv_New.Data(i), strSQL_HDR, HdrID, verToKhai, dNgayDauKy)
-'                End If
-'                ' HDR va DTL ghi tren cung 1 transaction
-'                'clsDAO.CommitTrans
-'            End If
-'                GenerateSQL_Details TAX_Utilities_Srv_New.Data(i), strSQL_DTL, HdrID, i
-'        End If
-'        clsDAO.CommitTrans
-'    Next
-
-    '***************************
     ' Clear data
     If Not objTaxBusiness Is Nothing Then
         'Get Params
@@ -1699,34 +1670,13 @@ On Error GoTo ErrHandle
     End If
     StartReceiveForm
     '***************************
-   ' Set rs = Nothing
-
     blnSaveSuccess = True
     
     Exit Sub
 ErrHandle:
-
     SaveErrorLog Me.Name, "cmdSave_Click", Err.Number, Err.Description
     MessageBox "0049", msOKOnly, miCriticalError
     
-    On Error GoTo ExitErr
-    'Rollback
-    clsDAO.RollbackTrans
-    With clsDAO
-        .BeginTrans
-        .Execute "delete from RCV_TKHAI_DTL where HDR_ID ='" & HdrID & "'"
-        .Execute "delete from RCV_TKHAI_HDR where ID='" & HdrID & "'"
-        .CommitTrans
-    End With
-    
-    Set rs = Nothing
-    blnSaveSuccess = True
-    Exit Sub
-ExitErr:
-    Set rs = Nothing
-    SaveErrorLog Me.Name, "cmdSave_Click", Err.Number, Err.Description
-    MessageBox "0049", msOKOnly, miCriticalError
-    blnSaveSuccess = True
 End Sub
 
 Sub CallFinish(Optional blFinish As Boolean)
