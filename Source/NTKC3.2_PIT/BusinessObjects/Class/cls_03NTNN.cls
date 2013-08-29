@@ -132,7 +132,7 @@ Public Function Prepared1() As Boolean
 End Function
 
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
-    Dim i As Integer
+    Dim i       As Integer
     Dim varMaDM As Variant
     i = 0
     ReDim Preserve larrPhongXuLy(0)
@@ -144,7 +144,9 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .Sheet = 1
         .Col = .ColLetterToNumber(PHONG_XU_LY_COL)
         .Row = PHONG_XU_LY_ROW
-        If rsPXL.Fields.Count > 0 Then
+
+        If rsPXL.Fields.count > 0 Then
+
             Do While Not rsPXL.EOF
                 .TypeComboBoxIndex = -1
                 .TypeComboBoxString = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
@@ -155,33 +157,37 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
                 larrid(i) = rsPXL.Fields(0).Value
                 rsPXL.MoveNext
             Loop
+
         Else
             DisplayMessage "0077", msOKOnly
             Exit Function
         End If
+
         .TypeComboBoxCurSel = 0
         UpdateCell fps, .Col, .Row, .Text
         lSoPhongXL = i
-        
-        
                 
-             'get ten chi tieu trong danh muc NNKD
-            .Sheet = 1
-            .Col = .ColLetterToNumber("C")
-            .Row = 44
-            i = 0
-            Do
-                .GetText .ColLetterToNumber("AV"), .Row, varMaDM
-                If Trim(varMaDM) <> vbNullString Then
-'                    .SetText .ColLetterToNumber("C"), .Row, getTenDMNNKD(varMaDM)
-                    .Col = .ColLetterToNumber("C")
-                    .Text = getTenDMNNKD(varMaDM)
-                    
-                End If
-                i = i + 1
+        'get ten chi tieu trong danh muc NNKD
+        .Sheet = 1
+        .Col = .ColLetterToNumber("C")
+        .Row = 44
+        i = 0
+
+        Do
+            .GetText .ColLetterToNumber("AV"), .Row, varMaDM
+
+            If Trim(varMaDM) <> vbNullString Then
+                '                    .SetText .ColLetterToNumber("C"), .Row, getTenDMNNKD(varMaDM)
                 .Col = .ColLetterToNumber("C")
-                .Row = 44 + i
-            Loop Until UCase(.Text) = "AA"
+                .Text = getTenDMNNKD(varMaDM)
+                    
+            End If
+
+            i = i + 1
+            .Col = .ColLetterToNumber("C")
+            .Row = 44 + i
+        Loop Until .Text = "aa"
+
     End With
     
     Prepared2 = True

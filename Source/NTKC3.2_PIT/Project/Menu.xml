@@ -262,9 +262,9 @@
 	</Menu>		
 	<Menu ID="80" PopID="101" ParentID="101_8" Caption="Tờ khai quyết toán thuế NTNN - 02/NTNN" FormName="" Year="1" Month="0" ThreeMonth="0" Day="1" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\02_NTNN11.xls" ReportTemplate="..\ReportTemplates\Excel\02_NTNN11.xls" Class="Tax_Business_Srv.cls_02NTNN">
-			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_NTNN11" Ini="..\Ini\02_NTNN11.xml"/>
-			<Sheet ID="01-1" Caption="02-1/NTNN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_1_NTNN11" Ini="..\Ini\02_1_NTNN11.xml"/>
-			<Sheet ID="01-2" Caption="02-2/NTNN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_2_NTNN11" Ini="..\Ini\02_2_NTNN11.xml"/>			
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_NTNN13" Ini="..\Ini\02_NTNN13.xml"/>
+			<Sheet ID="01-1" Caption="02-1/NTNN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_1_NTNN13" Ini="..\Ini\02_1_NTNN13.xml"/>
+			<Sheet ID="01-2" Caption="02-2/NTNN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_2_NTNN13" Ini="..\Ini\02_2_NTNN13.xml"/>			
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_02_NTNN" Ini="..\Ini\KHBS_02_NTNN.xml"/>	
 		</Validity>
 	</Menu>
@@ -278,8 +278,8 @@
 	
 	<Menu ID="82" PopID="101" ParentID="101_8" Caption="Tờ khai quyết toán thuế NTNN - 04/NTNN" FormName="" Year="1" Month="0" ThreeMonth="0" Day="1" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\04_NTNN11.xls" ReportTemplate="..\ReportTemplates\Excel\04_NTNN11.xls" Class="Tax_Business_Srv.cls_04NTNN">
-			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="04_NTNN11" Ini="..\Ini\04_NTNN11.xml"/>
-			<Sheet ID="01-1" Caption="02-2/NTNN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="04_1_NTNN11" Ini="..\Ini\04_1_NTNN11.xml"/>
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="04_NTNN13" Ini="..\Ini\04_NTNN13.xml"/>
+			<Sheet ID="01-1" Caption="02-2/NTNN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="04_1_NTNN13" Ini="..\Ini\04_1_NTNN13.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_04_NTNN" Ini="..\Ini\KHBS_04_NTNN.xml"/>	
 		</Validity>
 	</Menu>
