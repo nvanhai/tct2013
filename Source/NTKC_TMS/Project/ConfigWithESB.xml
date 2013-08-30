@@ -33,4 +33,7 @@
 	<!-- Doan nay cau hinh cho phan MQ push data len ESB -->
 	<queue_manager_name>ESB.INT.QMGR</queue_manager_name>
 	<queue_name>INT.INBOX.QUEUE</queue_name>
+	
+	<!-- Cac cau hinh khac -->
+	
 </Config>

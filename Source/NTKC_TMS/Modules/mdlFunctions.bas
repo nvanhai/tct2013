@@ -1618,7 +1618,7 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument) As MSXML.DO
     XmlDocStandard.getElementsByTagName("MSG_ID")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GetGUID()
     XmlDocStandard.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mm-yyyy HH:mm:ss")
     
-    XmlDocStandard.getElementsByTagName("nguoi_nhan_tk")(0).Text = strUserID
+    XmlDocStandard.getElementsByTagName("nguoi_nhan_tk")(0).Text = strUserID & "." & ""
     XmlDocStandard.getElementsByTagName("ngay_nhan_tk")(0).Text = Format(DateTime.Now, "dd/MM/yyyy")
     
     If (Not xmlDoc Is Nothing) Then
