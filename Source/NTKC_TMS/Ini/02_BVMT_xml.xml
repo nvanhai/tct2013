@@ -35,8 +35,8 @@
 		</NoiDungKS>
 	</Dynamic>
 	<Static GroupName="KSCSTuKhaiThac">
-		<tongPhiPhaiNopTrongKyI>1</tongPhiPhaiNopTrongKyI>
-		<tongPhiDaKeKhaiTrongKyI>1</tongPhiDaKeKhaiTrongKyI>
+		<tongPhiPhaiNopTrongKyI>0</tongPhiPhaiNopTrongKyI>
+		<tongPhiDaKeKhaiTrongKyI>0</tongPhiDaKeKhaiTrongKyI>
 	</Static>
 	<Dynamic GroupName="KhoangSan">
 		<NoiDungKS id="ID_2">
@@ -49,8 +49,8 @@
 		</NoiDungKS>
 	</Dynamic>
 	<Static GroupName="KSCSThuMua">
-		<tongPhiPhaiNopTrongKyII>1</tongPhiPhaiNopTrongKyII>
-		<tongPhiDaKeKhaiTrongKyII>1</tongPhiDaKeKhaiTrongKyII>
+		<tongPhiPhaiNopTrongKyII>0</tongPhiPhaiNopTrongKyII>
+		<tongPhiDaKeKhaiTrongKyII>0</tongPhiDaKeKhaiTrongKyII>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<tongPhiPhaiNopTrongKy>Q_51</tongPhiPhaiNopTrongKy>

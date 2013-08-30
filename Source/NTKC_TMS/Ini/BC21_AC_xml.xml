@@ -37,7 +37,7 @@
 			<soLuong>AA_40</soLuong>
 			<lien>AE_40</lien>
 			<ghiChu>AF_40</ghiChu>
-			<ktraLoaiHDon>C_40</ktraLoaiHDon>
+			<ktraLoaiHDon></ktraLoaiHDon>
 		</ChiTietHoaDon>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
