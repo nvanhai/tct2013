@@ -25,10 +25,10 @@
 		<cchiHNghe></cchiHNghe>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct12>text</ct12>
-		<ct13>text</ct13>
-		<ct14>text</ct14>
-		<ct15>text</ct15>
+		<ct12></ct12>
+		<ct13></ct13>
+		<ct14></ct14>
+		<ct15></ct15>
 	</Static>
 	<Dynamic GroupName="KhoangSan">
 		<KhoangSan id="ID_1">
@@ -42,8 +42,8 @@
 		</KhoangSan>
 	</Dynamic>
 	<Static GroupName="KSanCoSoThuMuaNopThay">
-		<tongPhiPhaiNop>text</tongPhiPhaiNop>
-		<tongPhiDaKeKhai>text</tongPhiDaKeKhai>
+		<tongPhiPhaiNop>0</tongPhiPhaiNop>
+		<tongPhiDaKeKhai>0</tongPhiDaKeKhai>
 	</Static>
 	<Dynamic GroupName="KhoangSan">
 		<KhoangSan id="ID_2">
@@ -57,11 +57,11 @@
 		</KhoangSan>
 	</Dynamic>
 	<Static GroupName="KSCSoTuKhaiThac">
-		<tongPhiDaKeKhai>text</tongPhiDaKeKhai>
-		<tongPhiPhaiNop>text</tongPhiPhaiNop>
+		<tongPhiDaKeKhai>0</tongPhiDaKeKhai>
+		<tongPhiPhaiNop>0</tongPhiPhaiNop>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<tongPhiPNop>U_51</tongPhiPNop>
-		<bangChu>text</bangChu>
+		<bangChu></bangChu>
 	</Static>
 </HSoKhaiThue>
