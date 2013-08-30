@@ -1599,7 +1599,7 @@ Public Function GetNgayCuoiThang(intYear As Integer, intMonth As Integer) As Dat
     GetNgayCuoiThang = ValidityDate
 End Function
 
-Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument) As MSXML.DOMDocument
+Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, ByVal sKyLapBo As String, ByVal sNgayNopTK As String) As MSXML.DOMDocument
     Dim XmlDocStandard As New MSXML.DOMDocument
     XmlDocStandard.Load GetAbsolutePath("..\InterfaceTemplates\xml\TempStandard.xml")
     
@@ -1618,9 +1618,15 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument) As MSXML.DO
     XmlDocStandard.getElementsByTagName("MSG_ID")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GetGUID()
     XmlDocStandard.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mm-yyyy HH:mm:ss")
     
-    XmlDocStandard.getElementsByTagName("nguoi_nhan_tk")(0).Text = strUserID & "." & ""
+    
+    ' Set value tag <add_info>
+    XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = sNgayNopTK
+    XmlDocStandard.getElementsByTagName("ky_lap_bo")(0).Text = sKyLapBo
+    XmlDocStandard.getElementsByTagName("nguon_goc_tk")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text
+    XmlDocStandard.getElementsByTagName("nguoi_nhan_tk")(0).Text = strUserID & "." & xmlConfig.getElementsByTagName("CODE_OFFICE")(0).Text
     XmlDocStandard.getElementsByTagName("ngay_nhan_tk")(0).Text = Format(DateTime.Now, "dd/MM/yyyy")
     
+
     If (Not xmlDoc Is Nothing) Then
         'XmlDocStandard.getElementsByTagName("ROW")(0).appendChild xmlDoc.getElementsByTagName("HSoKhaiThue")(0) 'xmlDoc.childNodes(0)
         XmlDocStandard.getElementsByTagName("RETURN")(0).appendChild xmlDoc.lastChild

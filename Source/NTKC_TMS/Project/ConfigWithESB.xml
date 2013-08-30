@@ -11,8 +11,7 @@
 				</CheckInput>
 			</soap:Body>
 		</soap:Envelope>
-	</XmlRequest>
-	<TRAN_CODE>0006</TRAN_CODE>
+	</XmlRequest>	
 	<TaxOffcice>00101</TaxOffcice>
 	<ParamName>sInPut</ParamName>
 	
@@ -25,9 +24,11 @@
 	<TRAN_CODE>00006</TRAN_CODE>
 	<ORIGINAL_CODE>NTK</ORIGINAL_CODE>
 	<ORIGINAL_NAME>Hệ thống nhận tờ khai mã vạch</ORIGINAL_NAME>
+	<CODE_OFFICE>HAN</CODE_OFFICE> <!-- ma Cuc hoac ma Chi Cuc -->
+	
 	
 	<!-- Doan nay cau hinh cho phan Header cua to khai -->
-	<maCQTNoiNop>HNO</maCQTNoiNop>
+	<maCQTNoiNop>HAN</maCQTNoiNop>
 	<tenCQTNoiNop>Hà Nội</tenCQTNoiNop>
 	
 	<!-- Doan nay cau hinh cho phan MQ push data len ESB -->

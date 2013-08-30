@@ -472,6 +472,9 @@ Private Sub cmdCommand2_Click()
     Dim blnFinish    As Boolean
     Dim sRow         As Integer
     
+    Dim sKyLapBo As String
+    Dim sNgayNopTK As String
+    
     On Error GoTo ErrHandle
     
     CallFinish
@@ -629,6 +632,21 @@ Private Sub cmdCommand2_Click()
 
         Next
 
+        'Set value KyLapBo, NgayNopTK
+        cellid = GetAttribute(xmlMapCT.lastChild, "ky_lap_bo")
+        cellArray = Split(cellid, "_")
+        .Col = .ColLetterToNumber(cellArray(0))
+        .Row = Val(cellArray(1))
+        
+        sKyLapBo = .Text
+        
+        cellid = GetAttribute(xmlMapCT.lastChild, "ngay_nop_tk")
+        cellArray = Split(cellid, "_")
+        .Col = .ColLetterToNumber(cellArray(0))
+        .Row = Val(cellArray(1))
+        
+        sNgayNopTK = .Text
+
         'Set value cho phu luc
         For nodeValIndex = 1 To TAX_Utilities_Srv_New.NodeValidity.childNodes.length
             Set nodeVal = TAX_Utilities_Srv_New.NodeValidity.childNodes(nodeValIndex)
@@ -751,7 +769,7 @@ Private Sub cmdCommand2_Click()
     Dim sFileName As String
     sFileName = "c:\TempXML\" & strFileName
     Dim xmlDocSave As New MSXML.DOMDocument
-    Set xmlDocSave = AppendXMLStandard(xmlTK)
+    Set xmlDocSave = AppendXMLStandard(xmlTK, sKyLapBo, sNgayNopTK)
     xmlDocSave.save sFileName
     
     ' Push MQ
@@ -1113,8 +1131,9 @@ On Error GoTo ErrHandle
 ErrHandle:
     SaveErrorLog Me.Name, "cmdExit_Click", Err.Number, Err.Description
 End Sub
+
 Private Sub ExecuteSave()
-Dim xmlMapCT     As New MSXML.DOMDocument
+    Dim xmlMapCT     As New MSXML.DOMDocument
     Dim xmlTK        As New MSXML.DOMDocument
     Dim xmlPL        As New MSXML.DOMDocument
     Dim xmlMapPL     As New MSXML.DOMDocument
@@ -1127,6 +1146,9 @@ Dim xmlMapCT     As New MSXML.DOMDocument
     Dim nodeVal      As MSXML.IXMLDOMNode
     Dim blnFinish    As Boolean
     Dim sRow         As Integer
+    
+    Dim sKyLapBo     As String
+    Dim sNgayNopTK   As String
     
     On Error GoTo ErrHandle
     
@@ -1274,6 +1296,19 @@ Dim xmlMapCT     As New MSXML.DOMDocument
 
         Next
 
+        'Set value KyLapBo, NgayNopTK
+        cellid = GetAttribute(xmlMapCT.lastChild, "ky_lap_bo")
+        cellArray = Split(cellid, "_")
+        .Col = .ColLetterToNumber(cellArray(0))
+        .Row = Val(cellArray(1))
+        sKyLapBo = .Text
+        
+        cellid = GetAttribute(xmlMapCT.lastChild, "ngay_nop_tk")
+        cellArray = Split(cellid, "_")
+        .Col = .ColLetterToNumber(cellArray(0))
+        .Row = Val(cellArray(1))
+        sNgayNopTK = .Text
+
         'Set value cho phu luc
         For nodeValIndex = 1 To TAX_Utilities_Srv_New.NodeValidity.childNodes.length
             Set nodeVal = TAX_Utilities_Srv_New.NodeValidity.childNodes(nodeValIndex)
@@ -1389,12 +1424,14 @@ Dim xmlMapCT     As New MSXML.DOMDocument
 
         Next
 
+
+
     End With    'Save temp
 
     Dim sFileName As String
     sFileName = "c:\TempXML\" & strFileName
     Dim xmlDocSave As New MSXML.DOMDocument
-    Set xmlDocSave = AppendXMLStandard(xmlTK)
+    Set xmlDocSave = AppendXMLStandard(xmlTK, sKyLapBo, sNgayNopTK)
     xmlDocSave.save sFileName
     
     ' Push MQ
