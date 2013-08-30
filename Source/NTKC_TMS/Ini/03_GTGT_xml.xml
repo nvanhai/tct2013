@@ -1,8 +1,9 @@
 ﻿<HSoKhaiThue>
 	<Static GroupName="TKhaiThue">
-		<maTKhai>03/GTGT</maTKhai>
+		<maTKhai>03_GTGT</maTKhai>
 		<tenTKhai>TỜ KHAI THUẾ GTGT (Mẫu số 03/GTGT)</tenTKhai>
 		<moTaBMau></moTaBMau>
+		<soLan>S_6</soLan>
 	</Static>
 	<Static GroupName="GiaHan">
 		<maLyDoGiaHan></maLyDoGiaHan>

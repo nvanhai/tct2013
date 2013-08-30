@@ -1,99 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <HSoKhaiThue>
-	<Static GroupName="CTieuTKhaiChinh">
+	<TTinChung>
+		<TTinDVu>
+			<maDVu>String</maDVu>
+			<tenDVu>token</tenDVu>
+			<pbanDVu>String</pbanDVu>
+			<ttinNhaCCapDVu>String</ttinNhaCCapDVu>
+		</TTinDVu>
+		<TTinTKhaiThue>
+			<TKhaiThue>
+				<maTKhai>String</maTKhai>
+				<tenTKhai>token</tenTKhai>
+				<moTaBMau/>
+				<pbanTKhaiXML>String</pbanTKhaiXML>
+				<loaiTKhai>C</loaiTKhai>
+				<soLan>1</soLan>
+				<KyKKhaiThue>
+					<kieuKy>D</kieuKy>
+					<kyKKhai>String</kyKKhai>
+					<kyKKhaiTuNgay>String</kyKKhaiTuNgay>
+					<kyKKhaiDenNgay>String</kyKKhaiDenNgay>
+				</KyKKhaiThue>
+				<maCQTNoiNop>String</maCQTNoiNop>
+				<tenCQTNoiNop>token</tenCQTNoiNop>
+				<ngayLapTKhai>String</ngayLapTKhai>
+				<GiaHan>
+					<maLyDoGiaHan>String</maLyDoGiaHan>
+					<lyDoGiaHan>String</lyDoGiaHan>
+				</GiaHan>
+				<nguoiKy>String</nguoiKy>
+				<ngayKy>String</ngayKy>
+			</TKhaiThue>
+			<NNT>
+				<mst>0000000000</mst>
+				<tenNNT>token</tenNNT>
+				<dchiNNT>token</dchiNNT>
+				<maHuyenNNT>String</maHuyenNNT>
+				<tenHuyenNNT>String</tenHuyenNNT>
+				<maTinhNNT>String</maTinhNNT>
+				<tenTinhNNT>String</tenTinhNNT>
+				<dthoaiNNT>String</dthoaiNNT>
+				<faxNNT>String</faxNNT>
+				<emailNNT>String</emailNNT>
+			</NNT>
+			<DLyThue>
+				<mstDLyThue>0000000000</mstDLyThue>
+				<tenDLyThue>token</tenDLyThue>
+				<dchiDLyThue>token</dchiDLyThue>
+				<maHuyenDLyThue>String</maHuyenDLyThue>
+				<tenHuyenDLyThue>String</tenHuyenDLyThue>
+				<maTinhDLyThue>String</maTinhDLyThue>
+				<tenTinhDLyThue>String</tenTinhDLyThue>
+				<dthoaiDLyThue>String</dthoaiDLyThue>
+				<faxDLyThue>String</faxDLyThue>
+				<emailDLyThue>String</emailDLyThue>
+				<soHDongDLyThue>String</soHDongDLyThue>
+				<ngayKyHDDLyThue>String</ngayKyHDDLyThue>
+				<NVienDLy>
+					<tenNVienDLyThue>token</tenNVienDLyThue>
+					<cchiHNghe>String</cchiHNghe>
+				</NVienDLy>
+			</DLyThue>
+		</TTinTKhaiThue>
+	</TTinChung>
+	<CTieuTKhaiChinh>
+		<DSoHHDVBRaChiuThueGTGT>
+			<ChiTietNhomNganh>
+				<NhomNganh>
+					<maNhomNghanh>1</maNhomNghanh>
+					<nhomNghanh>String</nhomNghanh>
+					<ctThue0>1</ctThue0>
+					<ctThue5>1</ctThue5>
+					<ctThue10>1</ctThue10>
+				</NhomNganh>
+			</ChiTietNhomNganh>
+			<ct21>1</ct21>
+			<ct22>1</ct22>
+			<ct23>1</ct23>
+		</DSoHHDVBRaChiuThueGTGT>
+		<TyLeGTGTTTrenDThu>
+			<ChiTietNhomNganh>
+				<NhomNganh>
+					<maNhomNghanh>1</maNhomNghanh>
+					<nhomNghanh>String</nhomNghanh>
+					<ctThue0>1</ctThue0>
+					<ctThue5>1</ctThue5>
+					<ctThue10>1</ctThue10>
+				</NhomNganh>
+			</ChiTietNhomNganh>
+			<ct24>1</ct24>
+			<ct25>1</ct25>
+			<ct26>1</ct26>
+		</TyLeGTGTTTrenDThu>
+		<TongGTGTTrongKy>
+			<ChiTietNhomNganh>
+				<NhomNganh>
+					<maNhomNghanh>1</maNhomNghanh>
+					<nhomNghanh>String</nhomNghanh>
+					<ctThue0>1</ctThue0>
+					<ctThue5>1</ctThue5>
+					<ctThue10>1</ctThue10>
+				</NhomNganh>
+			</ChiTietNhomNganh>
+			<ct27>1</ct27>
+			<ct28>1</ct28>
+			<ct29>1</ct29>
+		</TongGTGTTrongKy>
+		<ThueGTGTPNop>
+			<ChiTietNhomNganh>
+				<NhomNganh>
+					<maNhomNghanh>1</maNhomNghanh>
+					<nhomNghanh>String</nhomNghanh>
+					<ctThue0>1</ctThue0>
+					<ctThue5>1</ctThue5>
+					<ctThue10>1</ctThue10>
+				</NhomNganh>
+			</ChiTietNhomNganh>
+			<ct30>1</ct30>
+			<ct31>1</ct31>
+			<ct32>1</ct32>
+		</ThueGTGTPNop>
 		<ct33>1</ct33>
 		<ct34>1</ct34>
-	</Static>
-	<Static GroupName="TKhaiThue">
-		<maTKhai>String</maTKhai>
-		<tenTKhai>token</tenTKhai>
-		<moTaBMau/>
-	</Static>
-	<Static GroupName="GiaHan">
-		<maLyDoGiaHan>String</maLyDoGiaHan>
-		<lyDoGiaHan>String</lyDoGiaHan>
-	</Static>
-	<Static GroupName="TKhaiThue">
-		<nguoiKy>String</nguoiKy>
-		<ngayKy>String</ngayKy>
-	</Static>
-	<Static GroupName="NNT">
-		<maHuyenNNT>String</maHuyenNNT>
-		<maTinhNNT>String</maTinhNNT>
-	</Static>
-	<Static GroupName="DLyThue">
-		<maHuyenDLyThue>String</maHuyenDLyThue>
-		<maTinhDLyThue>String</maTinhDLyThue>
-	</Static>
-	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>token</tenNVienDLyThue>
-		<cchiHNghe>String</cchiHNghe>
-	</Static>
-	<Dynamic GroupName="DSoHHDVBRaChiuThueGTGT">
-		<ChiTietNhomNganh id="id">
-			<NhomNganh>
-				<maNhomNghanh>1</maNhomNghanh>
-				<nhomNghanh>String</nhomNghanh>
-				<ctThue0>1</ctThue0>
-				<ctThue5>1</ctThue5>
-				<ctThue10>1</ctThue10>
-			</NhomNganh>
-		</ChiTietNhomNganh>
-	</Dynamic>
-	<Static GroupName="DSoHHDVBRaChiuThueGTGT">
-		<ct21>1</ct21>
-		<ct22>1</ct22>
-		<ct23>1</ct23>
-	</Static>
-	<Dynamic GroupName="TyLeGTGTTTrenDThu">
-		<ChiTietNhomNganh id="id">
-			<NhomNganh>
-				<maNhomNghanh>1</maNhomNghanh>
-				<nhomNghanh>String</nhomNghanh>
-				<ctThue0>1</ctThue0>
-				<ctThue5>1</ctThue5>
-				<ctThue10>1</ctThue10>
-			</NhomNganh>
-		</ChiTietNhomNganh>
-	</Dynamic>
-	<Static GroupName="TyLeGTGTTTrenDThu">
-		<ct24>1</ct24>
-		<ct25>1</ct25>
-		<ct26>1</ct26>
-	</Static>
-	<Dynamic GroupName="TongGTGTTrongKy">
-		<ChiTietNhomNganh id="id">
-			<NhomNganh>
-				<maNhomNghanh>1</maNhomNghanh>
-				<nhomNghanh>String</nhomNghanh>
-				<ctThue0>1</ctThue0>
-				<ctThue5>1</ctThue5>
-				<ctThue10>1</ctThue10>
-			</NhomNganh>
-		</ChiTietNhomNganh>
-	</Dynamic>
-	<Static GroupName="TongGTGTTrongKy">
-		<ct27>1</ct27>
-		<ct28>1</ct28>
-		<ct29>1</ct29>
-	</Static>
-	<Dynamic GroupName="ThueGTGTPNop">
-		<ChiTietNhomNganh id="id">
-			<NhomNganh>
-				<maNhomNghanh>1</maNhomNghanh>
-				<nhomNghanh>String</nhomNghanh>
-				<ctThue0>1</ctThue0>
-				<ctThue5>1</ctThue5>
-				<ctThue10>1</ctThue10>
-			</NhomNganh>
-		</ChiTietNhomNganh>
-	</Dynamic>
-	<Static GroupName="ThueGTGTPNop">
-		<ct30>1</ct30>
-		<ct31>1</ct31>
-		<ct32>1</ct32>
-	</Static>
-	<Static GroupName="CTieuTKhaiChinh">
-		<ct33>1</ct33>
-		<ct34>1</ct34>
-	</Static>
+	</CTieuTKhaiChinh>
+	<PLuc/>
 </HSoKhaiThue>

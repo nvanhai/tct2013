@@ -1,8 +1,9 @@
 ﻿<HSoKhaiThue>
 	<Static GroupName="TKhaiThue">
-		<maTKhai>05/GTGT</maTKhai>
+		<maTKhai>05_GTGT</maTKhai>
 		<tenTKhai>Tờ khai GTGT (05/GTGT)</tenTKhai>
 		<moTaBMau></moTaBMau>
+		<soLan>T_5</soLan>
 	</Static>
 	<Static GroupName="GiaHan">
 		<maLyDoGiaHan></maLyDoGiaHan>
