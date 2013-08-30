@@ -1,8 +1,9 @@
 ﻿<HSoKhaiThue>
 	<Static GroupName="TKhaiThue">
-		<maTKhai>04/GTGT</maTKhai>
+		<maTKhai>04_GTGT</maTKhai>
 		<tenTKhai>TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG (04/GTGT)</tenTKhai>
 		<moTaBMau></moTaBMau>
+		<soLan>T_6</soLan>
 	</Static>
 	<Static GroupName="GiaHan">
 		<maLyDoGiaHan></maLyDoGiaHan>
