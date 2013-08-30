@@ -499,6 +499,15 @@ Private Sub cmdCommand2_Click()
         MaTK = Replace$(MaTK, "10", "")
     End If
     
+    'Chuan xml khi ket xuat cho cac to TNCN thang, quy
+    'vi du 01A_TNCN -> 01_TNCN, 01B_TNCN -> 01_TNCN
+    If InStr(MaTK, "TNCN") > 0 Then
+        If Val(Left$(MaTK, 2)) < 6 Then
+            MaTK = Replace$(Replace$(MaTK, "B", ""), "A", "")
+     
+        End If
+    End If
+
     '    With CommonDialog1
     '        .CancelError = True
     '        .InitDir = GetAbsolutePath("..")
@@ -519,8 +528,6 @@ Private Sub cmdCommand2_Click()
         
     xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
     xmlMapCT.Load GetAbsolutePath("..\Ini\" & MaTK & "_xml.xml")
-
-    SetValueToKhaiHeader xmlTK
 
     With fpSpread1
         Dim cellid         As String
@@ -579,7 +586,7 @@ Private Sub cmdCommand2_Click()
                     cellRange = cellRange + GroupCellRange
                 Loop
 
-                cellRange = cellRange - 1
+                cellRange = cellRange - GroupCellRange
 
             Else
                 Dim xmlChildNode As MSXML.IXMLDOMNode
@@ -662,7 +669,9 @@ Private Sub cmdCommand2_Click()
                 ElseIf InStr(MaTK, "10") > 0 Then
                     MaTK = Replace$(MaTK, "10", "")
                 End If
-
+                If InStr(MaTK, "KHBS") > 0 Then
+                    MaTK = "KHBS"
+                End If
                 xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
 
                 xmlMapPL.Load GetAbsolutePath("..\ini\" & MaTK & "_xml.xml")
@@ -708,7 +717,7 @@ Private Sub cmdCommand2_Click()
                             cellRange = cellRange + GroupCellRange
                         Loop
 
-                        cellRange = cellRange - 1
+                        cellRange = cellRange - GroupCellRange
                     Else
                         Dim xmlChildNodePL As MSXML.IXMLDOMNode
                         currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
@@ -765,6 +774,7 @@ Private Sub cmdCommand2_Click()
         Next
 
     End With    'Save temp
+    SetValueToKhaiHeader xmlTK
 
     Dim sFileName As String
     sFileName = "c:\TempXML\" & strFileName
@@ -885,18 +895,21 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     xmlTK.getElementsByTagName("maDVu")(0).Text = GetAttribute(GetMessageCellById("0133"), "Msg")
     xmlTK.getElementsByTagName("tenDVu")(0).Text = GetAttribute(GetMessageCellById("0134"), "Msg")
     xmlTK.getElementsByTagName("ttinNhaCCapDVu")(0).Text = ""
-
-    With fpSpread1
-
-        If Val(strSolanBS) > 0 Then
-            xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0132"), "Msg")
-            xmlTK.getElementsByTagName("soLan")(0).Text = Val(strSolanBS)
-        Else
-            xmlTK.getElementsByTagName("soLan")(0).Text = ""
-            xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0131"), "Msg")
-        End If
-
-    End With
+    
+    vlue = xmlTK.getElementsByTagName("soLan")(0).Text
+    
+    If Val(vlue) > 0 Then
+        xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0132"), "Msg")
+        xmlTK.getElementsByTagName("soLan")(0).Text = Val(vlue)
+    Else
+        xmlTK.getElementsByTagName("soLan")(0).Text = ""
+        xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0131"), "Msg")
+    End If
+        
+    xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
+    xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = format$(dNgayDauKy, "dd/MM/yyyy")
+    xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = format$(dNgayCuoiKy, "dd/MM/yyyy")
+    xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
 
     Exit Sub
 ErrHandle:
