@@ -1,4 +1,4 @@
-<HSoKhaiThue>
+<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>08A_TNCN</maTKhai>
 		<tenTKhai>TK tạm nộp thuế TNCN (08A/KK-TNCN)</tenTKhai>
