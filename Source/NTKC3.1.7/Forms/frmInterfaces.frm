@@ -1,6 +1,8 @@
 VERSION 5.00
+Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Begin VB.Form frmInterfaces 
    AutoRedraw      =   -1  'True
    BorderStyle     =   3  'Fixed Dialog
@@ -38,8 +40,24 @@ Begin VB.Form frmInterfaces
          Height          =   6600
          Left            =   30
          TabIndex        =   2
-         Top             =   0
-         Width           =   1000
+         Top             =   120
+         Visible         =   0   'False
+         Width           =   11475
+         _Version        =   458752
+         _ExtentX        =   20241
+         _ExtentY        =   11642
+         _StockProps     =   64
+         BorderStyle     =   0
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         SpreadDesigner  =   "frmInterfaces.frx":0000
       End
       Begin MSForms.Label lblExit 
          Height          =   945
@@ -1373,8 +1391,8 @@ Private Sub Command1_Click()
 'str2 = "aa317911000808141   07201300100200100101/0101/01/2009<S01><S>don vi phat hanh cu~don vi phat hanh moi~01DVPH~dia chi cu~dia chi moi~02DCTS~dien thoai cu~dien thoai moi~03Phone</S><S>01/01/2013~~~test~16/07/2013~abc</S></S01>"
 'Barcode_Scaned str2
 
-str2 = "aa316013600247325   06201300300300100101/0114/06/2006<S01><S></S><S>~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~16/07/2013~1~~~1701~~</S></S01>"
-Barcode_Scaned str2
+'str2 = "aa316013600247325   06201300300300100101/0114/06/2006<S01><S></S><S>~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~16/07/2013~1~~~1701~~</S></S01>"
+'Barcode_Scaned str2
 
 '' To khai 02/TNDN
 'str2 = "aa316733600247325   02201300000000100201/0114/06/2006<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0"
@@ -1397,6 +1415,9 @@ Barcode_Scaned str2
 
 'str2 = "bs316012600151082   06201300300300100101/0114/06/2006<S01><S></S><S>~1000000~0~0~0~0~0~333333~0~0~333333~0~0~0~333333~333333~0~0~0~0~0~0~666667~0~666667</S><S>~~~14/08/2013~~1~1~1701~~</S></S01><SKHBS><S>~~0~0~0</S><S>Thu’ GTGT cﬂn Æ-Óc kh u trı k˙ tr-Ìc chuy”n sang~22~0~1000000~1000000</S><S>14/08/2013~23~0~~333333~0~-333333~0~666667~666667</S></SKHBS>"
 'Barcode_Scaned str2
+
+str2 = "aa302682600151082   042011ihtkks00100101/0101/01/2009<S01><S>~~01/10/2011~31/12/2011</S><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/001~AA/11P~955~0000046~0001000~~~0000046~0000094~49~40~9~0000052;0000054;0000060;0000061;0000069;0000075;0000080;0000081;0000083~0~~0~~0000095~0001000~906~0</S><S>~kydientu~20/01/2012</S></S01>"
+Barcode_Scaned str2
 
 End Sub
 
@@ -2900,7 +2921,7 @@ Private Function InitParameters(ByVal strData As String, _
     End If
     
     On Error GoTo ErrHandle
-    If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Then
+    If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Or Val(strIDBCTC) = 68 Then
         If Val(strIDBCTC) = 36 Then
             LoaiKyKK = LoaiToKhai(strData)
         Else
