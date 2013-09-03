@@ -907,8 +907,8 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     End If
         
     xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
-    xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = format$(dNgayDauKy, "dd/MM/yyyy")
-    xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = format$(dNgayCuoiKy, "dd/MM/yyyy")
+    xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = Format$(dNgayDauKy, "dd/MM/yyyy")
+    xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(dNgayCuoiKy, "dd/MM/yyyy")
     xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
 
     Exit Sub
