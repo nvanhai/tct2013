@@ -152,6 +152,8 @@ Attribute VB_Exposed = False
 '******************************************************
 Option Explicit
 
+Private SHA1Hash As New SHA1Hash
+
 Private Sub cmdClose_Click()
     Unload Me
     Unload frmSystem
@@ -220,7 +222,12 @@ On Error GoTo ErrorHandle
 ErrorHandle:
     SaveErrorLog Me.Name, "cmdOK_Click", Err.Number, Err.Description
 End Sub
-
+Private Function getSHA1(ByVal pass As String) As String
+    If pass <> "" Then
+        'SHA1Hash.HashBytes (pass)
+        
+    End If
+End Function
 
 
 Private Sub Form_Activate()
@@ -334,7 +341,7 @@ On Error GoTo ErrorHandle
     paXmlDoc.getElementsByTagName("TRAN_CODE")(0).Text = sTranCode
     paXmlDoc.getElementsByTagName("UserName")(0).Text = txtUsername.Text
     paXmlDoc.getElementsByTagName("TaxOffcice")(0).Text = sTaxOffice
-    paXmlDoc.getElementsByTagName("Pass")(0).Text = txtPassword.Text
+    paXmlDoc.getElementsByTagName("Pass")(0).Text = SHA1Hash.HashBytes(txtPassword.Text)
     
     fldValue = paXmlDoc.xml
     fldValue = ChangeTagASSCII(fldValue, True)
