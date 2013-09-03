@@ -34,12 +34,9 @@ Begin VB.Form frmInterfaces
          _Version        =   393216
          DTREnable       =   -1  'True
       End
-      Begin VB.PictureBox fpSpread1 
-         BackColor       =   &H000000FF&
-         Height          =   1000
-         Left            =   0
-         ScaleHeight     =   945
-         ScaleWidth      =   945
+      Begin FPUSpreadADO.fpSpread fpSpread1 
+         Height          =   6600
+         Left            =   30
          TabIndex        =   2
          Top             =   0
          Width           =   1000
@@ -101,15 +98,16 @@ Begin VB.Form frmInterfaces
          Top             =   30
          Width           =   1335
       End
-      Begin VB.PictureBox ProgressBar1 
-         BackColor       =   &H000000FF&
-         Height          =   1000
-         Left            =   0
-         ScaleHeight     =   945
-         ScaleWidth      =   945
+      Begin ComctlLib.ProgressBar ProgressBar1 
+         Height          =   315
+         Left            =   120
          TabIndex        =   7
-         Top             =   0
-         Width           =   1000
+         Top             =   420
+         Width           =   5775
+         _ExtentX        =   10186
+         _ExtentY        =   556
+         _Version        =   327682
+         Appearance      =   1
       End
       Begin MSForms.CommandButton cmdClear 
          Height          =   375
