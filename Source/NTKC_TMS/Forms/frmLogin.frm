@@ -346,6 +346,10 @@ On Error GoTo ErrorHandle
     fldValue = paXmlDoc.xml
     fldValue = ChangeTagASSCII(fldValue, True)
     
+    Dim sParamUser As String
+    sParamUser = "c:\TempXML\" & "paramUser.xml"
+    paXmlDoc.save sParamUser
+    
     'Return value from ESB
     getInfoUserFromESB = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
     
