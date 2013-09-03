@@ -508,23 +508,24 @@ End Sub
 
 Private Sub cmdSave_Click()
 
-On Error GoTo ErrHandle
+    On Error GoTo ErrHandle
 
-    Dim strSQL As String, mResult As Integer, strSQL_HDR As String, strSQL_DTL As String
-    Dim HdrID As Variant, strDate() As String, dDate As Date
-    Dim rs As New ADODB.Recordset, i As Long
-    Dim qBoSung As Variant
-    Dim msgRs As MsgBoxResult
-    Dim idToKhai As Integer
+    Dim strSQL         As String, mResult As Integer, strSQL_HDR As String, strSQL_DTL As String
+    Dim HdrID          As Variant, strDate() As String, dDate As Date
+    Dim rs             As New ADODB.Recordset, i As Long
+    Dim qBoSung        As Variant
+    Dim msgRs          As MsgBoxResult
+    Dim idToKhai       As Integer
     
-    Dim mTemp As Integer
+    Dim mTemp          As Integer
     
-    Dim dsTK_DLT As String
+    Dim dsTK_DLT       As String
     'dntai them bien de luu ngay dau nam tai chinh va ngay cuoi nam tai chinh
-    Dim dNgayDauNamTC As Date
+    Dim dNgayDauNamTC  As Date
     Dim dNgayCuoiNamTC As Date
-    Dim varDate1 As String
-    Dim varDate2 As String
+    Dim varDate1       As String
+    Dim varDate2       As String
+
     '***************************
     'Date:23/11/2005
     If TAX_Utilities_Srv_New.Data(0) Is Nothing Then Exit Sub
@@ -534,7 +535,6 @@ On Error GoTo ErrHandle
     
     CallFinish
     
-    
     '***************************
     'Date:02/01/2006
     If Not objTaxBusiness Is Nothing Then
@@ -542,31 +542,35 @@ On Error GoTo ErrHandle
         'Get Params
         objTaxBusiness.GetParams strNgayNhanToKhai, strMaPhongXuLy 'strMaSoTep, strNgayNhanToKhai, strMaPhongXuLy
     End If
+
     '***************************
-     If CheckValidData = False Then
+    If CheckValidData = False Then
         MessageBox "0046", msOKOnly, miWarning
         Exit Sub
     End If
-       
     
     ' Kiem tra trang thai 02 -> khong cho ghi, trang thai 03 canh bao van cho ghi
     If checkTT = 2 Then
         'MessageBox "0108", msOKOnly, miCriticalError
         mTemp = MessageBox("0108", msYesNo, miQuestion)
+
         If mTemp = mrNo Then
             Exit Sub
         End If
     End If
+
     ' end
     
     dsTK_DLT = "~1~2~3~4~5~6~11~12~46~47~48~49~15~16~50~51~36~70~71~72~73~74~75~80~81~82~77~86~87~89~42~43~17~59~41~76~90~"
     ' Kiem tra neu MDL thue khac thi canh bao
     idToKhai = Val(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
+
     'If IdToKhai = 1 Or IdToKhai = 2 Or IdToKhai = 4 Or IdToKhai = 11 Or IdToKhai = 12 Or IdToKhai = 46 Or IdToKhai = 47 Or IdToKhai = 48 Or IdToKhai = 49 Or IdToKhai = 15 Or IdToKhai = 16 Or IdToKhai = 50 Or IdToKhai = 51 _
     '    Or IdToKhai = 36 Or IdToKhai = 70 Or IdToKhai = 6 Or IdToKhai = 5 Then
     If InStr(1, dsTK_DLT, "~" & idToKhai & "~", vbTextCompare) > 0 Then
         If isMaDLT(strMaSoThue, strMaDaiLyThue) = False Then
             mTemp = MessageBox("0115", msYesNo, miQuestion)
+
             If mTemp = mrNo Then
                 Exit Sub
             End If
@@ -575,8 +579,8 @@ On Error GoTo ErrHandle
         ' Kiem tra to khai BS'
         If verToKhai = 2 Then
             If isToKhaiCT = False Then
-                 MessageBox "0116", msOKOnly, miWarning
-                 Exit Sub
+                MessageBox "0116", msOKOnly, miWarning
+                Exit Sub
             End If
         End If
         
@@ -585,8 +589,10 @@ On Error GoTo ErrHandle
             MessageBox "0114", msOKOnly, miWarning
             Exit Sub
         End If
+
         ' end
     End If
+
     ' End
     ' Cac to khai PIT se khong nhan to khai co ky ke khai < thang 7 hoac quy 3
     If TAX_Utilities_Srv_New.isCheckPIT = True Then
@@ -596,78 +602,88 @@ On Error GoTo ErrHandle
                 Exit Sub
             End If
         End If
+
         If idToKhai = 47 Or idToKhai = 49 Or idToKhai = 16 Or idToKhai = 51 Or (idToKhai = 74 And isTKThang = False) Or (idToKhai = 75 And isTKThang = False) Then
             If TAX_Utilities_Srv_New.Year < 2011 Or (TAX_Utilities_Srv_New.Year = 2011 And TAX_Utilities_Srv_New.ThreeMonths < 3) Then
-                    MessageBox "0119", msOKOnly, miWarning
+                MessageBox "0119", msOKOnly, miWarning
                 Exit Sub
             End If
         End If
             
         If ((idToKhai = 74 Or idToKhai = 75) And isTKThang = True) Then
-              Dim arrNgay() As String
-              arrNgay = Split(TuNgay, "/")
-              
+            Dim arrNgay() As String
+            arrNgay = Split(TuNgay, "/")
           
-              If Val(arrNgay(1)) < 2011 Or (Val(arrNgay(1)) = 2011 And Val(arrNgay(0)) < 7) Then
-                  MessageBox "0118", msOKOnly, miWarning
-                  Exit Sub
-              End If
-          End If
+            If Val(arrNgay(1)) < 2011 Or (Val(arrNgay(1)) = 2011 And Val(arrNgay(0)) < 7) Then
+                MessageBox "0118", msOKOnly, miWarning
+                Exit Sub
+            End If
+        End If
     End If
+
     ' end
-  
-    
 
     ' Tam thoi bat len message de thong bao truong hop la to khai Bo sung
     ' Truong hop to khai la version 1.3.0
     If verToKhai = 0 Then
+
         With fpSpread1
         
             .EventEnabled(EventAllEvents) = False
             .Sheet = .SheetCount
             .GetText .ColLetterToNumber("B"), 17, qBoSung
+
             ' qBoSung : neu ky lap bo lon hon ky ke khai thi set =0 nguoc lai set 1
             If qBoSung = 0 And (TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue <> "104") Then
                 ' Huy bo thi quay lai man hinh quet to khai
                 msgRs = MessageBox("0084", msYesNoCancel, miQuestion, 1)
+
                 If msgRs = mrCancel Then
                     If Not TAX_Utilities_Srv_New.Data(0) Is Nothing Then
                         If Not objTaxBusiness Is Nothing Then
                             objTaxBusiness.Prepared4 dNgayDauKy
                             objTaxBusiness.GetParams strNgayNhanToKhai, strMaPhongXuLy 'strMaSoTep, strNgayNhanToKhai, strMaPhongXuLy
                         End If
+
                         StartReceiveForm
                     End If
+
                     Exit Sub
-                ' Neu  ghi Thay the thi set lai trang thai cua to khai la 1 va ghi binh thuong
+                    ' Neu  ghi Thay the thi set lai trang thai cua to khai la 1 va ghi binh thuong
                 ElseIf msgRs = mrYes Then
                     verToKhai = 1
-                ' Neu ghi Bo sung thi phai set lai tinh trang cua to khai la 2 va phai yeu cau quet phu luc KHBS
+                    ' Neu ghi Bo sung thi phai set lai tinh trang cua to khai la 2 va phai yeu cau quet phu luc KHBS
                 ElseIf msgRs = mrNo Then
-'                    If TAX_Utilities_Srv_New.NodeValidity.childNodes(.SheetCount - 2).Attributes.getNamedItem("Active").nodeValue = 0 Then
-'                        MessageBox "0086", msOKOnly, miInformation
-'                        Exit Sub
-'                    Else
-                        verToKhai = 2
-'                    End If
+                    '                    If TAX_Utilities_Srv_New.NodeValidity.childNodes(.SheetCount - 2).Attributes.getNamedItem("Active").nodeValue = 0 Then
+                    '                        MessageBox "0086", msOKOnly, miInformation
+                    '                        Exit Sub
+                    '                    Else
+                    verToKhai = 2
+                    '                    End If
                 End If
             End If
+
             .EventEnabled(EventAllEvents) = True
         End With
+
     ElseIf verToKhai = 2 Then
+
         ' Kiem tra neu la to khai TNCN moi thi ko phai quet KHBS
         ' IdToKhai = Val(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
         If (TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue <> "104") Then
+
             With fpSpread1
-'                ' Neu ghi Bo sung thi phai set lai tinh trang cua to khai la 2 va phai yeu cau quet phu luc KHBS
-'                If TAX_Utilities_Srv_New.NodeValidity.childNodes(.SheetCount - 2).Attributes.getNamedItem("Active").nodeValue = 0 Then
-'                    MessageBox "0086", msOKOnly, miInformation
-'                    Exit Sub
-'                Else
-                    verToKhai = 2
-'                End If
+                '                ' Neu ghi Bo sung thi phai set lai tinh trang cua to khai la 2 va phai yeu cau quet phu luc KHBS
+                '                If TAX_Utilities_Srv_New.NodeValidity.childNodes(.SheetCount - 2).Attributes.getNamedItem("Active").nodeValue = 0 Then
+                '                    MessageBox "0086", msOKOnly, miInformation
+                '                    Exit Sub
+                '                Else
+                verToKhai = 2
+                '                End If
             End With
+
         End If
+
         ' 04-01-2011
         ' Kiem tra neu la to khai TNCN thi set lai  trang thai bo sung thanh thay the (2->1)
         If (TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "104") Then
@@ -677,11 +693,13 @@ On Error GoTo ErrHandle
     
     ' Lay lai ID cua to khai de biet la to khai co duoc gia han thue hay khong
     idToKhai = Val(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
+
     ' Truong hop to khai TNCN mau 02 va 07/TNCN hien tai tu 01->05/2009 cho phep gia han thue
     ' ngoai thoi gian nay phai thong bao khong duoc gia han
     ' Do voi to khai 02, 07/TNCN thang
     If Val(idToKhai) = 15 Or Val(idToKhai) = 36 Then
         Dim varTemp
+
         ' Lay thong tin ve gia han nop thue TNCN
         With fpSpread1
             .Sheet = 1
@@ -689,25 +707,28 @@ On Error GoTo ErrHandle
             .Row = 36
             varTemp = .Value
         End With
+
         ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2009 thi thong bao khong duoc gia han nop thue
         If Val(TAX_Utilities_Srv_New.Year) <> 2009 Then
             If Val(varTemp) = 1 Then
                 MessageBox "0090", msOKOnly, miInformation
                 Exit Sub
             End If
-'        Else
-'            If Val(TAX_Utilities_Srv_New.Month) > 5 Then
-'                ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu lon hon thang 5 nam 2009 thi thong bao khong duoc gia han nop thue
-'                If Val(varTemp) = 1 Then
-'                    MessageBox "0090", msOKOnly, miInformation
-'                    Exit Sub
-'                End If
-'            End If
+
+            '        Else
+            '            If Val(TAX_Utilities_Srv_New.Month) > 5 Then
+            '                ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu lon hon thang 5 nam 2009 thi thong bao khong duoc gia han nop thue
+            '                If Val(varTemp) = 1 Then
+            '                    MessageBox "0090", msOKOnly, miInformation
+            '                    Exit Sub
+            '                End If
+            '            End If
         End If
     End If
     
     ' Do voi to khai 02/TNCN quy
     If Val(idToKhai) = 37 Then
+
         ' Lay thong tin ve gia han nop thue TNCN
         With fpSpread1
             .Sheet = 1
@@ -715,20 +736,22 @@ On Error GoTo ErrHandle
             .Row = 36
             varTemp = .Value
         End With
+
         ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2009 thi thong bao khong duoc gia han nop thue
         If Val(TAX_Utilities_Srv_New.Year) <> 2009 Then
             If Val(varTemp) = 1 Then
                 MessageBox "0090", msOKOnly, miInformation
                 Exit Sub
             End If
-'        Else
-'            If Val(TAX_Utilities_Srv_New.ThreeMonths) > 1 Then
-'                ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu lon hon thang 5 nam 2009 thi thong bao khong duoc gia han nop thue
-'                If Val(varTemp) = 1 Then
-'                    MessageBox "0091", msOKOnly, miInformation
-'                    Exit Sub
-'                End If
-'            End If
+
+            '        Else
+            '            If Val(TAX_Utilities_Srv_New.ThreeMonths) > 1 Then
+            '                ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu lon hon thang 5 nam 2009 thi thong bao khong duoc gia han nop thue
+            '                If Val(varTemp) = 1 Then
+            '                    MessageBox "0091", msOKOnly, miInformation
+            '                    Exit Sub
+            '                End If
+            '            End If
         End If
     End If
     
@@ -736,31 +759,37 @@ On Error GoTo ErrHandle
     ' ngoai thoi gian nay phai thong bao khong duoc gia han
     ' Do voi to khai 01A, 01B/TNDN thang
     If Val(idToKhai) = 11 Or Val(idToKhai) = 12 Then
+
         ' Lay thong tin ve gia han nop thue TNDN
         'dntai 06/03/2012 set lai vi tri cell check gia han
         If Val(idToKhai) = 11 Then
+
             With fpSpread1
                 .Sheet = 1
                 .Col = .ColLetterToNumber("E")
                 .Row = 37
                 varTemp = .Value
             End With
+
         ElseIf Val(idToKhai) = 12 Then
+
             With fpSpread1
                 .Sheet = 1
                 .Col = .ColLetterToNumber("E")
                 .Row = 38
                 varTemp = .Value
             End With
+
         End If
+
         ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2009 thi thong bao khong duoc gia han nop thue
         ' yeu cau mo tat ca cac ky
-'        If Val(TAX_Utilities_Srv_New.Year) <> 2009 And Val(TAX_Utilities_Srv_New.Year) <> 2010 And Val(TAX_Utilities_Srv_New.Year) <> 2011 Then
-'            If Val(varTemp) = 1 Then
-'                MessageBox "0092", msOKOnly, miInformation
-'                Exit Sub
-'            End If
-'        End If
+        '        If Val(TAX_Utilities_Srv_New.Year) <> 2009 And Val(TAX_Utilities_Srv_New.Year) <> 2010 And Val(TAX_Utilities_Srv_New.Year) <> 2011 Then
+        '            If Val(varTemp) = 1 Then
+        '                MessageBox "0092", msOKOnly, miInformation
+        '                Exit Sub
+        '            End If
+        '        End If
         ' Kiem tra quy truoc da co gia han canh bao NSD check vao gia han nop thue
         ' nvhai
         If Val(TAX_Utilities_Srv_New.Year) = 2009 Or Val(TAX_Utilities_Srv_New.Year) = 2010 Or Val(TAX_Utilities_Srv_New.Year) = 2011 Then
@@ -773,11 +802,13 @@ On Error GoTo ErrHandle
                 dNgayCuoiNamTC = NgayCuoiNamTaiChinh(TAX_Utilities_Srv_New.Year, iThangTaiChinh, iNgayTaiChinh)
                 'set lai dinh dang de so sanh
                 varDate2 = "'" & DatePart("D", dNgayCuoiNamTC) & "-" & MonthName(DatePart("M", dNgayCuoiNamTC), True) & "-" & DatePart("YYYY", dNgayCuoiNamTC) & "'"
+
                 'connect to database QLT
                 If Not clsDAO.Connected Then
                     clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
                     clsDAO.Connect
                 End If
+
                 ' SQL check du lieu
                 strSQL = "select ID from RCV_TKHAI_HDR "
                 strSQL = strSQL & " where TIN='" & strMST & "' "
@@ -788,19 +819,21 @@ On Error GoTo ErrHandle
             
                 If (Not rs Is Nothing) And rs.Fields.Count > 0 Then
                     If Year(dNgayDauKy) < 2011 Or (Year(dNgayDauKy) = 2011 And DatePart("Q", dNgayDauKy) < 4) Then
-                    If MessageBox("0098", msYesNo, miQuestion) = mrYes Then
-'                        With fpSpread1
-'                            .Sheet = 1
-'                            .Col = .ColLetterToNumber("E")
-'                            .Row = 17
-'                            .Value = 1
-'                        End With
-                        Exit Sub
+                        If MessageBox("0098", msYesNo, miQuestion) = mrYes Then
+                            '                        With fpSpread1
+                            '                            .Sheet = 1
+                            '                            .Col = .ColLetterToNumber("E")
+                            '                            .Row = 17
+                            '                            .Value = 1
+                            '                        End With
+                            Exit Sub
                         End If
                     End If
+
                     'DisplayMessage "0098", msOKOnly, miInformation
                     'Exit Sub
                 End If
+
                 Set rs = Nothing
             End If
         End If
@@ -808,8 +841,10 @@ On Error GoTo ErrHandle
         ' end nvhai
         
     End If
+
     ' Do voi to khai 05/TNDN thang
     If Val(idToKhai) = 14 Then
+
         ' Lay thong tin ve gia han nop thue TNDN
         With fpSpread1
             .Sheet = 1
@@ -817,16 +852,19 @@ On Error GoTo ErrHandle
             .Row = 19
             varTemp = .Value
         End With
+
         ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2009 thi thong bao khong duoc gia han nop thue
-'        If Val(TAX_Utilities_Srv_New.Year) <> 2009 Then
-'            If Val(varTemp) = 1 Then
-'                MessageBox "0092", msOKOnly, miInformation
-'                Exit Sub
-'            End If
-'        End If
+        '        If Val(TAX_Utilities_Srv_New.Year) <> 2009 Then
+        '            If Val(varTemp) = 1 Then
+        '                MessageBox "0092", msOKOnly, miInformation
+        '                Exit Sub
+        '            End If
+        '        End If
     End If
+
     ' Do voi to khai 03/TNDN thang
     If Val(idToKhai) = 3 Then
+
         ' Lay thong tin ve gia han nop thue TNDN
         With fpSpread1
             .Sheet = 1
@@ -834,14 +872,15 @@ On Error GoTo ErrHandle
             .Row = 37
             varTemp = .Value
         End With
+
         ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2009 thi thong bao khong duoc gia han nop thue
         ' mo gia han cho cac ky ke khai
-'        If Val(TAX_Utilities_Srv_New.Year) <> 2009 And Val(TAX_Utilities_Srv_New.Year) <> 2010 And Val(TAX_Utilities_Srv_New.Year) <> 2011 Then
-'            If Val(varTemp) = 1 Then
-'                MessageBox "0092", msOKOnly, miInformation
-'                Exit Sub
-'            End If
-'        End If
+        '        If Val(TAX_Utilities_Srv_New.Year) <> 2009 And Val(TAX_Utilities_Srv_New.Year) <> 2010 And Val(TAX_Utilities_Srv_New.Year) <> 2011 Then
+        '            If Val(varTemp) = 1 Then
+        '                MessageBox "0092", msOKOnly, miInformation
+        '                Exit Sub
+        '            End If
+        '        End If
         
         ' Kiem tra to khai quy da co gia han canh bao NSD check vao gia han nop thue tren to khai quyet toan nam
         ' nvhai
@@ -854,11 +893,13 @@ On Error GoTo ErrHandle
                 dNgayCuoiNamTC = NgayCuoiNamTaiChinh(TAX_Utilities_Srv_New.Year, iThangTaiChinh, iNgayTaiChinh)
                 'set lai dinh dang de so sanh
                 varDate2 = "'" & DatePart("D", dNgayCuoiNamTC) & "-" & MonthName(DatePart("M", dNgayCuoiNamTC), True) & "-" & DatePart("YYYY", dNgayCuoiNamTC) & "'"
+
                 'connect to database QLT
                 If Not clsDAO.Connected Then
                     clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
                     clsDAO.Connect
                 End If
+
                 ' SQL check du lieu
                 strSQL = "select ID from RCV_TKHAI_HDR "
                 strSQL = strSQL & " where TIN='" & strMST & "' "
@@ -869,49 +910,48 @@ On Error GoTo ErrHandle
             
                 If (Not rs Is Nothing) And rs.Fields.Count > 0 Then
                     If Year(dNgayDauKy) <= 2011 Then
-                    If MessageBox("0099", msYesNo, miQuestion) = mrYes Then
-'                        With fpSpread1
-'                            .Sheet = 1
-'                            .Col = .ColLetterToNumber("E")
-'                            .Row = 17
-'                            .Value = 1
-'                        End With
-                        Exit Sub
+                        If MessageBox("0099", msYesNo, miQuestion) = mrYes Then
+                            '                        With fpSpread1
+                            '                            .Sheet = 1
+                            '                            .Col = .ColLetterToNumber("E")
+                            '                            .Row = 17
+                            '                            .Value = 1
+                            '                        End With
+                            Exit Sub
                         End If
                     End If
+
                     'DisplayMessage "0098", msOKOnly, miInformation
                     'Exit Sub
                 End If
+
                 Set rs = Nothing
             End If
         End If
         
         ' end nvhai
         
-        
-        
     End If
     
     ' Kiem tra gia han to khai 01/GTGT
     ' yeu cau mo gia han tat ca cac ky
-'    If Val(idToKhai) = 1 Then
-'         ' Lay thong tin ve gia han nop thue GTGT
-'        With fpSpread1
-'            .Sheet = 1
-'            .Col = .ColLetterToNumber("E")
-'            .Row = 38
-'            varTemp = .Value
-'        End With
-'        ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2012 thi thong bao khong duoc gia han nop thue
-'        If Val(TAX_Utilities_Srv_New.Year) = 2012 And (Val(TAX_Utilities_Srv_New.Month) = 4 Or Val(TAX_Utilities_Srv_New.Month) = 5 Or Val(TAX_Utilities_Srv_New.Month) = 6) Then
-'        Else
-'            If Val(varTemp) = 1 Then
-'                MessageBox "0128", msOKOnly, miInformation
-'                Exit Sub
-'            End If
-'        End If
-'    End If
-    
+    '    If Val(idToKhai) = 1 Then
+    '         ' Lay thong tin ve gia han nop thue GTGT
+    '        With fpSpread1
+    '            .Sheet = 1
+    '            .Col = .ColLetterToNumber("E")
+    '            .Row = 38
+    '            varTemp = .Value
+    '        End With
+    '        ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2012 thi thong bao khong duoc gia han nop thue
+    '        If Val(TAX_Utilities_Srv_New.Year) = 2012 And (Val(TAX_Utilities_Srv_New.Month) = 4 Or Val(TAX_Utilities_Srv_New.Month) = 5 Or Val(TAX_Utilities_Srv_New.Month) = 6) Then
+    '        Else
+    '            If Val(varTemp) = 1 Then
+    '                MessageBox "0128", msOKOnly, miInformation
+    '                Exit Sub
+    '            End If
+    '        End If
+    '    End If
     
     If clsDAO.Connected = False Then
         Me.MousePointer = vbHourglass
@@ -921,6 +961,7 @@ On Error GoTo ErrHandle
         frmSystem.MousePointer = vbDefault
         Me.MousePointer = vbDefault
     End If
+
     '*************************************************************
     'Date: 25/02/2006
     'Kiem tra khoa so
@@ -933,6 +974,7 @@ On Error GoTo ErrHandle
             Exit Sub
         End If
     End If
+
     Set rs = Nothing
     '*************************************************************
     
@@ -942,14 +984,16 @@ On Error GoTo ErrHandle
         ' xu ly an chi
         If isTonTaiAC = True Then
             mResult = MessageBox("0047", msYesNo, miQuestion)
+
             If mResult = mrNo Then
                 Exit Sub
             End If
         End If
+
     Else
-    strSQL = "select ID, DA_NHAN from RCV_TKHAI_HDR "
-    strSQL = strSQL & " where TIN='" & strMST & "' "
-    strSQL = strSQL & " and LOAI_TKHAI='" & changeMaToKhai(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue) & "' "
+        strSQL = "select ID, DA_NHAN from RCV_TKHAI_HDR "
+        strSQL = strSQL & " where TIN='" & strMST & "' "
+        strSQL = strSQL & " and LOAI_TKHAI='" & changeMaToKhai(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue) & "' "
     
         'Ngay dau ky ke khai va ngay cuoi ky ke khai
         dDate = dNgayDauKy
@@ -993,67 +1037,80 @@ On Error GoTo ErrHandle
         End If
 
         Dim flgBCTC As Boolean
-    clsDAO.BeginTrans
-    Set rs = clsDAO.Execute(strSQL)
+        clsDAO.BeginTrans
+        Set rs = clsDAO.Execute(strSQL)
     
-    ' nvhai
-    ' Xu ly cho nhan BCTC in bang HTKK 2.1.0
-    
-    If rs.Fields.Count > 0 Then
         ' nvhai
-        ' Neu la ID cua cac BCTC in bang HTKK 2.1.0
-        ' begin
-        If (Val(idToKhai) = 24 Or Val(idToKhai) = 25 Or Val(idToKhai) = 26 Or Val(idToKhai) = 27 Or Val(idToKhai) = 28 Or Val(idToKhai) = 29 _
-            Or Val(idToKhai) = 30 Or Val(idToKhai) = 31 Or Val(idToKhai) = 32 Or Val(idToKhai) = 33 Or Val(idToKhai) = 34 Or Val(idToKhai) = 35 _
-            Or Val(idToKhai) = 55 Or Val(idToKhai) = 56 Or Val(idToKhai) = 57 Or Val(idToKhai) = 58) Then
-            flgBCTC = True
-            If verToKhai = 0 Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
-                mResult = MessageBox("0047", msYesNo, miQuestion)
-                If mResult = mrYes Then ' Neu dong y ghi la to khai thay the thi phai dat lai trang thai = 1
-                    verToKhai = 1
-                    If UCase(rs.Fields("DA_NHAN").Value) = "E" Then
-                        clsDAO.ExecuteQuery "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
-                        clsDAO.ExecuteQuery "delete from RCV_TKHAI_DTL where HDR_ID='" & rs(0).Value & "'"
-                    End If
-                    'clsDAO.Execute "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
+        ' Xu ly cho nhan BCTC in bang HTKK 2.1.0
+    
+        If rs.Fields.Count > 0 Then
+
+            ' nvhai
+            ' Neu la ID cua cac BCTC in bang HTKK 2.1.0
+            ' begin
+            If (Val(idToKhai) = 24 Or Val(idToKhai) = 25 Or Val(idToKhai) = 26 Or Val(idToKhai) = 27 Or Val(idToKhai) = 28 Or Val(idToKhai) = 29 Or Val(idToKhai) = 30 Or Val(idToKhai) = 31 Or Val(idToKhai) = 32 Or Val(idToKhai) = 33 Or Val(idToKhai) = 34 Or Val(idToKhai) = 35 Or Val(idToKhai) = 55 Or Val(idToKhai) = 56 Or Val(idToKhai) = 57 Or Val(idToKhai) = 58) Then
+                flgBCTC = True
+
+                If verToKhai = 0 Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
+                    mResult = MessageBox("0047", msYesNo, miQuestion)
+
+                    If mResult = mrYes Then ' Neu dong y ghi la to khai thay the thi phai dat lai trang thai = 1
+                        verToKhai = 1
+
+                        If UCase(rs.Fields("DA_NHAN").Value) = "E" Then
+                            clsDAO.ExecuteQuery "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
+                            clsDAO.ExecuteQuery "delete from RCV_TKHAI_DTL where HDR_ID='" & rs(0).Value & "'"
+                        End If
+
+                        'clsDAO.Execute "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
                     
-                Else
-                    '********************
-                    clsDAO.CommitTrans
-                    '********************
-                    Exit Sub
-                End If
-            ElseIf verToKhai = 2 Then
-                If UCase(rs.Fields("DA_NHAN").Value) = "E" Then
-                    clsDAO.ExecuteQuery "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
-                    clsDAO.ExecuteQuery "delete from RCV_TKHAI_DTL where HDR_ID='" & rs(0).Value & "'"
-                End If
-            End If
-        Else
-        ' end
-            If verToKhai = 0 And isTKTonTai = True Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
-                mResult = MessageBox("0047", msYesNo, miQuestion)
-                If mResult = mrYes Then ' Neu dong y ghi la to khai thay the thi phai dat lai trang thai = 1
-                    verToKhai = 1
+                    Else
+                        '********************
+                        clsDAO.CommitTrans
+                        '********************
+                        Exit Sub
+                    End If
+
+                ElseIf verToKhai = 2 Then
+
                     If UCase(rs.Fields("DA_NHAN").Value) = "E" Then
                         clsDAO.ExecuteQuery "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
                         clsDAO.ExecuteQuery "delete from RCV_TKHAI_DTL where HDR_ID='" & rs(0).Value & "'"
                     End If
-                    'clsDAO.Execute "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
-                Else
-                    '********************
-                    clsDAO.CommitTrans
-                    '********************
-                    Exit Sub
                 End If
-            ElseIf verToKhai = 2 Then
-                If UCase(rs.Fields("DA_NHAN").Value) = "E" Then
-                    clsDAO.ExecuteQuery "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
-                    clsDAO.ExecuteQuery "delete from RCV_TKHAI_DTL where HDR_ID='" & rs(0).Value & "'"
+
+            Else
+
+                ' end
+                If verToKhai = 0 And isTKTonTai = True Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
+                    mResult = MessageBox("0047", msYesNo, miQuestion)
+
+                    If mResult = mrYes Then ' Neu dong y ghi la to khai thay the thi phai dat lai trang thai = 1
+                        verToKhai = 1
+
+                        If UCase(rs.Fields("DA_NHAN").Value) = "E" Then
+                            clsDAO.ExecuteQuery "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
+                            clsDAO.ExecuteQuery "delete from RCV_TKHAI_DTL where HDR_ID='" & rs(0).Value & "'"
+                        End If
+
+                        'clsDAO.Execute "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
+                    Else
+                        '********************
+                        clsDAO.CommitTrans
+                        '********************
+                        Exit Sub
+                    End If
+
+                ElseIf verToKhai = 2 Then
+
+                    If UCase(rs.Fields("DA_NHAN").Value) = "E" Then
+                        clsDAO.ExecuteQuery "delete from RCV_TKHAI_HDR where ID='" & rs(0).Value & "'"
+                        clsDAO.ExecuteQuery "delete from RCV_TKHAI_DTL where HDR_ID='" & rs(0).Value & "'"
+                    End If
                 End If
             End If
         End If
-    End If
+
         ' su loi ghi du lieu hdr va dtl tren transaction khac nhau
         clsDAO.CommitTrans
         ' end xu ly to khai binh thuong
@@ -1062,51 +1119,54 @@ On Error GoTo ErrHandle
     ' xu ly cho 2 to khai 08, 08A/TNCN
     If idToKhai = "74" Or idToKhai = "75" Then
         If verToKhai = 0 And isTKTonTai = True Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
-                mResult = MessageBox("0047", msYesNo, miQuestion)
-                If mResult = mrYes Then ' Neu dong y ghi la to khai thay the thi phai dat lai trang thai = 1
-                    verToKhai = 1
-                End If
+            mResult = MessageBox("0047", msYesNo, miQuestion)
+
+            If mResult = mrYes Then ' Neu dong y ghi la to khai thay the thi phai dat lai trang thai = 1
+                verToKhai = 1
+            End If
         End If
     End If
     
-    
     Set rs = Nothing
-    
 
-    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 _
-    Or idToKhai = 36 Or idToKhai = 6 Or idToKhai = 72 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 71 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 90 Or idToKhai = 95 Then
+    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 6 Or idToKhai = 72 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 71 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 90 Or idToKhai = 95 Or idToKhai = 92 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28").nodeValue)
     ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 5 Or idToKhai = 70 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28_NNKD").nodeValue)
     Else
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdr").nodeValue)
     End If
+
     ' xu ly de ghi cac mau an chi
     If Val(idToKhai) = 66 Or Val(idToKhai) = 68 Or Val(idToKhai) = 67 Or Val(idToKhai) = 64 Or Val(idToKhai) = 65 Or Val(idToKhai) = 91 Then
         strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl_AC").nodeValue)
     Else
         strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl").nodeValue)
     End If
+
     Set rs = clsDAO.Execute("select RCV_XLTK_HDR_SEQ.NEXTVAL from dual")
     HdrID = rs(0).Value
     
-
-    
     For i = 0 To TAX_Utilities_Srv_New.NodeValidity.childNodes.length - 1
         clsDAO.BeginTrans
+
         If Val(TAX_Utilities_Srv_New.NodeValidity.childNodes(i).Attributes.getNamedItem("Active").nodeValue) > 0 Then
             If i = 0 Then
+
                 ' Kiem tra xem chkQuetBangKe neu = true thi day la quet them bang ke
                 If (frmSystem.chkQuetBangKe.Value = True) Then
                     clsDAO.Execute objTaxBusiness.GenerateSQL_Header(TAX_Utilities_Srv_New.Data(i), strSQL_HDR, HdrID, verToKhai, dNgayDauKy, True)
                 Else ' Day la quet to khai thuan tuy
                     clsDAO.Execute objTaxBusiness.GenerateSQL_Header(TAX_Utilities_Srv_New.Data(i), strSQL_HDR, HdrID, verToKhai, dNgayDauKy)
                 End If
+
                 ' HDR va DTL ghi tren cung 1 transaction
                 'clsDAO.CommitTrans
             End If
-                GenerateSQL_Details TAX_Utilities_Srv_New.Data(i), strSQL_DTL, HdrID, i
+
+            GenerateSQL_Details TAX_Utilities_Srv_New.Data(i), strSQL_DTL, HdrID, i
         End If
+
         clsDAO.CommitTrans
     Next
 
@@ -1116,6 +1176,7 @@ On Error GoTo ErrHandle
         'Get Params
         objTaxBusiness.GetParams strNgayNhanToKhai, strMaPhongXuLy 'strMaSoTep, strNgayNhanToKhai, strMaPhongXuLy
     End If
+
     StartReceiveForm
     '***************************
     Set rs = Nothing
@@ -1131,6 +1192,7 @@ ErrHandle:
     On Error GoTo ExitErr
     'Rollback
     clsDAO.RollbackTrans
+
     With clsDAO
         .BeginTrans
         .Execute "delete from RCV_TKHAI_DTL where HDR_ID ='" & HdrID & "'"
@@ -1582,18 +1644,26 @@ Private Sub Command1_Click()
 '    Barcode_Scaned str2
     
     'Phu luc 01
-    str2 = "aa320823600247325   00201200500600100201/0101/01/190001/01/201231/12/2012<S01><S></S><S>HD01~06/06/2013</S><S>10~10000000~200000000~190000000~ok~~0~2000000~0~~~0~2000000~2000000~ok~~10000000~198000000~188000000~~1000000~10000000~0~-10000000~ok~2000000~20000000~0~-20000000~ok~10~-10000000~0~10000000~</S><S>dai ly~nguoiky~ict01~29/08/2013~1~~~01/01/2012~31/12/2012</S></S01>"
-    Barcode_Scaned str2
-    str2 = "aa320823600247325   002012005006002002<S01-1><S>cmc~0102030405~~~~~~~0~10000000~2000000</S><S>0~2000000</S></S01-1>"
-    Barcode_Scaned str2
+'    str2 = "aa320823600247325   00201200500600100201/0101/01/190001/01/201231/12/2012<S01><S></S><S>HD01~06/06/2013</S><S>10~10000000~200000000~190000000~ok~~0~2000000~0~~~0~2000000~2000000~ok~~10000000~198000000~188000000~~1000000~10000000~0~-10000000~ok~2000000~20000000~0~-20000000~ok~10~-10000000~0~10000000~</S><S>dai ly~nguoiky~ict01~29/08/2013~1~~~01/01/2012~31/12/2012</S></S01>"
+'    Barcode_Scaned str2
+'    str2 = "aa320823600247325   002012005006002002<S01-1><S>cmc~0102030405~~~~~~~0~10000000~2000000</S><S>0~2000000</S></S01-1>"
+'    Barcode_Scaned str2
     
     'to khai bo sung
 '    str2 = "bs320823600247325   00201200300300100201/0101/01/190001/01/201231/12/2012<S01><S></S><S>HD01~06/06/2013</S><S>10~10000000~200000000~190000000~ok~~5000000~70000000~0~~~0~0~0~ok~~10000000~200000000~190000000~~1000000~10000000~0~-10000000~ok~2000000~20000000~0~-20000000~ok~10~-10000000~0~10000000~</S><S>dai ly~nguoiky~ict01~29/08/2013~~1~1~01/01/2012~31/12/2012</S></S01>"
 '    Barcode_Scaned str2
 '    str2 = "bs320823600247325   002012003003002002<SKHBS><S>ThuÕ TNDN ph¶i nép~4~180000000~200000000~20000000</S><S>~~0~0~0</S><S>29/08/2013~196~1960000~~20000000</S></SKHBS>"
 '    Barcode_Scaned str2
-
     
+    'Thue tai nguyen 01/TAIN
+    'str2 = "aa320923600247325   07201300100100100201/0114/06/2006<S01><S></S><S>010102~Kg~1000.000~10.00~10.000~0~10.00</S><S>010103~Kg~"
+    'Barcode_Scaned str2
+    'str2 = "aa320923600247325   0720130010010020022000.000~20.00~11.000~0~20.00</S><S>nhanvien~ict01~giamdoc~29/08/2013~1~~0</S></S01>"
+    'Barcode_Scaned str2
+    
+    'Thue tai nguyen 01/TAIN-DK
+    str2 = "aa320923600247325   08201300100100100101/0114/06/2006<S01><S></S><S>~x~x~~0~1~0~1~~30/08/2013~HDKhiLo001</S><S>1000000~1000000~12000~12000000000~20~2400000000~21200</S><S>daily~ict01~nguoiky~30/08/2013</S></S01>"
+    Barcode_Scaned str2
 End Sub
 
 Private Sub Form_Activate()

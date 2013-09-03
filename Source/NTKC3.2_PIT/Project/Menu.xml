@@ -308,7 +308,15 @@
 			<Sheet ID="03" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_TAIN" Ini="..\Ini\03_TAIN.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
 		</Validity>
-	</Menu>		
+	</Menu>
+	
+	<Menu ID="92" PopID="101" ParentID="105" Caption="Tờ khai quyết toán thuế tài nguyên(01/TAIN-DK)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
+		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\Excel\01_TAIN_DK11.xls" ReportTemplate="..\ReportTemplates\excel\01_TAIN_DK11.xls" CatalogueID="01" Class="Tax_Business_Srv.cls_01TAIN_DK">
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_TAIN_DK13" Ini="..\Ini\01_TAIN_DK13.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
+		</Validity>
+	</Menu>
+	
 	<Menu ID="106" PopID="" ParentID="101" Caption="Thuế Tiêu Thụ Đặc Biệt" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\kekhai.gif"/>
 	<Menu ID="05" PopID="101" ParentID="106" Caption="Tờ khai thuế tiêu thụ đặc biệt (01/TTĐB)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\Excel\01_TTDB11.xls" ReportTemplate="..\ReportTemplates\Excel\01_TTDB11.xls" CatalogueID="02" Class="Tax_Business_Srv.cls_01TTDB">
