@@ -47,7 +47,7 @@ Begin VB.Form frmInterfaces
          _StockProps     =   64
          BorderStyle     =   0
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "MS Sans Serif"
+            Name            =   "Arial"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1698,10 +1698,14 @@ Private Sub Command1_Click()
 'str2 = "bs317740100100079   02201300100100100101/0101/01/1900<S01><S></S><S>~~~~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>Nguy‘n B~07/08/2013~Nguy‘n A~12345~~1</S></S01>"
 'Barcode_Scaned str2
 
-str2 = "aa317360100100079   03201300000100100101/0101/01/2010<S07><S></S><S>~0~27000000~27000000~0~0~0~0~0~0~0~0~0~20~0~0~1~0</S><S>test~19/11/2013~test~325~1~~~1</S></S07>"
-Barcode_Scaned str2
+'str2 = "aa317360100100079   03201300000100100101/0101/01/2010<S07><S></S><S>~0~27000000~27000000~0~0~0~0~0~0~0~0~0~20~0~0~1~0</S><S>test~19/11/2013~test~325~1~~~1</S></S07>"
+'Barcode_Scaned str2
 'str2 = "bs317360100100079   03201300000100100101/0101/01/2010<S07><S></S><S>~0~27000000~27000000~0~0~0~0~0~0~0~0~0~20~0~0~1~0</S><S>test~19/11/2013~test~325~~1~1~1</S></S07>"
 'Barcode_Scaned str2
+
+str2 = "aa317010100100079   07201300500500100101/0114/06/2006<S01><S></S><S>~111295685~300000~25000~25000~5000000~9900000~570000~200000~8000000~400000~1700000~170000~14900000~570000~545000~0~0~0~0~0~0~110750685~0~110750685</S><S>~~~31/07/2013~1~~~1701~~~0</S></S01>"
+Barcode_Scaned str2
+
 
 End Sub
 
@@ -2152,7 +2156,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
                     End If
                 End If
 
-                If Val(idToKhai) = 1 Or Val(idToKhai) = 2 Or Val(idToKhai) = 4 Or Val(idToKhai) = 71 Or Val(idToKhai) = 36 Then
+                If Val(idToKhai) = 1 Or Val(idToKhai) = 2 Or Val(idToKhai) = 4 Or Val(idToKhai) = 71 Or Val(idToKhai) = 36 Or Val(idToKhai) = 68 Then
                     If Val(idToKhai) = 36 Then
                         LoaiKyKK = LoaiToKhai(strData)
                     Else
