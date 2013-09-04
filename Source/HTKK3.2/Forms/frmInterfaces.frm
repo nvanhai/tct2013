@@ -4285,11 +4285,6 @@ Private Sub convertData05KK()
             'date 08-06-2010
             'Turning Load to khai
             'CallFinish
-            ' to khai nam 2012 moi tai sheet 4
-            If TAX_Utilities_New.Year = 2012 Then
-                .sheet = 4
-                
-            End If
 
             .sheet = 1
             mCurrentSheet = .sheet

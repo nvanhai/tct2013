@@ -3726,7 +3726,7 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             strResult(0) = "I_7~Dynamic_0"
             'strResult(1) = "V_41~R_43~R_44~R_45~R_46~R_47~R_48~R_49~R_50~R_51~R_52~R_53~R_55~R_56~R_57~R_59~R_60~R_61~Dynamic_0"
             strResult(1) = "V_41~R_43~R_44~R_45~R_46~R_47~R_48~R_49~R_50~R_51~R_52~R_53~R_55~R_56~R_57~Dynamic_0"
-            strResult(2) = "R_64~R_66~H_64~H_66~C_68~F_68~I_68~Dynamic_0"
+            strResult(2) = "R_64~R_66~H_64~H_66~C_68~F_68~I_68~L_68~Dynamic_0"
         ' QT TNCN
         ' 05_TNCN \TT28
         Case "17"
