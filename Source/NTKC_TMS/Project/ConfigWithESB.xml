@@ -1,19 +1,55 @@
 ﻿<Config>
 	<!-- Doan nay cau hinh de ket noi voi webservices cua ESB -->
-	<WsUrl>http://localhost:1387/Service1.asmx</WsUrl>
-	<SoapAction>http://tempuri.org/CheckInput</SoapAction>
-	<XmlRequest>		
+	<!-- Xac thuc NSD -->
+	<WsUrlNSD>http://10.64.112.155:7080/wsCBTVerify</WsUrlNSD>
+	<SoapActionNSD>http://tempuri.org/verify</SoapActionNSD>
+	<XmlRequestNSD>		
 		<?xml version="1.0" encoding="utf-8"?>
 		<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
 			<soap:Body>
-				<CheckInput xmlns="http://tempuri.org/">
-					<sInPut>string</sInPut>
-				</CheckInput>
+				<verify xmlns="http://tempuri.org/">
+					<UserVerifyWSRequest>string</UserVerifyWSRequest>
+				</verify>
 			</soap:Body>
 		</soap:Envelope>
-	</XmlRequest>	
+	</XmlRequestNSD>	
+	<ParamNameNSD>UserVerifyWSRequest</ParamNameNSD>
 	<TaxOffcice>00101</TaxOffcice>
-	<ParamName>sInPut</ParamName>
+	<!-- Ket thuc NSD -->
+	<!-- Lay thong tin NNT -->
+	<WsUrlNNT>http://10.64.112.55:7080/wsExtGDTuWsFlow</WsUrlNNT>
+	<SoapActionNNT>http://tempuri.org/getNNTInfo</SoapActionNNT>
+	<XmlRequestNNT>		
+		<?xml version="1.0" encoding="utf-8"?>
+		<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+			<soap:Body>
+				<getNNTInfo xmlns="http://tempuri.org/">
+					<NNTWSRequest>string</NNTWSRequest>
+				</getNNTInfo>
+			</soap:Body>
+		</soap:Envelope>
+	</XmlRequestNNT>	
+	<ParamNameNNT>NNTWSRequest</ParamNameNNT>
+	<!-- Ket thuc lay thong tin NNT -->
+	
+	<!-- Lay thong tin DLT -->
+	<WsUrlDLT>http://10.64.112.55:7080/wsExtGDTuWsFlow</WsUrlDLT>
+	<SoapActionDLT>http://tempuri.org/getDLTInfo</SoapActionDLT>
+	<XmlRequestDLT>		
+		<?xml version="1.0" encoding="utf-8"?>
+		<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+			<soap:Body>
+				<getDLTInfo xmlns="http://tempuri.org/">
+					<DLTWSRequest>string</DLTWSRequest>
+				</getDLTInfo>
+			</soap:Body>
+		</soap:Envelope>
+	</XmlRequestDLT>	
+	<ParamNameDLT>DLTWSRequest</ParamNameDLT>
+	<!-- Ket thuc lay thong tin DLT -->
+	
+	<!-- **** Ket thuc ket noi voi webservices cua ESB **** -->
+	
 	
 	<!-- Doan nay cau hinh cho phan Header cua message gui tin len ESB -->
 	<VERSION>1.0</VERSION>
