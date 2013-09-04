@@ -84,6 +84,8 @@ Public LoaiKyKK As Boolean 'True la quy, false la thang
 
 Public isPITActive As Boolean   ' Kiem tra trang thai active cua PIT
 
+Private SHA1Hash As New SHA1Hash
+
 ''' GetAttribute description
 ''' Get an attribute value of xmlNode
 ''' Parameter1 xmlNodeCell      : xmlNode the node need get attribute value
@@ -1680,7 +1682,7 @@ End If
 
 End Function
 
-'Push data to ESB
+'Push data to ESB by MQ
 Public Sub PushDataToESB(ByVal xmlInput As String)
     Dim xmlConfig As New MSXML.DOMDocument
     Set xmlConfig = LoadConfig()
@@ -1695,6 +1697,232 @@ Public Sub PushDataToESB(ByVal xmlInput As String)
     MQPUT.put_Msg xmlInput
     MQPUT.close_Conn
 End Sub
+' chuyen the "<", ">" thanh "&lt;", "&gt;" neu IsTagToASSCII = true
+Public Function ChangeTagASSCII(ByVal strTemp As String, ByVal IsTagToASSCII As Boolean) As String
+    If (strTemp <> "") Then
+        If IsTagToASSCII Then
+            strTemp = Strings.Replace$(strTemp, "<", "&lt;", 1, Len(strTemp), vbTextCompare)
+            strTemp = Strings.Replace$(strTemp, ">", "&gt;", 1, Len(strTemp), vbTextCompare)
+        Else
+            strTemp = Strings.Replace$(strTemp, "&lt;", "<", 1, Len(strTemp), vbTextCompare)
+            strTemp = Strings.Replace$(strTemp, "&gt;", ">", 1, Len(strTemp), vbTextCompare)
+        End If
+    End If
+    ChangeTagASSCII = strTemp
+End Function
+Private Function DataFromESB(sWebUrl As String, sSoapAct As String, sXmlSoap As String, sParam As String, sValue As String) As String
+    Dim oWsXML As New XMLRequestNuic '' initialize a new Instance of XMLRequestNuic Class
+    'Dim aDatos() As String           '' Variable for store the parameters that we need to pass to de Web service
+    Dim iTotalElem As Integer        '' This is only for know how many filters o parameters we are passing to the web service
+    Dim bFlag As Boolean             '' When the value is 0 (zero,false) the XML Structure is not correct, but if the value is 1 (One,True) then the structure is correct.
+    Dim iCant As Integer             '' is a counter for replace the values into the name of parameters
+    iCant = 1
+    bFlag = 0
+'    aDatos = Split(sValue, ",")
+'    If Not IsArray(aDatos) Then
+'        aDatos = Split(sValue, "-")
+'        If Not IsArray(aDatos) Then
+'            aDatos = Split(sValue, ".")
+'            If Not IsArray(aDatos) Then
+'                aDatos = Split(sValue, "+")
+'                If Not IsArray(aDatos) Then
+'                    SaveErrorLog Me.Name, "frmLogin", Err.Number, Err.Description
+'                    Exit Function
+'                End If
+'            End If
+'        End If
+'    End If
+    'iTotalElem = UBound(aDatos)      '' We Store the MAX index to the iTotalElem variable
+    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    '' WE VALIDATING, IF THE XML STRUCTURE IS CORRECT TO MADE THE PETITION
+    ''   bFlag=0 IS WRONG
+    ''   bFlag=1 IT IS OK
+    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    If InStr(sXmlSoap, "<?xml") > 0 And InStr(sXmlSoap, "<?xml") <= 6 Then
+         bFlag = 1
+        If InStr(sXmlSoap, "<soap:Envelope") > 0 Then
+            bFlag = 1
+            If InStr(sXmlSoap, "<soap:Body>") > 0 Then
+                bFlag = 1
+            Else
+                 bFlag = 0
+            End If
+        Else
+             bFlag = 0
+        End If
+    Else
+        bFlag = 0
+    End If
+    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    '' Starting to replace the input parameters
+    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+    If bFlag Then
+         
+            Dim iInicio As Integer
+            Dim iFinalParte1 As Integer
+            Dim iInicioParte2 As Integer
+            Dim iFinal As Integer
+            Dim LongURL As Integer
+            Dim oFuncion() As String
+            Dim sFuncionNombre As String
+            Dim sBuscar As String
+            Dim sInputParam As String
+            Dim tmpUrlSoap As String
+            Dim iCont As Integer
+            Dim tmpXmlSoap As String
+            Dim tmpParte1 As String
+            Dim tmpParte2 As String
+            Dim oParametro As Variant
+            
+            ''WE STORED THE ORIGINAL XML STRUCTURE IN A TEMPORARY VARIABLE
+            tmpXmlSoap = sXmlSoap
+            iCont = 1
+            Dim i As Integer
+            For i = 1 To Len(sXmlSoap)
+                If InStr(tmpXmlSoap, "string") Then
+                    ''SET the first coincidence with the "string" Word
+                    iFinalParte1 = InStr(sXmlSoap, "string")
+                     ''SET the end of the first coincidence with the "string" Word
+                    iInicioParte2 = InStr(sXmlSoap, "string") + 6
+                    tmpParte1 = Mid(tmpXmlSoap, 1, iFinalParte1 - 1)
+                    sXmlSoap = tmpParte1
+                    tmpParte2 = Mid(tmpXmlSoap, iInicioParte2, Len(tmpXmlSoap))
+                    sXmlSoap = tmpParte2
+                    tmpXmlSoap = tmpParte1 & "@Parametro" & iCont & tmpParte2
+                    sXmlSoap = tmpXmlSoap
+                    i = i + 6
+                    iCont = iCont + 1
+                End If
+
+            Next
+            ''Asignamos el resultado al txtXmlSoap.text
+            ''WE SET THE RESULT OF THE "FOR" TO THE txtXmlSoap.text CONTROL
+            sXmlSoap = tmpXmlSoap
+       
+'        ''Replacing the "@Parametro1" with the value in the first position of the txtCriterios.text CONTROL.
+'        For Each oParametro In aDatos
+'            Dim Var As String
+'            If InStr(sXmlSoap, "@Parametro" & iCant) > 0 Then
+'                sXmlSoap = Replace(sXmlSoap, "@Parametro" & iCant, oParametro)
+'            End If
+'            iCant = iCant + 1
+'        Next
+
+        sXmlSoap = Replace(sXmlSoap, "@Parametro1", sValue)
+        ''validating if all is ok
+        If sWebUrl = "" Or sSoapAct = "" Or sXmlSoap = "" Then
+            SaveErrorLog "mdlFunctions", "Ket noi webservices ESB", Err.Number, Err.Description & "Kiem tra Url webservice,soap action..."
+            Exit Function
+        Else
+            DataFromESB = oWsXML.PostWebservice(sWebUrl, sSoapAct, sXmlSoap)
+        End If
+    Else
+         'DataFromESB = "the XML Structure is not Correct. please verify your XML structura data."
+         SaveErrorLog "mdlFunctions", "Ket noi webservices ESB", Err.Number, Err.Description & "the XML Structure is not Correct. please verify your XML structura data."
+         Exit Function
+    End If
+End Function
+'Get data from ESB by webservices
+' sType = "NSD" hoac "NNT" hoac "DLT" phan biet se lay webservices tuong ung
+Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String, ByVal sType As String) As String
+    Dim sResult As String
+    'Get value config
+    Dim cfigXml As New MSXML.DOMDocument
+    'cfigXml.Load GetAbsolutePath("..\Project\ConfigWithESB.xml")
+    Set cfigXml = LoadConfig()
+    
+    Dim paXmlDoc As New MSXML.DOMDocument
+    Dim paNode As MSXML.IXMLDOMNode
+    Dim cfigNode As MSXML.IXMLDOMNode
+    Dim CloneNode As MSXML.IXMLDOMNode
+    Dim paNodeChild As MSXML.IXMLDOMNode
+    Dim sTranCode As String
+    Dim sTaxOffice As String
+    Dim sUrlWs As String
+    Dim soapAct As String
+    Dim fldName As String
+    Dim fldValue As String
+    Dim xmlRequest As String
+    Dim bPass() As Byte
+            
+    Select Case sType
+    
+        Case "NSD"
+            'Load file param NSD
+            paXmlDoc.Load GetAbsolutePath("..\InterfaceTemplates\xml\paramNsdInESB.xml")
+            sUrlWs = cfigXml.getElementsByTagName("WsUrlNSD")(0).Text
+            soapAct = cfigXml.getElementsByTagName("SoapActionNSD")(0).Text
+            xmlRequest = cfigXml.getElementsByTagName("XmlRequestNSD")(0).firstChild.xml & cfigXml.getElementsByTagName("XmlRequestNSD")(0).lastChild.xml
+            sTranCode = cfigXml.getElementsByTagName("TRAN_CODE")(0).Text
+            sTaxOffice = cfigXml.getElementsByTagName("TaxOffcice")(0).Text
+            fldName = cfigXml.getElementsByTagName("ParamNameNSD")(0).Text
+            
+            'Set value config to file param NSD
+            paXmlDoc.getElementsByTagName("TRAN_CODE")(0).Text = sTranCode
+            paXmlDoc.getElementsByTagName("UserName")(0).Text = sUserName
+            paXmlDoc.getElementsByTagName("TaxOffcice")(0).Text = sTaxOffice
+            bPass = StrConv(sPass, vbFromUnicode)
+            paXmlDoc.getElementsByTagName("Pass")(0).Text = SHA1Hash.HashBytes(bPass)
+            
+            fldValue = paXmlDoc.xml
+            fldValue = ChangeTagASSCII(fldValue, True)
+            
+            Dim sParamUser As String
+            sParamUser = "c:\TempXML\" & "paramUser.xml"
+            paXmlDoc.save sParamUser
+            
+            'Return value from ESB
+            sResult = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+        Case "NNT"
+            'Load file param NNT
+            paXmlDoc.Load GetAbsolutePath("..\InterfaceTemplates\xml\paramNntInESB.xml")
+            sUrlWs = cfigXml.getElementsByTagName("WsUrlNNT")(0).Text
+            soapAct = cfigXml.getElementsByTagName("SoapActionNNT")(0).Text
+            xmlRequest = cfigXml.getElementsByTagName("XmlRequestNNT")(0).firstChild.xml & cfigXml.getElementsByTagName("XmlRequestNNT")(0).lastChild.xml
+            sTranCode = cfigXml.getElementsByTagName("TRAN_CODE")(0).Text
+            fldName = cfigXml.getElementsByTagName("ParamNameNNT")(0).Text
+            
+            'Set value config to file param NNT
+            paXmlDoc.getElementsByTagName("tin")(0).Text = strTaxIDString
+       
+            
+            fldValue = paXmlDoc.xml
+            fldValue = ChangeTagASSCII(fldValue, True)
+            
+            Dim sParamNNT As String
+            sParamNNT = "c:\TempXML\" & "paramNNT.xml"
+            paXmlDoc.save sParamNNT
+            
+            'Return value from ESB
+            sResult = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+        Case "DLT"
+            'Load file param DLT
+            paXmlDoc.Load GetAbsolutePath("..\InterfaceTemplates\xml\paramDltInESB.xml")
+            sUrlWs = cfigXml.getElementsByTagName("WsUrlDLT")(0).Text
+            soapAct = cfigXml.getElementsByTagName("SoapActionDLT")(0).Text
+            xmlRequest = cfigXml.getElementsByTagName("XmlRequestDLT")(0).firstChild.xml & cfigXml.getElementsByTagName("XmlRequestDLT")(0).lastChild.xml
+            sTranCode = cfigXml.getElementsByTagName("TRAN_CODE")(0).Text
+            fldName = cfigXml.getElementsByTagName("ParamNameDLT")(0).Text
+            
+            'Set value config to file param DLT
+            paXmlDoc.getElementsByTagName("code")(0).Text = strTaxOfficeId
+       
+            
+            fldValue = paXmlDoc.xml
+            fldValue = ChangeTagASSCII(fldValue, True)
+            
+            Dim sParamDLT As String
+            sParamDLT = "c:\TempXML\" & "paramDLT.xml"
+            paXmlDoc.save sParamDLT
+            
+            'Return value from ESB
+            sResult = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+    End Select
+    
+    GetDataFromESB = sResult
+End Function
+
 
 'Ket thuc ket xuat XML - nshung
 

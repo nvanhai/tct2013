@@ -855,10 +855,20 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     Set xmlConfig = LoadConfig()
     
     Dim xmlResultNNT As New MSXML.DOMDocument
-    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+    Dim strNNTReturn As String
+    strNNTReturn = GetDataFromESB("", "", "NNT")
+    'Chuan hoa file xml ket qua - lay duoc tu ESB
+    strNNTReturn = ChangeTagASSCII(strNNTReturn, False)
+    xmlResultNNT.loadXML strNNTReturn
+    'Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
     
     Dim xmlResultDLT As New MSXML.DOMDocument
-    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
+    Dim strDLTReturn As String
+    strDLTReturn = GetDataFromESB("", "", "DLT")
+    'Chuan hoa file xml ket qua - lay duoc tu ESB
+    strDLTReturn = ChangeTagASSCII(strDLTReturn, False)
+    xmlResultDLT.loadXML strDLTReturn
+    'Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
     
     'NNT
     xmlTK.getElementsByTagName("pbanDVu")(0).Text = APP_VERSION
@@ -866,27 +876,31 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     xmlTK.getElementsByTagName("maCQTNoiNop")(0).Text = xmlConfig.getElementsByTagName("maCQTNoiNop")(0).Text
     xmlTK.getElementsByTagName("tenCQTNoiNop")(0).Text = xmlConfig.getElementsByTagName("tenCQTNoiNop")(0).Text
     xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = Format(Date, "dd/MM/yyyy")
-    xmlTK.getElementsByTagName("mst")(0).Text = xmlResultNNT.getElementsByTagName("tin")(0).Text
-    xmlTK.getElementsByTagName("tenNNT")(0).Text = xmlResultNNT.getElementsByTagName("ten_nnthue")(0).Text
-    xmlTK.getElementsByTagName("dchiNNT")(0).Text = xmlResultNNT.getElementsByTagName("dia_chi")(0).Text
     xmlTK.getElementsByTagName("tenHuyenNNT")(0).Text = ""
     xmlTK.getElementsByTagName("tenTinhNNT")(0).Text = ""
     xmlTK.getElementsByTagName("maHuyenNNT")(0).Text = ""
     xmlTK.getElementsByTagName("maTinhNNT")(0).Text = ""
-    xmlTK.getElementsByTagName("dthoaiNNT")(0).Text = xmlResultNNT.getElementsByTagName("dienthoai")(0).Text
-    xmlTK.getElementsByTagName("faxNNT")(0).Text = xmlResultNNT.getElementsByTagName("fax")(0).Text
-    xmlTK.getElementsByTagName("emailNNT")(0).Text = xmlResultNNT.getElementsByTagName("mail")(0).Text
-
+    If (Not xmlResultNNT Is Nothing) Then
+        xmlTK.getElementsByTagName("mst")(0).Text = xmlResultNNT.getElementsByTagName("tin")(0).Text
+        xmlTK.getElementsByTagName("tenNNT")(0).Text = xmlResultNNT.getElementsByTagName("ten_nnthue")(0).Text
+        xmlTK.getElementsByTagName("dchiNNT")(0).Text = xmlResultNNT.getElementsByTagName("dia_chi")(0).Text
+        xmlTK.getElementsByTagName("dthoaiNNT")(0).Text = xmlResultNNT.getElementsByTagName("dienthoai")(0).Text
+        xmlTK.getElementsByTagName("faxNNT")(0).Text = xmlResultNNT.getElementsByTagName("fax")(0).Text
+        xmlTK.getElementsByTagName("emailNNT")(0).Text = xmlResultNNT.getElementsByTagName("mail")(0).Text
+    End If
     
     'DLT
+    
+    If (Not xmlResultDLT Is Nothing) Then
+        xmlTK.getElementsByTagName("tenDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Ten_dai_ly_thue")(0).Text
+        xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Dia_chi_tru_so")(0).Text
+        xmlTK.getElementsByTagName("dthoaiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Dien_thoai")(0).Text
+        xmlTK.getElementsByTagName("faxDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Fax")(0).Text
+        xmlTK.getElementsByTagName("emailDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Mail")(0).Text
+        xmlTK.getElementsByTagName("soHDongDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("So_hop_dong")(0).Text
+        xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Ngay_hop_dong")(0).Text
+    End If
     xmlTK.getElementsByTagName("mstDLyThue")(0).Text = strMaDaiLyThue
-    xmlTK.getElementsByTagName("tenDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Ten_dai_ly_thue")(0).Text
-    xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Dia_chi_tru_so")(0).Text
-    xmlTK.getElementsByTagName("dthoaiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Dien_thoai")(0).Text
-    xmlTK.getElementsByTagName("faxDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Fax")(0).Text
-    xmlTK.getElementsByTagName("emailDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Mail")(0).Text
-    xmlTK.getElementsByTagName("soHDongDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("So_hop_dong")(0).Text
-    xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Ngay_hop_dong")(0).Text
     xmlTK.getElementsByTagName("tenTinhDLyThue")(0).Text = ""
     xmlTK.getElementsByTagName("tenHuyenDLyThue")(0).Text = ""
     xmlTK.getElementsByTagName("maHuyenDLyThue")(0).Text = ""
