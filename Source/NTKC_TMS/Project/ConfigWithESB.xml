@@ -17,7 +17,7 @@
 	<TaxOffcice>00101</TaxOffcice>
 	<!-- Ket thuc NSD -->
 	<!-- Lay thong tin NNT -->
-	<WsUrlNNT>http://10.64.112.55:7080/wsExtGDTuWsFlow</WsUrlNNT>
+	<WsUrlNNT>http://10.64.112.155:7080/wsExtGDTuWsFlow</WsUrlNNT>
 	<SoapActionNNT>http://tempuri.org/getNNTInfo</SoapActionNNT>
 	<XmlRequestNNT>		
 		<?xml version="1.0" encoding="utf-8"?>
@@ -33,7 +33,7 @@
 	<!-- Ket thuc lay thong tin NNT -->
 	
 	<!-- Lay thong tin DLT -->
-	<WsUrlDLT>http://10.64.112.55:7080/wsExtGDTuWsFlow</WsUrlDLT>
+	<WsUrlDLT>http://10.64.112.155:7080/wsExtGDTuWsFlow</WsUrlDLT>
 	<SoapActionDLT>http://tempuri.org/getDLTInfo</SoapActionDLT>
 	<XmlRequestDLT>		
 		<?xml version="1.0" encoding="utf-8"?>
