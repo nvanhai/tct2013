@@ -1810,6 +1810,7 @@ Private Function DataFromESB(sWebUrl As String, sSoapAct As String, sXmlSoap As 
 '        Next
 
         sXmlSoap = Replace(sXmlSoap, "@Parametro1", sValue)
+        sXmlSoap = ChangeTagASSCII(sXmlSoap, False)
         ''validating if all is ok
         If sWebUrl = "" Or sSoapAct = "" Or sXmlSoap = "" Then
             SaveErrorLog "mdlFunctions", "Ket noi webservices ESB", Err.Number, Err.Description & "Kiem tra Url webservice,soap action..."
