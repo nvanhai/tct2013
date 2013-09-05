@@ -846,7 +846,7 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
 End Sub
 
 ' Set gia tri mac dinh cho to khai xml
-Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
+Private Function SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument) As String
     Dim vlue As Variant
     On Error GoTo ErrHandle
     
@@ -880,30 +880,46 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     xmlTK.getElementsByTagName("tenTinhNNT")(0).Text = ""
     xmlTK.getElementsByTagName("maHuyenNNT")(0).Text = ""
     xmlTK.getElementsByTagName("maTinhNNT")(0).Text = ""
+    
+    If (xmlResultNNT Is Nothing) Then
+        SetValueToKhaiHeader = "0135"
+        Exit Function
+    End If
     If (Not xmlResultNNT Is Nothing) Then
         If (xmlResultNNT.getElementsByTagName("ERROR_DESC")(0).Text <> "") Then
-            xmlTK.getElementsByTagName("mst")(0).Text = xmlResultNNT.getElementsByTagName("tin")(0).Text
-            xmlTK.getElementsByTagName("tenNNT")(0).Text = xmlResultNNT.getElementsByTagName("ten_nnthue")(0).Text
-            xmlTK.getElementsByTagName("dchiNNT")(0).Text = xmlResultNNT.getElementsByTagName("dia_chi")(0).Text
-            xmlTK.getElementsByTagName("dthoaiNNT")(0).Text = xmlResultNNT.getElementsByTagName("dienthoai")(0).Text
-            xmlTK.getElementsByTagName("faxNNT")(0).Text = xmlResultNNT.getElementsByTagName("fax")(0).Text
-            xmlTK.getElementsByTagName("emailNNT")(0).Text = xmlResultNNT.getElementsByTagName("mail")(0).Text
+            SetValueToKhaiHeader = "0135"
+            Exit Function
         End If
     End If
+    
+    xmlTK.getElementsByTagName("mst")(0).Text = xmlResultNNT.getElementsByTagName("tin")(0).Text
+    xmlTK.getElementsByTagName("tenNNT")(0).Text = xmlResultNNT.getElementsByTagName("ten_nnthue")(0).Text
+    xmlTK.getElementsByTagName("dchiNNT")(0).Text = xmlResultNNT.getElementsByTagName("dia_chi")(0).Text
+    xmlTK.getElementsByTagName("dthoaiNNT")(0).Text = xmlResultNNT.getElementsByTagName("dienthoai")(0).Text
+    xmlTK.getElementsByTagName("faxNNT")(0).Text = xmlResultNNT.getElementsByTagName("fax")(0).Text
+    xmlTK.getElementsByTagName("emailNNT")(0).Text = xmlResultNNT.getElementsByTagName("mail")(0).Text
+
     
     'DLT
-    
+    If (xmlResultDLT Is Nothing) Then
+        SetValueToKhaiHeader = "0136"
+        Exit Function
+    End If
     If (Not xmlResultDLT Is Nothing) Then
         If (xmlResultDLT.getElementsByTagName("ERROR_DESC")(0).Text <> "") Then
-            xmlTK.getElementsByTagName("tenDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Ten_dai_ly_thue")(0).Text
-            xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Dia_chi_tru_so")(0).Text
-            xmlTK.getElementsByTagName("dthoaiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Dien_thoai")(0).Text
-            xmlTK.getElementsByTagName("faxDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Fax")(0).Text
-            xmlTK.getElementsByTagName("emailDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Mail")(0).Text
-            xmlTK.getElementsByTagName("soHDongDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("So_hop_dong")(0).Text
-            xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Ngay_hop_dong")(0).Text
+            SetValueToKhaiHeader = "0136"
+            Exit Function
         End If
     End If
+    
+    xmlTK.getElementsByTagName("tenDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Ten_dai_ly_thue")(0).Text
+    xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Dia_chi_tru_so")(0).Text
+    xmlTK.getElementsByTagName("dthoaiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Dien_thoai")(0).Text
+    xmlTK.getElementsByTagName("faxDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Fax")(0).Text
+    xmlTK.getElementsByTagName("emailDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Mail")(0).Text
+    xmlTK.getElementsByTagName("soHDongDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("So_hop_dong")(0).Text
+    xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Ngay_hop_dong")(0).Text
+
     xmlTK.getElementsByTagName("mstDLyThue")(0).Text = strMaDaiLyThue
     xmlTK.getElementsByTagName("tenTinhDLyThue")(0).Text = ""
     xmlTK.getElementsByTagName("tenHuyenDLyThue")(0).Text = ""
@@ -928,11 +944,13 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = Format$(dNgayDauKy, "dd/MM/yyyy")
     xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(dNgayCuoiKy, "dd/MM/yyyy")
     xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
-
-    Exit Sub
+    
+    SetValueToKhaiHeader = True
+    Exit Function
 ErrHandle:
+    SetValueToKhaiHeader = False
     SaveErrorLog Me.Name, "SetValueToKhaiHeader", Err.Number, Err.Description
-End Sub
+End Function
 'Lay ky ke khai
 Private Function GetKyKeKhai(ByVal ID_TK As String) As String
     Dim KYKKHAI As String
@@ -1219,8 +1237,13 @@ Private Sub ExecuteSave()
         
     xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
     xmlMapCT.Load GetAbsolutePath("..\Ini\" & MaTK & "_xml.xml")
-
-    SetValueToKhaiHeader xmlTK
+    
+    Dim sMsgErrFromESB As String
+    sMsgErrFromESB = SetValueToKhaiHeader(xmlTK)
+    If (sMsgErrFromESB <> "") Then
+        DisplayMessage sMsgErrFromESB, msOKOnly, miCriticalError, Me.Name
+        Exit Sub
+    End If
 
     With fpSpread1
         Dim cellid         As String
