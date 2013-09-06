@@ -414,22 +414,68 @@ End Sub
 'Cause this interface sheets have dynamic rows, this function will set cellnote of error for rising-error cell
 'no parameter
 Private Sub CheckDynamicError()
-    Dim MST1 As Variant, MST2 As Variant, MST3 As Variant, MST4 As Variant
-    Dim MST5 As Variant, MST6 As Variant, MST7 As Variant, MST8 As Variant
-    Dim MST9 As Variant, MST10 As Variant, MST11 As Variant, MST12 As Variant, MST13 As Variant
-    Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
-    Dim strCheck As String, iCurrentSheet As Integer
-    With fps
-    '.Visible = False
-    '.ReDraw = False
-    iCurrentSheet = .Sheet
-    .Sheet = .SheetCount
-
-    CheckErrorMST
+    Dim iCurrentSheet As Integer, iFlagEmpty As Integer
+    Dim vTenCoQuan    As Variant, vCapCuc As Variant, vCapDiaPhuong As Variant, vMessRequire As Variant
+    Dim row_require   As Integer
     
-    .Sheet = iCurrentSheet
-    '.ReDraw = True
-    '.Visible = True
+    row_require = 27
+    
+    With fps
+        'get message
+        .Sheet = .SheetCount
+        .GetText .ColLetterToNumber("E"), row_require, vMessRequire
+        
+        'check phu luc 01_2
+        .Sheet = 2
+        .Row = 42
+
+        Do
+            .Col = .ColLetterToNumber("C")
+            If (Trim(.Text) = vbNullString) Then
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = vMessRequire      'static
+                .BackColor = mErrorColor
+
+                iFlagEmpty = 1
+            Else
+                .BackColor = mNonErrorColor
+                .CellNote = ""
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+            End If
+
+            .Col = .ColLetterToNumber("L")
+            If (Trim(.Text) = vbNullString) Then
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = vMessRequire      'static
+                .BackColor = mErrorColor
+
+                iFlagEmpty = 1
+            Else
+                .BackColor = mNonErrorColor
+                .CellNote = ""
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+            End If
+            
+            .Col = .ColLetterToNumber("P")
+            If (Trim(.Text) = vbNullString) Then
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = vMessRequire      'static
+                .BackColor = mErrorColor
+
+                iFlagEmpty = 1
+            Else
+                .BackColor = mNonErrorColor
+                .CellNote = ""
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+            End If
+
+            .Row = .Row + 1
+            .Col = .ColLetterToNumber("B")
+        Loop Until .Text = "aa"
+        
+        'set flag
+        .Sheet = .SheetCount
+        .SetText .ColLetterToNumber("B"), row_require, IIf(iFlagEmpty = 1, "0", "1")
     End With
     
 End Sub
