@@ -352,7 +352,7 @@ Private strMaPhongQuanLy As String
 Private strTenPhongQuanLy As String
 
 Private isTonTaiAC As Boolean ' Su dung de kiem tra xem bao cao ac co phai thay the hay khong?
-Private isTKTonTai As Boolean
+Private isTKTonTai As BooleanF
 
 Private strMaSoThue, strMaDaiLyThue As String
 Private isToKhaiCT As Boolean
@@ -854,6 +854,10 @@ Private Function SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument) As Strin
     Dim xmlConfig As New MSXML.DOMDocument
     Set xmlConfig = LoadConfig()
     
+    strTaxIDString = strMaSoThue
+    strTaxDLTIDString = strMaDaiLyThue
+    
+    
     Dim xmlResultNNT As New MSXML.DOMDocument
     Dim strNNTReturn As String
     strNNTReturn = GetDataFromESB("", "", "NNT")
@@ -1240,13 +1244,6 @@ Private Sub ExecuteSave()
         
     xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
     xmlMapCT.Load GetAbsolutePath("..\Ini\" & MaTK & "_xml.xml")
-    
-    Dim sMsgErrFromESB As String
-    sMsgErrFromESB = SetValueToKhaiHeader(xmlTK)
-    If (sMsgErrFromESB <> "") Then
-        DisplayMessage sMsgErrFromESB, msOKOnly, miCriticalError, Me.Name
-        Exit Sub
-    End If
 
     With fpSpread1
         Dim cellid         As String
@@ -1312,7 +1309,7 @@ Private Sub ExecuteSave()
                 For Each xmlCellNode In xmlNodeMapCT.childNodes
 
                     If xmlCellNode.hasChildNodes Then
-                        cellid = xmlCellNode.firstChild.nodeValue
+                        cellid = xmlCellNode.Text
                     Else
                         cellid = ""
                     End If
@@ -1335,15 +1332,15 @@ Private Sub ExecuteSave()
                     End If
 
                     If UBound(cellArray) <> 1 Then
-                        xmlCellTKNode.firstChild.nodeValue = cellid
+                        xmlCellTKNode.Text = cellid
                     Else
                         .Col = .ColLetterToNumber(cellArray(0))
                         .Row = Val(cellArray(1)) + cellRange
 
                         If .CellType = CellTypeNumber Then
-                            xmlCellTKNode.firstChild.nodeValue = .Value
+                            xmlCellTKNode.Text = .Value
                         Else
-                            xmlCellTKNode.firstChild.nodeValue = .Text
+                            xmlCellTKNode.Text = .Text
                         End If
                     End If
 
@@ -1352,6 +1349,15 @@ Private Sub ExecuteSave()
             End If
 
         Next
+        
+        'Set gia tri header cho to khai
+        Dim sMsgErrFromESB As String
+        sMsgErrFromESB = SetValueToKhaiHeader(xmlTK)
+
+        If (sMsgErrFromESB <> "") Then
+            DisplayMessage sMsgErrFromESB, msOKOnly, miCriticalError, Me.Name
+            Exit Sub
+        End If
 
         'Set value KyLapBo, NgayNopTK
         cellid = GetAttribute(xmlMapCT.lastChild, "ky_lap_bo")
@@ -1435,7 +1441,7 @@ Private Sub ExecuteSave()
                         For Each xmlCellNode In xmlSection.childNodes
 
                             If xmlCellNode.hasChildNodes Then
-                                cellid = xmlCellNode.firstChild.nodeValue
+                                cellid = xmlCellNode.Text
                             Else
                                 cellid = ""
                             End If
@@ -1464,9 +1470,9 @@ Private Sub ExecuteSave()
                                 .Row = Val(cellArray(1)) + cellRange
 
                                 If .CellType = CellTypeNumber Then
-                                    xmlCellTKNode.firstChild.nodeValue = .Value
+                                    xmlCellTKNode.Text = .Value
                                 Else
-                                    xmlCellTKNode.firstChild.nodeValue = .Text
+                                    xmlCellTKNode.Text = .Text
                                 End If
                             End If
 
@@ -1481,12 +1487,12 @@ Private Sub ExecuteSave()
 
         Next
 
-
-
     End With    'Save temp
+
     If (Dir("c:\TempXML\") = "") Then
         MkDir "c:\TempXML\"
     End If
+
     Dim sFileName As String
     sFileName = "c:\TempXML\" & strFileName
     Dim xmlDocSave As New MSXML.DOMDocument
@@ -1973,14 +1979,19 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '' To khai TTDB - To khai chinh thuc
-str2 = "aa320052222222222   07201300100100100401/0101/01/1900<S01><S></S><S>~100100000~60662061.00~4600000~0~34830340</S><S>10101~Bao~20000.00~100000000~60606061.00~65.0~4600000~0~34793940~10102~Bao~1000.00~100000~56000.00~65.0~0~0~36400</S><S>20~14.00~0~0~6</S><S>20101~Gio~1000.00"
+'str2 = "aa320052222222222   07201300100100100401/0101/01/1900<S01><S></S><S>~100100000~60662061.00~4600000~0~34830340</S><S>10101~Bao~20000.00~100000000~60606061.00~65.0~4600000~0~34793940~10102~Bao~1000.00~100000~56000.00~65.0~0~0~36400</S><S>20~14.00~0~0~6</S><S>20101~Gio~1000.00"
+'Barcode_Scaned str2
+'str2 = "aa320052222222222   072013001001002004~20~14.00~40.0~0~0~6</S><S>2400000</S><S>10103~Kg~4000.00~2000000</S><S>10200~LÝt~40000.00~100000</S><S>10200~LÝt~20000.00~300000</S><S>102500020~60662075.00~4600000~0~34830346</S><S>Nguyen van a~~~28/08/2013~1~~0~34830346~~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa320052222222222   072013001001003004<S01-1><S>AA/12T~12345~01/01/2013~NguyÔn v¨n a~10101~m¸y tÝnh~6~20000~120000~AA/12T~23456~02/02/2013~nguyÔn v¨n b~10102~thuèc lµ~20~1200000~24000000</S><S>    X× gµ (65 %)~6~120000~    Thuèc l¸ ®iÕu (65 %)~20~24000000</S></S01-1>"
+'Barcode_Scaned str2
+'str2 = "aa320052222222222   072013001001004004<S01-2><S>AA/12T~123~01/05/2013~Thuèc lµo~20000~10000000~100000~9900000</S><S>bia~2000~men bia~23~100</S></S01-2>"
+'Barcode_Scaned str2
+
+str2 = "aa320422222222222   00201200400400100201/0101/01/2009<S02><S></S><S>1~100000000~1~100000000~2000000~0~0</S><S>Nguyen van a~04/09/2013~~~1~</S></S02>"
 Barcode_Scaned str2
-str2 = "aa320052222222222   072013001001002004~20~14.00~40.0~0~0~6</S><S>2400000</S><S>10103~Kg~4000.00~2000000</S><S>10200~LÝt~40000.00~100000</S><S>10200~LÝt~20000.00~300000</S><S>102500020~60662075.00~4600000~0~34830346</S><S>Nguyen van a~~~28/08/2013~1~~0~34830346~~0</S></S01>"
-Barcode_Scaned str2
-str2 = "aa320052222222222   072013001001003004<S01-1><S>AA/12T~12345~01/01/2013~NguyÔn v¨n a~10101~m¸y tÝnh~6~20000~120000~AA/12T~23456~02/02/2013~nguyÔn v¨n b~10102~thuèc lµ~20~1200000~24000000</S><S>    X× gµ (65 %)~6~120000~    Thuèc l¸ ®iÕu (65 %)~20~24000000</S></S01-1>"
-Barcode_Scaned str2
-str2 = "aa320052222222222   072013001001004004<S01-2><S>AA/12T~123~01/05/2013~Thuèc lµo~20000~10000000~100000~9900000</S><S>bia~2000~men bia~23~100</S></S01-2>"
-Barcode_Scaned str2
+
+
 End Sub
 
 Private Sub Form_Activate()

@@ -23,6 +23,7 @@ Public Const pbanDVu = ""
 Public Const ttinNhaCCapDVu = ""
 Public Const pbanTKhaiXML = ""
 Public strTaxIDString As String
+Public strTaxDLTIDString As String
 Public strSolanBS As String
 Public strKieuKy As String
 Public strQuy As String
@@ -1880,7 +1881,7 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             paXmlDoc.Load GetAbsolutePath("..\InterfaceTemplates\xml\paramNntInESB.xml")
             sUrlWs = cfigXml.getElementsByTagName("WsUrlNNT")(0).Text
             soapAct = cfigXml.getElementsByTagName("SoapActionNNT")(0).Text
-            xmlRequest = cfigXml.getElementsByTagName("XmlRequestNNT")(0).firstChild.xml & cfigXml.getElementsByTagName("XmlRequestNNT")(0).lastChild.xml
+            xmlRequest = cfigXml.getElementsByTagName("XmlRequestNNT")(0).lastChild.xml
             sTranCode = cfigXml.getElementsByTagName("TRAN_CODE")(0).Text
             fldName = cfigXml.getElementsByTagName("ParamNameNNT")(0).Text
             
@@ -1910,7 +1911,7 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             fldName = cfigXml.getElementsByTagName("ParamNameDLT")(0).Text
             
             'Set value config to file param DLT
-            paXmlDoc.getElementsByTagName("code")(0).Text = strTaxOfficeId
+            paXmlDoc.getElementsByTagName("code")(0).Text = strTaxDLTIDString
        
             
             fldValue = paXmlDoc.xml
