@@ -1935,6 +1935,11 @@ Public Sub cmdOK_Click()
     
     Dim idToKhai As String
     
+    If TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "64" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "91" Then
+        txtDay_LostFocus
+        txtMonth_LostFocus
+        txtYear_LostFocus
+    End If
     
     If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "37" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "38" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "40") And Val(txtYear.Text) >= 2010 Then
         DisplayMessage "0176", msOKOnly, miInformation
@@ -2800,6 +2805,9 @@ Private Sub Form_Load()
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "93" Then
         SetupLayout02_TAIN_DK
     Else
+        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "68" Then
+            strQuy = "TK_QUY"
+        End If
         SetupLayout (strKieuKy)
     End If
     LoadDefaultInfor
