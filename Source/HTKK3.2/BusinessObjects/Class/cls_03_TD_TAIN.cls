@@ -285,10 +285,69 @@ End Sub
 'no parameter
 Private Sub CheckDynamicError()
 
+Dim iCurrentSheet As Integer, iFlagEmpty As Integer
+    Dim vTenCoQuan    As Variant, vCapCuc As Variant, vCapDiaPhuong As Variant, vMessRequire As Variant
+    Dim row_require   As Integer
+    
+    row_require = 15
+    
     With fps
-        CheckErrorMST
-    End With
+        'get message
+        .Sheet = .SheetCount
+        .GetText .ColLetterToNumber("E"), row_require, vMessRequire
+        
+        'check phu luc 01_2
+        .Sheet = 2
+        .Row = 42
 
+        Do
+            .Col = .ColLetterToNumber("C")
+            If (Trim(.Text) = vbNullString) Then
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = vMessRequire      'static
+                .BackColor = mErrorColor
+
+                iFlagEmpty = 1
+            Else
+                .BackColor = mNonErrorColor
+                .CellNote = ""
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+            End If
+
+            .Col = .ColLetterToNumber("L")
+            If (Trim(.Text) = vbNullString) Then
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = vMessRequire      'static
+                .BackColor = mErrorColor
+
+                iFlagEmpty = 1
+            Else
+                .BackColor = mNonErrorColor
+                .CellNote = ""
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+            End If
+            
+            .Col = .ColLetterToNumber("P")
+            If (Trim(.Text) = vbNullString) Then
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = vMessRequire      'static
+                .BackColor = mErrorColor
+
+                iFlagEmpty = 1
+            Else
+                .BackColor = mNonErrorColor
+                .CellNote = ""
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+            End If
+
+            .Row = .Row + 1
+            .Col = .ColLetterToNumber("B")
+        Loop Until .Text = "aa"
+        
+        'set flag
+        .Sheet = .SheetCount
+        .SetText .ColLetterToNumber("B"), row_require, IIf(iFlagEmpty = 1, "0", "1")
+    End With
 End Sub
 Sub CheckErrorMST()
     Dim vError1 As Variant, vError2 As Variant, vError3 As Variant
