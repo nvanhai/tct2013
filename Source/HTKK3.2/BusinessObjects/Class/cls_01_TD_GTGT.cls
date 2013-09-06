@@ -22,7 +22,7 @@ Private Const S1TxtG6Row = 6
 Private Const S1TxtG6Col = "G"
 
 Private Const Row_MSTDN = 14
-Private Const Col_MSTDN = "I"
+Private Const Col_MSTDN = "H"
 Private Const sheetPl01_2TD_GTGT = 2
 Private Const rowStatic = 42
 
