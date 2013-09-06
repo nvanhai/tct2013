@@ -124,16 +124,46 @@ Public Sub Prepare2()
         'update MSTDN luôn bang MST tren phan TT chung
         UpdateMST fps, Col_MSTDN, Row_MSTDN
 
-        'If Strloaitk = "TKCT" Then
-        If Strloaitk <> "TKBS" Then
+'        'If Strloaitk = "TKCT" Then
+'        If Strloaitk <> "TKBS" Then
+'            .Col = .ColLetterToNumber(Col_TKCT)
+'            .Row = Row_TKCT
+'            .Text = 1
+'            UpdateCell fps, .Col, .Row, .Text
+'            '            .Col = .ColLetterToNumber("F")
+'            '            .Row = 59
+'            '            .Text = ""
+'            '            UpdateCell fps, .Col, .Row, .Text
+'            .Col = .ColLetterToNumber(Col_TKBS)
+'            .Row = Row_TKBS
+'            .Text = ""
+'            UpdateCell fps, .Col, .Row, .Text
+'        ElseIf Strloaitk = "TKBS" Then
+'            .Col = .ColLetterToNumber(Col_TKCT)
+'            .Row = Row_TKCT
+'            .Text = ""
+'            '            UpdateCell fps, .Col, .Row, .Text
+'            '            .Col = .ColLetterToNumber("F")
+'            '            .Row = 59
+'            '            .Text = 1
+'            UpdateCell fps, .Col, .Row, .Text
+'            .Col = .ColLetterToNumber(Col_TKBS)
+'            .Row = Row_TKBS
+'            .Text = StrSolanBosung
+'            UpdateCell fps, .Col, .Row, .Text
+'        End If
+        
+        
+        'edit
+        If Strloaitk = "TKCT" Then
             .Col = .ColLetterToNumber(Col_TKCT)
             .Row = Row_TKCT
             .Text = 1
             UpdateCell fps, .Col, .Row, .Text
-            '            .Col = .ColLetterToNumber("F")
-            '            .Row = 59
-            '            .Text = ""
-            '            UpdateCell fps, .Col, .Row, .Text
+            '.Col = .ColLetterToNumber("F")
+            '.Row = 27
+            '.Text = ""
+            'UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber(Col_TKBS)
             .Row = Row_TKBS
             .Text = ""
@@ -142,17 +172,19 @@ Public Sub Prepare2()
             .Col = .ColLetterToNumber(Col_TKCT)
             .Row = Row_TKCT
             .Text = ""
-            '            UpdateCell fps, .Col, .Row, .Text
-            '            .Col = .ColLetterToNumber("F")
-            '            .Row = 59
-            '            .Text = 1
             UpdateCell fps, .Col, .Row, .Text
+            '.Col = .ColLetterToNumber("F")
+            '.Row = 27
+            '.Text = 1
+            'UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber(Col_TKBS)
             .Row = Row_TKBS
             .Text = StrSolanBosung
             UpdateCell fps, .Col, .Row, .Text
         End If
-
+        'end
+        
+        
         mCurrentSheet = .Sheet
         fps.EventEnabled(EventAllEvents) = True
     End With

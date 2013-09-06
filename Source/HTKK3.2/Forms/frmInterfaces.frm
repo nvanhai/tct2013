@@ -9338,6 +9338,8 @@ Public Function checkCauTrucData() As Boolean
     Dim stepNumRow As Integer
     ' end
         ' Check so chi tieu cua to khai
+        checkCauTrucData = True
+        Exit Function
         ' tam thoi coment de test
     Set xmlListNodeSection = TAX_Utilities_New.Data(0).getElementsByTagName("Section")
     strTkhaiId = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
