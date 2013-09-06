@@ -1891,6 +1891,9 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             fldValue = paXmlDoc.xml
             fldValue = ChangeTagASSCII(fldValue, True)
             
+            If (Dir("c:\TempXML\") = "") Then
+                MkDir "c:\TempXML\"
+            End If
             Dim sParamNNT As String
             sParamNNT = "c:\TempXML\" & "paramNNT.xml"
             paXmlDoc.save sParamNNT
@@ -1913,6 +1916,9 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             fldValue = paXmlDoc.xml
             fldValue = ChangeTagASSCII(fldValue, True)
             
+            If (Dir("c:\TempXML\") = "") Then
+                MkDir "c:\TempXML\"
+            End If
             Dim sParamDLT As String
             sParamDLT = "c:\TempXML\" & "paramDLT.xml"
             paXmlDoc.save sParamDLT
