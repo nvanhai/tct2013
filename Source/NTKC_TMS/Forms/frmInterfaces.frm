@@ -862,6 +862,9 @@ Private Function SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument) As Strin
     xmlResultNNT.loadXML strNNTReturn
     'Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
     
+    
+    
+    
     Dim xmlResultDLT As New MSXML.DOMDocument
     Dim strDLTReturn As String
     strDLTReturn = GetDataFromESB("", "", "DLT")
@@ -1481,7 +1484,9 @@ Private Sub ExecuteSave()
 
 
     End With    'Save temp
-
+    If (Dir("c:\TempXML\") = "") Then
+        MkDir "c:\TempXML\"
+    End If
     Dim sFileName As String
     sFileName = "c:\TempXML\" & strFileName
     Dim xmlDocSave As New MSXML.DOMDocument
