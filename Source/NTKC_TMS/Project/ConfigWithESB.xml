@@ -8,12 +8,12 @@
 		<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
 			<soap:Body>
 				<verify xmlns="http://tempuri.org/">
-					<UserVerifyWSRequest>string</UserVerifyWSRequest>
+					<UserVerify>string</UserVerify>
 				</verify>
 			</soap:Body>
 		</soap:Envelope>
 	</XmlRequestNSD>	
-	<ParamNameNSD>UserVerifyWSRequest</ParamNameNSD>
+	<ParamNameNSD>UserVerify</ParamNameNSD>
 	<TaxOffcice>00101</TaxOffcice>
 	<!-- Ket thuc NSD -->
 	<!-- Lay thong tin NNT -->
@@ -24,12 +24,12 @@
 		<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
 			<soap:Body>
 				<getNNTInfo xmlns="http://tempuri.org/">
-					<NNTWSRequest>string</NNTWSRequest>
+					<NNT>string</NNT>
 				</getNNTInfo>
 			</soap:Body>
 		</soap:Envelope>
 	</XmlRequestNNT>	
-	<ParamNameNNT>NNTWSRequest</ParamNameNNT>
+	<ParamNameNNT>NNT</ParamNameNNT>
 	<!-- Ket thuc lay thong tin NNT -->
 	
 	<!-- Lay thong tin DLT -->
@@ -40,12 +40,12 @@
 		<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
 			<soap:Body>
 				<getDLTInfo xmlns="http://tempuri.org/">
-					<DLTWSRequest>string</DLTWSRequest>
+					<DLT>string</DLT>
 				</getDLTInfo>
 			</soap:Body>
 		</soap:Envelope>
 	</XmlRequestDLT>	
-	<ParamNameDLT>DLTWSRequest</ParamNameDLT>
+	<ParamNameDLT>DLT</ParamNameDLT>
 	<!-- Ket thuc lay thong tin DLT -->
 	
 	<!-- **** Ket thuc ket noi voi webservices cua ESB **** -->

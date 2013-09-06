@@ -32,7 +32,8 @@ Public Function PostWebservice(ByVal AsmxUrl As String, ByVal SoapActionUrl As S
     objXmlHttp.open "POST", AsmxUrl, False
     ' creating the XML header´s
     objXmlHttp.setRequestHeader "Content-Type", "text/xml; charset=utf-8"
-    objXmlHttp.setRequestHeader "SOAPAction", SoapActionUrl
+    'objXmlHttp.setRequestHeader "SOAPAction", SoapActionUrl
+    
     ' Sending the command to open the XML request
     objXmlHttp.send objDom.xml
     ' Get the result and We Stored in the "strRet" variable
