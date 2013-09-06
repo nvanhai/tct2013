@@ -352,7 +352,7 @@ Private strMaPhongQuanLy As String
 Private strTenPhongQuanLy As String
 
 Private isTonTaiAC As Boolean ' Su dung de kiem tra xem bao cao ac co phai thay the hay khong?
-Private isTKTonTai As BooleanF
+Private isTKTonTai As Boolean
 
 Private strMaSoThue, strMaDaiLyThue As String
 Private isToKhaiCT As Boolean
