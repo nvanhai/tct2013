@@ -1619,8 +1619,8 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, ByVal sKyLa
     XmlDocStandard.getElementsByTagName("ORIGINAL_NAME")(0).Text = xmlConfig.getElementsByTagName("ORIGINAL_NAME")(0).Text
     
     XmlDocStandard.getElementsByTagName("MSG_ID")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GetGUID()
-    XmlDocStandard.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mm-yyyy HH:mm:ss")
-    
+    XmlDocStandard.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
+    XmlDocStandard.getElementsByTagName("ORIGINAL_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
     
     ' Set value tag <add_info>
     XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = sNgayNopTK
@@ -1719,6 +1719,18 @@ Private Function DataFromESB(sWebUrl As String, sSoapAct As String, sXmlSoap As 
     Dim iCant As Integer             '' is a counter for replace the values into the name of parameters
     iCant = 1
     bFlag = 0
+    Dim result As String
+    
+'    Dim soap As MSSOAPLib30.SoapClient30
+'    Dim url As String
+'
+'    url = sWebUrl '& "?WSDL"
+'
+'    Set soap = New MSSOAPLib30.SoapClient30
+'    soap.MSSoapInit url, "ESB_TCT_INTERNAL_MSGSOAP_HTTP_Service", "ESB_TCT_INTERNAL_MSGSOAP_HTTP_Port"
+'    result = soap.getNNTInfo(sValue)
+'
+'    DataFromESB = result
 '    aDatos = Split(sValue, ",")
 '    If Not IsArray(aDatos) Then
 '        aDatos = Split(sValue, "-")
@@ -1739,11 +1751,11 @@ Private Function DataFromESB(sWebUrl As String, sSoapAct As String, sXmlSoap As 
     ''   bFlag=0 IS WRONG
     ''   bFlag=1 IT IS OK
     ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    If InStr(sXmlSoap, "<?xml") > 0 And InStr(sXmlSoap, "<?xml") <= 6 Then
-         bFlag = 1
-        If InStr(sXmlSoap, "<soap:Envelope") > 0 Then
+'    If InStr(sXmlSoap, "<?xml") > 0 And InStr(sXmlSoap, "<?xml") <= 6 Then
+'         bFlag = 1
+        If InStr(sXmlSoap, "<soapenv:Envelope") > 0 Then
             bFlag = 1
-            If InStr(sXmlSoap, "<soap:Body>") > 0 Then
+            If InStr(sXmlSoap, "<soapenv:Body>") > 0 Then
                 bFlag = 1
             Else
                  bFlag = 0
@@ -1751,15 +1763,15 @@ Private Function DataFromESB(sWebUrl As String, sSoapAct As String, sXmlSoap As 
         Else
              bFlag = 0
         End If
-    Else
-        bFlag = 0
-    End If
+'    Else
+'        bFlag = 0
+'    End If
     ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
     '' Starting to replace the input parameters
     ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
     If bFlag Then
-         
+
             Dim iInicio As Integer
             Dim iFinalParte1 As Integer
             Dim iInicioParte2 As Integer
@@ -1775,7 +1787,7 @@ Private Function DataFromESB(sWebUrl As String, sSoapAct As String, sXmlSoap As 
             Dim tmpParte1 As String
             Dim tmpParte2 As String
             Dim oParametro As Variant
-            
+
             ''WE STORED THE ORIGINAL XML STRUCTURE IN A TEMPORARY VARIABLE
             tmpXmlSoap = sXmlSoap
             iCont = 1
@@ -1800,7 +1812,7 @@ Private Function DataFromESB(sWebUrl As String, sSoapAct As String, sXmlSoap As 
             ''Asignamos el resultado al txtXmlSoap.text
             ''WE SET THE RESULT OF THE "FOR" TO THE txtXmlSoap.text CONTROL
             sXmlSoap = tmpXmlSoap
-       
+
 '        ''Replacing the "@Parametro1" with the value in the first position of the txtCriterios.text CONTROL.
 '        For Each oParametro In aDatos
 '            Dim Var As String
@@ -1855,7 +1867,7 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             paXmlDoc.Load GetAbsolutePath("..\InterfaceTemplates\xml\paramNsdInESB.xml")
             sUrlWs = cfigXml.getElementsByTagName("WsUrlNSD")(0).Text
             soapAct = cfigXml.getElementsByTagName("SoapActionNSD")(0).Text
-            xmlRequest = cfigXml.getElementsByTagName("XmlRequestNSD")(0).firstChild.xml & cfigXml.getElementsByTagName("XmlRequestNSD")(0).lastChild.xml
+            xmlRequest = cfigXml.getElementsByTagName("XmlRequestNSD")(0).lastChild.xml
             sTranCode = cfigXml.getElementsByTagName("TRAN_CODE")(0).Text
             sTaxOffice = cfigXml.getElementsByTagName("TaxOffcice")(0).Text
             fldName = cfigXml.getElementsByTagName("ParamNameNSD")(0).Text
@@ -1866,6 +1878,21 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             paXmlDoc.getElementsByTagName("TaxOffcice")(0).Text = sTaxOffice
             bPass = StrConv(sPass, vbFromUnicode)
             paXmlDoc.getElementsByTagName("Pass")(0).Text = SHA1Hash.HashBytes(bPass)
+                        
+            paXmlDoc.getElementsByTagName("VERSION")(0).Text = cfigXml.getElementsByTagName("VERSION")(0).Text
+            paXmlDoc.getElementsByTagName("SENDER_CODE")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text
+            paXmlDoc.getElementsByTagName("SENDER_NAME")(0).Text = cfigXml.getElementsByTagName("SENDER_NAME")(0).Text
+            paXmlDoc.getElementsByTagName("RECEIVER_CODE")(0).Text = cfigXml.getElementsByTagName("RECEIVER_CODE")(0).Text
+            paXmlDoc.getElementsByTagName("RECEIVER_NAME")(0).Text = cfigXml.getElementsByTagName("RECEIVER_NAME")(0).Text
+            
+            paXmlDoc.getElementsByTagName("ORIGINAL_CODE")(0).Text = cfigXml.getElementsByTagName("ORIGINAL_CODE")(0).Text
+            paXmlDoc.getElementsByTagName("ORIGINAL_NAME")(0).Text = cfigXml.getElementsByTagName("ORIGINAL_NAME")(0).Text
+            
+            paXmlDoc.getElementsByTagName("MSG_ID")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text & GetGUID()
+            paXmlDoc.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
+            paXmlDoc.getElementsByTagName("ORIGINAL_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
+            
+            
             
             fldValue = paXmlDoc.xml
             fldValue = ChangeTagASSCII(fldValue, True)
@@ -1888,6 +1915,19 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             'Set value config to file param NNT
             paXmlDoc.getElementsByTagName("tin")(0).Text = strTaxIDString
        
+            paXmlDoc.getElementsByTagName("VERSION")(0).Text = cfigXml.getElementsByTagName("VERSION")(0).Text
+            paXmlDoc.getElementsByTagName("SENDER_CODE")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text
+            paXmlDoc.getElementsByTagName("SENDER_NAME")(0).Text = cfigXml.getElementsByTagName("SENDER_NAME")(0).Text
+            paXmlDoc.getElementsByTagName("RECEIVER_CODE")(0).Text = cfigXml.getElementsByTagName("RECEIVER_CODE")(0).Text
+            paXmlDoc.getElementsByTagName("RECEIVER_NAME")(0).Text = cfigXml.getElementsByTagName("RECEIVER_NAME")(0).Text
+            
+            paXmlDoc.getElementsByTagName("ORIGINAL_CODE")(0).Text = cfigXml.getElementsByTagName("ORIGINAL_CODE")(0).Text
+            paXmlDoc.getElementsByTagName("ORIGINAL_NAME")(0).Text = cfigXml.getElementsByTagName("ORIGINAL_NAME")(0).Text
+            
+            paXmlDoc.getElementsByTagName("MSG_ID")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text & GetGUID()
+            paXmlDoc.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
+            paXmlDoc.getElementsByTagName("ORIGINAL_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
+            
             
             fldValue = paXmlDoc.xml
             fldValue = ChangeTagASSCII(fldValue, True)
@@ -1906,13 +1946,28 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             paXmlDoc.Load GetAbsolutePath("..\InterfaceTemplates\xml\paramDltInESB.xml")
             sUrlWs = cfigXml.getElementsByTagName("WsUrlDLT")(0).Text
             soapAct = cfigXml.getElementsByTagName("SoapActionDLT")(0).Text
-            xmlRequest = cfigXml.getElementsByTagName("XmlRequestDLT")(0).firstChild.xml & cfigXml.getElementsByTagName("XmlRequestDLT")(0).lastChild.xml
+            xmlRequest = cfigXml.getElementsByTagName("XmlRequestDLT")(0).lastChild.xml
             sTranCode = cfigXml.getElementsByTagName("TRAN_CODE")(0).Text
             fldName = cfigXml.getElementsByTagName("ParamNameDLT")(0).Text
+            
+            'cfigXml.getElementsByTagName("XmlRequestDLT")(0).firstChild.xml &
             
             'Set value config to file param DLT
             paXmlDoc.getElementsByTagName("code")(0).Text = strTaxDLTIDString
        
+       
+            paXmlDoc.getElementsByTagName("VERSION")(0).Text = cfigXml.getElementsByTagName("VERSION")(0).Text
+            paXmlDoc.getElementsByTagName("SENDER_CODE")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text
+            paXmlDoc.getElementsByTagName("SENDER_NAME")(0).Text = cfigXml.getElementsByTagName("SENDER_NAME")(0).Text
+            paXmlDoc.getElementsByTagName("RECEIVER_CODE")(0).Text = cfigXml.getElementsByTagName("RECEIVER_CODE")(0).Text
+            paXmlDoc.getElementsByTagName("RECEIVER_NAME")(0).Text = cfigXml.getElementsByTagName("RECEIVER_NAME")(0).Text
+            
+            paXmlDoc.getElementsByTagName("ORIGINAL_CODE")(0).Text = cfigXml.getElementsByTagName("ORIGINAL_CODE")(0).Text
+            paXmlDoc.getElementsByTagName("ORIGINAL_NAME")(0).Text = cfigXml.getElementsByTagName("ORIGINAL_NAME")(0).Text
+            
+            paXmlDoc.getElementsByTagName("MSG_ID")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text & GetGUID()
+            paXmlDoc.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
+            paXmlDoc.getElementsByTagName("ORIGINAL_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
             
             fldValue = paXmlDoc.xml
             fldValue = ChangeTagASSCII(fldValue, True)

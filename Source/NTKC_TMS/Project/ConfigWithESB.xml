@@ -4,48 +4,39 @@
 	<WsUrlNSD>http://10.64.112.155:7080/wsCBTVerify</WsUrlNSD>
 	<SoapActionNSD>http://tempuri.org/verify</SoapActionNSD>
 	<XmlRequestNSD>		
-		<?xml version="1.0" encoding="utf-8"?>
-		<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-			<soap:Body>
-				<verify xmlns="http://tempuri.org/">
-					<UserVerify>string</UserVerify>
-				</verify>
-			</soap:Body>
-		</soap:Envelope>
+		<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:q0="http://tempuri.org/ESB_TCT_INTERNAL_MSG" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<soapenv:Body>				
+					<q0:UserVerifyWSRequest>string</q0:UserVerifyWSRequest>				
+			</soapenv:Body>
+		</soapenv:Envelope>
 	</XmlRequestNSD>	
-	<ParamNameNSD>UserVerify</ParamNameNSD>
+	<ParamNameNSD>UserVerifyWSRequest</ParamNameNSD>
 	<TaxOffcice>00101</TaxOffcice>
 	<!-- Ket thuc NSD -->
 	<!-- Lay thong tin NNT -->
 	<WsUrlNNT>http://10.64.112.155:7080/wsExtGDTuWsFlow</WsUrlNNT>
 	<SoapActionNNT>http://tempuri.org/getNNTInfo</SoapActionNNT>
 	<XmlRequestNNT>		
-		<?xml version="1.0" encoding="utf-8"?>
-		<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-			<soap:Body>
-				<getNNTInfo xmlns="http://tempuri.org/">
-					<NNT>string</NNT>
-				</getNNTInfo>
-			</soap:Body>
-		</soap:Envelope>
+		<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:q0="http://tempuri.org/ESB_TCT_INTERNAL_MSG" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<soapenv:Body>				
+					<q0:NNTWSRequest>string</q0:NNTWSRequest>				
+			</soapenv:Body>
+		</soapenv:Envelope>
 	</XmlRequestNNT>	
-	<ParamNameNNT>NNT</ParamNameNNT>
+	<ParamNameNNT>NNTWSRequest</ParamNameNNT>
 	<!-- Ket thuc lay thong tin NNT -->
 	
 	<!-- Lay thong tin DLT -->
 	<WsUrlDLT>http://10.64.112.155:7080/wsExtGDTuWsFlow</WsUrlDLT>
 	<SoapActionDLT>http://tempuri.org/getDLTInfo</SoapActionDLT>
 	<XmlRequestDLT>		
-		<?xml version="1.0" encoding="utf-8"?>
-		<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-			<soap:Body>
-				<getDLTInfo xmlns="http://tempuri.org/">
-					<DLT>string</DLT>
-				</getDLTInfo>
-			</soap:Body>
-		</soap:Envelope>
+		<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:q0="http://tempuri.org/ESB_TCT_INTERNAL_MSG" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<soapenv:Body>				
+					<q0:DLTWSRequest>string</q0:DLTWSRequest>				
+			</soapenv:Body>
+		</soapenv:Envelope>
 	</XmlRequestDLT>	
-	<ParamNameDLT>DLT</ParamNameDLT>
+	<ParamNameDLT>DLTWSRequest</ParamNameDLT>
 	<!-- Ket thuc lay thong tin DLT -->
 	
 	<!-- **** Ket thuc ket noi voi webservices cua ESB **** -->

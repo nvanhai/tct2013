@@ -21,6 +21,10 @@ Public Function PostWebservice(ByVal AsmxUrl As String, ByVal SoapActionUrl As S
     Dim iCont As Integer
     iCont = 1
     
+    
+'    Dim testXml As New MSXML.DOMDocument
+'    Dim testXmlHttp As New MSXML.XMLHTTPRequest
+
     On Error GoTo Err_PW
     ' Creating the DOMDocument and XMLHTTP Object´s
     Set objDom = CreateObject("MSXML2.DOMDocument")
@@ -38,7 +42,15 @@ Public Function PostWebservice(ByVal AsmxUrl As String, ByVal SoapActionUrl As S
     objXmlHttp.send objDom.xml
     ' Get the result and We Stored in the "strRet" variable
     strRet = objXmlHttp.responseText
+
+'    testXml.loadXML XmlBody
+'    testXmlHttp.open "POST", AsmxUrl, False
+'    testXmlHttp.setRequestHeader "Content-Type", "text/xml; charset=utf-8"
+'    testXmlHttp.send testXml.xml
+'    strRet = testXmlHttp.responseText
+
     PostWebservice = strRet
+    'Set testXmlHttp = Nothing
     ' Closing the object
     Set objXmlHttp = Nothing
 Exit Function
