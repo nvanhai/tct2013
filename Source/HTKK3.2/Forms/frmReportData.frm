@@ -618,6 +618,15 @@ nextPrinter:
         'dntai:them tieu muc to 06_TNCN
     ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 59 Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0231"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0232"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0233"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0234"), "Msg")
+    'set footer for 01_TAIN_DK
+    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 92 Then
+        If (strDauTho = "1") Then
+            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0275"), "Msg")
+        ElseIf (strCondensate = "1") Then
+            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0276"), "Msg")
+        ElseIf (strKhiThienNhien = "1") Then
+            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0277"), "Msg")
+        End If
     End If
     
     'KHBS khong thay doi so thue se ko in phu luc va co cau canh bao
