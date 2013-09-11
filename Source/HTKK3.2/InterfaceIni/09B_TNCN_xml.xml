@@ -1,5 +1,9 @@
-<PL09B-TNCN><Static GroupName="ThongTinPLuc"><kemTKChinhNam>String</kemTKChinhNam>
-	</Static><Static GroupName="PL09B-TNCN"><ct05>1</ct05>
+<PL09B-TNCN>
+	<Static GroupName="ThongTinPLuc">
+		<kemTKChinhNam></kemTKChinhNam>
+	</Static>
+	<Static GroupName="PL09B-TNCN">
+		<ct05>1</ct05>
 		<ct06>1</ct06>
 		<ct07>1</ct07>
 		<ct08>1</ct08>
@@ -15,4 +19,5 @@
 		<ct18>1</ct18>
 		<ct19>1</ct19>
 		<ct20>1</ct20>
-	</Static></PL09B-TNCN>
+	</Static>
+</PL09B-TNCN>

@@ -1,4 +1,7 @@
-<PL26MGT-TNCN><Static GroupName="PL26MGT-TNCN"><ct06>1</ct06>
+<PL26MGT-TNCN>
+	<Static GroupName="PL26MGT-TNCN">
+		<ct06>1</ct06>
 		<ct07>1</ct07>
 		<ct08>1</ct08>
-	</Static></PL26MGT-TNCN>
+	</Static>
+</PL26MGT-TNCN>

@@ -1,27 +1,48 @@
-<HSoKhaiThue><Static GroupName="TKhaiThue"><maTKhai>String</maTKhai>
-		<tenTKhai>token</tenTKhai>
+<HSoKhaiThue ngay_nop_tk="E_13" ky_lap_bo="">
+	<Static GroupName="TKhaiThue">
+		<maTKhai>BC21_AC</maTKhai>
+		<tenTKhai>Báo cáo mất,cháy,hỏng hóa đơn</tenTKhai>
 		<moTaBMau/>
-	</Static><Static GroupName="GiaHan"><maLyDoGiaHan>String</maLyDoGiaHan>
-		<lyDoGiaHan>String</lyDoGiaHan>
-	</Static><Static GroupName="TKhaiThue"><nguoiKy>String</nguoiKy>
-		<ngayKy>String</ngayKy>
-	</Static><Static GroupName="NNT"><maHuyenNNT>String</maHuyenNNT>
-		<maTinhNNT>String</maTinhNNT>
-	</Static><Static GroupName="DLyThue"><maHuyenDLyThue>String</maHuyenDLyThue>
-		<maTinhDLyThue>String</maTinhDLyThue>
-	</Static><Static GroupName="NVienDLy"><tenNVienDLyThue>token</tenNVienDLyThue>
-		<cchiHNghe>String</cchiHNghe>
-	</Static><Static GroupName="CTieuTKhaiChinh"><ngay>1967-08-13</ngay>
-	</Static><Static GroupName="ChiTietHoaDon"><tenHDon>String</tenHDon>
-		<mauHDon>String</mauHDon>
-		<kyHieu>String</kyHieu>
-		<tuSo>1</tuSo>
-		<denSo>1</denSo>
-		<soLuong>1</soLuong>
-		<lien>String</lien>
-		<ghiChu>String</ghiChu>
-		<ktraLoaiHDon>String</ktraLoaiHDon>
-	</Static><Static GroupName="CTieuTKhaiChinh"><lyDo>String</lyDo>
-		<nguoiDaiDien>String</nguoiDaiDien>
-		<ngayBCao>1967-08-13</ngayBCao>
-	</Static></HSoKhaiThue>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy></nguoiKy>
+		<ngayKy></ngayKy>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>token</tenNVienDLyThue>
+		<cchiHNghe></cchiHNghe>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ngay>N_15</ngay>
+	</Static>
+	<Dynamic GroupName="HoaDon">
+		<ChiTietHoaDon id="id">
+			<tenHDon>C_40</tenHDon>
+			<mauHDon>O_40</mauHDon>
+			<kyHieu>S_40</kyHieu>
+			<tuSo>V_40</tuSo>
+			<denSo>Y_40</denSo>
+			<soLuong>AA_40</soLuong>
+			<lien>AE_40</lien>
+			<ghiChu>AF_40</ghiChu>
+			<ktraLoaiHDon></ktraLoaiHDon>
+		</ChiTietHoaDon>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<lyDo>I_45</lyDo>
+		<nguoiDaiDien>AE_48</nguoiDaiDien>
+		<ngayBCao>AE_50</ngayBCao>
+	</Static>
+</HSoKhaiThue>
