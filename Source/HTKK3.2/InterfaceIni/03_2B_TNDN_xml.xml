@@ -1,10 +1,13 @@
-<PL03_2B_TNDN><Static GroupName="PL03_2B_TNDN"><namPSinhLo>2001</namPSinhLo>
-		<soLoPSinh>1</soLoPSinh>
-		<soLoDaChuyen>1</soLoDaChuyen>
-		<soLoKyNay>1</soLoKyNay>
-		<soLoChuyenSau>1</soLoChuyenSau>
-		<tongSoLoPSinh>1</tongSoLoPSinh>
-		<tongSoLoDaChuyen>1</tongSoLoDaChuyen>
-		<tongSoLoKyNay>1</tongSoLoKyNay>
-		<tongSoLoChuyenSau>1</tongSoLoChuyenSau>
-	</Static></PL03_2B_TNDN>
+<PL03_2B_TNDN>
+	<Static GroupName="PL03_2B_TNDN">
+		<namPSinhLo>B_26</namPSinhLo>
+		<soLoPSinh>C_26</soLoPSinh>
+		<soLoDaChuyen>H_26</soLoDaChuyen>
+		<soLoKyNay>M_26</soLoKyNay>
+		<soLoChuyenSau>R_26</soLoChuyenSau>
+		<tongSoLoPSinh>C_32</tongSoLoPSinh>
+		<tongSoLoDaChuyen>H_32</tongSoLoDaChuyen>
+		<tongSoLoKyNay>M_32</tongSoLoKyNay>
+		<tongSoLoChuyenSau>R_32</tongSoLoChuyenSau>
+	</Static>
+</PL03_2B_TNDN>

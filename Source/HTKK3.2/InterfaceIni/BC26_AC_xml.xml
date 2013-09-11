@@ -1,22 +1,86 @@
-<ChiTietTkhaiChinh><Static GroupName="ChiTietTkhaiChinh"><tenHDon>String</tenHDon>
-		<kHieuMauHDon>String</kHieuMauHDon>
-		<kHieuHDon>String</kHieuHDon>
-	</Static><Static GroupName="SoTonMuaTrKy"><tongSo>1</tongSo>
-	</Static><Static GroupName="SoTonDauKy"><tuSo>1</tuSo>
-		<denSo>1</denSo>
-	</Static><Static GroupName="MuaTrongKy"><tuSo>1</tuSo>
-		<denSo>1</denSo>
-	</Static><Static GroupName="TongSoSuDung"><tuSo>1</tuSo>
-		<denSo>1</denSo>
-		<cong>1</cong>
-	</Static><Static GroupName="TrongDo"><soDaSDung>1</soDaSDung>
-	</Static><Static GroupName="XoaBo"><soLuong>1</soLuong>
-		<so>String</so>
-	</Static><Static GroupName="Mat"><soLuong>1</soLuong>
-		<so>String</so>
-	</Static><Static GroupName="Huy"><soLuong>1</soLuong>
-		<so>String</so>
-	</Static><Static GroupName="TonCuoiKy"><tuSo>1</tuSo>
-		<denSo>1</denSo>
-		<soLuong>1</soLuong>
-	</Static></ChiTietTkhaiChinh>
+<HSoKhaiThue ngay_nop_tk="E_10" ky_lap_bo="">
+	<Static GroupName="TKhaiThue">
+		<maTKhai>BC26_AC</maTKhai>
+		<tenTKhai>Báo cáo tình hình sử dụng hóa đơn</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy></nguoiKy>
+		<ngayKy></ngayKy>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>token</tenNVienDLyThue>
+		<cchiHNghe></cchiHNghe>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<kyBCaoCuoi>E_16</kyBCaoCuoi>
+		<chuyenDiaDiem>K_16</chuyenDiaDiem>
+		<ngayDauKyBC>E_23</ngayDauKyBC>
+		<ngayCuoiKyBC>F_23</ngayCuoiKyBC>
+	</Static>
+	<Dynamic GroupName="HoaDon">
+		<ChiTiet id="ID_1">
+			<tenHDon>D_32</tenHDon>
+			<kHieuMauHDon>J_32</kHieuMauHDon>
+			<kHieuHDon>K_32</kHieuHDon>
+			<SoTonMuaTrKy>
+				<tongSo>L_32</tongSo>
+				<SoTonDauKy>
+					<tuSo>M_32</tuSo>
+					<denSo>N_32</denSo>
+				</SoTonDauKy>
+				<MuaTrongKy>
+					<tuSo>O_32</tuSo>
+					<denSo>P_32</denSo>
+				</MuaTrongKy>
+			</SoTonMuaTrKy>
+			<SoSuDungTrKy>
+				<TongSoSuDung>
+					<tuSo>Q_32</tuSo>
+					<denSo>R_32</denSo>
+					<cong>S_32</cong>
+				</TongSoSuDung>
+				<TrongDo>
+					<soDaSDung>U_32</soDaSDung>
+					<XoaBo>
+						<soLuong>V_32</soLuong>
+						<so>W_32</so>
+					</XoaBo>
+					<Mat>
+						<soLuong>X_32</soLuong>
+						<so>Y_32</so>
+					</Mat>
+					<Huy>
+						<soLuong>Z_32</soLuong>
+						<so>AA_32</so>
+					</Huy>
+				</TrongDo>
+			</SoSuDungTrKy>
+			<TonCuoiKy>
+				<tuSo>AC_32</tuSo>
+				<denSo>AD_32</denSo>
+				<soLuong>AE_32</soLuong>
+			</TonCuoiKy>
+		</ChiTiet>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tongCongSoTonDKy>L_34</tongCongSoTonDKy>
+		<tongCongSDung>S_34</tongCongSDung>
+		<tongCongSoTonCKy>AE_34</tongCongSoTonCKy>
+		<nguoiLapBieu>E_40</nguoiLapBieu>
+		<nguoiDaiDien>S_40</nguoiDaiDien>
+		<ngayBCao>S_42</ngayBCao>
+	</Static>
+</HSoKhaiThue>

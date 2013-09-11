@@ -1,0 +1,46 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>03_NTNN</maTKhai>
+		<tenTKhai>Tờ khai thuế nhà thầu nước ngoài - 03/NTNN</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>AH_53</nguoiKy>
+		<ngayKy>AH_55</ngayKy>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>J_53</tenNVienDLyThue>
+		<cchiHNghe>J_55</cchiHNghe>
+	</Static>
+	<Dynamic GroupName="BKThueNTNN">
+		<ThueNTNN id="ID_1">
+			<ct1>C_44</ct1>
+			<ct2>N_44</ct2>
+			<ct3>S_44</ct3>
+			<ct4>X_44</ct4>
+			<ct5>AC_44</ct5>
+			<ct6>AF_44</ct6>
+			<ct7>AK_44</ct7>
+			<ct8>AL_44</ct8>
+			<ct9>AQ_44</ct9>
+		</ThueNTNN>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tongct4>X_46</tongct4>
+		<tongct6>AF_46</tongct6>
+		<tongct8>AL_46</tongct8>
+		<tongct9>AQ_46</tongct9>
+	</Static>
+</HSoKhaiThue>

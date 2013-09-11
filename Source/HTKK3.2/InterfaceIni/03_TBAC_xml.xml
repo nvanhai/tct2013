@@ -1,7 +1,47 @@
-<ChiTietHoaDon><Static GroupName="ChiTietHoaDon"><tenHDon>String</tenHDon>
-		<mauHDon>String</mauHDon>
-		<kyHieu>String</kyHieu>
-		<tuSo>0</tuSo>
-		<denSo>0</denSo>
-		<soLuong>1</soLuong>
-	</Static></ChiTietHoaDon>
+<HSoKhaiThue ngay_nop_tk="D_12" ky_lap_bo="">
+	<Static GroupName="TKhaiThue">
+		<maTKhai>03_TBAC</maTKhai>
+		<tenTKhai>Thông báo kết quả hủy hóa đơn</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy></nguoiKy>
+		<ngayKy></ngayKy>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>token</tenNVienDLyThue>
+		<cchiHNghe></cchiHNghe>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<kinhGui></kinhGui>
+		<phuongPhapHuy>I_22</phuongPhapHuy>
+		<ThoiGian>P_24</ThoiGian>
+	</Static>
+	<Dynamic GroupName="HoaDon">
+		<ChiTiet id="ID_1">
+			<tenHDon>C_43</tenHDon>
+			<mauHDon>O_43</mauHDon>
+			<kyHieu>S_43</kyHieu>
+			<tuSo>V_43</tuSo>
+			<denSo>Y_43</denSo>
+			<soLuong>AA_43</soLuong>
+		</ChiTiet>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<nguoiLapBieu>D_47</nguoiLapBieu>
+		<nguoiDaiDien>R_47</nguoiDaiDien>
+		<ngayBCao>R_49</ngayBCao>
+	</Static>
+</HSoKhaiThue>

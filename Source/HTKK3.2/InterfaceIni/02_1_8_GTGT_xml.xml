@@ -1,15 +1,20 @@
-<PL01_2_8_GTGT><Dynamic GroupName="ChiTietHHDVDauTuKTru"><HDonMVao id="ID_9">
-			<kHieuHDon>String</kHieuHDon>
-			<soHDon>String</soHDon>
-			<ngayPHanh>1967-08-13</ngayPHanh>
-			<tenNBAN>String</tenNBAN>
-			<mstNBAN>0000000000</mstNBAN>
-			<matHang>String</matHang>
-			<gtriMuaChuaThue>2147483647</gtriMuaChuaThue>
-			<thueSuat>1</thueSuat>
-			<thueGTGT>2147483647</thueGTGT>
-			<ghiChu>String</ghiChu>
+<PL01_2_8_GTGT>
+	<Dynamic GroupName="ChiTietHHDVDauTuKTru">
+		<HDonMVao id="ID_9">
+			<kHieuHDon>C_25</kHieuHDon>
+			<soHDon>D_25</soHDon>
+			<ngayPHanh>E_25</ngayPHanh>
+			<tenNBAN>F_25</tenNBAN>
+			<mstNBAN>G_25</mstNBAN>
+			<matHang>H_25</matHang>
+			<gtriMuaChuaThue>I_25</gtriMuaChuaThue>
+			<thueSuat>J_25</thueSuat>
+			<thueGTGT>K_25</thueGTGT>
+			<ghiChu>L_25</ghiChu>
 		</HDonMVao>
-	</Dynamic><Static GroupName="HHDVDauTuKTru"><tongGTriHHDVMuaVao>1</tongGTriHHDVMuaVao>
-		<tThueGTGT_HHDVMuaVao>1</tThueGTGT_HHDVMuaVao>
-	</Static></PL01_2_8_GTGT>
+	</Dynamic>
+	<Static GroupName="HHDVDauTuKTru">
+		<tongGTriHHDVMuaVao>F_29</tongGTriHHDVMuaVao>
+		<tThueGTGT_HHDVMuaVao>F_30</tThueGTGT_HHDVMuaVao>
+	</Static>
+</PL01_2_8_GTGT>

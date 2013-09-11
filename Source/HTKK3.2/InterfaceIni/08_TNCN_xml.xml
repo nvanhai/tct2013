@@ -1,27 +1,46 @@
-<HSoKhaiThue><Static GroupName="TKhaiThue"><maTKhai>String</maTKhai>
-		<tenTKhai>token</tenTKhai>
+<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30">
+	<Static GroupName="TKhaiThue">
+		<maTKhai>08_TNCN</maTKhai>
+		<tenTKhai>TK tạm nộp thuế TNCN (08/KK-TNCN)</tenTKhai>
 		<moTaBMau/>
-	</Static><Static GroupName="GiaHan"><maLyDoGiaHan>String</maLyDoGiaHan>
-		<lyDoGiaHan>String</lyDoGiaHan>
-	</Static><Static GroupName="TKhaiThue"><nguoiKy>String</nguoiKy>
-		<ngayKy>String</ngayKy>
-	</Static><Static GroupName="NNT"><maHuyenNNT>String</maHuyenNNT>
-		<maTinhNNT>String</maTinhNNT>
-	</Static><Static GroupName="DLyThue"><maHuyenDLyThue>String</maHuyenDLyThue>
-		<maTinhDLyThue>String</maTinhDLyThue>
-	</Static><Static GroupName="NVienDLy"><tenNVienDLyThue>token</tenNVienDLyThue>
-		<cchiHNghe>String</cchiHNghe>
-	</Static><Static GroupName="CTieuTKhaiChinh"><ct21>1</ct21>
-		<ct22>1</ct22>
-		<ct23>1</ct23>
-	</Static><Static GroupName="CacKhoanGiamTru"><ct24>1</ct24>
-		<ct25>1</ct25>
-		<ct26>1</ct26>
-		<ct27>1</ct27>
-		<ct28>1</ct28>
-	</Static><Static GroupName="CTieuTKhaiChinh"><ct29>1</ct29>
-		<ct30>0</ct30>
-		<ct31>0</ct31>
-		<ct32>1</ct32>
-		<ct33>1</ct33>
-	</Static></HSoKhaiThue>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>S_71</nguoiKy>
+		<ngayKy>S_73</ngayKy>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>F_71</tenNVienDLyThue>
+		<cchiHNghe>F_73</cchiHNghe>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct21>R_47</ct21>
+		<ct22>R_48</ct22>
+		<ct23>R_49</ct23>
+	</Static>
+	<Static GroupName="CacKhoanGiamTru">
+		<ct24>R_50</ct24>
+		<ct25>R_51</ct25>
+		<ct26>R_52</ct26>
+		<ct27>R_53</ct27>
+		<ct28>R_54</ct28>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct29>R_55</ct29>
+		<ct30>R_56</ct30>
+		<ct31>R_57</ct31>
+		<ct32>R_58</ct32>
+		<ct33>R_59</ct33>
+	</Static>
+</HSoKhaiThue>
