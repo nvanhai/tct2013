@@ -872,7 +872,7 @@ Private Function SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument) As Strin
     Dim xmlResultDLT As New MSXML.DOMDocument
     Dim strDLTReturn As String
     strDLTReturn = GetDataFromESB("", "", "DLT")
-    'Chuan hoa file xml ket qua - lay duoc tu ESB
+'    'Chuan hoa file xml ket qua - lay duoc tu ESB
     strDLTReturn = ChangeTagASSCII(strDLTReturn, False)
     xmlResultDLT.loadXML strDLTReturn
     'Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
@@ -882,7 +882,7 @@ Private Function SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument) As Strin
 
     xmlTK.getElementsByTagName("maCQTNoiNop")(0).Text = xmlConfig.getElementsByTagName("maCQTNoiNop")(0).Text
     xmlTK.getElementsByTagName("tenCQTNoiNop")(0).Text = xmlConfig.getElementsByTagName("tenCQTNoiNop")(0).Text
-    xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = Format(Date, "dd/MM/yyyy")
+    xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = Format(Date, "dd-mmm-yyyy HH:mm:ss")
     xmlTK.getElementsByTagName("tenHuyenNNT")(0).Text = ""
     xmlTK.getElementsByTagName("tenTinhNNT")(0).Text = ""
     xmlTK.getElementsByTagName("maHuyenNNT")(0).Text = ""
@@ -1354,7 +1354,7 @@ Private Sub ExecuteSave()
         Dim sMsgErrFromESB As String
         sMsgErrFromESB = SetValueToKhaiHeader(xmlTK)
 
-        If (sMsgErrFromESB <> "") Then
+        If (sMsgErrFromESB <> "True") Then
             DisplayMessage sMsgErrFromESB, msOKOnly, miCriticalError, Me.Name
             Exit Sub
         End If
@@ -1988,8 +1988,14 @@ Private Sub Command1_Click()
 'str2 = "aa320052222222222   072013001001004004<S01-2><S>AA/12T~123~01/05/2013~Thuèc lµo~20000~10000000~100000~9900000</S><S>bia~2000~men bia~23~100</S></S01-2>"
 'Barcode_Scaned str2
 
-str2 = "aa320422222222222   00201200400400100201/0101/01/2009<S02><S></S><S>1~100000000~1~100000000~2000000~0~0</S><S>Nguyen van a~04/09/2013~~~1~</S></S02>"
+'str2 = "aa320422222222222   00201200400400100201/0101/01/2009<S02><S></S><S>1~100000000~1~100000000~2000000~0~0</S><S>Nguyen van a~04/09/2013~~~1~</S></S02>"
+'Barcode_Scaned str2
+
+str2 = "aa320013100177415   01201300100100100201/0114/06/2006<S01><S>0102845045</S><S>~14455~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~"
 Barcode_Scaned str2
+str2 = "aa320013100177415   0120130010010020020~0~0~0~0~14455~0~0~14455</S><S>~~~09/09/2013~1~~~1701~~~0</S></S01>"
+Barcode_Scaned str2
+
 
 
 End Sub
@@ -3895,8 +3901,8 @@ On Error GoTo ErrHandle
     'LoadInitFiles
     
     
-        ' Set cac thong tin cua DL thue
-     'Get Tax id
+    ' Set cac thong tin cua DL thue
+    'Get Tax id
     strMST = Trim(Mid$(strTaxReportInfo, 3, 13))
     
     strTaxDLID = Mid(strData, InStr(1, strData, "<S>") + 3, InStr(1, strData, "</S>") - InStr(1, strData, "<S>") - 3)
@@ -3924,7 +3930,7 @@ On Error GoTo ErrHandle
         objTaxBusiness.strNgayNhanToKhai = strNgayNhanToKhai
         objTaxBusiness.strNguoiSuDung = strUserID
         
-            ' set thong tin DL thue
+        ' set thong tin DL thue
         ' danh sach cac to khai se set thong tin dai ly thue TT28
         dsTK_DLT = "~01~02~03~04~05~06~11~12~46~47~48~49~15~16~50~51~36~70~71~72~73~74~75~80~81~82~77~86~87~89~17~42~43~59~76~41~"
 '        If Trim(LoaiTk) = "01" Or Trim(LoaiTk) = "02" Or Trim(LoaiTk) = "04" Or Trim(LoaiTk) = "05" Or Trim(LoaiTk) = "06" Or Trim(LoaiTk) = "11" _
