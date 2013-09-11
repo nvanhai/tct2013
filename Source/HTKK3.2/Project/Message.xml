@@ -265,5 +265,8 @@
 	<Infor ID="0272" Msg="Tê khai GTGT chØ ®­îc kª khai tõ quý 3/2013 trë ®i"/>
 	<Infor ID="0273" Msg="Ngày hóa đơn phải nhỏ hơn hoặc bằng ngày hiện tại"/>
 	<Infor ID="0274" Msg="Ngày hóa đơn phải thuộc quý kê khai"/>
+	<Infor ID="0275" Msg="Hạch toán Dầu thô mục lục 3750, tiểu mục thu: 3752."/>
+	<Infor ID="0276" Msg="Hạch toán Condensate mục lục 3950, tiểu mục thu: 3952."/>
+	<Infor ID="0277" Msg="Hạch toán khí thiên nhiên mục lục 3850, tiểu mục thu: 3852."/>	
 </Message>
 
