@@ -417,7 +417,7 @@ Private Sub CheckDynamicError()
 
         .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), 13, IIf(iFlagCheckMaST = 1, "0", "1")
-        CheckErrorMST
+        'CheckErrorMST
     End With
     
 End Sub
