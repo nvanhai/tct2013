@@ -57,6 +57,8 @@ Begin VB.Form frmInterfaces
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         NoBeep          =   -1  'True
+         ScrollBars      =   2
          SpreadDesigner  =   "frmInterfaces.frx":0000
       End
       Begin MSForms.Label lblExit 
@@ -969,6 +971,7 @@ Private Sub cmdSave_Click()
     If (Not rs Is Nothing) And rs.Fields.Count > 0 Then
         If objTaxBusiness.KiemTraKhoaSo(rs.Fields(0)) Then
             DisplayMessage "0070", msOKOnly, miInformation
+            fpSpread1.Sheet = 1
             Exit Sub
         End If
     End If
@@ -1416,8 +1419,11 @@ Private Sub Command1_Click()
 'str2 = "bs316012600151082   06201300300300100101/0114/06/2006<S01><S></S><S>~1000000~0~0~0~0~0~333333~0~0~333333~0~0~0~333333~333333~0~0~0~0~0~0~666667~0~666667</S><S>~~~14/08/2013~~1~1~1701~~</S></S01><SKHBS><S>~~0~0~0</S><S>Thu’ GTGT cﬂn Æ-Óc kh u trı k˙ tr-Ìc chuy”n sang~22~0~1000000~1000000</S><S>14/08/2013~23~0~~333333~0~-333333~0~666667~666667</S></SKHBS>"
 'Barcode_Scaned str2
 
-str2 = "aa302682600151082   042011ihtkks00100101/0101/01/2009<S01><S>~~01/10/2011~31/12/2011</S><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/001~AA/11P~955~0000046~0001000~~~0000046~0000094~49~40~9~0000052;0000054;0000060;0000061;0000069;0000075;0000080;0000081;0000083~0~~0~~0000095~0001000~906~0</S><S>~kydientu~20/01/2012</S></S01>"
+'str2 = "aa302682600151082   042011ihtkks00100101/0101/01/2009<S01><S>~~01/10/2011~31/12/2011</S><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/001~AA/11P~955~0000046~0001000~~~0000046~0000094~49~40~9~0000052;0000054;0000060;0000061;0000069;0000075;0000080;0000081;0000083~0~~0~~0000095~0001000~906~0</S><S>~kydientu~20/01/2012</S></S01>"
+'Barcode_Scaned str2
+str2 = "aa316013600247325   06201300500600100101/0114/06/2006<S01><S></S><S>~1000000~0~0~0~0~0~1688~0~0~1244~0~444~0~1688~1688~0~0~0~0~0~0~998312~0~998312</S><S>~~~12/09/2013~1~~~1701~~</S></S01>"
 Barcode_Scaned str2
+
 
 End Sub
 
