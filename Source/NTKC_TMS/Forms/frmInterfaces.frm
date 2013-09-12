@@ -1292,6 +1292,7 @@ Private Sub ExecuteSave()
                     End If
 
                     If UBound(cellArray) <> 1 Then
+                        
                         xmlCellTKNode.Text = cellid
                     Else
                         .Col = .ColLetterToNumber(cellArray(0))
@@ -1949,11 +1950,34 @@ Private Sub Command1_Click()
 'str2 = "aa320422222222222   00201200400400100201/0101/01/2009<S02><S></S><S>1~100000000~1~100000000~2000000~0~0</S><S>Nguyen van a~04/09/2013~~~1~</S></S02>"
 'Barcode_Scaned str2  0102845045
 
-str2 = "aa320013100177415   01201300100100100201/0114/06/2006<S01><S>0102845045</S><S>~14455~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~"
-Barcode_Scaned str2
-str2 = "aa320013100177415   0120130010010020020~0~0~0~0~14455~0~0~14455</S><S>~~~09/09/2013~1~~~1701~~~0</S></S01>"
+'str2 = "aa320013100177415   01201300100100100201/0114/06/2006<S01><S>0102845045</S><S>~14455~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~"
+'Barcode_Scaned str2
+'str2 = "aa320013100177415   0120130010010020020~0~0~0~0~14455~0~0~14455</S><S>~~~09/09/2013~1~~~1701~~~0</S></S01>"
+'Barcode_Scaned str2
+
+'***************To khai demo 19/09/2013:
+'''To khai 04/GTGT
+'str2 = "aa320713100177415   09201300200200100201/0101/01/1900<S01><S>0102845045</S><S>1000000~2000000~3000000</S><S>1000000~2000000~3000000~01</S><S>10~2.89~67.98~01</S><S>100000~57800~2039400</S><S>10"
+'Barcode_Scaned str2
+'str2 = "aa320713100177415   0920130020020020020000~57800~2039400~01</S><S>0~2890~203940</S><S>0~2890~203940~01</S><S>6000000~206830</S><S>CMCTester~fpter~12345678~12/09/2013~1~~~0</S></S01>"
+'Barcode_Scaned str2
+
+
+''To khai 02/TAIN
+'str2 = "aa320773100177415   00201300300300100201/0114/06/2006<S01><S>0102845045</S><S>010102~Kg~16535~0~0~30~10~010103~Kg~5847~8~11~0~888</S><S>010208~"
+'Barcode_Scaned str2
+'str2 = "aa320773100177415   002013003003002002Kg~564565~56~10~0~765.987~010210~Kg~6343~0~0~49~845</S><S>outh~12/09/2013~rty~red~1~</S></S01>"
+'Barcode_Scaned str2
+
+
+''To khai 01/KK-XS
+str2 = "aa320483100177415   09201300200200100101/0101/01/2010<S01><S></S><S>5000000~600000~100000</S><S>dfgdfhj~rtrt~dfcgfg~12/09/2013~1~~</S></S01>"
 Barcode_Scaned str2
 
+''To khai 02/KK-XS
+'str2 = "aa320433100177415   00201300200200100201/0101/01/2009<S02><S>0102845045</S><S>2~9999999~2~9999999~39999</S><S>sdfdsf~12/09/2013~sdfdsfsdf~2324324324~1~</S></S02>"
+'Barcode_Scaned str2
+' *************** Ket thuc demo to khai
 
 
 End Sub
@@ -4191,56 +4215,11 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, ByRef blnSuccess As 
     Dim strSQL As String
     
 On Error GoTo ErrHandle
-
-    'connect to database QLT
-'    If Not clsDAO.Connected Then
-'        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-'        clsDAO.Connect
-'    End If
-'
-'
-'    ' Get SQL statement from DOM
-'    strSQL = GetAttribute(xmlSQL.childNodes(1), "SqlMST")
-'    strSQL = Replace(strSQL, "strTaxOfficeId", "'" & strTaxOfficeId & "'")
-'    strSQL = Replace(strSQL, "strMST", "'" & strTaxIDString & "'")
-'
-'    Set rsReturn = clsDAO.Execute(strSQL)
-'    rsReturn.Fields.
-'    Set GetTaxInfo = rsReturn
-'
-'    Set rsReturn = Nothing
-    
-'    'Connect DB success
-'    rsReturn.Fields.Append "trang_thai", adChar, 50, adFldUpdatable
-'    rsReturn.Fields.Append "tin", adVarChar, 50, adFldUpdatable
-'    rsReturn.Fields.Append "ten_dtnt", adVarChar, 50, adFldUpdatable
-'    rsReturn.Fields.Append "dia_chi", adVarChar, 50, adFldUpdatable
-'    rsReturn.Fields.Append "dien_thoai", adVarChar, 50, adFldUpdatable
-'    rsReturn.Fields.Append "fax", adVarChar, 50, adFldUpdatable
-'    rsReturn.Fields.Append "ky_lapbo", adVarChar, 50, adFldUpdatable
-'    rsReturn.Fields.Append "ngay_nop", adVarChar, 50, adFldUpdatable
-'    rsReturn.Fields.Append "ngay_nhap", adVarChar, 50, adFldUpdatable
-'    rsReturn.Fields.Append "ngay_tchinh", adVarChar, 50, adFldUpdatable
-'    rsReturn.Fields.Append "ngay_kdoanh", adVarChar, 50, adFldUpdatable
-'
-'    rsReturn.Open
-'    rsReturn.AddNew
-'    rsReturn!trang_thai = "trang_thai"
-'    rsReturn!tin = "tin"
-'    rsReturn!ten_dtnt = "ten_dtnt"
-'    rsReturn!dia_chi = "dia_chi"
-'    rsReturn!dien_thoai = "dien_thoai"
-'    rsReturn!fax = "fax"
-'    rsReturn!ky_lapbo = "01/2013"
-'    rsReturn!ngay_nop = "01/01/2013"
-'    rsReturn!ngay_nhap = "01/01/2013"
-'    rsReturn!ngay_tchinh = "01/01/2013"
-'    rsReturn.Update
-'    Set GetTaxInfo = rsReturn
-'
-'    Set rsReturn = Nothing
-'    blnSuccess = True
-
+    Set xmlResultNNT = New MSXML.DOMDocument
+    Set xmlResultNNT = Nothing
+    Set rsReturn = Nothing
+    blnSuccess = True
+    Exit Function
     'Lay tu webservices cua ESB tra ve
     
     'Dim xmlResultNNT As New MSXML.DOMDocument
@@ -4319,8 +4298,9 @@ On Error GoTo ErrHandle
     rsReturn.Fields.Append "ten_dtnt", adVarWChar, 100, adFldUpdatable
     rsReturn.Fields.Append "dia_chi", adVarWChar, 60, adFldUpdatable
     rsReturn.Fields.Append "dien_thoai", adVarWChar, 20, adFldUpdatable
-    rsReturn.Fields.Append "mail", adVarWChar, 30, adFldUpdatable
+
     rsReturn.Fields.Append "fax", adVarWChar, 20, adFldUpdatable
+    rsReturn.Fields.Append "mail", adVarWChar, 30, adFldUpdatable
     rsReturn.Fields.Append "ky_lapbo", adVarWChar, 50, adFldUpdatable
     rsReturn.Fields.Append "ngay_nop", adVarWChar, 50, adFldUpdatable
     rsReturn.Fields.Append "ngay_nhap", adVarWChar, 50, adFldUpdatable
@@ -4369,52 +4349,14 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, ByVal strTaxIDDLSt
     
 On Error GoTo ErrHandle
 
-    'connect to database QLT
-'    If Not clsDAO.Connected Then
-'        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-'        clsDAO.Connect
-'    End If
-'
-'
-'    ' Get SQL statement from DOM
-'    strSQL = GetAttribute(xmlSQL.childNodes(1), "SqlMSTDL")
-'    strSQL = Replace(strSQL, "strMST", "'" & strTaxIDString & "'")
-'    strSQL = Replace(strSQL, "ma_dai_ly", "'" & strTaxIDDLString & "'")
-'
-'    Set rsReturn = clsDAO.Execute(strSQL)
-'
-'    Set GetTaxDLInfo = rsReturn
-'
-'    Set rsReturn = Nothing
-    
-'    rsReturn.Fields.Append "repr_name", adVarChar, 50, adFldUpdatable
-'    rsReturn.Fields.Append "repr_addr", adVarChar, 50, adFldUpdatable
-'    rsReturn.Fields.Append "repr_tell", adVarChar, 50, adFldUpdatable
-'    rsReturn.Fields.Append "repr_fax", adVarChar, 50, adFldUpdatable
-'    rsReturn.Fields.Append "repr_email", adVarChar, 50, adFldUpdatable
-'    rsReturn.Fields.Append "repr_cont_number", adVarChar, 50, adFldUpdatable
-'    rsReturn.Fields.Append "repr_cont_date", adVarChar, 50, adFldUpdatable
-'
-'    rsReturn.Open
-'    rsReturn.AddNew
-'    rsReturn!repr_name = "repr_name"
-'    rsReturn!repr_addr = "repr_addr"
-'    rsReturn!repr_tell = "repr_tell"
-'    rsReturn!repr_fax = "repr_fax"
-'    rsReturn!repr_email = "repr_email"
-'    rsReturn!repr_cont_number = "11"
-'    rsReturn!repr_cont_date = "repr_cont_date"
-'    rsReturn.Update
-'    Set GetTaxDLInfo = rsReturn
-'
-'    Set rsReturn = Nothing
-'    'Connect DB success
-'    blnSuccess = True
-
-    ' Lay gia tri tra ve tu webservice cua ESB
-    'strTaxDLTIDString = strMaDaiLyThue
-    
     strMaDaiLyThue = strTaxIDDLString
+    Set xmlResultDLT = New MSXML.DOMDocument
+    Set xmlResultDLT = Nothing
+    Set rsReturn = Nothing
+    blnSuccess = True
+    Exit Function
+    
+    
     
     
     Dim paXmlDoc As New MSXML.DOMDocument
@@ -4539,26 +4481,11 @@ Private Function GetTaxInfoBCTC(ByVal strTaxIDString As String, ByRef blnSuccess
     
 On Error GoTo ErrHandle
 
-    'connect to database QLT
-'    If Not clsDAO.Connected Then
-'        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-'        clsDAO.Connect
-'    End If
-'
-'
-'    strSQL = "SELECT trang_thai,tin, ten_dtnt, dia_chi,dien_thoai,fax, email,to_char(sysdate,'mm/rrrr') ky_lapbo "
-'    strSQL = strSQL & ", to_char(sysdate,'dd/mm/rrrr') ngay_nop,to_char(sysdate,'dd/mm/rrrr') ngay_nhap,to_char(ngay_tchinh,'dd/mm') ngay_tchinh,to_char(ngay_kdoanh,'dd/mm/yyyy')   ngay_kdoanh "
-'    strSQL = strSQL & "FROM rcv_v_dtnt where tin =" & "'" & strTaxIDString & "'"
-'
-'
-'
-'    Set rsReturn = clsDAO.Execute(strSQL)
-'
-'    Set GetTaxInfoBCTC = rsReturn
-'
-'    Set rsReturn = Nothing
-
-    'strTaxIDString = strMaSoThue
+     Set xmlResultNNT = New MSXML.DOMDocument
+    Set xmlResultNNT = Nothing
+    Set rsReturn = Nothing
+    blnSuccess = True
+    Exit Function
     
     'Dim xmlResultNNT As New MSXML.DOMDocument
     Dim paXmlDoc As New MSXML.DOMDocument
