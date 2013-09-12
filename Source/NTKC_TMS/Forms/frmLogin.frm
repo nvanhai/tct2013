@@ -276,6 +276,8 @@ On Error GoTo ErrorHandle
         sStatus = xmlResultNSD.getElementsByTagName("Status")(0).Text
         strCurrentVersion = xmlResultNSD.getElementsByTagName("NTKversion")(0).Text
         strUserName = xmlResultNSD.getElementsByTagName("UserName")(0).Text
+        strUserID = txtUsername.Text
+        
         Select Case sStatus
             Case "01"  ' Thanh cong
                 IsValidUserESB = 2  'Message login thanh cong
