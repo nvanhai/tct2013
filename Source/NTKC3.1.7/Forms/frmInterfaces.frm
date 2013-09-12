@@ -549,6 +549,34 @@ Private Sub cmdSave_Click()
         Exit Sub
     End If
     
+    
+        If clsDAO.Connected = False Then
+        Me.MousePointer = vbHourglass
+        frmSystem.MousePointer = vbHourglass
+        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
+        clsDAO.Connect
+        frmSystem.MousePointer = vbDefault
+        Me.MousePointer = vbDefault
+    End If
+
+    '*************************************************************
+    'Date: 25/02/2006
+    'Kiem tra khoa so
+    strSQL = GetAttribute(xmlSQL.childNodes(1), "SqlKhoaSo")
+    Set rs = clsDAO.Execute(strSQL)
+    
+    If (Not rs Is Nothing) And rs.Fields.Count > 0 Then
+        If objTaxBusiness.KiemTraKhoaSo(rs.Fields(0)) Then
+            DisplayMessage "0070", msOKOnly, miInformation
+            fpSpread1.Sheet = 1
+            Exit Sub
+        End If
+    End If
+
+    Set rs = Nothing
+    '*************************************************************
+    
+    
     ' Kiem tra trang thai 02 -> khong cho ghi, trang thai 03 canh bao van cho ghi
     If checkTT = 2 Then
         'MessageBox "0108", msOKOnly, miCriticalError
@@ -953,31 +981,7 @@ Private Sub cmdSave_Click()
     '        End If
     '    End If
     
-    If clsDAO.Connected = False Then
-        Me.MousePointer = vbHourglass
-        frmSystem.MousePointer = vbHourglass
-        clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
-        clsDAO.Connect
-        frmSystem.MousePointer = vbDefault
-        Me.MousePointer = vbDefault
-    End If
 
-    '*************************************************************
-    'Date: 25/02/2006
-    'Kiem tra khoa so
-    strSQL = GetAttribute(xmlSQL.childNodes(1), "SqlKhoaSo")
-    Set rs = clsDAO.Execute(strSQL)
-    
-    If (Not rs Is Nothing) And rs.Fields.Count > 0 Then
-        If objTaxBusiness.KiemTraKhoaSo(rs.Fields(0)) Then
-            DisplayMessage "0070", msOKOnly, miInformation
-            fpSpread1.Sheet = 1
-            Exit Sub
-        End If
-    End If
-
-    Set rs = Nothing
-    '*************************************************************
     
     ' xu ly nhan cac mau an chi co canh bao khi quet trung
     If (Val(idToKhai) <= 68 And Val(idToKhai) >= 64) Or Val(idToKhai) = 91 Then
