@@ -568,7 +568,7 @@ Private Sub cmdSave_Click()
     If (Not rs Is Nothing) And rs.Fields.Count > 0 Then
         If objTaxBusiness.KiemTraKhoaSo(rs.Fields(0)) Then
             DisplayMessage "0070", msOKOnly, miInformation
-            fpSpread1.Sheet = 1
+            
             Exit Sub
         End If
     End If
