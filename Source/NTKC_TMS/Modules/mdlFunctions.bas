@@ -1694,7 +1694,7 @@ Public Sub PushDataToESB(ByVal xmlInput As String)
     sQueueName = xmlConfig.getElementsByTagName("queue_name")(0).Text
     
     Dim MQPUT As New MQPUT
-    MQPUT.open_Conn sQueueMgrName, sQueueName  ' Theo tai lieu TK_ChuanKetNoi
+    MQPUT.open_Conn sQueueMgrName, sQueueName
     MQPUT.put_Msg xmlInput
     MQPUT.close_Conn
 End Sub
@@ -1711,7 +1711,7 @@ Public Function ChangeTagASSCII(ByVal strTemp As String, ByVal IsTagToASSCII As 
     End If
     ChangeTagASSCII = strTemp
 End Function
-Private Function DataFromESB(sWebUrl As String, sSoapAct As String, sXmlSoap As String, sParam As String, sValue As String) As String
+Public Function DataFromESB(sWebUrl As String, sSoapAct As String, sXmlSoap As String, sParam As String, sValue As String) As String
     Dim oWsXML As New XMLRequestNuic '' initialize a new Instance of XMLRequestNuic Class
     'Dim aDatos() As String           '' Variable for store the parameters that we need to pass to de Web service
     Dim iTotalElem As Integer        '' This is only for know how many filters o parameters we are passing to the web service
@@ -1827,6 +1827,7 @@ Private Function DataFromESB(sWebUrl As String, sSoapAct As String, sXmlSoap As 
         ''validating if all is ok
         If sWebUrl = "" Or sSoapAct = "" Or sXmlSoap = "" Then
             SaveErrorLog "mdlFunctions", "Ket noi webservices ESB", Err.Number, Err.Description & "Kiem tra Url webservice,soap action..."
+            DataFromESB = ""
             Exit Function
         Else
             DataFromESB = oWsXML.PostWebservice(sWebUrl, sSoapAct, sXmlSoap)
@@ -1834,6 +1835,7 @@ Private Function DataFromESB(sWebUrl As String, sSoapAct As String, sXmlSoap As 
     Else
          'DataFromESB = "the XML Structure is not Correct. please verify your XML structura data."
          SaveErrorLog "mdlFunctions", "Ket noi webservices ESB", Err.Number, Err.Description & "the XML Structure is not Correct. please verify your XML structura data."
+         DataFromESB = ""
          Exit Function
     End If
 End Function
@@ -1897,6 +1899,9 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             fldValue = paXmlDoc.xml
             fldValue = ChangeTagASSCII(fldValue, True)
             
+            If (Dir("c:\TempXML\") = "") Then
+                MkDir "c:\TempXML\"
+            End If
             Dim sParamUser As String
             sParamUser = "c:\TempXML\" & "paramUser.xml"
             paXmlDoc.save sParamUser
