@@ -153,6 +153,10 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Private SHA1Hash As New SHA1Hash
+'NSHUNG lay thong tin NSD tu truc ESB
+'Lay thong tin NNT tu ESB
+Private xmlResultNSD As MSXML.DOMDocument
+'Ket thuc NSHUNG lay thong tin
 
 Private Sub cmdClose_Click()
     Unload Me
@@ -253,34 +257,40 @@ End Sub
 Private Function IsValidUserESB() As Integer
 On Error GoTo ErrorHandle
 
-    Dim xmlESBReturn As New MSXML.DOMDocument
-    Dim strESBReturn As String
+    'Dim xmlESBReturn As New MSXML.DOMDocument
+    Set xmlResultNSD = New MSXML.DOMDocument
+    Dim strResultNSD As String
     Dim sStatus As String
     
-    IsValidUserESB = 2
-    Exit Function
+'    IsValidUserESB = 2
+'    Exit Function
     
-    strESBReturn = GetDataFromESB(txtUsername.Text, txtPassword.Text, "NSD")
+    strResultNSD = GetDataFromESB(txtUsername.Text, txtPassword.Text, "NSD")
     'Chuan hoa file xml ket qua - lay duoc tu ESB
-    strESBReturn = ChangeTagASSCII(strESBReturn, False)
-    xmlESBReturn.loadXML strESBReturn
+    strResultNSD = ChangeTagASSCII(strResultNSD, False)
+    xmlResultNSD.loadXML strResultNSD
+    
+    
 
-    If (Not xmlESBReturn Is Nothing) Then
-        sStatus = xmlESBReturn.getElementsByTagName("Status")(0).Text
-        strCurrentVersion = xmlESBReturn.getElementsByTagName("NTKversion")(0).Text
-        strUserName = xmlESBReturn.getElementsByTagName("UserName")(0).Text
+    If (Not xmlResultNSD Is Nothing) Then
+        sStatus = xmlResultNSD.getElementsByTagName("Status")(0).Text
+        strCurrentVersion = xmlResultNSD.getElementsByTagName("NTKversion")(0).Text
+        strUserName = xmlResultNSD.getElementsByTagName("UserName")(0).Text
         Select Case sStatus
             Case "01"  ' Thanh cong
                 IsValidUserESB = 2  'Message login thanh cong
                 Exit Function
             Case "02" 'Loi xac thuc NSD
                 IsValidUserESB = 0   'Message loi use, pass
+                Set xmlResultNSD = Nothing
                 Exit Function
             Case "03" 'Cac loi khac cua he thong TMS
                 IsValidUserESB = 1  'Message loi khong dang nhap duoc
+                Set xmlResultNSD = Nothing
                 Exit Function
             Case Else
                 IsValidUserESB = 1
+                Set xmlResultNSD = Nothing
                 Exit Function
         End Select
     Else
@@ -512,8 +522,8 @@ Private Function CheckVersion() As Boolean
     
     On Error GoTo ErrHandle
     
-    CheckVersion = True
-    Exit Function
+'    CheckVersion = True
+'    Exit Function
     
 '    strSQL = "SELECT rv_low_value phien_ban " & _
 '           "From cg_ref_codes " & _

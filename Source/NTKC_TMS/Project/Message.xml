@@ -128,6 +128,6 @@
 	<Infor ID="0132" Msg="B"/>
 	<Infor ID="0133" Msg="NTK"/>
 	<Infor ID="0134" Msg="Nhận tờ khai mã vạch"/>
-	<Infor ID="0135" Msg="Không lấy được thông tin người nộp thuế từ trục ESB"/>
-	<Infor ID="0136" Msg="Không lấy được thông tin đại lý thuế từ trục ESB"/>
+	<Infor ID="0135" Msg="Không lấy được thông tin người nộp thuế từ trục ESB. Bạn có muốn tiếp tục?"/>
+	<Infor ID="0136" Msg="Không lấy được thông tin đại lý thuế từ trục ESB. Bạn có muốn tiếp tục?"/>
 </Message>
