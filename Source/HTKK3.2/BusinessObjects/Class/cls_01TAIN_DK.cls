@@ -18,6 +18,7 @@ Public Strloaitk As String
 Public StrSolanBosung As String
 
 Const SHEET_PHU_LUC_01 As Integer = 2
+Const sheetPl01_KHBS_GTGT As Integer = 3
 Private Const Row_MSTDN = 49
 Private Const Col_MSTDN = "P"
 Private Const Col_TKCT = "R"
@@ -341,34 +342,42 @@ End Sub
 'Cause this interface sheets have dynamic rows, this function will set cellnote of error for rising-error cell
 'no parameter
 Private Sub CheckDynamicError()
-    Dim strCheck          As String, iCurrentSheet As Integer
-    Dim iFlagCheckMaST    As Integer
-    Dim varTemp           As Variant, vMST As Variant, errMST As Variant
+    Dim strCheck          As String, iCurrentSheet As Integer, iWhiteRow As Integer
+    Dim iFlagCheckMaST    As Integer, iFlagEmty As Integer
+    Dim varTemp           As Variant, vMST As Variant, errMST As Variant, vTenNhaThau As Variant, errEmty As Variant
+    Dim vTyLePhanBo As Variant, vSoThuePhatSinh As Variant, vGhiChu As Variant
     Dim strFocusSheetName As String, strFocusRow As String, strFocusCol As String, iFocusFlag As Integer
     
     With fps
         iCurrentSheet = .Sheet
         .Sheet = .SheetCount
         .GetText .ColLetterToNumber("E"), 13, errMST
+        .GetText .ColLetterToNumber("E"), 19, errEmty
 
         iFlagCheckMaST = 0
+        iFlagEmty = 0
         
         .Sheet = iCurrentSheet
-    
-        'Check MST static
         .Sheet = SHEET_PHU_LUC_01
-
+        'Check emty data
+        'Check MST static
         If .SheetVisible = True Then
             mCurrentSheet = .Sheet
 
             iFlagCheckMaST = 0
             'iWhiteRow = 1
             .Row = 27
+            iWhiteRow = 1
 
             Do
                 .GetText .ColLetterToNumber("D"), .Row, vMST
-                'If Trim$(vMST) <> "" Then iWhiteRow = 0
-
+                .GetText .ColLetterToNumber("L"), .Row, vTenNhaThau
+                .GetText .ColLetterToNumber("U"), .Row, vTyLePhanBo
+                .GetText .ColLetterToNumber("AB"), .Row, vSoThuePhatSinh
+                .GetText .ColLetterToNumber("AL"), .Row, vGhiChu
+                If Trim$(vMST) <> "" Or Trim$(vTenNhaThau) <> "" Or Trim$(vTyLePhanBo) <> "0" Or Trim$(vSoThuePhatSinh) <> "0" Or Trim$(vGhiChu) <> "" Then
+                    iWhiteRow = 0
+                End If
                 If Trim$(vMST) <> vbNullString Then
                     vMST = Replace(vMST, " ", "")
                     vMST = Replace(vMST, "-", "")
@@ -404,7 +413,25 @@ Private Sub CheckDynamicError()
                     End If
 
                 Else
-                    .Col = .ColLetterToNumber("D")
+                    If (Trim$(vMST) = vbNullString And iWhiteRow = 0) Then
+                        'is emty
+                        .Col = .ColLetterToNumber("D")
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = errEmty   'static
+                        .BackColor = mErrorColor
+                        
+                        iFlagEmty = 1
+                    End If
+                End If
+                If (Trim$(vTenNhaThau) = vbNullString And iWhiteRow = 0) Then
+                    .Col = .ColLetterToNumber("L")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = errEmty   'static
+                    .BackColor = mErrorColor
+                    
+                    iFlagEmty = 1
+                Else
+                    .Col = .ColLetterToNumber("L")
                     .CellNote = ""
                     .BackColor = mNonErrorColor
                 End If
@@ -416,6 +443,7 @@ Private Sub CheckDynamicError()
         End If
 
         .Sheet = .SheetCount
+        .SetText .ColLetterToNumber("B"), 19, IIf(iFlagEmty = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 13, IIf(iFlagCheckMaST = 1, "0", "1")
         'CheckErrorMST
     End With
@@ -518,7 +546,57 @@ Public Function InsertEnable(KeyCode As Integer, Shift As Integer) As Boolean
 End Function
 
 Public Sub SetActiveSheet()
+    Dim xmlNodeValid As MSXML.IXMLDOMNode, xmlCellNode As MSXML.IXMLDOMNode
+    Dim lCtrl As Long, lCol As Long, lRow As Long
+    Dim blnNullValue As Boolean
+    Dim strValue As String
+    Dim strValue1 As String
+    Dim strValue2 As String
+    Dim strValue3 As String
+    Dim strValue4 As Variant
+    Dim strValue5 As Variant
+    'Check the second sheet
+    'Select Case GetAttribute(xmlNodeValid, "ID")
+    For Each xmlNodeValid In TAX_Utilities_New.NodeValidity.childNodes
+        Select Case GetAttribute(xmlNodeValid, "ID")
+            Case "01-1"
+                blnNullValue = True
+                'Check value of last node in Data
+                Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 1)
+                    strValue1 = GetAttribute(xmlCellNode, "Value")
+                fps.Sheet = SHEET_PHU_LUC_01
+                fps.GetText fps.ColLetterToNumber("D"), 27, strValue4
+                    If Val(strValue1) <> 0 Or (Not IsNullValue(strValue4)) Then
+                            blnNullValue = False
+                    End If
 
+                    If blnNullValue Then
+                        SetAttribute xmlNodeValid, "Active", "0"
+                    End If
+             Case "KHBS"
+                blnNullValue = True
+                'Check value of last node in Data
+                Set xmlCellNode = TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell").length - 1)
+                    strValue1 = GetAttribute(xmlCellNode, "Value")
+                Set xmlCellNode = TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell").length - 4)
+                    strValue2 = GetAttribute(xmlCellNode, "Value")
+          
+                    If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Then
+                            blnNullValue = False
+                    End If
+
+                    If blnNullValue Then
+                        'SetAttribute xmlNodeValid, "Active", "0"
+                        'FlagThaydoi = "1"
+                    End If
+        End Select
+    Next
+    
+    Set xmlCellNode = Nothing
+    Set xmlNodeValid = Nothing
 End Sub
 
 Public Sub ResetErrorCells()
