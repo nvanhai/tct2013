@@ -158,4 +158,5 @@
 	<Infor ID="0158" Msg="Quý"/>
 	<Infor ID="0159" Msg="Ngày nộp không được lớn hơn ngày hiện tại."/>
 	<Infor ID="0160" Msg="Kỳ kê khai không được gia hạn thuế GTGT theo NQ13/NQ-CP. Đề nghị kiểm tra lại!"/>
+	<Infor ID="0161" Msg="Chưa có tham số phiên bản ứng dụng!"/>
 </Message>
