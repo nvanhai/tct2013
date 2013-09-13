@@ -1256,9 +1256,9 @@ Private Sub ExecuteSave()
                         Exit Do
                     End If
 
-                    SetAttribute CloneNode.firstChild, "id", CStr(ID)
+                    SetAttribute CloneNode.firstChild.firstChild, "id", CStr(ID)
                     Set nodePL = xmlTK.getElementsByTagName(currentGroup)(0)
-                    nodePL.appendChild CloneNode.firstChild.CloneNode(True)
+                    nodePL.appendChild CloneNode.firstChild.firstChild.CloneNode(True)
                     ID = ID + 1
 
                     cellRange = cellRange + GroupCellRange

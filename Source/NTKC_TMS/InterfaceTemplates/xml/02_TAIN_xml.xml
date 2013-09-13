@@ -99,5 +99,5 @@
 		<tongThueMienGiam>1</tongThueMienGiam>
 		<tongThuePNop>1</tongThuePNop>
 	</CTieuTKhaiChinh>
-	<PLuc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="a type derived from PLucType"/>
+	<PLuc/>
 </HSoKhaiThue>
