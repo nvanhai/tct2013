@@ -2,6 +2,7 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai>BC21_AC</maTKhai>
 		<tenTKhai>Báo cáo mất,cháy,hỏng hóa đơn</tenTKhai>
+		<soLan></soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">

@@ -2,6 +2,7 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai>48_BCTC</maTKhai>
 		<tenTKhai>Báo cáo tài chính bộ 48 BCTC</tenTKhai>
+		<soLan></soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">

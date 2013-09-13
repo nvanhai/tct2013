@@ -2,6 +2,7 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai>BC26_AC</maTKhai>
 		<tenTKhai>Báo cáo tình hình sử dụng hóa đơn</tenTKhai>
+		<soLan></soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">

@@ -2,6 +2,7 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai/>
 		<tenTKhai>token</tenTKhai>
+		<soLan></soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">

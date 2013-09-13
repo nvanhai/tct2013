@@ -2,6 +2,7 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai>08_TNCN</maTKhai>
 		<tenTKhai>TK tạm nộp thuế TNCN (08/KK-TNCN)</tenTKhai>
+		<soLan>I_76</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">

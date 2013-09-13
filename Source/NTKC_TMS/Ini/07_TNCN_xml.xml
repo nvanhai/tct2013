@@ -2,6 +2,7 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai>07_TNCN</maTKhai>
 		<tenTKhai>TK-TNCN Mẫu 07/KK-TNCN</tenTKhai>
+		<soLan>I_61</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
