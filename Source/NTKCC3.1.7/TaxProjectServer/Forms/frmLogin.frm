@@ -549,7 +549,7 @@ Private Function CheckVersion() As Boolean
     
     On Error GoTo ErrHandle
     
-    If Not fso.FileExists(spathVat & "\ntk_tg\tepmau\" & "cg_ref_codes") Then
+    If Not fso.FileExists(spathVat & "\ntk_tg\tepmau\" & "cg_ref_codes.dbf") Then
         DisplayMessage "0161", msOKOnly, miCriticalError
         CheckVersion = False
         
@@ -566,7 +566,13 @@ Private Function CheckVersion() As Boolean
 
     If clsDAO.Connected Then
         Set rsObj = clsDAO.Execute(strSQL)
-
+        
+        If rsObj Is Nothing Then
+                    DisplayMessage "0161", msOKOnly, miCriticalError
+            CheckVersion = False
+            
+            Exit Function
+        End If
         If rsObj.Fields(0).Value = "" Then
             'Can not found table or not exist value
             DisplayMessage "0161", msOKOnly, miCriticalError
