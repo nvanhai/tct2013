@@ -45,7 +45,9 @@ Public Strloaitk As String
 Private Const Row_MSTDN = 14
 Private Const Col_MSTDN = "F"
 Private Const rowStatic = 42
+Private Const sheetPl01_KHBS_GTGT = 3
 Private Const sheetPl03_1TD_TAIN = 2
+
 
 'This funtion is called after an object of this class is created
 'Its functions is 1st preparing for interface sheets, such as
@@ -285,64 +287,81 @@ End Sub
 'no parameter
 Private Sub CheckDynamicError()
 
-Dim iCurrentSheet As Integer, iFlagEmpty As Integer
+    Dim iCurrentSheet As Integer, iFlagEmpty As Integer, iWhiteRow As Integer
     Dim vTenCoQuan    As Variant, vCapCuc As Variant, vCapDiaPhuong As Variant, vMessRequire As Variant
     Dim row_require   As Integer
+    Dim vSTT As Variant, vTenNhaMay As Variant, vCQTCapCuc As Variant, vCQTCapDiaPhuong As Variant, vTyLePhanBo As Variant, vSoThuePhaiNop As Variant
     
     row_require = 15
     
     With fps
+        iCurrentSheet = .Sheet
         'get message
         .Sheet = .SheetCount
         .GetText .ColLetterToNumber("E"), row_require, vMessRequire
         
-        'check phu luc 01_2
+        .Sheet = iCurrentSheet
         .Sheet = 2
-        .Row = 42
-
-        Do
-            .Col = .ColLetterToNumber("C")
-            If (Trim(.Text) = vbNullString) Then
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                .CellNote = vMessRequire      'static
-                .BackColor = mErrorColor
-
-                iFlagEmpty = 1
-            Else
-                .BackColor = mNonErrorColor
-                .CellNote = ""
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-            End If
-
-            .Col = .ColLetterToNumber("L")
-            If (Trim(.Text) = vbNullString) Then
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                .CellNote = vMessRequire      'static
-                .BackColor = mErrorColor
-
-                iFlagEmpty = 1
-            Else
-                .BackColor = mNonErrorColor
-                .CellNote = ""
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-            End If
+        If .SheetVisible = True Then
+            mCurrentSheet = .Sheet
+            'check phu luc 01_2
+            .Row = 42
+            iWhiteRow = 1
             
-            .Col = .ColLetterToNumber("P")
-            If (Trim(.Text) = vbNullString) Then
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                .CellNote = vMessRequire      'static
-                .BackColor = mErrorColor
-
-                iFlagEmpty = 1
-            Else
-                .BackColor = mNonErrorColor
-                .CellNote = ""
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-            End If
-
-            .Row = .Row + 1
-            .Col = .ColLetterToNumber("B")
-        Loop Until .Text = "aa"
+            Do
+                .GetText .ColLetterToNumber("B"), .Row, vSTT
+                .GetText .ColLetterToNumber("C"), .Row, vTenNhaMay
+                .GetText .ColLetterToNumber("L"), .Row, vCQTCapCuc
+                .GetText .ColLetterToNumber("P"), .Row, vCQTCapDiaPhuong
+                .GetText .ColLetterToNumber("R"), .Row, vTyLePhanBo
+                .GetText .ColLetterToNumber("U"), .Row, vSoThuePhaiNop
+                If Trim$(vSTT) <> "" Or Trim$(vTenNhaMay) <> "" Or Trim$(vCQTCapCuc) <> "" Or Trim$(vCQTCapDiaPhuong) <> "" Or Trim$(vTyLePhanBo) <> "0" Or Trim$(vSoThuePhaiNop) <> "0" Then
+                    iWhiteRow = 0
+                End If
+            
+                .Col = .ColLetterToNumber("C")
+                If (Trim(.Text) = vbNullString And iWhiteRow = 0) Then
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vMessRequire      'static
+                    .BackColor = mErrorColor
+    
+                    iFlagEmpty = 1
+                Else
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                End If
+    
+                .Col = .ColLetterToNumber("L")
+                If (Trim(.Text) = vbNullString And iWhiteRow = 0) Then
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vMessRequire      'static
+                    .BackColor = mErrorColor
+    
+                    iFlagEmpty = 1
+                Else
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                End If
+                
+                .Col = .ColLetterToNumber("P")
+                If (Trim(.Text) = vbNullString And iWhiteRow = 0) Then
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vMessRequire      'static
+                    .BackColor = mErrorColor
+    
+                    iFlagEmpty = 1
+                Else
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                End If
+    
+                .Row = .Row + 1
+                .Col = .ColLetterToNumber("B")
+            Loop Until .Text = "aa"
+        End If
         
         'set flag
         .Sheet = .SheetCount
@@ -439,7 +458,57 @@ Sub CheckErrorMST()
 End Sub
 
 Public Sub SetActiveSheet()
+    Dim xmlNodeValid As MSXML.IXMLDOMNode, xmlCellNode As MSXML.IXMLDOMNode
+    Dim lCtrl As Long, lCol As Long, lRow As Long
+    Dim blnNullValue As Boolean
+    Dim strValue As String
+    Dim strValue1 As String
+    Dim strValue2 As String
+    Dim strValue3 As String
+    Dim strValue4 As Variant
+    Dim strValue5 As Variant
+    'Check the second sheet
+    'Select Case GetAttribute(xmlNodeValid, "ID")
+    For Each xmlNodeValid In TAX_Utilities_New.NodeValidity.childNodes
+        Select Case GetAttribute(xmlNodeValid, "ID")
+            Case "03-1"
+                blnNullValue = True
+                'Check value of last node in Data
+                Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 1)
+                    strValue1 = GetAttribute(xmlCellNode, "Value")
+                fps.Sheet = sheetPl03_1TD_TAIN
+                fps.GetText fps.ColLetterToNumber("C"), 42, strValue4
+                    If Val(strValue1) <> 0 Or (Not IsNullValue(strValue4)) Then
+                            blnNullValue = False
+                    End If
 
+                    If blnNullValue Then
+                        SetAttribute xmlNodeValid, "Active", "0"
+                    End If
+             Case "KHBS"
+                blnNullValue = True
+                'Check value of last node in Data
+                Set xmlCellNode = TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell").length - 1)
+                    strValue1 = GetAttribute(xmlCellNode, "Value")
+                Set xmlCellNode = TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell").length - 4)
+                    strValue2 = GetAttribute(xmlCellNode, "Value")
+          
+                    If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Then
+                            blnNullValue = False
+                    End If
+
+                    If blnNullValue Then
+                        'SetAttribute xmlNodeValid, "Active", "0"
+                        'FlagThaydoi = "1"
+                    End If
+        End Select
+    Next
+    
+    Set xmlCellNode = Nothing
+    Set xmlNodeValid = Nothing
 End Sub
 Public Sub ResetErrorCells()
 
