@@ -2,6 +2,7 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai>02_TNDN</maTKhai>
 		<tenTKhai>TK TNDN cho chuyển nhượng BĐS (02/TNDN)</tenTKhai>
+		<soLan>O_49</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">

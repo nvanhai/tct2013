@@ -2,6 +2,7 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai>02_BVMT</maTKhai>
 		<tenTKhai>Tờ khai QT phí bảo vệ môi trường (02/BVMT)</tenTKhai>
+		<soLan>I_33</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">

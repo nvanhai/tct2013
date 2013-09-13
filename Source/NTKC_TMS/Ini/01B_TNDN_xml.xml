@@ -2,6 +2,7 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai>01B_TNDN</maTKhai>
 		<tenTKhai>Tờ khai thuế TNDN tạm tính (01B/TNDN)</tenTKhai>
+		<soLan>I_62</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
