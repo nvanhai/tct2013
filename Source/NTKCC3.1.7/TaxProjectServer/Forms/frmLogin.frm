@@ -253,8 +253,8 @@ On Error GoTo ErrorHandle
             ' Date: 27/04/06
             ' Check version of application
             If Not CheckVersion Then
-                Unload Me
-                Unload frmSystem
+'                Unload Me
+'                frmLogin.Show
                 Exit Sub
             End If
             '********************************
@@ -543,45 +543,56 @@ Private Sub txtUsername_Validate(Cancel As Boolean)
 End Sub
 
 Private Function CheckVersion() As Boolean
-    Dim rsObj As ADODB.Recordset
+    Dim rsObj  As ADODB.Recordset
     Dim strSQL As String
-    Dim fso As New FileSystemObject
+    Dim fso    As New FileSystemObject
     
     On Error GoTo ErrHandle
     
     If Not fso.FileExists(spathVat & "\ntk_tg\tepmau\" & "cg_ref_codes") Then
         DisplayMessage "0161", msOKOnly, miCriticalError
-            Exit Function
+        CheckVersion = False
+        
+        Exit Function
     End If
     
-    strSQL = "SELECT rv_low_v phien_ban " & _
-           "From cg_ref_codes " & _
-           "WHERE (rv_domain = 'HTKK_ABOUT.VERSION')"
+    strSQL = "SELECT rv_low_v phien_ban " & "From cg_ref_codes " & "WHERE (rv_domain = 'HTKK_ABOUT.VERSION')"
+
     'connect to database BMT
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & "\ntk_tg\tepmau"
         clsDAO.Connect
-   End If
+    End If
+
     If clsDAO.Connected Then
         Set rsObj = clsDAO.Execute(strSQL)
+
         If rsObj.Fields(0).Value = "" Then
             'Can not found table or not exist value
             DisplayMessage "0161", msOKOnly, miCriticalError
+            CheckVersion = False
+            
             Exit Function
-        ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) > _
-               CInt(Replace(APP_VERSION, ".", "")) Then
+        ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) > CInt(Replace(APP_VERSION, ".", "")) Then
             'Versions is differed
             DisplayMessage "0076", msOKOnly, miCriticalError
+            CheckVersion = False
+
             Exit Function
-        ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) < _
-               CInt(Replace(APP_VERSION, ".", "")) Then
+        ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) < CInt(Replace(APP_VERSION, ".", "")) Then
             DisplayMessage "0075", msOKOnly, miCriticalError
+            CheckVersion = False
+
             Exit Function
         End If
+
     Else
         DisplayMessage "0063", msOKOnly, miCriticalError
+        CheckVersion = False
+
         Exit Function
     End If
+
     CheckVersion = True
     
     Exit Function
