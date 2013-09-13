@@ -868,27 +868,29 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = Format(Date, "dd-mmm-yyyy HH:mm:ss")
     xmlTK.getElementsByTagName("tenHuyenNNT")(0).Text = ""
     xmlTK.getElementsByTagName("tenTinhNNT")(0).Text = ""
-    xmlTK.getElementsByTagName("maHuyenNNT")(0).Text = xmlResultNNT.getElementsByTagName("TRAN_PROV")(0).Text
-    xmlTK.getElementsByTagName("maTinhNNT")(0).Text = xmlResultNNT.getElementsByTagName("TRAN_DIST")(0).Text
-
-
-    xmlTK.getElementsByTagName("mst")(0).Text = xmlResultNNT.getElementsByTagName("TIN")(0).Text
-    xmlTK.getElementsByTagName("tenNNT")(0).Text = xmlResultNNT.getElementsByTagName("NORM_NAME")(0).Text
-    xmlTK.getElementsByTagName("dchiNNT")(0).Text = xmlResultNNT.getElementsByTagName("TRAN_ADDR")(0).Text
-    xmlTK.getElementsByTagName("dthoaiNNT")(0).Text = xmlResultNNT.getElementsByTagName("TRAN_TEL")(0).Text
-    xmlTK.getElementsByTagName("faxNNT")(0).Text = xmlResultNNT.getElementsByTagName("TRAN_FAX")(0).Text
-    xmlTK.getElementsByTagName("emailNNT")(0).Text = xmlResultNNT.getElementsByTagName("MAIL")(0).Text
-
-
     
-    xmlTK.getElementsByTagName("tenDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("NORM_NAME")(0).Text
-    xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("TRAN_ADDR")(0).Text
-    xmlTK.getElementsByTagName("dthoaiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("TELL")(0).Text
-    xmlTK.getElementsByTagName("faxDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("FAX")(0).Text
-    xmlTK.getElementsByTagName("emailDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("EMAIL")(0).Text
-    xmlTK.getElementsByTagName("soHDongDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("REPR_TAXO_ID")(0).Text
-    xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("START_DATE")(0).Text
+    If (xmlResultNNT.hasChildNodes) Then
+        xmlTK.getElementsByTagName("maHuyenNNT")(0).Text = xmlResultNNT.getElementsByTagName("TRAN_PROV")(0).Text
+        xmlTK.getElementsByTagName("maTinhNNT")(0).Text = xmlResultNNT.getElementsByTagName("TRAN_DIST")(0).Text
+    
+        xmlTK.getElementsByTagName("mst")(0).Text = xmlResultNNT.getElementsByTagName("TIN")(0).Text
+        xmlTK.getElementsByTagName("tenNNT")(0).Text = xmlResultNNT.getElementsByTagName("NORM_NAME")(0).Text
+        xmlTK.getElementsByTagName("dchiNNT")(0).Text = xmlResultNNT.getElementsByTagName("TRAN_ADDR")(0).Text
+        xmlTK.getElementsByTagName("dthoaiNNT")(0).Text = xmlResultNNT.getElementsByTagName("TRAN_TEL")(0).Text
+        xmlTK.getElementsByTagName("faxNNT")(0).Text = xmlResultNNT.getElementsByTagName("TRAN_FAX")(0).Text
+        xmlTK.getElementsByTagName("emailNNT")(0).Text = xmlResultNNT.getElementsByTagName("MAIL")(0).Text
+    End If
 
+    If (xmlResultDLT.hasChildNodes) Then
+        xmlTK.getElementsByTagName("tenDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("NORM_NAME")(0).Text
+        xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("TRAN_ADDR")(0).Text
+        xmlTK.getElementsByTagName("dthoaiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("TELL")(0).Text
+        xmlTK.getElementsByTagName("faxDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("FAX")(0).Text
+        xmlTK.getElementsByTagName("emailDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("EMAIL")(0).Text
+        xmlTK.getElementsByTagName("soHDongDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("REPR_TAXO_ID")(0).Text
+        xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("START_DATE")(0).Text
+    End If
+    
     xmlTK.getElementsByTagName("mstDLyThue")(0).Text = strMaDaiLyThue
     xmlTK.getElementsByTagName("tenTinhDLyThue")(0).Text = ""
     xmlTK.getElementsByTagName("tenHuyenDLyThue")(0).Text = ""
@@ -1455,12 +1457,15 @@ Private Sub ExecuteSave()
     xmlDocSave.save sFileName
     
     ' Push MQ
-    'PushDataToESB xmlDocSave.xml
+'    If (Not PushDataToESB(xmlDocSave.xml)) Then
+'        MessageBox "0137", msOKOnly, miCriticalError
+'    End If
+
     ' End push
     
     Exit Sub
 ErrHandle:
-    SaveErrorLog Me.Name, "cmdExportXML_Click", Err.Number, Err.Description
+    SaveErrorLog Me.Name, "Execute_save", Err.Number, Err.Description
 End Sub
 Private Sub cmdSave_Click()
 
@@ -4287,7 +4292,7 @@ On Error GoTo ErrHandle
 '    End If
 
     
-    'Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
 
     rsReturn.Fields.Append "trang_thai", adChar, 2, adFldUpdatable
     rsReturn.Fields.Append "tin", adVarChar, 14, adFldUpdatable
@@ -4410,7 +4415,8 @@ On Error GoTo ErrHandle
 '        End If
 '    End If
     
-    'Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
+    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
+    
     rsReturn.Fields.Append "repr_name", adVarWChar, 200, adFldUpdatable
     rsReturn.Fields.Append "repr_addr", adVarWChar, 200, adFldUpdatable
     rsReturn.Fields.Append "repr_tell", adVarWChar, 30, adFldUpdatable
@@ -4536,7 +4542,7 @@ On Error GoTo ErrHandle
 '    End If
 
     
-    'Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+   Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
 
     rsReturn.Fields.Append "trang_thai", adChar, 2, adFldUpdatable
     rsReturn.Fields.Append "tin", adVarChar, 14, adFldUpdatable

@@ -1684,20 +1684,29 @@ End If
 End Function
 
 'Push data to ESB by MQ
-Public Sub PushDataToESB(ByVal xmlInput As String)
+Public Function PushDataToESB(ByVal xmlInput As String) As Boolean
     Dim xmlConfig As New MSXML.DOMDocument
     Set xmlConfig = LoadConfig()
     Dim sQueueMgrName As String
-    Dim sQueueName As String
+    Dim sQueueName    As String
+    Dim IsConnectMQ   As Boolean
+    Dim IsCloseMQ     As Boolean
     
     sQueueMgrName = xmlConfig.getElementsByTagName("queue_manager_name")(0).Text
     sQueueName = xmlConfig.getElementsByTagName("queue_name")(0).Text
     
     Dim MQPUT As New MQPUT
-    MQPUT.open_Conn sQueueMgrName, sQueueName
+    IsConnectMQ = MQPUT.open_Conn(sQueueMgrName, sQueueName)
     MQPUT.put_Msg xmlInput
-    MQPUT.close_Conn
-End Sub
+    IsCloseMQ = MQPUT.close_Conn
+    
+    If Not IsConnectMQ Then
+        PushDataToESB = False
+    Else
+        PushDataToESB = True
+    End If
+
+End Function
 ' chuyen the "<", ">" thanh "&lt;", "&gt;" neu IsTagToASSCII = true
 Public Function ChangeTagASSCII(ByVal strTemp As String, ByVal IsTagToASSCII As Boolean) As String
     If (strTemp <> "") Then

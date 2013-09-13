@@ -2,17 +2,17 @@
 <DATA>
 	<HEADER>
 		<VERSION>1.0</VERSION>
-		<SENDER_CODE>EXTGDTu</SENDER_CODE>
-		<SENDER_NAME>Cơ sở dữ liệu ExtGDTu</SENDER_NAME>
+		<SENDER_CODE>TMS</SENDER_CODE>
+		<SENDER_NAME>H? th?ng Qu?n lý thu? t?p trung</SENDER_NAME>
 		<RECEIVER_CODE>NTK</RECEIVER_CODE>
-		<RECEIVER_NAME>Hệ thống nhận tờ khai mã vạch</RECEIVER_NAME>
+		<RECEIVER_NAME>H? th?ng nh?n t? khai mã v?ch</RECEIVER_NAME>
 		<TRAN_CODE>00011</TRAN_CODE>
 		<MSG_ID>0000000011</MSG_ID>
 		<MSG_REFID>0000000011</MSG_REFID>
-		<SEND_DATE>07-May-2012 09:21:22</SEND_DATE>
-		<ORIGINAL_CODE>EXTGDTu</ORIGINAL_CODE>
-		<ORIGINAL_NAME>Cơ sở dữ liệu ExtGDTu</ORIGINAL_NAME>
-		<ORIGINAL_DATE>07-May-2012 09:21:22</ORIGINAL_DATE>
+		<SEND_DATE>10-Sep-2013 17:41:48</SEND_DATE>dd-mmm-yyyy
+		<ORIGINAL_CODE>NTK</ORIGINAL_CODE>
+		<ORIGINAL_NAME>H? th?ng nh?n t? khai mã v?ch</ORIGINAL_NAME>
+		<ORIGINAL_DATE>10-Sep-2013 17:41:48</ORIGINAL_DATE>
 		<ERROR_CODE/>
 		<ERROR_DESC/>
 		<SPARE1/>
@@ -21,14 +21,18 @@
 	</HEADER>
 	<BODY>
 		<ROW>
-			<tin>3100177415</tin>
-			<ten_nnthue>Chi Nhánh Viettel Tiền Giang-Tập Đoàn Viễn  Thông Quân Đội</ten_nnthue>
-			<dia_chi>Số 66, Đường Đinh Bộ Lĩnh, Khu phố 5</dia_chi>
-			<dienthoai>84435683369.</dienthoai>
-			<fax>84435690529</fax>
-			<mail>010</mail>
-			<ngay_bdau_nam_tchinh>01/01/2013</ngay_bdau_nam_tchinh>
-			<trang_thai/>
+			<TIN>3100177415</TIN>
+			<PAY_TAXO_ID>50100</PAY_TAXO_ID>
+			<DEPA_ID>5010005</DEPA_ID>
+			<NORM_NAME>Công Ty C¿ Ph¿n Xây D¿ng H¿ T¿ng Giao Thông 207</NORM_NAME>
+			<TRAN_ADDR>286A- Lê Thanh Ngh¿</TRAN_ADDR>
+			<TRAN_PROV>501</TRAN_PROV>
+			<TRAN_DIST>50101</TRAN_DIST>
+			<TRAN_TEL>0511. 3626207</TRAN_TEL>
+			<TRAN_FAX>0511 3625207</TRAN_FAX>
+			<MAIL/>
+			<START_DATE>2008-10-29 00:00:00</START_DATE>
+			<STATUS>00</STATUS>
 		</ROW>
 	</BODY>
 </DATA>
