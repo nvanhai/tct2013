@@ -76,6 +76,22 @@ Begin VB.Form frmLogin
          FontPitchAndFamily=   2
       End
    End
+   Begin MSForms.CommandButton cmdVAT 
+      Default         =   -1  'True
+      Height          =   360
+      Left            =   120
+      TabIndex        =   8
+      Top             =   1695
+      Width           =   2025
+      Caption         =   "VAT"
+      Size            =   "3572;635"
+      Accelerator     =   78
+      FontName        =   "Tahoma"
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+      ParagraphAlign  =   3
+   End
    Begin MSForms.Label lblCaption 
       Height          =   255
       Left            =   360
@@ -114,7 +130,6 @@ Begin VB.Form frmLogin
       ParagraphAlign  =   3
    End
    Begin MSForms.CommandButton cmdOK 
-      Default         =   -1  'True
       Height          =   360
       Left            =   2295
       TabIndex        =   5
@@ -159,7 +174,7 @@ Private Type BROWSEINFO
   lpszTitle As String
   ulFlags As Long
   lpfn As Long
-  lParam As Long
+  lparam As Long
   iImage As Long
 End Type
 
@@ -220,6 +235,11 @@ On Error GoTo ErrorHandle
     '26/12/2011
     'dntai
     'get user login
+    If spathVat = "" Then
+        DisplayMessage "0092", msOKOnly, miCriticalError
+        frmThamso.Show
+        Exit Sub
+    End If
     strUserID = txtUsername.Text
     Select Case IsValidUser()
         Case 2
@@ -307,6 +327,10 @@ Public Function BrowseFolder(szDialogTitle As String) As String
         BrowseFolder = vbNullString
     End If
 End Function
+
+Private Sub cmdVAT_Click()
+frmThamso.Show
+End Sub
 
 Private Sub Form_Load()
 On Error GoTo ErrorHandle
@@ -523,31 +547,35 @@ Private Function CheckVersion() As Boolean
     Dim strSQL As String
     
     On Error GoTo ErrHandle
-    
-'    strSQL = "SELECT rv_low_value phien_ban " & _
-'           "From cg_ref_codes " & _
-'           "WHERE (rv_domain = 'HTKK_ABOUT.VERSION')"
-'    'connect to database BMT
-'    If clsDAO.Connected Then
-'        Set rsObj = clsDAO.Execute(strSQL)
-'        If rsObj.Fields(0).Value = "" Then
-'            'Can not found table or not exist value
-'            DisplayMessage "0075", msOKOnly, miCriticalError
-'            Exit Function
-'        ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) > _
-'               CInt(Replace(APP_VERSION, ".", "")) Then
-'            'Versions is differed
-'            DisplayMessage "0076", msOKOnly, miCriticalError
-'            Exit Function
-'        ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) < _
-'               CInt(Replace(APP_VERSION, ".", "")) Then
-'            DisplayMessage "0075", msOKOnly, miCriticalError
-'            Exit Function
-'        End If
-'    Else
-'        DisplayMessage "0063", msOKOnly, miCriticalError
-'        Exit Function
-'    End If
+
+    strSQL = "SELECT rv_low_v phien_ban " & _
+           "From cg_ref_codes " & _
+           "WHERE (rv_domain = 'HTKK_ABOUT.VERSION')"
+    'connect to database BMT
+    If clsDAO.Connected = False Then
+        clsDAO.CreateConnectionString spathVat & "\ntk_tg\tepmau"
+        clsDAO.Connect
+   End If
+    If clsDAO.Connected Then
+        Set rsObj = clsDAO.Execute(strSQL)
+        If rsObj.Fields(0).Value = "" Then
+            'Can not found table or not exist value
+            DisplayMessage "0075", msOKOnly, miCriticalError
+            Exit Function
+        ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) > _
+               CInt(Replace(APP_VERSION, ".", "")) Then
+            'Versions is differed
+            DisplayMessage "0076", msOKOnly, miCriticalError
+            Exit Function
+        ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) < _
+               CInt(Replace(APP_VERSION, ".", "")) Then
+            DisplayMessage "0075", msOKOnly, miCriticalError
+            Exit Function
+        End If
+    Else
+        DisplayMessage "0063", msOKOnly, miCriticalError
+        Exit Function
+    End If
     CheckVersion = True
     
     Exit Function

@@ -121,6 +121,7 @@
 		<Item Name="lblPassword" Index="" Caption="Mật khẩu"/>
 		<Item Name="cmdOK" Index="" Caption="Đăng nhập"/>
 		<Item Name="cmdClose" Index="" Caption="Thoát"/>
+		<Item Name="cmdVAT" Index="" Caption="Chọn đường dẫn VAT"/>
 	</frmLogin>
 	<frmThamso Caption="">
 		<Item Name="lblCaption" Index="" Caption="Chọn đường dẫn đến thư mục VAT"/>
