@@ -2,6 +2,7 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai>02_TAIN</maTKhai>
 		<tenTKhai>Tờ khai thuế tài nguyên(02/TAIN)</tenTKhai>
+		<soLan>I_49</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
