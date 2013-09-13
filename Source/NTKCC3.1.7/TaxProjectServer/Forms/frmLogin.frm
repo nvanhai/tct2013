@@ -545,9 +545,15 @@ End Sub
 Private Function CheckVersion() As Boolean
     Dim rsObj As ADODB.Recordset
     Dim strSQL As String
+    Dim fso As New FileSystemObject
     
     On Error GoTo ErrHandle
-
+    
+    If Not fso.FileExists(spathVat & "\ntk_tg\tepmau\" & "cg_ref_codes") Then
+        DisplayMessage "0161", msOKOnly, miCriticalError
+            Exit Function
+    End If
+    
     strSQL = "SELECT rv_low_v phien_ban " & _
            "From cg_ref_codes " & _
            "WHERE (rv_domain = 'HTKK_ABOUT.VERSION')"
@@ -560,7 +566,7 @@ Private Function CheckVersion() As Boolean
         Set rsObj = clsDAO.Execute(strSQL)
         If rsObj.Fields(0).Value = "" Then
             'Can not found table or not exist value
-            DisplayMessage "0075", msOKOnly, miCriticalError
+            DisplayMessage "0161", msOKOnly, miCriticalError
             Exit Function
         ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) > _
                CInt(Replace(APP_VERSION, ".", "")) Then
