@@ -2,8 +2,7 @@
 <!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by longvh (fpt) -->
 <Root>
 	<Menu ID="100" ParentID="" Caption="Hệ thống" Year="" Month="" ThreeMonth="" Icon="..\Pictures\hethong.gif"/>
-	<Menu ID="100_1" ParentID="100" Caption="Thoát" Year="0" Month="0" ThreeMonth="0" Icon="..\Pictures\close.bmp"/>
-	<Menu ID="100_2" ParentID="100" Caption="Đổi đường dẫn VAT" Year="0" Month="0" ThreeMonth="0" Icon="..\Pictures\close.bmp"/>
+	<Menu ID="100_1" ParentID="100" Caption="Thoát" Year="0" Month="0" ThreeMonth="0" Icon="..\Pictures\close.bmp"/>	
 	<Menu ID="100_4" ParentID="100" Caption="Đổi đường dẫn QHSCC" Year="0" Month="0" ThreeMonth="0" Icon="..\Pictures\close.bmp"/>
 	<Menu ID="100_3" ParentID="100" Caption="Đổi mật khẩu" Year="0" Month="0" ThreeMonth="0" Icon="..\Pictures\close.bmp"/>
 	
