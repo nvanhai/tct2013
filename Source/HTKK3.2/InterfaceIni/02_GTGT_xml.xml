@@ -10,36 +10,36 @@
 		<lyDoGiaHan></lyDoGiaHan>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>T_59</nguoiKy>
-		<ngayKy>T_61</ngayKy>
+		<nguoiKy>CB_57</nguoiKy>
+		<ngayKy>CB_59</ngayKy>
 	</Static>
 	<Static GroupName="NNT">
-		<maHuyenNNT>F_14</maHuyenNNT>
-		<maTinhNNT>Q_14</maTinhNNT>
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
 	</Static>
 	<Static GroupName="DLyThue">
-		<maHuyenDLyThue>F_24</maHuyenDLyThue>
-		<maTinhDLyThue>Q_24</maTinhDLyThue>
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>H_59</tenNVienDLyThue>
-		<cchiHNghe>H_61</cchiHNghe>
+		<tenNVienDLyThue>V_57</tenNVienDLyThue>
+		<cchiHNghe>V_59</cchiHNghe>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct21>W_42</ct21>
-		<ct21a>W_43</ct21a>
-		<ct22>Q_45</ct22>
-		<ct23>W_45</ct23>
-		<ct24>Q_47</ct24>
-		<ct25>W_47</ct25>
-		<ct26>Q_48</ct26>
-		<ct27>W_48</ct27>
-		<ct28>W_49</ct28>
-		<ct28a>W_50</ct28a>
-		<ct29>W_51</ct29>
-		<ct30>W_52</ct30>
-		<ct30a>W_53</ct30a>
-		<ct31>W_54</ct31>
-		<ct32>W_55</ct32>
+		<ct21>CT_40</ct21>
+		<ct21a>CT_41</ct21a>
+		<ct22>BW_43</ct22>
+		<ct23>CT_43</ct23>
+		<ct24>BW_45</ct24>
+		<ct25>CT_45</ct25>
+		<ct26>BW_46</ct26>
+		<ct27>CT_46</ct27>
+		<ct28>CT_47</ct28>
+		<ct28a>CT_48</ct28a>
+		<ct29>CT_49</ct29>
+		<ct30>CT_50</ct30>
+		<ct30a>CT_51</ct30a>
+		<ct31>CT_52</ct31>
+		<ct32>CT_53</ct32>
 	</Static>
 </HSoKhaiThue>
