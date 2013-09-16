@@ -723,7 +723,7 @@ Dim nodeReturn As MSXML.IXMLDOMNode
 End Function
 
 Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
-    setChangeComb Col, Row
+    'setChangeComb Col, Row
 End Sub
 
 Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
@@ -736,7 +736,7 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
         iCol = .ActiveCol
         iRow = .ActiveRow
         GetCellSpan fps, iCol, iRow
-        
+
         If (KeyCode = vbKeyF5) Or (KeyCode = vbKeyF6) Then
             'Ke khai bo sung
             If .ActiveSheet = .SheetCount - 1 Then
@@ -816,7 +816,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, _
         .EventEnabled(EventAllEvents) = False
 
         If .ActiveSheet = 1 Then
-        
+
             'tinh so dong
             count = 0
             .Col = .ColLetterToNumber("B")
@@ -825,7 +825,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, _
                 count = count + 1
                 .Row = .Row + 1
             Loop Until .value = "aa"
-            
+
             If Col = .ColLetterToNumber("O") And Row = 63 + count - 1 Then
                 .GetText Col, Row, varTemp
 
