@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.ocx"
 Begin VB.Form frmInterfaces 
    AutoRedraw      =   -1  'True
    BorderStyle     =   3  'Fixed Dialog
@@ -1129,7 +1129,8 @@ Private Sub cmdSave_Click()
     
     Set rs = Nothing
 
-    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 6 Or idToKhai = 72 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 71 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 90 Or idToKhai = 95 Or idToKhai = 92 Then
+    
+    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 6 Or idToKhai = 72 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 71 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 90 Or idToKhai = 95 Or idToKhai = 92 Or idToKhai = 93 Or idToKhai = 94 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28").nodeValue)
     ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 5 Or idToKhai = 70 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28_NNKD").nodeValue)
@@ -1662,8 +1663,25 @@ Private Sub Command1_Click()
     'Barcode_Scaned str2
     
     'Thue tai nguyen 01/TAIN-DK
-    str2 = "aa320923600247325   08201300100100100101/0114/06/2006<S01><S></S><S>~x~x~~0~1~0~1~~30/08/2013~HDKhiLo001</S><S>1000000~1000000~12000~12000000000~20~2400000000~21200</S><S>daily~ict01~nguoiky~30/08/2013</S></S01>"
+'    str2 = "aa320923600247325   08201300100100100101/0114/06/2006<S01><S></S><S>1~x~x~~0~1~0~1~~30/08/2013~HDKhiLo001</S><S>1000000~1000000~12000~12000000000~20~2400000000~21200</S><S>daily~ict01~nguoiky~30/08/2013</S></S01>"
+'    Barcode_Scaned str2
+
+    'Thue tai nguyen 02/TAIN-DK
+'    str2 = "aa320933600247325   00201300100100100201/0114/06/2006<S01><S></S><S>100~1000~2000~2000~1000~1000~1000~20~10000000~10~12000~200~200~12000~5000~605"
+'    Barcode_Scaned str2
+'    str2 = "aa320933600247325   00201300100100200200000~60000000~500000~100000000~-39500000</S><S>hoten~ict01~nguoiky~04/09/2013~0~0~1~1~~2012~HD2</S></S01>"
+'    Barcode_Scaned str2
+    
+    'Thue 01/TD-GTGT
+'    str2 = "aa320943600247325   08201300100100100101/0114/06/2006<S01><S></S><S>1000000~1200~1200000000~10~120000000~100000000~20000000</S><S>hoten~nguoiky~ict01~05/09/2013~1~~</S></S01>"
+'    Barcode_Scaned str2
+    'Phu luc 1-2
+    
+    str2 = "aa320943600247325   08201302702700100201/0114/06/2006<S01><S>0102030405</S><S>1000000000~1500~1500000000000~10~150000000000~0~150000000000</S><S>Lenh Ho Xung~Tieu Ngao Giang Ho~ICT01~16/09/2013~1~~</S></S01>"
     Barcode_Scaned str2
+    str2 = "aa320943600247325   082013027027002002<S01_2><S>0001~CMCser 01~Côc ThuÕ Thµnh phè Hµ Néi~20~100000000~10100~0001~CMCser 02~Chi côc ThuÕ QuËn Hång Bµng~10~50000000~10301</S><S>150000000</S></S01_2>"
+    Barcode_Scaned str2
+
 End Sub
 
 Private Sub Form_Activate()
