@@ -3380,73 +3380,205 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     With fpSpread1
 
         If Val(strSolanBS) > 0 Then
-            xmlTK.getElementsByTagName("loaiTKhai")(0).firstChild.nodeValue = GetAttribute(GetMessageCellById("0115"), "Msg")
-            xmlTK.getElementsByTagName("soLan")(0).firstChild.nodeValue = Val(strSolanBS)
+            If xmlTK.getElementsByTagName("loaiTKhai").length > 0 Then
+                xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0115"), "Msg")
+            End If
+
+            If xmlTK.getElementsByTagName("soLan").length > 0 Then
+                xmlTK.getElementsByTagName("soLan")(0).Text = Val(strSolanBS)
+            End If
+
         Else
-            xmlTK.getElementsByTagName("loaiTKhai")(0).firstChild.nodeValue = GetAttribute(GetMessageCellById("0266"), "Msg")
+
+            If xmlTK.getElementsByTagName("loaiTKhai").length > 0 Then
+                xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0266"), "Msg")
+            End If
         End If
     
-        xmlTK.getElementsByTagName("maDVu")(0).firstChild.nodeValue = maDVu
-        xmlTK.getElementsByTagName("tenDVu")(0).firstChild.nodeValue = tenDVu
-        xmlTK.getElementsByTagName("pbanDVu")(0).firstChild.nodeValue = pbanDVu
-        xmlTK.getElementsByTagName("ttinNhaCCapDVu")(0).firstChild.nodeValue = ttinNhaCCapDVu
-        xmlTK.getElementsByTagName("pbanTKhaiXML")(0).firstChild.nodeValue = pbanTKhaiXML
-        xmlTK.getElementsByTagName("kieuKy")(0).firstChild.nodeValue = strKieuKy
-        xmlTK.getElementsByTagName("kyKKhai")(0).firstChild.nodeValue = GetKyKeKhai(GetAttribute(TAX_Utilities_New.NodeMenu, "ID"))
+        If xmlTK.getElementsByTagName("maDVu").length > 0 Then
+            xmlTK.getElementsByTagName("maDVu")(0).Text = maDVu
+        End If
+
+        If xmlTK.getElementsByTagName("tenDVu").length > 0 Then
+            xmlTK.getElementsByTagName("tenDVu")(0).Text = tenDVu
+        End If
+        
+        If xmlTK.getElementsByTagName("pbanDVu").length > 0 Then
+            xmlTK.getElementsByTagName("pbanDVu")(0).Text = pbanDVu
+        End If
+        
+        If xmlTK.getElementsByTagName("ttinNhaCCapDVu").length > 0 Then
+            xmlTK.getElementsByTagName("ttinNhaCCapDVu")(0).Text = ttinNhaCCapDVu
+        End If
+        
+        If xmlTK.getElementsByTagName("pbanTKhaiXML").length > 0 Then
+            xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = pbanTKhaiXML
+        End If
+        
+        If xmlTK.getElementsByTagName("kieuKy").length > 0 Then
+            xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
+        End If
+        
+        If xmlTK.getElementsByTagName("kyKKhai").length > 0 Then
+            xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_New.NodeMenu, "ID"))
+        End If
+
         If strKieuKy = "M" Then
-            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).firstChild.nodeValue = "01/" & TAX_Utilities_New.month & "/" & TAX_Utilities_New.Year
-            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).firstChild.nodeValue = format(GetNgayCuoiThang(TAX_Utilities_New.Year, TAX_Utilities_New.month), "dd/MM/yyyy")
+            If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
+                xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = "01/" & TAX_Utilities_New.month & "/" & TAX_Utilities_New.Year
+            End If
+            
+            If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
+                xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = format(GetNgayCuoiThang(TAX_Utilities_New.Year, TAX_Utilities_New.month), "dd/MM/yyyy")
+            End If
+
         ElseIf strKieuKy = "Q" Then
-            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).firstChild.nodeValue = format(GetNgayDauQuy(TAX_Utilities_New.ThreeMonths, TAX_Utilities_New.Year, iNgayTaiChinh, iThangTaiChinh), "dd/MM/yyyy")
-            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).firstChild.nodeValue = format(GetNgayCuoiQuy(TAX_Utilities_New.ThreeMonths, TAX_Utilities_New.Year, iNgayTaiChinh, iThangTaiChinh), "dd/MM/yyyy")
+
+            If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
+                xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = format(GetNgayDauQuy(TAX_Utilities_New.ThreeMonths, TAX_Utilities_New.Year, iNgayTaiChinh, iThangTaiChinh), "dd/MM/yyyy")
+            End If
+            
+            If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
+                xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = format(GetNgayCuoiQuy(TAX_Utilities_New.ThreeMonths, TAX_Utilities_New.Year, iNgayTaiChinh, iThangTaiChinh), "dd/MM/yyyy")
+            End If
+
         Else
-            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).firstChild.nodeValue = "01/01/" & TAX_Utilities_New.Year
-            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).firstChild.nodeValue = "31/12/" & TAX_Utilities_New.Year
+
+            If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
+                xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = "01/01/" & TAX_Utilities_New.Year
+            End If
+            
+            If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
+                xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = "31/12/" & TAX_Utilities_New.Year
+            End If
+
         End If
         
         .sheet = .SheetCount
         .GetText .ColLetterToNumber("R"), 7, vlue
-        xmlTK.getElementsByTagName("maCQTNoiNop")(0).firstChild.nodeValue = vlue
+
+        If xmlTK.getElementsByTagName("maCQTNoiNop").length > 0 Then
+            xmlTK.getElementsByTagName("maCQTNoiNop")(0).Text = vlue
+        End If
+
         .GetText .ColLetterToNumber("R"), 9, vlue
-        xmlTK.getElementsByTagName("tenCQTNoiNop")(0).firstChild.nodeValue = vlue
-        xmlTK.getElementsByTagName("mst")(0).firstChild.nodeValue = strTaxIdString
+        
+        If xmlTK.getElementsByTagName("tenCQTNoiNop").length > 0 Then
+            xmlTK.getElementsByTagName("tenCQTNoiNop")(0).Text = vlue
+        End If
+
+        If xmlTK.getElementsByTagName("mst").length > 0 Then
+            xmlTK.getElementsByTagName("mst")(0).Text = strTaxIdString
+        End If
+
         .GetText .ColLetterToNumber("C"), 3, vlue
-        xmlTK.getElementsByTagName("tenNNT")(0).firstChild.nodeValue = vlue
+        
+        If xmlTK.getElementsByTagName("tenNNT").length > 0 Then
+            xmlTK.getElementsByTagName("tenNNT")(0).Text = vlue
+        End If
+
         .GetText .ColLetterToNumber("C"), 4, vlue
-        xmlTK.getElementsByTagName("dchiNNT")(0).firstChild.nodeValue = vlue
+        
+        If xmlTK.getElementsByTagName("dchiNNT").length > 0 Then
+            xmlTK.getElementsByTagName("dchiNNT")(0).Text = vlue
+        End If
+
         .GetText .ColLetterToNumber("C"), 5, vlue
-        xmlTK.getElementsByTagName("tenHuyenNNT")(0).firstChild.nodeValue = vlue
+        
+        If xmlTK.getElementsByTagName("tenHuyenNNT").length > 0 Then
+            xmlTK.getElementsByTagName("tenHuyenNNT")(0).Text = vlue
+        End If
+
         .GetText .ColLetterToNumber("C"), 6, vlue
-        xmlTK.getElementsByTagName("tenTinhNNT")(0).firstChild.nodeValue = vlue
+        
+        If xmlTK.getElementsByTagName("tenTinhNNT").length > 0 Then
+            xmlTK.getElementsByTagName("tenTinhNNT")(0).Text = vlue
+        End If
+
         .GetText .ColLetterToNumber("C"), 7, vlue
-        xmlTK.getElementsByTagName("dthoaiNNT")(0).firstChild.nodeValue = vlue
+        
+        If xmlTK.getElementsByTagName("dthoaiNNT").length > 0 Then
+            xmlTK.getElementsByTagName("dthoaiNNT")(0).Text = vlue
+        End If
+
         .GetText .ColLetterToNumber("C"), 8, vlue
-        xmlTK.getElementsByTagName("faxNNT")(0).firstChild.nodeValue = vlue
+        
+        If xmlTK.getElementsByTagName("faxNNT").length > 0 Then
+            xmlTK.getElementsByTagName("faxNNT")(0).Text = vlue
+        End If
+
         .GetText .ColLetterToNumber("C"), 9, vlue
-        xmlTK.getElementsByTagName("emailNNT")(0).firstChild.nodeValue = vlue
+        
+        If xmlTK.getElementsByTagName("emailNNT").length > 0 Then
+            xmlTK.getElementsByTagName("emailNNT")(0).Text = vlue
+        End If
+
         .GetText .ColLetterToNumber("V"), 5, vlue
-        xmlTK.getElementsByTagName("mstDLyThue")(0).firstChild.nodeValue = vlue
+        
+        If xmlTK.getElementsByTagName("mstDLyThue").length > 0 Then
+            xmlTK.getElementsByTagName("mstDLyThue")(0).Text = vlue
+        End If
+
         .GetText .ColLetterToNumber("V"), 6, vlue
-        xmlTK.getElementsByTagName("tenDLyThue")(0).firstChild.nodeValue = vlue
+        
+        If xmlTK.getElementsByTagName("tenDLyThue").length > 0 Then
+            xmlTK.getElementsByTagName("tenDLyThue")(0).Text = vlue
+        End If
+
         .GetText .ColLetterToNumber("V"), 7, vlue
-        xmlTK.getElementsByTagName("dchiDLyThue")(0).firstChild.nodeValue = vlue
+        
+        If xmlTK.getElementsByTagName("dchiDLyThue").length > 0 Then
+            xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = vlue
+        End If
+
         .GetText .ColLetterToNumber("V"), 8, vlue
-        xmlTK.getElementsByTagName("tenHuyenDLyThue")(0).firstChild.nodeValue = vlue
+        
+        If xmlTK.getElementsByTagName("tenHuyenDLyThue").length > 0 Then
+            xmlTK.getElementsByTagName("tenHuyenDLyThue")(0).Text = vlue
+        End If
+
         .GetText .ColLetterToNumber("V"), 9, vlue
-        xmlTK.getElementsByTagName("tenTinhDLyThue")(0).firstChild.nodeValue = vlue
+        
+        If xmlTK.getElementsByTagName("tenTinhDLyThue").length > 0 Then
+            xmlTK.getElementsByTagName("tenTinhDLyThue")(0).Text = vlue
+        End If
+
         .GetText .ColLetterToNumber("V"), 10, vlue
-        xmlTK.getElementsByTagName("dthoaiDLyThue")(0).firstChild.nodeValue = vlue
+        
+        If xmlTK.getElementsByTagName("dthoaiDLyThue").length > 0 Then
+            xmlTK.getElementsByTagName("dthoaiDLyThue")(0).Text = vlue
+        End If
+
         .GetText .ColLetterToNumber("V"), 11, vlue
-        xmlTK.getElementsByTagName("faxDLyThue")(0).firstChild.nodeValue = vlue
+        
+        If xmlTK.getElementsByTagName("faxDLyThue").length > 0 Then
+            xmlTK.getElementsByTagName("faxDLyThue")(0).Text = vlue
+        End If
+
         .GetText .ColLetterToNumber("V"), 12, vlue
-        xmlTK.getElementsByTagName("emailDLyThue")(0).firstChild.nodeValue = vlue
+        
+        If xmlTK.getElementsByTagName("emailDLyThue").length > 0 Then
+            xmlTK.getElementsByTagName("emailDLyThue")(0).Text = vlue
+        End If
+
         .GetText .ColLetterToNumber("V"), 13, vlue
-        xmlTK.getElementsByTagName("soHDongDLyThue")(0).firstChild.nodeValue = vlue
+        
+        If xmlTK.getElementsByTagName("soHDongDLyThue").length > 0 Then
+            xmlTK.getElementsByTagName("soHDongDLyThue")(0).Text = vlue
+        End If
+
         .GetText .ColLetterToNumber("V"), 14, vlue
-        xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).firstChild.nodeValue = vlue
-        xmlTK.getElementsByTagName("ngayLapTKhai")(0).firstChild.nodeValue = format(Date, "dd/MM/yyyy")
+        
+        If xmlTK.getElementsByTagName("ngayKyHDDLyThue").length > 0 Then
+            xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).Text = vlue
+        End If
+        
+        If xmlTK.getElementsByTagName("ngayLapTKhai").length > 0 Then
+            xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = format(Date, "dd/MM/yyyy")
+        End If
         
     End With
+
     Exit Sub
 ErrHandle:
     SaveErrorLog Me.Name, "SetValueToKhaiHeader", Err.Number, Err.Description
