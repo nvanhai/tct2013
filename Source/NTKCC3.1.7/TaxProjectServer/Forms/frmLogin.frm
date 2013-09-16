@@ -189,7 +189,7 @@ Private Sub cmdClose_Click()
 End Sub
 
 Private Sub cmdOK_Click()
-On Error GoTo ErrorHandle
+    On Error GoTo ErrorHandle
    
     If Len(txtUsername.Text) = 0 Then
         DisplayMessage "0056", msOKOnly, miInformation
@@ -200,16 +200,16 @@ On Error GoTo ErrorHandle
     'Quangtv
     
     Dim fs As FileSystemObject
-     Set fs = New FileSystemObject
+    Set fs = New FileSystemObject
      
     Dim path As String
-    Dim txt As String
+    Dim txt  As String
      
     If Not fs.FileExists(App.path & "\config.txt") Then
         If Len(txtPassword.Text) = 0 Then
             DisplayMessage "0088", msOKOnly, miInformation
             txtPassword.SetFocus
-        Exit Sub
+            Exit Sub
         Else
             txt = spathVat
             txt = txt & "," & txtUsername.Text
@@ -217,20 +217,21 @@ On Error GoTo ErrorHandle
             txt = txt & "," & spathQHSCC
             Call WritePathFile(App.path & "\config.txt", txt)
         End If
+
     Else
         Call ReadPathFile(App.path & "\config.txt")
+
         If txtUsername.Text <> strFile(1) Or txtPassword.Text <> strFile(2) Then
             DisplayMessage "0089", msOKOnly, miInformation
             Exit Sub
         End If
     End If
             
-'            txt = spathVat
-'            txt = txt & "," & txtUsername.Text
-'            txt = txt & "," & txtPassword.Text
-'            Call WritePathFile(App.path & "\config.txt", txtDir.Text)
-            'spathVat = txtDir.Text
-    
+    '            txt = spathVat
+    '            txt = txt & "," & txtUsername.Text
+    '            txt = txt & "," & txtPassword.Text
+    '            Call WritePathFile(App.path & "\config.txt", txtDir.Text)
+    'spathVat = txtDir.Text
     
     '26/12/2011
     'dntai
@@ -240,27 +241,32 @@ On Error GoTo ErrorHandle
         frmThamso.Show
         Exit Sub
     End If
+
     strUserID = txtUsername.Text
+
     Select Case IsValidUser()
+
         Case 2
             GetDataInfor
             'Set user name to system caption
-            frmSystem.lblUser.caption = Mid$(frmSystem.lblUser.caption, 1, _
-                InStr(1, frmSystem.lblUser.caption, ":") + 1) & _
-                strUserName
+            frmSystem.lblUser.caption = Mid$(frmSystem.lblUser.caption, 1, InStr(1, frmSystem.lblUser.caption, ":") + 1) & strUserName
+
             '********************************
             ' ThanhDX added
             ' Date: 27/04/06
             ' Check version of application
             If Not CheckVersion Then
-'                Unload Me
-'                frmLogin.Show
+                '                Unload Me
+                '                frmLogin.Show
                 Exit Sub
             End If
+
             '********************************
             Unload Me
             frmTreeviewMenu.Show
+
         Case 1
+
             If DisplayMessage("0059", msYesNo, miQuestion) = mrYes Then
                 txtPassword.SetFocus
             Else
@@ -268,7 +274,9 @@ On Error GoTo ErrorHandle
                 Unload frmSystem
                 Exit Sub
             End If
+
         Case 0
+
             If DisplayMessage("0040", msYesNo, miQuestion) = mrYes Then
                 txtPassword.SetFocus
             Else
@@ -276,18 +284,23 @@ On Error GoTo ErrorHandle
                 Unload frmSystem
                 Exit Sub
             End If
+
     End Select
+
     If spathVat = "" Then
         frmThamso.Show
          
     End If
+
     If spathQHSCC = "" Then
         frmThamsoQHSCC.Show
     End If
+
     If Not fs.FolderExists(spathVat) Then
         If Trim(spathVat) <> vbNullString Then
             DisplayMessage "0092", msOKOnly, miInformation
         End If
+
         frmThamso.Show
     End If
     
@@ -295,8 +308,15 @@ On Error GoTo ErrorHandle
         If Trim(spathQHSCC) <> vbNullString Then
             DisplayMessage "0119", msOKOnly, miInformation
         End If
+
         frmThamsoQHSCC.Show
     End If
+
+    If clsDAO.Connected = True Then
+    
+        clsDAO.Disconnect
+    End If
+
     Exit Sub
 ErrorHandle:
     SaveErrorLog Me.Name, "cmdOK_Click", Err.Number, Err.Description
@@ -568,7 +588,7 @@ Private Function CheckVersion() As Boolean
         Set rsObj = clsDAO.Execute(strSQL)
         
         If rsObj Is Nothing Then
-                    DisplayMessage "0161", msOKOnly, miCriticalError
+            DisplayMessage "0161", msOKOnly, miCriticalError
             CheckVersion = False
             
             Exit Function
