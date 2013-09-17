@@ -576,7 +576,7 @@ Private Function CheckVersion() As Boolean
         Exit Function
     End If
     
-    strSQL = "SELECT rv_low_v phien_ban " & "From cg_ref_codes " & "WHERE (rv_domain = 'HTKK_ABOUT.VERSION')"
+    strSQL = "SELECT rv_low_v From cg_ref_codes WHERE (rv_domain = 'HTKK_ABOUT.VERSION')"
 
     'connect to database BMT
     If clsDAO.Connected = False Then
