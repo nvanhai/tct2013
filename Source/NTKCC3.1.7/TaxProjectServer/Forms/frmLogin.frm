@@ -567,6 +567,7 @@ Private Function CheckVersion() As Boolean
     Dim strSQL As String
     Dim fso    As New FileSystemObject
     
+   
     On Error GoTo ErrHandle
     
     If Not fso.FileExists(spathVat & "\ntk_tg\tepmau\" & "cg_ref_codes.dbf") Then
@@ -576,11 +577,11 @@ Private Function CheckVersion() As Boolean
         Exit Function
     End If
     
-    strSQL = "SELECT rv_low_v From cg_ref_codes WHERE (rv_domain = 'HTKK_ABOUT.VERSION')"
+    strSQL = "SELECT rv_low_v From cg_ref_codes WHERE rv_domain = 'HTKK_ABOUT.VERSION'"
 
     'connect to database BMT
     If clsDAO.Connected = False Then
-        clsDAO.CreateConnectionString spathVat & "\ntk_tg\tepmau"
+        clsDAO.CreateConnectionString spathVat & "\ntk_tg\tepmau\"
         clsDAO.Connect
     End If
 
