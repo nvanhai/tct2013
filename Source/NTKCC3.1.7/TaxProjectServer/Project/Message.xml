@@ -59,7 +59,7 @@
 	<Infor ID="0060" Msg="Thư mục không có quyền truy nhập."/>
 	<Infor ID="0061" Msg="Không thể đọc từ mã vạch, cổng nhận dữ liệu đang được ứng dụng khác sử dụng !"/>
 	<Infor ID="0062" Msg="Mã vạch này không  thuộc tờ khai đang quét."/>
-	<Infor ID="0063" Msg="Không thể kết nối được với cơ sở dữ liệu QLT."/>
+	<Infor ID="0063" Msg="Không thể kết nối được với cơ sở dữ liệu."/>
 	<Infor ID="0064" Msg="Tờ khai không đúng mẫu quy định (mẫu không tương ứng với kỳ kê khai)."/>
 	<Infor ID="0065" Msg="Ngày bắt đầu năm tài chính không đúng. Đề nghị liên hệ bộ phận quản lý mã số thuế."/>
 	<Infor ID="0066" Msg="Doanh nghiệp chưa kê khai ngày bắt đầu năm tài chính. Đề nghị liên hệ bộ phận quản lý mã số thuế."/>
