@@ -569,8 +569,9 @@ Private Function CheckVersion() As Boolean
     Dim cnnStr As String
    
     On Error GoTo ErrHandle
-    
-    If Not fso.FileExists(spathVat & "\ntk_tg\tepmau\" & "cg_ref_codes.dbf") Then
+    cnnStr = spathVat & "\NTK_TG\"
+
+    If Not fso.FileExists(cnnStr & "cg_ref_codes.dbf") Then
         DisplayMessage "0161", msOKOnly, miCriticalError
         CheckVersion = False
         
@@ -578,13 +579,14 @@ Private Function CheckVersion() As Boolean
     End If
     
     strSQL = "SELECT rv_low_v From cg_ref_codes WHERE rv_domain = 'HTKK_ABOUT.VERSION'"
-    cnnStr = spathVat & "\ntk_tg\tepmau\"
 
     'connect to database BMT
-    If clsDAO.Connected = False Then
-        clsDAO.CreateConnectionString cnnStr
-        clsDAO.Connect
+    If clsDAO.Connected = True Then
+        clsDAO.Disconnect
     End If
+
+    clsDAO.CreateConnectionString cnnStr
+    clsDAO.Connect
 
     If clsDAO.Connected Then
         Set rsObj = clsDAO.Execute(strSQL)
