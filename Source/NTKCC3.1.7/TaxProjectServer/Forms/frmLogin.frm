@@ -587,28 +587,24 @@ Private Function CheckVersion() As Boolean
     If clsDAO.Connected Then
         Set rsObj = clsDAO.Execute(strSQL)
         
-        If rsObj Is Nothing Then
+        If Not rsObj Is Nothing And rsObj.Fields.Count > 0 And rsObj.Fields(0).Value <> "" Then
+            If CInt(Replace(rsObj.Fields(0).Value, ".", "")) > CInt(Replace(APP_VERSION, ".", "")) Then
+                'Versions is differed
+                DisplayMessage "0076", msOKOnly, miCriticalError
+                CheckVersion = False
+
+                Exit Function
+            ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) < CInt(Replace(APP_VERSION, ".", "")) Then
+                DisplayMessage "0075", msOKOnly, miCriticalError
+                CheckVersion = False
+
+                Exit Function
+            End If
+
+        Else
             DisplayMessage "0161", msOKOnly, miCriticalError
             CheckVersion = False
             
-            Exit Function
-        End If
-        If rsObj.Fields(0).Value = "" Then
-            'Can not found table or not exist value
-            DisplayMessage "0161", msOKOnly, miCriticalError
-            CheckVersion = False
-            
-            Exit Function
-        ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) > CInt(Replace(APP_VERSION, ".", "")) Then
-            'Versions is differed
-            DisplayMessage "0076", msOKOnly, miCriticalError
-            CheckVersion = False
-
-            Exit Function
-        ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) < CInt(Replace(APP_VERSION, ".", "")) Then
-            DisplayMessage "0075", msOKOnly, miCriticalError
-            CheckVersion = False
-
             Exit Function
         End If
 
