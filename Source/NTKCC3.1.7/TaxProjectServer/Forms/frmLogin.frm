@@ -569,7 +569,7 @@ Private Function CheckVersion() As Boolean
     Dim cnnStr As String
    
     On Error GoTo ErrHandle
-    cnnStr = spathVat & "\NTK_TG\"
+    cnnStr = spathVat & "\NTK_TG\tepmau\"
 
     If Not fso.FileExists(cnnStr & "cg_ref_codes.dbf") Then
         DisplayMessage "0161", msOKOnly, miCriticalError
