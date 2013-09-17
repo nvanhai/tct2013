@@ -566,6 +566,7 @@ Private Function CheckVersion() As Boolean
     Dim rsObj  As ADODB.Recordset
     Dim strSQL As String
     Dim fso    As New FileSystemObject
+    Dim cnnStr As String
    
     On Error GoTo ErrHandle
     
@@ -577,17 +578,19 @@ Private Function CheckVersion() As Boolean
     End If
     
     strSQL = "SELECT rv_low_v From cg_ref_codes WHERE rv_domain = 'HTKK_ABOUT.VERSION'"
-
+    cnnStr = spathVat & "\ntk_tg\tepmau\"
     'connect to database BMT
     If clsDAO.Connected = False Then
-        clsDAO.CreateConnectionString spathVat & "\ntk_tg\tepmau\"
+        clsDAO.CreateConnectionString cnnStr
         clsDAO.Connect
     End If
-
+    SaveErrorLog Me.Name, "CheckVersion", 0, spathVat
+    SaveErrorLog Me.Name, "CheckVersion", 0, strSQL
+    SaveErrorLog Me.Name, "CheckVersion", 0, cnnStr
     If clsDAO.Connected Then
         Set rsObj = clsDAO.Execute(strSQL)
 
-        If Not rsObj Is Nothing And rsObj.Fields.Count > 0 And rsObj.Fields(0).Value <> "" Then
+        If Not rsObj Is Nothing Then
             SaveErrorLog Me.Name, "CheckVersion", 0, rsObj.Fields(0).Value
 
             If CInt(Replace(rsObj.Fields(0).Value, ".", "")) = CInt(Replace(APP_VERSION, ".", "")) Then
