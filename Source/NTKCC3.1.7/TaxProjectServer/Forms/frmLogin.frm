@@ -566,7 +566,6 @@ Private Function CheckVersion() As Boolean
     Dim rsObj  As ADODB.Recordset
     Dim strSQL As String
     Dim fso    As New FileSystemObject
-    
    
     On Error GoTo ErrHandle
     
@@ -587,19 +586,33 @@ Private Function CheckVersion() As Boolean
 
     If clsDAO.Connected Then
         Set rsObj = clsDAO.Execute(strSQL)
-        
+
         If Not rsObj Is Nothing And rsObj.Fields.Count > 0 And rsObj.Fields(0).Value <> "" Then
-            If CInt(Replace(rsObj.Fields(0).Value, ".", "")) > CInt(Replace(APP_VERSION, ".", "")) Then
-                'Versions is differed
-                DisplayMessage "0076", msOKOnly, miCriticalError
-                CheckVersion = False
+            SaveErrorLog Me.Name, "CheckVersion", 0, rsObj.Fields(0).Value
 
+            If CInt(Replace(rsObj.Fields(0).Value, ".", "")) = CInt(Replace(APP_VERSION, ".", "")) Then
+                CheckVersion = True
                 Exit Function
-            ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) < CInt(Replace(APP_VERSION, ".", "")) Then
-                DisplayMessage "0075", msOKOnly, miCriticalError
-                CheckVersion = False
+            Else
 
-                Exit Function
+                If CInt(Replace(rsObj.Fields(0).Value, ".", "")) > CInt(Replace(APP_VERSION, ".", "")) Then
+                    'Versions is differed
+                    DisplayMessage "0076", msOKOnly, miCriticalError
+                    CheckVersion = False
+
+                    Exit Function
+                ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) < CInt(Replace(APP_VERSION, ".", "")) Then
+                    DisplayMessage "0075", msOKOnly, miCriticalError
+                    CheckVersion = False
+                    DisplayMessage "0161", msOKOnly, miCriticalError
+                    CheckVersion = False
+            
+                    Exit Function
+                    Exit Function
+                Else
+                
+                End If
+
             End If
 
         Else
