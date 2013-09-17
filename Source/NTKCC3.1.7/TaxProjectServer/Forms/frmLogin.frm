@@ -579,20 +579,17 @@ Private Function CheckVersion() As Boolean
     
     strSQL = "SELECT rv_low_v From cg_ref_codes WHERE rv_domain = 'HTKK_ABOUT.VERSION'"
     cnnStr = spathVat & "\ntk_tg\tepmau\"
+
     'connect to database BMT
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString cnnStr
         clsDAO.Connect
     End If
-    SaveErrorLog Me.Name, "CheckVersion", 0, spathVat
-    SaveErrorLog Me.Name, "CheckVersion", 0, strSQL
-    SaveErrorLog Me.Name, "CheckVersion", 0, cnnStr
+
     If clsDAO.Connected Then
         Set rsObj = clsDAO.Execute(strSQL)
 
         If Not rsObj Is Nothing Then
-            SaveErrorLog Me.Name, "CheckVersion", 0, rsObj.Fields(0).Value
-
             If CInt(Replace(rsObj.Fields(0).Value, ".", "")) = CInt(Replace(APP_VERSION, ".", "")) Then
                 CheckVersion = True
                 Exit Function
@@ -607,13 +604,13 @@ Private Function CheckVersion() As Boolean
                 ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) < CInt(Replace(APP_VERSION, ".", "")) Then
                     DisplayMessage "0075", msOKOnly, miCriticalError
                     CheckVersion = False
+                    Exit Function
+                Else
+                
                     DisplayMessage "0161", msOKOnly, miCriticalError
                     CheckVersion = False
             
                     Exit Function
-                    Exit Function
-                Else
-                
                 End If
 
             End If
