@@ -312,10 +312,10 @@ Private Sub cmdOK_Click()
         frmThamsoQHSCC.Show
     End If
 
-    If clsDAO.Connected = True Then
-    
-        clsDAO.Disconnect
-    End If
+'    If clsDAO.Connected = True Then
+'
+'        clsDAO.Disconnect
+'    End If
 
     Exit Sub
 ErrorHandle:
@@ -563,75 +563,53 @@ Private Sub txtUsername_Validate(Cancel As Boolean)
 End Sub
 
 Private Function CheckVersion() As Boolean
-    Dim rsObj  As ADODB.Recordset
-    Dim strSQL As String
+    Dim sSQL As String
+    Dim rs As ADODB.Recordset
     Dim fso    As New FileSystemObject
-    Dim cnnStr As String
-   
+    Dim strFileName As String
+    Dim clsConn As New TAX_Utilities_Svr_New.clsADO
+    strFileName = spathVat & "\NTK_TG\tepmau\cg_ref_codes.DBF"
+    Dim result As Boolean
+    
     On Error GoTo ErrHandle
-    cnnStr = spathVat & "\NTK_TG\tepmau\"
-
-    If Not fso.FileExists(cnnStr & "cg_ref_codes.dbf") Then
+    result = False
+    If fso.FileExists(strFileName) = True Then
+        If clsConn.Connected = False Then
+            clsConn.CreateConnectionString spathVat & "\NTK_TG\tepmau\"
+            clsConn.Connect
+        End If
+        sSQL = "SELECT rv_low_v From cg_ref_codes WHERE rv_domain = 'HTKK_ABOUT.VERSION'"
+        Set rs = clsConn.Execute(sSQL)
+        If Not rs Is Nothing Then
+            If rs.Fields.Count > 0 Then
+                If CInt(Replace(rs.Fields(0).Value, ".", "")) = CInt(Replace(APP_VERSION, ".", "")) Then
+                    result = True
+                Else
+    
+                    If CInt(Replace(rs.Fields(0).Value, ".", "")) > CInt(Replace(APP_VERSION, ".", "")) Then
+                        'Versions is differed
+                        DisplayMessage "0076", msOKOnly, miCriticalError
+                        result = False
+                    ElseIf CInt(Replace(rs.Fields(0).Value, ".", "")) < CInt(Replace(APP_VERSION, ".", "")) Then
+                        DisplayMessage "0075", msOKOnly, miCriticalError
+                        result = False
+                    Else
+                    
+                        DisplayMessage "0161", msOKOnly, miCriticalError
+                        result = False
+                    End If
+                End If
+            End If
+        End If
+    Else
         DisplayMessage "0161", msOKOnly, miCriticalError
-        CheckVersion = False
-        
-        Exit Function
+        result = False
     End If
     
-    strSQL = "SELECT rv_low_v From cg_ref_codes WHERE rv_domain = 'HTKK_ABOUT.VERSION'"
-
-    'connect to database BMT
-    If clsDAO.Connected = True Then
-        clsDAO.Disconnect
+    If clsConn.Connected = True Then
+            clsConn.Disconnect
     End If
-
-    clsDAO.CreateConnectionString cnnStr
-    clsDAO.Connect
-
-    If clsDAO.Connected Then
-        Set rsObj = clsDAO.Execute(strSQL)
-
-        If Not rsObj Is Nothing Then
-            If CInt(Replace(rsObj.Fields(0).Value, ".", "")) = CInt(Replace(APP_VERSION, ".", "")) Then
-                CheckVersion = True
-                Exit Function
-            Else
-
-                If CInt(Replace(rsObj.Fields(0).Value, ".", "")) > CInt(Replace(APP_VERSION, ".", "")) Then
-                    'Versions is differed
-                    DisplayMessage "0076", msOKOnly, miCriticalError
-                    CheckVersion = False
-
-                    Exit Function
-                ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) < CInt(Replace(APP_VERSION, ".", "")) Then
-                    DisplayMessage "0075", msOKOnly, miCriticalError
-                    CheckVersion = False
-                    Exit Function
-                Else
-                
-                    DisplayMessage "0161", msOKOnly, miCriticalError
-                    CheckVersion = False
-            
-                    Exit Function
-                End If
-
-            End If
-
-        Else
-            DisplayMessage "0161", msOKOnly, miCriticalError
-            CheckVersion = False
-            
-            Exit Function
-        End If
-
-    Else
-        DisplayMessage "0063", msOKOnly, miCriticalError
-        CheckVersion = False
-
-        Exit Function
-    End If
-
-    CheckVersion = True
+    CheckVersion = result
     
     Exit Function
 ErrHandle:
