@@ -352,6 +352,14 @@ Private Sub cmdVAT_Click()
 frmThamso.Show
 End Sub
 
+Private Sub Form_Activate()
+     If spathVat = "" Then
+        'DisplayMessage "0092", msOKOnly, miCriticalError
+        frmThamso.Show
+        Exit Sub
+    End If
+End Sub
+
 Private Sub Form_Load()
 On Error GoTo ErrorHandle
     Dim fs As FileSystemObject
@@ -364,6 +372,7 @@ On Error GoTo ErrorHandle
         spathQHSCC = strFile(3)
     End If
     'txtPassword.Text = "admin"
+
 Exit Sub
 ErrorHandle:
     MsgBox "loi" & Err.Description
@@ -585,7 +594,6 @@ Private Function CheckVersion() As Boolean
                 If CInt(Replace(rs.Fields(0).Value, ".", "")) = CInt(Replace(APP_VERSION, ".", "")) Then
                     result = True
                 Else
-    
                     If CInt(Replace(rs.Fields(0).Value, ".", "")) > CInt(Replace(APP_VERSION, ".", "")) Then
                         'Versions is differed
                         DisplayMessage "0076", msOKOnly, miCriticalError
@@ -594,12 +602,17 @@ Private Function CheckVersion() As Boolean
                         DisplayMessage "0075", msOKOnly, miCriticalError
                         result = False
                     Else
-                    
-                        DisplayMessage "0161", msOKOnly, miCriticalError
+                        DisplayMessage "0162", msOKOnly, miCriticalError
                         result = False
                     End If
                 End If
+            Else
+                DisplayMessage "0162", msOKOnly, miCriticalError
+                result = False
             End If
+        Else
+            DisplayMessage "0162", msOKOnly, miCriticalError
+            result = False
         End If
     Else
         DisplayMessage "0161", msOKOnly, miCriticalError
