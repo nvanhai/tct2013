@@ -1252,7 +1252,7 @@ Private Sub ExecuteSave()
                     .Row = sRow
 
                     If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
-
+                        cellRange = cellRange - GroupCellRange
                         Exit Do
                     End If
 
@@ -1344,6 +1344,10 @@ Private Sub ExecuteSave()
                 ElseIf InStr(MaTK, "10") > 0 Then
                     MaTK = Replace$(MaTK, "10", "")
                 End If
+                
+                If InStr(MaTK, "KHBS") > 0 Then
+                MaTK = "KHBS"
+                End If
 
                 xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
 
@@ -1379,7 +1383,7 @@ Private Sub ExecuteSave()
                             .Row = sRow
 
                             If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
-
+                                cellRange = cellRange - GroupCellRange
                                 Exit Do
                             End If
 
@@ -1421,7 +1425,7 @@ Private Sub ExecuteSave()
                             End If
 
                             If UBound(cellArray) <> 1 Then
-                                xmlCellTKNode.nodeValue = cellid
+                                xmlCellTKNode.Text = cellid
                             Else
                                 .Col = .ColLetterToNumber(cellArray(0))
                                 .Row = Val(cellArray(1)) + cellRange
@@ -1998,10 +2002,10 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 '
 '' 02/TAIN
-str2 = "aa320772222222222   00201300400400100201/0114/06/2006<S01><S></S><S>010102~Kg~16535~0~0~30~10~010103~Kg~5847~8~11~0~888~010104~Kg~2222~70~11~0~300~010207~TÊn~3000~1000~15~0~1000~010203~TÊn~5"
-Barcode_Scaned str2
-str2 = "aa320772222222222   0020130040040020020000~0~0~100~300</S><S>010208~Kg~564565~56~10~0~765.987~010210~Kg~6343~0~0~49~845~010208~TÊn~100~50~10~0~10</S><S>outh~12/09/2013~rty~red~1~</S></S01>"
-Barcode_Scaned str2
+'str2 = "aa320772222222222   00201300400400100201/0114/06/2006<S01><S></S><S>010102~Kg~16535~0~0~30~10~010103~Kg~5847~8~11~0~888~010104~Kg~2222~70~11~0~300~010207~TÊn~3000~1000~15~0~1000~010203~TÊn~5"
+'Barcode_Scaned str2
+'str2 = "aa320772222222222   0020130040040020020000~0~0~100~300</S><S>010208~Kg~564565~56~10~0~765.987~010210~Kg~6343~0~0~49~845~010208~TÊn~100~50~10~0~10</S><S>outh~12/09/2013~rty~red~1~</S></S01>"
+'Barcode_Scaned str2
 
 ' 04/GTGT - co bo sung KHBS
 str2 = "bs320712222222222   08201300400500100301/0101/01/1900<S01><S></S><S>177656545~10053434~11111111</S><S>10000000~500000~1000000~01~20000000~1000000~2000000~06~30000000~1500000~3000000~03~67656545~4553434~111111~04~50000000~2500000~5000000~05</S><S>5~5.5~6~01~7~7.5~8~06~54.78~9.5~10~03~11~24.67~70~04~13~13.5~14~05</S><S>32276220~1705832~1297778</S>"
@@ -2012,12 +2016,12 @@ str2 = "bs320712222222222   082013004005003003<SKHBS><S>Hµng ho¸, dÞch vô chÞu t
 Barcode_Scaned str2
 
 ' 02/TAIN - co bo sung KHBS
-str2 = "bs320772222222222   00201200600800100301/0114/06/2006<S01><S></S><S>010104~Kg~123~48888~11~0~0~050101~TÊn~65342.895~543.768~7~0~654.987~010207~Kg~27646.456~0~0~876.456~888.320</S><S>010"
-Barcode_Scaned str2
-str2 = "bs320772222222222   002012006008002003203~Kg~6776.893~4888~15~0~0~010210~Kg~7646.876~0~0~68544~7777~010104~Kg~65356.897~457.987~11~0~765.934</S><S>ghghg~12/09/2013~gg~ghgh~~1</S></S01>"
-Barcode_Scaned str2
-str2 = "bs320772222222222   002012006008003003<SKHBS><S>ThuÕ tµi nguyªn ph¸t sinh ph¶i nép trong kú~10~661455~559778340~559116885</S><S>~~0~0~0</S><S>26/09/2013~178~49761403~NOI DUNG DINH KEM ABC~559116885</S></SKHBS>"
-Barcode_Scaned str2
+'str2 = "bs320772222222222   00201200600800100301/0114/06/2006<S01><S></S><S>010104~Kg~123~48888~11~0~0~050101~TÊn~65342.895~543.768~7~0~654.987~010207~Kg~27646.456~0~0~876.456~888.320</S><S>010"
+'Barcode_Scaned str2
+'str2 = "bs320772222222222   002012006008002003203~Kg~6776.893~4888~15~0~0~010210~Kg~7646.876~0~0~68544~7777~010104~Kg~65356.897~457.987~11~0~765.934</S><S>ghghg~12/09/2013~gg~ghgh~~1</S></S01>"
+'Barcode_Scaned str2
+'str2 = "bs320772222222222   002012006008003003<SKHBS><S>ThuÕ tµi nguyªn ph¸t sinh ph¶i nép trong kú~10~661455~559778340~559116885</S><S>~~0~0~0</S><S>26/09/2013~178~49761403~NOI DUNG DINH KEM ABC~559116885</S></SKHBS>"
+'Barcode_Scaned str2
 
 
 End Sub
