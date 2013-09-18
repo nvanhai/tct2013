@@ -139,7 +139,7 @@ Private Type BROWSEINFO
   lpszTitle As String
   ulFlags As Long
   lpfn As Long
-  lParam As Long
+  lparam As Long
   iImage As Long
 End Type
 
@@ -176,14 +176,17 @@ On Error GoTo ErrorHandle
     End If
 
             '********************************
-            If txtDir.Text <> spathVat Then
-                Dim txt As String
-                txt = txtDir.Text & "," & strFile(1) & "," & strFile(2) & "," & strFile(3)
-                Call WritePathFile(App.path & "\config.txt", txt)
-                DisplayMessage "0090", msOKOnly, miInformation
+            If fs.FileExists(App.path & "\config.txt") Then
+                If txtDir.Text <> spathVat Then
+                    Dim txt As String
+                    txt = txtDir.Text & "," & strFile(1) & "," & strFile(2) & "," & strFile(3)
+                    Call WritePathFile(App.path & "\config.txt", txt)
+                    DisplayMessage "0090", msOKOnly, miInformation
+                    spathVat = txtDir.Text
+                End If
+            Else
                 spathVat = txtDir.Text
             End If
-                      
     Unload Me
     Set frmThamso = Nothing
     Exit Sub

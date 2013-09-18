@@ -72,7 +72,7 @@
 	<Infor ID="0073" Msg="Nhập sai định dạng ngày tháng năm."/>
 	<Infor ID="0074" Msg="Phiên bản ứng dụng tại cơ quan thuế nhỏ hơn phiên bản ứng dụng tại doanh nghiệp."/>
 	<Infor ID="0075" Msg="Cơ sở dữ liệu chưa được nâng cấp. Đề nghị nâng cấp cơ sở dữ liệu."/>
-	<Infor ID="0076" Msg="Ứng dụng chưa nâng cấp, đề nghị nâng cấp ứng dụng trước khi sử dụng."/>
+	<Infor ID="0076" Msg="Phiên bản DB không được lớn hơn phiên bản UD"/>
 	<Infor ID="0077" Msg="Không tồn tại phòng xử lý nào trong hệ thống."/>
 	<Infor ID="0078" Msg="Không tồn tại bảng Rcv_Thamso trong cơ sở dữ liệu."/>
 	<Infor ID="0079" Msg="Không thể lấy được thông tin tệp tờ khai."/>
@@ -148,7 +148,6 @@
 	<Infor ID="0149" Msg="Dữ liệu không hợp lệ."/>
 	<Infor ID="0150" Msg="Không nhận tờ khai TNCN có kỳ kê khai nhỏ hơn tháng 7/2011"/>
 	<Infor ID="0151" Msg="Kỳ lập bộ không được lớn hơn kỳ hiện tại."/>
-
 	<Infor ID="0152" Msg="Thông báo phát hành hóa đơn"/>
 	<Infor ID="0153" Msg="Báo cáo tình hình nhận in hóa đơn"/>
 	<Infor ID="0154" Msg="Báo cáo mất,cháy,hỏng hóa đơn"/>
@@ -158,5 +157,6 @@
 	<Infor ID="0158" Msg="Quý"/>
 	<Infor ID="0159" Msg="Ngày nộp không được lớn hơn ngày hiện tại."/>
 	<Infor ID="0160" Msg="Kỳ kê khai không được gia hạn thuế GTGT theo NQ13/NQ-CP. Đề nghị kiểm tra lại!"/>
-	<Infor ID="0161" Msg="Chưa có tham số phiên bản ứng dụng!"/>
+	<Infor ID="0161" Msg="Chưa có bảng tham số trong DB"/>
+	<Infor ID="0162" Msg="Chưa cập nhật thông tin phiên bản"/>
 </Message>
