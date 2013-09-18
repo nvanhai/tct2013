@@ -25,6 +25,11 @@
 		<tenNVienDLyThue>H_73</tenNVienDLyThue>
 		<cchiHNghe>H_75</cchiHNghe>
 	</Static>
+	<Static GroupName="DSoHHDVBRaChiuThueGTGT">
+		<ct21>L_43</ct21>
+		<ct22>R_43</ct22>
+		<ct23>X_43</ct23>
+	</Static>
 	<Dynamic GroupName="DSoHHDVBRaChiuThueGTGT">
 		<ChiTietNhomNganh id="id">
 			<NhomNganh>
@@ -36,10 +41,10 @@
 			</NhomNganh>
 		</ChiTietNhomNganh>
 	</Dynamic>
-	<Static GroupName="DSoHHDVBRaChiuThueGTGT">
-		<ct21>L_43</ct21>
-		<ct22>R_43</ct22>
-		<ct23>X_43</ct23>
+	<Static GroupName="TyLeGTGTTTrenDThu">
+		<ct24>L_47</ct24>
+		<ct25>R_47</ct25>
+		<ct26>X_47</ct26>
 	</Static>
 	<Dynamic GroupName="TyLeGTGTTTrenDThu">
 		<ChiTietNhomNganh id="id">
@@ -52,10 +57,10 @@
 			</NhomNganh>
 		</ChiTietNhomNganh>
 	</Dynamic>
-	<Static GroupName="TyLeGTGTTTrenDThu">
-		<ct24>L_47</ct24>
-		<ct25>R_47</ct25>
-		<ct26>X_47</ct26>
+	<Static GroupName="TongGTGTTrongKy">
+		<ct27>L_51</ct27>
+		<ct28>R_51</ct28>
+		<ct29>X_51</ct29>
 	</Static>
 	<Dynamic GroupName="TongGTGTTrongKy">
 		<ChiTietNhomNganh id="id">
@@ -68,10 +73,10 @@
 			</NhomNganh>
 		</ChiTietNhomNganh>
 	</Dynamic>
-	<Static GroupName="TongGTGTTrongKy">
-		<ct27>L_51</ct27>
-		<ct28>R_51</ct28>
-		<ct29>X_51</ct29>
+	<Static GroupName="ThueGTGTPNop">
+		<ct30>L_55</ct30>
+		<ct31>R_55</ct31>
+		<ct32>X_55</ct32>
 	</Static>
 	<Dynamic GroupName="ThueGTGTPNop">
 		<ChiTietNhomNganh id="id">
@@ -84,11 +89,6 @@
 			</NhomNganh>
 		</ChiTietNhomNganh>
 	</Dynamic>
-	<Static GroupName="ThueGTGTPNop">
-		<ct30>L_55</ct30>
-		<ct31>R_55</ct31>
-		<ct32>X_55</ct32>
-	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<ct33>S_60</ct33>
 		<ct34>O_62</ct34>
