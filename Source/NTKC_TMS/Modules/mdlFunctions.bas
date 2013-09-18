@@ -515,7 +515,6 @@ Public Sub SetupData(pGrid As fpSpread)
     Dim strDataFileName As String
     Dim strOriginDataFileName As String
     
-    
 
     TAX_Utilities_Srv_New.xmlDataReDim (TAX_Utilities_Srv_New.NodeValidity.childNodes.length - 1)
     'TAX_Utilities_Srv_New.xmlDataReDim (TAX_Utilities_Srv_New.NodeValidity.childNodes.length)
