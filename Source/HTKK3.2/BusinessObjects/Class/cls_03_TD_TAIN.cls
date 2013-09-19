@@ -723,7 +723,7 @@ Dim nodeReturn As MSXML.IXMLDOMNode
 End Function
 
 Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
-    'setChangeComb Col, Row
+    setChangeComb Col, Row
 End Sub
 
 Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
