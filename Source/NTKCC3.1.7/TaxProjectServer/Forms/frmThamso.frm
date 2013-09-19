@@ -149,7 +149,9 @@ Private Declare Function SHBrowseForFolder Lib "shell32.dll" Alias "SHBrowseForF
             
 Private Const BIF_RETURNONLYFSDIRS = &H1
 Private Sub cmdClose_Click()
+    Set frmThamso = Nothing
     Unload Me
+    frmLogin.Show
 End Sub
 
 Private Sub cmdOK_Click()
@@ -174,7 +176,11 @@ On Error GoTo ErrorHandle
         txtDir.SetFocus
         Exit Sub
     End If
-
+    If Not fs.FolderExists(txtDir.Text & "\NTK_TG\") Then
+        DisplayMessage "0092", msOKOnly, miInformation
+        txtDir.SetFocus
+        Exit Sub
+    End If
             '********************************
             If fs.FileExists(App.path & "\config.txt") Then
                 If txtDir.Text <> spathVat Then
@@ -187,8 +193,9 @@ On Error GoTo ErrorHandle
             Else
                 spathVat = txtDir.Text
             End If
-    Unload Me
     Set frmThamso = Nothing
+    Unload Me
+    frmLogin.Show
     Exit Sub
    ' frmSystem.Show
     
