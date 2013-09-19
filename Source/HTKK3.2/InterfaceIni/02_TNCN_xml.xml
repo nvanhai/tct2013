@@ -2,6 +2,7 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai>02_TNCN</maTKhai>
 		<tenTKhai>TK-TNCN Mẫu 02/KK-TNCN</tenTKhai>
+		<soLan>R_4</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
@@ -21,30 +22,30 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>G_58</tenNVienDLyThue>
-		<cchiHNghe>G_60</cchiHNghe>
+		<tenNVienDLyThue>H_58</tenNVienDLyThue>
+		<cchiHNghe>H_60</cchiHNghe>
 	</Static>
 	<Static GroupName="TongSoCaNhanDaKhauTru">
-		<ct21>U_41</ct21>
-		<ct22>U_42</ct22>
-		<ct23>U_43</ct23>
+		<ct21>U_40</ct21>
+		<ct22>U_41</ct22>
+		<ct23>U_42</ct23>
 	</Static>
 	<Static GroupName="TongTNCTTraChoCaNhan">
-		<ct24>U_44</ct24>
-		<ct25>U_45</ct25>
-		<ct26>U_46</ct26>
-		<ct27>U_47</ct27>
+		<ct24>U_43</ct24>
+		<ct25>U_44</ct25>
+		<ct26>U_45</ct26>
+		<ct27>U_46</ct27>
 	</Static>
 	<Static GroupName="TongTNCTTraCNhanThuocDienKTru">
-		<ct28>U_48</ct28>
-		<ct29>U_49</ct29>
-		<ct30>U_50</ct30>
-		<ct31>U_52</ct31>
+		<ct28>U_47</ct28>
+		<ct29>U_48</ct29>
+		<ct30>U_49</ct30>
+		<ct31>U_50</ct31>
 	</Static>
 	<Static GroupName="TongThueTNCNDaKhauTru">
-		<ct32>U_53</ct32>
-		<ct33>U_54</ct33>
-		<ct34>U_55</ct34>
-		<ct35>U_56</ct35>
+		<ct32>U_51</ct32>
+		<ct33>U_52</ct33>
+		<ct34>U_53</ct34>
+		<ct35>U_54</ct35>
 	</Static>
 </HSoKhaiThue>

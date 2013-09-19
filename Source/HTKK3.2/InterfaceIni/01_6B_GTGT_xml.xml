@@ -10,10 +10,10 @@
 		</PBoGTGTDVVT>
 	</Dynamic>
 	<Static GroupName="PBoGTGTDVuVThong">
-		<ct16>H_10</ct16>
-		<ct18>I_10</ct18>
-		<ct19>H_17</ct19>
-		<ct20>H_19</ct20>
+		<ct14>H_10</ct14>
+		<ct16>I_10</ct16>
+		<ct17>H_27</ct17>
+		<ct18>H_19</ct18>
 	</Static>
 	<Static GroupName="PL01_6B_GTGT">
 		<ct06>G_12</ct06>

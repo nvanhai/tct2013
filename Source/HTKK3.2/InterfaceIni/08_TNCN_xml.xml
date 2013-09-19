@@ -2,6 +2,7 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai>08_TNCN</maTKhai>
 		<tenTKhai>TK tạm nộp thuế TNCN (08/KK-TNCN)</tenTKhai>
+		<soLan>T_9</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
@@ -9,8 +10,8 @@
 		<lyDoGiaHan></lyDoGiaHan>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>S_71</nguoiKy>
-		<ngayKy>S_73</ngayKy>
+		<nguoiKy>R_63</nguoiKy>
+		<ngayKy>R_65</ngayKy>
 	</Static>
 	<Static GroupName="NNT">
 		<maHuyenNNT></maHuyenNNT>
@@ -21,26 +22,26 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>F_71</tenNVienDLyThue>
-		<cchiHNghe>F_73</cchiHNghe>
+		<tenNVienDLyThue>H_63</tenNVienDLyThue>
+		<cchiHNghe>H_65</cchiHNghe>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct21>R_47</ct21>
-		<ct22>R_48</ct22>
-		<ct23>R_49</ct23>
+		<ct21>R_48</ct21>
+		<ct22>R_49</ct22>
+		<ct23>R_50</ct23>
 	</Static>
 	<Static GroupName="CacKhoanGiamTru">
-		<ct24>R_50</ct24>
-		<ct25>R_51</ct25>
-		<ct26>R_52</ct26>
-		<ct27>R_53</ct27>
-		<ct28>R_54</ct28>
+		<ct24>R_51</ct24>
+		<ct25>R_52</ct25>
+		<ct26>R_53</ct26>
+		<ct27>R_54</ct27>
+		<ct28>R_55</ct28>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct29>R_55</ct29>
-		<ct30>R_56</ct30>
-		<ct31>R_57</ct31>
-		<ct32>R_58</ct32>
-		<ct33>R_59</ct33>
+		<ct29>R_56</ct29>
+		<ct30>R_57</ct30>
+		<ct31>R_58</ct31>
+		<ct32>R_59</ct32>
+		<ct33>R_60</ct33>
 	</Static>
 </HSoKhaiThue>

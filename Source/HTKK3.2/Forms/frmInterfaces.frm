@@ -3378,10 +3378,9 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     On Error GoTo ErrHandle
 
     With fpSpread1
-
         If Val(strSolanBS) > 0 Then
             If xmlTK.getElementsByTagName("loaiTKhai").length > 0 Then
-                xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0115"), "Msg")
+                xmlTK.getElementsByTagName("loaiTKhai")(0).Text = "B"
             End If
 
             If xmlTK.getElementsByTagName("soLan").length > 0 Then
@@ -3391,7 +3390,11 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         Else
 
             If xmlTK.getElementsByTagName("loaiTKhai").length > 0 Then
-                xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0266"), "Msg")
+                xmlTK.getElementsByTagName("loaiTKhai")(0).Text = "C"
+            End If
+            
+            If xmlTK.getElementsByTagName("soLan").length > 0 Then
+                xmlTK.getElementsByTagName("soLan")(0).Text = ""
             End If
         End If
     
@@ -3823,6 +3826,7 @@ Private Sub cmdExportXml_Click()
         
     MaTK = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile")
     
+'    Lay duong dan cua file
     With CommonDialog1
         .CancelError = True
         .InitDir = GetAbsolutePath("..")
@@ -3843,7 +3847,6 @@ Private Sub cmdExportXml_Click()
     xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
     xmlMapCT.Load GetAbsolutePath("..\InterfaceIni\" & MaTK & "_xml.xml")
     
-    SetValueToKhaiHeader xmlTK
     
     With fpSpread1
         Dim cellid         As String
@@ -3931,7 +3934,7 @@ Private Sub cmdExportXml_Click()
 
                     End If
 
-                    If UBound(cellArray) <> 1 Then
+                    If UBound(cellArray) <> 1 Or Len(cellid) > 5 Then
                         xmlCellTKNode.Text = cellid
                     Else
                         .Col = .ColLetterToNumber(cellArray(0))
@@ -3950,6 +3953,8 @@ Private Sub cmdExportXml_Click()
 
         Next
         
+        SetValueToKhaiHeader xmlTK
+
         'Set value cho phu luc
         For nodeValIndex = 1 To TAX_Utilities_New.NodeValidity.childNodes.length
             Set nodeVal = TAX_Utilities_New.NodeValidity.childNodes(nodeValIndex)
@@ -3960,15 +3965,13 @@ Private Sub cmdExportXml_Click()
         
                 MaTK = GetAttribute(nodeVal, "DataFile")
 
-                If InStr(MaTK, "11") > 0 Then
-                    MaTK = Replace$(MaTK, "11", "")
-                ElseIf InStr(MaTK, "10") > 0 Then
-                    MaTK = Replace$(MaTK, "10", "")
+                If InStr(MaTK, "KHBS") > 0 Then
+                    MaTK = "KHBS"
                 End If
 
                 xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
 
-                xmlMapPL.Load GetAbsolutePath("..\ini\" & MaTK & "_xml.xml")
+                xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\" & MaTK & "_xml.xml")
 
                 cellRange = 0
                 .sheet = nodeValIndex + 1
@@ -4000,7 +4003,7 @@ Private Sub cmdExportXml_Click()
                             .Row = sRow
 
                             If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
-
+                                cellRange = cellRange - GroupCellRange
                                 Exit Do
                             End If
 
@@ -4010,8 +4013,7 @@ Private Sub cmdExportXml_Click()
                             ID = ID + 1
                             cellRange = cellRange + GroupCellRange
                         Loop
-
-                        cellRange = cellRange - 1
+                        
                     Else
                         Dim xmlChildNodePL As MSXML.IXMLDOMNode
                         currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
@@ -4041,8 +4043,8 @@ Private Sub cmdExportXml_Click()
 
                             End If
 
-                            If UBound(cellArray) <> 1 Then
-                                xmlCellTKNode.nodeValue = cellid
+                            If UBound(cellArray) <> 1 Or Len(cellid) > 5 Then
+                                xmlCellTKNode.Text = cellid
                             Else
                                 .Col = .ColLetterToNumber(cellArray(0))
                                 .Row = Val(cellArray(1)) + cellRange
