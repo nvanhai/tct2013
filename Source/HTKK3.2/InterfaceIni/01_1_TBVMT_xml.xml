@@ -1,14 +1,19 @@
-<PL02_BVMT><Static GroupName="PL02_BVMT"><ngayNopTKhaiChinh>1967-08-13</ngayNopTKhaiChinh>
-	</Static><Dynamic GroupName="PL02_BVMT"><PBoSoThueBVMTChoDPhuong id="ID_2">
-			<ct2></ct2>
-			<ct3></ct3>
-			<ct4>0000000000</ct4>
-			<ct5></ct5>
-			<ct6>1</ct6>
-			<ct7>1</ct7>
-			<ct8>0.0</ct8>
-			<ct9>1</ct9>
-			<ct10>1</ct10>
-			<ct11>1</ct11>
+<PL02_BVMT>
+	<Static GroupName="PL02_BVMT">
+		<ngayNopTKhaiChinh></ngayNopTKhaiChinh>
+	</Static>
+	<Dynamic GroupName="PL02_BVMT">
+		<PBoSoThueBVMTChoDPhuong id="ID_2">
+			<ct2>D_34</ct2>
+			<ct3>L_34</ct3>
+			<ct4>M_34</ct4>
+			<ct5>N_34</ct5>
+			<ct6>O_34</ct6>
+			<ct7>P_34</ct7>
+			<ct8>Q_34</ct8>
+			<ct9></ct9>
+			<ct10></ct10>
+			<ct11></ct11>
 		</PBoSoThueBVMTChoDPhuong>
-	</Dynamic></PL02_BVMT>
+	</Dynamic>
+</PL02_BVMT>

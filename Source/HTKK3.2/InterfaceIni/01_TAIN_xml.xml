@@ -9,8 +9,8 @@
 		<lyDoGiaHan></lyDoGiaHan>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>AI_59</nguoiKy>
-		<ngayKy>AI_61</ngayKy>
+		<nguoiKy>AJ_50</nguoiKy>
+		<ngayKy>AJ_52</ngayKy>
 	</Static>
 	<Static GroupName="NNT">
 		<maHuyenNNT></maHuyenNNT>
@@ -21,42 +21,42 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>T_59</tenNVienDLyThue>
-		<cchiHNghe>T_61</cchiHNghe>
+		<tenNVienDLyThue>W_50</tenNVienDLyThue>
+		<cchiHNghe>W_52</cchiHNghe>
 	</Static>
 	<Dynamic GroupName="TaiNguyenKhaiThac">
 		<ThueTaiNguyenThuMuaGom id="ID_1">
-			<ct2>D_51</ct2>
+			<ct2>E_42</ct2>
 			<SanLuongTNguyenTinhThue>
-				<ct3>M_51</ct3>
-				<ct4>P_51</ct4>
+				<ct3>P_42</ct3>
+				<ct4>S_42</ct4>
 			</SanLuongTNguyenTinhThue>
-			<ct5>S_51</ct5>
-			<ct6>X_51</ct6>
-			<ct7>AA_51</ct7>
-			<ct8>AF_51</ct8>
-			<ct9>AI_51</ct9>
-			<ct10>AM_51</ct10>
+			<ct5>V_42</ct5>
+			<ct6>AA_42</ct6>
+			<ct7>AD_42</ct7>
+			<ct8>AG_42</ct8>
+			<ct9>AJ_42</ct9>
+			<ct10>AN_42</ct10>
 		</ThueTaiNguyenThuMuaGom>
 	</Dynamic>
 	<Dynamic GroupName="TaiNguyenThuMuaGom">
 		<ThueTaiNguyenThuMuaGom id="ID_2">
-			<ct2>D_55</ct2>
+			<ct2>E_46</ct2>
 			<SanLuongTNguyenTinhThue>
-				<ct3>M_55</ct3>
-				<ct4>P_55</ct4>
+				<ct3>P_46</ct3>
+				<ct4>S_46</ct4>
 			</SanLuongTNguyenTinhThue>
-			<ct5>S_55</ct5>
-			<ct6>X_55</ct6>
-			<ct7>AA_55</ct7>
-			<ct8>AF_55</ct8>
-			<ct9>AI_55</ct9>
-			<ct10>AM_55</ct10>
+			<ct5>V_46</ct5>
+			<ct6>AA_46</ct6>
+			<ct7>AD_46</ct7>
+			<ct8>AG_46</ct8>
+			<ct9>AJ_46</ct9>
+			<ct10>AN_46</ct10>
 		</ThueTaiNguyenThuMuaGom>
 	</Dynamic>
 	<Static GroupName="BangChiTietTNguyen">
-		<tongThueTNPSinh>AF_57</tongThueTNPSinh>
-		<tongThueMienGiam>AI_57</tongThueMienGiam>
-		<tongThuePNop>AM_57</tongThuePNop>
+		<tongThueTNPSinh>AG_48</tongThueTNPSinh>
+		<tongThueMienGiam>AJ_48</tongThueMienGiam>
+		<tongThuePNop>AN_48</tongThuePNop>
 	</Static>
 </HSoKhaiThue>

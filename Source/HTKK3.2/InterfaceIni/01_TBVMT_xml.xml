@@ -9,31 +9,31 @@
 		<lyDoGiaHan></lyDoGiaHan>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy></nguoiKy>
-		<ngayKy></ngayKy>
+		<nguoiKy>R_55</nguoiKy>
+		<ngayKy>R_57</ngayKy>
 	</Static>
 	<Static GroupName="NNT">
-		<maHuyenNNT></maHuyenNNT>
-		<maTinhNNT></maTinhNNT>
+		<maHuyenNNT>F_11</maHuyenNNT>
+		<maTinhNNT>P_11</maTinhNNT>
 	</Static>
 	<Static GroupName="DLyThue">
-		<maHuyenDLyThue></maHuyenDLyThue>
-		<maTinhDLyThue></maTinhDLyThue>
+		<maHuyenDLyThue>F_19</maHuyenDLyThue>
+		<maTinhDLyThue>P_19</maTinhDLyThue>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>token</tenNVienDLyThue>
-		<cchiHNghe></cchiHNghe>
+		<tenNVienDLyThue>H_55</tenNVienDLyThue>
+		<cchiHNghe>H_57</cchiHNghe>
 	</Static>
 	<Dynamic GroupName="ChiTietThueBVMT">
 		<ThueBVMT id="id">
-			<ct2>C_45</ct2>
-			<ct3>H_45</ct3>
-			<ct4>J_45</ct4>
-			<ct5>O_45</ct5>
-			<ct6>U_45</ct6>
+			<ct2>AC_44</ct2>
+			<ct3>J_44</ct3>
+			<ct4>L_44</ct4>
+			<ct5>Q_44</ct5>
+			<ct6>U_44</ct6>
 		</ThueBVMT>
 	</Dynamic>
 	<Static GroupName="ChiTietThueBVMT">
-		<tongCot6>U_45</tongCot6>
+		<tongCot6>U_46</tongCot6>
 	</Static>
 </HSoKhaiThue>
