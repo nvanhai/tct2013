@@ -1,31 +1,50 @@
-<HSoKhaiThue><Static GroupName="TKhaiThue"><maTKhai></maTKhai>
-		<tenTKhai>token</tenTKhai>
+﻿<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>01_TAIN_DK</maTKhai>
+		<tenTKhai>TỜ KHAI THUẾ TÀI NGUYÊN TẠM TÍNH ĐỐI VỚI DẦU KHÍ</tenTKhai>
 		<moTaBMau/>
-	</Static><Static GroupName="GiaHan"><maLyDoGiaHan></maLyDoGiaHan>
-		<lyDoGiaHan></lyDoGiaHan>
-	</Static><Static GroupName="TKhaiThue"><nguoiKy></nguoiKy>
-		<ngayKy></ngayKy>
-	</Static><Static GroupName="NNT"><maHuyenNNT></maHuyenNNT>
-		<maTinhNNT></maTinhNNT>
-	</Static><Static GroupName="DLyThue"><maHuyenDLyThue></maHuyenDLyThue>
-		<maTinhDLyThue></maTinhDLyThue>
-	</Static><Static GroupName="NVienDLy"><tenNVienDLyThue>token</tenNVienDLyThue>
-		<cchiHNghe></cchiHNghe>
-	</Static><Static GroupName="LoaiDKhi"><ct01>true</ct01>
-		<ct02>true</ct02>
-		<ct03>true</ct03>
-	</Static><Static GroupName="LoaiXuatBan"><ct05>1</ct05>
-		<ct08>true</ct08>
-		<ct09>true</ct09>
-		<ct10>1967-08-13</ct10>
-	</Static><Static GroupName="CTieuTKhaiChinh"><ct19></ct19>
-		<ct29>1</ct29>
-		<ct29a>1</ct29a>
-		<ct30>1</ct30>
-		<ct31>1</ct31>
-		<ct32>1</ct32>
-		<ct33>1</ct33>
-		<ct34>1</ct34>
-		<mucLuc></mucLuc>
-		<tieuMucThu></tieuMucThu>
-	</Static></HSoKhaiThue>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>AR_63</nguoiKy>
+		<ngayKy>AR_65</ngayKy>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT/>
+		<maTinhNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>U_63</tenNVienDLyThue>
+		<cchiHNghe>U_65</cchiHNghe>
+	</Static>
+	<Static GroupName="LoaiDKhi">
+		<ct01>O_30</ct01>
+		<ct02>P_30</ct02>
+		<ct03>Q_30</ct03>
+	</Static>
+	<Static GroupName="LoaiXuatBan">
+		<ct05>AF_23</ct05>
+		<ct08>Y_28</ct08>
+		<ct09>AS_28</ct09>
+		<ct10>AM_29</ct10>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct19>P_47</ct19>
+		<ct29>AV_53</ct29>
+		<ct29a>AV_54</ct29a>
+		<ct30>AV_55</ct30>
+		<ct31>AV_56</ct31>
+		<ct32>AV_57</ct32>
+		<ct33>AV_58</ct33>
+		<ct34>AV_59</ct34>
+		<mucLuc/>
+		<tieuMucThu/>
+	</Static>
+</HSoKhaiThue>

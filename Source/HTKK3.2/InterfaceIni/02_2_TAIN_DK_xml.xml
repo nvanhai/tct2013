@@ -1,14 +1,27 @@
-<PL_02_1TAIN_DK><Static GroupName="LoaiDKhi"><ct01>true</ct01>
-		<ct02>true</ct02>
-		<ct03>true</ct03>
-	</Static><Static GroupName="bangKKhai"><donViTinh>text</donViTinh>
-	</Static><Static GroupName="KhaiThacDauKhi"><ngayThang>1967-08-13</ngayThang>
-		<soLuong>1</soLuong>
-	</Static><Static GroupName="XuatBanDauKhi"><ngayThang>1967-08-13</ngayThang>
-		<sanLuong>1</sanLuong>
-		<giaTinhThue>1</giaTinhThue>
-		<doanhThu>1</doanhThu>
-	</Static><Static GroupName="bangKKhai"><ghiChu></ghiChu>
-	</Static><Static GroupName="SLuongDThuXBan"><tongCot6>1</tongCot6>
-		<tongCot8>1</tongCot8>
-	</Static></PL_02_1TAIN_DK>
+<PL_02_1TAIN_DK>
+	<Static GroupName="LoaiDKhi">
+		<ct01>P_2</ct01>
+		<ct02>Z_2</ct02>
+		<ct03>AK_2</ct03>
+	</Static>
+	<Static GroupName="bangKKhai">
+		<donViTinh>D_27</donViTinh>
+	</Static>
+	<Static GroupName="KhaiThacDauKhi">
+		<ngayThang>K_27</ngayThang>
+		<soLuong>P_27</soLuong>
+	</Static>
+	<Static GroupName="XuatBanDauKhi">
+		<ngayThang>U_27</ngayThang>
+		<sanLuong>Y_27</sanLuong>
+		<giaTinhThue>AD_27</giaTinhThue>
+		<doanhThu>AJ_27</doanhThu>
+	</Static>
+	<Static GroupName="bangKKhai">
+		<ghiChu>AQ_27</ghiChu>
+	</Static>
+	<Static GroupName="SLuongDThuXBan">
+		<tongCot6>Y_29</tongCot6>
+		<tongCot8>AJ_29</tongCot8>
+	</Static>
+</PL_02_1TAIN_DK>
