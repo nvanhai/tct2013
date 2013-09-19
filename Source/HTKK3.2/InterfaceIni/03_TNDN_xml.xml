@@ -1,16 +1,16 @@
-<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30">
+﻿<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30">
 	<Static GroupName="TKhaiThue">
-		<maTKhai/>
-		<tenTKhai>token</tenTKhai>
+		<maTKhai>03_TNDN</maTKhai>
+		<tenTKhai>Tờ khai quyết toán thuế TNDN</tenTKhai>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
-		<maLyDoGiaHan/>
-		<lyDoGiaHan/>
+		<maLyDoGiaHan>P_64</maLyDoGiaHan>
+		<lyDoGiaHan>D_64</lyDoGiaHan>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy/>
-		<ngayKy/>
+		<nguoiKy>N_66</nguoiKy>
+		<ngayKy>N_68</ngayKy>
 	</Static>
 	<Static GroupName="NNT">
 		<maHuyenNNT/>
@@ -21,47 +21,47 @@
 		<maTinhDLyThue/>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>token</tenNVienDLyThue>
-		<cchiHNghe/>
+		<tenNVienDLyThue>F_66</tenNVienDLyThue>
+		<cchiHNghe>F_68</cchiHNghe>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<doanhNghiepADungTSuat20>true</doanhNghiepADungTSuat20>
-		<doanhNghiepCoCSoHToanPThuoc>true</doanhNghiepCoCSoHToanPThuoc>
-		<ctA1>0</ctA1>
-		<ctB1>1</ctB1>
-		<ctB2>1</ctB2>
-		<ctB3>1</ctB3>
-		<ctB4>1</ctB4>
-		<ctB5>1</ctB5>
-		<ctB6>1</ctB6>
-		<ctB7>1</ctB7>
-		<ctB8>1</ctB8>
-		<ctB9>1</ctB9>
-		<ctB10>1</ctB10>
-		<ctB11>1</ctB11>
-		<ctB12>1</ctB12>
-		<ctB13>1</ctB13>
-		<ctB14>0</ctB14>
-		<ctC1>1</ctC1>
-		<ctC2>1</ctC2>
-		<ctC3>1</ctC3>
-		<ctC4>1</ctC4>
-		<ctC5>1</ctC5>
-		<ctC6>1</ctC6>
-		<ctC7>1</ctC7>
-		<ctC8>1</ctC8>
-		<ctC9>1</ctC9>
-		<ctC10>1</ctC10>
-		<ctC11>1</ctC11>
-		<ctC12>1</ctC12>
-		<ctD>1</ctD>
-		<ctE>1</ctE>
-		<ctE1>1</ctE1>
-		<ctE2>1</ctE2>
+		<doanhNghiepADungTSuat20>D_7</doanhNghiepADungTSuat20>
+		<doanhNghiepCoCSoHToanPThuoc>D_8</doanhNghiepCoCSoHToanPThuoc>
+		<ctA1>O_23</ctA1>
+		<ctB1>O_25</ctB1>
+		<ctB2>O_26</ctB2>
+		<ctB3>O_27</ctB3>
+		<ctB4>O_28</ctB4>
+		<ctB5>O_29</ctB5>
+		<ctB6>O_30</ctB6>
+		<ctB7>O_31</ctB7>
+		<ctB8>O_32</ctB8>
+		<ctB9>O_33</ctB9>
+		<ctB10>O_34</ctB10>
+		<ctB11>O_35</ctB11>
+		<ctB12>O_36</ctB12>
+		<ctB13>O_37</ctB13>
+		<ctB14>O_38</ctB14>
+		<ctC1>O_40</ctC1>
+		<ctC2>O_41</ctC2>
+		<ctC3>O_42</ctC3>
+		<ctC4>O_43</ctC4>
+		<ctC5>O_44</ctC5>
+		<ctC6>O_45</ctC6>
+		<ctC7>O_46</ctC7>
+		<ctC8>O_47</ctC8>
+		<ctC9>O_48</ctC9>
+		<ctC10>O_49</ctC10>
+		<ctC11>O_50</ctC11>
+		<ctC12>O_51</ctC12>
+		<ctD>O_52</ctD>
+		<ctE>O_53</ctE>
+		<ctE1>O_54</ctE1>
+		<ctE2>O_55</ctE2>
 	</Static>
 	<Dynamic GroupName="TaiLieu_Guikem">
 		<TaiLieuGuikem id="ID_1">
-			<tenDocument/>
+			<tenDocument>C_61</tenDocument>
 		</TaiLieuGuikem>
 	</Dynamic>
 </HSoKhaiThue>

@@ -1,24 +1,42 @@
-<HSoKhaiThue><Static GroupName="TKhaiThue"><maTKhai></maTKhai>
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai/>
 		<tenTKhai>token</tenTKhai>
 		<moTaBMau/>
-	</Static><Static GroupName="GiaHan"><maLyDoGiaHan></maLyDoGiaHan>
-		<lyDoGiaHan></lyDoGiaHan>
-	</Static><Static GroupName="TKhaiThue"><nguoiKy></nguoiKy>
-		<ngayKy></ngayKy>
-	</Static><Static GroupName="NNT"><maHuyenNNT></maHuyenNNT>
-		<maTinhNNT></maTinhNNT>
-	</Static><Static GroupName="DLyThue"><maHuyenDLyThue></maHuyenDLyThue>
-		<maTinhDLyThue></maTinhDLyThue>
-	</Static><Static GroupName="NVienDLy"><tenNVienDLyThue>token</tenNVienDLyThue>
-		<cchiHNghe></cchiHNghe>
-	</Static><Static GroupName="LoaiDKhi"><ct01>true</ct01>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy/>
+		<ngayKy/>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT/>
+		<maTinhNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>token</tenNVienDLyThue>
+		<cchiHNghe/>
+	</Static>
+	<Static GroupName="LoaiDKhi">
+		<ct01>true</ct01>
 		<ct02>true</ct02>
 		<ct03>true</ct03>
-	</Static><Static GroupName="LoaiXuatBan"><ct05>1</ct05>
+	</Static>
+	<Static GroupName="LoaiXuatBan">
+		<ct05>1</ct05>
 		<ct08>true</ct08>
 		<ct09>true</ct09>
 		<ct10>1967-08-13</ct10>
-	</Static><Static GroupName="CTieuTKhaiChinh"><ct19></ct19>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct19/>
 		<ct28>1</ct28>
 		<ct29>1</ct29>
 		<ct30>1</ct30>
@@ -27,6 +45,7 @@
 		<ct33>1</ct33>
 		<ct34>1</ct34>
 		<ct35>1</ct35>
-		<mucLuc></mucLuc>
-		<tieuMucThu></tieuMucThu>
-	</Static></HSoKhaiThue>
+		<mucLuc/>
+		<tieuMucThu/>
+	</Static>
+</HSoKhaiThue>
