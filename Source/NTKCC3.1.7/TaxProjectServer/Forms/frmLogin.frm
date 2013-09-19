@@ -349,7 +349,8 @@ Public Function BrowseFolder(szDialogTitle As String) As String
 End Function
 
 Private Sub cmdVAT_Click()
-frmThamso.Show
+    Me.Hide
+    frmThamso.Show
 End Sub
 
 Private Sub Form_Activate()
