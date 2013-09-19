@@ -2,6 +2,7 @@ VERSION 5.00
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Begin VB.MDIForm frmSystem 
    BackColor       =   &H8000000C&
+   Caption         =   "NhËn tê khai"
    ClientHeight    =   8490
    ClientLeft      =   60
    ClientTop       =   345
@@ -134,7 +135,7 @@ Private Sub MDIForm_QueryUnload(Cancel As Integer, UnloadMode As Integer)
     If hasActiveForm = True Then
         Cancel = 1
     End If
-    
+    Unload frmThamso
     Exit Sub
 ErrorHandle:
     SaveErrorLog Me.Name, "MDIForm_QueryUnload", Err.Number, Err.Description

@@ -356,6 +356,7 @@ End Sub
 Private Sub Form_Activate()
      If spathVat = "" Then
         'DisplayMessage "0092", msOKOnly, miCriticalError
+        Me.Hide
         frmThamso.Show
         Exit Sub
     End If

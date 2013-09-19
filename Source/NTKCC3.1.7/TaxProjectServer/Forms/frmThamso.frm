@@ -234,8 +234,7 @@ End Sub
 
 Private Sub Form_Load()
     SetControlCaption Me, "frmThamso"
-    Call ReadPathFile(App.path & "\config.txt")
-    txtDir.Text = strFile(0)
+    txtDir.Text = spathVat
 End Sub
 
 Private Sub Form_Resize()
