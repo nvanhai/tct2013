@@ -2,27 +2,28 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai>06_TNCN</maTKhai>
 		<tenTKhai>Tờ khai 06/KK-TNCN</tenTKhai>
+		<soLan>I_6</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
-		<maLyDoGiaHan>String</maLyDoGiaHan>
-		<lyDoGiaHan>String</lyDoGiaHan>
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>T_61</nguoiKy>
-		<ngayKy>T_63</ngayKy>
+		<nguoiKy>M_57</nguoiKy>
+		<ngayKy>M_59</ngayKy>
 	</Static>
 	<Static GroupName="NNT">
-		<maHuyenNNT>String</maHuyenNNT>
-		<maTinhNNT>String</maTinhNNT>
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
 	</Static>
 	<Static GroupName="DLyThue">
-		<maHuyenDLyThue>String</maHuyenDLyThue>
-		<maTinhDLyThue>String</maTinhDLyThue>
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>G_61</tenNVienDLyThue>
-		<cchiHNghe>G_63</cchiHNghe>
+		<tenNVienDLyThue>D_57</tenNVienDLyThue>
+		<cchiHNghe>D_59</cchiHNghe>
 	</Static>
 	<Static GroupName="ThuNhapTuDauVon">
 		<ct21>1</ct21>

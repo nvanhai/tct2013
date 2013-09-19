@@ -2,6 +2,7 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai>05_TNCN</maTKhai>
 		<tenTKhai>Tờ khai 05/KK-TNCN</tenTKhai>
+		<soLan>I_6</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
@@ -9,8 +10,8 @@
 		<lyDoGiaHan></lyDoGiaHan>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>T_83</nguoiKy>
-		<ngayKy>T_85</ngayKy>
+		<nguoiKy>M_69</nguoiKy>
+		<ngayKy>M_71</ngayKy>
 	</Static>
 	<Static GroupName="NNT">
 		<maHuyenNNT></maHuyenNNT>
@@ -21,48 +22,48 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>H_83</tenNVienDLyThue>
-		<cchiHNghe>H_85</cchiHNghe>
+		<tenNVienDLyThue>D_69</tenNVienDLyThue>
+		<cchiHNghe>D_71</cchiHNghe>
 	</Static>
 	<Static GroupName="TongSoCaNhanDaKhauTruThue">
-		<ct21>S_43</ct21>
-		<ct22>S_44</ct22>
-		<ct23>S_45</ct23>
+		<ct21>I_36</ct21>
+		<ct22>I_37</ct22>
+		<ct23>I_38</ct23>
 	</Static>
 	<Static GroupName="TongTNCTTraChoCaNhan">
-		<ct24>S_46</ct24>
-		<ct25>S_47</ct25>
-		<ct26>S_48</ct26>
-		<ct27>S_49</ct27>
+		<ct24>I_39</ct24>
+		<ct25>I_40</ct25>
+		<ct26>I_41</ct26>
+		<ct27>I_42</ct27>
 	</Static>
 	<Static GroupName="TongTNCTTraChoCNhanThuocDienKTru">
-		<ct28>S_50</ct28>
-		<ct29>S_51</ct29>
-		<ct30>S_52</ct30>
-		<ct31>S_53</ct31>
+		<ct28>I_43</ct28>
+		<ct29>I_44</ct29>
+		<ct30>I_45</ct30>
+		<ct31>I_46</ct31>
 	</Static>
 	<Static GroupName="TongThueTNCNDaKTru">
-		<ct32>S_54</ct32>
-		<ct33>S_55</ct33>
-		<ct34>S_56</ct34>
-		<ct35>S_57</ct35>
+		<ct32>I_47</ct32>
+		<ct33>I_48</ct33>
+		<ct34>I_49</ct34>
+		<ct35>I_50</ct35>
 	</Static>
 	<Static GroupName="TongSoThueTNCTPhaiKTru">
-		<ct36>S_58</ct36>
-		<ct37>S_59</ct37>
-		<ct38>S_60</ct38>
-		<ct39>S_61</ct39>
+		<ct36>I_51</ct36>
+		<ct37>I_52</ct37>
+		<ct38>I_53</ct38>
+		<ct39>I_54</ct39>
 	</Static>
 	<Static GroupName="NghiaVuKhauTruThue">
-		<ct40>S_62</ct40>
-		<ct41>S_63</ct41>
-		<ct42>S_64</ct42>
+		<ct40>I_55</ct40>
+		<ct41>I_56</ct41>
+		<ct42>I_57</ct42>
 	</Static>
 	<Static GroupName="NghiaVuQuyetToanThay">
-		<ct43>S_68</ct43>
-		<ct44>S_69</ct44>
-		<ct45>S_70</ct45>
-		<ct46>S_71</ct46>
-		<ct47>S_72</ct47>
+		<ct43>I_61</ct43>
+		<ct44>I_62</ct44>
+		<ct45>I_63</ct45>
+		<ct46>I_64</ct46>
+		<ct47>I_65</ct47>
 	</Static>
 </HSoKhaiThue>
