@@ -1293,7 +1293,7 @@ Private Sub ExecuteSave()
 
                     End If
 
-                    If UBound(cellArray) <> 1 Then
+                    If UBound(cellArray) <> 1 Or Len(cellid) > 5 Then
                         
                         xmlCellTKNode.Text = cellid
                     Else
@@ -1424,7 +1424,7 @@ Private Sub ExecuteSave()
 
                             End If
 
-                            If UBound(cellArray) <> 1 Then
+                            If UBound(cellArray) <> 1 Or Len(cellid) > 5 Then
                                 xmlCellTKNode.Text = cellid
                             Else
                                 .Col = .ColLetterToNumber(cellArray(0))
