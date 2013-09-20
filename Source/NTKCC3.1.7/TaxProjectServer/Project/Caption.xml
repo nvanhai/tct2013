@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by longvh (fpt) -->
 <Root>
 	<frmReports Caption="">
@@ -110,7 +110,7 @@
 		<Item Name="lblCaption" Index="" Caption="Giới thiệu chương trình"/>
 		<Item Name="cmdExit" Index="" Caption="Thoát"/>
 	</frmAbout>
-	<frmSystem Caption="Ứng dụng nhận tờ khai cấp chi cục VAT - NTKCC">
+	<frmSystem Caption="¦ng dông nhËn tê khai cÊp chi côc VAT - NTKCC">
 		<Item Name="lblUser" Index="" Caption="Người sử dụng: "/>
 		<Item Name="chkSaveQuestion" Index="" Caption="Ghi dữ liệu hiện tại ngay khi quét tờ khai mới. "/>
 		<Item Name="chkSaveQHS" Index="" Caption="Ghi dữ liệu vào QHSCC"/>
