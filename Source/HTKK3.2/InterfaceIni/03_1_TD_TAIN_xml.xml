@@ -1,8 +1,15 @@
-<PL_03_1_TD_TAIN><Static GroupName="bangPhanBoTAINThuyĐien"><tenNhaMay></tenNhaMay>
-		<tyLePhanBo>1</tyLePhanBo>
-		<soThueGTGTPNop>1</soThueGTGTPNop>
-	</Static><Static GroupName="cqtDiaPhuong"><tenCQT></tenCQT>
-		<tyLePhanBo>1</tyLePhanBo>
-		<soThueGTGTPNop>1</soThueGTGTPNop>
-	</Static><Static GroupName="PL_03_1_TD_TAIN"><tongCong>1</tongCong>
-	</Static></PL_03_1_TD_TAIN>
+<PL_03_1_TD_TAIN>
+	<Static GroupName="bangPhanBoTAINThuyĐien">
+		<tenNhaMay>C_42</tenNhaMay>
+		<tyLePhanBo>R_42</tyLePhanBo>
+		<soThueGTGTPNop>U_42</soThueGTGTPNop>
+	</Static>
+	<Static GroupName="cqtDiaPhuong">
+		<tenCQT>AH_42</tenCQT>
+		<tyLePhanBo>R_42</tyLePhanBo>
+		<soThueGTGTPNop>U_42</soThueGTGTPNop>
+	</Static>
+	<Static GroupName="PL_03_1_TD_TAIN">
+		<tongCong>U_44</tongCong>
+	</Static>
+</PL_03_1_TD_TAIN>
