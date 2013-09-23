@@ -1,4 +1,4 @@
-<HSoKhaiThue ngay_nop_tk="D_12" ky_lap_bo="">
+<HSoKhaiThue>
 	<Static GroupName="TKhaiThue">
 		<maTKhai>03_TBAC</maTKhai>
 		<tenTKhai>Thông báo kết quả hủy hóa đơn</tenTKhai>

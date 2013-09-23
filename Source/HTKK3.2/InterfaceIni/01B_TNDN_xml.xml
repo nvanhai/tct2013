@@ -1,4 +1,4 @@
-<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30">
+<HSoKhaiThue>
 	<Static GroupName="TKhaiThue">
 		<maTKhai>01B_TNDN</maTKhai>
 		<tenTKhai>Tờ khai thuế TNDN tạm tính (01B/TNDN)</tenTKhai>

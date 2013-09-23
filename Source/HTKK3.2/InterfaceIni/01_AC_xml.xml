@@ -1,4 +1,4 @@
-<HSoKhaiThue ngay_nop_tk="E_10" ky_lap_bo="">
+<HSoKhaiThue>
 	<Static GroupName="TKhaiThue">
 		<maTKhai>01_AC</maTKhai>
 		<tenTKhai>Báo cáo tình hình nhận in hóa đơn</tenTKhai>

@@ -1,4 +1,4 @@
-﻿<HSoKhaiThue>
+<HSoKhaiThue>
 	<Static GroupName="TKhaiThue">
 		<maTKhai>04_GTGT</maTKhai>
 		<tenTKhai>TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG (04/GTGT)</tenTKhai>
@@ -45,7 +45,7 @@
 		<ct24>L_47</ct24>
 		<ct25>R_47</ct25>
 		<ct26>X_47</ct26>
-	</Static>	
+	</Static>
 	<Dynamic GroupName="TyLeGTGTTTrenDThu">
 		<ChiTietNhomNganh id="id">
 			<NhomNganh>

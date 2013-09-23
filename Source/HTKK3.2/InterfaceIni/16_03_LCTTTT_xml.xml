@@ -91,7 +91,8 @@
 		<ctIV_nNay>R_85</ctIV_nNay>
 		<ctV_nNay>R_86</ctV_nNay>
 		<ctVI_nNay>R_87</ctVI_nNay>
-		<ctVII_nNay>R_88</ctVII_nNay>	</Static>
+		<ctVII_nNay>R_88</ctVII_nNay>
+	</Static>
 	<Static GroupName="SoNamNgoai">
 		<ct01_nNgoai>W_40</ct01_nNgoai>
 		<ct02_nNgoai>W_41</ct02_nNgoai>
@@ -137,5 +138,6 @@
 		<ctIV_nNgoai>W_85</ctIV_nNgoai>
 		<ctV_nNgoai>W_86</ctV_nNgoai>
 		<ctVI_nNgoai>W_87</ctVI_nNgoai>
-		<ctVII_nNgoai>W_88</ctVII_nNgoai>	</Static>
+		<ctVII_nNgoai>W_88</ctVII_nNgoai>
+	</Static>
 </PL_LCTTTT>

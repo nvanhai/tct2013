@@ -47,7 +47,8 @@
 		<ctXII_nNay>R_28</ctXII_nNay>
 		<ctXIII_nNay>R_29</ctXIII_nNay>
 		<ctXIV_nNay>R_30</ctXIV_nNay>
-		<ctXV_nNay>R_31</ctXV_nNay>	</Static>
+		<ctXV_nNay>R_31</ctXV_nNay>
+	</Static>
 	<Static GroupName="SoNamNgoai">
 		<ct1_nNay>W_9</ct1_nNay>
 		<ct2_nNay>W_10</ct2_nNay>
@@ -71,5 +72,6 @@
 		<ctXII_nNay>W_28</ctXII_nNay>
 		<ctXIII_nNay>W_29</ctXIII_nNay>
 		<ctXIV_nNay>W_30</ctXIV_nNay>
-		<ctXV_nNay>W_31</ctXV_nNay>	</Static>
+		<ctXV_nNay>W_31</ctXV_nNay>
+	</Static>
 </PL_KQHĐXSKD>
