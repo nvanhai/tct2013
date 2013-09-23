@@ -1,44 +1,68 @@
-<HSoKhaiThue><Static GroupName="TKhaiThue"><maTKhai xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue"></maTKhai>
-		<tenTKhai xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">token</tenTKhai>
-		<moTaBMau xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue"/>
-	</Static><Static GroupName="GiaHan"><maLyDoGiaHan xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue"></maLyDoGiaHan>
-		<lyDoGiaHan xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue"></lyDoGiaHan>
-	</Static><Static GroupName="TKhaiThue"><nguoiKy xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue"></nguoiKy>
-		<ngayKy xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue"></ngayKy>
-	</Static><Static GroupName="NNT"><maHuyenNNT xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue"></maHuyenNNT>
-		<maTinhNNT xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue"></maTinhNNT>
-	</Static><Static GroupName="DLyThue"><maHuyenDLyThue xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue"></maHuyenDLyThue>
-		<maTinhDLyThue xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue"></maTinhDLyThue>
-	</Static><Static GroupName="NVienDLy"><tenNVienDLyThue xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">token</tenNVienDLyThue>
-		<cchiHNghe xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue"></cchiHNghe>
-	</Static><Static GroupName="ChiTietKDoanhCuaCaNhom"><ct21 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct21>
-		<ct22 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct22>
-		<ct23 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct23>
-		<ct24 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct24>
-		<ct25 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct25>
-		<ct26 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct26>
-		<ct27 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct27>
-		<ct28 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct28>
-		<ct29 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct29>
-		<ct30 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct30>
-		<ct31 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct31>
-		<ct32 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct32>
-	</Static><Static GroupName="chiTietSoThueTungCNhan"><ct34 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue"></ct34>
-		<ct35 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">0000000000</ct35>
-		<ct36 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">0.0</ct36>
-	</Static><Static GroupName="TNCNTuongUng"><ct37 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct37>
-		<ct38 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct38>
-	</Static><Static GroupName="chiTietSoThueTungCNhan"><ct39 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct39>
-		<ct40 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct40>
-		<ct41 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct41>
-		<ct42 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct42>
-		<ct43 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct43>
-	</Static><Static GroupName="ThuNhapVaSoThuePNopCuaTungCNhan"><ct44 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct44>
-		<ct45 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct45>
-		<ct46 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct46>
-		<ct47 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct47>
-		<ct48 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct48>
-		<ct49 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct49>
-		<ct50 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct50>
-		<ct51 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">1</ct51>
-	</Static></HSoKhaiThue>
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>08B_TNCN</maTKhai>
+		<tenTKhai>Tờ khai quyết toán thuế TNCN (08B/KK-TNCN)</tenTKhai>
+		<soLan>I_6</soLan>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>M_61</nguoiKy>
+		<ngayKy>M_63</ngayKy>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT/>
+		<maTinhNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>D_61</tenNVienDLyThue>
+		<cchiHNghe>D_63</cchiHNghe>
+	</Static>
+	<Static GroupName="ChiTietKDoanhCuaCaNhom">
+		<ct21>I_40</ct21>
+		<ct22>I_41</ct22>
+		<ct23>I_42</ct23>
+		<ct24>I_43</ct24>
+		<ct25>I_44</ct25>
+		<ct26>I_45</ct26>
+		<ct27>I_46</ct27>
+		<ct28>I_47</ct28>
+		<ct29>I_48</ct29>
+		<ct30>I_49</ct30>
+		<ct31>I_50</ct31>
+		<ct32>I_51</ct32>
+	</Static>
+	<Dynamic GroupName="ChiTietSoThueGiamTruGiaCanh">
+		<chiTietSoThueTungCNhan id="id">
+			<ct34>C_57</ct34>
+			<ct35>G_57</ct35>
+			<ct36>K_57</ct36>
+			<TNCNTuongUng>
+				<ct37>L_57</ct37>
+				<ct38>N_57</ct38>
+			</TNCNTuongUng>
+			<ct39>P_57</ct39>
+			<ct40>R_57</ct40>
+			<ct41>T_57</ct41>
+			<ct42>W_57</ct42>
+			<ct43>Z_57</ct43>
+		</chiTietSoThueTungCNhan>
+	</Dynamic>
+	<Static GroupName="ThuNhapVaSoThuePNopCuaTungCNhan">
+		<ct44>K_59</ct44>
+		<ct45>L_59</ct45>
+		<ct46>N_59</ct46>
+		<ct47>P_59</ct47>
+		<ct48>R_59</ct48>
+		<ct49>T_59</ct49>
+		<ct50>W_59</ct50>
+		<ct51>Z_59</ct51>
+	</Static>
+</HSoKhaiThue>

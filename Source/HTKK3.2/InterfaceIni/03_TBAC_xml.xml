@@ -21,17 +21,17 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>token</tenNVienDLyThue>
+		<tenNVienDLyThue></tenNVienDLyThue>
 		<cchiHNghe></cchiHNghe>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<kinhGui></kinhGui>
-		<phuongPhapHuy>I_22</phuongPhapHuy>
-		<ThoiGian>P_24</ThoiGian>
+		<kinhGui>J_2</kinhGui>
+		<phuongPhapHuy>I_6</phuongPhapHuy>
+		<ThoiGian>O_9</ThoiGian>
 	</Static>
 	<Dynamic GroupName="HoaDon">
 		<ChiTiet id="ID_1">
-			<tenHDon>C_43</tenHDon>
+			<tenHDon>E_43</tenHDon>
 			<mauHDon>O_43</mauHDon>
 			<kyHieu>S_43</kyHieu>
 			<tuSo>V_43</tuSo>

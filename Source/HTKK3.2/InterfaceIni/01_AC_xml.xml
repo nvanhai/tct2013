@@ -21,35 +21,35 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>token</tenNVienDLyThue>
+		<tenNVienDLyThue></tenNVienDLyThue>
 		<cchiHNghe></cchiHNghe>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ngayDauKyBaoCao>E_23</ngayDauKyBaoCao>
-		<ngayCuoiKyBaoCao>F_23</ngayCuoiKyBaoCao>
-		<kyBaoCaoCuoiCung>E_16</kyBaoCaoCuoiCung>
+		<ngayDauKyBaoCao>D_17</ngayDauKyBaoCao>
+		<ngayCuoiKyBaoCao>E_17</ngayCuoiKyBaoCao>
+		<kyBaoCaoCuoiCung>B_15</kyBaoCaoCuoiCung>
 	</Static>
 	<Dynamic GroupName="HoaDon">
 		<ChiTietHoaDon id="id">
 			<ToChucCNDatIn>
-				<mst>D_29</mst>
-				<ten>E_29</ten>
-				<diaChi>I_29</diaChi>
+				<mst>C_22</mst>
+				<ten>D_22</ten>
+				<diaChi>E_22</diaChi>
 			</ToChucCNDatIn>
 			<HopDong>
-				<so>K_29</so>
-				<ngay>M_29</ngay>
+				<so>F_22</so>
+				<ngay>G_22</ngay>
 			</HopDong>
-			<tenHDon>O_29</tenHDon>
-			<mauHDon>R_29</mauHDon>
-			<kyHieu>T_29</kyHieu>
-			<tuSo>V_29</tuSo>
-			<denSo>X_29</denSo>
-			<soLuong>Z_29</soLuong>
+			<tenHDon>H_22</tenHDon>
+			<mauHDon>N_22</mauHDon>
+			<kyHieu>K_22</kyHieu>
+			<tuSo>L_22</tuSo>
+			<denSo>M_22</denSo>
+			<soLuong>Q_22</soLuong>
 		</ChiTietHoaDon>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
-		<nguoiDaiDien>S_36</nguoiDaiDien>
-		<ngayBCao>S_38</ngayBCao>
+		<nguoiDaiDien>J_30</nguoiDaiDien>
+		<ngayBCao>J_32</ngayBCao>
 	</Static>
 </HSoKhaiThue>

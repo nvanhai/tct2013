@@ -21,66 +21,66 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>token</tenNVienDLyThue>
+		<tenNVienDLyThue></tenNVienDLyThue>
 		<cchiHNghe></cchiHNghe>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<kyBCaoCuoi>E_16</kyBCaoCuoi>
-		<chuyenDiaDiem>K_16</chuyenDiaDiem>
-		<ngayDauKyBC>E_23</ngayDauKyBC>
-		<ngayCuoiKyBC>F_23</ngayCuoiKyBC>
+		<kyBCaoCuoi>B_14</kyBCaoCuoi>
+		<chuyenDiaDiem>G_14</chuyenDiaDiem>
+		<ngayDauKyBC>E_13</ngayDauKyBC>
+		<ngayCuoiKyBC>F_13</ngayCuoiKyBC>
 	</Static>
 	<Dynamic GroupName="HoaDon">
 		<ChiTiet id="ID_1">
 			<tenHDon>D_32</tenHDon>
-			<kHieuMauHDon>J_32</kHieuMauHDon>
-			<kHieuHDon>K_32</kHieuHDon>
+			<kHieuMauHDon>E_32</kHieuMauHDon>
+			<kHieuHDon>F_32</kHieuHDon>
 			<SoTonMuaTrKy>
-				<tongSo>L_32</tongSo>
+				<tongSo>G_32</tongSo>
 				<SoTonDauKy>
-					<tuSo>M_32</tuSo>
-					<denSo>N_32</denSo>
+					<tuSo>H_32</tuSo>
+					<denSo>I_32</denSo>
 				</SoTonDauKy>
 				<MuaTrongKy>
-					<tuSo>O_32</tuSo>
-					<denSo>P_32</denSo>
+					<tuSo>J_32</tuSo>
+					<denSo>K_32</denSo>
 				</MuaTrongKy>
 			</SoTonMuaTrKy>
 			<SoSuDungTrKy>
 				<TongSoSuDung>
-					<tuSo>Q_32</tuSo>
-					<denSo>R_32</denSo>
-					<cong>S_32</cong>
+					<tuSo>L_32</tuSo>
+					<denSo>M_32</denSo>
+					<cong>N_32</cong>
 				</TongSoSuDung>
 				<TrongDo>
-					<soDaSDung>U_32</soDaSDung>
+					<soDaSDung>P_32</soDaSDung>
 					<XoaBo>
-						<soLuong>V_32</soLuong>
-						<so>W_32</so>
+						<soLuong>Q_32</soLuong>
+						<so>R_32</so>
 					</XoaBo>
 					<Mat>
-						<soLuong>X_32</soLuong>
-						<so>Y_32</so>
+						<soLuong>S_32</soLuong>
+						<so>T_32</so>
 					</Mat>
 					<Huy>
-						<soLuong>Z_32</soLuong>
-						<so>AA_32</so>
+						<soLuong>U_32</soLuong>
+						<so>V_32</so>
 					</Huy>
 				</TrongDo>
 			</SoSuDungTrKy>
 			<TonCuoiKy>
-				<tuSo>AC_32</tuSo>
-				<denSo>AD_32</denSo>
-				<soLuong>AE_32</soLuong>
+				<tuSo>X_32</tuSo>
+				<denSo>Y_32</denSo>
+				<soLuong>Z_32</soLuong>
 			</TonCuoiKy>
 		</ChiTiet>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
-		<tongCongSoTonDKy>L_34</tongCongSoTonDKy>
-		<tongCongSDung>S_34</tongCongSDung>
-		<tongCongSoTonCKy>AE_34</tongCongSoTonCKy>
-		<nguoiLapBieu>E_40</nguoiLapBieu>
-		<nguoiDaiDien>S_40</nguoiDaiDien>
-		<ngayBCao>S_42</ngayBCao>
+		<tongCongSoTonDKy>G_24</tongCongSoTonDKy>
+		<tongCongSDung>P_24</tongCongSDung>
+		<tongCongSoTonCKy>Z_24</tongCongSoTonCKy>
+		<nguoiLapBieu>D_30</nguoiLapBieu>
+		<nguoiDaiDien>N_30</nguoiDaiDien>
+		<ngayBCao>N_32</ngayBCao>
 	</Static>
 </HSoKhaiThue>

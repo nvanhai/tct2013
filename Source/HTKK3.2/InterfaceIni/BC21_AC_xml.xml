@@ -21,28 +21,28 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>token</tenNVienDLyThue>
+		<tenNVienDLyThue></tenNVienDLyThue>
 		<cchiHNghe></cchiHNghe>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ngay>N_15</ngay>
+		<ngay>O_9</ngay>
 	</Static>
 	<Dynamic GroupName="HoaDon">
 		<ChiTietHoaDon id="id">
-			<tenHDon>C_40</tenHDon>
-			<mauHDon>O_40</mauHDon>
-			<kyHieu>S_40</kyHieu>
-			<tuSo>V_40</tuSo>
-			<denSo>Y_40</denSo>
-			<soLuong>AA_40</soLuong>
-			<lien>AE_40</lien>
-			<ghiChu>AF_40</ghiChu>
+			<tenHDon>E_43</tenHDon>
+			<mauHDon>O_43</mauHDon>
+			<kyHieu>S_43</kyHieu>
+			<tuSo>V_43</tuSo>
+			<denSo>Y_43</denSo>
+			<soLuong>AA_43</soLuong>
+			<lien>AB_43</lien>
+			<ghiChu>AC_43</ghiChu>
 			<ktraLoaiHDon></ktraLoaiHDon>
 		</ChiTietHoaDon>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
-		<lyDo>I_45</lyDo>
-		<nguoiDaiDien>AE_48</nguoiDaiDien>
-		<ngayBCao>AE_50</ngayBCao>
+		<lyDo>T_46</lyDo>
+		<nguoiDaiDien>AB_49</nguoiDaiDien>
+		<ngayBCao>AB_51</ngayBCao>
 	</Static>
 </HSoKhaiThue>
