@@ -1,27 +1,27 @@
 <PLuc01_TTDB>
 	<Static GroupName="ThoiGianNopTKhaiChinh">
-		<ngayNopTKhaiChinh>C_3</ngayNopTKhaiChinh>
-		<thangNopTKhaiChinh>D_3</thangNopTKhaiChinh>
-		<namNopTKhaiChinh>E_3</namNopTKhaiChinh>
+		<ngayNopTKhaiChinh></ngayNopTKhaiChinh>
+		<thangNopTKhaiChinh></thangNopTKhaiChinh>
+		<namNopTKhaiChinh></namNopTKhaiChinh>
 	</Static>
 	<Dynamic GroupName="ChiTietPLucBRaChiuThueTTDB">
 		<PLucBRaChiuThue id="id">
 			<ct2>
-				<khieuHDon>C_25</khieuHDon>
-				<soHDon>D_25</soHDon>
-				<ngayPhatHanh>E_25</ngayPhatHanh>
+				<khieuHDon>C_37</khieuHDon>
+				<soHDon>D_37</soHDon>
+				<ngayPhatHanh>E_37</ngayPhatHanh>
 			</ct2>
-			<ct3>F_25</ct3>
-			<ct4>J_25</ct4>
-			<ct5>H_25</ct5>
-			<ct6>L_25</ct6>
-			<ct7>N_25</ct7>
-			<ct8>O_25</ct8>
-			<ct9>P_25</ct9>
+			<ct3>F_37</ct3>
+			<ct4>J_37</ct4>
+			<ct5>H_37</ct5>
+			<ct6>L_37</ct6>
+			<ct7>N_37</ct7>
+			<ct8>O_37</ct8>
+			<ct9>P_37</ct9>
 		</PLucBRaChiuThue>
 	</Dynamic>
 	<Static GroupName="PLucBRaChiuThueTTDB">
-		<tongSoLuong>N_29</tongSoLuong>
-		<tongDoanhSoBan>P_29</tongDoanhSoBan>
+		<tongSoLuong>N_41</tongSoLuong>
+		<tongDoanhSoBan>P_41</tongDoanhSoBan>
 	</Static>
 </PLuc01_TTDB>

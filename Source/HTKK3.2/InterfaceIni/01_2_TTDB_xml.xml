@@ -1,40 +1,40 @@
 <PLuc02_TTDB>
 	<Static GroupName="ThoiGianNopTKhaiChinh">
-		<ngayNopTKhaiChinh>C_5</ngayNopTKhaiChinh>
-		<thangNopTKhaiChinh>D_5</thangNopTKhaiChinh>
-		<namNopTKhaiChinh>E_5</namNopTKhaiChinh>
+		<ngayNopTKhaiChinh></ngayNopTKhaiChinh>
+		<thangNopTKhaiChinh></thangNopTKhaiChinh>
+		<namNopTKhaiChinh></namNopTKhaiChinh>
 	</Static>
 	<Dynamic GroupName="ChiTietThueTTDBNLMVao">
 		<ThueNLMVao id="ID_1">
 			<BienLaiChungTuNopThueTTĐB>
-				<khieuNLMVao>C_24</khieuNLMVao>
-				<soNLMVao>D_24</soNLMVao>
-				<ngayPHanhNLMVao>E_24</ngayPHanhNLMVao>
+				<khieuNLMVao>C_10</khieuNLMVao>
+				<soNLMVao>D_10</soNLMVao>
+				<ngayPHanhNLMVao>E_10</ngayPHanhNLMVao>
 			</BienLaiChungTuNopThueTTĐB>
-			<tenNLMVao>F_24</tenNLMVao>
-			<soLuongNLMVao>G_24</soLuongNLMVao>
-			<thueNLMVaoDNop>H_24</thueNLMVaoDNop>
-			<thueNLMVaoTrenDVi>I_24</thueNLMVaoTrenDVi>
-			<thueNLMVaoDaKTru>J_24</thueNLMVaoDaKTru>
-			<thueNLMVaoChuaKTru>K_24</thueNLMVaoChuaKTru>
+			<tenNLMVao>F_10</tenNLMVao>
+			<soLuongNLMVao>G_10</soLuongNLMVao>
+			<thueNLMVaoDNop>H_10</thueNLMVaoDNop>
+			<thueNLMVaoTrenDVi>I_10</thueNLMVaoTrenDVi>
+			<thueNLMVaoDaKTru>J_10</thueNLMVaoDaKTru>
+			<thueNLMVaoChuaKTru>K_10</thueNLMVaoChuaKTru>
 		</ThueNLMVao>
 	</Dynamic>
 	<Static GroupName="ThueNLMVao">
-		<tongThueNLMVaoDNop>H_26</tongThueNLMVaoDNop>
-		<tongThueNLMVaoDaKTru>J_26</tongThueNLMVaoDaKTru>
-		<tongthueNLMVaoChuaKTru>K_26</tongthueNLMVaoChuaKTru>
+		<tongThueNLMVaoDNop>H_12</tongThueNLMVaoDNop>
+		<tongThueNLMVaoDaKTru>J_12</tongThueNLMVaoDaKTru>
+		<tongthueNLMVaoChuaKTru>K_12</tongthueNLMVaoChuaKTru>
 	</Static>
 	<Dynamic GroupName="ChiTietThueTTDBNLDuocKTru">
 		<ThueNLDuocKTru id="ID_2">
-			<tenMatHangNLKTru>C_34</tenMatHangNLKTru>
-			<soLuongHangNLKTru>E_34</soLuongHangNLKTru>
-			<tenNLKTru>F_34</tenNLKTru>
-			<luongNL1DViNLKTru>H_34</luongNL1DViNLKTru>
-			<thue1DViNLKTru>J_34</thue1DViNLKTru>
-			<tongThueTTDBDuocKTru>K_34</tongThueTTDBDuocKTru>
+			<tenMatHangNLKTru>C_20</tenMatHangNLKTru>
+			<soLuongHangNLKTru>E_20</soLuongHangNLKTru>
+			<tenNLKTru>F_20</tenNLKTru>
+			<luongNL1DViNLKTru>H_20</luongNL1DViNLKTru>
+			<thue1DViNLKTru>J_20</thue1DViNLKTru>
+			<tongThueTTDBDuocKTru>K_20</tongThueTTDBDuocKTru>
 		</ThueNLDuocKTru>
 	</Dynamic>
 	<Static GroupName="ThueNLDuocKTru">
-		<tongTTDBNLDuocKTru>K_36</tongTTDBNLDuocKTru>
+		<tongTTDBNLDuocKTru>K_22</tongTTDBNLDuocKTru>
 	</Static>
 </PLuc02_TTDB>
