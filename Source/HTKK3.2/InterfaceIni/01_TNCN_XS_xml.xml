@@ -1,4 +1,4 @@
-<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22">
+<HSoKhaiThue>
 	<Static GroupName="TKhaiThue">
 		<maTKhai>01_TNCN_XS</maTKhai>
 		<tenTKhai>TK-TNCN Mẫu 01/KK-XS</tenTKhai>
@@ -30,4 +30,3 @@
 		<ct23>U_56</ct23>
 	</Static>
 </HSoKhaiThue>
-
