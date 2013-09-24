@@ -1,14 +1,14 @@
 VERSION 5.00
 Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.ocx"
 Begin VB.Form frmInterfaces 
    AutoRedraw      =   -1  'True
    Caption         =   "Hç trî kª khai - Phiªn b¶n 2.5.0"
    ClientHeight    =   8070
    ClientLeft      =   165
    ClientTop       =   450
-   ClientWidth     =   12915
+   ClientWidth     =   11280
    BeginProperty Font 
       Name            =   "DS Sans Serif"
       Size            =   8.25
@@ -23,7 +23,7 @@ Begin VB.Form frmInterfaces
    LinkTopic       =   "frmInterfaces"
    LockControls    =   -1  'True
    ScaleHeight     =   8070
-   ScaleWidth      =   12915
+   ScaleWidth      =   11280
    Visible         =   0   'False
    WindowState     =   2  'Maximized
    Begin VB.Frame Frame3 
@@ -494,7 +494,7 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
             If fso.FileExists(strDataFileName) Then
                 fso.GetFile(strDataFileName).Attributes = Normal
             End If
-            TAX_Utilities_New.Data(CLng(lSheet)).Save strDataFileName
+            TAX_Utilities_New.Data(CLng(lSheet)).save strDataFileName
         End If
         '*********************************
     Next
@@ -2391,7 +2391,7 @@ Private Sub DeleteSheet(pIndex As Integer)
     Dim strDataFileName As String
     Dim loFile As New Scripting.FileSystemObject
     ' TO khai TTDB va NTNN, 02/TNDN,04/TBAC  xu ly xoa lan phat sinh
-    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "64" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "92" Then
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "64" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "92" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "98" Then
         If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" And TAX_Utilities_New.Day = "" Then
             strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
         ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" Then
@@ -3864,13 +3864,13 @@ Private Sub cmdExportXml_Click()
             Dim currentGroup  As String
             Dim nodePL        As MSXML.IXMLDOMNode
             Dim Blank         As Boolean
-            Dim ID            As Integer
+            Dim id            As Integer
             Dim CloneNode     As New MSXML.DOMDocument
             
             'Set gia tri cho group dong
             If UCase(xmlNodeMapCT.nodeName) = "DYNAMIC" Then
                 CloneNode.loadXML xmlNodeMapCT.xml
-                ID = 1
+                id = 1
                 currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
 
                 If GetAttribute(xmlNodeMapCT, "GroupCellRange") = vbNullString Then
@@ -3897,10 +3897,10 @@ Private Sub cmdExportXml_Click()
                         Exit Do
                     End If
 
-                    SetAttribute CloneNode.firstChild, "id", CStr(ID)
+                    SetAttribute CloneNode.firstChild, "id", CStr(id)
                     Set nodePL = xmlTK.getElementsByTagName(currentGroup)(0)
                     nodePL.appendChild CloneNode.firstChild.CloneNode(True)
-                    ID = ID + 1
+                    id = id + 1
 
                     cellRange = cellRange + GroupCellRange
                 Loop
@@ -3980,7 +3980,7 @@ Private Sub cmdExportXml_Click()
 
                     If UCase(xmlSection.nodeName) = "DYNAMIC" Then
                         CloneNode.loadXML xmlSection.xml
-                        ID = 1
+                        id = 1
                         currentGroup = GetAttribute(xmlSection, "GroupName")
 
                         If GetAttribute(xmlSection, "GroupCellRange") = vbNullString Then
@@ -4007,10 +4007,10 @@ Private Sub cmdExportXml_Click()
                                 Exit Do
                             End If
 
-                            SetAttribute CloneNode.firstChild.firstChild, "id", CStr(ID)
+                            SetAttribute CloneNode.firstChild.firstChild, "id", CStr(id)
                             Set nodePL = xmlPL.getElementsByTagName(currentGroup)(0)
                             nodePL.appendChild CloneNode.firstChild.firstChild.CloneNode(True)
-                            ID = ID + 1
+                            id = id + 1
                             cellRange = cellRange + GroupCellRange
                         Loop
                         
@@ -4069,7 +4069,7 @@ Private Sub cmdExportXml_Click()
 
     End With    'Save temp
     
-    xmlTK.Save strFileName
+    xmlTK.save strFileName
     Exit Sub
 ErrHandle:
     SaveErrorLog Me.Name, "cmdExportXML_Click", Err.Number, Err.Description
@@ -6043,7 +6043,7 @@ Private Sub Form_Load()
             ' to khai GTGT se co to khai thang / quy
         If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "95" Or idMenu = "71" Or idMenu = "36" Or idMenu = "68" Then
              objTaxBusiness.strTkThangQuy = strQuy
-        ElseIf idMenu = "92" Or idMenu = "93" Then
+        ElseIf idMenu = "92" Or idMenu = "93" Or idMenu = "98" Then
             objTaxBusiness.chkDauTho = strDauTho
             objTaxBusiness.chkCondensate = strCondensate
             objTaxBusiness.chkKhiThienNhien = strKhiThienNhien
@@ -7038,11 +7038,11 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
         If .SheetName = "PL 01-1/TTDB" Then
             fpSpread1_LeaveCell Col, Row, Col, Row, True
         ElseIf .SheetName = "PL 04-1/GTGT" And .sheet = 2 Then
-            fpSpread1_LeaveCell Col, Row, Col, Row, True
-            'retvalue = 0
+            'fpSpread1_LeaveCell Col, Row, Col, Row, True
+            retvalue = 0
             'If (retvalue > 0) Then
             'End If
-            'retvalue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 8, 11, "aa")
+            retvalue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 8, 11, "aa")
             'retValue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 17, 20, "bb") + retValue
             'retValue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 26, 29, "cc") + retValue
             'retValue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 35, 38, "dd") + retValue
@@ -9275,7 +9275,7 @@ Private Sub saveKHBS()
 '        Else
 '            xmlNodeCell1s.parentNode.insertBefore xmlNodeCells, Null
 '        End If
-        TAX_Utilities_New.Data(CLng(TAX_Utilities_New.xmlDataCount)).Save strDataFileName
+        TAX_Utilities_New.Data(CLng(TAX_Utilities_New.xmlDataCount)).save strDataFileName
         
         DisplayMessage "0002", msOKOnly, miInformation
         Dim i As Integer
@@ -9500,7 +9500,7 @@ Private Function saveLastKHBS() As Boolean
              '*********************************
         End If
         
-        TAX_Utilities_New.DataKHBS.Save strDataFileName
+        TAX_Utilities_New.DataKHBS.save strDataFileName
         saveLastKHBS = True
 
 End Function
