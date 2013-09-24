@@ -165,12 +165,6 @@ End Sub
 
 Private Sub cmdOk_Click()
 On Error GoTo ErrorHandle
-'    ' Push MQ
-'    Dim MQPUT As New MQPUT
-'    MQPUT.open_Conn "ESB.INT.QMGR", "INT.INBOX.QUEUE"  ' Theo tai lieu TK_ChuanKetNoi
-'    MQPUT.put_Msg "<hel>Hello, world</hel>"
-'    MQPUT.close_Conn
-'    ' End push
     
     If Len(txtUsername.Text) = 0 Then
         DisplayMessage "0056", msOKOnly, miInformation
@@ -262,8 +256,8 @@ On Error GoTo ErrorHandle
     Dim strResultNSD As String
     Dim sStatus As String
     
-    IsValidUserESB = 2
-    Exit Function
+'    IsValidUserESB = 2
+'    Exit Function
     
     strResultNSD = GetDataFromESB(txtUsername.Text, txtPassword.Text, "NSD")
     'Chuan hoa file xml ket qua - lay duoc tu ESB
@@ -524,8 +518,8 @@ Private Function CheckVersion() As Boolean
     
     On Error GoTo ErrHandle
     
-    CheckVersion = True
-    Exit Function
+'    CheckVersion = True
+'    Exit Function
     
 '    strSQL = "SELECT rv_low_value phien_ban " & _
 '           "From cg_ref_codes " & _
