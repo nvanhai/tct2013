@@ -94,6 +94,13 @@
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01A_TNDN" InterfaceIni="..\InterfaceIni\KHBS_01A_TNDN.xml" ReportIni="..\ReportIni\KHBS_01A_TNDN.xml"/>
 		</Validity>
 	</Menu>
+	<Menu ID="98" PopID="101" ParentID="101_2" Caption="TK TNDN tạm tính đối với dầu khí(01A/TNDN-DK)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="1" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
+		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\excel\01A_TNDN_DK.xls" ReportTemplate="..\ReportTemplates\excel\01A_TNDN_DK.xls" Class="TAX_Business.cls_01ATNDN_DK" Class2="TAX_Business.clsReport002">
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01A_TNDN_DK" InterfaceIni="..\InterfaceIni\01A_TNDN_DK.xml" ReportIni="..\ReportIni\01A_TNDN_DK.xml"/>
+			<Sheet ID="01-1" Caption="01/PL-DK" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01A_1_TNDN_DK" InterfaceIni="..\InterfaceIni\01A_1_TNDN_DK.xml" ReportIni="..\ReportIni\01A_1_TNDN_DK.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01A_TNDN_DK" InterfaceIni="..\InterfaceIni\KHBS_01A_TNDN.xml" ReportIni="..\ReportIni\KHBS_01A_TNDN.xml"/>
+		</Validity>
+	</Menu>
 	<Menu ID="12" PopID="101" ParentID="101_2" Caption="Tờ khai thuế TNDN tạm tính (01B/TNDN)" FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\excel\01B_TNDN.xls" ReportTemplate="..\ReportTemplates\excel\01B_TNDN.xls" Class="TAX_Business.cls_01BTNDN" Class2="TAX_Business.clsReport002">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01B_TNDN" InterfaceIni="..\InterfaceIni\01B_TNDN.xml" ReportIni="..\ReportIni\01B_TNDN.xml"/>
@@ -336,6 +343,13 @@
 			<Sheet ID="03" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_TD_TAIN" InterfaceIni="..\InterfaceIni\03_TD_TAIN.xml" ReportIni="..\ReportIni\03_TD_TAIN.xml"/>
 			<Sheet ID="03-1" Caption="03-1/TĐ-TAIN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_1_TD_TAIN" InterfaceIni="..\InterfaceIni\03_1_TD_TAIN.xml" ReportIni="..\ReportIni\03_1_TD_TAIN.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_03_TD_TAIN" InterfaceIni="..\InterfaceIni\KHBS_01_TAIN.xml" ReportIni="..\ReportIni\KHBS_01_TAIN.xml"/>
+		</Validity>
+	</Menu>	
+	<Menu ID="97" PopID="101" ParentID="101_3" Caption="Tờ khai thuế tài nguyên(03A/TĐ-TAIN)" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
+		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\excel\03A_TD_TAIN.xls" ReportTemplate="..\ReportTemplates\excel\03A_TD_TAIN.xls" CatalogueID="01" Class="TAX_Business.cls_03A_TD_TAIN" Class2="TAX_Business.clsReport002">
+			<Sheet ID="03" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03A_TD_TAIN" InterfaceIni="..\InterfaceIni\03A_TD_TAIN.xml" ReportIni="..\ReportIni\03A_TD_TAIN.xml"/>
+			<Sheet ID="03-1" Caption="03A-1/TĐ-TAIN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03A_1_TD_TAIN" InterfaceIni="..\InterfaceIni\03A_1_TD_TAIN.xml" ReportIni="..\ReportIni\03A_1_TD_TAIN.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_03A_TD_TAIN" InterfaceIni="..\InterfaceIni\KHBS_01_TAIN.xml" ReportIni="..\ReportIni\KHBS_01_TAIN.xml"/>
 		</Validity>
 	</Menu>	
 	<Menu ID="101_4" PopID="" ParentID="101" Caption="Thuế Tiêu Thụ Đặc Biệt" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\kekhai.gif"/>	
