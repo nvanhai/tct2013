@@ -8,7 +8,7 @@ Begin VB.Form frmInterfaces
    ClientHeight    =   8070
    ClientLeft      =   165
    ClientTop       =   450
-   ClientWidth     =   11280
+   ClientWidth     =   14190
    BeginProperty Font 
       Name            =   "DS Sans Serif"
       Size            =   8.25
@@ -23,7 +23,7 @@ Begin VB.Form frmInterfaces
    LinkTopic       =   "frmInterfaces"
    LockControls    =   -1  'True
    ScaleHeight     =   8070
-   ScaleWidth      =   11280
+   ScaleWidth      =   14190
    Visible         =   0   'False
    WindowState     =   2  'Maximized
    Begin VB.Frame Frame3 
@@ -152,9 +152,17 @@ Begin VB.Form frmInterfaces
       Left            =   0
       TabIndex        =   9
       Top             =   7230
-      Width           =   12500
+      Width           =   14000
+      Begin VB.CommandButton cmdImportXML 
+         Caption         =   "NhË&p tõ XML"
+         Height          =   360
+         Left            =   12400
+         TabIndex        =   23
+         Top             =   210
+         Width           =   1300
+      End
       Begin VB.CommandButton cmdExportXML 
-         Caption         =   "&KÕt xuÊt XML"
+         Caption         =   "KÕ&t xuÊt XML"
          Height          =   375
          Left            =   11160
          TabIndex        =   22
@@ -4074,6 +4082,89 @@ Private Sub cmdExportXml_Click()
 ErrHandle:
     SaveErrorLog Me.Name, "cmdExportXML_Click", Err.Number, Err.Description
 End Sub
+
+Private Sub cmdImportXML_Click()
+    On Error GoTo ErrHandle
+    Dim strImportFileName As String
+    Dim MaTK              As String
+    Dim xmlDuLieuImport   As New MSXML.DOMDocument
+    Dim xmlMapCT          As New MSXML.DOMDocument
+    Dim xmlTemplate       As New MSXML.DOMDocument
+    Dim nodeMapCT         As MSXML.IXMLDOMNode
+    
+    strImportFileName = importXmlDialog()
+    xmlDuLieuImport.Load strImportFileName
+    If Not validateTkHeader(xmlDuLieuImport, MaTK) Then
+        DisplayMessage "0278", msOKOnly, miWarning
+        Exit Sub
+    End If
+    xmlMapCT.Load GetAbsolutePath("..\InterfaceIni\" & MaTK & "_xml.xml")
+    
+    With fpSpread1
+    
+        For Each nodeMapCT In xmlMapCT.lastChild.childNodes
+
+            If nodeMapCT.nodeName = "Dynamic" Then
+                
+            Else
+            
+            End If
+
+        Next
+    
+    End With
+    
+ErrHandle:
+    SaveErrorLog Me.Name, "cmdImportXML_Click", Err.Number, Err.Description
+End Sub
+
+Private Function validateTkHeader(ByVal xmlDuLieuImport As MSXML.DOMDocument, _
+                                  ByRef MaTK As String) As Boolean
+    Dim LoaiTkTQ As String
+    Dim LoaiTkCtBs As String
+    If xmlDuLieuImport Is Nothing Or xmlDuLieuImport.childNodes.length = 0 Then
+        validateTkHeader = False
+        Exit Function
+    End If
+
+    If xmlDuLieuImport.getElementsByTagName("maTKhai").length > 0 Then
+        MaTK = xmlDuLieuImport.getElementsByTagName("maTKhai")(0).Text
+    Else
+        validateTkHeader = False
+        Exit Function
+    End If
+
+    If MaTK <> GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") Then
+        validateTkHeader = False
+        Exit Function
+    End If
+    
+    If xmlDuLieuImport.getElementsByTagName("maTKhai").length > 0 Then
+        
+    End If
+    
+    
+End Function
+
+
+Private Function importXmlDialog() As String
+
+    Dim strFileName As String
+    
+    fpSpread2.SheetCount = 1
+    With CommonDialog1
+        .CancelError = True
+        .Filter = "File xml (*.xml)|"
+        .FilterIndex = 1
+        .DialogTitle = "Chon to khai de load vao chuong trinh"
+        .ShowOpen
+        strFileName = .FileName
+    End With
+    
+    ' Check if file is an Excel file and set result to x
+    importXmlDialog = strFileName
+    Exit Function
+End Function
 
 Private Sub cmdInsert_Click()
 '**********************************************
@@ -8466,15 +8557,16 @@ Private Sub ResizeButton()
     If GetAttribute(TAX_Utilities_New.NodeMenu, "Year") <> "0" Then
     'If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "100_1" Then
         ' Business function
-        cmdLoadToKhai.Left = Frame1.Width - (8235 + 1200)  ' 9425
-        cmdInsert.Left = Frame1.Width - (8235 + 1200)
-        cmdClear.Left = Frame1.Width - (7045 + 1200)
-        cmdSave.Left = Frame1.Width - (5855 + 1200)
-        cmdPrint.Left = Frame1.Width - (4710 + 1200)
-        cmdDelete.Left = Frame1.Width - (3565 + 1200)
-        cmdKiemTra.Left = Frame1.Width - (3565 + 1200)
-        cmdExport.Left = Frame1.Width - (2420 + 1200)
-        cmdExportXML.Left = Frame1.Width - 2420
+        cmdLoadToKhai.Left = Frame1.Width - (8235 + 2700)  ' 9425
+        cmdInsert.Left = Frame1.Width - (8235 + 2700)
+        cmdClear.Left = Frame1.Width - (7045 + 2700)
+        cmdSave.Left = Frame1.Width - (5855 + 2700)
+        cmdPrint.Left = Frame1.Width - (4710 + 2700)
+        cmdDelete.Left = Frame1.Width - (3565 + 2700)
+        cmdKiemTra.Left = Frame1.Width - (3565 + 2700)
+        cmdExport.Left = Frame1.Width - (2420 + 2700)
+        cmdExportXML.Left = Frame1.Width - 3920
+        cmdImportXML.Left = Frame1.Width - 2680
         cmdExit.Left = Frame1.Width - 1240
         If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_10") Then
             cmdDelete.Left = Frame1.Width - 9370
