@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.ocx"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Begin VB.Form frmInterfaces 
    AutoRedraw      =   -1  'True
    Caption         =   "Hç trî kª khai - Phiªn b¶n 2.5.0"
@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":1969
+         SpreadDesigner  =   "frmInterfaces.frx":19A5
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1BF1
+      SpreadDesigner  =   "frmInterfaces.frx":1C69
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -502,7 +502,7 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
             If fso.FileExists(strDataFileName) Then
                 fso.GetFile(strDataFileName).Attributes = Normal
             End If
-            TAX_Utilities_New.Data(CLng(lSheet)).save strDataFileName
+            TAX_Utilities_New.Data(CLng(lSheet)).Save strDataFileName
         End If
         '*********************************
     Next
@@ -3759,7 +3759,7 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                          ByRef Blank As Boolean, _
                          ByVal cellRange As Integer, _
                          ByRef Row As Integer)
-    Dim cellid      As String
+    Dim cellID      As String
     Dim cellArray() As String
     Dim cNode       As MSXML.IXMLDOMNode
 
@@ -3771,13 +3771,13 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                 If cNode.firstChild.hasChildNodes Then
                     SetCloneNode CloneNode, cNode, Blank, cellRange, Row
                 Else
-                    cellid = cNode.Text
-                    cellArray = Split(cellid, "_")
+                    cellID = cNode.Text
+                    cellArray = Split(cellID, "_")
 
-                    If InStr(cellid, "_") = 0 Then
-                        CloneNode.getElementsByTagName(cNode.nodeName)(0).Text = cellid
+                    If InStr(cellID, "_") = 0 Then
+                        CloneNode.getElementsByTagName(cNode.nodeName)(0).Text = cellID
                     ElseIf Val(cellArray(1)) = 0 Then
-                        CloneNode.getElementsByTagName(cNode.nodeName)(0).Text = cellid
+                        CloneNode.getElementsByTagName(cNode.nodeName)(0).Text = cellID
 
                     Else
                         .Col = .ColLetterToNumber(cellArray(0))
@@ -3807,6 +3807,25 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
 
 End Sub
 
+Private Sub getAllNodes(ByVal nodes As MSXML.IXMLDOMNode, _
+                        ByRef xmlReturns As MSXML.DOMDocument)
+    Dim cNode As MSXML.IXMLDOMNode
+
+    For Each cNode In nodes.childNodes
+            
+        If cNode.hasChildNodes Then
+            If cNode.firstChild.hasChildNodes Then
+                getAllNodes cNode, xmlReturns
+            Else
+                xmlReturns.firstChild.appendChild cNode
+            End If
+           
+        End If
+
+    Next
+
+End Sub
+
 
 Private Sub cmdExportXml_Click()
     Dim xmlMapCT     As New MSXML.DOMDocument
@@ -3818,7 +3837,7 @@ Private Sub cmdExportXml_Click()
     Dim sRow         As Integer
     Dim cSheet       As Integer, oSheet As Integer
     Dim strFileName  As String
-    Dim MaTK         As String
+    Dim MaTk         As String
     Dim nodeVal      As MSXML.IXMLDOMNode
     Dim blnFinish    As Boolean
     
@@ -3832,7 +3851,7 @@ Private Sub cmdExportXml_Click()
         Exit Sub
     End If
         
-    MaTK = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile")
+    MaTk = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile")
     
 '    Lay duong dan cua file
     With CommonDialog1
@@ -3852,12 +3871,12 @@ Private Sub cmdExportXml_Click()
 
     End With
         
-    xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
-    xmlMapCT.Load GetAbsolutePath("..\InterfaceIni\" & MaTK & "_xml.xml")
+    xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTk & "_xml.xml")
+    xmlMapCT.Load GetAbsolutePath("..\InterfaceIni\" & MaTk & "_xml.xml")
     
     
     With fpSpread1
-        Dim cellid         As String
+        Dim cellID         As String
         Dim cellArray()    As String
         Dim nodeValIndex   As Integer
         Dim cellRange      As Integer
@@ -3920,12 +3939,12 @@ Private Sub cmdExportXml_Click()
                 For Each xmlCellNode In xmlNodeMapCT.childNodes
 
                     If xmlCellNode.hasChildNodes Then
-                        cellid = xmlCellNode.Text
+                        cellID = xmlCellNode.Text
                     Else
-                        cellid = ""
+                        cellID = ""
                     End If
 
-                    cellArray = Split(cellid, "_")
+                    cellArray = Split(cellID, "_")
 
                     If currentGroup = vbNullString Or currentGroup = "" Then
                         Set xmlCellTKNode = xmlTK.getElementsByTagName(xmlCellNode.nodeName)(0)
@@ -3942,8 +3961,8 @@ Private Sub cmdExportXml_Click()
 
                     End If
 
-                    If UBound(cellArray) <> 1 Or Len(cellid) > 5 Then
-                        xmlCellTKNode.Text = cellid
+                    If UBound(cellArray) <> 1 Or Len(cellID) > 5 Then
+                        xmlCellTKNode.Text = cellID
                     Else
                         .Col = .ColLetterToNumber(cellArray(0))
                         .Row = Val(cellArray(1)) + cellRange
@@ -3971,15 +3990,15 @@ Private Sub cmdExportXml_Click()
                 Dim currentRow As Integer
                 Dim xmlSection As MSXML.IXMLDOMNode
         
-                MaTK = GetAttribute(nodeVal, "DataFile")
+                MaTk = GetAttribute(nodeVal, "DataFile")
 
-                If InStr(MaTK, "KHBS") > 0 Then
-                    MaTK = "KHBS"
+                If InStr(MaTk, "KHBS") > 0 Then
+                    MaTk = "KHBS"
                 End If
 
-                xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
+                xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTk & "_xml.xml")
 
-                xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\" & MaTK & "_xml.xml")
+                xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\" & MaTk & "_xml.xml")
 
                 cellRange = 0
                 .sheet = nodeValIndex + 1
@@ -4029,12 +4048,12 @@ Private Sub cmdExportXml_Click()
                         For Each xmlCellNode In xmlSection.childNodes
 
                             If xmlCellNode.hasChildNodes Then
-                                cellid = xmlCellNode.Text
+                                cellID = xmlCellNode.Text
                             Else
-                                cellid = ""
+                                cellID = ""
                             End If
 
-                            cellArray = Split(cellid, "_")
+                            cellArray = Split(cellID, "_")
 
                             If currentGroup = vbNullString Or currentGroup = "" Then
                                 Set xmlCellTKNode = xmlPL.getElementsByTagName(xmlCellNode.nodeName)(0)
@@ -4051,8 +4070,8 @@ Private Sub cmdExportXml_Click()
 
                             End If
 
-                            If UBound(cellArray) <> 1 Or Len(cellid) > 5 Then
-                                xmlCellTKNode.Text = cellid
+                            If UBound(cellArray) <> 1 Or Len(cellID) > 5 Then
+                                xmlCellTKNode.Text = cellID
                             Else
                                 .Col = .ColLetterToNumber(cellArray(0))
                                 .Row = Val(cellArray(1)) + cellRange
@@ -4077,7 +4096,7 @@ Private Sub cmdExportXml_Click()
 
     End With    'Save temp
     
-    xmlTK.save strFileName
+    xmlTK.Save strFileName
     Exit Sub
 ErrHandle:
     SaveErrorLog Me.Name, "cmdExportXML_Click", Err.Number, Err.Description
@@ -4086,63 +4105,224 @@ End Sub
 Private Sub cmdImportXML_Click()
     On Error GoTo ErrHandle
     Dim strImportFileName As String
-    Dim MaTK              As String
+    Dim MaTk              As String
     Dim xmlDuLieuImport   As New MSXML.DOMDocument
     Dim xmlMapCT          As New MSXML.DOMDocument
     Dim xmlTemplate       As New MSXML.DOMDocument
-    Dim nodeMapCT         As MSXML.IXMLDOMNode
+    Dim xmlPhuLuc         As New MSXML.DOMDocument
+    Dim nodePhuLuc        As MSXML.IXMLDOMNode
     
     strImportFileName = importXmlDialog()
     xmlDuLieuImport.Load strImportFileName
-    If Not validateTkHeader(xmlDuLieuImport, MaTK) Then
+
+    If Not validateTkHeader(xmlDuLieuImport, MaTk) Then
         DisplayMessage "0278", msOKOnly, miWarning
         Exit Sub
     End If
-    xmlMapCT.Load GetAbsolutePath("..\InterfaceIni\" & MaTK & "_xml.xml")
-    
-    With fpSpread1
-    
-        For Each nodeMapCT In xmlMapCT.lastChild.childNodes
 
-            If nodeMapCT.nodeName = "Dynamic" Then
-                
-            Else
-            
-            End If
+    xmlMapCT.Load GetAbsolutePath("..\InterfaceIni\" & MaTk & "_xml.xml")
+    
+    ImportFromXmlToToKhai xmlDuLieuImport, xmlMapCT.lastChild, "1"
+    
+    Set xmlMapCT = GetAllMapPhuLuc()
 
+    If xmlDuLieuImport.getElementsByTagName("PLuc").length > 0 Then
+
+        For Each nodePhuLuc In xmlDuLieuImport.getElementsByTagName("PLuc")(0).childNodes
+            xmlPhuLuc.loadXML nodePhuLuc.xml
+            ImportFromXmlToToKhai xmlPhuLuc, xmlMapCT.getElementsByTagName(nodePhuLuc.nodeName)(0), GetAttribute(xmlMapCT.firstChild, nodePhuLuc.nodeName)
         Next
-    
-    End With
+
+    End If
     
 ErrHandle:
     SaveErrorLog Me.Name, "cmdImportXML_Click", Err.Number, Err.Description
 End Sub
 
+Private Function GetAllMapPhuLuc() As MSXML.DOMDocument
+    Dim intCtrl As Integer
+    Dim MaPL    As String
+    Dim MapPl   As New MSXML.DOMDocument
+    Dim nodePlName As MSXML.IXMLDOMNode
+    
+    Set GetAllMapPhuLuc = New MSXML.DOMDocument
+    GetAllMapPhuLuc.loadXML "<PLuc></PLuc>"
+
+    For intCtrl = 1 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
+        MaPL = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(intCtrl), "DataFile")
+        MapPl.Load GetAbsolutePath("..\InterfaceIni\" & MaPL & "_xml.xml")
+
+        If MapPl.hasChildNodes Then
+            Set nodePlName = GetAllMapPhuLuc.createNode(MSXML.NODE_ATTRIBUTE, MapPl.lastChild.nodeName, "")
+            nodePlName.nodeValue = intCtrl + 1
+            GetAllMapPhuLuc.firstChild.Attributes.setNamedItem nodePlName
+            GetAllMapPhuLuc.firstChild.appendChild MapPl.lastChild
+        End If
+
+    Next intCtrl
+
+End Function
+
+Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
+                                  xmlMapCT As MSXML.IXMLDOMNode, _
+                                  SheetName As String)
+    Dim xmlCts         As New MSXML.DOMDocument
+    Dim childNodeCT    As MSXML.IXMLDOMNode
+    Dim GroupName      As String
+    Dim GroupCellRange As Integer
+    Dim cellID         As String
+    Dim cellArray()    As String
+    Dim cellRange      As Integer
+    Dim nodeTK         As MSXML.IXMLDOMNode
+    Dim nodeMapCT      As MSXML.IXMLDOMNode
+
+    With fpSpread1
+        .sheet = SheetName
+        .SheetVisible = True
+        .ActiveSheet = .sheet
+
+        For Each nodeMapCT In xmlMapCT.childNodes
+
+            If nodeMapCT.nodeName = "Dynamic" Then
+                Dim dynamicID As Integer
+                
+                GroupName = GetAttribute(nodeMapCT, "GroupName")
+                Set nodeTK = xmlDuLieuImport.getElementsByTagName(GroupName)(0)
+
+                If GetAttribute(nodeMapCT, "GroupCellRange") = vbNullString Then
+                    GroupCellRange = 1
+                Else
+                    GroupCellRange = Val(GetAttribute(nodeMapCT, "GroupCellRange"))
+                End If
+                                
+                xmlCts.loadXML "<Cts></Cts>"
+                                
+                getAllNodes nodeMapCT, xmlCts
+                                
+                cellID = xmlCts.firstChild.firstChild.Text
+                cellArray = Split(cellID, "_")
+
+                If UBound(cellArray) = 1 Then
+
+                    For dynamicID = 2 To nodeTK.childNodes.length
+                        fpSpread1.EventEnabled(EventAllEvents) = False
+                        InsertNode .ColLetterToNumber(cellArray(0)), Val(cellArray(1)) + cellRange
+                    Next
+
+                    For dynamicID = 0 To nodeTK.childNodes.length - 1
+                        Dim valXml As New MSXML.DOMDocument
+                        valXml.loadXML nodeTK.childNodes(dynamicID).xml
+
+                        For Each childNodeCT In xmlCts.lastChild.childNodes
+                            cellID = childNodeCT.Text
+                            cellArray = Split(cellID, "_")
+                            .Row = Val(cellArray(1)) + cellRange
+                            .Col = .ColLetterToNumber(cellArray(0))
+
+                            If valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "true" Then
+                                .Text = 1
+                            ElseIf valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "false" Then
+                                .Text = 0
+                            Else
+                                .Text = valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text
+                            End If
+
+                        Next
+
+                        cellRange = cellRange + GroupCellRange
+                    Next
+                    cellRange = cellRange - GroupCellRange
+                End If
+                                
+            Else
+                xmlCts.loadXML "<Cts></Cts>"
+                getAllNodes nodeMapCT, xmlCts
+
+                For Each childNodeCT In xmlCts.firstChild.childNodes
+                    cellID = childNodeCT.Text
+                    cellArray = Split(cellID, "_")
+
+                    If UBound(cellArray) = 1 Then
+                        If Len(cellID) < 6 Then
+                            .Row = Val(cellArray(1)) + cellRange
+                            .Col = .ColLetterToNumber(cellArray(0))
+
+                            If xmlDuLieuImport.getElementsByTagName(childNodeCT.nodeName)(0).Text = "true" Then
+                                .Text = 1
+                            ElseIf xmlDuLieuImport.getElementsByTagName(childNodeCT.nodeName)(0).Text = "false" Then
+                                .Text = 0
+                            Else
+                                .Text = xmlDuLieuImport.getElementsByTagName(childNodeCT.nodeName)(0).Text
+                            End If
+                        End If
+                    End If
+
+                Next
+
+            End If
+
+        Next
+
+    End With
+
+End Sub
+
 Private Function validateTkHeader(ByVal xmlDuLieuImport As MSXML.DOMDocument, _
-                                  ByRef MaTK As String) As Boolean
-    Dim LoaiTkTQ As String
+                                  ByRef MaTk As String) As Boolean
+    Dim LoaiTkTQ   As String
     Dim LoaiTkCtBs As String
+
     If xmlDuLieuImport Is Nothing Or xmlDuLieuImport.childNodes.length = 0 Then
         validateTkHeader = False
         Exit Function
     End If
 
     If xmlDuLieuImport.getElementsByTagName("maTKhai").length > 0 Then
-        MaTK = xmlDuLieuImport.getElementsByTagName("maTKhai")(0).Text
+        MaTk = xmlDuLieuImport.getElementsByTagName("maTKhai")(0).Text
     Else
         validateTkHeader = False
         Exit Function
     End If
 
-    If MaTK <> GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") Then
+    If MaTk <> GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") Then
         validateTkHeader = False
         Exit Function
     End If
     
-    If xmlDuLieuImport.getElementsByTagName("maTKhai").length > 0 Then
-        
+    If xmlDuLieuImport.getElementsByTagName("kieuKy").length > 0 Then
+        If xmlDuLieuImport.getElementsByTagName("kieuKy")(0).Text <> strKieuKy Then
+            validateTkHeader = False
+            Exit Function
+        End If
     End If
     
+    If xmlDuLieuImport.getElementsByTagName("kyKKhai").length > 0 Then
+        Dim strKykk() As String
+        strKykk = Split(xmlDuLieuImport.getElementsByTagName("kyKKhai")(0).Text, "/")
+
+        If strKieuKy = "M" Then
+            If Val(strKykk(0)) <> TAX_Utilities_New.month Or Val(strKykk(1)) <> TAX_Utilities_New.Year Then
+                validateTkHeader = False
+                Exit Function
+            End If
+
+        ElseIf strKieuKy = "Q" Then
+
+            If Val(strKykk(0)) <> TAX_Utilities_New.ThreeMonths Or Val(strKykk(1)) <> TAX_Utilities_New.Year Then
+                validateTkHeader = False
+                Exit Function
+            End If
+
+        Else
+
+            If Val(strKykk(1)) <> TAX_Utilities_New.Year Then
+                validateTkHeader = False
+                Exit Function
+            End If
+        End If
+    End If
+    validateTkHeader = True
+    Exit Function
     
 End Function
 
@@ -9367,7 +9547,7 @@ Private Sub saveKHBS()
 '        Else
 '            xmlNodeCell1s.parentNode.insertBefore xmlNodeCells, Null
 '        End If
-        TAX_Utilities_New.Data(CLng(TAX_Utilities_New.xmlDataCount)).save strDataFileName
+        TAX_Utilities_New.Data(CLng(TAX_Utilities_New.xmlDataCount)).Save strDataFileName
         
         DisplayMessage "0002", msOKOnly, miInformation
         Dim i As Integer
@@ -9504,7 +9684,7 @@ Public Function delNullRow(sheet As Long)
     Dim numSec, Row, row1, celllg, hasVl As Long
     Dim sumRowDel, countDel As Long
     
-    Dim cellid, value As Variant
+    Dim cellID, value As Variant
     Dim OldSheet As Long
     
     Dim maxRow As Long
@@ -9537,16 +9717,16 @@ Public Function delNullRow(sheet As Long)
                         If (GetAttribute(xmlNodeCell, "FirstCell") <> "" And value <> "") Or (GetAttribute(xmlNodeCell, "FirstCell") = "" And value <> "" And value <> "0" And value <> "cbo" And value <> "0%" And value <> "5%" And value <> "10%") Then
                             hasVl = hasVl + 1
                         End If
-                        cellid = GetAttribute(xmlNodeCell, "CellID")
+                        cellID = GetAttribute(xmlNodeCell, "CellID")
                     Next
                     If hasVl = 0 Then
-                        If Mid(cellid, 2, 1) = "_" Then
+                        If Mid(cellID, 2, 1) = "_" Then
                             fpSpread1.ActiveSheet = sheet + 1
-                            DeleteNode sheet + 1, fpSpread1.ColLetterToNumber(Left(cellid, 1)), CLng(Right(cellid, Len(cellid) - 2)), True
+                            DeleteNode sheet + 1, fpSpread1.ColLetterToNumber(Left(cellID, 1)), CLng(Right(cellID, Len(cellID) - 2)), True
                              Exit For
-                        ElseIf Mid(cellid, 3, 1) = "_" Then
+                        ElseIf Mid(cellID, 3, 1) = "_" Then
                             fpSpread1.ActiveSheet = sheet + 1
-                            DeleteNode sheet + 1, fpSpread1.ColLetterToNumber(Left(cellid, 2)), CLng(Right(cellid, Len(cellid) - 3)), True
+                            DeleteNode sheet + 1, fpSpread1.ColLetterToNumber(Left(cellID, 2)), CLng(Right(cellID, Len(cellID) - 3)), True
                             Exit For
                         Else
                             
@@ -9592,7 +9772,7 @@ Private Function saveLastKHBS() As Boolean
              '*********************************
         End If
         
-        TAX_Utilities_New.DataKHBS.save strDataFileName
+        TAX_Utilities_New.DataKHBS.Save strDataFileName
         saveLastKHBS = True
 
 End Function
@@ -10945,7 +11125,7 @@ Public Function delNullRowOn05(sheet As Long)
     Dim sumRowDel, countDel As Long
     Dim strCol As String
     Dim colArr() As String
-    Dim cellid, value As Variant
+    Dim cellID, value As Variant
     Dim OldSheet As Long
     
     'dntai para templ
@@ -10960,7 +11140,7 @@ Public Function delNullRowOn05(sheet As Long)
     If GetAttribute(xmlNodeListSec.Item(0), "Dynamic") = "1" Then
         fpSpread1.sheet = sheet + 1
         'get CellID cell dau tien dong dau tien
-        cellid = GetAttribute(xmlNodeListSec.Item(0).childNodes(0).firstChild, "CellID")
+        cellID = GetAttribute(xmlNodeListSec.Item(0).childNodes(0).firstChild, "CellID")
         'set location cell to array
         If fpSpread1.sheet = 2 Then
             strCol = "D~E~F~G~H~I~J~K~L~M~N~O~Q~R~S"
@@ -10976,7 +11156,7 @@ Public Function delNullRowOn05(sheet As Long)
             .EventEnabled(EventAllEvents) = False
             .Col = .ColLetterToNumber("B")
             'set row to start loop
-            i = CLng(Mid(cellid, InStr(1, cellid, "_") + 1, Len(cellid)))
+            i = CLng(Mid(cellID, InStr(1, cellID, "_") + 1, Len(cellID)))
             'set rowStart de dung so sanh
             rowStart = i + 1
             .Row = i + 1
@@ -11011,7 +11191,7 @@ Public Function delNullRowOn05(sheet As Long)
                     .Col = .ColLetterToNumber("B")
             Loop Until .Text = "aa"
             
-            i = CLng(Mid(cellid, InStr(1, cellid, "_") + 1, Len(cellid)))
+            i = CLng(Mid(cellID, InStr(1, cellID, "_") + 1, Len(cellID)))
             .Row = i
             
             For j = 0 To UBound(colArr)
@@ -11036,7 +11216,7 @@ Public Function delNullRowOn01(sheet As Long)
     Dim sumRowDel, countDel As Long
     Dim strCol As String
     Dim colArr() As String
-    Dim cellid, value As Variant
+    Dim cellID, value As Variant
     Dim OldSheet As Long
     
     'dntai para templ
@@ -11137,7 +11317,7 @@ Public Function delNullRowOn06(sheet As Long)
     Dim sumRowDel, countDel As Long
     Dim strCol As String
     Dim colArr() As String
-    Dim cellid, value As Variant
+    Dim cellID, value As Variant
     Dim OldSheet As Long
     
     'dntai para templ
@@ -11152,7 +11332,7 @@ Public Function delNullRowOn06(sheet As Long)
     If GetAttribute(xmlNodeListSec.Item(0), "Dynamic") = "1" Then
         fpSpread1.sheet = sheet + 1
         'get CellID cell dau tien dong dau tien
-        cellid = GetAttribute(xmlNodeListSec.Item(0).childNodes(0).firstChild, "CellID")
+        cellID = GetAttribute(xmlNodeListSec.Item(0).childNodes(0).firstChild, "CellID")
         'set location cell to array
         If fpSpread1.sheet = 2 Then
             strCol = "D~E~F~G~H"
@@ -11162,7 +11342,7 @@ Public Function delNullRowOn06(sheet As Long)
             .EventEnabled(EventAllEvents) = False
             .Col = .ColLetterToNumber("B")
             'set row to start loop
-            i = CLng(Mid(cellid, InStr(1, cellid, "_") + 1, Len(cellid)))
+            i = CLng(Mid(cellID, InStr(1, cellID, "_") + 1, Len(cellID)))
             'set rowStart de dung so sanh
             rowStart = i + 1
             .Row = i + 1
@@ -11197,7 +11377,7 @@ Public Function delNullRowOn06(sheet As Long)
                     .Col = .ColLetterToNumber("B")
             Loop Until .Text = "aa"
             
-            i = CLng(Mid(cellid, InStr(1, cellid, "_") + 1, Len(cellid)))
+            i = CLng(Mid(cellID, InStr(1, cellID, "_") + 1, Len(cellID)))
             .Row = i
             
             For j = 0 To UBound(colArr)
