@@ -502,7 +502,7 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
             If fso.FileExists(strDataFileName) Then
                 fso.GetFile(strDataFileName).Attributes = Normal
             End If
-            TAX_Utilities_New.Data(CLng(lSheet)).Save strDataFileName
+            TAX_Utilities_New.Data(CLng(lSheet)).save strDataFileName
         End If
         '*********************************
     Next
@@ -4096,7 +4096,7 @@ Private Sub cmdExportXml_Click()
 
     End With    'Save temp
     
-    xmlTK.Save strFileName
+    xmlTK.save strFileName
     Exit Sub
 ErrHandle:
     SaveErrorLog Me.Name, "cmdExportXML_Click", Err.Number, Err.Description
@@ -9547,7 +9547,7 @@ Private Sub saveKHBS()
 '        Else
 '            xmlNodeCell1s.parentNode.insertBefore xmlNodeCells, Null
 '        End If
-        TAX_Utilities_New.Data(CLng(TAX_Utilities_New.xmlDataCount)).Save strDataFileName
+        TAX_Utilities_New.Data(CLng(TAX_Utilities_New.xmlDataCount)).save strDataFileName
         
         DisplayMessage "0002", msOKOnly, miInformation
         Dim i As Integer
@@ -9772,7 +9772,7 @@ Private Function saveLastKHBS() As Boolean
              '*********************************
         End If
         
-        TAX_Utilities_New.DataKHBS.Save strDataFileName
+        TAX_Utilities_New.DataKHBS.save strDataFileName
         saveLastKHBS = True
 
 End Function

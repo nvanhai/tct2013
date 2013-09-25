@@ -377,7 +377,8 @@
 			<Sheet ID="01" Caption="CĐKT" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="48_01_CDKT" InterfaceIni="..\InterfaceIni\48_01_CDKT.xml" ReportIni="..\ReportIni\48_01_CDKT.xml"/>
 			<Sheet ID="01-1" Caption="KQHĐSXKD" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="48_02_SXKD" InterfaceIni="..\InterfaceIni\48_02_SXKD.xml" ReportIni="..\ReportIni\48_02_SXKD.xml"/>
 			<Sheet ID="01-2" Caption="LCTTTT" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="48_03_LCTTTT" InterfaceIni="..\InterfaceIni\48_03_LCTTTT.xml" ReportIni="..\ReportIni\48_03_LCTTTT.xml"/>
-			<Sheet ID="01-3" Caption="LCTTGT" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="48_04_LCTTGT" InterfaceIni="..\InterfaceIni\48_04_LCTTGT.xml" ReportIni="..\ReportIni\48_04_LCTTGT.xml"/>			
+			<Sheet ID="01-3" Caption="LCTTGT" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="48_04_LCTTGT" InterfaceIni="..\InterfaceIni\48_04_LCTTGT.xml" ReportIni="..\ReportIni\48_04_LCTTGT.xml"/>
+			<Sheet ID="01-4" Caption="CĐTK" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="48_05_CDTK" InterfaceIni="..\InterfaceIni\48_05_CDTK.xml" ReportIni="..\ReportIni\48_05_CDTK.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
 		</Validity>
 	</Menu>
