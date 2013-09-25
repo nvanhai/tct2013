@@ -4250,26 +4250,28 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
             blnSuccess = False
             Exit Function
         End If
-    End If
-        
-    Dim checkValue As MSXML.IXMLDOMNode
-    Set checkValue = xmlResultNNT.selectSingleNode("TIN")
 
-    If (checkValue Is Nothing) Then
-        If (MessageBox("0135", msYesNo, miCriticalError) = mrNo) Then
-            Set rsReturn = Nothing
-            blnSuccess = False
-            Exit Function
-        End If
-    End If
+    Else
+        Dim Err_des As String
+        Err_des = xmlResultNNT.getElementsByTagName("ERROR_DESC")(0).Text
 
-    Dim Err_des As String
-    Err_des = xmlResultNNT.getElementsByTagName(0)("ERROR_DESC").Text
-    If (Err_des <> "") Then
-        If (MsgBox(Err_des & ".B¹n cã muèn tiÕp tôc?", vbYesNo, Me.Name) = vbNo) Then
-            Set rsReturn = Nothing
-            blnSuccess = False
-            Exit Function
+        If (Err_des <> "") Then
+            If (MsgBox(Err_des & ".B¹n cã muèn tiÕp tôc?", vbYesNo, Me.Name) = vbNo) Then
+                Set rsReturn = Nothing
+                blnSuccess = False
+                Exit Function
+            End If
+        Else
+            Dim checkValue As MSXML.IXMLDOMNode
+            Set checkValue = xmlResultNNT.selectSingleNode("TIN")
+
+            If (checkValue Is Nothing) Then
+                If (MessageBox("0135", msYesNo, miCriticalError) = mrNo) Then
+                    Set rsReturn = Nothing
+                    blnSuccess = False
+                    Exit Function
+                End If
+            End If
         End If
     End If
 
@@ -4323,19 +4325,21 @@ ErrHandle:
 End Function
 
 ' Lay thong tin DL thue 05072011
-Private Function GetTaxDLInfo(ByVal strTaxIDString As String, ByVal strTaxIDDLString As String, ByRef blnSuccess As Boolean) As Object
+Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
+                              ByVal strTaxIDDLString As String, _
+                              ByRef blnSuccess As Boolean) As Object
     Dim rsReturn As New ADODB.Recordset
-    Dim strSQL As String
+    Dim strSQL   As String
     
-On Error GoTo ErrHandle
+    On Error GoTo ErrHandle
 
-    Dim paXmlDoc As New MSXML.DOMDocument
-    Dim sTranCode As String
+    Dim paXmlDoc   As New MSXML.DOMDocument
+    Dim sTranCode  As String
     Dim sTaxOffice As String
-    Dim sUrlWs As String
-    Dim soapAct As String
-    Dim fldName As String
-    Dim fldValue As String
+    Dim sUrlWs     As String
+    Dim soapAct    As String
+    Dim fldName    As String
+    Dim fldValue   As String
     Dim xmlRequest As String
     
     Set xmlResultDLT = New MSXML.DOMDocument
@@ -4371,13 +4375,13 @@ On Error GoTo ErrHandle
         paXmlDoc.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
         paXmlDoc.getElementsByTagName("ORIGINAL_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
 
-
         fldValue = paXmlDoc.xml
         fldValue = ChangeTagASSCII(fldValue, True)
 
         If (Dir("c:\TempXML\") = "") Then
             MkDir "c:\TempXML\"
         End If
+
         Dim sParamDLT As String
 
         sParamDLT = "c:\TempXML\" & "paramDLT.xml"
@@ -4391,36 +4395,38 @@ On Error GoTo ErrHandle
        
     End If
     
-     If (strResultDLT = "" Or strResultDLT = vbNullString Or Not xmlResultDLT.hasChildNodes) Then
-            If (MessageBox("0136", msYesNo, miCriticalError) = mrNo) Then
-                Set rsReturn = Nothing
-                blnSuccess = False
-                Exit Function
-            End If
-    End If
-        
-    Dim Err_des As String
-    Err_des = xmlResultDLT.getElementsByTagName(0)("ERROR_DESC").Text
-    If (Err_des <> "") Then
-        If (MsgBox(Err_des & ".B¹n cã muèn tiÕp tôc?", vbYesNo, Me.Name) = vbNo) Then
-            Set rsReturn = Nothing
-            blnSuccess = False
-            Exit Function
-        End If
-    End If
-        
-    Dim checkValue As MSXML.IXMLDOMNode
-    Set checkValue = xmlResultDLT.selectSingleNode("NORM_NAME")
-
-    If (checkValue Is Nothing) Then
+    If (strResultDLT = "" Or strResultDLT = vbNullString Or Not xmlResultDLT.hasChildNodes) Then
         If (MessageBox("0136", msYesNo, miCriticalError) = mrNo) Then
             Set rsReturn = Nothing
             blnSuccess = False
             Exit Function
         End If
-    End If
 
-    
+    Else
+        Dim Err_des As String
+        Err_des = xmlResultDLT.getElementsByTagName("ERROR_DESC")(0).Text
+
+        If (Err_des <> "") Then
+            If (MsgBox(Err_des & ".B¹n cã muèn tiÕp tôc?", vbYesNo, Me.Name) = vbNo) Then
+                Set rsReturn = Nothing
+                blnSuccess = False
+                Exit Function
+            End If
+
+        Else
+            Dim checkValue As MSXML.IXMLDOMNode
+            Set checkValue = xmlResultDLT.selectSingleNode("NORM_NAME")
+
+            If (checkValue Is Nothing) Then
+                If (MessageBox("0136", msYesNo, miCriticalError) = mrNo) Then
+                    Set rsReturn = Nothing
+                    blnSuccess = False
+                    Exit Function
+                End If
+            End If
+        End If
+        
+    End If
     
     rsReturn.Fields.Append "repr_name", adVarWChar, 200, adFldUpdatable
     rsReturn.Fields.Append "repr_addr", adVarWChar, 200, adFldUpdatable
@@ -4430,18 +4436,17 @@ On Error GoTo ErrHandle
     rsReturn.Fields.Append "repr_cont_number", adVarWChar, 30, adFldUpdatable
     rsReturn.Fields.Append "repr_cont_date", adVarWChar, 50, adFldUpdatable
     
-    
     rsReturn.Open
     rsReturn.AddNew
     
     If (strResultDLT <> "" And xmlResultDLT.hasChildNodes And Not checkValue Is Nothing And Err_des = "") Then
-            rsReturn!repr_name = xmlResultDLT.getElementsByTagName("NORM_NAME")(0).Text
-            rsReturn!repr_addr = xmlResultDLT.getElementsByTagName("TRAN_ADDR")(0).Text
-            rsReturn!repr_tell = xmlResultDLT.getElementsByTagName("TELL")(0).Text
-            rsReturn!repr_fax = xmlResultDLT.getElementsByTagName("FAX")(0).Text
-            rsReturn!repr_email = xmlResultDLT.getElementsByTagName("EMAIL")(0).Text
-            rsReturn!repr_cont_number = xmlResultDLT.getElementsByTagName("REPR_TAXO_ID")(0).Text
-            rsReturn!repr_cont_date = xmlResultDLT.getElementsByTagName("START_DATE")(0).Text
+        rsReturn!repr_name = xmlResultDLT.getElementsByTagName("NORM_NAME")(0).Text
+        rsReturn!repr_addr = xmlResultDLT.getElementsByTagName("TRAN_ADDR")(0).Text
+        rsReturn!repr_tell = xmlResultDLT.getElementsByTagName("TELL")(0).Text
+        rsReturn!repr_fax = xmlResultDLT.getElementsByTagName("FAX")(0).Text
+        rsReturn!repr_email = xmlResultDLT.getElementsByTagName("EMAIL")(0).Text
+        rsReturn!repr_cont_number = xmlResultDLT.getElementsByTagName("REPR_TAXO_ID")(0).Text
+        rsReturn!repr_cont_date = xmlResultDLT.getElementsByTagName("START_DATE")(0).Text
     End If
 
     rsReturn.Update
@@ -4456,8 +4461,8 @@ ErrHandle:
     'Connect DB fail
     blnSuccess = False
     SaveErrorLog Me.Name, "GetTaxDLInfo", Err.Number, Err.Description
-    If Err.Number = -2147467259 Then _
-        MessageBox "0063", msOKOnly, miCriticalError
+
+    If Err.Number = -2147467259 Then MessageBox "0063", msOKOnly, miCriticalError
 End Function
 
 
@@ -4544,26 +4549,28 @@ On Error GoTo ErrHandle
             blnSuccess = False
             Exit Function
         End If
-    End If
-        
-    Dim checkValue As MSXML.IXMLDOMNode
-    Set checkValue = xmlResultNNT.selectSingleNode("TIN")
 
-    If (checkValue Is Nothing) Then
-        If (MessageBox("0135", msYesNo, miCriticalError) = mrNo) Then
-            Set rsReturn = Nothing
-            blnSuccess = False
-            Exit Function
-        End If
-    End If
+    Else
+        Dim Err_des As String
+        Err_des = xmlResultNNT.getElementsByTagName("ERROR_DESC")(0).Text
 
-    Dim Err_des As String
-    Err_des = xmlResultNNT.getElementsByTagName(0)("ERROR_DESC").Text
-    If (Err_des <> "") Then
-        If (MsgBox(Err_des & ".B¹n cã muèn tiÕp tôc?", vbYesNo, Me.Name) = vbNo) Then
-            Set rsReturn = Nothing
-            blnSuccess = False
-            Exit Function
+        If (Err_des <> "") Then
+            If (MsgBox(Err_des & ".B¹n cã muèn tiÕp tôc?", vbYesNo, Me.Name) = vbNo) Then
+                Set rsReturn = Nothing
+                blnSuccess = False
+                Exit Function
+            End If
+        Else
+            Dim checkValue As MSXML.IXMLDOMNode
+            Set checkValue = xmlResultNNT.selectSingleNode("TIN")
+
+            If (checkValue Is Nothing) Then
+                If (MessageBox("0135", msYesNo, miCriticalError) = mrNo) Then
+                    Set rsReturn = Nothing
+                    blnSuccess = False
+                    Exit Function
+                End If
+            End If
         End If
     End If
 
