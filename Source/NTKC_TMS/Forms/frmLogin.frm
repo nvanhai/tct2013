@@ -255,7 +255,7 @@ On Error GoTo ErrorHandle
     Set xmlResultNSD = New MSXML.DOMDocument
     Dim strResultNSD As String
     Dim sStatus As String
-    
+'
 '    IsValidUserESB = 2
 '    Exit Function
     
