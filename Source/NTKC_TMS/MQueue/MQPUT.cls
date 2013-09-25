@@ -16,7 +16,7 @@ Dim gHcon As Long
 Dim gHobj As Long
 
 
-Public Function close_Conn()
+Public Function close_Conn() As Boolean
   Dim C_options As Long     ' MQCLOSE options
   Dim CompCode As Long      ' Completion code
   Dim Reason As Long        ' Reason code
@@ -28,20 +28,24 @@ Public Function close_Conn()
 
     If CompCode <> MQCC_OK Then
       Beep
+      close_Conn = False
     Else
-      
+      close_Conn = True
     End If
+    Else
+    close_Conn = False
   End If
   
   ' If queue manager connected successfully - then disconnect
   If gHcon Then
     MQDISC gHcon, CompCode, Reason
+    close_Conn = False
   End If
   
   SaveErrorLog "MQPUT", "close_ConnMQ", C_options, "CompCode = " & CompCode & " Reason = " & Reason
 End Function
 
-Public Function open_Conn(ByVal qm As String, ByVal qn As String)
+Public Function open_Conn(ByVal qm As String, ByVal qn As String) As Boolean
   Dim CompCode As Long      ' Completion code
   Dim Reason As Long        ' Reason code
   Dim O_options As Long     ' MQOPEN options
@@ -60,6 +64,8 @@ Public Function open_Conn(ByVal qm As String, ByVal qn As String)
     ' otherwise it's an error
     If CompCode = MQCC_FAILED Then
       Beep
+      open_Conn = False
+      'Exit Function
     End If
   End If
 
@@ -87,7 +93,8 @@ Public Function open_Conn(ByVal qm As String, ByVal qn As String)
     
     If CompCode <> MQCC_OK Then
       Beep
-      
+      open_Conn = False
+      Exit Function
       'COMMON PROBLEMS:
       '================================================
       '  CompCode = 2, Reason = 2085
@@ -101,9 +108,9 @@ Public Function open_Conn(ByVal qm As String, ByVal qn As String)
       '  Check spelling and case of queuename
       '
       
-      If Reason = 2085 Then
-        MsgBox "HINT: Check the spelling of the Queue name, which is Case-Sensitive.", vbOKOnly, "ReasonCode = (2085) - MQRC_UNKNOWN_OBJECT_NAME"
-      End If
+''      If Reason = 2085 Then
+''        MsgBox "HINT: Check the spelling of the Queue name, which is Case-Sensitive.", vbOKOnly, "ReasonCode = (2085) - MQRC_UNKNOWN_OBJECT_NAME"
+''      End If
            
       '================================================
       '  CompCode = 2, Reason = 2087
@@ -117,13 +124,15 @@ Public Function open_Conn(ByVal qm As String, ByVal qn As String)
       '  Check spelling and case of QueueManager
       '  name - not applcable if default is being
       '  used
-      
-      If Reason = 2087 Then
-        MsgBox "HINT: Check the spelling of the Queue Manager name, which is Case-Sensitive.", vbOKOnly, "ReasonCode = (2087) - MQRC_REMOTE_Q_MGR"
-      End If
+''
+''      If Reason = 2087 Then
+''        MsgBox "HINT: Check the spelling of the Queue Manager name, which is Case-Sensitive.", vbOKOnly, "ReasonCode = (2087) - MQRC_REMOTE_Q_MGR"
+''      End If
     Else
-      
+      open_Conn = True
     End If
+    Else
+    open_Conn = False
   End If
   
   SaveErrorLog "MQPUT", "open_ConnMQ", O_options, "CompCode = " & CompCode & " Reason = " & Reason
