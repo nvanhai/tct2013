@@ -21,9 +21,9 @@ Attribute fps.VB_VarHelpID = -1
 'No parameter
 Public Sub Prepare1()
     With fps
-        SetDateFormat fps, 1, 109, .ColLetterToNumber("R"), DDMMYYYY
+        SetDateFormat fps, 1, 115, .ColLetterToNumber("R"), DDMMYYYY
         .Sheet = 1 ' Bao cao ket qua hoat dong san xuat kinh doanh Bo 15
-        .Row = 109
+        .Row = 115
         .Col = .ColLetterToNumber("R")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
@@ -209,7 +209,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
         mCurrentSheet = .Sheet
         .EventEnabled(EventAllEvents) = False
         If .ActiveSheet = 1 Then
-            If Col = .ColLetterToNumber("R") And Row = 109 Then
+            If Col = .ColLetterToNumber("R") And Row = 115 Then
                 .GetText Col, Row, varTemp
                 If varTemp <> "" And varTemp <> "../../...." Then
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
@@ -262,9 +262,9 @@ Private Sub setLastValueTarget()
             ' Lay cac gia tri cua bang can doi ke toan
             ' Cac gia tri so nam nay cua ky truoc chuyen sang so nam truoc cua ky hien tai
             ' Va tu dong 40 den 105 se mang gia tri cua bang can doi ke toan
-            For iRow = 40 To 105
+            For iRow = 40 To 111
                 ' Lay cac dong ko co trong datafile de loai ra
-                If iRow <> 73 Or iRow <> 100 Then
+                If iRow <> 74 Or iRow <> 106 Then
                     Set xmlNode = .nodeFromID("R_" & iRow) ' R_40 la bat dau mang gia tri cua bang can doi ke toan
                     strValueTarget = GetAttribute(xmlNode, "Value")
                     Set xmlNode = Nothing
@@ -275,7 +275,7 @@ Private Sub setLastValueTarget()
                     If Trim(fps.Text) = "0" Or Trim(fps.Text) = "" Then
                         fps.Text = strValueTarget
                         mCurrentSheet = 1
-                        UpdateCell fps, fps.Col, fps.Row, fps.Value
+                        UpdateCell fps, fps.Col, fps.Row, fps.value
                     End If
                 End If
             Next
@@ -344,7 +344,7 @@ Private Sub setLastValueTarget1()
                 If Trim(fps.Text) = "0" Or Trim(fps.Text) = "" Then
                     fps.Text = strValueTarget
                     mCurrentSheet = 2
-                    UpdateCell fps, fps.Col, fps.Row, fps.Value
+                    UpdateCell fps, fps.Col, fps.Row, fps.value
                 End If
             Next
         ElseIf .parseError.reason <> vbNullString Then
@@ -414,7 +414,7 @@ Private Sub setLastValueTarget2()
                     If Trim(fps.Text) = "0" Or Trim(fps.Text) = "" Then
                         fps.Text = strValueTarget
                         mCurrentSheet = 3
-                        UpdateCell fps, fps.Col, fps.Row, fps.Value
+                        UpdateCell fps, fps.Col, fps.Row, fps.value
                     End If
                 End If
             Next
@@ -485,7 +485,7 @@ Private Sub setLastValueTarget3()
                     If Trim(fps.Text) = "0" Or Trim(fps.Text) = "" Then
                         fps.Text = strValueTarget
                         mCurrentSheet = 4
-                        UpdateCell fps, fps.Col, fps.Row, fps.Value
+                        UpdateCell fps, fps.Col, fps.Row, fps.value
                     End If
                 End If
             Next
@@ -553,6 +553,16 @@ Private Sub UpdateSheets()
         .Sheet = 4
         mCurrentSheet = .Sheet
             For Each xmlCellNodeData In TAX_Utilities_New.Data(3).getElementsByTagName("Cell")
+               ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+               .GetText lCol, lRow, varTemp
+               UpdateCell fps, lCol, lRow, varTemp
+             Next
+        End If
+        
+        If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(4), "Active") <> "0") Then
+        .Sheet = 5
+        mCurrentSheet = .Sheet
+            For Each xmlCellNodeData In TAX_Utilities_New.Data(4).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
                UpdateCell fps, lCol, lRow, varTemp
