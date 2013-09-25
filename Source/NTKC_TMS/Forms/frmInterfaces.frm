@@ -1202,7 +1202,7 @@ Private Sub ExecuteSave()
     '        End If
     '    End With
 
-    strFileName = "test.xml" 'getFileName
+    strFileName = "ToKhai.xml" 'getFileName
         
     xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
     xmlMapCT.Load GetAbsolutePath("..\Ini\" & MaTK & "_xml.xml")
@@ -1935,8 +1935,8 @@ Private Sub Command1_Click()
 'str2 = "aa320772222222222   0020130040040020020000~0~0~100~300</S><S>010208~Kg~564565~56~10~0~765.987~010210~Kg~6343~0~0~49~845~010208~TÊn~100~50~10~0~10</S><S>outh~12/09/2013~rty~red~1~</S></S01>"
 'Barcode_Scaned str2
 
-' 02/TAIN - co bo sung KHBS
-str2 = "bs320772222222222   00201200600800100301/0114/06/2006<S01><S></S><S>010104~Kg~123~48888~11~0~0~050101~TÊn~65342.895~543.768~7~0~654.987~010207~Kg~27646.456~0~0~876.456~888.320</S><S>010"
+' 02/TAIN - co bo sung KHBS --3100177415 -- 0102845045
+str2 = "bs320772222222222   00201200600800100301/0114/06/2006<S01><S>2222222222</S><S>010104~Kg~123~48888~11~0~0~050101~TÊn~65342.895~543.768~7~0~654.987~010207~Kg~27646.456~0~0~876.456~888.320</S><S>010"
 Barcode_Scaned str2
 str2 = "bs320772222222222   002012006008002003203~Kg~6776.893~4888~15~0~0~010210~Kg~7646.876~0~0~68544~7777~010104~Kg~65356.897~457.987~11~0~765.934</S><S>ghghg~12/09/2013~gg~ghgh~~1</S></S01>"
 Barcode_Scaned str2
@@ -4174,25 +4174,29 @@ End Function
 'Output:
 'Return: a Recordset contain query data.
 '****************************
-Private Function GetTaxInfo(ByVal strTaxIDString As String, ByRef blnSuccess As Boolean) As Object
+Private Function GetTaxInfo(ByVal strTaxIDString As String, _
+                            ByRef blnSuccess As Boolean) As Object
     Dim rsReturn As New ADODB.Recordset
-    Dim strSQL As String
+    Dim strSQL   As String
     
-On Error GoTo ErrHandle
+    On Error GoTo ErrHandle
 
     'Lay tu webservices cua ESB tra ve
 
-    Dim paXmlDoc As New MSXML.DOMDocument
-    Dim sTranCode As String
+    Dim paXmlDoc   As New MSXML.DOMDocument
+    Dim sTranCode  As String
     Dim sTaxOffice As String
-    Dim sUrlWs As String
-    Dim soapAct As String
-    Dim fldName As String
-    Dim fldValue As String
+    Dim sUrlWs     As String
+    Dim soapAct    As String
+    Dim fldName    As String
+    Dim fldValue   As String
     Dim xmlRequest As String
     
     Set xmlResultNNT = New MSXML.DOMDocument
     Dim strResultNNT As String
+    
+    'Du lieu gia lap de test
+    ''Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
 
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         Dim cfigXml As New MSXML.DOMDocument
@@ -4221,13 +4225,13 @@ On Error GoTo ErrHandle
         paXmlDoc.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
         paXmlDoc.getElementsByTagName("ORIGINAL_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
 
-
         fldValue = paXmlDoc.xml
         fldValue = ChangeTagASSCII(fldValue, True)
 
         If (Dir("c:\TempXML\") = "") Then
             MkDir "c:\TempXML\"
         End If
+
         Dim sParamNNT As String
 
         sParamNNT = "c:\TempXML\" & "paramNNT.xml"
@@ -4238,18 +4242,36 @@ On Error GoTo ErrHandle
 
         strResultNNT = ChangeTagASSCII(strResultNNT, False)
         xmlResultNNT.loadXML strResultNNT
+    End If
 
-        If (strResultNNT = "" Or Not xmlResultNNT.hasChildNodes) Then
-            If (MessageBox("0135", msYesNo, miCriticalError) = mrNo) Then
-                Set rsReturn = Nothing
-                blnSuccess = False
-                Exit Function
-            End If
+    If (strResultNNT = "" Or strResultNNT = vbNullString Or Not xmlResultNNT.hasChildNodes) Then
+        If (MessageBox("0135", msYesNo, miCriticalError) = mrNo) Then
+            Set rsReturn = Nothing
+            blnSuccess = False
+            Exit Function
+        End If
+    End If
+        
+    Dim checkValue As MSXML.IXMLDOMNode
+    Set checkValue = xmlResultNNT.selectSingleNode("TIN")
+
+    If (checkValue Is Nothing) Then
+        If (MessageBox("0135", msYesNo, miCriticalError) = mrNo) Then
+            Set rsReturn = Nothing
+            blnSuccess = False
+            Exit Function
         End If
     End If
 
-    'Du lieu gia lap de test
-    'Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+    Dim Err_des As String
+    Err_des = xmlResultNNT.getElementsByTagName(0)("ERROR_DESC").Text
+    If (Err_des <> "") Then
+        If (MsgBox(Err_des & ".B¹n cã muèn tiÕp tôc?", vbYesNo, Me.Name) = vbNo) Then
+            Set rsReturn = Nothing
+            blnSuccess = False
+            Exit Function
+        End If
+    End If
 
     rsReturn.Fields.Append "trang_thai", adChar, 2, adFldUpdatable
     rsReturn.Fields.Append "tin", adVarChar, 14, adFldUpdatable
@@ -4268,7 +4290,7 @@ On Error GoTo ErrHandle
     rsReturn.Open
     rsReturn.AddNew
     
-    If (strResultNNT <> "" Or xmlResultNNT.hasChildNodes) Then
+    If ((strResultNNT <> "" And xmlResultNNT.hasChildNodes And Not checkValue Is Nothing) And Err_des = "") Then
         rsReturn!trang_thai = GetStringByLength(xmlResultNNT.getElementsByTagName("STATUS")(0).Text, 2)
         rsReturn!ten_dtnt = GetStringByLength(xmlResultNNT.getElementsByTagName("NORM_NAME")(0).Text, 100)
         rsReturn!dia_chi = GetStringByLength(xmlResultNNT.getElementsByTagName("TRAN_ADDR")(0).Text, 60)
@@ -4296,8 +4318,8 @@ ErrHandle:
     'Connect DB fail
     blnSuccess = False
     SaveErrorLog Me.Name, "GetTaxInfo", Err.Number, Err.Description
-    If Err.Number = -2147467259 Then _
-        MessageBox "0063", msOKOnly, miCriticalError
+
+    If Err.Number = -2147467259 Then MessageBox "0063", msOKOnly, miCriticalError
 End Function
 
 ' Lay thong tin DL thue 05072011
@@ -4318,6 +4340,10 @@ On Error GoTo ErrHandle
     
     Set xmlResultDLT = New MSXML.DOMDocument
     Dim strResultDLT As String
+    
+    'Du lieu gia lap de test
+    ''Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
+    
     If (strTaxIDDLString <> "" Or strTaxIDDLString <> vbNullString) Then
         Dim cfigXml As New MSXML.DOMDocument
         Set cfigXml = LoadConfig()
@@ -4362,18 +4388,39 @@ On Error GoTo ErrHandle
 
         strResultDLT = ChangeTagASSCII(strResultDLT, False)
         xmlResultDLT.loadXML strResultDLT
-
-        If (strResultDLT = "" Or xmlResultDLT Is Nothing) Then
+       
+    End If
+    
+     If (strResultDLT = "" Or strResultDLT = vbNullString Or Not xmlResultDLT.hasChildNodes) Then
             If (MessageBox("0136", msYesNo, miCriticalError) = mrNo) Then
                 Set rsReturn = Nothing
                 blnSuccess = False
                 Exit Function
             End If
+    End If
+        
+    Dim Err_des As String
+    Err_des = xmlResultDLT.getElementsByTagName(0)("ERROR_DESC").Text
+    If (Err_des <> "") Then
+        If (MsgBox(Err_des & ".B¹n cã muèn tiÕp tôc?", vbYesNo, Me.Name) = vbNo) Then
+            Set rsReturn = Nothing
+            blnSuccess = False
+            Exit Function
         End If
     End If
+        
+    Dim checkValue As MSXML.IXMLDOMNode
+    Set checkValue = xmlResultDLT.selectSingleNode("NORM_NAME")
+
+    If (checkValue Is Nothing) Then
+        If (MessageBox("0136", msYesNo, miCriticalError) = mrNo) Then
+            Set rsReturn = Nothing
+            blnSuccess = False
+            Exit Function
+        End If
+    End If
+
     
-    'Du lieu gia lap de test
-    'Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
     
     rsReturn.Fields.Append "repr_name", adVarWChar, 200, adFldUpdatable
     rsReturn.Fields.Append "repr_addr", adVarWChar, 200, adFldUpdatable
@@ -4387,8 +4434,7 @@ On Error GoTo ErrHandle
     rsReturn.Open
     rsReturn.AddNew
     
-    
-    If (strResultDLT <> "" Or xmlResultDLT.hasChildNodes) Then
+    If (strResultDLT <> "" And xmlResultDLT.hasChildNodes And Not checkValue Is Nothing And Err_des = "") Then
             rsReturn!repr_name = xmlResultDLT.getElementsByTagName("NORM_NAME")(0).Text
             rsReturn!repr_addr = xmlResultDLT.getElementsByTagName("TRAN_ADDR")(0).Text
             rsReturn!repr_tell = xmlResultDLT.getElementsByTagName("TELL")(0).Text
@@ -4443,6 +4489,9 @@ On Error GoTo ErrHandle
     Set xmlResultNNT = New MSXML.DOMDocument
     Dim strResultNNT As String
 
+   'Du lieu gia lap de test
+    ''Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         Dim cfigXml As New MSXML.DOMDocument
         Set cfigXml = LoadConfig()
@@ -4470,13 +4519,13 @@ On Error GoTo ErrHandle
         paXmlDoc.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
         paXmlDoc.getElementsByTagName("ORIGINAL_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
 
-
         fldValue = paXmlDoc.xml
         fldValue = ChangeTagASSCII(fldValue, True)
 
         If (Dir("c:\TempXML\") = "") Then
             MkDir "c:\TempXML\"
         End If
+
         Dim sParamNNT As String
 
         sParamNNT = "c:\TempXML\" & "paramNNT.xml"
@@ -4487,26 +4536,45 @@ On Error GoTo ErrHandle
 
         strResultNNT = ChangeTagASSCII(strResultNNT, False)
         xmlResultNNT.loadXML strResultNNT
+    End If
 
-        If (strResultNNT = "" Or Not xmlResultNNT.hasChildNodes) Then
-            If (MessageBox("0135", msYesNo, miCriticalError) = mrNo) Then
-                Set rsReturn = Nothing
-                blnSuccess = False
-                Exit Function
-            End If
+    If (strResultNNT = "" Or strResultNNT = vbNullString Or Not xmlResultNNT.hasChildNodes) Then
+        If (MessageBox("0135", msYesNo, miCriticalError) = mrNo) Then
+            Set rsReturn = Nothing
+            blnSuccess = False
+            Exit Function
+        End If
+    End If
+        
+    Dim checkValue As MSXML.IXMLDOMNode
+    Set checkValue = xmlResultNNT.selectSingleNode("TIN")
+
+    If (checkValue Is Nothing) Then
+        If (MessageBox("0135", msYesNo, miCriticalError) = mrNo) Then
+            Set rsReturn = Nothing
+            blnSuccess = False
+            Exit Function
         End If
     End If
 
-    'Du lieu gia lap de test
-   'Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+    Dim Err_des As String
+    Err_des = xmlResultNNT.getElementsByTagName(0)("ERROR_DESC").Text
+    If (Err_des <> "") Then
+        If (MsgBox(Err_des & ".B¹n cã muèn tiÕp tôc?", vbYesNo, Me.Name) = vbNo) Then
+            Set rsReturn = Nothing
+            blnSuccess = False
+            Exit Function
+        End If
+    End If
 
     rsReturn.Fields.Append "trang_thai", adChar, 2, adFldUpdatable
     rsReturn.Fields.Append "tin", adVarChar, 14, adFldUpdatable
     rsReturn.Fields.Append "ten_dtnt", adVarWChar, 100, adFldUpdatable
     rsReturn.Fields.Append "dia_chi", adVarWChar, 60, adFldUpdatable
     rsReturn.Fields.Append "dien_thoai", adVarWChar, 20, adFldUpdatable
-    rsReturn.Fields.Append "mail", adVarWChar, 30, adFldUpdatable
+
     rsReturn.Fields.Append "fax", adVarWChar, 20, adFldUpdatable
+    rsReturn.Fields.Append "mail", adVarWChar, 30, adFldUpdatable
     rsReturn.Fields.Append "ky_lapbo", adVarWChar, 50, adFldUpdatable
     rsReturn.Fields.Append "ngay_nop", adVarWChar, 50, adFldUpdatable
     rsReturn.Fields.Append "ngay_nhap", adVarWChar, 50, adFldUpdatable
@@ -4516,7 +4584,7 @@ On Error GoTo ErrHandle
     rsReturn.Open
     rsReturn.AddNew
     
-    If (strResultNNT <> "" Or xmlResultNNT.hasChildNodes) Then
+    If ((strResultNNT <> "" Or xmlResultNNT.hasChildNodes Or Not checkValue Is Nothing) And Err_des = "") Then
         rsReturn!trang_thai = GetStringByLength(xmlResultNNT.getElementsByTagName("STATUS")(0).Text, 2)
         rsReturn!ten_dtnt = GetStringByLength(xmlResultNNT.getElementsByTagName("NORM_NAME")(0).Text, 100)
         rsReturn!dia_chi = GetStringByLength(xmlResultNNT.getElementsByTagName("TRAN_ADDR")(0).Text, 60)
@@ -4525,7 +4593,7 @@ On Error GoTo ErrHandle
         rsReturn!Fax = GetStringByLength(xmlResultNNT.getElementsByTagName("TRAN_FAX")(0).Text, 20)
         rsReturn!ngay_tchinh = GetStringByLength(xmlResultNNT.getElementsByTagName("START_DATE")(0).Text, 50)
     End If
-      
+    
     rsReturn!tin = strTaxIDString
     rsReturn!ky_lapbo = IIf(DateTime.Month(DateTime.Now) < 10, "0" & DateTime.Month(DateTime.Now), CStr(DateTime.Month(DateTime.Now))) & "/" & CStr(DateTime.Year(DateTime.Now))
     rsReturn!ngay_nop = IIf(DateTime.Day(DateTime.Now) < 10, "0" & DateTime.Day(DateTime.Now), CStr(DateTime.Day(DateTime.Now))) & "/" & IIf(DateTime.Month(DateTime.Now) < 10, "0" & DateTime.Month(DateTime.Now), CStr(DateTime.Month(DateTime.Now))) & "/" & CStr(DateTime.Year(DateTime.Now))
