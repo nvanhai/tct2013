@@ -1,17 +1,25 @@
-<HSoKhaiThue><Static GroupName="TKhaiThue"><maTKhai>01_GTGT</maTKhai>
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>01_GTGT</maTKhai>
 		<tenTKhai>TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG (Mẫu số 01/GTGT)</tenTKhai>
-	</Static><Static GroupName="moTaBMau"><moTaBieuMau>Ban hành kèm theo thông tư số 28/2011/TT-BTC ngày 28/02/2011 của Bộ tài chính</moTaBieuMau>
+	</Static>
+	<Static GroupName="moTaBMau">
+		<moTaBieuMau>Ban hành kèm theo thông tư số 28/2011/TT-BTC ngày 28/02/2011 của Bộ tài chính</moTaBieuMau>
 		<ghiChuTKhai>Dành cho người nộp thuế khai thuế GTGT theo phương pháp khấu trừ</ghiChuTKhai>
-	</Static><Static GroupName="GiaHan"><maLyDoGiaHan>P_20</maLyDoGiaHan>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan>P_20</maLyDoGiaHan>
 		<lyDoGiaHan>D_20</lyDoGiaHan>
-	</Static><Static GroupName="TKhaiThue"><nguoiKy>K_52</nguoiKy>
-		<ngayKy>K_53</ngayKy>
-	</Static><Static GroupName="NNT"><maHuyenNNT></maHuyenNNT>
-		<maTinhNNT></maTinhNNT>
-	</Static><Static GroupName="DLyThue"><maHuyenDLyThue></maHuyenDLyThue>
-		<maTinhDLyThue></maTinhDLyThue>
-	</Static><Static GroupName="NVienDLy"><tenNVienDLyThue>D_52</tenNVienDLyThue>
-		<cchiHNghe>D_53</cchiHNghe>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT/>
+		<maTinhNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
 		<maTMNSNN>L_14</maTMNSNN>
 		<ct21>I_23</ct21>
 		<ct22>L_24</ct22>
@@ -40,4 +48,13 @@
 		<ct42>L_48</ct42>
 		<ct42a>L_49</ct42a>
 		<ct43>L_50</ct43>
-	</Static></HSoKhaiThue>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>K_52</nguoiKy>
+		<ngayKy>K_53</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>D_52</tenNVienDLyThue>
+		<cchiHNghe>D_53</cchiHNghe>
+	</Static>
+</HSoKhaiThue>
