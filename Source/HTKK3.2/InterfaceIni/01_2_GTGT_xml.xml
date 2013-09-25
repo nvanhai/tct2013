@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<PL>
+<PL01_2_GTGT>
 	<Dynamic GroupName="ChiTietHHDVDRieng">
 		<HDonMVao id="ID_6">
 			<kyHieuHDon>C_8</kyHieuHDon>
@@ -94,4 +93,4 @@
 		<tongGTriMVao>F_41</tongGTriMVao>
 		<tongThueMVao>F_42</tongThueMVao>
 	</Static>
-</PL>
+</PL01_2_GTGT>
