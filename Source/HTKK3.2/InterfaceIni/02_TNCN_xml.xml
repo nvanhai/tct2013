@@ -9,10 +9,6 @@
 		<maLyDoGiaHan></maLyDoGiaHan>
 		<lyDoGiaHan></lyDoGiaHan>
 	</Static>
-	<Static GroupName="TKhaiThue">
-		<nguoiKy>R_58</nguoiKy>
-		<ngayKy>R_60</ngayKy>
-	</Static>
 	<Static GroupName="NNT">
 		<maHuyenNNT></maHuyenNNT>
 		<maTinhNNT></maTinhNNT>
@@ -20,10 +16,6 @@
 	<Static GroupName="DLyThue">
 		<maHuyenDLyThue></maHuyenDLyThue>
 		<maTinhDLyThue></maTinhDLyThue>
-	</Static>
-	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>H_58</tenNVienDLyThue>
-		<cchiHNghe>H_60</cchiHNghe>
 	</Static>
 	<Static GroupName="TongSoCaNhanDaKhauTru">
 		<ct21>U_40</ct21>
@@ -47,5 +39,13 @@
 		<ct33>U_52</ct33>
 		<ct34>U_53</ct34>
 		<ct35>U_54</ct35>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_58</nguoiKy>
+		<ngayKy>R_60</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>H_58</tenNVienDLyThue>
+		<cchiHNghe>H_60</cchiHNghe>
 	</Static>
 </HSoKhaiThue>
