@@ -9,10 +9,6 @@
 		<maLyDoGiaHan></maLyDoGiaHan>
 		<lyDoGiaHan></lyDoGiaHan>
 	</Static>
-	<Static GroupName="TKhaiThue">
-		<nguoiKy>AF_75</nguoiKy>
-		<ngayKy>AF_77</ngayKy>
-	</Static>
 	<Static GroupName="NNT">
 		<maHuyenNNT></maHuyenNNT>
 		<maTinhNNT></maTinhNNT>
@@ -20,10 +16,6 @@
 	<Static GroupName="DLyThue">
 		<maHuyenDLyThue></maHuyenDLyThue>
 		<maTinhDLyThue></maTinhDLyThue>
-	</Static>
-	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>U_75</tenNVienDLyThue>
-		<cchiHNghe>U_77</cchiHNghe>
 	</Static>
 	<Static GroupName="HangHoaChiuThueTTDB">
 		<tongDongIcot5>X_51</tongDongIcot5>
@@ -65,7 +57,6 @@
 			<ct10>0</ct10>
 		</NDungTKhaiTTDB>
 	</Dynamic>
-
 	<Static GroupName="HHoaKhongChiuThueTNDB">
 		<tongDongIIICot5>X_59</tongDongIIICot5>
 	</Static>
@@ -98,5 +89,13 @@
 		<tongGiaThue>AC_73</tongGiaThue>
 		<tongThueKTru>AH_73</tongThueKTru>
 		<tongThuePNop>AO_73</tongThuePNop>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>AF_75</nguoiKy>
+		<ngayKy>AF_77</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>U_75</tenNVienDLyThue>
+		<cchiHNghe>U_77</cchiHNghe>
 	</Static>
 </HSoKhaiThue>

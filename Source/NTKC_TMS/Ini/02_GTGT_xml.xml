@@ -1,4 +1,4 @@
-﻿<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30">
+<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>02_GTGT</maTKhai>
 		<tenTKhai>TỜ KHAI THUẾ GTGT DÀNH CHO DỰ ÁN ĐẦU TƯ</tenTKhai>
@@ -9,10 +9,6 @@
 		<maLyDoGiaHan></maLyDoGiaHan>
 		<lyDoGiaHan></lyDoGiaHan>
 	</Static>
-	<Static GroupName="TKhaiThue">
-		<nguoiKy>T_59</nguoiKy>
-		<ngayKy>T_61</ngayKy>
-	</Static>
 	<Static GroupName="NNT">
 		<maHuyenNNT>F_14</maHuyenNNT>
 		<maTinhNNT>Q_14</maTinhNNT>
@@ -20,10 +16,6 @@
 	<Static GroupName="DLyThue">
 		<maHuyenDLyThue>F_24</maHuyenDLyThue>
 		<maTinhDLyThue>Q_24</maTinhDLyThue>
-	</Static>
-	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>H_59</tenNVienDLyThue>
-		<cchiHNghe>H_61</cchiHNghe>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<ct21>W_42</ct21>
@@ -41,5 +33,13 @@
 		<ct30a>W_53</ct30a>
 		<ct31>W_54</ct31>
 		<ct32>W_55</ct32>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>T_59</nguoiKy>
+		<ngayKy>T_61</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>H_59</tenNVienDLyThue>
+		<cchiHNghe>H_61</cchiHNghe>
 	</Static>
 </HSoKhaiThue>

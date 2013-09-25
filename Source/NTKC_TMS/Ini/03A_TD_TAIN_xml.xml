@@ -3,14 +3,10 @@
 		<moTaBMau/>
 	</Static><Static GroupName="GiaHan"><maLyDoGiaHan></maLyDoGiaHan>
 		<lyDoGiaHan></lyDoGiaHan>
-	</Static><Static GroupName="TKhaiThue"><nguoiKy></nguoiKy>
-		<ngayKy></ngayKy>
 	</Static><Static GroupName="NNT"><maHuyenNNT></maHuyenNNT>
 		<maTinhNNT></maTinhNNT>
 	</Static><Static GroupName="DLyThue"><maHuyenDLyThue></maHuyenDLyThue>
 		<maTinhDLyThue></maTinhDLyThue>
-	</Static><Static GroupName="NVienDLy"><tenNVienDLyThue>token</tenNVienDLyThue>
-		<cchiHNghe></cchiHNghe>
 	</Static><Static GroupName="CTieuTKhaiChinh"><ct21></ct21>
 		<ct22>0.0</ct22>
 	</Static><Static GroupName="NoiDungChiTiet"><ct24></ct24>
@@ -22,4 +18,8 @@
 	</Static><Static GroupName="NoiDung"><Tongct29>1</Tongct29>
 		<Tongct30>1</Tongct30>
 		<Tongct31>1</Tongct31>
+	</Static><Static GroupName="TKhaiThue"><nguoiKy></nguoiKy>
+		<ngayKy></ngayKy>
+	</Static><Static GroupName="NVienDLy"><tenNVienDLyThue>token</tenNVienDLyThue>
+		<cchiHNghe></cchiHNghe>
 	</Static></HSoKhaiThue>
