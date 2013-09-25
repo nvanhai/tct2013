@@ -1,24 +1,19 @@
 <TKhai ngay_nop_tk="E_32" ky_lap_bo="E_30">
 	<Static>
-		 <maDVu>NTK</maDVu>
-		  <tenDVu>Nhận tờ khai mã vạch</tenDVu>
-		  <ttinNhaCCapDVu></ttinNhaCCapDVu>
-		  <soLan>T_6</soLan>
+		<maDVu>NTK</maDVu>
+		<tenDVu>Nhận tờ khai mã vạch</tenDVu>
+		<ttinNhaCCapDVu></ttinNhaCCapDVu>
+		<soLan>T_6</soLan>
 		<maTKhai>01_GTGT</maTKhai>
 		<tenTKhai>TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG (Mẫu số 01/GTGT)</tenTKhai>
 		<maLyDoGiaHan>AB_41</maLyDoGiaHan>
 		<lyDoGiaHan>E_41</lyDoGiaHan>
-		<nguoiKy>T_74</nguoiKy>
-		<ngayKy>T_76</ngayKy>
-		<tenNVienDLyThue>G_74</tenNVienDLyThue>
-		<cchiHNghe>G_76</cchiHNghe>
 		<maHuyenDLyThue></maHuyenDLyThue>
 		<tenHuyenDLyThue></tenHuyenDLyThue>
 		<maTinhDLyThue></maTinhDLyThue>
 		<tenTinhDLyThue></tenTinhDLyThue>
 		<maHuyenNNT></maHuyenNNT>
 		<maTinhNNT></maTinhNNT>
-		<maTMNSNN>K_77</maTMNSNN> 
 		<ct21>R_44</ct21>
 		<ct22>W_45</ct22>
 		<ct23>Q_48</ct23>
@@ -46,5 +41,12 @@
 		<ct42>W_69</ct42>
 		<ct42a>W_70</ct42a>
 		<ct43>W_71</ct43>
+				<nguoiKy>T_74</nguoiKy>
+		<ngayKy>T_76</ngayKy>
+		<tenNVienDLyThue>G_74</tenNVienDLyThue>
+		<cchiHNghe>G_76</cchiHNghe>
+
+				<maTMNSNN>K_77</maTMNSNN>
+
 	</Static>
 </TKhai>
