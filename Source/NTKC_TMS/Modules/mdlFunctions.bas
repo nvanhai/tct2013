@@ -1690,21 +1690,25 @@ Public Function PushDataToESB(ByVal xmlInput As String) As Boolean
     Dim sQueueName    As String
     Dim IsConnectMQ   As Boolean
     Dim IsCloseMQ     As Boolean
+    Dim IsTransfer As Boolean
     
     sQueueMgrName = xmlConfig.getElementsByTagName("queue_manager_name")(0).Text
     sQueueName = xmlConfig.getElementsByTagName("queue_name")(0).Text
     
     Dim MQPUT As New MQPUT
     IsConnectMQ = MQPUT.open_Conn(sQueueMgrName, sQueueName)
-    MQPUT.put_Msg xmlInput
+    IsTransfer = MQPUT.put_Msg(xmlInput)
     IsCloseMQ = MQPUT.close_Conn
     
-    If Not IsConnectMQ Then
-        PushDataToESB = False
-    Else
+    If IsConnectMQ And IsTransfer Then
         PushDataToESB = True
+    Else
+        PushDataToESB = False
     End If
-
+    'Dong connection den MQ
+    If (Not IsCloseMQ) Then
+       SaveErrorLog "Close MQ:", "Dong ket noi voi MQ cua truc", 1111, "Loi khong dong duoc ket noi voi MQ sau khi truyen tin"
+    End If
 End Function
 ' chuyen the "<", ">" thanh "&lt;", "&gt;" neu IsTagToASSCII = true
 Public Function ChangeTagASSCII(ByVal strTemp As String, ByVal IsTagToASSCII As Boolean) As String
