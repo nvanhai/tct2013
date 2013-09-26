@@ -6,7 +6,7 @@ BEGIN
   DataSourceBehavior  = 0  'vbNone
   MTSTransactionMode  = 0  'NotAnMTSObject
 END
-Attribute VB_Name = "cls_01ATNDN_DK"
+Attribute VB_Name = "cls_01BTNDN_DK"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
@@ -45,39 +45,9 @@ Public Sub Prepare1()
     With fps
         fps.EventEnabled(EventAllEvents) = False
         .Sheet = 1
-        .Row = 30
-        .Col = .ColLetterToNumber("O")
-        .Text = chkDauTho
+        SetDateFormat fps, 1, 68, fps.ColLetterToNumber("AR"), DDMMYYYY
         
-        .Row = 30
-        .Col = .ColLetterToNumber("P")
-        .Text = chkCondensate
-        
-        .Row = 30
-        .Col = .ColLetterToNumber("Q")
-        .Text = chkKhiThienNhien
-                        
-        .Row = 31
-
-        If chkKhiThienNhien = "1" Then
-            
-            .Col = .ColLetterToNumber("O")
-            .Text = ""
-            
-            .Col = .ColLetterToNumber("W")
-            .Text = TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year ' temp
-        Else
-            .Col = .ColLetterToNumber("O")
-            .Text = TAX_Utilities_New.Day & "/" & TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year
-            
-            .Col = .ColLetterToNumber("W")
-            .Text = ""
-        End If
-        
-        SetDateFormat fps, 1, 29, .ColLetterToNumber("AM"), DDMMYYYY
-        SetDateFormat fps, 1, 65, fps.ColLetterToNumber("AR"), DDMMYYYY
-        
-        .Row = 65
+        .Row = 68
         .Col = fps.ColLetterToNumber("AR")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
@@ -85,24 +55,6 @@ Public Sub Prepare1()
         .Sheet = SHEET_PHU_LUC_01
         SetDateFormat fps, SHEET_PHU_LUC_01, 34, fps.ColLetterToNumber("AD"), DDMMYYYY
         '--end set for sheet Phu luc 01
-        
-        'load form
-        .Sheet = 1
-        .Row = 28
-        .Col = .ColLetterToNumber("AS")
-        If (.value = "1" Or .value = "chk") Then
-            .Row = 29
-            .Col = .ColLetterToNumber("AM")
-            .BackColor = mNonErrorColor
-            .Lock = False
-        Else
-            .Row = 29
-            .Col = .ColLetterToNumber("AM")
-            .BackColor = mLockNonErrorColor
-            .Lock = True
-        End If
-
-        'end
         fps.EventEnabled(EventAllEvents) = True
         
     End With
@@ -154,33 +106,6 @@ Public Sub Prepare2()
 
 End Sub
 
-Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonDown As Integer)
- With fps
-        If Col = .ColLetterToNumber("AS") And Row = 28 And .ActiveSheet = 1 Then
-            fps.EventEnabled(EventAllEvents) = False
-            .Sheet = 1
-            .Row = 28
-            .Col = .ColLetterToNumber("AS")
-            If (.value = "1") Then
-                .Row = 29
-                .Col = .ColLetterToNumber("AM")
-                .BackColor = mNonErrorColor
-                '.BorderStyle = BorderStyleFixedSingle
-                .Lock = False
-            Else
-                .Row = 29
-                .Col = .ColLetterToNumber("AM")
-                .BackColor = mLockNonErrorColor
-                .Lock = True
-                '.BorderStyle = BorderStyleNone
-                .Text = ""
-                UpdateCell fps, .Col, .Row, ""
-            End If
-            fps.EventEnabled(EventAllEvents) = True
-        End If
-
-    End With
-End Sub
 Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
 Dim i As Integer, iCol As Long, iRow As Long
 Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
@@ -227,23 +152,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
         .EventEnabled(EventAllEvents) = False
         mCurrentSheet = .Sheet
         If .ActiveSheet = 1 Then
-            If Col = .ColLetterToNumber("AM") And Row = 29 Then
-                .GetText Col, Row, varTemp
-                If varTemp <> "" And varTemp <> "../../...." Then
-                    If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
-                        .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
-                    Else
-                        .SetFocus
-                        .SetActiveCell Col, Row
-                    End If
-                Else
-                 .SetText Col, Row, ""
-                End If
-                .Col = Col
-                .Row = Row
-                UpdateCell fps, Col, Row, .Text
-            End If
-            If Col = .ColLetterToNumber("AR") And Row = 65 Then
+            If Col = .ColLetterToNumber("AR") And Row = 68 Then
                 .GetText Col, Row, varTemp
                 If varTemp <> "" And varTemp <> "../../...." Then
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
@@ -592,12 +501,12 @@ Public Sub SetData()
         ssSheet = mCurrentSheet
         .Sheet = 1
         mCurrentSheet = .Sheet
-        'clear checkbox
-        .Row = 28
-        .Col = .ColLetterToNumber("Y")
-        .value = 0
-        .Col = .ColLetterToNumber("AS")
-        .value = 0
+'        'clear checkbox
+'        .Row = 28
+'        .Col = .ColLetterToNumber("Y")
+'        .value = 0
+'        .Col = .ColLetterToNumber("AS")
+'        .value = 0
         .Sheet = .ActiveSheet
         .EventEnabled(EventAllEvents) = True
     End With
@@ -620,32 +529,7 @@ Private Sub UpdateSheets()
         ssSheet = mCurrentSheet
         .Sheet = 1
         mCurrentSheet = .Sheet
-
-        If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "Active") <> "0") Then
-
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
-                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-               
-                '.GetText lCol, lRow, varTemp
-                'UpdateCell fps, lCol, lRow, varTemp
-                If (lRow = 28 And lCol = .ColLetterToNumber("Y")) Or (lRow = 28 And lCol = .ColLetterToNumber("AS")) Then
-                    .GetText lCol, lRow, varTemp
-
-                    If varTemp = "1" Or UCase(CStr(varTemp)) = "X" Then
-                        UpdateCell fps, lCol, lRow, "x"
-                    Else
-                        UpdateCell fps, lCol, lRow, ""
-                    End If
-
-                Else
-                    .GetText lCol, lRow, varTemp
-                    UpdateCell fps, lCol, lRow, varTemp
-                End If
-               
-            Next
-
-        End If
-        
+        'process.....
         .Sheet = .ActiveSheet
         .EventEnabled(EventAllEvents) = True
     End With
