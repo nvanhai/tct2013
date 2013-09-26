@@ -1911,7 +1911,7 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             fldValue = paXmlDoc.xml
             fldValue = ChangeTagASSCII(fldValue, True)
             
-            If (Dir("c:\TempXML\") = "") Then
+            If (Dir("c:\TempXML\", vbDirectory) = "") Then
                 MkDir "c:\TempXML\"
             End If
             Dim sParamUser As String
@@ -1949,7 +1949,7 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             fldValue = paXmlDoc.xml
             fldValue = ChangeTagASSCII(fldValue, True)
             
-            If (Dir("c:\TempXML\") = "") Then
+            If (Dir("c:\TempXML\", vbDirectory) = "") Then
                 MkDir "c:\TempXML\"
             End If
             Dim sParamNNT As String
@@ -1989,7 +1989,7 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             fldValue = paXmlDoc.xml
             fldValue = ChangeTagASSCII(fldValue, True)
             
-            If (Dir("c:\TempXML\") = "") Then
+            If (Dir("c:\TempXML\", vbDirectory) = "") Then
                 MkDir "c:\TempXML\"
             End If
             Dim sParamDLT As String
