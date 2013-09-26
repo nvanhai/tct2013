@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":19A5
+         SpreadDesigner  =   "frmInterfaces.frx":1969
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1C69
+      SpreadDesigner  =   "frmInterfaces.frx":1BF1
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -3826,7 +3826,6 @@ Private Sub getAllNodes(ByVal nodes As MSXML.IXMLDOMNode, _
 
 End Sub
 
-
 Private Sub cmdExportXml_Click()
     Dim xmlMapCT     As New MSXML.DOMDocument
     Dim xmlTK        As New MSXML.DOMDocument
@@ -3842,18 +3841,16 @@ Private Sub cmdExportXml_Click()
     Dim blnFinish    As Boolean
     
     On Error GoTo ErrHandle
-    
-    CallFinish
-    
-    blnFinish = CheckValidData
-    
-    If blnFinish = False Then
+    Dim intCtrl        As Integer
+    Dim strArrActive() As String
+
+    If SaveToKhai(intCtrl, strArrActive) = False Then
         Exit Sub
     End If
         
     MaTk = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile")
     
-'    Lay duong dan cua file
+    '    Lay duong dan cua file
     With CommonDialog1
         .CancelError = True
         .InitDir = GetAbsolutePath("..")
@@ -3870,10 +3867,22 @@ Private Sub cmdExportXml_Click()
         End If
 
     End With
+    
+    Dim fso As New FileSystemObject
+
+    If fso.FileExists(strFileName) = True Then
+        If DisplayMessage("0052", msYesNo, miQuestion) = mrNo Then
+            Exit Sub
+        End If
+    End If
         
     xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTk & "_xml.xml")
     xmlMapCT.Load GetAbsolutePath("..\InterfaceIni\" & MaTk & "_xml.xml")
     
+    If xmlTK.hasChildNodes = False Or xmlMapCT.hasChildNodes = False Then
+        DisplayMessage "0281", msOKOnly, miCriticalError
+        Exit Sub
+    End If
     
     With fpSpread1
         Dim cellID         As String
@@ -4000,96 +4009,99 @@ Private Sub cmdExportXml_Click()
 
                 xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\" & MaTk & "_xml.xml")
 
-                cellRange = 0
-                .sheet = nodeValIndex + 1
+                If xmlPL.hasChildNodes = True And xmlMapPL.hasChildNodes = True Then
+                    cellRange = 0
+                    .sheet = nodeValIndex + 1
 
-                For Each xmlSection In xmlMapPL.lastChild.childNodes
+                    For Each xmlSection In xmlMapPL.lastChild.childNodes
 
-                    If UCase(xmlSection.nodeName) = "DYNAMIC" Then
-                        CloneNode.loadXML xmlSection.xml
-                        id = 1
-                        currentGroup = GetAttribute(xmlSection, "GroupName")
+                        If UCase(xmlSection.nodeName) = "DYNAMIC" Then
+                            CloneNode.loadXML xmlSection.xml
+                            id = 1
+                            currentGroup = GetAttribute(xmlSection, "GroupName")
 
-                        If GetAttribute(xmlSection, "GroupCellRange") = vbNullString Then
-                            GroupCellRange = 1
-                        Else
-                            GroupCellRange = Val(GetAttribute(xmlSection, "GroupCellRange"))
-                        End If
+                            If GetAttribute(xmlSection, "GroupCellRange") = vbNullString Then
+                                GroupCellRange = 1
+                            Else
+                                GroupCellRange = Val(GetAttribute(xmlSection, "GroupCellRange"))
+                            End If
 
-                        Blank = True
-
-                        If xmlPL.getElementsByTagName(currentGroup)(0).hasChildNodes Then
-                            xmlPL.getElementsByTagName(currentGroup)(0).removeChild xmlPL.getElementsByTagName(currentGroup)(0).firstChild
-                        End If
-
-                        Do
                             Blank = True
-                            SetCloneNode CloneNode, xmlSection, Blank, cellRange, sRow
+
+                            If xmlPL.getElementsByTagName(currentGroup)(0).hasChildNodes Then
+                                xmlPL.getElementsByTagName(currentGroup)(0).removeChild xmlPL.getElementsByTagName(currentGroup)(0).firstChild
+                            End If
+
+                            Do
+                                Blank = True
+                                SetCloneNode CloneNode, xmlSection, Blank, cellRange, sRow
                             
-                            .Col = .ColLetterToNumber("B")
-                            .Row = sRow
+                                .Col = .ColLetterToNumber("B")
+                                .Row = sRow
 
-                            If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
-                                cellRange = cellRange - GroupCellRange
-                                Exit Do
-                            End If
-
-                            SetAttribute CloneNode.firstChild.firstChild, "id", CStr(id)
-                            Set nodePL = xmlPL.getElementsByTagName(currentGroup)(0)
-                            nodePL.appendChild CloneNode.firstChild.firstChild.CloneNode(True)
-                            id = id + 1
-                            cellRange = cellRange + GroupCellRange
-                        Loop
-                        
-                    Else
-                        Dim xmlChildNodePL As MSXML.IXMLDOMNode
-                        currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
-
-                        For Each xmlCellNode In xmlSection.childNodes
-
-                            If xmlCellNode.hasChildNodes Then
-                                cellID = xmlCellNode.Text
-                            Else
-                                cellID = ""
-                            End If
-
-                            cellArray = Split(cellID, "_")
-
-                            If currentGroup = vbNullString Or currentGroup = "" Then
-                                Set xmlCellTKNode = xmlPL.getElementsByTagName(xmlCellNode.nodeName)(0)
-                            Else
-
-                                For Each xmlChildNodePL In xmlTK.getElementsByTagName(xmlCellNode.nodeName)
-
-                                    If xmlChildNodePL.parentNode.nodeName = currentGroup Then
-                                        Set xmlCellTKNode = xmlChildNodePL
-                                        Exit For
-                                    End If
-
-                                Next
-
-                            End If
-
-                            If UBound(cellArray) <> 1 Or Len(cellID) > 5 Then
-                                xmlCellTKNode.Text = cellID
-                            Else
-                                .Col = .ColLetterToNumber(cellArray(0))
-                                .Row = Val(cellArray(1)) + cellRange
-
-                                If .CellType = CellTypeNumber Then
-                                    xmlCellTKNode.Text = .value
-                                Else
-                                    xmlCellTKNode.Text = .Text
+                                If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
+                                    cellRange = cellRange - GroupCellRange
+                                    Exit Do
                                 End If
-                            End If
 
-                        Next
+                                SetAttribute CloneNode.firstChild.firstChild, "id", CStr(id)
+                                Set nodePL = xmlPL.getElementsByTagName(currentGroup)(0)
+                                nodePL.appendChild CloneNode.firstChild.firstChild.CloneNode(True)
+                                id = id + 1
+                                cellRange = cellRange + GroupCellRange
+                            Loop
+                        
+                        Else
+                            Dim xmlChildNodePL As MSXML.IXMLDOMNode
+                            currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
 
-                    End If
+                            For Each xmlCellNode In xmlSection.childNodes
 
-                Next
+                                If xmlCellNode.hasChildNodes Then
+                                    cellID = xmlCellNode.Text
+                                Else
+                                    cellID = ""
+                                End If
 
-                xmlTK.getElementsByTagName("PLuc")(0).appendChild xmlPL.lastChild
+                                cellArray = Split(cellID, "_")
+
+                                If currentGroup = vbNullString Or currentGroup = "" Then
+                                    Set xmlCellTKNode = xmlPL.getElementsByTagName(xmlCellNode.nodeName)(0)
+                                Else
+
+                                    For Each xmlChildNodePL In xmlTK.getElementsByTagName(xmlCellNode.nodeName)
+
+                                        If xmlChildNodePL.parentNode.nodeName = currentGroup Then
+                                            Set xmlCellTKNode = xmlChildNodePL
+                                            Exit For
+                                        End If
+
+                                    Next
+
+                                End If
+
+                                If UBound(cellArray) <> 1 Or Len(cellID) > 5 Then
+                                    xmlCellTKNode.Text = cellID
+                                Else
+                                    .Col = .ColLetterToNumber(cellArray(0))
+                                    .Row = Val(cellArray(1)) + cellRange
+
+                                    If .CellType = CellTypeNumber Then
+                                        xmlCellTKNode.Text = .value
+                                    Else
+                                        xmlCellTKNode.Text = .Text
+                                    End If
+                                End If
+
+                            Next
+
+                        End If
+
+                    Next
+
+                    xmlTK.getElementsByTagName("PLuc")(0).appendChild xmlPL.lastChild
+           
+                End If
             End If
 
         Next
@@ -4097,8 +4109,10 @@ Private Sub cmdExportXml_Click()
     End With    'Save temp
     
     xmlTK.save strFileName
+    DisplayMessage "0280", msOKOnly, miCriticalError
     Exit Sub
 ErrHandle:
+    DisplayMessage "0279", msOKOnly, miCriticalError
     SaveErrorLog Me.Name, "cmdExportXML_Click", Err.Number, Err.Description
 End Sub
 
@@ -5336,19 +5350,15 @@ End Sub
 ''' cmdSave_Click description
 ''' Checking business error but user can save it anyway
 ''' No parameter
-Private Sub cmdSave_Click()
-    On Error GoTo ErrorHandle
+Private Function SaveToKhai(ByRef intCtrl, ByRef strArrActive() As String) As Boolean
     Dim blnValid As Boolean
-    
-'    Debug.Print "Bat dau ghi" & Time
     Lbload.Visible = True
     
     flgloadToKhai = False
     Dim varMenuId As String
     varMenuId = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
 
-    If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" _
-    Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95") Then
+    If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95") Then
         TonghopKHBS
     End If
 
@@ -5356,7 +5366,8 @@ Private Sub cmdSave_Click()
     If strKHBS = "frmKHBS_BS" Then
         Call objTaxBusiness.UpdateChangeKHBS
         saveKHBS
-        Exit Sub
+        SaveToKhai = False
+        Exit Function
     End If
 
     ' Doi voi cac to quyet toan TNCN thi dat co flgloadToKhai = false
@@ -5372,10 +5383,7 @@ Private Sub cmdSave_Click()
     CallFinish
             
     Debug.Print "ket thuc call finish" & Time
-    
-    Dim intCtrl        As Integer
-    Dim strArrActive() As String
-            
+               
     'Backup node validity
     For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
         ReDim Preserve strArrActive(intCtrl)
@@ -5387,8 +5395,6 @@ Private Sub cmdSave_Click()
         Call objTaxBusiness.SetActiveSheet '(TAX_Utilities_New.NodeValidity.childNodes(intCtrl))
         'Next intCtrl
     End If
-            
-  
             
     blnValid = CheckValidData
 
@@ -5412,36 +5418,144 @@ Private Sub cmdSave_Click()
 
     '****************************
     Lbload.Visible = False
-                
+    SaveToKhai = False
     If Not blnValid And (checkSoCT = 1 Or checkSoCT = 2 Or checkSoCT = 3 Or checkSoCT = 4) Then
         If DisplayMessage("0184", msYesNo, miQuestion) = mrYes Then
-            If UpdateData Then DisplayMessage "0002", msOKOnly, miInformation
+            If UpdateData Then SaveToKhai = True
         End If
 
     ElseIf Not blnValid And checkSoCT = 0 Then
 
         If DisplayMessage("0015", msYesNo, miQuestion) = mrYes Then
-            If UpdateData Then DisplayMessage "0002", msOKOnly, miInformation
+            If UpdateData Then SaveToKhai = True
         End If
 
     Else
 
-        If UpdateData Then DisplayMessage "0002", msOKOnly, miInformation
+        If UpdateData Then SaveToKhai = True
     End If
 
     ' Set lai co isNewDataBS sau khi bam nut ghi
-    If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" _
-    Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" _
-    Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95") Then
+    If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95") Then
         isNewdataBS = False
     End If
             
     fpSpread1.sheet = fpSpread1.ActiveSheet
     SetStatus fpSpread1.ActiveCol, fpSpread1.ActiveRow
     fpSpread1.SetFocus
+End Function
+
+Private Sub cmdSave_Click()
+    On Error GoTo ErrorHandle
+    '    Dim blnValid As Boolean
     
-'    Debug.Print "Ket thuc ghi ghi" & Time
+    '    Debug.Print "Bat dau ghi" & Time
+    '    Lbload.Visible = True
+    '
+    '    flgloadToKhai = False
+    '    Dim varMenuId As String
+    '    varMenuId = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
+    '
+    '    If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" _
+    '    Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95") Then
+    '        TonghopKHBS
+    '    End If
+    '
+    '    ' Save KHBS
+    '    If strKHBS = "frmKHBS_BS" Then
+    '        Call objTaxBusiness.UpdateChangeKHBS
+    '        saveKHBS
+    '        Exit Sub
+    '    End If
+    '
+    '    ' Doi voi cac to quyet toan TNCN thi dat co flgloadToKhai = false
+    '    ' Muc dich la trong truong hop load bang ke thi ko tong hop lai du lieu
+    '    ' Khi Ghi, In, Ket xuat thi dat lai trang thai
+    '    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_10") Then
+    '        objTaxBusiness.flgloadToKhai = flgloadToKhai
+    '    End If
+    '
+    '    'CallFinish
+    '    Debug.Print "bat dau call finish" & Time
+    '
+    '    CallFinish
+    '
+    '    Debug.Print "ket thuc call finish" & Time
+    '
+    '    Dim strArrActive() As String
+    '
+    '    'Backup node validity
+    '    For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
+    '        ReDim Preserve strArrActive(intCtrl)
+    '        strArrActive(intCtrl) = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(intCtrl), "Active")
+    '    Next intCtrl
+    '
+    '    If Not objTaxBusiness Is Nothing Then
+    '        'For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
+    '        Call objTaxBusiness.SetActiveSheet '(TAX_Utilities_New.NodeValidity.childNodes(intCtrl))
+    '        'Next intCtrl
+    '    End If
+    '
+    '
+    '
+    '    blnValid = CheckValidData
+    '
+    '    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "36") Then
+    '        If objTaxBusiness.iflag = True Then
+    '            DisplayMessage "0225", msOKOnly, miInformation
+    '        End If
+    '    End If
+    '
+    '    ' nkhoan: 02/TNDN
+    '    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") Then
+    '        If objTaxBusiness.iflag = True Then
+    '            DisplayMessage "0240", msOKOnly, miCriticalError
+    '        End If
+    '    End If
+    '
+    '    'Restore active properties of node validity
+    '    For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
+    '        SetAttribute TAX_Utilities_New.NodeValidity.childNodes(intCtrl), "Active", strArrActive(intCtrl)
+    '    Next intCtrl
+    '
+    '    '****************************
+    '    Lbload.Visible = False
+    '
+    '    If Not blnValid And (checkSoCT = 1 Or checkSoCT = 2 Or checkSoCT = 3 Or checkSoCT = 4) Then
+    '        If DisplayMessage("0184", msYesNo, miQuestion) = mrYes Then
+    '            If UpdateData Then DisplayMessage "0002", msOKOnly, miInformation
+    '        End If
+    '
+    '    ElseIf Not blnValid And checkSoCT = 0 Then
+    '
+    '        If DisplayMessage("0015", msYesNo, miQuestion) = mrYes Then
+    '            If UpdateData Then DisplayMessage "0002", msOKOnly, miInformation
+    '        End If
+    '
+    '    Else
+    '
+    '        If UpdateData Then DisplayMessage "0002", msOKOnly, miInformation
+    '    End If
+    '
+    '    ' Set lai co isNewDataBS sau khi bam nut ghi
+    '    If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" _
+    '    Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" _
+    '    Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95") Then
+    '        isNewdataBS = False
+    '    End If
+    '
+    '    fpSpread1.sheet = fpSpread1.ActiveSheet
+    '    SetStatus fpSpread1.ActiveCol, fpSpread1.ActiveRow
+    '    fpSpread1.SetFocus
     
+    '    Debug.Print "Ket thuc ghi ghi" & Time
+    Dim intCtrl As Integer
+    Dim strArrActive() As String
+
+    If SaveToKhai(intCtrl, strArrActive) = True Then
+        DisplayMessage "0002", msOKOnly, miInformation
+    End If
+
     Exit Sub
     
 ErrorHandle:
