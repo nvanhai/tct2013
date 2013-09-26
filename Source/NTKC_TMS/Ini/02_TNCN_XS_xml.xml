@@ -23,8 +23,8 @@
 		<ct23>S_44</ct23>
 		<ct24>S_45</ct24>
 		<ct25>S_46</ct25>
-		<ct26>S_47</ct26>
-		<ct27>S_48</ct27>
+	<!--	<ct26>S_47</ct26>
+		<ct27>S_48</ct27> -->
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>T_58</nguoiKy>

@@ -239,6 +239,7 @@ End Sub
 Private Sub Form_Resize()
     SetFormCaption Me, imgCaption, lblCaption
 End Sub
+
 '****************************************************
 'Description:IsValidUserESB function check if user and password are valid
 'Author:nshung
@@ -249,51 +250,75 @@ End Sub
 'Return:
 '****************************************************
 Private Function IsValidUserESB() As Integer
-On Error GoTo ErrorHandle
+    On Error GoTo ErrorHandle
 
     'Dim xmlESBReturn As New MSXML.DOMDocument
     Set xmlResultNSD = New MSXML.DOMDocument
     Dim strResultNSD As String
-    Dim sStatus As String
-'
-'    IsValidUserESB = 2
-'    Exit Function
+    Dim sStatus      As String
+    '
+        IsValidUserESB = 2
+        Exit Function
     
     strResultNSD = GetDataFromESB(txtUsername.Text, txtPassword.Text, "NSD")
     'Chuan hoa file xml ket qua - lay duoc tu ESB
     strResultNSD = ChangeTagASSCII(strResultNSD, False)
     xmlResultNSD.loadXML strResultNSD
     
-    
+    'Check validate xmlResultNSD
+    If (strResultNSD = "") Then
+        IsValidUserESB = 1
+        
+        Exit Function
+    End If
 
     If (Not xmlResultNSD Is Nothing) Then
-        sStatus = xmlResultNSD.getElementsByTagName("Status")(0).Text
-        strCurrentVersion = xmlResultNSD.getElementsByTagName("NTKversion")(0).Text
-        strUserName = xmlResultNSD.getElementsByTagName("UserName")(0).Text
-        strUserID = txtUsername.Text
         
-        Select Case sStatus
-            Case "01"  ' Thanh cong
-                IsValidUserESB = 2  'Message login thanh cong
-                Exit Function
-            Case "02" 'Loi xac thuc NSD
-                IsValidUserESB = 0   'Message loi use, pass
-                Set xmlResultNSD = Nothing
-                Exit Function
-            Case "03" 'Cac loi khac cua he thong TMS
-                IsValidUserESB = 1  'Message loi khong dang nhap duoc
-                Set xmlResultNSD = Nothing
-                Exit Function
-            Case Else
-                IsValidUserESB = 1
-                Set xmlResultNSD = Nothing
-                Exit Function
-        End Select
+        Dim checkValue As MSXML.IXMLDOMNode
+        Set checkValue = xmlResultNSD.selectSingleNode("Status")
+
+        If (checkValue Is Nothing) Then
+            IsValidUserESB = 1  'Message login thanh cong
+            Set xmlResultNSD = Nothing
+            Exit Function
+        Else
+        
+            sStatus = xmlResultNSD.getElementsByTagName("Status")(0).Text
+            strCurrentVersion = xmlResultNSD.getElementsByTagName("NTKversion")(0).Text
+            strUserName = xmlResultNSD.getElementsByTagName("UserName")(0).Text
+            strUserID = txtUsername.Text
+        
+            Select Case sStatus
+
+                Case "01"  ' Thanh cong
+                    IsValidUserESB = 2  'Message login thanh cong
+                    Set xmlResultNSD = Nothing
+                    Exit Function
+
+                Case "02" 'Loi xac thuc NSD
+                    IsValidUserESB = 0   'Message loi use, pass
+                    Set xmlResultNSD = Nothing
+                    Exit Function
+
+                Case "03" 'Cac loi khac cua he thong TMS
+                    IsValidUserESB = 1  'Message loi khong dang nhap duoc
+                    Set xmlResultNSD = Nothing
+                    Exit Function
+
+                Case Else
+                    IsValidUserESB = 1
+                    Set xmlResultNSD = Nothing
+                    Exit Function
+            End Select
+
+        End If
+
     Else
         IsValidUserESB = 1
     End If
     
 ErrorHandle:
+    IsValidUserESB = 1
     Me.MousePointer = vbDefault
     frmSystem.MousePointer = vbDefault
     SaveErrorLog Me.Name, "IsValidUserESB", Err.Number, Err.Description
@@ -518,8 +543,8 @@ Private Function CheckVersion() As Boolean
     
     On Error GoTo ErrHandle
     
-'    CheckVersion = True
-'    Exit Function
+    CheckVersion = True
+    Exit Function
     
 '    strSQL = "SELECT rv_low_value phien_ban " & _
 '           "From cg_ref_codes " & _
