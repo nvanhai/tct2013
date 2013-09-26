@@ -5344,12 +5344,7 @@ Private Sub convertData08B()
     End With
 End Sub
 
-''' cmdSave_Click description
-''' Checking business error but user can save it anyway
-''' No parameter
-''' cmdSave_Click description
-''' Checking business error but user can save it anyway
-''' No parameter
+'Ham save du lieu chuyen tu sub cmdSave_Click
 Private Function SaveToKhai(ByRef intCtrl, ByRef strArrActive() As String) As Boolean
     Dim blnValid As Boolean
     Lbload.Visible = True
@@ -5444,6 +5439,13 @@ Private Function SaveToKhai(ByRef intCtrl, ByRef strArrActive() As String) As Bo
     SetStatus fpSpread1.ActiveCol, fpSpread1.ActiveRow
     fpSpread1.SetFocus
 End Function
+
+''' cmdSave_Click description
+''' Checking business error but user can save it anyway
+''' No parameter
+''' cmdSave_Click description
+''' Checking business error but user can save it anyway
+''' No parameter
 
 Private Sub cmdSave_Click()
     On Error GoTo ErrorHandle
