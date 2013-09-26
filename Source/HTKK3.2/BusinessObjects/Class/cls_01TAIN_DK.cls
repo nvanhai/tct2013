@@ -109,7 +109,7 @@ Public Sub Prepare1()
         .Sheet = 1
         .Row = 28
         .Col = .ColLetterToNumber("AS")
-        If (.value = "1") Then
+        If (.value = "1" Or .value = "chk") Then
             .Row = 29
             .Col = .ColLetterToNumber("AM")
             .BackColor = mNonErrorColor
