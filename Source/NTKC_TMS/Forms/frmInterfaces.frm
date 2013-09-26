@@ -1461,9 +1461,9 @@ Private Sub ExecuteSave()
     xmlDocSave.save sFileName
     
     ' Push MQ
-'    If (Not PushDataToESB(xmlDocSave.xml)) Then
-'        MessageBox "0137", msOKOnly, miCriticalError
-'    End If
+    If (Not PushDataToESB(xmlDocSave.xml)) Then
+        MessageBox "0137", msOKOnly, miCriticalError
+    End If
 
     ' End push
     

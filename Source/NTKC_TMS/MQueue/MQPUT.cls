@@ -39,7 +39,7 @@ Public Function close_Conn() As Boolean
   ' If queue manager connected successfully - then disconnect
   If gHcon Then
     MQDISC gHcon, CompCode, Reason
-    close_Conn = False
+    'close_Conn = False
   End If
   
   SaveErrorLog "MQPUT", "close_ConnMQ", C_options, "CompCode = " & CompCode & " Reason = " & Reason
@@ -94,7 +94,7 @@ Public Function open_Conn(ByVal qm As String, ByVal qn As String) As Boolean
     If CompCode <> MQCC_OK Then
       Beep
       open_Conn = False
-      Exit Function
+      'Exit Function
       'COMMON PROBLEMS:
       '================================================
       '  CompCode = 2, Reason = 2085
@@ -139,30 +139,34 @@ Public Function open_Conn(ByVal qm As String, ByVal qn As String) As Boolean
   
 End Function
 
-Public Function put_Msg(ByVal xml As String)
-  Dim md As MQMD            ' Message descriptor
-  Dim pmo As MQPMO          ' MQPUT message options
-  Dim buflen As Long        ' Length of message to be put
-  Dim Buffer As String      ' Message to be put
-  Dim CompCode As Long      ' Completion code
-  Dim Reason As Long        ' Reason code
+Public Function put_Msg(ByVal xml As String) As Boolean
+    Dim md       As MQMD            ' Message descriptor
+    Dim pmo      As MQPMO          ' MQPUT message options
+    Dim buflen   As Long        ' Length of message to be put
+    Dim Buffer   As String      ' Message to be put
+    Dim CompCode As Long      ' Completion code
+    Dim Reason   As Long        ' Reason code
 
-  ' Setup MQMD and MQPMO to their respective
-  ' initial values
-  MQMD_DEFAULTS md
-  md.Format = MQFMT_STRING
-  ' We must set the code page in the MD to the code page of our characters
-  ' Assume Windows Latin 1 - this should be changed for other scripts
-  md.CodedCharSetId = 1252
-  MQPMO_DEFAULTS pmo
+    ' Setup MQMD and MQPMO to their respective
+    ' initial values
+    MQMD_DEFAULTS md
+    md.Format = MQFMT_STRING
+    ' We must set the code page in the MD to the code page of our characters
+    ' Assume Windows Latin 1 - this should be changed for other scripts
+    md.CodedCharSetId = 1252
+    MQPMO_DEFAULTS pmo
 
-  ' Get message to be "put" from the Put text box
-  buflen = Len(xml)
-  Buffer = xml
-  MQPUT gHcon, gHobj, md, pmo, buflen, Buffer, CompCode, Reason
+    ' Get message to be "put" from the Put text box
+    buflen = Len(xml)
+    Buffer = xml
+    MQPUT gHcon, gHobj, md, pmo, buflen, Buffer, CompCode, Reason
 
-  If CompCode <> MQCC_OK Then Beep
+    If CompCode <> MQCC_OK Then
+        put_Msg = False
+    Else
+        put_Msg = True
+    End If
   
-  SaveErrorLog "MQPUT", "close_ConnMQ", buflen, "CompCode = " & CompCode & " Reason = " & Reason
+    SaveErrorLog "MQPUT", "close_ConnMQ", buflen, "CompCode = " & CompCode & " Reason = " & Reason
 End Function
 
