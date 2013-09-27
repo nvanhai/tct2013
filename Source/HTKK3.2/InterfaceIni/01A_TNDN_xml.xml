@@ -31,11 +31,11 @@
 		<ct30>K_31</ct30>
 		<ct31>K_32</ct31>
 		<ct32>K_33</ct32>
-		<mucLuc>B_34</mucLuc>
+		<mucLuc>L_15</mucLuc>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>J41</nguoiKy>
-		<ngayKy>J43</ngayKy>
+		<nguoiKy>J_41</nguoiKy>
+		<ngayKy>J_43</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
 		<tenNVienDLyThue>E_41</tenNVienDLyThue>

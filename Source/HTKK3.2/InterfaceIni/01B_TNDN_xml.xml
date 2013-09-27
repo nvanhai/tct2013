@@ -5,8 +5,8 @@
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
-		<maLyDoGiaHan></maLyDoGiaHan>
-		<lyDoGiaHan></lyDoGiaHan>
+		<maLyDoGiaHan>O_50</maLyDoGiaHan>
+		<lyDoGiaHan>D_50</lyDoGiaHan>
 	</Static>
 	<Static GroupName="NNT">
 		<maHuyenNNT></maHuyenNNT>
@@ -31,7 +31,7 @@
 		<ct29>J_45</ct29>
 		<ct30>J_46</ct30>
 		<ct31>J_47</ct31>
-		<mucLuc>B_48</mucLuc>
+		<mucLuc>L_14</mucLuc>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>I_52</nguoiKy>
