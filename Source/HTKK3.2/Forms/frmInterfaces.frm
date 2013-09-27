@@ -6430,6 +6430,11 @@ Private Sub Form_Load()
             ' to khai GTGT se co to khai thang / quy
         If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "95" Or idMenu = "71" Or idMenu = "36" Or idMenu = "68" Then
              objTaxBusiness.strTkThangQuy = strQuy
+             If strQuy = "TK_THANG" Then
+                strKieuKy = "M"
+             ElseIf strQuy = "TK_QUY" Then
+                strKieuKy = "Q"
+             End If
         ElseIf idMenu = "92" Or idMenu = "93" Or idMenu = "98" Then
             objTaxBusiness.chkDauTho = strDauTho
             objTaxBusiness.chkCondensate = strCondensate
