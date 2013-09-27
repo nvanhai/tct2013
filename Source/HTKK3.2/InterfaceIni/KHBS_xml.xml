@@ -34,24 +34,6 @@
 			<ct6>BH_13</ct6>
 		</KHBSDieuChinhGiam>
 	</Dynamic>
-	<Dynamic GroupName="TongHopDCTangGiamPNop">
-		<DIEUCHINHSOTHUEPHAINOP id="ID_3">
-			<ct2></ct2>
-			<ct3></ct3>
-			<ct4></ct4>
-			<ct5></ct5>
-			<ct6></ct6>
-		</DIEUCHINHSOTHUEPHAINOP>
-	</Dynamic>
-	<Dynamic GroupName="TongHopDCTangGiamPNop">
-		<DIEUCHINHSOTHUEGTGTCHUAKTRU id="ID_4">
-			<ct2></ct2>
-			<ct3></ct3>
-			<ct4></ct4>
-			<ct5></ct5>
-			<ct6></ct6>
-		</DIEUCHINHSOTHUEGTGTCHUAKTRU>
-	</Dynamic>
 	<Static GroupName="SOTIENCHAMNOP">
 		<soNgayNopCham>BE_17</soNgayNopCham>
 		<soTienPhatNopCham>BE_18</soTienPhatNopCham>
