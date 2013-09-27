@@ -502,7 +502,7 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
             If fso.FileExists(strDataFileName) Then
                 fso.GetFile(strDataFileName).Attributes = Normal
             End If
-            TAX_Utilities_New.Data(CLng(lSheet)).save strDataFileName
+            TAX_Utilities_New.Data(CLng(lSheet)).Save strDataFileName
         End If
         '*********************************
     Next
@@ -3827,6 +3827,81 @@ Private Sub getAllNodes(ByVal nodes As MSXML.IXMLDOMNode, _
 End Sub
 
 Private Sub cmdExportXml_Click()
+    On Error GoTo ErrHandle
+    Dim varTemp As Variant
+    
+    flgloadToKhai = False
+    
+    ' Doi voi cac to quyet toan TNCN thi dat co flgloadToKhai = false
+    ' Muc dich la trong truong hop load bang ke thi ko tong hop lai du lieu
+    ' Khi Ghi, In, Ket xuat thi dat lai trang thai
+    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_10") Then
+        objTaxBusiness.flgloadToKhai = flgloadToKhai
+    End If
+    
+    Dim intCtrl        As Integer
+    Dim strArrActive() As String
+
+    ' Print KHBS
+    If strKHBS = "frmKHBS_BS" Then
+        Call objTaxBusiness.UpdateChangeKHBS
+        KetXuatXML
+        Exit Sub
+                
+    End If
+    
+    CallFinish
+    
+    ' nkhoan: 02/TNDN
+    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") Then
+        If objTaxBusiness.iflag = True Then
+            DisplayMessage "0240", msOKOnly, miCriticalError
+            Exit Sub
+        End If
+    End If
+
+    'Backup node validity
+    For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
+        ReDim Preserve strArrActive(intCtrl)
+        strArrActive(intCtrl) = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(intCtrl), "Active")
+    Next intCtrl
+
+    If Not objTaxBusiness Is Nothing Then
+        'For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
+        Call objTaxBusiness.SetActiveSheet '(TAX_Utilities_New.NodeValidity.childNodes(intCtrl))
+        'Next intCtrl
+    End If
+
+    '****************************
+        
+    If CheckValidData = True Then
+        KetXuatXML
+            
+    Else
+        DisplayMessage "0282", msOKOnly, miInformation
+    End If
+    
+    '****************************
+    ' added
+    'Modify date: 13/12/2005
+    'Restore active properties of node validity
+    For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
+        SetAttribute TAX_Utilities_New.NodeValidity.childNodes(intCtrl), "Active", strArrActive(intCtrl)
+    Next intCtrl
+
+    '****************************
+    Exit Sub
+
+ErrHandle:
+
+    If Err.Source <> "CommonDialog" Then
+        DisplayMessage "0279", msOKOnly, miCriticalError
+        SaveErrorLog Me.Name, "cmdExportXML_Click", Err.Number, Err.Description
+    End If
+
+End Sub
+
+Private Sub KetXuatXML()
     Dim xmlMapCT     As New MSXML.DOMDocument
     Dim xmlTK        As New MSXML.DOMDocument
     Dim xmlPL        As New MSXML.DOMDocument
@@ -3840,14 +3915,9 @@ Private Sub cmdExportXml_Click()
     Dim nodeVal      As MSXML.IXMLDOMNode
     Dim blnFinish    As Boolean
     
-    On Error GoTo ErrHandle
     Dim intCtrl        As Integer
     Dim strArrActive() As String
 
-    If SaveToKhai(intCtrl, strArrActive) = False Then
-        Exit Sub
-    End If
-        
     MaTk = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile")
     
     '    Lay duong dan cua file
@@ -3858,8 +3928,11 @@ Private Sub cmdExportXml_Click()
         .FilterIndex = 1
         .DialogTitle = "File xml export to " & .InitDir
         .FileName = getFileName
+        
         .ShowSave
-
+        If .FileName = vbNullString Or .FileName = "" Then
+            Exit Sub
+        End If
         If Right$(.FileName, 4) <> ".xml" Then
             strFileName = .FileName & ".xml"
         Else
@@ -4108,12 +4181,10 @@ Private Sub cmdExportXml_Click()
 
     End With    'Save temp
     
-    xmlTK.save strFileName
+    xmlTK.Save strFileName
     DisplayMessage "0280", msOKOnly, miCriticalError
     Exit Sub
-ErrHandle:
-    DisplayMessage "0279", msOKOnly, miCriticalError
-    SaveErrorLog Me.Name, "cmdExportXML_Click", Err.Number, Err.Description
+
 End Sub
 
 Private Sub cmdImportXML_Click()
@@ -5344,101 +5415,6 @@ Private Sub convertData08B()
     End With
 End Sub
 
-'Ham save du lieu chuyen tu sub cmdSave_Click
-Private Function SaveToKhai(ByRef intCtrl, ByRef strArrActive() As String) As Boolean
-    Dim blnValid As Boolean
-    Lbload.Visible = True
-    
-    flgloadToKhai = False
-    Dim varMenuId As String
-    varMenuId = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
-
-    If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95") Then
-        TonghopKHBS
-    End If
-
-    ' Save KHBS
-    If strKHBS = "frmKHBS_BS" Then
-        Call objTaxBusiness.UpdateChangeKHBS
-        saveKHBS
-        SaveToKhai = False
-        Exit Function
-    End If
-
-    ' Doi voi cac to quyet toan TNCN thi dat co flgloadToKhai = false
-    ' Muc dich la trong truong hop load bang ke thi ko tong hop lai du lieu
-    ' Khi Ghi, In, Ket xuat thi dat lai trang thai
-    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_10") Then
-        objTaxBusiness.flgloadToKhai = flgloadToKhai
-    End If
-
-    'CallFinish
-    Debug.Print "bat dau call finish" & Time
-    
-    CallFinish
-            
-    Debug.Print "ket thuc call finish" & Time
-               
-    'Backup node validity
-    For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
-        ReDim Preserve strArrActive(intCtrl)
-        strArrActive(intCtrl) = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(intCtrl), "Active")
-    Next intCtrl
-
-    If Not objTaxBusiness Is Nothing Then
-        'For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
-        Call objTaxBusiness.SetActiveSheet '(TAX_Utilities_New.NodeValidity.childNodes(intCtrl))
-        'Next intCtrl
-    End If
-            
-    blnValid = CheckValidData
-
-    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "36") Then
-        If objTaxBusiness.iflag = True Then
-            DisplayMessage "0225", msOKOnly, miInformation
-        End If
-    End If
-             
-    ' nkhoan: 02/TNDN
-    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") Then
-        If objTaxBusiness.iflag = True Then
-            DisplayMessage "0240", msOKOnly, miCriticalError
-        End If
-    End If
-            
-    'Restore active properties of node validity
-    For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
-        SetAttribute TAX_Utilities_New.NodeValidity.childNodes(intCtrl), "Active", strArrActive(intCtrl)
-    Next intCtrl
-
-    '****************************
-    Lbload.Visible = False
-    SaveToKhai = False
-    If Not blnValid And (checkSoCT = 1 Or checkSoCT = 2 Or checkSoCT = 3 Or checkSoCT = 4) Then
-        If DisplayMessage("0184", msYesNo, miQuestion) = mrYes Then
-            If UpdateData Then SaveToKhai = True
-        End If
-
-    ElseIf Not blnValid And checkSoCT = 0 Then
-
-        If DisplayMessage("0015", msYesNo, miQuestion) = mrYes Then
-            If UpdateData Then SaveToKhai = True
-        End If
-
-    Else
-
-        If UpdateData Then SaveToKhai = True
-    End If
-
-    ' Set lai co isNewDataBS sau khi bam nut ghi
-    If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95") Then
-        isNewdataBS = False
-    End If
-            
-    fpSpread1.sheet = fpSpread1.ActiveSheet
-    SetStatus fpSpread1.ActiveCol, fpSpread1.ActiveRow
-    fpSpread1.SetFocus
-End Function
 
 ''' cmdSave_Click description
 ''' Checking business error but user can save it anyway
@@ -5449,114 +5425,105 @@ End Function
 
 Private Sub cmdSave_Click()
     On Error GoTo ErrorHandle
-    '    Dim blnValid As Boolean
+    Dim blnValid As Boolean
     
-    '    Debug.Print "Bat dau ghi" & Time
-    '    Lbload.Visible = True
-    '
-    '    flgloadToKhai = False
-    '    Dim varMenuId As String
-    '    varMenuId = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
-    '
-    '    If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" _
-    '    Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95") Then
-    '        TonghopKHBS
-    '    End If
-    '
-    '    ' Save KHBS
-    '    If strKHBS = "frmKHBS_BS" Then
-    '        Call objTaxBusiness.UpdateChangeKHBS
-    '        saveKHBS
-    '        Exit Sub
-    '    End If
-    '
-    '    ' Doi voi cac to quyet toan TNCN thi dat co flgloadToKhai = false
-    '    ' Muc dich la trong truong hop load bang ke thi ko tong hop lai du lieu
-    '    ' Khi Ghi, In, Ket xuat thi dat lai trang thai
-    '    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_10") Then
-    '        objTaxBusiness.flgloadToKhai = flgloadToKhai
-    '    End If
-    '
-    '    'CallFinish
-    '    Debug.Print "bat dau call finish" & Time
-    '
-    '    CallFinish
-    '
-    '    Debug.Print "ket thuc call finish" & Time
-    '
-    '    Dim strArrActive() As String
-    '
-    '    'Backup node validity
-    '    For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
-    '        ReDim Preserve strArrActive(intCtrl)
-    '        strArrActive(intCtrl) = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(intCtrl), "Active")
-    '    Next intCtrl
-    '
-    '    If Not objTaxBusiness Is Nothing Then
-    '        'For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
-    '        Call objTaxBusiness.SetActiveSheet '(TAX_Utilities_New.NodeValidity.childNodes(intCtrl))
-    '        'Next intCtrl
-    '    End If
-    '
-    '
-    '
-    '    blnValid = CheckValidData
-    '
-    '    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "36") Then
-    '        If objTaxBusiness.iflag = True Then
-    '            DisplayMessage "0225", msOKOnly, miInformation
-    '        End If
-    '    End If
-    '
-    '    ' nkhoan: 02/TNDN
-    '    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") Then
-    '        If objTaxBusiness.iflag = True Then
-    '            DisplayMessage "0240", msOKOnly, miCriticalError
-    '        End If
-    '    End If
-    '
-    '    'Restore active properties of node validity
-    '    For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
-    '        SetAttribute TAX_Utilities_New.NodeValidity.childNodes(intCtrl), "Active", strArrActive(intCtrl)
-    '    Next intCtrl
-    '
-    '    '****************************
-    '    Lbload.Visible = False
-    '
-    '    If Not blnValid And (checkSoCT = 1 Or checkSoCT = 2 Or checkSoCT = 3 Or checkSoCT = 4) Then
-    '        If DisplayMessage("0184", msYesNo, miQuestion) = mrYes Then
-    '            If UpdateData Then DisplayMessage "0002", msOKOnly, miInformation
-    '        End If
-    '
-    '    ElseIf Not blnValid And checkSoCT = 0 Then
-    '
-    '        If DisplayMessage("0015", msYesNo, miQuestion) = mrYes Then
-    '            If UpdateData Then DisplayMessage "0002", msOKOnly, miInformation
-    '        End If
-    '
-    '    Else
-    '
-    '        If UpdateData Then DisplayMessage "0002", msOKOnly, miInformation
-    '    End If
-    '
-    '    ' Set lai co isNewDataBS sau khi bam nut ghi
-    '    If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" _
-    '    Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" _
-    '    Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95") Then
-    '        isNewdataBS = False
-    '    End If
-    '
-    '    fpSpread1.sheet = fpSpread1.ActiveSheet
-    '    SetStatus fpSpread1.ActiveCol, fpSpread1.ActiveRow
-    '    fpSpread1.SetFocus
+    Debug.Print "Bat dau ghi" & Time
+    Lbload.Visible = True
     
-    '    Debug.Print "Ket thuc ghi ghi" & Time
-    Dim intCtrl As Integer
-    Dim strArrActive() As String
-
-    If SaveToKhai(intCtrl, strArrActive) = True Then
-        DisplayMessage "0002", msOKOnly, miInformation
+    flgloadToKhai = False
+    Dim varMenuId As String
+    varMenuId = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
+    
+    If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95") Then
+        TonghopKHBS
     End If
+    
+    ' Save KHBS
+    If strKHBS = "frmKHBS_BS" Then
+        Call objTaxBusiness.UpdateChangeKHBS
+        saveKHBS
+        Exit Sub
+    End If
+    
+    ' Doi voi cac to quyet toan TNCN thi dat co flgloadToKhai = false
+    ' Muc dich la trong truong hop load bang ke thi ko tong hop lai du lieu
+    ' Khi Ghi, In, Ket xuat thi dat lai trang thai
+    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_10") Then
+        objTaxBusiness.flgloadToKhai = flgloadToKhai
+    End If
+    
+    'CallFinish
+    Debug.Print "bat dau call finish" & Time
+    
+    CallFinish
+    
+    Debug.Print "ket thuc call finish" & Time
+    
+    Dim intCtrl As Integer
+
+    Dim strArrActive() As String
+    
+    'Backup node validity
+    For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
+        ReDim Preserve strArrActive(intCtrl)
+        strArrActive(intCtrl) = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(intCtrl), "Active")
+    Next intCtrl
+    
+    If Not objTaxBusiness Is Nothing Then
+        'For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
+        Call objTaxBusiness.SetActiveSheet '(TAX_Utilities_New.NodeValidity.childNodes(intCtrl))
+        'Next intCtrl
+    End If
+    
+    blnValid = CheckValidData
+    
+    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "36") Then
+        If objTaxBusiness.iflag = True Then
+            DisplayMessage "0225", msOKOnly, miInformation
+        End If
+    End If
+    
+    ' nkhoan: 02/TNDN
+    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") Then
+        If objTaxBusiness.iflag = True Then
+            DisplayMessage "0240", msOKOnly, miCriticalError
+        End If
+    End If
+    
+    'Restore active properties of node validity
+    For intCtrl = 0 To TAX_Utilities_New.NodeValidity.childNodes.length - 1
+        SetAttribute TAX_Utilities_New.NodeValidity.childNodes(intCtrl), "Active", strArrActive(intCtrl)
+    Next intCtrl
+    
+    '****************************
+    Lbload.Visible = False
+    
+    If Not blnValid And (checkSoCT = 1 Or checkSoCT = 2 Or checkSoCT = 3 Or checkSoCT = 4) Then
+        If DisplayMessage("0184", msYesNo, miQuestion) = mrYes Then
+            If UpdateData Then DisplayMessage "0002", msOKOnly, miInformation
+        End If
+    
+    ElseIf Not blnValid And checkSoCT = 0 Then
+    
+        If DisplayMessage("0015", msYesNo, miQuestion) = mrYes Then
+            If UpdateData Then DisplayMessage "0002", msOKOnly, miInformation
+        End If
+    
+    Else
+    
+        If UpdateData Then DisplayMessage "0002", msOKOnly, miInformation
+    End If
+    
+    ' Set lai co isNewDataBS sau khi bam nut ghi
+    If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95") Then
+        isNewdataBS = False
+    End If
+    
+    fpSpread1.sheet = fpSpread1.ActiveSheet
+    SetStatus fpSpread1.ActiveCol, fpSpread1.ActiveRow
+    fpSpread1.SetFocus
+    
+    Debug.Print "Ket thuc ghi ghi" & Time
 
     Exit Sub
     
@@ -9668,7 +9635,7 @@ Private Sub saveKHBS()
 '        Else
 '            xmlNodeCell1s.parentNode.insertBefore xmlNodeCells, Null
 '        End If
-        TAX_Utilities_New.Data(CLng(TAX_Utilities_New.xmlDataCount)).save strDataFileName
+        TAX_Utilities_New.Data(CLng(TAX_Utilities_New.xmlDataCount)).Save strDataFileName
         
         DisplayMessage "0002", msOKOnly, miInformation
         Dim i As Integer
@@ -9893,7 +9860,7 @@ Private Function saveLastKHBS() As Boolean
              '*********************************
         End If
         
-        TAX_Utilities_New.DataKHBS.save strDataFileName
+        TAX_Utilities_New.DataKHBS.Save strDataFileName
         saveLastKHBS = True
 
 End Function

@@ -97,5 +97,5 @@
 		<ct43>1</ct43>
 		<ct44>1</ct44>
 	</CTieuTKhaiChinh>
-	<PLuc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="a type derived from PLucType"/>
+	<PLuc/>
 </HSoKhaiThue>

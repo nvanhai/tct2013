@@ -26,7 +26,7 @@ Public Const maDVu = ""
 Public Const tenDVu = ""
 Public Const pbanDVu = ""
 Public Const ttinNhaCCapDVu = ""
-Public Const pbanTKhaiXML = ""
+Public Const pbanTKhaiXML = "3.2.0"
 'End XML
 
 Public Const APP_VERSION = "9.9.9"
