@@ -131,4 +131,5 @@
 	<Infor ID="0135" Msg="Không lấy được thông tin người nộp thuế từ trục ESB. Bạn có muốn tiếp tục?"/>
 	<Infor ID="0136" Msg="Không lấy được thông tin đại lý thuế từ trục ESB. Bạn có muốn tiếp tục?"/>
 	<Infor ID="0137" Msg="Có lỗi khi mở kết nối đến trục truyền tin."/>
+	<Infor ID="0138" Msg="Tờ khai này không có thông tin người nộp thuế."/>
 </Message>
