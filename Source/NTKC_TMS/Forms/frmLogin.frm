@@ -272,18 +272,26 @@ Private Function IsValidUserESB() As Integer
         Exit Function
     End If
 
-    If (Not xmlResultNSD Is Nothing) Then
-        
-        Dim checkValue As MSXML.IXMLDOMNode
-        Set checkValue = xmlResultNSD.selectSingleNode("Status")
+If (strResultNSD = "" Or strResultNSD = vbNullString Or Not xmlResultNSD.hasChildNodes) Then
+        IsValidUserESB = 1  'Message login thanh cong
+            Set xmlResultNSD = Nothing
+            Exit Function
 
-        If (checkValue Is Nothing) Then
+    Else
+        Dim Err_des As String
+        Err_des = xmlResultNSD.getElementsByTagName("ERROR_DESC")(0).Text
+
+        If (Err_des <> "") Then
             IsValidUserESB = 1  'Message login thanh cong
             Set xmlResultNSD = Nothing
             Exit Function
         Else
-        
-            sStatus = xmlResultNSD.getElementsByTagName("Status")(0).Text
+            If (InStr(xmlResultNSD.xml, "Status") <= 0) Then
+                IsValidUserESB = 1  'Message login thanh cong
+                Set xmlResultNSD = Nothing
+                Exit Function
+            Else
+                sStatus = xmlResultNSD.getElementsByTagName("Status")(0).Text
             strCurrentVersion = xmlResultNSD.getElementsByTagName("NTKversion")(0).Text
             strUserName = xmlResultNSD.getElementsByTagName("UserName")(0).Text
             strUserID = txtUsername.Text
@@ -310,12 +318,54 @@ Private Function IsValidUserESB() As Integer
                     Set xmlResultNSD = Nothing
                     Exit Function
             End Select
-
+            End If
         End If
-
-    Else
-        IsValidUserESB = 1
+        
     End If
+'    If (Not xmlResultNSD Is Nothing) Then
+'
+'        Dim checkValue As MSXML.IXMLDOMNode
+'        Set checkValue = xmlResultNSD.selectSingleNode("Status")
+'
+'        If (checkValue Is Nothing) Then
+'            IsValidUserESB = 1  'Message login thanh cong
+'            Set xmlResultNSD = Nothing
+'            Exit Function
+'        Else
+'
+'            sStatus = xmlResultNSD.getElementsByTagName("Status")(0).Text
+'            strCurrentVersion = xmlResultNSD.getElementsByTagName("NTKversion")(0).Text
+'            strUserName = xmlResultNSD.getElementsByTagName("UserName")(0).Text
+'            strUserID = txtUsername.Text
+'
+'            Select Case sStatus
+'
+'                Case "01"  ' Thanh cong
+'                    IsValidUserESB = 2  'Message login thanh cong
+'                    Set xmlResultNSD = Nothing
+'                    Exit Function
+'
+'                Case "02" 'Loi xac thuc NSD
+'                    IsValidUserESB = 0   'Message loi use, pass
+'                    Set xmlResultNSD = Nothing
+'                    Exit Function
+'
+'                Case "03" 'Cac loi khac cua he thong TMS
+'                    IsValidUserESB = 1  'Message loi khong dang nhap duoc
+'                    Set xmlResultNSD = Nothing
+'                    Exit Function
+'
+'                Case Else
+'                    IsValidUserESB = 1
+'                    Set xmlResultNSD = Nothing
+'                    Exit Function
+'            End Select
+'
+'        End If
+'
+'    Else
+'        IsValidUserESB = 1
+'    End If
     
 ErrorHandle:
     IsValidUserESB = 1
