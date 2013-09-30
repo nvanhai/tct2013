@@ -4202,8 +4202,8 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
     Dim strResultNNT As String
     
     'Du lieu gia lap de test
-    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-    strResultNNT = "sdfsfds"
+'    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+'    strResultNNT = "sdfsfds"
     
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         Dim cfigXml As New MSXML.DOMDocument
@@ -4265,6 +4265,11 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
         End If
 
     Else
+        Dim sResultNNT As String
+
+        sResultNNT = "c:\TempXML\" & "ResultNNT.xml"
+        xmlResultNNT.save sResultNNT
+    
         Dim Err_des As String
         Err_des = xmlResultNNT.getElementsByTagName("ERROR_DESC")(0).Text
 
@@ -4415,6 +4420,11 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
         End If
 
     Else
+            Dim sResultDLT As String
+
+        sResultDLT = "c:\TempXML\" & "ResultDLT.xml"
+        xmlResultDLT.save sResultDLT
+    
         Dim Err_des As String
         Err_des = xmlResultDLT.getElementsByTagName("ERROR_DESC")(0).Text
 

@@ -265,6 +265,10 @@ Private Function IsValidUserESB() As Integer
     strResultNSD = ChangeTagASSCII(strResultNSD, False)
     xmlResultNSD.loadXML strResultNSD
     
+   
+    
+    
+    
     'Check validate xmlResultNSD
     If (strResultNSD = "") Then
         IsValidUserESB = 1
@@ -282,12 +286,21 @@ If (strResultNSD = "" Or strResultNSD = vbNullString Or Not xmlResultNSD.hasChil
         Err_des = xmlResultNSD.getElementsByTagName("ERROR_DESC")(0).Text
 
         If (Err_des <> "") Then
-            IsValidUserESB = 1  'Message login thanh cong
+            IsValidUserESB = 1
             Set xmlResultNSD = Nothing
             Exit Function
         Else
+         If (Dir("c:\TempXML\", vbDirectory) = "") Then
+            MkDir "c:\TempXML\"
+            End If
+
+        Dim sFileName As String
+        sFileName = "c:\TempXML\ResultNSD.xml"
+        xmlResultNSD.save sFileName
+        
+        
             If (InStr(xmlResultNSD.xml, "Status") <= 0) Then
-                IsValidUserESB = 1  'Message login thanh cong
+                IsValidUserESB = 1
                 Set xmlResultNSD = Nothing
                 Exit Function
             Else
