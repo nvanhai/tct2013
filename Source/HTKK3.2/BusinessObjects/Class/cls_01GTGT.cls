@@ -2291,13 +2291,34 @@ Private Sub CheckDynamicError()
             .Col = .ColLetterToNumber("C")
             .GetText .ColLetterToNumber("C"), .Row, vKyHieuHD
             .GetText .ColLetterToNumber("E"), .Row, vSoHD
-            .GetText .ColLetterToNumber("G"), .Row, vDoanhSo
-            .GetText .ColLetterToNumber("H"), .Row, vGTGT
-            If Trim(vKyHieuHD) <> "" Or Trim(vSoHD) <> "0" Or Trim(vDoanhSo) <> "0" Or Trim(vGTGT) <> "0" Then iWhiteRow = 0
+            .GetText .ColLetterToNumber("H"), .Row, vDoanhSo
+            .GetText .ColLetterToNumber("I"), .Row, vGTGT
+            If Trim(vKyHieuHD) <> "" Or Trim(vSoHD) <> "" Or Trim(vDoanhSo) <> "0" Or Trim(vGTGT) <> "0" Then iWhiteRow = 0
           ' Check MST
                    
                     
-                 ' kiem tra bat buoc nhap truong ten va dia chi
+                 ' kiem tra bat buoc nhap truong ten nha may thuy dien
+                  If Trim(vSoHD) = "" And iWhiteRow = 0 Then
+                        .Col = .ColLetterToNumber("E")
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = vErrorTenCSPT   'static
+                        .BackColor = mErrorColor
+                        flagTenCSPT = 1
+                        'capture the first error cell
+                        If iFocusFlag = 0 Then
+                            strFocusSheetName = "'" & .SheetName & "'"
+                            strFocusCol = str(.Col)
+                            strFocusRow = str(.Row)
+                            iFocusFlag = 1
+                        End If
+                  Else
+                         .Col = .ColLetterToNumber("E")
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = ""   'static
+                        .BackColor = mNonErrorColor
+                  End If
+                        
+                  ' Kiem tra bat buoc nhap CQT
                   If Trim(vKyHieuHD) = "" And iWhiteRow = 0 Then
                         .Col = .ColLetterToNumber("C")
                         .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
