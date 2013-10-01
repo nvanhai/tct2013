@@ -119,6 +119,9 @@ Public strDauTho As String
 Public strCondensate As String
 Public strKhiThienNhien As String
  
+' bien xu ly luu datafile cho to khai TAIN_DK
+Public strLoaiTKDK As String
+ 
 Public strBarcodeInPDF As String    'Chua chuoi ma vach duoc in ra file PDF cuoi cung (Them vao) dung cho iHTKK
 
 
