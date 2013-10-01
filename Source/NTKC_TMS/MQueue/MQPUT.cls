@@ -153,7 +153,8 @@ Public Function put_Msg(ByVal xml As String) As Boolean
     md.Format = MQFMT_STRING
     ' We must set the code page in the MD to the code page of our characters
     ' Assume Windows Latin 1 - this should be changed for other scripts
-    md.CodedCharSetId = 1252
+    'md.CodedCharSetId = 1252
+    md.CodedCharSetId = 1208
     MQPMO_DEFAULTS pmo
 
     ' Get message to be "put" from the Put text box
