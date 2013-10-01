@@ -1891,7 +1891,7 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             paXmlDoc.getElementsByTagName("UserName")(0).Text = sUserName
             paXmlDoc.getElementsByTagName("TaxOffcice")(0).Text = sTaxOffice
             bPass = StrConv(sPass, vbFromUnicode)
-            paXmlDoc.getElementsByTagName("Pass")(0).Text = SHA1Hash.HashBytes(bPass)
+            paXmlDoc.getElementsByTagName("Pass")(0).Text = sPass 'SHA1Hash.HashBytes(bPass)
                         
             paXmlDoc.getElementsByTagName("VERSION")(0).Text = cfigXml.getElementsByTagName("VERSION")(0).Text
             paXmlDoc.getElementsByTagName("SENDER_CODE")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text
