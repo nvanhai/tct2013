@@ -4296,11 +4296,11 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
         Err_des = xmlResultNNT.getElementsByTagName("ERROR_DESC")(0).Text
 
         If (Err_des <> "") Then
-            If (MsgBox(Err_des & ".B¹n cã muèn tiÕp tôc?", vbYesNo, Me.Name) = vbNo) Then
+                MessageBox "0139", msOKOnly, miCriticalError
                 Set rsReturn = Nothing
                 blnSuccess = False
                 Exit Function
-            End If
+            
         Else
             
             If (InStr(xmlResultNNT.xml, "TIN") <= 0) Then
@@ -4451,11 +4451,10 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
         Err_des = xmlResultDLT.getElementsByTagName("ERROR_DESC")(0).Text
 
         If (Err_des <> "") Then
-            If (MsgBox(Err_des & ".B¹n cã muèn tiÕp tôc?", vbYesNo, Me.Name) = vbNo) Then
+            MessageBox "0139", msOKOnly, miCriticalError
                 Set rsReturn = Nothing
                 blnSuccess = False
                 Exit Function
-            End If
 
         Else
             If (InStr(xmlResultDLT.xml, "NORM_NAME") <= 0) Then
@@ -4597,11 +4596,11 @@ On Error GoTo ErrHandle
         Err_des = xmlResultNNT.getElementsByTagName("ERROR_DESC")(0).Text
 
        If (Err_des <> "") Then
-            If (MsgBox(Err_des & ".B¹n cã muèn tiÕp tôc?", vbYesNo, Me.Name) = vbNo) Then
+            MessageBox "0139", msOKOnly, miCriticalError
                 Set rsReturn = Nothing
                 blnSuccess = False
                 Exit Function
-            End If
+           
         Else
             If (InStr(xmlResultNNT.xml, "TIN") <= 0) Then
                 If (MessageBox("0135", msYesNo, miCriticalError) = mrNo) Then
