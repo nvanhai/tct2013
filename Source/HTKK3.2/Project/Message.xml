@@ -130,7 +130,7 @@
 	<Infor ID="0131" Msg="Chỉ tiêu số [16] hạch toán vào Mục 1000, tiểu mục 1008"/>
 	<Infor ID="0132" Msg="Chỉ tiêu số [19] hạch toán vào Mục 1000, tiểu mục 1007"/>
 	<Infor ID="0133" Msg="Chỉ tiêu số [15] hạch toán vào Mục 1000, tiểu mục 1001"/>
-	<Infor ID="0134" Msg="Hạch toán chỉ tiêu [32] + [35] mục 1000, tiểu mục 1001"/>
+	<Infor ID="0134" Msg="Hạch toán chỉ tiêu [34] + [37] mục 1000, tiểu mục 1001"/>
 	<Infor ID="0135" Msg="Ngµy sinh kh«ng ®­îc lín h¬n ngµy hiÖn t¹i"/>
 	<Infor ID="0136" Msg="Chỉ tiêu số [16] hạch toán vào Mục 1000, tiểu mục 1003"/>
 	<Infor ID="0137" Msg="B¹n cã kª khai gi¶m trõ gia c¶nh cho ng­êi phô thuéc kh«ng?"/>
@@ -215,7 +215,7 @@
 	<Infor ID="0222" Msg="Tæng hîp d÷ liÖu lªn KHBS thµnh c«ng"/>
 	<Infor ID="0223" Msg="Ngµy ph¸t sinh ph¶i nhá h¬n ngµy hiÖn t¹i"/>
 	<Infor ID="0224" Msg="Ngµy bæ sung kh«ng ®­îc lín h¬n ngµy hiÖn t¹i"/>
-	<Infor ID="0225" Msg="§Ò nghÞ xem l¹i. NÕu lµ c¸ nh©n c­ tró th× kh«ng kª khai phÇn II,III. NÕu lµ c¸ nh©n kh«ng c­ tró th× kh«ng kª khai phÇn I"/>
+	<Infor ID="0225" Msg="§Ò nghÞ xem l¹i. NÕu lµ c¸ nh©n c­ tró th× kh«ng kª khai phÇn II. NÕu lµ c¸ nh©n kh«ng c­ tró th× kh«ng kª khai phÇn I"/>
 	<Infor ID="0226" Msg="Tờ khai điều chỉnh không làm thay đổi số thuế phải nộp."/>
 	<Infor ID="0227" Msg="Lo¹i kho¸ng s¶n nµy ®· ®­îc chän"/>
 	<Infor ID="0228" Msg="Mất, cháy, hỏng hoá đơn đầu vào"/>
