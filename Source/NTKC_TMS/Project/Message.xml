@@ -127,7 +127,7 @@
 	<Infor ID="0131" Msg="C"/>
 	<Infor ID="0132" Msg="B"/>
 	<Infor ID="0133" Msg="NTK"/>
-	<Infor ID="0134" Msg="Nhận tờ khai mã vạch"/>
+	<Infor ID="0134" Msg="Nhan to khai ma vach"/>
 	<Infor ID="0135" Msg="Không lấy được thông tin người nộp thuế từ trục ESB. Bạn có muốn tiếp tục?"/>
 	<Infor ID="0136" Msg="Không lấy được thông tin đại lý thuế từ trục ESB. Bạn có muốn tiếp tục?"/>
 	<Infor ID="0137" Msg="Có lỗi khi mở kết nối đến trục truyền tin."/>

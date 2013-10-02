@@ -1682,6 +1682,41 @@ End If
 
 End Function
 
+'chuyen string sang utf8
+Public Function ConvertStringToUtf8String(ByRef strText As String) As String
+
+    Dim objStream As ADODB.Stream
+    Dim Data() As Byte
+    Dim strUTF8String As String
+    Dim i As Long
+    
+    ' init stream
+    Set objStream = New ADODB.Stream
+    objStream.Charset = "utf-8"
+    objStream.Mode = adModeReadWrite
+    objStream.Type = adTypeText
+    objStream.Open
+    
+    ' write bytes into stream
+    objStream.WriteText strText
+    objStream.Flush
+    
+    ' rewind stream and read text
+    objStream.Position = 0
+    objStream.Type = adTypeBinary
+    objStream.Read 3 ' skip first 3 bytes as this is the utf-8 marker
+    Data = objStream.Read()
+    
+    ' close up and return
+    objStream.Close
+    
+    'Convert back to ascii
+    For i = 0 To UBound(Data)
+        strUTF8String = strUTF8String & Chr(Data(i))
+    Next i
+    ConvertStringToUtf8String = strUTF8String
+
+End Function
 'Push data to ESB by MQ
 Public Function PushDataToESB(ByVal xmlInput As String) As Boolean
     Dim xmlConfig As New MSXML.DOMDocument
@@ -1692,9 +1727,10 @@ Public Function PushDataToESB(ByVal xmlInput As String) As Boolean
     Dim IsCloseMQ     As Boolean
     Dim IsTransfer As Boolean
     
+    'xmlInput = TAX_Utilities_Srv_New.Convert(xmlInput, UNICODE, VIQR)
+    
     sQueueMgrName = xmlConfig.getElementsByTagName("queue_manager_name")(0).Text
     sQueueName = xmlConfig.getElementsByTagName("queue_name")(0).Text
-    
     Dim MQPUT As New MQPUT
     IsConnectMQ = MQPUT.open_Conn(sQueueMgrName, sQueueName)
     IsTransfer = MQPUT.put_Msg(xmlInput)

@@ -1,4 +1,5 @@
-﻿<Config>
+﻿<?xml version="1.0" encoding="UTF-8" ?>	
+<Config>
 	<!-- Doan nay cau hinh de ket noi voi webservices cua ESB -->
 	<!-- Xac thuc NSD -->
 	<WsUrlNSD>http://10.64.112.155:7080/wsCBTVerify</WsUrlNSD>

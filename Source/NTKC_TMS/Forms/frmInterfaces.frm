@@ -874,16 +874,20 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         xmlTK.getElementsByTagName("maTinhNNT")(0).Text = xmlResultNNT.getElementsByTagName("TRAN_DIST")(0).Text
     
         xmlTK.getElementsByTagName("mst")(0).Text = xmlResultNNT.getElementsByTagName("TIN")(0).Text
-        xmlTK.getElementsByTagName("tenNNT")(0).Text = xmlResultNNT.getElementsByTagName("NORM_NAME")(0).Text
-        xmlTK.getElementsByTagName("dchiNNT")(0).Text = xmlResultNNT.getElementsByTagName("TRAN_ADDR")(0).Text
+        xmlTK.getElementsByTagName("tenNNT")(0).Text = "test"
+        'xmlResultNNT.getElementsByTagName("NORM_NAME")(0).Text
+        xmlTK.getElementsByTagName("dchiNNT")(0).Text = "test"
+        'xmlResultNNT.getElementsByTagName("TRAN_ADDR")(0).Text
         xmlTK.getElementsByTagName("dthoaiNNT")(0).Text = xmlResultNNT.getElementsByTagName("TRAN_TEL")(0).Text
         xmlTK.getElementsByTagName("faxNNT")(0).Text = xmlResultNNT.getElementsByTagName("TRAN_FAX")(0).Text
         xmlTK.getElementsByTagName("emailNNT")(0).Text = xmlResultNNT.getElementsByTagName("MAIL")(0).Text
     End If
 
     If (xmlResultDLT.hasChildNodes) Then
-        xmlTK.getElementsByTagName("tenDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("NORM_NAME")(0).Text
-        xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("TRAN_ADDR")(0).Text
+        xmlTK.getElementsByTagName("tenDLyThue")(0).Text = "test"
+        'xmlResultDLT.getElementsByTagName("NORM_NAME")(0).Text
+        xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = "test"
+        'xmlResultDLT.getElementsByTagName("TRAN_ADDR")(0).Text
         xmlTK.getElementsByTagName("dthoaiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("TELL")(0).Text
         xmlTK.getElementsByTagName("faxDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("FAX")(0).Text
         xmlTK.getElementsByTagName("emailDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("EMAIL")(0).Text
@@ -1459,7 +1463,6 @@ Private Sub ExecuteSave()
     Dim xmlDocSave As New MSXML.DOMDocument
     Set xmlDocSave = AppendXMLStandard(xmlTK, sKyLapBo, sNgayNopTK)
     xmlDocSave.save sFileName
-    
     ' Push MQ
     If (Not PushDataToESB(xmlDocSave.xml)) Then
         MessageBox "0137", msOKOnly, miCriticalError
@@ -1943,7 +1946,7 @@ Private Sub Command1_Click()
 'str2 = "bs320772222222222   002012006008003003<SKHBS><S>Thu’ tµi nguy™n ph∏t sinh ph∂i nÈp trong k˙~10~661455~559778340~559116885</S><S>~~0~0~0</S><S>26/09/2013~178~49761403~NOI DUNG DINH KEM ABC~559116885</S></SKHBS>"
 'Barcode_Scaned str2
 
-'''04-GTGT-BS
+''04-GTGT-BS
 'str2 = "bs320713100177415   08201300400400100301/0101/01/1900<S01><S>0102845045</S><S>60000000~2000000~4000000</S><S>10000000~2000000~3000000~01~50000000~0~1000000~03</S><S>0~5~10~01~0~5~10~03</S><S>0~100000~40000"
 'Barcode_Scaned str2
 'str2 = "bs320713100177415   0820130040040020030</S><S>0~100000~300000~01~0~0~100000~03</S><S>0~5000~40000</S><S>0~5000~30000~01~0~0~10000~03</S><S>66000000~45000</S><S>dasdsad~~21sdasd~24/09/2013~~1~1~0</S></S01>"
@@ -1951,27 +1954,51 @@ Private Sub Command1_Click()
 'str2 = "bs320713100177415   082013004004003003<SKHBS><S>~~0~0~0</S><S>Hµng ho∏, dﬁch vÙ chﬁu thu’ su t 5%~31~27500~5000~-22500~Hµng ho∏, dﬁch vÙ chﬁu thu’ su t 10%~32~551000~40000~-511000</S><S>24/09/2013~4~0~~-533500</S></SKHBS>"
 'Barcode_Scaned str2
 
-'TEST tich hop-- 30-09-2013
-
 '04/GTGT chinh thuc
-str2 = "aa317713100177415   08201300100100100201/0101/01/1900<S01><S>0102845045</S><S>70000000~11000000~55100000</S><S>10000000~2000000~3000000~01~50000000~0~1000000~03~1000000~2000000~50000000~02~4000000~5000000~100000~04~5000000~2000000~1000000~02</S><S>0~5~10~01~0~5~10~03~0~5~10~02~0~5~10~04~0~5~10~02</S><S>0~550000~5510"
-Barcode_Scaned str2
-str2 = "aa317713100177415   082013001001002002000</S><S>0~100000~300000~01~0~0~100000~03~0~100000~5000000~02~0~250000~10000~04~0~100000~100000~02</S><S>0~27500~551000</S><S>0~5000~30000~01~0~0~10000~03~0~5000~500000~02~0~12500~1000~04~0~5000~10000~02</S><S>136100000~578500</S><S>dasdsad~~21sdasd~24/09/2013~1~~~0</S></S01>"
-Barcode_Scaned str2
 
-''04/GTGT bo sung
-'str2 = "bs317713100177415   08201300400400100301/0101/01/1900<S01><S>0102845045</S><S>60000000~2000000~4000000</S><S>10000000~2000000~3000000~01~50000000~0~1000000~03</S><S>0~5~10~01~0~5~10~03</S><S>0~100000~40000"
+'str2 = "aa317713100177415   08201300100100100201/0101/01/1900<S01><S>0102845045</S><S>70000000~11000000~55100000</S><S>10000000~2000000~3000000~01~50000000~0~1000000~03~1000000~2000000~50000000~02~4000000~5000000~100000~04~5000000~2000000~1000000~02</S><S>0~5~10~01~0~5~10~03~0~5~10~02~0~5~10~04~0~5~10~02</S><S>0~550000~5510"
 'Barcode_Scaned str2
-'str2 = "bs317713100177415   0820130040040020030</S><S>0~100000~300000~01~0~0~100000~03</S><S>0~5000~40000</S><S>0~5000~30000~01~0~0~10000~03</S><S>66000000~45000</S><S>dasdsad~~21sdasd~24/09/2013~~1~1~0</S></S01>"
+'str2 = "aa317713100177415   082013001001002002000</S><S>0~100000~300000~01~0~0~100000~03~0~100000~5000000~02~0~250000~10000~04~0~100000~100000~02</S><S>0~27500~551000</S><S>0~5000~30000~01~0~0~10000~03~0~5000~500000~02~0~12500~1000~04~0~5000~10000~02</S><S>136100000~578500</S><S>dasdsad~~21sdasd~24/09/2013~1~~~0</S></S01>"
+'Barcode_Scaned str2
+''04/GTGT bo sung
+'
+'str2 = "bs317713100177415   08201300400400100301/0101/01/1900<S01><S>0102845045</S><S>60000000~2000000~4000000</S><S>10000000~2000000~3000000~01~50000000~0~1000000~03</S><S>0~5~10~01~0~5~10~03</S><S>0~100000~40000#bs317713100177415   0820130040040020030</S><S>0~100000~300000~01~0~0~100000~03</S><S>0~5000~40000</S><S>0~5000~30000~01~0~0~10000~03</S><S>66000000~45000</S><S>dasdsad~~21sdasd~24/09/2013~~1~1~0</S></S01>"
 'Barcode_Scaned str2
 'str2 = "bs317713100177415   082013004004003003<SKHBS><S>~~0~0~0</S><S>Hµng ho∏, dﬁch vÙ chﬁu thu’ su t 5%~31~27500~5000~-22500~Hµng ho∏, dﬁch vÙ chﬁu thu’ su t 10%~32~551000~40000~-511000</S><S>24/09/2013~4~0~~-533500</S></SKHBS>"
 'Barcode_Scaned str2
-
 ''01/KK-XS theo thang chinh thuc
+'
 'str2 = "aa31748040010191900808201300100100100101/0101/01/2010<S01><S>0102845045</S><S>2000000~500000~300000</S><S>sdfsf~dasdsad~21sdasd~24/09/2013~1~~</S></S01>"
 'Barcode_Scaned str2
 'str2 = "aa31748040010191900808201300100100100101/0101/01/2010<S01><S>0102845045</S><S>2000000~500000~300000</S><S>sdfsf~dasdsad~21sdasd~24/09/2013~1~~</S></S01>"
 'Barcode_Scaned str2
+''01/KK-XS  theo thang bo sung
+'
+'str2 = "bs31748040010191900808201300200200100101/0101/01/2010<S01><S>0102845045</S><S>6000000~800000~80000</S><S>sdfsf~dasdsad~21sdasd~24/09/2013~~1~1</S></S01>"
+'Barcode_Scaned str2
+'
+'
+''01/KK-XS theo quy chinh thuc
+'
+'str2 = "aa31749040010191900802201300100100100101/0101/01/2010<S01><S></S><S>6000000~3000000~400000</S><S>~dasdsad~21sdasd~24/09/2013~1~~</S></S01>"
+'Barcode_Scaned str2
+''01/KK-XS theo quy bo sung
+'
+'str2 = "bs31749040010191900802201300100200100101/0101/01/2010<S01><S></S><S>6000000~4000000~800000</S><S>~dasdsad~21sdasd~24/09/2013~~1~1</S></S01>"
+'Barcode_Scaned str2
+''02/KK-XS chinh thuc
+'
+'str2 = "aa31743040010191900800201200200200100201/0101/01/2009<S02><S>0102845045</S><S>4~162449539~3~152449539~891182</S><S>abc~24/09/2013~dasdsad~21sdasd~1~</S></S02>"
+'Barcode_Scaned str2
+''02/KK-XS bo sung
+'
+'str2 = "aa317433100177415   00201200600600100301/0101/01/2009<S02><S>0102845045</S><S>4~393683773~3~383683773~891182</S><S>abc~24/09/2013~dasdsad~21sdasd~~1</S></S02>"
+'Barcode_Scaned str2
+
+Dim xmlDoc As New MSXML.DOMDocument
+xmlDoc.Load "C:\tempxml\ToKhai.xml"
+PushDataToESB xmlDoc.xml
+
 End Sub
 
 Private Sub Form_Activate()
@@ -4224,8 +4251,8 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
     Dim strResultNNT As String
     
     'Du lieu gia lap de test
-'    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-'    strResultNNT = "sdfsfds"
+    '    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+    '    strResultNNT = "sdfsfds"
     
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         Dim cfigXml As New MSXML.DOMDocument
@@ -4277,7 +4304,6 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
         MessageBox "0138", msOKOnly, miCriticalError
         Exit Function
     End If
-    
 
     If (strResultNNT = "" Or strResultNNT = vbNullString Or Not xmlResultNNT.hasChildNodes) Then
         If (MessageBox("0135", msYesNo, miCriticalError) = mrNo) Then
@@ -4301,6 +4327,7 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
                 blnSuccess = False
                 Exit Function
             
+
         Else
             
             If (InStr(xmlResultNNT.xml, "TIN") <= 0) Then
@@ -4329,8 +4356,10 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
 
     rsReturn.Open
     rsReturn.AddNew
-    
+
     If ((strResultNNT <> "" And xmlResultNNT.hasChildNodes And (InStr(xmlResultNNT.xml, "TIN") > 0)) And Err_des = "") Then
+        'xmlResultNNT.loadXML TAX_Utilities_Srv_New.Convert(xmlResultNNT.xml, VISCII, UNICODE)
+
         rsReturn!trang_thai = GetStringByLength(xmlResultNNT.getElementsByTagName("STATUS")(0).Text, 2)
         rsReturn!ten_dtnt = GetStringByLength(xmlResultNNT.getElementsByTagName("NORM_NAME")(0).Text, 100)
         rsReturn!dia_chi = GetStringByLength(xmlResultNNT.getElementsByTagName("TRAN_ADDR")(0).Text, 60)
@@ -4480,8 +4509,11 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
     rsReturn.AddNew
     
     If (strResultDLT <> "" And xmlResultDLT.hasChildNodes And (InStr(xmlResultNNT.xml, "NORM_NAME") > 0) And Err_des = "") Then
+        'xmlResultDLT.loadXML TAX_Utilities_Srv_New.Convert(xmlResultDLT.xml, VISCII, UNICODE)
+
         rsReturn!repr_name = xmlResultDLT.getElementsByTagName("NORM_NAME")(0).Text
         rsReturn!repr_addr = xmlResultDLT.getElementsByTagName("TRAN_ADDR")(0).Text
+
         rsReturn!repr_tell = xmlResultDLT.getElementsByTagName("TELL")(0).Text
         rsReturn!repr_fax = xmlResultDLT.getElementsByTagName("FAX")(0).Text
         rsReturn!repr_email = xmlResultDLT.getElementsByTagName("EMAIL")(0).Text
@@ -4630,6 +4662,7 @@ On Error GoTo ErrHandle
     rsReturn.AddNew
     
     If ((strResultNNT <> "" And xmlResultNNT.hasChildNodes And (InStr(xmlResultNNT.xml, "TIN") > 0)) And Err_des = "") Then
+        'xmlResultNNT.loadXML TAX_Utilities_Srv_New.Convert(xmlResultNNT.xml, VISCII, UNICODE)
         rsReturn!trang_thai = GetStringByLength(xmlResultNNT.getElementsByTagName("STATUS")(0).Text, 2)
         rsReturn!ten_dtnt = GetStringByLength(xmlResultNNT.getElementsByTagName("NORM_NAME")(0).Text, 100)
         rsReturn!dia_chi = GetStringByLength(xmlResultNNT.getElementsByTagName("TRAN_ADDR")(0).Text, 60)
