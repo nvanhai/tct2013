@@ -1057,7 +1057,6 @@ On Error GoTo ErrHandle
 '    Else
     TBarCode.BCDraw Printer.hDC, lXPos, lYPos, lBarcodeWidth, lBarcodeHeight
 '    End If
-    
 Exit Sub
 ErrHandle:
     SaveErrorLog Me.Name, "PrintBarcode", Err.Number, Err.Description
