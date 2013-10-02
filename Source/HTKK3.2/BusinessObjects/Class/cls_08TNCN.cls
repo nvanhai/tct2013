@@ -33,9 +33,9 @@ Public strTuRowDenRowPL As String
 'No parameter
 Public Sub Prepare1()
     With fps
-        SetDateFormat fps, 1, 65, .ColLetterToNumber("R"), DDMMYYYY
+        SetDateFormat fps, 1, 66, .ColLetterToNumber("R"), DDMMYYYY
         .Sheet = 1 'To khai 08/TNCN
-        .Row = 65
+        .Row = 66
         .Col = .ColLetterToNumber("R")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
@@ -57,7 +57,7 @@ Public Sub Prepare2()
         'tinh so dong` them vao`
         mCurrentSheet = .ActiveSheet
         .Sheet = 1
-        .Row = 67
+        .Row = 68
            
         .EventEnabled(EventAllEvents) = False
         .Sheet = 1
@@ -65,30 +65,29 @@ Public Sub Prepare2()
 
         If Strloaitk = "TKCT" Then
             .Col = .ColLetterToNumber("C")
-            .Row = 67
+            .Row = 68
             .Text = 1
             UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber("I")
-            .Row = 67
+            .Row = 68
             .Text = ""
             UpdateCell fps, .Col, .Row, .Text
         ElseIf Strloaitk = "TKBS" Then
-               
             .Col = .ColLetterToNumber("C")
-            .Row = 67
+            .Row = 68
             .Text = ""
             UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber("I")
-            .Row = 67
+            .Row = 68
             .Text = StrSolanBosung
             UpdateCell fps, .Col, .Row, .Text
         End If
 
         'set thong tin header neu la to khai quy
 '        If strQuy = "TK_QUY" Then
-'            .SetText .ColLetterToNumber("H"), 18, 1
-'            .SetText .ColLetterToNumber("R"), 18, ""
-'            .SetText .ColLetterToNumber("X"), 18, ""
+        .SetText .ColLetterToNumber("H"), 18, 1
+        .SetText .ColLetterToNumber("R"), 18, ""
+        .SetText .ColLetterToNumber("X"), 18, ""
 '        Else
 '            .SetText .ColLetterToNumber("H"), 18, 0
 '            .SetText .ColLetterToNumber("R"), 18, ""
@@ -132,15 +131,12 @@ Public Sub Prepare2()
         'set lai gia tri cho chi tieu [30]
         For Each xmlNode In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
             ParserCellID fps, GetAttribute(xmlNode, "CellID"), lCol, lRow
-
-            If lCol = .ColLetterToNumber("R") And lRow = 57 Then
+            If lCol = .ColLetterToNumber("R") And lRow = 58 Then
                 .Col = lCol
                 .Row = lRow
                 .Text = GetAttribute(xmlNode, "Value")
             End If
-
         Next
-
         .EventEnabled(EventAllEvents) = True
     End With
 
@@ -227,10 +223,11 @@ Private Sub CheckDynamicError()
     iFlagvThang = 0
     iFocusFlag = 0
     Dim iWhiteRow As Integer
-    Dim mErrCheckCT30, vCT30, vCT29 As Variant, iFlagCheckCT30 As Integer
+    Dim mErrCheckCT30, vCT30, vCT29, vCT31 As Variant, iFlagCheckCT30 As Integer
     Dim vCT25 As Variant, vCT26 As Variant
     Dim iFlagCt25 As Integer, iFlagCt26 As Integer
     Dim vErrorCt25 As Variant, vErrorCt26 As Variant
+    Dim vErrorCt25_1 As Variant, vErrorCt26_1 As Variant
     
     With fps
 
@@ -240,31 +237,35 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 19, error1
         .GetText .ColLetterToNumber("E"), 20, errorThang
         .GetText .ColLetterToNumber("E"), 24, mErrCheckCT30
-       .GetText .ColLetterToNumber("E"), 21, vErrorCt25
+        .GetText .ColLetterToNumber("E"), 21, vErrorCt25
         .GetText .ColLetterToNumber("E"), 22, vErrorCt26
 
+        .GetText .ColLetterToNumber("E"), 25, vErrorCt25_1
+        .GetText .ColLetterToNumber("E"), 26, vErrorCt26_1
+        
         .Sheet = 1
         iFlagCheckCT30 = 0
         iFlagCt25 = 0
         iFlagCt26 = 0
-        'get CT30,CT29
+        'get CT30,CT29, CT31
         .GetText .ColLetterToNumber("R"), 56, vCT29
         .GetText .ColLetterToNumber("R"), 57, vCT30
+        .GetText .ColLetterToNumber("R"), 58, vCT31
         
         .GetText .ColLetterToNumber("R"), 52, vCT25
         .GetText .ColLetterToNumber("R"), 53, vCT26
         
                 
-        'check CT29 > CT30
-        If vCT30 > vCT29 Then
+        'check CT30 > CT31
+        If vCT31 > vCT30 Then
             .Col = .ColLetterToNumber("R")
-            .Row = 57
+            .Row = 58
             .BackColor = mErrorColor
             .CellNote = mErrCheckCT30
             iFlagCheckCT30 = 1
         Else
             .Col = .ColLetterToNumber("R")
-            .Row = 57
+            .Row = 58
             .BackColor = mNonErrorColor
             .CellNote = ""
         End If
@@ -275,7 +276,7 @@ Private Sub CheckDynamicError()
                 .Row = 52
                 .Col = .ColLetterToNumber("R")
                 .BackColor = mErrorColor
-                .CellNote = vErrorCt25
+                .CellNote = vErrorCt25_1
                 iFlagCt25 = 1
             Else
                 .Row = 52
@@ -288,7 +289,7 @@ Private Sub CheckDynamicError()
                 .Row = 53
                 .Col = .ColLetterToNumber("R")
                 .BackColor = mErrorColor
-                .CellNote = vErrorCt26
+                .CellNote = vErrorCt26_1
                 iFlagCt26 = 1
             Else
                 .Row = 53
@@ -329,7 +330,7 @@ Private Sub CheckDynamicError()
         
         'check ngay ky
         .Col = .ColLetterToNumber("R")
-        .Row = 65
+        .Row = 66
         If .value <> "" Then
             .BackColor = mNonErrorColor
             .CellNote = ""
