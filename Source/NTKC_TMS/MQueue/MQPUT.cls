@@ -146,15 +146,19 @@ Public Function put_Msg(ByVal xml As String) As Boolean
     Dim Buffer   As String      ' Message to be put
     Dim CompCode As Long      ' Completion code
     Dim Reason   As Long        ' Reason code
-
+    
     ' Setup MQMD and MQPMO to their respective
     ' initial values
+    'xml = TAX_Utilities_Srv_New.Convert(xml, TCVN, UNICODE)
+    xml = ConvertStringToUtf8String(xml)
     MQMD_DEFAULTS md
-    md.Format = MQFMT_STRING
+    'md.Format = MQFMT_STRING
     ' We must set the code page in the MD to the code page of our characters
     ' Assume Windows Latin 1 - this should be changed for other scripts
     'md.CodedCharSetId = 1252
     md.CodedCharSetId = 1208
+'     md.CodedCharSetId = 1258
+    'md.Encoding = 546
     MQPMO_DEFAULTS pmo
 
     ' Get message to be "put" from the Put text box

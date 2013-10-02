@@ -1,7 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>	
 <HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>04_GTGT</maTKhai>
-		<tenTKhai>TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG (04/GTGT)</tenTKhai>
+		<tenTKhai>Tờ khai thuế GTGT (04/GTGT)</tenTKhai>
 		<moTaBMau></moTaBMau>
 		<soLan>T_6</soLan>
 	</Static>
