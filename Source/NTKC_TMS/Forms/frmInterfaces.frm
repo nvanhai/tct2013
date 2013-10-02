@@ -1995,9 +1995,9 @@ Private Sub Command1_Click()
 'str2 = "aa317433100177415   00201200600600100301/0101/01/2009<S02><S>0102845045</S><S>4~393683773~3~383683773~891182</S><S>abc~24/09/2013~dasdsad~21sdasd~~1</S></S02>"
 'Barcode_Scaned str2
 
-Dim xmlDoc As New MSXML.DOMDocument
-xmlDoc.Load "C:\tempxml\ToKhai.xml"
-PushDataToESB xmlDoc.xml
+'Dim xmlDoc As New MSXML.DOMDocument
+'xmlDoc.Load "C:\tempxml\ToKhai.xml"
+'PushDataToESB xmlDoc.xml
 
 End Sub
 
