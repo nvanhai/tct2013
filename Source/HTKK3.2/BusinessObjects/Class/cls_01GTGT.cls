@@ -2841,6 +2841,74 @@ Public Sub SetActiveSheet() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
                 If blnNullValue Then
                     SetAttribute xmlNodeValid, "Active", "0"
                 End If
+             Case "01_6B"
+                'Check the last sheet
+               For Each xmlCellNode In TAX_Utilities_New.Data(8).getElementsByTagName("Cell")
+                    ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
+                    'Check value I column
+                    If lCol = fps.ColLetterToNumber("C") Then
+                        strValue = GetAttribute(xmlCellNode, "Value")
+                        If Not IsNullValue(strValue) Then
+                            blnNullValue = False
+                            Exit For
+                        End If
+                    End If
+                Next
+            
+                If blnNullValue Then
+                    SetAttribute xmlNodeValid, "Active", "0"
+                End If
+             Case "01_7"
+                'Check the last sheet
+               For Each xmlCellNode In TAX_Utilities_New.Data(9).getElementsByTagName("Cell")
+                    ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
+                    'Check value I column
+                    If lCol = fps.ColLetterToNumber("H") Then
+                        strValue = GetAttribute(xmlCellNode, "Value")
+                        If Not IsNullValue(strValue) Then
+                            blnNullValue = False
+                            Exit For
+                        End If
+                    End If
+                Next
+            
+                If blnNullValue Then
+                    SetAttribute xmlNodeValid, "Active", "0"
+                End If
+             Case "01_1_TD"
+                'Check the last sheet
+               For Each xmlCellNode In TAX_Utilities_New.Data(10).getElementsByTagName("Cell")
+                    ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
+                    'Check value I column
+                    If lCol = fps.ColLetterToNumber("C") Then
+                        strValue = GetAttribute(xmlCellNode, "Value")
+                        If Not IsNullValue(strValue) Then
+                            blnNullValue = False
+                            Exit For
+                        End If
+                    End If
+                Next
+            
+                If blnNullValue Then
+                    SetAttribute xmlNodeValid, "Active", "0"
+                End If
+           Case "01_2_TD"
+                'Check the last sheet
+               For Each xmlCellNode In TAX_Utilities_New.Data(11).getElementsByTagName("Cell")
+                    ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
+                    'Check value I column
+                    If lCol = fps.ColLetterToNumber("C") Then
+                        strValue = GetAttribute(xmlCellNode, "Value")
+                        If Not IsNullValue(strValue) Then
+                            blnNullValue = False
+                            Exit For
+                        End If
+                    End If
+                Next
+            
+                If blnNullValue Then
+                    SetAttribute xmlNodeValid, "Active", "0"
+                End If
              Case "KHBS"
                 blnNullValue = True
                 'Check value of last node in Data
