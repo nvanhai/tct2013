@@ -114,23 +114,23 @@ Public Sub Prepare1()
     
 With fps
     ' TK 03
-    SetDateFormat fps, 1, 67, .ColLetterToNumber("N"), DDMMYYYY
+    SetDateFormat fps, 1, 68, .ColLetterToNumber("N"), DDMMYYYY
     .Sheet = 1 ' Mac dinh ngay ky la ngay he thong (To khai quyet toan TNDN 03/TNDN)
-    .Row = 67
+    .Row = 68
     .Col = .ColLetterToNumber("N")
     .Text = Format(Date, "dd/mm/yyyy")
     .TypeHAlign = TypeHAlignLeft
     If TAX_Utilities_New.Year = 2009 Then
-        .SetText .ColLetterToNumber("C"), 62, GetAttribute(GetMessageCellById("0185"), "Msg")
+        .SetText .ColLetterToNumber("C"), 63, GetAttribute(GetMessageCellById("0185"), "Msg")
     ElseIf TAX_Utilities_New.Year = 2010 Then
-        .SetText .ColLetterToNumber("C"), 62, GetAttribute(GetMessageCellById("0187"), "Msg")
+        .SetText .ColLetterToNumber("C"), 63, GetAttribute(GetMessageCellById("0187"), "Msg")
     ElseIf TAX_Utilities_New.Year = 2011 Then
-        .SetText .ColLetterToNumber("C"), 62, GetAttribute(GetMessageCellById("0243"), "Msg")
+        .SetText .ColLetterToNumber("C"), 63, GetAttribute(GetMessageCellById("0243"), "Msg")
 '    ElseIf TAX_Utilities_New.Year = 2013 Then
 '        .SetText .ColLetterToNumber("C"), 62, GetAttribute(GetMessageCellById("0263"), "Msg")
 '    ElseIf Val(TAX_Utilities_New.Year) = 2012 Or Val(TAX_Utilities_New.Year) > 2013 Then
     Else
-         .SetText .ColLetterToNumber("C"), 62, GetAttribute(GetMessageCellById("0263"), "Msg")
+         .SetText .ColLetterToNumber("C"), 63, GetAttribute(GetMessageCellById("0263"), "Msg")
 '        .SetText .ColLetterToNumber("C"), 62, ""
 '        .Row = 62
 '        .Col = .ColLetterToNumber("B")
@@ -147,7 +147,7 @@ With fps
                  Next
              End If
                   'set ly do gia han
-            .Row = 63
+            .Row = 64
             .Col = .ColLetterToNumber("D")
             .TypeComboBoxList = strCboLyDo
             ' set Ma ly do gia han
@@ -686,6 +686,25 @@ Public Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonD
         fps.EventEnabled(EventAllEvents) = False
         ' set gia lock cell ly do gia han
         If fps.ActiveSheet = 1 Then
+            If (Col = fps.ColLetterToNumber("D") And Row = 7) Then
+                    fps.Sheet = fps.ActiveSheet
+                    fps.Col = Col
+                    fps.Row = Row
+                    If (fps.value = 1 Or UCase$(fps.value) = "X") Then
+                        fps.Row = 46
+                        fps.Col = fps.ColLetterToNumber("O")
+                        fps.Text = 20
+                        fps.Lock = True
+                        UpdateCell fps, fps.Col, fps.Row, fps.Text
+                    Else
+                        fps.Row = 46
+                        fps.Col = fps.ColLetterToNumber("O")
+                        fps.Text = 0
+                        fps.Lock = False
+                        UpdateCell fps, fps.Col, fps.Row, fps.Text
+                    End If
+                End If
+        
                 ' Lay ve row check gia han
                 count = 0
                 .Sheet = 1
@@ -1065,7 +1084,7 @@ With fps
                 End If
             End If
             
-            ' TOng hop len chi tieu C9
+            ' TOng hop len chi tieu C10
             pL_3A_U56 = Sum_Cell(lSheet03_3A, 56, .ColLetterToNumber("U")) 'PL 03-3A
             pL_3B_U65 = Sum_Cell(lSheet03_3B, 65, .ColLetterToNumber("U")) 'PL 03-3B
             pL_3C_X43 = Sum_Cell(lSheet03_3C, 43, .ColLetterToNumber("X")) 'PL 03-3C
@@ -1078,10 +1097,10 @@ With fps
                         arrRowCol = Split(arrRowCols(idx), "_")
                         If Row = arrRowCol(1) And Col = arrRowCol(0) Then
                             .Sheet = 1
-                            .SetText .ColLetterToNumber("P"), 48, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
+                            .SetText .ColLetterToNumber("P"), 49, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
                             .Col = .ColLetterToNumber("O")
-                            .Row = 48
-                            .Formula = "P48"
+                            .Row = 49
+                            .Formula = "P49"
                             Exit For
                         End If
                     Next idx
@@ -1090,10 +1109,10 @@ With fps
                 arrRowCol = Split(strValue, "_")
                 If Row = arrRowCol(1) And Col = arrRowCol(0) Then
                     .Sheet = 1
-                    .SetText .ColLetterToNumber("P"), 48, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
+                    .SetText .ColLetterToNumber("P"), 49, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
                     .Col = .ColLetterToNumber("O")
-                    .Row = 48
-                    .Formula = "P48"
+                    .Row = 49
+                    .Formula = "P49"
                 End If
             End If
             
@@ -1122,7 +1141,7 @@ With fps
                  ValidateDate fps, lSheet03_3B, Row, Col, DDMMYYYY
             End If
         
-            ' Tong hop len chi tieu C8
+            ' Tong hop len chi tieu C9
             pL_3A_U50 = Sum_Cell(lSheet03_3A, 50, .ColLetterToNumber("U")) 'PL 03-3A
             pL_3B_U60 = Sum_Cell(lSheet03_3B, 60, .ColLetterToNumber("U")) 'PL 03-3B
             
@@ -1134,10 +1153,10 @@ With fps
                         arrRowCol = Split(arrRowCols(idx), "_")
                         If Row = arrRowCol(1) And Col = arrRowCol(0) Then
                             .Sheet = 1
-                            .SetText .ColLetterToNumber("P"), 47, pL_3A_U50 + pL_3B_U60
+                            .SetText .ColLetterToNumber("P"), 48, pL_3A_U50 + pL_3B_U60
                             .Col = .ColLetterToNumber("O")
-                            .Row = 47
-                            .Formula = "P47"
+                            .Row = 48
+                            .Formula = "P48"
                             Exit For
                         End If
                     Next idx
@@ -1146,14 +1165,14 @@ With fps
                 arrRowCol = Split(strValue, "_")
                 If Row = arrRowCol(1) And Col = arrRowCol(0) Then
                     .Sheet = 1
-                    .SetText .ColLetterToNumber("P"), 47, pL_3A_U50 + pL_3B_U60
+                    .SetText .ColLetterToNumber("P"), 48, pL_3A_U50 + pL_3B_U60
                     .Col = .ColLetterToNumber("O")
-                    .Row = 47
-                    .Formula = "P47"
+                    .Row = 48
+                    .Formula = "P48"
                 End If
             End If
             
-            ' TOng hop len chi tieu C9
+            ' TOng hop len chi tieu C10
             pL_3A_U56 = Sum_Cell(lSheet03_3A, 56, .ColLetterToNumber("U")) 'PL 03-3A
             pL_3B_U65 = Sum_Cell(lSheet03_3B, 65, .ColLetterToNumber("U")) 'PL 03-3B
             pL_3C_X43 = Sum_Cell(lSheet03_3C, 43, .ColLetterToNumber("X")) 'PL 03-3C
@@ -1166,10 +1185,10 @@ With fps
                         arrRowCol = Split(arrRowCols(idx), "_")
                         If Row = arrRowCol(1) And Col = arrRowCol(0) Then
                             .Sheet = 1
-                            .SetText .ColLetterToNumber("P"), 48, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
+                            .SetText .ColLetterToNumber("P"), 49, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
                             .Col = .ColLetterToNumber("O")
-                            .Row = 48
-                            .Formula = "P48"
+                            .Row = 49
+                            .Formula = "P49"
                             Exit For
                         End If
                     Next idx
@@ -1178,10 +1197,10 @@ With fps
                 arrRowCol = Split(strValue, "_")
                 If Row = arrRowCol(1) And Col = arrRowCol(0) Then
                     .Sheet = 1
-                    .SetText .ColLetterToNumber("P"), 48, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
+                    .SetText .ColLetterToNumber("P"), 49, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
                     .Col = .ColLetterToNumber("O")
-                    .Row = 48
-                    .Formula = "P48"
+                    .Row = 49
+                    .Formula = "P49"
                 End If
             End If
         
@@ -1194,7 +1213,7 @@ With fps
                  ValidateDate fps, lSheet03_3C, Row, Col, DDMMYYYY
             End If
             
-            ' TOng hop len chi tieu C9
+            ' TOng hop len chi tieu C10
             pL_3A_U56 = Sum_Cell(lSheet03_3A, 56, .ColLetterToNumber("U")) 'PL 03-3A
             pL_3B_U65 = Sum_Cell(lSheet03_3B, 65, .ColLetterToNumber("U")) 'PL 03-3B
             pL_3C_X43 = Sum_Cell(lSheet03_3C, 43, .ColLetterToNumber("X")) 'PL 03-3C
@@ -1207,10 +1226,10 @@ With fps
                         arrRowCol = Split(arrRowCols(idx), "_")
                         If Row = arrRowCol(1) And Col = arrRowCol(0) Then
                             .Sheet = 1
-                            .SetText .ColLetterToNumber("P"), 48, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
+                            .SetText .ColLetterToNumber("P"), 49, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
                             .Col = .ColLetterToNumber("O")
-                            .Row = 48
-                            .Formula = "P48"
+                            .Row = 49
+                            .Formula = "P49"
                             Exit For
                         End If
                     Next idx
@@ -1219,10 +1238,10 @@ With fps
                 arrRowCol = Split(strValue, "_")
                 If Row = arrRowCol(1) And Col = arrRowCol(0) Then
                     .Sheet = 1
-                    .SetText .ColLetterToNumber("P"), 48, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
+                    .SetText .ColLetterToNumber("P"), 49, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
                     .Col = .ColLetterToNumber("O")
-                    .Row = 48
-                    .Formula = "P48"
+                    .Row = 49
+                    .Formula = "P49"
                 End If
             End If
         Case lSheet03_4 ' Phu luc 03-4
@@ -1238,16 +1257,16 @@ With fps
             If Row = cRow And Col = cCol Then
                 .Sheet = 1
                 .Col = .ColLetterToNumber("O")
-                .Row = 49
-                .Formula = "P49"
+                .Row = 50
+                .Formula = "P50"
             End If
         Case lSheet03_5 ' Phu luc 03-5
             mCurrentSheet = .Sheet
              If Row = 38 And Col = .ColLetterToNumber("E") Then
                 .Sheet = 1
                 .Col = .ColLetterToNumber("O")
-                .Row = 51
-                .Formula = "P51"
+                .Row = 52
+                .Formula = "P52"
             End If
         Case lSheet03_05 ' Phu luc 03-05
             mCurrentSheet = .Sheet
@@ -1297,7 +1316,7 @@ Private Sub CheckDynamicError()
     Dim strKyHieu As Variant, strCheckMST As String
 
     ' PL 05
-    Dim CountRow As Long, rowDes As Long, iFlagMSTTrung As Integer, mErrMSTTrung As Variant
+    Dim countRow As Long, rowDes As Long, iFlagMSTTrung As Integer, mErrMSTTrung As Variant
     Dim vMSTCheckTrung As Variant
     
     ' PL03-6
@@ -1595,8 +1614,8 @@ Private Sub CheckDynamicError()
                     End If
                     
                       'check MST trung nhau
-                     CountRow = .SearchCol(.ColLetterToNumber("F"), -1, -1, vMSTCheckTrung, SearchFlagsNone)
-                     rowDes = .SearchCol(.ColLetterToNumber("F"), CountRow, -1, vMSTCheckTrung, SearchFlagsNone)
+                     countRow = .SearchCol(.ColLetterToNumber("F"), -1, -1, vMSTCheckTrung, SearchFlagsNone)
+                     rowDes = .SearchCol(.ColLetterToNumber("F"), countRow, -1, vMSTCheckTrung, SearchFlagsNone)
                     If rowDes > -1 Then
                         .Col = .ColLetterToNumber("F")
                         .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
@@ -3234,36 +3253,36 @@ Public Sub unLockCellPL(strLoaiToKhai As String)
                 .Row = 42
                 .Lock = False
             End If
-            ' Lock chi tieu C8
+            ' Lock chi tieu C9
             If blCheck_S3A Or blCheck_S3B Then
-                .Row = 47
+                .Row = 48
                 .Lock = True
             Else
-                .Row = 47
+                .Row = 48
                 .Lock = False
             End If
-            ' Lock chi tieu c9
+            ' Lock chi tieu c10
             If blCheck_S3A Or blCheck_S3B Or blCheck_S3C Then
-                .Row = 48
+                .Row = 49
                 .Lock = True
             Else
-                .Row = 48
+                .Row = 49
                 .Lock = False
             End If
-            ' Chi tieu C10
+            ' Chi tieu C11
             If blCheck_S4 Then
-                .Row = 49
+                .Row = 50
                 .Lock = True
             Else
-                .Row = 49
+                .Row = 50
                 .Lock = False
             End If
             ' Chi tieu D
             If blCheck_S5 Then
-                .Row = 51
+                .Row = 52
                 .Lock = True
             Else
-                .Row = 51
+                .Row = 52
                 .Lock = False
             End If
             
