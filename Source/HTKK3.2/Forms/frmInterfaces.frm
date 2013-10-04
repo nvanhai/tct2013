@@ -10,7 +10,7 @@ Begin VB.Form frmInterfaces
    ClientTop       =   450
    ClientWidth     =   14190
    BeginProperty Font 
-      Name            =   "Arial"
+      Name            =   "DS Sans Serif"
       Size            =   8.25
       Charset         =   0
       Weight          =   400
@@ -92,7 +92,7 @@ Begin VB.Form frmInterfaces
       Begin VB.Label Lbload 
          Caption         =   "§ang xö lý ..."
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "DS Sans Serif"
             Size            =   9.75
             Charset         =   0
             Weight          =   700
@@ -3902,18 +3902,18 @@ ErrHandle:
 End Sub
 
 Private Sub KetXuatXML()
-    Dim xmlMapCT       As New MSXML.DOMDocument
-    Dim xmlTK          As New MSXML.DOMDocument
-    Dim xmlPL          As New MSXML.DOMDocument
-    Dim xmlMapPL       As New MSXML.DOMDocument
-    Dim xmlNodeTK      As MSXML.IXMLDOMNode
-    Dim xmlNodeMapCT   As MSXML.IXMLDOMNode
-    Dim sRow           As Integer
-    Dim cSheet         As Integer, oSheet As Integer
-    Dim strFileName    As String
-    Dim MaTk           As String
-    Dim nodeVal        As MSXML.IXMLDOMNode
-    Dim blnFinish      As Boolean
+    Dim xmlMapCT     As New MSXML.DOMDocument
+    Dim xmlTK        As New MSXML.DOMDocument
+    Dim xmlPL        As New MSXML.DOMDocument
+    Dim xmlMapPL     As New MSXML.DOMDocument
+    Dim xmlNodeTK    As MSXML.IXMLDOMNode
+    Dim xmlNodeMapCT As MSXML.IXMLDOMNode
+    Dim sRow         As Integer
+    Dim cSheet       As Integer, oSheet As Integer
+    Dim strFileName  As String
+    Dim MaTk         As String
+    Dim nodeVal      As MSXML.IXMLDOMNode
+    Dim blnFinish    As Boolean
     
     Dim intCtrl        As Integer
     Dim strArrActive() As String
@@ -3930,11 +3930,9 @@ Private Sub KetXuatXML()
         .FileName = getFileName
         
         .ShowSave
-
         If .FileName = vbNullString Or .FileName = "" Then
             Exit Sub
         End If
-
         If Right$(.FileName, 4) <> ".xml" Then
             strFileName = .FileName & ".xml"
         Else
@@ -3950,20 +3948,7 @@ Private Sub KetXuatXML()
             Exit Sub
         End If
     End If
-
-    ' Bo ky tu "A","B" trong ma to khai
-    If InStr(MaTk, "TNCN") > 0 Then
-        If Val(Left$(MaTk, 2)) < 6 Then
-            MaTk = Replace$(Replace$(Left$(MaTk, 3), "A", ""), "B", "") & Right$(MaTk, Len(MaTk) - 3)
-        End If
-    End If
-
-    If InStr(MaTk, "11") > 0 Then
-        MaTk = Replace$(MaTk, "11", "")
-    ElseIf InStr(MaTk, "10") > 0 Then
-        MaTk = Replace$(MaTk, "10", "")
-    End If
-
+        
     xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTk & "_xml.xml")
     xmlMapCT.Load GetAbsolutePath("..\InterfaceIni\" & MaTk & "_xml.xml")
     
@@ -3990,15 +3975,12 @@ Private Sub KetXuatXML()
             Dim Blank         As Boolean
             Dim id            As Integer
             Dim CloneNode     As New MSXML.DOMDocument
-            Dim Level         As String
             
             'Set gia tri cho group dong
             If UCase(xmlNodeMapCT.nodeName) = "DYNAMIC" Then
+                CloneNode.loadXML xmlNodeMapCT.xml
                 id = 1
                 currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
-                Level = GetAttribute(xmlNodeMapCT, "Level")
-
-                CloneNode.loadXML xmlNodeMapCT.firstChild.xml
 
                 If GetAttribute(xmlNodeMapCT, "GroupCellRange") = vbNullString Then
                     GroupCellRange = 1
@@ -4009,13 +3991,7 @@ Private Sub KetXuatXML()
                 Blank = True
 
                 If xmlTK.getElementsByTagName(currentGroup)(0).hasChildNodes Then
-                    If Level = "2" Then
-                        xmlTK.getElementsByTagName(currentGroup)(0).firstChild.removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild.firstChild
-
-                    Else
-                        xmlTK.getElementsByTagName(currentGroup)(0).removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild
-
-                    End If
+                    xmlTK.getElementsByTagName(currentGroup)(0).removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild
 
                 End If
 
@@ -4026,19 +4002,13 @@ Private Sub KetXuatXML()
                     .Row = sRow
 
                     If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
-                    
+
                         Exit Do
                     End If
 
                     SetAttribute CloneNode.firstChild, "id", CStr(id)
                     Set nodePL = xmlTK.getElementsByTagName(currentGroup)(0)
-
-                    If Level = "2" Then
-                        xmlTK.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
-                    Else
-                        xmlTK.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
-                    End If
-
+                    nodePL.appendChild CloneNode.firstChild.CloneNode(True)
                     id = id + 1
 
                     cellRange = cellRange + GroupCellRange
@@ -4101,22 +4071,11 @@ Private Sub KetXuatXML()
             If GetAttribute(nodeVal, "Active") = "1" Then
                 Dim currentRow As Integer
                 Dim xmlSection As MSXML.IXMLDOMNode
+        
                 MaTk = GetAttribute(nodeVal, "DataFile")
-
-                If InStr(MaTk, "11") > 0 Then
-                    MaTk = Replace$(MaTk, "11", "")
-                ElseIf InStr(MaTk, "10") > 0 Then
-                    MaTk = Replace$(MaTk, "10", "")
-                End If
 
                 If InStr(MaTk, "KHBS") > 0 Then
                     MaTk = "KHBS"
-                End If
-
-                If InStr(MaTk, "TNCN") > 0 Then
-                    If Val(Left$(MaTk, 2)) < 6 Then
-            MaTk = Replace$(Replace$(Left$(MaTk, 3), "A", ""), "B", "") & Right$(MaTk, Len(MaTk) - 3)
-                    End If
                 End If
 
                 xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTk & "_xml.xml")
@@ -4130,11 +4089,9 @@ Private Sub KetXuatXML()
                     For Each xmlSection In xmlMapPL.lastChild.childNodes
 
                         If UCase(xmlSection.nodeName) = "DYNAMIC" Then
+                            CloneNode.loadXML xmlSection.xml
                             id = 1
                             currentGroup = GetAttribute(xmlSection, "GroupName")
-                            Level = GetAttribute(xmlSection, "Level")
-
-                            CloneNode.loadXML xmlSection.firstChild.xml
 
                             If GetAttribute(xmlSection, "GroupCellRange") = vbNullString Then
                                 GroupCellRange = 1
@@ -4147,7 +4104,7 @@ Private Sub KetXuatXML()
                             If xmlPL.getElementsByTagName(currentGroup)(0).hasChildNodes Then
                                 xmlPL.getElementsByTagName(currentGroup)(0).removeChild xmlPL.getElementsByTagName(currentGroup)(0).firstChild
                             End If
-                            
+
                             Do
                                 Blank = True
                                 SetCloneNode CloneNode, xmlSection, Blank, cellRange, sRow
@@ -4160,15 +4117,9 @@ Private Sub KetXuatXML()
                                     Exit Do
                                 End If
 
-                                SetAttribute CloneNode.firstChild, "id", CStr(id)
+                                SetAttribute CloneNode.firstChild.firstChild, "id", CStr(id)
                                 Set nodePL = xmlPL.getElementsByTagName(currentGroup)(0)
-
-                                If Level = "2" Then
-                                    xmlPL.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
-                                Else
-                                    xmlPL.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
-                                End If
-
+                                nodePL.appendChild CloneNode.firstChild.firstChild.CloneNode(True)
                                 id = id + 1
                                 cellRange = cellRange + GroupCellRange
                             Loop
@@ -4231,7 +4182,7 @@ Private Sub KetXuatXML()
     End With    'Save temp
     
     xmlTK.save strFileName
-    DisplayMessage "0280", msOKOnly, miInformation
+    DisplayMessage "0280", msOKOnly, miCriticalError
     Exit Sub
 
 End Sub
@@ -6313,7 +6264,7 @@ Private Sub Command1_Click()
         DisplayMessage "0222", msOKOnly, miInformation
         
         ' Bat lai event cho to khai 01A/TNDN, 01B/TNDN
-        If GetAttribute(TAX_Utilities_New.NodeValidity, "Class") = "TAX_Business.cls_01BTNDN" Or GetAttribute(TAX_Utilities_New.NodeValidity, "Class") = "TAX_Business.cls_01ATNDN" Then
+        If GetAttribute(TAX_Utilities_New.NodeValidity, "Class") = "TAX_Business.cls_01BTNDN" Or GetAttribute(TAX_Utilities_New.NodeValidity, "Class") = "TAX_Business.cls_01ATNDN" Or GetAttribute(TAX_Utilities_New.NodeValidity, "Class") = "TAX_Business.cls_03TNDN" Then
             fpSpread1.EventEnabled(EventAllEvents) = True
         End If
     End If
@@ -13457,7 +13408,7 @@ Private Function getFormulaTienPNC(t As Long, soTien As Double, strColRow As Str
     
     Dim result As String
     
-    soNgayNopCham = getSoNgay(hanNopTk, ngayLapTkBs)
+    songaynopcham = getSoNgay(hanNopTk, ngayLapTkBs)
     soNgayNopChamTruocHl = getSoNgay(hanNopTk, "01/07/2013") - 1
     If hanNopTk <> "" Then
         arrDate = Split(hanNopTk, "/")
@@ -13472,17 +13423,17 @@ Private Function getFormulaTienPNC(t As Long, soTien As Double, strColRow As Str
     dHieuLuc = DateSerial(2013, 7, 1)
     If DateDiff("D", dHanNop, dHieuLuc) > 0 And DateDiff("D", dNgayBs, dHieuLuc) < 0 Then
         ' neu ngay phat sinh khoan no truoc 01/07/2013
-        If soNgayNopCham - soNgayNopChamTruocHl <= 90 Then
-            result = soNgayNopCham & "*" & strColRow & "* 0.05 / 100"
+        If songaynopcham - soNgayNopChamTruocHl <= 90 Then
+            result = songaynopcham & "*" & strColRow & "* 0.05 / 100"
         Else
-            result = (soNgayNopChamTruocHl + 90) & "*" & strColRow & "* 0.05 / 100 +" & (soNgayNopCham - soNgayNopChamTruocHl - 90) & "*" & strColRow & "* 0.07 / 100"
+            result = (soNgayNopChamTruocHl + 90) & "*" & strColRow & "* 0.05 / 100 +" & (songaynopcham - soNgayNopChamTruocHl - 90) & "*" & strColRow & "* 0.07 / 100"
         End If
     Else
         ' neu ngay phat sinh khoan no sau 01/07/2013
-        If soNgayNopCham <= 90 Then
-            result = soNgayNopCham & "*" & strColRow & "*0.05/100"
+        If songaynopcham <= 90 Then
+            result = songaynopcham & "*" & strColRow & "*0.05/100"
         Else
-            result = 90 & "*" & strColRow & "*0.05/100+" & (soNgayNopCham - 90) & "*" & strColRow & "*0.07/100"
+            result = 90 & "*" & strColRow & "*0.05/100+" & (songaynopcham - 90) & "*" & strColRow & "*0.07/100"
         End If
     End If
     getFormulaTienPNC = "IF(" & result & ">0;ROUND(" & result & ";0);0)"  'result
