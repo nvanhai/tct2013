@@ -777,7 +777,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
         End If
         
         
-        If .ActiveSheet = sheetPl01_1_GTGT Or .ActiveSheet = sheetPl01_1_GTGT Then
+        If .ActiveSheet = sheetPl01_1_GTGT Or .ActiveSheet = sheetPl01_2_GTGT Then
                    If Col = .ColLetterToNumber(colE) Then
                        .GetText Col, Row, varTemp
                        If varTemp <> "" And varTemp <> "../../...." Then
