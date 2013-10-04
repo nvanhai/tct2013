@@ -790,7 +790,7 @@ Private Sub cmdCommand2_Click()
     xmlDocSave.save sFileName
     
     ' Push MQ
-    PushDataToESB xmlDocSave.xml
+    'PushDataToESB xmlDocSave.xml
     ' End push
     
     Exit Sub
@@ -1210,7 +1210,8 @@ Private Sub ExecuteSave()
         
     xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
     xmlMapCT.Load GetAbsolutePath("..\Ini\" & MaTK & "_xml.xml")
-
+    
+   
     With fpSpread1
         Dim cellid         As String
         Dim cellArray()    As String
@@ -1316,6 +1317,7 @@ Private Sub ExecuteSave()
             End If
 
         Next
+        
         
         'Set gia tri header cho to khai
         SetValueToKhaiHeader xmlTK
@@ -1933,17 +1935,17 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 '
 ' 02/TAIN
-'str2 = "aa320772222222222   00201300400400100201/0114/06/2006<S01><S></S><S>010102~Kg~16535~0~0~30~10~010103~Kg~5847~8~11~0~888~010104~Kg~2222~70~11~0~300~010207~TÊn~3000~1000~15~0~1000~010203~TÊn~5"
-'Barcode_Scaned str2
-'str2 = "aa320772222222222   0020130040040020020000~0~0~100~300</S><S>010208~Kg~564565~56~10~0~765.987~010210~Kg~6343~0~0~49~845~010208~TÊn~100~50~10~0~10</S><S>outh~12/09/2013~rty~red~1~</S></S01>"
-'Barcode_Scaned str2
+''str2 = "aa317773100177415   00201300400400100201/0114/06/2006<S01><S>0102845045</S><S>010102~Kg~16535~0~0~30~10~010103~Kg~5847~8~11~0~888~010104~Kg~2222~70~11~0~300~010207~TÊn~3000~1000~15~0~1000~010203~TÊn~5"
+''Barcode_Scaned str2
+''str2 = "aa317773100177415   0020130040040020020000~0~0~100~300</S><S>010208~Kg~564565~56~10~0~765.987~010210~Kg~6343~0~0~49~845~010208~TÊn~100~50~10~0~10</S><S>outh~12/09/2013~rty~red~1~</S></S01>"
+''Barcode_Scaned str2
 
 '' 02/TAIN - co bo sung KHBS --3100177415 -- 0102845045
-'str2 = "bs320772222222222   00201200600800100301/0114/06/2006<S01><S>2222222222</S><S>010104~Kg~123~48888~11~0~0~050101~TÊn~65342.895~543.768~7~0~654.987~010207~Kg~27646.456~0~0~876.456~888.320</S><S>010"
+'str2 = "aa317773100177415   00201200600800100301/0114/06/2006<S01><S>0102845045</S><S>010104~Kg~123~48888~11~0~0~050101~TÊn~65342.895~543.768~7~0~654.987~010207~Kg~27646.456~0~0~876.456~888.320</S><S>010"
 'Barcode_Scaned str2
-'str2 = "bs320772222222222   002012006008002003203~Kg~6776.893~4888~15~0~0~010210~Kg~7646.876~0~0~68544~7777~010104~Kg~65356.897~457.987~11~0~765.934</S><S>ghghg~12/09/2013~gg~ghgh~~1</S></S01>"
+'str2 = "aa317773100177415   002012006008002003203~Kg~6776.893~4888~15~0~0~010210~Kg~7646.876~0~0~68544~7777~010104~Kg~65356.897~457.987~11~0~765.934</S><S>ghghg~12/09/2013~gg~ghgh~~1</S></S01>"
 'Barcode_Scaned str2
-'str2 = "bs320772222222222   002012006008003003<SKHBS><S>ThuÕ tµi nguyªn ph¸t sinh ph¶i nép trong kú~10~661455~559778340~559116885</S><S>~~0~0~0</S><S>26/09/2013~178~49761403~NOI DUNG DINH KEM ABC~559116885</S></SKHBS>"
+'str2 = "aa317773100177415   002012006008003003<SKHBS><S>ThuÕ tµi nguyªn ph¸t sinh ph¶i nép trong kú~10~661455~559778340~559116885</S><S>~~0~0~0</S><S>26/09/2013~178~49761403~NOI DUNG DINH KEM ABC~559116885</S></SKHBS>"
 'Barcode_Scaned str2
 
 ''04-GTGT-BS
@@ -1956,13 +1958,15 @@ Private Sub Command1_Click()
 
 '04/GTGT chinh thuc
 
-'str2 = "aa317713100177415   08201300100100100201/0101/01/1900<S01><S>0102845045</S><S>70000000~11000000~55100000</S><S>10000000~2000000~3000000~01~50000000~0~1000000~03~1000000~2000000~50000000~02~4000000~5000000~100000~04~5000000~2000000~1000000~02</S><S>0~5~10~01~0~5~10~03~0~5~10~02~0~5~10~04~0~5~10~02</S><S>0~550000~5510"
-'Barcode_Scaned str2
-'str2 = "aa317713100177415   082013001001002002000</S><S>0~100000~300000~01~0~0~100000~03~0~100000~5000000~02~0~250000~10000~04~0~100000~100000~02</S><S>0~27500~551000</S><S>0~5000~30000~01~0~0~10000~03~0~5000~500000~02~0~12500~1000~04~0~5000~10000~02</S><S>136100000~578500</S><S>dasdsad~~21sdasd~24/09/2013~1~~~0</S></S01>"
-'Barcode_Scaned str2
+str2 = "aa317713100177415   02201300100100100201/0101/01/1900<S01><S>0102845045</S><S>70000000~11000000~55100000</S><S>10000000~2000000~3000000~01~50000000~0~1000000~03~1000000~2000000~50000000~02~4000000~5000000~100000~04~5000000~2000000~1000000~02</S><S>0~5~10~01~0~5~10~03~0~5~10~02~0~5~10~04~0~5~10~02</S><S>0~550000~5510"
+Barcode_Scaned str2
+str2 = "aa317713100177415   022013001001002002000</S><S>0~100000~300000~01~0~0~100000~03~0~100000~5000000~02~0~250000~10000~04~0~100000~100000~02</S><S>0~27500~551000</S><S>0~5000~30000~01~0~0~10000~03~0~5000~500000~02~0~12500~1000~04~0~5000~10000~02</S><S>136100000~578500</S><S>dasdsad~~21sdasd~24/09/2013~1~1~1~1</S></S01>"
+Barcode_Scaned str2
 ''04/GTGT bo sung
 '
-'str2 = "bs317713100177415   08201300400400100301/0101/01/1900<S01><S>0102845045</S><S>60000000~2000000~4000000</S><S>10000000~2000000~3000000~01~50000000~0~1000000~03</S><S>0~5~10~01~0~5~10~03</S><S>0~100000~40000#bs317713100177415   0820130040040020030</S><S>0~100000~300000~01~0~0~100000~03</S><S>0~5000~40000</S><S>0~5000~30000~01~0~0~10000~03</S><S>66000000~45000</S><S>dasdsad~~21sdasd~24/09/2013~~1~1~0</S></S01>"
+'str2 = "bs317713100177415   08201300400400100301/0101/01/1900<S01><S>0102845045</S><S>60000000~2000000~4000000</S><S>10000000~2000000~3000000~01~50000000~0~1000000~03</S><S>0~5~10~01~0~5~10~03</S><S>0~100000~40000"
+'Barcode_Scaned str2
+'str2 = "bs317713100177415   0820130040040020030</S><S>0~100000~300000~01~0~0~100000~03</S><S>0~5000~40000</S><S>0~5000~30000~01~0~0~10000~03</S><S>66000000~45000</S><S>dasdsad~~21sdasd~24/09/2013~~1~1~0</S></S01>"
 'Barcode_Scaned str2
 'str2 = "bs317713100177415   082013004004003003<SKHBS><S>~~0~0~0</S><S>Hµng ho¸, dÞch vô chÞu thuÕ suÊt 5%~31~27500~5000~-22500~Hµng ho¸, dÞch vô chÞu thuÕ suÊt 10%~32~551000~40000~-511000</S><S>24/09/2013~4~0~~-533500</S></SKHBS>"
 'Barcode_Scaned str2
@@ -1980,7 +1984,7 @@ Private Sub Command1_Click()
 '
 ''01/KK-XS theo quy chinh thuc
 '
-'str2 = "aa31749040010191900802201300100100100101/0101/01/2010<S01><S></S><S>6000000~3000000~400000</S><S>~dasdsad~21sdasd~24/09/2013~1~~</S></S01>"
+'str2 = "aa31749040010191900802201300100100100101/0101/01/2010<S01><S>0102845045</S><S>6000000~3000000~400000</S><S>~dasdsad~21sdasd~24/09/2013~1~~</S></S01>"
 'Barcode_Scaned str2
 ''01/KK-XS theo quy bo sung
 '
@@ -4247,12 +4251,13 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
     Dim fldValue   As String
     Dim xmlRequest As String
     
+    
     Set xmlResultNNT = New MSXML.DOMDocument
     Dim strResultNNT As String
     
     'Du lieu gia lap de test
-    '    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-    '    strResultNNT = "sdfsfds"
+        Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+        strResultNNT = "sdfsfds"
     
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         Dim cfigXml As New MSXML.DOMDocument
@@ -4294,9 +4299,9 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
         paXmlDoc.save sParamNNT
 
         'Return value from ESB
-        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+        'strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
 
-        strResultNNT = ChangeTagASSCII(strResultNNT, False)
+        'strResultNNT = ChangeTagASSCII(strResultNNT, False)
         xmlResultNNT.loadXML strResultNNT
     Else
         Set rsReturn = Nothing
@@ -4412,9 +4417,10 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
     Set xmlResultDLT = New MSXML.DOMDocument
     Dim strResultDLT As String
     
+    
     'Du lieu gia lap de test
-'    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
-'    strResultDLT = "sdfsfds"
+    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
+    strResultDLT = "sdfsfds"
 
     If (strTaxIDDLString <> "" Or strTaxIDDLString <> vbNullString) Then
         Dim cfigXml As New MSXML.DOMDocument
@@ -4456,10 +4462,10 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
         paXmlDoc.save sParamDLT
 
         'Return value from ESB
-        strResultDLT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+        'strResultDLT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
 
-        strResultDLT = ChangeTagASSCII(strResultDLT, False)
-        xmlResultDLT.loadXML strResultDLT
+        'strResultDLT = ChangeTagASSCII(strResultDLT, False)
+        'xmlResultDLT.loadXML strResultDLT
 
     End If
     
