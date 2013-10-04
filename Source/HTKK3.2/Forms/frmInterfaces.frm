@@ -10,7 +10,7 @@ Begin VB.Form frmInterfaces
    ClientTop       =   450
    ClientWidth     =   14190
    BeginProperty Font 
-      Name            =   "DS Sans Serif"
+      Name            =   "Arial"
       Size            =   8.25
       Charset         =   0
       Weight          =   400
@@ -92,7 +92,7 @@ Begin VB.Form frmInterfaces
       Begin VB.Label Lbload 
          Caption         =   "§ang xö lý ..."
          BeginProperty Font 
-            Name            =   "DS Sans Serif"
+            Name            =   "Arial"
             Size            =   9.75
             Charset         =   0
             Weight          =   700
@@ -3902,7 +3902,6 @@ ErrHandle:
 End Sub
 
 Private Sub KetXuatXML()
-<<<<<<< .mine
     Dim xmlMapCT       As New MSXML.DOMDocument
     Dim xmlTK          As New MSXML.DOMDocument
     Dim xmlPL          As New MSXML.DOMDocument
@@ -3915,20 +3914,6 @@ Private Sub KetXuatXML()
     Dim MaTK           As String
     Dim nodeVal        As MSXML.IXMLDOMNode
     Dim blnFinish      As Boolean
-=======
-    Dim xmlMapCT     As New MSXML.DOMDocument
-    Dim xmlTK        As New MSXML.DOMDocument
-    Dim xmlPL        As New MSXML.DOMDocument
-    Dim xmlMapPL     As New MSXML.DOMDocument
-    Dim xmlNodeTK    As MSXML.IXMLDOMNode
-    Dim xmlNodeMapCT As MSXML.IXMLDOMNode
-    Dim sRow         As Integer
-    Dim cSheet       As Integer, oSheet As Integer
-    Dim strFileName  As String
-    Dim MaTk         As String
-    Dim nodeVal      As MSXML.IXMLDOMNode
-    Dim blnFinish    As Boolean
->>>>>>> .r587
     
     Dim intCtrl        As Integer
     Dim strArrActive() As String
@@ -3957,9 +3942,11 @@ Private Sub KetXuatXML()
         .FileName = getFileName(MaTK)
         
         .ShowSave
+
         If .FileName = vbNullString Or .FileName = "" Then
             Exit Sub
         End If
+
         If Right$(.FileName, 4) <> ".xml" Then
             strFileName = .FileName & ".xml"
         Else
@@ -3975,16 +3962,10 @@ Private Sub KetXuatXML()
             Exit Sub
         End If
     End If
-<<<<<<< .mine
 
 
     xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
     xmlMapCT.Load GetAbsolutePath("..\InterfaceIni\" & MaTK & "_xml.xml")
-=======
-        
-    xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTk & "_xml.xml")
-    xmlMapCT.Load GetAbsolutePath("..\InterfaceIni\" & MaTk & "_xml.xml")
->>>>>>> .r587
     
     If xmlTK.hasChildNodes = False Or xmlMapCT.hasChildNodes = False Then
         DisplayMessage "0281", msOKOnly, miCriticalError
@@ -4009,12 +3990,15 @@ Private Sub KetXuatXML()
             Dim Blank         As Boolean
             Dim id            As Integer
             Dim CloneNode     As New MSXML.DOMDocument
+            Dim Level         As String
             
             'Set gia tri cho group dong
             If UCase(xmlNodeMapCT.nodeName) = "DYNAMIC" Then
-                CloneNode.loadXML xmlNodeMapCT.xml
                 id = 1
                 currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
+                Level = GetAttribute(xmlNodeMapCT, "Level")
+
+                CloneNode.loadXML xmlNodeMapCT.firstChild.xml
 
                 If GetAttribute(xmlNodeMapCT, "GroupCellRange") = vbNullString Then
                     GroupCellRange = 1
@@ -4025,7 +4009,13 @@ Private Sub KetXuatXML()
                 Blank = True
 
                 If xmlTK.getElementsByTagName(currentGroup)(0).hasChildNodes Then
-                    xmlTK.getElementsByTagName(currentGroup)(0).removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild
+                    If Level = "2" Then
+                        xmlTK.getElementsByTagName(currentGroup)(0).firstChild.removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild.firstChild
+
+                    Else
+                        xmlTK.getElementsByTagName(currentGroup)(0).removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild
+
+                    End If
 
                 End If
 
@@ -4036,13 +4026,19 @@ Private Sub KetXuatXML()
                     .Row = sRow
 
                     If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
-
+                    
                         Exit Do
                     End If
 
                     SetAttribute CloneNode.firstChild, "id", CStr(id)
                     Set nodePL = xmlTK.getElementsByTagName(currentGroup)(0)
-                    nodePL.appendChild CloneNode.firstChild.CloneNode(True)
+
+                    If Level = "2" Then
+                        xmlTK.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
+                    Else
+                        xmlTK.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
+                    End If
+
                     id = id + 1
 
                     cellRange = cellRange + GroupCellRange
@@ -4105,35 +4101,24 @@ Private Sub KetXuatXML()
             If GetAttribute(nodeVal, "Active") = "1" Then
                 Dim currentRow As Integer
                 Dim xmlSection As MSXML.IXMLDOMNode
-<<<<<<< .mine
                 MaTK = GetAttribute(nodeVal, "DataFile")
-=======
-        
-                MaTk = GetAttribute(nodeVal, "DataFile")
->>>>>>> .r587
 
-<<<<<<< .mine
                 If InStr(MaTK, "11") > 0 Then
                     MaTK = Replace$(MaTK, "11", "")
                 ElseIf InStr(MaTK, "10") > 0 Then
                     MaTK = Replace$(MaTK, "10", "")
                 End If
 
-=======
->>>>>>> .r587
                 If InStr(MaTK, "KHBS") > 0 Then
                     MaTK = "KHBS"
                 End If
 
-<<<<<<< .mine
                 If InStr(MaTK, "TNCN") > 0 Then
                     If Val(Left$(MaTK, 2)) < 6 Then
             MaTK = Replace$(Replace$(Left$(MaTK, 3), "A", ""), "B", "") & Right$(MaTK, Len(MaTK) - 3)
                     End If
                 End If
 
-=======
->>>>>>> .r587
                 xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
 
                 xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\" & MaTK & "_xml.xml")
@@ -4145,9 +4130,11 @@ Private Sub KetXuatXML()
                     For Each xmlSection In xmlMapPL.lastChild.childNodes
 
                         If UCase(xmlSection.nodeName) = "DYNAMIC" Then
-                            CloneNode.loadXML xmlSection.xml
                             id = 1
                             currentGroup = GetAttribute(xmlSection, "GroupName")
+                            Level = GetAttribute(xmlSection, "Level")
+
+                            CloneNode.loadXML xmlSection.firstChild.xml
 
                             If GetAttribute(xmlSection, "GroupCellRange") = vbNullString Then
                                 GroupCellRange = 1
@@ -4160,7 +4147,7 @@ Private Sub KetXuatXML()
                             If xmlPL.getElementsByTagName(currentGroup)(0).hasChildNodes Then
                                 xmlPL.getElementsByTagName(currentGroup)(0).removeChild xmlPL.getElementsByTagName(currentGroup)(0).firstChild
                             End If
-
+                            
                             Do
                                 Blank = True
                                 SetCloneNode CloneNode, xmlSection, Blank, cellRange, sRow
@@ -4173,9 +4160,15 @@ Private Sub KetXuatXML()
                                     Exit Do
                                 End If
 
-                                SetAttribute CloneNode.firstChild.firstChild, "id", CStr(id)
+                                SetAttribute CloneNode.firstChild, "id", CStr(id)
                                 Set nodePL = xmlPL.getElementsByTagName(currentGroup)(0)
-                                nodePL.appendChild CloneNode.firstChild.firstChild.CloneNode(True)
+
+                                If Level = "2" Then
+                                    xmlPL.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
+                                Else
+                                    xmlPL.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
+                                End If
+
                                 id = id + 1
                                 cellRange = cellRange + GroupCellRange
                             Loop
@@ -4238,7 +4231,7 @@ Private Sub KetXuatXML()
     End With    'Save temp
     
     xmlTK.Save strFileName
-    DisplayMessage "0280", msOKOnly, miCriticalError
+    DisplayMessage "0280", msOKOnly, miInformation
     Exit Sub
 
 End Sub
@@ -6320,7 +6313,7 @@ Private Sub Command1_Click()
         DisplayMessage "0222", msOKOnly, miInformation
         
         ' Bat lai event cho to khai 01A/TNDN, 01B/TNDN
-        If GetAttribute(TAX_Utilities_New.NodeValidity, "Class") = "TAX_Business.cls_01BTNDN" Or GetAttribute(TAX_Utilities_New.NodeValidity, "Class") = "TAX_Business.cls_01ATNDN" Or GetAttribute(TAX_Utilities_New.NodeValidity, "Class") = "TAX_Business.cls_03TNDN" Then
+        If GetAttribute(TAX_Utilities_New.NodeValidity, "Class") = "TAX_Business.cls_01BTNDN" Or GetAttribute(TAX_Utilities_New.NodeValidity, "Class") = "TAX_Business.cls_01ATNDN" Then
             fpSpread1.EventEnabled(EventAllEvents) = True
         End If
     End If
@@ -8905,6 +8898,7 @@ Private Sub ResizeButton()
         cmdDelete.Visible = False
         cmdExport.Visible = False
         cmdExportXML.Visible = False
+        cmdImportXML.Visible = False
         cmdSave.Left = Frame1.Width - 2755 '2985
         cmdExit.Left = Frame1.Width - 1405 '1635
     End If
