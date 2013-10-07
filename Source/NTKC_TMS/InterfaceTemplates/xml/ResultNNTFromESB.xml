@@ -20,19 +20,21 @@
 	<SPARE3/>
 </HEADER>
 <BODY>
-	<ROW>
-		<TIN>3100177415</TIN>
-		<PAY_TAXO_ID>50100</PAY_TAXO_ID>
-		<DEPA_ID>5010005</DEPA_ID>
-		<NORM_NAME>Công Ty C¿ Ph¿n Xây D¿ng H¿ T¿ng Giao Thông 207</NORM_NAME>
-		<TRAN_ADDR>286A- Lê Thanh Ngh¿</TRAN_ADDR>
-		<TRAN_PROV>501</TRAN_PROV>
-		<TRAN_DIST>50101</TRAN_DIST>
-		<TRAN_TEL>0511. 3626207</TRAN_TEL>
-		<TRAN_FAX>0511 3625207</TRAN_FAX>
-		<MAIL/>
-		<START_DATE>2008-10-29 00:00:00.0</START_DATE>
-		<STATUS>00</STATUS>
+	<ROW>		
+		<ThongTinDangKyThue>
+			<DangKyThue>
+				<MaSoThue>3100177415</MaSoThue>
+				<TenNNT>Công Ty C¿ Ph¿n Xây D¿ng H¿ T¿ng Giao Thông 207</TenNNT>
+				<DiaChi>286A- Lê Thanh Ngh¿</DiaChi>
+				<MaTinh>501</MaTinh>
+				<MaQuanHuyen>50101</MaQuanHuyen>
+				<MaPhuongXa></MaPhuongXa>
+				<SoCMT></SoCMT>
+				<MaCQThueQL></MaCQThueQL>
+				<NganhNgheKD></NganhNgheKD>
+				<TrangThaiHoatDong>00</TrangThaiHoatDong>
+			</DangKyThue>
+		</ThongTinDangKyThue>
 	</ROW>
 </BODY>
 </DATA>

@@ -86,6 +86,7 @@ Public LoaiKyKK As Boolean 'True la quy, false la thang
 Public isPITActive As Boolean   ' Kiem tra trang thai active cua PIT
 
 Private SHA1Hash As New SHA1Hash
+Private Base64Unicode As New Base64Unicode
 
 ''' GetAttribute description
 ''' Get an attribute value of xmlNode
@@ -1927,7 +1928,7 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             paXmlDoc.getElementsByTagName("UserName")(0).Text = sUserName
             paXmlDoc.getElementsByTagName("TaxOffcice")(0).Text = sTaxOffice
             bPass = StrConv(sPass, vbFromUnicode)
-            paXmlDoc.getElementsByTagName("Pass")(0).Text = sPass 'SHA1Hash.HashBytes(bPass)
+            paXmlDoc.getElementsByTagName("Pass")(0).Text = Base64Unicode.Base64EncodeString(sPass) 'sPass 'SHA1Hash.HashBytes(bPass)
                         
             paXmlDoc.getElementsByTagName("VERSION")(0).Text = cfigXml.getElementsByTagName("VERSION")(0).Text
             paXmlDoc.getElementsByTagName("SENDER_CODE")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text
