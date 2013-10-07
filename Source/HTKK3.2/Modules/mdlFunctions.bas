@@ -3728,8 +3728,8 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             ReDim strResult(3)
             strResult(0) = "I_7~Dynamic_0"
             'strResult(1) = "V_41~R_43~R_44~R_45~R_46~R_47~R_48~R_49~R_50~R_51~R_52~R_53~R_55~R_56~R_57~R_59~R_60~R_61~Dynamic_0"
-            strResult(1) = "V_41~R_43~R_44~R_45~R_46~R_47~R_48~R_49~R_50~R_51~R_52~R_53~R_55~R_56~R_57~Dynamic_0"
-            strResult(2) = "R_64~R_66~H_64~H_66~C_68~F_68~I_68~L_68~Dynamic_0"
+            strResult(1) = "V_41~R_43~R_44~R_45~R_46~R_47~R_48~R_49~R_50~R_51~R_52~R_53~R_54~R_55~R_57~R_58~R_59~Dynamic_0"
+            strResult(2) = "R_66~R_68~H_66~H_68~C_70~F_70~I_70~L_70~Dynamic_0"
         ' QT TNCN
         ' 05_TNCN \TT28
         Case "17"
@@ -3761,8 +3761,8 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             ReDim strResult(3)
             strResult(0) = "G_17~Dynamic_0"
             'strResult(1) = "R_18~X_18~K_4~P_4~R_48~R_49~R_50~R_51~R_52~R_53~R_54~R_55~R_56~R_57~R_58~R_59~R_60~Dynamic_0"
-            strResult(1) = "R_48~R_49~R_50~R_51~R_52~R_53~R_54~R_55~R_56~R_57~R_58~R_59~R_60~Dynamic_0"
-            strResult(2) = "R_63~R_65~H_63~H_65~C_67~I_67~Dynamic_0"
+            strResult(1) = "R_48~R_49~R_50~R_51~R_52~R_53~R_54~R_55~R_56~R_57~R_58~R_59~R_60~R_61~Dynamic_0"
+            strResult(2) = "R_64~R_66~H_64~H_66~C_68~I_68~Dynamic_0"
             ' 08A_TNCN  \TT28
         Case "75"
             ReDim strResult(4)
