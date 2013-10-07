@@ -21,13 +21,20 @@
 	</HEADER>
 	<BODY>
 		<ROW>
-			<NORM_NAME>Công Ty TNHH K¿ Toán - Thu¿ Liên Vi¿t</NORM_NAME>
-			<TRAN_ADDR>Phòng 204, s¿ 51 ph¿ Ð¿c Ng¿</TRAN_ADDR>
-			<TELL>0466750087</TELL>
-			<FAX/>
-			<EMAIL/>
-			<REPR_TAXO_ID>10101</REPR_TAXO_ID>
-			<START_DATE>2011-10-03 00:00:00.0</START_DATE>
+			<ThongTinDangKyThue>
+				<DangKyThue>
+					<MaSoThue>0302798787-001</MaSoThue>
+					<TenNNT></TenNNT>
+					<DiaChi></DiaChi>
+					<MaTinh></MaTinh>
+					<MaQuanHuyen></MaQuanHuyen>
+					<MaPhuongXa></MaPhuongXa>
+					<SoCMT></SoCMT>
+					<MaCQThueQL></MaCQThueQL>
+					<NganhNgheKD></NganhNgheKD>
+					<TrangThaiHoatDong></TrangThaiHoatDong>
+				</DangKyThue>
+			</ThongTinDangKyThue>
 		</ROW>
 	</BODY>
 </DATA>

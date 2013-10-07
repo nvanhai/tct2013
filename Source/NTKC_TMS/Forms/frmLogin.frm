@@ -153,10 +153,9 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Private SHA1Hash As New SHA1Hash
-'NSHUNG lay thong tin NSD tu truc ESB
+Private Base64Unicode As New Base64Unicode
 'Lay thong tin NNT tu ESB
 Private xmlResultNSD As MSXML.DOMDocument
-'Ket thuc NSHUNG lay thong tin
 
 Private Sub cmdClose_Click()
     Unload Me
@@ -257,18 +256,17 @@ Private Function IsValidUserESB() As Integer
     Dim strResultNSD As String
     Dim sStatus      As String
     '
-        IsValidUserESB = 2
-        Exit Function
+    '        IsValidUserESB = 2
+    '        Exit Function
     
     strResultNSD = GetDataFromESB(txtUsername.Text, txtPassword.Text, "NSD")
     'Chuan hoa file xml ket qua - lay duoc tu ESB
     strResultNSD = ChangeTagASSCII(strResultNSD, False)
     xmlResultNSD.loadXML strResultNSD
     
-   
-    
-    
-    
+    'Du lieu gia lap de test
+    Set xmlResultNSD = LoadXmlTemp("ResultNSDFromESB")
+       
     'Check validate xmlResultNSD
     If (strResultNSD = "") Then
         IsValidUserESB = 1
@@ -276,10 +274,10 @@ Private Function IsValidUserESB() As Integer
         Exit Function
     End If
 
-If (strResultNSD = "" Or strResultNSD = vbNullString Or Not xmlResultNSD.hasChildNodes) Then
+    If (strResultNSD = "" Or strResultNSD = vbNullString Or Not xmlResultNSD.hasChildNodes) Then
         IsValidUserESB = 1  'Message login thanh cong
-            Set xmlResultNSD = Nothing
-            Exit Function
+        Set xmlResultNSD = Nothing
+        Exit Function
 
     Else
         Dim Err_des As String
@@ -290,14 +288,14 @@ If (strResultNSD = "" Or strResultNSD = vbNullString Or Not xmlResultNSD.hasChil
             Set xmlResultNSD = Nothing
             Exit Function
         Else
-         If (Dir("c:\TempXML\", vbDirectory) = "") Then
-            MkDir "c:\TempXML\"
+
+            If (Dir("c:\TempXML\", vbDirectory) = "") Then
+                MkDir "c:\TempXML\"
             End If
 
-        Dim sFileName As String
-        sFileName = "c:\TempXML\ResultNSD.xml"
-        xmlResultNSD.save sFileName
-        
+            Dim sFileName As String
+            sFileName = "c:\TempXML\ResultNSD.xml"
+            xmlResultNSD.save sFileName
         
             If (InStr(xmlResultNSD.xml, "Status") <= 0) Then
                 IsValidUserESB = 1
@@ -305,80 +303,82 @@ If (strResultNSD = "" Or strResultNSD = vbNullString Or Not xmlResultNSD.hasChil
                 Exit Function
             Else
                 sStatus = xmlResultNSD.getElementsByTagName("Status")(0).Text
-            strCurrentVersion = xmlResultNSD.getElementsByTagName("NTKversion")(0).Text
-            strUserName = xmlResultNSD.getElementsByTagName("UserName")(0).Text
-            strUserID = txtUsername.Text
+                strCurrentVersion = xmlResultNSD.getElementsByTagName("NTKversion")(0).Text
+                strUserName = xmlResultNSD.getElementsByTagName("UserName")(0).Text
+                strUserID = txtUsername.Text
         
-            Select Case sStatus
+                Select Case sStatus
 
-                Case "01"  ' Thanh cong
-                    IsValidUserESB = 2  'Message login thanh cong
-                    Set xmlResultNSD = Nothing
-                    Exit Function
+                    Case "01"  ' Thanh cong
+                        IsValidUserESB = 2  'Message login thanh cong
+                        Set xmlResultNSD = Nothing
+                        Exit Function
 
-                Case "02" 'Loi xac thuc NSD
-                    IsValidUserESB = 0   'Message loi use, pass
-                    Set xmlResultNSD = Nothing
-                    Exit Function
+                    Case "02" 'Loi xac thuc NSD
+                        IsValidUserESB = 0   'Message loi use, pass
+                        Set xmlResultNSD = Nothing
+                        Exit Function
 
-                Case "03" 'Cac loi khac cua he thong TMS
-                    IsValidUserESB = 1  'Message loi khong dang nhap duoc
-                    Set xmlResultNSD = Nothing
-                    Exit Function
+                    Case "03" 'Cac loi khac cua he thong TMS
+                        IsValidUserESB = 1  'Message loi khong dang nhap duoc
+                        Set xmlResultNSD = Nothing
+                        Exit Function
 
-                Case Else
-                    IsValidUserESB = 1
-                    Set xmlResultNSD = Nothing
-                    Exit Function
-            End Select
+                    Case Else
+                        IsValidUserESB = 1
+                        Set xmlResultNSD = Nothing
+                        Exit Function
+                End Select
+
             End If
         End If
         
     End If
-'    If (Not xmlResultNSD Is Nothing) Then
-'
-'        Dim checkValue As MSXML.IXMLDOMNode
-'        Set checkValue = xmlResultNSD.selectSingleNode("Status")
-'
-'        If (checkValue Is Nothing) Then
-'            IsValidUserESB = 1  'Message login thanh cong
-'            Set xmlResultNSD = Nothing
-'            Exit Function
-'        Else
-'
-'            sStatus = xmlResultNSD.getElementsByTagName("Status")(0).Text
-'            strCurrentVersion = xmlResultNSD.getElementsByTagName("NTKversion")(0).Text
-'            strUserName = xmlResultNSD.getElementsByTagName("UserName")(0).Text
-'            strUserID = txtUsername.Text
-'
-'            Select Case sStatus
-'
-'                Case "01"  ' Thanh cong
-'                    IsValidUserESB = 2  'Message login thanh cong
-'                    Set xmlResultNSD = Nothing
-'                    Exit Function
-'
-'                Case "02" 'Loi xac thuc NSD
-'                    IsValidUserESB = 0   'Message loi use, pass
-'                    Set xmlResultNSD = Nothing
-'                    Exit Function
-'
-'                Case "03" 'Cac loi khac cua he thong TMS
-'                    IsValidUserESB = 1  'Message loi khong dang nhap duoc
-'                    Set xmlResultNSD = Nothing
-'                    Exit Function
-'
-'                Case Else
-'                    IsValidUserESB = 1
-'                    Set xmlResultNSD = Nothing
-'                    Exit Function
-'            End Select
-'
-'        End If
-'
-'    Else
-'        IsValidUserESB = 1
-'    End If
+
+    '    If (Not xmlResultNSD Is Nothing) Then
+    '
+    '        Dim checkValue As MSXML.IXMLDOMNode
+    '        Set checkValue = xmlResultNSD.selectSingleNode("Status")
+    '
+    '        If (checkValue Is Nothing) Then
+    '            IsValidUserESB = 1  'Message login thanh cong
+    '            Set xmlResultNSD = Nothing
+    '            Exit Function
+    '        Else
+    '
+    '            sStatus = xmlResultNSD.getElementsByTagName("Status")(0).Text
+    '            strCurrentVersion = xmlResultNSD.getElementsByTagName("NTKversion")(0).Text
+    '            strUserName = xmlResultNSD.getElementsByTagName("UserName")(0).Text
+    '            strUserID = txtUsername.Text
+    '
+    '            Select Case sStatus
+    '
+    '                Case "01"  ' Thanh cong
+    '                    IsValidUserESB = 2  'Message login thanh cong
+    '                    Set xmlResultNSD = Nothing
+    '                    Exit Function
+    '
+    '                Case "02" 'Loi xac thuc NSD
+    '                    IsValidUserESB = 0   'Message loi use, pass
+    '                    Set xmlResultNSD = Nothing
+    '                    Exit Function
+    '
+    '                Case "03" 'Cac loi khac cua he thong TMS
+    '                    IsValidUserESB = 1  'Message loi khong dang nhap duoc
+    '                    Set xmlResultNSD = Nothing
+    '                    Exit Function
+    '
+    '                Case Else
+    '                    IsValidUserESB = 1
+    '                    Set xmlResultNSD = Nothing
+    '                    Exit Function
+    '            End Select
+    '
+    '        End If
+    '
+    '    Else
+    '        IsValidUserESB = 1
+    '    End If
     
 ErrorHandle:
     IsValidUserESB = 1
@@ -660,17 +660,17 @@ End Function
 
 ' Kiem tra activ PIT
 Private Function checkActivePIT() As Boolean
-    Dim rsObj As ADODB.Recordset
-    Dim strSQL As String
+    Dim rsObj     As ADODB.Recordset
+    Dim strSQL    As String
     Dim resultPIT As Boolean
     On Error GoTo ErrHandle
     resultPIT = False
-    strSQL = "SELECT rv_low_value " & _
-           "From cg_ref_codes " & _
-           "WHERE (rv_domain = 'NTK.PIT_ACTIVE')"
+    strSQL = "SELECT rv_low_value " & "From cg_ref_codes " & "WHERE (rv_domain = 'NTK.PIT_ACTIVE')"
+
     'connect to database QLT
     If clsDAO.Connected Then
         Set rsObj = clsDAO.Execute(strSQL)
+
         If Not rsObj Is Nothing Then
             If rsObj.Fields.Count > 0 Then
                 If rsObj.Fields(0).Value = "1" Then
@@ -681,6 +681,7 @@ Private Function checkActivePIT() As Boolean
             End If
         End If
     End If
+
     checkActivePIT = resultPIT
     
     Exit Function
