@@ -3741,14 +3741,14 @@ Public Function getTemplateTk(ByVal strId As String) As String()
         Case "42"
             ReDim strResult(3)
             strResult(0) = "D_22~Dynamic_0"
-            strResult(1) = "I_39~I_40~I_41~I_42~I_43~I_44~I_45~Dynamic_0"
-            strResult(2) = "M_47~M_49~D_47~D_49~C_50~I_50~Dynamic_0"
+            strResult(1) = "I_39~I_40~I_41~I_42~I_43~Dynamic_0"
+            strResult(2) = "M_45~M_47~D_45~D_47~C_48~I_48~Dynamic_0"
         ' 02_TNCN_XS  \TT28
         Case "43"
             ReDim strResult(3)
             strResult(0) = "D_22~Dynamic_0"
-            strResult(1) = "I_40~I_41~I_42~I_43~I_44~I_45~I_46~Dynamic_0"
-            strResult(2) = "M_48~M_50~D_48~D_50~C_53~I_53~Dynamic_0"
+            strResult(1) = "I_40~I_41~I_42~I_43~I_44~Dynamic_0"
+            strResult(2) = "M_46~M_48~D_46~D_48~C_51~I_51~Dynamic_0"
             ' 06_TNCN  \TT28
         Case "59"
             ReDim strResult(3)

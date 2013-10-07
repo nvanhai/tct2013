@@ -10,7 +10,7 @@ Begin VB.Form frmInterfaces
    ClientTop       =   450
    ClientWidth     =   14190
    BeginProperty Font 
-      Name            =   "Arial"
+      Name            =   "DS Sans Serif"
       Size            =   8.25
       Charset         =   0
       Weight          =   400
@@ -92,7 +92,7 @@ Begin VB.Form frmInterfaces
       Begin VB.Label Lbload 
          Caption         =   "§ang xö lý ..."
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "DS Sans Serif"
             Size            =   9.75
             Charset         =   0
             Weight          =   700
