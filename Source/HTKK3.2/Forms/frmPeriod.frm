@@ -2798,7 +2798,7 @@ Private Sub Form_Load()
         SetupLayout02NTNN
 '    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "75" Then
 '        SetupLayout08TNCN
-    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Then
+    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "64" Then
         SetupLayout04TBAC
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "92" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "98" Then
         SetupLayout01_TAIN_DK

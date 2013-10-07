@@ -409,7 +409,7 @@ Public Sub Prepare2()
         Dim count As Integer
         count = 0
         .Sheet = 1
-        .Row = 60
+        .Row = 61
         .Col = .ColLetterToNumber("B")
         Do
             count = count + 1
@@ -417,14 +417,14 @@ Public Sub Prepare2()
         Loop Until .Text = "aa"
         ' Neu check gia han moi cho phep chon GT
         .Col = .ColLetterToNumber("B")
-        .Row = 61 + count
+        .Row = 62 + count
         If .Text = "1" Or UCase$(.Text) = "X" Then
             .Col = .ColLetterToNumber("D")
-            .Row = 62 + count
+            .Row = 63 + count
             .Lock = False
         Else
             .Col = .ColLetterToNumber("D")
-            .Row = 62 + count
+            .Row = 63 + count
             .Lock = True
         End If
         ' End set gia han
@@ -708,7 +708,7 @@ Public Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonD
                 ' Lay ve row check gia han
                 count = 0
                 .Sheet = 1
-                .Row = 60
+                .Row = 61
                 .Col = .ColLetterToNumber("B")
                 Do
                     count = count + 1
@@ -716,21 +716,21 @@ Public Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonD
                 Loop Until .Text = "aa"
         
                 ' Neu check gia han moi cho phep chon GT
-                If Col = fps.ColLetterToNumber("B") And Row = 61 + count Then
+                If Col = fps.ColLetterToNumber("B") And Row = 62 + count Then
                     fps.Col = fps.ColLetterToNumber("B")
-                    fps.Row = 61 + count
+                    fps.Row = 62 + count
                     If fps.Text = "1" Or UCase$(fps.Text) = "X" Then
                         fps.Col = fps.ColLetterToNumber("D")
-                        fps.Row = 62 + count
+                        fps.Row = 63 + count
                         fps.Lock = False
                     Else
                         fps.Col = fps.ColLetterToNumber("D")
-                        fps.Row = 62 + count
+                        fps.Row = 63 + count
                         fps.Lock = True
-                        fps.SetText fps.ColLetterToNumber("D"), fps.Row = 62 + count, ""
-                        fps.SetText fps.ColLetterToNumber("P"), fps.Row = 62 + count, "00"
-                        UpdateCell fps, fps.ColLetterToNumber("P"), fps.Row = 62 + count, "00"
-                        UpdateCell fps, fps.ColLetterToNumber("D"), fps.Row = 62 + count, ""
+                        fps.SetText fps.ColLetterToNumber("D"), fps.Row = 63 + count, ""
+                        fps.SetText fps.ColLetterToNumber("P"), fps.Row = 63 + count, "00"
+                        UpdateCell fps, fps.ColLetterToNumber("P"), fps.Row = 63 + count, "00"
+                        UpdateCell fps, fps.ColLetterToNumber("D"), fps.Row = 63 + count, ""
                     End If
                 End If
         End If
@@ -815,7 +815,7 @@ With fps
             Dim count As Integer
             count = 0
             .Sheet = 1
-            .Row = 60
+            .Row = 61
             .Col = .ColLetterToNumber("B")
             Do
                 count = count + 1
@@ -824,7 +824,7 @@ With fps
         
             .Col = Col
             .Row = Row
-             If Col = .ColLetterToNumber("D") And Row = 62 + count Then
+             If Col = .ColLetterToNumber("D") And Row = 63 + count Then
                 intIndexCombo = .TypeComboBoxCurSel
                 .Col = .ColLetterToNumber("P")
                 .TypeComboBoxCurSel = intIndexCombo
@@ -1422,33 +1422,33 @@ Private Sub CheckDynamicError()
         
         .Sheet = 1
          count = 0
-        .Row = 60
+        .Row = 61
         .Col = .ColLetterToNumber("B")
         Do
             count = count + 1
             .Row = .Row + 1
         Loop Until .Text = "aa"
         
-        .GetText .ColLetterToNumber("B"), 61 + count, vCheckGH
+        .GetText .ColLetterToNumber("B"), 62 + count, vCheckGH
         
-        .GetText .ColLetterToNumber("D"), 62 + count, vLyDoGH
+        .GetText .ColLetterToNumber("D"), 63 + count, vLyDoGH
          If (Trim(vCheckGH) = "1" Or Trim$(UCase(vCheckGH)) = "X") And isCheckGh Then
              If Trim$(vLyDoGH) = "" Then
                  .Col = .ColLetterToNumber("D")
-                 .Row = 62 + count
+                 .Row = 63 + count
                  .CellNote = vErrorCheckGH  'static
                  .BackColor = mErrorColor
                  iflagCheckGH = 1
              Else
                  .Col = .ColLetterToNumber("D")
-                 .Row = 62 + count
+                 .Row = 63 + count
                  .CellNote = ""  'static
                  .BackColor = mNonErrorColor
                  iflagCheckGH = 0
              End If
          Else
                  .Col = .ColLetterToNumber("D")
-                 .Row = 62 + count
+                 .Row = 63 + count
                  .CellNote = ""  'static
                  .BackColor = mNonErrorColor
                  iflagCheckGH = 0
@@ -2496,12 +2496,12 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
             If mCurrentSheet = 1 Then
                 i = 1
                 .Col = .ColLetterToNumber("B")
-                .Row = 60
+                .Row = 61
                 Do
                      .Text = str(i)
                      ' UpdateCell fps, .Col, .Row, .Text
                      .Col = .ColLetterToNumber("B")
-                     .Row = i + 60
+                     .Row = i + 61
                      i = i + 1
                  Loop Until .Text = "aa"
             End If
