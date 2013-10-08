@@ -17,7 +17,7 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Dynamic GroupName="TaiNguyenKhaiThac">
-		<ThueTaiNguyenThuMuaGom id="ID_1">
+		<ThueTaiNguyenKhaiThac id="ID_1">
 			<ct2>E_42</ct2>
 			<SanLuongTNguyenTinhThue>
 				<ct3>P_42</ct3>
@@ -29,7 +29,7 @@
 			<ct8>AG_42</ct8>
 			<ct9>AJ_42</ct9>
 			<ct10>AN_42</ct10>
-		</ThueTaiNguyenThuMuaGom>
+		</ThueTaiNguyenKhaiThac>
 	</Dynamic>
 	<Dynamic GroupName="TaiNguyenThuMuaGom">
 		<ThueTaiNguyenThuMuaGom id="ID_2">

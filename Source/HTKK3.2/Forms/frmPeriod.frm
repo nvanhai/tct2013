@@ -20,7 +20,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkKhiThien 
       Caption         =   "KhÝ thiªn nhiªn"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -37,7 +37,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkCondensate 
       Caption         =   "Condensate"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -54,7 +54,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkDauTho 
       Caption         =   "DÇu th«"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -71,7 +71,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkQTNamDau 
       Caption         =   "QuyÕt to¸n hÕt vµo n¨m ®Çu"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -88,7 +88,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkQTTungNam 
       Caption         =   "QuyÕt to¸n cho riªng tõng n¨m"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -105,7 +105,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkTuThangDenThang 
       Caption         =   "Tê khai tõ th¸ng ®Õn th¸ng"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -122,7 +122,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkTKQuy 
       Caption         =   "Tê khai quý"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -139,7 +139,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkTKLanPS 
       Caption         =   "Tê khai lÇn ph¸t sinh"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -156,7 +156,7 @@ Begin VB.Form frmPeriod
    Begin VB.CheckBox chkTkhaiThang 
       Caption         =   "Tê khai th¸ng"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -173,7 +173,7 @@ Begin VB.Form frmPeriod
    Begin VB.OptionButton OptTKLanPS 
       Caption         =   "Tê khai lÇn ph¸t sinh"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -190,7 +190,7 @@ Begin VB.Form frmPeriod
    Begin VB.OptionButton OptTKThang 
       Caption         =   "Tê khai th¸ng"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -206,7 +206,7 @@ Begin VB.Form frmPeriod
    End
    Begin VB.ComboBox cboNganhKD 
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -224,7 +224,7 @@ Begin VB.Form frmPeriod
    Begin VB.OptionButton OptChinhthuc 
       Caption         =   "Tê khai lÇn ®Çu"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -242,7 +242,7 @@ Begin VB.Form frmPeriod
    Begin VB.OptionButton OptBosung 
       Caption         =   "Tê khai bæ sung"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -342,7 +342,7 @@ Begin VB.Form frmPeriod
    Begin VB.CommandButton cmdClose 
       Caption         =   "§ã&ng"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -360,7 +360,7 @@ Begin VB.Form frmPeriod
       Caption         =   "§ån&g ý"
       Default         =   -1  'True
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -436,7 +436,7 @@ Begin VB.Form frmPeriod
       Begin VB.Label lblSelectAll 
          Caption         =   "Chän phô lôc kª khai"
          BeginProperty Font 
-            Name            =   "DS Sans Serif"
+            Name            =   "Arial"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -483,7 +483,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":02C8
+      SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
    End
@@ -492,7 +492,7 @@ Begin VB.Form frmPeriod
       BackStyle       =   0  'Transparent
       Caption         =   "®Õn th¸ng"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -511,7 +511,7 @@ Begin VB.Form frmPeriod
       BackStyle       =   0  'Transparent
       Caption         =   "Tõ th¸ng"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -528,7 +528,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblNganhKD 
       Caption         =   "Danh môc ngµnh nghÒ"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -545,7 +545,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblSolan 
       Caption         =   "LÇn"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -562,7 +562,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblNgay 
       Caption         =   "Ngµy"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -579,7 +579,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblYear 
       Caption         =   "N¨m"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -604,7 +604,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblMonth 
       Caption         =   "Th¸ng"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -621,7 +621,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblNgayDau 
       Caption         =   "Tõ ngµy"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -638,7 +638,7 @@ Begin VB.Form frmPeriod
    Begin VB.Label lblNgayCuoi 
       Caption         =   "§Õn ngµy"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -656,7 +656,7 @@ Begin VB.Form frmPeriod
       BackStyle       =   0  'Transparent
       Caption         =   "Chän kú kª khai"
       BeginProperty Font 
-         Name            =   "DS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -1268,7 +1268,7 @@ Private Sub chkTKLanPS_Click()
     txtDay.Visible = IIf(chkTKLanPS.value = 1, True, False)
     If chkTKLanPS.value = 1 Then
         strLoaiTKThang_PS = "TK_LANPS"
-        
+        strKieuKy = "D"
         OptChinhthuc.value = True
         lblSolan.Visible = False
         txtSolan.Visible = False
@@ -2368,6 +2368,13 @@ Public Sub cmdOK_Click()
     ElseIf strKieuKy = KIEU_KY_NGAY_THANG Then
         TAX_Utilities_New.month = txtMonth.Text
         TAX_Utilities_New.Day = txtDay.Text
+        TAX_Utilities_New.ThreeMonths = vbNullString
+        TAX_Utilities_New.FirstDay = vbNullString
+        TAX_Utilities_New.LastDay = vbNullString
+        ElseIf strKieuKy = KIEU_KY_NGAY_PS Then
+        TAX_Utilities_New.Day = txtDay.Text
+                TAX_Utilities_New.month = txtMonth.Text
+        TAX_Utilities_New.Year = txtYear.Text
         TAX_Utilities_New.ThreeMonths = vbNullString
         TAX_Utilities_New.FirstDay = vbNullString
         TAX_Utilities_New.LastDay = vbNullString

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <HSoKhaiThue>
 	<TTinChung>
 		<TTinDVu>
@@ -69,5 +68,5 @@
 		<ct22>1</ct22>
 		<ct23>1</ct23>
 	</CTieuTKhaiChinh>
-	<PLuc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="a type derived from PLucType"/>
+	<PLuc/>
 </HSoKhaiThue>

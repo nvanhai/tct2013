@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <HSoKhaiThue xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">
 	<TTinChung>
 		<TTinDVu>
@@ -92,5 +91,5 @@
 		<nguoiDaiDien>String</nguoiDaiDien>
 		<ngayBCao>String</ngayBCao>
 	</CTieuTKhaiChinh>
-	<PLuc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="a type derived from PLucType"/>
+	<PLuc/>
 </HSoKhaiThue>

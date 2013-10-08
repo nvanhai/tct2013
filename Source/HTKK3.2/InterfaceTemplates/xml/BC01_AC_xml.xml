@@ -90,7 +90,7 @@
 		<nguoiDaiDien>String</nguoiDaiDien>
 		<ngayBCao>1967-08-13</ngayBCao>
 	</CTieuTKhaiChinh>
-	<PLuc xsi:type="a type derived from PLucType"/>
+	<PLuc/>
 	<ds:Signature>
 		<ds:SignedInfo>
 			<ds:CanonicalizationMethod Algorithm="http://www.altova.com">text</ds:CanonicalizationMethod>
