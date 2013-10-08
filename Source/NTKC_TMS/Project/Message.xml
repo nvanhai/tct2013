@@ -133,4 +133,7 @@
 	<Infor ID="0137" Msg="Có lỗi khi mở kết nối đến trục truyền tin."/>
 	<Infor ID="0138" Msg="Tờ khai này không có thông tin người nộp thuế."/>
 	<Infor ID="0139" Msg="Có lỗi từ phía trục truyền tin ESB."/>
+	<Infor ID="0140" Msg="Người nộp thuế đã ngừng hoạt động nhưng chưa đóng MST.Bạn có muốn tiếp tục?"/>
+	<Infor ID="0141" Msg="Có lỗi khi truy vấn thông tin đại lý thuế"/>
+	<Infor ID="0142" Msg="Có lỗi khi truy vấn thông tin người nộp thuế"/>
 </Message>

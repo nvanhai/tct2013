@@ -30,6 +30,7 @@ Public strQuy As String
 Public strKHBS As String
 Public strLoaiTKThang_PS As String
 Public strCurrentVersion As String     'Current Version lay duoc tu ESB services
+Public strNgayHeThongSrv As String     ' Current Date in Server
 'End XML
 
 Public strNgayTaiChinh As String
@@ -1927,7 +1928,7 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             paXmlDoc.getElementsByTagName("TRAN_CODE")(0).Text = sTranCode
             paXmlDoc.getElementsByTagName("UserName")(0).Text = sUserName
             paXmlDoc.getElementsByTagName("TaxOffcice")(0).Text = sTaxOffice
-            bPass = StrConv(sPass, vbFromUnicode)
+            'bPass = StrConv(sPass, vbFromUnicode)
             paXmlDoc.getElementsByTagName("Pass")(0).Text = Base64Unicode.Base64EncodeString(sPass) 'sPass 'SHA1Hash.HashBytes(bPass)
                         
             paXmlDoc.getElementsByTagName("VERSION")(0).Text = cfigXml.getElementsByTagName("VERSION")(0).Text

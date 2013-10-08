@@ -264,8 +264,9 @@ Private Function IsValidUserESB() As Integer
     strResultNSD = ChangeTagASSCII(strResultNSD, False)
     xmlResultNSD.loadXML strResultNSD
     
-    'Du lieu gia lap de test
-    Set xmlResultNSD = LoadXmlTemp("ResultNSDFromESB")
+'    'Du lieu gia lap de test
+'    Set xmlResultNSD = LoadXmlTemp("ResultNSDFromESB")
+'    strResultNSD = "ssdfdsf"
        
     'Check validate xmlResultNSD
     If (strResultNSD = "") Then
