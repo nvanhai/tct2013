@@ -5,18 +5,22 @@
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
-		<maLyDoGiaHan></maLyDoGiaHan>
-		<lyDoGiaHan></lyDoGiaHan>
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
 	</Static>
 	<Static GroupName="NNT">
-		<maHuyenNNT>F_11</maHuyenNNT>
-		<maTinhNNT>P_11</maTinhNNT>
+		<maHuyenNNT/>
+		<maTinhNNT/>
 	</Static>
 	<Static GroupName="DLyThue">
-		<maHuyenDLyThue>F_16</maHuyenDLyThue>
-		<maTinhDLyThue>P_16</maTinhDLyThue>
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
 	</Static>
-	<Dynamic GroupName="KhoangSan">
+	<Static GroupName="KSCSTuKhaiThac">
+		<tongPhiPhaiNopTrongKyI>Q_43</tongPhiPhaiNopTrongKyI>
+		<tongPhiDaKeKhaiTrongKyI>V_43</tongPhiDaKeKhaiTrongKyI>
+	</Static>
+	<Dynamic GroupName="KSCSTuKhaiThac" Level="2">
 		<NoiDungKS id="ID_1">
 			<maKSan>AC_45</maKSan>
 			<donViTinh>H_45</donViTinh>
@@ -26,11 +30,11 @@
 			<phiDaKeKhaiTrongKy>V_45</phiDaKeKhaiTrongKy>
 		</NoiDungKS>
 	</Dynamic>
-	<Static GroupName="KSCSTuKhaiThac">
-		<tongPhiPhaiNopTrongKyI>0</tongPhiPhaiNopTrongKyI>
-		<tongPhiDaKeKhaiTrongKyI>0</tongPhiDaKeKhaiTrongKyI>
+	<Static GroupName="KSCSThuMua">
+		<tongPhiPhaiNopTrongKyII>Q_47</tongPhiPhaiNopTrongKyII>
+		<tongPhiDaKeKhaiTrongKyII>V_47</tongPhiDaKeKhaiTrongKyII>
 	</Static>
-	<Dynamic GroupName="KhoangSan">
+	<Dynamic GroupName="KSCSThuMua" Level="2">
 		<NoiDungKS id="ID_2">
 			<maKSan>AC_49</maKSan>
 			<donViTinh>H_49</donViTinh>
@@ -40,10 +44,6 @@
 			<phiDaKeKhaiTrongKy>V_49</phiDaKeKhaiTrongKy>
 		</NoiDungKS>
 	</Dynamic>
-	<Static GroupName="KSCSThuMua">
-		<tongPhiPhaiNopTrongKyII>0</tongPhiPhaiNopTrongKyII>
-		<tongPhiDaKeKhaiTrongKyII>0</tongPhiDaKeKhaiTrongKyII>
-	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<tongPhiPhaiNopTrongKy>Q_51</tongPhiPhaiNopTrongKy>
 		<tongPhiDaKeKhaiTrongKy>V_51</tongPhiDaKeKhaiTrongKy>

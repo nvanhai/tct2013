@@ -10,7 +10,7 @@ Begin VB.Form frmInterfaces
    ClientTop       =   450
    ClientWidth     =   14190
    BeginProperty Font 
-      Name            =   "DS Sans Serif"
+      Name            =   "Arial"
       Size            =   8.25
       Charset         =   0
       Weight          =   400
@@ -92,7 +92,7 @@ Begin VB.Form frmInterfaces
       Begin VB.Label Lbload 
          Caption         =   "§ang xö lý ..."
          BeginProperty Font 
-            Name            =   "DS Sans Serif"
+            Name            =   "Arial"
             Size            =   9.75
             Charset         =   0
             Weight          =   700
@@ -3386,6 +3386,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     On Error GoTo ErrHandle
 
     With fpSpread1
+
         If Val(strSolanBS) > 0 Then
             If xmlTK.getElementsByTagName("loaiTKhai").length > 0 Then
                 xmlTK.getElementsByTagName("loaiTKhai")(0).Text = "B"
@@ -3434,7 +3435,17 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_New.NodeMenu, "ID"))
         End If
 
-        If strKieuKy = "M" Then
+        If strKieuKy = "D" Then
+            If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
+                xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = ""
+            End If
+            
+            If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
+                xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = ""
+            End If
+
+        ElseIf strKieuKy = "M" Then
+
             If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
                 xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = "01/" & TAX_Utilities_New.month & "/" & TAX_Utilities_New.Year
             End If
@@ -3453,8 +3464,8 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
                 xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = format(GetNgayCuoiQuy(TAX_Utilities_New.ThreeMonths, TAX_Utilities_New.Year, iNgayTaiChinh, iThangTaiChinh), "dd/MM/yyyy")
             End If
 
-        Else
-
+        ElseIf strKieuKy = "Y" Then
+        
             If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
                 xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = "01/01/" & TAX_Utilities_New.Year
             End If
@@ -3463,6 +3474,15 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
                 xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = "31/12/" & TAX_Utilities_New.Year
             End If
 
+        Else
+
+            If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
+                xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = TAX_Utilities_New.FirstDay
+            End If
+            
+            If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
+                xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = TAX_Utilities_New.LastDay
+            End If
         End If
         
         .sheet = .SheetCount
@@ -3728,25 +3748,31 @@ Private Function GetKyKeKhai(ByVal ID_TK As String) As String
     Dim KYKKHAI As String
     On Error GoTo ErrHandle
 
-    If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "68" Then
-        If strQuy = "TK_THANG" Then
-            KYKKHAI = TAX_Utilities_New.month & "/" & TAX_Utilities_New.Year
-        Else
-            KYKKHAI = TAX_Utilities_New.ThreeMonths & "/" & TAX_Utilities_New.Year
-        End If
-            
+    If strKieuKy = "D" Then
+        KYKKHAI = TAX_Utilities_New.Day & "/" & TAX_Utilities_New.month & "/" & TAX_Utilities_New.Year
     Else
 
-        If (Trim(TAX_Utilities_New.month) <> vbNullString Or Trim(TAX_Utilities_New.month) <> "") And (Trim(TAX_Utilities_New.ThreeMonths) = vbNullString Or Trim(TAX_Utilities_New.ThreeMonths) = "") Then
-            KYKKHAI = TAX_Utilities_New.month & "/" & TAX_Utilities_New.Year
-        ElseIf (Trim(TAX_Utilities_New.month) = vbNullString Or Trim(TAX_Utilities_New.month) = "") And (Trim(TAX_Utilities_New.ThreeMonths) <> vbNullString Or Trim(TAX_Utilities_New.ThreeMonths) <> "") Then
-            KYKKHAI = TAX_Utilities_New.ThreeMonths & "/" & TAX_Utilities_New.Year
+        If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "68" Then
+            If strQuy = "TK_THANG" Then
+                KYKKHAI = TAX_Utilities_New.month & "/" & TAX_Utilities_New.Year
+            Else
+                KYKKHAI = TAX_Utilities_New.ThreeMonths & "/" & TAX_Utilities_New.Year
+            End If
+            
         Else
-            KYKKHAI = TAX_Utilities_New.Year
-        End If
 
+            If (Trim(TAX_Utilities_New.month) <> vbNullString Or Trim(TAX_Utilities_New.month) <> "") And (Trim(TAX_Utilities_New.ThreeMonths) = vbNullString Or Trim(TAX_Utilities_New.ThreeMonths) = "") Then
+                KYKKHAI = TAX_Utilities_New.month & "/" & TAX_Utilities_New.Year
+            ElseIf (Trim(TAX_Utilities_New.month) = vbNullString Or Trim(TAX_Utilities_New.month) = "") And (Trim(TAX_Utilities_New.ThreeMonths) <> vbNullString Or Trim(TAX_Utilities_New.ThreeMonths) <> "") Then
+                KYKKHAI = TAX_Utilities_New.ThreeMonths & "/" & TAX_Utilities_New.Year
+            Else
+                KYKKHAI = TAX_Utilities_New.Year
+            End If
+
+        End If
     End If
-        GetKyKeKhai = KYKKHAI
+
+    GetKyKeKhai = KYKKHAI
 
     Exit Function
 ErrHandle:
@@ -3792,7 +3818,23 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                     End If
 
                     If .Text <> "" And .Text <> vbNullString Then
-                        Blank = False
+                        If .CellType = CellTypeNumber Then
+                            If .Text <> "0" Then
+                                Blank = False
+                    
+                            End If
+
+                        ElseIf .CellType = CellTypeDate Then
+
+                            If .Text <> "../../...." Then
+                                Blank = False
+                        
+                            End If
+
+                        Else
+                    
+                            Blank = False
+                        End If
                     End If
                     
                     Row = .Row
@@ -3914,7 +3956,13 @@ Private Sub KetXuatXML()
     Dim MaTK           As String
     Dim nodeVal        As MSXML.IXMLDOMNode
     Dim blnFinish      As Boolean
-    
+    Dim xmlCellNode    As MSXML.IXMLDOMNode
+    Dim xmlCellTKNode  As MSXML.IXMLDOMNode
+    Dim currentGroup   As String
+    Dim Blank          As Boolean
+    Dim Id             As Integer
+    Dim CloneNode      As New MSXML.DOMDocument
+    Dim Level          As String
     Dim intCtrl        As Integer
     Dim strArrActive() As String
 
@@ -3932,6 +3980,7 @@ Private Sub KetXuatXML()
     ElseIf InStr(MaTK, "10") > 0 Then
         MaTK = Replace$(MaTK, "10", "")
     End If
+
     '    Lay duong dan cua file
     With CommonDialog1
         .CancelError = True
@@ -3963,7 +4012,6 @@ Private Sub KetXuatXML()
         End If
     End If
 
-
     xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
     xmlMapCT.Load GetAbsolutePath("..\InterfaceIni\" & MaTK & "_xml.xml")
     
@@ -3983,18 +4031,10 @@ Private Sub KetXuatXML()
 
         ' Set value cho to khai
         For Each xmlNodeMapCT In xmlMapCT.lastChild.childNodes
-            Dim xmlCellNode   As MSXML.IXMLDOMNode
-            Dim xmlCellTKNode As MSXML.IXMLDOMNode
-            Dim currentGroup  As String
-            Dim nodePL        As MSXML.IXMLDOMNode
-            Dim Blank         As Boolean
-            Dim id            As Integer
-            Dim CloneNode     As New MSXML.DOMDocument
-            Dim Level         As String
-            
+           
             'Set gia tri cho group dong
             If UCase(xmlNodeMapCT.nodeName) = "DYNAMIC" Then
-                id = 1
+                Id = 1
                 currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
                 Level = GetAttribute(xmlNodeMapCT, "Level")
 
@@ -4026,12 +4066,14 @@ Private Sub KetXuatXML()
                     .Row = sRow
 
                     If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
-                    
+                        If Id > 1 Then
+                            cellRange = cellRange - GroupCellRange
+                        End If
+
                         Exit Do
                     End If
 
-                    SetAttribute CloneNode.firstChild, "id", CStr(id)
-                    Set nodePL = xmlTK.getElementsByTagName(currentGroup)(0)
+                    SetAttribute CloneNode.firstChild, "id", CStr(Id)
 
                     If Level = "2" Then
                         xmlTK.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
@@ -4039,7 +4081,7 @@ Private Sub KetXuatXML()
                         xmlTK.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
                     End If
 
-                    id = id + 1
+                    Id = Id + 1
 
                     cellRange = cellRange + GroupCellRange
                 Loop
@@ -4115,7 +4157,7 @@ Private Sub KetXuatXML()
 
                 If InStr(MaTK, "TNCN") > 0 Then
                     If Val(Left$(MaTK, 2)) < 6 Then
-            MaTK = Replace$(Replace$(Left$(MaTK, 3), "A", ""), "B", "") & Right$(MaTK, Len(MaTK) - 3)
+                        MaTK = Replace$(Replace$(Left$(MaTK, 3), "A", ""), "B", "") & Right$(MaTK, Len(MaTK) - 3)
                     End If
                 End If
 
@@ -4130,7 +4172,7 @@ Private Sub KetXuatXML()
                     For Each xmlSection In xmlMapPL.lastChild.childNodes
 
                         If UCase(xmlSection.nodeName) = "DYNAMIC" Then
-                            id = 1
+                            Id = 1
                             currentGroup = GetAttribute(xmlSection, "GroupName")
                             Level = GetAttribute(xmlSection, "Level")
 
@@ -4156,12 +4198,14 @@ Private Sub KetXuatXML()
                                 .Row = sRow
 
                                 If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
-                                    cellRange = cellRange - GroupCellRange
+                                    If Id > 1 Then
+                                        cellRange = cellRange - GroupCellRange
+                                    End If
+
                                     Exit Do
                                 End If
 
-                                SetAttribute CloneNode.firstChild, "id", CStr(id)
-                                Set nodePL = xmlPL.getElementsByTagName(currentGroup)(0)
+                                SetAttribute CloneNode.firstChild, "id", CStr(Id)
 
                                 If Level = "2" Then
                                     xmlPL.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
@@ -4169,13 +4213,13 @@ Private Sub KetXuatXML()
                                     xmlPL.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
                                 End If
 
-                                id = id + 1
+                                Id = Id + 1
                                 cellRange = cellRange + GroupCellRange
                             Loop
                         
                         Else
                             Dim xmlChildNodePL As MSXML.IXMLDOMNode
-                            currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
+                            currentGroup = GetAttribute(xmlSection, "GroupName")
 
                             For Each xmlCellNode In xmlSection.childNodes
 
@@ -4191,7 +4235,7 @@ Private Sub KetXuatXML()
                                     Set xmlCellTKNode = xmlPL.getElementsByTagName(xmlCellNode.nodeName)(0)
                                 Else
 
-                                    For Each xmlChildNodePL In xmlTK.getElementsByTagName(xmlCellNode.nodeName)
+                                    For Each xmlChildNodePL In xmlPL.getElementsByTagName(xmlCellNode.nodeName)
 
                                         If xmlChildNodePL.parentNode.nodeName = currentGroup Then
                                             Set xmlCellTKNode = xmlChildNodePL
@@ -8933,7 +8977,7 @@ Private Sub ResizeButton()
     Or menuID = "11" Or menuID = "12" Or menuID = "06" Or menuID = "05" Or menuID = "86" Or menuID = "87" Or menuID = "89" Or menuID = "77" Or menuID = "03" Or menuID = "73" _
     Or menuID = "80" Or menuID = "81" Or menuID = "70" Or menuID = "82" Or menuID = "83" Or menuID = "85" Or menuID = "90" Or menuID = "95") Then
         Command1.Visible = True
-        Command1.Left = Frame1.Width - (8460 + 1200)
+        Command1.Left = Frame1.Width - (8460 + 2700)
     Else
         Command1.Visible = False
     End If

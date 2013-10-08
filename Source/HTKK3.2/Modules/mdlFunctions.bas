@@ -4,7 +4,7 @@ Public Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (By
 Public Declare Function HTMLHelp Lib "hhctrl.ocx" Alias "HtmlHelpA" (ByVal hwnd As Long, ByVal lpHelpFile As String, ByVal wCommand As Long, dwData As Any) As Long
 
 Public Type activeForm
-    id As String
+    Id As String
     showed As Boolean
 End Type
 
@@ -35,6 +35,7 @@ Public Const KIEU_KY_QUY = "Q"
 Public Const KIEU_KY_NAM = "Y"
 Public Const KIEU_KY_NGAY_NAM = "D_Y"
 Public Const KIEU_KY_NGAY_THANG = "D_M"
+Public Const KIEU_KY_NGAY_PS = "D"
 
 Public Const DDMMYYY = "DD/MM/YYYY"
 Public Const DDMM = "DD/MM"
@@ -1646,7 +1647,7 @@ Public Function getFormIndex(pID As String) As Integer
     Dim i As Long
     
     For i = 1 To UBound(arrActiveForm)
-        If arrActiveForm(i).id = pID Then
+        If arrActiveForm(i).Id = pID Then
             getFormIndex = i
             Exit For
         End If
@@ -2255,23 +2256,31 @@ ErrorHandle:
 End Sub
 
 Public Function GetKieuKy() As String
-    Dim month As String
+    Dim month      As String
     Dim threemonth As String
-    Dim strDay As String
-    Dim strYear As String ' Phuc vu an chi
-    Dim i As Integer
+    Dim strDay     As String
+    Dim strYear    As String ' Phuc vu an chi
+    Dim i          As Integer
+    Dim Id         As String
     
-    i = getFormIndex(TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
+    Id = TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
+    i = getFormIndex(Id)
     arrActiveForm(i).showed = True
     
     month = TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("Month").nodeValue
     threemonth = TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ThreeMonth").nodeValue
     strDay = TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("Day").nodeValue
-' phuc vu an chi
+    ' phuc vu an chi
     strYear = TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("Year").nodeValue
-    If strYear = "1/2" Then
+
+' To khai 01_NTNN va 03_NTNN kieu ky la thang
+    If Id = "70" Or Id = "81" Then
+        GetKieuKy = KIEU_KY_THANG
+    ElseIf strLoaiTKThang_PS = "TK_LANPS" Or (month = "1" And strDay = "1" And strYear = "1") Then
+        GetKieuKy = KIEU_KY_NGAY_PS
+    ElseIf strYear = "1/2" Then
         GetKieuKy = "H_Y"
-' end
+        ' end
     ElseIf month = "1" And strDay = "1" Then
         GetKieuKy = KIEU_KY_NGAY_THANG
     ElseIf month = "1" Then
@@ -2283,6 +2292,7 @@ Public Function GetKieuKy() As String
     Else
         GetKieuKy = KIEU_KY_NAM
     End If
+
 End Function
 
 Public Function GetNgayBatDauNamTaiChinh() As String
