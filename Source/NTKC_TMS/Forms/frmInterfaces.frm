@@ -870,29 +870,29 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     xmlTK.getElementsByTagName("tenTinhNNT")(0).Text = ""
     
     If (xmlResultNNT.hasChildNodes) Then
-        xmlTK.getElementsByTagName("maHuyenNNT")(0).Text = xmlResultNNT.getElementsByTagName("TRAN_PROV")(0).Text
-        xmlTK.getElementsByTagName("maTinhNNT")(0).Text = xmlResultNNT.getElementsByTagName("TRAN_DIST")(0).Text
+        xmlTK.getElementsByTagName("maHuyenNNT")(0).Text = xmlResultNNT.getElementsByTagName("MaQuanHuyen")(0).Text
+        xmlTK.getElementsByTagName("maTinhNNT")(0).Text = xmlResultNNT.getElementsByTagName("MaTinh")(0).Text
     
-        xmlTK.getElementsByTagName("mst")(0).Text = xmlResultNNT.getElementsByTagName("TIN")(0).Text
+        xmlTK.getElementsByTagName("mst")(0).Text = xmlResultNNT.getElementsByTagName("MaSoThue")(0).Text
         'xmlTK.getElementsByTagName("tenNNT")(0).Text = "test"
-        xmlTK.getElementsByTagName("tenNNT")(0).Text = xmlResultNNT.getElementsByTagName("NORM_NAME")(0).Text
+        xmlTK.getElementsByTagName("tenNNT")(0).Text = ConvertStringToUtf8String(xmlResultNNT.getElementsByTagName("TenNNT")(0).Text)
        ' xmlTK.getElementsByTagName("dchiNNT")(0).Text = "test"
-        xmlTK.getElementsByTagName("dchiNNT")(0).Text = xmlResultNNT.getElementsByTagName("TRAN_ADDR")(0).Text
-        xmlTK.getElementsByTagName("dthoaiNNT")(0).Text = xmlResultNNT.getElementsByTagName("TRAN_TEL")(0).Text
-        xmlTK.getElementsByTagName("faxNNT")(0).Text = xmlResultNNT.getElementsByTagName("TRAN_FAX")(0).Text
-        xmlTK.getElementsByTagName("emailNNT")(0).Text = xmlResultNNT.getElementsByTagName("MAIL")(0).Text
+        xmlTK.getElementsByTagName("dchiNNT")(0).Text = ConvertStringToUtf8String(xmlResultNNT.getElementsByTagName("DiaChi")(0).Text)
+        xmlTK.getElementsByTagName("dthoaiNNT")(0).Text = "" ' xmlResultNNT.getElementsByTagName("TRAN_TEL")(0).Text
+        xmlTK.getElementsByTagName("faxNNT")(0).Text = "" 'xmlResultNNT.getElementsByTagName("TRAN_FAX")(0).Text
+        xmlTK.getElementsByTagName("emailNNT")(0).Text = "" 'xmlResultNNT.getElementsByTagName("MAIL")(0).Text
     End If
 
     If (xmlResultDLT.hasChildNodes) Then
        ' xmlTK.getElementsByTagName("tenDLyThue")(0).Text = "test"
-        xmlTK.getElementsByTagName("tenDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("NORM_NAME")(0).Text
+        xmlTK.getElementsByTagName("tenDLyThue")(0).Text = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("TenNNT")(0).Text)
         'xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = "test"
-        xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("TRAN_ADDR")(0).Text
-        xmlTK.getElementsByTagName("dthoaiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("TELL")(0).Text
-        xmlTK.getElementsByTagName("faxDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("FAX")(0).Text
-        xmlTK.getElementsByTagName("emailDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("EMAIL")(0).Text
-        xmlTK.getElementsByTagName("soHDongDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("REPR_TAXO_ID")(0).Text
-        xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("START_DATE")(0).Text
+        xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("DiaChi")(0).Text)
+        xmlTK.getElementsByTagName("dthoaiDLyThue")(0).Text = "" ' xmlResultDLT.getElementsByTagName("TELL")(0).Text
+        xmlTK.getElementsByTagName("faxDLyThue")(0).Text = "" ' xmlResultDLT.getElementsByTagName("FAX")(0).Text
+        xmlTK.getElementsByTagName("emailDLyThue")(0).Text = "" ' xmlResultDLT.getElementsByTagName("EMAIL")(0).Text
+        xmlTK.getElementsByTagName("soHDongDLyThue")(0).Text = "" 'xmlResultDLT.getElementsByTagName("REPR_TAXO_ID")(0).Text
+        xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).Text = "" 'xmlResultDLT.getElementsByTagName("START_DATE")(0).Text
     End If
     
     xmlTK.getElementsByTagName("mstDLyThue")(0).Text = strMaDaiLyThue
@@ -1466,9 +1466,9 @@ Private Sub ExecuteSave()
     Set xmlDocSave = AppendXMLStandard(xmlTK, sKyLapBo, sNgayNopTK)
     xmlDocSave.save sFileName
     ' Push MQ
-'    If (Not PushDataToESB(xmlDocSave.xml)) Then
-'        MessageBox "0137", msOKOnly, miCriticalError
-'    End If
+    If (Not PushDataToESB(xmlDocSave.xml)) Then
+        MessageBox "0137", msOKOnly, miCriticalError
+    End If
 
     ' End push
     
@@ -4385,8 +4385,8 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
         'xmlResultNNT.loadXML TAX_Utilities_Srv_New.Convert(xmlResultNNT.xml, VISCII, UNICODE)
 
         rsReturn!trang_thai = GetStringByLength(xmlResultNNT.getElementsByTagName("TrangThaiHoatDong")(0).Text, 2)
-        rsReturn!ten_dtnt = GetStringByLength(xmlResultNNT.getElementsByTagName("TenNNT")(0).Text, 100)
-        rsReturn!dia_chi = GetStringByLength(xmlResultNNT.getElementsByTagName("DiaChi")(0).Text, 60)
+        rsReturn!ten_dtnt = ConvertStringToUtf8String(GetStringByLength(xmlResultNNT.getElementsByTagName("TenNNT")(0).Text, 100))
+        rsReturn!dia_chi = ConvertStringToUtf8String(GetStringByLength(xmlResultNNT.getElementsByTagName("DiaChi")(0).Text, 60))
         rsReturn!Dien_thoai = "" 'GetStringByLength(xmlResultNNT.getElementsByTagName("TRAN_TEL")(0).Text, 20)
         rsReturn!mail = "" 'GetStringByLength(xmlResultNNT.getElementsByTagName("MAIL")(0).Text, 30)
         rsReturn!Fax = "" 'GetStringByLength(xmlResultNNT.getElementsByTagName("TRAN_FAX")(0).Text, 20)
@@ -4556,8 +4556,8 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
     If (strResultDLT <> "" And xmlResultDLT.hasChildNodes And (InStr(xmlResultNNT.xml, "MaSoThue") > 0) And Err_des = "") Then
         'xmlResultDLT.loadXML TAX_Utilities_Srv_New.Convert(xmlResultDLT.xml, VISCII, UNICODE)
 
-        rsReturn!repr_name = xmlResultDLT.getElementsByTagName("TenNNT")(0).Text
-        rsReturn!repr_addr = xmlResultDLT.getElementsByTagName("DiaChi")(0).Text
+        rsReturn!repr_name = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("TenNNT")(0).Text)
+        rsReturn!repr_addr = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("DiaChi")(0).Text)
 
 '        rsReturn!repr_tell = xmlResultDLT.getElementsByTagName("TELL")(0).Text
 '        rsReturn!repr_fax = xmlResultDLT.getElementsByTagName("FAX")(0).Text
