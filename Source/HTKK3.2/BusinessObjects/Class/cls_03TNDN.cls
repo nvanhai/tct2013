@@ -1065,10 +1065,10 @@ With fps
                         arrRowCol = Split(arrRowCols(idx), "_")
                         If Row = arrRowCol(1) And Col = arrRowCol(0) Then
                             .Sheet = 1
-                            .SetText .ColLetterToNumber("P"), 47, pL_3A_U50 + pL_3B_U60
+                            .SetText .ColLetterToNumber("P"), 48, pL_3A_U50 + pL_3B_U60
                             .Col = .ColLetterToNumber("O")
-                            .Row = 47
-                            .Formula = "P47"
+                            .Row = 48
+                            .Formula = "P48"
                             Exit For
                         End If
                     Next idx
@@ -1077,10 +1077,10 @@ With fps
                 arrRowCol = Split(strValue, "_")
                 If Row = arrRowCol(1) And Col = arrRowCol(0) Then
                     .Sheet = 1
-                    .SetText .ColLetterToNumber("P"), 47, pL_3A_U50 + pL_3B_U60
+                    .SetText .ColLetterToNumber("P"), 48, pL_3A_U50 + pL_3B_U60
                     .Col = .ColLetterToNumber("O")
-                    .Row = 47
-                    .Formula = "P47"
+                    .Row = 48
+                    .Formula = "P48"
                 End If
             End If
             
@@ -1935,7 +1935,7 @@ Public Sub finish()
         .Sheet = mCurrentSheet
         If blCheck_S3A = True Or blCheck_S3B = True Then
             Dim vC47 As Variant
-            .GetText .ColLetterToNumber("O"), 47, vC47
+            .GetText .ColLetterToNumber("O"), 48, vC47
             If (vC47 = pL_3A_U50 + pL_3B_U60) Then
                 ' Update gia tri dung (khong loi) trong sheet header
                 .Sheet = .SheetCount
@@ -1944,7 +1944,7 @@ Public Sub finish()
                 mCurrentSheet = 1
                 .Sheet = 1
                 .Col = .ColLetterToNumber("O")
-                .Row = 47
+                .Row = 48
                 .CellNote = ""
                 .BackColor = mNonErrorColor
             Else
@@ -1958,7 +1958,7 @@ Public Sub finish()
                 mCurrentSheet = 1
                 .Sheet = 1
                 .Col = .ColLetterToNumber("O")
-                .Row = 47
+                .Row = 48
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = vErrMsg1 'static
                 .BackColor = mErrorColor
@@ -1973,16 +1973,16 @@ Public Sub finish()
         .Sheet = mCurrentSheet
         If blCheck_S3A = True Or blCheck_S3B = True Or blCheck_S3C = True Then
             Dim vC48 As Variant
-            .GetText .ColLetterToNumber("O"), 48, vC48
+            .GetText .ColLetterToNumber("O"), 49, vC48
             If (vC48 = pL_3A_U56 + pL_3B_U65 + pL_3C_X43) Then
                 ' Update gia tri dung trong sheet header
                 .Sheet = .SheetCount
                 .SetText .ColLetterToNumber("B"), 24, "1"
-                ' Chuyen trang thai dung cho C9
+                ' Chuyen trang thai dung cho C10
                 mCurrentSheet = 1
                 .Sheet = 1
                 .Col = .ColLetterToNumber("O")
-                .Row = 48
+                .Row = 49
                 .CellNote = ""
                 .BackColor = mNonErrorColor
             Else
@@ -1996,7 +1996,7 @@ Public Sub finish()
                 mCurrentSheet = 1
                 .Sheet = 1
                 .Col = .ColLetterToNumber("O")
-                .Row = 48
+                .Row = 49
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = vErrMsg2 'static
                 .BackColor = mErrorColor
@@ -2216,14 +2216,14 @@ Public Sub SetData()
             If .ActiveSheet = 1 Then
                 mCurrentSheet = 1
                 .Sheet = mCurrentSheet
-                ' set lai trang thai dung cho C8, C9 to khai
+                ' set lai trang thai dung cho C9, C10 to khai
                 .Col = .ColLetterToNumber("O")
-                .Row = 47
+                .Row = 48
                 .CellNote = ""
                 .BackColor = mNonErrorColor
 
                 .Col = .ColLetterToNumber("O")
-                .Row = 48
+                .Row = 49
                 .CellNote = ""
                 .BackColor = mNonErrorColor
 '                'Set lai trang thai cho cac chi tieu B24, B25, B30
@@ -2976,15 +2976,15 @@ Public Function getValueTK(strFileLoadData As String) As String
         .validateOnParse = True
         .async = False
         If .Load(strFileLoadData) = True Then
-            Set xmlNode = .nodeFromID("O_46")
-            result = "CTC7_" & Val(GetAttribute(xmlNode, "Value"))
             Set xmlNode = .nodeFromID("O_47")
-            result = result & "~" & "CTC8_" & Val(GetAttribute(xmlNode, "Value"))
+            result = "CTC7_" & Val(GetAttribute(xmlNode, "Value"))
             Set xmlNode = .nodeFromID("O_48")
-            result = result & "~" & "CTC9_" & Val(GetAttribute(xmlNode, "Value"))
+            result = result & "~" & "CTC8_" & Val(GetAttribute(xmlNode, "Value"))
             Set xmlNode = .nodeFromID("O_49")
+            result = result & "~" & "CTC9_" & Val(GetAttribute(xmlNode, "Value"))
+            Set xmlNode = .nodeFromID("O_50")
             result = result & "~" & "CTC10_" & Val(GetAttribute(xmlNode, "Value"))
-            Set xmlNode = .nodeFromID("O_51")
+            Set xmlNode = .nodeFromID("O_52")
             result = result & "~" & "CTD_" & Val(GetAttribute(xmlNode, "Value"))
             Set xmlNode = Nothing
         End If
@@ -3010,15 +3010,15 @@ Public Function getDieuChinhGiam(strOldValue As String) As String
     strMaCT = getMapCT
     With fps
                 .Sheet = 1
-                .GetText .ColLetterToNumber("O"), 46, varTemp
-                strCurrentValue = "CTC7_" & Trim(varTemp)
                 .GetText .ColLetterToNumber("O"), 47, varTemp
-                strCurrentValue = strCurrentValue & "~CTC8_" & Trim(varTemp)
+                strCurrentValue = "CTC7_" & Trim(varTemp)
                 .GetText .ColLetterToNumber("O"), 48, varTemp
-                strCurrentValue = strCurrentValue & "~CTC9_" & Trim(varTemp)
+                strCurrentValue = strCurrentValue & "~CTC8_" & Trim(varTemp)
                 .GetText .ColLetterToNumber("O"), 49, varTemp
+                strCurrentValue = strCurrentValue & "~CTC9_" & Trim(varTemp)
+                .GetText .ColLetterToNumber("O"), 50, varTemp
                 strCurrentValue = strCurrentValue & "~CTC10_" & Trim(varTemp)
-                .GetText .ColLetterToNumber("O"), 51, varTemp
+                .GetText .ColLetterToNumber("O"), 52, varTemp
                 strCurrentValue = strCurrentValue & "~CTD_" & Trim(varTemp)
                 ' tinh chenh lech giua 2 lan dieu chinh
                 tempArrOld = Split(strOldValue, "~")
@@ -3200,14 +3200,14 @@ Private Sub unLockCell(status As Boolean)
         ' chi tieu C3
         .Row = 42
         .Lock = status
-        'chi tieu C8
-        .Row = 47
-        .Lock = status
-        ' chi tieu C9
+        'chi tieu C9
         .Row = 48
         .Lock = status
         ' chi tieu C10
         .Row = 49
+        .Lock = status
+        ' chi tieu C11
+        .Row = 50
         .Lock = status
     End With
 End Sub
