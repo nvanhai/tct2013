@@ -1130,7 +1130,7 @@ Private Sub cmdSave_Click()
     Set rs = Nothing
 
     
-    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 6 Or idToKhai = 72 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 71 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 90 Or idToKhai = 95 Or idToKhai = 92 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Then
+    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 6 Or idToKhai = 72 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 71 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 90 Or idToKhai = 95 Or idToKhai = 92 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 98 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28").nodeValue)
     ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 5 Or idToKhai = 70 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28_NNKD").nodeValue)
@@ -1549,7 +1549,14 @@ Private Sub Command1_Click()
 '        Barcode_Scaned str2
 '        str2 = "aa320033600247325   0020120050080020020~1000000~97000000~1000000~970000000000~1000000~1000000~1000000~969997000000~1000000~969998000000~969997000000~1000000</S><S>x~</S><S></S><S>Tr­êng hîp ®­îc gia h¹n:</S><S>~~~01/01/2007~1~1~0~1052~</S></S03>"
 '        Barcode_Scaned str2
-
+'str2 = "aa999033600247325   00201200100100100201/0114/06/200601/01/201231/12/2012<S03><S></S><S>70000~33222~1000~10000~2222~10000~10000~40000~10000~10000~10000~10000~63222~53222~10000~53222~10000~10000~33222~0~33222~"
+'Barcode_Scaned str2
+'str2 = "aa999033600247325   002012001001002002200000~66444000~10000~100000~100000~66234000~1000000~67234000~66234000~1000000</S><S>~x</S><S>ok</S><S>Tr­êng hîp ®­îc gia h¹n:</S><S>~~~01/01/2007~1~1~0~1052~</S></S03>"
+'Barcode_Scaned str2
+'str2 = "aa999033600247325   00201200200200100201/0114/06/200601/01/201231/12/2012<S03><S></S><S>400000~34000~20000~1000~4000~3000~6000~14900~200~6000~700~8000~419100~416100~3000~416100~1000~3200~411900~10"
+'Barcode_Scaned str2
+'str2 = "aa999033600247325   00201200200200200200~410900~5~20545~4000~700~900~14945~8000~22945~14945~8000</S><S>~</S><S></S><S>Tr¬êng hîp ®¬îc gia h¹n:</S><S>~Huyen Tram~~01/01/2007~1~1~0~1052~</S></S03>"
+'Barcode_Scaned str2
     'PL 03_3A_TNDN
     
 '        str2 = "aa320033600247325   00201200601000100401/0114/06/200601/01/201231/12/2012<S03><S></S><S>100000000~5000000~1000000~1000000~1000000~1000000~1000000~4000000~1000000~1000000~1000000~1000000~101000000~100000000~1000000~100000000~1000000~1000000~9800"
@@ -1698,7 +1705,27 @@ Private Sub Command1_Click()
 '    Barcode_Scaned str2
     
     '01/TBVMT
-    str2 = "aa320903600247325   08201300200200100101/0101/01/1900<S01><S>0102030405</S><S>LÝt~10000.000~1000~10000000~101~LÝt~1000.000~1000~1000000~102</S><S>Lenh Ho Xung~Truong Vo Ky~IT01~10/09/2013~1~~</S></S01>"
+    'str2 = "aa320903600247325   08201300200200100101/0101/01/1900<S01><S>0102030405</S><S>LÝt~10000.000~1000~10000000~101~LÝt~1000.000~1000~1000000~102</S><S>Lenh Ho Xung~Truong Vo Ky~IT01~10/09/2013~1~~</S></S01>"
+    'Barcode_Scaned str2
+    
+    ''''''''''''''test
+'    str2 = "aa320903600247325   00201200200200100201/0114/06/200601/01/201231/12/2012<S03><S>0102030405</S><S>10~15~1~1~1~1~11~4~1~1~1~1~21~20~1~20~0~0~20~0~20~0~0~0~0~0~0~0~0~0"
+'    Barcode_Scaned str2
+'    str2 = "aa320903600247325   002012002002002002~0</S><S>x~</S><S></S><S>Tr­êng hîp ®­îc gia h¹n:</S><S>Lenh Ho Xung~Tieu Ngao Giang Ho~ICT01~01/01/2007~1~1~0~1052~</S></S03>"
+'    Barcode_Scaned str2
+
+    'str2 = "aa999923600247325   09201300200200100101/0114/06/2006<S01><S></S><S>~~~01/01/2013~1~0~0~1~~27/09/2013~KL12</S><S>10000~10000~12000~120000000~10~12000000~21000</S><S>Lenh Ho Xung~Ict01~Tieu Ngao Giang Ho~27/09/2013</S></S01>"
+    'Barcode_Scaned str2
+    'str2 = "aa999013600247325   08201300000000100201/0114/06/2006<S01><S>2600364108</S><S>~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0"
+    'Barcode_Scaned str2
+    'str2 = "aa999013600247325   082013000000002002~0~0~0</S><S>Lenh Ho Xung~ICT01~Tieu Ngao Giang Ho~27/09/2013~1~~~1701~~~0</S></S01>"
+    'Barcode_Scaned str2
+    '03A/TD-TAIN13
+'    str2 = "aa999973600247325   00201200300300100201/0114/06/2006<S03><S>2600364108</S><S>Nuoc~2</S><S>Song Da~1000000~1200~24000000~10000000~14000000~Song To Lich~1000000~1200~24000000~1000000~23000000</S><S>Lenh Ho Xung~Tieu Ngao Giang Ho~ICT01~07/10/2013~1~~</S></S03>"
+'    Barcode_Scaned str2
+'    str2 = "aa999973600247325   002012003003002002<S03-1><S>SongDa01~Song Da~Chi côc ThuÕ QuËn Ba §×nh~10.00~10000000~10101~SongDa02~Song da 2~Chi côc ThuÕ QuËn Hoµn KiÕm~10.00~10000000~10105</S><S>20000000</S></S03-1>"
+'    Barcode_Scaned str2
+    str2 = "aa999983600247325   10201300100100100101/0114/06/2006<S01><S>2600364108</S><S>10~x~x~01/01/2013~0~1~0~1~~08/10/2013~KL01</S><S>10000000~12000~120000000000~10~1200000000000~1000000000~1199000000000~21000</S><S>Lenh Ho Xung~ICT01~Tieu Ngao Giang Ho~20/10/2010</S></S01>"
     Barcode_Scaned str2
 End Sub
 
