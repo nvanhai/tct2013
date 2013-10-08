@@ -1053,7 +1053,7 @@ With fps
             If IsValidatedCell(lSheet03_3A, 40, .ColLetterToNumber("U"), Row, Col) Then
                  ValidateDate fps, lSheet03_3A, Row, Col, yyyy
             End If
-            ' TOng hop len chi tieu C8
+            ' TOng hop len chi tieu C9
             pL_3A_U50 = Sum_Cell(lSheet03_3A, 50, .ColLetterToNumber("U")) 'PL 03-3A
             pL_3B_U60 = Sum_Cell(lSheet03_3B, 60, .ColLetterToNumber("U")) 'PL 03-3B
             
@@ -1940,7 +1940,7 @@ Public Sub finish()
                 ' Update gia tri dung (khong loi) trong sheet header
                 .Sheet = .SheetCount
                 .SetText .ColLetterToNumber("B"), 23, "1"
-                ' Chuyen chi tieu C8 ve trang thai dung
+                ' Chuyen chi tieu C9 ve trang thai dung
                 mCurrentSheet = 1
                 .Sheet = 1
                 .Col = .ColLetterToNumber("O")
