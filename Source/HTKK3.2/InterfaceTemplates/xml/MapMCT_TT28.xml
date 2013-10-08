@@ -46,11 +46,11 @@
 		<Item CellID="AW_81" MCT="44" Caption="Thuế TNDN tạm nộp"/>
 	</Map>	
 	<Map ID ="03_TNDN">
-		<Item CellID="O_46" MCT="C7" Caption="Thuế TNDN từ hoạt động SXKD tính theo thuế suất phổ thông (C7=C6 x 25%)"/>
-		<Item CellID="O_47" MCT="C8" Caption="Thuế TNDN chênh lệch do áp dụng mức thuế suất khác mức thuế suất 25% "/>
-		<Item CellID="O_48" MCT="C9" Caption="Thuế TNDN được miễn, giảm trong kỳ"/>
-		<Item CellID="O_49" MCT="C10" Caption="Số thuế thu nhập đã nộp ở nước ngoài được trừ trong kỳ tính thuế"/>
-		<Item CellID="O_51" MCT="D" Caption="Thuế TNDN từ hoạt động chuyển nhượng bất động sản còn phải nộp sau khi trừ thuế TNDN đã nộp ở địa phương khác"/>
+		<Item CellID="O_47" MCT="C7" Caption="Thuế TNDN từ hoạt động SXKD tính theo thuế suất phổ thông (C8=C6 x c7)"/>
+		<Item CellID="O_48" MCT="C8" Caption="Thuế TNDN chênh lệch do áp dụng mức thuế suất khác mức thuế suất"/>
+		<Item CellID="O_49" MCT="C9" Caption="Thuế TNDN được miễn, giảm trong kỳ"/>
+		<Item CellID="O_50" MCT="C10" Caption="Số thuế thu nhập đã nộp ở nước ngoài được trừ trong kỳ tính thuế"/>
+		<Item CellID="O_52" MCT="D" Caption="Thuế TNDN từ hoạt động chuyển nhượng bất động sản còn phải nộp sau khi trừ thuế TNDN đã nộp ở địa phương khác"/>
 	</Map>
 	<Map ID="01_TAIN">
 		<Item CellID="AN_15" MCT="10" Caption="Thuế tài nguyên phát sinh phải nộp trong kỳ"/>		
