@@ -1,0 +1,43 @@
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="A_5" Value=""/>
+			<Cell CellID="B_6" Value=""/>
+			<Cell CellID="G_6" Value=""/>
+			<Cell CellID="E_8" Value=""/>
+			<Cell CellID="F_8" Value=""/>
+			<Cell CellID="G_8" Value=""/>
+			<Cell CellID="E_10" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="G_12" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="BD_9" FirstCell="0" Value="" />
+			<Cell CellID="BE_9" Value="" />
+			<Cell CellID="BF_9" Value="0" />
+			<Cell CellID="BG_9" Value="0" />
+			<Cell CellID="BH_9" Value="0" />
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0" >
+		<Cells>
+			<Cell CellID="BD_13" FirstCell="0" Value="" />
+			<Cell CellID="BE_13" Value="" />
+			<Cell CellID="BF_13" Value="0" />
+			<Cell CellID="BG_13" Value="0" />
+			<Cell CellID="BH_13" Value="0" />
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="BG_23" Value=""/>
+			<Cell CellID="BE_17" Value="0"/>
+			<Cell CellID="BE_18" Value="0"/>
+			<Cell CellID="BD_20" Value=""/>
+			<Cell CellID="BH_15" Value=""/>
+		</Cells>
+	</Section>
+</Sections>

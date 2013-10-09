@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by longvh (fpt) -->
+<Root>
+	<Menu ID="100" ParentID="" Caption="Hệ thống" Year="" Month="" ThreeMonth="" Icon="..\Pictures\hethong.gif"/>
+	<Menu ID="100_1" ParentID="100" Caption="Thoát" Year="0" Month="0" ThreeMonth="0" Icon="..\Pictures\close.bmp"/>	
+	<Menu ID="100_4" ParentID="100" Caption="Đổi đường dẫn QHSCC" Year="0" Month="0" ThreeMonth="0" Icon="..\Pictures\close.bmp"/>
+	<Menu ID="100_3" ParentID="100" Caption="Đổi mật khẩu" Year="0" Month="0" ThreeMonth="0" Icon="..\Pictures\close.bmp"/>
+	
+	<Menu ID="100_5" ParentID="100" Caption="Tra cứu tờ khai ấn chỉ" Year="0" Month="0" ThreeMonth="0" Icon="..\Pictures\close.bmp"/>
+	<Menu ID="100_6" ParentID="100" Caption="Tra cứu tờ khai ấn chỉ lỗi" Year="0" Month="0" ThreeMonth="0" Icon="..\Pictures\close.bmp"/>
+
+	
+	<Menu ID="101" ParentID="" Caption="Nhận dữ liệu" Year="0" Month="0" ThreeMonth="0" Icon="..\Pictures\tokhai.ico"/>
+	<Menu ID="101_1" ParentID="101" Caption="Nhận từ mã vạch" Year="1" Month="1" ThreeMonth="0" Icon="..\Pictures\tk_khautru.bmp"/>	
+	<Menu ID="101_3" ParentID="101" Caption="Truyền/Nhận tờ khai TNCN - Ấn chỉ" Year="1" Month="1" ThreeMonth="0" Icon="..\Pictures\tk_khautru.bmp"/>	
+	<Menu ID="103" ParentID="" Caption="Trợ giúp" Year="0" Month="0" ThreeMonth="0" Icon="..\Pictures\trogiup.gif"/>
+	<Menu ID="103_2" ParentID="103" Caption="Nội dung hướng dẫn" Year="0" Month="0" ThreeMonth="0" Icon="..\Pictures\huongdan.bmp"/>
+</Root>
+
+
