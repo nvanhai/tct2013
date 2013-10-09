@@ -1,0 +1,13 @@
+[History]
+1=#P0#=mb	#P1#=GetTaxInfo	#P2#=NTKCC/frmInterfaces/GetTaxInfo	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130923165606	#P7#=0	#P8#=1	.
+2=#P0#=mb	#P1#=InitParameters	#P2#=NTKCC/frmInterfaces/InitParameters	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130923165449	#P7#=0	#P8#=2	.
+3=#P0#=mb	#P1#=CheckVersion	#P2#=NTKCC/frmLogin/CheckVersion	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130918140112	#P7#=0	#P8#=31	.
+4=#P0#=mb	#P1#=cmdOK_Click	#P2#=NTKCC/frmThamso/cmdOK_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20130918134806	#P7#=0	#P8#=33	.
+5=#P0#=mb	#P1#=cmdOK_Click	#P2#=NTKCC/frmLogin/cmdOK_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20130918093022	#P7#=0	#P8#=3	.
+6=#P0#=mb	#P1#=checkActivePIT	#P2#=NTKCC/mdlFunctions/checkActivePIT	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130918091515	#P7#=0	#P8#=1	.
+7=#P0#=mb	#P1#=IsValidUser	#P2#=NTKCC/frmLogin/IsValidUser	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130913091534	#P7#=0	#P8#=1	.
+8=#P0#=mb	#P1#=Prepare_QLT	#P2#=NTKCC/frmInterfaces/Prepare_QLT	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20130805170342	#P7#=0	#P8#=422	.
+9=#P0#=mb	#P1#=Insert_QHS	#P2#=NTKCC/frmInterfaces/Insert_QHS	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20130805170326	#P7#=0	#P8#=74	.
+10=#P0#=mb	#P1#=changeToLoaiToKhaiQHS	#P2#=NTKCC/frmInterfaces/changeToLoaiToKhaiQHS	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130730095215	#P7#=0	#P8#=81	.
+11=#P0#=mb	#P1#=changeToKhaiQHS	#P2#=NTKCC/frmInterfaces/changeToKhaiQHS	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130730094955	#P7#=0	#P8#=0	.
+12=#P0#=mb	#P1#=SinhSoHoSo	#P2#=NTKCC/frmInterfaces/SinhSoHoSo	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130730093718	#P7#=0	#P8#=39	.

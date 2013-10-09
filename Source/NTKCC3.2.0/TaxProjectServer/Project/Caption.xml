@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by longvh (fpt) -->
+<Root>
+	<frmReports Caption="">
+		<Item Name="lblCaption" Index="" Caption="In tờ khai"/>
+		<Item Name="lblSelectPrinter" Index="" Caption="Chọn máy in"/>
+		<Item Name="lblNumberOfCopies" Index="" Caption="Số bản in"/>
+		<Item Name="cmdPrint" Index="" Caption="In"/>
+		<Item Name="cmdPreview" Index="" Caption="Xem trước"/>
+		<Item Name="cmdExit" Index="" Caption="Thoát"/>
+	</frmReports>
+	<frmPreview Caption="">
+		<Item Name="lblCaption" Index="" Caption="Xem trước bản in"/>
+		<Item Name="cmdNext" Index="" Caption="Trang tiếp"/>
+		<Item Name="cmdPrevious" Index="" Caption="Trang trước"/>
+		<Item Name="cmdZoom" Index="" Caption="Zoom"/>
+		<Item Name="cmdPrint" Index="" Caption="In"/>
+		<Item Name="cmdClose" Index="" Caption="Thoát"/>
+	</frmPreview>
+	<frmBackup Caption="">
+		<Item Name="lblCaption" Index="" Caption="Sao lưu dữ liệu"/>
+		<Item Name="lblMsg" Index="" Caption="Chọn đường dẫn tới thư mục để sao lưu dữ liệu"/>
+		<Item Name="lblStatus" Index="" Caption="Đang backup dữ liệu ..."/>
+		<Item Name="lblStatusDone" Index="" Caption="Đã backup dữ liệu xong."/>
+		<Item Name="cmdOK" Index="" Caption="Sao lưu"/>
+		<Item Name="cmdClose" Index="" Caption="Thoát"/>
+	</frmBackup>
+	<frmRestore Caption="">
+		<Item Name="lblCaption" Index="" Caption="Phục hồi dữ liệu"/>
+		<Item Name="lblMsg" Index="" Caption="Chọn đường dẫn tới thư mục đã sao lưu dữ liệu"/>
+		<Item Name="lblStatus" Index="" Caption="Đang phục hồi dữ liệu ..."/>
+		<Item Name="lblStatusDone" Index="" Caption="Đã phục hồi dữ liệu xong."/>
+		<Item Name="cmdOK" Index="" Caption="Khôi phục"/>
+		<Item Name="cmdClose" Index="" Caption="Thoát"/>
+	</frmRestore>
+	<frmPeriod Caption="">
+		<Item Name="lblCaption" Index="" Caption="Chọn kỳ kê khai"/>
+		<Item Name="chkSelectAll" Index="" Caption="Chọn phụ lục kê khai"/>
+		<Item Name="lblYear" Index="" Caption="Năm"/>
+		<Item Name="cmdOK" Index="" Caption="Đồng ý"/>
+		<Item Name="cmdClose" Index="" Caption="Thoát"/>
+		<Item Name="lblMonth" Index="" Caption="Tháng"/>
+	</frmPeriod>
+	<frmPeriodQuy Caption="">
+		<Item Name="lblCaption" Index="" Caption="Chọn kỳ kê khai"/>
+		<Item Name="lblSelection" Index="" Caption="Chọn phụ lục kê khai:"/>
+		<Item Name="lblYear" Index="" Caption="Năm"/>
+		<Item Name="cmdOK" Index="" Caption="Đồng ý"/>
+		<Item Name="cmdClose" Index="" Caption="Thoát"/>
+		<Item Name="lblMonth" Index="" Caption="Quý"/>
+	</frmPeriodQuy>
+	<frmBrowser Caption="">
+		<Item Name="lblCaption" Index="" Caption="Chọn đường dẫn ..."/>
+		<Item Name="cmdOK" Index="" Caption="Đồng ý"/>
+		<Item Name="cmdCancel" Index="" Caption="Thoát"/>
+	</frmBrowser>
+	<frmInterfaces Caption="">
+		<Item Name="lblCaption" Index="" Caption="Nhận tờ khai mã vạch"/>
+		<Item Name="lblLoading" Caption="Đang chờ nhận mã vạch ..."/>
+		<Item Name="lblConnecting" Caption="Đang kết nối cơ sở dữ liệu ..."/>
+		<Item Name="lblFile" Caption="Dữ liệu của file:"/>
+		<Item Name="lblBarcode" Caption="Số mã đã quét:"/>
+		<Item Name="lblExit" Caption="Bấm Thoát để quay về màn hình Menu."/>
+		<Item Name="lblLabelVersion" Caption="Phiên bản ứng dụng HTKK dùng để in tờ khai:"/>
+		<Item Name="lblWarning" Caption="(Cần cập nhật phiên bản 3.1.7)" />
+		<Item Name="lblVersion" Caption=""/>
+		<Item Name="cmdClear" Index="" Caption="Xóa"/>
+		<Item Name="cmdSave" Index="" Caption="Ghi"/>
+		<Item Name="cmdExit" Index="" Caption="Thoát"/>
+	</frmInterfaces>
+	<frmAbortRetryIgnore Caption="">
+		<Item Name="lblCaption" Index="" Caption="Thông báo"/>
+		<Item Name="cmdButton1" Index="" Caption="Bỏ qua"/>
+		<Item Name="cmdButton2" Index="" Caption="Làm lại"/>
+		<Item Name="cmdButton3" Index="" Caption="Tiếp tục"/>
+	</frmAbortRetryIgnore>
+	<frmOKCancel Caption="">
+		<Item Name="lblCaption" Index="" Caption="Thông báo"/>
+		<Item Name="cmdButton2" Index="" Caption="Đồng ý"/>
+		<Item Name="cmdButton3" Index="" Caption="Huỷ bỏ"/>
+	</frmOKCancel>
+	<frmOKOnly Caption="">
+		<Item Name="lblCaption" Index="" Caption="Thông báo"/>
+		<Item Name="cmdButton3" Index="" Caption="Đóng"/>
+	</frmOKOnly>
+	<frmOKCancelRetry Caption="">
+		<Item Name="lblCaption" Index="" Caption="Thông báo"/>
+		<Item Name="cmdButton1" Index="" Caption="Đồng ý"/>
+		<Item Name="cmdButton2" Index="" Caption="Huỷ bỏ"/>
+		<Item Name="cmdButton3" Index="" Caption="Làm lại"/>
+	</frmOKCancelRetry>
+	<frmYesNo Caption="">
+		<Item Name="lblCaption" Index="" Caption="Thông báo"/>
+		<Item Name="cmdButton2" Index="" Caption="Có"/>
+		<Item Name="cmdButton3" Index="" Caption="Không"/>
+	</frmYesNo>
+	<frmYesNoCancel Caption="">
+		<Item Name="lblCaption" Index="" Caption="Thông báo"/>
+		<Item Name="cmdButton1" Index="" Caption="Có"/>
+		<Item Name="cmdButton2" Index="" Caption="Không"/>
+		<Item Name="cmdButton3" Index="" Caption="Huỷ bỏ"/>
+	</frmYesNoCancel>
+	<frmTaxOption Caption="">
+		<Item Name="lblCaption" Index="" Caption="Lựa chọn tờ khai"/>
+		<Item Name="cmdOK" Index="" Caption="Đồng ý"/>
+		<Item Name="cmdExit" Index="" Caption="Thoát"/>
+		<Item Name="lblSelection" Index="" Caption="Các tờ khai sẽ được nhập liệu:"/>
+	</frmTaxOption>
+	<frmAbout Caption="">
+		<Item Name="lblCaption" Index="" Caption="Giới thiệu chương trình"/>
+		<Item Name="cmdExit" Index="" Caption="Thoát"/>
+	</frmAbout>
+	<frmSystem Caption="¦ng dông nhËn tê khai cÊp chi côc VAT - NTKCC">
+		<Item Name="lblUser" Index="" Caption="Người sử dụng: "/>
+		<Item Name="chkSaveQuestion" Index="" Caption="Ghi dữ liệu hiện tại ngay khi quét tờ khai mới. "/>
+		<Item Name="chkSaveQHS" Index="" Caption="Ghi dữ liệu vào QHSCC"/>
+	</frmSystem>
+	<frmLogin Caption="">
+		<Item Name="lblCaption" Index="" Caption="Đăng nhập hệ thống"/>
+		<Item Name="lblUsername" Index="" Caption="Người sử dụng"/>
+		<Item Name="lblPassword" Index="" Caption="Mật khẩu"/>
+		<Item Name="cmdOK" Index="" Caption="Đăng nhập"/>
+		<Item Name="cmdClose" Index="" Caption="Thoát"/>
+		<Item Name="cmdVAT" Index="" Caption="Chọn đường dẫn VAT"/>
+	</frmLogin>
+	<frmThamso Caption="">
+		<Item Name="lblCaption" Index="" Caption="Chọn đường dẫn đến thư mục VAT"/>
+		<Item Name="cmdOK" Index="" Caption="OK"/>
+		<Item Name="cmdClose" Index="" Caption="Thoát"/>
+	</frmThamso>
+	<frmThamsoQHSCC Caption="">
+		<Item Name="lblCaption" Index="" Caption="Chọn đường dẫn đến thư mục QHSCC"/>
+		<Item Name="cmdOK" Index="" Caption="OK"/>
+		<Item Name="cmdClose" Index="" Caption="Thoát"/>
+	</frmThamsoQHSCC>
+	<frmChangepass Caption="">
+		<Item Name="lblCaption" Index="" Caption="Thay đổi Mật khẩu truy cập"/>
+		<Item Name="lblUsername" Index="" Caption="Người sử dụng"/>
+		<Item Name="lblPassword" Index="" Caption="Mật khẩu cũ"/>
+		<Item Name="lblNew" Index="" Caption="Mật khẩu mới"/>
+		<Item Name="cmdOK" Index="" Caption="Thay đổi"/>
+		<Item Name="cmdClose" Index="" Caption="Thoát"/>
+	</frmChangepass>
+</Root>
