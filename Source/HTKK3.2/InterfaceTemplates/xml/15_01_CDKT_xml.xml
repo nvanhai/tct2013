@@ -57,8 +57,8 @@
 				<soHDongDLyThue>String</soHDongDLyThue>
 				<ngayKyHDDLyThue>String</ngayKyHDDLyThue>
 				<NVienDLy>
-					<tenNVienDLyThue>token</tenNVienDLyThue>
-					<cchiHNghe>String</cchiHNghe>
+					<tenNVienDLyThue></tenNVienDLyThue>
+					<cchiHNghe></cchiHNghe>
 				</NVienDLy>
 			</DLyThue>
 		</TTinTKhaiThue>

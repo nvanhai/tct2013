@@ -218,7 +218,9 @@ Public Function GetValidityNode() As MSXML.IXMLDOMNode
     
     Dim ValidityDate As Date, StartDate As Date, MaxDate As Date
         
-    If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then
+    If strLoaiTKThang_PS = "TK_LANPS" Then
+        ValidityDate = DateSerial(TAX_Utilities_New.Year, TAX_Utilities_New.month, TAX_Utilities_New.Day)
+    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then
         ValidityDate = GetNgayCuoiThang(CInt(TAX_Utilities_New.Year), CInt(TAX_Utilities_New.month))
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
         Select Case TAX_Utilities_New.ThreeMonths

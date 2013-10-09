@@ -61,6 +61,7 @@
 		<ct80_nNay>R_70</ct80_nNay>
 	</Static>
 	<Static GroupName="SoNamNgoai">
+		<ct01_nNgoai>W_40</ct01_nNgoai>
 		<ct02_nNgoai>W_41</ct02_nNgoai>
 		<ct03_nNgoai>W_42</ct03_nNgoai>
 		<ct04_nNgoai>W_43</ct04_nNgoai>

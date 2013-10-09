@@ -3427,62 +3427,71 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = pbanTKhaiXML
         End If
         
-        If xmlTK.getElementsByTagName("kieuKy").length > 0 Then
+ 'to TB03,BC21 khong co ky ke khai
+        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "67" And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "66" Then
+                If xmlTK.getElementsByTagName("kieuKy").length > 0 Then
             xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
         End If
+
+            If xmlTK.getElementsByTagName("kyKKhai").length > 0 Then
+                xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_New.NodeMenu, "ID"))
+            End If
+
+            If strKieuKy = "D" Then
+                If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
+                    xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = ""
+                End If
+            
+                If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
+                    xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = ""
+                End If
+
+            ElseIf strKieuKy = "M" Then
+
+                If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
+                    xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = "01/" & TAX_Utilities_New.month & "/" & TAX_Utilities_New.Year
+                End If
+            
+                If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
+                    xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = format(GetNgayCuoiThang(TAX_Utilities_New.Year, TAX_Utilities_New.month), "dd/MM/yyyy")
+                End If
+
+            ElseIf strKieuKy = "Q" Then
+
+                If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
+                    xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = format(GetNgayDauQuy(TAX_Utilities_New.ThreeMonths, TAX_Utilities_New.Year, iNgayTaiChinh, iThangTaiChinh), "dd/MM/yyyy")
+                End If
+            
+                If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
+                    xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = format(GetNgayCuoiQuy(TAX_Utilities_New.ThreeMonths, TAX_Utilities_New.Year, iNgayTaiChinh, iThangTaiChinh), "dd/MM/yyyy")
+                End If
+
+            ElseIf strKieuKy = "Y" Then
         
-        If xmlTK.getElementsByTagName("kyKKhai").length > 0 Then
-            xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_New.NodeMenu, "ID"))
-        End If
-
-        If strKieuKy = "D" Then
-            If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
-                xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = ""
-            End If
+                If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
+                    xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = "01/01/" & TAX_Utilities_New.Year
+                End If
             
-            If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
-                xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = ""
-            End If
+                If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
+                    xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = "31/12/" & TAX_Utilities_New.Year
+                End If
 
-        ElseIf strKieuKy = "M" Then
+            Else
 
-            If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
-                xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = "01/" & TAX_Utilities_New.month & "/" & TAX_Utilities_New.Year
-            End If
+                If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
+                    xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = TAX_Utilities_New.FirstDay
+                End If
             
-            If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
-                xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = format(GetNgayCuoiThang(TAX_Utilities_New.Year, TAX_Utilities_New.month), "dd/MM/yyyy")
+                If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
+                    xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = TAX_Utilities_New.LastDay
+                End If
             End If
-
-        ElseIf strKieuKy = "Q" Then
-
-            If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
-                xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = format(GetNgayDauQuy(TAX_Utilities_New.ThreeMonths, TAX_Utilities_New.Year, iNgayTaiChinh, iThangTaiChinh), "dd/MM/yyyy")
-            End If
-            
-            If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
-                xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = format(GetNgayCuoiQuy(TAX_Utilities_New.ThreeMonths, TAX_Utilities_New.Year, iNgayTaiChinh, iThangTaiChinh), "dd/MM/yyyy")
-            End If
-
-        ElseIf strKieuKy = "Y" Then
-        
-            If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
-                xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = "01/01/" & TAX_Utilities_New.Year
-            End If
-            
-            If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
-                xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = "31/12/" & TAX_Utilities_New.Year
-            End If
-
         Else
+                    xmlTK.getElementsByTagName("kieuKy")(0).Text = ""
+                    xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = ""
+                    xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = ""
+                xmlTK.getElementsByTagName("kyKKhai")(0).Text = ""
 
-            If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
-                xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = TAX_Utilities_New.FirstDay
-            End If
-            
-            If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
-                xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = TAX_Utilities_New.LastDay
-            End If
         End If
         
         .sheet = .SheetCount
@@ -3788,6 +3797,7 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
     Dim cellID      As String
     Dim cellArray() As String
     Dim cNode       As MSXML.IXMLDOMNode
+    Dim dNode       As MSXML.IXMLDOMNode
 
     With fpSpread1
 
@@ -3809,12 +3819,21 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                         .Col = .ColLetterToNumber(cellArray(0))
                         .Row = Val(cellArray(1)) + cellRange
                         
-                        If .CellType = CellTypeNumber Then
-                            CloneNode.getElementsByTagName(cNode.nodeName)(0).Text = .value
-                        Else
-                            CloneNode.getElementsByTagName(cNode.nodeName)(0).Text = .Text
+                        For Each dNode In CloneNode.getElementsByTagName(cNode.nodeName)
 
-                        End If
+                            If dNode.parentNode.nodeName = cNode.parentNode.nodeName Then
+                        
+                                If .CellType = CellTypeNumber Then
+
+                                    dNode.Text = .value
+                                Else
+                                    dNode.Text = .Text
+                            
+                                End If
+                            End If
+
+                        Next
+
                     End If
 
                     If .Text <> "" And .Text <> vbNullString Then

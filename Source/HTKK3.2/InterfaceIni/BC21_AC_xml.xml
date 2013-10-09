@@ -17,7 +17,7 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ngay>O_9</ngay>
+		<ngay>O_8</ngay>
 	</Static>
 	<Dynamic GroupName="HoaDon">
 		<ChiTietHoaDon id="id">
@@ -33,7 +33,7 @@
 		</ChiTietHoaDon>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
-		<lyDo>T_46</lyDo>
+		<lyDo>I_46</lyDo>
 		<nguoiDaiDien>AB_49</nguoiDaiDien>
 		<ngayBCao>AB_51</ngayBCao>
 	</Static>

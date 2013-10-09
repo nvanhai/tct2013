@@ -24,46 +24,46 @@
 	</Static>
 	<Dynamic GroupName="HoaDon">
 		<ChiTiet id="ID_1">
-			<tenHDon>D_32</tenHDon>
-			<kHieuMauHDon>E_32</kHieuMauHDon>
-			<kHieuHDon>F_32</kHieuHDon>
+			<tenHDon>D_22</tenHDon>
+			<kHieuMauHDon>E_22</kHieuMauHDon>
+			<kHieuHDon>F_22</kHieuHDon>
 			<SoTonMuaTrKy>
-				<tongSo>G_32</tongSo>
+				<tongSo>G_22</tongSo>
 				<SoTonDauKy>
-					<tuSo>H_32</tuSo>
-					<denSo>I_32</denSo>
+					<tuSo>H_22</tuSo>
+					<denSo>I_22</denSo>
 				</SoTonDauKy>
 				<MuaTrongKy>
-					<tuSo>J_32</tuSo>
-					<denSo>K_32</denSo>
+					<tuSo>J_22</tuSo>
+					<denSo>K_22</denSo>
 				</MuaTrongKy>
 			</SoTonMuaTrKy>
 			<SoSuDungTrKy>
 				<TongSoSuDung>
-					<tuSo>L_32</tuSo>
-					<denSo>M_32</denSo>
-					<cong>N_32</cong>
+					<tuSo>L_22</tuSo>
+					<denSo>M_22</denSo>
+					<cong>N_22</cong>
 				</TongSoSuDung>
 				<TrongDo>
-					<soDaSDung>P_32</soDaSDung>
+					<soDaSDung>P_22</soDaSDung>
 					<XoaBo>
-						<soLuong>Q_32</soLuong>
-						<so>R_32</so>
+						<soLuong>Q_22</soLuong>
+						<so>R_22</so>
 					</XoaBo>
 					<Mat>
-						<soLuong>S_32</soLuong>
-						<so>T_32</so>
+						<soLuong>S_22</soLuong>
+						<so>T_22</so>
 					</Mat>
 					<Huy>
-						<soLuong>U_32</soLuong>
-						<so>V_32</so>
+						<soLuong>U_22</soLuong>
+						<so>V_22</so>
 					</Huy>
 				</TrongDo>
 			</SoSuDungTrKy>
 			<TonCuoiKy>
-				<tuSo>X_32</tuSo>
-				<denSo>Y_32</denSo>
-				<soLuong>Z_32</soLuong>
+				<tuSo>X_22</tuSo>
+				<denSo>Y_22</denSo>
+				<soLuong>Z_22</soLuong>
 			</TonCuoiKy>
 		</ChiTiet>
 	</Dynamic>
