@@ -37,6 +37,7 @@
 	</Dynamic>
 	<Static GroupName="DonViChuQuan">
 		<ten>F_40</ten>
+		<mst>F_42</mst>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<tenCQTTiepNhan>K_44</tenCQTTiepNhan>
