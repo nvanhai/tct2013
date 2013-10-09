@@ -1,9 +1,13 @@
 <PLuc_01_DK>
+	<Dynamic GroupName="NghiaVuThue">
+		<PLuc_01_DK id="id">
+			<tenNhaThau>L_27</tenNhaThau>
+			<tyLePhanBo>U_27</tyLePhanBo>
+			<soThuePSinhPNop>AB_27</soThuePSinhPNop>
+			<ghiChu>AL_27</ghiChu>
+		</PLuc_01_DK>
+	</Dynamic>
 	<Static GroupName="PLuc_01_DK">
-		<tenNhaThau>L_27</tenNhaThau>
-		<tyLePhanBo>U_27</tyLePhanBo>
-		<soThuePSinhPNop>AB_27</soThuePSinhPNop>
-		<ghiChu>AL_27</ghiChu>
 		<tongCong>AB_29</tongCong>
 	</Static>
 </PLuc_01_DK>

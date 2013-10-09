@@ -37,11 +37,11 @@
 		<ct33>R_60</ct33>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>R_63</nguoiKy>
-		<ngayKy>R_65</ngayKy>
+		<nguoiKy>R_64</nguoiKy>
+		<ngayKy>R_66</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>H_63</tenNVienDLyThue>
-		<cchiHNghe>H_65</cchiHNghe>
+		<tenNVienDLyThue>H_64</tenNVienDLyThue>
+		<cchiHNghe>H_66</cchiHNghe>
 	</Static>
 </HSoKhaiThue>

@@ -17,20 +17,20 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct21>S_42</ct21>
-		<ct22>S_43</ct22>
-		<ct23>S_44</ct23>
-		<ct24>S_45</ct24>
-		<ct25>S_46</ct25>
-		<ct26>S_47</ct26>
-		<ct27>S_48</ct27>
+		<ct21>I_40</ct21>
+		<ct22>I_41</ct22>
+		<ct23>I_42</ct23>
+		<ct24>I_43</ct24>
+		<ct25>I_44</ct25>
+		<ct26>I_45</ct26>
+		<ct27>I_46</ct27>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>T_58</nguoiKy>
-		<ngayKy>T_60</ngayKy>
+		<nguoiKy>M_46</nguoiKy>
+		<ngayKy>M_48</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>H_58</tenNVienDLyThue>
-		<cchiHNghe>H_60</cchiHNghe>
+		<tenNVienDLyThue>D_46</tenNVienDLyThue>
+		<cchiHNghe>D_48</cchiHNghe>
 	</Static>
 </HSoKhaiThue>

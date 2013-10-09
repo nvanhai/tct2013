@@ -90,11 +90,11 @@
 		<tongThuePNop>AN_57</tongThuePNop>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>AI_75</nguoiKy>
-		<ngayKy>AI_77</ngayKy>
+		<nguoiKy>AI_59</nguoiKy>
+		<ngayKy>AI_61</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>U_75</tenNVienDLyThue>
-		<cchiHNghe>U_77</cchiHNghe>
+		<tenNVienDLyThue>U_59</tenNVienDLyThue>
+		<cchiHNghe>U_61</cchiHNghe>
 	</Static>
 </HSoKhaiThue>

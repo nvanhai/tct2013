@@ -4,22 +4,18 @@
 		<ct02>Z_2</ct02>
 		<ct03>AK_2</ct03>
 	</Static>
-	<Static GroupName="bangKKhai">
-		<donViTinh>D_27</donViTinh>
-	</Static>
-	<Static GroupName="KhaiThacDauKhi">
-		<ngayThang>K_27</ngayThang>
-		<soLuong>P_27</soLuong>
-	</Static>
-	<Static GroupName="XuatBanDauKhi">
-		<ngayThang>U_27</ngayThang>
-		<sanLuong>Y_27</sanLuong>
-		<giaTinhThue>AD_27</giaTinhThue>
-		<doanhThu>AJ_27</doanhThu>
-	</Static>
-	<Static GroupName="bangKKhai">
-		<ghiChu>AQ_27</ghiChu>
-	</Static>
+	<Dynamic GroupName="SLuongDThu">
+		<bangKKhai id="id">
+			<donViTinh>D_27</donViTinh>
+			<ngayThang>K_27</ngayThang>
+			<soLuong>P_27</soLuong>
+			<ngayThang>U_27</ngayThang>
+			<sanLuong>Y_27</sanLuong>
+			<giaTinhThue>AD_27</giaTinhThue>
+			<doanhThu>AJ_27</doanhThu>
+			<ghiChu>AQ_27</ghiChu>
+		</bangKKhai>
+	</Dynamic>
 	<Static GroupName="SLuongDThuXBan">
 		<tongCot6>Y_29</tongCot6>
 		<tongCot8>AJ_29</tongCot8>
