@@ -3,15 +3,15 @@
 <HEADER>
 	<VERSION>1.0</VERSION>
 	<SENDER_CODE>TMS</SENDER_CODE>
-	<SENDER_NAME>H? th?ng Qu?n lý thu? t?p trung</SENDER_NAME>
+	<SENDER_NAME>Hệ thống quản lý thuế tập trung</SENDER_NAME>
 	<RECEIVER_CODE>NTK</RECEIVER_CODE>
-	<RECEIVER_NAME>H? th?ng nh?n t? khai mã v?ch</RECEIVER_NAME>
+	<RECEIVER_NAME>Hệ thống nhận tờ khai mã vạch</RECEIVER_NAME>
 	<TRAN_CODE>00011</TRAN_CODE>
 	<MSG_ID>0000000011</MSG_ID>
 	<MSG_REFID>0000000011</MSG_REFID>
 	<SEND_DATE>24-Sep-2013 17:04:26</SEND_DATE>
 	<ORIGINAL_CODE>NTK</ORIGINAL_CODE>
-	<ORIGINAL_NAME>H? th?ng nh?n t? khai mã v?ch</ORIGINAL_NAME>
+	<ORIGINAL_NAME>Hệ thống nhận tờ khai mã vạch</ORIGINAL_NAME>
 	<ORIGINAL_DATE>24-Sep-2013 17:04:26</ORIGINAL_DATE>
 	<ERROR_CODE/>
 	<ERROR_DESC/>
@@ -24,8 +24,8 @@
 		<ThongTinDangKyThue>
 			<DangKyThue>
 				<MaSoThue>3100177415</MaSoThue>
-				<TenNNT>Công Ty C¿ Ph¿n Xây D¿ng H¿ T¿ng Giao Thông 207</TenNNT>
-				<DiaChi>286A- Lê Thanh Ngh¿</DiaChi>
+				<TenNNT>Công ty cổ phần xây dựng hạ tầng giao thông 207</TenNNT>
+				<DiaChi>286A- Lê Thanh Nghị</DiaChi>
 				<MaTinh>501</MaTinh>
 				<MaQuanHuyen>50101</MaQuanHuyen>
 				<MaPhuongXa></MaPhuongXa>
