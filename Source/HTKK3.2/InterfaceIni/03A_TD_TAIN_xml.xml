@@ -1,7 +1,7 @@
 <HSoKhaiThue>
 	<Static GroupName="TKhaiThue">
-		<maTKhai/>
-		<tenTKhai>token</tenTKhai>
+		<maTKhai>03A_TD_TAIN</maTKhai>
+		<tenTKhai>Tờ khai thuế tài nguyên(03A/TĐ-TAIN)</tenTKhai>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
@@ -17,28 +17,30 @@
 		<maTinhDLyThue/>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct21/>
-		<ct22>0.0</ct22>
+		<ct21>H_24</ct21>
+		<ct22>F_25</ct22>
 	</Static>
-	<Static GroupName="NoiDungChiTiet">
-		<ct24/>
-		<ct26/>
-		<ct27/>
-		<ct29>1</ct29>
-		<ct30>1</ct30>
-		<ct31>1</ct31>
-	</Static>
+	<Dynamic GroupName="NoiDung">
+		<NoiDungChiTiet id="id">
+			<ct24>C_44</ct24>
+			<ct26>F_44</ct26>
+			<ct27>H_44</ct27>
+			<ct29>L_44</ct29>
+			<ct30>O_44</ct30>
+			<ct31>S_44</ct31>
+		</NoiDungChiTiet>
+	</Dynamic>
 	<Static GroupName="NoiDung">
-		<Tongct29>1</Tongct29>
-		<Tongct30>1</Tongct30>
-		<Tongct31>1</Tongct31>
+		<Tongct29>L_46</Tongct29>
+		<Tongct30>O_46</Tongct30>
+		<Tongct31>S_46</Tongct31>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy/>
-		<ngayKy/>
+		<nguoiKy>O_61</nguoiKy>
+		<ngayKy>O_63</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>token</tenNVienDLyThue>
-		<cchiHNghe/>
+		<tenNVienDLyThue>F_61</tenNVienDLyThue>
+		<cchiHNghe>F_63</cchiHNghe>
 	</Static>
 </HSoKhaiThue>

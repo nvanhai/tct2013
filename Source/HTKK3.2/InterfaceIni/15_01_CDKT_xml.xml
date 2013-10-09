@@ -323,8 +323,8 @@
 		<duToanChi_nNgoai>W_141</duToanChi_nNgoai>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>R_143</nguoiKy>
-		<ngayKy>R_145</ngayKy>
+		<nguoiKy>R_144</nguoiKy>
+		<ngayKy>R_146</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
 		<tenNVienDLyThue>token</tenNVienDLyThue>
