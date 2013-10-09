@@ -31,6 +31,8 @@ Public strKHBS As String
 Public strLoaiTKThang_PS As String
 Public strCurrentVersion As String     'Current Version lay duoc tu ESB services
 Public strNgayHeThongSrv As String     ' Current Date in Server
+Public strMaNNT As String
+Public strMaDLT As String
 'End XML
 
 Public strNgayTaiChinh As String
@@ -1929,7 +1931,7 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             paXmlDoc.getElementsByTagName("UserName")(0).Text = sUserName
             paXmlDoc.getElementsByTagName("TaxOffcice")(0).Text = sTaxOffice
             'bPass = StrConv(sPass, vbFromUnicode)
-            paXmlDoc.getElementsByTagName("Pass")(0).Text = Base64Unicode.Base64EncodeString(sPass) 'sPass 'SHA1Hash.HashBytes(bPass)
+            paXmlDoc.getElementsByTagName("Pass")(0).Text = sPass 'Base64Unicode.Base64EncodeString(sPass) 'sPass 'SHA1Hash.HashBytes(bPass)
                         
             paXmlDoc.getElementsByTagName("VERSION")(0).Text = cfigXml.getElementsByTagName("VERSION")(0).Text
             paXmlDoc.getElementsByTagName("SENDER_CODE")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text
@@ -2040,6 +2042,16 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
     
     GetDataFromESB = sResult
 End Function
+
+'Exit program
+Public Sub UnloadAllForms()
+      Dim objForm As Form
+      ' Loop through all the forms and unload each
+      For Each objForm In Forms
+            Unload objForm
+      Next
+      Set objForm = Nothing
+End Sub
 
 
 'Ket thuc ket xuat XML - nshung

@@ -872,8 +872,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     If (xmlResultNNT.hasChildNodes) Then
         xmlTK.getElementsByTagName("maHuyenNNT")(0).Text = xmlResultNNT.getElementsByTagName("MaQuanHuyen")(0).Text
         xmlTK.getElementsByTagName("maTinhNNT")(0).Text = xmlResultNNT.getElementsByTagName("MaTinh")(0).Text
-    
-        xmlTK.getElementsByTagName("mst")(0).Text = xmlResultNNT.getElementsByTagName("MaSoThue")(0).Text
+        
         'xmlTK.getElementsByTagName("tenNNT")(0).Text = "test"
         xmlTK.getElementsByTagName("tenNNT")(0).Text = ConvertStringToUtf8String(xmlResultNNT.getElementsByTagName("TenNNT")(0).Text)
        ' xmlTK.getElementsByTagName("dchiNNT")(0).Text = "test"
@@ -881,6 +880,9 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         xmlTK.getElementsByTagName("dthoaiNNT")(0).Text = "" ' xmlResultNNT.getElementsByTagName("TRAN_TEL")(0).Text
         xmlTK.getElementsByTagName("faxNNT")(0).Text = "" 'xmlResultNNT.getElementsByTagName("TRAN_FAX")(0).Text
         xmlTK.getElementsByTagName("emailNNT")(0).Text = "" 'xmlResultNNT.getElementsByTagName("MAIL")(0).Text
+        xmlTK.getElementsByTagName("mst")(0).Text = xmlResultNNT.getElementsByTagName("MaSoThue")(0).Text
+    Else
+        xmlTK.getElementsByTagName("mst")(0).Text = strMaNNT
     End If
 
     If (xmlResultDLT.hasChildNodes) Then
@@ -895,7 +897,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).Text = "" 'xmlResultDLT.getElementsByTagName("START_DATE")(0).Text
     End If
     
-    xmlTK.getElementsByTagName("mstDLyThue")(0).Text = strMaDaiLyThue
+    xmlTK.getElementsByTagName("mstDLyThue")(0).Text = strMaDLT
     xmlTK.getElementsByTagName("tenTinhDLyThue")(0).Text = ""
     xmlTK.getElementsByTagName("tenHuyenDLyThue")(0).Text = ""
     xmlTK.getElementsByTagName("maHuyenDLyThue")(0).Text = ""
@@ -1466,9 +1468,9 @@ Private Sub ExecuteSave()
     Set xmlDocSave = AppendXMLStandard(xmlTK, sKyLapBo, sNgayNopTK)
     xmlDocSave.save sFileName
     ' Push MQ
-    If (Not PushDataToESB(xmlDocSave.xml)) Then
-        MessageBox "0137", msOKOnly, miCriticalError
-    End If
+'    If (Not PushDataToESB(xmlDocSave.xml)) Then
+'        MessageBox "0137", msOKOnly, miCriticalError
+'    End If
 
     ' End push
     
@@ -1600,26 +1602,26 @@ On Error GoTo ErrHandle
             .GetText .ColLetterToNumber("B"), 17, qBoSung
             ' qBoSung : neu ky lap bo lon hon ky ke khai thi set =0 nguoc lai set 1
             If qBoSung = 0 And (TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue <> "104") Then
-                ' Huy bo thi quay lai man hinh quet to khai
-                msgRs = MessageBox("0084", msYesNoCancel, miQuestion, 1)
-               If msgRs = mrCancel Then
-                    If Not TAX_Utilities_Srv_New.Data(0) Is Nothing Then
-                        If Not objTaxBusiness Is Nothing Then
-                            objTaxBusiness.Prepared4 dNgayDauKy
-                            objTaxBusiness.GetParams strNgayNhanToKhai, strMaPhongXuLy 'strMaSoTep, strNgayNhanToKhai, strMaPhongXuLy
-                        End If
-                        StartReceiveForm
-                    End If
-                    Exit Sub
-                ' Neu  ghi Thay the thi set lai trang thai cua to khai la 1 va ghi binh thuong
-                ElseIf msgRs = mrYes Then
-                    verToKhai = 1
-                ' Neu ghi Bo sung thi phai set lai tinh trang cua to khai la 2 va phai yeu cau quet phu luc KHBS
-                ElseIf msgRs = mrNo Then
-
-                        verToKhai = 2
-
-                End If
+'                ' Huy bo thi quay lai man hinh quet to khai
+'                msgRs = MessageBox("0084", msYesNoCancel, miQuestion, 1)
+'               If msgRs = mrCancel Then
+'                    If Not TAX_Utilities_Srv_New.Data(0) Is Nothing Then
+'                        If Not objTaxBusiness Is Nothing Then
+'                            objTaxBusiness.Prepared4 dNgayDauKy
+'                            objTaxBusiness.GetParams strNgayNhanToKhai, strMaPhongXuLy 'strMaSoTep, strNgayNhanToKhai, strMaPhongXuLy
+'                        End If
+'                        StartReceiveForm
+'                    End If
+'                    Exit Sub
+'                ' Neu  ghi Thay the thi set lai trang thai cua to khai la 1 va ghi binh thuong
+'                ElseIf msgRs = mrYes Then
+'                    verToKhai = 1
+'                ' Neu ghi Bo sung thi phai set lai tinh trang cua to khai la 2 va phai yeu cau quet phu luc KHBS
+'                ElseIf msgRs = mrNo Then
+'
+'                        verToKhai = 2
+'
+'                End If
             End If
             .EventEnabled(EventAllEvents) = True
         End With
@@ -1956,11 +1958,11 @@ Private Sub Command1_Click()
 'str2 = "bs320713100177415   082013004004003003<SKHBS><S>~~0~0~0</S><S>Hµng ho∏, dﬁch vÙ chﬁu thu’ su t 5%~31~27500~5000~-22500~Hµng ho∏, dﬁch vÙ chﬁu thu’ su t 10%~32~551000~40000~-511000</S><S>24/09/2013~4~0~~-533500</S></SKHBS>"
 'Barcode_Scaned str2
 
-'04/GTGT chinh thuc
+''04/GTGT chinh thuc
 
-str2 = "aa317713100177415   02201300100100100201/0101/01/1900<S01><S>0102845045</S><S>70000000~11000000~55100000</S><S>10000000~2000000~3000000~01~50000000~0~1000000~03~1000000~2000000~50000000~02~4000000~5000000~100000~04~5000000~2000000~1000000~02</S><S>0~5~10~01~0~5~10~03~0~5~10~02~0~5~10~04~0~5~10~02</S><S>0~550000~5510"
+str2 = "aa317710201027770   02201300100100100201/0101/01/1900<S01><S></S><S>70000000~11000000~55100000</S><S>10000000~2000000~3000000~01~50000000~0~1000000~03~1000000~2000000~50000000~02~4000000~5000000~100000~04~5000000~2000000~1000000~02</S><S>0~5~10~01~0~5~10~03~0~5~10~02~0~5~10~04~0~5~10~02</S><S>0~550000~5510"
 Barcode_Scaned str2
-str2 = "aa317713100177415   022013001001002002000</S><S>0~100000~300000~01~0~0~100000~03~0~100000~5000000~02~0~250000~10000~04~0~100000~100000~02</S><S>0~27500~551000</S><S>0~5000~30000~01~0~0~10000~03~0~5000~500000~02~0~12500~1000~04~0~5000~10000~02</S><S>136100000~578500</S><S>dasdsad~~21sdasd~24/09/2013~1~1~1~1</S></S01>"
+str2 = "aa317710201027770   022013001001002002000</S><S>0~100000~300000~01~0~0~100000~03~0~100000~5000000~02~0~250000~10000~04~0~100000~100000~02</S><S>0~27500~551000</S><S>0~5000~30000~01~0~0~10000~03~0~5000~500000~02~0~12500~1000~04~0~5000~10000~02</S><S>136100000~578500</S><S>dasdsad~~21sdasd~24/09/2013~1~1~1~1</S></S01>"
 Barcode_Scaned str2
 ''04/GTGT bo sung
 '
@@ -1982,9 +1984,9 @@ Barcode_Scaned str2
 'Barcode_Scaned str2
 '
 '
-''01/KK-XS theo quy chinh thuc
-'
-'str2 = "aa31749040010191900802201300100100100101/0101/01/2010<S01><S>0102845045</S><S>6000000~3000000~400000</S><S>~dasdsad~21sdasd~24/09/2013~1~~</S></S01>"
+'01/KK-XS theo quy chinh thuc
+
+'str2 = "aa31749000000001700802201300100100100101/0101/01/2010<S01><S>0102845045</S><S>6000000~3000000~400000</S><S>~dasdsad~21sdasd~24/09/2013~1~~</S></S01>"
 'Barcode_Scaned str2
 ''01/KK-XS theo quy bo sung
 '
@@ -2242,11 +2244,26 @@ End Sub
 'Return:
 '**********************************************
 Private Sub Barcode_Scaned(strBarcode As String)
-Dim intBarcodeCount As Long, intBarcodeNo As Long
-Dim strPrefix As String, strBarcodeCount As String, strData As String
-Dim idToKhai As String
+    Dim intBarcodeCount As Long, intBarcodeNo As Long
+    Dim strPrefix       As String, strBarcodeCount As String, strData As String
+    Dim idToKhai        As String
 
-On Error GoTo ErrHandle
+    On Error GoTo ErrHandle
+
+    'Check ngay client va ngay tren server
+    If (strNgayHeThongSrv <> "" And strNgayHeThongSrv <> vbNullString) Then
+        Dim dNgayHeThong As Date
+        dNgayHeThong = CDate(strNgayHeThongSrv)
+        Dim dCurrent As Date
+        dCurrent = CDate(DateTime.Now)
+
+        If (DateDiff("d", dCurrent, dNgayHeThong) <> 0) Then
+            DisplayMessage "0143", msOKOnly, miCriticalError
+            Exit Sub
+        End If
+    End If
+
+    'End check ngay
 
     'Convert from TCVN to UNICODE format
     strBarcode = TrimString(strBarcode)
@@ -2255,6 +2272,7 @@ On Error GoTo ErrHandle
     'strBarcode = TAX_Utilities_Srv_New.Convert(strBarcode, TCVN, UNICODE)
     
     If Left$(strBarcode, 1) <> "0" Then
+
         'Version 1.2.0 and later
         ' Kiem tra neu version in to khai lon hon max_verion thi khong cho phep nhan
         'If Val(Left$(strBarcode, 3)) > Val(Replace$(APP_VERSION, ".", "")) Then
@@ -2263,11 +2281,13 @@ On Error GoTo ErrHandle
             DisplayMessage "0074", msOKOnly, miCriticalError
             Exit Sub
         ElseIf Val(Left$(strBarcode, 3)) < 200 Then ' Truong hop cac to khai thue TNCN duoc in tu phien ban 1.3.1 hieu luc trong nam 2008 thi ko cho nhan
+
             If Val(Mid$(strBarcode, 4, 2)) = 15 Or Val(Mid$(strBarcode, 4, 2)) = 16 Or Val(Mid$(strBarcode, 4, 2)) = 22 Or Val(Mid$(strBarcode, 4, 2)) = 23 Then
                 DisplayMessage "0089", msOKOnly, miCriticalError
                 Exit Sub
             End If
         End If
+
         strPrefix = Left$(strBarcode, 36)
         strBarcodeCount = Right$(strPrefix, 6)
         strPrefix = Mid(strPrefix, 1, Len(strPrefix) - 6)
@@ -2279,15 +2299,19 @@ On Error GoTo ErrHandle
         ' 2. To khai CDKT phien ban 2.0.0 co ID la 18 (bo 15) -> chuyen thanh ID la 55
         If Left$(strPrefix, 3) = "210" Or Left$(strPrefix, 3) = "200" Or Left$(strPrefix, 3) = "131" Or Left$(strPrefix, 3) = "130" Then
             idToKhai = Mid(strPrefix, 4, 2)
+
             If Trim(idToKhai) = "18" Then
                 strPrefix = Left$(strPrefix, 3) & "55" & Mid$(strPrefix, 6, Len(strPrefix) - 5)
             End If
+
             If Trim(idToKhai) = "19" Then
                 strPrefix = Left$(strPrefix, 3) & "56" & Mid$(strPrefix, 6, Len(strPrefix) - 5)
             End If
+
             If Trim(idToKhai) = "20" Then
                 strPrefix = Left$(strPrefix, 3) & "57" & Mid$(strPrefix, 6, Len(strPrefix) - 5)
             End If
+
             If Trim(idToKhai) = "21" Then
                 strPrefix = Left$(strPrefix, 3) & "58" & Mid$(strPrefix, 6, Len(strPrefix) - 5)
             End If
@@ -2298,22 +2322,22 @@ On Error GoTo ErrHandle
         ' nvhai
         ' 22/07/2010 chan to khai 01/TAIN, 02/TAIN ke khai tu thang 7 va 03/TAIN ke khai tu 2010 in bang HTKK 2.5.2 tro xuong
         If (Trim(Mid(strPrefix, 4, 2)) = "06" And Val(Mid(strPrefix, 19, 2)) > 6 And Val(Mid(strPrefix, 21, 4)) > 2009 And Val(Left$(strPrefix, 3)) <= 252) Or (Trim(Mid(strPrefix, 4, 2)) = "09" And Val(Mid(strPrefix, 19, 2)) > 6 And Val(Mid(strPrefix, 21, 4)) > 2009 And Val(Left$(strPrefix, 3)) <= 252) Then
-                DisplayMessage "0102", msOKOnly, miInformation
-                Exit Sub
+            DisplayMessage "0102", msOKOnly, miInformation
+            Exit Sub
         End If
         
         If Trim(Mid(strPrefix, 4, 2)) = "08" And Val(Mid(strPrefix, 21, 4)) > 2009 And Val(Left$(strPrefix, 3)) <= 252 Then
-                DisplayMessage "0103", msOKOnly, miInformation
-                Exit Sub
+            DisplayMessage "0103", msOKOnly, miInformation
+            Exit Sub
         End If
         
         ' end
-        
         
         ' Bat dau
         ' To khai 04/TNCN bat dau thu thang 2 se ko nhan nua
         If Left$(strPrefix, 3) = "250" Or Left$(strPrefix, 3) = "210" Then
             idToKhai = Mid(strPrefix, 4, 2)
+
             ' Neu la to khai 04AB/TNCN thang bat dau tu thang 2/2010 se ko nhan to khai nua
             If (Trim(idToKhai) = "39" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "40" And Val(Mid(strPrefix, 21, 4)) > 2009) Then
                 DisplayMessage "0093", msOKOnly, miInformation
@@ -2324,6 +2348,7 @@ On Error GoTo ErrHandle
         ' To khai 07/TNCN phien ban 2.1.0 bat dau thu thang 2 se ko nhan nua
         If Left$(strPrefix, 3) = "210" Then
             idToKhai = Mid(strPrefix, 4, 2)
+
             ' Neu la to khai 07/TNCN thang bat dau tu thang 2/2010 se ko nhan to khai nua
             If (Trim(idToKhai) = "36" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Then
                 DisplayMessage "0097", msOKOnly, miInformation
@@ -2331,11 +2356,11 @@ On Error GoTo ErrHandle
             End If
         End If
         
-        
         ' Lay ID cua to khai de xem co hien thi luon hay ko (Cac to khai quyet toan TNCN)
         If Left(strPrefix, 3) = "250" Then
             ' Kiem tra neu la phien ban 250 va la cac to khai quyet toan TNCN thi phai dat lai tong so ma vach la 1
             idToKhai = Mid(strPrefix, 4, 2)
+
             If Trim(idToKhai) = "17" Or Trim(idToKhai) = "41" Or Trim(idToKhai) = "42" Or Trim(idToKhai) = "43" Then
                 strBarcodeCount = Left(strBarcodeCount, Len(strBarcodeCount) - 1) & "1"
             End If
@@ -2344,23 +2369,26 @@ On Error GoTo ErrHandle
         ' to khai 06, 02_TNCN_SX, 02_TNCN_BH khong quet bang ke
         'If isIHTKK = True Then
         idToKhai = Mid(strPrefix, 4, 2)
+
         If Trim(idToKhai) = "59" Or Trim(idToKhai) = "43" Or Trim(idToKhai) = "42" Then
             strBarcodeCount = Left(strBarcodeCount, Len(strBarcodeCount) - 1) & "1"
         End If
+
         'End If
         If Trim(idToKhai) = "17" Then
             strBarcodeCount = Left(strBarcodeCount, Len(strBarcodeCount) - 1) & "2"
         End If
         
-        
         ' Doi voi cac to khai thang quy/TNCN nay da bi thay doi ID giua version 210 va 250
         ' Dat lai cho ID cua 210 dung voi 250 de nhan vao QLT_NTK
         If Left$(strPrefix, 3) = "210" Or Left$(strPrefix, 3) = "200" Then
             idToKhai = Mid(strPrefix, 4, 2)
+
             ' Neu la to khai 02/TNCN thang cua nam 2009 co ID = 15 thi phai set lai gia tri moi co ID = 53
             If Trim(idToKhai) = "15" And UBound(Split(Mid$(strBarcode, 37), "~")) <> 11 Then
                 strPrefix = Left$(strPrefix, 3) & "53" & Mid(strPrefix, 6, Len(strPrefix) - 5)
             End If
+
             ' Neu la to khai 03/TNCN thang cua nam 2009 co ID = 16 thi phai set lai gia tri moi co ID = 54
             If Trim(idToKhai) = "16" And UBound(Split(Mid$(strBarcode, 37), "~")) <> 11 Then
                 strPrefix = Left$(strPrefix, 3) & "54" & Mid(strPrefix, 6, Len(strPrefix) - 5)
@@ -2373,9 +2401,9 @@ On Error GoTo ErrHandle
         'If (Left$(strPrefix, 3) = "250") Or (Left$(strPrefix, 3) = "210") Then
         If (Left$(strPrefix, 3) = "210") Then
             idToKhai = Mid(strPrefix, 4, 2)
+
             ' Neu la to khai 02AB/TNCN, 03AB/TNCN  thang bat dau tu thang 2/2010 se ko nhan to khai nua
-            If (Trim(idToKhai) = "53" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "37" And Val(Mid(strPrefix, 21, 4)) > 2009) _
-                Or (Trim(idToKhai) = "54" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "38" And Val(Mid(strPrefix, 21, 4)) > 2009) Then
+            If (Trim(idToKhai) = "53" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "37" And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "54" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "38" And Val(Mid(strPrefix, 21, 4)) > 2009) Then
                 DisplayMessage "0094", msOKOnly, miInformation
                 Exit Sub
             End If
@@ -2384,9 +2412,9 @@ On Error GoTo ErrHandle
         '07072011 TT28
         ' Khong nhan cac to khai theo mau cua
         idToKhai = Mid(strPrefix, 4, 2)
+
         If (Val(Left$(strPrefix, 3)) < 300) Then
-            If Trim(idToKhai) = "01" Or Trim(idToKhai) = "02" Or Trim(idToKhai) = "04" Or Trim(idToKhai) = "11" Or Trim(idToKhai) = "12" Or Trim(idToKhai) = "46" Or Trim(idToKhai) = "47" Or Trim(idToKhai) = "48" Or Trim(idToKhai) = "49" Or Trim(idToKhai) = "15" Or Trim(idToKhai) = "16" Or Trim(idToKhai) = "50" Or Trim(idToKhai) = "51" _
-            Or Trim(idToKhai) = "36" Or Trim(idToKhai) = "70" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "05" Then
+            If Trim(idToKhai) = "01" Or Trim(idToKhai) = "02" Or Trim(idToKhai) = "04" Or Trim(idToKhai) = "11" Or Trim(idToKhai) = "12" Or Trim(idToKhai) = "46" Or Trim(idToKhai) = "47" Or Trim(idToKhai) = "48" Or Trim(idToKhai) = "49" Or Trim(idToKhai) = "15" Or Trim(idToKhai) = "16" Or Trim(idToKhai) = "50" Or Trim(idToKhai) = "51" Or Trim(idToKhai) = "36" Or Trim(idToKhai) = "70" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "05" Then
                 DisplayMessage "0113", msOKOnly, miInformation
                 Exit Sub
             End If
@@ -2395,8 +2423,7 @@ On Error GoTo ErrHandle
         '06012012 TT28
         ' Khong nhan cac to khai theo mau cu GD2
         If (Val(Left$(strPrefix, 3)) < 310) Then
-            If Trim$(idToKhai) = "71" Or Trim$(idToKhai) = "72" Or Trim$(idToKhai) = "73" Or Trim$(idToKhai) = "03" Or Trim$(idToKhai) = "74" Or Trim$(idToKhai) = "75" Or Trim$(idToKhai) = "80" Or Trim$(idToKhai) = "81" Or Trim$(idToKhai) = "82" Or Trim$(idToKhai) = "17" Or Trim$(idToKhai) = "42" Or Trim$(idToKhai) = "43" _
-            Or Trim$(idToKhai) = "59" Or Trim$(idToKhai) = "76" Or Trim$(idToKhai) = "41" Or Trim$(idToKhai) = "77" Or Trim$(idToKhai) = "86" Or Trim$(idToKhai) = "87" Or Trim$(idToKhai) = "89" Then
+            If Trim$(idToKhai) = "71" Or Trim$(idToKhai) = "72" Or Trim$(idToKhai) = "73" Or Trim$(idToKhai) = "03" Or Trim$(idToKhai) = "74" Or Trim$(idToKhai) = "75" Or Trim$(idToKhai) = "80" Or Trim$(idToKhai) = "81" Or Trim$(idToKhai) = "82" Or Trim$(idToKhai) = "17" Or Trim$(idToKhai) = "42" Or Trim$(idToKhai) = "43" Or Trim$(idToKhai) = "59" Or Trim$(idToKhai) = "76" Or Trim$(idToKhai) = "41" Or Trim$(idToKhai) = "77" Or Trim$(idToKhai) = "86" Or Trim$(idToKhai) = "87" Or Trim$(idToKhai) = "89" Then
                 DisplayMessage "0126", msOKOnly, miInformation
                 Exit Sub
             End If
@@ -2409,12 +2436,14 @@ On Error GoTo ErrHandle
                 Exit Sub
             End If
         End If
+
         ' Ket thuc
         ' Khong nhan cac to khai 02/TAIN, 05/TNDN
         If Trim(idToKhai) = "08" Or Trim(idToKhai) = "24" Then
-                DisplayMessage "0120", msOKOnly, miInformation
-                Exit Sub
+            DisplayMessage "0120", msOKOnly, miInformation
+            Exit Sub
         End If
+
         ' end
         
         strBarcode = Mid$(strBarcode, 37)
@@ -2427,21 +2456,26 @@ On Error GoTo ErrHandle
         End If
         
         If strTaxReportInfo = "" Then
-        ' Scanning
+
+            ' Scanning
             If UBound(arrStrElements()) = 0 Then
                 ProgressBar1.max = intBarcodeCount
                 ProgressBar1.Value = 0
                 arrStrElements(0) = strPrefix
                 cmdViewNow.Enabled = True
             Else
-                 If IsDifferent(strPrefix, arrStrElements(0)) Then
+
+                If IsDifferent(strPrefix, arrStrElements(0)) Then
+
                     'Another tax report
                     If MessageBox("0035", msYesNo, miQuestion) = mrYes Then
                         ReDim arrStrElements(0)
                         Barcode_Scaned (strPrefix & strBarcodeCount & strBarcode)
                     End If
+
                     Exit Sub
                 Else
+
                     If ProgressBar1.max <> intBarcodeCount Then
                         MessageBox "0062", msOKOnly, miCriticalError
                         Exit Sub
@@ -2455,6 +2489,7 @@ On Error GoTo ErrHandle
             ' Lay them trong truong hop ko quet het ma vach ma muon hien thi luon
             ReDim Preserve arrBCBuffer(intBarcodeCount)
             arrBCBuffer(intBarcodeNo) = strPrefix & strBarcodeCount & strBarcode
+
             ' hlnam End
             If IsCompleteData(strData) Then
                 Dim tmp As String
@@ -2470,20 +2505,22 @@ On Error GoTo ErrHandle
                         End If
 
                     ElseIf Mid$(strData, 4, 2) = "68" Then
-                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
-                            strData = tmp & "~1" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
+                        tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
+                        strData = tmp & "~1" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
                     ElseIf Mid$(strData, 4, 2) = "73" Then
-                            tmp = Mid(strData, 1, InStr(1, strData, "</S02>", vbTextCompare) - 5)
-                            strData = tmp & "~" & Right$(strData, Len(strData) - InStr(1, strData, "</S02>", vbTextCompare) + 5)
+                        tmp = Mid(strData, 1, InStr(1, strData, "</S02>", vbTextCompare) - 5)
+                        strData = tmp & "~" & Right$(strData, Len(strData) - InStr(1, strData, "</S02>", vbTextCompare) + 5)
                     End If
                 End If
 
                 lblLoading.Visible = False
                 lblConnecting.Visible = True
                 frmInterfaces.Refresh
+
                 If Not LoadForm(strData) Then
                     StartReceiveForm
                 End If
+
                 ' Free memory
                 ReDim arrStrElements(0)
                 ' Khai bao lai mot mang rong
@@ -2493,17 +2530,22 @@ On Error GoTo ErrHandle
             End If
                 
         Else ' Form is loaded
+
             If strTaxReportInfo = strPrefix Then
                 MessageBox "0044", msOKOnly, miWarning
                 Exit Sub
             Else
+
                 If frmSystem.chkSaveQuestion.Value Then
                     cmdSave_Click
+
                     If blnSaveSuccess Then
                         StartReceiveForm
                         Barcode_Scaned (strPrefix & strBarcodeCount & strBarcode)
                     End If
+
                 Else
+
                     If MessageBox("0045", msYesNo, miQuestion) = mrYes Then
                         StartReceiveForm
                         Barcode_Scaned (strPrefix & strBarcodeCount & strBarcode)
@@ -2513,8 +2555,9 @@ On Error GoTo ErrHandle
                 End If
             End If
         End If
+
     Else
-    'Version 1.1.0 and 1.0.0
+        'Version 1.1.0 and 1.0.0
         strPrefix = Left$(strBarcode, 25)
         strBarcodeCount = Right$(strPrefix, 4)
         strPrefix = Mid(strPrefix, 1, Len(strPrefix) - 4)
@@ -2529,20 +2572,25 @@ On Error GoTo ErrHandle
         End If
         
         If strTaxReportInfo = "" Then
-        ' Scanning
+
+            ' Scanning
             If UBound(arrStrElements()) = 0 Then
                 ProgressBar1.max = intBarcodeCount
                 ProgressBar1.Value = 0
                 arrStrElements(0) = strPrefix
             Else
+
                 If IsDifferent(strPrefix, arrStrElements(0)) Then
+
                     'Another tax report
                     If MessageBox("0035", msYesNo, miQuestion) = mrYes Then
                         ReDim arrStrElements(0)
                         Barcode_Scaned (strPrefix & strBarcodeCount & strBarcode)
                     End If
+
                     Exit Sub
                 Else
+
                     If ProgressBar1.max <> intBarcodeCount Then
                         MessageBox "0062", msOKOnly, miCriticalError
                         Exit Sub
@@ -2557,25 +2605,32 @@ On Error GoTo ErrHandle
                 lblLoading.Visible = False
                 lblConnecting.Visible = True
                 frmInterfaces.Refresh
+
                 If Not LoadForm(strData) Then
                     StartReceiveForm
                 End If
+
                 'Free memory
                 ReDim arrStrElements(0)
             End If
                 
         Else ' Form is loaded
+
             If strTaxReportInfo = strPrefix Then
                 MessageBox "0044", msOKOnly, miWarning
                 Exit Sub
             Else
+
                 If frmSystem.chkSaveQuestion.Value Then
                     cmdSave_Click
+
                     If blnSaveSuccess Then
                         StartReceiveForm
                         Barcode_Scaned (strPrefix & strBarcodeCount & strBarcode)
                     End If
+
                 Else
+
                     If MessageBox("0045", msYesNo, miQuestion) = mrYes Then
                         StartReceiveForm
                         Barcode_Scaned (strPrefix & strBarcodeCount & strBarcode)
@@ -2586,6 +2641,7 @@ On Error GoTo ErrHandle
             End If
         End If
     End If
+
     Exit Sub
 ErrHandle:
     SaveErrorLog Me.Name, "Barcode_Scaned", Err.Number, Err.Description
@@ -4276,6 +4332,8 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
         Dim cfigXml As New MSXML.DOMDocument
         Set cfigXml = LoadConfig()
 
+        strMaNNT = strTaxIDString
+
         paXmlDoc.Load GetAbsolutePath("..\InterfaceTemplates\xml\paramNntInESB.xml")
         sUrlWs = cfigXml.getElementsByTagName("WsUrlNNT")(0).Text
         soapAct = cfigXml.getElementsByTagName("SoapActionNNT")(0).Text
@@ -4383,10 +4441,10 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
 
     If ((strResultNNT <> "" And xmlResultNNT.hasChildNodes And (InStr(xmlResultNNT.xml, "MaSoThue") > 0)) And Err_des = "") Then
         'xmlResultNNT.loadXML TAX_Utilities_Srv_New.Convert(xmlResultNNT.xml, VISCII, UNICODE)
-
         rsReturn!trang_thai = GetStringByLength(xmlResultNNT.getElementsByTagName("TrangThaiHoatDong")(0).Text, 2)
-        rsReturn!ten_dtnt = ConvertStringToUtf8String(GetStringByLength(xmlResultNNT.getElementsByTagName("TenNNT")(0).Text, 100))
-        rsReturn!dia_chi = ConvertStringToUtf8String(GetStringByLength(xmlResultNNT.getElementsByTagName("DiaChi")(0).Text, 60))
+        rsReturn!ten_dtnt = TAX_Utilities_Srv_New.Convert(GetStringByLength(xmlResultNNT.getElementsByTagName("TenNNT")(0).Text, 100), UNICODE, TCVN)
+        rsReturn!dia_chi = TAX_Utilities_Srv_New.Convert(GetStringByLength(xmlResultNNT.getElementsByTagName("DiaChi")(0).Text, 60), UNICODE, TCVN)
+        
         rsReturn!Dien_thoai = "" 'GetStringByLength(xmlResultNNT.getElementsByTagName("TRAN_TEL")(0).Text, 20)
         rsReturn!mail = "" 'GetStringByLength(xmlResultNNT.getElementsByTagName("MAIL")(0).Text, 30)
         rsReturn!Fax = "" 'GetStringByLength(xmlResultNNT.getElementsByTagName("TRAN_FAX")(0).Text, 20)
@@ -4400,6 +4458,7 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
     
     rsReturn!ngay_kdoanh = ""
     rsReturn.Update
+    
     
     Set GetTaxInfo = rsReturn
 
@@ -4452,6 +4511,8 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
     If (strTaxIDDLString <> "" And strTaxIDDLString <> vbNullString) Then
         Dim cfigXml As New MSXML.DOMDocument
         Set cfigXml = LoadConfig()
+        
+        strMaDLT = strTaxIDDLString
 
         paXmlDoc.Load GetAbsolutePath("..\InterfaceTemplates\xml\paramDltInESB.xml")
         sUrlWs = cfigXml.getElementsByTagName("WsUrlDLT")(0).Text
@@ -4489,57 +4550,59 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
         paXmlDoc.save sParamDLT
 
         'Return value from ESB
-        'strResultDLT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+        strResultDLT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
 
-        'strResultDLT = ChangeTagASSCII(strResultDLT, False)
-        'xmlResultDLT.loadXML strResultDLT
+        strResultDLT = ChangeTagASSCII(strResultDLT, False)
+        xmlResultDLT.loadXML strResultDLT
     End If
     
-    If (strResultDLT = "" Or strResultDLT = vbNullString Or Not xmlResultDLT.hasChildNodes) Then
-        If (MessageBox("0136", msYesNo, miCriticalError) = mrNo) Then
-            Set rsReturn = Nothing
-            blnSuccess = False
-            Exit Function
-        End If
-
-    Else
-            Dim sResultDLT As String
-
-        sResultDLT = "c:\TempXML\" & "ResultDLT.xml"
-        xmlResultDLT.save sResultDLT
-    
-        Dim Err_des As String
-        Err_des = xmlResultDLT.getElementsByTagName("ERROR_DESC")(0).Text
-
-        If (Err_des <> "") Then
-            MessageBox "0139", msOKOnly, miCriticalError
+    If strTaxIDDLString <> "" And strTaxIDDLString <> vbNullString Then
+        If (strResultDLT = "" Or strResultDLT = vbNullString Or Not xmlResultDLT.hasChildNodes) Then
+            If (MessageBox("0136", msYesNo, miCriticalError) = mrNo) Then
                 Set rsReturn = Nothing
                 blnSuccess = False
                 Exit Function
-
+            End If
+    
         Else
-'            If (InStr(xmlResultDLT.xml, "NORM_NAME") <= 0) Then
-'                If (MessageBox("0136", msYesNo, miCriticalError) = mrNo) Then
-'                    Set rsReturn = Nothing
-'                    blnSuccess = False
-'                    Exit Function
-'                End If
-'            End If
-
-            If (InStr(xmlResultDLT.xml, "faultcode") > 0) Then
-                    MessageBox "0141", msOKOnly, miCriticalError
+                Dim sResultDLT As String
+    
+            sResultDLT = "c:\TempXML\" & "ResultDLT.xml"
+            xmlResultDLT.save sResultDLT
+        
+            Dim Err_des As String
+            Err_des = xmlResultDLT.getElementsByTagName("ERROR_DESC")(0).Text
+    
+            If (Err_des <> "") Then
+                MessageBox "0139", msOKOnly, miCriticalError
                     Set rsReturn = Nothing
                     blnSuccess = False
                     Exit Function
+    
+            Else
+    '            If (InStr(xmlResultDLT.xml, "NORM_NAME") <= 0) Then
+    '                If (MessageBox("0136", msYesNo, miCriticalError) = mrNo) Then
+    '                    Set rsReturn = Nothing
+    '                    blnSuccess = False
+    '                    Exit Function
+    '                End If
+    '            End If
+    
+                If (InStr(xmlResultDLT.xml, "faultcode") > 0) Then
+                        MessageBox "0141", msOKOnly, miCriticalError
+                        Set rsReturn = Nothing
+                        blnSuccess = False
+                        Exit Function
+                End If
+                
+                If (xmlResultDLT.getElementsByTagName("TrangThaiHoatDong")(0).Text = "01") Then
+                        Set rsReturn = Nothing
+                        blnSuccess = False
+                        Exit Function
+                End If
             End If
             
-            If (xmlResultDLT.getElementsByTagName("TrangThaiHoatDong")(0).Text = "01") Then
-                    Set rsReturn = Nothing
-                    blnSuccess = False
-                    Exit Function
-            End If
         End If
-        
     End If
     
     rsReturn.Fields.Append "repr_name", adVarWChar, 200, adFldUpdatable
@@ -4556,8 +4619,8 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
     If (strResultDLT <> "" And xmlResultDLT.hasChildNodes And (InStr(xmlResultNNT.xml, "MaSoThue") > 0) And Err_des = "") Then
         'xmlResultDLT.loadXML TAX_Utilities_Srv_New.Convert(xmlResultDLT.xml, VISCII, UNICODE)
 
-        rsReturn!repr_name = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("TenNNT")(0).Text)
-        rsReturn!repr_addr = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("DiaChi")(0).Text)
+        rsReturn!repr_name = TAX_Utilities_Srv_New.Convert(xmlResultDLT.getElementsByTagName("TenNNT")(0).Text, UNICODE, TCVN)
+        rsReturn!repr_addr = TAX_Utilities_Srv_New.Convert(xmlResultDLT.getElementsByTagName("DiaChi")(0).Text, UNICODE, TCVN)
 
 '        rsReturn!repr_tell = xmlResultDLT.getElementsByTagName("TELL")(0).Text
 '        rsReturn!repr_fax = xmlResultDLT.getElementsByTagName("FAX")(0).Text
@@ -4907,6 +4970,14 @@ On Error GoTo ErrHandle
             'Else
                 'Exit For
             'End If
+'' Thay lai ham convert unicode
+'                If Not arrStrHeaderData(lIndex) = vbNullString Then
+'                    SetAttribute TAX_Utilities_Srv_New.Data(lCtrl).getElementsByTagName("Section")(0).firstChild.childNodes(lIndex) _
+'                        , "Value", arrStrHeaderData(lIndex)
+'                    ParserCellID fpSpread1, GetAttribute(TAX_Utilities_Srv_New.Data(lCtrl).getElementsByTagName("Section")(0).firstChild.childNodes(lIndex), "CellID"), lCol, lRow
+'                    fpSpread1.SetText lCol, lRow, arrStrHeaderData(lIndex)
+'                    fpSpread1.RowHeight(lRow) = fpSpread1.MaxTextRowHeight(lRow)
+'                End If
         Next lIndex
         
     Exit Sub
