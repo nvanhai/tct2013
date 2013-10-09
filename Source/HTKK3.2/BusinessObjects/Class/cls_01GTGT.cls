@@ -1989,13 +1989,17 @@ Private Sub CheckDynamicError()
                        
                         
     '    Next
-        .Sheet = .SheetCount
-         If blCheck_S8 Then
-            .SetText .ColLetterToNumber("B"), 48, IIf(iFlagvMst_PL6 = "1", "1", "0")
-            .SetText .ColLetterToNumber("B"), 62, IIf(flagTenCSPT = "1", "0", "1")
-            .SetText .ColLetterToNumber("B"), 63, IIf(flagDiaChi = "1", "0", "1")
-          End If
    End If
+    .Sheet = .SheetCount
+    If blCheck_S8 Then
+         .SetText .ColLetterToNumber("B"), 48, IIf(iFlagvMst_PL6 = "1", "1", "0")
+         .SetText .ColLetterToNumber("B"), 62, IIf(flagTenCSPT = "1", "0", "1")
+         .SetText .ColLetterToNumber("B"), 63, IIf(flagDiaChi = "1", "0", "1")
+    Else
+         .SetText .ColLetterToNumber("B"), 48, "1"
+         .SetText .ColLetterToNumber("B"), 62, "1"
+         .SetText .ColLetterToNumber("B"), 63, "1"
+    End If
    ' phu luc 06B
    .Sheet = sheetPl01_6B_GTGT
     iFlagvMst_PL6 = 1
@@ -2269,10 +2273,13 @@ Private Sub CheckDynamicError()
              i = i + 1
         Loop Until .Text = "aa"
           
-        .Sheet = .SheetCount
-         If blCheck_S8 Then
-            .SetText .ColLetterToNumber("B"), 62, IIf(flagTenCSPT = "1", "0", "1")
-          End If
+        
+     End If
+     .Sheet = .SheetCount
+     If blCheck_S8 Then
+       .SetText .ColLetterToNumber("B"), 62, IIf(flagTenCSPT = "1", "0", "1")
+     Else
+       .SetText .ColLetterToNumber("B"), 62, "1"
      End If
      ' phu luc 01-01TD/GTGT
      
@@ -2344,12 +2351,14 @@ Private Sub CheckDynamicError()
              i = i + 1
         Loop Until .Text = "aa"
           
-        .Sheet = .SheetCount
-         If blCheck_S8 Then
-            .SetText .ColLetterToNumber("B"), 62, IIf(flagTenCSPT = "1", "0", "1")
-          End If
+        
      End If
-     
+     .Sheet = .SheetCount
+     If blCheck_S8 Then
+       .SetText .ColLetterToNumber("B"), 62, IIf(flagTenCSPT = "1", "0", "1")
+     Else
+       .SetText .ColLetterToNumber("B"), 62, "1"
+     End If
      
      If iFocusFlag = 1 Then
         ' setcell for focus

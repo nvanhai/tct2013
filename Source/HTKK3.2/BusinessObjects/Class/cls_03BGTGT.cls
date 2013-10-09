@@ -1189,13 +1189,7 @@ Private Sub CheckDynamicError()
         
            End If
         Next
-        
-        .Sheet = .SheetCount
-        .SetText .ColLetterToNumber("B"), 21, IIf(iFlagvKyHieuHD = 1 And blCheck_S2 = True, "0", "1")
-        .SetText .ColLetterToNumber("B"), 22, IIf(iFlagvSoHD = 1 And blCheck_S2 = True, "0", "1")
-        .SetText .ColLetterToNumber("B"), 23, IIf(iFlagvNgayHD = 1 And blCheck_S2 = True, "0", "1")
-        .SetText .ColLetterToNumber("B"), 24, IIf(iFlagvTennguoimua = 1 And blCheck_S2 = True, "0", "1")
-        .SetText .ColLetterToNumber("B"), 25, IIf(iFlagvMst = 1 And blCheck_S2 = True, "0", "1")
+                
         If iFocusFlag = 1 Then
             ' setcell for focus
             strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
@@ -1213,6 +1207,21 @@ Private Sub CheckDynamicError()
         End If
      End If
 
+
+    .Sheet = .SheetCount
+     If blCheck_S2 = True Then
+        .SetText .ColLetterToNumber("B"), 21, IIf(iFlagvKyHieuHD = 1 And blCheck_S2 = True, "0", "1")
+        .SetText .ColLetterToNumber("B"), 22, IIf(iFlagvSoHD = 1 And blCheck_S2 = True, "0", "1")
+        .SetText .ColLetterToNumber("B"), 23, IIf(iFlagvNgayHD = 1 And blCheck_S2 = True, "0", "1")
+        .SetText .ColLetterToNumber("B"), 24, IIf(iFlagvTennguoimua = 1 And blCheck_S2 = True, "0", "1")
+        .SetText .ColLetterToNumber("B"), 25, IIf(iFlagvMst = 1 And blCheck_S2 = True, "0", "1")
+    Else
+        .SetText .ColLetterToNumber("B"), 21, "1"
+        .SetText .ColLetterToNumber("B"), 22, "1"
+        .SetText .ColLetterToNumber("B"), 23, "1"
+        .SetText .ColLetterToNumber("B"), 24, "1"
+        .SetText .ColLetterToNumber("B"), 25, "1"
+    End If
 
     
     .Sheet = 3
@@ -1399,12 +1408,7 @@ Private Sub CheckDynamicError()
 
            End If
         Next
-        .Sheet = .SheetCount
-        .SetText .ColLetterToNumber("B"), 26, IIf(iFlagvKyHieuHD = 1 And blCheck_S3 = True, "0", "1")
-        .SetText .ColLetterToNumber("B"), 27, IIf(iFlagvSoHD = 1 And blCheck_S3 = True, "0", "1")
-        .SetText .ColLetterToNumber("B"), 28, IIf(iFlagvNgayHD = 1 And blCheck_S3 = True, "0", "1")
-        .SetText .ColLetterToNumber("B"), 29, IIf(iFlagvTennguoimua = 1 And blCheck_S3 = True, "0", "1")
-        .SetText .ColLetterToNumber("B"), 30, IIf(iFlagvMst = 1 And blCheck_S3 = True, "0", "1")
+        
         If iFocusFlag = 1 Then
             ' setcell for focus
 
@@ -1422,6 +1426,22 @@ Private Sub CheckDynamicError()
             .Formula = strFormula
         End If
     End If
+    
+    .Sheet = .SheetCount
+    If blCheck_S3 = True Then
+        .SetText .ColLetterToNumber("B"), 26, IIf(iFlagvKyHieuHD = 1 And blCheck_S3 = True, "0", "1")
+        .SetText .ColLetterToNumber("B"), 27, IIf(iFlagvSoHD = 1 And blCheck_S3 = True, "0", "1")
+        .SetText .ColLetterToNumber("B"), 28, IIf(iFlagvNgayHD = 1 And blCheck_S3 = True, "0", "1")
+        .SetText .ColLetterToNumber("B"), 29, IIf(iFlagvTennguoimua = 1 And blCheck_S3 = True, "0", "1")
+        .SetText .ColLetterToNumber("B"), 30, IIf(iFlagvMst = 1 And blCheck_S3 = True, "0", "1")
+    Else
+        .SetText .ColLetterToNumber("B"), 26, "1"
+        .SetText .ColLetterToNumber("B"), 27, "1"
+        .SetText .ColLetterToNumber("B"), 28, "1"
+        .SetText .ColLetterToNumber("B"), 29, "1"
+        .SetText .ColLetterToNumber("B"), 30, "1"
+    End If
+    
     .Sheet = iCurrentSheet
     '.ReDraw = True
     '.Visible = True
