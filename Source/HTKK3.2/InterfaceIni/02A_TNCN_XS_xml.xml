@@ -1,13 +1,15 @@
 <PL02A_BK-XS>
-	<Static GroupName="ChiTietTNhapDLyXSo">
-		<ct07>D_22</ct07>
-		<ct08>E_22</ct08>
-		<ct09>F_22</ct09>
-		<ct10>G_22</ct10>
-		<ct11>H_22</ct11>
-		<ct12>I_22</ct12>
-		<ct13>J_22</ct13>
-	</Static>
+	<Dynamic GroupName="BangThuNhapDLyXoSo">
+		<ChiTietTNhapDLyXSo id="id">
+			<ct07>D_22</ct07>
+			<ct08>E_22</ct08>
+			<ct09>F_22</ct09>
+			<ct10>G_22</ct10>
+			<ct11>H_22</ct11>
+			<ct12>I_22</ct12>
+			<ct13>J_22</ct13>
+		</ChiTietTNhapDLyXSo>
+	</Dynamic>
 	<Static GroupName="PL02A_BK-XS">
 		<ct14>G_24</ct14>
 		<ct15>H_24</ct15>
