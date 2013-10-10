@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with htphuong - CMCSoft -->
 <Message>
 	<Infor ID="0001" Msg="Th«ng tin kª khai sai, cã muèn söa l¹i kh«ng ?"/>
@@ -273,5 +273,6 @@
 	<Infor ID="0280" Msg="KÕt xuÊt tê khai xml thµnh c«ng."/>
 	<Infor ID="0281" Msg="Kh«ng cã d÷ liÖu xml cña tê khai."/>
 	<Infor ID="0282" Msg="Th«ng tin kª khai sai. Ph¶i söa ®óng tr­íc khi kÕt xuÊt ra file XML."/>
+	<Infor ID="0283" Msg="Ban hành kèm theo thông tư số 28/2011/TT-BTC ngày 28/02/2011 của Bộ tài chính."/>
 </Message>
 

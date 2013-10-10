@@ -3422,16 +3422,20 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         If xmlTK.getElementsByTagName("ttinNhaCCapDVu").length > 0 Then
             xmlTK.getElementsByTagName("ttinNhaCCapDVu")(0).Text = ttinNhaCCapDVu
         End If
-        
+
+        If xmlTK.getElementsByTagName("moTaBMau").length > 0 Then
+            xmlTK.getElementsByTagName("moTaBMau")(0).Text = GetAttribute(GetMessageCellById("0283"), "Msg")
+        End If
+
         If xmlTK.getElementsByTagName("pbanTKhaiXML").length > 0 Then
             xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = pbanTKhaiXML
         End If
         
- 'to TB03,BC21 khong co ky ke khai
+        'to TB03,BC21 khong co ky ke khai
         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "67" And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "66" Then
-                If xmlTK.getElementsByTagName("kieuKy").length > 0 Then
-            xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
-        End If
+            If xmlTK.getElementsByTagName("kieuKy").length > 0 Then
+                xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
+            End If
 
             If xmlTK.getElementsByTagName("kyKKhai").length > 0 Then
                 xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_New.NodeMenu, "ID"))
@@ -3486,11 +3490,12 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
                     xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = TAX_Utilities_New.LastDay
                 End If
             End If
+
         Else
-                    xmlTK.getElementsByTagName("kieuKy")(0).Text = ""
-                    xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = ""
-                    xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = ""
-                xmlTK.getElementsByTagName("kyKKhai")(0).Text = ""
+            xmlTK.getElementsByTagName("kieuKy")(0).Text = ""
+            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = ""
+            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = ""
+            xmlTK.getElementsByTagName("kyKKhai")(0).Text = ""
 
         End If
         
