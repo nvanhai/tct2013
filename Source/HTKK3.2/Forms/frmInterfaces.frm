@@ -3766,7 +3766,7 @@ Private Function GetKyKeKhai(ByVal ID_TK As String) As String
         KYKKHAI = TAX_Utilities_New.Day & "/" & TAX_Utilities_New.month & "/" & TAX_Utilities_New.Year
     Else
 
-        If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "68" Then
+        If ID_TK = "01" Or ID_TK = "95" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "68" Then
             If strQuy = "TK_THANG" Then
                 KYKKHAI = TAX_Utilities_New.month & "/" & TAX_Utilities_New.Year
             Else
