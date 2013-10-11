@@ -3,35 +3,37 @@
 		<kemTKChinhNam>B_4</kemTKChinhNam>
 	</Static>
 	<Static GroupName="chiTietNguoiPhuThuocCoMST">
-		<ct09></ct09>
+		<ct09/>
 		<ct10>1967-08-13</ct10>
 		<ct11>0000000000</ct11>
-		<ct12></ct12>
-		<ct13></ct13>
-		<ct14></ct14>
-		<ct15></ct15>
-		<ct16></ct16>
+		<ct12/>
+		<ct13/>
+		<ct14/>
+		<ct15/>
+		<ct16/>
 		<ct17>1</ct17>
 	</Static>
-	<Static GroupName="chiTietNPThuocCoCoMST">
-		<ct19></ct19>
-	</Static>
-	<Static GroupName="ThongTinTrenGKSinh">
-		<ct20></ct20>
-		<ct21></ct21>
-		<ct22></ct22>
-	</Static>
-	<Static GroupName="NoiDKy">
-		<ct23></ct23>
-		<ct24></ct24>
-		<ct25></ct25>
-		<ct26></ct26>
-	</Static>
-	<Static GroupName="chiTietNPThuocCoCoMST">
-		<ct27></ct27>
-		<ct28>0</ct28>
-		<ct29>1</ct29>
-	</Static>
+	<Dynamic GroupName="BangDSachNPTKhongCoMST">
+		<chiTietNPThuocCoCoMST id="id">
+			<ct19/>
+			<ThongTinTrenGKSinh>
+				<ct20/>
+				<ct21/>
+				<ct22/>
+			</ThongTinTrenGKSinh>
+			<NoiDKy>
+				<ct24/>
+				<ct25/>
+				<ct26/>
+			</NoiDKy>
+			<ct23/>
+			<chiTietNPThuocCoCoMST>
+				<ct27/>
+				<ct28>0</ct28>
+				<ct29>1</ct29>
+			</chiTietNPThuocCoCoMST>
+		</chiTietNPThuocCoCoMST>
+	</Dynamic>
 	<Static GroupName="PL09C-TNCN">
 		<tongCongSoThangGiamTru>1</tongCongSoThangGiamTru>
 		<tongThuNhapDuocTru>1</tongThuNhapDuocTru>
