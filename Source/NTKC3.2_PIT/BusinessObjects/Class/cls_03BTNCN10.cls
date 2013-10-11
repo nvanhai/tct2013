@@ -137,7 +137,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .Sheet = 1
         .Col = .ColLetterToNumber(PHONG_XU_LY_COL)
         .Row = PHONG_XU_LY_ROW
-        If rsPXL.Fields.Count > 0 Then
+        If rsPXL.Fields.count > 0 Then
             Do While Not rsPXL.EOF
                 .TypeComboBoxIndex = -1
                 .TypeComboBoxString = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
@@ -614,8 +614,8 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("G"), 15, vTIN_DL
         .GetText .ColLetterToNumber("I"), 19, vSO_HOP_DONG
         .GetText .ColLetterToNumber("S"), 19, vNGAY_HOP_DONG
-        .GetText .ColLetterToNumber("I"), 61, vLAN_BS
-        .GetText .ColLetterToNumber("C"), 61, vCHINH_THUC
+        .GetText .ColLetterToNumber("I"), 64, vLAN_BS
+        .GetText .ColLetterToNumber("C"), 64, vCHINH_THUC
         If Trim(vCHINH_THUC) = "1" Then
             vLAN_BS = "0"
         End If
