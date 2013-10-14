@@ -208,7 +208,7 @@
 	
 	<Menu ID="74" PopID="101" ParentID="104" Caption="TK-TNCN Mẫu 08/KK-TNCN theo quý" FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\Excel\08_TNCN11.xls" ReportTemplate="..\ReportTemplates\excel\08_TNCN11.xls" Class="Tax_Business_Srv.cls_08TNCN" >
-			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="08_TNCN11" Ini="..\Ini\08_TNCN11.xml" ReportIni="..\ReportIni\08_TNCN11.xml"/>
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="08_TNCN13" Ini="..\Ini\08_TNCN13.xml" ReportIni="..\ReportIni\08_TNCN13.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
 		</Validity>
 	</Menu>		
