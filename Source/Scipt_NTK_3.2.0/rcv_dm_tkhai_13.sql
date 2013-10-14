@@ -1,0 +1,12 @@
+--To khai 02/TNCN thang
+insert into rcv_dm_tkhai (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
+values ('02A_TNCN13', '02/KK-TNCN-th¸ng Tê khai dµnh cho tæ chøc khÊu trõ tiÒn l­¬ng, tiÒn c«ng cho c¸ nh©n c­ tró', 'M', '320', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+
+--To khai 02/TNCN quy
+insert into rcv_dm_tkhai (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
+values ('02B_TNCN13', '02/KK-TNCN-th¸ng Tê khai dµnh cho tæ chøc khÊu trõ tiÒn l­¬ng, tiÒn c«ng cho c¸ nh©n c­ tró', 'Q', '320', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+
+-- To khai 07/TNCN
+insert into rcv_dm_tkhai (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
+values ('07_TNCN13', '07/KK-TNCN Tê khai dµnh cho c¸ nh©n kª khai trùc tiÕp ®èi víi thu nhËp tõ tiÒn l­¬ng, tiÒn c«ng', 'Q', '320', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+commit;
