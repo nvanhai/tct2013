@@ -23,9 +23,10 @@ Private Const S1TxtG6Col = "G"
 
 Private Const Row_MSTDN = 14
 Private Const Col_MSTDN = "H"
-Private Const sheetPl01_2TD_GTGT = 2
+Private Const sheetPl01_1TD_GTGT = 2
+Private Const sheetPl01_2TD_GTGT = 3
 Private Const rowStatic = 42
-Private Const sheetPl01_KHBS_GTGT = 3
+Private Const sheetPl01_KHBS_GTGT = 4
 
 Dim mblKeyF6 As Boolean
 Dim mblKhoiDauToKhai As Boolean
@@ -419,7 +420,7 @@ Private Sub CheckDynamicError()
     Dim vTenCoQuan    As Variant, vCapCuc As Variant, vCapDiaPhuong As Variant, vMessRequire As Variant
     Dim row_require   As Integer
     Dim vSTT As Variant, vTenNhaMay As Variant, vCQTCapCuc As Variant, vCQTCapDiaPhuong As Variant, vTyLePhanBo As Variant, vSoThuePhaiNop As Variant
-    
+    Dim vMST As Variant
     row_require = 27
     
     With fps
@@ -429,18 +430,19 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), row_require, vMessRequire
         
         'check phu luc 01_2
-        .Sheet = 2
+        .Sheet = sheetPl01_2TD_GTGT
         .Row = 42
         iWhiteRow = 1
 
         Do
             .GetText .ColLetterToNumber("B"), .Row, vSTT
             .GetText .ColLetterToNumber("C"), .Row, vTenNhaMay
+            .GetText .ColLetterToNumber("H"), .Row, vMST
             .GetText .ColLetterToNumber("L"), .Row, vCQTCapCuc
             .GetText .ColLetterToNumber("P"), .Row, vCQTCapDiaPhuong
             .GetText .ColLetterToNumber("R"), .Row, vTyLePhanBo
             .GetText .ColLetterToNumber("U"), .Row, vSoThuePhaiNop
-            If Trim$(vSTT) <> "" Or Trim$(vTenNhaMay) <> "" Or Trim$(vCQTCapCuc) <> "" Or Trim$(vCQTCapDiaPhuong) <> "" Or Trim$(vTyLePhanBo) <> "0" Or Trim$(vSoThuePhaiNop) <> "0" Then
+            If Trim$(vSTT) <> "" Or Trim$(vTenNhaMay) <> "" Or Trim$(vMST) <> "" Or Trim$(vCQTCapCuc) <> "" Or Trim$(vCQTCapDiaPhuong) <> "" Or Trim$(vTyLePhanBo) <> "0" Or Trim$(vSoThuePhaiNop) <> "0" Then
                 iWhiteRow = 0
             End If
             .Col = .ColLetterToNumber("C")
@@ -594,6 +596,21 @@ Public Sub SetActiveSheet()
     'Select Case GetAttribute(xmlNodeValid, "ID")
     For Each xmlNodeValid In TAX_Utilities_New.NodeValidity.childNodes
         Select Case GetAttribute(xmlNodeValid, "ID")
+            Case "01_1"
+                blnNullValue = True
+                'Check value of last node in Data
+'                Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
+'                    (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 1)
+'                    strValue1 = GetAttribute(xmlCellNode, "Value")
+                fps.Sheet = sheetPl01_1TD_GTGT
+                fps.GetText fps.ColLetterToNumber("C"), 7, strValue4
+                    If (Not IsNullValue(strValue4)) Then
+                            blnNullValue = False
+                    End If
+
+                    If blnNullValue Then
+                        SetAttribute xmlNodeValid, "Active", "0"
+                    End If
             Case "01_2"
                 blnNullValue = True
                 'Check value of last node in Data
@@ -1014,7 +1031,7 @@ Public Sub inThongTinDL()
     tuRowDL = 13
     denRowDL = 18
     'TuRow_DenRow_sheet
-    strTuRowDenRowPL = "20_30_2"
+    strTuRowDenRowPL = "10_11_2~11_12_3~20_30_4"
     ' end
 End Sub
 

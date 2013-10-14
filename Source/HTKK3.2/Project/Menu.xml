@@ -81,7 +81,8 @@
 	<Menu ID="94" PopID="101" ParentID="101_1" Caption="Tờ khai thuế GTGT – 01/TĐ-GTGT" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_khautru.bmp">
 		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\excel\01_TD_GTGT.xls" ReportTemplate="..\ReportTemplates\excel\01_TD_GTGT.xls" Class="TAX_Business.cls_01_TD_GTGT" Class2="TAX_Business.clsReport004">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_TD_GTGT" InterfaceIni="..\InterfaceIni\01_TD_GTGT.xml" ReportIni="..\ReportIni\01_TD_GTGT.xml"/>
-			<Sheet ID="01_2" Caption="01_2/TĐ_GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_2_TD_GTGT" InterfaceIni="..\InterfaceIni\01_2_TD_GTGT.xml" ReportIni="..\ReportIni\01_2_TD_GTGT.xml"/>
+			<Sheet ID="01_1" Caption="01-1/TĐ-GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_01_TD_GTGT" InterfaceIni="..\InterfaceIni\01_01_TD_GTGT.xml" ReportIni="..\ReportIni\01_01_TD_GTGT.xml"/>
+			<Sheet ID="01_2" Caption="01-2/TĐ_GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_2_TD_GTGT" InterfaceIni="..\InterfaceIni\01_2_TD_GTGT.xml" ReportIni="..\ReportIni\01_2_TD_GTGT.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01_TD_GTGT" InterfaceIni="..\InterfaceIni\KHBS_01_TD_GTGT.xml" ReportIni="..\ReportIni\KHBS_01_TD_GTGT.xml"/>
 		</Validity>
 	</Menu>
