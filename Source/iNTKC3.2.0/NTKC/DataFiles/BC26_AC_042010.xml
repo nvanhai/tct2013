@@ -1,0 +1,65 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="E_4" Value=""/>
+			<Cell CellID="E_5" Value=""/>
+			<Cell CellID="E_6" Value=""/>
+			<Cell CellID="E_8" Value=""/>
+			<Cell CellID="K_8" Value=""/>
+			<Cell CellID="Q_8" Value=""/>
+			<Cell CellID="E_18" Value=""/>
+			<Cell CellID="E_10" Value=""/>
+			<Cell CellID="K_12" Value=""/>
+			<Cell CellID="Q_12" Value=""/>
+			<Cell CellID="K_10" Value=""/>
+			<Cell CellID="K_18" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="E_14" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="Q_10" Value=""/>
+			<Cell CellID="Q_14" Value="" MaxLen="60"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="E_16" Value="" MCT=""/>
+			<Cell CellID="K_16" Value="" MCT=""/>
+			<Cell CellID="E_23" Value="01/10/2010" MCT=""/>
+			<Cell CellID="F_23" Value="31/12/2010" MCT=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_32" FirstCell="0" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="J_32" Value="01GTKT2/200" MCT="2"/>
+			<Cell CellID="K_32" Value="AA/12T" MCT="3"/>
+			<Cell CellID="L_32" Value="4" MCT="4"/>
+			<Cell CellID="M_32" Value="0000012" MCT="5"/>
+			<Cell CellID="N_32" Value="0000015" MCT="6"/>
+			<Cell CellID="O_32" Value="" MCT="7"/>
+			<Cell CellID="P_32" Value="" MCT="8"/>
+			<Cell CellID="Q_32" Value="" MCT="9"/>
+			<Cell CellID="R_32" Value="" MCT="10"/>
+			<Cell CellID="S_32" Value="0" MCT="11"/>
+			<Cell CellID="U_32" Value="0" MCT="12"/>
+			<Cell CellID="V_32" Value="0" MCT="13"/>
+			<Cell CellID="W_32" Value="" MCT="14"/>
+			<Cell CellID="X_32" Value="0" MCT="15"/>
+			<Cell CellID="Y_32" Value="" MCT="16"/>
+			<Cell CellID="Z_32" Value="0" MCT="17"/>
+			<Cell CellID="AA_32" Value="" MCT="18"/>
+			<Cell CellID="AC_32" Value="0000012" MCT="19"/>
+			<Cell CellID="AD_32" Value="0000015" MCT="20"/>
+			<Cell CellID="AE_32" Value="4" MCT="21"/>
+			<Cell CellID="AF_32" Value="0" MCT="22"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="E_40" Value="nguyen van a"/>
+			<Cell CellID="S_40" Value="NguyÔn V¨n An"/>
+			<Cell CellID="S_42" Value="27/06/2011"/>
+		</Cells>
+	</Section>
+</Sections>

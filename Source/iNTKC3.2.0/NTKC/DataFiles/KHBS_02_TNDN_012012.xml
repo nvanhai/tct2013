@@ -1,0 +1,71 @@
+<!-- edited by nvanhai CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_8" Value=""/>
+			<Cell CellID="G_7" Value=""/>
+			<Cell CellID="G_9" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="M_12" Value=""/>
+			<Cell CellID="V_12" Value=""/>
+			<Cell CellID="E_24" Value=""/>
+			<Cell CellID="E_26" Value=""/>
+			<Cell CellID="M_26" Value=""/>
+			<Cell CellID="V_26" Value=""/>
+			<Cell CellID="M_24" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_31" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_30" Value=""/>
+			<Cell CellID="M_30" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_24" Value=""/>
+			<Cell CellID="K_16" Value=""/>
+			<Cell CellID="G_18" Value=""/>
+			<Cell CellID="E_20" Value=""/>
+			<Cell CellID="M_20" Value=""/>
+			<Cell CellID="V_20" Value=""/>
+			<Cell CellID="I_21" Value=""/>
+			<Cell CellID="S_21" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="BD_9" FirstCell="0" Value="ThuÕ TNDN t¹m nép" MCT="1"/>
+			<Cell CellID="BE_9" Value="44" MCT="2"/>
+			<Cell CellID="BF_9" Value="425000" MCT="3"/>
+			<Cell CellID="BG_9" Value="1675000" MCT="4"/>
+			<Cell CellID="BH_9" Value="1250000" MCT="5"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="BD_13" FirstCell="0" Value="ThuÕ TNDN ph¶i nép ([37]=[35] x [36])" MCT="6"/>
+			<Cell CellID="BE_13" Value="37" MCT="7"/>
+			<Cell CellID="BF_13" Value="24542500" MCT="8"/>
+			<Cell CellID="BG_13" Value="14542500" MCT="9"/>
+			<Cell CellID="BH_13" Value="-10000000" MCT="10"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="BD_14" FirstCell="1" Value="ThuÕ TNDN ®· kª khai theo tiÕn ®é" MCT="6"/>
+			<Cell CellID="BE_14" Value="38" MCT="7"/>
+			<Cell CellID="BF_14" Value="300000" MCT="8"/>
+			<Cell CellID="BG_14" Value="345600" MCT="9"/>
+			<Cell CellID="BH_14" Value="45600" MCT="10"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="BD_15" FirstCell="1" Value="ThuÕ TNDN bæ sung kª khai kú nµy ([39] = [37] - [38])" MCT="6"/>
+			<Cell CellID="BE_15" Value="39" MCT="7"/>
+			<Cell CellID="BF_15" Value="24242500" MCT="8"/>
+			<Cell CellID="BG_15" Value="14196900" MCT="9"/>
+			<Cell CellID="BH_15" Value="-10045600" MCT="10"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="B_26" Value="08/05/2012"/>
+			<Cell CellID="BE_19" Value="0" MCT="12"/>
+			<Cell CellID="BE_20" Value="0" MCT="13"/>
+			<Cell CellID="BD_22" Value="" MCT="14"/>
+			<Cell CellID="BH_17" Value="-8795600" MCT="15"/>
+		</Cells>
+	</Section>
+</Sections>

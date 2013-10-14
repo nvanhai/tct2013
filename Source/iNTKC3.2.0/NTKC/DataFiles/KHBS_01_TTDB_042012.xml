@@ -1,0 +1,57 @@
+<!-- edited by nvanhai CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="I_7" Value="3600247325"/>
+			<Cell CellID="I_5" Value=""/>
+			<Cell CellID="I_9" Value=""/>
+			<Cell CellID="I_11" Value=""/>
+			<Cell CellID="S_11" Value=""/>
+			<Cell CellID="AG_11" Value=""/>
+			<Cell CellID="F_23" Value=""/>
+			<Cell CellID="F_25" Value=""/>
+			<Cell CellID="S_25" Value=""/>
+			<Cell CellID="AG_25" Value=""/>
+			<Cell CellID="S_23" Value=""/>
+			<Cell CellID="M_39" Value=""/>
+			<Cell CellID="G_29" Value=""/>
+			<Cell CellID="S_29" Value=""/>
+			<Cell CellID="AG_23" Value=""/>
+			<Cell CellID="I_13" Value=""/>
+			<Cell CellID="I_17" Value=""/>
+			<Cell CellID="I_19" Value=""/>
+			<Cell CellID="S_19" Value="" MaxLen="60"/>
+			<Cell CellID="AG_19" Value=""/>
+			<Cell CellID="I_21" Value=""/>
+			<Cell CellID="S_21" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="BD_9" FirstCell="0" Value="ThuÕ TT§B ph¶i nép" MCT="1"/>
+			<Cell CellID="BE_9" Value="9" MCT="2"/>
+			<Cell CellID="BF_9" Value="3239257" MCT="3"/>
+			<Cell CellID="BG_9" Value="3600796" MCT="4"/>
+			<Cell CellID="BH_9" Value="361539" MCT="5"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="BD_13" FirstCell="0" Value="" MCT="6"/>
+			<Cell CellID="BE_13" Value="" MCT="7"/>
+			<Cell CellID="BF_13" Value="0" MCT="8"/>
+			<Cell CellID="BG_13" Value="0" MCT="9"/>
+			<Cell CellID="BH_13" Value="0" MCT="10"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="B_24" Value="08/05/2012"/>
+			<Cell CellID="BE_17" Value="6" MCT="12"/>
+			<Cell CellID="BE_18" Value="1085" MCT="13"/>
+			<Cell CellID="BD_20" Value="" MCT="14"/>
+			<Cell CellID="BH_15" Value="361539" MCT="15"/>
+		</Cells>
+	</Section>
+</Sections>
