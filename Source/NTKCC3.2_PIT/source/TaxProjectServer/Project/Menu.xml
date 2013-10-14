@@ -12,6 +12,9 @@
 			<Sheet ID="01_4B" Caption="PL 01-4B/GTGT" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="01_4B_GTGT" Ini="..\Ini\01_4B_GTGT.xml"/>
 			<Sheet ID="01_5" Caption="PL 01-5/GTGT" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="01_5_GTGT" Ini="..\Ini\01_5_GTGT.xml"/>
 			<Sheet ID="01_6" Caption="PL 01-6/GTGT" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="01_6_GTGT" Ini="..\Ini\01_6_GTGT.xml"/>
+						<Sheet ID="01_6B" Caption="PL 01-6B/GTGT" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="01_6B_GTGT11" Ini="..\Ini\01_6B_GTGT11.xml"/>
+			<Sheet ID="01_7" Caption="PL 01-7/GTGT" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="01_07_GTGT11" Ini="..\Ini\01_07_GTGT11.xml"/>
+
 			<Sheet ID="KHBS" Caption="KHBS" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="KHBS_01_GTGT" Ini="..\Ini\KHBS_01_GTGT.xml"/>
 		</Validity>
 	</Menu>
@@ -35,6 +38,13 @@
 		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\03_GTGT.xls" ReportTemplate="..\ReportTemplates\03_GTGT.xls" Class="Tax_Business_Svr_New.cls_03GTGT">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="03_GTGT" Ini="..\Ini\03_GTGT.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="KHBS_03_GTGT" Ini="..\Ini\KHBS_03_GTGT.xml"/>
+		</Validity>
+	</Menu>
+		<Menu ID="95" ParentID="101" Caption="Tờ khai thuế GTGT(03B/GTGT)" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp" DirFile="\NTK_TG\">
+		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\03B_GTGT11.xls" ReportTemplate="..\ReportTemplates\03B_GTGT11.xls" Class="Tax_Business_Srv.cls_03BGTGT">
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="03B_GTGT11" Ini="..\Ini\03B_GTGT11.xml"/>
+			<Sheet ID="01_1" Caption="PL 03-1/GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="03B_1_GTGT11" Ini="..\Ini\03B_1_GTGT11.xml"/>
+			<Sheet ID="01_2" Caption="PL 03-2/GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="03B_2_GTGT11" Ini="..\Ini\03B_2_GTGT11.xml"/>
 		</Validity>
 	</Menu>
 	<Menu ID="71" ParentID="101" Caption="Quyết toán GTGT trực tiếp (04/GTGT)" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Icon="..\Pictures\tk_tndn.bmp" FileName="QT2A, QT2B" DirFile="\NTK_TG\">
