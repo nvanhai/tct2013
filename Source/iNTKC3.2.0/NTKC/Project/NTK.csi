@@ -1,0 +1,7 @@
+[History]
+1=#P0#=mb	#P1#=cmdSave_Click	#P2#=NTK/frmInterfaces/cmdSave_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20130904145120	#P7#=0	#P8#=290	.
+2=#P0#=mb	#P1#=IsValidUser	#P2#=NTK/frmLogin/IsValidUser	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130724143812	#P7#=0	#P8#=60	.
+3=#P0#=mb	#P1#=GetTaxInfo	#P2#=NTK/frmInterfaces/GetTaxInfo	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130724143714	#P7#=0	#P8#=15	.
+4=#P0#=mb	#P1#=InitParameters	#P2#=NTK/frmInterfaces/InitParameters	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130724143703	#P7#=0	#P8#=115	.
+5=#P0#=mb	#P1#=GetDataInfor	#P2#=NTK/frmLogin/GetDataInfor	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130724143506	#P7#=0	#P8#=1	.
+6=#P0#=mb	#P1#=GetValidityNode	#P2#=NTK/mdlFunctions/GetValidityNode	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130724142734	#P7#=0	#P8#=118	.

@@ -1,0 +1,61 @@
+<!-- edited by nvanhai CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_10" Value="4400368821"/>
+			<Cell CellID="H_8" Value=""/>
+			<Cell CellID="F_12" Value=""/>
+			<Cell CellID="F_16" Value=""/>
+			<Cell CellID="N_16" Value=""/>
+			<Cell CellID="V_16" Value=""/>
+			<Cell CellID="E_30" Value=""/>
+			<Cell CellID="E_32" Value=""/>
+			<Cell CellID="M_32" Value=""/>
+			<Cell CellID="V_32" Value=""/>
+			<Cell CellID="M_30" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_39" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_36" Value=""/>
+			<Cell CellID="M_36" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="H_18" Value=""/>
+			<Cell CellID="F_22" Value=""/>
+			<Cell CellID="F_26" Value=""/>
+			<Cell CellID="N_26" Value=""/>
+			<Cell CellID="V_26" Value=""/>
+			<Cell CellID="H_28" Value=""/>
+			<Cell CellID="N_28" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="BD_9" FirstCell="0" Value="" MCT="1"/>
+			<Cell CellID="BE_9" Value="" MCT="2"/>
+			<Cell CellID="BF_9" Value="0" MCT="3"/>
+			<Cell CellID="BG_9" Value="0" MCT="4"/>
+			<Cell CellID="BH_9" Value="0" MCT="5"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="BD_13" FirstCell="0" Value="" MCT="6"/>
+			<Cell CellID="BE_13" Value="" MCT="7"/>
+			<Cell CellID="BF_13" Value="0" MCT="8"/>
+			<Cell CellID="BG_13" Value="0" MCT="9"/>
+			<Cell CellID="BH_13" Value="0" MCT="10"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="B_24" Value="25/08/2011"/>
+			<Cell CellID="BE_17" Value="0" MCT="12"/>
+			<Cell CellID="BE_18" Value="0" MCT="13"/>
+			<Cell CellID="BD_20" Value=" Do  trong th?ng 03/2010  k? to?n ?i?u ch?nh  sai s? li?u c?a th?ng 02 /2010: C? th? s? li?u nh- sau : Trong th?ng 3 K? to?n ?i?u ch?nh tr?n  ch? ti?u 37 l? :395.626 VND nh-ng s? li?u ??ng l? 266.273 vnd l?ch 129.353  do k? to?n nh?m l? k? khai h?a ??n s? AA/2009T 0005874 ng?y 29/01/2010 trong th?ng 1" MCT="14"/>
+			<Cell CellID="BF_15" Value="0" MCT="15"/>
+			<Cell CellID="BG_15" Value="0" MCT="16"/>
+			<Cell CellID="BH_15" Value="0" MCT="17"/>
+			<Cell CellID="BF_16" Value="1189740431" MCT="18"/>
+			<Cell CellID="BG_16" Value="1189869784" MCT="19"/>
+			<Cell CellID="BH_16" Value="129353" MCT="20"/>
+		</Cells>
+	</Section>
+</Sections>

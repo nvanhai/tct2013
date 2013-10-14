@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by ThanhDX (FSS - HN) -->
+<Exception>
+	<!-- Actions: 1 (Do nothing), 2(Stop Program), 3(Resume), 4 (Resume Next)-->
+	<Item ID="419" Action="1" SaveLog="Y"/>
+</Exception>

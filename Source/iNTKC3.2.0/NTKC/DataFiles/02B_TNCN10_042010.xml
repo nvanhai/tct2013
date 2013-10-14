@@ -1,0 +1,48 @@
+<!-- Edited by hlnam FIS_CMC-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_4" Value=""/>
+			<Cell CellID="G_5" Value=""/>
+			<Cell CellID="G_6" Value=""/>
+			<Cell CellID="E_8" Value=""/>
+			<Cell CellID="M_8" Value=""/>
+			<Cell CellID="V_8" Value=""/>
+			<Cell CellID="E_10" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="M_12" Value=""/>
+			<Cell CellID="V_12" Value=""/>
+			<Cell CellID="M_10" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_16" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_14" Value=""/>
+			<Cell CellID="M_14" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_10" Value="" MaxLen="60"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="U_41" Value="0" MCT="1"/>
+			<Cell CellID="U_42" Value="0" MCT="2"/>
+			<Cell CellID="U_43" Value="0" MCT="3"/>
+			<Cell CellID="U_47" Value="0" MCT="4"/>
+			<Cell CellID="U_48" Value="0" MCT="5"/>
+			<Cell CellID="U_49" Value="0" MCT="6"/>
+			<Cell CellID="U_54" Value="0" MCT="7"/>
+			<Cell CellID="U_55" Value="0" MCT="8"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="R_58" Value="Nguyễn Văn An"/>
+			<Cell CellID="R_60" Value="26/01/2011"/>
+			<Cell CellID="C_61" Value="1"/>
+			<Cell CellID="F_61" Value=""/>
+			<Cell CellID="I_61" Value=""/>
+			<Cell CellID="K_61" Value="A" MCT="a" Receive="0"/>
+			<Cell CellID="L_61" Value="I" MCT="I" Receive="0"/>
+			<Cell CellID="M_61" Value="II" MCT="II" Receive="0"/>
+			<Cell CellID="N_61" Value="B" MCT="b" Receive="0"/>
+		</Cells>
+	</Section>
+</Sections>
