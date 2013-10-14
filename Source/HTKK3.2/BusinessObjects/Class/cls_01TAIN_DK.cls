@@ -689,10 +689,10 @@ End Sub
 Public Sub inThongTinDL()
     ' Set tham so in thong tin dai ly thue
     FlagDLThue = isCheckTTDLT
-    tuRowDL = 13
-    denRowDL = 18
+    tuRowDL = 53
+    denRowDL = 63
     'TuRow_DenRow_sheet
-    strTuRowDenRowPL = "2_3_2"
+    strTuRowDenRowPL = "25_27_2"
     ' end
 End Sub
 
