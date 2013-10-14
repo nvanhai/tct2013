@@ -738,7 +738,7 @@ On Error GoTo ErrHandle
 '
 '    End With
     
-    strSQL = strSQL & vTU_NGAY & "," & vDEN_NGAY & ","
+    strSQL = strSQL & "null,null,"
     ' PIT
     If TAX_Utilities_Srv_New.isCheckPIT = True Then
         strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & strTTGui & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & Trim(vHINH_THUC_QT) & "," & Trim(vTKTHANG) & ")"
