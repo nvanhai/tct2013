@@ -622,7 +622,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "08_TNCN11"
+    vLOAI_TKHAI = "08_TNCN13"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
@@ -691,7 +691,7 @@ On Error GoTo ErrHandle
 '        .GetText .ColLetterToNumber("R"), 4, vQT_TUNG_NAM
 '        .GetText .ColLetterToNumber("R"), 5, vQT_DAU_NAM
 '
-'        vTKTHANG = "0"  ' TK quy
+        vTKTHANG = "0"  ' TK quy
 '        If Trim$(vTU_NGAY) <> "" Or Trim$(vDEN_NGAY) <> "" Then
 '            vTKTHANG = "1" ' TK thang
 '        End If
@@ -738,7 +738,7 @@ On Error GoTo ErrHandle
 '
 '    End With
     
-    strSQL = strSQL & vTU_NGAY & "," & vDEN_NGAY & ","
+    strSQL = strSQL & "null,null,"
     ' PIT
     If TAX_Utilities_Srv_New.isCheckPIT = True Then
         strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & strTTGui & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & Trim(vHINH_THUC_QT) & "," & Trim(vTKTHANG) & ")"

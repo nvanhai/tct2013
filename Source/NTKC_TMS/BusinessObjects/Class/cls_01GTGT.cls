@@ -183,7 +183,7 @@ End Function
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
     Dim i As Integer
     Dim varMaDM As Variant
-    Dim tenDM As String
+    Dim TenDM As String
     
     i = 0
     ReDim Preserve larrPhongXuLy(0)
@@ -249,13 +249,13 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         i = 0
         Do
             .GetText .ColLetterToNumber("C"), i + 22, varMaDM
-            DataDM varMaDM, tenDM
-            If Trim(tenDM) <> vbNullString Then
+            DataDM varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
                 .Col = .ColLetterToNumber("D")
                 .Row = 22 + i
-                .Text = tenDM
+                .Text = TenDM
             End If
-           ' UpdateCell fps, .Col, .Row, .Text
+            UpdateCell fps, .Col, .Row, .Text
              i = i + 1
             .Col = .ColLetterToNumber("B")
             .Row = i + 22
@@ -268,13 +268,13 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         i = 0
         Do
             .GetText .ColLetterToNumber("E"), 8 + i, varMaDM
-            DataDM varMaDM, tenDM
-            If Trim(tenDM) <> vbNullString Then
+            DataDM varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
                 .Col = .ColLetterToNumber("F")
                 .Row = 8 + i
-                .Text = tenDM
+                .Text = TenDM
             End If
-            'UpdateCell fps, .Col, .Row, .Text
+            UpdateCell fps, .Col, .Row, .Text
             
              i = i + 1
             .Col = .ColLetterToNumber("B")
@@ -287,13 +287,13 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         i = 0
         Do
             .GetText .ColLetterToNumber("D"), 7 + i, varMaDM
-            DataDM varMaDM, tenDM
-            If Trim(tenDM) <> vbNullString Then
+            DataDM varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
                 .Col = .ColLetterToNumber("E")
                 .Row = 7 + i
-                .Text = tenDM
+                .Text = TenDM
             End If
-            'UpdateCell fps, .Col, .Row, .Text
+            UpdateCell fps, .Col, .Row, .Text
             
              i = i + 1
             .Col = .ColLetterToNumber("B")
@@ -306,13 +306,13 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         i = 0
         Do
             .GetText .ColLetterToNumber("D"), 6 + i, varMaDM
-            DataDM varMaDM, tenDM
-            If Trim(tenDM) <> vbNullString Then
+            DataDM varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
                 .Col = .ColLetterToNumber("E")
                 .Row = 6 + i
-                .Text = tenDM
+                .Text = TenDM
             End If
-            'UpdateCell fps, .Col, .Row, .Text
+            UpdateCell fps, .Col, .Row, .Text
             
              i = i + 1
             .Col = .ColLetterToNumber("B")
