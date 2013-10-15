@@ -69,7 +69,7 @@
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
 		<tongCongSoTonDKy>G_24</tongCongSoTonDKy>
-		<tongCongSDung>P_24</tongCongSDung>
+		<tongCongSDung>N_24</tongCongSDung>
 		<tongCongSoTonCKy>Z_24</tongCongSoTonCKy>
 		<nguoiLapBieu>D_30</nguoiLapBieu>
 		<nguoiDaiDien>N_30</nguoiDaiDien>
