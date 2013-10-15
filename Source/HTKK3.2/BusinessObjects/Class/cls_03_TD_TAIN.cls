@@ -42,6 +42,13 @@ Dim arrDanhSachKHBS() As String
 Public StrSolanBosung As String
 Public Strloaitk As String
 
+' Kiem tra thong tin dai ly thue
+' Neu khong co DL thue se an cac row nay di
+Public FlagDLThue As Boolean
+Public tuRowDL As Long
+Public denRowDL As Long
+Public strTuRowDenRowPL As String
+
 Private Const Row_MSTDN = 14
 Private Const Col_MSTDN = "F"
 Private Const rowStatic = 42
@@ -62,11 +69,11 @@ Public Sub Prepare1()
     Dim arrDanhsach() As String, blChon As Boolean
     
     With fps
-     SetDateFormat fps, 1, 63, fps.ColLetterToNumber("O"), DDMMYYYY
+     SetDateFormat fps, 1, 63, fps.ColLetterToNumber("R"), DDMMYYYY
     With fps
         .Sheet = 1
         .Row = 63
-        .Col = fps.ColLetterToNumber("O")
+        .Col = fps.ColLetterToNumber("R")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
     End With
@@ -291,7 +298,7 @@ Private Sub CheckDynamicError()
     Dim vTenCoQuan    As Variant, vCapCuc As Variant, vCapDiaPhuong As Variant, vMessRequire As Variant
     Dim row_require   As Integer
     Dim vSTT As Variant, vTenNhaMay As Variant, vCQTCapCuc As Variant, vCQTCapDiaPhuong As Variant, vTyLePhanBo As Variant, vSoThuePhaiNop As Variant
-    
+    Dim vMST As Variant
     row_require = 15
     
     With fps
@@ -311,11 +318,12 @@ Private Sub CheckDynamicError()
             Do
                 .GetText .ColLetterToNumber("B"), .Row, vSTT
                 .GetText .ColLetterToNumber("C"), .Row, vTenNhaMay
+                .GetText .ColLetterToNumber("H"), .Row, vMST
                 .GetText .ColLetterToNumber("L"), .Row, vCQTCapCuc
                 .GetText .ColLetterToNumber("P"), .Row, vCQTCapDiaPhuong
                 .GetText .ColLetterToNumber("R"), .Row, vTyLePhanBo
                 .GetText .ColLetterToNumber("U"), .Row, vSoThuePhaiNop
-                If Trim$(vSTT) <> "" Or Trim$(vTenNhaMay) <> "" Or Trim$(vCQTCapCuc) <> "" Or Trim$(vCQTCapDiaPhuong) <> "" Or Trim$(vTyLePhanBo) <> "0" Or Trim$(vSoThuePhaiNop) <> "0" Then
+                If Trim$(vSTT) <> "" Or Trim$(vTenNhaMay) <> "" Or Trim$(vMST) <> "" Or Trim$(vCQTCapCuc) <> "" Or Trim$(vCQTCapDiaPhuong) <> "" Or Trim$(vTyLePhanBo) <> "0" Or Trim$(vSoThuePhaiNop) <> "0" Then
                     iWhiteRow = 0
                 End If
             
@@ -826,7 +834,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, _
                 .Row = .Row + 1
             Loop Until .value = "aa"
 
-            If Col = .ColLetterToNumber("O") And Row = 63 + count - 1 Then
+            If Col = .ColLetterToNumber("R") And Row = 63 + count - 1 Then
                 .GetText Col, Row, varTemp
 
                 If varTemp <> "" And varTemp <> "../../...." Then
@@ -893,4 +901,14 @@ Sub fps_TextTipFetch(ByVal Col As Long, ByVal Row As Long, MultiLine As Long, Ti
         ShowTip = True
         TipText = TipText
       End If
+End Sub
+' ham kiem tra thong tin dai ly
+Public Sub inThongTinDL()
+    ' Set tham so in thong tin dai ly thue
+    FlagDLThue = isCheckTTDLT
+    tuRowDL = 13
+    denRowDL = 18
+    'TuRow_DenRow_sheet
+    strTuRowDenRowPL = "11_12_2"
+    ' end
 End Sub
