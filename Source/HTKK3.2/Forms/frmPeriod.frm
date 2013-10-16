@@ -714,6 +714,7 @@ Dim strDateKHBS As String
 
 Private strLoaiSacThue As String
 
+
 Private Sub cboNganhKD_Click()
     strLoaiNNKD = cboNganhKD.ItemData(cboNganhKD.ListIndex)
 End Sub
@@ -725,6 +726,9 @@ Private Sub chkCondensate_Click()
         chkKhiThien.value = 0
         
         strCondensate = chkCondensate.value
+        strLoaiTkDk = "CD"
+        strLoaiTKThang_PS = "TK_LANPS"
+        
         strDauTho = 0
         strKhiThienNhien = 0
 
@@ -747,6 +751,9 @@ Private Sub chkDauTho_Click()
         chkKhiThien.value = 0
         
         strDauTho = chkDauTho.value
+        strLoaiTkDk = "DT"
+        strLoaiTKThang_PS = "TK_LANPS"
+        
         strKhiThienNhien = 0
         strCondensate = 0
         If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98") Then
@@ -767,6 +774,9 @@ Private Sub chkKhiThien_Click()
         chkDauTho.value = 0
         
         strKhiThienNhien = chkKhiThien.value
+        strLoaiTkDk = "KTN"
+        strLoaiTKThang_PS = "TK_THANG"
+        
         strDauTho = 0
         strCondensate = 0
 
@@ -2371,9 +2381,9 @@ Public Sub cmdOK_Click()
         TAX_Utilities_New.ThreeMonths = vbNullString
         TAX_Utilities_New.FirstDay = vbNullString
         TAX_Utilities_New.LastDay = vbNullString
-        ElseIf strKieuKy = KIEU_KY_NGAY_PS Then
+    ElseIf strKieuKy = KIEU_KY_NGAY_PS Then
         TAX_Utilities_New.Day = txtDay.Text
-                TAX_Utilities_New.month = txtMonth.Text
+        TAX_Utilities_New.month = txtMonth.Text
         TAX_Utilities_New.Year = txtYear.Text
         TAX_Utilities_New.ThreeMonths = vbNullString
         TAX_Utilities_New.FirstDay = vbNullString
@@ -2558,7 +2568,7 @@ Public Sub cmdOK_Click()
     ' To khai bo sung
     If strKHBS = "TKBS" And (idToKhai = "02" Or idToKhai = "01" Or idToKhai = "04" Or idToKhai = "03" Or idToKhai = "11" Or idToKhai = "12" _
     Or idToKhai = "06" Or idToKhai = "05" Or idToKhai = "86" Or idToKhai = "87" Or idToKhai = "71" Or idToKhai = "72" Or idToKhai = "77" Or idToKhai = "73" _
-    Or idToKhai = "80" Or idToKhai = "81" Or idToKhai = "70" Or idToKhai = "82" Or idToKhai = "83" Or idToKhai = "85" Or idToKhai = "90" Or idToKhai = "95" Or idToKhai = "94" Or idToKhai = "96" Or idToKhai = "97") Then
+    Or idToKhai = "80" Or idToKhai = "81" Or idToKhai = "70" Or idToKhai = "82" Or idToKhai = "83" Or idToKhai = "85" Or idToKhai = "90" Or idToKhai = "95" Or idToKhai = "94" Or idToKhai = "96" Or idToKhai = "97" Or idToKhai = "98") Then
         'dhdang them lay ngay KHBS
         'kiem tra ton tai TK chinh thuc
         Dim strDay As Variant
@@ -2577,6 +2587,12 @@ Public Sub cmdOK_Click()
                     strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                 ElseIf strQuy = "TK_QUY" Then
                     strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                End If
+            ElseIf idToKhai = "98" Then
+                If strLoaiTKThang_PS = "TK_THANG" Then
+                    strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+                    strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                 End If
             Else
                 strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
@@ -3619,8 +3635,22 @@ Private Sub SetupLayout01_TAIN_DK()
     lblSolan.Visible = False
     txtSolan.Visible = False
     
+    txtNgayDau.Visible = False
+    txtNgayCuoi.Visible = False
+    
+        'set value default
+    chkDauTho.value = 1
+    chkCondensate.value = 0
+    chkKhiThien.value = 0
+    ' xu ly data file
+    strLoaiTkDk = "DT"
+    strLoaiTKThang_PS = "TK_LANPS"
+    strKieuKy = "D"
+    
     Me.Top = (frmSystem.ScaleHeight - Me.ScaleHeight) / 2 - 400
     Me.Left = (frmSystem.Width - Me.Width) / 2
+    
+    strKHBS = "TKCT"
     
     Exit Sub
 ErrorHandle:
@@ -3830,6 +3860,16 @@ Private Sub LoadDefaultInfor()
                 If Len(txtMonth.Text) = 1 Then
                     txtMonth.Text = "0" & txtMonth.Text
                 End If
+            End If
+       Case KIEU_KY_NGAY_PS
+            txtDay.Text = d
+            txtMonth.Text = m
+            txtYear.Text = Y
+            If Len(txtDay.Text) = 1 Then
+                txtDay.Text = "0" & txtDay.Text
+            End If
+            If Len(txtMonth.Text) = 1 Then
+                txtMonth.Text = "0" & txtMonth.Text
             End If
             
     End Select
@@ -4073,6 +4113,12 @@ Private Sub OptBosung_Click()
                     ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
                         strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                     End If
+                ElseIf varMenuId = "98" Then
+                    If strLoaiTKThang_PS = "TK_THANG" Then
+                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                    ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                    End If
                 Else
                     strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                 End If
@@ -4084,7 +4130,7 @@ Private Sub OptBosung_Click()
                 strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.Year & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & ".xml"
             ElseIf varMenuId = "77" Or varMenuId = "87" Then
                 strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.Year & ".xml"
-            ElseIf varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "98" Then
+            ElseIf varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Then
                 strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.Year & ".xml"
             ElseIf varMenuId = "80" Or varMenuId = "82" Then
                 strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & ".xml"
@@ -5174,6 +5220,7 @@ On Error GoTo ErrHandle
     TAX_Utilities_New.ThreeMonths = cmbQuy.Text
     TAX_Utilities_New.FirstDay = txtNgayDau.Text
     TAX_Utilities_New.LastDay = txtNgayCuoi.Text
+    TAX_Utilities_New.Day = txtDay.Text
     TAX_Utilities_New.NodeValidity = GetValidityNode
     
     SetDefaultActiveProperties
@@ -5366,10 +5413,7 @@ Private Sub SetDefaultActiveProperties()
     Set xmlNodeValidity = Nothing
     Set xmlDom = Nothing
     
-    'set value default
-    chkDauTho.value = 1
-    chkCondensate.value = 0
-    chkKhiThien.value = 0
+
 End Sub
 
 
