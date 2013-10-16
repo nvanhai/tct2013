@@ -674,7 +674,7 @@ Private Sub UpdateSheets()
         End If
         
         'updated phu luc 01
-        .Sheet = 2
+        .Sheet = SHEET_PHU_LUC_01
         mCurrentSheet = .Sheet
         For Each xmlCellNodeData In TAX_Utilities_New.Data(1).getElementsByTagName("Cell")
            ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
