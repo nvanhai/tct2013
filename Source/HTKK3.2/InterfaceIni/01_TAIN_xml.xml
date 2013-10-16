@@ -5,20 +5,21 @@
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
-		<maLyDoGiaHan></maLyDoGiaHan>
-		<lyDoGiaHan></lyDoGiaHan>
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
 	</Static>
 	<Static GroupName="NNT">
-		<maHuyenNNT></maHuyenNNT>
-		<maTinhNNT></maTinhNNT>
+		<maHuyenNNT/>
+		<maTinhNNT/>
 	</Static>
 	<Static GroupName="DLyThue">
-		<maHuyenDLyThue></maHuyenDLyThue>
-		<maTinhDLyThue></maTinhDLyThue>
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
 	</Static>
 	<Dynamic GroupName="TaiNguyenKhaiThac">
 		<ThueTaiNguyenKhaiThac id="ID_1">
-			<ct2>E_42</ct2>
+			<ct1>E_42</ct1>
+			<ct2>G_42</ct2>
 			<SanLuongTNguyenTinhThue>
 				<ct3>P_42</ct3>
 				<ct4>S_42</ct4>
@@ -33,7 +34,8 @@
 	</Dynamic>
 	<Dynamic GroupName="TaiNguyenThuMuaGom">
 		<ThueTaiNguyenThuMuaGom id="ID_2">
-			<ct2>E_46</ct2>
+			<ct1>E_46</ct1>
+			<ct2>G_46</ct2>
 			<SanLuongTNguyenTinhThue>
 				<ct3>P_46</ct3>
 				<ct4>S_46</ct4>

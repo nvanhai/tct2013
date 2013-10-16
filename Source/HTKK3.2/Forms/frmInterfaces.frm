@@ -3853,6 +3853,8 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                                         dNode.Text = "1"
                                     ElseIf .Text = "" Then
                                         dNode.Text = "0"
+                                        Else
+                                        dNode.Text = .Text
                                     End If
 
                                 Else
@@ -4198,6 +4200,8 @@ Private Sub KetXuatXML()
                                 xmlCellTKNode.Text = "1"
                             ElseIf .Text = "" Then
                                 xmlCellTKNode.Text = "0"
+                                Else
+                                xmlCellTKNode.Text = .Text
                             End If
 
                         Else
@@ -4331,6 +4335,8 @@ Private Sub KetXuatXML()
                                             xmlCellTKNode.Text = "1"
                                         ElseIf .Text = "" Then
                                             xmlCellTKNode.Text = "0"
+                                            Else
+                                            xmlCellTKNode.Text = .Text
                                         End If
 
                                     Else

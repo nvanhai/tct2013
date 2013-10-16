@@ -5170,6 +5170,7 @@ On Error GoTo ErrHandle
     'set data
     TAX_Utilities_New.Year = txtYear.Text
     TAX_Utilities_New.month = txtMonth.Text
+    TAX_Utilities_New.Day = txtDay.Text
     TAX_Utilities_New.ThreeMonths = cmbQuy.Text
     TAX_Utilities_New.FirstDay = txtNgayDau.Text
     TAX_Utilities_New.LastDay = txtNgayCuoi.Text
