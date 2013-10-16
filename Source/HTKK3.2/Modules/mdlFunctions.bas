@@ -121,7 +121,11 @@ Public strCondensate As String
 Public strKhiThienNhien As String
  
 ' bien xu ly luu datafile cho to khai TAIN_DK
-Public strLoaiTKDK As String
+' DT dau tho
+' CD condensate
+' KTN khi thien nhien
+Public strLoaiTkDk As String
+
  
 Public strBarcodeInPDF As String    'Chua chuoi ma vach duoc in ra file PDF cuoi cung (Them vao) dung cho iHTKK
 
@@ -493,6 +497,12 @@ Public Sub SetupData(pGrid As fpSpread)
                                 ElseIf strQuy = "TK_QUY" Then
                                     strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
                                 End If
+                            ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "98" Then
+                                If strLoaiTKThang_PS = "TK_THANG" Then
+                                    strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                                ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+                                    strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                                End If
                             Else
                                 strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                             End If
@@ -555,6 +565,12 @@ Public Sub SetupData(pGrid As fpSpread)
                                 ElseIf strQuy = "TK_QUY" Then
                                     strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
                                 End If
+                            ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "98" Then
+                                If strLoaiTKThang_PS = "TK_THANG" Then
+                                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                                ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+                                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                                End If
                             Else
                                 strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                             End If
@@ -567,6 +583,12 @@ Public Sub SetupData(pGrid As fpSpread)
                                             strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                                         ElseIf strQuy = "TK_QUY" Then
                                             strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                                        End If
+                                    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "98" Then
+                                        If strLoaiTKThang_PS = "TK_THANG" Then
+                                            strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                                        ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+                                            strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                                         End If
                                     ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "70" Then
                                         If strLoaiTKThang_PS = "TK_THANG" Then
@@ -586,6 +608,12 @@ Public Sub SetupData(pGrid As fpSpread)
                                             strDataFileBS = TAX_Utilities_New.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                                         ElseIf strQuy = "TK_QUY" Then
                                             strDataFileBS = TAX_Utilities_New.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                                        End If
+                                    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "98" Then
+                                        If strLoaiTKThang_PS = "TK_THANG" Then
+                                            strDataFileBS = TAX_Utilities_New.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                                        ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+                                            strDataFileBS = TAX_Utilities_New.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                                         End If
                                     ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "70" Then
                                         If strLoaiTKThang_PS = "TK_THANG" Then
@@ -618,6 +646,12 @@ Public Sub SetupData(pGrid As fpSpread)
                                             ElseIf strQuy = "TK_QUY" Then
                                                 strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
                                             End If
+                                        ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "98" Then
+                                            If strLoaiTKThang_PS = "TK_THANG" Then
+                                                strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                                            ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+                                                strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                                            End If
                                         Else
                                             strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                                         End If
@@ -629,6 +663,12 @@ Public Sub SetupData(pGrid As fpSpread)
                                                 strDataFileName = TAX_Utilities_New.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                                             ElseIf strQuy = "TK_QUY" Then
                                                 strDataFileName = TAX_Utilities_New.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & ".xml"
+                                            End If
+                                        ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "98" Then
+                                            If strLoaiTKThang_PS = "TK_THANG" Then
+                                                strDataFileName = TAX_Utilities_New.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+                                            ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+                                                strDataFileName = TAX_Utilities_New.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                                             End If
                                         Else
                                             strDataFileName = TAX_Utilities_New.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
@@ -878,7 +918,7 @@ Public Sub SetupData(pGrid As fpSpread)
                 Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "11" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "12" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "06" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "77" _
                 Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "72" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "03" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "80" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "81" _
                 Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "82" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "86" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "87" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "89" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "73" _
-                Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "83" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "85" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "90" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "95") And fso.FileExists(strDataFileNameBS) Then
+                Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "83" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "85" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "90" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "95" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "98") And fso.FileExists(strDataFileNameBS) Then
                      isNewdataBS = False
                 End If
                 
