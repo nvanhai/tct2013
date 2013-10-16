@@ -75,9 +75,9 @@ Public Sub Prepare1()
         End If
         
         SetDateFormat fps, 1, 29, .ColLetterToNumber("AM"), DDMMYYYY
-        SetDateFormat fps, 1, 65, fps.ColLetterToNumber("AR"), DDMMYYYY
+        SetDateFormat fps, 1, 74, fps.ColLetterToNumber("AR"), DDMMYYYY
         
-        .Row = 65
+        .Row = 74
         .Col = fps.ColLetterToNumber("AR")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
@@ -244,7 +244,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 .Row = Row
                 UpdateCell fps, Col, Row, .Text
             End If
-            If Col = .ColLetterToNumber("AR") And Row = 65 Then
+            If Col = .ColLetterToNumber("AR") And Row = 74 Then
                 .GetText Col, Row, varTemp
                 If varTemp <> "" And varTemp <> "../../...." Then
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
@@ -671,10 +671,10 @@ End Sub
 Public Sub inThongTinDL()
     ' Set tham so in thong tin dai ly thue
     FlagDLThue = isCheckTTDLT
-    tuRowDL = 13
-    denRowDL = 18
+    tuRowDL = 53
+    denRowDL = 63
     'TuRow_DenRow_sheet
-    strTuRowDenRowPL = "2_3_2"
+    strTuRowDenRowPL = "25_27_2"
     ' end
 End Sub
 
