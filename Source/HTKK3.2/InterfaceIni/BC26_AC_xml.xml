@@ -8,6 +8,9 @@
 		<maLyDoGiaHan></maLyDoGiaHan>
 		<lyDoGiaHan></lyDoGiaHan>
 	</Static>
+	<Static GroupName="TKhaiThue">
+		<nganhNgheKD></nganhNgheKD>
+	</Static>
 	<Static GroupName="NNT">
 		<maHuyenNNT></maHuyenNNT>
 		<maTinhNNT></maTinhNNT>

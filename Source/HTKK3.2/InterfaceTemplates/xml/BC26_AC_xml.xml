@@ -29,36 +29,38 @@
 					<lyDoGiaHan>String</lyDoGiaHan>
 				</GiaHan>
 				<nguoiKy>String</nguoiKy>
-				<ngayKy>String</ngayKy>
+				<ngayKy>1967-08-13</ngayKy>
+				<nganhNgheKD>String</nganhNgheKD>
 			</TKhaiThue>
 			<NNT>
 				<mst>0000000000</mst>
-				<tenNNT>token</tenNNT>
-				<dchiNNT>token</dchiNNT>
-				<maHuyenNNT>String</maHuyenNNT>
-				<tenHuyenNNT>String</tenHuyenNNT>
-				<maTinhNNT>String</maTinhNNT>
-				<tenTinhNNT>String</tenTinhNNT>
-				<dthoaiNNT>String</dthoaiNNT>
-				<faxNNT>String</faxNNT>
-				<emailNNT>String</emailNNT>
+				<tenNNT></tenNNT>
+				<dchiNNT></dchiNNT>
+				<phuongXa></phuongXa>
+				<maHuyenNNT></maHuyenNNT>
+				<tenHuyenNNT></tenHuyenNNT>
+				<maTinhNNT></maTinhNNT>
+				<tenTinhNNT></tenTinhNNT>
+				<dthoaiNNT></dthoaiNNT>
+				<faxNNT></faxNNT>
+				<emailNNT></emailNNT>
 			</NNT>
 			<DLyThue>
-				<mstDLyThue>0000000000</mstDLyThue>
-				<tenDLyThue>token</tenDLyThue>
-				<dchiDLyThue>token</dchiDLyThue>
-				<maHuyenDLyThue>String</maHuyenDLyThue>
-				<tenHuyenDLyThue>String</tenHuyenDLyThue>
-				<maTinhDLyThue>String</maTinhDLyThue>
-				<tenTinhDLyThue>String</tenTinhDLyThue>
-				<dthoaiDLyThue>String</dthoaiDLyThue>
-				<faxDLyThue>String</faxDLyThue>
-				<emailDLyThue>String</emailDLyThue>
-				<soHDongDLyThue>String</soHDongDLyThue>
-				<ngayKyHDDLyThue>String</ngayKyHDDLyThue>
+				<mstDLyThue></mstDLyThue>
+				<tenDLyThue></tenDLyThue>
+				<dchiDLyThue></dchiDLyThue>
+				<maHuyenDLyThue></maHuyenDLyThue>
+				<tenHuyenDLyThue></tenHuyenDLyThue>
+				<maTinhDLyThue></maTinhDLyThue>
+				<tenTinhDLyThue></tenTinhDLyThue>
+				<dthoaiDLyThue></dthoaiDLyThue>
+				<faxDLyThue></faxDLyThue>
+				<emailDLyThue></emailDLyThue>
+				<soHDongDLyThue></soHDongDLyThue>
+				<ngayKyHDDLyThue></ngayKyHDDLyThue>
 				<NVienDLy>
-					<tenNVienDLyThue>token</tenNVienDLyThue>
-					<cchiHNghe>String</cchiHNghe>
+					<tenNVienDLyThue></tenNVienDLyThue>
+					<cchiHNghe></cchiHNghe>
 				</NVienDLy>
 			</DLyThue>
 		</TTinTKhaiThue>
@@ -66,13 +68,13 @@
 	<CTieuTKhaiChinh>
 		<kyBCaoCuoi>true</kyBCaoCuoi>
 		<chuyenDiaDiem>true</chuyenDiaDiem>
-		<ngayDauKyBC>String</ngayDauKyBC>
-		<ngayCuoiKyBC>String</ngayCuoiKyBC>
+		<ngayDauKyBC></ngayDauKyBC>
+		<ngayCuoiKyBC></ngayCuoiKyBC>
 		<HoaDon>
 			<ChiTiet id="ID_1">
-				<tenHDon>String</tenHDon>
-				<kHieuMauHDon>String</kHieuMauHDon>
-				<kHieuHDon>String</kHieuHDon>
+				<tenHDon></tenHDon>
+				<kHieuMauHDon></kHieuMauHDon>
+				<kHieuHDon></kHieuHDon>
 				<SoTonMuaTrKy>
 					<tongSo>1</tongSo>
 					<SoTonDauKy>
@@ -94,15 +96,15 @@
 						<soDaSDung>1</soDaSDung>
 						<XoaBo>
 							<soLuong>1</soLuong>
-							<so>String</so>
+							<so></so>
 						</XoaBo>
 						<Mat>
 							<soLuong>1</soLuong>
-							<so>String</so>
+							<so></so>
 						</Mat>
 						<Huy>
 							<soLuong>1</soLuong>
-							<so>String</so>
+							<so></so>
 						</Huy>
 					</TrongDo>
 				</SoSuDungTrKy>
@@ -116,9 +118,9 @@
 		<tongCongSoTonDKy>1</tongCongSoTonDKy>
 		<tongCongSDung>1</tongCongSDung>
 		<tongCongSoTonCKy>1</tongCongSoTonCKy>
-		<nguoiLapBieu>String</nguoiLapBieu>
-		<nguoiDaiDien>String</nguoiDaiDien>
-		<ngayBCao>String</ngayBCao>
+		<nguoiLapBieu></nguoiLapBieu>
+		<nguoiDaiDien></nguoiDaiDien>
+		<ngayBCao></ngayBCao>
 	</CTieuTKhaiChinh>
 	<PLuc>
 	</PLuc>

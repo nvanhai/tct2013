@@ -3386,7 +3386,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     On Error GoTo ErrHandle
 
     With fpSpread1
-
+        
         If Val(strSolanBS) > 0 Then
             If xmlTK.getElementsByTagName("loaiTKhai").length > 0 Then
                 xmlTK.getElementsByTagName("loaiTKhai")(0).Text = "B"
@@ -3621,7 +3621,13 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         If xmlTK.getElementsByTagName("ngayLapTKhai").length > 0 Then
             xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = format(Date, "dd/MM/yyyy")
         End If
-        
+
+        .GetText .ColLetterToNumber("T"), 9, vlue
+
+        If xmlTK.getElementsByTagName("nganhNgheKD").length > 0 Then
+            xmlTK.getElementsByTagName("nganhNgheKD")(0).Text = vlue
+        End If
+
     End With
 
     Exit Sub
@@ -3843,7 +3849,7 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                                     dNode.Text = .value
                                 ElseIf .CellType = CellTypeCheckBox Then
 
-                                    If LCase$(.Text = "x") Then
+                                    If LCase$(.Text) = "x" Then
                                         dNode.Text = "1"
                                     ElseIf .Text = "" Then
                                         dNode.Text = "0"
@@ -4188,7 +4194,7 @@ Private Sub KetXuatXML()
                             xmlCellTKNode.Text = .value
                         ElseIf .CellType = CellTypeCheckBox Then
 
-                            If LCase$(.Text = "x") Then
+                            If LCase$(.Text) = "x" Then
                                 xmlCellTKNode.Text = "1"
                             ElseIf .Text = "" Then
                                 xmlCellTKNode.Text = "0"
@@ -4321,7 +4327,7 @@ Private Sub KetXuatXML()
                                         xmlCellTKNode.Text = .value
                                     ElseIf .CellType = CellTypeCheckBox Then
 
-                                        If LCase$(.Text = "x") Then
+                                        If LCase$(.Text) = "x" Then
                                             xmlCellTKNode.Text = "1"
                                         ElseIf .Text = "" Then
                                             xmlCellTKNode.Text = "0"
