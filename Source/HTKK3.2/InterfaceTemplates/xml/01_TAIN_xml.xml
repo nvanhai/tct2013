@@ -67,6 +67,7 @@
 		<BangChiTietTNguyen>
 			<TaiNguyenKhaiThac>
 				<ThueTaiNguyenKhaiThac id="ID_1">
+					<ct1></ct1>
 					<ct2>String</ct2>
 					<SanLuongTNguyenTinhThue>
 						<ct3>String</ct3>
@@ -82,6 +83,7 @@
 			</TaiNguyenKhaiThac>
 			<TaiNguyenThuMuaGom>
 				<ThueTaiNguyenThuMuaGom id="ID_2">
+					<ct1></ct1>
 					<ct2>String</ct2>
 					<SanLuongTNguyenTinhThue>
 						<ct3>String</ct3>
