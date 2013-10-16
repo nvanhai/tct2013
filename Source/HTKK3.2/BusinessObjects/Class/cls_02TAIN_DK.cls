@@ -648,7 +648,15 @@ Private Sub UpdateSheets()
             Next
 
         End If
-        
+        'updated phu luc 01
+        .Sheet = SHEET_PHU_LUC_01
+        mCurrentSheet = .Sheet
+        For Each xmlCellNodeData In TAX_Utilities_New.Data(1).getElementsByTagName("Cell")
+           ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+                .GetText lCol, lRow, varTemp
+                UpdateCell fps, lCol, lRow, varTemp
+        Next
+        'end pl 01
         .Sheet = .ActiveSheet
         .EventEnabled(EventAllEvents) = True
     End With
