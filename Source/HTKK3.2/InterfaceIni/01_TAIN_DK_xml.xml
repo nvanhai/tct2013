@@ -18,9 +18,9 @@
 		<maTinhDLyThue/>
 	</Static>
 	<Static GroupName="LoaiDauKhi">
-		<ct01>X_4</ct01>
-		<ct02>AH_4</ct02>
-		<ct03>AS_4</ct03>
+		<ct01>O_30</ct01>
+		<ct02>P_30</ct02>
+		<ct03>Q_30</ct03>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<ct05>AF_23</ct05>
