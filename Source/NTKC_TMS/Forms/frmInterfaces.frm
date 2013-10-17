@@ -2066,6 +2066,10 @@ Barcode_Scaned str2
 'str2 = "bs999513100177415   02201300200200100101/0101/01/2010<S01><S>1000724808</S><S>10000000~500000~25000000~25000~50000000~2500000~100000000~10000000~50000000~2000000~100000000~50000000</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~~1~1</S></S01>"
 'Barcode_Scaned str2
 
+'' To Khai 07/KK-TNCN - To khai chinh thuc
+'str2 = "bs999513100177415   02201300200200100101/0101/01/2010<S01><S>1000724808</S><S>10000000~500000~25000000~25000~50000000~2500000~100000000~10000000~50000000~2000000~100000000~50000000</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~~1~1</S></S01>"
+'Barcode_Scaned str2
+
 
 End Sub
 
@@ -4386,9 +4390,9 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
     Set xmlResultNNT = New MSXML.DOMDocument
     Dim strResultNNT As String
     
-'    'Du lieu gia lap de test
-'        Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-'        strResultNNT = "sdfsfds"
+    'Du lieu gia lap de test
+        Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+        strResultNNT = "sdfsfds"
     
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         Dim cfigXml As New MSXML.DOMDocument
@@ -4431,11 +4435,11 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
         sParamNNT = "c:\TempXML\" & "paramNNT.xml"
         paXmlDoc.save sParamNNT
 
-'        'Return value from ESB
-        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
-
-        strResultNNT = ChangeTagASSCII(strResultNNT, False)
-        xmlResultNNT.loadXML strResultNNT
+''        'Return value from ESB
+'        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+'
+'        strResultNNT = ChangeTagASSCII(strResultNNT, False)
+'        xmlResultNNT.loadXML strResultNNT
     Else
         Set rsReturn = Nothing
         blnSuccess = False
@@ -4611,11 +4615,11 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
         sParamDLT = "c:\TempXML\" & "paramDLT.xml"
         paXmlDoc.save sParamDLT
 
-'        'Return value from ESB
-        strResultDLT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
-
-        strResultDLT = ChangeTagASSCII(strResultDLT, False)
-        xmlResultDLT.loadXML strResultDLT
+''        'Return value from ESB
+'        strResultDLT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+'
+'        strResultDLT = ChangeTagASSCII(strResultDLT, False)
+'        xmlResultDLT.loadXML strResultDLT
     End If
     
     If strTaxIDDLString <> "" And strTaxIDDLString <> vbNullString Then
@@ -4736,9 +4740,9 @@ On Error GoTo ErrHandle
     Set xmlResultNNT = New MSXML.DOMDocument
     Dim strResultNNT As String
 
-'   'Du lieu gia lap de test
-'    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-'    strResultNNT = "test"
+   'Du lieu gia lap de test
+    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+    strResultNNT = "test"
 
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         Dim cfigXml As New MSXML.DOMDocument
@@ -4779,11 +4783,11 @@ On Error GoTo ErrHandle
         sParamNNT = "c:\TempXML\" & "paramNNT.xml"
         paXmlDoc.save sParamNNT
 
-        'Return value from ESB
-        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
-
-        strResultNNT = ChangeTagASSCII(strResultNNT, False)
-        xmlResultNNT.loadXML strResultNNT
+'        'Return value from ESB
+'        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+'
+'        strResultNNT = ChangeTagASSCII(strResultNNT, False)
+'        xmlResultNNT.loadXML strResultNNT
     Else
         Set rsReturn = Nothing
         blnSuccess = False

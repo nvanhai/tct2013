@@ -259,14 +259,14 @@ Private Function IsValidUserESB() As Integer
 '            IsValidUserESB = 2
 '            Exit Function
     
-    strResultNSD = GetDataFromESB(txtUsername.Text, txtPassword.Text, "NSD")
-    'Chuan hoa file xml ket qua - lay duoc tu ESB
-    strResultNSD = ChangeTagASSCII(strResultNSD, False)
-    xmlResultNSD.loadXML strResultNSD
+'    strResultNSD = GetDataFromESB(txtUsername.Text, txtPassword.Text, "NSD")
+'    'Chuan hoa file xml ket qua - lay duoc tu ESB
+'    strResultNSD = ChangeTagASSCII(strResultNSD, False)
+'    xmlResultNSD.loadXML strResultNSD
     
-'    'Du lieu gia lap de test
-'    Set xmlResultNSD = LoadXmlTemp("ResultNSDFromESB")
-'    strResultNSD = "ssdfdsf"
+    'Du lieu gia lap de test
+    Set xmlResultNSD = LoadXmlTemp("ResultNSDFromESB")
+    strResultNSD = "ssdfdsf"
        
     'Check validate xmlResultNSD
     If (strResultNSD = "") Then
