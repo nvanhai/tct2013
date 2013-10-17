@@ -18,9 +18,9 @@
 		<maTinhDLyThue/>
 	</Static>
 	<Static GroupName="LoaiDauKhi">
-		<ct01>X_4</ct01>
-		<ct02>AH_4</ct02>
-		<ct03>AS_4</ct03>
+		<ct01>O_30</ct01>
+		<ct02>P_30</ct02>
+		<ct03>Q_30</ct03>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<ct05>AF_23</ct05>
@@ -40,20 +40,20 @@
 	<Static GroupName="CTieuTKhaiChinh">
 		<tenDonViUyQuyen>P_36</tenDonViUyQuyen>
 		<ct29>AV_53</ct29>
-		<ct30>AV_53</ct30>
-		<ct31>AV_53</ct31>
-		<ct32>AV_53</ct32>
-		<ct33>AV_53</ct33>
-		<ct34>AV_53</ct34>
-		<ct35>AV_53</ct35>
-		<ct36>AV_53</ct36>
+		<ct30>AV_54</ct30>
+		<ct31>AV_55</ct31>
+		<ct32>AV_56</ct32>
+		<ct33>AV_57</ct33>
+		<ct34>AV_58</ct34>
+		<ct35>AV_59</ct35>
+		<ct36>AV_60</ct36>
 	</Static>
-	<Static GroupName="ThongTinTKhoan">
+	<Dynamic GroupName="ThongTinTKhoan">
 		<ThongTin id="id">
 			<soTKhoan>G_67</soTKhoan>
 			<taiNganHang>X_67</taiNganHang>
 		</ThongTin>
-	</Static>
+	</Dynamic>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>AR_72</nguoiKy>
 		<ngayKy>AR_74</ngayKy>

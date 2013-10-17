@@ -483,7 +483,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":02C8
       UserResize      =   1
       Appearance      =   1
    End
@@ -1944,6 +1944,12 @@ Public Sub cmdOK_Click()
     Dim strTempValue As String
     
     Dim idToKhai As String
+    
+    If OptBosung.value = True Then
+    strSolanBS = txtSolan.Text
+    Else
+    strSolanBS = ""
+    End If
     
     If TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "64" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "91" Then
         txtDay_LostFocus

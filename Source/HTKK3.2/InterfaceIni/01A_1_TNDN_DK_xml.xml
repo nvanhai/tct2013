@@ -2,13 +2,15 @@
 	<Static GroupName="PLuc_01_DK">
 		<ct09>K_19</ct09>
 	</Static>
-	<Static GroupName="ChiTiet">
-		<mstNThau>D_27</mstNThau>
-		<tenNThau>L_27</tenNThau>
-		<tyLePBoNThau>U_27</tyLePBoNThau>
-		<soThuePSinhPNopNThau>AB_27</soThuePSinhPNopNThau>
-		<ghiChuNThau>AL_27</ghiChuNThau>
-	</Static>
+	<Dynamic GroupName="NghiaVuThue">
+		<ChiTiet id="id">
+			<mstNThau>D_27</mstNThau>
+			<tenNThau>L_27</tenNThau>
+			<tyLePBoNThau>U_27</tyLePBoNThau>
+			<soThuePSinhPNopNThau>AB_27</soThuePSinhPNopNThau>
+			<ghiChuNThau>AL_27</ghiChuNThau>
+		</ChiTiet>
+	</Dynamic>
 	<Static GroupName="PLuc_01_DK">
 		<tongCong>AB_29</tongCong>
 	</Static>
