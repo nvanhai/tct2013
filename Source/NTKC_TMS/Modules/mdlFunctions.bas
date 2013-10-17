@@ -33,6 +33,8 @@ Public strCurrentVersion As String     'Current Version lay duoc tu ESB services
 Public strNgayHeThongSrv As String     ' Current Date in Server
 Public strMaNNT As String
 Public strMaDLT As String
+Public strMaCoQuanThue As String
+Public strTenCoQuanThue As String
 'End XML
 
 Public strNgayTaiChinh As String
@@ -1923,16 +1925,19 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             soapAct = cfigXml.getElementsByTagName("SoapActionNSD")(0).Text
             xmlRequest = cfigXml.getElementsByTagName("XmlRequestNSD")(0).lastChild.xml
             sTranCode = cfigXml.getElementsByTagName("TRAN_CODE")(0).Text
-            sTaxOffice = cfigXml.getElementsByTagName("TaxOffcice")(0).Text
+            'sTaxOffice = cfigXml.getElementsByTagName("TaxOffcice")(0).Text
             fldName = cfigXml.getElementsByTagName("ParamNameNSD")(0).Text
             
             'Set value config to file param NSD
             paXmlDoc.getElementsByTagName("TRAN_CODE")(0).Text = sTranCode
             paXmlDoc.getElementsByTagName("UserName")(0).Text = sUserName
-            paXmlDoc.getElementsByTagName("TaxOffcice")(0).Text = sTaxOffice
+            paXmlDoc.getElementsByTagName("TaxOffcice")(0).Text = "" ' sTaxOffice
             'bPass = StrConv(sPass, vbFromUnicode)
-            paXmlDoc.getElementsByTagName("Pass")(0).Text = sPass 'Base64Unicode.Base64EncodeString(sPass) 'sPass 'SHA1Hash.HashBytes(bPass)
-                        
+            paXmlDoc.getElementsByTagName("Pass")(0).Text = Base64Unicode.Base64EncodeString(sPass) 'sPass 'SHA1Hash.HashBytes(bPass)
+            
+'            Dim sDecode As String
+'            sDecode = Base64Unicode.Base64DecodeString("ZG92YW5xdWFuZ2R0Mw==")
+
             paXmlDoc.getElementsByTagName("VERSION")(0).Text = cfigXml.getElementsByTagName("VERSION")(0).Text
             paXmlDoc.getElementsByTagName("SENDER_CODE")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text
             paXmlDoc.getElementsByTagName("SENDER_NAME")(0).Text = cfigXml.getElementsByTagName("SENDER_NAME")(0).Text

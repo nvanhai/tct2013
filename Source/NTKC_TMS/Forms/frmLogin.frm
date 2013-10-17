@@ -308,6 +308,8 @@ Private Function IsValidUserESB() As Integer
                 strUserName = xmlResultNSD.getElementsByTagName("UserName")(0).Text
                 strUserID = txtUsername.Text
                 strNgayHeThongSrv = xmlResultNSD.getElementsByTagName("CurrentSysTime")(0).Text
+                strMaCoQuanThue = xmlResultNSD.getElementsByTagName("TaxOffcice")(0).Text
+                strTenCoQuanThue = xmlResultNSD.getElementsByTagName("TaxOffName")(0).Text
                 Select Case sStatus
 
                     Case "01"  ' Thanh cong
