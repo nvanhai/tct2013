@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":19A5
+         SpreadDesigner  =   "frmInterfaces.frx":1969
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1C69
+      SpreadDesigner  =   "frmInterfaces.frx":1BF1
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -4077,17 +4077,6 @@ Private Sub KetXuatXML()
         End If
     End If
     
-    ' Bo ky tu "A","B" trong ma to khai
-    If MaTK = "01A_TNCN_BH" Or MaTK = "01B_TNCN_BH" Or MaTK = "01A_TNCN_XS" Or MaTK = "01B_TNCN_XS" Or MaTK = "02A_TNCN10" Or MaTK = "02B_TNCN10" Or MaTK = "03A_TNCN10" Or MaTK = "03B_TNCN10" Then
-        MaTK = Replace$(Replace$(Left$(MaTK, 3), "A", ""), "B", "") & Right$(MaTK, Len(MaTK) - 3)
-    End If
-
-    If InStr(MaTK, "11") > 0 Then
-        MaTK = Replace$(MaTK, "11", "")
-    ElseIf InStr(MaTK, "10") > 0 Then
-        MaTK = Replace$(MaTK, "10", "")
-    End If
-
     '    Lay duong dan cua file
     With CommonDialog1
         .CancelError = True
@@ -4118,7 +4107,16 @@ Private Sub KetXuatXML()
             Exit Sub
         End If
     End If
+    ' Bo ky tu "A","B" trong ma to khai
+    If MaTK = "01A_TNCN_BH" Or MaTK = "01B_TNCN_BH" Or MaTK = "01A_TNCN_XS" Or MaTK = "01B_TNCN_XS" Or MaTK = "02A_TNCN10" Or MaTK = "02B_TNCN10" Or MaTK = "03A_TNCN10" Or MaTK = "03B_TNCN10" Then
+        MaTK = Replace$(Replace$(Left$(MaTK, 3), "A", ""), "B", "") & Right$(MaTK, Len(MaTK) - 3)
+    End If
 
+    If InStr(MaTK, "11") > 0 Then
+        MaTK = Replace$(MaTK, "11", "")
+    ElseIf InStr(MaTK, "10") > 0 Then
+        MaTK = Replace$(MaTK, "10", "")
+    End If
     xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
     xmlMapCT.Load GetAbsolutePath("..\InterfaceIni\" & MaTK & "_xml.xml")
     

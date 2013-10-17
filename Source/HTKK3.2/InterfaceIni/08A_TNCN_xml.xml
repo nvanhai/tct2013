@@ -23,7 +23,7 @@
 		<ct23>R_43</ct23>
 		<ct24>R_44</ct24>
 	</Static>
-	<Static GroupName="ChiTietThuNhapKDoanh">
+	<Dynamic GroupName="BangChiTietSoThuePNopCuaTungCNhan"><ChiTietThuNhapKDoanh id="id">
 		<ct26>C_51</ct26>
 		<ct27>H_51</ct27>
 		<ct28>L_51</ct28>
@@ -32,8 +32,8 @@
 		<ct31>R_51</ct31>
 		<ct32>T_51</ct32>
 		<ct33>V_51</ct33>
-		<ct34>X_51</ct34>
-	</Static>
+		<ct34>X_51</ct34></ChiTietThuNhapKDoanh>
+	</Dynamic>
 	<Static GroupName="ThuNhapVaSoThuePNopCuaTungCaNhan">
 		<ct36>L_53</ct36>
 		<ct37>N_53</ct37>
