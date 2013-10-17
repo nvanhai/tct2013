@@ -5220,7 +5220,6 @@ On Error GoTo ErrHandle
     TAX_Utilities_New.ThreeMonths = cmbQuy.Text
     TAX_Utilities_New.FirstDay = txtNgayDau.Text
     TAX_Utilities_New.LastDay = txtNgayCuoi.Text
-    TAX_Utilities_New.Day = txtDay.Text
     TAX_Utilities_New.NodeValidity = GetValidityNode
     
     SetDefaultActiveProperties
