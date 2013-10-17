@@ -863,8 +863,8 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
 
     xmlTK.getElementsByTagName("pbanDVu")(0).Text = APP_VERSION
 
-    xmlTK.getElementsByTagName("maCQTNoiNop")(0).Text = xmlConfig.getElementsByTagName("maCQTNoiNop")(0).Text
-    xmlTK.getElementsByTagName("tenCQTNoiNop")(0).Text = xmlConfig.getElementsByTagName("tenCQTNoiNop")(0).Text
+    xmlTK.getElementsByTagName("maCQTNoiNop")(0).Text = strMaCoQuanThue 'xmlConfig.getElementsByTagName("maCQTNoiNop")(0).Text
+    xmlTK.getElementsByTagName("tenCQTNoiNop")(0).Text = strTenCoQuanThue 'xmlConfig.getElementsByTagName("tenCQTNoiNop")(0).Text
     xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = Format(Date, "dd-mmm-yyyy HH:mm:ss")
     xmlTK.getElementsByTagName("tenHuyenNNT")(0).Text = ""
     xmlTK.getElementsByTagName("tenTinhNNT")(0).Text = ""
@@ -1959,11 +1959,11 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 ''04/GTGT chinh thuc
-
-str2 = "aa317710201027770   02201300100100100201/0101/01/1900<S01><S></S><S>70000000~11000000~55100000</S><S>10000000~2000000~3000000~01~50000000~0~1000000~03~1000000~2000000~50000000~02~4000000~5000000~100000~04~5000000~2000000~1000000~02</S><S>0~5~10~01~0~5~10~03~0~5~10~02~0~5~10~04~0~5~10~02</S><S>0~550000~5510"
-Barcode_Scaned str2
-str2 = "aa317710201027770   022013001001002002000</S><S>0~100000~300000~01~0~0~100000~03~0~100000~5000000~02~0~250000~10000~04~0~100000~100000~02</S><S>0~27500~551000</S><S>0~5000~30000~01~0~0~10000~03~0~5000~500000~02~0~12500~1000~04~0~5000~10000~02</S><S>136100000~578500</S><S>dasdsad~~21sdasd~24/09/2013~1~1~1~1</S></S01>"
-Barcode_Scaned str2
+'
+'str2 = "aa317710201027770   02201300100100100201/0101/01/1900<S01><S></S><S>70000000~11000000~55100000</S><S>10000000~2000000~3000000~01~50000000~0~1000000~03~1000000~2000000~50000000~02~4000000~5000000~100000~04~5000000~2000000~1000000~02</S><S>0~5~10~01~0~5~10~03~0~5~10~02~0~5~10~04~0~5~10~02</S><S>0~550000~5510"
+'Barcode_Scaned str2
+'str2 = "aa317710201027770   022013001001002002000</S><S>0~100000~300000~01~0~0~100000~03~0~100000~5000000~02~0~250000~10000~04~0~100000~100000~02</S><S>0~27500~551000</S><S>0~5000~30000~01~0~0~10000~03~0~5000~500000~02~0~12500~1000~04~0~5000~10000~02</S><S>136100000~578500</S><S>dasdsad~~21sdasd~24/09/2013~1~1~1~1</S></S01>"
+'Barcode_Scaned str2
 ''04/GTGT bo sung
 '
 'str2 = "bs317713100177415   08201300400400100301/0101/01/1900<S01><S>0102845045</S><S>60000000~2000000~4000000</S><S>10000000~2000000~3000000~01~50000000~0~1000000~03</S><S>0~5~10~01~0~5~10~03</S><S>0~100000~40000"
@@ -2004,6 +2004,68 @@ Barcode_Scaned str2
 'Dim xmlDoc As New MSXML.DOMDocument
 'xmlDoc.Load "C:\tempxml\ToKhai.xml"
 'PushDataToESB xmlDoc.xml
+
+'TEST GIAI DOAN 2
+'' To Khai QD 15 BCTC
+'str2 = "aa999693100177415   00201200500500100801/0123/06/2006<S01><S>~41400~0~~3000~0~V.01~1000~0~~2000~0~V.02~3000~0~~1000~0~~2000~0~~33000~0~~3000~0~~4000~0~~5000~0~~6000~0~V.03~7000~0~~8000~0~~800~0~V.04~500~0~~300~0~~1600~0~~600~0~~700~0~V.05~200~0~~100~0~~80000~0~~15000~0~~5000~0~~4000~0~V.06~3000~0~V.07~2000~0~~1000~0~~33000~0~V.08~13000~0~~6000~"
+'Barcode_Scaned str2
+'str2 = "aa999693100177415   0020120050050020080~~7000~0~V.09~7000~0~~2000~0~~5000~0~V.10~11000~0~~8000~0~~3000~0~V.11~2000~0~V.12~7000~0~~1000~0~~6000~0~~17000~0~~5000~0~~7000~0~V.13~3000~0~~2000~0~~8000~0~V.14~1000~0~V.21~4000~0~~3000~0~~121400~0~~59800~0~~55000~0~V.15~7000~0~~6000~0~~5000~0~V.16~4000~0~~8000~0~V.17~9000~0~~2000~0~~1000~0~V.18~3000~0~"
+'Barcode_Scaned str2
+'str2 = "aa999693100177415   002012005005003008~6000~0~~4000~0~~4800~0~~400~0~V.19~700~0~~600~0~V.20~800~0~V.21~900~0~~400~0~~300~0~~500~0~~200~0~~61600~0~V.22~52600~0~~1000~0~~2000~0~~3000~0~~4000~0~~5000~0~~6000~0~~7000~0~~8000~0~~9000~0~~1600~0~~4000~0~~2000~0~~9000~0~V.23~3000~0~~6000~0~~121400~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~15/10/2013</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999693100177415   002012005005004008<S01-1><S>VI.25~4000~0~~3000~0~~1000~0~VI.27~6000~0~~-5000~0~VI.26~9000~0~VI.28~7000~0~~6000~0~~5000~0~~4000~0~~-12000~0~~3000~0~~2000~0~~1000~0~~-11000~0~VI.30~4000~0~VI.30~5000~0~~-20000~0~~3000~0~~15/10/2013</S></S01-1>"
+'Barcode_Scaned str2
+'str2 = "aa999693100177415   002012005005005008<S01-2><S>~5000~0~~4000~0~~3000~0~~2000~0~~1000~0~~6000~0~~7000~0~~28000~0~~3000~0~~5000~0~~7000~0~~3000~0~~2000~0~~1000~0~~5000~0~"
+'Barcode_Scaned str2
+'str2 = "aa999693100177415   002012005005006008~26000~0~~5000~0~~4000~0~~3000~0~~6000~0~~7000~0~~8000~0~~33000~0~~87000~0~~4500~0~~6000~0~VII.34~97500~0~~15/10/2013</S></S01-2>"
+'Barcode_Scaned str2
+'str2 = "aa999693100177415   002012005005007008<S01-3><S>~6000~0~~5000~0~~4000~0~~3000~0~~2000~0~~1000~0~~21000~0~~6000~0~~4000~0~~5000~0~~9000~0~~8000~0~~2000~0~~1000~0~~5000~0~~61000~0~~7000~0~~5000~0~~8000"
+'Barcode_Scaned str2
+'str2 = "aa999693100177415   002012005005008008~0~~3000~0~~1000~0~~6000~0~~4000~0~~34000~0~~9000~0~~4000~0~~2000~0~~3000~0~~5000~0~~1000~0~~24000~0~~119000~0~~6000~0~~3000~0~~128000~0~~15/10/2013</S></S01-3>"
+'Barcode_Scaned str2
+
+'' To Khai BC 36
+'str2 = "aa999683100177415   032013012012002004120~99~0~Hãa ®¬n b¸n hµng (dµnh cho tæ chøc, c¸ nh©n trong khu phi thuÕ quan)~07KPTQ4/001~MN/23E~111~~~0000040~0000150~~~0~0~0~~0~~0~~0000040~0000150~111~0~PhiÕu xuÊt kho kiªm vËn chuyÓn hµng hãa néi bé~03XKNB5/001~KT/34T~101~0000050~0000150~~~~~0~0~0~~0~~0~~0000050~0000150~101~0~PhiÕu xuÊt kho göi b¸n hµng ®¹i lý~04HGDL6/001~BD/24T~121~~~0000080~0000200~~~0~0~0~~0~~0~~0000080~0000200~1"
+'Barcode_Scaned str2
+'str2 = "aa999683100177415   03201301201200100401/0101/01/2009<S01><S>~~01/07/2013~30/09/2013</S><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT3/001~AB/12T~11~0000000~0000010~~~0000000~0000008~9~6~1~0~1~1~1~2~0000009~0000010~2~0~Hãa ®¬n b¸n hµng~02GTTT2/001~CD/23T~81~~~0000020~0000100~0000020~0000041~22~20~0~~1~23~1~22~0000042~0000100~59~0~Hãa ®¬n xuÊt khÈu~06HDXK3/001~HN/13P~111~0000010~0000120~~~0000010~0000021~12~10~0~~1~11~1~14~0000022~0000"
+'Barcode_Scaned str2
+'str2 = "aa999683100177415   032013012012004004 pp trùc tiÕp~02THDB3/001~PL/78T~199~0000048~0000246~~~~~0~0~0~~0~~0~~0000048~0000246~199~0~Tem vËn t¶i ®­êng bé theo pp trùc tiÕp~02TEDB4/001~GH/56P~197~~~0000079~0000275~~~0~0~0~~0~~0~~0000079~0000275~197~0~VÐ vËn t¶i ®­êng bé theo pp trùc tiÕp~02VEDB6/001~LH/28T~350~0000029~0000189~0000190~0000378~~~0~0~0~~0~~0~~0000029~0000378~350~0</S><S>Ph­¬ng Lan~Lan H­¬ng~15/10/2013~1</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999683100177415   03201301201200300421~0~Tem vËn t¶i ®­êng bé theo pp khÊu trõ~01TEDB8/001~BM/27T~59~0000069~0000127~~~~~0~0~0~~0~~0~~0000069~0000127~59~0~VÐ vËn t¶i ®­êng bé theo pp khÊu trõ~01VEDB9/001~AD/34P~201~~~0000069~0000269~~~0~0~0~~0~~0~~0000069~0000269~201~0~ThÎ vËn t¶i ®­êng bé theo pp khÊu trõ~01THDB2/001~UH/23T~440~0000011~0000300~0000301~0000450~~~0~0~0~~0~~0~~0000011~0000450~440~0~ThÎ vËn t¶i ®­êng bé theo"
+'Barcode_Scaned str2
+
+'-------------*************************------------------------
+
+' To Khai 02/KK-TNCN theo Thang - To khai chinh thuc
+str2 = "aa999153100177415   09201300100100100101/0101/01/2010<S01><S>1000724808</S><S>10~10~10~0~50000000~0~0~20000000~0~0~10000000~0~0</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~1~~</S></S01>"
+Barcode_Scaned str2
+'' To Khai 02/KK-TNCN theo Thang - To khai bo sung
+'str2 = "bs999153100177415   09201300200200100101/0101/01/2010<S01><S>1000724808</S><S>100~100~50~50~25000000~0~25000000~10000000~0~10000000~5000000~0~5000000</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~~1~1</S></S01>"
+'Barcode_Scaned str2
+'' To Khai 02/KK-TNCN theo Quy - To khai chinh thuc
+'str2 = "aa999163100177415   02201300100100100101/0101/01/2010<S01><S>1000724808</S><S>20~20~20~0~100000000~100000000~0~50000000~50000000~0~5000000~5000000~0</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~1~~</S></S01>"
+'Barcode_Scaned str2
+'' To Khai 02/KK-TNCN theo Quy - To khai bo sung
+'str2 = "bs999163100177415   02201300200200100101/0101/01/2010<S01><S>1000724808</S><S>40~40~40~0~200000000~200000000~0~100000000~100000000~0~10000000~10000000~0</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~~1~1</S></S01>"
+'Barcode_Scaned str2
+
+'' To Khai 03/KK-TNCN theo Thang - To khai chinh thuc
+'str2 = "aa999503100177415   09201300100100100201/0101/01/2010<S01><S>1000724808</S><S>10000000~500000~20000000~20000~30000000~1500000~5000000~500"
+'Barcode_Scaned str2
+'str2 = "aa999503100177415   092013001001002002000~500000000~20000000~100000000~50000000</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~1~~</S></S01>"
+'Barcode_Scaned str2
+'' To Khai 03/KK-TNCN theo Thang - To khai bo sung
+'str2 = "bs999503100177415   09201300200200100201/0101/01/2010<S01><S>1000724808</S><S>5000000~250000~10000000~10000~15000000~750000~2500000~2500"
+'Barcode_Scaned str2
+'str2 = "bs999503100177415   09201300200200200200~250000000~10000000~50000000~25000000</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~~1~1</S></S01>"
+'Barcode_Scaned str2
+'' To Khai 03/KK-TNCN theo Quy - to khai chinh thuc
+'str2 = "aa999513100177415   02201300100100100101/0101/01/2010<S01><S>1000724808</S><S>20000000~1000000~50000000~50000~100000000~5000000~200000000~20000000~100000000~4000000~200000000~100000000</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~1~~</S></S01>"
+'Barcode_Scaned str2
+'' To Khai 03/KK-TNCN theo Quy - To khai bo sung
+'str2 = "bs999513100177415   02201300200200100101/0101/01/2010<S01><S>1000724808</S><S>10000000~500000~25000000~25000~50000000~2500000~100000000~10000000~50000000~2000000~100000000~50000000</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~~1~1</S></S01>"
+'Barcode_Scaned str2
+
 
 End Sub
 
@@ -4369,7 +4431,7 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
         sParamNNT = "c:\TempXML\" & "paramNNT.xml"
         paXmlDoc.save sParamNNT
 
-        'Return value from ESB
+'        'Return value from ESB
         strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
 
         strResultNNT = ChangeTagASSCII(strResultNNT, False)
@@ -4377,7 +4439,7 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
     Else
         Set rsReturn = Nothing
         blnSuccess = False
-        MessageBox "0138", msOKOnly, miCriticalError
+        MessageBox "013 8", msOKOnly, miCriticalError
         Exit Function
     End If
 
@@ -4496,9 +4558,9 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
     Dim strResultDLT As String
     
     
-'    'Du lieu gia lap de test
-'    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
-'    strResultDLT = "sdfsfds"
+    'Du lieu gia lap de test
+    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
+    strResultDLT = "sdfsfds"
     
     'Neu khong co thong tin NNT thi exit luon
     If (strTaxIDString = "" Or strTaxIDString = vbNullString) Then
@@ -4549,7 +4611,7 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
         sParamDLT = "c:\TempXML\" & "paramDLT.xml"
         paXmlDoc.save sParamDLT
 
-        'Return value from ESB
+'        'Return value from ESB
         strResultDLT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
 
         strResultDLT = ChangeTagASSCII(strResultDLT, False)
@@ -4625,7 +4687,7 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
 '        rsReturn!repr_tell = xmlResultDLT.getElementsByTagName("TELL")(0).Text
 '        rsReturn!repr_fax = xmlResultDLT.getElementsByTagName("FAX")(0).Text
 '        rsReturn!repr_email = xmlResultDLT.getElementsByTagName("EMAIL")(0).Text
-        rsReturn!repr_cont_number = xmlResultDLT.getElementsByTagName("MaCQThueQL")(0).Text
+'        rsReturn!repr_cont_number = xmlResultDLT.getElementsByTagName("MaCQThueQL")(0).Text
         rsReturn!repr_cont_date = "" 'xmlResultDLT.getElementsByTagName("START_DATE")(0).Text
     End If
 
@@ -4787,17 +4849,23 @@ On Error GoTo ErrHandle
     rsReturn.Open
     rsReturn.AddNew
     
-    If ((strResultNNT <> "" And xmlResultNNT.hasChildNodes And (InStr(xmlResultNNT.xml, "TIN") > 0)) And Err_des = "") Then
+   If ((strResultNNT <> "" And xmlResultNNT.hasChildNodes And (InStr(xmlResultNNT.xml, "MaSoThue") > 0)) And Err_des = "") Then
         'xmlResultNNT.loadXML TAX_Utilities_Srv_New.Convert(xmlResultNNT.xml, VISCII, UNICODE)
-        rsReturn!trang_thai = GetStringByLength(xmlResultNNT.getElementsByTagName("STATUS")(0).Text, 2)
-        rsReturn!ten_dtnt = GetStringByLength(xmlResultNNT.getElementsByTagName("NORM_NAME")(0).Text, 100)
-        rsReturn!dia_chi = GetStringByLength(xmlResultNNT.getElementsByTagName("TRAN_ADDR")(0).Text, 60)
-        rsReturn!Dien_thoai = GetStringByLength(xmlResultNNT.getElementsByTagName("TRAN_TEL")(0).Text, 20)
-        rsReturn!mail = GetStringByLength(xmlResultNNT.getElementsByTagName("MAIL")(0).Text, 30)
-        rsReturn!Fax = GetStringByLength(xmlResultNNT.getElementsByTagName("TRAN_FAX")(0).Text, 20)
-        rsReturn!ngay_tchinh = GetStringByLength(xmlResultNNT.getElementsByTagName("START_DATE")(0).Text, 50)
+        rsReturn!trang_thai = GetStringByLength(xmlResultNNT.getElementsByTagName("TrangThaiHoatDong")(0).Text, 2)
+        rsReturn!ten_dtnt = TAX_Utilities_Srv_New.Convert(GetStringByLength(xmlResultNNT.getElementsByTagName("TenNNT")(0).Text, 100), UNICODE, TCVN)
+        rsReturn!dia_chi = TAX_Utilities_Srv_New.Convert(GetStringByLength(xmlResultNNT.getElementsByTagName("DiaChi")(0).Text, 60), UNICODE, TCVN)
+        
+        rsReturn!Dien_thoai = "" 'GetStringByLength(xmlResultNNT.getElementsByTagName("TRAN_TEL")(0).Text, 20)
+        rsReturn!mail = "" 'GetStringByLength(xmlResultNNT.getElementsByTagName("MAIL")(0).Text, 30)
+        rsReturn!Fax = "" 'GetStringByLength(xmlResultNNT.getElementsByTagName("TRAN_FAX")(0).Text, 20)
+        rsReturn!ngay_tchinh = "" 'GetStringByLength(xmlResultNNT.getElementsByTagName("START_DATE")(0).Text, 50)
     End If
     
+    rsReturn!TIN = strTaxIDString
+    rsReturn!ky_lapbo = IIf(DateTime.Month(DateTime.Now) < 10, "0" & DateTime.Month(DateTime.Now), CStr(DateTime.Month(DateTime.Now))) & "/" & CStr(DateTime.Year(DateTime.Now))
+    rsReturn!ngay_nop = IIf(DateTime.Day(DateTime.Now) < 10, "0" & DateTime.Day(DateTime.Now), CStr(DateTime.Day(DateTime.Now))) & "/" & IIf(DateTime.Month(DateTime.Now) < 10, "0" & DateTime.Month(DateTime.Now), CStr(DateTime.Month(DateTime.Now))) & "/" & CStr(DateTime.Year(DateTime.Now))
+    rsReturn!ngay_nhap = IIf(DateTime.Day(DateTime.Now) < 10, "0" & DateTime.Day(DateTime.Now), CStr(DateTime.Day(DateTime.Now))) & "/" & IIf(DateTime.Month(DateTime.Now) < 10, "0" & DateTime.Month(DateTime.Now), CStr(DateTime.Month(DateTime.Now))) & "/" & CStr(DateTime.Year(DateTime.Now))
+   
     rsReturn!TIN = strTaxIDString
     rsReturn!ky_lapbo = IIf(DateTime.Month(DateTime.Now) < 10, "0" & DateTime.Month(DateTime.Now), CStr(DateTime.Month(DateTime.Now))) & "/" & CStr(DateTime.Year(DateTime.Now))
     rsReturn!ngay_nop = IIf(DateTime.Day(DateTime.Now) < 10, "0" & DateTime.Day(DateTime.Now), CStr(DateTime.Day(DateTime.Now))) & "/" & IIf(DateTime.Month(DateTime.Now) < 10, "0" & DateTime.Month(DateTime.Now), CStr(DateTime.Month(DateTime.Now))) & "/" & CStr(DateTime.Year(DateTime.Now))

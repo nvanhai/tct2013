@@ -1,93 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <HSoKhaiThue>
 	<TTinChung>
 		<TTinDVu>
-			<maDVu>String</maDVu>
-			<tenDVu>token</tenDVu>
-			<pbanDVu>String</pbanDVu>
-			<ttinNhaCCapDVu>String</ttinNhaCCapDVu>
+			<maDVu></maDVu>
+			<tenDVu></tenDVu>
+			<pbanDVu></pbanDVu>
+			<ttinNhaCCapDVu></ttinNhaCCapDVu>
 		</TTinDVu>
 		<TTinTKhaiThue>
 			<TKhaiThue>
-				<maTKhai>String</maTKhai>
-				<tenTKhai>token</tenTKhai>
+				<maTKhai></maTKhai>
+				<tenTKhai></tenTKhai>
 				<moTaBMau/>
-				<pbanTKhaiXML>String</pbanTKhaiXML>
-				<loaiTKhai>C</loaiTKhai>
-				<soLan>1</soLan>
+				<pbanTKhaiXML></pbanTKhaiXML>
+				<loaiTKhai></loaiTKhai>
+				<soLan></soLan>
 				<KyKKhaiThue>
-					<kieuKy>D</kieuKy>
-					<kyKKhai>String</kyKKhai>
-					<kyKKhaiTuNgay>String</kyKKhaiTuNgay>
-					<kyKKhaiDenNgay>String</kyKKhaiDenNgay>
+					<kieuKy></kieuKy>
+					<kyKKhai></kyKKhai>
+					<kyKKhaiTuNgay></kyKKhaiTuNgay>
+					<kyKKhaiDenNgay></kyKKhaiDenNgay>
 				</KyKKhaiThue>
-				<maCQTNoiNop>String</maCQTNoiNop>
-				<tenCQTNoiNop>token</tenCQTNoiNop>
-				<ngayLapTKhai>String</ngayLapTKhai>
+				<maCQTNoiNop></maCQTNoiNop>
+				<tenCQTNoiNop></tenCQTNoiNop>
+				<ngayLapTKhai></ngayLapTKhai>
 				<GiaHan>
-					<maLyDoGiaHan>String</maLyDoGiaHan>
-					<lyDoGiaHan>String</lyDoGiaHan>
+					<maLyDoGiaHan></maLyDoGiaHan>
+					<lyDoGiaHan></lyDoGiaHan>
 				</GiaHan>
-				<nguoiKy>String</nguoiKy>
-				<ngayKy>String</ngayKy>
+				<nguoiKy></nguoiKy>
+				<ngayKy></ngayKy>
+				<nganhNgheKD></nganhNgheKD>
 			</TKhaiThue>
 			<NNT>
-				<mst>0000000000</mst>
-				<tenNNT>token</tenNNT>
-				<dchiNNT>token</dchiNNT>
-				<maHuyenNNT>String</maHuyenNNT>
-				<tenHuyenNNT>String</tenHuyenNNT>
-				<maTinhNNT>String</maTinhNNT>
-				<tenTinhNNT>String</tenTinhNNT>
-				<dthoaiNNT>String</dthoaiNNT>
-				<faxNNT>String</faxNNT>
-				<emailNNT>String</emailNNT>
+				<mst></mst>
+				<tenNNT></tenNNT>
+				<dchiNNT></dchiNNT>
+				<phuongXa></phuongXa>
+				<maHuyenNNT></maHuyenNNT>
+				<tenHuyenNNT></tenHuyenNNT>
+				<maTinhNNT></maTinhNNT>
+				<tenTinhNNT></tenTinhNNT>
+				<dthoaiNNT></dthoaiNNT>
+				<faxNNT></faxNNT>
+				<emailNNT></emailNNT>
 			</NNT>
 			<DLyThue>
-				<mstDLyThue>0000000000</mstDLyThue>
-				<tenDLyThue>token</tenDLyThue>
-				<dchiDLyThue>token</dchiDLyThue>
-				<maHuyenDLyThue>String</maHuyenDLyThue>
-				<tenHuyenDLyThue>String</tenHuyenDLyThue>
-				<maTinhDLyThue>String</maTinhDLyThue>
-				<tenTinhDLyThue>String</tenTinhDLyThue>
-				<dthoaiDLyThue>String</dthoaiDLyThue>
-				<faxDLyThue>String</faxDLyThue>
-				<emailDLyThue>String</emailDLyThue>
-				<soHDongDLyThue>String</soHDongDLyThue>
-				<ngayKyHDDLyThue>String</ngayKyHDDLyThue>
+				<mstDLyThue></mstDLyThue>
+				<tenDLyThue></tenDLyThue>
+				<dchiDLyThue></dchiDLyThue>
+				<maHuyenDLyThue></maHuyenDLyThue>
+				<tenHuyenDLyThue></tenHuyenDLyThue>
+				<maTinhDLyThue></maTinhDLyThue>
+				<tenTinhDLyThue></tenTinhDLyThue>
+				<dthoaiDLyThue></dthoaiDLyThue>
+				<faxDLyThue></faxDLyThue>
+				<emailDLyThue></emailDLyThue>
+				<soHDongDLyThue></soHDongDLyThue>
+				<ngayKyHDDLyThue></ngayKyHDDLyThue>
 				<NVienDLy>
-					<tenNVienDLyThue>token</tenNVienDLyThue>
-					<cchiHNghe>String</cchiHNghe>
+					<tenNVienDLyThue></tenNVienDLyThue>
+					<cchiHNghe></cchiHNghe>
 				</NVienDLy>
 			</DLyThue>
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
+		<TongSoNguoiLaoDong>
+			<ct21></ct21>
+			<ct22></ct22>
+		</TongSoNguoiLaoDong>
 		<TongSoCaNhanDaKhauTru>
-			<ct21>1</ct21>
-			<ct22>1</ct22>
-			<ct23>1</ct23>
+			<ct23></ct23>
+			<ct24></ct24>
+			<ct25></ct25>
 		</TongSoCaNhanDaKhauTru>
 		<TongTNCTTraChoCaNhan>
-			<ct24>1</ct24>
-			<ct25>1</ct25>
-			<ct26>1</ct26>
-			<ct27>1</ct27>
+			<ct26></ct26>
+			<ct27></ct27>
+			<ct28></ct28>
+			<ct29></ct29>
 		</TongTNCTTraChoCaNhan>
 		<TongTNCTTraCNhanThuocDienKTru>
-			<ct28>1</ct28>
-			<ct29>1</ct29>
-			<ct30>1</ct30>
-			<ct31>1</ct31>
+			<ct30></ct30>
+			<ct31></ct31>
+			<ct32></ct32>
+			<ct33></ct33>
 		</TongTNCTTraCNhanThuocDienKTru>
 		<TongThueTNCNDaKhauTru>
-			<ct32>1</ct32>
-			<ct33>1</ct33>
-			<ct34>1</ct34>
-			<ct35>1</ct35>
+			<ct34></ct34>
+			<ct35></ct35>
+			<ct36></ct36>
+			<ct37></ct37>
 		</TongThueTNCNDaKhauTru>
 	</CTieuTKhaiChinh>
-	<PLuc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="a type derived from PLucType"/>
+	<PLuc/>
 </HSoKhaiThue>

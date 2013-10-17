@@ -136,5 +136,5 @@
 	<Infor ID="0140" Msg="Người nộp thuế đã ngừng hoạt động nhưng chưa đóng MST.Bạn có muốn tiếp tục?"/>
 	<Infor ID="0141" Msg="Có lỗi khi truy vấn thông tin đại lý thuế"/>
 	<Infor ID="0142" Msg="Có lỗi khi truy vấn thông tin người nộp thuế"/>
-	<Infor ID="0143" Msg="Ngày của máy trạm đang khác ngày của hệ thống. Bạn hãy kiểm tra và đăng nhập lại"/>
+	<Infor ID="0143" Msg="Ngày của máy trạm đang khác ngày hiện tại. Bạn hãy kiểm tra và đăng nhập lại"/>
 </Message>

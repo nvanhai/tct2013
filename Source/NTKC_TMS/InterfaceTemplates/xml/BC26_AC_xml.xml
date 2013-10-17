@@ -3,123 +3,123 @@
 <HSoKhaiThue xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">
 	<TTinChung>
 		<TTinDVu>
-			<maDVu>String</maDVu>
-			<tenDVu>token</tenDVu>
-			<pbanDVu>String</pbanDVu>
-			<ttinNhaCCapDVu>String</ttinNhaCCapDVu>
+			<maDVu></maDVu>
+			<tenDVu></tenDVu>
+			<pbanDVu></pbanDVu>
+			<ttinNhaCCapDVu></ttinNhaCCapDVu>
 		</TTinDVu>
 		<TTinTKhaiThue>
 			<TKhaiThue>
-				<maTKhai>String</maTKhai>
-				<tenTKhai>token</tenTKhai>
+				<maTKhai></maTKhai>
+				<tenTKhai></tenTKhai>
 				<moTaBMau/>
-				<pbanTKhaiXML>String</pbanTKhaiXML>
-				<loaiTKhai>C</loaiTKhai>
-				<soLan>1</soLan>
+				<pbanTKhaiXML></pbanTKhaiXML>
+				<loaiTKhai></loaiTKhai>
+				<soLan></soLan>
 				<KyKKhaiThue>
-					<kieuKy>D</kieuKy>
-					<kyKKhai>String</kyKKhai>
-					<kyKKhaiTuNgay>String</kyKKhaiTuNgay>
-					<kyKKhaiDenNgay>String</kyKKhaiDenNgay>
+					<kieuKy></kieuKy>
+					<kyKKhai></kyKKhai>
+					<kyKKhaiTuNgay></kyKKhaiTuNgay>
+					<kyKKhaiDenNgay></kyKKhaiDenNgay>
 				</KyKKhaiThue>
-				<maCQTNoiNop>String</maCQTNoiNop>
-				<tenCQTNoiNop>token</tenCQTNoiNop>
-				<ngayLapTKhai>String</ngayLapTKhai>
+				<maCQTNoiNop></maCQTNoiNop>
+				<tenCQTNoiNop></tenCQTNoiNop>
+				<ngayLapTKhai></ngayLapTKhai>
 				<GiaHan>
-					<maLyDoGiaHan>String</maLyDoGiaHan>
-					<lyDoGiaHan>String</lyDoGiaHan>
+					<maLyDoGiaHan></maLyDoGiaHan>
+					<lyDoGiaHan></lyDoGiaHan>
 				</GiaHan>
-				<nguoiKy>String</nguoiKy>
-				<ngayKy>String</ngayKy>
+				<nguoiKy></nguoiKy>
+				<ngayKy></ngayKy>
 			</TKhaiThue>
 			<NNT>
-				<mst>0000000000</mst>
-				<tenNNT>token</tenNNT>
-				<dchiNNT>token</dchiNNT>
-				<maHuyenNNT>String</maHuyenNNT>
-				<tenHuyenNNT>String</tenHuyenNNT>
-				<maTinhNNT>String</maTinhNNT>
-				<tenTinhNNT>String</tenTinhNNT>
-				<dthoaiNNT>String</dthoaiNNT>
-				<faxNNT>String</faxNNT>
-				<emailNNT>String</emailNNT>
+				<mst></mst>
+				<tenNNT></tenNNT>
+				<dchiNNT></dchiNNT>
+				<maHuyenNNT></maHuyenNNT>
+				<tenHuyenNNT></tenHuyenNNT>
+				<maTinhNNT></maTinhNNT>
+				<tenTinhNNT></tenTinhNNT>
+				<dthoaiNNT></dthoaiNNT>
+				<faxNNT></faxNNT>
+				<emailNNT></emailNNT>
 			</NNT>
 			<DLyThue>
-				<mstDLyThue>0000000000</mstDLyThue>
-				<tenDLyThue>token</tenDLyThue>
-				<dchiDLyThue>token</dchiDLyThue>
-				<maHuyenDLyThue>String</maHuyenDLyThue>
-				<tenHuyenDLyThue>String</tenHuyenDLyThue>
-				<maTinhDLyThue>String</maTinhDLyThue>
-				<tenTinhDLyThue>String</tenTinhDLyThue>
-				<dthoaiDLyThue>String</dthoaiDLyThue>
-				<faxDLyThue>String</faxDLyThue>
-				<emailDLyThue>String</emailDLyThue>
-				<soHDongDLyThue>String</soHDongDLyThue>
-				<ngayKyHDDLyThue>String</ngayKyHDDLyThue>
+				<mstDLyThue></mstDLyThue>
+				<tenDLyThue></tenDLyThue>
+				<dchiDLyThue></dchiDLyThue>
+				<maHuyenDLyThue></maHuyenDLyThue>
+				<tenHuyenDLyThue></tenHuyenDLyThue>
+				<maTinhDLyThue></maTinhDLyThue>
+				<tenTinhDLyThue></tenTinhDLyThue>
+				<dthoaiDLyThue></dthoaiDLyThue>
+				<faxDLyThue></faxDLyThue>
+				<emailDLyThue></emailDLyThue>
+				<soHDongDLyThue></soHDongDLyThue>
+				<ngayKyHDDLyThue></ngayKyHDDLyThue>
 				<NVienDLy>
-					<tenNVienDLyThue>token</tenNVienDLyThue>
-					<cchiHNghe>String</cchiHNghe>
+					<tenNVienDLyThue></tenNVienDLyThue>
+					<cchiHNghe></cchiHNghe>
 				</NVienDLy>
 			</DLyThue>
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
-		<kyBCaoCuoi>true</kyBCaoCuoi>
-		<chuyenDiaDiem>true</chuyenDiaDiem>
-		<ngayDauKyBC>String</ngayDauKyBC>
-		<ngayCuoiKyBC>String</ngayCuoiKyBC>
+		<kyBCaoCuoi></kyBCaoCuoi>
+		<chuyenDiaDiem></chuyenDiaDiem>
+		<ngayDauKyBC></ngayDauKyBC>
+		<ngayCuoiKyBC></ngayCuoiKyBC>
 		<HoaDon>
 			<ChiTiet id="ID_1">
-				<tenHDon>String</tenHDon>
-				<kHieuMauHDon>String</kHieuMauHDon>
-				<kHieuHDon>String</kHieuHDon>
+				<tenHDon></tenHDon>
+				<kHieuMauHDon></kHieuMauHDon>
+				<kHieuHDon></kHieuHDon>
 				<SoTonMuaTrKy>
-					<tongSo>1</tongSo>
+					<tongSo></tongSo>
 					<SoTonDauKy>
-						<tuSo>1</tuSo>
-						<denSo>1</denSo>
+						<tuSo></tuSo>
+						<denSo></denSo>
 					</SoTonDauKy>
 					<MuaTrongKy>
-						<tuSo>1</tuSo>
-						<denSo>1</denSo>
+						<tuSo></tuSo>
+						<denSo></denSo>
 					</MuaTrongKy>
 				</SoTonMuaTrKy>
 				<SoSuDungTrKy>
 					<TongSoSuDung>
-						<tuSo>1</tuSo>
-						<denSo>1</denSo>
-						<cong>1</cong>
+						<tuSo></tuSo>
+						<denSo></denSo>
+						<cong></cong>
 					</TongSoSuDung>
 					<TrongDo>
-						<soDaSDung>1</soDaSDung>
+						<soDaSDung></soDaSDung>
 						<XoaBo>
-							<soLuong>1</soLuong>
-							<so>String</so>
+							<soLuong></soLuong>
+							<so></so>
 						</XoaBo>
 						<Mat>
-							<soLuong>1</soLuong>
-							<so>String</so>
+							<soLuong></soLuong>
+							<so></so>
 						</Mat>
 						<Huy>
-							<soLuong>1</soLuong>
-							<so>String</so>
+							<soLuong></soLuong>
+							<so></so>
 						</Huy>
 					</TrongDo>
 				</SoSuDungTrKy>
 				<TonCuoiKy>
-					<tuSo>1</tuSo>
-					<denSo>1</denSo>
-					<soLuong>1</soLuong>
+					<tuSo></tuSo>
+					<denSo></denSo>
+					<soLuong></soLuong>
 				</TonCuoiKy>
 			</ChiTiet>
 		</HoaDon>
-		<tongCongSoTonDKy>1</tongCongSoTonDKy>
-		<tongCongSDung>1</tongCongSDung>
-		<tongCongSoTonCKy>1</tongCongSoTonCKy>
-		<nguoiLapBieu>String</nguoiLapBieu>
-		<nguoiDaiDien>String</nguoiDaiDien>
-		<ngayBCao>String</ngayBCao>
+		<tongCongSoTonDKy></tongCongSoTonDKy>
+		<tongCongSDung></tongCongSDung>
+		<tongCongSoTonCKy></tongCongSoTonCKy>
+		<nguoiLapBieu></nguoiLapBieu>
+		<nguoiDaiDien></nguoiDaiDien>
+		<ngayBCao></ngayBCao>
 	</CTieuTKhaiChinh>
 	<PLuc>
 	</PLuc>
