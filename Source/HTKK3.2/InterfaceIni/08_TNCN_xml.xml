@@ -5,17 +5,17 @@
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
-		<maLyDoGiaHan></maLyDoGiaHan>
-		<lyDoGiaHan></lyDoGiaHan>
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
 	</Static>
 	<Static GroupName="NNT">
-		<phuongXa></phuongXa>
-		<maHuyenNNT></maHuyenNNT>
-		<maTinhNNT></maTinhNNT>
+		<phuongXa/>
+		<maHuyenNNT/>
+		<maTinhNNT/>
 	</Static>
 	<Static GroupName="DLyThue">
-		<maHuyenDLyThue></maHuyenDLyThue>
-		<maTinhDLyThue></maTinhDLyThue>
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<ct21>R_48</ct21>
@@ -28,9 +28,9 @@
 		<ct26>R_53</ct26>
 		<ct27>R_54</ct27>
 		<ct28>R_55</ct28>
+		<ct29>R_56</ct29>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct29>R_56</ct29>
 		<ct30>R_57</ct30>
 		<ct31>R_58</ct31>
 		<ct32>R_59</ct32>
