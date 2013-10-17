@@ -1,14 +1,16 @@
 <PL_03_1_TD_TAIN>
 	<Dynamic GroupName="NHAMAYTHUYDIEN">
 		<bangPhanBoTAINThuyĐien id="id">
-			<tenNhaMay>C_42</tenNhaMay>
-			<tyLePhanBo>R_42</tyLePhanBo>
-			<soThueGTGTPNop>U_42</soThueGTGTPNop>
+			<tenNhaMay>String</tenNhaMay>
+			<mstNhaMay>text</mstNhaMay>
+			<tyLePhanBo>1</tyLePhanBo>
+			<soThueTNguyenPNop>1</soThueTNguyenPNop>
 			<CHITIETTHUYDIENCOQUANDIAPHUONG>
 				<cqtDiaPhuong>
-					<tenCQT>AH_42</tenCQT>
-					<tyLePhanBo>R_42</tyLePhanBo>
-					<soThueGTGTPNop>U_42</soThueGTGTPNop>
+					<maCQTDPhuong>text</maCQTDPhuong>
+					<tenCQTDPhuong>String</tenCQTDPhuong>
+					<tyLePBoCQTDPhuong>1</tyLePBoCQTDPhuong>
+					<thuePNopCQTDPhuong>1</thuePNopCQTDPhuong>
 				</cqtDiaPhuong>
 			</CHITIETTHUYDIENCOQUANDIAPHUONG>
 		</bangPhanBoTAINThuyĐien>

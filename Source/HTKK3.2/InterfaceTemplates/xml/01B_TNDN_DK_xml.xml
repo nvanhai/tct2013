@@ -29,12 +29,14 @@
 					<lyDoGiaHan>String</lyDoGiaHan>
 				</GiaHan>
 				<nguoiKy>String</nguoiKy>
-				<ngayKy>String</ngayKy>
+				<ngayKy>1967-08-13</ngayKy>
+				<nganhNgheKD>String</nganhNgheKD>
 			</TKhaiThue>
 			<NNT>
 				<mst>0000000000</mst>
 				<tenNNT>token</tenNNT>
 				<dchiNNT>token</dchiNNT>
+				<phuongXa>String</phuongXa>
 				<maHuyenNNT>String</maHuyenNNT>
 				<tenHuyenNNT>String</tenHuyenNNT>
 				<maTinhNNT>String</maTinhNNT>
@@ -55,7 +57,7 @@
 				<faxDLyThue>String</faxDLyThue>
 				<emailDLyThue>String</emailDLyThue>
 				<soHDongDLyThue>String</soHDongDLyThue>
-				<ngayKyHDDLyThue>String</ngayKyHDDLyThue>
+				<ngayKyHDDLyThue>1967-08-13</ngayKyHDDLyThue>
 				<NVienDLy>
 					<tenNVienDLyThue>token</tenNVienDLyThue>
 					<cchiHNghe>String</cchiHNghe>
@@ -65,6 +67,13 @@
 	</TTinChung>
 	<CTieuTKhaiChinh>
 		<ct12>String</ct12>
+		<CT13>
+			<donViUyQuyen>true</donViUyQuyen>
+			<daiLyThue></daiLyThue>
+		</CT13>
+		<tenDonViUyQuyen>String</tenDonViUyQuyen>
+		<ct22>1</ct22>
+		<ct23>1</ct23>
 		<ct24>1</ct24>
 		<ct25>1</ct25>
 		<ct26>1</ct26>
@@ -73,10 +82,12 @@
 		<ct29>1</ct29>
 		<ct30>1</ct30>
 		<ct31>1</ct31>
-		<ct32>1</ct32>
-		<ct33>1</ct33>
-		<mucLuc>String</mucLuc>
-		<tieuMucThu>String</tieuMucThu>
+		<ThongTinTKhoanNganHang>
+			<ThongTinTKhoanNganHang>
+				<soTKhoan>String</soTKhoan>
+				<taiNganHang>String</taiNganHang>
+			</ThongTinTKhoanNganHang>
+		</ThongTinTKhoanNganHang>
 	</CTieuTKhaiChinh>
 	<PLuc>
 	</PLuc>

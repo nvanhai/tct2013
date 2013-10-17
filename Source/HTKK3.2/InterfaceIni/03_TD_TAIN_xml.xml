@@ -5,39 +5,40 @@
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
-		<maLyDoGiaHan></maLyDoGiaHan>
-		<lyDoGiaHan></lyDoGiaHan>
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
 	</Static>
 	<Static GroupName="NNT">
-		<maHuyenNNT></maHuyenNNT>
-		<maTinhNNT></maTinhNNT>
+		<phuongXa/>
+		<maHuyenNNT/>
+		<maTinhNNT/>
 	</Static>
 	<Static GroupName="DLyThue">
-		<maHuyenDLyThue></maHuyenDLyThue>
-		<maTinhDLyThue></maTinhDLyThue>
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
+		<maTaiNguyen/>
 		<ct21>H_24</ct21>
 		<ct22>F_25</ct22>
 	</Static>
-	<Dynamic GroupName="BANGKEKHAITAIN">
-		<chiTietThueTAIN id="id">
-			<ct23>C_44</ct23>
-			<ct24>F_44</ct24>
-			<ct25>H_44</ct25>
-			<ct26>L_44</ct26>
-			<ct27>O_44</ct27>
-			<ct28>S_44</ct28>
-		</chiTietThueTAIN>
-	</Dynamic>
+	<Static GroupName="chiTietThueTAIN">
+		<ct23>C_44</ct23>
+		<ct24>F_44</ct24>
+		<ct25>I_44</ct25>
+		<ct26>K_44</ct26>
+		<ct27>O_44</ct27>
+		<ct28>R_44</ct28>
+		<ct29>V_44</ct29>
+	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<tongct26>L_46</tongct26>
-		<tongct27>O_46</tongct27>
-		<tongct28>S_46</tongct28>
+		<tong_ct27>O_46</tong_ct27>
+		<tong_ct28>R_46</tong_ct28>
+		<tong_ct29>V_46</tong_ct29>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>O_61</nguoiKy>
-		<ngayKy>O_63</ngayKy>
+		<nguoiKy>R_61</nguoiKy>
+		<ngayKy>R_63</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
 		<tenNVienDLyThue>F_61</tenNVienDLyThue>

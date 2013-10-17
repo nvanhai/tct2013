@@ -9,6 +9,7 @@
 		<lyDoGiaHan/>
 	</Static>
 	<Static GroupName="NNT">
+		<phuongXa/>
 		<maHuyenNNT/>
 		<maTinhNNT/>
 	</Static>
@@ -18,25 +19,37 @@
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<ct12>P_47</ct12>
-		<ct24>AV_53</ct24>
-		<ct25>AV_54</ct25>
-		<ct26>AV_55</ct26>
-		<ct27>AV_56</ct27>
-		<ct28>AV_57</ct28>
-		<ct29>AV_58</ct29>
-		<ct30>AV_59</ct30>
-		<ct31>AV_60</ct31>
-		<ct32>AV_61</ct32>
-		<ct33>AV_62</ct33>
-		<mucLuc/>
-		<tieuMucThu/>
 	</Static>
+	<Static GroupName="CT13">
+		<donViUyQuyen>AB_48</donViUyQuyen>
+		<daiLyThue>AB_48</daiLyThue>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tenDonViUyQuyen>P_36</tenDonViUyQuyen>
+		<ct22>AV_53</ct22>
+		<ct23>AV_54</ct23>
+		<ct24>AV_55</ct24>
+		<ct25>AV_56</ct25>
+		<ct26>AV_57</ct26>
+		<ct27>AV_58</ct27>
+		<ct28>AV_59</ct28>
+		<ct29>AV_60</ct29>
+		<ct30>AV_61</ct30>
+		<ct31>AV_62</ct31>
+	</Static>
+	<Dynamic GroupName="ThongTinTKhoanNganHang">
+		<ThongTinTKhoanNganHang id="id">
+			<soTKhoan>G_69</soTKhoan>
+			<taiNganHang>X_69</taiNganHang>
+		</ThongTinTKhoanNganHang>
+	</Dynamic>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>AR_66</nguoiKy>
-		<ngayKy>AR_68</ngayKy>
+		<nguoiKy>AR_74</nguoiKy>
+		<ngayKy>AR_76</ngayKy>
+		<nganhNgheKD/>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>U_66</tenNVienDLyThue>
-		<cchiHNghe>U_68</cchiHNghe>
+		<tenNVienDLyThue>U_74</tenNVienDLyThue>
+		<cchiHNghe>U_76</cchiHNghe>
 	</Static>
 </HSoKhaiThue>

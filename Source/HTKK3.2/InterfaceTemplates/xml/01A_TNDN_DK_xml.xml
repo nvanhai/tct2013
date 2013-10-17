@@ -29,12 +29,14 @@
 					<lyDoGiaHan>String</lyDoGiaHan>
 				</GiaHan>
 				<nguoiKy>String</nguoiKy>
-				<ngayKy>String</ngayKy>
+				<ngayKy>1967-08-13</ngayKy>
+				<nganhNgheKD>String</nganhNgheKD>
 			</TKhaiThue>
 			<NNT>
 				<mst>0000000000</mst>
 				<tenNNT>token</tenNNT>
 				<dchiNNT>token</dchiNNT>
+				<phuongXa>String</phuongXa>
 				<maHuyenNNT>String</maHuyenNNT>
 				<tenHuyenNNT>String</tenHuyenNNT>
 				<maTinhNNT>String</maTinhNNT>
@@ -55,7 +57,7 @@
 				<faxDLyThue>String</faxDLyThue>
 				<emailDLyThue>String</emailDLyThue>
 				<soHDongDLyThue>String</soHDongDLyThue>
-				<ngayKyHDDLyThue>String</ngayKyHDDLyThue>
+				<ngayKyHDDLyThue>1967-08-13</ngayKyHDDLyThue>
 				<NVienDLy>
 					<tenNVienDLyThue>token</tenNVienDLyThue>
 					<cchiHNghe>String</cchiHNghe>
@@ -64,28 +66,37 @@
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
-		<LoaiDKhi>
-			<ct01>true</ct01>
-			<ct02>true</ct02>
-			<ct03>true</ct03>
-		</LoaiDKhi>
+		<LoaiDauKhi>
+			<ct01></ct01>
+			<ct02></ct02>
+			<ct03></ct03>
+		</LoaiDauKhi>
+		<ct05></ct05>
 		<LoaiXuatBan>
-			<ct05>1</ct05>
-			<ct08>true</ct08>
-			<ct09>true</ct09>
-			<ct10>1967-08-13</ct10>
+			<ct08></ct08>
+						<ct09></ct09>
 		</LoaiXuatBan>
-		<ct19>String</ct19>
-		<ct28>1</ct28>
-		<ct29>1</ct29>
+		<ct10></ct10>
+		<ct19></ct19>
+		<CT20>
+			<donViUyQuyen></donViUyQuyen>
+			<daiLyThue></daiLyThue>
+		</CT20>
+		<tenDonViUyQuyen>P_36</tenDonViUyQuyen>
+		<ct29></ct29>
 		<ct30>1</ct30>
-		<ct31>0.0</ct31>
-		<ct32>1</ct32>
+		<ct31>1</ct31>
+		<ct32>0.0</ct32>
 		<ct33>1</ct33>
 		<ct34>1</ct34>
 		<ct35>1</ct35>
-		<mucLuc>String</mucLuc>
-		<tieuMucThu>String</tieuMucThu>
+		<ct36>1</ct36>
+		<ThongTinTKhoan>
+			<ThongTin>
+				<soTKhoan>String</soTKhoan>
+				<taiNganHang>String</taiNganHang>
+			</ThongTin>
+		</ThongTinTKhoan>
 	</CTieuTKhaiChinh>
 	<PLuc>
 	</PLuc>

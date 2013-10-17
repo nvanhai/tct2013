@@ -2,13 +2,15 @@
 	<NHAMAYTHUYDIEN>
 		<bangPhanBoTAINThuyĐien>
 			<tenNhaMay>String</tenNhaMay>
+			<mstNhaMay>text</mstNhaMay>
 			<tyLePhanBo>1</tyLePhanBo>
-			<soThueGTGTPNop>1</soThueGTGTPNop>
+			<soThueTNguyenPNop>1</soThueTNguyenPNop>
 			<CHITIETTHUYDIENCOQUANDIAPHUONG>
 				<cqtDiaPhuong>
-					<tenCQT>String</tenCQT>
-					<tyLePhanBo>1</tyLePhanBo>
-					<soThueGTGTPNop>1</soThueGTGTPNop>
+					<maCQTDPhuong>text</maCQTDPhuong>
+					<tenCQTDPhuong>String</tenCQTDPhuong>
+					<tyLePBoCQTDPhuong>1</tyLePBoCQTDPhuong>
+					<thuePNopCQTDPhuong>1</thuePNopCQTDPhuong>
 				</cqtDiaPhuong>
 			</CHITIETTHUYDIENCOQUANDIAPHUONG>
 		</bangPhanBoTAINThuyĐien>
