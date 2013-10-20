@@ -807,6 +807,7 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
     Dim cellid      As String
     Dim cellArray() As String
     Dim cNode       As MSXML.IXMLDOMNode
+    Dim dNode       As MSXML.IXMLDOMNode
 
     With fpSpread1
 
@@ -828,16 +829,51 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                         .Col = .ColLetterToNumber(cellArray(0))
                         .Row = Val(cellArray(1)) + cellRange
                         
-                        If .CellType = CellTypeNumber Then
-                            CloneNode.getElementsByTagName(cNode.nodeName)(0).Text = .Value
-                        Else
-                            CloneNode.getElementsByTagName(cNode.nodeName)(0).Text = .Text
+                        For Each dNode In CloneNode.getElementsByTagName(cNode.nodeName)
 
-                        End If
+                            If dNode.parentNode.nodeName = cNode.parentNode.nodeName Then
+                        
+                                If .CellType = CellTypeNumber Then
+                                
+                                    dNode.Text = .value
+                                ElseIf .CellType = CellTypeCheckBox Then
+
+                                    If LCase$(.Text) = "x" Then
+                                        dNode.Text = "1"
+                                    ElseIf .Text = "" Then
+                                        dNode.Text = "0"
+                                        Else
+                                        dNode.Text = .Text
+                                    End If
+
+                                Else
+                                    dNode.Text = .Text
+                            
+                                End If
+                            End If
+
+                        Next
+
                     End If
 
                     If .Text <> "" And .Text <> vbNullString Then
-                        Blank = False
+                        If .CellType = CellTypeNumber Then
+                            If .Text <> "0" Then
+                                Blank = False
+                    
+                            End If
+
+                        ElseIf .CellType = CellTypeDate Then
+
+                            If .Text <> "../../...." Then
+                                Blank = False
+                        
+                            End If
+
+                        Else
+                    
+                            Blank = False
+                        End If
                     End If
                     
                     Row = .Row
@@ -1169,6 +1205,7 @@ Private Sub ExecuteSave()
     Dim MaTK         As String
     Dim nodeVal      As MSXML.IXMLDOMNode
     Dim blnFinish    As Boolean
+Dim Level          As String
     Dim sRow         As Integer
     
     Dim sKyLapBo     As String
@@ -1239,9 +1276,11 @@ Private Sub ExecuteSave()
             
             'Set gia tri cho group dong
             If UCase(xmlNodeMapCT.nodeName) = "DYNAMIC" Then
-                CloneNode.loadXML xmlNodeMapCT.xml
-                ID = 1
+                Id = 1
                 currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
+                Level = GetAttribute(xmlNodeMapCT, "Level")
+
+                CloneNode.loadXML xmlNodeMapCT.firstChild.xml
 
                 If GetAttribute(xmlNodeMapCT, "GroupCellRange") = vbNullString Then
                     GroupCellRange = 1
@@ -1252,7 +1291,13 @@ Private Sub ExecuteSave()
                 Blank = True
 
                 If xmlTK.getElementsByTagName(currentGroup)(0).hasChildNodes Then
-                    xmlTK.getElementsByTagName(currentGroup)(0).removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild
+                    If Level = "2" Then
+                        xmlTK.getElementsByTagName(currentGroup)(0).firstChild.removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild.firstChild
+
+                    Else
+                        xmlTK.getElementsByTagName(currentGroup)(0).removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild
+
+                    End If
 
                 End If
 
@@ -1263,14 +1308,22 @@ Private Sub ExecuteSave()
                     .Row = sRow
 
                     If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
-                        cellRange = cellRange - GroupCellRange
+                        If Id > 1 Then
+                            cellRange = cellRange - GroupCellRange
+                        End If
+
                         Exit Do
                     End If
 
-                    SetAttribute CloneNode.firstChild.firstChild, "id", CStr(ID)
-                    Set nodePL = xmlTK.getElementsByTagName(currentGroup)(0)
-                    nodePL.appendChild CloneNode.firstChild.firstChild.CloneNode(True)
-                    ID = ID + 1
+                    SetAttribute CloneNode.firstChild, "id", CStr(Id)
+
+                    If Level = "2" Then
+                        xmlTK.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
+                    Else
+                        xmlTK.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
+                    End If
+
+                    Id = Id + 1
 
                     cellRange = cellRange + GroupCellRange
                 Loop
@@ -1312,7 +1365,17 @@ Private Sub ExecuteSave()
                         .Row = Val(cellArray(1)) + cellRange
 
                         If .CellType = CellTypeNumber Then
-                            xmlCellTKNode.Text = .Value
+                            xmlCellTKNode.Text = .value
+                        ElseIf .CellType = CellTypeCheckBox Then
+
+                            If LCase$(.Text) = "x" Then
+                                xmlCellTKNode.Text = "1"
+                            ElseIf .Text = "" Then
+                                xmlCellTKNode.Text = "0"
+                                Else
+                                xmlCellTKNode.Text = .Text
+                            End If
+
                         Else
                             xmlCellTKNode.Text = .Text
                         End If
@@ -1365,15 +1428,18 @@ Private Sub ExecuteSave()
 
                 xmlMapPL.Load GetAbsolutePath("..\ini\" & MaTK & "_xml.xml")
 
-                cellRange = 0
-                .Sheet = nodeValIndex + 1
+                If xmlPL.hasChildNodes = True And xmlMapPL.hasChildNodes = True Then
+                    cellRange = 0
+                    .sheet = nodeValIndex + 1
 
-                For Each xmlSection In xmlMapPL.lastChild.childNodes
+                    For Each xmlSection In xmlMapPL.lastChild.childNodes
 
-                    If UCase(xmlSection.nodeName) = "DYNAMIC" Then
-                        CloneNode.loadXML xmlSection.xml
-                        ID = 1
-                        currentGroup = GetAttribute(xmlSection, "GroupName")
+                        If UCase(xmlSection.nodeName) = "DYNAMIC" Then
+                            Id = 1
+                            currentGroup = GetAttribute(xmlSection, "GroupName")
+                            Level = GetAttribute(xmlSection, "Level")
+
+                            CloneNode.loadXML xmlSection.firstChild.xml
 
                         If GetAttribute(xmlSection, "GroupCellRange") = vbNullString Then
                             GroupCellRange = 1
@@ -1394,22 +1460,29 @@ Private Sub ExecuteSave()
                             .Col = .ColLetterToNumber("B")
                             .Row = sRow
 
-                            If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
-                                cellRange = cellRange - GroupCellRange
-                                Exit Do
-                            End If
+                                If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
+                                    If Id > 1 Then
+                                        cellRange = cellRange - GroupCellRange
+                                    End If
 
-                            SetAttribute CloneNode.firstChild.firstChild, "id", CStr(ID)
-                            Set nodePL = xmlPL.getElementsByTagName(currentGroup)(0)
-                            nodePL.appendChild CloneNode.firstChild.firstChild.CloneNode(True)
-                            ID = ID + 1
-                            cellRange = cellRange + GroupCellRange
-                        Loop
+                                    Exit Do
+                                End If
 
-                        cellRange = cellRange - 1
-                    Else
-                        Dim xmlChildNodePL As MSXML.IXMLDOMNode
-                        currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
+                                SetAttribute CloneNode.firstChild, "id", CStr(Id)
+
+                                If Level = "2" Then
+                                    xmlPL.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
+                                Else
+                                    xmlPL.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
+                                End If
+
+                                Id = Id + 1
+                                cellRange = cellRange + GroupCellRange
+                            Loop
+                        
+                        Else
+                            Dim xmlChildNodePL As MSXML.IXMLDOMNode
+                            currentGroup = GetAttribute(xmlSection, "GroupName")
 
                         For Each xmlCellNode In xmlSection.childNodes
 
@@ -1425,7 +1498,7 @@ Private Sub ExecuteSave()
                                 Set xmlCellTKNode = xmlPL.getElementsByTagName(xmlCellNode.nodeName)(0)
                             Else
 
-                                For Each xmlChildNodePL In xmlTK.getElementsByTagName(xmlCellNode.nodeName)
+                                    For Each xmlChildNodePL In xmlPL.getElementsByTagName(xmlCellNode.nodeName)
 
                                     If xmlChildNodePL.parentNode.nodeName = currentGroup Then
                                         Set xmlCellTKNode = xmlChildNodePL
@@ -1442,12 +1515,22 @@ Private Sub ExecuteSave()
                                 .Col = .ColLetterToNumber(cellArray(0))
                                 .Row = Val(cellArray(1)) + cellRange
 
-                                If .CellType = CellTypeNumber Then
-                                    xmlCellTKNode.Text = .Value
-                                Else
-                                    xmlCellTKNode.Text = .Text
+                                    If .CellType = CellTypeNumber Then
+                                        xmlCellTKNode.Text = .value
+                                    ElseIf .CellType = CellTypeCheckBox Then
+
+                                        If LCase$(.Text) = "x" Then
+                                            xmlCellTKNode.Text = "1"
+                                        ElseIf .Text = "" Then
+                                            xmlCellTKNode.Text = "0"
+                                            Else
+                                            xmlCellTKNode.Text = .Text
+                                        End If
+
+                                    Else
+                                        xmlCellTKNode.Text = .Text
+                                    End If
                                 End If
-                            End If
 
                         Next
 
@@ -1455,7 +1538,9 @@ Private Sub ExecuteSave()
 
                 Next
 
-                xmlTK.getElementsByTagName("PLuc")(0).appendChild xmlPL.lastChild
+                    xmlTK.getElementsByTagName("PLuc")(0).appendChild xmlPL.lastChild
+           
+                End If
             End If
 
         Next
