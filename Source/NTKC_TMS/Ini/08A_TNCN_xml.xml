@@ -27,11 +27,9 @@
 		<ChiTietThuNhapKDoanh id="id">
 			<ct26>C_61</ct26>
 			<ct27>H_61</ct27>
-			<ct28>L_61</ct28>
-			<ThuNhapChiuThue>
-				<ct29>N_61</ct29>
-				<ct30>Q_61</ct30>
-			</ThuNhapChiuThue>
+			<ct28>L_61</ct28>			
+			<ct29>N_61</ct29>
+			<ct30>Q_61</ct30>			
 			<ct31>U_61</ct31>
 			<ct32>X_61</ct32>
 			<ct33>AB_61</ct33>
@@ -44,10 +42,10 @@
 		<ct37>N_63</ct37>
 		<ct38>Q_63</ct38>
 		<ct39>U_63</ct39>
-		<ct41>X_63</ct41>
-		<ct42>AB_63</ct42>
-		<ct43>AE_63</ct43>
-		<ct40>AG_63</ct40>
+		<ct40>X_63</ct40>
+		<ct41>AB_63</ct41>
+		<ct42>AE_63</ct42>
+		<ct43>AG_63</ct43>		
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>S_78</nguoiKy>
