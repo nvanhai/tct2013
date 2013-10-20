@@ -18,23 +18,24 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct21>R_47</ct21>
-		<ct22>R_48</ct22>
-		<ct23>R_49</ct23>
+		<ct21>R_46</ct21>
+		<ct22>R_47</ct22>
+		<ct23>R_48</ct23>
 	</Static>
 	<Static GroupName="CacKhoanGiamTru">
-		<ct24>R_50</ct24>
-		<ct25>R_51</ct25>
-		<ct26>R_52</ct26>
-		<ct27>R_53</ct27>
-		<ct28>R_54</ct28>
+		<ct24>R_49</ct24>
+		<ct25>R_50</ct25>
+		<ct26>R_51</ct26>
+		<ct27>R_52</ct27>
+		<ct28>R_53</ct28>
+		<ct29>R_54</ct29>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct29>R_55</ct29>
-		<ct30>R_56</ct30>
-		<ct31>R_57</ct31>
-		<ct32>R_58</ct32>
-		<ct33>R_59</ct33>
+		<ct30>R_55</ct30>
+		<ct31>R_56</ct31>
+		<ct32>R_57</ct32>
+		<ct33>R_58</ct33>
+		<ct34>R_59</ct34>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>S_71</nguoiKy>
