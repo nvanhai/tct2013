@@ -4561,10 +4561,11 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
 
         Else
             If (InStr(xmlResultNNT.xml, "faultcode") > 0) Then
-                    MessageBox "0142", msYesNo, miCriticalError
+                   If (MessageBox("0142", msYesNo, miCriticalError) = mrNo) Then
                     Set rsReturn = Nothing
                     blnSuccess = False
                     Exit Function
+                    End If
             End If
             
             If (InStr(xmlResultNNT.xml, "MaSoThue") <= 0) Then
@@ -4730,11 +4731,11 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
                 Err_des = xmlResultDLT.getElementsByTagName("ERROR_DESC")(0).Text
             End If
             If (Err_des <> "") Then
-                MessageBox "0139", msOKOnly, miCriticalError
+                If (MessageBox("0139", msYesNo, miCriticalError) = mrNo) Then
                     Set rsReturn = Nothing
                     blnSuccess = False
                     Exit Function
-    
+                End If
             Else
     '            If (InStr(xmlResultDLT.xml, "NORM_NAME") <= 0) Then
     '                If (MessageBox("0136", msYesNo, miCriticalError) = mrNo) Then
@@ -4745,16 +4746,18 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
     '            End If
     
                 If (InStr(xmlResultDLT.xml, "faultcode") > 0) Then
-                        MessageBox "0141", msOKOnly, miCriticalError
+                       If (MessageBox("0141", msYesNo, miCriticalError) = mrNo) Then
                         Set rsReturn = Nothing
                         blnSuccess = False
                         Exit Function
+                        End If
                 End If
-                
-                If (xmlResultDLT.getElementsByTagName("TrangThaiHoatDong")(0).Text = "01") Then
-                        Set rsReturn = Nothing
-                        blnSuccess = False
-                        Exit Function
+                If (xmlResultDLT.getElementsByTagName("TrangThaiHoatDong").length > 0) Then
+                    If (xmlResultDLT.getElementsByTagName("TrangThaiHoatDong")(0).Text = "01") Then
+                            Set rsReturn = Nothing
+                            blnSuccess = False
+                            Exit Function
+                    End If
                 End If
             End If
             
@@ -4772,7 +4775,7 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
     rsReturn.Open
     rsReturn.AddNew
     
-    If (strResultDLT <> "" And xmlResultDLT.hasChildNodes And (InStr(xmlResultNNT.xml, "MaSoThue") > 0) And Err_des = "") Then
+    If (strResultDLT <> "" And xmlResultDLT.hasChildNodes And (InStr(xmlResultDLT.xml, "MaSoThue") > 0) And Err_des = "") Then
         'xmlResultDLT.loadXML TAX_Utilities_Srv_New.Convert(xmlResultDLT.xml, VISCII, UNICODE)
 
         rsReturn!repr_name = TAX_Utilities_Srv_New.Convert(xmlResultDLT.getElementsByTagName("TenNNT")(0).Text, UNICODE, TCVN)
@@ -4912,10 +4915,11 @@ On Error GoTo ErrHandle
 
         Else
             If (InStr(xmlResultNNT.xml, "faultcode") > 0) Then
-                    MessageBox "0142", msYesNo, miCriticalError
+                 If (MessageBox("0142", msYesNo, miCriticalError) = mrNo) Then
                     Set rsReturn = Nothing
                     blnSuccess = False
                     Exit Function
+                End If
             End If
             
             If (InStr(xmlResultNNT.xml, "MaSoThue") <= 0) Then
