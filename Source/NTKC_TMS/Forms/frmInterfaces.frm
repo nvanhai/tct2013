@@ -4532,7 +4532,7 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
     Else
         Set rsReturn = Nothing
         blnSuccess = False
-        MessageBox "013 8", msOKOnly, miCriticalError
+        MessageBox "0138", msOKOnly, miCriticalError
         Exit Function
     End If
 
@@ -4550,14 +4550,14 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
         xmlResultNNT.save sResultNNT
     
         Dim Err_des As String
-        Err_des = xmlResultNNT.getElementsByTagName("ERROR_DESC")(0).Text
-
+        If (xmlResultNNT.getElementsByTagName("ERROR_DESC").length > 0) Then
+            Err_des = xmlResultNNT.getElementsByTagName("ERROR_DESC")(0).Text
+        End If
         If (Err_des <> "") Then
                 MessageBox "0139", msOKOnly, miCriticalError
                 Set rsReturn = Nothing
                 blnSuccess = False
                 Exit Function
-            
 
         Else
             If (InStr(xmlResultNNT.xml, "faultcode") > 0) Then
@@ -4726,8 +4726,9 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
             xmlResultDLT.save sResultDLT
         
             Dim Err_des As String
-            Err_des = xmlResultDLT.getElementsByTagName("ERROR_DESC")(0).Text
-    
+            If (xmlResultDLT.getElementsByTagName("ERROR_DESC").length > 0) Then
+                Err_des = xmlResultDLT.getElementsByTagName("ERROR_DESC")(0).Text
+            End If
             If (Err_des <> "") Then
                 MessageBox "0139", msOKOnly, miCriticalError
                     Set rsReturn = Nothing
@@ -4898,8 +4899,10 @@ On Error GoTo ErrHandle
         xmlResultNNT.save sResultNNT
     
         Dim Err_des As String
-        Err_des = xmlResultNNT.getElementsByTagName("ERROR_DESC")(0).Text
-
+        If (xmlResultNNT.getElementsByTagName("ERROR_DESC").length > 0) Then
+            Err_des = xmlResultNNT.getElementsByTagName("ERROR_DESC")(0).Text
+        End If
+        
         If (Err_des <> "") Then
                 MessageBox "0139", msOKOnly, miCriticalError
                 Set rsReturn = Nothing
