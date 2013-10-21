@@ -1,12 +1,13 @@
 <PLuc_01_DK>
+	<ct09></ct09>
 	<NghiaVuThue>
-		<PLuc_01_DK>
-			<mst>0000000000</mst>
-			<tenNhaThau>String</tenNhaThau>
-			<tyLePhanBo>0.0</tyLePhanBo>
-			<soThuePSinhPNop>0.0</soThuePSinhPNop>
-			<ghiChu>String</ghiChu>
-		</PLuc_01_DK>
+		<ChiTiet id="id">
+			<mstNThau></mstNThau>
+			<tenNThau></tenNThau>
+			<tyLePBoNThau></tyLePBoNThau>
+			<soThuePSinhPNopNThau></soThuePSinhPNopNThau>
+			<ghiChuNThau></ghiChuNThau>
+		</ChiTiet>
 	</NghiaVuThue>
-	<tongCong>1</tongCong>
+	<tongCong></tongCong>
 </PLuc_01_DK>
