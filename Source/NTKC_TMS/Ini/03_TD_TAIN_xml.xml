@@ -1,24 +1,26 @@
-<HSoKhaiThue>
+<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>03_TD_TAIN</maTKhai>
 		<tenTKhai>Tờ khai thuế tài nguyên(03/TĐ-TAIN)</tenTKhai>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
-		<maLyDoGiaHan></maLyDoGiaHan>
-		<lyDoGiaHan></lyDoGiaHan>
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
 	</Static>
 	<Static GroupName="NNT">
-		<maHuyenNNT></maHuyenNNT>
-		<maTinhNNT></maTinhNNT>
+		<phuongXa/>
+		<maHuyenNNT/>
+		<maTinhNNT/>
 	</Static>
 	<Static GroupName="DLyThue">
-		<maHuyenDLyThue></maHuyenDLyThue>
-		<maTinhDLyThue></maTinhDLyThue>
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct21>Tài nguyên nước</ct21>
-		<ct22>0.02</ct22>
+		<maTaiNguyen/>
+		<ct21>F_26</ct21>
+		<ct22>E_28</ct22>
 	</Static>
 	<Dynamic GroupName="BANGKEKHAITAIN">
 		<chiTietThueTAIN id="id">
@@ -28,12 +30,13 @@
 			<ct26>N_44</ct26>
 			<ct27>R_44</ct27>
 			<ct28>W_44</ct28>
+			<ct29></ct29>
 		</chiTietThueTAIN>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
-		<tongct26>N_46</tongct26>
-		<tongct27>R_46</tongct27>
-		<tongct28>W_46</tongct28>
+		<tong_ct27>N_46</tong_ct27>
+		<tong_ct28>R_46</tong_ct28>
+		<tong_ct29>W_46</tong_ct29>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>R_51</nguoiKy>
