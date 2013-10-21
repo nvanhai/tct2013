@@ -835,7 +835,7 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                         
                                 If .CellType = CellTypeNumber Then
                                 
-                                    dNode.Text = .value
+                                    dNode.Text = .Value
                                 ElseIf .CellType = CellTypeCheckBox Then
 
                                     If LCase$(.Text) = "x" Then
@@ -1276,7 +1276,7 @@ Dim Level          As String
             
             'Set gia tri cho group dong
             If UCase(xmlNodeMapCT.nodeName) = "DYNAMIC" Then
-                Id = 1
+                ID = 1
                 currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
                 Level = GetAttribute(xmlNodeMapCT, "Level")
 
@@ -1308,14 +1308,14 @@ Dim Level          As String
                     .Row = sRow
 
                     If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
-                        If Id > 1 Then
+                        If ID > 1 Then
                             cellRange = cellRange - GroupCellRange
                         End If
 
                         Exit Do
                     End If
 
-                    SetAttribute CloneNode.firstChild, "id", CStr(Id)
+                    SetAttribute CloneNode.firstChild, "id", CStr(ID)
 
                     If Level = "2" Then
                         xmlTK.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
@@ -1323,7 +1323,7 @@ Dim Level          As String
                         xmlTK.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
                     End If
 
-                    Id = Id + 1
+                    ID = ID + 1
 
                     cellRange = cellRange + GroupCellRange
                 Loop
@@ -1365,7 +1365,7 @@ Dim Level          As String
                         .Row = Val(cellArray(1)) + cellRange
 
                         If .CellType = CellTypeNumber Then
-                            xmlCellTKNode.Text = .value
+                            xmlCellTKNode.Text = .Value
                         ElseIf .CellType = CellTypeCheckBox Then
 
                             If LCase$(.Text) = "x" Then
@@ -1430,12 +1430,12 @@ Dim Level          As String
 
                 If xmlPL.hasChildNodes = True And xmlMapPL.hasChildNodes = True Then
                     cellRange = 0
-                    .sheet = nodeValIndex + 1
+                    .Sheet = nodeValIndex + 1
 
                     For Each xmlSection In xmlMapPL.lastChild.childNodes
 
                         If UCase(xmlSection.nodeName) = "DYNAMIC" Then
-                            Id = 1
+                            ID = 1
                             currentGroup = GetAttribute(xmlSection, "GroupName")
                             Level = GetAttribute(xmlSection, "Level")
 
@@ -1461,14 +1461,14 @@ Dim Level          As String
                             .Row = sRow
 
                                 If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
-                                    If Id > 1 Then
+                                    If ID > 1 Then
                                         cellRange = cellRange - GroupCellRange
                                     End If
 
                                     Exit Do
                                 End If
 
-                                SetAttribute CloneNode.firstChild, "id", CStr(Id)
+                                SetAttribute CloneNode.firstChild, "id", CStr(ID)
 
                                 If Level = "2" Then
                                     xmlPL.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
@@ -1476,7 +1476,7 @@ Dim Level          As String
                                     xmlPL.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
                                 End If
 
-                                Id = Id + 1
+                                ID = ID + 1
                                 cellRange = cellRange + GroupCellRange
                             Loop
                         
@@ -1516,7 +1516,7 @@ Dim Level          As String
                                 .Row = Val(cellArray(1)) + cellRange
 
                                     If .CellType = CellTypeNumber Then
-                                        xmlCellTKNode.Text = .value
+                                        xmlCellTKNode.Text = .Value
                                     ElseIf .CellType = CellTypeCheckBox Then
 
                                         If LCase$(.Text) = "x" Then
@@ -1557,9 +1557,9 @@ Dim Level          As String
     Set xmlDocSave = AppendXMLStandard(xmlTK, sKyLapBo, sNgayNopTK)
     xmlDocSave.save sFileName
     ' Push MQ
-'    If (Not PushDataToESB(xmlDocSave.xml)) Then
-'        MessageBox "0137", msOKOnly, miCriticalError
-'    End If
+    If (Not PushDataToESB(xmlDocSave.xml)) Then
+        MessageBox "0137", msOKOnly, miCriticalError
+    End If
 
     ' End push
     
@@ -4479,9 +4479,9 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
     Set xmlResultNNT = New MSXML.DOMDocument
     Dim strResultNNT As String
     
-    'Du lieu gia lap de test
-        Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-        strResultNNT = "sdfsfds"
+'    'Du lieu gia lap de test
+'        Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+'        strResultNNT = "sdfsfds"
     
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         Dim cfigXml As New MSXML.DOMDocument
@@ -4524,11 +4524,11 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
         sParamNNT = "c:\TempXML\" & "paramNNT.xml"
         paXmlDoc.save sParamNNT
 
-''        'Return value from ESB
-'        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
-'
-'        strResultNNT = ChangeTagASSCII(strResultNNT, False)
-'        xmlResultNNT.loadXML strResultNNT
+'        'Return value from ESB
+        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+
+        strResultNNT = ChangeTagASSCII(strResultNNT, False)
+        xmlResultNNT.loadXML strResultNNT
     Else
         Set rsReturn = Nothing
         blnSuccess = False
@@ -4651,9 +4651,9 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
     Dim strResultDLT As String
     
     
-    'Du lieu gia lap de test
-    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
-    strResultDLT = "sdfsfds"
+'    'Du lieu gia lap de test
+'    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
+'    strResultDLT = "sdfsfds"
     
     'Neu khong co thong tin NNT thi exit luon
     If (strTaxIDString = "" Or strTaxIDString = vbNullString) Then
@@ -4704,11 +4704,11 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
         sParamDLT = "c:\TempXML\" & "paramDLT.xml"
         paXmlDoc.save sParamDLT
 
-''        'Return value from ESB
-'        strResultDLT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
-'
-'        strResultDLT = ChangeTagASSCII(strResultDLT, False)
-'        xmlResultDLT.loadXML strResultDLT
+'        'Return value from ESB
+        strResultDLT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+
+        strResultDLT = ChangeTagASSCII(strResultDLT, False)
+        xmlResultDLT.loadXML strResultDLT
     End If
     
     If strTaxIDDLString <> "" And strTaxIDDLString <> vbNullString Then
@@ -4829,9 +4829,9 @@ On Error GoTo ErrHandle
     Set xmlResultNNT = New MSXML.DOMDocument
     Dim strResultNNT As String
 
-   'Du lieu gia lap de test
-    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-    strResultNNT = "test"
+'   'Du lieu gia lap de test
+'    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+'    strResultNNT = "test"
 
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         Dim cfigXml As New MSXML.DOMDocument
@@ -4872,11 +4872,11 @@ On Error GoTo ErrHandle
         sParamNNT = "c:\TempXML\" & "paramNNT.xml"
         paXmlDoc.save sParamNNT
 
-'        'Return value from ESB
-'        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
-'
-'        strResultNNT = ChangeTagASSCII(strResultNNT, False)
-'        xmlResultNNT.loadXML strResultNNT
+        'Return value from ESB
+        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+
+        strResultNNT = ChangeTagASSCII(strResultNNT, False)
+        xmlResultNNT.loadXML strResultNNT
     Else
         Set rsReturn = Nothing
         blnSuccess = False
