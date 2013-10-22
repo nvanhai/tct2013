@@ -104,22 +104,6 @@ Public Sub Prepare1()
         .Sheet = SHEET_PHU_LUC_01
         SetDateFormat fps, SHEET_PHU_LUC_01, 34, fps.ColLetterToNumber("AD"), DDMMYYYY
         '--end set for sheet Phu luc 01
-        
-        'load form
-        .Sheet = 1
-        .Row = 28
-        .Col = .ColLetterToNumber("AS")
-        If (.value = "1" Or .value = "chk") Then
-            .Row = 29
-            .Col = .ColLetterToNumber("AM")
-            .BackColor = mNonErrorColor
-            .Lock = False
-        Else
-            .Row = 29
-            .Col = .ColLetterToNumber("AM")
-            .BackColor = mLockNonErrorColor
-            .Lock = True
-        End If
 
         'end
         fps.EventEnabled(EventAllEvents) = True
@@ -139,6 +123,22 @@ Public Sub Prepare2()
     Dim xmlNode As MSXML.IXMLDOMNode
 
     With fps
+        'load form
+        .Sheet = 1
+        .Row = 28
+        .Col = .ColLetterToNumber("AS")
+        If (.value = "1") Then
+            .Row = 29
+            .Col = .ColLetterToNumber("AM")
+            .BackColor = mNonErrorColor
+            .Lock = False
+        Else
+            .Row = 29
+            .Col = .ColLetterToNumber("AM")
+            .BackColor = mLockNonErrorColor
+            .Lock = True
+        End If
+        
         .Sheet = 1
         mCurrentSheet = .Sheet
         fps.EventEnabled(EventAllEvents) = False

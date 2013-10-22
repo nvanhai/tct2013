@@ -483,7 +483,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":029E
       UserResize      =   1
       Appearance      =   1
    End
@@ -4064,13 +4064,17 @@ Private Sub SetupLayout02_TAIN_DK()
             lblSolan.Visible = False
             txtSolan.Visible = False
     
+    'set value default
+    chkDauTho.value = 1
+    chkCondensate.value = 0
+    chkKhiThien.value = 0
     
     Me.Top = (frmSystem.ScaleHeight - Me.ScaleHeight) / 2 - 400
     Me.Left = (frmSystem.Width - Me.Width) / 2
     
     Exit Sub
 ErrorHandle:
-    SaveErrorLog Me.Name, "SetupLayout01_TAIN_DK", Err.Number, Err.Description
+    SaveErrorLog Me.Name, "SetupLayout02_TAIN_DK", Err.Number, Err.Description
 End Sub
 
 '****************************************************
