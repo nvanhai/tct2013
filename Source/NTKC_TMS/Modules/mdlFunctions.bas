@@ -1688,6 +1688,10 @@ End If
 
 End Function
 
+Public Function GenerateCodeByNow() As String
+GenerateCodeByNow = DateTime.Year(DateTime.Now) & DateTime.Month(DateTime.Now) & DateTime.Day(DateTime.Now) & DateTime.Hour(DateTime.Now) & DateTime.Minute(DateTime.Now) & DateTime.Second(DateTime.Now)
+End Function
+
 'chuyen string sang utf8
 Public Function ConvertStringToUtf8String(ByRef strText As String) As String
 

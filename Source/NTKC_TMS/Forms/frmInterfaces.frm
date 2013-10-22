@@ -905,7 +905,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     xmlTK.getElementsByTagName("tenHuyenNNT")(0).Text = ""
     xmlTK.getElementsByTagName("tenTinhNNT")(0).Text = ""
     
-    If (xmlResultNNT.hasChildNodes) Then
+    If (xmlResultNNT.hasChildNodes And (InStr(xmlResultNNT.xml, "faultcode") < 0)) Then
         xmlTK.getElementsByTagName("maHuyenNNT")(0).Text = xmlResultNNT.getElementsByTagName("MaQuanHuyen")(0).Text
         xmlTK.getElementsByTagName("maTinhNNT")(0).Text = xmlResultNNT.getElementsByTagName("MaTinh")(0).Text
         
@@ -916,12 +916,12 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         xmlTK.getElementsByTagName("dthoaiNNT")(0).Text = "" ' xmlResultNNT.getElementsByTagName("TRAN_TEL")(0).Text
         xmlTK.getElementsByTagName("faxNNT")(0).Text = "" 'xmlResultNNT.getElementsByTagName("TRAN_FAX")(0).Text
         xmlTK.getElementsByTagName("emailNNT")(0).Text = "" 'xmlResultNNT.getElementsByTagName("MAIL")(0).Text
-        xmlTK.getElementsByTagName("mst")(0).Text = xmlResultNNT.getElementsByTagName("MaSoThue")(0).Text
-    Else
-        xmlTK.getElementsByTagName("mst")(0).Text = strMaNNT
+        'xmlTK.getElementsByTagName("mst")(0).Text = xmlResultNNT.getElementsByTagName("MaSoThue")(0).Text
     End If
-
-    If (xmlResultDLT.hasChildNodes) Then
+    
+    xmlTK.getElementsByTagName("mst")(0).Text = strMaNNT
+    
+    If (xmlResultDLT.hasChildNodes And (InStr(xmlResultDLT.xml, "faultcode") < 0)) Then
        ' xmlTK.getElementsByTagName("tenDLyThue")(0).Text = "test"
         xmlTK.getElementsByTagName("tenDLyThue")(0).Text = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("TenNNT")(0).Text)
         'xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = "test"
@@ -2152,13 +2152,16 @@ Private Sub Command1_Click()
 'str2 = "aa999513100177415   02201300100100100101/0101/01/2010<S01><S>1000724808</S><S>20000000~1000000~50000000~50000~100000000~5000000~200000000~20000000~100000000~4000000~200000000~100000000</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~1~~</S></S01>"
 'Barcode_Scaned str2
 '' To Khai 03/KK-TNCN theo Quy - To khai bo sung
-str2 = "bs999513100177415   02201300200200100101/0101/01/2010<S01><S>1000724808</S><S>10000000~500000~25000000~25000~50000000~2500000~100000000~10000000~50000000~2000000~100000000~50000000</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~~1~1</S></S01>"
-Barcode_Scaned str2
+'str2 = "bs999513100177415   02201300200200100101/0101/01/2010<S01><S>1000724808</S><S>10000000~500000~25000000~25000~50000000~2500000~100000000~10000000~50000000~2000000~100000000~50000000</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~~1~1</S></S01>"
+'Barcode_Scaned str2
 
 '' To Khai 07/KK-TNCN - To khai chinh thuc
 'str2 = "bs999513100177415   02201300200200100101/0101/01/2010<S01><S>1000724808</S><S>10000000~500000~25000000~25000~50000000~2500000~100000000~10000000~50000000~2000000~100000000~50000000</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~~1~1</S></S01>"
 'Barcode_Scaned str2
 
+' 02/KK-TNCN - Quy
+str2 = "aa999162300790384   03201300100100100101/0101/01/2010<S01><S></S><S>1000~800~300~200~900000000~700000000~200000000~100000000~20000000~30000000~20000000~2000000~6000000</S><S>Nguyen Van A~21/10/2013~~~1~~</S></S01>"
+Barcode_Scaned str2
 
 End Sub
 
@@ -4508,7 +4511,9 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
         paXmlDoc.getElementsByTagName("ORIGINAL_CODE")(0).Text = cfigXml.getElementsByTagName("ORIGINAL_CODE")(0).Text
         paXmlDoc.getElementsByTagName("ORIGINAL_NAME")(0).Text = cfigXml.getElementsByTagName("ORIGINAL_NAME")(0).Text
 
-        paXmlDoc.getElementsByTagName("MSG_ID")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text & GetGUID()
+        paXmlDoc.getElementsByTagName("MSG_ID")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow() '& GetGUID()
+        
+        
         paXmlDoc.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
         paXmlDoc.getElementsByTagName("ORIGINAL_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
 
