@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <HSoKhaiThue>
 	<TTinChung>
 		<TTinDVu>
@@ -13,10 +14,10 @@
 				<tenTKhai></tenTKhai>
 				<moTaBMau/>
 				<pbanTKhaiXML></pbanTKhaiXML>
-				<loaiTKhai>C</loaiTKhai>
-				<soLan>1</soLan>
+				<loaiTKhai></loaiTKhai>
+				<soLan></soLan>
 				<KyKKhaiThue>
-					<kieuKy>D</kieuKy>
+					<kieuKy></kieuKy>
 					<kyKKhai></kyKKhai>
 					<kyKKhaiTuNgay></kyKKhaiTuNgay>
 					<kyKKhaiDenNgay></kyKKhaiDenNgay>
@@ -32,7 +33,7 @@
 				<ngayKy></ngayKy>
 			</TKhaiThue>
 			<NNT>
-				<mst>0000000000</mst>
+				<mst></mst>
 				<tenNNT></tenNNT>
 				<dchiNNT></dchiNNT>
 				<maHuyenNNT></maHuyenNNT>
@@ -44,7 +45,7 @@
 				<emailNNT></emailNNT>
 			</NNT>
 			<DLyThue>
-				<mstDLyThue>0000000000</mstDLyThue>
+				<mstDLyThue></mstDLyThue>
 				<tenDLyThue></tenDLyThue>
 				<dchiDLyThue></dchiDLyThue>
 				<maHuyenDLyThue></maHuyenDLyThue>
@@ -65,28 +66,28 @@
 	</TTinChung>
 	<CTieuTKhaiChinh>
 		<ThuNhapTuDauTuVon>
-			<ct21>1</ct21>
-			<ct22>1</ct22>
+			<ct21></ct21>
+			<ct22></ct22>
 		</ThuNhapTuDauTuVon>
 		<ThuNhapTuCNhuongCKhoan>
-			<ct23>1</ct23>
-			<ct24>1</ct24>
+			<ct23></ct23>
+			<ct24></ct24>
 		</ThuNhapTuCNhuongCKhoan>
 		<ThuNhapTuBanQuyenTMai>
-			<ct25>1</ct25>
-			<ct26>1</ct26>
+			<ct25></ct25>
+			<ct26></ct26>
 		</ThuNhapTuBanQuyenTMai>
 		<ThuNhapTuTrungThuong>
-			<ct27>1</ct27>
-			<ct28>1</ct28>
+			<ct27></ct27>
+			<ct28></ct28>
 		</ThuNhapTuTrungThuong>
 		<ThuNhapTuKDoanhCuaCNhanKhongCuTru>
-			<ct29>1</ct29>
-			<ct30>1</ct30>
+			<ct29></ct29>
+			<ct30></ct30>
 		</ThuNhapTuKDoanhCuaCNhanKhongCuTru>
 		<ThuNhapTuCNhuongVonCuaCNhanKhongCTru>
-			<ct31>1</ct31>
-			<ct32>1</ct32>
+			<ct31></ct31>
+			<ct32></ct32>
 		</ThuNhapTuCNhuongVonCuaCNhanKhongCTru>
 	</CTieuTKhaiChinh>
 	<PLuc/>
