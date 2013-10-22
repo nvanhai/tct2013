@@ -341,7 +341,7 @@ Private strTaxReportVersion     As String
 
 Private arrBCBuffer() As String
 Private arrBCNew() As String
-Private verToKhai As Byte                               ' Luu cac kieu ma vach cho cac version ke khai khac nhau
+Private verToKhai As Byte       ' Luu cac kieu ma vach cho cac version ke khai khac nhau
 Private maxBarCode As Long       ' Su dung trong truong hop to khai 04/TNCN
 
 Private checkSoCT As Integer
