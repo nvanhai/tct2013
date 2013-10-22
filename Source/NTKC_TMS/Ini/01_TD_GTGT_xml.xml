@@ -1,6 +1,6 @@
 <HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30">
 	<Static GroupName="TKhaiThue">
-		<maTKhai>01_TD_GTGT</maTKhai>
+		<maTKhai>132</maTKhai>
 		<tenTKhai>Tờ khai thuế GTGT – 01/TĐ-GTGT</tenTKhai>
 		<moTaBMau/>
 	</Static>
