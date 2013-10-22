@@ -483,7 +483,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":029E
+      SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
    End
@@ -727,8 +727,12 @@ Dim d, m, Y As Integer
         
         strCondensate = chkCondensate.value
         strLoaiTkDk = "CD"
-        strLoaiTKThang_PS = "TK_LANPS"
         
+        If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98") Then
+            strLoaiTKThang_PS = "TK_LANPS"
+        ElseIf (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "93") Then
+            strLoaiTKThang_PS = "TK_NAM"
+        End If
         strDauTho = 0
         strKhiThienNhien = 0
 
@@ -770,7 +774,12 @@ Dim d, m, Y As Integer
         
         strDauTho = chkDauTho.value
         strLoaiTkDk = "DT"
-        strLoaiTKThang_PS = "TK_LANPS"
+        
+        If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98") Then
+            strLoaiTKThang_PS = "TK_LANPS"
+        ElseIf (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "93") Then
+            strLoaiTKThang_PS = "TK_NAM"
+        End If
         
         strKhiThienNhien = 0
         strCondensate = 0
@@ -811,7 +820,12 @@ Dim m, Y As Integer
         
         strKhiThienNhien = chkKhiThien.value
         strLoaiTkDk = "KTN"
-        strLoaiTKThang_PS = "TK_THANG"
+        
+        If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98") Then
+            strLoaiTKThang_PS = "TK_LANPS"
+        ElseIf (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "93") Then
+            strLoaiTKThang_PS = "TK_NAM"
+        End If
         
         strDauTho = 0
         strCondensate = 0
@@ -2634,7 +2648,7 @@ Public Sub cmdOK_Click()
     ' To khai bo sung
     If strKHBS = "TKBS" And (idToKhai = "02" Or idToKhai = "01" Or idToKhai = "04" Or idToKhai = "03" Or idToKhai = "11" Or idToKhai = "12" _
     Or idToKhai = "06" Or idToKhai = "05" Or idToKhai = "86" Or idToKhai = "87" Or idToKhai = "71" Or idToKhai = "72" Or idToKhai = "77" Or idToKhai = "73" _
-    Or idToKhai = "80" Or idToKhai = "81" Or idToKhai = "70" Or idToKhai = "82" Or idToKhai = "83" Or idToKhai = "85" Or idToKhai = "90" Or idToKhai = "95" Or idToKhai = "94" Or idToKhai = "96" Or idToKhai = "97" Or idToKhai = "98" Or idToKhai = "99") Then
+    Or idToKhai = "80" Or idToKhai = "81" Or idToKhai = "70" Or idToKhai = "82" Or idToKhai = "83" Or idToKhai = "85" Or idToKhai = "90" Or idToKhai = "92" Or idToKhai = "93" Or idToKhai = "95" Or idToKhai = "94" Or idToKhai = "96" Or idToKhai = "97" Or idToKhai = "98" Or idToKhai = "99") Then
         'dhdang them lay ngay KHBS
         'kiem tra ton tai TK chinh thuc
         Dim strDay As Variant
