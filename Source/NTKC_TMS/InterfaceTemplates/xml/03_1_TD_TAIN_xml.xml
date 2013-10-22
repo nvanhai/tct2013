@@ -1,12 +1,12 @@
 <PL_03_1_TD_TAIN>
 	<NHAMAYTHUYDIEN>
 		<bangPhanBoTAINThuyĐien>
-			<tenNhaMay>String</tenNhaMay>
+			<tenNhaMay></tenNhaMay>
 			<tyLePhanBo>1</tyLePhanBo>
 			<soThueGTGTPNop>1</soThueGTGTPNop>
 			<CHITIETTHUYDIENCOQUANDIAPHUONG>
 				<cqtDiaPhuong>
-					<tenCQT>String</tenCQT>
+					<tenCQT></tenCQT>
 					<tyLePhanBo>1</tyLePhanBo>
 					<soThueGTGTPNop>1</soThueGTGTPNop>
 				</cqtDiaPhuong>

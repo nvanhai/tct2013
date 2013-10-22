@@ -1,19 +1,19 @@
 <PLuc01_TTDB>
 	<ThoiGianNopTKhaiChinh>
-		<ngayNopTKhaiChinh>String</ngayNopTKhaiChinh>
-		<thangNopTKhaiChinh>String</thangNopTKhaiChinh>
-		<namNopTKhaiChinh>String</namNopTKhaiChinh>
+		<ngayNopTKhaiChinh></ngayNopTKhaiChinh>
+		<thangNopTKhaiChinh></thangNopTKhaiChinh>
+		<namNopTKhaiChinh></namNopTKhaiChinh>
 	</ThoiGianNopTKhaiChinh>
 	<PLucBRaChiuThueTTDB>
 		<ChiTietPLucBRaChiuThueTTDB>
 			<PLucBRaChiuThue>
 				<ct2>
-					<khieuHDon>String</khieuHDon>
+					<khieuHDon></khieuHDon>
 					<soHDon>1</soHDon>
 					<ngayPhatHanh>1967-08-13</ngayPhatHanh>
 				</ct2>
-				<ct3>String</ct3>
-				<ct4>String</ct4>
+				<ct3></ct3>
+				<ct4></ct4>
 				<ct5>1</ct5>
 				<ct6>1</ct6>
 				<ct7>0.0</ct7>
