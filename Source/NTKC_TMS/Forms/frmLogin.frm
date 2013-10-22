@@ -282,8 +282,9 @@ Private Function IsValidUserESB() As Integer
 
     Else
         Dim Err_des As String
-        Err_des = xmlResultNSD.getElementsByTagName("ERROR_DESC")(0).Text
-
+        If (xmlResultNSD.getElementsByTagName("ERROR_DESC").length > 0) Then
+            Err_des = xmlResultNSD.getElementsByTagName("ERROR_DESC")(0).Text
+        End If
         If (Err_des <> "") Then
             IsValidUserESB = 1
             Set xmlResultNSD = Nothing
