@@ -4,7 +4,7 @@ Public Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (By
 Public Declare Function HTMLHelp Lib "hhctrl.ocx" Alias "HtmlHelpA" (ByVal hwnd As Long, ByVal lpHelpFile As String, ByVal wCommand As Long, dwData As Any) As Long
 
 Public Type activeForm
-    Id As String
+    id As String
     showed As Boolean
 End Type
 
@@ -1725,7 +1725,7 @@ Public Function getFormIndex(pID As String) As Integer
     Dim i As Long
     
     For i = 1 To UBound(arrActiveForm)
-        If arrActiveForm(i).Id = pID Then
+        If arrActiveForm(i).id = pID Then
             getFormIndex = i
             Exit For
         End If
@@ -2339,10 +2339,10 @@ Public Function GetKieuKy() As String
     Dim strDay     As String
     Dim strYear    As String ' Phuc vu an chi
     Dim i          As Integer
-    Dim Id         As String
+    Dim id         As String
     
-    Id = TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    i = getFormIndex(Id)
+    id = TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
+    i = getFormIndex(id)
     arrActiveForm(i).showed = True
     
     month = TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("Month").nodeValue
@@ -2351,9 +2351,12 @@ Public Function GetKieuKy() As String
     ' phuc vu an chi
     strYear = TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("Year").nodeValue
 
-' To khai 01_NTNN va 03_NTNN kieu ky la thang
-    If Id = "70" Or Id = "81" Then
+    ' To khai 01_NTNN va 03_NTNN kieu ky la thang
+    If id = "70" Or id = "81" Then
         GetKieuKy = KIEU_KY_THANG
+    ' To khai 03 TNDN kieu ky nam
+    ElseIf id = "03" Then
+        GetKieuKy = KIEU_KY_NAM
     ElseIf strLoaiTKThang_PS = "TK_LANPS" Or (month = "1" And strDay = "1" And strYear = "1") Then
         GetKieuKy = KIEU_KY_NGAY_PS
     ElseIf strYear = "1/2" Then
