@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.ocx"
 Begin VB.Form frmInterfaces 
    AutoRedraw      =   -1  'True
    Caption         =   "Hç trî kª khai - Phiªn b¶n 2.5.0"
