@@ -443,7 +443,53 @@ Private Sub CheckDynamicError()
                     .CellNote = ""
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 End If
-    
+                
+                'check mst
+                If Trim$(vMST) <> vbNullString Then
+                    vMST = Replace(vMST, " ", "")
+                    vMST = Replace(vMST, "-", "")
+                    'vMST = Left(vMST, 10)
+
+                    strCheck = ""
+
+                    If Len(vMST) = 10 Or Len(vMST) = 13 Then
+                        strCheck = CheckTaxCode(Mid$(vMST, 1, 1), Mid$(vMST, 2, 1), Mid$(vMST, 3, 1), Mid$(vMST, 4, 1), Mid$(vMST, 5, 1), Mid$(vMST, 6, 1), Mid$(vMST, 7, 1), Mid$(vMST, 8, 1), Mid$(vMST, 9, 1), Mid$(vMST, 10, 1), Mid$(vMST, 11, 1), Mid$(vMST, 12, 1), Mid$(vMST, 13, 1))
+                    End If
+                       
+                    If Mid$(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
+                        .Col = .ColLetterToNumber("H")
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = errMST   'static
+                        .BackColor = mErrorColor
+
+                        iFlagCheckMaST = 1
+                            
+                        'capture the first error cell
+                        If iFocusFlag = 0 Then
+                            strFocusSheetName = "'" & .SheetName & "'"
+                            strFocusCol = str$(.Col)
+                            strFocusRow = str$(.Row)
+
+                            iFocusFlag = 1
+                        End If
+
+                    Else
+                        .Col = .ColLetterToNumber("H")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
+
+                Else
+                    If (Trim$(vMST) = vbNullString And iWhiteRow = 0) Then
+                        .Col = .ColLetterToNumber("H")
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                        
+                        'iFlagEmty = 1
+                    End If
+                End If
+                
                 .Row = .Row + 1
                 .Col = .ColLetterToNumber("B")
             Loop Until .Text = "aa"

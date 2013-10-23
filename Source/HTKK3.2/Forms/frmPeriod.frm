@@ -4170,7 +4170,7 @@ Private Sub LoadDefaultInfor()
             ' end
         Case KIEU_KY_NAM
 
-            If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "93" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "89" Then
+            If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "93" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "89" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "97" Then
                 Y = GetNamHienTai(iNgayTaiChinh, iThangTaiChinh)
                 txtYear.Text = Y
             Else
