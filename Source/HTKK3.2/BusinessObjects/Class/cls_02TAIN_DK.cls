@@ -359,7 +359,7 @@ Private Sub CheckDynamicError()
                         .CellNote = ""
                         .BackColor = mNonErrorColor
                         
-                        iFlagEmty = 1
+                        'iFlagEmty = 1
                     End If
                 End If
                 If (Trim$(vTenNhaThau) = vbNullString And iWhiteRow = 0) Then
