@@ -287,10 +287,11 @@ End Sub
 'no parameter
 Private Sub CheckDynamicError()
 
-    Dim iCurrentSheet As Integer, iFlagEmpty As Integer, iWhiteRow As Integer
+    Dim iCurrentSheet As Integer, iFlagEmpty As Integer, iWhiteRow As Integer, iFlagCheckMaST  As Integer
     Dim vTenCoQuan    As Variant, vCapCuc As Variant, vCapDiaPhuong As Variant, vMessRequire As Variant
     Dim row_require   As Integer
     Dim vSTT As Variant, vTenNhaMay As Variant, vCQTCapCuc As Variant, vCQTCapDiaPhuong As Variant, vTyLePhanBo As Variant, vSoThuePhaiNop As Variant
+    Dim strFocusSheetName As String, strFocusRow As String, strFocusCol As String, iFocusFlag As Integer, errMST As Variant, strCheck As String, vMST As Variant
     
     row_require = 15
     
@@ -299,6 +300,7 @@ Private Sub CheckDynamicError()
         'get message
         .Sheet = .SheetCount
         .GetText .ColLetterToNumber("E"), row_require, vMessRequire
+        .GetText .ColLetterToNumber("E"), 13, errMST
         
         .Sheet = iCurrentSheet
         .Sheet = 2
@@ -311,11 +313,12 @@ Private Sub CheckDynamicError()
             Do
                 .GetText .ColLetterToNumber("B"), .Row, vSTT
                 .GetText .ColLetterToNumber("C"), .Row, vTenNhaMay
+                .GetText .ColLetterToNumber("H"), .Row, vMST
                 .GetText .ColLetterToNumber("L"), .Row, vCQTCapCuc
                 .GetText .ColLetterToNumber("P"), .Row, vCQTCapDiaPhuong
                 .GetText .ColLetterToNumber("R"), .Row, vTyLePhanBo
                 .GetText .ColLetterToNumber("U"), .Row, vSoThuePhaiNop
-                If Trim$(vSTT) <> "" Or Trim$(vTenNhaMay) <> "" Or Trim$(vCQTCapCuc) <> "" Or Trim$(vCQTCapDiaPhuong) <> "" Or Trim$(vTyLePhanBo) <> "0" Or Trim$(vSoThuePhaiNop) <> "0" Then
+                If Trim$(vSTT) <> "" Or Trim$(vTenNhaMay) <> "" Or Trim$(vMST) <> "" Or Trim$(vCQTCapCuc) <> "" Or Trim$(vCQTCapDiaPhuong) <> "" Or Trim$(vTyLePhanBo) <> "0" Or Trim$(vSoThuePhaiNop) <> "0" Then
                     iWhiteRow = 0
                 End If
             
@@ -357,7 +360,53 @@ Private Sub CheckDynamicError()
                     .CellNote = ""
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 End If
-    
+                
+                'check mst
+                If Trim$(vMST) <> vbNullString Then
+                    vMST = Replace(vMST, " ", "")
+                    vMST = Replace(vMST, "-", "")
+                    'vMST = Left(vMST, 10)
+
+                    strCheck = ""
+
+                    If Len(vMST) = 10 Or Len(vMST) = 13 Then
+                        strCheck = CheckTaxCode(Mid$(vMST, 1, 1), Mid$(vMST, 2, 1), Mid$(vMST, 3, 1), Mid$(vMST, 4, 1), Mid$(vMST, 5, 1), Mid$(vMST, 6, 1), Mid$(vMST, 7, 1), Mid$(vMST, 8, 1), Mid$(vMST, 9, 1), Mid$(vMST, 10, 1), Mid$(vMST, 11, 1), Mid$(vMST, 12, 1), Mid$(vMST, 13, 1))
+                    End If
+                       
+                    If Mid$(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
+                        .Col = .ColLetterToNumber("H")
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = errMST   'static
+                        .BackColor = mErrorColor
+
+                        iFlagCheckMaST = 1
+                            
+                        'capture the first error cell
+                        If iFocusFlag = 0 Then
+                            strFocusSheetName = "'" & .SheetName & "'"
+                            strFocusCol = str$(.Col)
+                            strFocusRow = str$(.Row)
+
+                            iFocusFlag = 1
+                        End If
+
+                    Else
+                        .Col = .ColLetterToNumber("H")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
+
+                Else
+                    If (Trim$(vMST) = vbNullString And iWhiteRow = 0) Then
+                        .Col = .ColLetterToNumber("H")
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                        
+                        'iFlagEmty = 1
+                    End If
+                End If
+                
                 .Row = .Row + 1
                 .Col = .ColLetterToNumber("B")
             Loop Until .Text = "aa"
@@ -366,6 +415,7 @@ Private Sub CheckDynamicError()
         'set flag
         .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), row_require, IIf(iFlagEmpty = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 13, IIf(iFlagCheckMaST = 1, "0", "1")
     End With
 End Sub
 Sub CheckErrorMST()
