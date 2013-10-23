@@ -1,17 +1,17 @@
 <PL02_1_NTNN>
 	<BKCacNTNN>
 		<CacNTNN idPLuc01="ID_1">
-			<ct2>String</ct2>
-			<ct3>String</ct3>
+			<ct2></ct2>
+			<ct3></ct3>
 			<ct4>0000000000</ct4>
 			<ct5>0000000000</ct5>
-			<ct6>String</ct6>
-			<ct7>String</ct7>
-			<ct8>String</ct8>
-			<ct9>String</ct9>
-			<ct10a>String</ct10a>
+			<ct6></ct6>
+			<ct7></ct7>
+			<ct8></ct8>
+			<ct9></ct9>
+			<ct10a></ct10a>
 			<ct10b>1</ct10b>
-			<ct11a>String</ct11a>
+			<ct11a></ct11a>
 			<ct11b>1</ct11b>
 			<ct12>1</ct12>
 		</CacNTNN>
