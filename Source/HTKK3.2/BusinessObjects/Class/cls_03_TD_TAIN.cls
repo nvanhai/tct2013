@@ -294,11 +294,13 @@ End Sub
 'no parameter
 Private Sub CheckDynamicError()
 
-    Dim iCurrentSheet As Integer, iFlagEmpty As Integer, iWhiteRow As Integer
+    Dim iCurrentSheet As Integer, iFlagEmpty As Integer, iWhiteRow As Integer, iFlagCheckMaST   As Integer
     Dim vTenCoQuan    As Variant, vCapCuc As Variant, vCapDiaPhuong As Variant, vMessRequire As Variant
     Dim row_require   As Integer
     Dim vSTT As Variant, vTenNhaMay As Variant, vCQTCapCuc As Variant, vCQTCapDiaPhuong As Variant, vTyLePhanBo As Variant, vSoThuePhaiNop As Variant
     Dim vMST As Variant
+    Dim strFocusSheetName As String, strFocusRow As String, strFocusCol As String, iFocusFlag As Integer, errMST As Variant, strCheck As String
+    
     row_require = 15
     
     With fps
@@ -306,8 +308,84 @@ Private Sub CheckDynamicError()
         'get message
         .Sheet = .SheetCount
         .GetText .ColLetterToNumber("E"), row_require, vMessRequire
+        .GetText .ColLetterToNumber("E"), 13, errMST
         
         .Sheet = iCurrentSheet
+        
+        'check for to khai
+        .Sheet = 1
+        .Row = 44
+        iFlagCheckMaST = 0
+        If .SheetVisible = True Then
+            mCurrentSheet = .Sheet
+            Do
+                .GetText .ColLetterToNumber("F"), .Row, vMST
+                
+                .Col = .ColLetterToNumber("C")
+                If (Trim(.Text) = vbNullString) Then
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vMessRequire      'static
+                    .BackColor = mErrorColor
+    
+                    iFlagEmpty = 1
+                Else
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                End If
+                
+                'validate mst
+                .Col = .ColLetterToNumber("F")
+                If Trim$(vMST) <> vbNullString Then
+                    vMST = Replace(vMST, " ", "")
+                    vMST = Replace(vMST, "-", "")
+                    'vMST = Left(vMST, 10)
+
+                    strCheck = ""
+
+                    If Len(vMST) = 10 Or Len(vMST) = 13 Then
+                        strCheck = CheckTaxCode(Mid$(vMST, 1, 1), Mid$(vMST, 2, 1), Mid$(vMST, 3, 1), Mid$(vMST, 4, 1), Mid$(vMST, 5, 1), Mid$(vMST, 6, 1), Mid$(vMST, 7, 1), Mid$(vMST, 8, 1), Mid$(vMST, 9, 1), Mid$(vMST, 10, 1), Mid$(vMST, 11, 1), Mid$(vMST, 12, 1), Mid$(vMST, 13, 1))
+                    End If
+                       
+                    If Mid$(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
+                        .Col = .ColLetterToNumber("F")
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = errMST   'static
+                        .BackColor = mErrorColor
+
+                        iFlagCheckMaST = 1
+                            
+                        'capture the first error cell
+                        If iFocusFlag = 0 Then
+                            strFocusSheetName = "'" & .SheetName & "'"
+                            strFocusCol = str$(.Col)
+                            strFocusRow = str$(.Row)
+
+                            iFocusFlag = 1
+                        End If
+
+                    Else
+                        .Col = .ColLetterToNumber("F")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
+
+                Else
+                    If (Trim$(vMST) = vbNullString) Then
+                        .Col = .ColLetterToNumber("F")
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                        
+                        'iFlagEmty = 1
+                    End If
+                End If
+                
+                .Row = .Row + 1
+                .Col = .ColLetterToNumber("B")
+            Loop Until .Text = "aa"
+        End If
+        
         .Sheet = 2
         If .SheetVisible = True Then
             mCurrentSheet = .Sheet
@@ -374,6 +452,7 @@ Private Sub CheckDynamicError()
         'set flag
         .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), row_require, IIf(iFlagEmpty = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 13, IIf(iFlagCheckMaST = 1, "0", "1")
     End With
 End Sub
 Sub CheckErrorMST()
