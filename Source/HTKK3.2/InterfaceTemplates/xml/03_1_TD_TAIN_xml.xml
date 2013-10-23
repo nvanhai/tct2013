@@ -1,14 +1,14 @@
 <PL_03_1_TD_TAIN>
 	<NHAMAYTHUYDIEN>
 		<bangPhanBoTAINThuyĐien>
-			<tenNhaMay>String</tenNhaMay>
+			<tenNhaMay></tenNhaMay>
 			<mstNhaMay>text</mstNhaMay>
 			<tyLePhanBo>1</tyLePhanBo>
 			<soThueTNguyenPNop>1</soThueTNguyenPNop>
 			<CHITIETTHUYDIENCOQUANDIAPHUONG>
 				<cqtDiaPhuong>
 					<maCQTDPhuong>text</maCQTDPhuong>
-					<tenCQTDPhuong>String</tenCQTDPhuong>
+					<tenCQTDPhuong></tenCQTDPhuong>
 					<tyLePBoCQTDPhuong>1</tyLePBoCQTDPhuong>
 					<thuePNopCQTDPhuong>1</thuePNopCQTDPhuong>
 				</cqtDiaPhuong>

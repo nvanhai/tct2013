@@ -2,148 +2,148 @@
 <HSoKhaiThue>
 	<TTinChung>
 		<TTinDVu>
-			<maDVu>String</maDVu>
-			<tenDVu>token</tenDVu>
-			<pbanDVu>String</pbanDVu>
-			<ttinNhaCCapDVu>String</ttinNhaCCapDVu>
+			<maDVu></maDVu>
+			<tenDVu></tenDVu>
+			<pbanDVu></pbanDVu>
+			<ttinNhaCCapDVu></ttinNhaCCapDVu>
 		</TTinDVu>
 		<TTinTKhaiThue>
 			<TKhaiThue>
-				<maTKhai>String</maTKhai>
-				<tenTKhai>token</tenTKhai>
+				<maTKhai></maTKhai>
+				<tenTKhai></tenTKhai>
 				<moTaBMau/>
-				<pbanTKhaiXML>String</pbanTKhaiXML>
+				<pbanTKhaiXML></pbanTKhaiXML>
 				<loaiTKhai>C</loaiTKhai>
 				<soLan>1</soLan>
 				<KyKKhaiThue>
 					<kieuKy>D</kieuKy>
-					<kyKKhai>String</kyKKhai>
-					<kyKKhaiTuNgay>String</kyKKhaiTuNgay>
-					<kyKKhaiDenNgay>String</kyKKhaiDenNgay>
+					<kyKKhai></kyKKhai>
+					<kyKKhaiTuNgay></kyKKhaiTuNgay>
+					<kyKKhaiDenNgay></kyKKhaiDenNgay>
 				</KyKKhaiThue>
-				<maCQTNoiNop>String</maCQTNoiNop>
-				<tenCQTNoiNop>token</tenCQTNoiNop>
-				<ngayLapTKhai>String</ngayLapTKhai>
+				<maCQTNoiNop></maCQTNoiNop>
+				<tenCQTNoiNop></tenCQTNoiNop>
+				<ngayLapTKhai></ngayLapTKhai>
 				<GiaHan>
-					<maLyDoGiaHan>String</maLyDoGiaHan>
-					<lyDoGiaHan>String</lyDoGiaHan>
+					<maLyDoGiaHan></maLyDoGiaHan>
+					<lyDoGiaHan></lyDoGiaHan>
 				</GiaHan>
-				<nguoiKy>String</nguoiKy>
-				<ngayKy>String</ngayKy>
+				<nguoiKy></nguoiKy>
+				<ngayKy></ngayKy>
 			</TKhaiThue>
 			<NNT>
 				<mst>0000000000</mst>
-				<tenNNT>token</tenNNT>
-				<dchiNNT>token</dchiNNT>
-				<maHuyenNNT>String</maHuyenNNT>
-				<tenHuyenNNT>String</tenHuyenNNT>
-				<maTinhNNT>String</maTinhNNT>
-				<tenTinhNNT>String</tenTinhNNT>
-				<dthoaiNNT>String</dthoaiNNT>
-				<faxNNT>String</faxNNT>
-				<emailNNT>String</emailNNT>
+				<tenNNT></tenNNT>
+				<dchiNNT></dchiNNT>
+				<maHuyenNNT></maHuyenNNT>
+				<tenHuyenNNT></tenHuyenNNT>
+				<maTinhNNT></maTinhNNT>
+				<tenTinhNNT></tenTinhNNT>
+				<dthoaiNNT></dthoaiNNT>
+				<faxNNT></faxNNT>
+				<emailNNT></emailNNT>
 			</NNT>
 			<DLyThue>
 				<mstDLyThue>0000000000</mstDLyThue>
-				<tenDLyThue>token</tenDLyThue>
-				<dchiDLyThue>token</dchiDLyThue>
-				<maHuyenDLyThue>String</maHuyenDLyThue>
-				<tenHuyenDLyThue>String</tenHuyenDLyThue>
-				<maTinhDLyThue>String</maTinhDLyThue>
-				<tenTinhDLyThue>String</tenTinhDLyThue>
-				<dthoaiDLyThue>String</dthoaiDLyThue>
-				<faxDLyThue>String</faxDLyThue>
-				<emailDLyThue>String</emailDLyThue>
-				<soHDongDLyThue>String</soHDongDLyThue>
-				<ngayKyHDDLyThue>String</ngayKyHDDLyThue>
+				<tenDLyThue></tenDLyThue>
+				<dchiDLyThue></dchiDLyThue>
+				<maHuyenDLyThue></maHuyenDLyThue>
+				<tenHuyenDLyThue></tenHuyenDLyThue>
+				<maTinhDLyThue></maTinhDLyThue>
+				<tenTinhDLyThue></tenTinhDLyThue>
+				<dthoaiDLyThue></dthoaiDLyThue>
+				<faxDLyThue></faxDLyThue>
+				<emailDLyThue></emailDLyThue>
+				<soHDongDLyThue></soHDongDLyThue>
+				<ngayKyHDDLyThue></ngayKyHDDLyThue>
 				<NVienDLy>
-					<tenNVienDLyThue>token</tenNVienDLyThue>
-					<cchiHNghe>String</cchiHNghe>
+					<tenNVienDLyThue></tenNVienDLyThue>
+					<cchiHNghe></cchiHNghe>
 				</NVienDLy>
 			</DLyThue>
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
 		<ThuyetMinh>
-			<ctA_I_tMinh>String</ctA_I_tMinh>
-			<ctA_II_tMinh>String</ctA_II_tMinh>
-			<ctA_III_tMinh>String</ctA_III_tMinh>
-			<ctA_III_1_tMinh>String</ctA_III_1_tMinh>
-			<ctA_III_2_tMinh>String</ctA_III_2_tMinh>
-			<ctA_III_3_tMinh>String</ctA_III_3_tMinh>
-			<ctA_IV_tMinh>String</ctA_IV_tMinh>
-			<ctA_IV_1_tMinh>String</ctA_IV_1_tMinh>
-			<ctA_IV_2_tMinh>String</ctA_IV_2_tMinh>
-			<ctA_V_tMinh>String</ctA_V_tMinh>
-			<ctA_VI_tMinh>String</ctA_VI_tMinh>
-			<ctA_VI_1_tMinh>String</ctA_VI_1_tMinh>
-			<ctA_VI_2_tMinh>String</ctA_VI_2_tMinh>
-			<ctA_VII_tMinh>String</ctA_VII_tMinh>
-			<ctA_VII_1_tMinh>String</ctA_VII_1_tMinh>
-			<ctA_VII_2_tMinh>String</ctA_VII_2_tMinh>
-			<ctA_VII_3_tMinh>String</ctA_VII_3_tMinh>
-			<ctA_VIII_tMinh>String</ctA_VIII_tMinh>
-			<ctA_VIII_1_tMinh>String</ctA_VIII_1_tMinh>
-			<ctA_VIII_2_tMinh>String</ctA_VIII_2_tMinh>
-			<ctA_VIII_3_tMinh>String</ctA_VIII_3_tMinh>
-			<ctA_VIII_4_tMinh>String</ctA_VIII_4_tMinh>
-			<ctA_VIII_5_tMinh>String</ctA_VIII_5_tMinh>
-			<ctA_IX_tMinh>String</ctA_IX_tMinh>
-			<ctA_IX_1_tMinh>String</ctA_IX_1_tMinh>
-			<ctA_IX_1_a_tMinh>String</ctA_IX_1_a_tMinh>
-			<ctA_IX_1_b_tMinh>String</ctA_IX_1_b_tMinh>
-			<ctA_IX_2_tMinh>String</ctA_IX_2_tMinh>
-			<ctA_IX_2_a_tMinh>String</ctA_IX_2_a_tMinh>
-			<ctA_IX_2_b_tMinh>String</ctA_IX_2_b_tMinh>
-			<ctA_IX_3_tMinh>String</ctA_IX_3_tMinh>
-			<ctA_IX_3_a_tMinh>String</ctA_IX_3_a_tMinh>
-			<ctA_IX_3_b_tMinh>String</ctA_IX_3_b_tMinh>
-			<ctA_X_tMinh>String</ctA_X_tMinh>
-			<ctA_X_a_tMinh>String</ctA_X_a_tMinh>
-			<ctA_X_b_tMinh>String</ctA_X_b_tMinh>
-			<ctA_XI_tMinh>String</ctA_XI_tMinh>
-			<ctA_XI_1_tMinh>String</ctA_XI_1_tMinh>
-			<ctA_XI_2_tMinh>String</ctA_XI_2_tMinh>
-			<ctA_XI_3_tMinh>String</ctA_XI_3_tMinh>
-			<ctA_XI_4_tMinh>String</ctA_XI_4_tMinh>
-			<ctA_XI_4_1_tMinh>String</ctA_XI_4_1_tMinh>
-			<ctA_XI_5_tMinh>String</ctA_XI_5_tMinh>
-			<tongTsan_tMinh>String</tongTsan_tMinh>
-			<ctB_I_tMinh>String</ctB_I_tMinh>
-			<ctB_II_tMinh>String</ctB_II_tMinh>
-			<ctB_II_1_tMinh>String</ctB_II_1_tMinh>
-			<ctB_II_2_tMinh>String</ctB_II_2_tMinh>
-			<ctB_III_tMinh>String</ctB_III_tMinh>
-			<ctB_IV_tMinh>String</ctB_IV_tMinh>
-			<ctB_V_tMinh>String</ctB_V_tMinh>
-			<ctB_VI_tMinh>String</ctB_VI_tMinh>
-			<ctB_VII_tMinh>String</ctB_VII_tMinh>
-			<ctB_VII_1_tMinh>String</ctB_VII_1_tMinh>
-			<ctB_VII_2_tMinh>String</ctB_VII_2_tMinh>
-			<ctB_VII_3_tMinh>String</ctB_VII_3_tMinh>
-			<ctB_VII_4_tMinh>String</ctB_VII_4_tMinh>
-			<tongNoPTRa_tMinh>String</tongNoPTRa_tMinh>
-			<ctB_VIII_tMinh>String</ctB_VIII_tMinh>
-			<ctB_VIII_1_tMinh>String</ctB_VIII_1_tMinh>
-			<ctB_VIII_1_a_tMinh>String</ctB_VIII_1_a_tMinh>
-			<ctB_VIII_1_b_tMinh>String</ctB_VIII_1_b_tMinh>
-			<ctB_VIII_1_c_tMinh>String</ctB_VIII_1_c_tMinh>
-			<ctB_VIII_1_d_tMinh>String</ctB_VIII_1_d_tMinh>
-			<ctB_VIII_1_e_tMinh>String</ctB_VIII_1_e_tMinh>
-			<ctB_VIII_1_g_tMinh>String</ctB_VIII_1_g_tMinh>
-			<ctB_VIII_2_tMinh>String</ctB_VIII_2_tMinh>
-			<ctB_VIII_3_tMinh>String</ctB_VIII_3_tMinh>
-			<ctB_VIII_4_tMinh>String</ctB_VIII_4_tMinh>
-			<ctB_VIII_5_tMinh>String</ctB_VIII_5_tMinh>
-			<ctB_IX_tMinh>String</ctB_IX_tMinh>
-			<tongNoVon_tMinh>String</tongNoVon_tMinh>
-			<noTiemAn_tMinh>String</noTiemAn_tMinh>
-			<blanhVon_tMinh>String</blanhVon_tMinh>
-			<cketNVu_tMinh>String</cketNVu_tMinh>
-			<blanhKhac_tMinh>String</blanhKhac_tMinh>
-			<cketDuaRa_tMinh>String</cketDuaRa_tMinh>
-			<cketTTro_tMinh>String</cketTTro_tMinh>
-			<cketKhac_tMinh>String</cketKhac_tMinh>
+			<ctA_I_tMinh></ctA_I_tMinh>
+			<ctA_II_tMinh></ctA_II_tMinh>
+			<ctA_III_tMinh></ctA_III_tMinh>
+			<ctA_III_1_tMinh></ctA_III_1_tMinh>
+			<ctA_III_2_tMinh></ctA_III_2_tMinh>
+			<ctA_III_3_tMinh></ctA_III_3_tMinh>
+			<ctA_IV_tMinh></ctA_IV_tMinh>
+			<ctA_IV_1_tMinh></ctA_IV_1_tMinh>
+			<ctA_IV_2_tMinh></ctA_IV_2_tMinh>
+			<ctA_V_tMinh></ctA_V_tMinh>
+			<ctA_VI_tMinh></ctA_VI_tMinh>
+			<ctA_VI_1_tMinh></ctA_VI_1_tMinh>
+			<ctA_VI_2_tMinh></ctA_VI_2_tMinh>
+			<ctA_VII_tMinh></ctA_VII_tMinh>
+			<ctA_VII_1_tMinh></ctA_VII_1_tMinh>
+			<ctA_VII_2_tMinh></ctA_VII_2_tMinh>
+			<ctA_VII_3_tMinh></ctA_VII_3_tMinh>
+			<ctA_VIII_tMinh></ctA_VIII_tMinh>
+			<ctA_VIII_1_tMinh></ctA_VIII_1_tMinh>
+			<ctA_VIII_2_tMinh></ctA_VIII_2_tMinh>
+			<ctA_VIII_3_tMinh></ctA_VIII_3_tMinh>
+			<ctA_VIII_4_tMinh></ctA_VIII_4_tMinh>
+			<ctA_VIII_5_tMinh></ctA_VIII_5_tMinh>
+			<ctA_IX_tMinh></ctA_IX_tMinh>
+			<ctA_IX_1_tMinh></ctA_IX_1_tMinh>
+			<ctA_IX_1_a_tMinh></ctA_IX_1_a_tMinh>
+			<ctA_IX_1_b_tMinh></ctA_IX_1_b_tMinh>
+			<ctA_IX_2_tMinh></ctA_IX_2_tMinh>
+			<ctA_IX_2_a_tMinh></ctA_IX_2_a_tMinh>
+			<ctA_IX_2_b_tMinh></ctA_IX_2_b_tMinh>
+			<ctA_IX_3_tMinh></ctA_IX_3_tMinh>
+			<ctA_IX_3_a_tMinh></ctA_IX_3_a_tMinh>
+			<ctA_IX_3_b_tMinh></ctA_IX_3_b_tMinh>
+			<ctA_X_tMinh></ctA_X_tMinh>
+			<ctA_X_a_tMinh></ctA_X_a_tMinh>
+			<ctA_X_b_tMinh></ctA_X_b_tMinh>
+			<ctA_XI_tMinh></ctA_XI_tMinh>
+			<ctA_XI_1_tMinh></ctA_XI_1_tMinh>
+			<ctA_XI_2_tMinh></ctA_XI_2_tMinh>
+			<ctA_XI_3_tMinh></ctA_XI_3_tMinh>
+			<ctA_XI_4_tMinh></ctA_XI_4_tMinh>
+			<ctA_XI_4_1_tMinh></ctA_XI_4_1_tMinh>
+			<ctA_XI_5_tMinh></ctA_XI_5_tMinh>
+			<tongTsan_tMinh></tongTsan_tMinh>
+			<ctB_I_tMinh></ctB_I_tMinh>
+			<ctB_II_tMinh></ctB_II_tMinh>
+			<ctB_II_1_tMinh></ctB_II_1_tMinh>
+			<ctB_II_2_tMinh></ctB_II_2_tMinh>
+			<ctB_III_tMinh></ctB_III_tMinh>
+			<ctB_IV_tMinh></ctB_IV_tMinh>
+			<ctB_V_tMinh></ctB_V_tMinh>
+			<ctB_VI_tMinh></ctB_VI_tMinh>
+			<ctB_VII_tMinh></ctB_VII_tMinh>
+			<ctB_VII_1_tMinh></ctB_VII_1_tMinh>
+			<ctB_VII_2_tMinh></ctB_VII_2_tMinh>
+			<ctB_VII_3_tMinh></ctB_VII_3_tMinh>
+			<ctB_VII_4_tMinh></ctB_VII_4_tMinh>
+			<tongNoPTRa_tMinh></tongNoPTRa_tMinh>
+			<ctB_VIII_tMinh></ctB_VIII_tMinh>
+			<ctB_VIII_1_tMinh></ctB_VIII_1_tMinh>
+			<ctB_VIII_1_a_tMinh></ctB_VIII_1_a_tMinh>
+			<ctB_VIII_1_b_tMinh></ctB_VIII_1_b_tMinh>
+			<ctB_VIII_1_c_tMinh></ctB_VIII_1_c_tMinh>
+			<ctB_VIII_1_d_tMinh></ctB_VIII_1_d_tMinh>
+			<ctB_VIII_1_e_tMinh></ctB_VIII_1_e_tMinh>
+			<ctB_VIII_1_g_tMinh></ctB_VIII_1_g_tMinh>
+			<ctB_VIII_2_tMinh></ctB_VIII_2_tMinh>
+			<ctB_VIII_3_tMinh></ctB_VIII_3_tMinh>
+			<ctB_VIII_4_tMinh></ctB_VIII_4_tMinh>
+			<ctB_VIII_5_tMinh></ctB_VIII_5_tMinh>
+			<ctB_IX_tMinh></ctB_IX_tMinh>
+			<tongNoVon_tMinh></tongNoVon_tMinh>
+			<noTiemAn_tMinh></noTiemAn_tMinh>
+			<blanhVon_tMinh></blanhVon_tMinh>
+			<cketNVu_tMinh></cketNVu_tMinh>
+			<blanhKhac_tMinh></blanhKhac_tMinh>
+			<cketDuaRa_tMinh></cketDuaRa_tMinh>
+			<cketTTro_tMinh></cketTTro_tMinh>
+			<cketKhac_tMinh></cketKhac_tMinh>
 		</ThuyetMinh>
 		<SoNamNay>
 			<ctA_I_nNay>2147483647</ctA_I_nNay>

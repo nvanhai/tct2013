@@ -1,18 +1,18 @@
 <PLuc02_TTDB>
 	<ThoiGianNopTKhaiChinh>
-		<ngayNopTKhaiChinh>String</ngayNopTKhaiChinh>
-		<thangNopTKhaiChinh>String</thangNopTKhaiChinh>
-		<namNopTKhaiChinh>String</namNopTKhaiChinh>
+		<ngayNopTKhaiChinh></ngayNopTKhaiChinh>
+		<thangNopTKhaiChinh></thangNopTKhaiChinh>
+		<namNopTKhaiChinh></namNopTKhaiChinh>
 	</ThoiGianNopTKhaiChinh>
 	<ThueNLMVao>
 		<ChiTietThueTTDBNLMVao>
 			<ThueNLMVao id="ID_1">
 				<BienLaiChungTuNopThueTTĐB>
-					<khieuNLMVao>String</khieuNLMVao>
-					<soNLMVao>String</soNLMVao>
+					<khieuNLMVao></khieuNLMVao>
+					<soNLMVao></soNLMVao>
 					<ngayPHanhNLMVao>1967-08-13</ngayPHanhNLMVao>
 				</BienLaiChungTuNopThueTTĐB>
-				<tenNLMVao>String</tenNLMVao>
+				<tenNLMVao></tenNLMVao>
 				<soLuongNLMVao>0.0</soLuongNLMVao>
 				<thueNLMVaoDNop>1</thueNLMVaoDNop>
 				<thueNLMVaoTrenDVi>1</thueNLMVaoTrenDVi>
@@ -27,9 +27,9 @@
 	<ThueNLDuocKTru>
 		<ChiTietThueTTDBNLDuocKTru>
 			<ThueNLDuocKTru id="ID_2">
-				<tenMatHangNLKTru>String</tenMatHangNLKTru>
+				<tenMatHangNLKTru></tenMatHangNLKTru>
 				<soLuongHangNLKTru>0.0</soLuongHangNLKTru>
-				<tenNLKTru>String</tenNLKTru>
+				<tenNLKTru></tenNLKTru>
 				<luongNL1DViNLKTru>0.0</luongNL1DViNLKTru>
 				<thue1DViNLKTru>0.0</thue1DViNLKTru>
 				<tongThueTTDBDuocKTru>1</tongThueTTDBDuocKTru>

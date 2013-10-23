@@ -2,15 +2,15 @@
 	<HHDVKChiuThue>
 		<ChiTietHHDVKChiuThue>
 			<HDonBRa id="ID_1">
-				<kyHieuHDon>String</kyHieuHDon>
-				<soHDon>String</soHDon>
+				<kyHieuHDon></kyHieuHDon>
+				<soHDon></soHDon>
 				<ngayPHanh>1967-08-13</ngayPHanh>
-				<tenNMUA>String</tenNMUA>
-				<mstNMUA>String</mstNMUA>
-				<matHang>String</matHang>
+				<tenNMUA></tenNMUA>
+				<mstNMUA></mstNMUA>
+				<matHang></matHang>
 				<dsoBanChuaThue>2147483647</dsoBanChuaThue>
 				<thueGTGT>1</thueGTGT>
-				<ghiChu>String</ghiChu>
+				<ghiChu></ghiChu>
 			</HDonBRa>
 		</ChiTietHHDVKChiuThue>
 		<tongDThuBRaKChiuThue>1</tongDThuBRaKChiuThue>
@@ -18,15 +18,15 @@
 	<HHDVThue0>
 		<ChiTietHHDVThue0>
 			<HDonBRa id="ID_2">
-				<kyHieuHDon>String</kyHieuHDon>
-				<soHDon>String</soHDon>
+				<kyHieuHDon></kyHieuHDon>
+				<soHDon></soHDon>
 				<ngayPHanh>1967-08-13</ngayPHanh>
-				<tenNMUA>String</tenNMUA>
-				<mstNMUA>String</mstNMUA>
-				<matHang>String</matHang>
+				<tenNMUA></tenNMUA>
+				<mstNMUA></mstNMUA>
+				<matHang></matHang>
 				<dsoBanChuaThue>2147483647</dsoBanChuaThue>
 				<thueGTGT>1</thueGTGT>
-				<ghiChu>String</ghiChu>
+				<ghiChu></ghiChu>
 			</HDonBRa>
 		</ChiTietHHDVThue0>
 		<tongDThuBRaThue0>1</tongDThuBRaThue0>
@@ -35,15 +35,15 @@
 	<HHDVThue5>
 		<ChiTietHHDVThue5>
 			<HDonBRa id="ID_3">
-				<kyHieuHDon>String</kyHieuHDon>
-				<soHDon>String</soHDon>
+				<kyHieuHDon></kyHieuHDon>
+				<soHDon></soHDon>
 				<ngayPHanh>1967-08-13</ngayPHanh>
-				<tenNMUA>String</tenNMUA>
-				<mstNMUA>String</mstNMUA>
-				<matHang>String</matHang>
+				<tenNMUA></tenNMUA>
+				<mstNMUA></mstNMUA>
+				<matHang></matHang>
 				<dsoBanChuaThue>2147483647</dsoBanChuaThue>
 				<thueGTGT>1</thueGTGT>
-				<ghiChu>String</ghiChu>
+				<ghiChu></ghiChu>
 			</HDonBRa>
 		</ChiTietHHDVThue5>
 		<tongDThuBRaThue5>1</tongDThuBRaThue5>
@@ -52,15 +52,15 @@
 	<HHDVThue10>
 		<ChiTietHHDVThue10>
 			<HDonBRa id="ID_4">
-				<kyHieuHDon>String</kyHieuHDon>
-				<soHDon>String</soHDon>
+				<kyHieuHDon></kyHieuHDon>
+				<soHDon></soHDon>
 				<ngayPHanh>1967-08-13</ngayPHanh>
-				<tenNMUA>String</tenNMUA>
-				<mstNMUA>String</mstNMUA>
-				<matHang>String</matHang>
+				<tenNMUA></tenNMUA>
+				<mstNMUA></mstNMUA>
+				<matHang></matHang>
 				<dsoBanChuaThue>2147483647</dsoBanChuaThue>
 				<thueGTGT>1</thueGTGT>
-				<ghiChu>String</ghiChu>
+				<ghiChu></ghiChu>
 			</HDonBRa>
 		</ChiTietHHDVThue10>
 		<tongDThuBRaThue10>1</tongDThuBRaThue10>
@@ -69,15 +69,15 @@
 	<HHDVBRaKhongTHop>
 		<ChiTietHHDVBRaKhongTHop>
 			<HDonBRa id="ID_5">
-				<kyHieuHDon>String</kyHieuHDon>
-				<soHDon>String</soHDon>
+				<kyHieuHDon></kyHieuHDon>
+				<soHDon></soHDon>
 				<ngayPHanh>1967-08-13</ngayPHanh>
-				<tenNMUA>String</tenNMUA>
-				<mstNMUA>String</mstNMUA>
-				<matHang>String</matHang>
+				<tenNMUA></tenNMUA>
+				<mstNMUA></mstNMUA>
+				<matHang></matHang>
 				<dsoBanChuaThue>2147483647</dsoBanChuaThue>
 				<thueGTGT>1</thueGTGT>
-				<ghiChu>String</ghiChu>
+				<ghiChu></ghiChu>
 			</HDonBRa>
 		</ChiTietHHDVBRaKhongTHop>
 		<tongDThuBRaKoKKhai>1</tongDThuBRaKoKKhai>

@@ -1,33 +1,33 @@
 <PL_LCTTTT>
 	<ThuyetMinh>
-		<ct01_tMinh>String</ct01_tMinh>
-		<ct02_tMinh>String</ct02_tMinh>
-		<ct03_tMinh>String</ct03_tMinh>
-		<ct04_tMinh>String</ct04_tMinh>
-		<ct05_tMinh>String</ct05_tMinh>
-		<ct06_tMinh>String</ct06_tMinh>
-		<ct07_tMinh>String</ct07_tMinh>
-		<ct08_tMinh>String</ct08_tMinh>
-		<ct09_tMinh>String</ct09_tMinh>
-		<ct10_tMinh>String</ct10_tMinh>
-		<ct11_tMinh>String</ct11_tMinh>
-		<ct12_tMinh>String</ct12_tMinh>
-		<ct13_tMinh>String</ct13_tMinh>
-		<ct14_tMinh>String</ct14_tMinh>
-		<ct15_tMinh>String</ct15_tMinh>
-		<ct16_tMinh>String</ct16_tMinh>
-		<ct17_tMinh>String</ct17_tMinh>
-		<ct20_tMinh>String</ct20_tMinh>
-		<ct22_tMinh>String</ct22_tMinh>
-		<ct23_tMinh>String</ct23_tMinh>
-		<ct24_tMinh>String</ct24_tMinh>
-		<ct25_tMinh>String</ct25_tMinh>
-		<ct26_tMinh>String</ct26_tMinh>
-		<ct50_tMinh>String</ct50_tMinh>
-		<ct51_tMinh>String</ct51_tMinh>
-		<ct60_tMinh>String</ct60_tMinh>
-		<ct70_tMinh>String</ct70_tMinh>
-		<ct80_tMinh>String</ct80_tMinh>
+		<ct01_tMinh></ct01_tMinh>
+		<ct02_tMinh></ct02_tMinh>
+		<ct03_tMinh></ct03_tMinh>
+		<ct04_tMinh></ct04_tMinh>
+		<ct05_tMinh></ct05_tMinh>
+		<ct06_tMinh></ct06_tMinh>
+		<ct07_tMinh></ct07_tMinh>
+		<ct08_tMinh></ct08_tMinh>
+		<ct09_tMinh></ct09_tMinh>
+		<ct10_tMinh></ct10_tMinh>
+		<ct11_tMinh></ct11_tMinh>
+		<ct12_tMinh></ct12_tMinh>
+		<ct13_tMinh></ct13_tMinh>
+		<ct14_tMinh></ct14_tMinh>
+		<ct15_tMinh></ct15_tMinh>
+		<ct16_tMinh></ct16_tMinh>
+		<ct17_tMinh></ct17_tMinh>
+		<ct20_tMinh></ct20_tMinh>
+		<ct22_tMinh></ct22_tMinh>
+		<ct23_tMinh></ct23_tMinh>
+		<ct24_tMinh></ct24_tMinh>
+		<ct25_tMinh></ct25_tMinh>
+		<ct26_tMinh></ct26_tMinh>
+		<ct50_tMinh></ct50_tMinh>
+		<ct51_tMinh></ct51_tMinh>
+		<ct60_tMinh></ct60_tMinh>
+		<ct70_tMinh></ct70_tMinh>
+		<ct80_tMinh></ct80_tMinh>
 	</ThuyetMinh>
 	<SoNamNay>
 		<ct01_nNay>2147483647</ct01_nNay>

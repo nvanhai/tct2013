@@ -3,14 +3,14 @@
 	<TTinChung>
 		<TTinDVu>
 			<maDVu></maDVu>
-			<tenDVu>token</tenDVu>
+			<tenDVu></tenDVu>
 			<pbanDVu></pbanDVu>
 			<ttinNhaCCapDVu></ttinNhaCCapDVu>
 		</TTinDVu>
 		<TTinTKhaiThue>
 			<TKhaiThue>
 				<maTKhai></maTKhai>
-				<tenTKhai>token</tenTKhai>
+				<tenTKhai></tenTKhai>
 				<moTaBMau/>
 				<pbanTKhaiXML></pbanTKhaiXML>
 				<loaiTKhai>C</loaiTKhai>
@@ -22,7 +22,7 @@
 					<kyKKhaiDenNgay></kyKKhaiDenNgay>
 				</KyKKhaiThue>
 				<maCQTNoiNop></maCQTNoiNop>
-				<tenCQTNoiNop>token</tenCQTNoiNop>
+				<tenCQTNoiNop></tenCQTNoiNop>
 				<ngayLapTKhai></ngayLapTKhai>
 				<GiaHan>
 					<maLyDoGiaHan></maLyDoGiaHan>
@@ -34,8 +34,8 @@
 			</TKhaiThue>
 			<NNT>
 				<mst>0000000000</mst>
-				<tenNNT>token</tenNNT>
-				<dchiNNT>token</dchiNNT>
+				<tenNNT></tenNNT>
+				<dchiNNT></dchiNNT>
 				<phuongXa></phuongXa>
 				<maHuyenNNT></maHuyenNNT>
 				<tenHuyenNNT></tenHuyenNNT>
@@ -47,8 +47,8 @@
 			</NNT>
 			<DLyThue>
 				<mstDLyThue>0000000000</mstDLyThue>
-				<tenDLyThue>token</tenDLyThue>
-				<dchiDLyThue>token</dchiDLyThue>
+				<tenDLyThue></tenDLyThue>
+				<dchiDLyThue></dchiDLyThue>
 				<maHuyenDLyThue></maHuyenDLyThue>
 				<tenHuyenDLyThue></tenHuyenDLyThue>
 				<maTinhDLyThue></maTinhDLyThue>
@@ -59,7 +59,7 @@
 				<soHDongDLyThue></soHDongDLyThue>
 				<ngayKyHDDLyThue></ngayKyHDDLyThue>
 				<NVienDLy>
-					<tenNVienDLyThue>token</tenNVienDLyThue>
+					<tenNVienDLyThue></tenNVienDLyThue>
 					<cchiHNghe></cchiHNghe>
 				</NVienDLy>
 			</DLyThue>
