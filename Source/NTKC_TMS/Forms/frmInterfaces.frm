@@ -1418,6 +1418,10 @@ Dim Level          As String
                     MaTK = Replace$(MaTK, "11", "")
                 ElseIf InStr(MaTK, "10") > 0 Then
                     MaTK = Replace$(MaTK, "10", "")
+                ElseIf InStr(MaTK, "12") > 0 Then
+                    MaTK = Replace$(MaTK, "12", "")
+                ElseIf InStr(MaTK, "13") > 0 Then
+                    MaTK = Replace$(MaTK, "13", "")
                 End If
                 
                 If InStr(MaTK, "KHBS") > 0 Then

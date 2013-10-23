@@ -1,13 +1,23 @@
-<HSoKhaiThue><Static GroupName="TKhaiThue"><maTKhai></maTKhai>
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai/>
 		<tenTKhai>token</tenTKhai>
 		<moTaBMau/>
-	</Static><Static GroupName="GiaHan"><maLyDoGiaHan></maLyDoGiaHan>
-		<lyDoGiaHan></lyDoGiaHan>
-	</Static><Static GroupName="NNT"><maHuyenNNT></maHuyenNNT>
-		<maTinhNNT></maTinhNNT>
-	</Static><Static GroupName="DLyThue"><maHuyenDLyThue></maHuyenDLyThue>
-		<maTinhDLyThue></maTinhDLyThue>
-	</Static><Static GroupName="ChiTietKDoanhCuaCaNhom"><ct21>1</ct21>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT/>
+		<maTinhNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
+	</Static>
+	<Static GroupName="ChiTietKDoanhCuaCaNhom">
+		<ct21>1</ct21>
 		<ct22>1</ct22>
 		<ct23>1</ct23>
 		<ct24>1</ct24>
@@ -19,17 +29,25 @@
 		<ct30>1</ct30>
 		<ct31>1</ct31>
 		<ct32>1</ct32>
-	</Static><Static GroupName="chiTietSoThueTungCNhan"><ct34></ct34>
+	</Static>
+	<Static GroupName="chiTietSoThueTungCNhan">
+		<ct34/>
 		<ct35>0000000000</ct35>
 		<ct36>0.0</ct36>
-	</Static><Static GroupName="TNCNTuongUng"><ct37>1</ct37>
+	</Static>
+	<Static GroupName="TNCNTuongUng">
+		<ct37>1</ct37>
 		<ct38>1</ct38>
-	</Static><Static GroupName="chiTietSoThueTungCNhan"><ct39>1</ct39>
+	</Static>
+	<Static GroupName="chiTietSoThueTungCNhan">
+		<ct39>1</ct39>
 		<ct40>1</ct40>
 		<ct41>1</ct41>
 		<ct42>1</ct42>
 		<ct43>1</ct43>
-	</Static><Static GroupName="ThuNhapVaSoThuePNopCuaTungCNhan"><ct44>1</ct44>
+	</Static>
+	<Static GroupName="ThuNhapVaSoThuePNopCuaTungCNhan">
+		<ct44>1</ct44>
 		<ct45>1</ct45>
 		<ct46>1</ct46>
 		<ct47>1</ct47>
@@ -37,8 +55,13 @@
 		<ct49>1</ct49>
 		<ct50>1</ct50>
 		<ct51>1</ct51>
-	</Static><Static GroupName="TKhaiThue"><nguoiKy></nguoiKy>
-		<ngayKy></ngayKy>
-	</Static><Static GroupName="NVienDLy"><tenNVienDLyThue>token</tenNVienDLyThue>
-		<cchiHNghe></cchiHNghe>
-	</Static></HSoKhaiThue>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy/>
+		<ngayKy/>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>token</tenNVienDLyThue>
+		<cchiHNghe/>
+	</Static>
+</HSoKhaiThue>
