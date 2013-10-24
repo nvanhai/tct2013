@@ -4569,15 +4569,15 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
                 Exit Function
 
         Else
-            If (InStr(xmlResultNNT.xml, "faultcode") > 0) Then
-                   If (MessageBox("0142", msYesNo, miCriticalError) = mrNo) Then
-                    Set rsReturn = Nothing
-                    blnSuccess = False
-                    Exit Function
-                    End If
-            End If
+'            If (InStr(xmlResultNNT.xml, "faultcode") > 0) Then
+'                   If (MessageBox("0142", msYesNo, miCriticalError) = mrNo) Then
+'                    Set rsReturn = Nothing
+'                    blnSuccess = False
+'                    Exit Function
+'                    End If
+'            End If
             
-            If (InStr(xmlResultNNT.xml, "MaSoThue") <= 0) Then
+            If ((InStr(xmlResultNNT.xml, "faultcode") > 0) Or (InStr(xmlResultNNT.xml, "MaSoThue") <= 0)) Then
                 If (MessageBox("0135", msYesNo, miCriticalError) = mrNo) Then
                     Set rsReturn = Nothing
                     blnSuccess = False
@@ -4923,15 +4923,15 @@ On Error GoTo ErrHandle
             
 
         Else
-            If (InStr(xmlResultNNT.xml, "faultcode") > 0) Then
-                 If (MessageBox("0142", msYesNo, miCriticalError) = mrNo) Then
-                    Set rsReturn = Nothing
-                    blnSuccess = False
-                    Exit Function
-                End If
-            End If
+'            If (InStr(xmlResultNNT.xml, "faultcode") > 0) Then
+'                 If (MessageBox("0142", msYesNo, miCriticalError) = mrNo) Then
+'                    Set rsReturn = Nothing
+'                    blnSuccess = False
+'                    Exit Function
+'                End If
+'            End If
             
-            If (InStr(xmlResultNNT.xml, "MaSoThue") <= 0) Then
+            If ((InStr(xmlResultNNT.xml, "faultcode") > 0) Or (InStr(xmlResultNNT.xml, "MaSoThue") <= 0)) Then
                 If (MessageBox("0135", msYesNo, miCriticalError) = mrNo) Then
                     Set rsReturn = Nothing
                     blnSuccess = False
