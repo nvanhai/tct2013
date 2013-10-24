@@ -68,15 +68,19 @@
 	<CTieuTKhaiChinh>
 		<LoaiDauKhi>
 			<ct01></ct01>
+			<ct02></ct02>
+			<ct03></ct03>
 		</LoaiDauKhi>
 		<ct05></ct05>
 		<LoaiXuatBan>
 			<ct08></ct08>
+			<ct09></ct09>
 		</LoaiXuatBan>
 		<ct10></ct10>
 		<ct19></ct19>
 		<CT20>
 			<donViUyQuyen></donViUyQuyen>
+			<daiLyThue></daiLyThue>
 		</CT20>
 		<tenDonViUyQuyen></tenDonViUyQuyen>
 		<ct29></ct29>
