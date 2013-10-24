@@ -1,2 +1,14 @@
-<PL01_1TD_GTGT>
-</PL01_1TD_GTGT>
+<PL_01_1_TD_GTGT>
+	<BANGTHUEGTGTCUASXTHUYDIEN>
+		<chiTietThueGTGTCuaSXThuyDien>
+			<tenNhaMay>String</tenNhaMay>
+			<mstNhaMay>String</mstNhaMay>
+			<thueDauRaNhaMay>1</thueDauRaNhaMay>
+			<thueDauVaoNhaMay>1</thueDauVaoNhaMay>
+			<thuePNopNhaMay>1</thuePNopNhaMay>
+		</chiTietThueGTGTCuaSXThuyDien>
+	</BANGTHUEGTGTCUASXTHUYDIEN>
+	<tongThueDauRa>1</tongThueDauRa>
+	<tongThueDauVao>1</tongThueDauVao>
+	<tongThuePhaiNop>1</tongThuePhaiNop>
+</PL_01_1_TD_GTGT>
