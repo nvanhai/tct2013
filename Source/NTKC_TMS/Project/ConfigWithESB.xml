@@ -15,8 +15,8 @@
 	<!-- <TaxOffcice>22300</TaxOffcice> -->
 	<!-- Ket thuc NSD -->
 	<!-- Lay thong tin NNT -->
-	<WsUrlNNT>http://10.64.112.155:7080/wsDLTNNT</WsUrlNNT>
-	<SoapActionNNT>http://tempuri.org/getNNTInfo</SoapActionNNT>
+	<WsUrlNNT>http://10.64.112.155:7080/wsDangKyThue</WsUrlNNT>
+	<SoapActionNNT>http://tempuri.org/getNNT</SoapActionNNT>
 	<XmlRequestNNT>		
 		<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:q0="http://tempuri.org/ESB_TCT_INTERNAL_MSG" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 			<soapenv:Body>				
@@ -28,8 +28,8 @@
 	<!-- Ket thuc lay thong tin NNT -->
 	
 	<!-- Lay thong tin DLT -->
-	<WsUrlDLT>http://10.64.112.155:7080/wsDLTNNT</WsUrlDLT>
-	<SoapActionDLT>http://tempuri.org/getDLTInfo</SoapActionDLT>
+	<WsUrlDLT>http://10.64.112.155:7080/wsDangKyThue</WsUrlDLT>
+	<SoapActionDLT>http://tempuri.org/getDLT</SoapActionDLT>
 	<XmlRequestDLT>		
 		<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:q0="http://tempuri.org/ESB_TCT_INTERNAL_MSG" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 			<soapenv:Body>				
