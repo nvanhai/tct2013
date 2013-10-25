@@ -2178,15 +2178,15 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '' To Khai 07/KK-TNCN - To khai chinh thuc
-'str2 = "bs999513100177415   02201300200200100101/0101/01/2010<S01><S>1000724808</S><S>10000000~500000~25000000~25000~50000000~2500000~100000000~10000000~50000000~2000000~100000000~50000000</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~~1~1</S></S01>"
-'Barcode_Scaned str2
+str2 = "bs999512300790401   02201300200200100101/0101/01/2010<S01><S>2100462770</S><S>10000000~500000~25000000~25000~50000000~2500000~100000000~10000000~50000000~2000000~100000000~50000000</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~~1~1</S></S01>"
+Barcode_Scaned str2
 
 'str2 = "aa999982222222222   10201300200200100201/0114/06/2006<S01><S>6868686868</S><S>0~~~~1~0~0~1~~22/10/2013~435435</S><S>43543~543543~23667492849~43~10177021925~543543~1017701648964~45343534</S><S>dfds~dfg~fdgfd~fdgfdg</S><S>UEFW~32432~dfgfd~22/10/2013</S></S01>"
 'Barcode_Scaned str2
 'str2 = "aa999982222222222   102013002002002002<S01-1><S>1017701648964</S><S>2222222222~dfgfdg~100~1017701648964~</S><S>100~1017701648964</S></S01-1>"
+''Barcode_Scaned str2
+'str2 = "aa999922222222222   10201300100100100101/0114/06/2006<S01><S>6868686868</S><S>0~~~~1~0~0~1~~24/10/2013~</S><S>0~0~0~0~0~0~0</S><S>UEFW~32432~~24/10/2013</S></S01>"
 'Barcode_Scaned str2
-str2 = "aa999922222222222   10201300100100100101/0114/06/2006<S01><S>6868686868</S><S>0~~~~1~0~0~1~~24/10/2013~</S><S>0~0~0~0~0~0~0</S><S>UEFW~32432~~24/10/2013</S></S01>"
-Barcode_Scaned str2
 'str2 = "aa999922222222222   09201300000000100101/0114/06/2006<S01><S>6868686868</S><S>0~~~~0~0~1~1~~~</S><S>0~0~0~0~0~0~0</S><S>UEFW~32432~~24/10/2013</S></S01>"
 'Barcode_Scaned str2
 ' 02/KK-TNCN - Quy
@@ -4513,8 +4513,8 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
     Dim strResultNNT As String
     
     'Du lieu gia lap de test
-        Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-        strResultNNT = "sdfsfds"
+'        Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+'        strResultNNT = "sdfsfds"
     
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         Dim cfigXml As New MSXML.DOMDocument
@@ -4530,7 +4530,7 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
         fldName = cfigXml.getElementsByTagName("ParamNameNNT")(0).Text
 
         'Set value config to file param NNT
-        paXmlDoc.getElementsByTagName("tin")(0).Text = strTaxIDString
+        paXmlDoc.getElementsByTagName("tin_nnt")(0).Text = strTaxIDString
 
         paXmlDoc.getElementsByTagName("VERSION")(0).Text = cfigXml.getElementsByTagName("VERSION")(0).Text
         paXmlDoc.getElementsByTagName("SENDER_CODE")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text
@@ -4688,8 +4688,8 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
     
     
 '    'Du lieu gia lap de test
-    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
-    strResultDLT = "sdfsfds"
+'    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
+'    strResultDLT = "sdfsfds"
     
     'Neu khong co thong tin NNT thi exit luon
     If (strTaxIDString = "" Or strTaxIDString = vbNullString) Then
@@ -4713,7 +4713,8 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
         fldName = cfigXml.getElementsByTagName("ParamNameDLT")(0).Text
 
         'Set value config to file param DLT
-        paXmlDoc.getElementsByTagName("code")(0).Text = strTaxIDDLString
+        paXmlDoc.getElementsByTagName("tin_dlt")(0).Text = strTaxIDDLString
+         paXmlDoc.getElementsByTagName("tin_nnt")(0).Text = strTaxIDString
 
         paXmlDoc.getElementsByTagName("VERSION")(0).Text = cfigXml.getElementsByTagName("VERSION")(0).Text
         paXmlDoc.getElementsByTagName("SENDER_CODE")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text
