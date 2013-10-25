@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.ocx"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Begin VB.Form frmInterfaces 
    AutoRedraw      =   -1  'True
    Caption         =   "Hç trî kª khai - Phiªn b¶n 2.5.0"
@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":19A5
+         SpreadDesigner  =   "frmInterfaces.frx":1969
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1C69
+      SpreadDesigner  =   "frmInterfaces.frx":1BF1
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -4096,7 +4096,7 @@ Private Sub KetXuatXML()
     Dim xmlCellTKNode  As MSXML.IXMLDOMNode
     Dim currentGroup   As String
     Dim Blank          As Boolean
-    Dim Id             As Integer
+    Dim id             As Integer
     Dim CloneNode      As New MSXML.DOMDocument
     Dim Level          As String
     Dim intCtrl        As Integer
@@ -4189,7 +4189,7 @@ Private Sub KetXuatXML()
            
             'Set gia tri cho group dong
             If UCase(xmlNodeMapCT.nodeName) = "DYNAMIC" Then
-                Id = 1
+                id = 1
                 currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
                 Level = GetAttribute(xmlNodeMapCT, "Level")
 
@@ -4221,14 +4221,14 @@ Private Sub KetXuatXML()
                     .Row = sRow
 
                     If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
-                        If Id > 1 Then
+                        If id > 1 Then
                             cellRange = cellRange - GroupCellRange
                         End If
 
                         Exit Do
                     End If
 
-                    SetAttribute CloneNode.firstChild, "id", CStr(Id)
+                    SetAttribute CloneNode.firstChild, "id", CStr(id)
 
                     If Level = "2" Then
                         xmlTK.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
@@ -4236,7 +4236,7 @@ Private Sub KetXuatXML()
                         xmlTK.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
                     End If
 
-                    Id = Id + 1
+                    id = id + 1
 
                     cellRange = cellRange + GroupCellRange
                 Loop
@@ -4331,7 +4331,7 @@ Private Sub KetXuatXML()
                     For Each xmlSection In xmlMapPL.lastChild.childNodes
 
                         If UCase(xmlSection.nodeName) = "DYNAMIC" Then
-                            Id = 1
+                            id = 1
                             currentGroup = GetAttribute(xmlSection, "GroupName")
                             Level = GetAttribute(xmlSection, "Level")
 
@@ -4357,14 +4357,14 @@ Private Sub KetXuatXML()
                                 .Row = sRow
 
                                 If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
-                                    If Id > 1 Then
+                                    If id > 1 Then
                                         cellRange = cellRange - GroupCellRange
                                     End If
 
                                     Exit Do
                                 End If
 
-                                SetAttribute CloneNode.firstChild, "id", CStr(Id)
+                                SetAttribute CloneNode.firstChild, "id", CStr(id)
 
                                 If Level = "2" Then
                                     xmlPL.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
@@ -4372,7 +4372,7 @@ Private Sub KetXuatXML()
                                     xmlPL.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
                                 End If
 
-                                Id = Id + 1
+                                id = id + 1
                                 cellRange = cellRange + GroupCellRange
                             Loop
                         
