@@ -40,6 +40,7 @@ Public Sub Prepare1()
     With fps
 '       nkhoan: format dinh dang ngay thang
         SetDateFormat fps, 1, 47, .ColLetterToNumber("AQ"), DDMMYYYY
+        SetDateFormat fps, 1, 22, .ColLetterToNumber("AH"), DDMMYYYY
         SetDateFormat fps, 2, 23, .ColLetterToNumber("AS"), DDMMYYYY
         SetDateFormat fps, 3, 24, .ColLetterToNumber("AR"), DDMMYYYY
             
@@ -354,6 +355,8 @@ End Sub
 'Cause this interface sheets have dynamic rows, this function will set cellnote of error for rising-error cell
 'no parameter
 Private Sub CheckDynamicError()
+
+
    
     ' check ma so thue
                  
@@ -367,162 +370,10 @@ Private Sub CheckDynamicError()
         CheckErrorMST2 24, 19, "L", 3
         CheckHanNop 24, "AR", 22, 3
     End If
-        
-    If TAX_Utilities_New.NodeValidity.childNodes(0).Attributes.getNamedItem("Active").nodeValue <> "0" Then
-        CheckGiaTriKeKhai 31, "W", 30, "W", 23, 1
-        CheckGiaTriKeKhai 31, "AF", 30, "AF", 24, 1
-        
-        CheckGiaTriQuyetToan 36, "AF", 33, "AF", 25, 1
-        CheckGiaTriQuyetToan 37, "AF", 34, "AF", 26, 1
-    End If
-    
-    
-        
+               
 End Sub
 
-'<CSCM>
-'--------------------------------------------------------------------------------
-' Description:       check gia tri phan viec cua nha thau phu duoc tru phai nho hon gia tri hop dong
-' Created by :       Khai Hoan
-' Date-Time  :       9/16/2011-4:31:43 PM
-' paramater  :       - iRow, iCol: toa do cua Cell Gia tri phan viec nha thau.
-' paramater  :       - iRow2, iCol2: Gia tri hop dong.
-' paramater  :       - iRowErr: dong erros tren header
-'                    - iSheet: sheet dag lam viec.
-'--------------------------------------------------------------------------------
-Private Sub CheckGiaTriKeKhai(iRow As Integer, _
-                              iCol As String, _
-                              iRow2 As Integer, _
-                              iCol2 As String, _
-                              iRowErr As String, _
-                              isheet As Integer)
-    Dim errGTKK, gtrHD, gtrPhanViec As Variant
-    Dim strFocusSheetName, strFocusRow, strFocusCol, strFormula As String
 
-    Dim iFocusFlag, iFlagvMst As Integer
-    
-    With fps
-    
-        .Sheet = .SheetCount
-        .GetText .ColLetterToNumber("E"), iRowErr, errGTKK
-        
-        .Sheet = isheet
-  
-        .GetText .ColLetterToNumber(iCol), iRow, gtrPhanViec
-        .GetText .ColLetterToNumber(iCol2), iRow2, gtrHD
-            
-        If Trim$(gtrPhanViec) <> "" Then
-
-            If gtrPhanViec > gtrHD Then
-              
-                .Row = iRow
-                .Col = .ColLetterToNumber(iCol)
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                .CellNote = errGTKK   'static
-                .BackColor = mErrorColor
-
-                iFlagvMst = 1
-                        
-                ' Forcus ve Cell co du lieu bi loi
-                If iFocusFlag = 0 Then
-                    strFocusSheetName = "'" & .SheetName & "'"
-                    strFocusCol = str(.Col)
-                    strFocusRow = str(.Row)
-                    .Sheet = .SheetCount
-                    strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
-                    .Col = .ColLetterToNumber("C")
-                    .Row = iRowErr
-                    .Formula = strFormula
-                End If
-
-            Else
-                .Sheet = isheet
-                .Row = iRow
-                .Col = .ColLetterToNumber(iCol)
-                .CellNote = ""
-                .BackColor = mNonErrorColor
-                
-            End If
-        End If
-
-        .Sheet = .SheetCount
-        .SetText .ColLetterToNumber("B"), iRowErr, IIf(iFlagvMst = 1, "0", "1")
-
-    End With
-
-End Sub
-
-'<CSCM>
-'--------------------------------------------------------------------------------
-' Description:       check gia tri tai cot 5 cua dong 3 va 4
-' Created by :       Khai Hoan
-' Date-Time  :       9/16/2011-4:31:43 PM
-' paramater  :       - iRow, iCol: toa do cua Cell Gia tricua dong 4
-' paramater  :       - iRow2, iCol2: Gia tri cua dong 3
-' paramater  :       - iRowErr: dong erros tren header
-'                    - iSheet: sheet dag lam viec.
-'--------------------------------------------------------------------------------
-Private Sub CheckGiaTriQuyetToan(iRow As Integer, _
-                              iCol As String, _
-                              iRow2 As Integer, _
-                              iCol2 As String, _
-                              iRowErr As String, _
-                              isheet As Integer)
-    Dim errGTKK, gtrHD, gtrPhanViec As Variant
-    Dim strFocusSheetName, strFocusRow, strFocusCol, strFormula As String
-
-    Dim iFocusFlag, iFlagvMst As Integer
-    
-    With fps
-    
-        .Sheet = .SheetCount
-        .GetText .ColLetterToNumber("E"), iRowErr, errGTKK
-        
-        .Sheet = isheet
-  
-        .GetText .ColLetterToNumber(iCol), iRow, gtrPhanViec
-        .GetText .ColLetterToNumber(iCol2), iRow2, gtrHD
-            
-        If Trim$(gtrPhanViec) <> "" Then
-
-            If gtrPhanViec > gtrHD Then
-              
-                .Row = iRow
-                .Col = .ColLetterToNumber(iCol)
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                .CellNote = errGTKK   'static
-                .BackColor = mErrorColor
-
-                iFlagvMst = 1
-                        
-                ' Forcus ve Cell co du lieu bi loi
-                If iFocusFlag = 0 Then
-                    strFocusSheetName = "'" & .SheetName & "'"
-                    strFocusCol = str(.Col)
-                    strFocusRow = str(.Row)
-                    .Sheet = .SheetCount
-                    strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
-                    .Col = .ColLetterToNumber("C")
-                    .Row = iRowErr
-                    .Formula = strFormula
-                End If
-
-            Else
-                .Sheet = isheet
-                .Row = iRow
-                .Col = .ColLetterToNumber(iCol)
-                .CellNote = ""
-                .BackColor = mNonErrorColor
-                
-            End If
-        End If
-
-        .Sheet = .SheetCount
-        .SetText .ColLetterToNumber("B"), iRowErr, IIf(iFlagvMst = 1, "0", "1")
-
-    End With
-
-End Sub
 
 '<CSCM>
 '--------------------------------------------------------------------------------
