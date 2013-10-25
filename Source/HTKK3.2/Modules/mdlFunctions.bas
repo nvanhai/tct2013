@@ -3931,10 +3931,11 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             
            ' 02_NTNN
         Case "80"
-            ReDim strResult(3)
+            ReDim strResult(4)
             strResult(0) = "J_18~Dynamic_0"
-            strResult(1) = "Q_30~W_30~AF_30~AO_30~AS_30~Q_31~W_31~AF_31~AO_31~AS_31~Q_33~W_33~AF_33~AO_33~AS_33~Q_34~W_34~AF_34~AO_34~AS_34~W_35~AF_35~AO_35~Q_36~W_36~AF_36~AO_36~AS_36~Q_37~W_37~AF_37~AO_37~AS_37~W_38~AF_38~AO_38~Q_39~W_39~AF_39~AO_39~AS_39~Q_40~W_40~AF_40~AO_40~AS_40~W_41~AF_41~AO_41~Q_42~W_42~AF_42~AO_42~AS_42~Q_43~W_43~AF_43~AO_43~AS_43~Dynamic_0"
-            strResult(2) = "P_47~AU_47~P_49~AU_49~M_23~N_23~O_23~S_23~AD_23~Dynamic_0"
+            strResult(1) = "N_22~AH_22~Dynamic_0"
+            strResult(2) = "Q_30~W_30~AF_30~AO_30~AS_30~Q_31~W_31~AF_31~AO_31~AS_31~Q_33~W_33~AF_33~AO_33~AS_33~Q_34~W_34~AF_34~AO_34~AS_34~W_35~AF_35~AO_35~Q_36~W_36~AF_36~AO_36~AS_36~Q_37~W_37~AF_37~AO_37~AS_37~W_38~AF_38~AO_38~Q_39~W_39~AF_39~AO_39~AS_39~Q_40~W_40~AF_40~AO_40~AS_40~W_41~AF_41~AO_41~Q_42~W_42~AF_42~AO_42~AS_42~Q_43~W_43~AF_43~AO_43~AS_43~Dynamic_0"
+            strResult(3) = "P_47~AU_47~P_49~AU_49~M_23~N_23~O_23~S_23~AD_23~Dynamic_0"
             
            ' 03_NTNN
         Case "81"
