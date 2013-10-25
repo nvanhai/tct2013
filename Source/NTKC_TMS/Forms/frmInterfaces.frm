@@ -4577,7 +4577,7 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
         paXmlDoc.save sParamNNT
 
 '        'Return value from ESB
-        'strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
 
         strResultNNT = ChangeTagASSCII(strResultNNT, False)
         xmlResultNNT.loadXML strResultNNT
@@ -4759,7 +4759,7 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
         paXmlDoc.save sParamDLT
 
 '        'Return value from ESB
-        'strResultDLT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+        strResultDLT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
 
         strResultDLT = ChangeTagASSCII(strResultDLT, False)
         xmlResultDLT.loadXML strResultDLT
