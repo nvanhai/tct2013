@@ -2185,8 +2185,8 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '' To Khai 07/KK-TNCN - To khai chinh thuc
-str2 = "bs999512300790401   02201300200200100101/0101/01/2010<S01><S>2100462770</S><S>10000000~500000~25000000~25000~50000000~2500000~100000000~10000000~50000000~2000000~100000000~50000000</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~~1~1</S></S01>"
-Barcode_Scaned str2
+'str2 = "bs999512300790401   02201300200200100101/0101/01/2010<S01><S>2100462770</S><S>10000000~500000~25000000~25000~50000000~2500000~100000000~10000000~50000000~2000000~100000000~50000000</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~~1~1</S></S01>"
+'Barcode_Scaned str2
 
 'str2 = "aa999982222222222   10201300200200100201/0114/06/2006<S01><S>6868686868</S><S>0~~~~1~0~0~1~~22/10/2013~435435</S><S>43543~543543~23667492849~43~10177021925~543543~1017701648964~45343534</S><S>dfds~dfg~fdgfd~fdgfdg</S><S>UEFW~32432~dfgfd~22/10/2013</S></S01>"
 'Barcode_Scaned str2
@@ -2199,6 +2199,16 @@ Barcode_Scaned str2
 ' 02/KK-TNCN - Quy
 'str2 = "aa999162300790384   03201300100100100101/0101/01/2010<S01><S></S><S>1000~800~300~200~900000000~700000000~200000000~100000000~20000000~30000000~20000000~2000000~6000000</S><S>Nguyen Van A~21/10/2013~~~1~~</S></S01>"
 'Barcode_Scaned str2
+
+'str2 = "aa999922222222222   09201300100100100201/0114/06/2006<S01><S>6868686868</S><S>5~~x~~0~0~1~1~~~</S><S>435~435~435~189225~43~81367~435435</S><S>UEFW~32432~~25/10/2013</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999922222222222   092013001001002002<S01-1><S>81367</S><S>6868686868~dsfsf~100~81367~</S><S>81367</S></S01-1>"
+'Barcode_Scaned str2
+
+str2 = "aa999922222222222   09201300100100100201/0114/06/2006<S01><S>6868686868</S><S>5~x~~~0~0~1~1~~~</S><S>435~435~435~189225~43~81367~435435</S><S>UEFW~32432~~25/10/2013</S></S01>"
+Barcode_Scaned str2
+str2 = "aa999922222222222   092013001001002002<S01-1><S>81367</S><S>6868686868~dsfsf~100~81367~</S><S>81367</S></S01-1>"
+Barcode_Scaned str2
 
 End Sub
 
@@ -4567,7 +4577,7 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
         paXmlDoc.save sParamNNT
 
 '        'Return value from ESB
-        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+        'strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
 
         strResultNNT = ChangeTagASSCII(strResultNNT, False)
         xmlResultNNT.loadXML strResultNNT
@@ -4749,7 +4759,7 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
         paXmlDoc.save sParamDLT
 
 '        'Return value from ESB
-        strResultDLT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+        'strResultDLT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
 
         strResultDLT = ChangeTagASSCII(strResultDLT, False)
         xmlResultDLT.loadXML strResultDLT
