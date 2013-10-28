@@ -483,7 +483,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":02C8
       UserResize      =   1
       Appearance      =   1
    End
@@ -4218,18 +4218,24 @@ Private Sub LoadDefaultInfor()
             End If
 
         Case KIEU_KY_NGAY_PS
-            txtDay.Text = d
-            txtMonth.Text = m
             txtYear.Text = Y
+            If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Then
+                    txtMonth.Text = m - 1
+                    If Len(txtMonth.Text) = 1 Then
+                        txtMonth.Text = "0" & txtMonth.Text
+                    End If
 
-            If Len(txtDay.Text) = 1 Then
-                txtDay.Text = "0" & txtDay.Text
-            End If
+            Else
+                    txtDay.Text = d
+                    txtMonth.Text = m
+                    If Len(txtDay.Text) = 1 Then
+                        txtDay.Text = "0" & txtDay.Text
+                    End If
 
-            If Len(txtMonth.Text) = 1 Then
-                txtMonth.Text = "0" & txtMonth.Text
+                    If Len(txtMonth.Text) = 1 Then
+                        txtMonth.Text = "0" & txtMonth.Text
+                    End If
             End If
-            
     End Select
     
     Exit Sub

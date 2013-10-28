@@ -3947,10 +3947,11 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             strResult(4) = "Q_48~BG_48~Q_50~BG_50~M_26~N_26~O_26~S_26~Dynamic_0"
             ' 04_NTNN
         Case "82"
-            ReDim strResult(3)
+            ReDim strResult(4)
             strResult(0) = "J_19~Dynamic_0"
-            strResult(1) = "O_30~T_30~AB_30~AJ_30~AT_30~O_31~T_31~AB_31~AJ_31~AT_31~O_32~T_32~AB_32~AJ_32~AT_32~O_33~T_33~AB_33~AJ_33~AT_33~O_34~T_34~AB_34~AJ_34~AT_34~O_35~T_35~AB_35~AJ_35~AT_35~O_36~T_36~AB_36~AJ_36~AT_36~Dynamic_0"
-            strResult(2) = "M_44~AL_44~M_46~AL_46~M_23~N_23~O_23~S_23~Z_23~Dynamic_0"
+            strResult(1) = "N_21~AH_21~Dynamic_0"
+            strResult(2) = "O_30~T_30~AB_30~AJ_30~AT_30~O_31~T_31~AB_31~AJ_31~AT_31~O_32~T_32~AB_32~AJ_32~AT_32~O_33~T_33~AB_33~AJ_33~AT_33~O_34~T_34~AB_34~AJ_34~AT_34~O_35~T_35~AB_35~AJ_35~AT_35~O_36~T_36~AB_36~AJ_36~AT_36~Dynamic_0"
+            strResult(3) = "M_44~AL_44~M_46~AL_46~M_23~N_23~O_23~S_23~Z_23~Dynamic_0"
             
             ' 01_BVMT
         Case "86"

@@ -40,15 +40,10 @@ Public Sub Prepare1()
 
     With fps
         SetDateFormat fps, 1, 45, .ColLetterToNumber("AL"), DDMMYYYY
+        SetDateFormat fps, 1, 21, .ColLetterToNumber("AH"), DDMMYYYY
         SetDateFormat fps, 2, 24, .ColLetterToNumber("AR"), DDMMYYYY
         
-        .Sheet = 1 'To khai 02/TNCN
-        
-        .Row = 23
-        .Col = .ColLetterToNumber("E")
-        .Text = Format(Date, "dd/mm/yyyy")
-        .TypeHAlign = TypeHAlignLeft
-        
+        .Sheet = 1 'To khai 04/NTNN
         .Row = 45
         .Col = .ColLetterToNumber("AL")
         .Text = Format(Date, "dd/mm/yyyy")
@@ -226,7 +221,21 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
         .EventEnabled(EventAllEvents) = False
         mCurrentSheet = .Sheet
        .Sheet = 1
-        
+            If Col = .ColLetterToNumber("AH") And Row = 21 Then
+                .GetText Col, Row, varTemp
+                If varTemp <> "" And varTemp <> "../../...." Then
+                    If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+                        .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+                    Else
+                        .SetActiveCell Col, Row
+                    End If
+                Else
+                 .SetText Col, Row, ""
+                End If
+                .Col = Col
+                .Row = Row
+                UpdateCell fps, Col, Row, .Text
+            End If
         'check date
             If Col = .ColLetterToNumber("AL") And Row = 45 Then
                 .GetText Col, Row, varTemp
@@ -234,7 +243,6 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
                         .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
                     Else
-                        
                         .SetActiveCell Col, Row
                     End If
                 Else
