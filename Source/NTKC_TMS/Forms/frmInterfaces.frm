@@ -956,7 +956,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     End If
     
     'Xu ly rieng cho truong hop to khai 01_TAIN_DK
-    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "92" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "12" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "98" Then
+    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "92" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "98" Then
         If xmlTK.getElementsByTagName("ct03").length > 0 Then
             If xmlTK.getElementsByTagName("ct03")(0).Text = "1" Then
                 xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
