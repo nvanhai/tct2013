@@ -50,8 +50,8 @@
 	</Static>
 	<Dynamic GroupName="ThongTinTKhoan">
 		<ThongTin id="id">
-			<soTKhoan></soTKhoan>
-			<taiNganHang></taiNganHang>
+			<soTKhoan>G_63</soTKhoan>
+			<taiNganHang>T_63</taiNganHang>
 		</ThongTin>
 	</Dynamic>
 	<Static GroupName="TKhaiThue">
