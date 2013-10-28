@@ -9,6 +9,7 @@
 		<lyDoGiaHan></lyDoGiaHan>
 	</Static>
 	<Static GroupName="NNT">
+		<phuongXa></phuongXa>
 		<maHuyenNNT></maHuyenNNT>
 		<maTinhNNT></maTinhNNT>
 	</Static>
@@ -16,108 +17,7 @@
 		<maHuyenDLyThue></maHuyenDLyThue>
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
-	<Static GroupName="ThuyetMinh">
-		<ct100_tMinh>P_40</ct100_tMinh>
-		<ct110_tMinh>P_41</ct110_tMinh>
-		<ct111_tMinh>P_42</ct111_tMinh>
-		<ct112_tMinh>P_43</ct112_tMinh>
-		<ct120_tMinh>P_44</ct120_tMinh>
-		<ct121_tMinh>P_45</ct121_tMinh>
-		<ct129_tMinh>P_46</ct129_tMinh>
-		<ct130_tMinh>P_47</ct130_tMinh>
-		<ct131_tMinh>P_48</ct131_tMinh>
-		<ct132_tMinh>P_49</ct132_tMinh>
-		<ct133_tMinh>P_50</ct133_tMinh>
-		<ct134_tMinh>P_51</ct134_tMinh>
-		<ct135_tMinh>P_52</ct135_tMinh>
-		<ct139_tMinh>P_53</ct139_tMinh>
-		<ct140_tMinh>P_54</ct140_tMinh>
-		<ct141_tMinh>P_55</ct141_tMinh>
-		<ct149_tMinh>P_56</ct149_tMinh>
-		<ct150_tMinh>P_57</ct150_tMinh>
-		<ct151_tMinh>P_58</ct151_tMinh>
-		<ct152_tMinh>P_59</ct152_tMinh>
-		<ct154_tMinh>P_60</ct154_tMinh>
-		<ct158_tMinh>P_61</ct158_tMinh>
-		<ct200_tMinh>P_62</ct200_tMinh>
-		<ct210_tMinh>P_63</ct210_tMinh>
-		<ct211_tMinh>P_64</ct211_tMinh>
-		<ct212_tMinh>P_65</ct212_tMinh>
-		<ct213_tMinh>P_66</ct213_tMinh>
-		<ct218_tMinh>P_67</ct218_tMinh>
-		<ct219_tMinh>P_68</ct219_tMinh>
-		<ct220_tMinh>P_69</ct220_tMinh>
-		<ct221_tMinh>P_70</ct221_tMinh>
-		<ct222_tMinh>P_71</ct222_tMinh>
-		<ct223_tMinh>P_72</ct223_tMinh>
-		<ct224_tMinh>P_73</ct224_tMinh>
-		<ct225_tMinh>P_74</ct225_tMinh>
-		<ct226_tMinh>P_75</ct226_tMinh>
-		<ct227_tMinh>P_76</ct227_tMinh>
-		<ct228_tMinh>P_77</ct228_tMinh>
-		<ct229_tMinh>P_78</ct229_tMinh>
-		<ct230_tMinh>P_79</ct230_tMinh>
-		<ct240_tMinh>P_80</ct240_tMinh>
-		<ct241_tMinh>P_81</ct241_tMinh>
-		<ct242_tMinh>P_82</ct242_tMinh>
-		<ct250_tMinh>P_83</ct250_tMinh>
-		<ct251_tMinh>P_84</ct251_tMinh>
-		<ct252_tMinh>P_85</ct252_tMinh>
-		<ct258_tMinh>P_86</ct258_tMinh>
-		<ct259_tMinh>P_87</ct259_tMinh>
-		<ct260_tMinh>P_88</ct260_tMinh>
-		<ct261_tMinh>P_89</ct261_tMinh>
-		<ct262_tMinh>P_90</ct262_tMinh>
-		<ct268_tMinh>P_91</ct268_tMinh>
-		<ct270_tMinh>P_92</ct270_tMinh>
-		<ct300_tMinh>P_94</ct300_tMinh>
-		<ct310_tMinh>P_95</ct310_tMinh>
-		<ct311_tMinh>P_96</ct311_tMinh>
-		<ct312_tMinh>P_97</ct312_tMinh>
-		<ct313_tMinh>P_98</ct313_tMinh>
-		<ct314_tMinh>P_99</ct314_tMinh>
-		<ct315_tMinh>P_100</ct315_tMinh>
-		<ct316_tMinh>P_101</ct316_tMinh>
-		<ct317_tMinh>P_102</ct317_tMinh>
-		<ct318_tMinh>P_103</ct318_tMinh>
-		<ct319_tMinh>P_104</ct319_tMinh>
-		<ct320_tMinh>P_105</ct320_tMinh>
-		<ct323_tMinh>P_106</ct323_tMinh>
-		<ct330_tMinh>P_107</ct330_tMinh>
-		<ct331_tMinh>P_108</ct331_tMinh>
-		<ct332_tMinh>P_109</ct332_tMinh>
-		<ct333_tMinh>P_110</ct333_tMinh>
-		<ct334_tMinh>P_111</ct334_tMinh>
-		<ct335_tMinh>P_112</ct335_tMinh>
-		<ct336_tMinh>P_113</ct336_tMinh>
-		<ct337_tMinh>P_114</ct337_tMinh>
-		<ct338_tMinh>P_115</ct338_tMinh>
-		<ct339_tMinh>P_116</ct339_tMinh>
-		<ct400_tMinh>P_117</ct400_tMinh>
-		<ct410_tMinh>P_118</ct410_tMinh>
-		<ct411_tMinh>P_119</ct411_tMinh>
-		<ct412_tMinh>P_120</ct412_tMinh>
-		<ct413_tMinh>P_121</ct413_tMinh>
-		<ct414_tMinh>P_122</ct414_tMinh>
-		<ct415_tMinh>P_123</ct415_tMinh>
-		<ct416_tMinh>P_124</ct416_tMinh>
-		<ct417_tMinh>P_125</ct417_tMinh>
-		<ct418_tMinh>P_126</ct418_tMinh>
-		<ct419_tMinh>P_127</ct419_tMinh>
-		<ct420_tMinh>P_128</ct420_tMinh>
-		<ct421_tMinh>P_129</ct421_tMinh>
-		<ct422_tMinh>P_130</ct422_tMinh>
-		<ct430_tMinh>P_131</ct430_tMinh>
-		<ct432_tMinh>P_132</ct432_tMinh>
-		<ct433_tMinh>P_133</ct433_tMinh>
-		<ct440_tMinh>P_134</ct440_tMinh>
-		<tsantNgoai_tMinh>P_136</tsantNgoai_tMinh>
-		<hangGCong_tMinh>P_137</hangGCong_tMinh>
-		<hangKGui_tMinh>P_138</hangKGui_tMinh>
-		<noKDoi_tMinh>P_139</noKDoi_tMinh>
-		<ngoaiTe_tMinh>P_140</ngoaiTe_tMinh>
-		<duToanChi_tMinh>P_141</duToanChi_tMinh>
-	</Static>
+
 	<Static GroupName="SoNamNay">
 		<ct100_nNay>R_40</ct100_nNay>
 		<ct110_nNay>R_41</ct110_nNay>
@@ -322,12 +222,14 @@
 		<ngoaiTe_nNgoai>W_140</ngoaiTe_nNgoai>
 		<duToanChi_nNgoai>W_141</duToanChi_nNgoai>
 	</Static>
-	<Static GroupName="TKhaiThue">
+		<Static GroupName="TKhaiThue">
 		<nguoiKy>R_144</nguoiKy>
 		<ngayKy>R_146</ngayKy>
 	</Static>
-	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue></tenNVienDLyThue>
-		<cchiHNghe></cchiHNghe>
+	<Static GroupName="CTieuTKhaiChinh">
+		<nguoiLapBieu></nguoiLapBieu>
+		<keToanTruong></keToanTruong>
+		<ngayLap></ngayLap>
+		<giamDoc></giamDoc>
 	</Static>
 </HSoKhaiThue>

@@ -12,6 +12,7 @@
 		<nganhNgheKD></nganhNgheKD>
 	</Static>
 	<Static GroupName="NNT">
+		<phuongXa></phuongXa>
 		<maHuyenNNT></maHuyenNNT>
 		<maTinhNNT></maTinhNNT>
 	</Static>
@@ -27,47 +28,28 @@
 	</Static>
 	<Dynamic GroupName="HoaDon">
 		<ChiTiet id="ID_1">
+		<maHoaDon>C_22</maHoaDon>
 			<tenHDon>D_22</tenHDon>
 			<kHieuMauHDon>E_22</kHieuMauHDon>
 			<kHieuHDon>F_22</kHieuHDon>
-			<SoTonMuaTrKy>
-				<tongSo>G_22</tongSo>
-				<SoTonDauKy>
-					<tuSo>H_22</tuSo>
-					<denSo>I_22</denSo>
-				</SoTonDauKy>
-				<MuaTrongKy>
-					<tuSo>J_22</tuSo>
-					<denSo>K_22</denSo>
-				</MuaTrongKy>
-			</SoTonMuaTrKy>
-			<SoSuDungTrKy>
-				<TongSoSuDung>
-					<tuSo>L_22</tuSo>
-					<denSo>M_22</denSo>
-					<cong>N_22</cong>
-				</TongSoSuDung>
-				<TrongDo>
-					<soDaSDung>P_22</soDaSDung>
-					<XoaBo>
-						<soLuong>Q_22</soLuong>
-						<so>R_22</so>
-					</XoaBo>
-					<Mat>
-						<soLuong>S_22</soLuong>
-						<so>T_22</so>
-					</Mat>
-					<Huy>
-						<soLuong>U_22</soLuong>
-						<so>V_22</so>
-					</Huy>
-				</TrongDo>
-			</SoSuDungTrKy>
-			<TonCuoiKy>
-				<tuSo>X_22</tuSo>
-				<denSo>Y_22</denSo>
-				<soLuong>Z_22</soLuong>
-			</TonCuoiKy>
+		<soTonMuaTrKy_tongSo>G_22</soTonMuaTrKy_tongSo>
+		<soTonDauKy_tuSo>H_22</soTonDauKy_tuSo>
+		<soTonDauKy_denSo>I_22</soTonDauKy_denSo>
+		<muaTrongKy_tuSo>J_22</muaTrongKy_tuSo>
+		<muaTrongKy_denSo>K_22</muaTrongKy_denSo>
+		<tongSoSuDung_tuSo>L_22</tongSoSuDung_tuSo>
+		<tongSoSuDung_denSo>M_22</tongSoSuDung_denSo>
+		<tongSoSuDung_cong>N_22</tongSoSuDung_cong>
+		<soDaSDung>P_22</soDaSDung>
+		<xoaBo_soLuong>Q_22</xoaBo_soLuong>
+		<xoaBo_so>R_22</xoaBo_so>
+		<mat_soLuong>S_22</mat_soLuong>
+		<mat_so>T_22</mat_so>
+		<huy_soLuong>U_22</huy_soLuong>
+		<huy_so>V_22</huy_so>
+		<tonCuoiKy_tuSo>X_22</tonCuoiKy_tuSo>
+		<tonCuoiKy_denSo>Y_22</tonCuoiKy_denSo>
+		<tonCuoiKy_soLuong>Z_22</tonCuoiKy_soLuong>
 		</ChiTiet>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
