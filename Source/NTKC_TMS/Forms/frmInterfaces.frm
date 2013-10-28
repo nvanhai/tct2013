@@ -902,8 +902,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     xmlTK.getElementsByTagName("maCQTNoiNop")(0).Text = strMaCoQuanThue 'xmlConfig.getElementsByTagName("maCQTNoiNop")(0).Text
     xmlTK.getElementsByTagName("tenCQTNoiNop")(0).Text = strTenCoQuanThue 'xmlConfig.getElementsByTagName("tenCQTNoiNop")(0).Text
     xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = Format(Date, "dd-mmm-yyyy HH:mm:ss")
-    xmlTK.getElementsByTagName("tenHuyenNNT")(0).Text = ""
-    xmlTK.getElementsByTagName("tenTinhNNT")(0).Text = ""
+
     
     If (xmlResultNNT.hasChildNodes And (InStr(xmlResultNNT.xml, "faultcode") < 0)) Then
         xmlTK.getElementsByTagName("maHuyenNNT")(0).Text = xmlResultNNT.getElementsByTagName("MaQuanHuyen")(0).Text
@@ -913,10 +912,13 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         xmlTK.getElementsByTagName("tenNNT")(0).Text = ConvertStringToUtf8String(xmlResultNNT.getElementsByTagName("TenNNT")(0).Text)
         ' xmlTK.getElementsByTagName("dchiNNT")(0).Text = "test"
         xmlTK.getElementsByTagName("dchiNNT")(0).Text = ConvertStringToUtf8String(xmlResultNNT.getElementsByTagName("DiaChi")(0).Text)
-        xmlTK.getElementsByTagName("dthoaiNNT")(0).Text = "" ' xmlResultNNT.getElementsByTagName("TRAN_TEL")(0).Text
-        xmlTK.getElementsByTagName("faxNNT")(0).Text = "" 'xmlResultNNT.getElementsByTagName("TRAN_FAX")(0).Text
-        xmlTK.getElementsByTagName("emailNNT")(0).Text = "" 'xmlResultNNT.getElementsByTagName("MAIL")(0).Text
+        xmlTK.getElementsByTagName("dthoaiNNT")(0).Text = xmlResultNNT.getElementsByTagName("DienThoai")(0).Text
+        xmlTK.getElementsByTagName("faxNNT")(0).Text = xmlResultNNT.getElementsByTagName("Fax")(0).Text
+        xmlTK.getElementsByTagName("emailNNT")(0).Text = xmlResultNNT.getElementsByTagName("Email")(0).Text
         'xmlTK.getElementsByTagName("mst")(0).Text = xmlResultNNT.getElementsByTagName("MaSoThue")(0).Text
+        
+        xmlTK.getElementsByTagName("tenHuyenNNT")(0).Text = ConvertStringToUtf8String(xmlResultNNT.getElementsByTagName("TenQuanHuyen")(0).Text)
+        xmlTK.getElementsByTagName("tenTinhNNT")(0).Text = ConvertStringToUtf8String(xmlResultNNT.getElementsByTagName("TenTinh")(0).Text)
     End If
     
     xmlTK.getElementsByTagName("mst")(0).Text = strMaNNT
@@ -926,18 +928,18 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         xmlTK.getElementsByTagName("tenDLyThue")(0).Text = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("TenNNT")(0).Text)
         'xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = "test"
         xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("DiaChi")(0).Text)
-        xmlTK.getElementsByTagName("dthoaiDLyThue")(0).Text = "" ' xmlResultDLT.getElementsByTagName("TELL")(0).Text
-        xmlTK.getElementsByTagName("faxDLyThue")(0).Text = "" ' xmlResultDLT.getElementsByTagName("FAX")(0).Text
-        xmlTK.getElementsByTagName("emailDLyThue")(0).Text = "" ' xmlResultDLT.getElementsByTagName("EMAIL")(0).Text
-        xmlTK.getElementsByTagName("soHDongDLyThue")(0).Text = "" 'xmlResultDLT.getElementsByTagName("REPR_TAXO_ID")(0).Text
-        xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).Text = "" 'xmlResultDLT.getElementsByTagName("START_DATE")(0).Text
+        xmlTK.getElementsByTagName("dthoaiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("DienThoai")(0).Text
+        xmlTK.getElementsByTagName("faxDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Fax")(0).Text
+        xmlTK.getElementsByTagName("emailDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Email")(0).Text
+        xmlTK.getElementsByTagName("soHDongDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("SoHopDong")(0).Text
+        xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("NgayHopDong")(0).Text
+        xmlTK.getElementsByTagName("tenTinhDLyThue")(0).Text = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("TenTinh")(0).Text)
+        xmlTK.getElementsByTagName("tenHuyenDLyThue")(0).Text = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("TenQuanHuyen")(0).Text)
+        xmlTK.getElementsByTagName("maHuyenDLyThue")(0).Text = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("MaQuanHuyen")(0).Text)
+        xmlTK.getElementsByTagName("maTinhDLyThue")(0).Text = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("MaTinh")(0).Text)
     End If
     
     xmlTK.getElementsByTagName("mstDLyThue")(0).Text = strMaDLT
-    xmlTK.getElementsByTagName("tenTinhDLyThue")(0).Text = ""
-    xmlTK.getElementsByTagName("tenHuyenDLyThue")(0).Text = ""
-    xmlTK.getElementsByTagName("maHuyenDLyThue")(0).Text = ""
-    xmlTK.getElementsByTagName("maTinhDLyThue")(0).Text = ""
     xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = "1.0"
     xmlTK.getElementsByTagName("maDVu")(0).Text = GetAttribute(GetMessageCellById("0133"), "Msg")
     xmlTK.getElementsByTagName("tenDVu")(0).Text = GetAttribute(GetMessageCellById("0134"), "Msg")
@@ -1586,6 +1588,9 @@ Private Sub ExecuteSave()
     xmlDocSave.save sFileName
 
     ' Push MQ
+    If (Not PushDataToESB(xmlDocSave.xml)) Then
+        MessageBox "0137", msOKOnly, miCriticalError
+    End If
     '    If (Not PushDataToESB(xmlDocSave.xml)) Then
     '        MessageBox "0137", msOKOnly, miCriticalError
     '    End If
@@ -2184,9 +2189,9 @@ Private Sub Command1_Click()
 'str2 = "bs999513100177415   02201300200200100101/0101/01/2010<S01><S>1000724808</S><S>10000000~500000~25000000~25000~50000000~2500000~100000000~10000000~50000000~2000000~100000000~50000000</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~~1~1</S></S01>"
 'Barcode_Scaned str2
 
-'' To Khai 07/KK-TNCN - To khai chinh thuc
-'str2 = "bs999512300790401   02201300200200100101/0101/01/2010<S01><S>2100462770</S><S>10000000~500000~25000000~25000~50000000~2500000~100000000~10000000~50000000~2000000~100000000~50000000</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~~1~1</S></S01>"
-'Barcode_Scaned str2
+' To Khai 07/KK-TNCN - To khai chinh thuc
+str2 = "bs999512300790401   02201300200200100101/0101/01/2010<S01><S>2100462770</S><S>10000000~500000~25000000~25000~50000000~2500000~100000000~10000000~50000000~2000000~100000000~50000000</S><S>Lan H­¬ng~16/10/2013~Ph­¬ng Anh~KTV~~1~1</S></S01>"
+Barcode_Scaned str2
 
 'str2 = "aa999982222222222   10201300200200100201/0114/06/2006<S01><S>6868686868</S><S>0~~~~1~0~0~1~~22/10/2013~435435</S><S>43543~543543~23667492849~43~10177021925~543543~1017701648964~45343534</S><S>dfds~dfg~fdgfd~fdgfdg</S><S>UEFW~32432~dfgfd~22/10/2013</S></S01>"
 'Barcode_Scaned str2
@@ -2205,10 +2210,10 @@ Private Sub Command1_Click()
 'str2 = "aa999922222222222   092013001001002002<S01-1><S>81367</S><S>6868686868~dsfsf~100~81367~</S><S>81367</S></S01-1>"
 'Barcode_Scaned str2
 
-str2 = "aa999922222222222   09201300100100100201/0114/06/2006<S01><S>6868686868</S><S>5~x~~~0~0~1~1~~~</S><S>435~435~435~189225~43~81367~435435</S><S>UEFW~32432~~25/10/2013</S></S01>"
-Barcode_Scaned str2
-str2 = "aa999922222222222   092013001001002002<S01-1><S>81367</S><S>6868686868~dsfsf~100~81367~</S><S>81367</S></S01-1>"
-Barcode_Scaned str2
+'str2 = "aa999922222222222   09201300100100100201/0114/06/2006<S01><S>6868686868</S><S>5~x~~~0~0~1~1~~~</S><S>435~435~435~189225~43~81367~435435</S><S>UEFW~32432~~25/10/2013</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999922222222222   092013001001002002<S01-1><S>81367</S><S>6868686868~dsfsf~100~81367~</S><S>81367</S></S01-1>"
+'Barcode_Scaned str2
 
 End Sub
 
@@ -4653,10 +4658,11 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
         rsReturn!ten_dtnt = TAX_Utilities_Srv_New.Convert(GetStringByLength(xmlResultNNT.getElementsByTagName("TenNNT")(0).Text, 100), UNICODE, TCVN)
         rsReturn!dia_chi = TAX_Utilities_Srv_New.Convert(GetStringByLength(xmlResultNNT.getElementsByTagName("DiaChi")(0).Text, 60), UNICODE, TCVN)
         
-        rsReturn!Dien_thoai = "" 'GetStringByLength(xmlResultNNT.getElementsByTagName("TRAN_TEL")(0).Text, 20)
-        rsReturn!mail = "" 'GetStringByLength(xmlResultNNT.getElementsByTagName("MAIL")(0).Text, 30)
-        rsReturn!Fax = "" 'GetStringByLength(xmlResultNNT.getElementsByTagName("TRAN_FAX")(0).Text, 20)
+        rsReturn!Dien_thoai = GetStringByLength(xmlResultNNT.getElementsByTagName("DienThoai")(0).Text, 20)
+        rsReturn!mail = GetStringByLength(xmlResultNNT.getElementsByTagName("Email")(0).Text, 30)
+        rsReturn!Fax = GetStringByLength(xmlResultNNT.getElementsByTagName("Fax")(0).Text, 20)
         rsReturn!ngay_tchinh = "" 'GetStringByLength(xmlResultNNT.getElementsByTagName("START_DATE")(0).Text, 50)
+        rsReturn!ngay_kdoanh = GetStringByLength(xmlResultNNT.getElementsByTagName("NgayBatDauKinhDoanh")(0).Text, 50)
     End If
     
     rsReturn!TIN = strTaxIDString
@@ -4834,11 +4840,11 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
         rsReturn!repr_name = TAX_Utilities_Srv_New.Convert(xmlResultDLT.getElementsByTagName("TenNNT")(0).Text, UNICODE, TCVN)
         rsReturn!repr_addr = TAX_Utilities_Srv_New.Convert(xmlResultDLT.getElementsByTagName("DiaChi")(0).Text, UNICODE, TCVN)
 
-'        rsReturn!repr_tell = xmlResultDLT.getElementsByTagName("TELL")(0).Text
-'        rsReturn!repr_fax = xmlResultDLT.getElementsByTagName("FAX")(0).Text
-'        rsReturn!repr_email = xmlResultDLT.getElementsByTagName("EMAIL")(0).Text
-'        rsReturn!repr_cont_number = xmlResultDLT.getElementsByTagName("MaCQThueQL")(0).Text
-        rsReturn!repr_cont_date = "" 'xmlResultDLT.getElementsByTagName("START_DATE")(0).Text
+        rsReturn!repr_tell = xmlResultDLT.getElementsByTagName("DienThoai")(0).Text
+        rsReturn!repr_fax = xmlResultDLT.getElementsByTagName("Fax")(0).Text
+        rsReturn!repr_email = xmlResultDLT.getElementsByTagName("Email")(0).Text
+        rsReturn!repr_cont_number = xmlResultDLT.getElementsByTagName("SoHopDong")(0).Text
+        rsReturn!repr_cont_date = xmlResultDLT.getElementsByTagName("NgayHopDong")(0).Text
     End If
 
     rsReturn.Update
@@ -5008,10 +5014,11 @@ On Error GoTo ErrHandle
         rsReturn!ten_dtnt = TAX_Utilities_Srv_New.Convert(GetStringByLength(xmlResultNNT.getElementsByTagName("TenNNT")(0).Text, 100), UNICODE, TCVN)
         rsReturn!dia_chi = TAX_Utilities_Srv_New.Convert(GetStringByLength(xmlResultNNT.getElementsByTagName("DiaChi")(0).Text, 60), UNICODE, TCVN)
         
-        rsReturn!Dien_thoai = "" 'GetStringByLength(xmlResultNNT.getElementsByTagName("TRAN_TEL")(0).Text, 20)
-        rsReturn!mail = "" 'GetStringByLength(xmlResultNNT.getElementsByTagName("MAIL")(0).Text, 30)
-        rsReturn!Fax = "" 'GetStringByLength(xmlResultNNT.getElementsByTagName("TRAN_FAX")(0).Text, 20)
+        rsReturn!Dien_thoai = GetStringByLength(xmlResultNNT.getElementsByTagName("DienThoai")(0).Text, 20)
+        rsReturn!mail = GetStringByLength(xmlResultNNT.getElementsByTagName("Email")(0).Text, 30)
+        rsReturn!Fax = GetStringByLength(xmlResultNNT.getElementsByTagName("Fax")(0).Text, 20)
         rsReturn!ngay_tchinh = "" 'GetStringByLength(xmlResultNNT.getElementsByTagName("START_DATE")(0).Text, 50)
+        rsReturn!ngay_kdoanh = GetStringByLength(xmlResultNNT.getElementsByTagName("NgayBatDauKinhDoanh")(0).Text, 50)
     End If
     
     rsReturn!TIN = strTaxIDString
