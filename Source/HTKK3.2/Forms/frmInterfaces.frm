@@ -3495,8 +3495,20 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = pbanTKhaiXML
         End If
         
+        'Xu ly rieng cho truong hop to khai 01_TAIN_DK,01A_TNDN_DK,01B_TNDN_DK
+        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "92" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "12" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "98" Then
+            If xmlTK.getElementsByTagName("ct03").length > 0 Then
+                If xmlTK.getElementsByTagName("ct03")(0).Text = "1" Then
+                    strKieuKy = "M"
+                Else
+                    strKieuKy = "D"
+                End If
+            End If
+        End If
+
         'to TB03,BC21 khong co ky ke khai
         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "67" And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "66" Then
+
             If xmlTK.getElementsByTagName("kieuKy").length > 0 Then
                 xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
             End If
