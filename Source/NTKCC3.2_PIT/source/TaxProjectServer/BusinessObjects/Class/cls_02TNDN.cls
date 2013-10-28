@@ -989,7 +989,9 @@ Public Function InsertHDR() As String
     Dim sSQLCol    As String
     Dim sSQLVal    As String
     Dim bln        As Boolean
-    
+    Dim TENNV      As String
+    Dim CHUNGCHI   As String
+
     Dim madtnt     As Variant
     Dim MaMuc      As Variant
     Dim maTM       As Variant
@@ -1025,7 +1027,7 @@ Public Function InsertHDR() As String
     Dim DAGHI2     As Variant
     
     sSQLCol = "MADTNT,MAMUC,MATM,KD_MADTNT,TEN_TC,DC_TC,QD_TC,HOPDONG,NGNOP,TTHTK,"
-    sSQLCol = sSQLCol & "KYKKHAI,MATKHAI,HANNOP,HANNOP2,THUETKY,THUETKY2,NGAYHD,NGAYXN,GHICHU,SHTEP,MAVACH,AUTO_CAL,DAGHI,KYLBO,THUECL,MADLT,LANBS,LAN_QUET,DoanhSo,GTTinhThue,GTTTCL,DSOCL,DaGhi2,DANHAN,NGAY_PS"
+    sSQLCol = sSQLCol & "KYKKHAI,MATKHAI,HANNOP,HANNOP2,THUETKY,THUETKY2,NGAYHD,NGAYXN,GHICHU,SHTEP,MAVACH,AUTO_CAL,DAGHI,KYLBO,THUECL,MADLT,LANBS,LAN_QUET,DoanhSo,GTTinhThue,GTTTCL,DSOCL,DaGhi2,DANHAN,NGAY_PS,TENNV,CHUNGCHI"
 
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
@@ -1034,7 +1036,10 @@ Public Function InsertHDR() As String
        
     With fps
         .Sheet = 1
-        
+                        'lay ten nhan vien dai ly thue, chung chi hanh nghe
+        .GetText .ColLetterToNumber("G"), 78, TENNV
+        .GetText .ColLetterToNumber("G"), 80, CHUNGCHI
+
         ' ma doi tuong not thue
         .GetText .ColLetterToNumber("F"), 10, madtnt
 
@@ -1279,7 +1284,7 @@ Public Function InsertHDR() As String
         sSQLVal = sSQLVal & HOPDONG & "," & ngnop & "," & tthtk & "," & kykkhai2 & "," & matkhai & "," & HANNOP & "," & HANNOP2 & ", "
         sSQLVal = sSQLVal & ThueTKy & "," & ThueTKy2 & "," & NGAYHD & "," & NGAYXN & "," & GHICHU & ", "
         sSQLVal = sSQLVal & SHTEP & "," & MaVach & "," & AUTO_CAL & "," & DaGhi & ", "
-        sSQLVal = sSQLVal & kylbo & "," & THUECL & "," & MADLT & "," & LanBS & "," & LAN_QUET & "," & DoanhSo & "," & GTTinhThue & "," & GTTTCL & "," & DSoCL & "," & DAGHI2 & "," & DANHAN & "," & NGAY_PS
+        sSQLVal = sSQLVal & kylbo & "," & THUECL & "," & MADLT & "," & LanBS & "," & LAN_QUET & "," & DoanhSo & "," & GTTinhThue & "," & GTTTCL & "," & DSoCL & "," & DAGHI2 & "," & DANHAN & "," & NGAY_PS & "," & TENNV & "," & CHUNGCHI
 
         sSQL = "INSERT INTO TMP_SM" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
