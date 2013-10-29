@@ -3,6 +3,8 @@
 		<maTKhai>132</maTKhai>
 		<tenTKhai>Tờ khai thuế GTGT – 01/TĐ-GTGT</tenTKhai>
 		<moTaBMau/>
+		<loaiTKhai>C_56</loaiTKhai>
+		<soLan>I_56</soLan>
 	</Static>
 	<Static GroupName="GiaHan">
 		<maLyDoGiaHan></maLyDoGiaHan>
