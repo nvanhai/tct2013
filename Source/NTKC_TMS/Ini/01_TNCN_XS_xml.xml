@@ -3,6 +3,8 @@
 		<maTKhai>01_TNCN_XS</maTKhai>
 		<tenTKhai>TK-TNCN Mẫu 01/KK-XS</tenTKhai>
 		<moTaBMau/>
+		<loaiTKhai>C_61</loaiTKhai>
+		<soLan>I_61</soLan>
 	</Static>
 	<Static GroupName="GiaHan">
 		<maLyDoGiaHan></maLyDoGiaHan>
