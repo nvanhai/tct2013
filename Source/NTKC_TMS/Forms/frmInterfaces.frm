@@ -904,7 +904,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = Format(Date, "dd-mmm-yyyy HH:mm:ss")
 
     
-    If (xmlResultNNT.hasChildNodes And (InStr(xmlResultNNT.xml, "faultcode") < 0)) Then
+    If (xmlResultNNT.hasChildNodes And (InStr(xmlResultNNT.xml, "faultcode") <= 0)) Then
         xmlTK.getElementsByTagName("maHuyenNNT")(0).Text = xmlResultNNT.getElementsByTagName("MaQuanHuyen")(0).Text
         xmlTK.getElementsByTagName("maTinhNNT")(0).Text = xmlResultNNT.getElementsByTagName("MaTinh")(0).Text
         
@@ -923,7 +923,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     
     xmlTK.getElementsByTagName("mst")(0).Text = strMaNNT
     
-    If (xmlResultDLT.hasChildNodes And (InStr(xmlResultDLT.xml, "faultcode") < 0)) Then
+    If (xmlResultDLT.hasChildNodes And (InStr(xmlResultDLT.xml, "faultcode") <= 0)) Then
         ' xmlTK.getElementsByTagName("tenDLyThue")(0).Text = "test"
         xmlTK.getElementsByTagName("tenDLyThue")(0).Text = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("TenNNT")(0).Text)
         'xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = "test"
@@ -2201,8 +2201,8 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 'str2 = "aa999922222222222   09201300000000100101/0114/06/2006<S01><S>6868686868</S><S>0~~~~0~0~1~1~~~</S><S>0~0~0~0~0~0~0</S><S>UEFW~32432~~24/10/2013</S></S01>"
 'Barcode_Scaned str2
-' 02/KK-TNCN - Quy
-'str2 = "aa999162300790384   03201300100100100101/0101/01/2010<S01><S></S><S>1000~800~300~200~900000000~700000000~200000000~100000000~20000000~30000000~20000000~2000000~6000000</S><S>Nguyen Van A~21/10/2013~~~1~~</S></S01>"
+'' 02/KK-TNCN - Quy
+'str2 = "aa999162300790401   03201300100100100101/0101/01/2010<S01><S>2100462770</S><S>1000~800~300~200~900000000~700000000~200000000~100000000~20000000~30000000~20000000~2000000~6000000</S><S>Nguyen Van A~21/10/2013~~~1~~</S></S01>"
 'Barcode_Scaned str2
 
 'str2 = "aa999922222222222   09201300100100100201/0114/06/2006<S01><S>6868686868</S><S>5~~x~~0~0~1~1~~~</S><S>435~435~435~189225~43~81367~435435</S><S>UEFW~32432~~25/10/2013</S></S01>"
@@ -2219,8 +2219,12 @@ Private Sub Command1_Click()
 'str2 = "aa999982300790384   10201300200200100101/0114/06/2006<S01><S></S><S>1~~x~13/10/2013~1~0~0~1~~24/10/2013~lo 34</S><S>275.89~34100~9407849~25.78~2425343~26475~2398868~25.34</S><S>tk002~ngan hang AB</S><S>~~Mai~24/10/2013</S></S01><S01-1><S>2398868</S><S>3600247325~nha thau B~45.78~1098202~ghi chu 1~0102030405~nha thau C~28.39~681039~ghi chu 2</S><S>74.17~1779241</S></S01-1>"
 'Barcode_Scaned str2
 
-'01B_TNDN_DK
-str2 = "aa999992300790391   03201300200300100101/0114/06/2006<S01><S></S><S>1~~</S><S>459.17~500000~229585000~47691~229537309~45.68~104852643~729851~104122792~26.34</S><S>tk001~ngan hang acb</S><S>~~hanh~24/10/2013</S></S01><S01-1><S>104122792</S><S>0010011000~nha thau A~25.45~26499251~ghi chu 1~0102030405~nha thau B~56.55~58881439~ghi chu 2</S><S>85380690</S></S01-1>"
+''01B_TNDN_DK
+'str2 = "aa999992300790401   03201300200300100101/0114/06/2006<S01><S>2100462770</S><S>1~~</S><S>459.17~500000~229585000~47691~229537309~45.68~104852643~729851~104122792~26.34</S><S>tk001~ngan hang acb</S><S>~~hanh~24/10/2013</S></S01><S01-1><S>104122792</S><S>0010011000~nha thau A~25.45~26499251~ghi chu 1~0102030405~nha thau B~56.55~58881439~ghi chu 2</S><S>85380690</S></S01-1>"
+'Barcode_Scaned str2
+
+'01_TD_GTGT
+str2 = "aa999941400633697   09201300200200100101/0114/06/2006<S01><S></S><S>200000~12.58~2516000~10~251600~30000~221600</S><S>cu chuoi~chuoi cu~abcdef~29/10/2013~1~~</S></S01><S01_1><S>hjjkkjjkjk~0102030405~300000~10000~290000</S><S>300000~10000~290000</S></S01_1><S01_2><S>1~nhfdyjb~0010011000~Côc ThuÕ TØnh H-ng Yªn~14.78~100000~10900</S><S>100000</S></S01_2>"
 Barcode_Scaned str2
 
 End Sub
