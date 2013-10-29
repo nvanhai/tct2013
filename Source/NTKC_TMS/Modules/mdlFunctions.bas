@@ -1633,7 +1633,15 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, ByVal sKyLa
     XmlDocStandard.getElementsByTagName("nguon_goc_tk")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text
     XmlDocStandard.getElementsByTagName("nguoi_nhan_tk")(0).Text = strUserID & "." & xmlConfig.getElementsByTagName("CODE_OFFICE")(0).Text
     XmlDocStandard.getElementsByTagName("ngay_nhan_tk")(0).Text = Format(DateTime.Now, "dd/MM/yyyy")
+    XmlDocStandard.getElementsByTagName("id_tkhai")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow()
+    XmlDocStandard.getElementsByTagName("noi_gui")(0).Text = ""
+    XmlDocStandard.getElementsByTagName("noi_nhan")(0).Text = ""
     
+    'Bo sung tag <QHS> cho BCTC va AC
+    ' Cho xu ly
+    'Ket thuc bo sung <QHS>
+    
+    ' End <add_info>
 
     If (Not xmlDoc Is Nothing) Then
         'XmlDocStandard.getElementsByTagName("ROW")(0).appendChild xmlDoc.getElementsByTagName("HSoKhaiThue")(0) 'xmlDoc.childNodes(0)
