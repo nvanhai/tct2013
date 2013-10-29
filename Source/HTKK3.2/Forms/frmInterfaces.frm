@@ -346,6 +346,7 @@ Private mOnSetupData        As Boolean
 Private mHeaderSheet        As Integer              ' save value of Header sheet (last sheet)
 Private objTaxBusiness      As Object               ' private business object (cls001, cls002, cls003, ...)
 Private mAdjustData         As Boolean              ' mAdjustData = True when user adjust data on interface
+    Private strKK As String
 
 
 
@@ -3436,6 +3437,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     Dim vlue As Variant
     On Error GoTo ErrHandle
 
+    strKK = strKieuKy
     'Set ma to khai cho cac to 01/GTGT, 02/GTGT , 03B/GTGT, 04/GTGT quy
     If xmlTK.getElementsByTagName("maTKhai").length > 0 Then
         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Then
@@ -3499,9 +3501,9 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "92" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "12" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "98" Then
             If xmlTK.getElementsByTagName("ct03").length > 0 Then
                 If xmlTK.getElementsByTagName("ct03")(0).Text = "1" Then
-                    strKieuKy = "M"
+                    strKK = "M"
                 Else
-                    strKieuKy = "D"
+                    strKK = "D"
                 End If
             End If
         End If
@@ -3510,14 +3512,14 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "67" And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "66" Then
 
             If xmlTK.getElementsByTagName("kieuKy").length > 0 Then
-                xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
+                xmlTK.getElementsByTagName("kieuKy")(0).Text = strKK
             End If
 
             If xmlTK.getElementsByTagName("kyKKhai").length > 0 Then
                 xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_New.NodeMenu, "ID"))
             End If
 
-            If strKieuKy = "D" Then
+            If strKK = "D" Then
                 If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
                     xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = ""
                 End If
@@ -3526,7 +3528,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
                     xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = ""
                 End If
 
-            ElseIf strKieuKy = "M" Then
+            ElseIf strKK = "M" Then
 
                 If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
                     xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = "01/" & TAX_Utilities_New.month & "/" & TAX_Utilities_New.Year
@@ -3536,7 +3538,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
                     xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = format(GetNgayCuoiThang(TAX_Utilities_New.Year, TAX_Utilities_New.month), "dd/MM/yyyy")
                 End If
 
-            ElseIf strKieuKy = "Q" Then
+            ElseIf strKK = "Q" Then
 
                 If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
                     xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = format(GetNgayDauQuy(TAX_Utilities_New.ThreeMonths, TAX_Utilities_New.Year, iNgayTaiChinh, iThangTaiChinh), "dd/MM/yyyy")
@@ -3546,7 +3548,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
                     xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = format(GetNgayCuoiQuy(TAX_Utilities_New.ThreeMonths, TAX_Utilities_New.Year, iNgayTaiChinh, iThangTaiChinh), "dd/MM/yyyy")
                 End If
 
-            ElseIf strKieuKy = "Y" Then
+            ElseIf strKK = "Y" Then
         
                 If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
                     xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = "01/01/" & TAX_Utilities_New.Year
@@ -3876,7 +3878,7 @@ Private Function GetKyKeKhai(ByVal ID_TK As String) As String
     Dim KYKKHAI As String
     On Error GoTo ErrHandle
 
-    If strKieuKy = "D" Then
+    If strKK = "D" Then
         KYKKHAI = TAX_Utilities_New.Day & "/" & TAX_Utilities_New.month & "/" & TAX_Utilities_New.Year
     Else
 
@@ -4534,6 +4536,8 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
     Dim cellRange      As Integer
     Dim nodeTK         As MSXML.IXMLDOMNode
     Dim nodeMapCT      As MSXML.IXMLDOMNode
+    Dim RowLength      As Integer
+    Dim RowCount       As Integer
 
     With fpSpread1
         .sheet = SheetName
@@ -4561,35 +4565,72 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
                 cellID = xmlCts.firstChild.firstChild.Text
                 cellArray = Split(cellID, "_")
 
-                If UBound(cellArray) = 1 Then
+                If UBound(cellArray) = 1 And nodeTK.childNodes.length > 0 Then
+                    
+                    .ReDraw = False
+                    .MaxRows = .MaxRows + nodeTK.childNodes.length - 1
+                    fpSpread1.EventEnabled(EventAllEvents) = False
+                    .InsertRows Val(cellArray(1)) + cellRange + 1, nodeTK.childNodes.length - 1
+                    
+                    RowCount = 0
+                    RowLength = 1
 
-                    For dynamicID = 2 To nodeTK.childNodes.length
-                        fpSpread1.EventEnabled(EventAllEvents) = False
-                        InsertNode .ColLetterToNumber(cellArray(0)), Val(cellArray(1)) + cellRange
-                    Next
+                    Do While RowLength < nodeTK.childNodes.length - 1
 
-                    For dynamicID = 0 To nodeTK.childNodes.length - 1
-                        Dim valXml As New MSXML.DOMDocument
-                        valXml.loadXML nodeTK.childNodes(dynamicID).xml
+                        If RowCount + 10000 <= nodeTK.childNodes.length - 1 Then
+                            RowCount = RowCount + 10000
+                        Else
+                            RowCount = RowCount + nodeTK.childNodes.length - 1
+                        End If
 
-                        For Each childNodeCT In xmlCts.lastChild.childNodes
-                            cellID = childNodeCT.Text
-                            cellArray = Split(cellID, "_")
-                            .Row = Val(cellArray(1)) + cellRange
-                            .Col = .ColLetterToNumber(cellArray(0))
-
-                            If valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "true" Then
-                                .Text = 1
-                            ElseIf valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "false" Then
-                                .Text = 0
-                            Else
-                                .Text = valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text
-                            End If
-
+                        For dynamicID = RowLength To RowCount
+                            .CopyRowRange Val(cellArray(1)) + cellRange, Val(cellArray(1)) + cellRange, Val(cellArray(1)) + dynamicID + cellRange
+                       
                         Next
 
-                        cellRange = cellRange + GroupCellRange
-                    Next
+                        RowLength = RowCount + 1
+
+                    Loop
+
+                    .ReDraw = True
+                    RowCount = 0
+                    RowLength = 1
+
+                    Do While RowLength < nodeTK.childNodes.length - 1
+
+                        If RowCount + 10000 <= nodeTK.childNodes.length - 1 Then
+                            RowCount = RowCount + 10000
+                        Else
+                            RowCount = RowCount + nodeTK.childNodes.length - 1
+                        End If
+
+                        For dynamicID = 0 To nodeTK.childNodes.length - 1
+                            Dim valXml As New MSXML.DOMDocument
+                            valXml.loadXML nodeTK.childNodes(dynamicID).xml
+
+                            For Each childNodeCT In xmlCts.lastChild.childNodes
+                                cellID = childNodeCT.Text
+                                cellArray = Split(cellID, "_")
+                                .Row = Val(cellArray(1)) + cellRange
+                                .Col = .ColLetterToNumber(cellArray(0))
+
+                                If valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "true" Then
+                                    .Text = 1
+                                ElseIf valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "false" Then
+                                    .Text = 0
+                                Else
+                                    .Text = valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text
+                                End If
+
+                            Next
+
+                            cellRange = cellRange + GroupCellRange
+                        Next
+
+                        RowLength = RowCount + 1
+
+                    Loop
+
                     cellRange = cellRange - GroupCellRange
                 End If
                                 
