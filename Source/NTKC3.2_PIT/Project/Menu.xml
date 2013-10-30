@@ -418,7 +418,12 @@
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
 		</Validity>
 	</Menu>	
-	
+	<Menu ID="22" PopID="101" ParentID="101_9" Caption="Báo cáo tài chính bộ 95 BCTC" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
+		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\Excel\95_BCTC11.xls" ReportTemplate="..\ReportTemplates\Excel\95_BCTC11.xls" Class="Tax_Business_Srv.cls_95_BCTC">
+			<Sheet ID="01" Caption="CĐKT" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="95_01_CDKT13" Ini="..\Ini\95_01_CDKT13.xml"/>
+			<Sheet ID="01-1" Caption="01-1" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="95_02_SXKD13" Ini="..\Ini\95_02_SXKD13.xml"/>
+		</Validity>
+	</Menu>
 	
 	
 	<Menu ID="108" PopID="" ParentID="101" Caption="Báo cáo tài chính bộ 15 - Cho DN" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\kekhai.gif"/>	
