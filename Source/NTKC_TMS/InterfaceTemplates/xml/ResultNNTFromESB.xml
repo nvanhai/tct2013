@@ -3,16 +3,16 @@
 <HEADER>
 	<VERSION>1.0</VERSION>
 	<SENDER_CODE>TMS</SENDER_CODE>
-	<SENDER_NAME>Hệ thống quản lý thuế tập trung</SENDER_NAME>
+	<SENDER_NAME>He thong quan ly thue tap trung</SENDER_NAME>
 	<RECEIVER_CODE>NTK</RECEIVER_CODE>
-	<RECEIVER_NAME>Hệ thống nhận tờ khai mã vạch</RECEIVER_NAME>
-	<TRAN_CODE>00011</TRAN_CODE>
-	<MSG_ID>0000000011</MSG_ID>
-	<MSG_REFID>0000000011</MSG_REFID>
-	<SEND_DATE>24-Sep-2013 17:04:26</SEND_DATE>
+	<RECEIVER_NAME>He thong nhan to khai ma vach</RECEIVER_NAME>
+	<TRAN_CODE>00010</TRAN_CODE>
+	<MSG_ID>NTK2013103014832</MSG_ID>
+	<MSG_REFID>0000000010</MSG_REFID>
+	<SEND_DATE>30-Oct-2013 14:08:32</SEND_DATE>
 	<ORIGINAL_CODE>NTK</ORIGINAL_CODE>
-	<ORIGINAL_NAME>Hệ thống nhận tờ khai mã vạch</ORIGINAL_NAME>
-	<ORIGINAL_DATE>24-Sep-2013 17:04:26</ORIGINAL_DATE>
+	<ORIGINAL_NAME>He thong nhan to khai ma vach</ORIGINAL_NAME>
+	<ORIGINAL_DATE>30-Oct-2013 14:08:32</ORIGINAL_DATE>
 	<ERROR_CODE/>
 	<ERROR_DESC/>
 	<SPARE1/>
@@ -20,19 +20,21 @@
 	<SPARE3/>
 </HEADER>
 <BODY>
-	<ROW>		
+	<ROW>
 		<ThongTinDangKyThue>
 			<DangKyThue>
-				<MaSoThue>3100177415</MaSoThue>
-				<TenNNT>Công ty cổ phần xây dựng hạ tầng giao thông 207</TenNNT>
+				<MaSoThue>2300790401</MaSoThue>
+				<TenNNT>Công Ty Cổ Phần Xây Dựng Hạ Tầng Giao Thông 207</TenNNT>
 				<DiaChi>286A- Lê Thanh Nghị</DiaChi>
 				<MaTinh>501</MaTinh>
+				<TenTinh>Ðà N?ng</TenTinh>
 				<MaQuanHuyen>50101</MaQuanHuyen>
-				<MaPhuongXa></MaPhuongXa>
-				<SoCMT></SoCMT>
-				<MaCQThueQL></MaCQThueQL>
-				<NganhNgheKD></NganhNgheKD>
+				<TenQuanHuyen>Qu?n H?i Châu</TenQuanHuyen>
 				<TrangThaiHoatDong>00</TrangThaiHoatDong>
+				<DienThoai>0511. 3626207</DienThoai>
+				<Fax>0511 3625207</Fax>
+				<Email>cty207@gmail.com</Email>
+				<NgayBatDauKinhDoanh>2008-10-29 00:00:00.0</NgayBatDauKinhDoanh>
 			</DangKyThue>
 		</ThongTinDangKyThue>
 	</ROW>

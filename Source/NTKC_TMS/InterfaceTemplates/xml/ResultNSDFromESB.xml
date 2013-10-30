@@ -6,13 +6,14 @@
 		<SENDER_NAME>Hệ thống Quản lý thuế tập trung</SENDER_NAME>
 		<RECEIVER_CODE>NTK</RECEIVER_CODE>
 		<RECEIVER_NAME>Hệ thống nhận tờ khai mã vạch</RECEIVER_NAME>
-		<TRAN_CODE>0009</TRAN_CODE>
-		<MSG_ID>0000000009</MSG_ID>
-		<MSG_REFID>0000000009</MSG_REFID>
-		<SEND_DATE>07-May-2012 09:21:22</SEND_DATE>
-		<ORIGINAL_CODE>>TMS</ORIGINAL_CODE>
+		<TRAN_CODE>00009</TRAN_CODE>
+		<MSG_ID>TMS0000000386</MSG_ID>
+		<MSG_REFID>TMS0000000386</MSG_REFID>
+		<ID_LINK/>
+		<SEND_DATE>30/10/2013 07:09:21</SEND_DATE>
+		<ORIGINAL_CODE>TMS</ORIGINAL_CODE>
 		<ORIGINAL_NAME>Hệ thống Quản lý thuế tập trung</ORIGINAL_NAME>
-		<ORIGINAL_DATE>07-May-2012 09:21:22</ORIGINAL_DATE>
+		<ORIGINAL_DATE>20131030</ORIGINAL_DATE>
 		<ERROR_CODE/>
 		<ERROR_DESC/>
 		<SPARE1/>
@@ -21,12 +22,12 @@
 	</HEADER>
 	<BODY>
 		<ROW>
-			<UserName>Nguyễn Văn Hải (Phòng tin học, cục thuế Hà Nội)</UserName>
-			<TaxOffcice>10101</TaxOffcice>
-			<TaxOffName>Cục thuế Hà Nội </TaxOffName>
+			<UserName>NTKLOGIN</UserName>
+			<TaxOffcice>22300</TaxOffcice>
+			<TaxOffName>Văn phòng Cục thuế tỉnh Bắc Ninh</TaxOffName>
 			<NTKversion>3.2.0</NTKversion>
 			<Status>01</Status>
-			<CurrentSysTime>21-Oct-2013 09:21:22</CurrentSysTime>
+			<CurrentSysTime>30/10/2013 07:09:21</CurrentSysTime>
 		</ROW>
 	</BODY>
 </DATA>

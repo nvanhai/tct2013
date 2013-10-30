@@ -1,40 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DATA>
-	<HEADER>
-		<VERSION>1.0</VERSION>
-		<SENDER_CODE>TMS</SENDER_CODE>
-		<SENDER_NAME>H? th?ng Qu?n lý thu? t?p trung</SENDER_NAME>
-		<RECEIVER_CODE>NTK</RECEIVER_CODE>
-		<RECEIVER_NAME>H? th?ng nh?n t? khai mã v?ch</RECEIVER_NAME>
-		<TRAN_CODE>00013</TRAN_CODE>
-		<MSG_ID>0000000013</MSG_ID>
-		<MSG_REFID>0000000013</MSG_REFID>
-		<SEND_DATE>24-Sep-2013 17:06:18</SEND_DATE>
-		<ORIGINAL_CODE>NTK</ORIGINAL_CODE>
-		<ORIGINAL_NAME>H? th?ng nh?n t? khai mã v?ch</ORIGINAL_NAME>
-		<ORIGINAL_DATE>24-Sep-2013 17:06:18</ORIGINAL_DATE>
-		<ERROR_CODE/>
-		<ERROR_DESC/>
-		<SPARE1/>
-		<SPARE2/>
-		<SPARE3/>
-	</HEADER>
-	<BODY>
-		<ROW>
-			<ThongTinDangKyThue>
-				<DangKyThue>
-					<MaSoThue>0302798787-001</MaSoThue>
-					<TenNNT>fgf</TenNNT>
-					<DiaChi>fg</DiaChi>
-					<MaTinh>fgf</MaTinh>
-					<MaQuanHuyen>fg</MaQuanHuyen>
-					<MaPhuongXa>fg</MaPhuongXa>
-					<SoCMT>fg</SoCMT>
-					<MaCQThueQL>fg</MaCQThueQL>
-					<NganhNgheKD>fg</NganhNgheKD>
-					<TrangThaiHoatDong>fgf</TrangThaiHoatDong>
-				</DangKyThue>
-			</ThongTinDangKyThue>
-		</ROW>
-	</BODY>
+<HEADER>
+	<VERSION>1.0</VERSION>
+	<SENDER_CODE>TMS</SENDER_CODE>
+	<SENDER_NAME>He thong quan ly thue tap trung</SENDER_NAME>
+	<RECEIVER_CODE>NTK</RECEIVER_CODE>
+	<RECEIVER_NAME>He thong nhan to khai ma vach</RECEIVER_NAME>
+	<TRAN_CODE>00012</TRAN_CODE>
+	<MSG_ID>NTK2013103014833</MSG_ID>
+	<MSG_REFID>0000000012</MSG_REFID>
+	<SEND_DATE>30-Oct-2013 14:08:33</SEND_DATE>
+	<ORIGINAL_CODE>NTK</ORIGINAL_CODE>
+	<ORIGINAL_NAME>He thong nhan to khai ma vach</ORIGINAL_NAME>
+	<ORIGINAL_DATE>30-Oct-2013 14:08:33</ORIGINAL_DATE>
+	<ERROR_CODE/>
+	<ERROR_DESC/>
+	<SPARE1/>
+	<SPARE2/>
+	<SPARE3/>
+</HEADER>
+<BODY>
+	<ROW>
+		<ThongTinDangKyThue>
+			<DangKyThue>
+				<MaSoThue>2100462770</MaSoThue>
+				<TenNNT>Công Ty TNHH Kế Toán Và Tư Vấn Thuế Chiến Thuật</TenNNT>
+				<DiaChi>A3/31, Đường Phạm Ngũ Lão, Khóm 3</DiaChi>
+				<MaTinh>817</MaTinh>
+				<TenTinh>Trà Vinh</TenTinh>
+				<MaQuanHuyen>81701</MaQuanHuyen>
+				<TenQuanHuyen>Thành ph? Trà Vinh</TenQuanHuyen>
+				<TrangThaiHoatDong>00</TrangThaiHoatDong>
+				<DienThoai>0743.841361</DienThoai>
+				<Fax/>
+				<Email/>
+				<SoHopDong>05/2011/ÐLT</SoHopDong>
+				<NgayHopDong>2011-10-25 00:00:00.0</NgayHopDong>
+			</DangKyThue>
+		</ThongTinDangKyThue>
+	</ROW>
+</BODY>
 </DATA>
