@@ -1,19 +1,26 @@
-<TKhai ngay_nop_tk="E_32" ky_lap_bo="E_30">
-	<Static>
-		<maDVu>NTK</maDVu>
-		<tenDVu>Nhận tờ khai mã vạch</tenDVu>
-		<ttinNhaCCapDVu></ttinNhaCCapDVu>
-		<soLan>T_6</soLan>
-		<maTKhai>01_GTGT</maTKhai>
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>01</maTKhai>
 		<tenTKhai>TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG (Mẫu số 01/GTGT)</tenTKhai>
+	</Static>
+	<Static GroupName="moTaBMau">
+		<moTaBieuMau>Ban hành kèm theo thông tư số 28/2011/TT-BTC ngày 28/02/2011 của Bộ tài chính</moTaBieuMau>
+		<ghiChuTKhai>Dành cho người nộp thuế khai thuế GTGT theo phương pháp khấu trừ</ghiChuTKhai>
+	</Static>
+	<Static GroupName="GiaHan">
 		<maLyDoGiaHan>AB_41</maLyDoGiaHan>
 		<lyDoGiaHan>E_41</lyDoGiaHan>
-		<maHuyenDLyThue></maHuyenDLyThue>
-		<tenHuyenDLyThue></tenHuyenDLyThue>
-		<maTinhDLyThue></maTinhDLyThue>
-		<tenTinhDLyThue></tenTinhDLyThue>
-		<maHuyenNNT></maHuyenNNT>
-		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT/>
+		<maTinhNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<maTMNSNN>K_77</maTMNSNN>
 		<ct21>R_44</ct21>
 		<ct22>W_45</ct22>
 		<ct23>Q_48</ct23>
@@ -41,12 +48,13 @@
 		<ct42>W_69</ct42>
 		<ct42a>W_70</ct42a>
 		<ct43>W_71</ct43>
-				<nguoiKy>T_74</nguoiKy>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>T_74</nguoiKy>
 		<ngayKy>T_76</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
 		<tenNVienDLyThue>G_74</tenNVienDLyThue>
 		<cchiHNghe>G_76</cchiHNghe>
-
-				<maTMNSNN>K_77</maTMNSNN>
-
 	</Static>
-</TKhai>
+</HSoKhaiThue>
