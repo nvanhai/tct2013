@@ -3034,12 +3034,10 @@ Private Sub cmdExport_Click()
         End If
         
         If GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") = "05_TNCN" Then
-           ' objTaxBusiness.flagExport = True
             With fpSpread1
                 .EventEnabled(EventAllEvents) = False
                 .sheet = 2
                 .Row = 22
-                '.AutoCalc = False
                 Do
                     .GetText .ColLetterToNumber("G"), .Row, strValue
                     If Trim(strValue) = "1" Or Trim(strValue) = "x" Then
@@ -3093,9 +3091,7 @@ Private Sub cmdExport_Click()
                 .Text = ""
                 
                 
-                
                 .EventEnabled(EventAllEvents) = True
-                '.AutoCalc = True
             End With
         ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") = "02_TNCN_BH" Or GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") = "02_TNCN_XS" Then
             With fpSpread1
@@ -5729,8 +5725,6 @@ Private Sub convertData08B()
         .EventEnabled(EventAllEvents) = True
     End With
 End Sub
-
-
 ''' cmdSave_Click description
 ''' Checking business error but user can save it anyway
 ''' No parameter
@@ -6713,9 +6707,9 @@ Private Sub Form_Load()
         If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "95" Or idMenu = "71" Or idMenu = "36" Or idMenu = "68" Then
              objTaxBusiness.strTkThangQuy = strQuy
              If strQuy = "TK_THANG" Then
-                strKieuKy = "M"
+                strKK = "M"
              ElseIf strQuy = "TK_QUY" Then
-                strKieuKy = "Q"
+                strKK = "Q"
              End If
         ElseIf idMenu = "92" Or idMenu = "93" Or idMenu = "89" Or idMenu = "98" Then
             objTaxBusiness.chkDauTho = strDauTho
