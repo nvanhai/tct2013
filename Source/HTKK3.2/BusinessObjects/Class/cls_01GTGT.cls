@@ -2232,7 +2232,7 @@ Private Sub CheckDynamicError()
 '    For i = 8 To .MaxRows - 13
     If blCheck_S8 Then
         .Col = .ColLetterToNumber("B")
-        .Row = 6
+        .Row = 7
         i = 1
         Do
     
@@ -2269,7 +2269,7 @@ Private Sub CheckDynamicError()
                   End If
                         
               .Col = .ColLetterToNumber("B")
-             .Row = i + 6
+             .Row = i + 7
              i = i + 1
         Loop Until .Text = "aa"
           
@@ -4848,7 +4848,7 @@ Private Sub setCQTQuanLy()
             'phu luc 01_2TD/GTGT
             .Sheet = sheetPl01_2TD_GTGT 'set thong tin CQL
             .Row = 6
-            .Col = .ColLetterToNumber(colD)
+            .Col = .ColLetterToNumber(colE)
             .TypeComboBoxList = tenCucThue
             
             .Row = 6
@@ -4856,7 +4856,7 @@ Private Sub setCQTQuanLy()
             .TypeComboBoxList = maCucThue
             
             .Row = 6
-            .Col = .ColLetterToNumber(colE)
+            .Col = .ColLetterToNumber(colF)
             .TypeComboBoxList = tenChiCucThue
     
             .Row = 6
