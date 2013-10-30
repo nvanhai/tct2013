@@ -6,9 +6,9 @@
 		<Item CellID="L_28" MCT="25" Caption="Tổng số thuế GTGT  được khấu trừ kỳ này"/>
 		<Item CellID="L_33" MCT="31" Caption="Hàng hoá, dịch vụ bán ra chịu thuế suất 5%"/>
 		<Item CellID="L_34" MCT="33" Caption="Hàng hoá, dịch vụ bán ra chịu thuế suất 10%"/>
-		<Item CellID="L_46" MCT="42" Caption="Thuế GTGT đề nghị hoàn"/>
-		<Item CellID="L_44" MCT="40" Caption="Thuế GTGT còn phải nộp trong kỳ"/>
-		<Item CellID="L_47" MCT="43" Caption="Thuế GTGT còn được khấu trừ chuyển kỳ sau"/>
+		<Item CellID="L_48" MCT="42" Caption="Thuế GTGT đề nghị hoàn"/>
+		<Item CellID="L_45" MCT="40" Caption="Thuế GTGT còn phải nộp trong kỳ"/>
+		<Item CellID="L_50" MCT="43" Caption="Thuế GTGT còn được khấu trừ chuyển kỳ sau"/>
 	</Map>
 	<Map ID ="02_GTGT">		
 		<Item CellID="CT_40" MCT="21" Caption="Thuế GTGT chưa được hoàn kỳ trước chuyển sang"/>		
