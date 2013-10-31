@@ -4,18 +4,39 @@
 	<Map ID="01" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai GTGT khấu trừ (01/GTGT)">
 		<Validity StartDate="14/06/2006" DataFile="01_GTGT,01_1_GTGT,01_2_GTGT,01_3_GTGT,01_4A_GTGT,01_4B_GTGT,01_5_GTGT,01_6_GTGT" ThueKhauTru="L_47" ThuePhaiNop="L_44"/>
 	</Map>
+	
+	<Map ID="011" FinanceYear="0" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Tờ khai GTGT khấu trừ (01/GTGT) quý">
+		<Validity StartDate="14/06/2006" DataFile="01_GTGT,01_1_GTGT,01_2_GTGT,01_3_GTGT,01_4A_GTGT,01_4B_GTGT,01_5_GTGT,01_6_GTGT" ThueKhauTru="L_47" ThuePhaiNop="L_44"/>
+	</Map>
+	
+	
 	<Map ID="83" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai thuế GTGT (01-TĐ/GTGT)">
 		<Validity StartDate="14/06/2006" DataFile="01_TD_GTGT,01_2_TD_GTGT,01_3_TD_GTGT,01_4A_TD_GTGT" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
 	<Map ID="02" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai GTGT cho Dự án đầu tư (02/GTGT)">
 		<Validity StartDate="14/06/2006" DataFile="02_GTGT,02_1_GTGT,02_1_1_GTGT,02_1_2_GTGT,02_1_3_GTGT,02_1_4_GTGT,02_1_5_GTGT,02_1_6_GTGT,02_1_7_GTGT,02_1_8_GTGT,02_1_9_GTGT" ThueKhauTru="CT_51" ThuePhaiNop=""/>
 	</Map>
+	
+	<Map ID="021" FinanceYear="0" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Tờ khai GTGT cho Dự án đầu tư (02/GTGT) quý">
+		<Validity StartDate="14/06/2006" DataFile="02_GTGT,02_1_GTGT,02_1_1_GTGT,02_1_2_GTGT,02_1_3_GTGT,02_1_4_GTGT,02_1_5_GTGT,02_1_6_GTGT,02_1_7_GTGT,02_1_8_GTGT,02_1_9_GTGT" ThueKhauTru="CT_51" ThuePhaiNop=""/>
+	</Map>
+	
 	<Map ID="04" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai GTGT trực tiếp (03/GTGT)">
 		<Validity StartDate="14/06/2006" DataFile="03_GTGT" ThueKhauTru="" ThuePhaiNop="O_44"/>
 	</Map>	
+	
+	<Map ID="041" FinanceYear="0" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Tờ khai GTGT trực tiếp (03/GTGT) quý">
+		<Validity StartDate="14/06/2006" DataFile="03_GTGT" ThueKhauTru="" ThuePhaiNop="O_44"/>
+	</Map>	
+	
+	
 	<Map ID="71" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai GTGT trực tiếp (04/GTGT)">
 		<Validity StartDate="01/01/1900" DataFile="04_GTGT" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
+	<Map ID="711" FinanceYear="0" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Tờ khai GTGT trực tiếp (04/GTGT) quý">
+		<Validity StartDate="01/01/1900" DataFile="04_GTGT" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
 	<Map ID="72" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai GTGT (05/GTGT)">
 		<Validity StartDate="14/06/2006" DataFile="05_GTGT" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
@@ -58,6 +79,11 @@
 	<Map ID="36" FinanceYear="1" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Mẫu 07/KK-TNCN">
 		<Validity StartDate="01/01/2010" DataFile="07_TNCN" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
+	
+	<Map ID="361" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Mẫu 07/KK-TNCN theo quý">
+		<Validity StartDate="01/01/2010" DataFile="07_TNCN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
 	<Map ID="17" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Tờ khai 05/KK-TNCN">	
 		<Validity StartDate="01/01/2010" DataFile="05_TNCN,05A_TNCN,05B_TNCN" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
@@ -115,7 +141,7 @@
 	<Map ID="89" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai phí xăng dầu">
 		<Validity StartDate="01/01/1900" DataFile="01_PHXD" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
-	<Map ID="64" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Thông báo phát hành hóa đơn(01_TBAC)">
+	<Map ID="64" FinanceYear="1" Year="0" Month="0" ThreeMonth="0" Day="1" Caption="Thông báo phát hành hóa đơn(01_TBAC)">
 		<Validity StartDate="23/06/2006" DataFile="01_TBAC" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>	
 	<Map ID="65" FinanceYear="1" Year="1/2" Month="0" ThreeMonth="1" Day="0" Caption="Báo cáo tình hình nhận in hóa đơn(01_AC)">
