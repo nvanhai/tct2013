@@ -1557,10 +1557,1150 @@ insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIE
 values ('95_01_CDKT13', '99', 'N', 5845, null);
 
 -------------------------
----PL 01 DK--------------
+---PL:01-1 KQHĐSXKD------
 -------------------------
-
+insert into RCV_DM_TKHAI (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
+values ('95_02_SXKD13', 'Bࠏ Cࠏ Kࠔ Qࠁ HOࠔ ࠎG Sࠎ XUࠔ KINH DOANH', 'Y', '320', to_date('01-01-1900', 'dd-mm-yyyy'), null);
 
 		--RCV_GDIEN_TKHAI
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5944, '1. Doanh thu', '1', '2', '3', null, null, null, null, null, null, null, null, 1, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5945, 'Doanh thu ho¿t ¿ng m¿i gi¿i ch¿ng kho¿n ', '4', '5', '6', null, null, null, null, null, null, null, null, 2, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5946, 'Doanh thu ho¿t ¿ng ¿u t¿ ch¿ng kho¿n, g¿p v¿n ', '7', '8', '9', null, null, null, null, null, null, null, null, 3, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5947, 'Doanh thu b¿o l¿nh ph¿t h¿nh ch¿ng kho¿n', '10', '11', '12', null, null, null, null, null, null, null, null, 4, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5948, 'Doanh thu ¿i l¿ ph¿t h¿nh ch¿ng kho¿n', '13', '14', '15', null, null, null, null, null, null, null, null, 5, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5949, 'Doanh thu ho¿t ¿ng t¿ v¿n ', '16', '17', '18', null, null, null, null, null, null, null, null, 6, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5950, 'Doanh thu l¿u k¿ ch¿ng kho¿n   ', '19', '20', '21', null, null, null, null, null, null, null, null, 7, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5951, 'Doanh thu ho¿t ¿ng u¿ th¿c ¿u gi¿ ', '22', '23', '24', null, null, null, null, null, null, null, null, 8, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5952, 'Doanh thu cho thu¿ s¿ d¿ng t¿i s¿n', '25', '26', '27', null, null, null, null, null, null, null, null, 9, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5953, 'Doanh thu kh¿c', '28', '29', '30', null, null, null, null, null, null, null, null, 10, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5954, '2. C¿c kho¿n gi¿m tr¿ doanh thu', '31', '32', '33', null, null, null, null, null, null, null, null, 11, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5955, '3. Doanh thu thu¿n v¿ ho¿t ¿ng kinh doanh (10 = 01- 02)', '34', '35', '36', null, null, null, null, null, null, null, null, 12, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5956, '4. Chi ph¿ ho¿t ¿ng kinh doanh', '37', '38', '39', null, null, null, null, null, null, null, null, 13, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5957, '5. L¿i nhu¿n g¿p c¿a ho¿t ¿ng kinh doanh (20 = 10 -11)', '40', '41', '42', null, null, null, null, null, null, null, null, 14, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5958, '6. Chi ph¿ qu¿n l¿ doanh nghi¿p', '43', '44', '45', null, null, null, null, null, null, null, null, 15, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5959, '7. L¿i nhu¿n thu¿n t¿ ho¿t ¿ng kinh doanh ( 30 = 20 -25)', '46', '47', '48', null, null, null, null, null, null, null, null, 16, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5960, '8. Thu nh¿p kh¿c', '49', '50', '51', null, null, null, null, null, null, null, null, 17, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5961, '9. Chi ph¿ kh¿c', '52', '53', '54', null, null, null, null, null, null, null, null, 18, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5962, '10. L¿i nhu¿n kh¿c ( 40 = 31 - 32)', '55', '56', '57', null, null, null, null, null, null, null, null, 19, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5963, '11. T¿ng l¿i nhu¿n k¿ to¿n tr¿¿c thu¿ ( 50 = 30 + 40)', '58', '59', '60', null, null, null, null, null, null, null, null, 20, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5964, '12. Chi ph¿ thu¿ TNDN hi¿n h¿nh', '61', '62', '63', null, null, null, null, null, null, null, null, 21, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5965, '13. Chi ph¿ thu¿ TNDN ho¿n l¿i', '64', '65', '66', null, null, null, null, null, null, null, null, 22, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5966, '14. L¿i nhu¿n sau thu¿ TNDN ( 60 = 50 -51-52)', '67', '68', '69', null, null, null, null, null, null, null, null, 23, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5967, '15. L¿i c¿ b¿n tr¿n c¿ phi¿u', '70', '71', '72', null, null, null, null, null, null, null, null, 24, '95_02_SXKD13', null, null, null, null, null, null, null, null, null, null, null, null);
 
 		--RCV_MAP_CTIEU			
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '1', 'C', 5944, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '10', 'C', 5947, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '11', 'N', 5947, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '12', 'N', 5947, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '13', 'C', 5948, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '14', 'N', 5948, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '15', 'N', 5948, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '16', 'C', 5949, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '17', 'N', 5949, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '18', 'N', 5949, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '19', 'C', 5950, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '2', 'N', 5944, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '20', 'N', 5950, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '21', 'N', 5950, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '22', 'C', 5951, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '23', 'N', 5951, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '24', 'N', 5951, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '25', 'C', 5952, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '26', 'N', 5952, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '27', 'N', 5952, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '28', 'C', 5953, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '29', 'N', 5953, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '3', 'N', 5944, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '30', 'N', 5953, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '31', 'C', 5954, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '32', 'N', 5954, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '33', 'N', 5954, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '34', 'C', 5955, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '35', 'N', 5955, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '36', 'N', 5955, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '37', 'C', 5956, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '38', 'N', 5956, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '39', 'N', 5956, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '4', 'C', 5945, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '40', 'C', 5957, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '41', 'N', 5957, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '42', 'N', 5957, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '43', 'C', 5958, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '44', 'N', 5958, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '45', 'N', 5958, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '46', 'C', 5959, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '47', 'N', 5959, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '48', 'N', 5959, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '49', 'C', 5960, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '5', 'N', 5945, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '50', 'N', 5960, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '51', 'N', 5960, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '52', 'C', 5961, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '53', 'N', 5961, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '54', 'N', 5961, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '55', 'C', 5962, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '56', 'N', 5962, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '57', 'N', 5962, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '58', 'C', 5963, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '59', 'N', 5963, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '6', 'N', 5945, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '60', 'N', 5963, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '61', 'C', 5964, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '62', 'N', 5964, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '63', 'N', 5964, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '64', 'C', 5965, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '65', 'N', 5965, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '66', 'N', 5965, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '67', 'C', 5966, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '68', 'N', 5966, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '69', 'N', 5966, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '7', 'C', 5946, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '70', 'C', 5967, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '71', 'N', 5967, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '72', 'N', 5967, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '8', 'N', 5946, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_02_SXKD13', '9', 'N', 5946, null);
+
+-------------------------
+---PL:01-2 LCTTTT--------
+-------------------------
+insert into RCV_DM_TKHAI (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
+values ('95_03_LCTTTT13', 'Lࠕ CHUYࠎ TIࠎ Tߠ(THEO PH߿NG PHࠐ TRࠃ TIࠐ)', 'Y', '320', to_date('01-01-1900', 'dd-mm-yyyy'), null);
+
+	--RCV_GDIEN_TKHAI
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5968, 'I. L¿u chuy¿n ti¿n t¿ ho¿t ¿ng kinh doanh', null, null, null, null, null, null, null, null, null, null, null, 1, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5969, '  1. Ti¿n thu t¿ ho¿t ¿ng kinh doanh', '1', '2', '3', null, null, null, null, null, null, null, null, 2, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5970, '   2. Ti¿n chi ho¿t ¿ng kinh doanh', '4', '5', '6', null, null, null, null, null, null, null, null, 3, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5971, '   3. Ti¿n chi n¿p Qu¿ h¿ tr¿ thanh to¿n', '7', '8', '9', null, null, null, null, null, null, null, null, 4, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5972, '   4. Ti¿n thu giao d¿ch ch¿ng kho¿n kh¿ch h¿ng', '10', '11', '12', null, null, null, null, null, null, null, null, 5, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5973, '   5. Ti¿n chi tr¿ giao d¿ch ch¿ng kho¿n kh¿ch h¿ng', '13', '14', '15', null, null, null, null, null, null, null, null, 6, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5974, '   6. Ti¿n thu b¿n ch¿ng kho¿n ph¿t h¿nh', '16', '17', '18', null, null, null, null, null, null, null, null, 7, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5975, '   7. Ti¿n chi tr¿ t¿ ch¿c ph¿t h¿nh ch¿ng kho¿n', '19', '20', '21', null, null, null, null, null, null, null, null, 8, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5976, '   8. Ti¿n chi tr¿ cho ng¿¿i cung c¿p h¿ng h¿a v¿ d¿ch v¿', '22', '23', '24', null, null, null, null, null, null, null, null, 9, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5977, '   9. Ti¿n chi tr¿ cho ng¿¿i lao ¿ng', '25', '26', '27', null, null, null, null, null, null, null, null, 10, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5978, '   10. Ti¿n chi tr¿ l¿i vay', '28', '29', '30', null, null, null, null, null, null, null, null, 11, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5979, '   11. Ti¿n chi n¿p thu¿ thu nh¿p doanh nghi¿p', '31', '32', '33', null, null, null, null, null, null, null, null, 12, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5980, '   12. Ti¿n thu kh¿c', '34', '35', '36', null, null, null, null, null, null, null, null, 13, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5981, '   13. Ti¿n chi kh¿c', '37', '38', '39', null, null, null, null, null, null, null, null, 14, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5982, 'L¿u chuy¿n ti¿n thu¿n t¿ ho¿t ¿ng kinh doanh', null, null, null, null, null, null, null, null, null, null, null, 15, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5983, 'II. L¿u chuy¿n ti¿n t¿ ho¿t ¿ng ¿u t¿', '40', '41', '42', null, null, null, null, null, null, null, null, 16, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5984, '   1.Ti¿n chi ¿ mua s¿m, x¿y d¿ng TSC v¿ c¿c t¿i s¿n d¿i h¿n kh¿c', '43', '44', '45', null, null, null, null, null, null, null, null, 17, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5985, '   2.Ti¿n thu t¿ thanh l¿, nh¿¿ng b¿n TSC v¿ c¿c t¿i s¿n d¿i h¿n kh¿c', '46', '47', '48', null, null, null, null, null, null, null, null, 18, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5986, '   3.Ti¿n chi cho vay, mua c¿c c¿ng c¿ n¿ c¿a ¿n v¿ kh¿c', '49', '50', '51', null, null, null, null, null, null, null, null, 19, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5987, '   4.Ti¿n thu h¿i cho vay, b¿n l¿i c¿c c¿ng c¿ n¿ c¿a ¿n v¿ kh¿c', '52', '53', '54', null, null, null, null, null, null, null, null, 20, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5988, '   5.Ti¿n chi ¿u t¿ g¿p v¿n v¿o ¿n v¿ kh¿c', '55', '56', '57', null, null, null, null, null, null, null, null, 21, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5989, '   6.Ti¿n thu h¿i ¿u t¿ g¿p v¿n v¿o ¿n v¿ kh¿c', '58', '59', '60', null, null, null, null, null, null, null, null, 22, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5990, '   7.Ti¿n thu l¿i cho vay, c¿ t¿c v¿ l¿i nhu¿n ¿¿c chia', '61', '62', '63', null, null, null, null, null, null, null, null, 23, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5991, 'L¿u chuy¿n ti¿n thu¿n t¿ ho¿t ¿ng ¿u t¿', '64', '65', '66', null, null, null, null, null, null, null, null, 24, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5992, 'III. L¿u chuy¿n ti¿n t¿ ho¿t ¿ng t¿i ch¿nh', null, null, null, null, null, null, null, null, null, null, null, 25, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5993, '   1.Ti¿n thu t¿ ph¿t h¿nh c¿ phi¿u, nh¿n v¿n g¿p c¿a ch¿ s¿ h¿u', '67', '68', '69', null, null, null, null, null, null, null, null, 26, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5994, '   2.Ti¿n chi tr¿ v¿n g¿p cho c¿c ch¿ s¿ h¿u, mua l¿i c¿ phi¿u c¿a  doanh nghi¿p ¿ ph¿t h¿nh', '70', '71', '72', null, null, null, null, null, null, null, null, 27, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5995, '   3.Ti¿n vay ng¿n h¿n, d¿i h¿n nh¿n ¿¿c', '73', '74', '75', null, null, null, null, null, null, null, null, 28, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5996, '   4.Ti¿n chi tr¿ n¿ g¿c vay', '76', '77', '78', null, null, null, null, null, null, null, null, 29, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5997, '   5.Ti¿n chi tr¿ n¿ thu¿ t¿i ch¿nh', '79', '80', '81', null, null, null, null, null, null, null, null, 30, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5998, '   6. C¿ t¿c, l¿i nhu¿n ¿ tr¿ cho ch¿ s¿ h¿u', '82', '83', '84', null, null, null, null, null, null, null, null, 31, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5999, 'L¿u chuy¿n ti¿n thu¿n t¿ ho¿t ¿ng t¿i ch¿nh', '85', '86', '87', null, null, null, null, null, null, null, null, 32, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6000, 'L¿u chuy¿n ti¿n thu¿n trong k¿ (50 = 20 + 30 + 40)', '88', '89', '90', null, null, null, null, null, null, null, null, 33, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6001, 'Ti¿n v¿ t¿¿ng ¿¿ng ti¿n ¿u k¿', '91', '92', '93', null, null, null, null, null, null, null, null, 34, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6002, '¿nh h¿¿ng c¿a thay ¿i t¿ gi¿ h¿i o¿i quy ¿i ngo¿i t¿', '94', '95', '96', null, null, null, null, null, null, null, null, 35, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6003, 'Ti¿n v¿ t¿¿ng ¿¿ng ti¿n cu¿i k¿ (70 = 50+60+61)', '97', '98', '99', null, null, null, null, null, null, null, null, 36, '95_03_LCTTTT13', null, null, null, null, null, null, null, null, null, null, null, null);
+	
+	--RCV_MAP_CTIEU
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '1', 'C', 5969, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '10', 'C', 5972, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '11', 'N', 5972, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '12', 'N', 5972, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '13', 'C', 5973, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '14', 'N', 5973, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '15', 'N', 5973, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '16', 'C', 5974, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '17', 'N', 5974, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '18', 'N', 5974, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '19', 'C', 5975, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '2', 'N', 5969, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '20', 'N', 5975, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '21', 'N', 5975, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '22', 'C', 5976, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '23', 'N', 5976, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '24', 'N', 5976, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '25', 'C', 5977, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '26', 'N', 5977, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '27', 'N', 5977, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '28', 'C', 5978, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '29', 'N', 5978, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '3', 'N', 5969, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '30', 'N', 5978, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '31', 'C', 5979, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '32', 'N', 5979, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '33', 'N', 5979, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '34', 'C', 5980, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '35', 'N', 5980, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '36', 'N', 5980, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '37', 'C', 5981, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '38', 'N', 5981, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '39', 'N', 5981, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '4', 'C', 5970, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '40', 'C', 5983, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '41', 'N', 5983, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '42', 'N', 5983, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '43', 'C', 5984, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '44', 'N', 5984, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '45', 'N', 5984, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '46', 'C', 5985, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '47', 'N', 5985, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '48', 'N', 5985, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '49', 'C', 5986, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '5', 'N', 5970, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '50', 'N', 5986, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '51', 'N', 5986, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '52', 'C', 5987, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '53', 'N', 5987, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '54', 'N', 5987, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '55', 'C', 5988, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '56', 'N', 5988, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '57', 'N', 5988, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '58', 'C', 5989, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '59', 'N', 5989, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '6', 'N', 5970, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '60', 'N', 5989, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '61', 'C', 5990, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '62', 'N', 5990, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '63', 'N', 5990, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '64', 'C', 5991, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '65', 'N', 5991, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '66', 'N', 5991, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '67', 'C', 5993, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '68', 'N', 5993, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '69', 'N', 5993, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '7', 'C', 5971, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '70', 'C', 5994, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '71', 'N', 5994, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '72', 'N', 5994, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '73', 'C', 5995, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '74', 'N', 5995, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '75', 'N', 5995, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '76', 'C', 5996, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '77', 'N', 5996, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '78', 'N', 5996, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '79', 'C', 5997, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '8', 'N', 5971, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '80', 'N', 5997, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '81', 'N', 5997, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '82', 'C', 5998, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '83', 'N', 5998, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '84', 'N', 5998, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '85', 'C', 5999, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '86', 'N', 5999, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '87', 'N', 5999, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '88', 'C', 6000, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '89', 'N', 6000, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '9', 'N', 5971, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '90', 'N', 6000, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '91', 'C', 6001, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '92', 'N', 6001, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '93', 'N', 6001, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '94', 'C', 6002, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '95', 'N', 6002, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '96', 'N', 6002, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '97', 'C', 6003, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '98', 'N', 6003, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_03_LCTTTT13', '99', 'N', 6003, null);
+	
+-------------------------
+---PL 01-3: LCTTGT-------
+-------------------------
+insert into RCV_DM_TKHAI (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
+values ('95_04_LCTTGT13', 'Lࠕ CHUYࠎ TIࠎ Tߠ(THEO PH߿NG PHࠐ GIࠎ TIࠐ)', 'Y', '320', to_date('01-01-1900', 'dd-mm-yyyy'), null);
+
+	--RCV_GDIEN_TKHAI
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6004, 'I. L¿u chuy¿n ti¿n t¿ ho¿t ¿ng kinh doanh', null, null, null, null, null, null, null, null, null, null, null, 1, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6005, '1. L¿i nhu¿n tr¿¿c thu¿', '1', '2', '3', null, null, null, null, null, null, null, null, 2, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6006, '2. i¿u ch¿nh cho c¿c kho¿n', null, null, null, null, null, null, null, null, null, null, null, 3, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6007, '    - Kh¿u hao TSC', '4', '5', '6', null, null, null, null, null, null, null, null, 4, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6008, '    - C¿c kho¿n d¿ ph¿ng', '7', '8', '9', null, null, null, null, null, null, null, null, 5, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6009, '    - L¿i, l¿ ch¿nh l¿ch t¿ gi¿ h¿i o¿i ch¿a th¿c hi¿n', '10', '11', '12', null, null, null, null, null, null, null, null, 6, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6010, '    - L¿i, l¿ t¿ ho¿t ¿ng ¿u t¿', '13', '14', '15', null, null, null, null, null, null, null, null, 7, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6011, '    - Chi ph¿ l¿i vay ', '16', '17', '18', null, null, null, null, null, null, null, null, 8, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6012, '3. L¿i nhu¿n t¿ ho¿t ¿ng kinh doanh tr¿¿c thay ¿i v¿n  l¿u ¿ng (08 = 01 + 02 + 03 + 04 + 05 + 06)', '19', '20', '21', null, null, null, null, null, null, null, null, 9, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6013, '    - Tng, gi¿m c¿c kho¿n ph¿i thu', '22', '23', '24', null, null, null, null, null, null, null, null, 10, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6014, '    - Tng, gi¿m h¿ng t¿n kho', '25', '26', '27', null, null, null, null, null, null, null, null, 11, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6015, '    - Tng, gi¿m c¿c kho¿n ph¿i tr¿ (Kh¿ng k¿ l¿i vay ph¿i tr¿, thu¿ thu nh¿p doanh nghi¿p ph¿i n¿p) ', '28', '29', '30', null, null, null, null, null, null, null, null, 12, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6016, '    - Tng, gi¿m chi ph¿ tr¿ tr¿¿c ', '31', '32', '33', null, null, null, null, null, null, null, null, 13, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6017, '    - Ti¿n l¿i vay ¿ tr¿', '34', '35', '36', null, null, null, null, null, null, null, null, 14, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6018, '    - Thu¿ thu nh¿p doanh nghi¿p ¿ n¿p', '37', '38', '39', null, null, null, null, null, null, null, null, 15, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6019, '    - Ti¿n thu kh¿c t¿ ho¿t ¿ng kinh doanh', '40', '41', '42', null, null, null, null, null, null, null, null, 16, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6020, '    - Ti¿n chi kh¿c cho ho¿t ¿ng kinh doanh', '43', '44', '45', null, null, null, null, null, null, null, null, 17, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6021, 'L¿u chuy¿n ti¿n thu¿n t¿ ho¿t ¿ng kinh doanh', '46', '47', '48', null, null, null, null, null, null, null, null, 18, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6022, 'II. L¿u chuy¿n ti¿n t¿ ho¿t ¿ng ¿u t¿', null, null, null, null, null, null, null, null, null, null, null, 19, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6023, '   1.Ti¿n chi ¿ mua s¿m, x¿y d¿ng TSC v¿ c¿c t¿i s¿n d¿i h¿n kh¿c', '49', '50', '51', null, null, null, null, null, null, null, null, 20, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6024, '   2.Ti¿n thu t¿ thanh l¿, nh¿¿ng b¿n TSC v¿ c¿c t¿i s¿n d¿i h¿n kh¿c', '52', '53', '54', null, null, null, null, null, null, null, null, 21, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6025, '   3.Ti¿n chi cho vay, mua c¿c c¿ng c¿ n¿ c¿a ¿n v¿ kh¿c', '55', '56', '57', null, null, null, null, null, null, null, null, 22, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6026, '   4.Ti¿n thu h¿i cho vay, b¿n l¿i c¿c c¿ng c¿ n¿ c¿a ¿n v¿ kh¿c', '58', '59', '60', null, null, null, null, null, null, null, null, 23, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6027, '   5.Ti¿n chi ¿u t¿ g¿p v¿n v¿o ¿n v¿ kh¿c', '61', '62', '63', null, null, null, null, null, null, null, null, 24, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6028, '   6.Ti¿n thu h¿i ¿u t¿ g¿p v¿n v¿o ¿n v¿ kh¿c', '64', '65', '66', null, null, null, null, null, null, null, null, 25, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6029, '   7.Ti¿n thu l¿i cho vay, c¿ t¿c v¿ l¿i nhu¿n ¿¿c chia', '67', '68', '69', null, null, null, null, null, null, null, null, 26, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6030, 'L¿u chuy¿n ti¿n thu¿n t¿ ho¿t ¿ng ¿u t¿', '70', '71', '72', null, null, null, null, null, null, null, null, 27, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6031, 'III. L¿u chuy¿n ti¿n t¿ ho¿t ¿ng t¿i ch¿nh', null, null, null, null, null, null, null, null, null, null, null, 28, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6032, '   1.Ti¿n thu t¿ ph¿t h¿nh c¿ phi¿u, nh¿n v¿n g¿p c¿a ch¿ s¿ h¿u', '73', '74', '75', null, null, null, null, null, null, null, null, 29, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6033, '   2.Ti¿n chi tr¿ v¿n g¿p cho c¿c ch¿ s¿ h¿u, mua l¿i c¿ phi¿u c¿a doanh nghi¿p ¿ ph¿t h¿nh', '76', '77', '78', null, null, null, null, null, null, null, null, 30, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6034, '   3.Ti¿n vay ng¿n h¿n, d¿i h¿n nh¿n ¿¿c', '79', '80', '81', null, null, null, null, null, null, null, null, 31, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6035, '   4.Ti¿n chi tr¿ n¿ g¿c vay', '82', '83', '84', null, null, null, null, null, null, null, null, 32, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6036, '   5.Ti¿n chi tr¿ n¿ thu¿ t¿i ch¿nh', '85', '86', '87', null, null, null, null, null, null, null, null, 33, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6037, '   6. C¿ t¿c, l¿i nhu¿n ¿ tr¿ cho ch¿ s¿ h¿u', '88', '89', '90', null, null, null, null, null, null, null, null, 34, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6038, 'L¿u chuy¿n ti¿n thu¿n t¿ ho¿t ¿ng t¿i ch¿nh', '91', '92', '93', null, null, null, null, null, null, null, null, 35, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6039, 'L¿u chuy¿n ti¿n thu¿n trong k¿ (50=20+30+40)', '94', '95', '96', null, null, null, null, null, null, null, null, 36, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6040, 'Ti¿n v¿ t¿¿ng ¿¿ng ti¿n ¿u k¿', '97', '98', '99', null, null, null, null, null, null, null, null, 37, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6041, '¿nh h¿¿ng c¿a thay ¿i t¿ gi¿ h¿i o¿i quy ¿i ngo¿i t¿', '100', '101', '102', null, null, null, null, null, null, null, null, 38, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6042, 'Ti¿n v¿ t¿¿ng ¿¿ng ti¿n cu¿i k¿ (70=50+60+61)', '103', '104', '105', null, null, null, null, null, null, null, null, 39, '95_04_LCTTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
+
+	--RCV_MAP_CTIEU
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '1', 'C', 6005, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '10', 'C', 6009, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '100', 'C', 6041, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '101', 'N', 6041, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '102', 'N', 6041, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '103', 'C', 6042, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '104', 'N', 6042, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '105', 'N', 6042, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '11', 'N', 6009, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '12', 'N', 6009, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '13', 'C', 6010, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '14', 'N', 6010, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '15', 'N', 6010, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '16', 'C', 6011, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '17', 'N', 6011, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '18', 'N', 6011, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '19', 'C', 6012, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '2', 'N', 6005, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '20', 'N', 6012, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '21', 'N', 6012, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '22', 'C', 6013, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '23', 'N', 6013, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '24', 'N', 6013, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '25', 'C', 6014, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '26', 'N', 6014, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '27', 'N', 6014, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '28', 'C', 6015, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '29', 'N', 6015, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '3', 'N', 6005, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '30', 'N', 6015, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '31', 'C', 6016, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '32', 'N', 6016, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '33', 'N', 6016, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '34', 'C', 6017, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '35', 'N', 6017, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '36', 'N', 6017, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '37', 'C', 6018, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '38', 'N', 6018, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '39', 'N', 6018, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '4', 'C', 6007, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '40', 'C', 6019, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '41', 'N', 6019, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '42', 'N', 6019, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '43', 'C', 6020, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '44', 'N', 6020, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '45', 'N', 6020, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '46', 'C', 6021, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '47', 'N', 6021, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '48', 'N', 6021, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '49', 'C', 6023, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '5', 'N', 6007, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '50', 'N', 6023, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '51', 'N', 6023, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '52', 'C', 6024, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '53', 'N', 6024, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '54', 'N', 6024, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '55', 'C', 6025, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '56', 'N', 6025, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '57', 'N', 6025, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '58', 'C', 6026, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '59', 'N', 6026, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '6', 'N', 6007, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '60', 'N', 6026, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '61', 'C', 6027, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '62', 'N', 6027, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '63', 'N', 6027, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '64', 'C', 6028, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '65', 'N', 6028, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '66', 'N', 6028, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '67', 'C', 6029, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '68', 'N', 6029, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '69', 'N', 6029, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '7', 'C', 6008, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '70', 'C', 6030, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '71', 'N', 6030, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '72', 'N', 6030, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '73', 'C', 6032, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '74', 'N', 6032, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '75', 'N', 6032, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '76', 'C', 6033, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '77', 'N', 6033, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '78', 'N', 6033, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '79', 'C', 6034, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '8', 'N', 6008, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '80', 'N', 6034, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '81', 'N', 6034, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '82', 'C', 6035, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '83', 'N', 6035, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '84', 'N', 6035, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '85', 'C', 6036, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '86', 'N', 6036, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '87', 'N', 6036, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '88', 'C', 6037, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '89', 'N', 6037, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '9', 'N', 6008, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '90', 'N', 6037, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '91', 'C', 6038, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '92', 'N', 6038, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '93', 'N', 6038, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '94', 'C', 6039, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '95', 'N', 6039, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '96', 'N', 6039, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '97', 'C', 6040, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '98', 'N', 6040, null);
+
+insert into RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('95_04_LCTTGT13', '99', 'N', 6040, null);
