@@ -274,5 +274,7 @@
 	<Infor ID="0281" Msg="Kh«ng cã d÷ liÖu xml cña tê khai."/>
 	<Infor ID="0282" Msg="Th«ng tin kª khai sai. Ph¶i söa ®óng tr­íc khi kÕt xuÊt ra file XML."/>
 	<Infor ID="0283" Msg="Ban hành kèm theo thông tư số 28/2011/TT-BTC ngày 28/02/2011 của Bộ tài chính."/>
+	<Infor ID="0284" Msg="Hạch toán chỉ tiêu [24] + [34] vào mục 1000, tiểu mục 1003"/>
+	<Infor ID="0285" Msg="Hạch toán chỉ tiêu [27] + [30] vào mục 1000, tiểu mục 1001"/>
 </Message>
 

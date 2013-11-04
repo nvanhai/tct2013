@@ -126,7 +126,7 @@ Begin VB.Form frmReportData
       DisplayText     =   ""
       BarWidthReduction=   -1
       TextAlignment   =   0
-      Quality         =   0
+      Quality         =   68
    End
 End
 Attribute VB_Name = "frmReportData"
@@ -631,6 +631,9 @@ nextPrinter:
         ElseIf (strKhiThienNhien = "1") Then
             fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0277"), "Msg")
         End If
+    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 25 Then
+        fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0284"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0285"), "Msg")
+    
     End If
     
     'KHBS khong thay doi so thue se ko in phu luc va co cau canh bao
@@ -1293,7 +1296,7 @@ strReturn = strReturn & strTaxID
 'Add period
 If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then
     ' to khai thang/quy GTGT, TNCN
-    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "36" Then
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "25" Then
         If strQuy = "TK_THANG" Then
             strReturn = strReturn & TAX_Utilities_New.month & TAX_Utilities_New.Year
         Else
