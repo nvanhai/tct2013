@@ -848,7 +848,7 @@ ProgressBar1.value = fpSpread2.Row
     fpSpread1.sheet = mCurrentSheet
     fpSpread2.Row = fpSpread2.Row + 1
     value = fpSpread2.value
-    If ((Mid(value, 1, 1) = "T" Or Trim(value) = "" Or Trim(value) = vbNullString) And (Trim(varMenuId) = "01" Or Trim(varMenuId) = "02" Or Trim(varMenuId) = "14" Or Trim(varMenuId) = "05" Or Trim(varMenuId) = "59")) Or ((Trim(value) = "" Or Trim(value) = vbNullString) And (Trim(varMenuId) = "17" Or Trim(varMenuId) = "42" Or Trim(varMenuId) = "43" Or Trim(varMenuId) = "44")) Then
+    If ((Mid(value, 1, 1) = "T" Or Trim(value) = "" Or Trim(value) = vbNullString) And (Trim(varMenuId) = "01" Or Trim(varMenuId) = "02" Or Trim(varMenuId) = "14" Or Trim(varMenuId) = "05" Or Trim(varMenuId) = "59")) Or ((Trim(value) = "" Or Trim(value) = vbNullString) And (Trim(varMenuId) = "17" Or Trim(varMenuId) = "42" Or Trim(varMenuId) = "43" Or Trim(varMenuId) = "26" Or Trim(varMenuId) = "44")) Then
         count = count + 1
         inc = True
         ProgressBar1.value = fpSpread2.MaxRows
@@ -4872,7 +4872,7 @@ Private Sub cmdLoadToKhai_Click()
             ElseIf Len(LTrim(Trim(mstFile))) > 10 Then
                 mstFile = Left(LTrim(RTrim(mstFile)), 10) & Right(LTrim(RTrim(mstFile)), 3)
             End If
-        ElseIf varMenuId = "42" Or varMenuId = "43" Or varMenuId = "59" Or varMenuId = "41" Or varMenuId = "76" Then
+        ElseIf varMenuId = "42" Or varMenuId = "43" Or varMenuId = "26" Or varMenuId = "59" Or varMenuId = "41" Or varMenuId = "76" Then
             ' Lay ky ke khai
             .GetText .ColLetterToNumber("H"), 4, kyKeKhai
             ' Lay MST
@@ -4898,7 +4898,7 @@ Private Sub cmdLoadToKhai_Click()
             End If
         End If
         ' Lay loai to khai
-        If Trim(varMenuId) = "17" Or Trim(varMenuId) = "41" Or Trim(varMenuId) = "44" Or Trim(varMenuId) = "42" Or Trim(varMenuId) = "43" Or Trim(varMenuId) = "59" Or Trim(varMenuId) = "76" Then
+        If Trim(varMenuId) = "17" Or Trim(varMenuId) = "41" Or Trim(varMenuId) = "44" Or Trim(varMenuId) = "42" Or Trim(varMenuId) = "43" Or Trim(varMenuId) = "26" Or Trim(varMenuId) = "59" Or Trim(varMenuId) = "76" Then
             .GetText .ColLetterToNumber("O"), 1, loaiToKhai
         End If
     End With
@@ -4909,7 +4909,7 @@ Private Sub cmdLoadToKhai_Click()
     With fpSpread1
         .EventEnabled(EventAllEvents) = False
         .sheet = 1
-        If varMenuId = "17" Or varMenuId = "59" Or varMenuId = "42" Or varMenuId = "43" Or varMenuId = "41" Or varMenuId = "76" Then
+        If varMenuId = "17" Or varMenuId = "59" Or varMenuId = "42" Or varMenuId = "43" Or varMenuId = "26" Or varMenuId = "41" Or varMenuId = "76" Then
             ' Lay MST cua NNT
             .GetText .ColLetterToNumber("D"), 10, mstUD
             ' Neu la ma 10 so thi them chuoi 000 vao sau
@@ -4973,6 +4973,11 @@ Private Sub cmdLoadToKhai_Click()
         DisplayMessage "0147", msOKOnly, miInformation
         Exit Sub
     End If
+    ' To khai 02/KK-BHDC
+    If (varMenuId = "26" And UCase(loaiToKhai) <> "02/KK-BHDC") Then
+        DisplayMessage "0286", msOKOnly, miInformation
+        Exit Sub
+    End If
     ' Lay du lieu cua to khai 05/KK
     If varMenuId = "17" Then
         convertData05KK
@@ -4983,6 +4988,10 @@ Private Sub cmdLoadToKhai_Click()
     End If
     ' Lay du lieu cua to khai 02/XS
     If varMenuId = "43" Then
+        convertData02XS
+    End If
+    ' Lay du lieu cua to khai 02/bhdc
+    If varMenuId = "26" Then
         convertData02XS
     End If
     ' Lay du lieu cua to khai 09/KK
@@ -6069,7 +6078,7 @@ Private Sub cmdPrint_Click()
             ' Trong truong hop in dieu chinh thi cac to khai quyet toan TNCN hien thi o check "In thong tin dieu chinh"
             Dim varMenuId As String
             varMenuId = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
-            If Trim(varMenuId) = "17" Or Trim(varMenuId) = "42" Or Trim(varMenuId) = "43" Or Trim(varMenuId) = "59" Then
+            If Trim(varMenuId) = "17" Or Trim(varMenuId) = "42" Or Trim(varMenuId) = "43" Or Trim(varMenuId) = "26" Or Trim(varMenuId) = "59" Then
                 Dim countInBoSung As Integer
                 flgPrintBoSung = False
                 countInBoSung = 1
@@ -6146,7 +6155,7 @@ Private Sub cmdPrint_Click()
                         
                         ' To quyet toan 02BH, 02SX
                         countInBoSung = 1
-                        If Trim(varMenuId) = "42" Or Trim(varMenuId) = "43" Then
+                        If Trim(varMenuId) = "42" Or Trim(varMenuId) = "43" Or Trim(varMenuId) = "26" Then
                             .sheet = 2
                             .Row = 22
                             Do
@@ -7563,6 +7572,58 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
             End If
             End If
         End If
+        
+        'xu ly nut chech chon 02BHDC_C20
+        If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "26" Then
+            If .CellType = CellTypeButton Then
+                'Dim strFileName As String
+                options = frmOp_Pr.getOptions
+                'Dim i As Integer
+                If options = 1 Then
+                    For i = 0 To .MaxRows - 32
+                            .Row = i + 22
+                            ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
+                            .Col = .ColLetterToNumber("C")
+                            .Text = "1"
+                    Next
+                ElseIf options = 2 Then
+                            For i = 0 To .MaxRows - 32
+                                    .Row = i + 22
+                                    ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
+                                    .Col = .ColLetterToNumber("C")
+                                    .Text = "0"
+                            Next
+                            
+                            ElseIf options = 3 Then
+                            star = frmOp_Pr.getStar
+                            endd = frmOp_Pr.getEndd
+                            If star = "" Or endd = "" Then
+                              DisplayMessage "0169", msOKOnly, miCriticalError
+                            Else
+                                    If star > 0 And endd < (.MaxRows - 32) Then
+                                    
+                                        For i = 0 To .MaxRows - 32
+                                        .Row = i + 22
+                                        ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
+                                        .Col = .ColLetterToNumber("C")
+                                        .Text = "0"
+                                        Next
+                                        
+                                        For i = star To endd
+                                                .Row = i + 21
+                                                ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
+                                                .Col = .ColLetterToNumber("C")
+                                                .Text = "1"
+                                        Next
+                                     Else
+                                     DisplayMessage "0168", msOKOnly, miCriticalError
+                                     End If
+                              End If
+                Else
+                  'MsgBox "Loi.", vbInformation
+            End If
+            End If
+        End If
         'xu ly nut chech chon 02XS_C20
         If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "43" Then
             If .CellType = CellTypeButton Then
@@ -8731,7 +8792,7 @@ Private Sub fpSpread1_SheetChanged(ByVal OldSheet As Integer, ByVal NewSheet As 
     End If
     'Begin dhDang edit
     ' Trong truong hop la to khai quyet toan TNCN thi frame3 moi hien thi
-    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "17" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "43" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "59" Then
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "17" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "43" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "26" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "59" Then
         If ((GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(1), "Active") <> "0") And NewSheet = 2) Or ((GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(2), "Active") <> "0") And NewSheet = 3) Then
 
             Frame3.Visible = True

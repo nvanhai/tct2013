@@ -2276,6 +2276,7 @@ Public Sub cmdOK_Click()
                     Or (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "41") _
                             Or (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "42") _
                                     Or (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "43") _
+                                        Or (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "26") _
                                         Or (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "59") _
                                             Or (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "44") Then
             If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "80") Or (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "82") Then
@@ -2887,7 +2888,7 @@ Private Sub Form_Load()
                 Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "41" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "43" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "59" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "44" _
                     Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "46" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "47" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "48" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "49" _
                         Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "50" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "51" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "53" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "54" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "76" _
-                        Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "87" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "75" Then
+                        Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "87" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "75" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "26" Then
         SetupLayoutTNCN (strKieuKy)
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "99" Then
         SetupLayoutTNDN_DK (strKieuKy)
@@ -4777,6 +4778,9 @@ Private Sub OptBosung_Click()
         ElseIf Trim(varMenuId) = "43" Then
             TIEN_TO_DATA_FILE = "02_TNCN_SX"
             CELL_SO_LAN_BS = "I_51"
+        ElseIf Trim(varMenuId) = "26" Then
+            TIEN_TO_DATA_FILE = "02_TNCN_BHDC"
+            CELL_SO_LAN_BS = "I_70"
         ElseIf Trim(varMenuId) = "59" Then
             TIEN_TO_DATA_FILE = "06_TNCN10"
             CELL_SO_LAN_BS = "I_61"

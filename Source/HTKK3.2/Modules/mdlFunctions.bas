@@ -1393,7 +1393,7 @@ Public Sub SetupReportData(fpsGrid As fpSpread, Optional IsInterface As Boolean 
                                     ElseIf Right(GetAttribute(xmlNodeCell, "Value"), Len(GetAttribute(xmlNodeCell, "Value")) - InStr(1, GetAttribute(xmlNodeCell, "Value"), ".")) = "00" Then
                                        .TypeNumberDecPlaces = 0
                                     ElseIf InStr(1, GetAttribute(xmlNodeCell, "Value"), ".") > 0 Then
-                                        If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "17" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "42" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "43" Then
+                                        If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "17" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "42" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "43" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "26" Then
                                             .TypeNumberDecPlaces = 0
                                         Else
                                             .TypeNumberDecPlaces = 3 'Len(GetAttribute(xmlNodeCell, "Value")) - InStr(1, GetAttribute(xmlNodeCell, "Value"), ".")
