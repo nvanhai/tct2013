@@ -1591,9 +1591,6 @@ Private Sub ExecuteSave()
     If (Not PushDataToESB(xmlDocSave.xml)) Then
         MessageBox "0137", msOKOnly, miCriticalError
     End If
-    '    If (Not PushDataToESB(xmlDocSave.xml)) Then
-    '        MessageBox "0137", msOKOnly, miCriticalError
-    '    End If
 
     ' End push
     
@@ -2229,46 +2226,64 @@ Private Sub Command1_Click()
 
 'Ra soat to khai
 '01-GTGT
-str2 = "aa999012300790401   09201300600600101701/0114/06/2006<S01><S>2100462770</S><S>~0~89000000~6550000~5090277~4000000~65500000~2375000~30000000~23500000~1175000~12000000~1200000~"
-Barcode_Scaned str2
-str2 = "aa999012300790401   09201300600600201769500000~2375000~-2715277~0~0~6200000000~0~0~0~0~2715277~0~0~2715277</S><S>Nguy‘n S¸ HÔng~DEV1234~~30/10/2013~1~~~1701~x~02~0</S></S01>"
-Barcode_Scaned str2
-str2 = "aa999012300790401   092013006006003017<S01_1><S>0355~065~11/09/2013~lan~0102030405~gmao~4000000~0~ghi</S><S>02324~056~11/09/2013~su~0102030405~m›a~30000000~0~okie</S><S>01234~012~10/03/2013~Nguy‘n V®n H∂i~0102030405~Æ≠Íng~23500000~1175000~o"
-Barcode_Scaned str2
-str2 = "aa999012300790401   092013006006004017ka</S><S>032134~0234~09/09/2013~Nguy‘n V®n S˘~0102030405~Ng´~12000000~1200000~okie</S><S>05436~0345~08/08/2013~L™ Vi÷t C≠Íng~0102030405~Khoai~24000000~0~yes</S><S>69500000~2375000~65500000</S></S01_1>"
-Barcode_Scaned str2
-str2 = "aa999012300790401   092013006006005017<S01_2><S>0178~09887~01/01/2013~Nguy‘n V®n A~0102030405~LÛa~12000000~0~0~</S><S>0234~0987~02/02/2013~Nguy‘n V®n B~0102030405~Ng´~23000000~5~1150000~</S><S>0678~0923~03/03/2013~Ngu"
-Barcode_Scaned str2
-str2 = "aa999012300790401   092013006006006017y‘n V®n C~0102030405~Khoai~54000000~10~5400000~</S><S>~~~~~~0~0~0~</S><S>02345~890~04/04/2013~Nguy‘n V®n D~0102030405~Sæn~90000000~10~9000000~</S><S>89000000~6550000</S></S01_2>"
-Barcode_Scaned str2
-str2 = "aa999012300790401   092013006006007017<S01_3><S>Camry~Chi’c~100~100~1200000000~~Land Cruiser~Chi’c~200~200~1900000000~</S><S>Honda Lead~Chi’c~1020~1020~35000000~~Honda SH~Chi’c~500~500~500000000~</S></S01_3>"
-Barcode_Scaned str2
-str2 = "aa999012300790401   092013006006008017<S01_4A><S>6620000~70000~1150000~5400000~69500000~65500000~94.24~5400000~5088960</S></S01_4A>"
-Barcode_Scaned str2
-str2 = "aa999012300790401   092013006006009017<S01_4B><S>2009~936000~800000~60000~76000~1000000~300000~30~4578~1373~56~1317</S></S01_4B>"
-Barcode_Scaned str2
-str2 = "aa999012300790401   092013006006010017<S01_5><S>05/05/2013~1200000000~10101~07/07/2013~5000000000~10101</S></S01_5>"
-Barcode_Scaned str2
-str2 = "aa999012300790401   092013006006011017<S01_6><S>CMC Soft~0102030405~20000000000~15000000000~35000000"
-Barcode_Scaned str2
-str2 = "aa999012300790401   092013006006012017000~500000000~0~10101~10100</S><S>0~500000000~0~0</S></S01_6>"
-Barcode_Scaned str2
-str2 = "aa999012300790401   092013006006013017<S01_6B><S>CMC Soft HCM~0102030405~10000000000~200000000~0~10101</S><S>0~10000000~0~0</S></S01_6B>"
-Barcode_Scaned str2
-str2 = "aa999012300790401   092013006006014017<S01_7><S>Ha Noi~0102030405~1200000000~20000000000~2120"
-Barcode_Scaned str2
-str2 = "aa999012300790401   0920130060060150170000000~412000000~0</S><S>0~210000000~0~0</S></S01_7>"
-Barcode_Scaned str2
-str2 = "aa999012300790401   092013006006016017<S01_1_TD><S>Ialy~10000000000~10000000000~0~Na Hang~30000000000~40000000000~10000000000</S></S01_1_TD>"
-Barcode_Scaned str2
-str2 = "aa999012300790401   092013006006017017<S01_2_TD><S>Thac Ba~10~2000000000~10101~~Hoa Binh~5~20000000000~10101~</S></S01_2_TD>"
-Barcode_Scaned str2
+'str2 = "aa999012300790401   09201300600600101701/0114/06/2006<S01><S>2100462770</S><S>~0~89000000~6550000~5090277~4000000~65500000~2375000~30000000~23500000~1175000~12000000~1200000~"
+'Barcode_Scaned str2
+'str2 = "aa999012300790401   09201300600600201769500000~2375000~-2715277~0~0~6200000000~0~0~0~0~2715277~0~0~2715277</S><S>Nguy‘n S¸ HÔng~DEV1234~~30/10/2013~1~~~1701~x~02~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999012300790401   092013006006003017<S01_1><S>0355~065~11/09/2013~lan~0102030405~gmao~4000000~0~ghi</S><S>02324~056~11/09/2013~su~0102030405~m›a~30000000~0~okie</S><S>01234~012~10/03/2013~Nguy‘n V®n H∂i~0102030405~Æ≠Íng~23500000~1175000~o"
+'Barcode_Scaned str2
+'str2 = "aa999012300790401   092013006006004017ka</S><S>032134~0234~09/09/2013~Nguy‘n V®n S˘~0102030405~Ng´~12000000~1200000~okie</S><S>05436~0345~08/08/2013~L™ Vi÷t C≠Íng~0102030405~Khoai~24000000~0~yes</S><S>69500000~2375000~65500000</S></S01_1>"
+'Barcode_Scaned str2
+'str2 = "aa999012300790401   092013006006005017<S01_2><S>0178~09887~01/01/2013~Nguy‘n V®n A~0102030405~LÛa~12000000~0~0~</S><S>0234~0987~02/02/2013~Nguy‘n V®n B~0102030405~Ng´~23000000~5~1150000~</S><S>0678~0923~03/03/2013~Ngu"
+'Barcode_Scaned str2
+'str2 = "aa999012300790401   092013006006006017y‘n V®n C~0102030405~Khoai~54000000~10~5400000~</S><S>~~~~~~0~0~0~</S><S>02345~890~04/04/2013~Nguy‘n V®n D~0102030405~Sæn~90000000~10~9000000~</S><S>89000000~6550000</S></S01_2>"
+'Barcode_Scaned str2
+'str2 = "aa999012300790401   092013006006007017<S01_3><S>Camry~Chi’c~100~100~1200000000~~Land Cruiser~Chi’c~200~200~1900000000~</S><S>Honda Lead~Chi’c~1020~1020~35000000~~Honda SH~Chi’c~500~500~500000000~</S></S01_3>"
+'Barcode_Scaned str2
+'str2 = "aa999012300790401   092013006006008017<S01_4A><S>6620000~70000~1150000~5400000~69500000~65500000~94.24~5400000~5088960</S></S01_4A>"
+'Barcode_Scaned str2
+'str2 = "aa999012300790401   092013006006009017<S01_4B><S>2009~936000~800000~60000~76000~1000000~300000~30~4578~1373~56~1317</S></S01_4B>"
+'Barcode_Scaned str2
+'str2 = "aa999012300790401   092013006006010017<S01_5><S>05/05/2013~1200000000~10101~07/07/2013~5000000000~10101</S></S01_5>"
+'Barcode_Scaned str2
+'str2 = "aa999012300790401   092013006006011017<S01_6><S>CMC Soft~0102030405~20000000000~15000000000~35000000"
+'Barcode_Scaned str2
+'str2 = "aa999012300790401   092013006006012017000~500000000~0~10101~10100</S><S>0~500000000~0~0</S></S01_6>"
+'Barcode_Scaned str2
+'str2 = "aa999012300790401   092013006006013017<S01_6B><S>CMC Soft HCM~0102030405~10000000000~200000000~0~10101</S><S>0~10000000~0~0</S></S01_6B>"
+'Barcode_Scaned str2
+'str2 = "aa999012300790401   092013006006014017<S01_7><S>Ha Noi~0102030405~1200000000~20000000000~2120"
+'Barcode_Scaned str2
+'str2 = "aa999012300790401   0920130060060150170000000~412000000~0</S><S>0~210000000~0~0</S></S01_7>"
+'Barcode_Scaned str2
+'str2 = "aa999012300790401   092013006006016017<S01_1_TD><S>Ialy~10000000000~10000000000~0~Na Hang~30000000000~40000000000~10000000000</S></S01_1_TD>"
+'Barcode_Scaned str2
+'str2 = "aa999012300790401   092013006006017017<S01_2_TD><S>Thac Ba~10~2000000000~10101~~Hoa Binh~5~20000000000~10101~</S></S01_2_TD>"
+'Barcode_Scaned str2
 
-
+'01-GTGT- khong phu luc
 'str2 = "aa999012300790401   08201300400400100201/0114/06/2006<S01><S>2100462770</S><S>~10000~30000~70000~2000~300000~60459~11994~3456~24567~4663~32436~7331~360459~1"
 'Barcode_Scaned str2
 'str2 = "aa999012300790401   0820130040040020021994~9994~7000~3087~2567~3907~2567~85~1255~0~0~6756~0</S><S>Nguy‘n S¸ HÔng~DEV1234~~30/10/2013~1~~~1701~~~0</S></S01>"
 'Barcode_Scaned str2
+
+'QD 15 BCTC
+str2 = "aa999692300790433   00201200000000100801/0123/06/2006<S01><S>~73920~48000~~21000~3000~V.01~1000~1000~~20000~2000~V.02~3000~3000~~1000~1000~~2000~2000~~33000~21000~~3000~1000~~4000~2000~~5000~3000~~6000~4000~V.03~7000~5000~~8000~6000~~3000~3000~V.04~1000~1000~~2000~2000~~13920~18000~~3000~3000~~5000~4000~V.05~3450~5000~~2470~6000~~95780~88000~~19940~15000~~6920~4000~~3420~5000~V.06~5600~3000~V.07~1300~2000~~2700~1000~~41000~28000~V.08~9400~3000~~6000~10"
+Barcode_Scaned str2
+str2 = "aa999692300790433   00201200000000200800~~3400~2000~V.09~7400~7000~~2900~3000~~4500~4000~V.10~14800~11000~~6700~5000~~8100~6000~V.11~9400~7000~V.12~12000~17000~~9000~8000~~3000~9000~~11000~10000~~2000~1000~~1000~2000~V.13~3000~3000~~5000~4000~~11840~18000~V.14~5630~5000~V.21~3210~6000~~3000~7000~~169700~136000~~97680~94000~~53030~52000~V.15~1000~9000~~2000~8000~~3000~7000~V.16~4000~6000~~5000~5000~V.17~6000~4000~~7000~3000~~8000~2000~V.18~9000~1000~~34"
+Barcode_Scaned str2
+str2 = "aa999692300790433   00201200000000300850~4000~~4580~3000~~44650~42000~~3980~2000~V.19~8430~6000~~2180~4000~V.20~1560~7000~V.21~4000~5000~~5300~8000~~7500~3000~~3600~2000~~8100~5000~~72020~42000~V.22~59565~39000~~4700~3000~~2000~6000~~1000~4000~~4000~5000~~2000~3000~~6000~2000~~9000~4000~~3000~3000~~5000~2000~~6000~3000~~7000~1000~~9865~3000~~12455~3000~V.23~9455~2000~~3000~1000~~169700~136000~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~Hoa Linh~22/10/2013</S></S01>"
+Barcode_Scaned str2
+str2 = "aa999692300790433   002012000000004008<S01-1><S>VI.25~30000~20000~~1000~2000~~29000~18000~VI.27~2000~3000~~27000~15000~VI.26~1000~1000~VI.28~4000~2000~~5000~3000~~6000~4000~~2000~1000~~16000~9000~~5000~2000~~3000~1000~~2000~1000~~18000~10000~VI.30~2100~300~VI.30~3800~100~~12100~9600~~2000~1000~Hoa Linh~22/10/2013</S></S01-1>"
+Barcode_Scaned str2
+str2 = "aa999692300790433   002012000000005008<S01-2><S>~1000~7000~~2000~5000~~3000~3000~~4000~2000~~5000~4000~~6000~6000~~7000~1000~~28000~28000~~1000~4000~~2000~3000~~3000~2000~~4000~8000~~5000~5000~~7000~900~~2000~2000~~"
+Barcode_Scaned str2
+str2 = "aa999692300790433   00201200000000600824000~24900~~3000~1000~~2000~2000~~5000~3000~~6000~4000~~7000~5000~~9000~6000~~32000~21000~~84000~73900~~8000~5000~~1000~2000~VII.34~93000~80900~Hoa Linh~22/10/2013</S></S01-2>"
+Barcode_Scaned str2
+str2 = "aa999692300790433   002012000000007008<S01-3><S>~12000~20000~~1000~2000~~2000~4000~~3000~5000~~4000~3000~~5000~1000~~27000~35000~~2000~4000~~7000~6000~~3000~5000~~2000~3000~~1000~9000~~8000~6000~~3000~2000~~2000~1000~~55000~71000~~1000~4000~~3000~3000~~4000~200"
+Barcode_Scaned str2
+str2 = "aa999692300790433   0020120000000080080~~7000~5000~~2000~7000~~4000~9000~~8000~8000~~29000~38000~~4000~1000~~2000~5000~~6000~9000~~9000~4000~~2000~7000~~1000~4000~~24000~30000~~108000~139000~~7000~5000~~2000~3000~~117000~147000~Hoa Linh~22/10/2013</S></S01-3>"
+Barcode_Scaned str2
 
 End Sub
 
@@ -4963,7 +4978,7 @@ On Error GoTo ErrHandle
         fldName = cfigXml.getElementsByTagName("ParamNameNNT")(0).Text
 
         'Set value config to file param NNT
-        paXmlDoc.getElementsByTagName("tin")(0).Text = strTaxIDString
+        paXmlDoc.getElementsByTagName("tin_nnt")(0).Text = strTaxIDString
 
         paXmlDoc.getElementsByTagName("VERSION")(0).Text = cfigXml.getElementsByTagName("VERSION")(0).Text
         paXmlDoc.getElementsByTagName("SENDER_CODE")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text
@@ -6376,4 +6391,103 @@ ErrHandle:
     SaveErrorLog Me.Name, "LoaiToKhai", Err.Number, Err.Description
 
     If Err.Number = -2147467259 Then MessageBox "0063", msOKOnly, miCriticalError
+End Function
+
+Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
+                                  ByVal sKyLapBo As String, _
+                                  ByVal sNgayNopTK As String) As MSXML.DOMDocument
+    Dim XmlDocStandard As New MSXML.DOMDocument
+    XmlDocStandard.Load GetAbsolutePath("..\InterfaceTemplates\xml\TempStandard.xml")
+    
+    'Doc file cau hinh lay thong tin header
+    Dim xmlConfig As MSXML.DOMDocument
+    Set xmlConfig = LoadConfig()
+    XmlDocStandard.getElementsByTagName("VERSION")(0).Text = xmlConfig.getElementsByTagName("VERSION")(0).Text
+    XmlDocStandard.getElementsByTagName("SENDER_CODE")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text
+    XmlDocStandard.getElementsByTagName("SENDER_NAME")(0).Text = xmlConfig.getElementsByTagName("SENDER_NAME")(0).Text
+    XmlDocStandard.getElementsByTagName("RECEIVER_CODE")(0).Text = xmlConfig.getElementsByTagName("RECEIVER_CODE")(0).Text
+    XmlDocStandard.getElementsByTagName("RECEIVER_NAME")(0).Text = xmlConfig.getElementsByTagName("RECEIVER_NAME")(0).Text
+    XmlDocStandard.getElementsByTagName("TRAN_CODE")(0).Text = xmlConfig.getElementsByTagName("TRAN_CODE")(0).Text
+    XmlDocStandard.getElementsByTagName("ORIGINAL_CODE")(0).Text = xmlConfig.getElementsByTagName("ORIGINAL_CODE")(0).Text
+    XmlDocStandard.getElementsByTagName("ORIGINAL_NAME")(0).Text = xmlConfig.getElementsByTagName("ORIGINAL_NAME")(0).Text
+    
+    XmlDocStandard.getElementsByTagName("MSG_ID")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow() 'GetGUID()
+    XmlDocStandard.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
+    XmlDocStandard.getElementsByTagName("ORIGINAL_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
+    
+    ' Set value tag <add_info>
+    XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = sNgayNopTK
+    XmlDocStandard.getElementsByTagName("ky_lap_bo")(0).Text = sKyLapBo
+    XmlDocStandard.getElementsByTagName("nguon_goc_tk")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text
+    XmlDocStandard.getElementsByTagName("nguoi_nhan_tk")(0).Text = strUserID & "." & xmlConfig.getElementsByTagName("CODE_OFFICE")(0).Text
+    XmlDocStandard.getElementsByTagName("ngay_nhan_tk")(0).Text = Format(DateTime.Now, "dd/MM/yyyy")
+    XmlDocStandard.getElementsByTagName("id_tkhai")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow()
+    
+    XmlDocStandard.getElementsByTagName("noi_gui")(0).Text = ""
+    XmlDocStandard.getElementsByTagName("noi_nhan")(0).Text = ""
+    
+    'Bo sung tag <QHS> cho BCTC va AC
+    'ID BCTC: 69(15_BCTC); 19(48_BCTC); 20(16_BCTC); 21(99_BCTC); 22(95_BCTC);
+    'ID AC:   64(01_TBAC); 65(01_AC); 66(BC21_AC); 67(03_TBAC); 68(BC26_AC); 91(04_TBAC);
+    Dim strID_BCTC_AC As String
+    strID_BCTC_AC = xmlConfig.getElementsByTagName("BCTC_AC")(0).Text
+
+    If (InStr(strID_BCTC_AC, GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) > 0) Then
+        
+        '       Dim newNode As MSXML.IXMLDOMNode
+        '       Set newNode = XmlDocStandard.createElement("QHS")
+        '       XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO").appendChild newNode
+        '       XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO/QHS").appendChild XmlDocStandard.createElement("PL_KQHDSXKD01")
+        'Load template QHS
+        Dim tempQHSxml As New MSXML.DOMDocument
+        tempQHSxml.Load GetAbsolutePath("..\InterfaceTemplates\xml\QHS.xml")
+        XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO").appendChild tempQHSxml.lastChild
+
+        If (XmlDocStandard.getElementsByTagName("QHS").length > 0) Then
+            Dim nodeVal      As MSXML.IXMLDOMNode
+            Dim nodeValIndex As Integer
+            
+            For nodeValIndex = 1 To TAX_Utilities_Srv_New.NodeValidity.childNodes.length
+                Set nodeVal = TAX_Utilities_Srv_New.NodeValidity.childNodes(nodeValIndex)
+
+                If (GetAttribute(nodeVal, "Active") = "1" And GetAttribute(nodeVal, "ID") = "01-10") Then
+                    'kqhd01 = True
+                    XmlDocStandard.getElementsByTagName("PL_KQHDSXKD01")(0).Text = "X"
+                End If
+
+                If (GetAttribute(nodeVal, "Active") = "1" And GetAttribute(nodeVal, "ID") = "01-11") Then
+                    'kqhd02 = True
+                    XmlDocStandard.getElementsByTagName("PL_KQHDSXKD02")(0).Text = "X"
+                End If
+
+                If (GetAttribute(nodeVal, "Active") = "1" And GetAttribute(nodeVal, "ID") = "01-12") Then
+                    'kqhd03 = True
+                    XmlDocStandard.getElementsByTagName("PL_KQHDSXKD03")(0).Text = "X"
+                End If
+
+                If (GetAttribute(nodeVal, "Active") = "1" And GetAttribute(nodeVal, "ID") = "01-2") Then
+                    'lctttt = True
+                    XmlDocStandard.getElementsByTagName("PL_LCTTTT")(0).Text = "X"
+                End If
+
+                If (GetAttribute(nodeVal, "Active") = "1" And GetAttribute(nodeVal, "ID") = "01-3") Then
+                    'lcttgt = True
+                    XmlDocStandard.getElementsByTagName("PL_LCTTGT")(0).Text = "X"
+                End If
+
+            Next
+
+        End If
+    End If
+
+    'Ket thuc bo sung <QHS>
+    
+    'End <add_info>
+
+    If (Not xmlDoc Is Nothing) Then
+        'XmlDocStandard.getElementsByTagName("ROW")(0).appendChild xmlDoc.getElementsByTagName("HSoKhaiThue")(0) 'xmlDoc.childNodes(0)
+        XmlDocStandard.getElementsByTagName("RETURN")(0).appendChild xmlDoc.lastChild
+    End If
+
+    Set AppendXMLStandard = XmlDocStandard
 End Function

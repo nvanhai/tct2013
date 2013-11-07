@@ -1607,48 +1607,76 @@ Public Function GetNgayCuoiThang(intYear As Integer, intMonth As Integer) As Dat
     GetNgayCuoiThang = ValidityDate
 End Function
 
-Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, ByVal sKyLapBo As String, ByVal sNgayNopTK As String) As MSXML.DOMDocument
-    Dim XmlDocStandard As New MSXML.DOMDocument
-    XmlDocStandard.Load GetAbsolutePath("..\InterfaceTemplates\xml\TempStandard.xml")
-    
-    'Doc file cau hinh lay thong tin header
-    Dim xmlConfig As MSXML.DOMDocument
-    Set xmlConfig = LoadConfig()
-    XmlDocStandard.getElementsByTagName("VERSION")(0).Text = xmlConfig.getElementsByTagName("VERSION")(0).Text
-    XmlDocStandard.getElementsByTagName("SENDER_CODE")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text
-    XmlDocStandard.getElementsByTagName("SENDER_NAME")(0).Text = xmlConfig.getElementsByTagName("SENDER_NAME")(0).Text
-    XmlDocStandard.getElementsByTagName("RECEIVER_CODE")(0).Text = xmlConfig.getElementsByTagName("RECEIVER_CODE")(0).Text
-    XmlDocStandard.getElementsByTagName("RECEIVER_NAME")(0).Text = xmlConfig.getElementsByTagName("RECEIVER_NAME")(0).Text
-    XmlDocStandard.getElementsByTagName("TRAN_CODE")(0).Text = xmlConfig.getElementsByTagName("TRAN_CODE")(0).Text
-    XmlDocStandard.getElementsByTagName("ORIGINAL_CODE")(0).Text = xmlConfig.getElementsByTagName("ORIGINAL_CODE")(0).Text
-    XmlDocStandard.getElementsByTagName("ORIGINAL_NAME")(0).Text = xmlConfig.getElementsByTagName("ORIGINAL_NAME")(0).Text
-    
-    XmlDocStandard.getElementsByTagName("MSG_ID")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow() 'GetGUID()
-    XmlDocStandard.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
-    XmlDocStandard.getElementsByTagName("ORIGINAL_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
-    
-    ' Set value tag <add_info>
-    XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = sNgayNopTK
-    XmlDocStandard.getElementsByTagName("ky_lap_bo")(0).Text = sKyLapBo
-    XmlDocStandard.getElementsByTagName("nguon_goc_tk")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text
-    XmlDocStandard.getElementsByTagName("nguoi_nhan_tk")(0).Text = strUserID & "." & xmlConfig.getElementsByTagName("CODE_OFFICE")(0).Text
-    XmlDocStandard.getElementsByTagName("ngay_nhan_tk")(0).Text = Format(DateTime.Now, "dd/MM/yyyy")
-    XmlDocStandard.getElementsByTagName("id_tkhai")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow()
-    XmlDocStandard.getElementsByTagName("noi_gui")(0).Text = ""
-    XmlDocStandard.getElementsByTagName("noi_nhan")(0).Text = ""
-    
-    'Bo sung tag <QHS> cho BCTC va AC
-    ' Cho xu ly
-    'Ket thuc bo sung <QHS>
-    
-    ' End <add_info>
-
-    If (Not xmlDoc Is Nothing) Then
-        'XmlDocStandard.getElementsByTagName("ROW")(0).appendChild xmlDoc.getElementsByTagName("HSoKhaiThue")(0) 'xmlDoc.childNodes(0)
-        XmlDocStandard.getElementsByTagName("RETURN")(0).appendChild xmlDoc.lastChild
-    End If
-    Set AppendXMLStandard = XmlDocStandard
-End Function
+'Public Function AppendXMLStandard(ByVal IsBCTC_AC As Boolean, ByVal xmlDoc As MSXML.DOMDocument, ByVal sKyLapBo As String, ByVal sNgayNopTK As String) As MSXML.DOMDocument
+'    Dim XmlDocStandard As New MSXML.DOMDocument
+'    XmlDocStandard.Load GetAbsolutePath("..\InterfaceTemplates\xml\TempStandard.xml")
+'
+'    'Doc file cau hinh lay thong tin header
+'    Dim xmlConfig As MSXML.DOMDocument
+'    Set xmlConfig = LoadConfig()
+'    XmlDocStandard.getElementsByTagName("VERSION")(0).Text = xmlConfig.getElementsByTagName("VERSION")(0).Text
+'    XmlDocStandard.getElementsByTagName("SENDER_CODE")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text
+'    XmlDocStandard.getElementsByTagName("SENDER_NAME")(0).Text = xmlConfig.getElementsByTagName("SENDER_NAME")(0).Text
+'    XmlDocStandard.getElementsByTagName("RECEIVER_CODE")(0).Text = xmlConfig.getElementsByTagName("RECEIVER_CODE")(0).Text
+'    XmlDocStandard.getElementsByTagName("RECEIVER_NAME")(0).Text = xmlConfig.getElementsByTagName("RECEIVER_NAME")(0).Text
+'    XmlDocStandard.getElementsByTagName("TRAN_CODE")(0).Text = xmlConfig.getElementsByTagName("TRAN_CODE")(0).Text
+'    XmlDocStandard.getElementsByTagName("ORIGINAL_CODE")(0).Text = xmlConfig.getElementsByTagName("ORIGINAL_CODE")(0).Text
+'    XmlDocStandard.getElementsByTagName("ORIGINAL_NAME")(0).Text = xmlConfig.getElementsByTagName("ORIGINAL_NAME")(0).Text
+'
+'    XmlDocStandard.getElementsByTagName("MSG_ID")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow() 'GetGUID()
+'    XmlDocStandard.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
+'    XmlDocStandard.getElementsByTagName("ORIGINAL_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
+'
+'    ' Set value tag <add_info>
+'    XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = sNgayNopTK
+'    XmlDocStandard.getElementsByTagName("ky_lap_bo")(0).Text = sKyLapBo
+'    XmlDocStandard.getElementsByTagName("nguon_goc_tk")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text
+'    XmlDocStandard.getElementsByTagName("nguoi_nhan_tk")(0).Text = strUserID & "." & xmlConfig.getElementsByTagName("CODE_OFFICE")(0).Text
+'    XmlDocStandard.getElementsByTagName("ngay_nhan_tk")(0).Text = Format(DateTime.Now, "dd/MM/yyyy")
+'    XmlDocStandard.getElementsByTagName("id_tkhai")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow()
+'
+'    XmlDocStandard.getElementsByTagName("noi_gui")(0).Text = ""
+'    XmlDocStandard.getElementsByTagName("noi_nhan")(0).Text = ""
+'
+'    'Bo sung tag <QHS> cho BCTC va AC
+'    'ID BCTC: 69(15_BCTC); 19(48_BCTC); 20(16_BCTC); 21(99_BCTC); 22(95_BCTC);
+'    'ID AC:   64(01_TBAC); 65(01_AC); 66(BC21_AC); 67(03_TBAC); 68(BC26_AC); 91(04_TBAC);
+'    If (IsBCTC_AC) Then
+'        Dim newNode As MSXML.IXMLDOMNode
+'        Set newNode = XmlDocStandard.createElement("QHS")
+'        XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO").appendChild newNode
+'        If (XmlDocStandard.getElementsByTagName("QHS").length > 0) Then
+'            XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO/QHS").appendChild XmlDocStandard.createElement("PL_KQHDXSKD01")
+'
+'            XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO/QHS").lastChild.appendChild XmlDocStandard.createTextNode("X")
+'
+'            XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO/QHS").appendChild XmlDocStandard.createElement("PL_KQHDXSKD02")
+'
+'            XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO/QHS").lastChild.appendChild XmlDocStandard.createTextNode("X")
+'
+'            XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO/QHS").appendChild XmlDocStandard.createElement("PL_KQHDXSKD03")
+'
+'            XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO/QHS").lastChild.appendChild XmlDocStandard.createTextNode("X")
+'
+'            XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO/QHS").appendChild XmlDocStandard.createElement("PL_LCTTTT")
+'
+'            XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO/QHS").lastChild.appendChild XmlDocStandard.createTextNode("X")
+'
+'            XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO/QHS").appendChild XmlDocStandard.createElement("PL_LCTTGT")
+'
+'            XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO/QHS").lastChild.appendChild XmlDocStandard.createTextNode("X")
+'        End If
+'    End If
+'    'Ket thuc bo sung <QHS>
+'
+'    'End <add_info>
+'
+'    If (Not xmlDoc Is Nothing) Then
+'        'XmlDocStandard.getElementsByTagName("ROW")(0).appendChild xmlDoc.getElementsByTagName("HSoKhaiThue")(0) 'xmlDoc.childNodes(0)
+'        XmlDocStandard.getElementsByTagName("RETURN")(0).appendChild xmlDoc.lastChild
+'    End If
+'    Set AppendXMLStandard = XmlDocStandard
+'End Function
 
 Public Function LoadConfig() As MSXML.DOMDocument
     Dim xmlConfig As New MSXML.DOMDocument
