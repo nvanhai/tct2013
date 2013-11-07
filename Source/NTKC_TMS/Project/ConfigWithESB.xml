@@ -64,5 +64,6 @@
 	<queue_name>INT.INBOX.QUEUE</queue_name>
 	
 	<!-- Cac cau hinh khac -->
-	
+	<!--ID BCTC va AC bo sung QHS -->
+	<BCTC_AC>19;20;21;22;69;64;65;66;67;68;91</BCTC_AC>
 </Config>
