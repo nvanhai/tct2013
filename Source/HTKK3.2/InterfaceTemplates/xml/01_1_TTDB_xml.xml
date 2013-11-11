@@ -1,17 +1,9 @@
 <PLuc01_TTDB>
-	<ThoiGianNopTKhaiChinh>
-		<ngayNopTKhaiChinh></ngayNopTKhaiChinh>
-		<thangNopTKhaiChinh></thangNopTKhaiChinh>
-		<namNopTKhaiChinh></namNopTKhaiChinh>
-	</ThoiGianNopTKhaiChinh>
+	<ThoiGianNopTKhaiChinh></ThoiGianNopTKhaiChinh>
 	<PLucBRaChiuThueTTDB>
 		<ChiTietPLucBRaChiuThueTTDB>
 			<PLucBRaChiuThue>
-				<ct2>
-					<khieuHDon></khieuHDon>
-					<soHDon>1</soHDon>
-					<ngayPhatHanh>1967-08-13</ngayPhatHanh>
-				</ct2>
+				<ct2>text</ct2>
 				<ct3></ct3>
 				<ct4></ct4>
 				<ct5>1</ct5>

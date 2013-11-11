@@ -1,13 +1,23 @@
-<PL05A_TNDN>
-	<ct5>1</ct5>
-	<Thue_TNDN>
-		<thueTNDN id="ID_1">
-			<ct6></ct6>
-			<ct7>0000000000</ct7>
-			<ct8></ct8>
-			<ct9>1</ct9>
-			<ct10>1</ct10>
-		</thueTNDN>
-	</Thue_TNDN>
-	<ct11>1</ct11>
-</PL05A_TNDN>
+<PL_02_1_TD_TNDN>
+	<nhomDViThuyDienPThuoc>
+		<tenDonViTDPhuThuoc></tenDonViTDPhuThuoc>
+		<tyLePhanBo>0.0</tyLePhanBo>
+		<soThueTNDNPNop>1</soThueTNDNPNop>
+		<NHAMAYDIENPHUTHUOC>
+			<chiTietNhaMayDienPThuoc>
+				<tenNMayTDien></tenNMayTDien>
+				<mstNMayTDien></mstNMayTDien>
+				<tyLePBoNMayTDien>0.0</tyLePBoNMayTDien>
+				<soThuePNopNMayTDien>1</soThuePNopNMayTDien>
+				<COQUANTHUEPSINHHOATDONGTDien>
+					<chiTietSoThueCuaTungCQT>
+						<maCQTDPhuong></maCQTDPhuong>
+						<tenCQTDPhuong></tenCQTDPhuong>
+						<tyLePBoCQTDPhuong>0.0</tyLePBoCQTDPhuong>
+						<thuePNopCQTDPhuong>1</thuePNopCQTDPhuong>
+					</chiTietSoThueCuaTungCQT>
+				</COQUANTHUEPSINHHOATDONGTDien>
+			</chiTietNhaMayDienPThuoc>
+		</NHAMAYDIENPHUTHUOC>
+	</nhomDViThuyDienPThuoc>
+</PL_02_1_TD_TNDN>
