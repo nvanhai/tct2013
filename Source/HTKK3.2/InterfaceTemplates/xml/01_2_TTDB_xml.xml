@@ -1,16 +1,12 @@
 <PLuc02_TTDB>
-	<ThoiGianNopTKhaiChinh>
-		<ngayNopTKhaiChinh></ngayNopTKhaiChinh>
-		<thangNopTKhaiChinh></thangNopTKhaiChinh>
-		<namNopTKhaiChinh></namNopTKhaiChinh>
-	</ThoiGianNopTKhaiChinh>
-	<ThueNLMVao>
+	<ThoiGianNopTKhaiChinh></ThoiGianNopTKhaiChinh>
+	<TTinThueNLMVao>
 		<ChiTietThueTTDBNLMVao>
 			<ThueNLMVao id="ID_1">
 				<BienLaiChungTuNopThueTTĐB>
 					<khieuNLMVao></khieuNLMVao>
 					<soNLMVao></soNLMVao>
-					<ngayPHanhNLMVao>1967-08-13</ngayPHanhNLMVao>
+					<ngayPHanhNLMVao></ngayPHanhNLMVao>
 				</BienLaiChungTuNopThueTTĐB>
 				<tenNLMVao></tenNLMVao>
 				<soLuongNLMVao>0.0</soLuongNLMVao>
@@ -23,8 +19,8 @@
 		<tongThueNLMVaoDNop>1</tongThueNLMVaoDNop>
 		<tongThueNLMVaoDaKTru>text</tongThueNLMVaoDaKTru>
 		<tongthueNLMVaoChuaKTru>1</tongthueNLMVaoChuaKTru>
-	</ThueNLMVao>
-	<ThueNLDuocKTru>
+	</TTinThueNLMVao>
+	<TTinThueNLDuocKTru>
 		<ChiTietThueTTDBNLDuocKTru>
 			<ThueNLDuocKTru id="ID_2">
 				<tenMatHangNLKTru></tenMatHangNLKTru>
@@ -36,5 +32,5 @@
 			</ThueNLDuocKTru>
 		</ChiTietThueTTDBNLDuocKTru>
 		<tongTTDBNLDuocKTru>text</tongTTDBNLDuocKTru>
-	</ThueNLDuocKTru>
+	</TTinThueNLDuocKTru>
 </PLuc02_TTDB>

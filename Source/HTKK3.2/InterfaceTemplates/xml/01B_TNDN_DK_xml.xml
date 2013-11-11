@@ -29,11 +29,11 @@
 					<lyDoGiaHan></lyDoGiaHan>
 				</GiaHan>
 				<nguoiKy></nguoiKy>
-				<ngayKy>1967-08-13</ngayKy>
+				<ngayKy></ngayKy>
 				<nganhNgheKD></nganhNgheKD>
 			</TKhaiThue>
 			<NNT>
-				<mst>0000000000</mst>
+				<mst></mst>
 				<tenNNT></tenNNT>
 				<dchiNNT></dchiNNT>
 				<phuongXa></phuongXa>
@@ -46,7 +46,7 @@
 				<emailNNT></emailNNT>
 			</NNT>
 			<DLyThue>
-				<mstDLyThue>0000000000</mstDLyThue>
+				<mstDLyThue></mstDLyThue>
 				<tenDLyThue></tenDLyThue>
 				<dchiDLyThue></dchiDLyThue>
 				<maHuyenDLyThue></maHuyenDLyThue>
@@ -57,7 +57,7 @@
 				<faxDLyThue></faxDLyThue>
 				<emailDLyThue></emailDLyThue>
 				<soHDongDLyThue></soHDongDLyThue>
-				<ngayKyHDDLyThue>1967-08-13</ngayKyHDDLyThue>
+				<ngayKyHDDLyThue></ngayKyHDDLyThue>
 				<NVienDLy>
 					<tenNVienDLyThue></tenNVienDLyThue>
 					<cchiHNghe></cchiHNghe>
@@ -69,7 +69,6 @@
 		<ct12></ct12>
 		<CT13>
 			<donViUyQuyen>true</donViUyQuyen>
-			<daiLyThue></daiLyThue>
 		</CT13>
 		<tenDonViUyQuyen></tenDonViUyQuyen>
 		<ct22>1</ct22>
@@ -83,10 +82,10 @@
 		<ct30>1</ct30>
 		<ct31>1</ct31>
 		<ThongTinTKhoanNganHang>
-			<ThongTinTKhoanNganHang>
+			<TKhoanNganHang>
 				<soTKhoan></soTKhoan>
 				<taiNganHang></taiNganHang>
-			</ThongTinTKhoanNganHang>
+			</TKhoanNganHang>
 		</ThongTinTKhoanNganHang>
 	</CTieuTKhaiChinh>
 	<PLuc>

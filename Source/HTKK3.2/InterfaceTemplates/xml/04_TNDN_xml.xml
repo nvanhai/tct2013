@@ -66,45 +66,24 @@
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
-		<doanhNghiepADungTSuat20>true</doanhNghiepADungTSuat20>
-		<doanhNghiepCoCSoHToanPThuoc>true</doanhNghiepCoCSoHToanPThuoc>
-		<ctA1>0</ctA1>
-		<ctB1>1</ctB1>
-		<ctB2>1</ctB2>
-		<ctB3>1</ctB3>
-		<ctB4>1</ctB4>
-		<ctB5>1</ctB5>
-		<ctB6>1</ctB6>
-		<ctB7>1</ctB7>
-		<ctB8>1</ctB8>
-		<ctB9>1</ctB9>
-		<ctB10>1</ctB10>
-		<ctB11>1</ctB11>
-		<ctB12>1</ctB12>
-		<ctB13>1</ctB13>
-		<ctB14>0</ctB14>
-		<ctC1>1</ctC1>
-		<ctC2>1</ctC2>
-		<ctC3>1</ctC3>
-		<ctC4>1</ctC4>
-		<ctC5>1</ctC5>
-		<ctC6>1</ctC6>
-		<ctC7>1</ctC7>
-		<ctC8>1</ctC8>
-		<ctC9>1</ctC9>
-		<ctC10>1</ctC10>
-		<ctC11>1</ctC11>
-		<ctC12>1</ctC12>
-		<ctD>1</ctD>
-		<ctE>1</ctE>
-		<ctE1>1</ctE1>
-		<ctE2>1</ctE2>
-		<TaiLieu_Guikem>
-			<TaiLieuGuikem id="ID_1">
-				<tenDocument></tenDocument>
-			</TaiLieuGuikem>
-		</TaiLieu_Guikem>
+		<TTinThueTNDN>
+			<thueTNDN>
+				<ct2>1</ct2>
+				<ct3>1</ct3>
+				<ct4>1</ct4>
+				<ct5>1</ct5>
+				<ct6>1</ct6>
+				<ct7>1</ct7>
+				<ct8>1</ct8>
+				<ct9>1</ct9>
+				<ct10>1</ct10>
+				<ct11>1</ct11>
+			</thueTNDN>
+		</TTinThueTNDN>
+		<tongThueDVu>1</tongThueDVu>
+		<tongThueHHoa>1</tongThueHHoa>
+		<tongThueKhac>1</tongThueKhac>
+		<tongThueTNDNPNop>1</tongThueTNDNPNop>
 	</CTieuTKhaiChinh>
-	<PLuc>
-	</PLuc>
+	<PLuc/>
 </HSoKhaiThue>

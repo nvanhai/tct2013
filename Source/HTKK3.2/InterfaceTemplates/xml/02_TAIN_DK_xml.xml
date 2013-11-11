@@ -30,11 +30,13 @@
 				</GiaHan>
 				<nguoiKy></nguoiKy>
 				<ngayKy></ngayKy>
+				<nganhNgheKD></nganhNgheKD>
 			</TKhaiThue>
 			<NNT>
 				<mst>0000000000</mst>
 				<tenNNT></tenNNT>
 				<dchiNNT></dchiNNT>
+				<phuongXa></phuongXa>
 				<maHuyenNNT></maHuyenNNT>
 				<tenHuyenNNT></tenHuyenNNT>
 				<maTinhNNT></maTinhNNT>
@@ -64,12 +66,17 @@
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
-		<LoaiDKhi>
-			<ct01>true</ct01>
-			<ct02>true</ct02>
-			<ct03>true</ct03>
-		</LoaiDKhi>
-		<ct15></ct15>
+		<LoaiDauKhi>
+			<dauTho>O_30</dauTho>
+			<condensate>P_30</condensate>
+			<khiThienNhien>Q_30</khiThienNhien>
+		</LoaiDauKhi>
+		<hopDongDKhi></hopDongDKhi>
+		<LoaiHinhUyQuyen>
+			<donViUyQuyen>true</donViUyQuyen>
+			<daiLyThue>AB_48</daiLyThue>
+		</LoaiHinhUyQuyen>
+		<tenDonViUyQuyen></tenDonViUyQuyen>
 		<ct25>1</ct25>
 		<ct26>1</ct26>
 		<ct27>1</ct27>

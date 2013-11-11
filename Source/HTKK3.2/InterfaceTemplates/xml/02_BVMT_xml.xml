@@ -30,11 +30,13 @@
 				</GiaHan>
 				<nguoiKy></nguoiKy>
 				<ngayKy></ngayKy>
+				<nganhNgheKD></nganhNgheKD>
 			</TKhaiThue>
 			<NNT>
-				<mst>0000000000</mst>
+				<mst></mst>
 				<tenNNT></tenNNT>
 				<dchiNNT></dchiNNT>
+				<phuongXa></phuongXa>
 				<maHuyenNNT></maHuyenNNT>
 				<tenHuyenNNT></tenHuyenNNT>
 				<maTinhNNT></maTinhNNT>
@@ -44,7 +46,7 @@
 				<emailNNT></emailNNT>
 			</NNT>
 			<DLyThue>
-				<mstDLyThue>0000000000</mstDLyThue>
+				<mstDLyThue></mstDLyThue>
 				<tenDLyThue></tenDLyThue>
 				<dchiDLyThue></dchiDLyThue>
 				<maHuyenDLyThue></maHuyenDLyThue>
@@ -66,7 +68,7 @@
 	<CTieuTKhaiChinh>
 		<KhoangSan>
 			<KSCSTuKhaiThac>
-				<KhoangSan>
+				<TTinKhoangSan>
 					<NoiDungKS id="ID_1">
 						<maKSan></maKSan>
 						<donViTinh></donViTinh>
@@ -75,12 +77,12 @@
 						<phiPhaiNopTrongKy>1</phiPhaiNopTrongKy>
 						<phiDaKeKhaiTrongKy>1</phiDaKeKhaiTrongKy>
 					</NoiDungKS>
-				</KhoangSan>
+				</TTinKhoangSan>
 				<tongPhiPhaiNopTrongKyI>1</tongPhiPhaiNopTrongKyI>
 				<tongPhiDaKeKhaiTrongKyI>1</tongPhiDaKeKhaiTrongKyI>
 			</KSCSTuKhaiThac>
 			<KSCSThuMua>
-				<KhoangSan>
+				<TTinKhoangSan>
 					<NoiDungKS id="ID_2">
 						<maKSan></maKSan>
 						<donViTinh></donViTinh>
@@ -89,7 +91,7 @@
 						<phiPhaiNopTrongKy>1</phiPhaiNopTrongKy>
 						<phiDaKeKhaiTrongKy>1</phiDaKeKhaiTrongKy>
 					</NoiDungKS>
-				</KhoangSan>
+				</TTinKhoangSan>
 				<tongPhiPhaiNopTrongKyII>1</tongPhiPhaiNopTrongKyII>
 				<tongPhiDaKeKhaiTrongKyII>1</tongPhiDaKeKhaiTrongKyII>
 			</KSCSThuMua>
