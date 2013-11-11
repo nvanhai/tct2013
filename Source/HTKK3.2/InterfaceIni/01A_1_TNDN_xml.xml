@@ -2,7 +2,7 @@
 	<Static GroupName="PL05A_TNDN">
 		<ct5>F_7</ct5>
 	</Static>
-	<Dynamic GroupName="ThueTNDN">
+	<Dynamic GroupName="TTinThueTNDN">
 		<thueTNDN id="ID_1">
 			<ct6>D_35</ct6>
 			<ct7>F_35</ct7>

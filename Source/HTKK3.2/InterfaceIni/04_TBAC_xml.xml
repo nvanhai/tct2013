@@ -1,0 +1,83 @@
+<HSoKhaiThue>
+	<Static GroupName="TTinDVu">
+		<maDVu/>
+		<tenDVu/>
+		<pbanDVu/>
+		<ttinNhaCCapDVu/>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<maTKhai/>
+		<tenTKhai/>
+		<moTaBMau/>
+		<pbanTKhaiXML/>
+	</Static>
+	<Static GroupName="KyKKhaiThue">
+		<kyKKhai/>
+		<kyKKhaiTuNgay/>
+		<kyKKhaiDenNgay/>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<maCQTNoiNop/>
+		<tenCQTNoiNop/>
+		<ngayLapTKhai/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy/>
+		<ngayKy/>
+		<nganhNgheKD/>
+	</Static>
+	<Static GroupName="NNT">
+		<mst/>
+		<tenNNT/>
+		<dchiNNT/>
+		<phuongXa/>
+		<maHuyenNNT/>
+		<tenHuyenNNT/>
+		<maTinhNNT/>
+		<tenTinhNNT/>
+		<dthoaiNNT/>
+		<faxNNT/>
+		<emailNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<mstDLyThue/>
+		<tenDLyThue/>
+		<dchiDLyThue/>
+		<maHuyenDLyThue/>
+		<tenHuyenDLyThue/>
+		<maTinhDLyThue/>
+		<tenTinhDLyThue/>
+		<dthoaiDLyThue/>
+		<faxDLyThue/>
+		<emailDLyThue/>
+		<soHDongDLyThue/>
+		<ngayKyHDDLyThue/>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue/>
+		<cchiHNghe/>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ngayTBaoPHanhHDon>F_30</ngayTBaoPHanhHDon>
+	</Static>
+	<Dynamic GroupName="TTinThayDoi">
+		<ChiTietTTinThayDoi id="id">
+			<thongTinThayDoi>C_35</thongTinThayDoi>
+			<thongTinCu>D_35</thongTinCu>
+			<thongTinMoi>M_35</thongTinMoi>
+		</ChiTietTTinThayDoi>
+	</Dynamic>
+	<Static GroupName="TTinDonViChuQuan">
+		<tenDViChuQuan>F_40</tenDViChuQuan>
+		<mstDViChuQuan>F_42</mstDViChuQuan>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tenCQTTiepNhanTBao>K_44</tenCQTTiepNhanTBao>
+		<ngayThongBao>Q_47</ngayThongBao>
+		<nguoiDaiDien>Q_49</nguoiDaiDien>
+	</Static>
+</HSoKhaiThue>

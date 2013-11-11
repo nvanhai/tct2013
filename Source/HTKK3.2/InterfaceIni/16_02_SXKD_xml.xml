@@ -1,4 +1,4 @@
-<PL_KQHĐXSKD>
+<PL_KQHDXSKD>
 	<Static GroupName="ThuyetMinh">
 		<ct1_tMinh>H_9</ct1_tMinh>
 		<ct2_tMinh>H_10</ct2_tMinh>
@@ -50,28 +50,28 @@
 		<ctXV_nNay>I_31</ctXV_nNay>
 	</Static>
 	<Static GroupName="SoNamNgoai">
-		<ct1_nNay>J_9</ct1_nNay>
-		<ct2_nNay>J_10</ct2_nNay>
-		<ctI_nNay>J_11</ctI_nNay>
-		<ct3_nNay>J_12</ct3_nNay>
-		<ct4_nNay>J_13</ct4_nNay>
-		<ctII_nNay>J_14</ctII_nNay>
-		<ctIII_nNay>J_15</ctIII_nNay>
-		<ctIV_nNay>J_16</ctIV_nNay>
-		<ctV_nNay>J_17</ctV_nNay>
-		<ct5_nNay>J_18</ct5_nNay>
-		<ct6_nNay>J_19</ct6_nNay>
-		<ctVI_nNay>J_20</ctVI_nNay>
-		<ctVII_nNay>J_21</ctVII_nNay>
-		<ctVIII_nNay>J_22</ctVIII_nNay>
-		<ctIX_nNay>J_23</ctIX_nNay>
-		<ctX_nNay>J_24</ctX_nNay>
-		<ctXI_nNay>J_25</ctXI_nNay>
-		<ct7_nNay>J_26</ct7_nNay>
-		<ct8_nNay>J_27</ct8_nNay>
-		<ctXII_nNay>J_28</ctXII_nNay>
-		<ctXIII_nNay>J_29</ctXIII_nNay>
-		<ctXIV_nNay>J_30</ctXIV_nNay>
-		<ctXV_nNay>J_31</ctXV_nNay>
+		<ct1_nNgoai>J_9</ct1_nNgoai>
+		<ct2_nNgoai>J_10</ct2_nNgoai>
+		<ctI_nNgoai>J_11</ctI_nNgoai>
+		<ct3_nNgoai>J_12</ct3_nNgoai>
+		<ct4_nNgoai>J_13</ct4_nNgoai>
+		<ctII_nNgoai>J_14</ctII_nNgoai>
+		<ctIII_nNgoai>J_15</ctIII_nNgoai>
+		<ctIV_nNgoai>J_16</ctIV_nNgoai>
+		<ctV_nNgoai>J_17</ctV_nNgoai>
+		<ct5_nNgoai>J_18</ct5_nNgoai>
+		<ct6_nNgoai>J_19</ct6_nNgoai>
+		<ctVI_nNgoai>J_20</ctVI_nNgoai>
+		<ctVII_nNgoai>J_21</ctVII_nNgoai>
+		<ctVIII_nNgoai>J_22</ctVIII_nNgoai>
+		<ctIX_nNgoai>J_23</ctIX_nNgoai>
+		<ctX_nNgoai>J_24</ctX_nNgoai>
+		<ctXI_nNgoai>J_25</ctXI_nNgoai>
+		<ct7_nNgoai>J_26</ct7_nNgoai>
+		<ct8_nNgoai>J_27</ct8_nNgoai>
+		<ctXII_nNgoai>J_28</ctXII_nNgoai>
+		<ctXIII_nNgoai>J_29</ctXIII_nNgoai>
+		<ctXIV_nNgoai>J_30</ctXIV_nNgoai>
+		<ctXV_nNgoai>J_31</ctXV_nNgoai>
 	</Static>
-</PL_KQHĐXSKD>
+</PL_KQHDXSKD>

@@ -23,8 +23,8 @@
 		<ct15>H_15</ct15>
 	</Static>
 	<Static GroupName="KSanCoSoThuMuaNopThay">
-		<tongPhiPhaiNop>Q_43</tongPhiPhaiNop>
-		<tongPhiDaKeKhai>U_43</tongPhiDaKeKhai>
+		<tongPhiPhaiNop>U_43</tongPhiPhaiNop>
+		<tongPhiDaKeKhai>Q_43</tongPhiDaKeKhai>
 	</Static>
 	<Dynamic GroupName="KSanCoSoThuMuaNopThay" Level="2">
 		<KhoangSan id="ID_2">
