@@ -17,12 +17,16 @@
 		<maTinhDLyThue/>
 	</Static>
 	<Static GroupName="LoaiDKhi">
-		<ct01>X_4</ct01>
-		<ct02>AH_4</ct02>
-		<ct03>AS_4</ct03>
+			<dauTho>O_30</dauTho>
+			<condensate>P_30</condensate>
+			<khiThienNhien>Q_30</khiThienNhien>
+	</Static>
+	<Static GroupName="LoaiHinhUyQuyen">
+		<donViUyQuyen>AB_48</donViUyQuyen>
+		<daiLyThue>AB_48</daiLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct15>P_47</ct15>
+		<tenDonViUyQuyen>P_36</tenDonViUyQuyen>
 		<ct25>AV_53</ct25>
 		<ct26>AV_54</ct26>
 		<ct27>AV_55</ct27>
@@ -37,6 +41,8 @@
 		<ct34>AV_64</ct34>
 		<ct35>AV_65</ct35>
 		<ct36>AV_66</ct36>
+		<ct37>AV_67</ct37>
+		<ct38>AV_68</ct38>
 		<mucLuc/>
 		<tieuMucThu/>
 	</Static>

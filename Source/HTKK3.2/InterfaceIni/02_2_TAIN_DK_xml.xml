@@ -1,9 +1,4 @@
 <PL_02_1TAIN_DK>
-	<Static GroupName="LoaiDKhi">
-		<ct01>P_2</ct01>
-		<ct02>Z_2</ct02>
-		<ct03>AK_2</ct03>
-	</Static>
 	<Dynamic GroupName="SLuongDThu">
 		<bangKKhai id="id">
 			<donViTinh>D_27</donViTinh>
@@ -17,7 +12,7 @@
 		</bangKKhai>
 	</Dynamic>
 	<Static GroupName="SLuongDThuXBan">
-		<tongCot6>Y_29</tongCot6>
-		<tongCot8>AJ_29</tongCot8>
+		<tongSanLuongXBan>Y_29</tongSanLuongXBan>
+		<tongDoanhThuXBan>AJ_29</tongDoanhThuXBan>
 	</Static>
 </PL_02_1TAIN_DK>

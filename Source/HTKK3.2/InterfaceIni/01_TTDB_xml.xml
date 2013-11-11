@@ -61,32 +61,33 @@
 	</Static>
 	<Dynamic GroupName="HHXuatKhau">
 		<NDungHHoaKhongThue id="id">
-			<tenHHoa>G_47</tenHHoa>
-			<donVTinh>P_47</donVTinh>
-			<sanLuongTThu>S_47</sanLuongTThu>
-			<dSoBanChuaThue>V_47</dSoBanChuaThue>
+			<ct2>G_47</ct2>
+			<ct3>P_47</ct3>
+			<ct4>S_47</ct4>
+			<ct5>V_47</ct5>
 		</NDungHHoaKhongThue>
 	</Dynamic>
 	<Dynamic GroupName="HHBanDeXuatKhau">
 		<NDungHHoaKhongThue id="id">
-			<tenHHoa>G_51</tenHHoa>
-			<donVTinh>P_51</donVTinh>
-			<sanLuongTThu>S_51</sanLuongTThu>
-			<dSoBanChuaThue>V_51</dSoBanChuaThue>
+			<ct2>G_51</ct2>
+			<ct3>P_51</ct3>
+			<ct4>S_51</ct4>
+			<ct5>V_51</ct5>
 		</NDungHHoaKhongThue>
 	</Dynamic>
 	<Dynamic GroupName="HHGiaCongXuatKhau">
 		<NDungHHoaKhongThue id="id">
-			<tenHHoa>G_55</tenHHoa>
-			<donVTinh>P_55</donVTinh>
-			<sanLuongTThu>S_55</sanLuongTThu>
-			<dSoBanChuaThue>V_55</dSoBanChuaThue>
+			<ct2>G_55</ct2>
+			<ct3>P_55</ct3>
+			<ct4>S_55</ct4>
+			<ct5>V_55</ct5>
 		</NDungHHoaKhongThue>
 	</Dynamic>
 	<Static GroupName="BangChiTietThueTTĐB">
 		<tongDSoBanChuaThue>V_57</tongDSoBanChuaThue>
 		<tongGiaThue>AA_57</tongGiaThue>
 		<tongThueKTru>AG_57</tongThueKTru>
+		<tongThueKTruKyTruoc></tongThueKTruKyTruoc>
 		<tongThuePNop>AN_57</tongThuePNop>
 	</Static>
 	<Static GroupName="TKhaiThue">
