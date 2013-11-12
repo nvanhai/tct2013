@@ -484,12 +484,12 @@ Public Function InsertHDR_TGTC(ByRef hdr As TNCN_HDR) As String
     
     
    sSQLCol = "INSERT INTO tmp_tncn_hdr (id,tin, ten_dtnt, dia_chi, loai_tkhai, ngay_nop, kylb_tu_ng, kylb_den_n, kykk_tu_ng, kykk_den_n, ngay_cap_n,"
-    sSQLCol = sSQLCol + " nguoi_cn, co_loi_dda, so_hieu_te, so_tt_tk, da_nhan, ghi_chu_lo, khoa_so, phong_xly, kkbs, tthtk, kylbo, kykkhai, ma_cqt, thueondinh,Ma_dl_thue,So_hd_dl,Ngay_hd_dl,Lan_bs) "
+    sSQLCol = sSQLCol + " nguoi_cn, co_loi_dda, so_hieu_te, so_tt_tk, da_nhan, ghi_chu_lo, khoa_so, phong_xly, kkbs, tthtk, kylbo, kykkhai, ma_cqt, thueondinh,Ma_dl_thue,So_hd_dl,Ngay_hd_dl,Lan_bs,Loai_kykk) "
     sSQLCol = sSQLCol + " values ("
 
     sSQLVal = hdr.Id & "," & hdr.Tin & "," & hdr.ten_dtnt & "," & hdr.DIA_CHI & "," & hdr.loai_tkhai & "," & hdr.Ngay_nop & "," & kyLB_tu_ngay & "," & _
     kyLB_den_ngay & "," & kykk_tu_ngay & "," & kykk_den_ngay & "," & hdr.ngay_cap_nhat & "," & hdr.Nguoi_cn & "," & hdr.co_loi_dda & "," & _
-    hdr.so_hieu_tep & "," & hdr.So_tt_tk & "," & hdr.DA_NHAN & "," & hdr.ghi_chu_loi & "," & hdr.khoa_so & "," & hdr.Phong_xly & "," & hdr.kkbs & "," & hdr.TTHTK & "," & hdr.KYLBO & "," & hdr.KYKKHAI & "," & hdr.MA_CQT & "," & hdr.thueondinh & "," & hdr.Ma_dl_thue & "," & hdr.So_hd_dl & "," & hdr.Ngay_hd_dl & "," & hdr.Lan_bs
+    hdr.so_hieu_tep & "," & hdr.So_tt_tk & "," & hdr.DA_NHAN & "," & hdr.ghi_chu_loi & "," & hdr.khoa_so & "," & hdr.Phong_xly & "," & hdr.kkbs & "," & hdr.TTHTK & "," & hdr.KYLBO & "," & hdr.kykkhai & "," & hdr.MA_CQT & "," & hdr.thueondinh & "," & hdr.ma_dl_thue & "," & hdr.so_hd_dl & "," & hdr.ngay_hd_dl & "," & hdr.lan_bs & ",'" & hdr.loai_kykk & "'"
     
     
     sSQL = sSQLCol & sSQLVal & " )"
@@ -506,8 +506,8 @@ Public Function InsertDTL_TGTC(ByRef dtl As TNCN_DTL) As String
     sSQLCol = "INSERT INTO tmp_tncn_dtl (id, hdr_id,matkhai, madtnt, kylbo, kykkhai, tthtk, ngnop, cttn, giatri, danhan, lan_quet, ky_hieu, ma_cqt) "
     sSQLCol = sSQLCol + " values ("
 
-    sSQLVal = dtl.Id & "," & dtl.Hdr_id & "," & dtl.MATKHAI & "," & dtl.MADTNT & "," & dtl.KYLBO & "," & dtl.KYKKHAI & "," & dtl.TTHTK & "," & dtl.NGNOP & "," & _
-    dtl.CTTN & "," & dtl.GIATRI & "," & dtl.DANHAN & "," & dtl.LAN_QUET & "," & dtl.ky_hieu & "," & dtl.MA_CQT
+    sSQLVal = dtl.Id & "," & dtl.hdr_id & "," & dtl.MATKHAI & "," & dtl.MADTNT & "," & dtl.KYLBO & "," & dtl.KYKKHAI & "," & dtl.TTHTK & "," & dtl.NGNOP & "," & _
+    dtl.CTTN & "," & dtl.GIATRI & "," & dtl.DANHAN & "," & dtl.LAN_QUET & "," & dtl.ky_hieu & "," & dtl.ma_cqt
     
     sSQL = sSQLCol & sSQLVal & " )"
     
@@ -758,9 +758,9 @@ Public Function InsertHDR_TGTC_08(ByRef hdr As TNCN_HDR, kKKhaiTuNgay As Variant
     sSQLCol = sSQLCol + " nguoi_cn, co_loi_dda, so_hieu_te, so_tt_tk, da_nhan, ghi_chu_lo, khoa_so, phong_xly, kkbs, tthtk, kylbo, kykkhai, ma_cqt, thueondinh,Ma_dl_thue,So_hd_dl,Ngay_hd_dl,Lan_bs,TU_NGAY,DEN_NGAY,NN_KD,TK_LAN_PS) "
     sSQLCol = sSQLCol + " values ("
 
-    sSQLVal = hdr.Id & "," & hdr.Tin & "," & hdr.ten_dtnt & "," & hdr.DIA_CHI & "," & hdr.loai_tkhai & "," & hdr.Ngay_nop & "," & kyLB_tu_ngay & "," & _
-    kyLB_den_ngay & "," & kykk_tu_ngay & "," & kykk_den_ngay & "," & hdr.ngay_cap_nhat & "," & hdr.Nguoi_cn & "," & hdr.co_loi_dda & "," & _
-    hdr.so_hieu_tep & "," & hdr.So_tt_tk & "," & hdr.DA_NHAN & "," & hdr.ghi_chu_loi & "," & hdr.khoa_so & "," & hdr.Phong_xly & "," & hdr.kkbs & "," & hdr.TTHTK & "," & hdr.KYLBO & "," & hdr.KYKKHAI & "," & hdr.MA_CQT & "," & hdr.thueondinh & "," & hdr.Ma_dl_thue & "," & hdr.So_hd_dl & "," & hdr.Ngay_hd_dl & "," & hdr.Lan_bs & "," & TU_NGAY & "," & DEN_NGAY & "," & NN_KD & "," & TK_LAN_PS
+    sSQLVal = hdr.ID & "," & hdr.tin & "," & hdr.ten_dtnt & "," & hdr.DIA_CHI & "," & hdr.loai_tkhai & "," & hdr.ngay_nop & "," & kyLB_tu_ngay & "," & _
+    kyLB_den_ngay & "," & kykk_tu_ngay & "," & kykk_den_ngay & "," & hdr.ngay_cap_nhat & "," & hdr.nguoi_cn & "," & hdr.co_loi_dda & "," & _
+    hdr.so_hieu_tep & "," & hdr.so_tt_tk & "," & hdr.DA_NHAN & "," & hdr.ghi_chu_loi & "," & hdr.khoa_so & "," & hdr.phong_xly & "," & hdr.kkbs & "," & hdr.TTHTK & "," & hdr.KYLBO & "," & hdr.KYKKHAI & "," & hdr.ma_cqt & "," & hdr.thueondinh & "," & hdr.ma_dl_thue & "," & hdr.so_hd_dl & "," & hdr.ngay_hd_dl & "," & hdr.lan_bs & "," & TU_NGAY & "," & DEN_NGAY & "," & NN_KD & "," & TK_LAN_PS
 
 
     sSQL = sSQLCol & sSQLVal & " )"

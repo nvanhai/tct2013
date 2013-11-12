@@ -572,7 +572,7 @@ Public Function InsertDTL() As String
     With fps
    
         .Sheet = 1
-        matkhai = "'07/TNCN11'"
+        matkhai = "'07_TNCN11'"
         .GetText .ColLetterToNumber("G"), 8, madtnt
 
         If Trim(madtnt) = vbNullString Then
@@ -1278,7 +1278,7 @@ Public Function InsertHDR() As String
    Dim TTHTK1 As Variant
    Dim LANDAU As Variant
    Dim strThuNhapOnDinh As Variant
-   
+   Dim Loai_Ky_KK As Variant
    
    'pit
    
@@ -1400,7 +1400,7 @@ Public Function InsertHDR() As String
             LanBS = "0"
          End If
         
-         matkhai = "'07/TNCN11'"
+         matkhai = "'07_TNCN11'"
         
          LOAITIEN = "''"
          DANHAN = "'T'"   ' To khai khong chuyen sang VAT
@@ -1434,6 +1434,8 @@ Public Function InsertHDR() As String
         Else
              .GetText .ColLetterToNumber("I"), 67, LanBS
         End If
+        
+        .GetText .ColLetterToNumber("AB"), 42, Loai_Ky_KK
          
     End With
         
@@ -1458,7 +1460,6 @@ Public Function InsertHDR() As String
         hdr.ghi_chu_loi = "''"
         hdr.khoa_so = "''"
         hdr.loai_tkhai = "'07_TNCN11'"
-        hdr.kieu_ky = "M"
         If tthtk = "1" Then
             hdr.kkbs = 0    ' To khai chinh thuc
         ElseIf tthtk = "2" Then
@@ -1492,11 +1493,17 @@ Public Function InsertHDR() As String
         
         
 
-        hdr.Ma_dl_thue = "'" & MADLT & "'"
-        hdr.So_hd_dl = "'" & SOHDDL & "'"
-        hdr.Ngay_hd_dl = NGAYHDDL
-        hdr.Lan_bs = LanBS
-        
+        hdr.ma_dl_thue = "'" & MADLT & "'"
+        hdr.so_hd_dl = "'" & SOHDDL & "'"
+        hdr.ngay_hd_dl = NGAYHDDL
+        hdr.lan_bs = LanBS
+        If Loai_Ky_KK = "1" Then
+            hdr.kieu_ky = "Q"
+            hdr.loai_kykk = "Q"
+        Else
+            hdr.kieu_ky = "M"
+            hdr.loai_kykk = "T"
+        End If
         
         sSQLTemp = InsertHDR_TGTC(hdr)
         bln = clsDAO.ExecuteDLL(sSQLTemp)

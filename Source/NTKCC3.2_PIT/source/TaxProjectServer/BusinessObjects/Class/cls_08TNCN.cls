@@ -910,6 +910,27 @@ Public Function InsertDTL() As String
             
             bln = clsDAO.ExecuteDLL(sSQL)
     '---------------------------------------------------------------------
+        
+            'set theo CT33
+            
+            CTTN = "'020'"
+            tt = "'14'"
+
+            'get GT
+            .GetText .ColLetterToNumber("R"), 59, giatri
+            
+            If giatri = vbNullString Then
+                giatri = "0"
+            End If
+            
+            giatri2 = giatri
+            
+            sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & "," & CTTN
+            sSQLVal = sSQLVal & "," & giatri & "," & tt & "," & giatri2 & "," & MaMuc & "," & maTM & "," & DA_NHAN & "," & LAN_QUET
+        
+            sSQL = "INSERT INTO TMP_C08" & Right$(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+            
+            bln = clsDAO.ExecuteDLL(sSQL)
             
         End If
      End With

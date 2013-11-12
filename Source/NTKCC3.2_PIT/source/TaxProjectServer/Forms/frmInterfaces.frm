@@ -769,7 +769,7 @@ Private Sub cmdSave_Click()
 
     ' chi kiem tra validate cho cac mau an chi
     ' Kiem tra ngay nop khong duoc lon hon ngay quet
-    If Val(menuId) >= 64 And Val(menuId) <= 68 Then
+    If (Val(menuId) >= 64 And Val(menuId) <= 68) Or Val(menuId) = 91 Then
         If CheckValidData = False Then
             MessageBox "0136", msOKOnly, miWarning
             Exit Sub
@@ -797,13 +797,13 @@ Private Sub cmdSave_Click()
             varTemp = .Value
         End With
         ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2012 thi thong bao khong duoc gia han nop thue
-        If Val(TAX_Utilities_Svr_New.Year) = "2012" And (Val(TAX_Utilities_Svr_New.Month) = "4" Or Val(TAX_Utilities_Svr_New.Month) = "5" Or Val(TAX_Utilities_Svr_New.Month) = "6") Then
-        Else
-            If Val(varTemp) = 1 Then
-                MessageBox "0160", msOKOnly, miInformation
-                Exit Sub
-            End If
-        End If
+'        If Val(TAX_Utilities_Svr_New.Year) = "2012" And (Val(TAX_Utilities_Svr_New.Month) = "4" Or Val(TAX_Utilities_Svr_New.Month) = "5" Or Val(TAX_Utilities_Svr_New.Month) = "6") Then
+'        Else
+'            If Val(varTemp) = 1 Then
+'                MessageBox "0160", msOKOnly, miInformation
+'                Exit Sub
+'            End If
+'        End If
     End If
     
     'End
@@ -847,9 +847,9 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("E"), 30, vKYLBO
         ElseIf menuId = 12 Or menuId = 77 Then
             .GetText .ColLetterToNumber("E"), 30, vKYLBO
-            'dntai 12/05/2011
-            'lay VKYLBO cho truong to an chi 01/AC
-        ElseIf menuId >= 64 And menuId <= 68 Then
+        'dntai 12/05/2011
+        'lay VKYLBO cho truong to an chi 01/AC
+        ElseIf (menuId >= 64 And menuId <= 68) Or menuId = 91 Then
             vKYLBO = Month(Date) & "/" & Year(Date)
         
         Else
@@ -890,7 +890,7 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("E"), 32, vNgayNop
         ElseIf menuId = 8 Then
             .GetText .ColLetterToNumber("I"), 11, vNgayNop
-        ElseIf menuId = 64 Or menuId = 65 Or menuId = 68 Then
+        ElseIf menuId = 64 Or menuId = 65 Or menuId = 68 Or menuId = 91 Then
             .GetText .ColLetterToNumber("E"), 10, vNgayNop
         ElseIf menuId = 81 Or menuId = 80 Or menuId = 82 Or menuId = 89 Then
             .GetText .ColLetterToNumber("E"), 32, vNgayNop
@@ -960,7 +960,6 @@ Private Sub cmdSave_Click()
                 clsDAO.Disconnect
                 Exit Sub
             ElseIf Year(vNGAY_DAU_KYLBO) = Year(Now) Then
-
                 If Month(vNGAY_DAU_KYLBO) > Month(Now) Then
                     DisplayMessage "0151", msOKOnly, miCriticalError
                     clsDAO.Disconnect
@@ -991,7 +990,7 @@ Private Sub cmdSave_Click()
 
             Else
 
-                If TAX_Utilities_Svr_New.isCheckPIT = False Then
+                If TAX_Utilities_Svr_New.isCheckPIT = False And menuId <> 91 Then
                     If (TAX_Utilities_Svr_New.Month <> vbNullString) And (TAX_Utilities_Svr_New.Month <> "") Then
                         If (Month(vNGAY_DAU_KYLBO) = Int(TAX_Utilities_Svr_New.Month)) And (Year(vNGAY_DAU_KYLBO) = TAX_Utilities_Svr_New.Year) Then
                             DisplayMessage "0120", msOKOnly, miCriticalError
@@ -1021,7 +1020,7 @@ Private Sub cmdSave_Click()
         'dhdang edit
         
         '        If GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ID") <> "11" And GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ID") <> "12" And GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ID") <> "03" Then
-        If TAX_Utilities_Svr_New.Month <> vbNullString Or TAX_Utilities_Svr_New.Month <> "" Then
+        If (TAX_Utilities_Svr_New.Month <> vbNullString Or TAX_Utilities_Svr_New.Month <> "") And LoaiKyKK = False Then
             vTHANG_CUOI_KYKK = "01/" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year
         ElseIf TAX_Utilities_Svr_New.ThreeMonths <> vbNullString Or TAX_Utilities_Svr_New.ThreeMonths <> "" Then
             vTHANG_CUOI_KYKK = "01/" & GetLastMonthOfThreeMonth(TAX_Utilities_Svr_New.ThreeMonths) & "/" & TAX_Utilities_Svr_New.Year
@@ -1141,7 +1140,6 @@ Private Sub cmdSave_Click()
 
         ' Ngay quet
         .Sheet = 1
-
         If menuId = 8 Then  '01_TAIN, 03_TAIN
             .GetText .ColLetterToNumber("T"), 11, vNGAYQUET
         ElseIf menuId = 9 Then ' 02_TAIN
@@ -1184,6 +1182,8 @@ Private Sub cmdSave_Click()
         ElseIf menuId = 65 Then ' 01_AC
             .GetText .ColLetterToNumber("K"), 12, vNGAYQUET
         ElseIf menuId = 64 Then
+            .GetText .ColLetterToNumber("K"), 12, vNGAYQUET
+        ElseIf menuId = 91 Then
             .GetText .ColLetterToNumber("K"), 12, vNGAYQUET
         ElseIf menuId = 67 Then
             .GetText .ColLetterToNumber("N"), 14, vNGAYQUET
@@ -1386,7 +1386,7 @@ Private Sub cmdSave_Click()
 
     If frmSystem.chkSaveQHS = True Then
         'dntai 13/01/2012 khong ghi cac to an chi vao QHS
-        If menuId < 64 Or menuId > 68 Then
+        If (menuId < 64 Or menuId > 68) And menuId <> 91 Then
             Insert_QHS
         End If
         
@@ -1878,7 +1878,7 @@ On Error GoTo ErrHandle
             varBuff = MSComm1.Input
             lByte = varBuff
             For i = 0 To UBound(lByte)
-                If Chr$(lByte(i)) <> "" Then
+                If Chr$(lByte(i)) <> "#" Then
                     strTemp = strTemp & Chr$(lByte(i))
                 Else
                     Barcode_Scaned TAX_Utilities_Svr_New.Convert(strTemp, TCVN, UNICODE)
@@ -1936,8 +1936,8 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 Exit Sub
                 End If
         ElseIf Val(Left$(strBarcode, 3)) < 300 Then         'vttoan: sua chi nhan nhung version 300 tro len
-                If Val(Mid$(strBarcode, 4, 2)) = 1 Or Val(Mid$(strBarcode, 4, 2)) = 2 Or Val(Mid$(strBarcode, 4, 2)) = 4 Or Val(Mid$(strBarcode, 4, 2)) = 11 Or Val(Mid$(strBarcode, 4, 2)) = 12 Or Val(Mid$(strBarcode, 4, 2)) = 6 Or Val(Mid$(strBarcode, 4, 2)) = 5 _
-                Or Val(Mid$(strBarcode, 4, 2)) = 15 Or Val(Mid$(strBarcode, 4, 2)) = 16 Or Val(Mid$(strBarcode, 4, 2)) = 50 Or Val(Mid$(strBarcode, 4, 2)) = 51 Or Val(Mid$(strBarcode, 4, 2)) = 36 Or Val(Mid$(strBarcode, 4, 2)) = 70 Or Val(Mid$(strBarcode, 4, 2)) = 8 Then
+
+            If Val(Mid$(strBarcode, 4, 2)) = 1 Or Val(Mid$(strBarcode, 4, 2)) = 2 Or Val(Mid$(strBarcode, 4, 2)) = 4 Or Val(Mid$(strBarcode, 4, 2)) = 11 Or Val(Mid$(strBarcode, 4, 2)) = 12 Or Val(Mid$(strBarcode, 4, 2)) = 6 Or Val(Mid$(strBarcode, 4, 2)) = 5 Or Val(Mid$(strBarcode, 4, 2)) = 15 Or Val(Mid$(strBarcode, 4, 2)) = 16 Or Val(Mid$(strBarcode, 4, 2)) = 50 Or Val(Mid$(strBarcode, 4, 2)) = 51 Or Val(Mid$(strBarcode, 4, 2)) = 36 Or Val(Mid$(strBarcode, 4, 2)) = 70 Or Val(Mid$(strBarcode, 4, 2)) = 8 Then
                 DisplayMessage "0140", msOKOnly, miCriticalError
                 Exit Sub
                 End If
@@ -1948,7 +1948,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
             End If
         'chan doi voi cac to an chi
         ElseIf Val(Left$(strBarcode, 3)) < 302 Then
-            If Val(Mid$(strBarcode, 4, 2)) = 64 Or Val(Mid$(strBarcode, 4, 2)) = 65 Or Val(Mid$(strBarcode, 4, 2)) = 66 Or Val(Mid$(strBarcode, 4, 2)) = 67 Or Val(Mid$(strBarcode, 4, 2)) = 68 Then
+            If Val(Mid$(strBarcode, 4, 2)) = 64 Or Val(Mid$(strBarcode, 4, 2)) = 65 Or Val(Mid$(strBarcode, 4, 2)) = 66 Or Val(Mid$(strBarcode, 4, 2)) = 67 Or Val(Mid$(strBarcode, 4, 2)) = 68 Or Val(Mid$(strBarcode, 4, 2)) = 91 Then
                 DisplayMessage "0159", msOKOnly, miCriticalError
                 Exit Sub
             End If
@@ -2000,8 +2000,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
         If (Left$(strPrefix, 3) = "250") Or (Left$(strPrefix, 3) = "210") Then
             idToKhai = Mid(strPrefix, 4, 2)
             ' Neu la to khai 02AB/TNCN, 03AB/TNCN  thang bat dau tu thang 2/2010 se ko nhan to khai nua
-            If (Trim(idToKhai) = "53" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "37" And Val(Mid(strPrefix, 21, 4)) > 2009) _
-                Or (Trim(idToKhai) = "54" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "38" And Val(Mid(strPrefix, 21, 4)) > 2009) Then
+            If (Trim(idToKhai) = "53" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "37" And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "54" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "38" And Val(Mid(strPrefix, 21, 4)) > 2009) Then
                 DisplayMessage "0115", msOKOnly, miInformation
                 Exit Sub
             End If
@@ -2063,6 +2062,36 @@ Private Sub Barcode_Scaned(strBarcode As String)
             
             
             If IsCompleteData(strData) Then
+                Dim tmp As String
+
+                ' Check version <= 3.1.6
+                If Val(Left$(strData, 3)) <= 316 Then
+                    If Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "04" Or Mid$(strData, 4, 2) = "71" Or Mid$(strData, 4, 2) = "36" Then
+                        If Val(idToKhai) <> 36 Then
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
+                            strData = tmp & "~0" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
+                        Else
+                            strData = Left$(strData, Len(strData) - 10) & "~0" & Right$(strData, 10)
+                        End If
+
+                    ElseIf Mid$(strData, 4, 2) = "68" Then
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
+                            strData = tmp & "~1" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
+                    ElseIf Mid$(strData, 4, 2) = "73" Then
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S02>", vbTextCompare) - 5)
+                            strData = tmp & "~" & Right$(strData, Len(strData) - InStr(1, strData, "</S02>", vbTextCompare) + 5)
+                    End If
+                End If
+
+                If Val(idToKhai) = 1 Or Val(idToKhai) = 2 Or Val(idToKhai) = 4 Or Val(idToKhai) = 71 Or Val(idToKhai) = 36 Or Val(idToKhai) = 68 Then
+                    If Val(idToKhai) = 36 Then
+                        LoaiKyKK = LoaiToKhai(strData)
+                    Else
+                        tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
+                        LoaiKyKK = LoaiToKhai(tmp)
+                    End If
+                End If
+
                 lblLoading.Visible = False
                 lblConnecting.Visible = True
                 frmInterfaces.Refresh
@@ -2184,7 +2213,7 @@ Private Sub GetCells(xmlSectionTemplate As MSXML.IXMLDOMNode, arrStrValue() As S
     While lCtrl <= UBound(arrStrValue) And Not xmlSectionTemplate.selectNodes("Cells/Cell")(lCtrl2) Is Nothing
         If GetAttribute(xmlSectionTemplate.selectNodes("Cells/Cell")(lCtrl2), "Receive") <> "0" Then
             SetAttribute xmlSectionTemplate.selectNodes("Cells/Cell")(lCtrl2), "Value", _
-                Replace(Replace(arrStrValue(lCtrl), "1" & Chr$(20) & Chr$(20) & "1", ""), Chr$(20), "~")
+                Replace(Replace(arrStrValue(lCtrl), "1" & Chr$(20) & Chr$(20) & "1", "#"), Chr$(20), "~")
         Else
             lCtrl = lCtrl - 1
         End If
@@ -2621,14 +2650,29 @@ End Sub
 'Return:
 '****************************
 Private Sub SetPeriod(ByVal strValue As String)
+    Dim TkID As String
 
-On Error GoTo ErrHandle
+    On Error GoTo ErrHandle
+    TkID = Left$(strTaxReportInfo, 2)
+
     If GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Month") = "1" Then
-        TAX_Utilities_Svr_New.Month = Left$(strValue, 2)
-        TAX_Utilities_Svr_New.ThreeMonths = ""
+        If TkID = "01" Or TkID = "02" Or TkID = "04" Or TkID = "71" Or TkID = "36" Or TkID = "68" Then
+            TAX_Utilities_Svr_New.Month = Left$(strValue, 2)
+            TAX_Utilities_Svr_New.ThreeMonths = Left$(strValue, 2)
+        Else
+            TAX_Utilities_Svr_New.Month = Left$(strValue, 2)
+            TAX_Utilities_Svr_New.ThreeMonths = ""
+        End If
     ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ThreeMonth") = 1 Then
+
+        If TkID = "68" Then
+            TAX_Utilities_Svr_New.Month = Left$(strValue, 2)
+        Else
+            TAX_Utilities_Svr_New.Month = ""
+
+        End If
+
         TAX_Utilities_Svr_New.ThreeMonths = Left$(strValue, 2)
-        TAX_Utilities_Svr_New.Month = ""
     End If
     
     TAX_Utilities_Svr_New.Year = Right$(strValue, 4)
@@ -2653,78 +2697,77 @@ End Sub
 '        false if the otherwise
 '****************************
 'Private Function InitParameters(ByVal strData As String, ByRef rsTaxInfor As ADODB.Recordset) As Boolean
-Private Function InitParameters(ByVal strData As String, _
-                                arrStrHeaderData() As String) As Boolean
+Private Function InitParameters(ByVal strData As String, arrStrHeaderData() As String) As Boolean
 
-    'ThanhDX modified
-    'Date: 10/04/06
-    Dim strTaxID             As String, strID As String
-    Dim blnConnected         As Boolean
-    Dim strValidDate         As String, strTempDate As String
-    Dim rsParams             As ADODB.Recordset
-    Dim strPhongXuLy         As String
-    Dim rsTaxInfor           As ADODB.Recordset
-    Dim strTaxID_DLT         As String
+'ThanhDX modified
+'Date: 10/04/06
+    Dim strTaxID As String, strID As String
+    Dim blnConnected As Boolean
+    Dim strValidDate As String, strTempDate As String
+    Dim rsParams As ADODB.Recordset
+    Dim strPhongXuLy As String
+    Dim rsTaxInfor As ADODB.Recordset
+    Dim strTaxID_DLT As String
     Dim strTaxReportInfo_DLT As String
-    On Error GoTo ErrHandle
+On Error GoTo ErrHandle
     
     TAX_Utilities_Svr_New.Month = ""
     TAX_Utilities_Svr_New.ThreeMonths = ""
     TAX_Utilities_Svr_New.Year = ""
     TAX_Utilities_Svr_New.FinanceStartDate = ""
     
-    '    If Left$(strData, 1) = "0" Then
-    '        strTaxReportVersion = "1.1.0"
-    '        lblVersion.caption = "1.1.0"
-    ''**********************************
+'    If Left$(strData, 1) = "0" Then
+'        strTaxReportVersion = "1.1.0"
+'        lblVersion.caption = "1.1.0"
+''**********************************
     
-    '    If Left$(strData, 3) = "120" Then
-    '        lblVersion.caption = "1.2.0"
-    '        strTaxReportVersion = Left$(strData, 3)
-    '        strData = Mid$(strData, 4)
-    '    ElseIf Left$(strData, 3) = "130" Then
-    '    'Version 1.3.0
-    '        'Get version of application
-    '        lblVersion.caption = "1.3.0"
-    '        strTaxReportVersion = Left$(strData, 3)
-    '        strData = Mid$(strData, 4)
-    '    ElseIf Left$(strData, 3) = "131" Then
-    '    'Version 1.3.1
-    '        'Get version of application
-    '        lblVersion.caption = "1.3.1"
-    '        strTaxReportVersion = Left$(strData, 3)
-    '        strData = Mid$(strData, 4)
-    '    ElseIf Left$(strData, 3) = "200" Then
-    '    'Version 2.0.0
-    '        'Get version of application
-    '        lblVersion.caption = "2.0.0"
-    '        strTaxReportVersion = Left$(strData, 3)
-    '        strData = Mid$(strData, 4)
-    '    ElseIf Left$(strData, 3) = "210" Then
-    '    'Version 2.1.0
-    '        'Get version of application
-    '        lblVersion.caption = "2.1.0"
-    '        strTaxReportVersion = Left$(strData, 3)
-    '        strData = Mid$(strData, 4)
-    '    ElseIf Left$(strData, 3) = "250" Then
-    '    'Version 2.1.0
-    '        'Get version of application
-    '        lblVersion.caption = "2.5.0"
-    '        strTaxReportVersion = Left$(strData, 3)
-    '        strData = Mid$(strData, 4)
-    '    ElseIf Left$(strData, 3) = "252" Then
-    '        'Version 2.1.0
-    '        'Get version of application
-    '        lblVersion.caption = "2.5.2"
-    '        strTaxReportVersion = Left$(strData, 3)
-    '        strData = Mid$(strData, 4)
-    '    Else
-    '        'Version 2.5.3
-    '        'Get version of application
-    '        lblVersion.caption = "2.5.3"
-    '        strTaxReportVersion = Left$(strData, 3)
-    '        strData = Mid$(strData, 4)
-    '    End If
+'    If Left$(strData, 3) = "120" Then
+'        lblVersion.caption = "1.2.0"
+'        strTaxReportVersion = Left$(strData, 3)
+'        strData = Mid$(strData, 4)
+'    ElseIf Left$(strData, 3) = "130" Then
+'    'Version 1.3.0
+'        'Get version of application
+'        lblVersion.caption = "1.3.0"
+'        strTaxReportVersion = Left$(strData, 3)
+'        strData = Mid$(strData, 4)
+'    ElseIf Left$(strData, 3) = "131" Then
+'    'Version 1.3.1
+'        'Get version of application
+'        lblVersion.caption = "1.3.1"
+'        strTaxReportVersion = Left$(strData, 3)
+'        strData = Mid$(strData, 4)
+'    ElseIf Left$(strData, 3) = "200" Then
+'    'Version 2.0.0
+'        'Get version of application
+'        lblVersion.caption = "2.0.0"
+'        strTaxReportVersion = Left$(strData, 3)
+'        strData = Mid$(strData, 4)
+'    ElseIf Left$(strData, 3) = "210" Then
+'    'Version 2.1.0
+'        'Get version of application
+'        lblVersion.caption = "2.1.0"
+'        strTaxReportVersion = Left$(strData, 3)
+'        strData = Mid$(strData, 4)
+'    ElseIf Left$(strData, 3) = "250" Then
+'    'Version 2.1.0
+'        'Get version of application
+'        lblVersion.caption = "2.5.0"
+'        strTaxReportVersion = Left$(strData, 3)
+'        strData = Mid$(strData, 4)
+'    ElseIf Left$(strData, 3) = "252" Then
+'        'Version 2.1.0
+'        'Get version of application
+'        lblVersion.caption = "2.5.2"
+'        strTaxReportVersion = Left$(strData, 3)
+'        strData = Mid$(strData, 4)
+'    Else
+'        'Version 2.5.3
+'        'Get version of application
+'        lblVersion.caption = "2.5.3"
+'        strTaxReportVersion = Left$(strData, 3)
+'        strData = Mid$(strData, 4)
+'    End If
 
     ' 17122010 - sua lai doan lay version cua ung dung in ma vach
     strTaxReportVersion = Left$(strData, 3)
@@ -2735,35 +2778,35 @@ Private Function InitParameters(ByVal strData As String, _
     'Get info of barcode string --25 characters
     strTaxReportInfo = Left$(strData, 21)
     
-    '    If xmlSQL.url = "" Then
-    '        xmlSQL.Load App.path & "\SQL.xml"
-    '    End If
-    '
+'    If xmlSQL.url = "" Then
+'        xmlSQL.Load App.path & "\SQL.xml"
+'    End If
+'
     'Get Tax id
     strTaxID = Trim(Mid$(strTaxReportInfo, 3, 13))
-    'htphuong sua bo dau gach ngang 13 so
-    '    If Len(strTaxID) = 13 Then
-    '        strTaxID = Mid$(strTaxID, 1, 10) & "%" & Mid$(strTaxID, 11, 13)
-    '    End If
+'htphuong sua bo dau gach ngang 13 so
+'    If Len(strTaxID) = 13 Then
+'        strTaxID = Mid$(strTaxID, 1, 10) & "%" & Mid$(strTaxID, 11, 13)
+'    End If
     
     'Connect DB and get informations
     Set rsTaxInfor = GetTaxInfo(strTaxID, blnConnected)
     
-    'Connect DB fail
-    If Not blnConnected Then Exit Function
+     'Connect DB fail
+    If Not blnConnected Then _
+        Exit Function
     strMST = strTaxID
   
-    'vttoan: lay mst Dai Ly thue
+   'vttoan: lay mst Dai Ly thue
     strID = Left$(strTaxReportInfo, 2)
-
-    If strID = 80 Then
+   If strID = 80 Then
         strTaxReportInfo_DLT = Left$(strData, 78)
-    Else
+   Else
         strTaxReportInfo_DLT = Left$(strData, 58)
-    End If
+   End If
     
-    strTaxID_DLT = Mid(strData, InStr(1, strData, "<S>") + 3, InStr(1, strData, "</S>") - InStr(1, strData, "<S>") - 3)
-    strMST_DLT = strTaxID_DLT
+       strTaxID_DLT = Mid(strData, InStr(1, strData, "<S>") + 3, InStr(1, strData, "</S>") - InStr(1, strData, "<S>") - 3)
+       strMST_DLT = strTaxID_DLT
    
     If InStr(1, strData, "<S") < 35 Then
         iNgayTaiChinh = 0
@@ -2790,68 +2833,53 @@ Private Function InitParameters(ByVal strData As String, _
         TAX_Utilities_Svr_New.FirstDay = Mid$(strData, 37, 10)
         TAX_Utilities_Svr_New.LastDay = Mid$(strData, 47, 10)
     End If
-
-    '*******************************
-    '*******************************
-    'ThanhDX added
-    'Date: 16/02/2006
+'*******************************
+'*******************************
+'ThanhDX added
+'Date: 16/02/2006
     'Danh sach to khai can kiem tra ngay bat dau nam tai chinh
     On Error GoTo ThamSoErrHandle
     
     'Set rsParams = clsDAO.Execute("select gia_tri from rcv_thamso where ten ='LOAI_TK_TAICHINH'")
     
     On Error GoTo ErrHandle
-    
-    Dim strIDBCTC As String
-    strIDBCTC = GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ID")
-    
-    If Val(strIDBCTC) = 95 Or Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Or Val(strIDBCTC) = 68 Then
-        If Val(strIDBCTC) = 36 Then
-            LoaiKyKK = LoaiToKhai(strData)
-        Else
-            Dim tmp As String
-            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
-            LoaiKyKK = LoaiToKhai(tmp)
-        End If
-    End If
-
     'Kiem tra ngay bat dau nam tai chinh doi voi cac loai to
     '   khai co kiem tra ngay bat dau nam tai chinh
-    '    If InStr(1, "," & rsParams.Fields(0) & ",", "," & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ID") & ",") <> 0 Then
-    '        If Not IsNull(rsTaxInfor.Fields("ngay_tchinh")) Then
-    '            If Mid$(rsTaxInfor("ngay_tchinh"), 1, 5) <> Mid$(strTempDate, 1, 5) Then
-    '                DisplayMessage "0065", msOKOnly, miCriticalError
-    '                Exit Function
-    '            End If
-    '            'Kiem tra ngay bat dau kinh doanh
-    '        Else 'Trong DB chua co gia tri ngay bat dau kinh doanh
-    '            DisplayMessage "0066", msOKOnly, miCriticalError
-    '            Exit Function
-    '        End If
-    '    End If
-    '    'To khai ke khai tu ngay ... den ngay ...
-    '    If GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "FinanceYear") = "1" Then
-    '        If IsNull(rsTaxInfor("ngay_kdoanh")) Then
-    '            'Trong DB chua co gia tri ngay bat dau kinh doanh
-    '            DisplayMessage "0067", msOKOnly, miCriticalError
-    '            Exit Function
-    '        Else
-    '            If GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Day") = "1" Then
-    '                If Mid$(rsTaxInfor("ngay_kdoanh"), 1, 5) <> Mid$(TAX_Utilities_Svr_New.FirstDay, 1, 5) _
-    '                   And Mid$(rsTaxInfor("ngay_tchinh"), 1, 5) <> Mid$(TAX_Utilities_Svr_New.FirstDay, 1, 5) Then
-    '                   'Tu ngay phai bang ngay bat dau nam tai chinh
-    '                   '    hoac ngay bat dau kinh doanh
-    '                    DisplayMessage "0068", msOKOnly, miCriticalError
-    '                    Exit Function
-    '                End If
-    '                'Ky ke khai lon hon ngay bat dau kinh doanh
-    '                If CInt(Mid$(rsTaxInfor("ngay_kdoanh"), 7, 4)) > CInt(Mid$(TAX_Utilities_Svr_New.FirstDay, 7, 4)) Then
-    '                    DisplayMessage "0069", msOKOnly, miCriticalError
-    '                    Exit Function
-    '                End If
-    '            End If
-    '        End If
-    '    End If
+'    If InStr(1, "," & rsParams.Fields(0) & ",", "," & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ID") & ",") <> 0 Then
+'        If Not IsNull(rsTaxInfor.Fields("ngay_tchinh")) Then
+'            If Mid$(rsTaxInfor("ngay_tchinh"), 1, 5) <> Mid$(strTempDate, 1, 5) Then
+'                DisplayMessage "0065", msOKOnly, miCriticalError
+'                Exit Function
+'            End If
+'            'Kiem tra ngay bat dau kinh doanh
+'        Else 'Trong DB chua co gia tri ngay bat dau kinh doanh
+'            DisplayMessage "0066", msOKOnly, miCriticalError
+'            Exit Function
+'        End If
+'    End If
+'    'To khai ke khai tu ngay ... den ngay ...
+'    If GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "FinanceYear") = "1" Then
+'        If IsNull(rsTaxInfor("ngay_kdoanh")) Then
+'            'Trong DB chua co gia tri ngay bat dau kinh doanh
+'            DisplayMessage "0067", msOKOnly, miCriticalError
+'            Exit Function
+'        Else
+'            If GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Day") = "1" Then
+'                If Mid$(rsTaxInfor("ngay_kdoanh"), 1, 5) <> Mid$(TAX_Utilities_Svr_New.FirstDay, 1, 5) _
+'                   And Mid$(rsTaxInfor("ngay_tchinh"), 1, 5) <> Mid$(TAX_Utilities_Svr_New.FirstDay, 1, 5) Then
+'                   'Tu ngay phai bang ngay bat dau nam tai chinh
+'                   '    hoac ngay bat dau kinh doanh
+'                    DisplayMessage "0068", msOKOnly, miCriticalError
+'                    Exit Function
+'                End If
+'                'Ky ke khai lon hon ngay bat dau kinh doanh
+'                If CInt(Mid$(rsTaxInfor("ngay_kdoanh"), 7, 4)) > CInt(Mid$(TAX_Utilities_Svr_New.FirstDay, 7, 4)) Then
+'                    DisplayMessage "0069", msOKOnly, miCriticalError
+'                    Exit Function
+'                End If
+'            End If
+'        End If
+'    End If
     
     'Kiem tra cach thuc tinh ky ke khai la tinh theo
     ' nam duong lich hay nam tai chinh
@@ -2868,7 +2896,7 @@ Private Function InitParameters(ByVal strData As String, _
         dNgayCuoiKy = DateAdd("m", 1, dNgayDauKy)
         dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
 
-        If Val(strIDBCTC) = 95 Or Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Or Val(strIDBCTC) = 68 Then
+        If Val(strID) = 1 Or Val(strID) = 2 Or Val(strID) = 4 Or Val(strID) = 71 Or Val(strID) = 36 Or Val(strID) = 68 Or Val(strID) = 95 Then
             If LoaiKyKK = True Then
                 dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_Svr_New.ThreeMonths), CInt(TAX_Utilities_Svr_New.Year), iNgayTaiChinh, iThangTaiChinh)
                 dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
@@ -2879,7 +2907,7 @@ Private Function InitParameters(ByVal strData As String, _
 
     ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ThreeMonth") = "1" Then
 
-        If Val(strIDBCTC) = 68 And LoaiKyKK = False Then
+        If Val(strID) = 68 And LoaiKyKK = False Then
             dNgayDauKy = DateSerial(CInt(TAX_Utilities_Svr_New.Year), CInt(TAX_Utilities_Svr_New.Month), 1)
             dNgayCuoiKy = DateAdd("m", 1, dNgayDauKy)
             dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
@@ -3282,7 +3310,7 @@ On Error GoTo ErrHandle
 '    --------------------------
 'lay thong tin ve dai ly thue
 'bo qua cac to an chi
-    If Val(LoaiTk1) <> 64 And Val(LoaiTk1) <> 65 And Val(LoaiTk1) <> 66 And Val(LoaiTk1) <> 67 And Val(LoaiTk1) <> 68 Then
+    If Val(LoaiTk1) <> 64 And Val(LoaiTk1) <> 65 And Val(LoaiTk1) <> 66 And Val(LoaiTk1) <> 67 And Val(LoaiTk1) <> 68 And Val(LoaiTk1) <> 91 Then
         If getTTDLT = False Then
                 If MessageBox("0141", msYesNo, miQuestion) = mrNo Then
                         Exit Function
@@ -3327,7 +3355,7 @@ On Error GoTo ErrHandle
         
         ' An chi
         LoaiTk1 = Mid(strData, 4, 2)
-        If Val(LoaiTk1) >= 64 And Val(LoaiTk1) <= 68 Then
+        If (Val(LoaiTk1) >= 64 And Val(LoaiTk1) <= 68) Or Val(LoaiTk1) = 91 Then
                objTaxBusiness.strSoTTTKhai = getSoTTTK_AC(changeMaToKhai(LoaiTk1), arrStrHeaderData, strData)
                objTaxBusiness.isTKTonTai = isTonTaiAC
                objTaxBusiness.strMaBPQL = strMaPhongQuanLy
@@ -4763,107 +4791,120 @@ Private Function Prepare_QLT() As String
             NGAYNOP_PRINT = NGNOP ' Ngay nop hien thi tren man hinh in BB nop cham (dhdang sua)
         End If
             
-        If (Trim(TAX_Utilities_Svr_New.Month) <> vbNullString Or Trim(TAX_Utilities_Svr_New.Month) <> "") And (Trim(TAX_Utilities_Svr_New.ThreeMonths) = vbNullString Or Trim(TAX_Utilities_Svr_New.ThreeMonths) = "") Then
-            KYKKHAI = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
-            Tinhkykekkhaithang (Mid$(KYKKHAI, 2, 7))
-        ElseIf (Trim(TAX_Utilities_Svr_New.Month) = vbNullString Or Trim(TAX_Utilities_Svr_New.Month) = "") And (Trim(TAX_Utilities_Svr_New.ThreeMonths) <> vbNullString Or Trim(TAX_Utilities_Svr_New.ThreeMonths) <> "") Then
-            KYKKHAI = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
-            Tinhkykekkhaiquy (Mid$(KYKKHAI, 2, 7))
+        If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "68" Then
+            If LoaiKyKK = False Then
+                KYKKHAI = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+                Tinhkykekkhaithang (Mid$(KYKKHAI, 2, 7))
+            Else
+                KYKKHAI = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
+                Tinhkykekkhaiquy (Mid$(KYKKHAI, 2, 7))
+            End If
+            
         Else
-            KYKK_TU_NGAY = "01/01/" & TAX_Utilities_Svr_New.Year
-            KYKK_TU_NGAY_F = "01/01/" & TAX_Utilities_Svr_New.Year
-            KYKK_DEN_NGAY = "12/31/" & TAX_Utilities_Svr_New.Year
+            If (Trim(TAX_Utilities_Svr_New.Month) <> vbNullString Or Trim(TAX_Utilities_Svr_New.Month) <> "") And (Trim(TAX_Utilities_Svr_New.ThreeMonths) = vbNullString Or Trim(TAX_Utilities_Svr_New.ThreeMonths) = "") Then
+                KYKKHAI = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+                Tinhkykekkhaithang (Mid$(KYKKHAI, 2, 7))
+            ElseIf (Trim(TAX_Utilities_Svr_New.Month) = vbNullString Or Trim(TAX_Utilities_Svr_New.Month) = "") And (Trim(TAX_Utilities_Svr_New.ThreeMonths) <> vbNullString Or Trim(TAX_Utilities_Svr_New.ThreeMonths) <> "") Then
+                KYKKHAI = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
+                Tinhkykekkhaiquy (Mid$(KYKKHAI, 2, 7))
+            Else
+                KYKK_TU_NGAY = "01/01/" & TAX_Utilities_Svr_New.Year
+                KYKK_TU_NGAY_F = "01/01/" & TAX_Utilities_Svr_New.Year
+                KYKK_DEN_NGAY = "12/31/" & TAX_Utilities_Svr_New.Year
         End If
 
+        End If
         'TAX_Utilities_Svr_New.ThreeMonths
         
-        'NGNHAN = Date
+        
+       'NGNHAN = Date
         NGAY_NHAN = GetNgayNhap
         NGAY_XL = NGAY_NHAN
         NGAY_HEN = NGAY_XL
-        '        If Trim(NGAY_NHAN) = vbNullString Then
-        '            NGAY_NHAN = "CTOD('')"
-        '        Else
-        '            'NGAY_NHAN = ToDate(Trim(NGAY_NHAN), DDMMYYYY)
-        '            NGAY_NHAN = "CTOD('" & format(NGAY_NHAN, "mm/dd/yyyy") & "')"
-        '        End If
+'        If Trim(NGAY_NHAN) = vbNullString Then
+'            NGAY_NHAN = "CTOD('')"
+'        Else
+'            'NGAY_NHAN = ToDate(Trim(NGAY_NHAN), DDMMYYYY)
+'            NGAY_NHAN = "CTOD('" & format(NGAY_NHAN, "mm/dd/yyyy") & "')"
+'        End If
 
         'dhdang xu ly lay ma phong xu ly tren Form
         'ngay 05-08-2010
         If Not objTaxBusiness Is Nothing Then
-            'Get Params
+        'Get Params
             PHONG_XL_X = objTaxBusiness.PHONG_XU_LY_X1
             PHONG_XL_Y = objTaxBusiness.PHONG_XU_LY_Y1
         End If
-
         If PHONG_XL_X <> "" And PHONG_XL_Y <> "" Then
             .GetText .ColLetterToNumber(PHONG_XL_X), PHONG_XL_Y, PHONG_XL
-
             If PHONG_XL <> vbNullString Then
                 PHONG_XL = Mid(PHONG_XL, InStr(1, PHONG_XL, "{") + 1, InStr(1, PHONG_XL, "}") - InStr(1, PHONG_XL, "{") - 1)
             End If
-
         Else
             PHONG_XL = ""
         End If
-
-        Dim F As String
-        F = "F"
-        HTHUC_NOP = "02"
-        'Trang thai ho so chinh thuc bo xung
+         Dim F As String
+         F = "F"
+         HTHUC_NOP = "02"
+         'Trang thai ho so chinh thuc bo xung
          
-        strSQL = "Select top 1 SO_HOSO from QHSCC.dbo.QHS_SO_HOSO where TTHAI_HOSO <> '02' and DHS_MA = '" + DHS_MA + "'and TIN = '" + MST + "' and KYKK_TU_NGAY = '" + KYKK_TU_NGAY + "' order by ID desc"
-
-        If clsDAO.Connected = False Then
+         
+            strSQL = "Select top 1 SO_HOSO from QHSCC.dbo.QHS_SO_HOSO where TTHAI_HOSO <> '02' and DHS_MA = '" + DHS_MA + "'and TIN = '" + MST + "' and KYKK_TU_NGAY = '" + KYKK_TU_NGAY + "' order by ID desc"
+            If clsDAO.Connected = False Then
             clsDAO.Connect
-        End If
-
-        Set rs = clsDAO.Execute(strSQL)
-
-        If Not rs Is Nothing Then
-           
-            SO_HOSO_BSUNG = rs(0)
-            .GetText .ColLetterToNumber("O"), 2, BSUNG
-
-            If Trim(BSUNG) = "[X]" Then
-                TRANG_THAI = "02"
-                strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & format(NGAY_XL, "mm/dd/yyyy") & "' where ID = '" & rs(0) & "'"
-                bln = clsDAO.ExecuteDLL(strSQL)
-            Else
-                TRANG_THAI = "03"
-                strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & format(NGAY_XL, "mm/dd/yyyy") & "' where ID = '" & rs(0) & "'"
-                bln = clsDAO.ExecuteDLL(strSQL)
             End If
-
-            'ssss = hannop()
-            'ssss = Mid$(ssss, 4, 2) + "/" + Mid$(ssss, 1, 2) + "/" + Mid$(ssss, 7, 4)
-            'If (NGNOP > CDate(ssss)) Then
-            '    TRANG_THAI = "02"
-            '    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & NGAY_XL & "' where ID = '" & rs(0) & "'"
-            '    bln = clsDAO.ExecuteDLL(strSQL)
-            'Else
+            Set rs = clsDAO.Execute(strSQL)
+            If Not rs Is Nothing Then
+           
+                 SO_HOSO_BSUNG = rs(0)
+                 If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "71" Then
+                    .GetText .ColLetterToNumber("M"), 6, BSUNG
+                 ElseIf ID_TK = "04" Then
+                    .GetText .ColLetterToNumber("L"), 6, BSUNG
+                 ElseIf ID_TK = "72" Then
+                    .GetText .ColLetterToNumber("J"), 5, BSUNG
+                 Else
+                    .GetText .ColLetterToNumber("O"), 2, BSUNG
+                 End If
+                 If Trim(BSUNG) = "X" Then
+                    TRANG_THAI = "01"
+                    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & format(NGAY_XL, "mm/dd/yyyy") & "' where ID = '" & rs(0) & "'"
+                    bln = clsDAO.ExecuteDLL(strSQL)
+                 Else
+                    TRANG_THAI = "02"
+                    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & format(NGAY_XL, "mm/dd/yyyy") & "' where ID = '" & rs(0) & "'"
+                    bln = clsDAO.ExecuteDLL(strSQL)
+                 End If
+                'ssss = hannop()
+                'ssss = Mid$(ssss, 4, 2) + "/" + Mid$(ssss, 1, 2) + "/" + Mid$(ssss, 7, 4)
+                'If (NGNOP > CDate(ssss)) Then
+                '    TRANG_THAI = "02"
+                '    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & NGAY_XL & "' where ID = '" & rs(0) & "'"
+                '    bln = clsDAO.ExecuteDLL(strSQL)
+                'Else
                     
-            'End If
+                'End If
       
-            '                If CTHUC = "1" And BSUNG = "" Then
-            '                    TRANG_THAI = "03"
-            '                    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & NGAY_XL & "' where ID = '" & rs(0) & "'"
-            '                    bln = clsDAO.ExecuteDLL(strSQL)
-            '                ElseIf CTHUC = "" And BSUNG = "1" Then
-            '                    TRANG_THAI = "02"
-            '                    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & NGAY_XL & "' where ID = '" & rs(0) & "'"
-            '                    bln = clsDAO.ExecuteDLL(strSQL)
-            '                Else
-            '                    TRANG_THAI = "03"
-            '                    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & NGAY_XL & "' where ID = '" & rs(0) & "'"
-            '                    bln = clsDAO.ExecuteDLL(strSQL)
-            '                End If
-        Else
-            TRANG_THAI = "01"
-        End If
+'                If CTHUC = "1" And BSUNG = "" Then
+'                    TRANG_THAI = "03"
+'                    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & NGAY_XL & "' where ID = '" & rs(0) & "'"
+'                    bln = clsDAO.ExecuteDLL(strSQL)
+'                ElseIf CTHUC = "" And BSUNG = "1" Then
+'                    TRANG_THAI = "02"
+'                    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & NGAY_XL & "' where ID = '" & rs(0) & "'"
+'                    bln = clsDAO.ExecuteDLL(strSQL)
+'                Else
+'                    TRANG_THAI = "03"
+'                    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & NGAY_XL & "' where ID = '" & rs(0) & "'"
+'                    bln = clsDAO.ExecuteDLL(strSQL)
+'                End If
+            Else
+                    TRANG_THAI = "01"
+            End If
+         
+         
          
         strSQL = "Select top 1 SO_TEP from QHSCC.dbo.QHS_SO_HOSO where SO_HIEU_TEP = '' and DHS_MA = '" + DHS_MA + "' and HTHUC_NOP = '02' and NGUOI_NHAP = '" + USER + "' order by ID desc"
-
         If clsDAO.Connected = False Then
             clsDAO.Connect
         End If
@@ -4888,37 +4929,50 @@ Private Function Prepare_QLT() As String
         'bln = clsDAO.ExecuteDLL(sSQL)
         
         'dhdang
-        'in bien ban phat nop cham
-        'ngay 20/09
-        '-----------------------------------------------------------
+    'in bien ban phat nop cham
+    'ngay 20/09
+    '-----------------------------------------------------------
         Dim kieukykk As String
-
-        If GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Month") = "1" Then
-            kieukykk = "M"
-        ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ThreeMonth") = "1" Then
-            kieukykk = "Q"
-        ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Year") = "1" Then
-            kieukykk = "Y"
+        If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "68" Then
+            If LoaiKyKK = False Then
+                kieukykk = "M"
+            Else
+                kieukykk = "Q"
+            End If
         Else
-            kieukykk = "Y"
+            If GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Month") = "1" Then
+                kieukykk = "M"
+            ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ThreeMonth") = "1" Then
+                kieukykk = "Q"
+            ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Year") = "1" Then
+                kieukykk = "Y"
+            Else
+                kieukykk = "Y"
+            End If
         End If
         
         If CheckThanhTraKiemTra(MST_PRINT, TinhLoaiThue(DHS_MA), KYKK_TU_NGAY_F, KYKK_DEN_NGAY) = True Then
-            '            If MessageBox("0130", msYesNo, miQuestion) = mrYes Then
-            '                    frmInBienBanPhatNopCham.Show 1
-            '            End If
+'            If MessageBox("0130", msYesNo, miQuestion) = mrYes Then
+'                    frmInBienBanPhatNopCham.Show 1
+'            End If
             MessageBox "0132", msOKOnly, miWarning
             Exit Function
         End If
             
-        If KiemTraNopCham(KYKK_TU_NGAY_F, kieukykk, NGNOP_S) = True Then
+       Dim TK_PS As Variant
+     
+       If ID_TK = "73" Then
+            .GetText .ColLetterToNumber("Q"), 49, TK_PS
+       End If
+            
+        If KiemTraNopCham(KYKK_TU_NGAY_F, kieukykk, NGNOP_S) = True And TK_PS <> "1" Then
             If MessageBox("0130", msYesNo, miQuestion) = mrYes Then
-                frmInBienBanPhatNopCham.Show 1
+                    frmInBienBanPhatNopCham.Show 1
             End If
         End If
-
         '--------------------------------------
     End With
+     
      
     Prepare_QLT = sSQL
     'clsDAO.Disconnect
@@ -5053,15 +5107,13 @@ Private Function SinhSoHoSo(DHS_MA) As String
 End Function
 
 Private Function changeToKhaiQHS(strMaToKhai) As String
-    Dim DHS_MA     As String
-    Dim strSQL     As String
-    Dim tkPhatSinh As Variant
+Dim DHS_MA As String
+Dim strSQL As String
+Dim tkPhatSinh As Variant
 
     menuId = GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ID")
-
-    With fpSpread1
+     With fpSpread1
         .Sheet = 1
-
         If menuId = 70 Then
             .GetText .ColLetterToNumber("AD"), 3, tkPhatSinh
         End If
@@ -5078,34 +5130,30 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
 
     On Error Resume Next
     
-    Select Case strMaToKhai
-
-        Case "48"
-            DHS_MA = "425"
-
-        Case "46"
-            DHS_MA = "423"
-
-        Case "47"
-            DHS_MA = "424"
-
-        Case "49"
-            DHS_MA = "426"
-
-        Case "14"
-            DHS_MA = "173"
-
-        Case "07"
-            DHS_MA = "33"
-
-        Case "03"
-            DHS_MA = "31"
-
-        Case "08"
-            DHS_MA = "80"
-
-        Case "04"
-            DHS_MA = "17"
+         Select Case strMaToKhai
+            Case "48"
+                 DHS_MA = "425"
+            Case "46"
+                 DHS_MA = "423"
+            Case "47"
+                 DHS_MA = "424"
+            Case "49"
+                 DHS_MA = "426"
+            Case "14"
+                 DHS_MA = "173"
+            Case "07"
+                 DHS_MA = "33"
+            Case "03"
+                 DHS_MA = "31"
+            Case "08"
+                 DHS_MA = "80"
+            Case "04"
+            If LoaiKyKK = True Then
+                DHS_MA = "529"
+            Else
+                DHS_MA = "17"
+          
+            End If
 
         Case "05"
             DHS_MA = "81"
@@ -5120,8 +5168,13 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
             DHS_MA = "177"
 
         Case "02"
-            DHS_MA = "30"
 
+            If LoaiKyKK = True Then
+                DHS_MA = "528"
+            Else
+                DHS_MA = "30"
+            End If
+                 
         Case "06"
             DHS_MA = "27"
 
@@ -5138,7 +5191,12 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
             DHS_MA = "75"
 
         Case "01"
-            DHS_MA = "16"
+
+            If LoaiKyKK = True Then
+                DHS_MA = "527"
+            Else
+                DHS_MA = "16"
+            End If
 
         Case "36"
             DHS_MA = "23"
@@ -5176,7 +5234,6 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
             End If
 
         Case "82"
-
             DHS_MA = "474"
 
         Case "86"
@@ -5205,7 +5262,12 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
             End If
 
         Case "71"
-            DHS_MA = "490"
+
+            If LoaiKyKK = True Then
+                DHS_MA = "530"
+            Else
+                DHS_MA = "526"
+            End If
             
         Case "72"
             DHS_MA = "441"
@@ -5260,9 +5322,6 @@ Private Function changeToLoaiToKhaiQHS(strMaToKhai) As String
         Case "37"
             DHS_MA = "200514"
 
-        Case "37"
-            DHS_MA = "200514"
-
         Case "53"
             DHS_MA = "200503"
 
@@ -5270,7 +5329,32 @@ Private Function changeToLoaiToKhaiQHS(strMaToKhai) As String
             DHS_MA = "200201"
 
         Case "01"
-            DHS_MA = "200101"
+
+            If LoaiKyKK = True Then
+                DHS_MA = "200121"
+            Else
+                DHS_MA = "200101"
+            End If
+
+        Case "02"
+
+            If LoaiKyKK = True Then
+                DHS_MA = "200122"
+            End If
+
+        Case "04"
+
+            If LoaiKyKK = True Then
+                DHS_MA = "200123"
+            End If
+
+        Case "71"
+
+            If LoaiKyKK = True Then
+                DHS_MA = "200124"
+            Else
+                DHS_MA = "200105"
+            End If
 
         Case "12"
             DHS_MA = "200202"
@@ -5325,14 +5409,6 @@ Private Function changeToLoaiToKhaiQHS(strMaToKhai) As String
                 DHS_MA = "200902"
             Else
                 DHS_MA = "200904"
-            End If
-            
-        Case "70"
-
-            If tkPhatSinh = vbNullString Then
-                DHS_MA = "200214"
-            Else
-                DHS_MA = "200213"
             End If
 
         Case Else
@@ -5936,13 +6012,26 @@ Private Function getSoTTTK_AC(ByVal strID As String, _
         arrDate = Split(arrDeltail(UBound(arrDeltail) - 1), "/")
         dTempDate = DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))
         
-        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')" & " And tkhai.TIN_DV_CQ='" & Trim(arrDeltail(UBound(arrDeltail) - 3)) & "'"
+        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & _
+        "Where tkhai.tin = '" & vMaSoThue & "'" & _
+        "And tkhai.LOAI_BC = '" & strID & "' " & _
+        " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')" & _
+        " And tkhai.TIN_DV_CQ='" & Trim(arrDeltail(UBound(arrDeltail) - 3)) & "'"
     ElseIf strID = "03_TBAC" Then
         arrDeltail = Split(strData, "~")
         arrDate = Split(Left$(arrDeltail(UBound(arrDeltail)), 10), "/")
         dTempDate = DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))
         
         strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')"
+    ElseIf strID = "04_TBAC" Then
+        arrDeltail = Split(strData, "~")
+        arrDate = Split(arrDeltail(UBound(arrDeltail) - 1), "/")
+        dTempDate = DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))
+        
+        arrDate = Split(Right$(arrDeltail(UBound(arrDeltail) - 5), 10), "/")
+        dTempDate1 = DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))
+        
+        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')" & " And tkhai.NGAY_TB_PH=CTOD('" & format(dTempDate1, "mm/dd/yyyy") & "')"
         
     ElseIf strID = "BC21_AC" Then
         arrDeltail = Split(strData, "~")
@@ -5963,18 +6052,17 @@ Private Function getSoTTTK_AC(ByVal strID As String, _
     ElseIf strID = "BC26_AC" Then
 
         If LoaiKyKK = False Then
-            strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.QUY_BC = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
+            strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.QUY_BC = CTOD('" & format$(dNgayDauKy, "mm/dd/yyyy") & "')"
         Else
-            strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.KYBC_TU_NGAY = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & "And tkhai.KYBC_DEN_NGAY = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
+            strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.TU_NGAY = CTOD('" & format$(dNgayDauKy, "mm/dd/yyyy") & "')" & "And tkhai.DEN_NGAY = CTOD('" & format$(dNgayCuoiKy, "mm/dd/yyyy") & "')"
 
         End If
-    
+
     Else
         strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.TU_NGAY = CTOD('" & format$(dNgayDauKy, "mm/dd/yyyy") & "')" & "And tkhai.DEN_NGAY = CTOD('" & format$(dNgayCuoiKy, "mm/dd/yyyy") & "')"
     End If
     
     Set rsResult = clsConn.Execute(strSQL)
-
     If rsResult Is Nothing Then
         strSTT = 0
         isTonTaiAC = False
