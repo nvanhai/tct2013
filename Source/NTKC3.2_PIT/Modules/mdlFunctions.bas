@@ -1180,7 +1180,7 @@ Public Function changeMaToKhai(strID As String) As String
     
     If strID = "18" Then changeMaToKhai = "15_BCTC"
     If strID = "69" Then changeMaToKhai = "15_BCTC10"
-    ''chek version 3.2.0 nvsu
+    'update v3.2.0
     If strID = "19" Then changeMaToKhai = "48_BCTC13"
     If strID = "20" Then changeMaToKhai = "16_BCTC"
     If strID = "21" Then changeMaToKhai = "99_BCTC"
@@ -1214,6 +1214,8 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "68" Then changeMaToKhai = "BC26_AC"
     If strID = "91" Then changeMaToKhai = "04_TBAC"
     
+    'Mau moi V3.2.0
+    If strID = "94" Then changeMaToKhai = "01_TD_GTGT13"
 End Function
 
 ' Ham change sang ma cua QLT

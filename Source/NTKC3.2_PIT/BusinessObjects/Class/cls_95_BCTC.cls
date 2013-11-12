@@ -400,6 +400,22 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
             End If
            UpdateCell fps, .Col, .Row, .Text
         End If
+        
+        If Col = .ColLetterToNumber("E") And Row = 12 Then
+            .GetText Col, Row, varTemp
+            If varTemp <> "" And varTemp <> "../../...." Then
+                If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+                    .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+                Else
+                    .SetActiveCell Col, Row
+                End If
+'                Else
+'                 .SetActiveCell Col, Row
+            End If
+           .Col = Col
+           .Row = Row
+           UpdateCell fps, .Col, .Row, .Text
+        End If
     End If
 End With
 End Sub
