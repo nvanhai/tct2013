@@ -117,7 +117,7 @@ Public sSaiCT11 As String
 Public sKyKeKhai As String
 Public dNgayNopDB As Variant
 Public HANNOP As String
-Public tthtk As String
+Public TTHTK As String
 Public strTenBpql As String
 Private tempKyLb As Variant
 Private tempNgayNop As Variant
@@ -129,7 +129,7 @@ Public strSoTTTKhai As String
 Public isTKTonTai As Boolean
 Public checkDLTTonTai As Boolean
 'Ma to khai
-Public matkhai As String
+Public MATKHAI As String
 Public kykkhai As String
 
 Public Function Prepared1() As Boolean
@@ -227,7 +227,7 @@ End Function
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
     Dim i As Integer
     Dim varMaDM As Variant
-     Dim LoaiKyKK         As Variant
+     Dim loaiKyKK         As Variant
    
     i = 0
     ReDim Preserve larrPhongXuLy(0)
@@ -294,15 +294,15 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
                 'Set loai ky ke khai thang quy
         .Col = .ColLetterToNumber("AB")
         .Row = 42
-        LoaiKyKK = .Text
+        loaiKyKK = .Text
 
-        If LoaiKyKK = "0" Then
-            matkhai = "'01/GTGT'"
+        If loaiKyKK = "0" Then
+            MATKHAI = "'01/GTGT'"
 
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         Else
             kykkhai = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
-            matkhai = "'01Q/GTGT'"
+            MATKHAI = "'01Q/GTGT'"
 
         End If
     End With
@@ -316,21 +316,26 @@ Public Sub GetParams(ByRef strPNgayNhanToKhai As String, ByRef strPPhongXuLy As 
 End Sub
 
 Public Function Prepared3() As Boolean
+    Dim loaiKyKK As Variant
+
     With fps
         .Sheet = 1
         
         'Set NgayNhanToKhai
         .Col = .ColLetterToNumber(NGAY_NHAN_TO_KHAI_X)
         .Row = NGAY_NHAN_TO_KHAI_Y
+
         If strNgayNhanToKhai <> "" Then
             .Text = strNgayNhanToKhai
             UpdateCell fps, .Col, .Row, .Text
         End If
-'**************************************************************
 
- '        set Phong xu ly
+        '**************************************************************
+
+        '        set Phong xu ly
         .Col = .ColLetterToNumber(PHONG_XU_LY_X)
         .Row = PHONG_XU_LY_Y
+
         If strPhongXuLy <> "" Then
             .Text = strPhongXuLy
             UpdateCell fps, .Col, .Row, .Text
@@ -338,13 +343,15 @@ Public Function Prepared3() As Boolean
 
         .Col = .ColLetterToNumber(MA_SO_THUE_X)
         .Row = MA_SO_THUE_Y
+
         If strMST <> "" Then
             .Text = strMST
             UpdateCell fps, .Col, .Row, .Text
         End If
-
+        
         .Col = .ColLetterToNumber(KY_LAP_BO_X)
         .Row = KY_LAP_BO_Y
+ 
         If Len(Month(Now())) = 1 Then
             .Text = "0" & Month(Now()) & "/" & Year(Now())
             sKyKeKhai = "0" & Month(Now()) & Year(Now())
@@ -352,12 +359,13 @@ Public Function Prepared3() As Boolean
             .Text = Month(Now()) & "/" & Year(Now())
             sKyKeKhai = Month(Now()) & Year(Now())
         End If
+
         UpdateCell fps, .Col, .Row, .Text
 
         .Col = .ColLetterToNumber(NGAY_NOP_X)
         .Row = NGAY_NOP_Y
         .Text = IIf(Len(Day(Now())) = 1, "0" & Day(Now()), Day(Now())) & "/" & IIf(Len(Month(Now())) = 1, "0" & Month(Now()), Month(Now())) & "/" & Year(Now())
-         UpdateCell fps, .Col, .Row, .Text
+        UpdateCell fps, .Col, .Row, .Text
         .Lock = False
 
         .Col = .ColLetterToNumber(NGAY_QUET_X)
@@ -367,6 +375,7 @@ Public Function Prepared3() As Boolean
 
         .Col = .ColLetterToNumber(TEN_GOI_X)
         .Row = TEN_GOI_Y
+
         If strTenGoi <> "" Then
             .Text = Trim(TAX_Utilities_Svr_New.Convert(strTenGoi, TCVN, UNICODE))
             UpdateCell fps, .Col, .Row, .Text
@@ -374,6 +383,7 @@ Public Function Prepared3() As Boolean
 
         .Col = .ColLetterToNumber(DIA_CHI_X)
         .Row = DIA_CHI_Y
+
         If strDchi <> "" Then
             .Text = Trim(TAX_Utilities_Svr_New.Convert(strDchi, TCVN, UNICODE))
             UpdateCell fps, .Col, .Row, .Text
@@ -381,6 +391,7 @@ Public Function Prepared3() As Boolean
 
         .Col = .ColLetterToNumber(DIEN_THOAI_X)
         .Row = DIEN_THOAI_Y
+
         If strDThoai <> "" Then
             .Text = strDThoai
             UpdateCell fps, .Col, .Row, .Text
@@ -388,15 +399,17 @@ Public Function Prepared3() As Boolean
 
         .Col = .ColLetterToNumber(FAX_X)
         .Row = FAX_Y
+
         If strFax <> "" Then
             .Text = strFax
             UpdateCell fps, .Col, .Row, .Text
         End If
         
-' Lay thong tin dai ly
+        ' Lay thong tin dai ly
         
         .Col = .ColLetterToNumber(MA_SO_THUE_DL_X)
         .Row = MA_SO_THUE_DL_Y
+
         If strMST_DLT <> "" Then
             .Text = strMST_DLT
             UpdateCell fps, .Col, .Row, .Text
@@ -404,6 +417,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(TEN_GOI_DL_X)
         .Row = TEN_GOI_DL_Y
+
         If strTen_DLT <> "" Then
             .Text = Trim(TAX_Utilities_Svr_New.Convert(strTen_DLT, TCVN, UNICODE))
             UpdateCell fps, .Col, .Row, .Text
@@ -411,6 +425,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(DIA_CHI_DL_X)
         .Row = DIA_CHI_DL_Y
+
         If strDchi_DLT <> "" Then
             .Text = Trim(TAX_Utilities_Svr_New.Convert(strDchi_DLT, TCVN, UNICODE))
             UpdateCell fps, .Col, .Row, .Text
@@ -418,6 +433,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(QUAN_HUYEN_DL_X)
         .Row = QUAN_HUYEN_DL_Y
+
         If strQHuyen_DLT <> "" Then
             .Text = strQHuyen_DLT
             UpdateCell fps, .Col, .Row, .Text
@@ -425,6 +441,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(TINH_TPHO_DL_X)
         .Row = TINH_TPHO_DL_Y
+
         If strTTPho_DLT <> "" Then
             .Text = strTTPho_DLT
             UpdateCell fps, .Col, .Row, .Text
@@ -432,6 +449,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(DIEN_THOAI_DL_X)
         .Row = DIEN_THOAI_DL_Y
+
         If strDthoai_DLT <> "" Then
             .Text = strDthoai_DLT
             UpdateCell fps, .Col, .Row, .Text
@@ -439,6 +457,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(FAX_DL_X)
         .Row = FAX_DL_Y
+
         If strFax_DLT <> "" Then
             .Text = strFax_DLT
             UpdateCell fps, .Col, .Row, .Text
@@ -446,6 +465,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(MAIL_DL_X)
         .Row = MAIL_DL_Y
+
         If strMail_DLT <> "" Then
             .Text = strMail_DLT
             UpdateCell fps, .Col, .Row, .Text
@@ -453,6 +473,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(NGAY_HDDL_DL_X)
         .Row = NGAY_HDDL_DL_Y
+
         If strNgayHD_DLT <> "" Then
             .Text = strNgayHD_DLT
             UpdateCell fps, .Col, .Row, .Text
@@ -460,11 +481,11 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(SO_HDDL_DL_X)
         .Row = SO_HDDL_DL_Y
+
         If strSoHD_DLT <> "" Then
             .Text = strSoHD_DLT
             UpdateCell fps, .Col, .Row, .Text
         End If
-        
 
         'set check loi dinh danh
         If checkDLTTonTai = False Then
@@ -479,17 +500,16 @@ Public Function Prepared3() As Boolean
         strSoTTTKhai = Trim(TinhSoLanQuet)
         .Text = Trim(TAX_Utilities_Svr_New.Convert(strSoTTTKhai, TCVN, UNICODE))
         
-''        .Col = .ColLetterToNumber(MA_BPQL_X)
-''        .Row = MA_BPQL_Y
-''        If strMaBPQL <> "" Then
-''            .Text = strMaBPQL
-''            UpdateCell fps, .Col, .Row, .Text
-''        End If
-''
-''        .Col = .ColLetterToNumber(TEN_BPQL_X)
-''        .Row = TEN_BPQL_Y
-''        .Text = Trim(TAX_Utilities_Svr_New.Convert(strTenBpql, TCVN, UNICODE))
-      
+        ''        .Col = .ColLetterToNumber(MA_BPQL_X)
+        ''        .Row = MA_BPQL_Y
+        ''        If strMaBPQL <> "" Then
+        ''            .Text = strMaBPQL
+        ''            UpdateCell fps, .Col, .Row, .Text
+        ''        End If
+        ''
+        ''        .Col = .ColLetterToNumber(TEN_BPQL_X)
+        ''        .Row = TEN_BPQL_Y
+        ''        .Text = Trim(TAX_Utilities_Svr_New.Convert(strTenBpql, TCVN, UNICODE))
         
         '.EventEnabled(EventAllEvents) = True
     End With
@@ -634,7 +654,7 @@ Public Function InsertDTL_PL1() As String
     Dim bln  As Boolean
     Dim madtnt As Variant
     Dim ngnop As Variant
-    Dim kylbo As Variant
+    Dim KYLBO As Variant
     Dim KYTTBS As Variant
 
     Dim LOAIHD As Variant
@@ -695,14 +715,14 @@ Public Function InsertDTL_PL1() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -736,7 +756,7 @@ Public Function InsertDTL_PL1() As String
             GHICHU = "''"
             MAPL = "'PL01GTKT'"
             
-            sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+            sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                        SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                        mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                        
@@ -811,7 +831,7 @@ Public Function InsertDTL_PL1() As String
                 
                 MAPL = "'PL01GTKT'"
                 
-                sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+                sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                        SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                        mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                 
@@ -849,7 +869,7 @@ Public Function InsertDTL_PL1() As String
             GHICHU = "''"
             MAPL = "'PL01GTKT'"
             
-            sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+            sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                        SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                        mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                        
@@ -924,7 +944,7 @@ Public Function InsertDTL_PL1() As String
                 
                 MAPL = "'PL01GTKT'"
                 
-                sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+                sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                            SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                            mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                            
@@ -962,7 +982,7 @@ Public Function InsertDTL_PL1() As String
             GHICHU = "''"
             MAPL = "'PL01GTKT'"
             
-            sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+            sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                        SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                        mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                        
@@ -1037,7 +1057,7 @@ Public Function InsertDTL_PL1() As String
                 
                 MAPL = "'PL01GTKT'"
                 
-                sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+                sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                            SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                            mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                            
@@ -1074,7 +1094,7 @@ Public Function InsertDTL_PL1() As String
             GHICHU = "''"
             MAPL = "'PL01GTKT'"
             
-            sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+            sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                        SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                        mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                        
@@ -1149,7 +1169,7 @@ Public Function InsertDTL_PL1() As String
                 
                 MAPL = "'PL01GTKT'"
                 
-                sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+                sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                            SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                            mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                            
@@ -1186,7 +1206,7 @@ Public Function InsertDTL_PL1() As String
             GHICHU = "''"
             MAPL = "'PL01GTKT'"
             
-            sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+            sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                        SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                        mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                        
@@ -1261,7 +1281,7 @@ Public Function InsertDTL_PL1() As String
                 
                 MAPL = "'PL01GTKT'"
                 
-                sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+                sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                            SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                            mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                            
@@ -1288,7 +1308,7 @@ Public Function InsertDTL_PL2() As String
     Dim bln  As Boolean
     Dim madtnt As Variant
     Dim ngnop As Variant
-    Dim kylbo As Variant
+    Dim KYLBO As Variant
     Dim KYTTBS As Variant
 
     Dim LOAIHD As Variant
@@ -1349,14 +1369,14 @@ Public Function InsertDTL_PL2() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -1390,7 +1410,7 @@ Public Function InsertDTL_PL2() As String
             GHICHU = "''"
             MAPL = "'PL02GTKT'"
             
-            sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+            sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                        SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                        mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                        
@@ -1475,7 +1495,7 @@ Public Function InsertDTL_PL2() As String
                 
                 MAPL = "'PL02GTKT'"
                 
-                sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+                sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                        SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                        mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                        
@@ -1513,7 +1533,7 @@ Public Function InsertDTL_PL2() As String
             GHICHU = "''"
             MAPL = "'PL02GTKT'"
             
-            sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+            sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                        SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                        mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                        
@@ -1595,7 +1615,7 @@ Public Function InsertDTL_PL2() As String
                 
                 MAPL = "'PL02GTKT'"
                 
-                sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+                sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                            SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                            mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                            
@@ -1632,7 +1652,7 @@ Public Function InsertDTL_PL2() As String
             GHICHU = "''"
             MAPL = "'PL02GTKT'"
             
-            sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+            sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                        SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                        mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                        
@@ -1714,7 +1734,7 @@ Public Function InsertDTL_PL2() As String
                 
                 MAPL = "'PL01GTKT'"
                 
-                sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+                sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                            SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                            mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                            
@@ -1752,7 +1772,7 @@ Public Function InsertDTL_PL2() As String
             GHICHU = "''"
             MAPL = "'PL02GTKT'"
             
-            sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+            sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                        SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                        mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                        
@@ -1834,7 +1854,7 @@ Public Function InsertDTL_PL2() As String
                 
                 MAPL = "'PL01GTKT'"
                 
-                sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+                sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                            SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                            mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                            
@@ -1872,7 +1892,7 @@ Public Function InsertDTL_PL2() As String
             GHICHU = "''"
             MAPL = "'PL02GTKT'"
             
-            sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+            sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                        SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                        mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                        
@@ -1954,7 +1974,7 @@ Public Function InsertDTL_PL2() As String
                 
                 MAPL = "'PL01GTKT'"
                 
-                sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
+                sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
                            SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & _
                            mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN
                            
@@ -1985,7 +2005,7 @@ Public Function InsertDTL_PL3() As String
    
   Dim madtnt As Variant
   Dim ngnop As Variant
-  Dim kylbo As Variant
+  Dim KYLBO As Variant
   Dim TTHKT As Variant
   Dim LOAIXE As Variant
   Dim DVTinh As Variant
@@ -2041,14 +2061,14 @@ Public Function InsertDTL_PL3() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
 
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -2118,7 +2138,7 @@ Public Function InsertDTL_PL3() As String
                 End If
 ' sSQLCol = "MATKHAI , KYLBO , KYKKHAI , MADTNT , TTHKT , NGNOP,LOAIXE ,DVTINH,TONGBANRA,BANNTDDL,GIAHD,GHICHU,MACT,STT,STT2,STTIN,MAPL"
 
-             sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIXE & ","
+             sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIXE & ","
              sSQLVal = sSQLVal & DVTinh & "," & TONGBANRA & "," & BANNTDDL & "," & GIAHD & "," & GHICHU & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & MAPL & "," & DANHAN & "," & LAN_QUET
              
              sSQL = "INSERT INTO TMP_P3" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
@@ -2189,7 +2209,7 @@ Public Function InsertDTL_PL3() As String
                 
 ' sSQLCol = "MATKHAI , KYLBO , KYKKHAI , MADTNT , TTHKT , NGNOP,LOAIXE ,DVTINH,TONGBANRA,BANNTDDL,GIAHD,GHICHU,MACT,STT,STT2,STTIN,MAPL"
 
-              sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIXE & ","
+              sSQLVal = MATKHAI & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIXE & ","
               sSQLVal = sSQLVal & DVTinh & "," & TONGBANRA & "," & BANNTDDL & "," & GIAHD & "," & GHICHU & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & MAPL & "," & DANHAN & "," & LAN_QUET
              
               sSQL = "INSERT INTO TMP_P3" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
@@ -2213,11 +2233,11 @@ Public Function InsertDTL_PL4A() As String
    
   Dim madtnt As Variant
   Dim ngnop As Variant
-  Dim kylbo As Variant
+  Dim KYLBO As Variant
   
   Dim MATHUE As Variant
   Dim MaMuc As Variant
-  Dim maTM As Variant
+  Dim MATM As Variant
   Dim MAPP As Variant
 '  Dim TTHTK As Variant
   
@@ -2233,7 +2253,7 @@ Public Function InsertDTL_PL4A() As String
   End If
   MATHUE = "''"
   MaMuc = "''"
-  maTM = "''"
+  MATM = "''"
   MAPP = "''"
 
 ' TTHTK = "''"
@@ -2257,14 +2277,14 @@ Public Function InsertDTL_PL4A() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -2285,7 +2305,7 @@ Public Function InsertDTL_PL4A() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & MAPP & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P4" & sKyKeKhai & " ( " & sSQLCol & " ) VALUES ( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2311,14 +2331,14 @@ Public Function InsertDTL_PL4A() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-           If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+           If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
                 
@@ -2338,7 +2358,7 @@ Public Function InsertDTL_PL4A() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & MAPP & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P4" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2364,14 +2384,14 @@ Public Function InsertDTL_PL4A() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-           If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+           If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -2392,7 +2412,7 @@ Public Function InsertDTL_PL4A() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & MAPP & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P4" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2418,14 +2438,14 @@ Public Function InsertDTL_PL4A() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-           If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+           If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -2446,7 +2466,7 @@ Public Function InsertDTL_PL4A() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & MAPP & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P4" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2472,14 +2492,14 @@ Public Function InsertDTL_PL4A() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-           If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+           If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -2500,7 +2520,7 @@ Public Function InsertDTL_PL4A() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & MAPP & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P4" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2526,14 +2546,14 @@ Public Function InsertDTL_PL4A() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-           If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+           If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -2554,7 +2574,7 @@ Public Function InsertDTL_PL4A() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & MAPP & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P4" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2580,14 +2600,14 @@ Public Function InsertDTL_PL4A() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-           If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+           If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -2609,7 +2629,7 @@ Public Function InsertDTL_PL4A() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & MAPP & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P4" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2635,14 +2655,14 @@ Public Function InsertDTL_PL4A() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-           If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+           If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -2663,7 +2683,7 @@ Public Function InsertDTL_PL4A() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & MAPP & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P4" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2689,14 +2709,14 @@ Public Function InsertDTL_PL4A() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-           If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+           If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -2717,7 +2737,7 @@ Public Function InsertDTL_PL4A() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & MAPP & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P4" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2737,11 +2757,11 @@ Public Function InsertDTL_PL4B() As String
    
   Dim madtnt As Variant
   Dim ngnop As Variant
-  Dim kylbo As Variant
+  Dim KYLBO As Variant
   
   Dim MATHUE As Variant
   Dim MaMuc As Variant
-  Dim maTM As Variant
+  Dim MATM As Variant
   
   Dim CTTN As Variant
   Dim TIEN As Variant
@@ -2755,7 +2775,7 @@ Public Function InsertDTL_PL4B() As String
   End If
   MATHUE = "''"
   MaMuc = "''"
-  maTM = "''"
+  MATM = "''"
  ' TTHTK = "''"
 '--------------------
   
@@ -2777,14 +2797,14 @@ Public Function InsertDTL_PL4B() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -2806,7 +2826,7 @@ Public Function InsertDTL_PL4B() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P5" & sKyKeKhai & " ( " & sSQLCol & " ) VALUES ( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2832,14 +2852,14 @@ Public Function InsertDTL_PL4B() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -2861,7 +2881,7 @@ Public Function InsertDTL_PL4B() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P5" & sKyKeKhai & " ( " & sSQLCol & " ) VALUES ( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2887,14 +2907,14 @@ Public Function InsertDTL_PL4B() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -2916,7 +2936,7 @@ Public Function InsertDTL_PL4B() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P5" & sKyKeKhai & " ( " & sSQLCol & " ) VALUES ( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2942,14 +2962,14 @@ Public Function InsertDTL_PL4B() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -2971,7 +2991,7 @@ Public Function InsertDTL_PL4B() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P5" & sKyKeKhai & " ( " & sSQLCol & " ) VALUES ( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2997,14 +3017,14 @@ Public Function InsertDTL_PL4B() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -3026,7 +3046,7 @@ Public Function InsertDTL_PL4B() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P5" & sKyKeKhai & " ( " & sSQLCol & " ) VALUES ( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3051,14 +3071,14 @@ Public Function InsertDTL_PL4B() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -3080,7 +3100,7 @@ Public Function InsertDTL_PL4B() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P5" & sKyKeKhai & " ( " & sSQLCol & " ) VALUES ( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3106,14 +3126,14 @@ Public Function InsertDTL_PL4B() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -3135,7 +3155,7 @@ Public Function InsertDTL_PL4B() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P5" & sKyKeKhai & " ( " & sSQLCol & " ) VALUES ( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3162,14 +3182,14 @@ Public Function InsertDTL_PL4B() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -3191,7 +3211,7 @@ Public Function InsertDTL_PL4B() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P5" & sKyKeKhai & " ( " & sSQLCol & " ) VALUES ( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3218,14 +3238,14 @@ Public Function InsertDTL_PL4B() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -3247,7 +3267,7 @@ Public Function InsertDTL_PL4B() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P5" & sKyKeKhai & " ( " & sSQLCol & " ) VALUES ( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3273,14 +3293,14 @@ Public Function InsertDTL_PL4B() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -3302,7 +3322,7 @@ Public Function InsertDTL_PL4B() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P5" & sKyKeKhai & " ( " & sSQLCol & " ) VALUES ( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3327,14 +3347,14 @@ Public Function InsertDTL_PL4B() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -3356,7 +3376,7 @@ Public Function InsertDTL_PL4B() As String
         End If
         
 '  sSQLCol = "MADTNT,KYLBO,NGNOP,MATKHAI,KYKKHAI,CTTN,TIEN,DANHAN"
-        sSQLVal = madtnt & "," & kylbo & "," & ngnop & "," & matkhai & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & tthtk
+        sSQLVal = madtnt & "," & KYLBO & "," & ngnop & "," & MATKHAI & "," & kykkhai & "," & CTTN & "," & TIEN & "," & DANHAN & "," & MATHUE & "," & MaMuc & "," & MATM & "," & LAN_QUET & "," & TTHTK
         
         sSQL = "INSERT INTO TMP_P5" & sKyKeKhai & " ( " & sSQLCol & " ) VALUES ( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3373,7 +3393,7 @@ Public Function InsertDTL_PL5() As String
    
     Dim madtnt    As Variant
     Dim ngnop     As Variant
-    Dim kylbo     As Variant
+    Dim KYLBO     As Variant
     Dim SOCT      As Variant
     Dim NGNOPTHUE As Variant
     Dim NOINOP    As Variant
@@ -3408,16 +3428,16 @@ Public Function InsertDTL_PL5() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -3467,7 +3487,7 @@ Public Function InsertDTL_PL5() As String
                 SOCT = "'" & TAX_Utilities_Svr_New.Convert(CStr(SOCT), UNICODE, TCVN) & "'"
             End If
                         
-            sSQLVal = madtnt & "," & ngnop & "," & tthtk & "," & kylbo & "," & kykkhai & "," & matkhai & "," & SOCT & "," & NGNOPTHUE & "," & NOINOP & "," & CQUANQL & "," & THUEDN & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = madtnt & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & kykkhai & "," & MATKHAI & "," & SOCT & "," & NGNOPTHUE & "," & NOINOP & "," & CQUANQL & "," & THUEDN & "," & LAN_QUET & "," & DANHAN
                        
             sSQL = "INSERT INTO TMP_P6" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -3491,7 +3511,7 @@ Public Function InsertDTL_PL016() As String
    
   Dim madtnt As Variant
   Dim ngnop As Variant
-  Dim kylbo As Variant
+  Dim KYLBO As Variant
   
   Dim TENCSSX As Variant
   Dim DCHI As Variant
@@ -3529,14 +3549,14 @@ Public Function InsertDTL_PL016() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -3615,7 +3635,7 @@ Public Function InsertDTL_PL016() As String
             End If
         ' sSQLCol = "MADTNT,NGNOP,TTHTK,KYLBO,KYKKHAI,MATKHAI,TENCSSX,DCHI,MADTNT1,THUE5,THUE10,TONGDT,THUEPN1,THUEPN2"
         
-            sSQLVal = madtnt & "," & ngnop & "," & tthtk & "," & kylbo & "," & kykkhai & "," & matkhai & "," & TENCSSX & "," & MADTNT1 & "," & THUE5 & "," & THUE10 & "," & TONGDT & "," & THUEPN1 & "," & THUEPN2 & "," & DANHAN & "," & LAN_QUET & "," & CQUANQL
+            sSQLVal = madtnt & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & kykkhai & "," & MATKHAI & "," & TENCSSX & "," & MADTNT1 & "," & THUE5 & "," & THUE10 & "," & TONGDT & "," & THUEPN1 & "," & THUEPN2 & "," & DANHAN & "," & LAN_QUET & "," & CQUANQL
           
             sSQL = "INSERT INTO TMP_P016" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -3637,7 +3657,7 @@ Public Function InsertDTL_PL016B() As String
    
   Dim madtnt As Variant
   Dim ngnop As Variant
-  Dim kylbo As Variant
+  Dim KYLBO As Variant
   
   Dim CHINHANH As Variant
   Dim CT07 As Variant
@@ -3673,14 +3693,14 @@ Public Function InsertDTL_PL016B() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -3747,7 +3767,7 @@ Public Function InsertDTL_PL016B() As String
                 THUEPN2 = Replace(THUEPN2, ".", "")
             End If
         ' sSQLCol = "MADTNT,NGNOP,TTHTK,KYLBO,KYKKHAI,MATKHAI,TENCSSX,DCHI,MADTNT1,THUE5,THUE10,TONGDT,THUEPN1,THUEPN2"
-            sSQLVal = madtnt & "," & ngnop & "," & tthtk & "," & kylbo & "," & kykkhai & "," & matkhai & "," & CT07 & "," & STT & "," & CHINHANH & "," & CQUANQL & "," & MADTNT1 & "," & TONGDT & "," & THUEPN1 & "," & THUEPN2 & "," & DANHAN & "," & LAN_QUET
+            sSQLVal = madtnt & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & kykkhai & "," & MATKHAI & "," & CT07 & "," & STT & "," & CHINHANH & "," & CQUANQL & "," & MADTNT1 & "," & TONGDT & "," & THUEPN1 & "," & THUEPN2 & "," & DANHAN & "," & LAN_QUET
           
             sSQL = "INSERT INTO tmp_p016B" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -3769,7 +3789,7 @@ Public Function InsertDTL_PL017() As String
    
   Dim madtnt As Variant
   Dim ngnop As Variant
-  Dim kylbo As Variant
+  Dim KYLBO As Variant
   Dim CT07 As Variant
   
   Dim MADTNT1 As Variant
@@ -3806,14 +3826,14 @@ Public Function InsertDTL_PL017() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
                     
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
@@ -3878,7 +3898,7 @@ Public Function InsertDTL_PL017() As String
             End If
         ' sSQLCol = "MADTNT,NGNOP,TTHTK,KYLBO,KYKKHAI,MATKHAI,TENCSSX,DCHI,MADTNT1,THUE5,THUE10,TONGDT,THUEPN1,THUEPN2"
         
-            sSQLVal = madtnt & "," & ngnop & "," & tthtk & "," & kylbo & "," & kykkhai & "," & matkhai & "," & CT07 & "," & CQUANQL & "," & MADTNT1 & "," & THUE5 & "," & THUE10 & "," & TONGDT & "," & THUEPN1 & "," & THUEPN2 & "," & DANHAN & "," & LAN_QUET
+            sSQLVal = madtnt & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & kykkhai & "," & MATKHAI & "," & CT07 & "," & CQUANQL & "," & MADTNT1 & "," & THUE5 & "," & THUE10 & "," & TONGDT & "," & THUEPN1 & "," & THUEPN2 & "," & DANHAN & "," & LAN_QUET
           
             sSQL = "INSERT INTO TMP_P017" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -3900,11 +3920,11 @@ Public Function InsertDTL_KHBS() As String
     Dim bln  As Boolean
     Dim madtnt As Variant
     Dim ngnop As Variant
-    Dim kylbo As Variant
+    Dim KYLBO As Variant
 
     Dim MATHUE As Variant
     Dim MaMuc As Variant
-    Dim maTM As Variant
+    Dim MATM As Variant
     Dim MAPP As Variant
     Dim mact As Variant
     Dim MACT2 As Variant
@@ -3957,24 +3977,24 @@ Public Function InsertDTL_KHBS() As String
         MATHUE = "'01'"
         MAPP = "'1'"
           
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "CTOD('')"
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
 
         End If
         
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
         .GetText .ColLetterToNumber("E"), 32, ngnop
@@ -4002,8 +4022,8 @@ Public Function InsertDTL_KHBS() As String
         SOTIENNC = "0"
         SONGAYNC = "0"
         
-            sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & _
-                      ngnop & "," & tthtk & "," & kylbo & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & _
+            sSQLVal = madtnt & "," & kykkhai & "," & MATKHAI & "," & MATHUE & "," & MaMuc & "," & MATM & "," & MAPP & "," & _
+                      ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & _
                       SOKK & "," & SODC & "," & SOCL & "," & LAN_QUET & "," & DANHAN & "," & SOTIENNC & "," & SONGAYNC
              
                        
@@ -4089,8 +4109,8 @@ Public Function InsertDTL_KHBS() As String
                     SOCL = SOCL
                 End If
             
-                sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & _
-                          ngnop & "," & tthtk & "," & kylbo & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & _
+                sSQLVal = madtnt & "," & kykkhai & "," & MATKHAI & "," & MATHUE & "," & MaMuc & "," & MATM & "," & MAPP & "," & _
+                          ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & _
                           SOKK & "," & SODC & "," & SOCL & "," & LAN_QUET & "," & DANHAN & "," & SOTIENNC & "," & SONGAYNC
                            
                 sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
@@ -4115,8 +4135,8 @@ Public Function InsertDTL_KHBS() As String
         SODC = "0"
         SOCL = "0"
         
-            sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & _
-                      ngnop & "," & tthtk & "," & kylbo & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & _
+            sSQLVal = madtnt & "," & kykkhai & "," & MATKHAI & "," & MATHUE & "," & MaMuc & "," & MATM & "," & MAPP & "," & _
+                      ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & _
                       SOKK & "," & SODC & "," & SOCL & "," & LAN_QUET & "," & DANHAN & "," & SOTIENNC & "," & SONGAYNC
              
                        
@@ -4184,8 +4204,8 @@ Public Function InsertDTL_KHBS() As String
                     SOCL = SOCL
                 End If
             
-                sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & _
-                          ngnop & "," & tthtk & "," & kylbo & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & _
+                sSQLVal = madtnt & "," & kykkhai & "," & MATKHAI & "," & MATHUE & "," & MaMuc & "," & MATM & "," & MAPP & "," & _
+                          ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & _
                           SOKK & "," & SODC & "," & SOCL & "," & LAN_QUET & "," & DANHAN & "," & SOTIENNC & "," & SONGAYNC
                            
                 sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
@@ -4210,8 +4230,8 @@ Public Function InsertDTL_KHBS() As String
         SODC = "0"
         SOCL = "0"
         
-            sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & _
-                      ngnop & "," & tthtk & "," & kylbo & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & _
+            sSQLVal = madtnt & "," & kykkhai & "," & MATKHAI & "," & MATHUE & "," & MaMuc & "," & MATM & "," & MAPP & "," & _
+                      ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & _
                       SOKK & "," & SODC & "," & SOCL & "," & LAN_QUET & "," & DANHAN & "," & SOTIENNC & "," & SONGAYNC
                        
             sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
@@ -4231,9 +4251,9 @@ Public Function InsertDTL() As String
    
     Dim madtnt    As Variant
     Dim MATHUE    As Variant
-    Dim maTM      As Variant
+    Dim MATM      As Variant
     Dim MAPP      As Variant
-    Dim kylbo     As Variant
+    Dim KYLBO     As Variant
     Dim LOAITIEN  As Variant
     Dim ngnop     As Variant
     Dim CT_KT     As Variant
@@ -4282,16 +4302,16 @@ Public Function InsertDTL() As String
         MATHUE = "'01'"
         MAPP = "'1'"
 
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -4319,21 +4339,21 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = IIf(Trim(sSaiCT11) = vbNullString, "''", sSaiCT11)
         
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
         DANHAN = "''"
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -4352,16 +4372,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -4385,19 +4405,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -4416,16 +4436,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -4449,19 +4469,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -4481,16 +4501,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -4524,19 +4544,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -4555,16 +4575,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -4592,19 +4612,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -4623,16 +4643,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -4656,19 +4676,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -4687,16 +4707,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -4724,19 +4744,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -4755,16 +4775,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -4798,19 +4818,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -4829,16 +4849,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -4866,19 +4886,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -4897,16 +4917,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -4940,19 +4960,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -4971,16 +4991,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -5014,19 +5034,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -5045,16 +5065,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -5088,19 +5108,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -5119,16 +5139,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -5156,19 +5176,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -5188,16 +5208,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -5221,19 +5241,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -5252,16 +5272,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -5289,19 +5309,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -5320,16 +5340,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -5357,19 +5377,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -5388,16 +5408,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -5425,19 +5445,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -5457,16 +5477,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -5490,19 +5510,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -5521,16 +5541,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -5558,19 +5578,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -5589,16 +5609,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -5626,19 +5646,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -5657,16 +5677,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -5694,19 +5714,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -5725,16 +5745,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -5762,19 +5782,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -5793,16 +5813,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -5830,19 +5850,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -5861,16 +5881,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -5898,19 +5918,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -5929,16 +5949,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -5966,19 +5986,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -5997,16 +6017,16 @@ Public Function InsertDTL() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -6034,19 +6054,19 @@ Public Function InsertDTL() As String
         THUEGTGT2 = THUEGTGT
         tt = "''"
       
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LOAITIEN & "," & ngnop & ","
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & LOAITIEN & "," & ngnop & ","
     sSQLVal = sSQLVal & CT_KT & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & ","
-    sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
+    sSQLVal = sSQLVal & TTHTK & "," & MATKHAI & "," & kykkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_KT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -6105,9 +6125,9 @@ Public Function InsertHDR() As String
     Dim CHUNGCHI As Variant
     Dim madtnt     As Variant
     Dim MATHUE     As Variant
-    Dim maTM       As Variant
+    Dim MATM       As Variant
     Dim MAPP       As Variant
-    Dim kylbo      As Variant
+    Dim KYLBO      As Variant
     Dim ngnop      As Variant
     Dim LOAITIEN   As Variant
     Dim MABPQL     As Variant
@@ -6178,16 +6198,16 @@ Public Function InsertHDR() As String
 
         MATHUE = "'01'"
         MAPP = "'1'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
 
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
 
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
 
@@ -6320,12 +6340,12 @@ Public Function InsertHDR() As String
         DANHAN = "''"
         
         ' sua MAMUC & MATM tu nam 2009
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
+        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+            MATM = "'01'"
             MaMuc = "'014'"
         Else
             MaMuc = "'1700'"
-            maTM = "'1701'"
+            MATM = "'1701'"
         End If
         
         MaVach = ".T."
@@ -6363,7 +6383,7 @@ Public Function InsertHDR() As String
             MALD = "'" & MALD & "'"
 
             'set lai han nop
-            If matkhai = "'01/GTGT'" Then
+            If MATKHAI = "'01/GTGT'" Then
                 If TAX_Utilities_Svr_New.Year = "2012" Then
                     If TAX_Utilities_Svr_New.Month = "04" Then
                         HANNOP = "CTOD('" & Format("20/11/2012", "mm/dd/yyyy") & "')"
@@ -6398,11 +6418,11 @@ Public Function InsertHDR() As String
         
     End With
     
-    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & ngnop & ", "
-    sSQLVal = sSQLVal & LOAITIEN & "," & MABPQL & "," & SHTEP & "," & tthtk & "," & kykkhai & ", "
+    sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & "," & KYLBO & "," & ngnop & ", "
+    sSQLVal = sSQLVal & LOAITIEN & "," & MABPQL & "," & SHTEP & "," & TTHTK & "," & kykkhai & ", "
     sSQLVal = sSQLVal & NGNHAP & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & ", "
     sSQLVal = sSQLVal & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ", "
-    sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & _
+    sSQLVal = sSQLVal & MATKHAI & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & _
     ",'" & NGANH & "'," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & "," & LAN_QUET & "," & _
     DANHAN & "," & MADLT & "," & LanBS & "," & MANNKD & "," & THUECL & "," & DSoCL & "," & _
     GTTTCL & "," & NGAYPS & "," & GIAHAN & "," & MALD & ",'" & TENNV & "','" & CHUNGCHI & "'"
@@ -6523,7 +6543,7 @@ Public Function TKTT() As Boolean
    sSQL = "SELECT MADTNT, NGNOP FROM TMP_TK" & sKyKeKhai & _
         " WHERE MATHUE = '01' AND  MAPP = '1' AND MADTNT = " & "'" & strMST & "'" & _
         " AND KYKKHAI = " & kykkhai & "" & _
-        " AND TTHTK = '1' AND MATKHAI = " & matkhai & ""
+        " AND TTHTK = '1' AND MATKHAI = " & MATKHAI & ""
     
    Set rs = clsDAO.Execute(sSQL)
    If Not rs Is Nothing Then
@@ -6568,7 +6588,7 @@ End Function
 Public Function XoaTKTT() As Boolean
 
     Dim sSQL As String
-    Dim kylbo As Variant
+    Dim KYLBO As Variant
     Dim rs As ADODB.Recordset
     
     If clsDAO.Connected = False Then
@@ -6588,34 +6608,34 @@ Public Function XoaTKTT() As Boolean
    
    With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("E"), 10, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        .GetText .ColLetterToNumber("E"), 10, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
    End With
    sSQL = "DELETE FROM KT" & sKyKeKhai & _
         " WHERE MATHUE = '01' AND MAPP = '1' AND MADTNT = " & "'" & strMST & "' AND NGNOP = " & dNgayNopDB & _
-        " AND MATKHAI=" & matkhai & " AND KYKKHAI =" & kykkhai
+        " AND MATKHAI=" & MATKHAI & " AND KYKKHAI =" & kykkhai
     
    clsDAO.ExecuteDLL sSQL
    
    'Xoa phu luc PL3
    sSQL = "DELETE FROM TMP_P3" & sKyKeKhai & _
         " WHERE MADTNT = " & "'" & strMST & "' AND NGNOP = " & dNgayNopDB & _
-        " AND MATKHAI=" & matkhai & " AND KYKKHAI =" & kykkhai
+        " AND MATKHAI=" & MATKHAI & " AND KYKKHAI =" & kykkhai
    
    clsDAO.ExecuteDLL sSQL
    
    ' Xoa phu luc PL5
    sSQL = "DELETE FROM TMP_P6" & sKyKeKhai & _
         " WHERE MADTNT = " & "'" & strMST & _
-        " AND MATKHAI=" & matkhai & " AND KYKKHAI =" & kykkhai
+        " AND MATKHAI=" & MATKHAI & " AND KYKKHAI =" & kykkhai
    clsDAO.ExecuteDLL sSQL
    
    
@@ -6863,7 +6883,7 @@ Public Function TinhSoLanQuet() As Integer
            sSQL = "SELECT max(LAN_QUET) as LAN_QUET FROM  TMP_TK" & sKyKeKhai & _
                 " WHERE MATHUE = '01' AND MADTNT = " & "'" & strMST & "'" & _
                 " AND KYKKHAI = " & kykkhai & "" & _
-                " AND MATKHAI = " & matkhai & ""
+                " AND MATKHAI = " & MATKHAI & ""
                               
              Set rs = clsDAO.Execute(sSQL)
             If Not rs Is Nothing Then
@@ -6932,7 +6952,7 @@ Public Function isToKhaiChinhThuc() As Boolean
              sSQL = "SELECT * FROM TMP_TK" & vKeKhai_temp & _
              " WHERE MATHUE = '01' AND  MADTNT = " & "'" & strMST & "'" & _
              " AND KYKKHAI = " & kykkhai & "" & _
-             " AND (TTHTK = '1' or TTHTK = '3' or TTHTK = '4') AND MATKHAI = " & matkhai & ""
+             " AND (TTHTK = '1' or TTHTK = '3' or TTHTK = '4') AND MATKHAI = " & MATKHAI & ""
         
              Set rs = clsDAO.Execute(sSQL)
         End If
