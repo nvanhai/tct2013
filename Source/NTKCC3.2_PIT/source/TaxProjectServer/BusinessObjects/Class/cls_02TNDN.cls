@@ -1025,6 +1025,7 @@ Public Function InsertHDR() As String
     Dim GTTTCL     As Variant
     Dim DSoCL      As Variant
     Dim DAGHI2     As Variant
+    Dim GIA_HAN    As Variant
     
     sSQLCol = "MADTNT,MAMUC,MATM,KD_MADTNT,TEN_TC,DC_TC,QD_TC,HOPDONG,NGNOP,TTHTK,"
     sSQLCol = sSQLCol & "KYKKHAI,MATKHAI,HANNOP,HANNOP2,THUETKY,THUETKY2,NGAYHD,NGAYXN,GHICHU,SHTEP,MAVACH,AUTO_CAL,DAGHI,KYLBO,THUECL,MADLT,LANBS,LAN_QUET,DoanhSo,GTTinhThue,GTTTCL,DSOCL,DaGhi2,DANHAN,NGAY_PS,TENNV,CHUNGCHI"
@@ -1082,6 +1083,13 @@ Public Function InsertHDR() As String
             KD_MADTNT = "'" & KD_MADTNT & "'"
         End If
 
+        'Gia han
+        .GetText .ColLetterToNumber("E"), 47, GIA_HAN
+        If GIA_HAN = "1" Then
+            GIA_HAN = ".T."
+        Else
+            GIA_HAN = ".F."
+        End If
         ' ten don vi van chuyen
         .GetText .ColLetterToNumber("K"), 20, TEN_TC
 
@@ -1211,6 +1219,16 @@ Public Function InsertHDR() As String
                 HANNOP = "30/10/2012"
             ElseIf Val(TAX_Utilities_Svr_New.ThreeMonths) = 4 Then
                 HANNOP = "01/04/2013"
+            End If
+        ElseIf Trim(TAX_Utilities_Svr_New.Year) = "2013" Then
+            If GIA_HAN = ".T." Then
+                If Val(TAX_Utilities_Svr_New.ThreeMonths) = 1 Then
+                    HANNOP = "30/10/2013"
+                ElseIf Val(TAX_Utilities_Svr_New.ThreeMonths) = 2 Then
+                    HANNOP = "30/10/2013"
+                ElseIf Val(TAX_Utilities_Svr_New.ThreeMonths) = 3 Then
+                    HANNOP = "31/01/2014"
+                End If
             End If
         End If
 

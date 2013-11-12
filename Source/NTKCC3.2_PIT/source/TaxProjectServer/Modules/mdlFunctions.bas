@@ -31,7 +31,7 @@ Public dNgayCuoiKy As Date
 
 Public Const SS_SORT_ORDER_ASCENDING = 1
 Public Const APP_VERSION = "3.2.0"
-Public Const HTKK_LAST_VERSION = "3.2.0"
+Public Const HTKK_LAST_VERSION = "9.9.9"
 Public Const SS_BORDER_TYPE_NONE = 0
 Public Const SS_BORDER_TYPE_LEFT = 1
 Public Const SS_BORDER_TYPE_RIGHT = 2
@@ -90,6 +90,8 @@ Public strUserID As String                                  ' ID of User
 Public TTHTK As String                                      ' Trang thai of to khai
 Public LoaiTk As String                                     ' Loai to khai (Chinh thuc,Bsung)
 
+Public LoaiKyKK As Boolean 'True la quy, false la thang
+
 ' Su dung de in BB nop cham
 Public strPrinterName As String
 Public mCurrentSheet As Integer
@@ -99,8 +101,6 @@ Public intPrintingSession As Integer
 Public strHiddenFormName As String                          ' Save name of hidden form
 
 Public isPITActive As Boolean   ' Kiem tra trang thai active cua PIT
-
-Public LoaiKyKK As Boolean 'True la quy, false la thang
 
 ''' GetAttribute description
 ''' Get an attribute value of xmlNode
@@ -248,7 +248,9 @@ Public Function GetValidityNode() As MSXML.IXMLDOMNode
 
         End If
 
-    ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Month") = "1" Then
+    Else
+
+        If GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Month") = "1" Then
 
         Select Case TAX_Utilities_Svr_New.Month
 
@@ -297,10 +299,12 @@ Public Function GetValidityNode() As MSXML.IXMLDOMNode
                 ValidityDate = GetNgayCuoiQuy(CInt(TAX_Utilities_Svr_New.ThreeMonths), CInt(TAX_Utilities_Svr_New.Year), iNgayTaiChinh, iThangTaiChinh)
         End Select
 
-    ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Year") = "1" Then
-        ValidityDate = NgayCuoiNamTaiChinh(CInt(TAX_Utilities_Svr_New.Year), iNgayTaiChinh, iThangTaiChinh)
-    Else
-        ValidityDate = Date
+        ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Year") = "1" Then
+            ValidityDate = NgayCuoiNamTaiChinh(CInt(TAX_Utilities_Svr_New.Year), iNgayTaiChinh, iThangTaiChinh)
+        Else
+            ValidityDate = Date
+        End If
+
     End If
     
     Set xmlNodeListValidity = TAX_Utilities_Svr_New.NodeMenu.selectNodes("Validity")
@@ -1205,29 +1209,66 @@ Function hannop() As String
 Dim dNgayCuoiKy As Date
 Dim dHanNop As Date
 Dim arrDate() As String
-    If TAX_Utilities_Svr_New.Month <> "" Then
-        If TAX_Utilities_Svr_New.Month = 12 Then
-           hannop = "20/" & "01" & "/" & TAX_Utilities_Svr_New.Year + 1
+Dim idToKhai As Variant
+
+    idToKhai = GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ID")
+
+    If idToKhai = "01" And idToKhai <> "02" And idToKhai <> "04" And idToKhai <> "71" And idToKhai <> "36" And idToKhai <> "68" Then
+        If LoaiKyKK = False Then
+            If TAX_Utilities_Svr_New.Month = 12 Then
+                hannop = "20/" & "01" & "/" & TAX_Utilities_Svr_New.Year + 1
+            Else
+                hannop = "20/" & Right("0" & TAX_Utilities_Svr_New.Month + 1, 2) & "/" & TAX_Utilities_Svr_New.Year
+            End If
+
         Else
-           hannop = "20/" & Right("0" & TAX_Utilities_Svr_New.Month + 1, 2) & "/" & TAX_Utilities_Svr_New.Year
-        End If
-    ElseIf TAX_Utilities_Svr_New.ThreeMonths <> "" Then
-        If TAX_Utilities_Svr_New.ThreeMonths = "04" Then
-           hannop = "30/" & "01" & "/" & TAX_Utilities_Svr_New.Year + 1
-        ElseIf TAX_Utilities_Svr_New.ThreeMonths = "03" Then
-'            If TAX_Utilities_Svr_New.Year = 2011 Then
+
+            If TAX_Utilities_Svr_New.ThreeMonths = "04" Then
+                hannop = "30/" & "01" & "/" & TAX_Utilities_Svr_New.Year + 1
+            ElseIf TAX_Utilities_Svr_New.ThreeMonths = "03" Then
+                '            If TAX_Utilities_Svr_New.Year = 2011 Then
                 hannop = "30/" & "10" & "/" & TAX_Utilities_Svr_New.Year
-'            Else
-'                hannop = "01/" & "11" & "/" & TAX_Utilities_Svr_New.Year
-'            End If
-        ElseIf TAX_Utilities_Svr_New.ThreeMonths = "02" Then
-            hannop = "30/" & "07" & "/" & TAX_Utilities_Svr_New.Year
-        ElseIf TAX_Utilities_Svr_New.ThreeMonths = "01" Then
-            hannop = "02/" & "05" & "/" & TAX_Utilities_Svr_New.Year
+                '            Else
+                '                hannop = "01/" & "11" & "/" & TAX_Utilities_Svr_New.Year
+                '            End If
+            ElseIf TAX_Utilities_Svr_New.ThreeMonths = "02" Then
+                hannop = "30/" & "07" & "/" & TAX_Utilities_Svr_New.Year
+            ElseIf TAX_Utilities_Svr_New.ThreeMonths = "01" Then
+                hannop = "02/" & "05" & "/" & TAX_Utilities_Svr_New.Year
+            End If
+
         End If
+
     Else
-          dNgayCuoiKy = DateAdd("D", 90, NgayCuoiNamTaiChinh(TAX_Utilities_Svr_New.Year, iThangTaiChinh, iNgayTaiChinh))
-          hannop = format(dNgayCuoiKy, "dd/mm/yyyy")
+
+        If TAX_Utilities_Svr_New.Month <> "" Then
+            If TAX_Utilities_Svr_New.Month = 12 Then
+                hannop = "20/" & "01" & "/" & TAX_Utilities_Svr_New.Year + 1
+            Else
+                hannop = "20/" & Right("0" & TAX_Utilities_Svr_New.Month + 1, 2) & "/" & TAX_Utilities_Svr_New.Year
+            End If
+
+        ElseIf TAX_Utilities_Svr_New.ThreeMonths <> "" Then
+
+            If TAX_Utilities_Svr_New.ThreeMonths = "04" Then
+                hannop = "30/" & "01" & "/" & TAX_Utilities_Svr_New.Year + 1
+            ElseIf TAX_Utilities_Svr_New.ThreeMonths = "03" Then
+                '            If TAX_Utilities_Svr_New.Year = 2011 Then
+                hannop = "30/" & "10" & "/" & TAX_Utilities_Svr_New.Year
+                '            Else
+                '                hannop = "01/" & "11" & "/" & TAX_Utilities_Svr_New.Year
+                '            End If
+            ElseIf TAX_Utilities_Svr_New.ThreeMonths = "02" Then
+                hannop = "30/" & "07" & "/" & TAX_Utilities_Svr_New.Year
+            ElseIf TAX_Utilities_Svr_New.ThreeMonths = "01" Then
+                hannop = "02/" & "05" & "/" & TAX_Utilities_Svr_New.Year
+            End If
+
+        Else
+            dNgayCuoiKy = DateAdd("D", 90, NgayCuoiNamTaiChinh(TAX_Utilities_Svr_New.Year, iThangTaiChinh, iNgayTaiChinh))
+            hannop = format(dNgayCuoiKy, "dd/mm/yyyy")
+        End If
+
     End If
 
     arrDate = Split(hannop, "/")
@@ -1935,5 +1976,6 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "66" Then changeMaToKhai = "BC21_AC"
     If strID = "67" Then changeMaToKhai = "03_TBAC"
     If strID = "68" Then changeMaToKhai = "BC26_AC"
+    If strID = "91" Then changeMaToKhai = "04_TBAC"
 End Function
 
