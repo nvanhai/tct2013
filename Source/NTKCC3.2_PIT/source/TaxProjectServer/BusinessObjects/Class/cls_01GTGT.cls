@@ -131,9 +131,6 @@ Public strTenPQL As String
 Public strSoTTTKhai As String
 Public isTKTonTai As Boolean
 Public checkDLTTonTai As Boolean
-'Ma to khai
-Public MATKHAI As String
-Public kykkhai As String
 
 Public Function Prepared1() As Boolean
     Dim ThangKK          As Integer
@@ -230,7 +227,7 @@ End Function
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
     Dim i As Integer
     Dim varMaDM As Variant
-     Dim loaiKyKK         As Variant
+     Dim LoaiKyKK         As Variant
    
     i = 0
     ReDim Preserve larrPhongXuLy(0)
@@ -650,10 +647,10 @@ Public Function InsertDTL_PL1() As String
     Dim bln  As Boolean
     Dim madtnt As Variant
     Dim ngnop As Variant
-    Dim kylbo As Variant
+    Dim KYLBO As Variant
     Dim kykkhai As Variant
     Dim KYTTBS As Variant
-    Dim matkhai As Variant
+    Dim MATKHAI As Variant
     Dim LOAIHD As Variant
     Dim KYHIEU As Variant
     Dim SOHDON As Variant
@@ -732,7 +729,7 @@ Public Function InsertDTL_PL1() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         .Sheet = 2
             
@@ -1312,10 +1309,10 @@ Public Function InsertDTL_PL2() As String
     Dim bln  As Boolean
     Dim madtnt As Variant
     Dim ngnop As Variant
-    Dim kylbo As Variant
+    Dim KYLBO As Variant
     Dim kykkhai As Variant
     Dim KYTTBS As Variant
-    Dim matkhai As Variant
+    Dim MATKHAI As Variant
     Dim LOAIHD As Variant
     Dim KYHIEU As Variant
     Dim SOHDON As Variant
@@ -1394,7 +1391,7 @@ Public Function InsertDTL_PL2() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         .Sheet = 3
             
@@ -2017,9 +2014,9 @@ Public Function InsertDTL_PL3() As String
    
   Dim madtnt As Variant
   Dim ngnop As Variant
-  Dim kylbo As Variant
+  Dim KYLBO As Variant
   Dim kykkhai As Variant
-  Dim matkhai As Variant
+  Dim MATKHAI As Variant
   Dim TTHKT As Variant
   Dim LOAIXE As Variant
   Dim DVTinh As Variant
@@ -2096,7 +2093,7 @@ Public Function InsertDTL_PL3() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         mact = "'1001'"
         STT = 1
         STT2 = 0
@@ -2254,9 +2251,9 @@ Public Function InsertDTL_PL4A() As String
    
   Dim madtnt As Variant
   Dim ngnop As Variant
-  Dim kylbo As Variant
+  Dim KYLBO As Variant
   Dim kykkhai As Variant
-  Dim matkhai As Variant
+  Dim MATKHAI As Variant
   
   Dim MATHUE As Variant
   Dim MaMuc As Variant
@@ -2321,7 +2318,7 @@ Public Function InsertDTL_PL4A() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'001'"
         .Sheet = 5
@@ -2381,7 +2378,7 @@ Public Function InsertDTL_PL4A() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'003'"
         .Sheet = 5
@@ -2442,7 +2439,7 @@ Public Function InsertDTL_PL4A() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'004'"
         .Sheet = 5
@@ -2503,7 +2500,7 @@ Public Function InsertDTL_PL4A() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'005'"
         .Sheet = 5
@@ -2564,7 +2561,7 @@ Public Function InsertDTL_PL4A() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'007'"
         .Sheet = 5
@@ -2625,7 +2622,7 @@ Public Function InsertDTL_PL4A() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'008'"
         .Sheet = 5
@@ -2686,7 +2683,7 @@ Public Function InsertDTL_PL4A() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'009'"
         .Sheet = 5
@@ -2748,7 +2745,7 @@ Public Function InsertDTL_PL4A() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'010'"
         .Sheet = 5
@@ -2809,7 +2806,7 @@ Public Function InsertDTL_PL4A() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'011'"
         .Sheet = 5
@@ -2843,9 +2840,9 @@ Public Function InsertDTL_PL4B() As String
    
   Dim madtnt As Variant
   Dim ngnop As Variant
-  Dim kylbo As Variant
+  Dim KYLBO As Variant
   Dim kykkhai As Variant
-  Dim matkhai As Variant
+  Dim MATKHAI As Variant
   
   Dim MATHUE As Variant
   Dim MaMuc As Variant
@@ -2906,7 +2903,7 @@ Public Function InsertDTL_PL4B() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'001'"
         .Sheet = 6
@@ -2968,7 +2965,7 @@ Public Function InsertDTL_PL4B() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'003'"
         .Sheet = 6
@@ -3030,7 +3027,7 @@ Public Function InsertDTL_PL4B() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'004'"
         .Sheet = 6
@@ -3092,7 +3089,7 @@ Public Function InsertDTL_PL4B() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'005'"
         .Sheet = 6
@@ -3154,7 +3151,7 @@ Public Function InsertDTL_PL4B() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'007'"
         .Sheet = 6
@@ -3215,7 +3212,7 @@ Public Function InsertDTL_PL4B() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'008'"
         .Sheet = 6
@@ -3277,7 +3274,7 @@ Public Function InsertDTL_PL4B() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'009'"
         .Sheet = 6
@@ -3340,7 +3337,7 @@ Public Function InsertDTL_PL4B() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'010'"
         .Sheet = 6
@@ -3403,7 +3400,7 @@ Public Function InsertDTL_PL4B() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'011'"
         .Sheet = 6
@@ -3465,7 +3462,7 @@ Public Function InsertDTL_PL4B() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'012'"
         .Sheet = 6
@@ -3526,7 +3523,7 @@ Public Function InsertDTL_PL4B() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         CTTN = "'013'"
         .Sheet = 6
@@ -3560,7 +3557,7 @@ Public Function InsertDTL_PL5() As String
     Dim ngnop     As Variant
     Dim KYLBO     As Variant
   Dim kykkhai As Variant
-  Dim matkhai As Variant
+  Dim MATKHAI As Variant
     Dim SOCT      As Variant
     Dim NGNOPTHUE As Variant
     Dim NOINOP    As Variant
@@ -3617,7 +3614,7 @@ Public Function InsertDTL_PL5() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         .Sheet = 7
         .Col = .ColLetterToNumber("B")
@@ -3687,9 +3684,9 @@ Public Function InsertDTL_PL016() As String
    
   Dim madtnt As Variant
   Dim ngnop As Variant
-  Dim kylbo As Variant
+  Dim KYLBO As Variant
   Dim kykkhai As Variant
-  Dim matkhai As Variant
+  Dim MATKHAI As Variant
   
   Dim TENCSSX As Variant
   Dim DCHI As Variant
@@ -3746,7 +3743,7 @@ Public Function InsertDTL_PL016() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         
         .Sheet = 8
@@ -3835,34 +3832,45 @@ Public Function InsertDTL_PL016() As String
 End Function
 
 Public Function InsertDTL_PL016B() As String
-   Dim sSQL As String
-   Dim sSQLCol As String
-   Dim sSQLVal As String
-   Dim bln  As Boolean
+    Dim sSQL     As String
+    Dim sSQLCol  As String
+    Dim sSQLVal  As String
+    Dim bln      As Boolean
    
-  Dim madtnt As Variant
-  Dim ngnop As Variant
-  Dim KYLBO As Variant
-  
-  Dim CHINHANH As Variant
-  Dim CT07 As Variant
-  Dim MADTNT1 As Variant
-  Dim STT As Variant
-  Dim TONGDT As Variant
-  Dim THUEPN1 As Variant
-  Dim THUEPN2 As Variant
-  Dim DANHAN As Variant
-  Dim CQUANQL As Variant
-  sSQLCol = "MADTNT,NGNOP,TTHTK,KYLBO,KYKKHAI,MATKHAI,CT07,STT,TENCN,CQQL,MADTNT01,DOANHTHU,THUEPN1,THUEPN2,DANHAN,LANQUET"
+    Dim madtnt   As Variant
+    Dim ngnop    As Variant
+    Dim KYLBO    As Variant
+    Dim kykkhai  As Variant
+    Dim MATKHAI  As Variant
+    Dim CHINHANH As Variant
+    Dim CT07     As Variant
+    Dim MADTNT1  As Variant
+    Dim STT      As Variant
+    Dim TONGDT   As Variant
+    Dim THUEPN1  As Variant
+    Dim THUEPN2  As Variant
+    Dim DANHAN   As Variant
+    Dim CQUANQL  As Variant
+    sSQLCol = "MADTNT,NGNOP,TTHTK,KYLBO,KYKKHAI,MATKHAI,CT07,STT,TENCN,CQQL,MADTNT01,DOANHTHU,THUEPN1,THUEPN2,DANHAN,LANQUET"
 
-   If clsDAO.Connected = False Then
+    If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
         clsDAO.Connect
-   End If
-      
-   With fps
+    End If
+
+    ' xet ky ke khai
+    If isTkQuy = True Then
+        kykkhai = "'" & Val(TAX_Utilities_Svr_New.Month) & "/" & TAX_Utilities_Svr_New.Year & "'"
+    Else
+        kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+    End If
+        
+    MATKHAI = "'" & LOAI_TO_KHAI & "'"
+
+    With fps
         .Sheet = 1
         .GetText .ColLetterToNumber("F"), 10, madtnt
+
         If Trim(madtnt) = vbNullString Then
             madtnt = "''"
         Else
@@ -3870,6 +3878,7 @@ Public Function InsertDTL_PL016B() As String
         End If
         
         .GetText .ColLetterToNumber("E"), 32, ngnop
+
         'NGNOP = Date
         If Trim(ngnop) = vbNullString Then
             ngnop = "CTOD('')"
@@ -3879,9 +3888,11 @@ Public Function InsertDTL_PL016B() As String
         End If
                     
         .GetText .ColLetterToNumber("E"), 30, KYLBO
+
         If Trim(KYLBO) = vbNullString Then
             KYLBO = "CTOD('')"
         Else
+
             If Len(Trim(KYLBO)) = 6 Then
                 KYLBO = "'0" & KYLBO & "'"
             Else
@@ -3891,111 +3902,141 @@ Public Function InsertDTL_PL016B() As String
         End If
         
         .GetText .ColLetterToNumber("G"), 13, CT07
-                    If Trim(CT07) = vbNullString Then
-                CT07 = "0"
-            Else
-                CT07 = Replace(CT07, ".", "")
-            End If
+
+        If Trim(CT07) = vbNullString Then
+            CT07 = "0"
+        Else
+            CT07 = Replace(CT07, ".", "")
+        End If
+
         DANHAN = "''"
         
         .Sheet = 9
         .Row = 7
         .Col = .ColLetterToNumber("B")
+
         Do
-                    'get STT
+            'get STT
             .GetText .ColLetterToNumber("B"), .Row, STT
+
             If Trim(STT) = vbNullString Then
                 STT = "''"
             Else
                 STT = "'" & Trim(TAX_Utilities_Svr_New.Convert(CStr(STT), UNICODE, TCVN)) & "'"
             End If
-           'Get ten chi nhanh
+
+            'Get ten chi nhanh
             .GetText .ColLetterToNumber("C"), .Row, CHINHANH
+
             If Trim(CHINHANH) = vbNullString Then
                 CHINHANH = "''"
             Else
                 CHINHANH = "'" & CHINHANH & "'"
             End If
-                        'get CQT
+
+            'get CQT
             .GetText .ColLetterToNumber("D"), .Row, CQUANQL
+
             If Trim(CQUANQL) = vbNullString Then
                 CQUANQL = "''"
             Else
                 CQUANQL = "'" & CQUANQL & "'"
             End If
+
             'get dtnt
             .GetText .ColLetterToNumber("F"), .Row, MADTNT1
+
             If Trim(MADTNT1) = vbNullString Then
                 MADTNT1 = "''"
             Else
                 MADTNT1 = "'" & MADTNT1 & "'"
             End If
+
             'get TongDT
             .GetText .ColLetterToNumber("G"), .Row, TONGDT
+
             If Trim(TONGDT) = vbNullString Then
                 TONGDT = "0"
             Else
                 TONGDT = Replace(TONGDT, ".", "")
             End If
+
             'get THUEPN1
             .GetText .ColLetterToNumber("H"), .Row, THUEPN1
+
             If Trim(THUEPN1) = vbNullString Then
                 THUEPN1 = "0"
             Else
                 THUEPN1 = Replace(THUEPN1, ".", "")
             End If
+
             'get THUEPN2
             .GetText .ColLetterToNumber("I"), .Row, THUEPN2
+
             If Trim(THUEPN2) = vbNullString Then
                 THUEPN2 = "0"
             Else
                 THUEPN2 = Replace(THUEPN2, ".", "")
             End If
-        ' sSQLCol = "MADTNT,NGNOP,TTHTK,KYLBO,KYKKHAI,MATKHAI,TENCSSX,DCHI,MADTNT1,THUE5,THUE10,TONGDT,THUEPN1,THUEPN2"
+
+            ' sSQLCol = "MADTNT,NGNOP,TTHTK,KYLBO,KYKKHAI,MATKHAI,TENCSSX,DCHI,MADTNT1,THUE5,THUE10,TONGDT,THUEPN1,THUEPN2"
             sSQLVal = madtnt & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & kykkhai & "," & MATKHAI & "," & CT07 & "," & STT & "," & CHINHANH & "," & CQUANQL & "," & MADTNT1 & "," & TONGDT & "," & THUEPN1 & "," & THUEPN2 & "," & DANHAN & "," & LAN_QUET
           
             sSQL = "INSERT INTO tmp_p016B" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
 
-           .Col = .ColLetterToNumber("B")
-           .Row = .Row + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = .Row + 1
         Loop Until .Text = "aa"
+
     End With
-           clsDAO.Disconnect
-           InsertDTL_PL016B = vbNullString
+
+    clsDAO.Disconnect
+    InsertDTL_PL016B = vbNullString
            
 End Function
 
 Public Function InsertDTL_PL017() As String
-   Dim sSQL As String
-   Dim sSQLCol As String
-   Dim sSQLVal As String
-   Dim bln  As Boolean
+    Dim sSQL    As String
+    Dim sSQLCol As String
+    Dim sSQLVal As String
+    Dim bln     As Boolean
    
-  Dim madtnt As Variant
-  Dim ngnop As Variant
-  Dim KYLBO As Variant
-  Dim CT07 As Variant
-  
-  Dim MADTNT1 As Variant
-  Dim THUE5 As Variant
-  Dim THUE10 As Variant
-  Dim TONGDT As Variant
-  Dim THUEPN1 As Variant
-  Dim THUEPN2 As Variant
-  Dim DANHAN As Variant
-  Dim CQUANQL As Variant
-  sSQLCol = "MADTNT,NGNOP,TTHTK,KYLBO,KYKKHAI,MATKHAI,CT07,CQQL,MADTNT01,THUE5,THUE10,DOANHTHU,THUEPN1,THUEPN2,DANHAN,LAN_QUET"
+    Dim madtnt  As Variant
+    Dim ngnop   As Variant
+    Dim KYLBO   As Variant
+    Dim CT07    As Variant
+    Dim kykkhai As Variant
+    Dim MATKHAI As Variant
+    Dim MADTNT1 As Variant
+    Dim THUE5   As Variant
+    Dim THUE10  As Variant
+    Dim TONGDT  As Variant
+    Dim THUEPN1 As Variant
+    Dim THUEPN2 As Variant
+    Dim DANHAN  As Variant
+    Dim CQUANQL As Variant
+    
+    sSQLCol = "MADTNT,NGNOP,TTHTK,KYLBO,KYKKHAI,MATKHAI,CT07,CQQL,MADTNT01,THUE5,THUE10,DOANHTHU,THUEPN1,THUEPN2,DANHAN,LAN_QUET"
 
-   If clsDAO.Connected = False Then
+    If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
         clsDAO.Connect
-   End If
+    End If
+
+    ' xet ky ke khai
+    If isTkQuy = True Then
+        kykkhai = "'" & Val(TAX_Utilities_Svr_New.Month) & "/" & TAX_Utilities_Svr_New.Year & "'"
+    Else
+        kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+    End If
+        
+    MATKHAI = "'" & LOAI_TO_KHAI & "'"
    
-   
-   With fps
+    With fps
         .Sheet = 1
         .GetText .ColLetterToNumber("F"), 10, madtnt
+
         If Trim(madtnt) = vbNullString Then
             madtnt = "''"
         Else
@@ -4003,6 +4044,7 @@ Public Function InsertDTL_PL017() As String
         End If
         
         .GetText .ColLetterToNumber("E"), 32, ngnop
+
         'NGNOP = Date
         If Trim(ngnop) = vbNullString Then
             ngnop = "CTOD('')"
@@ -4012,9 +4054,11 @@ Public Function InsertDTL_PL017() As String
         End If
                     
         .GetText .ColLetterToNumber("E"), 30, KYLBO
+
         If Trim(KYLBO) = vbNullString Then
             KYLBO = "CTOD('')"
         Else
+
             If Len(Trim(KYLBO)) = 6 Then
                 KYLBO = "'0" & KYLBO & "'"
             Else
@@ -4030,16 +4074,20 @@ Public Function InsertDTL_PL017() As String
         .Sheet = 8
         .Row = 8
         .Col = .ColLetterToNumber("B")
+
         Do
             'get TEN DIA PHUONG
             .GetText .ColLetterToNumber("C"), .Row, CQUANQL
+
             If Trim(CQUANQL) = vbNullString Then
                 CQUANQL = "''"
             Else
                 CQUANQL = "'" & Trim(TAX_Utilities_Svr_New.Convert(CStr(CQUANQL), UNICODE, TCVN)) & "'"
             End If
-             'get MADTNT 1
+
+            'get MADTNT 1
             .GetText .ColLetterToNumber("D"), .Row, MADTNT1
+
             If Trim(MADTNT1) = vbNullString Then
                 MADTNT1 = "''"
             Else
@@ -4048,52 +4096,66 @@ Public Function InsertDTL_PL017() As String
 
             'get HHCT 5%
             .GetText .ColLetterToNumber("E"), .Row, THUE5
+
             If Trim(THUE5) = vbNullString Then
                 THUE5 = "0"
             Else
                 THUE5 = Replace(THUE5, ".", "")
             End If
+
             'get HHCT 10%
             .GetText .ColLetterToNumber("F"), .Row, THUE10
+
             If Trim(THUE10) = vbNullString Then
                 THUE10 = "0"
             Else
                 THUE10 = Replace(THUE10, ".", "")
             End If
+
             'get TongDT
             .GetText .ColLetterToNumber("G"), .Row, TONGDT
+
             If Trim(TONGDT) = vbNullString Then
                 TONGDT = "0"
             Else
                 TONGDT = Replace(TONGDT, ".", "")
             End If
+
             'get THUEPN1
             .GetText .ColLetterToNumber("H"), .Row, THUEPN1
+
             If Trim(THUEPN1) = vbNullString Then
                 THUEPN1 = "0"
             Else
                 THUEPN1 = Replace(THUEPN1, ".", "")
             End If
+
             'get THUEPN2
             .GetText .ColLetterToNumber("I"), .Row, THUEPN2
+
             If Trim(THUEPN2) = vbNullString Then
                 THUEPN2 = "0"
             Else
                 THUEPN2 = Replace(THUEPN2, ".", "")
             End If
-        ' sSQLCol = "MADTNT,NGNOP,TTHTK,KYLBO,KYKKHAI,MATKHAI,TENCSSX,DCHI,MADTNT1,THUE5,THUE10,TONGDT,THUEPN1,THUEPN2"
-        
+
+            ' sSQLCol = "MADTNT,NGNOP,TTHTK,KYLBO,KYKKHAI,MATKHAI,TENCSSX,DCHI,MADTNT1,THUE5,THUE10,TONGDT,THUEPN1,THUEPN2"
+            If CT07 = vbNullString Then
+                CT07 = "0"
+            End If
             sSQLVal = madtnt & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & kykkhai & "," & MATKHAI & "," & CT07 & "," & CQUANQL & "," & MADTNT1 & "," & THUE5 & "," & THUE10 & "," & TONGDT & "," & THUEPN1 & "," & THUEPN2 & "," & DANHAN & "," & LAN_QUET
           
             sSQL = "INSERT INTO TMP_P017" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
 
-           .Col = .ColLetterToNumber("B")
-           .Row = .Row + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = .Row + 1
         Loop Until .Text = "aa"
+
     End With
-           clsDAO.Disconnect
-           InsertDTL_PL017 = vbNullString
+
+    clsDAO.Disconnect
+    InsertDTL_PL017 = vbNullString
            
 End Function
 
@@ -4105,9 +4167,9 @@ Public Function InsertDTL_KHBS() As String
     Dim bln  As Boolean
     Dim madtnt As Variant
     Dim ngnop As Variant
-    Dim kylbo As Variant
+    Dim KYLBO As Variant
     Dim kykkhai As Variant
-    Dim matkhai As Variant
+    Dim MATKHAI As Variant
     Dim MATHUE As Variant
     Dim MaMuc As Variant
     Dim MATM As Variant
@@ -4165,7 +4227,7 @@ Public Function InsertDTL_KHBS() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         MATHUE = "'01'"
         MAPP = "'1'"
@@ -4462,7 +4524,7 @@ Public Function InsertDTL() As String
     Dim CT33      As Variant
     Dim SCT31     As Boolean
     Dim SCT33     As Boolean
-   Dim matkhai As Variant
+   Dim MATKHAI As Variant
    Dim kykkhai As Variant
     Dim DANHAN    As Variant
  
@@ -4542,7 +4604,7 @@ Public Function InsertDTL() As String
             MATM = "'1701'"
         End If
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
@@ -4617,7 +4679,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -4690,7 +4752,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -4774,7 +4836,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -4851,7 +4913,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -4924,7 +4986,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -5001,7 +5063,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -5084,7 +5146,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -5161,7 +5223,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -5244,7 +5306,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -5328,7 +5390,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -5412,7 +5474,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -5490,7 +5552,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -5565,7 +5627,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -5643,7 +5705,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -5721,7 +5783,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -5799,7 +5861,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -5873,7 +5935,7 @@ Public Function InsertDTL() As String
             MATM = "'1701'"
         End If
             
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -5951,7 +6013,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -6029,7 +6091,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -6107,7 +6169,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -6185,7 +6247,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -6263,7 +6325,7 @@ Public Function InsertDTL() As String
         End If
         
         
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
         If isTkQuy = True Then
@@ -6534,7 +6596,8 @@ Public Function InsertHDR() As String
     Dim sSQL       As String
     Dim sSQLCol    As String
     Dim sSQLVal    As String
-    
+      Dim kykkhai As Variant
+  Dim MATKHAI As Variant
     Dim TENNV As Variant
     Dim CHUNGCHI As Variant
     Dim madtnt     As Variant
@@ -6558,7 +6621,6 @@ Public Function InsertHDR() As String
     Dim CT27       As Variant
     Dim ct34       As Variant
     Dim CT36       As Variant
-    Dim matkhai As Variant
     Dim HANNOP2    As Variant
     Dim ThueTKy2   As Variant
     Dim TENDA      As Variant
@@ -6777,7 +6839,7 @@ Public Function InsertHDR() As String
         End If
         
         MaVach = ".T."
-        matkhai = "'" & LOAI_TO_KHAI & "'"
+        MATKHAI = "'" & LOAI_TO_KHAI & "'"
         If Trim(HANNOP) = vbNullString Then
             HANNOP = "CTOD('')"
         Else

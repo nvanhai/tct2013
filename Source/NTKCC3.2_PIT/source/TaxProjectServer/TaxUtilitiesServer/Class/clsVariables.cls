@@ -41,7 +41,7 @@ Public Type TNCN_HDR
     kieu_ky As Variant
     id As Variant
     thueondinh As Variant
- 
+    loai_kykk As Variant
     ma_dl_thue As Variant
     so_hd_dl As Variant
     ngay_hd_dl As Variant
