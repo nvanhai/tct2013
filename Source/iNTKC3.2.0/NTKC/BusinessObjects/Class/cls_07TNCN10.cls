@@ -603,7 +603,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "07_TNCN11"
+    vLOAI_TKHAI = "07_TNCN13"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
@@ -679,8 +679,8 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("G"), 15, vTIN_DL
         .GetText .ColLetterToNumber("I"), 19, vSO_HOP_DONG
         .GetText .ColLetterToNumber("S"), 19, vNGAY_HOP_DONG
-        .GetText .ColLetterToNumber("I"), 61, vLAN_BS
-        .GetText .ColLetterToNumber("C"), 61, vCHINH_THUC
+        .GetText .ColLetterToNumber("I"), 63, vLAN_BS
+        .GetText .ColLetterToNumber("C"), 63, vCHINH_THUC
         If Trim(vCHINH_THUC) = "1" Then
             vLAN_BS = "0"
         End If

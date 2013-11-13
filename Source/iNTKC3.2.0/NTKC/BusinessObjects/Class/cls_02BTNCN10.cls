@@ -552,7 +552,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "02B_TNCN11"
+    vLOAI_TKHAI = "02B_TNCN13"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
@@ -661,6 +661,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
     Dim varTemp As Variant
     With fps
         If .ActiveSheet = 1 Then
+            .Sheet = 1
             If Col = .ColLetterToNumber("E") And Row = 24 Then
                 .Sheet = 1
                 .GetText Col, Row, varTemp
