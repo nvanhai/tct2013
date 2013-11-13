@@ -184,6 +184,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
     Dim i As Integer
     Dim varMaDM As Variant
     Dim TenDM As String
+    Dim LOAI_KYKK As String
     
     i = 0
     ReDim Preserve larrPhongXuLy(0)
@@ -426,6 +427,8 @@ Dim blnValid As Boolean
 Dim vNgayNop, vNgayQuet As Variant
 Dim arrDate() As String
 Dim arrDate1() As String
+    Dim LoaiKyKK   As Variant
+    Dim dNgayCuoiKy As Date
 
     blnValid = True
     
@@ -447,6 +450,9 @@ Dim arrDate1() As String
         .Col = .ColLetterToNumber(NGAY_NHAN_TO_KHAI_COL)
         .Row = NGAY_NHAN_TO_KHAI_ROW
         strNgayNhanToKhai = .Text
+        
+        ' Get Loai ky ke khai
+        .GetText .ColLetterToNumber("AB"), 42, LoaiKyKK
         
         ' Lay ve ngay nop to khai
         .GetText .ColLetterToNumber("E"), 32, vNgayNop
@@ -522,12 +528,25 @@ Dim arrDate1() As String
                 .Formula = "1"
             End If
             
-            
             ' Kiem tra xem ky ke khai trong cung ky hay khac ky
-            If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
-                blnValid = True
+            dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
+            dNgayCuoiKy = DateAdd("d", 29, dNgayCuoiKy)
+            
+            If LoaiKyKK = "0" Then
+                If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
+                    blnValid = True
+                Else
+                    blnValid = False
+                End If
+
             Else
-                blnValid = False
+
+                If (dNgayDauKy <= DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) And (dNgayCuoiKy >= DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
+                    blnValid = True
+                Else
+                    blnValid = False
+                End If
+
             End If
             
             .Col = .ColLetterToNumber("B")
@@ -931,9 +950,6 @@ On Error GoTo ErrHandle
         strSQL = strSQL & "1,"
     Else
         strSQL = strSQL & "null,"
-    End If
-    If vLAN_BS = "" Then
-        vLAN_BS = "0"
     End If
     If LOAI_KYKK = "0" Then
         LOAI_KYKK = "T"

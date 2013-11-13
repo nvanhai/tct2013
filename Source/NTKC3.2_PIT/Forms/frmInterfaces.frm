@@ -1880,11 +1880,18 @@ On Error GoTo ErrHandle
                 ' Check version <= 3.1.6
                 If Val(Left$(strData, 3)) <= 316 Then
                     If Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "04" Or Mid$(strData, 4, 2) = "71" Or Mid$(strData, 4, 2) = "36" Then
+                        If Val(IdToKhai) <> 36 Then
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
+                            strData = tmp & "~0" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
+                        Else
                         strData = Left$(strData, Len(strData) - 10) & "~0" & Right$(strData, 10)
+                        End If
                     ElseIf Mid$(strData, 4, 2) = "68" Then
-                        strData = Left$(strData, Len(strData) - 10) & "~1" & Right$(strData, 10)
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
+                            strData = tmp & "~1" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
                     ElseIf Mid$(strData, 4, 2) = "73" Then
-                        strData = Left$(strData, Len(strData) - 10) & "~" & Right$(strData, 10)
+                            tmp = Mid(strData, 1, InStr(1, strData, "</S02>", vbTextCompare) - 5)
+                            strData = tmp & "~" & Right$(strData, Len(strData) - InStr(1, strData, "</S02>", vbTextCompare) + 5)
                     End If
                 End If
 
@@ -2873,7 +2880,15 @@ On Error GoTo ErrHandle
     
     On Error GoTo ErrHandle
     
-    LoaiKyKK = LoaiToKhai(strData)
+    If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Or Val(strIDBCTC) = 68 Then
+        If Val(strIDBCTC) = 36 Then
+            LoaiKyKK = LoaiToKhai(strData)
+        Else
+            Dim tmp As String
+            tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
+            LoaiKyKK = LoaiToKhai(tmp)
+        End If
+    End If
     
     'Gan gia tri ngay dau ky
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
@@ -3380,7 +3395,7 @@ On Error GoTo ErrHandle
     
     ' set ma CQT
     If Not objTaxBusiness Is Nothing Then
-        If Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) >= 64 And Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <= 68 Then
+        If (Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) >= 64 And Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <= 68) Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 91 Then
             objTaxBusiness.strMaCQT = strTaxOfficeId
             ' lay ma phong quan ly
             'Get Tax id
@@ -5011,8 +5026,9 @@ Private Function LoaiToKhai(ByVal strData As String) As Boolean
     Dim LoaiTk As String
     
 On Error GoTo ErrHandle
-    strData = Left$(strData, Len(strData) - 10)
-    LoaiTk = Right$(strData, 1)
+    
+    LoaiTk = Left$(strData, Len(strData) - 10)
+    LoaiTk = Right$(LoaiTk, 1)
     If LoaiTk = "1" Then
         LoaiToKhai = True
     Else
