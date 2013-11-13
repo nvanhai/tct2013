@@ -837,7 +837,7 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("E"), 30, vKYLBO
         ElseIf menuId = 73 Then
             .GetText .ColLetterToNumber("E"), 42, vKYLBO
-        ElseIf menuId = 1 Or menuId = 74 Or menuId = 75 Or menuId = 3 Or menuId = 71 Then
+        ElseIf menuId = 1 Or menuId = 74 Or menuId = 75 Or menuId = 3 Or menuId = 71 Or menuId = 95 Then
             .GetText .ColLetterToNumber("E"), 30, vKYLBO
         ElseIf menuId = 2 Or menuId = 59 Then
             .GetText .ColLetterToNumber("E"), 30, vKYLBO
@@ -878,7 +878,7 @@ Private Sub cmdSave_Click()
         ElseIf menuId = 70 Then
             .GetText .ColLetterToNumber("E"), 25, vNgayNop
                 
-        ElseIf menuId = 1 Or menuId = 74 Or menuId = 75 Or menuId = 3 Or menuId = 71 Then
+        ElseIf menuId = 1 Or menuId = 74 Or menuId = 75 Or menuId = 3 Or menuId = 71 Or menuId = 95 Then
             .GetText .ColLetterToNumber("E"), 32, vNgayNop
         ElseIf menuId = 2 Or menuId = 59 Then
             .GetText .ColLetterToNumber("E"), 32, vNgayNop
@@ -1169,7 +1169,7 @@ Private Sub cmdSave_Click()
             
         ElseIf menuId = 11 Then
             .GetText .ColLetterToNumber("M"), 32, vNGAYQUET
-        ElseIf menuId = 1 Or menuId = 74 Or menuId = 75 Or menuId = 3 Or menuId = 71 Then
+        ElseIf menuId = 1 Or menuId = 74 Or menuId = 75 Or menuId = 3 Or menuId = 71 Or menuId = 95 Then
             .GetText .ColLetterToNumber("M"), 32, vNGAYQUET
         ElseIf menuId = 2 Or menuId = 59 Then
             .GetText .ColLetterToNumber("M"), 32, vNGAYQUET
@@ -1652,25 +1652,80 @@ Private Sub Command1_Click()
 'str1 = "aa320010100100079   092013001002015015/S><S>0~0~0~0</S></S01_7>"
 'Barcode_Scaned str1
 
-str1 = "aa320020100100079   03201300100100101001/0114/06/2006<S01><S>6868686868</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>sdfsdf~~sdfsdfds~12/11/2013~1~~~1</S></S01>"
+'str1 = "aa320020100100079   03201300100100101001/0114/06/2006<S01><S>6868686868</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>sdfsdf~~sdfsdfds~12/11/2013~1~~~1</S></S01>"
+'Barcode_Scaned str1
+'str1 = "aa320020100100079   032013001001002010<S01_2_1><S>~~~~~~0~0~0~</S><S>0~0</S></S01_2_1>"
+'Barcode_Scaned str1
+'str1 = "aa320020100100079   032013001001003010<S01_2_2><S>~~~~~~0~0~0~</S><S>0~0</S></S01_2_2>"
+'Barcode_Scaned str1
+'str1 = "aa320020100100079   032013001001004010<S01_2_3><S>~~~~~~0~0~0~</S><S>0~0</S></S01_2_3>"
+'Barcode_Scaned str1
+'str1 = "aa320020100100079   032013001001005010<S01_2_4><S>~~~~~~0~0~0~</S><S>0~0</S></S01_2_4>"
+'Barcode_Scaned str1
+'str1 = "aa320020100100079   032013001001006010<S01_2_5><S>~~~~~~0~0~0~</S><S>0~0</S></S01_2_5>"
+'Barcode_Scaned str1
+'str1 = "aa320020100100079   032013001001007010<S01_2_6><S>~~~~~~0~0~0~</S><S>0~0</S></S01_2_6>"
+'Barcode_Scaned str1
+'str1 = "aa320020100100079   032013001001008010<S01_2_7><S>~~~~~~0~0~0~</S><S>0~0</S></S01_2_7>"
+'Barcode_Scaned str1
+'str1 = "aa320020100100079   032013001001009010<S01_2_8><S>~~~~~~0~0~0~</S><S>0~0</S></S01_2_8>"
+'Barcode_Scaned str1
+'str1 = "aa320020100100079   032013001001010010<S01_2_9><S>~~~~~~0~0~0~</S><S>0~0</S></S01_2_9>"
+'Barcode_Scaned str1
+
+'str1 = "aa320040100100079   10201300000000100101/0114/06/2006<S01><S>6868686868</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>sdfsdf~~sdfsdfds~12/11/2013~1~~~0</S></S01>"
+'Barcode_Scaned str1
+'str1 = "aa320950100100079   10201300100300100501/0114/06/2006<S01><S>6868686868</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>sdfsdf~~sdfsdfds~12/11/2013~1~~~0</S></S01>"
+'Barcode_Scaned str1
+'str1 = "aa320950100100079   102013001003002005<S01_1><S>UQE~ueq~01/01/2013~fsdf~6868686868~dsfsd~43223423~</S><S>~~~~~~"
+'Barcode_Scaned str1
+'str1 = "aa320950100100079   1020130010030030050~</S><S>~~~~~~0~</S><S>01/01/2013~~~~~~0~</S><S>43223423~0</S></S01_1>"
+'Barcode_Scaned str1
+'str1 = "aa320950100100079   102013001003004005<S01_2><S>SDFDS~23423~01/01/2013~6868686868~6868686868~edrfwer~43534543~</"
+'Barcode_Scaned str1
+'str1 = "aa320950100100079   102013001003005005S><S>~~~~~~0~</S><S>~~~~~~0~</S><S>~~~~~~0~</S><S>43534543~0</S></S01_2>"
+'Barcode_Scaned str1
+
+'str1 = "aa320710100100079   10201300100100100101/0101/01/1900<S01><S>6868686868</S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0~0</S><S>0~0~0~</S><S>0~0</S><S>sdfsdf~~sdfsdfds~12/11/2013~1~~~0</S></S01>"
+'Barcode_Scaned str1
+
+'str1 = "aa320720100100079   10201300000000100101/0114/06/2006<S01><S>6868686868</S><S>0~0~0~0~0</S><S>sdfsdf~~sdfsdfds~13/11/2013~1~~</S></S01>"
+'Barcode_Scaned str1
+
+'str1 = "aa320120100100079   03201300000000100201/0114/06/2006<S01><S>6868686868</S><S>x~x~0~0~0~0~0~~0~0~0~0~0~0~</S><S>~13/11/2013~sdfsdf~sdfsdfds~1~~1052~</S></S01>"
+'Barcode_Scaned str1
+'str1 = "aa320120100100079   032013000000002002<S01-1><S>0</S><S>~~0~0~</S></S01-1>"
+'Barcode_Scaned str1
+
+'str1 = "aa320730100100079   03201300000000100201/0114/06/2006<S02><S>6868686868</S><S>0~0~0~0~0~0~0~0~0~0~0~23~0~0~0~0~0~23"
+'Barcode_Scaned str1
+'str1 = "aa320730100100079   032013000000002002~1~0</S><S>1~~~~~~~</S><S>sdfsdf~sdfsdfds~~13/11/2013~1~~~1053~x~x</S></S02>"
+'Barcode_Scaned str1
+
+'str1 = "aa320500100100079   10201300000100100101/0101/01/2010<S01><S>6868686868</S><S>0~0~0~0~0~0~0~0~0~0~0~0</S><S>ewr~11/11/2013~sdfsdf~sdfsdfds~1~~</S></S01>"
+'Barcode_Scaned str1
+
+'str1 = "aa320360100100079   03201300000000100101/0101/01/2010<S07><S>6868686868</S><S>~0~0~27000000~27000000~0~0~0~0~0~0~0~0~0~0~20~0</S><S>~13/11/2013~sdfsdf~sdfsdfds~1~~~1</S></S07>"
+'Barcode_Scaned str1
+
+'str1 = "aa320740100100079   03201300000000100101/0101/01/1900<S01><S>6868686868</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~13/11/2013~sdfsdf~sdfsdfds~1~</S></S01>"
+'Barcode_Scaned str1
+
+'str1 = "aa320750100100079   03201300100300100201/0101/01/1900<S01><S>6868686868</S><S>65~3~34</S><S>~~0~0~"
+'Barcode_Scaned str1
+'str1 = "aa320750100100079   0320130010030020020~0~0~0~0~0</S><S>~13/11/2013~sdfsdf~sdfsdfds~1~</S></S01>"
+'Barcode_Scaned str1
+
+'str1 = "aa320700100100079   10201300000000100101/0101/01/1900<S01><S>6868686868</S><S>~~~0~~0~0~0~0~0~0~0~0~0</S><S>0~0~0~0~0~0</S><S>X~</S><S>sdfsdf~sdfsdfds~~13/11/2013~1~~~</S></S01>"
+'Barcode_Scaned str1
+
+'str1 = "aa320810100100079   10201300000000100101/0101/01/1900<S01><S>6868686868</S><S>~~~0~~0~0~0~0</S><S>0~0~0~0</S><S>1~</S><S>sdfsdf~~sdfsdfds~13/11/2013~1~1~~</S></S01>"
+'Barcode_Scaned str1
+
+
+str1 = "aa320060100100079   10201300000000100201/0114/06/2006<S01><S>6868686868</S><S>~~0.000~0.00~0.000~0~0.00</S><S>~~"
 Barcode_Scaned str1
-str1 = "aa320020100100079   032013001001002010<S01_2_1><S>~~~~~~0~0~0~</S><S>0~0</S></S01_2_1>"
-Barcode_Scaned str1
-str1 = "aa320020100100079   032013001001003010<S01_2_2><S>~~~~~~0~0~0~</S><S>0~0</S></S01_2_2>"
-Barcode_Scaned str1
-str1 = "aa320020100100079   032013001001004010<S01_2_3><S>~~~~~~0~0~0~</S><S>0~0</S></S01_2_3>"
-Barcode_Scaned str1
-str1 = "aa320020100100079   032013001001005010<S01_2_4><S>~~~~~~0~0~0~</S><S>0~0</S></S01_2_4>"
-Barcode_Scaned str1
-str1 = "aa320020100100079   032013001001006010<S01_2_5><S>~~~~~~0~0~0~</S><S>0~0</S></S01_2_5>"
-Barcode_Scaned str1
-str1 = "aa320020100100079   032013001001007010<S01_2_6><S>~~~~~~0~0~0~</S><S>0~0</S></S01_2_6>"
-Barcode_Scaned str1
-str1 = "aa320020100100079   032013001001008010<S01_2_7><S>~~~~~~0~0~0~</S><S>0~0</S></S01_2_7>"
-Barcode_Scaned str1
-str1 = "aa320020100100079   032013001001009010<S01_2_8><S>~~~~~~0~0~0~</S><S>0~0</S></S01_2_8>"
-Barcode_Scaned str1
-str1 = "aa320020100100079   032013001001010010<S01_2_9><S>~~~~~~0~0~0~</S><S>0~0</S></S01_2_9>"
+str1 = "aa320060100100079   1020130000000020020.000~0.00~0.000~0~0.00</S><S>sdfsdf~sdfsdfds~~13/11/2013~1~~0</S></S01>"
 Barcode_Scaned str1
 
 
@@ -1900,7 +1955,7 @@ On Error GoTo ErrHandle
             varBuff = MSComm1.Input
             lByte = varBuff
             For i = 0 To UBound(lByte)
-                If Chr$(lByte(i)) <> "#" Then
+                If Chr$(lByte(i)) <> "" Then
                     strTemp = strTemp & Chr$(lByte(i))
                 Else
                     Barcode_Scaned TAX_Utilities_Svr_New.Convert(strTemp, TCVN, UNICODE)
@@ -2235,7 +2290,7 @@ Private Sub GetCells(xmlSectionTemplate As MSXML.IXMLDOMNode, arrStrValue() As S
     While lCtrl <= UBound(arrStrValue) And Not xmlSectionTemplate.selectNodes("Cells/Cell")(lCtrl2) Is Nothing
         If GetAttribute(xmlSectionTemplate.selectNodes("Cells/Cell")(lCtrl2), "Receive") <> "0" Then
             SetAttribute xmlSectionTemplate.selectNodes("Cells/Cell")(lCtrl2), "Value", _
-                Replace(Replace(arrStrValue(lCtrl), "1" & Chr$(20) & Chr$(20) & "1", "#"), Chr$(20), "~")
+                Replace(Replace(arrStrValue(lCtrl), "1" & Chr$(20) & Chr$(20) & "1", ""), Chr$(20), "~")
         Else
             lCtrl = lCtrl - 1
         End If
