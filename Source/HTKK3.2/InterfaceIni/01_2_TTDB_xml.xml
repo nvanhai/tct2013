@@ -17,7 +17,7 @@
 			<thueNLMVaoChuaKTru>K_10</thueNLMVaoChuaKTru>
 		</ThueNLMVao>
 	</Dynamic>
-	<Static GroupName="ThueNLMVao">
+	<Static GroupName="TTinThueNLMVao">
 		<tongThueNLMVaoDNop>H_12</tongThueNLMVaoDNop>
 		<tongThueNLMVaoDaKTru>J_12</tongThueNLMVaoDaKTru>
 		<tongthueNLMVaoChuaKTru>K_12</tongthueNLMVaoChuaKTru>
@@ -32,7 +32,7 @@
 			<tongThueTTDBDuocKTru>K_20</tongThueTTDBDuocKTru>
 		</ThueNLDuocKTru>
 	</Dynamic>
-	<Static GroupName="ThueNLDuocKTru">
+	<Static GroupName="TTinThueNLDuocKTru">
 		<tongTTDBNLDuocKTru>K_22</tongTTDBNLDuocKTru>
 	</Static>
 </PLuc02_TTDB>

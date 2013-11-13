@@ -28,8 +28,10 @@
 			<ct26>C_51</ct26>
 			<ct27>H_51</ct27>
 			<ct28>L_51</ct28>
-			<ct29>N_51</ct29>
-			<ct30>P_51</ct30>
+			<ThuNhapChiuThue>
+				<ct29>N_51</ct29>
+				<ct30>P_51</ct30>
+			</ThuNhapChiuThue>
 			<ct31>R_51</ct31>
 			<ct32>T_51</ct32>
 			<ct33>V_51</ct33>
