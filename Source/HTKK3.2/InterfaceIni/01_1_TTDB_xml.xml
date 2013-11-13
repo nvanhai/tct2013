@@ -3,6 +3,7 @@
 		<ThoiGianNopTKhaiChinh/>
 	</Static>
 	<Dynamic GroupName="ChiTietPLucBRaChiuThueTTDB">
+		<PLucBRaChiuThue id="id">
 			<ct2>C_37</ct2>
 			<ct3>D_37</ct3>
 			<ct4>E_37</ct4>
