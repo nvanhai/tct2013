@@ -56,7 +56,7 @@
   	       <Cell CellID="V_75"   Value="  "  MCT="  "/> 	  		 
 		</Cells>
 	</Section>
-		<Section Dynamic="0" MaxRows="0">
+	<Section Dynamic="0" MaxRows="0">
 		<Cells>			
 			<Cell CellID="P_49"   Value="  "  MCT="  "/> 	  		 
 			<Cell CellID="Q_49"   Value="  "  MCT="  "/> 			
@@ -68,7 +68,7 @@
   	       <Cell CellID="Q_28"   Value="  "  MCT="  "/>
 		</Cells>
 	</Section>
-		<Section Dynamic="0" MaxRows="0">
+	<Section Dynamic="0" MaxRows="0">
 		<Cells>
 		   	<Cell CellID="G_78"  Value="  "  MCT="  "/> 	  		 
   	       <Cell CellID="T_78"   Value="  "  MCT="  "/> 	  	 	 
@@ -78,7 +78,8 @@
   	       <Cell CellID="O_49"   Value="  "  MCT="  "/> 	  	 	 
   	       <Cell CellID="M_50"   Value="  "  MCT="  "/> 
 		   <Cell CellID="S_49"   Value="  "  MCT="  "/>
-		   <Cell CellID="H_7"   Value=""/>
+		   <Cell CellID="B_76"   Value="" MCT="  "/>
+		   <Cell CellID="H_7"   Value="" MCT="  "/>
 		</Cells>
 	</Section>
 </Sections>

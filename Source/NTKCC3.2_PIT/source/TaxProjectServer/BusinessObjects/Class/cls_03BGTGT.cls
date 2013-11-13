@@ -227,7 +227,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         lSoPhongXL = i
         
         'set to khai thang/quy
-        .GetText .ColLetterToNumber("J"), 61, LoaiKyKK
+        .GetText .ColLetterToNumber("J"), 60, LoaiKyKK
 
         If LoaiKyKK = "0" Then
             MATKHAI = "'03B/GTGT'"
@@ -3020,17 +3020,16 @@ Public Function InsertHDR() As String
             NGNHAP = "CTOD('" & Format(NGNHAP, "mm/dd/yyyy") & "')"
         End If
         
-        .GetText .ColLetterToNumber("R"), 47, ThueTKy
+        .GetText .ColLetterToNumber("R"), 51, ThueTKy
          If Trim(ThueTKy) = vbNullString Then
             ThueTKy = "0"
         End If
 
-        .GetText .ColLetterToNumber("M"), 42, MuaVao
-        .GetText .ColLetterToNumber("S"), 42, BanRa
-        .GetText .ColLetterToNumber("X"), 42, vTT28
-        
+        .GetText .ColLetterToNumber("M"), 46, MuaVao
+        .GetText .ColLetterToNumber("S"), 46, BanRa
+        .GetText .ColLetterToNumber("X"), 46, vTT28
         GTTinhThue = Val(BanRa) + Val(MuaVao) + Val(vTT28)
-        GTTinhThue = Trim(str(GTTinhThue))
+        GTTinhThue = Trim(GTTinhThue)
         
         
         DaGhi = ".F."
@@ -3039,11 +3038,10 @@ Public Function InsertHDR() As String
         KTTRUOC = 0
         DANHAN = "''"
         
-        .GetText .ColLetterToNumber("M"), 30, MuaVao
-        .GetText .ColLetterToNumber("S"), 40, BanRa
-        .GetText .ColLetterToNumber("X"), 40, vTT28
-        DoanhSo = Val(BanRa) + Val(MuaVao) + Val(vTT28)
-        DoanhSo = Trim(DoanhSo)
+        .GetText .ColLetterToNumber("R"), 49, DoanhSo
+         If Trim(DoanhSo) = vbNullString Then
+            DoanhSo = "0"
+        End If
         
        
         MAPP2 = "'2'"
@@ -3106,7 +3104,7 @@ Public Function TKTT() As Boolean
     Dim strFileNameHDR As String
     Dim strFileNameDTL As String
     Dim strFileNameIDX As String
-    
+    Dim strFileNamePL As String
 '    'kiem tra ton tai tep *.dbf chua
 '    strFileNameHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TK" & sKyKeKhai & ".DBF"
 '    If fso.FileExists(strFileNameHDR) = False Then
@@ -3128,6 +3126,7 @@ Public Function TKTT() As Boolean
         strFileNameDTL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_DG" & sKyKeKhai & ".DBF"
         Dim strFileNameBS As String
         strFileNameBS = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_BS" & sKyKeKhai & ".DBF"
+        strFileNamePL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_P3B" & sKyKeKhai & ".DBF"
         'file HDR
         If fso.FileExists(strFileNameHDR) = False Then
             Dim strTepmauHDR As String
@@ -3146,7 +3145,12 @@ Public Function TKTT() As Boolean
             strTepmauBS = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "\tepmau\TMP_BS.DBF"
             fso.CopyFile strTepmauBS, strFileNameBS, False
         End If
-
+        'file phu luc
+        If fso.FileExists(strFileNamePL) = False Then
+            Dim strTepmauPL As String
+            strTepmauPL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "\tepmau\TMP_P3B.DBF"
+            fso.CopyFile strTepmauPL, strFileNamePL, False
+        End If
         isExistFile = True
 
 '
@@ -3532,7 +3536,6 @@ Public Function InsertDTL_PL1() As String
     Dim madtnt As Variant
     Dim ngnop As Variant
     Dim KYLBO As Variant
-    Dim kykkhai As Variant
     Dim KYTTBS As Variant
 
     Dim LOAIHD As Variant
@@ -4035,7 +4038,7 @@ Public Function InsertDTL_PL2() As String
     Dim madtnt As Variant
     Dim ngnop As Variant
     Dim KYLBO As Variant
-    Dim kykkhai As Variant
+
     Dim KYTTBS As Variant
 
     Dim LOAIHD As Variant
