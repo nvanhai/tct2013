@@ -629,8 +629,8 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("G"), 15, vTIN_DL
         .GetText .ColLetterToNumber("I"), 19, vSO_HOP_DONG
         .GetText .ColLetterToNumber("S"), 19, vNGAY_HOP_DONG
-        .GetText .ColLetterToNumber("I"), 61, vLAN_BS
-        .GetText .ColLetterToNumber("C"), 61, vCHINH_THUC
+        .GetText .ColLetterToNumber("I"), 64, vLAN_BS
+        .GetText .ColLetterToNumber("C"), 64, vCHINH_THUC
         If Trim(vCHINH_THUC) = "1" Then
             vLAN_BS = "0"
         End If

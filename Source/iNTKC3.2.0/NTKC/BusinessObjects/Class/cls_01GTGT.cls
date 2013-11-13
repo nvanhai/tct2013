@@ -74,6 +74,29 @@ Public strEmailDL As String
 Public strSoHopDongDL As String
 Public strNgayHopDongDL As String
 
+Private Sub DataDM(ByVal Id As String, Optional ByRef TenTN As String)
+Dim arrDanhsach() As String
+Dim strDataFileName As String
+Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+Dim xmlNode As MSXML.IXMLDOMNode
+
+       strDataFileName = "..\InterfaceTemplates\xml\Catalogue_Tinh_Thanh.xml"
+    
+       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If Id = arrDanhsach(1) Then
+                            TenTN = arrDanhsach(3)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub
+
 Public Function Prepared1() As Boolean
         Dim ThangKK As Integer
         Dim xmlDOMdata As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
@@ -160,6 +183,7 @@ End Function
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
     Dim i As Integer
     Dim varMaDM As Variant
+    Dim TenDM As String
     Dim LOAI_KYKK As String
 
     i = 0
@@ -219,7 +243,82 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
             .Lock = True
         End If
         ' End set gia han
-
+        
+        ' Phu luc 05
+        .Sheet = 7
+        .Col = .ColLetterToNumber("C")
+        i = 0
+        Do
+            .GetText .ColLetterToNumber("C"), i + 22, varMaDM
+            DataDM varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
+                .Col = .ColLetterToNumber("D")
+                .Row = 22 + i
+                .Text = TenDM
+            End If
+            UpdateCell fps, .Col, .Row, .Text
+             i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = i + 22
+        Loop Until .Text = "aa" Or varMaDM = ""
+        
+        ' Phu luc 06
+        
+        .Sheet = 8
+        .Col = .ColLetterToNumber("E")
+        i = 0
+        Do
+            .GetText .ColLetterToNumber("E"), 8 + i, varMaDM
+            DataDM varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
+                .Col = .ColLetterToNumber("F")
+                .Row = 8 + i
+                .Text = TenDM
+            End If
+            UpdateCell fps, .Col, .Row, .Text
+            
+             i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = i + 8
+        Loop Until .Text = "aa" Or varMaDM = ""
+        
+        ' Phu luc 6B
+        .Sheet = 9
+        .Col = .ColLetterToNumber("D")
+        i = 0
+        Do
+            .GetText .ColLetterToNumber("D"), 7 + i, varMaDM
+            DataDM varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
+                .Col = .ColLetterToNumber("E")
+                .Row = 7 + i
+                .Text = TenDM
+            End If
+            UpdateCell fps, .Col, .Row, .Text
+            
+             i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = i + 7
+        Loop Until .Text = "aa" Or varMaDM = ""
+        
+        ' Phu luc 02TD
+        .Sheet = 12
+        .Col = .ColLetterToNumber("D")
+        i = 0
+        Do
+            .GetText .ColLetterToNumber("D"), 6 + i, varMaDM
+            DataDM varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
+                .Col = .ColLetterToNumber("E")
+                .Row = 6 + i
+                .Text = TenDM
+            End If
+            UpdateCell fps, .Col, .Row, .Text
+            
+             i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = i + 6
+        Loop Until .Text = "aa" Or varMaDM = ""
     End With
     
     Prepared2 = True
@@ -681,7 +780,7 @@ On Error GoTo ErrHandle
                     End If
                 Case "AB_41"
                     VMaLyDoGH = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "AB_42"
+                Case "K_78"
                     LOAI_KYKK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
 
             End Select
@@ -846,8 +945,8 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("F"), 20, vTIN_DL
         .GetText .ColLetterToNumber(SO_HOP_DONG_DL_COL), SO_HOP_DONG_DL_ROW, vSO_HOP_DONG
         .GetText .ColLetterToNumber(NGAY_HOP_DONG_DL_COL), NGAY_HOP_DONG_DL_ROW, vNGAY_HOP_DONG
-        .GetText .ColLetterToNumber("I"), 74, vLAN_BS
-        .GetText .ColLetterToNumber("C"), 74, vCHINH_THUC
+        .GetText .ColLetterToNumber("I"), 77, vLAN_BS
+        .GetText .ColLetterToNumber("C"), 77, vCHINH_THUC
         
         .GetText .ColLetterToNumber(NGANH_NGHE_KD_COL), NGANH_NGHE_KD_ROW, vNGANH_NGHE_KD
         vNGANH_NGHE_KD = "'" & vNGANH_NGHE_KD & "'"

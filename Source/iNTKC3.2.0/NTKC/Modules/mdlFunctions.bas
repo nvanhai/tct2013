@@ -16,9 +16,9 @@ Public dNgayDauKy As Date
 Public dNgayCuoiKy As Date
 
 Public Const SS_SORT_ORDER_ASCENDING = 1
-Public Const APP_VERSION = "3.1.8"
+Public Const APP_VERSION = "3.2.0"
 
-Public Const HTKK_LAST_VERSION = "3.1.7"
+Public Const HTKK_LAST_VERSION = "9.9.9"
 
 Public Const SS_BORDER_TYPE_NONE = 0
 Public Const SS_BORDER_TYPE_LEFT = 1
@@ -1142,6 +1142,7 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "71" Then changeMaToKhai = "04_GTGT11"
     If strID = "72" Then changeMaToKhai = "05_GTGT11"
     If strID = "86" Then changeMaToKhai = "01_BVMT11"
+    If strID = "90" Then changeMaToKhai = "01_TBVMT11"
     If strID = "87" Then changeMaToKhai = "02_BVMT11"
     If strID = "77" Then changeMaToKhai = "02_TAIN11"
     
@@ -1179,7 +1180,8 @@ Public Function changeMaToKhai(strID As String) As String
     
     If strID = "18" Then changeMaToKhai = "15_BCTC"
     If strID = "69" Then changeMaToKhai = "15_BCTC10"
-    If strID = "19" Then changeMaToKhai = "48_BCTC"
+    'update v3.2.0
+    If strID = "19" Then changeMaToKhai = "48_BCTC13"
     If strID = "20" Then changeMaToKhai = "16_BCTC"
     If strID = "21" Then changeMaToKhai = "99_BCTC"
     
@@ -1212,6 +1214,8 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "68" Then changeMaToKhai = "BC26_AC"
     If strID = "91" Then changeMaToKhai = "04_TBAC"
     
+    'Mau moi V3.2.0
+    If strID = "94" Then changeMaToKhai = "01_TD_GTGT13"
 End Function
 
 ' Ham change sang ma cua QLT

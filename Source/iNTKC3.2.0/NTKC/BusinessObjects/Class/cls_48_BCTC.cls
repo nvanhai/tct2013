@@ -257,12 +257,24 @@ End Sub
 
 Public Function CheckValidData() As Boolean
     Dim varCheckValue As Variant, varNoteValue As Variant
+    Dim varNgayNop As Variant
     
     CheckValidData = True
     With fps
         .Sheet = 1
         .GetText .ColLetterToNumber("E"), 14, varCheckValue
         .GetText .ColLetterToNumber("M"), 14, varNoteValue
+        .GetText .ColLetterToNumber("E"), 12, varNgayNop
+        
+        If CStr(Trim(varNgayNop)) = "" Or CStr(Trim(varNgayNop)) = "../../...." Then
+            .Sheet = .SheetCount
+            .SetText 2, 15, "0"
+            CheckValidData = False
+        Else
+            .Sheet = .SheetCount
+            .SetText 2, 15, "1"
+        End If
+        
         If CStr(varCheckValue) = "1" And Trim(CStr(varNoteValue)) = "" Then
             .Sheet = .SheetCount
             .SetText 2, 14, "0"
@@ -346,7 +358,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     
-    vLOAI_TKHAI = "48_BCTC"
+    vLOAI_TKHAI = "48_BCTC13"
     
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
@@ -424,6 +436,21 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
             End If
            UpdateCell fps, .Col, .Row, .Text
         End If
+            If Col = .ColLetterToNumber("E") And Row = 12 Then
+                .GetText Col, Row, varTemp
+                If varTemp <> "" And varTemp <> "../../...." Then
+                    If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+                        .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+                    Else
+                        .SetActiveCell Col, Row
+                    End If
+'                Else
+'                 .SetActiveCell Col, Row
+                End If
+               .Col = Col
+               .Row = Row
+               UpdateCell fps, .Col, .Row, .Text
+            End If
     End If
 End With
 End Sub
