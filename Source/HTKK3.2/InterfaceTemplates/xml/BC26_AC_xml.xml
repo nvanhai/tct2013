@@ -20,6 +20,8 @@
 					<kyKKhai>String</kyKKhai>
 					<kyKKhaiTuNgay>String</kyKKhaiTuNgay>
 					<kyKKhaiDenNgay>String</kyKKhaiDenNgay>
+					<kyKKhaiTuThang>String</kyKKhaiTuThang>
+					<kyKKhaiDenThang>String</kyKKhaiDenThang>
 				</KyKKhaiThue>
 				<maCQTNoiNop>String</maCQTNoiNop>
 				<tenCQTNoiNop>token</tenCQTNoiNop>
