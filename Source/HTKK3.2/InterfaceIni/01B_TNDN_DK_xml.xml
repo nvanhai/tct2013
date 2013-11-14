@@ -36,12 +36,6 @@
 		<ct30>AV_61</ct30>
 		<ct31>AV_62</ct31>
 	</Static>
-	<Dynamic GroupName="ThongTinTKhoanNganHang">
-		<TKhoanNganHang id="id">
-			<soTKhoan>G_69</soTKhoan>
-			<taiNganHang>X_69</taiNganHang>
-		</TKhoanNganHang>
-	</Dynamic>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>AR_74</nguoiKy>
 		<ngayKy>AR_76</ngayKy>
