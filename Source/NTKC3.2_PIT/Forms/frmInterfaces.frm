@@ -1049,7 +1049,7 @@ Private Sub cmdSave_Click()
             ' nvhai
             ' Neu la ID cua cac BCTC in bang HTKK 2.1.0
             ' begin
-            If (Val(idToKhai) = 24 Or Val(idToKhai) = 25 Or Val(idToKhai) = 26 Or Val(idToKhai) = 27 Or Val(idToKhai) = 28 Or Val(idToKhai) = 29 Or Val(idToKhai) = 30 Or Val(idToKhai) = 31 Or Val(idToKhai) = 32 Or Val(idToKhai) = 33 Or Val(idToKhai) = 34 Or Val(idToKhai) = 35 Or Val(idToKhai) = 55 Or Val(idToKhai) = 56 Or Val(idToKhai) = 57 Or Val(idToKhai) = 58) Then
+            If (Val(idToKhai) = 25 Or Val(idToKhai) = 26 Or Val(idToKhai) = 27 Or Val(idToKhai) = 28 Or Val(idToKhai) = 29 Or Val(idToKhai) = 30 Or Val(idToKhai) = 31 Or Val(idToKhai) = 32 Or Val(idToKhai) = 33 Or Val(idToKhai) = 34 Or Val(idToKhai) = 35 Or Val(idToKhai) = 55 Or Val(idToKhai) = 56 Or Val(idToKhai) = 57 Or Val(idToKhai) = 58) Then
                 flgBCTC = True
 
                 If verToKhai = 0 Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
@@ -1131,9 +1131,9 @@ Private Sub cmdSave_Click()
     Set rs = Nothing
 
     
-    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 6 Or idToKhai = 72 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 71 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 90 Or idToKhai = 95 Or idToKhai = 92 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 98 Or idToKhai = 99 Or idToKhai = 24 Then
+    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 6 Or idToKhai = 72 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 71 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 90 Or idToKhai = 95 Or idToKhai = 92 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 99 Or idToKhai = 24 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28").nodeValue)
-    ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 5 Or idToKhai = 70 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Then
+    ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 5 Or idToKhai = 70 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Or idToKhai = 98 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28_NNKD").nodeValue)
     Else
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdr").nodeValue)
@@ -1387,6 +1387,7 @@ Private Sub Command1_Click()
 '    str2 = "aa999993600247325   032013007007002002<S01-1><S>223290000000</S><S>2600364972~cmc~12~26794800000~ghi chu1~2600634890~tct~11~24561900000~ghi chu 2</S><S>51356700000</S></S01-1>"
 '    Barcode_Scaned str2
 
+''95_BCTC
 'str2 = "aa999223600247325   00201201101100100901/0101/01/1900<S01><S>~117~0~~3~0~V.01~1~0~~2~0~V.02~7~0~~3~0~~4~0~V.11~46~0~~5~0~~6~0~~7~0~~8~0~~9~0~~11~0~V.02~12~0~~49~0~~13~0~~1~0~~4~0~~15~0~~16~0~~720~0~V.11~97~0~~17~0~~18~0~~19~0~~21~0~~22~0~~182~0~V.05~47~0~~"
 'Barcode_Scaned str2
 'str2 = "aa999223600247325   00201201101100200923~0~~24~0~~51~0~~25~0~~26~0~V.06~55~0~~27~0~~28~0~~29~0~~63~0~~31~0~~32~0~~213~0~~33~0~~34~0~~71~0~~35~0~~36~0~V.04~37~0~~38~0~~165~0~V.07~39~0~V.09~41~0~V.10~42~0~~43~0~~837~0~~547~0~~388~0~~44~0~~45~0~~46~0~V.08~47~"
@@ -1412,12 +1413,106 @@ Private Sub Command1_Click()
 'str2 = "aa999733600247325   0320130040050020023~1~0</S><S>1~~Giang S¬n~0010011000~Hoµng Mai, HN~23~14/09/2013~20/09/2013</S><S>Truong Giang~KTV~Huyen Tram~08/11/2013~1~~~1053~0~0</S></S02>"
 'Barcode_Scaned str2
 
-str2 = "aa999943600247325   10201300300300100201/0114/06/2006<S01><S>0102030405</S><S>1000000~1200~1200000000~10~120000000~1000000~119000000</S><S>Truong Giang~Huyen Tram~KTV~08/11/2013~1~~</S></S01>"
-Barcode_Scaned str2
-str2 = "aa999943600247325   102013003003002002<S01_2><S>asd~dfasas~0102030405~Côc ThuÕ Thµnh phè Hµ Néi~11~22321~10100</S><S>22321</S></S01_2>"
-Barcode_Scaned str2
+'str2 = "aa999943600247325   10201300300300100201/0114/06/2006<S01><S>0102030405</S><S>1000000~1200~1200000000~10~120000000~1000000~119000000</S><S>Truong Giang~Huyen Tram~KTV~08/11/2013~1~~</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999943600247325   102013003003002002<S01_2><S>asd~dfasas~0102030405~Côc ThuÕ Thµnh phè Hµ Néi~11~22321~10100</S><S>22321</S></S01_2>"
+'Barcode_Scaned str2
 
+''01A_TNDN_DK13
+'str2 = "aa999983600247325   11201300300300100101/0114/06/2006<S01><S>0102030405</S><S>1~x~x~11/11/2013~0~1~0~1~~12/11/2013~KL-TS-01</S><S>1000000~1200~1200000000~11~132000000~1000000~131000000~21500</S><S>0123456789~vietcombanks~2222222222~techcombank</S><S>Truong Giang~KTV~Huyen Tram~12/11/2013</S></S01>"
+'Barcode_Scaned str2
 
+'95_BCTC13
+'str2 = "aa999193600247325   00201201001000102101/0114/09/2006<S01><S>~91~65~III.01~1~2~III.05~5~4~~2~3~~3~1~~22~22~~4~4~~5~5~~6~7~~7~6~~17~12~III.02~8~4~~9~8~~46~25~~10~6~~11~"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   0020120100100020213~~12~7~~13~9~~185~53~III.03.04~45~15~~14~2~~15~5~~16~8~~35~9~~17~2~~18~7~III.05~39~16~~19~7~~20~9~~66~13~~21~2~~22~6~~23~5~~276~"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   002012010010003021118~~161~85~~68~50~~1~2~~2~5~~3~7~III.06~4~3~~5~2~~6~8~~7~6~~8~7~~9~5~~11~3~~12~2~~93~35~~13~7~~14~9~~15~5~~16~4~~17~7~~18~3~~115"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   002012010010004021~33~III.07~115~33~~11~5~~21~3~~12~4~~18~7~~20~3~~10~5~~276~118~~27~0~~28~0~~29~0~~30~0~~30~0~~31.56~0~Huyen Tram~01/11/2013</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   002012010010005021<S01-1><S>IV.08~300~560~~200~200~~100~360~~20~100~~80~260~~10~56~~7~78~~4~34~~8~12~~75~226~~4~47~~2~23~~2~24~IV.09~77~250~~5~12~~72~238~Huyen Tram~01/11/2013</S></S01-1>"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   002012010010006021<S01-2><S>~10~1~~20~2~~30~3~~40~4~~50~5~~60~6~~70~7~~280~"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   00201201001000702128~~23~8~~34~9~~45~11~~23~12~~12~13~~17~14~~154~67~~18~15"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   002012010010008021~~19~16~~45~17~~34~18~~27~19~~38~20~~181~105~~615~200~~10"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   0020120100100090210~21~~120~22~~835~243~Huyen Tram~01/11/2013</S></S01-2>"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   002012010010010021<S01-3><S>~100~200~~23~45~~34~36~~12~17~~16~39~~17~27~~202~364~~18~18~~19~3"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   0020120100100110215~~22~24~~23~6~~24~7~~25~4~~26~7~~27~45~~386~510~~28~23~~29~56~~32~28~~34~1"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   0020120100100120219~~35~26~~36~23~~37~25~~231~200~~38~36~~28~33~~19~31~~27~34~~28~37~~29~46~~"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   002012010010013021169~217~~786~927~~50~6~~51~56~~887~989~Huyen Tram~01/11/2013</S></S01-3>"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   002012010010014021<S01-4><S>13~0~0~0~13~0~1~0~0~0~1~0~9~0~0~0~9~0~3~0~0~0~3~0~15~0~0~0~15~0~4~0~0~0~4~0~5~0~0~0~5~0~6~0~0~0~6~0~7~0~0~0~7~0~8~0~0~0~8~0~19~0~0~0~19~0~9~0~0~0~9~0~10~0~0~0~10~0~33~0~0~0~33~0~22~0~0~0~22~0~11~0~0~0~11~0~23~0~0~0~23~0~12~0~"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   0020120100100150210~0~12~0~13~0~0~0~13~0~14~0~0~0~14~0~15~0~0~0~15~0~16~0~0~0~16~0~17~0~0~0~17~0~18~0~0~0~18~0~62~0~0~0~62~0~19~0~0~0~19~0~21~0~0~0~21~0~22~0~0~0~22~0~23~0~0~0~23~0~75~0~0~0~75~0~24~0~0~0~24~0~25~0~0~0~25~0~26~0~0~0~26~0~114~0~0~0~114~0~"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   00201201001001602127~0~0~0~27~0~28~0~0~0~28~0~29~0~0~0~29~0~30~0~0~0~30~0~31~0~0~0~31~0~99~0~0~0~99~0~32~0~0~0~32~0~33~0~0~0~33~0~34~0~0~0~34~0~35~0~0~0~35~0~111~0~0~0~111~0~36~0~0~0~36~0~37~0~0~0~37~0~38~0~0~0~38~0~39~0~0~0~39~0~41~0~0~0~41~0~0~1~0~0~0"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   002012010010017021~1~0~2~0~0~0~2~0~3~0~0~0~3~0~89~0~0~0~89~0~9~0~0~0~9~0~4~0~0~0~4~0~5~0~0~0~5~0~6~0~0~0~6~0~7~0~0~0~7~0~8~0~0~0~8~0~9~0~0~0~9~0~11~0~0~0~11~0~12~0~0~0~12~0~13~0~0~0~13~0~14~0~0~0~14~0~15~0~0~0~15~0~16~0~0~0~16~0~169~0~0~0~169~0~17~0~0~0"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   002012010010018021~17~0~18~0~0~0~18~0~19~0~0~0~19~0~21~0~0~0~21~0~22~0~0~0~22~0~23~0~0~0~23~0~24~0~0~0~24~0~25~0~0~0~25~0~173~0~0~0~173~0~26~0~0~0~26~0~27~0~0~0~27~0~88~0~0~0~88~0~28~0~0~0~28~0~29~0~0~0~29~0~31~0~0~0~31~0~32~0~0~0~32~0~33~0~0~0~33~0~34~"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   0020120100100190210~0~0~34~0~146~0~0~0~146~0~35~0~0~0~35~0~36~0~0~0~36~0~37~0~0~0~37~0~38~0~0~0~38~0~81~0~0~0~81~0~39~0~0~0~39~0~42~0~0~0~42~0~135~0~0~0~135~0~44~0~0~0~44~0~45~0~0~0~45~0~46~0~0~0~46~0~43~0~0~0~43~0~42~0~0~0~42~0~48~0~0~0~48~0~101~0~0~0~"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   002012010010020021101~0~49~0~0~0~49~0~52~0~0~0~52~174~203~0~0~174~203~42~53~0~0~42~53~43~45~0~0~43~45~44~54~0~0~44~54~45~51~0~0~45~51~46~56~0~0~46~56~144~174~0~0~144~174~47~57~0~0~47~57~48~58~0~0~48~58~49~59~0~0~49~59~50~60~0~0~50~60~51~61~0~0~51~61~52~"
+'Barcode_Scaned str2
+'str2 = "aa999193600247325   00201201001002102162~0~0~52~62~53~63~0~0~53~63~109~129~0~0~109~129~54~64~0~0~54~64~55~65~0~0~55~65~56~66~0~0~56~66~7~67~0~0~7~67~8~68~0~0~8~68~4~69~0~0~4~69~34~76~0~0~34~76~67~74~0~0~67~74~56~73~0~0~56~73~34~71~0~0~34~71~12~25~0~0~12~25~Huyen Tram~01/11/2013</S></S01-4>"
+'Barcode_Scaned str2
+
+'str2 = "aa999192300448300   00201200100100102101/0114/09/2006<S01><S>~91~65~III.01~1~2~III.05~5~4~~2~3~~3~1~~22~22~~4~4~~5~5~~6~7~~7~6~~17~12~III.02~8~4~~9~8~~46~25~~10~6~~11~"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   0020120010010020213~~12~7~~13~9~~185~53~III.03.04~45~15~~14~2~~15~5~~16~8~~35~9~~17~2~~18~7~III.05~39~16~~19~7~~20~9~~66~13~~21~2~~22~6~~23~5~~276~"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   002012001001003021118~~161~85~~68~50~~1~2~~2~5~~3~7~III.06~4~3~~5~2~~6~8~~7~6~~8~7~~9~5~~11~3~~12~2~~93~35~~13~7~~14~9~~15~5~~16~4~~17~7~~18~3~~115"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   002012001001004021~33~III.07~115~33~~11~5~~21~3~~12~4~~23~6~18~7~~20~3~~10~5~~276~118~~27~0~~28~0~~29~0~~30~0~~31.56~0~Huyen Tram~01/11/2013</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   002012001001005021<S01-1><S>IV.08~300~560~~200~200~~100~360~~20~100~~80~260~~10~56~~7~78~~4~34~~8~12~~75~226~~4~47~~2~23~~2~24~IV.09~77~250~~5~12~~72~238~Huyen Tram~01/11/2013</S></S01-1>"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   002012001001006021<S01-2><S>~10~1~~20~2~~30~3~~40~4~~50~5~~60~6~~70~7~~280~"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   00201200100100702128~~23~8~~34~9~~45~11~~23~12~~12~13~~17~14~~154~67~~18~15"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   002012001001008021~~19~16~~45~17~~34~18~~27~19~~38~20~~181~105~~615~200~~10"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   0020120010010090210~21~~120~22~~835~243~Huyen Tram~01/11/2013</S></S01-2>"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   002012001001010021<S01-3><S>~100~200~~23~45~~34~36~~12~17~~16~39~~17~27~~202~364~~18~18~~19~3"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   0020120010010110215~~22~24~~23~6~~24~7~~25~4~~26~7~~27~45~~386~510~~28~23~~29~56~~32~28~~34~1"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   0020120010010120219~~35~26~~36~23~~37~25~~231~200~~38~36~~28~33~~19~31~~27~34~~28~37~~29~46~~"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   002012001001013021169~217~~786~927~~50~6~~51~56~~887~989~Huyen Tram~01/11/2013</S></S01-3>"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   002012001001014021<S01-4><S>13~0~0~0~13~0~1~0~0~0~1~0~9~0~0~0~9~0~3~0~0~0~3~0~15~0~0~0~15~0~4~0~0~0~4~0~5~0~0~0~5~0~6~0~0~0~6~0~7~0~0~0~7~0~8~0~0~0~8~0~19~0~0~0~19~0~9~0~0~0~9~0~10~0~0~0~10~0~33~0~0~0~33~0~22~0~0~0~22~0~11~0~0~0~11~0~23~0~0~0~23~0~12~0~"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   0020120010010150210~0~12~0~13~0~0~0~13~0~14~0~0~0~14~0~15~0~0~0~15~0~16~0~0~0~16~0~17~0~0~0~17~0~18~0~0~0~18~0~62~0~0~0~62~0~19~0~0~0~19~0~21~0~0~0~21~0~22~0~0~0~22~0~23~0~0~0~23~0~75~0~0~0~75~0~24~0~0~0~24~0~25~0~0~0~25~0~26~0~0~0~26~0~114~0~0~0~114~0~"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   00201200100101602127~0~0~0~27~0~28~0~0~0~28~0~29~0~0~0~29~0~30~0~0~0~30~0~31~0~0~0~31~0~99~0~0~0~99~0~32~0~0~0~32~0~33~0~0~0~33~0~34~0~0~0~34~0~35~0~0~0~35~0~111~0~0~0~111~0~36~0~0~0~36~0~37~0~0~0~37~0~38~0~0~0~38~0~39~0~0~0~39~0~41~0~0~0~41~0~0~1~0~0~0"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   002012001001017021~1~0~2~0~0~0~2~0~3~0~0~0~3~0~89~0~0~0~89~0~9~0~0~0~9~0~4~0~0~0~4~0~5~0~0~0~5~0~6~0~0~0~6~0~7~0~0~0~7~0~8~0~0~0~8~0~9~0~0~0~9~0~11~0~0~0~11~0~12~0~0~0~12~0~13~0~0~0~13~0~14~0~0~0~14~0~15~0~0~0~15~0~16~0~0~0~16~0~169~0~0~0~169~0~17~0~0~0"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   002012001001018021~17~0~18~0~0~0~18~0~19~0~0~0~19~0~21~0~0~0~21~0~22~0~0~0~22~0~23~0~0~0~23~0~24~0~0~0~24~0~25~0~0~0~25~0~173~0~0~0~173~0~26~0~0~0~26~0~27~0~0~0~27~0~88~0~0~0~88~0~28~0~0~0~28~0~29~0~0~0~29~0~31~0~0~0~31~0~32~0~0~0~32~0~33~0~0~0~33~0~34~"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   0020120010010190210~0~0~34~0~146~0~0~0~146~0~35~0~0~0~35~0~36~0~0~0~36~0~37~0~0~0~37~0~38~0~0~0~38~0~81~0~0~0~81~0~39~0~0~0~39~0~42~0~0~0~42~0~135~0~0~0~135~0~44~0~0~0~44~0~45~0~0~0~45~0~46~0~0~0~46~0~43~0~0~0~43~0~42~0~0~0~42~0~48~0~0~0~48~0~101~0~0~0~"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   002012001001020021101~0~49~0~0~0~49~0~52~0~0~0~52~174~203~0~0~174~203~42~53~0~0~42~53~43~45~0~0~43~45~44~54~0~0~44~54~45~51~0~0~45~51~46~56~0~0~46~56~144~174~0~0~144~174~47~57~0~0~47~57~48~58~0~0~48~58~49~59~0~0~49~59~50~60~0~0~50~60~51~61~0~0~51~61~52~"
+'Barcode_Scaned str2
+'str2 = "aa999192300448300   00201200100102102162~0~0~52~62~53~63~0~0~53~63~109~129~0~0~109~129~54~64~0~0~54~64~55~65~0~0~55~65~56~66~0~0~56~66~7~67~0~0~7~67~8~68~0~0~8~68~4~69~0~0~4~69~34~76~0~0~34~76~67~74~0~0~67~74~56~73~0~0~56~73~34~71~0~0~34~71~12~25~0~0~12~25~~</S></S01-4>"
+'Barcode_Scaned str2
+
+    'BCTL_DK
+str2 = "aa999242300448300   00201200200200100101/0101/01/1900<S01><S></S><S>KL111~0~0~0~0~0~~0~0~0~~0~0~0~~0~0~0~~0~0~0~~0.00~0.00~0.00~~0.00~0.00~0.00~~0.00~0.00~0.00~~0.00~0.00~0.00~</S><S>nguyen van a~Liªn Ph¸i~ict01~14/11/2013</S></S01>"
+Barcode_Scaned str2
+    
 
 
 End Sub
@@ -1662,7 +1757,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
 Dim intBarcodeCount As Long, intBarcodeNo As Long
 Dim strPrefix As String, strBarcodeCount As String, strData As String
 Dim idToKhai As String
-
+Dim tmp As Variant
 On Error GoTo ErrHandle
 
     'Convert from TCVN to UNICODE format
@@ -1880,7 +1975,7 @@ On Error GoTo ErrHandle
                 ' Check version <= 3.1.6
                 If Val(Left$(strData, 3)) <= 316 Then
                     If Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "04" Or Mid$(strData, 4, 2) = "71" Or Mid$(strData, 4, 2) = "36" Then
-                        If Val(IdToKhai) <> 36 Then
+                        If Val(idToKhai) <> 36 Then
                             tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
                             strData = tmp & "~0" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
                         Else
@@ -2226,7 +2321,7 @@ On Error GoTo ErrHandler
     Dim idToKhaiCheck As Integer
     ' Khong check doi voi cac BCTC
     idToKhaiCheck = Val(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
-    If (idToKhaiCheck >= 24 And idToKhaiCheck <= 35) Or (idToKhaiCheck >= 55 And idToKhaiCheck <= 58) Or (idToKhaiCheck >= 18 And idToKhaiCheck <= 21) Or idToKhaiCheck = 69 Then
+    If (idToKhaiCheck >= 25 And idToKhaiCheck <= 35) Or (idToKhaiCheck >= 55 And idToKhaiCheck <= 58) Or (idToKhaiCheck >= 18 And idToKhaiCheck <= 21) Or idToKhaiCheck = 69 Then
         isSheetTk = False
     End If
     
@@ -2728,7 +2823,7 @@ On Error GoTo ErrHandle
     ' begin
     Dim strIDBCTC As String
     strIDBCTC = Left$(strTaxReportInfo, 2)
-     If (Val(strIDBCTC) = 24 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 26 Or Val(strIDBCTC) = 27 Or Val(strIDBCTC) = 28 Or Val(strIDBCTC) = 29 _
+     If (Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 26 Or Val(strIDBCTC) = 27 Or Val(strIDBCTC) = 28 Or Val(strIDBCTC) = 29 _
             Or Val(strIDBCTC) = 30 Or Val(strIDBCTC) = 31 Or Val(strIDBCTC) = 32 Or Val(strIDBCTC) = 33 Or Val(strIDBCTC) = 34 Or Val(strIDBCTC) = 35 _
             Or Val(strIDBCTC) = 55 Or Val(strIDBCTC) = 56 Or Val(strIDBCTC) = 57 Or Val(strIDBCTC) = 58 Or Val(strIDBCTC) = 18 Or Val(strIDBCTC) = 19 _
             Or Val(strIDBCTC) = 20 Or Val(strIDBCTC) = 21 Or Val(strIDBCTC) = 69) Then
