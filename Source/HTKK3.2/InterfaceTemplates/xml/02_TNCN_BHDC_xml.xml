@@ -68,9 +68,31 @@
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
-		<ct21>1</ct21>
-		<ct22>1</ct22>
-		<ct23>1</ct23>
+		<ThuNhapCuaDLyBHiem>
+			<ct21>1</ct21>
+			<ct22>1</ct22>
+			<ct23>1</ct23>
+			<ct24>1</ct24>
+			<ct25>1</ct25>
+		</ThuNhapCuaDLyBHiem>
+		<ThuNhapTichLuyBHNT>
+			<ct26>1</ct26>
+			<ct27>1</ct27>
+			<ct28>1</ct28>
+		</ThuNhapTichLuyBHNT>
+		<ThuNhapTichLuyHuuTri>
+			<ct29>1</ct29>
+			<ct30>1</ct30>
+			<ct31>1</ct31>
+		</ThuNhapTichLuyHuuTri>
+		<ThuNhapThamGiaMangLuoiBHangDCap>
+			<ct32>1</ct32>
+			<ct33>1</ct33>
+			<ct34>1</ct34>
+			<ct35>1</ct35>
+			<ct36>1</ct36>
+			<ct37>1</ct37>
+		</ThuNhapThamGiaMangLuoiBHangDCap>
 	</CTieuTKhaiChinh>
 	<PLuc/>
 </HSoKhaiThue>

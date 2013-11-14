@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":19A5
+         SpreadDesigner  =   "frmInterfaces.frx":1969
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1C69
+      SpreadDesigner  =   "frmInterfaces.frx":1BF1
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -3434,6 +3434,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     On Error GoTo ErrHandle
 
     strKK = strKieuKy
+
     'Set ma to khai cho cac to 01/GTGT, 02/GTGT , 03B/GTGT, 04/GTGT quy
     If xmlTK.getElementsByTagName("maTKhai").length > 0 Then
         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Then
@@ -3504,6 +3505,15 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             End If
         End If
 
+        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "25" Then
+
+            If strQuy = "TK_THANG" Then
+                strKK = "M"
+            ElseIf strQuy = "TK_QUY" Then
+                strKK = "Q"
+            End If
+        End If
+        
         'to TB03,BC21 khong co ky ke khai
         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "67" And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "66" Then
 
@@ -4533,6 +4543,7 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
     Dim nodeMapCT      As MSXML.IXMLDOMNode
     Dim RowLength      As Integer
     Dim RowCount       As Integer
+    Dim valXml         As New MSXML.DOMDocument
 
     With fpSpread1
         .sheet = SheetName
@@ -4579,28 +4590,6 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
                         End If
 
                         For dynamicID = RowLength To RowCount
-                            .CopyRowRange Val(cellArray(1)) + cellRange, Val(cellArray(1)) + cellRange, Val(cellArray(1)) + dynamicID + cellRange
-                       
-                        Next
-
-                        RowLength = RowCount + 1
-
-                    Loop
-
-                    .ReDraw = True
-                    RowCount = 0
-                    RowLength = 1
-
-                    Do While RowLength < nodeTK.childNodes.length - 1
-
-                        If RowCount + 10000 <= nodeTK.childNodes.length - 1 Then
-                            RowCount = RowCount + 10000
-                        Else
-                            RowCount = RowCount + nodeTK.childNodes.length - 1
-                        End If
-
-                        For dynamicID = 0 To nodeTK.childNodes.length - 1
-                            Dim valXml As New MSXML.DOMDocument
                             valXml.loadXML nodeTK.childNodes(dynamicID).xml
 
                             For Each childNodeCT In xmlCts.lastChild.childNodes
@@ -4620,12 +4609,15 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
                             Next
 
                             cellRange = cellRange + GroupCellRange
+                            .CopyRowRange Val(cellArray(1)) + cellRange, Val(cellArray(1)) + cellRange, Val(cellArray(1)) + dynamicID + cellRange
+                            
                         Next
 
                         RowLength = RowCount + 1
 
                     Loop
 
+                    .ReDraw = True
                     cellRange = cellRange - GroupCellRange
                 End If
                                 
