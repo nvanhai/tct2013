@@ -1,5 +1,39 @@
-<PL26MGT-TNCN>
-	<ct06>1</ct06>
-	<ct07>1</ct07>
-	<ct08>1</ct08>
-</PL26MGT-TNCN>
+<PL09_4-TNCN>
+	<ThongTinPhuLuc>
+		<kemTKChinhNam>String</kemTKChinhNam>
+	</ThongTinPhuLuc>
+	<KeKhai>
+		<TongTNhapChiuThuePSinhTrongKy>
+			<ct05>1</ct05>
+			<ct06>1</ct06>
+			<ct07>1</ct07>
+			<ct08>1</ct08>
+			<ct09>1</ct09>
+		</TongTNhapChiuThuePSinhTrongKy>
+		<TongSoThueDaKTru>
+			<ct010>1</ct010>
+			<ct11>1</ct11>
+			<ct12>1</ct12>
+			<ct13>1</ct13>
+		</TongSoThueDaKTru>
+		<ct14>1</ct14>
+		<ct15>1</ct15>
+	</KeKhai>
+	<SoTienTongHopQT>
+		<TongTNhapChiuThuePSinhTrongKy>
+			<ct05>1</ct05>
+			<ct06>1</ct06>
+			<ct07>1</ct07>
+			<ct08>1</ct08>
+			<ct09>1</ct09>
+		</TongTNhapChiuThuePSinhTrongKy>
+		<TongSoThueDaKTru>
+			<ct010>1</ct010>
+			<ct11>1</ct11>
+			<ct12>1</ct12>
+			<ct13>1</ct13>
+		</TongSoThueDaKTru>
+		<ct14>1</ct14>
+		<ct15>1</ct15>
+	</SoTienTongHopQT>
+</PL09_4-TNCN>

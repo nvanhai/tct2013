@@ -20,8 +20,6 @@
 					<kyKKhai>String</kyKKhai>
 					<kyKKhaiTuNgay>String</kyKKhaiTuNgay>
 					<kyKKhaiDenNgay>String</kyKKhaiDenNgay>
-					<kyKKhaiTuThang>String</kyKKhaiTuThang>
-					<kyKKhaiDenThang>String</kyKKhaiDenThang>
 				</KyKKhaiThue>
 				<maCQTNoiNop>String</maCQTNoiNop>
 				<tenCQTNoiNop>token</tenCQTNoiNop>
@@ -71,6 +69,18 @@
 		<ct21>1</ct21>
 		<ct22>1</ct22>
 		<ct23>1</ct23>
+		<ct24>1</ct24>
+		<ct25>1</ct25>
+		<ct26>1</ct26>
+		<ct27>1</ct27>
+		<ct28>1</ct28>
+		<ct29>1</ct29>
+		<ct30>1</ct30>
+		<ct31>1</ct31>
+		<ct32>1</ct32>
+		<ct33>1</ct33>
+		<ct34>1</ct34>
+		<ct35>1</ct35>
 	</CTieuTKhaiChinh>
 	<PLuc/>
 </HSoKhaiThue>
