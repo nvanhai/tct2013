@@ -1049,7 +1049,8 @@ Private Sub cmdSave_Click()
             ' nvhai
             ' Neu la ID cua cac BCTC in bang HTKK 2.1.0
             ' begin
-            If (Val(idToKhai) = 25 Or Val(idToKhai) = 26 Or Val(idToKhai) = 27 Or Val(idToKhai) = 28 Or Val(idToKhai) = 29 Or Val(idToKhai) = 30 Or Val(idToKhai) = 31 Or Val(idToKhai) = 32 Or Val(idToKhai) = 33 Or Val(idToKhai) = 34 Or Val(idToKhai) = 35 Or Val(idToKhai) = 55 Or Val(idToKhai) = 56 Or Val(idToKhai) = 57 Or Val(idToKhai) = 58) Then
+            'remove id 24,25,26 14/11/2013
+            If (Val(idToKhai) = 26 Or Val(idToKhai) = 27 Or Val(idToKhai) = 28 Or Val(idToKhai) = 29 Or Val(idToKhai) = 30 Or Val(idToKhai) = 31 Or Val(idToKhai) = 32 Or Val(idToKhai) = 33 Or Val(idToKhai) = 34 Or Val(idToKhai) = 35 Or Val(idToKhai) = 55 Or Val(idToKhai) = 56 Or Val(idToKhai) = 57 Or Val(idToKhai) = 58) Then
                 flgBCTC = True
 
                 If verToKhai = 0 Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
@@ -1509,11 +1510,12 @@ Private Sub Command1_Click()
 'str2 = "aa999192300448300   00201200100102102162~0~0~52~62~53~63~0~0~53~63~109~129~0~0~109~129~54~64~0~0~54~64~55~65~0~0~55~65~56~66~0~0~56~66~7~67~0~0~7~67~8~68~0~0~8~68~4~69~0~0~4~69~34~76~0~0~34~76~67~74~0~0~67~74~56~73~0~0~56~73~34~71~0~0~34~71~12~25~0~0~12~25~~</S></S01-4>"
 'Barcode_Scaned str2
 
-    'BCTL_DK
-str2 = "aa999242300448300   00201200200200100101/0101/01/1900<S01><S></S><S>KL111~0~0~0~0~0~~0~0~0~~0~0~0~~0~0~0~~0~0~0~~0.00~0.00~0.00~~0.00~0.00~0.00~~0.00~0.00~0.00~~0.00~0.00~0.00~</S><S>nguyen van a~Liªn Ph¸i~ict01~14/11/2013</S></S01>"
-Barcode_Scaned str2
-    
-
+'    'BCTL_DK
+'    str2 = "aa999242300448300   00201200200200100101/0101/01/1900<S01><S></S><S>KL111~0~0~0~0~0~~0~0~0~~0~0~0~~0~0~0~~0~0~0~~0.00~0.00~0.00~~0.00~0.00~0.00~~0.00~0.00~0.00~~0.00~0.00~0.00~</S><S>nguyen van a~Liªn Ph¸i~ict01~14/11/2013</S></S01>"
+'    Barcode_Scaned str2
+    '01_TNCN_BHDC
+    str2 = "aa999252300448300   10201300200200100101/0101/01/1900<S01><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>hoten~chungchihanhnghe~Liªn Ph¸i~14/11/2013~1~~~</S></S01>"
+    Barcode_Scaned str2
 
 End Sub
 
@@ -2321,7 +2323,8 @@ On Error GoTo ErrHandler
     Dim idToKhaiCheck As Integer
     ' Khong check doi voi cac BCTC
     idToKhaiCheck = Val(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
-    If (idToKhaiCheck >= 25 And idToKhaiCheck <= 35) Or (idToKhaiCheck >= 55 And idToKhaiCheck <= 58) Or (idToKhaiCheck >= 18 And idToKhaiCheck <= 21) Or idToKhaiCheck = 69 Then
+    'remove 24,25,26
+    If (idToKhaiCheck >= 27 And idToKhaiCheck <= 35) Or (idToKhaiCheck >= 55 And idToKhaiCheck <= 58) Or (idToKhaiCheck >= 18 And idToKhaiCheck <= 21) Or idToKhaiCheck = 69 Then
         isSheetTk = False
     End If
     
@@ -2823,7 +2826,7 @@ On Error GoTo ErrHandle
     ' begin
     Dim strIDBCTC As String
     strIDBCTC = Left$(strTaxReportInfo, 2)
-     If (Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 26 Or Val(strIDBCTC) = 27 Or Val(strIDBCTC) = 28 Or Val(strIDBCTC) = 29 _
+     If (Val(strIDBCTC) = 27 Or Val(strIDBCTC) = 28 Or Val(strIDBCTC) = 29 _
             Or Val(strIDBCTC) = 30 Or Val(strIDBCTC) = 31 Or Val(strIDBCTC) = 32 Or Val(strIDBCTC) = 33 Or Val(strIDBCTC) = 34 Or Val(strIDBCTC) = 35 _
             Or Val(strIDBCTC) = 55 Or Val(strIDBCTC) = 56 Or Val(strIDBCTC) = 57 Or Val(strIDBCTC) = 58 Or Val(strIDBCTC) = 18 Or Val(strIDBCTC) = 19 _
             Or Val(strIDBCTC) = 20 Or Val(strIDBCTC) = 21 Or Val(strIDBCTC) = 69) Then
