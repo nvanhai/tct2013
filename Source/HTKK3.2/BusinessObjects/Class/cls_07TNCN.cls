@@ -274,9 +274,9 @@ Private Sub CheckDynamicError()
     Dim CT26 As Variant
     Dim CT27 As Variant
     Dim CT28 As Variant
-    Dim CT29 As Variant
+    Dim ct29 As Variant
     Dim CT30 As Variant
-    Dim CT32 As Variant
+    Dim ct32 As Variant
     Dim CT33 As Variant
     Dim CT35 As Variant
     Dim CT36 As Variant
@@ -311,10 +311,10 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("R"), 47, CT26
         .GetText .ColLetterToNumber("R"), 48, CT27
         .GetText .ColLetterToNumber("R"), 49, CT28
-        .GetText .ColLetterToNumber("R"), 50, CT29
+        .GetText .ColLetterToNumber("R"), 50, ct29
                 
         '.GetText .ColLetterToNumber("R"), 51, CT30
-        .GetText .ColLetterToNumber("R"), 53, CT32
+        .GetText .ColLetterToNumber("R"), 53, ct32
         '.GetText .ColLetterToNumber("R"), 57, CT35
         
         .GetText .ColLetterToNumber("R"), 57, CT35
@@ -344,7 +344,7 @@ Private Sub CheckDynamicError()
 '            iFlagEmty = 0
 '        End If
         'sua yc canh bao rang buoc du lieu các muc I,II
-        If (Val(CT22) <> 0 Or Val(CT23) <> 0 Or Val(CT25) <> 0 Or Val(CT26) <> 0 Or Val(CT27) <> 0 Or Val(CT28) <> 0 Or Val(CT29) <> 0 Or Val(CT32) <> 0) And (Val(CT35) <> 0 Or Val(CT37) <> 0) Then
+        If (Val(CT22) <> 0 Or Val(CT23) <> 0 Or Val(CT25) <> 0 Or Val(CT26) <> 0 Or Val(CT27) <> 0 Or Val(CT28) <> 0 Or Val(ct29) <> 0 Or Val(ct32) <> 0) And (Val(CT35) <> 0 Or Val(CT37) <> 0) Then
                 'DisplayMessage "0225", msOKOnly, miInformation
                 iflag = True
         Else
@@ -410,7 +410,7 @@ Private Sub CheckDynamicError()
         ElseIf strTkThangQuy = "TK_QUY" Then
             If (Val(TAX_Utilities_New.ThreeMonths) >= 3 And Val(TAX_Utilities_New.Year) = 2013) Or Val(TAX_Utilities_New.Year) > 2013 Then
                 ' chi tieu 25
-                If Val(CT25) = 27000000 Or Val(CT25) = 0 Then
+                If Val(CT25) <= 27000000 And (Val(CT25) Mod 9000000 = 0) Then
                     .Row = 46
                     .Col = .ColLetterToNumber("R")
                     .BackColor = mNonErrorColor
@@ -437,7 +437,7 @@ Private Sub CheckDynamicError()
                  End If
             Else
                 ' chi tieu 25
-                If Val(CT25) = 12000000 Or Val(CT25) = 0 Then
+                If Val(CT25) <= 12000000 And (Val(CT25) Mod 9000000 = 0) Then
                     .Row = 46
                     .Col = .ColLetterToNumber("R")
                     .BackColor = mNonErrorColor

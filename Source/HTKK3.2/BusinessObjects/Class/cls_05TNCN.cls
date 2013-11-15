@@ -113,14 +113,14 @@ Public Sub Prepare2()
             .Text = StrSolanBosung
             UpdateCell fps, .Col, .Row, .Text
             
-            ' Neu la truong hop bo sung thi hien thi cot B trong bang ke 5A (Có dieu chinh so lieu)
+            ' Neu la truong hop bo sung thi hien thi cot C trong bang ke 5A (Có dieu chinh so lieu)
             .Sheet = 2
             .Col = .ColLetterToNumber("C")
             .ColHidden = False
             
-            ' Neu la truong hop bo sung thi hien thi cot W trong bang ke 5B (Có dieu chinh so lieu)
+            ' Neu la truong hop bo sung thi hien thi cot Z trong bang ke 5B (Có dieu chinh so lieu)
             .Sheet = 3
-            .Col = .ColLetterToNumber("Y")
+            .Col = .ColLetterToNumber("Z")
             .ColHidden = False
         End If
         
@@ -189,7 +189,7 @@ Public Sub Prepare2()
         
         ' Sap xep theo cot thue thu nhap ca nhan da khau tru
         .Row = 19
-        .Col = .ColLetterToNumber("N")
+        .Col = .ColLetterToNumber("P")
         .CellType = CellTypeButton
         .TypeButtonAlign = TypeButtonAlignLeft
         .TypeButtonTextColor = vbBlack
@@ -213,7 +213,7 @@ Public Sub Prepare2()
         .TypeButtonText = GetAttribute(GetMessageCellById("0104"), "Msg")
         'net check chon
         .Row = 20
-        .Col = .ColLetterToNumber("Y")
+        .Col = .ColLetterToNumber("Z")
         .CellType = CellTypeButton
         .TypeButtonAlign = TypeButtonAlignLeft
         .TypeButtonTextColor = vbBlack
@@ -249,7 +249,7 @@ Public Sub Prepare2()
         
         ' Sap xep theo cot thue thu nhap ca nhan da khau tru
         .Row = 19
-        .Col = .ColLetterToNumber("I")
+        .Col = .ColLetterToNumber("J")
         .CellType = CellTypeButton
         .TypeButtonAlign = TypeButtonAlignLeft
         .TypeButtonTextColor = vbBlack
@@ -283,7 +283,7 @@ Public Sub Prepare2()
         Set xmlCellNode = TAX_Utilities_New.Data(2).nodeFromID(GetCellID(fps, .ColLetterToNumber("C"), 22))
         Set xmlCellNode = xmlCellNode.parentNode
         Set xmlCellNode = xmlCellNode.lastChild
-        If Left$(GetAttribute(xmlCellNode, "CellID"), 1) = "Y" Then
+        If Left$(GetAttribute(xmlCellNode, "CellID"), 1) = "Z" Then
             isDFOld05B = False
         Else
             isDFOld05B = True
@@ -323,7 +323,7 @@ Public Sub Prepare2()
         .Row = 22
         Do
              If isDFOld05B = True Then
-                .Col = .ColLetterToNumber("Y")
+                .Col = .ColLetterToNumber("Z")
                 .Text = "0"
             End If
              .Col = .ColLetterToNumber("B")
@@ -367,11 +367,10 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
         .EventEnabled(EventAllEvents) = False
             If .ActiveSheet = 2 Then
                .Sheet = 2
-                
+                ' sap xep theo ho ten
                 If Col = .ColLetterToNumber("D") And Row = 17 Then
                     Y = Col
-                            
-                    .Sort .ColLetterToNumber("D"), 22, .ColLetterToNumber("AH"), (21 + totalRow5A), SortByRow, Y, so
+                    .Sort .ColLetterToNumber("D"), 22, .ColLetterToNumber("BC"), (21 + totalRow5A), SortByRow, Y, so
                     .Refresh
                     
                     ' Chieu sap xep
@@ -382,10 +381,10 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                     End If
                 End If
                 
+                ' sap xep theo TNCT
                 If Col = .ColLetterToNumber("H") And Row = 19 Then
                     Y = Col
-                            
-                    .Sort .ColLetterToNumber("D"), 22, .ColLetterToNumber("AH"), (21 + totalRow5A), SortByRow, Y, so
+                    .Sort .ColLetterToNumber("D"), 22, .ColLetterToNumber("BC"), (21 + totalRow5A), SortByRow, Y, so
                     .Refresh
                     
                     ' Chieu sap xep
@@ -396,9 +395,10 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                     End If
                 End If
                 
-                If Col = .ColLetterToNumber("N") And Row = 19 Then
+                ' sap xep theo so thue da khau tru
+                If Col = .ColLetterToNumber("P") And Row = 19 Then
                     Y = Col
-                    .Sort .ColLetterToNumber("D"), 22, .ColLetterToNumber("AH"), (21 + totalRow5A), SortByRow, Y, so
+                    .Sort .ColLetterToNumber("D"), 22, .ColLetterToNumber("BC"), (21 + totalRow5A), SortByRow, Y, so
                     .Refresh
                     
                     ' Chieu sap xep
@@ -411,21 +411,22 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                 
                 
                  ' neu check se ho tro tinh gia tri thue khau tru theo cong thuc
-                If Col = .ColLetterToNumber("G") And Row >= 22 And Row <= .MaxRows - 8 Then
-                    .GetText .ColLetterToNumber("G"), Row, strCheck
-                    If Trim(strCheck) = "x" Or Trim(strCheck) = "X" Or Trim(strCheck) = "1" Then
-                         'set lai CT
-                        .Col = .ColLetterToNumber("Q")
-                        '.Formula = "ROUND(IF(OR(G22=""1"",G22=""x""),AN22-AO22,0),0)"
-                        '.Formula = "ROUND(IF(OR(G22=""1"",G22=""x""),IF($G$5 = ""2009"", BA22, AN22-AO22),0),0)"
-                        .Formula = "ROUND(IF(OR(G" & Row & "=""1"",G" & Row & "=""x"",G" & Row & "=""X"" ),IF($G$5 = ""2009"", BA" & Row & "-AO" & Row & ", IF(AND($G$5 = ""2012"",AM" & Row & " <=5000000),(AN" & Row & "-AO" & Row & ")/2,AN" & Row & "-AO" & Row & ")),0),0)"
-                        ' End set lai
-                    Else
-                        .Col = .ColLetterToNumber("Q")
-                        .Formula = ""
-                        .value = "0"
-                    End If
-                End If
+                 ' commnt ban 3.1.7
+'                If Col = .ColLetterToNumber("G") And Row >= 22 And Row <= .MaxRows - 8 Then
+'                    .GetText .ColLetterToNumber("G"), Row, strCheck
+'                    If Trim(strCheck) = "x" Or Trim(strCheck) = "X" Or Trim(strCheck) = "1" Then
+'                         'set lai CT
+'                        .Col = .ColLetterToNumber("Q")
+'                        '.Formula = "ROUND(IF(OR(G22=""1"",G22=""x""),AN22-AO22,0),0)"
+'                        '.Formula = "ROUND(IF(OR(G22=""1"",G22=""x""),IF($G$5 = ""2009"", BA22, AN22-AO22),0),0)"
+'                        .Formula = "ROUND(IF(OR(G" & Row & "=""1"",G" & Row & "=""x"",G" & Row & "=""X"" ),IF($G$5 = ""2009"", BA" & Row & "-AO" & Row & ", IF(AND($G$5 = ""2012"",AM" & Row & " <=5000000),(AN" & Row & "-AO" & Row & ")/2,AN" & Row & "-AO" & Row & ")),0),0)"
+'                        ' End set lai
+'                    Else
+'                        .Col = .ColLetterToNumber("Q")
+'                        .Formula = ""
+'                        .value = "0"
+'                    End If
+'                End If
                 
             End If
             'Sheet 3
@@ -435,7 +436,7 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                 If Col = .ColLetterToNumber("C") And Row = 18 Then
                     Y = Col
                             
-                    .Sort .ColLetterToNumber("C"), 22, .ColLetterToNumber("W"), (21 + totalRow5B), SortByRow, Y, so
+                    .Sort .ColLetterToNumber("C"), 22, .ColLetterToNumber("AN"), (21 + totalRow5B), SortByRow, Y, so
                     .Refresh
                     
                     ' Chieu sap xep
@@ -449,7 +450,7 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                 If Col = .ColLetterToNumber("G") And Row = 19 Then
                     Y = Col
                             
-                    .Sort .ColLetterToNumber("C"), 22, .ColLetterToNumber("W"), (21 + totalRow5B), SortByRow, Y, so
+                    .Sort .ColLetterToNumber("C"), 22, .ColLetterToNumber("AN"), (21 + totalRow5B), SortByRow, Y, so
                     .Refresh
                     
                     ' Chieu sap xep
@@ -460,9 +461,10 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                     End If
                 End If
                 
-                If Col = .ColLetterToNumber("I") And Row = 19 Then
+                ' sap xep theo so thue da khau tru
+                If Col = .ColLetterToNumber("J") And Row = 19 Then
                     Y = Col
-                    .Sort .ColLetterToNumber("C"), 22, .ColLetterToNumber("W"), (21 + totalRow5B), SortByRow, Y, so
+                    .Sort .ColLetterToNumber("C"), 22, .ColLetterToNumber("AN"), (21 + totalRow5B), SortByRow, Y, so
                     .Refresh
                     
                     ' Chieu sap xep
@@ -477,14 +479,14 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                 If Col = .ColLetterToNumber("F") And Row >= 22 And Row <= .MaxRows - 8 Then
                     .GetText .ColLetterToNumber("F"), Row, strCheck
                     If Trim(strCheck) = "x" Or Trim(strCheck) = "X" Or Trim(strCheck) = "1" Then
-                        .Col = .ColLetterToNumber("I")
+                        .Col = .ColLetterToNumber("J")
                         .Row = Row
                         '.Formula = "AJ" & Row
                         .Formula = "ROUND(G" & Row & "*20/100,0)"
                         ' lay xong gia tri set lai ct =""
                         .Formula = ""
                     Else
-                        .Col = .ColLetterToNumber("I")
+                        .Col = .ColLetterToNumber("J")
                         .Row = Row
                         .Formula = ""
                         .value = "0"
@@ -502,15 +504,19 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
     With fps
         .EventEnabled(EventAllEvents) = False
             If .ActiveSheet = 2 Then
-                If Col = .ColLetterToNumber("H") Or Col = .ColLetterToNumber("I") Or Col = .ColLetterToNumber("J") Or Col = .ColLetterToNumber("K") Or Col = .ColLetterToNumber("L") Then
+                'If Col = .ColLetterToNumber("H") Or Col = .ColLetterToNumber("I") Or Col = .ColLetterToNumber("J") Or Col = .ColLetterToNumber("K") Or Col = .ColLetterToNumber("L") Then
+                If Col = .ColLetterToNumber("H") Or Col = .ColLetterToNumber("I") Or Col = .ColLetterToNumber("J") Or Col = .ColLetterToNumber("K") Or Col = .ColLetterToNumber("L") Or Col = .ColLetterToNumber("M") Or Col = .ColLetterToNumber("N") Then
                      If Row >= 22 And Row <= .MaxRows - 8 Then
-                         'set lai CT
-                        .Col = .ColLetterToNumber("M")
-                        .Formula = "IF(H" & Row & "-J" & Row & "-K" & Row & "-L" & Row & ">0,H" & Row & "-J" & Row & "-K" & Row & "-L" & Row & ",0)"
-                        .Col = .ColLetterToNumber("Q")
+                         'set lai CT cot TN tinh thue
+                        .Col = .ColLetterToNumber("O")
+                        '.Formula = "IF(H" & Row & "-J" & Row & "-K" & Row & "-L" & Row & ">0,H" & Row & "-J" & Row & "-K" & Row & "-L" & Row & ",0)"
+                        .Formula = "IF(H" & Row & "-J" & Row & "-K" & Row & "-L" & Row & "-M" & Row & "-N" & Row & ">0,H" & Row & "-J" & Row & "-K" & Row & "-L" & Row & "-M" & Row & "-N" & Row & ",0)"
+                        ' set lai CT cot tong so thue phai nop
+                        .Col = .ColLetterToNumber("S")
                         '.Formula = "ROUND(IF(OR(G" & Row & "=""1"",G" & Row & "=""x"",G" & Row & "=""X""),IF($G$5 = ""2009"", BA" & Row & "-AO" & Row & ", AN" & Row & "-AO" & Row & "),0),0)"
                         '.Formula = "ROUND(IF(OR(G" & Row & "=""1"",G" & Row & "=""x"",G" & Row & "=""X"" ),IF($G$5 = ""2009"", BA" & Row & "-AO" & Row & ", IF($G$5 = ""2012"",(AN" & Row & "-AO" & Row & ")/2,AN" & Row & "-AO" & Row & "),0),0)"
-                        .Formula = "ROUND(IF(OR(G" & Row & "=""1"",G" & Row & "=""x"",G" & Row & "=""X"" ),IF($G$5 = ""2009"", BA" & Row & "-AO" & Row & ", IF(AND($G$5 = ""2012"",AM" & Row & " <=5000000),(AN" & Row & "-AO" & Row & ")/2,AN" & Row & "-AO" & Row & ")),0),0)"
+                        '.Formula = "ROUND(IF(OR(G" & Row & "=""1"",G" & Row & "=""x"",G" & Row & "=""X"" ),IF($G$5 = ""2009"", BA" & Row & "-AO" & Row & ", IF(AND($G$5 = ""2012"",AM" & Row & " <=5000000),(AN" & Row & "-AO" & Row & ")/2,AN" & Row & "-AO" & Row & ")),0),0)"
+                        .Formula = "ROUND(IF(OR(G" & Row & "=""1"",G" & Row & "=""x"",G" & Row & "=""X"" ),IF($G$5 = ""2009"", BC" & Row & "-AQ" & Row & ", IF(AND($G$5 = ""2012"",AO" & Row & " <=5000000),(AP" & Row & "-AQ" & Row & ")/2,AP" & Row & "-AQ" & Row & ")),0),0)"
                         ' End set lai
                     End If
                 End If
@@ -521,14 +527,14 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
                     If Row >= 22 And Row <= .MaxRows - 8 Then
                         .GetText .ColLetterToNumber("F"), Row, strCheck
                         If Trim$(strCheck) = "x" Or Trim$(strCheck) = "X" Or Trim$(strCheck) = "1" Then
-                            .Col = .ColLetterToNumber("I")
+                            .Col = .ColLetterToNumber("J")
                             .Row = Row
                             .Formula = "ROUND(G" & Row & "*20/100,0)"
                             'ROUND(G22*20/100,0)
                             ' lay xong gia tri set lai ct =""
                             .Formula = ""
                         Else
-                            .Col = .ColLetterToNumber("I")
+                            .Col = .ColLetterToNumber("J")
                             .Row = Row
                             .Formula = ""
                             .value = "0"
@@ -1451,6 +1457,25 @@ Public Sub SetActiveSheet()
                             SetAttribute xmlNodeValid, "Active", "1"
                         End If
                     End If
+              Case "05C"
+                blnNullValue = True
+                'Check the third sheet
+               For Each xmlCellNode In TAX_Utilities_New.Data(1).getElementsByTagName("Cell")
+                    ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
+                    'Check value in E column and F column
+                    If lCol = fps.ColLetterToNumber("D") Or _
+                       lCol = fps.ColLetterToNumber("H") Then
+                        strValue = GetAttribute(xmlCellNode, "Value")
+                        If Not IsNullValue(strValue) Then
+                            blnNullValue = False
+                            Exit For
+                        End If
+                    End If
+                Next
+            
+                If blnNullValue Then
+                    SetAttribute xmlNodeValid, "Active", "0"
+                End If
         End Select
     Next
     
@@ -1588,6 +1613,27 @@ Private Sub UpdateSheets()
             UpdateCell fps, .ColLetterToNumber("I"), 24, vChiTieu13
             UpdateCell fps, .ColLetterToNumber("J"), 24, vChiTieu14
                     
+       End If
+       
+       ' shet 05-3
+       If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(4), "Active") <> "0") Then
+        .Sheet = 5
+        mCurrentSheet = .Sheet
+            For Each xmlCellNodeData In TAX_Utilities_New.Data(4).getElementsByTagName("Cell")
+                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+                .GetText lCol, lRow, varTemp
+'                If (lCol = .ColLetterToNumber("F") Or lCol = .ColLetterToNumber("Y")) And (varTemp = "1" Or varTemp = "x") Then
+'                    UpdateCell fps, lCol, lRow, "x"
+'               Else
+                If lCol >= 7 Then
+                    If Trim(varTemp) <> vbNullString Or Trim(varTemp) <> "" Then
+                        UpdateCell fps, lCol, lRow, varTemp
+                    End If
+                Else
+                    UpdateCell fps, lCol, lRow, varTemp
+                End If
+               'End If
+             Next
        End If
        
       .Sheet = .ActiveSheet
@@ -2414,7 +2460,7 @@ Private Sub resetCheckTrungAB()
         .Sheet = 3
         .Row = 22
         Do
-            .Col = .ColLetterToNumber("Z")
+            .Col = .ColLetterToNumber("AA")
             .Text = "0"
             .Row = .Row + 1
             .Col = .ColLetterToNumber("B")
@@ -2428,7 +2474,6 @@ Private Sub resetFormula()
     With fps
         .Sheet = 1
         .Col = .ColLetterToNumber("I")
-             .Col = .ColLetterToNumber("I")
         .Row = 37
         .Formula = ""
         .Row = 38
@@ -2471,31 +2516,45 @@ Private Sub defaultFormula()
         .Sheet = 1
         mCurrentSheet = .Sheet
         .Col = .ColLetterToNumber("I")
+        .Row = 36
+        .Formula = "Q36"
         .Row = 37
         .Formula = "Q37"
-        .Row = 38
-        .Formula = "Q38"
-        
+                
+        .Row = 39
+        .Formula = "Q39"
         .Row = 40
         .Formula = "Q40"
         .Row = 41
         .Formula = "Q41"
-        .Row = 42
-        .Formula = "Q42"
         
+        .Row = 43
+        .Formula = "Q43"
         .Row = 44
         .Formula = "Q44"
         .Row = 45
         .Formula = "Q45"
-        .Row = 46
-        .Formula = "Q46"
-        
+                
+        .Row = 47
+        .Formula = "Q47"
         .Row = 48
         .Formula = "Q48"
         .Row = 49
         .Formula = "Q49"
-        .Row = 50
-        .Formula = "Q50"
+        
+        .Row = 51
+        .Formula = "Q51"
+        .Row = 52
+        .Formula = "Q52"
+        .Row = 53
+        .Formula = "Q53"
+        
+        .Row = 55
+        .Formula = "Q55"
+        .Row = 56
+        .Formula = "Q56"
+        .Row = 57
+        .Formula = "Q57"
         
         .Row = 61
         .Formula = "Q61"
@@ -2503,8 +2562,6 @@ Private Sub defaultFormula()
         .Formula = "Q62"
         .Row = 63
         .Formula = "Q63"
-        
-        
         .EventEnabled(EventAllEvents) = True
     End With
 End Sub
@@ -2534,6 +2591,9 @@ Public Sub InsertNode(ByVal fRow As Long, ByVal lRow As Long, ByVal mSheet As By
         ElseIf mSheet = 4 Then
             Set xmlNodeCells = TAX_Utilities_New.Data(mSheet - 1).nodeFromID("C" & "_" & 22 + ctlRow & "").parentNode
             xmlNodeCells.parentNode.removeChild xmlNodeCells
+        ElseIf mSheet = 5 Then
+            Set xmlNodeCells = TAX_Utilities_New.Data(mSheet - 1).nodeFromID("D" & "_" & 22 + ctlRow & "").parentNode
+            xmlNodeCells.parentNode.removeChild xmlNodeCells
         End If
     Next
     
@@ -2543,6 +2603,8 @@ Public Sub InsertNode(ByVal fRow As Long, ByVal lRow As Long, ByVal mSheet As By
         Set xmlNodeCells = TAX_Utilities_New.Data(mSheet - 1).nodeFromID("C_22").parentNode
     ElseIf mSheet = 4 Then
         Set xmlNodeCells = TAX_Utilities_New.Data(mSheet - 1).nodeFromID("C_22").parentNode
+    ElseIf mSheet = 5 Then
+        Set xmlNodeCells = TAX_Utilities_New.Data(mSheet - 1).nodeFromID("D_22").parentNode
     End If
     
     For ctlRow = fRow To lRow
@@ -2580,6 +2642,13 @@ Public Sub InsertNode(ByVal fRow As Long, ByVal lRow As Long, ByVal mSheet As By
                     SetAttribute xmlNodeNewCell, "Value", "0"
                 End If
                 SetAttribute xmlNodeNewCell, "CellID2", cReport & (ctlRow - 4)
+            ElseIf mSheet = 5 Then
+                If Trim(cTemplate) = "D_" Or Trim(cTemplate) = "E_" Or Trim(cTemplate) = "F_" Then
+                    SetAttribute xmlNodeNewCell, "Value", vbNullString
+                Else
+                    SetAttribute xmlNodeNewCell, "Value", "0"
+                End If
+                SetAttribute xmlNodeNewCell, "CellID2", cReport & (ctlRow - 7)
             End If
             
         Next
@@ -2611,7 +2680,7 @@ Public Sub inThongTinDL()
     tuRowDL = 15
     denRowDL = 20
     'TuRow_DenRow_sheet
-    strTuRowDenRowPL = "7_8_2~7_8_3"
+    strTuRowDenRowPL = "7_8_2~7_8_3~7_8_5"
     ' end
 End Sub
 
@@ -2646,6 +2715,7 @@ End Sub
 Public Sub CheckDynamicSheet1()
     Dim vErrMsgHoVaTen, vErrMsgMST, vErrMsgMST1, vErrMsgMST2, vErrMsgCMT, vErrMsgCMT1, vErrMsgMSTCMT As Variant
     Dim vErrMsgBaoHiem, vErrMsgThangGiamTru, vErrMsgThuNhapGiamThue, vErrMsgSoThueDuocGiam, vErrMsgSoThueKhauTru, vErrMsgTongGiamTruGiaCanh As Variant
+    Dim vErrMsgThuNhapHiepDinh As Variant, vErrMsgHuuTriTN As Variant
     Dim vErrMsgQTCQCT As Variant
     Dim vErrSoThueNNT As Variant
     Dim vLastRow As Variant
@@ -2663,12 +2733,13 @@ Public Sub CheckDynamicSheet1()
     'dntai 22/02/2012 them bien
     Dim vHoVaTen As Variant, vMST As Variant, vCMTND As Variant, chkUyQuyen As Variant, vTongSo As Variant, vTNCNLamCanCuMG As Variant
     Dim vTongTienGiamTru, vTuThienND, vBHBatBuoc, vTNTinhThue, vTNCNDaKT, vTNCNPhaiKT, vTongThuePhaiNop, vThueNopThua, vThuePhaiKTThem As Variant
-    Dim vMSTCQCT As Variant
+    Dim vMSTCQCT As Variant, vTNLamViecKKT As Variant, vTNTheoHiepDinh As Variant, vHuuTriTN As Variant, vTNCNGiamKKT As Variant
     
     Dim iFlagTrongHoTen As Integer, iFlagLoiMST As Integer, iFlagLoiMST1 As Integer, iFlagLoiMST2 As Integer, iFlagMSTTrung As Integer
     Dim iFlagLoiCMT As Integer, iFlagLoiCMT1 As Integer, iFlagCheckCT12CT11 As Integer, iFlagCheckCT17CT11 As Integer, iFlagMSTCMT As Integer, iFlagQTCQCT As Integer
+    Dim iFlagCheckCT13CT11 As Integer, iFlagCheckCT17 As Integer
     Dim iFlagLamTronTongGiamTruGiaCanh As Long
-    Dim CountRow As Long
+    Dim countRow As Long
     Dim strCheck As String, CountRow1 As Long, rowDes As Long
     Dim tam As Long
     
@@ -2709,6 +2780,11 @@ Public Sub CheckDynamicSheet1()
         .GetText .ColLetterToNumber("E"), 51, vErrMsgQTCQCT
         .GetText .ColLetterToNumber("E"), 55, vErrSoThueNNT
         .GetText .ColLetterToNumber("E"), 57, vErrMsgTongGiamTruGiaCanh
+        
+        .GetText .ColLetterToNumber("E"), 67, vErrMsgThuNhapHiepDinh
+        .GetText .ColLetterToNumber("E"), 68, vErrMsgHuuTriTN
+        
+        
                 
         .Sheet = 2 'Check tinh xac thuc cua cac thong tin tren bang ke 05A/TNCN
                         
@@ -2722,8 +2798,8 @@ Public Sub CheckDynamicSheet1()
     'get MSTCQCT
     .GetText .ColLetterToNumber("E"), 9, vMSTCQCT
            
-    CountRow = 22
-    .Row = CountRow
+    countRow = 22
+    .Row = countRow
     
     Do
     
@@ -2735,15 +2811,25 @@ Public Sub CheckDynamicSheet1()
         .GetText .ColLetterToNumber("F"), .Row, vCMTND
         .GetText .ColLetterToNumber("G"), .Row, chkUyQuyen
         .GetText .ColLetterToNumber("H"), .Row, vTongSo
-        .GetText .ColLetterToNumber("I"), .Row, vTNCNLamCanCuMG
-        .GetText .ColLetterToNumber("J"), .Row, vTongTienGiamTru
-        .GetText .ColLetterToNumber("K"), .Row, vTuThienND
-        .GetText .ColLetterToNumber("L"), .Row, vBHBatBuoc
-        .GetText .ColLetterToNumber("M"), .Row, vTNTinhThue
-        .GetText .ColLetterToNumber("N"), .Row, vTNCNDaKT
+'        .GetText .ColLetterToNumber("I"), .Row, vTNCNLamCanCuMG
+'        .GetText .ColLetterToNumber("J"), .Row, vTongTienGiamTru
+'        .GetText .ColLetterToNumber("K"), .Row, vTuThienND
+'        .GetText .ColLetterToNumber("L"), .Row, vBHBatBuoc
+'        .GetText .ColLetterToNumber("M"), .Row, vTNTinhThue
+'        .GetText .ColLetterToNumber("N"), .Row, vTNCNDaKT
+        .GetText .ColLetterToNumber("I"), .Row, vTNLamViecKKT
+        .GetText .ColLetterToNumber("J"), .Row, vTNTheoHiepDinh
+        .GetText .ColLetterToNumber("K"), .Row, vTongTienGiamTru
+        .GetText .ColLetterToNumber("L"), .Row, vTuThienND
+        .GetText .ColLetterToNumber("M"), .Row, vBHBatBuoc
+        .GetText .ColLetterToNumber("N"), .Row, vHuuTriTN
+        .GetText .ColLetterToNumber("O"), .Row, vTNTinhThue
+        .GetText .ColLetterToNumber("P"), .Row, vTNCNDaKT
+        .GetText .ColLetterToNumber("Q"), .Row, vTNCNGiamKKT
+        
         
         If Trim(vHoVaTen) = vbNullString And Trim(vMST) = vbNullString And Trim(vCMTND) = vbNullString And (Trim(chkUyQuyen) = "0" Or Trim(chkUyQuyen) = "") And Trim(vTongSo) = "0" _
-           And Trim(vTNCNLamCanCuMG) = "0" And Trim(vTongTienGiamTru) = "0" Then
+           And Trim(vTNCNLamCanCuMG) = "0" And Trim(vTongTienGiamTru) = "0" And Trim(vTNLamViecKKT) = "0" And Trim(vTNTheoHiepDinh) = "0" And Trim(vTNCNGiamKKT) = "0" Then
             'reset color and cellnote
             .Col = .ColLetterToNumber("D")
             .BackColor = mNonErrorColor
@@ -2760,7 +2846,28 @@ Public Sub CheckDynamicSheet1()
             .Col = .ColLetterToNumber("I")
             .BackColor = mNonErrorColor
             .CellNote = ""
+            .Col = .ColLetterToNumber("J")
+            .BackColor = mNonErrorColor
+            .CellNote = ""
+            .Col = .ColLetterToNumber("K")
+            .BackColor = mNonErrorColor
+            .CellNote = ""
+            .Col = .ColLetterToNumber("L")
+            .BackColor = mNonErrorColor
+            .CellNote = ""
+            .Col = .ColLetterToNumber("M")
+            .BackColor = mNonErrorColor
+            .CellNote = ""
             .Col = .ColLetterToNumber("N")
+            .BackColor = mNonErrorColor
+            .CellNote = ""
+            .Col = .ColLetterToNumber("O")
+            .BackColor = mNonErrorColor
+            .CellNote = ""
+            .Col = .ColLetterToNumber("P")
+            .BackColor = mNonErrorColor
+            .CellNote = ""
+            .Col = .ColLetterToNumber("Q")
             .BackColor = mNonErrorColor
             .CellNote = ""
         Else
@@ -2886,7 +2993,7 @@ Public Sub CheckDynamicSheet1()
             
             'check CT 12 < CT11
             
-            .GetText .ColLetterToNumber("AG"), .Row, varTemp
+            .GetText .ColLetterToNumber("AI"), .Row, varTemp
             If Trim(varTemp) = "1" Then
                 .Col = .ColLetterToNumber("I")
                 .BackColor = mErrorColor
@@ -2900,48 +3007,79 @@ Public Sub CheckDynamicSheet1()
                 .CellNote = ""
             End If
                 
-    
-            
-            'check CT 17 < CT11
-            .GetText .ColLetterToNumber("AI"), .Row, varTemp
-            If Val(varTemp) = 1 Then
-                .Col = .ColLetterToNumber("N")
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                .CellNote = vErrMsgSoThueKhauTru
+            ' check CT 13 < CT11
+            .GetText .ColLetterToNumber("BG"), .Row, varTemp
+            If Trim(varTemp) = "1" Then
+                .Col = .ColLetterToNumber("J")
                 .BackColor = mErrorColor
-                iFlagCheckCT17CT11 = 1
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = vErrMsgThuNhapHiepDinh
+                iFlagCheckCT13CT11 = 1
             Else
-                .Col = .ColLetterToNumber("N")
+                .Col = .ColLetterToNumber("J")
+                .BackColor = mNonErrorColor
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = ""
-                .BackColor = mNonErrorColor
             End If
+    
+            'check CT14 phai trong den hang tram nghin
             
-            'check CT13 phai trong den hang tram nghin
-            
-            .GetText .ColLetterToNumber("AY"), .Row, varTemp
+            .GetText .ColLetterToNumber("BA"), .Row, varTemp
             If Val(varTemp) = 1 Then
-                .Col = .ColLetterToNumber("J")
+                .Col = .ColLetterToNumber("K")
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = vErrMsgTongGiamTruGiaCanh
                 .BackColor = mErrorColor
                 iFlagLamTronTongGiamTruGiaCanh = 1
             Else
-                .Col = .ColLetterToNumber("J")
+                .Col = .ColLetterToNumber("K")
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = ""
                 .BackColor = mNonErrorColor
             End If
             
-            ' check chi tieu 15 phai nho hon chi tieu 11
-            .GetText .ColLetterToNumber("AE"), .Row, varTemp
+            ' check CT 17 <= 12 000 000
+            .GetText .ColLetterToNumber("BH"), .Row, varTemp
             If Val(varTemp) = 1 Then
-                .Col = .ColLetterToNumber("L")
+                .Col = .ColLetterToNumber("N")
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = vErrMsgHuuTriTN
+                .BackColor = mErrorColor
+                iFlagCheckCT17 = 1
+            Else
+                .Col = .ColLetterToNumber("N")
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+            End If
+            
+            
+            'check CT 19 < CT11
+            .GetText .ColLetterToNumber("AK"), .Row, varTemp
+            If Val(varTemp) = 1 Then
+                .Col = .ColLetterToNumber("P")
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = vErrMsgSoThueKhauTru
+                .BackColor = mErrorColor
+                iFlagCheckCT17CT11 = 1
+            Else
+                .Col = .ColLetterToNumber("P")
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+            End If
+            
+            
+            
+            ' check chi tieu 16 phai nho hon chi tieu 11
+            .GetText .ColLetterToNumber("AG"), .Row, varTemp
+            If Val(varTemp) = 1 Then
+                .Col = .ColLetterToNumber("M")
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = vErrMsgBaoHiem
                 .BackColor = mErrorColor
             Else
-                .Col = .ColLetterToNumber("L")
+                .Col = .ColLetterToNumber("M")
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = ""
                 .BackColor = mNonErrorColor
@@ -2987,15 +3125,15 @@ Public Sub CheckDynamicSheet1()
         
         ' Kiem tra cac ca nhan duoc MT b1
         If TAX_Utilities_New.Year = "2012" Then
-            .GetText .ColLetterToNumber("BB"), .Row, varTemp
+            .GetText .ColLetterToNumber("BD"), .Row, varTemp
              If varTemp = "1" Then
                 soNguoiDuocMTB1 = soNguoiDuocMTB1 + 1
             End If
         End If
         ' ket thuc kiem tra
                 
-        CountRow = CountRow + 1
-        .Row = CountRow
+        countRow = countRow + 1
+        .Row = countRow
         .Col = .ColLetterToNumber("B")
         
     Loop Until .Text = "aa"
@@ -3015,11 +3153,11 @@ Public Sub CheckDynamicSheet1()
                      .GetText .ColLetterToNumber("D"), .Row, vHoVaTen
                     .GetText .ColLetterToNumber("E"), .Row, vMST
                     .GetText .ColLetterToNumber("F"), .Row, vCMTND
-                    .GetText .ColLetterToNumber("M"), .Row, vTNTinhThue
-                    .GetText .ColLetterToNumber("N"), .Row, vTNCNDaKT
+                    .GetText .ColLetterToNumber("O"), .Row, vTNTinhThue
+                    .GetText .ColLetterToNumber("P"), .Row, vTNCNDaKT
                     .GetText .ColLetterToNumber("H"), .Row, vTongSo
                     .GetText .ColLetterToNumber("I"), .Row, vTNCNLamCanCuMG
-                    .GetText .ColLetterToNumber("BC"), .Row, tongSoThuePN
+                    .GetText .ColLetterToNumber("BE"), .Row, tongSoThuePN
                     
                     
                                         
@@ -3135,6 +3273,8 @@ Public Sub CheckDynamicSheet1()
     .SetText .ColLetterToNumber("B"), 31, IIf(iFlagCheckCT17CT11 = 1, "0", "1")
     .SetText .ColLetterToNumber("B"), 51, IIf(iFlagQTCQCT = 1, "0", "1")
     .SetText .ColLetterToNumber("B"), 57, IIf(iFlagLamTronTongGiamTruGiaCanh = 1, "0", "1")
+    .SetText .ColLetterToNumber("B"), 67, IIf(iFlagCheckCT13CT11 = 1, "0", "1")
+    .SetText .ColLetterToNumber("B"), 68, IIf(iFlagCheckCT17 = 1, "0", "1")
     
     .EventEnabled(EventAllEvents) = True
     End With
@@ -3148,7 +3288,7 @@ Public Sub fillDataPL27()
     Dim rowTemp As Long
     Dim totalRow As Long
     Dim countRowDel As Long
-    Dim CountRow As Long
+    Dim countRow As Long
     Dim varTemp As Variant
     Dim i As Long, j As Long
     Dim vHoVaTen As Variant, vMST As Variant, vCMTND As Variant, vTNTinhThue As Variant
@@ -3159,21 +3299,21 @@ Public Sub fillDataPL27()
      With fps
         .EventEnabled(EventAllEvents) = False
         
-        CountRow = 22
-        .Row = CountRow
+        countRow = 22
+        .Row = countRow
         .Sheet = 2
         Do
             ' Kiem tra cac ca nhan duoc MT b1
             If TAX_Utilities_New.Year = "2012" Then
-                .GetText .ColLetterToNumber("BB"), .Row, varTemp
+                .GetText .ColLetterToNumber("BD"), .Row, varTemp
                  If varTemp = "1" Then
                     soNguoiDuocMTB1 = soNguoiDuocMTB1 + 1
                 End If
             End If
             ' ket thuc kiem tra
                     
-            CountRow = CountRow + 1
-            .Row = CountRow
+            countRow = countRow + 1
+            .Row = countRow
             .Col = .ColLetterToNumber("B")
             
         Loop Until .Text = "aa"
@@ -3193,11 +3333,11 @@ Public Sub fillDataPL27()
                          .GetText .ColLetterToNumber("D"), .Row, vHoVaTen
                         .GetText .ColLetterToNumber("E"), .Row, vMST
                         .GetText .ColLetterToNumber("F"), .Row, vCMTND
-                        .GetText .ColLetterToNumber("M"), .Row, vTNTinhThue
-                        .GetText .ColLetterToNumber("N"), .Row, vTNCNDaKT
+                        .GetText .ColLetterToNumber("O"), .Row, vTNTinhThue
+                        .GetText .ColLetterToNumber("P"), .Row, vTNCNDaKT
                         .GetText .ColLetterToNumber("H"), .Row, vTongSo
                         .GetText .ColLetterToNumber("I"), .Row, vTNCNLamCanCuMG
-                        .GetText .ColLetterToNumber("BC"), .Row, tongSoThuePN
+                        .GetText .ColLetterToNumber("BE"), .Row, tongSoThuePN
                         
                         
                                             
@@ -3308,12 +3448,11 @@ Private Sub lamTron(lRow As Long, lSheet As Integer)
         .Sheet = lSheet
          .Row = lRow
          If .Sheet = 2 Then
-         
             ' Clear ct
             If .Row <= .MaxRows - 8 Then
-                .Col = .ColLetterToNumber("M")
+                .Col = .ColLetterToNumber("O")
                 .Formula = ""
-                .Col = .ColLetterToNumber("Q")
+                .Col = .ColLetterToNumber("S")
                 .Formula = ""
             End If
             ' End clear
@@ -3324,13 +3463,13 @@ Private Sub lamTron(lRow As Long, lSheet As Integer)
             .Text = Round(Val(varThuNhap), 0)
             
             ' Lam tron cot tu thien, khuyen hoc
-            .GetText .ColLetterToNumber("K"), .Row, varSoTienKH
-            .Col = .ColLetterToNumber("K")
+            .GetText .ColLetterToNumber("L"), .Row, varSoTienKH
+            .Col = .ColLetterToNumber("L")
             .Text = Round(Val(varSoTienKH), 0)
     
             'Lam tron cot bao hiem bat buoc
-            .GetText .ColLetterToNumber("L"), .Row, varSoTienBH
-            .Col = .ColLetterToNumber("L")
+            .GetText .ColLetterToNumber("M"), .Row, varSoTienBH
+            .Col = .ColLetterToNumber("M")
             .Text = Round(Val(varSoTienBH), 0)
             
             'Lam tron cot can cu giam thue
@@ -3344,8 +3483,8 @@ Private Sub lamTron(lRow As Long, lSheet As Integer)
             .Text = Round(Val(varSoThueKT), 0)
             
             ' Lam tron cot thu nhap tinh thue
-            .GetText .ColLetterToNumber("M"), .Row, varThuNhapTT
-            .Col = .ColLetterToNumber("M")
+            .GetText .ColLetterToNumber("O"), .Row, varThuNhapTT
+            .Col = .ColLetterToNumber("O")
             .Text = Round(Val(varThuNhapTT), 0)
              End If
              .AutoCalc = True
@@ -3357,7 +3496,8 @@ End Sub
 
 Private Sub CheckDynamicSheet2()
     Dim vErrMsgHoVaTen, vErrMsgMST, vErrMsgMST1, vErrMsgMST2, vErrMsgCMT, vErrMsgCMT1, vErrMsgMSTCMT As Variant
-    Dim vErrMsgThuNhapGiamThue, vErrMsgSoThueDuocGiam, vErrMsgSoThueKhauTru As Variant
+    Dim vErrMsgThuNhapGiamThue, vErrMsgSoThueDuocGiam, vErrMsgSoThueKhauTru As Variant, vErrMsgCheckCT15CT12 As Variant
+    Dim vErrMsgCheckCT13CT11 As Variant
     Dim vLastRow As Variant
     Dim varTemp As Variant
     Dim i, j As Long
@@ -3370,6 +3510,7 @@ Private Sub CheckDynamicSheet2()
     '24/02/2012 dntai them bien sua lai phan check sheet2
     Dim iFlagHovaTen As Integer, iFlagLoiMST1 As Integer, iFlagMSTTrung As Integer, iFlagLoiMST As Integer
     Dim iFlagMSTCMND As Integer, iFlagCT12CT11 As Integer, iFlagCT13CT11 As Integer, iFlagLoiCMT1 As Integer, iFlagLoiCMT As Integer
+    Dim iFlagCT14CT11 As Integer, iFlagCT15CT12 As Integer
     Dim CountRow1 As Long, rowDes As Long
     Dim strCheck As String
     
@@ -3387,21 +3528,24 @@ Private Sub CheckDynamicSheet2()
         .GetText .ColLetterToNumber("E"), 43, vErrMsgMSTCMT
                 
         .GetText .ColLetterToNumber("E"), 44, vErrMsgThuNhapGiamThue
+        
         .GetText .ColLetterToNumber("E"), 45, vErrMsgSoThueKhauTru
         
         .GetText .ColLetterToNumber("E"), 47, vErrMsgMSTAB
+        .GetText .ColLetterToNumber("E"), 69, vErrMsgCheckCT13CT11
         .Sheet = 3 'Check tinh xac thuc cua cac thong tin tren bang ke 05A/TNCN
         isheet = .Sheet
         
          'dntai 24/02/2012 khai bao bien
          Dim vHoVaTen, vMST, vCMND, vChkCaNhanCC, vTongSo, vTNCNLamCCMG, vThueTNCNDaKT, vThueTNCNPhaiKT, vMSTCQCT As Variant
-         Dim CountRow As Long
+         Dim vTNCNTheoHiepDinh As Variant, vTNCNGiamLamViecKKT As Variant
+         Dim countRow As Long
          
          'get MST cua CQCT
          .GetText .ColLetterToNumber("D"), 8, vMSTCQCT
          .Col = .ColLetterToNumber("B")
-         CountRow = 22
-         .Row = CountRow
+         countRow = 22
+         .Row = countRow
          Do
          
             .GetText .ColLetterToNumber("C"), .Row, vHoVaTen
@@ -3410,10 +3554,14 @@ Private Sub CheckDynamicSheet2()
             .GetText .ColLetterToNumber("F"), .Row, vChkCaNhanCC
             .GetText .ColLetterToNumber("G"), .Row, vTongSo
             .GetText .ColLetterToNumber("H"), .Row, vTNCNLamCCMG
-            .GetText .ColLetterToNumber("I"), .Row, vThueTNCNDaKT
-            .GetText .ColLetterToNumber("J"), .Row, vThueTNCNPhaiKT
+'            .GetText .ColLetterToNumber("I"), .Row, vThueTNCNDaKT
+'            .GetText .ColLetterToNumber("J"), .Row, vThueTNCNPhaiKT
+            .GetText .ColLetterToNumber("I"), .Row, vTNCNTheoHiepDinh
+            .GetText .ColLetterToNumber("J"), .Row, vThueTNCNDaKT
+            .GetText .ColLetterToNumber("K"), .Row, vTNCNGiamLamViecKKT
+            
             If Trim(vHoVaTen) = vbNullString And Trim(vMST) = vbNullString And Trim(vCMND) = vbNullString And (Trim(vChkCaNhanCC) = "" Or Trim(vChkCaNhanCC) = "0") _
-               And Trim(vTongSo) = "0" And Trim(vTNCNLamCCMG) = "0" And Trim(vThueTNCNDaKT) = "0" And Trim(vThueTNCNPhaiKT) = "0" Then
+               And Trim(vTongSo) = "0" And Trim(vTNCNLamCCMG) = "0" And Trim(vThueTNCNDaKT) = "0" And Trim(vThueTNCNPhaiKT) = "0" And Trim(vTNCNTheoHiepDinh) = "0" And Trim(vTNCNGiamLamViecKKT) = "0" Then
                 
                 'reset color and cellnote on sheet
                .Col = .ColLetterToNumber("C")
@@ -3431,9 +3579,13 @@ Private Sub CheckDynamicSheet2()
                .Col = .ColLetterToNumber("I")
                .BackColor = mNonErrorColor
                .CellNote = ""
+               .Col = .ColLetterToNumber("J")
+               .BackColor = mNonErrorColor
+               .CellNote = ""
+               .Col = .ColLetterToNumber("K")
+               .BackColor = mNonErrorColor
+               .CellNote = ""
             Else
-                
-                
                 'check ho va ten khong duoc trong
                 If Trim(vHoVaTen) = vbNullString Then
                     .Col = .ColLetterToNumber("C")
@@ -3453,7 +3605,7 @@ Private Sub CheckDynamicSheet2()
                 .BackColor = mNonErrorColor
                 
                 'check mst trung giua 2 bang ke 5A va 5B
-                .GetText .ColLetterToNumber("Z"), .Row, varTemp
+                .GetText .ColLetterToNumber("AA"), .Row, varTemp
                 If Val(varTemp) = 1 Then
                     flagTrungMSTAB = 1
                     .Col = .ColLetterToNumber("D")
@@ -3540,7 +3692,8 @@ Private Sub CheckDynamicSheet2()
                  End If
                  
                 ' THu nhap lam can cu giam thue <= thu nhap
-                .GetText .ColLetterToNumber("U"), .Row, varTemp
+                ' check CT12 <= CT11
+                .GetText .ColLetterToNumber("V"), .Row, varTemp
                 If Val(varTemp) = 1 Then
                     .Col = .ColLetterToNumber("H")
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
@@ -3553,12 +3706,13 @@ Private Sub CheckDynamicSheet2()
                     .BackColor = mNonErrorColor
                 End If
                 
-                'Thue da khau tru >= thu nhap
+                
+                ' check CT13 <= CT11
                 .GetText .ColLetterToNumber("W"), .Row, varTemp
                 If Val(varTemp) = 1 Then
                     .Col = .ColLetterToNumber("I")
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                    .CellNote = vErrMsgSoThueKhauTru
+                    .CellNote = vErrMsgCheckCT13CT11
                     .BackColor = mErrorColor
                     iFlagCT13CT11 = 1
                 Else
@@ -3566,10 +3720,39 @@ Private Sub CheckDynamicSheet2()
                     .CellNote = ""
                     .BackColor = mNonErrorColor
                 End If
+                
+                
+                'Thue da khau tru >= thu nhap
+                ' check CT14 < CT11
+                .GetText .ColLetterToNumber("X"), .Row, varTemp
+                If Val(varTemp) = 1 Then
+                    .Col = .ColLetterToNumber("J")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vErrMsgSoThueKhauTru
+                    .BackColor = mErrorColor
+                    iFlagCT14CT11 = 1
+                Else
+                    .Col = .ColLetterToNumber("J")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
+                 ' check CT15 <= CT12
+                .GetText .ColLetterToNumber("AP"), .Row, varTemp
+                If Val(varTemp) = 1 Then
+                    .Col = .ColLetterToNumber("K")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vErrMsgCheckCT15CT12
+                    .BackColor = mErrorColor
+                    iFlagCT15CT12 = 1
+                Else
+                    .Col = .ColLetterToNumber("K")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
             End If
             
-            CountRow = CountRow + 1
-            .Row = CountRow
+            countRow = countRow + 1
+            .Row = countRow
             .Col = .ColLetterToNumber("B")
 
          Loop Until .Text = "aa"
@@ -3584,8 +3767,10 @@ Private Sub CheckDynamicSheet2()
         .SetText .ColLetterToNumber("B"), 42, IIf(iFlagLoiCMT1 = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 41, IIf(iFlagLoiCMT = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 44, IIf(iFlagCT12CT11 = 1, "0", "1")
-        .SetText .ColLetterToNumber("B"), 45, IIf(iFlagCT13CT11 = 1, "0", "1")
-        
+        .SetText .ColLetterToNumber("B"), 67, IIf(iFlagCT13CT11 = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 45, IIf(iFlagCT14CT11 = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 68, IIf(iFlagCT15CT12 = 1, "0", "1")
+                
         .Sheet = isheet
     End With
 End Sub
