@@ -60,8 +60,8 @@ Public Function Prepared1() As Boolean
         .TypeMaxEditLen = 100
         
         'Phong xu ly
-        .Col = .ColLetterToNumber("E")
-        .Row = 16
+        .Col = .ColLetterToNumber("V")
+        .Row = 10
         .CellType = CellTypeComboBox
         .TypeEditCharSet = TypeEditCharSetASCII
         .TypeMaxEditLen = 60
@@ -374,6 +374,7 @@ End Function
 Public Function KiemTraKhoaSo(ByVal strDate As String) As Boolean
     Dim dNgayKhoaSo As Date, dKyLapBo As Date
     
+    strDate = Trim$(strDate)
     KiemTraKhoaSo = True
     dNgayKhoaSo = Format(strDate, "dd/mm/yyyy")
     dKyLapBo = Format("01/" & GetAttribute(TAX_Utilities_Srv_New.Data(0).nodeFromID("E_10"), "Value"), "dd/mm/yyyy")
@@ -389,6 +390,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
     If .ActiveSheet = 1 Then
         If Col = .ColLetterToNumber("E") And Row = 10 Then
             .GetText Col, Row, varTemp
+            varTemp = Trim$(varTemp)
             If varTemp <> "" And varTemp <> "../...." Then
                 If Format_mmyyyy(CStr(varTemp)) <> "" Then
                     .SetText Col, Row, Format_mmyyyy(CStr(varTemp))
@@ -403,19 +405,21 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
         
         If Col = .ColLetterToNumber("E") And Row = 12 Then
             .GetText Col, Row, varTemp
+            varTemp = Trim$(varTemp)
             If varTemp <> "" And varTemp <> "../../...." Then
                 If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
                     .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
                 Else
                     .SetActiveCell Col, Row
                 End If
-'                Else
-'                 .SetActiveCell Col, Row
+            Else
+             .SetActiveCell Col, Row
             End If
            .Col = Col
            .Row = Row
            UpdateCell fps, .Col, .Row, .Text
         End If
+        
     End If
 End With
 End Sub
