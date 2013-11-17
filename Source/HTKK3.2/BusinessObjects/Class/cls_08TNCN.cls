@@ -272,7 +272,7 @@ Private Sub CheckDynamicError()
         ' kiem tra chi tieu 25, 26 la boi cua 9000000, 3600000
         If TAX_Utilities_New.Year >= 2013 And TAX_Utilities_New.ThreeMonths >= 3 Then
            ' ct25
-            If Val(vCT25) Mod 9000000 <> 0 Then
+            If Val(vCT25) Mod 9000000 <> 0 Or Val(vCT25) > 27000000 Then
                 .Row = 52
                 .Col = .ColLetterToNumber("R")
                 .BackColor = mErrorColor
@@ -299,7 +299,7 @@ Private Sub CheckDynamicError()
             End If
         Else
             'ct25
-            If Val(vCT25) Mod 4000000 <> 0 Then
+            If Val(vCT25) Mod 4000000 <> 0 Or Val(vCT25) > 12000000 Then
                 .Row = 52
                 .Col = .ColLetterToNumber("R")
                 .BackColor = mErrorColor
