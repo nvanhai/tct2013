@@ -13,10 +13,10 @@
 				<tenTKhai></tenTKhai>
 				<moTaBMau/>
 				<pbanTKhaiXML></pbanTKhaiXML>
-				<loaiTKhai>C</loaiTKhai>
-				<soLan>1</soLan>
+				<loaiTKhai></loaiTKhai>
+				<soLan></soLan>
 				<KyKKhaiThue>
-					<kieuKy>D</kieuKy>
+					<kieuKy></kieuKy>
 					<kyKKhai></kyKKhai>
 					<kyKKhaiTuNgay></kyKKhaiTuNgay>
 					<kyKKhaiDenNgay></kyKKhaiDenNgay>
@@ -30,11 +30,13 @@
 				</GiaHan>
 				<nguoiKy></nguoiKy>
 				<ngayKy></ngayKy>
+				<nganhNgheKD></nganhNgheKD>
 			</TKhaiThue>
 			<NNT>
-				<mst>0000000000</mst>
+				<mst></mst>
 				<tenNNT></tenNNT>
 				<dchiNNT></dchiNNT>
+				<phuongXa></phuongXa>
 				<maHuyenNNT></maHuyenNNT>
 				<tenHuyenNNT></tenHuyenNNT>
 				<maTinhNNT></maTinhNNT>
@@ -44,7 +46,7 @@
 				<emailNNT></emailNNT>
 			</NNT>
 			<DLyThue>
-				<mstDLyThue>0000000000</mstDLyThue>
+				<mstDLyThue></mstDLyThue>
 				<tenDLyThue></tenDLyThue>
 				<dchiDLyThue></dchiDLyThue>
 				<maHuyenDLyThue></maHuyenDLyThue>
@@ -64,44 +66,44 @@
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
-		<ct12>text</ct12>
-		<ct13>text</ct13>
-		<ct14>text</ct14>
-		<ct15>text</ct15>
+		<ct12></ct12>
+		<ct13></ct13>
+		<ct14></ct14>
+		<ct15></ct15>
 		<PhiBVMT>
 			<KSanCoSoThuMuaNopThay>
-				<KhoangSan>
+				<TTinKhoangSan>
 					<KhoangSan id="ID_1">
 						<loaiKSan></loaiKSan>
 						<SoLuongKS>
 							<donViTinh></donViTinh>
-							<soLuong>0.0</soLuong>
+							<soLuong></soLuong>
 						</SoLuongKS>
-						<mucPhi>1</mucPhi>
-						<soPhiPNop>1</soPhiPNop>
+						<mucPhi></mucPhi>
+						<soPhiPNop></soPhiPNop>
 					</KhoangSan>
-				</KhoangSan>
-				<tongPhiPhaiNop>text</tongPhiPhaiNop>
-				<tongPhiDaKeKhai>text</tongPhiDaKeKhai>
+				</TTinKhoangSan>
+				<tongPhiPhaiNop></tongPhiPhaiNop>
+				<tongPhiDaKeKhai></tongPhiDaKeKhai>
 			</KSanCoSoThuMuaNopThay>
 			<KSCSoTuKhaiThac>
-				<KhoangSan>
+				<TTinKhoangSan>
 					<KhoangSan id="ID_2">
 						<loaiKSan></loaiKSan>
 						<SoLuongKS>
 							<donViTinh></donViTinh>
-							<soLuong>0.0</soLuong>
+							<soLuong></soLuong>
 						</SoLuongKS>
-						<mucPhi>1</mucPhi>
-						<soPhiPNop>1</soPhiPNop>
+						<mucPhi></mucPhi>
+						<soPhiPNop></soPhiPNop>
 					</KhoangSan>
-				</KhoangSan>
-				<tongPhiDaKeKhai>text</tongPhiDaKeKhai>
-				<tongPhiPhaiNop>text</tongPhiPhaiNop>
+				</TTinKhoangSan>
+				<tongPhiDaKeKhai></tongPhiDaKeKhai>
+				<tongPhiPhaiNop></tongPhiPhaiNop>
 			</KSCSoTuKhaiThac>
 		</PhiBVMT>
-		<tongPhiPNop>1</tongPhiPNop>
-		<bangChu>text</bangChu>
+		<tongPhiPNop></tongPhiPNop>
+		<bangChu></bangChu>
 	</CTieuTKhaiChinh>
 	<PLuc/>
 </HSoKhaiThue>

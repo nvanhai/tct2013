@@ -30,11 +30,13 @@
 				</GiaHan>
 				<nguoiKy></nguoiKy>
 				<ngayKy></ngayKy>
+				<nganhNgheKD></nganhNgheKD>
 			</TKhaiThue>
 			<NNT>
 				<mst></mst>
 				<tenNNT></tenNNT>
 				<dchiNNT></dchiNNT>
+				<phuongXa></phuongXa>
 				<maHuyenNNT></maHuyenNNT>
 				<tenHuyenNNT></tenHuyenNNT>
 				<maTinhNNT></maTinhNNT>
@@ -64,21 +66,33 @@
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
-		<ct21></ct21>
-		<ct24></ct24>
-		<ct27></ct27>
-		<ct30></ct30>
-		<ct22></ct22>
-		<ct25></ct25>
-		<ct28></ct28>
-		<ct31></ct31>
-		<ct23></ct23>
-		<ct26></ct26>
-		<ct29></ct29>
-		<ct32></ct32>
-		<ct33></ct33>
-		<ct34></ct34>
+		<TongSoNguoiLaoDong>
+			<ct21></ct21>
+			<ct22></ct22>
+		</TongSoNguoiLaoDong>
+		<TongSoCaNhanDaKhauTru>
+			<ct23></ct23>
+			<ct24></ct24>
+			<ct25></ct25>
+		</TongSoCaNhanDaKhauTru>
+		<TongTNCTTraChoCaNhan>
+			<ct26></ct26>
+			<ct27></ct27>
+			<ct28></ct28>
+			<ct29></ct29>
+		</TongTNCTTraChoCaNhan>
+		<TongTNCTTraCNhanThuocDienKTru>
+			<ct30></ct30>
+			<ct31></ct31>
+			<ct32></ct32>
+			<ct33></ct33>
+		</TongTNCTTraCNhanThuocDienKTru>
+		<TongThueTNCNDaKhauTru>
+			<ct34></ct34>
+			<ct35></ct35>
+			<ct36></ct36>
+			<ct37></ct37>
+		</TongThueTNCNDaKhauTru>
 	</CTieuTKhaiChinh>
-	<PLuc>
-	</PLuc>
+	<PLuc/>
 </HSoKhaiThue>

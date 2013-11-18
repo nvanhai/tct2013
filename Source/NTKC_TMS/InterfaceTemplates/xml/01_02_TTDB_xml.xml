@@ -1,40 +1,36 @@
 <PLuc02_TTDB>
-	<ThoiGianNopTKhaiChinh>
-		<ngayNopTKhaiChinh></ngayNopTKhaiChinh>
-		<thangNopTKhaiChinh></thangNopTKhaiChinh>
-		<namNopTKhaiChinh></namNopTKhaiChinh>
-	</ThoiGianNopTKhaiChinh>
-	<ThueNLMVao>
+	<ThoiGianNopTKhaiChinh></ThoiGianNopTKhaiChinh>
+	<TTinThueNLMVao>
 		<ChiTietThueTTDBNLMVao>
 			<ThueNLMVao id="ID_1">
 				<BienLaiChungTuNopThueTTĐB>
 					<khieuNLMVao></khieuNLMVao>
 					<soNLMVao></soNLMVao>
-					<ngayPHanhNLMVao>1967-08-13</ngayPHanhNLMVao>
+					<ngayPHanhNLMVao></ngayPHanhNLMVao>
 				</BienLaiChungTuNopThueTTĐB>
 				<tenNLMVao></tenNLMVao>
-				<soLuongNLMVao>0.0</soLuongNLMVao>
-				<thueNLMVaoDNop>1</thueNLMVaoDNop>
-				<thueNLMVaoTrenDVi>1</thueNLMVaoTrenDVi>
-				<thueNLMVaoDaKTru>1</thueNLMVaoDaKTru>
-				<thueNLMVaoChuaKTru>1</thueNLMVaoChuaKTru>
+				<soLuongNLMVao></soLuongNLMVao>
+				<thueNLMVaoDNop></thueNLMVaoDNop>
+				<thueNLMVaoTrenDVi></thueNLMVaoTrenDVi>
+				<thueNLMVaoDaKTru></thueNLMVaoDaKTru>
+				<thueNLMVaoChuaKTru></thueNLMVaoChuaKTru>
 			</ThueNLMVao>
 		</ChiTietThueTTDBNLMVao>
-		<tongThueNLMVaoDNop>1</tongThueNLMVaoDNop>
-		<tongThueNLMVaoDaKTru>text</tongThueNLMVaoDaKTru>
-		<tongthueNLMVaoChuaKTru>1</tongthueNLMVaoChuaKTru>
-	</ThueNLMVao>
-	<ThueNLDuocKTru>
+		<tongThueNLMVaoDNop></tongThueNLMVaoDNop>
+		<tongThueNLMVaoDaKTru></tongThueNLMVaoDaKTru>
+		<tongthueNLMVaoChuaKTru></tongthueNLMVaoChuaKTru>
+	</TTinThueNLMVao>
+	<TTinThueNLDuocKTru>
 		<ChiTietThueTTDBNLDuocKTru>
 			<ThueNLDuocKTru id="ID_2">
 				<tenMatHangNLKTru></tenMatHangNLKTru>
-				<soLuongHangNLKTru>0.0</soLuongHangNLKTru>
+				<soLuongHangNLKTru></soLuongHangNLKTru>
 				<tenNLKTru></tenNLKTru>
-				<luongNL1DViNLKTru>0.0</luongNL1DViNLKTru>
-				<thue1DViNLKTru>0.0</thue1DViNLKTru>
-				<tongThueTTDBDuocKTru>1</tongThueTTDBDuocKTru>
+				<luongNL1DViNLKTru></luongNL1DViNLKTru>
+				<thue1DViNLKTru></thue1DViNLKTru>
+				<tongThueTTDBDuocKTru></tongThueTTDBDuocKTru>
 			</ThueNLDuocKTru>
 		</ChiTietThueTTDBNLDuocKTru>
-		<tongTTDBNLDuocKTru>text</tongTTDBNLDuocKTru>
-	</ThueNLDuocKTru>
+		<tongTTDBNLDuocKTru></tongTTDBNLDuocKTru>
+	</TTinThueNLDuocKTru>
 </PLuc02_TTDB>
