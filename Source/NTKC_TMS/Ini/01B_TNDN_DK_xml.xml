@@ -22,7 +22,6 @@
 	</Static>
 	<Static GroupName="CT13">
 		<donViUyQuyen></donViUyQuyen>
-		<daiLyThue></daiLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<tenDonViUyQuyen></tenDonViUyQuyen>
@@ -37,12 +36,6 @@
 		<ct30>AJ_60</ct30>
 		<ct31>AJ_61</ct31>
 	</Static>
-	<Dynamic GroupName="ThongTinTKhoanNganHang">
-		<ThongTinTKhoanNganHang id="id">
-			<soTKhoan>G_65</soTKhoan>
-			<taiNganHang>T_65</taiNganHang>
-		</ThongTinTKhoanNganHang>
-	</Dynamic>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>AI_69</nguoiKy>
 		<ngayKy>AI_71</ngayKy>

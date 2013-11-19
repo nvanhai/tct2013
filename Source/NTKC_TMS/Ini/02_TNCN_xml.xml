@@ -1,6 +1,6 @@
-<HSoKhaiThue  ngay_nop_tk="E_24" ky_lap_bo="E_22">
+<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22">
 	<Static GroupName="TKhaiThue">
-		<maTKhai>02_TNCN</maTKhai>
+		<maTKhai>47</maTKhai>
 		<tenTKhai>TK-TNCN Mẫu 02/KK-TNCN</tenTKhai>
 		<moTaBMau/>
 	</Static>

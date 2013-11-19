@@ -1,20 +1,13 @@
 <PLuc01_TTDB>
 	<Static GroupName="ThoiGianNopTKhaiChinh">
-		<ngayNopTKhaiChinh>C_3</ngayNopTKhaiChinh>
-		<thangNopTKhaiChinh>D_3</thangNopTKhaiChinh>
-		<namNopTKhaiChinh>E_3</namNopTKhaiChinh>
+		<ThoiGianNopTKhaiChinh/>
 	</Static>
 	<Dynamic GroupName="ChiTietPLucBRaChiuThueTTDB">
-		<PLucBRaChiuThue id="id">
-			<ct2>
-				<khieuHDon>C_25</khieuHDon>
-				<soHDon>D_25</soHDon>
-				<ngayPhatHanh>E_25</ngayPhatHanh>
-			</ct2>
-			<ct3>F_25</ct3>
-			<ct4>J_25</ct4>
-			<ct5>H_25</ct5>
-			<ct6>L_25</ct6>
+			<ct2>C_25</ct2>
+			<ct3>D_25</ct3>
+			<ct4>E_25</ct4>
+			<ct5>F_25</ct5>
+			<ct6>J_25</ct6>
 			<ct7>N_25</ct7>
 			<ct8>O_25</ct8>
 			<ct9>P_25</ct9>

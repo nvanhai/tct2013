@@ -10,6 +10,7 @@
 		<lyDoGiaHan></lyDoGiaHan>
 	</Static>
 	<Static GroupName="NNT">
+		<phuongXa></phuongXa>
 		<maHuyenNNT></maHuyenNNT>
 		<maTinhNNT></maTinhNNT>
 	</Static>
@@ -34,12 +35,12 @@
 		<ct28>S_53</ct28>
 	</Static>
 	<Static GroupName="ThuNhapTuKDoanhCuaCNhanKhongCuTru">
-		<ct29>S_55</ct29>
-		<ct30>S_56</ct30>
+		<ct29>U_55</ct29>
+		<ct30>U_56</ct30>
 	</Static>
 	<Static GroupName="ThuNhapTuCNhuongVonCuaCNhanKhongCTru">
-		<ct31>S_58</ct31>
-		<ct32>S_59</ct32>
+		<ct31>U_58</ct31>
+		<ct32>U_59</ct32>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>R_61</nguoiKy>

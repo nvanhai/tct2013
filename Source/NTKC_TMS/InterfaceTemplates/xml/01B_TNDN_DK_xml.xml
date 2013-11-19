@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version=".0" encoding="UTF-8"?>
 <HSoKhaiThue>
 	<TTinChung>
 		<TTinDVu>
@@ -20,6 +20,8 @@
 					<kyKKhai></kyKKhai>
 					<kyKKhaiTuNgay></kyKKhaiTuNgay>
 					<kyKKhaiDenNgay></kyKKhaiDenNgay>
+					<kyKKhaiTuThang></kyKKhaiTuThang>
+					<kyKKhaiDenThang></kyKKhaiDenThang>
 				</KyKKhaiThue>
 				<maCQTNoiNop></maCQTNoiNop>
 				<tenCQTNoiNop></tenCQTNoiNop>
@@ -66,10 +68,10 @@
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
-		<ct12></ct12>
-		<CT13>
+		<ct2></ct2>
+		<CT3>
 			<donViUyQuyen></donViUyQuyen>
-		</CT13>
+		</CT3>
 		<tenDonViUyQuyen></tenDonViUyQuyen>
 		<ct22></ct22>
 		<ct23></ct23>
@@ -80,13 +82,7 @@
 		<ct28></ct28>
 		<ct29></ct29>
 		<ct30></ct30>
-		<ct31></ct31>
-		<ThongTinTKhoanNganHang>
-			<ThongTinTKhoanNganHang>
-				<soTKhoan></soTKhoan>
-				<taiNganHang></taiNganHang>
-			</ThongTinTKhoanNganHang>
-		</ThongTinTKhoanNganHang>
+		<ct3></ct3>
 	</CTieuTKhaiChinh>
 	<PLuc>
 	</PLuc>

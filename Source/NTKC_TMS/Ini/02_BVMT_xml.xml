@@ -1,23 +1,26 @@
 <HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22">
 	<Static GroupName="TKhaiThue">
-		<maTKhai>02_BVMT</maTKhai>
+		<maTKhai>60</maTKhai>
 		<tenTKhai>Tờ khai QT phí bảo vệ môi trường (02/BVMT)</tenTKhai>
-		<soLan>I_33</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
-		<maLyDoGiaHan></maLyDoGiaHan>
-		<lyDoGiaHan></lyDoGiaHan>
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
 	</Static>
 	<Static GroupName="NNT">
-		<maHuyenNNT></maHuyenNNT>
-		<maTinhNNT></maTinhNNT>
+		<maHuyenNNT/>
+		<maTinhNNT/>
 	</Static>
 	<Static GroupName="DLyThue">
-		<maHuyenDLyThue></maHuyenDLyThue>
-		<maTinhDLyThue></maTinhDLyThue>
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
 	</Static>
-	<Dynamic GroupName="KhoangSan">
+	<Static GroupName="KSCSTuKhaiThac">
+		<tongPhiPhaiNopTrongKyI>C_29</tongPhiPhaiNopTrongKyI>
+		<tongPhiDaKeKhaiTrongKyI>E_29</tongPhiDaKeKhaiTrongKyI>
+	</Static>
+	<Dynamic GroupName="KSCSTuKhaiThac" Level="2">
 		<NoiDungKS id="ID_1">
 			<maKSan>C_45</maKSan>
 			<donViTinh>G_45</donViTinh>
@@ -27,11 +30,11 @@
 			<phiDaKeKhaiTrongKy>V_45</phiDaKeKhaiTrongKy>
 		</NoiDungKS>
 	</Dynamic>
-	<Static GroupName="KSCSTuKhaiThac">
-		<tongPhiPhaiNopTrongKyI>0</tongPhiPhaiNopTrongKyI>
-		<tongPhiDaKeKhaiTrongKyI>0</tongPhiDaKeKhaiTrongKyI>
+	<Static GroupName="KSCSThuMua">
+		<tongPhiPhaiNopTrongKyII>E_30</tongPhiPhaiNopTrongKyII>
+		<tongPhiDaKeKhaiTrongKyII>H_30</tongPhiDaKeKhaiTrongKyII>
 	</Static>
-	<Dynamic GroupName="KhoangSan">
+	<Dynamic GroupName="KSCSThuMua" Level="2">
 		<NoiDungKS id="ID_2">
 			<maKSan>C_49</maKSan>
 			<donViTinh>G_49</donViTinh>
@@ -41,21 +44,17 @@
 			<phiDaKeKhaiTrongKy>V_49</phiDaKeKhaiTrongKy>
 		</NoiDungKS>
 	</Dynamic>
-	<Static GroupName="KSCSThuMua">
-		<tongPhiPhaiNopTrongKyII>0</tongPhiPhaiNopTrongKyII>
-		<tongPhiDaKeKhaiTrongKyII>0</tongPhiDaKeKhaiTrongKyII>
-	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<tongPhiPhaiNopTrongKy>Q_51</tongPhiPhaiNopTrongKy>
 		<tongPhiDaKeKhaiTrongKy>V_51</tongPhiDaKeKhaiTrongKy>
 		<tongTienBangChu></tongTienBangChu>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy></nguoiKy>
-		<ngayKy></ngayKy>
+		<nguoiKy>R_58</nguoiKy>
+		<ngayKy>R_60</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>token</tenNVienDLyThue>
-		<cchiHNghe></cchiHNghe>
+		<tenNVienDLyThue>G_58</tenNVienDLyThue>
+		<cchiHNghe>G_60</cchiHNghe>
 	</Static>
 </HSoKhaiThue>
