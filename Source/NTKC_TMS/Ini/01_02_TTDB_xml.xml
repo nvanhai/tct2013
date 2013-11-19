@@ -1,8 +1,6 @@
 <PLuc02_TTDB>
 	<Static GroupName="ThoiGianNopTKhaiChinh">
-		<ngayNopTKhaiChinh>C_5</ngayNopTKhaiChinh>
-		<thangNopTKhaiChinh>D_5</thangNopTKhaiChinh>
-		<namNopTKhaiChinh>E_5</namNopTKhaiChinh>
+		<ThoiGianNopTKhaiChinh/>
 	</Static>
 	<Dynamic GroupName="ChiTietThueTTDBNLMVao">
 		<ThueNLMVao id="ID_1">

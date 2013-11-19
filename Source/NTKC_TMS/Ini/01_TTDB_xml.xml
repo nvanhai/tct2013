@@ -1,8 +1,7 @@
-<HSoKhaiThue ngay_nop_tk="E_25" ky_lap_bo="E_23">
+<HSoKhaiThue  ngay_nop_tk="F_25" ky_lap_bo="F_23">
 	<Static GroupName="TKhaiThue">
-		<maTKhai>01_TTDB</maTKhai>
+		<maTKhai>05</maTKhai>
 		<tenTKhai>Thuế Tiêu Thụ Đặc Biệt</tenTKhai>
-		<soLan>J_33</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
@@ -62,32 +61,33 @@
 	</Static>
 	<Dynamic GroupName="HHXuatKhau">
 		<NDungHHoaKhongThue id="id">
-			<tenHHoa>D_63</tenHHoa>
-			<donVTinh>P_63</donVTinh>
-			<sanLuongTThu>S_63</sanLuongTThu>
-			<dSoBanChuaThue>X_63</dSoBanChuaThue>
+			<ct2>D_63</ct2>
+			<ct3>P_63</ct3>
+			<ct4>S_63</ct4>
+			<ct5>X_63</ct5>
 		</NDungHHoaKhongThue>
 	</Dynamic>
 	<Dynamic GroupName="HHBanDeXuatKhau">
 		<NDungHHoaKhongThue id="id">
-			<tenHHoa>D_67</tenHHoa>
-			<donVTinh>P_67</donVTinh>
-			<sanLuongTThu>S_67</sanLuongTThu>
-			<dSoBanChuaThue>X_67</dSoBanChuaThue>
+			<ct2>D_67</ct2>
+			<ct3>P_67</ct3>
+			<ct4>S_67</ct4>
+			<ct5>X_67</ct5>
 		</NDungHHoaKhongThue>
 	</Dynamic>
 	<Dynamic GroupName="HHGiaCongXuatKhau">
 		<NDungHHoaKhongThue id="id">
-			<tenHHoa>D_71</tenHHoa>
-			<donVTinh>P_71</donVTinh>
-			<sanLuongTThu>S_71</sanLuongTThu>
-			<dSoBanChuaThue>X_71</dSoBanChuaThue>
+			<ct2>D_71</ct2>
+			<ct3>P_71</ct3>
+			<ct4>S_71</ct4>
+			<ct5>X_71</ct5>
 		</NDungHHoaKhongThue>
 	</Dynamic>
 	<Static GroupName="BangChiTietThueTTĐB">
 		<tongDSoBanChuaThue>X_73</tongDSoBanChuaThue>
 		<tongGiaThue>AC_73</tongGiaThue>
 		<tongThueKTru>AH_73</tongThueKTru>
+		<tongThueKTruKyTruoc></tongThueKTruKyTruoc>
 		<tongThuePNop>AO_73</tongThuePNop>
 	</Static>
 	<Static GroupName="TKhaiThue">
