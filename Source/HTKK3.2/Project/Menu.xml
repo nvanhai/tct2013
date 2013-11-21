@@ -53,6 +53,15 @@
 		</Validity>
 	</Menu>
 	
+	<Menu ID="88" PopID="101" ParentID="101_1" Caption="Tờ khai GTGT trực tiếp trên GTGT(03A/GTGT)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
+		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\excel\03A_GTGT.xls" ReportTemplate="..\ReportTemplates\excel\03A_GTGT.xls" Class="TAX_Business.cls_03AGTGT" Class2="TAX_Business.clsReport004">
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03A_GTGT" InterfaceIni="..\InterfaceIni\03A_GTGT.xml" ReportIni="..\ReportIni\03A_GTGT.xml"/>
+			<Sheet ID="01_1" Caption="PL 03-1/GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03A_1_GTGT" InterfaceIni="..\InterfaceIni\03A_1_GTGT.xml" ReportIni="..\ReportIni\03A_1_GTGT.xml"/>
+			<Sheet ID="01_2" Caption="PL 03-2/GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03A_2_GTGT" InterfaceIni="..\InterfaceIni\03A_2_GTGT.xml" ReportIni="..\ReportIni\03A_1_GTGT.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_03B_GTGT" InterfaceIni="..\InterfaceIni\KHBS_03B_GTGT.xml" ReportIni="..\ReportIni\KHBS_03B_GTGT.xml"/>
+		</Validity>
+	</Menu>
+	
 	<Menu ID="95" PopID="101" ParentID="101_1" Caption="Tờ khai GTGT trực tiếp trên GTGT(03B/GTGT)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\excel\03B_GTGT.xls" ReportTemplate="..\ReportTemplates\excel\03B_GTGT.xls" Class="TAX_Business.cls_03BGTGT" Class2="TAX_Business.clsReport004">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03B_GTGT" InterfaceIni="..\InterfaceIni\03B_GTGT.xml" ReportIni="..\ReportIni\03B_GTGT.xml"/>

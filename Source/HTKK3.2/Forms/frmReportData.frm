@@ -566,6 +566,9 @@ nextPrinter:
     ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0193"), "Msg")
         'dntai: them tieu muc to 01_TTDB , 01A_TNDN, 01B_TNDN , 01_GTGT
+        ' to khai 03A_GTGT
+    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "88" Then
+        fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0288"), "Msg")
     ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "05" And strLoaiNNKD <> "0" Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0194"), "Msg")
     ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "11" Then
