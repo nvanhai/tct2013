@@ -3695,7 +3695,7 @@ Public Function getTemplateTk(ByVal strId As String) As String()
         Case "95"
             ReDim strResult(3)
             strResult(0) = "F_6~Dynamic_0"
-            strResult(1) = "M_36~P_36~S_36~M_37~P_37~S_37~M_38~P_38~S_38~M_39~P_39~S_39~M_40~P_40~S_40~M_41~P_41~S_41~M_42~P_42~S_42~O_45~O_47~Dynamic_0"
+            strResult(1) = "Q_36~Q_37~Q_38~Q_39~Q_40~Q_41~Q_42~Dynamic_0"
             strResult(2) = "E_59~O_59~E_61~O_61~C_67~F_67~I_67~L_67~Dynamic_0"
         ' 04_GTGT /TT28
         Case "71"
