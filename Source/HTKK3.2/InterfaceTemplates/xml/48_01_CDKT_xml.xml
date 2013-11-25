@@ -212,23 +212,23 @@
 		</SoNamNgoai>
 		<NgoaiBangCDKT>
 			<SoCuoiNam>
-				<taiSanThueNgoai>2147483647</taiSanThueNgoai>
-				<hangHoaNhanGiuHo>2147483647</hangHoaNhanGiuHo>
-				<hangHoaNhanBanHo>2147483647</hangHoaNhanBanHo>
-				<noKhoDoiDaXLy>2147483647</noKhoDoiDaXLy>
-				<ngoaiTeCacLoai>2147483647</ngoaiTeCacLoai>
+				<taiSanThueNgoai></taiSanThueNgoai>
+				<hangHoaNhanGiuHo></hangHoaNhanGiuHo>
+				<hangHoaNhanBanHo></hangHoaNhanBanHo>
+				<noKhoDoiDaXLy></noKhoDoiDaXLy>
+				<ngoaiTeCacLoai></ngoaiTeCacLoai>
 			</SoCuoiNam>
 			<SoDauNam>
-				<taiSanThueNgoai>2147483647</taiSanThueNgoai>
-				<hangHoaNhanGiuHo>2147483647</hangHoaNhanGiuHo>
-				<hangHoaNhanBanHo>2147483647</hangHoaNhanBanHo>
-				<noKhoDoiDaXLy>2147483647</noKhoDoiDaXLy>
-				<ngoaiTeCacLoai>2147483647</ngoaiTeCacLoai>
+				<taiSanThueNgoai></taiSanThueNgoai>
+				<hangHoaNhanGiuHo></hangHoaNhanGiuHo>
+				<hangHoaNhanBanHo></hangHoaNhanBanHo>
+				<noKhoDoiDaXLy></noKhoDoiDaXLy>
+				<ngoaiTeCacLoai></ngoaiTeCacLoai>
 			</SoDauNam>
 		</NgoaiBangCDKT>
 		<nguoiLapBieu></nguoiLapBieu>
 		<keToanTruong></keToanTruong>
-		<ngayLap>1967-08-13</ngayLap>
+		<ngayLap></ngayLap>
 		<giamDoc></giamDoc>
 	</CTieuTKhaiChinh>
 	<PLuc>

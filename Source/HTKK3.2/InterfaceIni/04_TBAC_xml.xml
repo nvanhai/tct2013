@@ -6,8 +6,8 @@
 		<ttinNhaCCapDVu/>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<maTKhai/>
-		<tenTKhai/>
+		<maTKhai>04_TBAC</maTKhai>
+		<tenTKhai>Thông báo điều chỉnh thông tin (TB04/AC)</tenTKhai>
 		<moTaBMau/>
 		<pbanTKhaiXML/>
 	</Static>

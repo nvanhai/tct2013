@@ -16,10 +16,13 @@
 		<maHuyenDLyThue/>
 		<maTinhDLyThue/>
 	</Static>
-	<Static GroupName="LoaiDKhi">
-			<dauTho>O_30</dauTho>
-			<condensate>P_30</condensate>
-			<khiThienNhien>Q_30</khiThienNhien>
+	<Static GroupName="LoaiDauKhi">
+		<dauTho>O_30</dauTho>
+		<condensate>P_30</condensate>
+		<khiThienNhien>Q_30</khiThienNhien>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<hopDongDKhi>P_47</hopDongDKhi>
 	</Static>
 	<Static GroupName="LoaiHinhUyQuyen">
 		<donViUyQuyen>AB_48</donViUyQuyen>

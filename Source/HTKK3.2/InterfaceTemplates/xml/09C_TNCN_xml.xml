@@ -1,4 +1,4 @@
-<PL09_3-TNCN>
+<PL09C-TNCN>
 	<ThongTinPLuc>
 		<kemTKChinhNam></kemTKChinhNam>
 	</ThongTinPLuc>
@@ -10,29 +10,30 @@
 			<ct12></ct12>
 			<ct13></ct13>
 			<ct14></ct14>
-			<ct15>0</ct15>
-			<ct16>1</ct16>
+			<ct15></ct15>
+			<ct16></ct16>
+			<ct17>1</ct17>
 		</chiTietNguoiPhuThuocCoMST>
 	</BangDSachNPTCoMST>
 	<BangDSachNPTKhongCoMST>
-		<chiTietNPThuocKhongCoMST>
-			<ct18></ct18>
+		<chiTietNPThuocCoCoMST>
 			<ct19></ct19>
-			<ct20></ct20>
-			<ct21>1967-08-13</ct21>
-			<ct22></ct22>
-			<ct23></ct23>
-			<ct24></ct24>
-			<ct25></ct25>
-			<ct26></ct26>
+			<ThongTinTrenGKSinh>
+				<ct20></ct20>
+				<ct21></ct21>
+				<ct22></ct22>
+				<NoiDKy>
+					<ct23></ct23>
+					<ct24></ct24>
+					<ct25></ct25>
+					<ct26></ct26>
+				</NoiDKy>
+			</ThongTinTrenGKSinh>
 			<ct27></ct27>
 			<ct28>0</ct28>
 			<ct29>1</ct29>
-		</chiTietNPThuocKhongCoMST>
+		</chiTietNPThuocCoCoMST>
 	</BangDSachNPTKhongCoMST>
-	<TTinVoChong>
-		<hoTenVoChong></hoTenVoChong>
-		<mstVoChong>0000000000</mstVoChong>
-		<cmndVoChong></cmndVoChong>
-	</TTinVoChong>
-</PL09_3-TNCN>
+	<tongCongSoThangGiamTru>1</tongCongSoThangGiamTru>
+	<tongThuNhapDuocTru>1</tongThuNhapDuocTru>
+</PL09C-TNCN>

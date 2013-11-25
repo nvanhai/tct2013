@@ -1,17 +1,15 @@
-<PL05_2BK-TNCN>
+<PL05B_BK-TNCN>
 	<CHITIETTHUETNCNCUACANHANKHONGCOHDLD>
 		<chiTietThueTNCNCuaCNKhongCTru>
 			<ct07></ct07>
 			<ct08>0000000000</ct08>
-			<ct09></ct09>
-			<ct10>true</ct10>
 			<ThuNhapChiuThue>
-				<ct11>1</ct11>
-				<TNCNDuocGiam>
-					<ct12>1</ct12>
-					<ct13>1</ct13>
-				</TNCNDuocGiam>
+				<ct09></ct09>
+				<ct10>true</ct10>
 			</ThuNhapChiuThue>
+			<ct11>1</ct11>
+			<ct12>1</ct12>
+			<ct13>1</ct13>
 			<ct14>1</ct14>
 		</chiTietThueTNCNCuaCNKhongCTru>
 	</CHITIETTHUETNCNCUACANHANKHONGCOHDLD>
@@ -19,6 +17,4 @@
 	<ct16>1</ct16>
 	<ct17>1</ct17>
 	<ct18>1</ct18>
-	<ct19>1</ct19>
-	<ct20>1</ct20>
-</PL05_2BK-TNCN>
+</PL05B_BK-TNCN>
