@@ -5,18 +5,17 @@
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
-		<maLyDoGiaHan></maLyDoGiaHan>
-		<lyDoGiaHan></lyDoGiaHan>
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
 	</Static>
 	<Static GroupName="NNT">
-		<maHuyenNNT></maHuyenNNT>
-		<maTinhNNT></maTinhNNT>
+		<maHuyenNNT/>
+		<maTinhNNT/>
 	</Static>
 	<Static GroupName="DLyThue">
-		<maHuyenDLyThue></maHuyenDLyThue>
-		<maTinhDLyThue></maTinhDLyThue>
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
 	</Static>
-
 	<Static GroupName="SoNamNay">
 		<ct100_nNay>R_40</ct100_nNay>
 		<ct110_nNay>R_41</ct110_nNay>
@@ -86,7 +85,8 @@
 		<hangGCong_nNay>R_108</hangGCong_nNay>
 		<hangKGui_nNay>R_109</hangKGui_nNay>
 		<noKDoi_nNay>R_110</noKDoi_nNay>
-		<ngoaiTe_nNay>R_111</ngoaiTe_nNay>	</Static>
+		<ngoaiTe_nNay>R_111</ngoaiTe_nNay>
+	</Static>
 	<Static GroupName="SoNamNgoai">
 		<ct100_nNgoai>W_40</ct100_nNgoai>
 		<ct110_nNgoai>W_41</ct110_nNgoai>
@@ -163,7 +163,7 @@
 		<ngayKy>R_115</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue></tenNVienDLyThue>
-		<cchiHNghe></cchiHNghe>
+		<tenNVienDLyThue/>
+		<cchiHNghe/>
 	</Static>
 </HSoKhaiThue>

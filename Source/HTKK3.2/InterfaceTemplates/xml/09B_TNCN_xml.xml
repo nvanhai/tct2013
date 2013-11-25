@@ -1,41 +1,21 @@
-<PL09_2-TNCN>
+<PL09B-TNCN>
 	<ThongTinPLuc>
-		<kemTKChinhNam></kemTKChinhNam>
+		<kemTKChinhNam>D_5</kemTKChinhNam>
 	</ThongTinPLuc>
-	<KeKhai>
-		<ct05>1</ct05>
-		<ct06>1</ct06>
-		<ct07>1</ct07>
-		<ct08>1</ct08>
-		<ct09>1</ct09>
-		<ct10>1</ct10>
-		<ct11>1</ct11>
-		<ct12>1</ct12>
-		<ct13>1</ct13>
-		<ct14>0</ct14>
-		<ct15>1</ct15>
-		<ct16>0</ct16>
-		<ct17>1</ct17>
-		<ct18>1</ct18>
-		<ct19>1</ct19>
-		<ct20>1</ct20>
-	</KeKhai>
-	<SoTienTongHopQT>
-		<ct05>1</ct05>
-		<ct06>1</ct06>
-		<ct07>1</ct07>
-		<ct08>1</ct08>
-		<ct09>1</ct09>
-		<ct10>1</ct10>
-		<ct11>1</ct11>
-		<ct12>1</ct12>
-		<ct13>1</ct13>
-		<ct14>0</ct14>
-		<ct15>1</ct15>
-		<ct16>0</ct16>
-		<ct17>1</ct17>
-		<ct18>1</ct18>
-		<ct19>1</ct19>
-		<ct20>1</ct20>
-	</SoTienTongHopQT>
-</PL09_2-TNCN>
+	<ct05>I_16</ct05>
+	<ct06>I_17</ct06>
+	<ct07>I_18</ct07>
+	<ct08>I_19</ct08>
+	<ct09>I_20</ct09>
+	<ct10>I_21</ct10>
+	<ct11>I_22</ct11>
+	<ct12>I_23</ct12>
+	<ct13>I_24</ct13>
+	<ct14>I_25</ct14>
+	<ct15>I_26</ct15>
+	<ct16>I_27</ct16>
+	<ct17>I_28</ct17>
+	<ct18>I_29</ct18>
+	<ct19>I_30</ct19>
+	<ct20>I_31</ct20>
+</PL09B-TNCN>

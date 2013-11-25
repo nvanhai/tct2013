@@ -20,8 +20,6 @@
 					<kyKKhai></kyKKhai>
 					<kyKKhaiTuNgay></kyKKhaiTuNgay>
 					<kyKKhaiDenNgay></kyKKhaiDenNgay>
-					<kyKKhaiTuThang></kyKKhaiTuThang>
-					<kyKKhaiDenThang></kyKKhaiDenThang>
 				</KyKKhaiThue>
 				<maCQTNoiNop></maCQTNoiNop>
 				<tenCQTNoiNop></tenCQTNoiNop>
@@ -31,14 +29,12 @@
 					<lyDoGiaHan></lyDoGiaHan>
 				</GiaHan>
 				<nguoiKy></nguoiKy>
-				<ngayKy>1967-08-13</ngayKy>
-				<nganhNgheKD></nganhNgheKD>
+				<ngayKy></ngayKy>
 			</TKhaiThue>
 			<NNT>
 				<mst>0000000000</mst>
 				<tenNNT></tenNNT>
 				<dchiNNT></dchiNNT>
-				<phuongXa></phuongXa>
 				<maHuyenNNT></maHuyenNNT>
 				<tenHuyenNNT></tenHuyenNNT>
 				<maTinhNNT></maTinhNNT>
@@ -59,7 +55,7 @@
 				<faxDLyThue></faxDLyThue>
 				<emailDLyThue></emailDLyThue>
 				<soHDongDLyThue></soHDongDLyThue>
-				<ngayKyHDDLyThue>1967-08-13</ngayKyHDDLyThue>
+				<ngayKyHDDLyThue></ngayKyHDDLyThue>
 				<NVienDLy>
 					<tenNVienDLyThue></tenNVienDLyThue>
 					<cchiHNghe></cchiHNghe>
@@ -68,43 +64,44 @@
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
-		<ct12></ct12>
-		<ct12a></ct12a>
+		<ThongTinNNT>
+			<ct12>
+				<soTKhoanNHang></soTKhoanNHang>
+				<noiMo></noiMo>
+			</ct12>
+		</ThongTinNNT>
 		<TongTNhapChiuThueTNCNTrongKy>
 			<ct22>1</ct22>
 			<ct23>1</ct23>
 			<ct24>1</ct24>
 			<ct25>1</ct25>
-			<ct26>1</ct26>
 		</TongTNhapChiuThueTNCNTrongKy>
 		<CacKhoanGiamTru>
+			<ct26>1</ct26>
 			<ct27>1</ct27>
 			<ct28>1</ct28>
 			<ct29>1</ct29>
 			<ct30>1</ct30>
-			<ct31>1</ct31>
-			<ct32>1</ct32>
 		</CacKhoanGiamTru>
-		<ct33>1</ct33>
-		<ct34>1</ct34>
+		<ct31>1</ct31>
+		<ct32>2147483647</ct32>
 		<TongSoThueDaTamNop_KhauTru_DaNop>
+			<ct33>1</ct33>
+			<ct34>1</ct34>
 			<ct35>1</ct35>
 			<ct36>1</ct36>
-			<ct37>1</ct37>
-			<ct38>1</ct38>
 		</TongSoThueDaTamNop_KhauTru_DaNop>
 		<TongSoThueTNCNDuocGiam>
+			<ct37>2147483647</ct37>
+			<ct38>1</ct38>
 			<ct39>1</ct39>
-			<ct40>1</ct40>
-			<ct41>1</ct41>
 		</TongSoThueTNCNDuocGiam>
-		<ct42>1</ct42>
+		<ct40>1</ct40>
+		<ct41>1</ct41>
 		<TongSoThueNopThua>
+			<ct42>1</ct42>
 			<ct43>1</ct43>
 			<ct44>1</ct44>
-			<ct45>1</ct45>
-			<ct46>1</ct46>
-			<ct47>1</ct47>
 		</TongSoThueNopThua>
 	</CTieuTKhaiChinh>
 	<PLuc>
