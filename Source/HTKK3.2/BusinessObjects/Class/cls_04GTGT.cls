@@ -47,7 +47,7 @@ Public tuRowDL As Long
 Public denRowDL As Long
 Public strTuRowDenRowPL As String
 
-Private Const sheetPl01_1_GTGT = 2
+'Private Const sheetPl01_1_GTGT = 2
 Public strTkThangQuy As String
 'Dinh nghia type luu du  Row
 Public Type MY_ROW
@@ -64,61 +64,139 @@ End Type
 'add control, data for the control, celltag...
 'No parameter
 Public Sub Prepare1()
-    Dim xmlDomData As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
-    Dim strDataFileName As String
-    Dim xmlNodeListItems As MSXML.IXMLDOMNodeList
-    Dim strCboNhomNNKD As String
-    Dim strCboNhomNNKDAn As String
-    Dim xmlNode As MSXML.IXMLDOMNode
-    Dim i As Integer
-    Dim fldList() As String
-    strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_DM_Nhom_NNKD.xml")
+'    Dim xmlDomData As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
+'    Dim strDataFileName As String
+'    Dim xmlNodeListItems As MSXML.IXMLDOMNodeList
+'    Dim strCboNhomNNKD As String
+'    Dim strCboNhomNNKDAn As String
+'    Dim xmlNode As MSXML.IXMLDOMNode
+'    Dim i As Integer
+'    Dim fldList() As String
+'    strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_DM_Nhom_NNKD.xml")
     With fps
-       If xmlDomData.Load(strDataFileName) Then
-         Set xmlNodeListItems = xmlDomData.getElementsByTagName("Item")
-         For Each xmlNode In xmlNodeListItems
-             fldList = Split(GetAttribute(xmlNode, "Value"), "###")
-             strCboNhomNNKD = strCboNhomNNKD + fldList(1) + Chr$(9)
-             strCboNhomNNKDAn = strCboNhomNNKDAn + fldList(0) + Chr$(9)
-         Next
-     End If
-          'set nhom nganh nghe KD
+'       If xmlDomData.Load(strDataFileName) Then
+'         Set xmlNodeListItems = xmlDomData.getElementsByTagName("Item")
+'         For Each xmlNode In xmlNodeListItems
+'             fldList = Split(GetAttribute(xmlNode, "Value"), "###")
+'             strCboNhomNNKD = strCboNhomNNKD + fldList(1) + Chr$(9)
+'             strCboNhomNNKDAn = strCboNhomNNKDAn + fldList(0) + Chr$(9)
+'         Next
+'     End If
+'          'set nhom nganh nghe KD
+'        .Sheet = 1
+'        .Row = 45
+'        .Col = .ColLetterToNumber("C")
+'        .TypeComboBoxList = strCboNhomNNKD
+'        ' set Ma nhom NNKD
+'        .Col = .ColLetterToNumber("AE")
+'        .TypeComboBoxList = strCboNhomNNKDAn
+'
+'        ' Group 2
+'         .Row = 49
+'        .Col = .ColLetterToNumber("C")
+'        .TypeComboBoxList = strCboNhomNNKD
+'        ' set Ma nhom NNKD
+'        .Col = .ColLetterToNumber("AE")
+'        .TypeComboBoxList = strCboNhomNNKDAn
+'
+'        ' Group 3
+'        .Row = 53
+'        .Col = .ColLetterToNumber("C")
+'        .TypeComboBoxList = strCboNhomNNKD
+'        ' set Ma nhom NNKD
+'        .Col = .ColLetterToNumber("AE")
+'        .TypeComboBoxList = strCboNhomNNKDAn
+'
+'        ' group 4
+'        .Row = 57
+'        .Col = .ColLetterToNumber("C")
+'        .TypeComboBoxList = strCboNhomNNKD
+'        ' set Ma nhom NNKD
+'        .Col = .ColLetterToNumber("AE")
+'        .TypeComboBoxList = strCboNhomNNKDAn
+'
+'        SetDateFormat fps, 1, 75, .ColLetterToNumber("T"), DDMMYYYY
+'        SetDateFormat fps, .SheetCount - 1, 23, .ColLetterToNumber("BG"), DDMMYYYY
+'        .Sheet = 1
+'        .Row = 75
+'        .Col = .ColLetterToNumber("T")
+'        .Text = Format(Date, "dd/mm/yyyy")
+'        .TypeHAlign = TypeHAlignLeft
+'
+'        .Sheet = .SheetCount - 1 'KHBS
+'        .Row = 23
+'        .Col = .ColLetterToNumber("BG")
+'        .Text = Format(Date, "dd/mm/yyyy")
+'        .TypeHAlign = TypeHAlignLeft
+'
+'        'todo 14/06/2013
+'        .Sheet = sheetPl01_1_GTGT 'PL_04_1
+'            .Row = 8
+'            .Col = .ColLetterToNumber("C")
+'            .Text = ""
+'            .CellTag = .CellTag & "~1"
+'            .Row = 17
+'            .Text = ""
+'            .CellTag = .CellTag & "~2"
+'
+'
+'            .Row = 26
+'            .Text = ""
+'            .CellTag = .CellTag & "~3"
+'
+'
+'            .Row = 35
+'            .Text = ""
+'            .CellTag = .CellTag & "~4"
+'
+'
+'
+''            .Row = 44
+''            .Text = ""
+''            .CellTag = .CellTag & "~5"
+'
+'        SetDateFormat fps, sheetPl01_1_GTGT, 8, .ColLetterToNumber(colE), DDMMYYYY
+'        SetDateFormat fps, sheetPl01_1_GTGT, 17, .ColLetterToNumber(colE), DDMMYYYY
+'        SetDateFormat fps, sheetPl01_1_GTGT, 26, .ColLetterToNumber(colE), DDMMYYYY
+'        SetDateFormat fps, sheetPl01_1_GTGT, 35, .ColLetterToNumber(colE), DDMMYYYY
+'        'SetDateFormat fps, sheetPl01_1_GTGT, 28, .ColLetterToNumber(colE), DDMMYYYY
+'
+'        'nvsu 17/06/2013 set group PL 04-1(nhom hang hoa)
+'        .Sheet = 2
+'        .Row = 8
+'        .Col = .ColLetterToNumber("I")
+'        .TypeComboBoxList = strCboNhomNNKD
+'        ' set Ma nhom NNKD
+'        .Col = .ColLetterToNumber("R")
+'        .TypeComboBoxList = strCboNhomNNKDAn
+'
+'        .Sheet = 2
+'        .Row = 17
+'        .Col = .ColLetterToNumber("I")
+'        .TypeComboBoxList = strCboNhomNNKD
+'        ' set Ma nhom NNKD
+'        .Col = .ColLetterToNumber("R")
+'        .TypeComboBoxList = strCboNhomNNKDAn
+'
+'        .Sheet = 2
+'        .Row = 26
+'        .Col = .ColLetterToNumber("I")
+'        .TypeComboBoxList = strCboNhomNNKD
+'        ' set Ma nhom NNKD
+'        .Col = .ColLetterToNumber("R")
+'        .TypeComboBoxList = strCboNhomNNKDAn
+'
+'        .Sheet = 2
+'        .Row = 35
+'        .Col = .ColLetterToNumber("I")
+'        .TypeComboBoxList = strCboNhomNNKD
+'        ' set Ma nhom NNKD
+'        .Col = .ColLetterToNumber("R")
+'        .TypeComboBoxList = strCboNhomNNKDAn
+'        '-----------------------------------------------
+'
         .Sheet = 1
-        .Row = 45
-        .Col = .ColLetterToNumber("C")
-        .TypeComboBoxList = strCboNhomNNKD
-        ' set Ma nhom NNKD
-        .Col = .ColLetterToNumber("AE")
-        .TypeComboBoxList = strCboNhomNNKDAn
-        
-        ' Group 2
-         .Row = 49
-        .Col = .ColLetterToNumber("C")
-        .TypeComboBoxList = strCboNhomNNKD
-        ' set Ma nhom NNKD
-        .Col = .ColLetterToNumber("AE")
-        .TypeComboBoxList = strCboNhomNNKDAn
-        
-        ' Group 3
-        .Row = 53
-        .Col = .ColLetterToNumber("C")
-        .TypeComboBoxList = strCboNhomNNKD
-        ' set Ma nhom NNKD
-        .Col = .ColLetterToNumber("AE")
-        .TypeComboBoxList = strCboNhomNNKDAn
-        
-        ' group 4
-        .Row = 57
-        .Col = .ColLetterToNumber("C")
-        .TypeComboBoxList = strCboNhomNNKD
-        ' set Ma nhom NNKD
-        .Col = .ColLetterToNumber("AE")
-        .TypeComboBoxList = strCboNhomNNKDAn
-
-        SetDateFormat fps, 1, 75, .ColLetterToNumber("T"), DDMMYYYY
-        SetDateFormat fps, .SheetCount - 1, 23, .ColLetterToNumber("BG"), DDMMYYYY
-        .Sheet = 1
-        .Row = 75
+        .Row = 65
         .Col = .ColLetterToNumber("T")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
@@ -128,73 +206,6 @@ Public Sub Prepare1()
         .Col = .ColLetterToNumber("BG")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
-        
-        'todo 14/06/2013
-        .Sheet = sheetPl01_1_GTGT 'PL_04_1
-            .Row = 8
-            .Col = .ColLetterToNumber("C")
-            .Text = ""
-            .CellTag = .CellTag & "~1"
-            .Row = 17
-            .Text = ""
-            .CellTag = .CellTag & "~2"
-    
-
-            .Row = 26
-            .Text = ""
-            .CellTag = .CellTag & "~3"
-    
-        
-            .Row = 35
-            .Text = ""
-            .CellTag = .CellTag & "~4"
-            
-            
-            
-'            .Row = 44
-'            .Text = ""
-'            .CellTag = .CellTag & "~5"
-      
-        SetDateFormat fps, sheetPl01_1_GTGT, 8, .ColLetterToNumber(colE), DDMMYYYY
-        SetDateFormat fps, sheetPl01_1_GTGT, 17, .ColLetterToNumber(colE), DDMMYYYY
-        SetDateFormat fps, sheetPl01_1_GTGT, 26, .ColLetterToNumber(colE), DDMMYYYY
-        SetDateFormat fps, sheetPl01_1_GTGT, 35, .ColLetterToNumber(colE), DDMMYYYY
-        'SetDateFormat fps, sheetPl01_1_GTGT, 28, .ColLetterToNumber(colE), DDMMYYYY
-        
-        'nvsu 17/06/2013 set group PL 04-1(nhom hang hoa)
-        .Sheet = 2
-        .Row = 8
-        .Col = .ColLetterToNumber("I")
-        .TypeComboBoxList = strCboNhomNNKD
-        ' set Ma nhom NNKD
-        .Col = .ColLetterToNumber("R")
-        .TypeComboBoxList = strCboNhomNNKDAn
-        
-        .Sheet = 2
-        .Row = 17
-        .Col = .ColLetterToNumber("I")
-        .TypeComboBoxList = strCboNhomNNKD
-        ' set Ma nhom NNKD
-        .Col = .ColLetterToNumber("R")
-        .TypeComboBoxList = strCboNhomNNKDAn
-        
-        .Sheet = 2
-        .Row = 26
-        .Col = .ColLetterToNumber("I")
-        .TypeComboBoxList = strCboNhomNNKD
-        ' set Ma nhom NNKD
-        .Col = .ColLetterToNumber("R")
-        .TypeComboBoxList = strCboNhomNNKDAn
-        
-        .Sheet = 2
-        .Row = 35
-        .Col = .ColLetterToNumber("I")
-        .TypeComboBoxList = strCboNhomNNKD
-        ' set Ma nhom NNKD
-        .Col = .ColLetterToNumber("R")
-        .TypeComboBoxList = strCboNhomNNKDAn
-        '-----------------------------------------------
-        
     End With
 End Sub
 
@@ -256,56 +267,56 @@ Public Sub Prepare2()
             'end
         
         
-        ' Set so thu tu
-        ' group 2
-         fps.EventEnabled(EventAllEvents) = False
-         ' Group 1
-         i = 1
-         .Col = .ColLetterToNumber("B")
-         .Row = 45
-         Do
-              .Text = "1." & Trim(str(i))
-              .Col = .ColLetterToNumber("B")
-              .Row = i + 45
-              i = i + 1
-         Loop Until .Text = "aa"
-         i = 1
-        .Row = .Row + 3
-         Do
-              .Text = "2." & Trim(str(i))
-              .Col = .ColLetterToNumber("B")
-              .Row = 1 + .Row
-              i = i + 1
-         Loop Until .Text = "bb"
-         
-         ' Group 3
-         i = 1
-        .Row = .Row + 3
-         Do
-              .Text = "3." & Trim(str(i))
-              .Col = .ColLetterToNumber("B")
-              .Row = 1 + .Row
-              i = i + 1
-         Loop Until .Text = "cc"
-         ' Group 4
-         i = 1
-        .Row = .Row + 3
-         Do
-              .Text = "4." & Trim(str(i))
-              .Col = .ColLetterToNumber("B")
-              .Row = 1 + .Row
-              i = i + 1
-         Loop Until .Text = "dd"
-         
-         .Sheet = sheetPl01_1_GTGT 'PL1
-            .ActiveSheet = .Sheet
-                .Row = 1
-                .Col = .ColLetterToNumber("C")
-                .CellType = CellTypeButton
-                .TypeButtonTextColor = RGB(0, 0, 255)
-                .TypeButtonColor = &H8000000F
-                .TypeButtonAlign = TypeButtonAlignRight
-                .TypeButtonText = GetAttribute(GetMessageCellById("0104"), "Msg")
+'        ' Set so thu tu
+'        ' group 2
+'         fps.EventEnabled(EventAllEvents) = False
+'         ' Group 1
+'         i = 1
+'         .Col = .ColLetterToNumber("B")
+'         .Row = 45
+'         Do
+'              .Text = "1." & Trim(str(i))
+'              .Col = .ColLetterToNumber("B")
+'              .Row = i + 45
+'              i = i + 1
+'         Loop Until .Text = "aa"
+'         i = 1
+'        .Row = .Row + 3
+'         Do
+'              .Text = "2." & Trim(str(i))
+'              .Col = .ColLetterToNumber("B")
+'              .Row = 1 + .Row
+'              i = i + 1
+'         Loop Until .Text = "bb"
+'
+'         ' Group 3
+'         i = 1
+'        .Row = .Row + 3
+'         Do
+'              .Text = "3." & Trim(str(i))
+'              .Col = .ColLetterToNumber("B")
+'              .Row = 1 + .Row
+'              i = i + 1
+'         Loop Until .Text = "cc"
+'         ' Group 4
+'         i = 1
+'        .Row = .Row + 3
+'         Do
+'              .Text = "4." & Trim(str(i))
+'              .Col = .ColLetterToNumber("B")
+'              .Row = 1 + .Row
+'              i = i + 1
+'         Loop Until .Text = "dd"
+'
+'         .Sheet = sheetPl01_1_GTGT 'PL1
+'            .ActiveSheet = .Sheet
+'                .Row = 1
+'                .Col = .ColLetterToNumber("C")
+'                .CellType = CellTypeButton
+'                .TypeButtonTextColor = RGB(0, 0, 255)
+'                .TypeButtonColor = &H8000000F
+'                .TypeButtonAlign = TypeButtonAlignRight
+'                .TypeButtonText = GetAttribute(GetMessageCellById("0104"), "Msg")
                 
         fps.EventEnabled(EventAllEvents) = True
         
@@ -329,57 +340,57 @@ Dim tempValue As Variant
 
     With fps
         If .ActiveSheet = 1 Then
-                    'Huy chon Combo to khai khong hop le va ra thong bao
-            blGiaTriCu = False
-                    
-            If blGiaTriCu And Col = .ColLetterToNumber("C") Then 'And Not mblKeyF5 Then
-                If Not .Visible Then
-                    .Visible = True
-                    DisplayMessage "0242", msOKOnly, miWarning
-                    .Visible = False
-                Else
-                    DisplayMessage "0242", msOKOnly, miWarning
-                End If
-                
-                .Sheet = 1
-                mCurrentSheet = .Sheet
-                .Row = RowGiaTriCu
-                .Col = ColGiaTriCu
-                .Text = strGiaTriCu
-                .Sheet = 1
-                mCurrentSheet = .Sheet
-                .Row = RowGiaTriCu
-                .Col = ColGiaTriCu
-                UpdateCell fps, .Col, .Row, .Text
-                .Sheet = 1
-                mCurrentSheet = .Sheet
-                .Row = RowGiaTriCu
-                .Col = .ColLetterToNumber("AE")
-                .Text = ""
-                UpdateCell fps, .Col, .Row, .Text
-                .Sheet = 1
-                mCurrentSheet = .Sheet
-                .Row = RowGiaTriCu
-                .Col = .ColLetterToNumber("K")
-                .Text = "0"
-                UpdateCell fps, .Col, .Row, .Text
-                .Sheet = 1
-                mCurrentSheet = .Sheet
-                .Row = RowGiaTriCu
-                .Col = .ColLetterToNumber("Q")
-                .Text = "0"
-                UpdateCell fps, .Col, .Row, .Text
-                .Sheet = 1
-                mCurrentSheet = .Sheet
-                .Row = RowGiaTriCu
-                .Col = .ColLetterToNumber("W")
-                .Text = "0"
-                UpdateCell fps, .Col, .Row, .Text
-                
-                
-                blGiaTriCu = False
-'                mblLoi = True
-            End If
+'                    'Huy chon Combo to khai khong hop le va ra thong bao
+'            blGiaTriCu = False
+'
+'            If blGiaTriCu And Col = .ColLetterToNumber("C") Then 'And Not mblKeyF5 Then
+'                If Not .Visible Then
+'                    .Visible = True
+'                    DisplayMessage "0242", msOKOnly, miWarning
+'                    .Visible = False
+'                Else
+'                    DisplayMessage "0242", msOKOnly, miWarning
+'                End If
+'
+'                .Sheet = 1
+'                mCurrentSheet = .Sheet
+'                .Row = RowGiaTriCu
+'                .Col = ColGiaTriCu
+'                .Text = strGiaTriCu
+'                .Sheet = 1
+'                mCurrentSheet = .Sheet
+'                .Row = RowGiaTriCu
+'                .Col = ColGiaTriCu
+'                UpdateCell fps, .Col, .Row, .Text
+'                .Sheet = 1
+'                mCurrentSheet = .Sheet
+'                .Row = RowGiaTriCu
+'                .Col = .ColLetterToNumber("AE")
+'                .Text = ""
+'                UpdateCell fps, .Col, .Row, .Text
+'                .Sheet = 1
+'                mCurrentSheet = .Sheet
+'                .Row = RowGiaTriCu
+'                .Col = .ColLetterToNumber("K")
+'                .Text = "0"
+'                UpdateCell fps, .Col, .Row, .Text
+'                .Sheet = 1
+'                mCurrentSheet = .Sheet
+'                .Row = RowGiaTriCu
+'                .Col = .ColLetterToNumber("Q")
+'                .Text = "0"
+'                UpdateCell fps, .Col, .Row, .Text
+'                .Sheet = 1
+'                mCurrentSheet = .Sheet
+'                .Row = RowGiaTriCu
+'                .Col = .ColLetterToNumber("W")
+'                .Text = "0"
+'                UpdateCell fps, .Col, .Row, .Text
+'
+'
+'                blGiaTriCu = False
+''                mblLoi = True
+'            End If
 '            .Col = Col
 '            .row = row
 '             If Col = .ColLetterToNumber("K") Or Col = .ColLetterToNumber("Q") Or Col = .ColLetterToNumber("W") Then
@@ -501,164 +512,164 @@ Dim tCol As Long, tRow As Long
              If .ActiveSheet = 1 Then
                  fps_Change iCol, iRow
                  fps.EventEnabled(EventAllEvents) = False
-                    ' Group 1
-                    fps.Sheet = mCurrentSheet
-        '            ' them dong o group 2
-                    If KeyCode = vbKeyF5 Then
-                        ' them dong o group 2
-                         .Col = .ColLetterToNumber("B")
-                         .Row = 45
-                         Do
-                             .Col = .ColLetterToNumber("B")
-                             .Row = .Row + 1
-                         Loop Until .Text = "aa"
-                        ' Lay ve vi tri muon them dong
-                        ' Group 2
-                         .Col = .ColLetterToNumber("B")
-                         .Row = .Row + 3
-                         i = 1
-                         Do
-                              .GetText .ColLetterToNumber("AG"), .Row, tempGroup
-                              .GetText .ColLetterToNumber("AE"), .Row, tempValue
-                              If lViTri = i And Val(tempGroup) = 2 Then
-                                    InsertNode .ColLetterToNumber("L"), .Row
-                              End If
-                              i = i + 1
-                             .Col = .ColLetterToNumber("B")
-                             .Row = .Row + 1
-                         Loop Until .Text = "bb"
-                         ' Group 3
-                         .Col = .ColLetterToNumber("B")
-                         .Row = .Row + 3
-                         i = 1
-                         Do
-                              .GetText .ColLetterToNumber("AG"), .Row, tempGroup
-                              .GetText .ColLetterToNumber("AE"), .Row, tempValue
-                              If lViTri = i And Val(tempGroup) = 3 Then
-                                    InsertNode .ColLetterToNumber("L"), .Row
-                              End If
-                              i = i + 1
-                             .Col = .ColLetterToNumber("B")
-                             .Row = .Row + 1
-                         Loop Until .Text = "cc"
-                         ' Group 4
-                         .Col = .ColLetterToNumber("B")
-                         .Row = .Row + 3
-                         i = 1
-                         Do
-                              .GetText .ColLetterToNumber("AG"), .Row, tempGroup
-                              .GetText .ColLetterToNumber("AE"), .Row, tempValue
-                              If lViTri = i And Val(tempGroup) = 4 Then
-                                    InsertNode .ColLetterToNumber("L"), .Row
-                              End If
-                              i = i + 1
-                             .Col = .ColLetterToNumber("B")
-                             .Row = .Row + 1
-                         Loop Until .Text = "dd"
-                         
-                    End If
-                    
-                    ' Xoa cac row dong cua group 2,3,4
-                    If KeyCode = vbKeyF6 Then
-                        ' xoa dong o group 2
-                         .Col = .ColLetterToNumber("B")
-                         .Row = 45
-                         Do
-                             .Col = .ColLetterToNumber("B")
-                             .Row = .Row + 1
-                         Loop Until .Text = "aa"
-                        ' Lay ve vi tri muon xoa
-                        ' Group 2
-                         .Col = .ColLetterToNumber("B")
-                         .Row = .Row + 3
-                         i = 1
-                         Do
-                              .GetText .ColLetterToNumber("AG"), .Row, tempGroup
-                              .GetText .ColLetterToNumber("AE"), .Row, tempValue
-                               If lViTri = i And Val(tempGroup) = 2 Then
-                                    DeleteNode .ActiveSheet, .ColLetterToNumber("L"), .Row
-                               End If
-                               i = i + 1
-                             .Col = .ColLetterToNumber("B")
-                             .Row = .Row + 1
-                         Loop Until .Text = "bb"
-                         
-                         ' xoa dong o group 3
-                        ' Lay ve vi tri muon xoa
-                         .Col = .ColLetterToNumber("B")
-                         .Row = .Row + 3
-                         i = 1
-                         Do
-                              .GetText .ColLetterToNumber("AG"), .Row, tempGroup
-                              .GetText .ColLetterToNumber("AE"), .Row, tempValue
-                              If lViTri = i And Val(tempGroup) = 3 Then
-                                    DeleteNode .ActiveSheet, .ColLetterToNumber("L"), .Row
-                              End If
-                              i = i + 1
-                             .Col = .ColLetterToNumber("B")
-                             .Row = .Row + 1
-                         Loop Until .Text = "cc"
-                         ' xoa dong o group 4
-                        ' Lay ve vi tri muon xoa
-                         .Col = .ColLetterToNumber("B")
-                         .Row = .Row + 3
-                         i = 1
-                         Do
-                              .GetText .ColLetterToNumber("AG"), .Row, tempGroup
-                              .GetText .ColLetterToNumber("AE"), .Row, tempValue
-                              If lViTri = i And Val(tempGroup) = 4 Then
-                                    DeleteNode .ActiveSheet, .ColLetterToNumber("L"), .Row
-                              End If
-                              i = i + 1
-                             .Col = .ColLetterToNumber("B")
-                             .Row = .Row + 1
-                         Loop Until .Text = "dd"
-                    End If
-
-                    ' group 2
-                    fps.EventEnabled(EventAllEvents) = False
-                    ' Group 1
-                    i = 1
-                    .Col = .ColLetterToNumber("B")
-                    .Row = 45
-                    Do
-                         .Text = "1." & Trim(str(i))
-                         .Col = .ColLetterToNumber("B")
-                         .Row = i + 45
-                         i = i + 1
-                    Loop Until .Text = "aa"
-                    i = 1
-                   .Row = .Row + 3
-                    Do
-                         .Text = "2." & Trim(str(i))
-                         .Col = .ColLetterToNumber("B")
-                         .Row = 1 + .Row
-                         i = i + 1
-                    Loop Until .Text = "bb"
-                    coundtRowDel = i - 1
-                    ' Group 3
-                    i = 1
-                   .Row = .Row + 3
-                    Do
-                         .Text = "3." & Trim(str(i))
-                         .Col = .ColLetterToNumber("B")
-                         .Row = 1 + .Row
-                         i = i + 1
-                    Loop Until .Text = "cc"
-                    ' Group 4
-                    i = 1
-                   .Row = .Row + 3
-                    Do
-                         .Text = "4." & Trim(str(i))
-                         .Col = .ColLetterToNumber("B")
-                         .Row = 1 + .Row
-                         i = i + 1
-                    Loop Until .Text = "dd"
-                    
-                    .SetActiveCell iCol, iRow
-                    .Row = iRow
-                    .Col = iCol
-                    .SetActiveCell iCol, iRow
+'                    ' Group 1
+'                    fps.Sheet = mCurrentSheet
+'        '            ' them dong o group 2
+'                    If KeyCode = vbKeyF5 Then
+'                        ' them dong o group 2
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = 45
+'                         Do
+'                             .Col = .ColLetterToNumber("B")
+'                             .Row = .Row + 1
+'                         Loop Until .Text = "aa"
+'                        ' Lay ve vi tri muon them dong
+'                        ' Group 2
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = .Row + 3
+'                         i = 1
+'                         Do
+'                              .GetText .ColLetterToNumber("AG"), .Row, tempGroup
+'                              .GetText .ColLetterToNumber("AE"), .Row, tempValue
+'                              If lViTri = i And Val(tempGroup) = 2 Then
+'                                    InsertNode .ColLetterToNumber("L"), .Row
+'                              End If
+'                              i = i + 1
+'                             .Col = .ColLetterToNumber("B")
+'                             .Row = .Row + 1
+'                         Loop Until .Text = "bb"
+'                         ' Group 3
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = .Row + 3
+'                         i = 1
+'                         Do
+'                              .GetText .ColLetterToNumber("AG"), .Row, tempGroup
+'                              .GetText .ColLetterToNumber("AE"), .Row, tempValue
+'                              If lViTri = i And Val(tempGroup) = 3 Then
+'                                    InsertNode .ColLetterToNumber("L"), .Row
+'                              End If
+'                              i = i + 1
+'                             .Col = .ColLetterToNumber("B")
+'                             .Row = .Row + 1
+'                         Loop Until .Text = "cc"
+'                         ' Group 4
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = .Row + 3
+'                         i = 1
+'                         Do
+'                              .GetText .ColLetterToNumber("AG"), .Row, tempGroup
+'                              .GetText .ColLetterToNumber("AE"), .Row, tempValue
+'                              If lViTri = i And Val(tempGroup) = 4 Then
+'                                    InsertNode .ColLetterToNumber("L"), .Row
+'                              End If
+'                              i = i + 1
+'                             .Col = .ColLetterToNumber("B")
+'                             .Row = .Row + 1
+'                         Loop Until .Text = "dd"
+'
+'                    End If
+'
+'                    ' Xoa cac row dong cua group 2,3,4
+'                    If KeyCode = vbKeyF6 Then
+'                        ' xoa dong o group 2
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = 45
+'                         Do
+'                             .Col = .ColLetterToNumber("B")
+'                             .Row = .Row + 1
+'                         Loop Until .Text = "aa"
+'                        ' Lay ve vi tri muon xoa
+'                        ' Group 2
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = .Row + 3
+'                         i = 1
+'                         Do
+'                              .GetText .ColLetterToNumber("AG"), .Row, tempGroup
+'                              .GetText .ColLetterToNumber("AE"), .Row, tempValue
+'                               If lViTri = i And Val(tempGroup) = 2 Then
+'                                    DeleteNode .ActiveSheet, .ColLetterToNumber("L"), .Row
+'                               End If
+'                               i = i + 1
+'                             .Col = .ColLetterToNumber("B")
+'                             .Row = .Row + 1
+'                         Loop Until .Text = "bb"
+'
+'                         ' xoa dong o group 3
+'                        ' Lay ve vi tri muon xoa
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = .Row + 3
+'                         i = 1
+'                         Do
+'                              .GetText .ColLetterToNumber("AG"), .Row, tempGroup
+'                              .GetText .ColLetterToNumber("AE"), .Row, tempValue
+'                              If lViTri = i And Val(tempGroup) = 3 Then
+'                                    DeleteNode .ActiveSheet, .ColLetterToNumber("L"), .Row
+'                              End If
+'                              i = i + 1
+'                             .Col = .ColLetterToNumber("B")
+'                             .Row = .Row + 1
+'                         Loop Until .Text = "cc"
+'                         ' xoa dong o group 4
+'                        ' Lay ve vi tri muon xoa
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = .Row + 3
+'                         i = 1
+'                         Do
+'                              .GetText .ColLetterToNumber("AG"), .Row, tempGroup
+'                              .GetText .ColLetterToNumber("AE"), .Row, tempValue
+'                              If lViTri = i And Val(tempGroup) = 4 Then
+'                                    DeleteNode .ActiveSheet, .ColLetterToNumber("L"), .Row
+'                              End If
+'                              i = i + 1
+'                             .Col = .ColLetterToNumber("B")
+'                             .Row = .Row + 1
+'                         Loop Until .Text = "dd"
+'                    End If
+'
+'                    ' group 2
+'                    fps.EventEnabled(EventAllEvents) = False
+'                    ' Group 1
+'                    i = 1
+'                    .Col = .ColLetterToNumber("B")
+'                    .Row = 45
+'                    Do
+'                         .Text = "1." & Trim(str(i))
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = i + 45
+'                         i = i + 1
+'                    Loop Until .Text = "aa"
+'                    i = 1
+'                   .Row = .Row + 3
+'                    Do
+'                         .Text = "2." & Trim(str(i))
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = 1 + .Row
+'                         i = i + 1
+'                    Loop Until .Text = "bb"
+'                    coundtRowDel = i - 1
+'                    ' Group 3
+'                    i = 1
+'                   .Row = .Row + 3
+'                    Do
+'                         .Text = "3." & Trim(str(i))
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = 1 + .Row
+'                         i = i + 1
+'                    Loop Until .Text = "cc"
+'                    ' Group 4
+'                    i = 1
+'                   .Row = .Row + 3
+'                    Do
+'                         .Text = "4." & Trim(str(i))
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = 1 + .Row
+'                         i = i + 1
+'                    Loop Until .Text = "dd"
+'
+'                    .SetActiveCell iCol, iRow
+'                    .Row = iRow
+'                    .Col = iCol
+'                    .SetActiveCell iCol, iRow
                  fps.EventEnabled(EventAllEvents) = True
             End If
            
@@ -672,58 +683,58 @@ Dim tCol As Long, tRow As Long
 '                DeleteNode 1, fps.ActiveCol, 50
 '            End If
             
-            'updated PL 04_1
-            If .ActiveSheet = sheetPl01_1_GTGT Then
-                    fps.EventEnabled(EventAllEvents) = False
-                    .Sheet = 2
-                    mCurrentSheet = sheetPl01_1_GTGT
-                    i = 1
-                    .Col = .ColLetterToNumber("B")
-                    .Row = 8
-                    Do
-                         .Text = str(i)
-                         .Col = .ColLetterToNumber("B")
-                         .Row = i + 8
-                         i = i + 1
-                    Loop Until .Text = "aa"
-                    i = 1
-                   .Row = .Row + 8 '4
-                    Do
-                         .Text = str(i)
-                         '.Col = .ColLetterToNumber("J")
-                         '.Text = "0%"
-                         'UpdateCell fps, .Col, .Row, .Text
-                         .Col = .ColLetterToNumber("B")
-                         .Row = 1 + .Row
-                         i = i + 1
-                    Loop Until .Text = "bb"
-                    i = 1
-                   .Row = .Row + 8
-                    Do
-                         .Text = str(i)
-                         '.Col = .ColLetterToNumber("J")
-                         '.Text = "5%"
-                         'UpdateCell fps, .Col, .Row, .Text
-                         .Col = .ColLetterToNumber("B")
-                         .Row = 1 + .Row
-                         i = i + 1
-                    Loop Until .Text = "cc"
-                    i = 1
-                   .Row = .Row + 8
-                    Do
-                         .Text = str(i)
-                        ' .Col = .ColLetterToNumber("J")
-                         '.Text = "10%"
-                         'UpdateCell fps, .Col, .Row, .Text
-                         .Col = .ColLetterToNumber("B")
-                         .Row = 1 + .Row
-                         i = i + 1
-                    Loop Until .Text = "dd"
-                    .SetActiveCell iCol, iRow
-                    .Row = iRow
-                    .Col = iCol
-                  fps.EventEnabled(EventAllEvents) = True
-            End If
+'            'updated PL 04_1
+'            If .ActiveSheet = sheetPl01_1_GTGT Then
+'                    fps.EventEnabled(EventAllEvents) = False
+'                    .Sheet = 2
+'                    mCurrentSheet = sheetPl01_1_GTGT
+'                    i = 1
+'                    .Col = .ColLetterToNumber("B")
+'                    .Row = 8
+'                    Do
+'                         .Text = str(i)
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = i + 8
+'                         i = i + 1
+'                    Loop Until .Text = "aa"
+'                    i = 1
+'                   .Row = .Row + 8 '4
+'                    Do
+'                         .Text = str(i)
+'                         '.Col = .ColLetterToNumber("J")
+'                         '.Text = "0%"
+'                         'UpdateCell fps, .Col, .Row, .Text
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = 1 + .Row
+'                         i = i + 1
+'                    Loop Until .Text = "bb"
+'                    i = 1
+'                   .Row = .Row + 8
+'                    Do
+'                         .Text = str(i)
+'                         '.Col = .ColLetterToNumber("J")
+'                         '.Text = "5%"
+'                         'UpdateCell fps, .Col, .Row, .Text
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = 1 + .Row
+'                         i = i + 1
+'                    Loop Until .Text = "cc"
+'                    i = 1
+'                   .Row = .Row + 8
+'                    Do
+'                         .Text = str(i)
+'                        ' .Col = .ColLetterToNumber("J")
+'                         '.Text = "10%"
+'                         'UpdateCell fps, .Col, .Row, .Text
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = 1 + .Row
+'                         i = i + 1
+'                    Loop Until .Text = "dd"
+'                    .SetActiveCell iCol, iRow
+'                    .Row = iRow
+'                    .Col = iCol
+'                  fps.EventEnabled(EventAllEvents) = True
+'            End If
         End If
         fps.EventEnabled(EventAllEvents) = True
     End With
@@ -806,23 +817,23 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 .Sheet = .SheetCount - 1
         End If
         
-        If .ActiveSheet = sheetPl01_1_GTGT Then
-                   If Col = .ColLetterToNumber(colE) Then
-                       .GetText Col, Row, varTemp
-                       If varTemp <> "" And varTemp <> "../../...." Then
-                           If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
-                               .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
-                           Else
-                               .SetActiveCell Col, Row
-                           End If
-                       Else
-                        .SetText Col, Row, ""
-                       End If
-                       .Col = Col
-                       .Row = Row
-                      UpdateCell fps, .Col, .Row, .Text
-                   End If
-        End If
+'        If .ActiveSheet = sheetPl01_1_GTGT Then
+'                   If Col = .ColLetterToNumber(colE) Then
+'                       .GetText Col, Row, varTemp
+'                       If varTemp <> "" And varTemp <> "../../...." Then
+'                           If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+'                               .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+'                           Else
+'                               .SetActiveCell Col, Row
+'                           End If
+'                       Else
+'                        .SetText Col, Row, ""
+'                       End If
+'                       .Col = Col
+'                       .Row = Row
+'                      UpdateCell fps, .Col, .Row, .Text
+'                   End If
+'        End If
         
       .EventEnabled(EventAllEvents) = True
     End With
@@ -900,177 +911,177 @@ Dim tempValue As Variant
 
     With fps
         If .ActiveSheet = 1 Then
-                .Col = Col
-                .Row = Row
-                 If Col = .ColLetterToNumber("C") And .Text <> "" Then
-                    intIndexCombo = .TypeComboBoxCurSel
-                    .Col = .ColLetterToNumber("AE")
-                    .TypeComboBoxCurSel = intIndexCombo
-                    'Update combo C
-                    UpdateCell fps, .Col, .Row, .Text
-                End If
-                
-               ' Kiem tra trung ten
-               Set xmlCellNode = TAX_Utilities_New.Data(1 - 1).nodeFromID(GetCellID(fps, Col, Row))
-               Set xmlCellNode = xmlCellNode.parentNode.parentNode.firstChild.firstChild
-               ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
-               blGiaTriCu = False
-        
-'                If Col = fps.ColLetterToNumber("C") Then
-'                    'kiem tra trung Ten NNKD trong to khai
-'                    fps.Col = Col
-'                    fps.Row = Row
-'                    temp = fps.Text
-'                    Set xmlCellsNode = xmlCellNode.parentNode
-'                    i = 1
-'                    .Col = .ColLetterToNumber("B")
-'                    ParserCellID fps, GetAttribute(xmlCellsNode.childNodes(i - 1), "CellID"), iCol, iRow
-'                    .Row = iRow
-'
-'                    Do
-'                         .Col = .ColLetterToNumber("C")
-'                         itemp = .Text
-'                         If .Row <> Row Then
-'                            If itemp = temp Then 'Neu co thi dat co blGiaTriCu = True
-'                                RowGiaTriCu = Row
-'                                ColGiaTriCu = .ColLetterToNumber("C")
-'                                .Row = Row
-'                                .Col = .ColLetterToNumber("C")
-'                                blGiaTriCu = True
-'                                Exit Sub
-'                            End If
-'                         End If
-'                         .Col = .ColLetterToNumber("B")
-'                         .Row = i + iRow
-'                         i = i + 1
-'                    Loop Until .Text = "aa"
-'                    .Sheet = 1
-'                    mCurrentSheet = 1
+'                .Col = Col
+'                .Row = Row
+'                 If Col = .ColLetterToNumber("C") And .Text <> "" Then
+'                    intIndexCombo = .TypeComboBoxCurSel
+'                    .Col = .ColLetterToNumber("AE")
+'                    .TypeComboBoxCurSel = intIndexCombo
+'                    'Update combo C
+'                    UpdateCell fps, .Col, .Row, .Text
 '                End If
-                ' STT dong change
-                
-                ' Lay ve mang cac row hien tai cua group 1
-                
-                .Col = .ColLetterToNumber("B")
-                .Row = 45
-                i = 1
-                Do
-                    .GetText .ColLetterToNumber("C"), .Row, tempValue
-                    tempRow.tenCT = CStr(tempValue)
-                    .GetText .ColLetterToNumber("K"), .Row, tempValue
-                    tempRow.cot1 = Val(tempValue)
-                    .GetText .ColLetterToNumber("Q"), .Row, tempValue
-                    tempRow.cot2 = Val(tempValue)
-                    .GetText .ColLetterToNumber("W"), .Row, tempValue
-                    tempRow.cot3 = Val(tempValue)
-                    .GetText .ColLetterToNumber("AE"), .Row, tempValue
-                    tempRow.Cot4 = Val(tempValue)
-                    tempRow.Cot5 = i
-                    ReDim Preserve arrRow(i - 1)
-                    arrRow(i - 1) = tempRow
-                    i = i + 1
-                    .Col = .ColLetterToNumber("B")
-                    .Row = .Row + 1
-                Loop Until .Text = "aa"
-                
-                ' Lay ve mang cac row hien tai cua group 2
-                ' bo check kiem tra trung ten
-                blGiaTriCu = False
-                
-                If blGiaTriCu = False Then
-                     .Col = .ColLetterToNumber("B")
-                    .Row = .Row + 3
-                    i = 1
-                    Do
-                        If i = Row - 44 Then
-                            ' Ten
-                            .Col = .ColLetterToNumber("C")
-                            .TypeComboBoxCurSel = intIndexCombo
-                            ' Ma nhom
-                            .Col = .ColLetterToNumber("AE")
-                            .TypeComboBoxCurSel = intIndexCombo
-                            UpdateCell fps, .Col, .Row, .Text
-                         End If
-                        tempRow.tenCT = arrRow(i - 1).tenCT
-                        .GetText .ColLetterToNumber("K"), .Row, tempValue
-                        tempRow.cot1 = Val(tempValue)
-                        .GetText .ColLetterToNumber("Q"), .Row, tempValue
-                        tempRow.cot2 = Val(tempValue)
-                        .GetText .ColLetterToNumber("W"), .Row, tempValue
-                        tempRow.cot3 = Val(tempValue)
-                        .GetText .ColLetterToNumber("AE"), .Row, tempValue
-                        tempRow.Cot4 = Val(tempValue)
-                        tempRow.Cot5 = i
-                        ReDim Preserve arrRow2(i - 1)
-                        arrRow2(i - 1) = tempRow
-                        i = i + 1
-                        .Col = .ColLetterToNumber("B")
-                        .Row = .Row + 1
-                    Loop Until .Text = "bb"
-                    
-                    ' Lay ve mang cac row hien tai cua group 3
-                     .Col = .ColLetterToNumber("B")
-                    .Row = .Row + 3
-                    i = 1
-                    Do
-                        If i = Row - 44 Then
-                            ' Ten
-                            .Col = .ColLetterToNumber("C")
-                            .TypeComboBoxCurSel = intIndexCombo
-                            ' Ma nhom
-                            .Col = .ColLetterToNumber("AE")
-                            .TypeComboBoxCurSel = intIndexCombo
-                            UpdateCell fps, .Col, .Row, .Text
-                         End If
-                        tempRow.tenCT = arrRow(i - 1).tenCT
-                        .GetText .ColLetterToNumber("K"), .Row, tempValue
-                        tempRow.cot1 = Val(tempValue)
-                        .GetText .ColLetterToNumber("Q"), .Row, tempValue
-                        tempRow.cot2 = Val(tempValue)
-                        .GetText .ColLetterToNumber("W"), .Row, tempValue
-                        tempRow.cot3 = Val(tempValue)
-                        .GetText .ColLetterToNumber("AE"), .Row, tempValue
-                        tempRow.Cot4 = Val(tempValue)
-                        tempRow.Cot5 = i
-                        ReDim Preserve arrRow3(i - 1)
-                        arrRow3(i - 1) = tempRow
-                        i = i + 1
-                        .Col = .ColLetterToNumber("B")
-                        .Row = .Row + 1
-                    Loop Until .Text = "cc"
-    
-                    ' Lay ve mang cac row hien tai cua group 4
-                     .Col = .ColLetterToNumber("B")
-                    .Row = .Row + 3
-                    i = 1
-                    Do
-                        If i = Row - 44 Then
-                            ' Ten
-                            .Col = .ColLetterToNumber("C")
-                            .TypeComboBoxCurSel = intIndexCombo
-                            ' Ma nhom
-                            .Col = .ColLetterToNumber("AE")
-                            .TypeComboBoxCurSel = intIndexCombo
-                            UpdateCell fps, .Col, .Row, .Text
-                         End If
-                        tempRow.tenCT = arrRow(i - 1).tenCT
-                        .GetText .ColLetterToNumber("K"), .Row, tempValue
-                        tempRow.cot1 = Val(tempValue)
-                        .GetText .ColLetterToNumber("Q"), .Row, tempValue
-                        tempRow.cot2 = Val(tempValue)
-                        .GetText .ColLetterToNumber("W"), .Row, tempValue
-                        tempRow.cot3 = Val(tempValue)
-                        .GetText .ColLetterToNumber("AE"), .Row, tempValue
-                        tempRow.Cot4 = Val(tempValue)
-                        tempRow.Cot5 = i
-                        ReDim Preserve arrRow4(i - 1)
-                        arrRow4(i - 1) = tempRow
-                        i = i + 1
-                        .Col = .ColLetterToNumber("B")
-                        .Row = .Row + 1
-                    Loop Until .Text = "dd"
-                    
-                End If
+'
+'               ' Kiem tra trung ten
+'               Set xmlCellNode = TAX_Utilities_New.Data(1 - 1).nodeFromID(GetCellID(fps, Col, Row))
+'               Set xmlCellNode = xmlCellNode.parentNode.parentNode.firstChild.firstChild
+'               ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+'               blGiaTriCu = False
+'
+''                If Col = fps.ColLetterToNumber("C") Then
+''                    'kiem tra trung Ten NNKD trong to khai
+''                    fps.Col = Col
+''                    fps.Row = Row
+''                    temp = fps.Text
+''                    Set xmlCellsNode = xmlCellNode.parentNode
+''                    i = 1
+''                    .Col = .ColLetterToNumber("B")
+''                    ParserCellID fps, GetAttribute(xmlCellsNode.childNodes(i - 1), "CellID"), iCol, iRow
+''                    .Row = iRow
+''
+''                    Do
+''                         .Col = .ColLetterToNumber("C")
+''                         itemp = .Text
+''                         If .Row <> Row Then
+''                            If itemp = temp Then 'Neu co thi dat co blGiaTriCu = True
+''                                RowGiaTriCu = Row
+''                                ColGiaTriCu = .ColLetterToNumber("C")
+''                                .Row = Row
+''                                .Col = .ColLetterToNumber("C")
+''                                blGiaTriCu = True
+''                                Exit Sub
+''                            End If
+''                         End If
+''                         .Col = .ColLetterToNumber("B")
+''                         .Row = i + iRow
+''                         i = i + 1
+''                    Loop Until .Text = "aa"
+''                    .Sheet = 1
+''                    mCurrentSheet = 1
+''                End If
+'                ' STT dong change
+'
+'                ' Lay ve mang cac row hien tai cua group 1
+'
+'                .Col = .ColLetterToNumber("B")
+'                .Row = 45
+'                i = 1
+'                Do
+'                    .GetText .ColLetterToNumber("C"), .Row, tempValue
+'                    tempRow.tenCT = CStr(tempValue)
+'                    .GetText .ColLetterToNumber("K"), .Row, tempValue
+'                    tempRow.cot1 = Val(tempValue)
+'                    .GetText .ColLetterToNumber("Q"), .Row, tempValue
+'                    tempRow.cot2 = Val(tempValue)
+'                    .GetText .ColLetterToNumber("W"), .Row, tempValue
+'                    tempRow.cot3 = Val(tempValue)
+'                    .GetText .ColLetterToNumber("AE"), .Row, tempValue
+'                    tempRow.Cot4 = Val(tempValue)
+'                    tempRow.Cot5 = i
+'                    ReDim Preserve arrRow(i - 1)
+'                    arrRow(i - 1) = tempRow
+'                    i = i + 1
+'                    .Col = .ColLetterToNumber("B")
+'                    .Row = .Row + 1
+'                Loop Until .Text = "aa"
+'
+'                ' Lay ve mang cac row hien tai cua group 2
+'                ' bo check kiem tra trung ten
+'                blGiaTriCu = False
+'
+'                If blGiaTriCu = False Then
+'                     .Col = .ColLetterToNumber("B")
+'                    .Row = .Row + 3
+'                    i = 1
+'                    Do
+'                        If i = Row - 44 Then
+'                            ' Ten
+'                            .Col = .ColLetterToNumber("C")
+'                            .TypeComboBoxCurSel = intIndexCombo
+'                            ' Ma nhom
+'                            .Col = .ColLetterToNumber("AE")
+'                            .TypeComboBoxCurSel = intIndexCombo
+'                            UpdateCell fps, .Col, .Row, .Text
+'                         End If
+'                        tempRow.tenCT = arrRow(i - 1).tenCT
+'                        .GetText .ColLetterToNumber("K"), .Row, tempValue
+'                        tempRow.cot1 = Val(tempValue)
+'                        .GetText .ColLetterToNumber("Q"), .Row, tempValue
+'                        tempRow.cot2 = Val(tempValue)
+'                        .GetText .ColLetterToNumber("W"), .Row, tempValue
+'                        tempRow.cot3 = Val(tempValue)
+'                        .GetText .ColLetterToNumber("AE"), .Row, tempValue
+'                        tempRow.Cot4 = Val(tempValue)
+'                        tempRow.Cot5 = i
+'                        ReDim Preserve arrRow2(i - 1)
+'                        arrRow2(i - 1) = tempRow
+'                        i = i + 1
+'                        .Col = .ColLetterToNumber("B")
+'                        .Row = .Row + 1
+'                    Loop Until .Text = "bb"
+'
+'                    ' Lay ve mang cac row hien tai cua group 3
+'                     .Col = .ColLetterToNumber("B")
+'                    .Row = .Row + 3
+'                    i = 1
+'                    Do
+'                        If i = Row - 44 Then
+'                            ' Ten
+'                            .Col = .ColLetterToNumber("C")
+'                            .TypeComboBoxCurSel = intIndexCombo
+'                            ' Ma nhom
+'                            .Col = .ColLetterToNumber("AE")
+'                            .TypeComboBoxCurSel = intIndexCombo
+'                            UpdateCell fps, .Col, .Row, .Text
+'                         End If
+'                        tempRow.tenCT = arrRow(i - 1).tenCT
+'                        .GetText .ColLetterToNumber("K"), .Row, tempValue
+'                        tempRow.cot1 = Val(tempValue)
+'                        .GetText .ColLetterToNumber("Q"), .Row, tempValue
+'                        tempRow.cot2 = Val(tempValue)
+'                        .GetText .ColLetterToNumber("W"), .Row, tempValue
+'                        tempRow.cot3 = Val(tempValue)
+'                        .GetText .ColLetterToNumber("AE"), .Row, tempValue
+'                        tempRow.Cot4 = Val(tempValue)
+'                        tempRow.Cot5 = i
+'                        ReDim Preserve arrRow3(i - 1)
+'                        arrRow3(i - 1) = tempRow
+'                        i = i + 1
+'                        .Col = .ColLetterToNumber("B")
+'                        .Row = .Row + 1
+'                    Loop Until .Text = "cc"
+'
+'                    ' Lay ve mang cac row hien tai cua group 4
+'                     .Col = .ColLetterToNumber("B")
+'                    .Row = .Row + 3
+'                    i = 1
+'                    Do
+'                        If i = Row - 44 Then
+'                            ' Ten
+'                            .Col = .ColLetterToNumber("C")
+'                            .TypeComboBoxCurSel = intIndexCombo
+'                            ' Ma nhom
+'                            .Col = .ColLetterToNumber("AE")
+'                            .TypeComboBoxCurSel = intIndexCombo
+'                            UpdateCell fps, .Col, .Row, .Text
+'                         End If
+'                        tempRow.tenCT = arrRow(i - 1).tenCT
+'                        .GetText .ColLetterToNumber("K"), .Row, tempValue
+'                        tempRow.cot1 = Val(tempValue)
+'                        .GetText .ColLetterToNumber("Q"), .Row, tempValue
+'                        tempRow.cot2 = Val(tempValue)
+'                        .GetText .ColLetterToNumber("W"), .Row, tempValue
+'                        tempRow.cot3 = Val(tempValue)
+'                        .GetText .ColLetterToNumber("AE"), .Row, tempValue
+'                        tempRow.Cot4 = Val(tempValue)
+'                        tempRow.Cot5 = i
+'                        ReDim Preserve arrRow4(i - 1)
+'                        arrRow4(i - 1) = tempRow
+'                        i = i + 1
+'                        .Col = .ColLetterToNumber("B")
+'                        .Row = .Row + 1
+'                    Loop Until .Text = "dd"
+'
+'                End If
           End If
      End With
     'CellChange Col, Row
@@ -1115,48 +1126,9 @@ Private Sub CheckDynamicError()
 
     CheckErrorMST
     
-    ' Set lai so TT
-    ' group 2
-    
-       fps.EventEnabled(EventAllEvents) = False
-       ' Group 1
-       .Sheet = 1
-       i = 1
-       .Col = .ColLetterToNumber("B")
-       .Row = 45
-       Do
-            .Text = "1." & Trim(str(i))
-            .Col = .ColLetterToNumber("B")
-            .Row = i + 45
-            i = i + 1
-       Loop Until .Text = "aa"
-       i = 1
-      .Row = .Row + 3
-       Do
-            .Text = "2." & Trim(str(i))
-            .Col = .ColLetterToNumber("B")
-            .Row = 1 + .Row
-            i = i + 1
-       Loop Until .Text = "bb"
-       ' Group 3
-       i = 1
-      .Row = .Row + 3
-       Do
-            .Text = "3." & Trim(str(i))
-            .Col = .ColLetterToNumber("B")
-            .Row = 1 + .Row
-            i = i + 1
-       Loop Until .Text = "cc"
-       ' Group 4
-       i = 1
-      .Row = .Row + 3
-       Do
-            .Text = "4." & Trim(str(i))
-            .Col = .ColLetterToNumber("B")
-            .Row = 1 + .Row
-            i = i + 1
-       Loop Until .Text = "dd"
-    fps.EventEnabled(EventAllEvents) = True
+'    fps.EventEnabled(EventAllEvents) = False
+'
+'    fps.EventEnabled(EventAllEvents) = True
     
     .Sheet = iCurrentSheet
     '.ReDraw = True
@@ -1311,46 +1283,46 @@ Public Sub SetData()
        ' Set so thu tu
         ' group 2
          fps.EventEnabled(EventAllEvents) = False
-         ' Group 1
-         If mCurrentSheet = 1 Then
-             .Sheet = 1
-             i = 1
-             .Col = .ColLetterToNumber("B")
-             .Row = 45
-             Do
-                  .Text = "1." & Trim(str(i))
-                  .Col = .ColLetterToNumber("B")
-                  .Row = i + 45
-                  i = i + 1
-             Loop Until .Text = "aa"
-             i = 1
-            .Row = .Row + 3
-             Do
-                  .Text = "2." & Trim(str(i))
-                  .Col = .ColLetterToNumber("B")
-                  .Row = 1 + .Row
-                  i = i + 1
-             Loop Until .Text = "bb"
-             
-             ' Group 3
-             i = 1
-            .Row = .Row + 3
-             Do
-                  .Text = "3." & Trim(str(i))
-                  .Col = .ColLetterToNumber("B")
-                  .Row = 1 + .Row
-                  i = i + 1
-             Loop Until .Text = "cc"
-             ' Group 4
-             i = 1
-            .Row = .Row + 3
-             Do
-                  .Text = "4." & Trim(str(i))
-                  .Col = .ColLetterToNumber("B")
-                  .Row = 1 + .Row
-                  i = i + 1
-             Loop Until .Text = "dd"
-        End If
+'         ' Group 1
+'         If mCurrentSheet = 1 Then
+'             .Sheet = 1
+'             i = 1
+'             .Col = .ColLetterToNumber("B")
+'             .Row = 45
+'             Do
+'                  .Text = "1." & Trim(str(i))
+'                  .Col = .ColLetterToNumber("B")
+'                  .Row = i + 45
+'                  i = i + 1
+'             Loop Until .Text = "aa"
+'             i = 1
+'            .Row = .Row + 3
+'             Do
+'                  .Text = "2." & Trim(str(i))
+'                  .Col = .ColLetterToNumber("B")
+'                  .Row = 1 + .Row
+'                  i = i + 1
+'             Loop Until .Text = "bb"
+'
+'             ' Group 3
+'             i = 1
+'            .Row = .Row + 3
+'             Do
+'                  .Text = "3." & Trim(str(i))
+'                  .Col = .ColLetterToNumber("B")
+'                  .Row = 1 + .Row
+'                  i = i + 1
+'             Loop Until .Text = "cc"
+'             ' Group 4
+'             i = 1
+'            .Row = .Row + 3
+'             Do
+'                  .Text = "4." & Trim(str(i))
+'                  .Col = .ColLetterToNumber("B")
+'                  .Row = 1 + .Row
+'                  i = i + 1
+'             Loop Until .Text = "dd"
+'        End If
         fps.EventEnabled(EventAllEvents) = True
         
         mCurrentSheet = .Sheet
