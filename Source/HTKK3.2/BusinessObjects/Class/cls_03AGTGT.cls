@@ -45,9 +45,9 @@ Private Const rowNgayKy = 61
 Private Const rowNguoiKy = 59
 Private Const rowThueKyTruocHidden = 15
 
-Private Const sheetPl01_1_GTGT = 2
-Private Const sheetPl01_2_GTGT = 3
-Private Const sheetPl01_KHBS_GTGT = 4
+'Private Const sheetPl01_1_GTGT = 2
+'Private Const sheetPl01_2_GTGT = 3
+Private Const sheetPl01_KHBS_GTGT = 2
 
 Private Const colE = "E"
 Private Const colM = "M"
@@ -56,7 +56,7 @@ Private Const colS = "S"
 Private Const colG = "G"
 Private Const colH = "H"
 
-Private Const sheetKhbs = 4
+Private Const sheetKhbs = 2
 
 
 
@@ -160,54 +160,54 @@ Public Sub Prepare1()
         End If
         
         
-         .Sheet = sheetPl01_1_GTGT 'PL01_1
-         .Row = 8
-        .Col = .ColLetterToNumber("C")
-        .Text = ""
-        .CellTag = .CellTag & "~1"
-        .Row = 13
-        .Text = ""
-        .CellTag = .CellTag & "~2"
-
-        .Row = 18
-        .Text = ""
-        .CellTag = .CellTag & "~3"
-    
-        .Row = 23
-        .Text = ""
-        .CellTag = .CellTag & "~4"
-            
-
-
-        .Sheet = sheetPl01_2_GTGT ''PL01_1
-        .Row = 8
-        .Col = .ColLetterToNumber("C")
-        .Text = ""
-        .CellTag = .CellTag & "~1"
-        
-        .Row = 13
-        .Text = ""
-        .CellTag = .CellTag & "~2"
-        
-        .Row = 18
-        .Text = ""
-        .CellTag = .CellTag & "~3"
-        
-        .Row = 23
-        .Text = ""
-        .CellTag = .CellTag & "~4"
-
-        
-        
-        SetDateFormat fps, sheetPl01_1_GTGT, 8, .ColLetterToNumber(colE), DDMMYYYY
-        SetDateFormat fps, sheetPl01_1_GTGT, 13, .ColLetterToNumber(colE), DDMMYYYY
-        SetDateFormat fps, sheetPl01_1_GTGT, 18, .ColLetterToNumber(colE), DDMMYYYY
-        SetDateFormat fps, sheetPl01_1_GTGT, 23, .ColLetterToNumber(colE), DDMMYYYY
-        
-        SetDateFormat fps, sheetPl01_2_GTGT, 8, .ColLetterToNumber(colE), DDMMYYYY
-        SetDateFormat fps, sheetPl01_2_GTGT, 13, .ColLetterToNumber(colE), DDMMYYYY
-        SetDateFormat fps, sheetPl01_2_GTGT, 18, .ColLetterToNumber(colE), DDMMYYYY
-        SetDateFormat fps, sheetPl01_2_GTGT, 23, .ColLetterToNumber(colE), DDMMYYYY
+'         .Sheet = sheetPl01_1_GTGT 'PL01_1
+'         .Row = 8
+'        .Col = .ColLetterToNumber("C")
+'        .Text = ""
+'        .CellTag = .CellTag & "~1"
+'        .Row = 13
+'        .Text = ""
+'        .CellTag = .CellTag & "~2"
+'
+'        .Row = 18
+'        .Text = ""
+'        .CellTag = .CellTag & "~3"
+'
+'        .Row = 23
+'        .Text = ""
+'        .CellTag = .CellTag & "~4"
+'
+'
+'
+'        .Sheet = sheetPl01_2_GTGT ''PL01_1
+'        .Row = 8
+'        .Col = .ColLetterToNumber("C")
+'        .Text = ""
+'        .CellTag = .CellTag & "~1"
+'
+'        .Row = 13
+'        .Text = ""
+'        .CellTag = .CellTag & "~2"
+'
+'        .Row = 18
+'        .Text = ""
+'        .CellTag = .CellTag & "~3"
+'
+'        .Row = 23
+'        .Text = ""
+'        .CellTag = .CellTag & "~4"
+'
+'
+'
+'        SetDateFormat fps, sheetPl01_1_GTGT, 8, .ColLetterToNumber(colE), DDMMYYYY
+'        SetDateFormat fps, sheetPl01_1_GTGT, 13, .ColLetterToNumber(colE), DDMMYYYY
+'        SetDateFormat fps, sheetPl01_1_GTGT, 18, .ColLetterToNumber(colE), DDMMYYYY
+'        SetDateFormat fps, sheetPl01_1_GTGT, 23, .ColLetterToNumber(colE), DDMMYYYY
+'
+'        SetDateFormat fps, sheetPl01_2_GTGT, 8, .ColLetterToNumber(colE), DDMMYYYY
+'        SetDateFormat fps, sheetPl01_2_GTGT, 13, .ColLetterToNumber(colE), DDMMYYYY
+'        SetDateFormat fps, sheetPl01_2_GTGT, 18, .ColLetterToNumber(colE), DDMMYYYY
+'        SetDateFormat fps, sheetPl01_2_GTGT, 23, .ColLetterToNumber(colE), DDMMYYYY
         
         
         .EventEnabled(EventAllEvents) = True
@@ -656,90 +656,90 @@ Dim tCol As Long, tRow As Long
         GetCellSpan fps, iCol, iRow
         
         If (KeyCode = vbKeyF5) Or (KeyCode = vbKeyF6) Then
-             If .ActiveSheet = sheetPl01_1_GTGT Then
-                    mCurrentSheet = sheetPl01_1_GTGT
-                    i = 1
-                    .Col = .ColLetterToNumber("B")
-                    .Row = 8
-                    Do
-                         .Text = str(i)
-                         .Col = .ColLetterToNumber("B")
-                         .Row = i + 8
-                         i = i + 1
-                    Loop Until .Text = "aa"
-                    i = 1
-                   .Row = .Row + 4
-                    Do
-                         .Text = str(i)
-                         .Col = .ColLetterToNumber("B")
-                         .Row = 1 + .Row
-                         i = i + 1
-                    Loop Until .Text = "bb"
-                    i = 1
-                   .Row = .Row + 4
-                    Do
-                         .Text = str(i)
-                         .Col = .ColLetterToNumber("B")
-                         .Row = 1 + .Row
-                         i = i + 1
-                    Loop Until .Text = "cc"
-                    i = 1
-                   .Row = .Row + 4
-                    Do
-                         .Text = str(i)
-                         .Col = .ColLetterToNumber("B")
-                         .Row = 1 + .Row
-                         i = i + 1
-                    Loop Until .Text = "dd"
-                    .SetActiveCell iCol, iRow
-                    .Row = iRow
-                    .Col = iCol
-                     
-                    .SetActiveCell iCol, iRow
-                    CellChange2
-            End If
-            If .ActiveSheet = sheetPl01_2_GTGT Then
-                    i = 1
-                    .Col = .ColLetterToNumber("B")
-                    .Row = 8
-                    Do
-                         .Text = str(i)
-                         .Col = .ColLetterToNumber("B")
-                         .Row = i + 8
-                         i = i + 1
-                    Loop Until .Text = "aa"
-                    i = 1
-                   .Row = .Row + 4
-                    Do
-                         .Text = str(i)
-                         .Col = .ColLetterToNumber("B")
-                         .Row = 1 + .Row
-                         i = i + 1
-                    Loop Until .Text = "bb"
-                    i = 1
-                   .Row = .Row + 4
-                    Do
-                         .Text = str(i)
-                         .Col = .ColLetterToNumber("B")
-                         .Row = 1 + .Row
-                         i = i + 1
-                    Loop Until .Text = "cc"
-                    
-                    i = 1
-                   .Row = .Row + 4
-                    Do
-                         .Text = str(i)
-                         .Col = .ColLetterToNumber("B")
-                         .Row = 1 + .Row
-                         i = i + 1
-                    Loop Until .Text = "dd"
-                                        
-                    .SetActiveCell iCol, iRow
-                    .Row = iRow
-                    .Col = iCol
-                    .SetActiveCell iCol, iRow
-                    CellChange2
-            End If
+'             If .ActiveSheet = sheetPl01_1_GTGT Then
+'                    mCurrentSheet = sheetPl01_1_GTGT
+'                    i = 1
+'                    .Col = .ColLetterToNumber("B")
+'                    .Row = 8
+'                    Do
+'                         .Text = str(i)
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = i + 8
+'                         i = i + 1
+'                    Loop Until .Text = "aa"
+'                    i = 1
+'                   .Row = .Row + 4
+'                    Do
+'                         .Text = str(i)
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = 1 + .Row
+'                         i = i + 1
+'                    Loop Until .Text = "bb"
+'                    i = 1
+'                   .Row = .Row + 4
+'                    Do
+'                         .Text = str(i)
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = 1 + .Row
+'                         i = i + 1
+'                    Loop Until .Text = "cc"
+'                    i = 1
+'                   .Row = .Row + 4
+'                    Do
+'                         .Text = str(i)
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = 1 + .Row
+'                         i = i + 1
+'                    Loop Until .Text = "dd"
+'                    .SetActiveCell iCol, iRow
+'                    .Row = iRow
+'                    .Col = iCol
+'
+'                    .SetActiveCell iCol, iRow
+'                    CellChange2
+'            End If
+'            If .ActiveSheet = sheetPl01_2_GTGT Then
+'                    i = 1
+'                    .Col = .ColLetterToNumber("B")
+'                    .Row = 8
+'                    Do
+'                         .Text = str(i)
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = i + 8
+'                         i = i + 1
+'                    Loop Until .Text = "aa"
+'                    i = 1
+'                   .Row = .Row + 4
+'                    Do
+'                         .Text = str(i)
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = 1 + .Row
+'                         i = i + 1
+'                    Loop Until .Text = "bb"
+'                    i = 1
+'                   .Row = .Row + 4
+'                    Do
+'                         .Text = str(i)
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = 1 + .Row
+'                         i = i + 1
+'                    Loop Until .Text = "cc"
+'
+'                    i = 1
+'                   .Row = .Row + 4
+'                    Do
+'                         .Text = str(i)
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = 1 + .Row
+'                         i = i + 1
+'                    Loop Until .Text = "dd"
+'
+'                    .SetActiveCell iCol, iRow
+'                    .Row = iRow
+'                    .Col = iCol
+'                    .SetActiveCell iCol, iRow
+'                    CellChange2
+'            End If
             
         End If
         fps.EventEnabled(EventAllEvents) = True
@@ -777,32 +777,32 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
         End If
         
         
-        If .ActiveSheet = sheetPl01_1_GTGT Or .ActiveSheet = sheetPl01_2_GTGT Then
-                   If Col = .ColLetterToNumber(colE) Then
-                       .GetText Col, Row, varTemp
-                       If varTemp <> "" And varTemp <> "../../...." Then
-                           If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
-                               .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
-                           Else
-                               .SetActiveCell Col, Row
-                           End If
-                       Else
-                        .SetText Col, Row, ""
-                       End If
-                       .Col = Col
-                       .Row = Row
-                      UpdateCell fps, .Col, .Row, .Text
-                   End If
-                   
-                   'chuyen cot ky hieu ve chu cai in hoa
-                   If Col = .ColLetterToNumber("C") Then
-                        .GetText Col, Row, varTemp
-                        .SetText Col, Row, UCase(varTemp)
-                        .Col = Col
-                        .Row = Row
-                        UpdateCell fps, .Col, .Row, .Text
-                   End If
-        End If
+'        If .ActiveSheet = sheetPl01_1_GTGT Or .ActiveSheet = sheetPl01_2_GTGT Then
+'                   If Col = .ColLetterToNumber(colE) Then
+'                       .GetText Col, Row, varTemp
+'                       If varTemp <> "" And varTemp <> "../../...." Then
+'                           If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+'                               .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+'                           Else
+'                               .SetActiveCell Col, Row
+'                           End If
+'                       Else
+'                        .SetText Col, Row, ""
+'                       End If
+'                       .Col = Col
+'                       .Row = Row
+'                      UpdateCell fps, .Col, .Row, .Text
+'                   End If
+'
+'                   'chuyen cot ky hieu ve chu cai in hoa
+'                   If Col = .ColLetterToNumber("C") Then
+'                        .GetText Col, Row, varTemp
+'                        .SetText Col, Row, UCase(varTemp)
+'                        .Col = Col
+'                        .Row = Row
+'                        UpdateCell fps, .Col, .Row, .Text
+'                   End If
+'        End If
         
         'KHBS
        If .ActiveSheet = .SheetCount - 1 Then
@@ -972,240 +972,240 @@ Private Sub CheckDynamicError()
             .BackColor = mNonErrorColor
         End If
     End If
-    ' Kiem tra phu luc 03-1,03-2
-    .Sheet = 2
-    blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-    If blCheck_S2 = True Then
-        For i = 1 To .MaxRows
-            iWhiteRow = 1
-            .Row = i
-            .Col = .ColLetterToNumber("C")
-            arrCellTag = Split(.CellTag, "~")
-            If UBound(arrCellTag) > 0 Then
-            strCellTag = arrCellTag(1)
-            .GetText .ColLetterToNumber("C"), .Row, vKyHieuHD
-            .GetText .ColLetterToNumber("D"), .Row, vSoHD
-            .GetText .ColLetterToNumber("E"), .Row, vNgayHD
-            .GetText .ColLetterToNumber("F"), .Row, vTennguoimua
-            .GetText .ColLetterToNumber("G"), .Row, vMST
-            .GetText .ColLetterToNumber("H"), .Row, vMatHang
-            .GetText .ColLetterToNumber("I"), .Row, vDoanhSo
-            .GetText .ColLetterToNumber("L"), .Row, vGhiChu
-            
-            
-    
-            If Trim(vKyHieuHD) <> "" Or Trim(vSoHD) <> "" Or Trim(vNgayHD) <> "" Or Trim(vTennguoimua) <> "" Or Trim(vDoanhSo) <> "0" Or Trim(vMatHang) <> "" Or Trim(vGhiChu) <> "" Then iWhiteRow = 0
-                Select Case strCellTag
-                    Case "1", "2", "3", "4"
-                        If Trim(vKyHieuHD) = "" And iWhiteRow = 0 Then
-                            .Col = .ColLetterToNumber("C")
-                            .CellNote = vErrMsgKyHieuHD  'static
-                            .BackColor = mErrorColor
-                            iFlagvKyHieuHD = 1
-                        Else
-                            .Col = .ColLetterToNumber("C")
-                            .CellNote = ""
-                            .BackColor = mNonErrorColor
-                        End If
-                        If Trim(vSoHD) = "" And iWhiteRow = 0 Then
-                            .Col = .ColLetterToNumber("D")
-                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                            .CellNote = vErrMsgSoHD  'static
-                            .BackColor = mErrorColor
-                            iFlagvSoHD = 1
-                            'capture the first error cell
-                            If iFocusFlag = 0 Then
-                                strFocusSheetName = "'" & .SheetName & "'"
-                                strFocusCol = str(.Col)
-                                strFocusRow = str(.Row)
-                                iFocusFlag = 1
-                            End If
-                        Else
-                            .Col = .ColLetterToNumber("D")
-                            .CellNote = ""
-                            .BackColor = mNonErrorColor
-                        End If
-                        If Trim(vNgayHD) = "" And iWhiteRow = 0 Then
-                            .Col = .ColLetterToNumber("E")
-                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                            .CellNote = vErrMsgNgayHD  'static
-                            .BackColor = mErrorColor
-                            iFlagvNgayHD = 1
-                            'capture the first error cell
-                            If iFocusFlag = 0 Then
-                                strFocusSheetName = "'" & .SheetName & "'"
-                                strFocusCol = str(.Col)
-                                strFocusRow = str(.Row)
-                                iFocusFlag = 1
-                            End If
-                        
-                         ElseIf Trim(vNgayHD) <> "" And iWhiteRow = 0 Then
-                            ' To khai quy
-                            If strTkThangQuy = "TK_QUY" Then
-                                vNgayHt = Date
-                                arrDate = Split(vNgayHD, "/")
-                                vdate = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
-                                If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_New.Year) Then
-                                       .Col = .ColLetterToNumber("E")
-                                       .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                       .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
-                                       .BackColor = mErrorColor
-                                       iFlagvNgayHD = 1
-                                       If iFocusFlag = 0 Then
-                                           strFocusSheetName = "'" & .SheetName & "'"
-                                           strFocusCol = str(.Col)
-                                           strFocusRow = str(.Row)
-                                           iFocusFlag = 1
-                                       End If
-                                    ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_New.Year) And convertThang2Quy(CInt(Right("00" & Mid(vNgayHD, 4, 2), 2))) > CInt(TAX_Utilities_New.ThreeMonths) Then
-                                       .Col = .ColLetterToNumber("E")
-                                       .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                       .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
-                                       .BackColor = mErrorColor
-                                       iFlagvNgayHD = 1
-                                       If iFocusFlag = 0 Then
-                                           strFocusSheetName = "'" & .SheetName & "'"
-                                           strFocusCol = str(.Col)
-                                           strFocusRow = str(.Row)
-                                           iFocusFlag = 1
-                                       End If
-                                    ElseIf (DateDiff("D", vNgayHt, vdate) > 0) And strCellTag <> "2" Then
-                                       .Col = .ColLetterToNumber("E")
-                                       .CellNote = GetAttribute(GetMessageCellById("0273"), "Msg") 'static
-                                       .BackColor = mErrorColor
-                                       iFlagvNgayHD = 1
-                                        If iFocusFlag = 0 Then
-                                           strFocusSheetName = "'" & .SheetName & "'"
-                                           strFocusCol = str(.Col)
-                                           strFocusRow = str(.Row)
-                                           iFocusFlag = 1
-                                         End If
-                                    Else
-                                       .Col = .ColLetterToNumber("E")
-                                       .CellNote = ""
-                                       .BackColor = mNonErrorColor
-                                   End If
-                            Else
-                                If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_New.Year) Then
-                                    .Col = .ColLetterToNumber("E")
-                                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                    .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
-                                    .BackColor = mErrorColor
-                                    iFlagvNgayHD = 1
-                                    If iFocusFlag = 0 Then
-                                        strFocusSheetName = "'" & .SheetName & "'"
-                                        strFocusCol = str(.Col)
-                                        strFocusRow = str(.Row)
-                                        iFocusFlag = 1
-                                    End If
-                                 ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_New.Year) And CInt(Right("00" & Mid(vNgayHD, 4, 2), 2)) > CInt(TAX_Utilities_New.Month) Then
-                                    .Col = .ColLetterToNumber("E")
-                                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                    .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
-                                    .BackColor = mErrorColor
-                                    iFlagvNgayHD = 1
-                                    If iFocusFlag = 0 Then
-                                        strFocusSheetName = "'" & .SheetName & "'"
-                                        strFocusCol = str(.Col)
-                                        strFocusRow = str(.Row)
-                                        iFocusFlag = 1
-                                    End If
-                                 ElseIf (CheckValidNgayHD(CStr(vNgayHD)) = False) Then
-                                    .Col = .ColLetterToNumber("E")
-                                    .CellNote = GetAttribute(GetMessageCellById("0124"), "Msg") 'static
-                                    .BackColor = mAlertColor
-                                    iFlagvNgayHD = 0
-                                     If iFocusFlag = 0 Then
-                                        strFocusSheetName = "'" & .SheetName & "'"
-                                        strFocusCol = str(.Col)
-                                        strFocusRow = str(.Row)
-                                        iFocusFlag = 1
-                                      End If
-                                 Else
-                                    .Col = .ColLetterToNumber("E")
-                                    .CellNote = ""
-                                    .BackColor = mNonErrorColor
-                                End If
-                            End If
-                        Else
-                            .Col = .ColLetterToNumber("E")
-                            .CellNote = ""
-                            .BackColor = mNonErrorColor
-                        End If
-                        If Trim(vTennguoimua) = "" And iWhiteRow = 0 Then
-                            .Col = .ColLetterToNumber("F")
-                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                            .CellNote = vErrMsgTennguoimua  'static
-                            .BackColor = mErrorColor
-                            iFlagvTennguoimua = 1
-                            
-                            'capture the first error cell
-                            If iFocusFlag = 0 Then
-                                strFocusSheetName = "'" & .SheetName & "'"
-                                strFocusCol = str(.Col)
-                                strFocusRow = str(.Row)
-                                iFocusFlag = 1
-                            End If
-                        Else
-                            .Col = .ColLetterToNumber("F")
-                            .CellNote = ""
-                            .BackColor = mNonErrorColor
-                        End If
-          ' Check MST
-                        If Trim(vMST) <> vbNullString Then
-                           vMST = Replace(vMST, " ", "")
-                           vMST = Replace(vMST, "-", "")
-    
-                           strCheck = ""
-                           If Len(vMST) = 10 Or Len(vMST) = 13 Then
-                                strCheck = CheckTaxCode(Mid(vMST, 1, 1), Mid(vMST, 2, 1), Mid(vMST, 3, 1), Mid(vMST, 4, 1), Mid(vMST, 5, 1), Mid(vMST, 6, 1), Mid(vMST, 7, 1), Mid(vMST, 8, 1), Mid(vMST, 9, 1), Mid(vMST, 10, 1), Mid(vMST, 11, 1), Mid(vMST, 12, 1), Mid(vMST, 13, 1))
-                           End If
-                           
-                           If Mid(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
-                                .Col = .ColLetterToNumber("G")
-                                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                .CellNote = vErrMsgMST   'static
-                                .BackColor = mErrorColor
-                                iFlagvMst = 1
-                                
-                                'capture the first error cell
-                                If iFocusFlag = 0 Then
-                                    strFocusSheetName = "'" & .SheetName & "'"
-                                    strFocusCol = str(.Col)
-                                    strFocusRow = str(.Row)
-                                    iFocusFlag = 1
-                                End If
-                           Else
-                                    .Col = .ColLetterToNumber("G")
-                                    .CellNote = ""   'static
-                                    .BackColor = mNonErrorColor
-                            End If
-                        Else
-                            .Col = .ColLetterToNumber("G")
-                            .CellNote = ""
-                            .BackColor = mNonErrorColor
-                        End If
-                End Select
-        
-           End If
-        Next
-                
-        If iFocusFlag = 1 Then
-            ' setcell for focus
-            strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
-            .Col = .ColLetterToNumber("C")
-            .Row = 21
-            .Formula = strFormula
-            .Row = 22
-            .Formula = strFormula
-            .Row = 23
-            .Formula = strFormula
-            .Row = 24
-            .Formula = strFormula
-            .Row = 25
-            .Formula = strFormula
-        End If
-     End If
+'    ' Kiem tra phu luc 03-1,03-2
+'    .Sheet = 2
+'    blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+'    If blCheck_S2 = True Then
+'        For i = 1 To .MaxRows
+'            iWhiteRow = 1
+'            .Row = i
+'            .Col = .ColLetterToNumber("C")
+'            arrCellTag = Split(.CellTag, "~")
+'            If UBound(arrCellTag) > 0 Then
+'            strCellTag = arrCellTag(1)
+'            .GetText .ColLetterToNumber("C"), .Row, vKyHieuHD
+'            .GetText .ColLetterToNumber("D"), .Row, vSoHD
+'            .GetText .ColLetterToNumber("E"), .Row, vNgayHD
+'            .GetText .ColLetterToNumber("F"), .Row, vTennguoimua
+'            .GetText .ColLetterToNumber("G"), .Row, vMST
+'            .GetText .ColLetterToNumber("H"), .Row, vMatHang
+'            .GetText .ColLetterToNumber("I"), .Row, vDoanhSo
+'            .GetText .ColLetterToNumber("L"), .Row, vGhiChu
+'
+'
+'
+'            If Trim(vKyHieuHD) <> "" Or Trim(vSoHD) <> "" Or Trim(vNgayHD) <> "" Or Trim(vTennguoimua) <> "" Or Trim(vDoanhSo) <> "0" Or Trim(vMatHang) <> "" Or Trim(vGhiChu) <> "" Then iWhiteRow = 0
+'                Select Case strCellTag
+'                    Case "1", "2", "3", "4"
+'                        If Trim(vKyHieuHD) = "" And iWhiteRow = 0 Then
+'                            .Col = .ColLetterToNumber("C")
+'                            .CellNote = vErrMsgKyHieuHD  'static
+'                            .BackColor = mErrorColor
+'                            iFlagvKyHieuHD = 1
+'                        Else
+'                            .Col = .ColLetterToNumber("C")
+'                            .CellNote = ""
+'                            .BackColor = mNonErrorColor
+'                        End If
+'                        If Trim(vSoHD) = "" And iWhiteRow = 0 Then
+'                            .Col = .ColLetterToNumber("D")
+'                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                            .CellNote = vErrMsgSoHD  'static
+'                            .BackColor = mErrorColor
+'                            iFlagvSoHD = 1
+'                            'capture the first error cell
+'                            If iFocusFlag = 0 Then
+'                                strFocusSheetName = "'" & .SheetName & "'"
+'                                strFocusCol = str(.Col)
+'                                strFocusRow = str(.Row)
+'                                iFocusFlag = 1
+'                            End If
+'                        Else
+'                            .Col = .ColLetterToNumber("D")
+'                            .CellNote = ""
+'                            .BackColor = mNonErrorColor
+'                        End If
+'                        If Trim(vNgayHD) = "" And iWhiteRow = 0 Then
+'                            .Col = .ColLetterToNumber("E")
+'                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                            .CellNote = vErrMsgNgayHD  'static
+'                            .BackColor = mErrorColor
+'                            iFlagvNgayHD = 1
+'                            'capture the first error cell
+'                            If iFocusFlag = 0 Then
+'                                strFocusSheetName = "'" & .SheetName & "'"
+'                                strFocusCol = str(.Col)
+'                                strFocusRow = str(.Row)
+'                                iFocusFlag = 1
+'                            End If
+'
+'                         ElseIf Trim(vNgayHD) <> "" And iWhiteRow = 0 Then
+'                            ' To khai quy
+'                            If strTkThangQuy = "TK_QUY" Then
+'                                vNgayHt = Date
+'                                arrDate = Split(vNgayHD, "/")
+'                                vdate = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
+'                                If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_New.Year) Then
+'                                       .Col = .ColLetterToNumber("E")
+'                                       .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                                       .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
+'                                       .BackColor = mErrorColor
+'                                       iFlagvNgayHD = 1
+'                                       If iFocusFlag = 0 Then
+'                                           strFocusSheetName = "'" & .SheetName & "'"
+'                                           strFocusCol = str(.Col)
+'                                           strFocusRow = str(.Row)
+'                                           iFocusFlag = 1
+'                                       End If
+'                                    ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_New.Year) And convertThang2Quy(CInt(Right("00" & Mid(vNgayHD, 4, 2), 2))) > CInt(TAX_Utilities_New.ThreeMonths) Then
+'                                       .Col = .ColLetterToNumber("E")
+'                                       .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                                       .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
+'                                       .BackColor = mErrorColor
+'                                       iFlagvNgayHD = 1
+'                                       If iFocusFlag = 0 Then
+'                                           strFocusSheetName = "'" & .SheetName & "'"
+'                                           strFocusCol = str(.Col)
+'                                           strFocusRow = str(.Row)
+'                                           iFocusFlag = 1
+'                                       End If
+'                                    ElseIf (DateDiff("D", vNgayHt, vdate) > 0) And strCellTag <> "2" Then
+'                                       .Col = .ColLetterToNumber("E")
+'                                       .CellNote = GetAttribute(GetMessageCellById("0273"), "Msg") 'static
+'                                       .BackColor = mErrorColor
+'                                       iFlagvNgayHD = 1
+'                                        If iFocusFlag = 0 Then
+'                                           strFocusSheetName = "'" & .SheetName & "'"
+'                                           strFocusCol = str(.Col)
+'                                           strFocusRow = str(.Row)
+'                                           iFocusFlag = 1
+'                                         End If
+'                                    Else
+'                                       .Col = .ColLetterToNumber("E")
+'                                       .CellNote = ""
+'                                       .BackColor = mNonErrorColor
+'                                   End If
+'                            Else
+'                                If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_New.Year) Then
+'                                    .Col = .ColLetterToNumber("E")
+'                                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                                    .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
+'                                    .BackColor = mErrorColor
+'                                    iFlagvNgayHD = 1
+'                                    If iFocusFlag = 0 Then
+'                                        strFocusSheetName = "'" & .SheetName & "'"
+'                                        strFocusCol = str(.Col)
+'                                        strFocusRow = str(.Row)
+'                                        iFocusFlag = 1
+'                                    End If
+'                                 ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_New.Year) And CInt(Right("00" & Mid(vNgayHD, 4, 2), 2)) > CInt(TAX_Utilities_New.Month) Then
+'                                    .Col = .ColLetterToNumber("E")
+'                                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                                    .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
+'                                    .BackColor = mErrorColor
+'                                    iFlagvNgayHD = 1
+'                                    If iFocusFlag = 0 Then
+'                                        strFocusSheetName = "'" & .SheetName & "'"
+'                                        strFocusCol = str(.Col)
+'                                        strFocusRow = str(.Row)
+'                                        iFocusFlag = 1
+'                                    End If
+'                                 ElseIf (CheckValidNgayHD(CStr(vNgayHD)) = False) Then
+'                                    .Col = .ColLetterToNumber("E")
+'                                    .CellNote = GetAttribute(GetMessageCellById("0124"), "Msg") 'static
+'                                    .BackColor = mAlertColor
+'                                    iFlagvNgayHD = 0
+'                                     If iFocusFlag = 0 Then
+'                                        strFocusSheetName = "'" & .SheetName & "'"
+'                                        strFocusCol = str(.Col)
+'                                        strFocusRow = str(.Row)
+'                                        iFocusFlag = 1
+'                                      End If
+'                                 Else
+'                                    .Col = .ColLetterToNumber("E")
+'                                    .CellNote = ""
+'                                    .BackColor = mNonErrorColor
+'                                End If
+'                            End If
+'                        Else
+'                            .Col = .ColLetterToNumber("E")
+'                            .CellNote = ""
+'                            .BackColor = mNonErrorColor
+'                        End If
+'                        If Trim(vTennguoimua) = "" And iWhiteRow = 0 Then
+'                            .Col = .ColLetterToNumber("F")
+'                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                            .CellNote = vErrMsgTennguoimua  'static
+'                            .BackColor = mErrorColor
+'                            iFlagvTennguoimua = 1
+'
+'                            'capture the first error cell
+'                            If iFocusFlag = 0 Then
+'                                strFocusSheetName = "'" & .SheetName & "'"
+'                                strFocusCol = str(.Col)
+'                                strFocusRow = str(.Row)
+'                                iFocusFlag = 1
+'                            End If
+'                        Else
+'                            .Col = .ColLetterToNumber("F")
+'                            .CellNote = ""
+'                            .BackColor = mNonErrorColor
+'                        End If
+'          ' Check MST
+'                        If Trim(vMST) <> vbNullString Then
+'                           vMST = Replace(vMST, " ", "")
+'                           vMST = Replace(vMST, "-", "")
+'
+'                           strCheck = ""
+'                           If Len(vMST) = 10 Or Len(vMST) = 13 Then
+'                                strCheck = CheckTaxCode(Mid(vMST, 1, 1), Mid(vMST, 2, 1), Mid(vMST, 3, 1), Mid(vMST, 4, 1), Mid(vMST, 5, 1), Mid(vMST, 6, 1), Mid(vMST, 7, 1), Mid(vMST, 8, 1), Mid(vMST, 9, 1), Mid(vMST, 10, 1), Mid(vMST, 11, 1), Mid(vMST, 12, 1), Mid(vMST, 13, 1))
+'                           End If
+'
+'                           If Mid(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
+'                                .Col = .ColLetterToNumber("G")
+'                                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                                .CellNote = vErrMsgMST   'static
+'                                .BackColor = mErrorColor
+'                                iFlagvMst = 1
+'
+'                                'capture the first error cell
+'                                If iFocusFlag = 0 Then
+'                                    strFocusSheetName = "'" & .SheetName & "'"
+'                                    strFocusCol = str(.Col)
+'                                    strFocusRow = str(.Row)
+'                                    iFocusFlag = 1
+'                                End If
+'                           Else
+'                                    .Col = .ColLetterToNumber("G")
+'                                    .CellNote = ""   'static
+'                                    .BackColor = mNonErrorColor
+'                            End If
+'                        Else
+'                            .Col = .ColLetterToNumber("G")
+'                            .CellNote = ""
+'                            .BackColor = mNonErrorColor
+'                        End If
+'                End Select
+'
+'           End If
+'        Next
+'
+'        If iFocusFlag = 1 Then
+'            ' setcell for focus
+'            strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
+'            .Col = .ColLetterToNumber("C")
+'            .Row = 21
+'            .Formula = strFormula
+'            .Row = 22
+'            .Formula = strFormula
+'            .Row = 23
+'            .Formula = strFormula
+'            .Row = 24
+'            .Formula = strFormula
+'            .Row = 25
+'            .Formula = strFormula
+'        End If
+'     End If
 
 
     .Sheet = .SheetCount
@@ -1224,208 +1224,208 @@ Private Sub CheckDynamicError()
     End If
 
     
-    .Sheet = 3
-    blCheck_S3 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-   If blCheck_S3 = True Then
-        For i = 1 To .MaxRows
-            iWhiteRow = 1
-            .Row = i
-            .Col = .ColLetterToNumber("C")
-            arrCellTag = Split(.CellTag, "~")
-            If UBound(arrCellTag) > 0 Then
-            strCellTag = arrCellTag(1)
-            .GetText .ColLetterToNumber("C"), .Row, vKyHieuHD
-            .GetText .ColLetterToNumber("D"), .Row, vSoHD
-            .GetText .ColLetterToNumber("E"), .Row, vNgayHD
-            .GetText .ColLetterToNumber("F"), .Row, vTennguoimua
-            .GetText .ColLetterToNumber("G"), .Row, vMST
-            .GetText .ColLetterToNumber("H"), .Row, vMatHang
-            .GetText .ColLetterToNumber("I"), .Row, vDoanhSo
-            .GetText .ColLetterToNumber("K"), .Row, vGhiChu
-            
-
-            If Trim(vKyHieuHD) <> "" Or Trim(vSoHD) <> "" Or Trim(vNgayHD) <> "" Or Trim(vTennguoimua) <> "" Or Trim(vMST) <> "" Or Trim(vGhiChu) <> "" Or Trim(vDoanhSo) <> "0" Then iWhiteRow = 0
-                Select Case strCellTag
-                    Case "1", "2", "3", "4"
-                        If Trim(vKyHieuHD) = "" And iWhiteRow = 0 Then
-                            .Col = .ColLetterToNumber("C")
-                            .CellNote = vErrMsgKyHieuHD  'static
-                            .BackColor = mErrorColor
-                            iFlagvKyHieuHD = 1
-                        Else
-                            .Col = .ColLetterToNumber("C")
-                            .CellNote = ""
-                            .BackColor = mNonErrorColor
-                        End If
-                        If Trim(vSoHD) = "" And iWhiteRow = 0 Then
-                            .Col = .ColLetterToNumber("D")
-                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                            .CellNote = vErrMsgSoHD  'static
-                            .BackColor = mErrorColor
-                            iFlagvSoHD = 1
-                            'capture the first error cell
-                            If iFocusFlag = 0 Then
-                                strFocusSheetName = "'" & .SheetName & "'"
-                                strFocusCol = str(.Col)
-                                strFocusRow = str(.Row)
-                                iFocusFlag = 1
-                            End If
-                        Else
-                            .Col = .ColLetterToNumber("D")
-                            .CellNote = ""
-                            .BackColor = mNonErrorColor
-                        End If
-                        If Trim(vNgayHD) = "" And iWhiteRow = 0 Then
-                            .Col = .ColLetterToNumber("E")
-                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                            .CellNote = vErrMsgNgayHD  'static
-                            .BackColor = mErrorColor
-                            iFlagvNgayHD = 1
-
-                            'capture the first error cell
-                            If iFocusFlag = 0 Then
-                                strFocusSheetName = "'" & .SheetName & "'"
-                                strFocusCol = str(.Col)
-                                strFocusRow = str(.Row)
-                                iFocusFlag = 1
-                            End If
-                        ElseIf Trim(vNgayHD) <> "" And iWhiteRow = 0 Then
-                         If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_New.Year) Then
-                                .Col = .ColLetterToNumber("E")
-                                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
-                                .BackColor = mErrorColor
-                                iFlagvNgayHD = 1
-                                If iFocusFlag = 0 Then
-                                    strFocusSheetName = "'" & .SheetName & "'"
-                                    strFocusCol = str(.Col)
-                                    strFocusRow = str(.Row)
-                                    iFocusFlag = 1
-                                End If
-                             ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_New.Year) And CInt(Right("00" & Mid(vNgayHD, 4, 2), 2)) > CInt(TAX_Utilities_New.Month) Then
-                                .Col = .ColLetterToNumber("E")
-                                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
-                                .BackColor = mErrorColor
-                                iFlagvNgayHD = 1
-                                If iFocusFlag = 0 Then
-                                    strFocusSheetName = "'" & .SheetName & "'"
-                                    strFocusCol = str(.Col)
-                                    strFocusRow = str(.Row)
-                                    iFocusFlag = 1
-                                End If
-                             ElseIf (CheckValidNgayHD(CStr(vNgayHD)) = False) And strCellTag <> "2" Then
-                                .Col = .ColLetterToNumber("E")
-                                .CellNote = GetAttribute(GetMessageCellById("0124"), "Msg") 'static
-                                .BackColor = mAlertColor
-                                 If iFocusFlag = 0 Then
-                                    strFocusSheetName = "'" & .SheetName & "'"
-                                    strFocusCol = str(.Col)
-                                    strFocusRow = str(.Row)
-                                    iFocusFlag = 1
-                                  End If
-                             Else
-                                .Col = .ColLetterToNumber("E")
-                                .CellNote = ""
-                                .BackColor = mNonErrorColor
-                            End If
-    '                        If CheckValidNgayHD(CStr(vNgayHD)) = False Then
-    '                           .Col = .ColLetterToNumber("E")
-    '                           .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-    '                           .CellNote = GetAttribute(GetMessageCellById("0112"), "Msg") 'static
-    '                           .BackColor = mErrorColor
-    '                           iFlagvNgayHD = 1
-    '                            'capture the first error cell
-    '                            If iFocusFlag = 0 Then
-    '                                strFocusSheetName = "'" & .SheetName & "'"
-    '                                strFocusCol = str(.Col)
-    '                                strFocusRow = str(.Row)
-    '                                iFocusFlag = 1
-    '                            End If
-    '                         Else
-    '                            .Col = .ColLetterToNumber("E")
-    '                            .CellNote = ""
-    '                            .BackColor = mNonErrorColor
-    '                         End If
-                        Else
-                            .Col = .ColLetterToNumber("E")
-                            .CellNote = ""
-                            .BackColor = mNonErrorColor
-                        End If
-                        If Trim(vTennguoimua) = "" And iWhiteRow = 0 Then
-                            .Col = .ColLetterToNumber("F")
-                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                            .CellNote = vErrMsgTennguoimua  'static
-                            .BackColor = mErrorColor
-                            iFlagvTennguoimua = 1
-
-                            'capture the first error cell
-                            If iFocusFlag = 0 Then
-                                strFocusSheetName = "'" & .SheetName & "'"
-                                strFocusCol = str(.Col)
-                                strFocusRow = str(.Row)
-                                iFocusFlag = 1
-                            End If
-                        Else
-                            .Col = .ColLetterToNumber("F")
-                            .CellNote = ""
-                            .BackColor = mNonErrorColor
-                        End If
-             'Check MST
-                        If Trim(vMST) <> vbNullString Then
-                            vMST = Replace(vMST, " ", "")
-                            vMST = Replace(vMST, "-", "")
-                             'vMST = Left(vMST, 10)
-                                strCheck = ""
-                               If Len(vMST) = 10 Or Len(vMST) = 13 Then
-                                    strCheck = CheckTaxCode(Mid(vMST, 1, 1), Mid(vMST, 2, 1), Mid(vMST, 3, 1), Mid(vMST, 4, 1), Mid(vMST, 5, 1), Mid(vMST, 6, 1), Mid(vMST, 7, 1), Mid(vMST, 8, 1), Mid(vMST, 9, 1), Mid(vMST, 10, 1), Mid(vMST, 11, 1), Mid(vMST, 12, 1), Mid(vMST, 13, 1))
-                               End If
-                               If Mid(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
-                                    .Col = .ColLetterToNumber("G")
-                                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                    .CellNote = vErrMsgMST   'static
-                                    .BackColor = mErrorColor
-                                    iFlagvMst = 1
-    
-                                    'capture the first error cell
-                                    If iFocusFlag = 0 Then
-                                        strFocusSheetName = "'" & .SheetName & "'"
-                                        strFocusCol = str(.Col)
-                                        strFocusRow = str(.Row)
-                                        iFocusFlag = 1
-                                    End If
-                               Else
-                                    .Col = .ColLetterToNumber("G")
-                                    .CellNote = ""   'static
-                                    .BackColor = mNonErrorColor
-                                End If
-                        Else
-                            .Col = .ColLetterToNumber("G")
-                            .CellNote = ""
-                            .BackColor = mNonErrorColor
-                        End If
-                End Select
-
-           End If
-        Next
-        
-        If iFocusFlag = 1 Then
-            ' setcell for focus
-
-            strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
-            .Col = .ColLetterToNumber("C")
-            .Row = 26
-            .Formula = strFormula
-            .Row = 27
-            .Formula = strFormula
-            .Row = 28
-            .Formula = strFormula
-            .Row = 29
-            .Formula = strFormula
-            .Row = 30
-            .Formula = strFormula
-        End If
-    End If
+'    .Sheet = 3
+'    blCheck_S3 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+'   If blCheck_S3 = True Then
+'        For i = 1 To .MaxRows
+'            iWhiteRow = 1
+'            .Row = i
+'            .Col = .ColLetterToNumber("C")
+'            arrCellTag = Split(.CellTag, "~")
+'            If UBound(arrCellTag) > 0 Then
+'            strCellTag = arrCellTag(1)
+'            .GetText .ColLetterToNumber("C"), .Row, vKyHieuHD
+'            .GetText .ColLetterToNumber("D"), .Row, vSoHD
+'            .GetText .ColLetterToNumber("E"), .Row, vNgayHD
+'            .GetText .ColLetterToNumber("F"), .Row, vTennguoimua
+'            .GetText .ColLetterToNumber("G"), .Row, vMST
+'            .GetText .ColLetterToNumber("H"), .Row, vMatHang
+'            .GetText .ColLetterToNumber("I"), .Row, vDoanhSo
+'            .GetText .ColLetterToNumber("K"), .Row, vGhiChu
+'
+'
+'            If Trim(vKyHieuHD) <> "" Or Trim(vSoHD) <> "" Or Trim(vNgayHD) <> "" Or Trim(vTennguoimua) <> "" Or Trim(vMST) <> "" Or Trim(vGhiChu) <> "" Or Trim(vDoanhSo) <> "0" Then iWhiteRow = 0
+'                Select Case strCellTag
+'                    Case "1", "2", "3", "4"
+'                        If Trim(vKyHieuHD) = "" And iWhiteRow = 0 Then
+'                            .Col = .ColLetterToNumber("C")
+'                            .CellNote = vErrMsgKyHieuHD  'static
+'                            .BackColor = mErrorColor
+'                            iFlagvKyHieuHD = 1
+'                        Else
+'                            .Col = .ColLetterToNumber("C")
+'                            .CellNote = ""
+'                            .BackColor = mNonErrorColor
+'                        End If
+'                        If Trim(vSoHD) = "" And iWhiteRow = 0 Then
+'                            .Col = .ColLetterToNumber("D")
+'                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                            .CellNote = vErrMsgSoHD  'static
+'                            .BackColor = mErrorColor
+'                            iFlagvSoHD = 1
+'                            'capture the first error cell
+'                            If iFocusFlag = 0 Then
+'                                strFocusSheetName = "'" & .SheetName & "'"
+'                                strFocusCol = str(.Col)
+'                                strFocusRow = str(.Row)
+'                                iFocusFlag = 1
+'                            End If
+'                        Else
+'                            .Col = .ColLetterToNumber("D")
+'                            .CellNote = ""
+'                            .BackColor = mNonErrorColor
+'                        End If
+'                        If Trim(vNgayHD) = "" And iWhiteRow = 0 Then
+'                            .Col = .ColLetterToNumber("E")
+'                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                            .CellNote = vErrMsgNgayHD  'static
+'                            .BackColor = mErrorColor
+'                            iFlagvNgayHD = 1
+'
+'                            'capture the first error cell
+'                            If iFocusFlag = 0 Then
+'                                strFocusSheetName = "'" & .SheetName & "'"
+'                                strFocusCol = str(.Col)
+'                                strFocusRow = str(.Row)
+'                                iFocusFlag = 1
+'                            End If
+'                        ElseIf Trim(vNgayHD) <> "" And iWhiteRow = 0 Then
+'                         If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_New.Year) Then
+'                                .Col = .ColLetterToNumber("E")
+'                                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                                .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
+'                                .BackColor = mErrorColor
+'                                iFlagvNgayHD = 1
+'                                If iFocusFlag = 0 Then
+'                                    strFocusSheetName = "'" & .SheetName & "'"
+'                                    strFocusCol = str(.Col)
+'                                    strFocusRow = str(.Row)
+'                                    iFocusFlag = 1
+'                                End If
+'                             ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_New.Year) And CInt(Right("00" & Mid(vNgayHD, 4, 2), 2)) > CInt(TAX_Utilities_New.Month) Then
+'                                .Col = .ColLetterToNumber("E")
+'                                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                                .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
+'                                .BackColor = mErrorColor
+'                                iFlagvNgayHD = 1
+'                                If iFocusFlag = 0 Then
+'                                    strFocusSheetName = "'" & .SheetName & "'"
+'                                    strFocusCol = str(.Col)
+'                                    strFocusRow = str(.Row)
+'                                    iFocusFlag = 1
+'                                End If
+'                             ElseIf (CheckValidNgayHD(CStr(vNgayHD)) = False) And strCellTag <> "2" Then
+'                                .Col = .ColLetterToNumber("E")
+'                                .CellNote = GetAttribute(GetMessageCellById("0124"), "Msg") 'static
+'                                .BackColor = mAlertColor
+'                                 If iFocusFlag = 0 Then
+'                                    strFocusSheetName = "'" & .SheetName & "'"
+'                                    strFocusCol = str(.Col)
+'                                    strFocusRow = str(.Row)
+'                                    iFocusFlag = 1
+'                                  End If
+'                             Else
+'                                .Col = .ColLetterToNumber("E")
+'                                .CellNote = ""
+'                                .BackColor = mNonErrorColor
+'                            End If
+'    '                        If CheckValidNgayHD(CStr(vNgayHD)) = False Then
+'    '                           .Col = .ColLetterToNumber("E")
+'    '                           .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'    '                           .CellNote = GetAttribute(GetMessageCellById("0112"), "Msg") 'static
+'    '                           .BackColor = mErrorColor
+'    '                           iFlagvNgayHD = 1
+'    '                            'capture the first error cell
+'    '                            If iFocusFlag = 0 Then
+'    '                                strFocusSheetName = "'" & .SheetName & "'"
+'    '                                strFocusCol = str(.Col)
+'    '                                strFocusRow = str(.Row)
+'    '                                iFocusFlag = 1
+'    '                            End If
+'    '                         Else
+'    '                            .Col = .ColLetterToNumber("E")
+'    '                            .CellNote = ""
+'    '                            .BackColor = mNonErrorColor
+'    '                         End If
+'                        Else
+'                            .Col = .ColLetterToNumber("E")
+'                            .CellNote = ""
+'                            .BackColor = mNonErrorColor
+'                        End If
+'                        If Trim(vTennguoimua) = "" And iWhiteRow = 0 Then
+'                            .Col = .ColLetterToNumber("F")
+'                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                            .CellNote = vErrMsgTennguoimua  'static
+'                            .BackColor = mErrorColor
+'                            iFlagvTennguoimua = 1
+'
+'                            'capture the first error cell
+'                            If iFocusFlag = 0 Then
+'                                strFocusSheetName = "'" & .SheetName & "'"
+'                                strFocusCol = str(.Col)
+'                                strFocusRow = str(.Row)
+'                                iFocusFlag = 1
+'                            End If
+'                        Else
+'                            .Col = .ColLetterToNumber("F")
+'                            .CellNote = ""
+'                            .BackColor = mNonErrorColor
+'                        End If
+'             'Check MST
+'                        If Trim(vMST) <> vbNullString Then
+'                            vMST = Replace(vMST, " ", "")
+'                            vMST = Replace(vMST, "-", "")
+'                             'vMST = Left(vMST, 10)
+'                                strCheck = ""
+'                               If Len(vMST) = 10 Or Len(vMST) = 13 Then
+'                                    strCheck = CheckTaxCode(Mid(vMST, 1, 1), Mid(vMST, 2, 1), Mid(vMST, 3, 1), Mid(vMST, 4, 1), Mid(vMST, 5, 1), Mid(vMST, 6, 1), Mid(vMST, 7, 1), Mid(vMST, 8, 1), Mid(vMST, 9, 1), Mid(vMST, 10, 1), Mid(vMST, 11, 1), Mid(vMST, 12, 1), Mid(vMST, 13, 1))
+'                               End If
+'                               If Mid(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
+'                                    .Col = .ColLetterToNumber("G")
+'                                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                                    .CellNote = vErrMsgMST   'static
+'                                    .BackColor = mErrorColor
+'                                    iFlagvMst = 1
+'
+'                                    'capture the first error cell
+'                                    If iFocusFlag = 0 Then
+'                                        strFocusSheetName = "'" & .SheetName & "'"
+'                                        strFocusCol = str(.Col)
+'                                        strFocusRow = str(.Row)
+'                                        iFocusFlag = 1
+'                                    End If
+'                               Else
+'                                    .Col = .ColLetterToNumber("G")
+'                                    .CellNote = ""   'static
+'                                    .BackColor = mNonErrorColor
+'                                End If
+'                        Else
+'                            .Col = .ColLetterToNumber("G")
+'                            .CellNote = ""
+'                            .BackColor = mNonErrorColor
+'                        End If
+'                End Select
+'
+'           End If
+'        Next
+'
+'        If iFocusFlag = 1 Then
+'            ' setcell for focus
+'
+'            strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
+'            .Col = .ColLetterToNumber("C")
+'            .Row = 26
+'            .Formula = strFormula
+'            .Row = 27
+'            .Formula = strFormula
+'            .Row = 28
+'            .Formula = strFormula
+'            .Row = 29
+'            .Formula = strFormula
+'            .Row = 30
+'            .Formula = strFormula
+'        End If
+'    End If
     
     .Sheet = .SheetCount
     If blCheck_S3 = True Then
@@ -1550,49 +1550,49 @@ Public Sub SetActiveSheet()
     'Select Case GetAttribute(xmlNodeValid, "ID")
     For Each xmlNodeValid In TAX_Utilities_New.NodeValidity.childNodes
         Select Case GetAttribute(xmlNodeValid, "ID")
-            Case "01_1"
-                blnNullValue = True
-                'Check value of last node in Data
-                Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
-                    (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 1)
-                    strValue1 = GetAttribute(xmlCellNode, "Value")
-                Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
-                    (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 2)
-                    strValue2 = GetAttribute(xmlCellNode, "Value")
-                Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
-                    (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 3)
-                    strValue3 = GetAttribute(xmlCellNode, "Value")
-                'Set active voi dong 5
-                fps.Sheet = 2
-                fps.GetText fps.ColLetterToNumber("N"), 1, strValue4
-                    If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Or Val(strValue4) <> 0 Then
-                            blnNullValue = False
-                    End If
-
-                    If blnNullValue Then
-                        SetAttribute xmlNodeValid, "Active", "0"
-                    End If
-
-             Case "01_2"
-                blnNullValue = True
-                'Check value of last node in Data
-                Set xmlCellNode = TAX_Utilities_New.Data(2).getElementsByTagName("Cell") _
-                    (TAX_Utilities_New.Data(2).getElementsByTagName("Cell").length - 1)
-                    strValue1 = GetAttribute(xmlCellNode, "Value")
-                Set xmlCellNode = TAX_Utilities_New.Data(2).getElementsByTagName("Cell") _
-                    (TAX_Utilities_New.Data(2).getElementsByTagName("Cell").length - 2)
-                    strValue2 = GetAttribute(xmlCellNode, "Value")
-                 'Set active voi dong 5
-                fps.Sheet = 3
-                fps.GetText fps.ColLetterToNumber("N"), 1, strValue5
-
-                    If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Or Val(strValue5) <> 0 Then
-                            blnNullValue = False
-                    End If
-
-                    If blnNullValue Then
-                        SetAttribute xmlNodeValid, "Active", "0"
-                    End If
+'            Case "01_1"
+'                blnNullValue = True
+'                'Check value of last node in Data
+'                Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
+'                    (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 1)
+'                    strValue1 = GetAttribute(xmlCellNode, "Value")
+'                Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
+'                    (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 2)
+'                    strValue2 = GetAttribute(xmlCellNode, "Value")
+'                Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
+'                    (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 3)
+'                    strValue3 = GetAttribute(xmlCellNode, "Value")
+'                'Set active voi dong 5
+'                fps.Sheet = 2
+'                fps.GetText fps.ColLetterToNumber("N"), 1, strValue4
+'                    If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Or Val(strValue4) <> 0 Then
+'                            blnNullValue = False
+'                    End If
+'
+'                    If blnNullValue Then
+'                        SetAttribute xmlNodeValid, "Active", "0"
+'                    End If
+'
+'             Case "01_2"
+'                blnNullValue = True
+'                'Check value of last node in Data
+'                Set xmlCellNode = TAX_Utilities_New.Data(2).getElementsByTagName("Cell") _
+'                    (TAX_Utilities_New.Data(2).getElementsByTagName("Cell").length - 1)
+'                    strValue1 = GetAttribute(xmlCellNode, "Value")
+'                Set xmlCellNode = TAX_Utilities_New.Data(2).getElementsByTagName("Cell") _
+'                    (TAX_Utilities_New.Data(2).getElementsByTagName("Cell").length - 2)
+'                    strValue2 = GetAttribute(xmlCellNode, "Value")
+'                 'Set active voi dong 5
+'                fps.Sheet = 3
+'                fps.GetText fps.ColLetterToNumber("N"), 1, strValue5
+'
+'                    If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Or Val(strValue5) <> 0 Then
+'                            blnNullValue = False
+'                    End If
+'
+'                    If blnNullValue Then
+'                        SetAttribute xmlNodeValid, "Active", "0"
+'                    End If
              Case "KHBS"
                 blnNullValue = True
                 'Check value of last node in Data
@@ -1653,7 +1653,7 @@ Private Function GetMP10Previous(ByRef strValue As String) As Boolean
         MY = DateSerial(TAX_Utilities_New.Year, TAX_Utilities_New.Month, 1)
         MY = DateAdd("M", -1, MY)
         
-        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("95", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
+        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("88", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
         If .Load(strDataFileName) = True Then
             Set xmlNode = .nodeFromID("P_" & rowCt36_37_38)
             strM13Target = GetAttribute(xmlNode, "Value")
@@ -1710,7 +1710,7 @@ Private Sub setMP10Target()
         MY = DateAdd("M", -1, MY)
         strOriginDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(1), "DataFile") & ".xml"
         strCurrentDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_" & TAX_Utilities_New.Month & TAX_Utilities_New.Year & ".xml"
-        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("95", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
+        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("88", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
         
         If xmlDomCurrentData.Load(strCurrentDataFileName) = True Then
             GoTo Tidy_up
@@ -2002,16 +2002,16 @@ Public Sub UpdateSheet()
             UpdateCell fps, lCol, lRow, varTemp
         Next
 
-        .Sheet = 2
-        mCurrentSheet = 2
-        blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-        If blCheck_S2 = True Then
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(1).getElementsByTagName("Cell")
-                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-                .GetText lCol, lRow, varTemp
-                UpdateCell fps, lCol, lRow, varTemp
-            Next
-         End If
+'        .Sheet = 2
+'        mCurrentSheet = 2
+'        blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+'        If blCheck_S2 = True Then
+'            For Each xmlCellNodeData In TAX_Utilities_New.Data(1).getElementsByTagName("Cell")
+'                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+'                .GetText lCol, lRow, varTemp
+'                UpdateCell fps, lCol, lRow, varTemp
+'            Next
+'         End If
          
         ' Update lai sheet KHBS
         .Sheet = .SheetCount - 1
@@ -2176,7 +2176,7 @@ Private Function GetMP36Previous(ByRef strValue As String) As Boolean
         End If
         
         If strTkThangQuy = "TK_THANG" Then
-            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("95", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
+            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("88", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
         ElseIf strTkThangQuy = "TK_QUY" Then
             If TAX_Utilities_New.ThreeMonths > 1 Then
                 strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths - 1 & TAX_Utilities_New.Year & ".xml"
@@ -2325,52 +2325,52 @@ Sub CellChange2()
     Dim cellTagArr() As String
     With fps
         .Sheet = .ActiveSheet
-        Select Case .Sheet
-            Case 2 ' phu luc 01_1
-                 ' chi tieu 24
-                .Sheet = 1
-                .Col = .ColLetterToNumber(colM)
-                .Row = rowCt24_25_26
-                '.Formula = "H53"
-                .Formula = colE & rowHidden64
-                .Sheet = .ActiveSheet
-                 ' chi tieu 25
-                .Sheet = 1
-                .Col = .ColLetterToNumber(colP)
-                .Row = rowCt24_25_26
-                '.Formula = "I53"
-                .Formula = colG & rowHidden64
-                .Sheet = .ActiveSheet
-                 ' chi tieu 26
-                .Sheet = 1
-                .Col = .ColLetterToNumber(colS)
-                .Row = rowCt24_25_26
-                '.Formula = "K53"
-                .Formula = colH & rowHidden64
-                .Sheet = .ActiveSheet
-        Case 3 ' phu luc 01_2
-                 ' chi tieu 27
-                .Sheet = 1
-                .Col = .ColLetterToNumber(colM)
-                .Row = rowCt27_28_29
-                '.Formula = "F53"
-                .Formula = colE & rowHidden65
-                .Sheet = .ActiveSheet
-                 ' chi tieu 28
-                .Sheet = 1
-                .Col = .ColLetterToNumber(colP)
-                .Row = rowCt27_28_29
-                '.Formula = "F53"
-                .Formula = colG & rowHidden65
-                .Sheet = .ActiveSheet
-                 ' chi tieu 29
-                .Sheet = 1
-                .Col = .ColLetterToNumber(colS)
-                .Row = rowCt27_28_29
-                '.Formula = "F53"
-                .Formula = colH & rowHidden65
-                .Sheet = .ActiveSheet
-        End Select
+'        Select Case .Sheet
+''            Case 2 ' phu luc 01_1
+''                 ' chi tieu 24
+''                .Sheet = 1
+''                .Col = .ColLetterToNumber(colM)
+''                .Row = rowCt24_25_26
+''                '.Formula = "H53"
+''                .Formula = colE & rowHidden64
+''                .Sheet = .ActiveSheet
+''                 ' chi tieu 25
+''                .Sheet = 1
+''                .Col = .ColLetterToNumber(colP)
+''                .Row = rowCt24_25_26
+''                '.Formula = "I53"
+''                .Formula = colG & rowHidden64
+''                .Sheet = .ActiveSheet
+''                 ' chi tieu 26
+''                .Sheet = 1
+''                .Col = .ColLetterToNumber(colS)
+''                .Row = rowCt24_25_26
+''                '.Formula = "K53"
+''                .Formula = colH & rowHidden64
+''                .Sheet = .ActiveSheet
+''        Case 3 ' phu luc 01_2
+''                 ' chi tieu 27
+''                .Sheet = 1
+''                .Col = .ColLetterToNumber(colM)
+''                .Row = rowCt27_28_29
+''                '.Formula = "F53"
+''                .Formula = colE & rowHidden65
+''                .Sheet = .ActiveSheet
+''                 ' chi tieu 28
+''                .Sheet = 1
+''                .Col = .ColLetterToNumber(colP)
+''                .Row = rowCt27_28_29
+''                '.Formula = "F53"
+''                .Formula = colG & rowHidden65
+''                .Sheet = .ActiveSheet
+''                 ' chi tieu 29
+''                .Sheet = 1
+''                .Col = .ColLetterToNumber(colS)
+''                .Row = rowCt27_28_29
+''                '.Formula = "F53"
+''                .Formula = colH & rowHidden65
+''                .Sheet = .ActiveSheet
+'        End Select
     End With
 End Sub
 
@@ -2396,8 +2396,8 @@ With fps
     Dim tempCurrSheet As Integer
     Dim blCheck_S1 As Boolean
     Dim blCheck_S2 As Boolean
-    blCheck_S1 = IIf(TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-    blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+'    blCheck_S1 = IIf(TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+'    blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
     tempCurrSheet = mCurrentSheet
     .Sheet = 1
 '            If blCheck_S1 = True Then
