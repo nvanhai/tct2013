@@ -20,6 +20,8 @@
 					<kyKKhai></kyKKhai>
 					<kyKKhaiTuNgay></kyKKhaiTuNgay>
 					<kyKKhaiDenNgay></kyKKhaiDenNgay>
+					<kyKKhaiTuThang></kyKKhaiTuThang>
+					<kyKKhaiDenThang></kyKKhaiDenThang>
 				</KyKKhaiThue>
 				<maCQTNoiNop></maCQTNoiNop>
 				<tenCQTNoiNop></tenCQTNoiNop>
@@ -29,12 +31,14 @@
 					<lyDoGiaHan></lyDoGiaHan>
 				</GiaHan>
 				<nguoiKy></nguoiKy>
-				<ngayKy></ngayKy>
+				<ngayKy>1967-08-13</ngayKy>
+				<nganhNgheKD></nganhNgheKD>
 			</TKhaiThue>
 			<NNT>
 				<mst>0000000000</mst>
 				<tenNNT></tenNNT>
 				<dchiNNT></dchiNNT>
+				<phuongXa></phuongXa>
 				<maHuyenNNT></maHuyenNNT>
 				<tenHuyenNNT></tenHuyenNNT>
 				<maTinhNNT></maTinhNNT>
@@ -55,7 +59,7 @@
 				<faxDLyThue></faxDLyThue>
 				<emailDLyThue></emailDLyThue>
 				<soHDongDLyThue></soHDongDLyThue>
-				<ngayKyHDDLyThue></ngayKyHDDLyThue>
+				<ngayKyHDDLyThue>1967-08-13</ngayKyHDDLyThue>
 				<NVienDLy>
 					<tenNVienDLyThue></tenNVienDLyThue>
 					<cchiHNghe></cchiHNghe>
@@ -64,72 +68,6 @@
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
-		<ThuyetMinh>
-			<ct100_tMinh></ct100_tMinh>
-			<ct110_tMinh></ct110_tMinh>
-			<ct120_tMinh></ct120_tMinh>
-			<ct121_tMinh></ct121_tMinh>
-			<ct129_tMinh></ct129_tMinh>
-			<ct130_tMinh></ct130_tMinh>
-			<ct131_tMinh></ct131_tMinh>
-			<ct132_tMinh></ct132_tMinh>
-			<ct138_tMinh></ct138_tMinh>
-			<ct139_tMinh></ct139_tMinh>
-			<ct140_tMinh></ct140_tMinh>
-			<ct141_tMinh></ct141_tMinh>
-			<ct149_tMinh></ct149_tMinh>
-			<ct150_tMinh></ct150_tMinh>
-			<ct151_tMinh></ct151_tMinh>
-			<ct152_tMinh></ct152_tMinh>
-			<ct158_tMinh></ct158_tMinh>
-			<ct200_tMinh></ct200_tMinh>
-			<ct210_tMinh></ct210_tMinh>
-			<ct211_tMinh></ct211_tMinh>
-			<ct212_tMinh></ct212_tMinh>
-			<ct213_tMinh></ct213_tMinh>
-			<ct220_tMinh></ct220_tMinh>
-			<ct221_tMinh></ct221_tMinh>
-			<ct222_tMinh></ct222_tMinh>
-			<ct230_tMinh></ct230_tMinh>
-			<ct231_tMinh></ct231_tMinh>
-			<ct239_tMinh></ct239_tMinh>
-			<ct240_tMinh></ct240_tMinh>
-			<ct241_tMinh></ct241_tMinh>
-			<ct248_tMinh></ct248_tMinh>
-			<ct249_tMinh></ct249_tMinh>
-			<ct250_tMinh></ct250_tMinh>
-			<ct300_tMinh></ct300_tMinh>
-			<ct310_tMinh></ct310_tMinh>
-			<ct311_tMinh></ct311_tMinh>
-			<ct312_tMinh></ct312_tMinh>
-			<ct313_tMinh></ct313_tMinh>
-			<ct314_tMinh></ct314_tMinh>
-			<ct315_tMinh></ct315_tMinh>
-			<ct316_tMinh></ct316_tMinh>
-			<ct318_tMinh></ct318_tMinh>
-			<ct319_tMinh></ct319_tMinh>
-			<ct320_tMinh></ct320_tMinh>
-			<ct321_tMinh></ct321_tMinh>
-			<ct322_tMinh></ct322_tMinh>
-			<ct328_tMinh></ct328_tMinh>
-			<ct329_tMinh></ct329_tMinh>
-			<ct400_tMinh></ct400_tMinh>
-			<ct410_tMinh></ct410_tMinh>
-			<ct411_tMinh></ct411_tMinh>
-			<ct412_tMinh></ct412_tMinh>
-			<ct413_tMinh></ct413_tMinh>
-			<ct414_tMinh></ct414_tMinh>
-			<ct415_tMinh></ct415_tMinh>
-			<ct416_tMinh></ct416_tMinh>
-			<ct417_tMinh></ct417_tMinh>
-			<ct430_tMinh></ct430_tMinh>
-			<ct440_tMinh></ct440_tMinh>
-			<tsanTNgoai_tMinh></tsanTNgoai_tMinh>
-			<hangGCong_tMinh></hangGCong_tMinh>
-			<hangKGui_tMinh></hangKGui_tMinh>
-			<noKDoi_tMinh></noKDoi_tMinh>
-			<ngoaiTe_tMinh>0.0</ngoaiTe_tMinh>
-		</ThuyetMinh>
 		<SoNamNay>
 			<ct100_nNay></ct100_nNay>
 			<ct110_nNay></ct110_nNay>
@@ -147,6 +85,7 @@
 			<ct150_nNay></ct150_nNay>
 			<ct151_nNay></ct151_nNay>
 			<ct152_nNay></ct152_nNay>
+			<ct157_nNay></ct157_nNay>
 			<ct158_nNay></ct158_nNay>
 			<ct200_nNay></ct200_nNay>
 			<ct210_nNay></ct210_nNay>
@@ -173,12 +112,17 @@
 			<ct315_nNay></ct315_nNay>
 			<ct316_nNay></ct316_nNay>
 			<ct318_nNay></ct318_nNay>
-			<ct319_nNay></ct319_nNay>
-			<ct320_nNay></ct320_nNay>
-			<ct321_nNay></ct321_nNay>
-			<ct322_nNay></ct322_nNay>
+			<ct323_nNay></ct323_nNay>
+			<ct327_nNay></ct327_nNay>
 			<ct328_nNay></ct328_nNay>
 			<ct329_nNay></ct329_nNay>
+			<ct330_nNay></ct330_nNay>
+			<ct331_nNay></ct331_nNay>
+			<ct332_nNay></ct332_nNay>
+			<ct334_nNay></ct334_nNay>
+			<ct336_nNay></ct336_nNay>
+			<ct338_nNay></ct338_nNay>
+			<ct339_nNay></ct339_nNay>
 			<ct400_nNay></ct400_nNay>
 			<ct410_nNay></ct410_nNay>
 			<ct411_nNay></ct411_nNay>
@@ -188,7 +132,6 @@
 			<ct415_nNay></ct415_nNay>
 			<ct416_nNay></ct416_nNay>
 			<ct417_nNay></ct417_nNay>
-			<ct430_nNay></ct430_nNay>
 			<ct440_nNay></ct440_nNay>
 			<tsanTNgoai_nNay></tsanTNgoai_nNay>
 			<hangGCong_nNay></hangGCong_nNay>
@@ -213,6 +156,7 @@
 			<ct150_nNgoai></ct150_nNgoai>
 			<ct151_nNgoai></ct151_nNgoai>
 			<ct152_nNgoai></ct152_nNgoai>
+			<ct157_nNgoai></ct157_nNgoai>
 			<ct158_nNgoai></ct158_nNgoai>
 			<ct200_nNgoai></ct200_nNgoai>
 			<ct210_nNgoai></ct210_nNgoai>
@@ -239,12 +183,17 @@
 			<ct315_nNgoai></ct315_nNgoai>
 			<ct316_nNgoai></ct316_nNgoai>
 			<ct318_nNgoai></ct318_nNgoai>
-			<ct319_nNgoai></ct319_nNgoai>
-			<ct320_nNgoai></ct320_nNgoai>
-			<ct321_nNgoai></ct321_nNgoai>
-			<ct322_nNgoai></ct322_nNgoai>
+			<ct323_nNgoai></ct323_nNgoai>
+			<ct327_nNgoai></ct327_nNgoai>
 			<ct328_nNgoai></ct328_nNgoai>
 			<ct329_nNgoai></ct329_nNgoai>
+			<ct330_nNgoai></ct330_nNgoai>
+			<ct331_nNgoai></ct331_nNgoai>
+			<ct332_nNgoai></ct332_nNgoai>
+			<ct334_nNgoai></ct334_nNgoai>
+			<ct336_nNgoai></ct336_nNgoai>
+			<ct338_nNgoai></ct338_nNgoai>
+			<ct339_nNgoai></ct339_nNgoai>
 			<ct400_nNgoai></ct400_nNgoai>
 			<ct410_nNgoai></ct410_nNgoai>
 			<ct411_nNgoai></ct411_nNgoai>
@@ -254,7 +203,6 @@
 			<ct415_nNgoai></ct415_nNgoai>
 			<ct416_nNgoai></ct416_nNgoai>
 			<ct417_nNgoai></ct417_nNgoai>
-			<ct430_nNgoai></ct430_nNgoai>
 			<ct440_nNgoai></ct440_nNgoai>
 			<tsanTNgoai_nNgoai></tsanTNgoai_nNgoai>
 			<hangGCong_nNgoai></hangGCong_nNgoai>
@@ -262,6 +210,26 @@
 			<noKDoi_nNgoai></noKDoi_nNgoai>
 			<ngoaiTe_nNgoai>0.0</ngoaiTe_nNgoai>
 		</SoNamNgoai>
+		<NgoaiBangCDKT>
+			<SoCuoiNam>
+				<taiSanThueNgoai></taiSanThueNgoai>
+				<hangHoaNhanGiuHo></hangHoaNhanGiuHo>
+				<hangHoaNhanBanHo></hangHoaNhanBanHo>
+				<noKhoDoiDaXLy></noKhoDoiDaXLy>
+				<ngoaiTeCacLoai></ngoaiTeCacLoai>
+			</SoCuoiNam>
+			<SoDauNam>
+				<taiSanThueNgoai></taiSanThueNgoai>
+				<hangHoaNhanGiuHo></hangHoaNhanGiuHo>
+				<hangHoaNhanBanHo></hangHoaNhanBanHo>
+				<noKhoDoiDaXLy></noKhoDoiDaXLy>
+				<ngoaiTeCacLoai></ngoaiTeCacLoai>
+			</SoDauNam>
+		</NgoaiBangCDKT>
+		<nguoiLapBieu></nguoiLapBieu>
+		<keToanTruong></keToanTruong>
+		<ngayLap></ngayLap>
+		<giamDoc></giamDoc>
 	</CTieuTKhaiChinh>
 	<PLuc>
 	</PLuc>

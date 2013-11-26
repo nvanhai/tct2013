@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<HSoKhaiThue xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">
+<HSoKhaiThue>
 	<TTinChung>
 		<TTinDVu>
 			<maDVu></maDVu>
@@ -13,13 +13,15 @@
 				<tenTKhai></tenTKhai>
 				<moTaBMau/>
 				<pbanTKhaiXML></pbanTKhaiXML>
-				<loaiTKhai></loaiTKhai>
-				<soLan></soLan>
+				<loaiTKhai>C</loaiTKhai>
+				<soLan>1</soLan>
 				<KyKKhaiThue>
-					<kieuKy></kieuKy>
+					<kieuKy>D</kieuKy>
 					<kyKKhai></kyKKhai>
 					<kyKKhaiTuNgay></kyKKhaiTuNgay>
 					<kyKKhaiDenNgay></kyKKhaiDenNgay>
+					<kyKKhaiTuThang></kyKKhaiTuThang>
+					<kyKKhaiDenThang></kyKKhaiDenThang>
 				</KyKKhaiThue>
 				<maCQTNoiNop></maCQTNoiNop>
 				<tenCQTNoiNop></tenCQTNoiNop>
@@ -29,12 +31,14 @@
 					<lyDoGiaHan></lyDoGiaHan>
 				</GiaHan>
 				<nguoiKy></nguoiKy>
-				<ngayKy></ngayKy>
+				<ngayKy>1967-08-13</ngayKy>
+				<nganhNgheKD></nganhNgheKD>
 			</TKhaiThue>
 			<NNT>
-				<mst></mst>
+				<mst>0000000000</mst>
 				<tenNNT></tenNNT>
 				<dchiNNT></dchiNNT>
+				<phuongXa></phuongXa>
 				<maHuyenNNT></maHuyenNNT>
 				<tenHuyenNNT></tenHuyenNNT>
 				<maTinhNNT></maTinhNNT>
@@ -44,7 +48,7 @@
 				<emailNNT></emailNNT>
 			</NNT>
 			<DLyThue>
-				<mstDLyThue></mstDLyThue>
+				<mstDLyThue>0000000000</mstDLyThue>
 				<tenDLyThue></tenDLyThue>
 				<dchiDLyThue></dchiDLyThue>
 				<maHuyenDLyThue></maHuyenDLyThue>
@@ -55,7 +59,7 @@
 				<faxDLyThue></faxDLyThue>
 				<emailDLyThue></emailDLyThue>
 				<soHDongDLyThue></soHDongDLyThue>
-				<ngayKyHDDLyThue></ngayKyHDDLyThue>
+				<ngayKyHDDLyThue>1967-08-13</ngayKyHDDLyThue>
 				<NVienDLy>
 					<tenNVienDLyThue></tenNVienDLyThue>
 					<cchiHNghe></cchiHNghe>
@@ -64,61 +68,42 @@
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
-		<kyBCaoCuoi></kyBCaoCuoi>
-		<chuyenDiaDiem></chuyenDiaDiem>
-		<ngayDauKyBC></ngayDauKyBC>
-		<ngayCuoiKyBC></ngayCuoiKyBC>
+		<kyBCaoCuoi>true</kyBCaoCuoi>
+		<chuyenDiaDiem>true</chuyenDiaDiem>
+		<ngayDauKyBC>1967-08-13</ngayDauKyBC>
+		<ngayCuoiKyBC>1967-08-13</ngayCuoiKyBC>
 		<HoaDon>
-			<ChiTiet id="ID_1">
+			<ChiTiet>
+				<maHoaDon></maHoaDon>
 				<tenHDon></tenHDon>
 				<kHieuMauHDon></kHieuMauHDon>
 				<kHieuHDon></kHieuHDon>
-				<SoTonMuaTrKy>
-					<tongSo></tongSo>
-					<SoTonDauKy>
-						<tuSo></tuSo>
-						<denSo></denSo>
-					</SoTonDauKy>
-					<MuaTrongKy>
-						<tuSo></tuSo>
-						<denSo></denSo>
-					</MuaTrongKy>
-				</SoTonMuaTrKy>
-				<SoSuDungTrKy>
-					<TongSoSuDung>
-						<tuSo></tuSo>
-						<denSo></denSo>
-						<cong></cong>
-					</TongSoSuDung>
-					<TrongDo>
-						<soDaSDung></soDaSDung>
-						<XoaBo>
-							<soLuong></soLuong>
-							<so></so>
-						</XoaBo>
-						<Mat>
-							<soLuong></soLuong>
-							<so></so>
-						</Mat>
-						<Huy>
-							<soLuong></soLuong>
-							<so></so>
-						</Huy>
-					</TrongDo>
-				</SoSuDungTrKy>
-				<TonCuoiKy>
-					<tuSo></tuSo>
-					<denSo></denSo>
-					<soLuong></soLuong>
-				</TonCuoiKy>
+				<soTonMuaTrKy_tongSo>1</soTonMuaTrKy_tongSo>
+				<soTonDauKy_tuSo>1</soTonDauKy_tuSo>
+				<soTonDauKy_denSo>1</soTonDauKy_denSo>
+				<muaTrongKy_tuSo>1</muaTrongKy_tuSo>
+				<muaTrongKy_denSo>1</muaTrongKy_denSo>
+				<tongSoSuDung_tuSo>1</tongSoSuDung_tuSo>
+				<tongSoSuDung_denSo>1</tongSoSuDung_denSo>
+				<tongSoSuDung_cong>1</tongSoSuDung_cong>
+				<soDaSDung>1</soDaSDung>
+				<xoaBo_soLuong>1</xoaBo_soLuong>
+				<xoaBo_so></xoaBo_so>
+				<mat_soLuong>1</mat_soLuong>
+				<mat_so></mat_so>
+				<huy_soLuong>1</huy_soLuong>
+				<huy_so></huy_so>
+				<tonCuoiKy_tuSo>1</tonCuoiKy_tuSo>
+				<tonCuoiKy_denSo>1</tonCuoiKy_denSo>
+				<tonCuoiKy_soLuong>1</tonCuoiKy_soLuong>
 			</ChiTiet>
 		</HoaDon>
-		<tongCongSoTonDKy></tongCongSoTonDKy>
-		<tongCongSDung></tongCongSDung>
-		<tongCongSoTonCKy></tongCongSoTonCKy>
+		<tongCongSoTonDKy>1</tongCongSoTonDKy>
+		<tongCongSDung>1</tongCongSDung>
+		<tongCongSoTonCKy>1</tongCongSoTonCKy>
 		<nguoiLapBieu></nguoiLapBieu>
 		<nguoiDaiDien></nguoiDaiDien>
-		<ngayBCao></ngayBCao>
+		<ngayBCao>1967-08-13</ngayBCao>
 	</CTieuTKhaiChinh>
 	<PLuc>
 	</PLuc>

@@ -13,13 +13,15 @@
 				<tenTKhai></tenTKhai>
 				<moTaBMau/>
 				<pbanTKhaiXML></pbanTKhaiXML>
-				<loaiTKhai></loaiTKhai>
-				<soLan></soLan>
+				<loaiTKhai>C</loaiTKhai>
+				<soLan>1</soLan>
 				<KyKKhaiThue>
-					<kieuKy></kieuKy>
+					<kieuKy>D</kieuKy>
 					<kyKKhai></kyKKhai>
 					<kyKKhaiTuNgay></kyKKhaiTuNgay>
 					<kyKKhaiDenNgay></kyKKhaiDenNgay>
+					<kyKKhaiTuThang></kyKKhaiTuThang>
+					<kyKKhaiDenThang></kyKKhaiDenThang>
 				</KyKKhaiThue>
 				<maCQTNoiNop></maCQTNoiNop>
 				<tenCQTNoiNop></tenCQTNoiNop>
@@ -29,11 +31,11 @@
 					<lyDoGiaHan></lyDoGiaHan>
 				</GiaHan>
 				<nguoiKy></nguoiKy>
-				<ngayKy></ngayKy>
+				<ngayKy>1967-08-13</ngayKy>
 				<nganhNgheKD></nganhNgheKD>
 			</TKhaiThue>
 			<NNT>
-				<mst></mst>
+				<mst>0000000000</mst>
 				<tenNNT></tenNNT>
 				<dchiNNT></dchiNNT>
 				<phuongXa></phuongXa>
@@ -46,7 +48,7 @@
 				<emailNNT></emailNNT>
 			</NNT>
 			<DLyThue>
-				<mstDLyThue></mstDLyThue>
+				<mstDLyThue>0000000000</mstDLyThue>
 				<tenDLyThue></tenDLyThue>
 				<dchiDLyThue></dchiDLyThue>
 				<maHuyenDLyThue></maHuyenDLyThue>
@@ -57,7 +59,7 @@
 				<faxDLyThue></faxDLyThue>
 				<emailDLyThue></emailDLyThue>
 				<soHDongDLyThue></soHDongDLyThue>
-				<ngayKyHDDLyThue></ngayKyHDDLyThue>
+				<ngayKyHDDLyThue>1967-08-13</ngayKyHDDLyThue>
 				<NVienDLy>
 					<tenNVienDLyThue></tenNVienDLyThue>
 					<cchiHNghe></cchiHNghe>
@@ -67,35 +69,26 @@
 	</TTinChung>
 	<CTieuTKhaiChinh>
 		<LoaiDauKhi>
-						<ct01></ct01>
-			<ct02></ct02>
-			<ct03></ct03>
+			<ct01>true</ct01>
 		</LoaiDauKhi>
-		<ct05></ct05>
+		<ct05>1</ct05>
 		<LoaiXuatBan>
-			<ct08></ct08>
-						<ct09></ct09>
+			<ct08>true</ct08>
 		</LoaiXuatBan>
-		<ct10></ct10>
+		<ct10>1967-08-13</ct10>
 		<ct19></ct19>
 		<CT20>
-			<donViUyQuyen></donViUyQuyen>
+			<donViUyQuyen>true</donViUyQuyen>
 		</CT20>
 		<tenDonViUyQuyen></tenDonViUyQuyen>
-		<ct29></ct29>
-		<ct30></ct30>
-		<ct31></ct31>
-		<ct32></ct32>
-		<ct33></ct33>
-		<ct34></ct34>
-		<ct35></ct35>
-		<ct36></ct36>
-		<ThongTinTKhoan>
-			<ThongTin>
-				<soTKhoan></soTKhoan>
-				<taiNganHang></taiNganHang>
-			</ThongTin>
-		</ThongTinTKhoan>
+		<ct29>1</ct29>
+		<ct30>1</ct30>
+		<ct31>1</ct31>
+		<ct32>0.0</ct32>
+		<ct33>1</ct33>
+		<ct34>1</ct34>
+		<ct35>1</ct35>
+		<ct36>1</ct36>
 	</CTieuTKhaiChinh>
 	<PLuc>
 	</PLuc>
