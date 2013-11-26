@@ -1,6 +1,6 @@
 <HSoKhaiThue ngay_nop_tk="E_12" ky_lap_bo="E_10">
 	<Static GroupName="TKhaiThue">
-		<maTKhai>48_BCTC</maTKhai>
+		<maTKhai>50</maTKhai>
 		<tenTKhai>Báo cáo tài chính bộ 48 BCTC</tenTKhai>
 		<soLan></soLan>
 		<moTaBMau/>
@@ -16,72 +16,6 @@
 	<Static GroupName="DLyThue">
 		<maHuyenDLyThue></maHuyenDLyThue>
 		<maTinhDLyThue></maTinhDLyThue>
-	</Static>
-	<Static GroupName="ThuyetMinh">
-		<ct100_tMinh>P_40</ct100_tMinh>
-		<ct110_tMinh>P_41</ct110_tMinh>
-		<ct120_tMinh>P_42</ct120_tMinh>
-		<ct121_tMinh>P_43</ct121_tMinh>
-		<ct129_tMinh>P_44</ct129_tMinh>
-		<ct130_tMinh>P_45</ct130_tMinh>
-		<ct131_tMinh>P_46</ct131_tMinh>
-		<ct132_tMinh>P_47</ct132_tMinh>
-		<ct138_tMinh>P_48</ct138_tMinh>
-		<ct139_tMinh>P_49</ct139_tMinh>
-		<ct140_tMinh>P_50</ct140_tMinh>
-		<ct141_tMinh>P_51</ct141_tMinh>
-		<ct149_tMinh>P_52</ct149_tMinh>
-		<ct150_tMinh>P_53</ct150_tMinh>
-		<ct151_tMinh>P_54</ct151_tMinh>
-		<ct152_tMinh>P_55</ct152_tMinh>
-		<ct158_tMinh>P_56</ct158_tMinh>
-		<ct200_tMinh>P_57</ct200_tMinh>
-		<ct210_tMinh>P_58</ct210_tMinh>
-		<ct211_tMinh>P_59</ct211_tMinh>
-		<ct212_tMinh>P_60</ct212_tMinh>
-		<ct213_tMinh>P_61</ct213_tMinh>
-		<ct220_tMinh>P_62</ct220_tMinh>
-		<ct221_tMinh>P_63</ct221_tMinh>
-		<ct222_tMinh>P_64</ct222_tMinh>
-		<ct230_tMinh>P_65</ct230_tMinh>
-		<ct231_tMinh>P_66</ct231_tMinh>
-		<ct239_tMinh>P_67</ct239_tMinh>
-		<ct240_tMinh>P_68</ct240_tMinh>
-		<ct241_tMinh>P_69</ct241_tMinh>
-		<ct248_tMinh>P_70</ct248_tMinh>
-		<ct249_tMinh>P_71</ct249_tMinh>
-		<ct250_tMinh>P_72</ct250_tMinh>
-		<ct300_tMinh>P_74</ct300_tMinh>
-		<ct310_tMinh>P_75</ct310_tMinh>
-		<ct311_tMinh>P_76</ct311_tMinh>
-		<ct312_tMinh>P_77</ct312_tMinh>
-		<ct313_tMinh>P_78</ct313_tMinh>
-		<ct314_tMinh>P_79</ct314_tMinh>
-		<ct315_tMinh>P_80</ct315_tMinh>
-		<ct316_tMinh>P_81</ct316_tMinh>
-		<ct318_tMinh>P_82</ct318_tMinh>
-		<ct319_tMinh>P_83</ct319_tMinh>
-		<ct320_tMinh>P_84</ct320_tMinh>
-		<ct321_tMinh>P_85</ct321_tMinh>
-		<ct322_tMinh>P_86</ct322_tMinh>
-		<ct328_tMinh>P_87</ct328_tMinh>
-		<ct329_tMinh>P_88</ct329_tMinh>
-		<ct400_tMinh>P_89</ct400_tMinh>
-		<ct410_tMinh>P_90</ct410_tMinh>
-		<ct411_tMinh>P_91</ct411_tMinh>
-		<ct412_tMinh>P_92</ct412_tMinh>
-		<ct413_tMinh>P_93</ct413_tMinh>
-		<ct414_tMinh>P_94</ct414_tMinh>
-		<ct415_tMinh>P_95</ct415_tMinh>
-		<ct416_tMinh>P_96</ct416_tMinh>
-		<ct417_tMinh>P_97</ct417_tMinh>
-		<ct430_tMinh>P_98</ct430_tMinh>
-		<ct440_tMinh>P_99</ct440_tMinh>
-		<tsanTNgoai_tMinh>P_101</tsanTNgoai_tMinh>
-		<hangGCong_tMinh>P_102</hangGCong_tMinh>
-		<hangKGui_tMinh>P_103</hangKGui_tMinh>
-		<noKDoi_tMinh>P_104</noKDoi_tMinh>
-		<ngoaiTe_tMinh>P_105</ngoaiTe_tMinh>
 	</Static>
 	<Static GroupName="SoNamNay">
 		<ct100_nNay>R_40</ct100_nNay>

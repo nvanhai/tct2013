@@ -1,33 +1,5 @@
 <PL_LCTTTT>
-	<Static GroupName="ThuyetMinh">
-		<ct01_tMinh>P_40</ct01_tMinh>
-		<ct02_tMinh>P_41</ct02_tMinh>
-		<ct03_tMinh>P_42</ct03_tMinh>
-		<ct04_tMinh>P_43</ct04_tMinh>
-		<ct05_tMinh>P_44</ct05_tMinh>
-		<ct06_tMinh>P_45</ct06_tMinh>
-		<ct07_tMinh>P_46</ct07_tMinh>
-		<ct20_tMinh>P_47</ct20_tMinh>
-		<ct21_tMinh>P_49</ct21_tMinh>
-		<ct22_tMinh>P_50</ct22_tMinh>
-		<ct23_tMinh>P_51</ct23_tMinh>
-		<ct24_tMinh>P_52</ct24_tMinh>
-		<ct25_tMinh>P_53</ct25_tMinh>
-		<ct26_tMinh>P_54</ct26_tMinh>
-		<ct27_tMinh>P_55</ct27_tMinh>
-		<ct30_tMinh>P_56</ct30_tMinh>
-		<ct31_tMinh>P_58</ct31_tMinh>
-		<ct32_tMinh>P_59</ct32_tMinh>
-		<ct33_tMinh>P_60</ct33_tMinh>
-		<ct34_tMinh>P_61</ct34_tMinh>
-		<ct35_tMinh>P_62</ct35_tMinh>
-		<ct36_tMinh>P_63</ct36_tMinh>
-		<ct40_tMinh>P_64</ct40_tMinh>
-		<ct50_tMinh>P_65</ct50_tMinh>
-		<ct60_tMinh>P_66</ct60_tMinh>
-		<ct61_tMinh>P_67</ct61_tMinh>
-		<ct70_tMinh>P_68</ct70_tMinh>
-	</Static>
+
 	<Static GroupName="SoNamNay">
 		<ct01_nNay>R_40</ct01_nNay>
 		<ct02_nNay>R_41</ct02_nNay>

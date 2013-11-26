@@ -1,6 +1,6 @@
 <HSoKhaiThue ngay_nop_tk="E_10" ky_lap_bo="">
 	<Static GroupName="TKhaiThue">
-		<maTKhai>131</maTKhai>
+		<maTKhai>102</maTKhai>
 		<tenTKhai>Báo cáo tình hình sử dụng hóa đơn</tenTKhai>
 		<soLan></soLan>
 		<moTaBMau/>
@@ -25,47 +25,28 @@
 	</Static>
 	<Dynamic GroupName="HoaDon">
 		<ChiTiet id="ID_1">
-			<tenHDon>D_32</tenHDon>
-			<kHieuMauHDon>J_32</kHieuMauHDon>
-			<kHieuHDon>K_32</kHieuHDon>
-			<SoTonMuaTrKy>
-				<tongSo>L_32</tongSo>
-				<SoTonDauKy>
-					<tuSo>M_32</tuSo>
-					<denSo>N_32</denSo>
-				</SoTonDauKy>
-				<MuaTrongKy>
-					<tuSo>O_32</tuSo>
-					<denSo>P_32</denSo>
-				</MuaTrongKy>
-			</SoTonMuaTrKy>
-			<SoSuDungTrKy>
-				<TongSoSuDung>
-					<tuSo>Q_32</tuSo>
-					<denSo>R_32</denSo>
-					<cong>S_32</cong>
-				</TongSoSuDung>
-				<TrongDo>
-					<soDaSDung>U_32</soDaSDung>
-					<XoaBo>
-						<soLuong>V_32</soLuong>
-						<so>W_32</so>
-					</XoaBo>
-					<Mat>
-						<soLuong>X_32</soLuong>
-						<so>Y_32</so>
-					</Mat>
-					<Huy>
-						<soLuong>Z_32</soLuong>
-						<so>AA_32</so>
-					</Huy>
-				</TrongDo>
-			</SoSuDungTrKy>
-			<TonCuoiKy>
-				<tuSo>AC_32</tuSo>
-				<denSo>AD_32</denSo>
-				<soLuong>AE_32</soLuong>
-			</TonCuoiKy>
+		<maHoaDon>C_32</maHoaDon>
+		<tenHDon>D_32</tenHDon>
+		<kHieuMauHDon>J_32</kHieuMauHDon>
+		<kHieuHDon>K_32</kHieuHDon>
+		<soTonMuaTrKy_tongSo>L_32</soTonMuaTrKy_tongSo>
+		<soTonDauKy_tuSo>M_32</soTonDauKy_tuSo>
+		<soTonDauKy_denSo>N_32</soTonDauKy_denSo>
+		<muaTrongKy_tuSo>O_32</muaTrongKy_tuSo>
+		<muaTrongKy_denSo>P_32</muaTrongKy_denSo>
+		<tongSoSuDung_tuSo>Q_32</tongSoSuDung_tuSo>
+		<tongSoSuDung_denSo>R_32</tongSoSuDung_denSo>
+		<tongSoSuDung_cong>S_32</tongSoSuDung_cong>
+		<soDaSDung>U_32</soDaSDung>
+		<xoaBo_soLuong>V_32</xoaBo_soLuong>
+		<xoaBo_so>W_32</xoaBo_so>
+		<mat_soLuong>X_32</mat_soLuong>
+		<mat_so>Y_32</mat_so>
+		<huy_soLuong>Z_32</huy_soLuong>
+		<huy_so>AA_32</huy_so>
+		<tonCuoiKy_tuSo>AC_32</tonCuoiKy_tuSo>
+		<tonCuoiKy_denSo>AD_32</tonCuoiKy_denSo>
+		<tonCuoiKy_soLuong>AE_32</tonCuoiKy_soLuong>
 		</ChiTiet>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
@@ -81,7 +62,7 @@
 		<ngayKy></ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>token</tenNVienDLyThue>
+		<tenNVienDLyThue></tenNVienDLyThue>
 		<cchiHNghe></cchiHNghe>
 	</Static>
 </HSoKhaiThue>

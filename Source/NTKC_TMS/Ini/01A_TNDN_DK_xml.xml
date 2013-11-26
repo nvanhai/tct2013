@@ -48,12 +48,6 @@
 		<ct35>AJ_58</ct35>
 		<ct36>AJ_59</ct36>
 	</Static>
-	<Dynamic GroupName="ThongTinTKhoan">
-		<ThongTin id="id">
-			<soTKhoan>G_63</soTKhoan>
-			<taiNganHang>T_63</taiNganHang>
-		</ThongTin>
-	</Dynamic>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>AI_63</nguoiKy>
 		<ngayKy>AI_65</ngayKy>

@@ -1,6 +1,6 @@
 <HSoKhaiThue ngay_nop_tk="E_13" ky_lap_bo="">
 	<Static GroupName="TKhaiThue">
-		<maTKhai>BC21_AC</maTKhai>
+		<maTKhai>104</maTKhai>
 		<tenTKhai>Báo cáo mất,cháy,hỏng hóa đơn</tenTKhai>
 		<soLan></soLan>
 		<moTaBMau/>

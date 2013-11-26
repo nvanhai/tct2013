@@ -1,25 +1,4 @@
-<PL_KQHĐXSKD>
-	<Static GroupName="ThuyetMinh">
-		<ct01_tMinh>P_39</ct01_tMinh>
-		<ct02_tMinh>P_40</ct02_tMinh>
-		<ct10_tMinh>P_41</ct10_tMinh>
-		<ct11_tMinh>P_42</ct11_tMinh>
-		<ct20_tMinh>P_43</ct20_tMinh>
-		<ct21_tMinh>P_44</ct21_tMinh>
-		<ct22_tMinh>P_45</ct22_tMinh>
-		<ct23_tMinh>P_46</ct23_tMinh>
-		<ct24_tMinh>P_47</ct24_tMinh>
-		<ct25_tMinh>P_48</ct25_tMinh>
-		<ct30_tMinh>P_49</ct30_tMinh>
-		<ct31_tMinh>P_50</ct31_tMinh>
-		<ct32_tMinh>P_51</ct32_tMinh>
-		<ct40_tMinh>P_52</ct40_tMinh>
-		<ct50_tMinh>P_53</ct50_tMinh>
-		<ct51_tMinh>P_54</ct51_tMinh>
-		<ct52_tMinh>P_55</ct52_tMinh>
-		<ct60_tMinh>P_56</ct60_tMinh>
-		<ct70_tMinh>P_57</ct70_tMinh>
-	</Static>
+<PL_KQHDXSKD>
 	<Static GroupName="SoNamNay">
 		<ct01_nNay>R_39</ct01_nNay>
 		<ct02_nNay>R_40</ct02_nNay>
@@ -62,4 +41,4 @@
 		<ct60_nNgoai>W_56</ct60_nNgoai>
 		<ct70_nNgoai>W_57</ct70_nNgoai>
 	</Static>
-</PL_KQHĐXSKD>
+</PL_KQHDXSKD>
