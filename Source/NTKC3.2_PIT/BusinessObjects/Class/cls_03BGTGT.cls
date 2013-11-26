@@ -487,7 +487,7 @@ On Error GoTo ErrHandle
                     vGHI_CHU_LOI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                     vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "J_60"
+                Case "L_61"
                     LOAI_KYKK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
 
             End Select
@@ -505,7 +505,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "03_GTGT11"
+    vLOAI_TKHAI = "03B_GTGT11"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
@@ -521,17 +521,24 @@ On Error GoTo ErrHandle
     End If
     
     'Ky/ Quy KK
-    If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
-        'Ngay dau ky ke khai va ngay cuoi ky ke khai
-        'strDate = Split(TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "/")
-        'dDate = DateSerial(Val(strDate(1)), Val(strDate(0)), 1)
-        dDate = dNgayDauKy
-        strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        dDate = DateAdd("m", 1, dDate)
-        dDate = DateAdd("d", -1, dDate)
-        strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    If LOAI_KYKK = "T" Then
+        If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
+            'Ngay dau ky ke khai va ngay cuoi ky ke khai
+            'strDate = Split(TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "/")
+            'dDate = DateSerial(Val(strDate(1)), Val(strDate(0)), 1)
+            dDate = dNgayDauKy
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+            dDate = DateAdd("m", 1, dDate)
+            dDate = DateAdd("d", -1, dDate)
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+        End If
+    Else
+            dDate = dNgayDauKy
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+            dDate = DateAdd("m", 3, dDate)
+            dDate = DateAdd("d", -1, dDate)
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     End If
-    
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
     strSQL = strSQL & "'" & vNGUOI_CAP_NHAT & "',"
     strSQL = strSQL & "'" & vCO_LOI_DDANH & "',"
