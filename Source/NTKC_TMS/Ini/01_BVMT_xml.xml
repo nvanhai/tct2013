@@ -1,46 +1,34 @@
 <HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22">
 	<Static GroupName="TKhaiThue">
-		<maTKhai>01_BVMT</maTKhai>
+		<maTKhai>59</maTKhai>
 		<tenTKhai>Tờ khai phí bảo vệ môi trường (01/BVMT)</tenTKhai>
-		<soLan>I_33</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
-		<maLyDoGiaHan></maLyDoGiaHan>
-		<lyDoGiaHan></lyDoGiaHan>
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
 	</Static>
 	<Static GroupName="NNT">
-		<maHuyenNNT></maHuyenNNT>
-		<maTinhNNT></maTinhNNT>
+		<maHuyenNNT/>
+		<maTinhNNT/>
 	</Static>
 	<Static GroupName="DLyThue">
-		<maHuyenDLyThue></maHuyenDLyThue>
-		<maTinhDLyThue></maTinhDLyThue>
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct12></ct12>
-		<ct13></ct13>
-		<ct14></ct14>
-		<ct15></ct15>
+		<ct12>K_14</ct12>
+		<ct13>G_15</ct13>
+		<ct14>G_16</ct14>
+		<ct15>F_17</ct15>
 	</Static>
-	<Dynamic GroupName="KhoangSan">
-		<KhoangSan id="ID_1">
-			<loaiKSan>C_45</loaiKSan>
-			<SoLuongKS>
-				<donViTinh>H_45</donViTinh>
-				<soLuong>J_45</soLuong>
-			</SoLuongKS>
-			<mucPhi>O_45</mucPhi>
-			<soPhiPNop>U_45</soPhiPNop>
-		</KhoangSan>
-	</Dynamic>
 	<Static GroupName="KSanCoSoThuMuaNopThay">
-		<tongPhiPhaiNop>0</tongPhiPhaiNop>
-		<tongPhiDaKeKhai>0</tongPhiDaKeKhai>
+		<tongPhiPhaiNop>U_47</tongPhiPhaiNop>
+		<tongPhiDaKeKhai>O_47</tongPhiDaKeKhai>
 	</Static>
-	<Dynamic GroupName="KhoangSan">
+	<Dynamic GroupName="KSanCoSoThuMuaNopThay" Level="2">
 		<KhoangSan id="ID_2">
-			<loaiKSan>C_49</loaiKSan>
+			<loaiKSan>AB_49</loaiKSan>
 			<SoLuongKS>
 				<donViTinh>H_49</donViTinh>
 				<soLuong>J_49</soLuong>
@@ -50,19 +38,30 @@
 		</KhoangSan>
 	</Dynamic>
 	<Static GroupName="KSCSoTuKhaiThac">
-		<tongPhiDaKeKhai>0</tongPhiDaKeKhai>
-		<tongPhiPhaiNop>0</tongPhiPhaiNop>
+		<tongPhiDaKeKhai>O_45</tongPhiDaKeKhai>
+		<tongPhiPhaiNop>U_45</tongPhiPhaiNop>
 	</Static>
+	<Dynamic GroupName="KSCSoTuKhaiThac" Level="2">
+		<KhoangSan id="ID_1">
+			<loaiKSan>AB_45</loaiKSan>
+			<SoLuongKS>
+				<donViTinh>H_45</donViTinh>
+				<soLuong>J_45</soLuong>
+			</SoLuongKS>
+			<mucPhi>O_45</mucPhi>
+			<soPhiPNop>U_45</soPhiPNop>
+		</KhoangSan>
+	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
 		<tongPhiPNop>U_51</tongPhiPNop>
 		<bangChu></bangChu>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy></nguoiKy>
-		<ngayKy></ngayKy>
+		<nguoiKy>R_58</nguoiKy>
+		<ngayKy>R_60</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>token</tenNVienDLyThue>
-		<cchiHNghe></cchiHNghe>
+		<tenNVienDLyThue>G_58</tenNVienDLyThue>
+		<cchiHNghe>G_60</cchiHNghe>
 	</Static>
 </HSoKhaiThue>
