@@ -70,16 +70,17 @@
 	<CTieuTKhaiChinh>
 		<LoaiDauKhi>
 			<ct01>true</ct01>
-		</LoaiDauKhi>
+			<ct02></ct02>
+			<ct03></ct03>		</LoaiDauKhi>
 		<ct05>1</ct05>
 		<LoaiXuatBan>
 			<ct08>true</ct08>
-		</LoaiXuatBan>
+			<ct09></ct09>		</LoaiXuatBan>
 		<ct10>1967-08-13</ct10>
 		<ct19></ct19>
 		<CT20>
 			<donViUyQuyen>true</donViUyQuyen>
-		</CT20>
+			<daiLyThue></daiLyThue>		</CT20>
 		<tenDonViUyQuyen></tenDonViUyQuyen>
 		<ct29>1</ct29>
 		<ct29a>1</ct29a>

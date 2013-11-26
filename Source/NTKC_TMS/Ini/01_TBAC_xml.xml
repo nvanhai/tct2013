@@ -38,6 +38,7 @@
 	</Dynamic>
 	<Static GroupName="DonViChuQuan">
 		<ten>E_34</ten>
+		<mst>E_36</mst>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<tenCQTTiepNhan>J_38</tenCQTTiepNhan>
@@ -49,7 +50,7 @@
 		<ngayKy></ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>token</tenNVienDLyThue>
+		<tenNVienDLyThue></tenNVienDLyThue>
 		<cchiHNghe></cchiHNghe>
 	</Static>
 </HSoKhaiThue>

@@ -1,6 +1,6 @@
 <HSoKhaiThue ngay_nop_tk="E_12" ky_lap_bo="E_10">
 	<Static GroupName="TKhaiThue">
-		<maTKhai>99_BCTC</maTKhai>
+		<maTKhai>52</maTKhai>
 		<tenTKhai>Báo cáo tài chính bộ 99 BCTC</tenTKhai>
 		<soLan></soLan>
 		<moTaBMau/>
@@ -514,7 +514,7 @@
 		<ngayKy>R_212</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>token</tenNVienDLyThue>
+		<tenNVienDLyThue></tenNVienDLyThue>
 		<cchiHNghe></cchiHNghe>
 	</Static>
 </HSoKhaiThue>
