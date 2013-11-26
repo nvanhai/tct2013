@@ -1,5 +1,6 @@
-<PL_BK_01AC_02 xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">
+<PL_BK_01AC_02>
 	<ChiTietHoaDon id="ID_4">
+		<maHoaDon>text</maHoaDon>
 		<tenHoaDon></tenHoaDon>
 		<kyHieuMau></kyHieuMau>
 		<kyHieuHD></kyHieuHD>
