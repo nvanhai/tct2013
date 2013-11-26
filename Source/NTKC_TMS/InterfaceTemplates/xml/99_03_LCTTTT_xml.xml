@@ -1,4 +1,4 @@
-<PL_LCTTTT xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">
+<PL_LCTTTT>
 	<ThuyetMinh>
 		<ct01_tMinh></ct01_tMinh>
 		<ct02_tMinh></ct02_tMinh>
@@ -30,65 +30,65 @@
 		<ct80_tMinh></ct80_tMinh>
 	</ThuyetMinh>
 	<SoNamNay>
-		<ct01_nNay>2147483647</ct01_nNay>
-		<ct02_nNay>2147483647</ct02_nNay>
-		<ct03_nNay>2147483647</ct03_nNay>
-		<ct04_nNay>2147483647</ct04_nNay>
-		<ct05_nNay>2147483647</ct05_nNay>
-		<ct06_nNay>2147483647</ct06_nNay>
-		<ct07_nNay>2147483647</ct07_nNay>
-		<ct08_nNay>2147483647</ct08_nNay>
-		<ct09_nNay>2147483647</ct09_nNay>
-		<ct10_nNay>2147483647</ct10_nNay>
-		<ct11_nNay>2147483647</ct11_nNay>
-		<ct12_nNay>2147483647</ct12_nNay>
-		<ct13_nNay>2147483647</ct13_nNay>
-		<ct14_nNay>2147483647</ct14_nNay>
-		<ct15_nNay>2147483647</ct15_nNay>
-		<ct16_nNay>2147483647</ct16_nNay>
-		<ct17_nNay>2147483647</ct17_nNay>
-		<ct20_nNay>2147483647</ct20_nNay>
-		<ct21_nNay>2147483647</ct21_nNay>
-		<ct22_nNay>2147483647</ct22_nNay>
-		<ct23_nNay>2147483647</ct23_nNay>
-		<ct24_nNay>2147483647</ct24_nNay>
-		<ct25_nNay>2147483647</ct25_nNay>
-		<ct26_nNay>2147483647</ct26_nNay>
-		<ct50_nNay>2147483647</ct50_nNay>
-		<ct51_nNay>2147483647</ct51_nNay>
-		<ct60_nNay>2147483647</ct60_nNay>
-		<ct70_nNay>2147483647</ct70_nNay>
-		<ct80_nNay>2147483647</ct80_nNay>
+		<ct01_nNay></ct01_nNay>
+		<ct02_nNay></ct02_nNay>
+		<ct03_nNay></ct03_nNay>
+		<ct04_nNay></ct04_nNay>
+		<ct05_nNay></ct05_nNay>
+		<ct06_nNay></ct06_nNay>
+		<ct07_nNay></ct07_nNay>
+		<ct08_nNay></ct08_nNay>
+		<ct09_nNay></ct09_nNay>
+		<ct10_nNay></ct10_nNay>
+		<ct11_nNay></ct11_nNay>
+		<ct12_nNay></ct12_nNay>
+		<ct13_nNay></ct13_nNay>
+		<ct14_nNay></ct14_nNay>
+		<ct15_nNay></ct15_nNay>
+		<ct16_nNay></ct16_nNay>
+		<ct17_nNay></ct17_nNay>
+		<ct20_nNay></ct20_nNay>
+		<ct21_nNay></ct21_nNay>
+		<ct22_nNay></ct22_nNay>
+		<ct23_nNay></ct23_nNay>
+		<ct24_nNay></ct24_nNay>
+		<ct25_nNay></ct25_nNay>
+		<ct26_nNay></ct26_nNay>
+		<ct50_nNay></ct50_nNay>
+		<ct51_nNay></ct51_nNay>
+		<ct60_nNay></ct60_nNay>
+		<ct70_nNay></ct70_nNay>
+		<ct80_nNay></ct80_nNay>
 	</SoNamNay>
 	<SoNamNgoai>
-		<ct01_nNgoai>2147483647</ct01_nNgoai>
-		<ct02_nNgoai>2147483647</ct02_nNgoai>
-		<ct03_nNgoai>2147483647</ct03_nNgoai>
-		<ct04_nNgoai>2147483647</ct04_nNgoai>
-		<ct05_nNgoai>2147483647</ct05_nNgoai>
-		<ct06_nNgoai>2147483647</ct06_nNgoai>
-		<ct07_nNgoai>2147483647</ct07_nNgoai>
-		<ct08_nNgoai>2147483647</ct08_nNgoai>
-		<ct09_nNgoai>2147483647</ct09_nNgoai>
-		<ct10_nNgoai>2147483647</ct10_nNgoai>
-		<ct11_nNgoai>2147483647</ct11_nNgoai>
-		<ct12_nNgoai>2147483647</ct12_nNgoai>
-		<ct13_nNgoai>2147483647</ct13_nNgoai>
-		<ct14_nNgoai>2147483647</ct14_nNgoai>
-		<ct15_nNgoai>2147483647</ct15_nNgoai>
-		<ct16_nNgoai>2147483647</ct16_nNgoai>
-		<ct17_nNgoai>2147483647</ct17_nNgoai>
-		<ct20_nNgoai>2147483647</ct20_nNgoai>
-		<ct21_nNgoai>2147483647</ct21_nNgoai>
-		<ct22_nNgoai>2147483647</ct22_nNgoai>
-		<ct23_nNgoai>2147483647</ct23_nNgoai>
-		<ct24_nNgoai>2147483647</ct24_nNgoai>
-		<ct25_nNgoai>2147483647</ct25_nNgoai>
-		<ct26_nNgoai>2147483647</ct26_nNgoai>
-		<ct50_nNgoai>2147483647</ct50_nNgoai>
-		<ct51_nNgoai>2147483647</ct51_nNgoai>
-		<ct60_nNgoai>2147483647</ct60_nNgoai>
-		<ct70_nNgoai>2147483647</ct70_nNgoai>
-		<ct80_nNgoai>2147483647</ct80_nNgoai>
+		<ct01_nNgoai></ct01_nNgoai>
+		<ct02_nNgoai></ct02_nNgoai>
+		<ct03_nNgoai></ct03_nNgoai>
+		<ct04_nNgoai></ct04_nNgoai>
+		<ct05_nNgoai></ct05_nNgoai>
+		<ct06_nNgoai></ct06_nNgoai>
+		<ct07_nNgoai></ct07_nNgoai>
+		<ct08_nNgoai></ct08_nNgoai>
+		<ct09_nNgoai></ct09_nNgoai>
+		<ct10_nNgoai></ct10_nNgoai>
+		<ct11_nNgoai></ct11_nNgoai>
+		<ct12_nNgoai></ct12_nNgoai>
+		<ct13_nNgoai></ct13_nNgoai>
+		<ct14_nNgoai></ct14_nNgoai>
+		<ct15_nNgoai></ct15_nNgoai>
+		<ct16_nNgoai></ct16_nNgoai>
+		<ct17_nNgoai></ct17_nNgoai>
+		<ct20_nNgoai></ct20_nNgoai>
+		<ct21_nNgoai></ct21_nNgoai>
+		<ct22_nNgoai></ct22_nNgoai>
+		<ct23_nNgoai></ct23_nNgoai>
+		<ct24_nNgoai></ct24_nNgoai>
+		<ct25_nNgoai></ct25_nNgoai>
+		<ct26_nNgoai></ct26_nNgoai>
+		<ct50_nNgoai></ct50_nNgoai>
+		<ct51_nNgoai></ct51_nNgoai>
+		<ct60_nNgoai></ct60_nNgoai>
+		<ct70_nNgoai></ct70_nNgoai>
+		<ct80_nNgoai></ct80_nNgoai>
 	</SoNamNgoai>
 </PL_LCTTTT>

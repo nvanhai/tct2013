@@ -20,6 +20,8 @@
 					<kyKKhai></kyKKhai>
 					<kyKKhaiTuNgay></kyKKhaiTuNgay>
 					<kyKKhaiDenNgay></kyKKhaiDenNgay>
+					<kyKKhaiTuThang></kyKKhaiTuThang>
+					<kyKKhaiDenThang></kyKKhaiDenThang>
 				</KyKKhaiThue>
 				<maCQTNoiNop></maCQTNoiNop>
 				<tenCQTNoiNop></tenCQTNoiNop>
@@ -29,12 +31,14 @@
 					<lyDoGiaHan></lyDoGiaHan>
 				</GiaHan>
 				<nguoiKy></nguoiKy>
-				<ngayKy></ngayKy>
+				<ngayKy>1967-08-13</ngayKy>
+				<nganhNgheKD></nganhNgheKD>
 			</TKhaiThue>
 			<NNT>
 				<mst>0000000000</mst>
 				<tenNNT></tenNNT>
 				<dchiNNT></dchiNNT>
+				<phuongXa></phuongXa>
 				<maHuyenNNT></maHuyenNNT>
 				<tenHuyenNNT></tenHuyenNNT>
 				<maTinhNNT></maTinhNNT>
@@ -55,7 +59,7 @@
 				<faxDLyThue></faxDLyThue>
 				<emailDLyThue></emailDLyThue>
 				<soHDongDLyThue></soHDongDLyThue>
-				<ngayKyHDDLyThue></ngayKyHDDLyThue>
+				<ngayKyHDDLyThue>1967-08-13</ngayKyHDDLyThue>
 				<NVienDLy>
 					<tenNVienDLyThue></tenNVienDLyThue>
 					<cchiHNghe></cchiHNghe>
@@ -64,87 +68,6 @@
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
-		<ThuyetMinh>
-			<ctA_I_tMinh></ctA_I_tMinh>
-			<ctA_II_tMinh></ctA_II_tMinh>
-			<ctA_III_tMinh></ctA_III_tMinh>
-			<ctA_III_1_tMinh></ctA_III_1_tMinh>
-			<ctA_III_2_tMinh></ctA_III_2_tMinh>
-			<ctA_III_3_tMinh></ctA_III_3_tMinh>
-			<ctA_IV_tMinh></ctA_IV_tMinh>
-			<ctA_IV_1_tMinh></ctA_IV_1_tMinh>
-			<ctA_IV_2_tMinh></ctA_IV_2_tMinh>
-			<ctA_V_tMinh></ctA_V_tMinh>
-			<ctA_VI_tMinh></ctA_VI_tMinh>
-			<ctA_VI_1_tMinh></ctA_VI_1_tMinh>
-			<ctA_VI_2_tMinh></ctA_VI_2_tMinh>
-			<ctA_VII_tMinh></ctA_VII_tMinh>
-			<ctA_VII_1_tMinh></ctA_VII_1_tMinh>
-			<ctA_VII_2_tMinh></ctA_VII_2_tMinh>
-			<ctA_VII_3_tMinh></ctA_VII_3_tMinh>
-			<ctA_VIII_tMinh></ctA_VIII_tMinh>
-			<ctA_VIII_1_tMinh></ctA_VIII_1_tMinh>
-			<ctA_VIII_2_tMinh></ctA_VIII_2_tMinh>
-			<ctA_VIII_3_tMinh></ctA_VIII_3_tMinh>
-			<ctA_VIII_4_tMinh></ctA_VIII_4_tMinh>
-			<ctA_VIII_5_tMinh></ctA_VIII_5_tMinh>
-			<ctA_IX_tMinh></ctA_IX_tMinh>
-			<ctA_IX_1_tMinh></ctA_IX_1_tMinh>
-			<ctA_IX_1_a_tMinh></ctA_IX_1_a_tMinh>
-			<ctA_IX_1_b_tMinh></ctA_IX_1_b_tMinh>
-			<ctA_IX_2_tMinh></ctA_IX_2_tMinh>
-			<ctA_IX_2_a_tMinh></ctA_IX_2_a_tMinh>
-			<ctA_IX_2_b_tMinh></ctA_IX_2_b_tMinh>
-			<ctA_IX_3_tMinh></ctA_IX_3_tMinh>
-			<ctA_IX_3_a_tMinh></ctA_IX_3_a_tMinh>
-			<ctA_IX_3_b_tMinh></ctA_IX_3_b_tMinh>
-			<ctA_X_tMinh></ctA_X_tMinh>
-			<ctA_X_a_tMinh></ctA_X_a_tMinh>
-			<ctA_X_b_tMinh></ctA_X_b_tMinh>
-			<ctA_XI_tMinh></ctA_XI_tMinh>
-			<ctA_XI_1_tMinh></ctA_XI_1_tMinh>
-			<ctA_XI_2_tMinh></ctA_XI_2_tMinh>
-			<ctA_XI_3_tMinh></ctA_XI_3_tMinh>
-			<ctA_XI_4_tMinh></ctA_XI_4_tMinh>
-			<ctA_XI_4_1_tMinh></ctA_XI_4_1_tMinh>
-			<ctA_XI_5_tMinh></ctA_XI_5_tMinh>
-			<tongTsan_tMinh></tongTsan_tMinh>
-			<ctB_I_tMinh></ctB_I_tMinh>
-			<ctB_II_tMinh></ctB_II_tMinh>
-			<ctB_II_1_tMinh></ctB_II_1_tMinh>
-			<ctB_II_2_tMinh></ctB_II_2_tMinh>
-			<ctB_III_tMinh></ctB_III_tMinh>
-			<ctB_IV_tMinh></ctB_IV_tMinh>
-			<ctB_V_tMinh></ctB_V_tMinh>
-			<ctB_VI_tMinh></ctB_VI_tMinh>
-			<ctB_VII_tMinh></ctB_VII_tMinh>
-			<ctB_VII_1_tMinh></ctB_VII_1_tMinh>
-			<ctB_VII_2_tMinh></ctB_VII_2_tMinh>
-			<ctB_VII_3_tMinh></ctB_VII_3_tMinh>
-			<ctB_VII_4_tMinh></ctB_VII_4_tMinh>
-			<tongNoPTRa_tMinh></tongNoPTRa_tMinh>
-			<ctB_VIII_tMinh></ctB_VIII_tMinh>
-			<ctB_VIII_1_tMinh></ctB_VIII_1_tMinh>
-			<ctB_VIII_1_a_tMinh></ctB_VIII_1_a_tMinh>
-			<ctB_VIII_1_b_tMinh></ctB_VIII_1_b_tMinh>
-			<ctB_VIII_1_c_tMinh></ctB_VIII_1_c_tMinh>
-			<ctB_VIII_1_d_tMinh></ctB_VIII_1_d_tMinh>
-			<ctB_VIII_1_e_tMinh></ctB_VIII_1_e_tMinh>
-			<ctB_VIII_1_g_tMinh></ctB_VIII_1_g_tMinh>
-			<ctB_VIII_2_tMinh></ctB_VIII_2_tMinh>
-			<ctB_VIII_3_tMinh></ctB_VIII_3_tMinh>
-			<ctB_VIII_4_tMinh></ctB_VIII_4_tMinh>
-			<ctB_VIII_5_tMinh></ctB_VIII_5_tMinh>
-			<ctB_IX_tMinh></ctB_IX_tMinh>
-			<tongNoVon_tMinh></tongNoVon_tMinh>
-			<noTiemAn_tMinh></noTiemAn_tMinh>
-			<blanhVon_tMinh></blanhVon_tMinh>
-			<cketNVu_tMinh></cketNVu_tMinh>
-			<blanhKhac_tMinh></blanhKhac_tMinh>
-			<cketDuaRa_tMinh></cketDuaRa_tMinh>
-			<cketTTro_tMinh></cketTTro_tMinh>
-			<cketKhac_tMinh></cketKhac_tMinh>
-		</ThuyetMinh>
 		<SoNamNay>
 			<ctA_I_nNay>2147483647</ctA_I_nNay>
 			<ctA_II_nNay>2147483647</ctA_II_nNay>

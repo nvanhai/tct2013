@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<HSoKhaiThue xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">
+<HSoKhaiThue>
 	<TTinChung>
 		<TTinDVu>
 			<maDVu></maDVu>
@@ -30,11 +30,13 @@
 				</GiaHan>
 				<nguoiKy></nguoiKy>
 				<ngayKy></ngayKy>
+				<nganhNgheKD></nganhNgheKD>
 			</TKhaiThue>
 			<NNT>
-				<mst>0000000000</mst>
+				<mst></mst>
 				<tenNNT></tenNNT>
 				<dchiNNT></dchiNNT>
+				<phuongXa></phuongXa>
 				<maHuyenNNT></maHuyenNNT>
 				<tenHuyenNNT></tenHuyenNNT>
 				<maTinhNNT></maTinhNNT>
@@ -44,7 +46,7 @@
 				<emailNNT></emailNNT>
 			</NNT>
 			<DLyThue>
-				<mstDLyThue>0000000000</mstDLyThue>
+				<mstDLyThue></mstDLyThue>
 				<tenDLyThue></tenDLyThue>
 				<dchiDLyThue></dchiDLyThue>
 				<maHuyenDLyThue></maHuyenDLyThue>
