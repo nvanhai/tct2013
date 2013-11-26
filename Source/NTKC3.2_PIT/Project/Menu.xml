@@ -41,7 +41,12 @@
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_03_GTGT" Ini="..\Ini\KHBS_03_GTGT.xml"/>
 		</Validity>
 	</Menu>
-		
+	<Menu ID="95" PopID="101" ParentID="102" Caption="Tờ khai thuế GTGT(03B/GTGT)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
+		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\Excel\03B_GTGT11.xls" ReportTemplate="..\ReportTemplates\Excel\03B_GTGT11.xls" Class="Tax_Business_Srv.cls_03BGTGT" Class2="Tax_Business_Srv.clsReport001_1">
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03B_GTGT11" Ini="..\Ini\03B_GTGT11.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_03B_GTGT" Ini="..\Ini\KHBS_03B_GTGT.xml"/>
+		</Validity>
+	</Menu>		
 	<Menu ID="71" PopID="101" ParentID="102" Caption="Tờ khai GTGT (04/GTGT)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\Excel\04_GTGT11.xls" ReportTemplate="..\ReportTemplates\Excel\04_GTGT11.xls" Class="Tax_Business_Srv.cls_04GTGT" Class2="Tax_Business_Srv.clsReport001_1">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="04_GTGT11" Ini="..\Ini\04_GTGT11.xml"/>
@@ -647,13 +652,6 @@
 		<Validity StartDate="01/01/2013">
 			<Sheet ID="01" Caption="Biểu thuế tài nguyên" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" DataFile="Catalogue_012013_01"/>
 			<Sheet ID="02" Caption="Biểu thuế tiêu thụ đặc biệt" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" DataFile="Catalogue_012013_02"/>
-		</Validity>
-	</Menu>
-	<Menu ID="95" PopID="101" ParentID="102" Caption="Tờ khai thuế GTGT(03B/GTGT)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
-		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\Excel\03B_GTGT11.xls" ReportTemplate="..\ReportTemplates\Excel\03B_GTGT11.xls" Class="Tax_Business_Srv.cls_03BGTGT" Class2="Tax_Business_Srv.clsReport001_1">
-			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03B_GTGT11" Ini="..\Ini\03B_GTGT11.xml"/>
-			<Sheet ID="01_1" Caption="PL 03-1/GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03B_1_GTGT11" Ini="..\Ini\03B_1_GTGT11.xml"/>
-			<Sheet ID="01_2" Caption="PL 03-2/GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03B_2_GTGT11" Ini="..\Ini\03B_2_GTGT11.xml"/>
 		</Validity>
 	</Menu>
 		<Menu ID="91" PopID="101" ParentID="112" Caption="Mẫu thông báo điều chỉnh thông tin (TB04/AC)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="1" FinanceYear="0"  Icon="..\Pictures\tk_tndn.bmp">
