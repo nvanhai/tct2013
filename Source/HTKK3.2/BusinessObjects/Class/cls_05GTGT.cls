@@ -35,6 +35,7 @@ Public loaiKHBS As String
 Public FlagThaydoi As String
 Public StrSolanBosung As String
 Public Strloaitk As String
+Public StrTKThang_PS As String
 
 
 ' Kiem tra thong tin dai ly thue
@@ -82,12 +83,26 @@ Public Sub Prepare2()
     Dim intCtrl As Integer
     Dim strId As Variant
     Dim xmlNode As MSXML.IXMLDOMNode
+    Dim ngay As Variant
+    
     With fps
         .Sheet = 1
         mCurrentSheet = .Sheet
         
         'update MSTDN luôn bang MST tren phan TT chung
         UpdateMST fps, Col_MSTDN, Row_MSTDN
+        ngay = TAX_Utilities_New.Day
+        
+        'xu ly ngay phat sinh
+        If Trim(ngay) = "" Then
+            .SetText .ColLetterToNumber("J"), 54, ""
+            UpdateCell fps, .ColLetterToNumber("J"), 54, ""
+        Else
+            .SetText .ColLetterToNumber("J"), 54, "1"
+            UpdateCell fps, .ColLetterToNumber("J"), 54, "1"
+            .SetText .ColLetterToNumber("M"), 54, ngay & "/" & TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year
+            UpdateCell fps, .ColLetterToNumber("M"), 54, ngay & "/" & TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year
+        End If
         
         If Strloaitk = "TKCT" Then
             .Col = .ColLetterToNumber("C")
