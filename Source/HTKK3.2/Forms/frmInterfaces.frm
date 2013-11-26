@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.ocx"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Begin VB.Form frmInterfaces 
    AutoRedraw      =   -1  'True
    Caption         =   "Hç trî kª khai - Phiªn b¶n 2.5.0"
@@ -4491,9 +4491,21 @@ Private Sub cmdImportXML_Click()
     strImportFileName = importXmlDialog()
     xmlDuLieuImport.Load strImportFileName
 
-    If Not validateTkHeader(xmlDuLieuImport, MaTK) Then
+    If Not validateTkHeader(xmlDuLieuImport) Then
         DisplayMessage "0278", msOKOnly, miWarning
         Exit Sub
+    End If
+    MaTK = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile")
+    
+    ' Bo ky tu "A","B" trong ma to khai
+    If MaTK = "01A_TNCN_BH" Or MaTK = "01B_TNCN_BH" Or MaTK = "01A_TNCN_XS" Or MaTK = "01B_TNCN_XS" Or MaTK = "02A_TNCN10" Or MaTK = "02B_TNCN10" Or MaTK = "03A_TNCN10" Or MaTK = "03B_TNCN10" Then
+        MaTK = Replace$(Replace$(Left$(MaTK, 3), "A", ""), "B", "") & Right$(MaTK, Len(MaTK) - 3)
+    End If
+
+    If InStr(MaTK, "11") > 0 Then
+        MaTK = Replace$(MaTK, "11", "")
+    ElseIf InStr(MaTK, "10") > 0 Then
+        MaTK = Replace$(MaTK, "10", "")
     End If
 
     xmlMapCT.Load GetAbsolutePath("..\InterfaceIni\" & MaTK & "_xml.xml")
@@ -4505,6 +4517,7 @@ Private Sub cmdImportXML_Click()
     If xmlDuLieuImport.getElementsByTagName("PLuc").length > 0 Then
 
         For Each nodePhuLuc In xmlDuLieuImport.getElementsByTagName("PLuc")(0).childNodes
+            
             xmlPhuLuc.loadXML nodePhuLuc.xml
             ImportFromXmlToToKhai xmlPhuLuc, xmlMapCT.getElementsByTagName(nodePhuLuc.nodeName)(0), GetAttribute(xmlMapCT.firstChild, nodePhuLuc.nodeName)
         Next
@@ -4542,25 +4555,29 @@ End Function
 Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
                                   xmlMapCT As MSXML.IXMLDOMNode, _
                                   SheetName As String)
-    Dim xmlCts         As New MSXML.DOMDocument
-    Dim childNodeCT    As MSXML.IXMLDOMNode
-    Dim GroupName      As String
-    Dim GroupCellRange As Integer
-    Dim cellID         As String
-    Dim cellArray()    As String
-    Dim cellRange      As Integer
-    Dim nodeTK         As MSXML.IXMLDOMNode
-    Dim nodeMapCT      As MSXML.IXMLDOMNode
-    Dim RowLength      As Integer
-    Dim RowCount       As Integer
-    Dim valXml         As New MSXML.DOMDocument
+    Dim xmlCts           As New MSXML.DOMDocument
+    Dim childNodeCT      As MSXML.IXMLDOMNode
+    Dim GroupName        As String
+    Dim GroupCellRange   As Integer
+    Dim cellID           As String
+    Dim cellArray()      As String
+    Dim cellRange        As Integer
+    Dim CurrentCellRange As Integer
+
+    Dim nodeTK           As MSXML.IXMLDOMNode
+    Dim nodeMapCT        As MSXML.IXMLDOMNode
+    Dim RowLength        As Integer
+    Dim RowCount         As Integer
+    Dim valXml           As New MSXML.DOMDocument
 
     With fpSpread1
         .sheet = SheetName
         .SheetVisible = True
         .ActiveSheet = .sheet
-
-        For Each nodeMapCT In xmlMapCT.childNodes
+        ResetDataAndForm .sheet
+        SetAttribute TAX_Utilities_New.NodeValidity.childNodes(.sheet - 1), "Active", "1"
+        fpSpread1.EventEnabled(EventAllEvents) = False
+           For Each nodeMapCT In xmlMapCT.childNodes
 
             If nodeMapCT.nodeName = "Dynamic" Then
                 Dim dynamicID As Integer
@@ -4583,24 +4600,22 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
 
                 If UBound(cellArray) = 1 And nodeTK.childNodes.length > 0 Then
                     
-                    .ReDraw = False
-                    .MaxRows = .MaxRows + nodeTK.childNodes.length - 1
-                    fpSpread1.EventEnabled(EventAllEvents) = False
-                    .InsertRows Val(cellArray(1)) + cellRange + 1, nodeTK.childNodes.length - 1
-                    
+'                    .MaxRows = .MaxRows + nodeTK.childNodes.length - 1
+'                    .InsertRows Val(cellArray(1)) + cellRange + 1, nodeTK.childNodes.length - 1
+
                     RowCount = 0
                     RowLength = 1
 
-                    Do While RowLength < nodeTK.childNodes.length - 1
-
-                        If RowCount + 10000 <= nodeTK.childNodes.length - 1 Then
+                    Do While RowLength < nodeTK.childNodes.length
+                        
+                        If RowCount + 10000 <= nodeTK.childNodes.length Then
                             RowCount = RowCount + 10000
                         Else
-                            RowCount = RowCount + nodeTK.childNodes.length - 1
+                            RowCount = RowCount + nodeTK.childNodes.length
                         End If
 
                         For dynamicID = RowLength To RowCount
-                            valXml.loadXML nodeTK.childNodes(dynamicID).xml
+                            valXml.loadXML nodeTK.childNodes(dynamicID - 1).xml
 
                             For Each childNodeCT In xmlCts.lastChild.childNodes
                                 cellID = childNodeCT.Text
@@ -4619,7 +4634,10 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
                             Next
 
                             cellRange = cellRange + GroupCellRange
-                            .CopyRowRange Val(cellArray(1)) + cellRange, Val(cellArray(1)) + cellRange, Val(cellArray(1)) + dynamicID + cellRange
+
+                            If dynamicID <> RowCount Then
+                                InsertNode .ColLetterToNumber(cellArray(0)), Val(cellArray(1)) + cellRange - 1
+                            End If
                             
                         Next
 
@@ -4627,8 +4645,9 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
 
                     Loop
 
-                    .ReDraw = True
                     cellRange = cellRange - GroupCellRange
+                    CurrentCellRange = cellRange
+
                 End If
                                 
             Else
@@ -4659,13 +4678,12 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
             End If
 
         Next
-
+        fpSpread1.EventEnabled(EventAllEvents) = True
     End With
 
 End Sub
 
-Private Function validateTkHeader(ByVal xmlDuLieuImport As MSXML.DOMDocument, _
-                                  ByRef MaTK As String) As Boolean
+Private Function validateTkHeader(ByVal xmlDuLieuImport As MSXML.DOMDocument) As Boolean
     Dim LoaiTkTQ   As String
     Dim LoaiTkCtBs As String
 
@@ -4674,14 +4692,7 @@ Private Function validateTkHeader(ByVal xmlDuLieuImport As MSXML.DOMDocument, _
         Exit Function
     End If
 
-    If xmlDuLieuImport.getElementsByTagName("maTKhai").length > 0 Then
-        MaTK = xmlDuLieuImport.getElementsByTagName("maTKhai")(0).Text
-    Else
-        validateTkHeader = False
-        Exit Function
-    End If
-
-    If MaTK <> GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") Then
+    If xmlDuLieuImport.getElementsByTagName("maTKhai").length = 0 Then
         validateTkHeader = False
         Exit Function
     End If
