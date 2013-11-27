@@ -39,13 +39,18 @@ Public Sub Prepare1()
     Dim blCheck_S1 As Boolean
 
     With fps
-        SetDateFormat fps, 1, 45, .ColLetterToNumber("AL"), DDMMYYYY
+        SetDateFormat fps, 1, 46, .ColLetterToNumber("AL"), DDMMYYYY
         SetDateFormat fps, 1, 21, .ColLetterToNumber("AH"), DDMMYYYY
         SetDateFormat fps, 2, 24, .ColLetterToNumber("AR"), DDMMYYYY
         
         .Sheet = 1 'To khai 04/NTNN
-        .Row = 45
+        .Row = 46
         .Col = .ColLetterToNumber("AL")
+        .Text = Format(Date, "dd/mm/yyyy")
+        .TypeHAlign = TypeHAlignLeft
+        
+        .Row = 21
+        .Col = .ColLetterToNumber("AH")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
         
@@ -55,20 +60,20 @@ Public Sub Prepare1()
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
         
-        updateSomeCell
+        'updateSomeCell
 
-        blCheck_S1 = IIf(TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-
-        If Not blCheck_S1 Then
-            ' Chi tieu 2-4
-            .Col = .ColLetterToNumber("T")
-            .Row = 31
-            .Formula = ""
-            ' Chi tieu 2 -5
-            .Col = .ColLetterToNumber("AB")
-            .Row = 31
-            .Formula = ""
-        End If
+'        blCheck_S1 = IIf(TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+'
+'        If Not blCheck_S1 Then
+'            ' Chi tieu 2-4
+'            .Col = .ColLetterToNumber("T")
+'            .Row = 31
+'            .Formula = ""
+'            ' Chi tieu 2 -5
+'            .Col = .ColLetterToNumber("AB")
+'            .Row = 31
+'            .Formula = ""
+'        End If
         
         .Sheet = .SheetCount - 1
         .Row = 23
@@ -237,7 +242,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 UpdateCell fps, Col, Row, .Text
             End If
         'check date
-            If Col = .ColLetterToNumber("AL") And Row = 45 Then
+            If Col = .ColLetterToNumber("AL") And Row = 46 Then
                 .GetText Col, Row, varTemp
                 If varTemp <> "" And varTemp <> "../../...." Then
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
@@ -307,10 +312,10 @@ Private Sub CheckDynamicError()
         CheckHanNop 24, "AR", 20, 2
     End If
 
-    If TAX_Utilities_New.NodeValidity.childNodes(0).Attributes.getNamedItem("Active").nodeValue <> "0" Then
-        CheckGiaTriKeKhai 31, "T", 30, "T", 18, 1
-        CheckGiaTriKeKhai 31, "AB", 30, "AB", 19, 1
-    End If
+'    If TAX_Utilities_New.NodeValidity.childNodes(0).Attributes.getNamedItem("Active").nodeValue <> "0" Then
+'        CheckGiaTriKeKhai 31, "T", 30, "T", 18, 1
+'        CheckGiaTriKeKhai 31, "AB", 30, "AB", 19, 1
+'    End If
 
 End Sub
 Sub CheckErrorMST()

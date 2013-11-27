@@ -3926,7 +3926,7 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             ReDim strResult(4)
             strResult(0) = "J_18~Dynamic_0"
             strResult(1) = "N_22~AH_22~Dynamic_0"
-            strResult(2) = "Q_30~W_30~AF_30~AO_30~AS_30~Q_31~W_31~AF_31~AO_31~AS_31~Q_33~W_33~AF_33~AO_33~AS_33~Q_34~W_34~AF_34~AO_34~AS_34~W_35~AF_35~AO_35~Q_36~W_36~AF_36~AO_36~AS_36~Q_37~W_37~AF_37~AO_37~AS_37~W_38~AF_38~AO_38~Q_39~W_39~AF_39~AO_39~AS_39~Q_40~W_40~AF_40~AO_40~AS_40~W_41~AF_41~AO_41~Q_42~W_42~AF_42~AO_42~AS_42~Q_43~W_43~AF_43~AO_43~AS_43~Dynamic_0"
+            strResult(2) = "W_30~AF_30~AO_30~AS_30~W_31~AF_31~AO_31~AS_31~W_32~AF_32~AO_32~AS_32~W_33~AF_33~AO_33~AS_33~W_38~AF_38~AO_38~AS_38~W_39~AF_39~AO_39~AS_39~W_40~AF_40~AO_40~AS_40~Dynamic_0"
             strResult(3) = "P_47~AU_47~P_49~AU_49~M_23~N_23~O_23~S_23~AD_23~Dynamic_0"
             
            ' 03_NTNN
@@ -3942,7 +3942,7 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             ReDim strResult(4)
             strResult(0) = "J_19~Dynamic_0"
             strResult(1) = "N_21~AH_21~Dynamic_0"
-            strResult(2) = "O_30~T_30~AB_30~AJ_30~AT_30~O_31~T_31~AB_31~AJ_31~AT_31~O_32~T_32~AB_32~AJ_32~AT_32~O_33~T_33~AB_33~AJ_33~AT_33~O_34~T_34~AB_34~AJ_34~AT_34~O_35~T_35~AB_35~AJ_35~AT_35~O_36~T_36~AB_36~AJ_36~AT_36~Dynamic_0"
+            strResult(2) = "T_30~AB_30~AJ_30~AT_30~T_31~AB_31~AJ_31~AT_31~T_32~AB_32~AJ_32~AT_32~T_33~AB_33~AJ_33~AT_33~T_34~AB_34~AJ_34~AT_34~Dynamic_0"
             strResult(3) = "M_44~AL_44~M_46~AL_46~M_23~N_23~O_23~S_23~Z_23~Dynamic_0"
             
             ' 01_BVMT
