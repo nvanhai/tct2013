@@ -2,86 +2,89 @@
 <HSoKhaiThue>
 	<TTinChung>
 		<TTinDVu>
-			<maDVu></maDVu>
-			<tenDVu></tenDVu>
-			<pbanDVu></pbanDVu>
-			<ttinNhaCCapDVu></ttinNhaCCapDVu>
+			<maDVu/>
+			<tenDVu/>
+			<pbanDVu/>
+			<ttinNhaCCapDVu/>
 		</TTinDVu>
 		<TTinTKhaiThue>
 			<TKhaiThue>
-				<maTKhai></maTKhai>
-				<tenTKhai></tenTKhai>
+				<maTKhai/>
+				<tenTKhai/>
 				<moTaBMau/>
-				<pbanTKhaiXML></pbanTKhaiXML>
+				<pbanTKhaiXML/>
 				<loaiTKhai>C</loaiTKhai>
 				<soLan>1</soLan>
 				<KyKKhaiThue>
 					<kieuKy>D</kieuKy>
-					<kyKKhai></kyKKhai>
-					<kyKKhaiTuNgay></kyKKhaiTuNgay>
-					<kyKKhaiDenNgay></kyKKhaiDenNgay>
-					<kyKKhaiTuThang></kyKKhaiTuThang>
-					<kyKKhaiDenThang></kyKKhaiDenThang>
+					<kyKKhai/>
+					<kyKKhaiTuNgay/>
+					<kyKKhaiDenNgay/>
+					<kyKKhaiTuThang/>
+					<kyKKhaiDenThang/>
 				</KyKKhaiThue>
-				<maCQTNoiNop></maCQTNoiNop>
-				<tenCQTNoiNop></tenCQTNoiNop>
-				<ngayLapTKhai></ngayLapTKhai>
+				<maCQTNoiNop/>
+				<tenCQTNoiNop/>
+				<ngayLapTKhai/>
 				<GiaHan>
-					<maLyDoGiaHan></maLyDoGiaHan>
-					<lyDoGiaHan></lyDoGiaHan>
+					<maLyDoGiaHan/>
+					<lyDoGiaHan/>
 				</GiaHan>
-				<nguoiKy></nguoiKy>
+				<nguoiKy/>
 				<ngayKy>1967-08-13</ngayKy>
-				<nganhNgheKD></nganhNgheKD>
+				<nganhNgheKD/>
 			</TKhaiThue>
 			<NNT>
 				<mst>0000000000</mst>
-				<tenNNT></tenNNT>
-				<dchiNNT></dchiNNT>
-				<phuongXa></phuongXa>
-				<maHuyenNNT></maHuyenNNT>
-				<tenHuyenNNT></tenHuyenNNT>
-				<maTinhNNT></maTinhNNT>
-				<tenTinhNNT></tenTinhNNT>
-				<dthoaiNNT></dthoaiNNT>
-				<faxNNT></faxNNT>
-				<emailNNT></emailNNT>
+				<tenNNT/>
+				<dchiNNT/>
+				<phuongXa/>
+				<maHuyenNNT/>
+				<tenHuyenNNT/>
+				<maTinhNNT/>
+				<tenTinhNNT/>
+				<dthoaiNNT/>
+				<faxNNT/>
+				<emailNNT/>
 			</NNT>
 			<DLyThue>
 				<mstDLyThue>0000000000</mstDLyThue>
-				<tenDLyThue></tenDLyThue>
-				<dchiDLyThue></dchiDLyThue>
-				<maHuyenDLyThue></maHuyenDLyThue>
-				<tenHuyenDLyThue></tenHuyenDLyThue>
-				<maTinhDLyThue></maTinhDLyThue>
-				<tenTinhDLyThue></tenTinhDLyThue>
-				<dthoaiDLyThue></dthoaiDLyThue>
-				<faxDLyThue></faxDLyThue>
-				<emailDLyThue></emailDLyThue>
-				<soHDongDLyThue></soHDongDLyThue>
+				<tenDLyThue/>
+				<dchiDLyThue/>
+				<maHuyenDLyThue/>
+				<tenHuyenDLyThue/>
+				<maTinhDLyThue/>
+				<tenTinhDLyThue/>
+				<dthoaiDLyThue/>
+				<faxDLyThue/>
+				<emailDLyThue/>
+				<soHDongDLyThue/>
 				<ngayKyHDDLyThue>1967-08-13</ngayKyHDDLyThue>
 				<NVienDLy>
-					<tenNVienDLyThue></tenNVienDLyThue>
-					<cchiHNghe></cchiHNghe>
+					<tenNVienDLyThue/>
+					<cchiHNghe/>
 				</NVienDLy>
 			</DLyThue>
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
 		<LoaiDauKhi>
-			<ct01></ct01>
-			<ct02></ct02>
-			<ct03></ct03>		</LoaiDauKhi>
+			<ct01/>
+			<ct02/>
+			<ct03/>
+		</LoaiDauKhi>
 		<ct05>1</ct05>
 		<LoaiXuatBan>
-			<ct08></ct08>
-			<ct09></ct09>		</LoaiXuatBan>
+			<ct08/>
+			<ct09/>
+		</LoaiXuatBan>
 		<ct10>1967-08-13</ct10>
-		<ct19></ct19>
+		<ct19/>
 		<CT20>
-			<donViUyQuyen></donViUyQuyen>
-			<daiLyThue></daiLyThue>		</CT20>
-		<tenDonViUyQuyen></tenDonViUyQuyen>
+			<donViUyQuyen/>
+			<daiLyThue/>
+		</CT20>
+		<tenDonViUyQuyen/>
 		<ct29>1</ct29>
 		<ct30>1</ct30>
 		<ct31>1</ct31>
