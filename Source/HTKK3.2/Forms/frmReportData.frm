@@ -126,7 +126,7 @@ Begin VB.Form frmReportData
       DisplayText     =   ""
       BarWidthReduction=   -1
       TextAlignment   =   0
-      Quality         =   68
+      Quality         =   0
    End
 End
 Attribute VB_Name = "frmReportData"
@@ -558,7 +558,8 @@ nextPrinter:
     ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 81 Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0258"), "Msg")
     ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 82 Then
-        fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0259"), "Msg")
+        'fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0259"), "Msg")
+        fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0289"), "Msg")
         ' vttoan: them ma tieu muc 03_GTGT
     ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0193"), "Msg")

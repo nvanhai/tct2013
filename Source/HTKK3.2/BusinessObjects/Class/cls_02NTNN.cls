@@ -45,14 +45,14 @@ Public Sub Prepare1()
         SetDateFormat fps, 3, 24, .ColLetterToNumber("AR"), DDMMYYYY
             
         .Sheet = 1
-        .Row = 23
-        .Col = .ColLetterToNumber("D")
+        .Row = 22
+        .Col = .ColLetterToNumber("AH")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
         
         
         .Row = 47
-        .Col = .ColLetterToNumber("AQ")
+        .Col = .ColLetterToNumber("AU")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
         
@@ -63,31 +63,31 @@ Public Sub Prepare1()
          SetDateFormat fps, .Sheet, 23, .ColLetterToNumber("BG"), DDMMYYYY
          .TypeHAlign = TypeHAlignLeft
         
-        updateSomeCell
+        'updateSomeCell
 
-        blCheck_S1 = IIf(TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-        blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-        If Not blCheck_S1 Then
-            ' Chi tieu 1-4
-            .Col = .ColLetterToNumber("W")
-            .Row = 30
-            .Formula = ""
-            ' Chi tieu 1 -5
-            .Col = .ColLetterToNumber("AF")
-            .Row = 30
-            .Formula = ""
-        End If
-        ' Check S2
-        If Not blCheck_S2 Then
-            ' Chi tieu 2-4
-            .Col = .ColLetterToNumber("W")
-            .Row = 31
-            .Formula = ""
-            ' Chi tieu 2-5
-            .Col = .ColLetterToNumber("AF")
-            .Row = 31
-            .Formula = ""
-        End If
+'        blCheck_S1 = IIf(TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+'        blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+'        If Not blCheck_S1 Then
+'            ' Chi tieu 1-4
+'            .Col = .ColLetterToNumber("W")
+'            .Row = 30
+'            .Formula = ""
+'            ' Chi tieu 1 -5
+'            .Col = .ColLetterToNumber("AF")
+'            .Row = 30
+'            .Formula = ""
+'        End If
+'        ' Check S2
+'        If Not blCheck_S2 Then
+'            ' Chi tieu 2-4
+'            .Col = .ColLetterToNumber("W")
+'            .Row = 31
+'            .Formula = ""
+'            ' Chi tieu 2-5
+'            .Col = .ColLetterToNumber("AF")
+'            .Row = 31
+'            .Formula = ""
+'        End If
         
     End With
 
@@ -145,53 +145,53 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
         'currentSheet2 = mCurrentSheet
         mCurrentSheet = .Sheet
         
-        blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-
-        If blCheck_S2 = True Then
-            .Col = .ColLetterToNumber("W")
-            .Row = 30
-            .Lock = True
-           UpdateCell fps, .Col, .Row, .value
-           
-            .Col = .ColLetterToNumber("AF")
-            .Row = 30
-            .Lock = True
-           UpdateCell fps, .Col, .Row, .value
-           
-            .Col = .ColLetterToNumber("W")
-            .Row = 31
-            .Lock = True
-           UpdateCell fps, .Col, .Row, .value
-           
-            .Col = .ColLetterToNumber("AF")
-            .Row = 31
-            .Lock = True
-           UpdateCell fps, .Col, .Row, .value
-        Else
-            .Col = .ColLetterToNumber("W")
-            .Row = 30
-            .Lock = False
-            '.Text = 0
-           UpdateCell fps, .Col, .Row, .value
-           
-            .Col = .ColLetterToNumber("AF")
-            .Row = 30
-            .Lock = False
-            '.Text = 0
-           UpdateCell fps, .Col, .Row, .value
-           
-            .Col = .ColLetterToNumber("W")
-            .Row = 31
-            .Lock = False
-            'Text = 0
-           UpdateCell fps, .Col, .Row, .value
-           
-            .Col = .ColLetterToNumber("AF")
-            .Row = 31
-            .Lock = False
-            '.Text = 0
-           UpdateCell fps, .Col, .Row, .value
-        End If
+'        blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+'
+'        If blCheck_S2 = True Then
+'            .Col = .ColLetterToNumber("W")
+'            .Row = 30
+'            .Lock = True
+'           UpdateCell fps, .Col, .Row, .value
+'
+'            .Col = .ColLetterToNumber("AF")
+'            .Row = 30
+'            .Lock = True
+'           UpdateCell fps, .Col, .Row, .value
+'
+''            .Col = .ColLetterToNumber("W")
+''            .Row = 31
+''            .Lock = True
+''           UpdateCell fps, .Col, .Row, .value
+'
+'            .Col = .ColLetterToNumber("AF")
+'            .Row = 31
+'            .Lock = True
+'           UpdateCell fps, .Col, .Row, .value
+'        Else
+'            .Col = .ColLetterToNumber("W")
+'            .Row = 30
+'            .Lock = False
+'            '.Text = 0
+'           UpdateCell fps, .Col, .Row, .value
+'
+'            .Col = .ColLetterToNumber("AF")
+'            .Row = 30
+'            .Lock = False
+'            '.Text = 0
+'           UpdateCell fps, .Col, .Row, .value
+'
+''            .Col = .ColLetterToNumber("W")
+''            .Row = 31
+''            .Lock = False
+''            'Text = 0
+''           UpdateCell fps, .Col, .Row, .value
+'
+'            .Col = .ColLetterToNumber("AF")
+'            .Row = 31
+'            .Lock = False
+'            '.Text = 0
+'           UpdateCell fps, .Col, .Row, .value
+'        End If
         
         .EventEnabled(EventAllEvents) = True
     End With
@@ -263,7 +263,26 @@ Private Sub fps_LeaveCell(ByVal Col As Long, _
 
             Case 1
 
-                If Col = .ColLetterToNumber("AQ") And Row = 47 Then
+                If Col = .ColLetterToNumber("AH") And Row = 22 Then
+                    .GetText Col, Row, varTemp
+
+                    If varTemp <> "" And varTemp <> "../../...." Then
+                        If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+                            .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+                        Else
+                            .SetActiveCell Col, Row
+                        End If
+
+                    Else
+                        .SetText Col, Row, ""
+                    End If
+
+                    .Col = Col
+                    .Row = Row
+                    UpdateCell fps, Col, Row, .Text
+                End If
+                
+                If Col = .ColLetterToNumber("AU") And Row = 47 Then
                     .GetText Col, Row, varTemp
 
                     If varTemp <> "" And varTemp <> "../../...." Then
