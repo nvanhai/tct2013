@@ -18,41 +18,25 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="ThuNhapTuDauVon">
-		<ct21>1</ct21>
-		<ct22>1</ct22>
-		<ct23>1</ct23>
-		<ct24>1</ct24>
+		<ct21>I_41</ct21>
+		<ct22>I_42</ct22>
 	</Static>
 	<Static GroupName="ThuNhapTuChuyenNhuongCKhoan">
-		<ct25>1</ct25>
-		<ct26>1</ct26>
-		<ct27>1</ct27>
-		<ct28>1</ct28>
+		<ct23>I_44</ct23>
+		<ct24>I_45</ct24>
 	</Static>
 	<Static GroupName="ThuNhapTuNhuongQuyenTMai">
-		<ct29>1</ct29>
-		<ct30>1</ct30>
-		<ct31>1</ct31>
-		<ct32>1</ct32>
+		<ct25>I_47</ct25>
+		<ct26>I_48</ct26>
 	</Static>
 	<Static GroupName="ThuNhapTuTrungThuong">
-		<ct33>1</ct33>
-		<ct34>1</ct34>
-		<ct35>1</ct35>
-		<ct36>1</ct36>
+		<ct27>I_50</ct27>
+		<ct28>I_51</ct28>
 	</Static>
 	<Static GroupName="ThuNhapTuKDoanhCaNhanKhongCTru">
-		<ct37>1</ct37>
-		<ct38>1</ct38>
-		<ct39>1</ct39>
-		<ct40>1</ct40>
-		<ct41>1</ct41>
-	</Static>
-	<Static GroupName="ThuNhapCNhuongVonCuaCNhanKhongCTru">
-		<ct42>1</ct42>
-		<ct43>1</ct43>
-		<ct44>1</ct44>
-		<ct45>1</ct45>
+		<ct29>I_53</ct29>
+		<ct30>I_54</ct30>
+		<ct31>I_55</ct31>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>M_57</nguoiKy>

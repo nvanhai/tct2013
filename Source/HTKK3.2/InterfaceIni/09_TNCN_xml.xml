@@ -16,9 +16,9 @@
 		<maHuyenDLyThue></maHuyenDLyThue>
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
-	<Static GroupName="ct12">
-		<soTKhoanNHang>D_20</soTKhoanNHang>
-		<noiMo>M_20</noiMo>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct12>D_20</ct12>
+		<ct12a>M_20</ct12a>
 	</Static>
 	<Static GroupName="TongTNhapChiuThueTNCNTrongKy">
 		<ct22>I_42</ct22>
@@ -43,19 +43,14 @@
 		<ct35>I_55</ct35>
 		<ct36>I_56</ct36>
 	</Static>
-	<Static GroupName="TongSoThueTNCNDuocGiam">
+	<Static GroupName="CTieuTKhaiChinh">
 		<ct37>I_57</ct37>
 		<ct38>I_58</ct38>
-		<ct39>I_59</ct39>
-	</Static>
-	<Static GroupName="CTieuTKhaiChinh">
-		<ct40>I_60</ct40>
-		<ct41>I_61</ct41>
 	</Static>
 	<Static GroupName="TongSoThueNopThua">
-		<ct42>I_62</ct42>
-		<ct43>I_63</ct43>
-		<ct44>I_64</ct44>
+		<ct39>I_59</ct39>
+		<ct40>I_60</ct40>
+		<ct41>I_61</ct41>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>M_66</nguoiKy>
