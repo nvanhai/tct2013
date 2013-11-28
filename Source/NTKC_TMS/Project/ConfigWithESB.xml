@@ -49,7 +49,7 @@
 	<SENDER_NAME>He thong nhan to khai ma vach</SENDER_NAME>
 	<RECEIVER_CODE>TMS</RECEIVER_CODE>
 	<RECEIVER_NAME>He thong quan ly thue tap trung</RECEIVER_NAME>
-	<TRAN_CODE>00006</TRAN_CODE>
+	<TRAN_CODE>01000</TRAN_CODE>
 	<ORIGINAL_CODE>NTK</ORIGINAL_CODE>
 	<ORIGINAL_NAME>He thong nhan to khai ma vach</ORIGINAL_NAME>
 	<CODE_OFFICE>HAN</CODE_OFFICE> <!-- ma Cuc hoac ma Chi Cuc -->
