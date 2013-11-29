@@ -1737,6 +1737,10 @@ Public Function ConvertStringToUtf8String(ByRef strText As String) As String
     Dim i As Long
     
     ' init stream
+    If strText = "" Or strText = vbNullString Then
+        ConvertStringToUtf8String = ""
+        Exit Function
+    End If
     Set objStream = New ADODB.Stream
     objStream.Charset = "utf-8"
     objStream.Mode = adModeReadWrite
