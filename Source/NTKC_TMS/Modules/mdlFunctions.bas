@@ -28,7 +28,6 @@ Public strSolanBS As String
 Public strKieuKy As String
 Public strQuy As String
 Public strKHBS As String
-Public strLoaiTKThang_PS As String
 Public strCurrentVersion As String     'Current Version lay duoc tu ESB services
 Public strNgayHeThongSrv As String     ' Current Date in Server
 Public strMaNNT As String

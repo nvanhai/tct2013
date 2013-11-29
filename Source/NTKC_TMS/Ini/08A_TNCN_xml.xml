@@ -27,9 +27,11 @@
 		<ChiTietThuNhapKDoanh id="id">
 			<ct26>C_61</ct26>
 			<ct27>H_61</ct27>
-			<ct28>L_61</ct28>			
-			<ct29>N_61</ct29>
-			<ct30>Q_61</ct30>			
+			<ct28>L_61</ct28>	
+			<ThuNhapChiuThue>			
+				<ct29>N_61</ct29>
+				<ct30>Q_61</ct30>			
+			</ThuNhapChiuThue>
 			<ct31>U_61</ct31>
 			<ct32>X_61</ct32>
 			<ct33>AB_61</ct33>
