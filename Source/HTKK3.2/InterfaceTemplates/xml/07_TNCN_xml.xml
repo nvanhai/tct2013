@@ -20,6 +20,8 @@
 					<kyKKhai></kyKKhai>
 					<kyKKhaiTuNgay></kyKKhaiTuNgay>
 					<kyKKhaiDenNgay></kyKKhaiDenNgay>
+					<kyKKhaiTuThang></kyKKhaiTuThang>
+					<kyKKhaiDenThang></kyKKhaiDenThang>
 				</KyKKhaiThue>
 				<maCQTNoiNop></maCQTNoiNop>
 				<tenCQTNoiNop></tenCQTNoiNop>
@@ -70,12 +72,14 @@
 			<ct21>true</ct21>
 			<ct22>1</ct22>
 			<ct23>1</ct23>
-			<ct24>1</ct24>
-			<ct25>1</ct25>
-			<ct26>1</ct26>
-			<ct27>1</ct27>
-			<ct28>1</ct28>
-			<ct29>1</ct29>
+			<TongCacKhoanGTru>
+				<ct24>1</ct24>
+				<ct25>1</ct25>
+				<ct26>1</ct26>
+				<ct27>1</ct27>
+				<ct28>1</ct28>
+				<ct29>1</ct29>
+			</TongCacKhoanGTru>
 			<ct30>1</ct30>
 			<ct31>1</ct31>
 			<ct32>1</ct32>
