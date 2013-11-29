@@ -21,12 +21,16 @@
 		<ct21>V_41</ct21>
 		<ct22>R_43</ct22>
 		<ct23>R_44</ct23>
+	</Static>
+	<Static GroupName="TongCacKhoanGTru">
 		<ct24>R_45</ct24>
 		<ct25>R_46</ct25>
 		<ct26>R_47</ct26>
 		<ct27>R_48</ct27>
 		<ct28>R_49</ct28>
 		<ct29>R_50</ct29>
+	</Static>
+	<Static GroupName="CANHANCUTRUCOTHUNHAPTUTIENLUONGTIENCONG">
 		<ct30>R_51</ct30>
 		<ct31>R_52</ct31>
 		<ct32>R_53</ct32>
