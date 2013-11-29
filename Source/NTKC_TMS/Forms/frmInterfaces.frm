@@ -4266,7 +4266,11 @@ On Error GoTo ErrHandle
     'Get Tax id
     strMST = Trim(Mid$(strTaxReportInfo, 3, 13))
     
-    strTaxDLID = Mid(strData, InStr(1, strData, "<S>") + 3, InStr(1, strData, "</S>") - InStr(1, strData, "<S>") - 3)
+    If LoaiTk <> "64" And LoaiTk <> "65" And LoaiTk <> "" And LoaiTk <> "66" And LoaiTk <> "67" And LoaiTk <> "68" And LoaiTk <> "91" And LoaiTk <> "69" And LoaiTk <> "19" And LoaiTk <> "20" And LoaiTk <> "21" And LoaiTk <> "22" Then
+        strTaxDLID = Mid(strData, InStr(1, strData, "<S>") + 3, InStr(1, strData, "</S>") - InStr(1, strData, "<S>") - 3)
+    Else
+        strTaxDLID = vbNullString
+    End If
     
     
     If Len(Trim(strMST)) = 13 Then
