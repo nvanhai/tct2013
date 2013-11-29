@@ -13,15 +13,13 @@
 				<tenTKhai></tenTKhai>
 				<moTaBMau/>
 				<pbanTKhaiXML></pbanTKhaiXML>
-				<loaiTKhai></loaiTKhai>
-				<soLan></soLan>
+				<loaiTKhai>C</loaiTKhai>
+				<soLan>1</soLan>
 				<KyKKhaiThue>
-					<kieuKy></kieuKy>
+					<kieuKy>D</kieuKy>
 					<kyKKhai></kyKKhai>
 					<kyKKhaiTuNgay></kyKKhaiTuNgay>
 					<kyKKhaiDenNgay></kyKKhaiDenNgay>
-					<kyKKhaiTuThang></kyKKhaiTuThang>
-					<kyKKhaiDenThang></kyKKhaiDenThang>
 				</KyKKhaiThue>
 				<maCQTNoiNop></maCQTNoiNop>
 				<tenCQTNoiNop></tenCQTNoiNop>
@@ -31,11 +29,11 @@
 					<lyDoGiaHan></lyDoGiaHan>
 				</GiaHan>
 				<nguoiKy></nguoiKy>
-				<ngayKy></ngayKy>
+				<ngayKy>1967-08-13</ngayKy>
 				<nganhNgheKD></nganhNgheKD>
 			</TKhaiThue>
 			<NNT>
-				<mst></mst>
+				<mst>0000000000</mst>
 				<tenNNT></tenNNT>
 				<dchiNNT></dchiNNT>
 				<phuongXa></phuongXa>
@@ -48,7 +46,7 @@
 				<emailNNT></emailNNT>
 			</NNT>
 			<DLyThue>
-				<mstDLyThue></mstDLyThue>
+				<mstDLyThue>0000000000</mstDLyThue>
 				<tenDLyThue></tenDLyThue>
 				<dchiDLyThue></dchiDLyThue>
 				<maHuyenDLyThue></maHuyenDLyThue>
@@ -59,7 +57,7 @@
 				<faxDLyThue></faxDLyThue>
 				<emailDLyThue></emailDLyThue>
 				<soHDongDLyThue></soHDongDLyThue>
-				<ngayKyHDDLyThue></ngayKyHDDLyThue>
+				<ngayKyHDDLyThue>1967-08-13</ngayKyHDDLyThue>
 				<NVienDLy>
 					<tenNVienDLyThue></tenNVienDLyThue>
 					<cchiHNghe></cchiHNghe>
@@ -69,28 +67,28 @@
 	</TTinChung>
 	<CTieuTKhaiChinh>
 		<ThuNhapTuDauTuVon>
-			<ct2></ct2>
-			<ct22></ct22>
+			<ct21>1</ct21>
+			<ct22>1</ct22>
 		</ThuNhapTuDauTuVon>
 		<ThuNhapTuCNhuongCKhoan>
-			<ct23></ct23>
-			<ct24></ct24>
+			<ct23>1</ct23>
+			<ct24>1</ct24>
 		</ThuNhapTuCNhuongCKhoan>
 		<ThuNhapTuBanQuyenTMai>
-			<ct25></ct25>
-			<ct26></ct26>
+			<ct25>1</ct25>
+			<ct26>1</ct26>
 		</ThuNhapTuBanQuyenTMai>
 		<ThuNhapTuTrungThuong>
-			<ct27></ct27>
-			<ct28></ct28>
+			<ct27>1</ct27>
+			<ct28>1</ct28>
 		</ThuNhapTuTrungThuong>
 		<ThuNhapTuKDoanhCuaCNhanKhongCuTru>
-			<ct29></ct29>
-			<ct30></ct30>
+			<ct29>1</ct29>
+			<ct30>1</ct30>
 		</ThuNhapTuKDoanhCuaCNhanKhongCuTru>
 		<ThuNhapTuCNhuongVonCuaCNhanKhongCTru>
-			<ct3></ct3>
-			<ct32></ct32>
+			<ct31>1</ct31>
+			<ct32>1</ct32>
 		</ThuNhapTuCNhuongVonCuaCNhanKhongCTru>
 	</CTieuTKhaiChinh>
 	<PLuc/>
