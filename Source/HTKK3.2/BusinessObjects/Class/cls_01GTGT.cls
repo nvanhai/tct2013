@@ -131,7 +131,7 @@ Dim fldList() As String
         '--
         SetDateFormat fps, sheetTK01_GTGT, rowNgayKy, .ColLetterToNumber(colK), DDMMYYYY
         
-        SetDateFormat fps, sheetPl01_5_GTGT, rowStartPL01_5, .ColLetterToNumber(colE), DDMMYYYY
+        SetDateFormat fps, sheetPl01_5_GTGT, rowStartPL01_5, .ColLetterToNumber(colD), DDMMYYYY
         
         SetDateFormat fps, sheetPl01_KHBS_GTGT, rowNgayKyKhbs, .ColLetterToNumber(colBG), DDMMYYYY
         .Sheet = sheetTK01_GTGT 'To khai GTGT
@@ -804,7 +804,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
         End If
         
         If .ActiveSheet = sheetPl01_5_GTGT Then
-                   If Col = .ColLetterToNumber(colE) Then
+                   If Col = .ColLetterToNumber(colD) Then
                        .GetText Col, Row, varTemp
                        If varTemp <> "" And varTemp <> "../../...." Then
                            If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
@@ -1075,7 +1075,7 @@ Private Sub CheckDynamicError()
     .Sheet = 2
     blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
     If blCheck_S2 = True Then
-        For i = 1 To .MaxRows
+        For i = 8 To .MaxRows
             iWhiteRow = 1
             .Row = i
             .Col = .ColLetterToNumber("C")
@@ -1385,7 +1385,7 @@ Private Sub CheckDynamicError()
     .Sheet = 3
     blCheck_S3 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
    If blCheck_S3 = True Then
-        For i = 1 To .MaxRows
+        For i = 8 To .MaxRows
             iWhiteRow = 1
             .Row = i
             .Col = .ColLetterToNumber("C")
@@ -4029,7 +4029,7 @@ Sub CellChange1(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Intege
                                 .Sheet = .ActiveSheet
                         End If
             Case 7 ' phu luc 01_5
-                    If Col = .ColLetterToNumber("G") Then
+                    If Col = .ColLetterToNumber("I") Then
                             ' chi tieu 39
                             .Sheet = 1
                             .Col = .ColLetterToNumber("L")
