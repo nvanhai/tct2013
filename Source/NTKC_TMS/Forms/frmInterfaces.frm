@@ -902,7 +902,6 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     xmlTK.getElementsByTagName("maCQTNoiNop")(0).Text = strMaCoQuanThue 'xmlConfig.getElementsByTagName("maCQTNoiNop")(0).Text
     xmlTK.getElementsByTagName("tenCQTNoiNop")(0).Text = strTenCoQuanThue 'xmlConfig.getElementsByTagName("tenCQTNoiNop")(0).Text
     xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = Format(Date, "dd-mmm-yyyy HH:mm:ss")
-
     
     If (xmlResultNNT.hasChildNodes And (InStr(xmlResultNNT.xml, "fault_code") <= 0)) Then
         xmlTK.getElementsByTagName("maHuyenNNT")(0).Text = xmlResultNNT.getElementsByTagName("MaQuanHuyen")(0).Text
@@ -955,8 +954,16 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0131"), "Msg")
     End If
     
-    'Xu ly rieng cho truong hop to khai 01_TAIN_DK
-    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "92" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "98" Then
+    'To 03/TBAC
+    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "67" Then
+        xmlTK.getElementsByTagName("kyKKhai")(0).Text = ""
+        xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = ""
+        xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = ""
+        xmlTK.getElementsByTagName("kieuKy")(0).Text = ""
+
+        'Xu ly rieng cho truong hop to khai 01_TAIN_DK
+    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "92" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "98" Then
+
         If xmlTK.getElementsByTagName("ct03").length > 0 Then
             If xmlTK.getElementsByTagName("ct03")(0).Text = "1" Then
                 xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
@@ -973,8 +980,13 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
 
     Else
         xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
-        xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = Format$(dNgayDauKy, "dd/MM/yyyy")
-        xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(dNgayCuoiKy, "dd/MM/yyyy")
+
+        If strKieuKy <> "D" Then
+            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = Format$(dNgayDauKy, "dd/MM/yyyy")
+            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(dNgayCuoiKy, "dd/MM/yyyy")
+           
+        End If
+
         xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
   
     End If
@@ -983,12 +995,17 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
 ErrHandle:
     SaveErrorLog Me.Name, "SetValueToKhaiHeader", Err.Number, Err.Description
 End Sub
+
 'Lay ky ke khai
 Private Function GetKyKeKhai(ByVal ID_TK As String) As String
     Dim KYKKHAI As String
     On Error GoTo ErrHandle
 
-    If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "68" Then
+    If isTKLanPS = True Then
+        KYKKHAI = ngayPS
+        strKieuKy = "D"
+    ElseIf ID_TK = "01" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "68" Then
+
         If LoaiKyKK = True Then
             KYKKHAI = TAX_Utilities_Srv_New.ThreeMonths & "/" & TAX_Utilities_Srv_New.Year
             strKieuKy = "Q"
@@ -1011,7 +1028,8 @@ Private Function GetKyKeKhai(ByVal ID_TK As String) As String
         End If
 
     End If
-        GetKyKeKhai = KYKKHAI
+ 
+    GetKyKeKhai = KYKKHAI
 
     Exit Function
 ErrHandle:
@@ -1109,8 +1127,8 @@ Private Function getFileName() As String
                 ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeValidity.parentNode, "ID") = "73" Then
 
                     ' To khai 02/TNDN
-                    If strLoaiTKThang_PS = "TK_LANPS" Then
-                        strDataFileName = TAX_Utilities_Srv_New.DataFolder & GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_" & TAX_Utilities_Srv_New.Day & TAX_Utilities_Srv_New.Month & TAX_Utilities_Srv_New.Year & ".xml"
+                    If isTKLanPS = True Then
+                        strDataFileName = TAX_Utilities_Srv_New.DataFolder & GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_" & ngayPS & ".xml"
                     Else
                         strDataFileName = TAX_Utilities_Srv_New.DataFolder & GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet), "DataFile") & "_XML" & "_0" & TAX_Utilities_Srv_New.ThreeMonths & TAX_Utilities_Srv_New.Year & ".xml"
                     End If
@@ -1588,9 +1606,9 @@ Private Sub ExecuteSave()
     xmlDocSave.save sFileName
 
     ' Push MQ
-    If (Not PushDataToESB(xmlDocSave.xml)) Then
-        MessageBox "0137", msOKOnly, miCriticalError
-    End If
+'    If (Not PushDataToESB(xmlDocSave.xml)) Then
+'        MessageBox "0137", msOKOnly, miCriticalError
+'    End If
 
     ' End push
     
@@ -2293,29 +2311,39 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 
-str2 = "aa999192300790401   00201200000000101201/0114/09/2006<S01><S>~2315~400~III.01~10~10~III.05~2020~35~~2010~20~~10~15~~145~155~~20~30~~35~30~~40~45~~50~50~~45~45~III.02~20~25~~25~20~~95~155~~10~20~~30~35~~35~50~~20~50~~1205~3130~III.03.04~1022~2650~~947~2380~~25~200~~50~70~~40~40~~20~10~~20~30~III.05~80~60~~30~40~~50~20~~63~380~~30~230~~10~120~~23~30~~3520~3530~~1860~20"
-Barcode_Scaned str2
-str2 = "aa999192300790401   00201200000000201230~~820~1060~~230~50~~100~10~~20~20~III.06~20~30~~30~340~~40~50~~10~100~~110~210~~230~210~~10~20~~20~20~~1040~970~~10~20~~10~30~~120~310~~300~100~~200~300~~400~210~~1660~1500~III.07~1660~1500~~50~30~~310~210~~540~210~~200~100~~210~150~~200~300~~150~500~~3520~3530~~550~120~~10~20~~30~10~~20~10~~150~400~kjvfkw~26/11/2013</S></S01>"
-Barcode_Scaned str2
-str2 = "aa999192300790401   002012000000003012<S01-1><S>IV.08~10~20~~10~20~~0~0~~30~10~~-30~-10~~20~40~~350~250~~320~230~~10~20~~-370~-240~~310~420~~10~30~~300~390~IV.09~-70~150~~20~40~~-90~110~kjvfkw~26/11/2013</S></S01-1>"
-Barcode_Scaned str2
-str2 = "aa999192300790401   002012000000004012<S01-2><S>~10~10~~20~20~~30~30~~120~210~~50~100~~100~100~~50~50~~380~520~~10~10~~20~10~~30~40~~50~210~~10~100~~20~30~~140~400~~20~"
-Barcode_Scaned str2
-str2 = "aa999192300790401   00201200000000501220~~310~210~~210~320~~200~300~~400~100~~120~210~~1260~1160~~1780~2080~~310~200~~100~300~~2190~2580~kjvfkw~26/11/2013</S></S01-2>"
-Barcode_Scaned str2
-str2 = "aa999192300790401   002012000000006012<S01-3><S>~10~20~~20~20~~120~210~~20~30~~120~100~~200~300~~490~680~~150~420~~100~200~~10~20~~250~300~~350~200~~300~200~~300~150~~200~190~~2150~2360~~10~20~~30~40~~210~200~~1"
-Barcode_Scaned str2
-str2 = "aa999192300790401   00201200000000701220~310~~240~200~~120~100~~120~320~~850~1190~~400~100~~200~10~~20~30~~100~200~~210~310~~230~310~~1160~960~~4160~4510~~10~10~~500~570~~4670~5090~kjvfkw~26/11/2013</S></S01-3>"
-Barcode_Scaned str2
-str2 = "aa999192300790401   002012000000008012<S01-4><S>50~0~60~110~70~60~10~0~20~10~20~20~20~0~10~50~30~20~20~0~30~50~20~20~230~0~220~150~230~270~10~0~10~20~20~30~120~0~100~10~120~230~100~0~110~120~90~10~100~0~10~120~20~110~90~0~80~0~170~10~30~0~20~20~40~60~10~0~10~10~20~50~20~0~10~10~20~10~210~0~190~170~230~130~100~0~90~80~110~70~110~0~100~90~120~60~200~0~190~180~170~160~250~0~200~150~300~100~190~0~180~170~160~150~180~0~170~160~150~100~100~0~80~60~120~20~150~0~100~50~20~10~190~0~150~100~100~50~100~0~190~150~140~20~650~0~450~500~600~150~200~0~150~200~150~50~"
-Barcode_Scaned str2
-str2 = "aa999192300790401   002012000000009012200~0~150~200~150~50~250~0~150~100~300~50~100~0~50~30~120~20~330~0~250~210~180~120~80~0~70~60~50~10~100~0~80~70~60~50~150~0~100~80~70~60~460~0~380~300~460~20~150~0~100~90~80~70~120~0~100~50~170~-50~90~0~90~80~100~-10~100~0~90~80~110~10~100~0~20~30~20~10~420~0~340~270~450~110~100~0~90~80~70~50~120~0~100~90~130~10~200~0~150~100~250~50~5~0~5~5~5~5~329~0~299~279~189~169~9~0~9~9~9~9~120~0~100~90~10~10~200~0~190~180~170~150~210~0~200~190~170~160~500~0~450~400~300~200~0~250~400~150~250~290~0~190~180~150~30~160~0~0~0~0~0~"
-Barcode_Scaned str2
-str2 = "aa999192300790401   0020120000000100120~0~1590~1269~880~399~1201~0~400~380~360~20~380~0~200~190~180~10~190~0~200~190~180~10~190~0~90~80~70~10~80~0~50~10~10~10~50~0~100~90~80~10~90~0~150~100~50~50~100~0~250~200~100~100~150~0~200~150~100~50~150~0~150~150~10~140~10~0~200~109~100~9~191~0~250~200~150~50~200~0~300~250~200~50~250~0~1120~870~520~500~750~0~100~200~100~100~10~0~20~20~20~20~20~0~100~100~50~30~20~0~150~100~100~50~150~0~150~100~50~50~100~0~200~50~100~50~250~0~200~150~50~100~100~0~200~150~50~100~100~0~740~410~250~200~330~0~200~200~100~100~100~0~250"
-Barcode_Scaned str2
-str2 = "aa999192300790401   002012000000011012~100~50~10~20~0~190~90~80~80~110~0~50~40~30~20~10~0~50~30~40~10~20~0~90~20~10~50~80~0~100~20~20~10~100~0~20~10~10~100~20~0~90~80~70~50~80~0~310~70~150~100~292~0~20~20~100~50~100~0~90~10~10~10~90~0~100~20~20~20~2~0~100~20~20~20~100~0~400~330~20~220~90~0~200~130~10~120~80~0~200~200~10~100~10~0~500~180~180~80~500~0~100~20~30~40~110~0~200~130~120~10~190~0~200~30~30~30~200~0~250~100~250~120~400~0~500~120~200~300~120~0~200~100~200~300~300~0~290~100~100~30~290~0~200~10~20~20~210~0~90~90~80~10~80~600~470~310~230~680~390~1"
-Barcode_Scaned str2
-str2 = "aa999192300790401   00201200000001201200~80~80~50~130~50~200~150~80~70~210~140~200~120~100~100~200~120~100~120~50~10~140~80~100~90~80~80~100~90~180~120~150~170~160~140~100~20~30~40~90~30~50~60~70~80~40~70~30~40~50~50~30~40~45~50~55~60~40~55~100~120~130~140~90~130~150~100~40~45~145~105~120~100~120~90~150~70~120~50~60~80~100~70~100~20~30~40~90~30~20~30~30~40~10~40~50~50~60~70~40~60~50~50~60~70~40~60~30~30~30~40~20~40~100~90~80~80~100~90~100~200~300~350~50~250~100~200~10~20~90~210~100~50~10~20~90~60~50~55~55~55~50~55~100~110~120~130~90~120~~</S></S01-4>"
+'str2 = "aa999192300790401   00201200000000101201/0114/09/2006<S01><S>~2315~400~III.01~10~10~III.05~2020~35~~2010~20~~10~15~~145~155~~20~30~~35~30~~40~45~~50~50~~45~45~III.02~20~25~~25~20~~95~155~~10~20~~30~35~~35~50~~20~50~~1205~3130~III.03.04~1022~2650~~947~2380~~25~200~~50~70~~40~40~~20~10~~20~30~III.05~80~60~~30~40~~50~20~~63~380~~30~230~~10~120~~23~30~~3520~3530~~1860~20"
+'Barcode_Scaned str2
+'str2 = "aa999192300790401   00201200000000201230~~820~1060~~230~50~~100~10~~20~20~III.06~20~30~~30~340~~40~50~~10~100~~110~210~~230~210~~10~20~~20~20~~1040~970~~10~20~~10~30~~120~310~~300~100~~200~300~~400~210~~1660~1500~III.07~1660~1500~~50~30~~310~210~~540~210~~200~100~~210~150~~200~300~~150~500~~3520~3530~~550~120~~10~20~~30~10~~20~10~~150~400~kjvfkw~26/11/2013</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999192300790401   002012000000003012<S01-1><S>IV.08~10~20~~10~20~~0~0~~30~10~~-30~-10~~20~40~~350~250~~320~230~~10~20~~-370~-240~~310~420~~10~30~~300~390~IV.09~-70~150~~20~40~~-90~110~kjvfkw~26/11/2013</S></S01-1>"
+'Barcode_Scaned str2
+'str2 = "aa999192300790401   002012000000004012<S01-2><S>~10~10~~20~20~~30~30~~120~210~~50~100~~100~100~~50~50~~380~520~~10~10~~20~10~~30~40~~50~210~~10~100~~20~30~~140~400~~20~"
+'Barcode_Scaned str2
+'str2 = "aa999192300790401   00201200000000501220~~310~210~~210~320~~200~300~~400~100~~120~210~~1260~1160~~1780~2080~~310~200~~100~300~~2190~2580~kjvfkw~26/11/2013</S></S01-2>"
+'Barcode_Scaned str2
+'str2 = "aa999192300790401   002012000000006012<S01-3><S>~10~20~~20~20~~120~210~~20~30~~120~100~~200~300~~490~680~~150~420~~100~200~~10~20~~250~300~~350~200~~300~200~~300~150~~200~190~~2150~2360~~10~20~~30~40~~210~200~~1"
+'Barcode_Scaned str2
+'str2 = "aa999192300790401   00201200000000701220~310~~240~200~~120~100~~120~320~~850~1190~~400~100~~200~10~~20~30~~100~200~~210~310~~230~310~~1160~960~~4160~4510~~10~10~~500~570~~4670~5090~kjvfkw~26/11/2013</S></S01-3>"
+'Barcode_Scaned str2
+'str2 = "aa999192300790401   002012000000008012<S01-4><S>50~0~60~110~70~60~10~0~20~10~20~20~20~0~10~50~30~20~20~0~30~50~20~20~230~0~220~150~230~270~10~0~10~20~20~30~120~0~100~10~120~230~100~0~110~120~90~10~100~0~10~120~20~110~90~0~80~0~170~10~30~0~20~20~40~60~10~0~10~10~20~50~20~0~10~10~20~10~210~0~190~170~230~130~100~0~90~80~110~70~110~0~100~90~120~60~200~0~190~180~170~160~250~0~200~150~300~100~190~0~180~170~160~150~180~0~170~160~150~100~100~0~80~60~120~20~150~0~100~50~20~10~190~0~150~100~100~50~100~0~190~150~140~20~650~0~450~500~600~150~200~0~150~200~150~50~"
+'Barcode_Scaned str2
+'str2 = "aa999192300790401   002012000000009012200~0~150~200~150~50~250~0~150~100~300~50~100~0~50~30~120~20~330~0~250~210~180~120~80~0~70~60~50~10~100~0~80~70~60~50~150~0~100~80~70~60~460~0~380~300~460~20~150~0~100~90~80~70~120~0~100~50~170~-50~90~0~90~80~100~-10~100~0~90~80~110~10~100~0~20~30~20~10~420~0~340~270~450~110~100~0~90~80~70~50~120~0~100~90~130~10~200~0~150~100~250~50~5~0~5~5~5~5~329~0~299~279~189~169~9~0~9~9~9~9~120~0~100~90~10~10~200~0~190~180~170~150~210~0~200~190~170~160~500~0~450~400~300~200~0~250~400~150~250~290~0~190~180~150~30~160~0~0~0~0~0~"
+'Barcode_Scaned str2
+'str2 = "aa999192300790401   0020120000000100120~0~1590~1269~880~399~1201~0~400~380~360~20~380~0~200~190~180~10~190~0~200~190~180~10~190~0~90~80~70~10~80~0~50~10~10~10~50~0~100~90~80~10~90~0~150~100~50~50~100~0~250~200~100~100~150~0~200~150~100~50~150~0~150~150~10~140~10~0~200~109~100~9~191~0~250~200~150~50~200~0~300~250~200~50~250~0~1120~870~520~500~750~0~100~200~100~100~10~0~20~20~20~20~20~0~100~100~50~30~20~0~150~100~100~50~150~0~150~100~50~50~100~0~200~50~100~50~250~0~200~150~50~100~100~0~200~150~50~100~100~0~740~410~250~200~330~0~200~200~100~100~100~0~250"
+'Barcode_Scaned str2
+'str2 = "aa999192300790401   002012000000011012~100~50~10~20~0~190~90~80~80~110~0~50~40~30~20~10~0~50~30~40~10~20~0~90~20~10~50~80~0~100~20~20~10~100~0~20~10~10~100~20~0~90~80~70~50~80~0~310~70~150~100~292~0~20~20~100~50~100~0~90~10~10~10~90~0~100~20~20~20~2~0~100~20~20~20~100~0~400~330~20~220~90~0~200~130~10~120~80~0~200~200~10~100~10~0~500~180~180~80~500~0~100~20~30~40~110~0~200~130~120~10~190~0~200~30~30~30~200~0~250~100~250~120~400~0~500~120~200~300~120~0~200~100~200~300~300~0~290~100~100~30~290~0~200~10~20~20~210~0~90~90~80~10~80~600~470~310~230~680~390~1"
+'Barcode_Scaned str2
+'str2 = "aa999192300790401   00201200000001201200~80~80~50~130~50~200~150~80~70~210~140~200~120~100~100~200~120~100~120~50~10~140~80~100~90~80~80~100~90~180~120~150~170~160~140~100~20~30~40~90~30~50~60~70~80~40~70~30~40~50~50~30~40~45~50~55~60~40~55~100~120~130~140~90~130~150~100~40~45~145~105~120~100~120~90~150~70~120~50~60~80~100~70~100~20~30~40~90~30~20~30~30~40~10~40~50~50~60~70~40~60~50~50~60~70~40~60~30~30~30~40~20~40~100~90~80~80~100~90~100~200~300~350~50~250~100~200~10~20~90~210~100~50~10~20~90~60~50~55~55~55~50~55~100~110~120~130~90~120~~</S></S01-4>"
+'Barcode_Scaned str2
+
+'str2 = "aa999982300790401   11201300100200100301/0114/06/2006<S01><S>2100462770</S><S>0~x~x~01/01/2013~1~0~0~1~~26/11/2013~abctvxq</S><S>12.55~1~12~12.55~1~23~-22~24.55"
+'Barcode_Scaned str2
+'str2 = "aa999982300790401   112013001002002003</S><S>12334~vssc~12211~ugfg~1233~asasasa ~23455~4rew4~eg455~2343343</S><S>du©n~kh123~duan~26/11/2013</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999982300790401   112013001002003003<S01-1><S>-22</S><S>2300790384~gfsdgf~20~-4~~2300790384~efwef~20~-4~~0200471077~sdfdsf~20~-4~~1400633697~dsfew~20~-4~~2300790384~ewrewr~20~-4~</S><S>100~-20</S></S01-1>"
+'Barcode_Scaned str2
+
+str2 = "aa999642100343639   11201300100100100101/0101/01/2009<S01><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/001~AB/12T~10~0000001~0000010~26/12/2013~test~6868686868~1321321~01/10/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/002~AB/12T~10~0000011~0000020~26/12/2013~dfsf~6868686868~23432~01/01/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/003~AB/12T~10~0000021~0000030~26/12/2013~dsfqwer~6868686868~4325435~01/01/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/004~AB/12T~10~0000031~0000040~26/12/2013~12e~6868686868~435435~01/01/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/005~AB/12T~10~0000041~0000050~26/12/2013~ewrrw~6868686868~5234234~01/01/2013~</S><S>~~dsgfdgfdgbd~26/11/2013~fsdgsdfds</S></S01>"
 Barcode_Scaned str2
 
 End Sub
@@ -4002,6 +4030,14 @@ On Error GoTo ErrHandle
     ' An chi
     If (Val(strID) >= 64 And Val(strID) <= 68) Or Val(strID) = 91 Then
             ' An chi
+                    ' 01/TBAC
+        If Val(strID) = 64 Then
+            arrCT = Split(strData, "~")
+            If Trim(arrCT(UBound(arrCT) - 1)) <> "" Then
+                ngayPS = arrCT(UBound(arrCT) - 1)
+                isTKLanPS = True
+            End If
+        End If
             If Not getSoTTTK_AC(changeMaToKhai(strID), arrStrHeaderData, strData) Then
                 DisplayMessage "0079", msOKOnly, miCriticalError
                 Exit Function
@@ -4011,6 +4047,7 @@ On Error GoTo ErrHandle
         isTKLanPS = False
         isTKThang = False
         ngayPS = ""
+
         ' 02/TNDN
         If Val(strID) = 73 Then
             arrCT = Split(strData, "~")
@@ -4642,8 +4679,8 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
     Dim strResultNNT As String
     
     'Du lieu gia lap de test
-'        Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-'        strResultNNT = "sdfsfds"
+        Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+        strResultNNT = "sdfsfds"
     
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         Dim cfigXml As New MSXML.DOMDocument
@@ -4689,7 +4726,7 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
         paXmlDoc.save sParamNNT
 
 '        'Return value from ESB
-        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+'        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
 
         strResultNNT = ChangeTagASSCII(strResultNNT, False)
         xmlResultNNT.loadXML strResultNNT
@@ -4818,8 +4855,8 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
     
     
     'Du lieu gia lap de test
-'    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
-'    strResultDLT = "sdfsfds"
+    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
+    strResultDLT = "sdfsfds"
     
     'Neu khong co thong tin NNT thi exit luon
     If (strTaxIDString = "" Or strTaxIDString = vbNullString) Then
@@ -4872,7 +4909,7 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
         paXmlDoc.save sParamDLT
 
 '        'Return value from ESB
-        strResultDLT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+'        strResultDLT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
 
         strResultDLT = ChangeTagASSCII(strResultDLT, False)
         xmlResultDLT.loadXML strResultDLT
@@ -5000,8 +5037,8 @@ On Error GoTo ErrHandle
     Dim strResultNNT As String
 
    'Du lieu gia lap de test
-'    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-'    strResultNNT = "test"
+    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+    strResultNNT = "test"
 
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         Dim cfigXml As New MSXML.DOMDocument
@@ -5044,7 +5081,7 @@ On Error GoTo ErrHandle
         paXmlDoc.save sParamNNT
 
 '        'Return value from ESB
-        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+'        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
 
         strResultNNT = ChangeTagASSCII(strResultNNT, False)
         xmlResultNNT.loadXML strResultNNT
