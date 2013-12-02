@@ -1000,7 +1000,7 @@ Private Function GetMP10Previous(ByRef strValue As String) As Boolean
         MY = DateSerial(TAX_Utilities_New.Year, TAX_Utilities_New.Month, 1)
         MY = DateAdd("M", -1, MY)
         
-        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("95", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
+        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("04", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
         If .Load(strDataFileName) = True Then
             Set xmlNode = .nodeFromID("P_" & rowCt26)
             strM13Target = GetAttribute(xmlNode, "Value")
@@ -1057,7 +1057,7 @@ Private Sub setMP10Target()
         MY = DateAdd("M", -1, MY)
         strOriginDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(1), "DataFile") & ".xml"
         strCurrentDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_" & TAX_Utilities_New.Month & TAX_Utilities_New.Year & ".xml"
-        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("95", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
+        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("04", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
         
         If xmlDomCurrentData.Load(strCurrentDataFileName) = True Then
             GoTo Tidy_up
@@ -1509,7 +1509,7 @@ Private Function GetMP36Previous(ByRef strValue As String) As Boolean
         End If
         
         If strTkThangQuy = "TK_THANG" Then
-            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("95", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
+            strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("04", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
         ElseIf strTkThangQuy = "TK_QUY" Then
             If TAX_Utilities_New.ThreeMonths > 1 Then
                 strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_0" & TAX_Utilities_New.ThreeMonths - 1 & TAX_Utilities_New.Year & ".xml"
