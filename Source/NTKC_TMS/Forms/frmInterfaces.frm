@@ -908,34 +908,34 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         xmlTK.getElementsByTagName("maTinhNNT")(0).Text = xmlResultNNT.getElementsByTagName("MaTinh")(0).Text
         
         'xmlTK.getElementsByTagName("tenNNT")(0).Text = "test"
-        xmlTK.getElementsByTagName("tenNNT")(0).Text = ConvertStringToUtf8String(xmlResultNNT.getElementsByTagName("TenNNT")(0).Text)
+        xmlTK.getElementsByTagName("tenNNT")(0).Text = xmlResultNNT.getElementsByTagName("TenNNT")(0).Text
         ' xmlTK.getElementsByTagName("dchiNNT")(0).Text = "test"
-        xmlTK.getElementsByTagName("dchiNNT")(0).Text = ConvertStringToUtf8String(xmlResultNNT.getElementsByTagName("DiaChi")(0).Text)
+        xmlTK.getElementsByTagName("dchiNNT")(0).Text = xmlResultNNT.getElementsByTagName("DiaChi")(0).Text
         xmlTK.getElementsByTagName("dthoaiNNT")(0).Text = xmlResultNNT.getElementsByTagName("DienThoai")(0).Text
         xmlTK.getElementsByTagName("faxNNT")(0).Text = xmlResultNNT.getElementsByTagName("Fax")(0).Text
         xmlTK.getElementsByTagName("emailNNT")(0).Text = xmlResultNNT.getElementsByTagName("Email")(0).Text
         'xmlTK.getElementsByTagName("mst")(0).Text = xmlResultNNT.getElementsByTagName("MaSoThue")(0).Text
         
-        xmlTK.getElementsByTagName("tenHuyenNNT")(0).Text = ConvertStringToUtf8String(xmlResultNNT.getElementsByTagName("TenQuanHuyen")(0).Text)
-        xmlTK.getElementsByTagName("tenTinhNNT")(0).Text = ConvertStringToUtf8String(xmlResultNNT.getElementsByTagName("TenTinh")(0).Text)
+        xmlTK.getElementsByTagName("tenHuyenNNT")(0).Text = xmlResultNNT.getElementsByTagName("TenQuanHuyen")(0).Text
+        xmlTK.getElementsByTagName("tenTinhNNT")(0).Text = xmlResultNNT.getElementsByTagName("TenTinh")(0).Text
     End If
     
     xmlTK.getElementsByTagName("mst")(0).Text = strMaNNT
     
     If (xmlResultDLT.hasChildNodes And (InStr(xmlResultDLT.xml, "fault_code") <= 0)) Then
         ' xmlTK.getElementsByTagName("tenDLyThue")(0).Text = "test"
-        xmlTK.getElementsByTagName("tenDLyThue")(0).Text = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("TenNNT")(0).Text)
+        xmlTK.getElementsByTagName("tenDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("TenNNT")(0).Text
         'xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = "test"
-        xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("DiaChi")(0).Text)
+        xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("DiaChi")(0).Text
         xmlTK.getElementsByTagName("dthoaiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("DienThoai")(0).Text
         xmlTK.getElementsByTagName("faxDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Fax")(0).Text
         xmlTK.getElementsByTagName("emailDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Email")(0).Text
         xmlTK.getElementsByTagName("soHDongDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("SoHopDong")(0).Text
         xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("NgayHopDong")(0).Text
-        xmlTK.getElementsByTagName("tenTinhDLyThue")(0).Text = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("TenTinh")(0).Text)
-        xmlTK.getElementsByTagName("tenHuyenDLyThue")(0).Text = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("TenQuanHuyen")(0).Text)
-        xmlTK.getElementsByTagName("maHuyenDLyThue")(0).Text = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("MaQuanHuyen")(0).Text)
-        xmlTK.getElementsByTagName("maTinhDLyThue")(0).Text = ConvertStringToUtf8String(xmlResultDLT.getElementsByTagName("MaTinh")(0).Text)
+        xmlTK.getElementsByTagName("tenTinhDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("TenTinh")(0).Text
+        xmlTK.getElementsByTagName("tenHuyenDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("TenQuanHuyen")(0).Text
+        xmlTK.getElementsByTagName("maHuyenDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("MaQuanHuyen")(0).Text
+        xmlTK.getElementsByTagName("maTinhDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("MaTinh")(0).Text
     End If
     
     xmlTK.getElementsByTagName("mstDLyThue")(0).Text = strMaDLT
@@ -2343,7 +2343,7 @@ Private Sub Command1_Click()
 'str2 = "aa999982300790401   112013001002003003<S01-1><S>-22</S><S>2300790384~gfsdgf~20~-4~~2300790384~efwef~20~-4~~0200471077~sdfdsf~20~-4~~1400633697~dsfew~20~-4~~2300790384~ewrewr~20~-4~</S><S>100~-20</S></S01-1>"
 'Barcode_Scaned str2
 
-str2 = "aa999642100343639   11201300100100100101/0101/01/2009<S01><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/001~AB/12T~10~0000001~0000010~26/12/2013~test~6868686868~1321321~01/10/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/002~AB/12T~10~0000011~0000020~26/12/2013~dfsf~6868686868~23432~01/01/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/003~AB/12T~10~0000021~0000030~26/12/2013~dsfqwer~6868686868~4325435~01/01/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/004~AB/12T~10~0000031~0000040~26/12/2013~12e~6868686868~435435~01/01/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/005~AB/12T~10~0000041~0000050~26/12/2013~ewrrw~6868686868~5234234~01/01/2013~</S><S>~~dsgfdgfdgbd~26/11/2013~fsdgsdfds</S></S01>"
+str2 = "aa999642300790401   11201300100100100101/0101/01/2009<S01><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/001~AB/12T~10~0000001~0000010~26/12/2013~test~6868686868~1321321~01/10/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/002~AB/12T~10~0000011~0000020~26/12/2013~dfsf~6868686868~23432~01/01/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/003~AB/12T~10~0000021~0000030~26/12/2013~dsfqwer~6868686868~4325435~01/01/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/004~AB/12T~10~0000031~0000040~26/12/2013~12e~6868686868~435435~01/01/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/005~AB/12T~10~0000041~0000050~26/12/2013~ewrrw~6868686868~5234234~01/01/2013~</S><S>~~dsgfdgfdgbd~26/11/2013~fsdgsdfds</S></S01>"
 Barcode_Scaned str2
 
 End Sub
@@ -4726,7 +4726,7 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
         paXmlDoc.save sParamNNT
 
 '        'Return value from ESB
-'        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
 
         strResultNNT = ChangeTagASSCII(strResultNNT, False)
         xmlResultNNT.loadXML strResultNNT
