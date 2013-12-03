@@ -6598,11 +6598,11 @@ Private Sub SetActiveValueKHBS()
         SetAttribute TAX_Utilities_New.NodeValidity.childNodes(3), "Active", 1
     ElseIf varMenuId = "88" Then
         SetAttribute TAX_Utilities_New.NodeValidity.childNodes(3), "Active", 1
-    ElseIf varMenuId = "11" Then
+    ElseIf varMenuId = "11" Or varMenuId = "73" Then
         SetAttribute TAX_Utilities_New.NodeValidity.childNodes(2), "Active", 1
     ElseIf varMenuId = "12" Or varMenuId = "82" Or varMenuId = "85" Or varMenuId = "90" Then
         SetAttribute TAX_Utilities_New.NodeValidity.childNodes(2), "Active", 1
-    ElseIf varMenuId = "06" Or varMenuId = "73" Or varMenuId = "70" Or varMenuId = "77" Then
+    ElseIf varMenuId = "06" Or varMenuId = "70" Or varMenuId = "77" Then
         SetAttribute TAX_Utilities_New.NodeValidity.childNodes(1), "Active", 1
     ElseIf varMenuId = "05" Or varMenuId = "80" Then
         SetAttribute TAX_Utilities_New.NodeValidity.childNodes(3), "Active", 1
