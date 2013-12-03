@@ -110,30 +110,31 @@ Public Sub Prepare2()
             .SetText .ColLetterToNumber("F"), countRowDynamic + 41, strDvcq
             .SetText .ColLetterToNumber("F"), countRowDynamic + 39, strTenDvcq
         'lay ten nguoi ky tren header
-        .Row = countRowDynamic + 47
-        .Col = .ColLetterToNumber("AA")
+        .Row = countRowDynamic + 48
+        .Col = .ColLetterToNumber("Q")
         If Trim(.Text) = "" Then
             nguoiky = GetNguoiKy()
-            .SetText .ColLetterToNumber("AA"), countRowDynamic + 47, nguoiky
+            .SetText .ColLetterToNumber("Q"), countRowDynamic + 48, nguoiky
         End If
         
-'         'Xoa cong thuc cua o Chu ky
-'        Set xmlCellNode = TAX_Utilities_New.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 35))
-'        Set xmlCellNode = xmlCellNode.parentNode
-'        Set xmlCellNode = xmlCellNode.parentNode
-'        Set xmlCellNode = xmlCellNode.parentNode.lastChild
-'        Set xmlCellNode = xmlCellNode.firstChild
-'        Set xmlCellNode = xmlCellNode.lastChild
-'        ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
-'        .Row = iRow
-'        .Col = iCol
-'        .Formula = ""
+         'Xoa cong thuc cua o Chu ky
+        Set xmlCellNode = TAX_Utilities_New.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 35))
+        Set xmlCellNode = xmlCellNode.parentNode
+        Set xmlCellNode = xmlCellNode.parentNode
+        Set xmlCellNode = xmlCellNode.parentNode.lastChild
+        Set xmlCellNode = xmlCellNode.firstChild
+        Set xmlCellNode = xmlCellNode.lastChild
+        ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+        .Row = iRow
+        .Col = iCol
+        .Formula = ""
         
-'        ' Set format ngay ky
-'        .Row = countRowDynamic + 45
-'        .Col = .ColLetterToNumber("AA")
-'        .Text = Format(Date, "dd/mm/yyyy")
-'        .TypeHAlign = TypeHAlignLeft
+        ' Set format ngay ky
+        .Row = countRowDynamic + 46
+        .Col = .ColLetterToNumber("Q")
+        '.Text = Format(Date, "dd/mm/yyyy")
+        .Text = TAX_Utilities_New.Day & "/" & TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year
+        .TypeHAlign = TypeHAlignLeft
         
         .EventEnabled(EventAllEvents) = True
     End With
@@ -383,7 +384,7 @@ Private Sub CheckDynamicError()
     Dim vTarget22                As Variant, vTarget20 As Variant, vTarget21 As Variant, vPhatHanh As Variant, vDieuChinh As Variant, arrDate() As String, vDaiDienPL As Variant
     Dim countRow                 As Long, rowDes As Long, vErrExist As Variant, iCountChange As Integer
     Dim vGiaTriThayDoiCheckTrung As Variant, vGiaTriThayDoi As Variant
-    
+
     With fps
         .Sheet = .SheetCount
         .GetText .ColLetterToNumber("E"), 20, vTarget20 ' du lieu bat buoc phai nhap
@@ -396,7 +397,6 @@ Private Sub CheckDynamicError()
 
         If (Len(vPhatHanh) > 0) Then
             arrDate = Split(CStr(vPhatHanh), "/")
-
             If DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0))) >= DateSerial(CInt(TAX_Utilities_New.Year), CInt(TAX_Utilities_New.Month), CInt(TAX_Utilities_New.Day)) Then
                 iFlagNgayCoThongBaoPhatHanh = 1
                 .Col = .ColLetterToNumber("F")
@@ -411,7 +411,6 @@ Private Sub CheckDynamicError()
             End If
 
         Else
-
             iFlagEmpty = 1
             .Col = .ColLetterToNumber("F")
             .Row = 30
@@ -462,19 +461,15 @@ Private Sub CheckDynamicError()
         '3.validate
         .Sheet = 1
         .Row = 35
-
         Do
             .Col = .ColLetterToNumber("C")
-
             If (.Text <> vbNullString) Then
                 .Col = .ColLetterToNumber("D")
-
                 If (Trim(.Text) = vbNullString) Then
                     .Col = .ColLetterToNumber("D")
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                     .CellNote = vTarget20      'static
                     .BackColor = mErrorColor
-
                     iFlagEmpty = 1
                 Else
                     .Col = .ColLetterToNumber("D")
@@ -483,18 +478,14 @@ Private Sub CheckDynamicError()
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 End If
             End If
-
             .Col = .ColLetterToNumber("C")
-
             If (.Text <> vbNullString) Then
                 .Col = .ColLetterToNumber("M")
-
                 If (Trim(.Text) = vbNullString) Then
                     .Col = .ColLetterToNumber("M")
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                     .CellNote = vTarget20      'static
                     .BackColor = mErrorColor
-
                     iFlagEmpty = 1
                 Else
                     .Col = .ColLetterToNumber("M")
@@ -503,7 +494,6 @@ Private Sub CheckDynamicError()
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 End If
             End If
-
             .Row = .Row + 1
             .Col = .ColLetterToNumber("B")
         Loop Until .Text = "aa"
