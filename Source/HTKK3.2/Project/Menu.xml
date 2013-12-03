@@ -73,7 +73,7 @@
 	<Menu ID="11" PopID="101" ParentID="101_2" Caption="Tờ khai thuế TNDN tạm tính (01A/TNDN)" FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\excel\01A_TNDN.xls" ReportTemplate="..\ReportTemplates\excel\01A_TNDN.xls" Class="TAX_Business.cls_01ATNDN" Class2="TAX_Business.clsReport002">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01A_TNDN" InterfaceIni="..\InterfaceIni\01A_TNDN.xml" ReportIni="..\ReportIni\01A_TNDN.xml"/>
-			<Sheet ID="01-1" Caption="PL 05/TNDN " Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01A_1_TNDN" InterfaceIni="..\InterfaceIni\01A_1_TNDN.xml" ReportIni="..\ReportIni\01A_1_TNDN.xml"/>
+			<Sheet ID="01-1" Caption="PL 01-1/TNDN " Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01A_1_TNDN" InterfaceIni="..\InterfaceIni\01A_1_TNDN.xml" ReportIni="..\ReportIni\01A_1_TNDN.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01A_TNDN" InterfaceIni="..\InterfaceIni\KHBS_01A_TNDN.xml" ReportIni="..\ReportIni\KHBS_01A_TNDN.xml"/>
 		</Validity>
 	</Menu>
@@ -81,7 +81,7 @@
 	<Menu ID="12" PopID="101" ParentID="101_2" Caption="Tờ khai thuế TNDN tạm tính (01B/TNDN)" FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\excel\01B_TNDN.xls" ReportTemplate="..\ReportTemplates\excel\01B_TNDN.xls" Class="TAX_Business.cls_01BTNDN" Class2="TAX_Business.clsReport002">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01B_TNDN" InterfaceIni="..\InterfaceIni\01B_TNDN.xml" ReportIni="..\ReportIni\01B_TNDN.xml"/>
-			<Sheet ID="01-1" Caption="PL 05/TNDN " Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01B_1_TNDN" InterfaceIni="..\InterfaceIni\01B_1_TNDN.xml" ReportIni="..\ReportIni\01B_1_TNDN.xml"/>
+			<Sheet ID="01-1" Caption="PL 01-1/TNDN " Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01B_1_TNDN" InterfaceIni="..\InterfaceIni\01B_1_TNDN.xml" ReportIni="..\ReportIni\01B_1_TNDN.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01B_TNDN" InterfaceIni="..\InterfaceIni\KHBS_01B_TNDN.xml" ReportIni="..\ReportIni\KHBS_01B_TNDN.xml"/>
 		</Validity>
 	</Menu>
