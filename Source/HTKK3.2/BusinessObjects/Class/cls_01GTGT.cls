@@ -669,7 +669,7 @@ Dim NguoiKyCol As Long, NguoiKyRow As Long
                     LockCellBySheet
             End If
             
-            If .ActiveSheet = sheetPl01_3_GTGT Then
+            If .ActiveSheet = sheetPl01_7_GTGT Then
                     i = 1
                     .Col = .ColLetterToNumber("B")
                     .Row = 8

@@ -94,7 +94,7 @@ Public Sub Prepare2()
             UpdateCell fps, .ColLetterToNumber("AI"), 54, ngay & "/" & TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year
         End If
 
-        'set to khai chinh thuc hay bao xung
+        'set to khai chinh thuc hay bao sung
         If StrTKThang_PS = "TK_THANG" Then
             .Col = .ColLetterToNumber("P")
             .Row = 54
@@ -148,29 +148,12 @@ Public Sub Prepare2()
 
         End If
         
-               'ma NNKD
+        'ma NNKD
         .Col = .ColLetterToNumber("T")
         .Row = 54
         .Text = strLoaiNNKD
         UpdateCell fps, .Col, .Row, .Text
-
         
-'        blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-'
-'        If blCheck_S2 = True Then
-'            .Col = .ColLetterToNumber("Z")
-'            .Row = 16
-'            .value = 1
-'            UpdateCell fps, .Col, .Row, .value
-'
-'        Else
-'            .Col = .ColLetterToNumber("Z")
-'            .Row = 16
-'            .value = 0
-'            UpdateCell fps, .Col, .Row, .value
-'        End If
-
-
         .Sheet = 1
         .GetText .ColLetterToNumber("AW"), 61, chitieu25
         .GetText .ColLetterToNumber("AW"), 62, chitieu26
@@ -369,150 +352,35 @@ With fps
           End If
            fps.EventEnabled(EventAllEvents) = True
        End If
-       
-       If .ActiveSheet = 1 Then
-            fps.EventEnabled(EventAllEvents) = False
-            If Col = .ColLetterToNumber("K") And (Row = 27) Then
-                ' 12062011
-                ' set lai cac rang buoc cong thuc
-                .Sheet = 1
-                .GetText .ColLetterToNumber("K"), 27, CT26
-                .GetText .ColLetterToNumber("K"), 28, CT27
-                .GetText .ColLetterToNumber("K"), 29, CT28
-                .GetText .ColLetterToNumber("K"), 30, ct29
-                .GetText .ColLetterToNumber("K"), 31, CT30
-                .GetText .ColLetterToNumber("K"), 32, ct31
-                .GetText .ColLetterToNumber("K"), 33, ct32
-                ' set chi tieu 28
-                'sua bat loi theo chi tieu [26]<0 thi lock 28-32
-'                If Val(CT26) - Val(CT27) < 0 Then
-'                   .Row = 29
-'                   .Col = .ColLetterToNumber("K")
-'                   .value = 0
-'                   .Lock = True
-'                   UpdateCell fps, .Col, .Row, 0
-'                Else
-'                   .Row = 29
-'                   .Col = .ColLetterToNumber("K")
-'                   .Lock = False
-'                End If
-                ' set lai gia tri 30,31,32
-                If Val(CT26) <= 0 Then
-                    '28
-                    .Row = 29
-                   .Col = .ColLetterToNumber("K")
-                   .value = 0
-                   .Lock = True
-                   UpdateCell fps, .Col, .Row, 0
-                   '30
-                   .Row = 31
-                   .Col = .ColLetterToNumber("K")
-                   .value = 0
-                   .Lock = True
-                   UpdateCell fps, .Col, .Row, 0
-                   
-                   .Row = 32
-                   .Col = .ColLetterToNumber("K")
-                   .value = 0
-                   .Lock = True
-                   UpdateCell fps, .Col, .Row, 0
-                   
-                   .Row = 33
-                   .Col = .ColLetterToNumber("K")
-                   .value = 0
-                   .Lock = True
-                   UpdateCell fps, .Col, .Row, 0
-                Else
-                    .Row = 29
-                   .Col = .ColLetterToNumber("K")
-                   .Lock = False
-                    
-                   .Row = 31
-                   .Col = .ColLetterToNumber("K")
-                   .Lock = False
-                   
-                   .Row = 32
-                   .Col = .ColLetterToNumber("K")
-                   .Lock = False
-                   
-                   .Row = 33
-                   .Col = .ColLetterToNumber("K")
-                   .Lock = False
-                End If
-           End If
-           fps.EventEnabled(EventAllEvents) = True
-       End If
+ 
      mblKhoiDauToKhai = False
    End With
    
 End Sub
 
 Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
-Dim i As Integer, iCol As Long, iRow As Long
-Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
-Dim txmlCellNode As MSXML.IXMLDOMNode, txmlCellsNode As MSXML.IXMLDOMNode
-Dim tCol As Long, tRow As Long
-Dim strId As Variant, Col7 As Variant, intIndexCombo As Integer
-Dim NguoiKyCol As Long, NguoiKyRow As Long
+    Dim i As Integer, iCol As Long, iRow As Long
     With fps
         iCol = .ActiveCol
         iRow = .ActiveRow
         GetCellSpan fps, iCol, iRow
-        
+        fps.EventEnabled(EventAllEvents) = False
         If (KeyCode = vbKeyF5) Or (KeyCode = vbKeyF6) Then
             If .ActiveSheet = 2 Then
-                   fps.EventEnabled(EventAllEvents) = True
-                    i = 0
-                    .Col = .ColLetterToNumber("C")
-                    .Row = 39
-                    If iRow >= 39 Then
-                        Do
-                             If (.Row = 39 + i * 3) Then
-                                .Text = str(i + 3)
-                                i = i + 1
-                             End If
-                             .Col = .ColLetterToNumber("C")
-                             .Row = .Row + 1
- '                            i = i + 1
-                        Loop Until .Text = "aa"
-                        .SetActiveCell iCol, iRow
-    
-                        .Row = iRow
-                        .Col = iCol
-                         fps.EventEnabled(EventAllEvents) = False
-                         .SetActiveCell iCol, iRow
-                    End If
-            End If
-            If .ActiveSheet = .SheetCount - 1 Then
-                 fps_Change iCol, iRow
-                 fps.EventEnabled(EventAllEvents) = False
-                    i = 1
-                    .Col = .ColLetterToNumber("B")
-                    .Row = 9
-                    Do
-                         .Text = str(i)
-                         .Col = .ColLetterToNumber("B")
-                         .Row = i + 9
-                         i = i + 1
-                    Loop Until .Text = "aa"
-                    i = 1
-                   .Row = .Row + 3
-                    Do
-                         .Text = str(i)
-                         .Col = .ColLetterToNumber("B")
-                         .Row = 1 + .Row
-                         i = i + 1
-                    Loop Until .Text = "bb"
-                    .SetActiveCell iCol, iRow
-                    .Row = iRow
-                    .Col = iCol
-                    .SetActiveCell iCol, iRow
-                 fps.EventEnabled(EventAllEvents) = True
-            End If
-         End If
-        .EventEnabled(EventAllEvents) = True
+                                i = 1
+                                .Col = .ColLetterToNumber("B")
+                                .Row = 7
+                                Do
+                                     .Text = str(i)
+                                     .Col = .ColLetterToNumber("B")
+                                     .Row = i + 7
+                                     i = i + 1
+                                Loop Until .Text = "aa"
+             End If
+    End If
+  
+      fps.EventEnabled(EventAllEvents) = True
     End With
-    
 End Sub
 
 Private Sub fps_KeyDown(KeyCode As Integer, Shift As Integer)
@@ -1227,32 +1095,7 @@ Public Function ResetData() As Boolean
 End Function
 
 Public Sub SetData()
-   Dim varTemp As Variant
-    Dim ssSheet As Integer
-    Dim lCol As Long, lRow As Long
-    Dim xmlCellNode As MSXML.IXMLDOMNodeList
-    Dim xmlCellNodeData As MSXML.IXMLDOMNode
-    With fps
-        .EventEnabled(EventAllEvents) = False
-        ssSheet = mCurrentSheet
-        .Sheet = 2
-        mCurrentSheet = .Sheet
-        .Row = 34
-        .Col = .ColLetterToNumber("L")
-        .Text = 100
-        UpdateCell fps, .Col, .Row, .Text
-        .Row = 39
-        .Col = .ColLetterToNumber("C")
-        .Text = 3
-        UpdateCell fps, .Col, .Row, .Text
-
-      .Sheet = .ActiveSheet
-      .EventEnabled(EventAllEvents) = True
-    End With
-    mCurrentSheet = ssSheet
-      
-    Set xmlCellNodeData = Nothing
-    Set xmlCellNode = Nothing        '
+    '
 End Sub
 
 Public Sub Prepare_KHBS()
@@ -1394,16 +1237,16 @@ Private Sub UpdateSheets()
         Next
 
         ' Update lai sheet KHBS
-'        .Sheet = .SheetCount - 1
-'        mCurrentSheet = .Sheet
-'        blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-'        If blCheck_S2 = True Then
-'            For Each xmlCellNodeData In TAX_Utilities_New.Data(.Sheet - 1).getElementsByTagName("Cell")
-'               ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-'                    .GetText lCol, lRow, varTemp
-'                    UpdateCell fps, lCol, lRow, varTemp
-'            Next
-'        End If
+        .Sheet = .SheetCount - 1
+        mCurrentSheet = .Sheet
+        blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        If blCheck_S2 = True Then
+            For Each xmlCellNodeData In TAX_Utilities_New.Data(.Sheet - 1).getElementsByTagName("Cell")
+               ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+                    .GetText lCol, lRow, varTemp
+                    UpdateCell fps, lCol, lRow, varTemp
+            Next
+        End If
 
       .Sheet = .ActiveSheet
       .EventEnabled(EventAllEvents) = True
@@ -1661,7 +1504,7 @@ Public Sub inThongTinDL()
     tuRowDL = 45
     denRowDL = 53
     'TuRow_DenRow_sheet
-    strTuRowDenRowPL = "20_30_2"
+    strTuRowDenRowPL = "11_13_2~20_30_3"
     ' end
 End Sub
 
