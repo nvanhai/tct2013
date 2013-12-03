@@ -1,6 +1,6 @@
 <PL03_4_TNDN>
-	<Dynamic GroupName="ThueTNDNDaNopNN">
-		<thueTNDNDaNopNN id="ID_2">
+	<Dynamic GroupName="BangThongTinThueTNDNDaNopNN">
+		<TTinThueTNDNDaNopNN id="ID_2">
 			<ct2>E_26</ct2>
 			<TNhapNhanDuocONNgoai>
 				<ct3>O_26</ct3>
@@ -19,7 +19,7 @@
 				<ct10>AN_26</ct10>
 				<ct11>AR_26</ct11>
 			</XacDinhThueDuocTru>
-		</thueTNDNDaNopNN>
+		</TTinThueTNDNDaNopNN>
 	</Dynamic>
 	<Static GroupName="PL03_4_TNDN">
 		<tongNgoaiTeTNNN>O_28</tongNgoaiTeTNNN>
