@@ -1,6 +1,6 @@
 <PL03_4_TNDN>
-	<TTinThueTNDNDaNopNN>
-		<thueTNDNDaNopNN id="ID_2">
+	<BangThongTinThueTNDNDaNopNN>
+		<TTinThueTNDNDaNopNN>
 			<ct2></ct2>
 			<TNhapNhanDuocONNgoai>
 				<ct3>1</ct3>
@@ -20,8 +20,8 @@
 				<ct10>1</ct10>
 				<ct11>1</ct11>
 			</XacDinhThueDuocTru>
-		</thueTNDNDaNopNN>
-	</TTinThueTNDNDaNopNN>
+		</TTinThueTNDNDaNopNN>
+	</BangThongTinThueTNDNDaNopNN>
 	<tongNgoaiTeTNNN>1</tongNgoaiTeTNNN>
 	<tongDongVNTNNN>1</tongDongVNTNNN>
 	<tongNgoaiTeDaNopTNNN>1</tongNgoaiTeDaNopTNNN>
