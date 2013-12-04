@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.ocx"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Begin VB.Form frmInterfaces 
    AutoRedraw      =   -1  'True
    Caption         =   "Hç trî kª khai - Phiªn b¶n 2.5.0"
@@ -7896,15 +7896,15 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
         'End If
         If .SheetName = "PL 01-1/TTDB" Then
             fpSpread1_LeaveCell Col, Row, Col, Row, True
-'        ElseIf .SheetName = "PL 04-1/GTGT" And .sheet = 2 Then
-'            'fpSpread1_LeaveCell Col, Row, Col, Row, True
-'            retvalue = 0
-'            'If (retvalue > 0) Then
-'            'End If
-'            retvalue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 8, 11, "aa")
-'            'retValue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 17, 20, "bb") + retValue
-'            'retValue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 26, 29, "cc") + retValue
-'            'retValue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 35, 38, "dd") + retValue
+        ElseIf .SheetName = "PL 04-1/GTGT" And .sheet = 2 Then
+            'fpSpread1_LeaveCell Col, Row, Col, Row, True
+            retvalue = 0
+            'If (retvalue > 0) Then
+            'End If
+            retvalue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 8, 11, "aa")
+            'retValue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 17, 20, "bb") + retValue
+            'retValue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 26, 29, "cc") + retValue
+            'retValue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 35, 38, "dd") + retValue
         End If
         .EventEnabled(EventAllEvents) = True
     End With
@@ -8730,8 +8730,8 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
                         .Col = .ColLetterToNumber("L")
                 End If
             End If
-'        ElseIf .SheetName = "PL 04-1/GTGT" Then
-'            fpSpread1_LeaveCell_PL04_1_GTGT Col, Row, Col, Row, True, 8, 11, "aa"
+        ElseIf .SheetName = "PL 04-1/GTGT" Then
+            fpSpread1_LeaveCell_PL04_1_GTGT Col, Row, Col, Row, True, 8, 11, "aa"
         Else
         .Refresh
         End If
