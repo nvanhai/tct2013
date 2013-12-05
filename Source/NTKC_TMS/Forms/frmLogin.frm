@@ -256,8 +256,8 @@ Private Function IsValidUserESB() As Integer
     Dim strResultNSD As String
     Dim sStatus      As String
     
-            IsValidUserESB = 2
-            Exit Function
+'            IsValidUserESB = 2
+'            Exit Function
     
     strResultNSD = GetDataFromESB(txtUsername.Text, txtPassword.Text, "NSD")
     'Chuan hoa file xml ket qua - lay duoc tu ESB
