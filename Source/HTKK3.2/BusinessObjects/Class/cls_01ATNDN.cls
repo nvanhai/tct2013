@@ -1188,7 +1188,7 @@ Private Sub CheckDynamicError()
     Dim vTyLe As Variant
     Dim iWhiteRow As Integer
     Dim iFlagEmpty As Integer
-    Dim vTenDn As Variant, vCqtCapCuc As Variant, vCqtChiCuc As Variant, vSoThue As Variant
+    Dim vTenDn As Variant, vCQTCapCuc As Variant, vCqtChiCuc As Variant, vSoThue As Variant
     Dim strFocusSheetName As String, strFocusRow As String, strFocusCol As String, iFocusFlag As Integer
     Dim errTongSoThue As Variant
     Dim iFlagTyLe  As Integer
@@ -1330,19 +1330,19 @@ Private Sub CheckDynamicError()
             iWhiteRow = 1
             
             ' lay so thue cua to khai
-'            .GetText .ColLetterToNumber("F"), 7, vCt5
+            .GetText .ColLetterToNumber("F"), 7, vCt5
             
             'check not empty ten doanh nghiep
             .Row = 35
             Do
                 .GetText .ColLetterToNumber("D"), .Row, vTenDn
                 .GetText .ColLetterToNumber("F"), .Row, vMST
-                .GetText .ColLetterToNumber("G"), .Row, vCqtCapCuc
+                .GetText .ColLetterToNumber("G"), .Row, vCQTCapCuc
                 .GetText .ColLetterToNumber("H"), .Row, vCqtChiCuc
                 .GetText .ColLetterToNumber("M"), .Row, vTyLe
                 .GetText .ColLetterToNumber("P"), .Row, vSoThue
                 
-                If Trim$(vTenDn) <> "" Or Trim$(vMST) <> "" Or Trim$(vCqtCapCuc) <> "" Or Trim$(vCqtChiCuc) <> "" Or Trim$(vTyLe) <> "0" Or Trim$(vSoThue) <> "0" Then iWhiteRow = 0
+                If Trim$(vTenDn) <> "" Or Trim$(vMST) <> "" Or Trim$(vCQTCapCuc) <> "" Or Trim$(vCqtChiCuc) <> "" Or Trim$(vTyLe) <> "0" Or Trim$(vSoThue) <> "0" Then iWhiteRow = 0
 
                 If Trim$(vMST) <> vbNullString Then
                        vMST = Replace(vMST, " ", "")
@@ -1403,7 +1403,7 @@ Private Sub CheckDynamicError()
                     .CellNote = ""
                 End If
                 
-                If (vCqtCapCuc = "" And iWhiteRow = 0) Then
+                If (vCQTCapCuc = "" And iWhiteRow = 0) Then
                     .Col = .ColLetterToNumber("G")
                     .BackColor = mErrorColor
                     .CellNote = errEmty

@@ -31,7 +31,7 @@ Public Strloaitk As String
 Public StrSolanBosung As String
 Public strLoaiNNKD As String
 Private Const Row_MSTDN = 12
-Private Const Col_MSTDN = "D"
+Private Const Col_MSTDN = "E"
 Private Const rowStart = 35
 
 ' Kiem tra thong tin dai ly thue
@@ -59,10 +59,10 @@ Public Sub Prepare1()
         
         
     With fps
-        SetDateFormat fps, 1, 54, .ColLetterToNumber("I"), DDMMYYYY
+        SetDateFormat fps, 1, 69, .ColLetterToNumber("J"), DDMMYYYY
         .Sheet = 1
-        .Row = 54
-        .Col = .ColLetterToNumber("I")
+        .Row = 69
+        .Col = .ColLetterToNumber("J")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
           'dhdang sua check gia han nop theo thong tu
@@ -109,32 +109,32 @@ Public Sub Prepare1()
         
         Quynamtc = GetQuyNamTaiChinh(QuyKK, NamKK, iNgayTaiChinh, iThangTaiChinh, 0)
         Namtc = GetQuyNamTaiChinh(QuyKK, NamKK, iNgayTaiChinh, iThangTaiChinh, 1)
-        If (Namtc = 2010 And Quynamtc = 4) Then
-            Thongtu = GetAttribute(GetMessageCellById("0187"), "Msg")
-            .SetText .ColLetterToNumber("C"), 48, Thongtu
-        ElseIf Namtc = 2011 And (Quynamtc = 1 Or Quynamtc = 2) Then
-            Thongtu = GetAttribute(GetMessageCellById("0260"), "Msg")
-            .SetText .ColLetterToNumber("C"), 48, Thongtu
-        ElseIf Namtc = 2011 And (Quynamtc = 3 Or Quynamtc = 4) Then
-            Thongtu = GetAttribute(GetMessageCellById("0243"), "Msg")
-            .SetText .ColLetterToNumber("C"), 48, Thongtu
-        ElseIf Namtc = 2010 And Quynamtc <> 4 Then
-            Thongtu = GetAttribute(GetMessageCellById("0186"), "Msg")
-            .SetText .ColLetterToNumber("C"), 48, Thongtu
-        ElseIf Namtc = 2009 Then
-            Thongtu = GetAttribute(GetMessageCellById("0185"), "Msg")
-            .SetText .ColLetterToNumber("C"), 48, Thongtu
-'        ElseIf Namtc = 2013 And (Quynamtc = 1 Or Quynamtc = 2 Or Quynamtc = 3) Then
+'        If (Namtc = 2010 And Quynamtc = 4) Then
+'            Thongtu = GetAttribute(GetMessageCellById("0187"), "Msg")
+'            .SetText .ColLetterToNumber("C"), 48, Thongtu
+'        ElseIf Namtc = 2011 And (Quynamtc = 1 Or Quynamtc = 2) Then
+'            Thongtu = GetAttribute(GetMessageCellById("0260"), "Msg")
+'            .SetText .ColLetterToNumber("C"), 48, Thongtu
+'        ElseIf Namtc = 2011 And (Quynamtc = 3 Or Quynamtc = 4) Then
+'            Thongtu = GetAttribute(GetMessageCellById("0243"), "Msg")
+'            .SetText .ColLetterToNumber("C"), 48, Thongtu
+'        ElseIf Namtc = 2010 And Quynamtc <> 4 Then
+'            Thongtu = GetAttribute(GetMessageCellById("0186"), "Msg")
+'            .SetText .ColLetterToNumber("C"), 48, Thongtu
+'        ElseIf Namtc = 2009 Then
+'            Thongtu = GetAttribute(GetMessageCellById("0185"), "Msg")
+'            .SetText .ColLetterToNumber("C"), 48, Thongtu
+''        ElseIf Namtc = 2013 And (Quynamtc = 1 Or Quynamtc = 2 Or Quynamtc = 3) Then
+''            Thongtu = GetAttribute(GetMessageCellById("0263"), "Msg")
+''            .SetText .ColLetterToNumber("C"), 48, Thongtu
+'        Else
+''            .SetText .ColLetterToNumber("C"), 48, ""
+''            .Row = 48
+''            .Col = .ColLetterToNumber("B")
+''            .Text = ""
+''            .Lock = True
 '            Thongtu = GetAttribute(GetMessageCellById("0263"), "Msg")
 '            .SetText .ColLetterToNumber("C"), 48, Thongtu
-        Else
-'            .SetText .ColLetterToNumber("C"), 48, ""
-'            .Row = 48
-'            .Col = .ColLetterToNumber("B")
-'            .Text = ""
-'            .Lock = True
-            Thongtu = GetAttribute(GetMessageCellById("0263"), "Msg")
-            .SetText .ColLetterToNumber("C"), 48, Thongtu
             
             ' Ky dc gia han moi set gia tri ly do gia han
             strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_DM_Lydo_GH_TT16.xml")
@@ -147,15 +147,15 @@ Public Sub Prepare1()
                  Next
              End If
                   'set ly do gia han
-            .Row = 50
-            .Col = .ColLetterToNumber("D")
+            .Row = 58
+            .Col = .ColLetterToNumber("H")
             .TypeComboBoxList = strCboLyDo
             ' set Ma ly do gia han
-            .Col = .ColLetterToNumber("O")
+            .Col = .ColLetterToNumber("P")
             .TypeComboBoxList = strCboLyDoAn
-        End If
+        'End If
         '-------------------------------------------------------------------------------
-        SetDateFormat fps, 2, 9, .ColLetterToNumber("D"), DDMMYYYY
+        'SetDateFormat fps, 2, 9, .ColLetterToNumber("D"), DDMMYYYY
         
         SetDateFormat fps, .SheetCount - 1, 23, .ColLetterToNumber("BG"), DDMMYYYY
         .Sheet = .SheetCount - 1 'KHBS
@@ -214,43 +214,43 @@ Public Sub Prepare2()
         UpdateCell fps, .Col, .Row, .Text
          'end
         ' lock 2 chi tieu 27, 28
-        .Col = .ColLetterToNumber("J")
-        .Row = 43
+        .Col = .ColLetterToNumber("K")
+        .Row = 48
         .Lock = True
-        .Row = 44
+        .Row = 49
         .Lock = True
         'end
         'unlock chi tieu 30
-        .Col = .ColLetterToNumber("J")
-        .Row = 46
+        .Col = .ColLetterToNumber("K")
+        .Row = 51
         .Lock = False
         'end
 '        .SetText .ColLetterToNumber("E"), 7, 0
-        .GetText .ColLetterToNumber("G"), 42, chkValue
-        .Col = .ColLetterToNumber("J")
-        .Row = 45
+        .GetText .ColLetterToNumber("H"), 47, chkValue
+        .Col = .ColLetterToNumber("K")
+        .Row = 50
         vFormular = .Formula
         If chkValue = "0" Then
-            .Col = .ColLetterToNumber("J")
-            .Row = 42
+            .Col = .ColLetterToNumber("K")
+            .Row = 47
             If .CellType = 1 Or .CellType = 5 Then
-                FormatTextPercent fps, 1, .ColLetterToNumber("J"), 42, True
+                FormatTextPercent fps, 1, .ColLetterToNumber("K"), 47, True
             End If
-            .Col = .ColLetterToNumber("J")
-            .Row = 45
+            .Col = .ColLetterToNumber("K")
+            .Row = 50
             .Lock = True
-            .Formula = "ROUND(J38*J39/100*J42/100,0)"
+            .Formula = "ROUND(K41*K42/100*K47/100,0)"
         ElseIf chkValue = "1" Or chkValue = "x" Then
             'FormatText fps, 1, .ColLetterToNumber("J"), 42
-            .Col = .ColLetterToNumber("J")
-            .Row = 45
+            .Col = .ColLetterToNumber("K")
+            .Row = 50
             .Lock = False
         Else
-            FormatTextPercent fps, 1, .ColLetterToNumber("J"), 42, False
-            .Col = .ColLetterToNumber("J")
-            .Row = 45
+            FormatTextPercent fps, 1, .ColLetterToNumber("K"), 47, False
+            .Col = .ColLetterToNumber("K")
+            .Row = 50
             .Lock = True
-            .Formula = "ROUND(J38*J39/100*J42/100,0)"
+            .Formula = "ROUND(K41*K42/100*K47/100,0)"
         End If
         
         
@@ -259,7 +259,7 @@ Public Sub Prepare2()
             vThuephainop = GetAttribute(xmlNode, "Value")
             Set xmlNode = Nothing
           
-         .Sheet = .SheetCount - 1 'KHBS
+          .Sheet = .SheetCount - 1 'KHBS
             Dim cCol As Long, cRow As Long
           '  .ActiveSheet = .Sheet
             Set xmlNode = TAX_Utilities_New.Data(.SheetCount - 2).childNodes(2).childNodes(2).lastChild.lastChild
@@ -321,34 +321,57 @@ Public Sub Prepare2()
          
          ' Neu check gia han moi cho phep chon GT
          .Sheet = 1
-        .Col = .ColLetterToNumber("B")
-        .Row = 48
+        .Col = .ColLetterToNumber("F")
+        .Row = 56
         If .Text = "1" Or UCase$(.Text) = "X" Then
-            .Col = .ColLetterToNumber("D")
-            .Row = 50
+            '
+            .Col = .ColLetterToNumber("H")
+            .Row = 56
+            .Lock = False
+            '
+            .Col = .ColLetterToNumber("H")
+            .Row = 58
+            .Lock = False
+            '
+            .Col = .ColLetterToNumber("H")
+            .Row = 60
+            .Lock = False
+            '
+            .Col = .ColLetterToNumber("H")
+            .Row = 62
             .Lock = False
         Else
-            .Col = .ColLetterToNumber("D")
-            .Row = 50
+            .Col = .ColLetterToNumber("H")
+            .Row = 56
+            .Lock = True
+            '
+            .Col = .ColLetterToNumber("H")
+            .Row = 58
+            .Lock = True
+            '
+            .Col = .ColLetterToNumber("H")
+            .Row = 60
+            .Lock = True
+            '
+            .Col = .ColLetterToNumber("H")
+            .Row = 62
             .Lock = True
         End If
         ' End set gia han
          
-'         'set lai stt cho cac cot dong sheet 2
-'         .Sheet = 2
-'         If .SheetVisible = True Then
-'                    i = 0
-'                    .Col = .ColLetterToNumber("C")
-'                    .Row = 35
-'                    If .Row >= 35 Then
-'                        Do
-'                             .Col = .ColLetterToNumber("C")
-'                             .Row = .Row + 1
-'                             .Text = str(i + 1)
-'                             i = i + 1
-'                        Loop Until .Text = "aa"
-'                    End If
-'            End If
+         'set lai stt cho cac cot dong sheet 2
+         .Sheet = 2
+         If .SheetVisible = True Then
+                    i = 1
+                   .Col = .ColLetterToNumber("C")
+                    .Row = 35
+                    Do
+                         .Text = str(i)
+                         .Col = .ColLetterToNumber("C")
+                         .Row = i + 35
+                         i = i + 1
+                    Loop Until .Text = "aa"
+            End If
         
 '        If TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0" Then
 '            setFomula
@@ -373,27 +396,27 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
         Case 1
             'Thuc hien khi chon Checkbox
              ' neu check thue suat 20 % thi set chi tieu 25 = 20%
-            If (Col = fps.ColLetterToNumber("E") And Row = 6) Then
-                fps.Sheet = fps.ActiveSheet
-                fps.Col = Col
-                fps.Row = Row
-                If (fps.value = 1 Or UCase$(fps.value) = "X") Then
-                    fps.Row = 41
-                    fps.Col = fps.ColLetterToNumber("J")
-                    fps.Text = 20
-                    fps.Lock = True
-                    UpdateCell fps, fps.Col, fps.Row, fps.Text
-                Else
-                    fps.Row = 41
-                    fps.Col = fps.ColLetterToNumber("J")
-                    fps.Text = 0
-                    fps.Lock = False
-                    UpdateCell fps, fps.Col, fps.Row, fps.Text
-                End If
-            End If
+'            If (Col = fps.ColLetterToNumber("E") And Row = 6) Then
+'                fps.Sheet = fps.ActiveSheet
+'                fps.Col = Col
+'                fps.Row = Row
+'                If (fps.value = 1 Or UCase$(fps.value) = "X") Then
+'                    fps.Row = 41
+'                    fps.Col = fps.ColLetterToNumber("J")
+'                    fps.Text = 20
+'                    fps.Lock = True
+'                    UpdateCell fps, fps.Col, fps.Row, fps.Text
+'                Else
+'                    fps.Row = 41
+'                    fps.Col = fps.ColLetterToNumber("J")
+'                    fps.Text = 0
+'                    fps.Lock = False
+'                    UpdateCell fps, fps.Col, fps.Row, fps.Text
+'                End If
+'            End If
             
             'xu ly voi checkbox doanh nghiep co hach toan phu thuoc
-            If (Col = .ColLetterToNumber("E") And Row = 7) Or (Col = .ColLetterToNumber("E") And Row = 6) Then
+            If (Col = .ColLetterToNumber("F") And Row = 7) Or (Col = .ColLetterToNumber("F") And Row = 6) Then
                 .Sheet = .ActiveSheet
                 .Row = Row
                 .Col = Col
@@ -401,32 +424,32 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
             End If
             'end
             ' neu check thue suat 20 % thi set chi tieu 25 = 20%
-            If (Col = .ColLetterToNumber("E") And Row = 6) Then
-                .Sheet = .ActiveSheet
-                .Col = Col
-                .Row = Row
-                If (.value = 1 Or UCase$(.value) = "X") Then
-                    .Row = 41
-                    .Col = .ColLetterToNumber("J")
-                    .Text = 20
-                    UpdateCell fps, .Col, .Row, .Text
-                Else
-                    .Row = 41
-                    .Col = .ColLetterToNumber("J")
-                    .Text = 0
-                    UpdateCell fps, .Col, .Row, .Text
-                End If
-            End If
+'            If (Col = .ColLetterToNumber("E") And Row = 6) Then
+'                .Sheet = .ActiveSheet
+'                .Col = Col
+'                .Row = Row
+'                If (.value = 1 Or UCase$(.value) = "X") Then
+'                    .Row = 41
+'                    .Col = .ColLetterToNumber("J")
+'                    .Text = 20
+'                    UpdateCell fps, .Col, .Row, .Text
+'                Else
+'                    .Row = 41
+'                    .Col = .ColLetterToNumber("J")
+'                    .Text = 0
+'                    UpdateCell fps, .Col, .Row, .Text
+'                End If
+'            End If
             
-            'xu ly voi checkbox doanh nghiep co hach toan phu thuoc
-            If Col = .ColLetterToNumber("B") And Row = 48 Then
+            'xu ly voi checkbox gia han
+            If Col = .ColLetterToNumber("F") And Row = 56 Then
                 .Sheet = .ActiveSheet
                 .Row = Row
                 .Col = Col
                 UpdateCell fps, .Col, .Row, IIf(.value = 1, "x", vbNullString)
             End If
             'end
-            If Col = .ColLetterToNumber("G") And Row = 42 Then
+            If Col = .ColLetterToNumber("H") And Row = 47 Then
                 .Sheet = .ActiveSheet
                 .Row = Row
                 .Col = Col
@@ -442,29 +465,29 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                     Else 'Khi chon xoa
                         'Xoa du lieu chi tieu 15, 18 va cho phep nhap cot 18, format lai cot 15
                         
-                        Set xmlCellNode = TAX_Utilities_New.Data(1 - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("J"), 42))
+                        Set xmlCellNode = TAX_Utilities_New.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("J"), 42))
                         Set xmlCellsNode = xmlCellNode.parentNode
-                        UpdateCell fps, .ColLetterToNumber("G"), .Row, "x"
+                        UpdateCell fps, .ColLetterToNumber("H"), .Row, "x"
                         Do
                             For i = 1 To xmlCellsNode.childNodes.length
                                 ParserCellID fps, GetAttribute(xmlCellsNode.childNodes(i - 1), "CellID"), iCol, iRow
                                 Select Case iCol
-                                    Case .ColLetterToNumber("J")
-                                        'Xoa trang chi tieu 15
-                                        .Row = 42
+                                    Case .ColLetterToNumber("K")
+                                        'Xoa trang chi tieu 26
+                                        .Row = 47
                                         .Col = iCol
                                         .Text = ""
-                                        UpdateCell fps, iCol, 16, .Text
-                                        FormatText fps, 1, .ColLetterToNumber("J"), 42
+                                        UpdateCell fps, iCol, 47, .Text
+                                        FormatText fps, 1, .ColLetterToNumber("K"), 47
                                         
-                                        'Xoa trang chi tieu 18
-                                        .Row = 45
+                                        'Xoa trang chi tieu 29
+                                        .Row = 50
                                         .Col = iCol
                                         .Formula = ""
                                         .Text = "0"
                                         .value = "0"
                                         .Lock = False ' Bo enable cho phep nhap
-                                        UpdateCell fps, iCol, 45, .value
+                                        UpdateCell fps, iCol, 50, .value
                                 End Select
                             Next
                             If xmlCellsNode.nextSibling Is Nothing Then Exit Do
@@ -475,26 +498,26 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                         
                     Set xmlCellNode = TAX_Utilities_New.Data(1 - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("J"), 42))
                     Set xmlCellsNode = xmlCellNode.parentNode
-                    UpdateCell fps, .ColLetterToNumber("G"), .Row, ""
+                    UpdateCell fps, .ColLetterToNumber("H"), .Row, ""
                     Do
                         For i = 1 To xmlCellsNode.childNodes.length
                             ParserCellID fps, GetAttribute(xmlCellsNode.childNodes(i - 1), "CellID"), iCol, iRow
                             Select Case iCol
-                                Case .ColLetterToNumber("J")
+                                Case .ColLetterToNumber("K")
                                     ' Dinh dang lai cho chi tieu 15 (Cho phep nhap nhieu muc thue)
-                                    .Row = 42
+                                    .Row = 47
                                     .Col = iCol
                                     .value = 0
-                                    UpdateCell fps, iCol, 42, .value
-                                    FormatTextPercent fps, 1, .ColLetterToNumber("J"), 42, False
+                                    UpdateCell fps, iCol, 47, .value
+                                    FormatTextPercent fps, 1, .ColLetterToNumber("K"), 47, False
                                 
                                     ' Thiet lap lai cong thuc cho chi tieu 18
-                                    .Row = 45
+                                    .Row = 50
                                     .Col = iCol
-                                    .Formula = "ROUND(J38*J39/100*J42/100,0)"
+                                    .Formula = "ROUND(K41*K42/100*K47/100,0)"
 '                                    .Formula = vFormular
                                     .Lock = True
-                                    UpdateCell fps, iCol, 45, .value
+                                    UpdateCell fps, iCol, 50, .value
                             End Select
                         Next
                         If xmlCellsNode.nextSibling Is Nothing Then Exit Do
@@ -511,21 +534,51 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
     ' set gia lock cell ly do gia han
     If fps.ActiveSheet = 1 Then
             ' Neu check gia han moi cho phep chon GT
-            If Col = fps.ColLetterToNumber("B") And Row = 48 Then
-                fps.Col = fps.ColLetterToNumber("B")
-                fps.Row = 48
+            If Col = fps.ColLetterToNumber("F") And Row = 56 Then
+                fps.Col = fps.ColLetterToNumber("F")
+                fps.Row = 56
                 If fps.Text = "1" Or UCase$(fps.Text) = "X" Then
-                    fps.Col = fps.ColLetterToNumber("D")
-                    fps.Row = 50
+                    fps.Col = fps.ColLetterToNumber("H")
+                    fps.Row = 58
+                    fps.Lock = False
+                    '
+                    fps.Col = fps.ColLetterToNumber("H")
+                    fps.Row = 60
+                    fps.Lock = False
+                    '
+                    fps.Col = fps.ColLetterToNumber("H")
+                    fps.Row = 62
+                    fps.Lock = False
+                    '
+                    fps.Col = fps.ColLetterToNumber("H")
+                    fps.Row = 64
                     fps.Lock = False
                 Else
-                    fps.Col = fps.ColLetterToNumber("D")
-                    fps.Row = 50
+                    fps.Col = fps.ColLetterToNumber("H")
+                    fps.Row = 58
                     fps.Lock = True
-                    fps.SetText fps.ColLetterToNumber("D"), 50, ""
-                    fps.SetText fps.ColLetterToNumber("O"), 50, "00"
-                    UpdateCell fps, fps.ColLetterToNumber("O"), 50, "00"
-                    UpdateCell fps, fps.ColLetterToNumber("D"), 50, ""
+                    fps.SetText fps.ColLetterToNumber("H"), 58, ""
+                    fps.SetText fps.ColLetterToNumber("P"), 58, "00"
+                    UpdateCell fps, fps.ColLetterToNumber("P"), 58, "00"
+                    UpdateCell fps, fps.ColLetterToNumber("H"), 58, ""
+                    '
+                    fps.Col = fps.ColLetterToNumber("H")
+                    fps.Row = 60
+                    fps.Lock = True
+                    fps.SetText fps.ColLetterToNumber("H"), 60, ""
+                    UpdateCell fps, fps.ColLetterToNumber("H"), 60, ""
+                    '
+                    fps.Col = fps.ColLetterToNumber("H")
+                    fps.Row = 62
+                    fps.Lock = True
+                    fps.SetText fps.ColLetterToNumber("H"), 62, "0"
+                    UpdateCell fps, fps.ColLetterToNumber("H"), 62, "0"
+                    '
+                    fps.Col = fps.ColLetterToNumber("H")
+                    fps.Row = 64
+                    fps.Lock = True
+                    fps.SetText fps.ColLetterToNumber("H"), 64, "0"
+                    UpdateCell fps, fps.ColLetterToNumber("H"), 64, "0"
                 End If
             End If
     End If
@@ -679,7 +732,7 @@ With fps
                End If
               
             .Sheet = 1
-            .GetText .ColLetterToNumber("J"), 47, varTemp
+            .GetText .ColLetterToNumber("K"), 54, varTemp
             .Sheet = .SheetCount - 1
             Set xmlNodeH15 = TAX_Utilities_New.Data(.Sheet - 1).childNodes(2).childNodes(2).lastChild.lastChild
                  ParserCellID fps, GetAttribute(xmlNodeH15, "CellID"), cCol, cRow
@@ -729,30 +782,26 @@ Dim vO34 As Variant, vP34 As Variant, vQ34 As Variant, vR34 As Variant
         If (KeyCode = vbKeyF5) Or (KeyCode = vbKeyF6) Then
             If .ActiveSheet = 2 Then
                    fps.EventEnabled(EventAllEvents) = True
-                   .GetText .ColLetterToNumber("O"), 34, vO34
-                   .GetText .ColLetterToNumber("P"), 34, vP34
-                   .GetText .ColLetterToNumber("Q"), 34, vQ34
-                   .GetText .ColLetterToNumber("R"), 34, vR34
-                    i = 0
-                    .Col = .ColLetterToNumber("C")
-                    .Row = 39
-                    If iRow >= 39 Then
-                        Do
-                             .Col = .ColLetterToNumber("C")
-                             If (.Row = 39 + i * 3) Then
-                                .Text = str(i + 3)
-                                i = i + 1
-                             End If
-                             .Col = .ColLetterToNumber("C")
-                             .Row = .Row + 1
-                        Loop Until .Text = "aa"
-                        .SetActiveCell iCol, iRow
-    
-                        .Row = iRow
-                        .Col = iCol
-                         fps.EventEnabled(EventAllEvents) = False
-                         .SetActiveCell iCol, iRow
-                    End If
+'                   .GetText .ColLetterToNumber("O"), 34, vO34
+'                   .GetText .ColLetterToNumber("P"), 34, vP34
+'                   .GetText .ColLetterToNumber("Q"), 34, vQ34
+'                   .GetText .ColLetterToNumber("R"), 34, vR34
+                    
+                    i = 1
+                   .Col = .ColLetterToNumber("C")
+                    .Row = 35
+                    Do
+                         .Text = str(i)
+                         .Col = .ColLetterToNumber("C")
+                         .Row = i + 35
+                         i = i + 1
+                    Loop Until .Text = "aa"
+                   
+                    .Row = iRow
+                    .Col = iCol
+                     fps.EventEnabled(EventAllEvents) = False
+                     .SetActiveCell iCol, iRow
+                   
             End If
             If .ActiveSheet = .SheetCount - 1 Then
                  fps_Change iCol, iRow
@@ -812,42 +861,42 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
         If .ActiveSheet = 1 Then
             ' Neu chi tieu [16] nho hon khong thi thiet lap chi tieu 19,20=0
             'dhdang sua cho ca truong hop kk bo sung
-            .GetText .ColLetterToNumber("J"), 43, varTemp
+            .GetText .ColLetterToNumber("K"), 48, varTemp
             If loaiKHBS <> "frmKHBS_BS" Then
                 If varTemp <= 0 Then
-                    .Row = 46
-                    .Col = .ColLetterToNumber("J")
+                    .Row = 51
+                    .Col = .ColLetterToNumber("K")
                     .Text = "0"
                     .Lock = True
                     UpdateCell fps, .Col, .Row, .Text
-                    .Row = 47
-                    .Col = .ColLetterToNumber("J")
+                    .Row = 54
+                    .Col = .ColLetterToNumber("K")
                     .value = 0
                     UpdateCell fps, .Col, .Row, .Text
                 Else
-                    .Row = 46
-                    .Col = .ColLetterToNumber("J")
+                    .Row = 51
+                    .Col = .ColLetterToNumber("K")
                     .Lock = False
                 End If
             End If
             'check ngay nhap
     
-'           If Col = .ColLetterToNumber("I") And Row = 54 Then
-'               .GetText Col, Row, varTemp
-'               If varTemp <> "" And varTemp <> "../../...." Then
-'                   If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
-'                       .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
-'                   Else
-'                        .SetFocus
-'                        .SetActiveCell Col, Row
-'                   End If
-'               Else
-'                    .SetText Col, Row, ""
-'               End If
-'               .Col = Col
-'               .Row = Row
-'               UpdateCell fps, Col, Row, .Text
-'           End If
+           If Col = .ColLetterToNumber("J") And Row = 69 Then
+               .GetText Col, Row, varTemp
+               If varTemp <> "" And varTemp <> "../../...." Then
+                   If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+                       .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+                   Else
+                        .SetFocus
+                        .SetActiveCell Col, Row
+                   End If
+               Else
+                    .SetText Col, Row, ""
+               End If
+               .Col = Col
+               .Row = Row
+               UpdateCell fps, Col, Row, .Text
+           End If
            
             ' Update so chenh lech cho KHBS
 '            .GetText .ColLetterToNumber("J"), 21, varTemp
@@ -1033,9 +1082,9 @@ With fps
      ElseIf .ActiveSheet = 1 Then
         .Col = Col
         .Row = Row
-         If Col = .ColLetterToNumber("D") And Row = 50 Then
+         If Col = .ColLetterToNumber("H") And Row = 58 Then
             intIndexCombo = .TypeComboBoxCurSel
-            .Col = .ColLetterToNumber("O")
+            .Col = .ColLetterToNumber("P")
             .TypeComboBoxCurSel = intIndexCombo
             'Update combo C
             UpdateCell fps, .Col, .Row, .Text
@@ -1062,11 +1111,11 @@ Public Sub finish()
         CheckDynamicError 'Set Exception Error on cells of interface
             
         .Sheet = 1
-        .Col = .ColLetterToNumber("G")
-        .Row = 42
+        .Col = .ColLetterToNumber("H")
+        .Row = 47
         If .value <> "chk" Then
             If .value = 0 Then
-                FormatTextPercent fps, 1, .ColLetterToNumber("J"), 42, False
+                FormatTextPercent fps, 1, .ColLetterToNumber("K"), 47, False
             End If
         End If
 
@@ -1100,7 +1149,7 @@ Private Sub CheckDynamicError()
         
     Dim isCheckGh As Boolean
     
-    ' PL 05
+    ' PL 01
     Dim iFlagMSTTrung As Integer, mErrMSTTrung As Variant
     
     ' check gh
@@ -1136,9 +1185,9 @@ Private Sub CheckDynamicError()
         iFlagCheckMaSTDN10 = 0
         iFlagCheckSoThue = 0
         mCurrentSheet = .Sheet
-        .GetText .ColLetterToNumber("I"), 54, varTemp
-        .Col = .ColLetterToNumber("I")
-        .Row = 54
+        .GetText .ColLetterToNumber("J"), 69, varTemp
+        .Col = .ColLetterToNumber("J")
+        .Row = 69
         If varTemp <> "" And varTemp <> "../../...." Then
             If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
                 .SetText .Col, .Row, Format_ddmmyyyy(CStr(varTemp))
@@ -1158,10 +1207,10 @@ Private Sub CheckDynamicError()
         End If
         UpdateCell fps, .Col, .Row, varTemp
         'check dinh dang so trong chi tieu 26
-        .GetText .ColLetterToNumber("G"), 42, checkboxThue
+        .GetText .ColLetterToNumber("H"), 47, checkboxThue
         If (Val(checkboxThue) = 1) Then
      
-            .GetText .ColLetterToNumber("J"), 42, vCT26
+            .GetText .ColLetterToNumber("K"), 47, vCT26
             arrCT26 = Split(CStr(vCT26), ";")
             For i = 0 To UBound(arrCT26) - 1
                 If IsNumeric(arrCT26(i)) = False Then
@@ -1169,19 +1218,19 @@ Private Sub CheckDynamicError()
                 End If
             Next
             If iFlagSoUuDai = 1 Then
-                .Col = .ColLetterToNumber("J")
-                .Row = 42
+                .Col = .ColLetterToNumber("K")
+                .Row = 47
                 .CellNote = errSoThueUuDai
                 .BackColor = mErrorColor
             Else
-                .Col = .ColLetterToNumber("J")
-                .Row = 42
+                .Col = .ColLetterToNumber("K")
+                .Row = 47
                 .BackColor = mNonErrorColor
                 .CellNote = ""
             End If
         ElseIf (Val(checkboxThue) = 0) Then
-                .Col = .ColLetterToNumber("J")
-                .Row = 42
+                .Col = .ColLetterToNumber("K")
+                .Row = 47
                 .BackColor = mNonErrorColor
                 .CellNote = ""
         End If
@@ -1205,41 +1254,41 @@ Private Sub CheckDynamicError()
         
         Quynamtc = GetQuyNamTaiChinh(QuyKK, NamKK, iNgayTaiChinh, iThangTaiChinh, 0)
         Namtc = GetQuyNamTaiChinh(QuyKK, NamKK, iNgayTaiChinh, iThangTaiChinh, 1)
-        If (Namtc = 2010 And Quynamtc = 4) Then
-            isCheckGh = False
-        ElseIf Namtc = 2011 And (Quynamtc = 3 Or Quynamtc = 4) Then
-            isCheckGh = False
-        ElseIf Namtc = 2011 And (Quynamtc = 1 Or Quynamtc = 2) Then
-            isCheckGh = False
-        ElseIf Namtc = 2010 And Quynamtc <> 4 Then
-            isCheckGh = False
-        ElseIf Namtc = 2009 Then
-            isCheckGh = False
-        Else
-            isCheckGh = True
-        End If
+'        If (Namtc = 2010 And Quynamtc = 4) Then
+'            isCheckGh = False
+'        ElseIf Namtc = 2011 And (Quynamtc = 3 Or Quynamtc = 4) Then
+'            isCheckGh = False
+'        ElseIf Namtc = 2011 And (Quynamtc = 1 Or Quynamtc = 2) Then
+'            isCheckGh = False
+'        ElseIf Namtc = 2010 And Quynamtc <> 4 Then
+'            isCheckGh = False
+'        ElseIf Namtc = 2009 Then
+'            isCheckGh = False
+'        Else
+'            isCheckGh = True
+'        End If
          ' end
+        isCheckGh = True
         
-        
-        .GetText .ColLetterToNumber("B"), 48, vCheckGH
-        .GetText .ColLetterToNumber("D"), 50, vLyDoGH
+        .GetText .ColLetterToNumber("F"), 56, vCheckGH
+        .GetText .ColLetterToNumber("H"), 58, vLyDoGH
          If (Trim$(vCheckGH) = "1" Or Trim$(UCase$(vCheckGH)) = "X") And isCheckGh Then
              If Trim$(vLyDoGH) = "" Then
-                 .Col = .ColLetterToNumber("D")
-                 .Row = 50
+                 .Col = .ColLetterToNumber("H")
+                 .Row = 58
                  .CellNote = vErrorCheckGH  'static
                  .BackColor = mErrorColor
                  iflagCheckGH = 1
              Else
-                 .Col = .ColLetterToNumber("D")
-                 .Row = 50
+                 .Col = .ColLetterToNumber("H")
+                 .Row = 58
                  .CellNote = ""  'static
                  .BackColor = mNonErrorColor
                  iflagCheckGH = 0
              End If
          Else
-                 .Col = .ColLetterToNumber("D")
-                 .Row = 50
+                 .Col = .ColLetterToNumber("H")
+                 .Row = 58
                  .CellNote = ""  'static
                  .BackColor = mNonErrorColor
                  iflagCheckGH = 0
@@ -1251,7 +1300,7 @@ Private Sub CheckDynamicError()
 
             mCurrentSheet = .Sheet
             Dim iFlagEmpty As Integer, iFlagCheckMaST As Integer
-            Dim vTenDn As Variant, vCqtCapCuc As Variant, vCqtChiCuc As Variant, vTyLe As Variant, vSoThue As Variant
+            Dim vTenDn As Variant, vCQTCapCuc As Variant, vCqtChiCuc As Variant, vTyLe As Variant, vSoThue As Variant
             Dim strFocusSheetName As String, strFocusRow As String, strFocusCol As String, iFocusFlag As Integer
             Dim iWhiteRow As Integer
             Dim iFlagTyLe  As Integer
@@ -1272,12 +1321,12 @@ Private Sub CheckDynamicError()
             Do
                 .GetText .ColLetterToNumber("D"), .Row, vTenDn
                 .GetText .ColLetterToNumber("F"), .Row, vMST
-                .GetText .ColLetterToNumber("G"), .Row, vCqtCapCuc
+                .GetText .ColLetterToNumber("G"), .Row, vCQTCapCuc
                 .GetText .ColLetterToNumber("H"), .Row, vCqtChiCuc
                 .GetText .ColLetterToNumber("M"), .Row, vTyLe
                 .GetText .ColLetterToNumber("P"), .Row, vSoThue
                 
-                If Trim$(vTenDn) <> "" Or Trim$(vMST) <> "" Or Trim$(vCqtCapCuc) <> "" Or Trim$(vCqtChiCuc) <> "" Or Trim$(vTyLe) <> "0" Or Trim$(vSoThue) <> "0" Then iWhiteRow = 0
+                If Trim$(vTenDn) <> "" Or Trim$(vMST) <> "" Or Trim$(vCQTCapCuc) <> "" Or Trim$(vCqtChiCuc) <> "" Or Trim$(vTyLe) <> "0" Or Trim$(vSoThue) <> "0" Then iWhiteRow = 0
 
                 If Trim$(vMST) <> vbNullString Then
                        vMST = Replace(vMST, " ", "")
@@ -1338,7 +1387,7 @@ Private Sub CheckDynamicError()
                     .CellNote = ""
                 End If
                 
-                If (vCqtCapCuc = "" And iWhiteRow = 0) Then
+                If (vCQTCapCuc = "" And iWhiteRow = 0) Then
                     .Col = .ColLetterToNumber("G")
                     .BackColor = mErrorColor
                     .CellNote = errEmty
@@ -1571,10 +1620,10 @@ Public Sub SetData()
         .Sheet = 1
         mCurrentSheet = .Sheet
         ' clear checkbox
-        .Row = 6
-        .Col = .ColLetterToNumber("E")
-        .value = 0
-        UpdateCell fps, .Col, .Row, .Text
+'        .Row = 6
+'        .Col = .ColLetterToNumber("E")
+'        .value = 0
+'        UpdateCell fps, .Col, .Row, .Text
 
       .Sheet = .ActiveSheet
       .EventEnabled(EventAllEvents) = True
@@ -1716,7 +1765,7 @@ Private Sub UpdateSheets()
         mCurrentSheet = .Sheet
         For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
            ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-               If (lRow = 7 And lCol = .ColLetterToNumber("E")) Or (lRow = 6 And lCol = .ColLetterToNumber("E")) Or (lRow = 48 And lCol = .ColLetterToNumber("B")) Or (lRow = 42 And lCol = .ColLetterToNumber("G")) Then
+               If (lRow = 7 And lCol = .ColLetterToNumber("F")) Or (lRow = 6 And lCol = .ColLetterToNumber("F")) Or (lRow = 48 And lCol = .ColLetterToNumber("B")) Or (lRow = 42 And lCol = .ColLetterToNumber("G")) Then
                     .GetText lCol, lRow, varTemp
                     If varTemp = "1" Or UCase(CStr(varTemp)) = "X" Then
                         UpdateCell fps, lCol, lRow, "x"
