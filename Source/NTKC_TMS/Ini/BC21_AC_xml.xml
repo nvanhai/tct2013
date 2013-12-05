@@ -22,14 +22,14 @@
 	</Static>
 	<Dynamic GroupName="HoaDon">
 		<ChiTietHoaDon id="id">
-			<tenHDon>C_40</tenHDon>
-			<mauHDon>O_40</mauHDon>
-			<kyHieu>S_40</kyHieu>
-			<tuSo>V_40</tuSo>
-			<denSo>Y_40</denSo>
-			<soLuong>AA_40</soLuong>
-			<lien>AE_40</lien>
-			<ghiChu>AF_40</ghiChu>
+			<tenHDon>C_42</tenHDon>
+			<mauHDon>O_42</mauHDon>
+			<kyHieu>S_42</kyHieu>
+			<tuSo>V_42</tuSo>
+			<denSo>Y_42</denSo>
+			<soLuong>AA_42</soLuong>
+			<lien>AE_42</lien>
+			<ghiChu>AF_42</ghiChu>
 			<ktraLoaiHDon></ktraLoaiHDon>
 		</ChiTietHoaDon>
 	</Dynamic>
@@ -43,7 +43,7 @@
 		<ngayKy></ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>token</tenNVienDLyThue>
+		<tenNVienDLyThue></tenNVienDLyThue>
 		<cchiHNghe></cchiHNghe>
 	</Static>
 </HSoKhaiThue>

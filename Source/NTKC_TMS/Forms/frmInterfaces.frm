@@ -2285,6 +2285,10 @@ Private Sub Command1_Click()
 'str2 = "aa999012300790401   0820130040040020021994~9994~7000~3087~2567~3907~2567~85~1255~0~0~6756~0</S><S>Nguy‘n S¸ HÔng~DEV1234~~30/10/2013~1~~~1701~~~0</S></S01>"
 'Barcode_Scaned str2
 
+'BC21-AC
+str2 = "aa999662300790401   03201300200200100101/0101/01/2010<S01><S>05/12/2013~14~24</S><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/012~AB/12T~0000010~0000100~91~6;9;12~05~0~H„a Æ¨n xu t kh»u~06HDXK7/009~MN/23T~0000150~0000250~101~34~02~0~Phi’u xu t kho ki™m vÀn chuy”n hµng h„a nÈi bÈ~03XKNB8/005~HD/13T~0000028~0000149~122~5;11~04~0</S><S>chay hoa don~Hoµng~05/12/2013</S></S01>"
+Barcode_Scaned str2
+
 ''QD 15 BCTC
 'str2 = "aa999692300790433   00201200000000100801/0123/06/2006<S01><S>~73920~48000~~21000~3000~V.01~1000~1000~~20000~2000~V.02~3000~3000~~1000~1000~~2000~2000~~33000~21000~~3000~1000~~4000~2000~~5000~3000~~6000~4000~V.03~7000~5000~~8000~6000~~3000~3000~V.04~1000~1000~~2000~2000~~13920~18000~~3000~3000~~5000~4000~V.05~3450~5000~~2470~6000~~95780~88000~~19940~15000~~6920~4000~~3420~5000~V.06~5600~3000~V.07~1300~2000~~2700~1000~~41000~28000~V.08~9400~3000~~6000~10"
 'Barcode_Scaned str2
@@ -2343,8 +2347,16 @@ Private Sub Command1_Click()
 'str2 = "aa999982300790401   112013001002003003<S01-1><S>-22</S><S>2300790384~gfsdgf~20~-4~~2300790384~efwef~20~-4~~0200471077~sdfdsf~20~-4~~1400633697~dsfew~20~-4~~2300790384~ewrewr~20~-4~</S><S>100~-20</S></S01-1>"
 'Barcode_Scaned str2
 
-str2 = "aa999642300790401   11201300100100100101/0101/01/2009<S01><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/001~AB/12T~10~0000001~0000010~26/12/2013~test~6868686868~1321321~01/10/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/002~AB/12T~10~0000011~0000020~26/12/2013~dfsf~6868686868~23432~01/01/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/003~AB/12T~10~0000021~0000030~26/12/2013~dsfqwer~6868686868~4325435~01/01/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/004~AB/12T~10~0000031~0000040~26/12/2013~12e~6868686868~435435~01/01/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/005~AB/12T~10~0000041~0000050~26/12/2013~ewrrw~6868686868~5234234~01/01/2013~</S><S>~~dsgfdgfdgbd~26/11/2013~fsdgsdfds</S></S01>"
-Barcode_Scaned str2
+'str2 = "aa999642300790401   11201300100100100101/0101/01/2009<S01><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/001~AB/12T~10~0000001~0000010~26/12/2013~test~6868686868~1321321~01/10/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/002~AB/12T~10~0000011~0000020~26/12/2013~dfsf~6868686868~23432~01/01/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/003~AB/12T~10~0000021~0000030~26/12/2013~dsfqwer~6868686868~4325435~01/01/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/004~AB/12T~10~0000031~0000040~26/12/2013~12e~6868686868~435435~01/01/2013~~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/005~AB/12T~10~0000041~0000050~26/12/2013~ewrrw~6868686868~5234234~01/01/2013~</S><S>~~dsgfdgfdgbd~26/11/2013~fsdgsdfds</S></S01>"
+'Barcode_Scaned str2
+
+''05-TNCN - Chuan 1.5
+'str2 = "aa999172300790401   00201200500500100501/0101/01/2009<S05><S>2100462770</S><S>4~2~2~22200000~1200000~7000000~14000000~15200000~1200000~0~14000000~2898000~98"
+'Barcode_Scaned str2
+'str2 = "aa999172300790401   002012005005002005000~0~2800000~0~0~0~0~1000000~1898000~0~1~53000~11000~0~42000</S><S>Huy“n Linh~KTV~Hoµng KK~04/12/2013~1~~</S></S05>"
+'Barcode_Scaned str2
+
+
 
 End Sub
 
@@ -4678,9 +4690,9 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
     Set xmlResultNNT = New MSXML.DOMDocument
     Dim strResultNNT As String
     
-    'Du lieu gia lap de test
-        Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-        strResultNNT = "sdfsfds"
+'    'Du lieu gia lap de test
+'        Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+'        strResultNNT = "sdfsfds"
     
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         Dim cfigXml As New MSXML.DOMDocument
@@ -4854,9 +4866,9 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
     Dim strResultDLT As String
     
     
-    'Du lieu gia lap de test
-    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
-    strResultDLT = "sdfsfds"
+'    'Du lieu gia lap de test
+'    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
+'    strResultDLT = "sdfsfds"
     
     'Neu khong co thong tin NNT thi exit luon
     If (strTaxIDString = "" Or strTaxIDString = vbNullString) Then
@@ -4881,7 +4893,7 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
 
         'Set value config to file param DLT
         paXmlDoc.getElementsByTagName("tin_dlt")(0).Text = strTaxIDDLString
-         paXmlDoc.getElementsByTagName("tin_nnt")(0).Text = strTaxIDString
+        paXmlDoc.getElementsByTagName("tin_nnt")(0).Text = strTaxIDString
 
         paXmlDoc.getElementsByTagName("VERSION")(0).Text = cfigXml.getElementsByTagName("VERSION")(0).Text
         paXmlDoc.getElementsByTagName("SENDER_CODE")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text
@@ -4908,8 +4920,8 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
         sParamDLT = "c:\TempXML\" & "paramDLT.xml"
         paXmlDoc.save sParamDLT
 
-'        'Return value from ESB
-'        strResultDLT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+        'Return value from ESB
+        strResultDLT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
 
         strResultDLT = ChangeTagASSCII(strResultDLT, False)
         xmlResultDLT.loadXML strResultDLT
@@ -6490,11 +6502,14 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
     XmlDocStandard.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
     XmlDocStandard.getElementsByTagName("ORIGINAL_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
     
+    XmlDocStandard.getElementsByTagName("SPARE1")(0).Text = strUserName
+    XmlDocStandard.getElementsByTagName("SPARE2")(0).Text = strMaCoQuanThue
+    
     ' Set value tag <add_info>
     XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = sNgayNopTK
     XmlDocStandard.getElementsByTagName("ky_lap_bo")(0).Text = sKyLapBo
     XmlDocStandard.getElementsByTagName("nguon_goc_tk")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text
-    XmlDocStandard.getElementsByTagName("nguoi_nhan_tk")(0).Text = strUserID & "." & xmlConfig.getElementsByTagName("CODE_OFFICE")(0).Text
+    XmlDocStandard.getElementsByTagName("nguoi_nhan_tk")(0).Text = strUserID '& "." & xmlConfig.getElementsByTagName("CODE_OFFICE")(0).Text
     XmlDocStandard.getElementsByTagName("ngay_nhan_tk")(0).Text = Format(DateTime.Now, "dd/MM/yyyy")
     XmlDocStandard.getElementsByTagName("id_tkhai")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow()
     
@@ -6504,57 +6519,77 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
     'Bo sung tag <QHS> cho BCTC va AC
     'ID BCTC: 69(15_BCTC); 19(48_BCTC); 20(16_BCTC); 21(99_BCTC); 22(95_BCTC);
     'ID AC:   64(01_TBAC); 65(01_AC); 66(BC21_AC); 67(03_TBAC); 68(BC26_AC); 91(04_TBAC);
-    Dim strID_BCTC_AC As String
-    strID_BCTC_AC = xmlConfig.getElementsByTagName("BCTC_AC")(0).Text
-
-    If (InStr(strID_BCTC_AC, GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) > 0) Then
-        
+    Dim strID_BCTC, strID_QLAC As String
+    strID_BCTC = xmlConfig.getElementsByTagName("BCTC")(0).Text
+    strID_QLAC = xmlConfig.getElementsByTagName("QLAC")(0).Text
+    
+    Dim tempQHSxml As New MSXML.DOMDocument
+    Dim nodeVal      As MSXML.IXMLDOMNode
+    Dim nodeValIndex As Integer
+    
+    If (InStr(strID_BCTC, GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) > 0) Then
         '       Dim newNode As MSXML.IXMLDOMNode
         '       Set newNode = XmlDocStandard.createElement("QHS")
         '       XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO").appendChild newNode
         '       XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO/QHS").appendChild XmlDocStandard.createElement("PL_KQHDSXKD01")
         'Load template QHS
-        Dim tempQHSxml As New MSXML.DOMDocument
+        
         tempQHSxml.Load GetAbsolutePath("..\InterfaceTemplates\xml\QHS.xml")
-        XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO").appendChild tempQHSxml.lastChild
+        XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO").appendChild tempQHSxml.lastChild.firstChild
+        
+        For nodeValIndex = 1 To TAX_Utilities_Srv_New.NodeValidity.childNodes.length
+            Set nodeVal = TAX_Utilities_Srv_New.NodeValidity.childNodes(nodeValIndex)
 
-        If (XmlDocStandard.getElementsByTagName("QHS").length > 0) Then
-            Dim nodeVal      As MSXML.IXMLDOMNode
-            Dim nodeValIndex As Integer
-            
-            For nodeValIndex = 1 To TAX_Utilities_Srv_New.NodeValidity.childNodes.length
-                Set nodeVal = TAX_Utilities_Srv_New.NodeValidity.childNodes(nodeValIndex)
+            If (GetAttribute(nodeVal, "Active") = "1" And (GetAttribute(nodeVal, "ID") = "01-10" Or GetAttribute(nodeVal, "ID") = "01-1")) Then
+                'kqhd01 = True
+                XmlDocStandard.getElementsByTagName("PL_KQHDSXKD01")(0).Text = "X"
+            End If
 
-                If (GetAttribute(nodeVal, "Active") = "1" And GetAttribute(nodeVal, "ID") = "01-10") Then
-                    'kqhd01 = True
-                    XmlDocStandard.getElementsByTagName("PL_KQHDSXKD01")(0).Text = "X"
-                End If
+            If (GetAttribute(nodeVal, "Active") = "1" And GetAttribute(nodeVal, "ID") = "01-11") Then
+                'kqhd02 = True
+                XmlDocStandard.getElementsByTagName("PL_KQHDSXKD02")(0).Text = "X"
+            End If
 
-                If (GetAttribute(nodeVal, "Active") = "1" And GetAttribute(nodeVal, "ID") = "01-11") Then
-                    'kqhd02 = True
-                    XmlDocStandard.getElementsByTagName("PL_KQHDSXKD02")(0).Text = "X"
-                End If
+            If (GetAttribute(nodeVal, "Active") = "1" And GetAttribute(nodeVal, "ID") = "01-12") Then
+                'kqhd03 = True
+                XmlDocStandard.getElementsByTagName("PL_KQHDSXKD03")(0).Text = "X"
+            End If
 
-                If (GetAttribute(nodeVal, "Active") = "1" And GetAttribute(nodeVal, "ID") = "01-12") Then
-                    'kqhd03 = True
-                    XmlDocStandard.getElementsByTagName("PL_KQHDSXKD03")(0).Text = "X"
-                End If
+            If (GetAttribute(nodeVal, "Active") = "1" And GetAttribute(nodeVal, "ID") = "01-2") Then
+                'lctttt = True
+                XmlDocStandard.getElementsByTagName("PL_LCTTTT")(0).Text = "X"
+            End If
 
-                If (GetAttribute(nodeVal, "Active") = "1" And GetAttribute(nodeVal, "ID") = "01-2") Then
-                    'lctttt = True
-                    XmlDocStandard.getElementsByTagName("PL_LCTTTT")(0).Text = "X"
-                End If
+            If (GetAttribute(nodeVal, "Active") = "1" And GetAttribute(nodeVal, "ID") = "01-3") Then
+                'lcttgt = True
+                XmlDocStandard.getElementsByTagName("PL_LCTTGT")(0).Text = "X"
+            End If
 
-                If (GetAttribute(nodeVal, "Active") = "1" And GetAttribute(nodeVal, "ID") = "01-3") Then
-                    'lcttgt = True
-                    XmlDocStandard.getElementsByTagName("PL_LCTTGT")(0).Text = "X"
-                End If
-
-            Next
-
-        End If
+        Next
     End If
 
+    If (InStr(strID_QLAC, GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) > 0) Then
+        '       Dim newNode As MSXML.IXMLDOMNode
+        '       Set newNode = XmlDocStandard.createElement("QHS")
+        '       XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO").appendChild newNode
+        '       XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO/QHS").appendChild XmlDocStandard.createElement("PL_KQHDSXKD01")
+        'Load template QHS
+        tempQHSxml.Load GetAbsolutePath("..\InterfaceTemplates\xml\QHS.xml")
+        XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO").appendChild tempQHSxml.lastChild.firstChild
+
+        If (GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "68") Then
+            For nodeValIndex = 1 To TAX_Utilities_Srv_New.NodeValidity.childNodes.length
+                Set nodeVal = TAX_Utilities_Srv_New.NodeValidity.childNodes(nodeValIndex)
+                If (GetAttribute(nodeVal, "Active") = "1" And GetAttribute(nodeVal, "ID") = "01-1") Then
+                    XmlDocStandard.getElementsByTagName("PL_BK_01AC_01")(0).Text = "X"
+                End If
+                If (GetAttribute(nodeVal, "Active") = "1" And GetAttribute(nodeVal, "ID") = "01-2") Then
+                    XmlDocStandard.getElementsByTagName("PL_BK_01AC_02")(0).Text = "X"
+                End If
+            Next
+        End If
+    End If
+    
     'Ket thuc bo sung <QHS>
     
     'End <add_info>
