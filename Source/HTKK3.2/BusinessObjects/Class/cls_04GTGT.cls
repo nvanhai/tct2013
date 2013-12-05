@@ -1227,7 +1227,7 @@ Public Sub SetActiveSheet() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
     Dim strValue2 As String
     Dim strValue3 As String
     Dim strValue4 As Variant
-    Dim strValue5 As Variant
+    
     'Check the second sheet
     'Select Case GetAttribute(xmlNodeValid, "ID")
     For Each xmlNodeValid In TAX_Utilities_New.NodeValidity.childNodes
@@ -1245,8 +1245,10 @@ Public Sub SetActiveSheet() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
                     (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 3)
                     strValue3 = GetAttribute(xmlCellNode, "Value")
                 'Set active voi dong 5
-                fps.Sheet = 2
-                fps.GetText fps.ColLetterToNumber("N"), 1, strValue4
+                
+                fps.Sheet = sheetPl01_1_GTGT
+                fps.GetText fps.ColLetterToNumber("G"), 8, strValue4
+                
                     If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Or Val(strValue4) <> 0 Then
                             blnNullValue = False
                     End If
