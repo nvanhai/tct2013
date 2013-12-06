@@ -3963,11 +3963,17 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             
             ' 01_PHXD
         Case "89"
-            ReDim strResult(3)
+           ReDim strResult(3)
             strResult(0) = "H_14~Dynamic_0"
             strResult(1) = "T_42~T_43~T_44~T_46~T_47~T_48~T_49~T_50~T_51~T_52~L_54~O_36~Dynamic_0"
             strResult(2) = "H_60~R_60~H_62~R_62~C_59~F_59~I_59~Dynamic_0"
-            
+            '01/KK-TTS
+        Case "23"
+            ReDim strResult(4)
+            strResult(0) = "F_11~Dynamic_0"
+            strResult(1) = "P_3~T_3~H_13~R_13~J_16~F_17~L_18~L_19~F_20~F_21~H_22~I_23~I_24~I_25~I_26~Dynamic_0"
+            strResult(2) = "C_40~E_40~I_40~L_40~N_40~O_40~P_40~R_40~T_40~U_40~V_40~Dynamic_1"
+            strResult(3) = "E_59~O_59~E_61~O_61~C_67~F_67~I_67~L_67~O_67~P_67~Dynamic_0"
         Case Else
             ReDim strResult(1)
             tmp = "null"
