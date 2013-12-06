@@ -73,42 +73,42 @@ Public Sub Prepare2()
             
 '            .Row = 54 + count1
             .Row = .MaxRows
-            .Col = .ColLetterToNumber("R")
+            .Col = .ColLetterToNumber("O")
             If .value = "" Then
-                SetDateFormat fps, 1, .MaxRows - 2, .ColLetterToNumber("R"), DDMMYYYY
+                SetDateFormat fps, 1, .MaxRows - 2, .ColLetterToNumber("O"), DDMMYYYY
                 .Text = Format(Date, "dd/mm/yyyy")
                 .TypeHAlign = TypeHAlignLeft
                 UpdateCell fps, .Col, .Row, .Text
             End If
           'set thong tin header neu la to khai quy
           If strQuy = "TK_QUY" Then
-            .SetText .ColLetterToNumber("G"), 19, 1
-            .SetText .ColLetterToNumber("O"), 19, ""
-            .SetText .ColLetterToNumber("R"), 19, ""
+            .SetText .ColLetterToNumber("L"), 67, 1
+            .SetText .ColLetterToNumber("O"), 67, ""
+            .SetText .ColLetterToNumber("P"), 67, ""
           Else
-            .SetText .ColLetterToNumber("G"), 19, 0
-            'lay tu thang den thang
-            .Col = .ColLetterToNumber("U")
-            .Row = 19
-            'lay so thang quyet toan
-            .Text = DateDiff("M", Format("01/" & TAX_Utilities_New.FirstDay, "dd/mm/yyyy"), Format("01/" & TAX_Utilities_New.LastDay, "dd/mm/yyyy")) + 1
+            .SetText .ColLetterToNumber("L"), 19, 0
+'            'lay tu thang den thang
+'            .Col = .ColLetterToNumber("U")
+'            .Row = 19
+'            'lay so thang quyet toan
+'            .Text = DateDiff("M", Format("01/" & TAX_Utilities_New.FirstDay, "dd/mm/yyyy"), Format("01/" & TAX_Utilities_New.LastDay, "dd/mm/yyyy")) + 1
           'set thong tin header neu la to khai tuthang denthang
              If strLoaiTKQT = "QT_TUNG_NAM" Then
                .Col = .ColLetterToNumber("O")
-               .Row = 19
+               .Row = 67
                .Text = 1
-               .Col = .ColLetterToNumber("R")
+               .Col = .ColLetterToNumber("P")
                .Text = ""
-               .SetText .ColLetterToNumber("K"), 4, TAX_Utilities_New.FirstDay
-               .SetText .ColLetterToNumber("P"), 4, TAX_Utilities_New.LastDay
+               .SetText .ColLetterToNumber("P"), 3, TAX_Utilities_New.FirstDay
+               .SetText .ColLetterToNumber("T"), 3, TAX_Utilities_New.LastDay
             ElseIf strLoaiTKQT = "QT_NAM_DAU" Then
-               .Col = .ColLetterToNumber("R")
-               .Row = 19
+               .Col = .ColLetterToNumber("P")
+               .Row = 67
                .Text = 1
                .Col = .ColLetterToNumber("O")
                .Text = ""
-               .SetText .ColLetterToNumber("K"), 4, TAX_Utilities_New.FirstDay
-               .SetText .ColLetterToNumber("P"), 4, TAX_Utilities_New.LastDay
+               .SetText .ColLetterToNumber("P"), 3, TAX_Utilities_New.FirstDay
+               .SetText .ColLetterToNumber("T"), 3, TAX_Utilities_New.LastDay
              End If
           End If
         .EventEnabled(EventAllEvents) = True
@@ -402,7 +402,7 @@ Private Sub CheckDynamicError()
         .Sheet = 1
      
         'get MST CT5
-        .GetText .ColLetterToNumber("G"), 11, vMSTCT5
+        .GetText .ColLetterToNumber("F"), 9, vMSTCT5
         'check Null
         
         vTongTNCN = 0
@@ -424,182 +424,182 @@ Private Sub CheckDynamicError()
             .CellNote = ""
         End If
         
-        .Row = 51
-        Do
-            .GetText .ColLetterToNumber("C"), .Row, colC
-            .GetText .ColLetterToNumber("H"), .Row, vMST
-            .GetText .ColLetterToNumber("L"), .Row, TiLeTNCT
-            .GetText .ColLetterToNumber("R"), .Row, vCT31
-            .GetText .ColLetterToNumber("V"), .Row, vCT33
-            
-            If colC <> vbNullString Or vMST <> vbNullString Or TiLeTNCT <> 0 Or vCT31 <> 0 Or vCT33 <> 0 Then
-                  'kiem tra MST CT5 da ton tai trong bang chi tiet phan bo chua
-                  rowMST = .SearchCol(.ColLetterToNumber("H"), 50, -1, Trim(vMSTCT5), SearchFlagsNone)
-                  If rowMST = -1 Then
-                    iFlagMSTTonTai = 1
-                  End If
-                  
-                   If Trim(vMST) <> vbNullString Then
-    '                vMST = Replace(vMST, " ", "")
-    '                vMST = Replace(vMST, "-", "")
-                     vMST = Left(vMST, 10)
-                     strCheck = ""
-                     If Len(vMST) = 10 Or Len(vMST) = 13 Then
-                         strCheck = CheckTaxCode(Mid(vMST, 1, 1), Mid(vMST, 2, 1), Mid(vMST, 3, 1), Mid(vMST, 4, 1), Mid(vMST, 5, 1), Mid(vMST, 6, 1), Mid(vMST, 7, 1), Mid(vMST, 8, 1), Mid(vMST, 9, 1), Mid(vMST, 10, 1), Mid(vMST, 11, 1), Mid(vMST, 12, 1), Mid(vMST, 13, 1))
-                     End If
-                     If Mid(strCheck, 2, 1) <> "0" Then
-                        .Col = .ColLetterToNumber("H")
-                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                        .CellNote = vErrMsgMST   'static
-                        .BackColor = mErrorColor
-                        iFlagvMst = 1
-                       
-                        'capture the first error cell
-                        If iFocusFlag = 0 Then
-                            strFocusSheetName = "'" & .SheetName & "'"
-                            strFocusCol = str(.Col)
-                            strFocusRow = str(.Row)
-                            iFocusFlag = 1
-                        End If
-                     Else
-                        .Col = .ColLetterToNumber("H")
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                    End If
-                   Else
-                    .Col = .ColLetterToNumber("H")
-                    .CellNote = mErrEmty
-                    .BackColor = mErrorColor
-                    iFlagEmty = 1
-                End If
-                'check du lieu k dc de trong
-                If colC = vbNullString Then
-                    .Col = .ColLetterToNumber("C")
-                    .BackColor = mErrorColor
-                    .CellNote = mErrEmty
-                    iFlagEmty = 1
-                Else
-                    .Col = .ColLetterToNumber("C")
-                    .BackColor = mNonErrorColor
-                    .CellNote = ""
-                End If
-                
-                If vTongTNCN = vbNullString Then
-                    .Col = .ColLetterToNumber("L")
-                    .BackColor = mErrorColor
-                    .CellNote = mErrEmty
-                    iFlagEmty = 1
-                Else
-                    .Col = .ColLetterToNumber("L")
-                    .BackColor = mNonErrorColor
-                    .CellNote = ""
-                End If
-                
-                If vCT31 = vbNullString Then
-                    .Col = .ColLetterToNumber("R")
-                    .BackColor = mErrorColor
-                    .CellNote = mErrEmty
-                    iFlagEmty = 1
-                Else
-                    .Col = .ColLetterToNumber("R")
-                    .BackColor = mNonErrorColor
-                    .CellNote = ""
-                End If
-                
-                If vCT33 = vbNullString Then
-                    .Col = .ColLetterToNumber("V")
-                    .BackColor = mErrorColor
-                    .CellNote = mErrEmty
-                    iFlagEmty = 1
-                Else
-                    .Col = .ColLetterToNumber("V")
-                    .BackColor = mNonErrorColor
-                    .CellNote = ""
-                End If
-                'check MST trung nhau
-                CountRow = .SearchCol(.ColLetterToNumber("H"), -1, -1, vMST, SearchFlagsNone)
-                rowDes = .SearchCol(.ColLetterToNumber("H"), CountRow, -1, vMST, SearchFlagsNone)
-                If rowDes > -1 Then
-                    .Col = .ColLetterToNumber("H")
-                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                    .CellNote = mErrMSTTrung      'static
-                    .BackColor = mErrorColor
-                    iFlagMSTTrung = 1
-                End If
-                'danh dau neu dong co chua du lieu
-                iFlagCheckData = True
-        End If
-        
-             count1 = count1 + 1
-            .Row = count1 + 51
-            .Col = .ColLetterToNumber("B")
-        Loop Until .Text = "aa"
-    
-        'neu dong co chua du lieu thi kiem tra cac rang buoc trong cac chi tieu
-        If iFlagCheckData Then
-            'lay CT 23
-            .GetText .ColLetterToNumber("R"), 43, vCT23
-            'lay CT24
-            .GetText .ColLetterToNumber("R"), 44, vCT24
-            'lay tong ty le chia TNCT
-            .GetText .ColLetterToNumber("L"), .MaxRows - 6, vTongTNCN
-            'lay tong CT 29
-            .GetText .ColLetterToNumber("N"), .MaxRows - 6, vTongCT29
-            'lay tong CT30
-            .GetText .ColLetterToNumber("P"), .MaxRows - 6, vTongCT30
-            'check tong TNCT phai = 100
-            If Int(vTongTNCN) <> 100 Then
-                .Col = .ColLetterToNumber("L")
-                .Row = .MaxRows - 6
-                .BackColor = mErrorColor
-                .CellNote = mErrTongTNCN
-                iFlagTongTNCN = 1
-            Else
-                .Col = .ColLetterToNumber("L")
-                .Row = .MaxRows - 6
-                .BackColor = colorCell
-                .CellNote = ""
-            End If
-            'check Tong CT 29 phai = CT23
-            If vTongCT29 <> vCT23 Then
-                .Col = .ColLetterToNumber("N")
-                .Row = .MaxRows - 6
-                .BackColor = mErrorColor
-                .CellNote = mErrTongCT29
-                iflagTongCT29 = 1
-            Else
-                .Col = .ColLetterToNumber("N")
-                .Row = .MaxRows - 6
-                .BackColor = colorCell
-                .CellNote = ""
-            End If
-            'check Tong CT30 = CT24
-            If vTongCT30 <> vCT24 Then
-                .Col = .ColLetterToNumber("P")
-                .Row = .MaxRows - 6
-                .BackColor = mErrorColor
-                .CellNote = merrTongCT30
-                iflagTongCT30 = 1
-            Else
-                .Col = .ColLetterToNumber("P")
-                .Row = .MaxRows - 6
-                .BackColor = colorCell
-                .CellNote = ""
-            End If
-        End If
-        
-        'neu MST CT5 chua ton tai trong bang chi tiet phan bo thi set color err
-        If iFlagMSTTonTai = 1 Then
-            .Col = .ColLetterToNumber("G")
-            .Row = 11
-            .BackColor = mErrorColor
-            .CellNote = mErrMSTTonTai
-        Else
-            .Col = .ColLetterToNumber("G")
-            .Row = 11
-            .BackColor = -2147483633
-            .CellNote = ""
-        End If
+'        .Row = 40
+'        Do
+'            .GetText .ColLetterToNumber("C"), .Row, colC
+'            .GetText .ColLetterToNumber("H"), .Row, vMST
+'            .GetText .ColLetterToNumber("L"), .Row, TiLeTNCT
+'            .GetText .ColLetterToNumber("R"), .Row, vCT31
+'            .GetText .ColLetterToNumber("V"), .Row, vCT33
+'
+'            If colC <> vbNullString Or vMST <> vbNullString Or TiLeTNCT <> 0 Or vCT31 <> 0 Or vCT33 <> 0 Then
+'                  'kiem tra MST CT5 da ton tai trong bang chi tiet phan bo chua
+'                  rowMST = .SearchCol(.ColLetterToNumber("H"), 50, -1, Trim(vMSTCT5), SearchFlagsNone)
+'                  If rowMST = -1 Then
+'                    iFlagMSTTonTai = 1
+'                  End If
+'
+'                   If Trim(vMST) <> vbNullString Then
+'    '                vMST = Replace(vMST, " ", "")
+'    '                vMST = Replace(vMST, "-", "")
+'                     vMST = Left(vMST, 10)
+'                     strCheck = ""
+'                     If Len(vMST) = 10 Or Len(vMST) = 13 Then
+'                         strCheck = CheckTaxCode(Mid(vMST, 1, 1), Mid(vMST, 2, 1), Mid(vMST, 3, 1), Mid(vMST, 4, 1), Mid(vMST, 5, 1), Mid(vMST, 6, 1), Mid(vMST, 7, 1), Mid(vMST, 8, 1), Mid(vMST, 9, 1), Mid(vMST, 10, 1), Mid(vMST, 11, 1), Mid(vMST, 12, 1), Mid(vMST, 13, 1))
+'                     End If
+'                     If Mid(strCheck, 2, 1) <> "0" Then
+'                        .Col = .ColLetterToNumber("H")
+'                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                        .CellNote = vErrMsgMST   'static
+'                        .BackColor = mErrorColor
+'                        iFlagvMst = 1
+'
+'                        'capture the first error cell
+'                        If iFocusFlag = 0 Then
+'                            strFocusSheetName = "'" & .SheetName & "'"
+'                            strFocusCol = str(.Col)
+'                            strFocusRow = str(.Row)
+'                            iFocusFlag = 1
+'                        End If
+'                     Else
+'                        .Col = .ColLetterToNumber("H")
+'                        .CellNote = ""
+'                        .BackColor = mNonErrorColor
+'                    End If
+'                   Else
+'                    .Col = .ColLetterToNumber("H")
+'                    .CellNote = mErrEmty
+'                    .BackColor = mErrorColor
+'                    iFlagEmty = 1
+'                End If
+'                'check du lieu k dc de trong
+'                If colC = vbNullString Then
+'                    .Col = .ColLetterToNumber("C")
+'                    .BackColor = mErrorColor
+'                    .CellNote = mErrEmty
+'                    iFlagEmty = 1
+'                Else
+'                    .Col = .ColLetterToNumber("C")
+'                    .BackColor = mNonErrorColor
+'                    .CellNote = ""
+'                End If
+'
+'                If vTongTNCN = vbNullString Then
+'                    .Col = .ColLetterToNumber("L")
+'                    .BackColor = mErrorColor
+'                    .CellNote = mErrEmty
+'                    iFlagEmty = 1
+'                Else
+'                    .Col = .ColLetterToNumber("L")
+'                    .BackColor = mNonErrorColor
+'                    .CellNote = ""
+'                End If
+'
+'                If vCT31 = vbNullString Then
+'                    .Col = .ColLetterToNumber("R")
+'                    .BackColor = mErrorColor
+'                    .CellNote = mErrEmty
+'                    iFlagEmty = 1
+'                Else
+'                    .Col = .ColLetterToNumber("R")
+'                    .BackColor = mNonErrorColor
+'                    .CellNote = ""
+'                End If
+'
+'                If vCT33 = vbNullString Then
+'                    .Col = .ColLetterToNumber("V")
+'                    .BackColor = mErrorColor
+'                    .CellNote = mErrEmty
+'                    iFlagEmty = 1
+'                Else
+'                    .Col = .ColLetterToNumber("V")
+'                    .BackColor = mNonErrorColor
+'                    .CellNote = ""
+'                End If
+'                'check MST trung nhau
+'                CountRow = .SearchCol(.ColLetterToNumber("H"), -1, -1, vMST, SearchFlagsNone)
+'                rowDes = .SearchCol(.ColLetterToNumber("H"), CountRow, -1, vMST, SearchFlagsNone)
+'                If rowDes > -1 Then
+'                    .Col = .ColLetterToNumber("H")
+'                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                    .CellNote = mErrMSTTrung      'static
+'                    .BackColor = mErrorColor
+'                    iFlagMSTTrung = 1
+'                End If
+'                'danh dau neu dong co chua du lieu
+'                iFlagCheckData = True
+'        End If
+'
+'             count1 = count1 + 1
+'            .Row = count1 + 40
+'            .Col = .ColLetterToNumber("B")
+'        Loop Until .Text = "aa"
+'
+'        'neu dong co chua du lieu thi kiem tra cac rang buoc trong cac chi tieu
+'        If iFlagCheckData Then
+'            'lay CT 23
+'            .GetText .ColLetterToNumber("R"), 43, vCT23
+'            'lay CT24
+'            .GetText .ColLetterToNumber("R"), 44, vCT24
+'            'lay tong ty le chia TNCT
+'            .GetText .ColLetterToNumber("L"), .MaxRows - 6, vTongTNCN
+'            'lay tong CT 29
+'            .GetText .ColLetterToNumber("N"), .MaxRows - 6, vTongCT29
+'            'lay tong CT30
+'            .GetText .ColLetterToNumber("P"), .MaxRows - 6, vTongCT30
+'            'check tong TNCT phai = 100
+'            If Int(vTongTNCN) <> 100 Then
+'                .Col = .ColLetterToNumber("L")
+'                .Row = .MaxRows - 6
+'                .BackColor = mErrorColor
+'                .CellNote = mErrTongTNCN
+'                iFlagTongTNCN = 1
+'            Else
+'                .Col = .ColLetterToNumber("L")
+'                .Row = .MaxRows - 6
+'                .BackColor = colorCell
+'                .CellNote = ""
+'            End If
+'            'check Tong CT 29 phai = CT23
+'            If vTongCT29 <> vCT23 Then
+'                .Col = .ColLetterToNumber("N")
+'                .Row = .MaxRows - 6
+'                .BackColor = mErrorColor
+'                .CellNote = mErrTongCT29
+'                iflagTongCT29 = 1
+'            Else
+'                .Col = .ColLetterToNumber("N")
+'                .Row = .MaxRows - 6
+'                .BackColor = colorCell
+'                .CellNote = ""
+'            End If
+'            'check Tong CT30 = CT24
+'            If vTongCT30 <> vCT24 Then
+'                .Col = .ColLetterToNumber("P")
+'                .Row = .MaxRows - 6
+'                .BackColor = mErrorColor
+'                .CellNote = merrTongCT30
+'                iflagTongCT30 = 1
+'            Else
+'                .Col = .ColLetterToNumber("P")
+'                .Row = .MaxRows - 6
+'                .BackColor = colorCell
+'                .CellNote = ""
+'            End If
+'        End If
+'
+'        'neu MST CT5 chua ton tai trong bang chi tiet phan bo thi set color err
+'        If iFlagMSTTonTai = 1 Then
+'            .Col = .ColLetterToNumber("G")
+'            .Row = 11
+'            .BackColor = mErrorColor
+'            .CellNote = mErrMSTTonTai
+'        Else
+'            .Col = .ColLetterToNumber("G")
+'            .Row = 11
+'            .BackColor = -2147483633
+'            .CellNote = ""
+'        End If
     
         .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), 15, IIf(iFlagvName = 1, "0", "1")
@@ -611,17 +611,7 @@ Private Sub CheckDynamicError()
         .SetText .ColLetterToNumber("B"), 25, IIf(iFlagEmty = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 26, IIf(iFlagMSTTonTai = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 27, IIf(iFlagMSTTrung = 1, "0", "1")
-'         If iFocusFlag = 1 Then
-'            ' setcell for focus
-'            strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
-'            .Col = .ColLetterToNumber("C")
-'            .Row = 15
-'            .Formula = strFormula
-''            strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
-'            .Col = .ColLetterToNumber("H")
-'            .Row = 16
-'            .Formula = strFormula
-'        End If
+        
         .Sheet = iCurrentSheet
       End With
     
@@ -923,7 +913,7 @@ Dim i As Integer
                     
                     .Col = .ColLetterToNumber("B")
                     i = 1
-                    .Row = 51
+                    .Row = 40
                     Do
                          .Text = str(i)
                          .Col = .ColLetterToNumber("B")

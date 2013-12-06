@@ -483,7 +483,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":029E
+      SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
    End
@@ -2247,6 +2247,15 @@ Public Sub cmdOK_Click()
                 End If
             End If
         End If
+        
+        '01/KK-TTS
+        If TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "23" Then
+            TAX_Utilities_New.FirstDay = txtNgayDau.Text
+            TAX_Utilities_New.LastDay = txtNgayCuoi.Text
+        Else
+            TAX_Utilities_New.FirstDay = vbNullString
+            TAX_Utilities_New.LastDay = vbNullString
+        End If
     ElseIf strKieuKy = KIEU_KY_NAM Then
         If Not CheckPeriod("1", txtYear.Text) Then
             txtYear.SetFocus
@@ -2368,6 +2377,25 @@ Public Sub cmdOK_Click()
             End If
     End If
     
+    ' 01/KK-TTS
+    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "23") And strQuy = "TK_TU_THANG" Then
+            If Trim(txtNgayDau.Text) <> "" Then
+                 strTempValue = Trim(txtNgayDau.Text)
+                 dNgayDau = objCvt.ToDate("01" & "/" & strTempValue, "DD/MM/YYYY")
+            End If
+            
+            If Trim(txtNgayCuoi.Text) <> "" Then
+                 strTempValue = Trim(txtNgayCuoi.Text)
+                 dNgayCuoi = objCvt.ToDate("01" & "/" & strTempValue, "DD/MM/YYYY")
+            End If
+            
+            If dNgayCuoi < dNgayDau Then
+                DisplayMessage "0069", msOKOnly, miInformation
+                txtNgayCuoi.SetFocus
+                Exit Sub
+            End If
+    End If
+    
     'chan ngay kk lan phat sinh < ngay hien tai
     If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "70" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "72" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "73" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "81" _
      Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") And chkTKLanPS.value = "1" Then
@@ -2407,7 +2435,7 @@ Public Sub cmdOK_Click()
     ElseIf strKieuKy = KIEU_KY_QUY Then
         TAX_Utilities_New.month = vbNullString
         TAX_Utilities_New.ThreeMonths = cmbQuy.Text
-        If TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "74" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "75" Then
+        If TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "74" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "75" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "23" Then
             TAX_Utilities_New.FirstDay = txtNgayDau.Text
             TAX_Utilities_New.LastDay = txtNgayCuoi.Text
         Else
@@ -2922,6 +2950,8 @@ Private Sub Form_Load()
         SetupLayout01_TAIN_DK
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "93" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "89" Then
         SetupLayout02_TAIN_DK
+    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "23" Then
+        SetupLayout01TTS
     Else
         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "68" Then
             strQuy = "TK_QUY"
@@ -5321,8 +5351,9 @@ Private Sub txtNgayCuoi_LostFocus()
     
     If Len(txtNgayCuoi.Text) > 0 Then
         Set objCvt = New DateUtils
+        '01/KK-TTS
         ' To khai 08/TNCN va to khai 08A/TNCN set o nay tu thang den thang
-        If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Then
+        If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "23" Then
             If IsNull(objCvt.ToDate(txtNgayCuoi, "MM/YYYY")) Then
                 DisplayMessage "0248", msOKOnly, miCriticalError
                 txtNgayCuoi.SetFocus
@@ -5356,7 +5387,7 @@ Private Sub txtNgayDau_LostFocus()
     If Len(txtNgayDau.Text) > 0 Then
         Set objCvt = New DateUtils
         ' To khai 08/TNCN va to khai 08A/TNCN set o nay tu thang den thang
-        If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Then
+        If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "23" Then
             If IsNull(objCvt.ToDate(txtNgayDau, "MM/YYYY")) Then
                 DisplayMessage "0248", msOKOnly, miCriticalError
                 txtNgayDau.SetFocus
@@ -6943,5 +6974,80 @@ Private Sub SetupLayoutBC26()
      
 ErrorHandle:
     SaveErrorLog Me.Name, "SetupLayoutBC26", Err.Number, Err.Description
+    
+End Sub
+Private Sub SetupLayout01TTS()
+    On Error GoTo ErrorHandle
+    
+    Me.Height = 3285
+    Me.Width = 4905
+    
+    'frmKy.Height = 1300
+    Set chkTKQuy.Container = frmKy
+    chkTKQuy.Top = 200
+    chkTKQuy.Left = 120
+    chkTKQuy.value = 1
+    chkTuThangDenThang.value = 0
+    
+    
+    Set chkTuThangDenThang.Container = frmKy
+    chkTuThangDenThang.Top = 200
+    chkTuThangDenThang.Left = 2000
+    
+    
+    
+    
+    Set lblQuy.Container = frmKy
+    lblQuy.Top = 570
+    lblQuy.Left = 1360
+    
+    Set cmbQuy.Container = frmKy
+    cmbQuy.Top = 540
+    cmbQuy.Left = 1930
+    
+    Set lblYear.Container = frmKy
+    lblYear.Top = 570
+    lblYear.Left = 2710
+    
+    Set txtYear.Container = frmKy
+    txtYear.Top = 540
+    txtYear.Left = 3130
+    
+    txtMonth.Visible = False
+    txtNgayDau.Visible = False
+    txtNgayCuoi.Visible = False
+    ' Set lai max lengh cho to khai tu thang den thang
+    txtNgayDau.MaxLength = 7
+    txtNgayCuoi.MaxLength = 7
+
+    frmKy.Height = 1600
+    
+    Set OptChinhthuc.Container = frmKy
+    OptChinhthuc.Top = 900
+    OptChinhthuc.Left = 960
+    
+    Set OptBosung.Container = frmKy
+    OptBosung.Top = 1200
+    OptBosung.Left = 960
+    
+    Set lblSolan.Container = frmKy
+    lblSolan.Top = 1200
+    lblSolan.Left = 3000
+    Set txtSolan.Container = frmKy
+    txtSolan.Top = 1200
+    txtSolan.Left = 3400
+    
+    lblSolan.Visible = False
+    txtSolan.Visible = False
+    strKHBS = "TKCT"
+    strQuy = "TK_QUY"
+        
+    Me.Top = (frmSystem.ScaleHeight - Me.ScaleHeight) / 2
+    Me.Left = (frmSystem.Width - Me.Width) / 2
+    
+    Exit Sub
+     
+ErrorHandle:
+    SaveErrorLog Me.Name, "SetupLayout08TNCN", Err.Number, Err.Description
     
 End Sub
