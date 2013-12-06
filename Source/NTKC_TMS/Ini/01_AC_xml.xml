@@ -50,7 +50,7 @@
 		<ngayKy></ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue></tenNVienDLyThue>
+		<tenNVienDLyThue>token</tenNVienDLyThue>
 		<cchiHNghe></cchiHNghe>
 	</Static>
 </HSoKhaiThue>

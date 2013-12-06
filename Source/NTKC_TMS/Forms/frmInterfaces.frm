@@ -6503,7 +6503,7 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
     XmlDocStandard.getElementsByTagName("ORIGINAL_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
     
     XmlDocStandard.getElementsByTagName("SPARE1")(0).Text = strUserName
-    XmlDocStandard.getElementsByTagName("SPARE2")(0).Text = strMaCoQuanThue
+    XmlDocStandard.getElementsByTagName("SPARE2")(0).Text = strMaNNT
     
     ' Set value tag <add_info>
     XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = sNgayNopTK
@@ -6575,7 +6575,7 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
         '       XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO/QHS").appendChild XmlDocStandard.createElement("PL_KQHDSXKD01")
         'Load template QHS
         tempQHSxml.Load GetAbsolutePath("..\InterfaceTemplates\xml\QHS.xml")
-        XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO").appendChild tempQHSxml.lastChild.firstChild
+        XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO").appendChild tempQHSxml.lastChild.lastChild
 
         If (GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "68") Then
             For nodeValIndex = 1 To TAX_Utilities_Srv_New.NodeValidity.childNodes.length

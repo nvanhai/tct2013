@@ -1,4 +1,4 @@
-<HSoKhaiThue ngay_nop_tk="E_12" ky_lap_bo="E_10">
+﻿<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>48</maTKhai>
 		<tenTKhai>TK-TNCN Mẫu 03/KK-TNCN</tenTKhai>
@@ -35,12 +35,12 @@
 		<ct28>S_53</ct28>
 	</Static>
 	<Static GroupName="ThuNhapTuKDoanhCuaCNhanKhongCuTru">
-		<ct29>U_55</ct29>
-		<ct30>U_56</ct30>
+		<ct29>S_55</ct29>
+		<ct30>S_56</ct30>
 	</Static>
 	<Static GroupName="ThuNhapTuCNhuongVonCuaCNhanKhongCTru">
-		<ct31>U_58</ct31>
-		<ct32>U_59</ct32>
+		<ct31>S_58</ct31>
+		<ct32>S_59</ct32>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>R_61</nguoiKy>

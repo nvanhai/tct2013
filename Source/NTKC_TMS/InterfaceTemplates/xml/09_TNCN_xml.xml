@@ -13,15 +13,13 @@
 				<tenTKhai></tenTKhai>
 				<moTaBMau/>
 				<pbanTKhaiXML></pbanTKhaiXML>
-				<loaiTKhai></loaiTKhai>
-				<soLan></soLan>
+				<loaiTKhai>C</loaiTKhai>
+				<soLan>1</soLan>
 				<KyKKhaiThue>
-					<kieuKy></kieuKy>
+					<kieuKy>D</kieuKy>
 					<kyKKhai></kyKKhai>
 					<kyKKhaiTuNgay></kyKKhaiTuNgay>
 					<kyKKhaiDenNgay></kyKKhaiDenNgay>
-					<kyKKhaiTuThang></kyKKhaiTuThang>
-					<kyKKhaiDenThang></kyKKhaiDenThang>
 				</KyKKhaiThue>
 				<maCQTNoiNop></maCQTNoiNop>
 				<tenCQTNoiNop></tenCQTNoiNop>
@@ -32,13 +30,11 @@
 				</GiaHan>
 				<nguoiKy></nguoiKy>
 				<ngayKy></ngayKy>
-				<nganhNgheKD></nganhNgheKD>
 			</TKhaiThue>
 			<NNT>
-				<mst></mst>
+				<mst>0000000000</mst>
 				<tenNNT></tenNNT>
 				<dchiNNT></dchiNNT>
-				<phuongXa></phuongXa>
 				<maHuyenNNT></maHuyenNNT>
 				<tenHuyenNNT></tenHuyenNNT>
 				<maTinhNNT></maTinhNNT>
@@ -48,7 +44,7 @@
 				<emailNNT></emailNNT>
 			</NNT>
 			<DLyThue>
-				<mstDLyThue></mstDLyThue>
+				<mstDLyThue>0000000000</mstDLyThue>
 				<tenDLyThue></tenDLyThue>
 				<dchiDLyThue></dchiDLyThue>
 				<maHuyenDLyThue></maHuyenDLyThue>
@@ -68,35 +64,44 @@
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
-		<ct12></ct12>
-		<ct12a></ct12a>
+		<ThongTinNNT>
+			<ct12>
+				<soTKhoanNHang></soTKhoanNHang>
+				<noiMo></noiMo>
+			</ct12>
+		</ThongTinNNT>
 		<TongTNhapChiuThueTNCNTrongKy>
-			<ct22></ct22>
-			<ct23></ct23>
-			<ct24></ct24>
-			<ct25></ct25>
+			<ct22>1</ct22>
+			<ct23>1</ct23>
+			<ct24>1</ct24>
+			<ct25>1</ct25>
 		</TongTNhapChiuThueTNCNTrongKy>
 		<CacKhoanGiamTru>
-			<ct26></ct26>
-			<ct27></ct27>
-			<ct28></ct28>
-			<ct29></ct29>
-			<ct30></ct30>
+			<ct26>1</ct26>
+			<ct27>1</ct27>
+			<ct28>1</ct28>
+			<ct29>1</ct29>
+			<ct30>1</ct30>
 		</CacKhoanGiamTru>
-		<ct31></ct31>
-		<ct32></ct32>
+		<ct31>1</ct31>
+		<ct32>2147483647</ct32>
 		<TongSoThueDaTamNop_KhauTru_DaNop>
-			<ct33></ct33>
-			<ct34></ct34>
-			<ct35></ct35>
-			<ct36></ct36>
+			<ct33>1</ct33>
+			<ct34>1</ct34>
+			<ct35>1</ct35>
+			<ct36>1</ct36>
 		</TongSoThueDaTamNop_KhauTru_DaNop>
-		<ct37></ct37>
-		<ct38></ct38>
+		<TongSoThueTNCNDuocGiam>
+			<ct37>2147483647</ct37>
+			<ct38>1</ct38>
+			<ct39>1</ct39>
+		</TongSoThueTNCNDuocGiam>
+		<ct40>1</ct40>
+		<ct41>1</ct41>
 		<TongSoThueNopThua>
-			<ct39></ct39>
-			<ct40></ct40>
-			<ct41></ct41>
+			<ct42>1</ct42>
+			<ct43>1</ct43>
+			<ct44>1</ct44>
 		</TongSoThueNopThua>
 	</CTieuTKhaiChinh>
 	<PLuc>
