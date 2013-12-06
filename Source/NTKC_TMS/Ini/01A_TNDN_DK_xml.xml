@@ -1,8 +1,9 @@
-<HSoKhaiThue ngay_nop_tk="F_29" ky_lap_bo="F_27">
+﻿<HSoKhaiThue ngay_nop_tk="F_29" ky_lap_bo="F_27">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>149</maTKhai>
 		<tenTKhai>TK TNDN tạm tính đối với dầu khí(01A/TNDN-DK)</tenTKhai>
 		<moTaBMau/>
+		<soLan>J_37</soLan>
 	</Static>
 	<Static GroupName="GiaHan">
 		<maLyDoGiaHan/>
