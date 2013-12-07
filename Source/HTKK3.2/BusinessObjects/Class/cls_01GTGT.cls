@@ -39,6 +39,9 @@ Dim strGiaTriCu As Variant, blGiaTriCu As Boolean, RowGiaTriCu As Long, ColGiaTr
 'Dim xNodeData0 As MSXML.IXMLDOMNode
 Dim xNode As MSXML.IXMLDOMNode
 Dim arrData() As String
+
+Dim arrLoaiHd() As String
+
 Public Strloaitk As String
 Public loaiKHBS As String
 Public StrSolanBosung As String
@@ -2404,7 +2407,7 @@ Private Sub setLast43Target()
             GoTo Tidy_up
         End If
         If .Load(strDataFileName) = True Then
-            Set xmlNode = .nodeFromID("L_50")  'L_47: col & row of 43 target
+            Set xmlNode = .nodeFromID("L_47")  'L_47: col & row of 43 target
             str43Target = GetAttribute(xmlNode, "Value")
             Set xmlNode = Nothing
             If Trim(str43Target) <> "" And Trim(str43Target) <> "0" Then
@@ -2919,7 +2922,7 @@ Private Function GetLast43Previous(ByRef strValue As String) As Boolean
         End If
                 
         If .Load(strDataFileName) = True Then
-            Set xmlNode = .nodeFromID("L_33")  'L_33: col & row of 43 target
+            Set xmlNode = .nodeFromID("L_47")  'L_33: col & row of 43 target
             strValue = GetAttribute(xmlNode, "Value")
             Set xmlNode = Nothing
         ElseIf .parseError.reason <> vbNullString Then
@@ -4926,6 +4929,9 @@ Private Sub setMaHoaDon()
     Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
     Dim xmlNode As MSXML.IXMLDOMNode
     
+    Dim strTemp As String
+    
+    
     strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_loai_HD.xml")
     ' Lay danh muc loai hoa don
     If xmlDomData.Load(strDataFileName) Then
@@ -4935,9 +4941,14 @@ Private Sub setMaHoaDon()
                 arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                 strCombo = strCombo + CPab(arrDanhsach(0), 10) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(2), 200) + Chr$(9)
                 strComboHien = strComboHien + arrDanhsach(1) + Chr$(9)
+                strTemp = strTemp & arrDanhsach(0) & "_" & arrDanhsach(1) & "~"
             End If
         Next
     End If
+    
+    ' set ma loai HD
+    arrLoaiHd = Split(Left$(strTemp, Len(strTemp) - 1), "~")
+    
     
      With fps
         .Sheet = sheetPl01_1_GTGT
