@@ -1376,7 +1376,7 @@ Private Sub chkTKLanPS_Click()
         'chkTKLanPS.
         varMenuId = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
         'If varMenuId = "70" Or varMenuId = "73" Or varMenuId = "81" Then
-        If varMenuId = "73" Or varMenuId = "71" Or varMenuId = "81" Then
+        If varMenuId = "73" Or varMenuId = "81" Then
             frmKy.Height = 1065
             Frame2.Top = 1400
             
@@ -2606,6 +2606,23 @@ Public Sub cmdOK_Click()
                 frmTreeviewMenu.Show
                 Exit Sub
             End If
+    ' xu ly cho to khai thang/ quy
+    ElseIf TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "01" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "02" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "04" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "71" Then
+            If strQuy = "TK_QUY" Then
+                If ExistTokhai(GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_", True, TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year) = True Then
+                DisplayMessage "0125", msOKOnly, miWarning
+                Unload Me
+                frmTreeviewMenu.Show
+                Exit Sub
+                 End If
+            ElseIf strQuy = "TK_THANG" Then
+                If ExistTokhai(GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_Q", False, TAX_Utilities_New.month & TAX_Utilities_New.Year) = True Then
+                DisplayMessage "0126", msOKOnly, miWarning
+                Unload Me
+                frmTreeviewMenu.Show
+                Exit Sub
+            End If
+            End If
     End If
     
     ' Check validate BC AC
@@ -2926,7 +2943,7 @@ Private Sub Form_Load()
         SetupLayoutTNCN (strKieuKy)
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "99" Then
         SetupLayoutTNDN_DK (strKieuKy)
-    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "95" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "88" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "25" Then
+    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "95" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "88" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "25" Then
         SetLayoutToKhaiThangQuy
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "11" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "12" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "06" _
      Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "77" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "86" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "87" _
@@ -4506,7 +4523,7 @@ Private Sub OptBosung_Click()
         For i = 1 To 50
             ' Doi voi to khai thang neu la truong hop bo sung thi quet tat ca cac file xem lan bo sung lon nhat la bao nhieu
             ' Thu tu file bo sung tu 1 den 50
-            If (varMenuId = "46" Or varMenuId = "48" Or varMenuId = "15" Or varMenuId = "50" Or varMenuId = "39" Or varMenuId = "36" Or varMenuId = "53" Or varMenuId = "54" Or varMenuId = "70" Or varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "06" Or varMenuId = "05" Or varMenuId = "71" _
+            If (varMenuId = "46" Or varMenuId = "48" Or varMenuId = "15" Or varMenuId = "50" Or varMenuId = "39" Or varMenuId = "36" Or varMenuId = "25" Or varMenuId = "53" Or varMenuId = "54" Or varMenuId = "70" Or varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "06" Or varMenuId = "05" Or varMenuId = "71" _
             Or varMenuId = "72" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "86" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "92" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "06" Or varMenuId = "98") Then
                 If varMenuId = "70" Then
                     If strLoaiTKThang_PS = "TK_THANG" Then

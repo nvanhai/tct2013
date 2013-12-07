@@ -65,11 +65,11 @@ Public Sub Prepare1()
     blChon = False
     strDataFileName = GetCatalogueFileName(blChon)
     
-    SetDateFormat fps, 1, 52, fps.ColLetterToNumber("AJ"), DDMMYYYY
+    SetDateFormat fps, 1, 56, fps.ColLetterToNumber("AJ"), DDMMYYYY
     SetDateFormat fps, 2, 23, fps.ColLetterToNumber("BG"), DDMMYYYY
     With fps
         .Sheet = 1
-        .Row = 52
+        .Row = 56
         .Col = fps.ColLetterToNumber("AJ")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
@@ -141,6 +141,19 @@ Public Sub Prepare1()
         'Combo Hien
         .Col = .ColLetterToNumber("G")
         .Row = 46
+        .TypeComboBoxList = strComboHien
+        .Col = .ColLetterToNumber("P")
+        .TypeComboBoxList = strDonvitinh
+        
+        'them danh muc hang vao combobox danh muc 3
+        .Sheet = .ActiveSheet
+        mCurrentSheet = .Sheet
+        .Col = .ColLetterToNumber("F")
+        .Row = 50
+        .TypeComboBoxList = strCombo 'CPab("Maple", 100) + Chr$(9) + CPab("Oak", 100) + Chr$(9) + CPab("Ash", 100)
+        'Combo Hien
+        .Col = .ColLetterToNumber("G")
+        .Row = 50
         .TypeComboBoxList = strComboHien
         .Col = .ColLetterToNumber("P")
         .TypeComboBoxList = strDonvitinh
@@ -445,6 +458,118 @@ Dim count1 As Long
              Loop Until .Text = "aa"
 ' end
 
+' xu ly cho chuyen muc 3
+           i = 1
+            .Col = .ColLetterToNumber("C")
+            .Row = 50
+            tRow = .Row
+            Do
+                .GetText .ColLetterToNumber("F"), .Row, strLTN
+                .GetText .ColLetterToNumber("AD"), .Row, Col7
+                .GetText .ColLetterToNumber("E"), .Row, strId
+                .GetText .ColLetterToNumber("O"), .Row, strLTNCu
+                
+                GTSua = Mid(strLTNCu, 231, 1)
+                
+                If Col7 = 0 Then
+                     If Trim(strId) = "1101" Or GTSua = "1" Then
+                        .Col = .ColLetterToNumber("AA")
+                        .Lock = False
+                     Else
+                        If Trim(Mid(strLTN, 221, 10)) <> "" Then
+                            .Col = .ColLetterToNumber("AA")
+                            .value = Trim(Mid(strLTN, 221, 10))
+                            UpdateCell fps, .Col, .Row, .value
+                            .Lock = True
+                        End If
+                     End If
+                Else
+                    .Col = .ColLetterToNumber("AA")
+                    .value = 0
+                    .Row = tRow
+                    UpdateCell fps, .Col, .Row, .value
+                    .Lock = True
+                End If
+'                .CellNote = ""
+'                .BackColor = mNonErrorColor
+                
+                If strLTN = "" And strLTNCu <> "" Then
+                    .Col = .ColLetterToNumber("F")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                    '.TypeComboBoxList = strCombo + strLTNCu + Chr$(9)
+                    .TypeComboBoxString = strLTNCu
+                    .Text = strLTNCu
+                    UpdateCell fps, .Col, .Row, .Text
+
+                    'Combo Hien
+                    .Col = .ColLetterToNumber("G")
+                    '.TypeComboBoxList = strComboHien + Trim(Mid(strLTN, 1, 200)) + Chr$(9)
+                    .TypeComboBoxString = Trim(Mid(strLTNCu, 1, 200))
+                    .Text = Trim(Mid(strLTNCu, 1, 200))
+                    UpdateCell fps, .Col, .Row, .Text
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                    .ActiveSheet = 1
+                    fps_Change .Col, .Row
+                End If
+                
+                If strLTN = "" And strLTNCu = "" And strId <> "" Then
+                     If arrTaiNguyen.Exists(strId) Then
+                        .Col = .ColLetterToNumber("F")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                        '.TypeComboBoxList = strCombo + strLTNCu + Chr$(9)
+                        .Text = arrTaiNguyenGoc.Item(strId)
+                        UpdateCell fps, .Col, .Row, .Text
+    
+                        'Combo Hien
+                        .Col = .ColLetterToNumber("G")
+                        '.TypeComboBoxList = strComboHien + Trim(Mid(strLTN, 1, 200)) + Chr$(9)
+                        .value = Trim(Mid(arrTaiNguyenGoc.Item(strId), 1, 200))
+                        .Text = Trim(Mid(arrTaiNguyenGoc.Item(strId), 1, 200))
+                        UpdateCell fps, .Col, .Row, .Text
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                        mblKhoiDau = True
+                        .ActiveSheet = 1
+                        fps_Change .Col, .Row
+                    Else
+                        .Col = .ColLetterToNumber("F")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                        '.TypeComboBoxList = strCombo + strLTNCu + Chr$(9)
+                        .TypeComboBoxString = arrTaiNguyenGoc.Item(strId)
+                        .Text = arrTaiNguyenGoc.Item(strId)
+                        UpdateCell fps, .Col, .Row, .Text
+    
+                        'Combo Hien
+                        .Col = .ColLetterToNumber("G")
+                        '.TypeComboBoxList = strComboHien + Trim(Mid(strLTN, 1, 200)) + Chr$(9)
+                        .TypeComboBoxString = Trim(Mid(arrTaiNguyenGoc.Item(strId), 1, 200))
+                        .Text = Trim(Mid(arrTaiNguyenGoc.Item(strId), 1, 200))
+                        UpdateCell fps, .Col, .Row, .Text
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                        mblKhoiDau = True
+                        .ActiveSheet = 1
+                        fps_Change .Col, .Row
+                    End If
+                End If
+                .Col = .ColLetterToNumber("G")
+                If .value <> "" Then
+                    .Col = .ColLetterToNumber("P")
+                    UpdateCell fps, .Col, .Row, .Text
+                    .Lock = False
+                End If
+                'UpdateCell fps, .Col, .Row, .Text
+                .Col = .ColLetterToNumber("C")
+                .Row = i + 50
+                tRow = .Row
+                i = i + 1
+             Loop Until .Text = "aa"
+' end
+
             .Sheet = 1
             mCurrentSheet = 1
 
@@ -491,6 +616,15 @@ Dim count1 As Long
              i = i + 1
         Loop Until .Text = "aa"
         i = 1
+        .Row = .Row + 3
+        Do
+              .Text = str(i)
+              .Col = .ColLetterToNumber("C")
+              .Row = .Row + 1
+              i = i + 1
+         Loop Until .Text = "aa"
+         
+         i = 1
         .Row = .Row + 3
         Do
               .Text = str(i)
@@ -858,7 +992,7 @@ Dim xmlNodeH15 As MSXML.IXMLDOMNode
             UpdateCell fps, .Col, .Row, .value
             
         'xu ly cho chuyen muc 2
-                    Set txmlCellNode = TAX_Utilities_New.Data(1 - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("G"), 43))
+           Set txmlCellNode = TAX_Utilities_New.Data(1 - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("G"), 43))
 
             Set txmlCellNode = txmlCellNode.parentNode
             Set txmlCellNode = txmlCellNode.parentNode
@@ -874,6 +1008,22 @@ Dim xmlNodeH15 As MSXML.IXMLDOMNode
             .Col = .ColLetterToNumber("AN")
             UpdateCell fps, .Col, .Row, .value
             
+            'xu ly cho chuyen muc 3
+           Set txmlCellNode = TAX_Utilities_New.Data(1 - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("G"), 43))
+
+            Set txmlCellNode = txmlCellNode.parentNode
+            Set txmlCellNode = txmlCellNode.parentNode
+            Set txmlCellNode = txmlCellNode.parentNode.lastChild
+            Set txmlCellNode = txmlCellNode.firstChild
+            Set txmlCellNode = txmlCellNode.firstChild
+            ParserCellID fps, GetAttribute(txmlCellNode, "CellID"), tCol, tRow
+            .Row = tRow
+            .Col = .ColLetterToNumber("AG")
+            UpdateCell fps, .Col, .Row, .value
+            .Col = .ColLetterToNumber("AJ")
+            UpdateCell fps, .Col, .Row, .value
+            .Col = .ColLetterToNumber("AN")
+            UpdateCell fps, .Col, .Row, .value
         End If
      End If
      
@@ -1072,6 +1222,16 @@ Dim STT As Variant
                           .Row = .Row + 1
                           i = i + 1
                      Loop Until .Text = "aa"
+                     
+                     i = 1
+                    .Row = .Row + 3
+                    Do
+                          .Text = str(i)
+                          .Col = .ColLetterToNumber("C")
+                          .Row = .Row + 1
+                          i = i + 1
+                     Loop Until .Text = "aa"
+                     
                      count1 = .Row + 3
                     'set ho ten nhan vien co quan thue va so chung chi
                     
@@ -1269,6 +1429,16 @@ Public Sub finish()
              i = i + 1
         Loop Until .Text = "aa"
         i = 1
+        .Row = .Row + 3
+        .Col = .ColLetterToNumber("C")
+        Do
+              .Text = str(i)
+              .Col = .ColLetterToNumber("C")
+              .Row = .Row + 1
+              i = i + 1
+         Loop Until .Text = "aa"
+         
+         i = 1
         .Row = .Row + 3
         .Col = .ColLetterToNumber("C")
         Do
@@ -1520,11 +1690,106 @@ Private Sub CheckDynamicError()
                  .Row = i + 45
                  .Col = .ColLetterToNumber("C")
                  i = i + 1
+                 countDynamicRow1 = countDynamicRow1 + 1
 '                 If (.Text = "aa" And countDynamicRow = 0) Then
 '                    countDynamicRow = countDynamicRow + 1
 '                    .Row = .Row + 3
 '                End If
              Loop Until .Text = "aa"
+             
+             
+             'check section3
+'            .Row = 49 + countDynamicRow1
+'            'countTemp = .Row + 1
+'            iFlagEmty = 0
+'            Do
+'                .GetText ColAJ13, .Row, GT9
+'                .GetText ColAG13, .Row, GT8
+'                .GetText ColG13, .Row, GT2
+'                .GetText ColS13, .Row, GT4
+'                .GetText ColV13, .Row, GT5
+'                .GetText ColAD13, .Row, GT7
+'                .GetText ColAA13, .Row, GT6
+'
+'' 25/07/2012 bo check bat buoc nhap so thue khi chon loai tai nguyen
+''                 .Col = .ColLetterToNumber("G")
+''                 If .CellType = CellTypeComboBox And GT2 <> "" And GT8 = 0 Then
+''                    If Val(GT6) = 0 And Val(GT7) = 0 Then
+''                        .Col = ColAD13
+''                    ElseIf Val(GT6) <> 0 And Val(GT5) = 0 Then
+''                        .Col = ColV13
+''                    End If
+'''                    .Row = countTemp
+''                    .CellNote = errEmty
+''                    .BackColor = mErrorColor
+''                     iFlagEmty = 1
+''                    If Val(GT4) = 0 Then
+''                        .Col = ColS13
+''                        .CellNote = errEmty
+''                        .BackColor = mErrorColor
+''                        iFlagEmty = 1
+''                    Else
+''                        .Col = ColS13
+''                        .CellNote = ""
+''                        .BackColor = mNonErrorColor
+''                    End If
+''                 Else
+''                    .Col = ColS13
+''                    .CellNote = ""
+''                    .BackColor = mNonErrorColor
+''                    .Col = ColV13
+''                    .CellNote = ""
+''                    .BackColor = mNonErrorColor
+''                    .Col = ColAD13
+''                    .CellNote = ""
+''                    .BackColor = mNonErrorColor
+''                 End If
+'
+'
+'
+'                 If GT2 = "" And (GT4 > 0 Or GT5 > 0 Or GT7 > 0 Or GT9 > 0 Or GT6 > 0) Then
+'                        .Col = ColG13
+'                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                        .CellNote = vErrMsgG13 'static
+'                        .BackColor = mErrorColor
+'                        If XacDinhLoiG13 = False And LoiTonTai = False Then
+'                            ColLoiG13 = ColG13
+'                            RowLoiG13 = .Row
+'                            LoiTonTai = True
+'                            XacDinhLoiG13 = True
+'                        End If
+'                 Else
+'                         .Col = ColG13
+'                         .CellNote = ""
+'                         .BackColor = mNonErrorColor
+'                 End If
+'
+'                 If GT9 > GT8 Then
+'                        .Col = ColAJ13
+'                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                        .CellNote = vErrMsgAJ13 'static
+'                        .BackColor = mErrorColor
+'                        If XacDinhLoiAJ13 = False And LoiTonTai = False Then
+'                            ColLoiAJ13 = ColAJ13
+'                            RowLoiAJ13 = .Row
+'                            LoiTonTai = True
+'                            XacDinhLoiAJ13 = True
+'                        End If
+'                 Else
+'                         .Col = ColAJ13
+'                         .CellNote = ""
+'                         .BackColor = mNonErrorColor
+'                 End If
+'
+'                 .Row = i + 45
+'                 .Col = .ColLetterToNumber("C")
+'                 i = i + 1
+'                 countDynamicRow1 = countDynamicRow1 + 1
+''                 If (.Text = "aa" And countDynamicRow = 0) Then
+''                    countDynamicRow = countDynamicRow + 1
+''                    .Row = .Row + 3
+''                End If
+'             Loop Until .Text = "aa"
 'check error date and name
 '        .Col = .ColLetterToNumber("AJ")
 '        .Row = 17 + i
