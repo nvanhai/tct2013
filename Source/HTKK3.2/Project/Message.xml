@@ -280,5 +280,6 @@
 	<Infor ID="0287" Msg="o	Hạch toán chỉ tiêu [32] vào mục 1000, tiểu mục 1005"/>
 	<Infor ID="0288" Msg="Hạch toán chỉ tiêu [43] vào mục 1700, tiểu mục 1701"/>
 	<Infor ID="0289" Msg="Hạch toán cột (5) vào mục, tiểu mục 1700-1701 và 1050-1052"/>
+	<Infor ID="0290" Msg="Phụ lục 01-1/GTGT có dữ liệu ở dòng “Hàng hóa, dịch vụ chịu thuế suất thuế GTGT 0% (*)”, bắt buộc phải có phục lục 01-3/GTGT"/>
 </Message>
 

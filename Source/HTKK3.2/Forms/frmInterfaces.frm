@@ -407,9 +407,9 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
 
                 ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
 
-                    If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "23" Then
+                    If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Then
 
-                        ' To khai 08/TNCN,01/KK-TTS co to khai tu thang va to khai quy
+                        ' To khai 08/TNCN co to khai tu thang va to khai quy
                         If strQuy = "TK_TU_THANG" Then
                             strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & ".xml"
                         Else
@@ -484,9 +484,9 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
 
                 ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
 
-                    If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "23" Then
+                    If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Then
 
-                        ' To khai 08/TNCN,01/KK-TTS co to khai tu thang va to khai quy
+                        ' To khai 08/TNCN co to khai tu thang va to khai quy
                         If strQuy = "TK_TU_THANG" Then
                             strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & ".xml"
                         Else
@@ -2486,7 +2486,7 @@ Private Sub DeleteSheet(pIndex As Integer)
             strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
         End If
 
-    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "75" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "23" Then
+    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "75" Then
 
         If strQuy = "TK_TU_THANG" Then
             strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & ".xml"
@@ -2628,7 +2628,7 @@ Private Sub DeleteKHBS()
 
             ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
 
-                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "23" Then
+                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Then
 
                     ' To khai 08/TNCN co to khai tu thang va to khai quy
                     If strQuy = "TK_TU_THANG" Then
@@ -3862,7 +3862,7 @@ Private Function getFileName(MaTK As String) As String
 
             ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
 
-                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "23" Then
+                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Then
 
                     ' To khai 08/TNCN co to khai tu thang va to khai quy
                     If strQuy = "TK_TU_THANG" Then
@@ -3938,7 +3938,7 @@ Private Function getFileName(MaTK As String) As String
 
             ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
 
-                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "23" Then
+                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Then
 
                     ' To khai 08/TNCN co to khai tu thang va to khai quy
                     If strQuy = "TK_TU_THANG" Then
