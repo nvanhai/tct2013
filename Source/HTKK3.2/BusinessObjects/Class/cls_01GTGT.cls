@@ -188,6 +188,13 @@ Dim fldList() As String
             .Row = 28
             .Text = ""
             .CellTag = .CellTag & "~5"
+            
+         ' set gia tri mac dinh cho PL 01_4B
+         .Sheet = sheetPl01_4B_GTGT
+         .Row = 2
+         .Col = .ColLetterToNumber("F")
+         .Text = TAX_Utilities_New.Year - 1
+         ' end
        
         .Sheet = sheetPl01_KHBS_GTGT 'Pl KHBS
             .Row = rowNgayKyKhbs
@@ -262,6 +269,8 @@ Dim fldList() As String
     setCQTQuanLy
     ' set ma hoa don cho PL 01-1, 01-2
     setMaHoaDon
+    
+    
 
 End Sub
 
@@ -4706,14 +4715,14 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
             .Col = Col
             .Row = Row
             
-            If Col = .ColLetterToNumber("C") Then 'Khi chon Combo
+            If Col = .ColLetterToNumber("F") Then 'Khi chon Combo
                 'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
                 intIndexCuc = .TypeComboBoxCurSel
-                .Col = .ColLetterToNumber("I")
+                .Col = .ColLetterToNumber("K")
                 .Row = Row
                 .TypeComboBoxCurSel = intIndexCuc
                 'Nhap lai Combo cot Q
-                .Col = .ColLetterToNumber("I")
+                .Col = .ColLetterToNumber("K")
                 UpdateCell fps, .Col, .Row, .Text
                 ' Lay Id cua cuc thue vua chon o tren
                 fps.GetText .Col, .Row, varIdCucThue
@@ -4740,11 +4749,11 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
                     End If
                     
                     .Row = Row
-                    .Col = .ColLetterToNumber("D")
+                    .Col = .ColLetterToNumber("G")
                     .TypeComboBoxList = tenChiCucThue
                     
                     .Row = Row
-                    .Col = .ColLetterToNumber("H")
+                    .Col = .ColLetterToNumber("J")
                     .TypeComboBoxList = maChiCucThue
                    
                 End If
