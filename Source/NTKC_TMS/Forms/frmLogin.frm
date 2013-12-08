@@ -610,8 +610,8 @@ Private Function CheckVersion() As Boolean
     
     On Error GoTo ErrHandle
     
-    CheckVersion = True
-    Exit Function
+'    CheckVersion = True
+'    Exit Function
 '
 '    strSQL = "SELECT rv_low_value phien_ban " & _
 '           "From cg_ref_codes " & _
