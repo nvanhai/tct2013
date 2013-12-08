@@ -901,7 +901,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
 
     xmlTK.getElementsByTagName("maCQTNoiNop")(0).Text = strMaCoQuanThue 'xmlConfig.getElementsByTagName("maCQTNoiNop")(0).Text
     xmlTK.getElementsByTagName("tenCQTNoiNop")(0).Text = strTenCoQuanThue 'xmlConfig.getElementsByTagName("tenCQTNoiNop")(0).Text
-    xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = Format(Date, "dd-mmm-yyyy HH:mm:ss")
+    xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = Format(Date, "dd/mm/yyyy HH:mm:ss")
     
     If (xmlResultNNT.hasChildNodes And (InStr(xmlResultNNT.xml, "fault_code") <= 0)) Then
         xmlTK.getElementsByTagName("maHuyenNNT")(0).Text = xmlResultNNT.getElementsByTagName("MaQuanHuyen")(0).Text
@@ -2051,6 +2051,42 @@ Private Sub Command1_Click()
    Dim str31 As String, str32 As String, str33 As String, str34 As String, str35 As String, str36 As String, str37 As String, str38 As String, str39 As String, str40 As String
    Dim str41 As String, str42 As String, str43 As String, str44 As String, str45 As String, str46 As String, str47 As String, str48 As String, str49 As String, str50 As String
    Dim str51 As String, str52 As String, str53 As String
+   
+'***************** Ra soat giai doan 1 *******************
+'TEST PHASE 3
+''02/KK-TNCN - QUY
+'str2 = "aa999162300790401   03201300100100100101/0101/01/2010<S01><S>2100462770</S><S>569~128~2367~1876~3981~3768~138~3278~17665~389~2345~1767~78</S><S>Hoµng~19/11/2013~Huy“n Linh~KTV~1~~</S></S01>"
+'Barcode_Scaned str2
+''02/KK-TNCN - THANG
+'str2 = "aa999152300790401   10201300100100100101/0101/01/2010<S01><S>2100462770</S><S>100~50~2891~2376~6745~845~129~3289~2367~178~123~237~36</S><S>Hoµng~19/11/2013~Huy“n Linh~KTV~1~~</S></S01>"
+'Barcode_Scaned str2
+
+'03/KK-TNCN - QUY
+'03/KK-TNCN - THANG
+
+''TB01/AC
+'str2 = "aa999642300790401   12201300100100100101/0101/01/2009<S01><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/123~AB/12T~190001~0010000~0200000~06/01/2013~sdfdf~2222222222~IN002~01/01/2013~</S><S>~~C´c thu‚ Bæc Ninh~01/01/2013~Hoµng</S></S01>"
+'Barcode_Scaned str2
+'TB03/AC
+str2 = "aa999672300790401   03201300200200100101/0101/01/2010<S01><S>Cong ty TNHH phat hanh hoa don~Cho vao lo dot~18~06/12/2013~11</S><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/123~AB/12T~0000002~0000007~6~0</S><S>CMCer~Hoµng~06/12/2013</S></S01>"
+Barcode_Scaned str2
+''TB04/AC
+'str2 = "aa999912300790401   12201300100100100101/0101/01/2009<S01><S>0979429439~0904317327~03PHONE</S><S>03/07/2013~~~Cuc thue Ha Noi~06/12/2013~Hoµng</S></S01>"
+'Barcode_Scaned str2
+''BC01/AC
+'str2 = "aa999652300790401   02201300100100100101/0101/01/2009<S01><S>~01/07/2013~31/12/2013</S><S>2222222222~CMC~CMC tower~HD01~01/08/2013~H„a Æ¨n b∏n hµng~02GTTT3/123~AB/12T~0000002~0000007~6~</S><S>Hoµng~06/12/2013</S></S01>"
+'Barcode_Scaned str2
+''BC21/AC
+'str2 = "aa999662300790401   03201300100100100101/0101/01/2010<S01><S>06/12/2013~11~31</S><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/123~AB/12T~0000005~0000010~6~2~05~0</S><S>Bi chay do chap dien~Hoµng~06/12/2013</S></S01>"
+'Barcode_Scaned str2
+''BC26/AC
+'str2 = "aa999682300790401   03201300300300100101/0101/01/2009<S01><S>~~01/07/2013~30/09/2013</S><S>H„a Æ¨n b∏n hµng~02GTTT2/001~AA/12T~1900005~0100000~2000000~2000001~2000004~0100000~0099999~100000~100000~0~~0~~0~~0100000~1900004~1800005~0~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/001~AA/12T~1000000~0000001~0000005~0000006~1000000~0000001~0100000~100000~100000~0~~0~~0~~0100001~1000000~900000~0</S><S>CMCer~Hoµng~20/11/2013~1</S></S01>"
+'Barcode_Scaned str2
+
+
+'END TEST PHASE 3
+
+'***************** Ket thuc ra soat giai doan 1 *******************
 
 '04/GTGT
 'str2 = "aa320712222222222   08201300200300100201/0101/01/1900<S01><S></S><S>150000000~7500000~15000000</S><S>10000000~500000~1000000~01~20000000~1000000~2000000~06~30000000~1500000~3000000~03~40000000~2000000~4000000~04~50000000~2500000~5000000~05</S><S>5~5.5~6~01~7~7.5~8~06~9~9.5~10~03~11~11.5~12~04~13~13.5~14~05</S><S>15500000~812500~1700000</S><S>"
@@ -2285,9 +2321,9 @@ Private Sub Command1_Click()
 'str2 = "aa999012300790401   0820130040040020021994~9994~7000~3087~2567~3907~2567~85~1255~0~0~6756~0</S><S>Nguy‘n S¸ HÔng~DEV1234~~30/10/2013~1~~~1701~~~0</S></S01>"
 'Barcode_Scaned str2
 
-'BC21-AC
-str2 = "aa999662300790401   03201300200200100101/0101/01/2010<S01><S>05/12/2013~14~24</S><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/012~AB/12T~0000010~0000100~91~6;9;12~05~0~H„a Æ¨n xu t kh»u~06HDXK7/009~MN/23T~0000150~0000250~101~34~02~0~Phi’u xu t kho ki™m vÀn chuy”n hµng h„a nÈi bÈ~03XKNB8/005~HD/13T~0000028~0000149~122~5;11~04~0</S><S>chay hoa don~Hoµng~05/12/2013</S></S01>"
-Barcode_Scaned str2
+''BC21-AC
+'str2 = "aa999662300790401   03201300200200100101/0101/01/2010<S01><S>05/12/2013~14~24</S><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT3/012~AB/12T~0000010~0000100~91~6;9;12~05~0~H„a Æ¨n xu t kh»u~06HDXK7/009~MN/23T~0000150~0000250~101~34~02~0~Phi’u xu t kho ki™m vÀn chuy”n hµng h„a nÈi bÈ~03XKNB8/005~HD/13T~0000028~0000149~122~5;11~04~0</S><S>chay hoa don~Hoµng~05/12/2013</S></S01>"
+'Barcode_Scaned str2
 
 ''QD 15 BCTC
 'str2 = "aa999692300790433   00201200000000100801/0123/06/2006<S01><S>~73920~48000~~21000~3000~V.01~1000~1000~~20000~2000~V.02~3000~3000~~1000~1000~~2000~2000~~33000~21000~~3000~1000~~4000~2000~~5000~3000~~6000~4000~V.03~7000~5000~~8000~6000~~3000~3000~V.04~1000~1000~~2000~2000~~13920~18000~~3000~3000~~5000~4000~V.05~3450~5000~~2470~6000~~95780~88000~~19940~15000~~6920~4000~~3420~5000~V.06~5600~3000~V.07~1300~2000~~2700~1000~~41000~28000~V.08~9400~3000~~6000~10"
@@ -4865,7 +4901,7 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
     Set xmlResultDLT = New MSXML.DOMDocument
     Dim strResultDLT As String
     
-    
+'
 '    'Du lieu gia lap de test
 '    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
 '    strResultDLT = "sdfsfds"
@@ -5047,10 +5083,10 @@ On Error GoTo ErrHandle
     
     Set xmlResultNNT = New MSXML.DOMDocument
     Dim strResultNNT As String
-
-   'Du lieu gia lap de test
-    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-    strResultNNT = "test"
+'
+'   'Du lieu gia lap de test
+'    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+'    strResultNNT = "test"
 
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         Dim cfigXml As New MSXML.DOMDocument
