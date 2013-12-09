@@ -10768,39 +10768,65 @@ Public Sub UpdateDataKHBS_TT28(pGrid As fpSpread)
                 
                     
                     .Col = .ColLetterToNumber("B")
-                    .Row = 24 + i - 7
+                    .Row = 47 + i - 7
                      UpdateCell .ColLetterToNumber("B"), .Row, .Text
                     .Col = .ColLetterToNumber("BE")
-                    .Row = 17 + i - 7
-                     UpdateCell .ColLetterToNumber("BE"), .Row, .value
-                     .Row = 18 + i - 7
-                     UpdateCell .ColLetterToNumber("BE"), .Row, IIf(Trim(.value) = "", 0, .value)
-                     .Col = .ColLetterToNumber("BD")
                     .Row = 20 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .Row, .value
+                     .Row = 21 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .Row, IIf(Trim(.value) = "", 0, .value)
+                     
+                     .Row = 27 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .Row, IIf(Trim(.value) = "", 0, .value)
+                     
+                     .Row = 29 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .Row, .Text
+                     
+                     .Row = 31 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .Row, .Text
+                     
+                     .Row = 33 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .Row, .Text
+                     
+                     .Col = .ColLetterToNumber("BI")
+                     .Row = 33 + i - 7
+                     UpdateCell .ColLetterToNumber("BI"), .Row, .Text
+                     
+                     .Col = .ColLetterToNumber("BE")
+                     .Row = 35 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .Row, .Text
+                     
+                     .Col = .ColLetterToNumber("BI")
+                     .Row = 35 + i - 7
+                     UpdateCell .ColLetterToNumber("BI"), .Row, .Text
+                     
+                     .Col = .ColLetterToNumber("BE")
+                     .Row = 37 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .Row, IIf(Trim(.value) = "", 0, .value)
+                     
+                     .Row = 39 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .Row, IIf(Trim(.value) = "", 0, .value)
+                     
+                     
+                     .Col = .ColLetterToNumber("BD")
+                    .Row = 43 + i - 7
                      UpdateCell .ColLetterToNumber("BD"), .Row, .Text
+                     
                     .Col = .ColLetterToNumber("BG")
-                    .Row = 22 + i - 7
+                    .Row = 45 + i - 7
                     UpdateCell .ColLetterToNumber("BG"), .Row, .Text
                     .Col = .ColLetterToNumber("BG")
-                    .Row = 23 + i - 7
+                    .Row = 46 + i - 7
                     UpdateCell .ColLetterToNumber("BG"), .Row, .Text
+                    
                      .Col = .ColLetterToNumber("BF")
-                     .Row = 15 + i - 7
+                     .Row = 17 + i - 7
                     UpdateCell .ColLetterToNumber("BF"), .Row, IIf(Trim(.value) = "", 0, .value)
                       .Col = .ColLetterToNumber("BG")
-                     .Row = 15 + i - 7
+                     .Row = 17 + i - 7
                     UpdateCell .ColLetterToNumber("BG"), .Row, IIf(Trim(.value) = "", 0, .value)
                       .Col = .ColLetterToNumber("BH")
-                     .Row = 15 + i - 7
-                    UpdateCell .ColLetterToNumber("BH"), .Row, IIf(Trim(.value) = "", 0, .value)
-                     .Col = .ColLetterToNumber("BF")
-                     .Row = 16 + i - 7
-                    UpdateCell .ColLetterToNumber("BF"), .Row, IIf(Trim(.value) = "", 0, .value)
-                      .Col = .ColLetterToNumber("BG")
-                     .Row = 16 + i - 7
-                    UpdateCell .ColLetterToNumber("BG"), .Row, IIf(Trim(.value) = "", 0, .value)
-                      .Col = .ColLetterToNumber("BH")
-                     .Row = 16 + i - 7
+                     .Row = 17 + i - 7
                     UpdateCell .ColLetterToNumber("BH"), .Row, IIf(Trim(.value) = "", 0, .value)
                 End With
     Exit Sub

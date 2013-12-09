@@ -11,10 +11,13 @@
 		<Item CellID="L_50" MCT="43" Caption="Thuế GTGT còn được khấu trừ chuyển kỳ sau"/>
 	</Map>
 	<Map ID ="02_GTGT">		
-		<Item CellID="CT_40" MCT="21" Caption="Thuế GTGT chưa được hoàn kỳ trước chuyển sang"/>		
+		<Item CellID="CT_40" MCT="21" Caption="Thuế GTGT chưa được hoàn kỳ trước chuyển sang"/>	
+		<Item CellID="CT_41" MCT="21a" Caption="Thuế GTGT nhận bàn giao từ đơn vị khác"/>	
 		<Item CellID="CT_42" MCT="23" Caption="Hàng hoá, dịch vụ mua vào trong kỳ"/>
+		<Item CellID="CT_48" MCT="28a" Caption="Thuế GTGT mua vào dự án đầu tư (cùng tỉnh, thành phố trực thuộc trung ương) bù trừ với thuế GTGT phải nộp của hoạt động sản xuất kinh doanh cùng kỳ tính thuế"/>
 		<Item CellID="CT_49" MCT="30" Caption="Thuế GTGT đề nghị hoàn"/>
-		<Item CellID="CT_50" MCT="31" Caption="Thuế GTGT chưa được hoàn  bàn giao cho doanh nghiệp mới thành lập trong kỳ"/>
+		<Item CellID="CT_51" MCT="30a" Caption="Trong đó thuế GTGT đầu vào của hàng hoá nhập khẩu thuộc loại trong nước chưa sản xuất được để tạo tài sản cố định đã đề nghị hoàn"/>
+		<Item CellID="CT_52" MCT="31" Caption="Thuế GTGT chưa được hoàn  bàn giao cho doanh nghiệp mới thành lập trong kỳ"/>
 	</Map>
 	<Map ID ="03_GTGT">
 		<Item CellID="M_39" MCT="30" Caption="Thuế GTGT phải nộp của Hàng hoá, dịch vụ chịu thuế suất 0%  và không chịu thuế"/>	
