@@ -20,6 +20,8 @@
 					<kyKKhai></kyKKhai>
 					<kyKKhaiTuNgay></kyKKhaiTuNgay>
 					<kyKKhaiDenNgay></kyKKhaiDenNgay>
+					<kyKKhaiTuThang></kyKKhaiTuThang>
+					<kyKKhaiDenThang></kyKKhaiDenThang>
 				</KyKKhaiThue>
 				<maCQTNoiNop></maCQTNoiNop>
 				<tenCQTNoiNop></tenCQTNoiNop>
@@ -30,11 +32,13 @@
 				</GiaHan>
 				<nguoiKy></nguoiKy>
 				<ngayKy></ngayKy>
+				<nganhNgheKD></nganhNgheKD>
 			</TKhaiThue>
 			<NNT>
 				<mst></mst>
 				<tenNNT></tenNNT>
 				<dchiNNT></dchiNNT>
+				<phuongXa></phuongXa>
 				<maHuyenNNT></maHuyenNNT>
 				<tenHuyenNNT></tenHuyenNNT>
 				<maTinhNNT></maTinhNNT>
@@ -66,11 +70,10 @@
 	<CTieuTKhaiChinh>
 		<TaiNguyenKhaiThac>
 			<NoiDungTAIN id="ID_1">
+				<ct1></ct1>
 				<ct2></ct2>
-				<SanLuongTaiNguyenTinhThue>
-					<ct3></ct3>
-					<ct4></ct4>
-				</SanLuongTaiNguyenTinhThue>
+				<ct3></ct3>
+				<ct4></ct4>
 				<ct5></ct5>
 				<ct6></ct6>
 				<ct7></ct7>
@@ -81,11 +84,10 @@
 		</TaiNguyenKhaiThac>
 		<TaiNguyenThuMuaGom>
 			<NoiDungTAIN id="ID_2">
+				<ct1></ct1>
 				<ct2></ct2>
-				<SanLuongTaiNguyenTinhThue>
-					<ct3></ct3>
-					<ct4></ct4>
-				</SanLuongTaiNguyenTinhThue>
+				<ct3></ct3>
+				<ct4></ct4>
 				<ct5></ct5>
 				<ct6></ct6>
 				<ct7></ct7>

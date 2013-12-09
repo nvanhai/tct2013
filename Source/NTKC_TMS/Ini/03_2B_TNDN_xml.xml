@@ -1,10 +1,12 @@
 <PL03_2B_TNDN>
-	<Static GroupName="PL03_2B_TNDN">
+	<Static GroupName="noidung">
 		<namPSinhLo>B_26</namPSinhLo>
 		<soLoPSinh>C_26</soLoPSinh>
 		<soLoDaChuyen>H_26</soLoDaChuyen>
 		<soLoKyNay>M_26</soLoKyNay>
 		<soLoChuyenSau>R_26</soLoChuyenSau>
+	</Static>
+	<Static GroupName="PL03_2B_TNDN">
 		<tongSoLoPSinh>C_32</tongSoLoPSinh>
 		<tongSoLoDaChuyen>H_32</tongSoLoDaChuyen>
 		<tongSoLoKyNay>M_32</tongSoLoKyNay>

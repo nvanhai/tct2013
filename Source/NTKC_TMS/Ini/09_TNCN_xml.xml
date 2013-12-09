@@ -1,8 +1,7 @@
 <HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30">
 	<Static GroupName="TKhaiThue">
-		<maTKhai>09_TNCN</maTKhai>
+		<maTKhai>16</maTKhai>
 		<tenTKhai>Tờ khai 09/KK-TNCN</tenTKhai>
-		<soLan>I_68</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
@@ -17,9 +16,9 @@
 		<maHuyenDLyThue></maHuyenDLyThue>
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
-	<Static GroupName="ct12">
-		<soTKhoanNHang></soTKhoanNHang>
-		<noiMo></noiMo>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct12>D_20</ct12>
+		<ct12a>M_20</ct12a>
 	</Static>
 	<Static GroupName="TongTNhapChiuThueTNCNTrongKy">
 		<ct22>R_42</ct22>
@@ -44,26 +43,21 @@
 		<ct35>R_55</ct35>
 		<ct36>R_56</ct36>
 	</Static>
-	<Static GroupName="TongSoThueTNCNDuocGiam">
+	<Static GroupName="CTieuTKhaiChinh">
 		<ct37>R_57</ct37>
 		<ct38>R_58</ct38>
-		<ct39>R_59</ct39>
 	</Static>
-	<Static GroupName="CTieuTKhaiChinh">
+	<Static GroupName="TongSoThueNopThua">
+		<ct39>R_59</ct39>
 		<ct40>R_60</ct40>
 		<ct41>R_61</ct41>
 	</Static>
-	<Static GroupName="TongSoThueNopThua">
-		<ct42>R_62</ct42>
-		<ct43>R_63</ct43>
-		<ct44>R_64</ct44>
-	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>T_68</nguoiKy>
-		<ngayKy>T_70</ngayKy>
+		<nguoiKy>T_65</nguoiKy>
+		<ngayKy>T_67</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>G_68</tenNVienDLyThue>
-		<cchiHNghe>G_70</cchiHNghe>
+		<tenNVienDLyThue>G_65</tenNVienDLyThue>
+		<cchiHNghe>G_67</cchiHNghe>
 	</Static>
 </HSoKhaiThue>

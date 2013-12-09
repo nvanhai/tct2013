@@ -1,18 +1,18 @@
 <PL03_6_TNDN>
 	<mucTrichLap></mucTrichLap>
-	<soTienTrichLap>1</soTienTrichLap>
-	<tongTienTrLapKyNay>1</tongTienTrLapKyNay>
-	<tongTienSDungKyNay>1</tongTienSDungKyNay>
-	<tongTienTrLapKyTruoc>1</tongTienTrLapKyTruoc>
-	<tongTienTrLapKySau>1</tongTienTrLapKySau>
+	<soTienTrichLap></soTienTrichLap>
+	<tongTienTrLapKyNay></tongTienTrLapKyNay>
+	<tongTienSDungKyNay></tongTienSDungKyNay>
+	<tongTienTrLapKyTruoc></tongTienTrLapKyTruoc>
+	<tongTienTrLapKySau></tongTienTrLapKySau>
 	<NoiDung_PL036TNDN>
-		<NoiDungPL036TNDN id="ID_3">
+		<NoiDungPL036TNDN>
 			<namTrLap></namTrLap>
-			<mucTrLapKyNay>0.0</mucTrLapKyNay>
-			<soTienTrLapKyNay>1</soTienTrLapKyNay>
-			<soTienSDungKyNay>1</soTienSDungKyNay>
-			<soTienTrLapKyTruoc>1</soTienTrLapKyTruoc>
-			<soTienTrLapKySau>1</soTienTrLapKySau>
+			<mucTrLapKyNay></mucTrLapKyNay>
+			<soTienTrLapKyNay></soTienTrLapKyNay>
+			<soTienSDungKyNay></soTienSDungKyNay>
+			<soTienTrLapKyTruoc></soTienTrLapKyTruoc>
+			<soTienTrLapKySau></soTienTrLapKySau>
 		</NoiDungPL036TNDN>
 	</NoiDung_PL036TNDN>
 </PL03_6_TNDN>

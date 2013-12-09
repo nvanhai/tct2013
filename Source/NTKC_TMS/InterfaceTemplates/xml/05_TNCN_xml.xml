@@ -13,13 +13,15 @@
 				<tenTKhai></tenTKhai>
 				<moTaBMau/>
 				<pbanTKhaiXML></pbanTKhaiXML>
-				<loaiTKhai>C</loaiTKhai>
-				<soLan>1</soLan>
+				<loaiTKhai></loaiTKhai>
+				<soLan></soLan>
 				<KyKKhaiThue>
-					<kieuKy>D</kieuKy>
+					<kieuKy></kieuKy>
 					<kyKKhai></kyKKhai>
 					<kyKKhaiTuNgay></kyKKhaiTuNgay>
 					<kyKKhaiDenNgay></kyKKhaiDenNgay>
+					<kyKKhaiTuThang></kyKKhaiTuThang>
+					<kyKKhaiDenThang></kyKKhaiDenThang>
 				</KyKKhaiThue>
 				<maCQTNoiNop></maCQTNoiNop>
 				<tenCQTNoiNop></tenCQTNoiNop>
@@ -30,11 +32,13 @@
 				</GiaHan>
 				<nguoiKy></nguoiKy>
 				<ngayKy></ngayKy>
+				<nganhNgheKD></nganhNgheKD>
 			</TKhaiThue>
 			<NNT>
-				<mst>0000000000</mst>
+				<mst></mst>
 				<tenNNT></tenNNT>
 				<dchiNNT></dchiNNT>
+				<phuongXa></phuongXa>
 				<maHuyenNNT></maHuyenNNT>
 				<tenHuyenNNT></tenHuyenNNT>
 				<maTinhNNT></maTinhNNT>
@@ -44,7 +48,7 @@
 				<emailNNT></emailNNT>
 			</NNT>
 			<DLyThue>
-				<mstDLyThue>0000000000</mstDLyThue>
+				<mstDLyThue></mstDLyThue>
 				<tenDLyThue></tenDLyThue>
 				<dchiDLyThue></dchiDLyThue>
 				<maHuyenDLyThue></maHuyenDLyThue>
@@ -65,49 +69,47 @@
 	</TTinChung>
 	<CTieuTKhaiChinh>
 		<NghiaVuKhauTruThue>
-			<TongSoCaNhanDaKhauTruThue>
-				<ct21>1</ct21>
-				<ct22>1</ct22>
-				<ct23>1</ct23>
-			</TongSoCaNhanDaKhauTruThue>
-			<TongTNCTTraChoCaNhan>
-				<ct24>1</ct24>
-				<ct25>1</ct25>
-				<ct26>1</ct26>
-				<ct27>1</ct27>
-			</TongTNCTTraChoCaNhan>
-			<TongTNCTTraChoCNhanThuocDienKTru>
-				<ct28>1</ct28>
-				<ct29>1</ct29>
-				<ct30>1</ct30>
-				<ct31>1</ct31>
-			</TongTNCTTraChoCNhanThuocDienKTru>
-			<TongThueTNCNDaKTru>
-				<ct32>1</ct32>
-				<ct33>1</ct33>
-				<ct34>1</ct34>
-				<ct35>1</ct35>
-			</TongThueTNCNDaKTru>
-			<TongSoThueTNCTPhaiKTru>
-				<ct36>1</ct36>
-				<ct37>1</ct37>
-				<ct38>1</ct38>
-				<ct39>1</ct39>
-			</TongSoThueTNCTPhaiKTru>
-			<ct40>1</ct40>
-			<ct41>1</ct41>
-			<ct42>1</ct42>
+			<TongCaNhanDaKhauTru>
+				<ct21></ct21>
+				<ct22></ct22>
+				<ct23></ct23>
+			</TongCaNhanDaKhauTru>
+			<TongTNCTTraChoCNhan>
+				<ct24></ct24>
+				<ct25></ct25>
+				<ct26></ct26>
+				<ct27></ct27>
+			</TongTNCTTraChoCNhan>
+			<TongTNCNTraChoCNKTru>
+				<ct28></ct28>
+				<ct29></ct29>
+				<ct30></ct30>
+				<ct31></ct31>
+			</TongTNCNTraChoCNKTru>
+			<TongSoThueTNCNDaKTru>
+				<ct32></ct32>
+				<ct33></ct33>
+				<ct34></ct34>
+				<ct35></ct35>
+			</TongSoThueTNCNDaKTru>
+			<TongSoThueTNCNPhaiKTru>
+				<ct36></ct36>
+				<ct37></ct37>
+				<ct38></ct38>
+				<ct39></ct39>
+			</TongSoThueTNCNPhaiKTru>
+			<ct40></ct40>
+			<ct41></ct41>
+			<ct42></ct42>
 		</NghiaVuKhauTruThue>
 		<NghiaVuQuyetToanThay>
-			<ct43>1</ct43>
-			<ct44>1</ct44>
-			<ct45>1</ct45>
-			<ct46>1</ct46>
-			<ct47>1</ct47>
+			<ct43></ct43>
+			<ct44></ct44>
+			<ct45></ct45>
+			<ct46></ct46>
+			<ct47></ct47>
 		</NghiaVuQuyetToanThay>
 	</CTieuTKhaiChinh>
 	<PLuc>
 	</PLuc>
-	<Signature>
-	</Signature>
 </HSoKhaiThue>

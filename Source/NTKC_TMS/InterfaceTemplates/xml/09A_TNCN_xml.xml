@@ -2,17 +2,19 @@
 	<ThongTinPhuLuc>
 		<kemTKChinhNam></kemTKChinhNam>
 	</ThongTinPhuLuc>
-	<TongTNhapChiuThuePSinhTrongKy>
-		<ct05>1</ct05>
-		<ct06>1</ct06>
-		<ct07>1</ct07>
-		<ct08>1</ct08>
-	</TongTNhapChiuThuePSinhTrongKy>
-	<TongSoThueDaKTru>
-		<ct09>1</ct09>
-		<ct10>1</ct10>
-		<ct11>1</ct11>
-	</TongSoThueDaKTru>
-	<ct12>1</ct12>
-	<ct13>1</ct13>
+	<KeKhai>
+		<TongTNhapChiuThuePSinhTrongKy>
+			<ct05></ct05>
+			<ct06></ct06>
+			<ct07></ct07>
+			<ct08></ct08>
+		</TongTNhapChiuThuePSinhTrongKy>
+		<TongSoThueDaKTru>
+			<ct09></ct09>
+			<ct10></ct10>
+			<ct11></ct11>
+		</TongSoThueDaKTru>
+		<ct12></ct12>
+		<ct13></ct13>
+	</KeKhai>
 </PL09A-TNCN>
