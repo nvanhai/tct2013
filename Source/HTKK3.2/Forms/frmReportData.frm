@@ -393,12 +393,12 @@ nextPrinter:
     fpsReport.sheet = 1
 
     If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "11") Or (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "12") Then
-        'dhdang sua check gia han nop theo thong tu
-        ' q Quy ke khai
-        ' y nam ke khai
-        ' dNgayTaiChinh ngay tai chinh lay tren man hinh HTKK
-        ' dThangTaiChinh thang tai chinh tren phan thong tin chung HTKK
-        ' dType: 0 tra ve quy, 1 tra ve nam
+'        'dhdang sua check gia han nop theo thong tu
+'        ' q Quy ke khai
+'        ' y nam ke khai
+'        ' dNgayTaiChinh ngay tai chinh lay tren man hinh HTKK
+'        ' dThangTaiChinh thang tai chinh tren phan thong tin chung HTKK
+'        ' dType: 0 tra ve quy, 1 tra ve nam
         Dim Quynamtc        As Integer
         Dim Namtc           As Integer
         Dim QuyKK           As Integer
@@ -408,63 +408,63 @@ nextPrinter:
         Dim strNgayTaiChinh As String
         Dim Thongtu         As String
         Dim ThangKK As Integer
-        
+
         Dim rowCheckGH As Long
         Dim colCheckGH As String
-        
-        If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "11") Then
-            rowCheckGH = 38
-            colCheckGH = "H"
-        Else
-            rowCheckGH = 46
-            colCheckGH = "G"
-        End If
-        
-        QuyKK = TAX_Utilities_New.ThreeMonths
-        NamKK = TAX_Utilities_New.Year
-        
+'
+'        If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "11") Then
+'            rowCheckGH = 38
+'            colCheckGH = "H"
+'        Else
+'            rowCheckGH = 46
+'            colCheckGH = "G"
+'        End If
+'
+'        QuyKK = TAX_Utilities_New.ThreeMonths
+'        NamKK = TAX_Utilities_New.Year
+'
         ' ID to khai
         Dim idToKhai      As String
         Dim dsTK_checkDLT As String
-        
-        'Lay ngay bat dau nam tai chinh
-        If GetAttribute(TAX_Utilities_New.NodeMenu, "FinanceYear") = "1" Then
-            strNgayTaiChinh = GetNgayBatDauNamTaiChinh
-            iNgayTaiChinh = GetNgayTaiChinh(strNgayTaiChinh)
-            iThangTaiChinh = GetThangTaiChinh(strNgayTaiChinh)
-        Else
-            strNgayTaiChinh = "01/01"
-            iNgayTaiChinh = 1
-            iThangTaiChinh = 1
-        End If
-        
-        Quynamtc = GetQuyNamTaiChinh(QuyKK, NamKK, iNgayTaiChinh, iThangTaiChinh, 0)
-        Namtc = GetQuyNamTaiChinh(QuyKK, NamKK, iNgayTaiChinh, iThangTaiChinh, 1)
-
-        If (Namtc = 2010 And Quynamtc = 4) Then
-            Thongtu = GetAttribute(GetMessageCellById("0187"), "Msg")
-            fpsReport.SetText fpsReport.ColLetterToNumber(colCheckGH), rowCheckGH, Thongtu
-        ElseIf Namtc = 2011 And (Quynamtc = 1 Or Quynamtc = 2) Then
-            Thongtu = GetAttribute(GetMessageCellById("0260"), "Msg")
-            fpsReport.SetText fpsReport.ColLetterToNumber(colCheckGH), rowCheckGH, Thongtu
-        ElseIf Namtc = 2011 And (Quynamtc = 3 Or Quynamtc = 4) Then
-            Thongtu = GetAttribute(GetMessageCellById("0243"), "Msg")
-            fpsReport.SetText fpsReport.ColLetterToNumber(colCheckGH), rowCheckGH, Thongtu
-        ElseIf Namtc = 2010 And Quynamtc <> 4 Then
-            Thongtu = GetAttribute(GetMessageCellById("0186"), "Msg")
-            fpsReport.SetText fpsReport.ColLetterToNumber(colCheckGH), rowCheckGH, Thongtu
-        ElseIf Namtc = 2009 Then
-            Thongtu = GetAttribute(GetMessageCellById("0185"), "Msg")
-            fpsReport.SetText fpsReport.ColLetterToNumber(colCheckGH), rowCheckGH, Thongtu
-'        ElseIf Namtc = 2013 And (Quynamtc = 1 Or Quynamtc = 2 Or Quynamtc = 3) Then
-'            Thongtu = GetAttribute(GetMessageCellById("0263"), "Msg")
+'
+'        'Lay ngay bat dau nam tai chinh
+'        If GetAttribute(TAX_Utilities_New.NodeMenu, "FinanceYear") = "1" Then
+'            strNgayTaiChinh = GetNgayBatDauNamTaiChinh
+'            iNgayTaiChinh = GetNgayTaiChinh(strNgayTaiChinh)
+'            iThangTaiChinh = GetThangTaiChinh(strNgayTaiChinh)
+'        Else
+'            strNgayTaiChinh = "01/01"
+'            iNgayTaiChinh = 1
+'            iThangTaiChinh = 1
+'        End If
+'
+'        Quynamtc = GetQuyNamTaiChinh(QuyKK, NamKK, iNgayTaiChinh, iThangTaiChinh, 0)
+'        Namtc = GetQuyNamTaiChinh(QuyKK, NamKK, iNgayTaiChinh, iThangTaiChinh, 1)
+'
+'        If (Namtc = 2010 And Quynamtc = 4) Then
+'            Thongtu = GetAttribute(GetMessageCellById("0187"), "Msg")
 '            fpsReport.SetText fpsReport.ColLetterToNumber(colCheckGH), rowCheckGH, Thongtu
-        Else
-'            fpsReport.SetText fpsReport.ColLetterToNumber("B"), rowCheckGH, ""
+'        ElseIf Namtc = 2011 And (Quynamtc = 1 Or Quynamtc = 2) Then
+'            Thongtu = GetAttribute(GetMessageCellById("0260"), "Msg")
 '            fpsReport.SetText fpsReport.ColLetterToNumber(colCheckGH), rowCheckGH, Thongtu
-             Thongtu = GetAttribute(GetMessageCellById("0263"), "Msg")
-             fpsReport.SetText fpsReport.ColLetterToNumber(colCheckGH), rowCheckGH, Thongtu
-        End If
+'        ElseIf Namtc = 2011 And (Quynamtc = 3 Or Quynamtc = 4) Then
+'            Thongtu = GetAttribute(GetMessageCellById("0243"), "Msg")
+'            fpsReport.SetText fpsReport.ColLetterToNumber(colCheckGH), rowCheckGH, Thongtu
+'        ElseIf Namtc = 2010 And Quynamtc <> 4 Then
+'            Thongtu = GetAttribute(GetMessageCellById("0186"), "Msg")
+'            fpsReport.SetText fpsReport.ColLetterToNumber(colCheckGH), rowCheckGH, Thongtu
+'        ElseIf Namtc = 2009 Then
+'            Thongtu = GetAttribute(GetMessageCellById("0185"), "Msg")
+'            fpsReport.SetText fpsReport.ColLetterToNumber(colCheckGH), rowCheckGH, Thongtu
+''        ElseIf Namtc = 2013 And (Quynamtc = 1 Or Quynamtc = 2 Or Quynamtc = 3) Then
+''            Thongtu = GetAttribute(GetMessageCellById("0263"), "Msg")
+''            fpsReport.SetText fpsReport.ColLetterToNumber(colCheckGH), rowCheckGH, Thongtu
+'        Else
+''            fpsReport.SetText fpsReport.ColLetterToNumber("B"), rowCheckGH, ""
+''            fpsReport.SetText fpsReport.ColLetterToNumber(colCheckGH), rowCheckGH, Thongtu
+'             Thongtu = GetAttribute(GetMessageCellById("0263"), "Msg")
+'             fpsReport.SetText fpsReport.ColLetterToNumber(colCheckGH), rowCheckGH, Thongtu
+'        End If
 
     ElseIf (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "03") Then
 

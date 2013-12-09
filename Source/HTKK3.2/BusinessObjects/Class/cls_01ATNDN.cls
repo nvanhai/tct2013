@@ -452,7 +452,7 @@ Dim cValueF As Variant
 Dim i As Integer
 Dim xmlNodeH15 As MSXML.IXMLDOMNode
 
-Dim CT26, CT27, CT28, ct29, CT30, ct31, ct32, ct32a, ct33, ct33a, ct34, ct35, ct35a, ct35b, ct36 As Variant
+Dim CT26, CT27, CT28, ct29, CT30, ct31, ct32, ct32a, CT33, ct33a, ct34, CT35, ct35a, ct35b, CT36 As Variant
 'Dim vCheck20 As Variant
 
 With fps
@@ -629,13 +629,13 @@ With fps
                 .GetText .ColLetterToNumber("K"), 32, ct31
                 .GetText .ColLetterToNumber("K"), 33, ct32
                 .GetText .ColLetterToNumber("K"), 34, ct32a
-                .GetText .ColLetterToNumber("K"), 35, ct33
+                .GetText .ColLetterToNumber("K"), 35, CT33
                 .GetText .ColLetterToNumber("K"), 36, ct33a
                 .GetText .ColLetterToNumber("K"), 37, ct34
-                .GetText .ColLetterToNumber("K"), 38, ct35
+                .GetText .ColLetterToNumber("K"), 38, CT35
                 .GetText .ColLetterToNumber("K"), 39, ct35a
                 .GetText .ColLetterToNumber("K"), 40, ct35b
-                .GetText .ColLetterToNumber("K"), 41, ct36
+                .GetText .ColLetterToNumber("K"), 41, CT36
                 
                 '.GetText .ColLetterToNumber("D"), 11, vCheck20
                 
@@ -1759,7 +1759,7 @@ Private Sub UpdateSheets()
         mCurrentSheet = .Sheet
         For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
            ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-               If (lRow = 12 And lCol = .ColLetterToNumber("D")) Or (lRow = 11 And lCol = .ColLetterToNumber("D")) Or (lRow = 34 And lCol = .ColLetterToNumber("B")) Then
+               If (lRow = 12 And lCol = .ColLetterToNumber("D")) Or (lRow = 11 And lCol = .ColLetterToNumber("D")) Or (lRow = 43 And lCol = .ColLetterToNumber("F")) Then
                     .GetText lCol, lRow, varTemp
                     If varTemp = "1" Or UCase(CStr(varTemp)) = "X" Then
                         UpdateCell fps, lCol, lRow, "x"

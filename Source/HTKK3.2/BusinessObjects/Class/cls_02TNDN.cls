@@ -52,11 +52,17 @@ Public Sub Prepare1()
         SetDateFormat fps, 1, 42, .ColLetterToNumber("AC"), DDMMYYYY
         SetDateFormat fps, 1, 44, .ColLetterToNumber("AH"), DDMMYYYY
         
-   
+        .Row = 82
+        .Col = .ColLetterToNumber("C")
+        .Text = "0"
+        
         .Row = 91
         .Col = .ColLetterToNumber("AP")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
+        
+        
+        .SetText .ColLetterToNumber("E"), 82, GetAttribute(GetMessageCellById("0265"), "Msg")
         
         
         SetDateFormat fps, .SheetCount - 1, 23, .ColLetterToNumber("BG"), DDMMYYYY
@@ -1207,6 +1213,13 @@ Private Sub UpdateSheets()
     Dim lCol As Long, lRow As Long
     Dim xmlCellNode As MSXML.IXMLDOMNodeList
     Dim xmlCellNodeData As MSXML.IXMLDOMNode
+    
+    ' insert node
+    Dim xmlNodeCells As MSXML.IXMLDOMNode
+    Dim xmlNodeNewCells As MSXML.IXMLDOMNode
+    Dim xmlNodeNewCell As MSXML.IXMLDOMNode
+    Dim testDoc As New MSXML.DOMDocument
+    ' end
 
     Dim blCheck_S2 As Boolean
     With fps
@@ -1214,9 +1227,15 @@ Private Sub UpdateSheets()
         ssSheet = mCurrentSheet
         .Sheet = 1
         mCurrentSheet = .Sheet
+        ' them 1 not vao xml
+'        If TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length = 38 Then
+'            testDoc.loadXML "<Cell CellID='C_82' CellID2='C_82' Encode='1' Receive='1' Value=''/>"
+'            TAX_Utilities_New.Data(0).nodeFromID("T_54").parentNode.appendChild testDoc.firstChild
+'            SetAttribute TAX_Utilities_New.Data(0).lastChild, "Version", "317"
+'        End If
         For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
            ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-               If (lRow = 12 And lCol = .ColLetterToNumber("D")) Or (lRow = 34 And lCol = .ColLetterToNumber("B")) Then
+               If (lRow = 82 And lCol = .ColLetterToNumber("C")) Or (lRow = 16 And lCol = .ColLetterToNumber("Z")) Then
                     .GetText lCol, lRow, varTemp
                     If varTemp = "1" Or UCase(CStr(varTemp)) = "X" Then
                         UpdateCell fps, lCol, lRow, "x"
@@ -1507,4 +1526,13 @@ Public Sub inThongTinDL()
     strTuRowDenRowPL = "11_13_2~20_30_3"
     ' end
 End Sub
+
+Public Function isCheckGh() As Boolean
+    If TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length = 38 Then
+        isCheckGh = True
+    Else
+        isCheckGh = False
+    End If
+    Exit Function
+End Function
 
