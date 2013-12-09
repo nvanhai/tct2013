@@ -60,6 +60,7 @@ Public Sub Prepare1()
         
     With fps
         SetDateFormat fps, 1, 69, .ColLetterToNumber("J"), DDMMYYYY
+        SetDateFormat fps, 1, 60, .ColLetterToNumber("H"), DDMMYYYY
         .Sheet = 1
         .Row = 69
         .Col = .ColLetterToNumber("J")
@@ -235,6 +236,7 @@ Public Sub Prepare2()
             .Row = 47
             If .CellType = 1 Or .CellType = 5 Then
                 FormatTextPercent fps, 1, .ColLetterToNumber("K"), 47, True
+                .SetText .ColLetterToNumber("K"), .Row, "0"
             End If
             .Col = .ColLetterToNumber("K")
             .Row = 50
@@ -465,7 +467,7 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                     Else 'Khi chon xoa
                         'Xoa du lieu chi tieu 15, 18 va cho phep nhap cot 18, format lai cot 15
                         
-                        Set xmlCellNode = TAX_Utilities_New.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("J"), 42))
+                        Set xmlCellNode = TAX_Utilities_New.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("K"), 42))
                         Set xmlCellsNode = xmlCellNode.parentNode
                         UpdateCell fps, .ColLetterToNumber("H"), .Row, "x"
                         Do
@@ -496,7 +498,7 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                     End If
                 ElseIf .value = 0 Then 'Huy danh dau Checkbox
                         
-                    Set xmlCellNode = TAX_Utilities_New.Data(1 - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("J"), 42))
+                    Set xmlCellNode = TAX_Utilities_New.Data(1 - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("K"), 47))
                     Set xmlCellsNode = xmlCellNode.parentNode
                     UpdateCell fps, .ColLetterToNumber("H"), .Row, ""
                     Do
@@ -882,6 +884,24 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
             'check ngay nhap
     
            If Col = .ColLetterToNumber("J") And Row = 69 Then
+               .GetText Col, Row, varTemp
+               If varTemp <> "" And varTemp <> "../../...." Then
+                   If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+                       .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+                   Else
+                        .SetFocus
+                        .SetActiveCell Col, Row
+                   End If
+               Else
+                    .SetText Col, Row, ""
+               End If
+               .Col = Col
+               .Row = Row
+               UpdateCell fps, Col, Row, .Text
+           End If
+           
+           
+           If Col = .ColLetterToNumber("H") And Row = 60 Then
                .GetText Col, Row, varTemp
                If varTemp <> "" And varTemp <> "../../...." Then
                    If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
@@ -1765,7 +1785,7 @@ Private Sub UpdateSheets()
         mCurrentSheet = .Sheet
         For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
            ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-               If (lRow = 7 And lCol = .ColLetterToNumber("F")) Or (lRow = 6 And lCol = .ColLetterToNumber("F")) Or (lRow = 48 And lCol = .ColLetterToNumber("B")) Or (lRow = 42 And lCol = .ColLetterToNumber("G")) Then
+               If (lRow = 7 And lCol = .ColLetterToNumber("F")) Or (lRow = 6 And lCol = .ColLetterToNumber("F")) Or (lRow = 56 And lCol = .ColLetterToNumber("F")) Or (lRow = 47 And lCol = .ColLetterToNumber("H")) Then
                     .GetText lCol, lRow, varTemp
                     If varTemp = "1" Or UCase(CStr(varTemp)) = "X" Then
                         UpdateCell fps, lCol, lRow, "x"
