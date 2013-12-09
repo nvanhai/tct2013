@@ -1,20 +1,20 @@
 <PL09A-TNCN>
 	<Static GroupName="ThongTinPhuLuc">
-		<kemTKChinhNam></kemTKChinhNam>
+		<kemTKChinhNam>O_15</kemTKChinhNam>
 	</Static>
 	<Static GroupName="TongTNhapChiuThuePSinhTrongKy">
-		<ct05>1</ct05>
-		<ct06>1</ct06>
-		<ct07>1</ct07>
-		<ct08>1</ct08>
+		<ct05>I_16</ct05>
+		<ct06>I_17</ct06>
+		<ct07>I_18</ct07>
+		<ct08>I_19</ct08>
 	</Static>
 	<Static GroupName="TongSoThueDaKTru">
-		<ct09>1</ct09>
-		<ct10>1</ct10>
-		<ct11>1</ct11>
+		<ct09>I_20</ct09>
+		<ct10>I_21</ct10>
+		<ct11>I_22</ct11>
 	</Static>
-	<Static GroupName="PL09A-TNCN">
-		<ct12>1</ct12>
-		<ct13>1</ct13>
+	<Static GroupName="KeKhai">
+		<ct12>I_23</ct12>
+		<ct13>I_24</ct13>
 	</Static>
 </PL09A-TNCN>

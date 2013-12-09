@@ -1,11 +1,15 @@
 <PL03_2A_TNDN>
-	<namPSinhLo>2001</namPSinhLo>
-	<soLoPSinh>1</soLoPSinh>
-	<soLoDaChuyen>1</soLoDaChuyen>
-	<soLoKyNay>1</soLoKyNay>
-	<soLoChuyenSau>1</soLoChuyenSau>
-	<tongSoLoPSinh>1</tongSoLoPSinh>
-	<tongSoLoDaChuyen>1</tongSoLoDaChuyen>
-	<tongSoLoKyNay>1</tongSoLoKyNay>
-	<tongSoLoChuyenSau>1</tongSoLoChuyenSau>
+	<BangChiTietSoLo>
+		<noidung>
+			<namPSinhLo></namPSinhLo>
+			<soLoPSinh></soLoPSinh>
+			<soLoDaChuyen></soLoDaChuyen>
+			<soLoKyNay></soLoKyNay>
+			<soLoChuyenSau></soLoChuyenSau>
+		</noidung>
+	</BangChiTietSoLo>
+	<tongSoLoPSinh></tongSoLoPSinh>
+	<tongSoLoDaChuyen></tongSoLoDaChuyen>
+	<tongSoLoKyNay></tongSoLoKyNay>
+	<tongSoLoChuyenSau></tongSoLoChuyenSau>
 </PL03_2A_TNDN>
