@@ -176,9 +176,10 @@ With fps
         .Col = .ColLetterToNumber("J")
         .Row = .Row
     
-    SetDateFormat fps, .SheetCount - 1, 23, .ColLetterToNumber("BG"), DDMMYYYY
+    SetDateFormat fps, .SheetCount - 1, 31, .ColLetterToNumber("BE"), DDMMYYYY
+    SetDateFormat fps, .SheetCount - 1, 46, .ColLetterToNumber("BG"), DDMMYYYY
     .Sheet = .SheetCount - 1 'KHBS
-    .Row = 23
+    .Row = 46
     .Col = .ColLetterToNumber("BG")
     .Text = Format(Date, "dd/mm/yyyy")
     .TypeHAlign = TypeHAlignLeft
