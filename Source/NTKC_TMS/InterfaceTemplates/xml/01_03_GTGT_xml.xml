@@ -4,32 +4,32 @@
 			<SoLuongXe id="ID_11">
 				<loaiXe></loaiXe>
 				<dviTinh></dviTinh>
-				<tongXeBRa>1</tongXeBRa>
-				<xeBanRa>1</xeBanRa>
-				<giaBan>1</giaBan>
+				<tongXeBRa></tongXeBRa>
+				<xeBanRa></xeBanRa>
+				<giaBan></giaBan>
 				<ghiChu></ghiChu>
 			</SoLuongXe>
 		</ChiTietSoLuongXeOTo>
-		<congTongXeBRa>1</congTongXeBRa>
-		<congXeBRa>1</congXeBRa>
-		<congGiaBan>1</congGiaBan>
+		<congTongXeBRa></congTongXeBRa>
+		<congXeBRa></congXeBRa>
+		<congGiaBan></congGiaBan>
 	</XeOTo>
 	<XeHaiBanh>
 		<ChiTietSoLuongXeHaiBanh>
 			<SoLuongXe id="ID_12">
 				<loaiXe></loaiXe>
 				<dviTinh></dviTinh>
-				<tongXeBRa>1</tongXeBRa>
-				<xeBanRa>1</xeBanRa>
-				<giaBan>1</giaBan>
+				<tongXeBRa></tongXeBRa>
+				<xeBanRa></xeBanRa>
+				<giaBan></giaBan>
 				<ghiChu></ghiChu>
 			</SoLuongXe>
 		</ChiTietSoLuongXeHaiBanh>
-		<congTongXeBRa>1</congTongXeBRa>
-		<congXeBRa>1</congXeBRa>
-		<congGiaBan>1</congGiaBan>
+		<congTongXeBRa></congTongXeBRa>
+		<congXeBRa></congXeBRa>
+		<congGiaBan></congGiaBan>
 	</XeHaiBanh>
-	<congTongXeBRa>1</congTongXeBRa>
-	<congXeBRa>1</congXeBRa>
-	<congGiaBan>1</congGiaBan>
+	<congTongXeBRa></congTongXeBRa>
+	<congXeBRa></congXeBRa>
+	<congGiaBan></congGiaBan>
 </PL01_3_GTGT>

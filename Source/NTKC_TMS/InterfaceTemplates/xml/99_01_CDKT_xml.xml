@@ -13,10 +13,10 @@
 				<tenTKhai></tenTKhai>
 				<moTaBMau/>
 				<pbanTKhaiXML></pbanTKhaiXML>
-				<loaiTKhai>C</loaiTKhai>
-				<soLan>1</soLan>
+				<loaiTKhai></loaiTKhai>
+				<soLan></soLan>
 				<KyKKhaiThue>
-					<kieuKy>D</kieuKy>
+					<kieuKy></kieuKy>
 					<kyKKhai></kyKKhai>
 					<kyKKhaiTuNgay></kyKKhaiTuNgay>
 					<kyKKhaiDenNgay></kyKKhaiDenNgay>
@@ -70,7 +70,7 @@
 			<ct100_tMinh></ct100_tMinh>
 			<ct110_tMinh></ct110_tMinh>
 			<ct111_tMinh></ct111_tMinh>
-			<ct112_tMinh>text</ct112_tMinh>
+			<ct112_tMinh></ct112_tMinh>
 			<ct113_tMinh></ct113_tMinh>
 			<ct114_tMinh></ct114_tMinh>
 			<ct115_tMinh></ct115_tMinh>
@@ -234,7 +234,7 @@
 			<ct100_nNay></ct100_nNay>
 			<ct110_nNay></ct110_nNay>
 			<ct111_nNay></ct111_nNay>
-			<ct112_nNay>text</ct112_nNay>
+			<ct112_nNay></ct112_nNay>
 			<ct113_nNay></ct113_nNay>
 			<ct114_nNay></ct114_nNay>
 			<ct115_nNay></ct115_nNay>
@@ -398,7 +398,7 @@
 			<ct100_nNgoai></ct100_nNgoai>
 			<ct110_nNgoai></ct110_nNgoai>
 			<ct111_nNgoai></ct111_nNgoai>
-			<ct112_nNgoai>text</ct112_nNgoai>
+			<ct112_nNgoai></ct112_nNgoai>
 			<ct113_nNgoai></ct113_nNgoai>
 			<ct114_nNgoai></ct114_nNgoai>
 			<ct115_nNgoai></ct115_nNgoai>
