@@ -483,7 +483,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":02C8
       UserResize      =   1
       Appearance      =   1
    End
@@ -1352,7 +1352,7 @@ Private Sub chkTKLanPS_Click()
     txtDay.Visible = IIf(chkTKLanPS.value = 1, True, False)
     If chkTKLanPS.value = 1 Then
         strLoaiTKThang_PS = "TK_LANPS"
-        strKieuKy = "D"
+        'strKieuKy = "D"
         OptChinhthuc.value = True
         lblSolan.Visible = False
         txtSolan.Visible = False
@@ -1375,8 +1375,8 @@ Private Sub chkTKLanPS_Click()
         'chkTKLanPS.Enabled = False
         'chkTKLanPS.
         varMenuId = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
-        'If varMenuId = "70" Or varMenuId = "73" Or varMenuId = "81" Then
-        If varMenuId = "73" Or varMenuId = "81" Then
+        If varMenuId = "70" Or varMenuId = "72" Or varMenuId = "73" Or varMenuId = "81" Then
+        'If varMenuId = "73" Or varMenuId = "81" Then
             frmKy.Height = 1065
             Frame2.Top = 1400
             
@@ -2252,9 +2252,6 @@ Public Sub cmdOK_Click()
         If TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "23" Then
             TAX_Utilities_New.FirstDay = txtNgayDau.Text
             TAX_Utilities_New.LastDay = txtNgayCuoi.Text
-        Else
-            TAX_Utilities_New.FirstDay = vbNullString
-            TAX_Utilities_New.LastDay = vbNullString
         End If
     ElseIf strKieuKy = KIEU_KY_NAM Then
         If Not CheckPeriod("1", txtYear.Text) Then
@@ -4028,7 +4025,7 @@ Private Sub SetupLayout01_TAIN_DK()
     ' xu ly data file
     strLoaiTkDk = "DT"
     strLoaiTKThang_PS = "TK_LANPS"
-    strKieuKy = "D"
+    'strKieuKy = "D"
     
     Me.Top = (frmSystem.ScaleHeight - Me.ScaleHeight) / 2 - 400
     Me.Left = (frmSystem.Width - Me.Width) / 2

@@ -2334,32 +2334,21 @@ ErrorHandle:
 End Sub
 
 Public Function GetKieuKy() As String
-    Dim month      As String
+    Dim month As String
     Dim threemonth As String
-    Dim strDay     As String
-    Dim strYear    As String ' Phuc vu an chi
-    Dim i          As Integer
-    Dim id         As String
+    Dim strDay As String
+    Dim strYear As String ' Phuc vu an chi
+    Dim i As Integer
     
-    id = TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    i = getFormIndex(id)
+    i = getFormIndex(TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
     arrActiveForm(i).showed = True
     
     month = TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("Month").nodeValue
     threemonth = TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ThreeMonth").nodeValue
     strDay = TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("Day").nodeValue
-    ' phuc vu an chi
+' phuc vu an chi
     strYear = TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("Year").nodeValue
-
-    ' To khai 01_NTNN va 03_NTNN kieu ky la thang
-    If id = "70" Or id = "81" Then
-        GetKieuKy = KIEU_KY_THANG
-    ' To khai 03 TNDN kieu ky nam
-    ElseIf id = "03" Then
-        GetKieuKy = KIEU_KY_NAM
-    ElseIf strLoaiTKThang_PS = "TK_LANPS" Or (month = "1" And strDay = "1" And strYear = "1") Then
-        GetKieuKy = KIEU_KY_NGAY_PS
-    ElseIf strYear = "1/2" Then
+    If strYear = "1/2" Then
         GetKieuKy = "H_Y"
         ' end
     ElseIf month = "1" And strDay = "1" Then
@@ -2373,7 +2362,6 @@ Public Function GetKieuKy() As String
     Else
         GetKieuKy = KIEU_KY_NAM
     End If
-
 End Function
 
 Public Function GetNgayBatDauNamTaiChinh() As String
