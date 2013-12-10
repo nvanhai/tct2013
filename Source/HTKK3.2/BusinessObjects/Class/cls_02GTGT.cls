@@ -820,6 +820,7 @@ Private Sub CheckDynamicError()
     Dim ct29 As Variant
     Dim ctCT29 As Variant
     Dim CT30 As Variant
+    Dim CT30a As Variant
     Dim ct31 As Variant
     Dim ct21 As Variant
     Dim ct32 As Variant
@@ -881,6 +882,9 @@ Private Sub CheckDynamicError()
             .GetText .ColLetterToNumber("CT"), rowCt29, ct29
             .GetText .ColLetterToNumber("DO"), rowCt29, ctCT29
             .GetText .ColLetterToNumber("CT"), rowCt30, CT30
+            
+            .GetText .ColLetterToNumber("CT"), rowCt30a, CT30a
+            
             .GetText .ColLetterToNumber("CT"), rowCt31, ct31
             .GetText .ColLetterToNumber("CT"), rowCt32, ct32
             .GetText .ColLetterToNumber("CB"), rowNgayKy, DateNgayKy
@@ -912,8 +916,8 @@ Private Sub CheckDynamicError()
                     .CellNote = ""
                     .BackColor = mNonErrorColor
                 End If
-             'ct30, ct31
-                If Val(CT30) > Val(ct29) Then
+             'ct30, ct31, 30a
+                If Val(CT30) > Val(ct29) - Val(CT30a) Then
                     .Col = .ColLetterToNumber("CT")
                     .Row = rowCt30
                     .CellNote = Errct29
