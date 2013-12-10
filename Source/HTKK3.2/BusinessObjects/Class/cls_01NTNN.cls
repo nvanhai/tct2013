@@ -218,8 +218,30 @@ End Sub
 
 Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
     Dim varTemp
+    Dim rowDT As Long
+    Dim iRow As Long, iCol As Long
+    Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
+    Dim txmlCellNode As MSXML.IXMLDOMNode, txmlCellsNode As MSXML.IXMLDOMNode
+    Dim xmlNode As MSXML.IXMLDOMNode
+    
+    Dim tongNTNN As Variant, tienDoiThanhChu As String
+    
     With fps
-        .EventEnabled(EventAllEvents) = True
+        .EventEnabled(EventAllEvents) = False
+            If .ActiveSheet = 1 Then
+                rowDT = TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length - 14
+                Set xmlCellNode = TAX_Utilities_New.Data(0).getElementsByTagName("Cell").Item(rowDT)
+                ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+                
+                If (Col = .ColLetterToNumber("BQ")) And Row = iRow Then
+                    .GetText .ColLetterToNumber("BQ"), Row, tongNTNN
+                    tongNTNN = Replace(tongNTNN, ".", "")
+                    tongNTNN = Replace(tongNTNN, ",", "")
+                    tienDoiThanhChu = doiTien(CStr(tongNTNN))
+                    .SetText .ColLetterToNumber("S"), 33, tienDoiThanhChu
+                    UpdateCell fps, .ColLetterToNumber("S"), 33, tienDoiThanhChu
+                End If
+            End If
             ' Set lai chi tieu 12 =0 neu chi tieu 10 < 0
             If Col = .ColLetterToNumber("AY") And Row >= 55 And Row <= .MaxRows - 17 Then
                 .GetText Col, Row, varTemp
