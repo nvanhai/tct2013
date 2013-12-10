@@ -6558,11 +6558,11 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
     XmlDocStandard.getElementsByTagName("SPARE2")(0).Text = strMaNNT
     
     ' Set value tag <add_info>
-    XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = Format(sNgayNopTK, "yyyy-MM-dd")
+    XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = Format(sNgayNopTK, "dd-mmm-yyyy")
     XmlDocStandard.getElementsByTagName("ky_lap_bo")(0).Text = sKyLapBo
     XmlDocStandard.getElementsByTagName("nguon_goc_tk")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text
     XmlDocStandard.getElementsByTagName("nguoi_nhan_tk")(0).Text = strUserID '& "." & xmlConfig.getElementsByTagName("CODE_OFFICE")(0).Text
-    XmlDocStandard.getElementsByTagName("ngay_nhan_tk")(0).Text = Format(DateTime.Now, "yyyy-MM-dd")
+    XmlDocStandard.getElementsByTagName("ngay_nhan_tk")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy")
     XmlDocStandard.getElementsByTagName("id_tkhai")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow()
     
     XmlDocStandard.getElementsByTagName("noi_gui")(0).Text = ""
