@@ -398,15 +398,15 @@ Private Sub fps_LeaveCell(ByVal Col As Long, _
                 UpdateCell fps, Col, Row, .Text
             End If
             
-'            Set xmlCellNode = TAX_Utilities_New.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("C"), 34))
-'            Set xmlCellNode = xmlCellNode.parentNode
-'            Set xmlCellNode = xmlCellNode.parentNode
-'            Set xmlCellNode = xmlCellNode.parentNode.lastChild
-'            Set xmlCellNode = xmlCellNode.firstChild
-'            Set xmlCellNode = xmlCellNode.firstChild
-'            Set xmlCellNode = xmlCellNode.nextSibling
-'            Set xmlCellNode = xmlCellNode.nextSibling
-'            Set xmlCellNode = xmlCellNode.nextSibling
+            Set xmlCellNode = TAX_Utilities_New.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("C"), 34))
+            Set xmlCellNode = xmlCellNode.parentNode
+            Set xmlCellNode = xmlCellNode.parentNode
+            Set xmlCellNode = xmlCellNode.parentNode.lastChild
+            Set xmlCellNode = xmlCellNode.firstChild
+            Set xmlCellNode = xmlCellNode.firstChild
+            Set xmlCellNode = xmlCellNode.nextSibling
+            Set xmlCellNode = xmlCellNode.nextSibling
+            Set xmlCellNode = xmlCellNode.nextSibling
 
             ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
 
@@ -516,7 +516,7 @@ Private Sub CheckDynamicError()
             .GetText .ColLetterToNumber("BX"), .Row, col8
             .GetText .ColLetterToNumber("CG"), .Row, col9
           
-'            .GetText .ColLetterToNumber("C"), .Row, noidung
+            .GetText .ColLetterToNumber("C"), .Row, noidung
 '            .GetText .ColLetterToNumber("CQ"), .Row, strMa
 
             ' reset error
@@ -525,32 +525,32 @@ Private Sub CheckDynamicError()
             .BackColor = mNonErrorColor
 
             If Trim$(col2) <> vbNullString Or Trim$(col3) <> vbNullString Or Trim$(col4) <> "0" Or Trim$(col5) <> vbNullString Or Trim$(col6) <> "0" Or Trim$(col8) <> "0" Or Trim$(col9) <> "0" Then
-'                If noidung = vbNullString Then
-'                    .Col = .ColLetterToNumber("C")
-'                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-'                    .CellNote = vErrMsgMST   'static
-'                    .BackColor = mErrorColor
-'
-'                    iFlagvMst = 1
-'
-'                    ' Forcus ve Cell co du lieu bi loi
-'                    If iFocusFlag = 0 Then
-'                        strFocusSheetName = "'" & .SheetName & "'"
-'                        strFocusCol = str(.Col)
-'                        strFocusRow = str(.Row)
-'                        .Sheet = .SheetCount
-'                        strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
-'                        .Col = .ColLetterToNumber("C")
-'                        .Row = 28
-'                        .Formula = strFormula
-'                    End If
-'
-'                Else
-'                    .Sheet = 1
-'                    .Col = .ColLetterToNumber("C")
-'                    .CellNote = ""
-'                    .BackColor = mNonErrorColor
-'                End If
+                If noidung = vbNullString Then
+                    .Col = .ColLetterToNumber("C")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vErrMsgMST   'static
+                    .BackColor = mErrorColor
+
+                iFlagvMst = 1
+                        
+                ' Forcus ve Cell co du lieu bi loi
+                If iFocusFlag = 0 Then
+                    strFocusSheetName = "'" & .SheetName & "'"
+                    strFocusCol = str(.Col)
+                    strFocusRow = str(.Row)
+                    .Sheet = .SheetCount
+                    strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
+                    .Col = .ColLetterToNumber("C")
+                    .Row = 28
+                    .Formula = strFormula
+                End If
+
+                Else
+                    .Sheet = 1
+                    .Col = .ColLetterToNumber("C")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
                 
                 ' Neu chi tieu 9 < 6 thi canh bao do
                 If Val(col9) <> 0 And Val(col9) > Val(col6) Then
@@ -1080,26 +1080,26 @@ Public Function ResetData() As Boolean
                 TAX_Utilities_New.AdjustData(mCurrentSheet - 1) = True
             End If
         Next
-'        Set xmlCellNode = TAX_Utilities_New.Data(1 - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("C"), 34))
-'            Set xmlCellNode = xmlCellNode.parentNode
-'            Set xmlCellNode = xmlCellNode.parentNode
-'            Set xmlCellNode = xmlCellNode.parentNode.lastChild
-'            Set xmlCellNode = xmlCellNode.firstChild
-'            Set xmlCellNode = xmlCellNode.firstChild
-'            Set xmlCellNode = xmlCellNode.nextSibling
-'            Set xmlCellNode = xmlCellNode.nextSibling
-'            Set xmlCellNode = xmlCellNode.nextSibling
-'            Set xmlCellNode = xmlCellNode.nextSibling
-'            Set xmlCellNode = xmlCellNode.nextSibling
-'            Set xmlCellNode = xmlCellNode.nextSibling
-'            Set xmlCellNode = xmlCellNode.nextSibling
-'            Set xmlCellNode = xmlCellNode.nextSibling
-'            Set xmlCellNode = xmlCellNode.nextSibling
-'            Set xmlCellNode = xmlCellNode.nextSibling
-'            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
-'
-'            .SetText iCol, iRow, ""
-'            UpdateCell fps, iCol, iRow, ""
+        Set xmlCellNode = TAX_Utilities_New.Data(1 - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("C"), 34))
+            Set xmlCellNode = xmlCellNode.parentNode
+            Set xmlCellNode = xmlCellNode.parentNode
+            Set xmlCellNode = xmlCellNode.parentNode.lastChild
+            Set xmlCellNode = xmlCellNode.firstChild
+            Set xmlCellNode = xmlCellNode.firstChild
+            Set xmlCellNode = xmlCellNode.nextSibling
+            Set xmlCellNode = xmlCellNode.nextSibling
+            Set xmlCellNode = xmlCellNode.nextSibling
+            Set xmlCellNode = xmlCellNode.nextSibling
+            Set xmlCellNode = xmlCellNode.nextSibling
+            Set xmlCellNode = xmlCellNode.nextSibling
+            Set xmlCellNode = xmlCellNode.nextSibling
+            Set xmlCellNode = xmlCellNode.nextSibling
+            Set xmlCellNode = xmlCellNode.nextSibling
+            Set xmlCellNode = xmlCellNode.nextSibling
+            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+       
+            .SetText iCol, iRow, ""
+            UpdateCell fps, iCol, iRow, ""
         
          
     End With
