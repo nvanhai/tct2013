@@ -50,11 +50,11 @@
 		<ct43>L_50</ct43>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>K_52</nguoiKy>
-		<ngayKy>K_53</ngayKy>
+		<nguoiKy>K_49</nguoiKy>
+		<ngayKy>K_50</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>D_52</tenNVienDLyThue>
-		<cchiHNghe>D_53</cchiHNghe>
+		<tenNVienDLyThue>D_49</tenNVienDLyThue>
+		<cchiHNghe>D_50</cchiHNghe>
 	</Static>
 </HSoKhaiThue>
