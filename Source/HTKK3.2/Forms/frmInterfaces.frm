@@ -6746,7 +6746,11 @@ Private Sub Command1_Click()
 '    End If
     ' End set
         mCurrentSheet = tempCurrSheet
-        UpdateDataKHBS_TT28 fpSpread1
+        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Then
+            UpdateDataKHBS_TT156 fpSpread1
+        Else
+            UpdateDataKHBS_TT28 fpSpread1
+        End If
         'fpSpread1.ActiveSheet = fpSpread1.SheetCount - 1
         DisplayMessage "0222", msOKOnly, miInformation
         
@@ -10804,6 +10808,76 @@ Public Sub UpdateDataKHBS_TT28(pGrid As fpSpread)
                 
                     
                     .Col = .ColLetterToNumber("B")
+                    .Row = 24 + i - 7
+                     UpdateCell .ColLetterToNumber("B"), .Row, .Text
+                    .Col = .ColLetterToNumber("BE")
+                    .Row = 17 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .Row, .value
+                     .Row = 18 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .Row, IIf(Trim(.value) = "", 0, .value)
+                     .Col = .ColLetterToNumber("BD")
+                    .Row = 20 + i - 7
+                     UpdateCell .ColLetterToNumber("BD"), .Row, .Text
+                    .Col = .ColLetterToNumber("BG")
+                    .Row = 22 + i - 7
+                    UpdateCell .ColLetterToNumber("BG"), .Row, .Text
+                    .Col = .ColLetterToNumber("BG")
+                    .Row = 23 + i - 7
+                    UpdateCell .ColLetterToNumber("BG"), .Row, .Text
+                     .Col = .ColLetterToNumber("BF")
+                     .Row = 15 + i - 7
+                    UpdateCell .ColLetterToNumber("BF"), .Row, IIf(Trim(.value) = "", 0, .value)
+                      .Col = .ColLetterToNumber("BG")
+                     .Row = 15 + i - 7
+                    UpdateCell .ColLetterToNumber("BG"), .Row, IIf(Trim(.value) = "", 0, .value)
+                      .Col = .ColLetterToNumber("BH")
+                     .Row = 15 + i - 7
+                    UpdateCell .ColLetterToNumber("BH"), .Row, IIf(Trim(.value) = "", 0, .value)
+                     .Col = .ColLetterToNumber("BF")
+                     .Row = 16 + i - 7
+                    UpdateCell .ColLetterToNumber("BF"), .Row, IIf(Trim(.value) = "", 0, .value)
+                      .Col = .ColLetterToNumber("BG")
+                     .Row = 16 + i - 7
+                    UpdateCell .ColLetterToNumber("BG"), .Row, IIf(Trim(.value) = "", 0, .value)
+                      .Col = .ColLetterToNumber("BH")
+                     .Row = 16 + i - 7
+                    UpdateCell .ColLetterToNumber("BH"), .Row, IIf(Trim(.value) = "", 0, .value)
+                End With
+    Exit Sub
+ErrorHandle:
+    SaveErrorLog "mdlFunctions", "UpdateDataKHBS", Err.Number, Err.Description
+End Sub
+
+
+Public Sub UpdateDataKHBS_TT156(pGrid As fpSpread)
+    On Error GoTo ErrorHandle
+    
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNodeCell As MSXML.IXMLDOMNode
+    Dim lRow As Long
+    Dim blnNewData As Boolean, blnHasSetActiveCell As Boolean
+    Dim i As Variant
+    Dim strKHBSDataFileName As String
+    Dim strDataFileName As String
+    Dim strOriginDataFileName As String
+    Dim varTemp As Variant
+                
+                'SetAttribute TAX_Utilities_New.NodeValidity.childNodes(lSheet), "Active", "1"
+                
+                With pGrid
+                .sheet = .SheetCount - 1
+                i = 1
+                    .Col = .ColLetterToNumber("B")
+                    .Row = 8
+                    Do
+                         .Col = .ColLetterToNumber("B")
+                         .Row = i + 8
+                         i = i + 1
+                    Loop Until .Text = "bb"
+                '------------------------------------------
+                
+                    
+                    .Col = .ColLetterToNumber("B")
                     .Row = 47 + i - 7
                      UpdateCell .ColLetterToNumber("B"), .Row, .Text
                     .Col = .ColLetterToNumber("BE")
@@ -10867,8 +10941,10 @@ Public Sub UpdateDataKHBS_TT28(pGrid As fpSpread)
                 End With
     Exit Sub
 ErrorHandle:
-    SaveErrorLog "mdlFunctions", "UpdateDataKHBS", Err.Number, Err.Description
+    SaveErrorLog "mdlFunctions", "UpdateDataKHBS_TT156", Err.Number, Err.Description
 End Sub
+
+
 Private Sub TonghopKHBS()
     Dim strTemp As String
     Dim strOldValue As String
@@ -11118,7 +11194,11 @@ Private Sub TonghopKHBS()
         End If
 
         mCurrentSheet = tempCurrSheet
-        UpdateDataKHBS_TT28 fpSpread1
+        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Then
+            UpdateDataKHBS_TT156 fpSpread1
+        Else
+            UpdateDataKHBS_TT28 fpSpread1
+        End If
         'set lai cong thuc cua cac cell NNC va PNC
         If isNewdataBS = False Then
             If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Then
