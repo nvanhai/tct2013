@@ -845,7 +845,8 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                                         Else
                                         dNode.Text = .Text
                                     End If
-
+ElseIf .CellType = CellTypeDate Then
+                            dNode.Text = Format$(.Text, "yyyy-MM-dd")
                                 Else
                                     dNode.Text = .Text
                             
@@ -896,12 +897,12 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     'Set value from config, webservices ESB
     Dim xmlConfig As New MSXML.DOMDocument
     Set xmlConfig = LoadConfig()
-
+    
     xmlTK.getElementsByTagName("pbanDVu")(0).Text = APP_VERSION
 
     xmlTK.getElementsByTagName("maCQTNoiNop")(0).Text = strMaCoQuanThue 'xmlConfig.getElementsByTagName("maCQTNoiNop")(0).Text
     xmlTK.getElementsByTagName("tenCQTNoiNop")(0).Text = strTenCoQuanThue 'xmlConfig.getElementsByTagName("tenCQTNoiNop")(0).Text
-    xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = Format(Date, "dd/mm/yyyy HH:mm:ss")
+    xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = Format(Date, "yyyy-MM-dd")
     
     If (xmlResultNNT.hasChildNodes And (InStr(xmlResultNNT.xml, "fault_code") <= 0)) Then
         xmlTK.getElementsByTagName("maHuyenNNT")(0).Text = xmlResultNNT.getElementsByTagName("MaQuanHuyen")(0).Text
@@ -967,8 +968,8 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         If xmlTK.getElementsByTagName("ct03").length > 0 Then
             If xmlTK.getElementsByTagName("ct03")(0).Text = "1" Then
                 xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
-                xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = Format$(dNgayDauKy, "dd/MM/yyyy")
-                xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(dNgayCuoiKy, "dd/MM/yyyy")
+                xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = Format$(dNgayDauKy, "yyyy-MM-dd")
+                xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(dNgayCuoiKy, "yyyy-MM-dd")
                 xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
             Else
                 fpSpread1.Col = fpSpread1.ColLetterToNumber("D")
@@ -982,8 +983,8 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
 
         If strKieuKy <> "D" Then
-            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = Format$(dNgayDauKy, "dd/MM/yyyy")
-            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(dNgayCuoiKy, "dd/MM/yyyy")
+            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = Format$(dNgayDauKy, "yyyy-MM-dd")
+            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(dNgayCuoiKy, "yyyy-MM-dd")
            
         End If
 
@@ -1413,7 +1414,8 @@ Private Sub ExecuteSave()
                             Else
                                 xmlCellTKNode.Text = .Text
                             End If
-
+                        ElseIf .CellType = CellTypeDate Then
+                            xmlCellTKNode.Text = Format$(.Text, "yyyy-MM-dd")
                         Else
                             xmlCellTKNode.Text = .Text
                         End If
@@ -1574,7 +1576,8 @@ Private Sub ExecuteSave()
                                         Else
                                             xmlCellTKNode.Text = .Text
                                         End If
-
+                                    ElseIf .CellType = CellTypeDate Then
+                                            xmlCellTKNode.Text = Format$(.Text, "yyyy-MM-dd")
                                     Else
                                         xmlCellTKNode.Text = .Text
                                     End If
@@ -2064,12 +2067,12 @@ Private Sub Command1_Click()
 '03/KK-TNCN - QUY
 '03/KK-TNCN - THANG
 
-''TB01/AC
-'str2 = "aa999642300790401   12201300100100100101/0101/01/2009<S01><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT3/123~AB/12T~190001~0010000~0200000~06/01/2013~sdfdf~2222222222~IN002~01/01/2013~</S><S>~~C«c thuâ B¾c Ninh~01/01/2013~Hoµng</S></S01>"
-'Barcode_Scaned str2
-'TB03/AC
-str2 = "aa999672300790401   03201300200200100101/0101/01/2010<S01><S>Cong ty TNHH phat hanh hoa don~Cho vao lo dot~18~06/12/2013~11</S><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT3/123~AB/12T~0000002~0000007~6~0</S><S>CMCer~Hoµng~06/12/2013</S></S01>"
+'TB01/AC
+str2 = "aa999642300790401   12201300100100100101/0101/01/2009<S01><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT3/123~AB/12T~190001~0010000~0200000~06/01/2013~sdfdf~2222222222~IN002~01/01/2013~</S><S>~~C«c thuâ B¾c Ninh~01/01/2013~Hoµng</S></S01>"
 Barcode_Scaned str2
+''TB03/AC
+'str2 = "aa999672300790401   03201300200200100101/0101/01/2010<S01><S>Cong ty TNHH phat hanh hoa don~Cho vao lo dot~18~06/12/2013~11</S><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT3/123~AB/12T~0000002~0000007~6~0</S><S>CMCer~Hoµng~06/12/2013</S></S01>"
+'Barcode_Scaned str2
 ''TB04/AC
 'str2 = "aa999912300790401   12201300100100100101/0101/01/2009<S01><S>0979429439~0904317327~03PHONE</S><S>03/07/2013~~~Cuc thue Ha Noi~06/12/2013~Hoµng</S></S01>"
 'Barcode_Scaned str2
@@ -6542,11 +6545,11 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
     XmlDocStandard.getElementsByTagName("SPARE2")(0).Text = strMaNNT
     
     ' Set value tag <add_info>
-    XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = sNgayNopTK
+    XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = Format(sNgayNopTK, "yyyy-MM-dd")
     XmlDocStandard.getElementsByTagName("ky_lap_bo")(0).Text = sKyLapBo
     XmlDocStandard.getElementsByTagName("nguon_goc_tk")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text
     XmlDocStandard.getElementsByTagName("nguoi_nhan_tk")(0).Text = strUserID '& "." & xmlConfig.getElementsByTagName("CODE_OFFICE")(0).Text
-    XmlDocStandard.getElementsByTagName("ngay_nhan_tk")(0).Text = Format(DateTime.Now, "dd/MM/yyyy")
+    XmlDocStandard.getElementsByTagName("ngay_nhan_tk")(0).Text = Format(DateTime.Now, "yyyy-MM-dd")
     XmlDocStandard.getElementsByTagName("id_tkhai")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow()
     
     XmlDocStandard.getElementsByTagName("noi_gui")(0).Text = ""
@@ -6559,7 +6562,7 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
     strID_BCTC = xmlConfig.getElementsByTagName("BCTC")(0).Text
     strID_QLAC = xmlConfig.getElementsByTagName("QLAC")(0).Text
     
-    Dim tempQHSxml As New MSXML.DOMDocument
+    Dim tempQHSxml   As New MSXML.DOMDocument
     Dim nodeVal      As MSXML.IXMLDOMNode
     Dim nodeValIndex As Integer
     
@@ -6602,6 +6605,7 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
             End If
 
         Next
+
     End If
 
     If (InStr(strID_QLAC, GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) > 0) Then
@@ -6614,15 +6618,20 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
         XmlDocStandard.selectSingleNode("DATA/BODY/ROW/ADD_INFO").appendChild tempQHSxml.lastChild.lastChild
 
         If (GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "68") Then
+
             For nodeValIndex = 1 To TAX_Utilities_Srv_New.NodeValidity.childNodes.length
                 Set nodeVal = TAX_Utilities_Srv_New.NodeValidity.childNodes(nodeValIndex)
+
                 If (GetAttribute(nodeVal, "Active") = "1" And GetAttribute(nodeVal, "ID") = "01-1") Then
                     XmlDocStandard.getElementsByTagName("PL_BK_01AC_01")(0).Text = "X"
                 End If
+
                 If (GetAttribute(nodeVal, "Active") = "1" And GetAttribute(nodeVal, "ID") = "01-2") Then
                     XmlDocStandard.getElementsByTagName("PL_BK_01AC_02")(0).Text = "X"
                 End If
+
             Next
+
         End If
     End If
     
