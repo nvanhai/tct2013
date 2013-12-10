@@ -18,7 +18,7 @@
 	</Static>
 	<Dynamic GroupName="TaiNguyenKhaiThac">
 		<NoiDungTAIN id="ID_1">
-			<ct1>F_40</ct1>
+			<ct1>E_40</ct1>
 			<ct2>G_40</ct2>
 			<ct3>P_40</ct3>
 			<ct4>S_40</ct4>
@@ -32,9 +32,9 @@
 	</Dynamic>
 	<Dynamic GroupName="TaiNguyenThuMuaGom">
 		<NoiDungTAIN id="ID_2">
-			<ct1>String</ct1>
-			<ct2>F_44</ct2>
-			<ct3>G_44</ct3>
+			<ct1>E_44</ct1>
+			<ct2>G_44</ct2>
+			<ct3>P_44</ct3>
 			<ct4>S_44</ct4>
 			<ct5>V_44</ct5>
 			<ct6>AA_44</ct6>
