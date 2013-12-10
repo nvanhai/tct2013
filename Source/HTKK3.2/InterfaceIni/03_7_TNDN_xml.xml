@@ -9,7 +9,7 @@
 		<tongGTriDThu_ctII_1_1>K_35</tongGTriDThu_ctII_1_1>
 		<tongGTriCPhi_ctII_1_1>W_35</tongGTriCPhi_ctII_1_1>
 	</Static>
-	<Dynamic GroupName="HHoaHThanhTSCD">
+	<Dynamic GroupName="TTinHHoaHThanhTSCD">
 		<hHoaHThanhTSCD id="ID_4">
 			<tenLienKet_ctII_1_1>D_37</tenLienKet_ctII_1_1>
 			<gtriDThu_ctII_1_1>K_37</gtriDThu_ctII_1_1>
@@ -22,7 +22,7 @@
 		<tongGTriDThu_ctII_1_2>K_39</tongGTriDThu_ctII_1_2>
 		<tongGTriCPhi_ctII_1_2>W_39</tongGTriCPhi_ctII_1_2>
 	</Static>
-	<Dynamic GroupName="HHoaKhongHThanhTSCD">
+	<Dynamic GroupName="TTinHHoaKhongHThanhTSCD">
 		<hHoaKhongHThanhTSCD id="ID_5">
 			<tenLienKet_ctII_1_2>D_41</tenLienKet_ctII_1_2>
 			<gtriDThu_ctII_1_2>K_41</gtriDThu_ctII_1_2>
@@ -37,7 +37,7 @@
 		<tongGTriDThu_ctII_2_1>K_44</tongGTriDThu_ctII_2_1>
 		<tongGTriCPhi_ctII_2_1>W_44</tongGTriCPhi_ctII_2_1>
 	</Static>
-	<Dynamic GroupName="NghienCuuPhatTrien">
+	<Dynamic GroupName="TTinNghienCuuPhatTrien">
 		<nghienCuuPhatTrien id="ID_6">
 			<tenLienKet_ctII_2_1>D_46</tenLienKet_ctII_2_1>
 			<gtriDThu_ctII_2_1>K_46</gtriDThu_ctII_2_1>
@@ -50,7 +50,7 @@
 		<tongGTriDThu_ctII_2_2>K_48</tongGTriDThu_ctII_2_2>
 		<tongGTriCPhi_ctII_2_2>W_48</tongGTriCPhi_ctII_2_2>
 	</Static>
-	<Dynamic GroupName="QuangCaoTiepThi">
+	<Dynamic GroupName="TTinQuangCaoTiepThi">
 		<quangCaoTiepThi id="ID_7">
 			<tenLienKet_ctII_2_2>D_50</tenLienKet_ctII_2_2>
 			<gtriDThu_ctII_2_2>K_50</gtriDThu_ctII_2_2>
@@ -63,7 +63,7 @@
 		<tongGTriDThu_ctII_2_3>K_52</tongGTriDThu_ctII_2_3>
 		<tongGTriCPhi_ctII_2_3>W_52</tongGTriCPhi_ctII_2_3>
 	</Static>
-	<Dynamic GroupName="QLyKDoanhTVDT">
+	<Dynamic GroupName="TTinQLyKDoanhTVDT">
 		<qLyKDoanhTVDT id="ID_8">
 			<tenLienKet_ctII_2_3>D_54</tenLienKet_ctII_2_3>
 			<gtriDThu_ctII_2_3>K_54</gtriDThu_ctII_2_3>
@@ -78,7 +78,7 @@
 		<tongGTriDThu_ctII_2_4_1>K_57</tongGTriDThu_ctII_2_4_1>
 		<tongGTriCPhi_ctII_2_4_1>W_57</tongGTriCPhi_ctII_2_4_1>
 	</Static>
-	<Dynamic GroupName="TienBanQuyen">
+	<Dynamic GroupName="TTinTienBanQuyen">
 		<tienBanQuyen id="ID_9">
 			<tenLienKet_ctII_2_4_1>D_59</tenLienKet_ctII_2_4_1>
 			<gtriDThu_ctII_2_4_1>K_59</gtriDThu_ctII_2_4_1>
@@ -91,7 +91,7 @@
 		<tongGTriDThu_ctII_2_4_2>K_61</tongGTriDThu_ctII_2_4_2>
 		<tongGTriCPhi_ctII_2_4_2>W_61</tongGTriCPhi_ctII_2_4_2>
 	</Static>
-	<Dynamic GroupName="ChoVayDiVay">
+	<Dynamic GroupName="TTinChoVayDiVay">
 		<choVayDiVay id="ID_10">
 			<tenLienKet_ctII_2_4_2>D_63</tenLienKet_ctII_2_4_2>
 			<gtriDThu_ctII_2_4_2>K_63</gtriDThu_ctII_2_4_2>
@@ -106,7 +106,7 @@
 		<tongGTriDThu_ctII_2_5_1>K_66</tongGTriDThu_ctII_2_5_1>
 		<tongGTriCPhi_ctII_2_5_1>W_66</tongGTriCPhi_ctII_2_5_1>
 	</Static>
-	<Dynamic GroupName="XoaNo">
+	<Dynamic GroupName="TTinXoaNo">
 		<xoaNo id="ID_11">
 			<tenLienKet_ctII_2_5_1>D_68</tenLienKet_ctII_2_5_1>
 			<gtriDThu_ctII_2_5_1>K_68</gtriDThu_ctII_2_5_1>
@@ -119,7 +119,7 @@
 		<tongGTriDThu_ctII_2_5_2>K_70</tongGTriDThu_ctII_2_5_2>
 		<tongGTriCPhi_ctII_2_5_2>W_70</tongGTriCPhi_ctII_2_5_2>
 	</Static>
-	<Dynamic GroupName="DichVuKhac">
+	<Dynamic GroupName="TTinDichVuKhac">
 		<dichVuKhac id="ID_12">
 			<tenLienKet_ctII_2_5_2>D_72</tenLienKet_ctII_2_5_2>
 			<gtriDThu_ctII_2_5_2>K_72</gtriDThu_ctII_2_5_2>
@@ -128,7 +128,7 @@
 			<pphapCPhi_ctII_2_5_2>AB_72</pphapCPhi_ctII_2_5_2>
 		</dichVuKhac>
 	</Dynamic>
-	<Dynamic GroupName="MoiQHeVoiTungLKet">
+	<Dynamic GroupName="TTinMoiQHeVoiTungLKet">
 		<moiQHeVoiTungLKet id="ID_13">
 			<tenLKet>D_82</tenLKet>
 			<diaChiLKet>I_82</diaChiLKet>
