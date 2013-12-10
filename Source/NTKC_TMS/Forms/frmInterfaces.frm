@@ -634,7 +634,7 @@ Private Sub cmdCommand2_Click()
                         .Row = Val(cellArray(1)) + cellRange
 
                         If .CellType = CellTypeNumber Then
-                            xmlCellTKNode.Text = .Value
+                            xmlCellTKNode.Text = .value
                         Else
                             xmlCellTKNode.Text = .Text
                         End If
@@ -763,7 +763,7 @@ Private Sub cmdCommand2_Click()
                                 .Row = Val(cellArray(1)) + cellRange
 
                                 If .CellType = CellTypeNumber Then
-                                    xmlCellTKNode.Text = .Value
+                                    xmlCellTKNode.Text = .value
                                 Else
                                     xmlCellTKNode.Text = .Text
                                 End If
@@ -835,7 +835,7 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                         
                                 If .CellType = CellTypeNumber Then
                                 
-                                    dNode.Text = .Value
+                                    dNode.Text = .value
                                 ElseIf .CellType = CellTypeCheckBox Then
 
                                     If LCase$(.Text) = "x" Then
@@ -845,10 +845,8 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                                         Else
                                         dNode.Text = .Text
                                     End If
-ElseIf .CellType = CellTypeDate Then
-                            dNode.Text = Format$(.Text, "yyyy-MM-dd")
                                 Else
-                                    dNode.Text = .Text
+                                    dNode.Text = ToDateTime(.Text)
                             
                                 End If
                             End If
@@ -1232,6 +1230,25 @@ ErrHandle:
     SaveErrorLog Me.Name, "cmdExit_Click", Err.Number, Err.Description
 End Sub
 
+Private Function ToDateTime(value As String) As String
+    Dim strArray() As String
+
+    If Len(value) = 10 Then
+        strArray = Split(value, "/")
+
+        If UBound(strArray) = 2 Then
+            If Val(strArray(0)) > 0 And Val(strArray(1)) > 0 And Val(strArray(2)) > 0 Then
+                ToDateTime = strArray(2) & "-" & strArray(1) & "-" & strArray(0)
+                Exit Function
+            End If
+        End If
+
+    End If
+
+    ToDateTime = value
+    Exit Function
+End Function
+
 Private Sub ExecuteSave()
     Dim xmlMapCT     As New MSXML.DOMDocument
     Dim xmlTK        As New MSXML.DOMDocument
@@ -1404,7 +1421,7 @@ Private Sub ExecuteSave()
                         .Row = Val(cellArray(1)) + cellRange
 
                         If .CellType = CellTypeNumber Then
-                            xmlCellTKNode.Text = .Value
+                            xmlCellTKNode.Text = .value
                         ElseIf .CellType = CellTypeCheckBox Then
 
                             If LCase$(.Text) = "x" Then
@@ -1414,10 +1431,8 @@ Private Sub ExecuteSave()
                             Else
                                 xmlCellTKNode.Text = .Text
                             End If
-                        ElseIf .CellType = CellTypeDate Then
-                            xmlCellTKNode.Text = Format$(.Text, "yyyy-MM-dd")
                         Else
-                            xmlCellTKNode.Text = .Text
+                            xmlCellTKNode.Text = ToDateTime(.Text)
                         End If
                     End If
 
@@ -1566,7 +1581,7 @@ Private Sub ExecuteSave()
                                     .Row = Val(cellArray(1)) + cellRange
 
                                     If .CellType = CellTypeNumber Then
-                                        xmlCellTKNode.Text = .Value
+                                        xmlCellTKNode.Text = .value
                                     ElseIf .CellType = CellTypeCheckBox Then
 
                                         If LCase$(.Text) = "x" Then
@@ -1576,10 +1591,8 @@ Private Sub ExecuteSave()
                                         Else
                                             xmlCellTKNode.Text = .Text
                                         End If
-                                    ElseIf .CellType = CellTypeDate Then
-                                            xmlCellTKNode.Text = Format$(.Text, "yyyy-MM-dd")
                                     Else
-                                        xmlCellTKNode.Text = .Text
+                                        xmlCellTKNode.Text = ToDateTime(.Text)
                                     End If
                                 End If
 
@@ -1793,7 +1806,7 @@ On Error GoTo ErrHandle
             .Sheet = 1
             .Col = .ColLetterToNumber("E")
             .Row = 36
-            varTemp = .Value
+            varTemp = .value
         End With
         ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2009 thi thong bao khong duoc gia han nop thue
         If Val(TAX_Utilities_Srv_New.Year) <> 2009 Then
@@ -1811,7 +1824,7 @@ On Error GoTo ErrHandle
             .Sheet = 1
             .Col = .ColLetterToNumber("E")
             .Row = 36
-            varTemp = .Value
+            varTemp = .value
         End With
         ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2009 thi thong bao khong duoc gia han nop thue
         If Val(TAX_Utilities_Srv_New.Year) <> 2009 Then
@@ -1831,14 +1844,14 @@ On Error GoTo ErrHandle
                 .Sheet = 1
                 .Col = .ColLetterToNumber("E")
                 .Row = 37
-                varTemp = .Value
+                varTemp = .value
             End With
         ElseIf Val(idToKhai) = 12 Then
             With fpSpread1
                 .Sheet = 1
                 .Col = .ColLetterToNumber("E")
                 .Row = 38
-                varTemp = .Value
+                varTemp = .value
             End With
         End If
     End If
@@ -1849,7 +1862,7 @@ On Error GoTo ErrHandle
             .Sheet = 1
             .Col = .ColLetterToNumber("E")
             .Row = 19
-            varTemp = .Value
+            varTemp = .value
         End With
     End If
     ' Do voi to khai 03/TNDN thang
@@ -1859,7 +1872,7 @@ On Error GoTo ErrHandle
             .Sheet = 1
             .Col = .ColLetterToNumber("E")
             .Row = 37
-            varTemp = .Value
+            varTemp = .value
         End With
     End If
 
@@ -2511,7 +2524,7 @@ On Error GoTo ErrHandle
     
     frmSystem.chkSaveQuestion.Visible = False
     frmSystem.chkQuetBangKe.Visible = False
-    frmSystem.chkQuetBangKe.Value = False
+    frmSystem.chkQuetBangKe.value = False
 
     Exit Sub
 ErrHandle:
@@ -2557,7 +2570,7 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
         If .Lock = False Then
             ' When user change value of cell, call UpdateCell function
             If .CellType = CellTypeNumber Then
-                lValue = .Value
+                lValue = .value
             Else
                 lValue = .Text
             End If
@@ -2852,7 +2865,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
             ' Scanning
             If UBound(arrStrElements()) = 0 Then
                 ProgressBar1.max = intBarcodeCount
-                ProgressBar1.Value = 0
+                ProgressBar1.value = 0
                 arrStrElements(0) = strPrefix
                 cmdViewNow.Enabled = True
             Else
@@ -2928,7 +2941,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 Exit Sub
             Else
 
-                If frmSystem.chkSaveQuestion.Value Then
+                If frmSystem.chkSaveQuestion.value Then
                     cmdSave_Click
 
                     If blnSaveSuccess Then
@@ -2968,7 +2981,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
             ' Scanning
             If UBound(arrStrElements()) = 0 Then
                 ProgressBar1.max = intBarcodeCount
-                ProgressBar1.Value = 0
+                ProgressBar1.value = 0
                 arrStrElements(0) = strPrefix
             Else
 
@@ -3013,7 +3026,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 Exit Sub
             Else
 
-                If frmSystem.chkSaveQuestion.Value Then
+                If frmSystem.chkSaveQuestion.value Then
                     cmdSave_Click
 
                     If blnSaveSuccess Then
@@ -4420,13 +4433,13 @@ On Error GoTo ErrHandle
             If Trim(GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "Class")) <> vbNullString Then
                 If Not (rsTaxDLInfor Is Nothing Or rsTaxDLInfor.Fields.Count = 0) Then
                     If Not objTaxBusiness Is Nothing Then
-                        objTaxBusiness.strTenDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(0).Value), "", rsTaxDLInfor.Fields(0).Value), TCVN, UNICODE)
-                        objTaxBusiness.strDiaChiDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(1).Value), "", rsTaxDLInfor.Fields(1).Value), TCVN, UNICODE)
-                         objTaxBusiness.strDienThoaiDL = IIf(IsNull(rsTaxDLInfor.Fields(2).Value), "", rsTaxDLInfor.Fields(2).Value)
-                        objTaxBusiness.strFaxDL = IIf(IsNull(rsTaxDLInfor.Fields(3).Value), "", rsTaxDLInfor.Fields(3).Value)
-                        objTaxBusiness.strEmailDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(4).Value), "", rsTaxDLInfor.Fields(4).Value), TCVN, UNICODE)
-                        objTaxBusiness.strSoHopDongDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(5).Value), "", rsTaxDLInfor.Fields(5).Value), TCVN, UNICODE)
-                        objTaxBusiness.strNgayHopDongDL = IIf(IsNull(rsTaxDLInfor.Fields(6).Value), "", rsTaxDLInfor.Fields(6).Value)
+                        objTaxBusiness.strTenDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(0).value), "", rsTaxDLInfor.Fields(0).value), TCVN, UNICODE)
+                        objTaxBusiness.strDiaChiDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(1).value), "", rsTaxDLInfor.Fields(1).value), TCVN, UNICODE)
+                         objTaxBusiness.strDienThoaiDL = IIf(IsNull(rsTaxDLInfor.Fields(2).value), "", rsTaxDLInfor.Fields(2).value)
+                        objTaxBusiness.strFaxDL = IIf(IsNull(rsTaxDLInfor.Fields(3).value), "", rsTaxDLInfor.Fields(3).value)
+                        objTaxBusiness.strEmailDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(4).value), "", rsTaxDLInfor.Fields(4).value), TCVN, UNICODE)
+                        objTaxBusiness.strSoHopDongDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(5).value), "", rsTaxDLInfor.Fields(5).value), TCVN, UNICODE)
+                        objTaxBusiness.strNgayHopDongDL = IIf(IsNull(rsTaxDLInfor.Fields(6).value), "", rsTaxDLInfor.Fields(6).value)
                     End If
                 End If
             End If
@@ -4520,7 +4533,7 @@ On Error GoTo ErrHandle
                 TAX_Utilities_Srv_New.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue = 1) Then
             frmSystem.chkQuetBangKe.Visible = True
         Else
-            frmSystem.chkQuetBangKe.Value = False
+            frmSystem.chkQuetBangKe.value = False
             frmSystem.chkQuetBangKe.Visible = False
         End If
     ' Loai to khai la GTGT hoa hong dai ly mau 02/GTGT thi cho hien check quet du lieu bang ke
@@ -4528,7 +4541,7 @@ On Error GoTo ErrHandle
         If (TAX_Utilities_Srv_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue = 1) Then
             frmSystem.chkQuetBangKe.Visible = True
         Else
-            frmSystem.chkQuetBangKe.Value = False
+            frmSystem.chkQuetBangKe.value = False
             frmSystem.chkQuetBangKe.Visible = False
         End If
     ' Loai to khai la Quyet toan thue TNCN mau 04/TNCN thi cho hien check quet du lieu bang ke
@@ -4536,11 +4549,11 @@ On Error GoTo ErrHandle
         If (TAX_Utilities_Srv_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue = 1) Then
             frmSystem.chkQuetBangKe.Visible = True
         Else
-            frmSystem.chkQuetBangKe.Value = False
+            frmSystem.chkQuetBangKe.value = False
             frmSystem.chkQuetBangKe.Visible = False
         End If
     Else
-        frmSystem.chkQuetBangKe.Value = False
+        frmSystem.chkQuetBangKe.value = False
         frmSystem.chkQuetBangKe.Visible = False
     End If
     
@@ -4601,9 +4614,9 @@ On Error GoTo ErrHandle
         strData = strTemp
     End If
     
-    If intCount > ProgressBar1.Value Then
-        ProgressBar1.Value = ProgressBar1.Value + 1
-        lblFilePath.caption = ProgressBar1.Value & " / " & ProgressBar1.max
+    If intCount > ProgressBar1.value Then
+        ProgressBar1.value = ProgressBar1.value + 1
+        lblFilePath.caption = ProgressBar1.value & " / " & ProgressBar1.max
     End If
     
     IsCompleteData = blnReturn
@@ -5428,7 +5441,7 @@ On Error GoTo ErrHandle
                 iRowID = iRowID + 1
                 For j = 0 To xmlNodeSection.childNodes(i).childNodes.length - 1
                     Set xmlAttribute = xmlDomData.createAttribute("RowID")
-                    xmlAttribute.Value = iRowID
+                    xmlAttribute.value = iRowID
                     Set xmlNode = xmlNodeSection.childNodes(i).childNodes(j).Attributes.setNamedItem(xmlAttribute)
                     Set xmlAttribute = Nothing
                 Next
@@ -5726,7 +5739,7 @@ On Error GoTo ErrHandle
         lblLoading.Visible = True
         lblConnecting.Visible = False
         lblExit.Visible = False
-        ProgressBar1.Value = 0
+        ProgressBar1.value = 0
         ReDim arrStrElements(0)
         If Not blnOnLoadEvent Then cmdExit.SetFocus
         blnOnLoadEvent = False
@@ -5844,7 +5857,7 @@ On Error GoTo ErrHandle
     strFileName = arrStrElements(intUbound)
     ReDim Preserve arrStrElements(intUbound - 1)
     strData = GetDataFormFile(strFileName)
-    ProgressBar1.Value = ProgressBar1.Value + 1
+    ProgressBar1.value = ProgressBar1.value + 1
     
     If Not LoadForm(strData) Then
         'If UBound(arrStrElements) > 0 Then
@@ -6294,9 +6307,9 @@ Private Function GetHeaderData(ByVal rsTaxInfor As ADODB.Recordset, arrStrHeader
     
     For lCtrl = 0 To rsTaxInfor.Fields.Count - 2
         ReDim Preserve arrStrData(lCtrl)
-        If Not IsNull(rsTaxInfor.Fields(lCtrl + 1).Value) Then
+        If Not IsNull(rsTaxInfor.Fields(lCtrl + 1).value) Then
             'arrStrData(lCtrl) = clsConvert.Convert(rsTaxInfor.Fields(lCtrl + 1).Value, UNICODE, TCVN)
-            arrStrData(lCtrl) = rsTaxInfor.Fields(lCtrl + 1).Value
+            arrStrData(lCtrl) = rsTaxInfor.Fields(lCtrl + 1).value
             
         End If
     Next lCtrl
