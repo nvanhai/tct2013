@@ -34,6 +34,7 @@ Public strMaNNT As String
 Public strMaDLT As String
 Public strMaCoQuanThue As String
 Public strTenCoQuanThue As String
+Public strMaTinhCoQuanThue As String
 'End XML
 
 Public strNgayTaiChinh As String
@@ -595,14 +596,14 @@ Public Sub SetupData(pGrid As fpSpread)
                             End If
 
                         Case Else
-                            If blnNewData And .Value <> GetAttribute(xmlNodeCell, "Value") Then
-                                SetAttribute xmlNodeCell, "Value", .Value
+                            If blnNewData And .value <> GetAttribute(xmlNodeCell, "Value") Then
+                                SetAttribute xmlNodeCell, "Value", .value
                             Else
-                                .Value = GetAttribute(xmlNodeCell, "Value")
+                                .value = GetAttribute(xmlNodeCell, "Value")
                             End If
                     End Select
                   Else
-                    UpdateCellReceive pGrid, lSheet, .Col, .Row, .Value
+                    UpdateCellReceive pGrid, lSheet, .Col, .Row, .value
                   End If
                     
                     .RowHeight(lRow) = 14
@@ -1015,7 +1016,7 @@ With fpsGrid
     .Row = lRow
     For lCtrl = 1 To .MaxCols
         .Col = lCtrl
-        .Value = ""
+        .value = ""
     Next lCtrl
     .RowHeight(lRow) = 14
 End With
@@ -1559,7 +1560,7 @@ Public Function GetPkgIDErr() As String
     If rs.Fields.Count > 0 Then
          pkgIDErr = "'"
          Do While Not rs.EOF
-            pkgIDErr = pkgIDErr & Trim(rs.Fields(0).Value) & "','"
+            pkgIDErr = pkgIDErr & Trim(rs.Fields(0).value) & "','"
             rs.MoveNext
          Loop
          pkgIDErr = Left$(pkgIDErr, Len(pkgIDErr) - 2)
