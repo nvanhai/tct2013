@@ -1,12 +1,40 @@
 <PL03_2B_TNDN>
 	<BangChiTietSoLoTrongKy>
-		<noidung>
+		<noiDungNam1>
 			<namPSinhLo>2001</namPSinhLo>
 			<soLoPSinh>1</soLoPSinh>
 			<soLoDaChuyen>1</soLoDaChuyen>
 			<soLoKyNay>1</soLoKyNay>
 			<soLoChuyenSau>1</soLoChuyenSau>
-		</noidung>
+		</noiDungNam1>
+		<noiDungNam2>
+			<namPSinhLo>2001</namPSinhLo>
+			<soLoPSinh>1</soLoPSinh>
+			<soLoDaChuyen>1</soLoDaChuyen>
+			<soLoKyNay>1</soLoKyNay>
+			<soLoChuyenSau>1</soLoChuyenSau>
+		</noiDungNam2>
+		<noiDungNam3>
+			<namPSinhLo>2001</namPSinhLo>
+			<soLoPSinh>1</soLoPSinh>
+			<soLoDaChuyen>1</soLoDaChuyen>
+			<soLoKyNay>1</soLoKyNay>
+			<soLoChuyenSau>1</soLoChuyenSau>
+		</noiDungNam3>
+		<noiDungNam4>
+			<namPSinhLo>2001</namPSinhLo>
+			<soLoPSinh>1</soLoPSinh>
+			<soLoDaChuyen>1</soLoDaChuyen>
+			<soLoKyNay>1</soLoKyNay>
+			<soLoChuyenSau>1</soLoChuyenSau>
+		</noiDungNam4>
+		<noiDungNam5>
+			<namPSinhLo>2001</namPSinhLo>
+			<soLoPSinh>1</soLoPSinh>
+			<soLoDaChuyen>1</soLoDaChuyen>
+			<soLoKyNay>1</soLoKyNay>
+			<soLoChuyenSau>1</soLoChuyenSau>
+		</noiDungNam5>
 	</BangChiTietSoLoTrongKy>
 	<tongSoLoPSinh>1</tongSoLoPSinh>
 	<tongSoLoDaChuyen>1</tongSoLoDaChuyen>

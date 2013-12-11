@@ -2,67 +2,67 @@
 <HSoKhaiThue>
 	<TTinChung>
 		<TTinDVu>
-			<maDVu></maDVu>
-			<tenDVu></tenDVu>
-			<pbanDVu></pbanDVu>
-			<ttinNhaCCapDVu></ttinNhaCCapDVu>
+			<maDVu>String</maDVu>
+			<tenDVu>token</tenDVu>
+			<pbanDVu>String</pbanDVu>
+			<ttinNhaCCapDVu>String</ttinNhaCCapDVu>
 		</TTinDVu>
 		<TTinTKhaiThue>
 			<TKhaiThue>
-				<maTKhai></maTKhai>
-				<tenTKhai></tenTKhai>
+				<maTKhai>String</maTKhai>
+				<tenTKhai>token</tenTKhai>
 				<moTaBMau/>
-				<pbanTKhaiXML></pbanTKhaiXML>
+				<pbanTKhaiXML>String</pbanTKhaiXML>
 				<loaiTKhai>C</loaiTKhai>
 				<soLan>1</soLan>
 				<KyKKhaiThue>
 					<kieuKy>D</kieuKy>
-					<kyKKhai></kyKKhai>
-					<kyKKhaiTuNgay></kyKKhaiTuNgay>
-					<kyKKhaiDenNgay></kyKKhaiDenNgay>
-					<kyKKhaiTuThang></kyKKhaiTuThang>
-					<kyKKhaiDenThang></kyKKhaiDenThang>
+					<kyKKhai>String</kyKKhai>
+					<kyKKhaiTuNgay>String</kyKKhaiTuNgay>
+					<kyKKhaiDenNgay>String</kyKKhaiDenNgay>
+					<kyKKhaiTuThang>String</kyKKhaiTuThang>
+					<kyKKhaiDenThang>String</kyKKhaiDenThang>
 				</KyKKhaiThue>
-				<maCQTNoiNop></maCQTNoiNop>
-				<tenCQTNoiNop></tenCQTNoiNop>
-				<ngayLapTKhai></ngayLapTKhai>
+				<maCQTNoiNop>String</maCQTNoiNop>
+				<tenCQTNoiNop>token</tenCQTNoiNop>
+				<ngayLapTKhai>String</ngayLapTKhai>
 				<GiaHan>
-					<maLyDoGiaHan></maLyDoGiaHan>
-					<lyDoGiaHan></lyDoGiaHan>
+					<maLyDoGiaHan>String</maLyDoGiaHan>
+					<lyDoGiaHan>String</lyDoGiaHan>
 				</GiaHan>
-				<nguoiKy></nguoiKy>
+				<nguoiKy>String</nguoiKy>
 				<ngayKy>1967-08-13</ngayKy>
-				<nganhNgheKD></nganhNgheKD>
+				<nganhNgheKD>String</nganhNgheKD>
 			</TKhaiThue>
 			<NNT>
 				<mst>0000000000</mst>
-				<tenNNT></tenNNT>
-				<dchiNNT></dchiNNT>
-				<phuongXa></phuongXa>
-				<maHuyenNNT></maHuyenNNT>
-				<tenHuyenNNT></tenHuyenNNT>
-				<maTinhNNT></maTinhNNT>
-				<tenTinhNNT></tenTinhNNT>
-				<dthoaiNNT></dthoaiNNT>
-				<faxNNT></faxNNT>
-				<emailNNT></emailNNT>
+				<tenNNT>token</tenNNT>
+				<dchiNNT>token</dchiNNT>
+				<phuongXa>String</phuongXa>
+				<maHuyenNNT>String</maHuyenNNT>
+				<tenHuyenNNT>String</tenHuyenNNT>
+				<maTinhNNT>String</maTinhNNT>
+				<tenTinhNNT>String</tenTinhNNT>
+				<dthoaiNNT>String</dthoaiNNT>
+				<faxNNT>String</faxNNT>
+				<emailNNT>String</emailNNT>
 			</NNT>
 			<DLyThue>
 				<mstDLyThue>0000000000</mstDLyThue>
-				<tenDLyThue></tenDLyThue>
-				<dchiDLyThue></dchiDLyThue>
-				<maHuyenDLyThue></maHuyenDLyThue>
-				<tenHuyenDLyThue></tenHuyenDLyThue>
-				<maTinhDLyThue></maTinhDLyThue>
-				<tenTinhDLyThue></tenTinhDLyThue>
-				<dthoaiDLyThue></dthoaiDLyThue>
-				<faxDLyThue></faxDLyThue>
-				<emailDLyThue></emailDLyThue>
-				<soHDongDLyThue></soHDongDLyThue>
+				<tenDLyThue>token</tenDLyThue>
+				<dchiDLyThue>token</dchiDLyThue>
+				<maHuyenDLyThue>String</maHuyenDLyThue>
+				<tenHuyenDLyThue>String</tenHuyenDLyThue>
+				<maTinhDLyThue>String</maTinhDLyThue>
+				<tenTinhDLyThue>String</tenTinhDLyThue>
+				<dthoaiDLyThue>String</dthoaiDLyThue>
+				<faxDLyThue>String</faxDLyThue>
+				<emailDLyThue>String</emailDLyThue>
+				<soHDongDLyThue>String</soHDongDLyThue>
 				<ngayKyHDDLyThue>1967-08-13</ngayKyHDDLyThue>
 				<NVienDLy>
-					<tenNVienDLyThue></tenNVienDLyThue>
-					<cchiHNghe></cchiHNghe>
+					<tenNVienDLyThue>token</tenNVienDLyThue>
+					<cchiHNghe>String</cchiHNghe>
 				</NVienDLy>
 			</DLyThue>
 		</TTinTKhaiThue>
@@ -101,7 +101,7 @@
 		<ctE2>1</ctE2>
 		<TaiLieu_Guikem>
 			<Tailieuguikem>
-				<tenDocument></tenDocument>
+				<tenDocument>String</tenDocument>
 			</Tailieuguikem>
 		</TaiLieu_Guikem>
 	</CTieuTKhaiChinh>

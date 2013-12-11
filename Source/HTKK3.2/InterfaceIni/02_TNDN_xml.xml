@@ -17,7 +17,7 @@
 		<maTinhDLyThue>AV_49</maTinhDLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<dnCoCSoHToanPThuoc>Z_16</dnCoCSoHToanPThuoc>
+		<dnQuiMoVuaVaNho>Z_16</dnQuiMoVuaVaNho>
 	</Static>
 	<Static GroupName="ThongTinChuyenNhuong">
 		<ct12>V_34</ct12>
@@ -29,7 +29,7 @@
 		<ngayHD>AC_42</ngayHD>
 		<ngayXN>AH_44</ngayXN>
 	</Static>
-	<Static GroupName="CTieuTKhaiChinh">
+	<Static GroupName="KKhaiKhiBanGiaoBDS">
 		<ct25>AW_61</ct25>
 		<ct26>AW_62</ct26>
 		<ct27>AW_63</ct27>
@@ -45,6 +45,9 @@
 		<ct37>AW_73</ct37>
 		<ct38>AW_74</ct38>
 		<ct39>AW_75</ct39>
+	</Static>
+	<Static GroupName="KKhaiThuTienTheoTienDo">
+
 		<ct40>AW_77</ct40>
 		<ct41>AW_78</ct41>
 		<ct42>AW_79</ct42>
