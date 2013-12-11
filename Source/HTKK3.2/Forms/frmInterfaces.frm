@@ -3594,6 +3594,10 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = pbanTKhaiXML
         End If
         
+        'TB01_AC
+        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "64" Then
+            strKK = "D"
+        End If
         'Xu ly rieng cho truong hop to khai 01_TAIN_DK,01A_TNDN_DK,01B_TNDN_DK
         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "92" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "12" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "98" Then
             If xmlTK.getElementsByTagName("ct03").length > 0 Then
@@ -3612,6 +3616,10 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             ElseIf strQuy = "TK_QUY" Then
                 strKK = "Q"
             End If
+        End If
+        
+        If strKK <> "M" And strKK <> "Q" And strKK <> "D" And strKK <> "Y" Then
+            strKK = "K"
         End If
         
         'to TB03,BC21 khong co ky ke khai
