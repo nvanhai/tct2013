@@ -1609,7 +1609,6 @@ Private Sub ExecuteSave()
     If (Not PushDataToESB(xmlDocSave.xml)) Then
         MessageBox "0137", msOKOnly, miCriticalError
     End If
-
     ' End push
     
     Exit Sub
@@ -2054,12 +2053,12 @@ Private Sub Command1_Click()
    
 '***************** Ra soat giai doan 1 *******************
 'TEST PHASE 3
-'02/KK-TNCN - QUY
-str2 = "aa999162300790401   03201300100100100101/0101/01/2010<S01><S>2100462770</S><S>569~128~2367~1876~3981~3768~138~3278~17665~389~2345~1767~78</S><S>Hoµng~19/11/2013~Huy“n Linh~KTV~1~~</S></S01>"
-Barcode_Scaned str2
-''02/KK-TNCN - THANG
-'str2 = "aa999152300790401   10201300100100100101/0101/01/2010<S01><S>2100462770</S><S>100~50~2891~2376~6745~845~129~3289~2367~178~123~237~36</S><S>Hoµng~19/11/2013~Huy“n Linh~KTV~1~~</S></S01>"
+''02/KK-TNCN - QUY
+'str2 = "aa999162300790401   03201300100100100101/0101/01/2010<S01><S>2100462770</S><S>569~128~2367~1876~3981~3768~138~3278~17665~389~2345~1767~78</S><S>Hoµng~19/11/2013~Huy“n Linh~KTV~1~~</S></S01>"
 'Barcode_Scaned str2
+'02/KK-TNCN - THANG
+str2 = "aa999152300790401   10201300100100100101/0101/01/2010<S01><S>2100462770</S><S>100~50~2891~2376~6745~845~129~3289~2367~178~123~237~36</S><S>Hoµng~19/11/2013~Huy“n Linh~KTV~1~~</S></S01>"
+Barcode_Scaned str2
 
 '03/KK-TNCN - QUY
 '03/KK-TNCN - THANG
@@ -5128,8 +5127,8 @@ On Error GoTo ErrHandle
         sParamNNT = "c:\TempXML\" & "paramNNT.xml"
         paXmlDoc.save sParamNNT
 
-'        'Return value from ESB
-'        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
+        'Return value from ESB
+        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
 
         strResultNNT = ChangeTagASSCII(strResultNNT, False)
         xmlResultNNT.loadXML strResultNNT
