@@ -596,14 +596,14 @@ Public Sub SetupData(pGrid As fpSpread)
                             End If
 
                         Case Else
-                            If blnNewData And .value <> GetAttribute(xmlNodeCell, "Value") Then
-                                SetAttribute xmlNodeCell, "Value", .value
+                            If blnNewData And .Value <> GetAttribute(xmlNodeCell, "Value") Then
+                                SetAttribute xmlNodeCell, "Value", .Value
                             Else
-                                .value = GetAttribute(xmlNodeCell, "Value")
+                                .Value = GetAttribute(xmlNodeCell, "Value")
                             End If
                     End Select
                   Else
-                    UpdateCellReceive pGrid, lSheet, .Col, .Row, .value
+                    UpdateCellReceive pGrid, lSheet, .Col, .Row, .Value
                   End If
                     
                     .RowHeight(lRow) = 14
@@ -1016,7 +1016,7 @@ With fpsGrid
     .Row = lRow
     For lCtrl = 1 To .MaxCols
         .Col = lCtrl
-        .value = ""
+        .Value = ""
     Next lCtrl
     .RowHeight(lRow) = 14
 End With
@@ -1560,7 +1560,7 @@ Public Function GetPkgIDErr() As String
     If rs.Fields.Count > 0 Then
          pkgIDErr = "'"
          Do While Not rs.EOF
-            pkgIDErr = pkgIDErr & Trim(rs.Fields(0).value) & "','"
+            pkgIDErr = pkgIDErr & Trim(rs.Fields(0).Value) & "','"
             rs.MoveNext
          Loop
          pkgIDErr = Left$(pkgIDErr, Len(pkgIDErr) - 2)
