@@ -11158,7 +11158,7 @@ Private Sub TonghopKHBS()
         End If
 
         mCurrentSheet = tempCurrSheet
-        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Then
+        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "72" Then
             UpdateDataKHBS_TT156 fpSpread1
         Else
             UpdateDataKHBS_TT28 fpSpread1

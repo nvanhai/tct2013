@@ -3862,8 +3862,8 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             ReDim strResult(4)
             strResult(0) = "D_24~Dynamic_0"
             strResult(1) = "M_20~Dynamic_0"
-            strResult(2) = "I_42~I_43~I_44~I_45~I_46~I_47~I_48~I_49~I_50~I_51~I_52~I_53~I_54~I_55~I_56~I_57~I_58~I_59~I_60~I_61~I_62~I_63~I_64~Dynamic_0"
-            strResult(3) = "M_66~M_68~D_66~D_68~L_4 ~N_4 ~C_73~I_73~Dynamic_0"
+            strResult(2) = "I_42~I_43~I_44~I_45~I_46~I_47~I_48~I_49~I_50~I_51~I_52~I_53~I_54~I_55~I_56~I_57~I_58~I_59~I_60~I_61~Dynamic_0"
+            strResult(3) = "M_63~M_65~D_63~D_65~L_4 ~N_4 ~C_70~I_70~Dynamic_0"
 '
 '        ' TAIN
         ' 01_TAIN  \TT28
