@@ -2,19 +2,22 @@
 	<HHDVDauTuKTru>
 		<ChiTietHHDVDauTuKTru>
 			<HDonMVao id="ID_10">
-				<kHieuHDon></kHieuHDon>
-				<soHDon></soHDon>
+				<kHieuMauHDon>String</kHieuMauHDon>
+				<kHieuHDon>String</kHieuHDon>
+				<soHDon>String</soHDon>
 				<ngayPHanh>1967-08-13</ngayPHanh>
-				<tenNBAN></tenNBAN>
+				<tenNBAN>String</tenNBAN>
 				<mstNBAN>0000000000</mstNBAN>
-				<matHang></matHang>
+				<matHang>String</matHang>
 				<gtriMuaChuaThue>2147483647</gtriMuaChuaThue>
 				<thueSuat>1</thueSuat>
 				<thueGTGT>2147483647</thueGTGT>
-				<ghiChu></ghiChu>
+				<ghiChu>String</ghiChu>
 			</HDonMVao>
 		</ChiTietHHDVDauTuKTru>
 		<tongGTriHHDVMuaVao>1</tongGTriHHDVMuaVao>
 		<tThueGTGT_HHDVMuaVao>1</tThueGTGT_HHDVMuaVao>
 	</HHDVDauTuKTru>
+	<tongCongGTriHHDVMuaVao>1</tongCongGTriHHDVMuaVao>
+	<tongCongThueGTGTHHDVMuaVao>1</tongCongThueGTGTHHDVMuaVao>
 </PL01_2_9_GTGT>

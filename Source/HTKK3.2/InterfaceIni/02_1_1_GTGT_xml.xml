@@ -1,20 +1,25 @@
 <PL01_2_1_GTGT>
 	<Dynamic GroupName="ChiTietHHDVDauTuKTru">
-		<HDonMVao id="ID_2">
-			<kHieuHDon>C_8</kHieuHDon>
-			<soHDon>D_8</soHDon>
-			<ngayPHanh>E_8</ngayPHanh>
-			<tenNBAN>F_8</tenNBAN>
-			<mstNBAN>G_8</mstNBAN>
-			<matHang>H_8</matHang>
-			<gtriMuaChuaThue>I_8</gtriMuaChuaThue>
-			<thueSuat>J_8</thueSuat>
-			<thueGTGT>K_8</thueGTGT>
-			<ghiChu>L_8</ghiChu>
+		<HDonMVao id="ID_1">
+			<kHieuMauHDon>D_8</kHieuMauHDon>
+			<kHieuHDon>E_8</kHieuHDon>
+			<soHDon>F_8</soHDon>
+			<ngayPHanh>G_8</ngayPHanh>
+			<tenNBAN>H_8</tenNBAN>
+			<mstNBAN>I_8</mstNBAN>
+			<matHang>J_8</matHang>
+			<gtriMuaChuaThue>K_8</gtriMuaChuaThue>
+			<thueSuat>L_8</thueSuat>
+			<thueGTGT>M_8</thueGTGT>
+			<ghiChu>N_8</ghiChu>
 		</HDonMVao>
 	</Dynamic>
 	<Static GroupName="HHDVDauTuKTru">
-		<tongGTriHHDVMuaVao>F_12</tongGTriHHDVMuaVao>
-		<tThueGTGT_HHDVMuaVao>F_13</tThueGTGT_HHDVMuaVao>
+		<tongGTriHHDVMuaVao>H_12</tongGTriHHDVMuaVao>
+		<tThueGTGT_HHDVMuaVao>H_13</tThueGTGT_HHDVMuaVao>
+	</Static>
+	<Static GroupName="PL01_2_1_GTGT">
+		<tongCongGTriHHDVMuaVao>H_12</tongCongGTriHHDVMuaVao>
+		<tongCongThueGTGTHHDVMuaVao>H_13</tongCongThueGTGTHHDVMuaVao>
 	</Static>
 </PL01_2_1_GTGT>

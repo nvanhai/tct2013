@@ -23,31 +23,45 @@
 		<maTMNSNN>L_14</maTMNSNN>
 		<ct21>I_23</ct21>
 		<ct22>L_24</ct22>
+	</Static>
+	<Static GroupName="GiaTriVaThueGTGTHHDVMuaVao">
 		<ct23>J_27</ct23>
 		<ct24>L_27</ct24>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
 		<ct25>L_28</ct25>
 		<ct26>J_30</ct26>
+	</Static>
+	<Static GroupName="HHDVBRaChiuThueGTGT">
 		<ct27>J_31</ct27>
 		<ct28>L_31</ct28>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
 		<ct29>J_32</ct29>
+	</Static>
+	<Static GroupName="HHDVBRaChiuTSuat5">
 		<ct30>J_33</ct30>
 		<ct31>L_33</ct31>
+	</Static>
+	<Static GroupName="HHDVBRaChiuTSuat10">
 		<ct32>J_34</ct32>
 		<ct33>L_34</ct33>
+	</Static>
+	<Static GroupName="TongDThuVaThueGTGTHHDVBRa">
 		<ct34>J_35</ct34>
 		<ct35>L_35</ct35>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
 		<ct36>L_36</ct36>
 		<ct37>L_38</ct37>
 		<ct38>L_39</ct38>
 		<ct39>L_40</ct39>
 		<ct40a>L_42</ct40a>
 		<ct40b>L_43</ct40b>
-		<ct40c>L_44</ct40c>
-		<ct40>L_45</ct40>
-		<ct41>L_46</ct41>
-		<ct42>L_48</ct42>
-		<ct42a>L_49</ct42a>
-		<ct43>L_50</ct43>
+		<ct40>L_44</ct40>
+		<ct41>L_45</ct41>
+		<ct42>L_46</ct42>
+		<ct43>L_47</ct43>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>K_49</nguoiKy>
