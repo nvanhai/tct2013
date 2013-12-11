@@ -87,16 +87,16 @@ With fps
     'danh sach  list cua combobox
    ' strComboHien = "0%" + Chr$(9) + "5%" + Chr$(9) + "10%" + Chr$(9)
     '--
-    SetDateFormat fps, 2, 8, .ColLetterToNumber("E"), DDMMYYYY
-    SetDateFormat fps, 3, 8, .ColLetterToNumber("E"), DDMMYYYY
-    SetDateFormat fps, 4, 8, .ColLetterToNumber("E"), DDMMYYYY
-    SetDateFormat fps, 5, 8, .ColLetterToNumber("E"), DDMMYYYY
-    SetDateFormat fps, 6, 8, .ColLetterToNumber("E"), DDMMYYYY
-    SetDateFormat fps, 7, 8, .ColLetterToNumber("E"), DDMMYYYY
-    SetDateFormat fps, 8, 8, .ColLetterToNumber("E"), DDMMYYYY
-    SetDateFormat fps, 9, 8, .ColLetterToNumber("E"), DDMMYYYY
-    SetDateFormat fps, 10, 8, .ColLetterToNumber("E"), DDMMYYYY
-    SetDateFormat fps, 11, 8, .ColLetterToNumber("E"), DDMMYYYY
+    SetDateFormat fps, 2, 8, .ColLetterToNumber("G"), DDMMYYYY
+    SetDateFormat fps, 3, 8, .ColLetterToNumber("G"), DDMMYYYY
+    SetDateFormat fps, 4, 8, .ColLetterToNumber("G"), DDMMYYYY
+    SetDateFormat fps, 5, 8, .ColLetterToNumber("G"), DDMMYYYY
+    SetDateFormat fps, 6, 8, .ColLetterToNumber("G"), DDMMYYYY
+    SetDateFormat fps, 7, 8, .ColLetterToNumber("G"), DDMMYYYY
+    SetDateFormat fps, 8, 8, .ColLetterToNumber("G"), DDMMYYYY
+    SetDateFormat fps, 9, 8, .ColLetterToNumber("G"), DDMMYYYY
+    SetDateFormat fps, 10, 8, .ColLetterToNumber("G"), DDMMYYYY
+    SetDateFormat fps, 11, 8, .ColLetterToNumber("G"), DDMMYYYY
     
     SetDateFormat fps, 1, rowNgayKy, .ColLetterToNumber("CB"), DDMMYYYY
     .Sheet = 1 'To khai GTGT
@@ -190,6 +190,9 @@ With fps
 End With
     ' set co quan thue quan ly
     setCQTQuanLy
+    ' set ma hoa don
+    setMaHoaDon
+    
 End Sub
 
 'This funtion is called after executing function "SetupData"
@@ -411,8 +414,8 @@ With fps
     End If
     
     If .ActiveSheet = 2 Or .ActiveSheet = 3 Or .ActiveSheet = 4 Or .ActiveSheet = 5 Or .ActiveSheet = 6 Or .ActiveSheet = 7 Or .ActiveSheet = 8 Or .ActiveSheet = 9 Or .ActiveSheet = 10 Or .ActiveSheet = 11 Then
-    Dim xmlCellNode As MSXML.IXMLDOMNode
-    Dim strValue1  As Variant, strValue2 As Variant
+        Dim xmlCellNode As MSXML.IXMLDOMNode
+        Dim strValue1  As Variant, strValue2 As Variant
         fps.EventEnabled(EventAllEvents) = False
            mCurrentSheet = .Sheet
             Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
@@ -449,6 +452,18 @@ With fps
                     mCurrentSheet = .Sheet
                     fps.EventEnabled(EventAllEvents) = True
               End If
+              
+             ' set ma hoa don
+           .Col = Col
+            .Row = Row
+            varTemp = .Text
+             If Col = .ColLetterToNumber("C") And .Text <> "" Then
+                .EventEnabled(EventChange) = False
+                .Col = .ColLetterToNumber("D")
+                .Text = varTemp
+                .EventEnabled(EventChange) = True
+             End If
+              
       fps.EventEnabled(EventAllEvents) = True
     End If
     
@@ -734,7 +749,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
         End If
         If .ActiveSheet = 2 Or .ActiveSheet = 3 Or .ActiveSheet = 4 Or .ActiveSheet = 5 Or .ActiveSheet = 6 Or .ActiveSheet = 7 _
         Or .ActiveSheet = 8 Or .ActiveSheet = 9 Or .ActiveSheet = 10 Or .ActiveSheet = 11 Then
-            If Col = .ColLetterToNumber("E") Then
+            If Col = .ColLetterToNumber("G") Then
                        .GetText Col, Row, varTemp
                        If varTemp <> "" And varTemp <> "../../...." Then
                            If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
@@ -750,7 +765,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 UpdateCell fps, .Col, .Row, .Text
             End If
             'chuyen cot ky hieu ve chu cai in hoa
-            If Col = .ColLetterToNumber("C") Then
+            If Col = .ColLetterToNumber("E") Then
                  .GetText Col, Row, varTemp
                  .SetText Col, Row, UCase(varTemp)
                  .Col = Col
@@ -1936,7 +1951,7 @@ Dim varTemp As Variant
                 Do
                      .Text = str(i)
                      ' chuyen ky hieu thanh chu hoa
-                    .Col = .ColLetterToNumber("C")
+                    .Col = .ColLetterToNumber("E")
                     .GetText .Col, .Row, varTemp
                     .Text = UCase$(CStr(varTemp))
                     UpdateCell fps, .Col, .Row, .Text
@@ -2472,3 +2487,66 @@ Private Sub setCQTQuanLy()
             '.EventEnabled(EventAllEvents) = True
         End With
 End Sub
+
+
+' set ma hoa don
+Private Sub setMaHoaDon()
+    Dim strDataFileName As String
+    Dim arrDanhsach() As String
+    Dim strComboHien As String
+    Dim strCombo As String
+    Dim MSTDN As String
+    Dim xmlDomData As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+    
+    Dim i As Integer
+    Dim strTemp As String
+    
+    
+    strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_loai_HD.xml")
+    ' Lay danh muc loai hoa don
+    If xmlDomData.Load(strDataFileName) Then
+        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+        For Each xmlNode In xmlNodeListCell
+            If GetAttribute(xmlNode, "Value") <> "" Then
+                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                strCombo = strCombo + CPab(arrDanhsach(0), 10) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(2), 200) + Chr$(9)
+                strComboHien = strComboHien + arrDanhsach(1) + Chr$(9)
+                strTemp = strTemp & arrDanhsach(0) & "_" & arrDanhsach(1) & "~"
+            End If
+        Next
+    End If
+    
+    ' set ma loai HD
+    'arrLoaiHd = Split(Left$(strTemp, Len(strTemp) - 1), "~")
+    
+    
+     With fps
+        For i = 2 To 11
+            .Sheet = i
+            ' Set gia tri ma HD
+            ' Group khong chiu thue
+            .Col = .ColLetterToNumber("C")
+            .Row = 8
+            .TypeComboBoxList = strComboHien
+            'Group 0%
+            .Col = .ColLetterToNumber("C")
+            .Row = 13
+            .TypeComboBoxList = strComboHien
+            ' Group 5%
+            .Col = .ColLetterToNumber("C")
+            .Row = 18
+            .TypeComboBoxList = strComboHien
+            ' Group 10%
+            .Col = .ColLetterToNumber("C")
+            .Row = 23
+            .TypeComboBoxList = strComboHien
+            ' Group khong phai tong hop len Tk 01/GTGT
+            .Col = .ColLetterToNumber("C")
+            .Row = 28
+            .TypeComboBoxList = strComboHien
+        Next i
+    End With
+End Sub
+
