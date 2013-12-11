@@ -20,12 +20,7 @@
 		<Item CellID="CT_52" MCT="31" Caption="Thuế GTGT chưa được hoàn  bàn giao cho doanh nghiệp mới thành lập trong kỳ"/>
 	</Map>
 	<Map ID ="03_GTGT">
-		<Item CellID="M_39" MCT="30" Caption="Thuế GTGT phải nộp của Hàng hoá, dịch vụ chịu thuế suất 0%  và không chịu thuế"/>	
-		<Item CellID="P_39" MCT="31" Caption="Thuế GTGT phải nộp của Hàng hoá, dịch vụ chịu thuế suất 5%"/>
-		<Item CellID="S_39" MCT="32" Caption="Thuế GTGT phải nộp của Hàng hoá, dịch vụ chịu thuế suất 10%"/>
-	</Map>
-	<Map ID ="03B_GTGT">
-		<Item CellID="Q_42" MCT="27" Caption="Thuế GTGT phải nộp của Hàng hoá, dịch vụ chịu thuế suất 10%"/>	
+		<Item CellID="Q_42" MCT="27" Caption="Thuế GTGT phải nộp"/>	
 	</Map>
 	<Map ID ="04_GTGT">
 		<Item CellID="L_25" MCT="30" Caption="Hàng hoá, dịch vụ chịu thuế suất 0%  và không chịu thuế"/>	
