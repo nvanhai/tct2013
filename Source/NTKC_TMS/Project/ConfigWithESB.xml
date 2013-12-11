@@ -42,12 +42,12 @@
 	<!-- Doan nay cau hinh cho phan Header cua message gui tin len ESB -->
 	<VERSION>1.0</VERSION>
 	<SENDER_CODE>NTK</SENDER_CODE>
-	<SENDER_NAME>Hệ thống nhận tờ khai mã vạch</SENDER_NAME>
+	<SENDER_NAME>He thong nhan to khai ma vach</SENDER_NAME>
 	<RECEIVER_CODE>TMS</RECEIVER_CODE>
-	<RECEIVER_NAME>Hệ thống quản lý thuế tập trung</RECEIVER_NAME>
+	<RECEIVER_NAME>He thong quan ly thue tap trung</RECEIVER_NAME>
 	<TRAN_CODE>01000</TRAN_CODE>
 	<ORIGINAL_CODE>NTK</ORIGINAL_CODE>
-	<ORIGINAL_NAME>Hệ thống nhận tờ khai mã vạch</ORIGINAL_NAME>	
+	<ORIGINAL_NAME>He thong nhan to khai ma vach</ORIGINAL_NAME>	
 	<!-- Doan nay cau hinh cho phan MQ push data len ESB -->
 	<queue_manager_name>ESB.INT.QMGR</queue_manager_name>
 	<queue_name>INT.INBOX.QUEUE</queue_name>
