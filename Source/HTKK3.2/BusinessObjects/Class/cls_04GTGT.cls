@@ -1934,12 +1934,14 @@ Public Function getValueTK(strFileLoadData As String) As String
         .validateOnParse = True
         .async = False
         If .Load(strFileLoadData) = True Then
-            Set xmlNode = .nodeFromID("L_25")
-            result = "CT30_" & Val(GetAttribute(xmlNode, "Value"))
-            Set xmlNode = .nodeFromID("R_25")
-            result = result & "~" & "CT31_" & Val(GetAttribute(xmlNode, "Value"))
-            Set xmlNode = .nodeFromID("X_25")
-            result = result & "~" & "CT32_" & Val(GetAttribute(xmlNode, "Value"))
+            Set xmlNode = .nodeFromID("Z_43")
+            result = "CT23_" & Val(GetAttribute(xmlNode, "Value"))
+            Set xmlNode = .nodeFromID("Z_44")
+            result = result & "~" & "CT25_" & Val(GetAttribute(xmlNode, "Value"))
+            Set xmlNode = .nodeFromID("Z_45")
+            result = result & "~" & "CT27_" & Val(GetAttribute(xmlNode, "Value"))
+            Set xmlNode = .nodeFromID("Z_46")
+            result = result & "~" & "CT29_" & Val(GetAttribute(xmlNode, "Value"))
             Set xmlNode = Nothing
         End If
     End With
@@ -1964,12 +1966,14 @@ Public Function getDieuChinhGiam(strOldValue As String) As String
     strMaCT = getMapCT
     With fps
                 .Sheet = 1
-                .GetText .ColLetterToNumber("L"), 25, varTemp
-                strCurrentValue = "CT30_" & Trim(varTemp)
-                .GetText .ColLetterToNumber("R"), 25, varTemp
-                strCurrentValue = strCurrentValue & "~CT31_" & Trim(varTemp)
-                .GetText .ColLetterToNumber("X"), 25, varTemp
-                strCurrentValue = strCurrentValue & "~CT32_" & Trim(varTemp)
+                .GetText .ColLetterToNumber("Z"), 43, varTemp
+                strCurrentValue = "CT23_" & Trim(varTemp)
+                .GetText .ColLetterToNumber("Z"), 44, varTemp
+                strCurrentValue = strCurrentValue & "~CT25_" & Trim(varTemp)
+                .GetText .ColLetterToNumber("Z"), 45, varTemp
+                strCurrentValue = strCurrentValue & "~CT27_" & Trim(varTemp)
+                .GetText .ColLetterToNumber("Z"), 46, varTemp
+                strCurrentValue = strCurrentValue & "~CT29_" & Trim(varTemp)
                 ' tinh chenh lech giua 2 lan dieu chinh
                 tempArrOld = Split(strOldValue, "~")
                 tempArrCurr = Split(strCurrentValue, "~")
