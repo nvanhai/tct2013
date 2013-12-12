@@ -1,8 +1,8 @@
 VERSION 5.00
-Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
+Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Begin VB.Form frmInterfaces_bb 
    AutoRedraw      =   -1  'True
    BorderStyle     =   3  'Fixed Dialog
@@ -406,7 +406,7 @@ On Error GoTo ErrHandle
 
     Dim strSQL As String, mResult As Integer, strSQL_HDR As String, strSQL_DTL As String, strSQL_KHBS As String
     Dim HdrID As Variant, strDate() As String, dDate As Date
-    Dim rs As ADODB.Recordset, I As Long
+    Dim rs As ADODB.Recordset, i As Long
     Dim blHoiTonTai As Integer
     Dim blUpdateTHUETKY2 As Boolean
     Dim bln As Boolean
@@ -655,7 +655,7 @@ On Error GoTo ErrHandle
 
     Dim strSQL As String, mResult As Integer, strSQL_HDR As String, strSQL_DTL As String, strSQL_KHBS As String
     Dim HdrID As Variant, strDate() As String, dDate As Date
-    Dim rs As ADODB.Recordset, I As Long
+    Dim rs As ADODB.Recordset, i As Long
     Dim blHoiTonTai As Integer
     Dim blUpdateTHUETKY2 As Boolean
     Dim bln As Boolean
@@ -1112,7 +1112,7 @@ Sub CallFinish(Optional blFinish As Boolean)
     Dim iSheet As Integer, iActiveSheet As Integer
     Dim lActiveCol As Long, lActiveRow As Long
     Dim lCol As Long, lRow As Long
-    Dim I As Integer
+    Dim i As Integer
     With fpSpread1
         .Visible = False
         .ReDraw = False
@@ -1122,8 +1122,8 @@ Sub CallFinish(Optional blFinish As Boolean)
         lActiveRow = .ActiveRow
         
         
-        For I = 1 To .SheetCount
-            .ActiveSheet = I
+        For i = 1 To .SheetCount
+            .ActiveSheet = i
             .Sheet = .ActiveSheet
             .Row = 1
             .Col = 1
@@ -1132,8 +1132,8 @@ Sub CallFinish(Optional blFinish As Boolean)
             .EditMode = True
         Next
 
-        For I = 1 To .SheetCount
-            .ActiveSheet = I
+        For i = 1 To .SheetCount
+            .ActiveSheet = i
             .Sheet = .ActiveSheet
             .Row = 1
             .Col = 1
@@ -1160,11 +1160,11 @@ Private Sub cmdViewNow_Click()
     On Error GoTo ErrHandle
     Dim intBarcodeCount As Integer, intBarcodeNo As Integer, intBarcodeIncre As Integer
     Dim strPrefix As String, strBarcodeCount As String, strBarcode As String
-    Dim I, j, t, counter As Integer
+    Dim i, j, t, counter As Integer
     Dim chkToKhai As Boolean
     
-    For I = 1 To UBound(arrBCBuffer)
-        If arrBCBuffer(I) <> vbNullString Then
+    For i = 1 To UBound(arrBCBuffer)
+        If arrBCBuffer(i) <> vbNullString Then
             intBarcodeCount = intBarcodeCount + 1
         End If
     Next
@@ -1764,7 +1764,7 @@ End Sub
 
 Private Sub MSComm1_OnComm()
     Static strTemp As String
-    Dim I As Long
+    Dim i As Long
     Dim varBuff As Variant
     Dim lByte() As Byte
         
@@ -1773,9 +1773,9 @@ On Error GoTo ErrHandle
         Case comEvReceive                                       ' Received RThreshold # of chars.
             varBuff = MSComm1.Input
             lByte = varBuff
-            For I = 0 To UBound(lByte)
-                If Chr$(lByte(I)) <> "#" Then
-                    strTemp = strTemp & Chr$(lByte(I))
+            For i = 0 To UBound(lByte)
+                If Chr$(lByte(i)) <> "#" Then
+                    strTemp = strTemp & Chr$(lByte(i))
                 Else
                     Barcode_Scaned strTemp
                     strTemp = vbNullString
@@ -2176,20 +2176,20 @@ Public Sub IncreaseRowInDOM(fpSpread1 As fpSpread, xmlDomData As MSXML.DOMDocume
     On Error GoTo ErrorHandle
     
     Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
-    Dim lCol As Long, lRow As Long, I As Long
+    Dim lCol As Long, lRow As Long, i As Long
         
     If xmlDomData Is Nothing Then Exit Sub
     Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
     
-    For I = xmlNodeListCell.length - 1 To 0 Step -1
-        ParserCellID fpSpread1, GetAttribute(xmlNodeListCell(I), "CellID"), lCol, lRow
+    For i = xmlNodeListCell.length - 1 To 0 Step -1
+        ParserCellID fpSpread1, GetAttribute(xmlNodeListCell(i), "CellID"), lCol, lRow
         If lRow >= pRow Then
             ' Increase value of row attribute + 1 (CellID)
-            SetAttribute xmlNodeListCell(I), "CellID", GetCellID(fpSpread1, lCol, lRow + lRows)
+            SetAttribute xmlNodeListCell(i), "CellID", GetCellID(fpSpread1, lCol, lRow + lRows)
             
             ' Increase value of row attribute + 1 (CellID2)
-            ParserCellID fpSpread1, GetAttribute(xmlNodeListCell(I), "CellID2"), lCol, lRow
-            SetAttribute xmlNodeListCell(I), "CellID2", GetCellID(fpSpread1, lCol, lRow + lRow2s)
+            ParserCellID fpSpread1, GetAttribute(xmlNodeListCell(i), "CellID2"), lCol, lRow
+            SetAttribute xmlNodeListCell(i), "CellID2", GetCellID(fpSpread1, lCol, lRow + lRow2s)
         End If
     Next
         
@@ -2719,16 +2719,16 @@ End Sub
 Private Sub FormatGrid()
     On Error GoTo ErrHandle
     
-    Dim lSheet As Long, I As Long, j As Long
+    Dim lSheet As Long, i As Long, j As Long
         
     With fpSpread1
         .ReDraw = False
         For lSheet = 1 To .SheetCount
             .Sheet = lSheet
             If .SheetVisible = True Then
-                For I = 1 To .MaxRows
-                    .Row = I
-                    If .RowHeight(I) > 10 And .RowHeight(I) < 15 Then .RowHeight(I) = 14
+                For i = 1 To .MaxRows
+                    .Row = i
+                    If .RowHeight(i) > 10 And .RowHeight(i) < 15 Then .RowHeight(i) = 14
                     For j = 1 To .MaxCols
                         .Col = j
                         
@@ -3096,8 +3096,8 @@ On Error GoTo ErrHandle
 '    Loop Until strBarcodeData = vbNullString
     
     For Each xmlNode In TAX_Utilities_Svr_New.NodeValidity.childNodes
-        Dim I As Integer
-        I = Len(GetAttribute(xmlNode, "ID"))
+        Dim i As Integer
+        i = Len(GetAttribute(xmlNode, "ID"))
         intLoc1 = InStr(1, strBarcodeData, "<S" & GetAttribute(xmlNode, "ID") & ">")
         
         If intLoc1 = 0 Then
@@ -3109,7 +3109,7 @@ On Error GoTo ErrHandle
                 SetAttribute xmlNode, "Active", "1"
                 intIndex = intIndex + 1
                 ReDim Preserve arrStrData(intIndex)
-                arrStrData(intIndex) = Mid$(strBarcodeData, intLoc1, intLoc2 + I + 3)
+                arrStrData(intIndex) = Mid$(strBarcodeData, intLoc1, intLoc2 + i + 3)
                 strBarcodeData = Replace(strBarcodeData, arrStrData(intIndex), "")
             End If
         End If
@@ -3259,19 +3259,19 @@ Function GenerateSQL_Details(xmlDomData As MSXML.DOMDocument, strSQL_DTL As Stri
     Dim xmlAttribute As MSXML.IXMLDOMAttribute
     Dim iRowID As Long, strSQL As String, strTempSQL As String
     Dim lPosition As Long, strCondition As String
-    Dim I As Long, j As Long, strLoaiDL As String
+    Dim i As Long, j As Long, strLoaiDL As String
     
 On Error GoTo ErrHandle
     iRowID = 0
     Set xmlListSection = xmlDomData.getElementsByTagName("Section")
     For Each xmlNodeSection In xmlListSection
         If Trim(xmlNodeSection.Attributes.getNamedItem("Dynamic").nodeValue) = "1" Then
-            For I = 0 To xmlNodeSection.childNodes.length - 1
+            For i = 0 To xmlNodeSection.childNodes.length - 1
                 iRowID = iRowID + 1
-                For j = 0 To xmlNodeSection.childNodes(I).childNodes.length - 1
+                For j = 0 To xmlNodeSection.childNodes(i).childNodes.length - 1
                     Set xmlAttribute = xmlDomData.createAttribute("RowID")
                     xmlAttribute.Value = iRowID
-                    Set xmlNode = xmlNodeSection.childNodes(I).childNodes(j).Attributes.setNamedItem(xmlAttribute)
+                    Set xmlNode = xmlNodeSection.childNodes(i).childNodes(j).Attributes.setNamedItem(xmlAttribute)
                     Set xmlAttribute = Nothing
                 Next
             Next
@@ -3328,7 +3328,7 @@ End Function
 ''' Return False if one or more error occur
 Private Function CheckValidData() As Boolean
     
-    Dim I As Long
+    Dim i As Long
     Dim strCellString As String
     
     Dim vFunction As Variant, vCell As Variant
@@ -3345,10 +3345,10 @@ On Error GoTo ErrHandle
         If .SheetCount = 1 Then Exit Function
         .Sheet = mHeaderSheet
         
-        For I = 12 To .MaxRows
+        For i = 12 To .MaxRows
             .Sheet = mHeaderSheet
             .Col = .ColLetterToNumber("B")
-            .Row = I
+            .Row = i
             If .Formula <> vbNullString Then
                 .Col = .Col + 1 'Column B
                 strCellString = .Formula
@@ -3362,16 +3362,16 @@ On Error GoTo ErrHandle
         End If
         
         .Sheet = mHeaderSheet
-        For I = 12 To .MaxRows
+        For i = 12 To .MaxRows
             .Sheet = mHeaderSheet
             .Col = 2
-            .Row = I
+            .Row = i
             vFormulaFunc = .Formula
             If Trim(.Text) <> "" Then
-                .GetText .ColLetterToNumber("B"), I, vFunction
-                .GetText .ColLetterToNumber("E"), I, vMsg
-                .GetText .ColLetterToNumber("S"), I, vWarning
-                .GetText .ColLetterToNumber("T"), I, vOrder
+                .GetText .ColLetterToNumber("B"), i, vFunction
+                .GetText .ColLetterToNumber("E"), i, vMsg
+                .GetText .ColLetterToNumber("S"), i, vWarning
+                .GetText .ColLetterToNumber("T"), i, vOrder
                 .Col = .Col + 1
                 vCell = .Formula
                 If vFormulaFunc <> vbNullString Then
@@ -3397,11 +3397,11 @@ On Error GoTo ErrHandle
         If cOrder.Count > 0 Then
             min = Val(Left(cOrder(1), InStr(cOrder(1), "[]")))
             strCell = Right(cOrder(1), Len(cOrder(1)) - InStr(cOrder(1), "[]") - 1)
-            For I = 2 To cOrder.Count
-                X = Val(Left(cOrder(I), InStr(cOrder(I), "[]")))
+            For i = 2 To cOrder.Count
+                X = Val(Left(cOrder(i), InStr(cOrder(i), "[]")))
                 If min >= X Then
                     min = X
-                    strCell = Right(cOrder(I), Len(cOrder(I)) - InStr(cOrder(I), "[]") - 1)
+                    strCell = Right(cOrder(i), Len(cOrder(i)) - InStr(cOrder(i), "[]") - 1)
                 End If
             Next
             'focus cell here
@@ -3429,7 +3429,7 @@ Private Sub getCellPosition(pCellString As String, lSheet As Long, lCol As Long,
         
     Dim lAnchor As Long
     Dim lSheetName As String, lCellString As String, lStringTemp As String
-    Dim I As Long
+    Dim i As Long
     
 On Error GoTo ErrHandle
     ' Get anchor of character "!"
@@ -3438,10 +3438,10 @@ On Error GoTo ErrHandle
     lSheetName = Left(pCellString, lAnchor - 1)
     ' Save cell string name to variable
     lCellString = Right(pCellString, Len(pCellString) - lAnchor)
-    For I = 1 To Len(lCellString)
-        If IsNumeric(Left(lCellString, I)) = False Then
+    For i = 1 To Len(lCellString)
+        If IsNumeric(Left(lCellString, i)) = False Then
             ' Aphabe charater
-            lStringTemp = lStringTemp & Left(lCellString, I)
+            lStringTemp = lStringTemp & Left(lCellString, i)
             lCellString = Right(lCellString, Len(lCellString) - 1)
         Else
             ' Numeric charater
@@ -3452,11 +3452,11 @@ On Error GoTo ErrHandle
     lCol = fpSpread1.ColLetterToNumber(lStringTemp)
     
     With fpSpread1
-        For I = 1 To .SheetCount
-            .Sheet = I
+        For i = 1 To .SheetCount
+            .Sheet = i
             If "'" & UCase(.SheetName) & "'" = UCase(lSheetName) Then
                 ' Set Note text for error cell in error sheet
-                lSheet = I
+                lSheet = i
                 Exit For
             End If
         Next
@@ -3476,7 +3476,7 @@ Private Sub SetCellNote(ByVal pCellString As String, ByVal lNoErrColor As Long, 
     
     Dim lAnchor As Long
     Dim lSheetName As String, lCellString As String, lStringTemp As String
-    Dim lCol As Long, lRow As Long, I As Long
+    Dim lCol As Long, lRow As Long, i As Long
     
 On Error GoTo ErrHandle
     ' Get anchor of character "!"
@@ -3485,10 +3485,10 @@ On Error GoTo ErrHandle
     lSheetName = Left(pCellString, lAnchor - 1)
     ' Save cell string name to variable
     lCellString = Right(pCellString, Len(pCellString) - lAnchor)
-    For I = 1 To Len(lCellString)
-        If IsNumeric(Left(lCellString, I)) = False Then
+    For i = 1 To Len(lCellString)
+        If IsNumeric(Left(lCellString, i)) = False Then
             ' Aphabe charater
-            lStringTemp = lStringTemp & Left(lCellString, I)
+            lStringTemp = lStringTemp & Left(lCellString, i)
             lCellString = Right(lCellString, Len(lCellString) - 1)
         Else
             ' Numeric charater
@@ -3499,8 +3499,8 @@ On Error GoTo ErrHandle
     lCol = fpSpread1.ColLetterToNumber(lStringTemp)
     
     With fpSpread1
-        For I = 1 To .SheetCount
-            .Sheet = I
+        For i = 1 To .SheetCount
+            .Sheet = i
             If "'" & UCase(.SheetName) & "'" = UCase(lSheetName) Then
                 ' Set Note text for error cell in error sheet
                 .Col = lCol
@@ -3783,17 +3783,17 @@ End Function
 ''' No parameter
 Private Sub LoadInitFiles()
     On Error GoTo ErrorHandle
-    Dim I As Long, lCol As Long, lRow As Long
+    Dim i As Long, lCol As Long, lRow As Long
     Dim xmlNodeListIni As MSXML.IXMLDOMNodeList
     Dim xmlNodeIni As MSXML.IXMLDOMNode
     
-    For I = 0 To fpSpread1.SheetCount - 2
-        ReDim Preserve xmlDocumentInit(I)
-        Set xmlDocumentInit(I) = New MSXML.DOMDocument
-        xmlDocumentInit(I).Load GetAbsolutePath(GetAttribute(TAX_Utilities_Svr_New.NodeValidity.childNodes(I), "Ini"))
-        Set xmlNodeListIni = xmlDocumentInit(I).getElementsByTagName("Cell")
+    For i = 0 To fpSpread1.SheetCount - 2
+        ReDim Preserve xmlDocumentInit(i)
+        Set xmlDocumentInit(i) = New MSXML.DOMDocument
+        xmlDocumentInit(i).Load GetAbsolutePath(GetAttribute(TAX_Utilities_Svr_New.NodeValidity.childNodes(i), "Ini"))
+        Set xmlNodeListIni = xmlDocumentInit(i).getElementsByTagName("Cell")
         For Each xmlNodeIni In xmlNodeListIni
-            fpSpread1.Sheet = I + 1
+            fpSpread1.Sheet = i + 1
             ParserCellID fpSpread1, GetAttribute(xmlNodeIni, "CellID"), lCol, lRow
             fpSpread1.Col = lCol
             fpSpread1.Row = lRow
@@ -4245,7 +4245,7 @@ End Function
 Private Function SinhSoHoSo(DHS_MA) As String
     Dim rs As ADODB.Recordset
     Dim s, s1 As String
-    Dim I As Integer
+    Dim i As Integer
     Dim SQ As String
     Dim D As Date
     Dim strSQL As String
@@ -4268,8 +4268,8 @@ Private Function SinhSoHoSo(DHS_MA) As String
      Else
         
         s = rs(0)
-        I = InStrRev(s, "/")
-        s1 = Right(s, Len(s) - I)
+        i = InStrRev(s, "/")
+        s1 = Right(s, Len(s) - i)
         SQ = CLng(s1)
      End If
     SQ = SQ + 1
@@ -4469,7 +4469,7 @@ On Error GoTo ErrHandle
 
     Dim strSQL As String, mResult As Integer, strSQL_HDR As String, strSQL_DTL As String, strSQL_KHBS As String
     Dim HdrID As Variant, strDate() As String, dDate As Date
-    Dim rs As ADODB.Recordset, I As Long
+    Dim rs As ADODB.Recordset, i As Long
     Dim blHoiTonTai As Integer
     Dim blUpdateTHUETKY2 As Boolean
     Dim bln As Boolean
@@ -4572,9 +4572,9 @@ On Error GoTo ErrHandle
                     If Left$(rs(0), 4) <> format(NGAY_HIENTAI, "YYMM") Then
                         s = s + "-1"
                     Else
-                        I = Right$(rs(0), Len(rs(0)) - InStr(1, rs(0), "-"))
-                        I = I + 1
-                        s = s & "-" & I
+                        i = Right$(rs(0), Len(rs(0)) - InStr(1, rs(0), "-"))
+                        i = i + 1
+                        s = s & "-" & i
                     End If
                 End If
                 
@@ -4656,12 +4656,12 @@ End Function
 Private Function TinhPhuLucTk() As String
     Dim str As String
     Dim soPl As String
-    Dim I As Integer
+    Dim i As Integer
     
     soPl = TAX_Utilities_Svr_New.NodeValidity.childNodes.length - 2
-    For I = 1 To soPl
-        If TAX_Utilities_Svr_New.NodeValidity.childNodes(I).Attributes.getNamedItem("Active").nodeValue = 1 Then
-            str = str & "[" & TAX_Utilities_Svr_New.NodeValidity.childNodes(I).Attributes.getNamedItem("Caption").nodeValue & "];"
+    For i = 1 To soPl
+        If TAX_Utilities_Svr_New.NodeValidity.childNodes(i).Attributes.getNamedItem("Active").nodeValue = 1 Then
+            str = str & "[" & TAX_Utilities_Svr_New.NodeValidity.childNodes(i).Attributes.getNamedItem("Caption").nodeValue & "];"
         End If
     Next
     If str <> "" Then

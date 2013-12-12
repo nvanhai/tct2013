@@ -197,11 +197,12 @@ Public Function Prepared1() As Boolean
              Next
          End If
           'set ly do gia han
-        .Row = 38
-        .Col = .ColLetterToNumber("E")
+        .Row = 64
+        .Col = .ColLetterToNumber("M")
         .TypeComboBoxList = strCboLyDo
         ' set Ma ly do gia han
-        .Col = .ColLetterToNumber("AB")
+        .Col = .ColLetterToNumber("K")
+        .Row = 59
         .TypeComboBoxList = strCboLyDoAn
         
     End With
@@ -249,27 +250,27 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         
         'get ten chi tieu trong danh muc NNKD
         .Sheet = 1
-        .Col = .ColLetterToNumber("AB")
-        .Row = 38
-         .GetText .ColLetterToNumber("AB"), .Row, varMaDM
+        .Col = .ColLetterToNumber("K")
+        .Row = 59
+         .GetText .ColLetterToNumber("K"), .Row, varMaDM
         If Trim(varMaDM) <> vbNullString Then
-            .Col = .ColLetterToNumber("E")
-            .Row = 38
+            .Col = .ColLetterToNumber("M")
+            .Row = 64
             .Text = getTenLyDoGD(varMaDM)
         End If
         
         
         ' Neu khong co gia han se khong cho chon combobox
          ' Neu check gia han moi cho phep chon GT
-        .Col = .ColLetterToNumber("E")
-        .Row = 37
+        .Col = .ColLetterToNumber("K")
+        .Row = 62
         If .Text = "1" Or UCase$(.Text) = "X" Then
-            .Col = .ColLetterToNumber("E")
-            .Row = 38
+            .Col = .ColLetterToNumber("M")
+            .Row = 64
             .Lock = False
         Else
-            .Col = .ColLetterToNumber("E")
-            .Row = 38
+            .Col = .ColLetterToNumber("M")
+            .Row = 64
             .Lock = True
         End If
         ' End set gia han
@@ -629,21 +630,21 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
    fps.EventEnabled(EventAllEvents) = False
     If fps.ActiveSheet = 1 Then
             ' Neu check gia han moi cho phep chon GT
-            If Col = fps.ColLetterToNumber("E") And Row = 37 Then
-                fps.Col = fps.ColLetterToNumber("E")
-                fps.Row = 37
+            If Col = fps.ColLetterToNumber("K") And Row = 62 Then
+                fps.Col = fps.ColLetterToNumber("K")
+                fps.Row = 62
                 If fps.Text = "1" Or UCase$(fps.Text) = "X" Then
-                    fps.Col = fps.ColLetterToNumber("E")
-                    fps.Row = 38
+                    fps.Col = fps.ColLetterToNumber("M")
+                    fps.Row = 64
                     fps.Lock = False
                 Else
-                    fps.Col = fps.ColLetterToNumber("E")
-                    fps.Row = 38
+                    fps.Col = fps.ColLetterToNumber("M")
+                    fps.Row = 64
                     fps.Lock = True
-                    fps.SetText fps.ColLetterToNumber("E"), 38, ""
-                    fps.SetText fps.ColLetterToNumber("AB"), 38, "00"
-                    UpdateCell fps, fps.ColLetterToNumber("AB"), 38, "00"
-                    UpdateCell fps, fps.ColLetterToNumber("E"), 38, ""
+                    fps.SetText fps.ColLetterToNumber("M"), 64, ""
+                    fps.SetText fps.ColLetterToNumber("K"), 59, "00"
+                    UpdateCell fps, fps.ColLetterToNumber("K"), 59, "00"
+                    UpdateCell fps, fps.ColLetterToNumber("M"), 64, ""
                 End If
             End If
     End If
@@ -668,9 +669,10 @@ Dim intIndexCombo As Integer
        If .ActiveSheet = 1 Then
             .Col = Col
             .Row = Row
-             If Col = .ColLetterToNumber("E") And Row = 38 Then
+             If Col = .ColLetterToNumber("M") And Row = 64 Then
                 intIndexCombo = .TypeComboBoxCurSel
-                .Col = .ColLetterToNumber("AB")
+                .Row = 59
+                .Col = .ColLetterToNumber("K")
                 .TypeComboBoxCurSel = intIndexCombo
                 'Update combo C
                 UpdateCell fps, .Col, .Row, .Text
@@ -2299,7 +2301,7 @@ Public Function InsertHDR() As String
         GHICHU = "''"
         DANHAN = "''"
        'Check gia han nop
-        .GetText .ColLetterToNumber("B"), 37, CHKGIAHAN
+        .GetText .ColLetterToNumber("K"), 62, CHKGIAHAN
 '        If Trim(CHKGIAHAN) = "1" Or Trim(CHKGIAHAN) = "x" Then
 '            DAGHI1 = ".T."
 '            If Trim(TAX_Utilities_Svr_New.Year) = "2009" Then
@@ -2437,7 +2439,7 @@ Public Function InsertHDR() As String
         End If
         DANHAN = "''"
         
-        .GetText .ColLetterToNumber("S"), 61, MANNKD
+        .GetText .ColLetterToNumber("S"), 77, MANNKD
         If Trim(MANNKD) = vbNullString Then
             MANNKD = "''"
         Else
@@ -2446,9 +2448,9 @@ Public Function InsertHDR() As String
         
         '       luu check gia han va ly do
         'get check gia han
-        .GetText .ColLetterToNumber("E"), 37, GIAHAN
+        .GetText .ColLetterToNumber("K"), 62, GIAHAN
         'get ly do gia han
-        .GetText .ColLetterToNumber("AB"), 38, MALD
+        .GetText .ColLetterToNumber("K"), 59, MALD
         If Trim(GIAHAN) = "1" Or UCase(Trim(GIAHAN)) = "X" Then
             GIAHAN = ".T."
 '            If Trim(MALD) = "01" Then
