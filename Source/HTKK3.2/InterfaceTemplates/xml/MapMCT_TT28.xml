@@ -23,9 +23,10 @@
 		<Item CellID="Q_42" MCT="27" Caption="Thuế GTGT phải nộp"/>	
 	</Map>
 	<Map ID ="04_GTGT">
-		<Item CellID="L_25" MCT="30" Caption="Hàng hoá, dịch vụ chịu thuế suất 0%  và không chịu thuế"/>	
-		<Item CellID="R_25" MCT="31" Caption="Hàng hoá, dịch vụ chịu thuế suất 5%"/>
-		<Item CellID="X_25" MCT="32" Caption="Hàng hoá, dịch vụ chịu thuế suất 10%"/>
+		<Item CellID="Z_43" MCT="23" Caption="Phân phối, cung cấp hàng hoá"/>	
+		<Item CellID="Z_44" MCT="25" Caption="Dịch vụ, xây dựng không bao thầu nguyên vật liệu"/>
+		<Item CellID="Z_45" MCT="27" Caption="Sản xuất, vận tải, dịch vụ có gắn với hàng hoá, xây dựng có bao thầu nguyên vật liệu"/>
+		<Item CellID="Z_46" MCT="29" Caption="Hoạt động kinh doanh khác"/>
 	</Map>	
 	<Map ID ="05_GTGT">
 		<Item CellID="K_45" MCT="25" Caption="Số thuế tạm tính phải nộp kỳ này của Hàng hóa, dịch vụ chịu thuế 5%"/>	
