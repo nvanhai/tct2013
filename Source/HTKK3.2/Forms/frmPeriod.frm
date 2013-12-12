@@ -483,7 +483,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":02C8
       UserResize      =   1
       Appearance      =   1
    End
@@ -6643,7 +6643,7 @@ Private Sub SetActiveValueKHBS()
         SetAttribute TAX_Utilities_New.NodeValidity.childNodes(3), "Active", 1
     ElseIf varMenuId = "88" Then
         SetAttribute TAX_Utilities_New.NodeValidity.childNodes(3), "Active", 1
-    ElseIf varMenuId = "11" Or varMenuId = "73" Then
+    ElseIf varMenuId = "11" Or varMenuId = "73" Or varMenuId = "71" Then
         SetAttribute TAX_Utilities_New.NodeValidity.childNodes(2), "Active", 1
     ElseIf varMenuId = "12" Or varMenuId = "82" Or varMenuId = "85" Or varMenuId = "90" Then
         SetAttribute TAX_Utilities_New.NodeValidity.childNodes(2), "Active", 1
@@ -6651,7 +6651,7 @@ Private Sub SetActiveValueKHBS()
         SetAttribute TAX_Utilities_New.NodeValidity.childNodes(1), "Active", 1
     ElseIf varMenuId = "05" Or varMenuId = "80" Then
         SetAttribute TAX_Utilities_New.NodeValidity.childNodes(3), "Active", 1
-    ElseIf varMenuId = "86" Or varMenuId = "87" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "81" Or varMenuId = "94" Then
+    ElseIf varMenuId = "86" Or varMenuId = "87" Or varMenuId = "72" Or varMenuId = "81" Or varMenuId = "94" Then
         SetAttribute TAX_Utilities_New.NodeValidity.childNodes(1), "Active", 1
     ElseIf varMenuId = "03" Then
         SetAttribute TAX_Utilities_New.NodeValidity.childNodes(14), "Active", 1

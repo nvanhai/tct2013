@@ -87,6 +87,10 @@ End Type
 'No parameter
 Public Sub Prepare1()
     With fps
+        SetDateFormat fps, 1, 65, .ColLetterToNumber("T"), DDMMYYYY
+        SetDateFormat fps, 3, 46, .ColLetterToNumber("BG"), DDMMYYYY
+        SetDateFormat fps, 3, 31, .ColLetterToNumber("BE"), DDMMYYYY
+        
         .Sheet = 1
         .Row = 65
         .Col = .ColLetterToNumber("T")
@@ -94,10 +98,12 @@ Public Sub Prepare1()
         .TypeHAlign = TypeHAlignLeft
 
         .Sheet = .SheetCount - 1 'KHBS
-        .Row = 23
+        .Row = 46
         .Col = .ColLetterToNumber("BG")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
+        
+        
         
         '###PL01_1
         .Sheet = sheetPl01_1_GTGT 'PL01_1
@@ -133,6 +139,8 @@ Public Sub Prepare1()
     End With
     ' set ma hoa don cho PL 01-1, 01-2
     setMaHoaDon
+    ' set CQT ra quyet dinh hoan
+    setCQTQuanLyHoanThue fps
 End Sub
 
 'This funtion is called after executing function "SetupData"
@@ -503,187 +511,96 @@ Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
 Dim itemp As Variant, temp As Variant
 Dim cValue As Variant
 
-Dim tempRow As MY_ROW
-Dim arrRow() As MY_ROW, arrRow2() As MY_ROW, arrRow3() As MY_ROW, arrRow4() As MY_ROW
-Dim tempValue As Variant
+Dim intIndexCuc As Integer, intIndexChiCuc As Integer
+Dim varIdCucThue As Variant
+Dim xmlDomData As New MSXML.DOMDocument
+Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+Dim xmlNode As MSXML.IXMLDOMNode
+Dim arrDanhsach() As String
+Dim tenCucThue As String
+Dim maCucThue As String
+Dim tenChiCucThue As String
+Dim maChiCucThue As String
 
+Dim loaiCq As String
+Dim maLoaiCq As String
 
-    With fps
-        If .ActiveSheet = 1 Then
-'                .Col = Col
-'                .Row = Row
-'                 If Col = .ColLetterToNumber("C") And .Text <> "" Then
-'                    intIndexCombo = .TypeComboBoxCurSel
-'                    .Col = .ColLetterToNumber("AE")
-'                    .TypeComboBoxCurSel = intIndexCombo
-'                    'Update combo C
-'                    UpdateCell fps, .Col, .Row, .Text
-'                End If
-'
-'               ' Kiem tra trung ten
-'               Set xmlCellNode = TAX_Utilities_New.Data(1 - 1).nodeFromID(GetCellID(fps, Col, Row))
-'               Set xmlCellNode = xmlCellNode.parentNode.parentNode.firstChild.firstChild
-'               ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
-'               blGiaTriCu = False
-'
-''                If Col = fps.ColLetterToNumber("C") Then
-''                    'kiem tra trung Ten NNKD trong to khai
-''                    fps.Col = Col
-''                    fps.Row = Row
-''                    temp = fps.Text
-''                    Set xmlCellsNode = xmlCellNode.parentNode
-''                    i = 1
-''                    .Col = .ColLetterToNumber("B")
-''                    ParserCellID fps, GetAttribute(xmlCellsNode.childNodes(i - 1), "CellID"), iCol, iRow
-''                    .Row = iRow
-''
-''                    Do
-''                         .Col = .ColLetterToNumber("C")
-''                         itemp = .Text
-''                         If .Row <> Row Then
-''                            If itemp = temp Then 'Neu co thi dat co blGiaTriCu = True
-''                                RowGiaTriCu = Row
-''                                ColGiaTriCu = .ColLetterToNumber("C")
-''                                .Row = Row
-''                                .Col = .ColLetterToNumber("C")
-''                                blGiaTriCu = True
-''                                Exit Sub
-''                            End If
-''                         End If
-''                         .Col = .ColLetterToNumber("B")
-''                         .Row = i + iRow
-''                         i = i + 1
-''                    Loop Until .Text = "aa"
-''                    .Sheet = 1
-''                    mCurrentSheet = 1
-''                End If
-'                ' STT dong change
-'
-'                ' Lay ve mang cac row hien tai cua group 1
-'
-'                .Col = .ColLetterToNumber("B")
-'                .Row = 45
-'                i = 1
-'                Do
-'                    .GetText .ColLetterToNumber("C"), .Row, tempValue
-'                    tempRow.tenCT = CStr(tempValue)
-'                    .GetText .ColLetterToNumber("K"), .Row, tempValue
-'                    tempRow.cot1 = Val(tempValue)
-'                    .GetText .ColLetterToNumber("Q"), .Row, tempValue
-'                    tempRow.cot2 = Val(tempValue)
-'                    .GetText .ColLetterToNumber("W"), .Row, tempValue
-'                    tempRow.cot3 = Val(tempValue)
-'                    .GetText .ColLetterToNumber("AE"), .Row, tempValue
-'                    tempRow.Cot4 = Val(tempValue)
-'                    tempRow.Cot5 = i
-'                    ReDim Preserve arrRow(i - 1)
-'                    arrRow(i - 1) = tempRow
-'                    i = i + 1
-'                    .Col = .ColLetterToNumber("B")
-'                    .Row = .Row + 1
-'                Loop Until .Text = "aa"
-'
-'                ' Lay ve mang cac row hien tai cua group 2
-'                ' bo check kiem tra trung ten
-'                blGiaTriCu = False
-'
-'                If blGiaTriCu = False Then
-'                     .Col = .ColLetterToNumber("B")
-'                    .Row = .Row + 3
-'                    i = 1
-'                    Do
-'                        If i = Row - 44 Then
-'                            ' Ten
-'                            .Col = .ColLetterToNumber("C")
-'                            .TypeComboBoxCurSel = intIndexCombo
-'                            ' Ma nhom
-'                            .Col = .ColLetterToNumber("AE")
-'                            .TypeComboBoxCurSel = intIndexCombo
-'                            UpdateCell fps, .Col, .Row, .Text
-'                         End If
-'                        tempRow.tenCT = arrRow(i - 1).tenCT
-'                        .GetText .ColLetterToNumber("K"), .Row, tempValue
-'                        tempRow.cot1 = Val(tempValue)
-'                        .GetText .ColLetterToNumber("Q"), .Row, tempValue
-'                        tempRow.cot2 = Val(tempValue)
-'                        .GetText .ColLetterToNumber("W"), .Row, tempValue
-'                        tempRow.cot3 = Val(tempValue)
-'                        .GetText .ColLetterToNumber("AE"), .Row, tempValue
-'                        tempRow.Cot4 = Val(tempValue)
-'                        tempRow.Cot5 = i
-'                        ReDim Preserve arrRow2(i - 1)
-'                        arrRow2(i - 1) = tempRow
-'                        i = i + 1
-'                        .Col = .ColLetterToNumber("B")
-'                        .Row = .Row + 1
-'                    Loop Until .Text = "bb"
-'
-'                    ' Lay ve mang cac row hien tai cua group 3
-'                     .Col = .ColLetterToNumber("B")
-'                    .Row = .Row + 3
-'                    i = 1
-'                    Do
-'                        If i = Row - 44 Then
-'                            ' Ten
-'                            .Col = .ColLetterToNumber("C")
-'                            .TypeComboBoxCurSel = intIndexCombo
-'                            ' Ma nhom
-'                            .Col = .ColLetterToNumber("AE")
-'                            .TypeComboBoxCurSel = intIndexCombo
-'                            UpdateCell fps, .Col, .Row, .Text
-'                         End If
-'                        tempRow.tenCT = arrRow(i - 1).tenCT
-'                        .GetText .ColLetterToNumber("K"), .Row, tempValue
-'                        tempRow.cot1 = Val(tempValue)
-'                        .GetText .ColLetterToNumber("Q"), .Row, tempValue
-'                        tempRow.cot2 = Val(tempValue)
-'                        .GetText .ColLetterToNumber("W"), .Row, tempValue
-'                        tempRow.cot3 = Val(tempValue)
-'                        .GetText .ColLetterToNumber("AE"), .Row, tempValue
-'                        tempRow.Cot4 = Val(tempValue)
-'                        tempRow.Cot5 = i
-'                        ReDim Preserve arrRow3(i - 1)
-'                        arrRow3(i - 1) = tempRow
-'                        i = i + 1
-'                        .Col = .ColLetterToNumber("B")
-'                        .Row = .Row + 1
-'                    Loop Until .Text = "cc"
-'
-'                    ' Lay ve mang cac row hien tai cua group 4
-'                     .Col = .ColLetterToNumber("B")
-'                    .Row = .Row + 3
-'                    i = 1
-'                    Do
-'                        If i = Row - 44 Then
-'                            ' Ten
-'                            .Col = .ColLetterToNumber("C")
-'                            .TypeComboBoxCurSel = intIndexCombo
-'                            ' Ma nhom
-'                            .Col = .ColLetterToNumber("AE")
-'                            .TypeComboBoxCurSel = intIndexCombo
-'                            UpdateCell fps, .Col, .Row, .Text
-'                         End If
-'                        tempRow.tenCT = arrRow(i - 1).tenCT
-'                        .GetText .ColLetterToNumber("K"), .Row, tempValue
-'                        tempRow.cot1 = Val(tempValue)
-'                        .GetText .ColLetterToNumber("Q"), .Row, tempValue
-'                        tempRow.cot2 = Val(tempValue)
-'                        .GetText .ColLetterToNumber("W"), .Row, tempValue
-'                        tempRow.cot3 = Val(tempValue)
-'                        .GetText .ColLetterToNumber("AE"), .Row, tempValue
-'                        tempRow.Cot4 = Val(tempValue)
-'                        tempRow.Cot5 = i
-'                        ReDim Preserve arrRow4(i - 1)
-'                        arrRow4(i - 1) = tempRow
-'                        i = i + 1
-'                        .Col = .ColLetterToNumber("B")
-'                        .Row = .Row + 1
-'                    Loop Until .Text = "dd"
-'
-'                End If
-          End If
-     End With
-    'CellChange Col, Row
+With fps
+   If .ActiveSheet = .SheetCount - 1 Then
+            'lay ve dong combobox
+            Set xmlCellNode = TAX_Utilities_New.Data(.SheetCount - 2).nodeFromID(GetCellID(fps, .ColLetterToNumber("BI"), 5))
+            Set xmlCellNode = xmlCellNode.parentNode
+            Set xmlCellNode = xmlCellNode.parentNode
+            Set xmlCellNode = xmlCellNode.parentNode.lastChild
+            Set xmlCellNode = xmlCellNode.firstChild
+            Set xmlCellNode = xmlCellNode.firstChild
+            For i = 1 To 6
+                Set xmlCellNode = xmlCellNode.nextSibling
+            Next i
+            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+   
+   
+            .Sheet = .SheetCount - 1
+            mCurrentSheet = .SheetCount - 1
+            
+            .Col = Col
+            .Row = Row
+            
+            If Col = .ColLetterToNumber("BE") And Row = iRow Then 'Khi chon Combo
+                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+                intIndexCuc = .TypeComboBoxCurSel
+                .Col = .ColLetterToNumber("BI")
+                .Row = Row
+                .TypeComboBoxCurSel = intIndexCuc
+                'Nhap lai Combo cot Q
+                .Col = .ColLetterToNumber("BI")
+                UpdateCell fps, .Col, .Row, .Text
+                ' Lay Id cua cuc thue vua chon o tren
+                .GetText .Col, .Row, varIdCucThue
+                
+                If varIdCucThue <> "" Or varIdCucThue <> vbNullString Then
+                    ' Lay thong tin cho chi cuc thue
+                    varIdCucThue = Left$(varIdCucThue, 3)
+                    
+                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+                        For Each xmlNode In xmlNodeListCell
+                            If GetAttribute(xmlNode, "Value") <> "" Then
+                                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                                
+                                If arrDanhsach(0) = "0" And arrDanhsach(2) = varIdCucThue Then
+                                    tenChiCucThue = tenChiCucThue + arrDanhsach(3) + Chr$(9)
+                                    maChiCucThue = maChiCucThue + arrDanhsach(1) + Chr$(9)
+                                End If
+                            End If
+                        Next
+                        Set xmlDomData = Nothing
+                        Set xmlNodeListCell = Nothing
+                        Set xmlNode = Nothing
+                    End If
+                    
+                    .Row = iRow + 2
+                    .Col = .ColLetterToNumber("BE")
+                    .TypeComboBoxList = tenChiCucThue
+                    
+                    .Row = iRow + 2
+                    .Col = .ColLetterToNumber("BI")
+                    .TypeComboBoxList = maChiCucThue
+                End If
+            End If
+                        
+            If Col = .ColLetterToNumber("BE") And Row = iRow + 2 Then 'Khi chon Combo
+                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+                intIndexChiCuc = .TypeComboBoxCurSel
+                .Col = .ColLetterToNumber("BI")
+                .Row = Row
+                .TypeComboBoxCurSel = intIndexChiCuc
+                'Nhap lai Combo cot Q
+                .Col = .ColLetterToNumber("BI")
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+    End If
+End With
     TAX_Utilities_New.AdjustData(mCurrentSheet - 1) = True
 End Sub
 
