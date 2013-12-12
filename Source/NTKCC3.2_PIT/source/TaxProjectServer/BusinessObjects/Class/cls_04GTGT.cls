@@ -676,24 +676,263 @@ Public Function InsertDTL() As String
    
     '--------------------------------
 
-    With fps
-        .Sheet = 1
-        .GetText .ColLetterToNumber("F"), 10, madtnt
+'    With fps
+'        .Sheet = 1
+'        .GetText .ColLetterToNumber("F"), 10, madtnt
+'
+'        If Trim(madtnt) = vbNullString Then
+'            madtnt = "''"
+'        Else
+'            madtnt = "'" & madtnt & "'"
+'        End If
+'
+'        MATHUE = "'01'"
+'        MAPP = "'2'"
+'        .GetText .ColLetterToNumber("E"), 30, KYLBO
+'
+'        If Trim(KYLBO) = vbNullString Then
+'            KYLBO = "''"
+'        Else
+'
+'            If Len(Trim(KYLBO)) = 6 Then
+'                KYLBO = "'0" & KYLBO & "'"
+'            Else
+'                KYLBO = "'" & KYLBO & "'"
+'            End If
+'
+'        End If
+'
+'        .GetText .ColLetterToNumber("E"), 32, ngnop
+'
+'        'NGNOP = Date
+'        If Trim(ngnop) = vbNullString Then
+'            ngnop = "CTOD('')"
+'        Else
+'            ngnop = ToDate(Trim(ngnop), DDMMYYYY)
+'            ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
+'        End If
+'
+'        LOAITIEN = "''"
+'
+'        tt = IIf(Trim(sSaiCT11) = vbNullString, "''", sSaiCT11)
+'
+'        ' sua MAMUC & MATM tu nam 2009
+'        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+'            MATM = "'01'"
+'            MaMuc = "'014'"
+'        Else
+'            MaMuc = "'1700'"
+'            MATM = "'1701'"
+'        End If
+'
+'        MATKHAI = "'" & LOAI_TO_KHAI & "'"
+'        'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+'        If isTkQuy = True Then
+'            kykkhai = "'" & Val(TAX_Utilities_Svr_New.Month) & "/" & TAX_Utilities_Svr_New.Year & "'"
+'        Else
+'            kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+'        End If
+'
+'        DANHAN = "''"
+'        THUECL = "0"
+'        NGANH = "''"
+'
+'    End With
+'
+'    Dim iSection As Integer
+'
+'    With fps
+'
+'        iSection = 1
+'        countTemp = 1
+'        .Col = .ColLetterToNumber("B")
+'        'set row start = 43 de ghi ca chi tieu tong
+'        .Row = 43
+'
+'        Do
+'            ' insert cot 3 0%
+'
+'            CTIEUTNDN = "'" & IIf(countTemp < 10, "00", "0") & countTemp & "'"
+'
+'            If isRowSum Then
+'                .GetText .ColLetterToNumber("L"), .Row, SOTIEN
+'                NGANH = "''"
+'            Else
+'                .GetText .ColLetterToNumber("K"), .Row, SOTIEN
+'                .GetText .ColLetterToNumber("AE"), .Row, NGANH
+'
+'                If Trim(NGANH) = vbNullString Then
+'                    NGANH = "''"
+'                Else
+'                    NGANH = "'" & NGANH & "'"
+'                End If
+'            End If
+'
+'            If Trim(SOTIEN) = vbNullString Then
+'                SOTIEN = "0"
+'            End If
+'
+'            SOTIEN2 = SOTIEN
+'
+'            sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & ","
+'            sSQLVal = sSQLVal & KYLBO & "," & ngnop & "," & LOAITIEN & ","
+'            sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
+'            sSQLVal = sSQLVal & MaMuc & "," & TTHTK & "," & MATKHAI & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
+'            sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+'
+'            bln = clsDAO.ExecuteDLL(sSQL)
+'
+'            ' insert cot 4 5%
+'
+'            countTemp = countTemp + 1
+'
+'            CTIEUTNDN = "'" & IIf(countTemp < 10, "00", "0") & countTemp & "'"
+'
+'            If isRowSum Then
+'                .GetText .ColLetterToNumber("R"), .Row, SOTIEN
+'            Else
+'                .GetText .ColLetterToNumber("Q"), .Row, SOTIEN
+'            End If
+'
+'            If Trim(SOTIEN) = vbNullString Then
+'                SOTIEN = "0"
+'            End If
+'
+'            SOTIEN2 = SOTIEN
+'
+'            sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & ","
+'            sSQLVal = sSQLVal & KYLBO & "," & ngnop & "," & LOAITIEN & ","
+'            sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
+'            sSQLVal = sSQLVal & MaMuc & "," & TTHTK & "," & MATKHAI & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
+'            sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+'
+'            bln = clsDAO.ExecuteDLL(sSQL)
+'
+'            ' insert cot 5 10%
+'
+'            countTemp = countTemp + 1
+'
+'            CTIEUTNDN = "'" & IIf(countTemp < 10, "00", "0") & countTemp & "'"
+'
+'            If isRowSum Then
+'                .GetText .ColLetterToNumber("X"), .Row, SOTIEN
+'            Else
+'                .GetText .ColLetterToNumber("W"), .Row, SOTIEN
+'            End If
+'
+'            If Trim(SOTIEN) = vbNullString Then
+'                SOTIEN = "0"
+'            End If
+'
+'            SOTIEN2 = SOTIEN
+'
+'            sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & ","
+'            sSQLVal = sSQLVal & KYLBO & "," & ngnop & "," & LOAITIEN & ","
+'            sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
+'            sSQLVal = sSQLVal & MaMuc & "," & TTHTK & "," & MATKHAI & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
+'            sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+'
+'            bln = clsDAO.ExecuteDLL(sSQL)
+'
+'            .Col = .ColLetterToNumber("B")
+'
+'            If isRowSum Then
+'                .Row = .Row + 2
+'                isRowSum = False
+'            Else
+'                .Row = .Row + 1
+'            End If
+'
+'            If .Text = "aa" Then
+'                iSection = 2
+'                .Row = .Row + 1
+'                isRowSum = True
+'            ElseIf .Text = "bb" Then
+'                iSection = 3
+'                .Row = .Row + 1
+'                isRowSum = True
+'            ElseIf .Text = "cc" Then
+'                iSection = 4
+'                .Row = .Row + 1
+'                isRowSum = True
+'            End If
+'
+'            If iSection = 1 Then
+'                countTemp = 1
+'            ElseIf iSection = 2 Then
+'                countTemp = 4
+'            ElseIf iSection = 3 Then
+'                countTemp = 7
+'            ElseIf iSection = 4 Then
+'                countTemp = 10
+'            End If
+'
+'        Loop Until .Text = "dd"
+'
+'    End With
+'
+'    ' insert tong doanh thu hang hoa,dich vu ban ra chiu thue
+'
+'    With fps
+'        .Sheet = 1
+'
+'        CTIEUTNDN = "'013'"
+'        .GetText .ColLetterToNumber("W"), 39, SOTIEN
+'
+'        If Trim(SOTIEN) = vbNullString Then
+'            SOTIEN = "0"
+'        End If
+'
+'        SOTIEN2 = SOTIEN
+'
+'        sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & ","
+'        sSQLVal = sSQLVal & KYLBO & "," & ngnop & "," & LOAITIEN & ","
+'        sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
+'        sSQLVal = sSQLVal & MaMuc & "," & TTHTK & "," & MATKHAI & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
+'        sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+'
+'        bln = clsDAO.ExecuteDLL(sSQL)
+'
+'        ' insert tong so thue GTGT phai nop trong ky
+'
+'        CTIEUTNDN = "'014'"
+'        .GetText .ColLetterToNumber("AA"), 39, SOTIEN
+'
+'        If Trim(SOTIEN) = vbNullString Then
+'            SOTIEN = "0"
+'        End If
+'
+'        SOTIEN2 = SOTIEN
+'
+'        sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & ","
+'        sSQLVal = sSQLVal & KYLBO & "," & ngnop & "," & LOAITIEN & ","
+'        sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
+'        sSQLVal = sSQLVal & MaMuc & "," & TTHTK & "," & MATKHAI & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
+'        sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+'
+'        bln = clsDAO.ExecuteDLL(sSQL)
+'
+'    End With
 
+    '--------------------------------
+       With fps
+        .Sheet = 1
+        
+        'set THUECL chung cho cac chi tieu con lai
+        THUECL = "0"
+        
+        .GetText .ColLetterToNumber("F"), 10, madtnt
         If Trim(madtnt) = vbNullString Then
             madtnt = "''"
         Else
             madtnt = "'" & madtnt & "'"
         End If
-
         MATHUE = "'01'"
         MAPP = "'2'"
         .GetText .ColLetterToNumber("E"), 30, KYLBO
-
         If Trim(KYLBO) = vbNullString Then
             KYLBO = "''"
         Else
-
             If Len(Trim(KYLBO)) = 6 Then
                 KYLBO = "'0" & KYLBO & "'"
             Else
@@ -703,19 +942,17 @@ Public Function InsertDTL() As String
         End If
         
         .GetText .ColLetterToNumber("E"), 32, ngnop
-
-        'NGNOP = Date
+      
         If Trim(ngnop) = vbNullString Then
             ngnop = "CTOD('')"
         Else
             ngnop = ToDate(Trim(ngnop), DDMMYYYY)
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
-
         LOAITIEN = "''"
-        
-        tt = IIf(Trim(sSaiCT11) = vbNullString, "''", sSaiCT11)
+        DANHAN = "''"
 
+        tt = "''"
         ' sua MAMUC & MATM tu nam 2009
         If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
             MATM = "'01'"
@@ -724,7 +961,6 @@ Public Function InsertDTL() As String
             MaMuc = "'1700'"
             MATM = "'1701'"
         End If
-
         MATKHAI = "'" & LOAI_TO_KHAI & "'"
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         If isTkQuy = True Then
@@ -733,189 +969,98 @@ Public Function InsertDTL() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        DANHAN = "''"
-        THUECL = "0"
         NGANH = "''"
         
-    End With
-    
-    Dim iSection As Integer
-    
-    With fps
-        
-        iSection = 1
-        countTemp = 1
-        .Col = .ColLetterToNumber("B")
-        'set row start = 43 de ghi ca chi tieu tong
-        .Row = 43
-        
-        Do
-            ' insert cot 3 0%
-        
-            CTIEUTNDN = "'" & IIf(countTemp < 10, "00", "0") & countTemp & "'"
-
-            If isRowSum Then
-                .GetText .ColLetterToNumber("L"), .Row, SOTIEN
-                NGANH = "''"
-            Else
-                .GetText .ColLetterToNumber("K"), .Row, SOTIEN
-                .GetText .ColLetterToNumber("AE"), .Row, NGANH
-
-                If Trim(NGANH) = vbNullString Then
-                    NGANH = "''"
-                Else
-                    NGANH = "'" & NGANH & "'"
-                End If
-            End If
-
-            If Trim(SOTIEN) = vbNullString Then
-                SOTIEN = "0"
-            End If
-        
-            SOTIEN2 = SOTIEN
-        
-            sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & ","
-            sSQLVal = sSQLVal & KYLBO & "," & ngnop & "," & LOAITIEN & ","
-            sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
-            sSQLVal = sSQLVal & MaMuc & "," & TTHTK & "," & MATKHAI & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
-            sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-     
-            bln = clsDAO.ExecuteDLL(sSQL)
-                        
-            ' insert cot 4 5%
-            
-            countTemp = countTemp + 1
-            
-            CTIEUTNDN = "'" & IIf(countTemp < 10, "00", "0") & countTemp & "'"
-
-            If isRowSum Then
-                .GetText .ColLetterToNumber("R"), .Row, SOTIEN
-            Else
-                .GetText .ColLetterToNumber("Q"), .Row, SOTIEN
-            End If
-
-            If Trim(SOTIEN) = vbNullString Then
-                SOTIEN = "0"
-            End If
-        
-            SOTIEN2 = SOTIEN
-        
-            sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & ","
-            sSQLVal = sSQLVal & KYLBO & "," & ngnop & "," & LOAITIEN & ","
-            sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
-            sSQLVal = sSQLVal & MaMuc & "," & TTHTK & "," & MATKHAI & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
-            sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-     
-            bln = clsDAO.ExecuteDLL(sSQL)
-                        
-            ' insert cot 5 10%
-            
-            countTemp = countTemp + 1
-            
-            CTIEUTNDN = "'" & IIf(countTemp < 10, "00", "0") & countTemp & "'"
-
-            If isRowSum Then
-                .GetText .ColLetterToNumber("X"), .Row, SOTIEN
-            Else
-                .GetText .ColLetterToNumber("W"), .Row, SOTIEN
-            End If
-
-            If Trim(SOTIEN) = vbNullString Then
-                SOTIEN = "0"
-            End If
-        
-            SOTIEN2 = SOTIEN
-        
-            sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & ","
-            sSQLVal = sSQLVal & KYLBO & "," & ngnop & "," & LOAITIEN & ","
-            sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
-            sSQLVal = sSQLVal & MaMuc & "," & TTHTK & "," & MATKHAI & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
-            sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-     
-            bln = clsDAO.ExecuteDLL(sSQL)
-                        
-            .Col = .ColLetterToNumber("B")
-
-            If isRowSum Then
-                .Row = .Row + 2
-                isRowSum = False
-            Else
-                .Row = .Row + 1
-            End If
-            
-            If .Text = "aa" Then
-                iSection = 2
-                .Row = .Row + 1
-                isRowSum = True
-            ElseIf .Text = "bb" Then
-                iSection = 3
-                .Row = .Row + 1
-                isRowSum = True
-            ElseIf .Text = "cc" Then
-                iSection = 4
-                .Row = .Row + 1
-                isRowSum = True
-            End If
-            
-            If iSection = 1 Then
-                countTemp = 1
-            ElseIf iSection = 2 Then
-                countTemp = 4
-            ElseIf iSection = 3 Then
-                countTemp = 7
-            ElseIf iSection = 4 Then
-                countTemp = 10
-            End If
-            
-        Loop Until .Text = "dd"
-        
-    End With
-   
-    ' insert tong doanh thu hang hoa,dich vu ban ra chiu thue
-            
-    With fps
-        .Sheet = 1
-        
-        CTIEUTNDN = "'013'"
-        .GetText .ColLetterToNumber("W"), 39, SOTIEN
+        CTIEUTNDN = "'001'"
+        .GetText .ColLetterToNumber("K"), 43, SOTIEN
 
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
-        
+
         SOTIEN2 = SOTIEN
-        
+
         sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & ","
         sSQLVal = sSQLVal & KYLBO & "," & ngnop & "," & LOAITIEN & ","
         sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
         sSQLVal = sSQLVal & MaMuc & "," & TTHTK & "," & MATKHAI & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
         sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-     
+
         bln = clsDAO.ExecuteDLL(sSQL)
-                        
-        ' insert tong so thue GTGT phai nop trong ky
-            
-        CTIEUTNDN = "'014'"
-        .GetText .ColLetterToNumber("AA"), 39, SOTIEN
+        
+                CTIEUTNDN = "'002'"
+        .GetText .ColLetterToNumber("Z"), 43, SOTIEN
 
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
-        
+
         SOTIEN2 = SOTIEN
-        
+
         sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & ","
         sSQLVal = sSQLVal & KYLBO & "," & ngnop & "," & LOAITIEN & ","
         sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
         sSQLVal = sSQLVal & MaMuc & "," & TTHTK & "," & MATKHAI & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
         sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-     
-        bln = clsDAO.ExecuteDLL(sSQL)
-   
-    End With
 
-    '--------------------------------
-      
+        bln = clsDAO.ExecuteDLL(sSQL)
+        
+                CTIEUTNDN = "'003'"
+        .GetText .ColLetterToNumber("Z"), 44, SOTIEN
+
+        If Trim(SOTIEN) = vbNullString Then
+            SOTIEN = "0"
+        End If
+
+        SOTIEN2 = SOTIEN
+
+        sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & ","
+        sSQLVal = sSQLVal & KYLBO & "," & ngnop & "," & LOAITIEN & ","
+        sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
+        sSQLVal = sSQLVal & MaMuc & "," & TTHTK & "," & MATKHAI & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
+        sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+
+        bln = clsDAO.ExecuteDLL(sSQL)
+        
+                CTIEUTNDN = "'004'"
+        .GetText .ColLetterToNumber("K"), 45, SOTIEN
+
+        If Trim(SOTIEN) = vbNullString Then
+            SOTIEN = "0"
+        End If
+
+        SOTIEN2 = SOTIEN
+
+        sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & ","
+        sSQLVal = sSQLVal & KYLBO & "," & ngnop & "," & LOAITIEN & ","
+        sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
+        sSQLVal = sSQLVal & MaMuc & "," & TTHTK & "," & MATKHAI & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
+        sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+
+        bln = clsDAO.ExecuteDLL(sSQL)
+        
+                CTIEUTNDN = "'005'"
+        .GetText .ColLetterToNumber("K"), 46, SOTIEN
+
+        If Trim(SOTIEN) = vbNullString Then
+            SOTIEN = "0"
+        End If
+
+        SOTIEN2 = SOTIEN
+
+        sSQLVal = madtnt & "," & MATHUE & "," & MATM & "," & MAPP & ","
+        sSQLVal = sSQLVal & KYLBO & "," & ngnop & "," & LOAITIEN & ","
+        sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
+        sSQLVal = sSQLVal & MaMuc & "," & TTHTK & "," & MATKHAI & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
+        sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+
+        bln = clsDAO.ExecuteDLL(sSQL)
+
+   End With
+   
+   '--------------------------------
+   
+  
     clsDAO.Disconnect
     InsertDTL = vbNullString
     'InsertDTL = sSQL
@@ -1286,8 +1431,8 @@ Public Function InsertHDR() As String
     With fps
         .Sheet = 1
                         'lay ten nhan vien dai ly thue, chung chi hanh nghe
-        .GetText .ColLetterToNumber("H"), 73, TENNV
-        .GetText .ColLetterToNumber("H"), 75, CHUNGCHI
+        .GetText .ColLetterToNumber("H"), 63, TENNV
+        .GetText .ColLetterToNumber("H"), 65, CHUNGCHI
         'set DAGHI2 theo checkbox loi dinh danh
         .Col = .ColLetterToNumber("E")
         .Row = 36
@@ -1364,14 +1509,14 @@ Public Function InsertHDR() As String
         End If
         
         ThueTKy = "0"
-        .GetText .ColLetterToNumber("AA"), 39, ThueTKy
+        .GetText .ColLetterToNumber("O"), 52, ThueTKy
 
         If Trim(ThueTKy) = "0" Then
             ThueTKy = "0"
         End If
         
         ' Lay loai ky ke khai(thang/quy)
-        .GetText .ColLetterToNumber("AB"), 42, LoaiKyKK
+        .GetText .ColLetterToNumber("K"), 39, LoaiKyKK
         If LoaiKyKK = "0" Then
             LoaiKyKK = ".T."
             isTkQuy = False
@@ -1396,7 +1541,7 @@ Public Function InsertHDR() As String
             MANNKD = "'" & MANNKD & "'"
         End If
         
-        .GetText .ColLetterToNumber("W"), 39, CT27
+        .GetText .ColLetterToNumber("S"), 50, CT27
 
         If Trim(CT27) = vbNullString Then
             CT27 = 0

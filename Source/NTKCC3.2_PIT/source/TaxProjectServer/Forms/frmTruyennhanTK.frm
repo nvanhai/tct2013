@@ -143,7 +143,7 @@ Begin VB.Form frmTruyennhanTK
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTruyennhanTK.frx":0A6C
+         SpreadDesigner  =   "frmTruyennhanTK.frx":0A0A
          UserResize      =   1
          Appearance      =   1
       End
@@ -194,7 +194,7 @@ Begin VB.Form frmTruyennhanTK
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTruyennhanTK.frx":1076
+         SpreadDesigner  =   "frmTruyennhanTK.frx":0CA2
          UserResize      =   1
       End
    End
