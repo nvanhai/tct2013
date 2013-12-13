@@ -33,13 +33,13 @@
 		<Item CellID="R_45" MCT="26" Caption="Số thuế tạm tính phải nộp kỳ này của Hàng hóa, dịch vụ chịu thuế 10%"/>
 	</Map>
 	<Map ID ="01A_TNDN">
-		<Item CellID="K_32" MCT="31" Caption="Thuế TNDN dự kiến miễn, giảm"/>
-		<Item CellID="K_33" MCT="32" Caption="Thuế TNDN phải nộp trong kỳ"/>
+		<Item CellID="K_37" MCT="34" Caption="Thuế TNDN phát sinh"/>
+		<Item CellID="K_38" MCT="35" Caption="Thuế TNDN dự kiến miễn, giảm"/>
 	</Map>
 	<Map ID ="01B_TNDN">
-		<Item CellID="J_44" MCT="28" Caption="Thuế thu nhập doanh nghiệp tính theo thuế suất chung"/>
-		<Item CellID="J_45" MCT="29" Caption="Thuế thu nhập doanh nghiệp tính theo thuế suất ưu đãi"/>
-		<Item CellID="J_46" MCT="30" Caption="Thuế thu nhập doanh nghiệp dự kiến miễn, giảm"/>
+		<Item CellID="K_49" MCT="28" Caption="Thuế TNDN của hoạt động không ưu đãi"/>
+		<Item CellID="K_50" MCT="29" Caption="Thuế TNDN của hoạt động được ưu đãi về thuế suất"/>
+		<Item CellID="K_51" MCT="30" Caption="Thuế thu nhập doanh nghiệp dự kiến miễn, giảm"/>
 	</Map>
 	<Map ID ="02_TNDN">
 		<Item CellID="AW_73" MCT="37" Caption="Thuế TNDN phải nộp ([37]=[35] x [36])"/>
