@@ -2033,7 +2033,7 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             fldName = xmlConfig.getElementsByTagName("ParamNameNNT")(0).Text
             
             'Set value config to file param NNT
-            paXmlDoc.getElementsByTagName("tin")(0).Text = strTaxIDString
+            paXmlDoc.getElementsByTagName("tin_nnt")(0).Text = strTaxIDString
        
 '            paXmlDoc.getElementsByTagName("VERSION")(0).Text = cfigXml.getElementsByTagName("VERSION")(0).Text
 '            paXmlDoc.getElementsByTagName("SENDER_CODE")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text

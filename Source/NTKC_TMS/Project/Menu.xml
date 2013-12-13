@@ -414,8 +414,8 @@
 		<Validity StartDate="13/06/2000" InterfaceTemplate="..\InterfaceTemplates\Excel\99_BCTC.xls" ReportTemplate="..\ReportTemplates\Excel\99_BCTC.xls" Class="Tax_Business_Srv.cls_99_BCTC">
 			<Sheet ID="01" Caption="CĐKT" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="99_01_CDKT" Ini="..\Ini\99_01_CDKT.xml"/>
 			<Sheet ID="01-10" Caption="phần I" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="99_02_1_SXKD" Ini="..\Ini\99_02_1_SXKD.xml"/>
-			<Sheet ID="02-11" Caption="phần II" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="99_02_2_SXKD" Ini="..\Ini\99_02_2_SXKD.xml"/>
-			<Sheet ID="03-12" Caption="phần III" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="99_02_3_SXKD" Ini="..\Ini\99_02_3_SXKD.xml"/>
+			<Sheet ID="01-11" Caption="phần II" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="99_02_2_SXKD" Ini="..\Ini\99_02_2_SXKD.xml"/>
+			<Sheet ID="01-12" Caption="phần III" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="99_02_3_SXKD" Ini="..\Ini\99_02_3_SXKD.xml"/>
 			<Sheet ID="01-2" Caption="LCTTTT" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="99_03_LCTTTT" Ini="..\Ini\99_03_LCTTTT.xml"/>
 			<Sheet ID="01-3" Caption="LCTTGT" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="99_04_LCTTGT" Ini="..\Ini\99_04_LCTTGT.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
