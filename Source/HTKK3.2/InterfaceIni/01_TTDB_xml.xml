@@ -21,7 +21,6 @@
 		<tongDongIcot6>AA_36</tongDongIcot6>
 		<tongDongIcot8>AG_36</tongDongIcot8>
 		<tongDongIcot9>AN_36</tongDongIcot9>
-		<tongDongIcot10>0</tongDongIcot10>
 	</Static>
 	<Dynamic GroupName="ChiTietHangHoaChiuThueTTDB">
 		<NDungTKhaiTTDB id="id">
@@ -33,7 +32,6 @@
 			<ct7>AD_38</ct7>
 			<ct8>AG_38</ct8>
 			<ct9>AN_38</ct9>
-			<ct10>0</ct10>
 		</NDungTKhaiTTDB>
 	</Dynamic>
 	<Static GroupName="DVuChiuThueTNDB">
@@ -41,7 +39,6 @@
 		<tongDongIICot6>AA_40</tongDongIICot6>
 		<tongDongIICot8>AG_40</tongDongIICot8>
 		<tongDongIICot9>AN_40</tongDongIICot9>
-		<tongDongIICot10>0</tongDongIICot10>
 	</Static>
 	<Dynamic GroupName="ChiTietDVuChiuThueTTDB">
 		<NDungTKhaiTTDB id="id">
@@ -53,7 +50,6 @@
 			<ct7>AD_42</ct7>
 			<ct8>AG_42</ct8>
 			<ct9>AN_42</ct9>
-			<ct10>0</ct10>
 		</NDungTKhaiTTDB>
 	</Dynamic>
 	<Static GroupName="HHoaKhongChiuThueTNDB">
@@ -83,11 +79,10 @@
 			<ct5>V_55</ct5>
 		</NDungHHoaKhongThue>
 	</Dynamic>
-	<Static GroupName="BangChiTietThueTTĐB">
+	<Static GroupName="BangChiTietThueTTDB">
 		<tongDSoBanChuaThue>V_57</tongDSoBanChuaThue>
 		<tongGiaThue>AA_57</tongGiaThue>
 		<tongThueKTru>AG_57</tongThueKTru>
-		<tongThueKTruKyTruoc></tongThueKTruKyTruoc>
 		<tongThuePNop>AN_57</tongThuePNop>
 	</Static>
 	<Static GroupName="TKhaiThue">

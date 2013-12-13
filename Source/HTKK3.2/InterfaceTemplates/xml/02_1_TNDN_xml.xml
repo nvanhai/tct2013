@@ -1,8 +1,8 @@
 <Pluc_02_1_TNDN>
 	<ChiTietCacBenNhanCNBDS>
-		<tenBenNhanCNhuong>String</tenBenNhanCNhuong>
-		<mstBenNhanCN>String</mstBenNhanCN>
-		<diaChi>String</diaChi>
-		<hopDongCNhuongBDS>String</hopDongCNhuongBDS>
+		<tenBenNhanCNhuong></tenBenNhanCNhuong>
+		<mstBenNhanCN></mstBenNhanCN>
+		<diaChi></diaChi>
+		<hopDongCNhuongBDS></hopDongCNhuongBDS>
 	</ChiTietCacBenNhanCNBDS>
 </Pluc_02_1_TNDN>

@@ -16,7 +16,7 @@
 		<maHuyenDLyThue/>
 		<maTinhDLyThue/>
 	</Static>
-	<Static GroupName="SoNamNay">
+	<Static GroupName="SoCuoiNam">
 		<ct100_nNay>R_40</ct100_nNay>
 		<ct110_nNay>R_41</ct110_nNay>
 		<ct120_nNay>R_42</ct120_nNay>
@@ -81,13 +81,8 @@
 		<ct416_nNay>R_102</ct416_nNay>
 		<ct417_nNay>R_103</ct417_nNay>
 		<ct440_nNay>R_105</ct440_nNay>
-		<tsanTNgoai_nNay>R_107</tsanTNgoai_nNay>
-		<hangGCong_nNay>R_108</hangGCong_nNay>
-		<hangKGui_nNay>R_109</hangKGui_nNay>
-		<noKDoi_nNay>R_110</noKDoi_nNay>
-		<ngoaiTe_nNay>R_111</ngoaiTe_nNay>
 	</Static>
-	<Static GroupName="SoNamNgoai">
+	<Static GroupName="SoDauNam">
 		<ct100_nNgoai>W_40</ct100_nNgoai>
 		<ct110_nNgoai>W_41</ct110_nNgoai>
 		<ct120_nNgoai>W_42</ct120_nNgoai>
@@ -152,11 +147,20 @@
 		<ct416_nNgoai>W_102</ct416_nNgoai>
 		<ct417_nNgoai>W_103</ct417_nNgoai>
 		<ct440_nNgoai>W_105</ct440_nNgoai>
-		<tsanTNgoai_nNgoai>W_107</tsanTNgoai_nNgoai>
-		<hangGCong_nNgoai>W_108</hangGCong_nNgoai>
-		<hangKGui_nNgoai>W_109</hangKGui_nNgoai>
-		<noKDoi_nNgoai>W_110</noKDoi_nNgoai>
-		<ngoaiTe_nNgoai>W_111</ngoaiTe_nNgoai>
+	</Static>
+	<Static GroupName="SoCuoiNam">
+		<taiSanThueNgoai>R_107</taiSanThueNgoai>
+		<hangHoaNhanGiuHo>R_108</hangHoaNhanGiuHo>
+		<hangHoaNhanBanHo>R_109</hangHoaNhanBanHo>
+		<noKhoDoiDaXLy>R_110</noKhoDoiDaXLy>
+		<ngoaiTeCacLoai>R_111</ngoaiTeCacLoai>
+	</Static>
+	<Static GroupName="SoDauNam">
+		<taiSanThueNgoai>W_107</taiSanThueNgoai>
+		<hangHoaNhanGiuHo>W_108</hangHoaNhanGiuHo>
+		<hangHoaNhanBanHo>W_109</hangHoaNhanBanHo>
+		<noKhoDoiDaXLy>W_110</noKhoDoiDaXLy>
+		<ngoaiTeCacLoai>W_111</ngoaiTeCacLoai>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>R_113</nguoiKy>

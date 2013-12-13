@@ -23,10 +23,12 @@
 			<ct3>AL_34</ct3>
 			<ct4>AU_34</ct4>
 			<ct5>BE_34</ct5>
-			<ct6>BK_34</ct6>
-			<ct7>BU_34</ct7>
-			<ct8>BX_34</ct8>
-			<ct9>CG_34</ct9>
+			<ThueTNDN>
+				<ct6>BK_34</ct6>
+				<ct7>BU_34</ct7>
+				<ct8>BX_34</ct8>
+				<ct9>CG_34</ct9>
+			</ThueTNDN>
 		</ThueNTNN>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
@@ -34,6 +36,7 @@
 		<tongct6>BK_36</tongct6>
 		<tongct8>BX_36</tongct8>
 		<tongct9>CG_36</tongct9>
+		<tongThueVietBangChu>AD_38</tongThueVietBangChu>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>BG_48</nguoiKy>

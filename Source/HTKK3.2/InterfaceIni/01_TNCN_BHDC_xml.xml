@@ -26,21 +26,25 @@
 		<tenNVienDLyThue>H_58</tenNVienDLyThue>
 		<cchiHNghe>H_60</cchiHNghe>
 	</Static>
+	<Static GroupName="TNCuaDLyBHiem">
+		<ct21>U_40</ct21>
+		<ct22>U_41</ct22>
+		<ct23>U_42</ct23>
+	</Static>
+	<Static GroupName="TNTuTienPhiTichLuyBHNT">
+		<ct24>U_44</ct24>
+		<ct25>U_45</ct25>
+	</Static>
+	<Static GroupName="TNTuTienTichLuyQuyHTTN">
+		<ct26>U_47</ct26>
+		<ct27>U_48</ct27>
+	</Static>
+	<Static GroupName="TNTuThamGiaMangLuoiBHDC">
+		<ct28>U_50</ct28>
+		<ct29>U_51</ct29>
+		<ct30>U_52</ct30>
+	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct21>U_39</ct21>
-		<ct22>U_40</ct22>
-		<ct23>U_41</ct23>
-		<ct24>U_42</ct24>
-		<ct25>U_43</ct25>
-		<ct26>U_44</ct26>
-		<ct27>U_45</ct27>
-		<ct28>U_46</ct28>
-		<ct29>U_47</ct29>
-		<ct30>U_48</ct30>
-		<ct31>U_49</ct31>
-		<ct32>U_50</ct32>
-		<ct33>U_51</ct33>
-		<ct34>U_52</ct34>
-		<ct35>U_53</ct35>
+		<ct31>U_53</ct31>
 	</Static>
 </HSoKhaiThue>

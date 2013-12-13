@@ -1,36 +1,35 @@
-<PLuc02_TTDB>
-	<ThoiGianNopTKhaiChinh></ThoiGianNopTKhaiChinh>
+<Pluc_01_2_TTDB>
 	<TTinThueNLMVao>
 		<ChiTietThueTTDBNLMVao>
 			<ThueNLMVao id="ID_1">
 				<BienLaiChungTuNopThueTTĐB>
-					<khieuNLMVao></khieuNLMVao>
-					<soNLMVao></soNLMVao>
-					<ngayPHanhNLMVao></ngayPHanhNLMVao>
+					<ct2></ct2>
+					<ct3></ct3>
+					<ct4>1967-08-13</ct4>
 				</BienLaiChungTuNopThueTTĐB>
-				<tenNLMVao></tenNLMVao>
-				<soLuongNLMVao>0.0</soLuongNLMVao>
-				<thueNLMVaoDNop>1</thueNLMVaoDNop>
-				<thueNLMVaoTrenDVi>1</thueNLMVaoTrenDVi>
-				<thueNLMVaoDaKTru>1</thueNLMVaoDaKTru>
-				<thueNLMVaoChuaKTru>1</thueNLMVaoChuaKTru>
+				<ct5></ct5>
+				<ct6>0.0</ct6>
+				<ct7>1</ct7>
+				<ct8>1</ct8>
+				<ct9>1</ct9>
+				<ct10>1</ct10>
 			</ThueNLMVao>
 		</ChiTietThueTTDBNLMVao>
-		<tongThueNLMVaoDNop>1</tongThueNLMVaoDNop>
-		<tongThueNLMVaoDaKTru>text</tongThueNLMVaoDaKTru>
-		<tongthueNLMVaoChuaKTru>1</tongthueNLMVaoChuaKTru>
+		<tong_ct7>1</tong_ct7>
+		<tong_ct9>text</tong_ct9>
+		<tong_ct10>1</tong_ct10>
 	</TTinThueNLMVao>
 	<TTinThueNLDuocKTru>
 		<ChiTietThueTTDBNLDuocKTru>
 			<ThueNLDuocKTru id="ID_2">
-				<tenMatHangNLKTru></tenMatHangNLKTru>
-				<soLuongHangNLKTru>0.0</soLuongHangNLKTru>
-				<tenNLKTru></tenNLKTru>
-				<luongNL1DViNLKTru>0.0</luongNL1DViNLKTru>
-				<thue1DViNLKTru>0.0</thue1DViNLKTru>
-				<tongThueTTDBDuocKTru>1</tongThueTTDBDuocKTru>
+				<ct2></ct2>
+				<ct3>0.0</ct3>
+				<ct4></ct4>
+				<ct5>0.0</ct5>
+				<ct6>0.0</ct6>
+				<ct7>1</ct7>
 			</ThueNLDuocKTru>
 		</ChiTietThueTTDBNLDuocKTru>
-		<tongTTDBNLDuocKTru>text</tongTTDBNLDuocKTru>
+		<tong_ct7>text</tong_ct7>
 	</TTinThueNLDuocKTru>
-</PLuc02_TTDB>
+</Pluc_01_2_TTDB>
