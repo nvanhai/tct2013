@@ -483,7 +483,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":02C8
+      SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
    End
@@ -1226,7 +1226,7 @@ Private Sub chkTkhaiThang_Click()
             OptBosung.value = False
             OptChinhthuc.value = True
             
-            If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "72" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "73" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "81" Then
+            If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "06" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "72" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "73" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "81" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "90" Then
                 frmKy.Height = 1600
                 Frame2.Top = 1700
                 Set OptChinhthuc.Container = frmKy
@@ -1249,7 +1249,9 @@ Private Sub chkTkhaiThang_Click()
                 lblSolan.Visible = False
                 txtSolan.Visible = False
                 
-                If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "73" Then
+                If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "90" Then
+                    Frame2.Top = 2000
+                ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "73" Then
                     Frame2.Top = 1920
                     txtMonth.Visible = False
                     lblMonth.Visible = False
@@ -1375,7 +1377,7 @@ Private Sub chkTKLanPS_Click()
         'chkTKLanPS.Enabled = False
         'chkTKLanPS.
         varMenuId = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
-        If varMenuId = "70" Or varMenuId = "72" Or varMenuId = "73" Or varMenuId = "81" Then
+        If varMenuId = "70" Or varMenuId = "06" Or varMenuId = "72" Or varMenuId = "73" Or varMenuId = "81" Or varMenuId = "90" Then
         'If varMenuId = "73" Or varMenuId = "81" Then
             frmKy.Height = 1065
             Frame2.Top = 1400
@@ -2394,7 +2396,7 @@ Public Sub cmdOK_Click()
     End If
     
     'chan ngay kk lan phat sinh < ngay hien tai
-    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "70" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "72" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "73" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "81" _
+    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "70" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "06" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "72" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "73" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "81" _
      Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") And chkTKLanPS.value = "1" Then
         If Trim(sNgay) <> "" Then
             sNgayDD = DateSerial(CInt(Mid$(sNgay, 7, 4)), CInt(Mid$(sNgay, 4, 2)), CInt(Mid$(sNgay, 1, 2)))
@@ -2699,7 +2701,7 @@ Public Sub cmdOK_Click()
         Dim fso1 As New FileSystemObject
         If Trim(TAX_Utilities_New.month) <> "" Then
             ' to khai nha thau nuoc ngoai
-            If idToKhai = "70" Then
+            If idToKhai = "70" Or idToKhai = "06" Then
                 If strLoaiTKThang_PS = "TK_THANG" Then
                     strDataFileBS = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                 ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
@@ -2942,16 +2944,18 @@ Private Sub Form_Load()
         SetupLayoutTNDN_DK (strKieuKy)
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "95" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "88" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "25" Then
         SetLayoutToKhaiThangQuy
-    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "11" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "12" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "06" _
+    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "11" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "12" _
      Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "77" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "86" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "87" _
-     Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "83" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "85" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "90" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "94" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "96" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "97" Then
+     Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "83" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "85" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "94" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "96" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "97" Then
         SetupLayoutGTGT strKieuKy, GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
-    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "72" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "81" Then
+    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "72" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "06" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "81" Then
         SetupLayoutNTNN
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Then
         SetupLayoutTTDB
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "73" Then
         SetupLayout02TNDN
+    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "90" Then
+        SetupLayout01TBVMT
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "03" Then
         SetupLayout03TNDN
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "80" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "82" Then
@@ -4521,8 +4525,8 @@ Private Sub OptBosung_Click()
             ' Doi voi to khai thang neu la truong hop bo sung thi quet tat ca cac file xem lan bo sung lon nhat la bao nhieu
             ' Thu tu file bo sung tu 1 den 50
             If (varMenuId = "46" Or varMenuId = "48" Or varMenuId = "15" Or varMenuId = "50" Or varMenuId = "39" Or varMenuId = "36" Or varMenuId = "25" Or varMenuId = "53" Or varMenuId = "54" Or varMenuId = "70" Or varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "06" Or varMenuId = "05" Or varMenuId = "71" _
-            Or varMenuId = "72" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "86" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "92" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "06" Or varMenuId = "98") Then
-                If varMenuId = "70" Then
+            Or varMenuId = "72" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "86" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "92" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "98") Then
+                If varMenuId = "70" Or varMenuId = "06" Then
                     If strLoaiTKThang_PS = "TK_THANG" Then
                         strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                     ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
@@ -4589,7 +4593,7 @@ Private Sub OptBosung_Click()
                     Set fpsNgaykhaiBS.Container = frmKy
                     fpsNgaykhaiBS.Top = 1750
                     fpsNgaykhaiBS.Left = 960
-                ElseIf varMenuId = "81" Or varMenuId = "70" Or varMenuId = "72" Then
+                ElseIf varMenuId = "81" Or varMenuId = "70" Or varMenuId = "06" Or varMenuId = "72" Then
                     frmKy.Height = 2050
                     Frame2.Top = 2100
                     Set fpsNgaykhaiBS.Container = frmKy
@@ -5011,7 +5015,7 @@ Private Sub OptChinhthuc_Click()
                 ElseIf varMenuId = "03" Then
                     frmKy.Height = 1740
                     Frame2.Top = 2050
-                ElseIf varMenuId = "81" Or varMenuId = "70" Or varMenuId = "72" Then
+                ElseIf varMenuId = "81" Or varMenuId = "70" Or varMenuId = "06" Or varMenuId = "72" Then
                     frmKy.Height = 1600
                     Frame2.Top = 2050
                 ElseIf varMenuId = "80" Or varMenuId = "82" Then
@@ -6268,6 +6272,104 @@ ErrorHandle:
     
 End Sub
 
+
+
+' Set up layout cho to khai 01_TBVMT
+Private Sub SetupLayout01TBVMT()
+    On Error GoTo ErrorHandle
+    
+    Me.Height = 3285
+    Me.Width = 4905
+    
+    frmKy.Height = 1600
+    Frame2.Top = 1700
+    
+    
+    Set chkTkhaiThang.Container = frmKy
+    chkTkhaiThang.Top = 200
+    chkTkhaiThang.Left = 120
+    chkTkhaiThang.value = 1
+    chkTKLanPS.value = 0
+    
+    Set chkTKLanPS.Container = frmKy
+    chkTKLanPS.Top = 180
+    chkTKLanPS.Left = 1800
+    
+    Set lblNgay.Container = frmKy
+    lblNgay.Top = 570
+    lblNgay.Left = 120
+
+    Set txtDay.Container = frmKy
+    txtDay.Top = 540
+    txtDay.Left = 700
+    
+    
+    
+    Set lblMonth.Container = frmKy
+    lblMonth.Top = 570
+    lblMonth.Left = 1360
+    
+    Set txtMonth.Container = frmKy
+    txtMonth.Top = 540
+    txtMonth.Left = 1930
+    
+    Set lblYear.Container = frmKy
+    lblYear.Top = 570
+    lblYear.Left = 2710
+    
+    Set txtYear.Container = frmKy
+    txtYear.Top = 540
+    txtYear.Left = 3130
+    
+ 
+ 
+    
+    If chkTkhaiThang.value = 1 Then
+        frmKy.Height = 1600
+        Frame2.Top = 2000
+        
+        Set OptChinhthuc.Container = frmKy
+        OptChinhthuc.Top = 900
+        OptChinhthuc.Left = 960
+        
+        Set OptBosung.Container = frmKy
+        OptBosung.Top = 1200
+        OptBosung.Left = 960
+        
+        Set lblSolan.Container = frmKy
+        lblSolan.Top = 1200
+        lblSolan.Left = 3000
+        Set txtSolan.Container = frmKy
+        txtSolan.Top = 1200
+        txtSolan.Left = 3400
+        
+        lblSolan.Visible = False
+        txtSolan.Visible = False
+        
+
+ 
+    Else
+        frmKy.Height = 1700
+        Frame2.Top = 2000
+
+ 
+    End If
+    
+    cmbQuy.Visible = False
+    txtNgayDau.Visible = False
+    txtNgayCuoi.Visible = False
+        
+    strKHBS = "TKCT"
+        
+    Me.Top = (frmSystem.ScaleHeight - Me.ScaleHeight) / 2
+    Me.Left = (frmSystem.Width - Me.Width) / 2
+    
+    Exit Sub
+     
+ErrorHandle:
+    SaveErrorLog Me.Name, "SetupLayout01TBVMT", Err.Number, Err.Description
+    
+End Sub
 
 '******************************
 'Description: SetValueToList procedure list subfolders in

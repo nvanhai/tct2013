@@ -55,10 +55,11 @@
 		<Item CellID="O_52" MCT="D" Caption="Thuế TNDN từ hoạt động chuyển nhượng bất động sản còn phải nộp sau khi trừ thuế TNDN đã nộp ở địa phương khác"/>
 	</Map>
 	<Map ID="01_TAIN">
-		<Item CellID="AN_15" MCT="10" Caption="Thuế tài nguyên phát sinh phải nộp trong kỳ"/>		
+		<Item CellID="AG_15" MCT="08" Caption="Thuế tài nguyên phát sinh trong kỳ"/>		
+		<Item CellID="AJ_15" MCT="09" Caption="Thuế tài nguyên dự kiến được miễn giảm trong kỳ"/>		
 	</Map>
 	<Map ID="01_TTDB">
-		<Item CellID="AN_15" MCT="9" Caption="Thuế TTĐB phải nộp"/>
+		<Item CellID="AN_15" MCT="8" Caption="Thuế TTĐB được khấu trừ"/>
 	</Map>
 	<Map ID="02_TAIN">	
 		<Item CellID="AO_17" MCT="10" Caption="Thuế tài nguyên phát sinh phải nộp trong kỳ"/>

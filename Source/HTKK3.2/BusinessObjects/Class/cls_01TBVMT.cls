@@ -49,6 +49,9 @@ Private Const Col_HH = "D"
 Private Const Col_Ma_HH = "Y"
 
 
+
+Public StrTKThang_PS As String
+
 ' Kiem tra thong tin dai ly thue
 ' Neu khong co DL thue se an cac row nay di
 Public FlagDLThue As Boolean
@@ -211,6 +214,28 @@ Dim tongNTNN As Variant, tienDoiThanhChu As String
         mCurrentSheet = .Sheet
          'update MSTDN luôn bang MST tren phan TT chung
             UpdateMST fps, Col_MSTDN, Row_MSTDN
+         ' to khai thang, lan phat sinh
+         If StrTKThang_PS = "TK_THANG" Then
+            .Col = .ColLetterToNumber("L")
+            .Row = 37
+            .Text = 0
+            UpdateCell fps, .Col, .Row, .Text
+            .Col = .ColLetterToNumber("M")
+            .Row = 37
+            .Text = ""
+            UpdateCell fps, .Col, .Row, .Text
+        ElseIf StrTKThang_PS = "TK_LANPS" Then
+            .Col = .ColLetterToNumber("M")
+            .Row = 37
+            .Text = TAX_Utilities_New.Day & "/" & TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year
+            UpdateCell fps, .Col, .Row, .Text
+            .Col = .ColLetterToNumber("L")
+            .Row = 37
+            .Text = "1"
+            UpdateCell fps, .Col, .Row, .Text
+        End If
+            
+        ' to khai chinh thuc, bo sung
         If Strloaitk = "TKCT" Then
             .Col = .ColLetterToNumber("C")
             .Row = 35
@@ -688,7 +713,7 @@ Dim iFlagCheckMaSTDN As Integer, iFlagCheckMaSTDN10 As Integer, iFlagCheckMaST A
 Dim rowDes As Long
 Dim blCheck_S2 As Boolean
 
-Dim CountRow As Integer
+Dim countRow As Integer
     With fps
       .Sheet = .SheetCount
         .GetText .ColLetterToNumber("E"), 15, Error
@@ -726,7 +751,7 @@ Dim CountRow As Integer
       .Col = .ColLetterToNumber("B")
       .Row = 44 + i
       i = i + 1
-      CountRow = CountRow + 1
+      countRow = countRow + 1
       Loop Until .Text = "aa"
       
       
@@ -815,8 +840,8 @@ Dim CountRow As Integer
                         
                         
                         'check MST trung nhau
-                         CountRow = .SearchCol(.ColLetterToNumber("F"), -1, -1, vMSTCheckTrung, SearchFlagsNone)
-                         rowDes = .SearchCol(.ColLetterToNumber("F"), CountRow, -1, vMSTCheckTrung, SearchFlagsNone)
+                         countRow = .SearchCol(.ColLetterToNumber("F"), -1, -1, vMSTCheckTrung, SearchFlagsNone)
+                         rowDes = .SearchCol(.ColLetterToNumber("F"), countRow, -1, vMSTCheckTrung, SearchFlagsNone)
                         If rowDes > -1 Then
                             .Col = .ColLetterToNumber("F")
                             .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
@@ -1097,10 +1122,10 @@ Public Sub UpdateChangeKHBS()
 
 End Sub
 
-Private Function seachCellNode(xmlCellNodelist As MSXML.IXMLDOMNodeList, CellID As String) As MSXML.IXMLDOMNode
+Private Function seachCellNode(xmlCellNodelist As MSXML.IXMLDOMNodeList, cellid As String) As MSXML.IXMLDOMNode
 Dim nodeReturn As MSXML.IXMLDOMNode
     For Each nodeReturn In xmlCellNodelist
-        If GetAttribute(nodeReturn, "CellID") = CellID Then
+        If GetAttribute(nodeReturn, "CellID") = cellid Then
             Set seachCellNode = nodeReturn
             Exit For
             Exit Function
