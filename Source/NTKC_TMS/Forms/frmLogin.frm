@@ -219,13 +219,6 @@ On Error GoTo ErrorHandle
 ErrorHandle:
     SaveErrorLog Me.Name, "cmdOK_Click", Err.Number, Err.Description
 End Sub
-Private Function getSHA1(ByVal pass As String) As String
-    If pass <> "" Then
-        'SHA1Hash.HashBytes (pass)
-        
-    End If
-End Function
-
 
 Private Sub Form_Activate()
     txtUsername.SetFocus
@@ -233,6 +226,12 @@ End Sub
 
 Private Sub Form_Load()
     SetControlCaption Me, "frmLogin"
+    'load xml config'
+    Set xmlConfig = LoadConfig()
+    If xmlConfig Is Nothing Then
+        Exit Sub
+    End If
+    ' end xml config
 End Sub
 
 Private Sub Form_Resize()
