@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<HSoThueDTu>
 <HSoKhaiThue>
 	<TTinChung>
 		<TTinDVu>
@@ -14,7 +15,7 @@
 				<moTaBMau/>
 				<pbanTKhaiXML></pbanTKhaiXML>
 				<loaiTKhai></loaiTKhai>
-				<soLan>1</soLan>
+				<soLan></soLan>
 				<KyKKhaiThue>
 					<kieuKy></kieuKy>
 					<kyKKhai></kyKKhai>
@@ -103,3 +104,4 @@
 	</CTieuTKhaiChinh>
 	<PLuc/>
 </HSoKhaiThue>
+</HSoThueDTu>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Config>
 	<!-- Doan nay cau hinh de ket noi voi webservices cua ESB -->
 	<!-- Xac thuc NSD -->
@@ -16,9 +16,9 @@
 	<!-- Ket thuc NSD -->
 	<!-- Lay thong tin NNT -->
 	<WsUrlNNT>http://10.64.112.155:7080/wsDangKyThue</WsUrlNNT>
-	<SoapActionNNT>http://tempuri.org/getNNT</SoapActionNNT>
+	<SoapActionNNT>http://gdt.gov.vn/getNNT</SoapActionNNT>
 	<XmlRequestNNT>
-		<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:q0="http://tempuri.org/ESB_TCT_INTERNAL_MSG" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:q0="http://gdt.gov.vn/ESB_TCT_INTERNAL_MSG" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 			<soapenv:Body>
 				<q0:NNTWSRequest>string</q0:NNTWSRequest>
 			</soapenv:Body>
@@ -28,9 +28,9 @@
 	<!-- Ket thuc lay thong tin NNT -->
 	<!-- Lay thong tin DLT -->
 	<WsUrlDLT>http://10.64.112.155:7080/wsDangKyThue</WsUrlDLT>
-	<SoapActionDLT>http://tempuri.org/getDLT</SoapActionDLT>
+	<SoapActionDLT>http://gdt.gov.vn/getDLT</SoapActionDLT>
 	<XmlRequestDLT>
-		<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:q0="http://tempuri.org/ESB_TCT_INTERNAL_MSG" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:q0="http://gdt.gov.vn/ESB_TCT_INTERNAL_MSG" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 			<soapenv:Body>
 				<q0:DLTWSRequest>string</q0:DLTWSRequest>
 			</soapenv:Body>
