@@ -1421,7 +1421,7 @@ Public Sub SetupReportData(fpsGrid As fpSpread, Optional IsInterface As Boolean 
                  '   .SetText lCol, lRow, GetAttribute(xmlNodeCell, "Value")
                 End If
                 
-                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "12" And .Col = .ColLetterToNumber("CD") And (.Row = "53" Or .Row = "51") Then
+                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "12" And .Col = .ColLetterToNumber("CD") And (.Row = "54" Or .Row = "56" Or .Row = "57" Or .Row = "58") Then
                    If .Text <> "" Then
                         If Len(.Text) <= 2 Then
                             .Text = Left(.Text & ".000", 6)
@@ -1443,8 +1443,8 @@ Public Sub SetupReportData(fpsGrid As fpSpread, Optional IsInterface As Boolean 
                     End If
                 End If
                 
-                 If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "12" And .Col = .ColLetterToNumber("CD") And .Row = "54" And .Text <> "" Then
-                    If GetAttribute(TAX_Utilities_New.Data(0).nodeFromID("G_42"), "Value") = "x" Or GetAttribute(TAX_Utilities_New.Data(0).nodeFromID("G_42"), "Value") = "1" Then
+                 If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "12" And .Col = .ColLetterToNumber("CD") And .Row = "59" And .Text <> "" Then
+                    If GetAttribute(TAX_Utilities_New.Data(0).nodeFromID("H_47"), "Value") = "x" Or GetAttribute(TAX_Utilities_New.Data(0).nodeFromID("H_47"), "Value") = "1" Then
                         .CellType = CellTypeEdit
                         .TypeHAlign = TypeHAlignRight
                         '.Text = .Text & "%"
