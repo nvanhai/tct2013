@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":1969
+         SpreadDesigner  =   "frmInterfaces.frx":19A5
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1BF1
+      SpreadDesigner  =   "frmInterfaces.frx":1C69
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -2470,7 +2470,7 @@ Private Sub DeleteSheet(pIndex As Integer)
     Dim loFile          As New Scripting.FileSystemObject
 
     ' TO khai TTDB va NTNN, 02/TNDN,04/TBAC  xu ly xoa lan phat sinh
-    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "64" Then
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "06" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "91" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "64" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "90" Then
         If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" And TAX_Utilities_New.Day = "" Then
             strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
         ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" Then
@@ -6481,7 +6481,7 @@ Private Sub Command1_Click()
             fpSpread1.Formula = ""
             fpSpread1.value = "0"
         Else
-            If strIDTkTT156 = "04" Or strIDTkTT156 = "11" Or strIDTkTT156 = "12" Or strIDTkTT156 = "73" Then
+            If strIDTkTT156 = "04" Or strIDTkTT156 = "11" Or strIDTkTT156 = "12" Or strIDTkTT156 = "73" Or strIDTkTT156 = "06" Or strIDTkTT156 = "05" Then
                 Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18)
                 ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                 fpSpread1.sheet = fpSpread1.SheetCount - 1
@@ -6758,7 +6758,7 @@ Private Sub Command1_Click()
 '    End If
     ' End set
         mCurrentSheet = tempCurrSheet
-        If strIDTkTT156 = "02" Or strIDTkTT156 = "01" Or strIDTkTT156 = "72" Or strIDTkTT156 = "04" Or strIDTkTT156 = "11" Or strIDTkTT156 = "12" Or strIDTkTT156 = "73" Then
+        If strIDTkTT156 = "02" Or strIDTkTT156 = "01" Or strIDTkTT156 = "72" Or strIDTkTT156 = "04" Or strIDTkTT156 = "11" Or strIDTkTT156 = "12" Or strIDTkTT156 = "06" Or strIDTkTT156 = "05" Or strIDTkTT156 = "73" Then
             UpdateDataKHBS_TT156 fpSpread1
         Else
             UpdateDataKHBS_TT28 fpSpread1
@@ -6942,7 +6942,7 @@ Private Sub Form_Load()
     
     ' 10062011
     ' To khai 01_TTDB va NTNN se co to khai phat sinh hoac thang
-    If idMenu = "70" Or idMenu = "05" Or idMenu = "81" Or idMenu = "73" Then
+    If idMenu = "70" Or idMenu = "06" Or idMenu = "05" Or idMenu = "81" Or idMenu = "73" Or idMenu = "90" Then
         objTaxBusiness.StrTKThang_PS = strLoaiTKThang_PS
     End If
     ' end
@@ -9536,7 +9536,7 @@ Private Sub ResetData()
     'vttoan: them ID (86,87,88) cua cac to (01_BVMT,02BVMT,01_PHXD)
     'dntai : them ID 77 to 02_TAIN
     idtkhai = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
-    If (idtkhai = "01" Or idtkhai = "02" Or idtkhai = "04" Or idtkhai = "11" Or idtkhai = "12" Or idtkhai = "06" Or idtkhai = "05" Or idtkhai = "70" Or idtkhai = "72" Or idtkhai = "77" Or idtkhai = "75" Or idtkhai = "74" Or idtkhai = "95" Or idtkhai = "88") Then
+    If (idtkhai = "01" Or idtkhai = "02" Or idtkhai = "04" Or idtkhai = "11" Or idtkhai = "12" Or idtkhai = "06" Or idtkhai = "05" Or idtkhai = "70" Or idtkhai = "90" Or idtkhai = "72" Or idtkhai = "77" Or idtkhai = "75" Or idtkhai = "74" Or idtkhai = "95" Or idtkhai = "88") Then
         For Each xmlNodeReset In TAX_Utilities_New.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
             fpSpread1.sheet = mCurrentSheet
             ParserCellID fpSpread1, GetAttribute(xmlNodeReset, "CellID"), lCol, lRow
@@ -10553,7 +10553,7 @@ Public Function checkCauTrucData() As Boolean
                         Set xmlNodeCell = xmlNodeCells.childNodes(0)
                         Set xmlNodeCellID = xmlNodeCell.childNodes(i)
                         strKyHieuCT = GetAttribute(xmlNodeCellID, "CellID")
-                        If strTkhaiId <> "03" And strTkhaiId <> "70" And strTkhaiId <> "81" And strTkhaiId <> "71" And strTkhaiId <> "77" And strTkhaiId <> "87" And strTkhaiId <> "76" And strTkhaiId <> "06" And strTkhaiId <> "05" Then
+                        If strTkhaiId <> "03" And strTkhaiId <> "70" And strTkhaiId <> "81" And strTkhaiId <> "71" And strTkhaiId <> "77" And strTkhaiId <> "87" And strTkhaiId <> "76" And strTkhaiId <> "06" And strTkhaiId <> "05" And strTkhaiId <> "90" Then
                             strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
                         Else
                             ' To khai 03/TNDN
@@ -10645,7 +10645,7 @@ Public Function checkCauTrucData() As Boolean
                         Set xmlNodeCell = xmlNodeCells.childNodes(0)
                         Set xmlNodeCellID = xmlNodeCell.childNodes(i)
                         strKyHieuCT = GetAttribute(xmlNodeCellID, "CellID")
-                        If strTkhaiId <> "03" And strTkhaiId <> "70" And strTkhaiId <> "81" And strTkhaiId <> "71" And strTkhaiId <> "77" And strTkhaiId <> "87" And strTkhaiId <> "76" And strTkhaiId <> "06" And strTkhaiId <> "05" Then
+                        If strTkhaiId <> "03" And strTkhaiId <> "70" And strTkhaiId <> "81" And strTkhaiId <> "71" And strTkhaiId <> "77" And strTkhaiId <> "87" And strTkhaiId <> "76" And strTkhaiId <> "06" And strTkhaiId <> "05" And strTkhaiId <> "90" Then
                             strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
                         Else
                             ' To khai 03/TNDN
@@ -10699,7 +10699,7 @@ Public Function checkCauTrucData() As Boolean
                     Set xmlNodeCell = xmlNodeCells.childNodes(0)
                     Set xmlNodeCellID = xmlNodeCell.childNodes(i)
                     strKyHieuCT = GetAttribute(xmlNodeCellID, "CellID")
-                    If strTkhaiId <> "03" And strTkhaiId <> "70" And strTkhaiId <> "81" And strTkhaiId <> "71" And strTkhaiId <> "77" And strTkhaiId <> "87" And strTkhaiId <> "76" And strTkhaiId <> "06" And strTkhaiId <> "05" Then
+                    If strTkhaiId <> "03" And strTkhaiId <> "70" And strTkhaiId <> "81" And strTkhaiId <> "71" And strTkhaiId <> "77" And strTkhaiId <> "87" And strTkhaiId <> "76" And strTkhaiId <> "06" And strTkhaiId <> "05" And strTkhaiId <> "90" Then
                         strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
                     Else
                         ' To khai 03/TNDN
@@ -11007,7 +11007,7 @@ Private Sub TonghopKHBS()
                 fpSpread1.Formula = ""
          Else
                 ' ca to khai sua theo TT156
-                If strIdTK_TT156 = "72" Or strIdTK_TT156 = "02" Or strIdTK_TT156 = "04" Or strIdTK_TT156 = "11" Or strIdTK_TT156 = "12" Or strIdTK_TT156 = "73" Then
+                If strIdTK_TT156 = "72" Or strIdTK_TT156 = "02" Or strIdTK_TT156 = "04" Or strIdTK_TT156 = "11" Or strIdTK_TT156 = "12" Or strIdTK_TT156 = "06" Or strIdTK_TT156 = "05" Or strIdTK_TT156 = "73" Then
                     ' so ngay nop cham
                     Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18)
                     ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
@@ -11230,7 +11230,7 @@ Private Sub TonghopKHBS()
         End If
 
         mCurrentSheet = tempCurrSheet
-        If strIdTK_TT156 = "02" Or strIdTK_TT156 = "72" Or strIdTK_TT156 = "01" Or strIdTK_TT156 = "04" Or strIdTK_TT156 = "11" Or strIdTK_TT156 = "12" Or strIdTK_TT156 = "73" Then
+        If strIdTK_TT156 = "02" Or strIdTK_TT156 = "72" Or strIdTK_TT156 = "01" Or strIdTK_TT156 = "04" Or strIdTK_TT156 = "11" Or strIdTK_TT156 = "12" Or strIdTK_TT156 = "06" Or strIdTK_TT156 = "05" Or strIdTK_TT156 = "73" Then
             UpdateDataKHBS_TT156 fpSpread1
         Else
             UpdateDataKHBS_TT28 fpSpread1
@@ -11288,7 +11288,7 @@ Private Sub TonghopKHBS()
                                     (TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 17), "Value")
                 Else
                     ' TT156
-                    If strIdTK_TT156 = "04" Or strIdTK_TT156 = "11" Or strIdTK_TT156 = "12" Or strIdTK_TT156 = "73" Then
+                    If strIdTK_TT156 = "04" Or strIdTK_TT156 = "11" Or strIdTK_TT156 = "12" Or strIdTK_TT156 = "06" Or strIdTK_TT156 = "05" Or strIdTK_TT156 = "73" Then
                         Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18)
                         ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                         fpSpread1.sheet = fpSpread1.SheetCount - 1
@@ -11389,7 +11389,7 @@ Private Sub TonghopKHBS()
                     fpSpread1.Formula = ""
                     
                 Else
-                    If strIdTK_TT156 = "04" Or strIdTK_TT156 = "11" Or strIdTK_TT156 = "12" Or strIdTK_TT156 = "73" Then
+                    If strIdTK_TT156 = "04" Or strIdTK_TT156 = "11" Or strIdTK_TT156 = "12" Or strIdTK_TT156 = "06" Or strIdTK_TT156 = "05" Or strIdTK_TT156 = "73" Then
                         Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18)
                         ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                         fpSpread1.sheet = fpSpread1.SheetCount - 1
