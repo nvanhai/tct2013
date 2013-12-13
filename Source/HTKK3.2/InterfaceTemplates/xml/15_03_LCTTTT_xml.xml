@@ -57,4 +57,10 @@
 		<ct61_nNgoai>2147483647</ct61_nNgoai>
 		<ct70_nNgoai>2147483647</ct70_nNgoai>
 	</SoNamNgoai>
+	<PhanKy>
+		<nguoiLapBieu></nguoiLapBieu>
+		<keToanTruong></keToanTruong>
+		<ngayLap>1967-08-13</ngayLap>
+		<giamDoc></giamDoc>
+	</PhanKy>
 </PL_LCTTTT>

@@ -27,11 +27,11 @@
 		<ct27>Q_42</ct27>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>O_56</nguoiKy>
-		<ngayKy>O_58</ngayKy>
+		<nguoiKy>O_59</nguoiKy>
+		<ngayKy>O_61</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>E_56</tenNVienDLyThue>
-		<cchiHNghe>E_58</cchiHNghe>
+		<tenNVienDLyThue>E_59</tenNVienDLyThue>
+		<cchiHNghe>E_61</cchiHNghe>
 	</Static>
 </HSoKhaiThue>

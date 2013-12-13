@@ -22,39 +22,32 @@
 		<ct14>O_14</ct14>
 		<ct15>H_15</ct15>
 	</Static>
-	<Static GroupName="KSanCoSoThuMuaNopThay">
-		<tongPhiPhaiNop>U_43</tongPhiPhaiNop>
-		<tongPhiDaKeKhai>Q_43</tongPhiDaKeKhai>
+	<Static GroupName="Header">
+		<tongPhiKSanThuMuaPNop>Q_43</tongPhiKSanThuMuaPNop>
 	</Static>
 	<Dynamic GroupName="KSanCoSoThuMuaNopThay" Level="2">
 		<KhoangSan id="ID_2">
 			<loaiKSan>AC_45</loaiKSan>
-			<SoLuongKS>
 				<donViTinh>J_45</donViTinh>
 				<soLuong>L_45</soLuong>
-			</SoLuongKS>
 			<mucPhi>Q_45</mucPhi>
 			<soPhiPNop>U_45</soPhiPNop>
 		</KhoangSan>
 	</Dynamic>
 	<Static GroupName="KSCSoTuKhaiThac">
-		<tongPhiDaKeKhai>Q_47</tongPhiDaKeKhai>
-		<tongPhiPhaiNop>U_47</tongPhiPhaiNop>
+		<tongPhiKSanKhaiThacPNop>U_47</tongPhiKSanKhaiThacPNop>
 	</Static>
 	<Dynamic GroupName="KSCSoTuKhaiThac" Level="2">
 		<KhoangSan id="ID_1">
 			<loaiKSan>AC_49</loaiKSan>
-			<SoLuongKS>
 				<donViTinh>J_49</donViTinh>
 				<soLuong>L_49</soLuong>
-			</SoLuongKS>
 			<mucPhi>Q_49</mucPhi>
 			<soPhiPNop>U_49</soPhiPNop>
 		</KhoangSan>
 	</Dynamic>
-	<Static GroupName="CTieuTKhaiChinh">
+	<Static GroupName="PhiBVMT">
 		<tongPhiPNop>U_51</tongPhiPNop>
-		<bangChu>B_55</bangChu>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>R_60</nguoiKy>

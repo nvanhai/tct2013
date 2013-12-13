@@ -53,11 +53,11 @@
 		<ct41>I_61</ct41>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>M_66</nguoiKy>
-		<ngayKy>M_68</ngayKy>
+		<nguoiKy>M_63</nguoiKy>
+		<ngayKy>M_65</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>D_66</tenNVienDLyThue>
-		<cchiHNghe>D_68</cchiHNghe>
+		<tenNVienDLyThue>D_63</tenNVienDLyThue>
+		<cchiHNghe>D_65</cchiHNghe>
 	</Static>
 </HSoKhaiThue>

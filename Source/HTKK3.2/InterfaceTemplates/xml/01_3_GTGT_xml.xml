@@ -1,53 +1,53 @@
 <PL01_3_GTGT>
-	<ChiTietBangKeHH id="id">
+	<ChiTietBangKeHH>
 		<HopDongXuatKhau>
-			<so>String</so>
+			<so></so>
 			<ngay>1967-08-13</ngay>
-			<ngoaiTe>String</ngoaiTe>
-			<dongVietNam>String</dongVietNam>
-			<hinhThucThanhToanHDongXKhau>String</hinhThucThanhToanHDongXKhau>
-			<thoiHanThanhToanHDongXKhau>String</thoiHanThanhToanHDongXKhau>
+			<ngoaiTe></ngoaiTe>
+			<dongVietNam></dongVietNam>
+			<hinhThucThanhToanHDongXKhau></hinhThucThanhToanHDongXKhau>
+			<thoiHanThanhToanHDongXKhau></thoiHanThanhToanHDongXKhau>
 		</HopDongXuatKhau>
 		<ToKhaiHHoaXKhau>
-			<so>String</so>
+			<so></so>
 			<ngay>1967-08-13</ngay>
-			<ngoaiTe>String</ngoaiTe>
-			<dongVietNam>String</dongVietNam>
+			<ngoaiTe></ngoaiTe>
+			<dongVietNam></dongVietNam>
 		</ToKhaiHHoaXKhau>
 		<HoaDonXKhau>
-			<so>String</so>
+			<so></so>
 			<ngay>1967-08-13</ngay>
-			<ngoaiTe>String</ngoaiTe>
-			<dongVietNam>String</dongVietNam>
+			<ngoaiTe></ngoaiTe>
+			<dongVietNam></dongVietNam>
 		</HoaDonXKhau>
 		<CTuTToanNganHang>
-			<so>String</so>
+			<so></so>
 			<ngay>1967-08-13</ngay>
-			<ngoaiTe>String</ngoaiTe>
-			<dongVietNam>String</dongVietNam>
+			<ngoaiTe></ngoaiTe>
+			<dongVietNam></dongVietNam>
 		</CTuTToanNganHang>
 		<ChungTuThanhToanBuTru>
 			<VBanXNhanVoiNNgoai>
-				<so>String</so>
+				<so></so>
 				<ngay>1967-08-13</ngay>
-				<ngoaiTe>String</ngoaiTe>
-				<dongVietNam>String</dongVietNam>
+				<ngoaiTe></ngoaiTe>
+				<dongVietNam></dongVietNam>
 			</VBanXNhanVoiNNgoai>
 			<HDongNhapKhau>
-				<so>String</so>
+				<so></so>
 				<ngay>1967-08-13</ngay>
-				<ngoaiTe>String</ngoaiTe>
-				<dongVietNam>String</dongVietNam>
+				<ngoaiTe></ngoaiTe>
+				<dongVietNam></dongVietNam>
 			</HDongNhapKhau>
 			<ToKhaiHHoaNhapKhau>
-				<soTKhai>String</soTKhai>
-				<ngayDKyTKhai>String</ngayDKyTKhai>
-				<ngoaiTe>String</ngoaiTe>
-				<dongVietNam>String</dongVietNam>
+				<soTKhai></soTKhai>
+				<ngayDKyTKhai></ngayDKyTKhai>
+				<ngoaiTe></ngoaiTe>
+				<dongVietNam></dongVietNam>
 			</ToKhaiHHoaNhapKhau>
-			<chungTuThanhToanBuTruKhac>String</chungTuThanhToanBuTruKhac>
+			<chungTuThanhToanBuTruKhac></chungTuThanhToanBuTruKhac>
 		</ChungTuThanhToanBuTru>
-		<ghiChu>String</ghiChu>
+		<ghiChu></ghiChu>
 	</ChiTietBangKeHH>
-	<taiLieuKhac>String</taiLieuKhac>
+	<taiLieuKhac></taiLieuKhac>
 </PL01_3_GTGT>

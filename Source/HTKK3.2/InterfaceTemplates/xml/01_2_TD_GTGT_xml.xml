@@ -1,12 +1,12 @@
 <PL_01_2_TD_GTGT>
 	<BangPhanBoThueGTGTSXThuyDien>
 		<chiTietPhanBoGTGTChoTungNMay>
-			<tenNhaMay>String</tenNhaMay>
-			<mstNhaMay>String</mstNhaMay>
+			<tenNhaMay></tenNhaMay>
+			<mstNhaMay></mstNhaMay>
 			<PHANBOCHOCQTDIAPHUONG>
 				<tyLePBoThueChoTungCQT>
-					<maCQTPBo>String</maCQTPBo>
-					<tenCQTPBo>String</tenCQTPBo>
+					<maCQTPBo></maCQTPBo>
+					<tenCQTPBo></tenCQTPBo>
 					<tyLePBo>0.0</tyLePBo>
 					<thuePNopPBo>1</thuePNopPBo>
 				</tyLePBoThueChoTungCQT>

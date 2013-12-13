@@ -23,25 +23,29 @@
 			<ct3>R_55</ct3>
 			<ct4>X_55</ct4>
 			<ct5>AD_55</ct5>
-			<ct6>AI_55</ct6>
-			<ct7>AM_55</ct7>
-			<ct8>AQ_55</ct8>
-			<ct9>AU_55</ct9>
-			<ct10>AY_55</ct10>
-			<ct11>BC_55</ct11>
-			<ct12>BM_55</ct12>
-			<ct13>BG_55</ct13>
+			<ThueGTGT>
+				<ct6>AI_55</ct6>
+				<ct7>AM_55</ct7>
+				<ct8>AQ_55</ct8>
+				<ct9>AU_55</ct9>
+			</ThueGTGT>
+			<ThueTNDN>
+				<ct10>AY_55</ct10>
+				<ct11>BC_55</ct11>
+				<ct12>BM_55</ct12>
+				<ct13>BG_55</ct13>
+			</ThueTNDN>
 			<ct14>BQ_55</ct14>
 		</ThueNTNN>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
-		<tongDThuTinhThueGTGT>AI_57</tongDThuTinhThueGTGT>
-		<tongThueGTGTPhaiNop>AU_57</tongThueGTGTPhaiNop>
-		<tongDThuTinhThueTNDN>AY_57</tongDThuTinhThueTNDN>
-		<tongSoThueDuocMGiam>BM_57</tongSoThueDuocMGiam>
-		<tongThueTNDNPhaiNop>BG_57</tongThueTNDNPhaiNop>
-		<tongSoThuePhaiNopNSNN>BQ_57</tongSoThuePhaiNopNSNN>
-		<tongThueGTGTVaTNDNBangChu>AB_58</tongThueGTGTVaTNDNBangChu>
+		<tong_ct6>AI_57</tong_ct6>
+		<tong_ct9>AU_57</tong_ct9>
+		<tong_ct10>AY_57</tong_ct10>
+		<tong_ct12>BM_57</tong_ct12>
+		<tong_ct13>BG_57</tong_ct13>
+		<tong_ct14>BQ_57</tong_ct14>
+		<tongThueVietBangChu>AB_58</tongThueVietBangChu>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>AX_67</nguoiKy>

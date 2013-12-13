@@ -23,17 +23,13 @@
 	</Static>
 	<Dynamic GroupName="HoaDon">
 		<ChiTietHoaDon id="id">
-			<ToChucCNDatIn>
 				<mst>C_22</mst>
 				<ten>D_22</ten>
 				<diaChi>E_22</diaChi>
-			</ToChucCNDatIn>
-			<HopDong>
 				<so>F_22</so>
 				<ngay>G_22</ngay>
-			</HopDong>
 			<tenHDon>I_22</tenHDon>
-			<mauHDon>H_22</mauHDon>
+			<mauHDon>J_22</mauHDon>
 			<kyHieu>K_22</kyHieu>
 			<tuSo>L_22</tuSo>
 			<denSo>M_22</denSo>
@@ -42,7 +38,7 @@
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
 		<nguoiDaiDien>J_30</nguoiDaiDien>
-		<ngayBCao>J_32</ngayBCao>
+		<ngayLapBCao>J_32</ngayLapBCao>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy></nguoiKy>

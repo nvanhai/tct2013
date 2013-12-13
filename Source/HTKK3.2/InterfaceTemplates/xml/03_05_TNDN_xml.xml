@@ -21,9 +21,9 @@
 			<ct10>1</ct10>
 		</TaitruSoChinh>
 		<taiCoSoPhuThuoc>
-			<DiaPhuong>String</DiaPhuong>
-			<TenCoSo>String</TenCoSo>
-			<MST>String</MST>
+			<DiaPhuong></DiaPhuong>
+			<TenCoSo></TenCoSo>
+			<MST></MST>
 			<ct03>1</ct03>
 			<ct04>1</ct04>
 			<ct05>1</ct05>

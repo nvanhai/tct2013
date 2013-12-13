@@ -1,12 +1,14 @@
 <PL01_5_GTGT>
-	<Static GroupName="ThueGTGTDaKKhai">
-		<soChungTu>C_6</soChungTu>
-		<ngayNop>D_6</ngayNop>
-		<noiNopTien>E_6</noiNopTien>
-		<cqtQLy_CCT>J_6</cqtQLy_CCT>
-		<cqtQLy_CT>K_6</cqtQLy_CT>
-		<sotienKKhai>I_6</sotienKKhai>
-	</Static>
+	<Dynamic GroupName="PL01_5_GTGT">
+		<ThueGTGTDaKKhai id="id">
+			<soChungTu>C_6</soChungTu>
+			<ngayNop>D_6</ngayNop>
+			<noiNopTien>E_6</noiNopTien>
+			<cqtQLy_CCT>J_6</cqtQLy_CCT>
+			<cqtQLy_CT>K_6</cqtQLy_CT>
+			<sotienKKhai>I_6</sotienKKhai>
+		</ThueGTGTDaKKhai>
+	</Dynamic>
 	<Static GroupName="PL01_5_GTGT">
 		<tongCong>I_8</tongCong>
 	</Static>

@@ -2,11 +2,11 @@
 	<XeOTo>
 		<ChiTietSoLuongXeOTo>
 			<SoLuongXeOTo id="ID_12">
-				<loaiXe>String</loaiXe>
-				<dviTinh>String</dviTinh>
+				<loaiXe></loaiXe>
+				<dviTinh></dviTinh>
 				<xeBanRa>1</xeBanRa>
 				<giaBan>1</giaBan>
-				<ghiChu>String</ghiChu>
+				<ghiChu></ghiChu>
 			</SoLuongXeOTo>
 		</ChiTietSoLuongXeOTo>
 		<congXeOToBRa>1</congXeOToBRa>
@@ -15,11 +15,11 @@
 	<XeHaiBanh>
 		<ChiTietSoLuongXeHaiBanh>
 			<SoLuongXeHaiBanh id="ID_13">
-				<loaiXe>String</loaiXe>
-				<dviTinh>String</dviTinh>
+				<loaiXe></loaiXe>
+				<dviTinh></dviTinh>
 				<xeBanRa>1</xeBanRa>
 				<giaBan>1</giaBan>
-				<ghiChu>String</ghiChu>
+				<ghiChu></ghiChu>
 			</SoLuongXeHaiBanh>
 		</ChiTietSoLuongXeHaiBanh>
 		<congXeHaiBanhBRa>1</congXeHaiBanhBRa>

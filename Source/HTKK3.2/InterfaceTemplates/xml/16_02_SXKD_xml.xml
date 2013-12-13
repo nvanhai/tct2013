@@ -1,29 +1,4 @@
 <PL_KQHDXSKD>
-	<ThuyetMinh>
-		<ct1_tMinh></ct1_tMinh>
-		<ct2_tMinh></ct2_tMinh>
-		<ctI_tMinh></ctI_tMinh>
-		<ct3_tMinh></ct3_tMinh>
-		<ct4_tMinh></ct4_tMinh>
-		<ctII_tMinh></ctII_tMinh>
-		<ctIII_tMinh></ctIII_tMinh>
-		<ctIV_tMinh></ctIV_tMinh>
-		<ctV_tMinh></ctV_tMinh>
-		<ct5_tMinh></ct5_tMinh>
-		<ct6_tMinh></ct6_tMinh>
-		<ctVI_tMinh></ctVI_tMinh>
-		<ctVII_tMinh></ctVII_tMinh>
-		<ctVIII_tMinh></ctVIII_tMinh>
-		<ctIX_tMinh></ctIX_tMinh>
-		<ctX_tMinh></ctX_tMinh>
-		<ctXI_tMinh></ctXI_tMinh>
-		<ct7_tMinh></ct7_tMinh>
-		<ct8_tMinh></ct8_tMinh>
-		<ctXII_tMinh></ctXII_tMinh>
-		<ctXIII_tMinh></ctXIII_tMinh>
-		<ctXIV_tMinh></ctXIV_tMinh>
-		<ctXV_tMinh></ctXV_tMinh>
-	</ThuyetMinh>
 	<SoNamNay>
 		<ct1_nNay></ct1_nNay>
 		<ct2_nNay></ct2_nNay>
@@ -74,4 +49,10 @@
 		<ctXIV_nNgoai></ctXIV_nNgoai>
 		<ctXV_nNgoai></ctXV_nNgoai>
 	</SoNamNgoai>
+	<PhanKy>
+		<nguoiLapBieu></nguoiLapBieu>
+		<keToanTruong></keToanTruong>
+		<ngayLap>1967-08-13</ngayLap>
+		<giamDoc></giamDoc>
+	</PhanKy>
 </PL_KQHDXSKD>

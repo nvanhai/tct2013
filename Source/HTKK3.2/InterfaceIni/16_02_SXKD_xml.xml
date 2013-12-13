@@ -1,29 +1,4 @@
 <PL_KQHDXSKD>
-	<Static GroupName="ThuyetMinh">
-		<ct1_tMinh>H_9</ct1_tMinh>
-		<ct2_tMinh>H_10</ct2_tMinh>
-		<ctI_tMinh>H_11</ctI_tMinh>
-		<ct3_tMinh>H_12</ct3_tMinh>
-		<ct4_tMinh>H_13</ct4_tMinh>
-		<ctII_tMinh>H_14</ctII_tMinh>
-		<ctIII_tMinh>H_15</ctIII_tMinh>
-		<ctIV_tMinh>H_16</ctIV_tMinh>
-		<ctV_tMinh>H_17</ctV_tMinh>
-		<ct5_tMinh>H_18</ct5_tMinh>
-		<ct6_tMinh>H_19</ct6_tMinh>
-		<ctVI_tMinh>H_20</ctVI_tMinh>
-		<ctVII_tMinh>H_21</ctVII_tMinh>
-		<ctVIII_tMinh>H_22</ctVIII_tMinh>
-		<ctIX_tMinh>H_23</ctIX_tMinh>
-		<ctX_tMinh>H_24</ctX_tMinh>
-		<ctXI_tMinh>H_25</ctXI_tMinh>
-		<ct7_tMinh>H_26</ct7_tMinh>
-		<ct8_tMinh>H_27</ct8_tMinh>
-		<ctXII_tMinh>H_28</ctXII_tMinh>
-		<ctXIII_tMinh>H_29</ctXIII_tMinh>
-		<ctXIV_tMinh>H_30</ctXIV_tMinh>
-		<ctXV_tMinh>H_31</ctXV_tMinh>
-	</Static>
 	<Static GroupName="SoNamNay">
 		<ct1_nNay>I_9</ct1_nNay>
 		<ct2_nNay>I_10</ct2_nNay>
