@@ -47,10 +47,10 @@ Private Const rowCt23 = 43
 Private Const rowCt24 = 45
 Private Const rowCt28a = 48
 Private Const rowCt29 = 49
-Private Const rowCt30 = 50
+Private Const rowCt30 = 52
 Private Const rowCt30a = 51
-Private Const rowCt31 = 52
-Private Const rowCt32 = 53
+Private Const rowCt31 = 53
+Private Const rowCt32 = 54
 Private Const rowHidden62 = 62
 
 
@@ -1620,6 +1620,159 @@ Public Sub SetActiveSheet() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
                     strValue1 = GetAttribute(xmlCellNode, "Value")
                 Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
                     (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 2)
+                    strValue2 = GetAttribute(xmlCellNode, "Value")
+                    
+                    If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Then
+                            blnNullValue = False
+                    End If
+                    
+                    If blnNullValue Then
+                        SetAttribute xmlNodeValid, "Active", "0"
+                    End If
+                Case "01_2_"
+                blnNullValue = True
+                'Check value of last node in Data
+                Set xmlCellNode = TAX_Utilities_New.Data(2).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(2).getElementsByTagName("Cell").length - 1)
+                    strValue1 = GetAttribute(xmlCellNode, "Value")
+                Set xmlCellNode = TAX_Utilities_New.Data(2).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(2).getElementsByTagName("Cell").length - 2)
+                    strValue2 = GetAttribute(xmlCellNode, "Value")
+                    
+                    If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Then
+                            blnNullValue = False
+                    End If
+                    
+                    If blnNullValue Then
+                        SetAttribute xmlNodeValid, "Active", "0"
+                    End If
+                Case "01_2_2"
+                blnNullValue = True
+                'Check value of last node in Data
+                Set xmlCellNode = TAX_Utilities_New.Data(3).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(3).getElementsByTagName("Cell").length - 1)
+                    strValue1 = GetAttribute(xmlCellNode, "Value")
+                Set xmlCellNode = TAX_Utilities_New.Data(3).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(3).getElementsByTagName("Cell").length - 2)
+                    strValue2 = GetAttribute(xmlCellNode, "Value")
+                    
+                    If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Then
+                            blnNullValue = False
+                    End If
+                    
+                    If blnNullValue Then
+                        SetAttribute xmlNodeValid, "Active", "0"
+                    End If
+                Case "01_2_3"
+                blnNullValue = True
+                'Check value of last node in Data
+                Set xmlCellNode = TAX_Utilities_New.Data(4).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(4).getElementsByTagName("Cell").length - 1)
+                    strValue1 = GetAttribute(xmlCellNode, "Value")
+                Set xmlCellNode = TAX_Utilities_New.Data(4).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(4).getElementsByTagName("Cell").length - 2)
+                    strValue2 = GetAttribute(xmlCellNode, "Value")
+                    
+                    If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Then
+                            blnNullValue = False
+                    End If
+                    
+                    If blnNullValue Then
+                        SetAttribute xmlNodeValid, "Active", "0"
+                    End If
+                Case "01_2_4"
+                blnNullValue = True
+                'Check value of last node in Data
+                Set xmlCellNode = TAX_Utilities_New.Data(5).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(5).getElementsByTagName("Cell").length - 1)
+                    strValue1 = GetAttribute(xmlCellNode, "Value")
+                Set xmlCellNode = TAX_Utilities_New.Data(5).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(5).getElementsByTagName("Cell").length - 2)
+                    strValue2 = GetAttribute(xmlCellNode, "Value")
+                    
+                    If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Then
+                            blnNullValue = False
+                    End If
+                    
+                    If blnNullValue Then
+                        SetAttribute xmlNodeValid, "Active", "0"
+                    End If
+                Case "01_2_5"
+                blnNullValue = True
+                'Check value of last node in Data
+                Set xmlCellNode = TAX_Utilities_New.Data(6).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(6).getElementsByTagName("Cell").length - 1)
+                    strValue1 = GetAttribute(xmlCellNode, "Value")
+                Set xmlCellNode = TAX_Utilities_New.Data(6).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(6).getElementsByTagName("Cell").length - 2)
+                    strValue2 = GetAttribute(xmlCellNode, "Value")
+                    
+                    If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Then
+                            blnNullValue = False
+                    End If
+                    
+                    If blnNullValue Then
+                        SetAttribute xmlNodeValid, "Active", "0"
+                    End If
+                Case "01_2_6"
+                blnNullValue = True
+                'Check value of last node in Data
+                Set xmlCellNode = TAX_Utilities_New.Data(7).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(7).getElementsByTagName("Cell").length - 1)
+                    strValue1 = GetAttribute(xmlCellNode, "Value")
+                Set xmlCellNode = TAX_Utilities_New.Data(7).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(7).getElementsByTagName("Cell").length - 2)
+                    strValue2 = GetAttribute(xmlCellNode, "Value")
+                    
+                    If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Then
+                            blnNullValue = False
+                    End If
+                    
+                    If blnNullValue Then
+                        SetAttribute xmlNodeValid, "Active", "0"
+                    End If
+                    Case "01_2_7"
+                blnNullValue = True
+                'Check value of last node in Data
+                Set xmlCellNode = TAX_Utilities_New.Data(8).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(8).getElementsByTagName("Cell").length - 1)
+                    strValue1 = GetAttribute(xmlCellNode, "Value")
+                Set xmlCellNode = TAX_Utilities_New.Data(8).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(8).getElementsByTagName("Cell").length - 2)
+                    strValue2 = GetAttribute(xmlCellNode, "Value")
+                    
+                    If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Then
+                            blnNullValue = False
+                    End If
+                    
+                    If blnNullValue Then
+                        SetAttribute xmlNodeValid, "Active", "0"
+                    End If
+                Case "01_2_8"
+                blnNullValue = True
+                'Check value of last node in Data
+                Set xmlCellNode = TAX_Utilities_New.Data(9).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(9).getElementsByTagName("Cell").length - 1)
+                    strValue1 = GetAttribute(xmlCellNode, "Value")
+                Set xmlCellNode = TAX_Utilities_New.Data(9).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(9).getElementsByTagName("Cell").length - 2)
+                    strValue2 = GetAttribute(xmlCellNode, "Value")
+                    
+                    If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Then
+                            blnNullValue = False
+                    End If
+                    
+                    If blnNullValue Then
+                        SetAttribute xmlNodeValid, "Active", "0"
+                    End If
+                Case "01_2_9"
+                blnNullValue = True
+                'Check value of last node in Data
+                Set xmlCellNode = TAX_Utilities_New.Data(10).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(10).getElementsByTagName("Cell").length - 1)
+                    strValue1 = GetAttribute(xmlCellNode, "Value")
+                Set xmlCellNode = TAX_Utilities_New.Data(10).getElementsByTagName("Cell") _
+                    (TAX_Utilities_New.Data(10).getElementsByTagName("Cell").length - 2)
                     strValue2 = GetAttribute(xmlCellNode, "Value")
                     
                     If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Then
