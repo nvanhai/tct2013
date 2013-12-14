@@ -418,8 +418,16 @@
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_02_BVMT" InterfaceIni="..\InterfaceIni\KHBS_02_BVMT.xml" ReportIni="..\ReportIni\KHBS_02_BVMT.xml"/>
 		</Validity>
 	</Menu>	
+	
+	<Menu ID="89" PopID="101" ParentID="101_9" Caption="Tờ khai phí xăng dầu (01/PHXD)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
+		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\01_PHXD.xls" ReportTemplate="..\ReportTemplates\excel\01_PHXD.xls" Class="TAX_Business.cls_01PHXD">
+			<Sheet ID="01" Caption="01/PHXD" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_PHXD" InterfaceIni="..\InterfaceIni\01_PHXD.xml" ReportIni="..\ReportIni\01_PHXD.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01_PHXD" InterfaceIni="..\InterfaceIni\KHBS_01_PHXD.xml" ReportIni="..\ReportIni\KHBS_01_PHXD.xml"/>
+		</Validity>
+	</Menu>	
 
-	<Menu ID="90" PopID="101" ParentID="101_9" Caption="Tờ khai thuế bảo vệ môi trường (01/TBVMT)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
+
+	<Menu ID="90" PopID="101" ParentID="101_9" Caption="Tờ khai thuế bảo vệ môi trường (01/TBVMT)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="1" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\01_TBVMT.xls" ReportTemplate="..\ReportTemplates\excel\01_TBVMT.xls" Class="TAX_Business.cls_01TBVMT">
 			<Sheet ID="01" Caption="01/TBVMT" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_TBVMT" InterfaceIni="..\InterfaceIni\01_TBVMT.xml" ReportIni="..\ReportIni\01_TBVMT.xml"/>
 			<Sheet ID="01-1" Caption="01-1/TBVMT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_1_TBVMT" InterfaceIni="..\InterfaceIni\01_1_TBVMT.xml" ReportIni="..\ReportIni\01_1_TBVMT.xml"/>

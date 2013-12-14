@@ -81,9 +81,10 @@ Public Sub Prepare1()
         .Col = .ColLetterToNumber("R")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
-        SetDateFormat fps, 3, 23, .ColLetterToNumber("BG"), DDMMYYYY
+        SetDateFormat fps, 3, 31, .ColLetterToNumber("BE"), DDMMYYYY
+        SetDateFormat fps, 3, 46, .ColLetterToNumber("BG"), DDMMYYYY
         .Sheet = 3
-        .Row = 23
+        .Row = 46
         .Col = .ColLetterToNumber("BG")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
@@ -121,6 +122,9 @@ Public Sub Prepare1()
      End With
         
      setCQTQuanLy
+     
+                 ' set CQT ra quyet dinh hoan
+    setCQTQuanLyHoanThue fps
         
 End Sub
 Private Sub setCQTQuanLy()
@@ -217,20 +221,20 @@ Dim tongNTNN As Variant, tienDoiThanhChu As String
          ' to khai thang, lan phat sinh
          If StrTKThang_PS = "TK_THANG" Then
             .Col = .ColLetterToNumber("L")
-            .Row = 37
+            .Row = 35
             .Text = 0
             UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber("M")
-            .Row = 37
+            .Row = 35
             .Text = ""
             UpdateCell fps, .Col, .Row, .Text
         ElseIf StrTKThang_PS = "TK_LANPS" Then
             .Col = .ColLetterToNumber("M")
-            .Row = 37
+            .Row = 35
             .Text = TAX_Utilities_New.Day & "/" & TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year
             UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber("L")
-            .Row = 37
+            .Row = 35
             .Text = "1"
             UpdateCell fps, .Col, .Row, .Text
         End If
@@ -415,6 +419,18 @@ Dim intIndexCombo As Integer
 Dim i As Integer
 Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
 
+
+Dim intIndexCuc As Integer, intIndexChiCuc As Integer
+Dim varIdCucThue As Variant
+Dim xmlDomData As New MSXML.DOMDocument
+Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+Dim xmlNode As MSXML.IXMLDOMNode
+Dim arrDanhsach() As String
+Dim tenCucThue As String
+Dim maCucThue As String
+Dim tenChiCucThue As String
+Dim maChiCucThue As String
+
 With fps
 
     .Sheet = .ActiveSheet
@@ -484,6 +500,78 @@ With fps
             'Update combo C
             UpdateCell fps, .Col, .Row, .Text
         End If
+    ElseIf .ActiveSheet = .SheetCount - 1 Then
+                    Set xmlCellNode = TAX_Utilities_New.Data(.SheetCount - 2).nodeFromID(GetCellID(fps, .ColLetterToNumber("BI"), 5))
+            Set xmlCellNode = xmlCellNode.parentNode
+            Set xmlCellNode = xmlCellNode.parentNode
+            Set xmlCellNode = xmlCellNode.parentNode.lastChild
+            Set xmlCellNode = xmlCellNode.firstChild
+            Set xmlCellNode = xmlCellNode.firstChild
+            For i = 1 To 6
+                Set xmlCellNode = xmlCellNode.nextSibling
+            Next i
+            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+   
+   
+            .Sheet = .SheetCount - 1
+            mCurrentSheet = .SheetCount - 1
+            
+            .Col = Col
+            .Row = Row
+            
+            If Col = .ColLetterToNumber("BE") And Row = iRow Then 'Khi chon Combo
+                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+                intIndexCuc = .TypeComboBoxCurSel
+                .Col = .ColLetterToNumber("BI")
+                .Row = Row
+                .TypeComboBoxCurSel = intIndexCuc
+                'Nhap lai Combo cot Q
+                .Col = .ColLetterToNumber("BI")
+                UpdateCell fps, .Col, .Row, .Text
+                ' Lay Id cua cuc thue vua chon o tren
+                .GetText .Col, .Row, varIdCucThue
+                
+                If varIdCucThue <> "" Or varIdCucThue <> vbNullString Then
+                    ' Lay thong tin cho chi cuc thue
+                    varIdCucThue = Left$(varIdCucThue, 3)
+                    
+                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+                        For Each xmlNode In xmlNodeListCell
+                            If GetAttribute(xmlNode, "Value") <> "" Then
+                                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                                
+                                If arrDanhsach(0) = "0" And arrDanhsach(2) = varIdCucThue Then
+                                    tenChiCucThue = tenChiCucThue + arrDanhsach(3) + Chr$(9)
+                                    maChiCucThue = maChiCucThue + arrDanhsach(1) + Chr$(9)
+                                End If
+                            End If
+                        Next
+                        Set xmlDomData = Nothing
+                        Set xmlNodeListCell = Nothing
+                        Set xmlNode = Nothing
+                    End If
+                    
+                    .Row = iRow + 2
+                    .Col = .ColLetterToNumber("BE")
+                    .TypeComboBoxList = tenChiCucThue
+                    
+                    .Row = iRow + 2
+                    .Col = .ColLetterToNumber("BI")
+                    .TypeComboBoxList = maChiCucThue
+                End If
+            End If
+                        
+            If Col = .ColLetterToNumber("BE") And Row = iRow + 2 Then 'Khi chon Combo
+                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+                intIndexChiCuc = .TypeComboBoxCurSel
+                .Col = .ColLetterToNumber("BI")
+                .Row = Row
+                .TypeComboBoxCurSel = intIndexChiCuc
+                'Nhap lai Combo cot Q
+                .Col = .ColLetterToNumber("BI")
+                UpdateCell fps, .Col, .Row, .Text
+            End If
     End If
 End With
 End Sub
