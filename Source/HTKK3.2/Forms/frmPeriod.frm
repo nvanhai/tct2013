@@ -2606,7 +2606,7 @@ Public Sub cmdOK_Click()
                 Exit Sub
             End If
     ' xu ly cho to khai thang/ quy
-    ElseIf TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "01" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "02" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "04" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "71" Then
+    ElseIf TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "01" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "02" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "04" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "71" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "25" Then
             If strQuy = "TK_QUY" Then
                 If ExistTokhai(GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_", True, TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year) = True Then
                 DisplayMessage "0125", msOKOnly, miWarning
