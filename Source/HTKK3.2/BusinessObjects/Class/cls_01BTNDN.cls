@@ -239,7 +239,7 @@ Public Sub Prepare2()
             .Row = 47
             If .CellType = 1 Or .CellType = 5 Then
                 FormatTextPercent fps, 1, .ColLetterToNumber("K"), 47, True
-                .SetText .ColLetterToNumber("K"), .Row, "0"
+                '.SetText .ColLetterToNumber("K"), .Row, "0"
             End If
             .Col = .ColLetterToNumber("K")
             .Row = 50
