@@ -379,7 +379,7 @@ Public Sub FormatTextPercent(fps As fpSpread, ByVal intSheet As Integer, ByVal l
 '    If tfView Then fps.value = Val(fps.value) / 1000
     positionDecimalSymbol = 0
     If tfView Then
-        Set xmlNode = TAX_Utilities_New.Data(0).nodeFromID("J_42")  'J_42: thue suat uu dai
+        Set xmlNode = TAX_Utilities_New.Data(0).nodeFromID("K_47")  'J_42: thue suat uu dai
         tempValue = GetAttribute(xmlNode, "Value")
         fps.value = tempValue
     End If
