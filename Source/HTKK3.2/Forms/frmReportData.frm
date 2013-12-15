@@ -636,7 +636,7 @@ nextPrinter:
             fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0277"), "Msg")
         End If
     ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 25 Then
-        fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0284"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0285"), "Msg")
+        fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0284"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0285"), "Msg")
     
     End If
     

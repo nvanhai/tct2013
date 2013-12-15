@@ -322,62 +322,115 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
     fps.EventEnabled(EventAllEvents) = False
 
     With fps
-        .Sheet = 1
-        If Col = .ColLetterToNumber("C") And .Text <> "" Then
-            intIndexCombo = .TypeComboBoxCurSel
-            .Col = .ColLetterToNumber("AB")
-            .TypeComboBoxCurSel = intIndexCombo
-
-            .Col = .ColLetterToNumber("AC")
-            .GetText .ColLetterToNumber("AB"), Row, strId
-            arrHH = Split(strId, "~")
-            ' Set ma hang hoa
-            .Text = arrHH(0)
-            UpdateCell fps, .Col, Row, .Text
-            ' set gia tri don vi tinh
-            .Col = .ColLetterToNumber("J")
-            .Text = arrHH(2)
-            UpdateCell fps, .Col, Row, .Text
-            ' set muc thue
-            .Col = .ColLetterToNumber("Q")
-            .Text = arrHH(3)
-            UpdateCell fps, .Col, Row, .Text
-            
-            
-
-        End If
-        'Huy chon Combo to khai khong hop le va ra thong bao
-        If blGiaTriCu And Col = .ColLetterToNumber("C") Then 'And Not mblKeyF5 Then
-            If Not .Visible Then
-                .Visible = True
-                DisplayMessage "0261", msOKOnly, miWarning
-                .Visible = False
-            Else
-                DisplayMessage "0261", msOKOnly, miWarning
-            End If
-                
+        If .ActiveSheet = 1 Then
             .Sheet = 1
-            mCurrentSheet = .Sheet
-            ' Ten hang hoa
-            .Row = RowGiaTriCu
-            .Col = ColGiaTriCu
-            .Text = strGiaTriCu
-            UpdateCell fps, .Col, .Row, .Text
-            ' Don vi tinh
-            .Row = RowGiaTriCu
-            .Col = .ColLetterToNumber("J")
-            .Text = strDVTCu
-            UpdateCell fps, .Col, .Row, .Text
-            ' Muc thue cu
-            .Row = RowGiaTriCu
-            .Col = .ColLetterToNumber("Q")
-            .Text = strMucThueCu
-            UpdateCell fps, .Col, .Row, .Text
+            If Col = .ColLetterToNumber("C") And .Text <> "" Then
+                intIndexCombo = .TypeComboBoxCurSel
+                .Col = .ColLetterToNumber("AB")
+                .TypeComboBoxCurSel = intIndexCombo
+    
+                .Col = .ColLetterToNumber("AC")
+                .GetText .ColLetterToNumber("AB"), Row, strId
+                arrHH = Split(strId, "~")
+                ' Set ma hang hoa
+                .Text = arrHH(0)
+                UpdateCell fps, .Col, Row, .Text
+                ' set gia tri don vi tinh
+                .Col = .ColLetterToNumber("J")
+                .Text = arrHH(2)
+                UpdateCell fps, .Col, Row, .Text
+                ' set muc thue
+                .Col = .ColLetterToNumber("Q")
+                .Text = arrHH(3)
+                UpdateCell fps, .Col, Row, .Text
+                
+                
+    
+            End If
+            'Huy chon Combo to khai khong hop le va ra thong bao
+            If blGiaTriCu And Col = .ColLetterToNumber("C") Then 'And Not mblKeyF5 Then
+                If Not .Visible Then
+                    .Visible = True
+                    DisplayMessage "0261", msOKOnly, miWarning
+                    .Visible = False
+                Else
+                    DisplayMessage "0261", msOKOnly, miWarning
+                End If
+                    
+                .Sheet = 1
+                mCurrentSheet = .Sheet
+                ' Ten hang hoa
+                .Row = RowGiaTriCu
+                .Col = ColGiaTriCu
+                .Text = strGiaTriCu
+                UpdateCell fps, .Col, .Row, .Text
+                ' Don vi tinh
+                .Row = RowGiaTriCu
+                .Col = .ColLetterToNumber("J")
+                .Text = strDVTCu
+                UpdateCell fps, .Col, .Row, .Text
+                ' Muc thue cu
+                .Row = RowGiaTriCu
+                .Col = .ColLetterToNumber("Q")
+                .Text = strMucThueCu
+                UpdateCell fps, .Col, .Row, .Text
+                
+                
+                blGiaTriCu = False
+                mblLoi = True
+            End If
+         ElseIf .ActiveSheet = 2 Then
+            .Sheet = 2
+            If Col = .ColLetterToNumber("D") And .Text <> "" Then
+                intIndexCombo = .TypeComboBoxCurSel
+                .Col = .ColLetterToNumber("Y")
+                .TypeComboBoxCurSel = intIndexCombo
+    
+                .Col = .ColLetterToNumber("Z")
+                .GetText .ColLetterToNumber("Y"), Row, strId
+                arrHH = Split(strId, "~")
+                ' Set ma hang hoa
+                .Text = arrHH(0)
+                UpdateCell fps, .Col, Row, .Text
+               
+                ' set muc thue
+                .Col = .ColLetterToNumber("W")
+                .Text = arrHH(3)
+                UpdateCell fps, .Col, Row, .Text
+                
+                
+    
+            End If
+            'Huy chon Combo to khai khong hop le va ra thong bao
+            If blGiaTriCu And Col = .ColLetterToNumber("D") Then 'And Not mblKeyF5 Then
+                If Not .Visible Then
+                    .Visible = True
+                    DisplayMessage "0261", msOKOnly, miWarning
+                    .Visible = False
+                Else
+                    DisplayMessage "0261", msOKOnly, miWarning
+                End If
+                    
+                .Sheet = 2
+                mCurrentSheet = .Sheet
+                ' Ten hang hoa
+                .Row = RowGiaTriCu
+                .Col = ColGiaTriCu
+                .Text = strGiaTriCu
+                UpdateCell fps, .Col, .Row, .Text
             
-            
-            blGiaTriCu = False
-            mblLoi = True
-        End If
+                
+                ' Muc thue cu
+                .Row = RowGiaTriCu
+                .Col = .ColLetterToNumber("W")
+                .Text = strMucThueCu
+                UpdateCell fps, .Col, .Row, .Text
+                
+                
+                blGiaTriCu = False
+                mblLoi = True
+            End If
+         End If
     End With
 
     fps.EventEnabled(EventAllEvents) = True
@@ -801,6 +854,8 @@ Dim iFlagCheckMaSTDN As Integer, iFlagCheckMaSTDN10 As Integer, iFlagCheckMaST A
 Dim rowDes As Long
 Dim blCheck_S2 As Boolean
 
+Dim vMsgErrorTongTyLe As Variant
+
 Dim countRow As Integer
     With fps
       .Sheet = .SheetCount
@@ -810,6 +865,8 @@ Dim countRow As Integer
         .GetText .ColLetterToNumber("E"), 19, errMSTDN
         .GetText .ColLetterToNumber("E"), 20, errMst10
         .GetText .ColLetterToNumber("E"), 21, mErrMSTTrung
+        
+        .GetText .ColLetterToNumber("E"), 22, vMsgErrorTongTyLe
       .Sheet = 1
       Dim i As Integer
      i = 1
@@ -848,37 +905,74 @@ Dim countRow As Integer
         If .SheetVisible = True Then
             mCurrentSheet = .Sheet
             Dim strTenDN As Variant, strMaST As Variant, strValue As Variant
+            Dim strHangHoa, strCQTCapCuc, strCQTCapCC, strSoThanTTNoiDia, strTongSoThanTT, strSanLuongThanDP, strMucThue As Variant
             Dim iFlagEmpty As Integer
             Dim strKyHieu As Variant, strCheckMST As String
-
+            Dim strTongTLPhanBo As Variant
+            
+            Dim fLagTongTyLe As Integer
+            
+            Dim iWhiteRow As Integer
+            iWhiteRow = 0
+            
+            .GetText .ColLetterToNumber("U"), 30, strTongTLPhanBo
+            
+            
+            ' kiem tra tong ty le phan bo phai bang 100
+            If Val(strTongTLPhanBo) <> 100 And Val(strTongTLPhanBo) <> 0 Then
+                .Col = .ColLetterToNumber("U")
+                .Row = 35
+                .BackColor = mErrorColor
+                .CellNote = vMsgErrorTongTyLe
+                fLagTongTyLe = 1
+            Else
+                .Col = .ColLetterToNumber("U")
+                .Row = 35
+                .BackColor = mNonErrorColor
+                .CellNote = ""
+            End If
+            
             iFlagEmpty = 0
             'check not empty ten doanh nghiep
             .Row = rowStart
             Do
-                .Col = .ColLetterToNumber("F")
-                strValue = .Text
-                'check du lieu bat buoc phai nhap
-                If (strValue = "") Then
-                    .Col = .ColLetterToNumber("F")
-                    .BackColor = mErrorColor
-                    .CellNote = errEmty
-                    iFlagEmpty = 1
-                Else
-                    .Col = .ColLetterToNumber("F")
-                    .BackColor = mNonErrorColor
-                    .CellNote = ""
-                End If
-                'lay du lieu nhap vao
-                .GetText .ColLetterToNumber("E"), .Row, strKyHieu
+                .GetText .ColLetterToNumber("D"), .Row, strHangHoa
+                .GetText .ColLetterToNumber("F"), .Row, strTenDN
+                .GetText .ColLetterToNumber("L"), .Row, strMaST
+                .GetText .ColLetterToNumber("M"), .Row, strCQTCapCuc
+                .GetText .ColLetterToNumber("O"), .Row, strCQTCapCC
+                .GetText .ColLetterToNumber("S"), .Row, strSoThanTTNoiDia
+                .GetText .ColLetterToNumber("T"), .Row, strTongSoThanTT
+                .GetText .ColLetterToNumber("V"), .Row, strSanLuongThanDP
+                .GetText .ColLetterToNumber("W"), .Row, strMucThue
+                If Trim$(strHangHoa) <> "" Or Trim$(strTenDN) <> "" Or Trim$(strMaST) <> "" Or Trim$(strCQTCapCuc) <> "" Or Trim$(strCQTCapCC) <> "" _
+                Or Val(strSoThanTTNoiDia) <> 0 Or Val(strTongSoThanTT) <> 0 Or Val(strSanLuongThanDP) <> 0 Or Val(strMucThue) <> 0 Then iWhiteRow = 1
             
-                If strKyHieu = "M" Then
-                    ' clear cell not
+                If iWhiteRow <> 0 Then
+                
                     .Col = .ColLetterToNumber("F")
+                    strValue = .Text
+                    'check du lieu bat buoc phai nhap
+                    If (strValue = "") Then
+                        .Col = .ColLetterToNumber("F")
+                        .BackColor = mErrorColor
+                        .CellNote = errEmty
+                        iFlagEmpty = 1
+                    Else
+                        .Col = .ColLetterToNumber("F")
+                        .BackColor = mNonErrorColor
+                        .CellNote = ""
+                    End If
+                    'lay du lieu nhap vao
+                
+                    
+                    ' clear cell not
+                    .Col = .ColLetterToNumber("L")
                     .BackColor = mNonErrorColor
                     .CellNote = ""
         
                     
-                    .Col = .ColLetterToNumber("F")
+                    .Col = .ColLetterToNumber("L")
                     vMST = .Text
                     
                     vMSTCheckTrung = vMST
@@ -899,17 +993,17 @@ Dim countRow As Integer
 '                                iFlagCheckMaSTDN10 = 1
 '                            Else
                             If Len(vMST) = 10 And strCheckMST <> "000" Then
-                                .Col = .ColLetterToNumber("F")
+                                .Col = .ColLetterToNumber("L")
                                 .BackColor = mErrorColor
                                 .CellNote = errMST
                                 iFlagCheckMaST = 1
                             ElseIf Len(vMST) = 13 And (strCheckMST <> "000" Or IsNumeric(vMST) = False) Then
-                                .Col = .ColLetterToNumber("F")
+                                .Col = .ColLetterToNumber("L")
                                 .BackColor = mErrorColor
                                 .CellNote = errMST
                                 iFlagCheckMaST = 1
                             Else
-                                .Col = .ColLetterToNumber("F")
+                                .Col = .ColLetterToNumber("L")
                                 .BackColor = mNonErrorColor
                                 .CellNote = ""
                                 'iFlagCheckMaST = 0
@@ -918,7 +1012,7 @@ Dim countRow As Integer
                             
                             
                         ElseIf Len(vMST) <> 10 Or Len(vMST) <> 13 Then
-                               .Col = .ColLetterToNumber("F")
+                               .Col = .ColLetterToNumber("L")
                                 .BackColor = mErrorColor
                                 .CellNote = errMST
                                 iFlagCheckMaST = 1
@@ -928,17 +1022,17 @@ Dim countRow As Integer
                         
                         
                         'check MST trung nhau
-                         countRow = .SearchCol(.ColLetterToNumber("F"), -1, -1, vMSTCheckTrung, SearchFlagsNone)
-                         rowDes = .SearchCol(.ColLetterToNumber("F"), countRow, -1, vMSTCheckTrung, SearchFlagsNone)
+                         countRow = .SearchCol(.ColLetterToNumber("L"), -1, -1, vMSTCheckTrung, SearchFlagsNone)
+                         rowDes = .SearchCol(.ColLetterToNumber("L"), countRow, -1, vMSTCheckTrung, SearchFlagsNone)
                         If rowDes > -1 Then
-                            .Col = .ColLetterToNumber("F")
+                            .Col = .ColLetterToNumber("L")
                             .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                             .CellNote = mErrMSTTrung      'static
                             .BackColor = mErrorColor
                             iFlagMSTTrung = 1
                         End If
                     Else
-                             .Col = .ColLetterToNumber("F")
+                             .Col = .ColLetterToNumber("L")
         '                    .BackColor = mNonErrorColor
         '                    .CellNote = ""
                             'iFlagCheckMaST = 0
@@ -946,6 +1040,7 @@ Dim countRow As Integer
                             .CellNote = errEmty
                             iFlagEmpty = 1
                     End If
+                    
                 End If
             
             .Col = .ColLetterToNumber("C")
