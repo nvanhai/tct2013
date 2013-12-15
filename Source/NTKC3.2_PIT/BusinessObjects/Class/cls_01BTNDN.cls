@@ -52,7 +52,7 @@ Const NGAY_HOP_DONG_DL_ROW = 28
 Const NGAY_HOP_DONG_DL_COL = "N"
 
 ' Thong tin nganh nghe KD va to khai PS
-Const NGANH_NGHE_KD_ROW = 62
+Const NGANH_NGHE_KD_ROW = 77
 Const NGANH_NGHE_KD_COL = "L"
 
 Public WithEvents fps As fpSpread
@@ -166,11 +166,11 @@ Public Function Prepared1() As Boolean
              Next
          End If
           'set ly do gia han
-        .Row = 39
-        .Col = .ColLetterToNumber("E")
+        .Row = 64
+        .Col = .ColLetterToNumber("M")
         .TypeComboBoxList = strCboLyDo
         ' set Ma ly do gia han
-        .Col = .ColLetterToNumber("AB")
+        .Col = .ColLetterToNumber("AC")
         .TypeComboBoxList = strCboLyDoAn
     End With
     
@@ -212,25 +212,25 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
              
                 'get ten chi tieu trong danh muc NNKD
         .Sheet = 1
-        .Col = .ColLetterToNumber("AB")
-        .Row = 39
-         .GetText .ColLetterToNumber("AB"), .Row, varMaDM
+        .Col = .ColLetterToNumber("L")
+        .Row = 77
+         .GetText .ColLetterToNumber("L"), .Row, varMaDM
         If Trim(varMaDM) <> vbNullString Then
             .Col = .ColLetterToNumber("E")
-            .Row = 39
+            .Row = 77
             .Text = getTenLyDoGD(varMaDM)
         End If
         ' Neu khong co gia han se khong cho chon combobox
          ' Neu check gia han moi cho phep chon GT
-        .Col = .ColLetterToNumber("E")
-        .Row = 38
+        .Col = .ColLetterToNumber("K")
+        .Row = 62
         If .Text = "1" Or UCase$(.Text) = "X" Then
-            .Col = .ColLetterToNumber("E")
-            .Row = 39
+            .Col = .ColLetterToNumber("K")
+            .Row = 62
             .Lock = False
         Else
-            .Col = .ColLetterToNumber("E")
-            .Row = 39
+            .Col = .ColLetterToNumber("K")
+            .Row = 62
             .Lock = True
         End If
         ' End set gia han
@@ -306,62 +306,62 @@ Public Function Prepared3() As Boolean
         ' Thoi gian gian thue trong ca nam 2009 cua to khai TNDN
         dYear = Year(dNgayTC)
         dQuy = DatePart("Q", dNgayTC)
-        'If Val(TAX_Utilities_Srv_New.Year) = 2009 Then
-        If dYear = 2009 Then
-            .Row = 38
-            .Col = .ColLetterToNumber("E")
-            UpdateCell fps, .Col, .Row, .Text
-            .Row = 38
-            .Col = .ColLetterToNumber("F")
-            .Text = "GIA HAN NOP THEO NGHI DINH 30/NQ-CP"
-        ElseIf dYear = 2010 And (dQuy = 1 Or dQuy = 2 Or dQuy = 3) Then
-            .Row = 38
-            .Col = .ColLetterToNumber("E")
-            UpdateCell fps, .Col, .Row, .Text
-            .Row = 38
-            .Col = .ColLetterToNumber("F")
-            .Text = "GIA HAN THEO QUYET DINH 12/2010/QD-TTG"
-        ElseIf (dYear = 2010 And dQuy = 4) Then
-            .Row = 38
-            .Col = .ColLetterToNumber("E")
-            UpdateCell fps, .Col, .Row, .Text
-            .Row = 38
-            .Col = .ColLetterToNumber("F")
-            .Text = "GIA HAN THEO QUYET DINH 21/2011/QD-TTG"
-        ElseIf dYear = 2011 Then
-            .Row = 38
-            .Col = .ColLetterToNumber("E")
-            UpdateCell fps, .Col, .Row, .Text
-            .Row = 38
-            .Col = .ColLetterToNumber("F")
-            .Text = "GIA HAN THEO QUYET DINH 21/2011/QD-TTG; QD 54/2011/QD-TTG"
-        Else
-            .Row = 38
-            .Col = .ColLetterToNumber("E")
-            UpdateCell fps, .Col, .Row, .Text
-            .Row = 38
-            .Col = .ColLetterToNumber("F")
-            .Text = "GIA HAN THEO NQ 02/NQ-CP"
-            ' Neu ngoai hieu luc cua gian thue thi visible cac dieu kien check nay di
-'            .Row = 38
-'            .Col = .ColLetterToNumber("B")
-'            .CellType = CellTypeEdit
-'            .Lock = True
-'            .Text = ""
-'
+'        'If Val(TAX_Utilities_Srv_New.Year) = 2009 Then
+'        If dYear = 2009 Then
 '            .Row = 38
 '            .Col = .ColLetterToNumber("E")
-'            .CellType = CellTypeEdit
-'            .Lock = True
-'            .Text = ""
-'            UpdateCell fps, .Col, .Row, ""
-'
+'            UpdateCell fps, .Col, .Row, .Text
 '            .Row = 38
 '            .Col = .ColLetterToNumber("F")
-'            .CellType = CellTypeEdit
-'            .Lock = True
-'            .Text = ""
-        End If
+'            .Text = "GIA HAN NOP THEO NGHI DINH 30/NQ-CP"
+'        ElseIf dYear = 2010 And (dQuy = 1 Or dQuy = 2 Or dQuy = 3) Then
+'            .Row = 38
+'            .Col = .ColLetterToNumber("E")
+'            UpdateCell fps, .Col, .Row, .Text
+'            .Row = 38
+'            .Col = .ColLetterToNumber("F")
+'            .Text = "GIA HAN THEO QUYET DINH 12/2010/QD-TTG"
+'        ElseIf (dYear = 2010 And dQuy = 4) Then
+'            .Row = 38
+'            .Col = .ColLetterToNumber("E")
+'            UpdateCell fps, .Col, .Row, .Text
+'            .Row = 38
+'            .Col = .ColLetterToNumber("F")
+'            .Text = "GIA HAN THEO QUYET DINH 21/2011/QD-TTG"
+'        ElseIf dYear = 2011 Then
+'            .Row = 38
+'            .Col = .ColLetterToNumber("E")
+'            UpdateCell fps, .Col, .Row, .Text
+'            .Row = 38
+'            .Col = .ColLetterToNumber("F")
+'            .Text = "GIA HAN THEO QUYET DINH 21/2011/QD-TTG; QD 54/2011/QD-TTG"
+'        Else
+'            .Row = 38
+'            .Col = .ColLetterToNumber("E")
+'            UpdateCell fps, .Col, .Row, .Text
+'            .Row = 38
+'            .Col = .ColLetterToNumber("F")
+'            .Text = "GIA HAN THEO NQ 02/NQ-CP"
+'            ' Neu ngoai hieu luc cua gian thue thi visible cac dieu kien check nay di
+''            .Row = 38
+''            .Col = .ColLetterToNumber("B")
+''            .CellType = CellTypeEdit
+''            .Lock = True
+''            .Text = ""
+''
+''            .Row = 38
+''            .Col = .ColLetterToNumber("E")
+''            .CellType = CellTypeEdit
+''            .Lock = True
+''            .Text = ""
+''            UpdateCell fps, .Col, .Row, ""
+''
+''            .Row = 38
+''            .Col = .ColLetterToNumber("F")
+''            .CellType = CellTypeEdit
+''            .Lock = True
+''            .Text = ""
+'        End If
         ' set thong tin dai ly thue
         ' ten dai ly thue
         .Col = .ColLetterToNumber(TEN_DL_COL)
@@ -414,16 +414,16 @@ Public Function Prepared3() As Boolean
         End If
         
         ' Doi voi to khai 01B/TNDN khi chon nhieu muc thue uu dai -> set chi tieu 26 ve kieu text
-        .GetText .ColLetterToNumber("K"), 47, isNhieuMucThueUD
+        .GetText .ColLetterToNumber("L"), 51, isNhieuMucThueUD
         If isNhieuMucThueUD = "1" Or UCase$(CStr(isNhieuMucThueUD)) = "X" Then
             .Col = .ColLetterToNumber("U")
-            .Row = 47
+            .Row = 51
             .CellType = CellTypeEdit
             .TypeEditCharSet = TypeEditCharSetASCII
             .TypeHAlign = TypeHAlignRight
             .TypeVAlign = TypeHAlignCenter
             ' Lay chi tieu 26 trong datafile
-            Set xmlNode = TAX_Utilities_Srv_New.Data(0).nodeFromID("U_47")
+            Set xmlNode = TAX_Utilities_Srv_New.Data(0).nodeFromID("U_51")
             .Text = GetAttribute(xmlNode, "Value")
         End If
         
@@ -569,21 +569,21 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
    fps.EventEnabled(EventAllEvents) = False
     If fps.ActiveSheet = 1 Then
             ' Neu check gia han moi cho phep chon GT
-            If Col = fps.ColLetterToNumber("E") And Row = 38 Then
-                fps.Col = fps.ColLetterToNumber("E")
-                fps.Row = 38
+            If Col = fps.ColLetterToNumber("K") And Row = 62 Then
+                fps.Col = fps.ColLetterToNumber("K")
+                fps.Row = 62
                 If fps.Text = "1" Or UCase$(fps.Text) = "X" Then
-                    fps.Col = fps.ColLetterToNumber("E")
-                    fps.Row = 39
+                    fps.Col = fps.ColLetterToNumber("M")
+                    fps.Row = 64
                     fps.Lock = False
                 Else
-                    fps.Col = fps.ColLetterToNumber("E")
-                    fps.Row = 39
+                    fps.Col = fps.ColLetterToNumber("M")
+                    fps.Row = 64
                     fps.Lock = True
-                    fps.SetText fps.ColLetterToNumber("E"), 39, ""
-                    fps.SetText fps.ColLetterToNumber("AB"), 39, "00"
-                    UpdateCell fps, fps.ColLetterToNumber("AB"), 39, "00"
-                    UpdateCell fps, fps.ColLetterToNumber("E"), 39, ""
+                    fps.SetText fps.ColLetterToNumber("M"), 64, ""
+                    fps.SetText fps.ColLetterToNumber("L"), 77, "00"
+                    UpdateCell fps, fps.ColLetterToNumber("L"), 77, "00"
+                    UpdateCell fps, fps.ColLetterToNumber("M"), 64, ""
                 End If
             End If
     End If
@@ -608,9 +608,9 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
        If .ActiveSheet = 1 Then
             .Col = Col
             .Row = Row
-             If Col = .ColLetterToNumber("E") And Row = 39 Then
+             If Col = .ColLetterToNumber("M") And Row = 64 Then
                 intIndexCombo = .TypeComboBoxCurSel
-                .Col = .ColLetterToNumber("AB")
+                .Col = .ColLetterToNumber("AC")
                 .TypeComboBoxCurSel = intIndexCombo
                 'Update combo C
                 UpdateCell fps, .Col, .Row, .Text
@@ -644,8 +644,8 @@ Public Function CheckValidData() As Boolean
         .GetText .ColLetterToNumber("M"), 36, varNoteValue
         '
         
-        .GetText .ColLetterToNumber("E"), 38, varCheckGhValue
-        .GetText .ColLetterToNumber("E"), 39, varNoteGhValue
+        .GetText .ColLetterToNumber("K"), 62, varCheckGhValue
+        .GetText .ColLetterToNumber("M"), 64, varNoteGhValue
         
         .GetText .ColLetterToNumber("E"), 32, varNgayNop
         If CStr(varCheckValue) = "1" And Trim(CStr(varNoteValue)) = "" Then
@@ -731,14 +731,14 @@ On Error GoTo ErrHandle
                     vGHI_CHU_LOI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                     vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "E_38"
+                Case "K_62"
                     v_CO_GIA_HAN = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                     If UCase(Trim(v_CO_GIA_HAN)) = "X" Or Trim(v_CO_GIA_HAN) = "1" Then
                         v_CO_GIA_HAN = "'Y'"
                     Else
                         v_CO_GIA_HAN = "Null"
                     End If
-                Case "AB_39"
+                Case "AC_64"
                     VMaLyDoGH = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
             End Select
         End If
@@ -751,7 +751,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "01B_TNDN11"
+    vLOAI_TKHAI = "01B_TNDN13"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
