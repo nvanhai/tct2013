@@ -333,6 +333,8 @@ Dim kyngay As Variant
     '            .Row = 5
     '            .Text = 1
     '            UpdateCell fps, .Col, .Row, .Text
+                .SetText .ColLetterToNumber("T"), 10, "x"
+                UpdateCell fps, .ColLetterToNumber("T"), 10, "x"
                 .SetText .ColLetterToNumber("P"), 2, kyngay
     '            .Col = .ColLetterToNumber("AT")
     '            .Row = 5
