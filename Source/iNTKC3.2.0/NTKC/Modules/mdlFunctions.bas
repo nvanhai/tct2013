@@ -154,11 +154,12 @@ Public Function GetValidityNode() As MSXML.IXMLDOMNode
     Dim xmlNodeValidity As MSXML.IXMLDOMNode
     
     Dim ValidityDate        As Date, StartDate As Date, MaxDate As Date
-    Dim IdToKhai            As String
+    Dim idToKhai            As String
     
-    IdToKhai = GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")
+    idToKhai = GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")
     
-    If IdToKhai = "01" Or IdToKhai = "02" Or IdToKhai = "04" Or IdToKhai = "71" Or IdToKhai = "36" Or IdToKhai = "68" Then
+    'thang/quy
+    If idToKhai = "01" Or idToKhai = "02" Or idToKhai = "25" Or idToKhai = "26" Or idToKhai = "04" Or idToKhai = "71" Or idToKhai = "36" Or idToKhai = "68" Then
         If LoaiKyKK = False Then
 
             Select Case TAX_Utilities_Srv_New.Month
@@ -1121,10 +1122,10 @@ End Function
 Public Function changeMaToKhai(strID As String) As String
     If strID = "01" Then changeMaToKhai = "01_GTGT11"
     If strID = "02" Then changeMaToKhai = "02_GTGT11"
-    If strID = "04" Then changeMaToKhai = "03_GTGT11"
+    If strID = "04" Then changeMaToKhai = "03_GTGT13"
     If strID = "07" Then changeMaToKhai = "04_GTGT"
-    If strID = "11" Then changeMaToKhai = "01A_TNDN11"
-    If strID = "12" Then changeMaToKhai = "01B_TNDN11"
+    If strID = "11" Then changeMaToKhai = "01A_TNDN13"
+    If strID = "12" Then changeMaToKhai = "01B_TNDN13"
     If strID = "03" Then changeMaToKhai = "03_TNDN11"
     If strID = "14" Then changeMaToKhai = "05_TNDN"
     If strID = "06" Then changeMaToKhai = "01_TAIN11"
@@ -1193,8 +1194,13 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "56" Then changeMaToKhai = "15_02_SXKD"
     If strID = "57" Then changeMaToKhai = "15_03_LCTTTT"
     If strID = "58" Then changeMaToKhai = "15_04_LCTTGT"
-    If strID = "24" Then changeMaToKhai = "48_01_CDKT"
-    If strID = "25" Then changeMaToKhai = "48_02_SXKD"
+    
+    'If strID = "24" Then changeMaToKhai = "48_01_CDKT"
+    If strID = "24" Then changeMaToKhai = "01_BCTL_DK13"
+    
+    'If strID = "25" Then changeMaToKhai = "48_02_SXKD"
+    If strID = "25" Then changeMaToKhai = "01_TNCN_BHDC13"
+    
     If strID = "26" Then changeMaToKhai = "48_03_LCTTTT"
     If strID = "27" Then changeMaToKhai = "48_04_LCTTGT"
     If strID = "28" Then changeMaToKhai = "16_01_CDKT"
@@ -1216,6 +1222,9 @@ Public Function changeMaToKhai(strID As String) As String
     
     'Mau moi V3.2.0
     If strID = "94" Then changeMaToKhai = "01_TD_GTGT13"
+    If strID = "98" Then changeMaToKhai = "01A_TNDN_DK13"
+    If strID = "22" Then changeMaToKhai = "95_BCTC13"
+    If strID = "95" Then changeMaToKhai = "03B_GTGT11"
 End Function
 
 ' Ham change sang ma cua QLT
@@ -1255,6 +1264,11 @@ Public Function changeMaToKhaiQLT(strID As String) As String
     If strID = "51" Then changeMaToKhaiQLT = "60"
     ' To khai 07_TNCN11
     If strID = "36" Then changeMaToKhaiQLT = "19"
+    
+    
+    
+    
+    
 End Function
 
 

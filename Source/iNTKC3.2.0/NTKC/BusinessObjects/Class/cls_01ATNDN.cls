@@ -54,8 +54,8 @@ Const NGAY_HOP_DONG_DL_COL = "N"
 
 
 ' Thong tin nganh nghe KD va to khai PS
-Const NGANH_NGHE_KD_ROW = 61
-Const NGANH_NGHE_KD_COL = "K"
+Const NGANH_NGHE_KD_ROW = 80
+Const NGANH_NGHE_KD_COL = "L"
 
 Public WithEvents fps As fpSpread
 Attribute fps.VB_VarHelpID = -1
@@ -169,8 +169,8 @@ Public Function Prepared1() As Boolean
              Next
          End If
           'set ly do gia han
-        .Row = 38
-        .Col = .ColLetterToNumber("E")
+        .Row = 64
+        .Col = .ColLetterToNumber("M")
         .TypeComboBoxList = strCboLyDo
         ' set Ma ly do gia han
         .Col = .ColLetterToNumber("AB")
@@ -194,7 +194,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .Sheet = 1
         .Col = .ColLetterToNumber(PHONG_XU_LY_COL)
         .Row = PHONG_XU_LY_ROW
-        If rsPXL.Fields.Count > 0 Then
+        If rsPXL.Fields.count > 0 Then
             Do While Not rsPXL.EOF
                 .TypeComboBoxIndex = -1
                 .TypeComboBoxString = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
@@ -213,30 +213,29 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         UpdateCell fps, .Col, .Row, .Text
         lSoPhongXL = i
         
-        
+
         'get ten chi tieu trong danh muc NNKD
         .Sheet = 1
         .Col = .ColLetterToNumber("AB")
-        .Row = 38
+        .Row = 64
          .GetText .ColLetterToNumber("AB"), .Row, varMaDM
         If Trim(varMaDM) <> vbNullString Then
-            .Col = .ColLetterToNumber("E")
-            .Row = 38
+            .Col = .ColLetterToNumber("M")
+            .Row = 64
             .Text = getTenLyDoGD(varMaDM)
         End If
         
-        
         ' Neu khong co gia han se khong cho chon combobox
          ' Neu check gia han moi cho phep chon GT
-        .Col = .ColLetterToNumber("E")
-        .Row = 37
+        .Col = .ColLetterToNumber("K")
+        .Row = 62
         If .Text = "1" Or UCase$(.Text) = "X" Then
-            .Col = .ColLetterToNumber("E")
-            .Row = 38
+            .Col = .ColLetterToNumber("M")
+            .Row = 64
             .Lock = False
         Else
-            .Col = .ColLetterToNumber("E")
-            .Row = 38
+            .Col = .ColLetterToNumber("M")
+            .Row = 64
             .Lock = True
         End If
         ' End set gia han
@@ -307,48 +306,54 @@ Public Function Prepared3() As Boolean
         ' Thoi gian gian thue trong ca nam 2009 cua to khai TNDN
         dYear = Year(dNgayTC)
         dQuy = DatePart("Q", dNgayTC)
-        'If Val(TAX_Utilities_Srv_New.Year) = 2009 Then
-        If dYear = 2009 Then
-            .Row = 37
-            .Col = .ColLetterToNumber("E")
-            UpdateCell fps, .Col, .Row, .Text
-            .Row = 37
-            .Col = .ColLetterToNumber("F")
-            .Text = "GIA HAN THEO NGHI DINH 30/NQ-CP"
-        'ElseIf Val(TAX_Utilities_Srv_New.Year) = 2010 And (Val(TAX_Utilities_Srv_New.ThreeMonths) = 1 Or Val(TAX_Utilities_Srv_New.ThreeMonths) = 2 Or Val(TAX_Utilities_Srv_New.ThreeMonths) = 3) Then
-        ElseIf dYear = 2010 And (dQuy = 1 Or dQuy = 2 Or dQuy = 3) Then
-            .Row = 37
-            .Col = .ColLetterToNumber("E")
-            UpdateCell fps, .Col, .Row, .Text
-            .Row = 37
-            .Col = .ColLetterToNumber("F")
-            .Text = "GIA HAN THEO QUYET DINH 12/2010/QD-TTG"
-        'ElseIf Val(TAX_Utilities_Srv_New.Year) = 2011 Or (Val(TAX_Utilities_Srv_New.Year) = 2010 And Val(TAX_Utilities_Srv_New.ThreeMonths) = 4) Then
-        ElseIf (dYear = 2010 And dQuy = 4) Then
-            .Row = 37
-            .Col = .ColLetterToNumber("E")
-            UpdateCell fps, .Col, .Row, .Text
-            .Row = 37
-            .Col = .ColLetterToNumber("F")
-            .Text = "GIA HAN THEO QUYET DINH 21/2011/QD-TTG"
-        ElseIf dYear = 2011 Then
-            .Row = 37
-            .Col = .ColLetterToNumber("E")
-            UpdateCell fps, .Col, .Row, .Text
-            .Row = 37
-            .Col = .ColLetterToNumber("F")
-            .Text = "GIA HAN THEO QUYET DINH 21/2011/QD-TTG;QD 54/2011/QD-TTG"
-        Else
-            ' Neu ngoai hieu luc cua gian thue thi visible cac dieu kien check nay di
-            .Row = 37
-            .Col = .ColLetterToNumber("E")
-            UpdateCell fps, .Col, .Row, .Text
-            .Row = 37
-            .Col = .ColLetterToNumber("F")
-            .Text = "GIA HAN THEO NQ 02/NQ-CP"
-        End If
+'        'If Val(TAX_Utilities_Srv_New.Year) = 2009 Then
+'        If dYear = 2009 Then
+'            .Row = 37
+'            .Col = .ColLetterToNumber("E")
+'            UpdateCell fps, .Col, .Row, .Text
+'            .Row = 37
+'            .Col = .ColLetterToNumber("F")
+'            .Text = "GIA HAN THEO NGHI DINH 30/NQ-CP"
+'        'ElseIf Val(TAX_Utilities_Srv_New.Year) = 2010 And (Val(TAX_Utilities_Srv_New.ThreeMonths) = 1 Or Val(TAX_Utilities_Srv_New.ThreeMonths) = 2 Or Val(TAX_Utilities_Srv_New.ThreeMonths) = 3) Then
+'        ElseIf dYear = 2010 And (dQuy = 1 Or dQuy = 2 Or dQuy = 3) Then
+'            .Row = 37
+'            .Col = .ColLetterToNumber("E")
+'            UpdateCell fps, .Col, .Row, .Text
+'            .Row = 37
+'            .Col = .ColLetterToNumber("F")
+'            .Text = "GIA HAN THEO QUYET DINH 12/2010/QD-TTG"
+'        'ElseIf Val(TAX_Utilities_Srv_New.Year) = 2011 Or (Val(TAX_Utilities_Srv_New.Year) = 2010 And Val(TAX_Utilities_Srv_New.ThreeMonths) = 4) Then
+'        ElseIf (dYear = 2010 And dQuy = 4) Then
+'            .Row = 37
+'            .Col = .ColLetterToNumber("E")
+'            UpdateCell fps, .Col, .Row, .Text
+'            .Row = 37
+'            .Col = .ColLetterToNumber("F")
+'            .Text = "GIA HAN THEO QUYET DINH 21/2011/QD-TTG"
+'        ElseIf dYear = 2011 Then
+'            .Row = 37
+'            .Col = .ColLetterToNumber("E")
+'            UpdateCell fps, .Col, .Row, .Text
+'            .Row = 37
+'            .Col = .ColLetterToNumber("F")
+'            .Text = "GIA HAN THEO QUYET DINH 21/2011/QD-TTG;QD 54/2011/QD-TTG"
+'        Else
+'            ' Neu ngoai hieu luc cua gian thue thi visible cac dieu kien check nay di
+'            .Row = 37
+'            .Col = .ColLetterToNumber("E")
+'            UpdateCell fps, .Col, .Row, .Text
+'            .Row = 37
+'            .Col = .ColLetterToNumber("F")
+'            .Text = "GIA HAN THEO NQ 02/NQ-CP"
+'        End If
         ' set thong tin dai ly thue
         ' ten dai ly thue
+        
+        .Row = 62
+        .Col = .ColLetterToNumber("k")
+        UpdateCell fps, .Col, .Row, .Text
+        
+        
         .Col = .ColLetterToNumber(TEN_DL_COL)
         .Row = TEN_DL_ROW
         If strTenDL <> "" Then
@@ -708,14 +713,14 @@ On Error GoTo ErrHandle
                     vGHI_CHU_LOI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                     vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "E_37"
+                Case "K_62" '"E_37"
                     v_CO_GIA_HAN = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                     If UCase(Trim(v_CO_GIA_HAN)) = "X" Or Trim(v_CO_GIA_HAN) = "1" Then
                         v_CO_GIA_HAN = "'Y'"
                     Else
                         v_CO_GIA_HAN = "Null"
                     End If
-                Case "AB_38"
+                Case "AB_64" '"AB_38"
                     VMaLyDoGH = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
             End Select
         End If
@@ -739,7 +744,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "01A_TNDN11"
+    vLOAI_TKHAI = "01A_TNDN13"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
@@ -774,67 +779,72 @@ On Error GoTo ErrHandle
     ' Tinh lai quy, nam theo ngay bat dau nam tai chinh cua NNT
     dYear = Year(dNgayDauKy)
     dQuy = DatePart("Q", dNgayDauKy)
-    If UCase(Trim(v_CO_GIA_HAN)) = "'Y'" Then
-        If Trim(vGHI_CHU_LOI) = vbNullString Then
-'            If TAX_Utilities_Srv_New.Year = "2009" Then
+'    If UCase(Trim(v_CO_GIA_HAN)) = "'Y'" Then
+'        If Trim(vGHI_CHU_LOI) = vbNullString Then
+''            If TAX_Utilities_Srv_New.Year = "2009" Then
+''                strSQL = strSQL & "'GIA HAN NOP THEO NQ30/NQ-CP',"
+''            ElseIf TAX_Utilities_Srv_New.Year = "2010" And (TAX_Utilities_Srv_New.ThreeMonths = 1 Or TAX_Utilities_Srv_New.ThreeMonths = 2 Or TAX_Utilities_Srv_New.ThreeMonths = 3) Then
+''                strSQL = strSQL & "'GIA HAN THEO Q§ 12/2010/Q§-TTg',"
+''            ElseIf TAX_Utilities_Srv_New.Year = "2011" Or (TAX_Utilities_Srv_New.Year = "2010" And TAX_Utilities_Srv_New.ThreeMonths = 4) Then
+''                strSQL = strSQL & "'GIA HAN THEO Q§ 21/2011/Q§-TTg',"
+''            Else
+''                strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
+''            End If
+'
+'           If dYear = 2009 Then
 '                strSQL = strSQL & "'GIA HAN NOP THEO NQ30/NQ-CP',"
-'            ElseIf TAX_Utilities_Srv_New.Year = "2010" And (TAX_Utilities_Srv_New.ThreeMonths = 1 Or TAX_Utilities_Srv_New.ThreeMonths = 2 Or TAX_Utilities_Srv_New.ThreeMonths = 3) Then
+'            ElseIf dYear = 2010 And (dQuy = 1 Or dQuy = 2 Or dQuy = 3) Then
 '                strSQL = strSQL & "'GIA HAN THEO Q§ 12/2010/Q§-TTg',"
-'            ElseIf TAX_Utilities_Srv_New.Year = "2011" Or (TAX_Utilities_Srv_New.Year = "2010" And TAX_Utilities_Srv_New.ThreeMonths = 4) Then
+'            ElseIf (dYear = 2010 And dQuy = 4) Then
 '                strSQL = strSQL & "'GIA HAN THEO Q§ 21/2011/Q§-TTg',"
+'            ElseIf dYear = 2011 Then
+'                strSQL = strSQL & "'GIA HAN THEO Q§ 21/2011/Q§-TTg;Q§ 54/2011/Q§-TTg',"
 '            Else
-'                strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
+'                'strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
+''                If VMaLyDoGH = "01" Then
+''                    strSQL = strSQL & "'DN VUA VA NHO GIA HAN THEO NQ 02/NQ-CP',"
+''                ElseIf VMaLyDoGH = "02" Then
+''                    strSQL = strSQL & "'DN NHIEU LD GIA HAN THEO NQ 02/NQ-CP',"
+''                ElseIf VMaLyDoGH = "03" Then
+''                    strSQL = strSQL & "'DN DAU TU GIA HAN THEO NQ 02/NQ-CP',"
+''                ElseIf VMaLyDoGH = "99" Then
+''                    strSQL = strSQL & "'LY DO KHAC GIA HAN THEO NQ 02/NQ-CP',"
+''                Else
+''                    strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
+''                End If
+'                 strSQL = strSQL & "'" & VMaLyDoGH & "',"
 '            End If
-
-           If dYear = 2009 Then
-                strSQL = strSQL & "'GIA HAN NOP THEO NQ30/NQ-CP',"
-            ElseIf dYear = 2010 And (dQuy = 1 Or dQuy = 2 Or dQuy = 3) Then
-                strSQL = strSQL & "'GIA HAN THEO Q§ 12/2010/Q§-TTg',"
-            ElseIf (dYear = 2010 And dQuy = 4) Then
-                strSQL = strSQL & "'GIA HAN THEO Q§ 21/2011/Q§-TTg',"
-            ElseIf dYear = 2011 Then
-                strSQL = strSQL & "'GIA HAN THEO Q§ 21/2011/Q§-TTg;Q§ 54/2011/Q§-TTg',"
-            Else
-                'strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
-'                If VMaLyDoGH = "01" Then
-'                    strSQL = strSQL & "'DN VUA VA NHO GIA HAN THEO NQ 02/NQ-CP',"
-'                ElseIf VMaLyDoGH = "02" Then
-'                    strSQL = strSQL & "'DN NHIEU LD GIA HAN THEO NQ 02/NQ-CP',"
-'                ElseIf VMaLyDoGH = "03" Then
-'                    strSQL = strSQL & "'DN DAU TU GIA HAN THEO NQ 02/NQ-CP',"
-'                ElseIf VMaLyDoGH = "99" Then
-'                    strSQL = strSQL & "'LY DO KHAC GIA HAN THEO NQ 02/NQ-CP',"
-'                Else
-'                    strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
-'                End If
-                 strSQL = strSQL & "'" & VMaLyDoGH & "',"
-            End If
-        Else
-            If dYear = 2009 Then
-                strSQL = strSQL & "'GIA HAN NOP THEO NQ30/NQ-CP; " & vGHI_CHU_LOI & "',"
-            ElseIf dYear = 2010 And (dQuy = 1 Or dQuy = 2 Or dQuy = 3) Then
-                strSQL = strSQL & "'GIA HAN THEO Q§ 12/2010/Q§-TTg; " & vGHI_CHU_LOI & "',"
-            ElseIf (dYear = 2010 And dQuy = 4) Then
-                strSQL = strSQL & "'GIA HAN THEO Q§ 21/2011/Q§-TTg; " & vGHI_CHU_LOI & "',"
-            ElseIf dYear = 2011 Then
-                strSQL = strSQL & "'GIA HAN THEO Q§ 21/2011/Q§-TTg;Q§ 54/2011/Q§-TTg; " & vGHI_CHU_LOI & "',"
-            Else
-                'strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
-'                If VMaLyDoGH = "01" Then
-'                    strSQL = strSQL & "'DN VUA VA NHO GIA HAN THEO NQ02/NQ-CP; " & vGHI_CHU_LOI & "',"
-'                ElseIf VMaLyDoGH = "02" Then
-'                    strSQL = strSQL & "'DN NHIEU LD GIA HAN THEO NQ02/NQ-CP; " & vGHI_CHU_LOI & "',"
-'                ElseIf VMaLyDoGH = "03" Then
-'                    strSQL = strSQL & "'DN DAU TU GIA HAN THEO NQ02/NQ-CP; " & vGHI_CHU_LOI & "',"
-'                ElseIf VMaLyDoGH = "99" Then
-'                    strSQL = strSQL & "'LY DO KHAC GIA HAN THEO NQ02/NQ-CP; " & vGHI_CHU_LOI & "',"
-'                Else
-'                    strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
-'                End If
-                 strSQL = strSQL & "'" & VMaLyDoGH & "; " & vGHI_CHU_LOI & "',"
-            End If
-            
-        End If
+'        Else
+'            If dYear = 2009 Then
+'                strSQL = strSQL & "'GIA HAN NOP THEO NQ30/NQ-CP; " & vGHI_CHU_LOI & "',"
+'            ElseIf dYear = 2010 And (dQuy = 1 Or dQuy = 2 Or dQuy = 3) Then
+'                strSQL = strSQL & "'GIA HAN THEO Q§ 12/2010/Q§-TTg; " & vGHI_CHU_LOI & "',"
+'            ElseIf (dYear = 2010 And dQuy = 4) Then
+'                strSQL = strSQL & "'GIA HAN THEO Q§ 21/2011/Q§-TTg; " & vGHI_CHU_LOI & "',"
+'            ElseIf dYear = 2011 Then
+'                strSQL = strSQL & "'GIA HAN THEO Q§ 21/2011/Q§-TTg;Q§ 54/2011/Q§-TTg; " & vGHI_CHU_LOI & "',"
+'            Else
+'                'strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
+''                If VMaLyDoGH = "01" Then
+''                    strSQL = strSQL & "'DN VUA VA NHO GIA HAN THEO NQ02/NQ-CP; " & vGHI_CHU_LOI & "',"
+''                ElseIf VMaLyDoGH = "02" Then
+''                    strSQL = strSQL & "'DN NHIEU LD GIA HAN THEO NQ02/NQ-CP; " & vGHI_CHU_LOI & "',"
+''                ElseIf VMaLyDoGH = "03" Then
+''                    strSQL = strSQL & "'DN DAU TU GIA HAN THEO NQ02/NQ-CP; " & vGHI_CHU_LOI & "',"
+''                ElseIf VMaLyDoGH = "99" Then
+''                    strSQL = strSQL & "'LY DO KHAC GIA HAN THEO NQ02/NQ-CP; " & vGHI_CHU_LOI & "',"
+''                Else
+''                    strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
+''                End If
+'                 strSQL = strSQL & "'" & VMaLyDoGH & "; " & vGHI_CHU_LOI & "',"
+'            End If
+'
+'        End If
+'    Else
+'        strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
+'    End If
+    If UCase(Trim(v_CO_GIA_HAN)) = "'Y'" Then
+        strSQL = strSQL & "'" & VMaLyDoGH & "; " & vGHI_CHU_LOI & "',"
     Else
         strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
     End If

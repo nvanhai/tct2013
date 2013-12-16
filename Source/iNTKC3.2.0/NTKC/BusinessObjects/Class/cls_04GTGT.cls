@@ -166,23 +166,23 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         lSoPhongXL = i
         
         
-                       'get ten chi tieu trong danh muc NNKD
-            .Sheet = 1
-            .Col = .ColLetterToNumber("B")
-            .Row = 45
-            i = 0
-            Do
-                .GetText .ColLetterToNumber("AE"), .Row, varMaDM
-                If Trim(varMaDM) <> vbNullString Then
-'                    .SetText .ColLetterToNumber("C"), .Row, getTenDMNNKD(varMaDM)
-                    .Col = .ColLetterToNumber("C")
-                    .Text = getTenDMNNKD(varMaDM)
-                    
-                End If
-                i = i + 1
-                .Col = .ColLetterToNumber("B")
-                .Row = 45 + i
-            Loop Until UCase(.Text) = "DD"
+'                       'get ten chi tieu trong danh muc NNKD
+'            .Sheet = 1
+'            .Col = .ColLetterToNumber("B")
+'            .Row = 45
+'            i = 0
+'            Do
+'                .GetText .ColLetterToNumber("AE"), .Row, varMaDM
+'                If Trim(varMaDM) <> vbNullString Then
+''                    .SetText .ColLetterToNumber("C"), .Row, getTenDMNNKD(varMaDM)
+'                    .Col = .ColLetterToNumber("C")
+'                    .Text = getTenDMNNKD(varMaDM)
+'
+'                End If
+'                i = i + 1
+'                .Col = .ColLetterToNumber("B")
+'                .Row = 45 + i
+'            Loop Until UCase(.Text) = "DD"
  
 
     End With
@@ -287,43 +287,35 @@ Public Function Prepared3() As Boolean
         
         
         
-         'set lai STT cac dong
-        .Sheet = 1
-        STT1 = 1
-        STT2 = 1
-        .Col = .ColLetterToNumber("B")
-        .Row = 45
+'         'set lai STT cac dong
+'        .Sheet = 1
+'        STT1 = 1
+'        STT2 = 1
+'        .Col = .ColLetterToNumber("B")
+'        .Row = 45
+'
+'        Do
+'            .Text = STT1 & "." & STT2
+'            .Row = .Row + 1
+'            STT2 = STT2 + 1
+'
+'            If .Text = "aa" Then
+'                STT1 = 2
+'                STT2 = 1
+'                .Row = .Row + 3
+'            ElseIf .Text = "bb" Then
+'                STT1 = 3
+'                STT2 = 1
+'                .Row = .Row + 3
+'            ElseIf .Text = "cc" Then
+'                STT1 = 4
+'                STT2 = 1
+'                .Row = .Row + 3
+'            End If
+'
+'            .Col = .ColLetterToNumber("B")
+'        Loop Until .Text = "dd"
 
-        Do
-            .Text = STT1 & "." & STT2
-            .Row = .Row + 1
-            STT2 = STT2 + 1
-
-            If .Text = "aa" Then
-                STT1 = 2
-                STT2 = 1
-                .Row = .Row + 3
-            ElseIf .Text = "bb" Then
-                STT1 = 3
-                STT2 = 1
-                .Row = .Row + 3
-            ElseIf .Text = "cc" Then
-                STT1 = 4
-                STT2 = 1
-                .Row = .Row + 3
-            End If
-
-            .Col = .ColLetterToNumber("B")
-        Loop Until .Text = "dd"
-        ' set KyLB doi voi cac truong hop nhan tu dong iHTKK
-        .Col = .ColLetterToNumber(KY_LAP_BO_COL)
-        .Row = KY_LAP_BO_ROW
-        If TAX_Utilities_Srv_New.NhanTuDongIHTKK = True And TAX_Utilities_Srv_New.HthucNopIHTKK = True Then
-             If TAX_Utilities_Srv_New.KyLBIHTKK <> "" Then
-                .Text = TAX_Utilities_Srv_New.KyLBIHTKK
-                UpdateCell fps, .Col, .Row, .Text
-            End If
-        End If
         '.EventEnabled(EventAllEvents) = True
     End With
     
@@ -586,7 +578,7 @@ On Error GoTo ErrHandle
                     vGHI_CHU_LOI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                     vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "H_74"
+                Case "K_39"
                     LOAI_KYKK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
             End Select
         End If
@@ -603,7 +595,13 @@ On Error GoTo ErrHandle
         vHthuc_nop = "null"
     End If
     ' end
-    
+    If LOAI_KYKK = "0" Then
+        LOAI_KYKK = "T"
+    Else
+        LOAI_KYKK = "Q"
+    End If
+
+
     strSQL = strSQL & "'" & vHdrID & "',"
     strSQL = strSQL & vKKBS & ","
     strSQL = strSQL & "'" & vTIN & "',"
@@ -625,8 +623,8 @@ On Error GoTo ErrHandle
         strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     End If
     
-     'Ky/ Quy KK
-    If LOAI_KYKK = "0" Then
+    'Ky/ Quy KK
+    If LOAI_KYKK = "T" Then
         If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
             'Ngay dau ky ke khai va ngay cuoi ky ke khai
             dDate = dNgayDauKy
@@ -697,11 +695,6 @@ On Error GoTo ErrHandle
             vNGAY_HOP_DONG = "to_date(" & vNGAY_HOP_DONG & ",'dd/mm/yyyy')"
         End If
     End With
-    If LOAI_KYKK = "0" Then
-        LOAI_KYKK = "T"
-    Else
-        LOAI_KYKK = "Q"
-    End If
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
     strSQL = strSQL & "null,"
     strSQL = strSQL & vHthuc_nop & "," & vItkhai_ID & ","
@@ -766,28 +759,28 @@ End With
 End Sub
 
 
-'ham lay ten DM NNKD
-Private Function getTenDMNNKD(maDM As Variant) As String
-    Dim maDM1 As String
-    Dim strDuongDanFile As String
-    Dim xmlDomData      As New MSXML.DOMDocument
-    Dim xmlNodelist     As MSXML.IXMLDOMNodeList
-    Dim xmlNode         As MSXML.IXMLDOMNode
-    Dim arrStrName()    As String
-    
-    maDM1 = CStr(Trim(maDM))
-    strDuongDanFile = GetCatalogueFileName
-    'lay file chua tenDM
-    strDuongDanFile = "..\InterfaceTemplates\xml\Catalogue_DM_nhom_NNKD.xml"
-    
-    strDuongDanFile = GetAbsolutePath(strDuongDanFile)
-    xmlDomData.Load (strDuongDanFile)
-    getTenDMNNKD = ""
-    Set xmlNodelist = xmlDomData.getElementsByTagName("Item")
-        For Each xmlNode In xmlNodelist
-            If Left(GetAttribute(xmlNode, "Value"), 2) = maDM1 Then
-                arrStrName = Split(GetAttribute(xmlNode, "Value"), "###")
-                getTenDMNNKD = arrStrName(1)
-            End If
-        Next
-End Function
+''ham lay ten DM NNKD
+'Private Function getTenDMNNKD(maDM As Variant) As String
+'    Dim maDM1 As String
+'    Dim strDuongDanFile As String
+'    Dim xmlDOMdata      As New MSXML.DOMDocument
+'    Dim xmlNodelist     As MSXML.IXMLDOMNodeList
+'    Dim xmlNode         As MSXML.IXMLDOMNode
+'    Dim arrStrName()    As String
+'
+'    maDM1 = CStr(Trim(maDM))
+'    strDuongDanFile = GetCatalogueFileName
+'    'lay file chua tenDM
+'    strDuongDanFile = "..\InterfaceTemplates\xml\Catalogue_DM_nhom_NNKD.xml"
+'
+'    strDuongDanFile = GetAbsolutePath(strDuongDanFile)
+'    xmlDOMdata.Load (strDuongDanFile)
+'    getTenDMNNKD = ""
+'    Set xmlNodelist = xmlDOMdata.getElementsByTagName("Item")
+'        For Each xmlNode In xmlNodelist
+'            If Left(GetAttribute(xmlNode, "Value"), 2) = maDM1 Then
+'                arrStrName = Split(GetAttribute(xmlNode, "Value"), "###")
+'                getTenDMNNKD = arrStrName(1)
+'            End If
+'        Next
+'End Function
