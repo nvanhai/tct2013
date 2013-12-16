@@ -910,18 +910,18 @@ With fps
         Case 1 ' To khai GTGT
             mCurrentSheet = .Sheet
             GetCellSpan fps, Col, Row
-            If Row = S1ChkRow And Col = .ColLetterToNumber(S1ChkCol) Then
+            If Row = 44 And Col = .ColLetterToNumber("L") Then
              'Check rang buôc CT 40 va 42
-                .Row = 40
+                .Row = 44
                 .Col = .ColLetterToNumber("L")
                 If Val(.Text) > 0 Then
-                    .Row = 48
-                    .Col = .ColLetterToNumber("L")
-                    .Lock = True
-                Else
-                    .Row = 48
+                    .Row = 46
                     .Col = .ColLetterToNumber("L")
                     .Lock = False
+                Else
+                    .Row = 46
+                    .Col = .ColLetterToNumber("L")
+                    .Lock = True
                 End If
             End If
         Case 3 'PL2
