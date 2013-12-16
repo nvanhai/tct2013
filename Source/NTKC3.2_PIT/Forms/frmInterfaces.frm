@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.ocx"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Begin VB.Form frmInterfaces 
    AutoRedraw      =   -1  'True
    BorderStyle     =   3  'Fixed Dialog
@@ -1430,11 +1430,54 @@ Private Sub Command1_Click()
 'str2 = "aa999012300448300   112013012015013013<S01_7><S>~ChiÕc~0~0~</S><S>~ChiÕc~0~0~</S></S01_7>"
 'Barcode_Scaned str2
 
-str2 = "aa999022300448300   03201300200200100201/0114/06/2006<S01><S>0102030405</S><S>11~12~22~2~1~1~1~1~2~1~24~1~1~1~21</S><S>nguyen van aa~Liªn Ph¸i~@cc~13/12/2013~1~~~1</S></S01>"
-Barcode_Scaned str2
-str2 = "aa999022300448300   032013002002002002<S01_2><S>07KPTQ~07KPTQ~KY HIEU 01~hd1~12/09/2013~nguoi ban 01~0102030405~quan ao~11~5~03XKNB~03XKNB~KY HIEU 02~hd1~12/09/2013~nguoi ban 02~2222222222~quan ao~11~10</S><S>~</S></S01_2>"
-Barcode_Scaned str2
+'str2 = "aa999022300448300   03201300200200100201/0114/06/2006<S01><S>0102030405</S><S>11~12~22~2~1~1~1~1~2~1~24~1~1~1~21</S><S>nguyen van aa~Liªn Ph¸i~@cc~13/12/2013~1~~~1</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999022300448300   032013002002002002<S01_2><S>07KPTQ~07KPTQ~KY HIEU 01~hd1~12/09/2013~nguoi ban 01~0102030405~quan ao~11~5~03XKNB~03XKNB~KY HIEU 02~hd1~12/09/2013~nguoi ban 02~2222222222~quan ao~11~10</S><S>~</S></S01_2>"
+'Barcode_Scaned str2
 
+'str2 = "aa999012100343639   03201301001100101301/0114/06/2006<S01><S>6868686868</S><S>~0~23421321~324324234~324324234~324234234~0~0~0~0~0~0~0~324234234~0~-32"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   0320130100110020134324234~0~0~4492071891~0~0~0~4816396125~0~4816396125</S><S>sdfsdf~sdfsdfds~~13/12/2013~1~~~1701~~~1</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   032013010011003013<S01_1><S>01GTKT~01GTKT~asdas~sad~01/01/2013~wadad~6868686868~sdfsdf~324234234~0~</S><S>~~~~~~~"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   032013010011004013~0~0~</S><S>~~~~~~~~0~0~</S><S>~~~~~~~~0~0~</S><S>~~~~~~~~0~0~</S><S>324234234~0~0</S></S01_1>"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   032013010011005013<S01_2><S>06HDXK~06HDXK~342~rwer~01/01/2013~sfsf~6868686868~fdad~23421321~5~324324234~</S><S>~~~~~~~~0~0"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   032013010011006013~0~</S><S>~~~~~~~~0~0~0~</S><S>~~~~~~~~0~0~0~</S><S>~~~~~~~~0~0~0~</S><S>23421321~324324234</S></S01_2>"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   032013010011007013<S01_3><S>dsf~435~rdfs~4543~43543~sefsdf~5sf~4~543~435435~~~sdf~43543~4354~5435~35454354343~0~</"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   032013010011008013S><S>0~0~43~543~543~~55~~3~5~435435~543543~4~543~~54354~3535435~435435~43543</S><S></S></S01_3>"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   032013010011009013<S01_4A><S>324324234~324324234~0~0~324234234~0~0~0~0</S></S01_4A>"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   032013010011010013<S01_5><S>rew~01/01/2013~edfsd~~234324234~rewrwe~01/10/2013~dsfs~~23423423~rwerew~07/10/2000~34324~~4234324234</S></S01_5>"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   032013010011011013<S01_6><S>~~~0~0~0~0~0</S"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   032013010011012013><S>0~0~0~0</S></S01_6>"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   032013010011013013<S01_7><S>~ChiÕc~0~0~</S><S>~ChiÕc~0~0~</S></S01_7>"
+'Barcode_Scaned str2
+
+'str2 = "aa999022100343639   03201300400500100301/0114/06/2006<S01><S>6868686868</S><S>423233~343423~405439509435~20271975472~2343242~23423423~3242342~42323432~20253075463~23423423~20230418696~23432432~23434234~234234234~19972750228</S><S>sdfsdf~~sdfsdfds~16/12/2013~1~~~1</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999022100343639   032013004005002003<S01_2><S>02GTTT~02GTTT~RF34FS~esfwe~01/01/2013~dsfsdfsdf~6868686868~dvvfdv~405439509435~5~20271975472~~</S><S>405439509435~20271975472</S></S01_2>"
+'Barcode_Scaned str2
+'str2 = "aa999022100343639   032013004005003003<S01_2_1><S>02GTTT~02GTTT~RF34FS~esfwe~01/01/2013~dsfsdfsdf~6868686868~dvvfdv~405439509435~5~20271975472~~</S><S>0~0</S></S01_2_1>"
+'Barcode_Scaned str2
+
+'str2 = "aa999042100343639   03201300100100100101/0114/06/2006<S01><S>6868686868</S><S>423325~43543534~5435435~435435~435435435~472684774~47268477</S><S>sdfsdf~~sdfsdfds~16/12/2013~1~~~1</S></S01>"
+'Barcode_Scaned str2
+
+str2 = "aa999712100343639   11201300200200100301/0101/01/1900<S01><S>6868686868</S><S>43543543~34543543~345435~435435~21772~4354354~130631~3543535~70871~42876867~568709~86420410~568709</S><S>sdfsdf~efsdf~sdfsdfds~16/12/2013~1~~~0</S></S01>"
+Barcode_Scaned str2
+str2 = "aa999712100343639   112013002002002003<S01_1><S>02GTTT~~324~23423423~01/01/2013~dxfvsd~6868686868~sadas~3423432~~06HDXK~~dfs~rfdsf~01/01/2013~dfssdf~6868686868~asfdsdafdfsd~23423432234~~07KPTQ~~dsf~ferw~01/01/2013~dfsdf~6868686"
+Barcode_Scaned str2
+str2 = "aa999712100343639   112013002002003003868~dsf~324324~~03XKNB~~sdfsd~sdfs~01/01/2013~sdfsdf~6868686868~dsf~3424234~</S><S>~~~~~~~~0~</S><S>~~~~~~~~0~</S><S>~~~~~~~~0~</S><S>~~~~~~~~0~</S><S>23430604224~23430604224~0</S></S01_1>"
+Barcode_Scaned str2
 
 End Sub
 
@@ -1642,11 +1685,11 @@ Private Sub MSComm1_OnComm()
     
 On Error GoTo ErrHandle
     Select Case MSComm1.CommEvent
-        Case comEvReceive                                       ' Received RThreshold # of chars.
+        Case comEvReceive                                       ' Received RThreshold  of chars.
             varBuff = MSComm1.Input
             lByte = varBuff
             For i = 0 To UBound(lByte)
-                If Chr$(lByte(i)) <> "#" Then
+                If Chr$(lByte(i)) <> "" Then
                     strTemp = strTemp & Chr$(lByte(i))
                 Else
                     'Debug.Print "a1: " & strTemp
@@ -2209,7 +2252,7 @@ Private Sub GetCells(xmlSectionTemplate As MSXML.IXMLDOMNode, arrStrValue() As S
     While lCtrl <= UBound(arrStrValue) And Not xmlSectionTemplate.selectNodes("Cells/Cell")(lCtrl2) Is Nothing
         If GetAttribute(xmlSectionTemplate.selectNodes("Cells/Cell")(lCtrl2), "Receive") <> "0" Then
             SetAttribute xmlSectionTemplate.selectNodes("Cells/Cell")(lCtrl2), "Value", _
-                Replace(Replace(arrStrValue(lCtrl), "1" & Chr$(20) & Chr$(20) & "1", "#"), Chr$(20), "~")
+                Replace(Replace(arrStrValue(lCtrl), "1" & Chr$(20) & Chr$(20) & "1", ""), Chr$(20), "~")
         Else
             lCtrl = lCtrl - 1
         End If
