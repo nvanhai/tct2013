@@ -51,59 +51,59 @@ Public Sub Prepare2()
         
             If Strloaitk = "TKCT" Then
                 .Col = .ColLetterToNumber("C")
-                .Row = .MaxRows
+                .Row = 29
                 .Text = 1
                 UpdateCell fps, .Col, .Row, .Text
                 .Col = .ColLetterToNumber("I")
-                .Row = .MaxRows
+                .Row = 29
                 .Text = ""
                 UpdateCell fps, .Col, .Row, .Text
                 
             ElseIf Strloaitk = "TKBS" Then
                         
                 .Col = .ColLetterToNumber("C")
-                .Row = .MaxRows
+                .Row = 29
                 .Text = ""
                 UpdateCell fps, .Col, .Row, .Text
                 .Col = .ColLetterToNumber("I")
-                .Row = .MaxRows
+                .Row = 29
                 .Text = StrSolanBosung
                 UpdateCell fps, .Col, .Row, .Text
             End If
             
 '            .Row = 54 + count1
-            .Row = .MaxRows
+            .Row = 61
             .Col = .ColLetterToNumber("O")
             If .value = "" Then
-                SetDateFormat fps, 1, .MaxRows - 2, .ColLetterToNumber("O"), DDMMYYYY
+                SetDateFormat fps, 1, 61, .ColLetterToNumber("O"), DDMMYYYY
                 .Text = Format(Date, "dd/mm/yyyy")
                 .TypeHAlign = TypeHAlignLeft
                 UpdateCell fps, .Col, .Row, .Text
             End If
           'set thong tin header neu la to khai quy
           If strQuy = "TK_QUY" Then
-            .SetText .ColLetterToNumber("L"), 67, 1
-            .SetText .ColLetterToNumber("O"), 67, ""
-            .SetText .ColLetterToNumber("P"), 67, ""
+            .SetText .ColLetterToNumber("G"), 29, 1
+            .SetText .ColLetterToNumber("O"), 29, ""
+            .SetText .ColLetterToNumber("R"), 29, ""
           Else
-            .SetText .ColLetterToNumber("L"), 67, 0
-'            'lay tu thang den thang
-'            .Col = .ColLetterToNumber("U")
-'            .Row = 19
-'            'lay so thang quyet toan
-'            .Text = DateDiff("M", Format("01/" & TAX_Utilities_New.FirstDay, "dd/mm/yyyy"), Format("01/" & TAX_Utilities_New.LastDay, "dd/mm/yyyy")) + 1
+            .SetText .ColLetterToNumber("G"), 29, 0
+            'lay tu thang den thang
+            .Col = .ColLetterToNumber("U")
+            .Row = 29
+            'lay so thang quyet toan
+            .Text = DateDiff("M", Format("01/" & TAX_Utilities_New.FirstDay, "dd/mm/yyyy"), Format("01/" & TAX_Utilities_New.LastDay, "dd/mm/yyyy")) + 1
           'set thong tin header neu la to khai tuthang denthang
              If strLoaiTKQT = "QT_TUNG_NAM" Then
                .Col = .ColLetterToNumber("O")
-               .Row = 67
+               .Row = 29
                .Text = 1
-               .Col = .ColLetterToNumber("P")
+               .Col = .ColLetterToNumber("R")
                .Text = ""
                .SetText .ColLetterToNumber("P"), 3, TAX_Utilities_New.FirstDay
                .SetText .ColLetterToNumber("T"), 3, TAX_Utilities_New.LastDay
             ElseIf strLoaiTKQT = "QT_NAM_DAU" Then
-               .Col = .ColLetterToNumber("P")
-               .Row = 67
+               .Col = .ColLetterToNumber("R")
+               .Row = 29
                .Text = 1
                .Col = .ColLetterToNumber("O")
                .Text = ""
@@ -402,7 +402,7 @@ Private Sub CheckDynamicError()
         .Sheet = 1
      
         'get MST CT5
-        .GetText .ColLetterToNumber("F"), 9, vMSTCT5
+        .GetText .ColLetterToNumber("F"), 10, vMSTCT5
         'check Null
         
         vTongTNCN = 0
@@ -410,7 +410,7 @@ Private Sub CheckDynamicError()
         vTongCT30 = 0
         
         'check ngay nhap khong dc de trong
-        .GetText .ColLetterToNumber("R"), .MaxRows - 2, vNgayKy
+        .GetText .ColLetterToNumber("O"), .MaxRows - 6, vNgayKy
         If vNgayKy = vbNullString Or vNgayKy = "../../...." Then
             .Col = .ColLetterToNumber("R")
             .Row = .MaxRows - 2
