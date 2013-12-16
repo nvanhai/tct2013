@@ -153,14 +153,54 @@ Private Sub CheckDynamicError()
     Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
     Dim strCheck As String, iCurrentSheet As Integer
     Dim error2 As Variant
+    
+    Dim vErrorMST As Variant
+    Dim strMST As Variant
+    Dim iFlagMST As Integer
+    
     With fps
     '.Visible = False
     '.ReDraw = False
     iCurrentSheet = .Sheet
     .Sheet = .SheetCount
     .GetText .ColLetterToNumber("E"), 15, error2
+    .GetText .ColLetterToNumber("E"), 24, vErrorMST
     CheckErrorMST
     .Sheet = iCurrentSheet
+    
+    ' check cau truc MST
+    .Sheet = 1
+    .GetText .ColLetterToNumber("J"), 9, strMST
+    .Row = 9
+    If Trim$(strMST) <> vbNullString Then
+       strMST = Replace(strMST, " ", "")
+       strMST = Replace(strMST, "-", "")
+        'vMST = Left(vMST, 10)
+
+       strCheck = ""
+       If Len(strMST) = 10 Or Len(strMST) = 13 Then
+            strCheck = CheckTaxCode(Mid$(strMST, 1, 1), Mid$(strMST, 2, 1), Mid$(strMST, 3, 1), Mid$(strMST, 4, 1), Mid$(strMST, 5, 1), Mid$(strMST, 6, 1), Mid$(strMST, 7, 1), Mid$(strMST, 8, 1), Mid$(strMST, 9, 1), Mid$(strMST, 10, 1), Mid$(strMST, 11, 1), Mid$(strMST, 12, 1), Mid$(strMST, 13, 1))
+       End If
+       
+       If Mid$(strCheck, 2, 1) <> "0" Or Not IsNumeric(strMST) Then
+            .Col = .ColLetterToNumber("J")
+            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+            .CellNote = vErrorMST   'static
+            .BackColor = mErrorColor
+            iFlagMST = 1
+        Else
+            .Col = .ColLetterToNumber("J")
+            .CellNote = ""
+            .BackColor = mNonErrorColor
+        End If
+    Else
+        .Col = .ColLetterToNumber("J")
+        .CellNote = ""
+        .BackColor = mNonErrorColor
+    End If
+    
+    .Sheet = .SheetCount
+    .SetText .ColLetterToNumber("B"), 24, IIf(iFlagMST = 1, "0", "1")
     
     '.ReDraw = True
     '.Visible = True
