@@ -5,7 +5,7 @@ insert into RCV_DM_TKHAI (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
 values ('01A_TNDN_DK13', '01A/TNDN-DK', 'M', '320', to_date('14-06-2006', 'dd-mm-yyyy'), null);
 	--RCV_GDIEN_TKHAI
 insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
-values (5640, 'L࠮ xu࠴ b࠮ thߧ, '1', null, null, null, null, null, null, null, null, null, null, 1, '01A_TNDN_DK13', null, null, null, null, null, null, null, null, null, null, null, null);
+values (5640, 'L࠮ xu࠴ b࠮ thߧ', '1', null, null, null, null, null, null, null, null, null, null, 1, '01A_TNDN_DK13', null, null, null, null, null, null, null, null, null, null, null, null);
 
 insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
 values (5641, 'Xu࠴ kh࠵', '1', null, null, null, null, null, null, null, null, null, null, 2, '01A_TNDN_DK13', null, null, null, null, null, null, null, null, null, null, null, null);
@@ -17,7 +17,7 @@ insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_
 values (5643, 'Ng࠹ xu࠴ hࠡ ࠮ ࠩ vࠩ xu࠴ b࠮ tࠩ Vi࠴ Nam, chߠti࠵[10]', '1', null, null, null, null, null, null, null, null, null, null, 4, '01A_TNDN_DK13', null, null, null, null, null, null, null, null, null, null, null, null);
 
 insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
-values (5644, '[01] D࠵ thߧ, '1', null, null, null, null, null, null, null, null, null, null, 5, '01A_TNDN_DK13', null, null, null, null, null, null, null, null, null, null, null, null);
+values (5644, '[01] D࠵ thߧ', '1', null, null, null, null, null, null, null, null, null, null, 5, '01A_TNDN_DK13', null, null, null, null, null, null, null, null, null, null, null, null);
 
 insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
 values (5645, '[02] Condensate', '1', null, null, null, null, null, null, null, null, null, null, 6, '01A_TNDN_DK13', null, null, null, null, null, null, null, null, null, null, null, null);
@@ -26,10 +26,10 @@ insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_
 values (5646, '[03] Khߠthi࠮ nhi࠮', '1', null, null, null, null, null, null, null, null, null, null, 7, '01A_TNDN_DK13', null, null, null, null, null, null, null, null, null, null, null, null);
 
 insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
-values (5647, 'Kߠt࠮h thuߧ, '1', null, null, null, null, null, null, null, null, null, null, 8, '01A_TNDN_DK13', null, null, null, null, null, null, null, null, null, null, null, null);
+values (5647, 'Kߠt࠮h thuߧ', '1', null, null, null, null, null, null, null, null, null, null, 8, '01A_TNDN_DK13', null, null, null, null, null, null, null, null, null, null, null, null);
 
 insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
-values (5648, 'H࠰ ࠮g d࠵ khߠlߧ, '1', null, null, null, null, null, null, null, null, null, null, 9, '01A_TNDN_DK13', null, null, null, null, null, null, null, null, null, null, null, null);
+values (5648, 'H࠰ ࠮g d࠵ khߠlߧ', '1', null, null, null, null, null, null, null, null, null, null, 9, '01A_TNDN_DK13', null, null, null, null, null, null, null, null, null, null, null, null);
 
 insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
 values (5649, 'S࠮ l߿ng d࠵ khߠxu࠴ b࠮', '1', null, null, null, null, null, null, null, null, null, null, 10, '01A_TNDN_DK13', null, null, null, null, null, null, null, null, null, null, null, null);

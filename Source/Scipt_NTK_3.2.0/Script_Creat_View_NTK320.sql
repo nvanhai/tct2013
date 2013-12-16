@@ -1,6 +1,6 @@
-'****************************************************************************************
-'=============================  
-'01_GTGT: PL 01-1
+/****************************************************************************************/
+/*=============================  */
+/*01_GTGT: PL 01-1*/
 CREATE OR REPLACE VIEW RCV_V_PLUC_TKHAI_GTGT_KT01_13 AS
 SELECT
     "HDR_ID",
@@ -83,8 +83,8 @@ WHERE
     so_hoa_don IS NOT NULL
 AND ngay_hoa_don IS NOT NULL;
 
-'=============================  
-'01_GTGT: PL 01-2
+/*=============================  
+'01_GTGT: PL 01-2*/
 CREATE OR REPLACE VIEW RCV_V_PLUC_TKHAI_GTGT_KT02_13 AS
 Select "HDR_ID","SO_TT","ROW_ID","NHOM_CTIEU","KY_HIEU_MAU_HDON","KY_HIEU_HDON","SO_HOA_DON","NGAY_HOA_DON","TIN","TEN_DTNT","TEN_HANG","DOANH_SO","THUE_XUAT","SO_THUE","GHI_CHU"
 From (SELECT dtl.hdr_id
@@ -134,10 +134,10 @@ GROUP BY dtl.hdr_id,
         ) where so_hoa_don is not null and ngay_hoa_don is not null
 /* bo dk ky_hieu_hdon is not null and */;
 
-'=============================  
+/*=============================  
 '01_GTGT: PL 01-3
 '=============================  
-'01_GTGT: PL 01-5
+'01_GTGT: PL 01-5*/
 CREATE OR REPLACE VIEW RCV_V_PLUC_TKHAI_GTGT_KT05_13
 (hdr_id, so_tt, so_ctu, ngay_nop, noi_nop_tien,co_quan_thue,so_tien)
 AS
@@ -174,9 +174,9 @@ GROUP BY dtl.hdr_id,
          dtl.row_id,
          gd.ma_ctieu;
 
-'****************************************************************************************
+/****************************************************************************************
 '=============================  
-'03_GTGT13
+'03_GTGT13*/
 CREATE OR REPLACE VIEW RCV_V_TKHAI_03GTGT_13 AS
 SELECT
     dtl.hdr_id,
@@ -219,9 +219,9 @@ GROUP BY
     dtl.hdr_id,
     dtl.ctk_id;
 
-'****************************************************************************************
+/****************************************************************************************
 '=============================    
-'04_GTGT13
+04_GTGT13*/
 CREATE OR REPLACE VIEW RCV_V_TKHAI_04GTGT_13 AS
 SELECT
     dtl.hdr_id,
@@ -263,10 +263,10 @@ GROUP BY
     dtl.hdr_id,
     dtl.ctk_id;
 
-'****************************************************************************************    
+/****************************************************************************************    
 '=============================
-'05_GTGT11
-CREATE VIEW
+'05_GTGT11*/
+CREATE OR REPLACE VIEW
     RCV_V_TKHAI_GTGT_TT11
     (
         HDR_ID,
@@ -315,11 +315,11 @@ GROUP BY
     dtl.so_tt,
     dtl.ma_ctieu ;
 
-'****************************************************************************************    
+/****************************************************************************************    
 '=============================    
 
-'01A/TNDN13,01B/TNDN13 (dung chung view)
-CREATE VIEW
+'01A/TNDN13,01B/TNDN13 (dung chung view)*/
+CREATE OR REPLACE VIEW
     RCV_V_TKHAI_TNDN_01A_13
     (
         HDR_ID,
@@ -370,9 +370,9 @@ GROUP BY
     dtl.hdr_id,
     dtl.ctk_id;
     
-'============================= 
-'PL 01-1 cho O1A/TNDN,01B/TNDN
-CREATE VIEW
+/*============================= 
+'PL 01-1 cho O1A/TNDN,01B/TNDN*/
+CREATE OR REPLACE VIEW
     RCV_V_PLUC_TKHAI_TNDN_01_13
     (
         HDR_ID,
@@ -428,5 +428,5 @@ GROUP BY
     dtl.hdr_id,
     dtl.row_id,
     dtl.so_tt;   
-'============================= 
-'****************************************************************************************
+/*============================= 
+'****************************************************************************************/
