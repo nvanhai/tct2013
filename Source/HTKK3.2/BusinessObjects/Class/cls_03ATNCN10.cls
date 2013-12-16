@@ -32,7 +32,7 @@ Public strTuRowDenRowPL As String
 'No parameter
 Public Sub Prepare1()
     With fps
-        SetDateFormat fps, 1, 57, .ColLetterToNumber("R"), DDMMYYYY
+        SetDateFormat fps, 1, 60, .ColLetterToNumber("R"), DDMMYYYY
         
         .Sheet = 1 'To khai 02/TNCN
         .Row = 60
