@@ -1,4 +1,4 @@
-'=============01/GTGT: PL 01-1 ============
+/*'=============01/GTGT: PL 01-1 ============*/
 INSERT INTO RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22) VALUES (6367, 'Hµng hßa, dÞch vô kh«ng chÞu thuÕ GTGT', '1', '2', '3', '4', '5', '6', '7', '8', null, '9', '10', 1, '01_01_GTGT13', null, '11', '12', null, null, null, null, null, null, null, null, null);
 INSERT INTO RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22) VALUES (6372, 'Tæng céng', null, null, null, null, null, null, null, '66', null, '67', null, 2, '01_01_GTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
 INSERT INTO RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22) VALUES (6368, 'Hµng hãa dÞch vô chÞu thuÕ xuÊt thuÕ GTGT 0 %', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', 3, '01_01_GTGT13', null, '24', '25', null, null, null, null, null, null, null, null, null);
@@ -84,7 +84,7 @@ INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIE
 INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU) VALUES ('01_01_GTGT13', '81', 'N', 6452, null);
 INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU) VALUES ('01_01_GTGT13', '82', 'N', 6453, null);
 
-'=============01/GTGT: PL 01-2 ============
+/*=============01/GTGT: PL 01-2 ============*/
 INSERT INTO RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22) VALUES (6378, 'Hµng hßa, dÞch vô dµnh riªng cho SXKD chÞu thuÕ GTGT', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', 1, '01_02_GTGT13', null, '12', '13', null, null, null, null, null, null, null, null, null);
 INSERT INTO RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22) VALUES (6383, 'Tæng céng', null, null, null, null, null, null, null, null, '66', null, '67', 2, '01_02_GTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
 INSERT INTO RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22) VALUES (6379, 'Hµng hßa, dÞch vô dµnh riªng cho SXKD kh«ng chÞu thuÕ GTGT', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', 3, '01_02_GTGT13', null, '25', '26', null, null, null, null, null, null, null, null, null);
@@ -172,8 +172,8 @@ INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIE
 INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU) VALUES ('01_02_GTGT13', '74', 'N', 6387, null);
 INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU) VALUES ('01_02_GTGT13', '75', 'N', 6387, null);
 
-'=============01/GTGT: PL 01-3 ============
-'=============01/GTGT: PL 01-5 ============
+/*=============01/GTGT: PL 01-3 ============
+'=============01/GTGT: PL 01-5 ============*/
 INSERT INTO RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22) VALUES (6393, 'V·ng lai ngo¹i tØnh', '1', '2', '3', '4', '5', '6', null, null, null, null, null, 1, '01_05_GTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
 INSERT INTO RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22) VALUES (6394, 'Tæng céng', null, null, null, null, null, '7', null, null, null, null, null, 2, '01_05_GTGT13', null, null, null, null, null, null, null, null, null, null, null, null);
 
@@ -185,8 +185,8 @@ INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIE
 INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU) VALUES ('01_05_GTGT13', '6', 'N', 6393, null);
 INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU) VALUES ('01_05_GTGT13', '7', 'N', 6394, null);
 
-'****************************************************************************************
-'=============03/GTGT============
+/*'****************************************************************************************
+'=============03/GTGT============*/
 INSERT INTO RCV_DM_TKHAI (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE) VALUES ('03_GTGT13', 'Tê khai thuÕ GTGT dµnh cho NNT mua b¸n, chÕ t¸c vµng b¹c, ®¸ quý theo th¸ng', 'M', '320', TIMESTAMP '2011-07-01 00:00:00', null);
 
 INSERT INTO RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22) VALUES (5309, 'GTGT ©m ®­îc kÕt chuyÓn kú tr­íc', '21', null, null, null, null, null, null, null, null, null, null, 1, '03_GTGT13', '4230', null, null, null, null, null, null, null, null, null, null, null);
@@ -205,8 +205,8 @@ INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIE
 INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU) VALUES ('03_GTGT13', '26', 'N', 5314, '26');
 INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU) VALUES ('03_GTGT13', '27', 'N', 5315, '27');
 
-'****************************************************************************************
-'=============04/GTGT============
+/*'****************************************************************************************
+'=============04/GTGT============*/
 INSERT INTO RCV_DM_TKHAI (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE) VALUES ('04_GTGT13', 'Tê khai thuÕ GTGT theo PP trùc tiÕp mÉu 04/GTGT', 'M', '320', TIMESTAMP '1900-01-01 00:00:00', null);
 
 INSERT INTO RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22) VALUES (6360, 'Ph©n phèi, cung cÊp hµng ho¸', '21', '22', '23', '24', null, null, null, null, null, null, null, 1, '04_GTGT13', '3720', null, null, null, null, null, null, null, null, null, null, null);
@@ -235,12 +235,12 @@ INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIE
 INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU) VALUES ('04_GTGT13', '36', 'N', 6365, null);
 INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU) VALUES ('04_GTGT13', '37', 'N', 6366, null);
 
-'****************************************************************************************
+/*'****************************************************************************************
 '=============05/GTGT============
 'no change
 
 '****************************************************************************************
-'=============01A/TNDN============
+'=============01A/TNDN============*/
 INSERT INTO RCV_DM_TKHAI (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE) VALUES ('01A_TNDN13', 'Tê khai thuÕ TNDN t¹m tÝnh mÉu 01A/TNDN', 'Q', '320', TIMESTAMP '2011-07-01 00:00:00', null);
 
 INSERT INTO RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22) VALUES (6395, 'Doanh thu ph¸t sinh trong kú', '21', null, null, null, null, null, null, null, null, null, null, null, '01A_TNDN13', '3320', null, null, null, null, null, null, null, null, null, null, null);
@@ -299,7 +299,7 @@ INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIE
 INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU) VALUES ('01A_TNDN13', '38', 'N', 6420, '38');
 INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU) VALUES ('01A_TNDN13', '39', 'N', 6421, '39');
 
-'=============PL 01-1: 01A/TNDN============
+/*'=============PL 01-1: 01A/TNDN============*/
 INSERT INTO RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22) VALUES (6422, 'Tæng sè thuÕ ph¶i nép trªn tê khai', null, '06', null, null, null, null, null, null, null, null, null, 1, '01A_01_TNDN13', null, null, null, null, null, null, null, null, null, null, null, null);
 INSERT INTO RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22) VALUES (6423, 'PL 01A-01/TNDN', '08', '09', '10', '11', '12', null, null, null, null, null, null, 2, '01A_01_TNDN13', null, null, null, null, null, null, null, null, null, null, null, null);
 
@@ -310,8 +310,8 @@ INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIE
 INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU) VALUES ('01A_01_TNDN13', '11', 'N', 6423, '11');
 INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU) VALUES ('01A_01_TNDN13', '12', 'N', 6423, '12');
 
-'****************************************************************************************
-'=============01B/TNDN============
+/*'****************************************************************************************
+'=============01B/TNDN============*/
 INSERT INTO RCV_DM_TKHAI (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE) VALUES ('01B_TNDN13', 'Tê khai thuÕ TNDN t¹m tÝnh mÉu 01B/TNDN', 'Q', '320', TIMESTAMP '2011-07-01 00:00:00', null);
 
 INSERT INTO RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22) VALUES (6424, 'Doanh thu ph¸t sinh trong kú ([21]=[22]+[23])', null, '[21]', null, null, null, null, null, null, null, null, null, 1, '01B_TNDN13', '3613', null, null, null, null, null, null, null, null, null, null, null);
@@ -369,7 +369,7 @@ INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIE
 INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU) VALUES ('01B_TNDN13', '33', 'N', 6448, null);
 INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU) VALUES ('01B_TNDN13', '34', 'N', 6449, null);
 
-'=============PL 01-1: 01B/TNDN============
+/*'=============PL 01-1: 01B/TNDN============*/
 INSERT INTO RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22) VALUES (6450, 'Tæng sè thuÕ ph¶i nép trªn tê khai', null, '06', null, null, null, null, null, null, null, null, null, 1, '01B_01_TNDN13', null, null, null, null, null, null, null, null, null, null, null, null);
 INSERT INTO RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22) VALUES (6451, 'PL 01B-01/TNDN', '08', '09', '10', '11', '12', null, null, null, null, null, null, 2, '01B_01_TNDN13', null, null, null, null, null, null, null, null, null, null, null, null);
 
@@ -380,4 +380,4 @@ INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIE
 INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU) VALUES ('01B_01_TNDN13', '11', 'N', 6451, '11');
 INSERT INTO RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU) VALUES ('01B_01_TNDN13', '12', 'N', 6451, '12');
 
-'****************************************************************************************
+/*'*****************************************************************************************/

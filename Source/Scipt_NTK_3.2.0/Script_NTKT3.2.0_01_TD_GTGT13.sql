@@ -89,7 +89,7 @@ values ('01_1_TD_GTGT13', '9', 'N', 5811, null);
 ---PL01-2/TD-GTGT--------
 -------------------------
 insert into RCV_DM_TKHAI (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
-values ('01_2_TD_GTGT13', 'BࠎG PHࠎ BߠSߠTHUߠGIߠTRߠGIA TNG PHࠉ Nࠐ Cࠁ CߠSߠSࠎ XUࠔ TH࠙ Iࠎ CHO Cࠃ ࠁ PH߿NG ', 'M', '320', to_date('14-06-2008', 'dd-mm-yyyy'), null);
+values ('01_2_TD_GTGT13', 'BࠎG PHࠎ BߠSߠTHUߠGIߠTRߠGIA TNG PHࠉ N�? C�? CߠSߠSࠎ XUࠔ TH࠙ Iࠎ CHO', 'M', '320', to_date('14-06-2008', 'dd-mm-yyyy'), null);
 
 	--RCV_GDIEN_TKHAI
 insert into RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
