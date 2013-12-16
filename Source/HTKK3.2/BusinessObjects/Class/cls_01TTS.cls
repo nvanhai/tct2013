@@ -29,14 +29,14 @@ Public strTuRowDenRowPL As String
 
 Public Sub Prepare1()
     With fps
-        SetDateFormat fps, 1, .MaxRows - 2, .ColLetterToNumber("R"), DDMMYYYY
-        .Sheet = 1 'To khai 08A/TNCN
-        .Row = .MaxRows - 2
-        .Col = .ColLetterToNumber("R")
+        SetDateFormat fps, 1, 61, .ColLetterToNumber("O"), DDMMYYYY
+        SetDateFormat fps, 1, 13, .ColLetterToNumber("R"), DDMMYYYY
+        .Sheet = 1
+        .Row = 61
+        .Col = .ColLetterToNumber("O")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
-        
-        SetDateFormat fps, 1, .MaxRows - 2, .ColLetterToNumber("R"), DDMMYYYY
+      
       End With
     
 End Sub
@@ -86,7 +86,7 @@ Public Sub Prepare2()
             .SetText .ColLetterToNumber("O"), 67, ""
             .SetText .ColLetterToNumber("P"), 67, ""
           Else
-            .SetText .ColLetterToNumber("L"), 19, 0
+            .SetText .ColLetterToNumber("L"), 67, 0
 '            'lay tu thang den thang
 '            .Col = .ColLetterToNumber("U")
 '            .Row = 19
