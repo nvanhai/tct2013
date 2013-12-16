@@ -2358,7 +2358,7 @@ Public Sub cmdOK_Click()
    End If
     
     ' Kiem tra to khai 08 tu ngay phai nho hon den ngay
-    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "74" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "75") And strQuy = "TK_TU_THANG" Then
+    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "74" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "75" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "23") And strQuy = "TK_TU_THANG" Then
             If Trim(txtNgayDau.Text) <> "" Then
                  strTempValue = Trim(txtNgayDau.Text)
                  dNgayDau = objCvt.ToDate("01" & "/" & strTempValue, "DD/MM/YYYY")

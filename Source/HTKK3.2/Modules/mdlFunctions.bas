@@ -507,7 +507,7 @@ Public Sub SetupData(pGrid As fpSpread)
                                 strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
                             End If
                         ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
-                            If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Then
+                            If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "23" Then
                                 ' To khai 08/TNCN co to khai tu thang va to khai quy
                                 If strQuy = "TK_TU_THANG" Then
                                     strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & ".xml"
@@ -750,7 +750,7 @@ Public Sub SetupData(pGrid As fpSpread)
                             
                         ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
                             ' Neu to khai 08_TNCN se xu ly rieng
-                            If (GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75") And strQuy = "TK_TU_THANG" Then
+                            If (GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "23") And strQuy = "TK_TU_THANG" Then
                                 ' set ten file de lay du lieu phuc vu to khai BS
                                 If lSheet = 0 Then
     '                                If Trim(strSolanBS) = "1" And Trim(TAX_Utilities_New.month) <> "" Then
