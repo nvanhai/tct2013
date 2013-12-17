@@ -967,8 +967,8 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         If xmlTK.getElementsByTagName("ct03").length > 0 Then
             If xmlTK.getElementsByTagName("ct03")(0).Text = "1" Then
                 xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
-                xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = Format$(dNgayDauKy, "dd/MM/yyyy")
-                xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(dNgayCuoiKy, "dd/MM/yyyy")
+                xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = Format$(dNgayDauKy, "yyyy-MM-dd")
+                xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(dNgayCuoiKy, "yyyy-MM-dd")
                 xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
             Else
                 fpSpread1.Col = fpSpread1.ColLetterToNumber("D")
@@ -982,8 +982,8 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
 
         If strKieuKy <> "D" Then
-            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = Format$(dNgayDauKy, "dd/MM/yyyy")
-            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(dNgayCuoiKy, "dd/MM/yyyy")
+            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = Format$(dNgayDauKy, "yyyy-MM-dd")
+            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(dNgayCuoiKy, "yyyy-MM-dd")
            
         End If
 
@@ -1370,15 +1370,20 @@ Private Sub ExecuteSave()
             Else
                 Dim xmlChildNode As MSXML.IXMLDOMNode
                 currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
-
+                
                 For Each xmlCellNode In xmlNodeMapCT.childNodes
-
+                   
                     If xmlCellNode.hasChildNodes Then
                         cellid = xmlCellNode.Text
                     Else
                         cellid = ""
                     End If
 
+                    'Lay ID to khai
+                    If (xmlCellNode.nodeName = "maTKhai") Then
+                        strMaToKhai = cellid
+                    End If
+                    'Ket thuc lay ID to khai
                     cellArray = Split(cellid, "_")
 
                     If currentGroup = vbNullString Or currentGroup = "" Then
@@ -2054,9 +2059,9 @@ Private Sub Command1_Click()
    
 '***************** Ra soat giai doan 1 *******************
 'TEST PHASE 3
-''02/KK-TNCN - QUY
-'str2 = "aa999162300790401   03201300100100100101/0101/01/2010<S01><S>2100462770</S><S>569~128~2367~1876~3981~3768~138~3278~17665~389~2345~1767~78</S><S>Hoµng~19/11/2013~Huy“n Linh~KTV~1~~</S></S01>"
-'Barcode_Scaned str2
+'02/KK-TNCN - QUY
+str2 = "aa999162300790401   03201300100100100101/0101/01/2010<S01><S>2100462770</S><S>569~128~2367~1876~3981~3768~138~3278~17665~389~2345~1767~78</S><S>Hoµng~19/11/2013~Huy“n Linh~KTV~1~~</S></S01>"
+Barcode_Scaned str2
 ''02/KK-TNCN - THANG
 'str2 = "aa999152300790401   10201300100100100101/0101/01/2010<S01><S>2100462770</S><S>100~50~2891~2376~6745~845~129~3289~2367~178~123~237~36</S><S>Hoµng~19/11/2013~Huy“n Linh~KTV~1~~</S></S01>"
 'Barcode_Scaned str2
@@ -2420,24 +2425,24 @@ Private Sub Command1_Click()
 'str2 = "aa999212300790401   002012000000012012~40~~44~55~~739~780~~30~35~~50~55~~65~80~~90~100~~120~50~~55~55~~60~70~~470~445~~45~45~~50~65~~70~10~~20~30~~100~120~~125~25~~410~295~~45~150~~2292~2111~~20~10~~2357~2271~duan~26/11/2013</S></S01-3>"
 'Barcode_Scaned str2
 
-str2 = "aa999222300790401   00201200000000100901/0101/01/1900<S01><S>~117~0~~3~0~V.01~1~0~~2~0~V.02~7~0~~3~0~~4~0~V.11~46~0~~5~0~~6~0~~7~0~~8~0~~9~0~~11~0~V.02~12~0~~49~0~~13~0~~1~0~~4~0~~15~0~~16~0~~720~0~V.11~97~0~~17~0~~18~0~~19~0~~21~0~~22~0~~182~0~V.05~47~0~~"
-Barcode_Scaned str2
-str2 = "aa999222300790401   00201200000000200923~0~~24~0~~51~0~~25~0~~26~0~V.06~55~0~~27~0~~28~0~~29~0~~63~0~~31~0~~32~0~~213~0~~33~0~~34~0~~71~0~~35~0~~36~0~V.04~37~0~~38~0~~165~0~V.07~39~0~V.09~41~0~V.10~42~0~~43~0~~837~0~~547~0~~388~0~~44~0~~45~0~~46~0~V.08~47~"
-Barcode_Scaned str2
-str2 = "aa999222300790401   0020120000000030090~~11~0~V.12~22~0~~34~0~~15~0~~8~0~~9~0~~23~0~~24~0~~16~0~~17~0~~27~0~~159~0~~14~0~V.14~5~0~~6~0~V.15~32~0~V.09~18~0~~23~0~~19~0~~12~0~~14~0~~16~0~~290~0~~290~0~~17~0~~25~0~~27~0~~28~0~~29~0~~30~0~~32~0~~33~0~~34~0~~35"
-Barcode_Scaned str2
-str2 = "aa999222300790401   002012000000004009~0~~837~0~~1~0~~2~0~~3~0~~4~0~~5~0~~6~0~~7~0~~8~0~~9~0~~10~0~~11~0~~12~0~~13~0~~14~0~~15~0~~16~0~~17~0~~18~0~~19~0~~20~0~~21~0~~22~0~~23~0~~24~0~~25~0~~26~0~~27~0~~28~0~~29~0~~30~0~~31~0~Lan Anh~06/11/2013</S></S01>"
-Barcode_Scaned str2
-str2 = "aa999222300790401   002012000000005009<S01-1><S>~126~183~~10~11~~11~38~~12~23~~13~15~~14~16~~15~17~~16~18~~17~21~~18~24~~19~27~~107~156~~21~31~~86~125~~22~34~~64~91~~23~36~~24~21~~-1~15~~63~106~VI.1~25~24~VI.2~26~23~~12~59~~27~31~Lan Anh~06/11/2013</S></S01-1>"
-Barcode_Scaned str2
-str2 = "aa999222300790401   002012000000006009<S01-2><S>~1~23~~2~14~~3~16~~4~34~~5~32~~6~53~~7~64~~8~42~~9~56~~11~24~~12~34~~13~23~~14~6~~95~421~~15~23~~16~34~~17~45~~18~56~~19~67~~21~78"
-Barcode_Scaned str2
-str2 = "aa999222300790401   002012000000007009~~22~89~~128~392~~23~10~~24~20~~25~30~~26~40~~27~50~~28~51~~153~201~~376~1014~~29~60~~30~80~VII.34~435~1154~Lan Anh~06/11/2013</S></S01-2>"
-Barcode_Scaned str2
-str2 = "aa999222300790401   002012000000008009<S01-3><S>~1~11~~2~12~~8~47~~9~43~~5~40~~6~50~~31~203~~7~60~~11~70~~12~80~~14~90~~15~20~~16~12~~37~15~~28~16~~140~363~~29~18~~31~29~~34~39~~35~4"
-Barcode_Scaned str2
-str2 = "aa999222300790401   0020120000000090096~~38~5~~39~58~~42~5~~248~200~~45~42~~47~40~~48~52~~43~54~~42~5~~45~55~~270~248~~658~811~~49~53~~56~65~~763~929~Lan Anh~06/11/2013</S></S01-3>"
-Barcode_Scaned str2
+'str2 = "aa999222300790401   00201200000000100901/0101/01/1900<S01><S>~117~0~~3~0~V.01~1~0~~2~0~V.02~7~0~~3~0~~4~0~V.11~46~0~~5~0~~6~0~~7~0~~8~0~~9~0~~11~0~V.02~12~0~~49~0~~13~0~~1~0~~4~0~~15~0~~16~0~~720~0~V.11~97~0~~17~0~~18~0~~19~0~~21~0~~22~0~~182~0~V.05~47~0~~"
+'Barcode_Scaned str2
+'str2 = "aa999222300790401   00201200000000200923~0~~24~0~~51~0~~25~0~~26~0~V.06~55~0~~27~0~~28~0~~29~0~~63~0~~31~0~~32~0~~213~0~~33~0~~34~0~~71~0~~35~0~~36~0~V.04~37~0~~38~0~~165~0~V.07~39~0~V.09~41~0~V.10~42~0~~43~0~~837~0~~547~0~~388~0~~44~0~~45~0~~46~0~V.08~47~"
+'Barcode_Scaned str2
+'str2 = "aa999222300790401   0020120000000030090~~11~0~V.12~22~0~~34~0~~15~0~~8~0~~9~0~~23~0~~24~0~~16~0~~17~0~~27~0~~159~0~~14~0~V.14~5~0~~6~0~V.15~32~0~V.09~18~0~~23~0~~19~0~~12~0~~14~0~~16~0~~290~0~~290~0~~17~0~~25~0~~27~0~~28~0~~29~0~~30~0~~32~0~~33~0~~34~0~~35"
+'Barcode_Scaned str2
+'str2 = "aa999222300790401   002012000000004009~0~~837~0~~1~0~~2~0~~3~0~~4~0~~5~0~~6~0~~7~0~~8~0~~9~0~~10~0~~11~0~~12~0~~13~0~~14~0~~15~0~~16~0~~17~0~~18~0~~19~0~~20~0~~21~0~~22~0~~23~0~~24~0~~25~0~~26~0~~27~0~~28~0~~29~0~~30~0~~31~0~Lan Anh~06/11/2013</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999222300790401   002012000000005009<S01-1><S>~126~183~~10~11~~11~38~~12~23~~13~15~~14~16~~15~17~~16~18~~17~21~~18~24~~19~27~~107~156~~21~31~~86~125~~22~34~~64~91~~23~36~~24~21~~-1~15~~63~106~VI.1~25~24~VI.2~26~23~~12~59~~27~31~Lan Anh~06/11/2013</S></S01-1>"
+'Barcode_Scaned str2
+'str2 = "aa999222300790401   002012000000006009<S01-2><S>~1~23~~2~14~~3~16~~4~34~~5~32~~6~53~~7~64~~8~42~~9~56~~11~24~~12~34~~13~23~~14~6~~95~421~~15~23~~16~34~~17~45~~18~56~~19~67~~21~78"
+'Barcode_Scaned str2
+'str2 = "aa999222300790401   002012000000007009~~22~89~~128~392~~23~10~~24~20~~25~30~~26~40~~27~50~~28~51~~153~201~~376~1014~~29~60~~30~80~VII.34~435~1154~Lan Anh~06/11/2013</S></S01-2>"
+'Barcode_Scaned str2
+'str2 = "aa999222300790401   002012000000008009<S01-3><S>~1~11~~2~12~~8~47~~9~43~~5~40~~6~50~~31~203~~7~60~~11~70~~12~80~~14~90~~15~20~~16~12~~37~15~~28~16~~140~363~~29~18~~31~29~~34~39~~35~4"
+'Barcode_Scaned str2
+'str2 = "aa999222300790401   0020120000000090096~~38~5~~39~58~~42~5~~248~200~~45~42~~47~40~~48~52~~43~54~~42~5~~45~55~~270~248~~658~811~~49~53~~56~65~~763~929~Lan Anh~06/11/2013</S></S01-3>"
+'Barcode_Scaned str2
 
 
 End Sub
@@ -4463,15 +4468,18 @@ On Error GoTo ErrHandle
 '        Or Trim(LoaiTk) = "72" Then
          If InStr(1, dsTK_DLT, "~" & Trim(LoaiTk) & "~", vbTextCompare) > 0 Then
             If Trim(GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "Class")) <> vbNullString Then
-                If Not (rsTaxDLInfor Is Nothing Or rsTaxDLInfor.Fields.Count = 0) Then
-                    If Not objTaxBusiness Is Nothing Then
-                        objTaxBusiness.strTenDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(0).Value), "", rsTaxDLInfor.Fields(0).Value), TCVN, UNICODE)
-                        objTaxBusiness.strDiaChiDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(1).Value), "", rsTaxDLInfor.Fields(1).Value), TCVN, UNICODE)
-                         objTaxBusiness.strDienThoaiDL = IIf(IsNull(rsTaxDLInfor.Fields(2).Value), "", rsTaxDLInfor.Fields(2).Value)
-                        objTaxBusiness.strFaxDL = IIf(IsNull(rsTaxDLInfor.Fields(3).Value), "", rsTaxDLInfor.Fields(3).Value)
-                        objTaxBusiness.strEmailDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(4).Value), "", rsTaxDLInfor.Fields(4).Value), TCVN, UNICODE)
-                        objTaxBusiness.strSoHopDongDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(5).Value), "", rsTaxDLInfor.Fields(5).Value), TCVN, UNICODE)
-                        objTaxBusiness.strNgayHopDongDL = IIf(IsNull(rsTaxDLInfor.Fields(6).Value), "", rsTaxDLInfor.Fields(6).Value)
+                'If Not (rsTaxDLInfor Is Nothing Or rsTaxDLInfor.Fields.Count = 0) Then
+                If Not (rsTaxDLInfor Is Nothing) Then
+                    If Not (rsTaxDLInfor.Fields.Count = 0) Then
+                        If Not objTaxBusiness Is Nothing Then
+                            objTaxBusiness.strTenDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(0).Value), "", rsTaxDLInfor.Fields(0).Value), TCVN, UNICODE)
+                            objTaxBusiness.strDiaChiDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(1).Value), "", rsTaxDLInfor.Fields(1).Value), TCVN, UNICODE)
+                             objTaxBusiness.strDienThoaiDL = IIf(IsNull(rsTaxDLInfor.Fields(2).Value), "", rsTaxDLInfor.Fields(2).Value)
+                            objTaxBusiness.strFaxDL = IIf(IsNull(rsTaxDLInfor.Fields(3).Value), "", rsTaxDLInfor.Fields(3).Value)
+                            objTaxBusiness.strEmailDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(4).Value), "", rsTaxDLInfor.Fields(4).Value), TCVN, UNICODE)
+                            objTaxBusiness.strSoHopDongDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(5).Value), "", rsTaxDLInfor.Fields(5).Value), TCVN, UNICODE)
+                            objTaxBusiness.strNgayHopDongDL = IIf(IsNull(rsTaxDLInfor.Fields(6).Value), "", rsTaxDLInfor.Fields(6).Value)
+                        End If
                     End If
                 End If
             End If
@@ -6573,38 +6581,19 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
                                   ByVal sNgayNopTK As String) As MSXML.DOMDocument
     Dim XmlDocStandard As New MSXML.DOMDocument
     XmlDocStandard.Load GetAbsolutePath("..\InterfaceTemplates\xml\TempStandard.xml")
-    
     Set XmlDocStandard = SetValueHeaderESB(XmlDocStandard)
-    
-    'Doc file cau hinh lay thong tin header
-'    Dim xmlConfig As MSXML.DOMDocument
-'    Set xmlConfig = LoadConfig()
-'    XmlDocStandard.getElementsByTagName("VERSION")(0).Text = xmlConfig.getElementsByTagName("VERSION")(0).Text
-'    XmlDocStandard.getElementsByTagName("SENDER_CODE")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text
-'    XmlDocStandard.getElementsByTagName("SENDER_NAME")(0).Text = xmlConfig.getElementsByTagName("SENDER_NAME")(0).Text
-'    XmlDocStandard.getElementsByTagName("RECEIVER_CODE")(0).Text = xmlConfig.getElementsByTagName("RECEIVER_CODE")(0).Text
-'    XmlDocStandard.getElementsByTagName("RECEIVER_NAME")(0).Text = xmlConfig.getElementsByTagName("RECEIVER_NAME")(0).Text
-'    XmlDocStandard.getElementsByTagName("TRAN_CODE")(0).Text = xmlConfig.getElementsByTagName("TRAN_CODE")(0).Text
-'    XmlDocStandard.getElementsByTagName("ORIGINAL_CODE")(0).Text = xmlConfig.getElementsByTagName("ORIGINAL_CODE")(0).Text
-'    XmlDocStandard.getElementsByTagName("ORIGINAL_NAME")(0).Text = xmlConfig.getElementsByTagName("ORIGINAL_NAME")(0).Text
-'
-'    XmlDocStandard.getElementsByTagName("MSG_ID")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow() 'GetGUID()
-'    XmlDocStandard.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
-'    XmlDocStandard.getElementsByTagName("ORIGINAL_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
-'
-'    XmlDocStandard.getElementsByTagName("SPARE1")(0).Text = strUserName
-'    XmlDocStandard.getElementsByTagName("SPARE2")(0).Text = strMaNNT
-   
     ' Set value tag <add_info>
-    XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = sNgayNopTK
+    XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = Format(sNgayNopTK, "dd-mmm-yyyy")
     XmlDocStandard.getElementsByTagName("ky_lap_bo")(0).Text = sKyLapBo
     XmlDocStandard.getElementsByTagName("nguon_goc_tk")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text
     XmlDocStandard.getElementsByTagName("nguoi_nhan_tk")(0).Text = strUserID '& "." & xmlConfig.getElementsByTagName("CODE_OFFICE")(0).Text
-    XmlDocStandard.getElementsByTagName("ngay_nhan_tk")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy")
+    XmlDocStandard.getElementsByTagName("ngay_nhan_tk")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy hh:mm:ss")
     XmlDocStandard.getElementsByTagName("id_tkhai")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow()
     
     XmlDocStandard.getElementsByTagName("noi_gui")(0).Text = ""
     XmlDocStandard.getElementsByTagName("noi_nhan")(0).Text = ""
+    
+    XmlDocStandard.getElementsByTagName("ID_LINK")(0).Text = strMaToKhai
     
     'Bo sung tag <QHS> cho BCTC va AC
     'ID BCTC: 69(15_BCTC); 19(48_BCTC); 20(16_BCTC); 21(99_BCTC); 22(95_BCTC);
