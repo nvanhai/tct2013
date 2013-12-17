@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":1969
+         SpreadDesigner  =   "frmInterfaces.frx":19A5
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1BF1
+      SpreadDesigner  =   "frmInterfaces.frx":1C69
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -3526,12 +3526,38 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
     End If
 End Function
 
+Private Sub SetKieuKy()
+
+    strKK = strKieuKy
+
+    'Xu ly rieng cho truong hop to khai 01_TAIN_DK,01A_TNDN_DK,01B_TNDN_DK
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "92" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "12" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "98" Then
+        fpSpread1.Col = fpSpread1.ColLetterToNumber("Q")
+        fpSpread1.Row = 30
+
+        If fpSpread1.Text = "1" Then
+            strKK = "M"
+        Else
+            strKK = "D"
+        End If
+      
+    End If
+    
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "25" Then
+
+        If strQuy = "TK_THANG" Then
+            strKK = "M"
+        ElseIf strQuy = "TK_QUY" Then
+            strKK = "Q"
+        End If
+    End If
+
+End Sub
+
 ' Set gia tri mac dinh cho to khai xml
 Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     Dim vlue As Variant
     On Error GoTo ErrHandle
-
-    strKK = strKieuKy
 
     'Set ma to khai cho cac to 01/GTGT, 02/GTGT , 03B/GTGT, 04/GTGT quy
     If xmlTK.getElementsByTagName("maTKhai").length > 0 Then
@@ -3547,6 +3573,8 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             xmlTK.getElementsByTagName("maTKhai")(0).Text = "126"
         End If
     End If
+
+
 
     With fpSpread1
         
@@ -3593,27 +3621,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         If xmlTK.getElementsByTagName("pbanTKhaiXML").length > 0 Then
             xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = pbanTKhaiXML
         End If
-        
-        'Xu ly rieng cho truong hop to khai 01_TAIN_DK,01A_TNDN_DK,01B_TNDN_DK
-        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "92" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "12" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "98" Then
-            If xmlTK.getElementsByTagName("ct03").length > 0 Then
-                If xmlTK.getElementsByTagName("ct03")(0).Text = "1" Then
-                    strKK = "M"
-                Else
-                    strKK = "D"
-                End If
-            End If
-        End If
-
-        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "25" Then
-
-            If strQuy = "TK_THANG" Then
-                strKK = "M"
-            ElseIf strQuy = "TK_QUY" Then
-                strKK = "Q"
-            End If
-        End If
-        
+                
         'to TB03,BC21 khong co ky ke khai
         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "67" And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "66" Then
 
@@ -4248,6 +4256,7 @@ Private Sub KetXuatXML()
     Dim cFolder        As New Scripting.FileSystemObject
     Dim nFolder        As String
 
+    SetKieuKy
     MaTK = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile")
     
     If MaTK = "05_TNCN" Or MaTK = "06_TNCN10" Or MaTK = "09_TNCN" Or MaTK = "02_TNCN_BH" Or MaTK = "02_TNCN_XS" Or MaTK = "08B_TNCN" Then
@@ -4301,6 +4310,7 @@ Private Sub KetXuatXML()
             Exit Sub
         End If
     End If
+
     ' Bo ky tu "A","B" trong ma to khai
     If MaTK = "01A_TNCN_BH" Or MaTK = "01B_TNCN_BH" Or MaTK = "01A_TNCN_XS" Or MaTK = "01B_TNCN_XS" Or MaTK = "02A_TNCN10" Or MaTK = "02B_TNCN10" Or MaTK = "03A_TNCN10" Or MaTK = "03B_TNCN10" Then
         MaTK = Replace$(Replace$(Left$(MaTK, 3), "A", ""), "B", "") & Right$(MaTK, Len(MaTK) - 3)
@@ -4311,6 +4321,7 @@ Private Sub KetXuatXML()
     ElseIf InStr(MaTK, "10") > 0 Then
         MaTK = Replace$(MaTK, "10", "")
     End If
+
     xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
     xmlMapCT.Load GetAbsolutePath("..\InterfaceIni\" & MaTK & "_xml.xml")
     
@@ -4428,7 +4439,7 @@ Private Sub KetXuatXML()
                                 xmlCellTKNode.Text = "1"
                             ElseIf .Text = "" Then
                                 xmlCellTKNode.Text = "0"
-                                Else
+                            Else
                                 xmlCellTKNode.Text = .Text
                             End If
 
@@ -4461,12 +4472,42 @@ Private Sub KetXuatXML()
                 End If
 
                 If InStr(MaTK, "KHBS") > 0 Then
-                    MaTK = "KHBS"
+                    MaTK = Right$(MaTK, Len(MaTK) - 5)
+
+                    If MaTK = "01_GTGT" Then
+                        xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_01_GTGT_xml.xml")
+
+                        xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_01_GTGT_xml.xml")
+                    Else
+
+                        If MaTK = "02_GTGT" Or MaTK = "03_GTGT" Or MaTK = "04_GTGT" Or MaTK = "05_GTGT" Or MaTK = "01A_TNDN" Or MaTK = "01A_TNDN" Or MaTK = "02_TNDN" Or MaTK = "01_NTNN" Or MaTK = "03_NTNN" Or MaTK = "01_TAIN" Or MaTK = "01_TTDB" Or MaTK = "01_BVMT" Or MaTK = "01_TBVMT" Then
+                            xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_TT156_xml.xml")
+
+                            xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT156_xml.xml")
+                        Else
+                            xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_TT28_xml.xml")
+
+                            xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT28_xml.xml")
+                            
+                            If xmlPL.getElementsByTagName("tenTKhaiThue").length > 0 Then
+                                xmlPL.getElementsByTagName("tenTKhaiThue")(0).Text = GetAttribute(TAX_Utilities_New.NodeMenu, "Caption")
+                            End If
+
+                            If xmlPL.getElementsByTagName("mauSo").length > 0 Then
+                                xmlPL.getElementsByTagName("mauSo")(0).Text = MaTK
+                            End If
+
+                            If xmlPL.getElementsByTagName("kyTinhThue").length > 0 And xmlTK.getElementsByTagName("kyKKhai").length > 0 Then
+                                xmlPL.getElementsByTagName("kyTinhThue")(0).Text = xmlTK.getElementsByTagName("kyKKhai")(0).Text
+                            End If
+                        End If
+                    End If
+
+                Else
+                    xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
+
+                    xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\" & MaTK & "_xml.xml")
                 End If
-
-                xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
-
-                xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\" & MaTK & "_xml.xml")
 
                 If xmlPL.hasChildNodes = True And xmlMapPL.hasChildNodes = True Then
                     cellRange = 0
@@ -4505,15 +4546,24 @@ Private Sub KetXuatXML()
                                         cellRange = cellRange - GroupCellRange
                                     End If
 
+                                    If InStr(GetAttribute(nodeVal, "DataFile"), "KHBS") > 0 And id = 1 Then
+                                        xmlPL.getElementsByTagName(currentGroup)(0).insertBefore CloneNode.firstChild.CloneNode(True), xmlPL.getElementsByTagName(currentGroup)(0).lastChild
+                                    End If
+
                                     Exit Do
                                 End If
 
                                 SetAttribute CloneNode.firstChild, "id", CStr(id)
 
-                                If Level = "2" Then
-                                    xmlPL.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
+                                If InStr(GetAttribute(nodeVal, "DataFile"), "KHBS") > 0 Then
+                                    xmlPL.getElementsByTagName(currentGroup)(0).insertBefore CloneNode.firstChild.CloneNode(True), xmlPL.getElementsByTagName(currentGroup)(0).lastChild
                                 Else
-                                    xmlPL.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
+
+                                    If Level = "2" Then
+                                        xmlPL.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
+                                    Else
+                                        xmlPL.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
+                                    End If
                                 End If
 
                                 id = id + 1
@@ -4563,7 +4613,7 @@ Private Sub KetXuatXML()
                                             xmlCellTKNode.Text = "1"
                                         ElseIf .Text = "" Then
                                             xmlCellTKNode.Text = "0"
-                                            Else
+                                        Else
                                             xmlCellTKNode.Text = .Text
                                         End If
 
@@ -10950,6 +11000,18 @@ Public Sub UpdateDataKHBS_TT156(pGrid As fpSpread)
                       .Col = .ColLetterToNumber("BH")
                      .Row = 17 + i - 7
                     UpdateCell .ColLetterToNumber("BH"), .Row, IIf(Trim(.value) = "", 0, .value)
+                    
+                    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Then
+                                         .Col = .ColLetterToNumber("BF")
+                     .Row = 18 + i - 7
+                    UpdateCell .ColLetterToNumber("BF"), .Row, IIf(Trim(.value) = "", 0, .value)
+                      .Col = .ColLetterToNumber("BG")
+                     .Row = 18 + i - 7
+                    UpdateCell .ColLetterToNumber("BG"), .Row, IIf(Trim(.value) = "", 0, .value)
+                      .Col = .ColLetterToNumber("BH")
+                     .Row = 18 + i - 7
+                    UpdateCell .ColLetterToNumber("BH"), .Row, IIf(Trim(.value) = "", 0, .value)
+                    End If
                 End With
     Exit Sub
 ErrorHandle:
