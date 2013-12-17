@@ -6750,7 +6750,7 @@ Private Sub SetActiveValueKHBS()
     If varMenuId = "02" Then
         SetAttribute TAX_Utilities_New.NodeValidity.childNodes(11), "Active", 1
     ElseIf varMenuId = "01" Then
-        SetAttribute TAX_Utilities_New.NodeValidity.childNodes(12), "Active", 1
+        SetAttribute TAX_Utilities_New.NodeValidity.childNodes(9), "Active", 1
     ElseIf varMenuId = "04" Then
         SetAttribute TAX_Utilities_New.NodeValidity.childNodes(1), "Active", 1
     ElseIf varMenuId = "95" Then
