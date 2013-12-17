@@ -93,11 +93,15 @@ Public Sub Prepare1()
         SetDateFormat fps, 4, 22, .ColLetterToNumber("E"), DDMMYYYY
               
         .Sheet = 4
-        If Val(TAX_Utilities_New.Year) >= 2013 Then
+        If Val(TAX_Utilities_New.Year) >= 2012 Then
             .Col = .ColLetterToNumber("K")
             .Row = 22
-            '.Formula = ""
+            .Formula = "J22*3600000"
             .Lock = False
+        Else
+            .Col = .ColLetterToNumber("K")
+            .Row = 22
+            .Lock = True
         End If
         
         ' Lay danh muc quan he voi NNT
