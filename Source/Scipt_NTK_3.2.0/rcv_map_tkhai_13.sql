@@ -13,4 +13,13 @@ insert into rcv_map_tkhai (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_HSO, NGAY
 values ('07_TNCN13', '19', '07/KK-TNCN Tê khai dµnh cho c¸ nh©n kª khai trùc tiÕp ®èi víi thu nhËp tõ tiÒn l­¬ng, tiÒn c«ng', 'TK', '02', to_date('01-01-2014', 'dd-mm-yyyy'), null);
 commit;
 
+--To khai 08/TNCN
+insert into rcv_map_tkhai (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_HSO, NGAY_HL_TU, NGAY_HL_DEN)
+values ('08_TNCN13', '24', '08/KK-TNCN Tê khai t¹m nép thuÕ TNCN (Dµnh cho c¸ nh©n kinh doanh thùc hiÖn nép thuÕ theo kª khai)', 'TK', '02', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+commit;
+
+-- To khai 01/GTGT
+insert into rcv_map_tkhai (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_HSO, NGAY_HL_TU, NGAY_HL_DEN)
+values ('01_GTGT13', '14', 'Tê khai thuÕ GTGT khÊu trõ mÉu 01/GTGT', 'TK', '02', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+commit;
 
