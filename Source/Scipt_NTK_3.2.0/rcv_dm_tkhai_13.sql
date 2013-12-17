@@ -26,3 +26,16 @@ commit;
 insert into rcv_dm_tkhai (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
 values ('02_GTGT13', 'Tê khai thuÕ GTGT dµnh cho dù ¸n ®Çu t­', 'M', '320', to_date('01-01-2014', 'dd-mm-yyyy'), null);
 commit;
+
+-- To khai 03/GTGT
+insert into rcv_dm_tkhai (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
+values ('03_GTGT13', 'Tê khai thuÕ GTGT tÝnh theo ph­¬ng ph¸p trùc tiÕp trªn GTGT', 'M', '320', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+commit;
+
+-- To khai 04/GTGT
+insert into rcv_dm_tkhai (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
+values ('04_GTGT13', 'Tê khai thuÕ GTGT theo PP trùc tiÕp mÉu 04/GTGT', 'M', '320', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+commit;
+
+-- To khai 05/GTGT
+-- khong thay doi, chi bo sung them to khai lan phat sinh
