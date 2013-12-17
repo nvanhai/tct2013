@@ -27,6 +27,12 @@ Public FlagDLThue As Boolean
 Public tuRowDL As Long
 Public denRowDL As Long
 Public strTuRowDenRowPL As String
+
+Private arrTuThang() As String
+Private arrDenThang() As String
+Private soThang As Variant
+Private soThang1 As Long, soThang2 As Long
+
   
 'This funtion is called after an object of this class is created
 'Its functions is 1st preparing for interface sheets, such as
@@ -35,7 +41,7 @@ Public strTuRowDenRowPL As String
 Public Sub Prepare1()
     Dim tuThang, denThang As Variant
     Dim varTuThang, varDenThang As Variant
-
+    
     With fps
         .Sheet = 1 'To khai 09/TNCN
         ' Set ky cho thang bat dau tinh thue
@@ -78,7 +84,30 @@ Public Sub Prepare1()
         .Row = 4
         .Col = .ColLetterToNumber("P")
         .Text = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy(CStr(denThang))) + 1
+        
+        .GetText .ColLetterToNumber("P"), 4, soThang
 
+        ' set cong thuc cho chi tieu 27
+        arrTuThang = Split(tuThang, "/")
+        arrDenThang = Split(denThang, "/")
+        
+        ' neu den thang < 7/2013
+        If Val(arrDenThang(1)) < 2013 Or (Val(arrDenThang(1)) = 2013 And Val(arrDenThang(0)) < 7) Then
+            .Row = 47
+            .Col = .ColLetterToNumber("I")
+            .value = 4000000 * Val(soThang)
+        ElseIf (Val(arrTuThang(1)) > 2013) Or ((Val(arrTuThang(1)) = 2013) And (Val(arrTuThang(0)) >= 7)) Then
+            .Row = 47
+            .Col = .ColLetterToNumber("I")
+            .value = 9000000 * Val(soThang)
+        Else
+            soThang1 = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy("06/2013")) + 1
+            soThang2 = DateDiff("M", Format_mmyyyy("07/2013"), Format_mmyyyy(CStr(denThang))) + 1
+            .Row = 47
+            .Col = .ColLetterToNumber("I")
+            .value = 4000000 * soThang1 + 9000000 * soThang2
+        End If
+        
         
         ' Set format va gia tri cho ngay ky
         SetDateFormat fps, 1, 65, .ColLetterToNumber("M"), DDMMYYYY
@@ -191,38 +220,58 @@ Public Sub Prepare2()
         .Row = 4
         .Text = DateDiff("M", Format(CStr(tuThang), "mm/yyyy"), Format(CStr(denThang), "mm/yyyy")) + 1
         
+                arrTuThang = Split(tuThang, "/")
+        arrDenThang = Split(denThang, "/")
         
-        ''       lay gia tri CT32 da ghi trong datafile neu co
-        For Each xmlNode In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
-            ParserCellID fps, GetAttribute(xmlNode, "CellID"), iCol, iRow
-
-            If iCol = .ColLetterToNumber("I") And iRow = 47 Then
-                oldValue = GetAttribute(xmlNode, "Value")
-                .Col = iCol
-                .Row = iRow
-                .Text = oldValue
-'                .Formula = ""
-            End If
-
-            If iCol = .ColLetterToNumber("I") And iRow = 52 Then
-                oldValue = GetAttribute(xmlNode, "Value")
-                .Col = iCol
-                .Row = iRow
-                .Text = oldValue
-'                .Formula = ""
-            End If
-
-            ' chi tieu 57
-            ' dntai 17022012
-            If iCol = .ColLetterToNumber("I") And iRow = 57 Then
-                oldValue = GetAttribute(xmlNode, "Value")
-                .Col = iCol
-                .Row = iRow
-                .Text = oldValue
-'                .Formula = ""
-            End If
-
-        Next
+        ' neu den thang < 7/2013
+        If Val(arrDenThang(1)) < 2013 Or (Val(arrDenThang(1)) = 2013 And Val(arrDenThang(0)) < 7) Then
+            .Row = 47
+            .Col = .ColLetterToNumber("I")
+            .value = 4000000 * Val(soThang)
+        ElseIf (Val(arrTuThang(1)) > 2013) Or ((Val(arrTuThang(1)) = 2013) And (Val(arrTuThang(0)) >= 7)) Then
+            .Row = 47
+            .Col = .ColLetterToNumber("I")
+            .value = 9000000 * Val(soThang)
+        Else
+            soThang1 = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy("06/2013")) + 1
+            soThang2 = DateDiff("M", Format_mmyyyy("07/2013"), Format_mmyyyy(CStr(denThang))) + 1
+            .Row = 47
+            .Col = .ColLetterToNumber("I")
+            .value = 4000000 * soThang1 + 9000000 * soThang2
+        End If
+        
+        
+'        ''       lay gia tri CT32 da ghi trong datafile neu co
+'        For Each xmlNode In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+'            ParserCellID fps, GetAttribute(xmlNode, "CellID"), iCol, iRow
+'
+'            If iCol = .ColLetterToNumber("I") And iRow = 47 Then
+'                oldValue = GetAttribute(xmlNode, "Value")
+'                .Col = iCol
+'                .Row = iRow
+'                .Text = oldValue
+''                .Formula = ""
+'            End If
+'
+'            If iCol = .ColLetterToNumber("I") And iRow = 52 Then
+'                oldValue = GetAttribute(xmlNode, "Value")
+'                .Col = iCol
+'                .Row = iRow
+'                .Text = oldValue
+''                .Formula = ""
+'            End If
+'
+'            ' chi tieu 57
+'            ' dntai 17022012
+'            If iCol = .ColLetterToNumber("I") And iRow = 57 Then
+'                oldValue = GetAttribute(xmlNode, "Value")
+'                .Col = iCol
+'                .Row = iRow
+'                .Text = oldValue
+''                .Formula = ""
+'            End If
+'
+'        Next
         
         'check CT 15 < 0 thi khong cho nhap CT 16 tren PL 09B
         .Sheet = 3
@@ -518,6 +567,27 @@ End Sub
                                 .Row = 4
                                 .Col = .ColLetterToNumber("P")
                                 .Text = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy(CStr(denThang))) + 1
+                                ' set ct27
+                                arrTuThang = Split(tuThang, "/")
+                                arrDenThang = Split(denThang, "/")
+                                
+                                ' neu den thang < 7/2013
+                                If Val(arrDenThang(1)) < 2013 Or (Val(arrDenThang(1)) = 2013 And Val(arrDenThang(0)) < 7) Then
+                                    .Row = 47
+                                    .Col = .ColLetterToNumber("I")
+                                    .value = 4000000 * Val(soThang)
+                                ElseIf (Val(arrTuThang(1)) > 2013) Or ((Val(arrTuThang(1)) = 2013) And (Val(arrTuThang(0)) >= 7)) Then
+                                    .Row = 47
+                                    .Col = .ColLetterToNumber("I")
+                                    .value = 9000000 * Val(soThang)
+                                Else
+                                    soThang1 = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy("06/2013")) + 1
+                                    soThang2 = DateDiff("M", Format_mmyyyy("07/2013"), Format_mmyyyy(CStr(denThang))) + 1
+                                    .Row = 47
+                                    .Col = .ColLetterToNumber("I")
+                                    .value = 4000000 * soThang1 + 9000000 * soThang2
+                                End If
+                                
                             End If
                         End If
 
@@ -558,6 +628,26 @@ End Sub
                             .Col = .ColLetterToNumber("P")
                             .Text = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy(CStr(denThang))) + 1
                             
+                            ' set ct27
+                                arrTuThang = Split(tuThang, "/")
+                                arrDenThang = Split(denThang, "/")
+                                
+                                ' neu den thang < 7/2013
+                                If Val(arrDenThang(1)) < 2013 Or (Val(arrDenThang(1)) = 2013 And Val(arrDenThang(0)) < 7) Then
+                                    .Row = 47
+                                    .Col = .ColLetterToNumber("I")
+                                    .value = 4000000 * Val(soThang)
+                                ElseIf (Val(arrTuThang(1)) > 2013) Or ((Val(arrTuThang(1)) = 2013) And (Val(arrTuThang(0)) >= 7)) Then
+                                    .Row = 47
+                                    .Col = .ColLetterToNumber("I")
+                                    .value = 9000000 * Val(soThang)
+                                Else
+                                    soThang1 = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy("06/2013")) + 1
+                                    soThang2 = DateDiff("M", Format_mmyyyy("07/2013"), Format_mmyyyy(CStr(denThang))) + 1
+                                    .Row = 47
+                                    .Col = .ColLetterToNumber("I")
+                                    .value = 4000000 * soThang1 + 9000000 * soThang2
+                                End If
                         End If
 
                     Else
@@ -607,6 +697,27 @@ End Sub
                 .Col = .ColLetterToNumber("P")
                 .Row = 4
                 .Text = DateDiff("M", Format(CStr(tuThang), "mm/yyyy"), Format(CStr(denThang), "mm/yyyy")) + 1
+                
+                ' set ct27
+                arrTuThang = Split(tuThang, "/")
+                arrDenThang = Split(denThang, "/")
+                
+                ' neu den thang < 7/2013
+                If Val(arrDenThang(1)) < 2013 Or (Val(arrDenThang(1)) = 2013 And Val(arrDenThang(0)) < 7) Then
+                    .Row = 47
+                    .Col = .ColLetterToNumber("I")
+                    .value = 4000000 * Val(soThang)
+                ElseIf (Val(arrTuThang(1)) > 2013) Or ((Val(arrTuThang(1)) = 2013) And (Val(arrTuThang(0)) >= 7)) Then
+                    .Row = 47
+                    .Col = .ColLetterToNumber("I")
+                    .value = 9000000 * Val(soThang)
+                Else
+                    soThang1 = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy("06/2013")) + 1
+                    soThang2 = DateDiff("M", Format_mmyyyy("07/2013"), Format_mmyyyy(CStr(denThang))) + 1
+                    .Row = 47
+                    .Col = .ColLetterToNumber("I")
+                    .value = 4000000 * soThang1 + 9000000 * soThang2
+                End If
             End If
                         
             'check date
