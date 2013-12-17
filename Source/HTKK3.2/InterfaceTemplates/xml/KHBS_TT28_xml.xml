@@ -28,8 +28,8 @@
 		<soTienPhatNopCham>1</soTienPhatNopCham>
 	</PhatChamNop>
 	<NOIDUNGGIAITHICH>
-		<tenTKhaiThue>String</tenTKhaiThue>
-		<mauSo>String</mauSo>
-		<kyTinhThue>String</kyTinhThue>
+		<tenTKhaiThue></tenTKhaiThue>
+		<mauSo></mauSo>
+		<kyTinhThue></kyTinhThue>
 	</NOIDUNGGIAITHICH>
 </PL01_KHBS>

@@ -12,10 +12,7 @@
 				<TKhaiThue>
 					<maTKhai></maTKhai>
 					<tenTKhai></tenTKhai>
-					<moTaBMau>
-						<moTaBieuMau>Ban hành kèm theo thông tư số 28/2011/TT-BTC ngày 28/02/2011 của Bộ tài chính</moTaBieuMau>
-						<ghiChuTKhai>Dành cho người nộp thuế khai thuế GTGT theo phương pháp khấu trừ</ghiChuTKhai>
-					</moTaBMau>
+					<moTaBMau/>
 					<pbanTKhaiXML></pbanTKhaiXML>
 					<loaiTKhai>C</loaiTKhai>
 					<soLan>1</soLan>
@@ -35,11 +32,11 @@
 						<lyDoGiaHan></lyDoGiaHan>
 					</GiaHan>
 					<nguoiKy></nguoiKy>
-					<ngayKy>1967-08-13</ngayKy>
+					<ngayKy></ngayKy>
 					<nganhNgheKD></nganhNgheKD>
 				</TKhaiThue>
 				<NNT>
-					<mst>0000000000</mst>
+					<mst></mst>
 					<tenNNT></tenNNT>
 					<dchiNNT></dchiNNT>
 					<phuongXa></phuongXa>
@@ -52,7 +49,7 @@
 					<emailNNT></emailNNT>
 				</NNT>
 				<DLyThue>
-					<mstDLyThue>0000000000</mstDLyThue>
+					<mstDLyThue></mstDLyThue>
 					<tenDLyThue></tenDLyThue>
 					<dchiDLyThue></dchiDLyThue>
 					<maHuyenDLyThue></maHuyenDLyThue>
@@ -63,7 +60,7 @@
 					<faxDLyThue></faxDLyThue>
 					<emailDLyThue></emailDLyThue>
 					<soHDongDLyThue></soHDongDLyThue>
-					<ngayKyHDDLyThue>1967-08-13</ngayKyHDDLyThue>
+					<ngayKyHDDLyThue></ngayKyHDDLyThue>
 					<NVienDLy>
 						<tenNVienDLyThue></tenNVienDLyThue>
 						<cchiHNghe></cchiHNghe>
@@ -112,4 +109,4 @@
 		<PLuc>
 		</PLuc>
 	</HSoKhaiThue>
-</HSoThueDTu>
+	<CKyDTu></CKyDTu></HSoThueDTu>
