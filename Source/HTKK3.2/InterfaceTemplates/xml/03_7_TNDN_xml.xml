@@ -114,7 +114,7 @@
 		<moiQHeVoiTungLKet>
 			<tenLKet></tenLKet>
 			<diaChiLKet></diaChiLKet>
-			<mstLKet>0000000000</mstLKet>
+			<mstLKet></mstLKet>
 			<ctA_GCN>true</ctA_GCN>
 			<ctB_GCN>true</ctB_GCN>
 			<ctC_GCN>true</ctC_GCN>

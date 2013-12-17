@@ -22,9 +22,9 @@ Global zoomindex As Integer
 'Demo
 
 'Ket xuat XML
-Public Const maDVu = ""
-Public Const tenDVu = ""
-Public Const pbanDVu = ""
+Public Const maDVu = "HTKK"
+Public Const tenDVu = "HTKK"
+Public Const pbanDVu = "3.2.0"
 Public Const ttinNhaCCapDVu = ""
 Public Const pbanTKhaiXML = "3.2.0"
 'End XML

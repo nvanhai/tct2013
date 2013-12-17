@@ -346,10 +346,8 @@ Private mOnSetupData        As Boolean
 Private mHeaderSheet        As Integer              ' save value of Header sheet (last sheet)
 Private objTaxBusiness      As Object               ' private business object (cls001, cls002, cls003, ...)
 Private mAdjustData         As Boolean              ' mAdjustData = True when user adjust data on interface
-    Private strKK As String
-
-
-
+Private strKK As String
+Private soLanBs As Integer
 Private checkSoCT As Integer  ' Check so chi tieu =1 thieu chi tieu, =2 thua chi tieu, =3 khac so luong chi tieu
 
 ''' UpdateData description
@@ -3551,7 +3549,13 @@ Private Sub SetKieuKy()
             strKK = "Q"
         End If
     End If
-
+    
+    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_10") Then
+        soLanBs = Val(objTaxBusiness.StrSolanBosung)
+    Else
+        soLanBs = Val(strSolanBS)
+    End If
+    
 End Sub
 
 ' Set gia tri mac dinh cho to khai xml
@@ -3578,13 +3582,13 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
 
     With fpSpread1
         
-        If Val(strSolanBS) > 0 Then
+        If soLanBs > 0 Then
             If xmlTK.getElementsByTagName("loaiTKhai").length > 0 Then
                 xmlTK.getElementsByTagName("loaiTKhai")(0).Text = "B"
             End If
 
             If xmlTK.getElementsByTagName("soLan").length > 0 Then
-                xmlTK.getElementsByTagName("soLan")(0).Text = Val(strSolanBS)
+                xmlTK.getElementsByTagName("soLan")(0).Text = soLanBs
             End If
 
         Else
@@ -3828,183 +3832,229 @@ ErrHandle:
 End Sub
 
 Private Function getFileName(MaTK As String) As String
-    Dim strDataFileName As String
-    Dim lSheet          As Integer
-    
+    '    Dim strDataFileName As String
+    '    Dim lSheet          As Integer
+    '
+    '    On Error GoTo ErrHandle
+    'lSheet = 0
+
+    '    If strKHBS = "TKBS" Then
+    '        If GetAttribute(TAX_Utilities_New.NodeMenu, "Year") = vbNullString Or GetAttribute(TAX_Utilities_New.NodeMenu, "Year") = "0" Then
+    '            strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_xml.xml"
+    '        Else
+    '
+    '            If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Day") <> "1" Then
+    '                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "36" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "25" Then
+    '
+    '                    If strQuy = "TK_THANG" Then
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
+    '                    ElseIf strQuy = "TK_QUY" Then
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_xml.xml"
+    '                    End If
+    '
+    '                ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "98" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "92" Then
+    '
+    '                    If strLoaiTKThang_PS = "TK_THANG" Then
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
+    '                    ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
+    '                    End If
+    '
+    '                ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "72" Then
+    '
+    '                    If strLoaiTKThang_PS = "TK_THANG" Then
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
+    '                    ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
+    '                    End If
+    '
+    '                Else
+    '                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
+    '                End If
+    '
+    '            ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
+    '
+    '                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Then
+    '
+    '                    ' To khai 08/TNCN co to khai tu thang va to khai quy
+    '                    If strQuy = "TK_TU_THANG" Then
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & "_xml.xml"
+    '                    Else
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_xml.xml"
+    '                    End If
+    '
+    '                Else
+    '                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_xml.xml"
+    '                End If
+    '
+    '            ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Month") <> "1" Then
+    '
+    '                'Data file contain Day from and to.
+    '                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "80" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "82" Then
+    '                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & "_xml.xml"
+    '                Else
+    '                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & TAX_Utilities_New.Year & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & "_xml.xml"
+    '                End If
+    '
+    '            ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then
+    '                'Data file contain Day.
+    '                strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
+    '            Else
+    '
+    '                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "93" Then
+    '                    'Data file not contain Day from and to.
+    '                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.Year & "_xml.xml"
+    '                    '*********************************
+    '                Else
+    '                    'Data file not contain Day from and to.
+    '                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & TAX_Utilities_New.Year & "_xml.xml"
+    '                    '*********************************
+    '                End If
+    '            End If
+    '        End If
+    '
+    '    Else
+    '
+    '        If GetAttribute(TAX_Utilities_New.NodeMenu, "Year") = vbNullString Or GetAttribute(TAX_Utilities_New.NodeMenu, "Year") = "0" Then
+    '            strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_xml.xml"
+    '        Else
+    '
+    '            If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Day") <> "1" Then
+    '                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "36" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "25" Then
+    '
+    '                    If strQuy = "TK_THANG" Then
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
+    '                    ElseIf strQuy = "TK_QUY" Then
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_xml.xml"
+    '                    End If
+    '
+    '                ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "98" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "92" Then
+    '
+    '                    If strLoaiTKThang_PS = "TK_THANG" Then
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
+    '                    ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
+    '                    End If
+    '
+    '                ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "72" Then
+    '
+    '                    If strLoaiTKThang_PS = "TK_THANG" Then
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+    '                    ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
+    '                    End If
+    '
+    '                Else
+    '                    strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
+    '                End If
+    '
+    '            ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
+    '
+    '                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Then
+    '
+    '                    ' To khai 08/TNCN co to khai tu thang va to khai quy
+    '                    If strQuy = "TK_TU_THANG" Then
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & "_xml.xml"
+    '                    Else
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_xml.xml"
+    '                    End If
+    '
+    '                ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "73" Then
+    '
+    '                    ' To khai 02/TNDN
+    '                    If strLoaiTKThang_PS = "TK_LANPS" Then
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
+    '                    Else
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_xml.xml"
+    '                    End If
+    '
+    '                ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "68" Then
+    '
+    '                    ' BC26
+    '                    If strQuy = "TK_THANG" Then
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_T" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
+    '                    ElseIf strQuy = "TK_QUY" Then
+    '                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_xml.xml"
+    '                    End If
+    '
+    '                Else
+    '                    strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_xml.xml"
+    '                End If
+    '
+    '            ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Month") <> "1" Then
+    '
+    '                'Data file contain Day from and to.
+    '                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "80" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "82" Then
+    '                    strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & "_xml.xml"
+    '                Else
+    '                    strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & TAX_Utilities_New.Year & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & "_xml.xml"
+    '                End If
+    '
+    '            ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then
+    '                'Data file contain Day.
+    '                strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
+    '            Else
+    '
+    '                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "93" Then
+    '                    'Data file not contain Day from and to.
+    '                    strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.Year & "_xml.xml"
+    '                    '*********************************
+    '                Else
+    '                    'Data file not contain Day from and to.
+    '                    strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & TAX_Utilities_New.Year & "_xml.xml"
+    '                    '*********************************
+    '                End If
+    '            End If
+    '        End If
+    '    End If
+    Dim MstNnt        As String
+    Dim xmlMapMaFile  As New MSXML.DOMDocument
+    Dim MaFile        As String
+    Dim NodeMaFile    As MSXML.IXMLDOMNode
+    Dim taxOfficeName As Variant
+    Dim ctBs          As Variant
+    Dim xmlDomHeader  As New MSXML.DOMDocument
     On Error GoTo ErrHandle
-    lSheet = 0
+    xmlDomHeader.Load GetAbsolutePath("..\DataFiles\" & strTaxIdString & "\Header_01.xml")
+    taxOfficeName = GetAttribute(xmlDomHeader.getElementsByTagName("Cell")(25), "Value")
+    xmlMapMaFile.Load GetAbsolutePath("..\Project\MapMaFile.xml")
 
-    If strKHBS = "TKBS" Then
-        If GetAttribute(TAX_Utilities_New.NodeMenu, "Year") = vbNullString Or GetAttribute(TAX_Utilities_New.NodeMenu, "Year") = "0" Then
-            strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_xml.xml"
+    If xmlMapMaFile Is Nothing Then
+        getFileName = ""
+        Exit Function
+    End If
+
+    MstNnt = strTaxIdString
+    
+    If Len(LTrim(RTrim(MstNnt))) = 10 Then
+        MstNnt = Left(MstNnt, 10) & "000"
+        ' Neu la ma 13 so thi giu nguyen cau truc
+    ElseIf Len(Trim(MstNnt)) = 14 Then
+        MstNnt = Replace(Trim(MstNnt), "-", "")
+    End If
+    
+    For Each NodeMaFile In xmlMapMaFile.lastChild.childNodes
+
+        If GetAttribute(NodeMaFile, "MapID") = GetAttribute(TAX_Utilities_New.NodeMenu, "ID") Then
+            MaFile = GetAttribute(NodeMaFile, "MaFile")
+            Exit For
+        End If
+
+    Next
+
+    If soLanBs > 0 Then
+        If Len(soLanBs) < 2 Then
+            ctBs = "L0" & soLanBs
         Else
-
-            If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Day") <> "1" Then
-                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "36" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "25" Then
-
-                    If strQuy = "TK_THANG" Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
-                    ElseIf strQuy = "TK_QUY" Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_xml.xml"
-                    End If
-
-                ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "98" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "92" Then
-
-                    If strLoaiTKThang_PS = "TK_THANG" Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
-                    ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
-                    End If
-
-                ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "72" Then
-
-                    If strLoaiTKThang_PS = "TK_THANG" Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
-                    ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
-                    End If
-
-                Else
-                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
-                End If
-
-            ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
-
-                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "23" Then
-
-                    ' To khai 08/TNCN co to khai tu thang va to khai quy
-                    If strQuy = "TK_TU_THANG" Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & "_xml.xml"
-                    Else
-                        strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_xml.xml"
-                    End If
-
-                Else
-                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_xml.xml"
-                End If
-
-            ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Month") <> "1" Then
-
-                'Data file contain Day from and to.
-                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "80" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "82" Then
-                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & "_xml.xml"
-                Else
-                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & TAX_Utilities_New.Year & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & "_xml.xml"
-                End If
-
-            ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then
-                'Data file contain Day.
-                strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
-            Else
-
-                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "93" Then
-                    'Data file not contain Day from and to.
-                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.Year & "_xml.xml"
-                    '*********************************
-                Else
-                    'Data file not contain Day from and to.
-                    strDataFileName = TAX_Utilities_New.DataFolder & "bs" & strSolanBS & "_" & MaTK & "_" & TAX_Utilities_New.Year & "_xml.xml"
-                    '*********************************
-                End If
-            End If
+            ctBs = "L" & soLanBs
         End If
 
     Else
-
-        If GetAttribute(TAX_Utilities_New.NodeMenu, "Year") = vbNullString Or GetAttribute(TAX_Utilities_New.NodeMenu, "Year") = "0" Then
-            strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_xml.xml"
-        Else
-
-            If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Day") <> "1" Then
-                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "36" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "25" Then
-
-                    If strQuy = "TK_THANG" Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
-                    ElseIf strQuy = "TK_QUY" Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_Q0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_xml.xml"
-                    End If
-
-                ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "98" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "92" Then
-
-                    If strLoaiTKThang_PS = "TK_THANG" Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
-                    ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
-                    End If
-
-                ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "72" Then
-
-                    If strLoaiTKThang_PS = "TK_THANG" Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
-                    ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & ".xml"
-                    End If
-
-                Else
-                    strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
-                End If
-
-            ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
-
-                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "75" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "23" Then
-
-                    ' To khai 08/TNCN co to khai tu thang va to khai quy
-                    If strQuy = "TK_TU_THANG" Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & "_xml.xml"
-                    Else
-                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_xml.xml"
-                    End If
-
-                ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "73" Then
-
-                    ' To khai 02/TNDN
-                    If strLoaiTKThang_PS = "TK_LANPS" Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
-                    Else
-                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_xml.xml"
-                    End If
-
-                ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "68" Then
-
-                    ' BC26
-                    If strQuy = "TK_THANG" Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_T" & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
-                    ElseIf strQuy = "TK_QUY" Then
-                        strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_xml.xml"
-                    End If
-
-                Else
-                    strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year & "_xml.xml"
-                End If
-
-            ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Month") <> "1" Then
-
-                'Data file contain Day from and to.
-                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "80" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "82" Then
-                    strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & "_xml.xml"
-                Else
-                    strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & TAX_Utilities_New.Year & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & "_xml.xml"
-                End If
-
-            ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" And GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then
-                'Data file contain Day.
-                strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & TAX_Utilities_New.Day & TAX_Utilities_New.month & TAX_Utilities_New.Year & "_xml.xml"
-            Else
-
-                If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "93" Then
-                    'Data file not contain Day from and to.
-                    strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.Year & "_xml.xml"
-                    '*********************************
-                Else
-                    'Data file not contain Day from and to.
-                    strDataFileName = TAX_Utilities_New.DataFolder & MaTK & "_" & TAX_Utilities_New.Year & "_xml.xml"
-                    '*********************************
-                End If
-            End If
-        End If
+        ctBs = "L00"
+            
     End If
-
-    getFileName = strDataFileName
+    
+    getFileName = Left$(taxOfficeName, 3) & "-" & MstNnt & "-" & MaFile & "-" & strKK & Replace$(GetKyKeKhai(GetAttribute(TAX_Utilities_New.NodeMenu, "ID")), "/", "") & "-" & ctBs
     Exit Function
 ErrHandle:
     SaveErrorLog Me.Name, "GetFileName", Err.Number, Err.Description
@@ -4769,7 +4819,7 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
 '                    .InsertRows Val(cellArray(1)) + cellRange + 1, nodeTK.childNodes.length - 1
 
                     RowCount = 0
-                    RowLength = 1
+                    RowLength = 0
 
                     Do While RowLength < nodeTK.childNodes.length
                         
@@ -4779,8 +4829,8 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
                             RowCount = RowCount + nodeTK.childNodes.length
                         End If
 
-                        For dynamicID = RowLength To RowCount
-                            valXml.loadXML nodeTK.childNodes(dynamicID - 1).xml
+                        For dynamicID = RowLength To RowCount - 1
+                            valXml.loadXML nodeTK.childNodes(dynamicID).xml
 
                             For Each childNodeCT In xmlCts.lastChild.childNodes
                                 cellID = childNodeCT.Text
@@ -4800,7 +4850,7 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
 
                             cellRange = cellRange + GroupCellRange
 
-                            If dynamicID <> RowCount Then
+                            If dynamicID <> RowCount - 1 Then
                                 InsertNode .ColLetterToNumber(cellArray(0)), Val(cellArray(1)) + cellRange - 1
                             End If
                             
@@ -4888,7 +4938,7 @@ Private Function validateTkHeader(ByVal xmlDuLieuImport As MSXML.DOMDocument) As
 
         Else
 
-            If Val(strKykk(1)) <> TAX_Utilities_New.Year Then
+            If Val(strKykk(UBound(strKykk))) <> TAX_Utilities_New.Year Then
                 validateTkHeader = False
                 Exit Function
             End If
