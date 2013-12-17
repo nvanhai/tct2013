@@ -23,3 +23,9 @@ insert into rcv_map_tkhai (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_HSO, NGAY
 values ('01_GTGT13', '14', 'TÍ khai thu’ GTGT kh u trı m…u 01/GTGT', 'TK', '02', to_date('01-01-2014', 'dd-mm-yyyy'), null);
 commit;
 
+-- To khai 02/GTGT
+insert into rcv_map_tkhai (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_HSO, NGAY_HL_TU, NGAY_HL_DEN)
+values ('02_GTGT13', '68', 'TÍ khai thu’ GTGT dµnh cho d˘ ∏n Æ«u t≠', 'TK', '02', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+commit;
+
+

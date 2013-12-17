@@ -21,3 +21,8 @@ commit;
 insert into rcv_dm_tkhai (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
 values ('01_GTGT13', 'TÍ khai thu’ GTGT kh u trı m…u 01/GTGT', 'M', '320', to_date('01-01-2014', 'dd-mm-yyyy'), null);
 commit;
+
+-- To khai 02/GTGT
+insert into rcv_dm_tkhai (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
+values ('02_GTGT13', 'TÍ khai thu’ GTGT dµnh cho d˘ ∏n Æ«u t≠', 'M', '320', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+commit;
