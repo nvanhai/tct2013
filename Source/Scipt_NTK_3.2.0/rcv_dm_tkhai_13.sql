@@ -39,3 +39,9 @@ commit;
 
 -- To khai 05/GTGT
 -- khong thay doi, chi bo sung them to khai lan phat sinh
+
+-- To khai 01A/TNDN
+insert into rcv_dm_tkhai (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
+values ('01A_TNDN13', 'TÍ khai thu’ TNDN tπm t›nh m…u 01A/TNDN', 'Q', '320', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+commit;
+

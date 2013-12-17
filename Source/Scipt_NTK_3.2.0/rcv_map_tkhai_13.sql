@@ -38,5 +38,15 @@ insert into rcv_map_tkhai (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_HSO, NGAY
 values ('04_GTGT13', '31', '04/GTGT TÍ khai thu’ GTGT ', 'TK', '02', to_date('01-01-2014', 'dd-mm-yyyy'), null);
 commit;
 
+-- To khai 05/GTGT
+-- khong thay doi, chi bo sung them to khai lan phat sinh
+
+
+-- To khai 01A/TNDN
+insert into rcv_map_tkhai (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_HSO, NGAY_HL_TU, NGAY_HL_DEN)
+values ('01A_TNDN13', '37', 'TÍ khai thu’ TNDN tπm t›nh m…u 01A/TNDN', 'TK', '02', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+commit;
+
+
 
 
