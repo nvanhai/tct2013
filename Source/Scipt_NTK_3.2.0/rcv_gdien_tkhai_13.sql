@@ -485,6 +485,53 @@ insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_
 values (5961, 'Xe hai b¸nh', '12', '13', '14', '15', '16', '17', '18', '', '', '', '', 2, '01_07_GTGT13', '', '', '', '', '', '', '', '', '', '', '', '');
 commit;
 
+-- 02/GTGT
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5970, 'ThuÕ GTGT ch­a ®­îc hoµn kú tr­íc chuyÓn sang', '', '21', '', '', '', '', '', '', '', '', '', 1, '02_GTGT13', '2210', '', '', '', '', '', '', '', '', '', '', '');
+
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5971, 'ChØ tiªu 21a', '', '21a', '', '', '', '', '', '', '', '', '', 1, '02_GTGT13', '', '', '', '', '', '', '', '', '', '', '', '');
+
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5972, 'Kª khai thuÕ GTGT ®Çu vµo cña dù ¸n ®Çu t­', '', '', '', '', '', '', '', '', '', '', '', 2, '02_GTGT13', '2211', '', '', '', '', '', '', '', '', '', '', '');
+
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5973, 'Hµng ho¸, dÞch vô mua vµo trong kú', '22', '23', '', '', '', '', '', '', '', '', '', 3, '02_GTGT13', '2212', '', '', '', '', '', '', '', '', '', '', '');
+
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5974, '§iÒu chØnh thuÕ GTGT cña HHDV mua vµo c¸c kú tr­íc', '', '', '', '', '', '', '', '', '', '', '', 4, '02_GTGT13', '2213', '', '', '', '', '', '', '', '', '', '', '');
+
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5975, '§iÒu chØnh t¨ng', '24', '25', '', '', '', '', '', '', '', '', '', 5, '02_GTGT13', '2214', '', '', '', '', '', '', '', '', '', '', '');
+
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5976, '§iÒu chØnh gi¶m', '26', '27', '', '', '', '', '', '', '', '', '', 6, '02_GTGT13', '2215', '', '', '', '', '', '', '', '', '', '', '');
+
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5977, 'Tæng sè thuÕ GTGT cña HHDV mua vµo ([28] = [23] + [25] - [27]) ', '', '28', '', '', '', '', '', '', '', '', '', 7, '02_GTGT13', '2216', '', '', '', '', '', '', '', '', '', '', '');
+
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5978, 'ThuÕ GTGT mua vµo cña dù ¸n ®Çu t­ (cïng tØnh, thµnh phè trùc thuéc trung ­¬ng) bï trõ víi thuÕ GTGT ph¶i nép cña ho¹t ®éng s¶n xuÊt kinh doanh cïng kú tÝnh thuÕ', '', '28a', '', '', '', '', '', '', '', '', '', 8, '02_GTGT13', '2217', '', '', '', '', '', '', '', '', '', '', '');
+
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5979, 'ThuÕ GTGT ch­a ®­îc hoµn ®Õn kú kª khai cña dù ¸n ®Çu t­ ([29] = [21] + [28] - [28a])', '', '29', '', '', '', '', '', '', '', '', '', 9, '02_GTGT13', '2218', '', '', '', '', '', '', '', '', '', '', '');
+
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5980, 'ThuÕ ®Ò nghÞ hoµn', '', '', '', '', '', '', '', '', '', '', '', 4, '02_GTGT13', '', '', '', '', '', '', '', '', '', '', '', '');
+
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5981, 'ChØ tiªu 30a', '', '30a', '', '', '', '', '', '', '', '', '', 10, '02_GTGT13', '', '', '', '', '', '', '', '', '', '', '', '');
+
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5982, 'ThuÕ GTGT ®Ò nghÞ hoµn', '', '30', '', '', '', '', '', '', '', '', '', 10, '02_GTGT13', '2219', '', '', '', '', '', '', '', '', '', '', '');
+
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5983, 'ThuÕ GTGT ch­a ®­îc hoµn bµn giao cho doanh nghiÖp míi thµnh lËp trong kú', '', '31', '', '', '', '', '', '', '', '', '', 11, '02_GTGT13', '2220', '', '', '', '', '', '', '', '', '', '', '');
+
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (5984, 'ThuÕ GTGT ch­a ®­îc hoµn chuyÓn kú sau ([32] = [29] - [30] - [31])', '', '32', '', '', '', '', '', '', '', '', '', 12, '02_GTGT13', '2221', '', '', '', '', '', '', '', '', '', '', '');
+commit;
+
 
 
 
