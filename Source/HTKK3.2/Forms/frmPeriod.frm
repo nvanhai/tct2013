@@ -483,7 +483,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":02C8
+      SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
    End
@@ -2078,12 +2078,12 @@ Public Sub cmdOK_Click()
     End If
         
     ' validate cho to 04TBAC
-    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "93" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "89") Then
-        If (chkDauTho.value = 0 And chkCondensate.value = 0 And chkKhiThien.value = 0) Then
-            DisplayMessage "0017", msOKOnly, miInformation
-            Exit Sub
-        End If
-    End If
+'    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "93" Or TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "89") Then
+'        If (chkDauTho.value = 0 And chkCondensate.value = 0 And chkKhiThien.value = 0) Then
+'            DisplayMessage "0017", msOKOnly, miInformation
+'            Exit Sub
+'        End If
+'    End If
     
     If strKieuKy = KIEU_KY_NGAY_NAM Then
         txtNgayDau_LostFocus
@@ -2946,7 +2946,7 @@ Private Sub Form_Load()
         SetLayoutToKhaiThangQuy
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "11" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "12" _
      Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "77" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "86" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "87" _
-     Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "83" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "85" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "94" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "96" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "97" Then
+     Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "83" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "85" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "94" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "96" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "97" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "89" Then
         SetupLayoutGTGT strKieuKy, GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "72" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "06" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "81" Then
         SetupLayoutNTNN
@@ -2966,8 +2966,8 @@ Private Sub Form_Load()
         SetupLayout04TBAC
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "92" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "98" Then
         SetupLayout01_TAIN_DK
-    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "93" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "89" Then
-        SetupLayout02_TAIN_DK
+'    ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "93" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "89" Then
+'        SetupLayout02_TAIN_DK
     ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "23" Then
         SetupLayout01TTS
     Else
@@ -4558,8 +4558,8 @@ Private Sub OptBosung_Click()
                 strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.Year & ".xml"
             ElseIf varMenuId = "93" Then
                 strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_New.Year & ".xml"
-            ElseIf varMenuId = "89" Then
-                strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.Year & ".xml"
+'            ElseIf varMenuId = "89" Then
+'                strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_New.Year & ".xml"
             ElseIf varMenuId = "80" Or varMenuId = "82" Then
                 strDataFileName = TAX_Utilities_New.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") & "_" & Replace(TAX_Utilities_New.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_New.LastDay, "/", "") & ".xml"
             End If
@@ -4605,18 +4605,18 @@ Private Sub OptBosung_Click()
                     Set fpsNgaykhaiBS.Container = frmKy
                     fpsNgaykhaiBS.Top = 1350
                     fpsNgaykhaiBS.Left = 960
-                ElseIf varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "98" Then
-                    frmKy.Height = 2350
-                    Frame2.Top = 2000
-                    Set fpsNgaykhaiBS.Container = frmKy
-                    lblSolan.Top = 1500
-                    lblSolan.Left = 3400
-                    txtSolan.Top = 1450
-                    txtSolan.Left = 3800
-                    txtSolan.Width = 420
-                    lblSolan.Visible = True
-                    fpsNgaykhaiBS.Top = 1800
-                    fpsNgaykhaiBS.Left = 1600
+'                ElseIf varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "98" Then
+'                    frmKy.Height = 2350
+'                    Frame2.Top = 2000
+'                    Set fpsNgaykhaiBS.Container = frmKy
+'                    lblSolan.Top = 1500
+'                    lblSolan.Left = 3400
+'                    txtSolan.Top = 1450
+'                    txtSolan.Left = 3800
+'                    txtSolan.Width = 420
+'                    lblSolan.Visible = True
+'                    fpsNgaykhaiBS.Top = 1800
+'                    fpsNgaykhaiBS.Left = 1600
                 ElseIf varMenuId = "99" Then
                     frmKy.Height = 1850
                     Frame2.Top = 2100

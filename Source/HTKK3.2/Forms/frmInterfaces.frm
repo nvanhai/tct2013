@@ -4308,7 +4308,7 @@ Private Sub KetXuatXML()
     Dim Blank          As Boolean
     Dim id             As Integer
     Dim CloneNode      As New MSXML.DOMDocument
-    Dim level          As String
+    Dim Level          As String
     Dim intCtrl        As Integer
     Dim strArrActive() As String
     Dim cFolder        As New Scripting.FileSystemObject
@@ -4404,7 +4404,7 @@ Private Sub KetXuatXML()
             If UCase(xmlNodeMapCT.nodeName) = "DYNAMIC" Then
                 id = 1
                 currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
-                level = GetAttribute(xmlNodeMapCT, "Level")
+                Level = GetAttribute(xmlNodeMapCT, "Level")
 
                 CloneNode.loadXML xmlNodeMapCT.firstChild.xml
 
@@ -4417,7 +4417,7 @@ Private Sub KetXuatXML()
                 Blank = True
 
                 If xmlTK.getElementsByTagName(currentGroup)(0).hasChildNodes Then
-                    If level = "2" Then
+                    If Level = "2" Then
                         xmlTK.getElementsByTagName(currentGroup)(0).firstChild.removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild.firstChild
 
                     Else
@@ -4443,7 +4443,7 @@ Private Sub KetXuatXML()
 
                     SetAttribute CloneNode.firstChild, "id", CStr(id)
 
-                    If level = "2" Then
+                    If Level = "2" Then
                         xmlTK.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
                     Else
                         xmlTK.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
@@ -4576,7 +4576,7 @@ Private Sub KetXuatXML()
                         If UCase(xmlSection.nodeName) = "DYNAMIC" Then
                             id = 1
                             currentGroup = GetAttribute(xmlSection, "GroupName")
-                            level = GetAttribute(xmlSection, "Level")
+                            Level = GetAttribute(xmlSection, "Level")
 
                             CloneNode.loadXML xmlSection.firstChild.xml
 
@@ -4617,7 +4617,7 @@ Private Sub KetXuatXML()
                                     xmlPL.getElementsByTagName(currentGroup)(0).insertBefore CloneNode.firstChild.CloneNode(True), xmlPL.getElementsByTagName(currentGroup)(0).lastChild
                                 Else
 
-                                    If level = "2" Then
+                                    If Level = "2" Then
                                         xmlPL.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
                                     Else
                                         xmlPL.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
@@ -4795,7 +4795,7 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
     Dim RowLength        As Integer
     Dim rowCount         As Integer
     Dim valXml           As New MSXML.DOMDocument
-    Dim level            As Variant
+    Dim Level            As Variant
     Dim RowNumber        As Integer
 
     With fpSpread1
@@ -4812,7 +4812,7 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
                 Dim dynamicID As Integer
                 
                 GroupName = GetAttribute(nodeMapCT, "GroupName")
-                level = GetAttribute(nodeMapCT, "Level")
+                Level = GetAttribute(nodeMapCT, "Level")
                 Set nodeTK = xmlDuLieuImport.getElementsByTagName(GroupName)(0)
 
                 If GetAttribute(nodeMapCT, "GroupCellRange") = vbNullString Then
@@ -4827,7 +4827,7 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
                 cellID = xmlCts.firstChild.firstChild.Text
                 cellArray = Split(cellID, "_")
 
-                If level = "2" Then
+                If Level = "2" Then
                     RowNumber = nodeTK.firstChild.childNodes.length
                         
                 Else
@@ -4852,7 +4852,7 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
 
                         For dynamicID = RowLength To rowCount - 1
 
-                            If level = "2" Then
+                            If Level = "2" Then
                         
                                 valXml.loadXML nodeTK.firstChild.childNodes(dynamicID).xml
                             Else
@@ -7103,10 +7103,10 @@ Private Sub Form_Load()
              ElseIf strQuy = "TK_QUY" Then
                 strKK = "Q"
              End If
-        ElseIf idMenu = "92" Or idMenu = "93" Or idMenu = "89" Or idMenu = "98" Then
-            objTaxBusiness.chkDauTho = strDauTho
-            objTaxBusiness.chkCondensate = strCondensate
-            objTaxBusiness.chkKhiThienNhien = strKhiThienNhien
+'        ElseIf idMenu = "92" Or idMenu = "93" Or idMenu = "89" Or idMenu = "98" Then
+'            objTaxBusiness.chkDauTho = strDauTho
+'            objTaxBusiness.chkCondensate = strCondensate
+'            objTaxBusiness.chkKhiThienNhien = strKhiThienNhien
         End If
         ' set ngay dau quy
         If idMenu = "01" Or idMenu = "02" Then
