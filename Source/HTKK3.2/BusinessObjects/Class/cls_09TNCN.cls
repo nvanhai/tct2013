@@ -125,7 +125,7 @@ Public Sub Prepare1()
         If Val(TAX_Utilities_New.Year) >= 2012 Then
             .Col = .ColLetterToNumber("K")
             .Row = 22
-            .Formula = "J22*3600000"
+            .Formula = ""
             .Lock = False
         Else
             .Col = .ColLetterToNumber("K")
@@ -914,6 +914,9 @@ Private Sub checkSheet4()
     Dim mErrNgaySinhPhuThuoc As Variant, iFlagNgaySinhPhuThuoc As Integer
     Dim mErrMSTCT5Trung As Variant, iFlagMSTCT5Trung As Integer, rowMSTTrung As Integer
     
+    Dim vErrorThueGiamTru As Variant
+    Dim iFlagThueGiamTru As Integer
+
     Dim i, j As Integer
     Dim blCheck_S1, blCheck_S2, blCheck_S3, blCheck_S4, blCheck_S5 As Boolean
     With fps
@@ -953,6 +956,8 @@ Private Sub checkSheet4()
         .GetText .ColLetterToNumber("E"), 66, mErrNgaySinhPhuThuoc
         'lay thong bao ve MST cua vo hoac chong trung voi MST  nguoi phu thuoc
         .GetText .ColLetterToNumber("E"), 67, mErrMSTCT5Trung
+        
+        .GetText .ColLetterToNumber("E"), 78, vErrorThueGiamTru
         
         .Sheet = 4 'Check tinh xac thuc cua cac thong tin tren bang ke 05B/TNCN
         
@@ -1236,18 +1241,20 @@ Private Sub checkSheet4()
                 End If
                 
                 'check chi tieu [15] <= chitieu [14] * 1600000
-'                vCT15 = Replace(CStr(vCT15), ".", "")
-'                If (Val(vCT15) > Val(vSoThangGiamTru) * 1600000) Then
-'                    .Col = .ColLetterToNumber("K")
-'                    .BackColor = mErrorColor
-'                    .CellNote = vErrCheckCT15
-'                    iFlagCheckCT15 = 1
-'                Else
-'                    .Col = .ColLetterToNumber("K")
-'                    .BackColor = mNonErrorColor
-'                    .CellNote = ""
-'                End If
                 
+                'vCT15 = Replace(CStr(vCT15), ".", "")
+                 If Val(TAX_Utilities_New.Year) >= 2012 Then
+                    If (Val(vCT15) > Val(vSoThangGiamTru) * 3600000) Then
+                        .Col = .ColLetterToNumber("K")
+                        .BackColor = mErrorColor
+                        .CellNote = vErrorThueGiamTru
+                        iFlagCheckCT15 = 1
+                    Else
+                        .Col = .ColLetterToNumber("K")
+                        .BackColor = mNonErrorColor
+                        .CellNote = ""
+                    End If
+                End If
                 'Check So thang duoc giam tru thue cua nguoi phu thuoc tren phu luc 09C/TNCN
                 
                 If IIf(vSoThangGiamTru = vbNullString, 0, vSoThangGiamTru) > Val(vSoThangQuyetToan) Then
@@ -1347,10 +1354,10 @@ Private Sub checkSheet4()
         'trong truong hop ct [15] > ct [14] * 1600000 thi set lai gia tri tren header
         If iFlagCheckCT15 = 1 Then
             .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 64, "0"
+            .SetText .ColLetterToNumber("B"), 78, "0"
         Else
             .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 64, "1"
+            .SetText .ColLetterToNumber("B"), 78, "1"
         End If
         ' Trong truong hop Ngay sinh nguoi phu thuoc sau ky tinh thue set lai header
         If iFlagNgaySinhPhuThuoc = 1 Then
