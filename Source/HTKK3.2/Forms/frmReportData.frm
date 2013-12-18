@@ -126,7 +126,7 @@ Begin VB.Form frmReportData
       DisplayText     =   ""
       BarWidthReduction=   -1
       TextAlignment   =   0
-      Quality         =   0
+      Quality         =   68
    End
 End
 Attribute VB_Name = "frmReportData"
@@ -530,6 +530,21 @@ nextPrinter:
 '            fpsReport.Text = ""
 '            fpsReport.Lock = True
         End If
+    ElseIf (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") Then
+        fpsReport.SetText fpsReport.ColLetterToNumber("E"), 83, GetAttribute(GetMessageCellById("0265"), "Msg")
+        fpsReport.Row = 83
+        fpsReport.Col = fpsReport.ColLetterToNumber("E")
+        fpsReport.FontBold = False
+        ' kiem tra chi tieu 36,42,43
+        Dim ct36 As Variant
+        fpsReport.GetText fpsReport.ColLetterToNumber("AV"), 72, ct36
+        If Val(ct36) > 0 Then
+            fpsReport.SetText fpsReport.ColLetterToNumber("BD"), 72, "%"
+        Else
+            fpsReport.SetText fpsReport.ColLetterToNumber("BD"), 72, ""
+        End If
+        
+        
     End If
 
     'end
@@ -703,6 +718,16 @@ nextPrinter:
                 Next
             Next
 
+        End If
+        
+        ' kiem tra to khai 02/TNDN
+        If idToKhai = "73" Then
+            If objTaxBusiness.isCheckGH = True Then
+                fpsReport.sheet = 1
+                fpsReport.Row = 83
+                fpsReport.Col = fpsReport.ColLetterToNumber("C")
+                fpsReport.Text = ""
+            End If
         End If
     End If
     
