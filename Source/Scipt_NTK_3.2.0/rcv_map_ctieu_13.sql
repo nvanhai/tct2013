@@ -2058,6 +2058,7 @@ insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIE
 values ('01_TNCN_BHDC13', '31', 'N', 6164, '');
 commit;
 
+-- To khai 01/KK-TTS
 
 
 
