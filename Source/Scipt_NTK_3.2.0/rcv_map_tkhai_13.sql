@@ -65,6 +65,11 @@ values ('01_TAIN13', '24', 'TÍ khai thu’ tµi nguy™n m…u 01/TAIN', 'TK', '02', to
 commit;
 
 -- To khai 01/TBVMT
+insert into rcv_map_tkhai (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_HSO, NGAY_HL_TU, NGAY_HL_DEN)
+values ('01_BVMT13', '', 'TÍ KHAI THU’ B∂O V÷ M§I TR¶ÍNG', 'TK', '02', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+commit;
+
+
 
 
 
