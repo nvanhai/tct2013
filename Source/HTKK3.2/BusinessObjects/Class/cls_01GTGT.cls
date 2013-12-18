@@ -1018,6 +1018,8 @@ Private Sub CheckDynamicError()
     Dim vdate As Date
     Dim vNgayHt As Date
     
+    Dim countThuSuat0 As Long
+    
     With fps
     
     '.Visible = False
@@ -1081,6 +1083,7 @@ Private Sub CheckDynamicError()
      ' end kiem tra check gia han
     
     ' if sheet invisible then set value="1"
+    countThuSuat0 = 0
     .Sheet = 2
     blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
     If blCheck_S2 = True Then
@@ -1142,6 +1145,10 @@ Private Sub CheckDynamicError()
                                 iFocusFlag = 1
                             End If
                         Else
+                            ' Kiem tra co du lieu dong thue suat 0% thi bat buoc nhap PL 01-3
+                            If strCellTag = "2" And Trim(vSoHD) <> "" Then
+                                countThuSuat0 = countThuSuat0 + 1
+                            End If
                             .Col = .ColLetterToNumber("F")
                             .CellNote = ""
                             .BackColor = mNonErrorColor
@@ -1334,9 +1341,29 @@ Private Sub CheckDynamicError()
                                 End If
                             End If
                         End If
+                        
+                        
+                        
                 End Select
            End If
         Next
+        
+            ' kiem tra bat buoc nhap PL 01-3
+            If countThuSuat0 > 0 Then
+                .Sheet = 2
+                .ActiveSheet = 2
+                If Not .Visible Then
+                    .Visible = True
+                    DisplayMessage "0290", msOKOnly, miWarning
+                    .Visible = False
+                Else
+                    DisplayMessage "0290", msOKOnly, miWarning
+                End If
+                strFocusSheetName = "'" & .SheetName & "'"
+                strFocusCol = str(.Col)
+                strFocusRow = str(.Row)
+                iFocusFlag = 1
+            End If
      End If
             .Sheet = .SheetCount
             .SetText .ColLetterToNumber("B"), 27, IIf(iFlagvKyHieuHD = 1 And blCheck_S2 = True, "0", "1")
@@ -1344,7 +1371,7 @@ Private Sub CheckDynamicError()
             .SetText .ColLetterToNumber("B"), 29, IIf(iFlagvNgayHD = 1 And blCheck_S2 = True, "0", "1")
             .SetText .ColLetterToNumber("B"), 30, IIf(iFlagvTennguoimua = 1 And blCheck_S2 = True, "0", "1")
             .SetText .ColLetterToNumber("B"), 31, IIf(iFlagvMst = 1 And blCheck_S2 = True, "0", "1")
-        
+            .SetText .ColLetterToNumber("B"), 69, IIf(countThuSuat0 > 0 And IIf(TAX_Utilities_New.NodeValidity.childNodes(3).Attributes.getNamedItem("Active").nodeValue <> "0", True, False) = False, "0", "1")
 '            If iFocusFlag = 1 Then
 '                ' setcell for focus
 '                strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
