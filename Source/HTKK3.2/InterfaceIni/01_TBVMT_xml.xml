@@ -26,7 +26,7 @@
 		</ThueBVMT>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
-		<tongCot6>U_46</tongCot6>
+		<tong_ct6>U_46</tong_ct6>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>R_55</nguoiKy>

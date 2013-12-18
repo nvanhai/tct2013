@@ -41,12 +41,12 @@
 	<Map MapID="70" MaFile="01_NTNN"/>
 	<Map MapID="81" MaFile="03_NTNN"/>
 	<Map MapID="101_10" MaFile=""/>
-	<Map MapID="17" MaFile="05_TNCN"/>
-	<Map MapID="42" MaFile="02_TNCN_BH"/>
-	<Map MapID="43" MaFile="02_TNCN_XS"/>
-	<Map MapID="59" MaFile="06_TNCN10"/>
-	<Map MapID="76" MaFile="08B_TNCN"/>
-	<Map MapID="41" MaFile="09_TNCN"/>
+	<Map MapID="17" MaFile="05TL"/>
+	<Map MapID="42" MaFile="02BH"/>
+	<Map MapID="43" MaFile="02XS"/>
+	<Map MapID="59" MaFile="06KK"/>
+	<Map MapID="76" MaFile="08BN"/>
+	<Map MapID="41" MaFile="09CN"/>
 	<Map MapID="102_8" MaFile=""/>
 	<Map MapID="45" MaFile="05_TNCN_09"/>
 	<Map MapID="52" MaFile="IN_BIA_TNCN"/>
