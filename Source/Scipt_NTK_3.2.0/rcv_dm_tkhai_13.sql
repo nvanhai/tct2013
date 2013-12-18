@@ -45,3 +45,10 @@ insert into rcv_dm_tkhai (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
 values ('01A_TNDN13', 'TÍ khai thu’ TNDN tπm t›nh m…u 01A/TNDN', 'Q', '320', to_date('01-01-2014', 'dd-mm-yyyy'), null);
 commit;
 
+-- To khai 01B/TNDN
+insert into rcv_dm_tkhai (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
+values ('01B_TNDN13', 'TÍ khai thu’ TNDN tπm t›nh m…u 01B/TNDN', 'Q', '320', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+commit;
+
+
+

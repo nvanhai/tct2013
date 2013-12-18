@@ -48,5 +48,11 @@ values ('01A_TNDN13', '37', 'TÍ khai thu’ TNDN tπm t›nh m…u 01A/TNDN', 'TK', '02
 commit;
 
 
+-- to khai 01B/TNDN
+insert into rcv_map_tkhai (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_HSO, NGAY_HL_TU, NGAY_HL_DEN)
+values ('01B_TNDN13', '26', 'TÍ khai thu’ TNDN tπm t›nh m…u 01B/TNDN', 'TK', '02', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+commit;
+
+
 
 
