@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":19A5
+         SpreadDesigner  =   "frmInterfaces.frx":1969
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1C69
+      SpreadDesigner  =   "frmInterfaces.frx":1BF1
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -3527,19 +3527,27 @@ End Function
 Private Sub SetKieuKy()
 
     strKK = strKieuKy
-
-    'Xu ly rieng cho truong hop to khai 01_TAIN_DK,01A_TNDN_DK,01B_TNDN_DK
-    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "92" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "12" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "98" Then
-        fpSpread1.Col = fpSpread1.ColLetterToNumber("Q")
-        fpSpread1.Row = 30
-
-        If fpSpread1.Text = "1" Then
-            strKK = "M"
-        Else
+    
+    '01_NTNN
+    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "06" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "90" Then
+        If strLoaiTKThang_PS = "TK_LANPS" Then
             strKK = "D"
+        Else
+            strKK = "M"
         End If
-      
     End If
+    'Xu ly rieng cho truong hop to khai 01_TAIN_DK,01A_TNDN_DK,01B_TNDN_DK
+'    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "92" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "12" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "98" Then
+'        fpSpread1.Col = fpSpread1.ColLetterToNumber("Q")
+'        fpSpread1.Row = 30
+'
+'        If fpSpread1.Text = "1" Then
+'            strKK = "M"
+'        Else
+'            strKK = "D"
+'        End If
+'
+'    End If
     
     If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "25" Then
 
@@ -4043,7 +4051,7 @@ Private Function getFileName(MaTK As String) As String
     Next
 
     If soLanBs > 0 Then
-        If Len(soLanBs) < 2 Then
+        If soLanBs < 10 Then
             ctBs = "L0" & soLanBs
         Else
             ctBs = "L" & soLanBs
@@ -4300,7 +4308,7 @@ Private Sub KetXuatXML()
     Dim Blank          As Boolean
     Dim id             As Integer
     Dim CloneNode      As New MSXML.DOMDocument
-    Dim Level          As String
+    Dim level          As String
     Dim intCtrl        As Integer
     Dim strArrActive() As String
     Dim cFolder        As New Scripting.FileSystemObject
@@ -4396,7 +4404,7 @@ Private Sub KetXuatXML()
             If UCase(xmlNodeMapCT.nodeName) = "DYNAMIC" Then
                 id = 1
                 currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
-                Level = GetAttribute(xmlNodeMapCT, "Level")
+                level = GetAttribute(xmlNodeMapCT, "Level")
 
                 CloneNode.loadXML xmlNodeMapCT.firstChild.xml
 
@@ -4409,7 +4417,7 @@ Private Sub KetXuatXML()
                 Blank = True
 
                 If xmlTK.getElementsByTagName(currentGroup)(0).hasChildNodes Then
-                    If Level = "2" Then
+                    If level = "2" Then
                         xmlTK.getElementsByTagName(currentGroup)(0).firstChild.removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild.firstChild
 
                     Else
@@ -4435,7 +4443,7 @@ Private Sub KetXuatXML()
 
                     SetAttribute CloneNode.firstChild, "id", CStr(id)
 
-                    If Level = "2" Then
+                    If level = "2" Then
                         xmlTK.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
                     Else
                         xmlTK.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
@@ -4568,7 +4576,7 @@ Private Sub KetXuatXML()
                         If UCase(xmlSection.nodeName) = "DYNAMIC" Then
                             id = 1
                             currentGroup = GetAttribute(xmlSection, "GroupName")
-                            Level = GetAttribute(xmlSection, "Level")
+                            level = GetAttribute(xmlSection, "Level")
 
                             CloneNode.loadXML xmlSection.firstChild.xml
 
@@ -4609,7 +4617,7 @@ Private Sub KetXuatXML()
                                     xmlPL.getElementsByTagName(currentGroup)(0).insertBefore CloneNode.firstChild.CloneNode(True), xmlPL.getElementsByTagName(currentGroup)(0).lastChild
                                 Else
 
-                                    If Level = "2" Then
+                                    If level = "2" Then
                                         xmlPL.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
                                     Else
                                         xmlPL.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
@@ -4705,7 +4713,7 @@ Private Sub cmdImportXML_Click()
     
     strImportFileName = importXmlDialog()
     xmlDuLieuImport.Load strImportFileName
-
+    SetKieuKy
     If Not validateTkHeader(xmlDuLieuImport) Then
         DisplayMessage "0278", msOKOnly, miWarning
         Exit Sub
@@ -4738,7 +4746,8 @@ Private Sub cmdImportXML_Click()
         Next
 
     End If
-    
+    fpSpread1.Refresh
+    Exit Sub
 ErrHandle:
     SaveErrorLog Me.Name, "cmdImportXML_Click", Err.Number, Err.Description
 End Sub
@@ -4784,6 +4793,8 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
     Dim RowLength        As Integer
     Dim RowCount         As Integer
     Dim valXml           As New MSXML.DOMDocument
+    Dim level            As Variant
+    Dim RowNumber        As Integer
 
     With fpSpread1
         .sheet = SheetName
@@ -4792,12 +4803,14 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
         ResetDataAndForm .sheet
         SetAttribute TAX_Utilities_New.NodeValidity.childNodes(.sheet - 1), "Active", "1"
         fpSpread1.EventEnabled(EventAllEvents) = False
-           For Each nodeMapCT In xmlMapCT.childNodes
+
+        For Each nodeMapCT In xmlMapCT.childNodes
 
             If nodeMapCT.nodeName = "Dynamic" Then
                 Dim dynamicID As Integer
                 
                 GroupName = GetAttribute(nodeMapCT, "GroupName")
+                level = GetAttribute(nodeMapCT, "Level")
                 Set nodeTK = xmlDuLieuImport.getElementsByTagName(GroupName)(0)
 
                 If GetAttribute(nodeMapCT, "GroupCellRange") = vbNullString Then
@@ -4809,49 +4822,71 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
                 xmlCts.loadXML "<Cts></Cts>"
                                 
                 getAllNodes nodeMapCT, xmlCts
-                                
                 cellID = xmlCts.firstChild.firstChild.Text
                 cellArray = Split(cellID, "_")
 
-                If UBound(cellArray) = 1 And nodeTK.childNodes.length > 0 Then
+                If level = "2" Then
+                    RowNumber = nodeTK.firstChild.childNodes.length
+                        
+                Else
+                    RowNumber = nodeTK.childNodes.length
+                End If
+
+                If UBound(cellArray) = 1 And RowNumber > 0 Then
                     
-'                    .MaxRows = .MaxRows + nodeTK.childNodes.length - 1
-'                    .InsertRows Val(cellArray(1)) + cellRange + 1, nodeTK.childNodes.length - 1
+                    '                    .MaxRows = .MaxRows + nodeTK.childNodes.length - 1
+                    '                    .InsertRows Val(cellArray(1)) + cellRange + 1, nodeTK.childNodes.length - 1
 
                     RowCount = 0
                     RowLength = 0
 
-                    Do While RowLength < nodeTK.childNodes.length
+                    Do While RowLength < RowNumber
                         
-                        If RowCount + 10000 <= nodeTK.childNodes.length Then
+                        If RowCount + 10000 <= RowNumber Then
                             RowCount = RowCount + 10000
                         Else
-                            RowCount = RowCount + nodeTK.childNodes.length
+                            RowCount = RowCount + RowNumber
                         End If
 
                         For dynamicID = RowLength To RowCount - 1
-                            valXml.loadXML nodeTK.childNodes(dynamicID).xml
 
-                            For Each childNodeCT In xmlCts.lastChild.childNodes
-                                cellID = childNodeCT.Text
-                                cellArray = Split(cellID, "_")
-                                .Row = Val(cellArray(1)) + cellRange
-                                .Col = .ColLetterToNumber(cellArray(0))
+                            If level = "2" Then
+                        
+                                valXml.loadXML nodeTK.firstChild.childNodes(dynamicID).xml
+                            Else
+                        
+                                valXml.loadXML nodeTK.childNodes(dynamicID).xml
+                            End If
 
-                                If valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "true" Then
-                                    .Text = 1
-                                ElseIf valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "false" Then
-                                    .Text = 0
-                                Else
-                                    .Text = valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text
+                            If GetAttribute(valXml.firstChild, "id") <> "" Then
+    
+                                For Each childNodeCT In xmlCts.lastChild.childNodes
+                                    cellID = childNodeCT.Text
+                                    cellArray = Split(cellID, "_")
+                                    .Row = Val(cellArray(1)) + cellRange
+                                    .Col = .ColLetterToNumber(cellArray(0))
+    
+                                    If valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "true" Then
+                                        .Text = 1
+                                    ElseIf valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "false" Then
+                                        .Text = 0
+                                    Else
+
+                                        If .CellType = CellTypeNumber Then
+                                            .value = valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text
+                                        Else
+                                            .Text = valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text
+                                        End If
+                                    End If
+
+                                    UpdateCell .Col, .Row, .Text
+                                Next
+    
+                                cellRange = cellRange + GroupCellRange
+    
+                                If dynamicID <> RowCount - 1 Then
+                                    InsertNode .ColLetterToNumber(cellArray(0)), Val(cellArray(1)) + cellRange - 1
                                 End If
-
-                            Next
-
-                            cellRange = cellRange + GroupCellRange
-
-                            If dynamicID <> RowCount - 1 Then
-                                InsertNode .ColLetterToNumber(cellArray(0)), Val(cellArray(1)) + cellRange - 1
                             End If
                             
                         Next
@@ -4883,7 +4918,12 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
                             ElseIf xmlDuLieuImport.getElementsByTagName(childNodeCT.nodeName)(0).Text = "false" Then
                                 .Text = 0
                             Else
-                                .Text = xmlDuLieuImport.getElementsByTagName(childNodeCT.nodeName)(0).Text
+
+                                If .CellType = CellTypeNumber Then
+                                    .value = xmlDuLieuImport.getElementsByTagName(childNodeCT.nodeName)(0).Text
+                                Else
+                                    .Text = xmlDuLieuImport.getElementsByTagName(childNodeCT.nodeName)(0).Text
+                                End If
                             End If
                         End If
                     End If
@@ -4893,6 +4933,7 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
             End If
 
         Next
+
         fpSpread1.EventEnabled(EventAllEvents) = True
     End With
 
@@ -4913,7 +4954,7 @@ Private Function validateTkHeader(ByVal xmlDuLieuImport As MSXML.DOMDocument) As
     End If
     
     If xmlDuLieuImport.getElementsByTagName("kieuKy").length > 0 Then
-        If xmlDuLieuImport.getElementsByTagName("kieuKy")(0).Text <> strKieuKy Then
+        If xmlDuLieuImport.getElementsByTagName("kieuKy")(0).Text <> strKK Then
             validateTkHeader = False
             Exit Function
         End If
@@ -4923,13 +4964,13 @@ Private Function validateTkHeader(ByVal xmlDuLieuImport As MSXML.DOMDocument) As
         Dim strKykk() As String
         strKykk = Split(xmlDuLieuImport.getElementsByTagName("kyKKhai")(0).Text, "/")
 
-        If strKieuKy = "M" Then
+        If strKK = "M" Then
             If Val(strKykk(0)) <> TAX_Utilities_New.month Or Val(strKykk(1)) <> TAX_Utilities_New.Year Then
                 validateTkHeader = False
                 Exit Function
             End If
 
-        ElseIf strKieuKy = "Q" Then
+        ElseIf strKK = "Q" Then
 
             If Val(strKykk(0)) <> TAX_Utilities_New.ThreeMonths Or Val(strKykk(1)) <> TAX_Utilities_New.Year Then
                 validateTkHeader = False
@@ -7130,7 +7171,7 @@ Private Sub Form_Load()
     'arrResult
     ' end BC26
     If Not objTaxBusiness Is Nothing Then
-        objTaxBusiness.Prepare2
+        objTaxBusiness.prepare2
     End If
     
     SetSheetVisible fpSpread1
@@ -10169,7 +10210,7 @@ Private Sub LoadKHBS()
          If strKHBS = "frmKHBS_BS" Then
             objTaxBusiness.loaiKHBS = "frmKHBS_BS"
          End If
-         objTaxBusiness.Prepare2
+         objTaxBusiness.prepare2
      End If
     
 
