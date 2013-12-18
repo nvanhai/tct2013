@@ -50,5 +50,20 @@ insert into rcv_dm_tkhai (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
 values ('01B_TNDN13', 'TÍ khai thu’ TNDN tπm t›nh m…u 01B/TNDN', 'Q', '320', to_date('01-01-2014', 'dd-mm-yyyy'), null);
 commit;
 
+-- To khai 02/TNDN
+-- khong thay doi, chi bo sung them chi tieu quy mo doanh nghiep
+
+-- To khai 01/TTDB 
+-- Khong thay doi
+
+-- To khai 01/TAIN
+insert into rcv_dm_tkhai (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
+values ('01_TAIN13', 'TÍ khai thu’ tµi nguy™n m…u 01/TAIN', 'M', '320', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+commit;
+
+-- To khai 01/TBVMT
+
+
+
 
 

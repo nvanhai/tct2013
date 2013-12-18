@@ -850,3 +850,32 @@ insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_
 values (6111, 'PL 01B-01/TNDN', '07', '08', '09', '10', '11', '12', '13', '', '', '', '', 2, '01B_01_TNDN13', '', '', '', '', '', '', '', '', '', '', '', '');
 commit;
 
+-- To khai 02/TNDN
+-- khong thay doi, chi bo sung them chi tieu quy mo doanh nghiep
+
+-- Phu luc 02-1/TNDN
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6120, 'PL 02-1/TNDN', '1', '2', '3', '4', '5', '', '', '', '', '', '', 1, '02_01_TNDN13', '', '', '', '', '', '', '', '', '', '', '', '');
+commit;
+
+-- To khai 01/TTDB 
+-- Khong thay doi
+
+
+-- To khai 01/TAIN
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6130, 'Tµi nguyªn khai th¸c', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '', 1, '01_TAIN13', '', '', '', '', '', '', '', '', '', '', '', '');
+
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6131, 'Tµi nguyªn thu mua gom', '', '11', '12', '13', '14', '15', '16', '17', '18', '19', '', 2, '01_TAIN13', '', '', '', '', '', '', '', '', '', '', '', '');
+
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6132, 'Tµi nguyªn tÞch thu, giao b¸n:', '', '21', '22', '23', '24', '25', '26', '27', '28', '29', '', 3, '01_TAIN13', '', '', '', '', '', '', '', '', '', '', '', '');
+
+insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
+values (6133, 'Tæng céng', '', '', '', '', '', '', '', '31', '32', '33', '', 4, '01_TAIN13', '', '', '', '', '', '', '', '', '', '', '', '');
+commit;
+
+-- To khai 01/TBVMT
+
+
