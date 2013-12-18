@@ -1268,7 +1268,7 @@ Dim STT As Variant
                         Exit Sub
                     End If
                     
-                    fps.EventEnabled(EventAllEvents) = True
+                    fps.EventEnabled(EventAllEvents) = False
                     .Col = .ColLetterToNumber("C")
                     .Row = 42
                     i = 1
@@ -1296,7 +1296,7 @@ Dim STT As Variant
                           .Row = .Row + 1
                           i = i + 1
                      Loop Until .Text = "aa"
-                     
+                     fps.EventEnabled(EventAllEvents) = True
                      count1 = .Row + 3
                     'set ho ten nhan vien co quan thue va so chung chi
                     
