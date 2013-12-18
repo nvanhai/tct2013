@@ -939,5 +939,6 @@ insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_
 values (6164, 'V.TÊng sË thu’ TNCN Æ∑ kh u trı [35]=[24]+[27]+[30]+[34]', '31', '', '', '', '', '', '', '', '', '', '', 15, '01_TNCN_BHDC13', '', '', '', '', '', '', '', '', '', '', '', '');
 commit;
 
+-- To khai 01/KK-TTS
 
 
