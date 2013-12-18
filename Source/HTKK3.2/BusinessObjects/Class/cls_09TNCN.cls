@@ -220,7 +220,9 @@ Public Sub Prepare2()
         .Row = 4
         .Text = DateDiff("M", Format(CStr(tuThang), "mm/yyyy"), Format(CStr(denThang), "mm/yyyy")) + 1
         
-                arrTuThang = Split(tuThang, "/")
+        .GetText .ColLetterToNumber("P"), 4, soThang
+        
+        arrTuThang = Split(tuThang, "/")
         arrDenThang = Split(denThang, "/")
         
         ' neu den thang < 7/2013
@@ -567,6 +569,8 @@ End Sub
                                 .Row = 4
                                 .Col = .ColLetterToNumber("P")
                                 .Text = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy(CStr(denThang))) + 1
+                                
+                                .GetText .ColLetterToNumber("P"), 4, soThang
                                 ' set ct27
                                 arrTuThang = Split(tuThang, "/")
                                 arrDenThang = Split(denThang, "/")
@@ -628,6 +632,7 @@ End Sub
                             .Col = .ColLetterToNumber("P")
                             .Text = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy(CStr(denThang))) + 1
                             
+                            .GetText .ColLetterToNumber("P"), 4, soThang
                             ' set ct27
                                 arrTuThang = Split(tuThang, "/")
                                 arrDenThang = Split(denThang, "/")
@@ -698,6 +703,7 @@ End Sub
                 .Row = 4
                 .Text = DateDiff("M", Format(CStr(tuThang), "mm/yyyy"), Format(CStr(denThang), "mm/yyyy")) + 1
                 
+                .GetText .ColLetterToNumber("P"), 4, soThang
                 ' set ct27
                 arrTuThang = Split(tuThang, "/")
                 arrDenThang = Split(denThang, "/")
@@ -1062,7 +1068,7 @@ Private Sub checkSheet4()
             
             If UCase(vLastRow) = "AA" Then Exit For ' Check cho den het cac dong co du lieu thi thoi
             
-            If Trim(vHoVaTen) = vbNullString And Trim(vNgaySinh) = vbNullString And Trim(vMST) = vbNullString And Trim(vCMT) = vbNullString Then
+            If Trim(vHoVaTen) = vbNullString And Trim(vNgaySinh) = vbNullString And Trim(vMST) = vbNullString And Trim(vCMT) = vbNullString And Val(vSoThangGiamTru) = 0 And Val(vCT15) = 0 Then
             Else
                 'Check Ho va ten tren phu luc 09C/TNCN
                 If Trim(vHoVaTen) = vbNullString Then
