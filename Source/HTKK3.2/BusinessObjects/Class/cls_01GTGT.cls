@@ -1349,7 +1349,7 @@ Private Sub CheckDynamicError()
         Next
         
             ' kiem tra bat buoc nhap PL 01-3
-            If countThuSuat0 > 0 Then
+            If countThuSuat0 > 0 And IIf(TAX_Utilities_New.NodeValidity.childNodes(3).Attributes.getNamedItem("Active").nodeValue <> "0", True, False) = False Then
                 .Sheet = 2
                 .ActiveSheet = 2
                 If Not .Visible Then
@@ -1371,7 +1371,11 @@ Private Sub CheckDynamicError()
             .SetText .ColLetterToNumber("B"), 29, IIf(iFlagvNgayHD = 1 And blCheck_S2 = True, "0", "1")
             .SetText .ColLetterToNumber("B"), 30, IIf(iFlagvTennguoimua = 1 And blCheck_S2 = True, "0", "1")
             .SetText .ColLetterToNumber("B"), 31, IIf(iFlagvMst = 1 And blCheck_S2 = True, "0", "1")
-            .SetText .ColLetterToNumber("B"), 69, IIf(countThuSuat0 > 0 And IIf(TAX_Utilities_New.NodeValidity.childNodes(3).Attributes.getNamedItem("Active").nodeValue <> "0", True, False) = False, "0", "1")
+            If countThuSuat0 > 0 And IIf(TAX_Utilities_New.NodeValidity.childNodes(3).Attributes.getNamedItem("Active").nodeValue <> "0", True, False) = False Then
+                .SetText .ColLetterToNumber("B"), 69, "0"
+            Else
+                .SetText .ColLetterToNumber("B"), 69, "1"
+            End If
 '            If iFocusFlag = 1 Then
 '                ' setcell for focus
 '                strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
@@ -2951,6 +2955,20 @@ Public Sub ResetErrorCells()
                 .CellNote = ""
                 .BackColor = vbWhite
             End If
+            
+            .Col = .ColLetterToNumber("H")
+            .Row = lCtrl
+            If Not .Lock Then
+                .CellNote = ""
+                .BackColor = vbWhite
+            End If
+            
+            .Col = .ColLetterToNumber("I")
+            .Row = lCtrl
+            If Not .Lock Then
+                .CellNote = ""
+                .BackColor = vbWhite
+            End If
 
         Next lCtrl
         
@@ -2985,6 +3003,20 @@ Public Sub ResetErrorCells()
                 .BackColor = vbWhite
             End If
             .Col = .ColLetterToNumber("G")
+            .Row = lCtrl
+            If Not .Lock Then
+                .CellNote = ""
+                .BackColor = vbWhite
+            End If
+            
+            .Col = .ColLetterToNumber("H")
+            .Row = lCtrl
+            If Not .Lock Then
+                .CellNote = ""
+                .BackColor = vbWhite
+            End If
+            
+            .Col = .ColLetterToNumber("I")
             .Row = lCtrl
             If Not .Lock Then
                 .CellNote = ""
