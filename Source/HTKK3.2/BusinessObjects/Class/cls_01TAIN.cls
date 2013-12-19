@@ -1477,7 +1477,7 @@ Public Sub finish()
         UpdateSheets
         ' end
             
-            
+         .EventEnabled(EventAllEvents) = False
         .ActiveSheet = ASheet
         .Sheet = SSheet
         
