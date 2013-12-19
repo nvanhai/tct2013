@@ -72,6 +72,9 @@ values ('01_TNCN_BHDC13', 'Tê KHAI KHÊU TRõ THUÕ THU NHËP C¸ NH¢N - MÉU 01/KK-BH
 commit;
 
 -- To khai 01/KK-TTS
+insert into rcv_dm_tkhai (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
+values ('01_TNCN_TTS', 'Tê KHAI THUÕ HO¹T §éNG CHO THU£ TµI S¶N', 'Q', '320', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+commit;
 
 
 
