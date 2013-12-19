@@ -874,11 +874,18 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("F"), 20, vTIN_DL
         .GetText .ColLetterToNumber(SO_HOP_DONG_DL_COL), SO_HOP_DONG_DL_ROW, vSO_HOP_DONG
         .GetText .ColLetterToNumber(NGAY_HOP_DONG_DL_COL), NGAY_HOP_DONG_DL_ROW, vNGAY_HOP_DONG
-        .GetText .ColLetterToNumber("I"), 62, vLAN_BS
-        .GetText .ColLetterToNumber("C"), 62, vCHINH_THUC
+        .GetText .ColLetterToNumber("I"), 77, vLAN_BS
+        .GetText .ColLetterToNumber("C"), 77, vCHINH_THUC
         If Trim(vCHINH_THUC) = "1" Then
             vLAN_BS = "0"
         End If
+        
+        .GetText .ColLetterToNumber("K"), 62, v_CO_GIA_HAN
+                            If UCase(Trim(v_CO_GIA_HAN)) = "X" Or Trim(v_CO_GIA_HAN) = "1" Then
+                        v_CO_GIA_HAN = "'Y'"
+                    Else
+                        v_CO_GIA_HAN = "Null"
+                    End If
         
         If Len(Trim(vTIN_DL)) = 13 Then
             vTIN_DL = Left(vTIN_DL, 10) & "-" & Right(vTIN_DL, 3)
