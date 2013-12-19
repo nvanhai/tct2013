@@ -7105,10 +7105,10 @@ Private Sub Form_Load()
              ElseIf strQuy = "TK_QUY" Then
                 strKK = "Q"
              End If
-'        ElseIf idMenu = "92" Or idMenu = "93" Or idMenu = "89" Or idMenu = "98" Then
-'            objTaxBusiness.chkDauTho = strDauTho
-'            objTaxBusiness.chkCondensate = strCondensate
-'            objTaxBusiness.chkKhiThienNhien = strKhiThienNhien
+        ElseIf idMenu = "92" Or idMenu = "93" Or idMenu = "89" Or idMenu = "98" Then
+            objTaxBusiness.chkDauTho = strDauTho
+            objTaxBusiness.chkCondensate = strCondensate
+            objTaxBusiness.chkKhiThienNhien = strKhiThienNhien
         End If
         ' set ngay dau quy
         If idMenu = "01" Or idMenu = "02" Then
