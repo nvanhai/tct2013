@@ -4748,7 +4748,9 @@ Private Sub cmdImportXML_Click()
         Next
 
     End If
-
+    
+    DisplayMessage "0291", msOKOnly, miInformation
+    
     Exit Sub
 ErrHandle:
     SaveErrorLog Me.Name, "cmdImportXML_Click", Err.Number, Err.Description
