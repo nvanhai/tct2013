@@ -32,6 +32,9 @@ Public strLoaiNNKD As String
 Public StrTKThang_PS As String
 Public iflag As Boolean
 
+Private Const Row_MSTDN = 47
+Private Const Col_MSTDN = "J"
+
 ' Kiem tra thong tin dai ly thue
 ' Neu khong co DL thue se an cac row nay di
 Public FlagDLThue As Boolean
@@ -92,6 +95,10 @@ Public Sub Prepare2()
         .Sheet = 1
         'currentSheet2 = mCurrentSheet
         mCurrentSheet = .Sheet
+        
+        'update MSTDN luôn bang MST tren phan TT chung
+            UpdateMST fps, Col_MSTDN, Row_MSTDN
+        
         ngay = TAX_Utilities_New.Day
          'xu ly ngay phat sinh
         If Trim(ngay) = "" Then
