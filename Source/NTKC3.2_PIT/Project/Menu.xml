@@ -12,10 +12,7 @@
 			<Sheet ID="01_4B" Caption="PL 01-4B/GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_4B_GTGT11" Ini="..\Ini\01_4B_GTGT11.xml"/>
 			<Sheet ID="01_5" Caption="PL 01-5/GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_05_GTGT13" Ini="..\Ini\01_05_GTGT13.xml"/>
 			<Sheet ID="01_6" Caption="PL 01-6/GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_06_GTGT11" Ini="..\Ini\01_06_GTGT11.xml"/>
-			<Sheet ID="01_6B" Caption="PL 01-6B/GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_6B_GTGT11" Ini="..\Ini\01_6B_GTGT11.xml"/>
 			<Sheet ID="01_7" Caption="PL 01-7/GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_07_GTGT13" Ini="..\Ini\01_07_GTGT13.xml"/>
-			<Sheet ID="01_1_TD" Caption="PL 01-1/TĐ-GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_1TD_GTGT11" Ini="..\Ini\01_1TD_GTGT11.xml"/>
-			<Sheet ID="01_2_TD" Caption="PL 01-2/TĐ-GTGT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_2TD_GTGT11" Ini="..\Ini\01_2TD_GTGT11.xml"/>		
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01_GTGT" Ini="..\Ini\KHBS_01_GTGT.xml"/>
 		</Validity>
 	</Menu>
