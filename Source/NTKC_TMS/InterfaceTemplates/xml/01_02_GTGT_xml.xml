@@ -2,6 +2,7 @@
 	<HHDVDRieng>
 		<ChiTietHHDVDRieng>
 			<HDonMVao id="ID_6">
+				<kyHieuMauHDon></kyHieuMauHDon>
 				<kyHieuHDon></kyHieuHDon>
 				<soHDon></soHDon>
 				<ngayPHanh></ngayPHanh>
@@ -20,6 +21,7 @@
 	<HHDVKhongKTru>
 		<ChiTietHHDVKhongKTru>
 			<HDonMVao id="ID_7">
+				<kyHieuMauHDon></kyHieuMauHDon>
 				<kyHieuHDon></kyHieuHDon>
 				<soHDon></soHDon>
 				<ngayPHanh></ngayPHanh>
@@ -38,6 +40,7 @@
 	<HHDVDChung>
 		<ChiTietHHDVDChung>
 			<HDonMVao id="ID_8">
+				<kyHieuMauHDon></kyHieuMauHDon>
 				<kyHieuHDon></kyHieuHDon>
 				<soHDon></soHDon>
 				<ngayPHanh></ngayPHanh>
@@ -56,6 +59,7 @@
 	<HHDVKTru>
 		<ChiTietHHDVKTru>
 			<HDonMVao id="ID_9">
+				<kyHieuMauHDon></kyHieuMauHDon>
 				<kyHieuHDon></kyHieuHDon>
 				<soHDon></soHDon>
 				<ngayPHanh></ngayPHanh>
@@ -74,6 +78,7 @@
 	<HHDVMVaoKhongTHop>
 		<ChiTietHHDVMVaoKhongTHop>
 			<HDonMVao id="ID_10">
+				<kyHieuMauHDon></kyHieuMauHDon>
 				<kyHieuHDon></kyHieuHDon>
 				<soHDon></soHDon>
 				<ngayPHanh></ngayPHanh>

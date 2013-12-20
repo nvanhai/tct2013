@@ -1,6 +1,7 @@
 <PL01_2_2_GTGT>
 	<Dynamic GroupName="ChiTietHHDVDauTuKTru">
-		<HDonMVao id="ID_3">
+		<HDonMVao id="ID_1">
+			<kHieuMauHDon>C_24</kHieuMauHDon>
 			<kHieuHDon>C_25</kHieuHDon>
 			<soHDon>D_25</soHDon>
 			<ngayPHanh>E_25</ngayPHanh>
@@ -16,5 +17,9 @@
 	<Static GroupName="HHDVDauTuKTru">
 		<tongGTriHHDVMuaVao>F_29</tongGTriHHDVMuaVao>
 		<tThueGTGT_HHDVMuaVao>F_30</tThueGTGT_HHDVMuaVao>
+	</Static>
+	<Static GroupName="PL01_2_2_GTGT">
+		<tongCongGTriHHDVMuaVao>F_29</tongCongGTriHHDVMuaVao>
+		<tongCongThueGTGTHHDVMuaVao>F_30</tongCongThueGTGTHHDVMuaVao>
 	</Static>
 </PL01_2_2_GTGT>

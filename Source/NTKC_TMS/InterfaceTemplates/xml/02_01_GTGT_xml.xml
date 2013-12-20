@@ -1,20 +1,38 @@
 <PL01_2_GTGT>
-	<HHDVDauTuKTru>
-		<ChiTietHHDVDauTuKTru>
-			<HDonMVao id="ID_1">
-				<kHieuHDon></kHieuHDon>
-				<soHDon></soHDon>
-				<ngayPHanh></ngayPHanh>
-				<tenNBAN></tenNBAN>
-				<mstNBAN></mstNBAN>
-				<matHang></matHang>
-				<gtriMuaChuaThue></gtriMuaChuaThue>
-				<thueSuat></thueSuat>
-				<thueGTGT></thueGTGT>
-				<ghiChu></ghiChu>
-			</HDonMVao>
-		</ChiTietHHDVDauTuKTru>
-		<tongGTriHHDVMuaVao></tongGTriHHDVMuaVao>
-		<tThueGTGT_HHDVMuaVao></tThueGTGT_HHDVMuaVao>
-	</HHDVDauTuKTru>
+  <HHDVDauTuKTru>
+    <ChiTietHHDVDauTuKTru>
+      <HDonMVao id="ID_1">
+        <kHieuMauHDon>
+        </kHieuMauHDon>
+        <kHieuHDon>
+        </kHieuHDon>
+        <soHDon>
+        </soHDon>
+        <ngayPHanh>
+        </ngayPHanh>
+        <tenNBAN>
+        </tenNBAN>
+        <mstNBAN>
+        </mstNBAN>
+        <matHang>
+        </matHang>
+        <gtriMuaChuaThue>
+        </gtriMuaChuaThue>
+        <thueSuat>
+        </thueSuat>
+        <thueGTGT>
+        </thueGTGT>
+        <ghiChu>
+        </ghiChu>
+      </HDonMVao>
+    </ChiTietHHDVDauTuKTru>
+    <tongGTriHHDVMuaVao>
+    </tongGTriHHDVMuaVao>
+    <tThueGTGT_HHDVMuaVao>
+    </tThueGTGT_HHDVMuaVao>
+  </HHDVDauTuKTru>
+  <tongCongGTriHHDVMuaVao>
+  </tongCongGTriHHDVMuaVao>
+  <tongCongThueGTGTHHDVMuaVao>
+  </tongCongThueGTGTHHDVMuaVao>
 </PL01_2_GTGT>

@@ -14,20 +14,20 @@
 		<mucDoUuDai>Q_41</mucDoUuDai>
 		<namBatDauUuDai>U_42</namBatDauUuDai>
 		<namketThucUuDai>N_42</namketThucUuDai>
-		<namMienThueBD>J_43</namMienThueBD>
-		<namMienThueKT>Q_43</namMienThueKT>
+		<namMienThueBD>Q_43</namMienThueBD>
+		<namMienThueKT>J_43</namMienThueKT>
 		<namPNop50Thue>U_44</namPNop50Thue>
 		<namKTNop50Thue>N_44</namKTNop50Thue>
-		<ct01>U_49</ct01>
-		<ct02>U_50</ct02>
-		<ct03>U_51</ct03>
-		<ct04>U_52</ct04>
-		<ct05>U_54</ct05>
-		<ct06>U_55</ct06>
-		<ct07>U_56</ct07>
-		<ct08>U_58</ct08>
-		<ct09>U_59</ct09>
-		<ct10>U_60</ct10>
+		<ct01>X_49</ct01>
+		<ct02>X_50</ct02>
+		<ct03>X_51</ct03>
+		<ct04>X_52</ct04>
+		<ct05>X_54</ct05>
+		<ct06>X_55</ct06>
+		<ct07>X_56</ct07>
+		<ct08>X_58</ct08>
+		<ct09>X_59</ct09>
+		<ct10>X_60</ct10>
 		<ct11>U_61</ct11>
 	</Static>
 </PL03_3B_TNDN>

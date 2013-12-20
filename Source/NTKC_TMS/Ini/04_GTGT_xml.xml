@@ -1,97 +1,44 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>	
-<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30">
-	<Static GroupName="TKhaiThue">
-		<maTKhai>04_GTGT</maTKhai>
-		<tenTKhai>Tờ khai thuế GTGT (04/GTGT)</tenTKhai>
-		<moTaBMau></moTaBMau>
-		<soLan>T_6</soLan>
-	</Static>
-	<Static GroupName="GiaHan">
-		<maLyDoGiaHan></maLyDoGiaHan>
-		<lyDoGiaHan></lyDoGiaHan>
-	</Static>
-	<Static GroupName="NNT">
-		<maHuyenNNT>F_14</maHuyenNNT>
-		<maTinhNNT>Q_14</maTinhNNT>
-	</Static>
-	<Static GroupName="DLyThue">
-		<maHuyenDLyThue>F_24</maHuyenDLyThue>
-		<maTinhDLyThue>Q_24</maTinhDLyThue>
-	</Static>
-	<Static GroupName="DSoHHDVBRaChiuThueGTGT">
-		<ct21>L_43</ct21>
-		<ct22>R_43</ct22>
-		<ct23>X_43</ct23>
-	</Static>
-	<Dynamic GroupName="DSoHHDVBRaChiuThueGTGT">
-		<ChiTietNhomNganh id="id">
-			<NhomNganh>
-				<maNhomNghanh>AE_45</maNhomNghanh>
-				<nhomNghanh>C_45</nhomNghanh>
-				<ctThue0>K_45</ctThue0>
-				<ctThue5>Q_45</ctThue5>
-				<ctThue10>W_45</ctThue10>
-			</NhomNganh>
-		</ChiTietNhomNganh>
-	</Dynamic>
-	<Static GroupName="TyLeGTGTTTrenDThu">
-		<ct24>L_47</ct24>
-		<ct25>R_47</ct25>
-		<ct26>X_47</ct26>
-	</Static>
-	<Dynamic GroupName="TyLeGTGTTTrenDThu">
-		<ChiTietNhomNganh id="id">
-			<NhomNganh>
-				<maNhomNghanh>AE_49</maNhomNghanh>
-				<nhomNghanh>C_49</nhomNghanh>
-				<ctThue0>K_49</ctThue0>
-				<ctThue5>Q_49</ctThue5>
-				<ctThue10>W_49</ctThue10>
-			</NhomNganh>
-		</ChiTietNhomNganh>
-	</Dynamic>
-	<Static GroupName="TongGTGTTrongKy">
-		<ct27>L_51</ct27>
-		<ct28>R_51</ct28>
-		<ct29>X_51</ct29>
-	</Static>
-	<Dynamic GroupName="TongGTGTTrongKy">
-		<ChiTietNhomNganh id="id">
-			<NhomNganh>
-				<maNhomNghanh>AE_53</maNhomNghanh>
-				<nhomNghanh>C_53</nhomNghanh>
-				<ctThue0>K_53</ctThue0>
-				<ctThue5>Q_53</ctThue5>
-				<ctThue10>W_53</ctThue10>
-			</NhomNganh>
-		</ChiTietNhomNganh>
-	</Dynamic>
-	<Static GroupName="ThueGTGTPNop">
-		<ct30>L_55</ct30>
-		<ct31>R_55</ct31>
-		<ct32>X_55</ct32>
-	</Static>
-	<Dynamic GroupName="ThueGTGTPNop">
-		<ChiTietNhomNganh id="id">
-			<NhomNganh>
-				<maNhomNghanh>AE_57</maNhomNghanh>
-				<nhomNghanh>C_57</nhomNghanh>
-				<ctThue0>K_57</ctThue0>
-				<ctThue5>Q_57</ctThue5>
-				<ctThue10>W_57</ctThue10>
-			</NhomNganh>
-		</ChiTietNhomNganh>
-	</Dynamic>
-	<Static GroupName="CTieuTKhaiChinh">
-		<ct33>S_60</ct33>
-		<ct34>O_62</ct34>
-	</Static>
-	<Static GroupName="TKhaiThue">
-		<nguoiKy>T_73</nguoiKy>
-		<ngayKy>T_75</ngayKy>
-	</Static>
-	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>H_73</tenNVienDLyThue>
-		<cchiHNghe>H_75</cchiHNghe>
-	</Static>
-</HSoKhaiThue>
+﻿
+	<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30">
+		<Static GroupName="TKhaiThue">
+			<maTKhai>07</maTKhai>
+			<tenTKhai>TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG (04/GTGT)</tenTKhai>
+			<moTaBMau/>
+			<soLan>T_6</soLan>
+		</Static>
+		<Static GroupName="CTieuTKhaiChinh">
+			<ct21>K_43</ct21>
+		</Static>
+		<Static GroupName="PPhoiCCapHHoa">
+			<ct22>Q_43</ct22>
+			<ct23>Z_43</ct23>
+		</Static>
+		<Static GroupName="DVuXDungKoBaoThauNVL">
+			<ct24>Q_44</ct24>
+			<ct25>Z_44</ct25>
+		</Static>
+		<Static GroupName="HHoaXDungCoBaoThauNVL">
+			<ct26>Q_45</ct26>
+			<ct27>Z_45</ct27>
+		</Static>
+		<Static GroupName="HDongKDoanhKhac">
+			<ct28>Q_46</ct28>
+			<ct29>Z_46</ct29>
+		</Static>
+		<Static GroupName="TongCong">
+			<ct30>Q_47</ct30>
+			<ct31>Z_47</ct31>
+		</Static>
+		<Static GroupName="CTieuTKhaiChinh">
+			<ct32>S_50</ct32>
+			<ct33>O_52</ct33>
+		</Static>
+		<Static GroupName="TKhaiThue">
+			<nguoiKy>T_63</nguoiKy>
+			<ngayKy>T_65</ngayKy>
+		</Static>
+		<Static GroupName="NVienDLy">
+			<tenNVienDLyThue>H_63</tenNVienDLyThue>
+			<cchiHNghe>H_65</cchiHNghe>
+		</Static>
+	</HSoKhaiThue>

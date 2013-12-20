@@ -1,15 +1,15 @@
-		<PL01_4A_GTGT>
-			<Static GroupName="ThueGTGTCuaHHDVMVaoTKy">
-				<thueGTGTHHoaMVao>D_4</thueGTGTHHoaMVao>
-				<thueGTGTCThueDuDKKT>D_6</thueGTGTCThueDuDKKT>
-				<thueGTGTKhongDuDKKT>D_8</thueGTGTKhongDuDKKT>
-				<thueGTGTDungChungDuDKKT>D_10</thueGTGTDungChungDuDKKT>
-			</Static>
-			<Static GroupName="PBoThueGTGTCuaHHDVMVaoKTru">
-				<tongDThuBra>D_15</tongDThuBra>
-				<dThuBRaChiuThue>D_16</dThuBRaChiuThue>
-				<tyLeDThu>D_17</tyLeDThu>
-				<thueGTGTMVaoPBo>D_18</thueGTGTMVaoPBo>
-				<thueGTGTMVaoKTru>D_19</thueGTGTMVaoKTru>
-			</Static>
-		</PL01_4A_GTGT>
+<PL01_4A_GTGT>
+	<Static GroupName="ThueGTGTCuaHHDVMVaoTKy">
+		<thueGTGTHHoaMVao>D_4</thueGTGTHHoaMVao>
+		<thueGTGTCThueDuDKKT>D_6</thueGTGTCThueDuDKKT>
+		<thueGTGTKhongDuDKKT>D_8</thueGTGTKhongDuDKKT>
+		<thueGTGTDungChungDuDKKT>D_10</thueGTGTDungChungDuDKKT>
+	</Static>
+	<Static GroupName="PBoThueGTGTCuaHHDVMVaoKTru">
+		<tongDThuBra>D_15</tongDThuBra>
+		<dThuBRaChiuThue>D_16</dThuBRaChiuThue>
+		<tyLeDThu>D_17</tyLeDThu>
+		<thueGTGTMVaoPBo>D_18</thueGTGTMVaoPBo>
+		<thueGTGTMVaoKTru>D_219</thueGTGTMVaoKTru>
+	</Static>
+</PL01_4A_GTGT>

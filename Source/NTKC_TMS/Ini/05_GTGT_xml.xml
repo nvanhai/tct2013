@@ -1,37 +1,38 @@
-<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22">
-	<Static GroupName="TKhaiThue">
-		<maTKhai>05_GTGT</maTKhai>
-		<tenTKhai>Tờ khai GTGT (05/GTGT)</tenTKhai>
-		<moTaBMau></moTaBMau>
-		<soLan>T_5</soLan>
-	</Static>
-	<Static GroupName="GiaHan">
-		<maLyDoGiaHan></maLyDoGiaHan>
-		<lyDoGiaHan></lyDoGiaHan>
-	</Static>
-	<Static GroupName="NNT">
-		<maHuyenNNT>F_11</maHuyenNNT>
-		<maTinhNNT>T_11</maTinhNNT>
-	</Static>
-	<Static GroupName="DLyThue">
-		<maHuyenDLyThue>F_17</maHuyenDLyThue>
-		<maTinhDLyThue>T_17</maTinhDLyThue>
-	</Static>
-	<Static GroupName="CTieuTKhaiChinh">
-		<ct21>K_43</ct21>
-		<ct22>S_43</ct22>
-		<ct23>K_44</ct23>
-		<ct24>S_44</ct24>
-		<ct25>K_45</ct25>
-		<ct26>S_45</ct26>
-		<ct27>J_48</ct27>
-	</Static>
-	<Static GroupName="TKhaiThue">
-		<nguoiKy>R_61</nguoiKy>
-		<ngayKy>R_63</ngayKy>
-	</Static>
-	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>G_61</tenNVienDLyThue>
-		<cchiHNghe>G_63</cchiHNghe>
-	</Static>
-</HSoKhaiThue>
+
+	<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22">
+		<Static GroupName="TKhaiThue">
+			<maTKhai>53</maTKhai>
+			<tenTKhai>Tờ khai GTGT (05/GTGT)</tenTKhai>
+			<moTaBMau></moTaBMau>
+			<soLan>T_5</soLan>
+		</Static>
+		<Static GroupName="GiaHan">
+			<maLyDoGiaHan></maLyDoGiaHan>
+			<lyDoGiaHan></lyDoGiaHan>
+		</Static>
+		<Static GroupName="NNT">
+			<maHuyenNNT></maHuyenNNT>
+			<maTinhNNT></maTinhNNT>
+		</Static>
+		<Static GroupName="DLyThue">
+			<maHuyenDLyThue></maHuyenDLyThue>
+			<maTinhDLyThue></maTinhDLyThue>
+		</Static>
+		<Static GroupName="CTieuTKhaiChinh">
+			<ct21>K_43</ct21>
+			<ct22>S_43</ct22>
+			<ct23>K_44</ct23>
+			<ct24>S_44</ct24>
+			<ct25>K_45</ct25>
+			<ct26>S_45</ct26>
+			<ct27>J_48</ct27>
+		</Static>
+		<Static GroupName="TKhaiThue">
+			<nguoiKy>R_61</nguoiKy>
+			<ngayKy>R_63</ngayKy>
+		</Static>
+		<Static GroupName="NVienDLy">
+			<tenNVienDLyThue>G_61</tenNVienDLyThue>
+			<cchiHNghe>G_63</cchiHNghe>
+		</Static>
+	</HSoKhaiThue>
