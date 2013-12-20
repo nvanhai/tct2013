@@ -1020,6 +1020,12 @@ Private Sub CheckDynamicError()
     
     Dim countThuSuat0 As Long
     
+    ' check PL 01-3
+    Dim vNgayHDXK As Variant, vNgayDKTKXK As Variant, vNgayHoaDonXK As Variant, vNgayChungTuTT As Variant, vNgayVBXN As Variant, vNgayHDNK As Variant, vNgayTKNK As Variant
+    Dim vErrorNgayHDXK, vErrorNgayDKTKXK, vErrorNgayHoaDonXK, vErrorNgayChungTuTT, vErrorNgayVBXN, vErrorNgayHDNK, vErrorNgayTKNK
+    Dim iFlagNgayHDXK As Integer, iFlagNgayDKTKXK As Integer, iFlagNgayHoaDonXK As Integer, iFlagNgayChungTuTT As Integer, iFlagNgayVBXN As Integer
+    Dim iFlagNgayHDNK As Integer, iFlagNgayTKNK As Integer
+    
     With fps
     
     '.Visible = False
@@ -1048,6 +1054,15 @@ Private Sub CheckDynamicError()
      .GetText .ColLetterToNumber("E"), 63, vErrorDiaChi
      
      .GetText .ColLetterToNumber("E"), 64, vErrorCheckGH
+     
+     .GetText .ColLetterToNumber("E"), 70, vErrorNgayHDXK
+     .GetText .ColLetterToNumber("E"), 71, vErrorNgayDKTKXK
+     .GetText .ColLetterToNumber("E"), 72, vErrorNgayHoaDonXK
+     .GetText .ColLetterToNumber("E"), 73, vErrorNgayChungTuTT
+     .GetText .ColLetterToNumber("E"), 74, vErrorNgayVBXN
+     .GetText .ColLetterToNumber("E"), 75, vErrorNgayHDNK
+     .GetText .ColLetterToNumber("E"), 76, vErrorNgayTKNK
+     
      
      
      ' Kiem tra check gia han
@@ -1749,8 +1764,64 @@ Private Sub CheckDynamicError()
   
     ' Phu luc 01-3
     .Sheet = 4
-
     
+    
+    
+    blCheck_S4 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+    If blCheck_S4 = True Then
+        .Col = .ColLetterToNumber("B")
+        .Row = 10
+        i = 1
+        Do
+              iWhiteRow = 1
+              .GetText .ColLetterToNumber("C"), .Row, vSoChungTu
+              .GetText .ColLetterToNumber("D"), .Row, vNgayNop
+              .GetText .ColLetterToNumber("E"), .Row, vNoiNop
+              .GetText .ColLetterToNumber("G"), .Row, vCoQuanQL
+              .GetText .ColLetterToNumber("I"), .Row, vSoTienDN
+
+              
+'              If (Trim(vNgayNop) = "" Or vNgayNop = vbNullString) Then
+'                    .Col = .ColLetterToNumber("D")
+'                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                    .CellNote = ""   'static
+'                    .BackColor = mNonErrorColor
+'              Else
+'                    If DateDiff("D", Date, Format(vNgayNop, "dd/mm/yyyy")) > 0 Then
+'                           .Col = .ColLetterToNumber("D")
+'                           .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                           .CellNote = vErrorNgayNop   'static
+'                           .BackColor = mErrorColor
+'                           iflagNgayNop = 1
+'                           'capture the first error cell
+'                           If iFocusFlag = 0 Then
+'                               strFocusSheetName = "'" & .SheetName & "'"
+'                               strFocusCol = str(.Col)
+'                               strFocusRow = str(.Row)
+'                               iFocusFlag = 1
+'                           End If
+'                       Else
+'                            .Col = .ColLetterToNumber("D")
+'                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                            .CellNote = ""   'static
+'                            .BackColor = mNonErrorColor
+'                      End If
+'              End If
+                     
+             
+                     
+             .Col = .ColLetterToNumber("B")
+             .Row = i + 10
+             i = i + 1
+        Loop Until .Text = "aa"
+          .Sheet = .SheetCount
+        .SetText .ColLetterToNumber("B"), 57, IIf(iflagSoChungTu = "1", "0", "1")
+        .SetText .ColLetterToNumber("B"), 55, IIf(iflagNgayNop = 1, "0", "1")
+    
+    
+    End If
+    
+    ' Phu luc 01-4A
     .Sheet = 5
     blCheck_S5 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
     
@@ -4912,22 +4983,26 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
                     .Row = Row
                     .Col = .ColLetterToNumber("G")
                     .TypeComboBoxList = tenChiCucThue
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
                     
                     .Row = Row
                     .Col = .ColLetterToNumber("J")
                     .TypeComboBoxList = maChiCucThue
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
                    
                 End If
             End If
                         
-            If Col = .ColLetterToNumber("D") Then 'Khi chon Combo
+            If Col = .ColLetterToNumber("G") Then 'Khi chon Combo
                 'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
                 intIndexChiCuc = .TypeComboBoxCurSel
-                .Col = .ColLetterToNumber("H")
+                .Col = .ColLetterToNumber("J")
                 .Row = Row
                 .TypeComboBoxCurSel = intIndexChiCuc
                 'Nhap lai Combo cot Q
-                .Col = .ColLetterToNumber("H")
+                .Col = .ColLetterToNumber("J")
                 UpdateCell fps, .Col, .Row, .Text
             End If
         ElseIf .ActiveSheet = sheetPl01_6_GTGT Then
@@ -4974,10 +5049,14 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
                     .Row = Row
                     .Col = .ColLetterToNumber(colF)
                     .TypeComboBoxList = tenChiCucThue
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
                     
                     .Row = Row
                     .Col = .ColLetterToNumber(colL)
                     .TypeComboBoxList = maChiCucThue
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
                    
                 End If
             End If
