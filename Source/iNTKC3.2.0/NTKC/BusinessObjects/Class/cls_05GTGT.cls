@@ -480,7 +480,8 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
     Dim vItkhai_ID, vHthuc_nop As String
-    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
+    Dim vCO_PLUC_GTGT_01, vCO_PLUC_GTGT_02, vCO_PLUC_GTGT_03
+    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC, vNGANH_NGHE_KD, vTO_KHAI_LAN_PS, vNGAY_PS As Variant
     
 On Error GoTo ErrHandle
     strSQL = strSQL_HDR
@@ -542,8 +543,6 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
-    'Ky/Quy LB
-    If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
         'Ngay dau ky lap bo va ngay cuoi ky lap bo
         strDate = Split(vKyLB, "/")
         dDate = DateSerial(Val(strDate(1)), Val(strDate(0)), 1)
@@ -551,7 +550,6 @@ On Error GoTo ErrHandle
         dDate = DateAdd("m", 1, dDate)
         dDate = DateAdd("d", -1, dDate)
         strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-    End If
     
     'Ky/ Quy KK
     If Trim(TAX_Utilities_Srv_New.Month) <> "" Then

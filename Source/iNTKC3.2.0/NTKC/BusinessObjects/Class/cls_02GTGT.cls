@@ -479,8 +479,8 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
     Dim vItkhai_ID, vHthuc_nop As String
-    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
     Dim LOAI_KYKK As String
+    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
     
 On Error GoTo ErrHandle
     strSQL = Replace$(strSQL_HDR, ")", ",LOAI_KYKK)")
@@ -534,13 +534,19 @@ On Error GoTo ErrHandle
     End If
     ' end
     
+   If LOAI_KYKK = "0" Then
+        LOAI_KYKK = "T"
+    Else
+        LOAI_KYKK = "Q"
+    End If
+    
     strSQL = strSQL & "'" & vHdrID & "',"
     strSQL = strSQL & vKKBS & ","
     strSQL = strSQL & "'" & vTIN & "',"
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "02_GTGT11"
+    vLOAI_TKHAI = "02_GTGT13"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
@@ -587,11 +593,6 @@ On Error GoTo ErrHandle
         vDA_NHAN = "N"
     Else
         vDA_NHAN = vbNullString
-    End If
-    If LOAI_KYKK = "0" Then
-        LOAI_KYKK = "T"
-    Else
-        LOAI_KYKK = "Q"
     End If
     strSQL = strSQL & "'" & vDA_NHAN & "',"
     strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"

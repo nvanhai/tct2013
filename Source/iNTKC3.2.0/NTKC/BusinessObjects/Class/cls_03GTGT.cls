@@ -261,8 +261,6 @@ End Function
 Public Sub Prepared4(ByVal dNgayDauKy As Date)
 Dim strKyLapBo As String
 Dim blnValid As Boolean
-    Dim LoaiKyKK   As Variant
-    Dim dNgayCuoiKy As Date
 
     blnValid = True
     
@@ -284,9 +282,6 @@ Dim blnValid As Boolean
         .Col = .ColLetterToNumber(NGAY_NHAN_TO_KHAI_COL)
         .Row = NGAY_NHAN_TO_KHAI_ROW
         strNgayNhanToKhai = .Text
-        
-                        ' Get Loai ky ke khai
-        .GetText .ColLetterToNumber("AB"), 42, LoaiKyKK
         
         'Go to last sheet (header sheet)
         .Sheet = .SheetCount
@@ -346,24 +341,10 @@ Dim blnValid As Boolean
             
             
             ' Kiem tra xem ky ke khai trong cung ky hay khac ky
-            dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
-            dNgayCuoiKy = DateAdd("d", 29, dNgayCuoiKy)
-            
-            If LoaiKyKK = "0" Then
-                If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
-                    blnValid = True
-                Else
-                    blnValid = False
-                End If
-
+            If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
+                blnValid = True
             Else
-
-                If (dNgayDauKy <= DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) And (dNgayCuoiKy >= DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
-                    blnValid = True
-                Else
-                    blnValid = False
-                End If
-
+                blnValid = False
             End If
             
             .Col = .ColLetterToNumber("B")
@@ -477,8 +458,9 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
     Dim vItkhai_ID, vHthuc_nop As String
-    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
     Dim LOAI_KYKK As String
+    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
+    
 On Error GoTo ErrHandle
     strSQL = Replace$(strSQL_HDR, ")", ",LOAI_KYKK)")
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")

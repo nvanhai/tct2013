@@ -349,8 +349,8 @@ Dim blnValid As Boolean
         .Row = NGAY_NHAN_TO_KHAI_ROW
         strNgayNhanToKhai = .Text
         
-                                ' Get Loai ky ke khai
-        .GetText .ColLetterToNumber("AB"), 42, LoaiKyKK
+'                                ' Get Loai ky ke khai
+'        .GetText .ColLetterToNumber("AB"), 42, LoaiKyKK
         
         'Go to last sheet (header sheet)
         .Sheet = .SheetCount
@@ -608,7 +608,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "04_GTGT11"
+    vLOAI_TKHAI = "04_GTGT13"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     

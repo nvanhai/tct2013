@@ -80,18 +80,18 @@ Public strTenPQL As String
 Public Function Prepared1() As Boolean
     With fps
         .Sheet = 1
-        .Col = .ColLetterToNumber(HEADER_SO_TT_TRONG_TEP_COL)
-        .Row = HEADER_SO_TT_TRONG_TEP_ROW
-        .CellType = CellTypeEdit
-        .TypeEditCharSet = TypeEditCharSetNumeric
-        .TypeMaxEditLen = 10
-        
-        'Ma so tep
-        .Col = .ColLetterToNumber("M")
-        .Row = 13
-        .CellType = CellTypeEdit
-        .TypeEditCharSet = TypeEditCharSetAlphanumeric
-        .TypeMaxEditLen = 20
+'        .Col = .ColLetterToNumber(HEADER_SO_TT_TRONG_TEP_COL)
+'        .Row = HEADER_SO_TT_TRONG_TEP_ROW
+'        .CellType = CellTypeEdit
+'        .TypeEditCharSet = TypeEditCharSetNumeric
+'        .TypeMaxEditLen = 10
+'
+'        'Ma so tep
+'        .Col = .ColLetterToNumber("M")
+'        .Row = 13
+'        .CellType = CellTypeEdit
+'        .TypeEditCharSet = TypeEditCharSetAlphanumeric
+'        .TypeMaxEditLen = 20
         
         'Ghi chu
         .Col = .ColLetterToNumber("M")
