@@ -3,7 +3,7 @@
 		<mucTrichLap>N_10</mucTrichLap>
 		<soTienTrichLap>N_12</soTienTrichLap>
 	</Static>
-	<Dynamic GroupName="NoiDung_PL036TNDN">
+	<Dynamic GroupName="TTinNoiDung_PL036TNDN">
 		<NoiDungPL036TNDN id="ID_3">
 			<namTrLap>C_26</namTrLap>
 			<mucTrLapKyNay>E_26</mucTrLapKyNay>

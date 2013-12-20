@@ -36,6 +36,7 @@ Public strMaCoQuanThue As String
 Public strTenCoQuanThue As String
 Public strMaTinhCoQuanThue As String
 Public strMaToKhai As String
+Public strLoaiToKhai As String
 'End XML
 
 Public strNgayTaiChinh As String
@@ -1158,10 +1159,10 @@ End Function
 Public Function changeMaToKhai(strID As String) As String
     If strID = "01" Then changeMaToKhai = "01_GTGT11"
     If strID = "02" Then changeMaToKhai = "02_GTGT11"
-    If strID = "04" Then changeMaToKhai = "03_GTGT11"
+    If strID = "04" Then changeMaToKhai = "03_GTGT13"
     If strID = "07" Then changeMaToKhai = "04_GTGT"
-    If strID = "11" Then changeMaToKhai = "01A_TNDN11"
-    If strID = "12" Then changeMaToKhai = "01B_TNDN11"
+    If strID = "11" Then changeMaToKhai = "01A_TNDN13"
+    If strID = "12" Then changeMaToKhai = "01B_TNDN13"
     If strID = "03" Then changeMaToKhai = "03_TNDN11"
     If strID = "14" Then changeMaToKhai = "05_TNDN"
     If strID = "06" Then changeMaToKhai = "01_TAIN11"

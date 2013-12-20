@@ -949,9 +949,11 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     If Val(vlue) > 0 Then
         xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0132"), "Msg")
         xmlTK.getElementsByTagName("soLan")(0).Text = Val(vlue)
+        strLoaiToKhai = GetAttribute(GetMessageCellById("0132"), "Msg")
     Else
         xmlTK.getElementsByTagName("soLan")(0).Text = ""
         xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0131"), "Msg")
+        strLoaiToKhai = GetAttribute(GetMessageCellById("0131"), "Msg")
     End If
     
     'To 03/TBAC
@@ -1659,8 +1661,9 @@ On Error GoTo ErrHandle
         'Get Params
         objTaxBusiness.GetParams strNgayNhanToKhai, strMaPhongXuLy 'strMaSoTep, strNgayNhanToKhai, strMaPhongXuLy
     End If
+
     '***************************
-     If CheckValidData = False Then
+    If CheckValidData = False Then
         MessageBox "0046", msOKOnly, miWarning
         Exit Sub
     End If
@@ -1676,7 +1679,7 @@ On Error GoTo ErrHandle
     End If
     ' end
     
-    dsTK_DLT = "~1~2~3~4~5~6~11~12~46~47~48~49~15~16~50~51~36~70~71~72~73~74~75~80~81~82~77~86~87~89~42~43~17~59~41~76~90~"
+    dsTK_DLT = "~1~2~3~4~5~6~11~12~46~47~48~49~15~16~50~51~36~70~71~72~73~74~75~80~81~82~77~86~87~89~42~43~17~59~41~76~90~92~93~98~99~25~"
     ' Kiem tra neu MDL thue khac thi canh bao
     idToKhai = Val(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
     'If IdToKhai = 1 Or IdToKhai = 2 Or IdToKhai = 4 Or IdToKhai = 11 Or IdToKhai = 12 Or IdToKhai = 46 Or IdToKhai = 47 Or IdToKhai = 48 Or IdToKhai = 49 Or IdToKhai = 15 Or IdToKhai = 16 Or IdToKhai = 50 Or IdToKhai = 51 _
@@ -1713,24 +1716,26 @@ On Error GoTo ErrHandle
                 Exit Sub
             End If
         End If
+
         If idToKhai = 47 Or idToKhai = 49 Or idToKhai = 16 Or idToKhai = 51 Or (idToKhai = 74 And isTKThang = False) Or (idToKhai = 75 And isTKThang = False) Then
             If TAX_Utilities_Srv_New.Year < 2011 Or (TAX_Utilities_Srv_New.Year = 2011 And TAX_Utilities_Srv_New.ThreeMonths < 3) Then
-                    MessageBox "0119", msOKOnly, miWarning
+                MessageBox "0119", msOKOnly, miWarning
                 Exit Sub
             End If
         End If
             
-        If ((idToKhai = 74 Or idToKhai = 75) And isTKThang = True) Then
-              Dim arrNgay() As String
-              arrNgay = Split(TuNgay, "/")
-              
-          
-              If Val(arrNgay(1)) < 2011 Or (Val(arrNgay(1)) = 2011 And Val(arrNgay(0)) < 7) Then
-                  MessageBox "0118", msOKOnly, miWarning
-                  Exit Sub
-              End If
-          End If
+        'If ((idToKhai = 74 Or idToKhai = 75) And isTKThang = True) Then
+'        If ((idToKhai = 75) And isTKThang = True) Then
+'            Dim arrNgay() As String
+'            arrNgay = Split(TuNgay, "/")
+'
+'            If Val(arrNgay(1)) < 2011 Or (Val(arrNgay(1)) = 2011 And Val(arrNgay(0)) < 7) Then
+'                MessageBox "0118", msOKOnly, miWarning
+'                Exit Sub
+'            End If
+'        End If
     End If
+
     ' end
   
     
@@ -2843,7 +2848,8 @@ Private Sub Barcode_Scaned(strBarcode As String)
             idToKhai = Mid(strPrefix, 4, 2)
 
             ' Neu la to khai 02AB/TNCN, 03AB/TNCN  thang bat dau tu thang 2/2010 se ko nhan to khai nua
-            If (Trim(idToKhai) = "53" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "37" And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "54" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "38" And Val(Mid(strPrefix, 21, 4)) > 2009) Then
+            If (Trim(idToKhai) = "53" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "37" And Val(Mid(strPrefix, 21, 4)) > 2009) _
+                Or (Trim(idToKhai) = "54" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "38" And Val(Mid(strPrefix, 21, 4)) > 2009) Then
                 DisplayMessage "0094", msOKOnly, miInformation
                 Exit Sub
             End If
@@ -2854,7 +2860,8 @@ Private Sub Barcode_Scaned(strBarcode As String)
         idToKhai = Mid(strPrefix, 4, 2)
 
         If (Val(Left$(strPrefix, 3)) < 300) Then
-            If Trim(idToKhai) = "01" Or Trim(idToKhai) = "02" Or Trim(idToKhai) = "04" Or Trim(idToKhai) = "11" Or Trim(idToKhai) = "12" Or Trim(idToKhai) = "46" Or Trim(idToKhai) = "47" Or Trim(idToKhai) = "48" Or Trim(idToKhai) = "49" Or Trim(idToKhai) = "15" Or Trim(idToKhai) = "16" Or Trim(idToKhai) = "50" Or Trim(idToKhai) = "51" Or Trim(idToKhai) = "36" Or Trim(idToKhai) = "70" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "05" Then
+            If Trim(idToKhai) = "01" Or Trim(idToKhai) = "02" Or Trim(idToKhai) = "04" Or Trim(idToKhai) = "11" Or Trim(idToKhai) = "12" Or Trim(idToKhai) = "46" Or Trim(idToKhai) = "47" Or Trim(idToKhai) = "48" Or Trim(idToKhai) = "49" Or Trim(idToKhai) = "15" Or Trim(idToKhai) = "16" Or Trim(idToKhai) = "50" Or Trim(idToKhai) = "51" _
+            Or Trim(idToKhai) = "36" Or Trim(idToKhai) = "70" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "05" Then
                 DisplayMessage "0113", msOKOnly, miInformation
                 Exit Sub
             End If
@@ -2863,7 +2870,8 @@ Private Sub Barcode_Scaned(strBarcode As String)
         '06012012 TT28
         ' Khong nhan cac to khai theo mau cu GD2
         If (Val(Left$(strPrefix, 3)) < 310) Then
-            If Trim$(idToKhai) = "71" Or Trim$(idToKhai) = "72" Or Trim$(idToKhai) = "73" Or Trim$(idToKhai) = "03" Or Trim$(idToKhai) = "74" Or Trim$(idToKhai) = "75" Or Trim$(idToKhai) = "80" Or Trim$(idToKhai) = "81" Or Trim$(idToKhai) = "82" Or Trim$(idToKhai) = "17" Or Trim$(idToKhai) = "42" Or Trim$(idToKhai) = "43" Or Trim$(idToKhai) = "59" Or Trim$(idToKhai) = "76" Or Trim$(idToKhai) = "41" Or Trim$(idToKhai) = "77" Or Trim$(idToKhai) = "86" Or Trim$(idToKhai) = "87" Or Trim$(idToKhai) = "89" Then
+            If Trim$(idToKhai) = "71" Or Trim$(idToKhai) = "72" Or Trim$(idToKhai) = "73" Or Trim$(idToKhai) = "03" Or Trim$(idToKhai) = "74" Or Trim$(idToKhai) = "75" Or Trim$(idToKhai) = "80" Or Trim$(idToKhai) = "81" Or Trim$(idToKhai) = "82" Or Trim$(idToKhai) = "17" Or Trim$(idToKhai) = "42" Or Trim$(idToKhai) = "43" _
+            Or Trim$(idToKhai) = "59" Or Trim$(idToKhai) = "76" Or Trim$(idToKhai) = "41" Or Trim$(idToKhai) = "77" Or Trim$(idToKhai) = "86" Or Trim$(idToKhai) = "87" Or Trim$(idToKhai) = "89" Then
                 DisplayMessage "0126", msOKOnly, miInformation
                 Exit Sub
             End If
@@ -2879,9 +2887,11 @@ Private Sub Barcode_Scaned(strBarcode As String)
 
         ' Ket thuc
         ' Khong nhan cac to khai 02/TAIN, 05/TNDN
-        If Trim(idToKhai) = "08" Or Trim(idToKhai) = "24" Then
-            DisplayMessage "0120", msOKOnly, miInformation
-            Exit Sub
+        'If Trim(idToKhai) = "08" Or Trim(idToKhai) = "24" Then
+        'nvsu -- reOpen(01/BCTL_DK)
+        If Trim(idToKhai) = "08" Then
+                DisplayMessage "0120", msOKOnly, miInformation
+                Exit Sub
         End If
 
         ' end
@@ -3305,7 +3315,8 @@ On Error GoTo ErrHandler
     Dim idToKhaiCheck As Integer
     ' Khong check doi voi cac BCTC
     idToKhaiCheck = Val(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
-    If (idToKhaiCheck >= 24 And idToKhaiCheck <= 35) Or (idToKhaiCheck >= 55 And idToKhaiCheck <= 58) Or (idToKhaiCheck >= 18 And idToKhaiCheck <= 21) Or idToKhaiCheck = 69 Then
+    'remove 24,25,26
+    If (idToKhaiCheck >= 27 And idToKhaiCheck <= 35) Or (idToKhaiCheck >= 55 And idToKhaiCheck <= 58) Or (idToKhaiCheck >= 18 And idToKhaiCheck <= 21) Or idToKhaiCheck = 69 Then
         isSheetTk = False
     End If
     
@@ -3337,32 +3348,32 @@ On Error GoTo ErrHandler
                 checkSoCT = 2
                 Exit Sub
             End If
-        ElseIf idToKhaiCheck = 11 Then
-             If ((lDataNo + 1 > lElementsNo And lDataNo <> 7) Or ((lDataNo + 2 > lElementsNo) And lDataNo = 7)) And isSheetTk Then
-                blnValidData = False
-                checkSoCT = 1
-                Exit Sub
-            End If
-            ' Truong hop chuoi ma vach it chi tieu hon so chi tieu trong template
-            'If (UBound(arrStrValue) + 1 < lElementsNo) And isSheetTk Then
-            If ((lDataNo + 1 < lElementsNo And lDataNo <> 7) Or ((lDataNo + 2 < lElementsNo) And lDataNo = 7)) And isSheetTk Then
-                blnValidData = False
-                checkSoCT = 2
-                Exit Sub
-            End If
-        ElseIf idToKhaiCheck = 12 Then
-             If ((lDataNo + 1 > lElementsNo And lDataNo <> 6) Or ((lDataNo + 2 > lElementsNo) And lDataNo = 6)) And isSheetTk Then
-                blnValidData = False
-                checkSoCT = 1
-                Exit Sub
-            End If
-            ' Truong hop chuoi ma vach it chi tieu hon so chi tieu trong template
-            'If (UBound(arrStrValue) + 1 < lElementsNo) And isSheetTk Then
-            If ((lDataNo + 1 < lElementsNo And lDataNo <> 6) Or ((lDataNo + 2 < lElementsNo) And lDataNo = 6)) And isSheetTk Then
-                blnValidData = False
-                checkSoCT = 2
-                Exit Sub
-            End If
+'        ElseIf idToKhaiCheck = 11 Then
+'             If ((lDataNo + 1 > lElementsNo And lDataNo <> 7) Or ((lDataNo + 2 > lElementsNo) And lDataNo = 7)) And isSheetTk Then
+'                blnValidData = False
+'                checkSoCT = 1
+'                Exit Sub
+'            End If
+'            ' Truong hop chuoi ma vach it chi tieu hon so chi tieu trong template
+'            'If (UBound(arrStrValue) + 1 < lElementsNo) And isSheetTk Then
+'            If ((lDataNo + 1 < lElementsNo And lDataNo <> 7) Or ((lDataNo + 2 < lElementsNo) And lDataNo = 7)) And isSheetTk Then
+'                blnValidData = False
+'                checkSoCT = 2
+'                Exit Sub
+'            End If
+'        ElseIf idToKhaiCheck = 12 Then
+'             If ((lDataNo + 1 > lElementsNo And lDataNo <> 6) Or ((lDataNo + 2 > lElementsNo) And lDataNo = 6)) And isSheetTk Then
+'                blnValidData = False
+'                checkSoCT = 1
+'                Exit Sub
+'            End If
+'            ' Truong hop chuoi ma vach it chi tieu hon so chi tieu trong template
+'            'If (UBound(arrStrValue) + 1 < lElementsNo) And isSheetTk Then
+'            If ((lDataNo + 1 < lElementsNo And lDataNo <> 6) Or ((lDataNo + 2 < lElementsNo) And lDataNo = 6)) And isSheetTk Then
+'                blnValidData = False
+'                checkSoCT = 2
+'                Exit Sub
+'            End If
         ElseIf idToKhaiCheck = 3 Then
            If ((lDataNo + 1 > lElementsNo And lDataNo <> 7) Or ((lDataNo + 2 > lElementsNo) And lDataNo = 7)) And isSheetTk Then
                 blnValidData = False
@@ -3657,8 +3668,8 @@ Private Sub SetPeriod(ByVal strValue As String)
     
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
         TAX_Utilities_Srv_New.Month = Left$(strValue, 2)
-
-        If strID = "01" Or strID = "02" Or strID = "04" Or strID = "71" Or strID = "36" Or strID = "68" Then
+        'set ThreeMonths cho to khai thang/quy
+        If strID = "01" Or strID = "02" Or strID = "04" Or strID = "71" Or strID = "95" Or strID = "36" Or strID = "68" Or strID = "25" Then
             TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
         Else
             TAX_Utilities_Srv_New.ThreeMonths = ""
@@ -3809,7 +3820,7 @@ On Error GoTo ErrHandle
     
     Dim strIDBCTC As String
     strIDBCTC = Left$(strTaxReportInfo, 2)
-     If (Val(strIDBCTC) = 24 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 26 Or Val(strIDBCTC) = 27 Or Val(strIDBCTC) = 28 Or Val(strIDBCTC) = 29 _
+     If (Val(strIDBCTC) = 27 Or Val(strIDBCTC) = 28 Or Val(strIDBCTC) = 29 _
             Or Val(strIDBCTC) = 30 Or Val(strIDBCTC) = 31 Or Val(strIDBCTC) = 32 Or Val(strIDBCTC) = 33 Or Val(strIDBCTC) = 34 Or Val(strIDBCTC) = 35 _
             Or Val(strIDBCTC) = 55 Or Val(strIDBCTC) = 56 Or Val(strIDBCTC) = 57 Or Val(strIDBCTC) = 58 Or Val(strIDBCTC) = 18 Or Val(strIDBCTC) = 19 _
             Or Val(strIDBCTC) = 20 Or Val(strIDBCTC) = 21 Or Val(strIDBCTC) = 69) Then
@@ -3877,11 +3888,11 @@ On Error GoTo ErrHandle
     'sua theo mail cua ptly yeu cau khong kiem tra MST tam ngung kinh doanh van duoc nop
     'ngay 01.07.2010
     
-    If rsTaxInfor.Fields(0) = "05" Then
-        InitParameters = False
-        MessageBox "0088", msOKOnly, miCriticalError
-        Exit Function
-    End If
+'    If rsTaxInfor.Fields(0) = "05" Then
+'        InitParameters = False
+'        MessageBox "0088", msOKOnly, miCriticalError
+'        Exit Function
+'    End If
 
     strMST = CStr(rsTaxInfor.Fields(1))
     
@@ -3973,7 +3984,8 @@ On Error GoTo ErrHandle
     
     
     On Error GoTo ErrHandle
-    If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Then
+    
+    If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 26 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Or Val(strIDBCTC) = 68 Then
         If Val(strIDBCTC) = 36 Then
             LoaiKyKK = LoaiToKhai(strData)
         Else
@@ -3988,8 +4000,9 @@ On Error GoTo ErrHandle
         dNgayDauKy = DateSerial(CInt(TAX_Utilities_Srv_New.Year), CInt(TAX_Utilities_Srv_New.Month), 1)
         dNgayCuoiKy = DateAdd("m", 1, dNgayDauKy)
         dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
-
-        If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Then
+        
+        'Xu ly rieng cho to khai thang/quy
+        If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 26 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 95 Or Val(strIDBCTC) = 36 Then
             If LoaiKyKK = True Then
                 dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
                 dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
@@ -4168,25 +4181,25 @@ On Error GoTo ErrHandle
         End If
 
         ' Xy ly to khai 08, 08A/TNCN
-        If Val(strID) = 74 Then
-            arrCT = Split(strData, "~")
-            If Trim(arrCT(2)) <> "" Then
-                TuNgay = arrCT(2)
-                DenNgay = arrCT(3)
-                isTKThang = True
-            End If
-            
-        End If
+'        If Val(strID) = 74 Then
+'            arrCT = Split(strData, "~")
+'            If Trim(arrCT(2)) <> "" Then
+'                TuNgay = arrCT(2)
+'                DenNgay = arrCT(3)
+'                isTKThang = True
+'            End If
+'
+'        End If
 ' 08A/TNCN
-        If Val(strID) = 75 Then
-            arrCT = Split(strData, "~")
-            If Trim(arrCT(1)) <> "" Then
-                TuNgay = Right$(arrCT(0), 7)
-                DenNgay = arrCT(1)
-                isTKThang = True
-            End If
-            
-        End If
+'        If Val(strID) = 75 Then
+'            arrCT = Split(strData, "~")
+'            If Trim(arrCT(1)) <> "" Then
+'                TuNgay = Right$(arrCT(0), 7)
+'                DenNgay = arrCT(1)
+'                isTKThang = True
+'            End If
+'
+'        End If
         
         ' To khai 01/NTNN
         If Val(strID) = 70 Then
@@ -4502,7 +4515,7 @@ On Error GoTo ErrHandle
     
     ' set ma CQT
     If Not objTaxBusiness Is Nothing Then
-        If Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) >= 64 And Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <= 68 Then
+        If (Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) >= 64 And Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <= 68) Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 91 Then
             objTaxBusiness.strMaCQT = strTaxOfficeId
             ' lay ma phong quan ly
             'Get Tax id
@@ -6582,8 +6595,14 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
     Dim XmlDocStandard As New MSXML.DOMDocument
     XmlDocStandard.Load GetAbsolutePath("..\InterfaceTemplates\xml\TempStandard.xml")
     Set XmlDocStandard = SetValueHeaderESB(XmlDocStandard)
+    
+    'Verify value for header
+    XmlDocStandard.getElementsByTagName("ID_LINK")(0).Text = strMaToKhai
+    XmlDocStandard.getElementsByTagName("SPARE3")(0).Text = strLoaiToKhai
+    'end verify value
+    
     ' Set value tag <add_info>
-    XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = Format(sNgayNopTK, "dd-mmm-yyyy")
+    XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = Format(sNgayNopTK, "dd-mmm-yyyy hh:mm:ss")
     XmlDocStandard.getElementsByTagName("ky_lap_bo")(0).Text = sKyLapBo
     XmlDocStandard.getElementsByTagName("nguon_goc_tk")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text
     XmlDocStandard.getElementsByTagName("nguoi_nhan_tk")(0).Text = strUserID '& "." & xmlConfig.getElementsByTagName("CODE_OFFICE")(0).Text
@@ -6593,7 +6612,6 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
     XmlDocStandard.getElementsByTagName("noi_gui")(0).Text = ""
     XmlDocStandard.getElementsByTagName("noi_nhan")(0).Text = ""
     
-    XmlDocStandard.getElementsByTagName("ID_LINK")(0).Text = strMaToKhai
     
     'Bo sung tag <QHS> cho BCTC va AC
     'ID BCTC: 69(15_BCTC); 19(48_BCTC); 20(16_BCTC); 21(99_BCTC); 22(95_BCTC);

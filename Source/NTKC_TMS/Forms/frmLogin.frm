@@ -193,7 +193,8 @@ On Error GoTo ErrorHandle
                 Exit Sub
             End If
     End Select
-    
+   
+    GetDataInfor
     'Set user name to system caption
     frmSystem.lblUser.caption = Mid$(frmSystem.lblUser.caption, 1, _
         InStr(1, frmSystem.lblUser.caption, ":") + 1) & _

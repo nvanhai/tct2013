@@ -1,21 +1,21 @@
 <PL_01_2_TD_GTGT>
 	<Dynamic GroupName="BangPhanBoThueGTGTSXThuyDien">
 		<chiTietPhanBoGTGTChoTungNMay id="id">
-			<tenNhaMay>C_18</tenNhaMay>
-			<mstNhaMay>AG_18</mstNhaMay>
+			<tenNhaMay>C_6</tenNhaMay>
+			<mstNhaMay>C_7</mstNhaMay>
 			<PHANBOCHOCQTDIAPHUONG>
 				<tyLePBoThueChoTungCQT>
-					<maCQTPBo>AH_18</maCQTPBo>
-					<tenCQTPBo>O_18</tenCQTPBo>
-					<tyLePBo>R_18</tyLePBo>
-					<thuePNopPBo>U_18</thuePNopPBo>
+					<maCQTPBo>E_7</maCQTPBo>
+					<tenCQTPBo>E_6</tenCQTPBo>
+					<tyLePBo>F_6</tyLePBo>
+					<thuePNopPBo>G_6</thuePNopPBo>
 				</tyLePBoThueChoTungCQT>
 			</PHANBOCHOCQTDIAPHUONG>
-			<tyLePhanBoNhaMay>R_20</tyLePhanBoNhaMay>
-			<thuePNopNhaMay>U_20</thuePNopNhaMay>
+			<tyLePhanBoNhaMay>C_42</tyLePhanBoNhaMay>
+			<thuePNopNhaMay>C_42</thuePNopNhaMay>
 		</chiTietPhanBoGTGTChoTungNMay>
 	</Dynamic>
 	<Static GroupName="PL_01_2_TD_GTGT">
-		<tongCong></tongCong>
+		<tongCong>G_8</tongCong>
 	</Static>
 </PL_01_2_TD_GTGT>

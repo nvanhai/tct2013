@@ -1,7 +1,13 @@
 <PL01_5_GTGT>
 	<Static GroupName="ThueGTGTDaKKhai">
-		<cqtQLy>D_22</cqtQLy>
-		<ngayNop>E_22</ngayNop>
-		<sotienKKhai>F_22</sotienKKhai>
+		<soChungTu>C_22</soChungTu>
+		<ngayNop>D_22</ngayNop>
+		<noiNopTien>E_22</noiNopTien>
+		<cqtQLy_CCT>J_22</cqtQLy_CCT>
+		<cqtQLy_CT>K_22</cqtQLy_CT>
+		<sotienKKhai>I_22</sotienKKhai>
+	</Static>
+	<Static GroupName="PL01_5_GTGT">
+		<tongCong>H_24</tongCong>
 	</Static>
 </PL01_5_GTGT>
