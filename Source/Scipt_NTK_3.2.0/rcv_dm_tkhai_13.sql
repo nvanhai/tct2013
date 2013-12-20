@@ -77,6 +77,12 @@ values ('01_TNCN_TTS', 'Tê KHAI THUÕ HO¹T §éNG CHO THU£ TµI S¶N', 'Q', '320', to
 commit;
 
 
+-- Bao cao tai chinh TT95 sua doi QD 99
+insert into RCV_DM_TKHAI (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
+values ('95_BCTC', 'BCTC theo QD95/NHNN', 'Y', '320', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+commit;
+
+
 
 
 
