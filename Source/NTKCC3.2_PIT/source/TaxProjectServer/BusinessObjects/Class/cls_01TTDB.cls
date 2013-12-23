@@ -621,6 +621,9 @@ Public Function InsertHDR() As String
     Dim MANNKD As Variant
     Dim DSoCL As Variant
     Dim GTTTCL As Variant
+            Dim TENNV      As Variant
+    Dim CHUNGCHI   As Variant
+
    'test
     Dim arrMTM() As String, arrMTMSave() As String
     Dim arrVitri() As Integer
@@ -638,12 +641,16 @@ Public Function InsertHDR() As String
     sSQLCol = "MADTNT, MATHUE, MATM, MAPP, KYLBO, NGNOP, "
     sSQLCol = sSQLCol & "LOAITIEN, MABPQL, SHTEP, TTHTK, KYKKHAI, "
     sSQLCol = sSQLCol & "NGNHAP, THUETKY, GTTINHTHUE, DAGHI, "
-    sSQLCol = sSQLCol & "KTTRUOC, DOANHSO, MAPP2, MAMUC, MAVACH,MATKHAI,HANNOP, THUETKY2,HANNOP2,TENDA,DAGHI1,DAGHI2, AUTO_CAL, NGANH, LAN_QUET, MADLT, LANBS, NgayPS, THUECL, MANNKD, DSOCL, GTTTCL, DANHAN"
+    sSQLCol = sSQLCol & "KTTRUOC, DOANHSO, MAPP2, MAMUC, MAVACH,MATKHAI,HANNOP, THUETKY2,HANNOP2,TENDA,DAGHI1,DAGHI2, AUTO_CAL, NGANH, LAN_QUET, MADLT, LANBS, NgayPS, THUECL, MANNKD, DSOCL, GTTTCL, DANHAN, TENNV, CHUNGCHI"
     
     ' Ghi HDR muc I
     With fps
         .Sheet = 1
         Section = 0
+        
+                .GetText .ColLetterToNumber("T"), .MaxRows - 4, TENNV
+        .GetText .ColLetterToNumber("T"), .MaxRows - 6, CHUNGCHI
+
         'dhdang phan lay vao mang
         'ngay 14/09/2010
         .Col = .ColLetterToNumber("B")
@@ -908,7 +915,7 @@ Public Function InsertHDR() As String
                     sSQLVal = sSQLVal & LoaiTien & "," & MABPQL & "," & SHTEP & "," & tthtk & "," & kykkhai & ", "
                     sSQLVal = sSQLVal & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & ", "
                     sSQLVal = sSQLVal & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ", "
-                    sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & MADLT & "," & LanBS & "," & NGAYPS & "," & THUECL & "," & MANNKD & "," & DSoCL & "," & GTTTCL & "," & DANHAN
+                    sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & MADLT & "," & LanBS & "," & NGAYPS & "," & THUECL & "," & MANNKD & "," & DSoCL & "," & GTTTCL & "," & DANHAN & ",'" & TENNV & "','" & CHUNGCHI & "'"
                 
                     sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & _
                      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"

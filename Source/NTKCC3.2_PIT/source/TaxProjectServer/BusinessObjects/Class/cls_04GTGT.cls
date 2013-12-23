@@ -643,7 +643,7 @@ Public Function InsertDTL() As String
     Dim CTIEUTNDN  As Variant
     Dim SOTIEN     As Variant
     Dim SOTIEN2    As Variant
-    Dim tt         As Variant
+    Dim TT         As Variant
 
     Dim matkhai    As Variant
     Dim kykkhai    As Variant
@@ -952,7 +952,7 @@ Public Function InsertDTL() As String
         LoaiTien = "''"
         DANHAN = "''"
 
-        tt = "''"
+        TT = "''"
         ' sua MAMUC & MATM tu nam 2009
         If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
             maTM = "'01'"
@@ -982,7 +982,7 @@ Public Function InsertDTL() As String
 
         sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & ","
         sSQLVal = sSQLVal & kylbo & "," & ngnop & "," & LoaiTien & ","
-        sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
+        sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & TT & "," & SOTIEN2 & ","
         sSQLVal = sSQLVal & MaMuc & "," & tthtk & "," & matkhai & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
         sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
@@ -999,7 +999,7 @@ Public Function InsertDTL() As String
 
         sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & ","
         sSQLVal = sSQLVal & kylbo & "," & ngnop & "," & LoaiTien & ","
-        sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
+        sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & TT & "," & SOTIEN2 & ","
         sSQLVal = sSQLVal & MaMuc & "," & tthtk & "," & matkhai & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
         sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
@@ -1016,14 +1016,14 @@ Public Function InsertDTL() As String
 
         sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & ","
         sSQLVal = sSQLVal & kylbo & "," & ngnop & "," & LoaiTien & ","
-        sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
+        sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & TT & "," & SOTIEN2 & ","
         sSQLVal = sSQLVal & MaMuc & "," & tthtk & "," & matkhai & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
         sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
         bln = clsDAO.ExecuteDLL(sSQL)
         
                 CTIEUTNDN = "'004'"
-        .GetText .ColLetterToNumber("K"), 45, SOTIEN
+        .GetText .ColLetterToNumber("Z"), 45, SOTIEN
 
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
@@ -1033,14 +1033,14 @@ Public Function InsertDTL() As String
 
         sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & ","
         sSQLVal = sSQLVal & kylbo & "," & ngnop & "," & LoaiTien & ","
-        sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
+        sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & TT & "," & SOTIEN2 & ","
         sSQLVal = sSQLVal & MaMuc & "," & tthtk & "," & matkhai & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
         sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
         bln = clsDAO.ExecuteDLL(sSQL)
         
                 CTIEUTNDN = "'005'"
-        .GetText .ColLetterToNumber("K"), 46, SOTIEN
+        .GetText .ColLetterToNumber("Z"), 46, SOTIEN
 
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
@@ -1050,7 +1050,7 @@ Public Function InsertDTL() As String
 
         sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & ","
         sSQLVal = sSQLVal & kylbo & "," & ngnop & "," & LoaiTien & ","
-        sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
+        sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & TT & "," & SOTIEN2 & ","
         sSQLVal = sSQLVal & MaMuc & "," & tthtk & "," & matkhai & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
         sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 

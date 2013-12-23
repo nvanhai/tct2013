@@ -1165,7 +1165,8 @@ Public Function InsertHDR() As String
     Dim GTTTCL     As Variant
     Dim DANHAN     As Variant
     Dim DATHAY     As Variant
-    
+        Dim TENNV      As Variant
+    Dim CHUNGCHI   As Variant
     'bien dung xu ly Ma Tieu Muc
     Dim arrMTM()     As String, arrMTMSave() As String
     Dim arrThueTKy() As String, arrThueTKySave() As Double
@@ -1184,11 +1185,13 @@ Public Function InsertHDR() As String
     
     sSQLCol = "NamQT, TuKy, DenKy, MaDTNT, MaDLT, MaMuc, MaTM, NgNop, NgNhap, LoaiTien, KyDC,"
     sSQLCol = sSQLCol + "ThueTKy, DaGhi, LoaiTK, TTHTK, MaVach, HanNop, KyLBo, DoanhSo, GTTinhThue,"
-    sSQLCol = sSQLCol + "LanBS, ThueCL, DSoCL, GTTTCL, DANHAN, DA_THAY,LAN_QUET"
+    sSQLCol = sSQLCol + "LanBS, ThueCL, DSoCL, GTTTCL, DANHAN, DA_THAY,LAN_QUET, TENNV, CHUNGCHI"
        
     With fps
         .Sheet = 1
-        
+                .GetText .ColLetterToNumber("G"), .MaxRows - 3, TENNV
+        .GetText .ColLetterToNumber("G"), .MaxRows - 5, CHUNGCHI
+
         'Ma tieu muc
         .Col = .ColLetterToNumber("B")
         .Row = 45
@@ -1363,7 +1366,7 @@ Public Function InsertHDR() As String
             ThueTKy = arrThueTKySave(i)
             
             If Trim(maTM) <> "" Or Trim(maTM) <> "''" Then
-                sSQLVal = namQT & "," & TuKy & "," & DenKy & "," & madtnt & "," & MADLT & "," & MaMuc & "," & maTM & ", " & ngnop & "," & NgNhap & "," & LoaiTien & "," & KyDC & "," & ThueTKy & "," & DaGhi & "," & LoaiTK & "," & tthtk & "," & MaVach & "," & HANNOP & "," & kylbo & "," & DoanhSo & "," & GTTinhThue & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & DANHAN & "," & DATHAY & "," & LAN_QUET
+                sSQLVal = namQT & "," & TuKy & "," & DenKy & "," & madtnt & "," & MADLT & "," & MaMuc & "," & maTM & ", " & ngnop & "," & NgNhap & "," & LoaiTien & "," & KyDC & "," & ThueTKy & "," & DaGhi & "," & LoaiTK & "," & tthtk & "," & MaVach & "," & HANNOP & "," & kylbo & "," & DoanhSo & "," & GTTinhThue & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & DANHAN & "," & DATHAY & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "'"
        
                 sSQL = "INSERT INTO TMP_QTMT" & kyLapBo & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      

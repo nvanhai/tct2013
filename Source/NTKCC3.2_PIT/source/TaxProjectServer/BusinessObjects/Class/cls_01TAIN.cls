@@ -1408,6 +1408,10 @@ Public Function InsertHDR() As String
     Dim GTTTCL     As Variant
     Dim MANNKD     As Variant
     Dim NGAYPS     As Variant
+    
+                Dim TENNV      As Variant
+    Dim CHUNGCHI   As Variant
+
     'test
     Dim arrMTM()   As String, arrMTMSave() As String
     Dim arrVitri() As Integer
@@ -1418,7 +1422,7 @@ Public Function InsertHDR() As String
     sSQLCol = "MADTNT, MATHUE, MATM, MAPP, KYLBO, NGNOP, "
     sSQLCol = sSQLCol & "LOAITIEN, MABPQL, SHTEP, TTHTK, KYKKHAI, "
     sSQLCol = sSQLCol & "NGNHAP, THUETKY, GTTINHTHUE, DAGHI,  "
-    sSQLCol = sSQLCol & "KTTRUOC, DOANHSO, MAPP2, MAMUC, MAVACH,MATKHAI,HANNOP, THUETKY2, HANNOP2, TENDA, DAGHI1 ,DAGHI2, AUTO_CAL, NGANH,LAN_QUET, MADLT, LANBS, THUECL,DSOCL, GTTTCL, MANNKD, DANHAN, NgayPS"
+    sSQLCol = sSQLCol & "KTTRUOC, DOANHSO, MAPP2, MAMUC, MAVACH,MATKHAI,HANNOP, THUETKY2, HANNOP2, TENDA, DAGHI1 ,DAGHI2, AUTO_CAL, NGANH,LAN_QUET, MADLT, LANBS, THUECL,DSOCL, GTTTCL, MANNKD, DANHAN, NgayPS, TENNV, CHUNGCHI"
    
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
@@ -1427,6 +1431,10 @@ Public Function InsertHDR() As String
        
     With fps
         .Sheet = 1
+        
+                        .GetText .ColLetterToNumber("T"), .MaxRows - 4, TENNV
+        .GetText .ColLetterToNumber("T"), .MaxRows - 6, CHUNGCHI
+
         'Lay ds ma tieu muc
         'dhdang phan lay vao mang
         'ngay 14/09/2010
@@ -1672,7 +1680,7 @@ Public Function InsertHDR() As String
                 sSQLVal = sSQLVal & LoaiTien & "," & MABPQL & "," & SHTEP & "," & tthtk & "," & kykkhai & ", "
                 sSQLVal = sSQLVal & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & ", "
                 sSQLVal = sSQLVal & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ", "
-                sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & MADLT & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & MANNKD & "," & DANHAN & "," & NGAYPS
+                sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & MADLT & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & MANNKD & "," & DANHAN & "," & NGAYPS & ",'" & TENNV & "','" & CHUNGCHI & "'"
                    
                 sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
                 bln = clsDAO.ExecuteDLL(sSQL)

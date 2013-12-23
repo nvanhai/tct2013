@@ -706,7 +706,7 @@ Public Function InsertHDR() As String
     With fps
         .Sheet = 1
         
-        .GetText .ColLetterToNumber("G"), 8, madtnt
+        .GetText .ColLetterToNumber("F"), 10, madtnt
 
         If Trim(madtnt) = vbNullString Then
             madtnt = "''"
@@ -714,16 +714,8 @@ Public Function InsertHDR() As String
             madtnt = "'" & madtnt & "'"
         End If
 
-        'ma dai ly thue
-        .GetText .ColLetterToNumber("G"), 15, MADLT
-
-        If Trim(MADLT) = vbNullString Then
-            MADLT = "''"
-        Else
-            MADLT = "'" & MADLT & "'"
-        End If
-        
-        .GetText .ColLetterToNumber("E"), 22, kylbo
+       
+        .GetText .ColLetterToNumber("E"), 30, kylbo
         'Luu thong tin cua ky lap bo cua to khai quet hien tai, de hien thi cho viec quet to khai lan sau
         SaveSetting "HTKK", "TNCN", "tempKyLb", kylbo
 
@@ -738,7 +730,7 @@ Public Function InsertHDR() As String
             End If
         End If
         
-        .GetText .ColLetterToNumber("E"), 24, ngnop
+        .GetText .ColLetterToNumber("E"), 32, ngnop
         'Luu thong tin cua ngay nop cua to khai quet hien tai, de hien thi cho viec quet to khai lan sau
         SaveSetting "HTKK", "TNCN", "tempNgayNop", ngnop
 
@@ -749,7 +741,7 @@ Public Function InsertHDR() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
         
-        .GetText .ColLetterToNumber("M"), 24, NgNhap
+        .GetText .ColLetterToNumber("M"), 32, NgNhap
 
         'NGNHAP = Date
         If Trim(NgNhap) = vbNullString Then
@@ -786,14 +778,6 @@ Public Function InsertHDR() As String
             tthtk = "'" & 2 & "'"
         End If
 
-        ' so lan bo sung
-        If tthtk = "'" & 2 & "'" Then
-            .GetText .ColLetterToNumber("T"), 5, solanBS
-            LanBS = solanBS
-        Else
-            LanBS = "0"
-        End If
-        
         matkhai = "'01_TNCN_BHDC'"
         
         LoaiTien = "''"
@@ -807,10 +791,10 @@ Public Function InsertHDR() As String
         MAPP = "'07'"
         THUECL = "0"
          
-        .GetText .ColLetterToNumber("G"), 15, MADLT
-        .GetText .ColLetterToNumber("I"), 19, SOHDDL
-        .GetText .ColLetterToNumber("S"), 19, NGAYHDDL
-        .GetText .ColLetterToNumber("C"), 67, LANDAU
+        .GetText .ColLetterToNumber("F"), 20, MADLT
+        .GetText .ColLetterToNumber("H"), 28, SOHDDL
+        .GetText .ColLetterToNumber("N"), 28, NGAYHDDL
+        .GetText .ColLetterToNumber("C"), 66, LANDAU
 
         If LANDAU = 1 Then
             LanBS = "0"
@@ -835,11 +819,11 @@ Public Function InsertHDR() As String
         hdr.khoa_so = "''"
         hdr.loai_tkhai = "'01_TNCN_BHDC'"
 
-        If tthtk = "1" Then
+        If tthtk = "'1'" Then
             hdr.kkbs = 0    ' To khai chinh thuc
-        ElseIf tthtk = "2" Then
+        ElseIf tthtk = "'2'" Then
             hdr.kkbs = 1    ' To khai thay the
-        ElseIf tthtk = "3" Then
+        ElseIf tthtk = "'3'" Then
             hdr.kkbs = 2    ' To khai bo sung
         Else
             hdr.kkbs = 1    ' To khai nop cham
@@ -871,7 +855,7 @@ Public Function InsertHDR() As String
         hdr.Ma_dl_thue = "'" & MADLT & "'"
         hdr.So_hd_dl = "'" & SOHDDL & "'"
         hdr.Ngay_hd_dl = NGAYHDDL
-        hdr.Lan_bs = LanBS
+        hdr.lan_bs = LanBS
 
         If Loai_Ky_KK = "1" Then
             hdr.kieu_ky = "Q"
