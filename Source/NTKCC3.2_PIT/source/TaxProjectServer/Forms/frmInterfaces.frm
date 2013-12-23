@@ -1826,8 +1826,17 @@ Private Sub Command1_Click()
 'str1 = "aa999232100343639   032013000001002002~0~0~0~0~0~0~0~0~0</S><S>sdfsdf~~sdfsdfds~20/12/2013~1~1~~1~~</S></S01>"
 'Barcode_Scaned str1
 
-str1 = "aa999252100343639   03201300100100100101/0101/01/1900<S01><S>6868686868</S><S>32423432432~23423423~23424~4324234234~432423423~4234324~423432~23423432423~234234234~432432423~865302702</S><S>~20/12/2013~sdfsdf~sdfsdfds~1~~~1</S></S01>"
-Barcode_Scaned str1
+'str1 = "aa999252100343639   03201300100100100101/0101/01/1900<S01><S>6868686868</S><S>32423432432~23423423~23424~4324234234~432423423~4234324~423432~23423432423~234234234~432432423~865302702</S><S>~20/12/2013~sdfsdf~sdfsdfds~1~~~1</S></S01>"
+'Barcode_Scaned str1
+
+'str2 = "bs999022100343639   11201300600900100301/0114/06/2006<S01><S>6868686868</S><S>32423432~343423~405439509435~20271975472~2343242~23423423~3242342~42323432~20253075463~23423423~20262418895~23432432~23434234~234234234~19981317995</S><S>sdfsdf~~sdfsdfds~16/12/2013~~1~1~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "bs999022100343639   112013006009002003<SKHBS><S>~~0~0~0</S><S>ThuÕ GTGT ch­a ®­îc hoµn kú tr­íc chuyÓn sang~21~423233~32423432~32000199</S><S>23/12/2"
+'Barcode_Scaned str2
+'str2 = "bs999022100343639   112013006009003003013~3~12321321~432423432~sdfdsfdsf~01/01/2013~10700~10705~34324234~1234123213~sdfsdfd~0~0~8567767</S></SKHBS>"
+'Barcode_Scaned str2
+str2 = "aa999042100343639   11201300000100100101/0114/06/2006<S01><S>6868686868</S><S>423325~43543534~5435435~435435~435435435~472684774~47268477</S><S>sdfsdf~~sdfsdfds~16/12/2013~1~~~0</S></S01>"
+Barcode_Scaned str2
 
 End Sub
 
@@ -2625,14 +2634,14 @@ Private Sub InsertNode(xmlSectionTemplate As MSXML.IXMLDOMNode)
     
 End Sub
 
-Public Sub IncreaseRowInDOM(fpSpread1 As fpSpread, xmlDomData As MSXML.DOMDocument, ByVal pRow As Long, ByVal lRows As Long, ByVal lRow2s As Long)
+Public Sub IncreaseRowInDOM(fpSpread1 As fpSpread, xmlDOMdata As MSXML.DOMDocument, ByVal pRow As Long, ByVal lRows As Long, ByVal lRow2s As Long)
     On Error GoTo ErrorHandle
     
     Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
     Dim lCol As Long, lRow As Long, i As Long
         
-    If xmlDomData Is Nothing Then Exit Sub
-    Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
+    If xmlDOMdata Is Nothing Then Exit Sub
+    Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Cell")
     
     For i = xmlNodeListCell.length - 1 To 0 Step -1
         ParserCellID fpSpread1, GetAttribute(xmlNodeListCell(i), "CellID"), lCol, lRow
@@ -3571,6 +3580,32 @@ On Error GoTo ErrHandle
     If Not objTaxBusiness Is Nothing Then
         If Not objTaxBusiness.Prepared2(rsPXL) Then Exit Function
     End If
+    
+        'Load co quan thue KHBS
+    With fpSpread1
+        Dim CQT_CAPCUC    As Variant
+        Dim CQT_HOANTHUE  As Variant
+        Dim tCQT_CAPCUC   As String
+        Dim tCQT_HOANTHUE As String
+
+        If TAX_Utilities_Svr_New.NodeValidity.hasChildNodes Then
+            If GetAttribute(TAX_Utilities_Svr_New.NodeValidity.childNodes(TAX_Utilities_Svr_New.NodeValidity.childNodes.length - 1), "ID") = "KHBS" Then
+                If GetAttribute(TAX_Utilities_Svr_New.NodeValidity.childNodes(TAX_Utilities_Svr_New.NodeValidity.childNodes.length - 1), "Active") = "1" Then
+                    .Sheet = .SheetCount - 1
+                    .GetText .ColLetterToNumber("BI"), .MaxRows - 15, CQT_CAPCUC
+                    .GetText .ColLetterToNumber("BI"), .MaxRows - 13, CQT_HOANTHUE
+                    GetTenCQT CQT_CAPCUC, tCQT_CAPCUC
+                    GetTenCQT CQT_HOANTHUE, tCQT_HOANTHUE
+                    .Row = .MaxRows - 15
+                    .Col = .ColLetterToNumber("BE")
+                    .Text = tCQT_CAPCUC
+                    .Row = .MaxRows - 13
+                    .Text = tCQT_HOANTHUE
+                End If
+            End If
+        End If
+    
+    End With
     clsDAO.Disconnect
     'Setup header data
     'SetupHeaderData rsHeaderData
@@ -3579,6 +3614,7 @@ On Error GoTo ErrHandle
     If Not objTaxBusiness Is Nothing Then
         If Not objTaxBusiness.Prepared3 Then Exit Function
     End If
+    
     fpSpread1.EventEnabled(EventAllEvents) = True
     cmdClear.Enabled = True
     cmdSave.Enabled = True
@@ -3904,7 +3940,7 @@ ErrHandle:
     SaveErrorLog Me.Name, "SetupHeaderData", Err.Number, Err.Description
 End Sub
 
-Function GenerateSQL_Details(xmlDomData As MSXML.DOMDocument, strSQL_DTL As String, vHdrID As Variant, lPos As Long) As String
+Function GenerateSQL_Details(xmlDOMdata As MSXML.DOMDocument, strSQL_DTL As String, vHdrID As Variant, lPos As Long) As String
     Dim xmlListSection As MSXML.IXMLDOMNodeList
     Dim xmlNodeSection As MSXML.IXMLDOMNode
     Dim xmlList As MSXML.IXMLDOMNodeList
@@ -3916,13 +3952,13 @@ Function GenerateSQL_Details(xmlDomData As MSXML.DOMDocument, strSQL_DTL As Stri
     
 On Error GoTo ErrHandle
     iRowID = 0
-    Set xmlListSection = xmlDomData.getElementsByTagName("Section")
+    Set xmlListSection = xmlDOMdata.getElementsByTagName("Section")
     For Each xmlNodeSection In xmlListSection
         If Trim(xmlNodeSection.Attributes.getNamedItem("Dynamic").nodeValue) = "1" Then
             For i = 0 To xmlNodeSection.childNodes.length - 1
                 iRowID = iRowID + 1
                 For j = 0 To xmlNodeSection.childNodes(i).childNodes.length - 1
-                    Set xmlAttribute = xmlDomData.createAttribute("RowID")
+                    Set xmlAttribute = xmlDOMdata.createAttribute("RowID")
                     xmlAttribute.Value = iRowID
                     Set xmlNode = xmlNodeSection.childNodes(i).childNodes(j).Attributes.setNamedItem(xmlAttribute)
                     Set xmlAttribute = Nothing
@@ -3932,7 +3968,7 @@ On Error GoTo ErrHandle
     Next
     
     strLoaiDL = Trim(TAX_Utilities_Svr_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue) & Trim(TAX_Utilities_Svr_New.NodeValidity.childNodes(lPos).Attributes.getNamedItem("ID").nodeValue)
-    Set xmlList = xmlDomData.getElementsByTagName("Cell")
+    Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     If xmlList.length > 0 Then GenerateSQL_Details = ""
     For Each xmlNode In xmlList
         If Not xmlNode.Attributes.getNamedItem("MCT") Is Nothing Then
@@ -3965,7 +4001,7 @@ On Error GoTo ErrHandle
         End If
     Next
     If Trim(GenerateSQL_Details) <> "" Then GenerateSQL_Details = GenerateSQL_Details & vbCrLf
-    Set xmlDomData = Nothing
+    Set xmlDOMdata = Nothing
     Set xmlList = Nothing
     Set xmlListSection = Nothing
     Exit Function

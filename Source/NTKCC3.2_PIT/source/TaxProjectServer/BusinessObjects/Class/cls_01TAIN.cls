@@ -1409,7 +1409,7 @@ Public Function InsertHDR() As String
     Dim MANNKD     As Variant
     Dim NGAYPS     As Variant
     
-                Dim TENNV      As Variant
+    Dim TENNV      As Variant
     Dim CHUNGCHI   As Variant
 
     'test
@@ -1432,8 +1432,8 @@ Public Function InsertHDR() As String
     With fps
         .Sheet = 1
         
-                        .GetText .ColLetterToNumber("T"), .MaxRows - 4, TENNV
-        .GetText .ColLetterToNumber("T"), .MaxRows - 6, CHUNGCHI
+        .GetText .ColLetterToNumber("T"), .MaxRows - 3, TENNV
+        .GetText .ColLetterToNumber("T"), .MaxRows - 5, CHUNGCHI
 
         'Lay ds ma tieu muc
         'dhdang phan lay vao mang
@@ -1576,7 +1576,7 @@ Public Function InsertHDR() As String
         matkhai = "'01/TAIN'"
         THUECL = "0"
         ' ngay phat sinh
-'        .GetText .ColLetterToNumber("AG"), 42, NGAYPS
+        '        .GetText .ColLetterToNumber("AG"), 42, NGAYPS
 
         If (NGAYPS) = vbNullString Then
             NGAYPS = "CTOD('')"

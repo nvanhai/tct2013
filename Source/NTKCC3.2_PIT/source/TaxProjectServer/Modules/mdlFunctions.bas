@@ -52,7 +52,7 @@ Const mTuNgay = "T_6"
 Const mDenNgay = "T_7"
 
 Public Type activeForm
-    id As String
+    Id As String
     showed As Boolean
 End Type
 
@@ -950,7 +950,7 @@ Public Function getFormIndex(pID As String) As Integer
     Dim i As Long
     
     For i = 1 To UBound(arrActiveForm)
-        If arrActiveForm(i).id = pID Then
+        If arrActiveForm(i).Id = pID Then
             getFormIndex = i
             Exit For
         End If
@@ -1658,7 +1658,7 @@ Public Function GetDataPkgId() As String
     Dim fso As New FileSystemObject
     Dim strFileName As String
     Dim pkgId As Variant
-    Dim id As Variant
+    Dim Id As Variant
     Dim noiLamViec As Variant
     Dim clsConn As New TAX_Utilities_Svr_New.clsADO
     strFileName = spathVat & "\TRAODOI\parm.DBF"
@@ -1682,13 +1682,13 @@ Public Function GetDataPkgId() As String
                 " WHERE prm_name = 'EXC_DATA_PKG_SEQ' "
             Set rs = clsConn.Execute(sSQL)
             If Not rs Is Nothing Then
-                 id = rs.Fields("prm_value")
-                 sSQL = "update parm set prm_value ='" & Val(CStr(id)) + 1 & "' where prm_name = 'EXC_DATA_PKG_SEQ' "
+                 Id = rs.Fields("prm_value")
+                 sSQL = "update parm set prm_value ='" & Val(CStr(Id)) + 1 & "' where prm_name = 'EXC_DATA_PKG_SEQ' "
                  clsConn.ExecuteDLL (sSQL)
             Else
-                 id = 0
+                 Id = 0
             End If
-            pkgId = Trim(CStr(pkgId)) & Trim(CStr(id))
+            pkgId = Trim(CStr(pkgId)) & Trim(CStr(Id))
             clsConn.Disconnect
     Else
         pkgId = ""
@@ -1979,3 +1979,26 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "91" Then changeMaToKhai = "04_TBAC"
 End Function
 
+'lay ten CQT tu ma CQT
+Public Sub GetTenCQT(ByVal Id As String, Optional ByRef TenTN As String)
+Dim arrDanhsach() As String
+Dim strDataFileName As String
+Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+Dim xmlNode As MSXML.IXMLDOMNode
+
+       strDataFileName = "..\InterfaceTemplates\Catalogue_Tinh_Thanh.xml"
+    
+       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If Id = arrDanhsach(1) Then
+                            TenTN = arrDanhsach(3)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub

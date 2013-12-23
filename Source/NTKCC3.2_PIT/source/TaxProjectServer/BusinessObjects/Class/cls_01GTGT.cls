@@ -134,7 +134,7 @@ Public checkDLTTonTai As Boolean
 
 Public Function Prepared1() As Boolean
     Dim ThangKK          As Integer
-    Dim xmlDomData       As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
+    Dim xmlDOMdata       As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
     Dim strDataFileName  As String
     Dim xmlNodeListItems As MSXML.IXMLDOMNodeList
     Dim strCboLyDo       As String
@@ -200,8 +200,8 @@ Public Function Prepared1() As Boolean
         ' Ky dc gia han moi set gia tri ly do gia han
         strDataFileName = GetAbsolutePath("..\InterfaceTemplates\Catalogue_DM_Lydo_GH_TT16.xml")
 
-        If xmlDomData.Load(strDataFileName) Then
-            Set xmlNodeListItems = xmlDomData.getElementsByTagName("Item")
+        If xmlDOMdata.Load(strDataFileName) Then
+            Set xmlNodeListItems = xmlDOMdata.getElementsByTagName("Item")
 
             For Each xmlNode In xmlNodeListItems
                 fldList = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -225,10 +225,10 @@ Public Function Prepared1() As Boolean
 End Function
 
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
-    Dim i As Integer
-    Dim varMaDM As Variant
-     Dim LoaiKyKK         As Variant
-   
+    Dim i        As Integer
+    Dim varMaDM  As Variant
+    Dim LoaiKyKK As Variant
+    Dim tenDM    As String
     i = 0
     ReDim Preserve larrPhongXuLy(0)
     larrPhongXuLy(0) = "00"
@@ -241,7 +241,9 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .Row = PHONG_XU_LY_Y
         PHONG_XU_LY_X1 = PHONG_XU_LY_X
         PHONG_XU_LY_Y1 = PHONG_XU_LY_Y
+
         If rsPXL.Fields.count > 0 Then
+
             Do While Not rsPXL.EOF
                 'dhdang sua combox ngay xu ly
                 'ngay 05-08
@@ -255,16 +257,19 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
                 larrid(i) = rsPXL.Fields(0).Value
                 rsPXL.MoveNext
             Loop
+
         Else
             DisplayMessage "0077", msOKOnly
             Exit Function
         End If
+
         .TypeComboBoxCurSel = 0
         UpdateCell fps, .Col, .Row, .Text
         lSoPhongXL = i
         
-         ' Loai ky ke khai
+        ' Loai ky ke khai
         .GetText .ColLetterToNumber("AB"), 42, LoaiKyKK
+
         If LoaiKyKK = "0" Then
             LOAI_TO_KHAI = "01/GTGT"
             isTkQuy = False
@@ -277,18 +282,19 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .Sheet = 1
         .Col = .ColLetterToNumber("AB")
         .Row = 41
-         .GetText .ColLetterToNumber("AB"), .Row, varMaDM
+        .GetText .ColLetterToNumber("AB"), .Row, varMaDM
+
         If Trim(varMaDM) <> vbNullString Then
             .Col = .ColLetterToNumber("E")
             .Row = 41
             .Text = getTenLyDoGD(varMaDM)
         End If
         
-        
         ' Neu khong co gia han se khong cho chon combobox
-         ' Neu check gia han moi cho phep chon GT
+        ' Neu check gia han moi cho phep chon GT
         .Col = .ColLetterToNumber("E")
         .Row = 38
+
         If .Text = "1" Or UCase$(.Text) = "X" Then
             .Col = .ColLetterToNumber("E")
             .Row = 41
@@ -298,7 +304,52 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
             .Row = 41
             .Lock = True
         End If
+
         ' End set gia han
+        
+        ' Phu luc 05
+        .Sheet = 7
+        .Col = .ColLetterToNumber("F")
+        i = 0
+
+        Do
+            .GetText .ColLetterToNumber("F"), i + 22, varMaDM
+            GetTenCQT varMaDM, tenDM
+
+            If Trim(tenDM) <> vbNullString Then
+                .Col = .ColLetterToNumber("G")
+                .Row = 22 + i
+                .Text = tenDM
+            End If
+
+            UpdateCell fps, .Col, .Row, .Text
+            i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = i + 22
+        Loop Until .Text = "aa" Or varMaDM = ""
+        
+        ' Phu luc 06
+        
+        .Sheet = 8
+        .Col = .ColLetterToNumber("E")
+        i = 0
+
+        Do
+            .GetText .ColLetterToNumber("E"), 8 + i, varMaDM
+            GetTenCQT varMaDM, tenDM
+
+            If Trim(tenDM) <> vbNullString Then
+                .Col = .ColLetterToNumber("F")
+                .Row = 8 + i
+                .Text = tenDM
+            End If
+
+            UpdateCell fps, .Col, .Row, .Text
+            
+            i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = i + 8
+        Loop Until .Text = "aa" Or varMaDM = ""
 
     End With
     
@@ -3970,7 +4021,7 @@ Public Function InsertDTL_PL5() As String
 
         Do
                                        
-            .Col = .ColLetterToNumber("E")
+            .Col = .ColLetterToNumber("D")
             NGNOPTHUE = .Text
 
             If Trim(NGNOPTHUE) = vbNullString Then
@@ -3980,7 +4031,7 @@ Public Function InsertDTL_PL5() As String
                 NGNOPTHUE = "CTOD('" & Format(NGNOPTHUE, "mm/dd/yyyy") & "')"
             End If
                                                     
-            .Col = .ColLetterToNumber("C")
+            .Col = .ColLetterToNumber("F")
             CQUANQL = .Text
 
             If Trim(CQUANQL) = vbNullString Then
@@ -3989,19 +4040,23 @@ Public Function InsertDTL_PL5() As String
                 CQUANQL = "'" & TAX_Utilities_Svr_New.Convert(CStr(CQUANQL), UNICODE, TCVN) & "'"
             End If
                        
-            .Col = .ColLetterToNumber("F")
+            .Col = .ColLetterToNumber("H")
             THUEDN = .Value
 
             If Trim(THUEDN) = vbNullString Then
                 THUEDN = "0"
             End If
                         
+            .Col = .ColLetterToNumber("E")
+            NOINOP = .Text
             If Trim(NOINOP) = vbNullString Then
                 NOINOP = "''"
             Else
                 NOINOP = "'" & TAX_Utilities_Svr_New.Convert(CStr(NOINOP), UNICODE, TCVN) & "'"
             End If
                         
+            .Col = .ColLetterToNumber("C")
+            SOCT = .Text
             If Trim(SOCT) = vbNullString Then
                 SOCT = "''"
             Else
@@ -8036,7 +8091,7 @@ End Function
 Private Function getTenLyDoGD(maGH As Variant) As String
     Dim maDM1 As String
     Dim strDuongDanFile As String
-    Dim xmlDomData      As New MSXML.DOMDocument
+    Dim xmlDOMdata      As New MSXML.DOMDocument
     Dim xmlNodelist     As MSXML.IXMLDOMNodeList
     Dim xmlNode         As MSXML.IXMLDOMNode
     Dim arrStrName()    As String
@@ -8047,9 +8102,9 @@ Private Function getTenLyDoGD(maGH As Variant) As String
     'lay file chua tenDM
     strDuongDanFile = "..\InterfaceTemplates\Catalogue_DM_Lydo_GH_TT16.xml"
     strDuongDanFile = GetAbsolutePath(strDuongDanFile)
-    xmlDomData.Load (strDuongDanFile)
+    xmlDOMdata.Load (strDuongDanFile)
     
-    Set xmlNodelist = xmlDomData.getElementsByTagName("Item")
+    Set xmlNodelist = xmlDOMdata.getElementsByTagName("Item")
         For Each xmlNode In xmlNodelist
             If Left(GetAttribute(xmlNode, "Value"), 2) = maDM1 Then
                 arrStrName = Split(GetAttribute(xmlNode, "Value"), "###")

@@ -6,11 +6,11 @@ Public Function GetAttribute(xmlNodeCell As MSXML.IXMLDOMNode, pAttributeName As
     GetAttribute = Replace(xmlNodeCell.Attributes.getNamedItem(pAttributeName).nodeValue, "'", "''")
 End Function
 
-Public Function GetMessageCellById(ByVal strId As String) As MSXML.IXMLDOMNode
+Public Function GetMessageCellById(ByVal strID As String) As MSXML.IXMLDOMNode
     Dim xmlInforNode As MSXML.IXMLDOMNode
    
     For Each xmlInforNode In TAX_Utilities_Svr_New.NodeMessage
-        If GetAttribute(xmlInforNode, "ID") = strId Then
+        If GetAttribute(xmlInforNode, "ID") = strID Then
             Set GetMessageCellById = xmlInforNode
             Exit Function
         End If
@@ -133,11 +133,11 @@ Public Function GetCatalogueFileName(Optional lSheet As Long = 1) As String
         strCatalogueName & ".xml")
 End Function
 
-Private Function GetCatalogueName(xmlCatalogueNode As MSXML.IXMLDOMNode, strId As String) As String
+Private Function GetCatalogueName(xmlCatalogueNode As MSXML.IXMLDOMNode, strID As String) As String
 Dim xmlNode As MSXML.IXMLDOMNode
 
 For Each xmlNode In xmlCatalogueNode.childNodes
-    If GetAttribute(xmlNode, "ID") = strId Then
+    If GetAttribute(xmlNode, "ID") = strID Then
         GetCatalogueName = GetAttribute(xmlNode, "DataFile")
         Exit Function
     End If
@@ -456,7 +456,7 @@ Public Function InsertHDR_TGTC(ByRef hdr As TNCN_HDR) As String
     'Ky lb
     If hdr.kieu_ky = "M" Or hdr.kieu_ky = "Q" Then
         'Ngay dau ky lap bo va ngay cuoi ky lap bo
-        tKyLB = hdr.KYLBO
+        tKyLB = hdr.kylbo
         tKyLB = Replace(tKyLB, "'", "")
         strDate = Split(tKyLB, "/")
         dDate = DateSerial(Int(strDate(1)), Int(strDate(0)), 1)
@@ -489,7 +489,7 @@ Public Function InsertHDR_TGTC(ByRef hdr As TNCN_HDR) As String
 
     sSQLVal = hdr.Id & "," & hdr.Tin & "," & hdr.ten_dtnt & "," & hdr.DIA_CHI & "," & hdr.loai_tkhai & "," & hdr.Ngay_nop & "," & kyLB_tu_ngay & "," & _
     kyLB_den_ngay & "," & kykk_tu_ngay & "," & kykk_den_ngay & "," & hdr.ngay_cap_nhat & "," & hdr.nguoi_cn & "," & hdr.co_loi_dda & "," & _
-    hdr.so_hieu_tep & "," & hdr.So_tt_tk & "," & hdr.DA_NHAN & "," & hdr.ghi_chu_loi & "," & hdr.khoa_so & "," & hdr.Phong_xly & "," & hdr.kkbs & "," & hdr.TTHTK & "," & hdr.KYLBO & "," & hdr.kykkhai & "," & hdr.MA_CQT & "," & hdr.thueondinh & "," & hdr.Ma_dl_thue & "," & hdr.So_hd_dl & "," & hdr.Ngay_hd_dl & "," & hdr.Lan_bs & ",'" & hdr.loai_kykk & "'"
+    hdr.so_hieu_tep & "," & hdr.So_tt_tk & "," & hdr.DA_NHAN & "," & hdr.ghi_chu_loi & "," & hdr.khoa_so & "," & hdr.Phong_xly & "," & hdr.kkbs & "," & hdr.tthtk & "," & hdr.kylbo & "," & hdr.kykkhai & "," & hdr.MA_CQT & "," & hdr.thueondinh & "," & hdr.Ma_dl_thue & "," & hdr.So_hd_dl & "," & hdr.Ngay_hd_dl & "," & hdr.lan_bs & ",'" & hdr.loai_kykk & "'"
     
     
     sSQL = sSQLCol & sSQLVal & " )"
@@ -506,7 +506,7 @@ Public Function InsertDTL_TGTC(ByRef dtl As TNCN_DTL) As String
     sSQLCol = "INSERT INTO tmp_tncn_dtl (id, hdr_id,matkhai, madtnt, kylbo, kykkhai, tthtk, ngnop, cttn, giatri, danhan, lan_quet, ky_hieu, ma_cqt) "
     sSQLCol = sSQLCol + " values ("
 
-    sSQLVal = dtl.Id & "," & dtl.Hdr_id & "," & dtl.MATKHAI & "," & dtl.madtnt & "," & dtl.KYLBO & "," & dtl.kykkhai & "," & dtl.TTHTK & "," & dtl.ngnop & "," & _
+    sSQLVal = dtl.Id & "," & dtl.Hdr_id & "," & dtl.matkhai & "," & dtl.madtnt & "," & dtl.kylbo & "," & dtl.kykkhai & "," & dtl.tthtk & "," & dtl.ngnop & "," & _
     dtl.CTTN & "," & dtl.giatri & "," & dtl.DANHAN & "," & dtl.LAN_QUET & "," & dtl.ky_hieu & "," & dtl.MA_CQT
     
     sSQL = sSQLCol & sSQLVal & " )"
@@ -727,7 +727,7 @@ Public Function InsertHDR_TGTC_08(ByRef hdr As TNCN_HDR, kKKhaiTuNgay As Variant
     'Ky lb
     If hdr.kieu_ky = "M" Or hdr.kieu_ky = "Q" Then
         'Ngay dau ky lap bo va ngay cuoi ky lap bo
-        tKyLB = hdr.KYLBO
+        tKyLB = hdr.kylbo
         tKyLB = Replace(tKyLB, "'", "")
         strDate = Split(tKyLB, "/")
         dDate = DateSerial(Int(strDate(1)), Int(strDate(0)), 1)
@@ -760,7 +760,7 @@ Public Function InsertHDR_TGTC_08(ByRef hdr As TNCN_HDR, kKKhaiTuNgay As Variant
 
     sSQLVal = hdr.Id & "," & hdr.Tin & "," & hdr.ten_dtnt & "," & hdr.DIA_CHI & "," & hdr.loai_tkhai & "," & hdr.Ngay_nop & "," & kyLB_tu_ngay & "," & _
     kyLB_den_ngay & "," & kykk_tu_ngay & "," & kykk_den_ngay & "," & hdr.ngay_cap_nhat & "," & hdr.nguoi_cn & "," & hdr.co_loi_dda & "," & _
-    hdr.so_hieu_tep & "," & hdr.So_tt_tk & "," & hdr.DA_NHAN & "," & hdr.ghi_chu_loi & "," & hdr.khoa_so & "," & hdr.Phong_xly & "," & hdr.kkbs & "," & hdr.TTHTK & "," & hdr.KYLBO & "," & hdr.kykkhai & "," & hdr.MA_CQT & "," & hdr.thueondinh & "," & hdr.Ma_dl_thue & "," & hdr.So_hd_dl & "," & hdr.Ngay_hd_dl & "," & hdr.Lan_bs & "," & TU_NGAY & "," & DEN_NGAY & "," & NN_KD & "," & TK_LAN_PS
+    hdr.so_hieu_tep & "," & hdr.So_tt_tk & "," & hdr.DA_NHAN & "," & hdr.ghi_chu_loi & "," & hdr.khoa_so & "," & hdr.Phong_xly & "," & hdr.kkbs & "," & hdr.tthtk & "," & hdr.kylbo & "," & hdr.kykkhai & "," & hdr.MA_CQT & "," & hdr.thueondinh & "," & hdr.Ma_dl_thue & "," & hdr.So_hd_dl & "," & hdr.Ngay_hd_dl & "," & hdr.lan_bs & "," & TU_NGAY & "," & DEN_NGAY & "," & NN_KD & "," & TK_LAN_PS
 
 
     sSQL = sSQLCol & sSQLVal & " )"
@@ -779,7 +779,7 @@ Public Function InsertDTL_TGTC08(ByRef dtl As TNCN_DTL, rowID As Integer) As Str
         sSQLCol = "INSERT INTO tmp_tncn_dtl_plus (id, hdr_id,matkhai, madtnt, kylbo, kykkhai, tthtk, ngnop, cttn, giatri, danhan, lan_quet, ky_hieu, ma_cqt) "
         sSQLCol = sSQLCol + " values ("
     
-        sSQLVal = dtl.Id & "," & dtl.Hdr_id & "," & dtl.MATKHAI & "," & dtl.madtnt & "," & dtl.KYLBO & "," & dtl.kykkhai & "," & dtl.TTHTK & "," & dtl.ngnop & "," & _
+        sSQLVal = dtl.Id & "," & dtl.Hdr_id & "," & dtl.matkhai & "," & dtl.madtnt & "," & dtl.kylbo & "," & dtl.kykkhai & "," & dtl.tthtk & "," & dtl.ngnop & "," & _
         dtl.CTTN & "," & dtl.giatri & "," & dtl.DANHAN & "," & dtl.LAN_QUET & "," & dtl.ky_hieu & "," & dtl.MA_CQT
         
         sSQL = sSQLCol & sSQLVal & " )"
@@ -787,7 +787,7 @@ Public Function InsertDTL_TGTC08(ByRef dtl As TNCN_DTL, rowID As Integer) As Str
         sSQLCol = "INSERT INTO tmp_tncn_dtl_plus (id, hdr_id,matkhai, madtnt, kylbo, kykkhai, tthtk, ngnop, cttn, giatri, danhan, lan_quet, ky_hieu, ma_cqt,rowid) "
         sSQLCol = sSQLCol + " values ("
     
-        sSQLVal = dtl.Id & "," & dtl.Hdr_id & "," & dtl.MATKHAI & "," & dtl.madtnt & "," & dtl.KYLBO & "," & dtl.kykkhai & "," & dtl.TTHTK & "," & dtl.ngnop & "," & _
+        sSQLVal = dtl.Id & "," & dtl.Hdr_id & "," & dtl.matkhai & "," & dtl.madtnt & "," & dtl.kylbo & "," & dtl.kykkhai & "," & dtl.tthtk & "," & dtl.ngnop & "," & _
         dtl.CTTN & "," & dtl.giatri & "," & dtl.DANHAN & "," & dtl.LAN_QUET & "," & dtl.ky_hieu & "," & dtl.MA_CQT & "," & rowID
         
         sSQL = sSQLCol & sSQLVal & " )"
@@ -799,4 +799,27 @@ Public Function InsertDTL_TGTC08(ByRef dtl As TNCN_DTL, rowID As Integer) As Str
    InsertDTL_TGTC08 = sSQL
 End Function
 
+'lay ten CQT tu ma CQT
+Public Sub GetTenCQT(ByVal Id As String, Optional ByRef TenTN As String)
+Dim arrDanhsach() As String
+Dim strDataFileName As String
+Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+Dim xmlNode As MSXML.IXMLDOMNode
+
+       strDataFileName = "..\InterfaceTemplates\Catalogue_Tinh_Thanh.xml"
+    
+       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If Id = arrDanhsach(1) Then
+                            TenTN = arrDanhsach(3)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub
 
