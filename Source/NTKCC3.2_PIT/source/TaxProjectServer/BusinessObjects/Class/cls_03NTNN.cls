@@ -1156,8 +1156,8 @@ Public Function InsertHDR() As String
        
     With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("J"), .MaxRows - 2, TENNV
-        .GetText .ColLetterToNumber("J"), .MaxRows - 4, CHUNGCHI
+        .GetText .ColLetterToNumber("J"), .MaxRows - 1, TENNV
+        .GetText .ColLetterToNumber("J"), .MaxRows - 3, CHUNGCHI
 
         'thue trong ky
         .GetText .ColLetterToNumber("AB"), 37, ThueTKy

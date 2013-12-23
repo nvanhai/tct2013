@@ -1096,7 +1096,8 @@ Public Function InsertHDR() As String
     Dim THUECL  As Variant
     Dim LanBS   As Variant
     Dim DANHAN  As Variant
-  
+    Dim TENNV As Variant
+    Dim CHUNGCHI As Variant
     sSQLCol = "LOAITK,MADTNT,MaDLT,NamQT,TTHTK,NGNOP,KyTTTu,KyTTDen,NgNhap,HanNop,"
     sSQLCol = sSQLCol & "MaVach,MaMuc,MaTM,Dathay,KyLBo,ThueTKy,ThueCL,LanBS,DANHAN,LAN_QUET, TENNV, CHUNGCHI"
 

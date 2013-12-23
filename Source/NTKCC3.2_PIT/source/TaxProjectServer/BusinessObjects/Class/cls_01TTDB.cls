@@ -648,8 +648,8 @@ Public Function InsertHDR() As String
         .Sheet = 1
         Section = 0
         
-                .GetText .ColLetterToNumber("T"), .MaxRows - 4, TENNV
-        .GetText .ColLetterToNumber("T"), .MaxRows - 6, CHUNGCHI
+        .GetText .ColLetterToNumber("T"), .MaxRows - 3, TENNV
+        .GetText .ColLetterToNumber("T"), .MaxRows - 5, CHUNGCHI
 
         'dhdang phan lay vao mang
         'ngay 14/09/2010
