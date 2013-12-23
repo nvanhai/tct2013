@@ -1324,6 +1324,7 @@ Private Sub chkTkhaiThang_Click()
              End If
         End If
     End If
+    chkSelectAll.value = "0"
     LoadGrid
 '    If chkTKLanPS.value = 1 Then
 '         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "73" Then
@@ -1843,6 +1844,7 @@ Private Sub chkTKQuy_Click()
         End If
     End If
     Call Form_Resize
+    chkSelectAll.value = "0"
     LoadGrid
 
 End Sub
