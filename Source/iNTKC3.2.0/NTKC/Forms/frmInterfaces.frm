@@ -2634,32 +2634,32 @@ On Error GoTo ErrHandler
                 checkSoCT = 2
                 Exit Sub
             End If
-        ElseIf idToKhaiCheck = 11 Then
-             If ((lDataNo + 1 > lElementsNo And lDataNo <> 7) Or ((lDataNo + 2 > lElementsNo) And lDataNo = 7)) And isSheetTk Then
-                blnValidData = False
-                checkSoCT = 1
-                Exit Sub
-            End If
-            ' Truong hop chuoi ma vach it chi tieu hon so chi tieu trong template
-            'If (UBound(arrStrValue) + 1 < lElementsNo) And isSheetTk Then
-            If ((lDataNo + 1 < lElementsNo And lDataNo <> 7) Or ((lDataNo + 2 < lElementsNo) And lDataNo = 7)) And isSheetTk Then
-                blnValidData = False
-                checkSoCT = 2
-                Exit Sub
-            End If
-        ElseIf idToKhaiCheck = 12 Then
-             If ((lDataNo + 1 > lElementsNo And lDataNo <> 6) Or ((lDataNo + 2 > lElementsNo) And lDataNo = 6)) And isSheetTk Then
-                blnValidData = False
-                checkSoCT = 1
-                Exit Sub
-            End If
-            ' Truong hop chuoi ma vach it chi tieu hon so chi tieu trong template
-            'If (UBound(arrStrValue) + 1 < lElementsNo) And isSheetTk Then
-            If ((lDataNo + 1 < lElementsNo And lDataNo <> 6) Or ((lDataNo + 2 < lElementsNo) And lDataNo = 6)) And isSheetTk Then
-                blnValidData = False
-                checkSoCT = 2
-                Exit Sub
-            End If
+'        ElseIf idToKhaiCheck = 11 Then
+'             If ((lDataNo + 1 > lElementsNo And lDataNo <> 7) Or ((lDataNo + 2 > lElementsNo) And lDataNo = 7)) And isSheetTk Then
+'                blnValidData = False
+'                checkSoCT = 1
+'                Exit Sub
+'            End If
+'            ' Truong hop chuoi ma vach it chi tieu hon so chi tieu trong template
+'            'If (UBound(arrStrValue) + 1 < lElementsNo) And isSheetTk Then
+'            If ((lDataNo + 1 < lElementsNo And lDataNo <> 7) Or ((lDataNo + 2 < lElementsNo) And lDataNo = 7)) And isSheetTk Then
+'                blnValidData = False
+'                checkSoCT = 2
+'                Exit Sub
+'            End If
+'        ElseIf idToKhaiCheck = 12 Then
+'             If ((lDataNo + 1 > lElementsNo And lDataNo <> 6) Or ((lDataNo + 2 > lElementsNo) And lDataNo = 6)) And isSheetTk Then
+'                blnValidData = False
+'                checkSoCT = 1
+'                Exit Sub
+'            End If
+'            ' Truong hop chuoi ma vach it chi tieu hon so chi tieu trong template
+'            'If (UBound(arrStrValue) + 1 < lElementsNo) And isSheetTk Then
+'            If ((lDataNo + 1 < lElementsNo And lDataNo <> 6) Or ((lDataNo + 2 < lElementsNo) And lDataNo = 6)) And isSheetTk Then
+'                blnValidData = False
+'                checkSoCT = 2
+'                Exit Sub
+'            End If
         ElseIf idToKhaiCheck = 3 Then
            If ((lDataNo + 1 > lElementsNo And lDataNo <> 7) Or ((lDataNo + 2 > lElementsNo) And lDataNo = 7)) And isSheetTk Then
                 blnValidData = False
