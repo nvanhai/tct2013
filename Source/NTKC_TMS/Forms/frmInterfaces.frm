@@ -2063,6 +2063,16 @@ Private Sub Command1_Click()
    Dim str51 As String, str52 As String, str53 As String
    
 '***************** Ra soat giai doan 1 *******************
+
+''BC26_AC
+'str2 = "aa999682300026193   02201300200200100301/0101/01/2009<S01><S>~X~01/04/2013~30/06/2013</S><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT3/001~MN/12T~131~0000020~0000150~~~0000020~0000032~13~10~1~20~1~23~1~26~0000033~0000150~118~0~Hãa ®¬n b¸n hµng (dµnhcho tæ chøc, c¸ nh©n trong khu phi thuÕ quan)~07KPTQ6/003~CB/23T~95~~"
+'Barcode_Scaned str2
+'str2 = "aa999682300026193   022013002002002003~0000030~0000124~0000030~0000038~9~6~1~32~1~34~1~33~0000039~0000124~86~0~PhiÕu xuÊt kho göi b¸n hµng ®¹i lý~04HGDL7/004~HD/26T~338~0000013~0000210~0000211~0000350~0000013~0000027~15~12~1~15~1~20~1~25~0000028~0000350~323~0</S><S>H¶i Nguyªn~Hoµng Nam~14/08/2013</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999682300026193   022013002002003003<S01_2><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT3/001~MN/12T~0000033~0000150~118~Hãa ®¬n b¸n hµng (dµnh cho tæ chøc, c¸ nh©n trong khu phi thuÕ quan)~07KPTQ6/003~CB/23T~0000039~0000124~86~PhiÕu xuÊt kho göi b¸n hµng ®¹i lý~04HGDL7/004~HD/26T~0000028~0000350~323</S></S01_2>"
+'Barcode_Scaned str2
+
+
 'TEST PHASE 3
 ''02/KK-TNCN - QUY
 'str2 = "aa999162300790401   03201300100100100101/0101/01/2010<S01><S>2100462770</S><S>569~128~2367~1876~3981~3768~138~3278~17665~389~2345~1767~78</S><S>Hoµng~19/11/2013~HuyÒn Linh~KTV~1~~</S></S01>"
@@ -5063,48 +5073,7 @@ On Error GoTo ErrHandle
 '    strResultNNT = "test"
 
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
-'        Dim cfigXml As New MSXML.DOMDocument
-'        Set cfigXml = LoadConfig()
         strMaNNT = strTaxIDString
-
-'        paXmlDoc.Load GetAbsolutePath("..\InterfaceTemplates\xml\paramNntInESB.xml")
-'        sUrlWs = xmlConfig.getElementsByTagName("WsUrlNNT")(0).Text
-'        soapAct = xmlConfig.getElementsByTagName("SoapActionNNT")(0).Text
-'        xmlRequest = xmlConfig.getElementsByTagName("XmlRequestNNT")(0).lastChild.xml
-'        sTranCode = xmlConfig.getElementsByTagName("TRAN_CODE")(0).Text
-'        fldName = xmlConfig.getElementsByTagName("ParamNameNNT")(0).Text
-'
-'        'Set value config to file param NNT
-'        paXmlDoc.getElementsByTagName("tin_nnt")(0).Text = strTaxIDString
-'
-''        paXmlDoc.getElementsByTagName("VERSION")(0).Text = cfigXml.getElementsByTagName("VERSION")(0).Text
-''        paXmlDoc.getElementsByTagName("SENDER_CODE")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text
-''        paXmlDoc.getElementsByTagName("SENDER_NAME")(0).Text = cfigXml.getElementsByTagName("SENDER_NAME")(0).Text
-''        paXmlDoc.getElementsByTagName("RECEIVER_CODE")(0).Text = cfigXml.getElementsByTagName("RECEIVER_CODE")(0).Text
-''        paXmlDoc.getElementsByTagName("RECEIVER_NAME")(0).Text = cfigXml.getElementsByTagName("RECEIVER_NAME")(0).Text
-''
-''        paXmlDoc.getElementsByTagName("ORIGINAL_CODE")(0).Text = cfigXml.getElementsByTagName("ORIGINAL_CODE")(0).Text
-''        paXmlDoc.getElementsByTagName("ORIGINAL_NAME")(0).Text = cfigXml.getElementsByTagName("ORIGINAL_NAME")(0).Text
-'
-'       ' paXmlDoc.getElementsByTagName("MSG_ID")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow() 'GetGUID()
-'        paXmlDoc.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
-'        paXmlDoc.getElementsByTagName("ORIGINAL_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
-'
-'        fldValue = paXmlDoc.xml
-'        fldValue = ChangeTagASSCII(fldValue, True)
-'
-'        If (Dir("c:\TempXML\", vbDirectory) = "") Then
-'            MkDir "c:\TempXML\"
-'        End If
-'
-'        Dim sParamNNT As String
-'
-'        sParamNNT = "c:\TempXML\" & "paramNNT.xml"
-'        paXmlDoc.save sParamNNT
-'
-'        'Return value from ESB
-'        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
-        
         strResultNNT = GetDataFromESB("", "", "NNT")
         strResultNNT = ChangeTagASSCII(strResultNNT, False)
         xmlResultNNT.loadXML strResultNNT
@@ -5141,14 +5110,6 @@ On Error GoTo ErrHandle
             
 
         Else
-'            If (InStr(xmlResultNNT.xml, "fault_code") > 0) Then
-'                 If (MessageBox("0142", msYesNo, miCriticalError) = mrNo) Then
-'                    Set rsReturn = Nothing
-'                    blnSuccess = False
-'                    Exit Function
-'                End If
-'            End If
-            
             If ((InStr(xmlResultNNT.xml, "fault_code") > 0) Or (InStr(xmlResultNNT.xml, "MaSoThue") <= 0)) Then
                 If (MessageBox("0135", msYesNo, miCriticalError) = mrNo) Then
                     Set rsReturn = Nothing

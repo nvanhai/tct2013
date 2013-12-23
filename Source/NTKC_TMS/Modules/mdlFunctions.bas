@@ -2044,7 +2044,8 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             fldName = xmlConfig.getElementsByTagName("ParamNameDLT")(0).Text
             
             'Set value config to file param DLT
-            paXmlDoc.getElementsByTagName("code")(0).Text = strTaxDLTIDString
+            paXmlDoc.getElementsByTagName("tin_dlt")(0).Text = strTaxDLTIDString
+            paXmlDoc.getElementsByTagName("tin_nnt")(0).Text = strTaxIDString
       
             fldValue = paXmlDoc.xml
             fldValue = ChangeTagASSCII(fldValue, True)
