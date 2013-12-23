@@ -368,15 +368,22 @@
 		</Validity>
 	</Menu>
 	<Menu ID="25" PopID="101" ParentID="104" Caption="TK-TNCN Mẫu 01/KK-BHĐC" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp" DirFile="\NTK_TG\">
-		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\01_TNCN_BHDC.xls" ReportTemplate="..\ReportTemplates\Excel\01_TNCN_BHDC.xls" Class="Tax_Business_Srv.cls_01TNCN_BHDC">
+		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\01_TNCN_BHDC.xls" ReportTemplate="..\ReportTemplates\Excel\01_TNCN_BHDC.xls" Class="Tax_Business_Svr_New.cls_01TNCN_BHDC">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="01_TNCN_BHDC" Ini="..\Ini\01_TNCN_BHDC.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
 		</Validity>
 	</Menu>
 	<Menu ID="23" PopID="101" ParentID="101_11" Caption="TK thuế hoạt động cho thuê tài sản (01/KK-TTS)" FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp" DirFile="\NTK_TG\">
-		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\01_KK_TTS.xls" ReportTemplate="..\ReportTemplates\excel\01_KK_TTS.xls"  Class="Tax_Business_Srv.cls_01TNCN_TTS" >
+		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\01_KK_TTS.xls" ReportTemplate="..\ReportTemplates\excel\01_KK_TTS.xls"  Class="Tax_Business_Svr_New.cls_01TNCN_TTS" >
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="01_KK_TTS" InterfaceIni="..\InterfaceIni\01_KK_TTS.xml" ReportIni="..\ReportIni\01_KK_TTS.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="KHBS_01_KK_TTS" InterfaceIni="..\InterfaceIni\KHBS_01_KK_TTS.xml" ReportIni="..\ReportIni\KHBS_01_KK_TTS.xml"/>
+		</Validity>
+	</Menu>
+	<Menu ID="90" PopID="101" ParentID="113" Caption="Tờ khai thuế bảo vệ môi trường" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp" DirFile="\NTK_TG\">
+		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\01_TBVMT.xls" ReportTemplate="..\ReportTemplates\excel\01_TBVMT.xls" CatalogueID="" Class="Tax_Business_Svr_New.cls_01TBVMT">
+			<Sheet ID="01" Caption="01/TBVMT" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="01_TBVMT" Ini="..\Ini\01_TBVMT.xml" ReportIni="..\ReportIni\01_TBVMT.xml"/>
+			<Sheet ID="01-1" Caption="02/TBVMT" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="01_01_TBVMT" Ini="..\Ini\01_01_TBVMT.xml" ReportIni="..\ReportIni\01_01_TBVMT.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="KHBS_01_TBVMT" Ini="..\Ini\KHBS_01_TBVMT.xml" ReportIni="..\ReportIni\KHBS_01_TBVMT.xml"/>
 		</Validity>
 	</Menu>
 </Root>

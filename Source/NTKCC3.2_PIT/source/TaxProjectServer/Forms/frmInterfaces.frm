@@ -851,7 +851,10 @@ Private Sub cmdSave_Click()
         'lay VKYLBO cho truong to an chi 01/AC
         ElseIf (menuId >= 64 And menuId <= 68) Or menuId = 91 Then
             vKYLBO = Month(Date) & "/" & Year(Date)
-        
+                ElseIf menuId = 23 Then
+            .GetText .ColLetterToNumber("D"), 27, vKYLBO
+        ElseIf menuId = 25 Then
+            .GetText .ColLetterToNumber("E"), 30, vKYLBO
         Else
             .GetText .ColLetterToNumber("E"), 10, vKYLBO
         End If
@@ -900,6 +903,10 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("E"), 13, vNgayNop
         ElseIf menuId = 67 Then
             .GetText .ColLetterToNumber("D"), 12, vNgayNop
+                    ElseIf menuId = 23 Then
+            .GetText .ColLetterToNumber("D"), 29, vNgayNop
+        ElseIf menuId = 25 Then
+            .GetText .ColLetterToNumber("E"), 32, vNgayNop
         Else
             .GetText .ColLetterToNumber("E"), 12, vNgayNop
         End If
@@ -1197,6 +1204,10 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("M"), 32, vNGAYQUET
         ElseIf menuId = 73 Then
             .GetText .ColLetterToNumber("M"), 44, vNGAYQUET
+                    ElseIf menuId = 23 Then
+            .GetText .ColLetterToNumber("O"), 29, vNGAYQUET
+        ElseIf menuId = 25 Then
+            .GetText .ColLetterToNumber("M"), 32, vNGAYQUET
         Else
             .GetText .ColLetterToNumber("M"), 12, vNGAYQUET
         End If
@@ -1805,9 +1816,17 @@ Private Sub Command1_Click()
 'str1 = "aa999722100343639   12201300000000100101/0114/06/2006<S01><S>6868686868</S><S>0~0~0~0~0</S><S>sdfsdf~~sdfsdfds~06/12/2013~1~~~1~06/12/2013</S></S01>"
 'Barcode_Scaned str1
 
-str1 = "aa999112100343639   03201300000300100201/0114/06/2006<S01><S>6868686868</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0"
-Barcode_Scaned str1
-str1 = "aa999112100343639   032013000003002002~0~0~~~~0~0</S><S>~</S><S>sdfsdf~sdfsdfds~~10/12/2013~1~0~~1052</S></S01>"
+'str1 = "aa999112100343639   03201300000300100201/0114/06/2006<S01><S>6868686868</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0"
+'Barcode_Scaned str1
+'str1 = "aa999112100343639   032013000003002002~0~0~~~~0~0</S><S>~</S><S>sdfsdf~sdfsdfds~~10/12/2013~1~0~~1052</S></S01>"
+'Barcode_Scaned str1
+
+'str1 = "aa999232100343639   03201300000100100201/0101/01/1900<S01><S>6868686868</S><S>~~~~~0~0~0~0~0~0~0~0~0~0</S><S>~"
+'Barcode_Scaned str1
+'str1 = "aa999232100343639   032013000001002002~0~0~0~0~0~0~0~0~0</S><S>sdfsdf~~sdfsdfds~20/12/2013~1~1~~1~~</S></S01>"
+'Barcode_Scaned str1
+
+str1 = "aa999252100343639   03201300100100100101/0101/01/1900<S01><S>6868686868</S><S>32423432432~23423423~23424~4324234234~432423423~4234324~423432~23423432423~234234234~432432423~865302702</S><S>~20/12/2013~sdfsdf~sdfsdfds~1~~~1</S></S01>"
 Barcode_Scaned str1
 
 End Sub
@@ -2224,7 +2243,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
 
                 ' Check version <= 3.1.6
                 If Val(Left$(strData, 3)) <= 316 Then
-                    If Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "04" Or Mid$(strData, 4, 2) = "71" Or Mid$(strData, 4, 2) = "36" Then
+                    If Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "04" Or Mid$(strData, 4, 2) = "71" Or Mid$(strData, 4, 2) = "36" Or Mid$(strData, 4, 2) = "25" Then
                         If Val(idToKhai) <> 36 Then
                             tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) - 5)
                             strData = tmp & "~0" & Right$(strData, Len(strData) - InStr(1, strData, "</S01>", vbTextCompare) + 5)
@@ -2814,7 +2833,7 @@ Private Sub SetPeriod(ByVal strValue As String)
     TkID = Left$(strTaxReportInfo, 2)
 
     If GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Month") = "1" Then
-        If TkID = "01" Or TkID = "02" Or TkID = "04" Or TkID = "71" Or TkID = "36" Or TkID = "68" Then
+        If TkID = "01" Or TkID = "02" Or TkID = "04" Or TkID = "71" Or TkID = "36" Or TkID = "68" Or TkID = "25" Then
             TAX_Utilities_Svr_New.Month = Left$(strValue, 2)
             TAX_Utilities_Svr_New.ThreeMonths = Left$(strValue, 2)
         Else
@@ -4949,7 +4968,7 @@ Private Function Prepare_QLT() As String
             NGAYNOP_PRINT = NGNOP ' Ngay nop hien thi tren man hinh in BB nop cham (dhdang sua)
         End If
             
-        If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "68" Then
+        If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "68" Or ID_TK = "25" Then
             If LoaiKyKK = False Then
                 KYKKHAI = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
                 Tinhkykekkhaithang (Mid$(KYKKHAI, 2, 7))
@@ -5091,7 +5110,7 @@ Private Function Prepare_QLT() As String
     'ngay 20/09
     '-----------------------------------------------------------
         Dim kieukykk As String
-        If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "68" Then
+        If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "68" Or ID_TK = "25" Then
             If LoaiKyKK = False Then
                 kieukykk = "M"
             Else

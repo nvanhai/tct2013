@@ -503,7 +503,7 @@ Public Function InsertDTL() As String
     Dim QuyetToan  As Variant
     Dim KeKhai2    As Variant
     Dim QuyetToan2 As Variant
-    Dim tt         As Variant
+    Dim TT         As Variant
     Dim DANHAN     As Variant
    
     sSQLCol = "LoaiTK, MaDTNT, NamQT, TTHTK, NgNop, CTTN, KeKhai, QuyetToan, KeKhai2, QuyetToan2, TT "
@@ -548,7 +548,7 @@ Public Function InsertDTL() As String
             tthtk = "'" & 1 & "'"
         End If
         
-        tt = "' '"
+        TT = "' '"
         DANHAN = "' '"
         
         .Sheet = 1
@@ -580,7 +580,7 @@ Public Function InsertDTL() As String
             QuyetToan2 = "0"
             CTTN = "'" & arrMaHieu(i) & "'"
             
-            sSQLVal = LoaiTK & "," & madtnt & "," & namQT & "," & tthtk & "," & ngnop & "," & CTTN & "," & KeKhai & "," & QuyetToan & "," & KeKhai2 & "," & QuyetToan2 & "," & tt & "," & DANHAN & "," & LAN_QUET
+            sSQLVal = LoaiTK & "," & madtnt & "," & namQT & "," & tthtk & "," & ngnop & "," & CTTN & "," & KeKhai & "," & QuyetToan & "," & KeKhai2 & "," & QuyetToan2 & "," & TT & "," & DANHAN & "," & LAN_QUET
             sSQL = "INSERT INTO TMP_QTNTD" & namKyLapBo & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
             
@@ -1098,7 +1098,7 @@ Public Function InsertHDR() As String
     Dim DANHAN  As Variant
   
     sSQLCol = "LOAITK,MADTNT,MaDLT,NamQT,TTHTK,NGNOP,KyTTTu,KyTTDen,NgNhap,HanNop,"
-    sSQLCol = sSQLCol & "MaVach,MaMuc,MaTM,Dathay,KyLBo,ThueTKy,ThueCL,LanBS,DANHAN,LAN_QUET"
+    sSQLCol = sSQLCol & "MaVach,MaMuc,MaTM,Dathay,KyLBo,ThueTKy,ThueCL,LanBS,DANHAN,LAN_QUET, TENNV, CHUNGCHI"
 
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
@@ -1109,6 +1109,9 @@ Public Function InsertHDR() As String
         .Sheet = 1
         'loai to khai
         LoaiTK = "'04/NTNN'"
+                .GetText .ColLetterToNumber("H"), 51, TENNV
+        .GetText .ColLetterToNumber("H"), 53, CHUNGCHI
+
         ' ma doi tuong not thue
         .GetText .ColLetterToNumber("F"), 10, madtnt
 
@@ -1214,7 +1217,7 @@ Public Function InsertHDR() As String
         sSQLVal = LoaiTK & "," & madtnt & "," & MADLT & "," & namQT & "," & tthtk & "," & ngnop & "," & KyTTTu & ", "
         sSQLVal = sSQLVal & KyTTDen & "," & NgNhap & "," & HANNOP & "," & MaVach & "," & MaMuc & ", "
         sSQLVal = sSQLVal & maTM & "," & DATHAY & "," & kylbo & "," & ThueTKy & ", "
-        sSQLVal = sSQLVal & THUECL & "," & LanBS & "," & DANHAN & "," & LAN_QUET
+        sSQLVal = sSQLVal & THUECL & "," & LanBS & "," & DANHAN & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "'"
            
         sSQL = "INSERT INTO TMP_QTNT" & namKyLapBo & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)

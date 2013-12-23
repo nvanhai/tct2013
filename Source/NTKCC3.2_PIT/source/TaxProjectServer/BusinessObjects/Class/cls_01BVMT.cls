@@ -690,7 +690,7 @@ Public Function InsertDTL() As String
         TIENPHICL = "0"
 
         .Col = .ColLetterToNumber("B")
-        .Row = 43
+        .Row = 45
         Dim lastRow As Variant
         
         Do
@@ -785,7 +785,7 @@ Public Function InsertDTL() As String
         Loop Until .Text = "aa"
         
         .Col = .ColLetterToNumber("B")
-        .Row = lastRow + 1
+        .Row = lastRow + 3
 
         Do
 
@@ -1306,7 +1306,8 @@ Public Function InsertHDR() As String
     Dim GTTTCL       As Variant
     Dim NGAYPS       As Variant
     Dim MANNKD       As Variant
-    
+        Dim TENNV      As Variant
+    Dim CHUNGCHI   As Variant
     'bien dung xu ly Ma Tieu Muc
     Dim arrMTM()     As String, arrMTMSave() As String
     Dim arrThueTKy() As String, arrThueTKySave() As Double
@@ -1326,10 +1327,13 @@ Public Function InsertHDR() As String
     sSQLCol = "MADTNT, MADLT,MATHUE, MATM, MAPP, KYLBO, NGNOP, "
     sSQLCol = sSQLCol & "LOAITIEN, MABPQL, SHTEP, TTHTK, KYKKHAI, "
     sSQLCol = sSQLCol & "NGNHAP, THUETKY, GTTINHTHUE, DAGHI,  "
-    sSQLCol = sSQLCol & "KTTRUOC, DOANHSO, MAPP2, MAMUC, MAVACH,MATKHAI,HANNOP, THUETKY2, HANNOP2, TENDA, DAGHI1 ,DAGHI2, AUTO_CAL, NGANH,LAN_QUET,LANBS, THUECL, NgayPS, DANHAN, DSOCL, GTTTCL, MANNKD"
+    sSQLCol = sSQLCol & "KTTRUOC, DOANHSO, MAPP2, MAMUC, MAVACH,MATKHAI,HANNOP, THUETKY2, HANNOP2, TENDA, DAGHI1 ,DAGHI2, AUTO_CAL, NGANH,LAN_QUET,LANBS, THUECL, NgayPS, DANHAN, DSOCL, GTTTCL, MANNKD, TENNV, CHUNGCHI"
    
     With fps
         .Sheet = 1
+        
+        .GetText .ColLetterToNumber("G"), .MaxRows - 3, TENNV
+        .GetText .ColLetterToNumber("G"), .MaxRows - 5, CHUNGCHI
         'Ma tieu muc
         .Col = .ColLetterToNumber("B")
         .Row = 45
@@ -1337,7 +1341,7 @@ Public Function InsertHDR() As String
                
         Do
             ' Lay ma tieu muc tren cel
-            .Col = .ColLetterToNumber("AC")
+            .Col = .ColLetterToNumber("AB")
             'cuoi ma tieu muc
             vTemp = "~" & .Text & "~"
             vTemp2 = vTemp2 & .Text & "~"
@@ -1359,7 +1363,7 @@ Public Function InsertHDR() As String
 
         Do
             ' Lay ma tieu muc tren cel
-            .Col = .ColLetterToNumber("AC")
+            .Col = .ColLetterToNumber("AB")
             'cuoi ma tieu muc
             vTemp = "~" & .Text & "~"
             vTemp2 = vTemp2 & .Text & "~"
@@ -1549,7 +1553,7 @@ Public Function InsertHDR() As String
                 sSQLVal = sSQLVal & LoaiTien & "," & MABPQL & "," & SHTEP & "," & tthtk & "," & kykkhai & ", "
                 sSQLVal = sSQLVal & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & ", "
                 sSQLVal = sSQLVal & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ", "
-                sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & LanBS & "," & THUECL & "," & NGAYPS & "," & DANHAN & "," & DSoCL & "," & GTTTCL & "," & MANNKD
+                sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & LanBS & "," & THUECL & "," & NGAYPS & "," & DANHAN & "," & DSoCL & "," & GTTTCL & "," & MANNKD & ",'" & TENNV & "','" & CHUNGCHI & "'"
            
                 sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      

@@ -22,8 +22,8 @@ Const NGUOI_SU_DUNG_Y = 29
 Const NGUOI_SU_DUNG_X = "T"
 Const PHONG_XU_LY_Y = 27
 Const PHONG_XU_LY_X = "T"
-Const PHONG_QUAN_LY_X = 31
-Const PHONQ_QUAN_LY_Y = "T"
+Const PHONG_QUAN_LY_Y = 31
+Const PHONG_QUAN_LY_X = "T"
 Const NGAY_NOP_Y = 29
 Const NGAY_NOP_X = "D"
 Const NGAY_QUET_Y = 29
@@ -152,7 +152,7 @@ Public Function Prepared1() As Boolean
         
         'Phong quan ly
         .Col = .ColLetterToNumber(PHONG_QUAN_LY_X)
-        .Row = PHONQ_QUAN_LY_Y
+        .Row = PHONG_QUAN_LY_Y
         .CellType = CellTypeEdit
         .TypeEditCharSet = TypeEditCharSetASCII
         .TypeMaxEditLen = 60
@@ -274,8 +274,8 @@ Public Function Prepared3() As Boolean
         UpdateCell fps, .Col, .Row, .Text
 
         ' set phong quan ly
-        .Col = .ColLetterToNumber(PHONQ_QUAN_LY_Y)
-        .Row = PHONG_QUAN_LY_X
+        .Col = .ColLetterToNumber(PHONG_QUAN_LY_X)
+        .Row = PHONG_QUAN_LY_Y
         .Text = Trim(TAX_Utilities_Svr_New.Convert(strTenBpql, TCVN, UNICODE))
         UpdateCell fps, .Col, .Row, .Text
 
@@ -544,7 +544,7 @@ Public Function InsertDTL() As String
     Dim hdr         As TNCN_DTL
     Dim i           As Integer
     Dim arr()       As String
-   
+    
     bln = False
 
     If clsDAO.Connected = False Then
@@ -635,7 +635,6 @@ Public Function InsertDTL() As String
 
             Next
             
-                        rowDynamic = 0
             .Row = 64
             Do
                 cttnArr() = Array("32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42")
@@ -645,7 +644,7 @@ Public Function InsertDTL() As String
                 
                     CTTN = "'0" & cttnArr(i) & "'"
                         
-                    .GetText cellArr(i), .Row, giatri
+                    .GetText .ColLetterToNumber(cellArr(i)), .Row, giatri
                     giatri2 = giatri
                         
                     sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & ","
@@ -668,14 +667,12 @@ Public Function InsertDTL() As String
                     hdr.DANHAN = 0
                     hdr.Id = GetDtlId(spathVat)
                     hdr.Hdr_id = hdrId
-                    rowID = rowDynamic + 1
     
-                    sSQL = InsertDTL_TGTC08(hdr, rowID)
+                    sSQL = InsertDTL_TGTC08(hdr, .Row - 63)
                     bln = clsDAO.ExecuteDLL(sSQL)
     
                 Next
-                rowDynamic = rowDynamic + 1
-                .Row = 61 + rowDynamic
+                .Row = .Row + 1
                 .Col = .ColLetterToNumber("B")
             Loop Until .Text = "aa"
 
@@ -736,7 +733,7 @@ Public Function InsertHDR() As String
     Dim vTuThang         As Variant, vDenThang As Variant
     Dim KIEUQT           As Variant
     'pit
-   
+   Dim Loai_Ky_KK As Variant
     Dim SOHDDL           As Variant
     Dim NGAYHDDL         As Variant
 
@@ -797,7 +794,7 @@ Public Function InsertHDR() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
         
-        .GetText .ColLetterToNumber(NGUOI_SU_DUNG_X), NGUOI_SU_DUNG_Y, NgNhap
+        .GetText .ColLetterToNumber(NGAY_QUET_X), NGAY_QUET_Y, NgNhap
 
         'NGNHAP = Date
         If Trim(NgNhap) = vbNullString Then
@@ -876,98 +873,90 @@ Public Function InsertHDR() As String
         Else
             .GetText .ColLetterToNumber("I"), 66, LanBS
         End If
-         
-    End With
-           
-    ' Ghi du lieu vao bang trung gian de day len TC
-    ' check PIT
-    If TAX_Utilities_Svr_New.isCheckPIT = True Then
-        .GetText .ColLetterToNumber("R"), 4, KIEUQT
 
-        If Trim(KIEUQT) = vbNullString Then
-            .GetText .ColLetterToNumber("R"), 5, KIEUQT
-            KIEUQT = "01"
-        Else
-            KIEUQT = "02"
-        End If
+        ' Ghi du lieu vao bang trung gian de day len TC
+        ' check PIT
+        If TAX_Utilities_Svr_New.isCheckPIT = True Then
+            .GetText .ColLetterToNumber("R"), 4, KIEUQT
 
-        arr = Split(GetMaCqt, "~")
-        'hdrId = GetHdrId
-        hdr.Tin = madtnt
-        hdr.co_loi_dda = "''"
-        hdr.DA_NHAN = 0
-        hdr.DIA_CHI = arr(2)
-        hdr.ghi_chu_loi = "''"
-        hdr.khoa_so = "''"
-        hdr.loai_tkhai = "'01_TNCN_TTS'"
+            If Trim(KIEUQT) = vbNullString Then
+                .GetText .ColLetterToNumber("R"), 5, KIEUQT
+                KIEUQT = "01"
+            Else
+                KIEUQT = "02"
+            End If
 
-        If tthtk = "1" Then
-            hdr.kkbs = 0    ' To khai chinh thuc
-        ElseIf tthtk = "2" Then
-            hdr.kkbs = 1    ' To khai thay the
-        ElseIf tthtk = "3" Then
-            hdr.kkbs = 2    ' To khai bo sung
-        Else
-            hdr.kkbs = 1    ' To khai nop cham
-        End If
+            arr = Split(GetMaCqt, "~")
+            'hdrId = GetHdrId
+            hdr.Tin = madtnt
+            hdr.co_loi_dda = "''"
+            hdr.DA_NHAN = 0
+            hdr.DIA_CHI = arr(2)
+            hdr.ghi_chu_loi = "''"
+            hdr.khoa_so = "''"
+            hdr.loai_tkhai = "'01_TNCN_TTS'"
 
-        hdr.kykkhai = kykkhai
-        hdr.kylbo = kylbo
-        hdr.MA_CQT = arr(0)
-        hdr.ngay_cap_nhat = NgNhap
-        hdr.Ngay_nop = ngnop
-        'hdr.nguoi_cn = "'ADMIN'"
-        hdr.nguoi_cn = "'" & Trim(strNguoiSuDung) & "'"
-        hdr.Phong_xly = PHONG_XL
-        hdr.so_hieu_tep = "''"
-        hdr.So_tt_tk = LAN_QUET
-        hdr.ten_dtnt = arr(1)
-        hdr.Id = hdrId
-        hdr.tthtk = tthtk
-        hdr.thueondinh = "'" & strThuNhapOnDinh & "'"
+            If tthtk = "1" Then
+                hdr.kkbs = 0    ' To khai chinh thuc
+            ElseIf tthtk = "2" Then
+                hdr.kkbs = 1    ' To khai thay the
+            ElseIf tthtk = "3" Then
+                hdr.kkbs = 2    ' To khai bo sung
+            Else
+                hdr.kkbs = 1    ' To khai nop cham
+            End If
 
-        If vTuThang = vbNullString And vDenThang = vbNullString Then
-            vTuThang = ""
-            vDenThang = ""
-            hdr.kieu_ky = "Q"
-        Else
-            'set lai ky ke khai
-            kykkhai = "'" & vTuThang & "'"
-            vDenThang = "01/" & vDenThang
-            vTuThang = "01/" & vTuThang
-            vDenThang = ToDate(Trim(vDenThang), DDMMYYYY)
-            vDenThang = "CTOD('" & vDenThang & "')"
-            vTuThang = ToDate(Trim(vTuThang), DDMMYYYY)
-            vTuThang = "CTOD('" & vTuThang & "')"
-            hdr.kieu_ky = "M"
-        End If
+            hdr.kykkhai = kykkhai
+            hdr.kylbo = kylbo
+            hdr.MA_CQT = arr(0)
+            hdr.ngay_cap_nhat = NgNhap
+            hdr.Ngay_nop = ngnop
+            'hdr.nguoi_cn = "'ADMIN'"
+            hdr.nguoi_cn = "'" & Trim(strNguoiSuDung) & "'"
+            hdr.Phong_xly = PHONG_XL
+            hdr.so_hieu_tep = "''"
+            hdr.So_tt_tk = LAN_QUET
+            hdr.ten_dtnt = arr(1)
+            hdr.Id = hdrId
+            hdr.tthtk = tthtk
+            hdr.thueondinh = "'" & strThuNhapOnDinh & "'"
 
-        'pit
-        If Trim(NGAYHDDL) = vbNullString Then
-            NGAYHDDL = "CTOD('')"
-        Else
-            NGAYHDDL = ToDate(Trim(NGAYHDDL), DDMMYYYY)
-            NGAYHDDL = "CTOD('" & Format(NGAYHDDL, "mm/dd/yyyy") & "')"
-        End If
+            If vTuThang = vbNullString And vDenThang = vbNullString Then
+                vTuThang = ""
+                vDenThang = ""
+                hdr.kieu_ky = "Q"
+            Else
+                'set lai ky ke khai
+                kykkhai = "'" & vTuThang & "'"
+                vDenThang = "01/" & vDenThang
+                vTuThang = "01/" & vTuThang
+                vDenThang = ToDate(Trim(vDenThang), DDMMYYYY)
+                vDenThang = "CTOD('" & vDenThang & "')"
+                vTuThang = ToDate(Trim(vTuThang), DDMMYYYY)
+                vTuThang = "CTOD('" & vTuThang & "')"
+                hdr.kieu_ky = "M"
+            End If
 
-        hdr.Ma_dl_thue = "'" & MADLT & "'"
-        hdr.So_hd_dl = "'" & SOHDDL & "'"
-        hdr.Ngay_hd_dl = NGAYHDDL
-        hdr.Lan_bs = LanBS
+            'pit
+            If Trim(NGAYHDDL) = vbNullString Then
+                NGAYHDDL = "CTOD('')"
+            Else
+                NGAYHDDL = ToDate(Trim(NGAYHDDL), DDMMYYYY)
+                NGAYHDDL = "CTOD('" & Format(NGAYHDDL, "mm/dd/yyyy") & "')"
+            End If
 
-        If Loai_Ky_KK = "1" Then
-            hdr.kieu_ky = "Q"
-            hdr.loai_kykk = "Q"
-        Else
-            hdr.kieu_ky = "M"
-            hdr.loai_kykk = "T"
-        End If
+            hdr.Ma_dl_thue = MADLT
+            hdr.So_hd_dl = "'" & SOHDDL & "'"
+            hdr.Ngay_hd_dl = NGAYHDDL
+            hdr.lan_bs = LanBS
         
-        sSQLTemp = InsertHDR_TGTC_08(hdr, vTuThang, vDenThang, KIEUQT)
-        bln = clsDAO.ExecuteDLL(sSQLTemp)
-    End If
+            sSQLTemp = InsertHDR_TGTC_08(hdr, vTuThang, vDenThang, KIEUQT)
+            bln = clsDAO.ExecuteDLL(sSQLTemp)
+        End If
 
-    ' end PIT
+        ' end PIT
+
+    End With
           
     InsertHDR = sSQL
     clsDAO.Disconnect
