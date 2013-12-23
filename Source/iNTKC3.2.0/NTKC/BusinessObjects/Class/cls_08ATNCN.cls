@@ -706,7 +706,7 @@ On Error GoTo ErrHandle
 '        .GetText .ColLetterToNumber("R"), 4, vQT_TUNG_NAM
 '        .GetText .ColLetterToNumber("R"), 5, vQT_DAU_NAM
 '
-'        vTKTHANG = "0"  ' TK quy
+        vTKTHANG = "0"  ' TK quy
 '        If Trim$(vTU_NGAY) <> "" Or Trim$(vDEN_NGAY) <> "" Then
 '            vTKTHANG = "1" ' TK thang
 '        End If
