@@ -516,7 +516,7 @@ On Error GoTo ErrHandle
                     vGHI_CHU_LOI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                     vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "J_63"
+                Case "J_64"
                     LOAI_KYKK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
             End Select
         End If
@@ -628,8 +628,8 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("F"), 20, vTIN_DL
         .GetText .ColLetterToNumber(SO_HOP_DONG_DL_COL), SO_HOP_DONG_DL_ROW, vSO_HOP_DONG
         .GetText .ColLetterToNumber(NGAY_HOP_DONG_DL_COL), NGAY_HOP_DONG_DL_ROW, vNGAY_HOP_DONG
-        .GetText .ColLetterToNumber("I"), 63, vLAN_BS
-        .GetText .ColLetterToNumber("C"), 63, vCHINH_THUC
+        .GetText .ColLetterToNumber("I"), 64, vLAN_BS
+        .GetText .ColLetterToNumber("C"), 64, vCHINH_THUC
         If Trim(vCHINH_THUC) = "1" Then
             vLAN_BS = "0"
         End If
