@@ -2064,12 +2064,12 @@ Private Sub Command1_Click()
    
 '***************** Ra soat giai doan 1 *******************
 'TEST PHASE 3
-'02/KK-TNCN - QUY
-str2 = "aa999162300790401   03201300100100100101/0101/01/2010<S01><S>2100462770</S><S>569~128~2367~1876~3981~3768~138~3278~17665~389~2345~1767~78</S><S>Hoµng~19/11/2013~Huy“n Linh~KTV~1~~</S></S01>"
-Barcode_Scaned str2
-''02/KK-TNCN - THANG
-'str2 = "aa999152300790401   10201300100100100101/0101/01/2010<S01><S>2100462770</S><S>100~50~2891~2376~6745~845~129~3289~2367~178~123~237~36</S><S>Hoµng~19/11/2013~Huy“n Linh~KTV~1~~</S></S01>"
+''02/KK-TNCN - QUY
+'str2 = "aa999162300790401   03201300100100100101/0101/01/2010<S01><S>2100462770</S><S>569~128~2367~1876~3981~3768~138~3278~17665~389~2345~1767~78</S><S>Hoµng~19/11/2013~Huy“n Linh~KTV~1~~</S></S01>"
 'Barcode_Scaned str2
+'02/KK-TNCN - THANG
+str2 = "aa999152300790401   10201300100100100101/0101/01/2010<S01><S>2100462770</S><S>100~50~2891~2376~6745~845~129~3289~2367~178~123~237~36</S><S>Hoµng~19/11/2013~Huy“n Linh~KTV~1~~</S></S01>"
+Barcode_Scaned str2
 
 '03/KK-TNCN - QUY
 '03/KK-TNCN - THANG
@@ -2089,7 +2089,7 @@ Barcode_Scaned str2
 ''BC21/AC
 'str2 = "aa999662300790401   03201300100100100101/0101/01/2010<S01><S>06/12/2013~11~31</S><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/123~AB/12T~0000005~0000010~6~2~05~0</S><S>Bi chay do chap dien~Hoµng~06/12/2013</S></S01>"
 'Barcode_Scaned str2
-'BC26/AC
+''BC26/AC
 'str2 = "aa999682300790401   03201300300300100101/0101/01/2009<S01><S>~~01/07/2013~30/09/2013</S><S>H„a Æ¨n b∏n hµng~02GTTT2/001~AA/12T~1900005~0100000~2000000~2000001~2000004~0100000~0099999~100000~100000~0~~0~~0~~0100000~1900004~1800005~0~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/001~AA/12T~1000000~0000001~0000005~0000006~1000000~0000001~0100000~100000~100000~0~~0~~0~~0100001~1000000~900000~0</S><S>CMCer~Hoµng~20/11/2013~1</S></S01>"
 'Barcode_Scaned str2
 
@@ -4800,53 +4800,8 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
 '        strResultNNT = "sdfsfds"
     
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
-'        Dim cfigXml As New MSXML.DOMDocument
-'        Set cfigXml = LoadConfig()
-
         strMaNNT = strTaxIDString
-
-'        paXmlDoc.Load GetAbsolutePath("..\InterfaceTemplates\xml\paramNntInESB.xml")
-'        sUrlWs = xmlConfig.getElementsByTagName("WsUrlNNT")(0).Text
-'        soapAct = xmlConfig.getElementsByTagName("SoapActionNNT")(0).Text
-'        xmlRequest = xmlConfig.getElementsByTagName("XmlRequestNNT")(0).lastChild.xml
-'        sTranCode = xmlConfig.getElementsByTagName("TRAN_CODE")(0).Text
-'        fldName = xmlConfig.getElementsByTagName("ParamNameNNT")(0).Text
-'
-'        'Set value config to file param NNT
-'        paXmlDoc.getElementsByTagName("tin_nnt")(0).Text = strTaxIDString
-'
-''        paXmlDoc.getElementsByTagName("VERSION")(0).Text = cfigXml.getElementsByTagName("VERSION")(0).Text
-''        paXmlDoc.getElementsByTagName("SENDER_CODE")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text
-''        paXmlDoc.getElementsByTagName("SENDER_NAME")(0).Text = cfigXml.getElementsByTagName("SENDER_NAME")(0).Text
-''        paXmlDoc.getElementsByTagName("RECEIVER_CODE")(0).Text = cfigXml.getElementsByTagName("RECEIVER_CODE")(0).Text
-''        paXmlDoc.getElementsByTagName("RECEIVER_NAME")(0).Text = cfigXml.getElementsByTagName("RECEIVER_NAME")(0).Text
-''
-''        paXmlDoc.getElementsByTagName("ORIGINAL_CODE")(0).Text = cfigXml.getElementsByTagName("ORIGINAL_CODE")(0).Text
-''        paXmlDoc.getElementsByTagName("ORIGINAL_NAME")(0).Text = cfigXml.getElementsByTagName("ORIGINAL_NAME")(0).Text
-'
-'        'paXmlDoc.getElementsByTagName("MSG_ID")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow() '& GetGUID()
-'
-'
-'        paXmlDoc.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
-'        paXmlDoc.getElementsByTagName("ORIGINAL_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
-'
-'        fldValue = paXmlDoc.xml
-'        fldValue = ChangeTagASSCII(fldValue, True)
-'
-'        If (Dir("c:\TempXML\", vbDirectory) = "") Then
-'            MkDir "c:\TempXML\"
-'        End If
-'
-'        Dim sParamNNT As String
-'
-'        sParamNNT = "c:\TempXML\" & "paramNNT.xml"
-'        paXmlDoc.save sParamNNT
-'
-''        'Return value from ESB
-'        strResultNNT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
-
         strResultNNT = GetDataFromESB("", "", "NNT")
-
         strResultNNT = ChangeTagASSCII(strResultNNT, False)
         xmlResultNNT.loadXML strResultNNT
     Else
@@ -4880,14 +4835,6 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
                 Exit Function
 
         Else
-'            If (InStr(xmlResultNNT.xml, "fault_code") > 0) Then
-'                   If (MessageBox("0142", msYesNo, miCriticalError) = mrNo) Then
-'                    Set rsReturn = Nothing
-'                    blnSuccess = False
-'                    Exit Function
-'                    End If
-'            End If
-            
             If ((InStr(xmlResultNNT.xml, "fault_code") > 0) Or (InStr(xmlResultNNT.xml, "MaSoThue") <= 0)) Then
                 If (MessageBox("0135", msYesNo, miCriticalError) = mrNo) Then
                     Set rsReturn = Nothing
@@ -4916,7 +4863,7 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
     rsReturn.AddNew
 
     If ((strResultNNT <> "" And xmlResultNNT.hasChildNodes And (InStr(xmlResultNNT.xml, "MaSoThue") > 0)) And Err_des = "") Then
-        'xmlResultNNT.loadXML TAX_Utilities_Srv_New.Convert(xmlResultNNT.xml, VISCII, UNICODE)
+        
         rsReturn!trang_thai = GetStringByLength(xmlResultNNT.getElementsByTagName("TrangThaiHoatDong")(0).Text, 2)
         rsReturn!ten_dtnt = TAX_Utilities_Srv_New.Convert(GetStringByLength(xmlResultNNT.getElementsByTagName("TenNNT")(0).Text, 100), UNICODE, TCVN)
         rsReturn!dia_chi = TAX_Utilities_Srv_New.Convert(GetStringByLength(xmlResultNNT.getElementsByTagName("DiaChi")(0).Text, 60), UNICODE, TCVN)
@@ -4944,7 +4891,6 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
     
     Exit Function
 ErrHandle:
-    'Connect DB fail
     blnSuccess = False
     SaveErrorLog Me.Name, "GetTaxInfo", Err.Number, Err.Description
 
@@ -4971,12 +4917,7 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
     
     Set xmlResultDLT = New MSXML.DOMDocument
     Dim strResultDLT As String
-    
-'
-'    'Du lieu gia lap de test
-'    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
-'    strResultDLT = "sdfsfds"
-    
+ 
     'Neu khong co thong tin NNT thi exit luon
     If (strTaxIDString = "" Or strTaxIDString = vbNullString) Then
         Set rsReturn = Nothing
@@ -4984,52 +4925,13 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
         Exit Function
     End If
     
+'    '
+'    'Du lieu gia lap de test
+'    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
+'    strResultDLT = "sdfsfds"
 
     If (strTaxIDDLString <> "" And strTaxIDDLString <> vbNullString) Then
-'        Dim cfigXml As New MSXML.DOMDocument
-'        Set cfigXml = LoadConfig()
-        
         strMaDLT = strTaxIDDLString
-        
-        
-'        sUrlWs = xmlConfig.getElementsByTagName("WsUrlDLT")(0).Text
-'        soapAct = xmlConfig.getElementsByTagName("SoapActionDLT")(0).Text
-'        xmlRequest = xmlConfig.getElementsByTagName("XmlRequestDLT")(0).lastChild.xml
-'        sTranCode = xmlConfig.getElementsByTagName("TRAN_CODE")(0).Text
-'        fldName = xmlConfig.getElementsByTagName("ParamNameDLT")(0).Text
-'
-'        'Set value config to file param DLT
-'        paXmlDoc.getElementsByTagName("tin_dlt")(0).Text = strTaxIDDLString
-'        paXmlDoc.getElementsByTagName("tin_nnt")(0).Text = strTaxIDString
-
-'        paXmlDoc.getElementsByTagName("VERSION")(0).Text = cfigXml.getElementsByTagName("VERSION")(0).Text
-'        paXmlDoc.getElementsByTagName("SENDER_CODE")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text
-'        paXmlDoc.getElementsByTagName("SENDER_NAME")(0).Text = cfigXml.getElementsByTagName("SENDER_NAME")(0).Text
-'        paXmlDoc.getElementsByTagName("RECEIVER_CODE")(0).Text = cfigXml.getElementsByTagName("RECEIVER_CODE")(0).Text
-'        paXmlDoc.getElementsByTagName("RECEIVER_NAME")(0).Text = cfigXml.getElementsByTagName("RECEIVER_NAME")(0).Text
-'
-'        paXmlDoc.getElementsByTagName("ORIGINAL_CODE")(0).Text = cfigXml.getElementsByTagName("ORIGINAL_CODE")(0).Text
-'        paXmlDoc.getElementsByTagName("ORIGINAL_NAME")(0).Text = cfigXml.getElementsByTagName("ORIGINAL_NAME")(0).Text
-
-        'paXmlDoc.getElementsByTagName("MSG_ID")(0).Text = cfigXml.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow() '& GetGUID()
-'        paXmlDoc.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
-'        paXmlDoc.getElementsByTagName("ORIGINAL_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy HH:mm:ss")
-
-'        fldValue = paXmlDoc.xml
-'        fldValue = ChangeTagASSCII(fldValue, True)
-'
-'        If (Dir("c:\TempXML\", vbDirectory) = "") Then
-'            MkDir "c:\TempXML\"
-'        End If
-'
-'        Dim sParamDLT As String
-'
-'        sParamDLT = "c:\TempXML\" & "paramDLT.xml"
-'        paXmlDoc.save sParamDLT
-'
-'        'Return value from ESB
-'        strResultDLT = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
-        
         strResultDLT = GetDataFromESB("", "", "DLT")
         strResultDLT = ChangeTagASSCII(strResultDLT, False)
         xmlResultDLT.loadXML strResultDLT
