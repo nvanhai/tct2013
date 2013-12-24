@@ -1580,14 +1580,22 @@ Private Sub Command1_Click()
 'str2 = "aa999012100343639   112013017020013013<S01_7><S>~Chi’c~0~0~</S><S>~Chi’c~0~0~</S></S01_7>"
 'Barcode_Scaned str2
 
-str2 = "bs999012100343639   11201301602500100401/0114/06/2006<S01><S>6868686868</S><S>~0~23421321~324324234~324324234~324234234~0~0~0~0~0~0~0~324234234~0~-32"
+'str2 = "bs999012100343639   11201301602500100401/0114/06/2006<S01><S>6868686868</S><S>~0~23421321~324324234~324324234~324234234~0~0~0~0~0~0~0~324234234~0~-32"
+'Barcode_Scaned str2
+'str2 = "bs999012100343639   1120130160250020044324234~0~0~4492071891~0~0~0~4816396125~0~4816396125</S><S>sdfsdf~sdfsdfds~~13/12/2013~~1~1~1701~~~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "bs999012100343639   112013016025003004<SKHBS><S>~~0~0~0</S><S>~~0~0~0</S><S>23/12/2013~3~0~2131231~defwef~0"
+'Barcode_Scaned str2
+'str2 = "bs999012100343639   1120130160250040041/01/2013~10300~10305~123423143~1341321321~~0~0~0~0~0~0</S></SKHBS>"
+'Barcode_Scaned str2
+
+str2 = "bs999022100343639   11201300600900100301/0114/06/2006<S01><S>6868686868</S><S>32423432~343423~405439509435~20271975472~2343242~23423423~3242342~42323432~20253075463~23423423~20262418895~23432432~23434234~234234234~19981317995</S><S>sdfsdf~~sdfsdfds~16/12/2013~~1~1~0</S></S01>"
 Barcode_Scaned str2
-str2 = "bs999012100343639   1120130160250020044324234~0~0~4492071891~0~0~0~4816396125~0~4816396125</S><S>sdfsdf~sdfsdfds~~13/12/2013~~1~1~1701~~~0</S></S01>"
+str2 = "bs999022100343639   112013006009002003<SKHBS><S>~~0~0~0</S><S>Thu’ GTGT ch≠a Æ≠Óc hoµn k˙ tr≠Ìc chuy”n sang~21~423233~32423432~32000199</S><S>23/12/2"
 Barcode_Scaned str2
-str2 = "bs999012100343639   112013016025003004<SKHBS><S>~~0~0~0</S><S>~~0~0~0</S><S>23/12/2013~3~0~2131231~defwef~0"
+str2 = "bs999022100343639   112013006009003003013~3~12321321~432423432~sdfdsfdsf~01/01/2013~10700~10705~34324234~1234123213~sdfsdfd~0~0~8567767</S></SKHBS>"
 Barcode_Scaned str2
-str2 = "bs999012100343639   1120130160250040041/01/2013~10300~10305~123423143~1341321321~~0~0~0~0~0~0</S></SKHBS>"
-Barcode_Scaned str2
+
 
 End Sub
 
@@ -3575,15 +3583,24 @@ Private Function LoadForm(ByVal strData As String) As Boolean
         If TAX_Utilities_Srv_New.NodeValidity.hasChildNodes Then
             If GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(TAX_Utilities_Srv_New.NodeValidity.childNodes.length - 1), "ID") = "KHBS" Then
                 If GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(TAX_Utilities_Srv_New.NodeValidity.childNodes.length - 1), "Active") = "1" Then
+                    .Sheet = .SheetCount - 1
                     .GetText .ColLetterToNumber("BI"), .MaxRows - 15, CQT_CAPCUC
                     .GetText .ColLetterToNumber("BI"), .MaxRows - 13, CQT_HOANTHUE
                     DataDM CQT_CAPCUC, tCQT_CAPCUC
                     DataDM CQT_HOANTHUE, tCQT_HOANTHUE
-                    .Row = .MaxRows - 15
                     .Col = .ColLetterToNumber("BE")
-                    .Text = tCQT_CAPCUC
-                    .Row = .MaxRows - 13
-                    .Text = tCQT_HOANTHUE
+
+                    If tCQT_CAPCUC <> vbNullString Then
+                        .Row = .MaxRows - 15
+                        .Text = tCQT_CAPCUC
+
+                    End If
+
+                    If tCQT_HOANTHUE <> vbNullString Then
+                        .Row = .MaxRows - 13
+                        .Text = tCQT_HOANTHUE
+ 
+                    End If
                 End If
             End If
         End If
