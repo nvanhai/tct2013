@@ -40,7 +40,7 @@ Const mTuNgay = "T_5"
 Const mDenNgay = "T_6"
 
 Public Type activeForm
-    ID As String
+    Id As String
     showed As Boolean
 End Type
 
@@ -893,7 +893,7 @@ Public Function getFormIndex(pID As String) As Integer
     Dim i As Long
     
     For i = 1 To UBound(arrActiveForm)
-        If arrActiveForm(i).ID = pID Then
+        If arrActiveForm(i).Id = pID Then
             getFormIndex = i
             Exit For
         End If
@@ -1307,7 +1307,7 @@ Public Function GetDataPkgId() As String
     Dim fso As New FileSystemObject
     Dim strFileName As String
     Dim pkgId As Variant
-    Dim ID As Variant
+    Dim Id As Variant
     Dim noiLamViec As Variant
     Dim clsConn As New TAX_Utilities_Srv_New.clsADO
     If clsConn.Connected = False Then
@@ -1329,11 +1329,11 @@ Public Function GetDataPkgId() As String
         sSQL = "select exc_data_pkg_seq.nextval prm_value from dual"
         Set rs = clsConn.Execute(sSQL)
         If Not rs Is Nothing Then
-             ID = rs.Fields("prm_value")
+             Id = rs.Fields("prm_value")
         Else
-             ID = 0
+             Id = 0
         End If
-        pkgId = Trim(CStr(pkgId)) & Trim(CStr(ID))
+        pkgId = Trim(CStr(pkgId)) & Trim(CStr(Id))
         clsConn.Disconnect
     GetDataPkgId = pkgId
 End Function
@@ -1541,5 +1541,27 @@ Public Function GetPkgIDErr() As String
     GetPkgIDErr = Trim(pkgIDErr)
 End Function
 
+Public Sub DataDM(ByVal Id As String, Optional ByRef TenTN As String)
+Dim arrDanhsach() As String
+Dim strDataFileName As String
+Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+Dim xmlNode As MSXML.IXMLDOMNode
+
+       strDataFileName = "..\InterfaceTemplates\xml\Catalogue_Tinh_Thanh.xml"
+    
+       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If Id = arrDanhsach(1) Then
+                            TenTN = arrDanhsach(3)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub
 
 
