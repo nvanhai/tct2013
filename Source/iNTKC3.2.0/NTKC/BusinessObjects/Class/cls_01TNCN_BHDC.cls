@@ -61,6 +61,9 @@ Private larrid() As String
 Private larrPhongXuLy() As String
 Private lSoPhongXL As Long
 
+Private tempKyLb As Variant
+Private tempNgayNop As Variant
+
 Public strTenDL As String
 Public strDiaChiDL As String
 Public strDienThoaiDL As String
@@ -193,8 +196,39 @@ Public Function Prepared3() As Boolean
             UpdateCell fps, .Col, .Row, .Text
         End If
         
-        ' set thong tin dai ly thue
-        ' ten dai ly thue
+        ' Set lai ky lap bo
+        ' Lay ky lap bo duoc cua to khai quet truoc do, duoc ghi trong cookie de hien thi cho lan quet to khai tncn lan sau
+        tempKyLb = GetSetting("HTKK", "TNCN", "tempKyLb")
+        If (tempKyLb <> vbNullString) Then
+            .Col = .ColLetterToNumber(KY_LAP_BO_COL)
+            .Row = KY_LAP_BO_ROW
+            .Text = tempKyLb
+            UpdateCell fps, .Col, .Row, .Text
+        End If
+        ' Dat lai check E_36 Duoc gian thue theo TT27/TT-BTC
+        ' Thoi gian gian thue tu thang 1 den thang 6 nam 2009 cua to khai thang
+'        If Val(TAX_Utilities_Srv_New.Year) = 2009 And Val(TAX_Utilities_Srv_New.Month) <= 6 Then
+'            ' Neu trong hieu luc cua gian thue thi default la checked
+'            .Row = 36
+'            .Col = .ColLetterToNumber("E")
+'            .Text = "1"
+'            UpdateCell fps, .Col, .Row, "x"
+'        Else
+'            ' Neu ngoai hieu luc cua gian thue thi visible cac dieu kien check nay di
+'            .Row = 36
+'            .Col = .ColLetterToNumber("B")
+'            .CellType = CellTypeEdit
+'            .Lock = True
+'            .Text = ""
+'
+'            .Row = 36
+'            .Col = .ColLetterToNumber("E")
+'            .CellType = CellTypeEdit
+'            .Lock = True
+'            .Text = ""
+'            UpdateCell fps, .Col, .Row, ""
+'        End If
+                ' ten dai ly thue
         .Col = .ColLetterToNumber(TEN_DL_COL)
         .Row = TEN_DL_ROW
         If strTenDL <> "" Then
@@ -242,6 +276,15 @@ Public Function Prepared3() As Boolean
         If strNgayHopDongDL <> "" Then
             .Text = strNgayHopDongDL
             UpdateCell fps, .Col, .Row, .Text
+        End If
+        ' set KyLB doi voi cac truong hop nhan tu dong iHTKK
+        .Col = .ColLetterToNumber(KY_LAP_BO_COL)
+        .Row = KY_LAP_BO_ROW
+        If TAX_Utilities_Srv_New.NhanTuDongIHTKK = True And TAX_Utilities_Srv_New.HthucNopIHTKK = True Then
+             If TAX_Utilities_Srv_New.KyLBIHTKK <> "" Then
+                .Text = TAX_Utilities_Srv_New.KyLBIHTKK
+                UpdateCell fps, .Col, .Row, .Text
+            End If
         End If
         '.EventEnabled(EventAllEvents) = True
     End With
@@ -475,10 +518,23 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     Dim strMaPhongXuLy As String
     
     Dim LOAI_KYKK      As String
-    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
+    Dim strTTGui As Integer
+        Dim vItkhai_ID, vHthuc_nop As String
+     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
+On Error GoTo ErrHandle
+    ' Trong truong hop co thu nhap on dinh thi them mot cot THUE_ON_DINH. Hien tai chi co to khai 07/TNCN
+    'strSQL = Mid(strSQL_HDR, 1, Len(strSQL_HDR) - 9) & ", THUE_ON_DINH)" & Right(strSQL_HDR, 8)
     
-    On Error GoTo ErrHandle
-    strSQL = Replace$(strSQL_HDR, ")", ",LOAI_KYKK)")
+       ' PIT
+    If TAX_Utilities_Srv_New.isCheckPIT = True Then
+        strSQL = SqlHdr_TNCN
+        strTTGui = 1
+    Else
+        strSQL = strSQL_HDR
+    End If
+    ' end PIT
+    strSQL = Replace$(strSQL, ")", ",LOAI_KYKK)")
+
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
 
     For Each xmlNode In xmlList
@@ -504,6 +560,8 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
                     Case "E_30"
                         vKyLB = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
 
+                    'Luu thong tin cua ky lap bo cua to khai quet hien tai, de hien thi cho viec quet to khai lan sau
+                    SaveSetting "HTKK", "TNCN", "tempKyLb", vKyLB
                     Case "M_32"
                         vNGAY_CAP_NHAT = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
 
@@ -545,6 +603,16 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
         LOAI_KYKK = "Q"
     End If
 
+    'Neu la to khai iHtkk thi lay ngay nop tu bang rcv_ihtkk_mvach
+    If TAX_Utilities_Srv_New.HthucNopIHTKK = True Then
+        vNGAY_NOP = TAX_Utilities_Srv_New.NgayNopIHTKK
+        vItkhai_ID = TAX_Utilities_Srv_New.IDTokhaiIHTKK
+        vHthuc_nop = "'I'"
+    Else
+        vItkhai_ID = "null"
+        vHthuc_nop = "null"
+    End If
+    ' end
     strSQL = strSQL & "'" & vHdrID & "',"
     strSQL = strSQL & vKKBS & ","
     strSQL = strSQL & "'" & vTIN & "',"
@@ -591,14 +659,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     strSQL = strSQL & "'" & vCO_LOI_DDANH & "',"
     strSQL = strSQL & "'" & vSO_HIEU_TEP & "',"
     strSQL = strSQL & "'" & vSO_TT_TK & "',"
-
-    ' Danh dau da nhan la "N" trong truong hop nguoi dung chi can quet bang ke
-    If chkQuetBangKe = True Then
-        vDA_NHAN = "N"
-    Else
-        vDA_NHAN = vbNullString
-    End If
-
+    
     strSQL = strSQL & "'" & vDA_NHAN & "',"
     strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
 
@@ -647,17 +708,15 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
 
     End With
 
-    strSQL = strSQL & "'" & strMaPhongXuLy & "',"
-
-    ' Truong hop co quet bang ke thi danh dau truong CO_BANG_KE de xu ly khi dua vao QLT
-    If chkQuetBangKe = True Then
-        strSQL = strSQL & "1,"
+      'strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null)"
+    ' PIT
+    If TAX_Utilities_Srv_New.isCheckPIT = True Then
+        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & strTTGui & ","  & vHthuc_nop & "," & vItkhai_ID & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
     Else
-        strSQL = strSQL & "null,"
+        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null,"  & vHthuc_nop & "," & vItkhai_ID & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
     End If
-
-    strSQL = strSQL & "null,"
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ",'" & LOAI_KYKK & "')"
+    ' end PIT
+    
     GenerateSQL_Header = strSQL
     
     Exit Function
