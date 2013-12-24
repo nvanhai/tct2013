@@ -765,7 +765,7 @@ Public Function InsertDTL() As String
         '
         CTIEUTNDN = "'021'"
         DSO = "0"
-        .GetText .ColLetterToNumber("W"), 40, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 42, THUEGTGT
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
         End If
@@ -836,7 +836,7 @@ Public Function InsertDTL() As String
         '
         CTIEUTNDN = "'021a'"
         DSO = "0"
-        .GetText .ColLetterToNumber("W"), 41, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 43, THUEGTGT
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
         End If
@@ -967,11 +967,11 @@ Public Function InsertDTL() As String
         'Chi tieu
         '
         CTIEUTNDN = "'023'"
-        .GetText .ColLetterToNumber("Q"), 43, DSO
+        .GetText .ColLetterToNumber("Q"), 45, DSO
         If Trim(DSO) = vbNullString Then
             DSO = "0"
          End If
-        .GetText .ColLetterToNumber("W"), 43, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 45, THUEGTGT
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
         End If
@@ -1103,13 +1103,13 @@ Public Function InsertDTL() As String
          'Chi tieu
         '
         CTIEUTNDN = "'025'"
-        .GetText .ColLetterToNumber("Q"), 45, DSO
+        .GetText .ColLetterToNumber("Q"), 47, DSO
         If Trim(DSO) = vbNullString Then
             DSO = "0"
          End If
          
         
-        .GetText .ColLetterToNumber("W"), 45, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 47, THUEGTGT
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
         End If
@@ -1173,13 +1173,13 @@ Public Function InsertDTL() As String
           'Chi tieu
         '
         CTIEUTNDN = "'027'"
-        .GetText .ColLetterToNumber("Q"), 46, DSO
+        .GetText .ColLetterToNumber("Q"), 48, DSO
         If Trim(DSO) = vbNullString Then
             DSO = "0"
          End If
          
         
-        .GetText .ColLetterToNumber("W"), 46, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 48, THUEGTGT
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
         End If
@@ -1246,7 +1246,7 @@ Public Function InsertDTL() As String
         '
         CTIEUTNDN = "'028'"
          DSO = "0"
-        .GetText .ColLetterToNumber("W"), 47, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 49, THUEGTGT
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
         End If
@@ -1310,7 +1310,7 @@ Public Function InsertDTL() As String
         'Chi tieu
         CTIEUTNDN = "'029'"
          DSO = "0"
-        .GetText .ColLetterToNumber("W"), 48, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 50, THUEGTGT
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
         End If
@@ -1375,7 +1375,7 @@ Public Function InsertDTL() As String
         '
         CTIEUTNDN = "'030'"
          DSO = "0"
-        .GetText .ColLetterToNumber("W"), 49, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 51, THUEGTGT
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
         End If
@@ -1440,7 +1440,7 @@ Public Function InsertDTL() As String
         '
         CTIEUTNDN = "'031'"
          DSO = "0"
-        .GetText .ColLetterToNumber("W"), 51, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 53, THUEGTGT
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
         End If
@@ -1504,7 +1504,7 @@ Public Function InsertDTL() As String
         '
         CTIEUTNDN = "'032'"
          DSO = "0"
-        .GetText .ColLetterToNumber("W"), 52, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 54, THUEGTGT
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
         End If
@@ -1568,7 +1568,71 @@ Public Function InsertDTL() As String
         '
         CTIEUTNDN = "'033'"
          DSO = "0"
-        .GetText .ColLetterToNumber("W"), 53, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 55, THUEGTGT
+        If Trim(THUEGTGT) = vbNullString Then
+            THUEGTGT = "0"
+        End If
+        DSO2 = DSO
+        THUEGTGT2 = THUEGTGT
+        tt = "''"
+        ' sua MAMUC & MATM tu nam 2009
+        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
+            maTM = "'01'"
+            MaMuc = "'014'"
+        Else
+            MaMuc = "'1700'"
+            maTM = "'1701'"
+        End If
+        matkhai = "'" & LOAI_TO_KHAI & "'"
+        'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+         If isTkQuy = True Then
+            kykkhai = "'" & Val(TAX_Utilities_Svr_New.Month) & "/" & TAX_Utilities_Svr_New.Year & "'"
+        Else
+            kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+        End If
+   End With
+    
+   sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & LoaiTien & "," & ngnop & ","
+   sSQLVal = sSQLVal & CTIEUTNDN & "," & DSO & "," & THUEGTGT & "," & DSO2 & "," & THUEGTGT2 & "," & tt & "," & MaMuc & "," & tthtk & "," & kykkhai & "," & matkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN
+   sSQL = "INSERT INTO TMP_DA" & sKyKeKhai & _
+     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+     
+   bln = clsDAO.ExecuteDLL(sSQL)
+   '----------------------
+      With fps
+        .Sheet = 1
+        .GetText .ColLetterToNumber("F"), 10, madtnt
+        If Trim(madtnt) = vbNullString Then
+            madtnt = "''"
+        Else
+            madtnt = "'" & madtnt & "'"
+        End If
+        MATHUE = "'01'"
+        MAPP = "'5'"
+        .GetText .ColLetterToNumber("E"), 30, kylbo
+        If Trim(kylbo) = vbNullString Then
+            kylbo = "''"
+        Else
+             If Len(Trim(kylbo)) = 6 Then
+                kylbo = "'0" & kylbo & "'"
+            Else
+                kylbo = "'" & kylbo & "'"
+            End If
+        End If
+        LoaiTien = "''"
+        .GetText .ColLetterToNumber("E"), 32, ngnop
+        'NGNOP = Date
+        If Trim(ngnop) = vbNullString Then
+            ngnop = "CTOD('')"
+        Else
+            ngnop = ToDate(Trim(ngnop), DDMMYYYY)
+            ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
+        End If
+            'Chi tieu
+        '
+        CTIEUTNDN = "'034'"
+         DSO = "0"
+        .GetText .ColLetterToNumber("W"), 56, THUEGTGT
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
         End If
