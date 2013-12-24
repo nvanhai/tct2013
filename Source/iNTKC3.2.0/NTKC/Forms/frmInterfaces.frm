@@ -3841,6 +3841,40 @@ On Error GoTo ErrHandle
         If Not objTaxBusiness.Prepared2(rsPXL) Then Exit Function
     End If
     
+    'Load co quan thue KHBS
+    With fpSpread1
+        Dim CQT_CAPCUC    As Variant
+        Dim CQT_HOANTHUE  As Variant
+        Dim tCQT_CAPCUC   As String
+        Dim tCQT_HOANTHUE As String
+
+        If TAX_Utilities_Srv_New.NodeValidity.hasChildNodes Then
+            If GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(TAX_Utilities_Srv_New.NodeValidity.childNodes.length - 1), "ID") = "KHBS" Then
+                If GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(TAX_Utilities_Srv_New.NodeValidity.childNodes.length - 1), "Active") = "1" Then
+                    .Sheet = .SheetCount - 1
+                    .GetText .ColLetterToNumber("BI"), .MaxRows - 15, CQT_CAPCUC
+                    .GetText .ColLetterToNumber("BI"), .MaxRows - 13, CQT_HOANTHUE
+                    DataDM CQT_CAPCUC, tCQT_CAPCUC
+                    DataDM CQT_HOANTHUE, tCQT_HOANTHUE
+                    .Col = .ColLetterToNumber("BE")
+
+                    If tCQT_CAPCUC <> vbNullString Then
+                        .Row = .MaxRows - 15
+                        .Text = tCQT_CAPCUC
+
+                    End If
+
+                    If tCQT_HOANTHUE <> vbNullString Then
+                        .Row = .MaxRows - 13
+                        .Text = tCQT_HOANTHUE
+ 
+                    End If
+                End If
+            End If
+        End If
+    
+    End With
+    
     ' set ma CQT
     If Not objTaxBusiness Is Nothing Then
         If (Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) >= 64 And Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <= 68) Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 91 Then
