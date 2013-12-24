@@ -430,7 +430,7 @@ Public Function Prepared3() As Boolean
 
         Dim j       As Integer
         Dim lastRow As Variant
-        Dim strID, tenTN   As String
+        Dim strID, TenTN   As String
         Dim maTM1 As String
         .Sheet = 1
         .Row = 45
@@ -438,9 +438,9 @@ Public Function Prepared3() As Boolean
         Do
 
             .GetText .ColLetterToNumber("AB"), .Row, strID
-            DataDM strID, , tenTN, , , , maTM1
-            .SetText .ColLetterToNumber("C"), .Row, tenTN
-            UpdateCell fps, .ColLetterToNumber("C"), .Row, tenTN
+            DataDM strID, , TenTN, , , , maTM1
+            .SetText .ColLetterToNumber("C"), .Row, TenTN
+            UpdateCell fps, .ColLetterToNumber("C"), .Row, TenTN
             
             .SetText .ColLetterToNumber("AC"), .Row, maTM1
             UpdateCell fps, .ColLetterToNumber("AC"), .Row, maTM1
@@ -456,9 +456,9 @@ Public Function Prepared3() As Boolean
         Do
 
             .GetText .ColLetterToNumber("AB"), .Row, strID
-            DataDM strID, , tenTN, , , , maTM1
-            .SetText .ColLetterToNumber("C"), .Row, tenTN
-            UpdateCell fps, .ColLetterToNumber("C"), .Row, tenTN
+            DataDM strID, , TenTN, , , , maTM1
+            .SetText .ColLetterToNumber("C"), .Row, TenTN
+            UpdateCell fps, .ColLetterToNumber("C"), .Row, TenTN
             
             .SetText .ColLetterToNumber("AC"), .Row, maTM1
             UpdateCell fps, .ColLetterToNumber("AC"), .Row, maTM1
@@ -504,24 +504,24 @@ Dim blnValid As Boolean
         .EventEnabled(EventAllEvents) = True
     End With
 End Sub
-Private Sub DataDM(ByVal Id As String, Optional ByRef strIdQLT As String, Optional ByRef tenTN As String, Optional ByRef strDVT As String, Optional ByRef strThueSuat As String, Optional ByRef blnSuaThueSuat As Boolean, Optional ByRef maTM As String)
+Private Sub DataDM(ByVal Id As String, Optional ByRef strIdQLT As String, Optional ByRef TenTN As String, Optional ByRef strDVT As String, Optional ByRef strThueSuat As String, Optional ByRef blnSuaThueSuat As Boolean, Optional ByRef maTM As String)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDomData As New MSXML.DOMDocument
+Dim xmlDOMdata As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = GetCatalogueFileName
     
-If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
+If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Cell")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                     
                         If Id = arrDanhsach(1) Then
                             strIdQLT = arrDanhsach(0)
-                            tenTN = arrDanhsach(2)
+                            TenTN = arrDanhsach(2)
                             strDVT = arrDanhsach(3)
                             strThueSuat = arrDanhsach(4)
                             blnSuaThueSuat = IIf(arrDanhsach(5) = "1", True, False)
@@ -1215,8 +1215,8 @@ Public Function InsertHDR() As String
     Dim GTTTCL       As Variant
     Dim NGAYPS       As Variant
     Dim MANNKD       As Variant
-        Dim TENNV      As Variant
-    Dim CHUNGCHI   As Variant
+    Dim TENNV        As Variant
+    Dim CHUNGCHI     As Variant
     'bien dung xu ly Ma Tieu Muc
     Dim arrMTM()     As String, arrMTMSave() As String
     Dim arrThueTKy() As String, arrThueTKySave() As Double
@@ -1409,7 +1409,20 @@ Public Function InsertHDR() As String
         
         ' ngay phat sinh
         NGAYPS = "CTOD('')"
-       
+
+        .Row = 33
+        .Col = .ColLetterToNumber("L")
+
+        If .Text = "1" Then
+            .GetText .ColLetterToNumber("M"), .Row, NGAYPS
+
+            If Trim(NGAYPS) = vbNullString Then
+                NGAYPS = "CTOD('')"
+            Else
+                NGAYPS = "CTOD('" & Format(NGAYPS, "mm/dd/yyyy") & "')"
+            End If
+        End If
+
         'thue gtgt phai nop
         '        .GetText .ColLetterToNumber("U"), 35, ThueTKy
         '

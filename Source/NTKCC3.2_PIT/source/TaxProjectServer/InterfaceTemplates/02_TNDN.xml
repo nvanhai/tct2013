@@ -71,8 +71,8 @@
 	<Section Dynamic="0" MaxRows="0">
 		<Cells>
 		   	<Cell CellID="G_78"  Value="  "  MCT="  "/> 	  		 
-  	       <Cell CellID="T_78"   Value="  "  MCT="  "/> 	  	 	 
-  	       <Cell CellID="G_80"   Value="  "  MCT="  "/> 	  		 
+  	       <Cell CellID="G_80"   Value="  "  MCT="  "/> 	  	 	 
+  	       <Cell CellID="T_78"   Value="  "  MCT="  "/> 	  		 
   	       <Cell CellID="T_80"   Value="  "  MCT="  "/>   		   	        		
 		   <Cell CellID="M_49"   Value="  "  MCT="  "/> 	  		 
   	       <Cell CellID="O_49"   Value="  "  MCT="  "/> 	  	 	 

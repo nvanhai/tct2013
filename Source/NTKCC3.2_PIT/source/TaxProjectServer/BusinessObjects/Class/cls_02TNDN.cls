@@ -429,14 +429,7 @@ Public Function Prepared3() As Boolean
         Else
             sKyKeKhai = Month(Now()) & Year(Now())
         End If
-        
-        ' so thu tu to khai
-        .Col = .ColLetterToNumber(STT_X)
-        .Row = STT_Y
-        strSoTTTKhai = Trim(TinhSoLanQuet)
-        .Text = Trim(TAX_Utilities_Svr_New.Convert(strSoTTTKhai, TCVN, UNICODE))
-        
-        'to khai thang
+                'to khai thang
         Dim tokhai As Variant
         .GetText .ColLetterToNumber("Q"), 49, tokhai
 
@@ -445,6 +438,11 @@ Public Function Prepared3() As Boolean
         Else
             TKTHANG = True
         End If
+        ' so thu tu to khai
+        .Col = .ColLetterToNumber(STT_X)
+        .Row = STT_Y
+        strSoTTTKhai = Trim(TinhSoLanQuet)
+        .Text = Trim(TAX_Utilities_Svr_New.Convert(strSoTTTKhai, TCVN, UNICODE))
 
         ' ngay phat sinh
         .GetText .ColLetterToNumber("M"), 50, NGAY_PS
@@ -1390,7 +1388,7 @@ Public Function InsertHDR() As String
         sSQLVal = sSQLVal & HOPDONG & "," & ngnop & "," & tthtk & "," & kykkhai2 & "," & matkhai & "," & HANNOP & "," & HANNOP2 & ", "
         sSQLVal = sSQLVal & ThueTKy & "," & ThueTKy2 & "," & NGAYHD & "," & NGAYXN & "," & GHICHU & ", "
         sSQLVal = sSQLVal & SHTEP & "," & MaVach & "," & AUTO_CAL & "," & DaGhi & ", "
-        sSQLVal = sSQLVal & kylbo & "," & THUECL & "," & MADLT & "," & LanBS & "," & LAN_QUET & "," & DoanhSo & "," & GTTinhThue & "," & GTTTCL & "," & DSoCL & "," & DAGHI2 & "," & DANHAN & "," & NGAY_PS & "," & TENNV & "," & CHUNGCHI
+        sSQLVal = sSQLVal & kylbo & "," & THUECL & "," & MADLT & "," & LanBS & "," & LAN_QUET & "," & DoanhSo & "," & GTTinhThue & "," & GTTTCL & "," & DSoCL & "," & DAGHI2 & "," & DANHAN & "," & NGAY_PS & ",'" & TENNV & "','" & CHUNGCHI & "'"
 
         sSQL = "INSERT INTO TMP_SM" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -1732,40 +1730,49 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
     End If
 End With
 End Sub
+
 Public Function TinhSoLanQuet() As Integer
-    Dim sSQL As String
-    Dim rs As ADODB.Recordset
-    Dim fso As New FileSystemObject
+    Dim sSQL           As String
+    Dim rs             As ADODB.Recordset
+    Dim fso            As New FileSystemObject
     Dim strFileNameHDR As String
     Dim strFileNameDTL As String
-    Dim LAN_QUET1 As Variant
+    Dim LAN_QUET1      As Variant
     
     'kiem tra ton tai tep *.dbf chua
     'Tinh so lan quyet de ghi vao DB trung gian
     'dhdang sua
     'ngay 24/09/2010
     '-----------------------------
-    strFileNameHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_QT6" & sKyKeKhai & ".DBF"
+    strFileNameHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_SM" & sKyKeKhai & ".DBF"
+
     If fso.FileExists(strFileNameHDR) = True Then
         If clsDAO.Connected = False Then
-        clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
-        clsDAO.Connect
+            clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
+            clsDAO.Connect
         End If
-        
-            sSQL = "SELECT max(LAN_QUET) as LAN_QUET FROM TMP_QT6" & sKyKeKhai & _
-            " WHERE MADTNT = " & "'" & strMST & "' AND NAMQT = " & TAX_Utilities_Svr_New.Year & " AND (TTHTK = '1' OR TTHTK = '3' OR TTHTK = '4')"
-            
-            Set rs = clsDAO.Execute(sSQL)
-            If Not rs Is Nothing Then
-                 LAN_QUET1 = rs.Fields("LAN_QUET")
-                 TinhSoLanQuet = LAN_QUET1
-            Else
-                 TinhSoLanQuet = 0
-            End If
-            clsDAO.Disconnect
+
+        If TKTHANG = True Then
+            sSQL = "SELECT max(LAN_QUET) as LAN_QUET FROM TMP_SM" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='02/TNDN' AND NGAY_PS = CTOD('')"
+        Else
+            sSQL = "SELECT max(LAN_QUET) as LAN_QUET FROM TMP_SM" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='02/TNDN' AND NGAY_PS = " & NGAY_PS
+
+        End If
+
+        Set rs = clsDAO.Execute(sSQL)
+
+        If Not rs Is Nothing Then
+            LAN_QUET1 = rs.Fields("LAN_QUET")
+            TinhSoLanQuet = LAN_QUET1
+        Else
+            TinhSoLanQuet = 0
+        End If
+
+        clsDAO.Disconnect
     Else
-    TinhSoLanQuet = 0
+        TinhSoLanQuet = 0
     End If
+
 End Function
 
 Private Function GetMATM() As Object
