@@ -1539,9 +1539,54 @@ Private Sub Command1_Click()
 'str2 = "aa999752100343639   032013002005002002011~324324~213213~28966798~2146680~11930~2134750</S><S>~18/12/2013~sdfsdf~sdfsdfds~1~</S></S01>"
 'Barcode_Scaned str2
 
-str2 = "aa999702100343639   11201300100100100201/0101/01/1900<S01><S>6868686868</S><S>erewrewr~2222222222~01/01~23432423~~3243432~45~54~788154~34324234234~34~324234234~11346005406~11346793560~ewrer~2222222222~01/01~23432423~~234324~34~54~43022~2342"
+'str2 = "aa999702100343639   11201300100100100201/0101/01/1900<S01><S>6868686868</S><S>erewrewr~2222222222~01/01~23432423~~3243432~45~54~788154~34324234234~34~324234234~11346005406~11346793560~ewrer~2222222222~01/01~23432423~~234324~34~54~43022~2342"
+'Barcode_Scaned str2
+'str2 = "aa999702100343639   1120130010010020023432~32~324234~7171264~7214286~erwerew~2222222222~01/01~32423432~~3423423~45~54~831892~324234234~42~234234~135944144~136776036</S><S>0~0~0~0~0~0</S><S>~</S><S>sdfsdf~sdfsdfds~~18/12/2013~1~~~</S></S01>"
+'Barcode_Scaned str2
+
+'str2 = "aa999812100343639   11201300301100100401/0101/01/1900<S01><S>6868686868</S><S>erw~2222222222~01/10~32432432~10/10/2013~324"
+'Barcode_Scaned str2
+'str2 = "aa999812100343639   11201300301100200424324~5~234324~1386892~ewr~2222222222~01/10~324234~10/10/2013~324234~5~4324~11888~rw"
+'Barcode_Scaned str2
+'str2 = "aa999812100343639   112013003011003004erwe~2222222222~01/10~2324234~10/10/2013~234234423~5~4324~11707397</S><S>35080900~26"
+'Barcode_Scaned str2
+'str2 = "aa999812100343639   1120130030110040046982981~242972~13106177</S><S>1~</S><S>sdfsdf~~sdfsdfds~19/12/2013~1~1~~</S></S01>"
+'Barcode_Scaned str2
+
+'str2 = "aa999012100343639   11201301702000101301/0114/06/2006<S01><S>6868686868</S><S>~0~23421321~324324234~324324234~324234234~0~0~0~0~0~0~0~324234234~0~-32"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   1120130170200020134324234~0~0~4492071891~0~0~0~4816396125~0~4816396125</S><S>sdfsdf~sdfsdfds~~13/12/2013~1~~~1701~~~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   112013017020003013<S01_1><S>01GTKT~01GTKT~asdas~sad~01/01/2013~wadad~6868686868~sdfsdf~324234234~0~</S><S>~~~~~~~"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   112013017020004013~0~0~</S><S>~~~~~~~~0~0~</S><S>~~~~~~~~0~0~</S><S>~~~~~~~~0~0~</S><S>324234234~0~0</S></S01_1>"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   112013017020005013<S01_2><S>06HDXK~06HDXK~342~rwer~01/01/2013~sfsf~6868686868~fdad~23421321~5~324324234~</S><S>~~~~~~~~0~0"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   112013017020006013~0~</S><S>~~~~~~~~0~0~0~</S><S>~~~~~~~~0~0~0~</S><S>~~~~~~~~0~0~0~</S><S>23421321~324324234</S></S01_2>"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   112013017020007013<S01_3><S>0~435~rdfs~4543~43543~sefsdf~5sf~4~543~435435~~~sdf~43543~4354~5435~35454354343~0~</S"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   112013017020008013><S>0~0~43~543~543~~55~~3~5~435435~543543~4~543~~54354~3535435~435435~43543</S><S></S></S01_3>"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   112013017020009013<S01_4A><S>324324234~324324234~0~0~324234234~0~0~0~0</S></S01_4A>"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   112013017020010013<S01_5><S>rew~01/01/2013~edfsd~10101~234324234~rewrwe~01/10/2013~dsfs~11107~23423423~rwerew~07/10/2000~34324~11103~4234324234</S></S01_5>"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   112013017020011013<S01_6><S>erwe~6868686868~10705~231434~324234~555668~8799~0</S"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   112013017020012013><S>111~222~333~444</S></S01_6>"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   112013017020013013<S01_7><S>~Chi’c~0~0~</S><S>~Chi’c~0~0~</S></S01_7>"
+'Barcode_Scaned str2
+
+str2 = "bs999012100343639   11201301602500100401/0114/06/2006<S01><S>6868686868</S><S>~0~23421321~324324234~324324234~324234234~0~0~0~0~0~0~0~324234234~0~-32"
 Barcode_Scaned str2
-str2 = "aa999702100343639   1120130010010020023432~32~324234~7171264~7214286~erwerew~2222222222~01/01~32423432~~3423423~45~54~831892~324234234~42~234234~135944144~136776036</S><S>0~0~0~0~0~0</S><S>~</S><S>sdfsdf~sdfsdfds~~18/12/2013~1~~~</S></S01>"
+str2 = "bs999012100343639   1120130160250020044324234~0~0~4492071891~0~0~0~4816396125~0~4816396125</S><S>sdfsdf~sdfsdfds~~13/12/2013~~1~1~1701~~~0</S></S01>"
+Barcode_Scaned str2
+str2 = "bs999012100343639   112013016025003004<SKHBS><S>~~0~0~0</S><S>~~0~0~0</S><S>23/12/2013~3~0~2131231~defwef~0"
+Barcode_Scaned str2
+str2 = "bs999012100343639   1120130160250040041/01/2013~10300~10305~123423143~1341321321~~0~0~0~0~0~0</S></SKHBS>"
 Barcode_Scaned str2
 
 End Sub
@@ -2548,14 +2593,14 @@ Private Sub InsertNode(xmlSectionTemplate As MSXML.IXMLDOMNode)
     
 End Sub
 
-Public Sub IncreaseRowInDOM(fpSpread1 As fpSpread, xmlDomData As MSXML.DOMDocument, ByVal pRow As Long, ByVal lRows As Long, ByVal lRow2s As Long)
+Public Sub IncreaseRowInDOM(fpSpread1 As fpSpread, xmlDOMdata As MSXML.DOMDocument, ByVal pRow As Long, ByVal lRows As Long, ByVal lRow2s As Long)
     On Error GoTo ErrorHandle
     
     Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
     Dim lCol As Long, lRow As Long, i As Long
         
-    If xmlDomData Is Nothing Then Exit Sub
-    Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
+    If xmlDOMdata Is Nothing Then Exit Sub
+    Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Cell")
     
     For i = xmlNodeListCell.length - 1 To 0 Step -1
         ParserCellID fpSpread1, GetAttribute(xmlNodeListCell(i), "CellID"), lCol, lRow
@@ -3407,18 +3452,18 @@ End Sub
 '****************************
 Private Function LoadForm(ByVal strData As String) As Boolean
 
-On Error GoTo ErrHandle
+    On Error GoTo ErrHandle
 
-    Dim rsHeaderData As ADODB.Recordset
+    Dim rsHeaderData       As ADODB.Recordset
     Dim arrStrHeaderData() As String
-    Dim LoaiTk As String
-    Dim strMST As String
+    Dim LoaiTk             As String
+    Dim strMST             As String
     
-    Dim dsTK_DLT As String
+    Dim dsTK_DLT           As String
     
-    Dim blnDLConnected As Boolean
-    Dim strTaxDLID As String
-    Dim rsTaxDLInfor As ADODB.Recordset
+    Dim blnDLConnected     As Boolean
+    Dim strTaxDLID         As String
+    Dim rsTaxDLInfor       As ADODB.Recordset
     
     Me.MousePointer = vbHourglass
     frmSystem.MousePointer = vbHourglass
@@ -3427,6 +3472,7 @@ On Error GoTo ErrHandle
     
     'If InitParameters(strData, rsHeaderData) = False Then
     If InitParameters(strData, arrStrHeaderData) = False Then
+
         ' Truong hop bi map ID sai BCTC giua phien ban 2.5.1 ban ngay 17/03/2010 voi phien ban 2.1.0
         ' Thi conver lai cho chuan ID BCTC va Init lai cac Parameter
         If Trim(LoaiTk) = "55" Then
@@ -3448,30 +3494,29 @@ On Error GoTo ErrHandle
     fpSpread1.EventEnabled(EventAllEvents) = False
     LoadTemplate fpSpread1
     SetupSpread
+
     FormatGrid
     'LoadInitFiles
     
-    
-        ' Set cac thong tin cua DL thue
-     'Get Tax id
+    ' Set cac thong tin cua DL thue
+    'Get Tax id
     strMST = Trim(Mid$(strTaxReportInfo, 3, 13))
     
     strTaxDLID = Mid(strData, InStr(1, strData, "<S>") + 3, InStr(1, strData, "</S>") - InStr(1, strData, "<S>") - 3)
     
-    
     If Len(Trim(strMST)) = 13 Then
         strMST = Left(strMST, 10) & "-" & Right(strMST, 3)
     End If
+
     strMaSoThue = strMST
-    
     
     If Len(Trim(strTaxDLID)) = 13 Then
         strTaxDLID = Left(strTaxDLID, 10) & "-" & Right(strTaxDLID, 3)
     End If
+
     strMaDaiLyThue = strTaxDLID
     
     Set rsTaxDLInfor = GetTaxDLInfo(strMST, strTaxDLID, blnDLConnected)
-        
     
     If Trim(GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "Class")) <> vbNullString Then
         Set objTaxBusiness = CreateObject(GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "Class"))
@@ -3481,20 +3526,21 @@ On Error GoTo ErrHandle
         objTaxBusiness.strNgayNhanToKhai = strNgayNhanToKhai
         objTaxBusiness.strNguoiSuDung = strUserID
         
-            ' set thong tin DL thue
+        ' set thong tin DL thue
         ' danh sach cac to khai se set thong tin dai ly thue TT28
         dsTK_DLT = "~01~02~03~04~05~06~11~12~46~47~48~49~15~16~50~51~36~70~71~72~73~74~75~80~81~82~77~86~87~89~17~42~43~59~76~41~"
-'        If Trim(LoaiTk) = "01" Or Trim(LoaiTk) = "02" Or Trim(LoaiTk) = "04" Or Trim(LoaiTk) = "05" Or Trim(LoaiTk) = "06" Or Trim(LoaiTk) = "11" _
-'        Or Trim(LoaiTk) = "12" Or Trim(LoaiTk) = "46" Or Trim(LoaiTk) = "47" Or Trim(LoaiTk) = "48" Or Trim(LoaiTk) = "49" Or Trim(LoaiTk) = "15" _
-'        Or Trim(LoaiTk) = "16" Or Trim(LoaiTk) = "50" Or Trim(LoaiTk) = "51" Or Trim(LoaiTk) = "36" Or Trim(LoaiTk) = "70" Or Trim(LoaiTk) = "71" _
-'        Or Trim(LoaiTk) = "72" Then
-         If InStr(1, dsTK_DLT, "~" & Trim(LoaiTk) & "~", vbTextCompare) > 0 Then
+
+        '        If Trim(LoaiTk) = "01" Or Trim(LoaiTk) = "02" Or Trim(LoaiTk) = "04" Or Trim(LoaiTk) = "05" Or Trim(LoaiTk) = "06" Or Trim(LoaiTk) = "11" _
+        '        Or Trim(LoaiTk) = "12" Or Trim(LoaiTk) = "46" Or Trim(LoaiTk) = "47" Or Trim(LoaiTk) = "48" Or Trim(LoaiTk) = "49" Or Trim(LoaiTk) = "15" _
+        '        Or Trim(LoaiTk) = "16" Or Trim(LoaiTk) = "50" Or Trim(LoaiTk) = "51" Or Trim(LoaiTk) = "36" Or Trim(LoaiTk) = "70" Or Trim(LoaiTk) = "71" _
+        '        Or Trim(LoaiTk) = "72" Then
+        If InStr(1, dsTK_DLT, "~" & Trim(LoaiTk) & "~", vbTextCompare) > 0 Then
             If Trim(GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "Class")) <> vbNullString Then
                 If Not (rsTaxDLInfor Is Nothing Or rsTaxDLInfor.Fields.Count = 0) Then
                     If Not objTaxBusiness Is Nothing Then
                         objTaxBusiness.strTenDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(0).Value), "", rsTaxDLInfor.Fields(0).Value), TCVN, UNICODE)
                         objTaxBusiness.strDiaChiDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(1).Value), "", rsTaxDLInfor.Fields(1).Value), TCVN, UNICODE)
-                         objTaxBusiness.strDienThoaiDL = IIf(IsNull(rsTaxDLInfor.Fields(2).Value), "", rsTaxDLInfor.Fields(2).Value)
+                        objTaxBusiness.strDienThoaiDL = IIf(IsNull(rsTaxDLInfor.Fields(2).Value), "", rsTaxDLInfor.Fields(2).Value)
                         objTaxBusiness.strFaxDL = IIf(IsNull(rsTaxDLInfor.Fields(3).Value), "", rsTaxDLInfor.Fields(3).Value)
                         objTaxBusiness.strEmailDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(4).Value), "", rsTaxDLInfor.Fields(4).Value), TCVN, UNICODE)
                         objTaxBusiness.strSoHopDongDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(5).Value), "", rsTaxDLInfor.Fields(5).Value), TCVN, UNICODE)
@@ -3503,12 +3549,12 @@ On Error GoTo ErrHandle
                 End If
             End If
         End If
-
         
         ' set ngay bat dau nam tai chinh cho to khai 01ATNDN va 01BTNDN
         If LoaiTk = "11" Or LoaiTk = "12" Or LoaiTk = "03" Then
             objTaxBusiness.dNgayTC = dNgayDauKy
         End If
+
         ' end
         If Not objTaxBusiness.Prepared1 Then Exit Function
     End If
@@ -3519,6 +3565,31 @@ On Error GoTo ErrHandle
         If Not objTaxBusiness.Prepared2(rsPXL) Then Exit Function
     End If
     
+    'Load co quan thue KHBS
+    With fpSpread1
+        Dim CQT_CAPCUC    As Variant
+        Dim CQT_HOANTHUE  As Variant
+        Dim tCQT_CAPCUC   As String
+        Dim tCQT_HOANTHUE As String
+
+        If TAX_Utilities_Srv_New.NodeValidity.hasChildNodes Then
+            If GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(TAX_Utilities_Srv_New.NodeValidity.childNodes.length - 1), "ID") = "KHBS" Then
+                If GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(TAX_Utilities_Srv_New.NodeValidity.childNodes.length - 1), "Active") = "1" Then
+                    .GetText .ColLetterToNumber("BI"), .MaxRows - 15, CQT_CAPCUC
+                    .GetText .ColLetterToNumber("BI"), .MaxRows - 13, CQT_HOANTHUE
+                    DataDM CQT_CAPCUC, tCQT_CAPCUC
+                    DataDM CQT_HOANTHUE, tCQT_HOANTHUE
+                    .Row = .MaxRows - 15
+                    .Col = .ColLetterToNumber("BE")
+                    .Text = tCQT_CAPCUC
+                    .Row = .MaxRows - 13
+                    .Text = tCQT_HOANTHUE
+                End If
+            End If
+        End If
+    
+    End With
+    
     ' set ma CQT
     If Not objTaxBusiness Is Nothing Then
         If (Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) >= 64 And Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <= 68) Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 91 Then
@@ -3526,9 +3597,11 @@ On Error GoTo ErrHandle
             ' lay ma phong quan ly
             'Get Tax id
             strMST = Trim(Mid$(Left$(strData, 21), 6, 13))
+
             If Len(strMST) = 13 Then
                 strMST = Mid$(strMST, 1, 10) & "-" & Mid$(strMST, 11, 13)
             End If
+
             GetPhongQuanLy (strMST)
             objTaxBusiness.strMaPQL = strMaPhongQuanLy
             objTaxBusiness.strTenPQL = strTenPhongQuanLy
@@ -3537,22 +3610,20 @@ On Error GoTo ErrHandle
     
     ' Set Phong quan ly
     If Not objTaxBusiness Is Nothing Then
-        If Val(LoaiTk) = 70 Or Val(LoaiTk) = 71 Or Val(LoaiTk) = 72 Or Val(LoaiTk) = 73 Or Val(LoaiTk) = 74 Or Val(LoaiTk) = 77 Or Val(LoaiTk) = 3 Or Val(LoaiTk) = 75 _
-        Or Val(LoaiTk) = 80 Or Val(LoaiTk) = 81 Or Val(LoaiTk) = 82 Or Val(LoaiTk) = 86 Or Val(LoaiTk) = 87 Or Val(LoaiTk) = 89 Or Val(LoaiTk) = 17 Or Val(LoaiTk) = 42 Or Val(LoaiTk) = 43 _
-        Or Val(LoaiTk) = 59 Or Val(LoaiTk) = 76 Or Val(LoaiTk) = 41 Then
+        If Val(LoaiTk) = 70 Or Val(LoaiTk) = 71 Or Val(LoaiTk) = 72 Or Val(LoaiTk) = 73 Or Val(LoaiTk) = 74 Or Val(LoaiTk) = 77 Or Val(LoaiTk) = 3 Or Val(LoaiTk) = 75 Or Val(LoaiTk) = 80 Or Val(LoaiTk) = 81 Or Val(LoaiTk) = 82 Or Val(LoaiTk) = 86 Or Val(LoaiTk) = 87 Or Val(LoaiTk) = 89 Or Val(LoaiTk) = 17 Or Val(LoaiTk) = 42 Or Val(LoaiTk) = 43 Or Val(LoaiTk) = 59 Or Val(LoaiTk) = 76 Or Val(LoaiTk) = 41 Then
             ' lay ma phong quan ly
             'Get Tax id
             strMST = Trim(Mid$(Left$(strData, 21), 6, 13))
+
             If Len(strMST) = 13 Then
                 strMST = Mid$(strMST, 1, 10) & "-" & Mid$(strMST, 11, 13)
             End If
+
             GetPhongQuanLy (strMST)
             objTaxBusiness.strMaPQL = strMaPhongQuanLy
             objTaxBusiness.strTenPQL = strTenPhongQuanLy
         End If
     End If
-    
-    
 
     'Setup header data
     'SetupHeaderData rsHeaderData
@@ -3561,6 +3632,7 @@ On Error GoTo ErrHandle
     If Not objTaxBusiness Is Nothing Then
         If Not objTaxBusiness.Prepared3 Then Exit Function
     End If
+
     fpSpread1.EventEnabled(EventAllEvents) = True
     cmdClear.Enabled = True
     cmdSave.Enabled = True
@@ -3577,40 +3649,45 @@ On Error GoTo ErrHandle
         lblLabelVersion.Left = lblLabelVersion.Left + lblWarning.Width
         lblVersion.Left = lblVersion.Left + lblWarning.Width
     End If
+
     lblLabelVersion.Visible = True
     lblVersion.Visible = True
-    
     
     If frmSystem.chkSaveQuestion = True Then
         cmdClear.SetFocus
     Else
         cmdSave.SetFocus
     End If
+
     ' Loai to khai la GTGT khau tru mau 01/GTGT thi cho hien check quet du lieu bang ke
     If (verToKhai = 0 And LoaiTk = "01") Then
-        If (TAX_Utilities_Srv_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue = 1 Or _
-                TAX_Utilities_Srv_New.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue = 1) Then
+        If (TAX_Utilities_Srv_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue = 1 Or TAX_Utilities_Srv_New.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue = 1) Then
             frmSystem.chkQuetBangKe.Visible = True
         Else
             frmSystem.chkQuetBangKe.Value = False
             frmSystem.chkQuetBangKe.Visible = False
         End If
-    ' Loai to khai la GTGT hoa hong dai ly mau 02/GTGT thi cho hien check quet du lieu bang ke
+
+        ' Loai to khai la GTGT hoa hong dai ly mau 02/GTGT thi cho hien check quet du lieu bang ke
     ElseIf (verToKhai = 0 And LoaiTk = "02") Then
+
         If (TAX_Utilities_Srv_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue = 1) Then
             frmSystem.chkQuetBangKe.Visible = True
         Else
             frmSystem.chkQuetBangKe.Value = False
             frmSystem.chkQuetBangKe.Visible = False
         End If
-    ' Loai to khai la Quyet toan thue TNCN mau 04/TNCN thi cho hien check quet du lieu bang ke
+
+        ' Loai to khai la Quyet toan thue TNCN mau 04/TNCN thi cho hien check quet du lieu bang ke
     ElseIf (verToKhai = 0 And LoaiTk = "17") Then
+
         If (TAX_Utilities_Srv_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue = 1) Then
             frmSystem.chkQuetBangKe.Visible = True
         Else
             frmSystem.chkQuetBangKe.Value = False
             frmSystem.chkQuetBangKe.Visible = False
         End If
+
     Else
         frmSystem.chkQuetBangKe.Value = False
         frmSystem.chkQuetBangKe.Visible = False
@@ -4046,7 +4123,7 @@ ErrHandle:
     SaveErrorLog Me.Name, "SetupHeaderData", Err.Number, Err.Description
 End Sub
 
-Function GenerateSQL_Details(xmlDomData As MSXML.DOMDocument, strSQL_DTL As String, vHdrID As Variant, lPos As Long) As String
+Function GenerateSQL_Details(xmlDOMdata As MSXML.DOMDocument, strSQL_DTL As String, vHdrID As Variant, lPos As Long) As String
     Dim xmlListSection As MSXML.IXMLDOMNodeList
     Dim xmlNodeSection As MSXML.IXMLDOMNode
     Dim xmlList As MSXML.IXMLDOMNodeList
@@ -4057,14 +4134,14 @@ Function GenerateSQL_Details(xmlDomData As MSXML.DOMDocument, strSQL_DTL As Stri
     Dim i As Long, j As Long, strLoaiDL As String
     
 On Error GoTo ErrHandle
-    Set xmlListSection = xmlDomData.getElementsByTagName("Section")
+    Set xmlListSection = xmlDOMdata.getElementsByTagName("Section")
     For Each xmlNodeSection In xmlListSection
         If Trim(xmlNodeSection.Attributes.getNamedItem("Dynamic").nodeValue) = "1" Then
             iRowID = 0
             For i = 0 To xmlNodeSection.childNodes.length - 1
                 iRowID = iRowID + 1
                 For j = 0 To xmlNodeSection.childNodes(i).childNodes.length - 1
-                    Set xmlAttribute = xmlDomData.createAttribute("RowID")
+                    Set xmlAttribute = xmlDOMdata.createAttribute("RowID")
                     xmlAttribute.Value = iRowID
                     Set xmlNode = xmlNodeSection.childNodes(i).childNodes(j).Attributes.setNamedItem(xmlAttribute)
                     Set xmlAttribute = Nothing
@@ -4074,7 +4151,7 @@ On Error GoTo ErrHandle
     Next
         
     strLoaiDL = Trim(TAX_Utilities_Srv_New.NodeValidity.childNodes(lPos).Attributes.getNamedItem("DataFile").nodeValue)
-    Set xmlList = xmlDomData.getElementsByTagName("Cell")
+    Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     If xmlList.length > 0 Then GenerateSQL_Details = "begin"
     ' Them tham so nay de tinh cu 50 dong se bat dau ghi thanh mot block du lieu
     Dim rC As Integer
@@ -4112,7 +4189,7 @@ On Error GoTo ErrHandle
         clsDAO.Execute GenerateSQL_Details
         'clsDAO.CommitTrans
     End If
-    Set xmlDomData = Nothing
+    Set xmlDOMdata = Nothing
     Set xmlList = Nothing
     Set xmlListSection = Nothing
     Exit Function
