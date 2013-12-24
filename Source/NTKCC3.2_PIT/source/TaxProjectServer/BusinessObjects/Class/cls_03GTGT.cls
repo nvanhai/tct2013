@@ -145,7 +145,7 @@ Public Function Prepared1() As Boolean
         
         'Ghi chu
         .Col = .ColLetterToNumber("M")
-        .Row = 34
+        .Row = 36
         .CellType = CellTypeEdit
         .TypeEditCharSet = TypeEditCharSetASCII
         .TypeMaxEditLen = 100
@@ -228,7 +228,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         lSoPhongXL = i
         
         'set to khai thang/quy
-        .GetText .ColLetterToNumber("J"), 61, LoaiKyKK
+        .GetText .ColLetterToNumber("L"), 61, LoaiKyKK
 
         If LoaiKyKK = "0" Then
             LOAI_TO_KHAI = "03/GTGT"
@@ -419,7 +419,7 @@ Public Function Prepared3() As Boolean
         'set check loi dinh danh
         If checkDLTTonTai = False Then
             .Col = .ColLetterToNumber("E")
-            .Row = 34
+            .Row = 36
             .Value = 1
         End If
         
@@ -434,6 +434,12 @@ Public Function Prepared3() As Boolean
 '        .Row = TEN_BPQL_Y
 '        .Text = Trim(TAX_Utilities_Svr_New.Convert(strTenBpql, TCVN, UNICODE))
         '.EventEnabled(EventAllEvents) = True
+        
+                'so thu tu to khai
+        .Col = .ColLetterToNumber("M")
+        .Row = 30
+        strSoTTTKhai = Trim(TinhSoLanQuet)
+        .Text = Trim(TAX_Utilities_Svr_New.Convert(strSoTTTKhai, TCVN, UNICODE))
     End With
     
     Prepared3 = True
@@ -535,8 +541,8 @@ Public Function CheckValidData() As Boolean
     CheckValidData = True
     With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("E"), 34, varCheckValue
-        .GetText .ColLetterToNumber("M"), 34, varNoteValue
+        .GetText .ColLetterToNumber("E"), 36, varCheckValue
+        .GetText .ColLetterToNumber("M"), 36, varNoteValue
         If CStr(varCheckValue) = "1" And Trim(CStr(varNoteValue)) = "" Then
             .Sheet = .SheetCount
             .SetText 2, 14, "0"
@@ -589,7 +595,7 @@ Public Function InsertDTL() As String
    Dim CTIEUTNDN As Variant
    Dim SOTIEN As Variant
    Dim SOTIEN2 As Variant
-   Dim TT As Variant
+   Dim tt As Variant
 
    Dim matkhai As Variant
    Dim kykkhai As Variant
@@ -658,7 +664,7 @@ Public Function InsertDTL() As String
         CTIEUTNDN = "'050'"
         SOTIEN = "0"
         SOTIEN2 = SOTIEN
-        TT = "''"
+        tt = "''"
         ' sua MAMUC & MATM tu nam 2009
         If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
             maTM = "'01'"
@@ -679,7 +685,7 @@ Public Function InsertDTL() As String
    End With
    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & ","
    sSQLVal = sSQLVal & kylbo & "," & ngnop & "," & LoaiTien & ","
-   sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & TT & "," & SOTIEN2 & ","
+   sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
    sSQLVal = sSQLVal & MaMuc & "," & tthtk & "," & matkhai & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
    sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
@@ -735,7 +741,7 @@ Public Function InsertDTL() As String
          End If
         
         SOTIEN2 = SOTIEN
-        TT = IIf(Trim(sSaiCT11) = vbNullString, "''", sSaiCT11)
+        tt = IIf(Trim(sSaiCT11) = vbNullString, "''", sSaiCT11)
         ' sua MAMUC & MATM tu nam 2009
         If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
             maTM = "'01'"
@@ -757,7 +763,7 @@ Public Function InsertDTL() As String
    End With
    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & ","
    sSQLVal = sSQLVal & kylbo & "," & ngnop & "," & LoaiTien & ","
-   sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & TT & "," & SOTIEN2 & ","
+   sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
    sSQLVal = sSQLVal & MaMuc & "," & tthtk & "," & matkhai & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
    sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
@@ -814,7 +820,7 @@ Public Function InsertDTL() As String
          End If
         
         SOTIEN2 = SOTIEN
-        TT = IIf(Trim(sSaiCT11) = vbNullString, "''", sSaiCT11)
+        tt = IIf(Trim(sSaiCT11) = vbNullString, "''", sSaiCT11)
         
         ' sua MAMUC & MATM tu nam 2009
         If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
@@ -836,7 +842,7 @@ Public Function InsertDTL() As String
     
    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & ","
    sSQLVal = sSQLVal & kylbo & "," & ngnop & "," & LoaiTien & ","
-   sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & TT & "," & SOTIEN2 & ","
+   sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
    sSQLVal = sSQLVal & MaMuc & "," & tthtk & "," & matkhai & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
    sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
@@ -891,7 +897,7 @@ Public Function InsertDTL() As String
          End If
         
         SOTIEN2 = SOTIEN
-        TT = IIf(Trim(sSaiCT11) = vbNullString, "''", sSaiCT11)
+        tt = IIf(Trim(sSaiCT11) = vbNullString, "''", sSaiCT11)
         ' sua MAMUC & MATM tu nam 2009
         If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
             maTM = "'01'"
@@ -911,7 +917,7 @@ Public Function InsertDTL() As String
     
    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & ","
    sSQLVal = sSQLVal & kylbo & "," & ngnop & "," & LoaiTien & ","
-   sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & TT & "," & SOTIEN2 & ","
+   sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
    sSQLVal = sSQLVal & MaMuc & "," & tthtk & "," & matkhai & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
    sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
@@ -966,7 +972,7 @@ Public Function InsertDTL() As String
          End If
         
         SOTIEN2 = SOTIEN
-        TT = IIf(Trim(sSaiCT11) = vbNullString, "''", sSaiCT11)
+        tt = IIf(Trim(sSaiCT11) = vbNullString, "''", sSaiCT11)
         ' sua MAMUC & MATM tu nam 2009
         If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
             maTM = "'01'"
@@ -987,7 +993,7 @@ Public Function InsertDTL() As String
     
    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & ","
    sSQLVal = sSQLVal & kylbo & "," & ngnop & "," & LoaiTien & ","
-   sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & TT & "," & SOTIEN2 & ","
+   sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
    sSQLVal = sSQLVal & MaMuc & "," & tthtk & "," & matkhai & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
    sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
@@ -1035,7 +1041,7 @@ Public Function InsertDTL() As String
             SOTIEN = "0"
          End If
         SOTIEN2 = SOTIEN
-        TT = "''"
+        tt = "''"
         ' sua MAMUC & MATM tu nam 2009
         If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
             maTM = "'01'"
@@ -1055,7 +1061,7 @@ Public Function InsertDTL() As String
    End With
    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & ","
    sSQLVal = sSQLVal & kylbo & "," & ngnop & "," & LoaiTien & ","
-   sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & TT & "," & SOTIEN2 & ","
+   sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
    sSQLVal = sSQLVal & MaMuc & "," & tthtk & "," & matkhai & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
    sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
@@ -1110,7 +1116,7 @@ Public Function InsertDTL() As String
          End If
         
         SOTIEN2 = SOTIEN
-        TT = IIf(Trim(sSaiCT11) = vbNullString, "''", sSaiCT11)
+        tt = IIf(Trim(sSaiCT11) = vbNullString, "''", sSaiCT11)
         ' sua MAMUC & MATM tu nam 2009
         If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
             maTM = "'01'"
@@ -1130,7 +1136,7 @@ Public Function InsertDTL() As String
     
    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & ","
    sSQLVal = sSQLVal & kylbo & "," & ngnop & "," & LoaiTien & ","
-   sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & TT & "," & SOTIEN2 & ","
+   sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
    sSQLVal = sSQLVal & MaMuc & "," & tthtk & "," & matkhai & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
    sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
@@ -1186,7 +1192,7 @@ Public Function InsertDTL() As String
          End If
         
         SOTIEN2 = SOTIEN
-        TT = IIf(Trim(sSaiCT11) = vbNullString, "''", sSaiCT11)
+        tt = IIf(Trim(sSaiCT11) = vbNullString, "''", sSaiCT11)
         ' sua MAMUC & MATM tu nam 2009
         If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
             maTM = "'01'"
@@ -1207,7 +1213,7 @@ Public Function InsertDTL() As String
     
    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & ","
    sSQLVal = sSQLVal & kylbo & "," & ngnop & "," & LoaiTien & ","
-   sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & TT & "," & SOTIEN2 & ","
+   sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
    sSQLVal = sSQLVal & MaMuc & "," & tthtk & "," & matkhai & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
    sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
@@ -2395,7 +2401,7 @@ Public Function InsertHDR() As String
         .GetText .ColLetterToNumber("H"), 58, CHUNGCHI
         'set DAGHI2 theo chk loi dinh danh
         .Col = .ColLetterToNumber("E")
-        .Row = 34
+        .Row = 36
 
         If .Value = 1 Then
             DAGHI2 = ".T."

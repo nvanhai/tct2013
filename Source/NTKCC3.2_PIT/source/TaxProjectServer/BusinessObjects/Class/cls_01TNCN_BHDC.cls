@@ -713,7 +713,6 @@ Public Function InsertHDR() As String
         Else
             madtnt = "'" & madtnt & "'"
         End If
-
        
         .GetText .ColLetterToNumber("E"), 30, kylbo
         'Luu thong tin cua ky lap bo cua to khai quet hien tai, de hien thi cho viec quet to khai lan sau
@@ -819,11 +818,11 @@ Public Function InsertHDR() As String
         hdr.khoa_so = "''"
         hdr.loai_tkhai = "'01_TNCN_BHDC'"
 
-        If tthtk = "'1'" Then
+        If tthtk = "1" Then
             hdr.kkbs = 0    ' To khai chinh thuc
-        ElseIf tthtk = "'2'" Then
+        ElseIf tthtk = "2" Then
             hdr.kkbs = 1    ' To khai thay the
-        ElseIf tthtk = "'3'" Then
+        ElseIf tthtk = "3" Then
             hdr.kkbs = 2    ' To khai bo sung
         Else
             hdr.kkbs = 1    ' To khai nop cham
