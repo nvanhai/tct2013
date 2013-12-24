@@ -771,7 +771,7 @@ Public Function InsertHDR() As String
         HANNOP2 = HANNOP
                 
         'trang thai to khai
-        .GetText .ColLetterToNumber("L"), 5, TTHTK1
+        .GetText .ColLetterToNumber("L"), 4, TTHTK1
 
         If Trim(TTHTK1) = vbNullString Then
             tthtk = "'" & 2 & "'"
@@ -818,14 +818,14 @@ Public Function InsertHDR() As String
         hdr.khoa_so = "''"
         hdr.loai_tkhai = "'01_TNCN_BHDC'"
 
-        If tthtk = "1" Then
-            hdr.kkbs = 0    ' To khai chinh thuc
-        ElseIf tthtk = "2" Then
-            hdr.kkbs = 1    ' To khai thay the
-        ElseIf tthtk = "3" Then
-            hdr.kkbs = 2    ' To khai bo sung
+        If LANDAU = 1 Then
+            If Val(LAN_QUET) > 0 Then
+                hdr.kkbs = 1
+            Else
+                hdr.kkbs = 0
+            End If
         Else
-            hdr.kkbs = 1    ' To khai nop cham
+            hdr.kkbs = 2
         End If
 
         hdr.kykkhai = kykkhai
