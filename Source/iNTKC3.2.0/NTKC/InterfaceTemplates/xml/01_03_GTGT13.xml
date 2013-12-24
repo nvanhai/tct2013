@@ -3,15 +3,13 @@
 <Sections>
 	<Section Dynamic="0" MaxRows="0">
 		<Cells>
-			<Cell CellID="H_8" Value=""/>
-			<Cell CellID="F_10" Value=""/>
+			<Cell CellID="H_8" Value=""/>			
 			<Cell CellID="F_12" Value=""/>
 			<Cell CellID="F_16" Value=""/>
 			<Cell CellID="N_16" Value=""/>
 			<Cell CellID="V_16" Value=""/>
 			<Cell CellID="E_32" Value=""/>
 			<Cell CellID="M_32" Value=""/>
-			<Cell CellID="V_32" Value=""/>
 			<Cell CellID="V_39" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
 			<Cell CellID="E_36" Value=""/>
 			<Cell CellID="M_36" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
@@ -19,53 +17,43 @@
 	</Section>
 	<Section Dynamic="1" MaxRows="0">
 		<Cells>
-			<Cell CellID="C_9" FirstCell="0" Value="" MCT="2"/>
-			<Cell CellID="D_9" Value="" MCT="3"/>
-			<Cell CellID="E_9" Value="" MCT="4"/>
-			<Cell CellID="F_9" Value="" MCT="5"/>
-			<Cell CellID="G_9" Value="" MCT="6"/>
-			<Cell CellID="H_9" Value="" MCT="7"/>
-			<Cell CellID="I_9" Value="0" MCT="8"/>
-			<Cell CellID="J_9" Value="0" MCT="9"/>
-			<Cell CellID="K_9" Value="0" MCT="10"/>
-			<Cell CellID="L_9" Value="" MCT="11"/>
-			<Cell CellID="M_9" Value="" MCT="12"/>
-			<Cell CellID="N_9" Value="" MCT="13"/>
-			<Cell CellID="O_9" Value="" MCT="14"/>
-			<Cell CellID="P_9" Value="" MCT="15"/>
-			<Cell CellID="Q_9" Value="" MCT="16"/>
-			<Cell CellID="R_9" Value="" MCT="17"/>
-			<Cell CellID="S_9" Value="" MCT="18"/>
-			<Cell CellID="T_9" Value="" MCT="19"/>
-			<Cell CellID="U_9" Value="" MCT="20"/>
-		</Cells>
-	</Section>
-	<Section Dynamic="1" MaxRows="0">
-		<Cells>
-			<Cell CellID="C_29" FirstCell="0" Value="" MCT="25"/>
-			<Cell CellID="D_29" Value="" MCT="26"/>
-			<Cell CellID="E_29" Value="" MCT="27"/>
-			<Cell CellID="F_29" Value="" MCT="28"/>
-			<Cell CellID="G_29" Value="" MCT="29"/>
-			<Cell CellID="H_29" Value="" MCT="30"/>
-			<Cell CellID="I_29" Value="0" MCT="31"/>
-			<Cell CellID="J_29" Value="0" MCT="32"/>
-			<Cell CellID="K_29" Value="0" MCT="33"/>
-			<Cell CellID="L_29" Value="" MCT="34"/>
-			<Cell CellID="M_29" Value="" MCT="35"/>
-			<Cell CellID="N_29" Value="" MCT="36"/>
-			<Cell CellID="O_29" Value="" MCT="37"/>
-			<Cell CellID="P_29" Value="" MCT="38"/>
-			<Cell CellID="Q_29" Value="" MCT="39"/>
-			<Cell CellID="R_29" Value="" MCT="40"/>
-			<Cell CellID="S_29" Value="" MCT="41"/>
-			<Cell CellID="T_29" Value="" MCT="42"/>
-			<Cell CellID="U_29" Value="" MCT="43"/>
+			<Cell CellID="C_10"  MCT="2" Value=""/>
+			<Cell CellID="D_10"  MCT="3" Value=""/>
+			<Cell CellID="E_10"  MCT="4" Value=""/>
+			<Cell CellID="F_10"  MCT="5" Value=""/>
+			<Cell CellID="G_10"  MCT="6" Value=""/>
+			<Cell CellID="H_10"  MCT="7" Value=""/>
+			<Cell CellID="I_10"  MCT="8" Value=""/>
+			<Cell CellID="J_10"  MCT="9" Value=""/>
+			<Cell CellID="K_10"  MCT="10" Value=""/>
+			<Cell CellID="L_10"  MCT="11" Value=""/>
+			<Cell CellID="M_10"  MCT="12" Value=""/>
+			<Cell CellID="N_10"  MCT="13" Value=""/>
+			<Cell CellID="O_10"  MCT="14" Value=""/>
+			<Cell CellID="P_10"  MCT="15" Value=""/>
+			<Cell CellID="Q_10"  MCT="16" Value=""/>
+			<Cell CellID="R_10"  MCT="17" Value=""/>
+			<Cell CellID="S_10"  MCT="18" Value=""/>
+			<Cell CellID="T_10"  MCT="19" Value=""/>
+			<Cell CellID="U_10"  MCT="20" Value=""/>
+			<Cell CellID="V_10"  MCT="21" Value=""/>
+			<Cell CellID="W_10"  MCT="22" Value=""/>
+			<Cell CellID="X_10"  MCT="23" Value=""/>
+			<Cell CellID="Y_10"  MCT="24" Value=""/>
+			<Cell CellID="Z_10"  MCT="25" Value=""/>
+			<Cell CellID="AA_10" MCT="26" Value=""/>
+			<Cell CellID="AB_10" MCT="27" Value=""/>
+			<Cell CellID="AC_10" MCT="28" Value=""/>
+			<Cell CellID="AD_10" MCT="29" Value=""/>
+			<Cell CellID="AE_10" MCT="30" Value=""/>
+			<Cell CellID="AF_10" MCT="31" Value=""/>
+			<Cell CellID="AG_10" MCT="32" Value=""/>
+			<Cell CellID="AH_10" MCT="33" Value=""/>
 		</Cells>
 	</Section>
 	<Section Dynamic="0" MaxRows="0">
 		<Cells>
-			<Cell CellID="F_33" Value="0" MCT="47"/>
+			<Cell CellID="F_34" MCT="34"  Value=""/>
 		</Cells>
 	</Section>
 </Sections>
