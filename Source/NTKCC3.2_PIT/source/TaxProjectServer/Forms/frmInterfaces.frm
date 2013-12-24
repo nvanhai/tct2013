@@ -1835,9 +1835,16 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 'str2 = "bs999022100343639   112013006009003003013~3~12321321~432423432~sdfdsfdsf~01/01/2013~10700~10705~34324234~1234123213~sdfsdfd~0~0~8567767</S></SKHBS>"
 'Barcode_Scaned str2
-str2 = "aa999042100343639   11201300000100100101/0114/06/2006<S01><S>6868686868</S><S>423325~43543534~5435435~435435~435435435~472684774~47268477</S><S>sdfsdf~~sdfsdfds~16/12/2013~1~~~0</S></S01>"
-Barcode_Scaned str2
 
+'str2 = "aa999722100343639   11201300000100100101/0114/06/2006<S01><S>6868686868</S><S>34324234~234234234~343242~4684685~5027927</S><S>sdfsdf~dfsdf~sdfsdfds~18/12/2013~1~~~~</S></S01>"
+'Barcode_Scaned str2
+
+str2 = "aa999112100343639   03201300100400100301/0114/06/2006<S01><S>6868686868</S><S>32423432~4324324~28099108~432423423~423432~460099099~432432432~4324423~23342244~0~0~233422"
+Barcode_Scaned str2
+str2 = "aa999112100343639   03201300100400200344~43~43243232432~43~18604627111~0~0~0~18604627111~~~~0~18604627111</S><S>~</S><S>sdfsdf~sdfsdfds~~18/12/2013~1~0~~1052</S></S01>"
+Barcode_Scaned str2
+str2 = "aa999112100343639   032013001004003003<S01-1><S>18604627111</S><S>?wrwewe~2222222222~100~18604627111~10705</S></S01-1>"
+Barcode_Scaned str2
 End Sub
 
 Private Sub Form_Activate()
@@ -2462,19 +2469,19 @@ On Error GoTo ErrHandler
                 checkSoCT = 2
                 Exit Sub
             End If
-        ElseIf idToKhaiCheck = 11 Then
-             If ((lDataNo + 1 > lElementsNo And lDataNo <> 7) Or ((lDataNo + 2 > lElementsNo) And lDataNo = 7)) And isSheetTk Then
-                blnValidData = False
-                checkSoCT = 1
-                Exit Sub
-            End If
-            ' Truong hop chuoi ma vach it chi tieu hon so chi tieu trong template
-            'If (UBound(arrStrValue) + 1 < lElementsNo) And isSheetTk Then
-            If ((lDataNo + 1 < lElementsNo And lDataNo <> 7) Or ((lDataNo + 2 < lElementsNo) And lDataNo = 7)) And isSheetTk Then
-                blnValidData = False
-                checkSoCT = 2
-                Exit Sub
-            End If
+'        ElseIf idToKhaiCheck = 11 Then
+'             If ((lDataNo + 1 > lElementsNo And lDataNo <> 7) Or ((lDataNo + 2 > lElementsNo) And lDataNo = 7)) And isSheetTk Then
+'                blnValidData = False
+'                checkSoCT = 1
+'                Exit Sub
+'            End If
+'            ' Truong hop chuoi ma vach it chi tieu hon so chi tieu trong template
+'            'If (UBound(arrStrValue) + 1 < lElementsNo) And isSheetTk Then
+'            If ((lDataNo + 1 < lElementsNo And lDataNo <> 7) Or ((lDataNo + 2 < lElementsNo) And lDataNo = 7)) And isSheetTk Then
+'                blnValidData = False
+'                checkSoCT = 2
+'                Exit Sub
+'            End If
         ElseIf idToKhaiCheck = 12 Then
              If ((lDataNo + 1 > lElementsNo And lDataNo <> 6) Or ((lDataNo + 2 > lElementsNo) And lDataNo = 6)) And isSheetTk Then
                 blnValidData = False
@@ -3596,11 +3603,19 @@ On Error GoTo ErrHandle
                     .GetText .ColLetterToNumber("BI"), .MaxRows - 13, CQT_HOANTHUE
                     GetTenCQT CQT_CAPCUC, tCQT_CAPCUC
                     GetTenCQT CQT_HOANTHUE, tCQT_HOANTHUE
-                    .Row = .MaxRows - 15
                     .Col = .ColLetterToNumber("BE")
-                    .Text = tCQT_CAPCUC
-                    .Row = .MaxRows - 13
-                    .Text = tCQT_HOANTHUE
+
+                    If tCQT_CAPCUC <> vbNullString Then
+                        .Row = .MaxRows - 15
+                        .Text = tCQT_CAPCUC
+
+                    End If
+
+                    If tCQT_HOANTHUE <> vbNullString Then
+                        .Row = .MaxRows - 13
+                        .Text = tCQT_HOANTHUE
+ 
+                    End If
                 End If
             End If
         End If
