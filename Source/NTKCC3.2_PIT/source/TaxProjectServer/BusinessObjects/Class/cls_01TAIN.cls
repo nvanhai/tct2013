@@ -180,7 +180,7 @@ Dim ROWNUM As Variant
     With fps
         .Sheet = .ActiveSheet
         i = 0
-        .Row = 50
+        .Row = 51
         Do
             strIdQLT = ""
             varID = Empty
@@ -190,7 +190,7 @@ Dim ROWNUM As Variant
             strThueSuat = vbNullString
             
             'Lay gia tri Ma
-            .GetText .ColLetterToNumber("AN"), i + 50, varID
+            .GetText .ColLetterToNumber("AN"), i + 51, varID
                 DataDM varID, strIdQLT, iTenTN, strDVT, strThueSuat, blnSuaThueSuat, maTM
                 If strIdQLT <> vbNullString Then
                     'Kiem tra hieu luc danh muc tai nguyen
@@ -215,11 +215,11 @@ Dim ROWNUM As Variant
           
              i = i + 1
             .Col = .ColLetterToNumber("B")
-            .Row = i + 50
+            .Row = i + 51
          Loop Until .Text = "aa"
          ROWNUM = .Row
          i = 0
-         .Row = ROWNUM + 2
+         .Row = ROWNUM + 3
          Do
             strIdQLT = ""
             varID = Empty
@@ -229,7 +229,7 @@ Dim ROWNUM As Variant
             strThueSuat = vbNullString
 
             'Lay gia tri Ma
-            .GetText .ColLetterToNumber("AN"), i + ROWNUM + 2, varID
+            .GetText .ColLetterToNumber("AN"), i + ROWNUM + 3, varID
                 DataDM varID, strIdQLT, iTenTN, strDVT, strThueSuat, blnSuaThueSuat, maTM
                 If strIdQLT <> vbNullString Then
                     'Kiem tra hieu luc danh muc tai nguyen
@@ -254,8 +254,8 @@ Dim ROWNUM As Variant
 
              i = i + 1
             .Col = .ColLetterToNumber("B")
-            .Row = i + ROWNUM + 2
-         Loop Until .Text = "bb"
+            .Row = i + ROWNUM + 3
+         Loop Until .Text = "aa"
      End With
       
     i = 0
@@ -648,7 +648,7 @@ Public Function InsertDTL() As String
         DANHAN = "''"
         kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         .Col = .ColLetterToNumber("B")
-        .Row = 50
+        .Row = 51
         
             Do
                 STT = "1"
@@ -933,7 +933,7 @@ Public Function InsertDTL() As String
          End If
         .Col = .ColLetterToNumber("B")
         .Row = .Row + 1
-        Loop Until .Text = "bb"
+        Loop Until .Text = "aa"
       End With
    clsDAO.Disconnect
    
@@ -1439,7 +1439,7 @@ Public Function InsertHDR() As String
         'dhdang phan lay vao mang
         'ngay 14/09/2010
         .Col = .ColLetterToNumber("B")
-        .Row = 50
+        .Row = 51
 
         Do
             ' Lay ma tieu muc tren cel
@@ -1448,7 +1448,7 @@ Public Function InsertHDR() As String
                      
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
-        Loop Until .Text = "bb"
+        Loop Until .Text = "aa"
 
         If vTemp <> "" Then
             arrMTM = Split(vTemp, "~")
@@ -1488,15 +1488,15 @@ Public Function InsertHDR() As String
         End If
 
         'trang thai to khai
-        .GetText .ColLetterToNumber("U"), 3, TTHTK1
+        .GetText .ColLetterToNumber("V"), 4, TTHTK1
 
         If Trim(TTHTK1) = vbNullString Then
             tthtk = "'" & 2 & "'"
         End If
 
         ' so lan bo sung
-        If tthtk = "'" & 2 & "'" Then
-            .GetText .ColLetterToNumber("AC"), 3, solanBS
+        If Trim(TTHTK1) = vbNullString Then
+            .GetText .ColLetterToNumber("AD"), 4, solanBS
             LanBS = solanBS
         Else
             LanBS = "0"
@@ -1618,7 +1618,7 @@ Public Function InsertHDR() As String
             vTemp = arrMTMSave(i)
             maTM = "'" & vTemp & "'"
             .Col = .ColLetterToNumber("B")
-            .Row = 50
+            .Row = 51
 
             Do
                 .Col = .ColLetterToNumber("AO")
@@ -1652,7 +1652,7 @@ Public Function InsertHDR() As String
 
                 .Col = .ColLetterToNumber("B")
                 .Row = .Row + 1
-            Loop Until .Text = "bb"
+            Loop Until .Text = "aa"
 
             ROWNUM = .Row
             

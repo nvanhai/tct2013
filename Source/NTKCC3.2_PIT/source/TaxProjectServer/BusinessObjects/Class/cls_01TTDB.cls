@@ -898,7 +898,7 @@ Public Function InsertHDR() As String
                     sSQLVal = sSQLVal & LoaiTien & "," & MABPQL & "," & SHTEP & "," & tthtk & "," & kykkhai & ", "
                     sSQLVal = sSQLVal & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & ", "
                     sSQLVal = sSQLVal & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ", "
-                    sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & MADLT & "," & LanBS & "," & NGAYPS & "," & THUECL & "," & MANNKD & "," & DSoCL & "," & GTTTCL & "," & DANHAN
+                    sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & MADLT & "," & LanBS & "," & NGAYPS & "," & THUECL & "," & MANNKD & "," & DSoCL & "," & GTTTCL & "," & DANHAN & ",'" & TENNV & "','" & CHUNGCHI & "'"
                 
                     sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & _
                      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
