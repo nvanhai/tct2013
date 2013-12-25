@@ -40,7 +40,7 @@ Const mTuNgay = "T_5"
 Const mDenNgay = "T_6"
 
 Public Type activeForm
-    Id As String
+    ID As String
     showed As Boolean
 End Type
 
@@ -893,7 +893,7 @@ Public Function getFormIndex(pID As String) As Integer
     Dim i As Long
     
     For i = 1 To UBound(arrActiveForm)
-        If arrActiveForm(i).Id = pID Then
+        If arrActiveForm(i).ID = pID Then
             getFormIndex = i
             Exit For
         End If
@@ -1159,8 +1159,8 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "53" Then changeMaToKhai = "02A_TNCN"
     If strID = "37" Then changeMaToKhai = "02B_TNCN"
     
-    If strID = "50" Then changeMaToKhai = "03A_TNCN11"
-    If strID = "51" Then changeMaToKhai = "03B_TNCN11"
+    If strID = "50" Then changeMaToKhai = "03A_TNCN13"
+    If strID = "51" Then changeMaToKhai = "03B_TNCN13"
     If strID = "54" Then changeMaToKhai = "03A_TNCN"
     If strID = "38" Then changeMaToKhai = "03B_TNCN"
     
@@ -1307,7 +1307,7 @@ Public Function GetDataPkgId() As String
     Dim fso As New FileSystemObject
     Dim strFileName As String
     Dim pkgId As Variant
-    Dim Id As Variant
+    Dim ID As Variant
     Dim noiLamViec As Variant
     Dim clsConn As New TAX_Utilities_Srv_New.clsADO
     If clsConn.Connected = False Then
@@ -1329,11 +1329,11 @@ Public Function GetDataPkgId() As String
         sSQL = "select exc_data_pkg_seq.nextval prm_value from dual"
         Set rs = clsConn.Execute(sSQL)
         If Not rs Is Nothing Then
-             Id = rs.Fields("prm_value")
+             ID = rs.Fields("prm_value")
         Else
-             Id = 0
+             ID = 0
         End If
-        pkgId = Trim(CStr(pkgId)) & Trim(CStr(Id))
+        pkgId = Trim(CStr(pkgId)) & Trim(CStr(ID))
         clsConn.Disconnect
     GetDataPkgId = pkgId
 End Function
@@ -1541,7 +1541,7 @@ Public Function GetPkgIDErr() As String
     GetPkgIDErr = Trim(pkgIDErr)
 End Function
 
-Public Sub DataDM(ByVal Id As String, Optional ByRef TenTN As String)
+Public Sub DataDM(ByVal ID As String, Optional ByRef TenTN As String)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
 Dim xmlDOMdata As New MSXML.DOMDocument
@@ -1555,7 +1555,7 @@ Dim xmlNode As MSXML.IXMLDOMNode
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
-                        If Id = arrDanhsach(1) Then
+                        If ID = arrDanhsach(1) Then
                             TenTN = arrDanhsach(3)
                             Exit Sub
                         End If
