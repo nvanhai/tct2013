@@ -232,7 +232,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         lSoPhongXL = i
         
         'set to khai thang/quy
-        .GetText .ColLetterToNumber("J"), 61, LoaiKyKK
+        .GetText .ColLetterToNumber("J"), 64, LoaiKyKK
 
         If LoaiKyKK = "0" Then
             LOAI_TO_KHAI = "02/GTGT"

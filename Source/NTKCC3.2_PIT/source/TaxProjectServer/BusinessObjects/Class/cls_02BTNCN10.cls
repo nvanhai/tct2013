@@ -545,7 +545,7 @@ Public Function InsertDTL() As String
     Dim CTTN    As Variant
     Dim giatri  As Variant
     Dim giatri2 As Variant
-    Dim TT      As Variant
+    Dim tt      As Variant
     Dim sSQL1   As String
     Dim hdr     As TNCN_DTL
     Dim DANHAN  As Variant
@@ -606,7 +606,7 @@ Public Function InsertDTL() As String
 
         kykkhai = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
         giatri2 = "0"
-        TT = "''"
+        tt = "''"
         'trang thai to khai
         .GetText .ColLetterToNumber("L"), 5, TTHTK1
 
@@ -638,7 +638,7 @@ Public Function InsertDTL() As String
             giatri2 = giatri
                 
             sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & ","
-            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & TT & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DANHAN
             
             arr = Split(GetMaCqt, "~")
             hdr.matkhai = "'02B_TNCN11'"
@@ -707,7 +707,7 @@ Public Function InsertDTL() As String
             End If
 
             giatri2 = "0"
-            TT = "''"
+            tt = "''"
             DANHAN = "''"
             'trang thai to khai
             .GetText .ColLetterToNumber("L"), 5, TTHTK1
@@ -726,7 +726,7 @@ Public Function InsertDTL() As String
 
             giatri2 = giatri
             sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & ","
-            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & TT & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DANHAN
              
             sSQL = "INSERT INTO TMP_TQ2" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -741,7 +741,7 @@ Public Function InsertDTL() As String
 
             giatri2 = giatri
             sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & ","
-            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & TT & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DANHAN
              
             sSQL = "INSERT INTO TMP_TQ2" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -756,7 +756,7 @@ Public Function InsertDTL() As String
 
             giatri2 = giatri
             sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & ","
-            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & TT & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DANHAN
              
             sSQL = "INSERT INTO TMP_TQ2" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -771,7 +771,7 @@ Public Function InsertDTL() As String
 
             giatri2 = giatri
             sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & ","
-            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & TT & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DANHAN
              
             sSQL = "INSERT INTO TMP_TQ2" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -786,7 +786,7 @@ Public Function InsertDTL() As String
 
             giatri2 = giatri
             sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & ","
-            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & TT & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DANHAN
              
             sSQL = "INSERT INTO TMP_TQ2" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -801,7 +801,7 @@ Public Function InsertDTL() As String
 
             giatri2 = giatri
             sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & ","
-            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & TT & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DANHAN
              
             sSQL = "INSERT INTO TMP_TQ2" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -816,7 +816,7 @@ Public Function InsertDTL() As String
 
             giatri2 = giatri
             sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & ","
-            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & TT & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DANHAN
              
             sSQL = "INSERT INTO TMP_TQ2" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -831,7 +831,7 @@ Public Function InsertDTL() As String
 
             giatri2 = giatri
             sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & ","
-            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & TT & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DANHAN
              
             sSQL = "INSERT INTO TMP_TQ2" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -846,7 +846,7 @@ Public Function InsertDTL() As String
 
             giatri2 = giatri
             sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & ","
-            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & TT & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DANHAN
              
             sSQL = "INSERT INTO TMP_TQ2" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -861,7 +861,7 @@ Public Function InsertDTL() As String
 
             giatri2 = giatri
             sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & ","
-            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & TT & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DANHAN
              
             sSQL = "INSERT INTO TMP_TQ2" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -876,7 +876,7 @@ Public Function InsertDTL() As String
 
             giatri2 = giatri
             sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & ","
-            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & TT & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DANHAN
              
             sSQL = "INSERT INTO TMP_TQ2" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -891,7 +891,7 @@ Public Function InsertDTL() As String
 
             giatri2 = giatri
             sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & ","
-            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & TT & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DANHAN
              
             sSQL = "INSERT INTO TMP_TQ2" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -906,7 +906,7 @@ Public Function InsertDTL() As String
 
             giatri2 = giatri
             sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & ","
-            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & TT & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DANHAN
              
             sSQL = "INSERT INTO TMP_TQ2" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -921,7 +921,7 @@ Public Function InsertDTL() As String
 
             giatri2 = giatri
             sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & ","
-            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & TT & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DANHAN
              
             sSQL = "INSERT INTO TMP_TQ2" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -936,7 +936,7 @@ Public Function InsertDTL() As String
 
             giatri2 = giatri
             sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & ","
-            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & TT & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DANHAN
              
             sSQL = "INSERT INTO TMP_TQ2" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -1412,12 +1412,12 @@ Public Function InsertHDR() As String
         .GetText .ColLetterToNumber("G"), 15, MADLT
         .GetText .ColLetterToNumber("I"), 19, SOHDDL
         .GetText .ColLetterToNumber("S"), 19, NGAYHDDL
-        .GetText .ColLetterToNumber("C"), 64, LANDAU
+        .GetText .ColLetterToNumber("C"), 61, LANDAU
 
         If LANDAU = 1 Then
             LanBS = "0"
         Else
-            .GetText .ColLetterToNumber("I"), 64, LanBS
+            .GetText .ColLetterToNumber("I"), 61, LanBS
         End If
         
     End With

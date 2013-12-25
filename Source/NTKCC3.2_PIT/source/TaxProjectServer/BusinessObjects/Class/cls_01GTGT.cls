@@ -2329,59 +2329,54 @@ Public Function InsertDTL_PL2() As String
    
 End Function
 
-
-
 Public Function InsertDTL_PL017() As String
-   Dim sSQL As String
-   Dim sSQLCol As String
-   Dim sSQLVal As String
-   Dim bln  As Boolean
+    Dim sSQL        As String
+    Dim sSQLCol     As String
+    Dim sSQLVal     As String
+    Dim bln         As Boolean
    
-  Dim madtnt As Variant
-  Dim ngnop As Variant
-  Dim kylbo As Variant
-  Dim kykkhai As Variant
-  Dim matkhai As Variant
-  Dim TTHKT As Variant
-  Dim LOAIXE As Variant
-  Dim DVTinh As Variant
-  Dim TONGBANRA As Variant
-  Dim BANNTDDL As Variant
-  Dim GIAHD As Variant
-  Dim GHICHU As Variant
-  Dim mact As Variant
-  Dim STT As Variant
-  Dim STT2 As Variant
-  Dim STTIN As Variant
-  Dim MAPL As Variant
-  Dim i As Integer
-  Dim DANHAN As Variant
-  
+    Dim madtnt      As Variant
+    Dim ngnop       As Variant
+    Dim kylbo       As Variant
+    Dim kykkhai     As Variant
+    Dim matkhai     As Variant
+    Dim TTHKT       As Variant
+    Dim LOAIXE      As Variant
+    Dim DVTinh      As Variant
+    Dim TONGBANRA   As Variant
+    Dim BANNTDDL    As Variant
+    Dim GIAHD       As Variant
+    Dim GHICHU      As Variant
+    Dim mact        As Variant
+    Dim STT         As Variant
+    Dim STT2        As Variant
+    Dim STTIN       As Variant
+    Dim MAPL        As Variant
+    Dim i           As Integer
+    Dim DANHAN      As Variant
       
-  Dim strFileName As String
-  Dim fso As New FileSystemObject
+    Dim strFileName As String
+    Dim fso         As New FileSystemObject
     
-   'kiem tra ton tai tep *.dbf chua
-'    strFileName = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "P3" & sKyKeKhai & ".DBF"
-'    If fso.FileExists(strFileName) = False Then
-'    Dim strTepmau As String
-'        strTepmau = spathVat & "\tepmau\P3.DBF"
-'        fso.CopyFile strTepmau, strFileName, False
-'    End If
-    
+    'kiem tra ton tai tep *.dbf chua
+    '    strFileName = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "P3" & sKyKeKhai & ".DBF"
+    '    If fso.FileExists(strFileName) = False Then
+    '    Dim strTepmau As String
+    '        strTepmau = spathVat & "\tepmau\P3.DBF"
+    '        fso.CopyFile strTepmau, strFileName, False
+    '    End If
    
-   sSQLCol = "MATKHAI , KYLBO , KYKKHAI , MADTNT , TTHTK  , NGNOP,LOAIXE ,DVTINH,TONGBANRA,BANNTDDL,GIAHD,GHICHU,MACT,STT,STT2,STTIN,MAPL,DANHAN,LAN_QUET"
+    sSQLCol = "MATKHAI , KYLBO , KYKKHAI , MADTNT , TTHTK  , NGNOP,LOAIXE ,DVTINH,TONGBANRA,BANNTDDL,GIAHD,GHICHU,MACT,STT,STT2,STTIN,MAPL,DANHAN,LAN_QUET"
    
-   
-   If clsDAO.Connected = False Then
+    If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
         clsDAO.Connect
-   End If
+    End If
    
-   
-   With fps
+    With fps
         .Sheet = 1
         .GetText .ColLetterToNumber("F"), 10, madtnt
+
         If Trim(madtnt) = vbNullString Then
             madtnt = "''"
         Else
@@ -2389,6 +2384,7 @@ Public Function InsertDTL_PL017() As String
         End If
 
         .GetText .ColLetterToNumber("E"), 32, ngnop
+
         'NGNOP = Date
         If Trim(ngnop) = vbNullString Then
             ngnop = "CTOD('')"
@@ -2398,9 +2394,11 @@ Public Function InsertDTL_PL017() As String
         End If
 
         .GetText .ColLetterToNumber("E"), 30, kylbo
+
         If Trim(kylbo) = vbNullString Then
             kylbo = "CTOD('')"
         Else
+
             If Len(Trim(kylbo)) = 6 Then
                 kylbo = "'0" & kylbo & "'"
             Else
@@ -2408,7 +2406,6 @@ Public Function InsertDTL_PL017() As String
             End If
 
         End If
-
 
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
@@ -2425,147 +2422,172 @@ Public Function InsertDTL_PL017() As String
         STTIN = "'I'"
         MAPL = "'PL03GTKT'"
         DANHAN = "''"
-'        TTHTK = "'NULL'"
-        .Sheet = 4
-              i = 0
-             .Col = .ColLetterToNumber("B")
-             .Row = 9
-             Do
-                'get loai xe
-                .Col = .ColLetterToNumber("C")
-                LOAIXE = .Text
-                If Trim(LOAIXE) = vbNullString Then
-                    LOAIXE = "''"
-                Else
-                    LOAIXE = "'" & LOAIXE & "'"
-                End If
-                'get Don vi tinh
-                .Col = .ColLetterToNumber("D")
-                DVTinh = .Text
-                If Trim(DVTinh) = vbNullString Then
-                    DVTinh = "''"
-                Else
-                    DVTinh = "'" & Trim(TAX_Utilities_Svr_New.Convert(CStr(DVTinh), UNICODE, TCVN)) & "'"
-                End If
-                'get Tong so luong xe ban ra
-                .Col = .ColLetterToNumber("E")
-                TONGBANRA = .Text
-                If TONGBANRA = vbNullString Then
-                    TONGBANRA = "0"
-                Else
-                    TONGBANRA = Replace(TONGBANRA, ".", "")
-                End If
-                'get so luong ban cho nguoi tieu dung
-                .Col = .ColLetterToNumber("F")
-                BANNTDDL = .Text
-                If BANNTDDL = vbNullString Then
-                    BANNTDDL = "0"
-                Else
-                    BANNTDDL = Replace(BANNTDDL, ".", "")
-                End If
-                'get gia hoa don
-                .Col = .ColLetterToNumber("G")
-                GIAHD = .Text
-                If GIAHD = vbNullString Then
-                    GIAHD = "0"
-                Else
-                    GIAHD = Replace(GIAHD, ".", "")
-                End If
-                ' get ghi chu
-                .Col = .ColLetterToNumber("H")
-                GHICHU = .Text
-                If GHICHU = vbNullString Then
-                    GHICHU = "''"
-                Else
-                    GHICHU = "'" & GHICHU & "'"
-                End If
-' sSQLCol = "MATKHAI , KYLBO , KYKKHAI , MADTNT , TTHKT , NGNOP,LOAIXE ,DVTINH,TONGBANRA,BANNTDDL,GIAHD,GHICHU,MACT,STT,STT2,STTIN,MAPL"
+        '        TTHTK = "'NULL'"
+        .Sheet = 9
+        i = 0
+        .Col = .ColLetterToNumber("B")
+        .Row = 9
 
-             sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIXE & ","
-             sSQLVal = sSQLVal & DVTinh & "," & TONGBANRA & "," & BANNTDDL & "," & GIAHD & "," & GHICHU & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & MAPL & "," & DANHAN & "," & LAN_QUET
+        Do
+            'get loai xe
+            .Col = .ColLetterToNumber("C")
+            LOAIXE = .Text
+
+            If Trim(LOAIXE) = vbNullString Then
+                LOAIXE = "''"
+            Else
+                LOAIXE = "'" & LOAIXE & "'"
+            End If
+
+            'get Don vi tinh
+            .Col = .ColLetterToNumber("D")
+            DVTinh = .Text
+
+            If Trim(DVTinh) = vbNullString Then
+                DVTinh = "''"
+            Else
+                DVTinh = "'" & Trim(TAX_Utilities_Svr_New.Convert(CStr(DVTinh), UNICODE, TCVN)) & "'"
+            End If
+
+            'get Tong so luong xe ban ra
+            .Col = .ColLetterToNumber("E")
+            TONGBANRA = .Text
+
+            If TONGBANRA = vbNullString Then
+                TONGBANRA = "0"
+            Else
+                TONGBANRA = Replace(TONGBANRA, ".", "")
+            End If
+
+            'get so luong ban cho nguoi tieu dung
+            .Col = .ColLetterToNumber("F")
+            BANNTDDL = .Text
+
+            If BANNTDDL = vbNullString Then
+                BANNTDDL = "0"
+            Else
+                BANNTDDL = Replace(BANNTDDL, ".", "")
+            End If
+
+            'get gia hoa don
+            .Col = .ColLetterToNumber("G")
+            GIAHD = .Text
+
+            If GIAHD = vbNullString Then
+                GIAHD = "0"
+            Else
+                GIAHD = Replace(GIAHD, ".", "")
+            End If
+
+            ' get ghi chu
+            .Col = .ColLetterToNumber("H")
+            GHICHU = .Text
+
+            If GHICHU = vbNullString Then
+                GHICHU = "''"
+            Else
+                GHICHU = "'" & GHICHU & "'"
+            End If
+
+            ' sSQLCol = "MATKHAI , KYLBO , KYKKHAI , MADTNT , TTHKT , NGNOP,LOAIXE ,DVTINH,TONGBANRA,BANNTDDL,GIAHD,GHICHU,MACT,STT,STT2,STTIN,MAPL"
+
+            sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIXE & ","
+            sSQLVal = sSQLVal & DVTinh & "," & TONGBANRA & "," & BANNTDDL & "," & GIAHD & "," & GHICHU & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & MAPL & "," & DANHAN & "," & LAN_QUET
              
-             sSQL = "INSERT INTO TMP_P3" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-             bln = clsDAO.ExecuteDLL(sSQL)
+            sSQL = "INSERT INTO TMP_P3" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+            bln = clsDAO.ExecuteDLL(sSQL)
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
             STT2 = STT2 + 1
-             Loop Until .Text = "aa"
+        Loop Until .Text = "aa"
              
-' xu ly chuyen muc 2
-             .Row = .Row + 4
-             mact = "'1002'"
-             STT = 2
-             STT2 = 0
-             STTIN = "'II'"
-             MAPL = "'PL03GTKT'"
-             .Sheet = 4
-             .Col = .ColLetterToNumber("B")
-             Do
-                'get loai xe
-                .Col = .ColLetterToNumber("C")
-                LOAIXE = .Text
-                If Trim(LOAIXE) = vbNullString Then
-                    LOAIXE = "''"
-                Else
-                    LOAIXE = "'" & LOAIXE & "'"
-                End If
-                'get Don vi tinh
-                .Col = .ColLetterToNumber("D")
-                DVTinh = .Text
-                If Trim(DVTinh) = vbNullString Then
-                    DVTinh = "''"
-                Else
-                    DVTinh = "'" & Trim(TAX_Utilities_Svr_New.Convert(CStr(DVTinh), UNICODE, TCVN)) & "'"
-                End If
-                'get Tong so luong xe ban ra
-                .Col = .ColLetterToNumber("E")
-                TONGBANRA = .Text
-                If TONGBANRA = vbNullString Then
-                    TONGBANRA = "0"
-                Else
-                    TONGBANRA = Replace(TONGBANRA, ".", "")
-                End If
-                'get so luong ban cho nguoi tieu dung
-                .Col = .ColLetterToNumber("F")
-                BANNTDDL = .Text
-                If BANNTDDL = vbNullString Then
-                    BANNTDDL = "0"
-                Else
-                    BANNTDDL = Replace(BANNTDDL, ".", "")
-                End If
-                'get gia hoa don
-                .Col = .ColLetterToNumber("G")
-                GIAHD = .Text
-                If GIAHD = vbNullString Then
-                    GIAHD = "0"
-                Else
-                    GIAHD = Replace(GIAHD, ".", "")
-                End If
-                ' get ghi chu
-                .Col = .ColLetterToNumber("H")
-                GHICHU = .Text
-                If GHICHU = vbNullString Then
-                    GHICHU = "''"
-                Else
-                    GHICHU = "'" & GHICHU & "'"
-                End If
+        ' xu ly chuyen muc 2
+        .Row = .Row + 4
+        mact = "'1002'"
+        STT = 2
+        STT2 = 0
+        STTIN = "'II'"
+        MAPL = "'PL03GTKT'"
+        .Sheet = 9
+        .Col = .ColLetterToNumber("B")
+
+        Do
+            'get loai xe
+            .Col = .ColLetterToNumber("C")
+            LOAIXE = .Text
+
+            If Trim(LOAIXE) = vbNullString Then
+                LOAIXE = "''"
+            Else
+                LOAIXE = "'" & LOAIXE & "'"
+            End If
+
+            'get Don vi tinh
+            .Col = .ColLetterToNumber("D")
+            DVTinh = .Text
+
+            If Trim(DVTinh) = vbNullString Then
+                DVTinh = "''"
+            Else
+                DVTinh = "'" & Trim(TAX_Utilities_Svr_New.Convert(CStr(DVTinh), UNICODE, TCVN)) & "'"
+            End If
+
+            'get Tong so luong xe ban ra
+            .Col = .ColLetterToNumber("E")
+            TONGBANRA = .Text
+
+            If TONGBANRA = vbNullString Then
+                TONGBANRA = "0"
+            Else
+                TONGBANRA = Replace(TONGBANRA, ".", "")
+            End If
+
+            'get so luong ban cho nguoi tieu dung
+            .Col = .ColLetterToNumber("F")
+            BANNTDDL = .Text
+
+            If BANNTDDL = vbNullString Then
+                BANNTDDL = "0"
+            Else
+                BANNTDDL = Replace(BANNTDDL, ".", "")
+            End If
+
+            'get gia hoa don
+            .Col = .ColLetterToNumber("G")
+            GIAHD = .Text
+
+            If GIAHD = vbNullString Then
+                GIAHD = "0"
+            Else
+                GIAHD = Replace(GIAHD, ".", "")
+            End If
+
+            ' get ghi chu
+            .Col = .ColLetterToNumber("H")
+            GHICHU = .Text
+
+            If GHICHU = vbNullString Then
+                GHICHU = "''"
+            Else
+                GHICHU = "'" & GHICHU & "'"
+            End If
                 
-' sSQLCol = "MATKHAI , KYLBO , KYKKHAI , MADTNT , TTHKT , NGNOP,LOAIXE ,DVTINH,TONGBANRA,BANNTDDL,GIAHD,GHICHU,MACT,STT,STT2,STTIN,MAPL"
+            ' sSQLCol = "MATKHAI , KYLBO , KYKKHAI , MADTNT , TTHKT , NGNOP,LOAIXE ,DVTINH,TONGBANRA,BANNTDDL,GIAHD,GHICHU,MACT,STT,STT2,STTIN,MAPL"
 
-              sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIXE & ","
-              sSQLVal = sSQLVal & DVTinh & "," & TONGBANRA & "," & BANNTDDL & "," & GIAHD & "," & GHICHU & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & MAPL & "," & DANHAN & "," & LAN_QUET
+            sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIXE & ","
+            sSQLVal = sSQLVal & DVTinh & "," & TONGBANRA & "," & BANNTDDL & "," & GIAHD & "," & GHICHU & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & MAPL & "," & DANHAN & "," & LAN_QUET
              
-              sSQL = "INSERT INTO TMP_P3" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-              bln = clsDAO.ExecuteDLL(sSQL)
-             .Col = .ColLetterToNumber("B")
-             .Row = .Row + 1
-             STT2 = STT2 + 1
-             Loop Until .Text = "bb"
+            sSQL = "INSERT INTO TMP_P3" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+            bln = clsDAO.ExecuteDLL(sSQL)
+            .Col = .ColLetterToNumber("B")
+            .Row = .Row + 1
+            STT2 = STT2 + 1
+        Loop Until .Text = "bb"
 
-        End With
+    End With
    
-   clsDAO.Disconnect
-   InsertDTL_PL017 = vbNullString
+    clsDAO.Disconnect
+    InsertDTL_PL017 = vbNullString
    
 End Function
 
