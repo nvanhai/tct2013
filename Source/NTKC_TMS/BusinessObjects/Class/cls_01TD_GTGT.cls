@@ -80,22 +80,22 @@ Public strTenPQL As String
 Public Function Prepared1() As Boolean
     With fps
         .Sheet = 1
-        .Col = .ColLetterToNumber(HEADER_SO_TT_TRONG_TEP_COL)
-        .Row = HEADER_SO_TT_TRONG_TEP_ROW
-        .CellType = CellTypeEdit
-        .TypeEditCharSet = TypeEditCharSetNumeric
-        .TypeMaxEditLen = 10
-        
-        'Ma so tep
-        .Col = .ColLetterToNumber("M")
-        .Row = 13
-        .CellType = CellTypeEdit
-        .TypeEditCharSet = TypeEditCharSetAlphanumeric
-        .TypeMaxEditLen = 20
+'        .Col = .ColLetterToNumber(HEADER_SO_TT_TRONG_TEP_COL)
+'        .Row = HEADER_SO_TT_TRONG_TEP_ROW
+'        .CellType = CellTypeEdit
+'        .TypeEditCharSet = TypeEditCharSetNumeric
+'        .TypeMaxEditLen = 10
+'
+'        'Ma so tep
+'        .Col = .ColLetterToNumber("M")
+'        .Row = 13
+'        .CellType = CellTypeEdit
+'        .TypeEditCharSet = TypeEditCharSetAlphanumeric
+'        .TypeMaxEditLen = 20
         
         'Ghi chu
         .Col = .ColLetterToNumber("M")
-        .Row = 36
+        .Row = 34
         .CellType = CellTypeEdit
         .TypeEditCharSet = TypeEditCharSetASCII
         .TypeMaxEditLen = 100
@@ -425,8 +425,8 @@ Public Function CheckValidData() As Boolean
     CheckValidData = True
     With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("E"), 36, varCheckValue
-        .GetText .ColLetterToNumber("M"), 36, varNoteValue
+        .GetText .ColLetterToNumber("E"), 34, varCheckValue
+        .GetText .ColLetterToNumber("M"), 34, varNoteValue
         '
         .GetText .ColLetterToNumber("E"), 32, varNgayNop
         If CStr(varCheckValue) = "1" And Trim(CStr(varNoteValue)) = "" Then
@@ -489,7 +489,7 @@ On Error GoTo ErrHandle
                     vNGAY_CAP_NHAT = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case "V_32"
                     vNGUOI_CAP_NHAT = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "E_36"
+                Case "E_34"
                     vCO_LOI_DDANH = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case "M_13"
                     ' vSO_HIEU_TEP = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
@@ -517,18 +517,18 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
     'Ky/Quy LB
-    If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
-        'Ngay dau ky lap bo va ngay cuoi ky lap bo
-        strDate = Split(vKyLB, "/")
-        dDate = DateSerial(Val(strDate(1)), Val(strDate(0)), 1)
-        strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        dDate = DateAdd("m", 1, dDate)
-        dDate = DateAdd("d", -1, dDate)
-        strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-    End If
+    'Ngay dau ky lap bo va ngay cuoi ky lap bo
+    strDate = Split(vKyLB, "/")
+    dDate = DateSerial(Val(strDate(1)), Val(strDate(0)), 1)
+    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    dDate = DateAdd("m", 1, dDate)
+    dDate = DateAdd("d", -1, dDate)
+    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     
     'Ky/ Quy KK
+    'Ngay dau ky ke khai va ngay cuoi ky ke khai
     If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
+        'Ngay dau ky ke khai va ngay cuoi ky ke khai
         dDate = dNgayDauKy
         strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
         dDate = DateAdd("m", 1, dDate)

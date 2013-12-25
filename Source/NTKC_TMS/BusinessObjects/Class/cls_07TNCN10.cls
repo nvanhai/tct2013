@@ -301,6 +301,8 @@ End Function
 Public Sub Prepared4(ByVal dNgayDauKy As Date)
 Dim strKyLapBo As String
 Dim blnValid As Boolean
+    Dim LoaiKyKK   As Variant
+    Dim dNgayCuoiKy As Date
 
     blnValid = True
     
@@ -317,6 +319,9 @@ Dim blnValid As Boolean
         .Col = .ColLetterToNumber(PHONG_XU_LY_COL)
         .Row = PHONG_XU_LY_ROW
         strPhongXuLy = .Text
+        
+                ' Get Loai ky ke khai
+        .GetText .ColLetterToNumber("AB"), 42, LoaiKyKK
         
         ' Get NgayNhanToKhai
         .Col = .ColLetterToNumber(NGAY_NHAN_TO_KHAI_COL)
@@ -381,10 +386,21 @@ Dim blnValid As Boolean
             
             
             ' Kiem tra xem ky ke khai trong cung ky hay khac ky
+            dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
+            dNgayCuoiKy = DateAdd("d", 29, dNgayCuoiKy)
+            
+            If LoaiKyKK = "0" Then
             If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
                 blnValid = True
+                Else
+                    blnValid = False
+                End If
             Else
+                If (dNgayDauKy <= DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) And (dNgayCuoiKy >= DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
+                    blnValid = True
+                Else
                 blnValid = False
+                End If
             End If
             
             .Col = .ColLetterToNumber("B")
