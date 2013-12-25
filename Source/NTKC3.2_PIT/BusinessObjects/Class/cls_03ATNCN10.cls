@@ -12,44 +12,44 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
 Option Explicit
-Const KY_LAP_BO_ROW = 22
+Const KY_LAP_BO_ROW = 26
 Const KY_LAP_BO_COL = "E"
 Const MA_SO_TEP_ROW = 10
 Const MA_SO_TEP_COL = "M"
-Const NGAY_NHAN_TO_KHAI_ROW = 24
+Const NGAY_NHAN_TO_KHAI_ROW = 28
 Const NGAY_NHAN_TO_KHAI_COL = "E"
-Const NGUOI_SU_DUNG_ROW = 24
+Const NGUOI_SU_DUNG_ROW = 28
 Const NGUOI_SU_DUNG_COL = "V"
 
-Const HEADER_SO_TT_TRONG_TEP_ROW = 29 'Dong 16 da dc Hidden
+Const HEADER_SO_TT_TRONG_TEP_ROW = 33 'Dong 16 da dc Hidden
 Const HEADER_SO_TT_TRONG_TEP_COL = "V"
 
-Const HEADER_KY_LAP_BO_ROW = 13
+Const HEADER_KY_LAP_BO_ROW = 17
 Const HEADER_KY_LAP_BO_COL = "B"
 
-Const PHONG_XU_LY_ROW = 22
+Const PHONG_XU_LY_ROW = 26
 Const PHONG_XU_LY_COL = "V"
 
 ' Thong tin dai ly
-Const TEN_DL_ROW = 14
+Const TEN_DL_ROW = 18
 Const TEN_DL_COL = "K"
 
-Const DIA_CHI_DL_ROW = 16
+Const DIA_CHI_DL_ROW = 20
 Const DIA_CHI_DL_COL = "G"
 
-Const DIEN_THOAI_DL_ROW = 18
+Const DIEN_THOAI_DL_ROW = 22
 Const DIEN_THOAI_DL_COL = "E"
 
-Const FAX_DL_ROW = 18
+Const FAX_DL_ROW = 22
 Const FAX_DL_COL = "M"
 
-Const EMAIL_DL_ROW = 18
+Const EMAIL_DL_ROW = 22
 Const EMAIL_DL_COL = "V"
 
-Const SO_HOP_DONG_DL_ROW = 19
+Const SO_HOP_DONG_DL_ROW = 23
 Const SO_HOP_DONG_DL_COL = "I"
 
-Const NGAY_HOP_DONG_DL_ROW = 19
+Const NGAY_HOP_DONG_DL_ROW = 23
 Const NGAY_HOP_DONG_DL_COL = "S"
 
 Public WithEvents fps As fpSpread
@@ -90,35 +90,35 @@ Public Function Prepared1() As Boolean
         
         'Ghi chu
         .Col = .ColLetterToNumber("M")
-        .Row = 28
+        .Row = 32
         .CellType = CellTypeEdit
         .TypeEditCharSet = TypeEditCharSetASCII
         .TypeMaxEditLen = 100
         
         'Phong xu ly
         .Col = .ColLetterToNumber("V")
-        .Row = 22
+        .Row = 26
         .CellType = CellTypeComboBox
         .TypeEditCharSet = TypeEditCharSetASCII
         .TypeMaxEditLen = 60
         
         'Ky lap bo
-        SetDateFormat fps, 1, 22, .ColLetterToNumber("E"), MMYYYY
+        SetDateFormat fps, 1, 26, .ColLetterToNumber("E"), MMYYYY
         .TypeHAlign = TypeHAlignLeft
         
         ' Ngay nop
-        SetDateFormat fps, 1, 24, .ColLetterToNumber("E"), DDMMYYYY
+        SetDateFormat fps, 1, 28, .ColLetterToNumber("E"), DDMMYYYY
         .Sheet = 1
-        .Row = 24
+        .Row = 28
         .Col = .ColLetterToNumber("E")
         .Text = Format(Date, "dd/mm/yyyy")
         
         .TypeHAlign = TypeHAlignLeft
         ' Ngay quet
-        SetDateFormat fps, 1, 24, .ColLetterToNumber("M"), DDMMYYYY
+        SetDateFormat fps, 1, 28, .ColLetterToNumber("M"), DDMMYYYY
         .TypeHAlign = TypeHAlignLeft
         .Sheet = 1
-        .Row = 24
+        .Row = 28
         .Col = .ColLetterToNumber("M")
         .Text = Format(Date, "dd/mm/yyyy")
     End With
@@ -435,10 +435,10 @@ Public Function CheckValidData() As Boolean
     CheckValidData = True
     With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("E"), 28, varCheckValue
-        .GetText .ColLetterToNumber("M"), 28, varNoteValue
+        .GetText .ColLetterToNumber("E"), 32, varCheckValue
+        .GetText .ColLetterToNumber("M"), 32, varNoteValue
         '
-        .GetText .ColLetterToNumber("E"), 24, varNgayNop
+        .GetText .ColLetterToNumber("E"), 28, varNgayNop
         If CStr(varCheckValue) = "1" And Trim(CStr(varNoteValue)) = "" Then
             .Sheet = .SheetCount
             .SetText 2, 14, "0"
@@ -502,21 +502,21 @@ On Error GoTo ErrHandle
                     vTEN_DTNT = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case "G_9"
                     vDIA_CHI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "E_24"
+                Case "E_28"
                     vNGAY_NOP = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                     
                     'Luu thong tin cua ngay nop cua to khai quet hien tai, de hien thi cho viec quet to khai lan sau
                     SaveSetting "HTKK", "TNCN", "tempNgayNop", vNGAY_NOP
-                Case "E_22"
+                Case "E_26"
                     vKyLB = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                     
                     'Luu thong tin cua ky lap bo cua to khai quet hien tai, de hien thi cho viec quet to khai lan sau
                     SaveSetting "HTKK", "TNCN", "tempKyLb", vKyLB
-                Case "M_24"
+                Case "M_28"
                     vNGAY_CAP_NHAT = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "V_24"
+                Case "V_28"
                     vNGUOI_CAP_NHAT = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "E_28"
+                Case "E_32"
                     vCO_LOI_DDANH = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case "M_10"
                     ' vSO_HIEU_TEP = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
@@ -537,7 +537,7 @@ On Error GoTo ErrHandle
                         End If
                         .EventEnabled(EventAllEvents) = False
                     End With
-                Case "M_28"
+                Case "M_32"
                     vGHI_CHU_LOI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                     vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
@@ -560,7 +560,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "03A_TNCN11"
+    vLOAI_TKHAI = "03A_TNCN13"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
@@ -616,9 +616,9 @@ On Error GoTo ErrHandle
             End If
         Next
        ' thong tin dai ly thue
-        .GetText .ColLetterToNumber("G"), 15, vTIN_DL
-        .GetText .ColLetterToNumber("I"), 19, vSO_HOP_DONG
-        .GetText .ColLetterToNumber("S"), 19, vNGAY_HOP_DONG
+        .GetText .ColLetterToNumber("G"), 19, vTIN_DL
+        .GetText .ColLetterToNumber("I"), 23, vSO_HOP_DONG
+        .GetText .ColLetterToNumber("S"), 23, vNGAY_HOP_DONG
         .GetText .ColLetterToNumber("I"), 64, vLAN_BS
         .GetText .ColLetterToNumber("C"), 64, vCHINH_THUC
         If Trim(vCHINH_THUC) = "1" Then
@@ -670,7 +670,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
     Dim varTemp As Variant
     With fps
         If .ActiveSheet = 1 Then
-            If Col = .ColLetterToNumber("E") And Row = 24 Then
+            If Col = .ColLetterToNumber("E") And Row = 28 Then
                 .GetText Col, Row, varTemp
                 If varTemp <> "" And varTemp <> "../../...." Then
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
@@ -686,7 +686,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                UpdateCell fps, .Col, .Row, .Text
             End If
             'ky lap bo
-            If Col = .ColLetterToNumber("E") And Row = 22 Then
+            If Col = .ColLetterToNumber("E") And Row = 26 Then
                 .GetText Col, Row, varTemp
                 If varTemp <> "" And varTemp <> "../...." Then
                     If Format_mmyyyy(CStr(varTemp)) <> "" Then
