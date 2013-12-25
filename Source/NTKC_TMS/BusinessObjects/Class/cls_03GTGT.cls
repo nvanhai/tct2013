@@ -487,7 +487,7 @@ On Error GoTo ErrHandle
                     vGHI_CHU_LOI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                     vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "J_57"
+                Case "L_61"
                     LOAI_KYKK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
 
             End Select
@@ -505,7 +505,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "03_GTGT11"
+    vLOAI_TKHAI = "03_GTGT13"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
@@ -521,27 +521,24 @@ On Error GoTo ErrHandle
     End If
     
     'Ky/ Quy KK
-    If LOAI_KYKK = "0" Then
+    If LOAI_KYKK = "T" Then
         If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
             'Ngay dau ky ke khai va ngay cuoi ky ke khai
+            'strDate = Split(TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "/")
+            'dDate = DateSerial(Val(strDate(1)), Val(strDate(0)), 1)
             dDate = dNgayDauKy
             strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
             dDate = DateAdd("m", 1, dDate)
             dDate = DateAdd("d", -1, dDate)
             strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
         End If
-
     Else
-
-        If Trim(TAX_Utilities_Srv_New.ThreeMonths) <> "" Then
             dDate = dNgayDauKy
             strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
             dDate = DateAdd("m", 3, dDate)
             dDate = DateAdd("d", -1, dDate)
             strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        End If
     End If
-    
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
     strSQL = strSQL & "'" & vNGUOI_CAP_NHAT & "',"
     strSQL = strSQL & "'" & vCO_LOI_DDANH & "',"
@@ -574,8 +571,8 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("F"), 20, vTIN_DL
         .GetText .ColLetterToNumber(SO_HOP_DONG_DL_COL), SO_HOP_DONG_DL_ROW, vSO_HOP_DONG
         .GetText .ColLetterToNumber(NGAY_HOP_DONG_DL_COL), NGAY_HOP_DONG_DL_ROW, vNGAY_HOP_DONG
-        .GetText .ColLetterToNumber("I"), 57, vLAN_BS
-        .GetText .ColLetterToNumber("C"), 57, vCHINH_THUC
+        .GetText .ColLetterToNumber("I"), 60, vLAN_BS
+        .GetText .ColLetterToNumber("C"), 60, vCHINH_THUC
         If Trim(vCHINH_THUC) = "1" Then
             vLAN_BS = "0"
         End If
@@ -657,3 +654,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
     End If
 End With
 End Sub
+
+
+
+

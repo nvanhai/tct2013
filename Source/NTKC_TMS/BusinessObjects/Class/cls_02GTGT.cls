@@ -252,6 +252,8 @@ End Function
 Public Sub Prepared4(ByVal dNgayDauKy As Date)
 Dim strKyLapBo As String
 Dim blnValid As Boolean
+    Dim LoaiKyKK   As Variant
+    Dim dNgayCuoiKy As Date
 
     blnValid = True
     
@@ -273,6 +275,9 @@ Dim blnValid As Boolean
         .Col = .ColLetterToNumber(NGAY_NHAN_TO_KHAI_COL)
         .Row = NGAY_NHAN_TO_KHAI_ROW
         strNgayNhanToKhai = .Text
+        
+                        ' Get Loai ky ke khai
+        .GetText .ColLetterToNumber("AB"), 40, LoaiKyKK
         
         'Go to last sheet (header sheet)
         .Sheet = .SheetCount
@@ -332,10 +337,24 @@ Dim blnValid As Boolean
             
             
             ' Kiem tra xem ky ke khai trong cung ky hay khac ky
-            If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
-                blnValid = True
+            dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
+            dNgayCuoiKy = DateAdd("d", 29, dNgayCuoiKy)
+            
+            If LoaiKyKK = "0" Then
+                If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
+                    blnValid = True
+                Else
+                    blnValid = False
+                End If
+
             Else
-                blnValid = False
+
+                If (dNgayDauKy <= DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) And (dNgayCuoiKy >= DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
+                    blnValid = True
+                Else
+                    blnValid = False
+                End If
+
             End If
             
             .Col = .ColLetterToNumber("B")
@@ -487,7 +506,7 @@ On Error GoTo ErrHandle
                     vGHI_CHU_LOI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                     vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "J_63"
+                Case "J_64"
                     LOAI_KYKK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
 
             End Select
@@ -505,7 +524,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "02_GTGT11"
+    vLOAI_TKHAI = "02_GTGT13"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
@@ -587,8 +606,8 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("F"), 20, vTIN_DL
         .GetText .ColLetterToNumber(SO_HOP_DONG_DL_COL), SO_HOP_DONG_DL_ROW, vSO_HOP_DONG
         .GetText .ColLetterToNumber(NGAY_HOP_DONG_DL_COL), NGAY_HOP_DONG_DL_ROW, vNGAY_HOP_DONG
-        .GetText .ColLetterToNumber("I"), 63, vLAN_BS
-        .GetText .ColLetterToNumber("C"), 63, vCHINH_THUC
+        .GetText .ColLetterToNumber("I"), 64, vLAN_BS
+        .GetText .ColLetterToNumber("C"), 64, vCHINH_THUC
         If Trim(vCHINH_THUC) = "1" Then
             vLAN_BS = "0"
         End If
@@ -612,10 +631,6 @@ On Error GoTo ErrHandle
     Else
         strSQL = strSQL & "null,"
     End If
-    If vLAN_BS = "" Then
-        vLAN_BS = "0"
-    End If
-    'strSQL = strSQL & "null)"
     strSQL = strSQL & "null,"
     strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ",'" & LOAI_KYKK & "')"
     GenerateSQL_Header = strSQL

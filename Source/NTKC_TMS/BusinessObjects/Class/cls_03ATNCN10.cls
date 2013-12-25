@@ -651,7 +651,7 @@ On Error GoTo ErrHandle
     
     Exit Function
 ErrHandle:
-    SaveErrorLog "cls_02ATNCN", "GenerateSQL_Header", Err.Number, Err.Description
+    SaveErrorLog "cls_03ATNCN", "GenerateSQL_Header", Err.Number, Err.Description
 End Function
 
 Public Function KiemTraKhoaSo(ByVal strDate As String) As Boolean

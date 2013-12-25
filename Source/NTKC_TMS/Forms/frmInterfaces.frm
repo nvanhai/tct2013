@@ -2068,11 +2068,11 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 '
 ''BC01/AC:
-'str2 = "aa999652300026193 2.2013002002001E+1601/0101/01/2009<S01><S>x~01/07/2013~31/12/2013</S><S>0102030405~doanh nghi÷p ab~hµ nÈi~234~13/11/2013~H„a Æ¨n xu t kh»u~06HDXK6/001~BH/12T~0000024~0000150~127~~0010011000~doanh nghi÷p 1~bæc ninh~094~14/11/2013~Phi’u xu t kho ki™m vÀn chuy”n hµng h„a nÈi bÈ~03XKNB5/003~BN/23T~0000036~0000189~154~~3600247325~MNP~hµ giang~056~15/11/2013~H„a Æ¨n b∏n hµng~02GTTT6/005~HD/34T~0000045~0000251~207~</S><S>Hπnh~25/10/2013</S></S01>"
+'str2 = "aa999652300026193   02201300200200100101/0101/01/2009<S01><S>x~01/07/2013~31/12/2013</S><S>0102030405~doanh nghi÷p ab~hµ nÈi~234~13/11/2013~H„a Æ¨n xu t kh»u~06HDXK6/001~BH/12T~0000024~0000150~127~~0010011000~doanh nghi÷p 1~bæc ninh~094~14/11/2013~Phi’u xu t kho ki™m vÀn chuy”n hµng h„a nÈi bÈ~03XKNB5/003~BN/23T~0000036~0000189~154~~3600247325~MNP~hµ giang~056~15/11/2013~H„a Æ¨n b∏n hµng~02GTTT6/005~HD/34T~0000045~0000251~207~</S><S>Hπnh~25/10/2013</S></S01>"
 'Barcode_Scaned str2
 '
 ''BC21/AC:
-'str2 = "aa999662300026193 3.2013001001001E+18 / 101 / 1 / 2010 < s01><S>25/10/2013~15~1</S><S>H„a Æ¨n xu t kh»u~06HDXK6/001~AB/23T~0000030~0000250~221~7;12;24~05~0~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT4/003~CD/14T~0000025~0000167~143~6;14;28;30~04~0~Phi’u xu t kho ki™m vÀn chuy”n hµng h„a nÈi bÈ~03XKNB5/007~HN/16T~0000031~0000274~244~11;23;45~02~0</S><S>ch∏y h„a Æ¨n~Hπnh~25/10/2013</S></S01>"
+'str2 = "aa999662300026193   03201300100100100101/0101/01/2010<S01><S>25/10/2013~15~1</S><S>H„a Æ¨n xu t kh»u~06HDXK6/001~AB/23T~0000030~0000250~221~7;12;24~05~0~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT4/003~CD/14T~0000025~0000167~143~6;14;28;30~04~0~Phi’u xu t kho ki™m vÀn chuy”n hµng h„a nÈi bÈ~03XKNB5/007~HN/16T~0000031~0000274~244~11;23;45~02~0</S><S>ch∏y h„a Æ¨n~Hπnh~25/10/2013</S></S01>"
 'Barcode_Scaned str2
 '
 ''TB03/AC:
@@ -2088,7 +2088,7 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 '
 ''TB04/AC:
-'str2 = "aa999912300026193 1.22013002002001E+16101/0101/01/2009<S01><S>ph∏t hµnh~h„a Æ¨n~01DVPH~trÙ sÎ~Æﬁa chÿ ch›nh~02DCTS~fax~hotline~03PHONE</S><S>10/11/2013~~~c¨ quan thu’ TP bæc ninh~11/12/2013~Kh∏nh V©n</S></S01>"
+'str2 = "aa999912300026193   12201300200200100101/0101/01/2009<S01><S>ph∏t hµnh~h„a Æ¨n~01DVPH~trÙ sÎ~Æﬁa chÿ ch›nh~02DCTS~fax~hotline~03PHONE</S><S>10/11/2013~~~c¨ quan thu’ TP bæc ninh~11/12/2013~Kh∏nh V©n</S></S01>"
 'Barcode_Scaned str2
 '
 ''BCTC bo QD15:
@@ -2173,7 +2173,7 @@ Private Sub Command1_Click()
 'str2 = "aa999192300790401   00201200000001201200~80~80~50~130~50~200~150~80~70~210~140~200~120~100~100~200~120~100~120~50~10~140~80~100~90~80~80~100~90~180~120~150~170~160~140~100~20~30~40~90~30~50~60~70~80~40~70~30~40~50~50~30~40~45~50~55~60~40~55~100~120~130~140~90~130~150~100~40~45~145~105~120~100~120~90~150~70~120~50~60~80~100~70~100~20~30~40~90~30~20~30~30~40~10~40~50~50~60~70~40~60~50~50~60~70~40~60~30~30~30~40~20~40~100~90~80~80~100~90~100~200~300~350~50~250~100~200~10~20~90~210~100~50~10~20~90~60~50~55~55~55~50~55~100~110~120~130~90~120~~</S></S01-4>"
 'Barcode_Scaned str2
 
-
+'
 ''01/GTGT:
 'str2 = "aa999012300121087   10201300300300101601/0114/06/2006<S01><S>0010011000</S><S>~32222000~24000000~2100000~1328400~5000000~36000000~2500000~6000000~10000000~500000~20000000~2000000~4"
 'Barcode_Scaned str2
@@ -2219,16 +2219,114 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 '
 ''04/GTGT:
-'str2 = "aa999712300121087   10201300100100100301/0101/01/1900<s01><S>0010011000</S><S>20000000~3000000~30000~4000000~200000~5000000~150000~6000000~120000~18000000~500000~38000000~500000</S><S>Huy“n Tr©m~Hoµng Lan~KTV~19/12/2013~1~~~0</S></S01>"
+'str2 = "aa999712300121087   10201300100100100301/0101/01/1900<S01><S>0010011000</S><S>20000000~3000000~30000~4000000~200000~5000000~150000~6000000~120000~18000000~500000~38000000~500000</S><S>Huy“n Tr©m~Hoµng Lan~KTV~19/12/2013~1~~~0</S></S01>"
 'Barcode_Scaned str2
 'str2 = "aa999712300121087   102013001001002003<S01_1><S>01GTKT~~003~05442~12/10/2013~nga~~~40000000~</S><S>07KPTQ~~004~03243~13/10/2013~hπnh~~~5000000~</S><S>02GTTT~~001~024234~14/10/2013~linh~~~6000000~</S><S>04HGDL~~002~"
 'Barcode_Scaned str2
 'str2 = "aa999712300121087   102013001001003003023423~15/10/2013~∏nh~~~7000000~~06HDXK~~005~023434~16/10/2013~ph≠¨ng~~~8000000~</S><S>03XKNB~~006~2423~18/10/2013~kh´i~~~2000000~</S><S>68000000~40000000~28000000</S></S01_1>"
 'Barcode_Scaned str2
+'
+''05/GTGT:
+'str2 = "aa999722300121087   10201300200200100101/0114/06/2006<S01><S>0010011000</S><S>4000000~7000000~40000~140000~180000</S><S>Huy“n Tr©m~Hoµng Lan~KTV~19/12/2013~1~~~~</S></S01>"
+'Barcode_Scaned str2
 
-'05/GTGT:
-str2 = "aa999722300121087   10201300200200100101/0114/06/2006<S01><S>0010011000</S><S>4000000~7000000~40000~140000~180000</S><S>Huy“n Tr©m~Hoµng Lan~KTV~19/12/2013~1~~~~</S></S01>"
+''01A/TNDN + PL dinh kem:
+'str2 = "aa999112300121087   03201300600600100301/0114/06/2006<S01><S>0010011000</S><S>300000~200000~100000~23000~12000~111000~10000~12000~89000~30000~25000~34000~20.897~12000~22"
+'Barcode_Scaned str2
+'str2 = "aa999112300121087   032013006006002003.678~21326~15326~7000~8000~6000~x~03~15/11/2013~4000~2000</S><S>x~x</S><S>Huy“n Tr©m~KTV~Hoµng Lan~19/12/2013~1~0~~1052</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999112300121087   032013006006003003<S01-1><S>6000</S><S>doanh nghi÷p ab~0010011000~45.67~2740~10304~c¨ sÎ 1~0010011000-001~23.88~1433~10304~c¨ sÎ 2~0010011000-002~30.45~1827~10304</S></S01-1>"
+'Barcode_Scaned str2
+'
+''KHBS 01A/TNDN:
+'str2 = "bs999112300121087   03201301101100100401/0114/06/2006<S01><S>0010011000</S><S>300000~200000~100000~230000~12000~318000~100000~12000~206000~80000~50000~76000~20.897~12000~2"
+'Barcode_Scaned str2
+'str2 = "bs999112300121087   0320130110110020042.678~45603~20000~4000~3000~25603~x~03~15/11/2013~4000~21603</S><S>x~x</S><S>Huy“n Tr©m~KTV~Hoµng Lan~19/12/2013~0~1~~1052</S></S01>"
+'Barcode_Scaned str2
+'str2 = "bs999112300121087   032013011011003004<SKHBS><S>Thu’ TNDN ph∏t sinh~34~21326~45603~24277</S><S>Thu’ TNDN d˘ ki’n mi‘n, gi∂m~35~15326~20000~467"
+'Barcode_Scaned str2
+'str2 = "bs999112300121087   0320130110110040044</S><S>19/12/2013~49~972~4200~lh005~15/10/2013~10100~10107~9~100000~l˝ do nhi“u~0~0~19603</S></SKHBS>"
+'Barcode_Scaned str2
+'
+''01B/TNDN + PL dinh kem:
+'str2 = "aa999122300121087   03201300200200100301/0114/06/2006<S01><S>0010011000</S><S>x~x~560000~520000~400000~100000~20000~40000~23.786~~20.567~22.345~17.678~~~25"
+'Barcode_Scaned str2
+'str2 = "aa999122300121087   032013002002002003724~25724~~12000~1000~2000~13724~x~~19/11/2013~40~13684</S><S>Hoµng Lan~19/12/2013~Huy“n Tr©m~KTV~1~~1052</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999122300121087   032013002002003003<S01-1><S>13724</S><S>doanh nghi÷p mh~3600247325~45.78~6283~10703~doanh nghi÷p ab~0102030405~54.22~7441~10307</S></S01-1>"
+'Barcode_Scaned str2
+'
+''KHBS 01B/TNDN:
+'str2 = "bs999122300121087   03201300300300100401/0114/06/2006<S01><S>0010011000</S><S>x~x~540000~500000~380000~100000~20000~40000~23.786~~20.567~22.345~17.678~~12.896~2"
+'Barcode_Scaned str2
+'str2 = "bs999122300121087   0320130030030020045973~24746~1227~8000~1000~2000~17973~x~~19/11/2013~40~17933</S><S>Hoµng Lan~19/12/2013~Huy“n Tr©m~KTV~0~1~1052</S></S01>"
+'Barcode_Scaned str2
+'str2 = "bs999122300121087   032013003003003004<SKHBS><S>Thu’ TNDN cÒa hoπt ÆÈng Æ≠Óc ≠u Æ∑i v“ thu’ su t~29~0~1227~1227~Thu’ thu nhÀp doanh nghi÷p d˘ ki’n mi‘n, gi∂m~30~12000~8000~-4000</S><S>Thu’ T"
+'Barcode_Scaned str2
+'str2 = "bs999122300121087   032013003003004004NDN cÒa hoπt ÆÈng kh´ng ≠u Æ∑i~28~25724~24746~-978</S><S>19/12/2013~49~104~5000~kh002~16/10/2013~10100~10101~12~30000~NNT nÈp thu’~0~0~4249</S></SKHBS>"
+'Barcode_Scaned str2
+'
+''02/TNDN:
+'str2 = "aa999732300121087   03201300300300100201/0114/06/2006<S02><S>0010011000</S><S>2000000~690000~120000~200000~300000~20000~10000~40000~1310000~500000~810000~22~178200~32000~146200~2000000~5000"
+'Barcode_Scaned str2
+'str2 = "aa999732300121087   0320130030030020020~22~1~429000</S><S>1~~tÊ ch¯c s˘ ki÷n~012345678~Ba ß◊nh- HN~123~14/07/2013~30/07/2013</S><S>Huy“n Tr©m~KTV~Hoµng Lan~20/12/2013~1~~~1053~~x</S></S02>"
+'Barcode_Scaned str2
+'
+''01/KK-XS:
+'str2 = "aa999482300121087   11201300100100100101/0101/01/2010<S01><S>0010011000</S><S>500000~400000~200000</S><S>Hoµng Lan~Huy“n Tr©m~KTV~20/12/2013~1~~</S></S01>"
+'Barcode_Scaned str2
+'
+''01/KK-BHDC:
+'str2 = "aa999252300121087   11201300100100100101/0101/01/1900<S01><S>0010011000</S><S>4000000~200000~100000~300000~30000~100000~10000~130000~30000~21000~161000</S><S>Hoµng Lan~20/12/2013~Huy“n Tr©m~KTV~1~~~0</S></S01>"
+'Barcode_Scaned str2
+
+''02/TNCN:
+'str2 = "aa999152300121087   11201300100100100101/0101/01/2010<S01><S>0010011000</S><S>5000~2000~120000~300000~400000~100000~340000~130000~100000~200000~60000~10000~40000</S><S>Hoµng Lan~20/12/2013~Huy“nTr©m~KTV~1~~</S></S01>"
+'Barcode_Scaned str2
+'
+'03/TNCN:
+str2 = "aa999502300121087   11201300100100100201/0101/01/2010<S01><S>0010011000</S><S>tÊ ch¯c khai thay ABC~0102030405~ßinh Li÷t - Hoµn Ki’m - HN~Hoµn Ki’m~HN~0987689965~015678889~abc@yahoo.com</S>"
 Barcode_Scaned str2
+str2 = "aa999502300121087   112013001001002002<S>3000000~150000~1200000~1200~6000000~300000~5000000~500000~2000000~20000~1000000~1000</S><S>Hoµng Lan~20/12/2013~Huy“n Tr©m~KTV~1~~</S></S01>"
+Barcode_Scaned str2
+'
+''07/TNCN:
+'str2 = "aa999362300121087   06201300100100100101/0101/01/2010<S07><S>0010011000</S><S>~30000000~2000000~6700000~4000000~1600000~500000~400000~200000~21300000~2610000~120000~5220~2604780~4000000~20~800000</S><S>Hoµng Lan~20/12/2013~Huy“n Tr©m~KTV~1~~~0</S></S07>"
+'Barcode_Scaned str2
+'
+''08/KK-TNCN:
+'str2 = "aa999742300121087   03201300100100100101/0101/01/1900<S01><S>0010011000</S><S>40000000~12000000~28000000~13650000~9000000~3600000~500000~300000~250000~14350000~717500~100000~1281~716219</S><S>Hoµng Lan~20/12/2013~Huy“n Tr©m~KTV~1~</S></S01>"
+'Barcode_Scaned str2
+'
+''08A/TNCN:
+'str2 = "aa999752300121087   03201300100100100201/0101/01/1900<S01><S>0010011000</S><S>80000000~5000000~60000000</S><S>Kh∏nh~0102030405~45.78~34335000~27468000~300000~34035000~2855250~1142100"
+'Barcode_Scaned str2
+'str2 = "aa999752300121087   032013001001002002~1713150~Linh~2300121087~54.22~40665000~32532000~400000~40265000~3789750~1515900~2273850</S><S>Hoµng Lan~20/12/2013~Huy“n Tr©m~KTV~1~</S></S01>"
+'Barcode_Scaned str2
+'
+''01/NTNN:
+'str2 = "aa999702300121087   10201300100100100201/0101/01/1900<S01><S>0010011000</S><S>nÈi dung 1~0102030405~hd001~4000000~12/10/2013~5000000~12.78~10~63900~3400000~34.67~200000~978780~1042680~nÈi dung 1~0010011000~hd002~6000000~15"
+'Barcode_Scaned str2
+'str2 = "aa999702300121087   102013001001002002/10/2013~4000000~11.45~5~22900~2890000~27.34~100000~690126~713026</S><S>40000000~100000~8000000~500000~1000000~1100000</S><S>~</S><S>Huy“nTr©m~KTV~Hoµng Lan~20/12/2013~1~~~</S></S01>"
+'Barcode_Scaned str2
+'
+''01/TTDB + PL dinh kem:
+'str2 = "aa999052300121087   10201300300300100501/0101/01/1900<S01><S>0010011000</S><S>~150000~100000.00~30000~0~20001</S><S>10200~L›t~34452.79~100000~66667.00~50.0~20000~0~13334~10300~L›t~456.78~50000~33333.00~50.0~10000~0~6667</S><S>20000~17391.00~2000~0~6"
+'Barcode_Scaned str2
+'str2 = "aa999052300121087   10201300300300200509</S><S>20500~~237.67~20000~17391.00~15.0~2000~0~609</S><S>0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>170000~117391.00~32000~0~20610</S><S>Hoµng Lan~Huy“n Tr©m~KTV~20/12/2013~1~~0~20610~~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999052300121087   102013003003003005<S01-1><S>KH001~S001~13/10/2013~Kh∏nh~10300~hµng h„a 1~346.35~2391.34~828240.609~KH001~S002~13/10/2013~Linh~10101~hµng h„a 2~123.67~1456.28~180098.1476</S><S>    Bia (50 %)~346.35~828241~    X◊ gµ (65 %)~123.67~180098</S></S01-1>"
+'Barcode_Scaned str2
+'str2 = "aa999052300121087   102013003003004005<S01-2><S>KH002~S001~16/10/2013~nguy™n li÷u 1~345.78~20000~1000~19000~KH003~S002~17/10/2013~"
+'Barcode_Scaned str2
+'str2 = "aa999052300121087   102013003003005005nguy™n li÷u 2~238.97~30000~1500~28500</S><S>m∆t hµng A~100~nguy™n li÷u ab~32~10</S></S01-2>"
+'Barcode_Scaned str2
+'
+''01/TAIN
+'str2 = "aa999062300121087   10201300200200100201/0114/06/2006<S01><S>0010011000</S><S>010103~Kg~345.789~12345.68~11.000~0~23.87~010208~Kg~456.782~0,00~0~30000~89.34</S><S>010213~Kg~543.367~2897.67~12.0"
+'Barcode_Scaned str2
+'str2 = "aa999062300121087   10201300200200200200~0~345.27</S><S>010208~Kg~653.715~3762.78~10.000~0~5987.34~010208~Kg~433.678~3243.89~10.000~0~3243.56</S><S>Huy“n Tr©m~KTV~~20/12/2013~1~~0~0~</S></S01>"
+'Barcode_Scaned str2
 
 End Sub
 
@@ -3293,14 +3391,14 @@ Private Sub InsertNode(xmlSectionTemplate As MSXML.IXMLDOMNode)
     
 End Sub
 
-Public Sub IncreaseRowInDOM(fpSpread1 As fpSpread, xmlDomData As MSXML.DOMDocument, ByVal pRow As Long, ByVal lRows As Long, ByVal lRow2s As Long)
+Public Sub IncreaseRowInDOM(fpSpread1 As fpSpread, xmlDOMdata As MSXML.DOMDocument, ByVal pRow As Long, ByVal lRows As Long, ByVal lRow2s As Long)
     On Error GoTo ErrorHandle
     
     Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
     Dim lCol As Long, lRow As Long, i As Long
         
-    If xmlDomData Is Nothing Then Exit Sub
-    Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
+    If xmlDOMdata Is Nothing Then Exit Sub
+    Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Cell")
     
     For i = xmlNodeListCell.length - 1 To 0 Step -1
         ParserCellID fpSpread1, GetAttribute(xmlNodeListCell(i), "CellID"), lCol, lRow
@@ -4293,6 +4391,40 @@ On Error GoTo ErrHandle
         If Not objTaxBusiness.Prepared2(rsPXL) Then Exit Function
     End If
     
+    'Load co quan thue KHBS
+    With fpSpread1
+        Dim CQT_CAPCUC    As Variant
+        Dim CQT_HOANTHUE  As Variant
+        Dim tCQT_CAPCUC   As String
+        Dim tCQT_HOANTHUE As String
+
+        If TAX_Utilities_Srv_New.NodeValidity.hasChildNodes Then
+            If GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(TAX_Utilities_Srv_New.NodeValidity.childNodes.length - 1), "ID") = "KHBS" Then
+                If GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(TAX_Utilities_Srv_New.NodeValidity.childNodes.length - 1), "Active") = "1" Then
+                    .Sheet = .SheetCount - 1
+                    .GetText .ColLetterToNumber("BI"), .MaxRows - 15, CQT_CAPCUC
+                    .GetText .ColLetterToNumber("BI"), .MaxRows - 13, CQT_HOANTHUE
+                    DataDM CQT_CAPCUC, tCQT_CAPCUC
+                    DataDM CQT_HOANTHUE, tCQT_HOANTHUE
+                    .Col = .ColLetterToNumber("BE")
+
+                    If tCQT_CAPCUC <> vbNullString Then
+                        .Row = .MaxRows - 15
+                        .Text = tCQT_CAPCUC
+
+                    End If
+
+                    If tCQT_HOANTHUE <> vbNullString Then
+                        .Row = .MaxRows - 13
+                        .Text = tCQT_HOANTHUE
+ 
+                    End If
+                End If
+            End If
+        End If
+    
+    End With
+    
     ' set ma CQT
     If Not objTaxBusiness Is Nothing Then
         If (Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) >= 64 And Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <= 68) Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 91 Then
@@ -4311,9 +4443,7 @@ On Error GoTo ErrHandle
     
     ' Set Phong quan ly
     If Not objTaxBusiness Is Nothing Then
-        If Val(LoaiTk) = 70 Or Val(LoaiTk) = 71 Or Val(LoaiTk) = 72 Or Val(LoaiTk) = 73 Or Val(LoaiTk) = 74 Or Val(LoaiTk) = 77 Or Val(LoaiTk) = 3 Or Val(LoaiTk) = 75 _
-        Or Val(LoaiTk) = 80 Or Val(LoaiTk) = 81 Or Val(LoaiTk) = 82 Or Val(LoaiTk) = 86 Or Val(LoaiTk) = 87 Or Val(LoaiTk) = 89 Or Val(LoaiTk) = 17 Or Val(LoaiTk) = 42 Or Val(LoaiTk) = 43 _
-        Or Val(LoaiTk) = 59 Or Val(LoaiTk) = 76 Or Val(LoaiTk) = 41 Then
+        If Val(LoaiTk) = 70 Or Val(LoaiTk) = 71 Or Val(LoaiTk) = 72 Or Val(LoaiTk) = 73 Or Val(LoaiTk) = 74 Or Val(LoaiTk) = 77 Or Val(LoaiTk) = 3 Or Val(LoaiTk) = 75 Or Val(LoaiTk) = 80 Or Val(LoaiTk) = 81 Or Val(LoaiTk) = 82 Or Val(LoaiTk) = 86 Or Val(LoaiTk) = 87 Or Val(LoaiTk) = 89 Or Val(LoaiTk) = 17 Or Val(LoaiTk) = 42 Or Val(LoaiTk) = 43 Or Val(LoaiTk) = 59 Or Val(LoaiTk) = 76 Or Val(LoaiTk) = 41 Then
             ' lay ma phong quan ly
             'Get Tax id
             strMST = Trim(Mid$(Left$(strData, 21), 6, 13))
@@ -5112,7 +5242,7 @@ ErrHandle:
     SaveErrorLog Me.Name, "SetupHeaderData", Err.Number, Err.Description
 End Sub
 
-Function GenerateSQL_Details(xmlDomData As MSXML.DOMDocument, strSQL_DTL As String, vHdrID As Variant, lPos As Long) As String
+Function GenerateSQL_Details(xmlDOMdata As MSXML.DOMDocument, strSQL_DTL As String, vHdrID As Variant, lPos As Long) As String
     Dim xmlListSection As MSXML.IXMLDOMNodeList
     Dim xmlNodeSection As MSXML.IXMLDOMNode
     Dim xmlList As MSXML.IXMLDOMNodeList
@@ -5123,14 +5253,14 @@ Function GenerateSQL_Details(xmlDomData As MSXML.DOMDocument, strSQL_DTL As Stri
     Dim i As Long, j As Long, strLoaiDL As String
     
 On Error GoTo ErrHandle
-    Set xmlListSection = xmlDomData.getElementsByTagName("Section")
+    Set xmlListSection = xmlDOMdata.getElementsByTagName("Section")
     For Each xmlNodeSection In xmlListSection
         If Trim(xmlNodeSection.Attributes.getNamedItem("Dynamic").nodeValue) = "1" Then
             iRowID = 0
             For i = 0 To xmlNodeSection.childNodes.length - 1
                 iRowID = iRowID + 1
                 For j = 0 To xmlNodeSection.childNodes(i).childNodes.length - 1
-                    Set xmlAttribute = xmlDomData.createAttribute("RowID")
+                    Set xmlAttribute = xmlDOMdata.createAttribute("RowID")
                     xmlAttribute.Value = iRowID
                     Set xmlNode = xmlNodeSection.childNodes(i).childNodes(j).Attributes.setNamedItem(xmlAttribute)
                     Set xmlAttribute = Nothing
@@ -5140,7 +5270,7 @@ On Error GoTo ErrHandle
     Next
         
     strLoaiDL = Trim(TAX_Utilities_Srv_New.NodeValidity.childNodes(lPos).Attributes.getNamedItem("DataFile").nodeValue)
-    Set xmlList = xmlDomData.getElementsByTagName("Cell")
+    Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     If xmlList.length > 0 Then GenerateSQL_Details = "begin"
     ' Them tham so nay de tinh cu 50 dong se bat dau ghi thanh mot block du lieu
     Dim rC As Integer
@@ -5178,7 +5308,7 @@ On Error GoTo ErrHandle
         clsDAO.Execute GenerateSQL_Details
         'clsDAO.CommitTrans
     End If
-    Set xmlDomData = Nothing
+    Set xmlDOMdata = Nothing
     Set xmlList = Nothing
     Set xmlListSection = Nothing
     Exit Function

@@ -781,7 +781,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "01_GTGT11"
+    vLOAI_TKHAI = "01_GTGT13"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
@@ -832,61 +832,65 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vDA_NHAN & "',"
     
     ' to khai thue co gia han
-    If UCase(Trim(v_CO_GIA_HAN)) = "'Y'" Then
-        If Trim(vGHI_CHU_LOI) = vbNullString Then
-           If TAX_Utilities_Srv_New.Year = 2012 And (TAX_Utilities_Srv_New.Month = 4 Or TAX_Utilities_Srv_New.Month = 5 Or TAX_Utilities_Srv_New.Month = 6) Then
-                If VMaLyDoGH = "01" Then
-                    strSQL = strSQL & "'DN VUA VA NHO GIA HAN THEO NQ13/NQ-CP',"
-                ElseIf VMaLyDoGH = "02" Then
-                    strSQL = strSQL & "'DN NHIEU LD GIA HAN THEO NQ13/NQ-CP',"
-                Else
-                    strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
-                End If
-            Else
-                'strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
+'    If UCase(Trim(v_CO_GIA_HAN)) = "'Y'" Then
+'        If Trim(vGHI_CHU_LOI) = vbNullString Then
+'           If TAX_Utilities_Srv_New.Year = 2012 And (TAX_Utilities_Srv_New.Month = 4 Or TAX_Utilities_Srv_New.Month = 5 Or TAX_Utilities_Srv_New.Month = 6) Then
 '                If VMaLyDoGH = "01" Then
-'                    strSQL = strSQL & "'DN VUA VA NHO GIA HAN THEO NQ 02/NQ-CP',"
+'                    strSQL = strSQL & "'DN VUA VA NHO GIA HAN THEO NQ13/NQ-CP',"
 '                ElseIf VMaLyDoGH = "02" Then
-'                    strSQL = strSQL & "'DN NHIEU LD GIA HAN THEO NQ 02/NQ-CP',"
-'                ElseIf VMaLyDoGH = "03" Then
-'                    strSQL = strSQL & "'DN DAU TU GIA HAN THEO NQ 02/NQ-CP',"
-'                ElseIf VMaLyDoGH = "99" Then
-'                    strSQL = strSQL & "'LY DO KHAC GIA HAN THEO NQ 02/NQ-CP',"
+'                    strSQL = strSQL & "'DN NHIEU LD GIA HAN THEO NQ13/NQ-CP',"
 '                Else
 '                    strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
 '                End If
-                 strSQL = strSQL & "'" & VMaLyDoGH & "',"
-            End If
-        Else
-            If TAX_Utilities_Srv_New.Year = 2012 And (TAX_Utilities_Srv_New.Month = 4 Or TAX_Utilities_Srv_New.Month = 5 Or TAX_Utilities_Srv_New.Month = 6) Then
-                If VMaLyDoGH = "01" Then
-                    strSQL = strSQL & "'DN VUA VA NHO GIA HAN THEO NQ13/NQ-CP; " & vGHI_CHU_LOI & "',"
-                ElseIf VMaLyDoGH = "02" Then
-                    strSQL = strSQL & "'DN NHIEU LD GIA HAN THEO NQ13/NQ-CP; " & vGHI_CHU_LOI & "',"
-                Else
-                    strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
-                End If
-            Else
+'            Else
+'                'strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
+''                If VMaLyDoGH = "01" Then
+''                    strSQL = strSQL & "'DN VUA VA NHO GIA HAN THEO NQ 02/NQ-CP',"
+''                ElseIf VMaLyDoGH = "02" Then
+''                    strSQL = strSQL & "'DN NHIEU LD GIA HAN THEO NQ 02/NQ-CP',"
+''                ElseIf VMaLyDoGH = "03" Then
+''                    strSQL = strSQL & "'DN DAU TU GIA HAN THEO NQ 02/NQ-CP',"
+''                ElseIf VMaLyDoGH = "99" Then
+''                    strSQL = strSQL & "'LY DO KHAC GIA HAN THEO NQ 02/NQ-CP',"
+''                Else
+''                    strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
+''                End If
+'                 strSQL = strSQL & "'" & VMaLyDoGH & "',"
+'            End If
+'        Else
+'            If TAX_Utilities_Srv_New.Year = 2012 And (TAX_Utilities_Srv_New.Month = 4 Or TAX_Utilities_Srv_New.Month = 5 Or TAX_Utilities_Srv_New.Month = 6) Then
 '                If VMaLyDoGH = "01" Then
 '                    strSQL = strSQL & "'DN VUA VA NHO GIA HAN THEO NQ13/NQ-CP; " & vGHI_CHU_LOI & "',"
 '                ElseIf VMaLyDoGH = "02" Then
 '                    strSQL = strSQL & "'DN NHIEU LD GIA HAN THEO NQ13/NQ-CP; " & vGHI_CHU_LOI & "',"
-'                ElseIf VMaLyDoGH = "03" Then
-'                    strSQL = strSQL & "'DN DAU TU GIA HAN THEO NQ13/NQ-CP; " & vGHI_CHU_LOI & "',"
-'                ElseIf VMaLyDoGH = "99" Then
-'                    strSQL = strSQL & "'LY DO KHAC GIA HAN THEO NQ13/NQ-CP; " & vGHI_CHU_LOI & "',"
 '                Else
 '                    strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
 '                End If
-                'strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
-                strSQL = strSQL & "'" & VMaLyDoGH & "; " & vGHI_CHU_LOI & "',"
-            End If
-            
-        End If
+'            Else
+''                If VMaLyDoGH = "01" Then
+''                    strSQL = strSQL & "'DN VUA VA NHO GIA HAN THEO NQ13/NQ-CP; " & vGHI_CHU_LOI & "',"
+''                ElseIf VMaLyDoGH = "02" Then
+''                    strSQL = strSQL & "'DN NHIEU LD GIA HAN THEO NQ13/NQ-CP; " & vGHI_CHU_LOI & "',"
+''                ElseIf VMaLyDoGH = "03" Then
+''                    strSQL = strSQL & "'DN DAU TU GIA HAN THEO NQ13/NQ-CP; " & vGHI_CHU_LOI & "',"
+''                ElseIf VMaLyDoGH = "99" Then
+''                    strSQL = strSQL & "'LY DO KHAC GIA HAN THEO NQ13/NQ-CP; " & vGHI_CHU_LOI & "',"
+''                Else
+''                    strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
+''                End If
+'                'strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
+'                strSQL = strSQL & "'" & VMaLyDoGH & "; " & vGHI_CHU_LOI & "',"
+'            End If
+'
+'        End If
+'    Else
+'        strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
+'    End If
+    If UCase(Trim(v_CO_GIA_HAN)) = "'Y'" Then
+        strSQL = strSQL & "'" & VMaLyDoGH & "; " & vGHI_CHU_LOI & "',"
     Else
         strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
     End If
-    
     
     'strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
     
