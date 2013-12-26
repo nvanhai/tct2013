@@ -260,6 +260,53 @@ Dim vKHBS
             .Row = i + TEMP
          Loop Until .Text = "aa"
          
+         .Row = .Row + 3
+        i = 0
+        TEMP = .Row
+        Do
+            strIdQLT = ""
+            varID = Empty
+            varDVT = Empty
+            varThueSuat = Empty
+            strDVT = vbNullString
+            strThueSuat = vbNullString
+            
+            'Lay gia tri Ma
+            .GetText .ColLetterToNumber("C"), i + TEMP, varID
+            
+            DataDM varID, strIdQLT, iTenTN, strDVT, strThueSuat, blnSuaThueSuat
+            
+            If strIdQLT <> vbNullString Then
+                'Kiem tra hieu luc danh muc tai nguyen
+                If (Not blnSuaThueSuat) And (Val(strMucThueAnDinh) = 0) _
+                    And CStr(varThueSuat) <> "" And strThueSuat <> "" Then
+                    If Val(strThueSuat) <> Val(CStr(varThueSuat)) Then
+                        DisplayMessage "0082", msOKOnly, miCriticalError
+                        Exit Function
+                    End If
+                End If
+               ' Lay ID update lai vao data file dung vao vi tri cua ma Bieu thue
+               .Col = .ColLetterToNumber("C")
+               .Row = i + TEMP
+               .Text = strIdQLT
+               UpdateCell fps, .Col, .Row, .Text
+               ' Lay ten va update lai vao data file
+               
+               .Col = .ColLetterToNumber("D")
+               .Row = i + TEMP
+               .Text = iTenTN
+               'UpdateCell fps, .Col, .Row, .Text
+
+                
+            ElseIf CStr(varID) <> vbNullString Then
+                DisplayMessage "0082", msOKOnly, miCriticalError
+                Exit Function
+            End If
+          
+             i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = i + TEMP
+         Loop Until .Text = "aa"
          
         ' Kiem tra xem co KHBS ko. Neu co thi Update lai MCT cua KHBS chinh la ID cua tung loai Hang hoa, dich vu cua bieu thue TTDB
         ' Trong KHBS, Cot C se luu ca mot dong bao gom Ten, Ma, Thue suat cua cac loai hang hoa
