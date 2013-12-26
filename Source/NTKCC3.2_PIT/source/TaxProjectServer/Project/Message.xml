@@ -158,4 +158,8 @@
 	<Infor ID="0158" Msg="Quý"/>
 	<Infor ID="0159" Msg="Ngày nộp không được lớn hơn ngày hiện tại."/>
 	<Infor ID="0160" Msg="Kỳ kê khai không được gia hạn thuế GTGT theo NQ13/NQ-CP. Đề nghị kiểm tra lại!"/>
+	<Infor ID="0161" Msg="Phân phối, cung cấp hàng hóa áp dụng thuế suất  1%"/>
+	<Infor ID="0162" Msg="Dịch vụ, xây dựng không bao thầu nguyên vật liệu áp dụng thuế suất 5%"/>
+	<Infor ID="0163" Msg="Sản xuất, vận tải, dịch vụ có gắn với hàng hóa, xây dựng có bao thầu nguyên vật liệu áp dụng thuế suất 3%"/>
+	<Infor ID="0164" Msg="Hoạt động kinh doanh khác áp dụng thuế suất  2%"/>
 </Message>

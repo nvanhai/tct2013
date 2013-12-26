@@ -2205,51 +2205,51 @@ Public Function InsertDTL_PL2() As String
             .Row = 25
             Do
                 LOAIHD = "''"
-                .GetText .ColLetterToNumber("C"), .Row, KYHIEU
+                .GetText .ColLetterToNumber("D"), .Row, KYHIEU
                 If Trim(KYHIEU) = vbNullString Then
                     KYHIEU = "''"
                 Else
                     KYHIEU = "'" & KYHIEU & "'"
                 End If
-                .GetText .ColLetterToNumber("D"), .Row, SOHDON
+                .GetText .ColLetterToNumber("E"), .Row, SOHDON
                 If Trim(SOHDON) = vbNullString Then
                     SOHDON = "''"
                 Else
                     SOHDON = "'" & SOHDON & "'"
                 End If
-                .GetText .ColLetterToNumber("E"), .Row, NGAYPH
+                .GetText .ColLetterToNumber("F"), .Row, NGAYPH
                 If Trim(NGAYPH) = vbNullString Then
                     NGAYPH = "CTOD('')"
                 Else
                     NGAYPH = ToDate(Trim(NGAYPH), DDMMYYYY)
                     NGAYPH = "CTOD('" & Format(NGAYPH, "mm/dd/yyyy") & "')"
                 End If
-                .GetText .ColLetterToNumber("F"), .Row, NGMUA
+                .GetText .ColLetterToNumber("G"), .Row, NGMUA
                 If Trim(NGMUA) = vbNullString Then
                     NGMUA = "''"
                 Else
                     NGMUA = "'" & TAX_Utilities_Svr_New.Convert(CStr(NGMUA), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("G"), .Row, MST
+                .GetText .ColLetterToNumber("H"), .Row, MST
                 If Trim(MST) = vbNullString Then
                     MST = "''"
                 Else
                     MST = "'" & MST & "'"
                 End If
-                .GetText .ColLetterToNumber("H"), .Row, HANG
+                .GetText .ColLetterToNumber("I"), .Row, HANG
                 If Trim(HANG) = vbNullString Then
                     HANG = "''"
                 Else
                     HANG = "'" & TAX_Utilities_Svr_New.Convert(CStr(HANG), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("I"), .Row, DSOCHUA
+                .GetText .ColLetterToNumber("J"), .Row, DSOCHUA
                 If Trim(DSOCHUA) = vbNullString Then
                     DSOCHUA = "0"
                 Else
                     DSOCHUA = DSOCHUA
                 End If
                 
-                .GetText .ColLetterToNumber("J"), .Row, THUESUAT
+                .GetText .ColLetterToNumber("K"), .Row, THUESUAT
                 If Trim(THUESUAT) = vbNullString Then
                     THUESUAT = "0"
                 Else
@@ -2257,7 +2257,7 @@ Public Function InsertDTL_PL2() As String
                 End If
                 
                 
-                .GetText .ColLetterToNumber("K"), .Row, THUEGTGT
+                .GetText .ColLetterToNumber("L"), .Row, THUEGTGT
                 If Trim(THUEGTGT) = vbNullString Then
                     THUEGTGT = "0"
                 Else
@@ -2268,7 +2268,7 @@ Public Function InsertDTL_PL2() As String
                 STT2 = i
                 STTIN = "'" & CStr(i) & "'"
                 
-                .GetText .ColLetterToNumber("L"), .Row, GHICHU
+                .GetText .ColLetterToNumber("M"), .Row, GHICHU
                 If Trim(GHICHU) = vbNullString Then
                     GHICHU = "''"
                 Else
@@ -2423,51 +2423,51 @@ Public Function InsertDTL_PL2_1()
             .Row = 25
             Do
                 LOAIHD = "''"
-                .GetText .ColLetterToNumber("C"), .Row, KYHIEU
+                .GetText .ColLetterToNumber("D"), .Row, KYHIEU
                 If Trim(KYHIEU) = vbNullString Then
                     KYHIEU = "''"
                 Else
                     KYHIEU = "'" & KYHIEU & "'"
                 End If
-                .GetText .ColLetterToNumber("D"), .Row, SOHDON
+                .GetText .ColLetterToNumber("E"), .Row, SOHDON
                 If Trim(SOHDON) = vbNullString Then
                     SOHDON = "''"
                 Else
                     SOHDON = "'" & SOHDON & "'"
                 End If
-                .GetText .ColLetterToNumber("E"), .Row, NGAYPH
+                .GetText .ColLetterToNumber("F"), .Row, NGAYPH
                 If Trim(NGAYPH) = vbNullString Then
                     NGAYPH = "CTOD('')"
                 Else
                     NGAYPH = ToDate(Trim(NGAYPH), DDMMYYYY)
                     NGAYPH = "CTOD('" & Format(NGAYPH, "mm/dd/yyyy") & "')"
                 End If
-                .GetText .ColLetterToNumber("F"), .Row, NGMUA
+                .GetText .ColLetterToNumber("G"), .Row, NGMUA
                 If Trim(NGMUA) = vbNullString Then
                     NGMUA = "''"
                 Else
                     NGMUA = "'" & TAX_Utilities_Svr_New.Convert(CStr(NGMUA), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("G"), .Row, MST
+                .GetText .ColLetterToNumber("H"), .Row, MST
                 If Trim(MST) = vbNullString Then
                     MST = "''"
                 Else
                     MST = "'" & MST & "'"
                 End If
-                .GetText .ColLetterToNumber("H"), .Row, HANG
+                .GetText .ColLetterToNumber("I"), .Row, HANG
                 If Trim(HANG) = vbNullString Then
                     HANG = "''"
                 Else
                     HANG = "'" & TAX_Utilities_Svr_New.Convert(CStr(HANG), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("I"), .Row, DSOCHUA
+                .GetText .ColLetterToNumber("J"), .Row, DSOCHUA
                 If Trim(DSOCHUA) = vbNullString Then
                     DSOCHUA = "0"
                 Else
                     DSOCHUA = DSOCHUA
                 End If
                 
-                .GetText .ColLetterToNumber("J"), .Row, THUESUAT
+                .GetText .ColLetterToNumber("K"), .Row, THUESUAT
                 If Trim(THUESUAT) = vbNullString Then
                     THUESUAT = "0"
                 Else
@@ -2475,7 +2475,7 @@ Public Function InsertDTL_PL2_1()
                 End If
                 
                 
-                .GetText .ColLetterToNumber("K"), .Row, THUEGTGT
+                .GetText .ColLetterToNumber("L"), .Row, THUEGTGT
                 If Trim(THUEGTGT) = vbNullString Then
                     THUEGTGT = "0"
                 Else
@@ -2486,13 +2486,12 @@ Public Function InsertDTL_PL2_1()
                 STT2 = i
                 STTIN = "'" & CStr(i) & "'"
                 
-                .GetText .ColLetterToNumber("L"), .Row, GHICHU
+                .GetText .ColLetterToNumber("M"), .Row, GHICHU
                 If Trim(GHICHU) = vbNullString Then
                     GHICHU = "''"
                 Else
                     GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
                 End If
-                
                 MAPL = "'PL02_1GTKT'"
                 
                 sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
@@ -2642,51 +2641,51 @@ Public Function InsertDTL_PL2_2()
             .Row = 25
             Do
                 LOAIHD = "''"
-                .GetText .ColLetterToNumber("C"), .Row, KYHIEU
+                .GetText .ColLetterToNumber("D"), .Row, KYHIEU
                 If Trim(KYHIEU) = vbNullString Then
                     KYHIEU = "''"
                 Else
                     KYHIEU = "'" & KYHIEU & "'"
                 End If
-                .GetText .ColLetterToNumber("D"), .Row, SOHDON
+                .GetText .ColLetterToNumber("E"), .Row, SOHDON
                 If Trim(SOHDON) = vbNullString Then
                     SOHDON = "''"
                 Else
                     SOHDON = "'" & SOHDON & "'"
                 End If
-                .GetText .ColLetterToNumber("E"), .Row, NGAYPH
+                .GetText .ColLetterToNumber("F"), .Row, NGAYPH
                 If Trim(NGAYPH) = vbNullString Then
                     NGAYPH = "CTOD('')"
                 Else
                     NGAYPH = ToDate(Trim(NGAYPH), DDMMYYYY)
                     NGAYPH = "CTOD('" & Format(NGAYPH, "mm/dd/yyyy") & "')"
                 End If
-                .GetText .ColLetterToNumber("F"), .Row, NGMUA
+                .GetText .ColLetterToNumber("G"), .Row, NGMUA
                 If Trim(NGMUA) = vbNullString Then
                     NGMUA = "''"
                 Else
                     NGMUA = "'" & TAX_Utilities_Svr_New.Convert(CStr(NGMUA), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("G"), .Row, MST
+                .GetText .ColLetterToNumber("H"), .Row, MST
                 If Trim(MST) = vbNullString Then
                     MST = "''"
                 Else
                     MST = "'" & MST & "'"
                 End If
-                .GetText .ColLetterToNumber("H"), .Row, HANG
+                .GetText .ColLetterToNumber("I"), .Row, HANG
                 If Trim(HANG) = vbNullString Then
                     HANG = "''"
                 Else
                     HANG = "'" & TAX_Utilities_Svr_New.Convert(CStr(HANG), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("I"), .Row, DSOCHUA
+                .GetText .ColLetterToNumber("J"), .Row, DSOCHUA
                 If Trim(DSOCHUA) = vbNullString Then
                     DSOCHUA = "0"
                 Else
                     DSOCHUA = DSOCHUA
                 End If
                 
-                .GetText .ColLetterToNumber("J"), .Row, THUESUAT
+                .GetText .ColLetterToNumber("K"), .Row, THUESUAT
                 If Trim(THUESUAT) = vbNullString Then
                     THUESUAT = "0"
                 Else
@@ -2694,7 +2693,7 @@ Public Function InsertDTL_PL2_2()
                 End If
                 
                 
-                .GetText .ColLetterToNumber("K"), .Row, THUEGTGT
+                .GetText .ColLetterToNumber("L"), .Row, THUEGTGT
                 If Trim(THUEGTGT) = vbNullString Then
                     THUEGTGT = "0"
                 Else
@@ -2705,13 +2704,12 @@ Public Function InsertDTL_PL2_2()
                 STT2 = i
                 STTIN = "'" & CStr(i) & "'"
                 
-                .GetText .ColLetterToNumber("L"), .Row, GHICHU
+                .GetText .ColLetterToNumber("M"), .Row, GHICHU
                 If Trim(GHICHU) = vbNullString Then
                     GHICHU = "''"
                 Else
                     GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
                 End If
-                
                 MAPL = "'PL02_2GTKT'"
                 
                 sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
@@ -2859,51 +2857,51 @@ Public Function InsertDTL_PL2_3()
             .Row = 25
             Do
                 LOAIHD = "''"
-                .GetText .ColLetterToNumber("C"), .Row, KYHIEU
+                .GetText .ColLetterToNumber("D"), .Row, KYHIEU
                 If Trim(KYHIEU) = vbNullString Then
                     KYHIEU = "''"
                 Else
                     KYHIEU = "'" & KYHIEU & "'"
                 End If
-                .GetText .ColLetterToNumber("D"), .Row, SOHDON
+                .GetText .ColLetterToNumber("E"), .Row, SOHDON
                 If Trim(SOHDON) = vbNullString Then
                     SOHDON = "''"
                 Else
                     SOHDON = "'" & SOHDON & "'"
                 End If
-                .GetText .ColLetterToNumber("E"), .Row, NGAYPH
+                .GetText .ColLetterToNumber("F"), .Row, NGAYPH
                 If Trim(NGAYPH) = vbNullString Then
                     NGAYPH = "CTOD('')"
                 Else
                     NGAYPH = ToDate(Trim(NGAYPH), DDMMYYYY)
                     NGAYPH = "CTOD('" & Format(NGAYPH, "mm/dd/yyyy") & "')"
                 End If
-                .GetText .ColLetterToNumber("F"), .Row, NGMUA
+                .GetText .ColLetterToNumber("G"), .Row, NGMUA
                 If Trim(NGMUA) = vbNullString Then
                     NGMUA = "''"
                 Else
                     NGMUA = "'" & TAX_Utilities_Svr_New.Convert(CStr(NGMUA), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("G"), .Row, MST
+                .GetText .ColLetterToNumber("H"), .Row, MST
                 If Trim(MST) = vbNullString Then
                     MST = "''"
                 Else
                     MST = "'" & MST & "'"
                 End If
-                .GetText .ColLetterToNumber("H"), .Row, HANG
+                .GetText .ColLetterToNumber("I"), .Row, HANG
                 If Trim(HANG) = vbNullString Then
                     HANG = "''"
                 Else
                     HANG = "'" & TAX_Utilities_Svr_New.Convert(CStr(HANG), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("I"), .Row, DSOCHUA
+                .GetText .ColLetterToNumber("J"), .Row, DSOCHUA
                 If Trim(DSOCHUA) = vbNullString Then
                     DSOCHUA = "0"
                 Else
                     DSOCHUA = DSOCHUA
                 End If
                 
-                .GetText .ColLetterToNumber("J"), .Row, THUESUAT
+                .GetText .ColLetterToNumber("K"), .Row, THUESUAT
                 If Trim(THUESUAT) = vbNullString Then
                     THUESUAT = "0"
                 Else
@@ -2911,7 +2909,7 @@ Public Function InsertDTL_PL2_3()
                 End If
                 
                 
-                .GetText .ColLetterToNumber("K"), .Row, THUEGTGT
+                .GetText .ColLetterToNumber("L"), .Row, THUEGTGT
                 If Trim(THUEGTGT) = vbNullString Then
                     THUEGTGT = "0"
                 Else
@@ -2922,13 +2920,12 @@ Public Function InsertDTL_PL2_3()
                 STT2 = i
                 STTIN = "'" & CStr(i) & "'"
                 
-                .GetText .ColLetterToNumber("L"), .Row, GHICHU
+                .GetText .ColLetterToNumber("M"), .Row, GHICHU
                 If Trim(GHICHU) = vbNullString Then
                     GHICHU = "''"
                 Else
                     GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
                 End If
-                
                 MAPL = "'PL02_3GTKT'"
                 
                 sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
@@ -3076,51 +3073,51 @@ Public Function InsertDTL_PL2_4()
             .Row = 25
             Do
                 LOAIHD = "''"
-                .GetText .ColLetterToNumber("C"), .Row, KYHIEU
+                .GetText .ColLetterToNumber("D"), .Row, KYHIEU
                 If Trim(KYHIEU) = vbNullString Then
                     KYHIEU = "''"
                 Else
                     KYHIEU = "'" & KYHIEU & "'"
                 End If
-                .GetText .ColLetterToNumber("D"), .Row, SOHDON
+                .GetText .ColLetterToNumber("E"), .Row, SOHDON
                 If Trim(SOHDON) = vbNullString Then
                     SOHDON = "''"
                 Else
                     SOHDON = "'" & SOHDON & "'"
                 End If
-                .GetText .ColLetterToNumber("E"), .Row, NGAYPH
+                .GetText .ColLetterToNumber("F"), .Row, NGAYPH
                 If Trim(NGAYPH) = vbNullString Then
                     NGAYPH = "CTOD('')"
                 Else
                     NGAYPH = ToDate(Trim(NGAYPH), DDMMYYYY)
                     NGAYPH = "CTOD('" & Format(NGAYPH, "mm/dd/yyyy") & "')"
                 End If
-                .GetText .ColLetterToNumber("F"), .Row, NGMUA
+                .GetText .ColLetterToNumber("G"), .Row, NGMUA
                 If Trim(NGMUA) = vbNullString Then
                     NGMUA = "''"
                 Else
                     NGMUA = "'" & TAX_Utilities_Svr_New.Convert(CStr(NGMUA), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("G"), .Row, MST
+                .GetText .ColLetterToNumber("H"), .Row, MST
                 If Trim(MST) = vbNullString Then
                     MST = "''"
                 Else
                     MST = "'" & MST & "'"
                 End If
-                .GetText .ColLetterToNumber("H"), .Row, HANG
+                .GetText .ColLetterToNumber("I"), .Row, HANG
                 If Trim(HANG) = vbNullString Then
                     HANG = "''"
                 Else
                     HANG = "'" & TAX_Utilities_Svr_New.Convert(CStr(HANG), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("I"), .Row, DSOCHUA
+                .GetText .ColLetterToNumber("J"), .Row, DSOCHUA
                 If Trim(DSOCHUA) = vbNullString Then
                     DSOCHUA = "0"
                 Else
                     DSOCHUA = DSOCHUA
                 End If
                 
-                .GetText .ColLetterToNumber("J"), .Row, THUESUAT
+                .GetText .ColLetterToNumber("K"), .Row, THUESUAT
                 If Trim(THUESUAT) = vbNullString Then
                     THUESUAT = "0"
                 Else
@@ -3128,7 +3125,7 @@ Public Function InsertDTL_PL2_4()
                 End If
                 
                 
-                .GetText .ColLetterToNumber("K"), .Row, THUEGTGT
+                .GetText .ColLetterToNumber("L"), .Row, THUEGTGT
                 If Trim(THUEGTGT) = vbNullString Then
                     THUEGTGT = "0"
                 Else
@@ -3139,13 +3136,12 @@ Public Function InsertDTL_PL2_4()
                 STT2 = i
                 STTIN = "'" & CStr(i) & "'"
                 
-                .GetText .ColLetterToNumber("L"), .Row, GHICHU
+                .GetText .ColLetterToNumber("M"), .Row, GHICHU
                 If Trim(GHICHU) = vbNullString Then
                     GHICHU = "''"
                 Else
                     GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
                 End If
-                
                 MAPL = "'PL02_4GTKT'"
                 
                 sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
@@ -3294,51 +3290,51 @@ Public Function InsertDTL_PL2_5()
             .Row = 25
             Do
                 LOAIHD = "''"
-                .GetText .ColLetterToNumber("C"), .Row, KYHIEU
+                .GetText .ColLetterToNumber("D"), .Row, KYHIEU
                 If Trim(KYHIEU) = vbNullString Then
                     KYHIEU = "''"
                 Else
                     KYHIEU = "'" & KYHIEU & "'"
                 End If
-                .GetText .ColLetterToNumber("D"), .Row, SOHDON
+                .GetText .ColLetterToNumber("E"), .Row, SOHDON
                 If Trim(SOHDON) = vbNullString Then
                     SOHDON = "''"
                 Else
                     SOHDON = "'" & SOHDON & "'"
                 End If
-                .GetText .ColLetterToNumber("E"), .Row, NGAYPH
+                .GetText .ColLetterToNumber("F"), .Row, NGAYPH
                 If Trim(NGAYPH) = vbNullString Then
                     NGAYPH = "CTOD('')"
                 Else
                     NGAYPH = ToDate(Trim(NGAYPH), DDMMYYYY)
                     NGAYPH = "CTOD('" & Format(NGAYPH, "mm/dd/yyyy") & "')"
                 End If
-                .GetText .ColLetterToNumber("F"), .Row, NGMUA
+                .GetText .ColLetterToNumber("G"), .Row, NGMUA
                 If Trim(NGMUA) = vbNullString Then
                     NGMUA = "''"
                 Else
                     NGMUA = "'" & TAX_Utilities_Svr_New.Convert(CStr(NGMUA), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("G"), .Row, MST
+                .GetText .ColLetterToNumber("H"), .Row, MST
                 If Trim(MST) = vbNullString Then
                     MST = "''"
                 Else
                     MST = "'" & MST & "'"
                 End If
-                .GetText .ColLetterToNumber("H"), .Row, HANG
+                .GetText .ColLetterToNumber("I"), .Row, HANG
                 If Trim(HANG) = vbNullString Then
                     HANG = "''"
                 Else
                     HANG = "'" & TAX_Utilities_Svr_New.Convert(CStr(HANG), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("I"), .Row, DSOCHUA
+                .GetText .ColLetterToNumber("J"), .Row, DSOCHUA
                 If Trim(DSOCHUA) = vbNullString Then
                     DSOCHUA = "0"
                 Else
                     DSOCHUA = DSOCHUA
                 End If
                 
-                .GetText .ColLetterToNumber("J"), .Row, THUESUAT
+                .GetText .ColLetterToNumber("K"), .Row, THUESUAT
                 If Trim(THUESUAT) = vbNullString Then
                     THUESUAT = "0"
                 Else
@@ -3346,7 +3342,7 @@ Public Function InsertDTL_PL2_5()
                 End If
                 
                 
-                .GetText .ColLetterToNumber("K"), .Row, THUEGTGT
+                .GetText .ColLetterToNumber("L"), .Row, THUEGTGT
                 If Trim(THUEGTGT) = vbNullString Then
                     THUEGTGT = "0"
                 Else
@@ -3357,13 +3353,12 @@ Public Function InsertDTL_PL2_5()
                 STT2 = i
                 STTIN = "'" & CStr(i) & "'"
                 
-                .GetText .ColLetterToNumber("L"), .Row, GHICHU
+                .GetText .ColLetterToNumber("M"), .Row, GHICHU
                 If Trim(GHICHU) = vbNullString Then
                     GHICHU = "''"
                 Else
                     GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
                 End If
-                
                 MAPL = "'PL02_5GTKT'"
                 
                 sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
@@ -3511,51 +3506,51 @@ Public Function InsertDTL_PL2_6()
             .Row = 25
             Do
                 LOAIHD = "''"
-                .GetText .ColLetterToNumber("C"), .Row, KYHIEU
+                .GetText .ColLetterToNumber("D"), .Row, KYHIEU
                 If Trim(KYHIEU) = vbNullString Then
                     KYHIEU = "''"
                 Else
                     KYHIEU = "'" & KYHIEU & "'"
                 End If
-                .GetText .ColLetterToNumber("D"), .Row, SOHDON
+                .GetText .ColLetterToNumber("E"), .Row, SOHDON
                 If Trim(SOHDON) = vbNullString Then
                     SOHDON = "''"
                 Else
                     SOHDON = "'" & SOHDON & "'"
                 End If
-                .GetText .ColLetterToNumber("E"), .Row, NGAYPH
+                .GetText .ColLetterToNumber("F"), .Row, NGAYPH
                 If Trim(NGAYPH) = vbNullString Then
                     NGAYPH = "CTOD('')"
                 Else
                     NGAYPH = ToDate(Trim(NGAYPH), DDMMYYYY)
                     NGAYPH = "CTOD('" & Format(NGAYPH, "mm/dd/yyyy") & "')"
                 End If
-                .GetText .ColLetterToNumber("F"), .Row, NGMUA
+                .GetText .ColLetterToNumber("G"), .Row, NGMUA
                 If Trim(NGMUA) = vbNullString Then
                     NGMUA = "''"
                 Else
                     NGMUA = "'" & TAX_Utilities_Svr_New.Convert(CStr(NGMUA), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("G"), .Row, MST
+                .GetText .ColLetterToNumber("H"), .Row, MST
                 If Trim(MST) = vbNullString Then
                     MST = "''"
                 Else
                     MST = "'" & MST & "'"
                 End If
-                .GetText .ColLetterToNumber("H"), .Row, HANG
+                .GetText .ColLetterToNumber("I"), .Row, HANG
                 If Trim(HANG) = vbNullString Then
                     HANG = "''"
                 Else
                     HANG = "'" & TAX_Utilities_Svr_New.Convert(CStr(HANG), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("I"), .Row, DSOCHUA
+                .GetText .ColLetterToNumber("J"), .Row, DSOCHUA
                 If Trim(DSOCHUA) = vbNullString Then
                     DSOCHUA = "0"
                 Else
                     DSOCHUA = DSOCHUA
                 End If
                 
-                .GetText .ColLetterToNumber("J"), .Row, THUESUAT
+                .GetText .ColLetterToNumber("K"), .Row, THUESUAT
                 If Trim(THUESUAT) = vbNullString Then
                     THUESUAT = "0"
                 Else
@@ -3563,7 +3558,7 @@ Public Function InsertDTL_PL2_6()
                 End If
                 
                 
-                .GetText .ColLetterToNumber("K"), .Row, THUEGTGT
+                .GetText .ColLetterToNumber("L"), .Row, THUEGTGT
                 If Trim(THUEGTGT) = vbNullString Then
                     THUEGTGT = "0"
                 Else
@@ -3574,13 +3569,12 @@ Public Function InsertDTL_PL2_6()
                 STT2 = i
                 STTIN = "'" & CStr(i) & "'"
                 
-                .GetText .ColLetterToNumber("L"), .Row, GHICHU
+                .GetText .ColLetterToNumber("M"), .Row, GHICHU
                 If Trim(GHICHU) = vbNullString Then
                     GHICHU = "''"
                 Else
                     GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
                 End If
-                
                 MAPL = "'PL02_6GTKT'"
                 
                 sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
@@ -3728,51 +3722,51 @@ Public Function InsertDTL_PL2_7()
             .Row = 25
             Do
                 LOAIHD = "''"
-                .GetText .ColLetterToNumber("C"), .Row, KYHIEU
+                .GetText .ColLetterToNumber("D"), .Row, KYHIEU
                 If Trim(KYHIEU) = vbNullString Then
                     KYHIEU = "''"
                 Else
                     KYHIEU = "'" & KYHIEU & "'"
                 End If
-                .GetText .ColLetterToNumber("D"), .Row, SOHDON
+                .GetText .ColLetterToNumber("E"), .Row, SOHDON
                 If Trim(SOHDON) = vbNullString Then
                     SOHDON = "''"
                 Else
                     SOHDON = "'" & SOHDON & "'"
                 End If
-                .GetText .ColLetterToNumber("E"), .Row, NGAYPH
+                .GetText .ColLetterToNumber("F"), .Row, NGAYPH
                 If Trim(NGAYPH) = vbNullString Then
                     NGAYPH = "CTOD('')"
                 Else
                     NGAYPH = ToDate(Trim(NGAYPH), DDMMYYYY)
                     NGAYPH = "CTOD('" & Format(NGAYPH, "mm/dd/yyyy") & "')"
                 End If
-                .GetText .ColLetterToNumber("F"), .Row, NGMUA
+                .GetText .ColLetterToNumber("G"), .Row, NGMUA
                 If Trim(NGMUA) = vbNullString Then
                     NGMUA = "''"
                 Else
                     NGMUA = "'" & TAX_Utilities_Svr_New.Convert(CStr(NGMUA), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("G"), .Row, MST
+                .GetText .ColLetterToNumber("H"), .Row, MST
                 If Trim(MST) = vbNullString Then
                     MST = "''"
                 Else
                     MST = "'" & MST & "'"
                 End If
-                .GetText .ColLetterToNumber("H"), .Row, HANG
+                .GetText .ColLetterToNumber("I"), .Row, HANG
                 If Trim(HANG) = vbNullString Then
                     HANG = "''"
                 Else
                     HANG = "'" & TAX_Utilities_Svr_New.Convert(CStr(HANG), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("I"), .Row, DSOCHUA
+                .GetText .ColLetterToNumber("J"), .Row, DSOCHUA
                 If Trim(DSOCHUA) = vbNullString Then
                     DSOCHUA = "0"
                 Else
                     DSOCHUA = DSOCHUA
                 End If
                 
-                .GetText .ColLetterToNumber("J"), .Row, THUESUAT
+                .GetText .ColLetterToNumber("K"), .Row, THUESUAT
                 If Trim(THUESUAT) = vbNullString Then
                     THUESUAT = "0"
                 Else
@@ -3780,7 +3774,7 @@ Public Function InsertDTL_PL2_7()
                 End If
                 
                 
-                .GetText .ColLetterToNumber("K"), .Row, THUEGTGT
+                .GetText .ColLetterToNumber("L"), .Row, THUEGTGT
                 If Trim(THUEGTGT) = vbNullString Then
                     THUEGTGT = "0"
                 Else
@@ -3791,7 +3785,7 @@ Public Function InsertDTL_PL2_7()
                 STT2 = i
                 STTIN = "'" & CStr(i) & "'"
                 
-                .GetText .ColLetterToNumber("L"), .Row, GHICHU
+                .GetText .ColLetterToNumber("M"), .Row, GHICHU
                 If Trim(GHICHU) = vbNullString Then
                     GHICHU = "''"
                 Else
@@ -3946,51 +3940,51 @@ Public Function InsertDTL_PL2_8()
             .Row = 25
             Do
                 LOAIHD = "''"
-                .GetText .ColLetterToNumber("C"), .Row, KYHIEU
+                .GetText .ColLetterToNumber("D"), .Row, KYHIEU
                 If Trim(KYHIEU) = vbNullString Then
                     KYHIEU = "''"
                 Else
                     KYHIEU = "'" & KYHIEU & "'"
                 End If
-                .GetText .ColLetterToNumber("D"), .Row, SOHDON
+                .GetText .ColLetterToNumber("E"), .Row, SOHDON
                 If Trim(SOHDON) = vbNullString Then
                     SOHDON = "''"
                 Else
                     SOHDON = "'" & SOHDON & "'"
                 End If
-                .GetText .ColLetterToNumber("E"), .Row, NGAYPH
+                .GetText .ColLetterToNumber("F"), .Row, NGAYPH
                 If Trim(NGAYPH) = vbNullString Then
                     NGAYPH = "CTOD('')"
                 Else
                     NGAYPH = ToDate(Trim(NGAYPH), DDMMYYYY)
                     NGAYPH = "CTOD('" & Format(NGAYPH, "mm/dd/yyyy") & "')"
                 End If
-                .GetText .ColLetterToNumber("F"), .Row, NGMUA
+                .GetText .ColLetterToNumber("G"), .Row, NGMUA
                 If Trim(NGMUA) = vbNullString Then
                     NGMUA = "''"
                 Else
                     NGMUA = "'" & TAX_Utilities_Svr_New.Convert(CStr(NGMUA), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("G"), .Row, MST
+                .GetText .ColLetterToNumber("H"), .Row, MST
                 If Trim(MST) = vbNullString Then
                     MST = "''"
                 Else
                     MST = "'" & MST & "'"
                 End If
-                .GetText .ColLetterToNumber("H"), .Row, HANG
+                .GetText .ColLetterToNumber("I"), .Row, HANG
                 If Trim(HANG) = vbNullString Then
                     HANG = "''"
                 Else
                     HANG = "'" & TAX_Utilities_Svr_New.Convert(CStr(HANG), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("I"), .Row, DSOCHUA
+                .GetText .ColLetterToNumber("J"), .Row, DSOCHUA
                 If Trim(DSOCHUA) = vbNullString Then
                     DSOCHUA = "0"
                 Else
                     DSOCHUA = DSOCHUA
                 End If
                 
-                .GetText .ColLetterToNumber("J"), .Row, THUESUAT
+                .GetText .ColLetterToNumber("K"), .Row, THUESUAT
                 If Trim(THUESUAT) = vbNullString Then
                     THUESUAT = "0"
                 Else
@@ -3998,7 +3992,7 @@ Public Function InsertDTL_PL2_8()
                 End If
                 
                 
-                .GetText .ColLetterToNumber("K"), .Row, THUEGTGT
+                .GetText .ColLetterToNumber("L"), .Row, THUEGTGT
                 If Trim(THUEGTGT) = vbNullString Then
                     THUEGTGT = "0"
                 Else
@@ -4009,13 +4003,12 @@ Public Function InsertDTL_PL2_8()
                 STT2 = i
                 STTIN = "'" & CStr(i) & "'"
                 
-                .GetText .ColLetterToNumber("L"), .Row, GHICHU
+                .GetText .ColLetterToNumber("M"), .Row, GHICHU
                 If Trim(GHICHU) = vbNullString Then
                     GHICHU = "''"
                 Else
                     GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
                 End If
-                
                 MAPL = "'PL02_8GTKT'"
                 
                 sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
@@ -4164,51 +4157,51 @@ Public Function InsertDTL_PL2_9()
             .Row = 25
             Do
                 LOAIHD = "''"
-                .GetText .ColLetterToNumber("C"), .Row, KYHIEU
+                .GetText .ColLetterToNumber("D"), .Row, KYHIEU
                 If Trim(KYHIEU) = vbNullString Then
                     KYHIEU = "''"
                 Else
                     KYHIEU = "'" & KYHIEU & "'"
                 End If
-                .GetText .ColLetterToNumber("D"), .Row, SOHDON
+                .GetText .ColLetterToNumber("E"), .Row, SOHDON
                 If Trim(SOHDON) = vbNullString Then
                     SOHDON = "''"
                 Else
                     SOHDON = "'" & SOHDON & "'"
                 End If
-                .GetText .ColLetterToNumber("E"), .Row, NGAYPH
+                .GetText .ColLetterToNumber("F"), .Row, NGAYPH
                 If Trim(NGAYPH) = vbNullString Then
                     NGAYPH = "CTOD('')"
                 Else
                     NGAYPH = ToDate(Trim(NGAYPH), DDMMYYYY)
                     NGAYPH = "CTOD('" & Format(NGAYPH, "mm/dd/yyyy") & "')"
                 End If
-                .GetText .ColLetterToNumber("F"), .Row, NGMUA
+                .GetText .ColLetterToNumber("G"), .Row, NGMUA
                 If Trim(NGMUA) = vbNullString Then
                     NGMUA = "''"
                 Else
                     NGMUA = "'" & TAX_Utilities_Svr_New.Convert(CStr(NGMUA), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("G"), .Row, MST
+                .GetText .ColLetterToNumber("H"), .Row, MST
                 If Trim(MST) = vbNullString Then
                     MST = "''"
                 Else
                     MST = "'" & MST & "'"
                 End If
-                .GetText .ColLetterToNumber("H"), .Row, HANG
+                .GetText .ColLetterToNumber("I"), .Row, HANG
                 If Trim(HANG) = vbNullString Then
                     HANG = "''"
                 Else
                     HANG = "'" & TAX_Utilities_Svr_New.Convert(CStr(HANG), UNICODE, TCVN) & "'"
                 End If
-                .GetText .ColLetterToNumber("I"), .Row, DSOCHUA
+                .GetText .ColLetterToNumber("J"), .Row, DSOCHUA
                 If Trim(DSOCHUA) = vbNullString Then
                     DSOCHUA = "0"
                 Else
                     DSOCHUA = DSOCHUA
                 End If
                 
-                .GetText .ColLetterToNumber("J"), .Row, THUESUAT
+                .GetText .ColLetterToNumber("K"), .Row, THUESUAT
                 If Trim(THUESUAT) = vbNullString Then
                     THUESUAT = "0"
                 Else
@@ -4216,7 +4209,7 @@ Public Function InsertDTL_PL2_9()
                 End If
                 
                 
-                .GetText .ColLetterToNumber("K"), .Row, THUEGTGT
+                .GetText .ColLetterToNumber("L"), .Row, THUEGTGT
                 If Trim(THUEGTGT) = vbNullString Then
                     THUEGTGT = "0"
                 Else
@@ -4227,13 +4220,12 @@ Public Function InsertDTL_PL2_9()
                 STT2 = i
                 STTIN = "'" & CStr(i) & "'"
                 
-                .GetText .ColLetterToNumber("L"), .Row, GHICHU
+                .GetText .ColLetterToNumber("M"), .Row, GHICHU
                 If Trim(GHICHU) = vbNullString Then
                     GHICHU = "''"
                 Else
                     GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
                 End If
-                
                 MAPL = "'PL02_9GTKT'"
                 
                 sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & _
@@ -4314,8 +4306,8 @@ Public Function InsertHDR() As String
     With fps
         .Sheet = 1
         'lay ten nhan vien dai ly thue, chung chi hanh nghe
-        .GetText .ColLetterToNumber("H"), 57, TENNV
-        .GetText .ColLetterToNumber("H"), 59, CHUNGCHI
+        .GetText .ColLetterToNumber("H"), 60, TENNV
+        .GetText .ColLetterToNumber("H"), 62, CHUNGCHI
         'set cac chi so
         DSoCL = "0"
         GTTTCL = "0"

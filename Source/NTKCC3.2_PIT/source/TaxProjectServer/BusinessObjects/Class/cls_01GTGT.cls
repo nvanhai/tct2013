@@ -4132,7 +4132,7 @@ Public Function InsertDTL_PL016() As String
   Dim THUEPN2 As Variant
   Dim DANHAN As Variant
   Dim CQUANQL As Variant
-  sSQLCol = "MADTNT,NGNOP,TTHTK,KYLBO,KYKKHAI,MATKHAI,TENCSSX,MADTNT1,THUE5,THUE10,TONGDT,THUEPN1,THUEPN2,DANHAN,LAN_QUET,CQQL"
+  sSQLCol = "MADTNT,NGNOP,TTHTK,KYLBO,KYKKHAI,MATKHAI,TENCSSX,MADTNT1,THUE5,THUE10,TONGDT,THUEPN1,THUEPN2,DANHAN,LAN_QUET,CQQL,DCHI"
 
    If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
@@ -4251,7 +4251,7 @@ Public Function InsertDTL_PL016() As String
             End If
         ' sSQLCol = "MADTNT,NGNOP,TTHTK,KYLBO,KYKKHAI,MATKHAI,TENCSSX,DCHI,MADTNT1,THUE5,THUE10,TONGDT,THUEPN1,THUEPN2"
         
-            sSQLVal = madtnt & "," & ngnop & "," & tthtk & "," & kylbo & "," & kykkhai & "," & matkhai & "," & TENCSSX & "," & MADTNT1 & "," & THUE5 & "," & THUE10 & "," & TONGDT & "," & THUEPN1 & "," & THUEPN2 & "," & DANHAN & "," & LAN_QUET & "," & CQUANQL
+            sSQLVal = madtnt & "," & ngnop & "," & tthtk & "," & kylbo & "," & kykkhai & "," & matkhai & "," & TENCSSX & "," & MADTNT1 & "," & THUE5 & "," & THUE10 & "," & TONGDT & "," & THUEPN1 & "," & THUEPN2 & "," & DANHAN & "," & LAN_QUET & "," & CQUANQL & ",''"
           
             sSQL = "INSERT INTO TMP_P016" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -4832,7 +4832,7 @@ Public Function InsertDTL_KHBS() As String
         bln = clsDAO.ExecuteDLL(sSQL)
 
         i = 1
-        .Row = .Row + 4
+        .Row = .Row + 3
 
         Do
             mact = "''"
@@ -4927,7 +4927,7 @@ Public Function InsertDTL_KHBS() As String
         sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
         
-        .Row = .Row + 4
+        .Row = .Row + 3
         mact = "''"
         .GetText .ColLetterToNumber("BE"), .Row, MACT2
 

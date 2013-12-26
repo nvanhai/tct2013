@@ -117,7 +117,7 @@ Public sSaiCT11 As String
 Public sKyKeKhai As String
 Public dNgayNopDB As Variant
 Public HANNOP As String
-Public TTHTK As String
+Public tthtk As String
 Public strTenBpql As String
 Private tempKyLb As Variant
 Private tempNgayNop As Variant
@@ -521,17 +521,17 @@ Public Function InsertDTL() As String
     Dim sSQLCol As String
     Dim sSQLVal As String
    
-    Dim MATKHAI As Variant
-    Dim MADTNT  As Variant
-    Dim KYLBO   As Variant
-    Dim KYKKHAI As Variant
-    Dim NGNOP   As Variant
+    Dim matkhai As Variant
+    Dim madtnt  As Variant
+    Dim kylbo   As Variant
+    Dim KyKKhai As Variant
+    Dim ngnop   As Variant
     Dim CTTN    As Variant
-    Dim GIATRI  As Variant
-    Dim TT      As Variant
-    Dim GIATRI2 As Variant
-    Dim MAMUC   As Variant
-    Dim MATM    As Variant
+    Dim giatri  As Variant
+    Dim tt      As Variant
+    Dim giatri2 As Variant
+    Dim MaMuc   As Variant
+    Dim maTM    As Variant
     Dim DA_NHAN As Variant
     Dim bln     As Boolean
     Dim vTuThang As Variant, vDenThang As Variant
@@ -553,36 +553,36 @@ Public Function InsertDTL() As String
         
     With fps
             .Sheet = 1
-            MATKHAI = "'08A/KK-TNCN'"
+            matkhai = "'08A/KK-TNCN'"
             'get MADTNT
-            .GetText .ColLetterToNumber("F"), 10, MADTNT
+            .GetText .ColLetterToNumber("F"), 10, madtnt
     
-            If MADTNT = vbNullString Then
-                MADTNT = "''"
+            If madtnt = vbNullString Then
+                madtnt = "''"
             Else
-                MADTNT = "'" & MADTNT & "'"
+                madtnt = "'" & madtnt & "'"
             End If
         
             'get KYLBO
-            .GetText .ColLetterToNumber("E"), 30, KYLBO
+            .GetText .ColLetterToNumber("E"), 30, kylbo
     
-            If KYLBO = vbNullString Then
-                KYLBO = "''"
+            If kylbo = vbNullString Then
+                kylbo = "''"
             Else
-                KYLBO = "'" & KYLBO & "'"
+                kylbo = "'" & kylbo & "'"
             End If
         
             ' set KYKKHAI
-            KYKKHAI = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
+            KyKKhai = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
         
             ' get ngaynop
-            .GetText .ColLetterToNumber("E"), 32, NGNOP
+            .GetText .ColLetterToNumber("E"), 32, ngnop
     
-            If NGNOP = vbNullString Then
-                NGNOP = "CTOD('')"
+            If ngnop = vbNullString Then
+                ngnop = "CTOD('')"
             Else
-                NGNOP = ToDate(Trim(NGNOP), DDMMYYYY)
-                NGNOP = "CTOD('" & Format(NGNOP, "mm/dd/yyyy") & "')"
+                ngnop = ToDate(Trim(ngnop), DDMMYYYY)
+                ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
             End If
         
             DA_NHAN = "''"
@@ -591,42 +591,42 @@ Public Function InsertDTL() As String
             .GetText .ColLetterToNumber("K"), 3, vTuThang
             .GetText .ColLetterToNumber("P"), 3, vDenThang
             If Trim(vTuThang) <> vbNullString And Trim(vDenThang) <> vbNullString Then
-                MAMUC = "'1000'"
-                MATM = "'1004'"
+                MaMuc = "'1000'"
+                maTM = "'1004'"
             Else
-                MAMUC = "'1000'"
-                MATM = "'1003'"
+                MaMuc = "'1000'"
+                maTM = "'1003'"
             End If
 
         If TAX_Utilities_Svr_New.isCheckPIT Then
             If Trim(vTuThang) <> vbNullString And Trim(vDenThang) <> vbNullString Then
-                KYKKHAI = "'" & vTuThang & "'"
+                KyKKhai = "'" & vTuThang & "'"
             End If
-            cttnArr() = Array("21", "22", "24")
-            kyhieuArr() = Array("21", "22", "24")
-            cellArr() = Array(44, 45, 47)
+            cttnArr() = Array("21", "22", "23", "24")
+            kyhieuArr() = Array("21", "22", "23", "24")
+            cellArr() = Array(44, 45, 46, 47)
             
             For i = 0 To UBound(cttnArr)
             
             CTTN = "'0" & cttnArr(i) & "'"
                 
-            .GetText .ColLetterToNumber("T"), cellArr(i), GIATRI
-            GIATRI2 = GIATRI
+            .GetText .ColLetterToNumber("T"), cellArr(i), giatri
+            giatri2 = giatri
                 
-            sSQLVal = MATKHAI & "," & MADTNT & "," & KYLBO & "," & KYKKHAI & "," & TTHTK & "," & NGNOP & ","
-            sSQLVal = sSQLVal & CTTN & "," & GIATRI & "," & GIATRI2 & "," & TT & "," & LAN_QUET & "," & DA_NHAN
+            sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & KyKKhai & "," & tthtk & "," & ngnop & ","
+            sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DA_NHAN
 
             
                 arr = Split(GetMaCqt, "~")
-                hdr.MATKHAI = "'08A_TNCN11'"
-                hdr.MADTNT = MADTNT
-                hdr.KYLBO = KYLBO
-                hdr.KYKKHAI = KYKKHAI
-                hdr.TTHTK = TTHTK
-                hdr.NGNOP = NGNOP
+                hdr.matkhai = "'08A_TNCN11'"
+                hdr.madtnt = madtnt
+                hdr.kylbo = kylbo
+                hdr.KyKKhai = KyKKhai
+                hdr.tthtk = tthtk
+                hdr.ngnop = ngnop
                 hdr.CTTN = CTTN
                 'tren to nay co ghi du lieu kieu chuoi nen truong gia tri da doi thanh kieu du lieu text
-                hdr.GIATRI = "'" & GIATRI & "'"
+                hdr.giatri = "'" & giatri & "'"
                             
                 hdr.LAN_QUET = LAN_QUET
                 hdr.ky_hieu = "'" & kyhieuArr(i) & "'"
@@ -652,22 +652,22 @@ Public Function InsertDTL() As String
                 
                     CTTN = "'0" & cttnArr(i) & "'"
                         
-                    .GetText cellArr(i), .Row, GIATRI
-                    GIATRI2 = GIATRI
+                    .GetText cellArr(i), .Row, giatri
+                    giatri2 = giatri
                         
-                    sSQLVal = MATKHAI & "," & MADTNT & "," & KYLBO & "," & KYKKHAI & "," & TTHTK & "," & NGNOP & ","
-                    sSQLVal = sSQLVal & CTTN & "," & GIATRI & "," & GIATRI2 & "," & TT & "," & LAN_QUET & "," & DA_NHAN
+                    sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & KyKKhai & "," & tthtk & "," & ngnop & ","
+                    sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DA_NHAN
         
                     
                     arr = Split(GetMaCqt, "~")
-                    hdr.MATKHAI = "'08A_TNCN11'"
-                    hdr.MADTNT = MADTNT
-                    hdr.KYLBO = KYLBO
-                    hdr.KYKKHAI = KYKKHAI
-                    hdr.TTHTK = TTHTK
-                    hdr.NGNOP = NGNOP
+                    hdr.matkhai = "'08A_TNCN11'"
+                    hdr.madtnt = madtnt
+                    hdr.kylbo = kylbo
+                    hdr.KyKKhai = KyKKhai
+                    hdr.tthtk = tthtk
+                    hdr.ngnop = ngnop
                     hdr.CTTN = CTTN
-                    hdr.GIATRI = "'" & GIATRI & "'"
+                    hdr.giatri = "'" & giatri & "'"
                                 
                     hdr.LAN_QUET = LAN_QUET
                     hdr.ky_hieu = "'" & kyhieuArr(i) & "'"
@@ -692,19 +692,19 @@ Public Function InsertDTL() As String
             'set theo CT21
             
             CTTN = "'001'"
-            TT = "'1'"
+            tt = "'1'"
             
             'get GT
-            .GetText .ColLetterToNumber("T"), 44, GIATRI
+            .GetText .ColLetterToNumber("T"), 44, giatri
             
-            If GIATRI = vbNullString Then
-                GIATRI = "0"
+            If giatri = vbNullString Then
+                giatri = "0"
             End If
             
-            GIATRI2 = GIATRI
+            giatri2 = giatri
             
-            sSQLVal = MATKHAI & "," & MADTNT & "," & KYLBO & "," & KYKKHAI & "," & TTHTK & "," & NGNOP & "," & CTTN
-            sSQLVal = sSQLVal & "," & GIATRI & "," & TT & "," & GIATRI2 & "," & MAMUC & "," & MATM & "," & DA_NHAN & "," & LAN_QUET
+            sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & KyKKhai & "," & tthtk & "," & ngnop & "," & CTTN
+            sSQLVal = sSQLVal & "," & giatri & "," & tt & "," & giatri2 & "," & MaMuc & "," & maTM & "," & DA_NHAN & "," & LAN_QUET
         
             sSQL = "INSERT INTO TMP_C08" & Right$(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             
@@ -715,19 +715,19 @@ Public Function InsertDTL() As String
             'set theo CT22
             
             CTTN = "'002'"
-            TT = "'2'"
+            tt = "'2'"
             
             'get GT
-            .GetText .ColLetterToNumber("T"), 45, GIATRI
+            .GetText .ColLetterToNumber("T"), 45, giatri
             
-            If GIATRI = vbNullString Then
-                GIATRI = "0"
+            If giatri = vbNullString Then
+                giatri = "0"
             End If
             
-            GIATRI2 = GIATRI
+            giatri2 = giatri
             
-            sSQLVal = MATKHAI & "," & MADTNT & "," & KYLBO & "," & KYKKHAI & "," & TTHTK & "," & NGNOP & "," & CTTN
-            sSQLVal = sSQLVal & "," & GIATRI & "," & TT & "," & GIATRI2 & "," & MAMUC & "," & MATM & "," & DA_NHAN & "," & LAN_QUET
+            sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & KyKKhai & "," & tthtk & "," & ngnop & "," & CTTN
+            sSQLVal = sSQLVal & "," & giatri & "," & tt & "," & giatri2 & "," & MaMuc & "," & maTM & "," & DA_NHAN & "," & LAN_QUET
         
             sSQL = "INSERT INTO TMP_C08" & Right$(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             
@@ -738,19 +738,19 @@ Public Function InsertDTL() As String
             'set theo CT23
             
             CTTN = "'003'"
-            TT = "'3'"
+            tt = "'3'"
             
             'get GT
-            .GetText .ColLetterToNumber("T"), 46, GIATRI
+            .GetText .ColLetterToNumber("T"), 46, giatri
             
-            If GIATRI = vbNullString Then
-                GIATRI = "0"
+            If giatri = vbNullString Then
+                giatri = "0"
             End If
             
-            GIATRI2 = GIATRI
+            giatri2 = giatri
             
-            sSQLVal = MATKHAI & "," & MADTNT & "," & KYLBO & "," & KYKKHAI & "," & TTHTK & "," & NGNOP & "," & CTTN
-            sSQLVal = sSQLVal & "," & GIATRI & "," & TT & "," & GIATRI2 & "," & MAMUC & "," & MATM & "," & DA_NHAN & "," & LAN_QUET
+            sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & KyKKhai & "," & tthtk & "," & ngnop & "," & CTTN
+            sSQLVal = sSQLVal & "," & giatri & "," & tt & "," & giatri2 & "," & MaMuc & "," & maTM & "," & DA_NHAN & "," & LAN_QUET
         
             sSQL = "INSERT INTO TMP_C08" & Right$(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             
@@ -761,19 +761,19 @@ Public Function InsertDTL() As String
             'set CT24
             
             CTTN = "'004'"
-            TT = "'4'"
+            tt = "'4'"
             
             'get GT
-            .GetText .ColLetterToNumber("T"), 47, GIATRI
+            .GetText .ColLetterToNumber("T"), 47, giatri
             
-            If GIATRI = vbNullString Then
-                GIATRI = "0"
+            If giatri = vbNullString Then
+                giatri = "0"
             End If
             
-            GIATRI2 = GIATRI
+            giatri2 = giatri
             
-            sSQLVal = MATKHAI & "," & MADTNT & "," & KYLBO & "," & KYKKHAI & "," & TTHTK & "," & NGNOP & "," & CTTN
-            sSQLVal = sSQLVal & "," & GIATRI & "," & TT & "," & GIATRI2 & "," & MAMUC & "," & MATM & "," & DA_NHAN & "," & LAN_QUET
+            sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & KyKKhai & "," & tthtk & "," & ngnop & "," & CTTN
+            sSQLVal = sSQLVal & "," & giatri & "," & tt & "," & giatri2 & "," & MaMuc & "," & maTM & "," & DA_NHAN & "," & LAN_QUET
         
             sSQL = "INSERT INTO TMP_C08" & Right$(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             
@@ -794,31 +794,31 @@ Public Function InsertHDR() As String
     Dim sSQLCol    As String
     Dim sSQLVal    As String
 
-    Dim MATKHAI    As Variant
-    Dim KYLBO      As Variant
-    Dim NGNOP      As Variant
-    Dim KYKKHAI    As Variant
-    Dim MADTNT     As Variant
+    Dim matkhai    As Variant
+    Dim kylbo      As Variant
+    Dim ngnop      As Variant
+    Dim KyKKhai    As Variant
+    Dim madtnt     As Variant
     Dim MADLT      As Variant
-    Dim DAGHI      As Variant
-    Dim LOAITIEN   As Variant
-    Dim MAVACH     As Variant
+    Dim DaGhi      As Variant
+    Dim LoaiTien   As Variant
+    Dim MaVach     As Variant
     Dim HANNOP2    As Variant
-    Dim THUETKY    As Variant
-    Dim THUETKY2   As Variant
-    Dim MAMUC      As Variant
-    Dim MATM       As Variant
-    Dim NGNHAP     As Variant
+    Dim ThueTKy    As Variant
+    Dim ThueTKy2   As Variant
+    Dim MaMuc      As Variant
+    Dim maTM       As Variant
+    Dim NgNhap     As Variant
     Dim AUTO_CAL   As Variant
     Dim MATHUE     As Variant
     Dim MAPP       As Variant
     Dim SHTEP      As Variant
-    Dim GTTINHTHUE As Variant
+    Dim GTTinhThue As Variant
     Dim THUECL     As Variant
     Dim GTTTCL     As Variant
     Dim DANHAN     As Variant
     Dim GHICHU     As Variant
-    Dim LANBS      As Variant
+    Dim LanBS      As Variant
     Dim bln        As Boolean
     Dim vTuThang As Variant, vDenThang As Variant
     'bien dung cho PIT
@@ -843,38 +843,38 @@ Public Function InsertHDR() As String
 
     With fps
         .Sheet = 1
-        MATKHAI = "'08A/KK-TNCN'"
+        matkhai = "'08A/KK-TNCN'"
         'neu quyet toan tung nam KIEUQT = 2, dau nam KQT= 1
         KIEUQT = ""
         'get KYLBO
-        .GetText .ColLetterToNumber("E"), 30, KYLBO
+        .GetText .ColLetterToNumber("E"), 30, kylbo
 
-        If KYLBO = vbNullString Then
-            KYLBO = "''"
+        If kylbo = vbNullString Then
+            kylbo = "''"
         Else
-            KYLBO = "'" & KYLBO & "'"
+            kylbo = "'" & kylbo & "'"
         End If
         
         ' get ngaynop
-        .GetText .ColLetterToNumber("E"), 32, NGNOP
+        .GetText .ColLetterToNumber("E"), 32, ngnop
 
-        If NGNOP = vbNullString Then
-            NGNOP = "CTOD('')"
+        If ngnop = vbNullString Then
+            ngnop = "CTOD('')"
         Else
-            NGNOP = ToDate(Trim(NGNOP), DDMMYYYY)
-            NGNOP = "CTOD('" & Format(NGNOP, "mm/dd/yyyy") & "')"
+            ngnop = ToDate(Trim(ngnop), DDMMYYYY)
+            ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
    
         ' set KYKKHAI
-        KYKKHAI = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
+        KyKKhai = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
         
         'get MADTNT
-        .GetText .ColLetterToNumber("F"), 10, MADTNT
+        .GetText .ColLetterToNumber("F"), 10, madtnt
 
-        If MADTNT = vbNullString Then
-            MADTNT = "''"
+        If madtnt = vbNullString Then
+            madtnt = "''"
         Else
-            MADTNT = "'" & MADTNT & "'"
+            madtnt = "'" & madtnt & "'"
         End If
         
         'get DLT
@@ -887,14 +887,14 @@ Public Function InsertHDR() As String
         End If
         
         'set TTHTK
-        If TTHTK = vbNullString Then
-            TTHTK = "''"
+        If tthtk = vbNullString Then
+            tthtk = "''"
         End If
         
         'set DAGHI
-        DAGHI = ".T."
-        LOAITIEN = "''"
-        MAVACH = ".T."
+        DaGhi = ".T."
+        LoaiTien = "''"
+        MaVach = ".T."
         
         'set HANNOP
         If Trim(HANNOP) = vbNullString Then
@@ -905,35 +905,35 @@ Public Function InsertHDR() As String
         End If
         
         HANNOP2 = HANNOP
-        THUETKY = 0
+        ThueTKy = 0
         'set THUETKY
-        .GetText .ColLetterToNumber("AB"), 49, THUETKY
+        .GetText .ColLetterToNumber("AB"), 49, ThueTKy
 
-        If THUETKY = vbNullString Then
-            THUETKY = "0"
+        If ThueTKy = vbNullString Then
+            ThueTKy = "0"
         End If
 
-        THUETKY2 = "0"
+        ThueTKy2 = "0"
         'get tu thang , den thang
         .GetText .ColLetterToNumber("K"), 3, vTuThang
         .GetText .ColLetterToNumber("P"), 3, vDenThang
         If Trim(vTuThang) <> vbNullString And Trim(vDenThang) <> vbNullString Then
-            MAMUC = "'1000'"
-            MATM = "'1004'"
+            MaMuc = "'1000'"
+            maTM = "'1004'"
         Else
-            MAMUC = "'1000'"
-            MATM = "'1003'"
+            MaMuc = "'1000'"
+            maTM = "'1003'"
         End If
 
         
         'set NGNHAP
-        .GetText .ColLetterToNumber("M"), 32, NGNHAP
+        .GetText .ColLetterToNumber("M"), 32, NgNhap
 
-        If Trim(NGNHAP) = vbNullString Then
-            NGNHAP = "CTOD('')"
+        If Trim(NgNhap) = vbNullString Then
+            NgNhap = "CTOD('')"
         Else
-            NGNHAP = ToDate(Trim(NGNHAP), DDMMYYYY)
-            NGNHAP = "CTOD('" & Format(NGNHAP, "mm/dd/yyyy") & "')"
+            NgNhap = ToDate(Trim(NgNhap), DDMMYYYY)
+            NgNhap = "CTOD('" & Format(NgNhap, "mm/dd/yyyy") & "')"
         End If
         
         AUTO_CAL = ".T."
@@ -942,17 +942,17 @@ Public Function InsertHDR() As String
         SHTEP = "''"
         
         'set GTTINHTHUE
-        .GetText .ColLetterToNumber("T"), 46, GTTINHTHUE
+        .GetText .ColLetterToNumber("T"), 46, GTTinhThue
 
-        If Trim(GTTINHTHUE) = vbNullString Then
-            GTTINHTHUE = "0"
+        If Trim(GTTinhThue) = vbNullString Then
+            GTTinhThue = "0"
         End If
 
         'set LANBS
-        .GetText .ColLetterToNumber("T"), 7, LANBS
+        .GetText .ColLetterToNumber("T"), 7, LanBS
 
-        If Trim(LANBS) = vbNullString Then
-            LANBS = "0"
+        If Trim(LanBS) = vbNullString Then
+            LanBS = "0"
         End If
         
         THUECL = "0"
@@ -998,7 +998,7 @@ Public Function InsertHDR() As String
             ' Ghi du lieu vao bang trung gian de day len TC
             arr = Split(GetMaCqt, "~")
         '     hdrId = GetHdrId
-            hdr.Tin = MADTNT
+            hdr.Tin = madtnt
             hdr.co_loi_dda = "''"
             hdr.DIA_CHI = arr(2)
             hdr.ghi_chu_loi = "''"
@@ -1010,7 +1010,7 @@ Public Function InsertHDR() As String
                 hdr.kieu_ky = "Q"
             Else
                 'set lai ky ke khai
-                KYKKHAI = "'" & kKEKHAITUNGAY & "'"
+                KyKKhai = "'" & kKEKHAITUNGAY & "'"
                 kKEKHAIDENNGAY = "01/" & kKEKHAIDENNGAY
                 kKEKHAITUNGAY = "01/" & kKEKHAITUNGAY
                 kKEKHAIDENNGAY = ToDate(Trim(kKEKHAIDENNGAY), DDMMYYYY)
@@ -1021,27 +1021,27 @@ Public Function InsertHDR() As String
             End If
         
     
-            If TTHTK = "1" Then
+            If tthtk = "1" Then
                 hdr.kkbs = 0    ' To khai chinh thuc
-            ElseIf TTHTK = "2" Then
+            ElseIf tthtk = "2" Then
                 hdr.kkbs = 1    ' To khai thay the
-            ElseIf TTHTK = "3" Then
+            ElseIf tthtk = "3" Then
                 hdr.kkbs = 2    ' To khai bo sung
             Else
                 hdr.kkbs = 1    ' To khai nop cham
             End If
             
-            hdr.KYKKHAI = KYKKHAI
-            hdr.KYLBO = KYLBO
+            hdr.KyKKhai = KyKKhai
+            hdr.kylbo = kylbo
             hdr.MA_CQT = arr(0)
-            hdr.ngay_cap_nhat = NGNHAP
-            hdr.Ngay_nop = NGNOP
-            hdr.Nguoi_cn = "'" & Trim(strNguoiSuDung) & "'"
+            hdr.ngay_cap_nhat = NgNhap
+            hdr.Ngay_nop = ngnop
+            hdr.nguoi_cn = "'" & Trim(strNguoiSuDung) & "'"
             hdr.Phong_xly = PXULY
             hdr.so_hieu_tep = "''"
             hdr.So_tt_tk = LAN_QUET
             hdr.ten_dtnt = arr(1)
-            hdr.TTHTK = TTHTK
+            hdr.tthtk = tthtk
             hdr.DA_NHAN = 0
             hdr.Id = hdrId
             hdr.thueondinh = "''"
@@ -1060,15 +1060,15 @@ Public Function InsertHDR() As String
             hdr.Ma_dl_thue = MADLT
             hdr.So_hd_dl = "'" & Trim(CStr(SOHDDL)) & "'"
             hdr.Ngay_hd_dl = NGAYHDDLT
-            hdr.Lan_bs = LANBS
+            hdr.lan_bs = LanBS
 
             sSQL = InsertHDR_TGTC_08(hdr, kKEKHAITUNGAY, kKEKHAIDENNGAY, KIEUQT)
             bln = clsDAO.ExecuteDLL(sSQL)
         Else
-            sSQLVal = MATKHAI & "," & KYLBO & "," & NGNOP & "," & KYKKHAI & "," & MADTNT & "," & MADLT & "," & TTHTK & "," & DAGHI
-            sSQLVal = sSQLVal & "," & LOAITIEN & "," & MAVACH & "," & HANNOP & "," & HANNOP2 & "," & THUETKY & "," & THUETKY2
-            sSQLVal = sSQLVal & "," & MAMUC & "," & MATM & "," & NGNHAP & "," & AUTO_CAL & "," & MATHUE & "," & MAPP & "," & SHTEP
-            sSQLVal = sSQLVal & "," & GTTINHTHUE & "," & LANBS & "," & THUECL & "," & GTTTCL & "," & LAN_QUET & "," & DANHAN & "," & GHICHU
+            sSQLVal = matkhai & "," & kylbo & "," & ngnop & "," & KyKKhai & "," & madtnt & "," & MADLT & "," & tthtk & "," & DaGhi
+            sSQLVal = sSQLVal & "," & LoaiTien & "," & MaVach & "," & HANNOP & "," & HANNOP2 & "," & ThueTKy & "," & ThueTKy2
+            sSQLVal = sSQLVal & "," & MaMuc & "," & maTM & "," & NgNhap & "," & AUTO_CAL & "," & MATHUE & "," & MAPP & "," & SHTEP
+            sSQLVal = sSQLVal & "," & GTTinhThue & "," & LanBS & "," & THUECL & "," & GTTTCL & "," & LAN_QUET & "," & DANHAN & "," & GHICHU
             
             sSQL = "INSERT INTO TMP_CNTK" & Right$(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             'InsertHDR = sSQL
@@ -1089,7 +1089,7 @@ Public Function TKTT() As Boolean
     Dim strFileNameDTL As String
     Dim strFileNameHDR1 As String
     Dim strFileNameDTL1 As String
-    Dim vTuThang As Variant, vDenThang As Variant, KYKKHAI As Variant
+    Dim vTuThang As Variant, vDenThang As Variant, KyKKhai As Variant
     
     strFileNameHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_CNTK" & Right$(sKyKeKhai, 4) & ".DBF"
     strFileNameDTL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_C08" & Right$(sKyKeKhai, 4) & ".DBF"
@@ -1141,7 +1141,7 @@ Public Function TKTT() As Boolean
     End If
 
     'set kykekhai
-    KYKKHAI = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
+    KyKKhai = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
 
     'get Tu thang, Den thang
     With fps
@@ -1152,7 +1152,7 @@ Public Function TKTT() As Boolean
 
     
     If Trim(vTuThang) <> vbNullString And Trim(vDenThang) <> vbNullString Then
-        KYKKHAI = "'" & Trim(vTuThang) & "'"
+        KyKKhai = "'" & Trim(vTuThang) & "'"
     End If
 
 
@@ -1163,9 +1163,9 @@ Public Function TKTT() As Boolean
              vDenThang = "01/" & Trim(vDenThang)
              vDenThang = ToDate(Trim(vDenThang), DDMMYYYY)
              vDenThang = "CTOD('" & Format(vDenThang, "mm/dd/yyyy") & "')"
-             sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = " & KYKKHAI & " AND Lan_bs = 0 AND Loai_tkhai='08A_TNCN11' AND den_ngay = " & vDenThang
+             sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = " & KyKKhai & " AND Lan_bs = 0 AND Loai_tkhai='08A_TNCN11' AND den_ngay = " & vDenThang
         Else
-             sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = " & KYKKHAI & " AND Lan_bs = 0 AND Loai_tkhai='08A_TNCN11'"
+             sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = " & KyKKhai & " AND Lan_bs = 0 AND Loai_tkhai='08A_TNCN11'"
         End If
         
         Set rs = clsDAO.Execute(sSQL)
@@ -1382,7 +1382,7 @@ End Function
 
 Public Function isToKhaiChinhThuc() As Boolean
     Dim sSQL As String
-    Dim vTuThang As Variant, vDenThang As Variant, KYKKHAI As Variant
+    Dim vTuThang As Variant, vDenThang As Variant, KyKKhai As Variant
 
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
@@ -1390,7 +1390,7 @@ Public Function isToKhaiChinhThuc() As Boolean
    End If
        
     'set kykekhai
-    KYKKHAI = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
+    KyKKhai = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
 
     With fps
          'get Tu thang, Den thang
@@ -1401,7 +1401,7 @@ Public Function isToKhaiChinhThuc() As Boolean
 
     
     If Trim(vTuThang) <> vbNullString And Trim(vDenThang) <> vbNullString Then
-        KYKKHAI = "'" & Trim(vTuThang) & "'"
+        KyKKhai = "'" & Trim(vTuThang) & "'"
     End If
        
    If TAX_Utilities_Svr_New.isCheckPIT Then
@@ -1410,9 +1410,9 @@ Public Function isToKhaiChinhThuc() As Boolean
              vDenThang = "01/" & Trim(vDenThang)
              vDenThang = ToDate(Trim(vDenThang), DDMMYYYY)
              vDenThang = "CTOD('" & Format(vDenThang, "mm/dd/yyyy") & "')"
-             sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = " & KYKKHAI & " AND Lan_bs = 0 AND Loai_tkhai='08A_TNCN11' AND den_ngay = " & vDenThang
+             sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = " & KyKKhai & " AND Lan_bs = 0 AND Loai_tkhai='08A_TNCN11' AND den_ngay = " & vDenThang
         Else
-             sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = " & KYKKHAI & " AND Lan_bs = 0 AND Loai_tkhai='08A_TNCN11'"
+             sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = " & KyKKhai & " AND Lan_bs = 0 AND Loai_tkhai='08A_TNCN11'"
         End If
         
         Set rs = clsDAO.Execute(sSQL)
