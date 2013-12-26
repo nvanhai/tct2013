@@ -152,7 +152,7 @@ Public Function Prepared1() As Boolean
         .TypeHAlign = TypeHAlignLeft
 
     End With
-    setCQTQuanLy
+    'setCQTQuanLy
     Prepared1 = True
 End Function
 Private Sub setCQTQuanLy()
@@ -233,7 +233,9 @@ Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
 Dim iCol As Long, iRow As Long
 Dim varID As Variant
 Dim strTenHH As String, strDVT As String, strMucThue  As String
-
+Dim varMaDM As Variant
+Dim tenDM As String
+    
     With fps
         .Sheet = .ActiveSheet
         i = 0
@@ -261,6 +263,46 @@ Dim strTenHH As String, strDVT As String, strMucThue  As String
             .Col = .ColLetterToNumber("B")
             .Row = i + 45
          Loop Until .Text = "aa"
+         
+        .Sheet = SheetPL01_1
+        i = 0
+        .Row = 35
+        Do
+            varID = Empty
+            strDVT = ""
+            strTenHH = ""
+            strMucThue = ""
+            
+            'Lay gia tri Ma
+            .GetText .ColLetterToNumber("Y"), i + 35, varID
+            
+            DataDM varID, strTenHH, strDVT, strMucThue
+            ' Ten hang hoa
+            .Col = .ColLetterToNumber("D")
+            .Text = strTenHH
+            UpdateCell fps, .Col, .Row, .Text
+            
+             i = i + 1
+            .Col = .ColLetterToNumber("C")
+            .Row = i + 35
+         Loop Until .Text = "aa"
+         
+        'ma co quan
+        .Sheet = SheetPL01_1
+        i = 0
+        Do
+            .GetText .ColLetterToNumber("R"), i + 35, varMaDM
+            DataDMCQ varMaDM, tenDM
+            If Trim(tenDM) <> vbNullString Then
+                .Col = .ColLetterToNumber("O")
+                .Row = 35 + i
+                .Text = tenDM
+            End If
+            UpdateCell fps, .Col, .Row, .Text
+             i = i + 1
+            .Col = .ColLetterToNumber("C")
+            .Row = i + 35
+        Loop Until .Text = "aa" Or varMaDM = ""
          
     End With
       i = 0
@@ -313,6 +355,28 @@ Dim xmlNode As MSXML.IXMLDOMNode
                             TenHH = arrDanhsach(1)
                             DVT = arrDanhsach(2)
                             strMucThue = arrDanhsach(3)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub
+Private Sub DataDMCQ(ByVal Id As String, Optional ByRef TenTN As String)
+Dim arrDanhsach() As String
+Dim strDataFileName As String
+Dim xmlDomData As New MSXML.DOMDocument
+Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+Dim xmlNode As MSXML.IXMLDOMNode
+
+       strDataFileName = "..\InterfaceTemplates\xml\Catalogue_Tinh_Thanh.xml"
+    
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If arrDanhsach(1) = Id Then
+                            TenTN = arrDanhsach(3)
                             Exit Sub
                         End If
                 End If
