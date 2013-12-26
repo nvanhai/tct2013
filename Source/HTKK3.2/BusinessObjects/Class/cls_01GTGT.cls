@@ -4937,6 +4937,12 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
     Dim tenChiCucThue As String
     Dim maChiCucThue As String
     
+    
+    Dim tenCucThue As String
+    Dim maCucThue As String
+    Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
+    Dim intIndexCombo As Integer, i As Integer
+    Dim iCol As Long, iRow As Long
   '  Dim checkDL As Variant
     With fps
         .EventEnabled(EventAllEvents) = False
@@ -5146,8 +5152,9 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
 '                .Col = .ColLetterToNumber(colL)
 '                UpdateCell fps, .Col, .Row, .Text
 '            End If
-            
-        End If
+           
+ 
+            End If
         .EventEnabled(EventAllEvents) = True
     End With
 End Sub
