@@ -769,7 +769,7 @@ Public Function InsertDTL_KHBS() As String
             madtnt = "'" & madtnt & "'"
         End If
 
-        kykkhai = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
+        kykkhai = "'" & Right$(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
 
         MaMuc = "'1050'"
         MATHUE = "' '"
@@ -1456,7 +1456,7 @@ Public Function TKTT() As Boolean
     End If
    
     If TKTHANG = True Then
-        sSQL = "SELECT MADTNT, NGNOP FROM TMP_SM" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='02/TNDN' AND NGAY_PS = CTOD('')"
+        sSQL = "SELECT MADTNT, NGNOP FROM TMP_SM" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "' AND KYKKHAI = '" & Right$(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='02/TNDN' AND NGAY_PS = CTOD('')"
     
     Else
         sSQL = "SELECT MADTNT, NGNOP FROM TMP_SM" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "' AND NGAY_PS = " & NGAY_PS & " AND MATKHAI='02/TNDN'"
@@ -1753,9 +1753,20 @@ Public Function TinhSoLanQuet() As Integer
         End If
 
         If TKTHANG = True Then
-            sSQL = "SELECT max(LAN_QUET) as LAN_QUET FROM TMP_SM" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='02/TNDN' AND NGAY_PS = CTOD('')"
+            sSQL = "SELECT max(LAN_QUET) as LAN_QUET FROM TMP_SM" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "' AND KYKKHAI = '" & Right$(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='02/TNDN' AND NGAY_PS = CTOD('')"
         Else
-            sSQL = "SELECT max(LAN_QUET) as LAN_QUET FROM TMP_SM" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='02/TNDN' AND NGAY_PS = " & NGAY_PS
+            ' ngay phat sinh
+            fps.Sheet = 1
+            fps.GetText fps.ColLetterToNumber("M"), 50, NGAY_PS
+
+            If Trim(NGAY_PS) = vbNullString Then
+                NGAY_PS = "CTOD('')"
+            Else
+                NGAY_PS = ToDate(Trim(NGAY_PS), DDMMYYYY)
+                NGAY_PS = "CTOD('" & Format(NGAY_PS, "mm/dd/yyyy") & "')"
+            End If
+
+            sSQL = "SELECT max(LAN_QUET) as LAN_QUET FROM TMP_SM" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "' AND MATKHAI='02/TNDN' AND NGAY_PS = " & NGAY_PS
 
         End If
 

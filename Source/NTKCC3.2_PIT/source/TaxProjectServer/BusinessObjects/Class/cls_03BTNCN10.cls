@@ -652,9 +652,9 @@ Public Function InsertDTL() As String
         Dim cellArr()   As Variant 'mang gia tri cua cac Cell chi tieu
         Dim kyhieuArr() As Variant ' mang ky hieu theo chi tieu
     
-        cttnArr() = Array("I", "II", "III", "IV", "V", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30")
-        kyhieuArr() = Array("I", "II", "III", "IV", "V", "2", "3", "5", "6", "8", "9", "11", "12", "14", "15")
-        cellArr() = Array(0, 0, 0, 0, 0, 42, 43, 45, 46, 48, 49, 51, 52, 54, 55)
+        cttnArr() = Array("I", "II", "III", "IV", "V", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40")
+        kyhieuArr() = Array("I", "II", "III", "IV", "V", "2", "3", "5", "6", "8", "9", "11", "12", "14", "15", "16", "17")
+        cellArr() = Array(0, 0, 0, 0, 0, 42, 43, 45, 46, 48, 49, 52, 53, 55, 56, 58, 59)
 
         '------------------------------------------------------------------
         
@@ -882,7 +882,7 @@ Public Function InsertDTL() As String
             'chitieu 027
             CTTN = "'014'"
             giatri = "0"
-            .GetText .ColLetterToNumber("S"), 51, giatri
+            .GetText .ColLetterToNumber("S"), 52, giatri
 
             If Trim(giatri) = vbNullString Then
                 giatri = "0"
@@ -898,7 +898,7 @@ Public Function InsertDTL() As String
             'chitieu 28
             CTTN = "'015'"
             giatri = "0"
-            .GetText .ColLetterToNumber("S"), 52, giatri
+            .GetText .ColLetterToNumber("S"), 53, giatri
 
             If Trim(giatri) = vbNullString Then
                 giatri = "0"
@@ -923,7 +923,7 @@ Public Function InsertDTL() As String
             'chitieu 029
             CTTN = "'017'"
             giatri = "0"
-            .GetText .ColLetterToNumber("S"), 54, giatri
+            .GetText .ColLetterToNumber("S"), 55, giatri
 
             If Trim(giatri) = vbNullString Then
                 giatri = "0"
@@ -939,7 +939,7 @@ Public Function InsertDTL() As String
             'chitieu 30
             CTTN = "'018'"
             giatri = "0"
-            .GetText .ColLetterToNumber("S"), 55, giatri
+            .GetText .ColLetterToNumber("S"), 56, giatri
 
             If Trim(giatri) = vbNullString Then
                 giatri = "0"
@@ -955,7 +955,7 @@ Public Function InsertDTL() As String
             'chitieu 31
             CTTN = "'019'"
             giatri = "0"
-            .GetText .ColLetterToNumber("S"), 57, giatri
+            .GetText .ColLetterToNumber("S"), 58, giatri
 
             If Trim(giatri) = vbNullString Then
                 giatri = "0"
@@ -971,7 +971,7 @@ Public Function InsertDTL() As String
             'chitieu 32
             CTTN = "'020'"
             giatri = "0"
-            .GetText .ColLetterToNumber("S"), 58, giatri
+            .GetText .ColLetterToNumber("S"), 59, giatri
 
             If Trim(giatri) = vbNullString Then
                 giatri = "0"

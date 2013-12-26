@@ -250,9 +250,9 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         
         'get ten chi tieu trong danh muc NNKD
         .Sheet = 1
-        .Col = .ColLetterToNumber("K")
+        .Col = .ColLetterToNumber("M")
         .Row = 59
-         .GetText .ColLetterToNumber("K"), .Row, varMaDM
+         .GetText .ColLetterToNumber("M"), .Row, varMaDM
         If Trim(varMaDM) <> vbNullString Then
             .Col = .ColLetterToNumber("M")
             .Row = 64
@@ -463,28 +463,28 @@ Public Function Prepared3() As Boolean
             .Value = 1
         End If
         'set text check gia han
-        If Trim(TAX_Utilities_Svr_New.Year) = "2011" Then
-            .Row = 53
-            .Col = .ColLetterToNumber("C")
-            .Text = "GIA HAN THEO QD 21/2011/QD-TTG; QD 54/2011/QD-TTg"
-        ElseIf Trim(TAX_Utilities_Svr_New.Year) = "2010" And Trim(TAX_Utilities_Svr_New.ThreeMonths) = 4 Then
-            .Row = 53
-            .Col = .ColLetterToNumber("C")
-            .Text = "GIA HAN THEO QD 21/2011/QD-TTG"
-        ElseIf Trim(TAX_Utilities_Svr_New.Year) = "2010" And Trim(TAX_Utilities_Svr_New.ThreeMonths) <> 4 Then
-            .Row = 53
-            .Col = .ColLetterToNumber("C")
-            .Text = "GIA HAN THEO QD 12/2010/QD-TTG"
-        ElseIf Trim(TAX_Utilities_Svr_New.Year) = "2009" Then
-            .Row = 53
-            .Col = .ColLetterToNumber("C")
-            .Text = "GIA HAN THEO NQ 30/2008/NQ-CP"
-        Else
-            .Row = 53
-            .Col = .ColLetterToNumber("C")
-            .Text = ""
-            .Lock = True
-        End If
+'        If Trim(TAX_Utilities_Svr_New.Year) = "2011" Then
+'            .Row = 53
+'            .Col = .ColLetterToNumber("C")
+'            .Text = "GIA HAN THEO QD 21/2011/QD-TTG; QD 54/2011/QD-TTg"
+'        ElseIf Trim(TAX_Utilities_Svr_New.Year) = "2010" And Trim(TAX_Utilities_Svr_New.ThreeMonths) = 4 Then
+'            .Row = 53
+'            .Col = .ColLetterToNumber("C")
+'            .Text = "GIA HAN THEO QD 21/2011/QD-TTG"
+'        ElseIf Trim(TAX_Utilities_Svr_New.Year) = "2010" And Trim(TAX_Utilities_Svr_New.ThreeMonths) <> 4 Then
+'            .Row = 53
+'            .Col = .ColLetterToNumber("C")
+'            .Text = "GIA HAN THEO QD 12/2010/QD-TTG"
+'        ElseIf Trim(TAX_Utilities_Svr_New.Year) = "2009" Then
+'            .Row = 53
+'            .Col = .ColLetterToNumber("C")
+'            .Text = "GIA HAN THEO NQ 30/2008/NQ-CP"
+'        Else
+'            .Row = 53
+'            .Col = .ColLetterToNumber("C")
+'            .Text = ""
+'            .Lock = True
+'        End If
         
     .Sheet = 2
     If .SheetVisible = True Then
@@ -2294,14 +2294,14 @@ Public Function InsertHDR() As String
             DAGHI2 = ".F."
         End If
         
-        .GetText .ColLetterToNumber("F"), 12, madtnt
+        .GetText .ColLetterToNumber("F"), 10, madtnt
         If Trim(madtnt) = vbNullString Then
             madtnt = "''"
         Else
             madtnt = "'" & madtnt & "'"
         End If
         
-        .GetText .ColLetterToNumber("E"), 32, kylbo
+        .GetText .ColLetterToNumber("E"), 30, kylbo
         If Trim(kylbo) = vbNullString Then
             kylbo = "''"
         Else
@@ -2312,7 +2312,7 @@ Public Function InsertHDR() As String
             End If
         End If
         
-        .GetText .ColLetterToNumber("E"), 34, ngnop
+        .GetText .ColLetterToNumber("E"), 32, ngnop
         If Trim(ngnop) = vbNullString Then
             ngnop = "CTOD('')"
         Else
@@ -2322,7 +2322,7 @@ Public Function InsertHDR() As String
         End If
         
               
-        .GetText .ColLetterToNumber("M"), 34, NgNhap
+        .GetText .ColLetterToNumber("M"), 32, NgNhap
         If Trim(NgNhap) = vbNullString Then
             NgNhap = "CTOD('')"
         Else
@@ -2440,13 +2440,16 @@ Public Function InsertHDR() As String
                 HANNOP = "01/04/2013"
                End If
             ElseIf Trim(TAX_Utilities_Svr_New.Year) = "2013" Then
-                If Val(TAX_Utilities_Svr_New.ThreeMonths) = 1 Then
-                HANNOP = "30/10/2013"
-               ElseIf Val(TAX_Utilities_Svr_New.ThreeMonths) = 2 Then
-                HANNOP = "30/10/2013"
-               ElseIf Val(TAX_Utilities_Svr_New.ThreeMonths) = 3 Then
-                HANNOP = "30/01/2014"
-               End If
+'                If Val(TAX_Utilities_Svr_New.ThreeMonths) = 1 Then
+'                HANNOP = "30/10/2013"
+'               ElseIf Val(TAX_Utilities_Svr_New.ThreeMonths) = 2 Then
+'                HANNOP = "30/10/2013"
+'               ElseIf Val(TAX_Utilities_Svr_New.ThreeMonths) = 3 Then
+'                HANNOP = "30/01/2014"
+'               End If
+                .Col = .ColLetterToNumber("M")
+                .Row = 66
+                HANNOP = .Text
             End If
             If Trim(HANNOP) = vbNullString Then
                     HANNOP = "CTOD('')"
