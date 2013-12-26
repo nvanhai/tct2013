@@ -892,15 +892,15 @@ Public Function InsertHDR() As String
     Dim sSQLVal    As String
     
     Dim namQT      As Variant
-    Dim TUKY       As Variant
-    Dim DENKY      As Variant
+    Dim TuKy       As Variant
+    Dim DenKy      As Variant
     Dim madtnt     As Variant
     Dim MaMuc      As Variant
     Dim maTM       As Variant
     Dim ngnop      As Variant
     Dim NgNhap     As Variant
     Dim LoaiTien   As Variant
-    Dim KYDC       As Variant
+    Dim KyDC       As Variant
     Dim ThueTKy    As Variant
     Dim DaGhi      As Variant
     Dim LoaiTK     As Variant
@@ -942,8 +942,8 @@ Public Function InsertHDR() As String
         .Sheet = 1
         
         Section = 1
-        .GetText .ColLetterToNumber("G"), .MaxRows - 2, TENNV
-        .GetText .ColLetterToNumber("G"), .MaxRows - 4, CHUNGCHI
+        .GetText .ColLetterToNumber("G"), .MaxRows - 4, TENNV
+        .GetText .ColLetterToNumber("G"), .MaxRows - 2, CHUNGCHI
         'Lay ds ma tieu muc
         'dhdang phan lay vao mang
         'ngay 14/09/2010
@@ -1046,8 +1046,8 @@ Public Function InsertHDR() As String
         End If
                 
         namQT = TAX_Utilities_Svr_New.Year
-        TUKY = "'01/" & TAX_Utilities_Svr_New.Year & "'"
-        DENKY = "'12/" & TAX_Utilities_Svr_New.Year & "'"
+        TuKy = "'01/" & TAX_Utilities_Svr_New.Year & "'"
+        DenKy = "'12/" & TAX_Utilities_Svr_New.Year & "'"
         
         ' sua MAMUC & MATM tu nam 2009
         If CLng(Right(sKyKeKhai, 4)) < 2009 Then
@@ -1070,7 +1070,7 @@ Public Function InsertHDR() As String
             HANNOP = "CTOD('" & Format(HANNOP, "mm/dd/yyyy") & "')"
         End If
 
-        KYDC = kylbo
+        KyDC = kylbo
         DATHAY = ".F."
         MaVach = ".T."
         LoaiTien = "''"
@@ -1153,8 +1153,8 @@ Public Function InsertHDR() As String
             'sSQLCol = "NAMQT,TUKY,DENKY,MADTNT,MAMUC,MATM,NGNOP,NGNHAP,LOAITIEN,KYDC,THUETKY,DAGHI,LOAITK,TTHTK,MAVACH,DATHAY,HANNOP"
             'sSQLCol = sSQLCol & "KYLBO,DOANHSO,GTTINHTHUE,STT,STT2,STTIN,MACT,MADLT,LANBS,THUECL,DSOCL,GTTTCL,DA_NHAN,LAN_QUET"
         
-            sSQLVal = namQT & "," & TUKY & "," & DENKY & "," & madtnt & "," & MaMuc & "," & maTM & "," & ngnop & "," & NgNhap
-            sSQLVal = sSQLVal & "," & LoaiTien & "," & KYDC & "," & ThueTKy & "," & DaGhi & "," & LoaiTK & "," & tthtk & "," & MaVach & "," & DATHAY
+            sSQLVal = namQT & "," & TuKy & "," & DenKy & "," & madtnt & "," & MaMuc & "," & maTM & "," & ngnop & "," & NgNhap
+            sSQLVal = sSQLVal & "," & LoaiTien & "," & KyDC & "," & ThueTKy & "," & DaGhi & "," & LoaiTK & "," & tthtk & "," & MaVach & "," & DATHAY
             sSQLVal = sSQLVal & "," & HANNOP & "," & kylbo & "," & DoanhSo & "," & GTTinhThue
             sSQLVal = sSQLVal & "," & MADLT & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & DANHAN & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "'"
 

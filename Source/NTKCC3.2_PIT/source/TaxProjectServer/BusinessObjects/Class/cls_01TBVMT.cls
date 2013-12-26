@@ -430,7 +430,7 @@ Public Function Prepared3() As Boolean
 
         Dim j       As Integer
         Dim lastRow As Variant
-        Dim strID, TenTN   As String
+        Dim strID, tenTN   As String
         Dim maTM1 As String
         .Sheet = 1
         .Row = 45
@@ -438,9 +438,9 @@ Public Function Prepared3() As Boolean
         Do
 
             .GetText .ColLetterToNumber("AB"), .Row, strID
-            DataDM strID, , TenTN, , , , maTM1
-            .SetText .ColLetterToNumber("C"), .Row, TenTN
-            UpdateCell fps, .ColLetterToNumber("C"), .Row, TenTN
+            DataDM strID, , tenTN, , , , maTM1
+            .SetText .ColLetterToNumber("C"), .Row, tenTN
+            UpdateCell fps, .ColLetterToNumber("C"), .Row, tenTN
             
             .SetText .ColLetterToNumber("AC"), .Row, maTM1
             UpdateCell fps, .ColLetterToNumber("AC"), .Row, maTM1
@@ -456,9 +456,9 @@ Public Function Prepared3() As Boolean
         Do
 
             .GetText .ColLetterToNumber("AB"), .Row, strID
-            DataDM strID, , TenTN, , , , maTM1
-            .SetText .ColLetterToNumber("C"), .Row, TenTN
-            UpdateCell fps, .ColLetterToNumber("C"), .Row, TenTN
+            DataDM strID, , tenTN, , , , maTM1
+            .SetText .ColLetterToNumber("C"), .Row, tenTN
+            UpdateCell fps, .ColLetterToNumber("C"), .Row, tenTN
             
             .SetText .ColLetterToNumber("AC"), .Row, maTM1
             UpdateCell fps, .ColLetterToNumber("AC"), .Row, maTM1
@@ -504,24 +504,24 @@ Dim blnValid As Boolean
         .EventEnabled(EventAllEvents) = True
     End With
 End Sub
-Private Sub DataDM(ByVal Id As String, Optional ByRef strIdQLT As String, Optional ByRef TenTN As String, Optional ByRef strDVT As String, Optional ByRef strThueSuat As String, Optional ByRef blnSuaThueSuat As Boolean, Optional ByRef maTM As String)
+Private Sub DataDM(ByVal Id As String, Optional ByRef strIdQLT As String, Optional ByRef tenTN As String, Optional ByRef strDVT As String, Optional ByRef strThueSuat As String, Optional ByRef blnSuaThueSuat As Boolean, Optional ByRef maTM As String)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlDomData As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = GetCatalogueFileName
     
-If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Cell")
+If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                     
                         If Id = arrDanhsach(1) Then
                             strIdQLT = arrDanhsach(0)
-                            TenTN = arrDanhsach(2)
+                            tenTN = arrDanhsach(2)
                             strDVT = arrDanhsach(3)
                             strThueSuat = arrDanhsach(4)
                             blnSuaThueSuat = IIf(arrDanhsach(5) = "1", True, False)
@@ -1241,8 +1241,8 @@ Public Function InsertHDR() As String
     With fps
         .Sheet = 1
         
-        .GetText .ColLetterToNumber("G"), .MaxRows - 2, TENNV
-        .GetText .ColLetterToNumber("G"), .MaxRows - 4, CHUNGCHI
+        .GetText .ColLetterToNumber("G"), .MaxRows - 4, TENNV
+        .GetText .ColLetterToNumber("G"), .MaxRows - 2, CHUNGCHI
         'Ma tieu muc
         .Col = .ColLetterToNumber("B")
         .Row = 45
