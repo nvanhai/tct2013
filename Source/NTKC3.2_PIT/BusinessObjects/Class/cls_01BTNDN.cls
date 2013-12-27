@@ -640,8 +640,8 @@ Public Function CheckValidData() As Boolean
     CheckValidData = True
     With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("E"), 36, varCheckValue
-        .GetText .ColLetterToNumber("M"), 36, varNoteValue
+        .GetText .ColLetterToNumber("E"), 34, varCheckValue
+        .GetText .ColLetterToNumber("M"), 34, varNoteValue
         '
         
         .GetText .ColLetterToNumber("K"), 62, varCheckGhValue
