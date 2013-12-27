@@ -2653,6 +2653,10 @@ values ('KHBS_05_GTGT13', '23', 'N', 6281, '');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('KHBS_05_GTGT13', '24', 'C', 6282, '');
+
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('KHBS_05_GTGT13', '25', 'D', 6283, '');
+
 commit;
 
 -- KHBS 01A/TNDN
@@ -2724,6 +2728,10 @@ values ('KHBS_01A_TNDN13', '23', 'N', 6301, '');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('KHBS_01A_TNDN13', '24', 'C', 6302, '');
+
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('KHBS_01A_TNDN13', '25', 'D', 6303, '');
+
 commit;
 
 -- KHBS 01B/TNDN
@@ -2795,6 +2803,10 @@ values ('KHBS_01B_TNDN13', '23', 'N', 6321, '');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('KHBS_01B_TNDN13', '24', 'C', 6322, '');
+
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('KHBS_01B_TNDN13', '25', 'D', 6323, '');
+
 commit;
 
 -- KHBS 02/TNDN
@@ -2866,6 +2878,10 @@ values ('KHBS_02_TNDN13', '23', 'N', 6341, '');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('KHBS_02_TNDN13', '24', 'C', 6342, '');
+
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('KHBS_02_TNDN13', '25', 'D', 6343, '');
+
 commit;
 
 -- KHBS 01/TTDB
@@ -2939,7 +2955,7 @@ insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIE
 values ('KHBS_01_TTDB13', '24', 'C', 6362, '');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
-values ('KHBS_01_TTDB13', '25', 'C', 6363, '');
+values ('KHBS_01_TTDB13', '25', 'D', 6363, '');
 commit;
 
 -- KHBS 01/TAIN
@@ -3011,6 +3027,10 @@ values ('KHBS_01_TAIN13', '23', 'N', 6381, '');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('KHBS_01_TAIN13', '24', 'C', 6382, '');
+
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('KHBS_01_TAIN13', '25', 'D', 6383, '');
+
 commit;
 
 -- KHBS 01/BVMT
@@ -3082,6 +3102,10 @@ values ('KHBS_01_BVMT13', '23', 'N', 6401, '');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('KHBS_01_BVMT13', '24', 'C', 6402, '');
+
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('KHBS_01_BVMT13', '25', 'D', 6403, '');
+
 commit;
 
 -- KHBS 01/NTNN
@@ -3153,6 +3177,10 @@ values ('KHBS_01_NTNN13', '23', 'N', 6421, '');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('KHBS_01_NTNN13', '24', 'C', 6422, '');
+
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('KHBS_01_NTNN13', '25', 'D', 6423, '');
+
 commit;
 
 -- KHBS 03/NTNN
@@ -3224,7 +3252,13 @@ values ('KHBS_03_NTNN13', '23', 'N', 6441, '');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('KHBS_03_NTNN13', '24', 'C', 6442, '');
+
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('KHBS_03_NTNN13', '25', 'D', 6443, '');
+
 commit;
+
+
 
 -- KHBS 01/TBVMT
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
@@ -3295,7 +3329,12 @@ values ('KHBS_01_TBVMT13', '23', 'N', 6461, '');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('KHBS_01_TBVMT13', '24', 'C', 6462, '');
+
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('KHBS_01_TBVMT13', '25', 'D', 6463, '');
+
 commit;
+
 
 
 -- To khai 03/TNCN thang
