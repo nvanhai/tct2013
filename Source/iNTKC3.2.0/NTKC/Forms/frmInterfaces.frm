@@ -2602,7 +2602,8 @@ On Error GoTo ErrHandler
     Dim idToKhaiCheck As Integer
     ' Khong check doi voi cac BCTC
     idToKhaiCheck = Val(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
-    If (idToKhaiCheck >= 24 And idToKhaiCheck <= 35) Or (idToKhaiCheck >= 55 And idToKhaiCheck <= 58) Or (idToKhaiCheck >= 18 And idToKhaiCheck <= 21) Or idToKhaiCheck = 69 Then
+    'remove 24,25,26
+    If (idToKhaiCheck >= 27 And idToKhaiCheck <= 35) Or (idToKhaiCheck >= 55 And idToKhaiCheck <= 58) Or (idToKhaiCheck >= 18 And idToKhaiCheck <= 21) Or idToKhaiCheck = 69 Then
         isSheetTk = False
     End If
     
@@ -5152,6 +5153,23 @@ End Sub
 'ConnectErrHandle:
 '    SaveErrorLog Me.Name, "GetThongTinTep", Err.Number, Err.Description
 'End Function
+Private Function formatMaToKhai(ByVal strID As String) As String
+    Dim strTemp As String
+    Dim strCode As String
+    Dim strItem As String
+    Dim strRetValue As String
+    
+    strCode = Mid$(strID, Len(strID) - 1, 2)
+    strItem = Left$(strID, Len(strID) - 2)
+    If (strCode = "11") Then
+        strRetValue = "('" & strItem & "','" & strID & "','" & strItem & "13')"
+    ElseIf strCode = "13" Then
+        strRetValue = "('" & strItem & "','" & strItem & "11','" & strID & "')"
+    Else
+        strRetValue = "('" & strItem & "','" & strItem & "11','" & strID & "13')"
+    End If
+    formatMaToKhai = strRetValue
+End Function
 
 Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) As Boolean
     Dim lngIndex As Long
@@ -5172,30 +5190,32 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
     End If
 
     'Lay so TT to khai trong RCV
+    'format MaToKhai for data old
+    
     If strID = "02_TNDN11" And isTKLanPS = True Then
         strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-                "And tkhai.loai_tkhai = '" & strID & "' " & _
+                "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
                 " And tkhai.ngay_ps = to_date('" & ngayPS & "','dd/mm/yyyy')"
     ElseIf (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11") And isTKLanPS = True Then
         strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-                "And tkhai.loai_tkhai = '" & strID & "' " & _
+                "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
                 " And tkhai.ngay_ps = to_date('" & ngayPS & "','dd/mm/yyyy')"
     ElseIf (strID = "08_TNCN11" Or strID = "08A_TNCN11") And isTKThang = True Then
         strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-                "And tkhai.loai_tkhai = '" & strID & "' " & _
+                "And tkhai.loai_tkhai  IN" & formatMaToKhai(strID) & " " & _
                 "And tkhai.kykk_tu_ngay = To_Date('" & "01/" & TuNgay & "','DD/MM/RRRR')" & _
                 "And tkhai.kykk_den_ngay = To_Date('" & "01/" & DenNgay & "','DD/MM/RRRR')"
     Else
-    strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
-            "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-            "And tkhai.loai_tkhai = '" & strID & "' " & _
-            "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
-            "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
+        strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
+                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
+                "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+                "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
     End If
-
+    
     Set rsResult = clsDAO.Execute(strSQL)
     If rsResult Is Nothing Or IsNull(rsResult.Fields(0)) Then
         strSTT = 0
