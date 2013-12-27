@@ -322,6 +322,8 @@ values ('01_01_GTGT13', '10', 'N', 5830, '');
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('01_01_GTGT13', '11', 'C', 5830, '');
 
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('01_01_GTGT13', '12', 'C', 5830, '');
 
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
@@ -360,6 +362,8 @@ values ('01_01_GTGT13', '23', 'N', 5831, '');
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('01_01_GTGT13', '24', 'C', 5831, '');
 
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('01_01_GTGT13', '25', 'C', 5831, '');
 
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
@@ -398,6 +402,8 @@ values ('01_01_GTGT13', '37', 'N', 5832, '');
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('01_01_GTGT13', '38', 'C', 5832, '');
 
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('01_01_GTGT13', '39', 'C', 5832, '');
 
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
@@ -435,6 +441,9 @@ values ('01_01_GTGT13', '51', 'N', 5833, '');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('01_01_GTGT13', '52', 'C', 5833, '');
+
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('01_01_GTGT13', '53', 'C', 5833, '');
 
 
 
@@ -474,7 +483,8 @@ values ('01_01_GTGT13', '65', 'N', 5834, '');
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('01_01_GTGT13', '65a', 'C', 5834, '');
 
-
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('01_01_GTGT13', '65b', 'C', 5834, '');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('01_01_GTGT13', '66', 'N', 5835, '');
@@ -566,6 +576,8 @@ values ('01_02_GTGT13', '11', 'C', 5850, '');
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('01_02_GTGT13', '12', 'C', 5850, '');
 
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('01_02_GTGT13', '13', 'C', 5850, '');
 
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
@@ -603,6 +615,9 @@ values ('01_02_GTGT13', '24', 'N', 5851, '');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('01_02_GTGT13', '25', 'C', 5851, '');
+
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('01_02_GTGT13', '26', 'C', 5851, '');
 
 
 
@@ -642,6 +657,9 @@ values ('01_02_GTGT13', '37', 'N', 5852, '');
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('01_02_GTGT13', '38', 'C', 5852, '');
 
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('01_02_GTGT13', '39', 'C', 5852, '');
+
 
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
@@ -680,6 +698,8 @@ values ('01_02_GTGT13', '50', 'N', 5853, '');
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('01_02_GTGT13', '51', 'C', 5853, '');
 
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('01_02_GTGT13', '52', 'C', 5853, '');
 
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
@@ -718,6 +738,8 @@ values ('01_02_GTGT13', '63', 'N', 5854, '');
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('01_02_GTGT13', '64', 'C', 5854, '');
 
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('01_02_GTGT13', '65', 'C', 5854, '');
 
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
