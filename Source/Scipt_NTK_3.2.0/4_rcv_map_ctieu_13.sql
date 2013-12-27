@@ -2081,13 +2081,13 @@ values ('01_TAIN13', '29', 'N', 6132, '');
 
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
-values ('01_TAIN13', '21', 'N', 6133, '');
+values ('01_TAIN13', '31', 'N', 6133, '');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
-values ('01_TAIN13', '22', 'N', 6133, '');
+values ('01_TAIN13', '32', 'N', 6133, '');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
-values ('01_TAIN13', '23', 'N', 6133, '');
+values ('01_TAIN13', '33', 'N', 6133, '');
 commit;
 
 -- To khai 01/TBVMT
