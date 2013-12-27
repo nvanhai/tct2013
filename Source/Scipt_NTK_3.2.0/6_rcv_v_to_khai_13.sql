@@ -167,6 +167,92 @@ GROUP BY dtl.hdr_id,
 /* bo dk ky_hieu_hdon is not null and */;
 
 -- Phu luc 01-3/GTGT
+CREATE OR REPLACE VIEW RCV_V_PLUC_TKHAI_GTGT_KT03_13 AS
+SELECT dtl.hdr_id
+     , dtl.row_id so_tt
+     , dtl.so_tt nhom,
+     MAX(dtl.Hop_dong_xk_So) Hop_dong_xk_So,
+     MAX(dtl.Hop_dong_xk_Ngay) Hop_dong_xk_Ngay,
+     MAX(dtl.Hop_dong_xk_ngoai_te) Hop_dong_xk_ngoai_te,
+     MAX(dtl.Hop_dong_xk_vnd) Hop_dong_xk_vnd,
+     MAX(dtl.Phuong_thuc_tt) Phuong_thuc_tt,
+     MAX(dtl.Thoi_han_tt) Thoi_han_tt,
+     MAX(dtl.Tk_so) Tk_so,
+     MAX(dtl.Ngay_dk) Ngay_dk,
+     MAX(dtl.Tk_hhxk_ngoai_te) Tk_hhxk_ngoai_te,
+     MAX(dtl.Tk_hhxk_vnd) Tk_hhxk_vnd,
+     MAX(dtl.Hoa_don_xk_so) Hoa_don_xk_so,
+     MAX(dtl.Hoa_don_xk_ngay) Hoa_don_xk_ngay,
+     MAX(dtl.Hoa_don_xk_ngoai_te) Hoa_don_xk_ngoai_te,
+     MAX(dtl.Hoa_don_xk_vnd) Hoa_don_xk_vnd,
+     MAX(dtl.TTNH_so) TTNH_so,
+     MAX(dtl.TTNH_ngay) TTNH_ngay,
+     MAX(dtl.TTNH_ngoai_te) TTNH_ngoai_te,
+     MAX(dtl.TTNH_vnd) TTNH_vnd,
+     MAX(dtl.VB_nc_ngoai_so) VB_nc_ngoai_so,
+     MAX(dtl.VB_nc_ngoai_ngay) VB_nc_ngoai_ngay,
+     MAX(dtl.VB_nc_ngoai_ngoai_te) VB_nc_ngoai_ngoai_te,
+     MAX(dtl.VB_nc_ngoai_vnd) VB_nc_ngoai_vnd,
+     MAX(dtl.HDNK_so) HDNK_so,
+     MAX(dtl.HDNK_ngay) HDNK_ngay,
+     MAX(dtl.HDNK_ngoai_te) HDNK_ngoai_te,
+     MAX(dtl.HDNK_vnd) HDNK_vnd,
+     MAX(dtl.TKHHNK_so) TKHHNK_so,
+     MAX(dtl.TKHHNK_ngay) TKHHNK_ngay,
+     MAX(dtl.TKHHNK_ngoai_te) TKHHNK_ngoai_te,
+     MAX(dtl.TKHHNK_vnd) TKHHNK_vnd,
+     MAX(dtl.Chung_tu_tt_khac) Chung_tu_tt_khac,
+     MAX(dtl.Ghi_chu) Ghi_chu
+FROM rcv_gdien_tkhai gd,
+(
+  SELECT tkd.hdr_id,
+         tkd.row_id row_id,
+         gdien.id,
+         gdien.so_tt,
+         DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL) Hop_dong_xk_So,
+         DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL) Hop_dong_xk_Ngay,
+         DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) Hop_dong_xk_ngoai_te,
+         DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL) Hop_dong_xk_vnd,
+         DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL) Phuong_thuc_tt,
+         DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL) Thoi_han_tt,
+         DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL) Tk_so,
+         DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL) Ngay_dk,
+         DECODE(gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL) Tk_hhxk_ngoai_te,
+         DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL) Tk_hhxk_vnd,
+         DECODE(gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL) Hoa_don_xk_so,
+         DECODE(gdien.cot_13, tkd.ky_hieu, tkd.gia_tri, NULL) Hoa_don_xk_ngay,
+         DECODE(gdien.cot_14, tkd.ky_hieu, tkd.gia_tri, NULL) Hoa_don_xk_ngoai_te,
+         DECODE(gdien.cot_15, tkd.ky_hieu, tkd.gia_tri, NULL) Hoa_don_xk_vnd,
+         DECODE(gdien.cot_16, tkd.ky_hieu, tkd.gia_tri, NULL) TTNH_so,
+         DECODE(gdien.cot_17, tkd.ky_hieu, tkd.gia_tri, NULL) TTNH_ngay,
+         DECODE(gdien.cot_18, tkd.ky_hieu, tkd.gia_tri, NULL) TTNH_ngoai_te,
+         DECODE(gdien.cot_19, tkd.ky_hieu, tkd.gia_tri, NULL) TTNH_vnd,
+         DECODE(gdien.cot_20, tkd.ky_hieu, tkd.gia_tri, NULL) VB_nc_ngoai_so,
+         DECODE(gdien.cot_21, tkd.ky_hieu, tkd.gia_tri, NULL) VB_nc_ngoai_ngay,
+         DECODE(gdien.cot_22, tkd.ky_hieu, tkd.gia_tri, NULL) VB_nc_ngoai_ngoai_te,
+         DECODE(gdien.cot_23, tkd.ky_hieu, tkd.gia_tri, NULL) VB_nc_ngoai_vnd,
+         DECODE(gdien.cot_24, tkd.ky_hieu, tkd.gia_tri, NULL) HDNK_so,
+         DECODE(gdien.cot_25, tkd.ky_hieu, tkd.gia_tri, NULL) HDNK_ngay,
+         DECODE(gdien.cot_26, tkd.ky_hieu, tkd.gia_tri, NULL) HDNK_ngoai_te,
+         DECODE(gdien.cot_27, tkd.ky_hieu, tkd.gia_tri, NULL) HDNK_vnd,
+         DECODE(gdien.cot_28, tkd.ky_hieu, tkd.gia_tri, NULL) TKHHNK_so,
+         DECODE(gdien.cot_29, tkd.ky_hieu, tkd.gia_tri, NULL) TKHHNK_ngay,
+         DECODE(gdien.cot_30, tkd.ky_hieu, tkd.gia_tri, NULL) TKHHNK_ngoai_te,
+         DECODE(gdien.cot_31, tkd.ky_hieu, tkd.gia_tri, NULL) TKHHNK_vnd,
+         DECODE(gdien.cot_32, tkd.ky_hieu, tkd.gia_tri, NULL) Chung_tu_tt_khac,
+         DECODE(gdien.cot_33, tkd.ky_hieu, tkd.gia_tri, NULL) Ghi_chu
+  FROM rcv_tkhai_dtl tkd,
+       rcv_gdien_tkhai gdien,
+       rcv_map_ctieu ctieu
+  WHERE (ctieu.gdn_id = gdien.id)
+  AND (ctieu.ky_hieu = tkd.ky_hieu)
+    AND (tkd.loai_dlieu = '01_03_GTGT13')
+) dtl
+WHERE ( gd.loai_dlieu = '01_03_GTGT13')
+  AND (dtl.id = gd.id)
+GROUP BY dtl.hdr_id,
+          dtl.so_tt,
+         dtl.row_id;
 
 
 -- Phu luc 01-4A/GTGT
