@@ -714,10 +714,10 @@ FROM
                 AND (
                         ctieu.ky_hieu = tkd.ky_hieu)
                 AND (
-                        tkd.loai_dlieu = '04_01_GTGT13') ) dtl
+                        tkd.loai_dlieu = '04_1_GTGT13') ) dtl
         WHERE
             (
-                gd.loai_dlieu = '04_01_GTGT13')
+                gd.loai_dlieu = '04_1_GTGT13')
         AND (
                 dtl.id = gd.id)
         GROUP BY
