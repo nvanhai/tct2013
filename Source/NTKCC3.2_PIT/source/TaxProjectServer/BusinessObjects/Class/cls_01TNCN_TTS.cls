@@ -419,7 +419,7 @@ Public Function Prepared3() As Boolean
                 
                 
         'get gia tri tu thang, den thang de set lai hinh thuc ke khai tren header
-        .GetText .ColLetterToNumber("K"), 3, vTuThang
+        .GetText .ColLetterToNumber("P"), 3, vTuThang
         .GetText .ColLetterToNumber("T"), 3, vDenThang
 
         If Trim(vTuThang) <> vbNullString Or Trim(vDenThang) <> vbNullString Then
@@ -558,7 +558,7 @@ Public Function InsertDTL() As String
         .Sheet = 1
         matkhai = "'01_TNCN_TTS'"
         'get MADTNT
-        .GetText .ColLetterToNumber("F"), 10, madtnt
+        .GetText .ColLetterToNumber(MA_SO_THUE_X), MA_SO_THUE_Y, madtnt
     
         If madtnt = vbNullString Then
             madtnt = "''"
@@ -567,7 +567,7 @@ Public Function InsertDTL() As String
         End If
         
         'get KYLBO
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber(KY_LAP_BO_X), KY_LAP_BO_Y, kylbo
     
         If kylbo = vbNullString Then
             kylbo = "''"
@@ -579,7 +579,7 @@ Public Function InsertDTL() As String
         kykkhai = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
         
         ' get ngaynop
-        .GetText .ColLetterToNumber("E"), 32, ngnop
+        .GetText .ColLetterToNumber(NGAY_NOP_X), NGAY_NOP_Y, ngnop
     
         If ngnop = vbNullString Then
             ngnop = "CTOD('')"
@@ -608,6 +608,7 @@ Public Function InsertDTL() As String
                 CTTN = "'0" & cttnArr(i) & "'"
                 
                 .GetText .ColLetterToNumber(colArr(i)), cellArr(i), giatri
+
                 giatri2 = giatri
                 
                 sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & ","
@@ -621,7 +622,7 @@ Public Function InsertDTL() As String
                 hdr.tthtk = tthtk
                 hdr.ngnop = ngnop
                 hdr.CTTN = CTTN
-                hdr.giatri = giatri
+                hdr.giatri = "'" & giatri & "'"
                             
                 hdr.LAN_QUET = LAN_QUET
                 hdr.ky_hieu = "'" & kyhieuArr(i) & "'"
@@ -630,7 +631,7 @@ Public Function InsertDTL() As String
                 hdr.Id = GetDtlId(spathVat)
                 hdr.Hdr_id = hdrId
 
-                sSQL = InsertDTL_TGTC(hdr)
+                sSQL = InsertDTL_TGTC08(hdr, 0)
                 bln = clsDAO.ExecuteDLL(sSQL)
 
             Next
@@ -652,7 +653,7 @@ Public Function InsertDTL() As String
         
                     
                     arr = Split(GetMaCqt, "~")
-                    hdr.matkhai = "'08A_TNCN11'"
+                    hdr.matkhai = "'01_TNCN_TTS'"
                     hdr.madtnt = madtnt
                     hdr.kylbo = kylbo
                     hdr.kykkhai = kykkhai
@@ -838,9 +839,9 @@ Public Function InsertHDR() As String
         Else
             LanBS = "0"
         End If
-
+        
         'get tu thang , den thang
-        .GetText .ColLetterToNumber("K"), 3, vTuThang
+        .GetText .ColLetterToNumber("P"), 3, vTuThang
         .GetText .ColLetterToNumber("T"), 3, vDenThang
 
         If Trim(vTuThang) <> vbNullString And Trim(vDenThang) <> vbNullString Then
@@ -866,14 +867,16 @@ Public Function InsertHDR() As String
          
         .GetText .ColLetterToNumber(SO_HDDL_DL_X), SO_HDDL_DL_Y, SOHDDL
         .GetText .ColLetterToNumber(NGAY_HDDL_DL_X), NGAY_HDDL_DL_Y, NGAYHDDL
-        .GetText .ColLetterToNumber("F"), 91, LANDAU
+        .GetText .ColLetterToNumber("C"), 91, LANDAU
 
         If LANDAU = 1 Then
             LanBS = "0"
         Else
             .GetText .ColLetterToNumber("I"), 66, LanBS
         End If
-
+        If LanBS = vbNullString Then
+            LanBS = "0"
+        End If
         ' Ghi du lieu vao bang trung gian de day len TC
         ' check PIT
         If TAX_Utilities_Svr_New.isCheckPIT = True Then
@@ -976,7 +979,7 @@ Public Function TKTT() As Boolean
     strFileNameHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_CNTK" & Right$(sKyKeKhai, 4) & ".DBF"
     strFileNameDTL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_C08" & Right$(sKyKeKhai, 4) & ".DBF"
     strFileNameHDR1 = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "tmp_tncn_hdr.DBF"
-    strFileNameDTL1 = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "tmp_tncn_dtl.DBF"
+    strFileNameDTL1 = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "tmp_tncn_dtl_plus.DBF"
     
     '    Dim strFileNameBS As String
     '    strFileNameBS = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_BS" & sKyKeKhai & ".DBF"
@@ -1005,7 +1008,7 @@ Public Function TKTT() As Boolean
     'file dtl1
     If fso.FileExists(strFileNameDTL1) = False Then
         Dim strTepmauDTL1 As String
-        strTepmauDTL1 = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "tepmau\tmp_tncn_dtl.DBF"
+        strTepmauDTL1 = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "tepmau\tmp_tncn_dtl_plus.DBF"
         fso.CopyFile strTepmauDTL1, strFileNameDTL1, False
     End If
     'file bo xung
@@ -1028,7 +1031,7 @@ Public Function TKTT() As Boolean
     With fps
         .Sheet = 1
          'get Tu thang, Den thang
-        .GetText .ColLetterToNumber("K"), 3, vTuThang
+        .GetText .ColLetterToNumber("P"), 3, vTuThang
         .GetText .ColLetterToNumber("T"), 3, vDenThang
     End With
 
@@ -1123,7 +1126,7 @@ Public Function TinhSoLanQuet() As Integer
     
     With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("K"), 3, vTungay
+        .GetText .ColLetterToNumber("P"), 3, vTungay
         .GetText .ColLetterToNumber("T"), 3, vDenngay
         If Trim(vTungay) = vbNullString And Trim(vDenngay) = vbNullString Then
             vTungay = vbNullString
@@ -1236,8 +1239,8 @@ Public Function isToKhaiChinhThuc() As Boolean
     'get Tu thang, Den thang
     With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("K"), 3, vTuThang
-        .GetText .ColLetterToNumber("P"), 3, vDenThang
+        .GetText .ColLetterToNumber("P"), 3, vTuThang
+        .GetText .ColLetterToNumber("T"), 3, vDenThang
     End With
 
     

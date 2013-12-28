@@ -1114,7 +1114,7 @@ Public Function InsertHDR() As String
     Dim GIA_HAN    As Variant
     
     sSQLCol = "MADTNT,MAMUC,MATM,KD_MADTNT,TEN_TC,DC_TC,QD_TC,HOPDONG,NGNOP,TTHTK,"
-    sSQLCol = sSQLCol & "KYKKHAI,MATKHAI,HANNOP,HANNOP2,THUETKY,THUETKY2,NGAYHD,NGAYXN,GHICHU,SHTEP,MAVACH,AUTO_CAL,DAGHI,KYLBO,THUECL,MADLT,LANBS,LAN_QUET,DoanhSo,GTTinhThue,GTTTCL,DSOCL,DaGhi2,DANHAN,NGAY_PS,TENNV,CHUNGCHI"
+    sSQLCol = sSQLCol & "KYKKHAI,MATKHAI,HANNOP,HANNOP2,THUETKY,THUETKY2,NGAYHD,NGAYXN,GHICHU,SHTEP,MAVACH,AUTO_CAL,DAGHI,KYLBO,THUECL,MADLT,LANBS,LAN_QUET,DoanhSo,GTTinhThue,GTTTCL,DSOCL,DaGhi2,DANHAN,NGAY_PS,TENNV,CHUNGCHI,GIAHAN"
 
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
@@ -1123,7 +1123,7 @@ Public Function InsertHDR() As String
        
     With fps
         .Sheet = 1
-                        'lay ten nhan vien dai ly thue, chung chi hanh nghe
+        'lay ten nhan vien dai ly thue, chung chi hanh nghe
         .GetText .ColLetterToNumber("G"), 78, TENNV
         .GetText .ColLetterToNumber("G"), 80, CHUNGCHI
 
@@ -1171,11 +1171,13 @@ Public Function InsertHDR() As String
 
         'Gia han
         .GetText .ColLetterToNumber("E"), 47, GIA_HAN
+
         If GIA_HAN = "1" Then
             GIA_HAN = ".T."
         Else
             GIA_HAN = ".F."
         End If
+
         ' ten don vi van chuyen
         .GetText .ColLetterToNumber("K"), 20, TEN_TC
 
@@ -1259,14 +1261,13 @@ Public Function InsertHDR() As String
         kykkhai = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
         Dim kykkhai2 As Variant
             
-            kykkhai2 = Mid$(kykkhai, 2, 1)
+        kykkhai2 = Mid$(kykkhai, 2, 1)
             
-            If kykkhai2 <> "0" Then
-                kykkhai2 = kykkhai
-            Else
-                kykkhai2 = "'" & Right$(kykkhai, 7)
-            End If
-            
+        If kykkhai2 <> "0" Then
+            kykkhai2 = kykkhai
+        Else
+            kykkhai2 = "'" & Right$(kykkhai, 7)
+        End If
         
         ' ---------- han nop -----------------------
         ' HanNop = "CTOD('')"
@@ -1306,7 +1307,9 @@ Public Function InsertHDR() As String
             ElseIf Val(TAX_Utilities_Svr_New.ThreeMonths) = 4 Then
                 HANNOP = "01/04/2013"
             End If
+
         ElseIf Trim(TAX_Utilities_Svr_New.Year) = "2013" Then
+
             If GIA_HAN = ".T." Then
                 If Val(TAX_Utilities_Svr_New.ThreeMonths) = 1 Then
                     HANNOP = "30/10/2013"
@@ -1314,6 +1317,20 @@ Public Function InsertHDR() As String
                     HANNOP = "30/10/2013"
                 ElseIf Val(TAX_Utilities_Svr_New.ThreeMonths) = 3 Then
                     HANNOP = "31/01/2014"
+                ElseIf Val(TAX_Utilities_Svr_New.ThreeMonths) = 4 Then
+                    HANNOP = "01/04/2015"
+                End If
+
+            Else
+
+                If Val(TAX_Utilities_Svr_New.ThreeMonths) = 1 Then
+                    HANNOP = "30/04/2013"
+                ElseIf Val(TAX_Utilities_Svr_New.ThreeMonths) = 2 Then
+                    HANNOP = "30/07/2013"
+                ElseIf Val(TAX_Utilities_Svr_New.ThreeMonths) = 3 Then
+                    HANNOP = "30/10/2013"
+                ElseIf Val(TAX_Utilities_Svr_New.ThreeMonths) = 4 Then
+                    HANNOP = "30/01/2014"
                 End If
             End If
         End If
@@ -1388,7 +1405,7 @@ Public Function InsertHDR() As String
         sSQLVal = sSQLVal & HOPDONG & "," & ngnop & "," & tthtk & "," & kykkhai2 & "," & matkhai & "," & HANNOP & "," & HANNOP2 & ", "
         sSQLVal = sSQLVal & ThueTKy & "," & ThueTKy2 & "," & NGAYHD & "," & NGAYXN & "," & GHICHU & ", "
         sSQLVal = sSQLVal & SHTEP & "," & MaVach & "," & AUTO_CAL & "," & DaGhi & ", "
-        sSQLVal = sSQLVal & kylbo & "," & THUECL & "," & MADLT & "," & LanBS & "," & LAN_QUET & "," & DoanhSo & "," & GTTinhThue & "," & GTTTCL & "," & DSoCL & "," & DAGHI2 & "," & DANHAN & "," & NGAY_PS & ",'" & TENNV & "','" & CHUNGCHI & "'"
+        sSQLVal = sSQLVal & kylbo & "," & THUECL & "," & MADLT & "," & LanBS & "," & LAN_QUET & "," & DoanhSo & "," & GTTinhThue & "," & GTTTCL & "," & DSoCL & "," & DAGHI2 & "," & DANHAN & "," & NGAY_PS & ",'" & TENNV & "','" & CHUNGCHI & "'," & GIA_HAN
 
         sSQL = "INSERT INTO TMP_SM" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)

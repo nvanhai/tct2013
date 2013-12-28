@@ -2503,7 +2503,7 @@ Public Function InsertDTL_PL017() As String
             sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIXE & ","
             sSQLVal = sSQLVal & DVTinh & "," & TONGBANRA & "," & BANNTDDL & "," & GIAHD & "," & GHICHU & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & MAPL & "," & DANHAN & "," & LAN_QUET
              
-            sSQL = "INSERT INTO TMP_P3" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+            sSQL = "INSERT INTO TMP_P017" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
@@ -2586,7 +2586,7 @@ Public Function InsertDTL_PL017() As String
             sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIXE & ","
             sSQLVal = sSQLVal & DVTinh & "," & TONGBANRA & "," & BANNTDDL & "," & GIAHD & "," & GHICHU & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & MAPL & "," & DANHAN & "," & LAN_QUET
              
-            sSQL = "INSERT INTO TMP_P3" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+            sSQL = "INSERT INTO TMP_P017" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1

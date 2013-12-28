@@ -206,8 +206,9 @@ Public Function Prepared1() As Boolean
 End Function
 
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
-    Dim i As Integer
+    Dim i       As Integer
     Dim varMaDM As Variant
+    Dim TenCQT  As String
     i = 0
     ReDim Preserve larrPhongXuLy(0)
     larrPhongXuLy(0) = "00"
@@ -220,7 +221,9 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .Row = PHONG_XU_LY_Y
         PHONG_XU_LY_X1 = PHONG_XU_LY_X
         PHONG_XU_LY_Y1 = PHONG_XU_LY_Y
+
         If rsPXL.Fields.count > 0 Then
+
             Do While Not rsPXL.EOF
                 'dhdang sua combox ngay xu ly
                 'ngay 05-08
@@ -234,10 +237,12 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
                 larrid(i) = rsPXL.Fields(0).Value
                 rsPXL.MoveNext
             Loop
+
         Else
             DisplayMessage "0077", msOKOnly
             Exit Function
         End If
+
         .TypeComboBoxCurSel = 0
         UpdateCell fps, .Col, .Row, .Text
         lSoPhongXL = i
@@ -246,18 +251,19 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .Sheet = 1
         .Col = .ColLetterToNumber("K")
         .Row = 60
-         .GetText .ColLetterToNumber("K"), .Row, varMaDM
+        .GetText .ColLetterToNumber("K"), .Row, varMaDM
+
         If Trim(varMaDM) <> vbNullString Then
             .Col = .ColLetterToNumber("M")
             .Row = 64
             .Text = getTenLyDoGD(varMaDM)
         End If
         
-        
         ' Neu khong co gia han se khong cho chon combobox
-         ' Neu check gia han moi cho phep chon GT
+        ' Neu check gia han moi cho phep chon GT
         .Col = .ColLetterToNumber("K")
         .Row = 62
+
         If .Text = "1" Or UCase$(.Text) = "X" Then
             .Col = .ColLetterToNumber("M")
             .Row = 64
@@ -267,6 +273,22 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
             .Row = 64
             .Lock = True
         End If
+        
+        .Sheet = 2
+        .Row = 35
+
+        Do
+            .Col = .ColLetterToNumber("E")
+            varMaDM = .Text
+            GetTenCQT varMaDM, TenCQT
+            .Col = .ColLetterToNumber("G")
+            .Text = TenCQT
+            UpdateCell fps, .Col, .Row, .Text
+            
+            .Col = .ColLetterToNumber("C")
+            .Row = .Row + 1
+        Loop Until .Text = "aa"
+
         ' End set gia han
     End With
     

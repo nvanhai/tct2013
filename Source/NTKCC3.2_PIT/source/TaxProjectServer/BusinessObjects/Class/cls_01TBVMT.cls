@@ -182,9 +182,10 @@ End Function
 
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
 
-    
+    Dim maMh  As Variant
+    Dim tenMh As String
 
-    Dim i        As Integer
+    Dim i     As Integer
     i = 0
     ReDim Preserve larrPhongXuLy(0)
     larrPhongXuLy(0) = "00"
@@ -222,9 +223,45 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .TypeComboBoxCurSel = 0
         UpdateCell fps, .Col, .Row, .Text
         lSoPhongXL = i
-        
+              
+        .Sheet = 1
+        .Row = 45
 
-      
+        Do
+            maMh = ""
+            tenMh = ""
+            .GetText .ColLetterToNumber("AB"), .Row, maMh
+            getTenMH maMh, tenMh
+            .Col = .ColLetterToNumber("C")
+            .Text = tenMh
+            UpdateCell fps, .Col, .Row, .Text
+            .Col = .ColLetterToNumber("B")
+            .Row = .Row + 1
+        
+        Loop Until .Text = "aa"
+        
+        .Sheet = 2
+        .Row = 35
+
+        Do
+            maMh = ""
+            tenMh = ""
+            .GetText .ColLetterToNumber("Y"), .Row, maMh
+            getTenMH maMh, tenMh
+            .Col = .ColLetterToNumber("D")
+            .Text = tenMh
+            UpdateCell fps, .Col, .Row, .Text
+            
+            .GetText .ColLetterToNumber("R"), .Row, maMh
+            GetTenCQT maMh, tenMh
+            .Col = .ColLetterToNumber("M")
+            .Text = tenMh
+            UpdateCell fps, .Col, .Row, .Text
+            
+            .Col = .ColLetterToNumber("C")
+            .Row = .Row + 1
+        
+        Loop Until .Text = "aa"
         
     End With
     
@@ -427,48 +464,6 @@ Public Function Prepared3() As Boolean
             .Row = 28
             .Value = 1
         End If
-
-        Dim j       As Integer
-        Dim lastRow As Variant
-        Dim strID, tenTN   As String
-        Dim maTM1 As String
-        .Sheet = 1
-        .Row = 45
-
-        Do
-
-            .GetText .ColLetterToNumber("AB"), .Row, strID
-            DataDM strID, , tenTN, , , , maTM1
-            .SetText .ColLetterToNumber("C"), .Row, tenTN
-            UpdateCell fps, .ColLetterToNumber("C"), .Row, tenTN
-            
-            .SetText .ColLetterToNumber("AC"), .Row, maTM1
-            UpdateCell fps, .ColLetterToNumber("AC"), .Row, maTM1
-            
-            .Col = .ColLetterToNumber("B")
-            .Row = .Row + 1
-           
-            lastRow = .Row
-        Loop Until .Text = "aa"
-
-        .Row = lastRow + 3
-
-        Do
-
-            .GetText .ColLetterToNumber("AB"), .Row, strID
-            DataDM strID, , tenTN, , , , maTM1
-            .SetText .ColLetterToNumber("C"), .Row, tenTN
-            UpdateCell fps, .ColLetterToNumber("C"), .Row, tenTN
-            
-            .SetText .ColLetterToNumber("AC"), .Row, maTM1
-            UpdateCell fps, .ColLetterToNumber("AC"), .Row, maTM1
-            
-    
-            
-            .Col = .ColLetterToNumber("B")
-            .Row = .Row + 1
-
-        Loop Until .Text = "aa"
         
     End With
     
@@ -1946,7 +1941,29 @@ Public Function GetMaCqt() As String
         GetMaCqt = TEMP
 End Function
 
+'lay ten mat hang
+Public Sub getTenMH(ByVal Id As String, Optional ByRef tenTN As String)
+Dim arrDanhsach() As String
+Dim strDataFileName As String
+Dim xmlDomData As New MSXML.DOMDocument
+Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+Dim xmlNode As MSXML.IXMLDOMNode
 
+       strDataFileName = "..\InterfaceTemplates\Catalogue_DM_thue_BVMT.xml"
+    
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If Id = arrDanhsach(0) Then
+                            tenTN = arrDanhsach(1)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub
 
 
 
