@@ -633,7 +633,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     
     'Ky/ Quy KK
-    If LOAI_KYKK = "0" Then
+    If LOAI_KYKK = "T" Then
         If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
             'Ngay dau ky ke khai va ngay cuoi ky ke khai
             dDate = dNgayDauKy
@@ -711,9 +711,9 @@ On Error GoTo ErrHandle
       'strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null)"
     ' PIT
     If TAX_Utilities_Srv_New.isCheckPIT = True Then
-        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & strTTGui & ","  & vHthuc_nop & "," & vItkhai_ID & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
+        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & strTTGui & "," & vHthuc_nop & "," & vItkhai_ID & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ",'" & LOAI_KYKK & "')"
     Else
-        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null,"  & vHthuc_nop & "," & vItkhai_ID & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
+        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & vHthuc_nop & "," & vItkhai_ID & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ",'" & LOAI_KYKK & "')"
     End If
     ' end PIT
     
