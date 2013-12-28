@@ -434,7 +434,7 @@ GROUP BY dtl.hdr_id,
 --To khai 02/GTGT
 CREATE OR REPLACE VIEW RCV_V_TKHAI_GTGT_DTU_13 AS
 SELECT dtl.hdr_id
-     , dtl.ctk_id
+     , dtl.id
      , MAX(dtl.so_tt) so_tt
      , MAX(gd.ten_ctieu) ten_ctieu
      , MAX(dtl.doanhso_dtnt) doanhso_dtnt
@@ -466,8 +466,8 @@ FROM rcv_gdien_tkhai gd,
 WHERE (gd.loai_dlieu = '02_GTGT13')
   AND (dtl.id = gd.id)
 GROUP BY dtl.hdr_id,
-       --  dtl.row_id,
-         dtl.ctk_id;
+
+         dtl.id;
 
 
 -- Phu luc 02-1/GTGT
