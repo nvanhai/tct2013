@@ -606,7 +606,10 @@ SELECT
     dtl.hdr_id,
     dtl.ctk_id,
     MAX(dtl.so_tt)            so_tt ,
-    MAX(dtl.so_dtnt)          so_dtnt ,
+    MAX(dtl.so_dtnt_0)          so_dtnt_0 ,
+     MAX(dtl.so_dtnt)          so_dtnt ,
+      MAX(dtl.thue_GTGT)          thue_GTGT ,
+       MAX(dtl.tong)          tong ,
     MAX(dtl.kieu_dlieu_ds)    kieu_dlieu_ds ,
     MAX(dtl.ky_hieu_ctieu_st) ky_hieu_ctieu_st
 FROM
@@ -619,7 +622,10 @@ FROM
             gdien.so_tt                                                            so_tt,
             tkd.row_id                                                             row_id,
             gdien.ma_ctieu                                                         ctk_id,
-            REPLACE (DECODE(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL),',','.') so_dtnt,
+            REPLACE (DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL),',','.') so_dtnt_0,
+             REPLACE (DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL),',','.') so_dtnt,
+              REPLACE (DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL),',','.') thue_GTGT,
+              REPLACE (DECODE(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL),',','.') tong,
             DECODE(gdien.cot_01, ctieu.ky_hieu, ctieu.kieu_dlieu, NULL)            kieu_dlieu_ds,
             DECODE(gdien.cot_01, tkd.ky_hieu, ctieu.ky_hieu_ctieu, NULL)           ky_hieu_ctieu_st
         FROM
