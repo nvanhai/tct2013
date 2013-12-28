@@ -756,9 +756,7 @@ Public Function InsertHDR() As String
         PHONG_XL = Mid(PHONG_XL, InStr(1, PHONG_XL, "{") + 1, InStr(1, PHONG_XL, "}") - InStr(1, PHONG_XL, "{") - 1)
         
         PHONG_XL = "'" & PHONG_XL & "'"
-        
-        kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
-        
+                
         If Trim(HANNOP) = vbNullString Then
             HANNOP = "CTOD('')"
         Else
@@ -802,6 +800,14 @@ Public Function InsertHDR() As String
         End If
         
         .GetText .ColLetterToNumber("L"), 66, Loai_Ky_KK
+        
+        If Loai_Ky_KK = "1" Then
+            kykkhai = "'" & Right$(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
+
+        Else
+            kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+
+        End If
          
     End With
            
@@ -874,9 +880,8 @@ Public Function InsertHDR() As String
     clsDAO.Disconnect
 End Function
 
-
 Public Function TKTT() As Boolean
-    Dim sSQL           As String
+    Dim sSQL            As String
     Dim rs             As ADODB.Recordset
     Dim fso            As New FileSystemObject
     Dim strFileNameHDR As String
@@ -884,6 +889,7 @@ Public Function TKTT() As Boolean
     Dim strFileNameHDR1 As String
     Dim strFileNameDTL1 As String
     Dim vTuThang As Variant, vDenThang As Variant, kykkhai As Variant
+    Dim LoaiKyKK As Variant
     
     strFileNameHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_CNTK" & Right$(sKyKeKhai, 4) & ".DBF"
     strFileNameDTL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_C08" & Right$(sKyKeKhai, 4) & ".DBF"
@@ -906,7 +912,6 @@ Public Function TKTT() As Boolean
         fso.CopyFile strTepmauDTL, strFileNameDTL, False
     End If
     
-    
     'file HDR1
     If fso.FileExists(strFileNameHDR1) = False Then
         Dim strTepmauHDR1 As String
@@ -920,6 +925,7 @@ Public Function TKTT() As Boolean
         strTepmauDTL1 = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "tepmau\tmp_tncn_dtl.DBF"
         fso.CopyFile strTepmauDTL1, strFileNameDTL1, False
     End If
+
     'file bo xung
     '    If fso.FileExists(strFileNameBS) = False Then
     '        Dim strTepmauBS As String
@@ -939,30 +945,29 @@ Public Function TKTT() As Boolean
 
     With fps
         .Sheet = 1
-         'get Tu thang, Den thang
+        'get Tu thang, Den thang
         .GetText .ColLetterToNumber("K"), 3, vTuThang
         .GetText .ColLetterToNumber("P"), 3, vDenThang
     End With
-
     
     If Trim(vTuThang) <> vbNullString And Trim(vDenThang) <> vbNullString Then
         kykkhai = "'" & Trim(vTuThang) & "'"
     End If
-
-
     
     If TAX_Utilities_Svr_New.isCheckPIT Then
         ' Truong hop PIT
         
-        If Trim(vTuThang) <> vbNullString And Trim(vDenThang) <> vbNullString Then
-             vDenThang = "01/" & Trim(vDenThang)
-             vDenThang = ToDate(Trim(vDenThang), DDMMYYYY)
-             vDenThang = "CTOD('" & Format(vDenThang, "mm/dd/yyyy") & "')"
-             sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = " & kykkhai & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC' AND den_ngay = " & vDenThang
+        fps.Sheet = 1
+        fps.GetText fps.ColLetterToNumber("L"), 66, LoaiKyKK
+
+        If LoaiKyKK = "1" Then
+            sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & Right$(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC' AND Loai_KyKK='Q'"
+          
         Else
-             sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = " & kykkhai & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC'"
+            sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC' AND Loai_KyKK='T'"
+       
         End If
-        
+
         Set rs = clsDAO.Execute(sSQL)
 
         If Not rs Is Nothing Then
@@ -979,7 +984,6 @@ Public Function TKTT() As Boolean
             TKTT = False
         End If
     End If
-
 
     LAN_QUET = TinhSoLanQuet + 1
     clsDAO.Disconnect
@@ -1019,12 +1023,11 @@ Public Function TKTTNGNOP() As Boolean
 End Function
 
 Public Function TinhSoLanQuet() As Integer
-    Dim sSQL As String
-    Dim rs As ADODB.Recordset
-    Dim fso As New FileSystemObject
+    Dim sSQL           As String
+    Dim rs             As ADODB.Recordset
+    Dim fso            As New FileSystemObject
     Dim strFileNameHDR As String
     Dim strFileNameDTL As String
- 
     
     'kiem tra ton tai tep *.dbf chua
     'Tinh so lan quyet de ghi vao DB trung gian
@@ -1033,55 +1036,46 @@ Public Function TinhSoLanQuet() As Integer
     '-----------------------------
     If TAX_Utilities_Svr_New.isCheckPIT = True Then
 
-        Dim kykk_tu_ngay As Variant
+        Dim kykk_tu_ngay  As Variant
         Dim kykk_den_ngay As Variant
-        Dim tKyKekhai As Variant
-        Dim strDate As Variant
-        Dim dDate As Variant
-        
+        Dim tKyKekhai     As Variant
+        Dim strDate       As Variant
+        Dim dDate         As Variant
+        Dim LoaiKyKK      As Variant
         strFileNameHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_TNCN_HDR" & ".DBF"
-        tKyKekhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
-        tKyKekhai = Replace(tKyKekhai, "'", "")
-        strDate = Split(tKyKekhai, "/")
-        dDate = DateSerial(Int(strDate(1)), Int(strDate(0)), 1)
-        kykk_tu_ngay = dDate
-        kykk_den_ngay = DateAdd("m", 1, kykk_tu_ngay)
-        kykk_den_ngay = DateAdd("d", -1, kykk_den_ngay)
-        
-        If Trim(kykk_den_ngay) = vbNullString Then
-                kykk_den_ngay = "CTOD('')"
-        Else
-                kykk_den_ngay = "CTOD('" & Format(kykk_den_ngay, "mm/dd/yyyy") & "')"
-        End If
-        
-        If Trim(kykk_tu_ngay) = vbNullString Then
-                kykk_tu_ngay = "CTOD('')"
-        Else
-                kykk_tu_ngay = "CTOD('" & Format(kykk_tu_ngay, "mm/dd/yyyy") & "')"
-        End If
+        fps.Sheet = 1
+        fps.GetText fps.ColLetterToNumber("L"), 66, LoaiKyKK
 
         If fso.FileExists(strFileNameHDR) = True Then
             If clsDAO.Connected = False Then
                 clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
                 clsDAO.Connect
             End If
-             sSQL = "SELECT max(so_tt_tk) as LAN_QUET FROM TMP_TNCN_HDR" & _
-                    " WHERE TIN = " & "'" & strMST & "'" & _
-                    " And loai_tkhai = '07_TNCN11' " & _
-                    " And kykk_tu_ng = " & kykk_tu_ngay & _
-                    " And kykk_den_n =" & kykk_den_ngay
-                Set rs = clsDAO.Execute(sSQL)
-                If Not rs Is Nothing Then
-                     TinhSoLanQuet = Val(rs.Fields("LAN_QUET"))
+
+            If LoaiKyKK = "1" Then
+                sSQL = "SELECT max(so_tt_tk) as LAN_QUET FROM TMP_TNCN_HDR" & " WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & Right$(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC' AND Loai_KyKK='Q'"
+          
+            Else
+                sSQL = "SELECT max(so_tt_tk) as LAN_QUET FROM TMP_TNCN_HDR" & " WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC' AND Loai_KyKK='T'"
+       
+            End If
+
+            Set rs = clsDAO.Execute(sSQL)
+
+            If Not rs Is Nothing Then
+                TinhSoLanQuet = Val(rs.Fields("LAN_QUET"))
                       
-                Else
-                     TinhSoLanQuet = 0
-                End If
-                clsDAO.Disconnect
+            Else
+                TinhSoLanQuet = 0
+            End If
+
+            clsDAO.Disconnect
         Else
-        TinhSoLanQuet = 0
+            TinhSoLanQuet = 0
         End If
+
     End If
+
 End Function
 
 'dhdang tinh ma nganh
@@ -1114,60 +1108,87 @@ End Function
 
 
 Public Function isToKhaiChinhThuc() As Boolean
-    Dim sSQL As String
-    Dim vTuThang As Variant, vDenThang As Variant, kykkhai As Variant
+    Dim sSQL            As String
+    Dim rs              As ADODB.Recordset
+    Dim vKeKhai         As Variant
+    Dim vKeKhai_temp    As Variant
+    Dim vKyLB           As Variant
+    Dim strTestFileName As String
+    Dim fso             As New FileSystemObject
+    Dim matkhai         As Variant
+    Dim LoaiKyKK        As Variant
+    Dim flag            As Boolean
+    'kiem tra da co to khai chinh thuc chua
+    flag = True
+    vKyLB = DateSerial(Int(Year(Now())), Int(Month(Now())), 1)
+    vKeKhai = DateSerial(Int(Val(TAX_Utilities_Svr_New.Year)), Int(Val(TAX_Utilities_Svr_New.Month)), 1)
+    vKeKhai_temp = sKyKeKhai
 
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
         clsDAO.Connect
-   End If
-   
-    'set kykekhai
-    kykkhai = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
-
-    'get Tu thang, Den thang
-    With fps
-        .Sheet = 1
-        .GetText .ColLetterToNumber("K"), 3, vTuThang
-        .GetText .ColLetterToNumber("P"), 3, vDenThang
-    End With
-
-    
-    If Trim(vTuThang) <> vbNullString And Trim(vDenThang) <> vbNullString Then
-        kykkhai = "'" & Trim(vTuThang) & "'"
     End If
    
-   If TAX_Utilities_Svr_New.isCheckPIT Then
-   
-        If Trim(vTuThang) <> vbNullString And Trim(vDenThang) <> vbNullString Then
-             vDenThang = "01/" & Trim(vDenThang)
-             vDenThang = ToDate(Trim(vDenThang), DDMMYYYY)
-             vDenThang = "CTOD('" & Format(vDenThang, "mm/dd/yyyy") & "')"
-             sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = " & kykkhai & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC' AND den_ngay = " & vDenThang
+    ' Truong hop Pit
+    If TAX_Utilities_Svr_New.isCheckPIT = True Then
+        fps.Sheet = 1
+        fps.GetText fps.ColLetterToNumber("L"), 66, LoaiKyKK
+
+        If LoaiKyKK = "1" Then
+            sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & Right$(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC' AND Loai_KyKK='Q'"
+          
         Else
-             sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = " & kykkhai & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC'"
+            sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC' AND Loai_KyKK='T'"
+       
         End If
-   
+
         Set rs = clsDAO.Execute(sSQL)
+
         If rs Is Nothing Then
             isToKhaiChinhThuc = False
         Else
             isToKhaiChinhThuc = True
         End If
-   Else
-        sSQL = "SELECT TMP_CNTK" & Right$(sKyKeKhai, 4) & _
-        " WHERE TTHTK = '1' AND MADTNT = " & "'" & strMST & "'" & _
-        " AND MATKHAI='08/KK-TNCN'"
-   
-        Set rs = clsDAO.Execute(sSQL)
-        If rs Is Nothing Then
-             isToKhaiChinhThuc = False
-        Else
-             isToKhaiChinhThuc = True
-        End If
-   End If
-   clsDAO.Disconnect
 
+    Else
+
+        Do While flag
+   
+            strTestFileName = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_TZ" & vKeKhai_temp & ".DBF"
+
+            'kiem tra neu co db thi moi thuc hien truy van
+            If fso.FileExists(strTestFileName) Then
+                sSQL = "SELECT MADTNT, NGNOP FROM TMP_TZ" & vKeKhai_temp & " WHERE MATHUE = '09' AND MADTNT = " & "'" & strMST & "'" & " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND (TTHTK = '1' or TTHTK = '3' or TTHTK = '4') AND MATKHAI='07/KK-TNCN'"
+                Set rs = clsDAO.Execute(sSQL)
+            End If
+        
+            If rs Is Nothing Then
+                isToKhaiChinhThuc = False
+            Else
+                isToKhaiChinhThuc = True
+                Exit Do
+            End If
+        
+            If vKeKhai < vKyLB Then
+                vKyLB = DateAdd("M", -1, vKyLB)
+
+                ' ghep ten bang de kiem tra du lieu
+                If Len(Month(vKyLB)) = 1 Then
+                    vKeKhai_temp = "0" & Month(vKyLB) & Year(vKyLB)
+                Else
+                    vKeKhai_temp = Month(vKyLB) & Year(vKyLB)
+                End If
+
+                flag = True
+            Else
+                flag = False
+            End If
+
+        Loop
+    
+    End If
+   
+    clsDAO.Disconnect
 End Function
 
 Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As Long, ByVal NewRow As Long, Cancel As Boolean)
