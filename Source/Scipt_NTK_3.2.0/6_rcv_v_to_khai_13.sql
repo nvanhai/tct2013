@@ -34,7 +34,8 @@ GROUP BY DTL.HDR_ID, DTL.CTK_ID;
 
 
 -- Phu luc 01-1/GTGT
-CREATE  VIEW RCV_V_PLUC_TKHAI_GTGT_KT01_13 AS
+-- Phu luc 01-1/GTGT
+CREATE  or replace VIEW RCV_V_PLUC_TKHAI_GTGT_KT01_13 AS
 SELECT
     "HDR_ID",
     "ROW_ID",
@@ -79,15 +80,15 @@ FROM
                     tkd.row_id row_id,
                     gdien.id,
                     gdien.so_tt so_tt,
-                    substr(DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL),1,10) ky_hieu_mau_hdon,
+                    substr(DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL),1,10) ky_hieu_mau_hdon,
                     SUBSTR(DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL),1,10) ky_hieu_hdon,
                     SUBSTR(DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL),1,10) so_hoa_don,
                     DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL)              ngay_hoa_don,
                     DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL)              tin,
                     DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL)              ten_dtnt,
-                    DECODE(gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL)              ten_hang,
-                    DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL)              doanh_so,
-                    REPLACE(REPLACE(DECODE(gdien.cot_14, tkd.ky_hieu, tkd.gia_tri, NULL),'%',''),
+                    DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL)              ten_hang,
+                    DECODE(gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL)              doanh_so,
+                    REPLACE(REPLACE(DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL),'%',''),
                     ',','.')                                             thue_xuat,
                     DECODE(gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL) so_thue,
                     DECODE(gdien.cot_13, tkd.ky_hieu, tkd.gia_tri, NULL) ghi_chu
@@ -116,6 +117,7 @@ WHERE
     so_hoa_don IS NOT NULL
 AND ngay_hoa_don IS NOT NULL;
 
+
 -- Phu luc 01-2/GTGT
 CREATE VIEW RCV_V_PLUC_TKHAI_GTGT_KT02_13 AS
 Select "HDR_ID","SO_TT","ROW_ID","NHOM_CTIEU","KY_HIEU_MAU_HDON","KY_HIEU_HDON","SO_HOA_DON","NGAY_HOA_DON","TIN","TEN_DTNT","TEN_HANG","DOANH_SO","THUE_XUAT","SO_THUE","GHI_CHU"
@@ -140,7 +142,7 @@ SELECT   tkd.hdr_id,
          tkd.row_id row_id,
          gdien.id,
          gdien.so_tt so_tt,
-          substr(DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL),1,10) ky_hieu_mau_hdon,
+          substr(DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL),1,10) ky_hieu_mau_hdon,
          substr(DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL),1,10) ky_hieu_hdon,
          substr(DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL),1,10) so_hoa_don,
          DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL) ngay_hoa_don,
@@ -654,7 +656,7 @@ GROUP BY
 
 
 -- Phu luc 04-1/GTGT
-CREATE  VIEW RCV_V_PLUC_TK04_01_GTGT_13 AS
+CREATE or replace  VIEW RCV_V_PLUC_TK04_01_GTGT_13 AS
 SELECT
     "HDR_ID",
     "ROW_ID",
@@ -695,15 +697,15 @@ FROM
                     tkd.row_id row_id,
                     gdien.id,
                     gdien.so_tt so_tt,
-                    substr(DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL),1,10) ky_hieu_mau_hdon,
-                    SUBSTR(DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL),1,10) ky_hieu_hdon,
-                    SUBSTR(DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL),1,10) so_hoa_don,
-                    DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL)              ngay_hoa_don,
-                    DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL)              tin,
-                    DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL)              ten_dtnt,
-                    DECODE(gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL)              ten_hang,
-                    DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL)              doanh_so,                   
-                    DECODE(gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL) ghi_chu
+                    DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL) ky_hieu_mau_hdon,
+                    DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL) ky_hieu_hdon,
+                    DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) so_hoa_don,
+                    DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL)              ngay_hoa_don,
+                    DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL)              tin,
+                    DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL)              ten_dtnt,
+                    DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL)              ten_hang,
+                    DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL)              doanh_so,                   
+                    DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL) ghi_chu
                 FROM
                     rcv_tkhai_dtl tkd,
                     rcv_gdien_tkhai gdien,
@@ -799,9 +801,9 @@ FROM
             gdien.id,
             tkd.row_id,
             gdien.so_tt                                          so_tt,
-            DECODE(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL) ten_dn,
-            DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL) mst,
-            DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL) co_quan_thue_quan_ly,
+            DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL) ten_dn,
+            DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL) mst,
+            DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL) co_quan_thue_quan_ly,
             DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) ty_le,
             DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL) so_thue_phan_bo
         FROM
