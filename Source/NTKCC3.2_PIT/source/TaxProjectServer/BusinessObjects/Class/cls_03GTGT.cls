@@ -623,77 +623,7 @@ Public Function InsertDTL() As String
     
    sSQLCol = "MADTNT , MATHUE, MATM, MAPP, KYLBO, NGNOP, LOAITIEN, "
    sSQLCol = sSQLCol + "CTIEUTNDN, SOTIEN, TT, SOTIEN2, MAMUC ,TTHTK, MATKHAI, KYKKHAI, NGANH, LAN_QUET, DANHAN,THUECL"
-   
-   With fps
-        .Sheet = 1
-        
-        'set THUECL chung cho cac chi tieu con lai
-        THUECL = "0"
-        
-        .GetText .ColLetterToNumber("F"), 10, madtnt
-        If Trim(madtnt) = vbNullString Then
-            madtnt = "''"
-        Else
-            madtnt = "'" & madtnt & "'"
-        End If
-        MATHUE = "'01'"
-        MAPP = "'2'"
-        .GetText .ColLetterToNumber("E"), 30, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
-        Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
-            Else
-                kylbo = "'" & kylbo & "'"
-            End If
-
-        End If
-        
-        .GetText .ColLetterToNumber("E"), 32, ngnop
-      
-        If Trim(ngnop) = vbNullString Then
-            ngnop = "CTOD('')"
-        Else
-            ngnop = ToDate(Trim(ngnop), DDMMYYYY)
-            ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
-        End If
-        LoaiTien = "''"
-        DANHAN = "''"
-        'Chi tieu
-        CTIEUTNDN = "'050'"
-        SOTIEN = "0"
-        SOTIEN2 = SOTIEN
-        tt = "''"
-        ' sua MAMUC & MATM tu nam 2009
-        If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
-            maTM = "'01'"
-            MaMuc = "'014'"
-        Else
-            MaMuc = "'1700'"
-            maTM = "'1701'"
-        End If
-        matkhai = "'" & LOAI_TO_KHAI & "'"
-        'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
-        If isTkQuy = True Then
-            kykkhai = "'" & Val(TAX_Utilities_Svr_New.Month) & "/" & TAX_Utilities_Svr_New.Year & "'"
-        Else
-            kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
-        End If
-        
-        NGANH = "''"
-   End With
-   sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & ","
-   sSQLVal = sSQLVal & kylbo & "," & ngnop & "," & LoaiTien & ","
-   sSQLVal = sSQLVal & CTIEUTNDN & "," & SOTIEN & "," & tt & "," & SOTIEN2 & ","
-   sSQLVal = sSQLVal & MaMuc & "," & tthtk & "," & matkhai & "," & kykkhai & "," & NGANH & "," & LAN_QUET & "," & DANHAN & "," & THUECL
-   sSQL = "INSERT INTO TMP_DG" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   
-   '--------------------------------
-   
    With fps
         .Sheet = 1
         .GetText .ColLetterToNumber("F"), 10, madtnt

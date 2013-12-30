@@ -971,7 +971,7 @@ Public Function InsertDTL() As String
         
         NGANH = "''"
         
-        CTIEUTNDN = "'001'"
+        CTIEUTNDN = "'1000'"
         .GetText .ColLetterToNumber("K"), 43, SOTIEN
 
         If Trim(SOTIEN) = vbNullString Then
@@ -988,7 +988,7 @@ Public Function InsertDTL() As String
 
         bln = clsDAO.ExecuteDLL(sSQL)
         
-                CTIEUTNDN = "'002'"
+                CTIEUTNDN = "'2000'"
         .GetText .ColLetterToNumber("Z"), 43, SOTIEN
 
         If Trim(SOTIEN) = vbNullString Then
@@ -1005,7 +1005,7 @@ Public Function InsertDTL() As String
 
         bln = clsDAO.ExecuteDLL(sSQL)
         
-                CTIEUTNDN = "'003'"
+                CTIEUTNDN = "'3000'"
         .GetText .ColLetterToNumber("Z"), 44, SOTIEN
 
         If Trim(SOTIEN) = vbNullString Then
@@ -1022,7 +1022,7 @@ Public Function InsertDTL() As String
 
         bln = clsDAO.ExecuteDLL(sSQL)
         
-                CTIEUTNDN = "'004'"
+                CTIEUTNDN = "'4000'"
         .GetText .ColLetterToNumber("Z"), 45, SOTIEN
 
         If Trim(SOTIEN) = vbNullString Then
@@ -1039,7 +1039,7 @@ Public Function InsertDTL() As String
 
         bln = clsDAO.ExecuteDLL(sSQL)
         
-                CTIEUTNDN = "'005'"
+                CTIEUTNDN = "'5000'"
         .GetText .ColLetterToNumber("Z"), 46, SOTIEN
 
         If Trim(SOTIEN) = vbNullString Then
