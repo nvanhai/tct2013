@@ -307,35 +307,38 @@ Public Function Prepared3() As Boolean
         '.EventEnabled(EventAllEvents) = False
         'Set MaSoTep
         .Sheet = 1
-'        .Col = .ColLetterToNumber(MA_SO_TEP_X)
-'        .Row = MA_SO_TEP_Y
-'        .Text = strMaSoTep
-'        UpdateCell fps, .Col, .Row, .Text
+        '        .Col = .ColLetterToNumber(MA_SO_TEP_X)
+        '        .Row = MA_SO_TEP_Y
+        '        .Text = strMaSoTep
+        '        UpdateCell fps, .Col, .Row, .Text
         
         'Set NgayNhanToKhai
         .Col = .ColLetterToNumber(NGAY_NHAN_TO_KHAI_X)
         .Row = NGAY_NHAN_TO_KHAI_Y
+
         If strNgayNhanToKhai <> "" Then
             .Text = strNgayNhanToKhai
             UpdateCell fps, .Col, .Row, .Text
         End If
-'**************************************************************
-'       ThanhDX remove
-'       Date: 14/09/2006
-'       Reason: Doi Nguoi su dung -> Phong quan ly.
+
+        '**************************************************************
+        '       ThanhDX remove
+        '       Date: 14/09/2006
+        '       Reason: Doi Nguoi su dung -> Phong quan ly.
 
         'Set NguoiSuDung
-'        .Col = .ColLetterToNumber(NGUOI_SU_DUNG_X)
-'        .Row = NGUOI_SU_DUNG_Y
-'        If strNguoiSuDung <> "" Then
-'            .Text = strNguoiSuDung
-'            UpdateCell fps, .Col, .Row, .Text
-'        End If
-'**************************************************************
+        '        .Col = .ColLetterToNumber(NGUOI_SU_DUNG_X)
+        '        .Row = NGUOI_SU_DUNG_Y
+        '        If strNguoiSuDung <> "" Then
+        '            .Text = strNguoiSuDung
+        '            UpdateCell fps, .Col, .Row, .Text
+        '        End If
+        '**************************************************************
 
-         'set Phong xu ly
+        'set Phong xu ly
         .Col = .ColLetterToNumber(NGUOI_SU_DUNG_X)
         .Row = NGUOI_SU_DUNG_Y
+
         If strNguoiSuDung <> "" Then
             .Text = strNguoiSuDung
             UpdateCell fps, .Col, .Row, .Text
@@ -343,6 +346,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(PHONG_XU_LY_X)
         .Row = PHONG_XU_LY_Y
+
         If strPhongXuLy <> "" Then
             .Text = strPhongXuLy
             UpdateCell fps, .Col, .Row, .Text
@@ -350,6 +354,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(MA_SO_THUE_X)
         .Row = MA_SO_THUE_Y
+
         If strMST <> "" Then
             .Text = strMST
             UpdateCell fps, .Col, .Row, .Text
@@ -357,6 +362,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(KY_LAP_BO_X)
         .Row = KY_LAP_BO_Y
+
         If Len(Month(Now())) = 1 Then
             .Text = "0" & Month(Now()) & "/" & Year(Now())
             sKyKeKhai = "0" & Month(Now()) & Year(Now())
@@ -364,12 +370,13 @@ Public Function Prepared3() As Boolean
             .Text = Month(Now()) & "/" & Year(Now())
             sKyKeKhai = Month(Now()) & Year(Now())
         End If
+
         UpdateCell fps, .Col, .Row, .Text
         
         .Col = .ColLetterToNumber(NGAY_NOP_X)
         .Row = NGAY_NOP_Y
         .Text = Format(Date, "dd/mm/yyyy")
-         UpdateCell fps, .Col, .Row, .Text
+        UpdateCell fps, .Col, .Row, .Text
         .Lock = False
         
         .Col = .ColLetterToNumber(NGAY_QUET_X)
@@ -380,6 +387,7 @@ Public Function Prepared3() As Boolean
        
         .Col = .ColLetterToNumber(TEN_GOI_X)
         .Row = TEN_GOI_Y
+
         If strTenGoi <> "" Then
             .Text = Trim(TAX_Utilities_Svr_New.Convert(strTenGoi, TCVN, UNICODE))
             UpdateCell fps, .Col, .Row, .Text
@@ -387,6 +395,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(DIA_CHI_X)
         .Row = DIA_CHI_Y
+
         If strDchi <> "" Then
             .Text = Trim(TAX_Utilities_Svr_New.Convert(strDchi, TCVN, UNICODE))
             UpdateCell fps, .Col, .Row, .Text
@@ -394,6 +403,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(DIEN_THOAI_X)
         .Row = DIEN_THOAI_Y
+
         If strDThoai <> "" Then
             .Text = strDThoai
             UpdateCell fps, .Col, .Row, .Text
@@ -401,6 +411,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(FAX_X)
         .Row = FAX_Y
+
         If strFax <> "" Then
             .Text = strFax
             UpdateCell fps, .Col, .Row, .Text
@@ -408,6 +419,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(MA_SO_THUE_DL_X)
         .Row = MA_SO_THUE_DL_Y
+
         If strMST_DLT <> "" Then
             .Text = strMST_DLT
             UpdateCell fps, .Col, .Row, .Text
@@ -415,6 +427,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(TEN_GOI_DL_X)
         .Row = TEN_GOI_DL_Y
+
         If strTen_DLT <> "" Then
             .Text = Trim(TAX_Utilities_Svr_New.Convert(strTen_DLT, TCVN, UNICODE))
             UpdateCell fps, .Col, .Row, .Text
@@ -422,6 +435,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(DIA_CHI_DL_X)
         .Row = DIA_CHI_DL_Y
+
         If strDchi_DLT <> "" Then
             .Text = Trim(TAX_Utilities_Svr_New.Convert(strDchi_DLT, TCVN, UNICODE))
             UpdateCell fps, .Col, .Row, .Text
@@ -429,6 +443,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(QUAN_HUYEN_DL_X)
         .Row = QUAN_HUYEN_DL_Y
+
         If strQHuyen_DLT <> "" Then
             .Text = strQHuyen_DLT
             UpdateCell fps, .Col, .Row, .Text
@@ -436,6 +451,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(TINH_TPHO_DL_X)
         .Row = TINH_TPHO_DL_Y
+
         If strTTPho_DLT <> "" Then
             .Text = strTTPho_DLT
             UpdateCell fps, .Col, .Row, .Text
@@ -443,6 +459,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(DIEN_THOAI_DL_X)
         .Row = DIEN_THOAI_DL_Y
+
         If strDthoai_DLT <> "" Then
             .Text = strDthoai_DLT
             UpdateCell fps, .Col, .Row, .Text
@@ -450,6 +467,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(FAX_DL_X)
         .Row = FAX_DL_Y
+
         If strFax_DLT <> "" Then
             .Text = strFax_DLT
             UpdateCell fps, .Col, .Row, .Text
@@ -457,6 +475,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(MAIL_DL_X)
         .Row = MAIL_DL_Y
+
         If strMail_DLT <> "" Then
             .Text = Trim(TAX_Utilities_Svr_New.Convert(strMail_DLT, TCVN, UNICODE))
             UpdateCell fps, .Col, .Row, .Text
@@ -464,6 +483,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(NGAY_HDDL_DL_X)
         .Row = NGAY_HDDL_DL_Y
+
         If strNgayHD_DLT <> "" Then
             .Text = strNgayHD_DLT
             UpdateCell fps, .Col, .Row, .Text
@@ -471,6 +491,7 @@ Public Function Prepared3() As Boolean
         
         .Col = .ColLetterToNumber(SO_HDDL_DL_X)
         .Row = SO_HDDL_DL_Y
+
         If strSoHD_DLT <> "" Then
             .Text = strSoHD_DLT
             UpdateCell fps, .Col, .Row, .Text
@@ -481,103 +502,112 @@ Public Function Prepared3() As Boolean
             .Col = .ColLetterToNumber("E")
             .Row = 36
             .Value = 1
+        Else
+            .Col = .ColLetterToNumber("E")
+            .Row = 36
+            .Value = 0
         End If
         
         'set text check gia han
-'        If Trim(TAX_Utilities_Svr_New.Year) = "2011" Then
-'            .Row = 52
-'            .Col = .ColLetterToNumber("C")
-'            .Text = "GIA HAN THEO QD 21/2011/QD-TTG; QD 54/2011/QD-TTg"
-'        ElseIf Trim(TAX_Utilities_Svr_New.Year) = "2010" And Trim(TAX_Utilities_Svr_New.ThreeMonths) = 4 Then
-'            .Row = 52
-'            .Col = .ColLetterToNumber("C")
-'            .Text = "GIA HAN THEO QD 21/2011/QD-TTG"
-'        ElseIf Trim(TAX_Utilities_Svr_New.Year) = "2010" And Trim(TAX_Utilities_Svr_New.ThreeMonths) <> 4 Then
-'            .Row = 52
-'            .Col = .ColLetterToNumber("C")
-'            .Text = "GIA HAN THEO QD 12/2010/QD-TTG"
-'        ElseIf Trim(TAX_Utilities_Svr_New.Year) = "2009" Then
-'            .Row = 52
-'            .Col = .ColLetterToNumber("C")
-'            .Text = "GIA HAN THEO NQ 30/2008/NQ-CP"
-'        Else
-'            .Row = 52
-'            .Col = .ColLetterToNumber("C")
-'            .Text = ""
-'            .Lock = True
-'        End If
-'set STT tren PL_05
+        '        If Trim(TAX_Utilities_Svr_New.Year) = "2011" Then
+        '            .Row = 52
+        '            .Col = .ColLetterToNumber("C")
+        '            .Text = "GIA HAN THEO QD 21/2011/QD-TTG; QD 54/2011/QD-TTg"
+        '        ElseIf Trim(TAX_Utilities_Svr_New.Year) = "2010" And Trim(TAX_Utilities_Svr_New.ThreeMonths) = 4 Then
+        '            .Row = 52
+        '            .Col = .ColLetterToNumber("C")
+        '            .Text = "GIA HAN THEO QD 21/2011/QD-TTG"
+        '        ElseIf Trim(TAX_Utilities_Svr_New.Year) = "2010" And Trim(TAX_Utilities_Svr_New.ThreeMonths) <> 4 Then
+        '            .Row = 52
+        '            .Col = .ColLetterToNumber("C")
+        '            .Text = "GIA HAN THEO QD 12/2010/QD-TTG"
+        '        ElseIf Trim(TAX_Utilities_Svr_New.Year) = "2009" Then
+        '            .Row = 52
+        '            .Col = .ColLetterToNumber("C")
+        '            .Text = "GIA HAN THEO NQ 30/2008/NQ-CP"
+        '        Else
+        '            .Row = 52
+        '            .Col = .ColLetterToNumber("C")
+        '            .Text = ""
+        '            .Lock = True
+        '        End If
+        'set STT tren PL_05
 
-    .Sheet = 2
-    If .SheetVisible = True Then
-        STT = 0
-        .Row = 35
-               Do
-                    .Col = .ColLetterToNumber("C")
-                    If (.Row = 35 + STT * 3) Then
-                       .Text = str(STT + 3)
-                       STT = STT + 1
-                    End If
-                    .Col = .ColLetterToNumber("C")
-                    .Row = .Row + 1
-               Loop Until .Text = "aa"
-    End If
+        .Sheet = 2
 
-'        .Col = .ColLetterToNumber(MA_BPQL_X)
-'        .Row = MA_BPQL_Y
-'        If strMaBPQL <> "" Then
-'            .Text = strMaBPQL
-'            UpdateCell fps, .Col, .Row, .Text
-'        End If
-'        .Col = .ColLetterToNumber(TEN_BPQL_X)
-'        .Row = TEN_BPQL_Y
-'        .Text = Trim(TAX_Utilities_Svr_New.Convert(strTenBpql, TCVN, UNICODE))
+        If .SheetVisible = True Then
+            STT = 0
+            .Row = 35
+
+            Do
+                .Col = .ColLetterToNumber("C")
+
+                If (.Row = 35 + STT * 3) Then
+                    .Text = str(STT + 3)
+                    STT = STT + 1
+                End If
+
+                .Col = .ColLetterToNumber("C")
+                .Row = .Row + 1
+            Loop Until .Text = "aa"
+
+        End If
+
+        '        .Col = .ColLetterToNumber(MA_BPQL_X)
+        '        .Row = MA_BPQL_Y
+        '        If strMaBPQL <> "" Then
+        '            .Text = strMaBPQL
+        '            UpdateCell fps, .Col, .Row, .Text
+        '        End If
+        '        .Col = .ColLetterToNumber(TEN_BPQL_X)
+        '        .Row = TEN_BPQL_Y
+        '        .Text = Trim(TAX_Utilities_Svr_New.Convert(strTenBpql, TCVN, UNICODE))
         '.EventEnabled(EventAllEvents) = True
         
         ' Dat lai check E_17 Duoc gian thue theo NQ30/NQ-CP
         ' Thoi gian gian thue trong ca nam 2009 cua to khai TNDN
-'''        If Trim(TAX_Utilities_Svr_New.Year) = "2009" Then
-'''            .Row = 17
-'''            .Col = .ColLetterToNumber("E")
-'''            UpdateCell fps, .Col, .Row, .Text
-'''            .Row = 17
-'''            .Col = .ColLetterToNumber("F")
-'''            .Text = "GIA HAN NOP THEO NQ30/NQ-CP"
-'''        ElseIf Trim(TAX_Utilities_Svr_New.Year) = "2010" And Trim(TAX_Utilities_Svr_New.ThreeMonths) <> "04" Then
-'''            .Row = 17
-'''            .Col = .ColLetterToNumber("E")
-'''            UpdateCell fps, .Col, .Row, .Text
-'''            .Row = 17
-'''            .Col = .ColLetterToNumber("F")
-'''            .Text = "GIA HAN THEO QD 12/2010/QD-TTG"
-'''        ElseIf Trim(TAX_Utilities_Svr_New.Year) = "2011" Or (Trim(TAX_Utilities_Svr_New.Year) = "2010" And Trim(TAX_Utilities_Svr_New.ThreeMonths) = "04") Then
-'''            .Row = 17
-'''            .Col = .ColLetterToNumber("E")
-'''            UpdateCell fps, .Col, .Row, .Text
-'''            .Row = 17
-'''            .Col = .ColLetterToNumber("F")
-'''            .Text = "GIA HAN THEO QD 21/2011/QD-TTG"
-'''        Else
-'''            ' Neu ngoai hieu luc cua gian thue thi visible cac dieu kien check nay di
-'''            .Row = 17
-'''            .Col = .ColLetterToNumber("B")
-'''            .CellType = CellTypeEdit
-'''            .Lock = True
-'''            .Text = ""
-'''
-'''            .Row = 17
-'''            .Col = .ColLetterToNumber("E")
-'''            .CellType = CellTypeEdit
-'''            .Lock = True
-'''            .Text = ""
-'''            UpdateCell fps, .Col, .Row, ""
-'''
-'''            .Row = 17
-'''            .Col = .ColLetterToNumber("F")
-'''            .CellType = CellTypeEdit
-'''            .Lock = True
-'''            .Text = ""
-'''        End If
+        '''        If Trim(TAX_Utilities_Svr_New.Year) = "2009" Then
+        '''            .Row = 17
+        '''            .Col = .ColLetterToNumber("E")
+        '''            UpdateCell fps, .Col, .Row, .Text
+        '''            .Row = 17
+        '''            .Col = .ColLetterToNumber("F")
+        '''            .Text = "GIA HAN NOP THEO NQ30/NQ-CP"
+        '''        ElseIf Trim(TAX_Utilities_Svr_New.Year) = "2010" And Trim(TAX_Utilities_Svr_New.ThreeMonths) <> "04" Then
+        '''            .Row = 17
+        '''            .Col = .ColLetterToNumber("E")
+        '''            UpdateCell fps, .Col, .Row, .Text
+        '''            .Row = 17
+        '''            .Col = .ColLetterToNumber("F")
+        '''            .Text = "GIA HAN THEO QD 12/2010/QD-TTG"
+        '''        ElseIf Trim(TAX_Utilities_Svr_New.Year) = "2011" Or (Trim(TAX_Utilities_Svr_New.Year) = "2010" And Trim(TAX_Utilities_Svr_New.ThreeMonths) = "04") Then
+        '''            .Row = 17
+        '''            .Col = .ColLetterToNumber("E")
+        '''            UpdateCell fps, .Col, .Row, .Text
+        '''            .Row = 17
+        '''            .Col = .ColLetterToNumber("F")
+        '''            .Text = "GIA HAN THEO QD 21/2011/QD-TTG"
+        '''        Else
+        '''            ' Neu ngoai hieu luc cua gian thue thi visible cac dieu kien check nay di
+        '''            .Row = 17
+        '''            .Col = .ColLetterToNumber("B")
+        '''            .CellType = CellTypeEdit
+        '''            .Lock = True
+        '''            .Text = ""
+        '''
+        '''            .Row = 17
+        '''            .Col = .ColLetterToNumber("E")
+        '''            .CellType = CellTypeEdit
+        '''            .Lock = True
+        '''            .Text = ""
+        '''            UpdateCell fps, .Col, .Row, ""
+        '''
+        '''            .Row = 17
+        '''            .Col = .ColLetterToNumber("F")
+        '''            .CellType = CellTypeEdit
+        '''            .Lock = True
+        '''            .Text = ""
+        '''        End If
         
     End With
     
