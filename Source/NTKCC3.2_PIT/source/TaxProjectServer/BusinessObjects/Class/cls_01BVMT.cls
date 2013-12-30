@@ -774,7 +774,6 @@ Public Function InsertDTL() As String
             sSQLVal = sSQLVal & SOLUONGCL & "," & TIENPHICL & "," & STT & "," & STT2 & "," & STTIN & "," & mact & "," & MUCPHI & "," & TIENPHI & "," & DANHAN & "," & LAN_QUET
             
             sSQL = "INSERT INTO TMP_MT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-            SaveErrorLog "testErr", "InsertDtl", 0, sSQL
             If .Row <> 44 Then
                 bln = clsDAO.ExecuteDLL(sSQL)
             End If
@@ -865,7 +864,6 @@ Public Function InsertDTL() As String
             sSQLVal = sSQLVal & SOLUONGCL & "," & TIENPHICL & "," & STT & "," & STT2 & "," & STTIN & "," & mact & "," & MUCPHI & "," & TIENPHI & "," & DANHAN & "," & LAN_QUET
 
             sSQL = "INSERT INTO TMP_MT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-            SaveErrorLog "testErr", "InsertDtl", 0, sSQL
 
             If .Row <> (lastRow + 2) Then
                 bln = clsDAO.ExecuteDLL(sSQL)

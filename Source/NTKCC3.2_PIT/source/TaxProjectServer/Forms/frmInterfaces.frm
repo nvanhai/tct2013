@@ -1401,9 +1401,7 @@ Private Sub cmdSave_Click()
             clsDAO.Disconnect
         End If
     End If
-    
-    SaveErrorLog "testErr", "cmdSave_Click", 0, strSQL_HDR
-    
+        
     If frmSystem.chkSaveQHS = True Then
         'dntai 13/01/2012 khong ghi cac to an chi vao QHS
         If (menuId < 64 Or menuId > 68) And menuId <> 91 Then
