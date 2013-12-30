@@ -552,21 +552,21 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
    fps.EventEnabled(EventAllEvents) = False
     If fps.ActiveSheet = 1 Then
             ' Neu check gia han moi cho phep chon GT
-            If Col = fps.ColLetterToNumber("E") And Row = 37 Then
+            If Col = fps.ColLetterToNumber("K") And Row = 62 Then
                 fps.Col = fps.ColLetterToNumber("E")
-                fps.Row = 37
+                fps.Row = 62
                 If fps.Text = "1" Or UCase$(fps.Text) = "X" Then
-                    fps.Col = fps.ColLetterToNumber("E")
-                    fps.Row = 38
+                    fps.Col = fps.ColLetterToNumber("M")
+                    fps.Row = 64
                     fps.Lock = False
                 Else
-                    fps.Col = fps.ColLetterToNumber("E")
-                    fps.Row = 38
+                    fps.Col = fps.ColLetterToNumber("M")
+                    fps.Row = 64
                     fps.Lock = True
-                    fps.SetText fps.ColLetterToNumber("E"), 38, ""
-                    fps.SetText fps.ColLetterToNumber("AB"), 38, "00"
-                    UpdateCell fps, fps.ColLetterToNumber("AB"), 38, "00"
-                    UpdateCell fps, fps.ColLetterToNumber("E"), 38, ""
+                    fps.SetText fps.ColLetterToNumber("M"), 64, ""
+                    fps.SetText fps.ColLetterToNumber("AB"), 64, "00"
+                    UpdateCell fps, fps.ColLetterToNumber("AB"), 64, "00"
+                    UpdateCell fps, fps.ColLetterToNumber("M"), 64, ""
                 End If
             End If
     End If
@@ -591,7 +591,7 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
        If .ActiveSheet = 1 Then
             .Col = Col
             .Row = Row
-             If Col = .ColLetterToNumber("E") And Row = 38 Then
+             If Col = .ColLetterToNumber("M") And Row = 64 Then
                 intIndexCombo = .TypeComboBoxCurSel
                 .Col = .ColLetterToNumber("AB")
                 .TypeComboBoxCurSel = intIndexCombo
@@ -627,8 +627,8 @@ Public Function CheckValidData() As Boolean
         .GetText .ColLetterToNumber("M"), 36, varNoteValue
         '
         
-        .GetText .ColLetterToNumber("E"), 37, varCheckGhValue
-        .GetText .ColLetterToNumber("E"), 38, varNoteGhValue
+        .GetText .ColLetterToNumber("K"), 62, varCheckGhValue
+        .GetText .ColLetterToNumber("M"), 64, varNoteGhValue
         
         .GetText .ColLetterToNumber("E"), 32, varNgayNop
         If CStr(varCheckValue) = "1" And Trim(CStr(varNoteValue)) = "" Then
