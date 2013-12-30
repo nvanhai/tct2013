@@ -1341,7 +1341,7 @@ Public Function InsertHDR() As String
                
         Do
             ' Lay ma tieu muc tren cel
-            .Col = .ColLetterToNumber("AB")
+            .Col = .ColLetterToNumber("AC")
             'cuoi ma tieu muc
             vTemp = "~" & .Text & "~"
             vTemp2 = vTemp2 & .Text & "~"
@@ -1363,7 +1363,7 @@ Public Function InsertHDR() As String
 
         Do
             ' Lay ma tieu muc tren cel
-            .Col = .ColLetterToNumber("AB")
+            .Col = .ColLetterToNumber("AC")
             'cuoi ma tieu muc
             vTemp = "~" & .Text & "~"
             vTemp2 = vTemp2 & .Text & "~"
