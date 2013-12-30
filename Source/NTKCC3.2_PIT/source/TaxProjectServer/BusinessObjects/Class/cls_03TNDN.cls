@@ -713,669 +713,910 @@ Public Function KiemTraKhoaSo(ByVal strDate As String) As Boolean
 End Function
 
 Public Function InsertDTL() As String
-   Dim sSQL As String
-   Dim sSQLCol As String
-   Dim sSQLVal As String
+    Dim sSQL        As String
+    Dim sSQLCol     As String
+    Dim sSQLVal     As String
    
-   Dim sSQLCol_CTD As String
-   Dim sSQLVal_CTD As String
+    Dim sSQLCol_CTD As String
+    Dim sSQLVal_CTD As String
    
-   Dim madtnt As Variant
-   Dim ngnop As Variant
-   Dim CTTN As Variant
-   Dim SOTIEN As Variant
-   Dim SOTIEN2 As Variant
-   Dim CK As Variant
-   Dim bln  As Boolean
-   Dim namQT As Variant
-   Dim TT As Variant
-   Dim DANHAN As Variant
-   'NTKCC 3.1
-   Dim SOTIENCL As Variant
+    Dim madtnt      As Variant
+    Dim ngnop       As Variant
+    Dim CTTN        As Variant
+    Dim SOTIEN      As Variant
+    Dim SOTIEN2     As Variant
+    Dim CK          As Variant
+    Dim bln         As Boolean
+    Dim namQT       As Variant
+    Dim tt          As Variant
+    Dim DANHAN      As Variant
+    'NTKCC 3.1
+    Dim SOTIENCL    As Variant
    
-   Dim MaMuc As Variant
-   Dim maTM As Variant
+    Dim MaMuc       As Variant
+    Dim maTM        As Variant
 
-
-   If clsDAO.Connected = False Then
+    If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
         clsDAO.Connect
-   End If
+    End If
     
-   sSQLCol = "MADTNT, NGNOP, CTTN, SOTIEN, SOTIEN2, NAMQT, TTHTK, TT, MAMUC, MATM, LAN_QUET, DANHAN,SOTIENCL"
-   '----------------------
+    sSQLCol = "MADTNT, NGNOP, CTTN, SOTIEN, SOTIEN2, NAMQT, TTHTK, TT, MAMUC, MATM, LAN_QUET, DANHAN,SOTIENCL"
+    '----------------------
    
-   namQT = TAX_Utilities_Svr_New.Year
-   DANHAN = "''"
-   MaMuc = "'1050'"
-   'MATM = "'1052'"
-   With fps
+    namQT = TAX_Utilities_Svr_New.Year
+    DANHAN = "''"
+    MaMuc = "'1050'"
+
+    'MATM = "'1052'"
+    With fps
         .Sheet = 1
         'lay MATM theo MANNKD
         .GetText .ColLetterToNumber("T"), 5, maTM
+
         If Trim(maTM) = vbNullString Then
             maTM = "''"
         Else
             maTM = "'" & maTM & "'"
         End If
+
         .GetText .ColLetterToNumber("F"), 10, madtnt
+
         If Trim(madtnt) = vbNullString Then
             madtnt = "''"
         Else
             madtnt = "'" & madtnt & "'"
         End If
+
         .GetText .ColLetterToNumber("E"), 32, ngnop
+
         If Trim(ngnop) = vbNullString Then
             ngnop = "CTOD('')"
         Else
             ngnop = ToDate(Trim(ngnop), DDMMYYYY)
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
+
         'Chi tieu
         CTTN = "'001'"
         .GetText .ColLetterToNumber("U"), 41, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
+        tt = "''"
         SOTIENCL = "0"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+    bln = clsDAO.ExecuteDLL(sSQL)
+    '--------------
    
-   With fps
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'002'"
         .GetText .ColLetterToNumber("U"), 42, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
+    bln = clsDAO.ExecuteDLL(sSQL)
+    '--------------
    
-   With fps
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'003'"
         .GetText .ColLetterToNumber("U"), 43, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
+    bln = clsDAO.ExecuteDLL(sSQL)
    
-   '--------------
-   With fps
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'004'"
         .GetText .ColLetterToNumber("U"), 44, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
+    bln = clsDAO.ExecuteDLL(sSQL)
    
-   '--------------
-   With fps
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'005'"
         .GetText .ColLetterToNumber("U"), 45, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
+    bln = clsDAO.ExecuteDLL(sSQL)
    
-'--------------
-   With fps
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'006'"
         .GetText .ColLetterToNumber("U"), 46, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
+    bln = clsDAO.ExecuteDLL(sSQL)
    
- '--------------
-   With fps
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'007'"
         .GetText .ColLetterToNumber("U"), 47, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
-        SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-     
-   bln = clsDAO.ExecuteDLL(sSQL)
 
-   '--------------
-   With fps
+        SOTIEN2 = "0"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+     
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'008'"
         .GetText .ColLetterToNumber("U"), 48, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'009'"
         .GetText .ColLetterToNumber("U"), 49, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
-        .Sheet = 1
-        'Chi tieu
-        CTTN = "'010'"
-        .GetText .ColLetterToNumber("U"), 50, SOTIEN
-        If Trim(SOTIEN) = vbNullString Then
-            SOTIEN = "0"
-        End If
-        SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+    bln = clsDAO.ExecuteDLL(sSQL)
+    '--------------
+
+    'Chi tieu
+    CTTN = "'010'"
+
+    SOTIEN = "0"
+    SOTIEN2 = "0"
+    tt = "''"
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'011'"
-        .GetText .ColLetterToNumber("U"), 51, SOTIEN
+        .GetText .ColLetterToNumber("U"), 50, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'012'"
-        .GetText .ColLetterToNumber("U"), 52, SOTIEN
+        .GetText .ColLetterToNumber("U"), 51, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'013'"
-        .GetText .ColLetterToNumber("U"), 53, SOTIEN
+        .GetText .ColLetterToNumber("U"), 52, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'014'"
-        .GetText .ColLetterToNumber("U"), 54, SOTIEN
+        .GetText .ColLetterToNumber("U"), 53, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    '    With fps
+    '        .Sheet = 1
+    '        'Chi tieu
+    '        CTTN = "'014'"
+    '        .GetText .ColLetterToNumber("U"), 54, SOTIEN
+    '
+    '        If Trim(SOTIEN) = vbNullString Then
+    '            SOTIEN = "0"
+    '        End If
+    '
+    '        SOTIEN2 = "0"
+    '        tt = "''"
+    '    End With
+    '
+    '    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    '    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+    '
+    '    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'015'"
         .GetText .ColLetterToNumber("U"), 55, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'016'"
         .GetText .ColLetterToNumber("U"), 56, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'017'"
         .GetText .ColLetterToNumber("U"), 57, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'018'"
         .GetText .ColLetterToNumber("U"), 58, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'019'"
         .GetText .ColLetterToNumber("U"), 59, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'020'"
         .GetText .ColLetterToNumber("U"), 60, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'021'"
         .GetText .ColLetterToNumber("U"), 61, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'022'"
         .GetText .ColLetterToNumber("U"), 62, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'023'"
         .GetText .ColLetterToNumber("U"), 63, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'024'"
         .GetText .ColLetterToNumber("U"), 64, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
-        .Sheet = 1
-        'Chi tieu
-        CTTN = "'025'"
-        .GetText .ColLetterToNumber("U"), 65, SOTIEN
-        If Trim(SOTIEN) = vbNullString Then
-            SOTIEN = "0"
-        End If
-        SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+    bln = clsDAO.ExecuteDLL(sSQL)
+    '--------------
+
+    'Chi tieu
+    CTTN = "'025'"
+
+    SOTIEN = "0"
+
+    SOTIEN2 = "0"
+    tt = "''"
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
-        .Sheet = 1
-        'Chi tieu
-        CTTN = "'026'"
-        .GetText .ColLetterToNumber("U"), 66, SOTIEN
-        If Trim(SOTIEN) = vbNullString Then
-            SOTIEN = "0"
-        End If
-        SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+    bln = clsDAO.ExecuteDLL(sSQL)
+    '--------------
+
+    'Chi tieu
+    CTTN = "'026'"
+
+    SOTIEN = "0"
+
+    SOTIEN2 = "0"
+    tt = "''"
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
-        .Sheet = 1
-        'Chi tieu
-        CTTN = "'027'"
-        .GetText .ColLetterToNumber("U"), 67, SOTIEN
-        If Trim(SOTIEN) = vbNullString Then
-            SOTIEN = "0"
-        End If
-        SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+    bln = clsDAO.ExecuteDLL(sSQL)
+    '--------------
+
+    'Chi tieu
+    CTTN = "'027'"
+
+    SOTIEN = "0"
+
+    SOTIEN2 = "0"
+    tt = "''"
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
-        .Sheet = 1
-        'Chi tieu
-        CTTN = "'028'"
-        .GetText .ColLetterToNumber("U"), 68, SOTIEN
-        If Trim(SOTIEN) = vbNullString Then
-            SOTIEN = "0"
-        End If
-        SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+    bln = clsDAO.ExecuteDLL(sSQL)
+    '--------------
+
+    'Chi tieu
+    CTTN = "'028'"
+
+    SOTIEN = "0"
+
+    SOTIEN2 = "0"
+    tt = "''"
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'029'"
-        .GetText .ColLetterToNumber("U"), 69, SOTIEN
+        .GetText .ColLetterToNumber("U"), 65, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'030'"
-        .GetText .ColLetterToNumber("U"), 70, SOTIEN
+        .GetText .ColLetterToNumber("U"), 66, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
         CTTN = "'031'"
+        .GetText .ColLetterToNumber("U"), 67, SOTIEN
+
+        If Trim(SOTIEN) = vbNullString Then
+            SOTIEN = "0"
+        End If
+
+        SOTIEN2 = "0"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+     
+    bln = clsDAO.ExecuteDLL(sSQL)
+    '--------------
+
+    'Chi tieu
+    CTTN = "'032'"
+
+    SOTIEN = "0"
+
+    SOTIEN2 = "0"
+    tt = "''"
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+     
+    bln = clsDAO.ExecuteDLL(sSQL)
+        '--------------
+
+    'Chi tieu
+    CTTN = "'033'"
+
+    SOTIEN = "0"
+
+    SOTIEN2 = "0"
+    tt = "''"
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+     
+    bln = clsDAO.ExecuteDLL(sSQL)
+    '--------------
+    With fps
+        .Sheet = 1
+        'Chi tieu
+        CTTN = "'034'"
+        .GetText .ColLetterToNumber("U"), 68, SOTIEN
+
+        If Trim(SOTIEN) = vbNullString Then
+            SOTIEN = "0"
+        End If
+
+        SOTIEN2 = "0"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+     
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
+        .Sheet = 1
+        'Chi tieu
+        CTTN = "'035'"
+        .GetText .ColLetterToNumber("U"), 69, SOTIEN
+
+        If Trim(SOTIEN) = vbNullString Then
+            SOTIEN = "0"
+        End If
+
+        SOTIEN2 = "0"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+     
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
+        .Sheet = 1
+        'Chi tieu
+        CTTN = "'036'"
+        .GetText .ColLetterToNumber("U"), 70, SOTIEN
+
+        If Trim(SOTIEN) = vbNullString Then
+            SOTIEN = "0"
+        End If
+
+        SOTIEN2 = "0"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+     
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
+        .Sheet = 1
+        'Chi tieu
+        CTTN = "'037'"
         .GetText .ColLetterToNumber("U"), 71, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
-        CTTN = "'032'"
+        CTTN = "'038'"
         .GetText .ColLetterToNumber("U"), 72, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
-   '--------------
-   With fps
+    bln = clsDAO.ExecuteDLL(sSQL)
+
+    '--------------
+    With fps
         .Sheet = 1
         'Chi tieu
-        CTTN = "'033'"
+        CTTN = "'039'"
         .GetText .ColLetterToNumber("U"), 73, SOTIEN
+
         If Trim(SOTIEN) = vbNullString Then
             SOTIEN = "0"
         End If
+
         SOTIEN2 = "0"
-        TT = "''"
-   End With
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & TT & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
-   sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        tt = "''"
+    End With
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-   bln = clsDAO.ExecuteDLL(sSQL)
+    bln = clsDAO.ExecuteDLL(sSQL)
+        '--------------
 
-'---------------------- end ------------
-'insert tai lieu dinh kem
-   insert_TLDK
+    'Chi tieu
+    CTTN = "'040'"
 
-   clsDAO.Disconnect
+    SOTIEN = "0"
+
+    SOTIEN2 = "0"
+    tt = "''"
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+     
+    bln = clsDAO.ExecuteDLL(sSQL)
+            '--------------
+
+    'Chi tieu
+    CTTN = "'041'"
+
+    SOTIEN = "0"
+
+    SOTIEN2 = "0"
+    tt = "''"
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+     
+    bln = clsDAO.ExecuteDLL(sSQL)
+            '--------------
+
+    'Chi tieu
+    CTTN = "'042'"
+
+    SOTIEN = "0"
+
+    SOTIEN2 = "0"
+    tt = "''"
+
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & tt & "," & MaMuc & "," & maTM & "," & LAN_QUET & "," & DANHAN & "," & SOTIENCL
+    sSQL = "INSERT INTO TMP_QT6D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+     
+    bln = clsDAO.ExecuteDLL(sSQL)
+    '---------------------- end ------------
+    'insert tai lieu dinh kem
+    insert_TLDK
+
+    clsDAO.Disconnect
    
-   If TAX_Utilities_Svr_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue = 1 Then
+    If TAX_Utilities_Svr_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue = 1 Then
         InsertDTL = InsertDTL_PL1
-   End If
-   If TAX_Utilities_Svr_New.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue = 1 Then
-        InsertDTL = InsertDTL_PL1B
-   End If
-   If TAX_Utilities_Svr_New.NodeValidity.childNodes(3).Attributes.getNamedItem("Active").nodeValue = 1 Then
-        InsertDTL = InsertDTL_PL1C
-   End If
-   If TAX_Utilities_Svr_New.NodeValidity.childNodes(4).Attributes.getNamedItem("Active").nodeValue = 1 Then
-        InsertDTL = InsertDTL_PL2
-   End If
-   If TAX_Utilities_Svr_New.NodeValidity.childNodes(5).Attributes.getNamedItem("Active").nodeValue = 1 Then
-        InsertDTL = InsertDTL_PL2B
-   End If
-   If TAX_Utilities_Svr_New.NodeValidity.childNodes(6).Attributes.getNamedItem("Active").nodeValue = 1 Then
-        InsertDTL = InsertDTL_PL3_3A
-   End If
-   If TAX_Utilities_Svr_New.NodeValidity.childNodes(7).Attributes.getNamedItem("Active").nodeValue = 1 Then
-        InsertDTL = InsertDTL_PL3_3B
-   End If
-   If TAX_Utilities_Svr_New.NodeValidity.childNodes(8).Attributes.getNamedItem("Active").nodeValue = 1 Then
-        InsertDTL = InsertDTL_PL3_3C
-   End If
-   If TAX_Utilities_Svr_New.NodeValidity.childNodes(9).Attributes.getNamedItem("Active").nodeValue = 1 Then
-        InsertDTL = InsertDTL_PL03_4
-   End If
-   If TAX_Utilities_Svr_New.NodeValidity.childNodes(10).Attributes.getNamedItem("Active").nodeValue = 1 Then
-        InsertDTL = InsertDTL_PL03_5
-   End If
+    End If
 
+    If TAX_Utilities_Svr_New.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue = 1 Then
+        InsertDTL = InsertDTL_PL1B
+    End If
+
+    If TAX_Utilities_Svr_New.NodeValidity.childNodes(3).Attributes.getNamedItem("Active").nodeValue = 1 Then
+        InsertDTL = InsertDTL_PL1C
+    End If
+
+    If TAX_Utilities_Svr_New.NodeValidity.childNodes(4).Attributes.getNamedItem("Active").nodeValue = 1 Then
+        InsertDTL = InsertDTL_PL2
+    End If
+
+    If TAX_Utilities_Svr_New.NodeValidity.childNodes(5).Attributes.getNamedItem("Active").nodeValue = 1 Then
+        InsertDTL = InsertDTL_PL2B
+    End If
+
+    If TAX_Utilities_Svr_New.NodeValidity.childNodes(6).Attributes.getNamedItem("Active").nodeValue = 1 Then
+        InsertDTL = InsertDTL_PL3_3A
+    End If
+
+    If TAX_Utilities_Svr_New.NodeValidity.childNodes(7).Attributes.getNamedItem("Active").nodeValue = 1 Then
+        InsertDTL = InsertDTL_PL3_3B
+    End If
+
+    If TAX_Utilities_Svr_New.NodeValidity.childNodes(8).Attributes.getNamedItem("Active").nodeValue = 1 Then
+        InsertDTL = InsertDTL_PL3_3C
+    End If
+
+    If TAX_Utilities_Svr_New.NodeValidity.childNodes(9).Attributes.getNamedItem("Active").nodeValue = 1 Then
+        InsertDTL = InsertDTL_PL03_4
+    End If
+
+    If TAX_Utilities_Svr_New.NodeValidity.childNodes(10).Attributes.getNamedItem("Active").nodeValue = 1 Then
+        InsertDTL = InsertDTL_PL03_5
+    End If
   
-   InsertDTL = vbNullString
+    InsertDTL = vbNullString
 End Function
 
 Public Function InsertDTL_KHBS() As String
@@ -2207,7 +2448,7 @@ Public Function InsertDTL_PL1C() As String
    Dim bln  As Boolean
    
    Dim MAPL As Variant
-   Dim TT   As Variant
+   Dim tt   As Variant
    
    
    If clsDAO.Connected = False Then
@@ -2219,7 +2460,7 @@ Public Function InsertDTL_PL1C() As String
      
     '---------------
     MAPL = "'PL03-1C/TNDN'"
-    TT = "''"
+    tt = "''"
     namQT = TAX_Utilities_Svr_New.Year
    With fps
         .Sheet = 1
@@ -2249,7 +2490,7 @@ Public Function InsertDTL_PL1C() As String
    End With
    DANHAN = "''"
      
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2269,7 +2510,7 @@ Public Function InsertDTL_PL1C() As String
    End With
    
      
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2288,7 +2529,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2307,7 +2548,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2326,7 +2567,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2345,7 +2586,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2364,7 +2605,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2383,7 +2624,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2402,7 +2643,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2421,7 +2662,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2440,7 +2681,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2459,7 +2700,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2478,7 +2719,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2497,7 +2738,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2516,7 +2757,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2536,7 +2777,7 @@ Public Function InsertDTL_PL1C() As String
    End With
    
      
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2555,7 +2796,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2574,7 +2815,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2593,7 +2834,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2612,7 +2853,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2632,7 +2873,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2651,7 +2892,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2670,7 +2911,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2689,7 +2930,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2708,7 +2949,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2727,7 +2968,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2746,7 +2987,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2765,7 +3006,7 @@ Public Function InsertDTL_PL1C() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -2796,7 +3037,7 @@ Public Function InsertDTL_PL1B() As String
     Dim bln     As Boolean
    
     Dim MAPL    As Variant
-    Dim TT      As Variant
+    Dim tt      As Variant
    
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
@@ -2810,7 +3051,7 @@ Public Function InsertDTL_PL1B() As String
         .Sheet = 1
         MAPL = "'PL03-1B/TNDN'"
         namQT = TAX_Utilities_Svr_New.Year
-        TT = "''"
+        tt = "''"
         
         .GetText .ColLetterToNumber("F"), 10, madtnt
 
@@ -2844,7 +3085,7 @@ Public Function InsertDTL_PL1B() As String
 
     DANHAN = "''"
      
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -2863,7 +3104,7 @@ Public Function InsertDTL_PL1B() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -2882,7 +3123,7 @@ Public Function InsertDTL_PL1B() As String
         SOTIEN2 = "0"
     End With
        
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -2901,7 +3142,7 @@ Public Function InsertDTL_PL1B() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -2920,7 +3161,7 @@ Public Function InsertDTL_PL1B() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -2939,7 +3180,7 @@ Public Function InsertDTL_PL1B() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -2958,7 +3199,7 @@ Public Function InsertDTL_PL1B() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -2977,7 +3218,7 @@ Public Function InsertDTL_PL1B() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -2996,7 +3237,7 @@ Public Function InsertDTL_PL1B() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -3015,7 +3256,7 @@ Public Function InsertDTL_PL1B() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -3034,7 +3275,7 @@ Public Function InsertDTL_PL1B() As String
         SOTIEN2 = "0"
     End With
 
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -3053,7 +3294,7 @@ Public Function InsertDTL_PL1B() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -3072,7 +3313,7 @@ Public Function InsertDTL_PL1B() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -3091,7 +3332,7 @@ Public Function InsertDTL_PL1B() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -3110,7 +3351,7 @@ Public Function InsertDTL_PL1B() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -3129,7 +3370,7 @@ Public Function InsertDTL_PL1B() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & namQT & "," & tthtk & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -3162,7 +3403,7 @@ Public Function InsertDTL_PL1() As String
    Dim bln  As Boolean
    
    Dim MAPL As Variant
-   Dim TT   As Variant
+   Dim tt   As Variant
    
    
    If clsDAO.Connected = False Then
@@ -3193,7 +3434,7 @@ Public Function InsertDTL_PL1() As String
    namQT = TAX_Utilities_Svr_New.Year
    DANHAN = "''"
    MAPL = "'PL03-1A/TNDN'"
-   TT = "''"
+   tt = "''"
    With fps
         .Sheet = 1
         .GetText .ColLetterToNumber("F"), 10, madtnt
@@ -3231,7 +3472,7 @@ Public Function InsertDTL_PL1() As String
    End With
    
      
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -3259,7 +3500,7 @@ Public Function InsertDTL_PL1() As String
         
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -3287,7 +3528,7 @@ Public Function InsertDTL_PL1() As String
         
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -3315,7 +3556,7 @@ Public Function InsertDTL_PL1() As String
         
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -3343,7 +3584,7 @@ Public Function InsertDTL_PL1() As String
         
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -3371,7 +3612,7 @@ Public Function InsertDTL_PL1() As String
         
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -3399,7 +3640,7 @@ Public Function InsertDTL_PL1() As String
         
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -3427,7 +3668,7 @@ Public Function InsertDTL_PL1() As String
         
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -3455,7 +3696,7 @@ Public Function InsertDTL_PL1() As String
         
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -3483,7 +3724,7 @@ Public Function InsertDTL_PL1() As String
         
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -3511,7 +3752,7 @@ Public Function InsertDTL_PL1() As String
         
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -3540,7 +3781,7 @@ Public Function InsertDTL_PL1() As String
    End With
    
      
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -3568,7 +3809,7 @@ Public Function InsertDTL_PL1() As String
         
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -3595,7 +3836,7 @@ Public Function InsertDTL_PL1() As String
         
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -3624,7 +3865,7 @@ Public Function InsertDTL_PL1() As String
    End With
    
      
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -3642,7 +3883,7 @@ Public Function InsertDTL_PL1() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -3669,7 +3910,7 @@ Public Function InsertDTL_PL1() As String
         
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -3687,7 +3928,7 @@ Public Function InsertDTL_PL1() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
    bln = clsDAO.ExecuteDLL(sSQL)
@@ -3704,7 +3945,7 @@ Public Function InsertDTL_PL1() As String
         SOTIEN2 = "0"
    End With
    
-   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+   sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
    sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -4256,7 +4497,7 @@ Public Function InsertDTL_PL3_3A() As String
     Dim CTTN         As Variant
     Dim CK           As Variant
     Dim SOTIEN       As Variant
-    Dim TT           As Variant
+    Dim tt           As Variant
     Dim DANHAN       As Variant
     Dim SOTIEN2      As Variant
     Dim giatri       As Variant
@@ -4330,26 +4571,26 @@ Public Function InsertDTL_PL3_3A() As String
                     'ghi cac row title
                     If countRow = 1 Then
                         CTTN = "'000'"
-                        TT = "'0'"
+                        tt = "'0'"
                         CK = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                 
                         CTTN = "'001'"
-                        TT = "'0'"
+                        tt = "'0'"
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                     End If
                     
-                    TT = "'1'"
+                    tt = "'1'"
                     
                     .GetText lCol, lRow, CK
 
@@ -4365,68 +4606,68 @@ Public Function InsertDTL_PL3_3A() As String
                     'ghi cac row title
                     If countRow = 12 Then
                         CTTN = "'013'"
-                        TT = "'0'"
+                        tt = "'0'"
                         CK = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                     ElseIf countRow = 13 Then
                         CTTN = "'015'"
-                        TT = "'0'"
+                        tt = "'0'"
                         CK = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                     ElseIf countRow = 15 Then
                         CTTN = "'018'"
-                        TT = "'0'"
+                        tt = "'0'"
                         CK = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                         'ghi row title
                     ElseIf countRow = 17 Then
                         CTTN = "'021'"
-                        TT = "'0'"
+                        tt = "'0'"
                         CK = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                     ElseIf countRow = 19 Then
                         CTTN = "'024'"
-                        TT = "'0'"
+                        tt = "'0'"
                         CK = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                         
                         CTTN = "'025'"
-                        TT = "'0'"
+                        tt = "'0'"
                         CK = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
@@ -4434,12 +4675,12 @@ Public Function InsertDTL_PL3_3A() As String
                     ElseIf countRow = 23 Then
 
                         CTTN = "'030'"
-                        TT = "'0'"
+                        tt = "'0'"
                         CK = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
@@ -4448,7 +4689,7 @@ Public Function InsertDTL_PL3_3A() As String
                     'set lai CTTN
 
                     
-                    TT = "'2'"
+                    tt = "'2'"
                     CK = "''"
                     .GetText lCol, lRow, SOTIEN
                     
@@ -4464,7 +4705,7 @@ Public Function InsertDTL_PL3_3A() As String
                 SOTIEN2 = SOTIEN
 
                 sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                 sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                 bln = clsDAO.ExecuteDLL(sSQL)
@@ -4493,7 +4734,7 @@ Public Function InsertDTL_PL3_3B() As String
     Dim CTTN         As Variant
     Dim CK           As Variant
     Dim SOTIEN       As Variant
-    Dim TT           As Variant
+    Dim tt           As Variant
     Dim DANHAN       As Variant
     Dim SOTIEN2      As Variant
     Dim giatri       As Variant
@@ -4567,44 +4808,44 @@ Public Function InsertDTL_PL3_3B() As String
                     'ghi cac row title
                     If countRow = 1 Then
                         CTTN = "'000'"
-                        TT = "'0'"
+                        tt = "'0'"
                         CK = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                 
                         CTTN = "'001'"
-                        TT = "'0'"
+                        tt = "'0'"
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                         
                         CTTN = "'002'"
-                        TT = "'0'"
+                        tt = "'0'"
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                     ElseIf countRow = 6 Then
                         
                         CTTN = "'009'"
-                        TT = "'0'"
+                        tt = "'0'"
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                     
                     End If
                     
-                    TT = "'1'"
+                    tt = "'1'"
                     
                     .GetText lCol, lRow, CK
 
@@ -4619,14 +4860,14 @@ Public Function InsertDTL_PL3_3B() As String
                      If countRow = 8 Then
                         
                         CTTN = "'012'"
-                        TT = "'0'"
+                        tt = "'0'"
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                     End If
-                    TT = "'4'"
+                    tt = "'4'"
                     CK = "''"
                     SOTIEN = "0"
                     .GetText lCol, lRow, giatri
@@ -4644,70 +4885,70 @@ Public Function InsertDTL_PL3_3B() As String
                     'ghi cac row title
                     If countRow = 12 Then
                         CTTN = "'017'"
-                        TT = "'4'"
+                        tt = "'4'"
                         CK = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                     ElseIf countRow = 13 Then
 
                         CTTN = "'019'"
-                        TT = "'4'"
+                        tt = "'4'"
                         CK = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                     ElseIf countRow = 15 Then
 
                         CTTN = "'022'"
-                        TT = "'4'"
+                        tt = "'4'"
                         CK = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                     ElseIf countRow = 17 Then
 
                         CTTN = "'025'"
-                        TT = "'4'"
+                        tt = "'4'"
                         CK = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                     ElseIf countRow = 19 Then
                         CTTN = "'028'"
-                        TT = "'4'"
+                        tt = "'4'"
                         CK = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                         
                         CTTN = "'029'"
-                        TT = "'4'"
+                        tt = "'4'"
                         CK = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
@@ -4716,30 +4957,30 @@ Public Function InsertDTL_PL3_3B() As String
                     ElseIf countRow = 23 Then
 
                         CTTN = "'034'"
-                        TT = "'4'"
+                        tt = "'4'"
                         CK = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                     ElseIf countRow = 26 Then
 
                         CTTN = "'038'"
-                        TT = "'4'"
+                        tt = "'4'"
                         CK = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                     End If
                     
-                    TT = "'2'"
+                    tt = "'2'"
                     CK = "''"
                     .GetText lCol, lRow, SOTIEN
 
@@ -4753,7 +4994,7 @@ Public Function InsertDTL_PL3_3B() As String
 
                 SOTIEN2 = SOTIEN
                 sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                 sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                 bln = clsDAO.ExecuteDLL(sSQL)
@@ -4782,7 +5023,7 @@ Public Function InsertDTL_PL3_3C() As String
     Dim CTTN         As Variant
     Dim CK           As Variant
     Dim SOTIEN       As Variant
-    Dim TT           As Variant
+    Dim tt           As Variant
     Dim DANHAN       As Variant
     Dim SOTIEN2      As Variant
     Dim giatri       As Variant
@@ -4856,35 +5097,35 @@ Public Function InsertDTL_PL3_3C() As String
                     'ghi cac row title
                     If countRow = 1 Then
                         CTTN = "'000'"
-                        TT = "'0'"
+                        tt = "'0'"
                         CK = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                 
                         CTTN = "'001'"
-                        TT = "'0'"
+                        tt = "'0'"
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                     ElseIf countRow = 9 Then
                         CTTN = "'012'"
-                        TT = "'0'"
+                        tt = "'0'"
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                     End If
 
                     If countRow = 1 Or countRow = 5 Or countRow = 9 Or countRow = 10 Then
-                        TT = "'1'"
+                        tt = "'1'"
                         .GetText lCol, lRow, CK
 
                         If Trim(CK) = "1" Then
@@ -4896,7 +5137,7 @@ Public Function InsertDTL_PL3_3C() As String
                         SOTIEN = "0"
                         giatri = "''"
                     ElseIf countRow = 2 Or countRow = 3 Or countRow = 6 Or countRow = 7 Then
-                        TT = "'2'"
+                        tt = "'2'"
                         giatri = "''"
                         CK = "''"
                         .GetText lCol, lRow, SOTIEN
@@ -4904,7 +5145,7 @@ Public Function InsertDTL_PL3_3C() As String
                             SOTIEN = "0"
                         End If
                     ElseIf countRow = 4 Or countRow = 8 Then
-                        TT = "'4'"
+                        tt = "'4'"
                         CK = "''"
                         SOTIEN = "0"
                         .GetText lCol, lRow, giatri
@@ -4923,31 +5164,31 @@ Public Function InsertDTL_PL3_3C() As String
                     'ghi cac row title
                     If countRow = 11 Then
                         CTTN = "'015'"
-                        TT = "'0'"
+                        tt = "'0'"
                         CK = "''"
                         giatri = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                         
                         CTTN = "'016'"
-                        TT = "'0'"
+                        tt = "'0'"
                         CK = "''"
                         SOTIEN = "0"
                         SOTIEN2 = SOTIEN
                         sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                        sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                        sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                         sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                         bln = clsDAO.ExecuteDLL(sSQL)
                         
                     End If
                     
-                    TT = "'2'"
+                    tt = "'2'"
                     CK = "''"
                     giatri = "''"
                     .GetText lCol, lRow, SOTIEN
@@ -4962,7 +5203,7 @@ Public Function InsertDTL_PL3_3C() As String
 
                 SOTIEN2 = SOTIEN
                 sSQLVal = MAPL & "," & madtnt & "," & ngnop & "," & namQT & "," & tthtk & "," & CTTN & "," & CK & "," & SOTIEN
-                sSQLVal = sSQLVal & "," & TT & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
+                sSQLVal = sSQLVal & "," & tt & "," & DANHAN & "," & LAN_QUET & "," & SOTIEN & "," & giatri
                 sSQL = "INSERT INTO TMP_Q3ABC" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
                 bln = clsDAO.ExecuteDLL(sSQL)
@@ -5142,7 +5383,7 @@ Public Function InsertDTL_PL03_5() As String
     Dim bln         As Boolean
    
     Dim MAPL        As Variant
-    Dim TT          As Variant
+    Dim tt          As Variant
    
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
@@ -5167,7 +5408,7 @@ Public Function InsertDTL_PL03_5() As String
     namQT = TAX_Utilities_Svr_New.Year
     DANHAN = "''"
     MAPL = "'PL03-5/TNDN'"
-    TT = "''"
+    tt = "''"
 
     With fps
         .Sheet = 1
@@ -5202,7 +5443,7 @@ Public Function InsertDTL_PL03_5() As String
         CTTN = "'001'"
     End With
      
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -5221,7 +5462,7 @@ Public Function InsertDTL_PL03_5() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -5240,7 +5481,7 @@ Public Function InsertDTL_PL03_5() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -5259,7 +5500,7 @@ Public Function InsertDTL_PL03_5() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -5278,7 +5519,7 @@ Public Function InsertDTL_PL03_5() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -5297,7 +5538,7 @@ Public Function InsertDTL_PL03_5() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -5316,7 +5557,7 @@ Public Function InsertDTL_PL03_5() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -5335,7 +5576,7 @@ Public Function InsertDTL_PL03_5() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -5354,7 +5595,7 @@ Public Function InsertDTL_PL03_5() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -5373,7 +5614,7 @@ Public Function InsertDTL_PL03_5() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -5392,7 +5633,7 @@ Public Function InsertDTL_PL03_5() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -5411,7 +5652,7 @@ Public Function InsertDTL_PL03_5() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -5430,7 +5671,7 @@ Public Function InsertDTL_PL03_5() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
     '--------------
    
@@ -5447,7 +5688,7 @@ Public Function InsertDTL_PL03_5() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -5466,7 +5707,7 @@ Public Function InsertDTL_PL03_5() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -5485,7 +5726,7 @@ Public Function InsertDTL_PL03_5() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -5504,7 +5745,7 @@ Public Function InsertDTL_PL03_5() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)
@@ -5523,7 +5764,7 @@ Public Function InsertDTL_PL03_5() As String
         SOTIEN2 = "0"
     End With
    
-    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & TT
+    sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & tthtk & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
     bln = clsDAO.ExecuteDLL(sSQL)

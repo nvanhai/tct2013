@@ -1561,7 +1561,7 @@ Public Function InsertDTL() As String
         LoaiTien = "''"
         QUI = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' Chi tieu 19
-        CTIEUTNDN = "'010'"
+        CTIEUTNDN = "'013'"
         
         .GetText .ColLetterToNumber("U"), 49, SOTIEN
         If Trim(SOTIEN) = vbNullString Then
@@ -1613,7 +1613,7 @@ Public Function InsertDTL() As String
         LoaiTien = "''"
         QUI = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' Chi tieu 19
-        CTIEUTNDN = "'011'"
+        CTIEUTNDN = "'014'"
         
         .GetText .ColLetterToNumber("U"), 50, SOTIEN
         If Trim(SOTIEN) = vbNullString Then
@@ -1665,7 +1665,7 @@ Public Function InsertDTL() As String
         LoaiTien = "''"
         QUI = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' Chi tieu 19
-        CTIEUTNDN = "'012'"
+        CTIEUTNDN = "'015'"
         
         .GetText .ColLetterToNumber("U"), 51, SOTIEN
         If Trim(SOTIEN) = vbNullString Then
@@ -1716,7 +1716,7 @@ Public Function InsertDTL() As String
         LoaiTien = "''"
         QUI = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' Chi tieu 19
-        CTIEUTNDN = "'013'"
+        CTIEUTNDN = "'016'"
         
         .GetText .ColLetterToNumber("U"), 52, SOTIEN
         If Trim(SOTIEN) = vbNullString Then
@@ -1767,7 +1767,7 @@ Public Function InsertDTL() As String
         LoaiTien = "''"
         QUI = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' Chi tieu 19
-        CTIEUTNDN = "'014'"
+        CTIEUTNDN = "'017'"
         
         .GetText .ColLetterToNumber("U"), 53, SOTIEN
         If Trim(SOTIEN) = vbNullString Then
@@ -1818,7 +1818,7 @@ Public Function InsertDTL() As String
         LoaiTien = "''"
         QUI = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' Chi tieu 19
-        CTIEUTNDN = "'015'"
+        CTIEUTNDN = "'018'"
         
         .GetText .ColLetterToNumber("U"), 54, SOTIEN
         If Trim(SOTIEN) = vbNullString Then
@@ -1869,7 +1869,7 @@ Public Function InsertDTL() As String
         LoaiTien = "''"
         QUI = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' Chi tieu 19
-        CTIEUTNDN = "'016'"
+        CTIEUTNDN = "'010'"
         
         .GetText .ColLetterToNumber("U"), 55, SOTIEN
         If Trim(SOTIEN) = vbNullString Then
@@ -1920,7 +1920,7 @@ Public Function InsertDTL() As String
         LoaiTien = "''"
         QUI = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' Chi tieu 19
-        CTIEUTNDN = "'017'"
+        CTIEUTNDN = "'011'"
         
         .GetText .ColLetterToNumber("U"), 56, SOTIEN
         If Trim(SOTIEN) = vbNullString Then
@@ -1971,7 +1971,7 @@ Public Function InsertDTL() As String
         LoaiTien = "''"
         QUI = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' Chi tieu 19
-        CTIEUTNDN = "'018'"
+        CTIEUTNDN = "'019'"
         
         .GetText .ColLetterToNumber("U"), 57, SOTIEN
         If Trim(SOTIEN) = vbNullString Then
@@ -2022,7 +2022,7 @@ Public Function InsertDTL() As String
         LoaiTien = "''"
         QUI = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' Chi tieu 19
-        CTIEUTNDN = "'019'"
+        CTIEUTNDN = "'020'"
         
         .GetText .ColLetterToNumber("U"), 58, SOTIEN
         If Trim(SOTIEN) = vbNullString Then
@@ -2073,7 +2073,7 @@ Public Function InsertDTL() As String
         LoaiTien = "''"
         QUI = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' Chi tieu 19
-        CTIEUTNDN = "'020'"
+        CTIEUTNDN = "'012'"
         
         .GetText .ColLetterToNumber("U"), 59, SOTIEN
         If Trim(SOTIEN) = vbNullString Then
@@ -2091,162 +2091,7 @@ Public Function InsertDTL() As String
    
     sSQL = "INSERT INTO TMP_TNDN" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
    bln = clsConn.ExecuteDLL(sSQL)
-      '-------------------
    
-      With fps
-        .Sheet = 1
-        .GetText .ColLetterToNumber("F"), 10, madtnt
-        If Trim(madtnt) = vbNullString Then
-            madtnt = "''"
-        Else
-            madtnt = "'" & madtnt & "'"
-        End If
-            
-        
-         .GetText .ColLetterToNumber("E"), 32, ngnop
-        'NGNOP = Date
-        If Trim(ngnop) = vbNullString Then
-            ngnop = "CTOD('')"
-        Else
-            ngnop = ToDate(Trim(ngnop), DDMMYYYY)
-            ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
-        End If
-        MATHUE = "'08'"
-        If CLng(Right(sKyKeKhai, 4)) < 2009 Then
-            maTM = "'02'"
-            MaMuc = "'002'"
-        Else
-            MaMuc = "'1050'"
-            maTM = "'1052'"
-        End If
-        MAPP = "'1'"
-        tt = "''"
-        LoaiTien = "''"
-        QUI = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
-        ' Chi tieu 19
-        CTIEUTNDN = "'021'"
-        
-        .GetText .ColLetterToNumber("M"), 66, SOTIEN
-        If Trim(SOTIEN) = vbNullString Then
-            SOTIEN = "0"
-        Else
-            SOTIEN = SOTIEN
-        End If
-        SOTIEN2 = SOTIEN
-        matkhai = "'01A/TNDN'"
-       
-   End With
-   sSQLVal = QUI & "," & madtnt & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & ","
-   sSQLVal = sSQLVal & ngnop & "," & CTIEUTNDN & "," & SOTIEN & "," & SOTIEN2 & "," & tt & "," & LoaiTien & ","
-   sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & LAN_QUET & "," & DANHAN
-   
-    sSQL = "INSERT INTO TMP_TNDN" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-   bln = clsConn.ExecuteDLL(sSQL)
-      '-------------------
-   
-      With fps
-        .Sheet = 1
-        .GetText .ColLetterToNumber("F"), 10, madtnt
-        If Trim(madtnt) = vbNullString Then
-            madtnt = "''"
-        Else
-            madtnt = "'" & madtnt & "'"
-        End If
-            
-        
-         .GetText .ColLetterToNumber("E"), 32, ngnop
-        'NGNOP = Date
-        If Trim(ngnop) = vbNullString Then
-            ngnop = "CTOD('')"
-        Else
-            ngnop = ToDate(Trim(ngnop), DDMMYYYY)
-            ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
-        End If
-        MATHUE = "'08'"
-        If CLng(Right(sKyKeKhai, 4)) < 2009 Then
-            maTM = "'02'"
-            MaMuc = "'002'"
-        Else
-            MaMuc = "'1050'"
-            maTM = "'1052'"
-        End If
-        MAPP = "'1'"
-        tt = "''"
-        LoaiTien = "''"
-        QUI = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
-        ' Chi tieu 19
-        CTIEUTNDN = "'022'"
-        
-        .GetText .ColLetterToNumber("M"), 68, SOTIEN
-        If Trim(SOTIEN) = vbNullString Then
-            SOTIEN = "0"
-        Else
-            SOTIEN = SOTIEN
-        End If
-        SOTIEN2 = SOTIEN
-        matkhai = "'01A/TNDN'"
-       
-   End With
-   sSQLVal = QUI & "," & madtnt & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & ","
-   sSQLVal = sSQLVal & ngnop & "," & CTIEUTNDN & "," & SOTIEN & "," & SOTIEN2 & "," & tt & "," & LoaiTien & ","
-   sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & LAN_QUET & "," & DANHAN
-   
-    sSQL = "INSERT INTO TMP_TNDN" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-   bln = clsConn.ExecuteDLL(sSQL)
-      '-------------------
-   
-      With fps
-        .Sheet = 1
-        .GetText .ColLetterToNumber("F"), 10, madtnt
-        If Trim(madtnt) = vbNullString Then
-            madtnt = "''"
-        Else
-            madtnt = "'" & madtnt & "'"
-        End If
-            
-        
-         .GetText .ColLetterToNumber("E"), 32, ngnop
-        'NGNOP = Date
-        If Trim(ngnop) = vbNullString Then
-            ngnop = "CTOD('')"
-        Else
-            ngnop = ToDate(Trim(ngnop), DDMMYYYY)
-            ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
-        End If
-        MATHUE = "'08'"
-        If CLng(Right(sKyKeKhai, 4)) < 2009 Then
-            maTM = "'02'"
-            MaMuc = "'002'"
-        Else
-            MaMuc = "'1050'"
-            maTM = "'1052'"
-        End If
-        MAPP = "'1'"
-        tt = "''"
-        LoaiTien = "''"
-        QUI = "'" & Right(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
-        ' Chi tieu 19
-        CTIEUTNDN = "'023'"
-        
-        .GetText .ColLetterToNumber("M"), 70, SOTIEN
-        If Trim(SOTIEN) = vbNullString Then
-            SOTIEN = "0"
-        Else
-            SOTIEN = SOTIEN
-        End If
-        SOTIEN2 = SOTIEN
-        matkhai = "'01A/TNDN'"
-       
-   End With
-   sSQLVal = QUI & "," & madtnt & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & ","
-   sSQLVal = sSQLVal & ngnop & "," & CTIEUTNDN & "," & SOTIEN & "," & SOTIEN2 & "," & tt & "," & LoaiTien & ","
-   sSQLVal = sSQLVal & tthtk & "," & matkhai & "," & LAN_QUET & "," & DANHAN
-   
-    sSQL = "INSERT INTO TMP_TNDN" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-   bln = clsConn.ExecuteDLL(sSQL)
-'   If TAX_Utilities_Svr_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue = 1 Then
-'        InsertDTL = InsertDTL_PL1
-'   End If
    clsConn.Disconnect
    
    InsertDTL = vbNullString
