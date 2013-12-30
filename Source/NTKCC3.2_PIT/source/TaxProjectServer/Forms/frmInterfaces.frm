@@ -2193,7 +2193,7 @@ On Error GoTo ErrHandle
             varBuff = MSComm1.Input
             lByte = varBuff
             For i = 0 To UBound(lByte)
-                If Chr$(lByte(i)) <> "" Then
+                If Chr$(lByte(i)) <> "#" Then
                     strTemp = strTemp & Chr$(lByte(i))
                 Else
                     Barcode_Scaned TAX_Utilities_Svr_New.Convert(strTemp, TCVN, UNICODE)
@@ -2570,7 +2570,7 @@ Private Sub GetCells(xmlSectionTemplate As MSXML.IXMLDOMNode, arrStrValue() As S
     While lCtrl <= UBound(arrStrValue) And Not xmlSectionTemplate.selectNodes("Cells/Cell")(lCtrl2) Is Nothing
         If GetAttribute(xmlSectionTemplate.selectNodes("Cells/Cell")(lCtrl2), "Receive") <> "0" Then
             SetAttribute xmlSectionTemplate.selectNodes("Cells/Cell")(lCtrl2), "Value", _
-                Replace(Replace(arrStrValue(lCtrl), "1" & Chr$(20) & Chr$(20) & "1", ""), Chr$(20), "~")
+                Replace(Replace(arrStrValue(lCtrl), "1" & Chr$(20) & Chr$(20) & "1", "#"), Chr$(20), "~")
         Else
             lCtrl = lCtrl - 1
         End If
