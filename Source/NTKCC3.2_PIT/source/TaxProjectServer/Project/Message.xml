@@ -162,4 +162,6 @@
 	<Infor ID="0162" Msg="Dịch vụ, xây dựng không bao thầu nguyên vật liệu áp dụng thuế suất 5%"/>
 	<Infor ID="0163" Msg="Sản xuất, vận tải, dịch vụ có gắn với hàng hóa, xây dựng có bao thầu nguyên vật liệu áp dụng thuế suất 3%"/>
 	<Infor ID="0164" Msg="Hoạt động kinh doanh khác áp dụng thuế suất  2%"/>
+	<Infor ID="0165" Msg="Chưa có bảng tham số trong DB"/>
+	<Infor ID="0166" Msg="Chưa cập nhật thông tin phiên bản"/>
 </Message>
