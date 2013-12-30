@@ -3724,11 +3724,11 @@ Public Function getTemplateTk(ByVal strId As String) As String()
         Case "03"
             ReDim strResult(6)
             strResult(0) = "F_17~Dynamic_0"
-            strResult(1) = "O_23~O_25~O_26~O_27~O_28~O_29~O_30~O_31~O_32~O_33~O_34~O_35~O_36~O_37~O_38~O_40~O_41~O_42~O_43~O_44~O_45~O_46~O_47~O_48~O_49~O_50~O_51~O_52~O_53~O_54~O_55~Dynamic_0"
-            strResult(2) = "D_7~D_8~Dynamic_0"
-            strResult(3) = "C_61~Dynamic_1"
-            strResult(4) = "B_63~Dynamic_0"
-            strResult(5) = "F_66~N_66~F_68~N_68~E_14~F_14~I_14~J_14~D_64~P_64~Dynamic_0"
+            strResult(1) = "O_23~O_25~O_26~O_27~O_28~O_29~O_30~O_31~O_32~O_33~O_34~O_35~O_36~O_37~O_38~O_40~O_41~O_42~O_43~O_44~O_45~O_46~O_47~O_48~O_49~O_50~O_51~O_52~O_53~O_54~Dynamic_0"
+            strResult(2) = "D_8~Dynamic_0"
+            strResult(3) = "C_60~Dynamic_1"
+            strResult(4) = "B_62~Dynamic_0"
+            strResult(5) = "F_65~N_65~F_67~N_67~E_14~F_14~I_14~J_15~Dynamic_0"
         ' 05_TNDN
 '        Case "14"
 '            ReDim strResult(3)
