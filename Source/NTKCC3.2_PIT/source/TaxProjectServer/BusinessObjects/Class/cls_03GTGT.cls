@@ -624,6 +624,9 @@ Public Function InsertDTL() As String
    sSQLCol = "MADTNT , MATHUE, MATM, MAPP, KYLBO, NGNOP, LOAITIEN, "
    sSQLCol = sSQLCol + "CTIEUTNDN, SOTIEN, TT, SOTIEN2, MAMUC ,TTHTK, MATKHAI, KYKKHAI, NGANH, LAN_QUET, DANHAN,THUECL"
      
+   THUECL = "0"
+   DANHAN = "''"
+   NGANH = "''"
    With fps
         .Sheet = 1
         .GetText .ColLetterToNumber("F"), 10, madtnt
