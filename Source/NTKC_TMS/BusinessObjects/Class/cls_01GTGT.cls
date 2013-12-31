@@ -283,42 +283,42 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         Loop Until .Text = "aa" Or varMaDM = ""
         
         ' Phu luc 6B
-        .Sheet = 9
-        .Col = .ColLetterToNumber("D")
-        i = 0
-        Do
-            .GetText .ColLetterToNumber("D"), 7 + i, varMaDM
-            DataDM varMaDM, tenDM
-            If Trim(tenDM) <> vbNullString Then
-                .Col = .ColLetterToNumber("E")
-                .Row = 7 + i
-                .Text = tenDM
-            End If
-            UpdateCell fps, .Col, .Row, .Text
-            
-             i = i + 1
-            .Col = .ColLetterToNumber("B")
-            .Row = i + 7
-        Loop Until .Text = "aa" Or varMaDM = ""
+'        .Sheet = 9
+'        .Col = .ColLetterToNumber("D")
+'        i = 0
+'        Do
+'            .GetText .ColLetterToNumber("D"), 7 + i, varMaDM
+'            DataDM varMaDM, tenDM
+'            If Trim(tenDM) <> vbNullString Then
+'                .Col = .ColLetterToNumber("E")
+'                .Row = 7 + i
+'                .Text = tenDM
+'            End If
+'            UpdateCell fps, .Col, .Row, .Text
+'
+'             i = i + 1
+'            .Col = .ColLetterToNumber("B")
+'            .Row = i + 7
+'        Loop Until .Text = "aa" Or varMaDM = ""
         
         ' Phu luc 02TD
-        .Sheet = 12
-        .Col = .ColLetterToNumber("D")
-        i = 0
-        Do
-            .GetText .ColLetterToNumber("D"), 6 + i, varMaDM
-            DataDM varMaDM, tenDM
-            If Trim(tenDM) <> vbNullString Then
-                .Col = .ColLetterToNumber("E")
-                .Row = 6 + i
-                .Text = tenDM
-            End If
-            UpdateCell fps, .Col, .Row, .Text
-            
-             i = i + 1
-            .Col = .ColLetterToNumber("B")
-            .Row = i + 6
-        Loop Until .Text = "aa" Or varMaDM = ""
+'        .Sheet = 12
+'        .Col = .ColLetterToNumber("D")
+'        i = 0
+'        Do
+'            .GetText .ColLetterToNumber("D"), 6 + i, varMaDM
+'            DataDM varMaDM, tenDM
+'            If Trim(tenDM) <> vbNullString Then
+'                .Col = .ColLetterToNumber("E")
+'                .Row = 6 + i
+'                .Text = tenDM
+'            End If
+'            UpdateCell fps, .Col, .Row, .Text
+'
+'             i = i + 1
+'            .Col = .ColLetterToNumber("B")
+'            .Row = i + 6
+'        Loop Until .Text = "aa" Or varMaDM = ""
     End With
     
     Prepared2 = True

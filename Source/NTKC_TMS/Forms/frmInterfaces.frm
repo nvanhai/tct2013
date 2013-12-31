@@ -3695,6 +3695,13 @@ On Error GoTo ErrHandle
     ' 09-06-2010
     ' begin
     strTaxIDString = strTaxID
+    'strTaxID = ""
+    'Neu khong co NNT thi quit luon
+    If (strTaxID = vbNullString Or strTaxID = "") Then
+        InitParameters = False
+        MessageBox "0146", msOKOnly, miWarning
+        Exit Function
+    End If
     
     Dim strIDBCTC As String
     strIDBCTC = Left$(strTaxReportInfo, 2)
@@ -3708,9 +3715,9 @@ On Error GoTo ErrHandle
     End If
     ' end
     
-     'Connect DB fail
-    If Not blnConnected Then _
-        Exit Function
+'     'Connect DB fail
+'    If Not blnConnected Then _
+'        Exit Function
     
     If (rsTaxInfor Is Nothing Or rsTaxInfor.Fields.Count = 0) And Len(strTaxID) = 14 Then
         strTaxID = Replace(strTaxID, "-", " ")
@@ -3750,6 +3757,12 @@ On Error GoTo ErrHandle
     checkTT = 2  ' Trang thai DTNT mat tich
     'MessageBox "0087", msOKOnly, miCriticalError
     'Exit Function
+    End If
+    
+    If rsTaxInfor.Fields(0) = "05" Then
+        InitParameters = False
+        MessageBox "0088", msOKOnly, miCriticalError
+        Exit Function
     End If
     
    
@@ -4339,7 +4352,24 @@ On Error GoTo ErrHandle
     End If
     strMaDaiLyThue = strTaxDLID
     strTaxDLTIDString = strTaxDLID
-    Set rsTaxDLInfor = GetTaxDLInfo(strMST, strTaxDLID, blnDLConnected)
+    'strTaxDLID = ""
+    If strTaxDLID <> vbNullString Or strTaxDLID <> "" Then
+        
+        Set rsTaxDLInfor = GetTaxDLInfo(strMST, strTaxDLID, blnDLConnected)
+    Else
+        Set rsTaxDLInfor = Nothing
+    End If
+    
+        
+    ' DLT ngung hoat dong canh bao va thoat
+    If Not rsTaxDLInfor Is Nothing Then
+        If rsTaxDLInfor.Fields(7).Value = "01" Then
+            MessageBox "0144", msOKOnly, miWarning
+            frmSystem.MousePointer = vbDefault
+            Me.MousePointer = vbDefault
+            Exit Function
+        End If
+    End If
         
     
     If Trim(GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "Class")) <> vbNullString Then
@@ -4365,7 +4395,7 @@ On Error GoTo ErrHandle
                         If Not objTaxBusiness Is Nothing Then
                             objTaxBusiness.strTenDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(0).Value), "", rsTaxDLInfor.Fields(0).Value), TCVN, UNICODE)
                             objTaxBusiness.strDiaChiDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(1).Value), "", rsTaxDLInfor.Fields(1).Value), TCVN, UNICODE)
-                             objTaxBusiness.strDienThoaiDL = IIf(IsNull(rsTaxDLInfor.Fields(2).Value), "", rsTaxDLInfor.Fields(2).Value)
+                            objTaxBusiness.strDienThoaiDL = IIf(IsNull(rsTaxDLInfor.Fields(2).Value), "", rsTaxDLInfor.Fields(2).Value)
                             objTaxBusiness.strFaxDL = IIf(IsNull(rsTaxDLInfor.Fields(3).Value), "", rsTaxDLInfor.Fields(3).Value)
                             objTaxBusiness.strEmailDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(4).Value), "", rsTaxDLInfor.Fields(4).Value), TCVN, UNICODE)
                             objTaxBusiness.strSoHopDongDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(5).Value), "", rsTaxDLInfor.Fields(5).Value), TCVN, UNICODE)
@@ -4705,15 +4735,15 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
     Set xmlResultNNT = New MSXML.DOMDocument
     Dim strResultNNT As String
     
-'    'Du lieu gia lap de test
-'        Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-'        strResultNNT = "sdfsfds"
+    'Du lieu gia lap de test
+        Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+        strResultNNT = "sdfsfds"
     
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         strMaNNT = strTaxIDString
-        strResultNNT = GetDataFromESB("", "", "NNT")
-        strResultNNT = ChangeTagASSCII(strResultNNT, False)
-        xmlResultNNT.loadXML strResultNNT
+'        strResultNNT = GetDataFromESB("", "", "NNT")
+'        strResultNNT = ChangeTagASSCII(strResultNNT, False)
+'        xmlResultNNT.loadXML strResultNNT
     Else
         Set rsReturn = Nothing
         blnSuccess = False
@@ -4828,23 +4858,23 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
     Set xmlResultDLT = New MSXML.DOMDocument
     Dim strResultDLT As String
  
-    'Neu khong co thong tin NNT thi exit luon
-    If (strTaxIDString = "" Or strTaxIDString = vbNullString) Then
-        Set rsReturn = Nothing
-        blnSuccess = False
-        Exit Function
-    End If
-    
+'    'Neu khong co thong tin NNT thi exit luon
+'    If (strTaxIDString = "" Or strTaxIDString = vbNullString) Then
+'        Set rsReturn = Nothing
+'        blnSuccess = False
+'        Exit Function
+'    End If
+'
 '    '
-'    'Du lieu gia lap de test
-'    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
-'    strResultDLT = "sdfsfds"
+    'Du lieu gia lap de test
+    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
+    strResultDLT = "sdfsfds"
 
     If (strTaxIDDLString <> "" And strTaxIDDLString <> vbNullString) Then
         strMaDLT = strTaxIDDLString
-        strResultDLT = GetDataFromESB("", "", "DLT")
-        strResultDLT = ChangeTagASSCII(strResultDLT, False)
-        xmlResultDLT.loadXML strResultDLT
+'        strResultDLT = GetDataFromESB("", "", "DLT")
+'        strResultDLT = ChangeTagASSCII(strResultDLT, False)
+'        xmlResultDLT.loadXML strResultDLT
     End If
     
     If strTaxIDDLString <> "" And strTaxIDDLString <> vbNullString Then
@@ -4887,13 +4917,14 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
                         Exit Function
                         End If
                 End If
-                If (xmlResultDLT.getElementsByTagName("TrangThaiHoatDong").length > 0) Then
-                    If (xmlResultDLT.getElementsByTagName("TrangThaiHoatDong")(0).Text = "01") Then
-                            Set rsReturn = Nothing
-                            blnSuccess = False
-                            Exit Function
-                    End If
-                End If
+'                If (xmlResultDLT.getElementsByTagName("TrangThaiHoatDong").length > 0) Then
+'                    If (xmlResultDLT.getElementsByTagName("TrangThaiHoatDong")(0).Text = "01") Then
+'                            'MessageBox "0144", msOKOnly, miWarning
+'                            Set rsReturn = Nothing
+'                            blnSuccess = False
+'                            Exit Function
+'                    End If
+'                End If
             End If
             
         End If
@@ -4906,6 +4937,7 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
     rsReturn.Fields.Append "repr_email", adVarWChar, 60, adFldUpdatable
     rsReturn.Fields.Append "repr_cont_number", adVarWChar, 30, adFldUpdatable
     rsReturn.Fields.Append "repr_cont_date", adVarWChar, 50, adFldUpdatable
+    rsReturn.Fields.Append "trang_thai", adChar, 2, adFldUpdatable
     
     rsReturn.Open
     rsReturn.AddNew
@@ -4921,6 +4953,7 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
         rsReturn!repr_email = xmlResultDLT.getElementsByTagName("Email")(0).Text
         rsReturn!repr_cont_number = xmlResultDLT.getElementsByTagName("SoHopDong")(0).Text
         rsReturn!repr_cont_date = xmlResultDLT.getElementsByTagName("NgayHopDong")(0).Text
+        rsReturn!trang_thai = xmlResultDLT.getElementsByTagName("TrangThaiHoatDong")(0).Text
     End If
 
     rsReturn.Update
@@ -4968,15 +5001,15 @@ On Error GoTo ErrHandle
     Set xmlResultNNT = New MSXML.DOMDocument
     Dim strResultNNT As String
 '
-'   'Du lieu gia lap de test
-'    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-'    strResultNNT = "test"
+   'Du lieu gia lap de test
+    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+    strResultNNT = "test"
 
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         strMaNNT = strTaxIDString
-        strResultNNT = GetDataFromESB("", "", "NNT")
-        strResultNNT = ChangeTagASSCII(strResultNNT, False)
-        xmlResultNNT.loadXML strResultNNT
+'        strResultNNT = GetDataFromESB("", "", "NNT")
+'        strResultNNT = ChangeTagASSCII(strResultNNT, False)
+'        xmlResultNNT.loadXML strResultNNT
     Else
         Set rsReturn = Nothing
         blnSuccess = False
@@ -5974,6 +6007,23 @@ End Sub
 'ConnectErrHandle:
 '    SaveErrorLog Me.Name, "GetThongTinTep", Err.Number, Err.Description
 'End Function
+Private Function formatMaToKhai(ByVal strID As String) As String
+    Dim strTemp As String
+    Dim strCode As String
+    Dim strItem As String
+    Dim strRetValue As String
+    
+    strCode = Mid$(strID, Len(strID) - 1, 2)
+    strItem = Left$(strID, Len(strID) - 2)
+    If (strCode = "11") Then
+        strRetValue = "('" & strItem & "','" & strID & "','" & strItem & "13')"
+    ElseIf strCode = "13" Then
+        strRetValue = "('" & strItem & "','" & strItem & "11','" & strID & "')"
+    Else
+        strRetValue = "('" & strItem & "','" & strItem & "11','" & strID & "13')"
+    End If
+    formatMaToKhai = strRetValue
+End Function
 
 Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) As Boolean
     Dim lngIndex As Long

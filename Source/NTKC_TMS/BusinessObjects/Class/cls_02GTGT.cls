@@ -513,7 +513,8 @@ On Error GoTo ErrHandle
         End If
         End With
     Next
-        If LOAI_KYKK = "0" Then
+     
+     If LOAI_KYKK = "0" Then
         LOAI_KYKK = "T"
     Else
         LOAI_KYKK = "Q"
@@ -540,7 +541,7 @@ On Error GoTo ErrHandle
     End If
     
     'Ky/ Quy KK
-    If LOAI_KYKK = "0" Then
+    If LOAI_KYKK = "T" Then
         If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
             'Ngay dau ky ke khai va ngay cuoi ky ke khai
             dDate = dNgayDauKy
