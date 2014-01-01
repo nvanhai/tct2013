@@ -366,31 +366,31 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
             End If
         End If
    'KHBS
-        If .ActiveSheet = .SheetCount - 1 Then
-         Dim count1 As Integer
-            .Row = 9
-            .Col = .ColLetterToNumber("B")
-            Do While .value <> "bb"
-                count1 = count1 + 1
-                .Row = .Row + 1
-            Loop
-                If Col = .ColLetterToNumber("BG") And Row = 20 + count1 - 5 Then
-                       .GetText Col, Row, varTemp
-                       If varTemp <> "" And varTemp <> "../../...." Then
-                           If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
-                               .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
-                               .TypeHAlign = TypeHAlignLeft
-                           Else
-                            .SetFocus
-                            .SetActiveCell Col, Row
-                           End If
-                       Else
-                        .SetText Col, Row, ""
-                       End If
-                      UpdateCell fps, .Col, .Row, .Text
-                   End If
-                .Sheet = .SheetCount - 1
-        End If
+'        If .ActiveSheet = .SheetCount - 1 Then
+'         Dim count1 As Integer
+'            .Row = 9
+'            .Col = .ColLetterToNumber("B")
+'            Do While .value <> "bb"
+'                count1 = count1 + 1
+'                .Row = .Row + 1
+'            Loop
+'                If Col = .ColLetterToNumber("BG") And Row = 20 + count1 - 5 Then
+'                       .GetText Col, Row, varTemp
+'                       If varTemp <> "" And varTemp <> "../../...." Then
+'                           If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+'                               .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+'                               .TypeHAlign = TypeHAlignLeft
+'                           Else
+'                            .SetFocus
+'                            .SetActiveCell Col, Row
+'                           End If
+'                       Else
+'                        .SetText Col, Row, ""
+'                       End If
+'                      UpdateCell fps, .Col, .Row, .Text
+'                   End If
+'                .Sheet = .SheetCount - 1
+'        End If
           .EventEnabled(EventAllEvents) = True
     End With
 '    CellChange Col, Row
