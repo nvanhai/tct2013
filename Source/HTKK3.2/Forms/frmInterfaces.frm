@@ -8845,6 +8845,16 @@ Private Sub fpSpread1_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewC
 Dim count2, count3 As Long
 Dim str(20) As Variant
 Dim sum1(20), sum2(20) As Variant
+
+' cac bien su dung check format ngay trong KHBS
+Dim strIdKHBS As String, strIdKHBS_TT156  As String
+Dim lCol_temp As Long
+Dim lRow_temp As Long
+Dim temp As Long
+Dim varTemp As Variant
+Dim xmlNodeCell_temp As MSXML.IXMLDOMNode
+' end
+
 Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
     With fpSpread1
         .sheet = mCurrentSheet
@@ -8990,6 +9000,39 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
         Else
         .Refresh
         End If
+        
+        ' format date cho to khai bo sung theo TT156
+        ' 31-12-2013
+        strIdKHBS_TT156 = "~02~04~71~72~11~12~"
+        strIdKHBS = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
+        If strIdKHBS = "01" Then
+        
+        ElseIf InStr(1, strIdKHBS_TT156, "~" & Trim$(strIdKHBS) & "~", vbTextCompare) > 0 Then
+             .EventEnabled(EventAllEvents) = False
+             If .ActiveSheet = .SheetCount - 1 Then
+                    Set xmlNodeCell_temp = TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 14)
+                    ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                    If Col = lCol_temp And Row = lRow_temp Then
+                        .GetText Col, Row, varTemp
+                         If varTemp <> "" And varTemp <> "../../...." Then
+                             If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+                                 .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+                                 .TypeHAlign = TypeHAlignLeft
+                             Else
+                                 .SetFocus
+                                 .SetActiveCell Col, Row
+                             End If
+                         Else
+                          .SetText Col, Row, ""
+                         End If
+                        .Col = Col
+                        .Row = Row
+                        UpdateCell .Col, .Row, .Text
+                     End If
+            End If
+            .EventEnabled(EventAllEvents) = True
+        End If
+        ' end
     End With
         fpSpread1.ArrowsExitEditMode = True
         SetStatus NewCol, NewRow
