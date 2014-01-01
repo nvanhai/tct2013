@@ -1243,8 +1243,8 @@ Private Sub CheckDynamicError()
     ' PL 05
     Dim mErrMSTTrung As Variant
     ' check gh
-    Dim vCheckGH As Variant, vLyDoGH As Variant, vErrorCheckGH As Variant
-    Dim iflagCheckGH As Integer
+    Dim vCheckGH As Variant, vLyDoGH As Variant, vErrorCheckGH As Variant, vThoiHanGH As Variant, vErrorCheckThoiHanGH As Variant
+    Dim iflagCheckGH As Integer, iflagCheckThoiHanGH As Integer
     
     With fps
         '.Visible = False
@@ -1262,6 +1262,8 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 32, mErrMSTTrung
         .GetText .ColLetterToNumber("E"), 33, vErrorCheckGH
         .GetText .ColLetterToNumber("E"), 34, errTongSoThue
+        
+        .GetText .ColLetterToNumber("E"), 39, vErrorCheckThoiHanGH
         
         vFlag = 0
         iFlagCheckMaST = 0
@@ -1325,7 +1327,10 @@ Private Sub CheckDynamicError()
          ' end
         .GetText .ColLetterToNumber("F"), 43, vCheckGH
         .GetText .ColLetterToNumber("H"), 45, vLyDoGH
+        .GetText .ColLetterToNumber("H"), 47, vThoiHanGH
+        
          If (Trim$(vCheckGH) = "1" Or Trim$(UCase$(vCheckGH)) = "X") And isCheckGh Then
+             ' Kiem tra ly do gia han
              If Trim$(vLyDoGH) = "" Then
                  .Col = .ColLetterToNumber("H")
                  .Row = 45
@@ -1339,12 +1344,32 @@ Private Sub CheckDynamicError()
                  .BackColor = mNonErrorColor
                  iflagCheckGH = 0
              End If
+             ' Kiem tra thoi han gia han
+             If Trim$(vThoiHanGH) = "" Or Trim$(vThoiHanGH) = "../../...." Then
+                 .Col = .ColLetterToNumber("H")
+                 .Row = 47
+                 .CellNote = vErrorCheckThoiHanGH  'static
+                 .BackColor = mErrorColor
+                 iflagCheckThoiHanGH = 1
+             Else
+                 .Col = .ColLetterToNumber("H")
+                 .Row = 47
+                 .CellNote = ""  'static
+                 .BackColor = mNonErrorColor
+             End If
          Else
+                ' Ly do gia han
                  .Col = .ColLetterToNumber("H")
                  .Row = 45
                  .CellNote = ""  'static
                  .BackColor = mNonErrorColor
                  iflagCheckGH = 0
+                 ' Thoi han gia han
+                 .Col = .ColLetterToNumber("H")
+                 .Row = 47
+                 .CellNote = ""  'static
+                 .BackColor = mNonErrorColor
+                 iflagCheckThoiHanGH = 0
          End If
        
        
@@ -1496,22 +1521,23 @@ Private Sub CheckDynamicError()
         'end
         blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         .Sheet = .SheetCount
-            If blCheck_S2 Then
-                .SetText .ColLetterToNumber("B"), 21, IIf(iFlagTyLe = 1, "0", "1")
-                .SetText .ColLetterToNumber("B"), 35, IIf(iFlagCheckMaSTDN10 = 1, "0", "1")
-                .SetText .ColLetterToNumber("B"), 34, IIf(iFlagCheckSoThue = 1, "0", "1")
-            Else
-                .SetText .ColLetterToNumber("B"), 21, "1"
-                .SetText .ColLetterToNumber("B"), 34, "1"
-                .SetText .ColLetterToNumber("B"), 35, "1"
-            End If
+        If blCheck_S2 Then
+            .SetText .ColLetterToNumber("B"), 21, IIf(iFlagTyLe = 1, "0", "1")
+            .SetText .ColLetterToNumber("B"), 35, IIf(iFlagCheckMaSTDN10 = 1, "0", "1")
+            .SetText .ColLetterToNumber("B"), 34, IIf(iFlagCheckSoThue = 1, "0", "1")
+        Else
+            .SetText .ColLetterToNumber("B"), 21, "1"
+            .SetText .ColLetterToNumber("B"), 34, "1"
+            .SetText .ColLetterToNumber("B"), 35, "1"
+        End If
+        
+        .SetText .ColLetterToNumber("B"), 22, IIf(iFlagEmpty = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 23, IIf(iFlagCheckMaST = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 25, IIf(iFlagCheckMaSTDN = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 33, IIf(iflagCheckGH = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 39, IIf(iflagCheckThoiHanGH = 1, "0", "1")
             
-            .SetText .ColLetterToNumber("B"), 22, IIf(iFlagEmpty = 1, "0", "1")
-            .SetText .ColLetterToNumber("B"), 23, IIf(iFlagCheckMaST = 1, "0", "1")
-            .SetText .ColLetterToNumber("B"), 25, IIf(iFlagCheckMaSTDN = 1, "0", "1")
-            .SetText .ColLetterToNumber("B"), 33, IIf(iflagCheckGH = 1, "0", "1")
-            
-            CheckErrorMST
+        CheckErrorMST
         
         '.ReDraw = True
         '.Visible = True
