@@ -66,12 +66,12 @@ commit;
 
 -- To khai 01/TBVMT
 insert into rcv_map_tkhai (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_HSO, NGAY_HL_TU, NGAY_HL_DEN)
-values ('01_TBVMT13', '', 'Tê KHAI THUÕ B¶O VÖ M¤I TR¦êNG', 'TK', '02', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+values ('01_TBVMT13', '00', 'Tê KHAI THUÕ B¶O VÖ M¤I TR¦êNG', 'TK', '02', to_date('01-01-2014', 'dd-mm-yyyy'), null);
 commit;
 
 -- To khai 01/TNCN-BHDC
 insert into rcv_map_tkhai (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_HSO, NGAY_HL_TU, NGAY_HL_DEN)
-values ('01_TNCN_BHDC13', '', 'Tê KHAI KHÊU TRõ THUÕ THU NHËP C¸ NH¢N - MÉU 01/KK-BH§C', 'TK', '02', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+values ('01_TNCN_BHDC13', '00', 'Tê KHAI KHÊU TRõ THUÕ THU NHËP C¸ NH¢N - MÉU 01/KK-BH§C', 'TK', '02', to_date('01-01-2014', 'dd-mm-yyyy'), null);
 commit;
 
 -- To khai 01/KK-TTS

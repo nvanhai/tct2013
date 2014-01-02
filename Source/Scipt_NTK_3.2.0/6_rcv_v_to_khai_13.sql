@@ -801,11 +801,11 @@ FROM
             gdien.id,
             tkd.row_id,
             gdien.so_tt                                          so_tt,
-            DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL) ten_dn,
-            DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL) mst,
-            DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL) co_quan_thue_quan_ly,
-            DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) ty_le,
-            DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL) so_thue_phan_bo
+            DECODE(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL) ten_dn,
+            DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL) mst,
+            DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL) co_quan_thue_quan_ly,
+            DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL) ty_le,
+            DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) so_thue_phan_bo
         FROM
             rcv_tkhai_dtl tkd,
             rcv_gdien_tkhai gdien,
