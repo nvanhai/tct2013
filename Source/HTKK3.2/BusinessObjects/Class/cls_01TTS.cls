@@ -72,14 +72,14 @@ Public Sub Prepare2()
             End If
             
 '            .Row = 54 + count1
-            .Row = 61
-            .Col = .ColLetterToNumber("O")
-            If .value = "" Then
-                SetDateFormat fps, 1, 61, .ColLetterToNumber("O"), DDMMYYYY
-                .Text = Format(Date, "dd/mm/yyyy")
-                .TypeHAlign = TypeHAlignLeft
-                UpdateCell fps, .Col, .Row, .Text
-            End If
+'            .Row = 61
+'            .Col = .ColLetterToNumber("O")
+'            If .value = "" Then
+'                SetDateFormat fps, 1, 61, .ColLetterToNumber("O"), DDMMYYYY
+'                .Text = Format(Date, "dd/mm/yyyy")
+'                .TypeHAlign = TypeHAlignLeft
+'                UpdateCell fps, .Col, .Row, .Text
+'            End If
           'set thong tin header neu la to khai quy
           If strQuy = "TK_QUY" Then
             .SetText .ColLetterToNumber("G"), 29, 1
@@ -939,7 +939,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
     Dim varTemp As Variant
         With fps
     'check date
-        If Col = .ColLetterToNumber("R") And Row = .MaxRows - 2 Then
+        If Col = .ColLetterToNumber("O") And Row = .MaxRows - 2 Then
                 .GetText Col, Row, varTemp
                 If varTemp <> "" And varTemp <> "../../...." Then
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
@@ -954,6 +954,23 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 .Row = Row
                 UpdateCell fps, Col, Row, .Text
             End If
+        
+            If Col = .ColLetterToNumber("R") And Row = 13 Then
+                .GetText Col, Row, varTemp
+                If varTemp <> "" And varTemp <> "../../...." Then
+                    If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+                        .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+                    Else
+                        .SetActiveCell Col, Row
+                    End If
+                Else
+                 .SetText Col, Row, ""
+                End If
+                .Col = Col
+                .Row = Row
+                UpdateCell fps, Col, Row, .Text
+            End If
+        
         End With
 End Sub
 Private Sub UpdateSheets()
@@ -971,17 +988,17 @@ Private Sub UpdateSheets()
         mCurrentSheet = .Sheet
         For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
            ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-               If (lRow = 19 And lCol = .ColLetterToNumber("R")) Or (lRow = 19 And lCol = .ColLetterToNumber("O")) Then
-                    .GetText lCol, lRow, varTemp
-                    If varTemp = "1" Or UCase(CStr(varTemp)) = "X" Then
-                        UpdateCell fps, lCol, lRow, "x"
-                    Else
-                        UpdateCell fps, lCol, lRow, ""
-                    End If
-               Else
-                    .GetText lCol, lRow, varTemp
-                    UpdateCell fps, lCol, lRow, varTemp
-               End If
+'               If (lRow = 19 And lCol = .ColLetterToNumber("R")) Or (lRow = 19 And lCol = .ColLetterToNumber("O")) Then
+'                    .GetText lCol, lRow, varTemp
+'                    If varTemp = "1" Or UCase(CStr(varTemp)) = "X" Then
+'                        UpdateCell fps, lCol, lRow, "x"
+'                    Else
+'                        UpdateCell fps, lCol, lRow, ""
+'                    End If
+'               Else
+            .GetText lCol, lRow, varTemp
+            UpdateCell fps, lCol, lRow, varTemp
+'               End If
         Next
     End With
 End Sub
