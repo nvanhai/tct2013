@@ -256,8 +256,8 @@ Private Function IsValidUserESB() As Integer
     Dim strResultNSD As String
     Dim sStatus      As String
 
-            IsValidUserESB = 2
-            Exit Function
+'            IsValidUserESB = 2
+'            Exit Function
     
     strResultNSD = GetDataFromESB(txtUsername.Text, txtPassword.Text, "NSD")
     'Chuan hoa file xml ket qua - lay duoc tu ESB
@@ -610,37 +610,9 @@ Private Function CheckVersion() As Boolean
     Dim strSQL As String
     
     On Error GoTo ErrHandle
-    
-    CheckVersion = True
-    Exit Function
 '
-'    strSQL = "SELECT rv_low_value phien_ban " & _
-'           "From cg_ref_codes " & _
-'           "WHERE (rv_domain = 'HTKK_ABOUT.VERSION')"
-'    'connect to database BMT
-'    If clsDAO.Connected Then
-'        Set rsObj = clsDAO.Execute(strSQL)
-'        If rsObj.Fields(0).Value = "" Then
-'            'Can not found table or not exist value
-'            DisplayMessage "0075", msOKOnly, miCriticalError
-'            Exit Function
-'        ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) > _
-'               CInt(Replace(APP_VERSION, ".", "")) Then
-'            'Versions is differed
-'            DisplayMessage "0076", msOKOnly, miCriticalError
-'            Exit Function
-'        ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) < _
-'               CInt(Replace(APP_VERSION, ".", "")) Then
-'            DisplayMessage "0075", msOKOnly, miCriticalError
-'            Exit Function
-'        End If
-'    Else
-'        DisplayMessage "0063", msOKOnly, miCriticalError
-'        Exit Function
-'    End If
-
-    ' Check version cua ung dung voi phien ban cua service tra ve
-        
+'    CheckVersion = True
+'    Exit Function
        If strCurrentVersion = "" Then
             'Can not found table or not exist value
             DisplayMessage "0075", msOKOnly, miCriticalError

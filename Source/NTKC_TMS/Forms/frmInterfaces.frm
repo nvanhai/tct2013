@@ -1477,12 +1477,42 @@ Private Sub ExecuteSave()
                 End If
                 
                 If InStr(MaTK, "KHBS") > 0 Then
-                    MaTK = "KHBS"
+                    'MaTK = "KHBS"
+                    MaTK = Right$(MaTK, Len(MaTK) - 5)
+                    
+                    If MaTK = "01_GTGT" Then
+                        xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_01_GTGT_xml.xml")
+
+                        xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_01_GTGT_xml.xml")
+                    Else
+
+                        If MaTK = "02_GTGT" Or MaTK = "03_GTGT" Or MaTK = "04_GTGT" Or MaTK = "05_GTGT" Or MaTK = "01A_TNDN" Or MaTK = "01A_TNDN" Or MaTK = "02_TNDN" Or MaTK = "01_NTNN" Or MaTK = "03_NTNN" Or MaTK = "01_TAIN" Or MaTK = "01_TTDB" Or MaTK = "01_BVMT" Or MaTK = "01_TBVMT" Then
+                            xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_TT156_xml.xml")
+
+                            xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT156_xml.xml")
+                        Else
+                            xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_TT28_xml.xml")
+
+                            xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT28_xml.xml")
+                            
+                            If xmlPL.getElementsByTagName("tenTKhaiThue").length > 0 Then
+                                xmlPL.getElementsByTagName("tenTKhaiThue")(0).Text = GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Caption")
+                            End If
+
+                            If xmlPL.getElementsByTagName("mauSo").length > 0 Then
+                                xmlPL.getElementsByTagName("mauSo")(0).Text = MaTK
+                            End If
+
+                            If xmlPL.getElementsByTagName("kyTinhThue").length > 0 And xmlTK.getElementsByTagName("kyKKhai").length > 0 Then
+                                xmlPL.getElementsByTagName("kyTinhThue")(0).Text = xmlTK.getElementsByTagName("kyKKhai")(0).Text
+                            End If
+                        End If
+                    End If
+                Else
+                    xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
+
+                    xmlMapPL.Load GetAbsolutePath("..\ini\" & MaTK & "_xml.xml")
                 End If
-
-                xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
-
-                xmlMapPL.Load GetAbsolutePath("..\ini\" & MaTK & "_xml.xml")
 
                 If xmlPL.hasChildNodes = True And xmlMapPL.hasChildNodes = True Then
                     cellRange = 0
@@ -2090,7 +2120,7 @@ Private Sub Command1_Click()
 ''TB04/AC:
 'str2 = "aa999912300026193   12201300200200100101/0101/01/2009<S01><S>ph∏t hµnh~h„a Æ¨n~01DVPH~trÙ sÎ~Æﬁa chÿ ch›nh~02DCTS~fax~hotline~03PHONE</S><S>10/11/2013~~~c¨ quan thu’ TP bæc ninh~11/12/2013~Kh∏nh V©n</S></S01>"
 'Barcode_Scaned str2
-'
+''
 ''BCTC bo QD15:
 'str2 = "aa999692300026210   00201200000000100801/0123/06/2006<S01><S>~73920~0~~21000~0~V.01~1000~0~~20000~0~V.02~3000~0~~1000~0~~2000~0~~33000~0~~3000~0~~4000~0~~5000~0~~6000~0~V.03~7000~0~~8000~0~~3000~0~V.04~1000~0~~2000~0~~13920~0~~3000~0~~5000~0~V.05~3450~0~~2470~0~~95780~0~~19940~0~~6920~0~~3420~0~V.06~5600~0~V.07~1300~0~~2700~0~~41000~0~V.08~9400~0~~6000~0"
 'Barcode_Scaned str2
@@ -2108,7 +2138,7 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 'str2 = "aa999692300026210   0020120000000080087000~0~~2000~0~~4000~0~~8000~0~~29000~0~~4000~0~~2000~0~~6000~0~~9000~0~~2000~0~~1000~0~~24000~0~~108000~0~~7000~0~~2000~0~~117000~0~Hoa Linh~22/10/2013</S></S01-3>"
 'Barcode_Scaned str2
-'
+
 ''BCTC bo QD16:
 'str2 = "aa999202300026210   00201200200200100801/0118/04/2007<S01><S>V.01~2121111~2111111~V.02~32222222222~12332~V.03~13648~25838~~12313~13213~~123~312~~1212~12313~V.04~3756~4467~~1332~234~~2424~4233~V.05~23423~1111~V.06~424~1251~~324~1241~V.07~100~10~V.08~128~27~~123~23~~3~3~~2~1~V.09~181374~75373~~2324~1323~~13313~31313~~31313~31313~~131313~313~~3111~11111~~257437~"
 'Barcode_Scaned str2
@@ -2238,15 +2268,15 @@ Private Sub Command1_Click()
 'str2 = "aa999112300121087   032013006006003003<S01-1><S>6000</S><S>doanh nghi÷p ab~0010011000~45.67~2740~10304~c¨ sÎ 1~0010011000-001~23.88~1433~10304~c¨ sÎ 2~0010011000-002~30.45~1827~10304</S></S01-1>"
 'Barcode_Scaned str2
 '
-''KHBS 01A/TNDN:
-'str2 = "bs999112300121087   03201301101100100401/0114/06/2006<S01><S>0010011000</S><S>300000~200000~100000~230000~12000~318000~100000~12000~206000~80000~50000~76000~20.897~12000~2"
-'Barcode_Scaned str2
-'str2 = "bs999112300121087   0320130110110020042.678~45603~20000~4000~3000~25603~x~03~15/11/2013~4000~21603</S><S>x~x</S><S>Huy“n Tr©m~KTV~Hoµng Lan~19/12/2013~0~1~~1052</S></S01>"
-'Barcode_Scaned str2
-'str2 = "bs999112300121087   032013011011003004<SKHBS><S>Thu’ TNDN ph∏t sinh~34~21326~45603~24277</S><S>Thu’ TNDN d˘ ki’n mi‘n, gi∂m~35~15326~20000~467"
-'Barcode_Scaned str2
-'str2 = "bs999112300121087   0320130110110040044</S><S>19/12/2013~49~972~4200~lh005~15/10/2013~10100~10107~9~100000~l˝ do nhi“u~0~0~19603</S></SKHBS>"
-'Barcode_Scaned str2
+'KHBS 01A/TNDN:
+str2 = "bs999112300121087   03201301101100100401/0114/06/2006<S01><S>0010011000</S><S>300000~200000~100000~230000~12000~318000~100000~12000~206000~80000~50000~76000~20.897~12000~2"
+Barcode_Scaned str2
+str2 = "bs999112300121087   0320130110110020042.678~45603~20000~4000~3000~25603~x~03~15/11/2013~4000~21603</S><S>x~x</S><S>Huy“n Tr©m~KTV~Hoµng Lan~19/12/2013~0~1~~1052</S></S01>"
+Barcode_Scaned str2
+str2 = "bs999112300121087   032013011011003004<SKHBS><S>Thu’ TNDN ph∏t sinh~34~21326~45603~24277</S><S>Thu’ TNDN d˘ ki’n mi‘n, gi∂m~35~15326~20000~467"
+Barcode_Scaned str2
+str2 = "bs999112300121087   0320130110110040044</S><S>19/12/2013~49~972~4200~lh005~15/10/2013~10100~10107~9~100000~l˝ do nhi“u~0~0~19603</S></SKHBS>"
+Barcode_Scaned str2
 '
 ''01B/TNDN + PL dinh kem:
 'str2 = "aa999122300121087   03201300200200100301/0114/06/2006<S01><S>0010011000</S><S>x~x~560000~520000~400000~100000~20000~40000~23.786~~20.567~22.345~17.678~~~25"
@@ -2284,11 +2314,11 @@ Private Sub Command1_Click()
 'str2 = "aa999152300121087   11201300100100100101/0101/01/2010<S01><S>0010011000</S><S>5000~2000~120000~300000~400000~100000~340000~130000~100000~200000~60000~10000~40000</S><S>Hoµng Lan~20/12/2013~Huy“nTr©m~KTV~1~~</S></S01>"
 'Barcode_Scaned str2
 '
-'03/TNCN:
-str2 = "aa999502300121087   11201300100100100201/0101/01/2010<S01><S>0010011000</S><S>tÊ ch¯c khai thay ABC~0102030405~ßinh Li÷t - Hoµn Ki’m - HN~Hoµn Ki’m~HN~0987689965~015678889~abc@yahoo.com</S>"
-Barcode_Scaned str2
-str2 = "aa999502300121087   112013001001002002<S>3000000~150000~1200000~1200~6000000~300000~5000000~500000~2000000~20000~1000000~1000</S><S>Hoµng Lan~20/12/2013~Huy“n Tr©m~KTV~1~~</S></S01>"
-Barcode_Scaned str2
+''03/TNCN:
+'str2 = "aa999502300121087   11201300100100100201/0101/01/2010<S01><S>0010011000</S><S>tÊ ch¯c khai thay ABC~0102030405~ßinh Li÷t - Hoµn Ki’m - HN~Hoµn Ki’m~HN~0987689965~015678889~abc@yahoo.com</S>"
+'Barcode_Scaned str2
+'str2 = "aa999502300121087   112013001001002002<S>3000000~150000~1200000~1200~6000000~300000~5000000~500000~2000000~20000~1000000~1000</S><S>Hoµng Lan~20/12/2013~Huy“n Tr©m~KTV~1~~</S></S01>"
+'Barcode_Scaned str2
 '
 ''07/TNCN:
 'str2 = "aa999362300121087   06201300100100100101/0101/01/2010<S07><S>0010011000</S><S>~30000000~2000000~6700000~4000000~1600000~500000~400000~200000~21300000~2610000~120000~5220~2604780~4000000~20~800000</S><S>Hoµng Lan~20/12/2013~Huy“n Tr©m~KTV~1~~~0</S></S07>"
@@ -4735,15 +4765,15 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
     Set xmlResultNNT = New MSXML.DOMDocument
     Dim strResultNNT As String
     
-    'Du lieu gia lap de test
-        Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-        strResultNNT = "sdfsfds"
+'    'Du lieu gia lap de test
+'        Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+'        strResultNNT = "sdfsfds"
     
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         strMaNNT = strTaxIDString
-'        strResultNNT = GetDataFromESB("", "", "NNT")
-'        strResultNNT = ChangeTagASSCII(strResultNNT, False)
-'        xmlResultNNT.loadXML strResultNNT
+        strResultNNT = GetDataFromESB("", "", "NNT")
+        strResultNNT = ChangeTagASSCII(strResultNNT, False)
+        xmlResultNNT.loadXML strResultNNT
     Else
         Set rsReturn = Nothing
         blnSuccess = False
@@ -4866,15 +4896,15 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
 '    End If
 '
 '    '
-    'Du lieu gia lap de test
-    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
-    strResultDLT = "sdfsfds"
+'    'Du lieu gia lap de test
+'    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
+'    strResultDLT = "sdfsfds"
 
     If (strTaxIDDLString <> "" And strTaxIDDLString <> vbNullString) Then
         strMaDLT = strTaxIDDLString
-'        strResultDLT = GetDataFromESB("", "", "DLT")
-'        strResultDLT = ChangeTagASSCII(strResultDLT, False)
-'        xmlResultDLT.loadXML strResultDLT
+        strResultDLT = GetDataFromESB("", "", "DLT")
+        strResultDLT = ChangeTagASSCII(strResultDLT, False)
+        xmlResultDLT.loadXML strResultDLT
     End If
     
     If strTaxIDDLString <> "" And strTaxIDDLString <> vbNullString Then
@@ -4911,7 +4941,7 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
     '            End If
     
                 If (InStr(xmlResultDLT.xml, "fault_code") > 0) Then
-                       If (MessageBox("0141", msYesNo, miCriticalError) = mrNo) Then
+                       If (MessageBox("0141", msOKOnly, miCriticalError) = mrNo) Then
                         Set rsReturn = Nothing
                         blnSuccess = False
                         Exit Function
@@ -5001,15 +5031,15 @@ On Error GoTo ErrHandle
     Set xmlResultNNT = New MSXML.DOMDocument
     Dim strResultNNT As String
 '
-   'Du lieu gia lap de test
-    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-    strResultNNT = "test"
+'   'Du lieu gia lap de test
+'    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+'    strResultNNT = "test"
 
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         strMaNNT = strTaxIDString
-'        strResultNNT = GetDataFromESB("", "", "NNT")
-'        strResultNNT = ChangeTagASSCII(strResultNNT, False)
-'        xmlResultNNT.loadXML strResultNNT
+        strResultNNT = GetDataFromESB("", "", "NNT")
+        strResultNNT = ChangeTagASSCII(strResultNNT, False)
+        xmlResultNNT.loadXML strResultNNT
     Else
         Set rsReturn = Nothing
         blnSuccess = False
