@@ -1270,17 +1270,17 @@ Private Sub chkTkhaiThang_Click()
                     
                     
                     ' Set loai TK
-                    frmKy.Height = 2400
-                    Frame2.Top = 2700
-                    Set lblNganhKD.Container = frmKy
-                    lblNganhKD.caption = TAX_Utilities_New.Convert(GetAttribute(GetMessageCellById("0237"), "Msg"), UNICODE, TCVN)
-                    lblNganhKD.Top = 1600
-                    lblNganhKD.Left = 120
-                    
-                    
-                    Set cboNganhKD.Container = frmKy
-                    cboNganhKD.Top = 1900
-                    cboNganhKD.Left = 120
+'                    frmKy.Height = 2400
+'                    Frame2.Top = 2700
+'                    Set lblNganhKD.Container = frmKy
+'                    lblNganhKD.caption = TAX_Utilities_New.Convert(GetAttribute(GetMessageCellById("0237"), "Msg"), UNICODE, TCVN)
+'                    lblNganhKD.Top = 1600
+'                    lblNganhKD.Left = 120
+'
+'
+'                    Set cboNganhKD.Container = frmKy
+'                    cboNganhKD.Top = 1900
+'                    cboNganhKD.Left = 120
                     ' set gia tri nganh nghe kinh doanh cho combo
                     ' SetValueToList "73"
                 End If
@@ -1410,17 +1410,17 @@ Private Sub chkTKLanPS_Click()
                 lblQuy.Visible = False
                 
                 ' Set loai TK
-                frmKy.Height = 1700
-                Frame2.Top = 2000
-                Set lblNganhKD.Container = frmKy
-                lblNganhKD.caption = TAX_Utilities_New.Convert(GetAttribute(GetMessageCellById("0237"), "Msg"), UNICODE, TCVN)
-                lblNganhKD.Top = 950
-                lblNganhKD.Left = 120
-                
-                
-                Set cboNganhKD.Container = frmKy
-                cboNganhKD.Top = 1250
-                cboNganhKD.Left = 120
+'                frmKy.Height = 1700
+'                Frame2.Top = 2000
+'                Set lblNganhKD.Container = frmKy
+'                lblNganhKD.caption = TAX_Utilities_New.Convert(GetAttribute(GetMessageCellById("0237"), "Msg"), UNICODE, TCVN)
+'                lblNganhKD.Top = 950
+'                lblNganhKD.Left = 120
+'
+'
+'                Set cboNganhKD.Container = frmKy
+'                cboNganhKD.Top = 1250
+'                cboNganhKD.Left = 120
             End If
             
             Call Form_Resize
@@ -4695,21 +4695,21 @@ Private Sub OptBosung_Click()
                 
                 ' Set TK 02/TNDN
                  ' Set loai TK
-                If varMenuId = "73" Then
-                    frmKy.Height = 2800
-                    Frame2.Top = 3000
-                    Set lblNganhKD.Container = frmKy
-                    lblNganhKD.caption = TAX_Utilities_New.Convert(GetAttribute(GetMessageCellById("0237"), "Msg"), UNICODE, TCVN)
-                    lblNganhKD.Top = 2000
-                    lblNganhKD.Left = 120
-                    
-                    
-                    Set cboNganhKD.Container = frmKy
-                    cboNganhKD.Top = 2300
-                    cboNganhKD.Left = 120
+                'If varMenuId = "73" Then
+'                    frmKy.Height = 2800
+'                    Frame2.Top = 3000
+'                    Set lblNganhKD.Container = frmKy
+'                    lblNganhKD.caption = TAX_Utilities_New.Convert(GetAttribute(GetMessageCellById("0237"), "Msg"), UNICODE, TCVN)
+'                    lblNganhKD.Top = 2000
+'                    lblNganhKD.Left = 120
+'
+'
+'                    Set cboNganhKD.Container = frmKy
+'                    cboNganhKD.Top = 2300
+'                    cboNganhKD.Left = 120
                     ' set gia tri nganh nghe kinh doanh cho combo
                     'SetValueToList "73"
-                End If
+                'End If
                 
                 ' Set gia tri cho to khai 03/TNDN
                 If varMenuId = "03" Then
@@ -4788,21 +4788,21 @@ Private Sub OptBosung_Click()
                  
                 ' Set TK 02/TNDN
                  ' Set loai TK
-                If varMenuId = "73" Then
-                    frmKy.Height = 2400
-                    Frame2.Top = 2700
-                    Set lblNganhKD.Container = frmKy
-                    lblNganhKD.caption = TAX_Utilities_New.Convert(GetAttribute(GetMessageCellById("0237"), "Msg"), UNICODE, TCVN)
-                    lblNganhKD.Top = 1600
-                    lblNganhKD.Left = 120
-                    
-                    
-                    Set cboNganhKD.Container = frmKy
-                    cboNganhKD.Top = 1900
-                    cboNganhKD.Left = 120
+                'If varMenuId = "73" Then
+'                    frmKy.Height = 2400
+'                    Frame2.Top = 2700
+'                    Set lblNganhKD.Container = frmKy
+'                    lblNganhKD.caption = TAX_Utilities_New.Convert(GetAttribute(GetMessageCellById("0237"), "Msg"), UNICODE, TCVN)
+'                    lblNganhKD.Top = 1600
+'                    lblNganhKD.Left = 120
+'
+'
+'                    Set cboNganhKD.Container = frmKy
+'                    cboNganhKD.Top = 1900
+'                    cboNganhKD.Left = 120
                     ' set gia tri nganh nghe kinh doanh cho combo
                     'SetValueToList "73"
-                End If
+                'End If
                  
                 ' Set gia tri cho to khai 03/TNDN
                 If varMenuId = "03" Then
@@ -4960,21 +4960,21 @@ Private Sub OptChinhthuc_Click()
                 
            ' Set TK 02/TNDN
                  ' Set loai TK
-                If varMenuId = "73" Then
-                    frmKy.Height = 2800
-                    Frame2.Top = 3000
-                    Set lblNganhKD.Container = frmKy
-                    lblNganhKD.caption = TAX_Utilities_New.Convert(GetAttribute(GetMessageCellById("0237"), "Msg"), UNICODE, TCVN)
-                    lblNganhKD.Top = 2000
-                    lblNganhKD.Left = 120
-                    
-                    
-                    Set cboNganhKD.Container = frmKy
-                    cboNganhKD.Top = 2300
-                    cboNganhKD.Left = 120
+                'If varMenuId = "73" Then
+'                    frmKy.Height = 2800
+'                    Frame2.Top = 3000
+'                    Set lblNganhKD.Container = frmKy
+'                    lblNganhKD.caption = TAX_Utilities_New.Convert(GetAttribute(GetMessageCellById("0237"), "Msg"), UNICODE, TCVN)
+'                    lblNganhKD.Top = 2000
+'                    lblNganhKD.Left = 120
+'
+'
+'                    Set cboNganhKD.Container = frmKy
+'                    cboNganhKD.Top = 2300
+'                    cboNganhKD.Left = 120
                     ' set gia tri nganh nghe kinh doanh cho combo
                     'SetValueToList "73"
-                End If
+                'End If
      
             ' Set gia tri cho to khai 03/TNDN
                 If varMenuId = "03" Then
@@ -5019,8 +5019,10 @@ Private Sub OptChinhthuc_Click()
                 fpsNgaykhaiBS.Left = 360
                 fpsNgaykhaiBS.Visible = False
                 If varMenuId = "73" Then
-                    frmKy.Height = 1550
-                    Frame2.Top = 1700
+'                    frmKy.Height = 1550
+'                    Frame2.Top = 1700
+                    frmKy.Height = 1600
+                    Frame2.Top = 1920
                 ElseIf varMenuId = "03" Then
                     frmKy.Height = 1740
                     Frame2.Top = 2050
@@ -5085,21 +5087,21 @@ Private Sub OptChinhthuc_Click()
                 
                  ' Set TK 02/TNDN
                  ' Set loai TK
-                If varMenuId = "73" Then
-                    frmKy.Height = 2400
-                    Frame2.Top = 2700
-                    Set lblNganhKD.Container = frmKy
-                    lblNganhKD.caption = TAX_Utilities_New.Convert(GetAttribute(GetMessageCellById("0237"), "Msg"), UNICODE, TCVN)
-                    lblNganhKD.Top = 1600
-                    lblNganhKD.Left = 120
-                    
-                    
-                    Set cboNganhKD.Container = frmKy
-                    cboNganhKD.Top = 1900
-                    cboNganhKD.Left = 120
+                'If varMenuId = "73" Then
+'                    frmKy.Height = 2400
+'                    Frame2.Top = 2700
+'                    Set lblNganhKD.Container = frmKy
+'                    lblNganhKD.caption = TAX_Utilities_New.Convert(GetAttribute(GetMessageCellById("0237"), "Msg"), UNICODE, TCVN)
+'                    lblNganhKD.Top = 1600
+'                    lblNganhKD.Left = 120
+'
+'
+'                    Set cboNganhKD.Container = frmKy
+'                    cboNganhKD.Top = 1900
+'                    cboNganhKD.Left = 120
                     ' set gia tri nganh nghe kinh doanh cho combo
-                    SetValueToList "73"
-                End If
+                    'SetValueToList "73"
+                'End If
                 
                 ' Set gia tri cho to khai 03/TNDN
                 If varMenuId = "03" Then
@@ -6256,19 +6258,19 @@ Private Sub SetupLayout02TNDN()
         lblSolan.Visible = False
         txtSolan.Visible = False
         ' Set loai TK
-        frmKy.Height = 2400
-        Frame2.Top = 2700
-        Set lblNganhKD.Container = frmKy
-        lblNganhKD.caption = TAX_Utilities_New.Convert(GetAttribute(GetMessageCellById("0237"), "Msg"), UNICODE, TCVN)
-        lblNganhKD.Top = 1600
-        lblNganhKD.Left = 120
-        
-        
-        Set cboNganhKD.Container = frmKy
-        cboNganhKD.Top = 1900
-        cboNganhKD.Left = 120
-        ' set gia tri nganh nghe kinh doanh cho combo
-        SetValueToList "73"
+'        frmKy.Height = 2400
+'        Frame2.Top = 2700
+'        Set lblNganhKD.Container = frmKy
+'        lblNganhKD.caption = TAX_Utilities_New.Convert(GetAttribute(GetMessageCellById("0237"), "Msg"), UNICODE, TCVN)
+'        lblNganhKD.Top = 1600
+'        lblNganhKD.Left = 120
+'
+'
+'        Set cboNganhKD.Container = frmKy
+'        cboNganhKD.Top = 1900
+'        cboNganhKD.Left = 120
+'        ' set gia tri nganh nghe kinh doanh cho combo
+'        SetValueToList "73"
 
 
     Else
