@@ -73,4 +73,8 @@
 		<ct61_nNgoai>0</ct61_nNgoai>
 		<ct70_nNgoai>0</ct70_nNgoai>
 	</SoNamNgoai>
+	<nguoiLapBieu></nguoiLapBieu>
+	<keToanTruong></keToanTruong>
+	<ngayLap></ngayLap>
+	<giamDoc></giamDoc>
 </PL_LCTTGT>

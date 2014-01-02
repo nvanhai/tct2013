@@ -1,51 +1,4 @@
 <PL_LCTTTT>
-	<ThuyetMinh>
-		<ct01_tMinh></ct01_tMinh>
-		<ct02_tMinh></ct02_tMinh>
-		<ct03_tMinh></ct03_tMinh>
-		<ct04_tMinh></ct04_tMinh>
-		<ct05_tMinh></ct05_tMinh>
-		<ct06_tMinh></ct06_tMinh>
-		<ct07_tMinh></ct07_tMinh>
-		<ct08_tMinh></ct08_tMinh>
-		<lcThuan_KD_tMinh></lcThuan_KD_tMinh>
-		<ct09_tMinh></ct09_tMinh>
-		<ct10_tMinh></ct10_tMinh>
-		<ct11_tMinh></ct11_tMinh>
-		<ct12_tMinh></ct12_tMinh>
-		<ct13_tMinh></ct13_tMinh>
-		<ct14_tMinh></ct14_tMinh>
-		<ct15_tMinh></ct15_tMinh>
-		<ct16_tMinh></ct16_tMinh>
-		<ct17_tMinh></ct17_tMinh>
-		<ct18_tMinh></ct18_tMinh>
-		<ct19_tMinh></ct19_tMinh>
-		<ct20_tMinh></ct20_tMinh>
-		<ct21_tMinh></ct21_tMinh>
-		<ct22_tMinh></ct22_tMinh>
-		<ctI_tMinh></ctI_tMinh>
-		<ctII_1_tMinh></ctII_1_tMinh>
-		<ctII_2_tMinh></ctII_2_tMinh>
-		<ctII_3_tMinh></ctII_3_tMinh>
-		<ctII_4_tMinh></ctII_4_tMinh>
-		<ctII_5_tMinh></ctII_5_tMinh>
-		<ctII_6_tMinh></ctII_6_tMinh>
-		<ctII_7_tMinh></ctII_7_tMinh>
-		<ctII_8_tMinh></ctII_8_tMinh>
-		<ctII_9_tMinh></ctII_9_tMinh>
-		<ctII_tMinh_PLLCTT></ctII_tMinh_PLLCTT>
-		<ctIII_1_tMinh></ctIII_1_tMinh>
-		<ctIII_2_tMinh></ctIII_2_tMinh>
-		<ctIII_3_tMinh></ctIII_3_tMinh>
-		<ctIII_4_tMinh></ctIII_4_tMinh>
-		<ctIII_5_tMinh></ctIII_5_tMinh>
-		<ctIII_6_tMinh></ctIII_6_tMinh>
-		<ctIII_tMinh></ctIII_tMinh>
-		<ctIV_tMinh></ctIV_tMinh>
-		<ctV_tMinh></ctV_tMinh>
-		<ctVI_tMinh></ctVI_tMinh>
-		<ctVII_tMinh></ctVII_tMinh>
-	</ThuyetMinh>
 	<SoNamNay>
 		<ct01_nNay>0</ct01_nNay>
 		<ct02_nNay>0</ct02_nNay>
@@ -140,4 +93,10 @@
 		<ctVI_nNgoai>0</ctVI_nNgoai>
 		<ctVII_nNgoai>0</ctVII_nNgoai>
 	</SoNamNgoai>
+	<PhanKy>
+		<nguoiLapBieu></nguoiLapBieu>
+		<keToanTruong></keToanTruong>
+		<ngayLap></ngayLap>
+		<giamDoc></giamDoc>
+	</PhanKy>
 </PL_LCTTTT>

@@ -1,13 +1,15 @@
-<PL05A_TNDN>
-	<ct5>1</ct5>
-	<Thue_TNDN>
-		<thueTNDN id="ID_1">
-			<ct6></ct6>
-			<ct7>0000000000</ct7>
+<PL01_1_TNDN>
+	<ct6></ct6>
+	<BangThueTNDNTamTinh>
+		<chiTietBangThueTNDNTamTinh>
 			<ct8></ct8>
-			<ct9>1</ct9>
-			<ct10>1</ct10>
-		</thueTNDN>
-	</Thue_TNDN>
-	<ct11>1</ct11>
-</PL05A_TNDN>
+			<ct9></ct9>
+			<ct10_ct></ct10_ct>
+			<ct10_cct></ct10_cct>
+			<ct11>0.0</ct11>
+			<ct12></ct12>
+		</chiTietBangThueTNDNTamTinh>
+		<tongCot11>0.0</tongCot11>
+		<tongCot12></tongCot12>
+	</BangThueTNDNTamTinh>
+</PL01_1_TNDN>
