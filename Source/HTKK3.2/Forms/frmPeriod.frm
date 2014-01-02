@@ -483,7 +483,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":02C8
       UserResize      =   1
       Appearance      =   1
    End
@@ -2502,7 +2502,8 @@ Public Sub cmdOK_Click()
     
     ' Luu gia tri nganh nghe kinh doanh
     idToKhai = TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    If idToKhai = "01" Or idToKhai = "11" Or idToKhai = "12" Or idToKhai = "05" Or idToKhai = "03" Or idToKhai = "73" Then
+    If idToKhai = "01" Or idToKhai = "11" Or idToKhai = "12" Or idToKhai = "05" Or idToKhai = "03" Then
+    'If idToKhai = "01" Or idToKhai = "11" Or idToKhai = "12" Or idToKhai = "05" Or idToKhai = "03" Or idToKhai = "73" Then
         strLoaiNNKD = cboNganhKD.ItemData(cboNganhKD.ListIndex)
     End If
     
