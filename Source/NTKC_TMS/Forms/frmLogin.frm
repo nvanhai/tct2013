@@ -610,7 +610,7 @@ Private Function CheckVersion() As Boolean
     Dim strSQL As String
     
     On Error GoTo ErrHandle
-'
+
 '    CheckVersion = True
 '    Exit Function
        If strCurrentVersion = "" Then
