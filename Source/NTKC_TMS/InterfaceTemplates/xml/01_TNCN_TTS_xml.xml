@@ -14,10 +14,10 @@
 					<tenTKhai></tenTKhai>
 					<moTaBMau/>
 					<pbanTKhaiXML></pbanTKhaiXML>
-					<loaiTKhai>C</loaiTKhai>
-					<soLan>1</soLan>
+					<loaiTKhai></loaiTKhai>
+					<soLan></soLan>
 					<KyKKhaiThue>
-						<kieuKy>D</kieuKy>
+						<kieuKy></kieuKy>
 						<kyKKhai></kyKKhai>
 						<kyKKhaiTuNgay></kyKKhaiTuNgay>
 						<kyKKhaiDenNgay></kyKKhaiDenNgay>
@@ -69,53 +69,49 @@
 			</TTinTKhaiThue>
 		</TTinChung>
 		<CTieuTKhaiChinh>
-			<BangChiTietTNguyen>
-				<TaiNguyenKhaiThac>
-					<ThueTaiNguyenKhaiThac id="ID_1">
-						<ct1></ct1>
-						<ct2></ct2>
-						<ct3></ct3>
-						<ct4>0.0</ct4>
-						<ct5>0.0</ct5>
-						<ct6>0.0</ct6>
-						<ct7>1</ct7>
-						<ct8>1</ct8>
-						<ct9>0.0</ct9>
-						<ct10>1</ct10>
-					</ThueTaiNguyenKhaiThac>
-				</TaiNguyenKhaiThac>
-				<TaiNguyenThuMuaGom>
-					<ThueTaiNguyenThuMuaGom id="ID_2">
-						<ct1></ct1>
-						<ct2></ct2>
-						<ct3></ct3>
-						<ct4>0.0</ct4>
-						<ct5>0.0</ct5>
-						<ct6>0.0</ct6>
-						<ct7>1</ct7>
-						<ct8>1</ct8>
-						<ct9>0.0</ct9>
-						<ct10>1</ct10>
-					</ThueTaiNguyenThuMuaGom>
-				</TaiNguyenThuMuaGom>
-				<TaiNguyenTichThuGiaoBan>
-					<ThueTaiNguyenTichThuGiaoBan id="ID_3">
-						<ct1></ct1>
-						<ct2></ct2>
-						<ct3></ct3>
-						<ct4>0.0</ct4>
-						<ct5>0.0</ct5>
-						<ct6>0.0</ct6>
-						<ct7></ct7>
-						<ct8></ct8>
-						<ct9>0.0</ct9>
-						<ct10></ct10>
-					</ThueTaiNguyenTichThuGiaoBan>
-				</TaiNguyenTichThuGiaoBan>
-				<tongThueTNPSinh></tongThueTNPSinh>
-				<tongThueMienGiam></tongThueMienGiam>
-				<tongThuePNop>1</tongThuePNop>
-			</BangChiTietTNguyen>
+			<HinhThucKeKhai>
+				<quyetToanRiengTungNam>true</quyetToanRiengTungNam>
+			</HinhThucKeKhai>
+			<CT21>
+				<soVBUQ></soVBUQ>
+				<ngayVBUQ></ngayVBUQ>
+			</CT21>
+			<ct22></ct22>
+			<ct23></ct23>
+			<ct23a></ct23a>
+			<ct23b></ct23b>
+			<ct24>0.0</ct24>
+			<ct25></ct25>
+			<ct26>0.0</ct26>
+			<ct27></ct27>
+			<ct28></ct28>
+			<ct29></ct29>
+			<CT30>
+				<BKeSoThuePhaiNop>
+					<SoThuePhaiNop>
+						<ct32></ct32>
+						<ct33></ct33>
+						<ct34>0.0</ct34>
+						<ct35></ct35>
+						<ct36></ct36>
+						<ct37></ct37>
+						<ct38></ct38>
+						<ct39></ct39>
+						<ct40></ct40>
+						<ct41></ct41>
+						<ct42></ct42>
+					</SoThuePhaiNop>
+				</BKeSoThuePhaiNop>
+				<ct43>0.0</ct43>
+				<ct44></ct44>
+				<ct45></ct45>
+				<ct46></ct46>
+				<ct47></ct47>
+				<ct48></ct48>
+				<ct49></ct49>
+				<ct50></ct50>
+				<ct51></ct51>
+			</CT30>
 		</CTieuTKhaiChinh>
 		<PLuc/>
 	</HSoKhaiThue>

@@ -1,8 +1,7 @@
 <HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30">
 	<Static GroupName="TKhaiThue">
-		<maTKhai>03_NTNN</maTKhai>
+		<maTKhai>73</maTKhai>
 		<tenTKhai>Tờ khai thuế nhà thầu nước ngoài - 03/NTNN</tenTKhai>
-		<soLan>O_37</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
@@ -24,10 +23,12 @@
 			<ct3>S_44</ct3>
 			<ct4>X_44</ct4>
 			<ct5>AC_44</ct5>
+			<ThueTNDN>
 			<ct6>AF_44</ct6>
 			<ct7>AK_44</ct7>
 			<ct8>AL_44</ct8>
 			<ct9>AQ_44</ct9>
+			<ThueTNDN>
 		</ThueNTNN>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
@@ -35,6 +36,7 @@
 		<tongct6>AF_46</tongct6>
 		<tongct8>AL_46</tongct8>
 		<tongct9>AQ_46</tongct9>
+		<tongThueVietBangChu>P_48</tongThueVietBangChu>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>AH_53</nguoiKy>

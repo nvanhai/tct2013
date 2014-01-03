@@ -21,6 +21,8 @@
 					<kyKKhai></kyKKhai>
 					<kyKKhaiTuNgay></kyKKhaiTuNgay>
 					<kyKKhaiDenNgay></kyKKhaiDenNgay>
+					<kyKKhaiTuThang></kyKKhaiTuThang>
+					<kyKKhaiDenThang></kyKKhaiDenThang>
 				</KyKKhaiThue>
 				<maCQTNoiNop></maCQTNoiNop>
 				<tenCQTNoiNop></tenCQTNoiNop>
@@ -67,7 +69,7 @@
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
-		<BangChiTietThueTTĐB>
+		<BangChiTietThueTTDB>
 			<HangHoaChiuThueTTDB>
 				<ChiTietHangHoaChiuThueTTDB>
 					<NDungTKhaiTTDB>
@@ -78,15 +80,13 @@
 						<ct6></ct6>
 						<ct7></ct7>
 						<ct8></ct8>
-						<ct9></ct9>
-						<ct10></ct10>
+						<ct9></ct9>					
 					</NDungTKhaiTTDB>
 				</ChiTietHangHoaChiuThueTTDB>
 				<tongDongIcot5></tongDongIcot5>
 				<tongDongIcot6></tongDongIcot6>
 				<tongDongIcot8></tongDongIcot8>
-				<tongDongIcot9></tongDongIcot9>
-				<tongDongIcot10></tongDongIcot10>
+				<tongDongIcot9></tongDongIcot9>				
 			</HangHoaChiuThueTTDB>
 			<DVuChiuThueTNDB>
 				<ChiTietDVuChiuThueTTDB>
@@ -98,18 +98,15 @@
 						<ct6></ct6>
 						<ct7></ct7>
 						<ct8></ct8>
-						<ct9></ct9>
-						<ct10></ct10>
+						<ct9></ct9>					
 					</NDungTKhaiTTDB>
 				</ChiTietDVuChiuThueTTDB>
 				<tongDongIICot5></tongDongIICot5>
 				<tongDongIICot6></tongDongIICot6>
 				<tongDongIICot8></tongDongIICot8>
-				<tongDongIICot9></tongDongIICot9>
-				<tongDongIICot10></tongDongIICot10>
+				<tongDongIICot9></tongDongIICot9>				
 			</DVuChiuThueTNDB>
-			<HHoaKhongChiuThueTNDB>
-				<tongDongIIICot5></tongDongIIICot5>
+			<HHoaKhongChiuThueTNDB>				
 				<HHXuatKhau>
 					<NDungHHoaKhongThue>
 						<ct2></ct2>
@@ -134,13 +131,13 @@
 						<ct5></ct5>
 					</NDungHHoaKhongThue>
 				</HHGiaCongXuatKhau>
+			<tongDongIIICot5></tongDongIIICot5>
 			</HHoaKhongChiuThueTNDB>
 			<tongDSoBanChuaThue></tongDSoBanChuaThue>
 			<tongGiaThue></tongGiaThue>
-			<tongThueKTru></tongThueKTru>
-			<tongThueKTruKyTruoc></tongThueKTruKyTruoc>
+			<tongThueKTru></tongThueKTru>			
 			<tongThuePNop></tongThuePNop>
-		</BangChiTietThueTTĐB>
+		</BangChiTietThueTTDB>
 	</CTieuTKhaiChinh>
 	<PLuc>
 	</PLuc>

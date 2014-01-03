@@ -1,6 +1,6 @@
 <HSoKhaiThue ngay_nop_tk="E_25" ky_lap_bo="E_23">
 	<Static GroupName="TKhaiThue">
-		<maTKhai>01_NTNN</maTKhai>
+		<maTKhai>41</maTKhai>
 		<tenTKhai>Tờ khai thuế nhà thầu nước ngoài - 01/NTNN</tenTKhai>
 		<soLan>I_40</soLan>
 		<moTaBMau/>
@@ -24,25 +24,29 @@
 			<ct3>L_51</ct3>
 			<ct4>Q_51</ct4>
 			<ct5>V_51</ct5>
+		<ThueGTGT>
 			<ct6>Y_51</ct6>
 			<ct7>AB_51</ct7>
 			<ct8>AD_51</ct8>
 			<ct9>AF_51</ct9>
+		</ThueGTGT>
+		<ThueTNDN>
 			<ct10>AH_51</ct10>
 			<ct11>AN_51</ct11>
 			<ct12>AP_51</ct12>
 			<ct13>AR_51</ct13>
+		</ThueTNDN>
 			<ct14>AV_51</ct14>
 		</ThueNTNN>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
-		<tongDThuTinhThueGTGT>Y_54</tongDThuTinhThueGTGT>
-		<tongThueGTGTPhaiNop>AF_54</tongThueGTGTPhaiNop>
-		<tongDThuTinhThueTNDN>AH_54</tongDThuTinhThueTNDN>
-		<tongSoThueDuocMGiam>AP_54</tongSoThueDuocMGiam>
-		<tongThueTNDNPhaiNop>AR_54</tongThueTNDNPhaiNop>
-		<tongSoThuePhaiNopNSNN>AV_54</tongSoThuePhaiNopNSNN>
-		<tongThueGTGTVaTNDNBangChu>R_56</tongThueGTGTVaTNDNBangChu>
+		<tong_ct6>Y_54</tong_ct6>
+		<tong_ct9>AF_54</tong_ct9>
+		<tong_ct10>AH_54</tong_ct10>
+		<tong_ct12>AP_54</tong_ct12>
+		<tong_ct13>AR_54</tong_ct13>
+		<tong_ct14>AV_54</tong_ct14>
+		<tongThueVietBangChu>R_56</tongThueVietBangChu>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>AE_59</nguoiKy>
