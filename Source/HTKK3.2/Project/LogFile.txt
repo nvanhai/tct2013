@@ -139,3 +139,9 @@
 24/05/2013 5:01:33 CH frmPeriod LoadGrid
  91 : Object variable or With block variable not set
 ------------------------------------------------------------
+6/17/2013 5:32:20 PM mdlFunctions GetValidityNode
+ 13 : Type mismatch
+------------------------------------------------------------
+6/17/2013 5:32:20 PM frmPeriod LoadGrid
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------

@@ -364,7 +364,7 @@ Private Sub Form_Resize()
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
-    TAX_Utilities_New.NodeValidity = Nothing
+    TAX_Utilities_v1.NodeValidity = Nothing
     hasActiveForm = False
     frmTreeviewMenu.Show
 End Sub

@@ -81,7 +81,7 @@ Private Sub MDIForm_Load()
     Picture1.BackColor = RGB(168, 9, 13)
     Me.icon = LoadPicture(GetAbsolutePath("..\Pictures\Desktop.ICO"))
     xmlDocCaption.Load App.path & "\Caption.xml"
-    TAX_Utilities_New.NodeCaption = xmlDocCaption.documentElement
+    TAX_Utilities_v1.NodeCaption = xmlDocCaption.documentElement
     Set xmlDocCaption = Nothing
     
     SetControlCaption frmSystem
@@ -167,10 +167,10 @@ Private Sub MDIForm_Unload(Cancel As Integer)
     On Error GoTo ErrorHandle
     Set xmlHeaderData = Nothing
     Set xmlNodeListMenu = Nothing
-    TAX_Utilities_New.NodeMessage = Nothing
-    TAX_Utilities_New.NodeCaption = Nothing
-    TAX_Utilities_New.NodeMenu = Nothing
-    TAX_Utilities_New.NodeValidity = Nothing
+    TAX_Utilities_v1.NodeMessage = Nothing
+    TAX_Utilities_v1.NodeCaption = Nothing
+    TAX_Utilities_v1.NodeMenu = Nothing
+    TAX_Utilities_v1.NodeValidity = Nothing
     
     Exit Sub
 ErrorHandle:
@@ -188,7 +188,7 @@ Public Sub LoadListMessage()
     
     xmlDocument.Load App.path & "\Message.xml"
     
-    TAX_Utilities_New.NodeMessage = xmlDocument.getElementsByTagName("Message").Item(0).childNodes
+    TAX_Utilities_v1.NodeMessage = xmlDocument.getElementsByTagName("Message").Item(0).childNodes
     
     Set xmlDocument = Nothing
     

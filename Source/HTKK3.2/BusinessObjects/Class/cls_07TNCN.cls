@@ -46,7 +46,7 @@ Public Sub Prepare1()
         ' set defalt gia tri giam tru ban than
         If strTkThangQuy = "TK_THANG" Then
             ' chi tieu 25
-            If (Val(TAX_Utilities_New.Month) >= 7 And Val(TAX_Utilities_New.Year) = 2013) Or Val(TAX_Utilities_New.Year) > 2013 Then
+            If (Val(TAX_Utilities_v1.Month) >= 7 And Val(TAX_Utilities_v1.Year) = 2013) Or Val(TAX_Utilities_v1.Year) > 2013 Then
                 .Col = .ColLetterToNumber("R")
                 .Row = 46
                 .Text = "9000000"
@@ -67,7 +67,7 @@ Public Sub Prepare1()
             End If
         ElseIf strTkThangQuy = "TK_QUY" Then
             ' chi tieu 25
-            If (Val(TAX_Utilities_New.ThreeMonths) >= 3 And Val(TAX_Utilities_New.Year) = 2013) Or Val(TAX_Utilities_New.Year) > 2013 Then
+            If (Val(TAX_Utilities_v1.ThreeMonths) >= 3 And Val(TAX_Utilities_v1.Year) = 2013) Or Val(TAX_Utilities_v1.Year) > 2013 Then
                 .Col = .ColLetterToNumber("R")
                 .Row = 46
                 .Text = "27000000"
@@ -149,7 +149,7 @@ Public Sub Prepare2()
             'end
         
         ' set up cho phep sua chi tieu 31
-          If TAX_Utilities_New.Year = 2011 And TAX_Utilities_New.Month >= 8 And TAX_Utilities_New.Month <= 12 Then
+          If TAX_Utilities_v1.Year = 2011 And TAX_Utilities_v1.Month >= 8 And TAX_Utilities_v1.Month <= 12 Then
           Else
                 .Sheet = 1
                 .Col = .ColLetterToNumber("R")
@@ -168,7 +168,7 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
         .EventEnabled(EventAllEvents) = False
         If .ActiveSheet = 1 Then
             If Col = .ColLetterToNumber("R") And Row = 51 Then
-                If TAX_Utilities_New.Year = 2011 And TAX_Utilities_New.Month >= 8 And TAX_Utilities_New.Month <= 12 Then
+                If TAX_Utilities_v1.Year = 2011 And TAX_Utilities_v1.Month >= 8 And TAX_Utilities_v1.Month <= 12 Then
                     .GetText .ColLetterToNumber("R"), 51, strValue
                     If Val(CStr(strValue)) <= 5000000 Then
                         .Sheet = 1
@@ -352,7 +352,7 @@ Private Sub CheckDynamicError()
         End If
         
         If strTkThangQuy = "TK_THANG" Then
-            If (Val(TAX_Utilities_New.Month) >= 7 And Val(TAX_Utilities_New.Year) = 2013) Or Val(TAX_Utilities_New.Year) > 2013 Then
+            If (Val(TAX_Utilities_v1.Month) >= 7 And Val(TAX_Utilities_v1.Year) = 2013) Or Val(TAX_Utilities_v1.Year) > 2013 Then
                 ' kiem tra chi tieu 25
                 If Val(CT25) = 9000000 Or Val(CT25) = 0 Then
                     .Row = 46
@@ -408,7 +408,7 @@ Private Sub CheckDynamicError()
                  End If
             End If
         ElseIf strTkThangQuy = "TK_QUY" Then
-            If (Val(TAX_Utilities_New.ThreeMonths) >= 3 And Val(TAX_Utilities_New.Year) = 2013) Or Val(TAX_Utilities_New.Year) > 2013 Then
+            If (Val(TAX_Utilities_v1.ThreeMonths) >= 3 And Val(TAX_Utilities_v1.Year) = 2013) Or Val(TAX_Utilities_v1.Year) > 2013 Then
                 ' chi tieu 25
                 If Val(CT25) <= 27000000 And (Val(CT25) Mod 9000000 = 0) Then
                     .Row = 46
@@ -604,8 +604,8 @@ Private Sub UpdateSheets()
         ssSheet = mCurrentSheet
         .Sheet = 1
         mCurrentSheet = .Sheet
-        If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "Active") <> "0") Then
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "Active") <> "0") Then
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
                If lCol = .ColLetterToNumber("V") And lRow = 41 And (varTemp = "1" Or varTemp = "x") Then

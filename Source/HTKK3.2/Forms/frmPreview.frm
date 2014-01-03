@@ -131,10 +131,10 @@ On Error GoTo ErrHandle
             Do
                 frmReportData.fpsReport.sheet = frmReportData.fpsReport.sheet + 1
                 intLocalCurrPage = 1
-            Loop Until GetAttribute(TAX_Utilities_New.NodeValidity. _
+            Loop Until GetAttribute(TAX_Utilities_v1.NodeValidity. _
                 childNodes(frmReportData.fpsReport.sheet - 1), "Active") <> "0" _
                     Or frmReportData.fpsReport.sheet = frmReportData.fpsReport.SheetCount - 1
-            If GetAttribute(TAX_Utilities_New.NodeValidity. _
+            If GetAttribute(TAX_Utilities_v1.NodeValidity. _
                 childNodes(frmReportData.fpsReport.sheet - 1), "Active") _
                 = "0" Then Exit Sub
             'Update global current page int this form
@@ -162,10 +162,10 @@ On Error GoTo ErrHandle
                 frmReportData.fpsReport.sheet = frmReportData.fpsReport.sheet - 1
                 Printer.Orientation = frmReportData.fpsReport.PrintOrientation
                 intLocalCurrPage = frmReportData.fpsReport.PrintPageCount
-            Loop Until GetAttribute(TAX_Utilities_New.NodeValidity. _
+            Loop Until GetAttribute(TAX_Utilities_v1.NodeValidity. _
                 childNodes(frmReportData.fpsReport.sheet - 1), "Active") <> "0" Or frmReportData.fpsReport.sheet = 1
             
-            If GetAttribute(TAX_Utilities_New.NodeValidity. _
+            If GetAttribute(TAX_Utilities_v1.NodeValidity. _
                 childNodes(frmReportData.fpsReport.sheet - 1), "Active") _
                 = "0" Then Exit Sub
                 
@@ -202,11 +202,11 @@ On Error GoTo ErrHandle
     'Set Printer to default printer of OS
     Printer.TrackDefault = True
     Printer.PaperSize = vbPRPSA4
-'     If GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(1), "Caption") = "04-1/TNCN" Then
+'     If GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(1), "Caption") = "04-1/TNCN" Then
 '        Printer.PaperSize = vbPRPSA3
 '     End If
         ' BC26
-'    If GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "Caption") = "BC26-AC" Then
+'    If GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "Caption") = "BC26-AC" Then
 '        Printer.PaperSize = vbPRPSA3
 '        Printer.Orientation = vbPRORLandscape
 '    End If
@@ -271,7 +271,7 @@ On Error GoTo ErrHandle
     'frmReportData.fpsReport.hDCPrinter = Printer.hDC
     For intCtrl = 1 To frmReportData.fpsReport.SheetCount - 1
         ' If sheet is active
-        If GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(intCtrl - 1), "Active") <> "0" Then
+        If GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(intCtrl - 1), "Active") <> "0" Then
             ' Has the next page
             If intCtrl > 1 Then _
                 blnNextPageExist = True
@@ -551,31 +551,31 @@ Private Sub fpSpread1_TextTipFetch(ByVal Col As Long, ByVal Row As Long, MultiLi
     
     Select Case Col
         Case 2 'cmdNext
-            Set xmlNode = GetNodeByName(TAX_Utilities_New.NodeCaption.selectSingleNode(Me.Name).childNodes, "cmdNext")
+            Set xmlNode = GetNodeByName(TAX_Utilities_v1.NodeCaption.selectSingleNode(Me.Name).childNodes, "cmdNext")
             If Not xmlNode Is Nothing Then
                 'TipWidth = 800
                 TipText = GetAttribute(xmlNode, "Caption") & " [Ctrl+N] "
             End If
         Case 4 'cmdPrevious
-            Set xmlNode = GetNodeByName(TAX_Utilities_New.NodeCaption.selectSingleNode(Me.Name).childNodes, "cmdPrevious")
+            Set xmlNode = GetNodeByName(TAX_Utilities_v1.NodeCaption.selectSingleNode(Me.Name).childNodes, "cmdPrevious")
             If Not xmlNode Is Nothing Then
                 'TipWidth = 900
                 TipText = GetAttribute(xmlNode, "Caption") & " [Ctrl+P] "
             End If
         Case 6 'cmdZoom
-            Set xmlNode = GetNodeByName(TAX_Utilities_New.NodeCaption.selectSingleNode(Me.Name).childNodes, "cmdZoom")
+            Set xmlNode = GetNodeByName(TAX_Utilities_v1.NodeCaption.selectSingleNode(Me.Name).childNodes, "cmdZoom")
             If Not xmlNode Is Nothing Then
                 'TipWidth = 1440
                 TipText = GetAttribute(xmlNode, "Caption") & " [Ctrl+Z] "
             End If
         Case 8 'cmdPrint
-            Set xmlNode = GetNodeByName(TAX_Utilities_New.NodeCaption.selectSingleNode(Me.Name).childNodes, "cmdPrint")
+            Set xmlNode = GetNodeByName(TAX_Utilities_v1.NodeCaption.selectSingleNode(Me.Name).childNodes, "cmdPrint")
             If Not xmlNode Is Nothing Then
                 'TipWidth = 620
                 TipText = GetAttribute(xmlNode, "Caption") & " [Ctrl+I] "
             End If
         Case 16 'cmdClose
-            Set xmlNode = GetNodeByName(TAX_Utilities_New.NodeCaption.selectSingleNode(Me.Name).childNodes, "cmdClose")
+            Set xmlNode = GetNodeByName(TAX_Utilities_v1.NodeCaption.selectSingleNode(Me.Name).childNodes, "cmdClose")
             If Not xmlNode Is Nothing Then
                 'TipWidth = 620
                 TipText = GetAttribute(xmlNode, "Caption") & " [Ctrl+X] "

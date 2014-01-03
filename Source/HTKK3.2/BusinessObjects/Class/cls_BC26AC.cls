@@ -230,7 +230,7 @@ Public Sub Prepare2()
         .Sheet = 1
         .EventEnabled(EventAllEvents) = False
         'dhdang sua loi o check "ky bao cao cc" va "chuyen dia diem"
-        If TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0" Then
+        If TAX_Utilities_v1.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0" Then
                 .Row = 14
                 .Col = .ColLetterToNumber("B")
                 .Text = "X"
@@ -240,7 +240,7 @@ Public Sub Prepare2()
                 .Col = .ColLetterToNumber("G")
                 .Text = ""
                 .Lock = True
-            ElseIf TAX_Utilities_New.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0" Then
+            ElseIf TAX_Utilities_v1.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0" Then
                 .Row = 14
                 .Col = .ColLetterToNumber("B")
                 .Text = ""
@@ -262,7 +262,7 @@ Public Sub Prepare2()
                 .Lock = True
         End If
         ' Set format ngay ky
-        If numRowInsert >= 0 And TAX_Utilities_New.CheckNewDataBC26 = True Then
+        If numRowInsert >= 0 And TAX_Utilities_v1.CheckNewDataBC26 = True Then
             .Row = 22
             For i = 0 To numRowInsert
                 ' set du lieu ton dau ky
@@ -333,7 +333,7 @@ Public Sub Prepare2()
         End If
         
          'Xoa cong thuc cua o Chu ky
-        Set xmlCellNode = TAX_Utilities_New.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 22))
+        Set xmlCellNode = TAX_Utilities_v1.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 22))
         Set xmlCellNode = xmlCellNode.parentNode
         Set xmlCellNode = xmlCellNode.parentNode
         Set xmlCellNode = xmlCellNode.parentNode.lastChild
@@ -1120,10 +1120,10 @@ Private Sub CheckDynamicError()
     With fps
             clearCellErorrHDR
             checkSheet1
-            If TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0" Then
+            If TAX_Utilities_v1.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0" Then
                 checkSheet2
             End If
-            If TAX_Utilities_New.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0" Then
+            If TAX_Utilities_v1.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0" Then
                 checkSheet3
             End If
     End With
@@ -1166,10 +1166,9 @@ Private Sub checkSheet1()
     Dim strLietKe() As String
     
     Dim strTrung67() As String, strTrung89() As String, strTrung2021() As String, strCheckTrung() As String
-
     
-    blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-    blCheck_S3 = IIf(TAX_Utilities_New.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+    blCheck_S2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+    blCheck_S3 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
     
     strTrung67 = checkTrung(fps, 22, Col_H, Col_I, "B", Col_D, Col_E, Col_F, "", False, 1)
     strTrung89 = checkTrung(fps, 22, Col_J, Col_K, "B", Col_D, Col_E, Col_F, "", False, 1)
@@ -1268,7 +1267,7 @@ Private Sub checkSheet1()
             'ngay 18-05
             '--------------------------------------------Begin
             
-            If numRowInsert >= 0 And TAX_Utilities_New.CheckNewDataBC26 = True And Val(strTon) = 1 Then
+            If numRowInsert >= 0 And TAX_Utilities_v1.CheckNewDataBC26 = True And Val(strTon) = 1 Then
                    countSoTon = 0
                    For t = 0 To numRowInsert
                         ' set du lieu ton dau ky
@@ -3650,12 +3649,12 @@ Public Sub SetActiveSheet()
     Dim strValue2 As String
     'Check the second sheet
     'Select Case GetAttribute(xmlNodeValid, "ID")
-    For Each xmlNodeValid In TAX_Utilities_New.NodeValidity.childNodes
+    For Each xmlNodeValid In TAX_Utilities_v1.NodeValidity.childNodes
         Select Case GetAttribute(xmlNodeValid, "ID")
             Case "BC26AC"
                 blnNullValue = True
                 'Check the third sheet
-               For Each xmlCellNode In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+               For Each xmlCellNode In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
                     ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
                     'Check value in D column and E column
                     If lCol = fps.ColLetterToNumber(Col_D) Or _
@@ -3686,10 +3685,10 @@ Public Function ResetData() As Boolean
     Dim countRowReset As Long
     Dim xmlNodeReset As MSXML.IXMLDOMNode
     Dim lCol As Long, lRow As Long
-    totalCell = TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length
+    totalCell = TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length
     countRowReset = (totalCell - 7) / 25
     With fps
-        For Each xmlNodeReset In TAX_Utilities_New.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
+        For Each xmlNodeReset In TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
             .Sheet = mCurrentSheet
             ParserCellID fps, GetAttribute(xmlNodeReset, "CellID"), lCol, lRow
             If (lRow < 22 Or lRow > 22 + countRowReset) And mCurrentSheet = 1 Then
@@ -3712,7 +3711,7 @@ Public Function ResetData() As Boolean
                         UpdateCell fps, lCol, lRow, vbNullString
                 End Select
                 'mAdjustData = IIf(IsUpdate = True, IsUpdate, mAdjustData)
-                TAX_Utilities_New.AdjustData(mCurrentSheet - 1) = True
+                TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
             End If
         Next
     End With
@@ -3807,7 +3806,7 @@ Private Sub UpdateSheets()
         ssSheet = mCurrentSheet
         .Sheet = 1
         mCurrentSheet = .Sheet
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                If (lCol = .ColLetterToNumber("B") Or lCol = .ColLetterToNumber(Col_G)) And lRow = 14 Then
                     IsUpdate = True
@@ -3853,7 +3852,7 @@ Private Sub fps_SheetChanged(ByVal OldSheet As Integer, ByVal NewSheet As Intege
             
             .Sheet = 1
                     'dhdang sua loi o check "ky bao cao cc" va "chuyen dia diem"
-                If TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0" Then
+                If TAX_Utilities_v1.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0" Then
                         .Row = 14
                         .Col = .ColLetterToNumber("B")
                         .Text = "X"
@@ -3863,7 +3862,7 @@ Private Sub fps_SheetChanged(ByVal OldSheet As Integer, ByVal NewSheet As Intege
                         .Col = .ColLetterToNumber("G")
                         .Text = ""
                         .Lock = True
-                    ElseIf TAX_Utilities_New.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0" Then
+                    ElseIf TAX_Utilities_v1.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0" Then
                         .Row = 14
                         .Col = .ColLetterToNumber("B")
                         .Text = ""
@@ -4105,20 +4104,6 @@ Public Function isTrungSoHD(str As String) As Boolean
 '
         End If
     End If
-    ' end test tuning
-'    If isDuLieuHL(str) Then
-'        arrstr = getListHD(str)
-'        For i = 0 To UBound(arrstr)
-'            If Not (InStr(1, strTemp, arrstr(i)) > 0) Then
-'                strTemp = strTemp & "~" & arrstr(i)
-'            End If
-'        Next i
-'        strTemp = Mid$(strTemp, 2)
-'        arrstr1 = Split(strTemp, "~")
-'        If UBound(arrstr) <> UBound(arrstr1) Then
-'            result = True
-'        End If
-'    End If
     isTrungSoHD = result
 End Function
 
@@ -4355,7 +4340,6 @@ Public Function isDuLieuHL(str As String) As Boolean
             End If
         Next i
     End If
- 
     
     If flag1 = True And flag2 = False Then
     ' truong hop chi nhap liet ke
@@ -4621,11 +4605,11 @@ Public Function loadTonCuoiKy() As String()
         .resolveExternals = True
         .validateOnParse = True
         .async = False
-        MY = DateSerial(TAX_Utilities_New.Year, getThangDauKy(TAX_Utilities_New.ThreeMonths), 1)
+        MY = DateSerial(TAX_Utilities_v1.Year, getThangDauKy(TAX_Utilities_v1.ThreeMonths), 1)
         
         MY = DateAdd(Col_M, -3, MY)
         MY = DateSerial(Year(MY), getKyBC(Month(MY)), 1)
-        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("68", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
+        strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(GetValidityNode("68", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
         '***************************************
         If .Load(strDataFileName) = True Then
             Set xmlSectionsTemplate = .getElementsByTagName("Sections")(0)
@@ -4707,7 +4691,7 @@ End Function
 Public Function GetNguoiKy() As String
     Dim xmlDomHeader As New MSXML.DOMDocument
     
-    xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_New.DataFolder & "Header_01.xml")
+    xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_v1.DataFolder & "Header_01.xml")
     GetNguoiKy = GetAttribute(xmlDomHeader.nodeFromID("C_26"), "Value")
     
     Set xmlDomHeader = Nothing

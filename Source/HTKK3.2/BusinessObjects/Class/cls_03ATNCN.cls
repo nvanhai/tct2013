@@ -25,7 +25,7 @@ Private Const Col_MSTDN = "H"
 Public Sub Prepare1()
     With fps
         SetDateFormat fps, 1, 58, .ColLetterToNumber("R"), DDMMYYYY
-
+        
         .Sheet = 1 'To khai 03/TNCN
         .Row = 58
         .Col = .ColLetterToNumber("R")
@@ -267,8 +267,8 @@ Private Sub UpdateSheets()
         ssSheet = mCurrentSheet
         .Sheet = 1
         mCurrentSheet = .Sheet
-        If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "Active") <> "0") Then
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "Active") <> "0") Then
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
                UpdateCell fps, lCol, lRow, varTemp

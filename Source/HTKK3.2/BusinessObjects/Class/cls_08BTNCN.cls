@@ -44,7 +44,6 @@ Public Sub Prepare2()
     Dim xmlNodeCell As MSXML.IXMLDOMNode
     Dim soThangMG As Integer
     Dim viTriMSTDL As String, strTenNVDDL As String, strCCHN As String, xmlNode As MSXML.IXMLDOMNode
-
     
     With fps
             'tinh so dong` them vao`
@@ -86,16 +85,16 @@ Public Sub Prepare2()
             End If
             
          'set thang mien giam thue cho ky ke khai nam 2011
-         If TAX_Utilities_New.Year = "2011" Then
+         If TAX_Utilities_v1.Year = "2011" Then
             soThangMG = 7
             .SetText .ColLetterToNumber("AB"), 6, soThangMG
-         ElseIf TAX_Utilities_New.Year = "2009" Then
+         ElseIf TAX_Utilities_v1.Year = "2009" Then
             soThangMG = 6
             .SetText .ColLetterToNumber("AB"), 6, soThangMG
          End If
          
-         'set thong tin nguoi   ky, ngay ky, thong tin nhan vien dai ly thue
-         Set xmlNodeCell = TAX_Utilities_New.Data(0).documentElement.childNodes(TAX_Utilities_New.Data(0).childNodes.length)
+         'set thong tin nguoi ky, ngay ky, thong tin nhan vien dai ly thue
+         Set xmlNodeCell = TAX_Utilities_v1.Data(0).documentElement.childNodes(TAX_Utilities_v1.Data(0).childNodes.length)
          Set xmlNodeCell = xmlNodeCell.firstChild
          Set xmlNodeCell = xmlNodeCell.firstChild
          ParserCellID fps, GetAttribute(xmlNodeCell, "CellID"), iCol, iRow
@@ -121,18 +120,17 @@ Public Sub Prepare2()
          .Formula = ""
         .EventEnabled(EventAllEvents) = True
         
-        '?TAX_Utilities_New.Data(0).childNodes(2).childNodes(2)
         'check thong tin ma so thue dai ly
         'set vi tri theo thu tu MSTDL~TENNVDLT~ChungChiHN
         'lay vi tri cell ten nhan vien dai ly thue
-        Set xmlNode = TAX_Utilities_New.Data(0).getElementsByTagName("Cell").Item(TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length - 4)
+        Set xmlNode = TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").Item(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 4)
         strTenNVDDL = GetAttribute(xmlNode, "CellID")
         'lay vi tri cell chung chi hanh nghe so
-        Set xmlNode = TAX_Utilities_New.Data(0).getElementsByTagName("Cell").Item(TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length - 3)
+        Set xmlNode = TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").Item(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 3)
         strCCHN = GetAttribute(xmlNode, "CellID")
         
         
-        For Each xmlNode In TAX_Utilities_New.Data(0).childNodes(2).childNodes(2).childNodes
+        For Each xmlNode In TAX_Utilities_v1.Data(0).childNodes(2).childNodes(2).childNodes
             ParserCellID fps, GetAttribute(xmlNode.childNodes(7), "CellID"), iCol, iRow
             
             'set lai gia tri ct 41
@@ -164,7 +162,6 @@ Public Sub Prepare2()
     If Strloaitk <> "TKBS" Then
         
     End If
-    
 End Sub
 
 Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
@@ -351,7 +348,7 @@ End Sub
     Dim CellNgayKy As String
     Dim strValue As String
     Dim varThangKT As Variant
-'    CellNgayKy = GetAttribute(TAX_Utilities_New.Data(0).getElementsByTagName("Cell")(TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length - 6), "CellID")
+'    CellNgayKy = GetAttribute(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 6), "CellID")
     With fps
         .EventEnabled(EventAllEvents) = False
         mCurrentSheet = .Sheet
@@ -454,10 +451,10 @@ Private Sub CheckDynamicError()
         'check thong tin header khong dc trong
         'lay vi tri header tren tk theo thu tu MSTDL, TENDLT, DIACHIDLT,QUAN/HUYEN,TP,SO HDDLT,NGAYDH,Ten NV DLT, CC Hanh Nghe
         'lay vi tri cell ten nhan vien dai ly thue
-        Set xmlNode = TAX_Utilities_New.Data(0).getElementsByTagName("Cell").Item(TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length - 4)
+        Set xmlNode = TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").Item(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 4)
         strTenNVDDL = GetAttribute(xmlNode, "CellID")
         'lay vi tri cell chung chi hanh nghe so
-        Set xmlNode = TAX_Utilities_New.Data(0).getElementsByTagName("Cell").Item(TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length - 3)
+        Set xmlNode = TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").Item(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 3)
         strCCHN = GetAttribute(xmlNode, "CellID")
         viTriHeaderTk = "D_22~D_20~D_24~D_26~M_26~D_32~M_32~" & Trim(strTenNVDDL) & "~" & Trim(strCCHN)
         viTriSheetHeader = "B_26~B_27~B_28~B_29~B_30~B_31~B_32~B_33~B_34"
@@ -796,7 +793,7 @@ Private Sub InsertRow(fpSpread1 As fpSpread, ByVal pRow As Long, lRows As Long, 
                     ' ThanhDX added
                     ' Date: 29/04/06
                     Else
-                        If Not TAX_Utilities_New.Data(mCurrentSheet - 1).nodeFromID( _
+                        If Not TAX_Utilities_v1.Data(mCurrentSheet - 1).nodeFromID( _
                            GetCellID(fpSpread1, i, pRow - lRowCtrl)) Is Nothing Then
                             If .BackColor = &HC0C0FF Or .BackColor = 12713215 Then
                                 .BackColor = vbWhite
@@ -818,7 +815,7 @@ Private Sub InsertRow(fpSpread1 As fpSpread, ByVal pRow As Long, lRows As Long, 
                     ' ThanhDX added
                     ' Date: 08/04/06
                     Else
-                        If Not TAX_Utilities_New.Data(mCurrentSheet - 1).nodeFromID(GetCellID(fpSpread1, i, pRow - lRowCtrl)) Is Nothing Then
+                        If Not TAX_Utilities_v1.Data(mCurrentSheet - 1).nodeFromID(GetCellID(fpSpread1, i, pRow - lRowCtrl)) Is Nothing Then
                             Select Case .CellType
                                 Case CellTypeNumber
                                     .SetText i, .Row, 0
@@ -897,7 +894,7 @@ Private Sub UpdateSheets()
         ssSheet = mCurrentSheet
         .Sheet = 1
         mCurrentSheet = .Sheet
-        For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+        For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
            ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
 '               If (lRow = 5 And lCol = .ColLetterToNumber("R")) Or (lRow = 7 And lCol = .ColLetterToNumber("R")) Then
 '                    .GetText lCol, lRow, varTemp

@@ -179,8 +179,8 @@ Begin VB.Form frmLogin
       BorderColor     =   &H80000010&
       X1              =   -28.168
       X2              =   5185.797
-      Y1              =   921.699
-      Y2              =   921.699
+      Y1              =   921.7
+      Y2              =   921.7
    End
    Begin VB.Image Image1 
       Height          =   1275
@@ -445,7 +445,7 @@ Private Sub cmdOK_Click()
     Set xmlNodeList = Nothing
     '**********************************
     strTaxIdString = cboTaxIdString.Text
-    TAX_Utilities_New.DataFolder = GetAbsolutePath("..\DataFiles\" & cboTaxIdString.Text & "\")
+    TAX_Utilities_v1.DataFolder = GetAbsolutePath("..\DataFiles\" & cboTaxIdString.Text & "\")
     
     Set fso = Nothing
     Unload Me
@@ -661,7 +661,7 @@ Private Sub SetFirstUse()
         
     For Each xmlNode In xmlNodeRoot.childNodes
         If strId = xmlNode.Attributes.getNamedItem("ID").nodeValue Then
-            TAX_Utilities_New.NodeMenu = xmlNode
+            TAX_Utilities_v1.NodeMenu = xmlNode
             ReDim arrActiveForm(1)
             arrActiveForm(1).id = strId
             arrActiveForm(1).showed = False

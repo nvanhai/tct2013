@@ -254,19 +254,19 @@ Dim lLoc As Long
     End With
     
     'Initial parameters
-    TAX_Utilities_New.month = ""
-    TAX_Utilities_New.ThreeMonths = ""
-    TAX_Utilities_New.Year = ""
-    TAX_Utilities_New.FirstDay = ""
-    TAX_Utilities_New.LastDay = ""
-    TAX_Utilities_New.NodeMenu = getNode(CStr(strId))
-        If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then
-            TAX_Utilities_New.month = Mid$(CStr(strDay), 1, 2)
-            TAX_Utilities_New.Year = Mid$(CStr(strDay), 4, 4)
-        ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
-            TAX_Utilities_New.ThreeMonths = CInt(Mid$(CStr(strDay), 1, 2))
-            TAX_Utilities_New.Year = Mid$(CStr(strDay), 4, 4)
-        ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" Then
+    TAX_Utilities_v1.month = ""
+    TAX_Utilities_v1.ThreeMonths = ""
+    TAX_Utilities_v1.Year = ""
+    TAX_Utilities_v1.FirstDay = ""
+    TAX_Utilities_v1.LastDay = ""
+    TAX_Utilities_v1.NodeMenu = getNode(CStr(strId))
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "Month") = "1" Then
+            TAX_Utilities_v1.month = Mid$(CStr(strDay), 1, 2)
+            TAX_Utilities_v1.Year = Mid$(CStr(strDay), 4, 4)
+        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ThreeMonth") = "1" Then
+            TAX_Utilities_v1.ThreeMonths = CInt(Mid$(CStr(strDay), 1, 2))
+            TAX_Utilities_v1.Year = Mid$(CStr(strDay), 4, 4)
+        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "Day") = "1" Then
             Dim dDauKyNam As Date
             Dim dCuoiKyNam As Date
                         
@@ -283,8 +283,8 @@ Dim lLoc As Long
             ' Doi voi loai to khai quyet toan (03_TNDN, 04_TNCN) co ky quet toan la Tu ngay - Den ngay
             ' Phai lay duoc ky quet toan cua to quuyet toan thi moi bat dau cho phep sua doi bo sung
             
-            If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").Text = "03") Then
-                For Each fle In fso.GetFolder(TAX_Utilities_New.DataFolder).Files
+            If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").Text = "03") Then
+                For Each fle In fso.GetFolder(TAX_Utilities_v1.DataFolder).Files
                     ' Neu data file do khong phai la file KHBS thi moi bat dau
                     If InStr(1, fle.Name, "KHBS") = 0 Then
                         ' Kiem tra xem co dung la data cua nam can sua doi khong
@@ -303,14 +303,14 @@ Dim lLoc As Long
             
             ' hlnam Edit -End
                         
-            TAX_Utilities_New.Year = CStr(Right(strDay, 4))
+            TAX_Utilities_v1.Year = CStr(Right(strDay, 4))
             ' Gan lay ngay bat dau cua ky quet toan, neu khong co thi default la ngay '01/01'
-            TAX_Utilities_New.FirstDay = CStr(varFirstDay)
+            TAX_Utilities_v1.FirstDay = CStr(varFirstDay)
             ' Gan lay ngay ket thuc cua ky quet toan, neu khong co thi default la ngay '31/12'
-            TAX_Utilities_New.LastDay = CStr(varLastDay)
+            TAX_Utilities_v1.LastDay = CStr(varLastDay)
             
         Else
-            TAX_Utilities_New.Year = CStr(strDay)
+            TAX_Utilities_v1.Year = CStr(strDay)
         End If
         
     If Validtokhai(strId, strDay) = False Then
@@ -326,12 +326,12 @@ Dim lLoc As Long
     End With
     
     If strDateKHBS <> vbNullString Then
-        TAX_Utilities_New.DateKHBS = Replace(strDateKHBS, "/", "")
+        TAX_Utilities_v1.DateKHBS = Replace(strDateKHBS, "/", "")
     End If
     
         
         
-         If GetAttribute(TAX_Utilities_New.NodeMenu, "FinanceYear") = "1" Then
+         If GetAttribute(TAX_Utilities_v1.NodeMenu, "FinanceYear") = "1" Then
             strNgayTaiChinh = GetNgayBatDauNamTaiChinh
             If Not KiemTraNgayTaiChinh(strNgayTaiChinh, False) Then
                 blnValidFinanceYear = False
@@ -467,7 +467,7 @@ Sub SetupData()
             Dim strDataFileName As String
             Dim i As Integer
 
-            xmlDocument.Load TAX_Utilities_New.GetAbsolutePath("ListKHBS.xml")
+            xmlDocument.Load TAX_Utilities_v1.GetAbsolutePath("ListKHBS.xml")
             Set xmlNodeListMap = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
 '            ReDim Preserve arrStrId(0)
 '            arrStrId(0) = "00"
@@ -646,7 +646,7 @@ Dim xmlDocument As New MSXML.DOMDocument
 '            End With
 '            Exit Sub
 '        End If
-        'xmlDocument.Load TAX_Utilities_New.GetAbsolutePath("menu.xml")
+        'xmlDocument.Load TAX_Utilities_v1.GetAbsolutePath("menu.xml")
         'Set xmlNodeListMenu = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
             For Each xmlNode In xmlNodeListMenu
                 Dim Parentid As String
@@ -769,7 +769,7 @@ Private Sub LoadXMLFileNames()
     
     
  
-    For Each fle In fso.GetFolder(GetAbsolutePath(TAX_Utilities_New.DataFolder)).Files
+    For Each fle In fso.GetFolder(GetAbsolutePath(TAX_Utilities_v1.DataFolder)).Files
         If Right$(fle.Name, 4) = ".xml" Then
             ReDim Preserve arrStrXMLFileNames(lngIndex)
             arrStrXMLFileNames(lngIndex) = Mid$(fle.Name, 1, Len(fle.Name) - 4)
@@ -817,8 +817,8 @@ Private Sub DeleteDataFiles(ByVal strFileNames As String)
     arrStrDataFiles = Split(strFileNames, ",")
     
     For intCtrl = 0 To UBound(arrStrDataFiles)
-        If fso.FileExists(GetAbsolutePath(TAX_Utilities_New.DataFolder & arrStrDataFiles(intCtrl) & ".xml")) Then
-            fso.DeleteFile GetAbsolutePath(TAX_Utilities_New.DataFolder & arrStrDataFiles(intCtrl) & ".xml"), True
+        If fso.FileExists(GetAbsolutePath(TAX_Utilities_v1.DataFolder & arrStrDataFiles(intCtrl) & ".xml")) Then
+            fso.DeleteFile GetAbsolutePath(TAX_Utilities_v1.DataFolder & arrStrDataFiles(intCtrl) & ".xml"), True
             '.DeleteRows i + 1, 1
         End If
     Next intCtrl
@@ -835,7 +835,7 @@ Private Function Validtokhai(strId As String, strDay As String) As Boolean
     Validtokhai = False
     
     
-    xmlDocument.Load TAX_Utilities_New.GetAbsolutePath("ListKHBS.xml")
+    xmlDocument.Load TAX_Utilities_v1.GetAbsolutePath("ListKHBS.xml")
     Set xmlNodeListMap = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
     
     For Each xmlNodeMenu In xmlNodeListMap
@@ -854,7 +854,7 @@ Private Function Validtokhai(strId As String, strDay As String) As Boolean
         
      End If
   
-    For Each fle In fso.GetFolder(GetAbsolutePath(TAX_Utilities_New.DataFolder)).Files
+    For Each fle In fso.GetFolder(GetAbsolutePath(TAX_Utilities_v1.DataFolder)).Files
         If fle.Name = strDataFileName & ".xml" Then
             Validtokhai = True
             Exit For

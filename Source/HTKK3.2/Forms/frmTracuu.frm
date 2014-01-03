@@ -367,12 +367,12 @@ Private Sub btnMo_Click()
         If Left(varId, 4) = "KHBS" Then
             varId = Right(varId, 2)
             strKHBS = "frmKHBS_BS"
-            TAX_Utilities_New.DateKHBS = varDateKHBS
+            TAX_Utilities_v1.DateKHBS = varDateKHBS
         End If
         If Left(varFileName, 2) = "bs" Then
             strKHBS = "TKBS"
             strSolanBS = Right(Split(varFileName, "_")(0), Len(Split(varFileName, "_")(0)) - 2)
-            'TAX_Utilities_New.DateKHBS = varDateKHBS
+            'TAX_Utilities_v1.DateKHBS = varDateKHBS
         Else
             ' Neu la loai to khai TNCN thi dat trang thai cua strKHBS ="TKCT"
             If Trim(varId) = "46" Or Trim(varId) = "47" Or Trim(varId) = "48" Or Trim(varId) = "49" Or Trim(varId) = "15" Or Trim(varId) = "16" _
@@ -383,14 +383,14 @@ Private Sub btnMo_Click()
             
         End If
         
-        TAX_Utilities_New.NodeMenu = getNode(CStr(varId))
+        TAX_Utilities_v1.NodeMenu = getNode(CStr(varId))
         ' 12110211 xu ly to khai BS
         If strKHBS = "TKBS" Then
-            For i = 1 To TAX_Utilities_New.NodeMenu.childNodes(0).childNodes.length - 1
-                If i = TAX_Utilities_New.NodeMenu.childNodes(0).childNodes.length - 1 Then
-                    SetAttribute TAX_Utilities_New.NodeMenu.childNodes(0).childNodes(i), "Active", "1"
+            For i = 1 To TAX_Utilities_v1.NodeMenu.childNodes(0).childNodes.length - 1
+                If i = TAX_Utilities_v1.NodeMenu.childNodes(0).childNodes.length - 1 Then
+                    SetAttribute TAX_Utilities_v1.NodeMenu.childNodes(0).childNodes(i), "Active", "1"
                 Else
-                    SetAttribute TAX_Utilities_New.NodeMenu.childNodes(0).childNodes(i), "Active", "0"
+                    SetAttribute TAX_Utilities_v1.NodeMenu.childNodes(0).childNodes(i), "Active", "0"
                 End If
             Next
             
@@ -398,37 +398,37 @@ Private Sub btnMo_Click()
         
 
         
-        If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "Month") = "1" Then
             If varId = "01" Or varId = "02" Or varId = "04" Or varId = "71" Or varId = "36" Then
                 ' Neu datafile co ky tu Q la to khai quy
                 If Left$(Right$(varFileName, 7), 1) = "Q" Then
                     strTkGTGT = "TK_QUY"
                 End If
                 If strTkGTGT = "TK_QUY" Then
-                    TAX_Utilities_New.ThreeMonths = CInt(Mid$(CStr(varPeriod), 1, 2))
-                    TAX_Utilities_New.month = Mid$(CStr(varPeriod), 1, 2)
-                    TAX_Utilities_New.Year = Mid$(CStr(varPeriod), 4, 4)
+                    TAX_Utilities_v1.ThreeMonths = CInt(Mid$(CStr(varPeriod), 1, 2))
+                    TAX_Utilities_v1.month = Mid$(CStr(varPeriod), 1, 2)
+                    TAX_Utilities_v1.Year = Mid$(CStr(varPeriod), 4, 4)
                 Else
-                    TAX_Utilities_New.month = Mid$(CStr(varPeriod), 1, 2)
-                    TAX_Utilities_New.Year = Mid$(CStr(varPeriod), 4, 4)
+                    TAX_Utilities_v1.month = Mid$(CStr(varPeriod), 1, 2)
+                    TAX_Utilities_v1.Year = Mid$(CStr(varPeriod), 4, 4)
                 End If
             Else
-                TAX_Utilities_New.month = Mid$(CStr(varPeriod), 1, 2)
-                TAX_Utilities_New.Year = Mid$(CStr(varPeriod), 4, 4)
+                TAX_Utilities_v1.month = Mid$(CStr(varPeriod), 1, 2)
+                TAX_Utilities_v1.Year = Mid$(CStr(varPeriod), 4, 4)
             End If
-        ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
-            TAX_Utilities_New.ThreeMonths = CInt(Mid$(CStr(varPeriod), 1, 2))
-            TAX_Utilities_New.Year = Mid$(CStr(varPeriod), 4, 4)
-        ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" Then
+        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ThreeMonth") = "1" Then
+            TAX_Utilities_v1.ThreeMonths = CInt(Mid$(CStr(varPeriod), 1, 2))
+            TAX_Utilities_v1.Year = Mid$(CStr(varPeriod), 4, 4)
+        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "Day") = "1" Then
             If varId = "80" Or varId = "82" Then
-                TAX_Utilities_New.Year = Right(CStr(varPeriod), 4)
+                TAX_Utilities_v1.Year = Right(CStr(varPeriod), 4)
             Else
-                TAX_Utilities_New.Year = CStr(varPeriod)
+                TAX_Utilities_v1.Year = CStr(varPeriod)
             End If
-            TAX_Utilities_New.FirstDay = CStr(varFirstDay)
-            TAX_Utilities_New.LastDay = CStr(varLastDay)
+            TAX_Utilities_v1.FirstDay = CStr(varFirstDay)
+            TAX_Utilities_v1.LastDay = CStr(varLastDay)
         Else
-            TAX_Utilities_New.Year = CStr(varPeriod)
+            TAX_Utilities_v1.Year = CStr(varPeriod)
         End If
         
         j = 1
@@ -503,8 +503,8 @@ With fpSKetQua
             If strxoa = "1" Then
                 .GetText 11, i + 1, strDataFile
                 DeleteDataFiles (strDataFile)
-'                If fso.FileExists(GetAbsolutePath(TAX_Utilities_New.DataFolder & strDataFile & ".xml")) Then
-'                    fso.DeleteFile GetAbsolutePath(TAX_Utilities_New.DataFolder & strDataFile & ".xml"), True
+'                If fso.FileExists(GetAbsolutePath(TAX_Utilities_v1.DataFolder & strDataFile & ".xml")) Then
+'                    fso.DeleteFile GetAbsolutePath(TAX_Utilities_v1.DataFolder & strDataFile & ".xml"), True
 '                    .DeleteRows i + 1, 1
 '                End If
             End If
@@ -712,7 +712,7 @@ Sub SetupData()
             Dim strDataFileName As String
             Dim i As Integer
 
-            xmlDocument.Load TAX_Utilities_New.GetAbsolutePath("Map.xml")
+            xmlDocument.Load TAX_Utilities_v1.GetAbsolutePath("Map.xml")
             Set xmlNodeListMap = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
             ReDim Preserve arrStrId(0)
             arrStrId(0) = "00"
@@ -1095,7 +1095,7 @@ Dim xmlDocument As New MSXML.DOMDocument
             End With
             Exit Sub
         End If
-        'xmlDocument.Load TAX_Utilities_New.GetAbsolutePath("menu.xml")
+        'xmlDocument.Load TAX_Utilities_v1.GetAbsolutePath("menu.xml")
         'Set xmlNodeListMenu = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
             For Each xmlNode In xmlNodeListMenu
             If arrStrId(.TypeComboBoxCurSel) = "KHBS" Then
@@ -1442,7 +1442,7 @@ Private Function GetTaxReportsById(ByVal strId As String, ByVal strPeriodFrom As
     
     blnReturn = False
     
-    xmlDocument.Load TAX_Utilities_New.GetAbsolutePath("map.xml")
+    xmlDocument.Load TAX_Utilities_v1.GetAbsolutePath("map.xml")
     Set xmlNodeListMap = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
     
     'Khoi tao gia tri khoang tra cuu
@@ -1590,7 +1590,7 @@ Private Sub LoadXMLFileNames()
     Dim fso As New FileSystemObject
     Dim fle As file
     
-    For Each fle In fso.GetFolder(GetAbsolutePath(TAX_Utilities_New.DataFolder)).Files
+    For Each fle In fso.GetFolder(GetAbsolutePath(TAX_Utilities_v1.DataFolder)).Files
         If Right$(fle.Name, 4) = ".xml" Then
             ReDim Preserve arrStrXMLFileNames(lngIndex)
             arrStrXMLFileNames(lngIndex) = Mid$(fle.Name, 1, Len(fle.Name) - 4)
@@ -1889,7 +1889,7 @@ End Function
 Private Function GetTaxValue(ByVal strDataFileName As String, ByVal strId As String, ByVal KHBS As Boolean) As String
     Dim xmlDom As New MSXML.DOMDocument
     
-    xmlDom.Load TAX_Utilities_New.DataFolder & strDataFileName & ".xml"
+    xmlDom.Load TAX_Utilities_v1.DataFolder & strDataFileName & ".xml"
     If KHBS = False Then
         GetTaxValue = GetAttribute(xmlDom.nodeFromID(strId), "Value")
     Else
@@ -2009,8 +2009,8 @@ Private Sub DeleteDataFiles(ByVal strFileNames As String)
     arrStrDataFiles = Split(strFileNames, ",")
     
     For intCtrl = 0 To UBound(arrStrDataFiles)
-        If fso.FileExists(GetAbsolutePath(TAX_Utilities_New.DataFolder & arrStrDataFiles(intCtrl) & ".xml")) Then
-            fso.DeleteFile GetAbsolutePath(TAX_Utilities_New.DataFolder & arrStrDataFiles(intCtrl) & ".xml"), True
+        If fso.FileExists(GetAbsolutePath(TAX_Utilities_v1.DataFolder & arrStrDataFiles(intCtrl) & ".xml")) Then
+            fso.DeleteFile GetAbsolutePath(TAX_Utilities_v1.DataFolder & arrStrDataFiles(intCtrl) & ".xml"), True
             '.DeleteRows i + 1, 1
         End If
     Next intCtrl
@@ -2205,7 +2205,7 @@ Private Function SearchKHBS(StrFromdate As String, StrToDate As String, ByRef st
     Dim sdateKHBS As String
     Dim strDataFile As String
     Dim strThuePhaiNopId As String
-    xmlDocument.Load TAX_Utilities_New.GetAbsolutePath("map.xml")
+    xmlDocument.Load TAX_Utilities_v1.GetAbsolutePath("map.xml")
     Set xmlNodeListMap = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
     
     dPeriodFrom = DateSerial(CInt(Mid$(StrFromdate, 7, 4)), CInt(Mid$(StrFromdate, 4, 2)), CInt(Mid$(StrFromdate, 1, 2)))

@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "FPSPRU70.OCX"
+Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Begin VB.Form frmAddSheet 
    BorderStyle     =   3  'Fixed Dialog
    ClientHeight    =   2325
@@ -299,7 +299,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         End If
     Next lCtrl
 
-    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "68" Then
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
         chkSelectAll.Enabled = False
         fpSpread1.Col = 1
             For lCtrl = 2 To fpSpread1.MaxRows

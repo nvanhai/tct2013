@@ -126,7 +126,7 @@ Begin VB.Form frmReportData
       DisplayText     =   ""
       BarWidthReduction=   -1
       TextAlignment   =   0
-      Quality         =   68
+      Quality         =   0
    End
 End
 Attribute VB_Name = "frmReportData"
@@ -162,6 +162,7 @@ Private objTaxBusiness      As Object               'Private business object (cl
 
 Private isDLT As Boolean
 
+
 '****************************************************
 'Description:Form_Load procedure initialize the values of controls
 '   Step 1: Load excel template to fpsReport grid.
@@ -171,21 +172,21 @@ Private isDLT As Boolean
 '****************************************************
 Private Sub Form_Load()
 
-    On Error GoTo ErrHandle
-    Dim fso        As New FileSystemObject
+On Error GoTo ErrHandle
+    Dim fso As New FileSystemObject
     ' Phuc vu in thong tin DLT
-    Dim strTemp    As String
-    Dim vTemp      As Variant
+    Dim strTemp As String
+    Dim vTemp As Variant
     Dim arrSheet() As String
-    Dim arrRow()   As String
+    Dim arrRow() As String
     ' End
     
     fpsReport.hDCPrinter = Printer.hDC
     
     If fso.FileExists("..\InterfaceTemplates\Template.xls") Then
-        '        If fpsReport.IsExcelFile("..\InterfaceTemplates\Template.xls") Then
-        '            fpsReport.ImportExcelBook GetAbsolutePath("..\InterfaceTemplates\Template.xls"), vbNullString
-        '        End If
+'        If fpsReport.IsExcelFile("..\InterfaceTemplates\Template.xls") Then
+'            fpsReport.ImportExcelBook GetAbsolutePath("..\InterfaceTemplates\Template.xls"), vbNullString
+'        End If
         fpsReport.LoadFromFile "..\InterfaceTemplates\Template.xls"
     End If
     
@@ -198,7 +199,7 @@ Private Sub Form_Load()
     
     ' Setup Spread trong truong hop in bo sung cac to khai quyet toan
     If flgPrintBoSung = False Then GoTo nextPrinter
-    Dim i    As Integer
+    Dim i As Integer
     Dim test As Boolean
     Dim varTemp As String
     Dim listInBoSung5A_Copy() As String
@@ -206,8 +207,7 @@ Private Sub Form_Load()
     Dim j    As Integer, j2 As Integer
     
     With fpsReport
-
-        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "17" Then
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" Then
             .sheet = 2
             .Row = 15
             ReDim Preserve listInBoSung5A_Copy(UBound(listInBoSung5A))
@@ -251,12 +251,12 @@ Private Sub Form_Load()
                         End If
                         Exit For
                     Else
-                        ' .DeleteRows .Row, 0
-                        '.Height = 0
+                       ' .DeleteRows .Row, 0
+                       '.Height = 0
                         .RowHidden = True
                     End If
-
                 Next
+                
                                 
                 .Row = .Row + 1
                 
@@ -272,7 +272,6 @@ Private Sub Form_Load()
             
             .sheet = 3
             .Row = 15
-
             Do
                 .Col = .ColLetterToNumber("B")
 
@@ -289,13 +288,10 @@ Private Sub Form_Load()
                     Else
                         .RowHidden = True
                     End If
-
                 Next
-
                 .Row = .Row + 1
                 
             Loop Until .Text = "aa"
-
             ' Visible dong cam ket la du lieu to khai dung
             .Row = .Row + 2
             .RowHidden = True
@@ -305,28 +301,23 @@ Private Sub Form_Load()
             .RowHidden = False
         End If
         
-        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "43" Then
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "43" Then
             .sheet = 2
             .Row = 39
 
             Do
                 .Col = .ColLetterToNumber("B")
-
                 For i = 0 To UBound(listInBoSung2A)
-
                     If Trim(.Text) = Trim(listInBoSung2A(i)) Then
                         .RowHidden = False
                         Exit For
                     Else
                         .RowHidden = True
                     End If
-
                 Next
-
                 .Row = .Row + 1
                 
             Loop Until .Text = "aa"
-
             ' Visible dong cam ket la du lieu to khai dung
             .Row = .Row + 2
             .RowHidden = True
@@ -337,28 +328,24 @@ Private Sub Form_Load()
         End If
         
         ' to khai 06 KK TNCN
-        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "59" Then
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "59" Then
             .sheet = 2
             .Row = 15
-
             Do
                 .Col = .ColLetterToNumber("B")
                 
                 For i = 0 To UBound(listInBoSung6B)
-
                     If Trim(.Text) = Trim(listInBoSung6B(i)) Then
-                        .RowHidden = False
-                        test = True
+                       .RowHidden = False
+                       test = True
     
                         Exit For
                     Else
-                        ' .DeleteRows .Row, 0
-                        '.Height = 0
+                       ' .DeleteRows .Row, 0
+                       '.Height = 0
                         .RowHidden = True
                     End If
-
                 Next
-
                 .Row = .Row + 1
                 
             Loop Until .Text = "aa"
@@ -371,48 +358,49 @@ Private Sub Form_Load()
             .Row = .Row + 1
             .RowHidden = False
         End If
+
         
     End With
     
     ' End Setup Spread trong truong hop in bo sung cac to khai quyet toan
 
-    '    If GetAttribute(TAX_Utilities_New.NodeValidity, "Class2") <> vbNullString Then
-    '        Set objTaxBusiness = CreateObject(GetAttribute(TAX_Utilities_New.NodeValidity, "Class2"))
-    '        Set objTaxBusiness.fpsGrid = fpsReport
-    '        objTaxBusiness.Process
-    '    End If
 
-    ' Print report footer
+'    If GetAttribute(TAX_Utilities_v1.NodeValidity, "Class2") <> vbNullString Then
+'        Set objTaxBusiness = CreateObject(GetAttribute(TAX_Utilities_v1.NodeValidity, "Class2"))
+'        Set objTaxBusiness.fpsGrid = fpsReport
+'        objTaxBusiness.Process
+'    End If
+    
+
+' Print report footer
     
 nextPrinter:
-
     Dim font1 As String
     'font1 = "/fn""Arial""/fz""9""/fb1/fi1/fu1"
     'dhdang sua in check gia han
     'ngay 19/04/2011
     fpsReport.sheet = 1
-
-    If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "11") Or (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "12") Then
-'        'dhdang sua check gia han nop theo thong tu
-'        ' q Quy ke khai
-'        ' y nam ke khai
-'        ' dNgayTaiChinh ngay tai chinh lay tren man hinh HTKK
-'        ' dThangTaiChinh thang tai chinh tren phan thong tin chung HTKK
-'        ' dType: 0 tra ve quy, 1 tra ve nam
-        Dim Quynamtc        As Integer
-        Dim Namtc           As Integer
-        Dim QuyKK           As Integer
-        Dim NamKK           As Integer
-        Dim iNgayTaiChinh   As Integer
-        Dim iThangTaiChinh  As Integer
+    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "11") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "12") Then
+     'dhdang sua check gia han nop theo thong tu
+         ' q Quy ke khai
+        ' y nam ke khai
+        ' dNgayTaiChinh ngay tai chinh lay tren man hinh HTKK
+        ' dThangTaiChinh thang tai chinh tren phan thong tin chung HTKK
+        ' dType: 0 tra ve quy, 1 tra ve nam
+        Dim Quynamtc As Integer
+        Dim Namtc As Integer
+        Dim QuyKK As Integer
+        Dim NamKK As Integer
+        Dim iNgayTaiChinh As Integer
+        Dim iThangTaiChinh As Integer
         Dim strNgayTaiChinh As String
         Dim Thongtu         As String
         Dim ThangKK As Integer
-
+        
         Dim rowCheckGH As Long
         Dim colCheckGH As String
 '
-'        If (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "11") Then
+'        If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "11") Then
 '            rowCheckGH = 38
 '            colCheckGH = "H"
 '        Else
@@ -420,15 +408,15 @@ nextPrinter:
 '            colCheckGH = "G"
 '        End If
 '
-'        QuyKK = TAX_Utilities_New.ThreeMonths
-'        NamKK = TAX_Utilities_New.Year
+'        QuyKK = TAX_Utilities_v1.ThreeMonths
+'        NamKK = TAX_Utilities_v1.Year
 '
         ' ID to khai
-        Dim idToKhai      As String
+        Dim idToKhai As String
         Dim dsTK_checkDLT As String
 '
 '        'Lay ngay bat dau nam tai chinh
-'        If GetAttribute(TAX_Utilities_New.NodeMenu, "FinanceYear") = "1" Then
+'        If GetAttribute(TAX_Utilities_v1.NodeMenu, "FinanceYear") = "1" Then
 '            strNgayTaiChinh = GetNgayBatDauNamTaiChinh
 '            iNgayTaiChinh = GetNgayTaiChinh(strNgayTaiChinh)
 '            iThangTaiChinh = GetThangTaiChinh(strNgayTaiChinh)
@@ -466,17 +454,16 @@ nextPrinter:
 '             fpsReport.SetText fpsReport.ColLetterToNumber(colCheckGH), rowCheckGH, Thongtu
 '        End If
 
-    ElseIf (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "03") Then
-
-        If TAX_Utilities_New.Year = 2009 Then
-            fpsReport.SetText fpsReport.ColLetterToNumber("E"), 25, GetAttribute(GetMessageCellById("0185"), "Msg")
-        ElseIf TAX_Utilities_New.Year = 2010 Then
+    ElseIf (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "03") Then
+        If TAX_Utilities_v1.Year = 2009 Then
+        fpsReport.SetText fpsReport.ColLetterToNumber("E"), 25, GetAttribute(GetMessageCellById("0185"), "Msg")
+        ElseIf TAX_Utilities_v1.Year = 2010 Then
             fpsReport.SetText fpsReport.ColLetterToNumber("E"), 25, GetAttribute(GetMessageCellById("0187"), "Msg")
-        ElseIf TAX_Utilities_New.Year = 2011 Then
+        ElseIf TAX_Utilities_v1.Year = 2011 Then
             fpsReport.SetText fpsReport.ColLetterToNumber("E"), 25, GetAttribute(GetMessageCellById("0243"), "Msg")
-'        ElseIf TAX_Utilities_New.Year = 2013 Then
+'        ElseIf TAX_Utilities_v1.Year = 2013 Then
 '            fpsReport.SetText fpsReport.ColLetterToNumber("E"), 25, GetAttribute(GetMessageCellById("0263"), "Msg")
-'        ElseIf Val(TAX_Utilities_New.Year) = 2011 Or Val(TAX_Utilities_New.Year) > 2013 Then
+'        ElseIf Val(TAX_Utilities_v1.Year) = 2011 Or Val(TAX_Utilities_v1.Year) > 2013 Then
 '            fpsReport.SetText fpsReport.ColLetterToNumber("E"), 25, ""
 '            fpsReport.Row = 25
 '            fpsReport.Col = fpsReport.ColLetterToNumber("C")
@@ -485,13 +472,13 @@ nextPrinter:
         Else
             fpsReport.SetText fpsReport.ColLetterToNumber("E"), 25, GetAttribute(GetMessageCellById("0263"), "Msg")
         End If
-    ElseIf (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "01") Then
-        If TAX_Utilities_New.Year = 2012 And (TAX_Utilities_New.month = 4 Or TAX_Utilities_New.month = 5 Or TAX_Utilities_New.month = 6) Then
+    ElseIf (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "01") Then
+        If TAX_Utilities_v1.Year = 2012 And (TAX_Utilities_v1.month = 4 Or TAX_Utilities_v1.month = 5 Or TAX_Utilities_v1.month = 6) Then
             fpsReport.SetText fpsReport.ColLetterToNumber("G"), 33, GetAttribute(GetMessageCellById("0262"), "Msg")
             fpsReport.Row = 34
             fpsReport.Col = fpsReport.ColLetterToNumber("O")
             fpsReport.FontBold = False
-'        ElseIf TAX_Utilities_New.Year = 2013 And (TAX_Utilities_New.month = 1 Or TAX_Utilities_New.month = 2 Or TAX_Utilities_New.month = 3) Then
+'        ElseIf TAX_Utilities_v1.Year = 2013 And (TAX_Utilities_v1.month = 1 Or TAX_Utilities_v1.month = 2 Or TAX_Utilities_v1.month = 3) Then
 '            fpsReport.SetText fpsReport.ColLetterToNumber("G"), 33, GetAttribute(GetMessageCellById("0263"), "Msg")
 '            fpsReport.Row = 34
 '            fpsReport.Col = fpsReport.ColLetterToNumber("C")
@@ -530,7 +517,7 @@ nextPrinter:
 '            fpsReport.Text = ""
 '            fpsReport.Lock = True
         End If
-    ElseIf (TAX_Utilities_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") Then
+    ElseIf (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") Then
         fpsReport.SetText fpsReport.ColLetterToNumber("E"), 83, GetAttribute(GetMessageCellById("0265"), "Msg")
         fpsReport.Row = 83
         fpsReport.Col = fpsReport.ColLetterToNumber("E")
@@ -546,49 +533,49 @@ nextPrinter:
         
         
     End If
-
     'end
     '------------------
     font1 = "/fn""Arial""/fz""8""/fb1/fi1/fu1"
     
-    If GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 15 Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 16 Then
-        fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0178"), "Msg")
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 53 Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 37 Then
-        fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0128"), "Msg")
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 46 Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 47 Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 48 Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 49 Then
-        fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0190"), "Msg")
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 50 Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 51 Then
+       
+    
+    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 15 Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 16 Then
+      fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0178"), "Msg")
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 53 Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 37 Then
+      fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0128"), "Msg")
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 46 Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 47 Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 48 Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 49 Then
+      fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0190"), "Msg")
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 50 Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 51 Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0179"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0180"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0181"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0182"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0287"), "Msg")
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 54 Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 38 Then
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 54 Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 38 Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0129"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0130"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0131"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0132"), "Msg")
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 39 Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 40 Then
-        fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0133"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0136"), "Msg")
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 36 Then
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 39 Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 40 Then
+      fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0133"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0136"), "Msg")
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 36 Then
         'fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0134"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0189"), "Msg")
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0134"), "Msg")
         ' vttoan: them ma muc to 01_NTNN (thue nha thau)
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 70 Then
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 70 Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0191"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0192"), "Msg")
         ' nkhoan
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 81 Then
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 81 Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0258"), "Msg")
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 82 Then
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 82 Then
         'fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0259"), "Msg")
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0289"), "Msg")
         ' vttoan: them ma tieu muc 03_GTGT
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "04" Then
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0193"), "Msg")
         ' to khai 03B_GTGT
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "95" Then
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0193"), "Msg")
         'dntai: them tieu muc to 01_TTDB , 01A_TNDN, 01B_TNDN , 01_GTGT
         ' to khai 03A_GTGT
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "88" Then
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0288"), "Msg")
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "05" And strLoaiNNKD <> "0" Then
-        fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0194"), "Msg")
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "11" Then
-
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "05" And strLoaiNNKD <> "0" Then
+      fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0194"), "Msg")
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "11" Then
         If strLoaiNNKD = "1052" Then
             fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0195"), "Msg")
         ElseIf strLoaiNNKD = "1056" Then
@@ -596,9 +583,7 @@ nextPrinter:
         ElseIf strLoaiNNKD = "1057" Then
             fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0197"), "Msg")
         End If
-
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "12" Then
-
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "12" Then
         If strLoaiNNKD = "1052" Then
             fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0198"), "Msg")
         ElseIf strLoaiNNKD = "1056" Then
@@ -606,9 +591,7 @@ nextPrinter:
         ElseIf strLoaiNNKD = "1057" Then
             fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0200"), "Msg")
         End If
-
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "03" Then
-
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "03" Then
         If strLoaiNNKD = "1052" Then
             fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0249"), "Msg")
         ElseIf strLoaiNNKD = "1056" Then
@@ -616,9 +599,7 @@ nextPrinter:
         ElseIf strLoaiNNKD = "1057" Then
             fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0251"), "Msg")
         End If
-
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "01" Then
-
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Then
         If strLoaiNNKD = "1701" Then
             fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0201"), "Msg")
         ElseIf strLoaiNNKD = "1704" Then
@@ -626,23 +607,20 @@ nextPrinter:
         ElseIf strLoaiNNKD = "1705" Then
             fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0203"), "Msg")
         End If
-
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = "73" Then
-
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "73" Then
         If strLoaiNNKD = "1054" Then
             fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0238"), "Msg")
         ElseIf strLoaiNNKD = "1053" Then
             fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0239"), "Msg")
         End If
-
-        'dntai:them tieu muc to 06_TNCN
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 59 Then
+    'dntai:them tieu muc to 06_TNCN
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 59 Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0231"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0232"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0233"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0234"), "Msg")
     '01B/TNDN-DK
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 99 Then
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 99 Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0277"), "Msg")
     'set footer for 01/TAIN-DK,02/TAIN-DK, 02/TNDN-DK
-    ElseIf (GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 92 Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 93 Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 98 Or GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 89) Then
+    ElseIf (GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 92 Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 93 Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 98 Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 89) Then
         If (strDauTho = "1") Then
             fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0275"), "Msg")
         ElseIf (strCondensate = "1") Then
@@ -650,28 +628,25 @@ nextPrinter:
         ElseIf (strKhiThienNhien = "1") Then
             fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0277"), "Msg")
         End If
-    ElseIf GetAttribute(TAX_Utilities_New.NodeValidity.parentNode, "ID") = 25 Then
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 25 Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0284"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0285"), "Msg")
     
     End If
     
     'KHBS khong thay doi so thue se ko in phu luc va co cau canh bao
-    idToKhai = GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
+    idToKhai = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
 
     If strKHBS = "TKBS" And (idToKhai = "01" Or idToKhai = "02" Or idToKhai = "04" Or idToKhai = "11" Or idToKhai = "12" Or idToKhai = "06" Or idToKhai = "05" Or idToKhai = "03" Or idToKhai = "71" Or idToKhai = "72" Or idToKhai = "73" Or idToKhai = "77" Or idToKhai = "80" Or idToKhai = "81" Or idToKhai = "82" Or idToKhai = "83" Or idToKhai = "85" Or idToKhai = "86" Or idToKhai = "87" Or idToKhai = "89" _
     Or idToKhai = "90" Or idToKhai = "95" Or idToKhai = "70") Then
 
         If objTaxBusiness Is Nothing Then
-            Set objTaxBusiness = CreateObject(GetAttribute(TAX_Utilities_New.NodeValidity, "Class"))
+            Set objTaxBusiness = CreateObject(GetAttribute(TAX_Utilities_v1.NodeValidity, "Class"))
             objTaxBusiness.SetActiveKHBS
-
             If objTaxBusiness.FlagThaydoi = "1" Then
                 fpsReport.PrintFooter = fpsReport.PrintFooter & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0226"), "Msg")
             End If
-
         Else
             objTaxBusiness.SetActiveKHBS
-
             If objTaxBusiness.FlagThaydoi = "1" Then
                 fpsReport.PrintFooter = fpsReport.PrintFooter & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0226"), "Msg")
             End If
@@ -683,41 +658,32 @@ nextPrinter:
 
     If InStr(1, dsTK_checkDLT, "~" & Trim$(idToKhai) & "~", vbTextCompare) > 0 Then
         If objTaxBusiness Is Nothing Then
-            Set objTaxBusiness = CreateObject(GetAttribute(TAX_Utilities_New.NodeValidity, "Class"))
+            Set objTaxBusiness = CreateObject(GetAttribute(TAX_Utilities_v1.NodeValidity, "Class"))
         End If
-
         objTaxBusiness.inThongTinDL
         isDLT = objTaxBusiness.FlagDLThue
         strTemp = objTaxBusiness.strTuRowDenRowPL
-
         If strTemp <> "" Then
             arrSheet = Split(strTemp, "~")
         End If
-
         ' To khai
         If isDLT = False Then
-
             For i = objTaxBusiness.tuRowDL To objTaxBusiness.denRowDL
                 fpsReport.sheet = 1
                 fpsReport.Row = i
                 fpsReport.RowHidden = True
             Next
-
         End If
-
         ' PL
         If isDLT = False Then
-
             For Each vTemp In arrSheet
                 arrRow = Split(CStr(vTemp), "_")
-
                 For i = CLng(arrRow(0)) To CLng(arrRow(1))
                     fpsReport.sheet = CLng(arrRow(2))
                     fpsReport.Row = i
                     fpsReport.RowHidden = True
                 Next
             Next
-
         End If
         
         ' kiem tra to khai 02/TNDN
@@ -736,7 +702,7 @@ nextPrinter:
     
     SetupPrinter
     
-    Exit Sub
+Exit Sub
 ErrHandle:
     SaveErrorLog Me.Name, "Form_Load", Err.Number, Err.Description
 End Sub
@@ -785,9 +751,9 @@ On Error GoTo ErrHandle
             .PrintMarginBottom = 0.5 * 1440
             .PrintUseDataMax = False
          
-'            If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = 17 Then
-'                If Len(GetAttribute(TAX_Utilities_New.Data(0).nodeFromID("P_15"), "Value")) > 10 Or _
-'                   Len(GetAttribute(TAX_Utilities_New.Data(0).nodeFromID("P_16"), "Value")) > 10 Then
+'            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = 17 Then
+'                If Len(GetAttribute(TAX_Utilities_v1.Data(0).nodeFromID("P_15"), "Value")) > 10 Or _
+'                   Len(GetAttribute(TAX_Utilities_v1.Data(0).nodeFromID("P_16"), "Value")) > 10 Then
 '                        If vConfirm = False Then
 '                            DisplayMessage "0121", msOKOnly, miWarning
 '                            vConfirm = True
@@ -796,13 +762,13 @@ On Error GoTo ErrHandle
 '                End If
 '            End If
             ' BC26
-'            If GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "Caption") = "BC26-AC" Then
+'            If GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "Caption") = "BC26-AC" Then
 '                Printer.PaperSize = vbPRPSA3
 '                Printer.Orientation = vbPRORLandscape
 '            End If
             ' end
             ' to khai thue nha thau in theo kho giay nam ngang
-            If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Then
+            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "70" Then
                 Printer.PaperSize = vbPRPSA4
                 Printer.Orientation = vbPRORLandscape
             End If
@@ -824,15 +790,15 @@ On Error GoTo ErrHandle
                     
                 Next intRow
                 
-'                 If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = 17 And intCtrl = 1 And .Row > 12 _
-'                 And (Len(GetAttribute(TAX_Utilities_New.Data(0).nodeFromID("P_15"), "Value")) > 10 Or Len(GetAttribute(TAX_Utilities_New.Data(0).nodeFromID("P_16"), "Value")) > 10) Then
+'                 If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = 17 And intCtrl = 1 And .Row > 12 _
+'                 And (Len(GetAttribute(TAX_Utilities_v1.Data(0).nodeFromID("P_15"), "Value")) > 10 Or Len(GetAttribute(TAX_Utilities_v1.Data(0).nodeFromID("P_16"), "Value")) > 10) Then
 '                    If intCol = .ColLetterToNumber("C") Or intCol = .ColLetterToNumber("G") Or intCol = .ColLetterToNumber("CP") Then
 '                        .ColWidth(intCol) = .ColWidth(intCol) + 8
 '                        .PrintCenterOnPageH = True
 '                    End If
 '                 End If
-'                 If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = 17 And intCtrl = 2 _
-'                 And (Len(GetAttribute(TAX_Utilities_New.Data(0).nodeFromID("P_15"), "Value")) > 10 Or Len(GetAttribute(TAX_Utilities_New.Data(0).nodeFromID("P_16"), "Value")) > 10) Then
+'                 If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = 17 And intCtrl = 2 _
+'                 And (Len(GetAttribute(TAX_Utilities_v1.Data(0).nodeFromID("P_15"), "Value")) > 10 Or Len(GetAttribute(TAX_Utilities_v1.Data(0).nodeFromID("P_16"), "Value")) > 10) Then
 '                       .ColWidth(intCol) = .ColWidth(intCol) + 1.2
 '                 End If
                  
@@ -995,9 +961,6 @@ On Error GoTo ErrHandle
     ' Begin print Barcode into page 1 or pages in PDF Barcode of iHTKK
     ' Ghep them the nhan dang ma vach <TCT-BARCODE> chuoi ma vach </TCT-BARCODE>
     strBarcodeInPDF = "<TCT-BARCODE>" & strBarcodeInPDF & "</TCT-BARCODE>"
-    
-    'Debug.Print strBarcodeInPDF
-    
     arrStrValueBarCode = CutStringByNumChar(strBarcodeInPDF, 124)
     For i = 1 To UBound(arrStrValueBarCode)
         Printer.FontSize = 1
@@ -1010,7 +973,7 @@ On Error GoTo ErrHandle
 
 
     ' Neu la to quyet toan TNCN thi ko in ma vach, Cac to khai khac van in ma vach binh thuong
-    If (GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "17" Or (GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "41" And isDLT = True)) And (intCurrPage = 1 Or intCurrPage = 2) Then
+    If (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" Or (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "41" And isDLT = True)) And (intCurrPage = 1 Or intCurrPage = 2) Then
 '   Print right align
         For intCtrl = intNumberOfBarcode - 1 To 0 Step -1
             If intStart + intCtrl <= UBound(arrStrValue) And IsPrintedPage(intCurrPage) Then
@@ -1018,7 +981,7 @@ On Error GoTo ErrHandle
                 lXOffset = lXOffset - lXSize - lXRange
             End If
         Next intCtrl
-    ElseIf (GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "43" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "59" Or (GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "41" And isDLT = False)) And intCurrPage = 1 Then
+    ElseIf (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "59" Or (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "41" And isDLT = False)) And intCurrPage = 1 Then
 '   Print right align
         For intCtrl = intNumberOfBarcode - 1 To 0 Step -1
             If intStart + intCtrl <= UBound(arrStrValue) And IsPrintedPage(intCurrPage) Then
@@ -1026,7 +989,7 @@ On Error GoTo ErrHandle
                 lXOffset = lXOffset - lXSize - lXRange
             End If
         Next intCtrl
-    ElseIf (GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "17" And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "41" And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "42" And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "43" And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "59") Then
+    ElseIf (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "17" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "41" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "42" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "43" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "59") Then
 '   Print right align
         For intCtrl = intNumberOfBarcode - 1 To 0 Step -1
             If intStart + intCtrl <= UBound(arrStrValue) And IsPrintedPage(intCurrPage) Then
@@ -1083,12 +1046,13 @@ On Error GoTo ErrHandle
     Debug.Print strValue
     'dhdang sua day chuoi ma vach mau in sang phai
     'ngay 16-05-2011
-'    If GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "Caption") = "BC26-AC" Then
+'    If GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "Caption") = "BC26-AC" Then
 '           ' TBarCode.BCDraw Printer.hDC, 7000, lYPos, lBarcodeWidth, lBarcodeHeight
 '            TBarCode.BCDraw Printer.hDC, lXPos, lYPos, lBarcodeWidth, lBarcodeHeight
 '    Else
     TBarCode.BCDraw Printer.hDC, lXPos, lYPos, lBarcodeWidth, lBarcodeHeight
 '    End If
+    
 Exit Sub
 ErrHandle:
     SaveErrorLog Me.Name, "PrintBarcode", Err.Number, Err.Description
@@ -1125,7 +1089,7 @@ On Error GoTo ErrHandle
     '  added
     ' Date: 06/04/06
     ' Process printing session
-    If TAX_Utilities_New.DataChanged Then
+    If TAX_Utilities_v1.DataChanged Then
         If intDataSession >= 999 Then
             intDataSession = 0
         Else
@@ -1148,10 +1112,10 @@ On Error GoTo ErrHandle
             Printer.Orientation = fpsReport.PrintOrientation
             
             intIndex = 0
-            For Each xmlNodeSheet In TAX_Utilities_New.NodeValidity.childNodes
+            For Each xmlNodeSheet In TAX_Utilities_v1.NodeValidity.childNodes
                 If UCase(GetAttribute(xmlNodeSheet, "ID")) = UCase(fpsReport.SheetName) Then
                     If GetAttribute(xmlNodeSheet, "Active") <> "0" Then
-                        If Val(GetAttribute(TAX_Utilities_New.NodeMenu, "ID")) = 68 Then
+                        If Val(GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")) = 68 Then
                             PrintSheetAC intSheet, intIndex
                         Else
                             PrintSheet intSheet, intIndex
@@ -1173,9 +1137,9 @@ On Error GoTo ErrHandle
     '*********************************
     '  added
     ' Date: 06/04/06
-    If TAX_Utilities_New.DataChanged Then
-        If SaveSessionValueToFile(TAX_Utilities_New.DataFolder & "Session.dat", , False) Then
-            TAX_Utilities_New.DataChanged = False
+    If TAX_Utilities_v1.DataChanged Then
+        If SaveSessionValueToFile(TAX_Utilities_v1.DataFolder & "Session.dat", , False) Then
+            TAX_Utilities_v1.DataChanged = False
         End If
     End If
     '*********************************
@@ -1247,7 +1211,7 @@ On Error GoTo ErrHandle
     '****************************************
         'Add prefix string to barcode string
         arrStrValue(intCtrl) = strTemp & CStr(arrStrValue(intCtrl)) & "#"
-        arrStrValue(intCtrl) = clsConverter.Convert(CStr(arrStrValue(intCtrl)), UNICODE, TCVN)   'TAX_Utilities_New.Compress(TAX_Utilities_New.Convert(CStr(arrStrValue(intCtrl)), UNICODE, TCVN))
+        arrStrValue(intCtrl) = clsConverter.Convert(CStr(arrStrValue(intCtrl)), UNICODE, TCVN)   'TAX_Utilities_v1.Compress(TAX_Utilities_v1.Convert(CStr(arrStrValue(intCtrl)), UNICODE, TCVN))
     Next intCtrl
 
     'Print first page
@@ -1311,9 +1275,9 @@ Dim xmlNodeSheet As MSXML.IXMLDOMNode
 ' Add app version to prefix
 
 If strKHBS = "frmKHBS_BS" Or strKHBS = "TKBS" Then
-    strReturn = "bs" & Replace$(APP_VERSION, ".", "") & GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
+    strReturn = "bs" & Replace$(APP_VERSION, ".", "") & GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
 Else
-    strReturn = "aa" & Replace$(APP_VERSION, ".", "") & GetAttribute(TAX_Utilities_New.NodeMenu, "ID")
+    strReturn = "aa" & Replace$(APP_VERSION, ".", "") & GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
 End If
 
 
@@ -1323,29 +1287,29 @@ strTaxID = GetTaxIDString()
 strReturn = strReturn & strTaxID
 
 'Add period
-If GetAttribute(TAX_Utilities_New.NodeMenu, "Month") = "1" Then
+If GetAttribute(TAX_Utilities_v1.NodeMenu, "Month") = "1" Then
     ' to khai thang/quy GTGT, TNCN
-    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "25" Then
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "25" Then
         If strQuy = "TK_THANG" Then
-            strReturn = strReturn & TAX_Utilities_New.month & TAX_Utilities_New.Year
+            strReturn = strReturn & TAX_Utilities_v1.month & TAX_Utilities_v1.Year
         Else
-            strReturn = strReturn & "0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year
+            strReturn = strReturn & "0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year
         End If
     Else
-        strReturn = strReturn & TAX_Utilities_New.month & TAX_Utilities_New.Year
+        strReturn = strReturn & TAX_Utilities_v1.month & TAX_Utilities_v1.Year
     End If
-ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ThreeMonth") = "1" Then
-    If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "68" Then
+ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ThreeMonth") = "1" Then
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
         If strQuy = "TK_THANG" Then
-            strReturn = strReturn & TAX_Utilities_New.month & TAX_Utilities_New.Year
+            strReturn = strReturn & TAX_Utilities_v1.month & TAX_Utilities_v1.Year
         Else
-            strReturn = strReturn & "0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year
+            strReturn = strReturn & "0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year
         End If
     Else
-        strReturn = strReturn & "0" & TAX_Utilities_New.ThreeMonths & TAX_Utilities_New.Year
+        strReturn = strReturn & "0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year
     End If
-ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Year") = "1" Then
-    strReturn = strReturn & "00" & TAX_Utilities_New.Year
+ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "Year") = "1" Then
+    strReturn = strReturn & "00" & TAX_Utilities_v1.Year
 End If
 
 '******************************
@@ -1384,10 +1348,10 @@ Dim xmlNodeSheet As MSXML.IXMLDOMNode
 For intSheet = 1 To fpsReport.SheetCount - 1
     fpsReport.sheet = intSheet
     intIndex = 0
-    For Each xmlNodeSheet In TAX_Utilities_New.NodeValidity.childNodes
+    For Each xmlNodeSheet In TAX_Utilities_v1.NodeValidity.childNodes
         If UCase(GetAttribute(xmlNodeSheet, "ID")) = UCase(fpsReport.SheetName) Then
             If GetAttribute(xmlNodeSheet, "Active") <> "0" Then
-                If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = 68 Then
+                If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = 68 Then
                     arrStrValue = CutStringByNumByte(strDataBarcode(intIndex), 1000)
                     intNumberOfBarcode = intNumberOfBarcode + UBound(arrStrValue)
                 Else
@@ -1507,13 +1471,13 @@ Private Sub SetupPrinter()
             Printer.Orientation = fpsReport.PrintOrientation
             intIndex = 0
             blnActiveSheet = False
-            For Each xmlNodeSheet In TAX_Utilities_New.NodeValidity.childNodes
+            For Each xmlNodeSheet In TAX_Utilities_v1.NodeValidity.childNodes
                 If UCase(GetAttribute(xmlNodeSheet, "ID")) = UCase(.SheetName) Then
                     If GetAttribute(xmlNodeSheet, "Active") <> "0" Then
                         blnActiveSheet = True
                         'Get array of barcode string
                         'Neu BC 26 se dat ma vach khoang 1000
-                        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = 68 Then
+                        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = 68 Then
                             arrStrValue = CutStringByNumByte(strDataBarcode(intIndex), 1000)
                         ' end if
                         Else
@@ -1522,9 +1486,9 @@ Private Sub SetupPrinter()
                         'dhdang sua ngay 17/06/2010
                         'sua loi in bag ke to khai 05KK-TNCN bang ke in bi loi tran trang
                         'Get number of page calculated by number of barcode
-                        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "17" And flgPrintBoSung = True And .sheet = 2 Then
+                        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" And flgPrintBoSung = True And .sheet = 2 Then
                                 lPageNoByBarcode = IIf(UBound(listInBoSung5A) Mod 40 = 0, UBound(listInBoSung5A) \ 40, UBound(listInBoSung5A) \ 40 + 1)
-                        ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "17" And flgPrintBoSung = True And .sheet = 3 Then
+                        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" And flgPrintBoSung = True And .sheet = 3 Then
                                 lPageNoByBarcode = IIf(UBound(listInBoSung5B) Mod 40 = 0, UBound(listInBoSung5B) \ 40, UBound(listInBoSung5B) \ 40 + 1)
                         Else
                                 lPageNoByBarcode = IIf(UBound(arrStrValue) Mod 4 = 0, UBound(arrStrValue) \ 4, UBound(arrStrValue) \ 4 + 1)
@@ -1568,23 +1532,23 @@ Private Sub SetupPrinter()
                 
                 Dim rowBreak As Double
                                 
-                If lCtrl = 1 And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "11" Then
-                ElseIf lCtrl = 1 And isDLT = True And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Then
+                If lCtrl = 1 And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "11" Then
+                ElseIf lCtrl = 1 And isDLT = True And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
                     .Row = 59
                     .RowPageBreak = True
-                ElseIf lCtrl = 1 And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "41" Then
+                ElseIf lCtrl = 1 And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "41" Then
                     .Row = 63
                     .RowPageBreak = True
-                ElseIf lCtrl = 1 And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "75" Then
+                ElseIf lCtrl = 1 And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "75" Then
                     .Row = 42
                     .RowPageBreak = True
-                ElseIf lCtrl = 1 And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "76" Then
+                ElseIf lCtrl = 1 And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "76" Then
                     .Row = 50
                     .RowPageBreak = True
-                ElseIf lCtrl = 4 And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "03" Then
+                ElseIf lCtrl = 4 And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "03" Then
                     .Row = 51
                     .RowPageBreak = True
-                ElseIf lCtrl = 1 And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "70" Then
+                ElseIf lCtrl = 1 And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "70" Then
                     .sheet = 1
                     .Row = 53
                     .Col = .ColLetterToNumber("C")
@@ -1607,20 +1571,20 @@ Private Sub SetupPrinter()
                     End If
                 Else
                     If .MaxRows - arrLngRowPageBreak(intIndex2) <= 5 Then
-                        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "81" Then
+                        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "81" Then
                             ' To khai 03/NTNN
                             .Row = 10 + GetLastDataRow(lCtrl)
-                        ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "71" Then
+                        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Then
                             ' To khai 04/GTGT
                             .Row = GetLastDataRow1(lCtrl)
-                        ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "90" Then
+                        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "90" Then
                             ' To khai 01/TBVMT
                             If lCtrl = 1 Then
                                 .Row = GetLastDataRow1(lCtrl)
                             Else
                                 .Row = GetLastDataRow(lCtrl)
                             End If
-                        ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "05" Then
+                        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "05" Then
                              If lCtrl = 1 Then
                                 .Row = GetLastDataRow2(lCtrl)
                             Else
@@ -1637,10 +1601,10 @@ Private Sub SetupPrinter()
                             .RowPageBreak = True
                         End If
                     Else
-                        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" And .MaxRows - arrLngRowPageBreak(intIndex2) <= 6 And lCtrl = 2 Then
+                        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" And .MaxRows - arrLngRowPageBreak(intIndex2) <= 6 And lCtrl = 2 Then
                             .Row = GetLastDataRow(lCtrl)
                             .RowPageBreak = True
-                        ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" And .MaxRows - arrLngRowPageBreak(intIndex2) <= 8 And lCtrl = 3 Then
+                        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" And .MaxRows - arrLngRowPageBreak(intIndex2) <= 8 And lCtrl = 3 Then
                             .Row = GetLastDataRow(lCtrl)
                             .RowPageBreak = True
                         Else
@@ -1655,7 +1619,7 @@ Private Sub SetupPrinter()
                                     
             If blnActiveSheet Then
                 ' Tinh lai so ma vach tren mau AC
-                If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "68" Then
+                If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
                     intPageCount = .PrintPageCount
                 
                     If LenB(strDataBarcode(intIndex)) / intPageCount <= 1000 Then
@@ -1708,8 +1672,8 @@ Private Sub LoadInitFiles()
     For i = 0 To fpsReport.SheetCount - 2
         ReDim Preserve xmlDocumentInit(i)
         Set xmlDocumentInit(i) = New MSXML.DOMDocument
-        If fso.FileExists(GetAbsolutePath(GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(i), "ReportIni"))) Then
-            xmlDocumentInit(i).Load GetAbsolutePath(GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(i), "ReportIni"))
+        If fso.FileExists(GetAbsolutePath(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(i), "ReportIni"))) Then
+            xmlDocumentInit(i).Load GetAbsolutePath(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(i), "ReportIni"))
             
             Set xmlNode = xmlDocumentInit(i).getElementsByTagName("Sections")(0)
             If GetAttribute(xmlNode, "PaperOrientation") <> "" Then
@@ -1750,7 +1714,7 @@ Private Function GetLastDataRow(ByVal lngSheet As Long) As Long
     Dim xmlNodeList As MSXML.IXMLDOMNodeList
     Dim lCol As Long, lRow As Long
     
-    Set xmlNodeList = TAX_Utilities_New.Data(lngSheet - 1).getElementsByTagName("Cell")
+    Set xmlNodeList = TAX_Utilities_v1.Data(lngSheet - 1).getElementsByTagName("Cell")
     Set xmlNode = xmlNodeList(xmlNodeList.length - 2)
     
     ParserCellID fpsReport, GetAttribute(xmlNode, "CellID2"), lCol, lRow
@@ -1764,7 +1728,7 @@ Private Function GetLastDataRow1(ByVal lngSheet As Long) As Long
     Dim xmlNodeList As MSXML.IXMLDOMNodeList
     Dim lCol As Long, lRow As Long
     
-    Set xmlNodeList = TAX_Utilities_New.Data(lngSheet - 1).getElementsByTagName("Cell")
+    Set xmlNodeList = TAX_Utilities_v1.Data(lngSheet - 1).getElementsByTagName("Cell")
     Set xmlNode = xmlNodeList(xmlNodeList.length - 10)
     
     ParserCellID fpsReport, GetAttribute(xmlNode, "CellID2"), lCol, lRow
@@ -1778,7 +1742,7 @@ Private Function GetLastDataRow2(ByVal lngSheet As Long) As Long
     Dim xmlNodeList As MSXML.IXMLDOMNodeList
     Dim lCol As Long, lRow As Long
     
-    Set xmlNodeList = TAX_Utilities_New.Data(lngSheet - 1).getElementsByTagName("Cell")
+    Set xmlNodeList = TAX_Utilities_v1.Data(lngSheet - 1).getElementsByTagName("Cell")
     Set xmlNode = xmlNodeList(xmlNodeList.length - 14)
     
     ParserCellID fpsReport, GetAttribute(xmlNode, "CellID2"), lCol, lRow
@@ -1840,7 +1804,7 @@ On Error GoTo ErrHandle
     '****************************************
         'Add prefix string to barcode string
         arrStrValue(intCtrl) = strTemp & CStr(arrStrValue(intCtrl)) & "#"
-        arrStrValue(intCtrl) = clsConverter.Convert(CStr(arrStrValue(intCtrl)), UNICODE, TCVN)   'TAX_Utilities_New.Compress(TAX_Utilities_New.Convert(CStr(arrStrValue(intCtrl)), UNICODE, TCVN))
+        arrStrValue(intCtrl) = clsConverter.Convert(CStr(arrStrValue(intCtrl)), UNICODE, TCVN)   'TAX_Utilities_v1.Compress(TAX_Utilities_v1.Convert(CStr(arrStrValue(intCtrl)), UNICODE, TCVN))
     Next intCtrl
 
     'Print first page

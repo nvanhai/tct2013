@@ -272,7 +272,7 @@ Public Sub UpdateCell(fps As fpSpread, ByVal pCol As Long, ByVal pRow As Long, B
     
     GetCellSpan fps, pCol, pRow
     
-    Set xmlNodeCell = TAX_Utilities_New.Data(mCurrentSheet - 1).nodeFromID(GetCellID(fps, pCol, pRow))
+    Set xmlNodeCell = TAX_Utilities_v1.Data(mCurrentSheet - 1).nodeFromID(GetCellID(fps, pCol, pRow))
     If Not xmlNodeCell Is Nothing Then
         SetAttribute xmlNodeCell, "Value", pValue
     End If
@@ -291,7 +291,7 @@ Public Sub UpdateCell_sheet(fps As fpSpread, ByVal pSheet As Long, ByVal pCol As
     
     GetCellSpan fps, pCol, pRow
     
-    Set xmlNodeCell = TAX_Utilities_New.Data(pSheet - 1).nodeFromID(GetCellID(fps, pCol, pRow))
+    Set xmlNodeCell = TAX_Utilities_v1.Data(pSheet - 1).nodeFromID(GetCellID(fps, pCol, pRow))
     If Not xmlNodeCell Is Nothing Then
         SetAttribute xmlNodeCell, "Value", pValue
     End If
@@ -302,7 +302,7 @@ End Sub
 Public Sub UpdateKHBSCell(fps As fpSpread, ByVal pCol As Long, ByVal pRow As Long, ByVal pValue As String)
     Dim xmlNodeCell As MSXML.IXMLDOMNode
     GetCellSpan fps, pCol, pRow
-    Set xmlNodeCell = TAX_Utilities_New.Data(0).nodeFromID(GetCellID(fps, pCol, pRow))
+    Set xmlNodeCell = TAX_Utilities_v1.Data(0).nodeFromID(GetCellID(fps, pCol, pRow))
     
     If Not xmlNodeCell Is Nothing Then
         SetAttribute xmlNodeCell, "Value", pValue
@@ -318,14 +318,14 @@ Public Sub UpdateLastKHBSCell(fps As fpSpread, ByVal pCol As Long, ByVal pRow As
     Dim loaiKHBS11 As String
     GetCellSpan fps, pCol, pRow
     
-    Set xmlNodeCellData0 = TAX_Utilities_New.Data(0).nodeFromID(GetCellID(fps, pCol, pRow))
+    Set xmlNodeCellData0 = TAX_Utilities_v1.Data(0).nodeFromID(GetCellID(fps, pCol, pRow))
     
     If Not xmlNodeCellData0 Is Nothing Then
         SetAttribute xmlNodeCellData0, "Value", pValue
     End If
     
-    Set xmlNodeCell = TAX_Utilities_New.DataKHBS.nodeFromID(GetCellID(fps, pCol, pRow))
-    loaiKHBS11 = GetAttribute(TAX_Utilities_New.Data(TAX_Utilities_New.NodeValidity.childNodes.length - 1).childNodes(2).firstChild, "loaiKHBS")
+    Set xmlNodeCell = TAX_Utilities_v1.DataKHBS.nodeFromID(GetCellID(fps, pCol, pRow))
+    loaiKHBS11 = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).childNodes(2).firstChild, "loaiKHBS")
     If Not xmlNodeCell Is Nothing Then
         If loaiKHBS11 = "frmKHBS_TT" Then
              SetAttribute xmlNodeCell, "Value", pValue
@@ -379,7 +379,7 @@ Public Sub FormatTextPercent(fps As fpSpread, ByVal intSheet As Integer, ByVal l
 '    If tfView Then fps.value = Val(fps.value) / 1000
     positionDecimalSymbol = 0
     If tfView Then
-        Set xmlNode = TAX_Utilities_New.Data(0).nodeFromID("K_47")  'J_42: thue suat uu dai
+        Set xmlNode = TAX_Utilities_v1.Data(0).nodeFromID("K_47")  'J_42: thue suat uu dai
         tempValue = GetAttribute(xmlNode, "Value")
         fps.value = tempValue
     End If
@@ -428,7 +428,7 @@ Public Function MYCompare(StrMY As String) As Boolean
     d = Split(StrMY, "/")
     On Error GoTo e
     MY1 = DateSerial(Val(d(2)), Val(d(1)), Val(d(0)))
-    MY2 = DateSerial(TAX_Utilities_New.Year, TAX_Utilities_New.Month, 1)
+    MY2 = DateSerial(TAX_Utilities_v1.Year, TAX_Utilities_v1.Month, 1)
     If MY1 <= MY2 Then
         MYCompare = True
     Else
@@ -1614,7 +1614,7 @@ End Function
 Public Function GetMessageCellById(ByVal strId As String) As MSXML.IXMLDOMNode
     Dim xmlInforNode As MSXML.IXMLDOMNode
     
-    For Each xmlInforNode In TAX_Utilities_New.NodeMessage
+    For Each xmlInforNode In TAX_Utilities_v1.NodeMessage
         If GetAttribute(xmlInforNode, "ID") = strId Then
             Set GetMessageCellById = xmlInforNode
             Exit Function
@@ -1636,7 +1636,7 @@ Public Function GetCatalogueFileName(ByRef blnFollowCheck As Boolean, Optional l
     blnFollowCheck = False
 
     'Get valid catalogue node
-    Set xmlCatalogeValidNode = GetValidityNode("100_7", TAX_Utilities_New.Month, TAX_Utilities_New.ThreeMonths, TAX_Utilities_New.Year)
+    Set xmlCatalogeValidNode = GetValidityNode("100_7", TAX_Utilities_v1.Month, TAX_Utilities_v1.ThreeMonths, TAX_Utilities_v1.Year)
     
     If Not xmlCatalogeValidNode.nextSibling Is Nothing Then
         dValidDate = Format(GetAttribute(xmlCatalogeValidNode.nextSibling, "StartDate"), "DD/MM/YYYY")
@@ -1649,12 +1649,12 @@ Public Function GetCatalogueFileName(ByRef blnFollowCheck As Boolean, Optional l
         blnFollowCheck = True
     End If
     'Get catalogue ID
-    strCatalogueID = GetAttribute(TAX_Utilities_New.NodeValidity, "CatalogueID")
+    strCatalogueID = GetAttribute(TAX_Utilities_v1.NodeValidity, "CatalogueID")
     'Get catalogue pattern name
     strCatalogueName = GetCatalogueName(xmlCatalogeValidNode, strCatalogueID)
     
     'Get catalogue file name
-    strReturn = GetAbsolutePath(TAX_Utilities_New.DataFolder & _
+    strReturn = GetAbsolutePath(TAX_Utilities_v1.DataFolder & _
         strCatalogueName & ".xml")
     If fso.FileExists(strReturn) Then
         GetCatalogueFileName = strReturn
@@ -1663,7 +1663,7 @@ Public Function GetCatalogueFileName(ByRef blnFollowCheck As Boolean, Optional l
     End If
     
     'Get catalogue template file name
-    strReturn = GetAbsolutePath(GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet - 1), "TemplateFolder") & _
+    strReturn = GetAbsolutePath(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet - 1), "TemplateFolder") & _
                 strCatalogueName & ".xml")
 
     GetCatalogueFileName = strReturn
@@ -1678,15 +1678,15 @@ Public Function GetCatalogueTemplateFile(Optional lSheet As Long = 1) As String
     Dim xmlCatalogeValidNode As MSXML.IXMLDOMNode
     
     'Get valid catalogue node
-    Set xmlCatalogeValidNode = GetValidityNode("100_7", TAX_Utilities_New.Month, TAX_Utilities_New.ThreeMonths, TAX_Utilities_New.Year)
+    Set xmlCatalogeValidNode = GetValidityNode("100_7", TAX_Utilities_v1.Month, TAX_Utilities_v1.ThreeMonths, TAX_Utilities_v1.Year)
        
     'Get catalogue ID
-    strCatalogueID = GetAttribute(TAX_Utilities_New.NodeValidity, "CatalogueID")
+    strCatalogueID = GetAttribute(TAX_Utilities_v1.NodeValidity, "CatalogueID")
     
     'Get catalogue pattern name
     strCatalogueName = GetCatalogueName(xmlCatalogeValidNode, strCatalogueID)
     
-    strReturn = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(lSheet - 1), "TemplateFolder") & _
+    strReturn = GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet - 1), "TemplateFolder") & _
         strCatalogueName & ".xml"
     GetCatalogueTemplateFile = GetAbsolutePath(strReturn)
 End Function
@@ -1704,7 +1704,7 @@ Public Function GetValidityNode(ID As String, Optional strMonth As String, Optio
     Dim iNgayTaiChinh As Integer
     Dim iThangTaiChinh As Integer
     
-    If GetAttribute(TAX_Utilities_New.NodeMenu, "FinanceYear") = "1" Then
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "FinanceYear") = "1" Then
         strNgayTaiChinh = GetNgayBatDauNamTaiChinh
         iNgayTaiChinh = GetNgayTaiChinh(strNgayTaiChinh)
         iThangTaiChinh = GetThangTaiChinh(strNgayTaiChinh)
@@ -1736,7 +1736,7 @@ Public Function GetValidityNode(ID As String, Optional strMonth As String, Optio
     '*******************************************
     ' ThanhDX modified
     ' Date: 04/04/06
-    ' ElseIf GetAttribute(TAX_Utilities_New.NodeMenu, "Day") = "1" Then
+    ' ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "Day") = "1" Then
     ElseIf strYear <> "" Then
     '*******************************************
        ValidityDate = NgayCuoiNamTaiChinh(CInt(strYear), iThangTaiChinh, iNgayTaiChinh)
@@ -1754,7 +1754,7 @@ Public Function GetValidityNode(ID As String, Optional strMonth As String, Optio
         End If
     Next
     'Set xmlNodeListValidity = xmlDomMenu.selectNodes("Validity")
-    'Set xmlNodeListValidity = TAX_Utilities_New.NodeMenu.selectNodes("Validity")
+    'Set xmlNodeListValidity = TAX_Utilities_v1.NodeMenu.selectNodes("Validity")
     For Each xmlNodeValidity In xmlNodeListValidity
         StartDate = Format(GetAttribute(xmlNodeValidity, "StartDate"), "dd/mm/yyyy")
         If ValidityDate >= StartDate Then
@@ -1818,7 +1818,7 @@ End Function
 Public Function GetNgayBatDauNamTaiChinh() As String
     
     Dim xmlDomHeader As New MSXML.DOMDocument
-    xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_New.DataFolder & "Header_01.xml")
+    xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_v1.DataFolder & "Header_01.xml")
         GetNgayBatDauNamTaiChinh = GetAttribute(xmlDomHeader.getElementsByTagName("Cell")(23), "Value")
     Set xmlDomHeader = Nothing
 End Function
@@ -1970,7 +1970,7 @@ Sub UpdateMST(fps As fpSpread, ByVal Col As String, ByVal Row As Long) 'ByRef xm
     Dim blnNullValue As Boolean
     Dim MSTDN As Variant
     Dim xmlDomHeader As New MSXML.DOMDocument
-    xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_New.DataFolder & "Header_01.xml")
+    xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_v1.DataFolder & "Header_01.xml")
         MSTDN = GetAttribute(xmlDomHeader.getElementsByTagName("Cell")(32), "Value")
     Set xmlDomHeader = Nothing
     fps.Sheet = 1
@@ -2045,7 +2045,7 @@ Public Function isCheckTTDLT() As Boolean
     Dim value As String
     
         'check xem NNT co check vao o check nhap thong tin header k, neu co thi ktra header k duoc bo trong, k check thi exit
-        xmlDom2.Load TAX_Utilities_New.DataFolder & "\Header_01.xml"
+        xmlDom2.Load TAX_Utilities_v1.DataFolder & "\Header_01.xml"
         Set xmlNodeList = xmlDom2.getElementsByTagName("Cell")
         Set xmlNode = xmlNodeList.Item(31)
         value = GetAttribute(xmlNode, "Value")
@@ -2077,7 +2077,7 @@ Public Sub updateMSTDL(pGrid As fpSpread, CellTTHeader As String)
         .Sheet = 1
         If isCheckTTDLT = True Then
             'check MST DaiLy, ten NVDLT, chungchi hanh nghe da ke khai tu lan truoc chua
-            xmlDom2.Load TAX_Utilities_New.DataFolder & "\Header_01.xml"
+            xmlDom2.Load TAX_Utilities_v1.DataFolder & "\Header_01.xml"
             Set xmlNodeList = xmlDom2.getElementsByTagName("Cell")
             
             'get MSTDL vu
@@ -2123,23 +2123,23 @@ Public Sub TinhHanNop_KHBS(pGrid As fpSpread)
     Dim hannop As String
     Dim ngayKHBS  As Variant
         ' To khai 01/GTGT gia han thang 4,5,6 nam 2012 -> tinh lai han nop
-         If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") = "01" Then
-             If (TAX_Utilities_New.Month = 4 Or TAX_Utilities_New.Month = 5 Or TAX_Utilities_New.Month = 6) And TAX_Utilities_New.Year = 2012 And TAX_Utilities_New.CheckToKhaiGH = True Then
-                 If TAX_Utilities_New.Month = 4 Then
-                     hannop = "20/" & "11" & "/" & TAX_Utilities_New.Year
-                 ElseIf TAX_Utilities_New.Month = 5 Then
-                     hannop = "20/" & "12" & "/" & TAX_Utilities_New.Year
-                 ElseIf TAX_Utilities_New.Month = 6 Then
-                     hannop = "21/" & "01" & "/" & TAX_Utilities_New.Year + 1
+         If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
+             If (TAX_Utilities_v1.Month = 4 Or TAX_Utilities_v1.Month = 5 Or TAX_Utilities_v1.Month = 6) And TAX_Utilities_v1.Year = 2012 And TAX_Utilities_v1.CheckToKhaiGH = True Then
+                 If TAX_Utilities_v1.Month = 4 Then
+                     hannop = "20/" & "11" & "/" & TAX_Utilities_v1.Year
+                 ElseIf TAX_Utilities_v1.Month = 5 Then
+                     hannop = "20/" & "12" & "/" & TAX_Utilities_v1.Year
+                 ElseIf TAX_Utilities_v1.Month = 6 Then
+                     hannop = "21/" & "01" & "/" & TAX_Utilities_v1.Year + 1
                  End If
              Else
                  ' cac ky ke khai khac van tinh han nop binh thuong
-                 If TAX_Utilities_New.Month = 12 Then
-                     hannop = "20/" & "01" & "/" & TAX_Utilities_New.Year + 1
-                 ElseIf TAX_Utilities_New.Month = 4 Then
-                     hannop = "02/" & "05" & "/" & TAX_Utilities_New.Year
+                 If TAX_Utilities_v1.Month = 12 Then
+                     hannop = "20/" & "01" & "/" & TAX_Utilities_v1.Year + 1
+                 ElseIf TAX_Utilities_v1.Month = 4 Then
+                     hannop = "02/" & "05" & "/" & TAX_Utilities_v1.Year
                  Else
-                     hannop = "20/" & Right("00" & TAX_Utilities_New.Month + 1, 2) & "/" & TAX_Utilities_New.Year
+                     hannop = "20/" & Right("00" & TAX_Utilities_v1.Month + 1, 2) & "/" & TAX_Utilities_v1.Year
                  End If
              End If
         End If

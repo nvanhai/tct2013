@@ -166,7 +166,7 @@ Public Sub Prepare2()
     Dim i As Integer
     With fps
        ' test
-        Set xmlCellNode = TAX_Utilities_New.Data(1).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 22))
+        Set xmlCellNode = TAX_Utilities_v1.Data(1).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 22))
         Set xmlCellNode = xmlCellNode.parentNode
         Set xmlCellNode = xmlCellNode.lastChild
         If Left$(GetAttribute(xmlCellNode, "CellID"), 1) = "C" Then
@@ -201,7 +201,7 @@ Private Function GetValidatedCellIndex(ByVal lSheet As Long, lAnchorRow As Long,
     Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
     Dim lCtrl As Long
     
-    Set xmlCellNode = TAX_Utilities_New.Data(lSheet - 1).nodeFromID(GetCellID(fps, lAnchorCol, lAnchorRow))
+    Set xmlCellNode = TAX_Utilities_v1.Data(lSheet - 1).nodeFromID(GetCellID(fps, lAnchorCol, lAnchorRow))
     Set xmlCellsNode = xmlCellNode.parentNode
     
     'Get Index of anchor cell
@@ -487,7 +487,7 @@ Private Sub CheckDynamicError()
         
         CheckErrorMST
         ' Neu ton tai file data bang ke 05A thi kiem tra tren bang ke 5A
-        If IIf(TAX_Utilities_New.NodeValidity.childNodes(.SheetCount - 3).Attributes.getNamedItem("Active").nodeValue <> "0", True, False) Then
+        If IIf(TAX_Utilities_v1.NodeValidity.childNodes(.SheetCount - 3).Attributes.getNamedItem("Active").nodeValue <> "0", True, False) Then
             checkSheet1
         Else
             clearCheckSheet1
@@ -1025,12 +1025,12 @@ Public Sub SetActiveSheet()
     Dim strValue2 As String
     'Check the second sheet
     'Select Case GetAttribute(xmlNodeValid, "ID")
-    For Each xmlNodeValid In TAX_Utilities_New.NodeValidity.childNodes
+    For Each xmlNodeValid In TAX_Utilities_v1.NodeValidity.childNodes
         Select Case GetAttribute(xmlNodeValid, "ID")
             Case "02A"
                 blnNullValue = True
                 'Check the third sheet
-               For Each xmlCellNode In TAX_Utilities_New.Data(1).getElementsByTagName("Cell")
+               For Each xmlCellNode In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
                     ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
                     'Check value in D column and E column
                     If lCol = fps.ColLetterToNumber("D") Or _
@@ -1060,7 +1060,7 @@ Public Function ResetData() As Boolean
 Dim xmlNode As MSXML.IXMLDOMNode
 Dim lRow As Long, lCol As Long
     With fps
-        For Each xmlNode In TAX_Utilities_New.Data(1).getElementsByTagName("Cell")
+        For Each xmlNode In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
             ParserCellID fps, GetAttribute(xmlNode, "CellID"), lCol, lRow
             .Col = lCol
             .Row = lRow
@@ -1172,17 +1172,17 @@ Private Sub UpdateSheets()
         .Sheet = 1
         mCurrentSheet = .Sheet
         
-        If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "Active") <> "0") Then
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "Active") <> "0") Then
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
                UpdateCell fps, lCol, lRow, varTemp
              Next
         End If
-        If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(1), "Active") <> "0") Then
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(1), "Active") <> "0") Then
         .Sheet = 2
         mCurrentSheet = .Sheet
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(1).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
                If lCol = .ColLetterToNumber("F") Then

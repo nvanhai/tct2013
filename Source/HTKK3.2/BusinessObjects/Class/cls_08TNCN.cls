@@ -92,8 +92,8 @@ Public Sub Prepare2()
 '            .SetText .ColLetterToNumber("H"), 18, 0
 '            .SetText .ColLetterToNumber("R"), 18, ""
 '            .SetText .ColLetterToNumber("X"), 18, ""
-'            .SetText .ColLetterToNumber("K"), 4, TAX_Utilities_New.FirstDay
-'            .SetText .ColLetterToNumber("P"), 4, TAX_Utilities_New.LastDay
+'            .SetText .ColLetterToNumber("K"), 4, TAX_Utilities_v1.FirstDay
+'            .SetText .ColLetterToNumber("P"), 4, TAX_Utilities_v1.LastDay
 '            'set thong tin header neu la to khai tuthang denthang
 '            If strLoaiTKQT = "QT_TUNG_NAM" Then
 '                .Col = .ColLetterToNumber("R")
@@ -121,7 +121,7 @@ Public Sub Prepare2()
 '            .Col = .ColLetterToNumber("AE")
 '            .Row = 7
 ''            .Text = DateDiff("M", Format_ddmmyyyy(CStr(tuThang)), Format_ddmmyyyy(CStr(denThang))) + 1
-'            .Text = DateDiff("M", Format("01/" & TAX_Utilities_New.FirstDay, "dd/mm/yyyy"), Format("01/" & TAX_Utilities_New.LastDay, "dd/mm/yyyy")) + 1
+'            .Text = DateDiff("M", Format("01/" & TAX_Utilities_v1.FirstDay, "dd/mm/yyyy"), Format("01/" & TAX_Utilities_v1.LastDay, "dd/mm/yyyy")) + 1
 '        Else
 '            .Col = .ColLetterToNumber("AE")
 '            .Row = 7
@@ -129,7 +129,7 @@ Public Sub Prepare2()
 '        End If
 
         'set lai gia tri cho chi tieu [30]
-        For Each xmlNode In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+        For Each xmlNode In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
             ParserCellID fps, GetAttribute(xmlNode, "CellID"), lCol, lRow
             If lCol = .ColLetterToNumber("R") And lRow = 58 Then
                 .Col = lCol
@@ -154,7 +154,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
     Dim CellNgayKy As String
     Dim strValue As String
     Dim varThangKT As Variant
-    CellNgayKy = GetAttribute(TAX_Utilities_New.Data(0).getElementsByTagName("Cell")(TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length - 3), "CellID")
+    CellNgayKy = GetAttribute(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 3), "CellID")
     With fps
         .EventEnabled(EventAllEvents) = False
         mCurrentSheet = .Sheet
@@ -270,7 +270,7 @@ Private Sub CheckDynamicError()
             .CellNote = ""
         End If
         ' kiem tra chi tieu 25, 26 la boi cua 9000000, 3600000
-        If TAX_Utilities_New.Year >= 2013 And TAX_Utilities_New.ThreeMonths >= 3 Then
+        If TAX_Utilities_v1.Year >= 2013 And TAX_Utilities_v1.ThreeMonths >= 3 Then
            ' ct25
             If Val(vCT25) Mod 9000000 <> 0 Or Val(vCT25) > 27000000 Then
                 .Row = 52
@@ -575,7 +575,7 @@ Private Sub InsertRow(fpSpread1 As fpSpread, ByVal pRow As Long, lRows As Long, 
                     ' ThanhDX added
                     ' Date: 29/04/06
                     Else
-                        If Not TAX_Utilities_New.Data(mCurrentSheet - 1).nodeFromID( _
+                        If Not TAX_Utilities_v1.Data(mCurrentSheet - 1).nodeFromID( _
                            GetCellID(fpSpread1, i, pRow - lRowCtrl)) Is Nothing Then
                             If .BackColor = &HC0C0FF Or .BackColor = 12713215 Then
                                 .BackColor = vbWhite
@@ -597,7 +597,7 @@ Private Sub InsertRow(fpSpread1 As fpSpread, ByVal pRow As Long, lRows As Long, 
                     ' ThanhDX added
                     ' Date: 08/04/06
                     Else
-                        If Not TAX_Utilities_New.Data(mCurrentSheet - 1).nodeFromID(GetCellID(fpSpread1, i, pRow - lRowCtrl)) Is Nothing Then
+                        If Not TAX_Utilities_v1.Data(mCurrentSheet - 1).nodeFromID(GetCellID(fpSpread1, i, pRow - lRowCtrl)) Is Nothing Then
                             Select Case .CellType
                                 Case CellTypeNumber
                                     .SetText i, .Row, 0
@@ -680,7 +680,7 @@ Private Sub UpdateSheets()
         ssSheet = mCurrentSheet
         .Sheet = 1
         mCurrentSheet = .Sheet
-        For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+        For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
            ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
 '               If (lRow = 18 And lCol = .ColLetterToNumber("R")) Or (lRow = 18 And lCol = .ColLetterToNumber("X")) Then
 '                    .GetText lCol, lRow, varTemp

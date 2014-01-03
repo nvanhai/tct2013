@@ -168,7 +168,7 @@ Private Sub prepareData5A()
     Dim fso As New FileSystemObject
     
     
-    strDataFileName = GetAbsolutePath(TAX_Utilities_New.DataFolder & "05A_TNCN_" & TAX_Utilities_New.Year & ".xml")
+    strDataFileName = GetAbsolutePath(TAX_Utilities_v1.DataFolder & "05A_TNCN_" & TAX_Utilities_v1.Year & ".xml")
     i = 0
     If fso.FileExists(strDataFileName) = False Then
         ReDim arrData5A(1, 15) As String
@@ -230,7 +230,7 @@ Private Sub prepareData5B()
     Dim fso As New FileSystemObject
     
     
-    strDataFileName = GetAbsolutePath(TAX_Utilities_New.DataFolder & "05B_TNCN_" & TAX_Utilities_New.Year & ".xml")
+    strDataFileName = GetAbsolutePath(TAX_Utilities_v1.DataFolder & "05B_TNCN_" & TAX_Utilities_v1.Year & ".xml")
     i = 0
     If fso.FileExists(strDataFileName) = False Then
         ReDim arrData5B(1, 8) As String
@@ -333,9 +333,9 @@ Private Sub prepareData0509()
                 
         ' Cot 11 la Giam tru cho ban than
         ' Neu nam 2009 thi giam tru 6 thang la 24.000.000 (Tuong duong voi 4.000.000/Thang) va tu nam 2010 la 12 thang tuong duong voi 48.000.000
-        If TAX_Utilities_New.Year = 2009 Then
+        If TAX_Utilities_v1.Year = 2009 Then
             arrData0509(row5A, 13) = "24000000"
-        ElseIf TAX_Utilities_New.Year > 2009 Then
+        ElseIf TAX_Utilities_v1.Year > 2009 Then
             arrData0509(row5A, 13) = "48000000"
         Else
             arrData0509(row5A, 13) = "0"
@@ -359,10 +359,10 @@ Private Sub prepareData0509()
 '        Dim thuNhapTinhThueThang As Double, thuePhaiNopThang As Double
 '        Dim soThangTinhThue As Integer
 '        ' Neu la nam 2009 thi thu nhap tinh thue tren 6 thang
-'        If TAX_Utilities_New.Year = 2009 Then
+'        If TAX_Utilities_v1.Year = 2009 Then
 '            soThangTinhThue = 6
 '            thuNhapTinhThueThang = Val(arrData0509(row5A, 15)) / soThangTinhThue
-'        ElseIf TAX_Utilities_New.Year > 2009 Then ' thu nhap tinh thue tinh tren 12 thang
+'        ElseIf TAX_Utilities_v1.Year > 2009 Then ' thu nhap tinh thue tinh tren 12 thang
 '            soThangTinhThue = 12
 '            thuNhapTinhThueThang = Val(arrData0509(row5A, 15)) / soThangTinhThue
 '        Else ' Khong tinh
@@ -412,9 +412,9 @@ Private Sub prepareData0509()
         ' Cot 20 la co phai quyet toan thue hay khong?
         arrData0509(row5A, 26) = ""
 '        If Val(arrData0509(row5A, 19)) = 0 Then
-'            arrData0509(row5A, 20) = TAX_Utilities_New.Convert("Kh«ng", TCVN, UNICODE)
+'            arrData0509(row5A, 20) = TAX_Utilities_v1.Convert("Kh«ng", TCVN, UNICODE)
 '        Else
-'            arrData0509(row5A, 20) = TAX_Utilities_New.Convert("Cã", TCVN, UNICODE)
+'            arrData0509(row5A, 20) = TAX_Utilities_v1.Convert("Cã", TCVN, UNICODE)
 '        End If
                 
     Next
@@ -424,7 +424,7 @@ Private Function GetValidatedCellIndex(ByVal lSheet As Long, lAnchorRow As Long,
     Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
     Dim lCtrl As Long
     
-    Set xmlCellNode = TAX_Utilities_New.Data(lSheet - 1).nodeFromID(GetCellID(fps, lAnchorCol, lAnchorRow))
+    Set xmlCellNode = TAX_Utilities_v1.Data(lSheet - 1).nodeFromID(GetCellID(fps, lAnchorCol, lAnchorRow))
     Set xmlCellsNode = xmlCellNode.parentNode
     
     'Get Index of anchor cell
@@ -570,7 +570,7 @@ Private Sub InsertNode(ByVal pCol As Long, ByVal pRow As Long)
     ' Get cellspan for merge cell on interface templates
     GetCellSpan fps, pCol, pRow
     
-    Set xmlNodeCells = TAX_Utilities_New.Data(0).nodeFromID(GetCellID(fps, pCol, pRow)).parentNode
+    Set xmlNodeCells = TAX_Utilities_v1.Data(0).nodeFromID(GetCellID(fps, pCol, pRow)).parentNode
     
     lRows = GetDynRowCount(fps, xmlNodeCells, lRow2s, lLRowBound, lURowBound)
     
@@ -580,7 +580,7 @@ Private Sub InsertNode(ByVal pCol As Long, ByVal pRow As Long)
   
     
     ' increase value of row in xmlDocument
-    IncreaseRowInDOM fps, TAX_Utilities_New.Data(0), lURowBound + 1, lRows, lRow2s
+    IncreaseRowInDOM fps, TAX_Utilities_v1.Data(0), lURowBound + 1, lRows, lRow2s
     'IncreaseRowInDOM lURowBound + 1, lRows, lRow2s
 
     Set xmlNodeNewCells = xmlNodeCells.cloneNode(True)
@@ -617,7 +617,7 @@ Private Sub InsertNode(ByVal pCol As Long, ByVal pRow As Long)
 '    added
 '   Date: 12/04/06
     'mAdjustData = True
-    TAX_Utilities_New.AdjustData(mCurrentSheet - 1) = True
+    TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
 '   **********************************
 EXIT_SUB:
     Set xmlNodeNewCell = Nothing
@@ -671,7 +671,7 @@ Private Sub DeleteNode(ByVal intSheet As Integer, ByVal pCol As Long, ByVal pRow
     
     GetCellSpan fps, pCol, pRow
     
-    Set xmlNodeCells = TAX_Utilities_New.Data(0).nodeFromID(GetCellID(fps, pCol, pRow)).parentNode
+    Set xmlNodeCells = TAX_Utilities_v1.Data(0).nodeFromID(GetCellID(fps, pCol, pRow)).parentNode
     
     lRows = GetDynRowCount(fps, xmlNodeCells, lRow2s, lLRowBound, lURowBound)
 
@@ -690,7 +690,7 @@ Private Sub DeleteNode(ByVal intSheet As Integer, ByVal pCol As Long, ByVal pRow
         
     If xmlNodeCells.parentNode.childNodes.length <= 1 Then
         ClearRows xmlNodeCells
-        TAX_Utilities_New.AdjustData(mCurrentSheet - 1) = True
+        TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
         GoTo EXIT_SUB
     Else
         If GetAttribute(xmlNodeCells.firstChild, "FirstCell") = "0" Then
@@ -726,7 +726,7 @@ Private Sub DeleteNode(ByVal intSheet As Integer, ByVal pCol As Long, ByVal pRow
 '   ************************************
 '    added
 '   Date: 12/04/06
-    TAX_Utilities_New.AdjustData(mCurrentSheet - 1) = True
+    TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
 '   ************************************
 EXIT_SUB:
     Set xmlNodeCells = Nothing
@@ -742,8 +742,8 @@ Private Sub DecreaseRowInDOM(ByVal intSheet As Integer, ByVal pRow As Long, ByVa
     Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
     Dim lCol As Long, lRow As Long, i As Long
     
-    If TAX_Utilities_New.Data(0) Is Nothing Then Exit Sub
-    Set xmlNodeListCell = TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+    If TAX_Utilities_v1.Data(0) Is Nothing Then Exit Sub
+    Set xmlNodeListCell = TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
     
     For i = 0 To xmlNodeListCell.length - 1
         ParserCellID fps, GetAttribute(xmlNodeListCell(i), "CellID"), lCol, lRow

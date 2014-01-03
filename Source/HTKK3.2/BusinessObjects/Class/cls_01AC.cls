@@ -123,7 +123,7 @@ Public Sub Prepare2()
         End If
         
          'Xoa cong thuc cua o Chu ky
-        Set xmlCellNode = TAX_Utilities_New.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 22))
+        Set xmlCellNode = TAX_Utilities_v1.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 22))
         Set xmlCellNode = xmlCellNode.parentNode
         Set xmlCellNode = xmlCellNode.parentNode
         Set xmlCellNode = xmlCellNode.parentNode.lastChild
@@ -366,10 +366,10 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                     .Row = Row
                     UpdateCell fps, .Col, .Row, .Text
                 ElseIf tuSo = "" And denso = "" Then
-                    .SetText .ColLetterToNumber("Q"), Row, ""
-                    .Col = Col
-                    .Row = Row
-                    UpdateCell fps, .Col, .Row, .Text
+                .SetText .ColLetterToNumber("Q"), Row, ""
+                .Col = Col
+                .Row = Row
+                UpdateCell fps, .Col, .Row, .Text
                 End If
             End If
         End If
@@ -411,7 +411,7 @@ Private Sub CheckDynamicError()
         
         'CheckErrorMST
         ' Neu ton tai file data bang ke 05A thi kiem tra tren bang ke 5A
- '       If IIf(TAX_Utilities_New.NodeValidity.childNodes(.SheetCount - 3).Attributes.getNamedItem("Active").nodeValue <> "0", True, False) Then
+ '       If IIf(TAX_Utilities_v1.NodeValidity.childNodes(.SheetCount - 3).Attributes.getNamedItem("Active").nodeValue <> "0", True, False) Then
             checkSheet1
 '        Else
 '            clearCheckSheet1
@@ -660,10 +660,6 @@ Private Sub checkSheet1()
                 .BackColor = mNonErrorColor
             
             End If
-            
-            ' Kiem tra ky tu cuoi cung cua ky hieu HD phai la P
-            
-            
             '/-----------------------------------
             Tuso1 = Val(Tuso1)
             denso1 = Val(denso1)
@@ -730,46 +726,27 @@ Private Sub checkSheet1()
 '                    .BackColor = mNonErrorColor
 '                End If
                 
-                'Check ma so thue tren to khai 02A/TNCN
-                If Trim(vMST) <> vbNullString Then
-                       'vMST = Replace(vMST, " ", "")
-        '               vMST = Replace(vMST, "-", "")
-        '                vMST = Left(vMST, 10)
-                       strCheck = ""
-                       If vMST <> Replace(vMST, " ", "") Then
-                            strCheck = ""
-                       Else
-                            If Len(vMST) = 10 Or Len(vMST) = 13 Then
-                                 strCheck = CheckTaxCode(Mid(vMST, 1, 1), Mid(vMST, 2, 1), Mid(vMST, 3, 1), Mid(vMST, 4, 1), Mid(vMST, 5, 1), Mid(vMST, 6, 1), Mid(vMST, 7, 1), Mid(vMST, 8, 1), Mid(vMST, 9, 1), Mid(vMST, 10, 1), Mid(vMST, 11, 1), Mid(vMST, 12, 1), Mid(vMST, 13, 1))
-                            End If
-                       End If
-                       ' Kiem tra dinh dang theo cau truc cua co quan thue
-                       If Mid(strCheck, 2, 1) <> "0" Then
-                            .Col = .ColLetterToNumber("C")
-                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                            .CellNote = vErrMsgMST   'static
-                            .BackColor = mErrorColor
-                            iFlagvMst = 1
-                            blCheck_S2 = False
-                            'capture the first error cell
-                            If iFocusFlag = 0 Then
-                                strFocusSheetName = "'" & .SheetName & "'"
-                                strFocusCol = str(.Col)
-                                strFocusRow = str(.Row)
-                                iFocusFlag = 1
-                            End If
-                        Else
-                             .Col = .ColLetterToNumber("C")
-                             .CellNote = ""
-                             .BackColor = mNonErrorColor
+            'Check ma so thue tren to khai 02A/TNCN
+            If Trim(vMST) <> vbNullString Then
+                   'vMST = Replace(vMST, " ", "")
+    '               vMST = Replace(vMST, "-", "")
+    '                vMST = Left(vMST, 10)
+                   strCheck = ""
+                   If vMST <> Replace(vMST, " ", "") Then
+                        strCheck = ""
+                   Else
+                        If Len(vMST) = 10 Or Len(vMST) = 13 Then
+                             strCheck = CheckTaxCode(Mid(vMST, 1, 1), Mid(vMST, 2, 1), Mid(vMST, 3, 1), Mid(vMST, 4, 1), Mid(vMST, 5, 1), Mid(vMST, 6, 1), Mid(vMST, 7, 1), Mid(vMST, 8, 1), Mid(vMST, 9, 1), Mid(vMST, 10, 1), Mid(vMST, 11, 1), Mid(vMST, 12, 1), Mid(vMST, 13, 1))
                         End If
-                Else
+                   End If
+                   ' Kiem tra dinh dang theo cau truc cua co quan thue
+                   If Mid(strCheck, 2, 1) <> "0" Then
                         .Col = .ColLetterToNumber("C")
                         .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                        .CellNote = vErrMsgMSTReq    'static
+                        .CellNote = vErrMsgMST   'static
                         .BackColor = mErrorColor
                         iFlagvMst = 1
-                        blCheck_S3 = False
+                        blCheck_S2 = False
                         'capture the first error cell
                         If iFocusFlag = 0 Then
                             strFocusSheetName = "'" & .SheetName & "'"
@@ -777,7 +754,26 @@ Private Sub checkSheet1()
                             strFocusRow = str(.Row)
                             iFocusFlag = 1
                         End If
-                End If
+                    Else
+                         .Col = .ColLetterToNumber("C")
+                         .CellNote = ""
+                         .BackColor = mNonErrorColor
+                    End If
+            Else
+                    .Col = .ColLetterToNumber("C")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vErrMsgMSTReq    'static
+                    .BackColor = mErrorColor
+                    iFlagvMst = 1
+                    blCheck_S3 = False
+                    'capture the first error cell
+                    If iFocusFlag = 0 Then
+                        strFocusSheetName = "'" & .SheetName & "'"
+                        strFocusCol = str(.Col)
+                        strFocusRow = str(.Row)
+                        iFocusFlag = 1
+                    End If
+            End If
             Else
             .Col = .ColLetterToNumber("C")
             .CellNote = ""
@@ -925,17 +921,18 @@ Private Sub checkSheet1()
         
         
 
-
         ' Trong truong hop blCheck_S2 khong co MST nao bi loi thi set lai gia tri cua Header la 1
         If blCheck_S2 = True Then
             .Sheet = .SheetCount
             .SetText .ColLetterToNumber("B"), 12, "1"
+            '.SetText .ColLetterToNumber("B"), 13, "1"
         Else
             .Sheet = .SheetCount
             .SetText .ColLetterToNumber("B"), 12, "0"
+            '.SetText .ColLetterToNumber("B"), 13, "0"
+            
         End If
-        
-        If blCheck_S3 = True Then
+                If blCheck_S3 = True Then
             .Sheet = .SheetCount
             .SetText .ColLetterToNumber("B"), 13, "1"
         Else
@@ -1089,12 +1086,12 @@ Public Sub SetActiveSheet()
     Dim strValue2 As String
     'Check the second sheet
     'Select Case GetAttribute(xmlNodeValid, "ID")
-    For Each xmlNodeValid In TAX_Utilities_New.NodeValidity.childNodes
+    For Each xmlNodeValid In TAX_Utilities_v1.NodeValidity.childNodes
         Select Case GetAttribute(xmlNodeValid, "ID")
             Case "01"
                 blnNullValue = True
                 'Check the third sheet
-               For Each xmlCellNode In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+               For Each xmlCellNode In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
                     ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
                     'Check value in D column and E column
                     If lCol = fps.ColLetterToNumber("C") Or _
@@ -1125,10 +1122,10 @@ Public Function ResetData() As Boolean
     Dim countRowReset As Long
     Dim xmlNodeReset As MSXML.IXMLDOMNode
     Dim lCol As Long, lRow As Long
-    totalCell = TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length
+    totalCell = TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length
     countRowReset = (totalCell - 5) / 14
     With fps
-        For Each xmlNodeReset In TAX_Utilities_New.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
+        For Each xmlNodeReset In TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
             .Sheet = mCurrentSheet
             ParserCellID fps, GetAttribute(xmlNodeReset, "CellID"), lCol, lRow
             If (lRow < 22 Or lRow > 22 + countRowReset) And mCurrentSheet = 1 Then
@@ -1151,7 +1148,7 @@ Public Function ResetData() As Boolean
                         UpdateCell fps, lCol, lRow, vbNullString
                 End Select
                 'mAdjustData = IIf(IsUpdate = True, IsUpdate, mAdjustData)
-                TAX_Utilities_New.AdjustData(mCurrentSheet - 1) = True
+                TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
             End If
         Next
     End With
@@ -1245,7 +1242,7 @@ Private Sub UpdateSheets()
         ssSheet = mCurrentSheet
         .Sheet = 1
         mCurrentSheet = .Sheet
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                'dhdang sua de ko set lai gia tri cho nut check
                If lCol <> .ColLetterToNumber("B") And lRow <> 15 Then
@@ -1323,7 +1320,7 @@ End Sub
 Public Function GetNguoiKy() As String
     Dim xmlDomHeader As New MSXML.DOMDocument
     
-    xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_New.DataFolder & "Header_01.xml")
+    xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_v1.DataFolder & "Header_01.xml")
     GetNguoiKy = GetAttribute(xmlDomHeader.nodeFromID("C_26"), "Value")
     
     Set xmlDomHeader = Nothing

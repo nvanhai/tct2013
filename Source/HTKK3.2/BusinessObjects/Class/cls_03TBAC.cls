@@ -127,7 +127,7 @@ Dim totalRow As Integer
         End If
         
          'Xoa cong thuc cua o Chu ky
-        Set xmlCellNode = TAX_Utilities_New.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("E"), 43))
+        Set xmlCellNode = TAX_Utilities_v1.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("E"), 43))
         Set xmlCellNode = xmlCellNode.parentNode
         Set xmlCellNode = xmlCellNode.parentNode
         Set xmlCellNode = xmlCellNode.parentNode.lastChild
@@ -846,10 +846,10 @@ Public Function ResetData() As Boolean
     Dim countRowReset As Long
     Dim xmlNodeReset As MSXML.IXMLDOMNode
     Dim lCol As Long, lRow As Long
-    totalCell = TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length
+    totalCell = TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length
     countRowReset = (totalCell - 8) / 9
     With fps
-        For Each xmlNodeReset In TAX_Utilities_New.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
+        For Each xmlNodeReset In TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
             .Sheet = mCurrentSheet
             ParserCellID fps, GetAttribute(xmlNodeReset, "CellID"), lCol, lRow
             If (lRow < 43 Or lRow > 43 + countRowReset) And mCurrentSheet = 1 Then
@@ -872,7 +872,7 @@ Public Function ResetData() As Boolean
                         UpdateCell fps, lCol, lRow, vbNullString
                 End Select
                 'mAdjustData = IIf(IsUpdate = True, IsUpdate, mAdjustData)
-                TAX_Utilities_New.AdjustData(mCurrentSheet - 1) = True
+                TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
             End If
         Next
     End With
@@ -892,8 +892,8 @@ Private Sub UpdateSheets()
         ssSheet = mCurrentSheet
         .Sheet = 1
         mCurrentSheet = .Sheet
-        If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "Active") <> "0") Then
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "Active") <> "0") Then
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
                UpdateCell fps, lCol, lRow, varTemp
@@ -912,7 +912,7 @@ End Sub
 Public Function GetNguoiKy() As String
     Dim xmlDomHeader As New MSXML.DOMDocument
     
-    xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_New.DataFolder & "Header_01.xml")
+    xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_v1.DataFolder & "Header_01.xml")
     GetNguoiKy = GetAttribute(xmlDomHeader.nodeFromID("C_26"), "Value")
     
     Set xmlDomHeader = Nothing
