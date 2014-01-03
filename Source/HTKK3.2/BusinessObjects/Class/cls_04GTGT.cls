@@ -529,7 +529,7 @@ Dim maLoaiCq As String
 With fps
    If .ActiveSheet = .SheetCount - 1 Then
             'lay ve dong combobox
-            Set xmlCellNode = TAX_Utilities_New.Data(.SheetCount - 2).nodeFromID(GetCellID(fps, .ColLetterToNumber("BI"), 5))
+            Set xmlCellNode = TAX_Utilities_v1.Data(.SheetCount - 2).nodeFromID(GetCellID(fps, .ColLetterToNumber("BI"), 5))
             Set xmlCellNode = xmlCellNode.parentNode
             Set xmlCellNode = xmlCellNode.parentNode
             Set xmlCellNode = xmlCellNode.parentNode.lastChild
@@ -602,7 +602,7 @@ With fps
             End If
     End If
 End With
-    TAX_Utilities_New.AdjustData(mCurrentSheet - 1) = True
+    TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
 End Sub
 
 
@@ -647,10 +647,10 @@ Private Function CheckValidNgayHD(vdate As String) As Boolean
     dd = Right("00" & Left(vdate, InStr(vdate, "/") - 1), 2)
     mm = Right("00" & Mid(vdate, 4, 2), 2)
     yyyy = Right("0000" & vdate, 4)
-    sDateNow = "01/" & TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year
+    sDateNow = "01/" & TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year
     dDateNow = Format(CDate(sDateNow), "dd/mm/yyyy")
     dDate = Format(CDate(vdate), "dd/mm/yyyy")
-        If CInt(yyyy) > CInt(TAX_Utilities_New.Year) Then
+        If CInt(yyyy) > CInt(TAX_Utilities_v1.Year) Then
             CheckValidNgayHD = False
             Exit Function
         End If
@@ -730,7 +730,7 @@ Private Sub CheckDynamicError()
     
 '    fps.EventEnabled(EventAllEvents) = False
     .Sheet = sheetPl01_1_GTGT
-    blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+    blCheck_S2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
     If blCheck_S2 = True Then
         For i = 8 To .MaxRows
             iWhiteRow = 1
@@ -806,7 +806,7 @@ Private Sub CheckDynamicError()
                                 vNgayHt = Date
                                 arrDate = Split(vNgayHD, "/")
                                 vdate = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
-                                If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_New.Year) Then
+                                If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_v1.Year) Then
                                     .Col = .ColLetterToNumber("G")
                                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                                     .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
@@ -818,7 +818,7 @@ Private Sub CheckDynamicError()
                                         strFocusRow = str(.Row)
                                         iFocusFlag = 1
                                     End If
-                                 ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_New.Year) And convertThang2Quy(CInt(Right("00" & Mid(vNgayHD, 4, 2), 2))) > CInt(TAX_Utilities_New.ThreeMonths) Then
+                                 ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_v1.Year) And convertThang2Quy(CInt(Right("00" & Mid(vNgayHD, 4, 2), 2))) > CInt(TAX_Utilities_v1.ThreeMonths) Then
                                     .Col = .ColLetterToNumber("G")
                                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                                     .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
@@ -847,7 +847,7 @@ Private Sub CheckDynamicError()
                                     .BackColor = mNonErrorColor
                                 End If
                             Else
-                                If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_New.Year) Then
+                                If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_v1.Year) Then
                                     .Col = .ColLetterToNumber("G")
                                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                                     .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
@@ -859,7 +859,7 @@ Private Sub CheckDynamicError()
 '                                        strFocusRow = str(.Row)
 '                                        iFocusFlag = 1
 '                                    End If
-                                 ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_New.Year) And CInt(Right("00" & Mid(vNgayHD, 4, 2), 2)) > CInt(TAX_Utilities_New.Month) Then
+                                 ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_v1.Year) And CInt(Right("00" & Mid(vNgayHD, 4, 2), 2)) > CInt(TAX_Utilities_v1.Month) Then
                                     .Col = .ColLetterToNumber("G")
                                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                                     .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
@@ -1092,19 +1092,19 @@ Public Sub SetActiveSheet() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
     
     'Check the second sheet
     'Select Case GetAttribute(xmlNodeValid, "ID")
-    For Each xmlNodeValid In TAX_Utilities_New.NodeValidity.childNodes
+    For Each xmlNodeValid In TAX_Utilities_v1.NodeValidity.childNodes
         Select Case GetAttribute(xmlNodeValid, "ID")
             Case "01_1"
                 blnNullValue = True
                 'Check value of last node in Data
-                Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
-                    (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 1)
+                Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length - 1)
                     strValue1 = GetAttribute(xmlCellNode, "Value")
-                Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
-                    (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 2)
+                Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length - 2)
                     strValue2 = GetAttribute(xmlCellNode, "Value")
-                Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
-                    (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 3)
+                Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length - 3)
                     strValue3 = GetAttribute(xmlCellNode, "Value")
                 'Set active voi dong 5
                 
@@ -1121,11 +1121,11 @@ Public Sub SetActiveSheet() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
              Case "KHBS"
                 blnNullValue = True
                 'Check value of last node in Data
-                Set xmlCellNode = TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell") _
-                    (TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell").length - 1)
+                Set xmlCellNode = TAX_Utilities_v1.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_v1.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell").length - 1)
                     strValue1 = GetAttribute(xmlCellNode, "Value")
-                Set xmlCellNode = TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell") _
-                    (TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell").length - 4)
+                Set xmlCellNode = TAX_Utilities_v1.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_v1.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell").length - 4)
                     strValue2 = GetAttribute(xmlCellNode, "Value")
           
                     If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Then
@@ -1151,12 +1151,12 @@ Public Function ResetData() As Boolean
     Dim countRowReset As Long, countRowReset1 As Long
     Dim xmlNodeReset As MSXML.IXMLDOMNode
     Dim lCol As Long, lRow As Long
-    totalCell = TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length
-    totalCell1 = TAX_Utilities_New.Data(fps.SheetCount - 2).getElementsByTagName("Cell").length
+    totalCell = TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length
+    totalCell1 = TAX_Utilities_v1.Data(fps.SheetCount - 2).getElementsByTagName("Cell").length
     countRowReset = (totalCell - 26) / 6
     countRowReset1 = (totalCell1 - 8) / 6
     With fps
-        For Each xmlNodeReset In TAX_Utilities_New.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
+        For Each xmlNodeReset In TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
             .Sheet = mCurrentSheet
             ParserCellID fps, GetAttribute(xmlNodeReset, "CellID"), lCol, lRow
             If ((lRow < 43 And lRow <> 25) Or lRow > 62 + countRowReset) And mCurrentSheet = 1 Then
@@ -1180,7 +1180,7 @@ Public Function ResetData() As Boolean
                         UpdateCell fps, lCol, lRow, vbNullString
                 End Select
                 'mAdjustData = IIf(IsUpdate = True, IsUpdate, mAdjustData)
-                TAX_Utilities_New.AdjustData(mCurrentSheet - 1) = True
+                TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
             End If
         Next
     End With
@@ -1258,12 +1258,12 @@ Public Sub Prepare_KHBS()
     fps.Sheet = fps.SheetCount - 1
     fps.ActiveSheet = fps.Sheet
     
-    strPath = GetAbsolutePath(GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "TemplateFolder")) & "MapMCT.xml"
+    strPath = GetAbsolutePath(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "TemplateFolder")) & "MapMCT.xml"
     
     If xmlDocument.Load(strPath) Then
         Set xmlNodeListItem = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
         For Each xmlNode In xmlNodeListItem
-            If GetAttribute(xmlNode, "ID") = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") Then
+            If GetAttribute(xmlNode, "ID") = GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") Then
                 Exit For
             End If
         Next
@@ -1315,7 +1315,7 @@ Public Sub UpdateChangeKHBS()
     Dim xmlCellNodeData As MSXML.IXMLDOMNode
     With fps
         .Sheet = 1
-        For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+        For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
             ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
             .GetText lCol, lRow, varTemp
             UpdateLastKHBSCell fps, lCol, lRow, varTemp
@@ -1340,7 +1340,7 @@ Private Sub InsertNode(ByVal pCol As Long, ByVal pRow As Long)
     ' Get cellspan for merge cell on interface templates
     GetCellSpan fps, pCol, pRow
     
-    Set xmlNodeCells = TAX_Utilities_New.Data(mCurrentSheet - 1).nodeFromID(GetCellID(fps, pCol, pRow)).parentNode
+    Set xmlNodeCells = TAX_Utilities_v1.Data(mCurrentSheet - 1).nodeFromID(GetCellID(fps, pCol, pRow)).parentNode
     
     lRows = GetDynRowCount(fps, xmlNodeCells, lRow2s, lLRowBound, lURowBound)
     
@@ -1353,7 +1353,7 @@ Private Sub InsertNode(ByVal pCol As Long, ByVal pRow As Long)
     'fpSpread1.SetFocus
     
     ' increase value of row in xmlDocument
-    IncreaseRowInDOM fps, TAX_Utilities_New.Data(mCurrentSheet - 1), lURowBound + 1, lRows, lRow2s
+    IncreaseRowInDOM fps, TAX_Utilities_v1.Data(mCurrentSheet - 1), lURowBound + 1, lRows, lRow2s
     'IncreaseRowInDOM lURowBound + 1, lRows, lRow2s
 
     Set xmlNodeNewCells = xmlNodeCells.cloneNode(True)
@@ -1390,7 +1390,7 @@ Private Sub InsertNode(ByVal pCol As Long, ByVal pRow As Long)
 '    added
 '   Date: 12/04/06
     'mAdjustData = True
-    TAX_Utilities_New.AdjustData(mCurrentSheet - 1) = True
+    TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
 '   **********************************
 EXIT_SUB:
     Set xmlNodeNewCell = Nothing
@@ -1487,7 +1487,7 @@ Private Sub InsertRow(fpSpread1 As fpSpread, ByVal pRow As Long, lRows As Long, 
                     ' ThanhDX added
                     ' Date: 29/04/06
                     Else
-                        If Not TAX_Utilities_New.Data(mCurrentSheet - 1).nodeFromID( _
+                        If Not TAX_Utilities_v1.Data(mCurrentSheet - 1).nodeFromID( _
                            GetCellID(fpSpread1, i, pRow - lRowCtrl)) Is Nothing Then
                             If .BackColor = &HC0C0FF Or .BackColor = 12713215 Then
                                 .BackColor = vbWhite
@@ -1509,7 +1509,7 @@ Private Sub InsertRow(fpSpread1 As fpSpread, ByVal pRow As Long, lRows As Long, 
                     ' ThanhDX added
                     ' Date: 08/04/06
                     Else
-                        If Not TAX_Utilities_New.Data(mCurrentSheet - 1).nodeFromID(GetCellID(fpSpread1, i, pRow - lRowCtrl)) Is Nothing Then
+                        If Not TAX_Utilities_v1.Data(mCurrentSheet - 1).nodeFromID(GetCellID(fpSpread1, i, pRow - lRowCtrl)) Is Nothing Then
                             Select Case .CellType
                                 Case CellTypeNumber
                                     .SetText i, .Row, 0
@@ -1573,7 +1573,7 @@ Private Sub DeleteNode(ByVal intSheet As Integer, ByVal pCol As Long, ByVal pRow
     
     GetCellSpan fps, pCol, pRow
     
-    Set xmlNodeCells = TAX_Utilities_New.Data(intSheet - 1).nodeFromID(GetCellID(fps, pCol, pRow)).parentNode
+    Set xmlNodeCells = TAX_Utilities_v1.Data(intSheet - 1).nodeFromID(GetCellID(fps, pCol, pRow)).parentNode
     
     lRows = GetDynRowCount(fps, xmlNodeCells, lRow2s, lLRowBound, lURowBound)
 
@@ -1592,7 +1592,7 @@ Private Sub DeleteNode(ByVal intSheet As Integer, ByVal pCol As Long, ByVal pRow
         
     If xmlNodeCells.parentNode.childNodes.length <= 1 Then
         ClearRows xmlNodeCells
-        TAX_Utilities_New.AdjustData(mCurrentSheet - 1) = True
+        TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
         GoTo EXIT_SUB
     Else
         If GetAttribute(xmlNodeCells.firstChild, "FirstCell") = "0" Then
@@ -1628,7 +1628,7 @@ Private Sub DeleteNode(ByVal intSheet As Integer, ByVal pCol As Long, ByVal pRow
 '   ************************************
 '    added
 '   Date: 12/04/06
-    TAX_Utilities_New.AdjustData(mCurrentSheet - 1) = True
+    TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
 '   ************************************
 EXIT_SUB:
     Set xmlNodeCells = Nothing
@@ -1699,8 +1699,8 @@ Private Sub DecreaseRowInDOM(ByVal intSheet As Integer, ByVal pRow As Long, ByVa
     Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
     Dim lCol As Long, lRow As Long, i As Long
     
-    If TAX_Utilities_New.Data(intSheet - 1) Is Nothing Then Exit Sub
-    Set xmlNodeListCell = TAX_Utilities_New.Data(intSheet - 1).getElementsByTagName("Cell")
+    If TAX_Utilities_v1.Data(intSheet - 1) Is Nothing Then Exit Sub
+    Set xmlNodeListCell = TAX_Utilities_v1.Data(intSheet - 1).getElementsByTagName("Cell")
     
     For i = 0 To xmlNodeListCell.length - 1
         ParserCellID fps, GetAttribute(xmlNodeListCell(i), "CellID"), lCol, lRow
@@ -1752,7 +1752,7 @@ Public Sub UpdateSheet()
         .Sheet = 1
         temp = mCurrentSheet
         mCurrentSheet = 1
-        For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+        For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
             ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
             .GetText lCol, lRow, varTemp
             UpdateCell fps, lCol, lRow, varTemp
@@ -1761,9 +1761,9 @@ Public Sub UpdateSheet()
         ' Update lai sheet KHBS
         .Sheet = .SheetCount - 1
         mCurrentSheet = .Sheet
-        blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        blCheck_S2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         If blCheck_S2 = True Then
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(.Sheet - 1).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(.Sheet - 1).getElementsByTagName("Cell")
                     ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                     .GetText lCol, lRow, varTemp
                     UpdateCell fps, lCol, lRow, varTemp
@@ -1884,12 +1884,12 @@ Function getMapCT() As String
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim xmlNodeListItem As MSXML.IXMLDOMNodeList
     Dim xmlNodeItem As MSXML.IXMLDOMNode
-    strPath = GetAbsolutePath(GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "TemplateFolder")) & "MapMCT_TT28.xml"
+    strPath = GetAbsolutePath(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "TemplateFolder")) & "MapMCT_TT28.xml"
     
     If xmlDocument.Load(strPath) Then
         Set xmlNodeListItem = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
         For Each xmlNode In xmlNodeListItem
-            If GetAttribute(xmlNode, "ID") = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") Then
+            If GetAttribute(xmlNode, "ID") = GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") Then
                 Exit For
             End If
         Next
@@ -2045,11 +2045,11 @@ With fps
     Dim blCheck_S5 As Boolean
     Dim blCheck_S4A As Boolean
     Dim blCheck_S4B As Boolean
-    'blCheck_S1 = IIf(TAX_Utilities_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-    blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-    'blCheck_S5 = IIf(TAX_Utilities_New.NodeValidity.childNodes(6).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-    'blCheck_S4A = IIf(TAX_Utilities_New.NodeValidity.childNodes(4).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-    'blCheck_S4B = IIf(TAX_Utilities_New.NodeValidity.childNodes(5).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+    'blCheck_S1 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+    blCheck_S2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+    'blCheck_S5 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(6).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+    'blCheck_S4A = IIf(TAX_Utilities_v1.NodeValidity.childNodes(4).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+    'blCheck_S4B = IIf(TAX_Utilities_v1.NodeValidity.childNodes(5).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
     tempCurrSheet = mCurrentSheet
     .Sheet = 1
     ' Chi tieu 21
@@ -2096,8 +2096,8 @@ Sub CellChange3()
 '    Dim blCheck_S4A As Boolean
 '    Dim blCheck_S4B As Boolean
 '
-'    blCheck_S4A = IIf(TAX_Utilities_New.NodeValidity.childNodes(4).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-'    blCheck_S4B = IIf(TAX_Utilities_New.NodeValidity.childNodes(5).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+'    blCheck_S4A = IIf(TAX_Utilities_v1.NodeValidity.childNodes(4).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+'    blCheck_S4B = IIf(TAX_Utilities_v1.NodeValidity.childNodes(5).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
 '
 '    ' Tong hop len bang ke 01_4A
 '        With fps
@@ -2131,20 +2131,20 @@ Public Sub SetActiveKHBS() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
     Dim strValue3 As String
     'Check the second sheet
     'Select Case GetAttribute(xmlNodeValid, "ID")
-    For Each xmlNodeValid In TAX_Utilities_New.NodeValidity.childNodes
+    For Each xmlNodeValid In TAX_Utilities_v1.NodeValidity.childNodes
         Select Case GetAttribute(xmlNodeValid, "ID")
                 Case "KHBS"
                     blnNullValue = True
                     'Check value of last node in Data
-                    Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
-                        (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 1)
+                    Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell") _
+                        (TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length - 1)
                     strValue1 = GetAttribute(xmlCellNode, "Value")
-                 Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell")(1)
+                 Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")(1)
                     strValue2 = GetAttribute(xmlCellNode, "Value")
-                 Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell")(7)
+                 Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")(7)
                     strValue3 = GetAttribute(xmlCellNode, "Value")
           
-                    If (Not IsNullValue(strValue1)) Or TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length > 20 Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Then
+                    If (Not IsNullValue(strValue1)) Or TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length > 20 Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Then
                             blnNullValue = False
                     End If
 

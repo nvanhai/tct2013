@@ -61,8 +61,7 @@ strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_loai_HD.xml")
         .Col = .ColLetterToNumber("AG")
         .Row = 35
         .TypeComboBoxList = strCombo
-        
-
+       
     End With
     
     
@@ -111,7 +110,7 @@ Public Sub Prepare2()
         End If
         
          'Xoa cong thuc cua o Chu ky
-        Set xmlCellNode = TAX_Utilities_New.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 35))
+        Set xmlCellNode = TAX_Utilities_v1.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 35))
         Set xmlCellNode = xmlCellNode.parentNode
         Set xmlCellNode = xmlCellNode.parentNode
         Set xmlCellNode = xmlCellNode.parentNode.lastChild
@@ -126,7 +125,7 @@ Public Sub Prepare2()
         .Row = countRowDynamic + 45
         .Col = .ColLetterToNumber("AA")
         '.Text = Format(Date, "dd/mm/yyyy")
-        .Text = TAX_Utilities_New.Day & "/" & TAX_Utilities_New.Month & "/" & TAX_Utilities_New.Year
+        .Text = TAX_Utilities_v1.Day & "/" & TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year
         .TypeHAlign = TypeHAlignLeft
         
         .EventEnabled(EventAllEvents) = True
@@ -1164,10 +1163,10 @@ Public Function ResetData() As Boolean
     Dim countRowReset As Long
     Dim xmlNodeReset As MSXML.IXMLDOMNode
     Dim lCol As Long, lRow As Long
-    totalCell = TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length
+    totalCell = TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length
     countRowReset = (totalCell - 5) / 14
     With fps
-        For Each xmlNodeReset In TAX_Utilities_New.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
+        For Each xmlNodeReset In TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
             .Sheet = mCurrentSheet
             ParserCellID fps, GetAttribute(xmlNodeReset, "CellID"), lCol, lRow
             If (lRow < 35 Or lRow > 35 + countRowReset) And mCurrentSheet = 1 Then
@@ -1190,7 +1189,7 @@ Public Function ResetData() As Boolean
                         UpdateCell fps, lCol, lRow, vbNullString
                 End Select
                 'mAdjustData = IIf(IsUpdate = True, IsUpdate, mAdjustData)
-                TAX_Utilities_New.AdjustData(mCurrentSheet - 1) = True
+                TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
             End If
         Next
     End With
@@ -1210,8 +1209,8 @@ Private Sub UpdateSheets()
         ssSheet = mCurrentSheet
         .Sheet = 1
         mCurrentSheet = .Sheet
-        If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "Active") <> "0") Then
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "Active") <> "0") Then
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
                UpdateCell fps, lCol, lRow, varTemp
@@ -1231,7 +1230,7 @@ End Sub
 Public Function GetDVCQ() As String
     Dim xmlDomHeader As New MSXML.DOMDocument
     
-    xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_New.DataFolder & "Header_01.xml")
+    xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_v1.DataFolder & "Header_01.xml")
     GetDVCQ = GetAttribute(xmlDomHeader.nodeFromID("C_34"), "Value")
     
     Set xmlDomHeader = Nothing
@@ -1239,7 +1238,7 @@ End Function
 Public Function GetTenDVCQ() As String
     Dim xmlDomHeader As New MSXML.DOMDocument
     
-    xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_New.DataFolder & "Header_01.xml")
+    xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_v1.DataFolder & "Header_01.xml")
     GetTenDVCQ = GetAttribute(xmlDomHeader.nodeFromID("C_32"), "Value")
     
     Set xmlDomHeader = Nothing
@@ -1247,7 +1246,7 @@ End Function
 Public Function GetNguoiKy() As String
     Dim xmlDomHeader As New MSXML.DOMDocument
     
-    xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_New.DataFolder & "Header_01.xml")
+    xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_v1.DataFolder & "Header_01.xml")
     GetNguoiKy = GetAttribute(xmlDomHeader.nodeFromID("C_26"), "Value")
     
     Set xmlDomHeader = Nothing

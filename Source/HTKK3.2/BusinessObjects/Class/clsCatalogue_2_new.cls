@@ -60,7 +60,7 @@ Public Sub Prepare2()
             .Sheet = intCtrl
             strCheckAll = "1"
             
-            For Each xmlCellNode In TAX_Utilities_New.Data(intCtrl - 1).getElementsByTagName("Cell")
+            For Each xmlCellNode In TAX_Utilities_v1.Data(intCtrl - 1).getElementsByTagName("Cell")
                 ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
                 arrStrValue = Split(GetAttribute(xmlCellNode, "Value"), "###")
                                 
@@ -69,19 +69,19 @@ Public Sub Prepare2()
                 'Set gia tri bao bi
                 If intCtrl = 2 Then
                     .Col = .ColLetterToNumber(GIA_BAO_BI_TTDB)
-                    .Value = arrStrValue(5)
+                    .value = arrStrValue(5)
                 End If
                 
                 .Col = 2
-                .Value = arrStrValue(UBound(arrStrValue))
+                .value = arrStrValue(UBound(arrStrValue))
                 
-                If .Value = "0" Then
+                If .value = "0" Then
                     strCheckAll = "0"
                 End If
             Next
             .Row = 2
             .Col = 2
-            .Value = strCheckAll
+            .value = strCheckAll
         Next
         .EventEnabled(EventAllEvents) = True
     End With
@@ -154,7 +154,7 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
             Select Case Row
                 Case 2
                     .Row = Row
-                    strCheckAll = .Value
+                    strCheckAll = .value
                     For intCtrl = 3 To .MaxRows
                         .Row = intCtrl
                         
@@ -173,8 +173,8 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                         
                         .Col = Col
                         If .CellType = CellTypeCheckBox Then
-                            .Value = strCheckAll
-                            If .Value = "1" Then
+                            .value = strCheckAll
+                            If .value = "1" Then
                                 strValue = strValue & "1"
                             Else
                                 strValue = strValue & "0"
@@ -183,7 +183,7 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                         End If
                     Next intCtrl
                     
-                    TAX_Utilities_New.AdjustData(.ActiveSheet - 1) = True
+                    TAX_Utilities_v1.AdjustData(.ActiveSheet - 1) = True
                 Case Else
                     .Row = Row
                     
@@ -200,7 +200,7 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                     .GetText .ColLetterToNumber(THAY_DOI_TN), .Row, varValue
                     strValue = strValue & Trim(CStr(varValue)) & "###"
                     
-                    If .Value = "1" Then
+                    If .value = "1" Then
                         strValue = strValue & "1"
                     Else
                         strValue = strValue & "0"
@@ -211,13 +211,13 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                     For intCtrl = 3 To .MaxRows
                         .Col = Col
                         .Row = intCtrl
-                        If .CellType = CellTypeCheckBox And .Value = "0" Then
+                        If .CellType = CellTypeCheckBox And .value = "0" Then
                             strCheckAll = "0"
                             Exit For
                         End If
                     Next intCtrl
                     .Row = 2
-                    .Value = strCheckAll
+                    .value = strCheckAll
             End Select
         
         ElseIf mCurrentSheet = 2 Then
@@ -227,7 +227,7 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                 Case 2
                     .Col = Col
                     .Row = Row
-                    strCheckAll = .Value
+                    strCheckAll = .value
                     For intCtrl = 3 To .MaxRows
                         .Row = intCtrl
                         
@@ -248,8 +248,8 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                         
                         .Col = Col
                         If .CellType = CellTypeCheckBox Then
-                            .Value = strCheckAll
-                            If .Value = "1" Then
+                            .value = strCheckAll
+                            If .value = "1" Then
                                 strValue = strValue & "1"
                             Else
                                 strValue = strValue & "0"
@@ -258,7 +258,7 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                         End If
                     Next intCtrl
                     
-                    TAX_Utilities_New.AdjustData(.ActiveSheet - 1) = True
+                    TAX_Utilities_v1.AdjustData(.ActiveSheet - 1) = True
                 Case Else
                     .Col = Col
                     .Row = Row
@@ -278,7 +278,7 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                     .GetText .ColLetterToNumber(THAY_DOI_TTDB), .Row, varValue
                     strValue = strValue & Trim(CStr(varValue)) & "###"
                     
-                    If .Value = "1" Then
+                    If .value = "1" Then
                         strValue = strValue & "1"
                     Else
                         strValue = strValue & "0"
@@ -289,13 +289,13 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                     For intCtrl = 3 To .MaxRows
                         .Col = Col
                         .Row = intCtrl
-                        If .CellType = CellTypeCheckBox And .Value = "0" Then
+                        If .CellType = CellTypeCheckBox And .value = "0" Then
                             strCheckAll = "0"
                             Exit For
                         End If
                     Next intCtrl
                     .Row = 2
-                    .Value = strCheckAll
+                    .value = strCheckAll
             End Select
         End If
         
@@ -314,7 +314,7 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
         .Col = Col
         .Row = Row
         If .CellType = CellTypeCheckBox Then
-            TAX_Utilities_New.AdjustData(.ActiveSheet - 1) = True
+            TAX_Utilities_v1.AdjustData(.ActiveSheet - 1) = True
             Exit Sub
         End If
         
@@ -342,7 +342,7 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
                         
             UpdateCell fps, 3, Row, strValue
             
-            TAX_Utilities_New.AdjustData(.ActiveSheet - 1) = True
+            TAX_Utilities_v1.AdjustData(.ActiveSheet - 1) = True
             
         End If
     End With

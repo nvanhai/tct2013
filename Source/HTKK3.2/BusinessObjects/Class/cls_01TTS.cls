@@ -91,7 +91,7 @@ Public Sub Prepare2()
             .Col = .ColLetterToNumber("U")
             .Row = 29
             'lay so thang quyet toan
-            .Text = DateDiff("M", Format("01/" & TAX_Utilities_New.FirstDay, "dd/mm/yyyy"), Format("01/" & TAX_Utilities_New.LastDay, "dd/mm/yyyy")) + 1
+            .Text = DateDiff("M", Format("01/" & TAX_Utilities_v1.FirstDay, "dd/mm/yyyy"), Format("01/" & TAX_Utilities_v1.LastDay, "dd/mm/yyyy")) + 1
           'set thong tin header neu la to khai tuthang denthang
              If strLoaiTKQT = "QT_TUNG_NAM" Then
                .Col = .ColLetterToNumber("O")
@@ -99,16 +99,16 @@ Public Sub Prepare2()
                .Text = 1
                .Col = .ColLetterToNumber("R")
                .Text = ""
-               .SetText .ColLetterToNumber("P"), 3, TAX_Utilities_New.FirstDay
-               .SetText .ColLetterToNumber("T"), 3, TAX_Utilities_New.LastDay
+               .SetText .ColLetterToNumber("P"), 3, TAX_Utilities_v1.FirstDay
+               .SetText .ColLetterToNumber("T"), 3, TAX_Utilities_v1.LastDay
             ElseIf strLoaiTKQT = "QT_NAM_DAU" Then
                .Col = .ColLetterToNumber("R")
                .Row = 29
                .Text = 1
                .Col = .ColLetterToNumber("O")
                .Text = ""
-               .SetText .ColLetterToNumber("P"), 3, TAX_Utilities_New.FirstDay
-               .SetText .ColLetterToNumber("T"), 3, TAX_Utilities_New.LastDay
+               .SetText .ColLetterToNumber("P"), 3, TAX_Utilities_v1.FirstDay
+               .SetText .ColLetterToNumber("T"), 3, TAX_Utilities_v1.LastDay
              End If
           End If
         .EventEnabled(EventAllEvents) = True
@@ -301,7 +301,7 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
 '    Dim strValue As String
 '    Dim varThangKT As Variant
 '
-'    CellNguoiKy = GetAttribute(TAX_Utilities_New.Data(0).getElementsByTagName("Cell")(TAX_Utilities_New.Data(0).getElementsByTagName("Cell").length - 4), "CellID")
+'    CellNguoiKy = GetAttribute(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 4), "CellID")
 '    With fps
 '        .EventEnabled(EventAllEvents) = False
 '        mCurrentSheet = .Sheet
@@ -805,7 +805,7 @@ Private Sub InsertRow(fpSpread1 As fpSpread, ByVal pRow As Long, lRows As Long, 
                     ' ThanhDX added
                     ' Date: 29/04/06
                     Else
-                        If Not TAX_Utilities_New.Data(mCurrentSheet - 1).nodeFromID( _
+                        If Not TAX_Utilities_v1.Data(mCurrentSheet - 1).nodeFromID( _
                            GetCellID(fpSpread1, i, pRow - lRowCtrl)) Is Nothing Then
                             If .BackColor = &HC0C0FF Or .BackColor = 12713215 Then
                                 .BackColor = vbWhite
@@ -827,7 +827,7 @@ Private Sub InsertRow(fpSpread1 As fpSpread, ByVal pRow As Long, lRows As Long, 
                     ' ThanhDX added
                     ' Date: 08/04/06
                     Else
-                        If Not TAX_Utilities_New.Data(mCurrentSheet - 1).nodeFromID(GetCellID(fpSpread1, i, pRow - lRowCtrl)) Is Nothing Then
+                        If Not TAX_Utilities_v1.Data(mCurrentSheet - 1).nodeFromID(GetCellID(fpSpread1, i, pRow - lRowCtrl)) Is Nothing Then
                             Select Case .CellType
                                 Case CellTypeNumber
                                     .SetText i, .Row, 0
@@ -986,7 +986,7 @@ Private Sub UpdateSheets()
         ssSheet = mCurrentSheet
         .Sheet = 1
         mCurrentSheet = .Sheet
-        For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+        For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
            ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
 '               If (lRow = 19 And lCol = .ColLetterToNumber("R")) Or (lRow = 19 And lCol = .ColLetterToNumber("O")) Then
 '                    .GetText lCol, lRow, varTemp

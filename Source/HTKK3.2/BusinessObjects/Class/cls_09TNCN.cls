@@ -48,7 +48,7 @@ Public Sub Prepare1()
         
         SetDateFormat fps, 1, 4, .ColLetterToNumber("L"), MMYYYY
         SetDateFormat fps, 1, 4, .ColLetterToNumber("N"), MMYYYY
-        If TAX_Utilities_New.Year = 2009 Then
+        If TAX_Utilities_v1.Year = 2009 Then
             .Row = 4
             .Col = .ColLetterToNumber("L")
             .Text = Format("07/2009", "mm/yyyy")
@@ -62,12 +62,12 @@ Public Sub Prepare1()
         Else
             .Row = 4
             .Col = .ColLetterToNumber("L")
-            .Text = Format("01/" & TAX_Utilities_New.Year, "mm/yyyy")
+            .Text = Format("01/" & TAX_Utilities_v1.Year, "mm/yyyy")
             .TypeHAlign = TypeHAlignLeft
 
             .Row = 4
             .Col = .ColLetterToNumber("N")
-            .Text = Format("12/" & TAX_Utilities_New.Year, "mm/yyyy")
+            .Text = Format("12/" & TAX_Utilities_v1.Year, "mm/yyyy")
             .TypeHAlign = TypeHAlignLeft
         End If
                 
@@ -122,7 +122,7 @@ Public Sub Prepare1()
         SetDateFormat fps, 4, 22, .ColLetterToNumber("E"), DDMMYYYY
               
         .Sheet = 4
-        If Val(TAX_Utilities_New.Year) >= 2012 Then
+        If Val(TAX_Utilities_v1.Year) >= 2012 Then
             .Col = .ColLetterToNumber("K")
             .Row = 22
             .Formula = ""
@@ -202,7 +202,7 @@ Public Sub Prepare2()
         'ke khai nam 2011 se settext vao cell Q, <>2011 set vao cell P
         'neu ke khai nam 2009 thi so thang quyet toan = 6
         soThangKG = DateDiff("M", Format(tuThang, "mm/yyyy"), Format(denThang, "mm/yyyy")) + 1
-        If TAX_Utilities_New.Year = "2011" Or TAX_Utilities_New.Year = "2012" Then
+        If TAX_Utilities_v1.Year = "2011" Or TAX_Utilities_v1.Year = "2012" Then
             'tinh so thang Ke khai
             soThangKG = getSoThangQTMienGiam(CStr(tuThang), CStr(denThang))
             .SetText .ColLetterToNumber("Q"), 4, soThangKG
@@ -211,7 +211,7 @@ Public Sub Prepare2()
             Else
                 .SetText .ColLetterToNumber("T"), 51, 0
             End If
-        ElseIf TAX_Utilities_New.Year = "2009" Then
+        ElseIf TAX_Utilities_v1.Year = "2009" Then
             .SetText .ColLetterToNumber("Q"), 4, "6"
         Else
             .SetText .ColLetterToNumber("Q"), 4, "1"
@@ -244,7 +244,7 @@ Public Sub Prepare2()
         
         
 '        ''       lay gia tri CT32 da ghi trong datafile neu co
-'        For Each xmlNode In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+'        For Each xmlNode In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
 '            ParserCellID fps, GetAttribute(xmlNode, "CellID"), iCol, iRow
 '
 '            If iCol = .ColLetterToNumber("I") And iRow = 47 Then
@@ -306,7 +306,7 @@ Private Function GetValidatedCellIndex(ByVal lSheet As Long, lAnchorRow As Long,
     Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
     Dim lCtrl As Long
     
-    Set xmlCellNode = TAX_Utilities_New.Data(lSheet - 1).nodeFromID(GetCellID(fps, lAnchorCol, lAnchorRow))
+    Set xmlCellNode = TAX_Utilities_v1.Data(lSheet - 1).nodeFromID(GetCellID(fps, lAnchorCol, lAnchorRow))
     Set xmlCellsNode = xmlCellNode.parentNode
     
     'Get Index of anchor cell
@@ -551,7 +551,7 @@ End Sub
                         .GetText .ColLetterToNumber("N"), 4, denThang
                         
                         'check tu thang phai nam trong ky tinh thue
-                        If Val(Right(CStr(tuThang), 4)) <> Val(TAX_Utilities_New.Year) Then
+                        If Val(Right(CStr(tuThang), 4)) <> Val(TAX_Utilities_v1.Year) Then
                             DisplayMessage "0252", msOKOnly, miWarning
 '                            .SetFocus
                             .SetActiveCell Col, Row
@@ -561,7 +561,7 @@ End Sub
                                 DisplayMessage "0151", msOKOnly, miWarning
 '                                .SetFocus
                                 .SetActiveCell Col, Row
-                            ElseIf Month(Format_mmyyyy(CStr(varTemp))) < 7 And TAX_Utilities_New.Year = 2009 Then
+                            ElseIf Month(Format_mmyyyy(CStr(varTemp))) < 7 And TAX_Utilities_v1.Year = 2009 Then
                                 DisplayMessage "0152", msOKOnly, miWarning
 '                                .SetFocus
                                 .SetActiveCell Col, Row
@@ -683,7 +683,7 @@ End Sub
                 'ke khai nam 2009 thi so thang quyet toan = 6
                 soThangKG = DateDiff("M", Format(tuThang, "mm/yyyy"), Format(denThang, "mm/yyyy")) + 1
 
-                If TAX_Utilities_New.Year = "2011" Or TAX_Utilities_New.Year = "2012" Then
+                If TAX_Utilities_v1.Year = "2011" Or TAX_Utilities_v1.Year = "2012" Then
                     'tinh so thang ke khai
                     soThangKG = getSoThangQTMienGiam(CStr(tuThang), CStr(denThang))
                     .SetText .ColLetterToNumber("Q"), 4, soThangKG
@@ -693,7 +693,7 @@ End Sub
                     Else
                         .SetText .ColLetterToNumber("T"), 51, 0
                     End If
-                ElseIf TAX_Utilities_New.Year = "2009" Then
+                ElseIf TAX_Utilities_v1.Year = "2009" Then
                     .SetText .ColLetterToNumber("Q"), 4, "6"
                 Else
                     .SetText .ColLetterToNumber("Q"), 4, "1"
@@ -759,7 +759,7 @@ End Sub
                     'kekhai nam 2009 thi so thang qt = 6
                     .GetText .ColLetterToNumber("Q"), 57, varTemp
 
-                    If varTemp <= 5000000 And (TAX_Utilities_New.Year = "2011" Or TAX_Utilities_New.Year = "2012") Then
+                    If varTemp <= 5000000 And (TAX_Utilities_v1.Year = "2011" Or TAX_Utilities_v1.Year = "2012") Then
                         'tinh so thang ke khai
                         soThangQT = getSoThangQTMienGiam(tuThang, denThang)
                         .SetText .ColLetterToNumber("Q"), 4, soThangQT
@@ -769,7 +769,7 @@ End Sub
                             .SetText .ColLetterToNumber("T"), 51, 0
                         End If
 
-'                    ElseIf TAX_Utilities_New.Year = "2009" Then
+'                    ElseIf TAX_Utilities_v1.Year = "2009" Then
 '                        .SetText .ColLetterToNumber("Q"), 4, "6"
 '                    Else
 '                        .SetText .ColLetterToNumber("Q"), 4, "1"
@@ -890,7 +890,7 @@ Private Sub CheckDynamicError()
         
         .Sheet = tSheet
         ' Neu ton tai file data phu luc 09C thi kiem tra tren phu luc 09C
-        If IIf(TAX_Utilities_New.NodeValidity.childNodes(.SheetCount - 5).Attributes.getNamedItem("Active").nodeValue <> "0", True, False) Then
+        If IIf(TAX_Utilities_v1.NodeValidity.childNodes(.SheetCount - 5).Attributes.getNamedItem("Active").nodeValue <> "0", True, False) Then
             checkSheet4
         Else
             clearCheckSheet4
@@ -1113,7 +1113,7 @@ Private Sub checkSheet4()
                 End If
                 
                 'check ngay sinh phai sau ky tinh thue
-                If Val(Right(CStr(Trim(vNgaySinh)), 4)) > Val(TAX_Utilities_New.Year) Then
+                If Val(Right(CStr(Trim(vNgaySinh)), 4)) > Val(TAX_Utilities_v1.Year) Then
                     .Col = .ColLetterToNumber("E")
                     .BackColor = mErrorColor
                     .CellNote = mErrNgaySinhPhuThuoc
@@ -1249,7 +1249,7 @@ Private Sub checkSheet4()
                 'check chi tieu [15] <= chitieu [14] * 1600000
                 
                 'vCT15 = Replace(CStr(vCT15), ".", "")
-                 If Val(TAX_Utilities_New.Year) >= 2012 Then
+                 If Val(TAX_Utilities_v1.Year) >= 2012 Then
                     If (Val(vCT15) > Val(vSoThangGiamTru) * 3600000) Then
                         .Col = .ColLetterToNumber("K")
                         .BackColor = mErrorColor
@@ -1496,12 +1496,12 @@ Public Sub SetActiveSheet()
     Dim strValue2 As String
     'Check the second sheet
     'Select Case GetAttribute(xmlNodeValid, "ID")
-    For Each xmlNodeValid In TAX_Utilities_New.NodeValidity.childNodes
+    For Each xmlNodeValid In TAX_Utilities_v1.NodeValidity.childNodes
         Select Case GetAttribute(xmlNodeValid, "ID")
             Case "09A"
                 blnNullValue = True
 
-                For Each xmlCellNode In TAX_Utilities_New.Data(1).getElementsByTagName("Cell")
+                For Each xmlCellNode In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
                     ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
                     'Check value in E column and I column
 '                    If (lCol = fps.ColLetterToNumber("I") And lRow = 16) Or (lCol = fps.ColLetterToNumber("I") And lRow = 18) Or (lCol = fps.ColLetterToNumber("I") And lRow = 20) Or (lCol = fps.ColLetterToNumber("I") And lRow = 23) Or (lCol = fps.ColLetterToNumber("I") And lRow = 26) Then
@@ -1520,7 +1520,7 @@ Public Sub SetActiveSheet()
              Case "09B"
                 blnNullValue = True
 
-                For Each xmlCellNode In TAX_Utilities_New.Data(2).getElementsByTagName("Cell")
+                For Each xmlCellNode In TAX_Utilities_v1.Data(2).getElementsByTagName("Cell")
                     ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
                     'Check value in E column and I column
 '                    If (lCol = fps.ColLetterToNumber("I") And lRow = 11) Or (lCol = fps.ColLetterToNumber("I") And lRow = 17) _
@@ -1541,7 +1541,7 @@ Public Sub SetActiveSheet()
             Case "09C"
                 blnNullValue = True
 
-                For Each xmlCellNode In TAX_Utilities_New.Data(3).getElementsByTagName("Cell")
+                For Each xmlCellNode In TAX_Utilities_v1.Data(3).getElementsByTagName("Cell")
                     ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
                     'Check value in D column and E column
                     If lCol = fps.ColLetterToNumber("D") Or _
@@ -1560,7 +1560,7 @@ Public Sub SetActiveSheet()
             Case "26MT"
                 blnNullValue = True
 
-                For Each xmlCellNode In TAX_Utilities_New.Data(4).getElementsByTagName("Cell")
+                For Each xmlCellNode In TAX_Utilities_v1.Data(4).getElementsByTagName("Cell")
                     ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
                     'Check value in D column and E column
                     If lCol = fps.ColLetterToNumber("I") Then
@@ -1641,8 +1641,8 @@ Private Sub UpdateSheets()
         .Sheet = 1
         mCurrentSheet = .Sheet
         
-        If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "Active") <> "0") Then
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "Active") <> "0") Then
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
 '               If lCol = .ColLetterToNumber("P") And lRow = 52 Then
 '
@@ -1652,38 +1652,38 @@ Private Sub UpdateSheets()
 '               End If
              Next
         End If
-        If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(1), "Active") <> "0") Then
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(1), "Active") <> "0") Then
         .Sheet = 2
         mCurrentSheet = .Sheet
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(1).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
                UpdateCell fps, lCol, lRow, varTemp
              Next
         End If
-        If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(2), "Active") <> "0") Then
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(2), "Active") <> "0") Then
         .Sheet = 3
         mCurrentSheet = .Sheet
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(2).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(2).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
                UpdateCell fps, lCol, lRow, varTemp
              Next
         End If
-        If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(3), "Active") <> "0") Then
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(3), "Active") <> "0") Then
         .Sheet = 4
         mCurrentSheet = .Sheet
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(3).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(3).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
                UpdateCell fps, lCol, lRow, varTemp
              Next
         End If
         
-        If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(4), "Active") <> "0") Then
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(4), "Active") <> "0") Then
         .Sheet = 5
         mCurrentSheet = .Sheet
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(4).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(4).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
                UpdateCell fps, lCol, lRow, varTemp

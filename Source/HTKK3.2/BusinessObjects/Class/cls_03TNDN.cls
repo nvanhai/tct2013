@@ -120,15 +120,15 @@ With fps
     .Col = .ColLetterToNumber("N")
     .Text = Format(Date, "dd/mm/yyyy")
     .TypeHAlign = TypeHAlignLeft
-    If TAX_Utilities_New.Year = 2009 Then
+    If TAX_Utilities_v1.Year = 2009 Then
         .SetText .ColLetterToNumber("C"), 62, GetAttribute(GetMessageCellById("0185"), "Msg")
-    ElseIf TAX_Utilities_New.Year = 2010 Then
+    ElseIf TAX_Utilities_v1.Year = 2010 Then
         .SetText .ColLetterToNumber("C"), 62, GetAttribute(GetMessageCellById("0187"), "Msg")
-    ElseIf TAX_Utilities_New.Year = 2011 Then
+    ElseIf TAX_Utilities_v1.Year = 2011 Then
         .SetText .ColLetterToNumber("C"), 62, GetAttribute(GetMessageCellById("0243"), "Msg")
-'    ElseIf TAX_Utilities_New.Year = 2013 Then
+'    ElseIf TAX_Utilities_v1.Year = 2013 Then
 '        .SetText .ColLetterToNumber("C"), 62, GetAttribute(GetMessageCellById("0263"), "Msg")
-'    ElseIf Val(TAX_Utilities_New.Year) = 2012 Or Val(TAX_Utilities_New.Year) > 2013 Then
+'    ElseIf Val(TAX_Utilities_v1.Year) = 2012 Or Val(TAX_Utilities_v1.Year) > 2013 Then
     Else
          .SetText .ColLetterToNumber("C"), 62, GetAttribute(GetMessageCellById("0263"), "Msg")
 '        .SetText .ColLetterToNumber("C"), 62, ""
@@ -190,7 +190,7 @@ With fps
     .TypeHAlign = TypeHAlignLeft
     ' Lay gia tri cua cac quy khac de set vao phu luc 05/TNDN
     arrResul = GetValue32_31TK_Quy
-    blCheck_S05 = IIf(TAX_Utilities_New.NodeValidity.childNodes(11).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+    blCheck_S05 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(11).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
     If blCheck_S05 = True Then
         .Sheet = 12
         mCurrentSheet = .Sheet
@@ -301,7 +301,7 @@ Public Sub Prepare2()
             SetData
         .Sheet = lSheet03_3A 'Phu luc 03_3A TNDN (SheetName: 03_3A)
             mCurrentSheet = .Sheet
-            Set xmlCellNode = TAX_Utilities_New.Data(lSheet03_3A - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("U"), 38))
+            Set xmlCellNode = TAX_Utilities_v1.Data(lSheet03_3A - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("U"), 38))
             Set xmlCellsNode = xmlCellNode.parentNode
 
             Do
@@ -320,7 +320,7 @@ Public Sub Prepare2()
         .Sheet = lSheet03_3B 'Phu luc 03_3B TNDN (SheetName: 03_3B)
             mCurrentSheet = .Sheet
 
-            Set xmlCellNode = TAX_Utilities_New.Data(lSheet03_3B - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("U"), 44))
+            Set xmlCellNode = TAX_Utilities_v1.Data(lSheet03_3B - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("U"), 44))
             Set xmlCellsNode = xmlCellNode.parentNode
 
             Do
@@ -342,7 +342,7 @@ Public Sub Prepare2()
         .Sheet = lSheet03_3C 'Phu luc 03_3C TNDN (SheetName: 03_3C)
             mCurrentSheet = .Sheet
 
-            Set xmlCellNode = TAX_Utilities_New.Data(lSheet03_3C - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("V"), 27))
+            Set xmlCellNode = TAX_Utilities_v1.Data(lSheet03_3C - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("V"), 27))
             Set xmlCellsNode = xmlCellNode.parentNode
 
             Do
@@ -633,7 +633,7 @@ With fps
 '            .Sheet = 1
 '            .GetText .ColLetterToNumber("G"), 50, varTemp
 '            .Sheet = .SheetCount - 1
-'            Set xmlNodeH15 = TAX_Utilities_New.Data(.Sheet - 1).childNodes(2).childNodes(2).lastChild.lastChild
+'            Set xmlNodeH15 = TAX_Utilities_v1.Data(.Sheet - 1).childNodes(2).childNodes(2).lastChild.lastChild
 '                 ParserCellID fps, GetAttribute(xmlNodeH15, "CellID"), cCol, cRow
 '                .Col = cCol
 '                .Row = cRow
@@ -674,7 +674,7 @@ End Sub
 
 'inner class event: ButtonClicked
 Public Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonDown As Integer)
-     TAX_Utilities_New.AdjustData(fps.ActiveSheet - 1) = True
+     TAX_Utilities_v1.AdjustData(fps.ActiveSheet - 1) = True
      'CellChange Col, Row
      
     Dim blTemp As Boolean
@@ -756,7 +756,7 @@ With fps
 '        End If
 '
 '
-'        Set xmlCellNode = TAX_Utilities_New.Data(.SheetCount - 2).nodeFromID(GetCellID(fps, Col, Row))
+'        Set xmlCellNode = TAX_Utilities_v1.Data(.SheetCount - 2).nodeFromID(GetCellID(fps, Col, Row))
 '        Set xmlCellNode = xmlCellNode.parentNode.parentNode.firstChild.firstChild
 '        ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
 '        blGiaTriCu = False
@@ -814,7 +814,7 @@ With fps
 End With
     
     CellChange Col, Row
-    TAX_Utilities_New.AdjustData(mCurrentSheet - 1) = True
+    TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
 End Sub
 
 
@@ -882,9 +882,9 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
             
             ' Update so chenh lech cho KHBS
 '            .GetText .ColLetterToNumber("G"), 50, varTemp
-'            If TAX_Utilities_New.NodeValidity.childNodes(.SheetCount - 2).Attributes.getNamedItem("Active").nodeValue <> "0" Then
+'            If TAX_Utilities_v1.NodeValidity.childNodes(.SheetCount - 2).Attributes.getNamedItem("Active").nodeValue <> "0" Then
 '                .Sheet = .SheetCount - 1
-'                Set xmlNode = TAX_Utilities_New.Data(.Sheet - 1).childNodes(2).childNodes(2).lastChild.lastChild
+'                Set xmlNode = TAX_Utilities_v1.Data(.Sheet - 1).childNodes(2).childNodes(2).lastChild.lastChild
 '                ParserCellID fps, GetAttribute(xmlNode, "CellID"), cCol, cRow
 '                .Col = cCol
 '                .Row = cRow
@@ -1024,13 +1024,13 @@ With fps
                  ValidateNumberFormat fps, lSheet03_3A, Row, Col
             End If
             If IsValidatedCell(lSheet03_3A, 38, .ColLetterToNumber("U"), Row, Col) Then
-                 validateDate fps, lSheet03_3A, Row, Col, yyyy
+                 ValidateDate fps, lSheet03_3A, Row, Col, yyyy
             End If
             If IsValidatedCell(lSheet03_3A, 39, .ColLetterToNumber("Q"), Row, Col) Then
-                 validateDate fps, lSheet03_3A, Row, Col, yyyy
+                 ValidateDate fps, lSheet03_3A, Row, Col, yyyy
             End If
             If IsValidatedCell(lSheet03_3A, 40, .ColLetterToNumber("U"), Row, Col) Then
-                 validateDate fps, lSheet03_3A, Row, Col, yyyy
+                 ValidateDate fps, lSheet03_3A, Row, Col, yyyy
             End If
             ' TOng hop len chi tieu C8
             pL_3A_U50 = Sum_Cell(lSheet03_3A, 50, .ColLetterToNumber("U")) 'PL 03-3A
@@ -1108,16 +1108,16 @@ With fps
                  ValidateNumberFormat fps, lSheet03_3B, Row, Col
             End If
             If IsValidatedCell(lSheet03_3B, 44, .ColLetterToNumber("U"), Row, Col) Then
-                 validateDate fps, lSheet03_3B, Row, Col, yyyy
+                 ValidateDate fps, lSheet03_3B, Row, Col, yyyy
             End If
             If IsValidatedCell(lSheet03_3B, 45, .ColLetterToNumber("Q"), Row, Col) Then
-                 validateDate fps, lSheet03_3B, Row, Col, yyyy
+                 ValidateDate fps, lSheet03_3B, Row, Col, yyyy
             End If
             If IsValidatedCell(lSheet03_3B, 46, .ColLetterToNumber("U"), Row, Col) Then
-                 validateDate fps, lSheet03_3B, Row, Col, yyyy
+                 ValidateDate fps, lSheet03_3B, Row, Col, yyyy
             End If
             If IsValidatedCell(lSheet03_3B, 41, .ColLetterToNumber("S"), Row, Col) Then
-                 validateDate fps, lSheet03_3B, Row, Col, DDMMYYYY
+                 ValidateDate fps, lSheet03_3B, Row, Col, DDMMYYYY
             End If
         
             ' Tong hop len chi tieu C8
@@ -1186,10 +1186,10 @@ With fps
         Case lSheet03_3C ' Phu luc 03-3C
             mCurrentSheet = .Sheet
             If IsValidatedCell(lSheet03_3C, 27, .ColLetterToNumber("V"), Row, Col) Then
-                 validateDate fps, lSheet03_3C, Row, Col, DDMMYYYY
+                 ValidateDate fps, lSheet03_3C, Row, Col, DDMMYYYY
             End If
             If IsValidatedCell(lSheet03_3C, 31, .ColLetterToNumber("Y"), Row, Col) Then
-                 validateDate fps, lSheet03_3C, Row, Col, DDMMYYYY
+                 ValidateDate fps, lSheet03_3C, Row, Col, DDMMYYYY
             End If
             
             ' TOng hop len chi tieu C9
@@ -1225,7 +1225,7 @@ With fps
             End If
         Case lSheet03_4 ' Phu luc 03-4
             mCurrentSheet = .Sheet
-            Set xmlCellNode = TAX_Utilities_New.Data(lSheet03_4 - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("E"), 26))
+            Set xmlCellNode = TAX_Utilities_v1.Data(lSheet03_4 - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("E"), 26))
             Set xmlCellNode = xmlCellNode.parentNode
             Set xmlCellNode = xmlCellNode.parentNode
             Set xmlCellNode = xmlCellNode.parentNode.lastChild
@@ -1295,7 +1295,7 @@ Private Sub CheckDynamicError()
     Dim strKyHieu As Variant, strCheckMST As String
 
     ' PL 05
-    Dim countRow As Long, rowDes As Long, iFlagMSTTrung As Integer, mErrMSTTrung As Variant
+    Dim CountRow As Long, rowDes As Long, iFlagMSTTrung As Integer, mErrMSTTrung As Variant
     Dim vMSTCheckTrung As Variant
     
     ' PL03-6
@@ -1336,7 +1336,7 @@ Private Sub CheckDynamicError()
         .EventEnabled(EventAllEvents) = False
         ' Phu Luc 03-1A
         .Sheet = 2
-        blCheck_S03_1A = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        blCheck_S03_1A = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         
 '        ' Neu Phu Luc 03-1A ma Visible thi khong can check va set lai cac gia tri cho B27 trong sheet Header = 1
 '        If blCheck_S03_1A = False Then
@@ -1349,7 +1349,7 @@ Private Sub CheckDynamicError()
         
         ' Phu Luc 03-1B
 '        .Sheet = 3
-'        blCheck_S03_1B = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+'        blCheck_S03_1B = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
 '        ' Neu Phu Luc 03-1A ma Visible thi khong can check va set lai cac gia tri cho B28 trong sheet Header = 1
 '        If blCheck_S03_1B = False Then
 '            .Sheet = .SheetCount
@@ -1361,7 +1361,7 @@ Private Sub CheckDynamicError()
         
         ' Phu Luc 03-1C
 '        .Sheet = 4
-'        blCheck_S03_1C = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+'        blCheck_S03_1C = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
 '        ' Neu Phu Luc 03-1A ma Visible thi khong can check va set lai cac gia tri cho B29 trong sheet Header = 1
 '        If blCheck_S03_1C = False Then
 '            .Sheet = .SheetCount
@@ -1387,11 +1387,11 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 46, vErrorCheckGH
         
         ' check ly do gia han
-        If TAX_Utilities_New.Year = 2009 Then
+        If TAX_Utilities_v1.Year = 2009 Then
             isCheckGh = False
-        ElseIf TAX_Utilities_New.Year = 2010 Then
+        ElseIf TAX_Utilities_v1.Year = 2010 Then
             isCheckGh = False
-        ElseIf TAX_Utilities_New.Year = 2011 Then
+        ElseIf TAX_Utilities_v1.Year = 2011 Then
             isCheckGh = False
         Else
              isCheckGh = True
@@ -1438,7 +1438,7 @@ Private Sub CheckDynamicError()
         
         ' Kiem tra validate cua PL 03-3C
         .Sheet = lSheet03_3C
-        blCheck_S03_3C = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        blCheck_S03_3C = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         If blCheck_S03_3C = True Then
             checkPL03_3C
         End If
@@ -1447,7 +1447,7 @@ Private Sub CheckDynamicError()
         ' Chuyen ve Sheet 9 (Phu Luc 03-4) lay gia tri cac cot can validate du lieu
         mCurrentSheet = lSheet03_4
         .Sheet = lSheet03_4
-        blCheck_S03_4 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        blCheck_S03_4 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         If blCheck_S03_4 = True Then
             XacDinhLoi = False
             i = 1
@@ -1594,8 +1594,8 @@ Private Sub CheckDynamicError()
                     End If
                     
                       'check MST trung nhau
-                     countRow = .SearchCol(.ColLetterToNumber("F"), -1, -1, vMSTCheckTrung, SearchFlagsNone)
-                     rowDes = .SearchCol(.ColLetterToNumber("F"), countRow, -1, vMSTCheckTrung, SearchFlagsNone)
+                     CountRow = .SearchCol(.ColLetterToNumber("F"), -1, -1, vMSTCheckTrung, SearchFlagsNone)
+                     rowDes = .SearchCol(.ColLetterToNumber("F"), CountRow, -1, vMSTCheckTrung, SearchFlagsNone)
                     If rowDes > -1 Then
                         .Col = .ColLetterToNumber("F")
                         .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
@@ -1620,7 +1620,7 @@ Private Sub CheckDynamicError()
             Loop Until .Text = "aa"
         End If
         'end
-        blCheck_S11 = IIf(TAX_Utilities_New.NodeValidity.childNodes(lSheet03_05 - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        blCheck_S11 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(lSheet03_05 - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         .Sheet = .SheetCount
         If blCheck_S11 Then
             .SetText .ColLetterToNumber("B"), 28, IIf(iFlagCheckMaSTDN10 = 1, "0", "1")
@@ -1641,8 +1641,8 @@ Private Sub CheckDynamicError()
 '        .GetText .ColLetterToNumber("E"), 34, alertThueTNDN
 '
 '        .Sheet = 12
-'            blCheck_S12 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-'            blCheck_S11 = IIf(TAX_Utilities_New.NodeValidity.childNodes(10).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+'            blCheck_S12 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+'            blCheck_S11 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(10).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
 '            If blCheck_S12 = True Then
 '                mCurrentSheet = .Sheet
 '                .Col = .ColLetterToNumber("B")
@@ -1753,7 +1753,7 @@ Private Sub CheckDynamicError()
 '            End If
             
             .Sheet = lSheet03_3A
-            blCheck_S03_3A = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+            blCheck_S03_3A = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
             If blCheck_S03_3A = True Then
                 ' Lay gia tri chi tieu tren PL 03-3A
                 .GetText .ColLetterToNumber("U"), 47, vCtieu1
@@ -1789,7 +1789,7 @@ Private Sub CheckDynamicError()
             .GetText .ColLetterToNumber("E"), 33, errMST
             .GetText .ColLetterToNumber("E"), 38, errHinhThucLK
             .Sheet = lSheet03_7
-            blCheck_S12 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+            blCheck_S12 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
             If blCheck_S12 = True Then
                 .Row = 82
                 .Col = .ColLetterToNumber("B")
@@ -1904,9 +1904,9 @@ Public Sub finish()
     ResetWarning
 
     With fps
-        blCheck_S3A = IIf(TAX_Utilities_New.NodeValidity.childNodes(lSheet03_3A - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-        blCheck_S3B = IIf(TAX_Utilities_New.NodeValidity.childNodes(lSheet03_3B - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-        blCheck_S3C = IIf(TAX_Utilities_New.NodeValidity.childNodes(lSheet03_3C - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        blCheck_S3A = IIf(TAX_Utilities_v1.NodeValidity.childNodes(lSheet03_3A - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        blCheck_S3B = IIf(TAX_Utilities_v1.NodeValidity.childNodes(lSheet03_3B - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        blCheck_S3C = IIf(TAX_Utilities_v1.NodeValidity.childNodes(lSheet03_3C - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         ' Lay gia tri cua chi tieu dong trong PL 03-3A, 03-3B, 03-3C
         pL_3A_U50 = Sum_Cell(lSheet03_3A, 50, .ColLetterToNumber("U")) 'PL 03-3A
         pL_3B_U60 = Sum_Cell(lSheet03_3B, 60, .ColLetterToNumber("U")) 'PL 03-3B
@@ -2130,7 +2130,7 @@ Public Function ResetData() As Boolean
     Dim lCol As Long, lRow As Long
     Dim xmlCellNode As MSXML.IXMLDOMNode, xmlNodeReset As MSXML.IXMLDOMNode
     With fps
-        Set xmlCellNode = TAX_Utilities_New.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("O"), 23))
+        Set xmlCellNode = TAX_Utilities_v1.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("O"), 23))
         Set xmlCellNode = xmlCellNode.parentNode
         Set xmlCellNode = xmlCellNode.parentNode
         Set xmlCellNode = xmlCellNode.parentNode.lastChild
@@ -2138,10 +2138,10 @@ Public Function ResetData() As Boolean
         Set xmlCellNode = xmlCellNode.firstChild
         ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), endCol, endRow
 
-        totalCell1 = TAX_Utilities_New.Data(fps.SheetCount - 2).getElementsByTagName("Cell").length
+        totalCell1 = TAX_Utilities_v1.Data(fps.SheetCount - 2).getElementsByTagName("Cell").length
         countRowReset1 = (totalCell1 - 8) / 6
         
-         For Each xmlNodeReset In TAX_Utilities_New.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
+         For Each xmlNodeReset In TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
             .Sheet = mCurrentSheet
             ParserCellID fps, GetAttribute(xmlNodeReset, "CellID"), lCol, lRow
             .Col = lCol
@@ -2166,7 +2166,7 @@ Public Function ResetData() As Boolean
                         UpdateCell fps, lCol, lRow, vbNullString
                 End Select
                 'mAdjustData = IIf(IsUpdate = True, IsUpdate, mAdjustData)
-                TAX_Utilities_New.AdjustData(mCurrentSheet - 1) = True
+                TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
             End If
         Next
     End With
@@ -2250,35 +2250,35 @@ Sub Gene_Year()
     With fps
         .Col = fps.ColLetterToNumber(S2TxtB26Col)
         .Row = S2TxtB26Row
-        .Text = TAX_Utilities_New.Year - 5
+        .Text = TAX_Utilities_v1.Year - 5
         .Lock = True
         .TypeHAlign = TypeHAlignCenter
         UpdateCell fps, .Col, .Row, .Text
 
         .Col = fps.ColLetterToNumber(S2TxtB27Col)
         .Row = S2TxtB27Row
-        .Text = TAX_Utilities_New.Year - 4
+        .Text = TAX_Utilities_v1.Year - 4
         .Lock = True
         .TypeHAlign = TypeHAlignCenter
         UpdateCell fps, .Col, .Row, .Text
 
         .Col = fps.ColLetterToNumber(S2TxtB28Col)
         .Row = S2TxtB28Row
-        .Text = TAX_Utilities_New.Year - 3
+        .Text = TAX_Utilities_v1.Year - 3
         .Lock = True
         .TypeHAlign = TypeHAlignCenter
         UpdateCell fps, .Col, .Row, .Text
 
         .Col = fps.ColLetterToNumber(S2TxtB29Col)
         .Row = S2TxtB29Row
-        .Text = TAX_Utilities_New.Year - 2
+        .Text = TAX_Utilities_v1.Year - 2
         .Lock = True
         .TypeHAlign = TypeHAlignCenter
         UpdateCell fps, .Col, .Row, .Text
 
         .Col = fps.ColLetterToNumber(S2TxtB30Col)
         .Row = S2TxtB30Row
-        .Text = TAX_Utilities_New.Year - 1
+        .Text = TAX_Utilities_v1.Year - 1
         .Lock = True
         .TypeHAlign = TypeHAlignCenter
         UpdateCell fps, .Col, .Row, .Text
@@ -2301,7 +2301,7 @@ Private Function IsValidatedCell(ByVal lSheet As Long, lAnchorRow As Long, ByVal
         Exit Function
     End If
     
-    Set xmlCellNode = TAX_Utilities_New.Data(lSheet - 1).nodeFromID(GetCellID(fps, lAnchorCol, lAnchorRow))
+    Set xmlCellNode = TAX_Utilities_v1.Data(lSheet - 1).nodeFromID(GetCellID(fps, lAnchorCol, lAnchorRow))
     Set xmlCellsNode = xmlCellNode.parentNode
     
     'Get Index of anchor cell
@@ -2326,7 +2326,7 @@ Private Function Sum_Cell(ByVal lSheet As Long, lAnchorRow As Long, ByVal lAncho
     Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
     Dim lCtrl As Long
     
-    Set xmlCellNode = TAX_Utilities_New.Data(lSheet - 1).nodeFromID(GetCellID(fps, lAnchorCol, lAnchorRow))
+    Set xmlCellNode = TAX_Utilities_v1.Data(lSheet - 1).nodeFromID(GetCellID(fps, lAnchorCol, lAnchorRow))
     Set xmlCellsNode = xmlCellNode.parentNode
     ' Gan gia tri bang gia tri ban dau cho ham
     Sum_Cell = CDbl(GetAttribute(xmlCellNode, "Value"))
@@ -2353,7 +2353,7 @@ Private Function getArrRowCol(ByVal lSheet As Long, lAnchorRow As Long, ByVal lA
     Dim lCtrl As Long
     Dim cCol As Long
     Dim cRow As Long
-    Set xmlCellNode = TAX_Utilities_New.Data(lSheet - 1).nodeFromID(GetCellID(fps, lAnchorCol, lAnchorRow))
+    Set xmlCellNode = TAX_Utilities_v1.Data(lSheet - 1).nodeFromID(GetCellID(fps, lAnchorCol, lAnchorRow))
     Set xmlCellsNode = xmlCellNode.parentNode
     ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), cCol, cRow
     
@@ -2407,7 +2407,7 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
             Select Case .Sheet
                 Case lSheet03_3A ' Phu Luc 03-3A
                     mCurrentSheet = .Sheet
-                    Set xmlCellNode = TAX_Utilities_New.Data(.Sheet - 1).nodeFromID(GetCellID(fps, iCol, iRow))
+                    Set xmlCellNode = TAX_Utilities_v1.Data(.Sheet - 1).nodeFromID(GetCellID(fps, iCol, iRow))
                     Set xmlCellsNode = xmlCellNode.parentNode
                     ' Chi tieu 3.3
                     ParserCellID fps, GetAttribute(xmlCellsNode.childNodes(GetValidatedCellIndex(.Sheet, 49, .ColLetterToNumber("U")) - 1), "CellID"), tCol, tRow
@@ -2432,7 +2432,7 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
 
                 Case lSheet03_3B ' Phu Luc 03-3B
                     mCurrentSheet = .Sheet
-                    Set xmlCellNode = TAX_Utilities_New.Data(.Sheet - 1).nodeFromID(GetCellID(fps, iCol, iRow))
+                    Set xmlCellNode = TAX_Utilities_v1.Data(.Sheet - 1).nodeFromID(GetCellID(fps, iCol, iRow))
                     Set xmlCellsNode = xmlCellNode.parentNode
                     ' Chi tieu 4.1
                     ParserCellID fps, GetAttribute(xmlCellsNode.childNodes(GetValidatedCellIndex(.Sheet, 58, .ColLetterToNumber("U")) - 1), "CellID"), tCol, tRow
@@ -2675,7 +2675,7 @@ Private Function GetValidatedCellIndex(ByVal lSheet As Long, lAnchorRow As Long,
     
   
     
-    Set xmlCellNode = TAX_Utilities_New.Data(lSheet - 1).nodeFromID(GetCellID(fps, lAnchorCol, lAnchorRow))
+    Set xmlCellNode = TAX_Utilities_v1.Data(lSheet - 1).nodeFromID(GetCellID(fps, lAnchorCol, lAnchorRow))
     Set xmlCellsNode = xmlCellNode.parentNode
     
     'Get Index of anchor cell
@@ -2744,12 +2744,12 @@ Public Sub Prepare_KHBS()
 '    fps.Sheet = fps.SheetCount - 1
 '    fps.ActiveSheet = fps.Sheet
 '
-'    strPath = GetAbsolutePath(GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "TemplateFolder")) & "MapMCT.xml"
+'    strPath = GetAbsolutePath(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "TemplateFolder")) & "MapMCT.xml"
 '
 '    If xmlDocument.Load(strPath) Then
 '        Set xmlNodeListItem = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
 '        For Each xmlNode In xmlNodeListItem
-'            If GetAttribute(xmlNode, "ID") = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") Then
+'            If GetAttribute(xmlNode, "ID") = GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") Then
 '                Exit For
 '            End If
 '        Next
@@ -2801,7 +2801,7 @@ Public Sub UpdateChangeKHBS()
     Dim xmlCellNodeData As MSXML.IXMLDOMNode
     With fps
         .Sheet = 1
-        For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+        For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
             ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
             .GetText lCol, lRow, varTemp
             .Col = lCol
@@ -2849,7 +2849,7 @@ Private Sub UpdateSheets()
         ssSheet = mCurrentSheet
         .Sheet = 1
         mCurrentSheet = .Sheet
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                If (lRow <= 54) And (lRow >= 23) Then
                     .GetText lCol, lRow, varTemp
@@ -2861,9 +2861,9 @@ Private Sub UpdateSheets()
        For i = 2 To .SheetCount - 1
             .Sheet = i
             mCurrentSheet = .Sheet
-            blnSheet = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+            blnSheet = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
             If blnSheet = True Then
-                For Each xmlCellNodeData In TAX_Utilities_New.Data(.Sheet - 1).getElementsByTagName("Cell")
+                For Each xmlCellNodeData In TAX_Utilities_v1.Data(.Sheet - 1).getElementsByTagName("Cell")
                     ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                     If i = lSheet03_3A Then
                         If (lRow <= 56) And (lRow >= 47) Then
@@ -2881,7 +2881,7 @@ Private Sub UpdateSheets()
                             UpdateCell fps, lCol, lRow, varTemp
                         End If
                     ElseIf i = lSheet03_7 Then
-                        If lRow < TAX_Utilities_New.Data(.Sheet - 1).getElementsByTagName("cell").length - 13 Then
+                        If lRow < TAX_Utilities_v1.Data(.Sheet - 1).getElementsByTagName("cell").length - 13 Then
                             .GetText lCol, lRow, varTemp
                             UpdateCell fps, lCol, lRow, varTemp
                         End If
@@ -2914,12 +2914,12 @@ Function getMapCT() As String
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim xmlNodeListItem As MSXML.IXMLDOMNodeList
     Dim xmlNodeItem As MSXML.IXMLDOMNode
-    strPath = GetAbsolutePath(GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "TemplateFolder")) & "MapMCT_TT28.xml"
+    strPath = GetAbsolutePath(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "TemplateFolder")) & "MapMCT_TT28.xml"
     
     If xmlDocument.Load(strPath) Then
         Set xmlNodeListItem = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
         For Each xmlNode In xmlNodeListItem
-            If GetAttribute(xmlNode, "ID") = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") Then
+            If GetAttribute(xmlNode, "ID") = GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") Then
                 Exit For
             End If
         Next
@@ -3129,7 +3129,7 @@ Dim startRow As Long
         .Sheet = lSheet03_3C
         mCurrentSheet = lSheet03_3C
         
-        Set xmlCellNode = TAX_Utilities_New.Data(lSheet03_3C - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 24))
+        Set xmlCellNode = TAX_Utilities_v1.Data(lSheet03_3C - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 24))
         Set xmlCellNode = xmlCellNode.parentNode
         Set xmlCellNode = xmlCellNode.parentNode
         countSection = xmlCellNode.childNodes.length
@@ -3213,13 +3213,13 @@ Public Sub unLockCellPL(strLoaiToKhai As String)
     
     lSheet03_7 = 14
     
-    blCheck_S2A = IIf(TAX_Utilities_New.NodeValidity.childNodes(lSheet03_2A - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-    blCheck_S2B = IIf(TAX_Utilities_New.NodeValidity.childNodes(lSheet03_2B - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-    blCheck_S3A = IIf(TAX_Utilities_New.NodeValidity.childNodes(lSheet03_3A - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-    blCheck_S3B = IIf(TAX_Utilities_New.NodeValidity.childNodes(lSheet03_3B - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-    blCheck_S3C = IIf(TAX_Utilities_New.NodeValidity.childNodes(lSheet03_3C - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-    blCheck_S4 = IIf(TAX_Utilities_New.NodeValidity.childNodes(lSheet03_4 - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-    blCheck_S5 = IIf(TAX_Utilities_New.NodeValidity.childNodes(lSheet03_5 - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+    blCheck_S2A = IIf(TAX_Utilities_v1.NodeValidity.childNodes(lSheet03_2A - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+    blCheck_S2B = IIf(TAX_Utilities_v1.NodeValidity.childNodes(lSheet03_2B - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+    blCheck_S3A = IIf(TAX_Utilities_v1.NodeValidity.childNodes(lSheet03_3A - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+    blCheck_S3B = IIf(TAX_Utilities_v1.NodeValidity.childNodes(lSheet03_3B - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+    blCheck_S3C = IIf(TAX_Utilities_v1.NodeValidity.childNodes(lSheet03_3C - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+    blCheck_S4 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(lSheet03_4 - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+    blCheck_S5 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(lSheet03_5 - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
     If strLoaiToKhai = "TKCT" Then
          With fps
             .Sheet = 1
@@ -3286,10 +3286,10 @@ Public Function GetValue32_31TK_Quy() As String()
         .resolveExternals = True
         .validateOnParse = True
         .async = False
-        yearTK = TAX_Utilities_New.Year
+        yearTK = TAX_Utilities_v1.Year
         For i = 1 To 4
-            strDataFileName1A = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("11").childNodes(0), "DataFile") & "_0" & i & TAX_Utilities_New.Year & ".xml"
-            strDataFileName1B = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("12").childNodes(0), "DataFile") & "_0" & i & TAX_Utilities_New.Year & ".xml"
+            strDataFileName1A = TAX_Utilities_v1.DataFolder & GetAttribute(GetValidityNode("11").childNodes(0), "DataFile") & "_0" & i & TAX_Utilities_v1.Year & ".xml"
+            strDataFileName1B = TAX_Utilities_v1.DataFolder & GetAttribute(GetValidityNode("12").childNodes(0), "DataFile") & "_0" & i & TAX_Utilities_v1.Year & ".xml"
             If fso.FileExists(strDataFileName1A) Then
                 If .Load(strDataFileName1A) = True Then
                     Set xmlNode = .nodeFromID("K_33")  'chi tieu 32 tren to khai 01A_TNDN
@@ -3345,7 +3345,7 @@ Public Sub tongHopPL05()
          Dim arrResul() As String
          Dim blCheck_S05 As Boolean
         arrResul = GetValue32_31TK_Quy
-        blCheck_S05 = IIf(TAX_Utilities_New.NodeValidity.childNodes(11).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        blCheck_S05 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(11).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         With fps
             If blCheck_S05 = True Then
                 fps.EventEnabled(EventAllEvents) = False
@@ -3381,20 +3381,20 @@ Public Sub SetActiveKHBS() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
     Dim strValue3 As String
     'Check the second sheet
     'Select Case GetAttribute(xmlNodeValid, "ID")
-    For Each xmlNodeValid In TAX_Utilities_New.NodeValidity.childNodes
+    For Each xmlNodeValid In TAX_Utilities_v1.NodeValidity.childNodes
         Select Case GetAttribute(xmlNodeValid, "ID")
                 Case "KHBS"
                     blnNullValue = True
                     'Check value of last node in Data
-                    Set xmlCellNode = TAX_Utilities_New.Data(14).getElementsByTagName("Cell") _
-                        (TAX_Utilities_New.Data(14).getElementsByTagName("Cell").length - 1)
+                    Set xmlCellNode = TAX_Utilities_v1.Data(14).getElementsByTagName("Cell") _
+                        (TAX_Utilities_v1.Data(14).getElementsByTagName("Cell").length - 1)
                     strValue1 = GetAttribute(xmlCellNode, "Value")
-                 Set xmlCellNode = TAX_Utilities_New.Data(14).getElementsByTagName("Cell")(1)
+                 Set xmlCellNode = TAX_Utilities_v1.Data(14).getElementsByTagName("Cell")(1)
                     strValue2 = GetAttribute(xmlCellNode, "Value")
-                 Set xmlCellNode = TAX_Utilities_New.Data(14).getElementsByTagName("Cell")(7)
+                 Set xmlCellNode = TAX_Utilities_v1.Data(14).getElementsByTagName("Cell")(7)
                     strValue3 = GetAttribute(xmlCellNode, "Value")
           
-                    If (Not IsNullValue(strValue1)) Or TAX_Utilities_New.Data(14).getElementsByTagName("Cell").length > 20 Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Then
+                    If (Not IsNullValue(strValue1)) Or TAX_Utilities_v1.Data(14).getElementsByTagName("Cell").length > 20 Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Then
                             blnNullValue = False
                     End If
 

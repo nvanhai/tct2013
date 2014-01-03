@@ -60,13 +60,13 @@ Public Sub Prepare2()
     With fps
         .Sheet = .ActiveSheet
         mCurrentSheet = .Sheet
-        Set xmlNode = TAX_Utilities_New.Data(0).nodeFromID(GetCellID(fps, fps.ColLetterToNumber("J"), 16))
+        Set xmlNode = TAX_Utilities_v1.Data(0).nodeFromID(GetCellID(fps, fps.ColLetterToNumber("J"), 16))
         vThuephainop = GetAttribute(xmlNode, "Value")
           Set xmlNode = Nothing
          .Sheet = .SheetCount - 1 'KHBS
             Dim cCol As Long, cRow As Long
           '  .ActiveSheet = .Sheet
-            Set xmlNode = TAX_Utilities_New.Data(.SheetCount - 2).childNodes(2).childNodes(2).lastChild.lastChild
+            Set xmlNode = TAX_Utilities_v1.Data(.SheetCount - 2).childNodes(2).childNodes(2).lastChild.lastChild
             mCurrentSheet = .SheetCount - 1
             fps.Sheet = mCurrentSheet
             If GetAttribute(xmlNode, "Value") <> "" Then
@@ -74,8 +74,8 @@ Public Sub Prepare2()
                     ParserCellID fps, GetAttribute(xmlNode, "CellID"), cCol, cRow
                     .Col = .ColLetterToNumber("BG")
                     .Row = cRow + 3
-                    .Value = 0
-                    UpdateCell fps, .Col, .Row, .Value
+                    .value = 0
+                    UpdateCell fps, .Col, .Row, .value
                 End If
             End If
             i = 1
@@ -90,20 +90,20 @@ Public Sub Prepare2()
               .Col = .ColLetterToNumber("B")
               .Row = .Row + 1
             Loop Until .Text = "bb"
-            Set xmlNode = TAX_Utilities_New.Data(.SheetCount - 2).childNodes(2).firstChild
-            SetAttribute xmlNode, "DateKHBS", TAX_Utilities_New.DateKHBS
+            Set xmlNode = TAX_Utilities_v1.Data(.SheetCount - 2).childNodes(2).firstChild
+            SetAttribute xmlNode, "DateKHBS", TAX_Utilities_v1.DateKHBS
             SetAttribute xmlNode, "loaiKHBS", loaiKHBS
             If loaiKHBS = "frmKHBS_BS" Then
                 .SetText .ColLetterToNumber("B"), 5, GetAttribute(GetMessageCellById("0115"), "Msg") & _
-                GetAttribute(GetMessageCellById("0117"), "Msg") & Mid(TAX_Utilities_New.DateKHBS, 1, 2) & "/" & Mid(TAX_Utilities_New.DateKHBS, 3, 2) & "/" & Mid(TAX_Utilities_New.DateKHBS, 5, 4)
+                GetAttribute(GetMessageCellById("0117"), "Msg") & Mid(TAX_Utilities_v1.DateKHBS, 1, 2) & "/" & Mid(TAX_Utilities_v1.DateKHBS, 3, 2) & "/" & Mid(TAX_Utilities_v1.DateKHBS, 5, 4)
             Else
                 .SetText .ColLetterToNumber("B"), 5, GetAttribute(GetMessageCellById("0116"), "Msg") & _
-                GetAttribute(GetMessageCellById("0117"), "Msg") & Mid(TAX_Utilities_New.DateKHBS, 1, 2) & "/" & Mid(TAX_Utilities_New.DateKHBS, 3, 2) & "/" & Mid(TAX_Utilities_New.DateKHBS, 5, 4)
+                GetAttribute(GetMessageCellById("0117"), "Msg") & Mid(TAX_Utilities_v1.DateKHBS, 1, 2) & "/" & Mid(TAX_Utilities_v1.DateKHBS, 3, 2) & "/" & Mid(TAX_Utilities_v1.DateKHBS, 5, 4)
             End If
     End With
-    ReDim arrData(TAX_Utilities_New.Data(0).childNodes(2).childNodes(0).childNodes(0).childNodes.length - 1)
+    ReDim arrData(TAX_Utilities_v1.Data(0).childNodes(2).childNodes(0).childNodes(0).childNodes.length - 1)
     Dim j As Integer
-    For Each xNode In TAX_Utilities_New.Data(0).childNodes(2).childNodes(0).childNodes(0).childNodes
+    For Each xNode In TAX_Utilities_v1.Data(0).childNodes(2).childNodes(0).childNodes(0).childNodes
         arrData(j) = GetAttribute(xNode, "CellID") & ":" & GetAttribute(xNode, "Value")
         j = j + 1
     Next
@@ -173,8 +173,8 @@ With fps
                            Next
                 End If
                .CellTag = .Row & "~" & Trim(Mid(strId, 100, 20))
-               .Value = cValue
-               UpdateCell fps, .Col, .Row, .Value
+               .value = cValue
+               UpdateCell fps, .Col, .Row, .value
                 
                If loaiKHBS = "frmKHBS_TT" Then
                     .GetText .ColLetterToNumber("BG"), Row, cValueG
@@ -241,26 +241,26 @@ With fps
             .Sheet = 1
             .GetText .ColLetterToNumber("J"), 16, varTemp
             .Sheet = .SheetCount - 1
-            Set xmlNodeH15 = TAX_Utilities_New.Data(.Sheet - 1).childNodes(2).childNodes(2).lastChild.lastChild
+            Set xmlNodeH15 = TAX_Utilities_v1.Data(.Sheet - 1).childNodes(2).childNodes(2).lastChild.lastChild
                  ParserCellID fps, GetAttribute(xmlNodeH15, "CellID"), cCol, cRow
                 .Col = cCol
                 .Row = cRow
                 If loaiKHBS = "frmKHBS_TT" Then
-                    .Value = CDbl(varTemp) - CDbl(vThuephainop)
-                     UpdateCell fps, .Col, .Row, .Value
+                    .value = CDbl(varTemp) - CDbl(vThuephainop)
+                     UpdateCell fps, .Col, .Row, .value
                 Else
-                    .Value = CDbl(varTemp)
-                     UpdateCell fps, .Col, .Row, .Value
+                    .value = CDbl(varTemp)
+                     UpdateCell fps, .Col, .Row, .value
                 End If
-                If .Value < 0 Then
+                If .value < 0 Then
                     .Col = .ColLetterToNumber("BG")
                     .Row = cRow + 3
-                    .Value = 0
+                    .value = 0
                     UpdateCell fps, .Col, .Row, 0
                 Else
                     .Col = .ColLetterToNumber("BG")
                     .Row = cRow + 3
-                    UpdateCell fps, .Col, .Row, .Value
+                    UpdateCell fps, .Col, .Row, .value
                 End If
               
           End If
@@ -514,9 +514,9 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
             
             ' Update so chenh lech cho KHBS
 '            .GetText .ColLetterToNumber("J"), 16, varTemp
-'            If TAX_Utilities_New.NodeValidity.childNodes(.SheetCount - 2).Attributes.getNamedItem("Active").nodeValue <> "0" Then
+'            If TAX_Utilities_v1.NodeValidity.childNodes(.SheetCount - 2).Attributes.getNamedItem("Active").nodeValue <> "0" Then
 '                .Sheet = .SheetCount - 1
-'                Set xmlNode = TAX_Utilities_New.Data(.Sheet - 1).childNodes(2).childNodes(2).lastChild.lastChild
+'                Set xmlNode = TAX_Utilities_v1.Data(.Sheet - 1).childNodes(2).childNodes(2).lastChild.lastChild
 '                ParserCellID fps, GetAttribute(xmlNode, "CellID"), cCol, cRow
 '                .Col = cCol
 '                .Row = cRow
@@ -536,7 +536,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
          Dim count1 As Integer
             .Row = 9
             .Col = .ColLetterToNumber("B")
-            Do While .Value <> "bb"
+            Do While .value <> "bb"
                 count1 = count1 + 1
                 .Row = .Row + 1
             Loop
@@ -619,7 +619,7 @@ With fps
         End If
    
    
-        Set xmlCellNode = TAX_Utilities_New.Data(.SheetCount - 2).nodeFromID(GetCellID(fps, Col, Row))
+        Set xmlCellNode = TAX_Utilities_v1.Data(.SheetCount - 2).nodeFromID(GetCellID(fps, Col, Row))
         Set xmlCellNode = xmlCellNode.parentNode.parentNode.firstChild.firstChild
         ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
         blGiaTriCu = False
@@ -656,7 +656,7 @@ With fps
 End With
     
 '    CellChange Col, Row
-    TAX_Utilities_New.AdjustData(mCurrentSheet - 1) = True
+    TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
 End Sub
 
 
@@ -674,12 +674,12 @@ Public Sub Prepare_KHBS()
     fps.Sheet = fps.SheetCount - 1
     fps.ActiveSheet = fps.Sheet
     
-    strPath = GetAbsolutePath(GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "TemplateFolder")) & "MapMCT.xml"
+    strPath = GetAbsolutePath(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "TemplateFolder")) & "MapMCT.xml"
     
     If xmlDocument.Load(strPath) Then
         Set xmlNodeListItem = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
         For Each xmlNode In xmlNodeListItem
-            If GetAttribute(xmlNode, "ID") = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") Then
+            If GetAttribute(xmlNode, "ID") = GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") Then
                 Exit For
             End If
         Next

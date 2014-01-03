@@ -249,10 +249,10 @@ Private Sub setLastValueTarget()
         .validateOnParse = True
         .async = False
         
-        strCurrentDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_" & TAX_Utilities_New.Year & ".xml"
+        strCurrentDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(iDom), "DataFile") & "_" & TAX_Utilities_v1.Year & ".xml"
         '***************************************
         
-        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("19", , , Format((TAX_Utilities_New.Year - 1), "####")).childNodes(iDom), "DataFile") & "_" & Format((TAX_Utilities_New.Year - 1), "####") & ".xml"
+        strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(GetValidityNode("19", , , Format((TAX_Utilities_v1.Year - 1), "####")).childNodes(iDom), "DataFile") & "_" & Format((TAX_Utilities_v1.Year - 1), "####") & ".xml"
         '***************************************
         
         If xmlDomCurrentData.Load(strCurrentDataFileName) = True Then
@@ -320,10 +320,10 @@ Private Sub setLastValueTarget1()
         .validateOnParse = True
         .async = False
         
-        strCurrentDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_" & TAX_Utilities_New.Year & ".xml"
+        strCurrentDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(iDom), "DataFile") & "_" & TAX_Utilities_v1.Year & ".xml"
         '***************************************
         
-        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("19", , , Format((TAX_Utilities_New.Year - 1), "####")).childNodes(iDom), "DataFile") & "_" & Format((TAX_Utilities_New.Year - 1), "####") & ".xml"
+        strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(GetValidityNode("19", , , Format((TAX_Utilities_v1.Year - 1), "####")).childNodes(iDom), "DataFile") & "_" & Format((TAX_Utilities_v1.Year - 1), "####") & ".xml"
         '***************************************
         
         If xmlDomCurrentData.Load(strCurrentDataFileName) = True Then
@@ -388,10 +388,10 @@ Private Sub setLastValueTarget2()
         .validateOnParse = True
         .async = False
         
-        strCurrentDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_" & TAX_Utilities_New.Year & ".xml"
+        strCurrentDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(iDom), "DataFile") & "_" & TAX_Utilities_v1.Year & ".xml"
         '***************************************
         
-        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("19", , , Format((TAX_Utilities_New.Year - 1), "####")).childNodes(iDom), "DataFile") & "_" & Format((TAX_Utilities_New.Year - 1), "####") & ".xml"
+        strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(GetValidityNode("19", , , Format((TAX_Utilities_v1.Year - 1), "####")).childNodes(iDom), "DataFile") & "_" & Format((TAX_Utilities_v1.Year - 1), "####") & ".xml"
         '***************************************
         
         If xmlDomCurrentData.Load(strCurrentDataFileName) = True Then
@@ -459,10 +459,10 @@ Private Sub setLastValueTarget3()
         .validateOnParse = True
         .async = False
         
-        strCurrentDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(iDom), "DataFile") & "_" & TAX_Utilities_New.Year & ".xml"
+        strCurrentDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(iDom), "DataFile") & "_" & TAX_Utilities_v1.Year & ".xml"
         '***************************************
         
-        strDataFileName = TAX_Utilities_New.DataFolder & GetAttribute(GetValidityNode("19", , , Format((TAX_Utilities_New.Year - 1), "####")).childNodes(iDom), "DataFile") & "_" & Format((TAX_Utilities_New.Year - 1), "####") & ".xml"
+        strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(GetValidityNode("19", , , Format((TAX_Utilities_v1.Year - 1), "####")).childNodes(iDom), "DataFile") & "_" & Format((TAX_Utilities_v1.Year - 1), "####") & ".xml"
         '***************************************
         
         If xmlDomCurrentData.Load(strCurrentDataFileName) = True Then
@@ -524,45 +524,45 @@ Private Sub UpdateSheets()
         .Sheet = 1
         mCurrentSheet = .Sheet
         
-        If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "Active") <> "0") Then
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "Active") <> "0") Then
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
                UpdateCell fps, lCol, lRow, varTemp
              Next
         End If
-        If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(1), "Active") <> "0") Then
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(1), "Active") <> "0") Then
         .Sheet = 2
         mCurrentSheet = .Sheet
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(1).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
                UpdateCell fps, lCol, lRow, varTemp
              Next
         End If
-        If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(2), "Active") <> "0") Then
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(2), "Active") <> "0") Then
         .Sheet = 3
         mCurrentSheet = .Sheet
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(2).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(2).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
                UpdateCell fps, lCol, lRow, varTemp
              Next
         End If
-        If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(3), "Active") <> "0") Then
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(3), "Active") <> "0") Then
         .Sheet = 4
         mCurrentSheet = .Sheet
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(3).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(3).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
                UpdateCell fps, lCol, lRow, varTemp
              Next
         End If
         
-        If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(4), "Active") <> "0") Then
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(4), "Active") <> "0") Then
         .Sheet = 5
         mCurrentSheet = .Sheet
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(4).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(4).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
                UpdateCell fps, lCol, lRow, varTemp

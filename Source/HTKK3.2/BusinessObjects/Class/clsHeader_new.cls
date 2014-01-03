@@ -553,7 +553,6 @@ Private Sub CheckDynamicError()
                                 .CellNote = ""
                                 .BackColor = mNonErrorColor
                             End If
-                            
                             ' Kiem tra ngay HD khong duoc lon hon ngay hien tai
                             If Trim(vNgayHDDaiLy) <> "" And Trim$(vNgayHDDaiLy) <> "../../...." Then
                                 arrNgay = Split(vNgayHDDaiLy, "/")
@@ -589,8 +588,6 @@ Private Sub CheckDynamicError()
                                 .CellNote = ""
                                 .BackColor = mNonErrorColor
                             End If
-                             
-                            
                     Else
                         .Col = .ColLetterToNumber("C")
                         .Row = 39
@@ -991,7 +988,7 @@ Private Sub fps_KeyPress(KeyAscii As Integer)
                     Case "P"
 
                 End Select
-                TAX_Utilities_New.AdjustData(.ActiveSheet - 1) = True
+                TAX_Utilities_v1.AdjustData(.ActiveSheet - 1) = True
             ElseIf KeyAscii = vbKeyBack Then
                 Select Case .ColNumberToLetter(c)
                     Case "D", "E", "F", "G", "H", "I", "J", "K", "L", "O", "P"
@@ -1006,7 +1003,7 @@ Private Sub fps_KeyPress(KeyAscii As Integer)
                         UpdateCell fps, c, r, ""
                         .SetActiveCell c - 2, r
                 End Select
-                TAX_Utilities_New.AdjustData(.ActiveSheet - 1) = True
+                TAX_Utilities_v1.AdjustData(.ActiveSheet - 1) = True
             Else
                 KeyAscii = 0
             End If
@@ -1046,7 +1043,7 @@ Private Function GetNgayBatDau() As String
         .async = False
        
         
-        strDataFileName = TAX_Utilities_New.DataFolder & "Header_01.xml"
+        strDataFileName = TAX_Utilities_v1.DataFolder & "Header_01.xml"
         
         If .Load(strDataFileName) = True Then
             Set xmlNode = .nodeFromID("C_24")

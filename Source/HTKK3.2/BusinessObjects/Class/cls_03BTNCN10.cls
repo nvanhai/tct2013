@@ -41,7 +41,7 @@ Public Sub Prepare1()
         .TypeHAlign = TypeHAlignLeft
         
         ' tu quy 1/2013 tinh lai chi tieu [24]
-        If TAX_Utilities_New.Year >= 2013 Then
+        If TAX_Utilities_v1.Year >= 2013 Then
             .Row = 44
             .Col = .ColLetterToNumber("U")
             .Formula = "ROUND(U43*0.001,0)"
@@ -330,8 +330,8 @@ Private Sub UpdateSheets()
         ssSheet = mCurrentSheet
         .Sheet = 1
         mCurrentSheet = .Sheet
-        If (GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "Active") <> "0") Then
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "Active") <> "0") Then
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
                UpdateCell fps, lCol, lRow, varTemp

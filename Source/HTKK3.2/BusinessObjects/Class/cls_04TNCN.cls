@@ -57,7 +57,7 @@ Public Sub Prepare2()
 '    With fps
 '        .Sheet = 3
 '        mCurrentSheet = .Sheet
-'        Set xmlCellNode = TAX_Utilities_New.Data(3 - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 5))
+'        Set xmlCellNode = TAX_Utilities_v1.Data(3 - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 5))
 '        Set xmlCellsNode = xmlCellNode.parentNode
 '
 '        Do
@@ -79,7 +79,7 @@ Private Function GetValidatedCellIndex(ByVal lSheet As Long, lAnchorRow As Long,
     
   
     
-    Set xmlCellNode = TAX_Utilities_New.Data(lSheet - 1).nodeFromID(GetCellID(fps, lAnchorCol, lAnchorRow))
+    Set xmlCellNode = TAX_Utilities_v1.Data(lSheet - 1).nodeFromID(GetCellID(fps, lAnchorCol, lAnchorRow))
     Set xmlCellsNode = xmlCellNode.parentNode
     
     'Get Index of anchor cell
@@ -368,7 +368,7 @@ Private Sub CheckDynamicError()
         
         ' Kiem tra PL 04-1/TNCN neu co
         .Sheet = 2
-        v_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        v_S2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         blCheck_S2 = True
         If v_S2 = True Then
             For j = 7 To .MaxRows
@@ -671,7 +671,7 @@ Private Sub UpdateSheets()
     ssSheet = mCurrentSheet
      .Sheet = 1
      mCurrentSheet = .Sheet
-         For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+         For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
             ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
             .GetText lCol, lRow, varTemp
             UpdateCell fps, lCol, lRow, varTemp

@@ -260,12 +260,12 @@ Private Sub cmdPreview_Click()
         Printer.TrackDefault = True
         
         Printer.PaperSize = vbPRPSA4
-'        If GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(1), "Caption") = "04-1/TNCN" Then
+'        If GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(1), "Caption") = "04-1/TNCN" Then
 '        Printer.PaperSize = vbPRPSA3
 '        End If
         
                 ' BC26
-'        If GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "Caption") = "BC26-AC" Then
+'        If GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "Caption") = "BC26-AC" Then
 '
 '            Printer.PaperSize = vbPRPSA3
 '            Printer.Orientation = vbPRORLandscape
@@ -274,7 +274,7 @@ Private Sub cmdPreview_Click()
 
         
         ' Doi voi tat ca cac to khai tru quyet toan TNCN, moi phai chuan bi den ma vach de in
-'        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "17" And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "41" And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "42" And GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "43" Then
+'        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "17" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "41" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "42" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "43" Then
             CreateExcelBook
 '        End If
         
@@ -324,7 +324,7 @@ On Error GoTo ErrHandle
         
         Printer.PaperSize = vbPRPSA4
         ' in bao cao BC26 bang giay A3
-'        If GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "Caption") = "BC26-AC" Then
+'        If GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "Caption") = "BC26-AC" Then
 '            Printer.PaperSize = vbPRPSA3
 '            Printer.Orientation = vbPRORLandscape
 '        End If
@@ -337,7 +337,7 @@ On Error GoTo ErrHandle
             Exit Sub
         End If
         ' Doi voi tat ca cac to khai tru quyet toan TNCN, moi phai chuan bi den ma vach de in
-'        If GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "17" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "41" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "42" Or GetAttribute(TAX_Utilities_New.NodeMenu, "ID") <> "43" Then
+'        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "17" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "41" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "42" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "43" Then
             CreateExcelBook
 '        End If
         frmReportData.SetPrintedPages (arrStrPages)
