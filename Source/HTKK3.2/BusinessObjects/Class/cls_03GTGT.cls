@@ -67,6 +67,7 @@ Public denRowDL As Long
 Public strTuRowDenRowPL As String
 
 Public strTkThangQuy As String
+Public dNgayDauQuy As Date
 
 
   
@@ -111,8 +112,14 @@ Public Sub Prepare1()
                                     
                     .Row = rowCt21
                     .Col = .ColLetterToNumber("Q")
-                     .Text = arrstr(0)
+                    .Text = arrstr(0)
+                    .Lock = False
                End If
+            Else
+               .Row = rowCt21
+               .Col = .ColLetterToNumber("Q")
+               .Text = "0"
+               .Lock = True
             End If
         ElseIf strTkThangQuy = "TK_QUY" Then
             If TAX_Utilities_v1.ThreeMonths > 1 Then
@@ -128,7 +135,13 @@ Public Sub Prepare1()
                     .Row = rowCt21
                     .Col = .ColLetterToNumber("Q")
                      .Text = arrstr(0)
+                     .Lock = False
                End If
+            Else
+                 .Row = rowCt21
+                 .Col = .ColLetterToNumber("Q")
+                 .Text = "0"
+                 .Lock = True
             End If
         End If
         
@@ -615,140 +628,140 @@ Dim loaiCq As String
 Dim maLoaiCq As String
 
 With fps
-   If .ActiveSheet = .SheetCount - 1 Then
-            'lay ve dong combobox
-            Set xmlCellNode = TAX_Utilities_v1.Data(.SheetCount - 2).nodeFromID(GetCellID(fps, .ColLetterToNumber("BI"), 5))
-            Set xmlCellNode = xmlCellNode.parentNode
-            Set xmlCellNode = xmlCellNode.parentNode
-            Set xmlCellNode = xmlCellNode.parentNode.lastChild
-            Set xmlCellNode = xmlCellNode.firstChild
-            Set xmlCellNode = xmlCellNode.firstChild
-            For i = 1 To 6
-                Set xmlCellNode = xmlCellNode.nextSibling
-            Next i
-            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
-   
-   
-            .Sheet = .SheetCount - 1
-            mCurrentSheet = .SheetCount - 1
-            
-            .Col = Col
-            .Row = Row
-            
-            If Col = .ColLetterToNumber("BE") And Row = iRow Then 'Khi chon Combo
-                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
-                intIndexCuc = .TypeComboBoxCurSel
-                .Col = .ColLetterToNumber("BI")
-                .Row = Row
-                .TypeComboBoxCurSel = intIndexCuc
-                'Nhap lai Combo cot Q
-                .Col = .ColLetterToNumber("BI")
-                UpdateCell fps, .Col, .Row, .Text
-                ' Lay Id cua cuc thue vua chon o tren
-                .GetText .Col, .Row, varIdCucThue
-                
-                If varIdCucThue <> "" Or varIdCucThue <> vbNullString Then
-                    ' Lay thong tin cho chi cuc thue
-                    varIdCucThue = Left$(varIdCucThue, 3)
-                    
-                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
-                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
-                        For Each xmlNode In xmlNodeListCell
-                            If GetAttribute(xmlNode, "Value") <> "" Then
-                                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
-                                
-                                If arrDanhsach(0) = "0" And arrDanhsach(2) = varIdCucThue Then
-                                    tenChiCucThue = tenChiCucThue + arrDanhsach(3) + Chr$(9)
-                                    maChiCucThue = maChiCucThue + arrDanhsach(1) + Chr$(9)
-                                End If
-                            End If
-                        Next
-                        Set xmlDomData = Nothing
-                        Set xmlNodeListCell = Nothing
-                        Set xmlNode = Nothing
-                    End If
-                    
-                    .Row = iRow + 2
-                    .Col = .ColLetterToNumber("BE")
-                    .TypeComboBoxList = tenChiCucThue
-                    
-                    .Row = iRow + 2
-                    .Col = .ColLetterToNumber("BI")
-                    .TypeComboBoxList = maChiCucThue
-                End If
-            End If
-                        
-            If Col = .ColLetterToNumber("BE") And Row = iRow + 2 Then 'Khi chon Combo
-                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
-                intIndexChiCuc = .TypeComboBoxCurSel
-                .Col = .ColLetterToNumber("BI")
-                .Row = Row
-                .TypeComboBoxCurSel = intIndexChiCuc
-                'Nhap lai Combo cot Q
-                .Col = .ColLetterToNumber("BI")
-                UpdateCell fps, .Col, .Row, .Text
-            End If
-        
-        
-'         If Col = .ColLetterToNumber("BD") And .Text <> "" Then
-'            intIndexCombo = .TypeComboBoxCurSel
-'            .Col = .ColLetterToNumber("BC")
-'            .TypeComboBoxCurSel = intIndexCombo
-'            'Update combo C
-'            UpdateCell fps, .Col, .Row, .Text
-'            'Chon lai combo cua colF
-'            .Col = .ColLetterToNumber("BE")
-'            .GetText .ColLetterToNumber("BC"), Row, strId
-'            .Text = Trim(Right(strId, 10))
-'            UpdateCell fps, .Col, .Row, .Text
-'        End If
-'         If Col = .ColLetterToNumber("BE") And .Text <> "" Then
-'            intIndexCombo = .TypeComboBoxCurSel
-'            .Col = .ColLetterToNumber("BC")
-'            .TypeComboBoxCurSel = intIndexCombo
-'            'Update combo C
-'            UpdateCell fps, .Col, .Row, .Text
-'            'Chon lai combo cua colF
-'            .Col = .ColLetterToNumber("BD")
-'            .GetText .ColLetterToNumber("BC"), Row, strId
-'            .Text = Trim(Left(strId, 100))
-'            UpdateCell fps, .Col, .Row, .Text
-'        End If
-   
-   
-'        Set xmlCellNode = TAX_Utilities_v1.Data(.SheetCount - 2).nodeFromID(GetCellID(fps, Col, Row))
-'        Set xmlCellNode = xmlCellNode.parentNode.parentNode.firstChild.firstChild
-'        ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
-'        blGiaTriCu = False
-'        If Col = fps.ColLetterToNumber("BD") Or Col = fps.ColLetterToNumber("BE") Then
-'            fps.Col = .ColLetterToNumber("BC")
-'            fps.Row = Row
-'            temp = fps.Text
-'            Set xmlCellsNode = xmlCellNode.parentNode
-'            i = 1
-'            .Col = .ColLetterToNumber("B")
-'            ParserCellID fps, "BD_9", iCol, iRow
-'            .Row = iRow
-'            Do
-'                 .Col = .ColLetterToNumber("BC")
-'                 itemp = .Text
-'                 If .Row <> Row Then
-'                    If itemp = temp Then 'Neu co thi dat co blGiaTriCu = True
-'                        RowGiaTriCu = Row
-'                        ColGiaTriCu = .ColLetterToNumber("BD")
-'                        .Row = Row
-'                        .Col = .ColLetterToNumber("BD")
-'                        blGiaTriCu = True
-'                        Exit Sub
+'   If .ActiveSheet = .SheetCount - 1 Then
+'            'lay ve dong combobox
+'            Set xmlCellNode = TAX_Utilities_v1.Data(.SheetCount - 2).nodeFromID(GetCellID(fps, .ColLetterToNumber("BI"), 5))
+'            Set xmlCellNode = xmlCellNode.parentNode
+'            Set xmlCellNode = xmlCellNode.parentNode
+'            Set xmlCellNode = xmlCellNode.parentNode.lastChild
+'            Set xmlCellNode = xmlCellNode.firstChild
+'            Set xmlCellNode = xmlCellNode.firstChild
+'            For i = 1 To 6
+'                Set xmlCellNode = xmlCellNode.nextSibling
+'            Next i
+'            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+'
+'
+'            .Sheet = .SheetCount - 1
+'            mCurrentSheet = .SheetCount - 1
+'
+'            .Col = Col
+'            .Row = Row
+'
+'            If Col = .ColLetterToNumber("BE") And Row = iRow Then 'Khi chon Combo
+'                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+'                intIndexCuc = .TypeComboBoxCurSel
+'                .Col = .ColLetterToNumber("BI")
+'                .Row = Row
+'                .TypeComboBoxCurSel = intIndexCuc
+'                'Nhap lai Combo cot Q
+'                .Col = .ColLetterToNumber("BI")
+'                UpdateCell fps, .Col, .Row, .Text
+'                ' Lay Id cua cuc thue vua chon o tren
+'                .GetText .Col, .Row, varIdCucThue
+'
+'                If varIdCucThue <> "" Or varIdCucThue <> vbNullString Then
+'                    ' Lay thong tin cho chi cuc thue
+'                    varIdCucThue = Left$(varIdCucThue, 3)
+'
+'                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+'                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+'                        For Each xmlNode In xmlNodeListCell
+'                            If GetAttribute(xmlNode, "Value") <> "" Then
+'                                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+'
+'                                If arrDanhsach(0) = "0" And arrDanhsach(2) = varIdCucThue Then
+'                                    tenChiCucThue = tenChiCucThue + arrDanhsach(3) + Chr$(9)
+'                                    maChiCucThue = maChiCucThue + arrDanhsach(1) + Chr$(9)
+'                                End If
+'                            End If
+'                        Next
+'                        Set xmlDomData = Nothing
+'                        Set xmlNodeListCell = Nothing
+'                        Set xmlNode = Nothing
 '                    End If
-'                 End If
-'                 .Col = .ColLetterToNumber("B")
-'                 .Row = i + iRow
-'                 i = i + 1
-'            Loop Until .Text = "bb"
-'       End If
-     
-    End If
+'
+'                    .Row = iRow + 2
+'                    .Col = .ColLetterToNumber("BE")
+'                    .TypeComboBoxList = tenChiCucThue
+'
+'                    .Row = iRow + 2
+'                    .Col = .ColLetterToNumber("BI")
+'                    .TypeComboBoxList = maChiCucThue
+'                End If
+'            End If
+'
+'            If Col = .ColLetterToNumber("BE") And Row = iRow + 2 Then 'Khi chon Combo
+'                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+'                intIndexChiCuc = .TypeComboBoxCurSel
+'                .Col = .ColLetterToNumber("BI")
+'                .Row = Row
+'                .TypeComboBoxCurSel = intIndexChiCuc
+'                'Nhap lai Combo cot Q
+'                .Col = .ColLetterToNumber("BI")
+'                UpdateCell fps, .Col, .Row, .Text
+'            End If
+'
+'
+''         If Col = .ColLetterToNumber("BD") And .Text <> "" Then
+''            intIndexCombo = .TypeComboBoxCurSel
+''            .Col = .ColLetterToNumber("BC")
+''            .TypeComboBoxCurSel = intIndexCombo
+''            'Update combo C
+''            UpdateCell fps, .Col, .Row, .Text
+''            'Chon lai combo cua colF
+''            .Col = .ColLetterToNumber("BE")
+''            .GetText .ColLetterToNumber("BC"), Row, strId
+''            .Text = Trim(Right(strId, 10))
+''            UpdateCell fps, .Col, .Row, .Text
+''        End If
+''         If Col = .ColLetterToNumber("BE") And .Text <> "" Then
+''            intIndexCombo = .TypeComboBoxCurSel
+''            .Col = .ColLetterToNumber("BC")
+''            .TypeComboBoxCurSel = intIndexCombo
+''            'Update combo C
+''            UpdateCell fps, .Col, .Row, .Text
+''            'Chon lai combo cua colF
+''            .Col = .ColLetterToNumber("BD")
+''            .GetText .ColLetterToNumber("BC"), Row, strId
+''            .Text = Trim(Left(strId, 100))
+''            UpdateCell fps, .Col, .Row, .Text
+''        End If
+'
+'
+''        Set xmlCellNode = TAX_Utilities_v1.Data(.SheetCount - 2).nodeFromID(GetCellID(fps, Col, Row))
+''        Set xmlCellNode = xmlCellNode.parentNode.parentNode.firstChild.firstChild
+''        ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+''        blGiaTriCu = False
+''        If Col = fps.ColLetterToNumber("BD") Or Col = fps.ColLetterToNumber("BE") Then
+''            fps.Col = .ColLetterToNumber("BC")
+''            fps.Row = Row
+''            temp = fps.Text
+''            Set xmlCellsNode = xmlCellNode.parentNode
+''            i = 1
+''            .Col = .ColLetterToNumber("B")
+''            ParserCellID fps, "BD_9", iCol, iRow
+''            .Row = iRow
+''            Do
+''                 .Col = .ColLetterToNumber("BC")
+''                 itemp = .Text
+''                 If .Row <> Row Then
+''                    If itemp = temp Then 'Neu co thi dat co blGiaTriCu = True
+''                        RowGiaTriCu = Row
+''                        ColGiaTriCu = .ColLetterToNumber("BD")
+''                        .Row = Row
+''                        .Col = .ColLetterToNumber("BD")
+''                        blGiaTriCu = True
+''                        Exit Sub
+''                    End If
+''                 End If
+''                 .Col = .ColLetterToNumber("B")
+''                 .Row = i + iRow
+''                 i = i + 1
+''            Loop Until .Text = "bb"
+''       End If
+'
+'    End If
     'CellChange Col, Row
 End With
     TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
@@ -874,41 +887,12 @@ End Sub
 'Cause this interface sheets have dynamic rows, this function will set cellnote of error for rising-error cell
 'no parameter
 Private Sub CheckDynamicError()
-    Dim MST1 As Variant, MST2 As Variant, MST3 As Variant, MST4 As Variant
-    Dim MST5 As Variant, MST6 As Variant, MST7 As Variant, MST8 As Variant
-    Dim MST9 As Variant, MST10 As Variant, MST11 As Variant, MST12 As Variant, MST13 As Variant
-    Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
-    Dim strCheck As String, iCurrentSheet As Integer
-    
-    Dim vTarget38 As Variant, vTarget39 As Variant
-    
-    Dim i As Long
-    Dim iWhiteRow As Integer
-    Dim vKyHieuHD As Variant, vSoHD As Variant, vNgayHD As Variant, vTennguoimua As Variant, vMST As Variant
-    Dim vDoanhSo As Variant, vGTGT As Variant, vMatHang As Variant, vGhiChu As Variant
-    
-    Dim vErrMsgKyHieuHD As Variant, vErrMsgSoHD As Variant, vErrMsgNgayHD As Variant, vErrMsgTennguoimua As Variant, vErrMsgMST As Variant
-    Dim iFlagvKyHieuHD As Integer, iFlagvSoHD As Integer, iFlagvNgayHD As Integer, iFlagvTennguoimua As Integer, iFlagvMst As Integer, iFlagvMst_PL6 As Integer
-    Dim strFocusSheetName As String, strFocusRow As String, strFocusCol As String, iFocusFlag As Integer
-    Dim vTarget17 As Variant, vTarget18 As Variant, vTarget19 As Variant, vTarget20 As Variant, vTarget21 As Variant, vTarget22 As Variant, vTarget23 As Variant, vTarget24 As Variant
-    Dim vTarget25 As Variant, vTarget26 As Variant
-    
-    Dim arrCellTag() As String
-    Dim strCellTag As String
-    Dim strFormula As String
-    
-    Dim blCheck_S2 As Boolean
-    Dim blCheck_S3 As Boolean
-    
-    Dim vCt21 As Variant, vCt22 As Variant, vCT23 As Variant
-    Dim vCt26KyTruoc As Variant, vCt37KyTruoc As Variant, vCt38KyTruoc As Variant
-    Dim vErrMsgCt21 As Variant, vErrMsgCt22 As Variant, vErrMsgCt23 As Variant
+    Dim iCurrentSheet As Integer
+    Dim vCt21 As Variant
+    Dim vCt26KyTruoc As Variant
+    Dim vErrMsgCt21 As Variant
     Dim isCheckKyTruoc As Boolean
     
-    
-    Dim arrDate() As String
-    Dim vdate As Date
-    Dim vNgayHt As Date
     
     With fps
     '.Visible = False
@@ -916,29 +900,16 @@ Private Sub CheckDynamicError()
     iCurrentSheet = .Sheet
     .Sheet = .SheetCount
     .GetText .ColLetterToNumber("E"), 18, vErrMsgCt21
-    .GetText .ColLetterToNumber("E"), 19, vErrMsgCt22
-    .GetText .ColLetterToNumber("E"), 20, vErrMsgCt23
-   
-    .GetText .ColLetterToNumber("E"), 21, vErrMsgKyHieuHD
-    .GetText .ColLetterToNumber("E"), 22, vErrMsgSoHD
-    .GetText .ColLetterToNumber("E"), 23, vErrMsgNgayHD
-    .GetText .ColLetterToNumber("E"), 24, vErrMsgTennguoimua
-    .GetText .ColLetterToNumber("E"), 25, vErrMsgMST
-
-
+    
     CheckErrorMST
     
     ' kiem tra du lieu sheet to khai
     .Sheet = 1
     .GetText .ColLetterToNumber("Q"), rowCt21, vCt21
-    '.GetText .ColLetterToNumber("P"), rowCt21, vCt22
-    '.GetText .ColLetterToNumber("S"), rowCt21, vCT23
     ' lay chi tieu 36,37,38 ky truoc chuyen sang
     
     'lay chi tieu 26 ky truoc chuyen sang
     .GetText .ColLetterToNumber("M"), rowThueKyTruocHidden, vCt26KyTruoc
-    '.GetText .ColLetterToNumber("P"), rowThueKyTruocHidden, vCt37KyTruoc
-    '.GetText .ColLetterToNumber("S"), rowThueKyTruocHidden, vCt38KyTruoc
     
     ' kiem tra chi tieu 21
     If strTkThangQuy = "TK_THANG" Then
@@ -952,7 +923,7 @@ Private Sub CheckDynamicError()
     End If
     
     If isCheckKyTruoc Then
-        If Val(vCt21) <> Val(vCt26KyTruoc) And Trim(vCt26KyTruoc) <> "" Then
+        If Val(vCt21) <> Val(vCt26KyTruoc) And Trim$(vCt26KyTruoc) <> "" Then
             .Row = rowCt21
             .Col = .ColLetterToNumber("Q")
             .CellNote = vErrMsgCt21
@@ -965,35 +936,6 @@ Private Sub CheckDynamicError()
         End If
     End If
 
-    .Sheet = .SheetCount
-     If blCheck_S2 = True Then
-        .SetText .ColLetterToNumber("B"), 21, IIf(iFlagvKyHieuHD = 1 And blCheck_S2 = True, "0", "1")
-        .SetText .ColLetterToNumber("B"), 22, IIf(iFlagvSoHD = 1 And blCheck_S2 = True, "0", "1")
-        .SetText .ColLetterToNumber("B"), 23, IIf(iFlagvNgayHD = 1 And blCheck_S2 = True, "0", "1")
-        .SetText .ColLetterToNumber("B"), 24, IIf(iFlagvTennguoimua = 1 And blCheck_S2 = True, "0", "1")
-        .SetText .ColLetterToNumber("B"), 25, IIf(iFlagvMst = 1 And blCheck_S2 = True, "0", "1")
-    Else
-        .SetText .ColLetterToNumber("B"), 21, "1"
-        .SetText .ColLetterToNumber("B"), 22, "1"
-        .SetText .ColLetterToNumber("B"), 23, "1"
-        .SetText .ColLetterToNumber("B"), 24, "1"
-        .SetText .ColLetterToNumber("B"), 25, "1"
-    End If
-   
-    .Sheet = .SheetCount
-    If blCheck_S3 = True Then
-        .SetText .ColLetterToNumber("B"), 26, IIf(iFlagvKyHieuHD = 1 And blCheck_S3 = True, "0", "1")
-        .SetText .ColLetterToNumber("B"), 27, IIf(iFlagvSoHD = 1 And blCheck_S3 = True, "0", "1")
-        .SetText .ColLetterToNumber("B"), 28, IIf(iFlagvNgayHD = 1 And blCheck_S3 = True, "0", "1")
-        .SetText .ColLetterToNumber("B"), 29, IIf(iFlagvTennguoimua = 1 And blCheck_S3 = True, "0", "1")
-        .SetText .ColLetterToNumber("B"), 30, IIf(iFlagvMst = 1 And blCheck_S3 = True, "0", "1")
-    Else
-        .SetText .ColLetterToNumber("B"), 26, "1"
-        .SetText .ColLetterToNumber("B"), 27, "1"
-        .SetText .ColLetterToNumber("B"), 28, "1"
-        .SetText .ColLetterToNumber("B"), 29, "1"
-        .SetText .ColLetterToNumber("B"), 30, "1"
-    End If
     
     .Sheet = iCurrentSheet
     '.ReDraw = True
@@ -1591,13 +1533,13 @@ Public Sub SetActiveKHBS() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
                     'Check value of last node in Data
                     Set xmlCellNode = TAX_Utilities_v1.Data(sheetKhbs - 1).getElementsByTagName("Cell") _
                         (TAX_Utilities_v1.Data(sheetKhbs - 1).getElementsByTagName("Cell").length - 1)
-                    strValue1 = GetAttribute(xmlCellNode, "Value")
-                 Set xmlCellNode = TAX_Utilities_v1.Data(sheetKhbs - 1).getElementsByTagName("Cell")(1)
-                    strValue2 = GetAttribute(xmlCellNode, "Value")
-                 Set xmlCellNode = TAX_Utilities_v1.Data(sheetKhbs - 1).getElementsByTagName("Cell")(7)
-                    strValue3 = GetAttribute(xmlCellNode, "Value")
+                       strValue1 = GetAttribute(xmlCellNode, "Value")
+                    Set xmlCellNode = TAX_Utilities_v1.Data(sheetKhbs - 1).getElementsByTagName("Cell")(1)
+                       strValue2 = GetAttribute(xmlCellNode, "Value")
+                    Set xmlCellNode = TAX_Utilities_v1.Data(sheetKhbs - 1).getElementsByTagName("Cell")(7)
+                       strValue3 = GetAttribute(xmlCellNode, "Value")
           
-                    If (Not IsNullValue(strValue1)) Or TAX_Utilities_v1.Data(sheetKhbs - 1).getElementsByTagName("Cell").length > 20 Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Then
+                    If (Not IsNullValue(strValue1)) Or TAX_Utilities_v1.Data(sheetKhbs - 1).getElementsByTagName("Cell").length > 31 Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Then
                             blnNullValue = False
                     End If
 
@@ -1670,13 +1612,18 @@ Private Function GetMP36Previous(ByRef strValue As String) As Boolean
         If strTkThangQuy = "TK_THANG" Then
             MY = DateSerial(TAX_Utilities_v1.Year, TAX_Utilities_v1.Month, 1)
             MY = DateAdd("M", -1, MY)
+        Else
+            MY = dNgayDauQuy
+            MY = DateAdd("D", -1, MY)
         End If
         
         If strTkThangQuy = "TK_THANG" Then
             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(GetValidityNode("04", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
         ElseIf strTkThangQuy = "TK_QUY" Then
             If TAX_Utilities_v1.ThreeMonths > 1 Then
-                strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(iDom), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths - 1 & TAX_Utilities_v1.Year & ".xml"
+                'strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(iDom), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths - 1 & TAX_Utilities_v1.Year & ".xml"
+                'strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
+                strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(iDom), "DataFile") & "_Q0" & DatePart("Q", MY) & DatePart("YYYY", MY) & ".xml"
             End If
         End If
         
