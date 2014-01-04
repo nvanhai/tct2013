@@ -12,7 +12,7 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
 'This Class is used to individual features of "Thu Nhap Doanh Nghiep" interface sheets
-'this Class is belong to TAX_Business project which will be compline to DLL
+'this Class is belong to TAX_Business_v1 project which will be compline to DLL
 'Coder: PhuocHK
 Option Explicit
 Public WithEvents fps As fpSpread
@@ -1139,80 +1139,80 @@ Dim maCucThue As String
 Dim tenChiCucThue As String
 Dim maChiCucThue As String
 With fps
-   If .ActiveSheet = .SheetCount - 1 Then
-                   'lay ve dong combobox
-            Set xmlCellNode = TAX_Utilities_v1.Data(.SheetCount - 2).nodeFromID(GetCellID(fps, .ColLetterToNumber("BI"), 5))
-            Set xmlCellNode = xmlCellNode.parentNode
-            Set xmlCellNode = xmlCellNode.parentNode
-            Set xmlCellNode = xmlCellNode.parentNode.lastChild
-            Set xmlCellNode = xmlCellNode.firstChild
-            Set xmlCellNode = xmlCellNode.firstChild
-            For i = 1 To 6
-                Set xmlCellNode = xmlCellNode.nextSibling
-            Next i
-            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
-   
-   
-            .Sheet = .SheetCount - 1
-            mCurrentSheet = .SheetCount - 1
-            
-            .Col = Col
-            .Row = Row
-            
-            If Col = .ColLetterToNumber("BE") And Row = iRow Then 'Khi chon Combo
-                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
-                intIndexCuc = .TypeComboBoxCurSel
-                .Col = .ColLetterToNumber("BI")
-                .Row = Row
-                .TypeComboBoxCurSel = intIndexCuc
-                'Nhap lai Combo cot Q
-                .Col = .ColLetterToNumber("BI")
-                UpdateCell fps, .Col, .Row, .Text
-                ' Lay Id cua cuc thue vua chon o tren
-                .GetText .Col, .Row, varIdCucThue
-                
-                If varIdCucThue <> "" Or varIdCucThue <> vbNullString Then
-                    ' Lay thong tin cho chi cuc thue
-                    varIdCucThue = Left$(varIdCucThue, 3)
-                    
-                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
-                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
-                        For Each xmlNode In xmlNodeListCell
-                            If GetAttribute(xmlNode, "Value") <> "" Then
-                                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
-                                
-                                If arrDanhsach(0) = "0" And arrDanhsach(2) = varIdCucThue Then
-                                    tenChiCucThue = tenChiCucThue + arrDanhsach(3) + Chr$(9)
-                                    maChiCucThue = maChiCucThue + arrDanhsach(1) + Chr$(9)
-                                End If
-                            End If
-                        Next
-                        Set xmlDomData = Nothing
-                        Set xmlNodeListCell = Nothing
-                        Set xmlNode = Nothing
-                    End If
-                    
-                    .Row = iRow + 2
-                    .Col = .ColLetterToNumber("BE")
-                    .TypeComboBoxList = tenChiCucThue
-                    
-                    .Row = iRow + 2
-                    .Col = .ColLetterToNumber("BI")
-                    .TypeComboBoxList = maChiCucThue
-                End If
-            End If
-                        
-            If Col = .ColLetterToNumber("BE") And Row = iRow + 2 Then 'Khi chon Combo
-                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
-                intIndexChiCuc = .TypeComboBoxCurSel
-                .Col = .ColLetterToNumber("BI")
-                .Row = Row
-                .TypeComboBoxCurSel = intIndexChiCuc
-                'Nhap lai Combo cot Q
-                .Col = .ColLetterToNumber("BI")
-                UpdateCell fps, .Col, .Row, .Text
-            End If
-    End If
+'   If .ActiveSheet = .SheetCount - 1 Then
+'                   'lay ve dong combobox
+'            Set xmlCellNode = TAX_Utilities_v1.Data(.SheetCount - 2).nodeFromID(GetCellID(fps, .ColLetterToNumber("BI"), 5))
+'            Set xmlCellNode = xmlCellNode.parentNode
+'            Set xmlCellNode = xmlCellNode.parentNode
+'            Set xmlCellNode = xmlCellNode.parentNode.lastChild
+'            Set xmlCellNode = xmlCellNode.firstChild
+'            Set xmlCellNode = xmlCellNode.firstChild
+'            For i = 1 To 6
+'                Set xmlCellNode = xmlCellNode.nextSibling
+'            Next i
+'            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+'
+'
+'            .Sheet = .SheetCount - 1
+'            mCurrentSheet = .SheetCount - 1
+'
+'            .Col = Col
+'            .Row = Row
+'
+'            If Col = .ColLetterToNumber("BE") And Row = iRow Then 'Khi chon Combo
+'                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+'                intIndexCuc = .TypeComboBoxCurSel
+'                .Col = .ColLetterToNumber("BI")
+'                .Row = Row
+'                .TypeComboBoxCurSel = intIndexCuc
+'                'Nhap lai Combo cot Q
+'                .Col = .ColLetterToNumber("BI")
+'                UpdateCell fps, .Col, .Row, .Text
+'                ' Lay Id cua cuc thue vua chon o tren
+'                .GetText .Col, .Row, varIdCucThue
+'
+'                If varIdCucThue <> "" Or varIdCucThue <> vbNullString Then
+'                    ' Lay thong tin cho chi cuc thue
+'                    varIdCucThue = Left$(varIdCucThue, 3)
+'
+'                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+'                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+'                        For Each xmlNode In xmlNodeListCell
+'                            If GetAttribute(xmlNode, "Value") <> "" Then
+'                                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+'
+'                                If arrDanhsach(0) = "0" And arrDanhsach(2) = varIdCucThue Then
+'                                    tenChiCucThue = tenChiCucThue + arrDanhsach(3) + Chr$(9)
+'                                    maChiCucThue = maChiCucThue + arrDanhsach(1) + Chr$(9)
+'                                End If
+'                            End If
+'                        Next
+'                        Set xmlDomData = Nothing
+'                        Set xmlNodeListCell = Nothing
+'                        Set xmlNode = Nothing
+'                    End If
+'
+'                    .Row = iRow + 2
+'                    .Col = .ColLetterToNumber("BE")
+'                    .TypeComboBoxList = tenChiCucThue
+'
+'                    .Row = iRow + 2
+'                    .Col = .ColLetterToNumber("BI")
+'                    .TypeComboBoxList = maChiCucThue
+'                End If
+'            End If
+'
+'            If Col = .ColLetterToNumber("BE") And Row = iRow + 2 Then 'Khi chon Combo
+'                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+'                intIndexChiCuc = .TypeComboBoxCurSel
+'                .Col = .ColLetterToNumber("BI")
+'                .Row = Row
+'                .TypeComboBoxCurSel = intIndexChiCuc
+'                'Nhap lai Combo cot Q
+'                .Col = .ColLetterToNumber("BI")
+'                UpdateCell fps, .Col, .Row, .Text
+'            End If
+'    End If
    End With
    TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
 End Sub

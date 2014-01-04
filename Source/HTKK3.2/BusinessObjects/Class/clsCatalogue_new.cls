@@ -12,7 +12,7 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
 'This Class is used to individual features of "Gia Tri Gia Tang" interface sheets
-'this Class is belong to TAX_Business project which will be compline to DLL
+'this Class is belong to TAX_Business_v1 project which will be compline to DLL
 'Coder: PhuocHK
 Option Explicit
 Private Const ID_TN = "D"

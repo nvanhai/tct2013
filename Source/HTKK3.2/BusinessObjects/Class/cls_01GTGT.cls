@@ -12,7 +12,7 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
 'This Class is used to individual features of "Gia Tri Gia Tang" interface sheets
-'this Class is belong to TAX_Business project which will be compline to DLL
+'this Class is belong to TAX_Business_v1 project which will be compline to DLL
 'Coder: HTPhuong
 Option Explicit
 
@@ -2882,7 +2882,24 @@ Public Sub SetActiveSheet() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
                 If blnNullValue Then
                     SetAttribute xmlNodeValid, "Active", "0"
                 End If
-             Case "01_6B"
+'             Case "01_6B"
+'                'Check the last sheet
+'               For Each xmlCellNode In TAX_Utilities_v1.Data(8).getElementsByTagName("Cell")
+'                    ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
+'                    'Check value I column
+'                    If lCol = fps.ColLetterToNumber("C") Then
+'                        strValue = GetAttribute(xmlCellNode, "Value")
+'                        If Not IsNullValue(strValue) Then
+'                            blnNullValue = False
+'                            Exit For
+'                        End If
+'                    End If
+'                Next
+'
+'                If blnNullValue Then
+'                    SetAttribute xmlNodeValid, "Active", "0"
+'                End If
+             Case "01_7"
                 'Check the last sheet
                For Each xmlCellNode In TAX_Utilities_v1.Data(8).getElementsByTagName("Cell")
                     ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
@@ -2899,57 +2916,40 @@ Public Sub SetActiveSheet() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
                 If blnNullValue Then
                     SetAttribute xmlNodeValid, "Active", "0"
                 End If
-             Case "01_7"
-                'Check the last sheet
-               For Each xmlCellNode In TAX_Utilities_v1.Data(9).getElementsByTagName("Cell")
-                    ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
-                    'Check value I column
-                    If lCol = fps.ColLetterToNumber("H") Then
-                        strValue = GetAttribute(xmlCellNode, "Value")
-                        If Not IsNullValue(strValue) Then
-                            blnNullValue = False
-                            Exit For
-                        End If
-                    End If
-                Next
-            
-                If blnNullValue Then
-                    SetAttribute xmlNodeValid, "Active", "0"
-                End If
-             Case "01_1_TD"
-                'Check the last sheet
-               For Each xmlCellNode In TAX_Utilities_v1.Data(10).getElementsByTagName("Cell")
-                    ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
-                    'Check value I column
-                    If lCol = fps.ColLetterToNumber("C") Then
-                        strValue = GetAttribute(xmlCellNode, "Value")
-                        If Not IsNullValue(strValue) Then
-                            blnNullValue = False
-                            Exit For
-                        End If
-                    End If
-                Next
-            
-                If blnNullValue Then
-                    SetAttribute xmlNodeValid, "Active", "0"
-                End If
-           Case "01_2_TD"
-                'Check the last sheet
-               For Each xmlCellNode In TAX_Utilities_v1.Data(11).getElementsByTagName("Cell")
-                    ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
-                    'Check value I column
-                    If lCol = fps.ColLetterToNumber("C") Then
-                        strValue = GetAttribute(xmlCellNode, "Value")
-                        If Not IsNullValue(strValue) Then
-                            blnNullValue = False
-                            Exit For
-                        End If
-                    End If
-                Next
-            
-                If blnNullValue Then
-                    SetAttribute xmlNodeValid, "Active", "0"
-                End If
+'             Case "01_1_TD"
+'                'Check the last sheet
+'               For Each xmlCellNode In TAX_Utilities_v1.Data(10).getElementsByTagName("Cell")
+'                    ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
+'                    'Check value I column
+'                    If lCol = fps.ColLetterToNumber("C") Then
+'                        strValue = GetAttribute(xmlCellNode, "Value")
+'                        If Not IsNullValue(strValue) Then
+'                            blnNullValue = False
+'                            Exit For
+'                        End If
+'                    End If
+'                Next
+'
+'                If blnNullValue Then
+'                    SetAttribute xmlNodeValid, "Active", "0"
+'                End If
+'           Case "01_2_TD"
+'                'Check the last sheet
+'               For Each xmlCellNode In TAX_Utilities_v1.Data(11).getElementsByTagName("Cell")
+'                    ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
+'                    'Check value I column
+'                    If lCol = fps.ColLetterToNumber("C") Then
+'                        strValue = GetAttribute(xmlCellNode, "Value")
+'                        If Not IsNullValue(strValue) Then
+'                            blnNullValue = False
+'                            Exit For
+'                        End If
+'                    End If
+'                Next
+'
+'                If blnNullValue Then
+'                    SetAttribute xmlNodeValid, "Active", "0"
+'                End If
              Case "KHBS"
                 blnNullValue = True
                 'Check value of last node in Data

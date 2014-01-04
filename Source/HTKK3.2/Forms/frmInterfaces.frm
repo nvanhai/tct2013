@@ -6721,7 +6721,7 @@ Private Sub Command1_Click()
             numRowI = UBound(arrDieuChinhTang)
             flagTang = True
         End If
-        If GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01GTGT" Then
+        If GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01GTGT" Then
                 If strDieuChinhTangGiam(2) <> "" Then
                     arrDieuChinh4043 = Split(strDieuChinhTangGiam(2), "~")
                     numRowIII = UBound(arrDieuChinh4043)
@@ -6762,7 +6762,7 @@ Private Sub Command1_Click()
                 End If
         End If
         ' set gia tri tong 32 cho to khai 02_GTGT
-        If GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_02GTGT" Then
+        If GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_02GTGT" Then
             fpSpread1.EventEnabled(EventAllEvents) = False
             tempCurrSheet = mCurrentSheet
             mCurrentSheet = fpSpread1.SheetCount - 1
@@ -6773,16 +6773,16 @@ Private Sub Command1_Click()
             fpSpread1.EventEnabled(EventAllEvents) = True
         End If
         ' Set gia tri tong 34 cho to khai 03_GTGT
-        If GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_03GTGT" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01ATNDN" Or _
-        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01BTNDN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01TTDB" Or _
-        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01TAIN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_02TAIN" Or _
-        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_03TNDN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_05GTGT" Or _
-        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_02BVMT" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01PHXD" Or _
-        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_02TNDN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01BVMT" Or _
-        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_02NTNN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_03NTNN" Or _
-        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_04NTNN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01TD_GTGT" Or _
-        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_03_TD_TAIN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_04GTGT" Or _
-        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01NTNN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01TBVMT" Then
+        If GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_03GTGT" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01ATNDN" Or _
+        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01BTNDN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TTDB" Or _
+        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TAIN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_02TAIN" Or _
+        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_03TNDN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_05GTGT" Or _
+        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_02BVMT" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01PHXD" Or _
+        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_02TNDN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01BVMT" Or _
+        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_02NTNN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_03NTNN" Or _
+        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_04NTNN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TD_GTGT" Or _
+        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_03_TD_TAIN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_04GTGT" Or _
+        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01NTNN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TBVMT" Then
             fpSpread1.EventEnabled(EventAllEvents) = False
             tempCurrSheet = mCurrentSheet
             mCurrentSheet = fpSpread1.SheetCount - 1
@@ -6915,6 +6915,7 @@ Private Sub Command1_Click()
         mCurrentSheet = tempCurrSheet
         If strIDTkTT156 = "02" Or strIDTkTT156 = "01" Or strIDTkTT156 = "72" Or strIDTkTT156 = "04" Or strIDTkTT156 = "11" Or strIDTkTT156 = "12" Or strIDTkTT156 = "06" Or strIDTkTT156 = "05" Or strIDTkTT156 = "90" Or strIDTkTT156 = "86" Or strIDTkTT156 = "71" Or strIDTkTT156 = "73" Then
             UpdateDataKHBS_TT156 fpSpread1
+            fpSpread1.EventEnabled(EventAllEvents) = True
         Else
             UpdateDataKHBS_TT28 fpSpread1
         End If
@@ -6922,7 +6923,7 @@ Private Sub Command1_Click()
         DisplayMessage "0222", msOKOnly, miInformation
         
         ' Bat lai event cho to khai 01A/TNDN, 01B/TNDN
-        If GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01BTNDN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01ATNDN" Then
+        If GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01BTNDN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01ATNDN" Then
             fpSpread1.EventEnabled(EventAllEvents) = True
         End If
     End If
@@ -7066,7 +7067,7 @@ Private Sub Form_Load()
 '            objTaxBusiness.chkKhiThienNhien = strKhiThienNhien
         End If
         ' set ngay dau quy
-        If idMenu = "01" Or idMenu = "02" Then
+        If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "71" Then
             If strQuy = "TK_QUY" Then
                 dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_v1.ThreeMonths), CInt(TAX_Utilities_v1.Year), iNgayTaiChinh, iThangTaiChinh)
                 objTaxBusiness.dNgayDauQuy = dNgayDauKy
@@ -8037,6 +8038,30 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
     Dim lValue As String
     Dim IsUpdate As Boolean
     Dim retvalue As Integer
+    ' cac bien su dung check format ngay trong KHBS
+    Dim strIdKHBS As String, strIdKHBS_TT156  As String
+    Dim lCol_temp As Long
+    Dim lRow_temp As Long
+    Dim temp As Long
+    Dim varTemp As Variant
+    Dim xmlNodeCell_temp As MSXML.IXMLDOMNode
+    
+    Dim intIndexCuc As Integer, intIndexChiCuc As Integer
+    Dim varIdCucThue As Variant
+    Dim xmlDomData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim arrDanhsach() As String
+    Dim tenCucThue As String
+    Dim maCucThue As String
+    Dim tenChiCucThue As String
+    Dim maChiCucThue As String
+    
+    Dim strId As Variant
+    ' end
+    
+    
+    
     If mOnLoad = True Then
         'This action occur only on Setttingup Data
         If mOnSetupData Then
@@ -8116,6 +8141,87 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
 '            'retValue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 26, 29, "cc") + retValue
 '            'retValue = fpSpread1_LeaveCell_PL04_1_GTGT(Col, Row, Col, Row, True, 35, 38, "dd") + retValue
         End If
+        
+        
+        ' xu ly cho cac to khai KHBS theo TT156
+        strIdKHBS_TT156 = "~02~04~71~72~11~12~73~70~81~06~05~86~90~"
+        strIdKHBS = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
+        If strIdKHBS = "01" Then
+        
+        ElseIf InStr(1, strIdKHBS_TT156, "~" & Trim$(strIdKHBS) & "~", vbTextCompare) > 0 Then
+             .EventEnabled(EventAllEvents) = False
+             If .ActiveSheet = .SheetCount - 1 Then
+                    Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 13)
+                    ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                    .sheet = .SheetCount - 1
+                    mCurrentSheet = .SheetCount - 1
+                    
+                    .Col = Col
+                    .Row = Row
+                    
+                    If Col = lCol_temp And Row = lRow_temp Then 'Khi chon Combo
+                        'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+                        intIndexCuc = .TypeComboBoxCurSel
+                        .Col = .ColLetterToNumber("BI")
+                        .Row = Row
+                        .TypeComboBoxCurSel = intIndexCuc
+                        'Nhap lai Combo cot Q
+                        .Col = .ColLetterToNumber("BI")
+                        UpdateCell .Col, .Row, .Text
+                        ' Lay Id cua cuc thue vua chon o tren
+                        .GetText .Col, .Row, varIdCucThue
+                        
+                        If varIdCucThue <> "" Or varIdCucThue <> vbNullString Then
+                            ' Lay thong tin cho chi cuc thue
+                            varIdCucThue = Left$(varIdCucThue, 3)
+                            
+                            If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+                                Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+                                For Each xmlNode In xmlNodeListCell
+                                    If GetAttribute(xmlNode, "Value") <> "" Then
+                                        arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                                        
+                                        If arrDanhsach(0) = "0" And arrDanhsach(2) = varIdCucThue Then
+                                            tenChiCucThue = tenChiCucThue + arrDanhsach(3) + Chr$(9)
+                                            maChiCucThue = maChiCucThue + arrDanhsach(1) + Chr$(9)
+                                        End If
+                                    End If
+                                Next
+                                Set xmlDomData = Nothing
+                                Set xmlNodeListCell = Nothing
+                                Set xmlNode = Nothing
+                            End If
+                            
+                            .Row = lRow_temp + 2
+                            .Col = .ColLetterToNumber("BE")
+                            .TypeComboBoxList = tenChiCucThue
+                            .Text = ""
+                            UpdateCell .Col, .Row, .Text
+                            
+                            .Row = lRow_temp + 2
+                            .Col = .ColLetterToNumber("BI")
+                            .TypeComboBoxList = maChiCucThue
+                            .Text = ""
+                            UpdateCell .Col, .Row, .Text
+                        End If
+                    End If
+                                
+                    If Col = .ColLetterToNumber("BE") And Row = lRow_temp + 2 Then 'Khi chon Combo
+                        'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+                        intIndexChiCuc = .TypeComboBoxCurSel
+                        .Col = .ColLetterToNumber("BI")
+                        .Row = Row
+                        .TypeComboBoxCurSel = intIndexChiCuc
+                        'Nhap lai Combo cot Q
+                        .Col = .ColLetterToNumber("BI")
+                        UpdateCell .Col, .Row, .Text
+                    End If
+            End If
+            .EventEnabled(EventAllEvents) = True
+        End If
+        
+        ' end
+        
         .EventEnabled(EventAllEvents) = True
     End With
     
@@ -8958,7 +9064,7 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
         
         ' format date cho to khai bo sung theo TT156
         ' 31-12-2013
-        strIdKHBS_TT156 = "~02~04~71~72~11~12~"
+        strIdKHBS_TT156 = "~02~04~71~72~11~12~73~70~81~06~05~86~90~"
         strIdKHBS = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
         If strIdKHBS = "01" Then
         
@@ -11271,7 +11377,7 @@ Private Sub TonghopKHBS()
             numRowI = UBound(arrDieuChinhTang)
             flagTang = True
         End If
-        If GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01GTGT" Then
+        If GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01GTGT" Then
                 If strDieuChinhTangGiam(2) <> "" Then
                     arrDieuChinh4043 = Split(strDieuChinhTangGiam(2), "~")
                     numRowIII = UBound(arrDieuChinh4043)
@@ -11312,7 +11418,7 @@ Private Sub TonghopKHBS()
                 End If
         End If
         ' set gia tri tong 32 cho to khai 02_GTGT
-        If GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_02GTGT" Then
+        If GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_02GTGT" Then
             fpSpread1.EventEnabled(EventAllEvents) = False
             tempCurrSheet = mCurrentSheet
             mCurrentSheet = fpSpread1.SheetCount - 1
@@ -11323,16 +11429,16 @@ Private Sub TonghopKHBS()
             fpSpread1.EventEnabled(EventAllEvents) = True
         End If
         ' Set gia tri tong 34 cho to khai 03_GTGT
-        If GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_03GTGT" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01ATNDN" Or _
-        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01BTNDN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01TTDB" Or _
-        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01TAIN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_02TAIN" Or _
-        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_03TNDN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_05GTGT" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01BVMT" Or _
-        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_02BVMT" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01PHXD" Or _
-        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_02TNDN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_02NTNN" Or _
-        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_04NTNN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_03NTNN" _
-        Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01TD_GTGT" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_03_TD_TAIN" _
-        Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_04GTGT" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01NTNN" _
-        Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business.cls_01TBVMT" Then
+        If GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_03GTGT" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01ATNDN" Or _
+        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01BTNDN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TTDB" Or _
+        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TAIN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_02TAIN" Or _
+        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_03TNDN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_05GTGT" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01BVMT" Or _
+        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_02BVMT" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01PHXD" Or _
+        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_02TNDN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_02NTNN" Or _
+        GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_04NTNN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_03NTNN" _
+        Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TD_GTGT" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_03_TD_TAIN" _
+        Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_04GTGT" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01NTNN" _
+        Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TBVMT" Then
             fpSpread1.EventEnabled(EventAllEvents) = False
             tempCurrSheet = mCurrentSheet
             mCurrentSheet = fpSpread1.SheetCount - 1

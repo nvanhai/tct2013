@@ -12,7 +12,7 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
 'This Class is used to individual features of "Thu Nhap Doanh Nghiep" interface sheets
-'this Class is belong to TAX_Business project which will be compline to DLL
+'this Class is belong to TAX_Business_v1 project which will be compline to DLL
 Option Explicit
 Public WithEvents fps As fpSpread
 Attribute fps.VB_VarHelpID = -1
@@ -490,42 +490,42 @@ With fps
     mCurrentSheet = .Sheet
     If .ActiveSheet = 1 Then
               ' Kiem tra trung ten
-           Set xmlCellNode = TAX_Utilities_v1.Data(0).nodeFromID(GetCellID(fps, Col, Row))
-           Set xmlCellNode = xmlCellNode.parentNode.parentNode.firstChild.firstChild
-           ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
-           blGiaTriCu = False
-    
-            If Col = fps.ColLetterToNumber("C") Then
-                'kiem tra trung Ten NNKD trong to khai
-                fps.Col = Col
-                fps.Row = Row
-                temp = fps.Text
-                Set xmlCellsNode = xmlCellNode.parentNode
-                i = 1
-                .Col = .ColLetterToNumber("B")
-                ParserCellID fps, GetAttribute(xmlCellsNode.childNodes(i - 1), "CellID"), iCol, iRow
-                .Row = iRow
-
-                Do
-                     .Col = .ColLetterToNumber("C")
-                     itemp = .Text
-                     If .Row <> Row Then
-                        If itemp = temp Then 'Neu co thi dat co blGiaTriCu = True
-                            RowGiaTriCu = Row
-                            ColGiaTriCu = .ColLetterToNumber("C")
-                            .Row = Row
-                            .Col = .ColLetterToNumber("C")
-                            blGiaTriCu = True
-                            Exit Sub
-                        End If
-                     End If
-                     .Col = .ColLetterToNumber("B")
-                     .Row = i + iRow
-                     i = i + 1
-                Loop Until .Text = "aa"
-                .Sheet = 1
-                mCurrentSheet = 1
-            End If
+'           Set xmlCellNode = TAX_Utilities_v1.Data(0).nodeFromID(GetCellID(fps, Col, Row))
+'           Set xmlCellNode = xmlCellNode.parentNode.parentNode.firstChild.firstChild
+'           ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+'           blGiaTriCu = False
+'
+'            If Col = fps.ColLetterToNumber("C") Then
+'                'kiem tra trung Ten NNKD trong to khai
+'                fps.Col = Col
+'                fps.Row = Row
+'                temp = fps.Text
+'                Set xmlCellsNode = xmlCellNode.parentNode
+'                i = 1
+'                .Col = .ColLetterToNumber("B")
+'                ParserCellID fps, GetAttribute(xmlCellsNode.childNodes(i - 1), "CellID"), iCol, iRow
+'                .Row = iRow
+'
+'                Do
+'                     .Col = .ColLetterToNumber("C")
+'                     itemp = .Text
+'                     If .Row <> Row Then
+'                        If itemp = temp Then 'Neu co thi dat co blGiaTriCu = True
+'                            RowGiaTriCu = Row
+'                            ColGiaTriCu = .ColLetterToNumber("C")
+'                            .Row = Row
+'                            .Col = .ColLetterToNumber("C")
+'                            blGiaTriCu = True
+'                            Exit Sub
+'                        End If
+'                     End If
+'                     .Col = .ColLetterToNumber("B")
+'                     .Row = i + iRow
+'                     i = i + 1
+'                Loop Until .Text = "aa"
+'                .Sheet = 1
+'                mCurrentSheet = 1
+'            End If
      ElseIf .ActiveSheet = SheetPL01_1 Then
         .Col = Col
         .Row = Row
