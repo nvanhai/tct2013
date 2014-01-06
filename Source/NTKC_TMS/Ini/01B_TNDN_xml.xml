@@ -1,6 +1,6 @@
 <HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30">
 	<Static GroupName="TKhaiThue">
-		<maTKhai>01B_TNDN</maTKhai>
+		<maTKhai>12</maTKhai>
 		<tenTKhai>Tờ khai thuế TNDN tạm tính (01B/TNDN)</tenTKhai>
 		<soLan>I_62</soLan>
 		<moTaBMau/>
