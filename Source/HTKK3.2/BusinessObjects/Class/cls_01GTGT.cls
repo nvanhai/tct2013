@@ -76,7 +76,7 @@ Private Const rowHidden52 = 52
 Private Const rowNgayKy = 50
 Private Const rowNgayKyKhbs = 23
 
-
+Private Const rowStartPL01_3 = 10
 Private Const rowStartPL01_5 = 6
 Private Const rowStartPL01_6 = 8
 Private Const rowStartPL01_6_B = 8
@@ -131,6 +131,17 @@ Dim fldList() As String
     '    strComboHien = "0%" + Chr$(9) + "5%" + Chr$(9) + "10%" + Chr$(9)
         '--
         SetDateFormat fps, sheetTK01_GTGT, rowNgayKy, .ColLetterToNumber(colK), DDMMYYYY
+        
+        ' set cho PL 01-3/GTGT
+        SetDateFormat fps, sheetPl01_3_GTGT, rowStartPL01_3, .ColLetterToNumber(colD), DDMMYYYY
+        SetDateFormat fps, sheetPl01_3_GTGT, rowStartPL01_3, .ColLetterToNumber(colJ), DDMMYYYY
+        SetDateFormat fps, sheetPl01_3_GTGT, rowStartPL01_3, .ColLetterToNumber(colN), DDMMYYYY
+        SetDateFormat fps, sheetPl01_3_GTGT, rowStartPL01_3, .ColLetterToNumber("R"), DDMMYYYY
+        SetDateFormat fps, sheetPl01_3_GTGT, rowStartPL01_3, .ColLetterToNumber("V"), DDMMYYYY
+        SetDateFormat fps, sheetPl01_3_GTGT, rowStartPL01_3, .ColLetterToNumber("Z"), DDMMYYYY
+        SetDateFormat fps, sheetPl01_3_GTGT, rowStartPL01_3, .ColLetterToNumber("AD"), DDMMYYYY
+        
+        
         
         SetDateFormat fps, sheetPl01_5_GTGT, rowStartPL01_5, .ColLetterToNumber(colD), DDMMYYYY
         
@@ -812,6 +823,30 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                    End If
         End If
         
+        ' Phu luc 01-3/GTGT
+         If .ActiveSheet = sheetPl01_3_GTGT Then
+                   If Col = .ColLetterToNumber(colD) Or Col = .ColLetterToNumber(colJ) Or Col = .ColLetterToNumber(colN) Or Col = .ColLetterToNumber("R") Or Col = .ColLetterToNumber("V") Or Col = .ColLetterToNumber("Z") Or Col = .ColLetterToNumber("AD") Then
+                       .GetText Col, Row, varTemp
+                       If varTemp <> "" And varTemp <> "../../...." Then
+                           If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+                               .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+                           Else
+                               .SetFocus
+                               .SetActiveCell Col, Row
+                           End If
+                       Else
+                        .SetText Col, Row, ""
+                       End If
+                       .Col = Col
+                       .Row = Row
+                      UpdateCell fps, .Col, .Row, .Text
+                   End If
+                   
+                   
+        End If
+        
+        
+        ' end
         If .ActiveSheet = sheetPl01_5_GTGT Then
                    If Col = .ColLetterToNumber(colD) Then
                        .GetText Col, Row, varTemp
