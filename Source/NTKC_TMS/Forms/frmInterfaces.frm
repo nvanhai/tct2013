@@ -902,42 +902,42 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     xmlTK.getElementsByTagName("maCQTNoiNop")(0).Text = strMaCoQuanThue 'xmlConfig.getElementsByTagName("maCQTNoiNop")(0).Text
     xmlTK.getElementsByTagName("tenCQTNoiNop")(0).Text = strTenCoQuanThue 'xmlConfig.getElementsByTagName("tenCQTNoiNop")(0).Text
     xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = Format(Date, "yyyy-MM-dd HH:mm:ss")
-    
-    If (xmlResultNNT.hasChildNodes And (InStr(xmlResultNNT.xml, "fault_code") <= 0)) Then
-        xmlTK.getElementsByTagName("maHuyenNNT")(0).Text = xmlResultNNT.getElementsByTagName("MaQuanHuyen")(0).Text
-        xmlTK.getElementsByTagName("maTinhNNT")(0).Text = xmlResultNNT.getElementsByTagName("MaTinh")(0).Text
-        
-        'xmlTK.getElementsByTagName("tenNNT")(0).Text = "test"
-        xmlTK.getElementsByTagName("tenNNT")(0).Text = xmlResultNNT.getElementsByTagName("TenNNT")(0).Text
-        ' xmlTK.getElementsByTagName("dchiNNT")(0).Text = "test"
-        xmlTK.getElementsByTagName("dchiNNT")(0).Text = xmlResultNNT.getElementsByTagName("DiaChi")(0).Text
-        xmlTK.getElementsByTagName("dthoaiNNT")(0).Text = xmlResultNNT.getElementsByTagName("DienThoai")(0).Text
-        xmlTK.getElementsByTagName("faxNNT")(0).Text = xmlResultNNT.getElementsByTagName("Fax")(0).Text
-        xmlTK.getElementsByTagName("emailNNT")(0).Text = xmlResultNNT.getElementsByTagName("Email")(0).Text
-        'xmlTK.getElementsByTagName("mst")(0).Text = xmlResultNNT.getElementsByTagName("MaSoThue")(0).Text
-        
-        xmlTK.getElementsByTagName("tenHuyenNNT")(0).Text = xmlResultNNT.getElementsByTagName("TenQuanHuyen")(0).Text
-        xmlTK.getElementsByTagName("tenTinhNNT")(0).Text = xmlResultNNT.getElementsByTagName("TenTinh")(0).Text
+    If (Not xmlResultNNT Is Nothing) Then
+        If ((Not (xmlResultNNT Is Nothing)) And xmlResultNNT.hasChildNodes And (InStr(xmlResultNNT.xml, "fault_code") <= 0)) Then
+            xmlTK.getElementsByTagName("maHuyenNNT")(0).Text = xmlResultNNT.getElementsByTagName("MaQuanHuyen")(0).Text
+            xmlTK.getElementsByTagName("maTinhNNT")(0).Text = xmlResultNNT.getElementsByTagName("MaTinh")(0).Text
+            
+            'xmlTK.getElementsByTagName("tenNNT")(0).Text = "test"
+            xmlTK.getElementsByTagName("tenNNT")(0).Text = xmlResultNNT.getElementsByTagName("TenNNT")(0).Text
+            ' xmlTK.getElementsByTagName("dchiNNT")(0).Text = "test"
+            xmlTK.getElementsByTagName("dchiNNT")(0).Text = xmlResultNNT.getElementsByTagName("DiaChi")(0).Text
+            xmlTK.getElementsByTagName("dthoaiNNT")(0).Text = xmlResultNNT.getElementsByTagName("DienThoai")(0).Text
+            xmlTK.getElementsByTagName("faxNNT")(0).Text = xmlResultNNT.getElementsByTagName("Fax")(0).Text
+            xmlTK.getElementsByTagName("emailNNT")(0).Text = xmlResultNNT.getElementsByTagName("Email")(0).Text
+            'xmlTK.getElementsByTagName("mst")(0).Text = xmlResultNNT.getElementsByTagName("MaSoThue")(0).Text
+            
+            xmlTK.getElementsByTagName("tenHuyenNNT")(0).Text = xmlResultNNT.getElementsByTagName("TenQuanHuyen")(0).Text
+            xmlTK.getElementsByTagName("tenTinhNNT")(0).Text = xmlResultNNT.getElementsByTagName("TenTinh")(0).Text
+        End If
     End If
-    
     xmlTK.getElementsByTagName("mst")(0).Text = strMaNNT
-    
-    If (xmlResultDLT.hasChildNodes And (InStr(xmlResultDLT.xml, "fault_code") <= 0)) Then
-        ' xmlTK.getElementsByTagName("tenDLyThue")(0).Text = "test"
-        xmlTK.getElementsByTagName("tenDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("TenNNT")(0).Text
-        'xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = "test"
-        xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("DiaChi")(0).Text
-        xmlTK.getElementsByTagName("dthoaiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("DienThoai")(0).Text
-        xmlTK.getElementsByTagName("faxDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Fax")(0).Text
-        xmlTK.getElementsByTagName("emailDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Email")(0).Text
-        xmlTK.getElementsByTagName("soHDongDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("SoHopDong")(0).Text
-        xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("NgayHopDong")(0).Text
-        xmlTK.getElementsByTagName("tenTinhDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("TenTinh")(0).Text
-        xmlTK.getElementsByTagName("tenHuyenDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("TenQuanHuyen")(0).Text
-        xmlTK.getElementsByTagName("maHuyenDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("MaQuanHuyen")(0).Text
-        xmlTK.getElementsByTagName("maTinhDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("MaTinh")(0).Text
+    If (Not xmlResultDLT Is Nothing) Then
+        If (xmlResultDLT.hasChildNodes And (InStr(xmlResultDLT.xml, "fault_code") <= 0)) Then
+            ' xmlTK.getElementsByTagName("tenDLyThue")(0).Text = "test"
+            xmlTK.getElementsByTagName("tenDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("TenNNT")(0).Text
+            'xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = "test"
+            xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("DiaChi")(0).Text
+            xmlTK.getElementsByTagName("dthoaiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("DienThoai")(0).Text
+            xmlTK.getElementsByTagName("faxDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Fax")(0).Text
+            xmlTK.getElementsByTagName("emailDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("Email")(0).Text
+            xmlTK.getElementsByTagName("soHDongDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("SoHopDong")(0).Text
+            xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("NgayHopDong")(0).Text
+            xmlTK.getElementsByTagName("tenTinhDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("TenTinh")(0).Text
+            xmlTK.getElementsByTagName("tenHuyenDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("TenQuanHuyen")(0).Text
+            xmlTK.getElementsByTagName("maHuyenDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("MaQuanHuyen")(0).Text
+            xmlTK.getElementsByTagName("maTinhDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("MaTinh")(0).Text
+        End If
     End If
-    
     xmlTK.getElementsByTagName("mstDLyThue")(0).Text = strMaDLT
     xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = "1.0"
     xmlTK.getElementsByTagName("maDVu")(0).Text = GetAttribute(GetMessageCellById("0133"), "Msg")
@@ -2167,25 +2167,25 @@ Private Sub Command1_Click()
 'str2 = "aa999202300026210   0020120020020080080~~71653~0~~4534~0~~634~0~~32423~0~~12342~0~~23453~0~~2332~0~~3444~0~~2342~0~~1235~0~~2342~0~~345342~0~~23423~0~~21432~0~~124~0~~12~0~~451~0~~390784~0~~464779~0~~1243~0~~1435~0~~467457~0~duan~26/11/2013</S></S01-3>"
 'Barcode_Scaned str2
 '
-''BCTC bo QD95:
-'str2 = "aa999222300026210   00201200300300100901/0101/01/1900<S01><S>~143~0~~3~0~V.01~1~0~~2~0~V.02~7~0~~3~0~~4~0~V.11~46~0~~5~0~~6~0~~7~0~~8~0~~9~0~~11~0~V.02~12~0~~75~0~~13~0~~14~0~~15~0~~16~0~~17~0~~747~0~V.11~103~0~~18~0~~19~0~~21~0~~22~0~~23~0~~190~0~V.05~49~"
-'Barcode_Scaned str2
-'str2 = "aa999222300026210   0020120030030020090~~24~0~~25~0~~53~0~~26~0~~27~0~V.06~57~0~~28~0~~29~0~~31~0~~65~0~~32~0~~33~0~~219~0~~34~0~~35~0~~73~0~~37~0~~36~0~V.04~38~0~~39~0~~170~0~V.07~41~0~V.09~42~0~V.10~43~0~~44~0~~890~0~~593~0~~316~0~~15~0~~23~0~~24~0~V.08~"
-'Barcode_Scaned str2
-'str2 = "aa999222300026210   00201200300300300928~0~~12~0~V.12~11~0~~18~0~~26~0~~13~0~~21~0~~24~0~~26~0~~19~0~~26~0~~30~0~~277~0~~24~0~V.14~17~0~~26~0~V.15~13~0~V.09~23~0~~35~0~~27~0~~54~0~~23~0~~35~0~~297~0~~297~0~~25~0~~27~0~~28~0~~29~0~~24~0~~25~0~~31~0~~25~0~~5"
-'Barcode_Scaned str2
-'str2 = "aa999222300026210   0020120030030040096~0~~27~0~~890~0~~100~0~~20~0~~32~0~~34~0~~35.6~0~~36~0~~45~0~~42~0~~41~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~Kh¸nh Ph­¬ng~11/12/2013</S></S01>"
-'Barcode_Scaned str2
-'str2 = "aa999222300026210   002012003003005009<S01-1><S>~936~0~~400~0~~100~0~~200~0~~32~0~~34~0~~45~0~~46~0~~47~0~~32~0~~31~0~~905~0~~34~0~~871~0~~38~0~~833~0~~39~0~~21~0~~18~0~~851~0~VI.1~23~0~VI.2~25~0~~803~0~~26~0~Kh¸nh Ph­¬ng~11/12/2013</S></S01-1>"
-'Barcode_Scaned str2
-'str2 = "aa999222300026210   002012003003006009<S01-2><S>~7000~0~~100~0~~200~0~~300~0~~400~0~~500~0~~600~0~~700~0~~800~0~~900~0~~234~0~~345~0~~357~0~~12436~0~~678~0~~456~0~~367~0~~654~0~~743~0~"
-'Barcode_Scaned str2
-'str2 = "aa999222300026210   002012003003007009~821~0~~321~0~~4040~0~~654~0~~732~0~~821~0~~965~0~~876~0~~521~0~~4569~0~~21045~0~~432~0~~654~0~VII.34~22131~0~Kh¸nh Ph­¬ng~11/12/2013</S></S01-2>"
-'Barcode_Scaned str2
-'str2 = "aa999222300026210   002012003003008009<S01-3><S>~600~0~~123~0~~234~0~~235~0~~267~0~~289~0~~1748~0~~345~0~~4~0~~345~0~~123~0~~234~0~~345~0~~456~0~~567~0~~2419~0~~678~0~~789~0~~125~0~~167~"
-'Barcode_Scaned str2
-'str2 = "aa999222300026210   0020120030030090090~~278~0~~564~0~~345~0~~2946~0~~278~0~~457~0~~976~0~~267~0~~378~0~~231~0~~2587~0~~7952~0~~276~0~~285~0~~8513~0~Kh¸nh Ph­¬ng~11/12/2013</S></S01-3>"
-'Barcode_Scaned str2
+'BCTC bo QD95:
+str2 = "aa999222300026210   00201200300300100901/0101/01/1900<S01><S>~143~0~~3~0~V.01~1~0~~2~0~V.02~7~0~~3~0~~4~0~V.11~46~0~~5~0~~6~0~~7~0~~8~0~~9~0~~11~0~V.02~12~0~~75~0~~13~0~~14~0~~15~0~~16~0~~17~0~~747~0~V.11~103~0~~18~0~~19~0~~21~0~~22~0~~23~0~~190~0~V.05~49~"
+Barcode_Scaned str2
+str2 = "aa999222300026210   0020120030030020090~~24~0~~25~0~~53~0~~26~0~~27~0~V.06~57~0~~28~0~~29~0~~31~0~~65~0~~32~0~~33~0~~219~0~~34~0~~35~0~~73~0~~37~0~~36~0~V.04~38~0~~39~0~~170~0~V.07~41~0~V.09~42~0~V.10~43~0~~44~0~~890~0~~593~0~~316~0~~15~0~~23~0~~24~0~V.08~"
+Barcode_Scaned str2
+str2 = "aa999222300026210   00201200300300300928~0~~12~0~V.12~11~0~~18~0~~26~0~~13~0~~21~0~~24~0~~26~0~~19~0~~26~0~~30~0~~277~0~~24~0~V.14~17~0~~26~0~V.15~13~0~V.09~23~0~~35~0~~27~0~~54~0~~23~0~~35~0~~297~0~~297~0~~25~0~~27~0~~28~0~~29~0~~24~0~~25~0~~31~0~~25~0~~5"
+Barcode_Scaned str2
+str2 = "aa999222300026210   0020120030030040096~0~~27~0~~890~0~~100~0~~20~0~~32~0~~34~0~~35.6~0~~36~0~~45~0~~42~0~~41~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~Kh¸nh Ph­¬ng~11/12/2013</S></S01>"
+Barcode_Scaned str2
+str2 = "aa999222300026210   002012003003005009<S01-1><S>~936~0~~400~0~~100~0~~200~0~~32~0~~34~0~~45~0~~46~0~~47~0~~32~0~~31~0~~905~0~~34~0~~871~0~~38~0~~833~0~~39~0~~21~0~~18~0~~851~0~VI.1~23~0~VI.2~25~0~~803~0~~26~0~Kh¸nh Ph­¬ng~11/12/2013</S></S01-1>"
+Barcode_Scaned str2
+str2 = "aa999222300026210   002012003003006009<S01-2><S>~7000~0~~100~0~~200~0~~300~0~~400~0~~500~0~~600~0~~700~0~~800~0~~900~0~~234~0~~345~0~~357~0~~12436~0~~678~0~~456~0~~367~0~~654~0~~743~0~"
+Barcode_Scaned str2
+str2 = "aa999222300026210   002012003003007009~821~0~~321~0~~4040~0~~654~0~~732~0~~821~0~~965~0~~876~0~~521~0~~4569~0~~21045~0~~432~0~~654~0~VII.34~22131~0~Kh¸nh Ph­¬ng~11/12/2013</S></S01-2>"
+Barcode_Scaned str2
+str2 = "aa999222300026210   002012003003008009<S01-3><S>~600~0~~123~0~~234~0~~235~0~~267~0~~289~0~~1748~0~~345~0~~4~0~~345~0~~123~0~~234~0~~345~0~~456~0~~567~0~~2419~0~~678~0~~789~0~~125~0~~167~"
+Barcode_Scaned str2
+str2 = "aa999222300026210   0020120030030090090~~278~0~~564~0~~345~0~~2946~0~~278~0~~457~0~~976~0~~267~0~~378~0~~231~0~~2587~0~~7952~0~~276~0~~285~0~~8513~0~Kh¸nh Ph­¬ng~11/12/2013</S></S01-3>"
+Barcode_Scaned str2
 
 ''BCTC bo QD48:
 'str2 = "aa999192300790401   00201200000000101201/0114/09/2006<S01><S>~2315~400~III.01~10~10~III.05~2020~35~~2010~20~~10~15~~145~155~~20~30~~35~30~~40~45~~50~50~~45~45~III.02~20~25~~25~20~~95~155~~10~20~~30~35~~35~50~~20~50~~1205~3130~III.03.04~1022~2650~~947~2380~~25~200~~50~70~~40~40~~20~10~~20~30~III.05~80~60~~30~40~~50~20~~63~380~~30~230~~10~120~~23~30~~3520~3530~~1860~20"
@@ -2265,12 +2265,12 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 'str2 = "aa999712300121087   102013001001003003023423~15/10/2013~¸nh~~~7000000~~06HDXK~~005~023434~16/10/2013~ph­¬ng~~~8000000~</S><S>03XKNB~~006~2423~18/10/2013~kh«i~~~2000000~</S><S>68000000~40000000~28000000</S></S01_1>"
 'Barcode_Scaned str2
-'
+
 ''05/GTGT:
 'str2 = "aa999722300121087   10201300200200100101/0114/06/2006<S01><S>0010011000</S><S>4000000~7000000~40000~140000~180000</S><S>HuyÒn Tr©m~Hoµng Lan~KTV~19/12/2013~1~~~~</S></S01>"
 'Barcode_Scaned str2
 
-''01A/TNDN + PL dinh kem:
+''01A/TNDN + PL dinh kem
 'str2 = "aa999112300121087   03201300600600100301/0114/06/2006<S01><S>0010011000</S><S>300000~200000~100000~23000~12000~111000~10000~12000~89000~30000~25000~34000~20.897~12000~22"
 'Barcode_Scaned str2
 'str2 = "aa999112300121087   032013006006002003.678~21326~15326~7000~8000~6000~x~03~15/11/2013~4000~2000</S><S>x~x</S><S>HuyÒn Tr©m~KTV~Hoµng Lan~19/12/2013~1~0~~1052</S></S01>"
@@ -2312,9 +2312,9 @@ Private Sub Command1_Click()
 'str2 = "aa999732300121087   0320130030030020020~22~1~429000</S><S>1~~tæ chøc sù kiÖn~012345678~Ba §×nh- HN~123~14/07/2013~30/07/2013</S><S>HuyÒn Tr©m~KTV~Hoµng Lan~20/12/2013~1~~~1053~~x</S></S02>"
 'Barcode_Scaned str2
 '
-'01/KK-XS:
-str2 = "aa999482300121087   11201300100100100101/0101/01/2010<S01><S>0010011000</S><S>500000~400000~200000</S><S>Hoµng Lan~HuyÒn Tr©m~KTV~20/12/2013~1~~</S></S01>"
-Barcode_Scaned str2
+''01/KK-XS:
+'str2 = "aa999482300121087   11201300100100100101/0101/01/2010<S01><S>0010011000</S><S>500000~400000~200000</S><S>Hoµng Lan~HuyÒn Tr©m~KTV~20/12/2013~1~~</S></S01>"
+'Barcode_Scaned str2
 '
 ''01/KK-BHDC:
 'str2 = "aa999252300121087   11201300100100100101/0101/01/1900<S01><S>0010011000</S><S>4000000~200000~100000~300000~30000~100000~10000~130000~30000~21000~161000</S><S>Hoµng Lan~20/12/2013~HuyÒn Tr©m~KTV~1~~~0</S></S01>"
