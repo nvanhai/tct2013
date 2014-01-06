@@ -1,6 +1,6 @@
 <HSoKhaiThue ngay_nop_tk="F_25" ky_lap_bo="F_23">
 	<Static GroupName="TKhaiThue">
-		<maTKhai>01_TAIN</maTKhai>
+		<maTKhai>06</maTKhai>
 		<tenTKhai>Tờ khai thuế tài nguyên(01/TAIN)</tenTKhai>
 		<soLan>J_33</soLan>
 		<moTaBMau/>
