@@ -3234,44 +3234,70 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                     Dim lRow_temp As Long
                     Dim xmlNodeCell_temp As MSXML.IXMLDOMNode
                     
+                    Dim strIdTkhaiTT156 As String
+                    Dim strIdTkCheck As String
+                    strIdTkhaiTT156 = "~02~04~71~72~11~12~73~70~81~06~05~86~90~"
+                    strIdTkCheck = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
+                        
                     If isNewdataBS = False Then
                         If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
-                                Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 11)
+                                Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 20)
                                 ParserCellID pGrid, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                                 .Col = lCol_temp
                                 .Row = lRow_temp
                                 '.Formula = ""
                                 .value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
-                                (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 11), "Value")
+                                (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 20), "Value")
                                 
                                 
-                                Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 10)
+                                Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 19)
                                 ParserCellID pGrid, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                                 .Col = lCol_temp
                                 .Row = lRow_temp
                                 '.Formula = ""
                                 '.value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 1), "Value")
                                 .value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
-                                (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 10), "Value")
+                                (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 19), "Value")
                             Else
-                                Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
-                                ParserCellID pGrid, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
-                                .Col = lCol_temp
-                                .Row = lRow_temp
-                                '.Formula = ""
-                                .value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
-                                (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7), "Value")
-                                
-                                
-                                Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6)
-                                ParserCellID pGrid, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
-                                .Col = lCol_temp
-                                .Row = lRow_temp
-                                
-                                '.Formula = ""
-                                '.value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 1), "Value")
-                                .value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
-                                (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6), "Value")
+                                If InStr(1, strIdTkhaiTT156, "~" & Trim$(strIdTkCheck) & "~", vbTextCompare) > 0 Then
+                                    Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
+                                    ParserCellID pGrid, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                                    .Col = lCol_temp
+                                    .Row = lRow_temp
+                                    '.Formula = ""
+                                    .value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
+                                    (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7), "Value")
+                                    
+                                    
+                                    Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6)
+                                    ParserCellID pGrid, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                                    .Col = lCol_temp
+                                    .Row = lRow_temp
+                                    
+                                    '.Formula = ""
+                                    '.value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 1), "Value")
+                                    .value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
+                                    (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6), "Value")
+                                Else
+                                    Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
+                                    ParserCellID pGrid, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                                    .Col = lCol_temp
+                                    .Row = lRow_temp
+                                    '.Formula = ""
+                                    .value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
+                                    (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7), "Value")
+                                    
+                                    
+                                    Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6)
+                                    ParserCellID pGrid, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                                    .Col = lCol_temp
+                                    .Row = lRow_temp
+                                    
+                                    '.Formula = ""
+                                    '.value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 1), "Value")
+                                    .value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
+                                    (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6), "Value")
+                                End If
                             End If
                     End If
                     '.SetText .ColLetterToNumber("BG"), 23, CStr(format(Date, "dd/mm/yyyy"))
