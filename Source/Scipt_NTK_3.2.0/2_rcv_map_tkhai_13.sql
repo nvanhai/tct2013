@@ -30,12 +30,12 @@ commit;
 
 -- To khai 03/GTGT
 insert into rcv_map_tkhai (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_HSO, NGAY_HL_TU, NGAY_HL_DEN)
-values ('03_GTGT13', '02', 'TÍ khai thu’ GTGT t›nh theo ph≠¨ng ph∏p TT tr™n GTGT', 'TK', '02', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+values ('03_GTGT13', 'A1', 'TÍ khai thu’ GTGT t›nh theo ph≠¨ng ph∏p TT tr™n GTGT', 'TK', '02', to_date('01-01-2014', 'dd-mm-yyyy'), null);
 commit;
 
 -- To khai 04/GTGT
 insert into rcv_map_tkhai (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_HSO, NGAY_HL_TU, NGAY_HL_DEN)
-values ('04_GTGT13', '31', '04/GTGT TÍ khai thu’ GTGT ', 'TK', '02', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+values ('04_GTGT13', '96', '04/GTGT TÍ khai thu’ GTGT ', 'TK', '02', to_date('01-01-2014', 'dd-mm-yyyy'), null);
 commit;
 
 -- To khai 05/GTGT
@@ -66,7 +66,7 @@ commit;
 
 -- To khai 01/TBVMT
 insert into rcv_map_tkhai (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_HSO, NGAY_HL_TU, NGAY_HL_DEN)
-values ('01_TBVMT13', '00', 'TÍ KHAI THU’ B∂O V÷ M§I TR¶ÍNG', 'TK', '02', to_date('01-01-2014', 'dd-mm-yyyy'), null);
+values ('01_TBVMT13', '91', 'TÍ KHAI THU’ B∂O V÷ M§I TR¶ÍNG', 'TK', '02', to_date('01-01-2014', 'dd-mm-yyyy'), null);
 commit;
 
 -- To khai 01/TNCN-BHDC
