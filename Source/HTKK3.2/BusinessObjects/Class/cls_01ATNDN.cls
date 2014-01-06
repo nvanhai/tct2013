@@ -1243,8 +1243,8 @@ Private Sub CheckDynamicError()
     ' PL 05
     Dim mErrMSTTrung As Variant
     ' check gh
-    Dim vCheckGH As Variant, vLyDoGH As Variant, vErrorCheckGH As Variant, vThoiHanGH As Variant, vErrorCheckThoiHanGH As Variant
-    Dim iflagCheckGH As Integer, iflagCheckThoiHanGH As Integer
+    Dim vCheckGH As Variant, vLyDoGH As Variant, vErrorCheckGH As Variant, vThoiHanGH As Variant, vErrorCheckThoiHanGH As Variant, vSoThueGH As Variant, vErrorCheckSoThueGH As Variant
+    Dim iflagCheckGH As Integer, iflagCheckThoiHanGH As Integer, iflagCheckSoThueGH As Integer
     
     With fps
         '.Visible = False
@@ -1264,6 +1264,7 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 34, errTongSoThue
         
         .GetText .ColLetterToNumber("E"), 39, vErrorCheckThoiHanGH
+        .GetText .ColLetterToNumber("E"), 42, vErrorCheckSoThueGH
         
         vFlag = 0
         iFlagCheckMaST = 0
@@ -1328,6 +1329,7 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("F"), 43, vCheckGH
         .GetText .ColLetterToNumber("H"), 45, vLyDoGH
         .GetText .ColLetterToNumber("H"), 47, vThoiHanGH
+        .GetText .ColLetterToNumber("H"), 49, vSoThueGH
         
          If (Trim$(vCheckGH) = "1" Or Trim$(UCase$(vCheckGH)) = "X") And isCheckGh Then
              ' Kiem tra ly do gia han
@@ -1357,6 +1359,20 @@ Private Sub CheckDynamicError()
                  .CellNote = ""  'static
                  .BackColor = mNonErrorColor
              End If
+             ' Kiem tra so thue
+             If Val(vSoThueGH) <= 0 Then
+                 .Col = .ColLetterToNumber("H")
+                 .Row = 49
+                 .CellNote = vErrorCheckSoThueGH
+                 .BackColor = mErrorColor
+                 iflagCheckSoThueGH = 1
+             Else
+                 .Col = .ColLetterToNumber("H")
+                 .Row = 49
+                 .CellNote = ""  'static
+                 .BackColor = mNonErrorColor
+                 iflagCheckSoThueGH = 0
+             End If
          Else
                 ' Ly do gia han
                  .Col = .ColLetterToNumber("H")
@@ -1370,6 +1386,12 @@ Private Sub CheckDynamicError()
                  .CellNote = ""  'static
                  .BackColor = mNonErrorColor
                  iflagCheckThoiHanGH = 0
+                 ' So thue gia han
+                 .Col = .ColLetterToNumber("H")
+                 .Row = 49
+                 .CellNote = ""  'static
+                 .BackColor = mNonErrorColor
+                 iflagCheckSoThueGH = 0
          End If
        
        
@@ -1536,6 +1558,7 @@ Private Sub CheckDynamicError()
         .SetText .ColLetterToNumber("B"), 25, IIf(iFlagCheckMaSTDN = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 33, IIf(iflagCheckGH = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 39, IIf(iflagCheckThoiHanGH = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 42, IIf(iflagCheckSoThueGH = 1, "0", "1")
             
         CheckErrorMST
         
@@ -2054,7 +2077,7 @@ Public Sub SetActiveKHBS() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
                  Set xmlCellNode = TAX_Utilities_v1.Data(2).getElementsByTagName("Cell")(7)
                     strValue3 = GetAttribute(xmlCellNode, "Value")
           
-                    If (Not IsNullValue(strValue1)) Or TAX_Utilities_v1.Data(2).getElementsByTagName("Cell").length > 20 Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Then
+                    If (Not IsNullValue(strValue1)) Or TAX_Utilities_v1.Data(2).getElementsByTagName("Cell").length > 31 Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Then
                             blnNullValue = False
                     End If
 

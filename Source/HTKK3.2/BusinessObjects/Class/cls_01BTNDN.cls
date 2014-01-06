@@ -1200,8 +1200,8 @@ Private Sub CheckDynamicError()
     Dim iFlagMSTTrung As Integer, mErrMSTTrung As Variant
     
     ' check gh
-    Dim vCheckGH As Variant, vLyDoGH As Variant, vErrorCheckGH As Variant
-    Dim iflagCheckGH As Integer
+    Dim vCheckGH As Variant, vLyDoGH As Variant, vErrorCheckGH As Variant, vThoiHanGH As Variant, vErrorCheckThoiHanGH As Variant, vSoThueGH As Variant, vErrorCheckSoThueGH As Variant
+    Dim iflagCheckGH As Integer, iflagCheckThoiHanGH As Integer, iflagCheckSoThueGH As Integer
     
     With fps
     '.Visible = False
@@ -1222,6 +1222,10 @@ Private Sub CheckDynamicError()
         
         .GetText .ColLetterToNumber("E"), 30, vErrorCheckGH
         .GetText .ColLetterToNumber("E"), 32, errTongSoThue
+        
+        .GetText .ColLetterToNumber("E"), 34, vErrorCheckThoiHanGH
+        .GetText .ColLetterToNumber("E"), 35, vErrorCheckSoThueGH
+        
         
         vFlag = 0
             
@@ -1319,7 +1323,12 @@ Private Sub CheckDynamicError()
         
         .GetText .ColLetterToNumber("F"), 56, vCheckGH
         .GetText .ColLetterToNumber("H"), 58, vLyDoGH
+        
+        .GetText .ColLetterToNumber("H"), 60, vThoiHanGH
+        .GetText .ColLetterToNumber("H"), 62, vSoThueGH
+        
          If (Trim$(vCheckGH) = "1" Or Trim$(UCase$(vCheckGH)) = "X") And isCheckGh Then
+            ' kiem tra ly do gia han
              If Trim$(vLyDoGH) = "" Then
                  .Col = .ColLetterToNumber("H")
                  .Row = 58
@@ -1333,12 +1342,52 @@ Private Sub CheckDynamicError()
                  .BackColor = mNonErrorColor
                  iflagCheckGH = 0
              End If
+             ' Kiem tra thoi han gia han
+             If Trim$(vThoiHanGH) = "" Or Trim$(vThoiHanGH) = "../../...." Then
+                 .Col = .ColLetterToNumber("H")
+                 .Row = 60
+                 .CellNote = vErrorCheckThoiHanGH  'static
+                 .BackColor = mErrorColor
+                 iflagCheckThoiHanGH = 1
+             Else
+                 .Col = .ColLetterToNumber("H")
+                 .Row = 60
+                 .CellNote = ""  'static
+                 .BackColor = mNonErrorColor
+             End If
+             ' Kiem tra so thue
+             If Val(vSoThueGH) <= 0 Then
+                 .Col = .ColLetterToNumber("H")
+                 .Row = 62
+                 .CellNote = vErrorCheckSoThueGH
+                 .BackColor = mErrorColor
+                 iflagCheckSoThueGH = 1
+             Else
+                 .Col = .ColLetterToNumber("H")
+                 .Row = 62
+                 .CellNote = ""  'static
+                 .BackColor = mNonErrorColor
+                 iflagCheckSoThueGH = 0
+             End If
          Else
+                ' kiem tra ly do gia han
                  .Col = .ColLetterToNumber("H")
                  .Row = 58
                  .CellNote = ""  'static
                  .BackColor = mNonErrorColor
                  iflagCheckGH = 0
+                 ' Thoi han gia han
+                 .Col = .ColLetterToNumber("H")
+                 .Row = 60
+                 .CellNote = ""  'static
+                 .BackColor = mNonErrorColor
+                 iflagCheckThoiHanGH = 0
+                 ' So thue gia han
+                 .Col = .ColLetterToNumber("H")
+                 .Row = 62
+                 .CellNote = ""  'static
+                 .BackColor = mNonErrorColor
+                 iflagCheckSoThueGH = 0
          End If
     
     '    check tren sheet 2
@@ -1517,6 +1566,9 @@ Private Sub CheckDynamicError()
             
             .SetText .ColLetterToNumber("B"), 29, IIf(iFlagMSTTrung = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 30, IIf(iflagCheckGH = 1, "0", "1")
+            
+            .SetText .ColLetterToNumber("B"), 34, IIf(iflagCheckThoiHanGH = 1, "0", "1")
+            .SetText .ColLetterToNumber("B"), 35, IIf(iflagCheckSoThueGH = 1, "0", "1")
         
             CheckErrorMST
         
