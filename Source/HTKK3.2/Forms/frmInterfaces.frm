@@ -8147,7 +8147,77 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
         strIdKHBS_TT156 = "~02~04~71~72~11~12~73~70~81~06~05~86~90~"
         strIdKHBS = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
         If strIdKHBS = "01" Then
+            .EventEnabled(EventAllEvents) = False
+            If .ActiveSheet = .SheetCount - 1 Then
+            ' lay row cua dong commbo
+                Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 15)
+                 ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
         
+                 .sheet = .SheetCount - 1
+                 mCurrentSheet = .SheetCount - 1
+                 
+                 .Col = lCol_temp
+                 .Row = lRow_temp
+                 
+                 If Col = .ColLetterToNumber("BE") And Row = lRow_temp Then 'Khi chon Combo
+                     'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+                     intIndexCuc = .TypeComboBoxCurSel
+                     .Col = .ColLetterToNumber("BI")
+                     .Row = Row
+                     .TypeComboBoxCurSel = intIndexCuc
+                     'Nhap lai Combo cot Q
+                     .Col = .ColLetterToNumber("BI")
+                     UpdateCell .Col, .Row, .Text
+                     ' Lay Id cua cuc thue vua chon o tren
+                     .GetText .Col, .Row, varIdCucThue
+                     
+                     If varIdCucThue <> "" Or varIdCucThue <> vbNullString Then
+                         ' Lay thong tin cho chi cuc thue
+                         varIdCucThue = Left$(varIdCucThue, 3)
+                         
+                         If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+                             Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+                             For Each xmlNode In xmlNodeListCell
+                                 If GetAttribute(xmlNode, "Value") <> "" Then
+                                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                                     
+                                     If arrDanhsach(0) = "0" And arrDanhsach(2) = varIdCucThue Then
+                                         tenChiCucThue = tenChiCucThue + arrDanhsach(3) + Chr$(9)
+                                         maChiCucThue = maChiCucThue + arrDanhsach(1) + Chr$(9)
+                                     End If
+                                 End If
+                             Next
+                             Set xmlDomData = Nothing
+                             Set xmlNodeListCell = Nothing
+                             Set xmlNode = Nothing
+                         End If
+                         
+                         .Row = lRow_temp + 2
+                         .Col = .ColLetterToNumber("BE")
+                         .TypeComboBoxList = tenChiCucThue
+                         .Text = ""
+                         UpdateCell .Col, .Row, .Text
+                         
+                         .Row = lRow_temp + 2
+                         .Col = .ColLetterToNumber("BI")
+                         .TypeComboBoxList = maChiCucThue
+                         .Text = ""
+                         UpdateCell .Col, .Row, .Text
+                     End If
+                 End If
+                             
+                 If Col = .ColLetterToNumber("BE") And Row = lRow_temp + 2 Then 'Khi chon Combo
+                     'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+                     intIndexChiCuc = .TypeComboBoxCurSel
+                     .Col = .ColLetterToNumber("BI")
+                     .Row = Row
+                     .TypeComboBoxCurSel = intIndexChiCuc
+                     'Nhap lai Combo cot Q
+                     .Col = .ColLetterToNumber("BI")
+                     UpdateCell .Col, .Row, .Text
+                 End If
+              End If
+              .EventEnabled(EventAllEvents) = True
         ElseIf InStr(1, strIdKHBS_TT156, "~" & Trim$(strIdKHBS) & "~", vbTextCompare) > 0 Then
              .EventEnabled(EventAllEvents) = False
              If .ActiveSheet = .SheetCount - 1 Then
@@ -9067,7 +9137,29 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
         strIdKHBS_TT156 = "~02~04~71~72~11~12~73~70~81~06~05~86~90~"
         strIdKHBS = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
         If strIdKHBS = "01" Then
-        
+            .EventEnabled(EventAllEvents) = False
+             If .ActiveSheet = .SheetCount - 1 Then
+                    Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 16)
+                    ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                    If Col = lCol_temp And Row = lRow_temp Then
+                        .GetText Col, Row, varTemp
+                         If varTemp <> "" And varTemp <> "../../...." Then
+                             If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+                                 .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+                                 .TypeHAlign = TypeHAlignLeft
+                             Else
+                                 .SetFocus
+                                 .SetActiveCell Col, Row
+                             End If
+                         Else
+                          .SetText Col, Row, ""
+                         End If
+                        .Col = Col
+                        .Row = Row
+                        UpdateCell .Col, .Row, .Text
+                     End If
+            End If
+            .EventEnabled(EventAllEvents) = True
         ElseIf InStr(1, strIdKHBS_TT156, "~" & Trim$(strIdKHBS) & "~", vbTextCompare) > 0 Then
              .EventEnabled(EventAllEvents) = False
              If .ActiveSheet = .SheetCount - 1 Then
