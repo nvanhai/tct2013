@@ -4,9 +4,9 @@
 			<ct2></ct2>
 			<TNhapNhanDuocONNgoai>
 				<ct3>1</ct3>
+				<tenNT></tenNT>
 				<ct4>1</ct4>
 			</TNhapNhanDuocONNgoai>
-			<tenNT></tenNT>
 			<ThueTNhapDaNop>
 				<ct5>1</ct5>
 				<ct6>1</ct6>
@@ -16,7 +16,7 @@
 				<ct8>1</ct8>
 			</ThuNhapChiuThue>
 			<XacDinhThueDuocTru>
-				<ct9>1</ct9>
+				<ct9>0.0</ct9>
 				<ct10>1</ct10>
 				<ct11>1</ct11>
 			</XacDinhThueDuocTru>

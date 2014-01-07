@@ -1,7 +1,7 @@
 <PL05_TNDN>
 	<TinhNopThueTNDNCoSoHTPT>
 		<ToanBoDoanhNghiep>
-			<ct03>1</ct03>
+			<ct03>0.0</ct03>
 			<ct04>1</ct04>
 			<ct05>1</ct05>
 			<ct06>1</ct06>
@@ -11,7 +11,7 @@
 			<ct10>1</ct10>
 		</ToanBoDoanhNghiep>
 		<TaitruSoChinh>
-			<ct03>1</ct03>
+			<ct03>0.0</ct03>
 			<ct04>1</ct04>
 			<ct05>1</ct05>
 			<ct06>1</ct06>

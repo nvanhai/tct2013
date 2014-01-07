@@ -69,29 +69,31 @@
 			</TTinTKhaiThue>
 		</TTinChung>
 		<CTieuTKhaiChinh>
-		<ThuNhapTuDauVon>
-			<ct21>1</ct21>
-			<ct22>1</ct22>
-		</ThuNhapTuDauVon>
-		<ThuNhapTuChuyenNhuongCKhoan>
-			<ct23>1</ct23>
-			<ct24>1</ct24>
-		</ThuNhapTuChuyenNhuongCKhoan>
-		<ThuNhapTuNhuongQuyenTMai>
-			<ct25>1</ct25>
-			<ct26>1</ct26>
-		</ThuNhapTuNhuongQuyenTMai>
-		<ThuNhapTuTrungThuong>
-			<ct27>1</ct27>
-			<ct28>1</ct28>
-		</ThuNhapTuTrungThuong>
-		<ThuNhapTuKDoanhCaNhanKhongCTru>
-			<ct29>1</ct29>
-			<ct30>1</ct30>
-			<ct31>1</ct31>
-		</ThuNhapTuKDoanhCaNhanKhongCTru>
-	</CTieuTKhaiChinh>
+			<ThuNhapTuDauVon>
+				<ct21>1</ct21>
+				<ct22>1</ct22>
+			</ThuNhapTuDauVon>
+			<ThuNhapTuChuyenNhuongCKhoan>
+				<ct23>1</ct23>
+				<ct24>1</ct24>
+			</ThuNhapTuChuyenNhuongCKhoan>
+			<ThuNhapTuNhuongQuyenTMai>
+				<ct25>1</ct25>
+				<ct26>1</ct26>
+			</ThuNhapTuNhuongQuyenTMai>
+			<ThuNhapTuTrungThuong>
+				<ct27>1</ct27>
+				<ct28>1</ct28>
+			</ThuNhapTuTrungThuong>
+			<ThuNhapTuKDoanhCaNhanKhongCTru>
+				<ct29>1</ct29>
+				<ct30>1</ct30>
+				<ct31>1</ct31>
+			</ThuNhapTuKDoanhCaNhanKhongCTru>
+		</CTieuTKhaiChinh>
 		<PLuc>
 		</PLuc>
 	</HSoKhaiThue>
-	<CKyDTu></CKyDTu></HSoThueDTu>
+	<CKyDTu>
+	</CKyDTu>
+</HSoThueDTu>

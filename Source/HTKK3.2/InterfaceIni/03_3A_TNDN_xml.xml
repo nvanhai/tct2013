@@ -1,5 +1,5 @@
 <PL03_3A_TNDN>
-	<Static GroupName="PL03_3A_TNDN">
+	<Static GroupName="NoiDungPL03_3A">
 		<dieuKienUuDai1>C_25</dieuKienUuDai1>
 		<dieuKienUuDai2>C_26</dieuKienUuDai2>
 		<dieuKienUuDai3>C_27</dieuKienUuDai3>
@@ -12,8 +12,8 @@
 		<dieuKienUuDai10>C_34</dieuKienUuDai10>
 		<dieuKienUuDai11>C_35</dieuKienUuDai11>
 		<mucDoUuDai>Q_37</mucDoUuDai>
-		<namBatDauUuDai>U_38</namBatDauUuDai>
-		<namketThucUuDai>N_35</namketThucUuDai>
+		<thoiHanUuDai>U_38</thoiHanUuDai>
+		<namBatDauUuDai>N_35</namBatDauUuDai>
 		<namMienThueBD>Q_39</namMienThueBD>
 		<namMienThueKT>J_39</namMienThueKT>
 		<namPNop50Thue>U_40</namPNop50Thue>

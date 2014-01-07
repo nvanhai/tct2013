@@ -69,7 +69,6 @@
 			</TTinTKhaiThue>
 		</TTinChung>
 		<CTieuTKhaiChinh>
-			<doanhNghiepADungTSuat20>true</doanhNghiepADungTSuat20>
 			<doanhNghiepCoCSoHToanPThuoc>true</doanhNghiepCoCSoHToanPThuoc>
 			<ctA1>0</ctA1>
 			<ctB1>1</ctB1>
@@ -97,18 +96,19 @@
 			<ctC9>1</ctC9>
 			<ctC10>1</ctC10>
 			<ctC11>1</ctC11>
-			<ctC12>1</ctC12>
 			<ctD>1</ctD>
 			<ctE>1</ctE>
 			<ctE1>1</ctE1>
 			<ctE2>1</ctE2>
 			<TaiLieu_Guikem>
-				<TaiLieuGuikem id="ID_1">
+				<Tailieuguikem>
 					<tenDocument></tenDocument>
-				</TaiLieuGuikem>
+				</Tailieuguikem>
 			</TaiLieu_Guikem>
 		</CTieuTKhaiChinh>
 		<PLuc>
 		</PLuc>
 	</HSoKhaiThue>
-	<CKyDTu></CKyDTu></HSoThueDTu>
+	<CKyDTu>
+	</CKyDTu>
+</HSoThueDTu>

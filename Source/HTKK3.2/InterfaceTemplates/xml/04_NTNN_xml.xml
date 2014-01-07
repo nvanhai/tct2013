@@ -69,58 +69,58 @@
 			</TTinTKhaiThue>
 		</TTinChung>
 		<CTieuTKhaiChinh>
-			<soHopNhaThau></soHopNhaThau>
-			<ngayHopNhaThau></ngayHopNhaThau>
 			<GiaTriHDong>
-				<donViTinh>text</donViTinh>
-				<keKhai>text</keKhai>
-				<quyetToan>text</quyetToan>
-				<chenhLech>text</chenhLech>
-				<ghiChu>text</ghiChu>
+				<chiTietThue>
+					<donViTinh>text</donViTinh>
+					<keKhai>text</keKhai>
+					<quyetToan>text</quyetToan>
+					<ghiChu>text</ghiChu>
+				</chiTietThue>
 			</GiaTriHDong>
-			<DoanhThu>
-				<donViTinh>text</donViTinh>
-				<keKhai>text</keKhai>
-				<quyetToan>text</quyetToan>
-				<chenhLech>text</chenhLech>
-				<ghiChu>text</ghiChu>
-			</DoanhThu>
-			<DThuNThauVietNam>
-				<donViTinh>text</donViTinh>
-				<keKhai>text</keKhai>
-				<quyetToan>text</quyetToan>
-				<chenhLech>text</chenhLech>
-				<ghiChu>text</ghiChu>
-			</DThuNThauVietNam>
+			<giaTriPViecNThauPhuVN>
+				<chiTietThue>
+					<donViTinh>text</donViTinh>
+					<keKhai>text</keKhai>
+					<quyetToan>text</quyetToan>
+					<ghiChu>text</ghiChu>
+				</chiTietThue>
+			</giaTriPViecNThauPhuVN>
 			<DThuTinhThue>
-				<donViTinh>text</donViTinh>
-				<keKhai>text</keKhai>
-				<quyetToan>text</quyetToan>
-				<chenhLech>text</chenhLech>
-				<ghiChu>text</ghiChu>
+				<chiTietThue>
+					<donViTinh>text</donViTinh>
+					<keKhai>text</keKhai>
+					<quyetToan>text</quyetToan>
+					<ghiChu>text</ghiChu>
+				</chiTietThue>
 			</DThuTinhThue>
 			<ThueTNDNPhaiNop>
-				<donViTinh>text</donViTinh>
-				<keKhai>text</keKhai>
-				<quyetToan>text</quyetToan>
-				<chenhLech>text</chenhLech>
-				<ghiChu>text</ghiChu>
+				<chiTietThue>
+					<donViTinh>text</donViTinh>
+					<keKhai>text</keKhai>
+					<quyetToan>text</quyetToan>
+					<ghiChu>text</ghiChu>
+				</chiTietThue>
 			</ThueTNDNPhaiNop>
 			<ThueDaNopNTNN>
-				<donViTinh>text</donViTinh>
-				<keKhai>text</keKhai>
-				<quyetToan>text</quyetToan>
-				<chenhLech>text</chenhLech>
-				<ghiChu>text</ghiChu>
+				<chiTietThue>
+					<donViTinh>text</donViTinh>
+					<keKhai>text</keKhai>
+					<quyetToan>text</quyetToan>
+					<ghiChu>text</ghiChu>
+				</chiTietThue>
 			</ThueDaNopNTNN>
 			<ThueNTNNNopThuaThieu>
-				<donViTinh>text</donViTinh>
-				<keKhai>text</keKhai>
-				<quyetToan>text</quyetToan>
-				<chenhLech>text</chenhLech>
-				<ghiChu>text</ghiChu>
+				<chiTietThue>
+					<donViTinh>text</donViTinh>
+					<keKhai>text</keKhai>
+					<quyetToan>text</quyetToan>
+					<ghiChu>text</ghiChu>
+				</chiTietThue>
 			</ThueNTNNNopThuaThieu>
 		</CTieuTKhaiChinh>
-		<PLuc/>
+		<PLuc>
+		</PLuc>
 	</HSoKhaiThue>
-	<CKyDTu></CKyDTu></HSoThueDTu>
+	<CKyDTu>
+	</CKyDTu>
+</HSoThueDTu>

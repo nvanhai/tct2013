@@ -12,7 +12,10 @@
 				<TKhaiThue>
 					<maTKhai></maTKhai>
 					<tenTKhai></tenTKhai>
-					<moTaBMau/>
+					<moTaBMau>
+						<moTaBieuMau>Ban hành kèm theo thông tư số 28/2011/TT-BTC ngày 28/02/2011 của Bộ tài chính</moTaBieuMau>
+						<ghiChuTKhai>Dành cho người nộp thuế khai thuế GTGT theo phương pháp khấu trừ</ghiChuTKhai>
+					</moTaBMau>
 					<pbanTKhaiXML></pbanTKhaiXML>
 					<loaiTKhai>C</loaiTKhai>
 					<soLan>1</soLan>
@@ -109,4 +112,6 @@
 		<PLuc>
 		</PLuc>
 	</HSoKhaiThue>
-	<CKyDTu></CKyDTu></HSoThueDTu>
+	<CKyDTu>
+	</CKyDTu>
+</HSoThueDTu>

@@ -1,13 +1,16 @@
-<PLuc_01_DK>
-	<ct09>1</ct09>
-	<NghiaVuThue>
-		<ChiTiet>
-			<mst></mst>
-			<tenNhaThau></tenNhaThau>
-			<tyLePhanBo>0.0</tyLePhanBo>
-			<soThuePSinhPNop>0.0</soThuePSinhPNop>
+<PL_02_1TAIN_DK>
+	<SLuongDThu>
+		<bangKKhai>
+			<ngayThangKThac></ngayThangKThac>
+			<soLuongKThac>1</soLuongKThac>
+			<soLuongXBan>1</soLuongXBan>
+			<giaBan>1</giaBan>
+			<doanhThu_NgoaiTe>1</doanhThu_NgoaiTe>
+			<doanhThu_dongVietNam>1</doanhThu_dongVietNam>
 			<ghiChu></ghiChu>
-		</ChiTiet>
-	</NghiaVuThue>
-	<tongCong>1</tongCong>
-</PLuc_01_DK>
+		</bangKKhai>
+		<tongSLuongDKhiXBan>1</tongSLuongDKhiXBan>
+		<tongDoanhThuXBan_ngoaiTe>1</tongDoanhThuXBan_ngoaiTe>
+		<tongDoanhThuXBan_dongVietNam>1</tongDoanhThuXBan_dongVietNam>
+	</SLuongDThu>
+</PL_02_1TAIN_DK>

@@ -79,10 +79,10 @@
 			<ct23>1</ct23>
 			<ct24>0.0</ct24>
 			<ct25>0.0</ct25>
-			<ct25a>1</ct25a>
-			<ct25b>1</ct25b>
-			<ct25c>1</ct25c>
-			<ct26>1</ct26>
+			<ct25a>0.0</ct25a>
+			<ct25b>0.0</ct25b>
+			<ct25c>0.0</ct25c>
+			<ct26>0.0</ct26>
 			<ct27>1</ct27>
 			<ct28>0</ct28>
 			<ct29>1</ct29>
@@ -100,4 +100,6 @@
 		<PLuc>
 		</PLuc>
 	</HSoKhaiThue>
-	<CKyDTu></CKyDTu></HSoThueDTu>
+	<CKyDTu>
+	</CKyDTu>
+</HSoThueDTu>
