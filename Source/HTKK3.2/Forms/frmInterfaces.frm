@@ -3505,7 +3505,7 @@ Private Sub SetKieuKy()
     strKK = strKieuKy
     
     '01_NTNN
-    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "06" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "90" Then
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "06" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "90" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "81" Then
         If strLoaiTKThang_PS = "TK_LANPS" Then
             strKK = "D"
         Else
@@ -3528,7 +3528,11 @@ Private Sub SetKieuKy()
     Else
         soLanBs = Val(strSolanBS)
     End If
-    
+        
+    ' chuyen sang dinh dang kieu ky cua schema
+    If strKK = "D_Y" Then
+        strKK = "Y"
+    End If
 End Sub
 
 ' Set gia tri mac dinh cho to khai xml
@@ -3550,8 +3554,6 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             xmlTK.getElementsByTagName("maTKhai")(0).Text = "126"
         End If
     End If
-
-
 
     With fpSpread1
         
@@ -3609,7 +3611,15 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             If xmlTK.getElementsByTagName("kyKKhai").length > 0 Then
                 xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_v1.NodeMenu, "ID"))
             End If
-
+            If TAX_Utilities_v1.FirstDay <> vbNullString And TAX_Utilities_v1.LastDay <> vbNullString Then
+                                If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
+                    xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = TAX_Utilities_v1.FirstDay
+                End If
+            
+                If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
+                    xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = TAX_Utilities_v1.LastDay
+                End If
+            Else
             If strKK = "D" Then
                 If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
                     xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = ""
@@ -3658,6 +3668,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
                 If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
                     xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = TAX_Utilities_v1.LastDay
                 End If
+            End If
             End If
 
         Else
@@ -4086,7 +4097,7 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
         For Each cNode In nodes.childNodes
 
             If cNode.hasChildNodes Then
-                If cNode.firstChild.hasChildNodes Then
+                If cNode.firstchild.hasChildNodes Then
                     SetCloneNode CloneNode, cNode, Blank, cellRange, Row
                 Else
                     cellid = cNode.Text
@@ -4114,7 +4125,7 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                                         dNode.Text = "1"
                                     ElseIf .Text = "" Then
                                         dNode.Text = "0"
-                                        Else
+                                    Else
                                         dNode.Text = .Text
                                     End If
 
@@ -4148,7 +4159,10 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                         End If
                     End If
                     
-                    Row = .Row
+                    'lay vi tri cua cot dau tien
+                    If Row = 0 Then
+                        Row = .Row
+                    End If
                     
                 End If
            
@@ -4160,6 +4174,77 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
 
 End Sub
 
+Private Sub SetValueFromXml(ByVal nodes As MSXML.IXMLDOMNode, _
+                            ByVal xmlDuLieu As MSXML.DOMDocument, _
+                            ByVal cellRange As Integer, _
+                            ByVal sheet As Integer)
+    Dim cellid      As String
+    Dim cellArray() As String
+    Dim cNode       As MSXML.IXMLDOMNode
+    Dim dNode       As MSXML.IXMLDOMNode
+
+    With fpSpread1
+        .sheet = sheet
+        For Each cNode In nodes.childNodes
+
+            If cNode.hasChildNodes Then
+                If cNode.firstchild.hasChildNodes Then
+                    SetValueFromXml cNode, xmlDuLieu, cellRange, .sheet
+                Else
+                    cellid = cNode.Text
+                    cellArray = Split(cellid, "_")
+                    
+                    If InStr(cellid, "_") > 0 Then
+                    If Val(cellArray(1)) > 0 Then
+                        .Col = .ColLetterToNumber(cellArray(0))
+                        .Row = Val(cellArray(1)) + cellRange
+                        
+                        For Each dNode In xmlDuLieu.getElementsByTagName(cNode.nodeName)
+
+                            If dNode.parentNode.nodeName = cNode.parentNode.nodeName Or cNode.parentNode.nodeName = "Static" Then
+                        
+                                If .CellType = CellTypeNumber Then
+
+                                    .value = dNode.Text
+                                ElseIf .CellType = CellTypeCheckBox Then
+
+                                    If LCase$(dNode.Text) = "x" Then
+                                        .Text = "1"
+                                    ElseIf dNode.Text = "" Then
+                                        .Text = "0"
+                                    Else
+                                        .Text = dNode.Text
+                                    End If
+
+                                Else
+                                    If dNode.hasChildNodes Then
+                                        .Text = dNode.firstchild.nodeValue
+                                    Else
+                                        .Text = dNode.Text
+                                    End If
+                                    
+                            
+                                End If
+                                UpdateCell .Col, .Row, .Text
+                                
+                            End If
+
+                        Next
+
+                    End If
+                    End If
+                    
+                End If
+           
+            End If
+
+        Next
+
+    End With
+
+End Sub
+
+
 Private Sub getAllNodes(ByVal nodes As MSXML.IXMLDOMNode, _
                         ByRef xmlReturns As MSXML.DOMDocument)
     Dim cNode As MSXML.IXMLDOMNode
@@ -4167,10 +4252,10 @@ Private Sub getAllNodes(ByVal nodes As MSXML.IXMLDOMNode, _
     For Each cNode In nodes.childNodes
             
         If cNode.hasChildNodes Then
-            If cNode.firstChild.hasChildNodes Then
+            If cNode.firstchild.hasChildNodes Then
                 getAllNodes cNode, xmlReturns
             Else
-                xmlReturns.firstChild.appendChild cNode
+                xmlReturns.firstchild.appendChild cNode.CloneNode(True)
             End If
            
         End If
@@ -4278,7 +4363,9 @@ Private Sub KetXuatXML()
     Dim strArrActive() As String
     Dim cFolder        As New Scripting.FileSystemObject
     Dim nFolder        As String
-
+    Dim firstchild     As Variant
+    Dim nextNode       As MSXML.IXMLDOMNode
+    
     SetKieuKy
     MaTk = GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile")
     
@@ -4293,6 +4380,7 @@ Private Sub KetXuatXML()
         End If
 
     Else
+
         ' Doi voi cac to khai khac khi export thi ra thu muc C:\HTTK-Temp
         If (cFolder.FolderExists("C:\HTTK-Temp")) = False Then
             nFolder = "C:\HTTK-Temp"
@@ -4312,9 +4400,11 @@ Private Sub KetXuatXML()
         .FileName = getFileName(MaTk)
         
         .ShowSave
+
         If .FileName = vbNullString Or .FileName = "" Then
             Exit Sub
         End If
+
         If Right$(.FileName, 4) <> ".xml" Then
             strFileName = .FileName & ".xml"
         Else
@@ -4330,6 +4420,7 @@ Private Sub KetXuatXML()
             Exit Sub
         End If
     End If
+
     ' Bo ky tu "A","B" trong ma to khai
     If MaTk = "01A_TNCN_BH" Or MaTk = "01B_TNCN_BH" Or MaTk = "01A_TNCN_XS" Or MaTk = "01B_TNCN_XS" Or MaTk = "02A_TNCN10" Or MaTk = "02B_TNCN10" Or MaTk = "03A_TNCN10" Or MaTk = "03B_TNCN10" Then
         MaTk = Replace$(Replace$(Left$(MaTk, 3), "A", ""), "B", "") & Right$(MaTk, Len(MaTk) - 3)
@@ -4340,6 +4431,7 @@ Private Sub KetXuatXML()
     ElseIf InStr(MaTk, "10") > 0 Then
         MaTk = Replace$(MaTk, "10", "")
     End If
+
     xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTk & "_xml.xml")
     xmlMapCT.Load GetAbsolutePath("..\InterfaceIni\" & MaTk & "_xml.xml")
     
@@ -4366,29 +4458,45 @@ Private Sub KetXuatXML()
                 currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
                 Level = GetAttribute(xmlNodeMapCT, "Level")
 
-                CloneNode.loadXML xmlNodeMapCT.firstChild.xml
+                CloneNode.loadXML xmlNodeMapCT.firstchild.xml
 
                 If GetAttribute(xmlNodeMapCT, "GroupCellRange") = vbNullString Then
                     GroupCellRange = 1
                 Else
                     GroupCellRange = Val(GetAttribute(xmlNodeMapCT, "GroupCellRange"))
                 End If
-
+                
+                firstchild = GetAttribute(xmlNodeMapCT, "FirstChild")
+                
                 Blank = True
 
                 If xmlTK.getElementsByTagName(currentGroup)(0).hasChildNodes Then
                     If Level = "2" Then
-                        xmlTK.getElementsByTagName(currentGroup)(0).firstChild.removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild.firstChild
+                        If firstchild = "1" Then
+                            xmlTK.getElementsByTagName(currentGroup)(0).firstchild.removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstchild.firstchild
+                            Set nextNode = xmlTK.getElementsByTagName(currentGroup)(0).firstchild.firstchild
+                        Else
+                            xmlTK.getElementsByTagName(currentGroup)(0).firstchild.removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstchild.lastChild
+    
+                        End If
 
                     Else
-                        xmlTK.getElementsByTagName(currentGroup)(0).removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild
 
+                        If firstchild = "1" Then
+                            xmlTK.getElementsByTagName(currentGroup)(0).removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstchild
+                            Set nextNode = xmlTK.getElementsByTagName(currentGroup)(0).firstchild
+
+                        Else
+                     
+                            xmlTK.getElementsByTagName(currentGroup)(0).removeChild xmlTK.getElementsByTagName(currentGroup)(0).lastChild
+                        End If
                     End If
 
                 End If
 
                 Do
                     Blank = True
+                    sRow = 0
                     SetCloneNode CloneNode, xmlNodeMapCT, Blank, cellRange, sRow
                     .Col = .ColLetterToNumber("B")
                     .Row = sRow
@@ -4400,13 +4508,50 @@ Private Sub KetXuatXML()
 
                         Exit Do
                     End If
+                    
+                    .Col = .ColLetterToNumber("C")
+                    .Row = sRow
 
-                    SetAttribute CloneNode.firstChild, "id", CStr(id)
+                    If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
+                        If id > 1 Then
+                            cellRange = cellRange - GroupCellRange
+                        End If
+
+                        Exit Do
+                    End If
+
+                    SetAttribute CloneNode.firstchild, "id", "ID_" & CStr(id)
 
                     If Level = "2" Then
-                        xmlTK.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
+                        If firstchild = "1" Then
+                            If xmlTK.getElementsByTagName(currentGroup)(0).firstchild.hasChildNodes Then
+                                xmlTK.getElementsByTagName(currentGroup)(0).firstchild.insertBefore CloneNode.firstchild.CloneNode(True), nextNode
+ 
+                            Else
+                                xmlTK.getElementsByTagName(currentGroup)(0).firstchild.appendChild CloneNode.firstchild.CloneNode(True)
+
+                            End If
+                        
+                        Else
+                            xmlTK.getElementsByTagName(currentGroup)(0).firstchild.appendChild CloneNode.firstchild.CloneNode(True)
+
+                        End If
+
                     Else
-                        xmlTK.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
+
+                        If firstchild = "1" Then
+                            If xmlTK.getElementsByTagName(currentGroup)(0).hasChildNodes Then
+                                xmlTK.getElementsByTagName(currentGroup)(0).insertBefore CloneNode.firstchild.CloneNode(True), nextNode
+ 
+                            Else
+                                xmlTK.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstchild.CloneNode(True)
+
+                            End If
+
+                        Else
+                            xmlTK.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstchild.CloneNode(True)
+
+                        End If
                     End If
 
                     id = id + 1
@@ -4457,7 +4602,7 @@ Private Sub KetXuatXML()
                                 xmlCellTKNode.Text = "1"
                             ElseIf .Text = "" Then
                                 xmlCellTKNode.Text = "0"
-                                Else
+                            Else
                                 xmlCellTKNode.Text = .Text
                             End If
 
@@ -4538,7 +4683,7 @@ Private Sub KetXuatXML()
                             currentGroup = GetAttribute(xmlSection, "GroupName")
                             Level = GetAttribute(xmlSection, "Level")
 
-                            CloneNode.loadXML xmlSection.firstChild.xml
+                            CloneNode.loadXML xmlSection.firstchild.xml
 
                             If GetAttribute(xmlSection, "GroupCellRange") = vbNullString Then
                                 GroupCellRange = 1
@@ -4547,13 +4692,34 @@ Private Sub KetXuatXML()
                             End If
 
                             Blank = True
+                            firstchild = GetAttribute(xmlSection, "FirstChild")
 
                             If xmlPL.getElementsByTagName(currentGroup)(0).hasChildNodes Then
-                                xmlPL.getElementsByTagName(currentGroup)(0).removeChild xmlPL.getElementsByTagName(currentGroup)(0).firstChild
+                                If Level = "2" Then
+                                    If firstchild = "1" Then
+                                        xmlPL.getElementsByTagName(currentGroup)(0).firstchild.removeChild xmlPL.getElementsByTagName(currentGroup)(0).firstchild.firstchild
+                                        Set nextNode = xmlPL.getElementsByTagName(currentGroup)(0).firstchild.firstchild
+                                    Else
+                                        xmlPL.getElementsByTagName(currentGroup)(0).firstchild.removeChild xmlPL.getElementsByTagName(currentGroup)(0).firstchild.lastChild
+    
+                                    End If
+
+                                Else
+
+                                    If firstchild = "1" Then
+                                        xmlPL.getElementsByTagName(currentGroup)(0).removeChild xmlPL.getElementsByTagName(currentGroup)(0).firstchild
+                                        Set nextNode = xmlPL.getElementsByTagName(currentGroup)(0).firstchild
+                                    Else
+                     
+                                        xmlPL.getElementsByTagName(currentGroup)(0).removeChild xmlPL.getElementsByTagName(currentGroup)(0).lastChild
+                                    End If
+                                End If
+
                             End If
 
                             Do
                                 Blank = True
+                                sRow = 0
                                 SetCloneNode CloneNode, xmlSection, Blank, cellRange, sRow
                             
                                 .Col = .ColLetterToNumber("B")
@@ -4565,22 +4731,63 @@ Private Sub KetXuatXML()
                                     End If
 
                                     If InStr(GetAttribute(nodeVal, "DataFile"), "KHBS") > 0 And id = 1 Then
-                                        xmlPL.getElementsByTagName(currentGroup)(0).insertBefore CloneNode.firstChild.CloneNode(True), xmlPL.getElementsByTagName(currentGroup)(0).lastChild
+                                        xmlPL.getElementsByTagName(currentGroup)(0).insertBefore CloneNode.firstchild.CloneNode(True), xmlPL.getElementsByTagName(currentGroup)(0).lastChild
                                     End If
 
                                     Exit Do
                                 End If
 
-                                SetAttribute CloneNode.firstChild, "id", CStr(id)
+                                .Col = .ColLetterToNumber("C")
+                                .Row = sRow
+
+                                If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
+                                    If id > 1 Then
+                                        cellRange = cellRange - GroupCellRange
+                                    End If
+
+                                    If InStr(GetAttribute(nodeVal, "DataFile"), "KHBS") > 0 And id = 1 Then
+                                        xmlPL.getElementsByTagName(currentGroup)(0).insertBefore CloneNode.firstchild.CloneNode(True), xmlPL.getElementsByTagName(currentGroup)(0).lastChild
+                                    End If
+
+                                    Exit Do
+                                End If
+
+                                SetAttribute CloneNode.firstchild, "id", "ID_" & CStr(id)
 
                                 If InStr(GetAttribute(nodeVal, "DataFile"), "KHBS") > 0 Then
-                                    xmlPL.getElementsByTagName(currentGroup)(0).insertBefore CloneNode.firstChild.CloneNode(True), xmlPL.getElementsByTagName(currentGroup)(0).lastChild
+                                    xmlPL.getElementsByTagName(currentGroup)(0).insertBefore CloneNode.firstchild.CloneNode(True), xmlPL.getElementsByTagName(currentGroup)(0).lastChild
                                 Else
 
                                     If Level = "2" Then
-                                        xmlPL.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
+                                        If firstchild = "1" Then
+                                            If xmlPL.getElementsByTagName(currentGroup)(0).firstchild.hasChildNodes Then
+                                                xmlPL.getElementsByTagName(currentGroup)(0).firstchild.insertBefore CloneNode.firstchild.CloneNode(True), nextNode
+    
+                                            Else
+                                                xmlPL.getElementsByTagName(currentGroup)(0).firstchild.appendChild CloneNode.firstchild.CloneNode(True)
+
+                                            End If
+                        
+                                        Else
+                                            xmlPL.getElementsByTagName(currentGroup)(0).firstchild.appendChild CloneNode.firstchild.CloneNode(True)
+
+                                        End If
+
                                     Else
-                                        xmlPL.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
+
+                                        If firstchild = "1" Then
+                                            If xmlPL.getElementsByTagName(currentGroup)(0).hasChildNodes Then
+                                                xmlPL.getElementsByTagName(currentGroup)(0).insertBefore CloneNode.firstchild.CloneNode(True), nextNode
+ 
+                                            Else
+                                                xmlPL.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstchild.CloneNode(True)
+
+                                            End If
+
+                                        Else
+                                            xmlPL.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstchild.CloneNode(True)
+
+                                        End If
                                     End If
                                 End If
 
@@ -4592,15 +4799,15 @@ Private Sub KetXuatXML()
                             Dim xmlChildNodePL As MSXML.IXMLDOMNode
                             currentGroup = GetAttribute(xmlSection, "GroupName")
 
-                        For Each xmlCellNode In xmlSection.childNodes
+                            For Each xmlCellNode In xmlSection.childNodes
 
-                            If xmlCellNode.hasChildNodes Then
-                                cellid = xmlCellNode.Text
-                            Else
-                                cellid = ""
-                            End If
+                                If xmlCellNode.hasChildNodes Then
+                                    cellid = xmlCellNode.Text
+                                Else
+                                    cellid = ""
+                                End If
 
-                            cellArray = Split(cellid, "_")
+                                cellArray = Split(cellid, "_")
 
                                 If currentGroup = vbNullString Or currentGroup = "" Then
                                     Set xmlCellTKNode = xmlPL.getElementsByTagName(xmlCellNode.nodeName)(0)
@@ -4608,20 +4815,20 @@ Private Sub KetXuatXML()
 
                                     For Each xmlChildNodePL In xmlPL.getElementsByTagName(xmlCellNode.nodeName)
 
-                                    If xmlChildNodePL.parentNode.nodeName = currentGroup Then
-                                        Set xmlCellTKNode = xmlChildNodePL
-                                        Exit For
-                                    End If
+                                        If xmlChildNodePL.parentNode.nodeName = currentGroup Then
+                                            Set xmlCellTKNode = xmlChildNodePL
+                                            Exit For
+                                        End If
 
-                                Next
+                                    Next
 
-                            End If
+                                End If
 
-                            If UBound(cellArray) <> 1 Or Len(cellid) > 5 Then
-                                xmlCellTKNode.Text = cellid
-                            Else
-                                .Col = .ColLetterToNumber(cellArray(0))
-                                .Row = Val(cellArray(1)) + cellRange
+                                If UBound(cellArray) <> 1 Or Len(cellid) > 5 Then
+                                    xmlCellTKNode.Text = cellid
+                                Else
+                                    .Col = .ColLetterToNumber(cellArray(0))
+                                    .Row = Val(cellArray(1)) + cellRange
 
                                     If .CellType = CellTypeNumber Then
                                         xmlCellTKNode.Text = .value
@@ -4631,7 +4838,7 @@ Private Sub KetXuatXML()
                                             xmlCellTKNode.Text = "1"
                                         ElseIf .Text = "" Then
                                             xmlCellTKNode.Text = "0"
-                                            Else
+                                        Else
                                             xmlCellTKNode.Text = .Text
                                         End If
 
@@ -4640,11 +4847,11 @@ Private Sub KetXuatXML()
                                     End If
                                 End If
 
-                        Next
+                            Next
 
-                    End If
+                        End If
 
-                Next
+                    Next
 
                     xmlTK.getElementsByTagName("PLuc")(0).appendChild xmlPL.lastChild
            
@@ -4702,7 +4909,7 @@ Private Sub cmdImportXML_Click()
 
         For Each nodePhuLuc In xmlDuLieuImport.getElementsByTagName("PLuc")(0).childNodes
             xmlPhuLuc.loadXML nodePhuLuc.xml
-            ImportFromXmlToToKhai xmlPhuLuc, xmlMapCT.getElementsByTagName(nodePhuLuc.nodeName)(0), GetAttribute(xmlMapCT.firstChild, nodePhuLuc.nodeName)
+            ImportFromXmlToToKhai xmlPhuLuc, xmlMapCT.getElementsByTagName(nodePhuLuc.nodeName)(0), GetAttribute(xmlMapCT.firstchild, nodePhuLuc.nodeName)
         Next
 
     End If
@@ -4715,9 +4922,9 @@ ErrHandle:
 End Sub
 
 Private Function GetAllMapPhuLuc() As MSXML.DOMDocument
-    Dim intCtrl As Integer
-    Dim MaPL    As String
-    Dim MapPl   As New MSXML.DOMDocument
+    Dim intCtrl    As Integer
+    Dim MaPL       As String
+    Dim MapPl      As New MSXML.DOMDocument
     Dim nodePlName As MSXML.IXMLDOMNode
     
     Set GetAllMapPhuLuc = New MSXML.DOMDocument
@@ -4725,13 +4932,38 @@ Private Function GetAllMapPhuLuc() As MSXML.DOMDocument
 
     For intCtrl = 1 To TAX_Utilities_v1.NodeValidity.childNodes.length - 1
         MaPL = GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(intCtrl), "DataFile")
-        MapPl.Load GetAbsolutePath("..\InterfaceIni\" & MaPL & "_xml.xml")
+
+        If InStr(MaPL, "11") > 0 Then
+            MaPL = Replace$(MaPL, "11", "")
+        ElseIf InStr(MaPL, "10") > 0 Then
+            MaPL = Replace$(MaPL, "10", "")
+        End If
+
+        If InStr(MaPL, "KHBS") > 0 Then
+            If Len(MaPL) > 4 Then
+                MaPL = Right$(MaPL, Len(MaPL) - 5)
+    
+                If MaPL = "01_GTGT" Then
+                    MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_01_GTGT_xml.xml")
+                Else
+    
+                    If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01A_TNDN" Or MaPL = "02_TNDN" Or MaPL = "01_NTNN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Then
+                        MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT156_xml.xml")
+                    Else
+                        MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT28_xml.xml")
+                                
+                    End If
+                End If
+            End If
+        Else
+            MapPl.Load GetAbsolutePath("..\InterfaceIni\" & MaPL & "_xml.xml")
+        End If
 
         If MapPl.hasChildNodes Then
             Set nodePlName = GetAllMapPhuLuc.createNode(MSXML.NODE_ATTRIBUTE, MapPl.lastChild.nodeName, "")
             nodePlName.nodeValue = intCtrl + 1
-            GetAllMapPhuLuc.firstChild.Attributes.setNamedItem nodePlName
-            GetAllMapPhuLuc.firstChild.appendChild MapPl.lastChild
+            GetAllMapPhuLuc.firstchild.Attributes.setNamedItem nodePlName
+            GetAllMapPhuLuc.firstchild.appendChild MapPl.lastChild
         End If
 
     Next intCtrl
@@ -4750,7 +4982,7 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
     Dim cellRange        As Integer
     Dim CurrentCellRange As Integer
 
-    Dim nodeTK           As MSXML.IXMLDOMNode
+    Dim nodeTK           As New MSXML.DOMDocument
     Dim nodeMapCT        As MSXML.IXMLDOMNode
     Dim RowLength        As Integer
     Dim RowCount         As Integer
@@ -4765,14 +4997,15 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
         ResetDataAndForm .sheet
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(.sheet - 1), "Active", "1"
         fpSpread1.EventEnabled(EventAllEvents) = False
-           For Each nodeMapCT In xmlMapCT.childNodes
+
+        For Each nodeMapCT In xmlMapCT.childNodes
 
             If nodeMapCT.nodeName = "Dynamic" Then
                 Dim dynamicID As Integer
                 
                 GroupName = GetAttribute(nodeMapCT, "GroupName")
                 Level = GetAttribute(nodeMapCT, "Level")
-                Set nodeTK = xmlDuLieuImport.getElementsByTagName(GroupName)(0)
+                nodeTK.loadXML xmlDuLieuImport.getElementsByTagName(GroupName)(0).xml
 
                 If GetAttribute(nodeMapCT, "GroupCellRange") = vbNullString Then
                     GroupCellRange = 1
@@ -4781,22 +5014,16 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
                 End If
                                 
                 xmlCts.loadXML "<Cts></Cts>"
-                                
-                getAllNodes nodeMapCT, xmlCts
-                cellid = xmlCts.firstChild.firstChild.Text
-                cellArray = Split(cellid, "_")
 
-                If Level = "2" Then
-                    RowNumber = nodeTK.firstChild.childNodes.length
-                        
-                Else
-                    RowNumber = nodeTK.childNodes.length
-                End If
+                getAllNodes nodeMapCT, xmlCts
+                cellid = xmlCts.firstchild.firstchild.Text
+                cellArray = Split(cellid, "_")
+                RowNumber = nodeTK.getElementsByTagName(nodeMapCT.firstchild.nodeName).length
 
                 If UBound(cellArray) = 1 And RowNumber > 0 Then
                     
-'                    .MaxRows = .MaxRows + nodeTK.childNodes.length - 1
-'                    .InsertRows Val(cellArray(1)) + cellRange + 1, nodeTK.childNodes.length - 1
+                    '                    .MaxRows = .MaxRows + nodeTK.childNodes.length - 1
+                    '                    .InsertRows Val(cellArray(1)) + cellRange + 1, nodeTK.childNodes.length - 1
 
                     RowCount = 0
                     RowLength = 0
@@ -4813,36 +5040,42 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
 
                             If Level = "2" Then
                         
-                                valXml.loadXML nodeTK.firstChild.childNodes(dynamicID).xml
+                                valXml.loadXML nodeTK.getElementsByTagName(nodeMapCT.firstchild.nodeName)(dynamicID).xml
                             Else
                         
-                                valXml.loadXML nodeTK.childNodes(dynamicID).xml
+                                valXml.loadXML nodeTK.getElementsByTagName(nodeMapCT.firstchild.nodeName)(dynamicID).xml
                             End If
 
-                            If GetAttribute(valXml.firstChild, "id") <> "" Then
+                            If GetAttribute(valXml.firstchild, "id") <> "" Then
     
-                                For Each childNodeCT In xmlCts.lastChild.childNodes
-                                    cellid = childNodeCT.Text
-                                    cellArray = Split(cellid, "_")
-                                    .Row = Val(cellArray(1)) + cellRange
-                                    .Col = .ColLetterToNumber(cellArray(0))
-    
-                                    If valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "true" Then
-                                        .Text = 1
-                                    ElseIf valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "false" Then
-                                        .Text = 0
-                                    Else
-
-                                        If .CellType = CellTypeNumber Then
-                                            .value = valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text
-                                        Else
-                                            .Text = valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text
-                                        End If
-                                    End If
-
-                                    UpdateCell .Col, .Row, .Text
-                                Next
-    
+                                '                                For Each childNodeCT In xmlCts.lastChild.childNodes
+                                '                                    cellid = childNodeCT.Text
+                                '                                    cellArray = Split(cellid, "_")
+                                '                                    .Row = Val(cellArray(1)) + cellRange
+                                '                                    .Col = .ColLetterToNumber(cellArray(0))
+                                '
+                                '                                    If valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "true" Then
+                                '                                        .Text = 1
+                                '                                    ElseIf valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "false" Then
+                                '                                        .Text = 0
+                                '                                    Else
+                                '
+                                '                                        If .CellType = CellTypeNumber Then
+                                '                                            .value = valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text
+                                '                                        Else
+                                '
+                                '                                            If valXml.getElementsByTagName(childNodeCT.nodeName)(0).hasChildNodes Then
+                                '                                                .Text = valXml.getElementsByTagName(childNodeCT.nodeName)(0).firstchild.nodeValue
+                                '
+                                '                                            Else
+                                '                                                .Text = valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text
+                                '                                            End If
+                                '                                        End If
+                                '                                    End If
+                                '
+                                '                                    UpdateCell .Col, .Row, .Text
+                                '                                Next
+                                SetValueFromXml nodeMapCT, valXml, cellRange, .sheet
                                 cellRange = cellRange + GroupCellRange
     
                                 If dynamicID <> RowCount - 1 Then
@@ -4862,38 +5095,53 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
                 End If
                                 
             Else
-                xmlCts.loadXML "<Cts></Cts>"
-                getAllNodes nodeMapCT, xmlCts
+'                xmlCts.loadXML "<Cts></Cts>"
+'                getAllNodes nodeMapCT, xmlCts
+                GroupName = GetAttribute(nodeMapCT, "GroupName")
 
-                For Each childNodeCT In xmlCts.firstChild.childNodes
-                    cellid = childNodeCT.Text
-                    cellArray = Split(cellid, "_")
+                If xmlDuLieuImport.getElementsByTagName(GroupName).length > 0 Then
+               
+                    valXml.loadXML xmlDuLieuImport.getElementsByTagName(GroupName)(0).xml
+                    
+                    SetValueFromXml nodeMapCT, valXml, cellRange, .sheet
+'                    For Each childNodeCT In xmlCts.firstchild.childNodes
+'                        cellid = childNodeCT.Text
+'                        cellArray = Split(cellid, "_")
+'
+'                        If UBound(cellArray) = 1 Then
+'                            If Len(cellid) < 6 Then
+'                                .Row = Val(cellArray(1)) + cellRange
+'                                .Col = .ColLetterToNumber(cellArray(0))
+'
+'                                If valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "true" Then
+'                                    .Text = 1
+'                                ElseIf valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "false" Then
+'                                    .Text = 0
+'                                Else
+'
+'                                    If .CellType = CellTypeNumber Then
+'                                        .value = valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text
+'                                    Else
+'
+'                                        If valXml.getElementsByTagName(childNodeCT.nodeName)(0).hasChildNodes Then
+'                                            .Text = valXml.getElementsByTagName(childNodeCT.nodeName)(0).firstchild.nodeValue
+'
+'                                        Else
+'                                            .Text = valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text
+'                                        End If
+'                                    End If
+'                                End If
+'                            End If
+'                        End If
+'
+'                    Next
 
-                    If UBound(cellArray) = 1 Then
-                        If Len(cellid) < 6 Then
-                            .Row = Val(cellArray(1)) + cellRange
-                            .Col = .ColLetterToNumber(cellArray(0))
-
-                            If xmlDuLieuImport.getElementsByTagName(childNodeCT.nodeName)(0).Text = "true" Then
-                                .Text = 1
-                            ElseIf xmlDuLieuImport.getElementsByTagName(childNodeCT.nodeName)(0).Text = "false" Then
-                                .Text = 0
-                            Else
-
-                                If .CellType = CellTypeNumber Then
-                                    .value = xmlDuLieuImport.getElementsByTagName(childNodeCT.nodeName)(0).Text
-                                Else
-                                    .Text = xmlDuLieuImport.getElementsByTagName(childNodeCT.nodeName)(0).Text
-                                End If
-                            End If
-                        End If
-                    End If
-
-                Next
+                End If
 
             End If
 
         Next
+
         fpSpread1.EventEnabled(EventAllEvents) = True
     End With
 
@@ -8744,10 +8992,10 @@ Private Sub DeleteNode(ByVal intSheet As Integer, ByVal pCol As Long, ByVal pRow
         TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
         GoTo EXIT_SUB
     Else
-        If GetAttribute(xmlNodeCells.firstChild, "FirstCell") = "0" Then
+        If GetAttribute(xmlNodeCells.firstchild, "FirstCell") = "0" Then
             'Set FirstCell attr to "0" for next Cells node
             Set xmlNodeCells = xmlNodeCells.nextSibling
-            SetAttribute xmlNodeCells.firstChild, "FirstCell", "0"
+            SetAttribute xmlNodeCells.firstchild, "FirstCell", "0"
             Set xmlNodeCells = xmlNodeCells.previousSibling
         End If
     End If
@@ -12490,7 +12738,7 @@ Public Function delNullRowOn05(sheet As Long)
     If GetAttribute(xmlNodeListSec.Item(0), "Dynamic") = "1" Then
         fpSpread1.sheet = sheet + 1
         'get CellID cell dau tien dong dau tien
-        cellid = GetAttribute(xmlNodeListSec.Item(0).childNodes(0).firstChild, "CellID")
+        cellid = GetAttribute(xmlNodeListSec.Item(0).childNodes(0).firstchild, "CellID")
         'set location cell to array
         If fpSpread1.sheet = 2 Then
             strCol = "D~E~F~G~H~I~J~K~L~M~N~O~Q~R~S"
@@ -12733,7 +12981,7 @@ Public Function delNullRowOn06(sheet As Long)
     If GetAttribute(xmlNodeListSec.Item(0), "Dynamic") = "1" Then
         fpSpread1.sheet = sheet + 1
         'get CellID cell dau tien dong dau tien
-        cellid = GetAttribute(xmlNodeListSec.Item(0).childNodes(0).firstChild, "CellID")
+        cellid = GetAttribute(xmlNodeListSec.Item(0).childNodes(0).firstchild, "CellID")
         'set location cell to array
         If fpSpread1.sheet = 2 Then
             strCol = "D~E~F~G~H"

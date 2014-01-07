@@ -1,57 +1,57 @@
 <PL01_3_GTGT>
-	<Dynamic GroupName="PL01_3_GTGT">
+	<Dynamic GroupName="PL01_3_GTGT" FirstChild="1">
 		<ChiTietBangKeHH id="id">
 			<HopDongXuatKhau>
-				<so>C_9</so>
-				<ngay>D_9</ngay>
-				<ngoaiTe>E_9</ngoaiTe>
-				<dongVietNam>F_9</dongVietNam>
-				<hinhThucThanhToanHDongXKhau>G_9</hinhThucThanhToanHDongXKhau>
-				<thoiHanThanhToanHDongXKhau>H_9</thoiHanThanhToanHDongXKhau>
+				<so>C_10</so>
+				<ngay>D_10</ngay>
+				<ngoaiTe>E_10</ngoaiTe>
+				<dongVietNam>F_10</dongVietNam>
+				<hinhThucThanhToanHDongXKhau>G_10</hinhThucThanhToanHDongXKhau>
+				<thoiHanThanhToanHDongXKhau>H_10</thoiHanThanhToanHDongXKhau>
 			</HopDongXuatKhau>
 			<ToKhaiHHoaXKhau>
-				<so>I_9</so>
-				<ngay>J_9</ngay>
-				<ngoaiTe>K_9</ngoaiTe>
-				<dongVietNam>L_9</dongVietNam>
+				<so>I_10</so>
+				<ngay>J_10</ngay>
+				<ngoaiTe>K_10</ngoaiTe>
+				<dongVietNam>L_10</dongVietNam>
 			</ToKhaiHHoaXKhau>
 			<HoaDonXKhau>
-				<so>M_9</so>
-				<ngay>N_9</ngay>
-				<ngoaiTe>O_9</ngoaiTe>
-				<dongVietNam>P_9</dongVietNam>
+				<so>M_10</so>
+				<ngay>N_10</ngay>
+				<ngoaiTe>O_10</ngoaiTe>
+				<dongVietNam>P_10</dongVietNam>
 			</HoaDonXKhau>
 			<CTuTToanNganHang>
-				<so>Q_9</so>
-				<ngay>R_9</ngay>
-				<ngoaiTe>S_9</ngoaiTe>
-				<dongVietNam>T_9</dongVietNam>
+				<so>Q_10</so>
+				<ngay>R_10</ngay>
+				<ngoaiTe>S_10</ngoaiTe>
+				<dongVietNam>T_10</dongVietNam>
 			</CTuTToanNganHang>
 			<ChungTuThanhToanBuTru>
 				<VBanXNhanVoiNNgoai>
-					<so>U_9</so>
-					<ngay>V_9</ngay>
-					<ngoaiTe>W_9</ngoaiTe>
-					<dongVietNam>X_9</dongVietNam>
+					<so>U_10</so>
+					<ngay>V_10</ngay>
+					<ngoaiTe>W_10</ngoaiTe>
+					<dongVietNam>X_10</dongVietNam>
 				</VBanXNhanVoiNNgoai>
 				<HDongNhapKhau>
-					<so>C_9</so>
-					<ngay>C_9</ngay>
-					<ngoaiTe>C_9</ngoaiTe>
-					<dongVietNam>C_9</dongVietNam>
+					<so>Y_10</so>
+					<ngay>Z_10</ngay>
+					<ngoaiTe>AA_10</ngoaiTe>
+					<dongVietNam>AB_10</dongVietNam>
 				</HDongNhapKhau>
 				<ToKhaiHHoaNhapKhau>
-					<soTKhai>C_9</soTKhai>
-					<ngayDKyTKhai>C_9</ngayDKyTKhai>
-					<ngoaiTe>C_9</ngoaiTe>
-					<dongVietNam>C_9</dongVietNam>
+					<soTKhai>AC_10</soTKhai>
+					<ngayDKyTKhai>AD_10</ngayDKyTKhai>
+					<ngoaiTe>AE_10</ngoaiTe>
+					<dongVietNam>AF_10</dongVietNam>
 				</ToKhaiHHoaNhapKhau>
-				<chungTuThanhToanBuTruKhac>C_9</chungTuThanhToanBuTruKhac>
+				<chungTuThanhToanBuTruKhac>AG_10</chungTuThanhToanBuTruKhac>
 			</ChungTuThanhToanBuTru>
-			<ghiChu>C_9</ghiChu>
+			<ghiChu>AH_10</ghiChu>
 		</ChiTietBangKeHH>
 	</Dynamic>
 	<Static GroupName="PL01_3_GTGT">
-		<taiLieuKhac>C_9</taiLieuKhac>
+		<taiLieuKhac>F_34</taiLieuKhac>
 	</Static>
 </PL01_3_GTGT>
