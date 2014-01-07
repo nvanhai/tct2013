@@ -1,5 +1,5 @@
 <PL01_5_GTGT>
-	<Dynamic GroupName="PL01_5_GTGT">
+	<Dynamic GroupName="PL01_5_GTGT" FirstChild="1">
 		<ThueGTGTDaKKhai id="id">
 			<soChungTu>C_6</soChungTu>
 			<ngayNop>D_6</ngayNop>

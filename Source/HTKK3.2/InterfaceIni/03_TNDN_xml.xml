@@ -55,11 +55,11 @@
 		</Tailieuguikem>
 	</Dynamic>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>N_66</nguoiKy>
-		<ngayKy>N_68</ngayKy>
+		<nguoiKy>N_65</nguoiKy>
+		<ngayKy>N_67</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>F_66</tenNVienDLyThue>
-		<cchiHNghe>F_68</cchiHNghe>
+		<tenNVienDLyThue>F_65</tenNVienDLyThue>
+		<cchiHNghe>F_67</cchiHNghe>
 	</Static>
 </HSoKhaiThue>

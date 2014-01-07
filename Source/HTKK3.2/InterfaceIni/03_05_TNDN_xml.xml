@@ -19,8 +19,8 @@
 		<ct09>U_37</ct09>
 		<ct10>W_37</ct10>
 	</Static>
-	<Dynamic GroupName="TinhNopThueTNDNCoSoHTPT">
-		<taiCoSoPhuThuoc id="id" GroupRange="3">
+	<Dynamic GroupName="TinhNopThueTNDNCoSoHTPT" GroupCellRange="3">
+		<taiCoSoPhuThuoc id="id">
 			<DiaPhuong>F_39</DiaPhuong>
 			<TenCoSo>F_40</TenCoSo>
 			<MST>F_41</MST>
