@@ -437,6 +437,7 @@ GROUP BY dtl.hdr_id,
 CREATE OR REPLACE VIEW RCV_V_TKHAI_GTGT_DTU_13 AS
 SELECT dtl.hdr_id
      , dtl.id
+     , dtl.ctk_id
      , MAX(dtl.so_tt) so_tt
      , MAX(gd.ten_ctieu) ten_ctieu
      , MAX(dtl.doanhso_dtnt) doanhso_dtnt
@@ -453,22 +454,22 @@ FROM rcv_gdien_tkhai gd,
          tkd.row_id row_id,
          gdien.ma_ctieu ctk_id,
          DECODE(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL) doanhso_dtnt,
-    	   DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL) sothue_dtnt,
-    	   DECODE(gdien.cot_01, ctieu.ky_hieu, ctieu.kieu_dlieu, NULL) kieu_dlieu_ds,
-    	   DECODE(gdien.cot_02, ctieu.ky_hieu, ctieu.kieu_dlieu, NULL) kieu_dlieu_st,
+         DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL) sothue_dtnt,
+         DECODE(gdien.cot_01, ctieu.ky_hieu, ctieu.kieu_dlieu, NULL) kieu_dlieu_ds,
+         DECODE(gdien.cot_02, ctieu.ky_hieu, ctieu.kieu_dlieu, NULL) kieu_dlieu_st,
          DECODE(gdien.cot_01, tkd.ky_hieu, '['||ctieu.ky_hieu_ctieu||']', NULL) ky_hieu_ctieu_ds,
          DECODE(gdien.cot_02, tkd.ky_hieu, '['||ctieu.ky_hieu_ctieu||']', NULL) ky_hieu_ctieu_st
   FROM rcv_tkhai_dtl tkd,
        rcv_gdien_tkhai gdien,
        rcv_map_ctieu ctieu
   WHERE (ctieu.gdn_id = gdien.id)
-	AND (ctieu.ky_hieu = tkd.ky_hieu)
+  AND (ctieu.ky_hieu = tkd.ky_hieu)
     AND (tkd.loai_dlieu = '02_GTGT13')
 ) dtl
 WHERE (gd.loai_dlieu = '02_GTGT13')
   AND (dtl.id = gd.id)
 GROUP BY dtl.hdr_id,
-
+         dtl.ctk_id,
          dtl.id;
 
 
