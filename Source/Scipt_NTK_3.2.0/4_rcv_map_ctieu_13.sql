@@ -142,19 +142,19 @@ insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIE
 values ('07_TNCN13', '13', 'N', 5761, '[32]');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
-values ('07_TNCN13', '15', 'N', 5762, '[33]');
+values ('07_TNCN13', '14', 'N', 5762, '[33]');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
-values ('07_TNCN13', '16', 'N', 5763, '[34]');
+values ('07_TNCN13', '15', 'N', 5763, '[34]');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('07_TNCN13', '17', 'N', 5765, '[35]');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
-values ('07_TNCN13', '19', 'N', 5766, '[36]');
+values ('07_TNCN13', '18', 'N', 5766, '[36]');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
-values ('07_TNCN13', '20', 'N', 5767, '[37]');
+values ('07_TNCN13', '19', 'N', 5767, '[37]');
 
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
