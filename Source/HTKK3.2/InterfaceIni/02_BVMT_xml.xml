@@ -22,7 +22,8 @@
 	</Static>
 	<Dynamic GroupName="KSCSTuKhaiThac" Level="2">
 		<NoiDungKS id="ID_1">
-			<maKSan>AC_45</maKSan>
+			<maKSan>AB_45</maKSan>
+			<tenKSan>C_45</tenKSan>
 			<donViTinh>H_45</donViTinh>
 			<soLuong>J_45</soLuong>
 			<mucPhi>N_45</mucPhi>
@@ -36,7 +37,8 @@
 	</Static>
 	<Dynamic GroupName="KSCSThuMua" Level="2">
 		<NoiDungKS id="ID_2">
-			<maKSan>AC_49</maKSan>
+			<maKSan>AB_49</maKSan>
+			<tenKSan>C_49</tenKSan>
 			<donViTinh>H_49</donViTinh>
 			<soLuong>J_49</soLuong>
 			<mucPhi>N_49</mucPhi>

@@ -44,16 +44,15 @@
 		<ctC9>O_48</ctC9>
 		<ctC10>O_49</ctC10>
 		<ctC11>O_50</ctC11>
-		<ctC12>O_51</ctC12>
 		<ctD>O_52</ctD>
 		<ctE>O_53</ctE>
 		<ctE1>O_54</ctE1>
 		<ctE2>O_55</ctE2>
 	</Static>
 	<Dynamic GroupName="TaiLieu_Guikem">
-		<TaiLieuGuikem id="ID_1">
+		<Tailieuguikem id="ID_1">
 			<tenDocument>C_61</tenDocument>
-		</TaiLieuGuikem>
+		</Tailieuguikem>
 	</Dynamic>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>N_66</nguoiKy>

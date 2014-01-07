@@ -1,16 +1,18 @@
 <PL03_3C_TNDN>
-	<dieuKienUuDai1>true</dieuKienUuDai1>
-	<tongSoLD1>1</tongSoLD1>
-	<soXacNhanCQT1></soXacNhanCQT1>
-	<ngayXacNhanCQT1></ngayXacNhanCQT1>
-	<dieuKienUuDai2>true</dieuKienUuDai2>
-	<tongSoLD2>1</tongSoLD2>
-	<soXacNhanCQT2></soXacNhanCQT2>
-	<ngayXacNhanCQT2></ngayXacNhanCQT2>
-	<mucDoUuDai1>true</mucDoUuDai1>
-	<mucDoUuDai2>true</mucDoUuDai2>
-	<ct1>1</ct1>
-	<ct2>1</ct2>
-	<ct3>1</ct3>
-	<ct4>1</ct4>
+	<NoiDungPL3_03C>
+		<dieuKienUuDai1>true</dieuKienUuDai1>
+		<tongSoLD1>1</tongSoLD1>
+		<soXacNhanCQT1></soXacNhanCQT1>
+		<ngayXacNhanCQT1></ngayXacNhanCQT1>
+		<dieuKienUuDai2>true</dieuKienUuDai2>
+		<tongSoLD2>1</tongSoLD2>
+		<soXacNhanCQT2></soXacNhanCQT2>
+		<ngayXacNhanCQT2></ngayXacNhanCQT2>
+		<mucDoUuDai1>true</mucDoUuDai1>
+		<mucDoUuDai2>true</mucDoUuDai2>
+		<ct1>1</ct1>
+		<ct2>1</ct2>
+		<ct3>1</ct3>
+		<ct4>1</ct4>
+	</NoiDungPL3_03C>
 </PL03_3C_TNDN>

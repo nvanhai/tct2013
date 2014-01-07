@@ -79,30 +79,34 @@
 				<KSCSoTuKhaiThac>
 					<TTinKhoangSan>
 						<KhoangSan id="ID_1">
-							<loaiKSan></loaiKSan>
+							<maKhoangSan></maKhoangSan>
+							<tenKhoangSan></tenKhoangSan>
 							<donViTinh></donViTinh>
 							<soLuong>0.0</soLuong>
 							<mucPhi>1</mucPhi>
 							<soPhiPNop>1</soPhiPNop>
 						</KhoangSan>
 					</TTinKhoangSan>
-					<tongPhiKSanKhaiThacPNop></tongPhiKSanKhaiThacPNop>
+					<tongPhiKSanKhaiThacPNop>1</tongPhiKSanKhaiThacPNop>
 				</KSCSoTuKhaiThac>
 				<KSanCoSoThuMuaNopThay>
 					<TTinKhoangSan>
 						<KhoangSan id="ID_2">
-							<loaiKSan></loaiKSan>
+							<maKhoangSan></maKhoangSan>
+							<tenKhoangSan></tenKhoangSan>
 							<donViTinh></donViTinh>
 							<soLuong>0.0</soLuong>
 							<mucPhi>1</mucPhi>
 							<soPhiPNop>1</soPhiPNop>
 						</KhoangSan>
 					</TTinKhoangSan>
-					<tongPhiKSanThuMuaPNop></tongPhiKSanThuMuaPNop>
+					<tongPhiKSanThuMuaPNop>1</tongPhiKSanThuMuaPNop>
 				</KSanCoSoThuMuaNopThay>
 				<tongPhiPNop>1</tongPhiPNop>
 			</PhiBVMT>
 		</CTieuTKhaiChinh>
 		<PLuc/>
 	</HSoKhaiThue>
-	<CKyDTu></CKyDTu></HSoThueDTu>
+	<CKyDTu>
+	</CKyDTu>
+</HSoThueDTu>

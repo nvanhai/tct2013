@@ -75,7 +75,7 @@
 				<ct13></ct13>
 				<ct14></ct14>
 				<CT15>
-					<soHD>text</soHD>
+					<soHD></soHD>
 					<ngayHD></ngayHD>
 					<ngayXN></ngayXN>
 				</CT15>
@@ -108,4 +108,6 @@
 		<PLuc>
 		</PLuc>
 	</HSoKhaiThue>
-	<CKyDTu></CKyDTu></HSoThueDTu>
+	<CKyDTu>
+	</CKyDTu>
+</HSoThueDTu>

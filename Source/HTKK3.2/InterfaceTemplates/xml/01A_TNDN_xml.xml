@@ -83,9 +83,9 @@
 			<ct30>1</ct30>
 			<ct31>1</ct31>
 			<ct32>1</ct32>
-			<ct32a>1</ct32a>
+			<ct32a>0.0</ct32a>
 			<ct33>1</ct33>
-			<ct33a>1</ct33a>
+			<ct33a>0.0</ct33a>
 			<ct34>1</ct34>
 			<ct35>1</ct35>
 			<ct35a>1</ct35a>
@@ -100,4 +100,6 @@
 		<PLuc>
 		</PLuc>
 	</HSoKhaiThue>
-	<CKyDTu></CKyDTu></HSoThueDTu>
+	<CKyDTu>
+	</CKyDTu>
+</HSoThueDTu>

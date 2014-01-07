@@ -74,11 +74,12 @@
 					<TTinKhoangSan>
 						<NoiDungKS id="ID_1">
 							<maKSan></maKSan>
+							<tenKSan></tenKSan>
 							<donViTinh></donViTinh>
 							<soLuong>0.0</soLuong>
 							<mucPhi>1</mucPhi>
 							<phiPhaiNopTrongKy>1</phiPhaiNopTrongKy>
-							<phiDaKeKhaiTrongKy>text</phiDaKeKhaiTrongKy>
+							<phiDaKeKhaiTrongKy>1</phiDaKeKhaiTrongKy>
 						</NoiDungKS>
 					</TTinKhoangSan>
 					<tongPhiPhaiNopTrongKyI>1</tongPhiPhaiNopTrongKyI>
@@ -88,11 +89,12 @@
 					<TTinKhoangSan>
 						<NoiDungKS id="ID_2">
 							<maKSan></maKSan>
+							<tenKSan></tenKSan>
 							<donViTinh></donViTinh>
 							<soLuong>0.0</soLuong>
 							<mucPhi>1</mucPhi>
 							<phiPhaiNopTrongKy>1</phiPhaiNopTrongKy>
-							<phiDaKeKhaiTrongKy>text</phiDaKeKhaiTrongKy>
+							<phiDaKeKhaiTrongKy>1</phiDaKeKhaiTrongKy>
 						</NoiDungKS>
 					</TTinKhoangSan>
 					<tongPhiPhaiNopTrongKyII>1</tongPhiPhaiNopTrongKyII>
@@ -105,4 +107,6 @@
 		</CTieuTKhaiChinh>
 		<PLuc/>
 	</HSoKhaiThue>
-	<CKyDTu></CKyDTu></HSoThueDTu>
+	<CKyDTu>
+	</CKyDTu>
+</HSoThueDTu>

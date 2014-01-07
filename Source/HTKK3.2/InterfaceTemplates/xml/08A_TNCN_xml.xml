@@ -81,8 +81,10 @@
 						<ct26></ct26>
 						<ct27></ct27>
 						<ct28>0.0</ct28>
-						<ct29>1</ct29>
-						<ct30>1</ct30>
+						<ThuNhapChiuThue>
+							<ct29>1</ct29>
+							<ct30>1</ct30>
+						</ThuNhapChiuThue>
 						<ct31>1</ct31>
 						<ct32>1</ct32>
 						<ct33>1</ct33>
@@ -102,4 +104,6 @@
 		</CTieuTKhaiChinh>
 		<PLuc/>
 	</HSoKhaiThue>
-	<CKyDTu></CKyDTu></HSoThueDTu>
+	<CKyDTu>
+	</CKyDTu>
+</HSoThueDTu>

@@ -69,101 +69,94 @@
 			</TTinTKhaiThue>
 		</TTinChung>
 		<CTieuTKhaiChinh>
-			<soHopNhaThau></soHopNhaThau>
-			<ngayHopNhaThau></ngayHopNhaThau>
 			<GiaTriHDong>
 				<donViTinh></donViTinh>
 				<keKhai>1</keKhai>
 				<quyetToan>1</quyetToan>
-				<chenhLech>1</chenhLech>
 				<ghiChu></ghiChu>
 			</GiaTriHDong>
-			<DThuChuaThueGTGT>
+			<GiaTriPViecNThauPhuVN>
 				<donViTinh></donViTinh>
 				<keKhai>1</keKhai>
 				<quyetToan>1</quyetToan>
-				<chenhLech>1</chenhLech>
 				<ghiChu></ghiChu>
-			</DThuChuaThueGTGT>
-			<DThuTinhThueNTPhu>
-				<donViTinh></donViTinh>
-				<keKhai>1</keKhai>
-				<quyetToan>1</quyetToan>
-				<chenhLech>1</chenhLech>
-				<ghiChu></ghiChu>
-			</DThuTinhThueNTPhu>
+			</GiaTriPViecNThauPhuVN>
 			<DThuTinhThueNTNN>
 				<donViTinh></donViTinh>
 				<keKhai>1</keKhai>
 				<quyetToan>1</quyetToan>
-				<chenhLech>1</chenhLech>
 				<ghiChu></ghiChu>
 			</DThuTinhThueNTNN>
+			<DoanhThuChiuThueGTGT>
+				<donViTinh></donViTinh>
+				<keKhai>1</keKhai>
+				<quyetToan>1</quyetToan>
+				<ghiChu></ghiChu>
+			</DoanhThuChiuThueGTGT>
+			<DoanhThuChiuThueTNDN>
+				<donViTinh></donViTinh>
+				<keKhai>1</keKhai>
+				<quyetToan>1</quyetToan>
+				<ghiChu></ghiChu>
+			</DoanhThuChiuThueTNDN>
 			<SoThuePhaiNopNTNN>
 				<donViTinh></donViTinh>
 				<keKhai>1</keKhai>
 				<quyetToan>1</quyetToan>
-				<chenhLech>1</chenhLech>
 				<ghiChu></ghiChu>
 			</SoThuePhaiNopNTNN>
 			<ThueGTGTPhaiNop>
 				<donViTinh></donViTinh>
 				<keKhai>1</keKhai>
 				<quyetToan>1</quyetToan>
-				<chenhLech>1</chenhLech>
 				<ghiChu></ghiChu>
 			</ThueGTGTPhaiNop>
 			<ThueTNDNPhaiNop>
 				<donViTinh></donViTinh>
 				<keKhai>1</keKhai>
 				<quyetToan>1</quyetToan>
-				<chenhLech>1</chenhLech>
 				<ghiChu></ghiChu>
 			</ThueTNDNPhaiNop>
 			<SoThueDaNopNTNN>
 				<donViTinh></donViTinh>
 				<keKhai>1</keKhai>
 				<quyetToan>1</quyetToan>
-				<chenhLech>1</chenhLech>
 				<ghiChu></ghiChu>
 			</SoThueDaNopNTNN>
 			<ThueGTGTDaNop>
 				<donViTinh></donViTinh>
 				<keKhai>1</keKhai>
 				<quyetToan>1</quyetToan>
-				<chenhLech>1</chenhLech>
 				<ghiChu></ghiChu>
 			</ThueGTGTDaNop>
 			<ThueTNDNDaNop>
 				<donViTinh></donViTinh>
 				<keKhai>1</keKhai>
 				<quyetToan>1</quyetToan>
-				<chenhLech>1</chenhLech>
 				<ghiChu></ghiChu>
 			</ThueTNDNDaNop>
 			<SoThueNopThuaThieu>
 				<donViTinh></donViTinh>
 				<keKhai>1</keKhai>
 				<quyetToan>1</quyetToan>
-				<chenhLech>1</chenhLech>
 				<ghiChu></ghiChu>
 			</SoThueNopThuaThieu>
 			<ThueGTGTThuaThieu>
 				<donViTinh></donViTinh>
 				<keKhai>1</keKhai>
 				<quyetToan>1</quyetToan>
-				<chenhLech>1</chenhLech>
 				<ghiChu></ghiChu>
 			</ThueGTGTThuaThieu>
 			<ThueTNDNThuaThieu>
 				<donViTinh></donViTinh>
 				<keKhai>1</keKhai>
 				<quyetToan>1</quyetToan>
-				<chenhLech>1</chenhLech>
 				<ghiChu></ghiChu>
 			</ThueTNDNThuaThieu>
 		</CTieuTKhaiChinh>
 		<PLuc>
 		</PLuc>
 	</HSoKhaiThue>
-	<CKyDTu></CKyDTu></HSoThueDTu>
+	<CKyDTu>
+	</CKyDTu>
+</HSoThueDTu>
