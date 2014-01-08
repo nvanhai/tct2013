@@ -415,21 +415,24 @@ End Sub
 
 
 Private Function changeLoaiToKhai(ByVal strLoaiMaToKhai As String) As String
-    If strLoaiMaToKhai = "15" Then changeLoaiToKhai = " = '02A_TNCN11'"
-    If strLoaiMaToKhai = "16" Then changeLoaiToKhai = " = '02B_TNCN11'"
-    If strLoaiMaToKhai = "50" Then changeLoaiToKhai = " ='03A_TNCN11'"
-    If strLoaiMaToKhai = "51" Then changeLoaiToKhai = "  ='03B_TNCN11'"
-    If strLoaiMaToKhai = "36" Then changeLoaiToKhai = " ='07_TNCN11'"
+    If strLoaiMaToKhai = "15" Then changeLoaiToKhai = " = '02A_TNCN13'"
+    If strLoaiMaToKhai = "16" Then changeLoaiToKhai = " = '02B_TNCN13'"
+    If strLoaiMaToKhai = "50" Then changeLoaiToKhai = " ='03A_TNCN13'"
+    If strLoaiMaToKhai = "51" Then changeLoaiToKhai = "  ='03B_TNCN13'"
+    If strLoaiMaToKhai = "36" Then changeLoaiToKhai = " ='07_TNCN13'"
     
     If strLoaiMaToKhai = "46" Then changeLoaiToKhai = " ='01A_TNCN_BH11'"
     If strLoaiMaToKhai = "47" Then changeLoaiToKhai = " ='01B_TNCN_BH11'"
     If strLoaiMaToKhai = "48" Then changeLoaiToKhai = " ='01A_TNCN_XS11'"
     If strLoaiMaToKhai = "49" Then changeLoaiToKhai = " ='01B_TNCN_XS11'"
     
-    If strLoaiMaToKhai = "74" Then changeLoaiToKhai = " ='08_TNCN11'"
+    If strLoaiMaToKhai = "74" Then changeLoaiToKhai = " ='08_TNCN13'"
     If strLoaiMaToKhai = "75" Then changeLoaiToKhai = " ='08A_TNCN11'"
     
-    If strLoaiMaToKhai = "0" Then changeLoaiToKhai = " in ('02A_TNCN11','02B_TNCN11','03A_TNCN11','03B_TNCN11','07_TNCN11','01A_TNCN_BH11','01B_TNCN_BH11','01A_TNCN_XS11','01B_TNCN_XS11','08_TNCN11','08A_TNCN11') "
+    If strLoaiMaToKhai = "25" Then changeLoaiToKhai = " ='01_TNCN_BHDC13'"
+    If strLoaiMaToKhai = "23" Then changeLoaiToKhai = " ='01_TNCN_TTS'"
+    
+    If strLoaiMaToKhai = "0" Then changeLoaiToKhai = " in ('02A_TNCN13','02B_TNCN13','03A_TNCN13','03B_TNCN13','07_TNCN13','01A_TNCN_BH11','01B_TNCN_BH11','01A_TNCN_XS11','01B_TNCN_XS11','08_TNCN13','08A_TNCN11','01_TNCN_BHDC13', '01_TNCN_TTS') "
     If Trim(txtMST.Text) <> vbNullString Then
         changeLoaiToKhai = changeLoaiToKhai & ") And (TIN like '%" & UCase(Trim(txtMST.Text)) & "%'"
     End If
