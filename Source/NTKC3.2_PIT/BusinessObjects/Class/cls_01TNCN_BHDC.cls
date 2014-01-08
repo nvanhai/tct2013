@@ -474,11 +474,22 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     Dim i              As Long, j As Long
     Dim strMaPhongXuLy As String
     
+    Dim strTTGui As Integer
     Dim LOAI_KYKK      As String
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
     
     On Error GoTo ErrHandle
-    strSQL = Replace$(strSQL_HDR, ")", ",LOAI_KYKK)")
+    
+    'strSQL = Replace$(strSQL_HDR, ")", ",LOAI_KYKK)")
+           ' PIT
+    If TAX_Utilities_Srv_New.isCheckPIT = True Then
+        strSQL = Replace$(SqlHdr_TNCN, ")", ",LOAI_KYKK)")
+        strTTGui = 1
+    Else
+        strSQL = Replace$(strSQL_HDR, ")", ",LOAI_KYKK)")
+    End If
+    ' end PIT
+    
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
 
     For Each xmlNode In xmlList
@@ -656,8 +667,18 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
         strSQL = strSQL & "null,"
     End If
 
+    'strSQL = strSQL & strTTGui & ",null,"
     strSQL = strSQL & "null,"
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ",'" & LOAI_KYKK & "')"
+    
+    'strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ",'" & LOAI_KYKK & "')"
+    ' PIT
+    If TAX_Utilities_Srv_New.isCheckPIT = True Then
+        strSQL = strSQL & strTTGui & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ",'" & LOAI_KYKK & "')"
+    Else
+        strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ",'" & LOAI_KYKK & "')"
+    End If
+    ' end PIT
+    
     GenerateSQL_Header = strSQL
     
     Exit Function
