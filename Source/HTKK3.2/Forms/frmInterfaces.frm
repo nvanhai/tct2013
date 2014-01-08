@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":1969
+         SpreadDesigner  =   "frmInterfaces.frx":19A5
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1BF1
+      SpreadDesigner  =   "frmInterfaces.frx":1C69
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -11326,6 +11326,7 @@ Public Function checkCauTrucData() As Boolean
                         End If
                     Next i
                 End If
+                
             Else
                 soCTData = GetElementsNoData(xmlNodeCells.childNodes(0))
                 If soCTTemp > soCTData Then
@@ -11343,7 +11344,7 @@ Public Function checkCauTrucData() As Boolean
                     Set xmlNodeCell = xmlNodeCells.childNodes(0)
                     Set xmlNodeCellID = xmlNodeCell.childNodes(i)
                     strKyHieuCT = GetAttribute(xmlNodeCellID, "CellID")
-                    If strTkhaiId <> "03" And strTkhaiId <> "70" And strTkhaiId <> "81" And strTkhaiId <> "71" And strTkhaiId <> "77" And strTkhaiId <> "87" And strTkhaiId <> "76" And strTkhaiId <> "06" And strTkhaiId <> "05" And strTkhaiId <> "90" Then
+                    If strTkhaiId <> "03" And strTkhaiId <> "70" And strTkhaiId <> "81" And strTkhaiId <> "71" And strTkhaiId <> "77" And strTkhaiId <> "87" And strTkhaiId <> "76" And strTkhaiId <> "06" And strTkhaiId <> "05" And strTkhaiId <> "90" And strTkhaiId <> "23" Then
                         strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
                     Else
                         ' To khai 03/TNDN
@@ -11370,6 +11371,12 @@ Public Function checkCauTrucData() As Boolean
                         ' To khai 01/TTDB
                         ElseIf strTkhaiId = "05" Then
                             If idx = 10 Then
+                                strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & Split(strKyHieuCT, "_")(1)  ' Lay ky hieu cua temp + row cua du lieu
+                            Else
+                                strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
+                            End If
+                        ElseIf strTkhaiId = "23" Then
+                            If idx = 3 Then
                                 strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & Split(strKyHieuCT, "_")(1)  ' Lay ky hieu cua temp + row cua du lieu
                             Else
                                 strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
