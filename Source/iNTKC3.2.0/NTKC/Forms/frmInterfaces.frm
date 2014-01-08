@@ -2017,6 +2017,7 @@ Dim strPrefix As String, strBarcodeCount As String, strData As String
 Dim IdToKhai As String
 
 Dim bln2 As Boolean
+Dim strLoaiToKhai As String
 
 On Error GoTo ErrHandle
 
