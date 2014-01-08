@@ -159,6 +159,16 @@ Public Function Prepared3() As Boolean
             .Text = strPhongXuLy
             UpdateCell fps, .Col, .Row, .Text
         End If
+        ' set KyLB doi voi cac truong hop nhan tu dong iHTKK
+        .Col = .ColLetterToNumber(KY_LAP_BO_COL)
+        .Row = KY_LAP_BO_ROW
+        If TAX_Utilities_Srv_New.NhanTuDongIHTKK = True And TAX_Utilities_Srv_New.HthucNopIHTKK = True Then
+             If TAX_Utilities_Srv_New.KyLBIHTKK <> "" Then
+                .Text = TAX_Utilities_Srv_New.KyLBIHTKK
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+        End If
+        
         '.EventEnabled(EventAllEvents) = True
     End With
     
@@ -277,6 +287,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim vPHONG_XU_LY
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
+    Dim vItkhai_ID, vHthuc_nop As String
     
 On Error GoTo ErrHandle
     strSQL = strSQL_HDR
@@ -316,6 +327,17 @@ On Error GoTo ErrHandle
         End If
         End With
     Next
+    
+    'Neu la to khai iHtkk thi lay ngay nop tu bang rcv_ihtkk_mvach
+    If TAX_Utilities_Srv_New.HthucNopIHTKK = True Then
+        vNGAY_NOP = TAX_Utilities_Srv_New.NgayNopIHTKK
+        vItkhai_ID = TAX_Utilities_Srv_New.IDTokhaiIHTKK
+        vHthuc_nop = "'I'"
+    Else
+        vItkhai_ID = "null"
+        vHthuc_nop = "null"
+    End If
+    ' end
     
     strSQL = strSQL & "'" & vHdrID & "',"
     strSQL = strSQL & vKKBS & ","
@@ -364,7 +386,8 @@ On Error GoTo ErrHandle
         Next
     End With
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
-    strSQL = strSQL & "null)"
+    strSQL = strSQL & "null,"
+    strSQL = strSQL & vHthuc_nop & "," & vItkhai_ID & ")"
     GenerateSQL_Header = strSQL
     Exit Function
 ErrHandle:
@@ -374,7 +397,6 @@ End Function
 Public Function KiemTraKhoaSo(ByVal strDate As String) As Boolean
     Dim dNgayKhoaSo As Date, dKyLapBo As Date
     
-    strDate = Trim$(strDate)
     KiemTraKhoaSo = True
     dNgayKhoaSo = Format(strDate, "dd/mm/yyyy")
     dKyLapBo = Format("01/" & GetAttribute(TAX_Utilities_Srv_New.Data(0).nodeFromID("E_10"), "Value"), "dd/mm/yyyy")
@@ -390,7 +412,6 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
     If .ActiveSheet = 1 Then
         If Col = .ColLetterToNumber("E") And Row = 10 Then
             .GetText Col, Row, varTemp
-            varTemp = Trim$(varTemp)
             If varTemp <> "" And varTemp <> "../...." Then
                 If Format_mmyyyy(CStr(varTemp)) <> "" Then
                     .SetText Col, Row, Format_mmyyyy(CStr(varTemp))
