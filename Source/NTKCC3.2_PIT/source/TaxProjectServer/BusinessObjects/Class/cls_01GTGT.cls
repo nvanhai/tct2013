@@ -2015,7 +2015,7 @@ Public Function InsertDTL_PL2() As String
                 GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
             End If
                 
-            MAPL = "'PL01GTKT'"
+            MAPL = "'PL02GTKT'"
                 
             sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                            
@@ -2165,7 +2165,7 @@ Public Function InsertDTL_PL2() As String
                 GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
             End If
                 
-            MAPL = "'PL01GTKT'"
+            MAPL = "'PL02GTKT'"
                 
             sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                            
@@ -2316,7 +2316,7 @@ Public Function InsertDTL_PL2() As String
                 GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
             End If
                 
-            MAPL = "'PL01GTKT'"
+            MAPL = "'PL02GTKT'"
                 
             sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                            
@@ -2429,7 +2429,7 @@ Public Function InsertDTL_PL017() As String
         STT = 1
         STT2 = 0
         STTIN = "'I'"
-        MAPL = "'PL03GTKT'"
+        MAPL = "'PL07GTKT'"
         DANHAN = "''"
         '        TTHTK = "'NULL'"
         .Sheet = 9
@@ -2516,7 +2516,7 @@ Public Function InsertDTL_PL017() As String
         STT = 2
         STT2 = 0
         STTIN = "'II'"
-        MAPL = "'PL03GTKT'"
+        MAPL = "'PL07GTKT'"
         .Sheet = 9
         .Col = .ColLetterToNumber("B")
 
