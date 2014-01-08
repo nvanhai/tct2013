@@ -2144,6 +2144,54 @@ On Error GoTo ErrHandle
             End If
         End If
         
+        'get loai to khai
+        If verToKhai = 2 Then
+            strLoaiToKhai = "bs"
+        Else
+            strLoaiToKhai = "aa"
+        End If
+        
+        'khong nhan cac to khai khong theo mau HTKK3.2.0
+        idToKhai = Mid(strPrefix, 4, 2)
+        If (Val(Left$(strPrefix, 3)) <= 317 And UCase(strLoaiToKhai) = "AA") Then
+            If Trim(idToKhai) = "01" Or Trim(idToKhai) = "02" Or Trim(idToKhai) = "04" Or Trim(idToKhai) = "11" Or Trim(idToKhai) = "12" Or Trim(idToKhai) = "71" _
+            Or Trim(idToKhai) = "72" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "90" Or Trim(idToKhai) = "25" Or Trim(idToKhai) = "50" Or Trim(idToKhai) = "51" Or Trim(idToKhai) = "19" _
+            Or Trim(idToKhai) = "22" Or Trim(idToKhai) = "15" Or Trim(idToKhai) = "16" Or Trim(idToKhai) = "36" Or Trim(idToKhai) = "74" Then
+                If idToKhai = "72" Then '05/GTGT
+                    'xu ly voi to khai cau truc khong thay doi thi van cho nhan: 05/GTGT
+                    strBarcode = Replace(strBarcode, "</S></S01>", "~~</S></S01>")
+                Else
+                    If isIHTKK = True Then
+	                    bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "04")
+	                    isIHTKK = False
+	                    Unload Me
+	                    Exit Sub
+	                Else
+	                    DisplayMessage "0132", msOKOnly, miInformation
+	                    Exit Sub
+	                End If
+                End If
+            End If
+        End If
+        
+        'khong nhan cac to khai bo sung khong theo mau HTKK3.2.0(GD1)
+        idToKhai = Mid(strPrefix, 4, 2)
+        If (Val(Left$(strPrefix, 3)) <= 317 And UCase(strLoaiToKhai) = "BS") Then
+            'khbs updated GD1
+            If Trim(idToKhai) = "01" Or Trim(idToKhai) = "02" Or Trim(idToKhai) = "04" Or Trim(idToKhai) = "71" Or Trim(idToKhai) = "72" Or Trim(idToKhai) = "11" Or Trim(idToKhai) = "12" _
+            Or Trim(idToKhai) = "73" Or Trim(idToKhai) = "70" Or Trim(idToKhai) = "81" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "05" Or Trim(idToKhai) = "90" Or Trim(idToKhai) = "86" Then
+                If isIHTKK = True Then
+                    bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "04")
+                    isIHTKK = False
+                    Unload Me
+                    Exit Sub
+                Else
+                    DisplayMessage "0132", msOKOnly, miInformation
+                    Exit Sub
+                End If
+            End If
+        End If
+        
         '07072011 TT28
         ' Khong nhan cac to khai theo mau cua
         IdToKhai = Mid(strPrefix, 4, 2)
