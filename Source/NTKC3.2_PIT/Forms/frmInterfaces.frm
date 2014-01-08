@@ -1440,11 +1440,18 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '02/TNDN co phu luc
-str2 = "aa999733600247325   04201300100100100301/0114/06/2006<S02><S>0102030405</S><S>0~0~0~0~0~0~0~0~0~0~0~22~0~0~0~0~0~22~1~0<"
+'str2 = "aa999733600247325   04201300100100100301/0114/06/2006<S02><S>0102030405</S><S>0~0~0~0~0~0~0~0~0~0~0~22~0~0~0~0~0~22~1~0<"
+'Barcode_Scaned str2
+'str2 = "aa999733600247325   042013001001002003/S><S>1~~~~~~~</S><S>Truong Giang~KTV~Huyen Tram~03/01/2014~1~~~1701~~</S></S02>"
+'Barcode_Scaned str2
+'str2 = "aa999733600247325   042013001001003003<S02-1><S>abc~2222222222~sada~sad</S></S02-1>"
+'Barcode_Scaned str2
+
+str2 = "aa999122300123461   04201300300300100301/0114/06/2006<S01><S></S><S>x~~6000000~5200000~3000000~1200000~1000000~800000~34.896~~20.246~22.783~26.875~~13.879~43"
 Barcode_Scaned str2
-str2 = "aa999733600247325   042013001001002003/S><S>1~~~~~~~</S><S>Truong Giang~KTV~Huyen Tram~03/01/2014~1~~~1701~~</S></S02>"
+str2 = "aa999122300123461   0420130030030020039884~401138~38746~30000~10000~15000~409884~x~02~15/12/2013~30000~379884</S><S>Lan H≠¨ng~08/01/2014~~~1~~1052</S></S01>"
 Barcode_Scaned str2
-str2 = "aa999733600247325   042013001001003003<S02-1><S>abc~2222222222~sada~sad</S></S02-1>"
+str2 = "aa999122300123461   042013003003003003<S01-1><S>409884</S><S>doanh nghi÷p 1~0102030405~34.87~142927~10705~doanh nghi÷p 2~0010011000~25.74~105504~11303~doanh nghi÷p3~3600247325~39.39~161453~11101</S></S01-1>"
 Barcode_Scaned str2
 
 End Sub
@@ -1693,8 +1700,12 @@ Dim tmp As Variant
 Dim strLoaiToKhai As String
 On Error GoTo ErrHandle
 
+    'get loai to khai
+    strLoaiToKhai = Mid(strBarcode, 1, 2)
+    
     'Convert from TCVN to UNICODE format
     strBarcode = TrimString(strBarcode)
+    
     'Debug.Print strBarcode
     strBarcode = Replace(strBarcode, "&", "", 1)
     'strBarcode = TAX_Utilities_Srv_New.Convert(strBarcode, TCVN, UNICODE)
@@ -1826,13 +1837,13 @@ On Error GoTo ErrHandle
             End If
         End If
         
-        'get loai to khai
-        If verToKhai = 2 Then
-            strLoaiToKhai = "bs"
-        Else
-            strLoaiToKhai = "aa"
-        End If
-        
+'        'get loai to khai
+'        If verToKhai = 2 Then
+'            strLoaiToKhai = "bs"
+'        Else
+'            strLoaiToKhai = "aa"
+'        End If
+'
         'khong nhan cac to khai khong theo mau HTKK3.2.0
         idToKhai = Mid(strPrefix, 4, 2)
         If (Val(Left$(strPrefix, 3)) <= 317 And UCase(strLoaiToKhai) = "AA") Then
