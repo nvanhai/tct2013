@@ -299,6 +299,15 @@ Public Function Prepared3() As Boolean
         .Text = TAX_Utilities_Srv_New.Convert(strTenPQL, TCVN, UNICODE)
         UpdateCell fps, .Col, .Row, .Text
         
+        ' set KyLB doi voi cac truong hop nhan tu dong iHTKK
+        .Col = .ColLetterToNumber(KY_LAP_BO_COL)
+        .Row = KY_LAP_BO_ROW
+        If TAX_Utilities_Srv_New.NhanTuDongIHTKK = True And TAX_Utilities_Srv_New.HthucNopIHTKK = True Then
+             If TAX_Utilities_Srv_New.KyLBIHTKK <> "" Then
+                .Text = TAX_Utilities_Srv_New.KyLBIHTKK
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+        End If
         
         '.EventEnabled(EventAllEvents) = True
     End With
@@ -481,6 +490,7 @@ Public Function GenerateSQL_Header(xmlDomData As MSXML.DOMDocument, strSQL_HDR A
     Dim sttBoSung As Variant
     
     Dim strTTGui As Integer
+    Dim vItkhai_ID, vHTHUC_NOP As String
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
     Dim vTU_NGAY, vDEN_NGAY, vQT_TUNG_NAM, vQT_DAU_NAM, vTKTHANG As Variant
     Dim vHINH_THUC_QT As Variant
@@ -552,6 +562,17 @@ On Error GoTo ErrHandle
         End With
     Next
     
+    'Neu la to khai iHtkk thi lay ngay nop tu bang rcv_ihtkk_mvach
+    If TAX_Utilities_Srv_New.HthucNopIHTKK = True Then
+        vNGAY_NOP = TAX_Utilities_Srv_New.NgayNopIHTKK
+        vItkhai_ID = TAX_Utilities_Srv_New.IDTokhaiIHTKK
+        vHTHUC_NOP = "'I'"
+    Else
+        vItkhai_ID = "null"
+        vHTHUC_NOP = "null"
+    End If
+    ' end
+
 '    ' To khai nay set trang thai de khong chuyen sang QLT
 '    If TAX_Utilities_Srv_New.isCheckPIT = True Then
 '        vDA_NHAN = "T"
@@ -697,9 +718,9 @@ On Error GoTo ErrHandle
     strSQL = strSQL & vTU_NGAY & "," & vDEN_NGAY & ","
     ' PIT
     If TAX_Utilities_Srv_New.isCheckPIT = True Then
-        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & strTTGui & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & Trim(vHINH_THUC_QT) & "," & Trim(vTKTHANG) & ")"
+        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & strTTGui & "," & vHTHUC_NOP & "," & vItkhai_ID & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & Trim(vHINH_THUC_QT) & "," & Trim(vTKTHANG) & ")"
     Else
-        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & Trim(vHINH_THUC_QT) & "," & Trim(vTKTHANG) & ")"
+        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & vHTHUC_NOP & "," & vItkhai_ID & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & Trim(vHINH_THUC_QT) & "," & Trim(vTKTHANG) & ")"
     End If
     ' end PIT
     

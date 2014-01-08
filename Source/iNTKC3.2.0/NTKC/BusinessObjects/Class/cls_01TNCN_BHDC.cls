@@ -205,29 +205,17 @@ Public Function Prepared3() As Boolean
             .Text = tempKyLb
             UpdateCell fps, .Col, .Row, .Text
         End If
-        ' Dat lai check E_36 Duoc gian thue theo TT27/TT-BTC
-        ' Thoi gian gian thue tu thang 1 den thang 6 nam 2009 cua to khai thang
-'        If Val(TAX_Utilities_Srv_New.Year) = 2009 And Val(TAX_Utilities_Srv_New.Month) <= 6 Then
-'            ' Neu trong hieu luc cua gian thue thi default la checked
-'            .Row = 36
-'            .Col = .ColLetterToNumber("E")
-'            .Text = "1"
-'            UpdateCell fps, .Col, .Row, "x"
-'        Else
-'            ' Neu ngoai hieu luc cua gian thue thi visible cac dieu kien check nay di
-'            .Row = 36
-'            .Col = .ColLetterToNumber("B")
-'            .CellType = CellTypeEdit
-'            .Lock = True
-'            .Text = ""
-'
-'            .Row = 36
-'            .Col = .ColLetterToNumber("E")
-'            .CellType = CellTypeEdit
-'            .Lock = True
-'            .Text = ""
-'            UpdateCell fps, .Col, .Row, ""
-'        End If
+        
+        ' Set lai ngay nop
+        ' Lay ngay nop duoc cua to khai quet truoc do, duoc ghi trong cookie de hien thi cho lan quet to khai tncn lan sau
+        tempNgayNop = GetSetting("HTKK", "TNCN", "tempNgayNop")
+        If (tempNgayNop <> vbNullString) Then
+            .Col = .ColLetterToNumber(NGAY_NHAN_TO_KHAI_COL)
+            .Row = NGAY_NHAN_TO_KHAI_ROW
+            '.Text = Format(tempNgayNop, "dd/mm/yyyy")
+            .Text = tempNgayNop
+            .TypeHAlign = TypeHAlignLeft
+        End If
                 ' ten dai ly thue
         .Col = .ColLetterToNumber(TEN_DL_COL)
         .Row = TEN_DL_ROW
