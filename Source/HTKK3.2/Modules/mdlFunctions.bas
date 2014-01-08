@@ -2058,7 +2058,7 @@ End Function
 
 Public Function CheckPeriod(ByVal strMonth As String, ByVal strYear As String) As Boolean
     On Error GoTo ErrHandle
-    
+    CheckPeriod = False
     If GetAttribute(TAX_Utilities_v1.NodeMenu, "ThreeMonth") = "1" Then ' strKieuKy = KIEU_KY_QUY
         If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
             If strQuy = "TK_THANG" Then
@@ -3832,7 +3832,7 @@ Public Function getTemplateTk(ByVal strId As String) As String()
         ' 01/KK-BHDC \TT156
         Case "25"
             ReDim strResult(3)
-            strResult(0) = "H_7~Dynamic_0"
+            strResult(0) = "H_8~Dynamic_0"
             strResult(1) = "U_40~U_41~U_42~U_44~U_45~U_47~U_48~U_50~U_51~U_52~U_53~Dynamic_0"
             strResult(2) = "R_58~R_60~H_58~H_60~C_64~F_64~I_64~L_64~Dynamic_0"
             

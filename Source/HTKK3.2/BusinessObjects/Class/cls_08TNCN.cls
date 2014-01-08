@@ -270,7 +270,7 @@ Private Sub CheckDynamicError()
             .CellNote = ""
         End If
         ' kiem tra chi tieu 25, 26 la boi cua 9000000, 3600000
-        If TAX_Utilities_v1.Year >= 2013 And TAX_Utilities_v1.ThreeMonths >= 3 Then
+        If (TAX_Utilities_v1.Year = 2013 And TAX_Utilities_v1.ThreeMonths >= 3) Or (TAX_Utilities_v1.Year > 2013) Then
            ' ct25
             If Val(vCT25) Mod 9000000 <> 0 Or Val(vCT25) > 27000000 Then
                 .Row = 52

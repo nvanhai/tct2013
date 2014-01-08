@@ -483,7 +483,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":02C8
+      SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
    End
@@ -5729,7 +5729,7 @@ On Error GoTo ErrHandle
                             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" _
                             & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                         Else
-                            If xmlNode Is TAX_Utilities_v1.NodeValidity.firstChild Then
+                            If xmlNode Is TAX_Utilities_v1.NodeValidity.firstchild Then
                                 For Each fle In fso.GetFolder(TAX_Utilities_v1.DataFolder).Files
                                     lLoc = InStr(1, fle.Name, GetAttribute(xmlNode, "DataFile") & "_" & txtYear.Text & "_")
                                     If lLoc <> 0 Then
@@ -5773,7 +5773,7 @@ On Error GoTo ErrHandle
                 
                 ' Check the exist of data file -> Set value to Checkbox
                 
-                If xmlNode Is TAX_Utilities_v1.NodeValidity.firstChild Then
+                If xmlNode Is TAX_Utilities_v1.NodeValidity.firstchild Then
                     If fso.FileExists(strDataFileName) Or blnExceptData Then
                     Else
                         'To khai ko ton tai
