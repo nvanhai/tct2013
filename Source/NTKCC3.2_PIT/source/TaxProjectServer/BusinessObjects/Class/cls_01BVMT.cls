@@ -690,7 +690,7 @@ Public Function InsertDTL() As String
         TIENPHICL = "0"
 
         .Col = .ColLetterToNumber("B")
-        .Row = 45
+        .Row = 43
         Dim lastRow As Variant
         
         Do
@@ -784,7 +784,7 @@ Public Function InsertDTL() As String
         Loop Until .Text = "aa"
         
         .Col = .ColLetterToNumber("B")
-        .Row = lastRow + 3
+        .Row = lastRow + 1
 
         Do
 
