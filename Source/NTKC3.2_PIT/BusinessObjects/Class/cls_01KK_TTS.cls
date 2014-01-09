@@ -288,9 +288,9 @@ Public Function Prepared3() As Boolean
         .GetText .ColLetterToNumber("P"), 3, vTU_NGAY
         .GetText .ColLetterToNumber("T"), 3, vDEN_NGAY
         If Trim(vTU_NGAY) <> "" Or Trim(vDEN_NGAY) <> "" Then
-            .SetText .ColLetterToNumber("S"), 91, "1"   ' To khai tu thang - toi thang
+            .SetText .ColLetterToNumber("S"), 35, "1"   ' To khai tu thang - toi thang
         Else
-            .SetText .ColLetterToNumber("S"), 91, "0"    ' To khai Quy
+            .SetText .ColLetterToNumber("S"), 35, "0"    ' To khai Quy
         End If
         
         ' set Phong quan ly
@@ -518,7 +518,7 @@ On Error GoTo ErrHandle
                     vKyLB = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                     ' Luu thong tin cua ky lap bo cua to khai quet hien tai, de hien thi cho viec quet to khai lan sau
                     SaveSetting "HTKK", "TNCN", "tempKyLb", vKyLB
-                Case "D_29"
+                Case "O_29"
                     vNGAY_CAP_NHAT = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case "T_29"
                     vNGUOI_CAP_NHAT = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
@@ -573,13 +573,13 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("F"), 19, vTIN_DL
         .GetText .ColLetterToNumber("F"), 25, vSO_HOP_DONG
         .GetText .ColLetterToNumber("O"), 25, vNGAY_HOP_DONG
-        .GetText .ColLetterToNumber("I"), 91, vLAN_BS
-        .GetText .ColLetterToNumber("C"), 91, vCHINH_THUC
+        .GetText .ColLetterToNumber("I"), 35, vLAN_BS
+        .GetText .ColLetterToNumber("C"), 35, vCHINH_THUC
         ' Lay ve tu ngay
         .GetText .ColLetterToNumber("P"), 3, vTU_NGAY
         .GetText .ColLetterToNumber("T"), 3, vDEN_NGAY
-        .GetText .ColLetterToNumber("O"), 91, vQT_TUNG_NAM
-        .GetText .ColLetterToNumber("P"), 91, vQT_DAU_NAM
+        .GetText .ColLetterToNumber("O"), 35, vQT_TUNG_NAM
+        .GetText .ColLetterToNumber("P"), 35, vQT_DAU_NAM
         
        vTKTHANG = "0"  ' TK quy
         If Trim$(vTU_NGAY) <> "" Or Trim$(vDEN_NGAY) <> "" Then
