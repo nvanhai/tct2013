@@ -4187,3 +4187,43 @@ Public Function GetHanNopTk() As String
     GetHanNopTk = hannop
     Exit Function
 End Function
+
+Public Function ToDateString(str As String, mmmmYYdd As Boolean) As String
+    Dim strArray() As String
+
+    If mmmmYYdd = True Then
+        strArray = Split(str, "/")
+
+        If UBound(strArray) <> 2 Then
+            ToDateString = str
+            Exit Function
+        Else
+
+            If Val(strArray(0)) > 0 And Val(strArray(1)) > 0 And Val(strArray(2)) > 0 Then
+                If Val(strArray(0)) <= 31 And Val(strArray(1)) <= 12 And Val(strArray(2)) < 9999 Then
+                    ToDateString = strArray(2) & "-" & strArray(1) & "-" & strArray(0)
+                    Exit Function
+                End If
+            End If
+        End If
+
+    Else
+        strArray = Split(str, "-")
+
+        If UBound(strArray) <> 2 Then
+            ToDateString = str
+            Exit Function
+        Else
+
+            If Val(strArray(0)) > 0 And Val(strArray(1)) > 0 And Val(strArray(2)) > 0 Then
+                If Val(strArray(2)) <= 31 And Val(strArray(1)) <= 12 And Val(strArray(0)) < 9999 Then
+                    ToDateString = strArray(2) & "/" & strArray(1) & "/" & strArray(0)
+                    Exit Function
+                End If
+            End If
+        End If
+    End If
+
+    ToDateString = str
+    Exit Function
+End Function
