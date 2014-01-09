@@ -2090,17 +2090,34 @@ Public Function SetValueHeaderESB(ByVal xmlDoc As MSXML.DOMDocument) As MSXML.DO
 
     Set SetValueHeaderESB = xmlDoc
 End Function
-' Convert 24/10/2014 --> 24-Oct-2014 va nguoc lai phu thuoc flag = true or false
-Public Function ConvertDate(ByVal tmpDatetime As String, ByVal flag As Boolean, ByVal Seperator As String) As String
+'Input format: dd/mm/yyyy
+'Result = mm/dd/yyyy if formatDate=1
+'Result = yyyy/mm/dd if formatDate=2
+'Result = dd/mmm/yyyy if formatDate=3
+'Input format: dd/mmm/yyyy
+'Result = mm/dd/yyyy if formatDate=4
+'Result = yyyy/mm/dd if formatDate=5
+'Result = dd/mm/yyyy if formatDate=6
+Public Function ConvertDate(ByVal tmpDatetime As String, ByVal formatDate As Integer, ByVal Seperator As String) As String
     Dim result As String
-    If flag Then
-        result = Mid$(tmpDatetime, 7, 4) & Seperator & synMonth(Mid$(tmpDatetime, 4, 2), flag) & Seperator & Left$(tmpDatetime, 2) & Mid$(tmpDatetime, 11)
-    Else
-        result = Mid$(tmpDatetime, 8, 4) & Seperator & synMonth(Mid$(tmpDatetime, 4, 3), flag) & Seperator & Left$(tmpDatetime, 2) & Mid$(tmpDatetime, 12)
-    End If
+    Select Case formatDate
+        Case 1
+            result = Mid$(tmpDatetime, 4, 2) & Seperator & Left$(tmpDatetime, 2) & Seperator & Mid$(tmpDatetime, 7, 4) & Mid$(tmpDatetime, 11)
+        Case 2
+            result = Mid$(tmpDatetime, 7, 4) & Seperator & Mid$(tmpDatetime, 4, 2) & Seperator & Left$(tmpDatetime, 2) & Mid$(tmpDatetime, 11)
+        Case 3
+            result = Left$(tmpDatetime, 2) & Seperator & synMonth(Mid$(tmpDatetime, 4, 2), True) & Seperator & Mid$(tmpDatetime, 7, 4) & Mid$(tmpDatetime, 11)
+        Case 4
+            result = synMonth(Mid$(tmpDatetime, 4, 3), False) & Seperator & Left$(tmpDatetime, 2) & Seperator & Mid$(tmpDatetime, 8, 4) & Mid$(tmpDatetime, 12)
+        Case 5
+            result = Mid$(tmpDatetime, 8, 4) & Seperator & synMonth(Mid$(tmpDatetime, 4, 3), False) & Seperator & Left$(tmpDatetime, 2) & Mid$(tmpDatetime, 12)
+        Case 6
+            result = Left$(tmpDatetime, 2) & Seperator & synMonth(Mid$(tmpDatetime, 4, 3), False) & Seperator & Mid$(tmpDatetime, 8, 4) & Mid$(tmpDatetime, 12)
+    End Select
     ConvertDate = result
 End Function
-
+' flag = true : 01 = Jan
+' flag = false: Jan= 01
 Public Function synMonth(ByVal value As String, ByVal flag As Boolean) As String
     'flag=true: convert month from 01 to Jan
     Dim sResult As String

@@ -635,7 +635,7 @@ Private Function IsCompareDateSrv() As Boolean
     Dim strNgayTemp As String
     'Check ngay client va ngay tren server
     If (strNgayHeThongSrv <> "" And strNgayHeThongSrv <> vbNullString) Then
-        strNgayTemp = ConvertDate(strNgayHeThongSrv, False, "/") ' format: yyyy/mm/dd hh:mm:ss
+        strNgayTemp = ConvertDate(strNgayHeThongSrv, 5, "/") ' format: yyyy/mm/dd hh:mm:ss
         If Not (CInt(Mid$(strNgayTemp, 9, 2)) = DateTime.Day(Date) And CInt(Mid$(strNgayTemp, 6, 2)) = DateTime.Month(Date) And CInt(Left$(strNgayTemp, 4)) = DateTime.Year(Date)) Then
             DisplayMessage "0143", msOKOnly, miCriticalError
             IsCompareDateSrv = False
