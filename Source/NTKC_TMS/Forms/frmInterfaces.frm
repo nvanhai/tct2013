@@ -634,7 +634,7 @@ Private Sub cmdCommand2_Click()
                         .Row = Val(cellArray(1)) + cellRange
 
                         If .CellType = CellTypeNumber Then
-                            xmlCellTKNode.Text = .Value
+                            xmlCellTKNode.Text = .value
                         Else
                             xmlCellTKNode.Text = .Text
                         End If
@@ -763,7 +763,7 @@ Private Sub cmdCommand2_Click()
                                 .Row = Val(cellArray(1)) + cellRange
 
                                 If .CellType = CellTypeNumber Then
-                                    xmlCellTKNode.Text = .Value
+                                    xmlCellTKNode.Text = .value
                                 Else
                                     xmlCellTKNode.Text = .Text
                                 End If
@@ -835,7 +835,7 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                         
                                 If .CellType = CellTypeNumber Then
                                 
-                                    dNode.Text = .Value
+                                    dNode.Text = .value
                                 ElseIf .CellType = CellTypeCheckBox Then
 
                                     If LCase$(.Text) = "x" Then
@@ -901,7 +901,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
 
     xmlTK.getElementsByTagName("maCQTNoiNop")(0).Text = strMaCoQuanThue 'xmlConfig.getElementsByTagName("maCQTNoiNop")(0).Text
     xmlTK.getElementsByTagName("tenCQTNoiNop")(0).Text = strTenCoQuanThue 'xmlConfig.getElementsByTagName("tenCQTNoiNop")(0).Text
-    xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = Format(Date, "yyyy-MM-dd HH:mm:ss")
+    xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = ConvertDate(strNgayHeThongSrv, True, "-") 'Format(Date, "yyyy-MM-dd HH:mm:ss")
     If (Not xmlResultNNT Is Nothing) Then
         If ((Not (xmlResultNNT Is Nothing)) And xmlResultNNT.hasChildNodes And (InStr(xmlResultNNT.xml, "fault_code") <= 0)) Then
             xmlTK.getElementsByTagName("maHuyenNNT")(0).Text = xmlResultNNT.getElementsByTagName("MaQuanHuyen")(0).Text
@@ -969,8 +969,8 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         If xmlTK.getElementsByTagName("ct03").length > 0 Then
             If xmlTK.getElementsByTagName("ct03")(0).Text = "1" Then
                 xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
-                xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = Format$(dNgayDauKy, "yyyy-MM-dd")
-                xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(dNgayCuoiKy, "yyyy-MM-dd")
+                xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = Format$(dNgayDauKy, "dd/MM/yyyy")
+                xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(dNgayCuoiKy, "dd/MM/yyyy")
                 xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
             Else
                 fpSpread1.Col = fpSpread1.ColLetterToNumber("D")
@@ -984,9 +984,8 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
 
         If strKieuKy <> "D" Then
-            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = Format$(dNgayDauKy, "yyyy-MM-dd")
-            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(dNgayCuoiKy, "yyyy-MM-dd")
-           
+            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = Format$(dNgayDauKy, "dd/MM/yyyy")
+            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(dNgayCuoiKy, "dd/MM/yyyy")
         End If
 
         xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
@@ -1006,10 +1005,10 @@ Private Function GetKyKeKhai(ByVal ID_TK As String) As String
     If isTKLanPS = True Then
         KYKKHAI = ngayPS
         strKieuKy = "D"
-    ElseIf ID_TK = "01" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "68" Then
+    ElseIf ID_TK = "01" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "68" Or ID_TK = "25" Then
 
         If LoaiKyKK = True Then
-            KYKKHAI = TAX_Utilities_Srv_New.ThreeMonths & "/" & TAX_Utilities_Srv_New.Year
+            KYKKHAI = Right$(TAX_Utilities_Srv_New.ThreeMonths, 1) & "/" & TAX_Utilities_Srv_New.Year
             strKieuKy = "Q"
         Else
             KYKKHAI = TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year
@@ -1022,7 +1021,7 @@ Private Function GetKyKeKhai(ByVal ID_TK As String) As String
             KYKKHAI = TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year
             strKieuKy = "M"
         ElseIf (Trim(TAX_Utilities_Srv_New.Month) = vbNullString Or Trim(TAX_Utilities_Srv_New.Month) = "") And (Trim(TAX_Utilities_Srv_New.ThreeMonths) <> vbNullString Or Trim(TAX_Utilities_Srv_New.ThreeMonths) <> "") Then
-            KYKKHAI = TAX_Utilities_Srv_New.ThreeMonths & "/" & TAX_Utilities_Srv_New.Year
+            KYKKHAI = Right$(TAX_Utilities_Srv_New.ThreeMonths, 1) & "/" & TAX_Utilities_Srv_New.Year
             strKieuKy = "Q"
         Else
             KYKKHAI = TAX_Utilities_Srv_New.Year
@@ -1411,7 +1410,7 @@ Private Sub ExecuteSave()
                         .Row = Val(cellArray(1)) + cellRange
 
                         If .CellType = CellTypeNumber Then
-                            xmlCellTKNode.Text = .Value
+                            xmlCellTKNode.Text = .value
                         ElseIf .CellType = CellTypeCheckBox Then
 
                             If LCase$(.Text) = "x" Then
@@ -1602,7 +1601,7 @@ Private Sub ExecuteSave()
                                     .Row = Val(cellArray(1)) + cellRange
 
                                     If .CellType = CellTypeNumber Then
-                                        xmlCellTKNode.Text = .Value
+                                        xmlCellTKNode.Text = .value
                                     ElseIf .CellType = CellTypeCheckBox Then
 
                                         If LCase$(.Text) = "x" Then
@@ -1830,7 +1829,7 @@ On Error GoTo ErrHandle
             .Sheet = 1
             .Col = .ColLetterToNumber("E")
             .Row = 36
-            varTemp = .Value
+            varTemp = .value
         End With
         ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2009 thi thong bao khong duoc gia han nop thue
         If Val(TAX_Utilities_Srv_New.Year) <> 2009 Then
@@ -1848,7 +1847,7 @@ On Error GoTo ErrHandle
             .Sheet = 1
             .Col = .ColLetterToNumber("E")
             .Row = 36
-            varTemp = .Value
+            varTemp = .value
         End With
         ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2009 thi thong bao khong duoc gia han nop thue
         If Val(TAX_Utilities_Srv_New.Year) <> 2009 Then
@@ -1868,14 +1867,14 @@ On Error GoTo ErrHandle
                 .Sheet = 1
                 .Col = .ColLetterToNumber("E")
                 .Row = 37
-                varTemp = .Value
+                varTemp = .value
             End With
         ElseIf Val(idToKhai) = 12 Then
             With fpSpread1
                 .Sheet = 1
                 .Col = .ColLetterToNumber("E")
                 .Row = 38
-                varTemp = .Value
+                varTemp = .value
             End With
         End If
     End If
@@ -1886,7 +1885,7 @@ On Error GoTo ErrHandle
             .Sheet = 1
             .Col = .ColLetterToNumber("E")
             .Row = 19
-            varTemp = .Value
+            varTemp = .value
         End With
     End If
     ' Do voi to khai 03/TNDN thang
@@ -1896,7 +1895,7 @@ On Error GoTo ErrHandle
             .Sheet = 1
             .Col = .ColLetterToNumber("E")
             .Row = 37
-            varTemp = .Value
+            varTemp = .value
         End With
     End If
 
@@ -2167,25 +2166,25 @@ Private Sub Command1_Click()
 'str2 = "aa999202300026210   0020120020020080080~~71653~0~~4534~0~~634~0~~32423~0~~12342~0~~23453~0~~2332~0~~3444~0~~2342~0~~1235~0~~2342~0~~345342~0~~23423~0~~21432~0~~124~0~~12~0~~451~0~~390784~0~~464779~0~~1243~0~~1435~0~~467457~0~duan~26/11/2013</S></S01-3>"
 'Barcode_Scaned str2
 '
-'BCTC bo QD95:
-str2 = "aa999222300026210   00201200300300100901/0101/01/1900<S01><S>~143~0~~3~0~V.01~1~0~~2~0~V.02~7~0~~3~0~~4~0~V.11~46~0~~5~0~~6~0~~7~0~~8~0~~9~0~~11~0~V.02~12~0~~75~0~~13~0~~14~0~~15~0~~16~0~~17~0~~747~0~V.11~103~0~~18~0~~19~0~~21~0~~22~0~~23~0~~190~0~V.05~49~"
-Barcode_Scaned str2
-str2 = "aa999222300026210   0020120030030020090~~24~0~~25~0~~53~0~~26~0~~27~0~V.06~57~0~~28~0~~29~0~~31~0~~65~0~~32~0~~33~0~~219~0~~34~0~~35~0~~73~0~~37~0~~36~0~V.04~38~0~~39~0~~170~0~V.07~41~0~V.09~42~0~V.10~43~0~~44~0~~890~0~~593~0~~316~0~~15~0~~23~0~~24~0~V.08~"
-Barcode_Scaned str2
-str2 = "aa999222300026210   00201200300300300928~0~~12~0~V.12~11~0~~18~0~~26~0~~13~0~~21~0~~24~0~~26~0~~19~0~~26~0~~30~0~~277~0~~24~0~V.14~17~0~~26~0~V.15~13~0~V.09~23~0~~35~0~~27~0~~54~0~~23~0~~35~0~~297~0~~297~0~~25~0~~27~0~~28~0~~29~0~~24~0~~25~0~~31~0~~25~0~~5"
-Barcode_Scaned str2
-str2 = "aa999222300026210   0020120030030040096~0~~27~0~~890~0~~100~0~~20~0~~32~0~~34~0~~35.6~0~~36~0~~45~0~~42~0~~41~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~Kh¸nh Ph­¬ng~11/12/2013</S></S01>"
-Barcode_Scaned str2
-str2 = "aa999222300026210   002012003003005009<S01-1><S>~936~0~~400~0~~100~0~~200~0~~32~0~~34~0~~45~0~~46~0~~47~0~~32~0~~31~0~~905~0~~34~0~~871~0~~38~0~~833~0~~39~0~~21~0~~18~0~~851~0~VI.1~23~0~VI.2~25~0~~803~0~~26~0~Kh¸nh Ph­¬ng~11/12/2013</S></S01-1>"
-Barcode_Scaned str2
-str2 = "aa999222300026210   002012003003006009<S01-2><S>~7000~0~~100~0~~200~0~~300~0~~400~0~~500~0~~600~0~~700~0~~800~0~~900~0~~234~0~~345~0~~357~0~~12436~0~~678~0~~456~0~~367~0~~654~0~~743~0~"
-Barcode_Scaned str2
-str2 = "aa999222300026210   002012003003007009~821~0~~321~0~~4040~0~~654~0~~732~0~~821~0~~965~0~~876~0~~521~0~~4569~0~~21045~0~~432~0~~654~0~VII.34~22131~0~Kh¸nh Ph­¬ng~11/12/2013</S></S01-2>"
-Barcode_Scaned str2
-str2 = "aa999222300026210   002012003003008009<S01-3><S>~600~0~~123~0~~234~0~~235~0~~267~0~~289~0~~1748~0~~345~0~~4~0~~345~0~~123~0~~234~0~~345~0~~456~0~~567~0~~2419~0~~678~0~~789~0~~125~0~~167~"
-Barcode_Scaned str2
-str2 = "aa999222300026210   0020120030030090090~~278~0~~564~0~~345~0~~2946~0~~278~0~~457~0~~976~0~~267~0~~378~0~~231~0~~2587~0~~7952~0~~276~0~~285~0~~8513~0~Kh¸nh Ph­¬ng~11/12/2013</S></S01-3>"
-Barcode_Scaned str2
+''BCTC bo QD95:
+'str2 = "aa999222300026210   00201200300300100901/0101/01/1900<S01><S>~143~0~~3~0~V.01~1~0~~2~0~V.02~7~0~~3~0~~4~0~V.11~46~0~~5~0~~6~0~~7~0~~8~0~~9~0~~11~0~V.02~12~0~~75~0~~13~0~~14~0~~15~0~~16~0~~17~0~~747~0~V.11~103~0~~18~0~~19~0~~21~0~~22~0~~23~0~~190~0~V.05~49~"
+'Barcode_Scaned str2
+'str2 = "aa999222300026210   0020120030030020090~~24~0~~25~0~~53~0~~26~0~~27~0~V.06~57~0~~28~0~~29~0~~31~0~~65~0~~32~0~~33~0~~219~0~~34~0~~35~0~~73~0~~37~0~~36~0~V.04~38~0~~39~0~~170~0~V.07~41~0~V.09~42~0~V.10~43~0~~44~0~~890~0~~593~0~~316~0~~15~0~~23~0~~24~0~V.08~"
+'Barcode_Scaned str2
+'str2 = "aa999222300026210   00201200300300300928~0~~12~0~V.12~11~0~~18~0~~26~0~~13~0~~21~0~~24~0~~26~0~~19~0~~26~0~~30~0~~277~0~~24~0~V.14~17~0~~26~0~V.15~13~0~V.09~23~0~~35~0~~27~0~~54~0~~23~0~~35~0~~297~0~~297~0~~25~0~~27~0~~28~0~~29~0~~24~0~~25~0~~31~0~~25~0~~5"
+'Barcode_Scaned str2
+'str2 = "aa999222300026210   0020120030030040096~0~~27~0~~890~0~~100~0~~20~0~~32~0~~34~0~~35.6~0~~36~0~~45~0~~42~0~~41~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~Kh¸nh Ph­¬ng~11/12/2013</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999222300026210   002012003003005009<S01-1><S>~936~0~~400~0~~100~0~~200~0~~32~0~~34~0~~45~0~~46~0~~47~0~~32~0~~31~0~~905~0~~34~0~~871~0~~38~0~~833~0~~39~0~~21~0~~18~0~~851~0~VI.1~23~0~VI.2~25~0~~803~0~~26~0~Kh¸nh Ph­¬ng~11/12/2013</S></S01-1>"
+'Barcode_Scaned str2
+'str2 = "aa999222300026210   002012003003006009<S01-2><S>~7000~0~~100~0~~200~0~~300~0~~400~0~~500~0~~600~0~~700~0~~800~0~~900~0~~234~0~~345~0~~357~0~~12436~0~~678~0~~456~0~~367~0~~654~0~~743~0~"
+'Barcode_Scaned str2
+'str2 = "aa999222300026210   002012003003007009~821~0~~321~0~~4040~0~~654~0~~732~0~~821~0~~965~0~~876~0~~521~0~~4569~0~~21045~0~~432~0~~654~0~VII.34~22131~0~Kh¸nh Ph­¬ng~11/12/2013</S></S01-2>"
+'Barcode_Scaned str2
+'str2 = "aa999222300026210   002012003003008009<S01-3><S>~600~0~~123~0~~234~0~~235~0~~267~0~~289~0~~1748~0~~345~0~~4~0~~345~0~~123~0~~234~0~~345~0~~456~0~~567~0~~2419~0~~678~0~~789~0~~125~0~~167~"
+'Barcode_Scaned str2
+'str2 = "aa999222300026210   0020120030030090090~~278~0~~564~0~~345~0~~2946~0~~278~0~~457~0~~976~0~~267~0~~378~0~~231~0~~2587~0~~7952~0~~276~0~~285~0~~8513~0~Kh¸nh Ph­¬ng~11/12/2013</S></S01-3>"
+'Barcode_Scaned str2
 
 ''BCTC bo QD48:
 'str2 = "aa999192300790401   00201200000000101201/0114/09/2006<S01><S>~2315~400~III.01~10~10~III.05~2020~35~~2010~20~~10~15~~145~155~~20~30~~35~30~~40~45~~50~50~~45~45~III.02~20~25~~25~20~~95~155~~10~20~~30~35~~35~50~~20~50~~1205~3130~III.03.04~1022~2650~~947~2380~~25~200~~50~70~~40~40~~20~10~~20~30~III.05~80~60~~30~40~~50~20~~63~380~~30~230~~10~120~~23~30~~3520~3530~~1860~20"
@@ -2258,13 +2257,13 @@ Barcode_Scaned str2
 'str2 = "aa999042300121087   10201300200300100101/0114/06/2006<S01><S>0010011000</S><S>3000000~2000000~1000000~140000~200000~-1940000~0</S><S>HuyÒn Tr©m~Hoµng Lan~KTV~19/12/2013~1~~~0</S></S01>"
 'Barcode_Scaned str2
 '
-''04/GTGT:
-'str2 = "aa999712300121087   10201300100100100301/0101/01/1900<S01><S>0010011000</S><S>20000000~3000000~30000~4000000~200000~5000000~150000~6000000~120000~18000000~500000~38000000~500000</S><S>HuyÒn Tr©m~Hoµng Lan~KTV~19/12/2013~1~~~0</S></S01>"
-'Barcode_Scaned str2
-'str2 = "aa999712300121087   102013001001002003<S01_1><S>01GTKT~~003~05442~12/10/2013~nga~~~40000000~</S><S>07KPTQ~~004~03243~13/10/2013~h¹nh~~~5000000~</S><S>02GTTT~~001~024234~14/10/2013~linh~~~6000000~</S><S>04HGDL~~002~"
-'Barcode_Scaned str2
-'str2 = "aa999712300121087   102013001001003003023423~15/10/2013~¸nh~~~7000000~~06HDXK~~005~023434~16/10/2013~ph­¬ng~~~8000000~</S><S>03XKNB~~006~2423~18/10/2013~kh«i~~~2000000~</S><S>68000000~40000000~28000000</S></S01_1>"
-'Barcode_Scaned str2
+'04/GTGT:
+str2 = "aa999712300121087   10201300100100100301/0101/01/1900<S01><S>0010011000</S><S>20000000~3000000~30000~4000000~200000~5000000~150000~6000000~120000~18000000~500000~38000000~500000</S><S>HuyÒn Tr©m~Hoµng Lan~KTV~19/12/2013~1~~~0</S></S01>"
+Barcode_Scaned str2
+str2 = "aa999712300121087   102013001001002003<S01_1><S>01GTKT~~003~05442~12/10/2013~nga~~~40000000~</S><S>07KPTQ~~004~03243~13/10/2013~h¹nh~~~5000000~</S><S>02GTTT~~001~024234~14/10/2013~linh~~~6000000~</S><S>04HGDL~~002~"
+Barcode_Scaned str2
+str2 = "aa999712300121087   102013001001003003023423~15/10/2013~¸nh~~~7000000~~06HDXK~~005~023434~16/10/2013~ph­¬ng~~~8000000~</S><S>03XKNB~~006~2423~18/10/2013~kh«i~~~2000000~</S><S>68000000~40000000~28000000</S></S01_1>"
+Barcode_Scaned str2
 
 ''05/GTGT:
 'str2 = "aa999722300121087   10201300200200100101/0114/06/2006<S01><S>0010011000</S><S>4000000~7000000~40000~140000~180000</S><S>HuyÒn Tr©m~Hoµng Lan~KTV~19/12/2013~1~~~~</S></S01>"
@@ -2482,7 +2481,7 @@ On Error GoTo ErrHandle
     
     frmSystem.chkSaveQuestion.Visible = False
     frmSystem.chkQuetBangKe.Visible = False
-    frmSystem.chkQuetBangKe.Value = False
+    frmSystem.chkQuetBangKe.value = False
 
     Exit Sub
 ErrHandle:
@@ -2528,7 +2527,7 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
         If .Lock = False Then
             ' When user change value of cell, call UpdateCell function
             If .CellType = CellTypeNumber Then
-                lValue = .Value
+                lValue = .value
             Else
                 lValue = .Text
             End If
@@ -2612,21 +2611,6 @@ Private Sub Barcode_Scaned(strBarcode As String)
     Dim idToKhai        As String
 
     On Error GoTo ErrHandle
-
-    'Check ngay client va ngay tren server
-    If (strNgayHeThongSrv <> "" And strNgayHeThongSrv <> vbNullString) Then
-        Dim dNgayHeThong As Date
-        dNgayHeThong = CDate(strNgayHeThongSrv)
-        Dim dCurrent As Date
-        dCurrent = CDate(DateTime.Now)
-
-        If (DateDiff("d", dCurrent, dNgayHeThong) <> 0) Then
-            DisplayMessage "0143", msOKOnly, miCriticalError
-            Exit Sub
-        End If
-    End If
-
-    'End check ngay
 
     'Convert from TCVN to UNICODE format
     strBarcode = TrimString(strBarcode)
@@ -2828,7 +2812,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
             ' Scanning
             If UBound(arrStrElements()) = 0 Then
                 ProgressBar1.max = intBarcodeCount
-                ProgressBar1.Value = 0
+                ProgressBar1.value = 0
                 arrStrElements(0) = strPrefix
                 cmdViewNow.Enabled = True
             Else
@@ -2904,7 +2888,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 Exit Sub
             Else
 
-                If frmSystem.chkSaveQuestion.Value Then
+                If frmSystem.chkSaveQuestion.value Then
                     cmdSave_Click
 
                     If blnSaveSuccess Then
@@ -2944,7 +2928,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
             ' Scanning
             If UBound(arrStrElements()) = 0 Then
                 ProgressBar1.max = intBarcodeCount
-                ProgressBar1.Value = 0
+                ProgressBar1.value = 0
                 arrStrElements(0) = strPrefix
             Else
 
@@ -2989,7 +2973,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 Exit Sub
             Else
 
-                If frmSystem.chkSaveQuestion.Value Then
+                If frmSystem.chkSaveQuestion.value Then
                     cmdSave_Click
 
                     If blnSaveSuccess Then
@@ -4403,7 +4387,7 @@ On Error GoTo ErrHandle
         
     ' DLT ngung hoat dong canh bao va thoat
     If Not rsTaxDLInfor Is Nothing Then
-        If rsTaxDLInfor.Fields(7).Value = "01" Then
+        If rsTaxDLInfor.Fields(7).value = "01" Then
             MessageBox "0144", msOKOnly, miWarning
             frmSystem.MousePointer = vbDefault
             Me.MousePointer = vbDefault
@@ -4433,13 +4417,13 @@ On Error GoTo ErrHandle
                 If Not (rsTaxDLInfor Is Nothing) Then
                     If Not (rsTaxDLInfor.Fields.Count = 0) Then
                         If Not objTaxBusiness Is Nothing Then
-                            objTaxBusiness.strTenDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(0).Value), "", rsTaxDLInfor.Fields(0).Value), TCVN, UNICODE)
-                            objTaxBusiness.strDiaChiDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(1).Value), "", rsTaxDLInfor.Fields(1).Value), TCVN, UNICODE)
-                            objTaxBusiness.strDienThoaiDL = IIf(IsNull(rsTaxDLInfor.Fields(2).Value), "", rsTaxDLInfor.Fields(2).Value)
-                            objTaxBusiness.strFaxDL = IIf(IsNull(rsTaxDLInfor.Fields(3).Value), "", rsTaxDLInfor.Fields(3).Value)
-                            objTaxBusiness.strEmailDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(4).Value), "", rsTaxDLInfor.Fields(4).Value), TCVN, UNICODE)
-                            objTaxBusiness.strSoHopDongDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(5).Value), "", rsTaxDLInfor.Fields(5).Value), TCVN, UNICODE)
-                            objTaxBusiness.strNgayHopDongDL = IIf(IsNull(rsTaxDLInfor.Fields(6).Value), "", rsTaxDLInfor.Fields(6).Value)
+                            objTaxBusiness.strTenDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(0).value), "", rsTaxDLInfor.Fields(0).value), TCVN, UNICODE)
+                            objTaxBusiness.strDiaChiDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(1).value), "", rsTaxDLInfor.Fields(1).value), TCVN, UNICODE)
+                            objTaxBusiness.strDienThoaiDL = IIf(IsNull(rsTaxDLInfor.Fields(2).value), "", rsTaxDLInfor.Fields(2).value)
+                            objTaxBusiness.strFaxDL = IIf(IsNull(rsTaxDLInfor.Fields(3).value), "", rsTaxDLInfor.Fields(3).value)
+                            objTaxBusiness.strEmailDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(4).value), "", rsTaxDLInfor.Fields(4).value), TCVN, UNICODE)
+                            objTaxBusiness.strSoHopDongDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(5).value), "", rsTaxDLInfor.Fields(5).value), TCVN, UNICODE)
+                            objTaxBusiness.strNgayHopDongDL = IIf(IsNull(rsTaxDLInfor.Fields(6).value), "", rsTaxDLInfor.Fields(6).value)
                         End If
                     End If
                 End If
@@ -4566,7 +4550,7 @@ On Error GoTo ErrHandle
                 TAX_Utilities_Srv_New.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue = 1) Then
             frmSystem.chkQuetBangKe.Visible = True
         Else
-            frmSystem.chkQuetBangKe.Value = False
+            frmSystem.chkQuetBangKe.value = False
             frmSystem.chkQuetBangKe.Visible = False
         End If
     ' Loai to khai la GTGT hoa hong dai ly mau 02/GTGT thi cho hien check quet du lieu bang ke
@@ -4574,7 +4558,7 @@ On Error GoTo ErrHandle
         If (TAX_Utilities_Srv_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue = 1) Then
             frmSystem.chkQuetBangKe.Visible = True
         Else
-            frmSystem.chkQuetBangKe.Value = False
+            frmSystem.chkQuetBangKe.value = False
             frmSystem.chkQuetBangKe.Visible = False
         End If
     ' Loai to khai la Quyet toan thue TNCN mau 04/TNCN thi cho hien check quet du lieu bang ke
@@ -4582,11 +4566,11 @@ On Error GoTo ErrHandle
         If (TAX_Utilities_Srv_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue = 1) Then
             frmSystem.chkQuetBangKe.Visible = True
         Else
-            frmSystem.chkQuetBangKe.Value = False
+            frmSystem.chkQuetBangKe.value = False
             frmSystem.chkQuetBangKe.Visible = False
         End If
     Else
-        frmSystem.chkQuetBangKe.Value = False
+        frmSystem.chkQuetBangKe.value = False
         frmSystem.chkQuetBangKe.Visible = False
     End If
     
@@ -4647,9 +4631,9 @@ On Error GoTo ErrHandle
         strData = strTemp
     End If
     
-    If intCount > ProgressBar1.Value Then
-        ProgressBar1.Value = ProgressBar1.Value + 1
-        lblFilePath.caption = ProgressBar1.Value & " / " & ProgressBar1.max
+    If intCount > ProgressBar1.value Then
+        ProgressBar1.value = ProgressBar1.value + 1
+        lblFilePath.caption = ProgressBar1.value & " / " & ProgressBar1.max
     End If
     
     IsCompleteData = blnReturn
@@ -4904,8 +4888,7 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
 '        blnSuccess = False
 '        Exit Function
 '    End If
-'
-'    '
+
 '    'Du lieu gia lap de test
 '    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
 '    strResultDLT = "sdfsfds"
@@ -5040,7 +5023,7 @@ On Error GoTo ErrHandle
     
     Set xmlResultNNT = New MSXML.DOMDocument
     Dim strResultNNT As String
-'
+
 '   'Du lieu gia lap de test
 '    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
 '    strResultNNT = "test"
@@ -5334,7 +5317,7 @@ On Error GoTo ErrHandle
                 iRowID = iRowID + 1
                 For j = 0 To xmlNodeSection.childNodes(i).childNodes.length - 1
                     Set xmlAttribute = xmlDOMdata.createAttribute("RowID")
-                    xmlAttribute.Value = iRowID
+                    xmlAttribute.value = iRowID
                     Set xmlNode = xmlNodeSection.childNodes(i).childNodes(j).Attributes.setNamedItem(xmlAttribute)
                     Set xmlAttribute = Nothing
                 Next
@@ -5632,7 +5615,7 @@ On Error GoTo ErrHandle
         lblLoading.Visible = True
         lblConnecting.Visible = False
         lblExit.Visible = False
-        ProgressBar1.Value = 0
+        ProgressBar1.value = 0
         ReDim arrStrElements(0)
         If Not blnOnLoadEvent Then cmdExit.SetFocus
         blnOnLoadEvent = False
@@ -5750,7 +5733,7 @@ On Error GoTo ErrHandle
     strFileName = arrStrElements(intUbound)
     ReDim Preserve arrStrElements(intUbound - 1)
     strData = GetDataFormFile(strFileName)
-    ProgressBar1.Value = ProgressBar1.Value + 1
+    ProgressBar1.value = ProgressBar1.value + 1
     
     If Not LoadForm(strData) Then
         'If UBound(arrStrElements) > 0 Then
@@ -6217,9 +6200,9 @@ Private Function GetHeaderData(ByVal rsTaxInfor As ADODB.Recordset, arrStrHeader
     
     For lCtrl = 0 To rsTaxInfor.Fields.Count - 2
         ReDim Preserve arrStrData(lCtrl)
-        If Not IsNull(rsTaxInfor.Fields(lCtrl + 1).Value) Then
+        If Not IsNull(rsTaxInfor.Fields(lCtrl + 1).value) Then
             'arrStrData(lCtrl) = clsConvert.Convert(rsTaxInfor.Fields(lCtrl + 1).Value, UNICODE, TCVN)
-            arrStrData(lCtrl) = rsTaxInfor.Fields(lCtrl + 1).Value
+            arrStrData(lCtrl) = rsTaxInfor.Fields(lCtrl + 1).value
             
         End If
     Next lCtrl
@@ -6459,7 +6442,7 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
     XmlDocStandard.getElementsByTagName("ky_lap_bo")(0).Text = sKyLapBo
     XmlDocStandard.getElementsByTagName("nguon_goc_tk")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text
     XmlDocStandard.getElementsByTagName("nguoi_nhan_tk")(0).Text = strUserID '& "." & xmlConfig.getElementsByTagName("CODE_OFFICE")(0).Text
-    XmlDocStandard.getElementsByTagName("ngay_nhan_tk")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy hh:mm:ss")
+    XmlDocStandard.getElementsByTagName("ngay_nhan_tk")(0).Text = strNgayHeThongSrv 'ConvertDate(Format(DateTime.Now, "dd/mm/yyyy"), True, "-")
     XmlDocStandard.getElementsByTagName("id_tkhai")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow()
     
     XmlDocStandard.getElementsByTagName("noi_gui")(0).Text = ""

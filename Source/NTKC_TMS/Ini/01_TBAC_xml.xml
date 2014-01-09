@@ -1,6 +1,6 @@
 ﻿<HSoKhaiThue ngay_nop_tk="E_10" ky_lap_bo="">
 	<Static GroupName="TKhaiThue">
-		<maTKhai>01_TBAC</maTKhai>
+		<maTKhai>106</maTKhai>
 		<tenTKhai>Thông báo phát hành hóa đơn</tenTKhai>
 		<soLan></soLan>
 		<moTaBMau/>
@@ -10,7 +10,7 @@
 		<lyDoGiaHan></lyDoGiaHan>
 	</Static>
 	<Static GroupName="NNT">
-		<maHuyenNNT></maHuyenNNT>
+		<maHuyenNNT></maHuyenNNT>6
 		<maTinhNNT></maTinhNNT>
 	</Static>
 	<Static GroupName="DLyThue">
