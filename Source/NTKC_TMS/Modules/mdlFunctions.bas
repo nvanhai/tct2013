@@ -599,14 +599,14 @@ Public Sub SetupData(pGrid As fpSpread)
                             End If
 
                         Case Else
-                            If blnNewData And .Value <> GetAttribute(xmlNodeCell, "Value") Then
-                                SetAttribute xmlNodeCell, "Value", .Value
+                            If blnNewData And .value <> GetAttribute(xmlNodeCell, "Value") Then
+                                SetAttribute xmlNodeCell, "Value", .value
                             Else
-                                .Value = GetAttribute(xmlNodeCell, "Value")
+                                .value = GetAttribute(xmlNodeCell, "Value")
                             End If
                     End Select
                   Else
-                    UpdateCellReceive pGrid, lSheet, .Col, .Row, .Value
+                    UpdateCellReceive pGrid, lSheet, .Col, .Row, .value
                   End If
                     
                     .RowHeight(lRow) = 14
@@ -1019,7 +1019,7 @@ With fpsGrid
     .Row = lRow
     For lCtrl = 1 To .MaxCols
         .Col = lCtrl
-        .Value = ""
+        .value = ""
     Next lCtrl
     .RowHeight(lRow) = 14
 End With
@@ -1564,7 +1564,7 @@ Public Function GetPkgIDErr() As String
     If rs.Fields.Count > 0 Then
          pkgIDErr = "'"
          Do While Not rs.EOF
-            pkgIDErr = pkgIDErr & Trim(rs.Fields(0).Value) & "','"
+            pkgIDErr = pkgIDErr & Trim(rs.Fields(0).value) & "','"
             rs.MoveNext
          Loop
          pkgIDErr = Left$(pkgIDErr, Len(pkgIDErr) - 2)
@@ -2077,10 +2077,10 @@ Public Function SetValueHeaderESB(ByVal xmlDoc As MSXML.DOMDocument) As MSXML.DO
         xmlDoc.getElementsByTagName("MSG_ID")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow() 'GetGUID()
         xmlDoc.getElementsByTagName("MSG_REFID")(0).Text = ""
        
-        xmlDoc.getElementsByTagName("SEND_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy hh:mm:ss")
+        xmlDoc.getElementsByTagName("SEND_DATE")(0).Text = strNgayHeThongSrv 'Format(DateTime.Now, "dd-mmm-yyyy hh:mm:ss")
         xmlDoc.getElementsByTagName("ORIGINAL_CODE")(0).Text = strMaCoQuanThue 'Ma Co quan thue noi nop
         xmlDoc.getElementsByTagName("ORIGINAL_NAME")(0).Text = strTenCoQuanThue 'Ten co quan thue
-        xmlDoc.getElementsByTagName("ORIGINAL_DATE")(0).Text = Format(DateTime.Now, "dd-mmm-yyyy hh:mm:ss") 'Ngay nop to khai
+        xmlDoc.getElementsByTagName("ORIGINAL_DATE")(0).Text = strNgayHeThongSrv 'Format(DateTime.Now, "dd-mmm-yyyy hh:mm:ss") 'Ngay nop to khai
         xmlDoc.getElementsByTagName("ERROR_CODE")(0).Text = ""
         xmlDoc.getElementsByTagName("ERROR_DESC")(0).Text = ""
         xmlDoc.getElementsByTagName("SPARE1")(0).Text = strUserName
@@ -2090,7 +2090,127 @@ Public Function SetValueHeaderESB(ByVal xmlDoc As MSXML.DOMDocument) As MSXML.DO
 
     Set SetValueHeaderESB = xmlDoc
 End Function
+' Convert 24/10/2014 --> 24-Oct-2014 va nguoc lai phu thuoc flag = true or false
+Public Function ConvertDate(ByVal tmpDatetime As String, ByVal flag As Boolean, ByVal Seperator As String) As String
+    Dim result As String
+    If flag Then
+        result = Mid$(tmpDatetime, 7, 4) & Seperator & synMonth(Mid$(tmpDatetime, 4, 2), flag) & Seperator & Left$(tmpDatetime, 2) & Mid$(tmpDatetime, 11)
+    Else
+        result = Mid$(tmpDatetime, 8, 4) & Seperator & synMonth(Mid$(tmpDatetime, 4, 3), flag) & Seperator & Left$(tmpDatetime, 2) & Mid$(tmpDatetime, 12)
+    End If
+    ConvertDate = result
+End Function
 
+Public Function synMonth(ByVal value As String, ByVal flag As Boolean) As String
+    'flag=true: convert month from 01 to Jan
+    Dim sResult As String
+
+    If flag Then
+
+        Select Case value
+
+            Case "01"
+                sResult = "Jan"
+
+            Case "02"
+                sResult = "Feb"
+                
+
+            Case "03"
+                sResult = "Mar"
+                
+
+            Case "04"
+                sResult = "Apr"
+                
+            Case "05"
+                sResult = "May"
+                
+
+            Case "06"
+                sResult = "Jun"
+                
+
+            Case "07"
+                sResult = "Jul"
+                
+
+            Case "08"
+                sResult = "Aug"
+                
+
+            Case "09"
+                sResult = "Sep"
+                
+
+            Case "10"
+                sResult = "Oct"
+                
+
+            Case "11"
+                sResult = "Nov"
+                
+
+            Case "12"
+                sResult = "Dec"
+                
+        End Select
+
+    Else
+
+        Select Case value
+
+            Case "Jan"
+                sResult = "01"
+                
+
+            Case "Feb"
+                sResult = "02"
+                
+
+            Case "Mar"
+                sResult = "03"
+                
+
+            Case "Apr"
+                sResult = "04"
+                
+
+            Case "May"
+                sResult = "05"
+                
+
+            Case "Jun"
+                sResult = "06"
+                
+
+            Case "Jul"
+                sResult = "07"
+                
+
+            Case "Aug"
+                sResult = "08"
+                
+
+            Case "Sep"
+                sResult = "09"
+                
+            Case "Oct"
+                sResult = "10"
+                
+            Case "Nov"
+                sResult = "11"
+                
+
+            Case "Dec"
+                sResult = "12"
+                
+        End Select
+
+    End If
+
+    synMonth = sResult
+End Function
 'Ket thuc ket xuat XML - nshung
 
 Public Sub DataDM(ByVal ID As String, Optional ByRef TenTN As String)

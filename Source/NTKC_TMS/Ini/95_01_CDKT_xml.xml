@@ -1,4 +1,4 @@
-<HSoKhaiThue>
+<HSoKhaiThue ngay_nop_tk="E_12" ky_lap_bo="E_10">
 	<Static GroupName="TTinDVu">
 		<maDVu/>
 		<tenDVu/>
@@ -6,7 +6,7 @@
 		<ttinNhaCCapDVu/>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<maTKhai>93</maTKhai>
+		<maTKhai>52</maTKhai>
 		<tenTKhai>Bộ báo cáo tài chính (QĐ  95/2008/TT-BTC)</tenTKhai>
 		<moTaBMau/>
 		<pbanTKhaiXML/>

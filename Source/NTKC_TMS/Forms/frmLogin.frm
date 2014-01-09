@@ -200,6 +200,13 @@ On Error GoTo ErrorHandle
         InStr(1, frmSystem.lblUser.caption, ":") + 1) & _
         strUserName
     '********************************
+    'Check Datetime client with server
+    If Not IsCompareDateSrv Then
+        Unload Me
+        Unload frmSystem
+        Exit Sub
+    End If
+    
     ' Date: 27/04/06
     ' Check version of application
     If Not CheckVersion Then
@@ -271,7 +278,6 @@ Private Function IsValidUserESB() As Integer
     'Check validate xmlResultNSD
     If (strResultNSD = "") Then
         IsValidUserESB = 1
-        
         Exit Function
     End If
 
@@ -311,7 +317,9 @@ Private Function IsValidUserESB() As Integer
                 strNgayHeThongSrv = xmlResultNSD.getElementsByTagName("CurrentSysTime")(0).Text
                 strMaCoQuanThue = xmlResultNSD.getElementsByTagName("TaxOffcice")(0).Text
                 strTenCoQuanThue = xmlResultNSD.getElementsByTagName("TaxOffName")(0).Text
-                strMaTinhCoQuanThue = "BNI" 'xmlResultNSD.getElementsByTagName("Province")(0).Text
+                strMaTinhCoQuanThue = xmlResultNSD.getElementsByTagName("Province")(0).Text
+                
+                
                 Select Case sStatus
 
                     Case "01"  ' Thanh cong
@@ -339,51 +347,6 @@ Private Function IsValidUserESB() As Integer
         End If
         
     End If
-
-    '    If (Not xmlResultNSD Is Nothing) Then
-    '
-    '        Dim checkValue As MSXML.IXMLDOMNode
-    '        Set checkValue = xmlResultNSD.selectSingleNode("Status")
-    '
-    '        If (checkValue Is Nothing) Then
-    '            IsValidUserESB = 1  'Message login thanh cong
-    '            Set xmlResultNSD = Nothing
-    '            Exit Function
-    '        Else
-    '
-    '            sStatus = xmlResultNSD.getElementsByTagName("Status")(0).Text
-    '            strCurrentVersion = xmlResultNSD.getElementsByTagName("NTKversion")(0).Text
-    '            strUserName = xmlResultNSD.getElementsByTagName("UserName")(0).Text
-    '            strUserID = txtUsername.Text
-    '
-    '            Select Case sStatus
-    '
-    '                Case "01"  ' Thanh cong
-    '                    IsValidUserESB = 2  'Message login thanh cong
-    '                    Set xmlResultNSD = Nothing
-    '                    Exit Function
-    '
-    '                Case "02" 'Loi xac thuc NSD
-    '                    IsValidUserESB = 0   'Message loi use, pass
-    '                    Set xmlResultNSD = Nothing
-    '                    Exit Function
-    '
-    '                Case "03" 'Cac loi khac cua he thong TMS
-    '                    IsValidUserESB = 1  'Message loi khong dang nhap duoc
-    '                    Set xmlResultNSD = Nothing
-    '                    Exit Function
-    '
-    '                Case Else
-    '                    IsValidUserESB = 1
-    '                    Set xmlResultNSD = Nothing
-    '                    Exit Function
-    '            End Select
-    '
-    '        End If
-    '
-    '    Else
-    '        IsValidUserESB = 1
-    '    End If
     
 ErrorHandle:
     IsValidUserESB = 1
@@ -650,7 +613,7 @@ Private Function checkActivePIT() As Boolean
 
         If Not rsObj Is Nothing Then
             If rsObj.Fields.Count > 0 Then
-                If rsObj.Fields(0).Value = "1" Then
+                If rsObj.Fields(0).value = "1" Then
                     resultPIT = True
                 Else
                     resultPIT = False
@@ -664,4 +627,20 @@ Private Function checkActivePIT() As Boolean
     Exit Function
 ErrHandle:
     SaveErrorLog Me.Name, "checkActivePIT", Err.Number, Err.Description
+End Function
+
+Private Function IsCompareDateSrv() As Boolean
+    On Error GoTo ErrHandle
+    IsCompareDateSrv = True
+    'Check ngay client va ngay tren server
+    If (strNgayHeThongSrv <> "" And strNgayHeThongSrv <> vbNullString) Then
+        strNgayHeThongSrv = ConvertDate(strNgayHeThongSrv, False, "/") ' format: yyyy/mm/dd hh:mm:ss
+        If Not (CInt(Mid$(strNgayHeThongSrv, 9, 2)) = DateTime.Day(Date) And CInt(Mid$(strNgayHeThongSrv, 6, 2)) = DateTime.Month(Date) And CInt(Left$(strNgayHeThongSrv, 4)) = DateTime.Year(Date)) Then
+            DisplayMessage "0143", msOKOnly, miCriticalError
+            IsCompareDateSrv = False
+        End If
+    End If
+    'End check ngay
+ErrHandle:
+    SaveErrorLog Me.Name, "IsCompareDateSrv", Err.Number, Err.Description
 End Function
