@@ -901,7 +901,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
 
     xmlTK.getElementsByTagName("maCQTNoiNop")(0).Text = strMaCoQuanThue 'xmlConfig.getElementsByTagName("maCQTNoiNop")(0).Text
     xmlTK.getElementsByTagName("tenCQTNoiNop")(0).Text = strTenCoQuanThue 'xmlConfig.getElementsByTagName("tenCQTNoiNop")(0).Text
-    xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = ConvertDate(strNgayHeThongSrv, True, "-") 'Format(Date, "yyyy-MM-dd HH:mm:ss")
+    xmlTK.getElementsByTagName("ngayLapTKhai")(0).Text = ConvertDate(strNgayHeThongSrv, False, "-") 'Format(Date, "yyyy-MM-dd HH:mm:ss")
     If (Not xmlResultNNT Is Nothing) Then
         If ((Not (xmlResultNNT Is Nothing)) And xmlResultNNT.hasChildNodes And (InStr(xmlResultNNT.xml, "fault_code") <= 0)) Then
             xmlTK.getElementsByTagName("maHuyenNNT")(0).Text = xmlResultNNT.getElementsByTagName("MaQuanHuyen")(0).Text
@@ -1016,13 +1016,17 @@ Private Function GetKyKeKhai(ByVal ID_TK As String) As String
         End If
             
     Else
-
         If (Trim(TAX_Utilities_Srv_New.Month) <> vbNullString Or Trim(TAX_Utilities_Srv_New.Month) <> "") And (Trim(TAX_Utilities_Srv_New.ThreeMonths) = vbNullString Or Trim(TAX_Utilities_Srv_New.ThreeMonths) = "") Then
             KYKKHAI = TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year
             strKieuKy = "M"
         ElseIf (Trim(TAX_Utilities_Srv_New.Month) = vbNullString Or Trim(TAX_Utilities_Srv_New.Month) = "") And (Trim(TAX_Utilities_Srv_New.ThreeMonths) <> vbNullString Or Trim(TAX_Utilities_Srv_New.ThreeMonths) <> "") Then
-            KYKKHAI = Right$(TAX_Utilities_Srv_New.ThreeMonths, 1) & "/" & TAX_Utilities_Srv_New.Year
-            strKieuKy = "Q"
+            If ID_TK = "65" Then
+                KYKKHAI = Right$(TAX_Utilities_Srv_New.ThreeMonths, 1) & "/" & TAX_Utilities_Srv_New.Year
+                strKieuKy = "K"
+            Else
+                KYKKHAI = Right$(TAX_Utilities_Srv_New.ThreeMonths, 1) & "/" & TAX_Utilities_Srv_New.Year
+                strKieuKy = "Q"
+            End If
         Else
             KYKKHAI = TAX_Utilities_Srv_New.Year
             strKieuKy = "Y"
@@ -2096,9 +2100,9 @@ Private Sub Command1_Click()
 'str2 = "aa999642300026193   12201300400400100101/0101/01/2009<S01><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT4/001~AB/12T~91~0000010~0000100~18/12/2013~Doanh nghi÷p acb~0102030405~0456~11/10/2013~~H„a Æ¨n b∏n hµng (dµnh cho tÊ ch¯c, c∏ nh©n trong khu phi thu’ quan)~07KPTQ5/003~CD/23P~126~0000025~0000150~19/12/2013~dbh~0010011000~0567~12/10/2013~~Phi’u xu t kho gˆi b∏n hµng Æπi l˝~04HGDL6/005~MN/19T~151~0000050~0000200~20/12/2013~doanh nghi÷p~3600247325~0678~11/11/2013~</S><S>~~c¨ quan thu’ quÀn ba Æ◊nh~11/12/2013~Kh∏nh V©n</S></S01>"
 'Barcode_Scaned str2
 '
-''BC01/AC:
-'str2 = "aa999652300026193   02201300200200100101/0101/01/2009<S01><S>x~01/07/2013~31/12/2013</S><S>0102030405~doanh nghi÷p ab~hµ nÈi~234~13/11/2013~H„a Æ¨n xu t kh»u~06HDXK6/001~BH/12T~0000024~0000150~127~~0010011000~doanh nghi÷p 1~bæc ninh~094~14/11/2013~Phi’u xu t kho ki™m vÀn chuy”n hµng h„a nÈi bÈ~03XKNB5/003~BN/23T~0000036~0000189~154~~3600247325~MNP~hµ giang~056~15/11/2013~H„a Æ¨n b∏n hµng~02GTTT6/005~HD/34T~0000045~0000251~207~</S><S>Hπnh~25/10/2013</S></S01>"
-'Barcode_Scaned str2
+'BC01/AC:
+str2 = "aa999652300026193   02201300200200100101/0101/01/2009<S01><S>x~01/07/2013~31/12/2013</S><S>0102030405~doanh nghi÷p ab~hµ nÈi~234~13/11/2013~H„a Æ¨n xu t kh»u~06HDXK6/001~BH/12T~0000024~0000150~127~~0010011000~doanh nghi÷p 1~bæc ninh~094~14/11/2013~Phi’u xu t kho ki™m vÀn chuy”n hµng h„a nÈi bÈ~03XKNB5/003~BN/23T~0000036~0000189~154~~3600247325~MNP~hµ giang~056~15/11/2013~H„a Æ¨n b∏n hµng~02GTTT6/005~HD/34T~0000045~0000251~207~</S><S>Hπnh~25/10/2013</S></S01>"
+Barcode_Scaned str2
 '
 ''BC21/AC:
 'str2 = "aa999662300026193   03201300100100100101/0101/01/2010<S01><S>25/10/2013~15~1</S><S>H„a Æ¨n xu t kh»u~06HDXK6/001~AB/23T~0000030~0000250~221~7;12;24~05~0~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT4/003~CD/14T~0000025~0000167~143~6;14;28;30~04~0~Phi’u xu t kho ki™m vÀn chuy”n hµng h„a nÈi bÈ~03XKNB5/007~HN/16T~0000031~0000274~244~11;23;45~02~0</S><S>ch∏y h„a Æ¨n~Hπnh~25/10/2013</S></S01>"
@@ -2257,13 +2261,13 @@ Private Sub Command1_Click()
 'str2 = "aa999042300121087   10201300200300100101/0114/06/2006<S01><S>0010011000</S><S>3000000~2000000~1000000~140000~200000~-1940000~0</S><S>Huy“n Tr©m~Hoµng Lan~KTV~19/12/2013~1~~~0</S></S01>"
 'Barcode_Scaned str2
 '
-'04/GTGT:
-str2 = "aa999712300121087   10201300100100100301/0101/01/1900<S01><S>0010011000</S><S>20000000~3000000~30000~4000000~200000~5000000~150000~6000000~120000~18000000~500000~38000000~500000</S><S>Huy“n Tr©m~Hoµng Lan~KTV~19/12/2013~1~~~0</S></S01>"
-Barcode_Scaned str2
-str2 = "aa999712300121087   102013001001002003<S01_1><S>01GTKT~~003~05442~12/10/2013~nga~~~40000000~</S><S>07KPTQ~~004~03243~13/10/2013~hπnh~~~5000000~</S><S>02GTTT~~001~024234~14/10/2013~linh~~~6000000~</S><S>04HGDL~~002~"
-Barcode_Scaned str2
-str2 = "aa999712300121087   102013001001003003023423~15/10/2013~∏nh~~~7000000~~06HDXK~~005~023434~16/10/2013~ph≠¨ng~~~8000000~</S><S>03XKNB~~006~2423~18/10/2013~kh´i~~~2000000~</S><S>68000000~40000000~28000000</S></S01_1>"
-Barcode_Scaned str2
+''04/GTGT:
+'str2 = "aa999712300121087   10201300100100100301/0101/01/1900<S01><S>0010011000</S><S>20000000~3000000~30000~4000000~200000~5000000~150000~6000000~120000~18000000~500000~38000000~500000</S><S>Huy“n Tr©m~Hoµng Lan~KTV~19/12/2013~1~~~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999712300121087   102013001001002003<S01_1><S>01GTKT~~003~05442~12/10/2013~nga~~~40000000~</S><S>07KPTQ~~004~03243~13/10/2013~hπnh~~~5000000~</S><S>02GTTT~~001~024234~14/10/2013~linh~~~6000000~</S><S>04HGDL~~002~"
+'Barcode_Scaned str2
+'str2 = "aa999712300121087   102013001001003003023423~15/10/2013~∏nh~~~7000000~~06HDXK~~005~023434~16/10/2013~ph≠¨ng~~~8000000~</S><S>03XKNB~~006~2423~18/10/2013~kh´i~~~2000000~</S><S>68000000~40000000~28000000</S></S01_1>"
+'Barcode_Scaned str2
 
 ''05/GTGT:
 'str2 = "aa999722300121087   10201300200200100101/0114/06/2006<S01><S>0010011000</S><S>4000000~7000000~40000~140000~180000</S><S>Huy“n Tr©m~Hoµng Lan~KTV~19/12/2013~1~~~~</S></S01>"
