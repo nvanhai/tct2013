@@ -2058,7 +2058,7 @@ End Function
 
 Public Function CheckPeriod(ByVal strMonth As String, ByVal strYear As String) As Boolean
     On Error GoTo ErrHandle
-    CheckPeriod = False
+    
     If GetAttribute(TAX_Utilities_v1.NodeMenu, "ThreeMonth") = "1" Then ' strKieuKy = KIEU_KY_QUY
         If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
             If strQuy = "TK_THANG" Then
