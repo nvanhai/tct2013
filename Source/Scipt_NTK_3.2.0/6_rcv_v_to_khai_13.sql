@@ -917,12 +917,64 @@ GROUP BY dtl.hdr_id,
           dtl.so_tt;
 
 
--- 
-
-
-
-
-
+-- Phu luc 2/TBVMT kem theo to khai 01/TBVMTT
+CREATE OR REPLACE VIEW RCV_V_PLUC_TKHAI_TBVMT_01_13
+(hdr_id, row_id, so_tt, hang_hoa, ten_dn, mst, co_quan_thue, so_thue_tieu_thu_noi_dia, tong_so_than_thieu_thu, ty_le_phan_bo, san_luong_than_mua, muc_thue_bvmt, muc_thue_phat_sinh_phai_nop)
+AS
+SELECT
+    dtl.hdr_id ,
+    MAX(dtl.row_id)               			row_id ,
+	MAX(dtl.so_tt)                			so_tt ,
+    MAX(dtl.hang_hoa)             			hang_hoa ,
+    MAX(dtl.ten_dn)               			ten_dn ,
+	MAX(dtl.mst)               	  			mst ,
+    MAX(dtl.co_quan_thue)         			co_quan_thue ,
+	MAX(so_thue_tieu_thu_noi_dia)         	so_thue_tieu_thu_noi_dia ,
+    MAX(dtl.tong_so_than_thieu_thu) 		tong_so_than_thieu_thu ,
+    MAX(dtl.ty_le_phan_bo)              	ty_le_phan_bo ,
+    MAX(dtl.san_luong_than_mua)      		san_luong_than_mua,
+	MAX(dtl.muc_thue_bvmt)      			muc_thue_bvmt,
+	MAX(dtl.muc_thue_phat_sinh_phai_nop)	muc_thue_phat_sinh_phai_nop
+FROM
+    rcv_gdien_tkhai gd,
+    (
+        SELECT
+            tkd.hdr_id,
+            tkd.loai_dlieu,
+            gdien.id,
+            tkd.row_id,
+            gdien.so_tt                                          so_tt,
+            DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL) hang_hoa,
+            DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL) ten_dn,
+            DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) mst,
+            DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL) co_quan_thue,
+			DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL) so_thue_tieu_thu_noi_dia,
+			DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL) tong_so_than_thieu_thu,
+			DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL) ty_le_phan_bo,
+			DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL) san_luong_than_mua,
+			DECODE(gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL) muc_thue_bvmt,
+			DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL) muc_thue_phat_sinh_phai_nop
+        FROM
+            rcv_tkhai_dtl tkd,
+            rcv_gdien_tkhai gdien,
+            rcv_map_ctieu ctieu
+        WHERE
+            (
+                ctieu.gdn_id = gdien.id)
+        AND (
+                ctieu.ky_hieu = tkd.ky_hieu)
+        AND (
+                tkd.loai_dlieu = '01_01_TBVMT13'
+            ) ) dtl
+WHERE
+    (
+        gd.loai_dlieu = dtl.loai_dlieu)
+AND (
+        dtl.id = gd.id)
+GROUP BY
+    dtl.hdr_id,
+    dtl.row_id,
+    dtl.so_tt;
 
 -- Phu luc 01/KHBS cho to khai 01/GTGT
 CREATE OR REPLACE VIEW RCV_V_PLUC_KHBS_GTGT_KT13 AS
