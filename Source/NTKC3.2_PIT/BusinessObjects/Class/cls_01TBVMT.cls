@@ -274,7 +274,7 @@ Dim tenDM As String
             strMucThue = ""
             
             'Lay gia tri Ma
-            .GetText .ColLetterToNumber("Y"), i + 35, varID
+            .GetText .ColLetterToNumber("Z"), i + 35, varID
             
             DataDM varID, strTenHH, strDVT, strMucThue
             ' Ten hang hoa
