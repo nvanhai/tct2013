@@ -2102,17 +2102,17 @@ Public Function ConvertDate(ByVal tmpDatetime As String, ByVal formatDate As Int
     Dim result As String
     Select Case formatDate
         Case 1
-            result = Mid$(tmpDatetime, 4, 2) & Seperator & Left$(tmpDatetime, 2) & Seperator & Mid$(tmpDatetime, 7, 4) & Mid$(tmpDatetime, 11)
+            result = Mid$(tmpDatetime, 4, 2) & Seperator & Left$(tmpDatetime, 2) & Seperator & Mid$(tmpDatetime, 7, 4) & IIf(Mid$(tmpDatetime, 11) <> "", Mid$(tmpDatetime, 11), " 00:00:00")
         Case 2
-            result = Mid$(tmpDatetime, 7, 4) & Seperator & Mid$(tmpDatetime, 4, 2) & Seperator & Left$(tmpDatetime, 2) & Mid$(tmpDatetime, 11)
+            result = Mid$(tmpDatetime, 7, 4) & Seperator & Mid$(tmpDatetime, 4, 2) & Seperator & Left$(tmpDatetime, 2) & IIf(Mid$(tmpDatetime, 11) <> "", Mid$(tmpDatetime, 11), " 00:00:00")
         Case 3
-            result = Left$(tmpDatetime, 2) & Seperator & synMonth(Mid$(tmpDatetime, 4, 2), True) & Seperator & Mid$(tmpDatetime, 7, 4) & Mid$(tmpDatetime, 11)
+            result = Left$(tmpDatetime, 2) & Seperator & synMonth(Mid$(tmpDatetime, 4, 2), True) & Seperator & Mid$(tmpDatetime, 7, 4) & IIf(Mid$(tmpDatetime, 11) <> "", Mid$(tmpDatetime, 11), " 00:00:00")
         Case 4
-            result = synMonth(Mid$(tmpDatetime, 4, 3), False) & Seperator & Left$(tmpDatetime, 2) & Seperator & Mid$(tmpDatetime, 8, 4) & Mid$(tmpDatetime, 12)
+            result = synMonth(Mid$(tmpDatetime, 4, 3), False) & Seperator & Left$(tmpDatetime, 2) & Seperator & Mid$(tmpDatetime, 8, 4) & IIf(Mid$(tmpDatetime, 12) <> "", Mid$(tmpDatetime, 12), " 00:00:00")
         Case 5
-            result = Mid$(tmpDatetime, 8, 4) & Seperator & synMonth(Mid$(tmpDatetime, 4, 3), False) & Seperator & Left$(tmpDatetime, 2) & Mid$(tmpDatetime, 12)
+            result = Mid$(tmpDatetime, 8, 4) & Seperator & synMonth(Mid$(tmpDatetime, 4, 3), False) & Seperator & Left$(tmpDatetime, 2) & IIf(Mid$(tmpDatetime, 12) <> "", Mid$(tmpDatetime, 12), " 00:00:00")
         Case 6
-            result = Left$(tmpDatetime, 2) & Seperator & synMonth(Mid$(tmpDatetime, 4, 3), False) & Seperator & Mid$(tmpDatetime, 8, 4) & Mid$(tmpDatetime, 12)
+            result = Left$(tmpDatetime, 2) & Seperator & synMonth(Mid$(tmpDatetime, 4, 3), False) & Seperator & Mid$(tmpDatetime, 8, 4) & IIf(Mid$(tmpDatetime, 12) <> "", Mid$(tmpDatetime, 12), " 00:00:00")
     End Select
     ConvertDate = result
 End Function
