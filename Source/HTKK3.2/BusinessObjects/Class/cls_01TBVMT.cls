@@ -911,26 +911,29 @@ Dim CountRow As Integer
             Dim strTongTLPhanBo As Variant
             
             Dim fLagTongTyLe As Integer
+            Const colorCell = 16709097
+            
+            Dim iFlagCheckData As Boolean
             
             Dim iWhiteRow As Integer
             iWhiteRow = 0
             
-            .GetText .ColLetterToNumber("U"), 30, strTongTLPhanBo
+            '.GetText .ColLetterToNumber("U"), 30, strTongTLPhanBo
             
             
-            ' kiem tra tong ty le phan bo phai bang 100
-            If Val(strTongTLPhanBo) <> 100 And Val(strTongTLPhanBo) <> 0 Then
-                .Col = .ColLetterToNumber("U")
-                .Row = 35
-                .BackColor = mErrorColor
-                .CellNote = vMsgErrorTongTyLe
-                fLagTongTyLe = 1
-            Else
-                .Col = .ColLetterToNumber("U")
-                .Row = 35
-                .BackColor = mNonErrorColor
-                .CellNote = ""
-            End If
+'            ' kiem tra tong ty le phan bo phai bang 100
+'            If Val(strTongTLPhanBo) <> 100 And Val(strTongTLPhanBo) <> 0 Then
+'                .Col = .ColLetterToNumber("U")
+'                .Row = 35
+'                .BackColor = mErrorColor
+'                .CellNote = vMsgErrorTongTyLe
+'                fLagTongTyLe = 1
+'            Else
+'                .Col = .ColLetterToNumber("U")
+'                .Row = 35
+'                .BackColor = mNonErrorColor
+'                .CellNote = ""
+'            End If
             
             iFlagEmpty = 0
             'check not empty ten doanh nghiep
@@ -1041,11 +1044,34 @@ Dim CountRow As Integer
                             iFlagEmpty = 1
                     End If
                     
+                    
+                    'danh dau neu dong co chua du lieu
+                    iFlagCheckData = True
                 End If
             
             .Col = .ColLetterToNumber("C")
             .Row = .Row + 1
             Loop Until .Text = "aa"
+        End If
+ 
+        
+         'neu dong co chua du lieu thi kiem tra cac rang buoc trong cac chi tieu
+        If iFlagCheckData Then
+           'lay tong ty le chia TNCT
+            .GetText .ColLetterToNumber("U"), .MaxRows - 12, strTongTLPhanBo
+            'check tong TNCT phai = 100
+            If Val(strTongTLPhanBo) <> 100 Then
+                .Col = .ColLetterToNumber("U")
+                .Row = .MaxRows - 12
+                .BackColor = mErrorColor
+                .CellNote = vMsgErrorTongTyLe
+                fLagTongTyLe = 1
+            Else
+                .Col = .ColLetterToNumber("U")
+                .Row = .MaxRows - 12
+                .BackColor = colorCell
+                .CellNote = ""
+            End If
         End If
  
      blCheck_S2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
@@ -1056,11 +1082,13 @@ Dim CountRow As Integer
             .SetText .ColLetterToNumber("B"), 17, IIf(iFlagEmpty = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 18, IIf(iFlagCheckMaST = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 21, IIf(iFlagMSTTrung = 1, "0", "1")
+            .SetText .ColLetterToNumber("B"), 22, IIf(fLagTongTyLe = 1, "0", "1")
         Else
             .SetText .ColLetterToNumber("B"), 20, "1"
             .SetText .ColLetterToNumber("B"), 17, "1"
             .SetText .ColLetterToNumber("B"), 18, "1"
             .SetText .ColLetterToNumber("B"), 21, "1"
+            .SetText .ColLetterToNumber("B"), 22, "1"
         End If
         
   
