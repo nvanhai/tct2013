@@ -308,8 +308,8 @@ Public Sub traCuuToKhai()
     strSQL = Replace(strSQL, "ma_tkhai", "" & changeLoaiToKhai(lmaTK) & "")
     strSQL = Replace(strSQL, "str_tt_gui", "" & strDaGui & "")
     strSQL = Replace(strSQL, "strDa_Nhan", "" & strDaNhan & "")
-    strSQL = Replace(strSQL, "ngay_nop_dau", "To_date('" & format(DteTuN, "dd/mm/yyyy") & "','dd/mm/yyyy') ")
-    strSQL = Replace(strSQL, "ngay_nop_cuoi", "To_date('" & format(DteDeN, "dd/mm/yyyy") & "','dd/mm/yyyy') ")
+    strSQL = Replace(strSQL, "ngay_nop_dau", "To_date('" & Format(DteTuN, "dd/mm/yyyy") & "','dd/mm/yyyy') ")
+    strSQL = Replace(strSQL, "ngay_nop_cuoi", "To_date('" & Format(DteDeN, "dd/mm/yyyy") & "','dd/mm/yyyy') ")
     If Trim(kyLapBo) <> "" And kyLapBo <> vbNullString Then
         strSQL = strSQL & " and  hdr.kylb_tu_ngay= to_date('" & "01/" & kyLapBo & "'," & "'dd/mm/yyyy')"
     End If
@@ -330,7 +330,7 @@ Public Sub traCuuToKhai()
         'Xoa trang thai nut Check
         .Col = 2
         .Row = 1
-        .Value = "0"
+        .value = "0"
     
         If rsReturn.Fields.Count > 0 Then
             Do While Not rsReturn.EOF
@@ -350,8 +350,8 @@ Public Sub traCuuToKhai()
                 
                 
                 For lIndex = 1 To rsReturn.Fields.Count
-                    If Not (IsNull(rsReturn.Fields(lIndex - 1).Value)) Then
-                        .SetText lCol, lRow, TAX_Utilities_Srv_New.Convert(rsReturn.Fields(lIndex - 1).Value, TCVN, UNICODE)
+                    If Not (IsNull(rsReturn.Fields(lIndex - 1).value)) Then
+                        .SetText lCol, lRow, TAX_Utilities_Srv_New.Convert(rsReturn.Fields(lIndex - 1).value, TCVN, UNICODE)
                         lCol = lCol + 1
                         .RowHeight(lRow) = .MaxTextRowHeight(lRow)
                     End If
@@ -605,38 +605,38 @@ On Error GoTo ErrHandle
                     If rsHDR.Fields.Count > 0 Then
                         Do While Not rsHDR.EOF
                             'clsConn.BeginTrans
-                            strMST = rsHDR.Fields(0).Value
-                            strTen = IIf(IsNull(rsHDR.Fields(1)), "", rsHDR.Fields(1).Value)
+                            strMST = rsHDR.Fields(0).value
+                            strTen = IIf(IsNull(rsHDR.Fields(1)), "", rsHDR.Fields(1).value)
                             strTen = Replace(strTen, "'", "''")
-                            strDiaChi = IIf(IsNull(rsHDR.Fields(2)), "", rsHDR.Fields(2).Value)
+                            strDiaChi = IIf(IsNull(rsHDR.Fields(2)), "", rsHDR.Fields(2).value)
                             strDiaChi = Replace(strDiaChi, "'", "''")
-                            strLoaiTK = rsHDR.Fields(3).Value
-                            strNgayNop = rsHDR.Fields(4).Value
-                            strKylbTu = rsHDR.Fields(5).Value
-                            strKylbDen = rsHDR.Fields(6).Value
-                            strKyKKtu = rsHDR.Fields(7).Value
-                            strKyKKden = rsHDR.Fields(8).Value
-                            strNgayCN = rsHDR.Fields(9).Value
-                            strNguoiCN = rsHDR.Fields(10).Value
-                            strLoiDD = rsHDR.Fields(11).Value
-                            strLanQuet = rsHDR.Fields(12).Value
-                            strPhongXL = rsHDR.Fields(13).Value
-                            strKkbs = rsHDR.Fields(14).Value
-                            strID = rsHDR.Fields(15).Value
-                            strThueOnDinh = rsHDR.Fields(16).Value
-                            strDaiLyThue = rsHDR.Fields(17).Value
-                            strSoHopDong = rsHDR.Fields(18).Value
-                            strNgayHopDong = rsHDR.Fields(19).Value
-                            strLanBS = rsHDR.Fields(20).Value
-                            strHinhThucQT = rsHDR.Fields(21).Value
-                            strTKThangQuy = rsHDR.Fields(22).Value
-                            strITkhaiID = rsHDR.Fields(23).Value
-                            strHinhThucNop = rsHDR.Fields(24).Value
+                            strLoaiTK = rsHDR.Fields(3).value
+                            strNgayNop = rsHDR.Fields(4).value
+                            strKylbTu = rsHDR.Fields(5).value
+                            strKylbDen = rsHDR.Fields(6).value
+                            strKyKKtu = rsHDR.Fields(7).value
+                            strKyKKden = rsHDR.Fields(8).value
+                            strNgayCN = rsHDR.Fields(9).value
+                            strNguoiCN = rsHDR.Fields(10).value
+                            strLoiDD = rsHDR.Fields(11).value
+                            strLanQuet = rsHDR.Fields(12).value
+                            strPhongXL = rsHDR.Fields(13).value
+                            strKkbs = rsHDR.Fields(14).value
+                            strID = rsHDR.Fields(15).value
+                            strThueOnDinh = rsHDR.Fields(16).value
+                            strDaiLyThue = rsHDR.Fields(17).value
+                            strSoHopDong = rsHDR.Fields(18).value
+                            strNgayHopDong = rsHDR.Fields(19).value
+                            strLanBS = rsHDR.Fields(20).value
+                            strHinhThucQT = rsHDR.Fields(21).value
+                            strTKThangQuy = rsHDR.Fields(22).value
+                            strITkhaiID = rsHDR.Fields(23).value
+                            strHinhThucNop = rsHDR.Fields(24).value
                             
                             ' To khai 08/TNCN va 08A/TNCN
                             If strTKThangQuy = 1 Then
-                                strKyKKtu = rsHDR.Fields(25).Value
-                                strKyKKden = rsHDR.Fields(26).Value
+                                strKyKKtu = rsHDR.Fields(25).value
+                                strKyKKden = rsHDR.Fields(26).value
                             End If
                             
                             If strTKThangQuy = vbNullString Or IsNull(strTKThangQuy) Then
@@ -693,9 +693,9 @@ On Error GoTo ErrHandle
                             Set rsDTl = clsDAO.Execute(strSQLDtl)
                             If rsDTl.Fields.Count > 0 Then
                                 Do While Not rsDTl.EOF
-                                    strGiaTri = rsDTl.Fields(0).Value
-                                    strKyHieu = rsDTl.Fields(1).Value
-                                    strRowID = rsDTl.Fields(2).Value
+                                    strGiaTri = rsDTl.Fields(0).value
+                                    strKyHieu = rsDTl.Fields(1).value
+                                    strRowID = rsDTl.Fields(2).value
                                     strRowID = IIf(IsNull(strRowID), "", strRowID)
                                     mupId = GetMupId
                                     'Ghep chuoi cau insert DTl
@@ -737,7 +737,7 @@ On Error GoTo ErrHandle
         ' Load lai danh sach to khai chua gui
         traCuuToKhai
     Else
-        DisplayMessage "0131", msOKOnly, miCriticalError
+        DisplayMessage "0148", msOKOnly, miCriticalError
         Exit Sub
     End If
     ' end
@@ -836,7 +836,7 @@ Sub SetupData()
             Dim vKyLB As Variant
             Dim arrDate() As String
             vdtehientai = Date
-            vKyLB = format(vdtehientai, "mm/yyyy")
+            vKyLB = Format(vdtehientai, "mm/yyyy")
             
             .Col = .ColLetterToNumber(f1dteTuNCol)
             .Row = f1dteTuNRow
@@ -1081,10 +1081,10 @@ With fpsDkNgay
         Dim vdtetun As Variant
         .GetText .Col, .Row, vdtetun
         If vdtetun = "" Then
-            DteTuN = format(lminDate, "DD/MM/YYYY")
+            DteTuN = Format(lminDate, "DD/MM/YYYY")
         Else
             If IsDate(vdtetun) Then
-                DteTuN = format(vdtetun, "DD/MM/YYYY")
+                DteTuN = Format(vdtetun, "DD/MM/YYYY")
             Else
                 KiemTraDKngay = False
                 Exit Function
@@ -1095,10 +1095,10 @@ With fpsDkNgay
         Dim vdteden As Variant
         .GetText .Col, .Row, vdteden
         If vdteden = "" Then
-            DteDeN = format(lmaxDate, "DD/MM/YYYY")
+            DteDeN = Format(lmaxDate, "DD/MM/YYYY")
         Else
             If IsDate(vdteden) Then
-                DteDeN = format(vdteden, "DD/MM/YYYY")
+                DteDeN = Format(vdteden, "DD/MM/YYYY")
             Else
                 KiemTraDKngay = False
                 Exit Function
@@ -1178,7 +1178,7 @@ Function Format_mmyyyy(str As String) As String
     y = Replace(y, ".", "")
     If IsNumeric(m) And IsNumeric(y) Then
         If Val(m) >= 1 And Val(m) <= 12 Then
-            Format_mmyyyy = format(m, "0#")
+            Format_mmyyyy = Format(m, "0#")
         Else
             GoTo e
         End If
@@ -1187,7 +1187,7 @@ Function Format_mmyyyy(str As String) As String
             
             If Val(y) >= 0 And Val(y) <= 999 Then y = CStr(2000 + Val(y))
             If Val(y) < 1900 Then GoTo e
-            Format_mmyyyy = Format_mmyyyy & "/" & format(y, "####")
+            Format_mmyyyy = Format_mmyyyy & "/" & Format(y, "####")
         Else
             GoTo e
         End If

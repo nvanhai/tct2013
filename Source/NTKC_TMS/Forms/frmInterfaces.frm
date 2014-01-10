@@ -2100,9 +2100,9 @@ Private Sub Command1_Click()
 'str2 = "aa999642300026193   12201300400400100101/0101/01/2009<S01><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT4/001~AB/12T~91~0000010~0000100~18/12/2013~Doanh nghi÷p acb~0102030405~0456~11/10/2013~~H„a Æ¨n b∏n hµng (dµnh cho tÊ ch¯c, c∏ nh©n trong khu phi thu’ quan)~07KPTQ5/003~CD/23P~126~0000025~0000150~19/12/2013~dbh~0010011000~0567~12/10/2013~~Phi’u xu t kho gˆi b∏n hµng Æπi l˝~04HGDL6/005~MN/19T~151~0000050~0000200~20/12/2013~doanh nghi÷p~3600247325~0678~11/11/2013~</S><S>~~c¨ quan thu’ quÀn ba Æ◊nh~11/12/2013~Kh∏nh V©n</S></S01>"
 'Barcode_Scaned str2
 '
-'BC01/AC:
-str2 = "aa999652300026193   02201300200200100101/0101/01/2009<S01><S>x~01/07/2013~31/12/2013</S><S>0102030405~doanh nghi÷p ab~hµ nÈi~234~13/11/2013~H„a Æ¨n xu t kh»u~06HDXK6/001~BH/12T~0000024~0000150~127~~0010011000~doanh nghi÷p 1~bæc ninh~094~14/11/2013~Phi’u xu t kho ki™m vÀn chuy”n hµng h„a nÈi bÈ~03XKNB5/003~BN/23T~0000036~0000189~154~~3600247325~MNP~hµ giang~056~15/11/2013~H„a Æ¨n b∏n hµng~02GTTT6/005~HD/34T~0000045~0000251~207~</S><S>Hπnh~25/10/2013</S></S01>"
-Barcode_Scaned str2
+''BC01/AC:
+'str2 = "aa999652300026193   02201300200200100101/0101/01/2009<S01><S>x~01/07/2013~31/12/2013</S><S>0102030405~doanh nghi÷p ab~hµ nÈi~234~13/11/2013~H„a Æ¨n xu t kh»u~06HDXK6/001~BH/12T~0000024~0000150~127~~0010011000~doanh nghi÷p 1~bæc ninh~094~14/11/2013~Phi’u xu t kho ki™m vÀn chuy”n hµng h„a nÈi bÈ~03XKNB5/003~BN/23T~0000036~0000189~154~~3600247325~MNP~hµ giang~056~15/11/2013~H„a Æ¨n b∏n hµng~02GTTT6/005~HD/34T~0000045~0000251~207~</S><S>Hπnh~25/10/2013</S></S01>"
+'Barcode_Scaned str2
 '
 ''BC21/AC:
 'str2 = "aa999662300026193   03201300100100100101/0101/01/2010<S01><S>25/10/2013~15~1</S><S>H„a Æ¨n xu t kh»u~06HDXK6/001~AB/23T~0000030~0000250~221~7;12;24~05~0~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT4/003~CD/14T~0000025~0000167~143~6;14;28;30~04~0~Phi’u xu t kho ki™m vÀn chuy”n hµng h„a nÈi bÈ~03XKNB5/007~HN/16T~0000031~0000274~244~11;23;45~02~0</S><S>ch∏y h„a Æ¨n~Hπnh~25/10/2013</S></S01>"
@@ -2319,9 +2319,9 @@ Barcode_Scaned str2
 'str2 = "aa999482300121087   11201300100100100101/0101/01/2010<S01><S>0010011000</S><S>500000~400000~200000</S><S>Hoµng Lan~Huy“n Tr©m~KTV~20/12/2013~1~~</S></S01>"
 'Barcode_Scaned str2
 '
-''01/KK-BHDC:
-'str2 = "aa999252300121087   11201300100100100101/0101/01/1900<S01><S>0010011000</S><S>4000000~200000~100000~300000~30000~100000~10000~130000~30000~21000~161000</S><S>Hoµng Lan~20/12/2013~Huy“n Tr©m~KTV~1~~~0</S></S01>"
-'Barcode_Scaned str2
+'01/KK-BHDC:
+str2 = "aa999252300121087   11201300100100100101/0101/01/1900<S01><S>0010011000</S><S>4000000~200000~100000~300000~30000~100000~10000~130000~30000~21000~161000</S><S>Hoµng Lan~20/12/2013~Huy“n Tr©m~KTV~1~~~0</S></S01>"
+Barcode_Scaned str2
 
 ''02/TNCN:
 'str2 = "aa999152300121087   11201300100100100101/0101/01/2010<S01><S>0010011000</S><S>5000~2000~120000~300000~400000~100000~340000~130000~100000~200000~60000~10000~40000</S><S>Hoµng Lan~20/12/2013~Huy“nTr©m~KTV~1~~</S></S01>"
@@ -2757,6 +2757,40 @@ Private Sub Barcode_Scaned(strBarcode As String)
             If (Trim(idToKhai) = "53" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "37" And Val(Mid(strPrefix, 21, 4)) > 2009) _
                 Or (Trim(idToKhai) = "54" And Val(Mid(strPrefix, 19, 2)) > 1 And Val(Mid(strPrefix, 21, 4)) > 2009) Or (Trim(idToKhai) = "38" And Val(Mid(strPrefix, 21, 4)) > 2009) Then
                 DisplayMessage "0094", msOKOnly, miInformation
+                Exit Sub
+            End If
+        End If
+        
+'        'get loai to khai
+'        If verToKhai = 2 Then
+'            strLoaiToKhai = "bs"
+'        Else
+'            strLoaiToKhai = "aa"
+'        End If
+'
+        'khong nhan cac to khai khong theo mau HTKK3.2.0
+        idToKhai = Mid(strPrefix, 4, 2)
+        If (Val(Left$(strPrefix, 3)) <= 317 And UCase(strLoaiToKhai) = "AA") Then
+            If Trim(idToKhai) = "01" Or Trim(idToKhai) = "02" Or Trim(idToKhai) = "04" Or Trim(idToKhai) = "11" Or Trim(idToKhai) = "12" Or Trim(idToKhai) = "71" _
+            Or Trim(idToKhai) = "72" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "90" Or Trim(idToKhai) = "25" Or Trim(idToKhai) = "50" Or Trim(idToKhai) = "51" Or Trim(idToKhai) = "19" _
+            Or Trim(idToKhai) = "22" Or Trim(idToKhai) = "15" Or Trim(idToKhai) = "16" Or Trim(idToKhai) = "36" Or Trim(idToKhai) = "74" Then
+                If idToKhai = "72" Then '05/GTGT
+                    'xu ly voi to khai cau truc khong thay doi thi van cho nhan: 05/GTGT
+                    strBarcode = Replace(strBarcode, "</S></S01>", "~~</S></S01>")
+                Else
+                    DisplayMessage "0147", msOKOnly, miInformation
+                    Exit Sub
+                End If
+            End If
+        End If
+        
+        'khong nhan cac to khai bo sung khong theo mau HTKK3.2.0(GD1)
+        idToKhai = Mid(strPrefix, 4, 2)
+        If (Val(Left$(strPrefix, 3)) <= 317 And UCase(strLoaiToKhai) = "BS") Then
+            'khbs updated GD1
+            If Trim(idToKhai) = "01" Or Trim(idToKhai) = "02" Or Trim(idToKhai) = "04" Or Trim(idToKhai) = "71" Or Trim(idToKhai) = "72" Or Trim(idToKhai) = "11" Or Trim(idToKhai) = "12" _
+            Or Trim(idToKhai) = "73" Or Trim(idToKhai) = "70" Or Trim(idToKhai) = "81" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "05" Or Trim(idToKhai) = "90" Or Trim(idToKhai) = "86" Then
+                DisplayMessage "0148", msOKOnly, miInformation
                 Exit Sub
             End If
         End If
@@ -6047,7 +6081,7 @@ Private Function formatMaToKhai(ByVal strID As String) As String
     ElseIf strCode = "13" Then
         strRetValue = "('" & strItem & "','" & strItem & "11','" & strID & "')"
     Else
-        strRetValue = "('" & strItem & "','" & strItem & "11','" & strID & "13')"
+        strRetValue = "('" & strID & "','" & strID & "11','" & strID & "13')"
     End If
     formatMaToKhai = strRetValue
 End Function
