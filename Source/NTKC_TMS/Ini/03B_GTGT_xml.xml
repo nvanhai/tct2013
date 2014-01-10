@@ -1,53 +1,38 @@
-<HSoKhaiThue>
-	<Static GroupName="TKhaiThue">
-		<maTKhai>03B_GTGT</maTKhai>
-		<tenTKhai>TỜ KHAI THUẾ GTGT (Mẫu số 03B/GTGT)</tenTKhai>
-		<soLan></soLan>
-		<moTaBMau/>
-	</Static>
-	<Static GroupName="GiaHan">
-		<maLyDoGiaHan></maLyDoGiaHan>
-		<lyDoGiaHan></lyDoGiaHan>
-	</Static>
-	<Static GroupName="NNT">
-		<maHuyenNNT>F_14</maHuyenNNT>
-		<maTinhNNT>Q_14</maTinhNNT>
-	</Static>
-	<Static GroupName="DLyThue">
-		<maHuyenDLyThue>F_24</maHuyenDLyThue>
-		<maTinhDLyThue>Q_24</maTinhDLyThue>
-	</Static>
-	<Static GroupName="CTieuTKhaiChinh">
-		<ct21>M_41</ct21>
-		<ct24>M_42</ct24>
-		<ct27>M_43</ct27>
-		<ct30>M_44</ct30>
-		<ct33>M_45</ct33>
-		<ct36>M_46</ct36>
-		<ct39>M_47</ct39>
-		<ct22>S_41</ct22>
-		<ct25>S_42</ct25>
-		<ct28>S_43</ct28>
-		<ct31>S_44</ct31>
-		<ct34>S_45</ct34>
-		<ct37>S_46</ct37>
-		<ct40>S_47</ct40>
-		<ct23>X_41</ct23>
-		<ct26>X_42</ct26>
-		<ct29>X_43</ct29>
-		<ct32>X_44</ct32>
-		<ct35>X_45</ct35>
-		<ct38>X_46</ct38>
-		<ct41>X_47</ct41>
-		<ct42>R_49</ct42>
-		<ct43>R_51</ct43>
-	</Static>
-	<Static GroupName="TKhaiThue">
-		<nguoiKy>R_55</nguoiKy>
-		<ngayKy>R_57</ngayKy>
-	</Static>
-	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>H_55</tenNVienDLyThue>
-		<cchiHNghe>H_57</cchiHNghe>
-	</Static>
-</HSoKhaiThue>
+
+	<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30">
+		<Static GroupName="TKhaiThue">
+			<maTKhai>04</maTKhai>
+			<tenTKhai>TỜ KHAI THUẾ GTGT (Mẫu số 03/GTGT)</tenTKhai>
+			<moTaBMau></moTaBMau>
+			<soLan>S_6</soLan>
+		</Static>
+		<Static GroupName="GiaHan">
+			<maLyDoGiaHan></maLyDoGiaHan>
+			<lyDoGiaHan></lyDoGiaHan>
+		</Static>
+		<Static GroupName="NNT">
+			<maHuyenNNT></maHuyenNNT>
+			<maTinhNNT></maTinhNNT>
+		</Static>
+		<Static GroupName="DLyThue">
+			<maHuyenDLyThue></maHuyenDLyThue>
+			<maTinhDLyThue></maTinhDLyThue>
+		</Static>
+		<Static GroupName="CTieuTKhaiChinh">
+			<ct21>M_41</ct21>
+			<ct22>S_41</ct22>
+			<ct23>X_41</ct23>
+			<ct24>M_42</ct24>
+			<ct25>S_42</ct25>
+			<ct26>X_42</ct26>
+			<ct27>M_43</ct27>
+		</Static>
+		<Static GroupName="TKhaiThue">
+			<nguoiKy>R_52</nguoiKy>
+			<ngayKy>R_54</ngayKy>
+		</Static>
+		<Static GroupName="NVienDLy">
+			<tenNVienDLyThue>H_52</tenNVienDLyThue>
+			<cchiHNghe>E_58</cchiHNghe>
+		</Static>
+	</HSoKhaiThue>

@@ -1,7 +1,7 @@
-<HSoKhaiThue>
+<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22">
 	<Static GroupName="TKhaiThue">
 		<maTKhai/>
-		<tenTKhai>token</tenTKhai>
+		<tenTKhai></tenTKhai>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
