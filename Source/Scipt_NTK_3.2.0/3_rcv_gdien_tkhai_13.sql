@@ -806,13 +806,13 @@ insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_
 values (6098, 'ThuÕ TNDN ph¶i nép trong kú ([31]= [27][30])', '31', '', '', '', '', '', '', '', '', '', '', 20, '01B_TNDN13', '3713', '', '', '', '', '', '', '', '', '', '', '');
 
 insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
-values (6099, '§èi t­îng ®­îc gia h¹n', '32', '', '', '', '', '', '', '', '', '', '', 21, '01B_TNDN13', '', '', '', '', '', '', '', '', '', '', '', '');
+values (6099, '§èi t­îng ®­îc gia h¹n', '32', '', '', '', '', '', '', '', '', '', '', 21, '01B_TNDN13', '5840', '', '', '', '', '', '', '', '', '', '', '');
 
 insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
-values (6100, 'Tr­êng hîp ®­îc gia h¹n nép thuÕ TNDN                                                                                                                                  ', '32a', '', '', '', '', '', '', '', '', '', '', 22, '01B_TNDN13', '', '', '', '', '', '', '', '', '', '', '', '');
+values (6100, 'Tr­êng hîp ®­îc gia h¹n nép thuÕ TNDN                                                                                                                                  ', '32a', '5841', '', '', '', '', '', '', '', '', '', 22, '01B_TNDN13', '', '', '', '', '', '', '', '', '', '', '', '');
 
 insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
-values (6101, 'Thêi h¹n ®­îc gia h¹n                                                                                                                                                  ', '32b', '', '', '', '', '', '', '', '', '', '', 23, '01B_TNDN13', '', '', '', '', '', '', '', '', '', '', '', '');
+values (6101, 'Thêi h¹n ®­îc gia h¹n                                                                                                                                                  ', '32b', '5842', '', '', '', '', '', '', '', '', '', 23, '01B_TNDN13', '', '', '', '', '', '', '', '', '', '', '', '');
 
 insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
 values (6102, 'Sè thuÕ TNDN ®­îc gia h¹n                                                                                                                                              ', '32c', '', '', '', '', '', '', '', '', '', '', 24, '01B_TNDN13', '3714', '', '', '', '', '', '', '', '', '', '', '');
@@ -967,7 +967,7 @@ insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_
 values (6182, '[30] Sè thuÕ ph¶i nép:  ', '30', '', '', '', '', '', '', '', '', '', '', 13, '01_TNCN_TTS', '', '', '', '', '', '', '', '', '', '', '', '');
 
 insert into rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
-values (6183, 'Thu nhËp vµ sè thuÕ t¹m nép cña c¸ nh©n trong nhãm  ', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', 14, '01_TNCN_TTS', '', '', '', '', '', '', '', '', '', '', '', '');
+values (6183, 'Thu nhËp vµ sè thuÕ t¹m nép cña c¸ nh©n trong nhãm  ', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', 14, '01_TNCN_TTS', '', '42', '', '', '', '', '', '', '', '', '', '');
 commit;
 
 
