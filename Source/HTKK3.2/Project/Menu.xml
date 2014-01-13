@@ -448,6 +448,10 @@
 			<Sheet ID="01" Caption="Biểu thuế tài nguyên" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="Catalogue_012013_01" InterfaceIni="..\InterfaceIni\Catalogue_012013_01.xml"/>
 			<Sheet ID="02" Caption="Biểu thuế tiêu thụ đặc biệt" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="Catalogue_012013_02" InterfaceIni="..\InterfaceIni\Catalogue_012013_02.xml"/>
 		</Validity>	
+		<Validity StartDate="01/02/2014" InterfaceTemplate="..\InterfaceTemplates\excel\Catalogue_022014.xls" ReportTemplate="" Class="TAX_Business_v1.clsCatalogue_2_new" Class2="">
+			<Sheet ID="01" Caption="Biểu thuế tài nguyên" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="Catalogue_022014_01" InterfaceIni="..\InterfaceIni\Catalogue_022014_01.xml"/>
+			<Sheet ID="02" Caption="Biểu thuế tiêu thụ đặc biệt" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="Catalogue_022014_02" InterfaceIni="..\InterfaceIni\Catalogue_022014_02.xml"/>
+		</Validity>	
 	</Menu>
 	<Menu ID="100_8" PopID="1" ParentID="103" Caption="Tra cứu tờ khai" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tokhai.bmp"/>
 	<Menu ID="100_2" PopID="1" ParentID="103" Caption="Sao lưu dữ liệu" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\saoluu.bmp"/>
