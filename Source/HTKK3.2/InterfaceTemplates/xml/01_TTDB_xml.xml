@@ -3,67 +3,67 @@
 	<HSoKhaiThue>
 		<TTinChung>
 			<TTinDVu>
-				<maDVu></maDVu>
-				<tenDVu></tenDVu>
-				<pbanDVu></pbanDVu>
-				<ttinNhaCCapDVu></ttinNhaCCapDVu>
+				<maDVu/>
+				<tenDVu/>
+				<pbanDVu/>
+				<ttinNhaCCapDVu/>
 			</TTinDVu>
 			<TTinTKhaiThue>
 				<TKhaiThue>
-					<maTKhai></maTKhai>
-					<tenTKhai></tenTKhai>
+					<maTKhai/>
+					<tenTKhai/>
 					<moTaBMau/>
-					<pbanTKhaiXML></pbanTKhaiXML>
+					<pbanTKhaiXML/>
 					<loaiTKhai>C</loaiTKhai>
 					<soLan>1</soLan>
 					<KyKKhaiThue>
 						<kieuKy>D</kieuKy>
-						<kyKKhai></kyKKhai>
-						<kyKKhaiTuNgay></kyKKhaiTuNgay>
-						<kyKKhaiDenNgay></kyKKhaiDenNgay>
-						<kyKKhaiTuThang></kyKKhaiTuThang>
-						<kyKKhaiDenThang></kyKKhaiDenThang>
+						<kyKKhai/>
+						<kyKKhaiTuNgay/>
+						<kyKKhaiDenNgay/>
+						<kyKKhaiTuThang/>
+						<kyKKhaiDenThang/>
 					</KyKKhaiThue>
-					<maCQTNoiNop></maCQTNoiNop>
-					<tenCQTNoiNop></tenCQTNoiNop>
-					<ngayLapTKhai></ngayLapTKhai>
+					<maCQTNoiNop/>
+					<tenCQTNoiNop/>
+					<ngayLapTKhai/>
 					<GiaHan>
-						<maLyDoGiaHan></maLyDoGiaHan>
-						<lyDoGiaHan></lyDoGiaHan>
+						<maLyDoGiaHan/>
+						<lyDoGiaHan/>
 					</GiaHan>
-					<nguoiKy></nguoiKy>
-					<ngayKy></ngayKy>
-					<nganhNgheKD></nganhNgheKD>
+					<nguoiKy/>
+					<ngayKy/>
+					<nganhNgheKD/>
 				</TKhaiThue>
 				<NNT>
-					<mst></mst>
-					<tenNNT></tenNNT>
-					<dchiNNT></dchiNNT>
-					<phuongXa></phuongXa>
-					<maHuyenNNT></maHuyenNNT>
-					<tenHuyenNNT></tenHuyenNNT>
-					<maTinhNNT></maTinhNNT>
-					<tenTinhNNT></tenTinhNNT>
-					<dthoaiNNT></dthoaiNNT>
-					<faxNNT></faxNNT>
-					<emailNNT></emailNNT>
+					<mst/>
+					<tenNNT/>
+					<dchiNNT/>
+					<phuongXa/>
+					<maHuyenNNT/>
+					<tenHuyenNNT/>
+					<maTinhNNT/>
+					<tenTinhNNT/>
+					<dthoaiNNT/>
+					<faxNNT/>
+					<emailNNT/>
 				</NNT>
 				<DLyThue>
-					<mstDLyThue></mstDLyThue>
-					<tenDLyThue></tenDLyThue>
-					<dchiDLyThue></dchiDLyThue>
-					<maHuyenDLyThue></maHuyenDLyThue>
-					<tenHuyenDLyThue></tenHuyenDLyThue>
-					<maTinhDLyThue></maTinhDLyThue>
-					<tenTinhDLyThue></tenTinhDLyThue>
-					<dthoaiDLyThue></dthoaiDLyThue>
-					<faxDLyThue></faxDLyThue>
-					<emailDLyThue></emailDLyThue>
-					<soHDongDLyThue></soHDongDLyThue>
-					<ngayKyHDDLyThue></ngayKyHDDLyThue>
+					<mstDLyThue/>
+					<tenDLyThue/>
+					<dchiDLyThue/>
+					<maHuyenDLyThue/>
+					<tenHuyenDLyThue/>
+					<maTinhDLyThue/>
+					<tenTinhDLyThue/>
+					<dthoaiDLyThue/>
+					<faxDLyThue/>
+					<emailDLyThue/>
+					<soHDongDLyThue/>
+					<ngayKyHDDLyThue/>
 					<NVienDLy>
-						<tenNVienDLyThue></tenNVienDLyThue>
-						<cchiHNghe></cchiHNghe>
+						<tenNVienDLyThue/>
+						<cchiHNghe/>
 					</NVienDLy>
 				</DLyThue>
 			</TTinTKhaiThue>
@@ -73,61 +73,66 @@
 				<HangHoaChiuThueTTDB>
 					<ChiTietHangHoaChiuThueTTDB>
 						<NDungTKhaiTTDB>
-							<ct2></ct2>
-							<ct3></ct3>
-							<ct4>1</ct4>
+							<ct2_maHHDV>String</ct2_maHHDV>
+							<ct2>String</ct2>
+							<ct3>String</ct3>
+							<ct4>0.0</ct4>
 							<ct5>1</ct5>
-							<ct6>1</ct6>
-							<ct7>1</ct7>
+							<ct6>0.0</ct6>
+							<ct7>0.0</ct7>
 							<ct8>1</ct8>
 							<ct9>1</ct9>
 						</NDungTKhaiTTDB>
 					</ChiTietHangHoaChiuThueTTDB>
 					<tongDongIcot5>1</tongDongIcot5>
-					<tongDongIcot6>1</tongDongIcot6>
+					<tongDongIcot6>0.0</tongDongIcot6>
 					<tongDongIcot8>1</tongDongIcot8>
 					<tongDongIcot9>1</tongDongIcot9>
 				</HangHoaChiuThueTTDB>
 				<DVuChiuThueTNDB>
 					<ChiTietDVuChiuThueTTDB>
 						<NDungTKhaiTTDB>
-							<ct2></ct2>
-							<ct3></ct3>
-							<ct4>1</ct4>
+							<ct2_maHHDV>String</ct2_maHHDV>
+							<ct2>String</ct2>
+							<ct3>String</ct3>
+							<ct4>0.0</ct4>
 							<ct5>1</ct5>
-							<ct6>1</ct6>
-							<ct7>1</ct7>
+							<ct6>0.0</ct6>
+							<ct7>0.0</ct7>
 							<ct8>1</ct8>
 							<ct9>1</ct9>
 						</NDungTKhaiTTDB>
 					</ChiTietDVuChiuThueTTDB>
 					<tongDongIICot5>1</tongDongIICot5>
-					<tongDongIICot6>1</tongDongIICot6>
+					<tongDongIICot6>0.0</tongDongIICot6>
 					<tongDongIICot8>1</tongDongIICot8>
 					<tongDongIICot9>1</tongDongIICot9>
 				</DVuChiuThueTNDB>
 				<HHoaKhongChiuThueTNDB>
 					<HHXuatKhau>
 						<NDungHHoaKhongThue>
-							<ct2>text</ct2>
-							<ct3></ct3>
-							<ct4>1</ct4>
+							<ct2_maHH>String</ct2_maHH>
+							<ct2>String</ct2>
+							<ct3>String</ct3>
+							<ct4>0.0</ct4>
 							<ct5>1</ct5>
 						</NDungHHoaKhongThue>
 					</HHXuatKhau>
 					<HHBanDeXuatKhau>
 						<NDungHHoaKhongThue>
-							<ct2>text</ct2>
-							<ct3></ct3>
-							<ct4>1</ct4>
+							<ct2_maHH>String</ct2_maHH>
+							<ct2>String</ct2>
+							<ct3>String</ct3>
+							<ct4>0.0</ct4>
 							<ct5>1</ct5>
 						</NDungHHoaKhongThue>
 					</HHBanDeXuatKhau>
 					<HHGiaCongXuatKhau>
 						<NDungHHoaKhongThue>
-							<ct2>text</ct2>
-							<ct3></ct3>
-							<ct4>1</ct4>
+							<ct2_maHH>String</ct2_maHH>
+							<ct2>String</ct2>
+							<ct3>String</ct3>
+							<ct4>0.0</ct4>
 							<ct5>1</ct5>
 						</NDungHHoaKhongThue>
 					</HHGiaCongXuatKhau>
@@ -142,6 +147,4 @@
 		<PLuc>
 		</PLuc>
 	</HSoKhaiThue>
-	<CKyDTu>
-	</CKyDTu>
 </HSoThueDTu>
