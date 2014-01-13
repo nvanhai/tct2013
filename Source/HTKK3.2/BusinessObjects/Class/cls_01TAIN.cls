@@ -1260,13 +1260,13 @@ Dim STT As Variant
                      .Sheet = 1
                     mCurrentSheet = 1
                      
-                    Set xmlCellNode = TAX_Utilities_v1.Data(1 - 1).nodeFromID(GetCellID(fps, iCol, iRow))
-                 
-                    Set xmlCellNode = xmlCellNode.parentNode
-                    Set xmlCellNode = xmlCellNode.parentNode
-                    If GetAttribute(xmlCellNode, "Dynamic") = "0" Then
-                        Exit Sub
-                    End If
+'                    Set xmlCellNode = TAX_Utilities_v1.Data(1 - 1).nodeFromID(GetCellID(fps, iCol, iRow))
+'
+'                    Set xmlCellNode = xmlCellNode.parentNode
+'                    Set xmlCellNode = xmlCellNode.parentNode
+'                    If GetAttribute(xmlCellNode, "Dynamic") = "0" Then
+'                        Exit Sub
+'                    End If
                     
                     fps.EventEnabled(EventAllEvents) = False
                     .Col = .ColLetterToNumber("C")
@@ -1391,37 +1391,37 @@ Dim STT As Variant
                 End If
            End If
            
-           If .ActiveSheet = .SheetCount - 1 Then
-                If (KeyCode = vbKeyF5) Or (KeyCode = vbKeyF6) Then
-                 fps.EventEnabled(EventAllEvents) = False
-                    i = 1
-                    .Col = .ColLetterToNumber("B")
-                    .Row = 9
-                    Do
-                         .Text = str(i)
-                         .Col = .ColLetterToNumber("BE")
-                         .Text = "10"
-                         .Col = .ColLetterToNumber("B")
-                         .Row = i + 9
-                         i = i + 1
-                    Loop Until .Text = "aa"
-                    i = 1
-                   .Row = .Row + 3
-                    Do
-                         .Text = str(i)
-                         .Col = .ColLetterToNumber("BE")
-                         .Text = "10"
-                         .Col = .ColLetterToNumber("B")
-                         .Row = 1 + .Row
-                         i = i + 1
-                    Loop Until .Text = "bb"
-                    .SetActiveCell iCol, iRow
-                    .Row = iRow
-                    .Col = iCol
-                    .SetActiveCell iCol, iRow
-                End If
-                 fps.EventEnabled(EventAllEvents) = True
-            End If
+'           If .ActiveSheet = .SheetCount - 1 Then
+'                If (KeyCode = vbKeyF5) Or (KeyCode = vbKeyF6) Then
+'                 fps.EventEnabled(EventAllEvents) = False
+'                    i = 1
+'                    .Col = .ColLetterToNumber("B")
+'                    .Row = 9
+'                    Do
+'                         .Text = str(i)
+'                         .Col = .ColLetterToNumber("BE")
+'                         .Text = "10"
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = i + 9
+'                         i = i + 1
+'                    Loop Until .Text = "aa"
+'                    i = 1
+'                   .Row = .Row + 3
+'                    Do
+'                         .Text = str(i)
+'                         .Col = .ColLetterToNumber("BE")
+'                         .Text = "10"
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = 1 + .Row
+'                         i = i + 1
+'                    Loop Until .Text = "bb"
+'                    .SetActiveCell iCol, iRow
+'                    .Row = iRow
+'                    .Col = iCol
+'                    .SetActiveCell iCol, iRow
+'                End If
+'                 fps.EventEnabled(EventAllEvents) = True
+'            End If
            
                 
         fps.EventEnabled(EventAllEvents) = True
