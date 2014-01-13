@@ -39,6 +39,8 @@ Public tuRowDL As Long
 Public denRowDL As Long
 Public strTuRowDenRowPL As String
 
+Private vFormular As String
+
 
 
 'This funtion is called after an object of this class is created
@@ -169,7 +171,7 @@ End Sub
 Public Sub Prepare2()
     Dim i As Long
     Dim intCtrl As Integer
-    Dim strId As Variant
+    Dim strId As Variant, chkValue As Variant
     Dim xmlNode As MSXML.IXMLDOMNode
     With fps
 
@@ -266,6 +268,36 @@ Public Sub Prepare2()
             UpdateCell fps, .Col, .Row, .Text
          'end
          
+         
+         .GetText .ColLetterToNumber("F"), 34, chkValue
+        .Col = .ColLetterToNumber("K")
+        .Row = 37
+        vFormular = .Formula
+        If chkValue = "0" Then
+            .Col = .ColLetterToNumber("K")
+            .Row = 34
+            If .CellType = 1 Or .CellType = 5 Then
+                FormatTextPercent fps, 1, .ColLetterToNumber("K"), 34, True
+                '.SetText .ColLetterToNumber("K"), .Row, "0"
+            End If
+            .Col = .ColLetterToNumber("K")
+            .Row = 37
+            .Lock = True
+            .Formula = "ROUND(K31*20/100,0) + ROUND(K32*22/100,0) +ROUND(K33*K34/100,0) + ROUND(K35*K36/100,0)"
+        ElseIf chkValue = "1" Or chkValue = "x" Then
+            'FormatText fps, 1, .ColLetterToNumber("J"), 42
+            .Col = .ColLetterToNumber("K")
+            .Row = 37
+            .Lock = False
+        Else
+            FormatTextPercent fps, 1, .ColLetterToNumber("K"), 34, False
+            .Col = .ColLetterToNumber("K")
+            .Row = 37
+            .Lock = True
+            .Formula = "ROUND(K31*20/100,0) + ROUND(K32*22/100,0) +ROUND(K33*K34/100,0) + ROUND(K35*K36/100,0)"
+        End If
+         
+         
          ' Neu check gia han moi cho phep chon GT
         .Col = .ColLetterToNumber("F")
         .Row = 43
@@ -325,6 +357,11 @@ End Sub
 Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonDown As Integer)
     Dim lResult As Integer
     Dim blTemp As Boolean
+    
+    Dim i As Integer, iCol As Long, iRow As Long
+    
+    Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
+    Dim txmlCellNode As MSXML.IXMLDOMNode, txmlCellsNode As MSXML.IXMLDOMNode
     
     Dim CT26 As Variant, CT27 As Variant, CT28 As Variant, vCheck20 As Variant
     
@@ -390,6 +427,84 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
 '                    UpdateCell fps, fps.Col, fps.Row, fps.Text
 '                End If
 '            End If
+             ' check nhieu muc thue uu dai
+             If Col = fps.ColLetterToNumber("F") And Row = 34 Then
+                fps.Sheet = fps.ActiveSheet
+                fps.Row = Row
+                fps.Col = Col
+                If fps.value = 1 Then 'Khi danh dau Checkbox
+                    'Hien thong bao co muon xoa du lieu cu
+                    lResult = DisplayMessage("0294", msYesNo, miQuestion, , mrNo)
+                    If lResult = 3 Then 'Khong muon xoa thi thoat ra
+                        fps.value = 0
+                        UpdateCell fps, fps.Col, fps.Row, IIf(fps.value = 1, "x", vbNullString)
+                        
+                        fps.EventEnabled(EventAllEvents) = True
+                        Exit Sub
+                    Else 'Khi chon xoa
+                        'Xoa du lieu chi tieu 15, 18 va cho phep nhap cot 18, format lai cot 15
+                        
+                        Set xmlCellNode = TAX_Utilities_v1.Data(0).nodeFromID(GetCellID(fps, fps.ColLetterToNumber("K"), 34))
+                        Set xmlCellsNode = xmlCellNode.parentNode
+                        UpdateCell fps, fps.ColLetterToNumber("F"), fps.Row, "x"
+                        Do
+                            For i = 1 To xmlCellsNode.childNodes.length
+                                ParserCellID fps, GetAttribute(xmlCellsNode.childNodes(i - 1), "CellID"), iCol, iRow
+                                Select Case iCol
+                                    Case fps.ColLetterToNumber("K")
+                                        'Xoa trang chi tieu 32a
+                                        fps.Row = 34
+                                        fps.Col = iCol
+                                        fps.Text = ""
+                                        UpdateCell fps, iCol, 34, fps.Text
+                                        FormatText fps, 1, fps.ColLetterToNumber("K"), 34
+                                        
+                                        'Xoa trang chi tieu 34
+                                        fps.Row = 37
+                                        fps.Col = iCol
+                                        fps.Formula = ""
+                                        fps.Text = "0"
+                                        fps.value = "0"
+                                        fps.Lock = False ' Bo enable cho phep nhap
+                                        UpdateCell fps, iCol, 37, fps.value
+                                End Select
+                            Next
+                            If xmlCellsNode.nextSibling Is Nothing Then Exit Do
+                            Set xmlCellsNode = xmlCellsNode.nextSibling
+                        Loop Until xmlCellsNode Is Nothing
+                    End If
+                ElseIf fps.value = 0 Then 'Huy danh dau Checkbox
+                        
+                    Set xmlCellNode = TAX_Utilities_v1.Data(1 - 1).nodeFromID(GetCellID(fps, fps.ColLetterToNumber("K"), 34))
+                    Set xmlCellsNode = xmlCellNode.parentNode
+                    UpdateCell fps, fps.ColLetterToNumber("F"), fps.Row, ""
+                    Do
+                        For i = 1 To xmlCellsNode.childNodes.length
+                            ParserCellID fps, GetAttribute(xmlCellsNode.childNodes(i - 1), "CellID"), iCol, iRow
+                            Select Case iCol
+                                Case fps.ColLetterToNumber("K")
+                                    ' Dinh dang lai cho chi tieu 32a (Cho phep nhap nhieu muc thue)
+                                    fps.Row = 34
+                                    fps.Col = iCol
+                                    fps.value = 0
+                                    UpdateCell fps, iCol, 34, fps.value
+                                    FormatTextPercent fps, 1, fps.ColLetterToNumber("K"), 34, False
+                                
+                                    ' Thiet lap lai cong thuc cho chi tieu 34
+                                    fps.Row = 37
+                                    fps.Col = iCol
+                                    fps.Formula = "ROUND(K31*20/100,0) + ROUND(K32*22/100,0) +ROUND(K33*K34/100,0) + ROUND(K35*K36/100,0)"
+'                                    .Formula = vFormular
+                                    fps.Lock = True
+                                    UpdateCell fps, iCol, 50, fps.value
+                            End Select
+                        Next
+                        If xmlCellsNode.nextSibling Is Nothing Then Exit Do
+                        Set xmlCellsNode = xmlCellsNode.nextSibling
+                    Loop Until xmlCellsNode Is Nothing
+                End If
+            End If
+
             ' Neu check gia han moi cho phep chon GT
             If Col = fps.ColLetterToNumber("F") And Row = 43 Then
                 fps.Col = fps.ColLetterToNumber("F")
@@ -1198,6 +1313,15 @@ Public Sub finish()
         SSheet = .Sheet
         
         CheckDynamicError 'Set Exception Error on cells of interface
+        
+        .Sheet = 1
+        .Col = .ColLetterToNumber("F")
+        .Row = 34
+        If .value <> "chk" Then
+            If .value = 0 Then
+                FormatTextPercent fps, 1, .ColLetterToNumber("K"), 34, False
+            End If
+        End If
             
         UpdateSheets
         .ActiveSheet = ASheet
@@ -1240,6 +1364,10 @@ Private Sub CheckDynamicError()
     Dim isCheckGh As Boolean
     ' end
     
+    Dim vCT26 As Variant, arrCT26() As String
+    Dim errSoThueUuDai As Variant, checkboxThue As Variant
+    Dim iFlagSoUuDai As Integer
+    Dim i As Integer
     ' PL 05
     Dim mErrMSTTrung As Variant
     ' check gh
@@ -1265,6 +1393,8 @@ Private Sub CheckDynamicError()
         
         .GetText .ColLetterToNumber("E"), 39, vErrorCheckThoiHanGH
         .GetText .ColLetterToNumber("E"), 42, vErrorCheckSoThueGH
+        
+        .GetText .ColLetterToNumber("E"), 25, errSoThueUuDai
         
         vFlag = 0
         iFlagCheckMaST = 0
@@ -1394,6 +1524,38 @@ Private Sub CheckDynamicError()
                  iflagCheckSoThueGH = 0
          End If
        
+       
+        
+        'check dinh dang so trong chi tieu 32a
+       iFlagSoUuDai = 0
+       
+        .GetText .ColLetterToNumber("F"), 34, checkboxThue
+        If (Val(checkboxThue) = 1) Then
+     
+            .GetText .ColLetterToNumber("K"), 34, vCT26
+            arrCT26 = Split(CStr(vCT26), ";")
+            For i = 0 To UBound(arrCT26) - 1
+                If IsNumeric(arrCT26(i)) = False Then
+                    iFlagSoUuDai = 1
+                End If
+            Next
+            If iFlagSoUuDai = 1 Then
+                .Col = .ColLetterToNumber("K")
+                .Row = 34
+                .CellNote = errSoThueUuDai
+                .BackColor = mErrorColor
+            Else
+                .Col = .ColLetterToNumber("K")
+                .Row = 34
+                .BackColor = mNonErrorColor
+                .CellNote = ""
+            End If
+        ElseIf (Val(checkboxThue) = 0) Then
+                .Col = .ColLetterToNumber("K")
+                .Row = 34
+                .BackColor = mNonErrorColor
+                .CellNote = ""
+        End If
        
        
         .Sheet = 2
@@ -1559,6 +1721,8 @@ Private Sub CheckDynamicError()
         .SetText .ColLetterToNumber("B"), 33, IIf(iflagCheckGH = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 39, IIf(iflagCheckThoiHanGH = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 42, IIf(iflagCheckSoThueGH = 1, "0", "1")
+        
+        .SetText .ColLetterToNumber("B"), 43, IIf(iFlagSoUuDai = 1, "0", "1")
             
         CheckErrorMST
         
@@ -1838,7 +2002,7 @@ Private Sub UpdateSheets()
         mCurrentSheet = .Sheet
         For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
            ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-               If (lRow = 12 And lCol = .ColLetterToNumber("D")) Or (lRow = 11 And lCol = .ColLetterToNumber("D")) Or (lRow = 43 And lCol = .ColLetterToNumber("F")) Then
+               If (lRow = 12 And lCol = .ColLetterToNumber("D")) Or (lRow = 11 And lCol = .ColLetterToNumber("D")) Or (lRow = 43 And lCol = .ColLetterToNumber("F")) Or (lRow = 34 And lCol = .ColLetterToNumber("F")) Then
                     .GetText lCol, lRow, varTemp
                     If varTemp = "1" Or UCase(CStr(varTemp)) = "X" Then
                         UpdateCell fps, lCol, lRow, "x"

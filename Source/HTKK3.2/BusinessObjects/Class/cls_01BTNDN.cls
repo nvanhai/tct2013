@@ -470,7 +470,7 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                     Else 'Khi chon xoa
                         'Xoa du lieu chi tieu 15, 18 va cho phep nhap cot 18, format lai cot 15
                         
-                        Set xmlCellNode = TAX_Utilities_v1.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("K"), 42))
+                        Set xmlCellNode = TAX_Utilities_v1.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("K"), 47))
                         Set xmlCellsNode = xmlCellNode.parentNode
                         UpdateCell fps, .ColLetterToNumber("H"), .Row, "x"
                         Do
