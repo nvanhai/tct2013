@@ -282,4 +282,6 @@
 	<Infor ID="0289" Msg="Hạch toán cột (5) vào mục, tiểu mục 1700-1701 và 1050-1052"/>
 	<Infor ID="0290" Msg="Phô lôc 01-1/GTGT cã d÷ liÖu ë dßng 'Hµng hãa, dÞch vô chÞu thuÕ suÊt thuÕ GTGT 0% (*)', b¾t buéc ph¶i cã phôc lôc 01-3/GTGT"/>
 	<Infor ID="0291" Msg="NhËp d÷ liÖu tõ XML thµnh c«ng."/>
+	<Infor ID="0292" Msg="§èi víi tê khai kú tÝnh thuÕ th¸ng chØ kª khai phÇn I, II."/>
+	<Infor ID="0293" Msg="§èi víi tê khai kú tÝnh thuÕ lÇn ph¸t sinh chØ kª khai phÇn III."/>
 </Message>
