@@ -97,11 +97,11 @@ Public Sub Prepare1()
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
 
-        .Sheet = .SheetCount - 1 'KHBS
-        .Row = 46
-        .Col = .ColLetterToNumber("BG")
-        .Text = Format(Date, "dd/mm/yyyy")
-        .TypeHAlign = TypeHAlignLeft
+'        .Sheet = .SheetCount - 1 'KHBS
+'        .Row = 46
+'        .Col = .ColLetterToNumber("BG")
+'        .Text = Format(Date, "dd/mm/yyyy")
+'        .TypeHAlign = TypeHAlignLeft
         
         
         

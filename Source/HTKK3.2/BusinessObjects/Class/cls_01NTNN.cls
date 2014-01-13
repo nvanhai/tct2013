@@ -43,7 +43,10 @@ Public Sub Prepare1()
         SetDateFormat fps, 1, 55, .ColLetterToNumber("AD"), DDMMYYYY
         
         
-        SetDateFormat fps, 2, 23, .ColLetterToNumber("BG"), DDMMYYYY
+'        SetDateFormat fps, 2, 23, .ColLetterToNumber("BG"), DDMMYYYY
+        SetDateFormat fps, 2, 46, .ColLetterToNumber("BG"), DDMMYYYY
+        SetDateFormat fps, 2, 31, .ColLetterToNumber("BE"), DDMMYYYY
+
         
         .Sheet = 1 'To khai 02/TNCN
         .Row = 69
@@ -51,11 +54,13 @@ Public Sub Prepare1()
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
         
-        .Sheet = 2 'To khai NTNN
-        .Row = 23
-        .Col = .ColLetterToNumber("BG")
-        .Text = Format(Date, "dd/mm/yyyy")
-        .TypeHAlign = TypeHAlignLeft
+'        .Sheet = 2 'To khai NTNN
+'        .Row = 23
+'        .Col = .ColLetterToNumber("BG")
+'        .Text = Format(Date, "dd/mm/yyyy")
+'        .TypeHAlign = TypeHAlignLeft
+        ' set CQT ra quyet dinh hoan
+        setCQTQuanLyHoanThue fps
     End With
 End Sub
 
