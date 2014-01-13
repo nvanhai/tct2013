@@ -3832,7 +3832,7 @@ Public Function getDieuChinhGiam(strOldValue As String) As String
                         End If
                     Next j
 
-                If Left(strMaCT, 8) = "" Then
+                If Left(strMaCT, 2) = "8_" Then
                     If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) > 0 Then
                         ' dieu chinh giam
                         strDieuChinhGiam = strDieuChinhGiam & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
