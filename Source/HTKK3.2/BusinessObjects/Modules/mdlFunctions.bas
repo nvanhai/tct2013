@@ -379,9 +379,15 @@ Public Sub FormatTextPercent(fps As fpSpread, ByVal intSheet As Integer, ByVal l
 '    If tfView Then fps.value = Val(fps.value) / 1000
     positionDecimalSymbol = 0
     If tfView Then
-        Set xmlNode = TAX_Utilities_v1.Data(0).nodeFromID("K_47")  'J_42: thue suat uu dai
-        tempValue = GetAttribute(xmlNode, "Value")
-        fps.value = tempValue
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "12" Then
+            Set xmlNode = TAX_Utilities_v1.Data(0).nodeFromID("K_47")  'J_42: thue suat uu dai
+            tempValue = GetAttribute(xmlNode, "Value")
+            fps.value = tempValue
+        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "11" Then
+            Set xmlNode = TAX_Utilities_v1.Data(0).nodeFromID("K_34")  'J_42: thue suat uu dai
+            tempValue = GetAttribute(xmlNode, "Value")
+            fps.value = tempValue
+        End If
     End If
     
     fps.TypeHAlign = TypeHAlignRight
