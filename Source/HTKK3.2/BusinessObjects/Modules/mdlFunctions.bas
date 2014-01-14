@@ -2264,3 +2264,24 @@ Public Sub setCQTQuanLyHoanThue(pGrid As fpSpread)
             '.EventEnabled(EventAllEvents) = True
         End With
 End Sub
+
+
+Public Function CheckNgayInKyKK(ngay As String, thangQuy As Integer, nam As Integer, isQuy As Boolean) As Boolean
+    Dim strDate() As String
+    Dim vDate As Date
+    strDate = Split(ngay, "/")
+    vDate = DateSerial(CInt(strDate(2)), CInt(strDate(1)), CInt(strDate(0)))
+    If isQuy = True Then
+        If DatePart("Q", vDate) = thangQuy And DatePart("YYYY", vDate) = nam Then
+            CheckNgayInKyKK = True
+        Else
+            CheckNgayInKyKK = False
+        End If
+    Else
+        If DatePart("M", vDate) = thangQuy And DatePart("YYYY", vDate) = nam Then
+            CheckNgayInKyKK = True
+        Else
+            CheckNgayInKyKK = False
+        End If
+    End If
+End Function
