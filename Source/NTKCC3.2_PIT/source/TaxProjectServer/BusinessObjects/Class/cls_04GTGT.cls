@@ -752,13 +752,13 @@ Public Function InsertDTL() As String
         bln = clsDAO.ExecuteDLL(sSQL)
         
         CTIEUTNDN = "'2000'"
-        .GetText .ColLetterToNumber("Z"), 43, DSO
+        .GetText .ColLetterToNumber("Q"), 43, DSO
 
         If Trim(DSO) = vbNullString Then
             DSO = "0"
         End If
         
-        .GetText .ColLetterToNumber("Q"), 43, ThuePN
+        .GetText .ColLetterToNumber("Z"), 43, ThuePN
 
         If Trim(ThuePN) = vbNullString Then
             ThuePN = "0"
@@ -775,13 +775,13 @@ Public Function InsertDTL() As String
         bln = clsDAO.ExecuteDLL(sSQL)
         
         CTIEUTNDN = "'3000'"
-        .GetText .ColLetterToNumber("Z"), 44, DSO
+        .GetText .ColLetterToNumber("Q"), 44, DSO
 
         If Trim(DSO) = vbNullString Then
             DSO = "0"
         End If
         
-        .GetText .ColLetterToNumber("Q"), 44, ThuePN
+        .GetText .ColLetterToNumber("Z"), 44, ThuePN
 
         If Trim(ThuePN) = vbNullString Then
             ThuePN = "0"
@@ -798,13 +798,13 @@ Public Function InsertDTL() As String
         bln = clsDAO.ExecuteDLL(sSQL)
         
         CTIEUTNDN = "'4000'"
-        .GetText .ColLetterToNumber("Z"), 45, DSO
+        .GetText .ColLetterToNumber("Q"), 45, DSO
 
         If Trim(DSO) = vbNullString Then
             DSO = "0"
         End If
         
-        .GetText .ColLetterToNumber("Q"), 45, ThuePN
+        .GetText .ColLetterToNumber("Z"), 45, ThuePN
 
         If Trim(ThuePN) = vbNullString Then
             ThuePN = "0"
@@ -821,13 +821,13 @@ Public Function InsertDTL() As String
         bln = clsDAO.ExecuteDLL(sSQL)
         
         CTIEUTNDN = "'5000'"
-        .GetText .ColLetterToNumber("Z"), 46, DSO
+        .GetText .ColLetterToNumber("Q"), 46, DSO
 
         If Trim(DSO) = vbNullString Then
             DSO = "0"
         End If
         
-        .GetText .ColLetterToNumber("Q"), 46, ThuePN
+        .GetText .ColLetterToNumber("Z"), 46, ThuePN
 
         If Trim(ThuePN) = vbNullString Then
             ThuePN = "0"
