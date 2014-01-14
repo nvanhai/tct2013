@@ -209,28 +209,29 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .TypeComboBoxCurSel = 0
         UpdateCell fps, .Col, .Row, .Text
         lSoPhongXL = i
-        
+             
         'get ten chi tieu trong danh muc NNKD
         .Sheet = 1
-        .Col = .ColLetterToNumber("L")
-        .Row = 77
-         .GetText .ColLetterToNumber("L"), .Row, varMaDM
+        .Col = .ColLetterToNumber("AC")
+        .Row = 64
+         .GetText .ColLetterToNumber("AC"), .Row, varMaDM
         If Trim(varMaDM) <> vbNullString Then
-            .Col = .ColLetterToNumber("E")
-            .Row = 77
+            .Col = .ColLetterToNumber("M")
+            .Row = 64
             .Text = getTenLyDoGD(varMaDM)
         End If
+        
         ' Neu khong co gia han se khong cho chon combobox
          ' Neu check gia han moi cho phep chon GT
         .Col = .ColLetterToNumber("K")
         .Row = 62
         If .Text = "1" Or UCase$(.Text) = "X" Then
-            .Col = .ColLetterToNumber("K")
-            .Row = 62
+            .Col = .ColLetterToNumber("M")
+            .Row = 64
             .Lock = False
         Else
-            .Col = .ColLetterToNumber("K")
-            .Row = 62
+            .Col = .ColLetterToNumber("M")
+            .Row = 64
             .Lock = True
         End If
         ' End set gia han
@@ -364,6 +365,12 @@ Public Function Prepared3() As Boolean
 '        End If
         ' set thong tin dai ly thue
         ' ten dai ly thue
+        
+                
+        .Row = 62
+        .Col = .ColLetterToNumber("k")
+        UpdateCell fps, .Col, .Row, .Text
+        
         .Col = .ColLetterToNumber(TEN_DL_COL)
         .Row = TEN_DL_ROW
         If strTenDL <> "" Then
@@ -590,8 +597,8 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                     fps.Row = 64
                     fps.Lock = True
                     fps.SetText fps.ColLetterToNumber("M"), 64, ""
-                    fps.SetText fps.ColLetterToNumber("L"), 77, "00"
-                    UpdateCell fps, fps.ColLetterToNumber("L"), 77, "00"
+                    fps.SetText fps.ColLetterToNumber("AC"), 64, "00"
+                    UpdateCell fps, fps.ColLetterToNumber("AC"), 64, "00"
                     UpdateCell fps, fps.ColLetterToNumber("M"), 64, ""
                 End If
             End If
