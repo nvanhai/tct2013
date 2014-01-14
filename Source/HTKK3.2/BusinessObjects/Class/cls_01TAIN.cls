@@ -1260,13 +1260,13 @@ Dim STT As Variant
                      .Sheet = 1
                     mCurrentSheet = 1
                      
-                    Set xmlCellNode = TAX_Utilities_v1.Data(1 - 1).nodeFromID(GetCellID(fps, iCol, iRow))
-                 
-                    Set xmlCellNode = xmlCellNode.parentNode
-                    Set xmlCellNode = xmlCellNode.parentNode
-                    If GetAttribute(xmlCellNode, "Dynamic") = "0" Then
-                        Exit Sub
-                    End If
+'                    Set xmlCellNode = TAX_Utilities_v1.Data(1 - 1).nodeFromID(GetCellID(fps, iCol, iRow))
+'
+'                    Set xmlCellNode = xmlCellNode.parentNode
+'                    Set xmlCellNode = xmlCellNode.parentNode
+'                    If GetAttribute(xmlCellNode, "Dynamic") = "0" Then
+'                        Exit Sub
+'                    End If
                     
                     fps.EventEnabled(EventAllEvents) = False
                     .Col = .ColLetterToNumber("C")
@@ -1307,9 +1307,9 @@ Dim STT As Variant
                     
                     .SetActiveCell iCol, iRow
                     
-                    If Val(GetAttribute(xmlCellNode, "MaxRows")) = xmlCellNode.childNodes.length Then
-                        Exit Sub
-                    End If
+'                    If Val(GetAttribute(xmlCellNode, "MaxRows")) = xmlCellNode.childNodes.length Then
+'                        Exit Sub
+'                    End If
                     
                     .Row = iRow
                     .Col = iCol
@@ -1391,37 +1391,37 @@ Dim STT As Variant
                 End If
            End If
            
-           If .ActiveSheet = .SheetCount - 1 Then
-                If (KeyCode = vbKeyF5) Or (KeyCode = vbKeyF6) Then
-                 fps.EventEnabled(EventAllEvents) = False
-                    i = 1
-                    .Col = .ColLetterToNumber("B")
-                    .Row = 9
-                    Do
-                         .Text = str(i)
-                         .Col = .ColLetterToNumber("BE")
-                         .Text = "10"
-                         .Col = .ColLetterToNumber("B")
-                         .Row = i + 9
-                         i = i + 1
-                    Loop Until .Text = "aa"
-                    i = 1
-                   .Row = .Row + 3
-                    Do
-                         .Text = str(i)
-                         .Col = .ColLetterToNumber("BE")
-                         .Text = "10"
-                         .Col = .ColLetterToNumber("B")
-                         .Row = 1 + .Row
-                         i = i + 1
-                    Loop Until .Text = "bb"
-                    .SetActiveCell iCol, iRow
-                    .Row = iRow
-                    .Col = iCol
-                    .SetActiveCell iCol, iRow
-                End If
-                 fps.EventEnabled(EventAllEvents) = True
-            End If
+'           If .ActiveSheet = .SheetCount - 1 Then
+'                If (KeyCode = vbKeyF5) Or (KeyCode = vbKeyF6) Then
+'                 fps.EventEnabled(EventAllEvents) = False
+'                    i = 1
+'                    .Col = .ColLetterToNumber("B")
+'                    .Row = 9
+'                    Do
+'                         .Text = str(i)
+'                         .Col = .ColLetterToNumber("BE")
+'                         .Text = "10"
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = i + 9
+'                         i = i + 1
+'                    Loop Until .Text = "aa"
+'                    i = 1
+'                   .Row = .Row + 3
+'                    Do
+'                         .Text = str(i)
+'                         .Col = .ColLetterToNumber("BE")
+'                         .Text = "10"
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = 1 + .Row
+'                         i = i + 1
+'                    Loop Until .Text = "bb"
+'                    .SetActiveCell iCol, iRow
+'                    .Row = iRow
+'                    .Col = iCol
+'                    .SetActiveCell iCol, iRow
+'                End If
+'                 fps.EventEnabled(EventAllEvents) = True
+'            End If
            
                 
         fps.EventEnabled(EventAllEvents) = True
@@ -1543,6 +1543,11 @@ Private Sub CheckDynamicError()
     Dim errorName, errorDate, errEmty, errEmty2 As Variant
     Dim iFlagEmty As Integer, iFlagEmty2 As Integer
     
+    Dim checkGroup_1_2 As Boolean, checkGroup3 As Boolean
+        
+    checkGroup_1_2 = False
+    checkGroup3 = False
+    
     With fps
     '.Visible = False
     '.ReDraw = False
@@ -1642,6 +1647,11 @@ Private Sub CheckDynamicError()
                          .BackColor = mNonErrorColor
                  End If
                  
+                 ' kiem tra du lieu group 1
+                 If GT2 <> "" Then
+                    checkGroup_1_2 = True
+                 End If
+                 
                  If GT9 > GT8 Then
                         .Col = ColAJ13
                         .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
@@ -1735,6 +1745,11 @@ Private Sub CheckDynamicError()
                          .BackColor = mNonErrorColor
                  End If
                  
+                 ' kiem tra du lieu group 2
+                 If GT2 <> "" Then
+                    checkGroup_1_2 = True
+                 End If
+                 
                  If GT9 > GT8 Then
                         .Col = ColAJ13
                         .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
@@ -1752,6 +1767,10 @@ Private Sub CheckDynamicError()
                          .BackColor = mNonErrorColor
                  End If
                  
+                 
+               
+                 
+                 
                  .Row = i + 45
                  .Col = .ColLetterToNumber("C")
                  i = i + 1
@@ -1764,97 +1783,102 @@ Private Sub CheckDynamicError()
              
              
              'check section3
-'            .Row = 49 + countDynamicRow1
-'            'countTemp = .Row + 1
-'            iFlagEmty = 0
-'            Do
-'                .GetText ColAJ13, .Row, GT9
-'                .GetText ColAG13, .Row, GT8
-'                .GetText ColG13, .Row, GT2
-'                .GetText ColS13, .Row, GT4
-'                .GetText ColV13, .Row, GT5
-'                .GetText ColAD13, .Row, GT7
-'                .GetText ColAA13, .Row, GT6
-'
-'' 25/07/2012 bo check bat buoc nhap so thue khi chon loai tai nguyen
-''                 .Col = .ColLetterToNumber("G")
-''                 If .CellType = CellTypeComboBox And GT2 <> "" And GT8 = 0 Then
-''                    If Val(GT6) = 0 And Val(GT7) = 0 Then
-''                        .Col = ColAD13
-''                    ElseIf Val(GT6) <> 0 And Val(GT5) = 0 Then
-''                        .Col = ColV13
-''                    End If
-'''                    .Row = countTemp
-''                    .CellNote = errEmty
-''                    .BackColor = mErrorColor
-''                     iFlagEmty = 1
-''                    If Val(GT4) = 0 Then
-''                        .Col = ColS13
-''                        .CellNote = errEmty
-''                        .BackColor = mErrorColor
-''                        iFlagEmty = 1
-''                    Else
-''                        .Col = ColS13
-''                        .CellNote = ""
-''                        .BackColor = mNonErrorColor
-''                    End If
-''                 Else
-''                    .Col = ColS13
-''                    .CellNote = ""
-''                    .BackColor = mNonErrorColor
-''                    .Col = ColV13
-''                    .CellNote = ""
-''                    .BackColor = mNonErrorColor
-''                    .Col = ColAD13
-''                    .CellNote = ""
-''                    .BackColor = mNonErrorColor
-''                 End If
-'
-'
-'
-'                 If GT2 = "" And (GT4 > 0 Or GT5 > 0 Or GT7 > 0 Or GT9 > 0 Or GT6 > 0) Then
-'                        .Col = ColG13
-'                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-'                        .CellNote = vErrMsgG13 'static
+            .Row = 48 + countDynamicRow1
+            'countTemp = .Row + 1
+            iFlagEmty = 0
+            Do
+                .GetText ColAJ13, .Row, GT9
+                .GetText ColAG13, .Row, GT8
+                .GetText ColG13, .Row, GT2
+                .GetText ColS13, .Row, GT4
+                .GetText ColV13, .Row, GT5
+                .GetText ColAD13, .Row, GT7
+                .GetText ColAA13, .Row, GT6
+
+' 25/07/2012 bo check bat buoc nhap so thue khi chon loai tai nguyen
+'                 .Col = .ColLetterToNumber("G")
+'                 If .CellType = CellTypeComboBox And GT2 <> "" And GT8 = 0 Then
+'                    If Val(GT6) = 0 And Val(GT7) = 0 Then
+'                        .Col = ColAD13
+'                    ElseIf Val(GT6) <> 0 And Val(GT5) = 0 Then
+'                        .Col = ColV13
+'                    End If
+''                    .Row = countTemp
+'                    .CellNote = errEmty
+'                    .BackColor = mErrorColor
+'                     iFlagEmty = 1
+'                    If Val(GT4) = 0 Then
+'                        .Col = ColS13
+'                        .CellNote = errEmty
 '                        .BackColor = mErrorColor
-'                        If XacDinhLoiG13 = False And LoiTonTai = False Then
-'                            ColLoiG13 = ColG13
-'                            RowLoiG13 = .Row
-'                            LoiTonTai = True
-'                            XacDinhLoiG13 = True
-'                        End If
+'                        iFlagEmty = 1
+'                    Else
+'                        .Col = ColS13
+'                        .CellNote = ""
+'                        .BackColor = mNonErrorColor
+'                    End If
 '                 Else
-'                         .Col = ColG13
-'                         .CellNote = ""
-'                         .BackColor = mNonErrorColor
+'                    .Col = ColS13
+'                    .CellNote = ""
+'                    .BackColor = mNonErrorColor
+'                    .Col = ColV13
+'                    .CellNote = ""
+'                    .BackColor = mNonErrorColor
+'                    .Col = ColAD13
+'                    .CellNote = ""
+'                    .BackColor = mNonErrorColor
 '                 End If
-'
-'                 If GT9 > GT8 Then
-'                        .Col = ColAJ13
-'                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-'                        .CellNote = vErrMsgAJ13 'static
-'                        .BackColor = mErrorColor
-'                        If XacDinhLoiAJ13 = False And LoiTonTai = False Then
-'                            ColLoiAJ13 = ColAJ13
-'                            RowLoiAJ13 = .Row
-'                            LoiTonTai = True
-'                            XacDinhLoiAJ13 = True
-'                        End If
-'                 Else
-'                         .Col = ColAJ13
-'                         .CellNote = ""
-'                         .BackColor = mNonErrorColor
-'                 End If
-'
-'                 .Row = i + 45
-'                 .Col = .ColLetterToNumber("C")
-'                 i = i + 1
-'                 countDynamicRow1 = countDynamicRow1 + 1
-''                 If (.Text = "aa" And countDynamicRow = 0) Then
-''                    countDynamicRow = countDynamicRow + 1
-''                    .Row = .Row + 3
-''                End If
-'             Loop Until .Text = "aa"
+
+
+
+                 If GT2 = "" And (GT4 > 0 Or GT5 > 0 Or GT7 > 0 Or GT9 > 0 Or GT6 > 0) Then
+                        .Col = ColG13
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = vErrMsgG13 'static
+                        .BackColor = mErrorColor
+                        If XacDinhLoiG13 = False And LoiTonTai = False Then
+                            ColLoiG13 = ColG13
+                            RowLoiG13 = .Row
+                            LoiTonTai = True
+                            XacDinhLoiG13 = True
+                        End If
+                 Else
+                         .Col = ColG13
+                         .CellNote = ""
+                         .BackColor = mNonErrorColor
+                 End If
+                 
+                 ' kiem tra du lieu group 2
+                 If GT2 <> "" Then
+                    checkGroup3 = True
+                 End If
+
+                 If GT9 > GT8 Then
+                        .Col = ColAJ13
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = vErrMsgAJ13 'static
+                        .BackColor = mErrorColor
+                        If XacDinhLoiAJ13 = False And LoiTonTai = False Then
+                            ColLoiAJ13 = ColAJ13
+                            RowLoiAJ13 = .Row
+                            LoiTonTai = True
+                            XacDinhLoiAJ13 = True
+                        End If
+                 Else
+                         .Col = ColAJ13
+                         .CellNote = ""
+                         .BackColor = mNonErrorColor
+                 End If
+
+                 .Row = i + 48
+                 .Col = .ColLetterToNumber("C")
+                 i = i + 1
+                 countDynamicRow1 = countDynamicRow1 + 1
+'                 If (.Text = "aa" And countDynamicRow = 0) Then
+'                    countDynamicRow = countDynamicRow + 1
+'                    .Row = .Row + 3
+'                End If
+             Loop Until .Text = "aa"
 'check error date and name
 '        .Col = .ColLetterToNumber("AJ")
 '        .Row = 17 + i
@@ -1874,6 +1898,39 @@ Private Sub CheckDynamicError()
 '            .SetText .ColLetterToNumber("B"), 19, "1"
 '            .Sheet = 1
 '        End If
+        
+        'kiem tra neu to khai thang chi cho nhap I, II
+        ' to khai lan phat sinh chi cho nhap III
+        If StrTKThang_PS = "TK_THANG" Then
+            If checkGroup3 = True Then
+                 .Sheet = 1
+                .ActiveSheet = 1
+                 If Not .Visible Then
+                    .Visible = True
+                    DisplayMessage "0292", msOKOnly, miWarning
+                    .Visible = False
+                Else
+                    DisplayMessage "0292", msOKOnly, miWarning
+                End If
+            End If
+        Else
+            If checkGroup_1_2 = True Then
+                .Sheet = 1
+                .ActiveSheet = 1
+                 If Not .Visible Then
+                    .Visible = True
+                    DisplayMessage "0293", msOKOnly, miWarning
+                    .Visible = False
+                Else
+                    DisplayMessage "0293", msOKOnly, miWarning
+                End If
+            End If
+        End If
+        
+        
+        ' end
+
+
         If XacDinhLoiAJ13 Then
             .Sheet = .SheetCount
             .SetText .ColLetterToNumber("B"), 15, IIf(XacDinhLoiAJ13, "0", "1")
@@ -1907,6 +1964,20 @@ Private Sub CheckDynamicError()
         .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), 19, IIf(iFlagEmty = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 20, IIf(iFlagEmty2 = 1, "0", "1")
+        If StrTKThang_PS = "TK_THANG" Then
+            If checkGroup3 = True Then
+                .SetText .ColLetterToNumber("B"), 22, "0"
+            Else
+                .SetText .ColLetterToNumber("B"), 22, "1"
+            End If
+        Else
+            If checkGroup_1_2 = True Then
+                .SetText .ColLetterToNumber("B"), 23, "0"
+            Else
+                .SetText .ColLetterToNumber("B"), 23, "1"
+            End If
+        End If
+        
     End With
 End Sub
 Sub CheckErrorMST()
