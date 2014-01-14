@@ -269,6 +269,8 @@ End Sub
 Public Function Prepared3() As Boolean
     Dim dYear, dQuy As Integer
     Dim STT As Integer
+    Dim isNhieuMucThueUD As Variant
+    Dim xmlNode As MSXML.IXMLDOMNode
     With fps
         '.EventEnabled(EventAllEvents) = False
         'Set MaSoTep
@@ -412,7 +414,19 @@ Public Function Prepared3() As Boolean
                 UpdateCell fps, .Col, .Row, .Text
             End If
         End If
-        
+         'Doi voi to khai 01A/TNDN khi chon nhieu muc thue uu dai -> set chi tieu 32a ve kieu text
+        .GetText .ColLetterToNumber("I"), 52, isNhieuMucThueUD
+        If isNhieuMucThueUD = "1" Or UCase$(CStr(isNhieuMucThueUD)) = "X" Then
+            .Col = .ColLetterToNumber("U")
+            .Row = 52
+            .CellType = CellTypeEdit
+            .TypeEditCharSet = TypeEditCharSetASCII
+            .TypeHAlign = TypeHAlignRight
+            .TypeVAlign = TypeHAlignCenter
+            ' Lay chi tieu 26 trong datafile
+            Set xmlNode = TAX_Utilities_Srv_New.Data(0).nodeFromID("U_52")
+            .Text = GetAttribute(xmlNode, "Value")
+        End If
         .Sheet = 2
         If .SheetVisible = True Then
             STT = 0
