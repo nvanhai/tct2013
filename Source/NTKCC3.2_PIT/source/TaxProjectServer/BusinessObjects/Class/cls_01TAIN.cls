@@ -1898,7 +1898,7 @@ Public Function InsertHDR() As String
                 .Col = .ColLetterToNumber("AO")
 
                 If vTemp = Trim(.Text) Then
-                    .Col = .ColLetterToNumber("AL")
+                    .Col = .ColLetterToNumber("AM")
                     TEMP = .Value
 
                     If Trim(TEMP) = vbNullString Then
@@ -1907,14 +1907,14 @@ Public Function InsertHDR() As String
 
                     ThueTKy = ThueTKy + CDbl(TEMP)
                             
-                    .Col = .ColLetterToNumber("O")
+                    .Col = .ColLetterToNumber("P")
                     TEMP = .Value
 
                     If Trim(TEMP) = vbNullString Then
                         TEMP = "0"
                     End If
 
-                    .Col = .ColLetterToNumber("R")
+                    .Col = .ColLetterToNumber("S")
                     TEMP2 = .Value
 
                     If Trim(TEMP2) = vbNullString Then

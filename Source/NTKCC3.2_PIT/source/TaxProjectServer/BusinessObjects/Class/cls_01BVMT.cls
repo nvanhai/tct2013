@@ -1543,7 +1543,7 @@ Public Function InsertHDR() As String
         For i = 1 To UBound(arrMTMSave) - 1
             vTemp = arrMTMSave(i)
             
-            'maTM = "'" & vTemp & "'"
+            maTM = "'" & vTemp & "'"
             ThueTKy = arrThueTKySave(i)
 
             If Trim(maTM) <> "" Or Trim(maTM) <> "''" Then
