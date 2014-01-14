@@ -2119,7 +2119,11 @@ insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIE
 values ('01_TBVMT13', '5', 'N', 6140, '');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
-values ('01_TBVMT13', '6', 'N', 6141, '');
+values ('01_TBVMT13', '6', 'C', 6140, '');
+
+insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('01_TBVMT13', '7', 'N', 6141, '');
+
 commit;
 
 -- Phu luc 01-1/TBVMT
