@@ -889,7 +889,7 @@ SELECT dtl.hdr_id
      , MAX(dtl.so_luong) so_luong
      , MAX(dtl.muc_thue) muc_thue
      , MAX(dtl.Thue_BVMT) Thue_BVMT
-     , MAX(dtl.ten_hang_hoa) ten_hang_hoa    
+     , MAX(dtl.ma_hang_hoa) ma_hang_hoa    
 FROM rcv_gdien_tkhai gd,
 (
   SELECT tkd.hdr_id,
@@ -900,7 +900,7 @@ FROM rcv_gdien_tkhai gd,
          DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL) so_luong,
          DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) muc_thue,
          DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL) Thue_BVMT,
-         DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL) ten_hang_hoa
+         DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL) ma_hang_hoa
   FROM rcv_tkhai_dtl tkd,
        rcv_gdien_tkhai gdien,
        rcv_map_ctieu ctieu
@@ -919,13 +919,13 @@ GROUP BY dtl.hdr_id,
 
 -- Phu luc 2/TBVMT kem theo to khai 01/TBVMTT
 CREATE OR REPLACE VIEW RCV_V_PLUC_TKHAI_TBVMT_01_13
-(hdr_id, row_id, so_tt, hang_hoa, ten_dn, mst, co_quan_thue, so_thue_tieu_thu_noi_dia, tong_so_than_thieu_thu, ty_le_phan_bo, san_luong_than_mua, muc_thue_bvmt, muc_thue_phat_sinh_phai_nop)
+(hdr_id, row_id, so_tt, ma_hang_hoa, ten_dn, mst, co_quan_thue, so_thue_tieu_thu_noi_dia, tong_so_than_thieu_thu, ty_le_phan_bo, san_luong_than_mua, muc_thue_bvmt, muc_thue_phat_sinh_phai_nop)
 AS
 SELECT
     dtl.hdr_id ,
     MAX(dtl.row_id)               			row_id ,
 	MAX(dtl.so_tt)                			so_tt ,
-    MAX(dtl.hang_hoa)             			hang_hoa ,
+    MAX(dtl.ma_hang_hoa)             		ma_hang_hoa ,
     MAX(dtl.ten_dn)               			ten_dn ,
 	MAX(dtl.mst)               	  			mst ,
     MAX(dtl.co_quan_thue)         			co_quan_thue ,
@@ -944,7 +944,7 @@ FROM
             gdien.id,
             tkd.row_id,
             gdien.so_tt                                          so_tt,
-            DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL) hang_hoa,
+            DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL) ma_hang_hoa,
             DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL) ten_dn,
             DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) mst,
             DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL) co_quan_thue,
