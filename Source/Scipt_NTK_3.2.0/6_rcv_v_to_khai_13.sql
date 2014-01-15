@@ -473,51 +473,56 @@ GROUP BY dtl.hdr_id,
          dtl.id;
 
 
--- Phu luc 02-1/GTGT
 CREATE OR REPLACE VIEW RCV_V_PLUC_GTGT_KT0201_13 AS
 (/* Formatted on 2011/08/11 13:39 (Formatter Plus v4.8.7) */
 SELECT   dtl.hdr_id,dtl.so_tt-2  so_tt, dtl.row_id row_id,
          '4' nhom_ctieu,
-         MAX (dtl.ky_hieu_hdon) ky_hieu_hdon, MAX (dtl.so_hoa_don) so_hoa_don,  MAX (dtl.ky_hieu_mau_hdon) ky_hieu_mau_hdon,
-         MAX (dtl.ngay_hoa_don) ngay_hoa_don, MAX (dtl.tin) tin,
-         MAX (dtl.ten_dtnt) ten_dtnt, MAX (dtl.ten_hang) ten_hang,
-         MAX (dtl.doanh_so) doanh_so, MAX (dtl.thue_xuat) thue_xuat,
-         MAX (dtl.so_thue) so_thue, MAX (dtl.ghi_chu) ghi_chu
+         MAX (dtl.ky_hieu_mau_hdon) ky_hieu_mau_hdon, 
+         MAX (dtl.ky_hieu_hdon) ky_hieu_hdon, 
+         MAX (dtl.so_hoa_don) so_hoa_don,
+         MAX (dtl.ngay_hoa_don) ngay_hoa_don, 
+         MAX (dtl.tin) tin,
+         MAX (dtl.ten_dtnt) ten_dtnt, 
+         MAX (dtl.ten_hang) ten_hang,
+         MAX (dtl.doanh_so) doanh_so, 
+         MAX (dtl.thue_xuat) thue_xuat,
+         MAX (dtl.so_thue) so_thue, 
+         MAX (dtl.ghi_chu) ghi_chu
     FROM (SELECT tkd.hdr_id, tkd.row_id row_id, gdien.ID,
                  gdien.so_tt so_tt,
-                 DECODE (gdien.cot_02,
-                         tkd.ky_hieu, tkd.gia_tri,
-                         NULL
-                        ) ky_hieu_mau_hdon,
                  DECODE (gdien.cot_03,
                          tkd.ky_hieu, tkd.gia_tri,
                          NULL
-                        ) ky_hieu_hdon,
+                        ) ky_hieu_mau_hdon,
                  DECODE (gdien.cot_04,
                          tkd.ky_hieu, tkd.gia_tri,
                          NULL
+                        ) ky_hieu_hdon,
+                 DECODE (gdien.cot_05,
+                         tkd.ky_hieu, tkd.gia_tri,
+                         NULL
                         ) so_hoa_don,
-                   DECODE (gdien.cot_05,
+                 DECODE (gdien.cot_06,
                          tkd.ky_hieu, tkd.gia_tri,
                          NULL
-                        ) ngay_hoa_don,      
-                 DECODE (gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL) ten_dtnt,
-                
-                 DECODE (gdien.cot_07,
-                         tkd.ky_hieu, tkd.gia_tri,
-                         NULL
-                        ) tin,
+                        ) ngay_hoa_don,
+                 DECODE (gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL) ten_dtnt,
+
                  DECODE (gdien.cot_08,
                          tkd.ky_hieu, tkd.gia_tri,
                          NULL
-                        ) ten_hang,
+                        ) tin,
                  DECODE (gdien.cot_09,
                          tkd.ky_hieu, tkd.gia_tri,
                          NULL
+                        ) ten_hang,
+                 DECODE (gdien.cot_10,
+                         tkd.ky_hieu, tkd.gia_tri,
+                         NULL
                         ) doanh_so,
-                        
-                        
-                 REPLACE (REPLACE (DECODE (gdien.cot_10,
+
+
+                 REPLACE (REPLACE (DECODE (gdien.cot_11,
                                            tkd.ky_hieu, tkd.gia_tri,
                                            NULL
                                           ),
@@ -527,11 +532,11 @@ SELECT   dtl.hdr_id,dtl.so_tt-2  so_tt, dtl.row_id row_id,
                           ',',
                           '.'
                          ) thue_xuat,
-                 DECODE (gdien.cot_11,
+                 DECODE (gdien.cot_12,
                          tkd.ky_hieu, tkd.gia_tri,
                          NULL
                         ) so_thue,
-                 DECODE (gdien.cot_12,
+                 DECODE (gdien.cot_13,
                          tkd.ky_hieu, tkd.gia_tri,
                          NULL
                         ) ghi_chu
@@ -540,8 +545,8 @@ SELECT   dtl.hdr_id,dtl.so_tt-2  so_tt, dtl.row_id row_id,
            WHERE (ctieu.gdn_id = gdien.ID)
              AND (ctieu.ky_hieu = tkd.ky_hieu)
              AND (tkd.loai_dlieu IN
-                     ('02_01_GTGT13'
-                     ,'02_01_1_GTGT13',
+                     ('02_01_GTGT13',
+                      '02_01_1_GTGT13',
                       '02_01_2_GTGT13',
                       '02_01_3_GTGT13',
                       '02_01_4_GTGT13',
