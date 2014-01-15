@@ -1,4 +1,4 @@
-<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22">
+<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22" loi_dinh_danh="E_28">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>147</maTKhai>
 		<tenTKhai>TK-TNCN Mẫu 07/KK-TNCN</tenTKhai>
@@ -22,16 +22,12 @@
 		<ct21>W_35</ct21>
 		<ct22>S_36</ct22>
 		<ct23>S_37</ct23>
-	</Static>
-	<Static GroupName="TongCacKhoanGTru">
 		<ct24>S_38</ct24>
 		<ct25>S_39</ct25>
 		<ct26>S_41</ct26>
 		<ct27>S_42</ct27>
 		<ct28>S_43</ct28>
 		<ct29>S_44</ct29>
-	</Static>
-	<Static GroupName="CANHANCUTRUCOTHUNHAPTUTIENLUONGTIENCONG">
 		<ct30>S_45</ct30>
 		<ct31>S_46</ct31>
 		<ct32>S_47</ct32>

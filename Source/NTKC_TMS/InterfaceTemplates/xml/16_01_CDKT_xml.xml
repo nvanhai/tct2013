@@ -231,9 +231,14 @@
 			<cketTTro_nNgoai>0</cketTTro_nNgoai>
 			<cketKhac_nNgoai>0</cketKhac_nNgoai>
 		</SoNamNgoai>
+		<PhanKy>
+			<nguoiLapBieu></nguoiLapBieu>
+			<keToanTruong></keToanTruong>
+			<ngayLap></ngayLap>
+			<giamDoc></giamDoc>
+		</PhanKy>
 	</CTieuTKhaiChinh>
 	<PLuc>
 	</PLuc>
 </HSoKhaiThue>
-<CKyDTu></CKyDTu>
 </HSoThueDTu>

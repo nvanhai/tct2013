@@ -1,5 +1,5 @@
 
-	<HSoKhaiThue ngay_nop_tk="E_44" ky_lap_bo="E_42">
+	<HSoKhaiThue ngay_nop_tk="E_44" ky_lap_bo="E_42" loi_dinh_danh="">
 		<Static GroupName="TKhaiThue">
 			<maTKhai>71</maTKhai>
 			<tenTKhai>TK TNDN cho chuyển nhượng BĐS (02/TNDN)</tenTKhai>

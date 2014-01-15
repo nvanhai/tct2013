@@ -1,4 +1,4 @@
-﻿<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22">
+﻿<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22" loi_dinh_danh="E_32">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>48</maTKhai>
 		<tenTKhai>TK-TNCN Mẫu 03/KK-TNCN</tenTKhai>
@@ -18,29 +18,39 @@
 		<maHuyenDLyThue></maHuyenDLyThue>
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
+	<Static GroupName="ToChucKhaiThay">
+		<ct12>H_13</ct12>
+		<ct13>G_14</ct13>
+		<ct14>E_15</ct14>
+		<ct15>G_16</ct15>
+		<ct16>V_16</ct16>
+		<ct17>E_17</ct17>
+		<ct18>M_17</ct18>
+		<ct19>V_17</ct19>
+	</Static>
 	<Static GroupName="ThuNhapTuDauTuVon">
-		<ct21>S_42</ct21>
-		<ct22>S_43</ct22>
+		<ct29>S_42</ct29>
+		<ct30>S_43</ct30>
 	</Static>
 	<Static GroupName="ThuNhapTuCNhuongCKhoan">
-		<ct23>S_45</ct23>
-		<ct24>S_46</ct24>
+		<ct31>S_45</ct31>
+		<ct32>S_46</ct32>
 	</Static>
 	<Static GroupName="ThuNhapTuBanQuyenTMai">
-		<ct25>S_48</ct25>
-		<ct26>S_49</ct26>
+		<ct33>S_48</ct33>
+		<ct34>S_49</ct34>
 	</Static>
 	<Static GroupName="ThuNhapTuTrungThuong">
-		<ct27>S_52</ct27>
-		<ct28>S_53</ct28>
+		<ct35>S_52</ct35>
+		<ct36>S_53</ct36>
 	</Static>
 	<Static GroupName="ThuNhapTuKDoanhCuaCNhanKhongCuTru">
-		<ct29>S_55</ct29>
-		<ct30>S_56</ct30>
+		<ct37>S_55</ct37>
+		<ct38>S_56</ct38>
 	</Static>
 	<Static GroupName="ThuNhapTuCNhuongVonCuaCNhanKhongCTru">
-		<ct31>S_58</ct31>
-		<ct32>S_59</ct32>
+		<ct39>S_58</ct39>
+		<ct40>S_59</ct40>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>R_61</nguoiKy>

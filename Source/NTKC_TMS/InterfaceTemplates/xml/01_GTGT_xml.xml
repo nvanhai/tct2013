@@ -12,10 +12,7 @@
 				<TKhaiThue>
 					<maTKhai></maTKhai>
 					<tenTKhai></tenTKhai>
-					<moTaBMau>
-						<moTaBieuMau></moTaBieuMau>
-						<ghiChuTKhai></ghiChuTKhai>
-					</moTaBMau>
+					<moTaBMau></moTaBMau>
 					<pbanTKhaiXML></pbanTKhaiXML>
 					<loaiTKhai></loaiTKhai>
 					<soLan></soLan>
@@ -111,6 +108,5 @@
 		</CTieuTKhaiChinh>
 		<PLuc>
 		</PLuc>
-	</HSoKhaiThue>
-	<CKyDTu></CKyDTu>
+	</HSoKhaiThue>	
 </HSoThueDTu>

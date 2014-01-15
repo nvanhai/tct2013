@@ -1,4 +1,4 @@
-<HSoKhaiThue ngay_nop_tk="E_13" ky_lap_bo="">
+<HSoKhaiThue ngay_nop_tk="E_13" ky_lap_bo="" loi_dinh_danh="">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>104</maTKhai>
 		<tenTKhai>Báo cáo mất,cháy,hỏng hóa đơn</tenTKhai>

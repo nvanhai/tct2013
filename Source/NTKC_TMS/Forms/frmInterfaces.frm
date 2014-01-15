@@ -786,7 +786,7 @@ Private Sub cmdCommand2_Click()
     Dim sFileName As String
     sFileName = "c:\TempXML\" & strFileName
     Dim xmlDocSave As New MSXML.DOMDocument
-    Set xmlDocSave = AppendXMLStandard(xmlTK, sKyLapBo, sNgayNopTK)
+    Set xmlDocSave = AppendXMLStandard(xmlTK, sKyLapBo, sNgayNopTK, "")
     xmlDocSave.save sFileName
     
     ' Push MQ
@@ -847,7 +847,7 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                                     End If
 
                                 Else
-                                    dNode.Text = .Text
+                                    dNode.Text = ToDateString(.Text)
                             
                                 End If
                             End If
@@ -951,7 +951,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         xmlTK.getElementsByTagName("soLan")(0).Text = Val(vlue)
         strLoaiToKhai = GetAttribute(GetMessageCellById("0132"), "Msg")
     Else
-        xmlTK.getElementsByTagName("soLan")(0).Text = ""
+        xmlTK.getElementsByTagName("soLan")(0).Text = "0"
         xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0131"), "Msg")
         strLoaiToKhai = GetAttribute(GetMessageCellById("0131"), "Msg")
     End If
@@ -1254,6 +1254,7 @@ Private Sub ExecuteSave()
     
     Dim sKyLapBo     As String
     Dim sNgayNopTK   As String
+    Dim sLoiDinhDanh As String
     
     On Error GoTo ErrHandle
     
@@ -1426,7 +1427,7 @@ Private Sub ExecuteSave()
                             End If
 
                         Else
-                            xmlCellTKNode.Text = .Text
+                            xmlCellTKNode.Text = ToDateString(.Text)
                         End If
                     End If
 
@@ -1439,7 +1440,7 @@ Private Sub ExecuteSave()
         'Set gia tri header cho to khai
         SetValueToKhaiHeader xmlTK
 
-        'Set value KyLapBo, NgayNopTK
+        'Set value KyLapBo, NgayNopTK, LoiDinhDanh
         cellid = GetAttribute(xmlMapCT.lastChild, "ky_lap_bo")
 
         If cellid <> vbNullString Then
@@ -1458,6 +1459,16 @@ Private Sub ExecuteSave()
             .Row = Val(cellArray(1))
             sNgayNopTK = .Text
         End If
+
+        cellid = GetAttribute(xmlMapCT.lastChild, "loi_dinh_danh")
+
+        If cellid <> vbNullString Then
+            cellArray = Split(cellid, "_")
+            .Col = .ColLetterToNumber(cellArray(0))
+            .Row = Val(cellArray(1))
+            sLoiDinhDanh = .Text
+        End If
+
 
         'Set value cho phu luc
         For nodeValIndex = 1 To TAX_Utilities_Srv_New.NodeValidity.childNodes.length
@@ -1617,7 +1628,7 @@ Private Sub ExecuteSave()
                                         End If
 
                                     Else
-                                        xmlCellTKNode.Text = .Text
+                                        xmlCellTKNode.Text = ToDateString(.Text)
                                     End If
                                 End If
 
@@ -1643,8 +1654,10 @@ Private Sub ExecuteSave()
     Dim sFileName As String
     sFileName = "c:\TempXML\" & strFileName
     Dim xmlDocSave As New MSXML.DOMDocument
-    Set xmlDocSave = AppendXMLStandard(xmlTK, sKyLapBo, sNgayNopTK)
+    Set xmlDocSave = AppendXMLStandard(xmlTK, sKyLapBo, sNgayNopTK, sLoiDinhDanh)
     xmlDocSave.save sFileName
+
+    'Validate xml
 
     ' Push MQ
     If (Not PushDataToESB(xmlDocSave.xml)) Then
@@ -2319,13 +2332,13 @@ Private Sub Command1_Click()
 'str2 = "aa999482300121087   11201300100100100101/0101/01/2010<S01><S>0010011000</S><S>500000~400000~200000</S><S>Hoµng Lan~Huy“n Tr©m~KTV~20/12/2013~1~~</S></S01>"
 'Barcode_Scaned str2
 '
-'01/KK-BHDC:
-str2 = "aa999252300121087   11201300100100100101/0101/01/1900<S01><S>0010011000</S><S>4000000~200000~100000~300000~30000~100000~10000~130000~30000~21000~161000</S><S>Hoµng Lan~20/12/2013~Huy“n Tr©m~KTV~1~~~0</S></S01>"
-Barcode_Scaned str2
-
-''02/TNCN:
-'str2 = "aa999152300121087   11201300100100100101/0101/01/2010<S01><S>0010011000</S><S>5000~2000~120000~300000~400000~100000~340000~130000~100000~200000~60000~10000~40000</S><S>Hoµng Lan~20/12/2013~Huy“nTr©m~KTV~1~~</S></S01>"
+''01/KK-BHDC:
+'str2 = "aa999252300121087   11201300100100100101/0101/01/1900<S01><S>0010011000</S><S>4000000~200000~100000~300000~30000~100000~10000~130000~30000~21000~161000</S><S>Hoµng Lan~20/12/2013~Huy“n Tr©m~KTV~1~~~0</S></S01>"
 'Barcode_Scaned str2
+
+'02/TNCN:
+str2 = "aa999152300121087   11201300100100100101/0101/01/2010<S01><S>0010011000</S><S>5000~2000~120000~300000~400000~100000~340000~130000~100000~200000~60000~10000~40000</S><S>Hoµng Lan~20/12/2013~Huy“nTr©m~KTV~1~~</S></S01>"
+Barcode_Scaned str2
 '
 ''03/TNCN:
 'str2 = "aa999502300121087   11201300100100100201/0101/01/2010<S01><S>0010011000</S><S>tÊ ch¯c khai thay ABC~0102030405~ßinh Li÷t - Hoµn Ki’m - HN~Hoµn Ki’m~HN~0987689965~015678889~abc@yahoo.com</S>"
@@ -6465,7 +6478,7 @@ End Function
 
 Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
                                   ByVal sKyLapBo As String, _
-                                  ByVal sNgayNopTK As String) As MSXML.DOMDocument
+                                  ByVal sNgayNopTK As String, ByVal sLoiDinhDanh As String) As MSXML.DOMDocument
     Dim XmlDocStandard As New MSXML.DOMDocument
     XmlDocStandard.Load GetAbsolutePath("..\InterfaceTemplates\xml\TempStandard.xml")
     Set XmlDocStandard = SetValueHeaderESB(XmlDocStandard)
@@ -6485,6 +6498,7 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
     
     XmlDocStandard.getElementsByTagName("noi_gui")(0).Text = ""
     XmlDocStandard.getElementsByTagName("noi_nhan")(0).Text = ""
+    XmlDocStandard.getElementsByTagName("loi_dinh_danh")(0).Text = IIf(sLoiDinhDanh <> vbNullString, "X", "")
     
     
     'Bo sung tag <QHS> cho BCTC va AC

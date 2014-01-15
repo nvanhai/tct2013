@@ -1,4 +1,4 @@
-<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22">
+<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22" loi_dinh_danh="E_28">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>60</maTKhai>
 		<tenTKhai>Tờ khai QT phí bảo vệ môi trường (02/BVMT)</tenTKhai>
@@ -22,7 +22,8 @@
 	</Static>
 	<Dynamic GroupName="KSCSTuKhaiThac" Level="2">
 		<NoiDungKS id="ID_1">
-			<maKSan>C_45</maKSan>
+			<maKSan>AB_45</maKSan>
+			<tenKSan>C_45</tenKSan>
 			<donViTinh>G_45</donViTinh>
 			<soLuong>I_45</soLuong>
 			<mucPhi>M_45</mucPhi>
@@ -36,7 +37,8 @@
 	</Static>
 	<Dynamic GroupName="KSCSThuMua" Level="2">
 		<NoiDungKS id="ID_2">
-			<maKSan>C_49</maKSan>
+			<maKSan>AB_49</maKSan>
+			<tenKSan>C_49</tenKSan>
 			<donViTinh>G_49</donViTinh>
 			<soLuong>I_49</soLuong>
 			<mucPhi>M_49</mucPhi>

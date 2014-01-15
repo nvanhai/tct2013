@@ -1,4 +1,4 @@
-<HSoKhaiThue ngay_nop_tk="E_10" ky_lap_bo="">
+<HSoKhaiThue ngay_nop_tk="E_10" ky_lap_bo="" loi_dinh_danh="">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>102</maTKhai>
 		<tenTKhai>Báo cáo tình hình sử dụng hóa đơn</tenTKhai>

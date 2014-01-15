@@ -69,14 +69,20 @@
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
+			<ngayDauKyBaoCao></ngayDauKyBaoCao>
+			<ngayCuoiKyBaoCao></ngayCuoiKyBaoCao>
 		<kyBaoCaoCuoiCung></kyBaoCaoCuoiCung>
 		<HoaDon>
 			<ChiTietHoaDon>
+				<ToChucCNDatIn>
 				<mst></mst>
 				<ten></ten>
 				<diaChi></diaChi>
+			</ToChucCNDatIn>
+					<HopDong>
 				<so></so>
 				<ngay></ngay>
+					</HopDong>
 				<tenHDon></tenHDon>
 				<mauHDon></mauHDon>
 				<kyHieu></kyHieu>
@@ -86,9 +92,8 @@
 			</ChiTietHoaDon>
 		</HoaDon>
 		<nguoiDaiDien></nguoiDaiDien>
-		<ngayLapBCao></ngayLapBCao>
+		<ngayBCao></ngayBCao>
 	</CTieuTKhaiChinh>
 	<PLuc/>
 </HSoKhaiThue>
-<CKyDTu></CKyDTu>
 </HSoThueDTu>

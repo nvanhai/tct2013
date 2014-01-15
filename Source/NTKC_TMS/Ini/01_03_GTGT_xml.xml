@@ -1,5 +1,5 @@
 <PL01_3_GTGT>
-	<Dynamic GroupName="PL01_3_GTGT">
+	<Dynamic GroupName="PL01_3_GTGT" FirstChild="1">
 		<ChiTietBangKeHH id="id">
 			<HopDongXuatKhau>
 				<so>C_9</so>

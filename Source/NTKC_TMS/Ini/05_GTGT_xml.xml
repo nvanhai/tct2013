@@ -1,5 +1,5 @@
 
-	<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22">
+	<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22" loi_dinh_danh="">
 		<Static GroupName="TKhaiThue">
 			<maTKhai>53</maTKhai>
 			<tenTKhai>Tờ khai GTGT (05/GTGT)</tenTKhai>

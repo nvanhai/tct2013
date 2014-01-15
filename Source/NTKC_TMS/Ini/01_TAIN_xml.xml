@@ -1,4 +1,4 @@
-<HSoKhaiThue ngay_nop_tk="F_25" ky_lap_bo="F_23">
+<HSoKhaiThue ngay_nop_tk="F_25" ky_lap_bo="F_23" loi_dinh_danh="">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>06</maTKhai>
 		<tenTKhai>Tờ khai thuế tài nguyên(01/TAIN)</tenTKhai>

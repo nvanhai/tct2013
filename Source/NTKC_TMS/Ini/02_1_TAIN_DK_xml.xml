@@ -1,6 +1,18 @@
-<PLuc_01_DK><Static GroupName="PLuc_01_DK"><tenNhaThau></tenNhaThau>
-		<tyLePhanBo>0.0</tyLePhanBo>
-		<soThuePSinhPNop>0.0</soThuePSinhPNop>
-		<ghiChu></ghiChu>
-		<tongCong>1</tongCong>
-	</Static></PLuc_01_DK>
+<PL_02_1TAIN_DK>
+	<Dynamic GroupName="SLuongDThu">
+		<bangKKhai id="id">
+			<ngayThangKThac>K_27</ngayThangKThac>
+			<soLuongKThac>P_27</soLuongKThac>
+			<soLuongXBan>Y_27</soLuongXBan>
+			<giaBan>AD_27</giaBan>
+			<doanhThu_NgoaiTe>AJ_27</doanhThu_NgoaiTe>
+			<doanhThu_dongVietNam>1</doanhThu_dongVietNam>
+			<ghiChu>String</ghiChu>
+		</bangKKhai>
+	</Dynamic>
+	<Static GroupName="SLuongDThu">
+		<tongSLuongDKhiXBan>1</tongSLuongDKhiXBan>
+		<tongDoanhThuXBan_ngoaiTe>1</tongDoanhThuXBan_ngoaiTe>
+		<tongDoanhThuXBan_dongVietNam>1</tongDoanhThuXBan_dongVietNam>
+	</Static>
+</PL_02_1TAIN_DK>
