@@ -1,8 +1,8 @@
-<HSoKhaiThue ngay_nop_tk="E_12" ky_lap_bo="E_10">
+<HSoKhaiThue ngay_nop_tk="E_12" ky_lap_bo="E_10" loi_dinh_danh="">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>48</maTKhai>
 		<tenTKhai>TK-TNCN Mẫu 03/KK-TNCN</tenTKhai>
-		<soLan>I_64</soLan>
+		<soLan>I_61</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
@@ -10,12 +10,23 @@
 		<lyDoGiaHan></lyDoGiaHan>
 	</Static>
 	<Static GroupName="NNT">
+		<phuongXa></phuongXa>
 		<maHuyenNNT></maHuyenNNT>
 		<maTinhNNT></maTinhNNT>
 	</Static>
 	<Static GroupName="DLyThue">
 		<maHuyenDLyThue></maHuyenDLyThue>
 		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="ToChucKhaiThay">
+		<ct12>J_7</ct12>
+		<ct13>J_9</ct13>
+		<ct14>F_11</ct14>
+		<ct15>F_13</ct15>
+		<ct16>S_13</ct16>
+		<ct17>F_15</ct17>
+		<ct18>K_15</ct18>
+		<ct19>S_15</ct19>
 	</Static>
 	<Static GroupName="ThuNhapTuDauTuVon">
 		<ct21>S_42</ct21>

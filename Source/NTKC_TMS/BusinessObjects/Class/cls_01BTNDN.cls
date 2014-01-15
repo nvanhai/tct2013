@@ -77,14 +77,14 @@ Public strNgayHopDongDL As String
 Private Sub DataDM(ByVal Id As String, Optional ByRef TenTN As String)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlDomData As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = "..\InterfaceTemplates\xml\Catalogue_Tinh_Thanh.xml"
     
-       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -98,7 +98,7 @@ Dim xmlNode As MSXML.IXMLDOMNode
 End Sub
 
 Public Function Prepared1() As Boolean
-    Dim xmlDOMdata As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
+    Dim xmlDomData As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
     Dim strDataFileName As String
     Dim xmlNodeListItems As MSXML.IXMLDOMNodeList
     Dim strCboLyDo As String
@@ -157,8 +157,8 @@ Public Function Prepared1() As Boolean
         ' set gia tri gia han
         ' Ky dc gia han moi set gia tri ly do gia han
         strDataFileName = GetAbsolutePath("..\InterfaceTemplates\xml\Catalogue_DM_Lydo_GH_TT16.xml")
-        If xmlDOMdata.Load(strDataFileName) Then
-             Set xmlNodeListItems = xmlDOMdata.getElementsByTagName("Item")
+        If xmlDomData.Load(strDataFileName) Then
+             Set xmlNodeListItems = xmlDomData.getElementsByTagName("Item")
              For Each xmlNode In xmlNodeListItems
                  fldList = Split(GetAttribute(xmlNode, "Value"), "###")
                  strCboLyDo = strCboLyDo + fldList(1) + Chr$(9)
@@ -685,7 +685,7 @@ Public Function CheckValidData() As Boolean
     End With
 End Function
 
-Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
+Public Function GenerateSQL_Header(xmlDomData As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
     Dim xmlList As MSXML.IXMLDOMNodeList
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim xmlAttribute As MSXML.IXMLDOMAttribute
@@ -706,7 +706,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     
 On Error GoTo ErrHandle
     strSQL = strSQL_HDR
-    Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
+    Set xmlList = xmlDomData.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
         
@@ -979,7 +979,7 @@ End Sub
 Private Function getTenLyDoGD(maGH As Variant) As String
     Dim maDM1 As String
     Dim strDuongDanFile As String
-    Dim xmlDOMdata      As New MSXML.DOMDocument
+    Dim xmlDomData      As New MSXML.DOMDocument
     Dim xmlNodelist     As MSXML.IXMLDOMNodeList
     Dim xmlNode         As MSXML.IXMLDOMNode
     Dim arrStrName()    As String
@@ -990,9 +990,9 @@ Private Function getTenLyDoGD(maGH As Variant) As String
     'lay file chua tenDM
     strDuongDanFile = "..\InterfaceTemplates\xml\Catalogue_DM_Lydo_GH_TT16.xml"
     strDuongDanFile = GetAbsolutePath(strDuongDanFile)
-    xmlDOMdata.Load (strDuongDanFile)
+    xmlDomData.Load (strDuongDanFile)
     
-    Set xmlNodelist = xmlDOMdata.getElementsByTagName("Item")
+    Set xmlNodelist = xmlDomData.getElementsByTagName("Item")
         For Each xmlNode In xmlNodelist
             If Left(GetAttribute(xmlNode, "Value"), 2) = maDM1 Then
                 arrStrName = Split(GetAttribute(xmlNode, "Value"), "###")

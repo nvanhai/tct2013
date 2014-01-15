@@ -1790,8 +1790,6 @@ Public Function PushDataToESB(ByVal xmlInput As String) As Boolean
     Dim sQueueMgrName As String
     Dim sQueueName    As String
     Dim IsConnectMQ   As Boolean
-    Dim IsCloseMQ     As Boolean
-    Dim IsTransfer As Boolean
     
     'xmlInput = TAX_Utilities_Srv_New.Convert(xmlInput, UNICODE, VIQR)
     
@@ -1799,18 +1797,20 @@ Public Function PushDataToESB(ByVal xmlInput As String) As Boolean
     sQueueName = xmlConfig.getElementsByTagName("queue_name")(0).Text
     Dim MQPUT As New MQPUT
     IsConnectMQ = MQPUT.open_Conn(sQueueMgrName, sQueueName)
-    IsTransfer = MQPUT.put_Msg(xmlInput)
-    IsCloseMQ = MQPUT.close_Conn
-    
-    If IsConnectMQ And IsTransfer Then
-        PushDataToESB = True
+    If IsConnectMQ Then
+        If MQPUT.put_Msg(xmlInput) Then
+            PushDataToESB = True
+        Else
+            PushDataToESB = False
+        End If
+        'Dong connection den MQ
+        If (MQPUT.close_Conn) Then
+           SaveErrorLog "Close MQ:", "Dong ket noi voi MQ cua truc", 1111, "Loi khong dong duoc ket noi voi MQ sau khi truyen tin"
+        End If
     Else
         PushDataToESB = False
     End If
-    'Dong connection den MQ
-    If (Not IsCloseMQ) Then
-       SaveErrorLog "Close MQ:", "Dong ket noi voi MQ cua truc", 1111, "Loi khong dong duoc ket noi voi MQ sau khi truyen tin"
-    End If
+    
 End Function
 ' chuyen the "<", ">" thanh "&lt;", "&gt;" neu IsTagToASSCII = true
 Public Function ChangeTagASSCII(ByVal strTemp As String, ByVal IsTagToASSCII As Boolean) As String
@@ -2252,3 +2252,25 @@ Dim xmlNode As MSXML.IXMLDOMNode
             Next
         End If
 End Sub
+
+Public Function ToDateString(str As String) As String
+    Dim strArray() As String
+
+    strArray = Split(str, "/")
+
+    If UBound(strArray) <> 2 Then
+        ToDateString = str
+        Exit Function
+    Else
+
+        If Val(strArray(0)) > 0 And Val(strArray(1)) > 0 And Val(strArray(2)) > 0 Then
+            If Val(strArray(0)) <= 31 And Val(strArray(1)) <= 12 And Val(strArray(2)) < 9999 Then
+                ToDateString = strArray(2) & "-" & strArray(1) & "-" & strArray(0)
+                Exit Function
+            End If
+        End If
+    End If
+
+    ToDateString = str
+    Exit Function
+End Function

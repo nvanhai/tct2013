@@ -1,4 +1,4 @@
-<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30">
+<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30" loi_dinh_danh="">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>42</maTKhai>
 		<tenTKhai>>Tờ khai 05/KK-TNCN</tenTKhai>

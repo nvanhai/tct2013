@@ -1,13 +1,14 @@
 
-	<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30">
+	<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30" loi_dinh_danh="E_36">
 		<Static GroupName="TKhaiThue">
 			<maTKhai>11</maTKhai>
 			<tenTKhai>Tờ khai thuế TNDN tạm tính (01A/TNDN)</tenTKhai>
+			<soLan>F_80</soLan>
 			<moTaBMau/>
 		</Static>
 		<Static GroupName="GiaHan">
-			<maLyDoGiaHan>AB_38</maLyDoGiaHan>
-			<lyDoGiaHan>E_38</lyDoGiaHan>
+			<maLyDoGiaHan>AB_64</maLyDoGiaHan>
+			<lyDoGiaHan>M_64</lyDoGiaHan>
 		</Static>
 		<Static GroupName="NNT">
 			<maHuyenNNT></maHuyenNNT>
@@ -18,7 +19,7 @@
 			<maTinhDLyThue></maTinhDLyThue>
 		</Static>
 		<Static GroupName="CTieuTKhaiChinh">
-			<dnADungTSuat20>H_6</dnADungTSuat20>
+			<dnQuiMoVuaVaNho>H_6</dnQuiMoVuaVaNho>
 			<dnCoCSoHToanPThuoc>H_7</dnCoCSoHToanPThuoc>
 			<ct21>U_40</ct21>
 			<ct22>U_41</ct22>

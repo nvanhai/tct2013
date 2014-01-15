@@ -1,4 +1,4 @@
-<HSoKhaiThue ngay_nop_tk="D_12" ky_lap_bo="">
+<HSoKhaiThue ngay_nop_tk="D_12" ky_lap_bo="" loi_dinh_danh="">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>107</maTKhai>
 		<tenTKhai>Thông báo kết quả hủy hóa đơn</tenTKhai>

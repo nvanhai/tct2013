@@ -79,7 +79,8 @@
 				<KSCSoTuKhaiThac>
 					<TTinKhoangSan>
 						<KhoangSan id="ID_1">
-							<loaiKSan></loaiKSan>
+							<maKhoangSan></maKhoangSan>
+							<tenKhoangSan></tenKhoangSan>
 							<donViTinh></donViTinh>
 							<soLuong>0.0</soLuong>
 							<mucPhi></mucPhi>
@@ -91,7 +92,8 @@
 				<KSanCoSoThuMuaNopThay>
 					<TTinKhoangSan>
 						<KhoangSan id="ID_2">
-							<loaiKSan></loaiKSan>
+							<maKhoangSan></maKhoangSan>
+							<tenKhoangSan></tenKhoangSan>
 							<donViTinh></donViTinh>
 							<soLuong>0.0</soLuong>
 							<mucPhi></mucPhi>
@@ -105,4 +107,4 @@
 		</CTieuTKhaiChinh>
 		<PLuc/>
 	</HSoKhaiThue>
-	<CKyDTu></CKyDTu></HSoThueDTu>
+</HSoThueDTu>

@@ -1,7 +1,8 @@
-<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22">
+<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22" loi_dinh_danh="E_28">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>59</maTKhai>
 		<tenTKhai>Tờ khai phí bảo vệ môi trường (01/BVMT)</tenTKhai>
+		<soLan>I_33</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
@@ -17,19 +18,20 @@
 		<maTinhDLyThue/>
 	</Static>
 	<Static GroupName="Header">
-		<ct12>F_13</ct12>
-		<ct13>Q_13</ct13>
-		<ct14>O_14</ct14>
-		<ct15>H_15</ct15>
+		<ct12>K_14</ct12>
+		<ct13>G_15</ct13>
+		<ct14>G_16</ct14>
+		<ct15>F_17</ct15>
 	</Static>
 	<Static GroupName="KSCSoTuKhaiThac">
-		<tongPhiKSanKhaiThacPNop>Q_43</tongPhiKSanKhaiThacPNop>
+		<tongPhiKSanKhaiThacPNop>U_43</tongPhiKSanKhaiThacPNop>
 	</Static>
 	<Dynamic GroupName="KSCSoTuKhaiThac" Level="2">
 		<KhoangSan id="ID_2">
-			<loaiKSan>AC_45</loaiKSan>
-			<donViTinh>J_45</donViTinh>
-			<soLuong>L_45</soLuong>
+			<maKhoangSan>AB_45</maKhoangSan>
+			<tenKhoangSan>C_45</tenKhoangSan>
+			<donViTinh>H_45</donViTinh>
+			<soLuong>J_45</soLuong>
 			<mucPhi>Q_45</mucPhi>
 			<soPhiPNop>U_45</soPhiPNop>
 		</KhoangSan>
@@ -39,9 +41,10 @@
 	</Static>
 	<Dynamic GroupName="KSanCoSoThuMuaNopThay" Level="2">
 		<KhoangSan id="ID_1">
-			<loaiKSan>AC_49</loaiKSan>
-			<donViTinh>J_49</donViTinh>
-			<soLuong>L_49</soLuong>
+			<maKhoangSan>AB_49</maKhoangSan>
+			<tenKhoangSan>C_49</tenKhoangSan>
+			<donViTinh>H_49</donViTinh>
+			<soLuong>J_49</soLuong>
 			<mucPhi>Q_49</mucPhi>
 			<soPhiPNop>U_49</soPhiPNop>
 		</KhoangSan>
@@ -50,11 +53,11 @@
 		<tongPhiPNop>U_51</tongPhiPNop>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>R_60</nguoiKy>
-		<ngayKy>R_62</ngayKy>
+		<nguoiKy>R_58</nguoiKy>
+		<ngayKy>R_60</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>H_60</tenNVienDLyThue>
-		<cchiHNghe>H_62</cchiHNghe>
+		<tenNVienDLyThue>G_58</tenNVienDLyThue>
+		<cchiHNghe>G_60</cchiHNghe>
 	</Static>
 </HSoKhaiThue>

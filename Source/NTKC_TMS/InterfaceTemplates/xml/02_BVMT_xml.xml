@@ -74,6 +74,7 @@
 				<TTinKhoangSan>
 					<NoiDungKS id="ID_1">
 						<maKSan></maKSan>
+						<tenKSan></tenKSan>
 						<donViTinh></donViTinh>
 						<soLuong></soLuong>
 						<mucPhi></mucPhi>
@@ -88,6 +89,7 @@
 				<TTinKhoangSan>
 					<NoiDungKS id="ID_2">
 						<maKSan></maKSan>
+						<tenKSan></tenKSan>
 						<donViTinh></donViTinh>
 						<soLuong></soLuong>
 						<mucPhi></mucPhi>
@@ -105,5 +107,4 @@
 	</CTieuTKhaiChinh>
 	<PLuc/>
 </HSoKhaiThue>
-<CKyDTu></CKyDTu>
 </HSoThueDTu>

@@ -1,4 +1,4 @@
-<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22">
+<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22" loi_dinh_danh="E_28">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>128</maTKhai>
 		<tenTKhai>Tờ khai thuế bảo vệ môi trường (01/TBVMT)</tenTKhai>
@@ -26,8 +26,8 @@
 			<ct6>U_45</ct6>
 		</ThueBVMT>
 	</Dynamic>
-	<Static GroupName="ChiTietThueBVMT">
-		<tongCot6>U_51</tongCot6>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tong_ct6>U_51</tong_ct6>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>R_58</nguoiKy>

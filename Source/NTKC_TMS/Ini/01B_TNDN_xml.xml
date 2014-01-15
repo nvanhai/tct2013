@@ -1,13 +1,13 @@
-<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30">
+<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30" loi_dinh_danh="E_34">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>12</maTKhai>
 		<tenTKhai>Tờ khai thuế TNDN tạm tính (01B/TNDN)</tenTKhai>
-		<soLan>I_62</soLan>
+		<soLan>I_77</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
-		<maLyDoGiaHan>AB_39</maLyDoGiaHan>
-		<lyDoGiaHan>E_39</lyDoGiaHan>
+		<maLyDoGiaHan>AC_64</maLyDoGiaHan>
+		<lyDoGiaHan>M_64</lyDoGiaHan>
 	</Static>
 	<Static GroupName="NNT">
 		<maHuyenNNT></maHuyenNNT>
@@ -18,28 +18,44 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<dnADungMucThue20>H_7</dnADungMucThue20>
-		<dnCoCSoHToanPThuoc>H_8</dnCoCSoHToanPThuoc>
-		<ct21>U_41</ct21>
-		<ct22>U_42</ct22>
-		<ct23>U_43</ct23>
-		<ct24>U_44</ct24>
-		<ct25>U_46</ct25>
-		<ct26>U_47</ct26>
-		<duocHuongMucThueUuDai>K_47</duocHuongMucThueUuDai>
-		<ct27>U_48</ct27>
-		<ct28>U_49</ct28>
-		<ct29>U_50</ct29>
-		<ct30>U_52</ct30>
-		<ct31>U_53</ct31>
-		<mucLuc>L_62</mucLuc>
+		<dnQuiMoVuaVaNho>H_6</dnQuiMoVuaVaNho>
+		<dnCoCSoHToanPThuoc>H_7</dnCoCSoHToanPThuoc>
+		<ct21>U_40</ct21>
+		<ct22>U_41</ct22>
+		<ct22a>U_42</ct22a>
+		<ct22b>U_43</ct22b>
+		<ct22c>U_44</ct22c>
+
+		<ct23>U_45</ct23>
+		<ct24>U_46</ct24>
+		<ct25>U_47</ct25>
+		<ct25a>U_48</ct25a>
+		<ct25b>U_49</ct25b>
+		<ct25c>U_50</ct25c>
+
+		<ct26>U_51</ct26>
+		
+		<ct27>U_52</ct27>
+		<ct28>U_53</ct28>
+		<ct29>U_54</ct29>
+		<ct30>U_55</ct30>
+		<ct30a>U_56</ct30a>
+		<ct30b>U_57</ct30b>
+		<duocHuongMucThueUuDai>L_51</duocHuongMucThueUuDai>
+		<ct31>U_58</ct31>
+		<ct32>K_62</ct32>
+		<ct32a>M_64</ct32a>
+		<ct32b>M_66</ct32b>
+
+		<ct32c>M_68</ct32c>
+		<ct32d>M_70</ct32d>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>T_57</nguoiKy>
-		<ngayKy>T_59</ngayKy>
+		<nguoiKy>T_72</nguoiKy>
+		<ngayKy>T_74</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>H_57</tenNVienDLyThue>
-		<cchiHNghe>H_59</cchiHNghe>
+		<tenNVienDLyThue>H_72</tenNVienDLyThue>
+		<cchiHNghe>H_74</cchiHNghe>
 	</Static>
 </HSoKhaiThue>
