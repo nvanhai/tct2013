@@ -24,7 +24,7 @@
 	</Static>
 	<Dynamic GroupName="ChiTietHangHoaChiuThueTTDB">
 		<NDungTKhaiTTDB id="id">
-			<ct2_maHHDV>F_38</ct2_maHHDV>
+			<ct2_maHHDV>E_38</ct2_maHHDV>
 			<ct2>G_38</ct2>
 			<ct3>P_38</ct3>
 			<ct4>S_38</ct4>
@@ -43,7 +43,7 @@
 	</Static>
 	<Dynamic GroupName="ChiTietDVuChiuThueTTDB">
 		<NDungTKhaiTTDB id="id">
-			<ct2_maHHDV>F_42</ct2_maHHDV>
+			<ct2_maHHDV>E_42</ct2_maHHDV>
 			<ct2>G_42</ct2>
 			<ct3>P_42</ct3>
 			<ct4>S_42</ct4>
@@ -59,7 +59,7 @@
 	</Static>
 	<Dynamic GroupName="HHXuatKhau">
 		<NDungHHoaKhongThue id="id">
-			<ct2_maHH>F_47</ct2_maHH>
+			<ct2_maHH>E_47</ct2_maHH>
 			<ct2>G_47</ct2>
 			<ct3>P_47</ct3>
 			<ct4>S_47</ct4>
@@ -68,7 +68,7 @@
 	</Dynamic>
 	<Dynamic GroupName="HHBanDeXuatKhau">
 		<NDungHHoaKhongThue id="id">
-			<ct2_maHH>F_51</ct2_maHH>
+			<ct2_maHH>E_51</ct2_maHH>
 			<ct2>G_51</ct2>
 			<ct3>P_51</ct3>
 			<ct4>S_51</ct4>
@@ -77,7 +77,7 @@
 	</Dynamic>
 	<Dynamic GroupName="HHGiaCongXuatKhau">
 		<NDungHHoaKhongThue id="id">
-			<ct2_maHH>F_55</ct2_maHH>
+			<ct2_maHH>E_55</ct2_maHH>
 			<ct2>G_55</ct2>
 			<ct3>P_55</ct3>
 			<ct4>S_55</ct4>
