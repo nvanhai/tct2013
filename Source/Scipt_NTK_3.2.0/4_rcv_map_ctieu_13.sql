@@ -1950,7 +1950,7 @@ insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIE
 values ('01B_TNDN13', '34', 'C', 6105, '34');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
-values ('01B_TNDN13', '26a', 'C', 6105, '26a');
+values ('01B_TNDN13', '26a', 'C', 6106, '26a');
 commit;
 
 -- Phu luc 01-1/TNDN kem theo to khai 01B/TNDN
