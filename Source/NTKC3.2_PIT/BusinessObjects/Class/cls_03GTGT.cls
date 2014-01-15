@@ -571,8 +571,8 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("F"), 20, vTIN_DL
         .GetText .ColLetterToNumber(SO_HOP_DONG_DL_COL), SO_HOP_DONG_DL_ROW, vSO_HOP_DONG
         .GetText .ColLetterToNumber(NGAY_HOP_DONG_DL_COL), NGAY_HOP_DONG_DL_ROW, vNGAY_HOP_DONG
-        .GetText .ColLetterToNumber("I"), 60, vLAN_BS
-        .GetText .ColLetterToNumber("C"), 60, vCHINH_THUC
+        .GetText .ColLetterToNumber("I"), 61, vLAN_BS
+        .GetText .ColLetterToNumber("C"), 61, vCHINH_THUC
         If Trim(vCHINH_THUC) = "1" Then
             vLAN_BS = "0"
         End If
