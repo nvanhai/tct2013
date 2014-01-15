@@ -21,9 +21,9 @@ Attribute fps.VB_VarHelpID = -1
 'No parameter
 Public Sub Prepare1()
     With fps
-        SetDateFormat fps, 1, 183, .ColLetterToNumber("R"), DDMMYYYY
+        SetDateFormat fps, 1, 233, .ColLetterToNumber("R"), DDMMYYYY
         .Sheet = 1 ' Bao cao ket qua hoat dong san xuat kinh doanh Bo 15
-        .Row = 183
+        .Row = 233
         .Col = .ColLetterToNumber("R")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
@@ -215,7 +215,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
         mCurrentSheet = .Sheet
         .EventEnabled(EventAllEvents) = False
         If .ActiveSheet = 1 Then
-            If Col = .ColLetterToNumber("R") And Row = 183 Then
+            If Col = .ColLetterToNumber("R") And Row = 233 Then
                 .GetText Col, Row, varTemp
                 If varTemp <> "" And varTemp <> "../../...." Then
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
