@@ -1,7 +1,8 @@
-<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30" loi_dinh_danh="">
+<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30" loi_dinh_danh="F_34">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>08</maTKhai>
 		<tenTKhai>Tờ khai thuế tài nguyên(02/TAIN)</tenTKhai>
+		<soLan>I_49</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
@@ -18,7 +19,7 @@
 	</Static>
 	<Dynamic GroupName="TaiNguyenKhaiThac">
 		<NoiDungTAIN id="ID_1">
-			<ct1>B_57</ct1>
+			<ct1>AN_57</ct1>
 			<ct2>C_57</ct2>
 			<ct3>L_57</ct3>
 			<ct4>O_57</ct4>
@@ -32,7 +33,7 @@
 	</Dynamic>
 	<Dynamic GroupName="TaiNguyenThuMuaGom">
 		<NoiDungTAIN id="ID_2">
-			<ct1>B_61</ct1>
+			<ct1>AN_61</ct1>
 			<ct2>C_61</ct2>
 			<ct3>L_61</ct3>
 			<ct4>O_61</ct4>

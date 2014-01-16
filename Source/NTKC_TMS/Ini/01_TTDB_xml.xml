@@ -1,7 +1,8 @@
-<HSoKhaiThue  ngay_nop_tk="F_25" ky_lap_bo="F_23" loi_dinh_danh="">
+<HSoKhaiThue  ngay_nop_tk="F_25" ky_lap_bo="F_23" loi_dinh_danh="G_29">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>05</maTKhai>
 		<tenTKhai>Thuế Tiêu Thụ Đặc Biệt</tenTKhai>
+		<soLan>J_33</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
@@ -25,6 +26,7 @@
 	</Static>
 	<Dynamic GroupName="ChiTietHangHoaChiuThueTTDB">
 		<NDungTKhaiTTDB id="id">
+			<ct2_maHHDV>C_53</ct2_maHHDV>
 			<ct2>D_53</ct2>
 			<ct3>P_53</ct3>
 			<ct4>S_53</ct4>
@@ -45,6 +47,7 @@
 	</Static>
 	<Dynamic GroupName="ChiTietDVuChiuThueTTDB">
 		<NDungTKhaiTTDB id="id">
+			<ct2_maHHDV>C_57</ct2_maHHDV>
 			<ct2>D_57</ct2>
 			<ct3>P_57</ct3>
 			<ct4>S_57</ct4>
@@ -61,6 +64,7 @@
 	</Static>
 	<Dynamic GroupName="HHXuatKhau">
 		<NDungHHoaKhongThue id="id">
+			<ct2_maHH>C_63</ct2_maHH>
 			<ct2>D_63</ct2>
 			<ct3>P_63</ct3>
 			<ct4>S_63</ct4>
@@ -69,6 +73,7 @@
 	</Dynamic>
 	<Dynamic GroupName="HHBanDeXuatKhau">
 		<NDungHHoaKhongThue id="id">
+			<ct2_maHH>C_67</ct2_maHH>
 			<ct2>D_67</ct2>
 			<ct3>P_67</ct3>
 			<ct4>S_67</ct4>
@@ -77,6 +82,7 @@
 	</Dynamic>
 	<Dynamic GroupName="HHGiaCongXuatKhau">
 		<NDungHHoaKhongThue id="id">
+			<ct2_maHH>C_71</ct2_maHH>
 			<ct2>D_71</ct2>
 			<ct3>P_71</ct3>
 			<ct4>S_71</ct4>

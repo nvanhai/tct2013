@@ -69,7 +69,7 @@
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
-		<SoNamNay>
+		<SoCuoiNam>
 			<ct100_nNay></ct100_nNay>
 			<ct110_nNay></ct110_nNay>
 			<ct120_nNay></ct120_nNay>
@@ -139,8 +139,8 @@
 			<hangKGui_nNay></hangKGui_nNay>
 			<noKDoi_nNay></noKDoi_nNay>
 			<ngoaiTe_nNay>0.0</ngoaiTe_nNay>
-		</SoNamNay>
-		<SoNamNgoai>
+		</SoCuoiNam>
+		<SoDauNam>
 			<ct100_nNgoai></ct100_nNgoai>
 			<ct110_nNgoai></ct110_nNgoai>
 			<ct120_nNgoai></ct120_nNgoai>
@@ -205,12 +205,8 @@
 			<ct416_nNgoai></ct416_nNgoai>
 			<ct417_nNgoai></ct417_nNgoai>
 			<ct440_nNgoai></ct440_nNgoai>
-			<tsanTNgoai_nNgoai></tsanTNgoai_nNgoai>
-			<hangGCong_nNgoai></hangGCong_nNgoai>
-			<hangKGui_nNgoai></hangKGui_nNgoai>
-			<noKDoi_nNgoai></noKDoi_nNgoai>
-			<ngoaiTe_nNgoai>0.0</ngoaiTe_nNgoai>
-		</SoNamNgoai>
+			
+		</SoDauNam>
 		<NgoaiBangCDKT>
 			<SoCuoiNam>
 				<taiSanThueNgoai></taiSanThueNgoai>
@@ -235,5 +231,5 @@
 	<PLuc>
 	</PLuc>
 </HSoKhaiThue>
-<CKyDTu></CKyDTu>
+
 </HSoThueDTu>
