@@ -1,4 +1,4 @@
-<HSoKhaiThue ngay_nop_tk="E_25" ky_lap_bo="E_23" loi_dinh_danh="">
+<HSoKhaiThue ngay_nop_tk="E_25" ky_lap_bo="E_23" loi_dinh_danh="F_27">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>41</maTKhai>
 		<tenTKhai>Tờ khai thuế nhà thầu nước ngoài - 01/NTNN</tenTKhai>
@@ -19,24 +19,24 @@
 	</Static>
 	<Dynamic GroupName="BKThueNTNN">
 		<ThueNTNN id="ID_1">
-			<ct1>C_51</ct1>
-			<ct2>H_51</ct2>
-			<ct3>L_51</ct3>
-			<ct4>Q_51</ct4>
-			<ct5>V_51</ct5>
+			<ct1>C_52</ct1>
+			<ct2>H_52</ct2>
+			<ct3>L_52</ct3>
+			<ct4>Q_52</ct4>
+			<ct5>V_52</ct5>
 		<ThueGTGT>
-			<ct6>Y_51</ct6>
-			<ct7>AB_51</ct7>
-			<ct8>AD_51</ct8>
-			<ct9>AF_51</ct9>
+			<ct6>Y_52</ct6>
+			<ct7>AB_52</ct7>
+			<ct8>AD_52</ct8>
+			<ct9>AF_52</ct9>
 		</ThueGTGT>
 		<ThueTNDN>
-			<ct10>AH_51</ct10>
-			<ct11>AN_51</ct11>
-			<ct12>AP_51</ct12>
-			<ct13>AR_51</ct13>
+			<ct10>AH_52</ct10>
+			<ct11>AN_52</ct11>
+			<ct12>AP_52</ct12>
+			<ct13>AR_52</ct13>
 		</ThueTNDN>
-			<ct14>AV_51</ct14>
+			<ct14>AV_52</ct14>
 		</ThueNTNN>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">

@@ -71,6 +71,7 @@
 		<CTieuTKhaiChinh>
 			<HinhThucKeKhai>
 				<quyetToanRiengTungNam>true</quyetToanRiengTungNam>
+				<quyetToanHetVaoNamDau></quyetToanHetVaoNamDau>
 			</HinhThucKeKhai>
 			<CT21>
 				<soVBUQ></soVBUQ>

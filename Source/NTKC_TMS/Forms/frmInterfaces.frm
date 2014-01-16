@@ -945,6 +945,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     xmlTK.getElementsByTagName("ttinNhaCCapDVu")(0).Text = ""
     
     vlue = xmlTK.getElementsByTagName("soLan")(0).Text
+    'vlue = xmlTK.getElementsByTagName("loaiTKhai")(0).Text
     
     If Val(vlue) > 0 Then
         xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0132"), "Msg")
@@ -955,6 +956,18 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0131"), "Msg")
         strLoaiToKhai = GetAttribute(GetMessageCellById("0131"), "Msg")
     End If
+    
+'    vlue = xmlTK.getElementsByTagName("soLan")(0).Text
+'
+'    If InStr(xmlTK.getElementsByTagName("loaiTKhai")(0).Text, "C") Or InStr(xmlTK.getElementsByTagName("loaiTKhai")(0).Text, "c") > 0 Then
+'        xmlTK.getElementsByTagName("soLan")(0).Text = "0"
+'        xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0131"), "Msg")
+'        strLoaiToKhai = GetAttribute(GetMessageCellById("0131"), "Msg")
+'    Else
+'        xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0132"), "Msg")
+'        xmlTK.getElementsByTagName("soLan")(0).Text = Val(vlue)
+'        strLoaiToKhai = GetAttribute(GetMessageCellById("0132"), "Msg")
+'    End If
     
     'To 03/TBAC
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "67" Then
@@ -1428,6 +1441,7 @@ Private Sub ExecuteSave()
 
                         Else
                             xmlCellTKNode.Text = ToDateString(.Text)
+                        
                         End If
                     End If
 
@@ -1497,17 +1511,17 @@ Private Sub ExecuteSave()
                     If MaTK = "01_GTGT" Then
                         xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_01_GTGT_xml.xml")
 
-                        xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_01_GTGT_xml.xml")
+                        xmlMapPL.Load GetAbsolutePath("..\Ini\KHBS_01_GTGT_xml.xml")
                     Else
 
                         If MaTK = "02_GTGT" Or MaTK = "03_GTGT" Or MaTK = "04_GTGT" Or MaTK = "05_GTGT" Or MaTK = "01A_TNDN" Or MaTK = "01A_TNDN" Or MaTK = "02_TNDN" Or MaTK = "01_NTNN" Or MaTK = "03_NTNN" Or MaTK = "01_TAIN" Or MaTK = "01_TTDB" Or MaTK = "01_BVMT" Or MaTK = "01_TBVMT" Then
                             xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_TT156_xml.xml")
 
-                            xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT156_xml.xml")
+                            xmlMapPL.Load GetAbsolutePath("..\Ini\KHBS_TT156_xml.xml")
                         Else
                             xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_TT28_xml.xml")
 
-                            xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT28_xml.xml")
+                            xmlMapPL.Load GetAbsolutePath("..\Ini\KHBS_TT28_xml.xml")
                             
                             If xmlPL.getElementsByTagName("tenTKhaiThue").length > 0 Then
                                 xmlPL.getElementsByTagName("tenTKhaiThue")(0).Text = GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Caption")
@@ -1659,11 +1673,11 @@ Private Sub ExecuteSave()
 
     'Validate xml
 
-    ' Push MQ
-    If (Not PushDataToESB(xmlDocSave.xml)) Then
-        MessageBox "0137", msOKOnly, miCriticalError
-    End If
-    ' End push
+'    ' Push MQ
+'    If (Not PushDataToESB(xmlDocSave.xml)) Then
+'        MessageBox "0137", msOKOnly, miCriticalError
+'    End If
+'    ' End push
     
     Exit Sub
 ErrHandle:
@@ -2336,9 +2350,9 @@ Private Sub Command1_Click()
 'str2 = "aa999252300121087   11201300100100100101/0101/01/1900<S01><S>0010011000</S><S>4000000~200000~100000~300000~30000~100000~10000~130000~30000~21000~161000</S><S>Hoµng Lan~20/12/2013~HuyÒn Tr©m~KTV~1~~~0</S></S01>"
 'Barcode_Scaned str2
 
-'02/TNCN:
-str2 = "aa999152300121087   11201300100100100101/0101/01/2010<S01><S>0010011000</S><S>5000~2000~120000~300000~400000~100000~340000~130000~100000~200000~60000~10000~40000</S><S>Hoµng Lan~20/12/2013~HuyÒnTr©m~KTV~1~~</S></S01>"
-Barcode_Scaned str2
+''02/TNCN:
+'str2 = "aa999152300121087   11201300100100100101/0101/01/2010<S01><S>0010011000</S><S>5000~2000~120000~300000~400000~100000~340000~130000~100000~200000~60000~10000~40000</S><S>Hoµng Lan~20/12/2013~HuyÒnTr©m~KTV~1~~</S></S01>"
+'Barcode_Scaned str2
 '
 ''03/TNCN:
 'str2 = "aa999502300121087   11201300100100100201/0101/01/2010<S01><S>0010011000</S><S>tæ chøc khai thay ABC~0102030405~§inh LiÖt - Hoµn KiÕm - HN~Hoµn KiÕm~HN~0987689965~015678889~abc@yahoo.com</S>"
@@ -2360,11 +2374,6 @@ Barcode_Scaned str2
 'str2 = "aa999752300121087   032013001001002002~1713150~Linh~2300121087~54.22~40665000~32532000~400000~40265000~3789750~1515900~2273850</S><S>Hoµng Lan~20/12/2013~HuyÒn Tr©m~KTV~1~</S></S01>"
 'Barcode_Scaned str2
 '
-''01/NTNN:
-'str2 = "aa999702300121087   10201300100100100201/0101/01/1900<S01><S>0010011000</S><S>néi dung 1~0102030405~hd001~4000000~12/10/2013~5000000~12.78~10~63900~3400000~34.67~200000~978780~1042680~néi dung 1~0010011000~hd002~6000000~15"
-'Barcode_Scaned str2
-'str2 = "aa999702300121087   102013001001002002/10/2013~4000000~11.45~5~22900~2890000~27.34~100000~690126~713026</S><S>40000000~100000~8000000~500000~1000000~1100000</S><S>~</S><S>HuyÒnTr©m~KTV~Hoµng Lan~20/12/2013~1~~~</S></S01>"
-'Barcode_Scaned str2
 '
 ''01/TTDB + PL dinh kem:
 'str2 = "aa999052300121087   10201300300300100501/0101/01/1900<S01><S>0010011000</S><S>~150000~100000.00~30000~0~20001</S><S>10200~LÝt~34452.79~100000~66667.00~50.0~20000~0~13334~10300~LÝt~456.78~50000~33333.00~50.0~10000~0~6667</S><S>20000~17391.00~2000~0~6"
@@ -2379,10 +2388,51 @@ Barcode_Scaned str2
 'Barcode_Scaned str2
 '
 ''01/TAIN
-'str2 = "aa999062300121087   10201300200200100201/0114/06/2006<S01><S>0010011000</S><S>010103~Kg~345.789~12345.68~11.000~0~23.87~010208~Kg~456.782~0,00~0~30000~89.34</S><S>010213~Kg~543.367~2897.67~12.0"
+'str2 = "aa999062300029677   11201300100100100201/0114/06/2006<S01><S></S><S>010104~Kg~349009.000~120000.00~11.000~0~2345.00</S><S>010208~Kg~4563.000~290000.00~10.000~0~12700.00~010213~"
 'Barcode_Scaned str2
-'str2 = "aa999062300121087   10201300200200200200~0~345.27</S><S>010208~Kg~653.715~3762.78~10.000~0~5987.34~010208~Kg~433.678~3243.89~10.000~0~3243.56</S><S>HuyÒn Tr©m~KTV~~20/12/2013~1~~0~0~</S></S01>"
+'str2 = "aa999062300029677   112013001001002002TÊn~7890.000~466000.00~12.000~0~15000.00</S><S>~~0.000~0.00~0.000~0~0.00</S><S>Ðn ch?p m?ch~123423523~CMCer~25/12/2013~1~~0~0~</S></S01>"
 'Barcode_Scaned str2
+
+''01_TAIN_KHBS
+'str2 = "bs999062300029677   11201300400400100401/0114/06/2006<S01><S></S><S>010104~Kg~500000.000~120000.00~11.000~0~2345.00</S><S>010208~Kg~15000.000~290000.00~10.000~0~12700.00~010213~T"
+'Barcode_Scaned str2
+'str2 = "bs999062300029677   112013004004002004Ên~1900000.000~466000.00~12.000~0~15000.00</S><S>~~0.000~0.00~0.000~0~0.00</S><S>Ðn ch?p m?ch~123423523~CMCer~25/12/2013~~1~1~0~</S></S01>"
+'Barcode_Scaned str2
+'str2 = "bs999062300029677   112013004004003004<SKHBS><S>ThuÕ tµi nguyªn ph¸t sinh trong kú~08~5180454600~113283000000~108102545400</S><S>~~0~0~0</S><S>16/01/201"
+'Barcode_Scaned str2
+'str2 = "bs999062300029677   1120130040040040044~27~1459384363~1000000~123456~29/12/2013~10100~10100~10~29000000~Khong cã lý do g×~0~0~108102545400</S></SKHBS>"
+'Barcode_Scaned str2
+
+''02/TAIN
+'str2 = "aa999772300029677   00201300100100100201/0114/06/2006<S01><S></S><S>010208~Kg~34563228~0~0~120000~80000~010203~Kg~56000000~0~0~100000~20"
+'Barcode_Scaned str2
+'str2 = "aa999772300029677   002013001001002002000</S><S>010214~TÊn~18000~0~0~6000~5000</S><S>CMCer~16/01/2014~Hïng CMC~6868686868~1~</S></S01>"
+'Barcode_Scaned str2
+
+''01/NTNN:
+str2 = "aa999702300029726   11201300100100100101/0101/01/1900<S01><S></S><S>cong viec 1~2222222222~20HDKT~50000000~01/01/2013~30000000~10~10~300000~9000000~5~80000~370000~670000~cong viec 2~0102030405~fcsaf~30000000~09/08/2013~10000000~20~20~400000~8000000~10~600000~200000~600000</S><S>40000000~700000~17000000~680000~570000~1270000</S><S>~</S><S>~~Hïng h©m~15/01/2014~1~~~</S></S01>"
+Barcode_Scaned str2
+
+''03/NTNN
+'str2 = "aa999812300029758   11201300200300100101/0101/01/1900<S01><S></S><S>cty A~0102030405~20kdh~2000000~10/10/2013~30000000~10~300000~2700000~cty B~2222222222~dµ~30000000~09/08/2013~20000000~20~0~4000000</S><S>32000000~50000000~300000~6700000</S><S>1~</S><S>~H¶i h©m~~15/01/2014~1~1~~</S></S01>"
+'Barcode_Scaned str2
+
+''01_TBVMT
+'str2 = "aa999902300029620   12201300100100100101/0101/01/1900<S01><S></S><S>LÝt~100.000~1000~100000~010102~LÝt~200.000~1000~200000~010102</S><S>~ha lan~~15/01/2014~1~~~0~</S></S01>"
+'Barcode_Scaned str2
+
+''01_BVMT
+'str2 = "aa999862300029620   12201300100100100101/0101/01/1900<S01><S></S><S>Kg~20~10000~010104</S><S>Kg~33.23~400000~010104</S><S>~ha lan~~15/01/2014~1~~</S></S01>"
+'Barcode_Scaned str2
+
+''01_BVMT_BS_KHBS
+'str2 = "bs999862300029620   11201300300400100301/0101/01/1900<S01><S></S><S>Kg~20.34~100000~010104</S><S>Kg~2.44~424324~010103</S><S>~ha lan~~15/01/2014~~1~1</S></S01>"
+'Barcode_Scaned str2
+'str2 = "bs999862300029620   112013003004002003<SKHBS><S>Sè phÝ ph¶i nép trong kú~6~3035351~3069351~34000</S><S>"
+'Barcode_Scaned str2
+'str2 = "bs999862300029620   112013003004003003~~0~0~0</S><S>16/01/2014~26~442~0~~~~~0~0~~0~0~34000</S></SKHBS>"
+'Barcode_Scaned str2
+
 
 End Sub
 
@@ -6498,7 +6548,8 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
     
     XmlDocStandard.getElementsByTagName("noi_gui")(0).Text = ""
     XmlDocStandard.getElementsByTagName("noi_nhan")(0).Text = ""
-    XmlDocStandard.getElementsByTagName("loi_dinh_danh")(0).Text = IIf(sLoiDinhDanh <> vbNullString, "X", "")
+    
+    XmlDocStandard.getElementsByTagName("loi_dinh_danh")(0).Text = IIf(sLoiDinhDanh = "1", "X", "")
     
     
     'Bo sung tag <QHS> cho BCTC va AC

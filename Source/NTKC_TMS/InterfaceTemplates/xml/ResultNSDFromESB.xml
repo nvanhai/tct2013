@@ -23,11 +23,11 @@
 	<BODY>
 		<ROW>
 			<UserName>NTKLOGIN</UserName>
-			<TaxOffcice>22301</TaxOffcice>
+			<TaxOffcice>22300</TaxOffcice>
 			<TaxOffName>Văn phòng Cục thuế tỉnh Bắc Ninh</TaxOffName>
 			<NTKversion>3.2.0</NTKversion>
 			<Status>01</Status>
-			<CurrentSysTime>10-Jan-2014 14:23:23</CurrentSysTime>
+			<CurrentSysTime>16-Jan-2014 14:23:23</CurrentSysTime>
 			<Province>BNI</Province>
 		</ROW>
 	</BODY>
