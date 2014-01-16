@@ -1069,7 +1069,10 @@ Private Sub CheckDynamicError()
     Dim vErrorNgayHDXK, vErrorNgayDKTKXK, vErrorNgayHoaDonXK, vErrorNgayChungTuTT, vErrorNgayVBXN, vErrorNgayHDNK, vErrorNgayTKNK
     Dim iflagNgayHopDongXK As Integer, iflagNgayDangKyTKXK As Integer, iflagNgayHoaDonXK As Integer, iflagNgayChungTuTT As Integer, iflagNgayVBXN As Integer, iflagNgayHDNK As Integer, iflagNgayTKNK As Integer
 
-
+    ' PL 01-1
+    Dim vErrorNgayPHHD As Variant
+    Dim iflagNgayPHHD As Integer
+    
     
     With fps
     
@@ -1108,6 +1111,7 @@ Private Sub CheckDynamicError()
      .GetText .ColLetterToNumber("E"), 75, vErrorNgayHDNK
      .GetText .ColLetterToNumber("E"), 76, vErrorNgayTKNK
      
+     .GetText .ColLetterToNumber("E"), 77, vErrorNgayPHHD
      
      
      ' Kiem tra check gia han
@@ -1230,92 +1234,135 @@ Private Sub CheckDynamicError()
                         
                          ElseIf Trim(vNgayHD) <> "" And iWhiteRow = 0 Then
                             ' To khai quy
+                            'If strTkThangQuy = "TK_QUY" Then
+'                                vNgayHt = Date
+'                                arrDate = Split(vNgayHD, "/")
+'                                vdate = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
+'                                If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_v1.Year) Then
+'                                    .Col = .ColLetterToNumber("G")
+'                                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                                    .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
+'                                    .BackColor = mErrorColor
+'                                    iFlagvNgayHD = 1
+'                                    If iFocusFlag = 0 Then
+'                                        strFocusSheetName = "'" & .SheetName & "'"
+'                                        strFocusCol = str(.Col)
+'                                        strFocusRow = str(.Row)
+'                                        iFocusFlag = 1
+'                                    End If
+'                                 ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_v1.Year) And convertThang2Quy(CInt(Right("00" & Mid(vNgayHD, 4, 2), 2))) > CInt(TAX_Utilities_v1.ThreeMonths) Then
+'                                    .Col = .ColLetterToNumber("G")
+'                                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                                    .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
+'                                    .BackColor = mErrorColor
+'                                    iFlagvNgayHD = 1
+'                                    If iFocusFlag = 0 Then
+'                                        strFocusSheetName = "'" & .SheetName & "'"
+'                                        strFocusCol = str(.Col)
+'                                        strFocusRow = str(.Row)
+'                                        iFocusFlag = 1
+'                                    End If
+'                                 ElseIf DateDiff("D", vNgayHt, vdate) > 0 Then
+'                                    .Col = .ColLetterToNumber("G")
+'                                    .CellNote = GetAttribute(GetMessageCellById("0273"), "Msg") 'static
+'                                    .BackColor = mErrorColor
+'                                    iFlagvNgayHD = 1
+'                                     If iFocusFlag = 0 Then
+'                                        strFocusSheetName = "'" & .SheetName & "'"
+'                                        strFocusCol = str(.Col)
+'                                        strFocusRow = str(.Row)
+'                                        iFocusFlag = 1
+'                                      End If
+'                                 Else
+'                                    .Col = .ColLetterToNumber("G")
+'                                    .CellNote = ""
+'                                    .BackColor = mNonErrorColor
+'                                End If
+'                            Else
+'                                If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_v1.Year) Then
+'                                    .Col = .ColLetterToNumber("G")
+'                                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                                    .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
+'                                    .BackColor = mErrorColor
+'                                    iFlagvNgayHD = 1
+'                                    If iFocusFlag = 0 Then
+'                                        strFocusSheetName = "'" & .SheetName & "'"
+'                                        strFocusCol = str(.Col)
+'                                        strFocusRow = str(.Row)
+'                                        iFocusFlag = 1
+'                                    End If
+'                                 ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_v1.Year) And CInt(Right("00" & Mid(vNgayHD, 4, 2), 2)) > CInt(TAX_Utilities_v1.Month) Then
+'                                    .Col = .ColLetterToNumber("G")
+'                                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                                    .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
+'                                    .BackColor = mErrorColor
+'                                    iFlagvNgayHD = 1
+'                                    If iFocusFlag = 0 Then
+'                                        strFocusSheetName = "'" & .SheetName & "'"
+'                                        strFocusCol = str(.Col)
+'                                        strFocusRow = str(.Row)
+'                                        iFocusFlag = 1
+'                                    End If
+'                                 ElseIf (CheckValidNgayHD(CStr(vNgayHD)) = False) Then
+'                                    .Col = .ColLetterToNumber("G")
+'                                    .CellNote = GetAttribute(GetMessageCellById("0124"), "Msg") 'static
+'                                    .BackColor = mAlertColor
+'                                    iFlagvNgayHD = 0
+'                                     If iFocusFlag = 0 Then
+'                                        strFocusSheetName = "'" & .SheetName & "'"
+'                                        strFocusCol = str(.Col)
+'                                        strFocusRow = str(.Row)
+'                                        iFocusFlag = 1
+'                                      End If
+'                                 Else
+'                                    .Col = .ColLetterToNumber("G")
+'                                    .CellNote = ""
+'                                    .BackColor = mNonErrorColor
+'                                End If
+'                            End If
+                            
                             If strTkThangQuy = "TK_QUY" Then
-                                vNgayHt = Date
-                                arrDate = Split(vNgayHD, "/")
-                                vdate = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
-                                If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_v1.Year) Then
-                                    .Col = .ColLetterToNumber("G")
-                                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                    .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
-                                    .BackColor = mErrorColor
-                                    iFlagvNgayHD = 1
-                                    If iFocusFlag = 0 Then
-                                        strFocusSheetName = "'" & .SheetName & "'"
-                                        strFocusCol = str(.Col)
-                                        strFocusRow = str(.Row)
-                                        iFocusFlag = 1
-                                    End If
-                                 ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_v1.Year) And convertThang2Quy(CInt(Right("00" & Mid(vNgayHD, 4, 2), 2))) > CInt(TAX_Utilities_v1.ThreeMonths) Then
-                                    .Col = .ColLetterToNumber("G")
-                                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                    .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
-                                    .BackColor = mErrorColor
-                                    iFlagvNgayHD = 1
-                                    If iFocusFlag = 0 Then
-                                        strFocusSheetName = "'" & .SheetName & "'"
-                                        strFocusCol = str(.Col)
-                                        strFocusRow = str(.Row)
-                                        iFocusFlag = 1
-                                    End If
-                                 ElseIf DateDiff("D", vNgayHt, vdate) > 0 Then
-                                    .Col = .ColLetterToNumber("G")
-                                    .CellNote = GetAttribute(GetMessageCellById("0273"), "Msg") 'static
-                                    .BackColor = mErrorColor
-                                    iFlagvNgayHD = 1
-                                     If iFocusFlag = 0 Then
-                                        strFocusSheetName = "'" & .SheetName & "'"
-                                        strFocusCol = str(.Col)
-                                        strFocusRow = str(.Row)
-                                        iFocusFlag = 1
-                                      End If
-                                 Else
-                                    .Col = .ColLetterToNumber("G")
-                                    .CellNote = ""
-                                    .BackColor = mNonErrorColor
+                                 If CheckNgayInKyKK(CStr(vNgayHD), TAX_Utilities_v1.ThreeMonths, TAX_Utilities_v1.Year, True) = False Then
+                                        .Col = .ColLetterToNumber("G")
+                                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                        .CellNote = vErrorNgayPHHD   'static
+                                        .BackColor = mErrorColor
+                                        iflagNgayPHHD = 1
+                                        'capture the first error cell
+                                        If iFocusFlag = 0 Then
+                                            strFocusSheetName = "'" & .SheetName & "'"
+                                            strFocusCol = str(.Col)
+                                            strFocusRow = str(.Row)
+                                            iFocusFlag = 1
+                                        End If
+                                    Else
+                                         .Col = .ColLetterToNumber("G")
+                                         .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                         .CellNote = ""   'static
+                                         .BackColor = mNonErrorColor
+                                   End If
+                                Else
+                                   If CheckNgayInKyKK(CStr(vNgayHD), TAX_Utilities_v1.Month, TAX_Utilities_v1.Year, False) = False Then
+                                        .Col = .ColLetterToNumber("G")
+                                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                        .CellNote = vErrorNgayPHHD   'static
+                                        .BackColor = mErrorColor
+                                        iflagNgayPHHD = 1
+                                        'capture the first error cell
+                                        If iFocusFlag = 0 Then
+                                            strFocusSheetName = "'" & .SheetName & "'"
+                                            strFocusCol = str(.Col)
+                                            strFocusRow = str(.Row)
+                                            iFocusFlag = 1
+                                        End If
+                                    Else
+                                         .Col = .ColLetterToNumber("G")
+                                         .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                         .CellNote = ""   'static
+                                         .BackColor = mNonErrorColor
+                                   End If
                                 End If
-                            Else
-                                If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_v1.Year) Then
-                                    .Col = .ColLetterToNumber("G")
-                                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                    .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
-                                    .BackColor = mErrorColor
-                                    iFlagvNgayHD = 1
-                                    If iFocusFlag = 0 Then
-                                        strFocusSheetName = "'" & .SheetName & "'"
-                                        strFocusCol = str(.Col)
-                                        strFocusRow = str(.Row)
-                                        iFocusFlag = 1
-                                    End If
-                                 ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_v1.Year) And CInt(Right("00" & Mid(vNgayHD, 4, 2), 2)) > CInt(TAX_Utilities_v1.Month) Then
-                                    .Col = .ColLetterToNumber("G")
-                                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                    .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
-                                    .BackColor = mErrorColor
-                                    iFlagvNgayHD = 1
-                                    If iFocusFlag = 0 Then
-                                        strFocusSheetName = "'" & .SheetName & "'"
-                                        strFocusCol = str(.Col)
-                                        strFocusRow = str(.Row)
-                                        iFocusFlag = 1
-                                    End If
-                                 ElseIf (CheckValidNgayHD(CStr(vNgayHD)) = False) Then
-                                    .Col = .ColLetterToNumber("G")
-                                    .CellNote = GetAttribute(GetMessageCellById("0124"), "Msg") 'static
-                                    .BackColor = mAlertColor
-                                    iFlagvNgayHD = 0
-                                     If iFocusFlag = 0 Then
-                                        strFocusSheetName = "'" & .SheetName & "'"
-                                        strFocusCol = str(.Col)
-                                        strFocusRow = str(.Row)
-                                        iFocusFlag = 1
-                                      End If
-                                 Else
-                                    .Col = .ColLetterToNumber("G")
-                                    .CellNote = ""
-                                    .BackColor = mNonErrorColor
-                                End If
-                            End If
+
                         Else
                                 .Col = .ColLetterToNumber("G")
                                 .CellNote = ""
