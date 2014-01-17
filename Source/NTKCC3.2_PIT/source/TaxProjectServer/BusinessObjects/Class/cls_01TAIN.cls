@@ -693,7 +693,7 @@ Public Function InsertDTL() As String
             STT = "1"
             STT2 = STT2 + 1
             STTIN = "'" & STT2 & "'"
-            mact = "'1000'"
+            mact = "''"
             .Col = .ColLetterToNumber("AO")
             maTM = .Text
 
@@ -885,7 +885,7 @@ Public Function InsertDTL() As String
         MATHUE = "'04'"
         MAPP = "'1'"
         
-        mact = "'2000'"
+        mact = "''"
          
         ' sua MAMUC & MATM tu nam 2009
         If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
@@ -1096,7 +1096,7 @@ Public Function InsertDTL() As String
         MATHUE = "'04'"
         MAPP = "'1'"
         
-        mact = "'3000'"
+        mact = "''"
          
         ' sua MAMUC & MATM tu nam 2009
         If CLng(Mid(Right(kylbo, 5), 1, 4)) < 2009 Then
