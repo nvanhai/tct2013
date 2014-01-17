@@ -1,5 +1,5 @@
 -- To khai 01/GTGT
-CREATE VIEW RCV_V_TKHAI_GTGT_KT13 AS
+CREATE  or replace VIEW RCV_V_TKHAI_GTGT_KT13 AS
 SELECT  DTL.HDR_ID
         , DTL.CTK_ID
         , Max(DTL.SO_TT)            SO_TT
@@ -119,7 +119,7 @@ AND ngay_hoa_don IS NOT NULL;
 
 
 -- Phu luc 01-2/GTGT
-CREATE VIEW RCV_V_PLUC_TKHAI_GTGT_KT02_13 AS
+CREATE  or replace VIEW RCV_V_PLUC_TKHAI_GTGT_KT02_13 AS
 Select "HDR_ID","SO_TT","ROW_ID","NHOM_CTIEU","KY_HIEU_MAU_HDON","KY_HIEU_HDON","SO_HOA_DON","NGAY_HOA_DON","TIN","TEN_DTNT","TEN_HANG","DOANH_SO","THUE_XUAT","SO_THUE","GHI_CHU"
 From (SELECT dtl.hdr_id
      , dtl.so_tt so_tt
@@ -165,7 +165,7 @@ WHERE (gd.loai_dlieu = '01_02_GTGT13')
 GROUP BY dtl.hdr_id,
          dtl.so_tt,
          dtl.row_id
-        ) where so_hoa_don is not null and ngay_hoa_don is not null
+        ) where so_hoa_don is not null and ngay_hoa_don is not null;
 /* bo dk ky_hieu_hdon is not null and */;
 
 -- Phu luc 01-3/GTGT
@@ -560,8 +560,6 @@ SELECT   dtl.hdr_id,dtl.so_tt-2  so_tt, dtl.row_id row_id,
              AND tkd.loai_dlieu = gdien.loai_dlieu) dtl
 GROUP BY dtl.hdr_id,dtl.so_tt, dtl.row_id
 );
-
-
 
 -- To khai 03/GTGT
 
