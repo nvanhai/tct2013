@@ -1133,9 +1133,9 @@ Private Sub cmdSave_Click()
     Set rs = Nothing
 
     
-    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 6 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 71 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 90 Or idToKhai = 95 Or idToKhai = 92 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 99 Or idToKhai = 24 Or idToKhai = 25 Or idToKhai = 23 Then
+    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 71 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 90 Or idToKhai = 95 Or idToKhai = 92 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 99 Or idToKhai = 24 Or idToKhai = 25 Or idToKhai = 23 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28").nodeValue)
-    ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 5 Or idToKhai = 70 Or idToKhai = 72 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Or idToKhai = 98 Then
+    ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 5 Or idToKhai = 70 Or idToKhai = 72 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Or idToKhai = 98 Or idToKhai = 6 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28_NNKD").nodeValue)
     Else
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdr").nodeValue)
@@ -1432,15 +1432,34 @@ Private Sub Command1_Click()
 'str2 = "aa999022300123461   122013005006006006<S01_2_4><S>01GTKT~01GTKT~01-2-4~so 01-2-4~12/12/2013~ban 1~0102030405~01-2-4~10000~10~1000~2323</S><S>10000~1000</S></S01_2_4>"
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
-str2 = "bs999702300123461   10201300600600100301/0101/01/1900<S01><S></S><S>noi dung 1~0102030405~HD0001~10000000~10/10/2013~20000000~10~10~200000~100000000~5~200000000~0~200000</S><S>10000000~100000~100000000~100000000~1300000~1400000</S><S>~</S><S>hoten~cc~Lan H≠¨ng~16/01/2014~~1~1~</S></S01>"
-Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-str2 = "bs999702300123461   102013006006002003<SKHBS><S>Thu’ TNDN ph∂i nÈp~13~0~1300000~1300000</S><S>~~0~0~0</S><S>16/01/2014~"
-Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-str2 = "bs999702300123461   10201300600600300357~37050~0~1112~01/01/2014~10100~10101~2~10000~ok con de~0~0~1300000</S></SKHBS>"
-Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "bs999702300123461   10201300600600100301/0101/01/1900<S01><S></S><S>noi dung 1~0102030405~HD0001~10000000~10/10/2013~20000000~10~10~200000~100000000~5~200000000~0~200000</S><S>10000000~100000~100000000~100000000~1300000~1400000</S><S>~</S><S>hoten~cc~Lan H≠¨ng~16/01/2014~~1~1~</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "bs999702300123461   102013006006002003<SKHBS><S>Thu’ TNDN ph∂i nÈp~13~0~1300000~1300000</S><S>~~0~0~0</S><S>16/01/2014~"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "bs999702300123461   10201300600600300357~37050~0~1112~01/01/2014~10100~10101~2~10000~ok con de~0~0~1300000</S></SKHBS>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
+'str2 = "aa999062300123461   01201400100100100201/0114/06/2006<S01><S></S><S>~~0~0~0~0~0</S><S>~~0~0~0~0~0</S><S>010207~Kg~322.000"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999062300123461   012014001001002002~32.00~15.000~0~65.00</S><S>hoten~chungchi~~17/01/2014~1~~0~1~17/01/2014</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
+'str2 = "bs999702300123461   10201300700800100301/0101/01/1900<S01><S></S><S>noi dung 1~0102030405~HD0001~10000000~10/10/2013~20000000~10~10~200000~100000000~5~200000000~0~200000</S><S>10000000~100000~100000000~100000000~1300000~1400000</S><S>~</S><S>hoten~cc~Lan H≠¨ng~16/01/2014~~1~1~</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "bs999702300123461   102013007008002003<SKHBS><S>Thu’ TNDN ph∂i nÈp~13~0~1300000~1300000</S><S>~~0~0~0</S><S>17/01/2014~"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "bs999702300123461   10201300700800300357~37050~0~1112~01/01/2014~10100~10101~2~10000~ok con de~0~0~1300000</S></SKHBS>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
+'str2 = "bs999012300123461   10201300100200100301/0114/06/2006<S01><S></S><S>~222000~3800000~305000~601312~800000~11000000~850000~1000000~4000000~250000~6000000~600000~11800000~850000~248688~8000000~400000~7000000~626688~0~626688~0~0~0</S><S>Huy“n Tr©m~KTV~Hoµng Lan~19/12/2013~~1~1~1701~~~0</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "bs999012300123461   102013001002002003<SKHBS><S>Thu’ GTGT cﬂn Æ≠Óc kh u trı k˙ tr≠Ìc chuy”n sang~22~32222000~222000~-32000000~Hµng ho∏, dﬁch vÙ b∏n ra chﬁu thu’ su t 5%~31~150000~250000~100000~Hµng ho∏, dﬁch vÙ b∏n ra chﬁu thu’ su t 10%~33~500000~600000~100000~Th"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "bs999012300123461   102013001002003003u’ GTGT Æ“ nghﬁ hoµn~42~40000~0~-40000</S><S>TÊng sË thu’ GTGT  Æ≠Óc kh u trı k˙ nµy~25~561312~601312~40000</S><S>17/01/2014~36~0~34000~lh001~12/10/2013~~~200~100000~NÈp NSNN~0~626688~626688~38993312~0~-38993312</S></SKHBS>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+str2 = "bs320732300748544   042013ihtkks00100101/0114/06/2006<S02><S></S><S>45000000~1898000~450000~780000~534000~30000~54000~50000~43102000~64000~43038000~40~17215200~3400~17211800~3400~5400~22~1~3400</S><S>1~1~~~~~~</S><S>~~~15/01/2014~0~1~~1053~~</S></S02><SKHBS><S>Thu? TNDN ph?i n?p~37~2130502~17215200~15084698~Thu? TNDN b? sung ke khai k? nay~39~2127502~17211800~15084298~Thu? TNDN t?m n?p~44~770~3400~2630</S><S>Thu? TNDN d? ke khai theo ti?n d?~38~3000~3400~400</S><S>15/03/2014~43~324369~340000~edfdsffh~01/01/2013~10700~~340~340000~DFGDFGDFG~17215200~0~15086928</S></SKHBS>"
+Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 End Sub
 
 Private Sub Form_Activate()
@@ -3476,12 +3495,14 @@ Private Function LoadForm(ByVal strData As String) As Boolean
                     If tCQT_CAPCUC <> vbNullString Then
                         .Row = .MaxRows - 15
                         .Text = tCQT_CAPCUC
+                        UpdateCell .Col, .Row, tCQT_CAPCUC
 
                     End If
 
                     If tCQT_HOANTHUE <> vbNullString Then
                         .Row = .MaxRows - 13
                         .Text = tCQT_HOANTHUE
+                        UpdateCell .Col, .Row, tCQT_HOANTHUE
  
                     End If
                 End If
