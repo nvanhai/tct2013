@@ -345,7 +345,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     
-    vLOAI_TKHAI = "95_BCTC13"
+    vLOAI_TKHAI = "95_BCTC"
     
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
@@ -397,6 +397,7 @@ End Function
 Public Function KiemTraKhoaSo(ByVal strDate As String) As Boolean
     Dim dNgayKhoaSo As Date, dKyLapBo As Date
     
+    strDate = Trim$(strDate)
     KiemTraKhoaSo = True
     dNgayKhoaSo = Format(strDate, "dd/mm/yyyy")
     dKyLapBo = Format("01/" & GetAttribute(TAX_Utilities_Srv_New.Data(0).nodeFromID("E_10"), "Value"), "dd/mm/yyyy")
@@ -412,6 +413,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
     If .ActiveSheet = 1 Then
         If Col = .ColLetterToNumber("E") And Row = 10 Then
             .GetText Col, Row, varTemp
+            varTemp = Trim$(varTemp)
             If varTemp <> "" And varTemp <> "../...." Then
                 If Format_mmyyyy(CStr(varTemp)) <> "" Then
                     .SetText Col, Row, Format_mmyyyy(CStr(varTemp))
