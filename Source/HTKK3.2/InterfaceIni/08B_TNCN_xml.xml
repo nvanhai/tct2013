@@ -34,7 +34,7 @@
 	<Dynamic GroupName="ChiTietSoThueGiamTruGiaCanh">
 		<chiTietSoThueTungCNhan id="id">
 			<ct34>C_57</ct34>
-			<ct35>G_57</ct35>
+			<ct35 TINType="1">G_57</ct35>
 			<ct36>K_57</ct36>
 			<TNCNTuongUng>
 				<ct37>L_57</ct37>

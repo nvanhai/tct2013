@@ -3906,7 +3906,7 @@ Private Function GetKyKeKhai(ByVal ID_TK As String) As String
             If strQuy = "TK_THANG" Then
                 KYKKHAI = TAX_Utilities_v1.month & "/" & TAX_Utilities_v1.Year
             Else
-                KYKKHAI = TAX_Utilities_v1.ThreeMonths & "/" & TAX_Utilities_v1.Year
+                KYKKHAI = Right$(TAX_Utilities_v1.ThreeMonths, 1) & "/" & TAX_Utilities_v1.Year
             End If
             
         Else
@@ -3914,7 +3914,7 @@ Private Function GetKyKeKhai(ByVal ID_TK As String) As String
             If (Trim(TAX_Utilities_v1.month) <> vbNullString Or Trim(TAX_Utilities_v1.month) <> "") And (Trim(TAX_Utilities_v1.ThreeMonths) = vbNullString Or Trim(TAX_Utilities_v1.ThreeMonths) = "") Then
                 KYKKHAI = TAX_Utilities_v1.month & "/" & TAX_Utilities_v1.Year
             ElseIf (Trim(TAX_Utilities_v1.month) = vbNullString Or Trim(TAX_Utilities_v1.month) = "") And (Trim(TAX_Utilities_v1.ThreeMonths) <> vbNullString Or Trim(TAX_Utilities_v1.ThreeMonths) <> "") Then
-                KYKKHAI = TAX_Utilities_v1.ThreeMonths & "/" & TAX_Utilities_v1.Year
+                KYKKHAI = Right$(TAX_Utilities_v1.ThreeMonths, 1) & "/" & TAX_Utilities_v1.Year
             Else
                 KYKKHAI = TAX_Utilities_v1.Year
             End If
@@ -3963,24 +3963,35 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                         For Each dNode In CloneNode.getElementsByTagName(cNode.nodeName)
 
                             If dNode.parentNode.nodeName = cNode.parentNode.nodeName Then
-                        
-                                If .CellType = CellTypeNumber Then
-
-                                    dNode.Text = .value
-                                ElseIf .CellType = CellTypeCheckBox Then
-
-                                    If LCase$(.Text) = "x" Then
-                                        dNode.Text = "1"
-                                    ElseIf .Text = "" Then
-                                        dNode.Text = "0"
+                                If GetAttribute(cNode, "TINType") = "1" Then
+                                    If Len(.Text) = 13 Then
+                                        dNode.Text = Left$(.Text, 10) & "-" & Right$(.Text, 3)
                                     Else
                                         dNode.Text = .Text
                                     End If
 
+                                    dNode.Attributes.removeNamedItem "TINType"
                                 Else
-                                    dNode.Text = ToDateString(.Text, True)
+
+                                    If .CellType = CellTypeNumber Then
+
+                                        dNode.Text = .value
+                                    ElseIf .CellType = CellTypeCheckBox Then
+
+                                        If LCase$(.Text) = "x" Then
+                                            dNode.Text = "1"
+                                        ElseIf .Text = "" Then
+                                            dNode.Text = "0"
+                                        Else
+                                            dNode.Text = .Text
+                                        End If
+
+                                    Else
+                                        dNode.Text = ToDateString(.Text, True)
                             
+                                    End If
                                 End If
+                                
                             End If
 
                         Next
@@ -4448,20 +4459,30 @@ Private Sub KetXuatXML()
                         .Col = .ColLetterToNumber(cellArray(0))
                         .Row = Val(cellArray(1)) + cellRange
 
-                        If .CellType = CellTypeNumber Then
-                            xmlCellTKNode.Text = .value
-                        ElseIf .CellType = CellTypeCheckBox Then
-
-                            If LCase$(.Text) = "x" Then
-                                xmlCellTKNode.Text = "1"
-                            ElseIf .Text = "" Then
-                                xmlCellTKNode.Text = "0"
+                        If GetAttribute(xmlCellNode, "TINType") = "1" Then
+                            If Len(.Text) = 13 Then
+                                xmlCellTKNode.Text = Left$(.Text, 10) & "-" & Right$(.Text, 3)
                             Else
                                 xmlCellTKNode.Text = .Text
                             End If
 
                         Else
-                            xmlCellTKNode.Text = ToDateString(.Text, True)
+
+                            If .CellType = CellTypeNumber Then
+                                xmlCellTKNode.Text = .value
+                            ElseIf .CellType = CellTypeCheckBox Then
+
+                                If LCase$(.Text) = "x" Then
+                                    xmlCellTKNode.Text = "1"
+                                ElseIf .Text = "" Then
+                                    xmlCellTKNode.Text = "0"
+                                Else
+                                    xmlCellTKNode.Text = .Text
+                                End If
+
+                            Else
+                                xmlCellTKNode.Text = ToDateString(.Text, True)
+                            End If
                         End If
                     End If
 
@@ -4688,20 +4709,30 @@ Private Sub KetXuatXML()
                                     .Col = .ColLetterToNumber(cellArray(0))
                                     .Row = Val(cellArray(1)) + cellRange
 
-                                    If .CellType = CellTypeNumber Then
-                                        xmlCellTKNode.Text = .value
-                                    ElseIf .CellType = CellTypeCheckBox Then
-
-                                        If LCase$(.Text) = "x" Then
-                                            xmlCellTKNode.Text = "1"
-                                        ElseIf .Text = "" Then
-                                            xmlCellTKNode.Text = "0"
+                                    If GetAttribute(xmlCellNode, "TINType") = "1" Then
+                                        If Len(.Text) = 13 Then
+                                            xmlCellTKNode.Text = Left$(.Text, 10) & "-" & Right$(.Text, 3)
                                         Else
                                             xmlCellTKNode.Text = .Text
                                         End If
 
                                     Else
-                                        xmlCellTKNode.Text = .Text
+
+                                        If .CellType = CellTypeNumber Then
+                                            xmlCellTKNode.Text = .value
+                                        ElseIf .CellType = CellTypeCheckBox Then
+
+                                            If LCase$(.Text) = "x" Then
+                                                xmlCellTKNode.Text = "1"
+                                            ElseIf .Text = "" Then
+                                                xmlCellTKNode.Text = "0"
+                                            Else
+                                                xmlCellTKNode.Text = .Text
+                                            End If
+
+                                        Else
+                                            xmlCellTKNode.Text = .Text
+                                        End If
                                     End If
                                 End If
 
