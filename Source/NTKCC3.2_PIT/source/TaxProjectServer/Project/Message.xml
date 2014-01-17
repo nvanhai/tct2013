@@ -134,8 +134,8 @@
 	<Infor ID="0135" Msg="Số chỉ tiêu trên mã vạch sai khác số chỉ tiêu trên tờ khai. Đề nghị kiểm tra lại ứng dụng nhập tờ khai!"/>
 	<Infor ID="0136" Msg="Chưa triển khai PIT, tạm thời chưa sử dụng được chức năng này."/>
 	<Infor ID="0137" Msg="Không tìm thấy thông tin đại lý thuế!"/>
-	<Infor ID="0138" Msg="Hàng hóa, dịch vụ không phải tổng hợp trên tờ khai 01/GTGT"/>
-	<Infor ID="0139" Msg="Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế"/>
+	<Infor ID="0138" Msg="HHDV không phải tổng hợp trên tờ khai 01/GTGT"/>
+	<Infor ID="0139" Msg="HHDV dùng cho dự án đầu tư đủ điều kiện KT thuế"/>
 	<Infor ID="0140" Msg="Tờ khai này không nhận mã vạch do đã thay đổi mẫu. Đề nghị nhập thủ công vào ứng dụng VAT"/>
 	<Infor ID="0141" Msg="Thông tin về Đại lý thuế chưa chính xác. Có tiếp tục hay không?"/>
 	<Infor ID="0142" Msg="Kỳ lập bộ phải lớn hơn kỳ kê khai !"/>
@@ -164,4 +164,6 @@
 	<Infor ID="0164" Msg="Hoạt động kinh doanh khác áp dụng thuế suất  2%"/>
 	<Infor ID="0165" Msg="Chưa có bảng tham số trong DB"/>
 	<Infor ID="0166" Msg="Chưa cập nhật thông tin phiên bản"/>
+	<Infor ID="0167" Msg="Xe Ôtô"/>
+	<Infor ID="0168" Msg="Xe hai bánh gắn máy"/>
 </Message>

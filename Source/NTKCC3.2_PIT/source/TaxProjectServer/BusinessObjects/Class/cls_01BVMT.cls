@@ -694,8 +694,6 @@ Public Function InsertDTL() As String
         Dim lastRow As Variant
         
         Do
-            'Ma chi tieu
-            mact = "'1000'"
 
             'ten loai khoang san
             .GetText .ColLetterToNumber("C"), .Row, TENGOI
@@ -758,6 +756,9 @@ Public Function InsertDTL() As String
                 
                 STT2 = "0"
                 STTIN = "'I'"
+                'Ma chi tieu
+                mact = "'1000'"
+
             Else
                 .GetText .ColLetterToNumber("B"), .Row, STT2
 
@@ -766,6 +767,7 @@ Public Function InsertDTL() As String
                 End If
 
                 STTIN = "'" & STT2 & "'"
+                mact = "''"
             End If
 
             STT = "1"
@@ -774,6 +776,7 @@ Public Function InsertDTL() As String
             sSQLVal = sSQLVal & SOLUONGCL & "," & TIENPHICL & "," & STT & "," & STT2 & "," & STTIN & "," & mact & "," & MUCPHI & "," & TIENPHI & "," & DANHAN & "," & LAN_QUET
             
             sSQL = "INSERT INTO TMP_MT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+
             If .Row <> 44 Then
                 bln = clsDAO.ExecuteDLL(sSQL)
             End If
@@ -788,7 +791,6 @@ Public Function InsertDTL() As String
 
         Do
 
-            mact = "'2000'"
             'ten loai khoang san
             .GetText .ColLetterToNumber("C"), .Row, TENGOI
 
@@ -848,6 +850,8 @@ Public Function InsertDTL() As String
             If .Row = (lastRow + 1) Then
                 STT2 = "0"
                 STTIN = "'II'"
+                mact = "'2000'"
+
             Else
                 .GetText .ColLetterToNumber("B"), .Row, STT2
 
@@ -856,6 +860,7 @@ Public Function InsertDTL() As String
                 End If
 
                 STTIN = "'" & STT2 & "'"
+                mact = "''"
             End If
 
             STT = "2"
@@ -1263,60 +1268,50 @@ Public Function InsertDTL_KHBS() As String
 End Function
 
 Public Function InsertHDR() As String
-    Dim sSQL         As String
-    Dim sSQLCol      As String
-    Dim sSQLVal      As String
-    Dim bln          As Boolean
+    Dim sSQL       As String
+    Dim sSQLCol    As String
+    Dim sSQLVal    As String
+    Dim bln        As Boolean
     
-    Dim madtnt       As Variant
-    Dim MATHUE       As Variant
-    Dim maTM         As Variant
-    Dim MAPP         As Variant
-    Dim kylbo        As Variant
-    Dim ngnop        As Variant
-    Dim LoaiTien     As Variant
-    Dim MABPQL       As Variant
-    Dim SHTEP        As Variant
+    Dim madtnt     As Variant
+    Dim MATHUE     As Variant
+    Dim maTM       As Variant
+    Dim MAPP       As Variant
+    Dim kylbo      As Variant
+    Dim ngnop      As Variant
+    Dim LoaiTien   As Variant
+    Dim MABPQL     As Variant
+    Dim SHTEP      As Variant
 
-    Dim kykkhai      As Variant
-    Dim NgNhap       As Variant
-    Dim ThueTKy      As Variant
-    Dim GTTinhThue   As Variant
-    Dim DaGhi        As Variant
-    Dim KTTRUOC      As Variant
-    Dim DoanhSo      As Variant
-    Dim MAPP2        As Variant
-    Dim MaMuc        As Variant
-    Dim MaVach       As Variant
-    Dim matkhai      As Variant
-    Dim HANNOP       As Variant
-    Dim ThueTKy2     As Variant
-    Dim HANNOP2      As Variant
-    Dim TENDA        As Variant
-    Dim DAGHI1       As Variant
-    Dim DAGHI2       As Variant
-    Dim AUTO_CAL     As Variant
-    Dim NGANH        As Variant
-    Dim DANHAN       As Variant
-    Dim MADLT        As Variant
-    Dim LanBS        As Variant
-    Dim THUECL       As Variant
-    Dim DSoCL        As Variant
-    Dim GTTTCL       As Variant
-    Dim NGAYPS       As Variant
-    Dim MANNKD       As Variant
-        Dim TENNV      As Variant
+    Dim kykkhai    As Variant
+    Dim NgNhap     As Variant
+    Dim ThueTKy    As Variant
+    Dim GTTinhThue As Variant
+    Dim DaGhi      As Variant
+    Dim KTTRUOC    As Variant
+    Dim DoanhSo    As Variant
+    Dim MAPP2      As Variant
+    Dim MaMuc      As Variant
+    Dim MaVach     As Variant
+    Dim matkhai    As Variant
+    Dim HANNOP     As Variant
+    Dim ThueTKy2   As Variant
+    Dim HANNOP2    As Variant
+    Dim TENDA      As Variant
+    Dim DAGHI1     As Variant
+    Dim DAGHI2     As Variant
+    Dim AUTO_CAL   As Variant
+    Dim NGANH      As Variant
+    Dim DANHAN     As Variant
+    Dim MADLT      As Variant
+    Dim LanBS      As Variant
+    Dim THUECL     As Variant
+    Dim DSoCL      As Variant
+    Dim GTTTCL     As Variant
+    Dim NGAYPS     As Variant
+    Dim MANNKD     As Variant
+    Dim TENNV      As Variant
     Dim CHUNGCHI   As Variant
-    'bien dung xu ly Ma Tieu Muc
-    Dim arrMTM()     As String, arrMTMSave() As String
-    Dim arrThueTKy() As String, arrThueTKySave() As Double
-    Dim i, j As Integer
-    Dim vTemp        As String
-    Dim countThueTKy As Double
-    Dim strMTM       As String
-    Dim strThueTKy   As String
-    Dim ROWNUM       As Variant
-    Dim vTemp2       As String
     
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
@@ -1336,67 +1331,26 @@ Public Function InsertHDR() As String
         'Ma tieu muc
         .Col = .ColLetterToNumber("B")
         .Row = 45
-        strMTM = "~"
                
-        Do
-            ' Lay ma tieu muc tren cel
-            .Col = .ColLetterToNumber("AC")
-            'cuoi ma tieu muc
-            vTemp = "~" & .Text & "~"
-            vTemp2 = vTemp2 & .Text & "~"
-            
-            If InStr(1, strMTM, vTemp, vbTextCompare) = 0 Then
-                strMTM = strMTM & .Text & "~"
-            End If
+        ThueTKy = 0
 
+        Do
             .Col = .ColLetterToNumber("U")
-            strThueTKy = strThueTKy & .Text & "~"
+            ThueTKy = ThueTKy + .Value
             
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
-            ROWNUM = .Row
         Loop Until .Text = "aa"
         
         .Col = .ColLetterToNumber("B")
-        .Row = ROWNUM + 3
+        .Row = .Row + 3
 
         Do
-            ' Lay ma tieu muc tren cel
-            .Col = .ColLetterToNumber("AC")
-            'cuoi ma tieu muc
-            vTemp = "~" & .Text & "~"
-            vTemp2 = vTemp2 & .Text & "~"
-            
-            If InStr(1, strMTM, vTemp, vbTextCompare) = 0 Then
-                strMTM = strMTM & .Text & "~"
-            End If
-
             .Col = .ColLetterToNumber("U")
-            strThueTKy = strThueTKy & .Text & "~"
-                     
+            ThueTKy = ThueTKy + .Value
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
         Loop Until .Text = "aa"
-
-        arrMTMSave = Split(strMTM, "~")
-        arrThueTKy = Split(strThueTKy, "~")
-        arrMTM = Split(vTemp2, "~")
-        
-        ReDim arrThueTKySave(UBound(arrMTMSave))
-        
-        For i = 1 To UBound(arrMTMSave) - 1
-            countThueTKy = 0
-
-            For j = 0 To UBound(arrMTM) - 1
-
-                If arrMTMSave(i) = arrMTM(j) Then
-                    countThueTKy = countThueTKy + Val(Replace(arrThueTKy(j), ".", ""))
-                End If
-
-            Next
-
-            arrThueTKySave(i) = countThueTKy
-        Next
 
         ' so lan bo sung
         If tthtk = "'" & 2 & "'" Then
@@ -1540,26 +1494,18 @@ Public Function InsertHDR() As String
         DoanhSo = "0"
         ThueTKy2 = "0"
         
-        For i = 1 To UBound(arrMTMSave) - 1
-            vTemp = arrMTMSave(i)
+        If Trim(maTM) <> "" Or Trim(maTM) <> "''" Then
             
-            maTM = "'" & vTemp & "'"
-            ThueTKy = arrThueTKySave(i)
-
-            If Trim(maTM) <> "" Or Trim(maTM) <> "''" Then
-            
-                sSQLVal = madtnt & "," & MADLT & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & ngnop & ", "
-                sSQLVal = sSQLVal & LoaiTien & "," & MABPQL & "," & SHTEP & "," & tthtk & "," & kykkhai & ", "
-                sSQLVal = sSQLVal & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & ", "
-                sSQLVal = sSQLVal & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ", "
-                sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & LanBS & "," & THUECL & "," & NGAYPS & "," & DANHAN & "," & DSoCL & "," & GTTTCL & "," & MANNKD & ",'" & TENNV & "','" & CHUNGCHI & "'"
+            sSQLVal = madtnt & "," & MADLT & "," & MATHUE & "," & maTM & "," & MAPP & "," & kylbo & "," & ngnop & ", "
+            sSQLVal = sSQLVal & LoaiTien & "," & MABPQL & "," & SHTEP & "," & tthtk & "," & kykkhai & ", "
+            sSQLVal = sSQLVal & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & ", "
+            sSQLVal = sSQLVal & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ", "
+            sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & LanBS & "," & THUECL & "," & NGAYPS & "," & DANHAN & "," & DSoCL & "," & GTTTCL & "," & MANNKD & ",'" & TENNV & "','" & CHUNGCHI & "'"
            
-                sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+            sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-                bln = clsDAO.ExecuteDLL(sSQL)
-            End If
-
-        Next
+            bln = clsDAO.ExecuteDLL(sSQL)
+        End If
         
     End With
      
