@@ -2,11 +2,11 @@
 	<Static GroupName="ThongTinPLuc">
 		<kemTKChinhNam>B_4</kemTKChinhNam>
 	</Static>
-	<Dynamic GroupName="BangDSachNPTCoMST">
+	<Dynamic GroupName="BangDSachNPTCoMST" FirstChild="1">
 		<chiTietNguoiPhuThuocCoMST id="id">
 			<ct09>D_22</ct09>
 			<ct10>E_22</ct10>
-			<ct11>F_22</ct11>
+			<ct11 TINType="1">F_22</ct11>
 			<ct12>G_22</ct12>
 			<ct13>I_22</ct13>
 			<ct14>J_22</ct14>
