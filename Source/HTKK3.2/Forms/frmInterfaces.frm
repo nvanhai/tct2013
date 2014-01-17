@@ -7130,7 +7130,6 @@ Private Sub Form_Load()
     Dim j As Integer
     ' end BC26
             
-            
     'hien thi combobox tim kiem
     'dhdang
      Cb_seach.ListIndex = 0
@@ -7379,6 +7378,20 @@ Private Sub Form_Resize()
     'fpSpread1.Visible = False
     ResizeButton
     SetFormCaption Me, imgCaption, lblCaption
+
+    'Trien khai GD1
+    If TK_GD1 = True Then
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "17" _
+           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "42" _
+           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "43" _
+           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "59" _
+           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "76" _
+           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "41" Then
+            InvisibleXmlButton
+        End If
+    End If
+
+    'End trien khai GD1
     'fpSpread1.Visible = True
     'fpSpread1.SetFocus
 End Sub
@@ -14834,4 +14847,18 @@ Private Function getFormulaTienPNCHoanThue(t As Long, soTien As Double, strColRo
     getFormulaTienPNCHoanThue = "IF(" & result & ">0;ROUND(" & result & ";0);0)"  'result
     Exit Function
 End Function
+
+Sub InvisibleXmlButton()
+    cmdExportXML.Visible = False
+    cmdImportXML.Visible = False
+    Command1.Left = Command1.Left + 2680
+    cmdDelete.Left = cmdDelete.Left + 2680
+    cmdLoadToKhai.Left = cmdLoadToKhai.Left + 2680
+    cmdClear.Left = cmdClear.Left + 2680
+    cmdSave.Left = cmdSave.Left + 2680
+    cmdPrint.Left = cmdPrint.Left + 2680
+    cmdKiemTra.Left = cmdKiemTra.Left + 2680
+    cmdExport.Left = cmdExport.Left + 2680
+    cmdInsert.Left = cmdInsert.Left + 2680
+End Sub
 
