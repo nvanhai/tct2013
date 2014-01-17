@@ -3695,8 +3695,14 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             xmlTK.getElementsByTagName("tenCQTNoiNop")(0).Text = vlue
         End If
 
+        vlue = strTaxIdString
+
+        If Len(vlue) = 13 Then
+            vlue = Left$(vlue, 10) & "-" & Right$(vlue, 3)
+        End If
+
         If xmlTK.getElementsByTagName("mst").length > 0 Then
-            xmlTK.getElementsByTagName("mst")(0).Text = strTaxIdString
+            xmlTK.getElementsByTagName("mst")(0).Text = vlue
         End If
 
         .GetText .ColLetterToNumber("C"), 3, vlue
@@ -3743,63 +3749,76 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
 
         .GetText .ColLetterToNumber("V"), 5, vlue
         
-        If xmlTK.getElementsByTagName("mstDLyThue").length > 0 Then
-            xmlTK.getElementsByTagName("mstDLyThue")(0).Text = vlue
-        End If
-
-        .GetText .ColLetterToNumber("V"), 6, vlue
+        If vlue <> vbNullString Then
         
-        If xmlTK.getElementsByTagName("tenDLyThue").length > 0 Then
-            xmlTK.getElementsByTagName("tenDLyThue")(0).Text = vlue
-        End If
+            If Len(vlue) = 13 Then
+                vlue = Left$(vlue, 10) & "-" & Right$(vlue, 3)
+            End If
+            
+            If xmlTK.getElementsByTagName("mstDLyThue").length > 0 Then
+                xmlTK.getElementsByTagName("mstDLyThue")(0).Text = vlue
+            End If
 
-        .GetText .ColLetterToNumber("V"), 7, vlue
+            .GetText .ColLetterToNumber("V"), 6, vlue
         
-        If xmlTK.getElementsByTagName("dchiDLyThue").length > 0 Then
-            xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = vlue
-        End If
+            If xmlTK.getElementsByTagName("tenDLyThue").length > 0 Then
+                xmlTK.getElementsByTagName("tenDLyThue")(0).Text = vlue
+            End If
 
-        .GetText .ColLetterToNumber("V"), 8, vlue
+            .GetText .ColLetterToNumber("V"), 7, vlue
         
-        If xmlTK.getElementsByTagName("tenHuyenDLyThue").length > 0 Then
-            xmlTK.getElementsByTagName("tenHuyenDLyThue")(0).Text = vlue
-        End If
+            If xmlTK.getElementsByTagName("dchiDLyThue").length > 0 Then
+                xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = vlue
+            End If
 
-        .GetText .ColLetterToNumber("V"), 9, vlue
+            .GetText .ColLetterToNumber("V"), 8, vlue
         
-        If xmlTK.getElementsByTagName("tenTinhDLyThue").length > 0 Then
-            xmlTK.getElementsByTagName("tenTinhDLyThue")(0).Text = vlue
-        End If
+            If xmlTK.getElementsByTagName("tenHuyenDLyThue").length > 0 Then
+                xmlTK.getElementsByTagName("tenHuyenDLyThue")(0).Text = vlue
+            End If
 
-        .GetText .ColLetterToNumber("V"), 10, vlue
+            .GetText .ColLetterToNumber("V"), 9, vlue
         
-        If xmlTK.getElementsByTagName("dthoaiDLyThue").length > 0 Then
-            xmlTK.getElementsByTagName("dthoaiDLyThue")(0).Text = vlue
-        End If
+            If xmlTK.getElementsByTagName("tenTinhDLyThue").length > 0 Then
+                xmlTK.getElementsByTagName("tenTinhDLyThue")(0).Text = vlue
+            End If
 
-        .GetText .ColLetterToNumber("V"), 11, vlue
+            .GetText .ColLetterToNumber("V"), 10, vlue
         
-        If xmlTK.getElementsByTagName("faxDLyThue").length > 0 Then
-            xmlTK.getElementsByTagName("faxDLyThue")(0).Text = vlue
-        End If
+            If xmlTK.getElementsByTagName("dthoaiDLyThue").length > 0 Then
+                xmlTK.getElementsByTagName("dthoaiDLyThue")(0).Text = vlue
+            End If
 
-        .GetText .ColLetterToNumber("V"), 12, vlue
+            .GetText .ColLetterToNumber("V"), 11, vlue
         
-        If xmlTK.getElementsByTagName("emailDLyThue").length > 0 Then
-            xmlTK.getElementsByTagName("emailDLyThue")(0).Text = vlue
-        End If
+            If xmlTK.getElementsByTagName("faxDLyThue").length > 0 Then
+                xmlTK.getElementsByTagName("faxDLyThue")(0).Text = vlue
+            End If
 
-        .GetText .ColLetterToNumber("V"), 13, vlue
+            .GetText .ColLetterToNumber("V"), 12, vlue
         
-        If xmlTK.getElementsByTagName("soHDongDLyThue").length > 0 Then
-            xmlTK.getElementsByTagName("soHDongDLyThue")(0).Text = vlue
-        End If
+            If xmlTK.getElementsByTagName("emailDLyThue").length > 0 Then
+                xmlTK.getElementsByTagName("emailDLyThue")(0).Text = vlue
+            End If
 
-        .GetText .ColLetterToNumber("V"), 14, vlue
-        vlue = format$(vlue, "yyyy-MM-dd")
+            .GetText .ColLetterToNumber("V"), 13, vlue
+        
+            If xmlTK.getElementsByTagName("soHDongDLyThue").length > 0 Then
+                xmlTK.getElementsByTagName("soHDongDLyThue")(0).Text = vlue
+            End If
 
-        If xmlTK.getElementsByTagName("ngayKyHDDLyThue").length > 0 Then
-            xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).Text = vlue
+            .GetText .ColLetterToNumber("V"), 14, vlue
+            vlue = format$(vlue, "yyyy-MM-dd")
+
+            If xmlTK.getElementsByTagName("ngayKyHDDLyThue").length > 0 Then
+                xmlTK.getElementsByTagName("ngayKyHDDLyThue")(0).Text = vlue
+            End If
+
+        Else
+
+            If xmlTK.getElementsByTagName("DLyThue").length > 0 Then
+                xmlTK.getElementsByTagName("DLyThue")(0).parentNode.removeChild xmlTK.getElementsByTagName("DLyThue")(0)
+            End If
         End If
         
         If xmlTK.getElementsByTagName("ngayLapTKhai").length > 0 Then
@@ -4453,6 +4472,9 @@ Private Sub KetXuatXML()
         Next
         
         SetValueToKhaiHeader xmlTK
+        
+        Dim hasPl As Boolean
+        hasPl = False
 
         'Set value cho phu luc
         For nodeValIndex = 1 To TAX_Utilities_v1.NodeValidity.childNodes.length
@@ -4462,6 +4484,7 @@ Private Sub KetXuatXML()
                 Dim currentRow As Integer
                 Dim xmlSection As MSXML.IXMLDOMNode
                 MaTk = GetAttribute(nodeVal, "DataFile")
+                hasPl = True
 
                 If InStr(MaTk, "11") > 0 Then
                     MaTk = Replace$(MaTk, "11", "")
@@ -4697,6 +4720,12 @@ Private Sub KetXuatXML()
 
     End With    'Save temp
         
+    If hasPl = False Then
+        If xmlTK.getElementsByTagName("PLuc").length > 0 Then
+            xmlTK.getElementsByTagName("PLuc")(0).parentNode.removeChild xmlTK.getElementsByTagName("PLuc")(0)
+        End If
+    End If
+               
     xmlTK.save strFileName
     DisplayMessage "0280", msOKOnly, miInformation
     Exit Sub
@@ -14805,3 +14834,4 @@ Private Function getFormulaTienPNCHoanThue(t As Long, soTien As Double, strColRo
     getFormulaTienPNCHoanThue = "IF(" & result & ">0;ROUND(" & result & ";0);0)"  'result
     Exit Function
 End Function
+
