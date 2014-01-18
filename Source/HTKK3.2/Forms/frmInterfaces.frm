@@ -3935,10 +3935,11 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                          ByRef Blank As Boolean, _
                          ByVal cellRange As Integer, _
                          ByRef Row As Integer)
-    Dim cellid      As String
-    Dim cellArray() As String
-    Dim cNode       As MSXML.IXMLDOMNode
-    Dim dNode       As MSXML.IXMLDOMNode
+    Dim cellid           As String
+    Dim cellArray()      As String
+    Dim cNode            As MSXML.IXMLDOMNode
+    Dim dNode            As MSXML.IXMLDOMNode
+    Dim TinTypeAttribute As MSXML.IXMLDOMNode
 
     With fpSpread1
 
@@ -3966,8 +3967,13 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                                 If GetAttribute(cNode, "TINType") = "1" Then
                                     If Len(.Text) = 13 Then
                                         dNode.Text = Left$(.Text, 10) & "-" & Right$(.Text, 3)
-                                    Else
+                                    ElseIf Len(.Text) = 10 Then
                                         dNode.Text = .Text
+                                    Else
+                                        dNode.Text = ""
+                                        Set TinTypeAttribute = CloneNode.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
+                                        TinTypeAttribute.nodeValue = "true"
+                                        dNode.Attributes.setNamedItem TinTypeAttribute
                                     End If
 
                                     dNode.Attributes.removeNamedItem "TINType"
@@ -3976,6 +3982,17 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                                     If .CellType = CellTypeNumber Then
 
                                         dNode.Text = .value
+                                    ElseIf .CellType = CellTypeDate Then
+
+                                        If .Text = vbNullString Or .Text = "../../...." Then
+                                            dNode.Text = ""
+                                            Set TinTypeAttribute = CloneNode.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
+                                            TinTypeAttribute.nodeValue = "true"
+                                            dNode.Attributes.setNamedItem TinTypeAttribute
+                                        Else
+                                            dNode.Text = ToDateString(.Text, True)
+                                        End If
+
                                     ElseIf .CellType = CellTypeCheckBox Then
 
                                         If LCase$(.Text) = "x" Then
@@ -4306,11 +4323,12 @@ Private Sub KetXuatXML()
     End If
     
     With fpSpread1
-        Dim cellid         As String
-        Dim cellArray()    As String
-        Dim nodeValIndex   As Integer
-        Dim cellRange      As Integer
-        Dim GroupCellRange As Integer
+        Dim cellid           As String
+        Dim cellArray()      As String
+        Dim nodeValIndex     As Integer
+        Dim cellRange        As Integer
+        Dim GroupCellRange   As Integer
+        Dim TinTypeAttribute As MSXML.IXMLDOMNode
 
         .sheet = 1
         
@@ -4462,14 +4480,31 @@ Private Sub KetXuatXML()
                         If GetAttribute(xmlCellNode, "TINType") = "1" Then
                             If Len(.Text) = 13 Then
                                 xmlCellTKNode.Text = Left$(.Text, 10) & "-" & Right$(.Text, 3)
-                            Else
+                            ElseIf Len(.Text) = 10 Then
                                 xmlCellTKNode.Text = .Text
+                            Else
+                                xmlCellTKNode.Text = ""
+                                Set TinTypeAttribute = xmlTK.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "")
+                                TinTypeAttribute.nodeValue = "true"
+                                xmlCellTKNode.Attributes.setNamedItem TinTypeAttribute
                             End If
 
                         Else
 
                             If .CellType = CellTypeNumber Then
                                 xmlCellTKNode.Text = .value
+                                
+                            ElseIf .CellType = CellTypePic Then
+
+                                If .Text = vbNullString Or .Text = "../../...." Then
+                                    xmlCellTKNode.Text = ""
+                                    Set TinTypeAttribute = xmlTK.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
+                                    TinTypeAttribute.nodeValue = "true"
+                                    xmlCellTKNode.Attributes.setNamedItem TinTypeAttribute
+                                Else
+                                    xmlCellTKNode.Text = ToDateString(.Text, True)
+                                End If
+
                             ElseIf .CellType = CellTypeCheckBox Then
 
                                 If LCase$(.Text) = "x" Then
@@ -4522,7 +4557,7 @@ Private Sub KetXuatXML()
                         xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_01_GTGT_xml.xml")
                     Else
 
-                        If MaTk = "02_GTGT" Or MaTk = "03_GTGT" Or MaTk = "04_GTGT" Or MaTk = "05_GTGT" Or MaTk = "01A_TNDN" Or MaTk = "01A_TNDN" Or MaTk = "02_TNDN" Or MaTk = "01_NTNN" Or MaTk = "03_NTNN" Or MaTk = "01_TAIN" Or MaTk = "01_TTDB" Or MaTk = "01_BVMT" Or MaTk = "01_TBVMT" Then
+                        If MaTk = "02_GTGT" Or MaTk = "03_GTGT" Or MaTk = "04_GTGT" Or MaTk = "05_GTGT" Or MaTk = "01A_TNDN" Or MaTk = "01B_TNDN" Or MaTk = "02_TNDN" Or MaTk = "01_NTNN" Or MaTk = "03_NTNN" Or MaTk = "01_TAIN" Or MaTk = "01_TTDB" Or MaTk = "01_BVMT" Or MaTk = "01_TBVMT" Then
                             xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_TT156_xml.xml")
 
                             xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT156_xml.xml")
@@ -4712,14 +4747,30 @@ Private Sub KetXuatXML()
                                     If GetAttribute(xmlCellNode, "TINType") = "1" Then
                                         If Len(.Text) = 13 Then
                                             xmlCellTKNode.Text = Left$(.Text, 10) & "-" & Right$(.Text, 3)
-                                        Else
+                                        ElseIf Len(.Text) = 10 Then
                                             xmlCellTKNode.Text = .Text
+                                        Else
+                                            xmlCellTKNode.Text = ""
+                                            Set TinTypeAttribute = xmlPL.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "")
+                                            TinTypeAttribute.nodeValue = "true"
+                                            xmlCellTKNode.Attributes.setNamedItem TinTypeAttribute
                                         End If
 
                                     Else
 
                                         If .CellType = CellTypeNumber Then
                                             xmlCellTKNode.Text = .value
+                                        ElseIf .CellType = CellTypePic Then
+
+                                            If .Text = vbNullString Or .Text = "../../...." Then
+                                                xmlCellTKNode.Text = ""
+                                                Set TinTypeAttribute = xmlTK.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
+                                                TinTypeAttribute.nodeValue = "true"
+                                                xmlCellTKNode.Attributes.setNamedItem TinTypeAttribute
+                                            Else
+                                                xmlCellTKNode.Text = ToDateString(.Text, True)
+                                            End If
+
                                         ElseIf .CellType = CellTypeCheckBox Then
 
                                             If LCase$(.Text) = "x" Then
