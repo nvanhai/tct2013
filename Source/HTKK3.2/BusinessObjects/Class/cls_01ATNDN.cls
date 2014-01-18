@@ -525,6 +525,7 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                     fps.Col = fps.ColLetterToNumber("H")
                     fps.Row = 51
                     fps.Lock = False
+                    fps.Formula = "K41-H49"
                 Else
                     fps.Col = fps.ColLetterToNumber("H")
                     fps.Row = 45
@@ -541,6 +542,8 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                     fps.Col = fps.ColLetterToNumber("H")
                     fps.Row = 51
                     fps.Lock = True
+                    fps.Formula = ""
+                    
                     fps.SetText fps.ColLetterToNumber("H"), 45, ""
                     fps.SetText fps.ColLetterToNumber("P"), 45, "00"
                     UpdateCell fps, fps.ColLetterToNumber("P"), 45, "00"
@@ -552,6 +555,7 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                     UpdateCell fps, fps.ColLetterToNumber("H"), 47, ""
                     UpdateCell fps, fps.ColLetterToNumber("H"), 49, ""
                     UpdateCell fps, fps.ColLetterToNumber("H"), 51, ""
+                    
                 End If
             End If
     End If
@@ -1272,9 +1276,9 @@ With fps
         .Col = Col
         .Row = Row
          If Col = .ColLetterToNumber("H") And Row = 45 Then
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber("P")
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             'Update combo C
             UpdateCell fps, .Col, .Row, .Text
         End If
@@ -1282,17 +1286,17 @@ With fps
         .Col = Col
         .Row = Row
          If Col = .ColLetterToNumber("G") And .Text <> "" Then
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber("S")
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             'Update combo C
             UpdateCell fps, .Col, .Row, .Text
         End If
         
         If Col = .ColLetterToNumber("H") And .Text <> "" Then
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber("R")
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             'Update combo C
             UpdateCell fps, .Col, .Row, .Text
         End If
@@ -2366,10 +2370,10 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
             
             If Col = .ColLetterToNumber("G") Then 'Khi chon Combo
                 'Chuyen sang du lieu tuong ung Lay gia tri index cot G va gia tri Index cot S
-                intIndexCuc = .TypeComboBoxCurSel
+                intIndexCuc = .typeComboboxCurSel
                 .Col = .ColLetterToNumber("S")
                 .Row = Row
-                .TypeComboBoxCurSel = intIndexCuc
+                .typeComboboxCurSel = intIndexCuc
                 'Nhap lai Combo cot R
                 .Col = .ColLetterToNumber("S")
                 UpdateCell fps, .Col, .Row, .Text
@@ -2410,10 +2414,10 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
                         
             If Col = .ColLetterToNumber("H") Then 'Khi chon Combo
                 'Chuyen sang du lieu tuong ung Lay gia tri index cot L va gia tri Index cot R
-                intIndexChiCuc = .TypeComboBoxCurSel
+                intIndexChiCuc = .typeComboboxCurSel
                 .Col = .ColLetterToNumber("R")
                 .Row = Row
-                .TypeComboBoxCurSel = intIndexChiCuc
+                .typeComboboxCurSel = intIndexChiCuc
                 'Nhap lai Combo cot R
                 .Col = .ColLetterToNumber("R")
                 UpdateCell fps, .Col, .Row, .Text

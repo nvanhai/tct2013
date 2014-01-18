@@ -558,6 +558,7 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                     fps.Col = fps.ColLetterToNumber("H")
                     fps.Row = 64
                     fps.Lock = False
+                    fps.Formula = "K54-H62"
                 Else
                     fps.Col = fps.ColLetterToNumber("H")
                     fps.Row = 58
@@ -582,6 +583,7 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                     fps.Col = fps.ColLetterToNumber("H")
                     fps.Row = 64
                     fps.Lock = True
+                    fps.Formula = ""
                     fps.SetText fps.ColLetterToNumber("H"), 64, "0"
                     UpdateCell fps, fps.ColLetterToNumber("H"), 64, "0"
                 End If
@@ -1130,9 +1132,9 @@ With fps
         .Col = Col
         .Row = Row
          If Col = .ColLetterToNumber("H") And Row = 58 Then
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber("P")
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             'Update combo C
             UpdateCell fps, .Col, .Row, .Text
         End If
@@ -2273,10 +2275,10 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
             
             If Col = .ColLetterToNumber("G") Then 'Khi chon Combo
                 'Chuyen sang du lieu tuong ung Lay gia tri index cot G va gia tri Index cot S
-                intIndexCuc = .TypeComboBoxCurSel
+                intIndexCuc = .typeComboboxCurSel
                 .Col = .ColLetterToNumber("S")
                 .Row = Row
-                .TypeComboBoxCurSel = intIndexCuc
+                .typeComboboxCurSel = intIndexCuc
                 'Nhap lai Combo cot R
                 .Col = .ColLetterToNumber("S")
                 UpdateCell fps, .Col, .Row, .Text
@@ -2317,10 +2319,10 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
                         
             If Col = .ColLetterToNumber("H") Then 'Khi chon Combo
                 'Chuyen sang du lieu tuong ung Lay gia tri index cot L va gia tri Index cot R
-                intIndexChiCuc = .TypeComboBoxCurSel
+                intIndexChiCuc = .typeComboboxCurSel
                 .Col = .ColLetterToNumber("R")
                 .Row = Row
-                .TypeComboBoxCurSel = intIndexChiCuc
+                .typeComboboxCurSel = intIndexChiCuc
                 'Nhap lai Combo cot R
                 .Col = .ColLetterToNumber("R")
                 UpdateCell fps, .Col, .Row, .Text

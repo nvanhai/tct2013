@@ -898,7 +898,7 @@ Private Sub CheckDynamicError()
          .GetText .ColLetterToNumber("E"), 23, ErrThueGTGT
          
          
-         .GetText .ColLetterToNumber("E"), 34, vErrorPhatHanhHD
+        .GetText .ColLetterToNumber("E"), 34, vErrorPhatHanhHD
         .GetText .ColLetterToNumber("E"), 35, errMauSoHD
         .GetText .ColLetterToNumber("E"), 36, errSoLienHD
         .GetText .ColLetterToNumber("E"), 37, errEmty
