@@ -2268,20 +2268,72 @@ End Sub
 
 Public Function CheckNgayInKyKK(ngay As String, thangQuy As Integer, nam As Integer, isQuy As Boolean) As Boolean
     Dim strDate() As String
-    Dim vDate As Date
+    Dim vdate As Date
     strDate = Split(ngay, "/")
-    vDate = DateSerial(CInt(strDate(2)), CInt(strDate(1)), CInt(strDate(0)))
+    vdate = DateSerial(CInt(strDate(2)), CInt(strDate(1)), CInt(strDate(0)))
     If isQuy = True Then
-        If DatePart("Q", vDate) = thangQuy And DatePart("YYYY", vDate) = nam Then
+        If DatePart("Q", vdate) = thangQuy And DatePart("YYYY", vdate) = nam Then
             CheckNgayInKyKK = True
         Else
             CheckNgayInKyKK = False
         End If
     Else
-        If DatePart("M", vDate) = thangQuy And DatePart("YYYY", vDate) = nam Then
+        If DatePart("M", vdate) = thangQuy And DatePart("YYYY", vdate) = nam Then
             CheckNgayInKyKK = True
         Else
             CheckNgayInKyKK = False
         End If
     End If
+End Function
+
+
+' Kiem tra ngay nho hon ngay cuoi ky ke khai
+Public Function getNgayCuoiKyKK(thangQuy As Integer, nam As Integer, isQuy As Boolean) As Date
+    Dim vdate As Date
+    Dim thangCuoiQuy As Integer
+    Dim tmpDate As Date
+     If isQuy = True Then
+       thangCuoiQuy = (thangQuy - 1) * 3 + 3
+       tmpDate = DateSerial(nam, thangCuoiQuy, 1)
+       ' ngay cuoi quy
+       vdate = DateAdd("M", 1, tmpDate)
+       vdate = DateAdd("D", -1, vdate)
+    Else
+       tmpDate = DateSerial(nam, thangQuy, 1)
+       ' ngay cuoi quy
+       vdate = DateAdd("M", 1, tmpDate)
+       vdate = DateAdd("D", -1, vdate)
+    End If
+    getNgayCuoiKyKK = vdate
+End Function
+
+' get loai hoa don
+Public Function getLoaiHD(maHoaDon As String) As String
+    Dim strDataFileName As String
+    Dim arrDanhsach() As String
+    Dim strComboHien As String
+    Dim strCombo As String
+    Dim MSTDN As String
+    Dim xmlDomData As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+    
+    Dim strTemp As String
+    
+    
+    strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_loai_HD.xml")
+    ' Lay danh muc loai hoa don
+    If xmlDomData.Load(strDataFileName) Then
+        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+        For Each xmlNode In xmlNodeListCell
+            If GetAttribute(xmlNode, "Value") <> "" Then
+                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                If maHoaDon = Trim$(arrDanhsach(1)) Then
+                    strTemp = Trim$(arrDanhsach(0))
+                    Exit For
+                End If
+            End If
+        Next
+    End If
+    getLoaiHD = strTemp
 End Function

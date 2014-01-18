@@ -868,6 +868,17 @@ Private Sub CheckDynamicError()
     Dim vdate As Date
     Dim vNgayHt As Date
     
+    Dim vErrorPhatHanhHD As Variant
+    Dim iflagNgayPhatHanhHD As Integer
+    
+    Dim strTemp As String, result As String, strLoai As String
+    Dim iFlagMauSoHD As Integer, iFlagSoLienHD As Integer
+    Dim errMauSoHD As Variant, errSoLienHD As Variant
+    Dim errEmty As Variant
+    Dim iFlagEmty As Integer
+    
+    Dim vMaHoaDon As Variant, vKyHieuMauHoaDon As Variant
+    
     With fps
     iCurrentSheet = .Sheet
     .Sheet = .SheetCount
@@ -885,6 +896,12 @@ Private Sub CheckDynamicError()
          .GetText .ColLetterToNumber("E"), 28, ErrMsg1NgayPL01
          .GetText .ColLetterToNumber("E"), 29, ErrMsg2NgayPl01
          .GetText .ColLetterToNumber("E"), 23, ErrThueGTGT
+         
+         
+         .GetText .ColLetterToNumber("E"), 34, vErrorPhatHanhHD
+        .GetText .ColLetterToNumber("E"), 35, errMauSoHD
+        .GetText .ColLetterToNumber("E"), 36, errSoLienHD
+        .GetText .ColLetterToNumber("E"), 37, errEmty
          'vttoan: bat rang buoc ct21, 30 ,31, 22,23
 '             .Sheet = 2
 '            .GetText .ColLetterToNumber("N"), 2, ct08pl
@@ -972,6 +989,10 @@ Private Sub CheckDynamicError()
             i = 1
             .Col = .ColLetterToNumber("B")
             Do
+            
+                .GetText .ColLetterToNumber("C"), .Row, vMaHoaDon
+                .GetText .ColLetterToNumber("D"), .Row, vKyHieuMauHoaDon
+                
                 .GetText .ColLetterToNumber("E"), .Row, vKyHieuHD
                 .GetText .ColLetterToNumber("F"), .Row, vSoHD
                 .GetText .ColLetterToNumber("G"), .Row, vNgayHD
@@ -985,7 +1006,7 @@ Private Sub CheckDynamicError()
                 
                 
                     
-            If Trim(vKyHieuHD) <> "" Or Trim(vSoHD) <> "" Or Trim(vNgayHD) <> "" Or Trim(vTennguoimua) <> "" Or Trim(vDoanhSo) <> "0" Or Trim(vGTGT) <> "0" Or CDbl(vThuesuat) <> 0 Then iWhiteRow = 0 Else iWhiteRow = 1
+            If Trim$(vMaHoaDon) <> "" Or Trim$(vKyHieuMauHoaDon) <> "" Or Trim(vKyHieuHD) <> "" Or Trim(vSoHD) <> "" Or Trim(vNgayHD) <> "" Or Trim(vTennguoimua) <> "" Or Trim(vDoanhSo) <> "0" Or Trim(vGTGT) <> "0" Or CDbl(vThuesuat) <> 0 Then iWhiteRow = 0 Else iWhiteRow = 1
                 If ((CDbl(vThuesuat) = 0 Or CDbl(vThuesuat) = 5 Or CDbl(vThuesuat) = 10) And iWhiteRow = 0) Or iWhiteRow = 1 Then
                     .Col = .ColLetterToNumber("L")
                     .CellNote = ""
@@ -1027,55 +1048,121 @@ Private Sub CheckDynamicError()
                     iFlagvNgayHD = 1
                  ElseIf Trim(vNgayHD) <> "" Then
                     ' To khai quy
-                    If strTkThangQuy = "TK_QUY" Then
-                        vNgayHt = Date
-                        arrDate = Split(vNgayHD, "/")
-                        vdate = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
-                        If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_v1.Year) Then
-                            .Col = .ColLetterToNumber("G")
-                            .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
-                            .BackColor = mErrorColor
-                            iFlagNgay1Pl01 = 1
-                        ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_v1.Year) And convertThang2Quy(CInt("00" & Mid(vNgayHD, 4, 2))) > CInt(TAX_Utilities_v1.ThreeMonths) Then
-                            .Col = .ColLetterToNumber("G")
-                            .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
-                            .BackColor = mErrorColor
-                            iFlagNgay1Pl01 = 1
-                        ElseIf DateDiff("D", vNgayHt, vdate) > 0 Then
-                           .Col = .ColLetterToNumber("G")
-                           .CellNote = GetAttribute(GetMessageCellById("0273"), "Msg") 'static
-                           .BackColor = mErrorColor
-                           iFlagNgay1Pl01 = 1
-                        Else
-                            .Col = .ColLetterToNumber("G")
-                            .CellNote = ""
-                            .BackColor = mNonErrorColor
-                        End If
-                    Else
-                        If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_v1.Year) Then
-                            .Col = .ColLetterToNumber("G")
-                            .CellNote = ErrMsg1NgayPL01
-                            .BackColor = mErrorColor
-                            iFlagNgay1Pl01 = 1
-                        ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_v1.Year) And CInt("00" & Mid(vNgayHD, 4, 2)) > CInt(TAX_Utilities_v1.Month) Then
-                            .Col = .ColLetterToNumber("G")
-                            .CellNote = ErrMsg1NgayPL01
-                            .BackColor = mErrorColor
-                            iFlagNgay1Pl01 = 1
-                        ElseIf CheckValidNgayHD(CStr(vNgayHD)) = False And iFlagNgay1Pl01 = 0 Then
-                           .Col = .ColLetterToNumber("G")
-                           .CellNote = GetAttribute(GetMessageCellById("0124"), "Msg") 'static
-                           .BackColor = mAlertColor
-                        Else
-                            .Col = .ColLetterToNumber("G")
-                            .CellNote = ""
-                            .BackColor = mNonErrorColor
-                        End If
-                   End If
+'                    If strTkThangQuy = "TK_QUY" Then
+'                        vNgayHt = Date
+'                        arrDate = Split(vNgayHD, "/")
+'                        vdate = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
+'                        If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_v1.Year) Then
+'                            .Col = .ColLetterToNumber("G")
+'                            .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
+'                            .BackColor = mErrorColor
+'                            iFlagNgay1Pl01 = 1
+'                        ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_v1.Year) And convertThang2Quy(CInt("00" & Mid(vNgayHD, 4, 2))) > CInt(TAX_Utilities_v1.ThreeMonths) Then
+'                            .Col = .ColLetterToNumber("G")
+'                            .CellNote = GetAttribute(GetMessageCellById("0113"), "Msg") 'static
+'                            .BackColor = mErrorColor
+'                            iFlagNgay1Pl01 = 1
+'                        ElseIf DateDiff("D", vNgayHt, vdate) > 0 Then
+'                           .Col = .ColLetterToNumber("G")
+'                           .CellNote = GetAttribute(GetMessageCellById("0273"), "Msg") 'static
+'                           .BackColor = mErrorColor
+'                           iFlagNgay1Pl01 = 1
+'                        Else
+'                            .Col = .ColLetterToNumber("G")
+'                            .CellNote = ""
+'                            .BackColor = mNonErrorColor
+'                        End If
+'                    Else
+'                        If CInt(Right(vNgayHD, 4)) > CInt(TAX_Utilities_v1.Year) Then
+'                            .Col = .ColLetterToNumber("G")
+'                            .CellNote = ErrMsg1NgayPL01
+'                            .BackColor = mErrorColor
+'                            iFlagNgay1Pl01 = 1
+'                        ElseIf CInt(Right(vNgayHD, 4)) = CInt(TAX_Utilities_v1.Year) And CInt("00" & Mid(vNgayHD, 4, 2)) > CInt(TAX_Utilities_v1.Month) Then
+'                            .Col = .ColLetterToNumber("G")
+'                            .CellNote = ErrMsg1NgayPL01
+'                            .BackColor = mErrorColor
+'                            iFlagNgay1Pl01 = 1
+'                        ElseIf CheckValidNgayHD(CStr(vNgayHD)) = False And iFlagNgay1Pl01 = 0 Then
+'                           .Col = .ColLetterToNumber("G")
+'                           .CellNote = GetAttribute(GetMessageCellById("0124"), "Msg") 'static
+'                           .BackColor = mAlertColor
+'                        Else
+'                            .Col = .ColLetterToNumber("G")
+'                            .CellNote = ""
+'                            .BackColor = mNonErrorColor
+'                        End If
+'                   End If
+                    ' Kiem tra ngay phat hanh nho hon ngay cuoi ky ke khai
+                             If strTkThangQuy = "TK_QUY" Then
+                                 If DateDiff("D", getNgayCuoiKyKK(TAX_Utilities_v1.ThreeMonths, TAX_Utilities_v1.Year, True), Format(vNgayHD, "dd/mm/yyyy")) > 0 Then
+                                     .Col = .ColLetterToNumber("G")
+                                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                     .CellNote = vErrorPhatHanhHD   'static
+                                     .BackColor = mErrorColor
+                                     iflagNgayPhatHanhHD = 1
+                                     'capture the first error cell
+'                                     If iFocusFlag = 0 Then
+'                                         strFocusSheetName = "'" & .SheetName & "'"
+'                                         strFocusCol = str(.Col)
+'                                         strFocusRow = str(.Row)
+'                                         iFocusFlag = 1
+'                                     End If
+                                 Else
+                                      .Col = .ColLetterToNumber("G")
+                                      .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                      .CellNote = ""   'static
+                                      .BackColor = mNonErrorColor
+                                End If
+                             Else
+                                If DateDiff("D", getNgayCuoiKyKK(TAX_Utilities_v1.Month, TAX_Utilities_v1.Year, False), Format(vNgayHD, "dd/mm/yyyy")) > 0 Then
+                                     .Col = .ColLetterToNumber("G")
+                                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                     .CellNote = vErrorPhatHanhHD   'static
+                                     .BackColor = mErrorColor
+                                     iflagNgayPhatHanhHD = 1
+                                     'capture the first error cell
+'                                     If iFocusFlag = 0 Then
+'                                         strFocusSheetName = "'" & .SheetName & "'"
+'                                         strFocusCol = str(.Col)
+'                                         strFocusRow = str(.Row)
+'                                         iFocusFlag = 1
+'                                     End If
+                                 Else
+                                      .Col = .ColLetterToNumber("G")
+                                      .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                      .CellNote = ""   'static
+                                      .BackColor = mNonErrorColor
+                                End If
+                             End If
                 End If
                 
                 ' check ky hieu mau hoa don
-                
+                If Trim(vKyHieuMauHoaDon) = "" And iWhiteRow = 0 Then
+                            .Col = .ColLetterToNumber("D")
+                            .CellNote = errEmty  'static
+                            .BackColor = mErrorColor
+                            iFlagEmty = 1
+                        Else
+                            strLoai = getLoaiHD(CStr(vMaHoaDon))
+                            result = CheckMauSoHD(CStr(vKyHieuMauHoaDon), strLoai, CStr(vMaHoaDon))
+                            If result = "1" And iWhiteRow = 0 Then
+                                .Col = .ColLetterToNumber("D")
+                                .CellNote = errMauSoHD  'static
+                                .BackColor = mErrorColor
+                                iFlagMauSoHD = 1
+                            ElseIf result = "2" And iWhiteRow = 0 Then
+                                .Col = .ColLetterToNumber("D")
+                                .CellNote = errSoLienHD  'static
+                                .BackColor = mErrorColor
+                                iFlagSoLienHD = 1
+                            Else
+                                .Col = .ColLetterToNumber("D")
+                                .CellNote = ""  'static
+                                .BackColor = mNonErrorColor
+                            End If
+                        End If
+                        ' end
                 
                  'ky hieu
                 If Trim(vKyHieuHD) = "" And iWhiteRow = 0 Then
@@ -1161,6 +1248,12 @@ Private Sub CheckDynamicError()
             .SetText .ColLetterToNumber("B"), 27, IIf(iFlagNgayKy = 1, "0", "1")
             '.SetText .ColLetterToNumber("B"), 27, IIf(iFlagGTGT = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 28, IIf(iFlagNgay1Pl01 = 1, "0", "1")
+            
+            .SetText .ColLetterToNumber("B"), 34, IIf(iflagNgayPhatHanhHD = 1, "0", "1")
+            .SetText .ColLetterToNumber("B"), 35, IIf(iFlagMauSoHD = 1, "0", "1")
+            .SetText .ColLetterToNumber("B"), 36, IIf(iFlagSoLienHD = 1, "0", "1")
+            .SetText .ColLetterToNumber("B"), 37, IIf(iFlagEmty = 1, "0", "1")
+            
             If iFocusFlag = 1 Then
                 ' setcell for focus
                 strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
