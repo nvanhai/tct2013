@@ -818,16 +818,13 @@ On Error GoTo ErrHandle
     
     strSQL = strSQL & "'" & vDA_NHAN & "',"
     strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
-    
-    'vCO_GTRINH_02A = TAX_Utilities_Srv_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue
-    vCO_GTRINH_02A = 0
-    vCO_GTRINH_02B = 0
-    vCO_GTRINH_02C = 0
-    strSQL = strSQL & "'" & IIf(Val(vCO_GTRINH_02A) = 1, "Y", "") & "',"
-    strSQL = strSQL & "'" & IIf(Val(vCO_GTRINH_02B) = 1, "Y", "") & "',"
-    strSQL = strSQL & "'" & IIf(Val(vCO_GTRINH_02C) = 1, "Y", "") & "',"
-    ' Them danh dau 3 phu luc
-    strSQL = strSQL & "'','','',"
+    strSQL = strSQL & "'',"
+    strSQL = strSQL & "'',"
+    strSQL = strSQL & "'',"
+    ' Them danh dau 3 phu luc cho anh Huy
+    strSQL = strSQL & "'',"
+    strSQL = strSQL & "'',"
+    strSQL = strSQL & "'',"
     ' Ket thuc
     strSQL = strSQL & "null,null,"
     
