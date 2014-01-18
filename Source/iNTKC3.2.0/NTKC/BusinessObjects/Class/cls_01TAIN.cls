@@ -71,6 +71,10 @@ Const DIEN_THOAI_Y = 11
 Const FAX_X = "S"
 Const FAX_Y = 11
 
+' Ngay phat sinh
+Const NGAY_PS_ROW = 33
+Const NGAY_PS_COL = "O"
+
 Public WithEvents fps As fpSpread
 Attribute fps.VB_VarHelpID = -1
 'Public strMaSoTep As String
@@ -723,7 +727,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
     Dim vItkhai_ID, vHthuc_nop As String
-    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
+    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC, vNGANH_NGHE_KD, vTO_KHAI_LAN_PS, vNGAY_PS As Variant
     
 On Error GoTo ErrHandle
     strSQL = strSQL_HDR
@@ -847,6 +851,18 @@ On Error GoTo ErrHandle
             vLAN_BS = "0"
         End If
         
+        ' ngay phat sinh
+        vNGANH_NGHE_KD = "null"
+        .GetText .ColLetterToNumber(NGAY_PS_COL), NGAY_PS_ROW, vNGAY_PS
+        If Trim(vNGAY_PS) = "" Or vNGAY_PS = vbNullString Then
+            vNGAY_PS = "null"
+            vTO_KHAI_LAN_PS = "null"
+        Else
+            vNGAY_PS = "'" & vNGAY_PS & "'"
+            vNGAY_PS = "to_date(" & vNGAY_PS & ",'dd/mm/yyyy')"
+            vTO_KHAI_LAN_PS = "1"
+        End If
+        
         If Len(Trim(vTIN_DL)) = 13 Then
             vTIN_DL = Left(vTIN_DL, 10) & "-" & Right(vTIN_DL, 3)
         End If
@@ -862,7 +878,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
     strSQL = strSQL & "null,"
     strSQL = strSQL & vHthuc_nop & "," & vItkhai_ID & ","
- strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"   
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & vNGANH_NGHE_KD & "," & vTO_KHAI_LAN_PS & "," & vNGAY_PS & ")"
     GenerateSQL_Header = strSQL
     'Debug.Print GenerateSQL_Header
     
