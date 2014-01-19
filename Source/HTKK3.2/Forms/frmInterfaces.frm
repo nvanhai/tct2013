@@ -7498,7 +7498,7 @@ Private Sub Form_Resize()
            And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "43" _
            And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "59" _
            And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "76" _
-           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "41" Then
+           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "41" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "100_1" Then
             InvisibleXmlButton
         End If
     End If
