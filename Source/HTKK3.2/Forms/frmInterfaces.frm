@@ -3964,16 +3964,18 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                         For Each dNode In CloneNode.getElementsByTagName(cNode.nodeName)
 
                             If dNode.parentNode.nodeName = cNode.parentNode.nodeName Then
+
                                 If GetAttribute(cNode, "TINType") = "1" Then
+                                    dNode.Attributes.removeNamedItem "xsi:nil"
+                                    If dNode.hasChildNodes Then
+                                        dNode.removeChild dNode.firstchild
+                                    End If
+
                                     If Len(.Text) = 13 Then
                                         dNode.Text = Left$(.Text, 10) & "-" & Right$(.Text, 3)
                                     ElseIf Len(.Text) = 10 Then
                                         dNode.Text = .Text
                                     Else
-
-                                        If dNode.hasChildNodes Then
-                                            dNode.removeChild dNode.firstchild
-                                        End If
 
                                         Set TinTypeAttribute = CloneNode.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
                                         TinTypeAttribute.nodeValue = "true"
@@ -3989,6 +3991,7 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                                     ElseIf .CellType = CellTypeDate Then
 
                                         If .Text = vbNullString Or .Text = "../../...." Then
+                                            dNode.Attributes.removeNamedItem "xsi:nil"
                                             If dNode.hasChildNodes Then
                                                 dNode.removeChild dNode.firstchild
                                             End If
@@ -4485,15 +4488,16 @@ Private Sub KetXuatXML()
                         .Row = Val(cellArray(1)) + cellRange
 
                         If GetAttribute(xmlCellNode, "TINType") = "1" Then
+                            xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
+                            If xmlCellTKNode.hasChildNodes Then
+                                xmlCellTKNode.removeChild xmlCellTKNode.firstchild
+                            End If
+
                             If Len(.Text) = 13 Then
                                 xmlCellTKNode.Text = Left$(.Text, 10) & "-" & Right$(.Text, 3)
                             ElseIf Len(.Text) = 10 Then
                                 xmlCellTKNode.Text = .Text
                             Else
-
-                                If xmlCellTKNode.hasChildNodes Then
-                                    xmlCellTKNode.removeChild xmlCellTKNode.firstchild
-                                End If
 
                                 Set TinTypeAttribute = xmlTK.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
                                 TinTypeAttribute.nodeValue = "true"
@@ -4506,6 +4510,10 @@ Private Sub KetXuatXML()
                                 xmlCellTKNode.Text = .value
                                 
                             ElseIf .CellType = CellTypePic Then
+                                xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
+                                If xmlCellTKNode.hasChildNodes Then
+                                    xmlCellTKNode.removeChild xmlCellTKNode.firstchild
+                                End If
 
                                 If .Text = vbNullString Or .Text = "../../...." Then
                                     Set TinTypeAttribute = xmlTK.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
@@ -4755,15 +4763,16 @@ Private Sub KetXuatXML()
                                     .Row = Val(cellArray(1)) + cellRange
 
                                     If GetAttribute(xmlCellNode, "TINType") = "1" Then
+                                        xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
+                                        If xmlCellTKNode.hasChildNodes Then
+                                            xmlCellTKNode.removeChild xmlCellTKNode.firstchild
+                                        End If
+
                                         If Len(.Text) = 13 Then
                                             xmlCellTKNode.Text = Left$(.Text, 10) & "-" & Right$(.Text, 3)
                                         ElseIf Len(.Text) = 10 Then
                                             xmlCellTKNode.Text = .Text
                                         Else
-
-                                            If xmlCellTKNode.hasChildNodes Then
-                                                xmlCellTKNode.removeChild xmlCellTKNode.firstchild
-                                            End If
 
                                             Set TinTypeAttribute = xmlPL.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
                                             TinTypeAttribute.nodeValue = "true"
@@ -4775,7 +4784,7 @@ Private Sub KetXuatXML()
                                         If .CellType = CellTypeNumber Then
                                             xmlCellTKNode.Text = .value
                                         ElseIf .CellType = CellTypePic Then
-
+                                            xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
                                             If .Text = vbNullString Or .Text = "../../...." Then
                                                 If xmlCellTKNode.hasChildNodes Then
                                                     xmlCellTKNode.removeChild xmlCellTKNode.firstchild
