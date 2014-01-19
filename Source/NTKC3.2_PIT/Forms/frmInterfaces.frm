@@ -1,5 +1,6 @@
 VERSION 5.00
 Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
+Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Begin VB.Form frmInterfaces 
@@ -60,62 +61,47 @@ Begin VB.Form frmInterfaces
          ScrollBars      =   2
          SpreadDesigner  =   "frmInterfaces.frx":0000
       End
-      Begin VB.PictureBox lblExit 
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+      Begin MSForms.Label lblExit 
          Height          =   945
          Left            =   2760
-         ScaleHeight     =   885
-         ScaleWidth      =   7035
          TabIndex        =   11
          Top             =   2820
          Visible         =   0   'False
          Width           =   7095
+         Size            =   "12515;1667"
+         FontName        =   "Tahoma"
+         FontHeight      =   255
+         FontCharSet     =   0
+         FontPitchAndFamily=   2
+         ParagraphAlign  =   3
       End
-      Begin VB.PictureBox lblConnecting 
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+      Begin MSForms.Label lblConnecting 
          Height          =   945
          Left            =   3480
-         ScaleHeight     =   885
-         ScaleWidth      =   7035
          TabIndex        =   8
          Top             =   1800
          Visible         =   0   'False
          Width           =   7095
+         Size            =   "12515;1667"
+         FontName        =   "Tahoma"
+         FontHeight      =   255
+         FontCharSet     =   0
+         FontPitchAndFamily=   2
+         ParagraphAlign  =   3
       End
-      Begin VB.PictureBox lblLoading 
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+      Begin MSForms.Label lblLoading 
          Height          =   945
          Left            =   3480
-         ScaleHeight     =   885
-         ScaleWidth      =   7035
          TabIndex        =   6
          Top             =   1800
          Visible         =   0   'False
          Width           =   7095
+         Size            =   "12515;1667"
+         FontName        =   "Tahoma"
+         FontHeight      =   255
+         FontCharSet     =   0
+         FontPitchAndFamily=   2
+         ParagraphAlign  =   3
       End
    End
    Begin VB.Frame Frame2 
@@ -143,200 +129,169 @@ Begin VB.Form frmInterfaces
          _Version        =   327682
          Appearance      =   1
       End
-      Begin VB.PictureBox cmdClear 
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+      Begin MSForms.CommandButton cmdClear 
          Height          =   375
          Left            =   7440
-         ScaleHeight     =   315
-         ScaleWidth      =   1245
          TabIndex        =   18
          Top             =   390
          Width           =   1305
+         VariousPropertyBits=   25
+         Caption         =   "Xãa"
+         Size            =   "2293;661"
+         Accelerator     =   88
+         FontName        =   "Tahoma"
+         FontEffects     =   1073750016
+         FontHeight      =   165
+         FontCharSet     =   0
+         FontPitchAndFamily=   2
+         ParagraphAlign  =   3
       End
-      Begin VB.PictureBox cmdViewNow 
+      Begin MSForms.CommandButton cmdViewNow 
          Height          =   375
          Left            =   6090
-         ScaleHeight     =   315
-         ScaleWidth      =   1245
          TabIndex        =   17
          Top             =   390
          Width           =   1305
+         VariousPropertyBits=   25
+         Caption         =   "Xem tê khai"
+         Size            =   "2302;661"
+         Accelerator     =   72
+         FontEffects     =   1073750016
+         FontHeight      =   165
+         FontCharSet     =   0
+         FontPitchAndFamily=   2
+         ParagraphAlign  =   3
       End
-      Begin VB.PictureBox lblBarcode 
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+      Begin MSForms.Label lblBarcode 
          Height          =   255
          Left            =   180
-         ScaleHeight     =   195
-         ScaleWidth      =   1155
          TabIndex        =   16
          Top             =   150
          Visible         =   0   'False
          Width           =   1215
+         VariousPropertyBits=   8388627
+         Size            =   "2143;450"
+         FontName        =   "Tahoma"
+         FontHeight      =   165
+         FontCharSet     =   0
+         FontPitchAndFamily=   2
       End
-      Begin VB.PictureBox lblWarning 
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H000000FF&
+      Begin MSForms.Label lblWarning 
          Height          =   255
          Left            =   9120
-         ScaleHeight     =   195
-         ScaleWidth      =   2265
          TabIndex        =   14
          Top             =   150
          Visible         =   0   'False
          Width           =   2325
+         ForeColor       =   255
+         VariousPropertyBits=   8388627
+         Size            =   "4101;450"
+         FontName        =   "Tahoma"
+         FontHeight      =   165
+         FontCharSet     =   0
+         FontPitchAndFamily=   2
       End
-      Begin VB.PictureBox lblVersion 
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+      Begin MSForms.Label lblVersion 
          Height          =   255
          Left            =   8610
-         ScaleHeight     =   195
-         ScaleWidth      =   345
          TabIndex        =   13
          Top             =   150
          Width           =   405
+         VariousPropertyBits=   8388627
+         Size            =   "714;450"
+         FontName        =   "Tahoma"
+         FontHeight      =   165
+         FontCharSet     =   0
+         FontPitchAndFamily=   2
       End
-      Begin VB.PictureBox lblLabelVersion 
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+      Begin MSForms.Label lblLabelVersion 
          Height          =   255
          Left            =   4380
-         ScaleHeight     =   195
-         ScaleWidth      =   4065
          TabIndex        =   12
          Top             =   150
          Width           =   4125
+         VariousPropertyBits=   8388627
+         Size            =   "7276;450"
+         FontName        =   "Tahoma"
+         FontHeight      =   165
+         FontCharSet     =   0
+         FontPitchAndFamily=   2
+         ParagraphAlign  =   2
       End
-      Begin VB.PictureBox lblFile 
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+      Begin MSForms.Label lblFile 
          Height          =   255
          Left            =   180
-         ScaleHeight     =   195
-         ScaleWidth      =   1155
          TabIndex        =   10
          Top             =   150
          Visible         =   0   'False
          Width           =   1215
+         VariousPropertyBits=   8388627
+         Size            =   "2143;450"
+         FontName        =   "Tahoma"
+         FontHeight      =   165
+         FontCharSet     =   0
+         FontPitchAndFamily=   2
       End
-      Begin VB.PictureBox lblFilePath 
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+      Begin MSForms.Label lblFilePath 
          Height          =   255
          Left            =   1530
-         ScaleHeight     =   195
-         ScaleWidth      =   1725
          TabIndex        =   9
          Top             =   150
          Width           =   1785
+         VariousPropertyBits=   8388627
+         Size            =   "3149;450"
+         FontName        =   "Tahoma"
+         FontHeight      =   165
+         FontCharSet     =   0
+         FontPitchAndFamily=   2
       End
-      Begin VB.PictureBox cmdSave 
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+      Begin MSForms.CommandButton cmdSave 
          Height          =   375
          Left            =   8790
-         ScaleHeight     =   315
-         ScaleWidth      =   1245
          TabIndex        =   0
          Top             =   390
          Width           =   1305
+         VariousPropertyBits=   25
+         Caption         =   "Ghi l¹i"
+         Size            =   "2293;661"
+         Accelerator     =   71
+         FontName        =   "Tahoma"
+         FontEffects     =   1073750016
+         FontHeight      =   165
+         FontCharSet     =   0
+         FontPitchAndFamily=   2
+         ParagraphAlign  =   3
       End
-      Begin VB.PictureBox cmdExit 
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+      Begin MSForms.CommandButton cmdExit 
          Height          =   375
          Left            =   10140
-         ScaleHeight     =   315
-         ScaleWidth      =   1245
          TabIndex        =   1
          Top             =   390
          Width           =   1305
+         Caption         =   "Tho¸t"
+         Size            =   "2293;661"
+         Accelerator     =   84
+         FontName        =   "Tahoma"
+         FontHeight      =   165
+         FontCharSet     =   0
+         FontPitchAndFamily=   2
+         ParagraphAlign  =   3
       End
    End
-   Begin VB.PictureBox lblCaption 
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H8000000E&
+   Begin MSForms.Label lblCaption 
       Height          =   375
       Left            =   120
-      ScaleHeight     =   315
-      ScaleWidth      =   3915
       TabIndex        =   5
       Top             =   0
       Width           =   3975
+      ForeColor       =   -2147483634
+      Size            =   "7011;661"
+      FontName        =   "Tahoma"
+      FontEffects     =   1073741825
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+      FontWeight      =   700
    End
    Begin VB.Image imgCaption 
       Height          =   375
@@ -4850,7 +4805,7 @@ Private Function formatMaToKhai(ByVal strID As String) As String
     formatMaToKhai = strRetValue
 End Function
 Private Function formatMaToKhaiQLT(ByVal strID As String) As String
-    formatMaToKhaiQLT = "(" + strRetValue + ")"
+    formatMaToKhaiQLT = "(" + strID + ")"
 End Function
 
 Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) As Boolean
