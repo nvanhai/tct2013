@@ -1691,7 +1691,7 @@ Private Sub CheckDynamicError()
                     .CellNote = ""
             End If
             ' Kiem tra so thue
-            If CDbl(vCt5) <> vTongSoThue Then
+            If (CDbl(vCt5) - vTongSoThue > 5 Or vTongSoThue - CDbl(vCt5) > 5) Then
                     .Col = .ColLetterToNumber("P")
                     .BackColor = mErrorColor
                     .CellNote = errTongSoThue
