@@ -1417,9 +1417,9 @@ On Error GoTo ErrHandle
     
     Set rs = Nothing
     
-    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 6 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 71 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 90 Or idToKhai = 95 Or idToKhai = 92 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 98 Or idToKhai = 99 Or idToKhai = 24 Or idToKhai = 23 Then
+    If IdToKhai = 2 Or IdToKhai = 4 Or IdToKhai = 46 Or IdToKhai = 47 Or IdToKhai = 48 Or IdToKhai = 49 Or IdToKhai = 15 Or IdToKhai = 16 Or IdToKhai = 50 Or IdToKhai = 51 Or IdToKhai = 36 Or IdToKhai = 87 Or IdToKhai = 86 Or IdToKhai = 77 Or IdToKhai = 71 Or IdToKhai = 74 Or IdToKhai = 89 Or IdToKhai = 42 Or IdToKhai = 43 Or IdToKhai = 17 Or IdToKhai = 59 Or IdToKhai = 41 Or IdToKhai = 76 Or IdToKhai = 90 Or IdToKhai = 95 Or IdToKhai = 92 Or IdToKhai = 93 Or IdToKhai = 94 Or IdToKhai = 96 Or IdToKhai = 97 Or IdToKhai = 98 Or IdToKhai = 99 Or IdToKhai = 24 Or IdToKhai = 23 Then
             strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrIhtkkTT28").nodeValue)
-    ElseIf IdToKhai = 1 Or IdToKhai = 11 Or IdToKhai = 12 Or IdToKhai = 5 Or IdToKhai = 70 Or IdToKhai = 80 Or IdToKhai = 81 Or IdToKhai = 82 Or IdToKhai = 3 Or IdToKhai = 73 Or idToKhai = 72  Then
+    ElseIf IdToKhai = 1 Or IdToKhai = 11 Or IdToKhai = 12 Or IdToKhai = 5 Or IdToKhai = 70 Or IdToKhai = 80 Or IdToKhai = 81 Or IdToKhai = 82 Or IdToKhai = 3 Or IdToKhai = 73 Or IdToKhai = 72 Or IdToKhai = 6 Then
             strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrIhtkkTT28_NNKD").nodeValue)
      Else
             strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrIhtkk").nodeValue)
@@ -2153,34 +2153,34 @@ On Error GoTo ErrHandle
         End If
         
         'khong nhan cac to khai khong theo mau HTKK3.2.0
-        idToKhai = Mid(strPrefix, 4, 2)
+        IdToKhai = Mid(strPrefix, 4, 2)
         If (Val(Left$(strPrefix, 3)) <= 317 And UCase(strLoaiToKhai) = "AA") Then
-            If Trim(idToKhai) = "01" Or Trim(idToKhai) = "02" Or Trim(idToKhai) = "04" Or Trim(idToKhai) = "11" Or Trim(idToKhai) = "12" Or Trim(idToKhai) = "71" _
-            Or Trim(idToKhai) = "72" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "90" Or Trim(idToKhai) = "25" Or Trim(idToKhai) = "50" Or Trim(idToKhai) = "51" Or Trim(idToKhai) = "19" _
-            Or Trim(idToKhai) = "22" Or Trim(idToKhai) = "15" Or Trim(idToKhai) = "16" Or Trim(idToKhai) = "36" Or Trim(idToKhai) = "74" Then
-                If idToKhai = "72" Then '05/GTGT
+            If Trim(IdToKhai) = "01" Or Trim(IdToKhai) = "02" Or Trim(IdToKhai) = "04" Or Trim(IdToKhai) = "11" Or Trim(IdToKhai) = "12" Or Trim(IdToKhai) = "71" _
+            Or Trim(IdToKhai) = "72" Or Trim(IdToKhai) = "06" Or Trim(IdToKhai) = "90" Or Trim(IdToKhai) = "25" Or Trim(IdToKhai) = "50" Or Trim(IdToKhai) = "51" Or Trim(IdToKhai) = "19" _
+            Or Trim(IdToKhai) = "22" Or Trim(IdToKhai) = "15" Or Trim(IdToKhai) = "16" Or Trim(IdToKhai) = "36" Or Trim(IdToKhai) = "74" Then
+                If IdToKhai = "72" Then '05/GTGT
                     'xu ly voi to khai cau truc khong thay doi thi van cho nhan: 05/GTGT
                     strBarcode = Replace(strBarcode, "</S></S01>", "~~</S></S01>")
                 Else
                     If isIHTKK = True Then
-	                    bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "04")
-	                    isIHTKK = False
-	                    Unload Me
-	                    Exit Sub
-	                Else
-	                    DisplayMessage "0132", msOKOnly, miInformation
-	                    Exit Sub
-	                End If
+                            bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "04")
+                            isIHTKK = False
+                            Unload Me
+                            Exit Sub
+                        Else
+                            DisplayMessage "0132", msOKOnly, miInformation
+                            Exit Sub
+                        End If
                 End If
             End If
         End If
         
         'khong nhan cac to khai bo sung khong theo mau HTKK3.2.0(GD1)
-        idToKhai = Mid(strPrefix, 4, 2)
+        IdToKhai = Mid(strPrefix, 4, 2)
         If (Val(Left$(strPrefix, 3)) <= 317 And UCase(strLoaiToKhai) = "BS") Then
             'khbs updated GD1
-            If Trim(idToKhai) = "01" Or Trim(idToKhai) = "02" Or Trim(idToKhai) = "04" Or Trim(idToKhai) = "71" Or Trim(idToKhai) = "72" Or Trim(idToKhai) = "11" Or Trim(idToKhai) = "12" _
-            Or Trim(idToKhai) = "73" Or Trim(idToKhai) = "70" Or Trim(idToKhai) = "81" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "05" Or Trim(idToKhai) = "90" Or Trim(idToKhai) = "86" Then
+            If Trim(IdToKhai) = "01" Or Trim(IdToKhai) = "02" Or Trim(IdToKhai) = "04" Or Trim(IdToKhai) = "71" Or Trim(IdToKhai) = "72" Or Trim(IdToKhai) = "11" Or Trim(IdToKhai) = "12" _
+            Or Trim(IdToKhai) = "73" Or Trim(IdToKhai) = "70" Or Trim(IdToKhai) = "81" Or Trim(IdToKhai) = "06" Or Trim(IdToKhai) = "05" Or Trim(IdToKhai) = "90" Or Trim(IdToKhai) = "86" Then
                 If isIHTKK = True Then
                     bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "04")
                     isIHTKK = False
@@ -2246,7 +2246,7 @@ On Error GoTo ErrHandle
         ' Khong nhan cac to khai 02/TAIN, 05/TNDN
         'If Trim(idToKhai) = "08" Or Trim(idToKhai) = "24" Then
         'nvsu -- reOpen(01/BCTL_DK)
-        If Trim(idToKhai) = "08" Then
+        If Trim(IdToKhai) = "08" Then
                 If isIHTKK = True Then
                     bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "04")
                     isIHTKK = False
