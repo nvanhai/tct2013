@@ -3970,7 +3970,11 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                                     ElseIf Len(.Text) = 10 Then
                                         dNode.Text = .Text
                                     Else
-                                        dNode.Text = ""
+
+                                        If dNode.hasChildNodes Then
+                                            dNode.removeChild dNode.firstchild
+                                        End If
+
                                         Set TinTypeAttribute = CloneNode.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
                                         TinTypeAttribute.nodeValue = "true"
                                         dNode.Attributes.setNamedItem TinTypeAttribute
@@ -3985,7 +3989,10 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                                     ElseIf .CellType = CellTypeDate Then
 
                                         If .Text = vbNullString Or .Text = "../../...." Then
-                                            dNode.Text = ""
+                                            If dNode.hasChildNodes Then
+                                                dNode.removeChild dNode.firstchild
+                                            End If
+
                                             Set TinTypeAttribute = CloneNode.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
                                             TinTypeAttribute.nodeValue = "true"
                                             dNode.Attributes.setNamedItem TinTypeAttribute
@@ -4322,6 +4329,8 @@ Private Sub KetXuatXML()
         Exit Sub
     End If
     
+    
+    
     With fpSpread1
         Dim cellid           As String
         Dim cellArray()      As String
@@ -4483,8 +4492,12 @@ Private Sub KetXuatXML()
                             ElseIf Len(.Text) = 10 Then
                                 xmlCellTKNode.Text = .Text
                             Else
-                                xmlCellTKNode.Text = ""
-                                Set TinTypeAttribute = xmlTK.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "")
+
+                                If xmlCellTKNode.hasChildNodes Then
+                                    xmlCellTKNode.removeChild xmlCellTKNode.firstchild
+                                End If
+
+                                Set TinTypeAttribute = xmlTK.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
                                 TinTypeAttribute.nodeValue = "true"
                                 xmlCellTKNode.Attributes.setNamedItem TinTypeAttribute
                             End If
@@ -4497,7 +4510,6 @@ Private Sub KetXuatXML()
                             ElseIf .CellType = CellTypePic Then
 
                                 If .Text = vbNullString Or .Text = "../../...." Then
-                                    xmlCellTKNode.Text = ""
                                     Set TinTypeAttribute = xmlTK.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
                                     TinTypeAttribute.nodeValue = "true"
                                     xmlCellTKNode.Attributes.setNamedItem TinTypeAttribute
@@ -4750,8 +4762,12 @@ Private Sub KetXuatXML()
                                         ElseIf Len(.Text) = 10 Then
                                             xmlCellTKNode.Text = .Text
                                         Else
-                                            xmlCellTKNode.Text = ""
-                                            Set TinTypeAttribute = xmlPL.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "")
+
+                                            If xmlCellTKNode.hasChildNodes Then
+                                                xmlCellTKNode.removeChild xmlCellTKNode.firstchild
+                                            End If
+
+                                            Set TinTypeAttribute = xmlPL.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
                                             TinTypeAttribute.nodeValue = "true"
                                             xmlCellTKNode.Attributes.setNamedItem TinTypeAttribute
                                         End If
@@ -4763,7 +4779,10 @@ Private Sub KetXuatXML()
                                         ElseIf .CellType = CellTypePic Then
 
                                             If .Text = vbNullString Or .Text = "../../...." Then
-                                                xmlCellTKNode.Text = ""
+                                                If xmlCellTKNode.hasChildNodes Then
+                                                    xmlCellTKNode.removeChild xmlCellTKNode.firstchild
+                                                End If
+
                                                 Set TinTypeAttribute = xmlTK.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
                                                 TinTypeAttribute.nodeValue = "true"
                                                 xmlCellTKNode.Attributes.setNamedItem TinTypeAttribute
