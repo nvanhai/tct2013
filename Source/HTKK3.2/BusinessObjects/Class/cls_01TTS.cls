@@ -372,6 +372,9 @@ Dim MST1 As Variant, MST2 As Variant, MST3 As Variant, MST4 As Variant
     Dim mErrMSTTonTai, vMSTCT5 As Variant, iFlagMSTTonTai, rowMST As Integer
     Dim CountRow As Long, rowDes As Long, iFlagMSTTrung As Integer, mErrMSTTrung As Variant
         
+    Dim vNgayVB As Variant
+    Dim vErrorNgayVB As Variant
+    Dim iFlagNgayVB As Integer
         
     Dim strFormula As String
     Const colorCell = 16709097
@@ -393,6 +396,8 @@ Dim MST1 As Variant, MST2 As Variant, MST3 As Variant, MST4 As Variant
         .GetText .ColLetterToNumber("E"), 33, mErrTongTNCN
         .GetText .ColLetterToNumber("E"), 34, mErrTongCT36
         .GetText .ColLetterToNumber("E"), 35, merrTongCT37
+        .GetText .ColLetterToNumber("E"), 36, vErrorNgayVB
+        
 
         .Sheet = 1
      
@@ -411,6 +416,37 @@ Dim MST1 As Variant, MST2 As Variant, MST3 As Variant, MST4 As Variant
         Else
             .Col = .ColLetterToNumber("O")
             .Row = .MaxRows - 6
+            .BackColor = mNonErrorColor
+            .CellNote = ""
+        End If
+        
+        ' kiem tra ngay van ban
+        .GetText .ColLetterToNumber("R"), 13, vNgayVB
+        If Trim$(vNgayVB) <> "" Then
+            If DateDiff("D", Date, Format(vNgayVB, "dd/mm/yyyy")) > 0 Then
+                 .Col = .ColLetterToNumber("R")
+                 .Row = 13
+                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                 .CellNote = vErrorNgayVB   'static
+                 .BackColor = mErrorColor
+                 iFlagNgayVB = 1
+                 'capture the first error cell
+                 If iFocusFlag = 0 Then
+                     strFocusSheetName = "'" & .SheetName & "'"
+                     strFocusCol = str(.Col)
+                     strFocusRow = str(.Row)
+                     iFocusFlag = 1
+                 End If
+             Else
+                  .Col = .ColLetterToNumber("R")
+                  .Row = 13
+                  .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                  .CellNote = ""   'static
+                  .BackColor = mNonErrorColor
+            End If
+        Else
+            .Col = .ColLetterToNumber("R")
+            .Row = 13
             .BackColor = mNonErrorColor
             .CellNote = ""
         End If
