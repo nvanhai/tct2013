@@ -4329,8 +4329,6 @@ Private Sub KetXuatXML()
         Exit Sub
     End If
     
-    
-    
     With fpSpread1
         Dim cellid           As String
         Dim cellArray()      As String
@@ -4826,7 +4824,11 @@ Private Sub KetXuatXML()
             xmlTK.getElementsByTagName("PLuc")(0).parentNode.removeChild xmlTK.getElementsByTagName("PLuc")(0)
         End If
     End If
-               
+
+    xmlTK.documentElement.SetAttribute "xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance"
+
+    xmlTK.documentElement.SetAttribute "xmlns", "http://kekhaithue.gdt.gov.vn/TKhaiThue"
+    
     xmlTK.save strFileName
     DisplayMessage "0280", msOKOnly, miInformation
     Exit Sub
