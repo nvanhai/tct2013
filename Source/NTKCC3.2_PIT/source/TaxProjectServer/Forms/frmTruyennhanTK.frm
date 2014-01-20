@@ -449,12 +449,12 @@ End Sub
 
 
 Private Function changeLoaiToKhai(ByVal strLoaiMaToKhai As String) As String
-    If strLoaiMaToKhai = "15" Then changeLoaiToKhai = " = '02A_TNCN11'"
-    If strLoaiMaToKhai = "16" Then changeLoaiToKhai = " = '02B_TNCN11'"
-    If strLoaiMaToKhai = "50" Then changeLoaiToKhai = " ='03A_TNCN11'"
-    If strLoaiMaToKhai = "51" Then changeLoaiToKhai = "  ='03B_TNCN11'"
-    If strLoaiMaToKhai = "36" Then changeLoaiToKhai = " ='07_TNCN11'"
-    If strLoaiMaToKhai = "74" Then changeLoaiToKhai = " ='08_TNCN11'"
+    If strLoaiMaToKhai = "15" Then changeLoaiToKhai = " = '02A_TNCN13'"
+    If strLoaiMaToKhai = "16" Then changeLoaiToKhai = " = '02B_TNCN13'"
+    If strLoaiMaToKhai = "50" Then changeLoaiToKhai = " ='03A_TNCN13'"
+    If strLoaiMaToKhai = "51" Then changeLoaiToKhai = "  ='03B_TNCN13'"
+    If strLoaiMaToKhai = "36" Then changeLoaiToKhai = " ='07_TNCN13'"
+    If strLoaiMaToKhai = "74" Then changeLoaiToKhai = " ='08_TNCN13'"
     If strLoaiMaToKhai = "75" Then changeLoaiToKhai = " ='08A_TNCN11'"
     
     If strLoaiMaToKhai = "0" Then changeLoaiToKhai = " LIKE '%' "
