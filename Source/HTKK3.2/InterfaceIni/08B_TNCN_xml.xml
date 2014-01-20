@@ -31,7 +31,7 @@
 		<ct31>I_50</ct31>
 		<ct32>I_51</ct32>
 	</Static>
-	<Dynamic GroupName="ChiTietSoThueGiamTruGiaCanh">
+	<Dynamic GroupName="ChiTietSoThueGiamTruGiaCanh" MinOccur="1">
 		<chiTietSoThueTungCNhan id="id">
 			<ct34>C_57</ct34>
 			<ct35 TINType="1">G_57</ct35>
