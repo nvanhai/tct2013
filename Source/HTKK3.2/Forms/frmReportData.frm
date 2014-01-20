@@ -1587,11 +1587,17 @@ Private Sub SetupPrinter()
                         ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "05" Then
                              If lCtrl = 1 Then
                                 .Row = GetLastDataRow2(lCtrl)
+                             ElseIf lCtrl = .SheetCount - 1 Then
+                                .Row = GetLastDataRowKHBS(lCtrl)
                             Else
                                 .Row = GetLastDataRow(lCtrl)
                             End If
                         Else
-                            .Row = GetLastDataRow(lCtrl)
+                            If lCtrl = .SheetCount - 1 Then
+                                .Row = GetLastDataRowKHBS(lCtrl)
+                            Else
+                                .Row = GetLastDataRow(lCtrl)
+                            End If
                         End If
                                                     
                         If .Row < arrLngRowPageBreak(intIndex2) Then
@@ -1720,6 +1726,19 @@ Private Function GetLastDataRow(ByVal lngSheet As Long) As Long
     ParserCellID fpsReport, GetAttribute(xmlNode, "CellID2"), lCol, lRow
     
     GetLastDataRow = lRow
+End Function
+
+Private Function GetLastDataRowKHBS(ByVal lngSheet As Long) As Long
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim xmlNodeList As MSXML.IXMLDOMNodeList
+    Dim lCol As Long, lRow As Long
+    
+    Set xmlNodeList = TAX_Utilities_v1.Data(lngSheet - 1).getElementsByTagName("Cell")
+    Set xmlNode = xmlNodeList(xmlNodeList.length - 7)
+    
+    ParserCellID fpsReport, GetAttribute(xmlNode, "CellID2"), lCol, lRow
+    
+    GetLastDataRowKHBS = lRow
 End Function
 
 ' Ham lay gia tri dong de ngat trang
