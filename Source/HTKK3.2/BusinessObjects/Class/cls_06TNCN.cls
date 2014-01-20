@@ -426,6 +426,11 @@ Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
     iFlagvChiTieu13 = 0
     iFlagvChiTieu15 = 0
     
+    ' check chi tieu 31
+    Dim vCt31
+    Dim vErrorCt31
+    Dim iFlagCheckCT31 As Integer
+    
     With fps
         iCurrentSheet = .Sheet
         .Sheet = .SheetCount

@@ -17,7 +17,7 @@ Attribute fps.VB_VarHelpID = -1
 Public Strloaitk As String
 Public StrSolanBosung As String
 Public iflag As Boolean
-Private Const Row_MSTDN = 7
+Private Const Row_MSTDN = 8
 Private Const Col_MSTDN = "I"
 
 Public strTkThangQuy As String

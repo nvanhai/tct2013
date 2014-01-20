@@ -1462,6 +1462,8 @@ Private Sub SetupPrinter()
     Dim arrLngRowPageBreak() As Long, lngTemp As Long
     Dim blnActiveSheet As Boolean
     
+    Dim strIdKHBS As String, strIdKHBS_TT156  As String
+    
     lBarcodeNumber = 0
     lPageNumber = 0
     With fpsReport
@@ -1533,6 +1535,11 @@ Private Sub SetupPrinter()
                 Dim rowBreak As Double
                                 
                 If lCtrl = 1 And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "11" Then
+                    .Row = 67
+                    .RowPageBreak = True
+                ElseIf lCtrl = 1 And isDLT = False And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "12" Then
+                    .Row = 72
+                    .RowPageBreak = True
                 ElseIf lCtrl = 1 And isDLT = True And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
                     .Row = 59
                     .RowPageBreak = True
@@ -1572,15 +1579,25 @@ Private Sub SetupPrinter()
                 Else
                     If .MaxRows - arrLngRowPageBreak(intIndex2) <= 5 Then
                         If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "81" Then
-                            ' To khai 03/NTNN
-                            .Row = 10 + GetLastDataRow(lCtrl)
+                            If lCtrl = .SheetCount - 1 Then
+                                .Row = GetLastDataRowKHBS(lCtrl)
+                            Else
+                                ' To khai 03/NTNN
+                                .Row = 10 + GetLastDataRow(lCtrl)
+                            End If
                         ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Then
                             ' To khai 04/GTGT
-                            .Row = GetLastDataRow1(lCtrl)
+                            If lCtrl = .SheetCount - 1 Then
+                                .Row = GetLastDataRowKHBS(lCtrl)
+                            Else
+                                .Row = GetLastDataRow1(lCtrl)
+                            End If
                         ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "90" Then
                             ' To khai 01/TBVMT
                             If lCtrl = 1 Then
                                 .Row = GetLastDataRow1(lCtrl)
+                            ElseIf lCtrl = .SheetCount - 1 Then
+                                .Row = GetLastDataRowKHBS(lCtrl)
                             Else
                                 .Row = GetLastDataRow(lCtrl)
                             End If
@@ -1594,9 +1611,19 @@ Private Sub SetupPrinter()
                             End If
                         Else
                             If lCtrl = .SheetCount - 1 Then
-                                .Row = GetLastDataRowKHBS(lCtrl)
+                                strIdKHBS_TT156 = "~02~04~71~72~11~12~73~70~81~06~05~86~90~"
+                                strIdKHBS = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
+                                If InStr(1, strIdKHBS_TT156, "~" & Trim$(strIdKHBS) & "~", vbTextCompare) > 0 Then
+                                    .Row = GetLastDataRowKHBS(lCtrl)
+                                Else
+                                    .Row = GetLastDataRow(lCtrl)
+                                End If
                             Else
-                                .Row = GetLastDataRow(lCtrl)
+                                If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" And lCtrl = 4 Then
+                                    .Row = .MaxRows - 10
+                                Else
+                                    .Row = GetLastDataRow(lCtrl)
+                                End If
                             End If
                         End If
                                                     
@@ -1612,6 +1639,10 @@ Private Sub SetupPrinter()
                             .RowPageBreak = True
                         ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" And .MaxRows - arrLngRowPageBreak(intIndex2) <= 8 And lCtrl = 3 Then
                             .Row = GetLastDataRow(lCtrl)
+                            .RowPageBreak = True
+                        ElseIf lCtrl = .SheetCount - 1 Then
+                            .Row = GetLastDataRowKHBS(lCtrl)
+                            .Row = .Row - 3
                             .RowPageBreak = True
                         Else
                             .Row = arrLngRowPageBreak(intIndex2)

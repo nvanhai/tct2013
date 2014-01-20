@@ -872,10 +872,10 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
             If Col = .ColLetterToNumber("C") And Row = 28 Then 'Khi chon Combo
                 
                 'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
-                intIndexCuc = .TypeComboBoxCurSel
+                intIndexCuc = .typeComboboxCurSel
                 .Col = .ColLetterToNumber("Q")
                 .Row = 28
-                .TypeComboBoxCurSel = intIndexCuc
+                .typeComboboxCurSel = intIndexCuc
                 'Nhap lai Combo cot Q
                 .Col = .ColLetterToNumber("Q")
                 UpdateCell fps, .Col, .Row, .Text
@@ -913,10 +913,14 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
                     .Row = 30
                     .Col = .ColLetterToNumber("C")
                     .TypeComboBoxList = tenChiCucThue
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
                     
                     .Row = 30
                     .Col = .ColLetterToNumber("Q")
                     .TypeComboBoxList = maChiCucThue
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
                    
                 End If
             End If
@@ -924,10 +928,10 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
             ' Neu chon combo thuoc chi cuc thi hien thi va cap nhat ma chi cuc
             If Col = .ColLetterToNumber("C") And Row = 30 Then 'Khi chon Combo
                 'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
-                intIndexChiCuc = .TypeComboBoxCurSel
+                intIndexChiCuc = .typeComboboxCurSel
                 .Col = .ColLetterToNumber("Q")
                 .Row = 30
-                .TypeComboBoxCurSel = intIndexChiCuc
+                .typeComboboxCurSel = intIndexChiCuc
                 'Nhap lai Combo cot Q
                 .Col = .ColLetterToNumber("Q")
                 UpdateCell fps, .Col, .Row, .Text
