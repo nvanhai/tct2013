@@ -1,14 +1,17 @@
 <PL09C-TNCN>
 	<ThongTinPLuc>
-		<kemTKChinhNam></kemTKChinhNam>
+		<kemTKChinhNam/>
 	</ThongTinPLuc>
 	<BangDSachNPTCoMST>
+		<ct03>String</ct03>
+		<ct04>0000000000</ct04>
+		<ct05>String</ct05>
 		<chiTietNguoiPhuThuocCoMST>
-			<ct09></ct09>
-			<ct10></ct10>
-			<ct11></ct11>
-			<ct12></ct12>
-			<ct13></ct13>
+			<ct09/>
+			<ct10/>
+			<ct11/>
+			<ct12/>
+			<ct13/>
 			<ct14>0</ct14>
 			<ct15>1</ct15>
 		</chiTietNguoiPhuThuocCoMST>
