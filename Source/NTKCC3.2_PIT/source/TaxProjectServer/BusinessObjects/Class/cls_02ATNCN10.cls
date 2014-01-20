@@ -626,7 +626,7 @@ Public Function InsertDTL() As String
 
                 
                     arr = Split(GetMaCqt, "~")
-                    hdr.matkhai = "'02A_TNCN11'"
+                    hdr.matkhai = "'02A_TNCN13'"
                     hdr.madtnt = madtnt
                     hdr.kylbo = kylbo
                     hdr.kykkhai = kykkhai
@@ -1331,7 +1331,7 @@ Public Function InsertHDR() As String
         hdr.DIA_CHI = arr(2)
         hdr.ghi_chu_loi = "''"
         hdr.khoa_so = "''"
-        hdr.loai_tkhai = "'02A_TNCN11'"
+        hdr.loai_tkhai = "'02A_TNCN13'"
         hdr.kieu_ky = "M"
 
         If tthtk = "'1'" Then
@@ -1543,7 +1543,7 @@ Public Function TKTT() As Boolean
 
     If TAX_Utilities_Svr_New.isCheckPIT = True Then
         ' Truong hop PIT
-        sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='02A_TNCN11'"
+        sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='02A_TNCN13'"
         Set rs = clsDAO.Execute(sSQL)
 
         If Not rs Is Nothing Then
@@ -1629,7 +1629,7 @@ Public Function isToKhaiChinhThuc() As Boolean
 
     If TAX_Utilities_Svr_New.isCheckPIT = True Then
         ' Truong hop PIT
-        sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='02A_TNCN11'"
+        sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='02A_TNCN13'"
         Set rs = clsDAO.Execute(sSQL)
 
         If rs Is Nothing Then
@@ -1997,7 +1997,7 @@ Dim kykk_tu_ngay As Variant
             End If
              sSQL = "SELECT max(so_tt_tk) as LAN_QUET FROM TMP_TNCN_HDR" & _
                     " WHERE TIN = " & "'" & strMST & "'" & _
-                    " And loai_tkhai = '02A_TNCN11' " & _
+                    " And loai_tkhai = '02A_TNCN13' " & _
                     " And kykk_tu_ng = " & kykk_tu_ngay & _
                     " And kykk_den_n =" & kykk_den_ngay
                 Set rs = clsDAO.Execute(sSQL)

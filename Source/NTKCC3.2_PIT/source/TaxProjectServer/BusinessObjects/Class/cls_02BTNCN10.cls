@@ -641,7 +641,7 @@ Public Function InsertDTL() As String
             sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DANHAN
             
             arr = Split(GetMaCqt, "~")
-            hdr.matkhai = "'02B_TNCN11'"
+            hdr.matkhai = "'02B_TNCN13'"
             hdr.madtnt = madtnt
             hdr.kylbo = kylbo
             hdr.kykkhai = kykkhai
@@ -1441,7 +1441,7 @@ Public Function InsertHDR() As String
         hdr.DIA_CHI = arr(2)
         hdr.ghi_chu_loi = "''"
         hdr.khoa_so = "''"
-        hdr.loai_tkhai = "'02B_TNCN11'"
+        hdr.loai_tkhai = "'02B_TNCN13'"
         hdr.kieu_ky = "Q"
 
         If tthtk = "1" Then
@@ -1656,7 +1656,7 @@ Public Function TKTT() As Boolean
    
     'Truong hop pit
     If TAX_Utilities_Svr_New.isCheckPIT = True Then
-        sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'" & "  AND Loai_tkhai='02B_TNCN11'"
+        sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'" & "  AND Loai_tkhai='02B_TNCN13'"
         Set rs = clsDAO.Execute(sSQL)
         If Not rs Is Nothing Then
              dNgayNopDB = rs.Fields("Ngay_nop")
@@ -1727,7 +1727,7 @@ Public Function isToKhaiChinhThuc() As Boolean
 
         ' Truong hop Pit
     If TAX_Utilities_Svr_New.isCheckPIT = True Then
-        sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='02B_TNCN11'"
+        sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='02B_TNCN13'"
         Set rs = clsDAO.Execute(sSQL)
         If rs Is Nothing Then
             isToKhaiChinhThuc = False
@@ -2064,7 +2064,7 @@ Public Function TinhSoLanQuet() As Integer
             End If
              sSQL = "SELECT max(so_tt_tk) as LAN_QUET FROM TMP_TNCN_HDR" & _
                     " WHERE TIN = " & "'" & strMST & "'" & _
-                    " And loai_tkhai = '02B_TNCN11' " & _
+                    " And loai_tkhai = '02B_TNCN13' " & _
                     " And kykk_tu_ng = " & kykk_tu_ngay & _
                     " And kykk_den_n =" & kykk_den_ngay
                 Set rs = clsDAO.Execute(sSQL)

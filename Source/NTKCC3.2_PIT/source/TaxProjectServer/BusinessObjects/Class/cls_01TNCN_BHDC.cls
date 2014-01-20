@@ -555,7 +555,7 @@ Public Function InsertDTL() As String
         
     With fps
         .Sheet = 1
-        matkhai = "'01_TNCN_BHDC'"
+        matkhai = "'01_TNCN_BHDC13'"
         'get MADTNT
         .GetText .ColLetterToNumber("F"), 10, madtnt
     
@@ -597,9 +597,9 @@ Public Function InsertDTL() As String
                 kykkhai = "'" & vTuThang & "'"
             End If
                         
-            cttnArr() = Array("21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35")
-            kyhieuArr() = Array("21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35")
-            cellArr() = Array(41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55)
+            cttnArr() = Array("21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31")
+            kyhieuArr() = Array("21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31")
+            cellArr() = Array(42, 43, 44, 46, 47, 49, 50, 52, 53, 54, 55)
             
             For i = 0 To UBound(cttnArr)
             
@@ -612,7 +612,7 @@ Public Function InsertDTL() As String
                 sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DA_NHAN
             
                 arr = Split(GetMaCqt, "~")
-                hdr.matkhai = "'01_TNCN_BHDC'"
+                hdr.matkhai = "'01_TNCN_BHDC13'"
                 hdr.madtnt = madtnt
                 hdr.kylbo = kylbo
                 hdr.kykkhai = kykkhai
@@ -775,7 +775,7 @@ Public Function InsertHDR() As String
             tthtk = "'" & 2 & "'"
         End If
 
-        matkhai = "'01_TNCN_BHDC'"
+        matkhai = "'01_TNCN_BHDC13'"
         
         LoaiTien = "''"
         DANHAN = "'T'"   ' To khai khong chuyen sang VAT
@@ -822,7 +822,7 @@ Public Function InsertHDR() As String
         hdr.DIA_CHI = arr(2)
         hdr.ghi_chu_loi = "''"
         hdr.khoa_so = "''"
-        hdr.loai_tkhai = "'01_TNCN_BHDC'"
+        hdr.loai_tkhai = "'01_TNCN_BHDC13'"
 
         If LANDAU = 1 Then
             If Val(LAN_QUET) > 0 Then
@@ -961,10 +961,10 @@ Public Function TKTT() As Boolean
         fps.GetText fps.ColLetterToNumber("L"), 66, LoaiKyKK
 
         If LoaiKyKK = "1" Then
-            sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & Right$(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC' AND Loai_KyKK='Q'"
+            sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & Right$(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC13' AND Loai_KyKK='Q'"
           
         Else
-            sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC' AND Loai_KyKK='T'"
+            sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC13' AND Loai_KyKK='T'"
        
         End If
 
@@ -1053,10 +1053,10 @@ Public Function TinhSoLanQuet() As Integer
             End If
 
             If LoaiKyKK = "1" Then
-                sSQL = "SELECT max(so_tt_tk) as LAN_QUET FROM TMP_TNCN_HDR" & " WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & Right$(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC' AND Loai_KyKK='Q'"
+                sSQL = "SELECT max(so_tt_tk) as LAN_QUET FROM TMP_TNCN_HDR" & " WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & Right$(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC13' AND Loai_KyKK='Q'"
           
             Else
-                sSQL = "SELECT max(so_tt_tk) as LAN_QUET FROM TMP_TNCN_HDR" & " WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC' AND Loai_KyKK='T'"
+                sSQL = "SELECT max(so_tt_tk) as LAN_QUET FROM TMP_TNCN_HDR" & " WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC13' AND Loai_KyKK='T'"
        
             End If
 
@@ -1135,10 +1135,10 @@ Public Function isToKhaiChinhThuc() As Boolean
         fps.GetText fps.ColLetterToNumber("L"), 66, LoaiKyKK
 
         If LoaiKyKK = "1" Then
-            sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & Right$(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC' AND Loai_KyKK='Q'"
+            sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & Right$(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC13' AND Loai_KyKK='Q'"
           
         Else
-            sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC' AND Loai_KyKK='T'"
+            sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_BHDC13' AND Loai_KyKK='T'"
        
         End If
 

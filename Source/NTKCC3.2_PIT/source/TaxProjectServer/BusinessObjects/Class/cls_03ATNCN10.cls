@@ -618,9 +618,12 @@ Public Function InsertDTL() As String
         Dim cellArr()   As Variant 'mang gia tri cua cac Cell chi tieu
         Dim kyhieuArr() As Variant ' mang ky hieu theo chi tieu
     
-        cttnArr() = Array("I", "II", "III", "IV", "V", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40")
-        kyhieuArr() = Array("I", "II", "III", "IV", "V", "2", "3", "5", "6", "8", "9", "11", "12", "14", "15", "16", "17")
-        cellArr() = Array(0, 0, 0, 0, 0, 42, 43, 45, 46, 48, 49, 52, 53, 55, 56, 58, 59)
+        Dim colArr()    As Variant 'mang chua cot chi tieu
+        
+        cttnArr() = Array("I", "II", "III", "IV", "V", "12", "13", "14", "15", "16", "17", "18", "19", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40")
+        kyhieuArr() = Array("I", "II", "III", "IV", "V", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20")
+        cellArr() = Array(0, 0, 0, 0, 0, 30, 32, 34, 36, 36, 38, 38, 38, 42, 43, 45, 46, 48, 49, 52, 53, 55, 56, 58, 59)
+        colArr() = Array("J", "J", "F", "F", "S", "F", "K", "S")
 
         '------------------------------------------------------------------
         If TAX_Utilities_Svr_New.isCheckPIT = True Then
@@ -634,7 +637,13 @@ Public Function InsertDTL() As String
                 giatri2 = "0"
                 CTTN = "'" & cttnArr(i) & "'"
             Else
-                .GetText .ColLetterToNumber("S"), cellArr(i), giatri
+
+                If i < 8 Then
+                    .GetText .ColLetterToNumber(colArr(i)), cellArr(i), giatri
+                Else
+                    .GetText .ColLetterToNumber("S"), cellArr(i), giatri
+                End If
+
                 giatri2 = giatri
                 CTTN = "'0" & cttnArr(i) & "'"
             End If
@@ -643,7 +652,7 @@ Public Function InsertDTL() As String
             sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DANHAN
             
             arr = Split(GetMaCqt, "~")
-            hdr.matkhai = "'03A_TNCN11'"
+            hdr.matkhai = "'03A_TNCN13'"
             hdr.madtnt = madtnt
             hdr.kylbo = kylbo
             hdr.kykkhai = kykkhai
@@ -1504,7 +1513,7 @@ Public Function InsertHDR() As String
             hdr.DIA_CHI = arr(2)
             hdr.ghi_chu_loi = "''"
             hdr.khoa_so = "''"
-            hdr.loai_tkhai = "'03A_TNCN11'"
+            hdr.loai_tkhai = "'03A_TNCN13'"
             hdr.kieu_ky = "M"
 
             If tthtk = "1" Then
@@ -1742,7 +1751,7 @@ Public Function TKTT() As Boolean
     End If
    
     If TAX_Utilities_Svr_New.isCheckPIT = True Then
-        sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='03A_TNCN11'"
+        sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='03A_TNCN13'"
         Set rs = clsDAO.Execute(sSQL)
         If Not rs Is Nothing Then
             dNgayNopDB = rs.Fields("Ngay_nop")
@@ -1829,7 +1838,7 @@ Public Function isToKhaiChinhThuc() As Boolean
    
     ' Truong hop Pit
     If TAX_Utilities_Svr_New.isCheckPIT = True Then
-        sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='03A_TNCN11'"
+        sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'" & " AND Lan_bs = 0 AND Loai_tkhai='03A_TNCN13'"
         Set rs = clsDAO.Execute(sSQL)
 
         If rs Is Nothing Then
@@ -2195,7 +2204,7 @@ Public Function TinhSoLanQuet() As Integer
             End If
              sSQL = "SELECT max(so_tt_tk) as LAN_QUET FROM TMP_TNCN_HDR" & _
                     " WHERE TIN = " & "'" & strMST & "'" & _
-                    " And loai_tkhai = '03A_TNCN11' " & _
+                    " And loai_tkhai = '03A_TNCN13' " & _
                     " And kykk_tu_ng = " & kykk_tu_ngay & _
                     " And kykk_den_n =" & kykk_den_ngay
                 Set rs = clsDAO.Execute(sSQL)
