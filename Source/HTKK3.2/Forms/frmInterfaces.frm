@@ -4593,7 +4593,6 @@ Private Sub KetXuatXML()
                             End If
 
                             Blank = True
-                            firstchild = GetAttribute(xmlSection, "FirstChild")
 
                             Do
                                 Blank = True
