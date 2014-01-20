@@ -85,12 +85,17 @@ Public Sub Prepare1()
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
         
-        .Sheet = .SheetCount - 1
-        .Row = 23
-        .Col = .ColLetterToNumber("BG")
-        .Text = Format(Date, "dd/mm/yyyy")
-         SetDateFormat fps, .Sheet, 23, .ColLetterToNumber("BG"), DDMMYYYY
-         .TypeHAlign = TypeHAlignLeft
+'        .Sheet = .SheetCount - 1
+'        .Row = 23
+'        .Col = .ColLetterToNumber("BG")
+'        .Text = Format(Date, "dd/mm/yyyy")
+'         SetDateFormat fps, .Sheet, 23, .ColLetterToNumber("BG"), DDMMYYYY
+'         .TypeHAlign = TypeHAlignLeft
+        SetDateFormat fps, 2, 46, .ColLetterToNumber("BG"), DDMMYYYY
+        SetDateFormat fps, 2, 31, .ColLetterToNumber("BE"), DDMMYYYY
+         
+         
+         setCQTQuanLyHoanThue fps
     End With
 
 End Sub
@@ -233,13 +238,13 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
     With fps
         .Sheet = 1
             .Col = .ColLetterToNumber("C")
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber("CR")
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             .GetText .ColLetterToNumber("CR"), Row, strId
             
             .Col = .ColLetterToNumber("CQ")
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             .GetText .ColLetterToNumber("CQ"), Row, strMa
             
             .Col = .ColLetterToNumber("BU")
@@ -263,7 +268,7 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
             ' Luu ma cua nganh nghe kinh doanh
             .Col = .ColLetterToNumber("CQ")
             .Row = Row
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             UpdateCell fps, .Col, Row, .Text
             
             ' Set CT khi thay doi cot 6,7,8
