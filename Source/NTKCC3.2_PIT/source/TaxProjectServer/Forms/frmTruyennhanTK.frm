@@ -456,7 +456,8 @@ Private Function changeLoaiToKhai(ByVal strLoaiMaToKhai As String) As String
     If strLoaiMaToKhai = "36" Then changeLoaiToKhai = " ='07_TNCN13'"
     If strLoaiMaToKhai = "74" Then changeLoaiToKhai = " ='08_TNCN13'"
     If strLoaiMaToKhai = "75" Then changeLoaiToKhai = " ='08A_TNCN11'"
-    
+    If strLoaiMaToKhai = "23" Then changeLoaiToKhai = " ='01_TNCN_TTS'"
+    If strLoaiMaToKhai = "25" Then changeLoaiToKhai = " ='01_TNCN_BHDC13'"
     If strLoaiMaToKhai = "0" Then changeLoaiToKhai = " LIKE '%' "
     If Trim(txtMST.Text) <> vbNullString Then
         changeLoaiToKhai = changeLoaiToKhai & ") And (TIN like '%" & UCase(Trim(txtMST.Text)) & "%'"
@@ -727,7 +728,7 @@ Private Sub cmdNhanTkhai_Click()
                             bln = clsConn.ExecuteDLL(strSQLInsMupHDR)
                             ' Ghi du lieu vao bang mup_exc
                             'dntai 06/02/2012 vi to 08A_TNCN luu vao bang # nen phai sua lai cau truy van
-                            If Trim(strLoaiTK) = "08A_TNCN11" Then
+                            If Trim(strLoaiTK) = "08A_TNCN11" Or Trim(strLoaiTK) = "01_TNCN_TTS" Then
                                 strSQLDtlTemp = GetAttribute(xmlSQL.childNodes(1), "SqlDLGuiCucDtl_pl")
                             Else
                                 strSQLDtlTemp = GetAttribute(xmlSQL.childNodes(1), "SqlDLGuiCucDtl")
@@ -742,7 +743,7 @@ Private Sub cmdNhanTkhai_Click()
                                     strGiaTri = rsDTl.Fields(0).Value
                                     strKyHieu = rsDTl.Fields(1).Value
                                     'lay rowID trong to 08A_TNCN
-                                    If Trim(strLoaiTK) = "08A_TNCN11" Then
+                                    If Trim(strLoaiTK) = "08A_TNCN11" Or Trim(strLoaiTK) = "01_TNCN_TTS" Then
                                         rowID = rsDTl.Fields(2).Value
                                         rowID = "'" & Trim(rowID) & "'"
                                     Else
