@@ -1380,28 +1380,47 @@ Private Sub chkTKLanPS_Click()
         varMenuId = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
         If varMenuId = "70" Or varMenuId = "06" Or varMenuId = "72" Or varMenuId = "73" Or varMenuId = "81" Or varMenuId = "90" Then
         'If varMenuId = "73" Or varMenuId = "81" Then
-            frmKy.Height = 1065
-            Frame2.Top = 1400
+             frmKy.Height = 1600
             
             Set OptChinhthuc.Container = frmKy
-            OptChinhthuc.Top = 8000
+            OptChinhthuc.Top = 900
             OptChinhthuc.Left = 960
             
             Set OptBosung.Container = frmKy
-            OptBosung.Top = 8600
+            OptBosung.Top = 1200
             OptBosung.Left = 960
             
             Set lblSolan.Container = frmKy
-            lblSolan.Top = 9200
+            lblSolan.Top = 1200
             lblSolan.Left = 3000
             Set txtSolan.Container = frmKy
-            txtSolan.Top = 9400
+            txtSolan.Top = 1200
             txtSolan.Left = 3400
             
-            OptChinhthuc.Visible = False
-            OptBosung.Visible = False
             lblSolan.Visible = False
             txtSolan.Visible = False
+'            frmKy.Height = 1065
+'            Frame2.Top = 1400
+'
+'            Set OptChinhthuc.Container = frmKy
+'            OptChinhthuc.Top = 8000
+'            OptChinhthuc.Left = 960
+'
+'            Set OptBosung.Container = frmKy
+'            OptBosung.Top = 8600
+'            OptBosung.Left = 960
+'
+'            Set lblSolan.Container = frmKy
+'            lblSolan.Top = 9200
+'            lblSolan.Left = 3000
+'            Set txtSolan.Container = frmKy
+'            txtSolan.Top = 9400
+'            txtSolan.Left = 3400
+            
+'            OptChinhthuc.Visible = False
+'            OptBosung.Visible = False
+'            lblSolan.Visible = False
+'            txtSolan.Visible = False
             ' To khai TNDN an quy va hien thi thang
             If varMenuId = "73" Then
                 txtMonth.Visible = True
@@ -2716,6 +2735,10 @@ Public Sub cmdOK_Click()
                 ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
                     strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                 End If
+            ElseIf idToKhai = "73" Then
+                If strLoaiTKThang_PS = "TK_LANPS" Then
+                    strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                End If
             ElseIf idToKhai = "01" Or idToKhai = "02" Or idToKhai = "04" Or idToKhai = "95" Or idToKhai = "88" Or idToKhai = "71" Then
                 If strQuy = "TK_THANG" Then
                     strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
@@ -2790,9 +2813,12 @@ Public Sub cmdOK_Click()
         arrDate = Split(strDateKHBS, "/")
         ngayBs = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
         
-        If DateDiff("D", hn, ngayBs) < 0 Then
-            DisplayMessage "0271", msOKOnly, miInformation
-            Exit Sub
+        If strLoaiTKThang_PS = "TK_LANPS" Then
+        Else
+            If DateDiff("D", hn, ngayBs) < 0 Then
+                DisplayMessage "0271", msOKOnly, miInformation
+                Exit Sub
+            End If
         End If
         
         ngayLapTkBs = strDateKHBS
@@ -5729,7 +5755,7 @@ On Error GoTo ErrHandle
                             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" _
                             & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                         Else
-                            If xmlNode Is TAX_Utilities_v1.NodeValidity.firstchild Then
+                            If xmlNode Is TAX_Utilities_v1.NodeValidity.firstChild Then
                                 For Each fle In fso.GetFolder(TAX_Utilities_v1.DataFolder).Files
                                     lLoc = InStr(1, fle.Name, GetAttribute(xmlNode, "DataFile") & "_" & txtYear.Text & "_")
                                     If lLoc <> 0 Then
@@ -5773,7 +5799,7 @@ On Error GoTo ErrHandle
                 
                 ' Check the exist of data file -> Set value to Checkbox
                 
-                If xmlNode Is TAX_Utilities_v1.NodeValidity.firstchild Then
+                If xmlNode Is TAX_Utilities_v1.NodeValidity.firstChild Then
                     If fso.FileExists(strDataFileName) Or blnExceptData Then
                     Else
                         'To khai ko ton tai
