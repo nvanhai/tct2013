@@ -3116,6 +3116,19 @@ Public Sub cmdOK_Click()
         ngayBs = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
         
         If strLoaiTKThang_PS = "TK_LANPS" Then
+            Dim hnps As Date
+            hnps = DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), CInt(TAX_Utilities_v1.Day)))
+            If DateDiff("D", hnps, ngayBs) <= 0 Then
+                DisplayMessage "0271", msOKOnly, miInformation
+                Exit Sub
+            End If
+        ElseIf strQuy = "TK_LANPS" And idToKhai = "71" Then
+            Dim hnps As Date
+            hnps = DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), CInt(TAX_Utilities_v1.Day)))
+            If DateDiff("D", hnps, ngayBs) <= 0 Then
+                DisplayMessage "0271", msOKOnly, miInformation
+                Exit Sub
+            End If
         Else
             If DateDiff("D", hn, ngayBs) < 0 Then
                 DisplayMessage "0271", msOKOnly, miInformation
@@ -4852,7 +4865,7 @@ Private Sub OptBosung_Click()
     End If
     
     varMenuId = GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID")
-    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11") Or varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "06" Or varMenuId = "05" Or varMenuId = "70" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "73" _
+    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11") Or ((TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_15")) Or varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "06" Or varMenuId = "05" Or varMenuId = "70" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "73" _
     Or varMenuId = "03" Or varMenuId = "77" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "86" Or varMenuId = "90" Or varMenuId = "87" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "96" Or varMenuId = "97" Or varMenuId = "98" Or varMenuId = "99" Then
         For i = 1 To 50
             ' Doi voi to khai thang neu la truong hop bo sung thi quet tat ca cac file xem lan bo sung lon nhat la bao nhieu
@@ -5226,7 +5239,7 @@ Private Sub OptChinhthuc_Click()
     Dim varMenuId As String
     varMenuId = GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID")
     ' Doi voi truong hop to khai thang/quy thi van phai giu lai ghi bo sung nhu thong nhat tu phien ban 2.1.0
-    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11") Or varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "06" Or varMenuId = "05" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "73" _
+    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_15") Or varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "06" Or varMenuId = "05" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "73" _
     Or varMenuId = "03" Or varMenuId = "77" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "96" Or varMenuId = "97" Or varMenuId = "98" Or varMenuId = "99" Then
         If OptBosung.value = True Then
             lblSolan.Visible = False
@@ -7442,6 +7455,13 @@ End Sub
 Private Sub SetupLayout01TTS()
     On Error GoTo ErrorHandle
     
+     Dim m, Y, d As Integer
+    Dim dTem, dtem1 As Date
+    Dim q As Quy
+    
+    m = month(Date)
+    Y = Year(Date)
+    
     Me.Height = 3285
     Me.Width = 4905
     
@@ -7452,6 +7472,18 @@ Private Sub SetupLayout01TTS()
     chkTKQuy.value = 1
     chkTuThangDenThang.value = 0
     
+     ' Set gia tri mac dinh cho Quy
+    q = GetQuyHienTai(iNgayTaiChinh, iThangTaiChinh)
+
+    If q.q = 1 Then
+        q.q = 4
+        q.Y = q.Y - 1
+    Else
+        q.q = q.q - 1
+    End If
+
+    cmbQuy.ListIndex = q.q - 1
+    txtYear.Text = q.Y
     
     Set chkTuThangDenThang.Container = frmKy
     chkTuThangDenThang.Top = 200
