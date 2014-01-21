@@ -193,10 +193,30 @@ Public Sub Prepare2()
             .Row = 37
             .Text = "0"
             UpdateCell fps, .Col, .Row, .Text
+            
+            .Col = .ColLetterToNumber("L")
+            .Row = 37
+            .Text = ""
+            UpdateCell fps, .Col, .Row, .Text
         ElseIf strTkThangQuy = "TK_QUY" Then
             .Col = .ColLetterToNumber("K")
             .Row = 37
             .Text = "1"
+            UpdateCell fps, .Col, .Row, .Text
+            
+            .Col = .ColLetterToNumber("L")
+            .Row = 37
+            .Text = ""
+            UpdateCell fps, .Col, .Row, .Text
+        ElseIf strTkThangQuy = "TK_LANPS" Then
+            .Col = .ColLetterToNumber("K")
+            .Row = 37
+            .Text = "2"
+            UpdateCell fps, .Col, .Row, .Text
+            
+            .Col = .ColLetterToNumber("L")
+            .Row = 37
+            .Text = TAX_Utilities_v1.Day & "/" & TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year
             UpdateCell fps, .Col, .Row, .Text
         End If
             'end
