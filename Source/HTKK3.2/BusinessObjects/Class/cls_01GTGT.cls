@@ -5284,7 +5284,7 @@ Public Sub inThongTinDL()
     tuRowDL = 22
     denRowDL = 32
     'TuRow_DenRow_sheet
-    strTuRowDenRowPL = "9_11_2~9_11_3~11_13_4~10_12_5~10_12_6~10_11_7~9_11_8~9_11_9"
+    strTuRowDenRowPL = "9_11_2~9_11_3~9_11_4~10_12_5~10_12_6~10_11_7~9_11_8~11_13_9"
     ' end
 End Sub
 
