@@ -134,7 +134,7 @@ Begin VB.Form frmPeriod
       Left            =   360
       TabIndex        =   31
       Top             =   10320
-      Width           =   1455
+      Width           =   1215
    End
    Begin VB.CheckBox chkTKLanPS 
       Caption         =   "TÍ khai l«n ph∏t sinh"
@@ -151,7 +151,7 @@ Begin VB.Form frmPeriod
       Left            =   3240
       TabIndex        =   30
       Top             =   9720
-      Width           =   2895
+      Width           =   1815
    End
    Begin VB.CheckBox chkTkhaiThang 
       Caption         =   "TÍ khai th∏ng"
@@ -168,7 +168,7 @@ Begin VB.Form frmPeriod
       Left            =   360
       TabIndex        =   29
       Top             =   9720
-      Width           =   1455
+      Width           =   1335
    End
    Begin VB.OptionButton OptTKLanPS 
       Caption         =   "TÍ khai l«n ph∏t sinh"
@@ -185,7 +185,7 @@ Begin VB.Form frmPeriod
       Left            =   3240
       TabIndex        =   27
       Top             =   9120
-      Width           =   2895
+      Width           =   1815
    End
    Begin VB.OptionButton OptTKThang 
       Caption         =   "TÍ khai th∏ng"
@@ -933,147 +933,202 @@ Private Sub chkTkhaiThang_Click()
         
     
         If chkTkhaiThang.value = 1 Then
-            strQuy = "TK_THANG"
-            chkTKQuy.value = 0
-            OptChinhthuc.value = True
-            
-            Set lblMonth.Container = frmKy
-            lblMonth.Top = 570
-            lblMonth.Left = 960
-            
-            Set txtMonth.Container = frmKy
-            txtMonth.Top = 540
-            txtMonth.Left = 1530
-            
-            Set lblYear.Container = frmKy
-            lblYear.Top = 570
-            lblYear.Left = 2310
-            
-            Set txtYear.Container = frmKy
-            txtYear.Top = 540
-            txtYear.Left = 2730
-            
-            Set OptChinhthuc.Container = frmKy
-            OptChinhthuc.Top = 900
-            OptChinhthuc.Left = 960
-            
-            Set OptBosung.Container = frmKy
-            OptBosung.Top = 1200
-            OptBosung.Left = 960
-            
-            Set lblSolan.Container = frmKy
-            lblSolan.Top = 1200
-            lblSolan.Left = 3000
-            Set txtSolan.Container = frmKy
-            txtSolan.Top = 1200
-            txtSolan.Left = 3400
-            
-            lblSolan.Visible = False
-            txtSolan.Visible = False
-            fpsNgaykhaiBS.Visible = False
-            
-            ' to khai 01/GTGT co them danh muc nganh nghe kinh doanh
-            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
-                frmKy.Height = 2400
-                Frame2.Top = 2700
-                Set lblNganhKD.Container = frmKy
-                lblNganhKD.Top = 1600
-                lblNganhKD.Left = 120
+            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Then
+                 strQuy = "TK_THANG"
+                chkTKQuy.value = 0
+                chkTKLanPS.value = 0
                 
+                OptChinhthuc.value = True
                 
-                Set cboNganhKD.Container = frmKy
-                cboNganhKD.Top = 1900
-                cboNganhKD.Left = 120
-                ' set gia tri nganh nghe kinh doanh cho combo
-                SetValueToList GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
-            End If
-
-            SetControlCaption Me, "frmPeriod"
-   
-            cmbQuy.Visible = False
-            lblQuy.Visible = False
-            lblMonth.Visible = True
-            txtMonth.Visible = True
-            txtNgayDau.Visible = False
-            txtNgayCuoi.Visible = False
-            
-        Else
-            strQuy = "TK_QUY"
-            chkTKQuy.value = 1
-            OptChinhthuc.value = True
-            Set lblQuy.Container = frmKy
-            lblQuy.Top = 570
-            lblQuy.Left = 960
-            
-            ' Set gia tri mac dinh cho Quy
-            q = GetQuyHienTai(iNgayTaiChinh, iThangTaiChinh)
-            If q.q = 1 Then
-                q.q = 4
-                q.Y = q.Y - 1
+                Set lblMonth.Container = frmKy
+                lblMonth.Top = 570
+                lblMonth.Left = 1360
+                
+                Set txtMonth.Container = frmKy
+                txtMonth.Top = 540
+                txtMonth.Left = 1930
+                
+                Set lblYear.Container = frmKy
+                lblYear.Top = 570
+                lblYear.Left = 2710
+                
+                Set txtYear.Container = frmKy
+                txtYear.Top = 540
+                txtYear.Left = 3130
+                
+                Set OptChinhthuc.Container = frmKy
+                OptChinhthuc.Top = 900
+                OptChinhthuc.Left = 960
+                
+                Set OptBosung.Container = frmKy
+                OptBosung.Top = 1200
+                OptBosung.Left = 960
+                
+                Set lblSolan.Container = frmKy
+                lblSolan.Top = 1200
+                lblSolan.Left = 3000
+                Set txtSolan.Container = frmKy
+                txtSolan.Top = 1200
+                txtSolan.Left = 3400
+                
+                lblSolan.Visible = False
+                txtSolan.Visible = False
+                fpsNgaykhaiBS.Visible = False
+                
+                SetControlCaption Me, "frmPeriod"
+       
+                cmbQuy.Visible = False
+                lblQuy.Visible = False
+                lblMonth.Visible = True
+                txtMonth.Visible = True
+                txtNgayDau.Visible = False
+                txtNgayCuoi.Visible = False
             Else
-                q.q = q.q - 1
-            End If
-            cmbQuy.ListIndex = q.q - 1
-            txtYear.Text = q.Y
-            
-            Set cmbQuy.Container = frmKy
-            cmbQuy.Top = 540
-            cmbQuy.Left = 1530
-            
-            Set lblYear.Container = frmKy
-            lblYear.Top = 570
-            lblYear.Left = 2310
-            
-            Set txtYear.Container = frmKy
-            txtYear.Top = 540
-            txtYear.Left = 2730
-            
-            Set OptChinhthuc.Container = frmKy
-            OptChinhthuc.Top = 900
-            OptChinhthuc.Left = 960
-            
-            Set OptBosung.Container = frmKy
-            OptBosung.Top = 1200
-            OptBosung.Left = 960
-            
-            Set lblSolan.Container = frmKy
-            lblSolan.Top = 1200
-            lblSolan.Left = 3000
-            Set txtSolan.Container = frmKy
-            txtSolan.Top = 1200
-            txtSolan.Left = 3400
-            
-            lblSolan.Visible = False
-            txtSolan.Visible = False
-            fpsNgaykhaiBS.Visible = False
-            
-            ' to khai 01/GTGT co them danh muc nganh nghe kinh doanh
-            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
-                frmKy.Height = 2400
-                Frame2.Top = 2700
-                Set lblNganhKD.Container = frmKy
-                lblNganhKD.Top = 1600
-                lblNganhKD.Left = 120
+                strQuy = "TK_THANG"
+                chkTKQuy.value = 0
+                OptChinhthuc.value = True
                 
+                Set lblMonth.Container = frmKy
+                lblMonth.Top = 570
+                lblMonth.Left = 960
                 
-                Set cboNganhKD.Container = frmKy
-                cboNganhKD.Top = 1900
-                cboNganhKD.Left = 120
-                ' set gia tri nganh nghe kinh doanh cho combo
-                SetValueToList GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
-            End If
-
-            SetControlCaption Me, "frmPeriod"
-   
-            cmbQuy.Visible = True
-            lblQuy.Visible = True
-            
-            lblMonth.Visible = False
-            txtMonth.Visible = False
-            
-            txtNgayDau.Visible = False
-            txtNgayCuoi.Visible = False
+                Set txtMonth.Container = frmKy
+                txtMonth.Top = 540
+                txtMonth.Left = 1530
+                
+                Set lblYear.Container = frmKy
+                lblYear.Top = 570
+                lblYear.Left = 2310
+                
+                Set txtYear.Container = frmKy
+                txtYear.Top = 540
+                txtYear.Left = 2730
+                
+                Set OptChinhthuc.Container = frmKy
+                OptChinhthuc.Top = 900
+                OptChinhthuc.Left = 960
+                
+                Set OptBosung.Container = frmKy
+                OptBosung.Top = 1200
+                OptBosung.Left = 960
+                
+                Set lblSolan.Container = frmKy
+                lblSolan.Top = 1200
+                lblSolan.Left = 3000
+                Set txtSolan.Container = frmKy
+                txtSolan.Top = 1200
+                txtSolan.Left = 3400
+                
+                lblSolan.Visible = False
+                txtSolan.Visible = False
+                fpsNgaykhaiBS.Visible = False
+                
+                ' to khai 01/GTGT co them danh muc nganh nghe kinh doanh
+                If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
+                    frmKy.Height = 2400
+                    Frame2.Top = 2700
+                    Set lblNganhKD.Container = frmKy
+                    lblNganhKD.Top = 1600
+                    lblNganhKD.Left = 120
                     
+                    
+                    Set cboNganhKD.Container = frmKy
+                    cboNganhKD.Top = 1900
+                    cboNganhKD.Left = 120
+                    ' set gia tri nganh nghe kinh doanh cho combo
+                    SetValueToList GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
+                End If
+    
+                SetControlCaption Me, "frmPeriod"
+       
+                cmbQuy.Visible = False
+                lblQuy.Visible = False
+                lblMonth.Visible = True
+                txtMonth.Visible = True
+                txtNgayDau.Visible = False
+                txtNgayCuoi.Visible = False
+            End If
+        Else
+            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Then
+                ' 3 checkbox nen khong set mac dinh
+                'strQuy = ""
+            Else
+                strQuy = "TK_QUY"
+                chkTKQuy.value = 1
+                OptChinhthuc.value = True
+                Set lblQuy.Container = frmKy
+                lblQuy.Top = 570
+                lblQuy.Left = 960
+                
+                ' Set gia tri mac dinh cho Quy
+                q = GetQuyHienTai(iNgayTaiChinh, iThangTaiChinh)
+                If q.q = 1 Then
+                    q.q = 4
+                    q.Y = q.Y - 1
+                Else
+                    q.q = q.q - 1
+                End If
+                cmbQuy.ListIndex = q.q - 1
+                txtYear.Text = q.Y
+                
+                Set cmbQuy.Container = frmKy
+                cmbQuy.Top = 540
+                cmbQuy.Left = 1530
+                
+                Set lblYear.Container = frmKy
+                lblYear.Top = 570
+                lblYear.Left = 2310
+                
+                Set txtYear.Container = frmKy
+                txtYear.Top = 540
+                txtYear.Left = 2730
+                
+                Set OptChinhthuc.Container = frmKy
+                OptChinhthuc.Top = 900
+                OptChinhthuc.Left = 960
+                
+                Set OptBosung.Container = frmKy
+                OptBosung.Top = 1200
+                OptBosung.Left = 960
+                
+                Set lblSolan.Container = frmKy
+                lblSolan.Top = 1200
+                lblSolan.Left = 3000
+                Set txtSolan.Container = frmKy
+                txtSolan.Top = 1200
+                txtSolan.Left = 3400
+                
+                lblSolan.Visible = False
+                txtSolan.Visible = False
+                fpsNgaykhaiBS.Visible = False
+                
+                ' to khai 01/GTGT co them danh muc nganh nghe kinh doanh
+                If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
+                    frmKy.Height = 2400
+                    Frame2.Top = 2700
+                    Set lblNganhKD.Container = frmKy
+                    lblNganhKD.Top = 1600
+                    lblNganhKD.Left = 120
+                    
+                    
+                    Set cboNganhKD.Container = frmKy
+                    cboNganhKD.Top = 1900
+                    cboNganhKD.Left = 120
+                    ' set gia tri nganh nghe kinh doanh cho combo
+                    SetValueToList GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
+                End If
+    
+                SetControlCaption Me, "frmPeriod"
+       
+                cmbQuy.Visible = True
+                lblQuy.Visible = True
+                
+                lblMonth.Visible = False
+                txtMonth.Visible = False
+                
+                txtNgayDau.Visible = False
+                txtNgayCuoi.Visible = False
+            End If
         End If
 
     ElseIf strLoaiSacThue = "BC26" Then
@@ -1347,137 +1402,41 @@ End Sub
 
 Private Sub chkTKLanPS_Click()
     Dim m, Y, d As Integer
-    Dim dTem, dtem1 As Date
+    Dim dTem, dtem1, dtem2 As Date
     Dim varMenuId As String
+    dtem2 = Date
     dTem = DateAdd("D", -1, Date)
     dtem1 = DateAdd("M", -1, Date)
     lblNgay.Visible = IIf(chkTKLanPS.value = 1, True, False)
     txtDay.Visible = IIf(chkTKLanPS.value = 1, True, False)
     If chkTKLanPS.value = 1 Then
-        strLoaiTKThang_PS = "TK_LANPS"
-        'strKieuKy = "D"
-        OptChinhthuc.value = True
-        lblSolan.Visible = False
-        txtSolan.Visible = False
-        fpsNgaykhaiBS.Visible = False
-        
-        m = month(dTem)
-        Y = Year(dTem)
-        d = Day(dTem)
-        txtDay.Text = d
-        txtMonth.Text = m
-        txtYear.Text = Y
-        If Len(txtDay.Text) = 1 Then
-            txtDay.Text = "0" & txtDay.Text
-        End If
-        If Len(txtMonth.Text) = 1 Then
-            txtMonth.Text = "0" & txtMonth.Text
-        End If
-        chkTkhaiThang.value = 0
-        'chkTkhaiThang.Enabled = True
-        'chkTKLanPS.Enabled = False
-        'chkTKLanPS.
-        varMenuId = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
-        If varMenuId = "70" Or varMenuId = "06" Or varMenuId = "72" Or varMenuId = "73" Or varMenuId = "81" Or varMenuId = "90" Then
-        'If varMenuId = "73" Or varMenuId = "81" Then
-             frmKy.Height = 1600
-            
-            Set OptChinhthuc.Container = frmKy
-            OptChinhthuc.Top = 900
-            OptChinhthuc.Left = 960
-            
-            Set OptBosung.Container = frmKy
-            OptBosung.Top = 1200
-            OptBosung.Left = 960
-            
-            Set lblSolan.Container = frmKy
-            lblSolan.Top = 1200
-            lblSolan.Left = 3000
-            Set txtSolan.Container = frmKy
-            txtSolan.Top = 1200
-            txtSolan.Left = 3400
-            
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Then
+            strLoaiTKThang_PS = "TK_LANPS"
+            strQuy = "TK_LANPS"
+            'strKieuKy = "D"
+            OptChinhthuc.value = True
             lblSolan.Visible = False
             txtSolan.Visible = False
-'            frmKy.Height = 1065
-'            Frame2.Top = 1400
-'
-'            Set OptChinhthuc.Container = frmKy
-'            OptChinhthuc.Top = 8000
-'            OptChinhthuc.Left = 960
-'
-'            Set OptBosung.Container = frmKy
-'            OptBosung.Top = 8600
-'            OptBosung.Left = 960
-'
-'            Set lblSolan.Container = frmKy
-'            lblSolan.Top = 9200
-'            lblSolan.Left = 3000
-'            Set txtSolan.Container = frmKy
-'            txtSolan.Top = 9400
-'            txtSolan.Left = 3400
+            fpsNgaykhaiBS.Visible = False
             
-'            OptChinhthuc.Visible = False
-'            OptBosung.Visible = False
-'            lblSolan.Visible = False
-'            txtSolan.Visible = False
-            ' To khai TNDN an quy va hien thi thang
-            If varMenuId = "73" Then
-                txtMonth.Visible = True
-                lblMonth.Visible = True
-                cmbQuy.Visible = False
-                lblQuy.Visible = False
-                
-                ' Set loai TK
-'                frmKy.Height = 1700
-'                Frame2.Top = 2000
-'                Set lblNganhKD.Container = frmKy
-'                lblNganhKD.caption = TAX_Utilities_v1.Convert(GetAttribute(GetMessageCellById("0237"), "Msg"), UNICODE, TCVN)
-'                lblNganhKD.Top = 950
-'                lblNganhKD.Left = 120
-'
-'
-'                Set cboNganhKD.Container = frmKy
-'                cboNganhKD.Top = 1250
-'                cboNganhKD.Left = 120
+            m = month(dtem2)
+            Y = Year(dtem2)
+            d = Day(dtem2)
+            txtDay.Text = d
+            txtMonth.Text = m
+            txtYear.Text = Y
+            If Len(txtDay.Text) = 1 Then
+                txtDay.Text = "0" & txtDay.Text
             End If
+            If Len(txtMonth.Text) = 1 Then
+                txtMonth.Text = "0" & txtMonth.Text
+            End If
+            chkTkhaiThang.value = 0
+            chkTKQuy.value = 0
+            frmKy.Height = 1600
             
-            Call Form_Resize
-        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "05" Then
-'            frmKy.Height = 1465
-'            Frame2.Top = 1800
-'
-'            Set OptChinhthuc.Container = frmKy
-'            OptChinhthuc.Top = 8000
-'            OptChinhthuc.Left = 960
-'
-'            Set OptBosung.Container = frmKy
-'            OptBosung.Top = 8600
-'            OptBosung.Left = 960
-'
-'            Set lblSolan.Container = frmKy
-'            lblSolan.Top = 9200
-'            lblSolan.Left = 3000
-'            Set txtSolan.Container = frmKy
-'            txtSolan.Top = 9400
-'            txtSolan.Left = 3400
-'
-'            Set lblNganhKD.Container = frmKy
-'            lblNganhKD.Top = 1550
-'            lblNganhKD.Left = 120
-'
-'            Set cboNganhKD.Container = frmKy
-'            cboNganhKD.Top = 1000
-'            cboNganhKD.Left = 120
-'
-'
-'            OptChinhthuc.Visible = False
-'            OptBosung.Visible = False
-'            lblSolan.Visible = False
-'            txtSolan.Visible = False
-            frmKy.Height = 2400
-            Frame2.Top = 2700
-            
+            cmbQuy.Visible = False
+            txtMonth.Visible = True
             
             Set OptChinhthuc.Container = frmKy
             OptChinhthuc.Top = 900
@@ -1496,27 +1455,177 @@ Private Sub chkTKLanPS_Click()
             
             lblSolan.Visible = False
             txtSolan.Visible = False
-            
-    
-            Set lblNganhKD.Container = frmKy
-            lblNganhKD.Top = 1550
-            lblNganhKD.Left = 120
-            
-            Set cboNganhKD.Container = frmKy
-            cboNganhKD.Top = 1850
-            cboNganhKD.Left = 120
             Call Form_Resize
+        Else
+            strLoaiTKThang_PS = "TK_LANPS"
+            'strKieuKy = "D"
+            OptChinhthuc.value = True
+            lblSolan.Visible = False
+            txtSolan.Visible = False
+            fpsNgaykhaiBS.Visible = False
+            
+            m = month(dTem)
+            Y = Year(dTem)
+            d = Day(dTem)
+            txtDay.Text = d
+            txtMonth.Text = m
+            txtYear.Text = Y
+            If Len(txtDay.Text) = 1 Then
+                txtDay.Text = "0" & txtDay.Text
+            End If
+            If Len(txtMonth.Text) = 1 Then
+                txtMonth.Text = "0" & txtMonth.Text
+            End If
+            chkTkhaiThang.value = 0
+            'chkTkhaiThang.Enabled = True
+            'chkTKLanPS.Enabled = False
+            'chkTKLanPS.
+            varMenuId = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
+            If varMenuId = "70" Or varMenuId = "06" Or varMenuId = "72" Or varMenuId = "73" Or varMenuId = "81" Or varMenuId = "90" Then
+            'If varMenuId = "73" Or varMenuId = "81" Then
+                 frmKy.Height = 1600
+                
+                Set OptChinhthuc.Container = frmKy
+                OptChinhthuc.Top = 900
+                OptChinhthuc.Left = 960
+                
+                Set OptBosung.Container = frmKy
+                OptBosung.Top = 1200
+                OptBosung.Left = 960
+                
+                Set lblSolan.Container = frmKy
+                lblSolan.Top = 1200
+                lblSolan.Left = 3000
+                Set txtSolan.Container = frmKy
+                txtSolan.Top = 1200
+                txtSolan.Left = 3400
+                
+                lblSolan.Visible = False
+                txtSolan.Visible = False
+    '            frmKy.Height = 1065
+    '            Frame2.Top = 1400
+    '
+    '            Set OptChinhthuc.Container = frmKy
+    '            OptChinhthuc.Top = 8000
+    '            OptChinhthuc.Left = 960
+    '
+    '            Set OptBosung.Container = frmKy
+    '            OptBosung.Top = 8600
+    '            OptBosung.Left = 960
+    '
+    '            Set lblSolan.Container = frmKy
+    '            lblSolan.Top = 9200
+    '            lblSolan.Left = 3000
+    '            Set txtSolan.Container = frmKy
+    '            txtSolan.Top = 9400
+    '            txtSolan.Left = 3400
+                
+    '            OptChinhthuc.Visible = False
+    '            OptBosung.Visible = False
+    '            lblSolan.Visible = False
+    '            txtSolan.Visible = False
+                ' To khai TNDN an quy va hien thi thang
+                If varMenuId = "73" Then
+                    txtMonth.Visible = True
+                    lblMonth.Visible = True
+                    cmbQuy.Visible = False
+                    lblQuy.Visible = False
+                    
+                    ' Set loai TK
+    '                frmKy.Height = 1700
+    '                Frame2.Top = 2000
+    '                Set lblNganhKD.Container = frmKy
+    '                lblNganhKD.caption = TAX_Utilities_v1.Convert(GetAttribute(GetMessageCellById("0237"), "Msg"), UNICODE, TCVN)
+    '                lblNganhKD.Top = 950
+    '                lblNganhKD.Left = 120
+    '
+    '
+    '                Set cboNganhKD.Container = frmKy
+    '                cboNganhKD.Top = 1250
+    '                cboNganhKD.Left = 120
+                End If
+                
+                Call Form_Resize
+            ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "05" Then
+    '            frmKy.Height = 1465
+    '            Frame2.Top = 1800
+    '
+    '            Set OptChinhthuc.Container = frmKy
+    '            OptChinhthuc.Top = 8000
+    '            OptChinhthuc.Left = 960
+    '
+    '            Set OptBosung.Container = frmKy
+    '            OptBosung.Top = 8600
+    '            OptBosung.Left = 960
+    '
+    '            Set lblSolan.Container = frmKy
+    '            lblSolan.Top = 9200
+    '            lblSolan.Left = 3000
+    '            Set txtSolan.Container = frmKy
+    '            txtSolan.Top = 9400
+    '            txtSolan.Left = 3400
+    '
+    '            Set lblNganhKD.Container = frmKy
+    '            lblNganhKD.Top = 1550
+    '            lblNganhKD.Left = 120
+    '
+    '            Set cboNganhKD.Container = frmKy
+    '            cboNganhKD.Top = 1000
+    '            cboNganhKD.Left = 120
+    '
+    '
+    '            OptChinhthuc.Visible = False
+    '            OptBosung.Visible = False
+    '            lblSolan.Visible = False
+    '            txtSolan.Visible = False
+                frmKy.Height = 2400
+                Frame2.Top = 2700
+                
+                
+                Set OptChinhthuc.Container = frmKy
+                OptChinhthuc.Top = 900
+                OptChinhthuc.Left = 960
+                
+                Set OptBosung.Container = frmKy
+                OptBosung.Top = 1200
+                OptBosung.Left = 960
+                
+                Set lblSolan.Container = frmKy
+                lblSolan.Top = 1200
+                lblSolan.Left = 3000
+                Set txtSolan.Container = frmKy
+                txtSolan.Top = 1200
+                txtSolan.Left = 3400
+                
+                lblSolan.Visible = False
+                txtSolan.Visible = False
+                
+        
+                Set lblNganhKD.Container = frmKy
+                lblNganhKD.Top = 1550
+                lblNganhKD.Left = 120
+                
+                Set cboNganhKD.Container = frmKy
+                cboNganhKD.Top = 1850
+                cboNganhKD.Left = 120
+                Call Form_Resize
+            End If
         End If
     Else
-        strLoaiTKThang_PS = "TK_THANG"
-        m = month(dtem1)
-        Y = Year(dtem1)
-        txtMonth.Text = m
-        txtYear.Text = Y
-        If Len(txtMonth.Text) = 1 Then
-            txtMonth.Text = "0" & txtMonth.Text
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Then
+            ' khÚn set mac dinh cho to 04/GTGT
+            'strQuy = ""
+        Else
+            strLoaiTKThang_PS = "TK_THANG"
+            m = month(dtem1)
+            Y = Year(dtem1)
+            txtMonth.Text = m
+            txtYear.Text = Y
+            If Len(txtMonth.Text) = 1 Then
+                txtMonth.Text = "0" & txtMonth.Text
+            End If
+            chkTkhaiThang.value = 1
         End If
-        chkTkhaiThang.value = 1
     End If
     LoadGrid
 '    If chkTKLanPS.value = 1 Then
@@ -1539,144 +1648,240 @@ Private Sub chkTKLanPS_Click()
 End Sub
 
 Private Sub chkTKQuy_Click()
+    Dim m, Y, d As Integer
+    Dim dTem, dtem1 As Date
+    Dim q As Quy
+    
+    m = month(Date)
+    Y = Year(Date)
     If strLoaiSacThue = "ToKhaiGTGT" Then
         If chkTKQuy.value = 0 Then
-            strQuy = "TK_THANG"
-            chkTkhaiThang.value = 1
-            
-            OptChinhthuc.value = True
-            
-            
-            Set lblMonth.Container = frmKy
-            lblMonth.Top = 570
-            lblMonth.Left = 960
-            
-            Set txtMonth.Container = frmKy
-            txtMonth.Top = 540
-            txtMonth.Left = 1530
-            
-            Set lblYear.Container = frmKy
-            lblYear.Top = 570
-            lblYear.Left = 2310
-            
-            Set txtYear.Container = frmKy
-            txtYear.Top = 540
-            txtYear.Left = 2730
-            
-            Set OptChinhthuc.Container = frmKy
-            OptChinhthuc.Top = 900
-            OptChinhthuc.Left = 960
-            
-            Set OptBosung.Container = frmKy
-            OptBosung.Top = 1200
-            OptBosung.Left = 960
-            
-            Set lblSolan.Container = frmKy
-            lblSolan.Top = 1200
-            lblSolan.Left = 3000
-            Set txtSolan.Container = frmKy
-            txtSolan.Top = 1200
-            txtSolan.Left = 3400
-            
-            lblSolan.Visible = False
-            txtSolan.Visible = False
-            fpsNgaykhaiBS.Visible = False
-            
-            ' to khai 01/GTGT co them danh muc nganh nghe kinh doanh
-            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
-                frmKy.Height = 2400
-                Frame2.Top = 2700
-                Set lblNganhKD.Container = frmKy
-                lblNganhKD.Top = 1600
-                lblNganhKD.Left = 120
+            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Then
+                ' khong set mac dinh cho to khai 04/GTGT
+                'strQuy = ""
+            Else
+                strQuy = "TK_THANG"
+                chkTkhaiThang.value = 1
+                
+                OptChinhthuc.value = True
                 
                 
-                Set cboNganhKD.Container = frmKy
-                cboNganhKD.Top = 1900
-                cboNganhKD.Left = 120
-                ' set gia tri nganh nghe kinh doanh cho combo
-                SetValueToList GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
-            End If
-
-            SetControlCaption Me, "frmPeriod"
-   
-            cmbQuy.Visible = False
-            lblQuy.Visible = False
-            lblMonth.Visible = True
-            txtMonth.Visible = True
-            txtNgayDau.Visible = False
-            txtNgayCuoi.Visible = False
-            
-        Else
-            strQuy = "TK_QUY"
-            chkTkhaiThang.value = 0
-            
-            OptChinhthuc.value = True
-            
-            Set lblQuy.Container = frmKy
-            lblQuy.Top = 570
-            lblQuy.Left = 960
-            
-            Set cmbQuy.Container = frmKy
-            cmbQuy.Top = 540
-            cmbQuy.Left = 1530
-            
-            Set lblYear.Container = frmKy
-            lblYear.Top = 570
-            lblYear.Left = 2310
-            
-            Set txtYear.Container = frmKy
-            txtYear.Top = 540
-            txtYear.Left = 2730
-            
-            Set OptChinhthuc.Container = frmKy
-            OptChinhthuc.Top = 900
-            OptChinhthuc.Left = 960
-            
-            Set OptBosung.Container = frmKy
-            OptBosung.Top = 1200
-            OptBosung.Left = 960
-            
-            Set lblSolan.Container = frmKy
-            lblSolan.Top = 1200
-            lblSolan.Left = 3000
-            Set txtSolan.Container = frmKy
-            txtSolan.Top = 1200
-            txtSolan.Left = 3400
-            
-            lblSolan.Visible = False
-            txtSolan.Visible = False
-            fpsNgaykhaiBS.Visible = False
-            
-            ' to khai 01/GTGT co them danh muc nganh nghe kinh doanh
-            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
-                frmKy.Height = 2400
-                Frame2.Top = 2700
-                Set lblNganhKD.Container = frmKy
-                lblNganhKD.Top = 1600
-                lblNganhKD.Left = 120
+                Set lblMonth.Container = frmKy
+                lblMonth.Top = 570
+                lblMonth.Left = 960
                 
+                Set txtMonth.Container = frmKy
+                txtMonth.Top = 540
+                txtMonth.Left = 1530
                 
-                Set cboNganhKD.Container = frmKy
-                cboNganhKD.Top = 1900
-                cboNganhKD.Left = 120
-                ' set gia tri nganh nghe kinh doanh cho combo
-                SetValueToList GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
-            End If
-
-            SetControlCaption Me, "frmPeriod"
-   
-            cmbQuy.Visible = True
-            lblQuy.Visible = True
-            
-            lblMonth.Visible = False
-            txtMonth.Visible = False
-            
-             
-            
-            txtNgayDau.Visible = False
-            txtNgayCuoi.Visible = False
+                Set lblYear.Container = frmKy
+                lblYear.Top = 570
+                lblYear.Left = 2310
+                
+                Set txtYear.Container = frmKy
+                txtYear.Top = 540
+                txtYear.Left = 2730
+                
+                Set OptChinhthuc.Container = frmKy
+                OptChinhthuc.Top = 900
+                OptChinhthuc.Left = 960
+                
+                Set OptBosung.Container = frmKy
+                OptBosung.Top = 1200
+                OptBosung.Left = 960
+                
+                Set lblSolan.Container = frmKy
+                lblSolan.Top = 1200
+                lblSolan.Left = 3000
+                Set txtSolan.Container = frmKy
+                txtSolan.Top = 1200
+                txtSolan.Left = 3400
+                
+                lblSolan.Visible = False
+                txtSolan.Visible = False
+                fpsNgaykhaiBS.Visible = False
+                
+                ' to khai 01/GTGT co them danh muc nganh nghe kinh doanh
+                If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
+                    frmKy.Height = 2400
+                    Frame2.Top = 2700
+                    Set lblNganhKD.Container = frmKy
+                    lblNganhKD.Top = 1600
+                    lblNganhKD.Left = 120
                     
+                    
+                    Set cboNganhKD.Container = frmKy
+                    cboNganhKD.Top = 1900
+                    cboNganhKD.Left = 120
+                    ' set gia tri nganh nghe kinh doanh cho combo
+                    SetValueToList GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
+                End If
+    
+                SetControlCaption Me, "frmPeriod"
+       
+                cmbQuy.Visible = False
+                lblQuy.Visible = False
+                lblMonth.Visible = True
+                txtMonth.Visible = True
+                txtNgayDau.Visible = False
+                txtNgayCuoi.Visible = False
+            End If
+        Else
+            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Then
+                strQuy = "TK_QUY"
+                chkTkhaiThang.value = 0
+                chkTKLanPS.value = 0
+                
+                OptChinhthuc.value = True
+                
+                Set lblQuy.Container = frmKy
+                lblQuy.Top = 570
+                lblQuy.Left = 1360
+                
+                Set cmbQuy.Container = frmKy
+                cmbQuy.Top = 540
+                cmbQuy.Left = 1930
+                
+                
+                ' Set gia tri mac dinh cho Quy
+                q = GetQuyHienTai(iNgayTaiChinh, iThangTaiChinh)
+    
+                If q.q = 1 Then
+                    q.q = 4
+                    q.Y = q.Y - 1
+                Else
+                    q.q = q.q - 1
+                End If
+    
+                cmbQuy.ListIndex = q.q - 1
+                txtYear.Text = q.Y
+                
+                
+                Set lblYear.Container = frmKy
+                lblYear.Top = 570
+                lblYear.Left = 2710
+                
+                Set txtYear.Container = frmKy
+                txtYear.Top = 540
+                txtYear.Left = 3130
+                
+                Set OptChinhthuc.Container = frmKy
+                OptChinhthuc.Top = 900
+                OptChinhthuc.Left = 960
+                
+                Set OptBosung.Container = frmKy
+                OptBosung.Top = 1200
+                OptBosung.Left = 960
+                
+                Set lblSolan.Container = frmKy
+                lblSolan.Top = 1200
+                lblSolan.Left = 3000
+                Set txtSolan.Container = frmKy
+                txtSolan.Top = 1200
+                txtSolan.Left = 3400
+                
+                lblSolan.Visible = False
+                txtSolan.Visible = False
+                fpsNgaykhaiBS.Visible = False
+                
+                ' to khai 01/GTGT co them danh muc nganh nghe kinh doanh
+                If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
+                    frmKy.Height = 2400
+                    Frame2.Top = 2700
+                    Set lblNganhKD.Container = frmKy
+                    lblNganhKD.Top = 1600
+                    lblNganhKD.Left = 120
+                    
+                    
+                    Set cboNganhKD.Container = frmKy
+                    cboNganhKD.Top = 1900
+                    cboNganhKD.Left = 120
+                    ' set gia tri nganh nghe kinh doanh cho combo
+                    SetValueToList GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
+                End If
+    
+                SetControlCaption Me, "frmPeriod"
+       
+                cmbQuy.Visible = True
+                lblQuy.Visible = True
+                
+                lblMonth.Visible = False
+                txtMonth.Visible = False
+                
+                 
+                
+                txtNgayDau.Visible = False
+                txtNgayCuoi.Visible = False
+            Else
+                strQuy = "TK_QUY"
+                chkTkhaiThang.value = 0
+                
+                OptChinhthuc.value = True
+                
+                Set lblQuy.Container = frmKy
+                lblQuy.Top = 570
+                lblQuy.Left = 960
+                
+                Set cmbQuy.Container = frmKy
+                cmbQuy.Top = 540
+                cmbQuy.Left = 1530
+                
+                Set lblYear.Container = frmKy
+                lblYear.Top = 570
+                lblYear.Left = 2310
+                
+                Set txtYear.Container = frmKy
+                txtYear.Top = 540
+                txtYear.Left = 2730
+                
+                Set OptChinhthuc.Container = frmKy
+                OptChinhthuc.Top = 900
+                OptChinhthuc.Left = 960
+                
+                Set OptBosung.Container = frmKy
+                OptBosung.Top = 1200
+                OptBosung.Left = 960
+                
+                Set lblSolan.Container = frmKy
+                lblSolan.Top = 1200
+                lblSolan.Left = 3000
+                Set txtSolan.Container = frmKy
+                txtSolan.Top = 1200
+                txtSolan.Left = 3400
+                
+                lblSolan.Visible = False
+                txtSolan.Visible = False
+                fpsNgaykhaiBS.Visible = False
+                
+                ' to khai 01/GTGT co them danh muc nganh nghe kinh doanh
+                If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
+                    frmKy.Height = 2400
+                    Frame2.Top = 2700
+                    Set lblNganhKD.Container = frmKy
+                    lblNganhKD.Top = 1600
+                    lblNganhKD.Left = 120
+                    
+                    
+                    Set cboNganhKD.Container = frmKy
+                    cboNganhKD.Top = 1900
+                    cboNganhKD.Left = 120
+                    ' set gia tri nganh nghe kinh doanh cho combo
+                    SetValueToList GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
+                End If
+    
+                SetControlCaption Me, "frmPeriod"
+       
+                cmbQuy.Visible = True
+                lblQuy.Visible = True
+                
+                lblMonth.Visible = False
+                txtMonth.Visible = False
+                
+                 
+                
+                txtNgayDau.Visible = False
+                txtNgayCuoi.Visible = False
+            End If
         End If
 
     ElseIf strLoaiSacThue = "BC26" Then
@@ -2240,24 +2445,49 @@ Public Sub cmdOK_Click()
     If strKieuKy = KIEU_KY_THANG Then
         If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" _
         Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "25" Then
-            If strQuy = "TK_THANG" Then
-                 If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
-                    txtMonth.SetFocus
-                    Exit Sub
-                End If
-            ElseIf strQuy = "TK_QUY" Then
-                If Not CheckPeriod(cmbQuy.Text, txtYear.Text) Then
-                    cmbQuy.SetFocus
-                    Exit Sub
-                End If
-                
-                If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" _
-                Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Then
-                     If (Val(TAX_Utilities_v1.ThreeMonths) < 3 And Val(TAX_Utilities_v1.Year) = 2013) Or Val(TAX_Utilities_v1.Year) < 2013 Then
-                        DisplayMessage "0272", msOKOnly, miCriticalError
+            If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Then
+                If strQuy = "TK_THANG" Then
+                     If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
+                        txtMonth.SetFocus
+                        Exit Sub
+                    End If
+                ElseIf strQuy = "TK_QUY" Then
+                    If Not CheckPeriod(cmbQuy.Text, txtYear.Text) Then
                         cmbQuy.SetFocus
                         Exit Sub
-                     End If
+                    End If
+                    
+                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" _
+                    Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Then
+                         If (Val(TAX_Utilities_v1.ThreeMonths) < 3 And Val(TAX_Utilities_v1.Year) = 2013) Or Val(TAX_Utilities_v1.Year) < 2013 Then
+                            DisplayMessage "0272", msOKOnly, miCriticalError
+                            cmbQuy.SetFocus
+                            Exit Sub
+                         End If
+                    End If
+                ElseIf strQuy = "TK_LANPS" Then
+                    
+                End If
+            Else
+                If strQuy = "TK_THANG" Then
+                     If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
+                        txtMonth.SetFocus
+                        Exit Sub
+                    End If
+                ElseIf strQuy = "TK_QUY" Then
+                    If Not CheckPeriod(cmbQuy.Text, txtYear.Text) Then
+                        cmbQuy.SetFocus
+                        Exit Sub
+                    End If
+                    
+                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" _
+                    Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Then
+                         If (Val(TAX_Utilities_v1.ThreeMonths) < 3 And Val(TAX_Utilities_v1.Year) = 2013) Or Val(TAX_Utilities_v1.Year) < 2013 Then
+                            DisplayMessage "0272", msOKOnly, miCriticalError
+                            cmbQuy.SetFocus
+                            Exit Sub
+                         End If
+                    End If
                 End If
             End If
         Else
@@ -2447,7 +2677,7 @@ Public Sub cmdOK_Click()
     End If
     
     'chan ngay kk lan phat sinh < ngay hien tai
-    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "70" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "06" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "72" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "73" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "81" _
+    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "70" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "06" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "72" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "73" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "81" _
      Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "90") And chkTKLanPS.value = "1" Then
         If Trim(sNgay) <> "" Then
             sNgayDD = DateSerial(CInt(Mid$(sNgay, 7, 4)), CInt(Mid$(sNgay, 4, 2)), CInt(Mid$(sNgay, 1, 2)))
@@ -2465,16 +2695,36 @@ Public Sub cmdOK_Click()
         If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "01" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "02" _
         Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "04" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "95" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "88" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "71" _
         Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "36" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "25" Then
-            If strQuy = "TK_THANG" Then
-                TAX_Utilities_v1.month = txtMonth.Text
-                TAX_Utilities_v1.ThreeMonths = vbNullString
-                TAX_Utilities_v1.FirstDay = vbNullString
-                TAX_Utilities_v1.LastDay = vbNullString
-            ElseIf strQuy = "TK_QUY" Then
-                TAX_Utilities_v1.month = txtMonth.Text
-                TAX_Utilities_v1.ThreeMonths = cmbQuy.Text
-                TAX_Utilities_v1.FirstDay = vbNullString
-                TAX_Utilities_v1.LastDay = vbNullString
+            If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "71" Then
+                If strQuy = "TK_THANG" Then
+                    TAX_Utilities_v1.month = txtMonth.Text
+                    TAX_Utilities_v1.ThreeMonths = vbNullString
+                    TAX_Utilities_v1.FirstDay = vbNullString
+                    TAX_Utilities_v1.LastDay = vbNullString
+                ElseIf strQuy = "TK_QUY" Then
+                    TAX_Utilities_v1.month = txtMonth.Text
+                    TAX_Utilities_v1.ThreeMonths = cmbQuy.Text
+                    TAX_Utilities_v1.FirstDay = vbNullString
+                    TAX_Utilities_v1.LastDay = vbNullString
+                ElseIf strQuy = "TK_LANPS" Then
+                    TAX_Utilities_v1.ThreeMonths = cmbQuy.Text
+                    TAX_Utilities_v1.month = txtMonth.Text
+                    TAX_Utilities_v1.Day = txtDay.Text
+                    TAX_Utilities_v1.month = txtMonth.Text
+                End If
+
+            Else
+                If strQuy = "TK_THANG" Then
+                    TAX_Utilities_v1.month = txtMonth.Text
+                    TAX_Utilities_v1.ThreeMonths = vbNullString
+                    TAX_Utilities_v1.FirstDay = vbNullString
+                    TAX_Utilities_v1.LastDay = vbNullString
+                ElseIf strQuy = "TK_QUY" Then
+                    TAX_Utilities_v1.month = txtMonth.Text
+                    TAX_Utilities_v1.ThreeMonths = cmbQuy.Text
+                    TAX_Utilities_v1.FirstDay = vbNullString
+                    TAX_Utilities_v1.LastDay = vbNullString
+                End If
             End If
         Else
             TAX_Utilities_v1.month = txtMonth.Text
@@ -2742,6 +2992,15 @@ Public Sub cmdOK_Click()
         'End If
     End If
     
+    If idToKhai = "71" Then
+        If chkTkhaiThang.value = 0 And chkTKLanPS.value = 0 And chkTKQuy.value = 0 Then
+            DisplayMessage "0295", msOKOnly, miWarning
+            chkTkhaiThang.SetFocus
+            Exit Sub
+        End If
+    End If
+    
+    
     ' To khai bo sung
     If strKHBS = "TKBS" And (idToKhai = "02" Or idToKhai = "01" Or idToKhai = "04" Or idToKhai = "03" Or idToKhai = "11" Or idToKhai = "12" _
     Or idToKhai = "06" Or idToKhai = "05" Or idToKhai = "86" Or idToKhai = "87" Or idToKhai = "71" Or idToKhai = "72" Or idToKhai = "77" Or idToKhai = "73" _
@@ -2772,10 +3031,21 @@ Public Sub cmdOK_Click()
                     strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                 End If
             ElseIf idToKhai = "01" Or idToKhai = "02" Or idToKhai = "04" Or idToKhai = "95" Or idToKhai = "88" Or idToKhai = "71" Then
-                If strQuy = "TK_THANG" Then
-                    strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
-                ElseIf strQuy = "TK_QUY" Then
-                    strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_Q0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
+                If idToKhai = "71" Then
+                    If strQuy = "TK_THANG" Then
+                        strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                    ElseIf strQuy = "TK_QUY" Then
+                        strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_Q0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
+                    ElseIf strQuy = "TK_LANPS" Then
+                        strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                    End If
+
+                Else
+                    If strQuy = "TK_THANG" Then
+                        strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                    ElseIf strQuy = "TK_QUY" Then
+                        strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_Q0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
+                    End If
                 End If
             'ElseIf idToKhai = "98" Or idToKhai = "92" Or idToKhai = "93" Or idToKhai = "99" Then
             ElseIf idToKhai = "98" Or idToKhai = "92" Then
@@ -3003,8 +3273,10 @@ Private Sub Form_Load()
         SetupLayoutTNCN (strKieuKy)
     ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "99" Then
         SetupLayoutTNDN_DK (strKieuKy)
-    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "25" Then
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "25" Then
         SetLayoutToKhaiThangQuy
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Then
+        SetLayoutToKhaiThangQuyLanPS
     ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "11" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "12" _
      Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "77" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "86" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "87" _
      Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "83" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "85" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "94" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "97" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "89" Then
@@ -7240,5 +7512,94 @@ Private Sub SetupLayout01TTS()
      
 ErrorHandle:
     SaveErrorLog Me.Name, "SetupLayout08TNCN", Err.Number, Err.Description
+    
+End Sub
+
+
+' to khai 04/GTGT
+Private Sub SetLayoutToKhaiThangQuyLanPS()
+    On Error GoTo ErrorHandle
+    
+    strLoaiSacThue = "ToKhaiGTGT"
+    
+    Me.Height = 3285
+    Me.Width = 4905
+    
+    Frame2.Top = 1950
+    
+    'frmKy.Height = 1300
+    Set chkTKQuy.Container = frmKy
+    chkTKQuy.Top = 200
+    chkTKQuy.Left = 1500
+    chkTKQuy.value = 0
+    chkTkhaiThang.value = 1
+    
+    
+    Set chkTkhaiThang.Container = frmKy
+    chkTkhaiThang.Top = 200
+    chkTkhaiThang.Left = 50
+    
+    Set chkTKLanPS.Container = frmKy
+    chkTKLanPS.Top = 200
+    chkTKLanPS.Left = 2850
+    
+    Set lblNgay.Container = frmKy
+    lblNgay.Top = 570
+    lblNgay.Left = 120
+    lblNgay.Visible = False
+
+    Set txtDay.Container = frmKy
+    txtDay.Top = 540
+    txtDay.Left = 700
+    txtDay.Visible = False
+    
+    
+    Set lblMonth.Container = frmKy
+    lblMonth.Top = 570
+    lblMonth.Left = 1360
+    
+    Set txtMonth.Container = frmKy
+    txtMonth.Top = 540
+    txtMonth.Left = 1930
+    
+    Set lblYear.Container = frmKy
+    lblYear.Top = 570
+    lblYear.Left = 2710
+    
+    Set txtYear.Container = frmKy
+    txtYear.Top = 540
+    txtYear.Left = 3130
+        
+
+    frmKy.Height = 1600
+    
+    Set OptChinhthuc.Container = frmKy
+    OptChinhthuc.Top = 900
+    OptChinhthuc.Left = 960
+    
+    Set OptBosung.Container = frmKy
+    OptBosung.Top = 1200
+    OptBosung.Left = 960
+    
+    Set lblSolan.Container = frmKy
+    lblSolan.Top = 1200
+    lblSolan.Left = 3000
+    Set txtSolan.Container = frmKy
+    txtSolan.Top = 1200
+    txtSolan.Left = 3400
+    
+    lblSolan.Visible = False
+    txtSolan.Visible = False
+    strKHBS = "TKCT"
+    strQuy = "TK_THANG"
+    
+        
+    Me.Top = (frmSystem.ScaleHeight - Me.ScaleHeight) / 2
+    Me.Left = (frmSystem.Width - Me.Width) / 2
+    
+    Exit Sub
+     
+ErrorHandle:
+    SaveErrorLog Me.Name, "SetLayoutToKhaiThangQuyLanPS", Err.Number, Err.Description
     
 End Sub
