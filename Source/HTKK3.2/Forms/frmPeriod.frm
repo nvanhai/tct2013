@@ -2723,7 +2723,7 @@ Public Sub cmdOK_Click()
         Dim fso1 As New FileSystemObject
         If Trim(TAX_Utilities_v1.month) <> "" Then
             ' to khai nha thau nuoc ngoai
-            If idToKhai = "70" Or idToKhai = "06" Then
+            If idToKhai = "70" Or idToKhai = "06" Or idToKhai = "81" Or idToKhai = "90" Then
                 If strLoaiTKThang_PS = "TK_THANG" Then
                     strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                 ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
@@ -2738,6 +2738,8 @@ Public Sub cmdOK_Click()
             ElseIf idToKhai = "73" Then
                 If strLoaiTKThang_PS = "TK_LANPS" Then
                     strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                Else
+                    strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                 End If
             ElseIf idToKhai = "01" Or idToKhai = "02" Or idToKhai = "04" Or idToKhai = "95" Or idToKhai = "88" Or idToKhai = "71" Then
                 If strQuy = "TK_THANG" Then
