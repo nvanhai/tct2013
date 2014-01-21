@@ -683,7 +683,7 @@ Public Sub SetupData(pGrid As fpSpread)
                             ' end
                             
                             ' Doi voi to khai thang TNCN
-                            If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_1" _
+                            If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_15" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_1" _
                             Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "05" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "06" _
                             Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "86" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "89" _
                             Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "85" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "90") And mCurrentSheet = 1 Then
@@ -781,7 +781,7 @@ Public Sub SetupData(pGrid As fpSpread)
                             ' end
                             
                             ' Doi voi to khai thang TNCN
-                            If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_1" _
+                            If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_15" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_1" _
                             Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "05" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "06" _
                             Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "81" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "70" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "85" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "90") And mCurrentSheet = 1 Then
                                 ' Kiem tra xem da ton tai lan bo sung nay chua?
@@ -835,7 +835,7 @@ Public Sub SetupData(pGrid As fpSpread)
                                 ' end
                                 strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                                 ' Doi voi to khai quy TNCN
-                                If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11") And mCurrentSheet = 1 Then
+                                If ((TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_15")) And mCurrentSheet = 1 Then
                                     ' Kiem tra xem da ton tai lan bo sung nay chua?
                                     If Not fso.FileExists(strDataFileName) Then
                                         ' Neu chua ton tai lan bo sung nay va lan bo sung la 1 thi se lay to khai chinh thuc de cap nhat du lieu
@@ -873,7 +873,7 @@ Public Sub SetupData(pGrid As fpSpread)
                                 
                                     strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                                     ' Doi voi to khai quy TNCN
-                                    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "11" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "12" _
+                                    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_15" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "11" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "12" _
                                     Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") And mCurrentSheet = 1 Then
                                         ' Kiem tra xem da ton tai lan bo sung nay chua?
                                         If Not fso.FileExists(strDataFileName) Then
@@ -909,7 +909,7 @@ Public Sub SetupData(pGrid As fpSpread)
                                 
                                     strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                                     ' Doi voi to khai quy TNCN
-                                    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "11" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "12" _
+                                    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_15" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "11" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "12" _
                                     Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") And mCurrentSheet = 1 Then
                                         ' Kiem tra xem da ton tai lan bo sung nay chua?
                                         If Not fso.FileExists(strDataFileName) Then
@@ -946,7 +946,7 @@ Public Sub SetupData(pGrid As fpSpread)
                             
                                 strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                                 ' Doi voi to khai quy TNCN
-                                If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "11" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "12" _
+                                If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_15" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "11" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "12" _
                                 Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") And mCurrentSheet = 1 Then
                                     ' Kiem tra xem da ton tai lan bo sung nay chua?
                                     If Not fso.FileExists(strDataFileName) Then
@@ -1146,7 +1146,7 @@ Public Sub SetupData(pGrid As fpSpread)
                 For Each xmlNodeCell In xmlNodeListCell
                     '18/11/2011 dntai
                     ' Trong truong ho la to khai thang/quy TNCN va Tong so cell < tong so cell - 7 (Cac cell tu ngay ky den ... So lan bo sung ko duoc cap nhat,thong tin nhan vien dai ly thue) thi thoat khoi vong for
-                    If ((TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11") And (countCell = totalCell - 1) And mCurrentSheet = 1) Then Exit For
+                    If ((TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_15") And (countCell = totalCell - 1) And mCurrentSheet = 1) Then Exit For
                     ' Ket thuc Trong truong ho la to khai thang/quy TNCN
                     
                     vCellID = GetAttribute(xmlNodeCell, "CellID")

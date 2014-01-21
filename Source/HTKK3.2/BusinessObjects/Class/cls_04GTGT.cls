@@ -221,15 +221,15 @@ Public Sub Prepare2()
         End If
             'end
         
-        .Sheet = sheetPl01_1_GTGT 'PL1
-            .ActiveSheet = .Sheet
-                .Row = 1
-                .Col = .ColLetterToNumber("C")
-                .CellType = CellTypeButton
-                .TypeButtonTextColor = RGB(0, 0, 255)
-                .TypeButtonColor = &H8000000F
-                .TypeButtonAlign = TypeButtonAlignRight
-                .TypeButtonText = GetAttribute(GetMessageCellById("0104"), "Msg")
+'        .Sheet = sheetPl01_1_GTGT 'PL1
+'            .ActiveSheet = .Sheet
+'                .Row = 1
+'                .Col = .ColLetterToNumber("C")
+'                .CellType = CellTypeButton
+'                .TypeButtonTextColor = RGB(0, 0, 255)
+'                .TypeButtonColor = &H8000000F
+'                .TypeButtonAlign = TypeButtonAlignRight
+'                .TypeButtonText = GetAttribute(GetMessageCellById("0104"), "Msg")
                 
         fps.EventEnabled(EventAllEvents) = True
         

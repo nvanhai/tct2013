@@ -7339,7 +7339,7 @@ Private Sub Form_Load()
     Dim Parentid As String
     Parentid = TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue
     
-    If (Parentid = "101_11") Then
+    If (Parentid = "101_11" Or Parentid = "101_15") Then
         If strKHBS = "TKCT" Then
             objTaxBusiness.strloaitk = "TKCT"
         ElseIf strKHBS = "TKBS" Then
@@ -9793,7 +9793,7 @@ Private Function CheckValidData() As Boolean
     
     ' Doi voi truong hop la to khai bo sung thi ko checkValidData, nhung truong hop bo sung cua TNCN thi van phai check
     vGroupTK = TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue
-    If strKHBS = "TKBS" And (vGroupTK <> "101_11" And vGroupTK <> "101_1" And vGroupTK <> "101_2" And vGroupTK <> "101_3" And vGroupTK <> "101_4" And vGroupTK <> "101_8") Then
+    If strKHBS = "TKBS" And (vGroupTK <> "101_11" And vGroupTK <> "101_15" And vGroupTK <> "101_1" And vGroupTK <> "101_2" And vGroupTK <> "101_3" And vGroupTK <> "101_4" And vGroupTK <> "101_8") Then
         Exit Function
     End If
     
@@ -10204,7 +10204,7 @@ Private Sub ResetData()
             TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = IIf(IsUpdate = True, IsUpdate, TAX_Utilities_v1.AdjustData(mCurrentSheet - 1))
 nextClear1:
         Next
-    ElseIf (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_10") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11") Then
+    ElseIf (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_10") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_15") Then
         For Each xmlNodeReset In TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
             ' Doi voi to khai 09/TNCN thi hai chi tieu tu thang den thang cung ko duoc clear
             'Cac TK TNCN ko cler cac chi tieu hearder và footer
