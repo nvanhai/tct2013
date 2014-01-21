@@ -1249,6 +1249,7 @@ Public Function changeMaToKhaiQLT(strID As String, isLanPS, LoaiKyKK) As String
     
     'Khong chan cap to khai 03/GTGT va 04/GTGT cu & moi
     ' To khai 03_GTGT
+    ' TODO cap nhat them ID cu
     If strID = "04" And LoaiKyKK = False Then
         changeMaToKhaiQLT = "02,A1" ' 02,03
     Else
