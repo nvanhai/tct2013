@@ -1444,37 +1444,67 @@ Private Sub chkTKLanPS_Click()
             
             Call Form_Resize
         ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "05" Then
-            frmKy.Height = 1465
-            Frame2.Top = 1800
+'            frmKy.Height = 1465
+'            Frame2.Top = 1800
+'
+'            Set OptChinhthuc.Container = frmKy
+'            OptChinhthuc.Top = 8000
+'            OptChinhthuc.Left = 960
+'
+'            Set OptBosung.Container = frmKy
+'            OptBosung.Top = 8600
+'            OptBosung.Left = 960
+'
+'            Set lblSolan.Container = frmKy
+'            lblSolan.Top = 9200
+'            lblSolan.Left = 3000
+'            Set txtSolan.Container = frmKy
+'            txtSolan.Top = 9400
+'            txtSolan.Left = 3400
+'
+'            Set lblNganhKD.Container = frmKy
+'            lblNganhKD.Top = 1550
+'            lblNganhKD.Left = 120
+'
+'            Set cboNganhKD.Container = frmKy
+'            cboNganhKD.Top = 1000
+'            cboNganhKD.Left = 120
+'
+'
+'            OptChinhthuc.Visible = False
+'            OptBosung.Visible = False
+'            lblSolan.Visible = False
+'            txtSolan.Visible = False
+            frmKy.Height = 2400
+            Frame2.Top = 2700
+            
             
             Set OptChinhthuc.Container = frmKy
-            OptChinhthuc.Top = 8000
+            OptChinhthuc.Top = 900
             OptChinhthuc.Left = 960
             
             Set OptBosung.Container = frmKy
-            OptBosung.Top = 8600
+            OptBosung.Top = 1200
             OptBosung.Left = 960
             
             Set lblSolan.Container = frmKy
-            lblSolan.Top = 9200
+            lblSolan.Top = 1200
             lblSolan.Left = 3000
             Set txtSolan.Container = frmKy
-            txtSolan.Top = 9400
+            txtSolan.Top = 1200
             txtSolan.Left = 3400
             
+            lblSolan.Visible = False
+            txtSolan.Visible = False
+            
+    
             Set lblNganhKD.Container = frmKy
             lblNganhKD.Top = 1550
             lblNganhKD.Left = 120
             
             Set cboNganhKD.Container = frmKy
-            cboNganhKD.Top = 1000
+            cboNganhKD.Top = 1850
             cboNganhKD.Left = 120
-            
-            
-            OptChinhthuc.Visible = False
-            OptBosung.Visible = False
-            lblSolan.Visible = False
-            txtSolan.Visible = False
             Call Form_Resize
         End If
     Else
@@ -2723,7 +2753,7 @@ Public Sub cmdOK_Click()
         Dim fso1 As New FileSystemObject
         If Trim(TAX_Utilities_v1.month) <> "" Then
             ' to khai nha thau nuoc ngoai
-            If idToKhai = "70" Or idToKhai = "06" Or idToKhai = "81" Or idToKhai = "90" Then
+            If idToKhai = "70" Or idToKhai = "06" Or idToKhai = "81" Or idToKhai = "90" Or idToKhai = "05" Then
                 If strLoaiTKThang_PS = "TK_THANG" Then
                     strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                 ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
