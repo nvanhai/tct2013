@@ -109,19 +109,8 @@ Public Sub Prepare2()
             UpdateCell fps, .ColLetterToNumber("AI"), 54, ngay & "/" & TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year
         End If
 
-        'set to khai chinh thuc hay bao sung
-        If StrTKThang_PS = "TK_THANG" Then
-            .Col = .ColLetterToNumber("P")
-            .Row = 54
-            .Text = 1
-            UpdateCell fps, .Col, .Row, .Text
-         
-            .Col = .ColLetterToNumber("Q")
-            .Row = 54
-            .Text = ""
-            UpdateCell fps, .Col, .Row, .Text
-
-            ' set lan dau hoac lan bo sung
+        
+        ' set lan dau hoac lan bo sung
             If Strloaitk = "TKCT" Then
                 .Col = .ColLetterToNumber("M")
                 .Row = 54
@@ -141,6 +130,20 @@ Public Sub Prepare2()
                 .Text = StrSolanBosung
                 UpdateCell fps, .Col, .Row, .Text
             End If
+
+        'set to khai chinh thuc hay bao sung
+        If StrTKThang_PS = "TK_THANG" Then
+            .Col = .ColLetterToNumber("P")
+            .Row = 54
+            .Text = 1
+            UpdateCell fps, .Col, .Row, .Text
+         
+            .Col = .ColLetterToNumber("Q")
+            .Row = 54
+            .Text = ""
+            UpdateCell fps, .Col, .Row, .Text
+
+            
             
             '- Set to khai lan bo sung
         ElseIf StrTKThang_PS = "TK_LANPS" Then
@@ -152,14 +155,14 @@ Public Sub Prepare2()
             .Row = 54
             .Text = 1
             UpdateCell fps, .Col, .Row, .Text
-            .Col = .ColLetterToNumber("M")
-            .Row = 54
-            .Text = 1
-            UpdateCell fps, .Col, .Row, .Text
-            .Col = .ColLetterToNumber("O")
-            .Row = 54
-            .Text = ""
-            UpdateCell fps, .Col, .Row, .Text
+'            .Col = .ColLetterToNumber("M")
+'            .Row = 54
+'            .Text = 1
+'            UpdateCell fps, .Col, .Row, .Text
+'            .Col = .ColLetterToNumber("O")
+'            .Row = 54
+'            .Text = ""
+'            UpdateCell fps, .Col, .Row, .Text
 
         End If
         

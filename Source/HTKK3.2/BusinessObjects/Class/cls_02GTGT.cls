@@ -2472,14 +2472,14 @@ With fps
  
     Else
         .Sheet = 1
-        ' chi tieu 23
+        ' chi tieu 22
         .Col = .ColLetterToNumber("BW")
-        .Row = rowCt23
+        .Row = rowCt22
         .Lock = False
         .Formula = ""
-        ' chi tieu 24
+        ' chi tieu 23
         .Col = .ColLetterToNumber("CT")
-        .Row = rowCt24
+        .Row = rowCt23
         .Lock = False
         .Formula = ""
     
@@ -2795,4 +2795,6 @@ Private Sub setMaHoaDon()
         Next i
     End With
 End Sub
+
+
 
