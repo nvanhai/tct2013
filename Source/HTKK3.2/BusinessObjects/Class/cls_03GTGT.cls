@@ -1562,7 +1562,7 @@ Public Sub inThongTinDL()
     tuRowDL = 21
     denRowDL = 31
     'TuRow_DenRow_sheet
-    strTuRowDenRowPL = "9_11_2~9_11_3"
+    strTuRowDenRowPL = "~20_30_2"
     ' end
 End Sub
 
