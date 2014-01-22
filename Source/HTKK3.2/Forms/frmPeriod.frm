@@ -483,7 +483,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":029E
       UserResize      =   1
       Appearance      =   1
    End
@@ -2264,23 +2264,23 @@ End Sub
 
 Public Sub cmdOK_Click()
     On Error GoTo ErrorHandle
-    Dim frmTK As frmInterfaces
-    Dim dNgayDau As Date
-    Dim dNgayCuoi As Date
-    Dim dNgayDauQuy As Date
+    Dim frmTK        As frmInterfaces
+    Dim dNgayDau     As Date
+    Dim dNgayCuoi    As Date
+    Dim dNgayDauQuy  As Date
     Dim dNgayCuoiQuy As Date
-    Dim sNgay As String
-    Dim sNgayDD As Date
+    Dim sNgay        As String
+    Dim sNgayDD      As Date
     Dim objDateUtils As DateUtils
     
     Dim strTempValue As String
     
-    Dim idToKhai As String
+    Dim idToKhai     As String
     
     If OptBosung.value = True Then
-    strSolanBS = txtSolan.Text
+        strSolanBS = txtSolan.Text
     Else
-    strSolanBS = ""
+        strSolanBS = ""
     End If
     
     If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "64" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "91" Then
@@ -2293,14 +2293,17 @@ Public Sub cmdOK_Click()
         DisplayMessage "0176", msOKOnly, miInformation
         Exit Sub
     End If
+
     If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "53" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "54") And ((Val(txtYear.Text) = 2010 And txtMonth.Text <> "01") Or Val(txtYear.Text) >= 2011) Then
         DisplayMessage "0176", msOKOnly, miInformation
         Exit Sub
     End If
+
     If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "39") And ((Val(txtYear.Text) = 2010 And txtMonth.Text <> "01") Or Val(txtYear.Text) >= 2011) Then
         DisplayMessage "0176", msOKOnly, miInformation
         Exit Sub
     End If
+
     If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "15" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "50") And Val(txtYear.Text) = 2010 And txtMonth.Text = "01" Then
         DisplayMessage "0177", msOKOnly, miInformation
         Exit Sub
@@ -2325,7 +2328,9 @@ Public Sub cmdOK_Click()
                 DisplayMessage "0188", msOKOnly, miInformation
                 Exit Sub
             End If
+
         Else
+
             If (objCvt.ToDate(txtDay.Text + "/" + txtMonth.Text + "/" + txtYear.Text, "DD/MM/YYYY") > Date) Then
                 DisplayMessage "0188", msOKOnly, miInformation
                 Exit Sub
@@ -2334,30 +2339,34 @@ Public Sub cmdOK_Click()
     End If
         
     ' validate cho to 04TBAC
-'    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "93" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "89") Then
-'        If (chkDauTho.value = 0 And chkCondensate.value = 0 And chkKhiThien.value = 0) Then
-'            DisplayMessage "0017", msOKOnly, miInformation
-'            Exit Sub
-'        End If
-'    End If
+    '    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "93" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "89") Then
+    '        If (chkDauTho.value = 0 And chkCondensate.value = 0 And chkKhiThien.value = 0) Then
+    '            DisplayMessage "0017", msOKOnly, miInformation
+    '            Exit Sub
+    '        End If
+    '    End If
     
     If strKieuKy = KIEU_KY_NGAY_NAM Then
         txtNgayDau_LostFocus
+
         If Not blnValidInfo(3) Then Exit Sub
         txtNgayCuoi_LostFocus
+
         If Not blnValidInfo(4) Then Exit Sub
     End If
-    
     
     'end
     'dhdang
     ' comment???
     If strKieuKy <> "H_Y" Then
-            txtMonth_LostFocus
-            If Not blnValidInfo(1) Then Exit Sub
-            txtYear_LostFocus
-            If Not blnValidInfo(2) Then Exit Sub
+        txtMonth_LostFocus
+
+        If Not blnValidInfo(1) Then Exit Sub
+        txtYear_LostFocus
+
+        If Not blnValidInfo(2) Then Exit Sub
     End If
+
     ' end
     
     'requirement
@@ -2365,14 +2374,15 @@ Public Sub cmdOK_Click()
         DisplayMessage "0017", msOKOnly, miInformation
         txtMonth.SetFocus
         Exit Sub
-    '****************
-    ' added
+        '****************
+        ' added
     ElseIf Val(txtMonth.Text) = 0 And txtMonth.Visible Then
-    '****************
+        '****************
         DisplayMessage "0018", msOKOnly, miInformation
         txtMonth.SetFocus
         Exit Sub
     End If
+
     If Len(cmbQuy.Text) = 0 And cmbQuy.Visible Then
         DisplayMessage "0017", msOKOnly, miInformation
         txtMonth.SetFocus
@@ -2382,6 +2392,7 @@ Public Sub cmdOK_Click()
         txtMonth.SetFocus
         Exit Sub
     End If
+
     If Len(txtYear.Text) = 0 And txtYear.Visible Then
         DisplayMessage "0017", msOKOnly, miInformation
         txtYear.SetFocus
@@ -2391,6 +2402,7 @@ Public Sub cmdOK_Click()
         txtYear.SetFocus
         Exit Sub
     End If
+
     ' Kiem tra txtDay
     If Len(txtDay.Text) = 0 And txtDay.Visible Then
         DisplayMessage "0017", msOKOnly, miInformation
@@ -2402,7 +2414,6 @@ Public Sub cmdOK_Click()
         Exit Sub
     End If
     
-    
     If Len(txtNgayDau.Text) = 0 And txtNgayDau.Visible Then
         DisplayMessage "0017", msOKOnly, miInformation
         txtNgayDau.SetFocus
@@ -2412,6 +2423,7 @@ Public Sub cmdOK_Click()
         txtNgayDau.SetFocus
         Exit Sub
     End If
+
     If Len(txtNgayCuoi.Text) = 0 And txtNgayCuoi.Visible Then
         DisplayMessage "0017", msOKOnly, miInformation
         txtNgayCuoi.SetFocus
@@ -2439,79 +2451,95 @@ Public Sub cmdOK_Click()
         txtYear.SetFocus
         Exit Sub
     End If
+
     '***************************
     
     '***************************
     If strKieuKy = KIEU_KY_THANG Then
-        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" _
-        Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "25" Then
+        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "25" Then
+
             If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Then
                 If strQuy = "TK_THANG" Then
-                     If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
+                    If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
                         txtMonth.SetFocus
                         Exit Sub
                     End If
+
                 ElseIf strQuy = "TK_QUY" Then
+
                     If Not CheckPeriod(cmbQuy.Text, txtYear.Text) Then
                         cmbQuy.SetFocus
                         Exit Sub
                     End If
                     
-                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" _
-                    Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Then
-                         If (Val(TAX_Utilities_v1.ThreeMonths) < 3 And Val(TAX_Utilities_v1.Year) = 2013) Or Val(TAX_Utilities_v1.Year) < 2013 Then
+                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Then
+
+                        If (Val(TAX_Utilities_v1.ThreeMonths) < 3 And Val(TAX_Utilities_v1.Year) = 2013) Or Val(TAX_Utilities_v1.Year) < 2013 Then
                             DisplayMessage "0272", msOKOnly, miCriticalError
                             cmbQuy.SetFocus
                             Exit Sub
-                         End If
+                        End If
                     End If
+
                 ElseIf strQuy = "TK_LANPS" Then
                     
                 End If
+
             Else
+
                 If strQuy = "TK_THANG" Then
-                     If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
+                    If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
                         txtMonth.SetFocus
                         Exit Sub
                     End If
+
                 ElseIf strQuy = "TK_QUY" Then
+
                     If Not CheckPeriod(cmbQuy.Text, txtYear.Text) Then
                         cmbQuy.SetFocus
                         Exit Sub
                     End If
                     
-                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" _
-                    Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Then
-                         If (Val(TAX_Utilities_v1.ThreeMonths) < 3 And Val(TAX_Utilities_v1.Year) = 2013) Or Val(TAX_Utilities_v1.Year) < 2013 Then
+                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Then
+
+                        If (Val(TAX_Utilities_v1.ThreeMonths) < 3 And Val(TAX_Utilities_v1.Year) = 2013) Or Val(TAX_Utilities_v1.Year) < 2013 Then
                             DisplayMessage "0272", msOKOnly, miCriticalError
                             cmbQuy.SetFocus
                             Exit Sub
-                         End If
+                        End If
                     End If
                 End If
             End If
+
         Else
+
             If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
                 txtMonth.SetFocus
                 Exit Sub
             End If
         End If
+
     ElseIf strKieuKy = KIEU_KY_QUY Then
+
         If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73" And chkTKLanPS.value = "1" Then
         Else
+
             If Not CheckPeriod(cmbQuy.Text, txtYear.Text) Then
                 cmbQuy.SetFocus
                 Exit Sub
             End If
         End If
+
         ' BC 26
         If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "68" Then
             If strQuy = "TK_THANG" Then
-                 If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
+                If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
                     txtMonth.SetFocus
                     Exit Sub
                 End If
+
             ElseIf strQuy = "TK_QUY" Then
+
                 If Not CheckPeriod(cmbQuy.Text, txtYear.Text) Then
                     cmbQuy.SetFocus
                     Exit Sub
@@ -2522,7 +2550,8 @@ Public Sub cmdOK_Click()
         ' To khai 02/TNDN
         If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73" Then
             If txtDay.Text <> "" Then
-            sNgay = Right("00" & txtDay.Text, 2) & "/" & Right("00" & txtMonth.Text, 2) & "/" & Right("0000" & txtYear.Text, 4)
+                sNgay = Right("00" & txtDay.Text, 2) & "/" & Right("00" & txtMonth.Text, 2) & "/" & Right("0000" & txtYear.Text, 4)
+
                 If IsNull(objCvt.ToDate(sNgay, "DD/MM/YYYY")) Then
                     DisplayMessage "0071", msOKOnly, miCriticalError
                     txtDay.SetFocus
@@ -2536,20 +2565,24 @@ Public Sub cmdOK_Click()
             TAX_Utilities_v1.FirstDay = txtNgayDau.Text
             TAX_Utilities_v1.LastDay = txtNgayCuoi.Text
         End If
+
     ElseIf strKieuKy = KIEU_KY_NAM Then
+
         If Not CheckPeriod("1", txtYear.Text) Then
             txtYear.SetFocus
             Exit Sub
         End If
     
-   ' dntai them vao ngay 08/05/2011
+        ' dntai them vao ngay 08/05/2011
     ElseIf strKieuKy = "H_Y" Then
+
         If Not CheckPeriod(cmbQuy.Text, txtYear.Text) Then
             txtYear.SetFocus
             Exit Sub
         End If
     
     ElseIf strKieuKy = KIEU_KY_NGAY_NAM Then
+
         If Not CheckPeriod("1", txtYear.Text) Then
             txtYear.SetFocus
             Exit Sub
@@ -2560,41 +2593,43 @@ Public Sub cmdOK_Click()
         dNgayCuoiQuy = GetNgayCuoiQuy(1, CInt(txtYear.Text) + 1, iNgayTaiChinh, iThangTaiChinh)
         dNgayDau = objDateUtils.ToDate(txtNgayDau, "DD/MM/YYYY")
         dNgayCuoi = objDateUtils.ToDate(txtNgayCuoi, "DD/MM/YYYY")
+
         ' Neu to khai khong phai la to khai quyet toan TNCN thi khong kiem tra ngay bat dau nam tai chinh
-        If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "17") _
-                    Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "41") _
-                            Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "42") _
-                                    Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "43") _
-                                        Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "26") _
-                                        Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "59") _
-                                            Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "44") Then
+        If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "17") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "41") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "42") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "43") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "26") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "59") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "44") Then
+
             If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "80") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "82") Then
                 ' To khai 02/NTNN vaf 04/NTNN se khong check dk nay
             Else
+
                 If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "03" Then
                 Else
+
                     If dNgayDau < dNgayDauQuy Then
                         DisplayMessage "0065", msOKOnly, miInformation
                         txtNgayDau.SetFocus
                         Exit Sub
                     End If
+
                     If dNgayCuoi > dNgayCuoiQuy Then
                         DisplayMessage "0066", msOKOnly, miInformation
                         txtNgayCuoi.SetFocus
                         Exit Sub
                     End If
                 End If
+
                 If DateDiff("M", dNgayDau, dNgayCuoi) + 1 > 15 Then
                     DisplayMessage "0068", msOKOnly, miInformation
                     txtNgayCuoi.SetFocus
                     Exit Sub
                 End If
             End If
+
             If dNgayCuoi < dNgayDau Then
                 DisplayMessage "0069", msOKOnly, miInformation
                 txtNgayCuoi.SetFocus
                 Exit Sub
             End If
+
             ' To khai 02/NTNN vaf 04/NTNN them dk den thang phai nho hon hoac bang thang hien tai
             If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "80") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "82") Then
                 If DateDiff("D", DateSerial(Year(dNgayCuoi), month(dNgayCuoi), 1), DateSerial(Year(Date), month(Date), 1)) < 0 Then
@@ -2604,15 +2639,19 @@ Public Sub cmdOK_Click()
                 End If
             End If
         End If
+
         txtNgayCuoi.Text = objDateUtils.ToString(dNgayCuoi, "DD/MM/YYYY")
-      ElseIf strKieuKy = KIEU_KY_NGAY_THANG Then
+    ElseIf strKieuKy = KIEU_KY_NGAY_THANG Then
+
         If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
             txtMonth.SetFocus
             Exit Sub
         End If
-'htphuong add check valid ngay mau 05/GTGT
+
+        'htphuong add check valid ngay mau 05/GTGT
         If txtDay.Text <> "" Then
-        sNgay = Right("00" & txtDay.Text, 2) & "/" & Right("00" & txtMonth.Text, 2) & "/" & Right("0000" & txtYear.Text, 4)
+            sNgay = Right("00" & txtDay.Text, 2) & "/" & Right("00" & txtMonth.Text, 2) & "/" & Right("0000" & txtYear.Text, 4)
+
             If IsNull(objCvt.ToDate(sNgay, "DD/MM/YYYY")) Then
                 DisplayMessage "0071", msOKOnly, miCriticalError
                 txtDay.SetFocus
@@ -2621,80 +2660,84 @@ Public Sub cmdOK_Click()
         End If
     End If
     
-   ' Kiem tra to khai 07/TNCN
-   If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "36") Then
+    ' Kiem tra to khai 07/TNCN
+    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "36") Then
         If strQuy = "TK_THANG" Then
             If (Val(TAX_Utilities_v1.month) >= 7 And Val(TAX_Utilities_v1.Year) = 2013) Or Val(TAX_Utilities_v1.Year) > 2013 Then
                 DisplayMessage "0266", msOKOnly, miCriticalError
                 txtMonth.SetFocus
                 Exit Sub
             End If
+
         ElseIf strQuy = "TK_QUY" Then
+
             If (Val(TAX_Utilities_v1.ThreeMonths) < 3 And Val(TAX_Utilities_v1.Year) = 2013) Or Val(TAX_Utilities_v1.Year) < 2013 Then
                 DisplayMessage "0267", msOKOnly, miCriticalError
                 cmbQuy.SetFocus
                 Exit Sub
             End If
         End If
-   End If
+    End If
     
     ' Kiem tra to khai 08 tu ngay phai nho hon den ngay
     If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "74" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "75" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "23") And strQuy = "TK_TU_THANG" Then
-            If Trim(txtNgayDau.Text) <> "" Then
-                 strTempValue = Trim(txtNgayDau.Text)
-                 dNgayDau = objCvt.ToDate("01" & "/" & strTempValue, "DD/MM/YYYY")
-            End If
+        If Trim(txtNgayDau.Text) <> "" Then
+            strTempValue = Trim(txtNgayDau.Text)
+            dNgayDau = objCvt.ToDate("01" & "/" & strTempValue, "DD/MM/YYYY")
+        End If
             
-            If Trim(txtNgayCuoi.Text) <> "" Then
-                 strTempValue = Trim(txtNgayCuoi.Text)
-                 dNgayCuoi = objCvt.ToDate("01" & "/" & strTempValue, "DD/MM/YYYY")
-            End If
+        If Trim(txtNgayCuoi.Text) <> "" Then
+            strTempValue = Trim(txtNgayCuoi.Text)
+            dNgayCuoi = objCvt.ToDate("01" & "/" & strTempValue, "DD/MM/YYYY")
+        End If
             
-            If dNgayCuoi < dNgayDau Then
-                DisplayMessage "0069", msOKOnly, miInformation
-                txtNgayCuoi.SetFocus
-                Exit Sub
-            End If
+        If dNgayCuoi < dNgayDau Then
+            DisplayMessage "0069", msOKOnly, miInformation
+            txtNgayCuoi.SetFocus
+            Exit Sub
+        End If
     End If
     
     ' 01/KK-TTS
     If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "23") And strQuy = "TK_TU_THANG" Then
-            If Trim(txtNgayDau.Text) <> "" Then
-                 strTempValue = Trim(txtNgayDau.Text)
-                 dNgayDau = objCvt.ToDate("01" & "/" & strTempValue, "DD/MM/YYYY")
-            End If
+        If Trim(txtNgayDau.Text) <> "" Then
+            strTempValue = Trim(txtNgayDau.Text)
+            dNgayDau = objCvt.ToDate("01" & "/" & strTempValue, "DD/MM/YYYY")
+        End If
             
-            If Trim(txtNgayCuoi.Text) <> "" Then
-                 strTempValue = Trim(txtNgayCuoi.Text)
-                 dNgayCuoi = objCvt.ToDate("01" & "/" & strTempValue, "DD/MM/YYYY")
-            End If
+        If Trim(txtNgayCuoi.Text) <> "" Then
+            strTempValue = Trim(txtNgayCuoi.Text)
+            dNgayCuoi = objCvt.ToDate("01" & "/" & strTempValue, "DD/MM/YYYY")
+        End If
             
-            If dNgayCuoi < dNgayDau Then
-                DisplayMessage "0069", msOKOnly, miInformation
-                txtNgayCuoi.SetFocus
-                Exit Sub
-            End If
+        If dNgayCuoi < dNgayDau Then
+            DisplayMessage "0069", msOKOnly, miInformation
+            txtNgayCuoi.SetFocus
+            Exit Sub
+        End If
     End If
     
     'chan ngay kk lan phat sinh < ngay hien tai
-    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "70" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "06" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "72" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "73" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "81" _
-     Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "90") And chkTKLanPS.value = "1" Then
+    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "70" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "06" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "72" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "73" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "81" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "90") And chkTKLanPS.value = "1" Then
+
         If Trim(sNgay) <> "" Then
             sNgayDD = DateSerial(CInt(Mid$(sNgay, 7, 4)), CInt(Mid$(sNgay, 4, 2)), CInt(Mid$(sNgay, 1, 2)))
+
             If DateDiff("D", Date, sNgayDD) > 0 Then
                 DisplayMessage "0223", msOKOnly, miInformation
                 Exit Sub
             End If
         End If
     End If
+
     '***************************
     
     'set data
     TAX_Utilities_v1.Year = txtYear.Text
+
     If strKieuKy = KIEU_KY_THANG Then
-        If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "01" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "02" _
-        Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "04" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "95" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "88" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "71" _
-        Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "36" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "25" Then
+        If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "01" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "02" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "04" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "95" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "88" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "71" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "36" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "25" Then
+
             If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "71" Then
                 If strQuy = "TK_THANG" Then
                     TAX_Utilities_v1.month = txtMonth.Text
@@ -2714,6 +2757,7 @@ Public Sub cmdOK_Click()
                 End If
 
             Else
+
                 If strQuy = "TK_THANG" Then
                     TAX_Utilities_v1.month = txtMonth.Text
                     TAX_Utilities_v1.ThreeMonths = vbNullString
@@ -2726,15 +2770,18 @@ Public Sub cmdOK_Click()
                     TAX_Utilities_v1.LastDay = vbNullString
                 End If
             End If
+
         Else
             TAX_Utilities_v1.month = txtMonth.Text
             TAX_Utilities_v1.ThreeMonths = vbNullString
             TAX_Utilities_v1.FirstDay = vbNullString
             TAX_Utilities_v1.LastDay = vbNullString
         End If
+
     ElseIf strKieuKy = KIEU_KY_QUY Then
         TAX_Utilities_v1.month = vbNullString
         TAX_Utilities_v1.ThreeMonths = cmbQuy.Text
+
         If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "74" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "75" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "23" Then
             TAX_Utilities_v1.FirstDay = txtNgayDau.Text
             TAX_Utilities_v1.LastDay = txtNgayCuoi.Text
@@ -2742,6 +2789,7 @@ Public Sub cmdOK_Click()
             TAX_Utilities_v1.FirstDay = vbNullString
             TAX_Utilities_v1.LastDay = vbNullString
         End If
+
         ' To khai 02/TNDN
         If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73" Then
             If strLoaiTKThang_PS = "TK_LANPS" Then
@@ -2752,13 +2800,15 @@ Public Sub cmdOK_Click()
                 TAX_Utilities_v1.month = vbNullString
             End If
         End If
-' phuc vu an chi
-' dhdang comment to khai nao???
+
+        ' phuc vu an chi
+        ' dhdang comment to khai nao???
     ElseIf strKieuKy = "H_Y" Then
+
         If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "68" Then
-'            If strQuy = "TK_THANG" Then
-'                TAX_Utilities_v1.month = txtMonth.Text
-'            Else
+            '            If strQuy = "TK_THANG" Then
+            '                TAX_Utilities_v1.month = txtMonth.Text
+            '            Else
             TAX_Utilities_v1.month = vbNullString
             'End If
             TAX_Utilities_v1.ThreeMonths = cmbQuy.Text
@@ -2772,7 +2822,8 @@ Public Sub cmdOK_Click()
             TAX_Utilities_v1.LastDay = txtNgayCuoi.Text
             TAX_Utilities_v1.Year = txtYear.Text
         End If
- ' end
+
+        ' end
     ElseIf strKieuKy = KIEU_KY_NGAY_NAM Then
         TAX_Utilities_v1.month = vbNullString
         TAX_Utilities_v1.ThreeMonths = vbNullString
@@ -2783,7 +2834,7 @@ Public Sub cmdOK_Click()
         TAX_Utilities_v1.ThreeMonths = vbNullString
         TAX_Utilities_v1.FirstDay = vbNullString
         TAX_Utilities_v1.LastDay = vbNullString
-  ' htphuong add them to khai 05/GTGT
+        ' htphuong add them to khai 05/GTGT
     ElseIf strKieuKy = KIEU_KY_NGAY_THANG Then
         TAX_Utilities_v1.month = txtMonth.Text
         TAX_Utilities_v1.Day = txtDay.Text
@@ -2801,194 +2852,229 @@ Public Sub cmdOK_Click()
     
     ' Luu gia tri nganh nghe kinh doanh
     idToKhai = TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue
+
     If idToKhai = "01" Or idToKhai = "11" Or idToKhai = "12" Or idToKhai = "05" Or idToKhai = "03" Then
-    'If idToKhai = "01" Or idToKhai = "11" Or idToKhai = "12" Or idToKhai = "05" Or idToKhai = "03" Or idToKhai = "73" Then
+        'If idToKhai = "01" Or idToKhai = "11" Or idToKhai = "12" Or idToKhai = "05" Or idToKhai = "03" Or idToKhai = "73" Then
         strLoaiNNKD = cboNganhKD.ItemData(cboNganhKD.ListIndex)
     End If
-    
     
     If TAX_Utilities_v1.NodeMenu Is Nothing Then Exit Sub
     
     If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "15" Then
-            If ExistTokhai("02B_TNCN10_", False, TAX_Utilities_v1.month & TAX_Utilities_v1.Year) = True Then
-                DisplayMessage "0126", msOKOnly, miWarning
-                Unload Me
-                frmTreeviewMenu.Show
-                Exit Sub
-            End If
-     ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "16" Then
-            If ExistTokhai("02A_TNCN10_", True, TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year) = True Then
-                DisplayMessage "0125", msOKOnly, miWarning
-                Unload Me
-                frmTreeviewMenu.Show
-                Exit Sub
-            End If
+        If ExistTokhai("02B_TNCN10_", False, TAX_Utilities_v1.month & TAX_Utilities_v1.Year) = True Then
+            DisplayMessage "0126", msOKOnly, miWarning
+            Unload Me
+            frmTreeviewMenu.Show
+            Exit Sub
+        End If
+
+    ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "16" Then
+
+        If ExistTokhai("02A_TNCN10_", True, TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year) = True Then
+            DisplayMessage "0125", msOKOnly, miWarning
+            Unload Me
+            frmTreeviewMenu.Show
+            Exit Sub
+        End If
+
     ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "53" Then
-            If ExistTokhai("02B_TNCN_", True, TAX_Utilities_v1.month & TAX_Utilities_v1.Year) = True Then
-                DisplayMessage "0125", msOKOnly, miWarning
-                Unload Me
-                frmTreeviewMenu.Show
-                Exit Sub
-            End If
+
+        If ExistTokhai("02B_TNCN_", True, TAX_Utilities_v1.month & TAX_Utilities_v1.Year) = True Then
+            DisplayMessage "0125", msOKOnly, miWarning
+            Unload Me
+            frmTreeviewMenu.Show
+            Exit Sub
+        End If
+
     ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "37" Then
-            If ExistTokhai("02A_TNCN_", True, TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year) = True Then
-                DisplayMessage "0125", msOKOnly, miWarning
-                Unload Me
-                frmTreeviewMenu.Show
-                Exit Sub
-            End If
-     ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "50" Then
-            If ExistTokhai("03B_TNCN10_", True, TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year) = True Then
-                DisplayMessage "0126", msOKOnly, miWarning
-                Unload Me
-                frmTreeviewMenu.Show
-                Exit Sub
-            End If
-     ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "51" Then
-            If ExistTokhai("03A_TNCN10_", True, TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year) = True Then
-                DisplayMessage "0125", msOKOnly, miWarning
-                Unload Me
-                frmTreeviewMenu.Show
-                Exit Sub
-            End If
-     ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "54" Then
-            If ExistTokhai("03B_TNCN_", True, TAX_Utilities_v1.month & TAX_Utilities_v1.Year) = True Then
-                DisplayMessage "0125", msOKOnly, miWarning
-                Unload Me
-                frmTreeviewMenu.Show
-                Exit Sub
-            End If
-     ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "38" Then
-            If ExistTokhai("03A_TNCN_", True, TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year) = True Then
-                DisplayMessage "0125", msOKOnly, miWarning
-                Unload Me
-                frmTreeviewMenu.Show
-                Exit Sub
-            End If
-     ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "39" Then
-            If ExistTokhai("04B_TNCN_", True, TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year) = True Then
-                DisplayMessage "0126", msOKOnly, miWarning
-                Unload Me
-                frmTreeviewMenu.Show
-                Exit Sub
-            End If
-     ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "40" Then
-            If ExistTokhai("04A_TNCN_", True, TAX_Utilities_v1.month & TAX_Utilities_v1.Year) = True Then
-                DisplayMessage "0125", msOKOnly, miWarning
-                Unload Me
-                frmTreeviewMenu.Show
-                Exit Sub
-            End If
+
+        If ExistTokhai("02A_TNCN_", True, TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year) = True Then
+            DisplayMessage "0125", msOKOnly, miWarning
+            Unload Me
+            frmTreeviewMenu.Show
+            Exit Sub
+        End If
+
+    ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "50" Then
+
+        If ExistTokhai("03B_TNCN10_", True, TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year) = True Then
+            DisplayMessage "0126", msOKOnly, miWarning
+            Unload Me
+            frmTreeviewMenu.Show
+            Exit Sub
+        End If
+
+    ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "51" Then
+
+        If ExistTokhai("03A_TNCN10_", True, TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year) = True Then
+            DisplayMessage "0125", msOKOnly, miWarning
+            Unload Me
+            frmTreeviewMenu.Show
+            Exit Sub
+        End If
+
+    ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "54" Then
+
+        If ExistTokhai("03B_TNCN_", True, TAX_Utilities_v1.month & TAX_Utilities_v1.Year) = True Then
+            DisplayMessage "0125", msOKOnly, miWarning
+            Unload Me
+            frmTreeviewMenu.Show
+            Exit Sub
+        End If
+
+    ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "38" Then
+
+        If ExistTokhai("03A_TNCN_", True, TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year) = True Then
+            DisplayMessage "0125", msOKOnly, miWarning
+            Unload Me
+            frmTreeviewMenu.Show
+            Exit Sub
+        End If
+
+    ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "39" Then
+
+        If ExistTokhai("04B_TNCN_", True, TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year) = True Then
+            DisplayMessage "0126", msOKOnly, miWarning
+            Unload Me
+            frmTreeviewMenu.Show
+            Exit Sub
+        End If
+
+    ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "40" Then
+
+        If ExistTokhai("04A_TNCN_", True, TAX_Utilities_v1.month & TAX_Utilities_v1.Year) = True Then
+            DisplayMessage "0125", msOKOnly, miWarning
+            Unload Me
+            frmTreeviewMenu.Show
+            Exit Sub
+        End If
+
     ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "46" Then
-            If ExistTokhai("01B_TNCN_BH_", False, TAX_Utilities_v1.month & TAX_Utilities_v1.Year) = True Then
-                DisplayMessage "0126", msOKOnly, miWarning
-                Unload Me
-                frmTreeviewMenu.Show
-                Exit Sub
-            End If
-     ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "47" Then
-            If ExistTokhai("01A_TNCN_BH_", True, TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year) = True Then
-                DisplayMessage "0125", msOKOnly, miWarning
-                Unload Me
-                frmTreeviewMenu.Show
-                Exit Sub
-            End If
+
+        If ExistTokhai("01B_TNCN_BH_", False, TAX_Utilities_v1.month & TAX_Utilities_v1.Year) = True Then
+            DisplayMessage "0126", msOKOnly, miWarning
+            Unload Me
+            frmTreeviewMenu.Show
+            Exit Sub
+        End If
+
+    ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "47" Then
+
+        If ExistTokhai("01A_TNCN_BH_", True, TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year) = True Then
+            DisplayMessage "0125", msOKOnly, miWarning
+            Unload Me
+            frmTreeviewMenu.Show
+            Exit Sub
+        End If
+
     ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "48" Then
-            If ExistTokhai("01B_TNCN_XS_", False, TAX_Utilities_v1.month & TAX_Utilities_v1.Year) = True Then
-                DisplayMessage "0126", msOKOnly, miWarning
-                Unload Me
-                frmTreeviewMenu.Show
-                Exit Sub
-            End If
-     ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "49" Then
-            If ExistTokhai("01A_TNCN_XS_", True, TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year) = True Then
-                DisplayMessage "0125", msOKOnly, miWarning
-                Unload Me
-                frmTreeviewMenu.Show
-                Exit Sub
-            End If
-    ' xu ly cho to khai thang/ quy
+
+        If ExistTokhai("01B_TNCN_XS_", False, TAX_Utilities_v1.month & TAX_Utilities_v1.Year) = True Then
+            DisplayMessage "0126", msOKOnly, miWarning
+            Unload Me
+            frmTreeviewMenu.Show
+            Exit Sub
+        End If
+
+    ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "49" Then
+
+        If ExistTokhai("01A_TNCN_XS_", True, TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year) = True Then
+            DisplayMessage "0125", msOKOnly, miWarning
+            Unload Me
+            frmTreeviewMenu.Show
+            Exit Sub
+        End If
+
+        ' xu ly cho to khai thang/ quy
     ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "01" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "02" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "04" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "71" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "25" Then
-            If strQuy = "TK_QUY" Then
-                If ExistTokhai(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_", True, TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year) = True Then
+
+        If strQuy = "TK_QUY" Then
+            If ExistTokhai(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_", True, TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year) = True Then
                 DisplayMessage "0125", msOKOnly, miWarning
                 Unload Me
                 frmTreeviewMenu.Show
                 Exit Sub
-                 End If
-            ElseIf strQuy = "TK_THANG" Then
-                If ExistTokhai(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_Q", False, TAX_Utilities_v1.month & TAX_Utilities_v1.Year) = True Then
+            End If
+
+        ElseIf strQuy = "TK_THANG" Then
+
+            If ExistTokhai(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_Q", False, TAX_Utilities_v1.month & TAX_Utilities_v1.Year) = True Then
                 DisplayMessage "0126", msOKOnly, miWarning
                 Unload Me
                 frmTreeviewMenu.Show
                 Exit Sub
             End If
-            End If
+        End If
     End If
     
     ' Check validate BC AC
     ' BC26
     ' Kiem tra tu ngay
     If idToKhai = "68" Then
-'        If strQuy = "TK_THANG" Then
-'            dNgayDau = DateSerial(CInt(Mid$(TAX_Utilities_v1.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_v1.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_v1.FirstDay, 1, 2)))
-'            dNgayCuoi = DateSerial(CInt(Mid$(TAX_Utilities_v1.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_v1.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_v1.LastDay, 1, 2)))
-'
-'            dNgayDauQuy = DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), 1)
-'            Dim temp As Integer
-'            Dim temp1 As Date
-'            temp = CInt(TAX_Utilities_v1.month) + 1
-'            If TAX_Utilities_v1.month = "12" Then
-'                temp1 = DateSerial(CInt(TAX_Utilities_v1.Year) + 1, 1, 1)
-'                dNgayCuoiQuy = DateAdd("D", -1, temp1)
-'            Else
-'                temp1 = DateSerial(CInt(TAX_Utilities_v1.Year), temp, 1)
-'                dNgayCuoiQuy = DateAdd("D", -1, temp1)
-'            End If
-'
-'            ' Ky bao cao tu ngay khong duoc lon hon ky bao cao den ngay
-'            If dNgayCuoi < dNgayDau Then
-'                DisplayMessage "0254", msOKOnly, miWarning
-'                Exit Sub
-'            End If
-'            ' Ky bao cao den ngay khong duoc lon hon ngay cuoi quy
-'            If dNgayCuoi > dNgayCuoiQuy Then
-'                DisplayMessage "0255", msOKOnly, miWarning
-'                Exit Sub
-'            End If
-'            ' Ky bao cao tu ngay khong duoc nho hon ngay dau quy
-'            If dNgayDau < dNgayDauQuy Then
-'                DisplayMessage "0256", msOKOnly, miWarning
-'                txtNgayDau.SetFocus
-'                Exit Sub
-'            End If
-'        Else
-            dNgayDau = DateSerial(CInt(Mid$(TAX_Utilities_v1.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_v1.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_v1.FirstDay, 1, 2)))
-            dNgayCuoi = DateSerial(CInt(Mid$(TAX_Utilities_v1.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_v1.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_v1.LastDay, 1, 2)))
-            dNgayDauQuy = GetNgayDauQuy(CInt(TAX_Utilities_v1.ThreeMonths), TAX_Utilities_v1.Year, 1, 1)
-            dNgayCuoiQuy = GetNgayCuoiQuy(CInt(TAX_Utilities_v1.ThreeMonths), TAX_Utilities_v1.Year, 1, 1)
-            ' Ky bao cao tu ngay khong duoc lon hon ky bao cao den ngay
-            If dNgayCuoi < dNgayDau Then
-                DisplayMessage "0254", msOKOnly, miWarning
-                Exit Sub
-            End If
-            ' Ky bao cao den ngay khong duoc lon hon ngay cuoi quy
-            If dNgayCuoi > dNgayCuoiQuy Then
-                DisplayMessage "0255", msOKOnly, miWarning
-                Exit Sub
-            End If
-            ' Ky bao cao tu ngay khong duoc nho hon ngay dau quy
-            If dNgayDau < dNgayDauQuy Then
-                DisplayMessage "0256", msOKOnly, miWarning
-                txtNgayDau.SetFocus
-                Exit Sub
-            End If
-            ' Kiem tra ngay dau quy khong dc nho hon ngay 01/01/2011
-            If dNgayDau < DateSerial(2011, 1, 1) Then
-                DisplayMessage "0257", msOKOnly, miWarning
-                txtNgayDau.SetFocus
-                Exit Sub
-            End If
+        '        If strQuy = "TK_THANG" Then
+        '            dNgayDau = DateSerial(CInt(Mid$(TAX_Utilities_v1.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_v1.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_v1.FirstDay, 1, 2)))
+        '            dNgayCuoi = DateSerial(CInt(Mid$(TAX_Utilities_v1.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_v1.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_v1.LastDay, 1, 2)))
+        '
+        '            dNgayDauQuy = DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), 1)
+        '            Dim temp As Integer
+        '            Dim temp1 As Date
+        '            temp = CInt(TAX_Utilities_v1.month) + 1
+        '            If TAX_Utilities_v1.month = "12" Then
+        '                temp1 = DateSerial(CInt(TAX_Utilities_v1.Year) + 1, 1, 1)
+        '                dNgayCuoiQuy = DateAdd("D", -1, temp1)
+        '            Else
+        '                temp1 = DateSerial(CInt(TAX_Utilities_v1.Year), temp, 1)
+        '                dNgayCuoiQuy = DateAdd("D", -1, temp1)
+        '            End If
+        '
+        '            ' Ky bao cao tu ngay khong duoc lon hon ky bao cao den ngay
+        '            If dNgayCuoi < dNgayDau Then
+        '                DisplayMessage "0254", msOKOnly, miWarning
+        '                Exit Sub
+        '            End If
+        '            ' Ky bao cao den ngay khong duoc lon hon ngay cuoi quy
+        '            If dNgayCuoi > dNgayCuoiQuy Then
+        '                DisplayMessage "0255", msOKOnly, miWarning
+        '                Exit Sub
+        '            End If
+        '            ' Ky bao cao tu ngay khong duoc nho hon ngay dau quy
+        '            If dNgayDau < dNgayDauQuy Then
+        '                DisplayMessage "0256", msOKOnly, miWarning
+        '                txtNgayDau.SetFocus
+        '                Exit Sub
+        '            End If
+        '        Else
+        dNgayDau = DateSerial(CInt(Mid$(TAX_Utilities_v1.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_v1.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_v1.FirstDay, 1, 2)))
+        dNgayCuoi = DateSerial(CInt(Mid$(TAX_Utilities_v1.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_v1.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_v1.LastDay, 1, 2)))
+        dNgayDauQuy = GetNgayDauQuy(CInt(TAX_Utilities_v1.ThreeMonths), TAX_Utilities_v1.Year, 1, 1)
+        dNgayCuoiQuy = GetNgayCuoiQuy(CInt(TAX_Utilities_v1.ThreeMonths), TAX_Utilities_v1.Year, 1, 1)
+
+        ' Ky bao cao tu ngay khong duoc lon hon ky bao cao den ngay
+        If dNgayCuoi < dNgayDau Then
+            DisplayMessage "0254", msOKOnly, miWarning
+            Exit Sub
+        End If
+
+        ' Ky bao cao den ngay khong duoc lon hon ngay cuoi quy
+        If dNgayCuoi > dNgayCuoiQuy Then
+            DisplayMessage "0255", msOKOnly, miWarning
+            Exit Sub
+        End If
+
+        ' Ky bao cao tu ngay khong duoc nho hon ngay dau quy
+        If dNgayDau < dNgayDauQuy Then
+            DisplayMessage "0256", msOKOnly, miWarning
+            txtNgayDau.SetFocus
+            Exit Sub
+        End If
+
+        ' Kiem tra ngay dau quy khong dc nho hon ngay 01/01/2011
+        If dNgayDau < DateSerial(2011, 1, 1) Then
+            DisplayMessage "0257", msOKOnly, miWarning
+            txtNgayDau.SetFocus
+            Exit Sub
+        End If
+
         'End If
     End If
     
@@ -3000,17 +3086,16 @@ Public Sub cmdOK_Click()
         End If
     End If
     
-    
     ' To khai bo sung
-    If strKHBS = "TKBS" And (idToKhai = "02" Or idToKhai = "01" Or idToKhai = "04" Or idToKhai = "03" Or idToKhai = "11" Or idToKhai = "12" _
-    Or idToKhai = "06" Or idToKhai = "05" Or idToKhai = "86" Or idToKhai = "87" Or idToKhai = "71" Or idToKhai = "72" Or idToKhai = "77" Or idToKhai = "73" _
-    Or idToKhai = "80" Or idToKhai = "81" Or idToKhai = "70" Or idToKhai = "82" Or idToKhai = "83" Or idToKhai = "85" Or idToKhai = "90" Or idToKhai = "92" Or idToKhai = "93" Or idToKhai = "95" Or idToKhai = "88" Or idToKhai = "94" Or idToKhai = "96" Or idToKhai = "97" Or idToKhai = "98" Or idToKhai = "99") Then
+    If strKHBS = "TKBS" And (idToKhai = "02" Or idToKhai = "01" Or idToKhai = "04" Or idToKhai = "03" Or idToKhai = "11" Or idToKhai = "12" Or idToKhai = "06" Or idToKhai = "05" Or idToKhai = "86" Or idToKhai = "87" Or idToKhai = "71" Or idToKhai = "72" Or idToKhai = "77" Or idToKhai = "73" Or idToKhai = "80" Or idToKhai = "81" Or idToKhai = "70" Or idToKhai = "82" Or idToKhai = "83" Or idToKhai = "85" Or idToKhai = "90" Or idToKhai = "92" Or idToKhai = "93" Or idToKhai = "95" Or idToKhai = "88" Or idToKhai = "94" Or idToKhai = "96" Or idToKhai = "97" Or idToKhai = "98" Or idToKhai = "99") Then
         'dhdang them lay ngay KHBS
         'kiem tra ton tai TK chinh thuc
-        Dim strDay As Variant
+        Dim strDay        As Variant
         Dim strDataFileBS As Variant
-        Dim fso1 As New FileSystemObject
+        Dim fso1          As New FileSystemObject
+
         If Trim(TAX_Utilities_v1.month) <> "" Then
+
             ' to khai nha thau nuoc ngoai
             If idToKhai = "70" Or idToKhai = "06" Or idToKhai = "81" Or idToKhai = "90" Or idToKhai = "05" Then
                 If strLoaiTKThang_PS = "TK_THANG" Then
@@ -3018,19 +3103,25 @@ Public Sub cmdOK_Click()
                 ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
                     strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                 End If
+
             ElseIf idToKhai = "72" Then
+
                 If strLoaiTKThang_PS = "TK_THANG" Then
                     strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                 ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
                     strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                 End If
+
             ElseIf idToKhai = "73" Then
+
                 If strLoaiTKThang_PS = "TK_LANPS" Then
                     strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                 Else
                     strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                 End If
+
             ElseIf idToKhai = "01" Or idToKhai = "02" Or idToKhai = "04" Or idToKhai = "95" Or idToKhai = "88" Or idToKhai = "71" Then
+
                 If idToKhai = "71" Then
                     If strQuy = "TK_THANG" Then
                         strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
@@ -3041,25 +3132,31 @@ Public Sub cmdOK_Click()
                     End If
 
                 Else
+
                     If strQuy = "TK_THANG" Then
                         strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                     ElseIf strQuy = "TK_QUY" Then
                         strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_Q0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                     End If
                 End If
-            'ElseIf idToKhai = "98" Or idToKhai = "92" Or idToKhai = "93" Or idToKhai = "99" Then
+
+                'ElseIf idToKhai = "98" Or idToKhai = "92" Or idToKhai = "93" Or idToKhai = "99" Then
             ElseIf idToKhai = "98" Or idToKhai = "92" Then
+
                 If strLoaiTKThang_PS = "TK_THANG" Then
                     strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                 ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
                     strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                 End If
+
             Else
                 strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
             End If
+
         ElseIf Trim(TAX_Utilities_v1.ThreeMonths) <> "" Then
             strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
         ElseIf Trim(TAX_Utilities_v1.Year) <> "" Then
+
             If idToKhai = "77" Or idToKhai = "87" Then
                 strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.Year & ".xml"
             ElseIf idToKhai = "80" Or idToKhai = "82" Then
@@ -3070,78 +3167,100 @@ Public Sub cmdOK_Click()
                 strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
             End If
         End If
+
         If Not fso1.FileExists(strDataFileBS) Then
             DisplayMessage "0107", msOKOnly, miInformation
             Exit Sub
         End If
+
+        If Val(txtSolan.Text) > 1 Then
+            Dim strTK_BS As String
+            Dim strBsSplit() As String
+            strBsSplit = Split(strDataFileBS, "\")
+            strTK_BS = Replace$(strDataFileBS, strBsSplit(UBound(strBsSplit)), "bs" & CStr(Val(txtSolan.Text) - 1) & "_" & strBsSplit(UBound(strBsSplit)))
+
+            If Not fso1.FileExists(strTK_BS) Then
+                DisplayMessage "0296", msOKOnly, miInformation
+                Exit Sub
+            End If
+        End If
+
         With fpsNgaykhaiBS
-        .Col = .ColLetterToNumber("C")
-        .Row = 2
-        strDateKHBS = .Text
-        If strDateKHBS <> "" And strDateKHBS <> "../../...." Then
-            If Format_ddmmyyyy(CStr(strDateKHBS)) <> "" Then
-                .SetText .ColLetterToNumber("C"), 2, Format_ddmmyyyy(CStr(strDateKHBS))
-                .TypeHAlign = TypeHAlignLeft
+            .Col = .ColLetterToNumber("C")
+            .Row = 2
+            strDateKHBS = .Text
+
+            If strDateKHBS <> "" And strDateKHBS <> "../../...." Then
+                If Format_ddmmyyyy(CStr(strDateKHBS)) <> "" Then
+                    .SetText .ColLetterToNumber("C"), 2, Format_ddmmyyyy(CStr(strDateKHBS))
+                    .TypeHAlign = TypeHAlignLeft
+                Else
+                    .SetFocus
+                    .SetActiveCell .ColLetterToNumber("C"), 2
+                    Exit Sub
+                End If
+
             Else
-                .SetFocus
-                .SetActiveCell .ColLetterToNumber("C"), 2
+                .SetText .ColLetterToNumber("C"), 2, format(Date, "dd/mm/yyyy")
                 Exit Sub
             End If
-        Else
-         .SetText .ColLetterToNumber("C"), 2, format(Date, "dd/mm/yyyy")
-         Exit Sub
-        End If
         
+            ' kiem tra voi ngay hien tai
+            Dim arrDate() As String
+            Dim hn        As Date
+            Dim ngayBs    As Date
+            Dim ngayHt    As Date
         
-        ' kiem tra voi ngay hien tai
-        Dim arrDate() As String
-        Dim hn As Date
-        Dim ngayBs As Date
-        Dim ngayHt As Date
+            arrDate = Split(strDateKHBS, "/")
+            ngayBs = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
+            ngayHt = DateSerial(Year(Date), month(Date), Day(Date))
         
-        arrDate = Split(strDateKHBS, "/")
-        ngayBs = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
-        ngayHt = DateSerial(Year(Date), month(Date), Day(Date))
-        
-        If DateDiff("D", ngayHt, ngayBs) > 0 Then
-            DisplayMessage "0224", msOKOnly, miInformation
-            Exit Sub
-        End If
-        
-        'kiem tra voi ky kk
-        hanNopTk = GetHanNopTk
-        arrDate = Split(hanNopTk, "/")
-        hn = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
-        arrDate = Split(strDateKHBS, "/")
-        ngayBs = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
-        
-        Dim hnps As Date
-        If strLoaiTKThang_PS = "TK_LANPS" Then
-            hnps = DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), CInt(TAX_Utilities_v1.Day)))
-            If DateDiff("D", hnps, ngayBs) <= 0 Then
-                DisplayMessage "0271", msOKOnly, miInformation
+            If DateDiff("D", ngayHt, ngayBs) > 0 Then
+                DisplayMessage "0224", msOKOnly, miInformation
                 Exit Sub
             End If
-        ElseIf strQuy = "TK_LANPS" And idToKhai = "71" Then
-            hnps = DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), CInt(TAX_Utilities_v1.Day)))
-            If DateDiff("D", hnps, ngayBs) <= 0 Then
-                DisplayMessage "0271", msOKOnly, miInformation
-                Exit Sub
-            End If
-        Else
-            If DateDiff("D", hn, ngayBs) < 0 Then
-                DisplayMessage "0271", msOKOnly, miInformation
-                Exit Sub
-            End If
-        End If
         
-        ngayLapTkBs = strDateKHBS
+            'kiem tra voi ky kk
+            hanNopTk = GetHanNopTk
+            arrDate = Split(hanNopTk, "/")
+            hn = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
+            arrDate = Split(strDateKHBS, "/")
+            ngayBs = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
+        
+            Dim hnps As Date
+
+            If strLoaiTKThang_PS = "TK_LANPS" Then
+                hnps = DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), CInt(TAX_Utilities_v1.Day)))
+
+                If DateDiff("D", hnps, ngayBs) <= 0 Then
+                    DisplayMessage "0271", msOKOnly, miInformation
+                    Exit Sub
+                End If
+
+            ElseIf strQuy = "TK_LANPS" And idToKhai = "71" Then
+                hnps = DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), CInt(TAX_Utilities_v1.Day)))
+
+                If DateDiff("D", hnps, ngayBs) <= 0 Then
+                    DisplayMessage "0271", msOKOnly, miInformation
+                    Exit Sub
+                End If
+
+            Else
+
+                If DateDiff("D", hn, ngayBs) < 0 Then
+                    DisplayMessage "0271", msOKOnly, miInformation
+                    Exit Sub
+                End If
+            End If
+        
+            ngayLapTkBs = strDateKHBS
         
         End With
         
         If strDateKHBS <> vbNullString Then
             TAX_Utilities_v1.DateKHBS = Replace(strDateKHBS, "/", "")
         End If
+
         SetActiveValueKHBS
     Else
         '***************************
@@ -3166,14 +3285,14 @@ Public Sub cmdOK_Click()
     '***************************
     'show form
     
-'    Debug.Print "Bat dau load" & Time
+    '    Debug.Print "Bat dau load" & Time
     'frmInterfaces.LblaodTK.Visible = True
     Set frmTK = New frmInterfaces
     Unload Me
     frmTK.Show
     frmSystem.Hide
     
-'    Debug.Print "Ket thuc load" & Time
+    '    Debug.Print "Ket thuc load" & Time
     'frmInterfaces.LblaodTK.Visible = False
     
     ' Doi voi cac to khai TNCN noi chung thi An nut xoa va nut Insert di
@@ -3184,6 +3303,7 @@ Public Sub cmdOK_Click()
         frmTK.cmdDelete.Left = frmTK.Frame1.Width - 12100
         frmTK.cmdKiemTra.Visible = True
     End If
+
     ' Neu la cac mau in tong hop tu to quyet toan 05TNCN->09TNCN va cac chung tu cua TNCN thi an cac nut di, chi de In va Thoat
     If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "45" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "52" Then
                 
