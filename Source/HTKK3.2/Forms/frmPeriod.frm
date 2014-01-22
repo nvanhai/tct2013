@@ -3115,15 +3115,14 @@ Public Sub cmdOK_Click()
         arrDate = Split(strDateKHBS, "/")
         ngayBs = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
         
+        Dim hnps As Date
         If strLoaiTKThang_PS = "TK_LANPS" Then
-            Dim hnps As Date
             hnps = DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), CInt(TAX_Utilities_v1.Day)))
             If DateDiff("D", hnps, ngayBs) <= 0 Then
                 DisplayMessage "0271", msOKOnly, miInformation
                 Exit Sub
             End If
         ElseIf strQuy = "TK_LANPS" And idToKhai = "71" Then
-            Dim hnps As Date
             hnps = DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), CInt(TAX_Utilities_v1.Day)))
             If DateDiff("D", hnps, ngayBs) <= 0 Then
                 DisplayMessage "0271", msOKOnly, miInformation
