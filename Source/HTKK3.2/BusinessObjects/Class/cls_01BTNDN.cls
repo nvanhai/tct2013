@@ -41,6 +41,8 @@ Public tuRowDL As Long
 Public denRowDL As Long
 Public strTuRowDenRowPL As String
 
+Public hanNopTKTNDN As String
+
  
 'This funtion is called after an object of this class is created
 'Its functions is 1st preparing for interface sheets, such as
@@ -1197,7 +1199,10 @@ Private Sub CheckDynamicError()
     Dim strNgayTaiChinh As String
         
     Dim isCheckGh As Boolean
-    
+    '
+    Dim arrDateGH() As String
+    Dim arrDateHanNop() As String
+    Dim vErrorCheckHN As Variant
     ' PL 01
     Dim iFlagMSTTrung As Integer, mErrMSTTrung As Variant
     
@@ -1228,6 +1233,7 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 34, vErrorCheckThoiHanGH
         .GetText .ColLetterToNumber("E"), 35, vErrorCheckSoThueGH
         
+        .GetText .ColLetterToNumber("E"), 38, vErrorCheckHN
         
         vFlag = 0
             
@@ -1352,10 +1358,25 @@ Private Sub CheckDynamicError()
                  .BackColor = mErrorColor
                  iflagCheckThoiHanGH = 1
              Else
-                 .Col = .ColLetterToNumber("H")
-                 .Row = 60
-                 .CellNote = ""  'static
-                 .BackColor = mNonErrorColor
+                    ' kiem tra han nop
+                    arrDateGH = Split(vThoiHanGH, "/")
+                    arrDateHanNop = Split(hanNopTKTNDN, "/")
+                    Dim dThoiHanGH As Date
+                    Dim dHanNop As Date
+
+                    dThoiHanGH = DateSerial(CInt(arrDateGH(2)), CInt(arrDateGH(1)), CInt(arrDateGH(0)))
+                    dHanNop = DateSerial(CInt(arrDateHanNop(2)), CInt(arrDateHanNop(1)), CInt(arrDateHanNop(0)))
+                    If DateDiff("D", dThoiHanGH, dHanNop) > 0 Then
+                        .Col = .ColLetterToNumber("H")
+                        .Row = 60
+                        .CellNote = vErrorCheckHN  'static
+                        .BackColor = mAlertColor
+                    Else
+                        .Col = .ColLetterToNumber("H")
+                        .Row = 60
+                        .CellNote = ""  'static
+                        .BackColor = mNonErrorColor
+                    End If
              End If
              ' Kiem tra so thue
              If Val(vSoThueGH) <= 0 Then

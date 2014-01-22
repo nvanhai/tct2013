@@ -476,7 +476,6 @@ End With
     LockCellBySheet
     setChangeComb Col, Row
     CellChange Col, Row
-    
 End Sub
 
 'inner class event: ButtonClicked
@@ -5077,6 +5076,24 @@ Sub CellChange3()
                     .Row = 17
                     .Formula = "D24"
                 End If
+                
+'                If blCheck_S4B = True Then
+'                    .Sheet = 6
+'                    ' chi tieu B1
+'                    .Col = .ColLetterToNumber("E")
+'                    .Row = 16
+'                    .Formula = "D25"
+'
+'                    'chi tieu B2
+'                    .Col = .ColLetterToNumber("E")
+'                    .Row = 17
+'                    .Formula = "E26"
+'
+'                    'chi tieu B4
+'                    .Col = .ColLetterToNumber("E")
+'                    .Row = 19
+'                    .Formula = "F25"
+'                End If
             Case 3 ' phu luc 01_2
                 If blCheck_S4A = True Then
                     ' chi tieu tong dong 1 cot 10
@@ -5102,6 +5119,31 @@ Sub CellChange3()
                     .Row = 19
                     .Formula = "E24"
                 End If
+                
+'                If blCheck_S4B = True Then
+'                    .Sheet = 6
+'                    ' chi tieu A1
+'                    .Col = .ColLetterToNumber("E")
+'                    .Row = 7
+'                    .Formula = "D24"
+'                    ' chi tieu A2
+'                    .Col = .ColLetterToNumber("E")
+'                    .Row = 9
+'                    .Formula = "E24"
+'                    ' chi tieu A3
+'                    .Col = .ColLetterToNumber("E")
+'                    .Row = 11
+'                    .Formula = "F24"
+'
+'                    '
+'                End If
+'             Case 4
+'                If blCheck_S4B = True Then
+'                    .Sheet = 6
+'                    .Col = .ColLetterToNumber("E")
+'                    .Row = 21
+'                    .Formula = "D26"
+'                End If
          End Select
     End With
 End Sub

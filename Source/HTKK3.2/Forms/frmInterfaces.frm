@@ -7300,6 +7300,7 @@ Private Sub Form_Load()
         End If
         ' end
         objTaxBusiness.Prepare1
+        
     End If
     Dim idToKhai As Variant
     idToKhai = TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue
@@ -7412,6 +7413,10 @@ Private Sub Form_Load()
     ' end BC26
     If Not objTaxBusiness Is Nothing Then
         objTaxBusiness.Prepare2
+        ' set han nop tk
+        If idMenu = "11" Or idMenu = "12" Then
+            objTaxBusiness.hanNopTKTNDN = GetHanNopTk
+        End If
     End If
     
     SetSheetVisible fpSpread1

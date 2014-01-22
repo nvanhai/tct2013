@@ -462,6 +462,13 @@ Private Sub CheckDynamicError()
     Dim errMSTDN As Variant
     
     Dim ct13, ct14 As Variant, iFlagCheckCT13CT14 As Integer, errCheckCT13CT14 As Variant
+    
+    Dim tongCt9, tongCt13 As Variant
+    Dim vErrorTongCt9, vErrorTongCt13 As Variant
+    Dim iFlagCheckTongCt9 As Integer, iFlagCheckTongCt13 As Integer
+    Dim isCheckTong9 As Boolean, isCheckTong13 As Boolean
+    Dim countRowDyn As Long
+    Dim ct9 As Variant
 
     With fps
           
@@ -478,6 +485,9 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 19, errMST
         .GetText .ColLetterToNumber("E"), 21, errThueSuatGTGT
         .GetText .ColLetterToNumber("E"), 23, errCheckCT13CT14
+        
+        .GetText .ColLetterToNumber("E"), 24, vErrorTongCt9
+        .GetText .ColLetterToNumber("E"), 25, vErrorTongCt13
         
         Dim kythang As Variant
         Dim nam     As Variant
@@ -511,9 +521,18 @@ Private Sub CheckDynamicError()
             .GetText .ColLetterToNumber("AQ"), .Row, thueSuatGTGT
             .GetText .ColLetterToNumber("BM"), .Row, ct13
             .GetText .ColLetterToNumber("BQ"), .Row, ct14
+            .GetText .ColLetterToNumber("AU"), .Row, ct9
+            
 
             If Trim(MSTDN) <> "" Or Trim(strNoiDung) <> "" Or Trim(strNgayHD) <> "" Or Val(strSoTienTT) <> 0 Or Trim(strNgayTT) <> "" Or Val(strDoanhThu) <> 0 Or Val(strTyLeGT) <> 0 Or Val(strThueSuat) <> 0 Or Val(strDoanhThuTT) <> 0 Or Val(strTyLeTNDN) <> 0 Or Val(strSoThueMG) <> 0 Then
                 iWhiteRow = False
+                If Val(ct9) <> 0 Then
+                    isCheckTong9 = True
+                End If
+                
+                If Val(ct13) <> 0 Then
+                    isCheckTong13 = True
+                End If
             Else
                 iWhiteRow = True
             End If
@@ -669,11 +688,52 @@ Private Sub CheckDynamicError()
 '                .BackColor = 16709097
 '                .CellNote = ""
 '            End If
+            countRowDyn = countRowDyn + 1
             
             .Row = 55 + i
             i = i + 1
             .Col = .ColLetterToNumber("B")
         Loop Until .Text = "aa"
+        
+        ' check dong tong
+        .Row = .Row + 1
+        .GetText .ColLetterToNumber("AU"), .Row, tongCt9
+        .GetText .ColLetterToNumber("BM"), .Row, tongCt13
+        ' check tong 9
+        If isCheckTong9 = True Then
+              If Val(tongCt9) = 0 Then
+                    .Col = .ColLetterToNumber("AU")
+                    .BackColor = mErrorColor
+                    .CellNote = vErrorTongCt9
+                    iFlagCheckTongCt9 = 1
+              Else
+                    .Col = .ColLetterToNumber("AU")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+              End If
+        Else
+             .Col = .ColLetterToNumber("AU")
+            .BackColor = mNonErrorColor
+            .CellNote = ""
+        End If
+        
+        ' check tong 13
+        If isCheckTong13 = True Then
+              If Val(tongCt13) = 0 Then
+                    .Col = .ColLetterToNumber("BM")
+                    .BackColor = mErrorColor
+                    .CellNote = vErrorTongCt13
+                    iFlagCheckTongCt13 = 1
+              Else
+                    .Col = .ColLetterToNumber("BM")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+              End If
+        Else
+             .Col = .ColLetterToNumber("BM")
+            .BackColor = mNonErrorColor
+            .CellNote = ""
+        End If
     
         .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), 12, IIf(iFlagEmty = 1, "0", "1")
@@ -682,6 +742,9 @@ Private Sub CheckDynamicError()
         .SetText .ColLetterToNumber("B"), 17, IIf(iFlagCheckMaSTDN = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 19, IIf(iFlagCheckMaST = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 23, IIf(iFlagCheckCT13CT14 = 1, "0", "1")
+        
+        .SetText .ColLetterToNumber("B"), 24, IIf(iFlagCheckTongCt9 = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 25, IIf(iFlagCheckTongCt13 = 1, "0", "1")
     End With
     
 End Sub

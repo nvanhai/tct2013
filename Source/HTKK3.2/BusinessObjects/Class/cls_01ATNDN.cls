@@ -39,6 +39,8 @@ Public tuRowDL As Long
 Public denRowDL As Long
 Public strTuRowDenRowPL As String
 
+Public hanNopTKTNDN As String
+
 Private vFormular As String
 
 
@@ -1367,6 +1369,10 @@ Private Sub CheckDynamicError()
         
     Dim isCheckGh As Boolean
     ' end
+    Dim arrDateGH() As String
+    Dim arrDateHanNop() As String
+    Dim vErrorCheckHN As Variant
+    
     
     Dim vCT26 As Variant, arrCT26() As String
     Dim errSoThueUuDai As Variant, checkboxThue As Variant
@@ -1399,6 +1405,8 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 42, vErrorCheckSoThueGH
         
         .GetText .ColLetterToNumber("E"), 25, errSoThueUuDai
+        .GetText .ColLetterToNumber("E"), 44, vErrorCheckHN
+        
         
         vFlag = 0
         iFlagCheckMaST = 0
@@ -1488,10 +1496,26 @@ Private Sub CheckDynamicError()
                  .BackColor = mErrorColor
                  iflagCheckThoiHanGH = 1
              Else
-                 .Col = .ColLetterToNumber("H")
-                 .Row = 47
-                 .CellNote = ""  'static
-                 .BackColor = mNonErrorColor
+                 ' kiem tra han nop
+                 arrDateGH = Split(vThoiHanGH, "/")
+                 arrDateHanNop = Split(hanNopTKTNDN, "/")
+                 Dim dThoiHanGH As Date
+                 Dim dHanNop As Date
+
+                dThoiHanGH = DateSerial(CInt(arrDateGH(2)), CInt(arrDateGH(1)), CInt(arrDateGH(0)))
+                dHanNop = DateSerial(CInt(arrDateHanNop(2)), CInt(arrDateHanNop(1)), CInt(arrDateHanNop(0)))
+                If DateDiff("D", dThoiHanGH, dHanNop) > 0 Then
+                    
+                    .Col = .ColLetterToNumber("H")
+                    .Row = 47
+                    .CellNote = vErrorCheckHN  'static
+                    .BackColor = mAlertColor
+                Else
+                    .Col = .ColLetterToNumber("H")
+                    .Row = 47
+                    .CellNote = ""  'static
+                    .BackColor = mNonErrorColor
+                 End If
              End If
              ' Kiem tra so thue
              If Val(vSoThueGH) <= 0 Then
@@ -1507,6 +1531,7 @@ Private Sub CheckDynamicError()
                  .BackColor = mNonErrorColor
                  iflagCheckSoThueGH = 0
              End If
+             
          Else
                 ' Ly do gia han
                  .Col = .ColLetterToNumber("H")
