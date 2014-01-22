@@ -3294,24 +3294,51 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                         End If
                     ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" _
                             Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Then
-                        If strQuy = "TK_THANG" Then
-                             ' cac to khai thang khac van tinh binh thuong
-                            If TAX_Utilities_v1.month = 12 Then
-                                hannop = "20/" & "01" & "/" & TAX_Utilities_v1.Year + 1
-'                            ElseIf TAX_Utilities_v1.month = 4 Then
-'                                hannop = "02/" & "05" & "/" & TAX_Utilities_v1.Year
-                            Else
-                                hannop = "20/" & Right("00" & TAX_Utilities_v1.month + 1, 2) & "/" & TAX_Utilities_v1.Year
+                        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Then
+                           If strQuy = "TK_THANG" Then
+                                 ' cac to khai thang khac van tinh binh thuong
+                                If TAX_Utilities_v1.month = 12 Then
+                                    hannop = "20/" & "01" & "/" & TAX_Utilities_v1.Year + 1
+    '                            ElseIf TAX_Utilities_v1.month = 4 Then
+    '                                hannop = "02/" & "05" & "/" & TAX_Utilities_v1.Year
+                                Else
+                                    hannop = "20/" & Right("00" & TAX_Utilities_v1.month + 1, 2) & "/" & TAX_Utilities_v1.Year
+                                End If
+                            ElseIf strQuy = "TK_QUY" Then
+                                If Val(TAX_Utilities_v1.ThreeMonths) = 4 Then
+                                   hannop = "31/" & "01" & "/" & TAX_Utilities_v1.Year + 1
+                                ElseIf Val(TAX_Utilities_v1.ThreeMonths) = 3 Then
+                                    hannop = "31/" & "10" & "/" & TAX_Utilities_v1.Year
+                                ElseIf Val(TAX_Utilities_v1.ThreeMonths) = 2 Then
+                                    hannop = "31/" & "07" & "/" & TAX_Utilities_v1.Year
+                                ElseIf Val(TAX_Utilities_v1.ThreeMonths) = 1 Then
+                                    hannop = "02/" & "05" & "/" & TAX_Utilities_v1.Year
+                                End If
+                            ElseIf strQuy = "TK_LANPS" Then
+                                hannop = format(DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), CInt(TAX_Utilities_v1.Day))), "dd/mm/yyyy")
                             End If
-                        ElseIf strQuy = "TK_QUY" Then
-                            If Val(TAX_Utilities_v1.ThreeMonths) = 4 Then
-                               hannop = "31/" & "01" & "/" & TAX_Utilities_v1.Year + 1
-                            ElseIf Val(TAX_Utilities_v1.ThreeMonths) = 3 Then
-                                hannop = "31/" & "10" & "/" & TAX_Utilities_v1.Year
-                            ElseIf Val(TAX_Utilities_v1.ThreeMonths) = 2 Then
-                                hannop = "31/" & "07" & "/" & TAX_Utilities_v1.Year
-                            ElseIf Val(TAX_Utilities_v1.ThreeMonths) = 1 Then
-                                hannop = "02/" & "05" & "/" & TAX_Utilities_v1.Year
+
+                        Else
+                            
+                            If strQuy = "TK_THANG" Then
+                                 ' cac to khai thang khac van tinh binh thuong
+                                If TAX_Utilities_v1.month = 12 Then
+                                    hannop = "20/" & "01" & "/" & TAX_Utilities_v1.Year + 1
+    '                            ElseIf TAX_Utilities_v1.month = 4 Then
+    '                                hannop = "02/" & "05" & "/" & TAX_Utilities_v1.Year
+                                Else
+                                    hannop = "20/" & Right("00" & TAX_Utilities_v1.month + 1, 2) & "/" & TAX_Utilities_v1.Year
+                                End If
+                            ElseIf strQuy = "TK_QUY" Then
+                                If Val(TAX_Utilities_v1.ThreeMonths) = 4 Then
+                                   hannop = "31/" & "01" & "/" & TAX_Utilities_v1.Year + 1
+                                ElseIf Val(TAX_Utilities_v1.ThreeMonths) = 3 Then
+                                    hannop = "31/" & "10" & "/" & TAX_Utilities_v1.Year
+                                ElseIf Val(TAX_Utilities_v1.ThreeMonths) = 2 Then
+                                    hannop = "31/" & "07" & "/" & TAX_Utilities_v1.Year
+                                ElseIf Val(TAX_Utilities_v1.ThreeMonths) = 1 Then
+                                    hannop = "02/" & "05" & "/" & TAX_Utilities_v1.Year
+                                End If
                             End If
                         End If
                     Else
