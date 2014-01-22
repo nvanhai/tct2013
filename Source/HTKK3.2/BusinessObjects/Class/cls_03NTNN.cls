@@ -142,18 +142,8 @@ Public Sub Prepare2()
         End If
         
         '- set To khai thang
-
-        If StrTKThang_PS = "TK_THANG" Then
-            .Col = .ColLetterToNumber("P")
-            .Row = 26
-            .Text = 1
-            UpdateCell fps, .Col, .Row, .Text
-            .Col = .ColLetterToNumber("Q")
-            .Row = 26
-            .Text = ""
-            UpdateCell fps, .Col, .Row, .Text
-
-            ' set lan dau hoac lan bo sung
+        
+        ' set lan dau hoac lan bo sung
             If Strloaitk = "TKCT" Then
                 .Col = .ColLetterToNumber("M")
                 .Row = 26
@@ -175,9 +165,17 @@ Public Sub Prepare2()
                 .Text = StrSolanBosung
                 UpdateCell fps, .Col, .Row, .Text
             End If
-            
-            
-            
+
+        If StrTKThang_PS = "TK_THANG" Then
+            .Col = .ColLetterToNumber("P")
+            .Row = 26
+            .Text = 1
+            UpdateCell fps, .Col, .Row, .Text
+            .Col = .ColLetterToNumber("Q")
+            .Row = 26
+            .Text = ""
+            UpdateCell fps, .Col, .Row, .Text
+
             '- Set to khai lan bo sung
         ElseIf StrTKThang_PS = "TK_LANPS" Then
             .Col = .ColLetterToNumber("P")
@@ -188,15 +186,15 @@ Public Sub Prepare2()
             .Row = 26
             .Text = 1
             UpdateCell fps, .Col, .Row, .Text
-            .Col = .ColLetterToNumber("M")
-            .Row = 26
-            .Text = 1
-            UpdateCell fps, .Col, .Row, .Text
-            .Col = .ColLetterToNumber("O")
-            .Row = 26
-            .Text = ""
-            UpdateCell fps, .Col, .Row, .Text
-            
+'            .Col = .ColLetterToNumber("M")
+'            .Row = 26
+'            .Text = 1
+'            UpdateCell fps, .Col, .Row, .Text
+'            .Col = .ColLetterToNumber("O")
+'            .Row = 26
+'            .Text = ""
+'            UpdateCell fps, .Col, .Row, .Text
+'
 
         End If
       
