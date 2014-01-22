@@ -1,4 +1,9 @@
 <HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>16</maTKhai>
+		<tenTKhai>Tờ khai 09/KK-TNCN</tenTKhai>
+		<moTaBMau/>
+	</Static>
 	<Static GroupName="KyKKhaiThue">
 		<kyKKhaiTuThang>L_4</kyKKhaiTuThang>
 		<kyKKhaiDenThang>N_4</kyKKhaiDenThang>
