@@ -408,7 +408,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                    End If
                    
                    'chuyen cot ky hieu ve chu cai in hoa
-                   If Col = .ColLetterToNumber("C") Then
+                   If Col = .ColLetterToNumber("E") Then
                         .GetText Col, Row, varTemp
                         .SetText Col, Row, UCase(varTemp)
                         .Col = Col
@@ -969,7 +969,29 @@ Private Sub CheckDynamicError()
                                          .CellNote = ""   'static
                                          .BackColor = mNonErrorColor
                                    End If
-                                Else
+                             ElseIf strTkThangQuy = "TK_LANPS" Then
+                                   arrDate = Split(vNgayHD, "/")
+                                   vdate = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
+                                   If DateDiff("D", vdate, DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.Month), CInt(TAX_Utilities_v1.Day))) <> 0 Then
+                                        .Col = .ColLetterToNumber("G")
+                                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                        .CellNote = vErrorNgayPHHD   'static
+                                        .BackColor = mErrorColor
+                                        iflagNgayPHHD = 1
+                                        'capture the first error cell
+'                                        If iFocusFlag = 0 Then
+'                                            strFocusSheetName = "'" & .SheetName & "'"
+'                                            strFocusCol = str(.Col)
+'                                            strFocusRow = str(.Row)
+'                                            iFocusFlag = 1
+'                                        End If
+                                    Else
+                                         .Col = .ColLetterToNumber("G")
+                                         .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                         .CellNote = ""   'static
+                                         .BackColor = mNonErrorColor
+                                   End If
+                             Else
                                    If CheckNgayInKyKK(CStr(vNgayHD), TAX_Utilities_v1.Month, TAX_Utilities_v1.Year, False) = False Then
                                         .Col = .ColLetterToNumber("G")
                                         .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
