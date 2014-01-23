@@ -1,0 +1,22 @@
+<PLuc_01_1_BVMT>
+	<Static GroupName="PBoSoThueBVMTChoDPhuong">
+		<tongSoThuePSinhPNop>X_37</tongSoThuePSinhPNop>
+	</Static>
+	<Dynamic GroupName="PLuc_01_1_BVMT">
+		<PBoSoThueBVMTChoDPhuong>
+			<ChiTietThueBVMTCuaDPhuong>
+				<ct2>D_35</ct2>
+				<ct3>F_35</ct3>
+				<ct4>L_35</ct4>
+				<ct5_cct>O_35</ct5_cct>
+				<ct5_ct>O_35</ct5_ct>
+				<ct6>S_35</ct6>
+				<ct7>T_35</ct7>
+				<ct8>U_35</ct8>
+				<ct9>V_35</ct9>
+				<ct10>W_35</ct10>
+				<ct11>X_35</ct11>
+			</ChiTietThueBVMTCuaDPhuong>			
+		</PBoSoThueBVMTChoDPhuong>
+	</Dynamic>
+</PLuc_01_1_BVMT>

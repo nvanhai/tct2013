@@ -37,6 +37,7 @@ Public strTenCoQuanThue As String
 Public strMaTinhCoQuanThue As String
 Public strMaToKhai As String
 Public strLoaiToKhai As String
+Public isDLyThue As Boolean
 'End XML
 
 Public strNgayTaiChinh As String

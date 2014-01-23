@@ -1,60 +1,19 @@
-<HSoThueDTu>
-	<Static GroupName="TTinDVu">
-		<maDVu/>
-		<tenDVu/>
-		<pbanDVu/>
-		<ttinNhaCCapDVu/>
-	</Static>
+﻿<HSoKhaiThue ngay_nop_tk="D_29" ky_lap_bo="D_27" loi_dinh_danh="D_33">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>252</maTKhai>
-		<tenTKhai/>
+		<tenTKhai>TK thuế hoạt động cho thuê tài sản (01/KK-TTS)</tenTKhai>
+		<soLan>I_91</soLan>
 		<moTaBMau/>
 		<pbanTKhaiXML/>
-	</Static>
-	<Static GroupName="KyKKhaiThue">
-		<kyKKhai/>
-		<kyKKhaiTuNgay/>
-		<kyKKhaiDenNgay/>
-		<kyKKhaiTuThang/>
-		<kyKKhaiDenThang/>
-	</Static>
-	<Static GroupName="TKhaiThue">
-		<maCQTNoiNop/>
-		<tenCQTNoiNop/>
-		<ngayLapTKhai/>
 	</Static>
 	<Static GroupName="GiaHan">
 		<maLyDoGiaHan/>
 		<lyDoGiaHan/>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy/>
-		<ngayKy></ngayKy>
+		<nguoiKy>O_83</nguoiKy>
+		<ngayKy>O_85</ngayKy>
 		<nganhNgheKD/>
-	</Static>
-	<Static GroupName="NNT">
-		<tenNNT/>
-		<dchiNNT/>
-		<phuongXa/>
-		<maHuyenNNT/>
-		<tenHuyenNNT/>
-		<maTinhNNT/>
-		<tenTinhNNT/>
-		<dthoaiNNT/>
-		<faxNNT/>
-		<emailNNT/>
-	</Static>
-	<Static GroupName="DLyThue">
-		<tenDLyThue/>
-		<dchiDLyThue/>
-		<maHuyenDLyThue/>
-		<tenHuyenDLyThue/>
-		<maTinhDLyThue/>
-		<tenTinhDLyThue/>
-		<dthoaiDLyThue/>
-		<faxDLyThue/>
-		<emailDLyThue/>
-		<soHDongDLyThue/>
 	</Static>
 	<Static GroupName="NVienDLy">
 		<tenNVienDLyThue>E_83</tenNVienDLyThue>
@@ -93,14 +52,14 @@
 		<ct42>V_64</ct42>
 	</Static>
 	<Static GroupName="CT30">
-		<ct43>I_66</ct43>
-		<ct44>L_66</ct44>
-		<ct45>N_66</ct45>
-		<ct46>O_66</ct46>
-		<ct47>P_66</ct47>
-		<ct48>R_66</ct48>
-		<ct49>T_66</ct49>
-		<ct50>U_66</ct50>
-		<ct51>V_66</ct51>
+		<ct43>I_59</ct43>
+		<ct44>L_59</ct44>
+		<ct45>N_59</ct45>
+		<ct46>O_59</ct46>
+		<ct47>P_59</ct47>
+		<ct48>R_59</ct48>
+		<ct49>T_59</ct49>
+		<ct50>U_59</ct50>
+		<ct51>V_59</ct51>
 	</Static>
-</HSoThueDTu>
+</HSoKhaiThue>

@@ -19,20 +19,20 @@
 			<maTinhDLyThue></maTinhDLyThue>
 		</Static>
 		<Static GroupName="CTieuTKhaiChinh">
-			<ct21>M_41</ct21>
-			<ct22>S_41</ct22>
-			<ct23>X_41</ct23>
-			<ct24>M_42</ct24>
-			<ct25>S_42</ct25>
-			<ct26>X_42</ct26>
-			<ct27>M_43</ct27>
+			<ct21>Q_42</ct21>
+			<ct22>Q_43</ct22>
+			<ct23>Q_44</ct23>
+			<ct24>Q_45</ct24>
+			<ct25>Q_46</ct25>
+			<ct26>Q_47</ct26>
+			<ct27>Q_48</ct27>
 		</Static>
 		<Static GroupName="TKhaiThue">
-			<nguoiKy>R_52</nguoiKy>
-			<ngayKy>R_54</ngayKy>
+			<nguoiKy>R_56</nguoiKy>
+			<ngayKy>R_58</ngayKy>
 		</Static>
 		<Static GroupName="NVienDLy">
-			<tenNVienDLyThue>H_52</tenNVienDLyThue>
-			<cchiHNghe>E_58</cchiHNghe>
+			<tenNVienDLyThue>H_56</tenNVienDLyThue>
+			<cchiHNghe>H_58</cchiHNghe>
 		</Static>
 	</HSoKhaiThue>
