@@ -3342,13 +3342,28 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                             End If
                         End If
                     Else
-                        ' cac to khai thang khac van tinh binh thuong
-                        If TAX_Utilities_v1.month = 12 Then
-                            hannop = "20/" & "01" & "/" & TAX_Utilities_v1.Year + 1
-'                        ElseIf TAX_Utilities_v1.month = 4 Then
-'                            hannop = "02/" & "05" & "/" & TAX_Utilities_v1.Year
+                        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "72" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "73" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "70" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "81" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "06" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "05" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "90" Then
+                            If strLoaiTKThang_PS = "TK_LANPS" Then
+                                hannop = DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), CInt(TAX_Utilities_v1.Day)))
+                            Else
+                                ' cac to khai thang khac van tinh binh thuong
+                                If TAX_Utilities_v1.month = 12 Then
+                                    hannop = "20/" & "01" & "/" & TAX_Utilities_v1.Year + 1
+        '                        ElseIf TAX_Utilities_v1.month = 4 Then
+        '                            hannop = "02/" & "05" & "/" & TAX_Utilities_v1.Year
+                                Else
+                                    hannop = "20/" & Right("00" & TAX_Utilities_v1.month + 1, 2) & "/" & TAX_Utilities_v1.Year
+                                End If
+                            End If
                         Else
-                            hannop = "20/" & Right("00" & TAX_Utilities_v1.month + 1, 2) & "/" & TAX_Utilities_v1.Year
+                            ' cac to khai thang khac van tinh binh thuong
+                            If TAX_Utilities_v1.month = 12 Then
+                                hannop = "20/" & "01" & "/" & TAX_Utilities_v1.Year + 1
+    '                        ElseIf TAX_Utilities_v1.month = 4 Then
+    '                            hannop = "02/" & "05" & "/" & TAX_Utilities_v1.Year
+                            Else
+                                hannop = "20/" & Right("00" & TAX_Utilities_v1.month + 1, 2) & "/" & TAX_Utilities_v1.Year
+                            End If
                         End If
                    End If
                 ElseIf TAX_Utilities_v1.ThreeMonths <> "" Then
@@ -4312,14 +4327,29 @@ Public Function GetHanNopTk() As String
                 hannop = DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), CInt(TAX_Utilities_v1.Day)))
             End If
         Else
-            ' cac to khai thang khac van tinh binh thuong
-            If TAX_Utilities_v1.month = 12 Then
-                hannop = "20/" & "01" & "/" & TAX_Utilities_v1.Year + 1
-'            ElseIf TAX_Utilities_v1.month = 4 Then
-'                hannop = "02/" & "05" & "/" & TAX_Utilities_v1.Year
-            Else
-                hannop = "20/" & Right("00" & TAX_Utilities_v1.month + 1, 2) & "/" & TAX_Utilities_v1.Year
-            End If
+           If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "72" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "73" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "70" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "81" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "06" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "05" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "90" Then
+                If strLoaiTKThang_PS = "TK_LANPS" Then
+                    hannop = DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), CInt(TAX_Utilities_v1.Day)))
+                Else
+                    ' cac to khai thang khac van tinh binh thuong
+                    If TAX_Utilities_v1.month = 12 Then
+                        hannop = "20/" & "01" & "/" & TAX_Utilities_v1.Year + 1
+        '            ElseIf TAX_Utilities_v1.month = 4 Then
+        '                hannop = "02/" & "05" & "/" & TAX_Utilities_v1.Year
+                    Else
+                        hannop = "20/" & Right("00" & TAX_Utilities_v1.month + 1, 2) & "/" & TAX_Utilities_v1.Year
+                    End If
+                End If
+           Else
+                ' cac to khai thang khac van tinh binh thuong
+                If TAX_Utilities_v1.month = 12 Then
+                    hannop = "20/" & "01" & "/" & TAX_Utilities_v1.Year + 1
+    '            ElseIf TAX_Utilities_v1.month = 4 Then
+    '                hannop = "02/" & "05" & "/" & TAX_Utilities_v1.Year
+                Else
+                    hannop = "20/" & Right("00" & TAX_Utilities_v1.month + 1, 2) & "/" & TAX_Utilities_v1.Year
+                End If
+           End If
        End If
     ElseIf TAX_Utilities_v1.ThreeMonths <> "" Then
         If Val(TAX_Utilities_v1.ThreeMonths) = 4 Then
