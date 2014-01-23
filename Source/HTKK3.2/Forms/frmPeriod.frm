@@ -483,7 +483,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":02C8
       UserResize      =   1
       Appearance      =   1
    End
@@ -2750,7 +2750,7 @@ Public Sub cmdOK_Click()
                     TAX_Utilities_v1.FirstDay = vbNullString
                     TAX_Utilities_v1.LastDay = vbNullString
                 ElseIf strQuy = "TK_LANPS" Then
-                    TAX_Utilities_v1.ThreeMonths = cmbQuy.Text
+                    TAX_Utilities_v1.ThreeMonths = "1"
                     TAX_Utilities_v1.month = txtMonth.Text
                     TAX_Utilities_v1.Day = txtDay.Text
                     TAX_Utilities_v1.month = txtMonth.Text
