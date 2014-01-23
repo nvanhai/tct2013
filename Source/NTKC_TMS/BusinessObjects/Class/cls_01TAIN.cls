@@ -71,6 +71,10 @@ Const DIEN_THOAI_Y = 11
 Const FAX_X = "S"
 Const FAX_Y = 11
 
+' Ngay phat sinh
+Const NGAY_PS_ROW = 33
+Const NGAY_PS_COL = "O"
+
 Public WithEvents fps As fpSpread
 Attribute fps.VB_VarHelpID = -1
 'Public strMaSoTep As String
@@ -371,14 +375,14 @@ End Function
 Private Sub DataDM(ByVal Id As String, Optional ByRef strIdQLT As String, Optional ByRef TenTN As String, Optional ByRef DVT As String, Optional ByRef strThueSuat As String, Optional ByRef blnSuaThueSuat As Boolean)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDomData As New MSXML.DOMDocument
+Dim xmlDOMdata As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = GetCatalogueFileName
     
-       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
+       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Cell")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -700,7 +704,7 @@ Private Sub fps_Click(ByVal Col As Long, ByVal Row As Long)
     End With
 End Sub
 
-Public Function GenerateSQL_Header(xmlDomData As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
+Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
     Dim xmlList As MSXML.IXMLDOMNodeList
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim xmlAttribute As MSXML.IXMLDOMAttribute
@@ -714,11 +718,11 @@ Public Function GenerateSQL_Header(xmlDomData As MSXML.DOMDocument, strSQL_HDR A
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
     
-    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
+    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC, vNGANH_NGHE_KD, vTO_KHAI_LAN_PS, vNGAY_PS As Variant
     
 On Error GoTo ErrHandle
     strSQL = strSQL_HDR
-    Set xmlList = xmlDomData.getElementsByTagName("Cell")
+    Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
         
@@ -827,6 +831,18 @@ On Error GoTo ErrHandle
             vLAN_BS = "0"
         End If
         
+        ' ngay phat sinh
+        vNGANH_NGHE_KD = "null"
+        .GetText .ColLetterToNumber(NGAY_PS_COL), NGAY_PS_ROW, vNGAY_PS
+        If Trim(vNGAY_PS) = "" Or vNGAY_PS = vbNullString Then
+            vNGAY_PS = "null"
+            vTO_KHAI_LAN_PS = "null"
+        Else
+            vNGAY_PS = "'" & vNGAY_PS & "'"
+            vNGAY_PS = "to_date(" & vNGAY_PS & ",'dd/mm/yyyy')"
+            vTO_KHAI_LAN_PS = "1"
+        End If
+        
         If Len(Trim(vTIN_DL)) = 13 Then
             vTIN_DL = Left(vTIN_DL, 10) & "-" & Right(vTIN_DL, 3)
         End If
@@ -842,7 +858,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
     'strSQL = strSQL & "null)"
     strSQL = strSQL & "null,"
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & vNGANH_NGHE_KD & "," & vTO_KHAI_LAN_PS & "," & vNGAY_PS & ")"
     GenerateSQL_Header = strSQL
     'Debug.Print GenerateSQL_Header
     

@@ -140,6 +140,6 @@
 	<Infor ID="0144" Msg="Đại lý thuế đã ngừng hoạt động"/>
 	<Infor ID="0145" Msg="Người nộp thuế đã ngừng hoạt động"/>
 	<Infor ID="0146" Msg="Tờ khai này không có thông tin người nộp thuế"/>
-	<Infor ID="0147" Msg="Kể từ 15/01/2012 trở đi phải kê khai tờ khai bằng HTKK phiên bản 3.2.0 trở lên"/>
-	<Infor ID="0148" Msg="Kể từ 15/01/2012 trở đi phải kê khai tờ khai bổ sung bằng HTKK phiên bản 3.2.0 trở lên"/>
+	<Infor ID="0147" Msg="Kể từ 22/02/2014 trở đi phải kê khai tờ khai bằng HTKK phiên bản 3.2.0 trở lên"/>
+	<Infor ID="0148" Msg="Kể từ 22/02/2014 trở đi phải kê khai tờ khai bổ sung bằng HTKK phiên bản 3.2.0 trở lên"/>
 </Message>

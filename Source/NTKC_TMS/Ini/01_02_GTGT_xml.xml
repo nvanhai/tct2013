@@ -1,101 +1,101 @@
 <PL01_2_GTGT>
 	<Dynamic GroupName="ChiTietHHDVDRieng">
 		<HDonMVao id="ID_6">
-			<kyHieuMauHDon>D_25</kyHieuMauHDon>
-			<kyHieuHDon>E_25</kyHieuHDon>
-			<soHDon>F_25</soHDon>
-			<ngayPHanh>G_25</ngayPHanh>
-			<tenNBAN>H_25</tenNBAN>
-			<mstNBAN>I_25</mstNBAN>
-			<matHang>J_25</matHang>
-			<dsoMuaChuaThue>K_25</dsoMuaChuaThue>
-			<thueSuat>L_25</thueSuat>
-			<thueGTGT>M_25</thueGTGT>
-			<ghiChu>N_25</ghiChu>
+			<kyHieuMauHDon>D_8</kyHieuMauHDon>
+			<kyHieuHDon>E_8</kyHieuHDon>
+			<soHDon>F_8</soHDon>
+			<ngayPHanh>G_8</ngayPHanh>
+			<tenNBAN>H_8</tenNBAN>
+			<mstNBAN>I_8</mstNBAN>
+			<matHang>J_8</matHang>
+			<dsoMuaChuaThue>K_8</dsoMuaChuaThue>
+			<thueSuat>L_8</thueSuat>
+			<thueGTGT>M_8</thueGTGT>
+			<ghiChu>N_8</ghiChu>
 		</HDonMVao>
 	</Dynamic>
 	<Static GroupName="HHDVDRieng">
-		<tongGTriMVao>K_27</tongGTriMVao>
-		<tongThueMVao>M_27</tongThueMVao>
+		<tongGTriMVao>K_10</tongGTriMVao>
+		<tongThueMVao>M_10</tongThueMVao>
 	</Static>
 	<Dynamic GroupName="ChiTietHHDVKhongKTru">
 		<HDonMVao id="ID_7">
-			<kyHieuMauHDon>D_30</kyHieuMauHDon>
-			<kyHieuHDon>E_30</kyHieuHDon>
-			<soHDon>F_30</soHDon>
-			<ngayPHanh>G_30</ngayPHanh>
-			<tenNBAN>H_30</tenNBAN>
-			<mstNBAN>I_30</mstNBAN>
-			<matHang>J_30</matHang>
-			<dsoMuaChuaThue>K_30</dsoMuaChuaThue>
-			<thueSuat>L_30</thueSuat>
-			<thueGTGT>M_30</thueGTGT>
-			<ghiChu>N_30</ghiChu>
+			<kyHieuMauHDon>D_13</kyHieuMauHDon>
+			<kyHieuHDon>E_13</kyHieuHDon>
+			<soHDon>F_13</soHDon>
+			<ngayPHanh>G_13</ngayPHanh>
+			<tenNBAN>H_13</tenNBAN>
+			<mstNBAN>I_13</mstNBAN>
+			<matHang>J_13</matHang>
+			<dsoMuaChuaThue>K_13</dsoMuaChuaThue>
+			<thueSuat>L_13</thueSuat>
+			<thueGTGT>M_13</thueGTGT>
+			<ghiChu>N_13</ghiChu>
 		</HDonMVao>
 	</Dynamic>
 	<Static GroupName="HHDVKhongKTru">
-		<tongGTriMVao>K_32</tongGTriMVao>
-		<tongThueMVao>M_32</tongThueMVao>
+		<tongGTriMVao>K_15</tongGTriMVao>
+		<tongThueMVao>M_15</tongThueMVao>
 	</Static>
 	<Dynamic GroupName="ChiTietHHDVDChung">
 		<HDonMVao id="ID_8">
-			<kyHieuMauHDon>D_35</kyHieuMauHDon>
-			<kyHieuHDon>E_35</kyHieuHDon>
+			<kyHieuMauHDon>D_18</kyHieuMauHDon>
+			<kyHieuHDon>E_18</kyHieuHDon>
 			<soHDon>F_18</soHDon>
-			<ngayPHanh>G_35</ngayPHanh>
-			<tenNBAN>H_35</tenNBAN>
-			<mstNBAN>I_35</mstNBAN>
-			<matHang>J_35</matHang>
-			<dsoMuaChuaThue>K_35</dsoMuaChuaThue>
-			<thueSuat>L_35</thueSuat>
-			<thueGTGT>M_35</thueGTGT>
-			<ghiChu>N_35</ghiChu>
+			<ngayPHanh>G_18</ngayPHanh>
+			<tenNBAN>H_18</tenNBAN>
+			<mstNBAN>I_18</mstNBAN>
+			<matHang>J_18</matHang>
+			<dsoMuaChuaThue>K_18</dsoMuaChuaThue>
+			<thueSuat>L_18</thueSuat>
+			<thueGTGT>M_18</thueGTGT>
+			<ghiChu>N_18</ghiChu>
 		</HDonMVao>
 	</Dynamic>
 	<Static GroupName="HHDVDChung">
-		<tongGTriMVao>K_37</tongGTriMVao>
-		<tongThueMVao>M_37</tongThueMVao>
+		<tongGTriMVao>K_20</tongGTriMVao>
+		<tongThueMVao>M_20</tongThueMVao>
 	</Static>
 	<Dynamic GroupName="ChiTietHHDVKTru">
 		<HDonMVao id="ID_9">
-			<kyHieuMauHDon>D_40</kyHieuMauHDon>
-			<kyHieuHDon>E_40</kyHieuHDon>
-			<soHDon>F_40</soHDon>
-			<ngayPHanh>G_40</ngayPHanh>
-			<tenNBAN>H_40</tenNBAN>
-			<mstNBAN>I_40</mstNBAN>
-			<matHang>J_40</matHang>
-			<dsoMuaChuaThue>K_40</dsoMuaChuaThue>
-			<thueSuat>L_40</thueSuat>
-			<thueGTGT>M_40</thueGTGT>
-			<ghiChu>N_40</ghiChu>
+			<kyHieuMauHDon>D_23</kyHieuMauHDon>
+			<kyHieuHDon>E_23</kyHieuHDon>
+			<soHDon>F_23</soHDon>
+			<ngayPHanh>G_23</ngayPHanh>
+			<tenNBAN>H_23</tenNBAN>
+			<mstNBAN>I_23</mstNBAN>
+			<matHang>J_23</matHang>
+			<dsoMuaChuaThue>K_23</dsoMuaChuaThue>
+			<thueSuat>L_23</thueSuat>
+			<thueGTGT>M_23</thueGTGT>
+			<ghiChu>N_23</ghiChu>
 		</HDonMVao>
 	</Dynamic>
 	<Static GroupName="HHDVKTru">
-		<tongGTriMVao>K_42</tongGTriMVao>
-		<tongThueMVao>M_42</tongThueMVao>
+		<tongGTriMVao>K_25</tongGTriMVao>
+		<tongThueMVao>M_25</tongThueMVao>
 	</Static>
 	<Dynamic GroupName="ChiTietHHDVMVaoKhongTHop">
 		<HDonMVao id="ID_10">
-			<kyHieuMauHDon>D_45</kyHieuMauHDon>
-			<kyHieuHDon>E_45</kyHieuHDon>
-			<soHDon>F_45</soHDon>
-			<ngayPHanh>G_45</ngayPHanh>
-			<tenNBAN>H_45</tenNBAN>
-			<mstNBAN>I_45</mstNBAN>
-			<matHang>J_45</matHang>
-			<dsoMuaChuaThue>K_45</dsoMuaChuaThue>
-			<thueSuat>L_45</thueSuat>
-			<thueGTGT>M_45</thueGTGT>
-			<ghiChu>N_45</ghiChu>
+			<kyHieuMauHDon>D_28</kyHieuMauHDon>
+			<kyHieuHDon>E_28</kyHieuHDon>
+			<soHDon>F_28</soHDon>
+			<ngayPHanh>G_28</ngayPHanh>
+			<tenNBAN>H_28</tenNBAN>
+			<mstNBAN>I_28</mstNBAN>
+			<matHang>J_28</matHang>
+			<dsoMuaChuaThue>K_28</dsoMuaChuaThue>
+			<thueSuat>L_28</thueSuat>
+			<thueGTGT>M_28</thueGTGT>
+			<ghiChu>N_28</ghiChu>
 		</HDonMVao>
 	</Dynamic>
 	<Static GroupName="HHDVMVaoKhongTHop">
-		<tongGTriMVao>K_47</tongGTriMVao>
-		<tongThueMVao>M_47</tongThueMVao>
+		<tongGTriMVao>K_30</tongGTriMVao>
+		<tongThueMVao>M_30</tongThueMVao>
 	</Static>
 	<Static GroupName="PL01_2_GTGT">
-		<tongGTriMVao>H_58</tongGTriMVao>
-		<tongThueMVao>H_59</tongThueMVao>
+		<tongGTriMVao>H_41</tongGTriMVao>
+		<tongThueMVao>H_42</tongThueMVao>
 	</Static>
 </PL01_2_GTGT>
