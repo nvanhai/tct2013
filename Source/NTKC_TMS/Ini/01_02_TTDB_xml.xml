@@ -1,38 +1,35 @@
-<PLuc02_TTDB>
-	<Static GroupName="ThoiGianNopTKhaiChinh">
-		<ThoiGianNopTKhaiChinh/>
-	</Static>
+<Pluc_01_2_TTDB>
 	<Dynamic GroupName="ChiTietThueTTDBNLMVao">
 		<ThueNLMVao id="ID_1">
-			<BienLaiChungTuNopThueTTĐB>
-				<khieuNLMVao>C_24</khieuNLMVao>
-				<soNLMVao>D_24</soNLMVao>
-				<ngayPHanhNLMVao>E_24</ngayPHanhNLMVao>
-			</BienLaiChungTuNopThueTTĐB>
-			<tenNLMVao>F_24</tenNLMVao>
-			<soLuongNLMVao>G_24</soLuongNLMVao>
-			<thueNLMVaoDNop>H_24</thueNLMVaoDNop>
-			<thueNLMVaoTrenDVi>I_24</thueNLMVaoTrenDVi>
-			<thueNLMVaoDaKTru>J_24</thueNLMVaoDaKTru>
-			<thueNLMVaoChuaKTru>K_24</thueNLMVaoChuaKTru>
+			<BienLaiChungTuNopThueTTDB>
+				<ct2>C_24</ct2>
+				<ct3>D_24</ct3>
+				<ct4>E_24</ct4>
+			</BienLaiChungTuNopThueTTDB>
+			<ct5>F_24</ct5>
+			<ct6>G_24</ct6>
+			<ct7>H_24</ct7>
+			<ct8>I_24</ct8>
+			<ct9>J_24</ct9>
+			<ct10>K_24</ct10>
 		</ThueNLMVao>
 	</Dynamic>
-	<Static GroupName="ThueNLMVao">
-		<tongThueNLMVaoDNop>H_26</tongThueNLMVaoDNop>
-		<tongThueNLMVaoDaKTru>J_26</tongThueNLMVaoDaKTru>
-		<tongthueNLMVaoChuaKTru>K_26</tongthueNLMVaoChuaKTru>
+	<Static GroupName="TTinThueNLMVao">
+		<tong_ct7>H_26</tong_ct7>
+		<tong_ct9>J_26</tong_ct9>
+		<tong_ct10>K_26</tong_ct10>
 	</Static>
 	<Dynamic GroupName="ChiTietThueTTDBNLDuocKTru">
 		<ThueNLDuocKTru id="ID_2">
-			<tenMatHangNLKTru>C_34</tenMatHangNLKTru>
-			<soLuongHangNLKTru>E_34</soLuongHangNLKTru>
-			<tenNLKTru>F_34</tenNLKTru>
-			<luongNL1DViNLKTru>H_34</luongNL1DViNLKTru>
-			<thue1DViNLKTru>J_34</thue1DViNLKTru>
-			<tongThueTTDBDuocKTru>K_34</tongThueTTDBDuocKTru>
+			<ct2>C_34</ct2>
+			<ct3>E_34</ct3>
+			<ct4>F_34</ct4>
+			<ct5>H_34</ct5>
+			<ct6>J_34</ct6>
+			<ct7>K_34</ct7>
 		</ThueNLDuocKTru>
 	</Dynamic>
-	<Static GroupName="ThueNLDuocKTru">
-		<tongTTDBNLDuocKTru>K_36</tongTTDBNLDuocKTru>
+	<Static GroupName="TTinThueNLDuocKTru">
+		<tong_ct7>K_36</tong_ct7>
 	</Static>
-</PLuc02_TTDB>
+</Pluc_01_2_TTDB>
