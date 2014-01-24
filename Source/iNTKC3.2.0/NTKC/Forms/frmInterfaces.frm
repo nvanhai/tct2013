@@ -1760,12 +1760,16 @@ Private Sub Command1_Click()
 'str2 = "aa316682600151082   022013004004002002<S01_2><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT3/001~MN/12T~0000020~0000150~131</S></S01_2>"
 'Barcode_Scaned str2
 
-str2 = "bs316732600151082   02201300400600100301/0114/06/2006<S02><S></S><S>300000~0~0~0~0~0~0~0~300000~3333~296667~25~741"
-Barcode_Scaned str2
-str2 = "bs316732600151082   02201300400600200367~0~74167~0~0~25~1~0</S><S>1~~~~~~~</S><S>~~~14/08/2013~~1~~1053</S></S02>"
-Barcode_Scaned str2
-str2 = "bs316732600151082   022013004006003003<SKHBS><S>~~0~0~0</S><S>ThuÕ TNDN ph¶i nép ([37]=[35] x [36])~37~75000~74167~-833~ThuÕ TNDN bæ sung kª khai kú nµy ([39] = [37] - [38])~39~75000~74167~-833</S><S>14/08/2013~14~0~~-833</S></SKHBS>"
-Barcode_Scaned str2
+'str2 = "bs316732600151082   02201300400600100301/0114/06/2006<S02><S></S><S>300000~0~0~0~0~0~0~0~300000~3333~296667~25~741"
+'Barcode_Scaned str2
+'str2 = "bs316732600151082   02201300400600200367~0~74167~0~0~25~1~0</S><S>1~~~~~~~</S><S>~~~14/08/2013~~1~~1053</S></S02>"
+'Barcode_Scaned str2
+'str2 = "bs316732600151082   022013004006003003<SKHBS><S>~~0~0~0</S><S>ThuÕ TNDN ph¶i nép ([37]=[35] x [36])~37~75000~74167~-833~ThuÕ TNDN bæ sung kª khai kú nµy ([39] = [37] - [38])~39~75000~74167~-833</S><S>14/08/2013~14~0~~-833</S></SKHBS>"
+'Barcode_Scaned str2
+
+  str2 = "bs320700800000168   012014ihtkks00100101/0101/01/1900<S01><S></S><S>N?I DUNG 3~0100231226~KKKKKK~800000000~01/01/2014~3300000~20.00~30~198000~400000~20.00~50000~30000~228000~N?I DUNG 4~0800000111~LLLLLLL~50000000~12/01/2014~50000000~30.00~10~1500000~700000~10.00~8000~62000~1562000</S><S>53300000~1698000~1100000~58000~92000~1790000</S><S>X~</S><S>~~~23/01/2014~~1~1~</S></S01><SKHBS><S>Thu? GTGT ph?i n?p~9~121200~1698000~1576800~Thu? TNDN ph?i n?p~13~6100~92000~85900</S><S>~~0~0~0</S><S>23/01/2014~20~300000~30000~SDFDSFSDF~01/01/2014~10300~~20~300000~KHAI B? SUNG 01NTNN~1790000~0~1662700</S></SKHBS>"
+  Barcode_Scaned str2
+  
 
 End Sub
 
@@ -5210,9 +5214,10 @@ Private Function formatMaToKhai(ByVal strID As String) As String
     ElseIf strCode = "13" Then
         strRetValue = "('" & strItem & "','" & strItem & "11','" & strID & "')"
     Else
-        strRetValue = "('" & strItem & "','" & strItem & "11','" & strID & "13')"
+        strRetValue = "('" & strID & "','" & strID & "11','" & strID & "13')"
     End If
     formatMaToKhai = strRetValue
+
 End Function
 Private Function formatMaToKhaiQLT(ByVal strID As String) As String
     formatMaToKhaiQLT = "(" + strID + ")"
