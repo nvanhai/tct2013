@@ -341,6 +341,10 @@
 			<Sheet ID="01" Caption="Biểu thuế tài nguyên" Active="1" TemplateFolder="..\InterfaceTemplates\" DataFile="Catalogue_012013_01"/>
 			<Sheet ID="02" Caption="Biểu thuế tiêu thụ đặc biệt" Active="1" TemplateFolder="..\InterfaceTemplates\" DataFile="Catalogue_012013_02"/>
 		</Validity>
+		<Validity StartDate="01/02/2014">
+			<Sheet ID="01" Caption="Biểu thuế tài nguyên" Active="1" TemplateFolder="..\InterfaceTemplates\" DataFile="Catalogue_022014_01"/>
+			<Sheet ID="02" Caption="Biểu thuế tiêu thụ đặc biệt" Active="1" TemplateFolder="..\InterfaceTemplates\" DataFile="Catalogue_022014_02"/>
+		</Validity>
 	</Menu>
 	<Menu ID="74" PopID="101" ParentID="101_11" Caption="TK tạm nộp thuế TNCN (08/KK-TNCN)" FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp" DirFile="\NTK_TG\">
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\08_TNCN.xls" Class="Tax_Business_Svr_New.cls_08TNCN">

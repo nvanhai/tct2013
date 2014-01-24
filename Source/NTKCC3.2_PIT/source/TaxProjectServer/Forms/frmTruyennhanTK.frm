@@ -528,6 +528,7 @@ Private Sub cmdNhanTkhai_Click()
     Dim SOHDDL          As Variant
     Dim NGAYHDDL        As Variant
     Dim LANBS           As Variant
+    Dim LOAI_KYKK As Variant
     
     On Error GoTo ErrHandle
 
@@ -671,6 +672,8 @@ Private Sub cmdNhanTkhai_Click()
                             SOHDDL = rsHDR.Fields(19).Value
                             NGAYHDDL = rsHDR.Fields(20).Value
                             LANBS = rsHDR.Fields(21).Value
+                            LOAI_KYKK = rsHDR.Fields(22).Value
+                        
                             If Trim(format(NGAYHDDL, "mm/dd/yyyy")) = vbNullString Then
                                 NGAYHDDL = "12/30/1899"
                             End If
@@ -701,7 +704,7 @@ Private Sub cmdNhanTkhai_Click()
                             strSQLInsMupHDR = strSQLInsMupHDRTmp
                             strSQLInsMupHDR = strSQLInsMupHDR & "'" & mupId & "','" & tupId & "','" & Trim(strMaCQT) & "','" & Trim(strMST) & "','"
                             strSQLInsMupHDR = strSQLInsMupHDR & Trim(strTen) & "','" & Trim(strLoaiTK) & "','" & Trim(strNguoiCN) & "','" & Trim(strPhongXL) & "','',"
-                            strSQLInsMupHDR = strSQLInsMupHDR & "'','" & Trim(strThueOnDinh) & "','','','','','','" & Trim(MADLT) & "','" & Trim(SOHDDL) & "','','','','','','','','','','','','','','',"
+                            strSQLInsMupHDR = strSQLInsMupHDR & "'','" & Trim(strThueOnDinh) & "','','','','','','" & Trim(MADLT) & "','" & Trim(SOHDDL) & "','','" & LOAI_KYKK & "','','','','','','','','','','','','',"
                             strSQLInsMupHDR = strSQLInsMupHDR & Trim(strID) & "," & Trim(strLanQuet) & "," & Trim(strKkbs) & ",0,0," & Trim(LANBS) & ",0,0,0,0,0,0,0,0,0,"
                             strSQLInsMupHDR = strSQLInsMupHDR & " CTOD('" & format(strNgayNop, "mm/dd/yyyy") & "'),"
                             strSQLInsMupHDR = strSQLInsMupHDR & " CTOD('" & format(strKylbTu, "mm/dd/yyyy") & "'),"
@@ -728,7 +731,7 @@ Private Sub cmdNhanTkhai_Click()
                             bln = clsConn.ExecuteDLL(strSQLInsMupHDR)
                             ' Ghi du lieu vao bang mup_exc
                             'dntai 06/02/2012 vi to 08A_TNCN luu vao bang # nen phai sua lai cau truy van
-                            If Trim(strLoaiTK) = "08A_TNCN11" Or Trim(strLoaiTK) = "01_TNCN_TTS" Then
+                            If Trim(strLoaiTK) = "08A_TNCN11" Or Trim(strLoaiTK) = "01_TNCN_TTS" Or Trim(strLoaiTK) = "03A_TNCN13" Or Trim(strLoaiTK) = "03B_TNCN13" Then
                                 strSQLDtlTemp = GetAttribute(xmlSQL.childNodes(1), "SqlDLGuiCucDtl_pl")
                             Else
                                 strSQLDtlTemp = GetAttribute(xmlSQL.childNodes(1), "SqlDLGuiCucDtl")
@@ -743,7 +746,7 @@ Private Sub cmdNhanTkhai_Click()
                                     strGiaTri = rsDTl.Fields(0).Value
                                     strKyHieu = rsDTl.Fields(1).Value
                                     'lay rowID trong to 08A_TNCN
-                                    If Trim(strLoaiTK) = "08A_TNCN11" Or Trim(strLoaiTK) = "01_TNCN_TTS" Then
+                                    If Trim(strLoaiTK) = "08A_TNCN11" Or Trim(strLoaiTK) = "01_TNCN_TTS" Or Trim(strLoaiTK) = "03A_TNCN13" Or Trim(strLoaiTK) = "03B_TNCN13" Then
                                         rowID = rsDTl.Fields(2).Value
                                         rowID = "'" & Trim(rowID) & "'"
                                     Else

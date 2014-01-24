@@ -52,7 +52,7 @@ Const mTuNgay = "T_6"
 Const mDenNgay = "T_7"
 
 Public Type activeForm
-    Id As String
+    id As String
     showed As Boolean
 End Type
 
@@ -950,7 +950,7 @@ Public Function getFormIndex(pID As String) As Integer
     Dim i As Long
     
     For i = 1 To UBound(arrActiveForm)
-        If arrActiveForm(i).Id = pID Then
+        If arrActiveForm(i).id = pID Then
             getFormIndex = i
             Exit For
         End If
@@ -1206,10 +1206,10 @@ Function NgayCuoiNamTaiChinh(Y As Integer, dThangTaiChinh As Integer, dNgayTaiCh
 End Function
 
 Function hannop() As String
-Dim dNgayCuoiKy As Date
-Dim dHanNop As Date
-Dim arrDate() As String
-Dim idToKhai As Variant
+    Dim dNgayCuoiKy As Date
+    Dim dHanNop     As Date
+    Dim arrDate()   As String
+    Dim idToKhai    As Variant
 
     idToKhai = GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ID")
 
@@ -1224,7 +1224,14 @@ Dim idToKhai As Variant
         Else
 
             If TAX_Utilities_Svr_New.ThreeMonths = "04" Then
-                hannop = "30/" & "01" & "/" & TAX_Utilities_Svr_New.Year + 1
+                If TAX_Utilities_Svr_New.Year = 2013 Then
+                    hannop = "06/" & "02" & "/" & TAX_Utilities_Svr_New.Year + 1
+
+                Else
+                    hannop = "30/" & "01" & "/" & TAX_Utilities_Svr_New.Year + 1
+                    
+                End If
+
             ElseIf TAX_Utilities_Svr_New.ThreeMonths = "03" Then
                 '            If TAX_Utilities_Svr_New.Year = 2011 Then
                 hannop = "30/" & "10" & "/" & TAX_Utilities_Svr_New.Year
@@ -1251,7 +1258,14 @@ Dim idToKhai As Variant
         ElseIf TAX_Utilities_Svr_New.ThreeMonths <> "" Then
 
             If TAX_Utilities_Svr_New.ThreeMonths = "04" Then
-                hannop = "30/" & "01" & "/" & TAX_Utilities_Svr_New.Year + 1
+                If TAX_Utilities_Svr_New.Year = 2013 Then
+                    hannop = "06/" & "02" & "/" & TAX_Utilities_Svr_New.Year + 1
+
+                Else
+                    hannop = "30/" & "01" & "/" & TAX_Utilities_Svr_New.Year + 1
+                    
+                End If
+
             ElseIf TAX_Utilities_Svr_New.ThreeMonths = "03" Then
                 '            If TAX_Utilities_Svr_New.Year = 2011 Then
                 hannop = "30/" & "10" & "/" & TAX_Utilities_Svr_New.Year
@@ -1274,15 +1288,15 @@ Dim idToKhai As Variant
     arrDate = Split(hannop, "/")
     dHanNop = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
 
-'Neu vao ngay thu 7 thi cong them 2 ngay,  ngay CN thi cong them mot ngay
-'    If Weekday(CDate(hannop)) = 7 Then
-'        hannop = DateAdd("D", 2, CDate(hannop))
-'        hannop = format(hannop, "dd/mm/yyyy")
-'    ElseIf Weekday(CDate(hannop)) = 1 Then
-'        hannop = DateAdd("D", 1, CDate(hannop))
-'        hannop = format(hannop, "dd/mm/yyyy")
-'    End If
-     If Weekday(dHanNop) = 7 Then
+    'Neu vao ngay thu 7 thi cong them 2 ngay,  ngay CN thi cong them mot ngay
+    '    If Weekday(CDate(hannop)) = 7 Then
+    '        hannop = DateAdd("D", 2, CDate(hannop))
+    '        hannop = format(hannop, "dd/mm/yyyy")
+    '    ElseIf Weekday(CDate(hannop)) = 1 Then
+    '        hannop = DateAdd("D", 1, CDate(hannop))
+    '        hannop = format(hannop, "dd/mm/yyyy")
+    '    End If
+    If Weekday(dHanNop) = 7 Then
         hannop = DateAdd("D", 2, dHanNop)
         hannop = format(hannop, "dd/mm/yyyy")
     ElseIf Weekday(dHanNop) = 1 Then
@@ -1291,7 +1305,6 @@ Dim idToKhai As Variant
     Else
         hannop = format(dHanNop, "dd/mm/yyyy")
     End If
-    
     
 End Function
 
@@ -1658,7 +1671,7 @@ Public Function GetDataPkgId() As String
     Dim fso As New FileSystemObject
     Dim strFileName As String
     Dim pkgId As Variant
-    Dim Id As Variant
+    Dim id As Variant
     Dim noiLamViec As Variant
     Dim clsConn As New TAX_Utilities_Svr_New.clsADO
     strFileName = spathVat & "\TRAODOI\parm.DBF"
@@ -1682,13 +1695,13 @@ Public Function GetDataPkgId() As String
                 " WHERE prm_name = 'EXC_DATA_PKG_SEQ' "
             Set rs = clsConn.Execute(sSQL)
             If Not rs Is Nothing Then
-                 Id = rs.Fields("prm_value")
-                 sSQL = "update parm set prm_value ='" & Val(CStr(Id)) + 1 & "' where prm_name = 'EXC_DATA_PKG_SEQ' "
+                 id = rs.Fields("prm_value")
+                 sSQL = "update parm set prm_value ='" & Val(CStr(id)) + 1 & "' where prm_name = 'EXC_DATA_PKG_SEQ' "
                  clsConn.ExecuteDLL (sSQL)
             Else
-                 Id = 0
+                 id = 0
             End If
-            pkgId = Trim(CStr(pkgId)) & Trim(CStr(Id))
+            pkgId = Trim(CStr(pkgId)) & Trim(CStr(id))
             clsConn.Disconnect
     Else
         pkgId = ""
@@ -1980,7 +1993,7 @@ Public Function changeMaToKhai(strID As String) As String
 End Function
 
 'lay ten CQT tu ma CQT
-Public Sub GetTenCQT(ByVal Id As String, Optional ByRef TenTN As String)
+Public Sub GetTenCQT(ByVal id As String, Optional ByRef TenTN As String)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
 Dim xmlDOMdata As New MSXML.DOMDocument
@@ -1994,7 +2007,7 @@ Dim xmlNode As MSXML.IXMLDOMNode
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
-                        If Id = arrDanhsach(1) Then
+                        If id = arrDanhsach(1) Then
                             TenTN = arrDanhsach(3)
                             Exit Sub
                         End If
