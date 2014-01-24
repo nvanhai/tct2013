@@ -928,9 +928,9 @@ Public Function InsertHDR() As String
                 vTuThang = ""
                 vDenThang = ""
                 hdr.kieu_ky = "Q"
+                hdr.loai_kykk = "Q"
             Else
                 'set lai ky ke khai
-                kykkhai = "'" & vTuThang & "'"
                 vDenThang = "01/" & vDenThang
                 vTuThang = "01/" & vTuThang
                 vDenThang = ToDate(Trim(vDenThang), DDMMYYYY)
@@ -938,6 +938,7 @@ Public Function InsertHDR() As String
                 vTuThang = ToDate(Trim(vTuThang), DDMMYYYY)
                 vTuThang = "CTOD('" & vTuThang & "')"
                 hdr.kieu_ky = "M"
+                hdr.loai_kykk = "T"
             End If
 
             'pit
@@ -975,6 +976,7 @@ Public Function TKTT() As Boolean
     Dim strFileNameHDR1 As String
     Dim strFileNameDTL1 As String
     Dim vTuThang As Variant, vDenThang As Variant, kykkhai As Variant
+    Dim LoaiKyKK As String
     
     strFileNameHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_CNTK" & Right$(sKyKeKhai, 4) & ".DBF"
     strFileNameDTL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_C08" & Right$(sKyKeKhai, 4) & ".DBF"
@@ -1037,7 +1039,9 @@ Public Function TKTT() As Boolean
 
     
     If Trim(vTuThang) <> vbNullString And Trim(vDenThang) <> vbNullString Then
-        kykkhai = "'" & Trim(vTuThang) & "'"
+        LoaiKyKK = "'T'"
+    Else
+        LoaiKyKK = "'Q'"
     End If
 
 
@@ -1049,9 +1053,9 @@ Public Function TKTT() As Boolean
              vDenThang = "01/" & Trim(vDenThang)
              vDenThang = ToDate(Trim(vDenThang), DDMMYYYY)
              vDenThang = "CTOD('" & Format(vDenThang, "mm/dd/yyyy") & "')"
-             sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = " & kykkhai & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_TTS' AND den_ngay = " & vDenThang
+             sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = " & kykkhai & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_TTS' AND den_ngay = " & vDenThang & " AND Loai_KyKK = " & LoaiKyKK
         Else
-             sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = " & kykkhai & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_TTS'"
+             sSQL = "SELECT * FROM tmp_tncn_hdr WHERE Tin = '" & strMST & "' AND KYKKHAI = " & kykkhai & " AND Lan_bs = 0 AND Loai_tkhai='01_TNCN_TTS'" & " AND Loai_KyKK = " & LoaiKyKK
         End If
         
         Set rs = clsDAO.Execute(sSQL)

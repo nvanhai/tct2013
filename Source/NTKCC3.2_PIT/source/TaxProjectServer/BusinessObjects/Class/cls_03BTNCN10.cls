@@ -653,15 +653,19 @@ Public Function InsertDTL() As String
         Dim kyhieuArr() As Variant ' mang ky hieu theo chi tieu
         Dim colArr()    As Variant 'mang chua cot chi tieu
         
-        cttnArr() = Array("I", "II", "III", "IV", "V", "12", "13", "14", "15", "16", "17", "18", "19", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40")
-        kyhieuArr() = Array("I", "II", "III", "IV", "V", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20")
-        cellArr() = Array(0, 0, 0, 0, 0, 30, 32, 34, 36, 36, 38, 38, 38, 42, 43, 45, 46, 48, 49, 52, 53, 55, 56, 58, 59)
+        cttnArr() = Array("I", "II", "III", "IV", "V", "VI", "12", "13", "14", "15", "16", "17", "18", "19", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40")
+        kyhieuArr() = Array("I", "II", "III", "IV", "V", "VI", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20")
+        cellArr() = Array(0, 0, 0, 0, 0, 0, 30, 32, 34, 36, 36, 38, 38, 38, 42, 43, 45, 46, 48, 49, 52, 53, 55, 56, 58, 59)
         colArr() = Array("J", "J", "F", "F", "S", "F", "K", "S")
+
         '------------------------------------------------------------------
-        
+        If TAX_Utilities_Svr_New.isCheckPIT = True Then
+            pit = True
+        End If
+
         For i = 0 To UBound(cttnArr)
             
-            If cttnArr(i) = "I" Or cttnArr(i) = "II" Or cttnArr(i) = "III" Or cttnArr(i) = "IV" Or cttnArr(i) = "V" Then
+            If cttnArr(i) = "I" Or cttnArr(i) = "II" Or cttnArr(i) = "III" Or cttnArr(i) = "IV" Or cttnArr(i) = "V" Or cttnArr(i) = "VI" Then
                 giatri = "0"
                 giatri2 = "0"
                 CTTN = "'" & cttnArr(i) & "'"
@@ -679,7 +683,7 @@ Public Function InsertDTL() As String
                 
             sSQLVal = matkhai & "," & madtnt & "," & kylbo & "," & kykkhai & "," & tthtk & "," & ngnop & ","
             sSQLVal = sSQLVal & CTTN & "," & giatri & "," & giatri2 & "," & tt & "," & LAN_QUET & "," & DANHAN
-               
+            
             arr = Split(GetMaCqt, "~")
             hdr.matkhai = "'03B_TNCN13'"
             hdr.madtnt = madtnt
@@ -688,7 +692,7 @@ Public Function InsertDTL() As String
             hdr.tthtk = tthtk
             hdr.ngnop = ngnop
             hdr.CTTN = CTTN
-            hdr.giatri = giatri
+            hdr.giatri = "'" & giatri & "'"
                             
             hdr.LAN_QUET = LAN_QUET
             hdr.ky_hieu = "'" & kyhieuArr(i) & "'"
@@ -697,7 +701,8 @@ Public Function InsertDTL() As String
             hdr.Id = GetDtlId(spathVat)
             hdr.Hdr_id = hdrId
 
-            bln = InsertDTL_By_CTTN(hdr)
+            sSQL = InsertDTL_TGTC08(hdr, 0)
+            bln = clsDAO.ExecuteDLL(sSQL)
         Next
         
     End With

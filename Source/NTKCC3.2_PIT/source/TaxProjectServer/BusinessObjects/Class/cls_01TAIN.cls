@@ -2092,39 +2092,53 @@ Public Function XoaTKTT() As Boolean
    clsDAO.Disconnect
 
 End Function
-Private Sub DataDM(ByVal Id As String, Optional ByRef strIdQLT As String, Optional ByRef tenTN As String, Optional ByRef strDVT As String, Optional ByRef strThueSuat As String, Optional ByRef blnSuaThueSuat As Boolean, Optional ByRef maTM As String)
-Dim arrDanhsach() As String
-Dim strDataFileName As String
-Dim xmlDomData As New MSXML.DOMDocument
-Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
-Dim xmlNode As MSXML.IXMLDOMNode
 
-       strDataFileName = GetCatalogueFileName
+Private Sub DataDM(ByVal Id As String, _
+                   Optional ByRef strIdQLT As String, _
+                   Optional ByRef tenTN As String, _
+                   Optional ByRef strDVT As String, _
+                   Optional ByRef strThueSuat As String, _
+                   Optional ByRef blnSuaThueSuat As Boolean, _
+                   Optional ByRef maTM As String)
+    Dim arrDanhsach()   As String
+    Dim strDataFileName As String
+    Dim xmlDomData      As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode         As MSXML.IXMLDOMNode
+
+    strDataFileName = GetCatalogueFileName
     
-If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
-            For Each xmlNode In xmlNodeListCell
-                If GetAttribute(xmlNode, "Value") <> "" Then
-                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+    If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
+
+        For Each xmlNode In xmlNodeListCell
+
+            If GetAttribute(xmlNode, "Value") <> "" Then
+                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                     
-                        If Id = arrDanhsach(1) Then
-                            strIdQLT = arrDanhsach(0)
-                            tenTN = arrDanhsach(2)
-                            strDVT = arrDanhsach(3)
-                            strThueSuat = arrDanhsach(4)
-                            blnSuaThueSuat = IIf(arrDanhsach(5) = "1", True, False)
-                            If Val(TAX_Utilities_Svr_New.Year) > 2010 Then
-                                maTM = arrDanhsach(7)
-                            ElseIf Val(TAX_Utilities_Svr_New.Month) >= 4 And Val(TAX_Utilities_Svr_New.Year) = 2010 Then
-'                                MATM = arrDanhsach(8)
-'                            Else
-                                maTM = arrDanhsach(7)
-                            End If
-                            Exit Sub
-                        End If
+                If Id = arrDanhsach(1) Then
+                    strIdQLT = arrDanhsach(0)
+                    tenTN = arrDanhsach(2)
+                    strDVT = arrDanhsach(3)
+                    strThueSuat = arrDanhsach(4)
+                    blnSuaThueSuat = IIf(arrDanhsach(5) = "1", True, False)
+
+                    If Val(TAX_Utilities_Svr_New.Year) > 2010 Then
+                        maTM = arrDanhsach(7)
+                    ElseIf Val(TAX_Utilities_Svr_New.Month) >= 4 And Val(TAX_Utilities_Svr_New.Year) = 2010 Then
+                        '                                MATM = arrDanhsach(8)
+                        '                            Else
+                        maTM = arrDanhsach(7)
+                    End If
+
+                    Exit Sub
                 End If
-            Next
-        End If
+            End If
+
+        Next
+
+    End If
+
 End Sub
 
 Public Sub GetParams(ByRef strPNgayNhanToKhai As String, ByRef strPPhongXuLy As String) 'ByRef strPMaSoTep, ByRef strPNgayNhanToKhai As String, ByRef strPPhongXuLy As String)
