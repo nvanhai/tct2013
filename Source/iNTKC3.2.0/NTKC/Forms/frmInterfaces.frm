@@ -2145,13 +2145,6 @@ On Error GoTo ErrHandle
             End If
         End If
         
-        'get loai to khai
-        If verToKhai = 2 Then
-            strLoaiToKhai = "bs"
-        Else
-            strLoaiToKhai = "aa"
-        End If
-        
         'khong nhan cac to khai khong theo mau HTKK3.2.0
         IdToKhai = Mid(strPrefix, 4, 2)
         If (Val(Left$(strPrefix, 3)) <= 317 And UCase(strLoaiToKhai) = "AA") Then
@@ -3624,8 +3617,8 @@ On Error GoTo ErrHandle
     End If
     '***********************************
     
-    ' Kiem tra to khai ton tai theo mau cu QLT
-    isTKDA30 = isDA30(strID, arrStrHeaderData)
+'     Kiem tra to khai ton tai theo mau cu QLT
+    isTKDA30 = isDA30(strID, arrStrHeaderData, isTKLanPS, LoaiKyKK)
         
     InitParameters = True
 
@@ -3911,12 +3904,14 @@ On Error GoTo ErrHandle
                     If tCQT_CAPCUC <> vbNullString Then
                         .Row = .MaxRows - 15
                         .Text = tCQT_CAPCUC
+                        UpdateCell .Col, .Row, tCQT_CAPCUC
 
                     End If
 
                     If tCQT_HOANTHUE <> vbNullString Then
                         .Row = .MaxRows - 13
                         .Text = tCQT_HOANTHUE
+                        UpdateCell .Col, .Row, tCQT_HOANTHUE
  
                     End If
                 End If
@@ -5219,6 +5214,9 @@ Private Function formatMaToKhai(ByVal strID As String) As String
     End If
     formatMaToKhai = strRetValue
 End Function
+Private Function formatMaToKhaiQLT(ByVal strID As String) As String
+    formatMaToKhaiQLT = "(" + strID + ")"
+End Function
 
 Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) As Boolean
     Dim lngIndex As Long
@@ -5311,7 +5309,7 @@ End Function
 
 
 ' Kiem tra to khai theo DA30
-Private Function isDA30(ByVal strID As String, arrStrHeaderData() As String) As Boolean
+Private Function isDA30(ByVal strID As String, arrStrHeaderData() As String, isLanPS As Boolean, LoaiKyKK As Boolean) As Boolean
     Dim lngIndex As Long
     Dim rsResult As ADODB.Recordset
     Dim strSQL As String
@@ -5326,7 +5324,7 @@ Private Function isDA30(ByVal strID As String, arrStrHeaderData() As String) As 
 
     strSQL = "select 1 from qlt_tkhai_hdr tkhai " & _
             "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-            "And tkhai.DTK_MA_LOAI_TKHAI = '" & changeMaToKhaiQLT(strID) & "' " & _
+            "And tkhai.DTK_MA_LOAI_TKHAI IN '" & formatMaToKhaiQLT(changeMaToKhaiQLT(strID, isLanPS, LoaiKyKK)) & "' " & _
             "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
             "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
             "And tkhai.YN_DA30 is null "

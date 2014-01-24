@@ -124,4 +124,6 @@
 	<Infor ID="0129" Msg="Kỳ lập bộ không được lớn hơn kỳ hiện tại"/>
 	<Infor ID="0130" Msg="Kỳ kê khai không được gia hạn thuế GTGT theo NQ13/NQ-CP. Đề nghị kiểm tra lại!"/>
 	<Infor ID="0131" Msg="Tờ khai theo lần phát sinh gửi lần 2 trở lên phải được cán bộ thuế kiểm tra trực tiếp và nhập tay nếu cần"/>
+	<Infor ID="0132" Msg="Kể từ 22/02/2014 trở đi phải kê khai tờ khai bằng HTKK phiên bản 3.2.0 trở lên"/>
+	<Infor ID="0133" Msg="Kể từ 22/02/2014 trở đi phải kê khai tờ khai bổ sung bằng HTKK phiên bản 3.2.0 trở lên"/>
 </Message>
