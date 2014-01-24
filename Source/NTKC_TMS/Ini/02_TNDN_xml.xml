@@ -1,8 +1,9 @@
 
-	<HSoKhaiThue ngay_nop_tk="E_44" ky_lap_bo="E_42" loi_dinh_danh="">
+	<HSoKhaiThue ngay_nop_tk="E_44" ky_lap_bo="E_42" loi_dinh_danh="E_48">
 		<Static GroupName="TKhaiThue">
 			<maTKhai>71</maTKhai>
 			<tenTKhai>TK TNDN cho chuyển nhượng BĐS (02/TNDN)</tenTKhai>
+			<soLan>O_49</soLan>
 			<moTaBMau/>
 		</Static>
 		<Static GroupName="GiaHan">
