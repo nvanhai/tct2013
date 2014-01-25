@@ -3893,7 +3893,7 @@ fps.EventEnabled(EventAllEvents) = False
                     Do
                          .Text = str(i)
 
-                         .Col = .ColLetterToNumber("K")
+                         .Col = .ColLetterToNumber("M")
                          .Text = "0"
                          UpdateCell fps, .Col, .Row, .Text
                          

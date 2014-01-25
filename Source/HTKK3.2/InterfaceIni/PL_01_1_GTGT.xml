@@ -18,6 +18,6 @@
 	<cell c1="9" c2="9" type="13" numDec="0"/>
 	<cell c1="10" c2="10" type="0" numDec="0"/>
 	<cell c1="11" c2="11" type="13" numDec="0"/>
-	<cell c1="12" c2="12" type="13" numDec="0"/>
-	<cell c1="13" c2="13" type="0" numDec="0"/>
+	<cell c1="13" c2="12" type="13" numDec="0"/>
+	<cell c1="14" c2="13" type="0" numDec="0"/>
 </root_of_bangke>
