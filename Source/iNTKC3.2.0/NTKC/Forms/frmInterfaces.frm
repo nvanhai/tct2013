@@ -2025,6 +2025,9 @@ Dim strLoaiToKhai As String
 
 On Error GoTo ErrHandle
 
+    'get loai to khai
+    strLoaiToKhai = Mid(strBarcode, 1, 2)
+    
     'Convert from TCVN to UNICODE format
     strBarcode = TrimString(strBarcode)
     'Debug.Print strBarcode
@@ -3152,7 +3155,7 @@ On Error GoTo ErrHandle
     ' begin
     Dim strIDBCTC As String
     strIDBCTC = Left$(strTaxReportInfo, 2)
-     If (Val(strIDBCTC) = 24 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 26 Or Val(strIDBCTC) = 27 Or Val(strIDBCTC) = 28 Or Val(strIDBCTC) = 29 _
+     If (Val(strIDBCTC) = 27 Or Val(strIDBCTC) = 28 Or Val(strIDBCTC) = 29 _
             Or Val(strIDBCTC) = 30 Or Val(strIDBCTC) = 31 Or Val(strIDBCTC) = 32 Or Val(strIDBCTC) = 33 Or Val(strIDBCTC) = 34 Or Val(strIDBCTC) = 35 _
             Or Val(strIDBCTC) = 55 Or Val(strIDBCTC) = 56 Or Val(strIDBCTC) = 57 Or Val(strIDBCTC) = 58 Or Val(strIDBCTC) = 18 Or Val(strIDBCTC) = 19 _
             Or Val(strIDBCTC) = 20 Or Val(strIDBCTC) = 21 Or Val(strIDBCTC) = 69) Then
@@ -5327,13 +5330,20 @@ Private Function isDA30(ByVal strID As String, arrStrHeaderData() As String, isL
         clsDAO.Connect
     End If
 
+'    strSQL = "select 1 from qlt_tkhai_hdr tkhai " & _
+'            "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+'            "And tkhai.DTK_MA_LOAI_TKHAI IN '" & formatMaToKhaiQLT(changeMaToKhaiQLT(strID, isLanPS, LoaiKyKK)) & "' " & _
+'            "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+'            "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+'            "And tkhai.YN_DA30 is null "
+
     strSQL = "select 1 from qlt_tkhai_hdr tkhai " & _
             "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
             "And tkhai.DTK_MA_LOAI_TKHAI IN '" & formatMaToKhaiQLT(changeMaToKhaiQLT(strID, isLanPS, LoaiKyKK)) & "' " & _
             "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
             "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
-            "And tkhai.YN_DA30 is null "
-
+            "And ((tkhai.YN_DA30 is null) OR (UPPER(YN_DA30) = 'Y' AND (TTHAI <> '1' AND TTHAI <> '3'))) "
+            
     Set rsResult = clsDAO.Execute(strSQL)
     If rsResult Is Nothing Then
         isDA30 = False
@@ -5785,13 +5795,27 @@ Private Function layThongTinToKhai() As String
 End Function
 
 Private Function LoaiToKhai(ByVal strData As String) As Boolean
-    Dim LoaiTk As String
-    Dim tmp As String
+    Dim LoaiTk      As String
+    Dim tmp         As String
+    Dim Tk04_GTGT() As String
+    On Error GoTo ErrHandle
     
-On Error GoTo ErrHandle
-    
-    LoaiTk = Left$(strData, Len(strData) - 10)
-    LoaiTk = Right$(LoaiTk, 1)
+    LoaiTk = Mid$(strData, 4, 2)
+
+    If LoaiTk = "71" Then
+        LoaiTk = Left$(strData, Len(strData) - 10)
+        Tk04_GTGT = Split(LoaiTk, "~")
+
+        If UBound(Tk04_GTGT) > 0 Then
+            LoaiTk = Tk04_GTGT(UBound(Tk04_GTGT) - 1)
+            
+        End If
+
+    Else
+        LoaiTk = Left$(strData, Len(strData) - 10)
+        LoaiTk = Right$(LoaiTk, 1)
+  
+    End If
     If LoaiTk = "1" Then
         LoaiToKhai = True
     Else
@@ -5801,6 +5825,6 @@ On Error GoTo ErrHandle
 ErrHandle:
     'Connect DB fail
     SaveErrorLog Me.Name, "LoaiToKhai", Err.Number, Err.Description
-    If Err.Number = -2147467259 Then _
-        MessageBox "0063", msOKOnly, miCriticalError
+
+    If Err.Number = -2147467259 Then MessageBox "0063", msOKOnly, miCriticalError
 End Function
