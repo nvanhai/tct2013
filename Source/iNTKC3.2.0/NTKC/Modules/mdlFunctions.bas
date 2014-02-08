@@ -18,7 +18,7 @@ Public dNgayCuoiKy As Date
 Public Const SS_SORT_ORDER_ASCENDING = 1
 Public Const APP_VERSION = "3.2.0"
 
-Public Const HTKK_LAST_VERSION = "9.9.9"
+Public Const HTKK_LAST_VERSION = "3.2.0"
 
 Public Const SS_BORDER_TYPE_NONE = 0
 Public Const SS_BORDER_TYPE_LEFT = 1
@@ -255,16 +255,19 @@ Public Function GetValidityNode() As MSXML.IXMLDOMNode
             End Select
         
         ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
+
             Select Case TAX_Utilities_Srv_New.ThreeMonths
+
                 Case "01", "02", "03", "04"
-                    ValidityDate = GetNgayCuoiQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), _
-                                CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
+                    ValidityDate = GetNgayCuoiQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
             End Select
+
         ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
             ValidityDate = NgayCuoiNamTaiChinh(CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
         Else
             ValidityDate = Date
         End If
+
     End If
     
     Set xmlNodeListValidity = TAX_Utilities_Srv_New.NodeMenu.selectNodes("Validity")
