@@ -5117,7 +5117,11 @@ Private Function LoaiToKhai(ByVal strData As String) As Boolean
         LoaiTk = Right$(LoaiTk, 1)
   
     End If
-    
+    If LoaiTk = "1" Then
+        LoaiToKhai = True
+    Else
+        LoaiToKhai = False
+    End If
     Exit Function
 ErrHandle:
     'Connect DB fail
