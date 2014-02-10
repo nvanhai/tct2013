@@ -448,16 +448,16 @@ With fps
                 End If
             End If
         End If
-    ElseIf .ActiveSheet = sheetPl01_1_GTGT Then
-        .Col = Col
-        .Row = Row
-        varTemp = .Text
-         If Col = .ColLetterToNumber("C") And .Text <> "" Then
-            .EventEnabled(EventChange) = False
-            .Col = .ColLetterToNumber(colD)
-            .Text = varTemp
-            .EventEnabled(EventChange) = True
-         End If
+'    ElseIf .ActiveSheet = sheetPl01_1_GTGT Then
+'        .Col = Col
+'        .Row = Row
+'        varTemp = .Text
+'         If Col = .ColLetterToNumber("C") And .Text <> "" Then
+'            .EventEnabled(EventChange) = False
+'            .Col = .ColLetterToNumber(colD)
+'            .Text = varTemp
+'            .EventEnabled(EventChange) = True
+'         End If
     ElseIf .ActiveSheet = sheetPl01_2_GTGT Then
         .Col = Col
         .Row = Row
@@ -2892,6 +2892,8 @@ Dim maCucThue As String
 Dim tenChiCucThue As String
 Dim maChiCucThue As String
 
+Dim varTemp As Variant
+
 Dim loaiCq As String
 Dim maLoaiCq As String
 With fps
@@ -3038,6 +3040,16 @@ With fps
 ''        .TypeNumberMin = Val("0")
 ''        .TypeNumberMax = Val("99999999999999")
 ''      End If
+    ElseIf .ActiveSheet = sheetPl01_1_GTGT Then
+        .Col = Col
+        .Row = Row
+        varTemp = .Text
+         If Col = .ColLetterToNumber("C") And .Text <> "" Then
+            .EventEnabled(EventChange) = False
+            .Col = .ColLetterToNumber(colD)
+            .Text = varTemp
+            .EventEnabled(EventChange) = True
+         End If
     ElseIf .ActiveSheet = 1 Then
         .Col = Col
         .Row = Row
