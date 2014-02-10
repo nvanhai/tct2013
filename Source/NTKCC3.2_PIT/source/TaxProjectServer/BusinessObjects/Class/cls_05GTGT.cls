@@ -1300,6 +1300,7 @@ Public Function InsertHDR() As String
         If Trim(HANNOP) = vbNullString Then
             HANNOP = "CTOD('')"
         Else
+            HANNOP = ToDate(Trim(HANNOP), DDMMYYYY)
             HANNOP = "CTOD('" & Format(HANNOP, "mm/dd/yyyy") & "')"
         End If
 

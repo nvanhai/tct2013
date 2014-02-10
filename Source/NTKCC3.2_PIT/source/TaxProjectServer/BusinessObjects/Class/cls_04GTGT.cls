@@ -690,7 +690,7 @@ Public Function InsertDTL() As String
             madtnt = "'" & madtnt & "'"
         End If
         MATHUE = "'01'"
-        MAPP = "'2'"
+        MAPP = "'3'"
         .GetText .ColLetterToNumber("E"), 30, kylbo
         If Trim(kylbo) = vbNullString Then
             kylbo = "''"
@@ -2012,7 +2012,7 @@ Public Function InsertHDR() As String
         End If
 
         MATHUE = "'01'"
-        MAPP = "'2'"
+        MAPP = "'3'"
         .GetText .ColLetterToNumber("E"), 30, kylbo
 
         If Trim(kylbo) = vbNullString Then
@@ -2165,6 +2165,7 @@ Public Function InsertHDR() As String
         If Trim(HANNOP) = vbNullString Then
             HANNOP = "CTOD('')"
         Else
+            HANNOP = ToDate(Trim(HANNOP), DDMMYYYY)
             HANNOP = "CTOD('" & Format(HANNOP, "mm/dd/yyyy") & "')"
         End If
         
