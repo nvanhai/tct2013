@@ -1251,19 +1251,19 @@ Public Function changeMaToKhaiQLT(strID As String, isLanPS, LoaiKyKK) As String
     ' To khai 03_GTGT
     ' TODO cap nhat them ID cu
     If strID = "04" And LoaiKyKK = False Then
-        changeMaToKhaiQLT = "02,A1" ' 02,03
+        changeMaToKhaiQLT = "02,A1,96,31" ' 02,03
     Else
-        changeMaToKhaiQLT = "A2"
+        changeMaToKhaiQLT = "85,A2,97,88"
     End If
     
     'Khong chan cap to khai 03/GTGT va 04/GTGT cu & moi
     ' To khai 04_GTGT
-    If strID = "71" And isLanPS = True Then
-        changeMaToKhaiQLT = "98"
-    ElseIf strID = "71" And LoaiKyKK = False Then
-        changeMaToKhaiQLT = "96"
+'    If strID = "71" And isLanPS = True Then
+'        changeMaToKhaiQLT = "98"
+    If strID = "71" And LoaiKyKK = False Then
+        changeMaToKhaiQLT = "96,31,02,A1"
     Else
-        changeMaToKhaiQLT = "97"
+        changeMaToKhaiQLT = "97,88,85,A2"
     End If
     
     ' To khai 05_GTGT

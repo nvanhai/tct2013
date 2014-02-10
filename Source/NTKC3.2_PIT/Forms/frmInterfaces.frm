@@ -1381,12 +1381,21 @@ Private Sub Command1_Click()
 '    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
     '--02/GTGT
-    str2 = "aa320020800737709   01201400300300100201/0114/06/2006<S01><S></S><S>11~111~0~0~1~0~0~0~0~0~122~0~0~0~122</S><S>~Hoang Ngoc Hung~~25/02/2014~1~~~0</S></S01>"
+'    str2 = "aa320020800737709   01201400300300100201/0114/06/2006<S01><S></S><S>11~111~0~0~1~0~0~0~0~0~122~0~0~0~122</S><S>~Hoang Ngoc Hung~~25/02/2014~1~~~0</S></S01>"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'    str2 = "aa320020800737709   012014003003002002<S01_2_1><S>~~~~~~~~0~0~0~</S><S>0~0</S></S01_2_1>"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+    
+    '--05/GTGT
+'    str2 = "aa320720800737709   01201400100100100101/0114/06/2006<S01><S></S><S>111~1111~1~22~23</S><S>hoten~Hoang Ngoc Hung~cc~10/02/2014~1~~~~</S></S01>"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+    str2 = "aa320120800737709   04201300400400100301/0114/06/2006<S01><S></S><S>~~100~100~100~0~0~0~100~~20~22~0~~0~20~20~"
     Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-    str2 = "aa320020800737709   012014003003002002<S01_2_1><S>~~~~~~~~0~0~0~</S><S>0~0</S></S01_2_1>"
+    str2 = "aa320120800737709   0420130040040020030~0~0~0~20~~~~0~0</S><S>Hoang Ngoc Hung~10/02/2014~~~1~~1052</S></S01>"
     Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-
-
+    str2 = "aa320120800737709   042013004004003003<S01-1><S>20</S><S>fix_cmc~0102030405~20~4~10101~fix_2~2222222222~80~16~10303</S></S01-1>"
+    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+    
 End Sub
 
 Private Sub Form_Activate()
@@ -4715,7 +4724,7 @@ Private Function formatMaToKhai(ByVal strID As String) As String
     formatMaToKhai = strRetValue
 End Function
 Private Function formatMaToKhaiQLT(ByVal strID As String) As String
-    formatMaToKhaiQLT = "(" + strID + ")"
+    formatMaToKhaiQLT = "(" + UCase(strID) + ")"
 End Function
 
 Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) As Boolean
@@ -4831,7 +4840,7 @@ Private Function isDA30(ByVal strID As String, arrStrHeaderData() As String, isL
 
     strSQL = "select 1 from qlt_tkhai_hdr tkhai " & _
             "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-            "And tkhai.DTK_MA_LOAI_TKHAI IN '" & formatMaToKhaiQLT(changeMaToKhaiQLT(strID, isLanPS, LoaiKyKK)) & "' " & _
+            "And UPPER(tkhai.DTK_MA_LOAI_TKHAI) IN '" & formatMaToKhaiQLT(changeMaToKhaiQLT(strID, isLanPS, LoaiKyKK)) & "' " & _
             "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
             "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
             "And ((tkhai.YN_DA30 is null) OR (UPPER(YN_DA30) = 'Y' AND (TTHAI <> '1' AND TTHAI <> '3'))) "
