@@ -1258,7 +1258,11 @@ Public Function InsertHDR() As String
        
         'ma to khai
         matkhai = "'02/TNDN'"
-        kykkhai = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
+        If NGAY_PS <> "CTOD('')" Then
+            kykkhai = "'" & Mid$(NGAY_PS, 7, 2) & Mid$(NGAY_PS, 12, 5) & "'"
+        Else
+            kykkhai = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
+        End If
         Dim kykkhai2 As Variant
             
         kykkhai2 = Mid$(kykkhai, 2, 1)
