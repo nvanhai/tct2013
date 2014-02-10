@@ -1133,9 +1133,9 @@ Private Sub cmdSave_Click()
     Set rs = Nothing
 
     
-    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 71 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 90 Or idToKhai = 95 Or idToKhai = 92 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 99 Or idToKhai = 24 Or idToKhai = 25 Or idToKhai = 23 Then
+    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 90 Or idToKhai = 95 Or idToKhai = 92 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 99 Or idToKhai = 24 Or idToKhai = 25 Or idToKhai = 23 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28").nodeValue)
-    ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 5 Or idToKhai = 70 Or idToKhai = 72 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Or idToKhai = 98 Or idToKhai = 6 Then
+    ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 5 Or idToKhai = 70 Or idToKhai = 71 Or idToKhai = 72 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Or idToKhai = 98 Or idToKhai = 6 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28_NNKD").nodeValue)
     Else
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdr").nodeValue)
@@ -1389,12 +1389,24 @@ Private Sub Command1_Click()
     '--05/GTGT
 '    str2 = "aa320720800737709   01201400100100100101/0114/06/2006<S01><S></S><S>111~1111~1~22~23</S><S>hoten~Hoang Ngoc Hung~cc~10/02/2014~1~~~~</S></S01>"
 '    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-    str2 = "aa320120800737709   04201300400400100301/0114/06/2006<S01><S></S><S>~~100~100~100~0~0~0~100~~20~22~0~~0~20~20~"
+'    str2 = "aa320120800737709   04201300400400100301/0114/06/2006<S01><S></S><S>~~100~100~100~0~0~0~100~~20~22~0~~0~20~20~"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'    str2 = "aa320120800737709   0420130040040020030~0~0~0~20~~~~0~0</S><S>Hoang Ngoc Hung~10/02/2014~~~1~~1052</S></S01>"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'    str2 = "aa320120800737709   042013004004003003<S01-1><S>20</S><S>fix_cmc~0102030405~20~4~10101~fix_2~2222222222~80~16~10303</S></S01-1>"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+    
+    '--04/GTGT - lan phat sinh
+    str2 = "aa320710800737709   01201400100100100101/0101/01/1900<S01><S></S><S>10~2~0~2~0~2~0~2~0~8~0~18~0</S><S>hoten~Hoang Ngoc Hung~cc~10/04/2014~1~~~2~10/03/2014</S></S01>"
     Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-    str2 = "aa320120800737709   0420130040040020030~0~0~0~20~~~~0~0</S><S>Hoang Ngoc Hung~10/02/2014~~~1~~1052</S></S01>"
-    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-    str2 = "aa320120800737709   042013004004003003<S01-1><S>20</S><S>fix_cmc~0102030405~20~4~10101~fix_2~2222222222~80~16~10303</S></S01-1>"
-    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+'    str2 = "bs320710800737709   01201400200200100301/0101/01/1900<S01><S></S><S>20~22~0~222~11~22~1~2~0~268~12~288~12</S><S>hoten~Hoang Ngoc Hung~cc~10/04/2014~~1~1~2~10/03/2014</S></S01>"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'    str2 = "bs320710800737709   012014002002002003<SKHBS><S>DÞch vô, x©y dùng kh«ng bao thÇu nguyªn vËt liÖu~25~0~11~11~S¶n xuÊt, vËn t¶i, dÞch vô cã g¾n víi hµng ho"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'    str2 = "bs320710800737709   012014002002003003¸, x©y dùng cã bao thÇu nguyªn vËt liÖu~27~0~1~1</S><S>~~0~0~0</S><S>10/04/2014~21~0~0~~~~~0~0~~0~0~12</S></SKHBS>"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
     
 End Sub
 
@@ -3117,6 +3129,16 @@ On Error GoTo ErrHandle
             End If
         End If
         
+        ' To khai 04/GTGT
+        If Val(strID) = 71 Then
+            strTemp = Left$(strData, InStr(1, strData, "</S></S01>") + 9)
+            arrCT = Split(strTemp, "~")
+            If Trim(arrCT(UBound(arrCT))) <> "" And Left$(Trim(arrCT(UBound(arrCT))), 10) <> "</S></S01>" Then
+                ngayPS = Left$(Trim(arrCT(UBound(arrCT))), 10)
+                isTKLanPS = True
+            End If
+        End If
+        
             
         If Not getSoTTTK(changeMaToKhai(strID), arrStrHeaderData) Then
             DisplayMessage "0079", msOKOnly, miCriticalError
@@ -3125,7 +3147,7 @@ On Error GoTo ErrHandle
        
         ' 18122012
         ' to khai lan phat sinh trog ngay chi nhan 1 to khai
-        If (Val(strID) = 70 Or Val(strID) = 73 Or Val(strID) = 81 Or Val(strID) = 5) And isTKLanPS = True Then
+        If (Val(strID) = 70 Or Val(strID) = 73 Or Val(strID) = 81 Or Val(strID) = 5 Or Val(strID) = 71 Or Val(strID) = 72) And isTKLanPS = True Then
             If isToKhaiPsDaNhanTN = True Then
                 DisplayMessage "0129", msOKOnly, miCriticalError
                 Exit Function
@@ -4753,7 +4775,7 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
                 "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
                 " And tkhai.ngay_ps = to_date('" & ngayPS & "','dd/mm/yyyy')"
-    ElseIf (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11") And isTKLanPS = True Then
+    ElseIf (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "04_GTGT11" Or strID = "05_GTGT11") And isTKLanPS = True Then
         strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
                 "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
@@ -4777,7 +4799,7 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
         strSTT = 0
         isTKTonTai = False
         ' Doi voi cac to khai 01_NTNN, 03_NTNN, 01_TTDB, 02_TNDN
-        If (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "02_TNDN11") And isTKLanPS = True Then
+        If (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "02_TNDN11" Or strID = "04_GTGT11" Or strID = "05_GTGT11") And isTKLanPS = True Then
             isToKhaiPsDaNhanTN = False
         End If
         
@@ -4785,7 +4807,7 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
         strSTT = rsResult.Fields(0).Value + 1
         isTKTonTai = True
         ' Doi voi cac to khai 01_NTNN, 03_NTNN, 01_TTDB, 02_TNDN trong 1 ngay chi nhan 1 to khai
-        If (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "02_TNDN11") And isTKLanPS = True Then
+        If (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "02_TNDN11" Or strID = "04_GTGT11" Or strID = "05_GTGT11") And isTKLanPS = True Then
             isToKhaiPsDaNhanTN = True
         End If
     End If
