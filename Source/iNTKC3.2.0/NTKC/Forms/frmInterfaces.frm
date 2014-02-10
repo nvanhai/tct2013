@@ -5223,7 +5223,7 @@ Private Function formatMaToKhai(ByVal strID As String) As String
 
 End Function
 Private Function formatMaToKhaiQLT(ByVal strID As String) As String
-    formatMaToKhaiQLT = "(" + strID + ")"
+    formatMaToKhaiQLT = "(" + UCase(strID) + ")"
 End Function
 
 Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) As Boolean
@@ -5339,7 +5339,7 @@ Private Function isDA30(ByVal strID As String, arrStrHeaderData() As String, isL
 
     strSQL = "select 1 from qlt_tkhai_hdr tkhai " & _
             "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-            "And tkhai.DTK_MA_LOAI_TKHAI IN '" & formatMaToKhaiQLT(changeMaToKhaiQLT(strID, isLanPS, LoaiKyKK)) & "' " & _
+            "And UPPER(tkhai.DTK_MA_LOAI_TKHAI) IN '" & formatMaToKhaiQLT(changeMaToKhaiQLT(strID, isLanPS, LoaiKyKK)) & "' " & _
             "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
             "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
             "And ((tkhai.YN_DA30 is null) OR (UPPER(YN_DA30) = 'Y' AND (TTHAI <> '1' AND TTHAI <> '3'))) "
