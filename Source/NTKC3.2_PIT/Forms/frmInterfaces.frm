@@ -351,11 +351,13 @@ Private isToKhaiCT As Boolean
 Private isTKDA30 As Boolean  ' kiem tra QLT da co tk theo mau cu chua
 
 Private isTKLanPS As Boolean
+Private isTKThang As Boolean
+
 Private ngayPS As String
 
 Private isToKhaiPsDaNhanTN As Boolean  ' Kiem tra cac to khai phat sinh da nhan trong ngay
-' xu ly cho to khai 08, 08A/TNCN
-Private isTKThang As Boolean
+
+' xu ly cho to khai 08, 08A/TNCN, 01_TNCN_TTS
 Private TuNgay As String
 Private DenNgay As String
 
@@ -1397,8 +1399,8 @@ Private Sub Command1_Click()
 '    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
     
     '--04/GTGT - lan phat sinh
-    str2 = "aa320710800737709   01201400100100100101/0101/01/1900<S01><S></S><S>10~2~0~2~0~2~0~2~0~8~0~18~0</S><S>hoten~Hoang Ngoc Hung~cc~10/04/2014~1~~~2~10/03/2014</S></S01>"
-    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'    str2 = "aa320710800737709   01201400100100100101/0101/01/1900<S01><S></S><S>10~2~0~2~0~2~0~2~0~8~0~18~0</S><S>hoten~Hoang Ngoc Hung~cc~10/04/2014~1~~~2~10/03/2014</S></S01>"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 '    str2 = "bs320710800737709   01201400200200100301/0101/01/1900<S01><S></S><S>20~22~0~222~11~22~1~2~0~268~12~288~12</S><S>hoten~Hoang Ngoc Hung~cc~10/04/2014~~1~1~2~10/03/2014</S></S01>"
 '    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
@@ -1406,6 +1408,21 @@ Private Sub Command1_Click()
 '    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 '    str2 = "bs320710800737709   012014002002003003¸, x©y dùng cã bao thÇu nguyªn vËt liÖu~27~0~1~1</S><S>~~0~0~0</S><S>10/04/2014~21~0~0~~~~~0~0~~0~0~12</S></SKHBS>"
 '    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+    '--01/TTS to quy
+    str2 = "aa320230800737709   01201400100100100201/0101/01/1900<S01><S></S><S>~~so0001~01/01/2014~HD0001~20~10~10~20~4~10~2~0~10~0</S><S>fix_01~0102030405~10~0~0~"
+    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+    str2 = "aa320230800737709   0120140010010020020~10~0~10~0~10~fix_02~2222222222~90~4~2~0~12~0~0~0~0</S><S>hoten~Hoang Ngoc Hung~cc~10/04/2014~1~1~~1~~</S></S01>"
+    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+    
+    '--01/TTS tu thang -> thang
+'    str2 = "aa320230800737709   01201400200200100201/0101/01/1900<S01><S></S><S>01/2014~02/2014~VB0001~01/01/2014~HD0002~8~4~4~22~2~22~2~0~0~0</S><S>fix____01~2222222222~1"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'    str2 = "aa320230800737709   0120140020020020021~0~0~0~11~0~11~0~11~fix_02~0102030405~89~2~2~0~1~1~1~0~1</S><S>hoten~Hoang Ngoc Hung~cc~10/04/2014~1~1~~0~~1</S></S01>"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+    
+    
+    
 
     
 End Sub
@@ -2655,6 +2672,7 @@ Private Function InitParameters(ByVal strData As String, arrStrHeaderData() As S
     ' Xu ly cho cac to khai lan phat sinh
     Dim arrCT() As String
     Dim strTemp As String
+    Dim strLoaiTemp As String
     
 On Error GoTo ErrHandle
     
@@ -3130,7 +3148,7 @@ On Error GoTo ErrHandle
         End If
         
         ' To khai 04/GTGT
-        If Val(strID) = 71 Then
+        If Val(strID) = 71 Or Val(strID) = 72 Then
             strTemp = Left$(strData, InStr(1, strData, "</S></S01>") + 9)
             arrCT = Split(strTemp, "~")
             If Trim(arrCT(UBound(arrCT))) <> "" And Left$(Trim(arrCT(UBound(arrCT))), 10) <> "</S></S01>" Then
@@ -3139,6 +3157,21 @@ On Error GoTo ErrHandle
             End If
         End If
         
+        'To khai 01/KK-TTS
+        If Val(strID) = 23 Then
+'            strTemp = Left$(strData, InStr(1, strData, "</S></S01>") + 9)
+'            arrCT = Split(strTemp, "~")
+'            strLoaiTemp = arrCT(UBound(arrCT) - 2)
+'            If (strLoaiTemp = "0") Then
+'                isTKThang = True
+'            End If
+            arrCT = Split(strData, "~")
+            If Trim(arrCT(1)) <> "" Then
+                TuNgay = Right$(arrCT(0), 7)
+                DenNgay = arrCT(1)
+                isTKThang = True
+            End If
+        End If
             
         If Not getSoTTTK(changeMaToKhai(strID), arrStrHeaderData) Then
             DisplayMessage "0079", msOKOnly, miCriticalError
@@ -4780,7 +4813,7 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
                 "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
                 " And tkhai.ngay_ps = to_date('" & ngayPS & "','dd/mm/yyyy')"
-    ElseIf (strID = "08_TNCN11" Or strID = "08A_TNCN11") And isTKThang = True Then
+    ElseIf (strID = "08_TNCN11" Or strID = "08A_TNCN11" Or strID = "01_TNCN_TTS") And isTKThang = True Then
         strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
                 "And tkhai.loai_tkhai  IN" & formatMaToKhai(strID) & " " & _
