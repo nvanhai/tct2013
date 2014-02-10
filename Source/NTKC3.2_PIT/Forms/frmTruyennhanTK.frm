@@ -483,6 +483,7 @@ Private Sub cmdNhanTkhai_Click()
      Dim strDaiLyThue, strNgayHopDong, strSoHopDong, strLanBS As Variant
      Dim strHinhThucQT, strTKThangQuy As Variant
      Dim strHinhThucNop, strITkhaiID As Variant
+     Dim strLoaiKyKK As Variant
 '     'Bien luu du lieu DTL
      Dim strKyHieu As Variant, strGiaTri As Variant, strRowID As Variant
      Dim i As Integer
@@ -637,14 +638,19 @@ On Error GoTo ErrHandle
                             strITkhaiID = rsHDR.Fields(23).Value
                             strHinhThucNop = rsHDR.Fields(24).Value
                             
+                            strLoaiKyKK = rsHDR.Fields(27).Value
                             ' To khai 08/TNCN va 08A/TNCN
-                            If strTKThangQuy = 1 Then
+                            If strTKThangQuy = 1 Or (Trim(strLoaiKyKK) = "T" And Trim(strLoaiTK) = "01_TNCN_TTS") Then
                                 strKyKKtu = rsHDR.Fields(25).Value
                                 strKyKKden = rsHDR.Fields(26).Value
                             End If
                             
                             If strTKThangQuy = vbNullString Or IsNull(strTKThangQuy) Then
                                 strTKThangQuy = "null"
+                            End If
+                            
+                            If strLoaiKyKK = vbNullString Or IsNull(strLoaiKyKK) Then
+                                strLoaiKyKK = "null"
                             End If
                             
                             strMaCQT = strTaxOfficeId
@@ -677,12 +683,12 @@ On Error GoTo ErrHandle
                             
                             strSQLInsMupHDR = strSQLInsMupHDR & Trim(strDaiLyThue) & "','"
                             strSQLInsMupHDR = strSQLInsMupHDR & Trim(strSoHopDong) & "',"
-                            If Trim(strNgayHopDong) = "" Or strNgayHopDong = vbNullString Then
+                            If Trim(strNgayHopDong) = "" Or strNgayHopDong = vbNullString Or UCase(strNgayHopDong) = "NULL" Then
                                 strSQLInsMupHDR = strSQLInsMupHDR & " null,"
                             Else
                                 strSQLInsMupHDR = strSQLInsMupHDR & " to_date('" & strNgayHopDong & "','mm/dd/yyyy'),"
                             End If
-                            strSQLInsMupHDR = strSQLInsMupHDR & Trim(strLanBS) & ",'" & Trim(strHinhThucQT) & "'," & Trim(strTKThangQuy) & ")"
+                            strSQLInsMupHDR = strSQLInsMupHDR & Trim(strLanBS) & ",'" & Trim(strHinhThucQT) & "'," & Trim(strTKThangQuy) & ",'" & Trim(strLoaiKyKK) & "')"
                             
                             'bln = clsConn.ExecuteQuery(strSQLInsMupHDR)
                             
