@@ -57,7 +57,7 @@ Public Sub UpdateCell(fps As fpSpread, ByVal pCol As Long, ByVal pRow As Long, B
     
     GetCellSpan fps, pCol, pRow
     
-    Set xmlNodeCell = TAX_Utilities_Srv_New.Data(fps.Sheet - 1).nodeFromID(GetCellID(fps, pCol, pRow))
+    Set xmlNodeCell = TAX_Utilities_iNTK.Data(fps.Sheet - 1).nodeFromID(GetCellID(fps, pCol, pRow))
     If Not xmlNodeCell Is Nothing Then
         xmlNodeCell.Attributes.getNamedItem("Value").nodeValue = pValue
     End If
@@ -126,15 +126,15 @@ Public Function GetCatalogueFileName(Optional lSheet As Long = 1) As String
     Dim xmlCatalogeValidNode As MSXML.IXMLDOMNode
     
     'Get valid catalogue node
-    Set xmlCatalogeValidNode = GetValidityNode("107", TAX_Utilities_Srv_New.Month, TAX_Utilities_Srv_New.ThreeMonths, TAX_Utilities_Srv_New.Year)
+    Set xmlCatalogeValidNode = GetValidityNode("107", TAX_Utilities_iNTK.Month, TAX_Utilities_iNTK.ThreeMonths, TAX_Utilities_iNTK.Year)
     
     'Get catalogue ID
-    strCatalogueID = GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "CatalogueID")
+    strCatalogueID = GetAttribute(TAX_Utilities_iNTK.NodeValidity, "CatalogueID")
     
     'Get catalogue pattern name
     strCatalogueName = GetCatalogueName(xmlCatalogeValidNode, strCatalogueID)
     
-    GetCatalogueFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet - 1), "TemplateFolder") & _
+    GetCatalogueFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lSheet - 1), "TemplateFolder") & _
         strCatalogueName & ".xml")
 End Function
 
@@ -163,8 +163,8 @@ Public Function GetValidityNode(Id As String, Optional strMonth As String, Optio
     Dim iNgayTaiChinh As Integer
     Dim iThangTaiChinh As Integer
     
-    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "FinanceYear") = "1" Then
-        strNgayTaiChinh = TAX_Utilities_Srv_New.FinanceStartDate
+    If GetAttribute(TAX_Utilities_iNTK.NodeMenu, "FinanceYear") = "1" Then
+        strNgayTaiChinh = TAX_Utilities_iNTK.FinanceStartDate
         iNgayTaiChinh = GetNgayTaiChinh(strNgayTaiChinh)
         iThangTaiChinh = GetThangTaiChinh(strNgayTaiChinh)
     Else
@@ -172,7 +172,7 @@ Public Function GetValidityNode(Id As String, Optional strMonth As String, Optio
         iThangTaiChinh = 1
     End If
     
-    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
+    If GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Month") = "1" Then
         Select Case strMonth
             Case "01", "03", "05", "07", "08", "10", "12"
                 ValidityDate = Format("31/" & strMonth & "/" & strYear, "dd/mm/yyyy")
@@ -186,7 +186,7 @@ Public Function GetValidityNode(Id As String, Optional strMonth As String, Optio
                 ValidityDate = Format("30/" & strMonth & "/" & strYear, "dd/mm/yyyy")
         End Select
         
-    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
+    ElseIf GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ThreeMonth") = "1" Then
         Select Case strThreeMonths
             Case "1", "2", "3", "4"
                 ValidityDate = GetNgayCuoiQuy(CInt(strThreeMonths), _
@@ -195,8 +195,8 @@ Public Function GetValidityNode(Id As String, Optional strMonth As String, Optio
     '*******************************************
     ' ThanhDX modified
     ' Date: 04/04/06
-    ' ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Day") = "1" Then
-    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
+    ' ElseIf GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Day") = "1" Then
+    ElseIf GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Year") = "1" Then
     '*******************************************
        ValidityDate = NgayCuoiNamTaiChinh(CInt(strYear), iThangTaiChinh, iNgayTaiChinh)
     Else
@@ -213,7 +213,7 @@ Public Function GetValidityNode(Id As String, Optional strMonth As String, Optio
         End If
     Next
     'Set xmlNodeListValidity = xmlDomMenu.selectNodes("Validity")
-    'Set xmlNodeListValidity = TAX_Utilities_Srv_New.NodeMenu.selectNodes("Validity")
+    'Set xmlNodeListValidity = TAX_Utilities_iNTK.NodeMenu.selectNodes("Validity")
     For Each xmlNodeValidity In xmlNodeListValidity
         StartDate = Format(GetAttribute(xmlNodeValidity, "StartDate"), "dd/mm/yyyy")
         If ValidityDate >= StartDate Then
@@ -419,7 +419,7 @@ End Sub
 Public Function GetMessageCellById(ByVal strId As String) As MSXML.IXMLDOMNode
     Dim xmlInforNode As MSXML.IXMLDOMNode
    
-    For Each xmlInforNode In TAX_Utilities_Srv_New.NodeMessage
+    For Each xmlInforNode In TAX_Utilities_iNTK.NodeMessage
         If GetAttribute(xmlInforNode, "ID") = strId Then
             Set GetMessageCellById = xmlInforNode
             Exit Function

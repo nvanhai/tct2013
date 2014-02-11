@@ -143,7 +143,7 @@ Begin VB.Form frmTruyennhanTK
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTruyennhanTK.frx":0A6C
+         SpreadDesigner  =   "frmTruyennhanTK.frx":0A34
          UserResize      =   1
          Appearance      =   1
       End
@@ -194,7 +194,7 @@ Begin VB.Form frmTruyennhanTK
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTruyennhanTK.frx":108A
+         SpreadDesigner  =   "frmTruyennhanTK.frx":101A
          UserResize      =   1
       End
    End
@@ -351,7 +351,7 @@ Public Sub traCuuToKhai()
                 
                 For lIndex = 1 To rsReturn.Fields.Count
                     If Not (IsNull(rsReturn.Fields(lIndex - 1).Value)) Then
-                        .SetText lCol, lRow, TAX_Utilities_Srv_New.Convert(rsReturn.Fields(lIndex - 1).Value, TCVN, UNICODE)
+                        .SetText lCol, lRow, TAX_Utilities_iNTK.Convert(rsReturn.Fields(lIndex - 1).Value, TCVN, UNICODE)
                         lCol = lCol + 1
                         .RowHeight(lRow) = .MaxTextRowHeight(lRow)
                     End If
@@ -501,7 +501,7 @@ Private Sub cmdNhanTkhai_Click()
      Dim countTKIns As Integer
      Dim numberPkg As Integer, stepPkg As Integer
      Dim flagPkgLast As Boolean
-     Dim clsConn As New TAX_Utilities_Srv_New.clsADO
+     Dim clsConn As New TAX_Utilities_iNTK.clsADO
      ' dung transaction de inser tran_no
      Dim strSQLTransaction As String
      
@@ -872,7 +872,7 @@ Sub SetupData()
             Dim strDataFileName As String
             Dim i As Integer
             
-            xmlDocument.Load TAX_Utilities_Srv_New.GetAbsolutePath("menu.xml")
+            xmlDocument.Load TAX_Utilities_iNTK.GetAbsolutePath("menu.xml")
             Set xmlNodeListMenu = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
             i = 0
             larrId(0) = 0

@@ -50,7 +50,7 @@ End Type
 Public xmlNodeListMenu As MSXML.IXMLDOMNodeList             ' xml node list for menu
 Public xmlHeaderData As New MSXML.DOMDocument               ' xml document for header data
 Public xmlSQL As New MSXML.DOMDocument
-Public clsDAO As New TAX_Utilities_Srv_New.clsADO
+Public clsDAO As New TAX_Utilities_iNTK.clsADO
 Public arrActiveForm() As activeForm
 Public hasActiveForm As Boolean
 Public strTaxOfficeId As String                             ' Tax office id
@@ -114,7 +114,7 @@ Private Sub LoadHeaderData(pGrid As fpSpread, pSheet As Integer)
     Dim xmlNodeCell As MSXML.IXMLDOMNode
     Dim lCol As Long, lRow As Long
         
-    strDataFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(0), "Folder")) & "Header_001.xml"
+    strDataFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(0), "Folder")) & "Header_001.xml"
     xmlHeaderData.Load strDataFileName
     With pGrid
         .Sheet = pSheet
@@ -127,15 +127,15 @@ Private Sub LoadHeaderData(pGrid As fpSpread, pSheet As Integer)
         Next
 
         SetActiveCell pGrid, mYear_____
-        .Text = TAX_Utilities_Srv_New.Year
+        .Text = TAX_Utilities_iNTK.Year
         SetActiveCell pGrid, mMonth____
-        .Text = TAX_Utilities_Srv_New.Month
+        .Text = TAX_Utilities_iNTK.Month
         SetActiveCell pGrid, mThreeMonths
-        .Text = TAX_Utilities_Srv_New.ThreeMonths
+        .Text = TAX_Utilities_iNTK.ThreeMonths
         SetActiveCell pGrid, mTuNgay
-        .Text = TAX_Utilities_Srv_New.FirstDay
+        .Text = TAX_Utilities_iNTK.FirstDay
         SetActiveCell pGrid, mDenNgay
-        .Text = TAX_Utilities_Srv_New.LastDay
+        .Text = TAX_Utilities_iNTK.LastDay
         
     End With
     
@@ -154,123 +154,123 @@ Public Function GetValidityNode() As MSXML.IXMLDOMNode
     Dim xmlNodeValidity As MSXML.IXMLDOMNode
     
     Dim ValidityDate        As Date, StartDate As Date, MaxDate As Date
-    Dim idToKhai            As String
+    Dim IdToKhai            As String
     
-    idToKhai = GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")
+    IdToKhai = GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID")
     
     'thang/quy
-    If idToKhai = "01" Or idToKhai = "02" Or idToKhai = "25" Or idToKhai = "26" Or idToKhai = "04" Or idToKhai = "71" Or idToKhai = "36" Or idToKhai = "68" Then
+    If IdToKhai = "01" Or IdToKhai = "02" Or IdToKhai = "25" Or IdToKhai = "26" Or IdToKhai = "04" Or IdToKhai = "71" Or IdToKhai = "36" Or IdToKhai = "68" Then
         If LoaiKyKK = False Then
 
-            Select Case TAX_Utilities_Srv_New.Month
+            Select Case TAX_Utilities_iNTK.Month
 
                 Case "01"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("31/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "02"
-                    ValidityDate = format("28/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("28/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "03"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("31/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "04"
-                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("30/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "05"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("31/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "06"
-                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("30/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "07"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("31/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "08"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("31/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "09"
-                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("30/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "10"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("31/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "11"
-                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("30/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "12"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("31/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
             End Select
         
         Else
 
-            Select Case TAX_Utilities_Srv_New.ThreeMonths
+            Select Case TAX_Utilities_iNTK.ThreeMonths
 
                 Case "01", "02", "03", "04"
-                    ValidityDate = GetNgayCuoiQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
+                    ValidityDate = GetNgayCuoiQuy(CInt(TAX_Utilities_iNTK.ThreeMonths), CInt(TAX_Utilities_iNTK.Year), iNgayTaiChinh, iThangTaiChinh)
             End Select
 
         End If
 
     Else
 
-        If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
+        If GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Month") = "1" Then
 
-            Select Case TAX_Utilities_Srv_New.Month
+            Select Case TAX_Utilities_iNTK.Month
 
                 Case "01"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("31/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "02"
-                    ValidityDate = format("28/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("28/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "03"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("31/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "04"
-                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("30/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "05"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("31/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "06"
-                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("30/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "07"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("31/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "08"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("31/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "09"
-                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("30/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "10"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("31/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "11"
-                    ValidityDate = format("30/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("30/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
 
                 Case "12"
-                    ValidityDate = format("31/" & TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "dd/mm/yyyy")
+                    ValidityDate = format("31/" & TAX_Utilities_iNTK.Month & "/" & TAX_Utilities_iNTK.Year, "dd/mm/yyyy")
             End Select
         
-        ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
+        ElseIf GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ThreeMonth") = "1" Then
 
-            Select Case TAX_Utilities_Srv_New.ThreeMonths
+            Select Case TAX_Utilities_iNTK.ThreeMonths
 
                 Case "01", "02", "03", "04"
-                    ValidityDate = GetNgayCuoiQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
+                    ValidityDate = GetNgayCuoiQuy(CInt(TAX_Utilities_iNTK.ThreeMonths), CInt(TAX_Utilities_iNTK.Year), iNgayTaiChinh, iThangTaiChinh)
             End Select
 
-        ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
-            ValidityDate = NgayCuoiNamTaiChinh(CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
+        ElseIf GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Year") = "1" Then
+            ValidityDate = NgayCuoiNamTaiChinh(CInt(TAX_Utilities_iNTK.Year), iNgayTaiChinh, iThangTaiChinh)
         Else
             ValidityDate = Date
         End If
 
     End If
     
-    Set xmlNodeListValidity = TAX_Utilities_Srv_New.NodeMenu.selectNodes("Validity")
+    Set xmlNodeListValidity = TAX_Utilities_iNTK.NodeMenu.selectNodes("Validity")
     For Each xmlNodeValidity In xmlNodeListValidity
         StartDate = format(GetAttribute(xmlNodeValidity, "StartDate"), "dd/mm/yyyy")
         If ValidityDate >= StartDate Then
@@ -287,7 +287,7 @@ ErrorHandle:
 End Function
 
 ''' LoadTemplate description
-''' Load a Excel template to grid, the name and the path of MS Excel get from TAX_Utilities_Srv_New.NodeMenu (attribute "InterfaceTemplate")
+''' Load a Excel template to grid, the name and the path of MS Excel get from TAX_Utilities_iNTK.NodeMenu (attribute "InterfaceTemplate")
 ''' Hide last sheet of Excel book, the last sheet containt result of business rule and the header informations
 ''' Parameter1 pGrid    : the fpSpread which set the template to
 ''' Modify by ThanhDX
@@ -303,17 +303,17 @@ Public Sub LoadTemplate(pGrid As fpSpread, Optional IsInterface As Boolean = Tru
     Dim xmlNodeSheet As MSXML.IXMLDOMNode
     Dim lSheetExist As Boolean
         
-    If TAX_Utilities_Srv_New.NodeMenu Is Nothing Then Exit Sub
-    'TAX_Utilities_Srv_New.NodeValidity = GetValidityNode
+    If TAX_Utilities_iNTK.NodeMenu Is Nothing Then Exit Sub
+    'TAX_Utilities_iNTK.NodeValidity = GetValidityNode
     '**********************
-    If TAX_Utilities_Srv_New.NodeValidity Is Nothing Then
-        TAX_Utilities_Srv_New.NodeValidity = GetValidityNode
+    If TAX_Utilities_iNTK.NodeValidity Is Nothing Then
+        TAX_Utilities_iNTK.NodeValidity = GetValidityNode
     End If
     '**********************
     If IsInterface = True Then
-        lFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "InterfaceTemplate"))
+        lFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_iNTK.NodeValidity, "InterfaceTemplate"))
     Else
-        lFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "ReportTemplate"))
+        lFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_iNTK.NodeValidity, "ReportTemplate"))
     End If
 
     With pGrid
@@ -321,7 +321,7 @@ Public Sub LoadTemplate(pGrid As fpSpread, Optional IsInterface As Boolean = Tru
         For i = 1 To .SheetCount
             .Sheet = i
             lSheetExist = False
-            For Each xmlNodeSheet In TAX_Utilities_Srv_New.NodeValidity.childNodes
+            For Each xmlNodeSheet In TAX_Utilities_iNTK.NodeValidity.childNodes
                 If UCase(GetAttribute(xmlNodeSheet, "ID")) = UCase(.SheetName) Then
 '                    lSheetExist = True
                     '*****************
@@ -390,42 +390,42 @@ End Sub
 '    Dim lSheet As Long, lCol As Long, lRow As Long
 '    Dim strDataFileName As String
 '    Dim strOriginDataFileName As String
-'    TAX_Utilities_Srv_New.xmlDataReDim (TAX_Utilities_Srv_New.NodeValidity.childNodes.length - 1)
+'    TAX_Utilities_iNTK.xmlDataReDim (TAX_Utilities_iNTK.NodeValidity.childNodes.length - 1)
 '
 '    With pGrid
 '        .EventEnabled(EventAllEvents) = False
-'        For lSheet = 0 To TAX_Utilities_Srv_New.xmlDataCount
-'            'If GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet), "Active") <> "0" Then
+'        For lSheet = 0 To TAX_Utilities_iNTK.xmlDataCount
+'            'If GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lSheet), "Active") <> "0" Then
 '                .Sheet = lSheet + 1
 '
-'                TAX_Utilities_Srv_New.Data(lSheet) = New MSXML.DOMDocument
-'                TAX_Utilities_Srv_New.Data(lSheet).resolveExternals = True
-'                TAX_Utilities_Srv_New.Data(lSheet).validateOnParse = True
-'                TAX_Utilities_Srv_New.Data(lSheet).async = False
-'                strOriginDataFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet), "Folder")) & GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet), "DataFile") & ".xml"
-'                If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = vbNullString Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "0" Then
-'                    strDataFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet), "Folder")) & GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet), "DataFile") & ".xml"
+'                TAX_Utilities_iNTK.Data(lSheet) = New MSXML.DOMDocument
+'                TAX_Utilities_iNTK.Data(lSheet).resolveExternals = True
+'                TAX_Utilities_iNTK.Data(lSheet).validateOnParse = True
+'                TAX_Utilities_iNTK.Data(lSheet).async = False
+'                strOriginDataFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lSheet), "Folder")) & GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lSheet), "DataFile") & ".xml"
+'                If GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Year") = vbNullString Or GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Year") = "0" Then
+'                    strDataFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lSheet), "Folder")) & GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lSheet), "DataFile") & ".xml"
 '                Else
-'                    If Val(TAX_Utilities_Srv_New.Month) <> 0 Then
-'                        strDataFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet), "Folder")) & GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_Srv_New.Month & TAX_Utilities_Srv_New.Year & ".xml"
+'                    If Val(TAX_Utilities_iNTK.Month) <> 0 Then
+'                        strDataFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lSheet), "Folder")) & GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_iNTK.Month & TAX_Utilities_iNTK.Year & ".xml"
 '                    Else
-'                        strDataFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet), "Folder")) & GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_Srv_New.ThreeMonths & TAX_Utilities_Srv_New.Year & ".xml"
+'                        strDataFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lSheet), "Folder")) & GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_iNTK.ThreeMonths & TAX_Utilities_iNTK.Year & ".xml"
 '                    End If
 '                End If
-'                TAX_Utilities_Srv_New.Data(lSheet).Load strDataFileName
-'                If TAX_Utilities_Srv_New.Data(lSheet).parseError.reason <> vbNullString Then
-'                    If InStr(1, TAX_Utilities_Srv_New.Data(lSheet).parseError.reason, "The system cannot locate the object specified.") <> 0 Then
-'                        TAX_Utilities_Srv_New.Data(lSheet).Load strOriginDataFileName
-'                        If TAX_Utilities_Srv_New.Data(lSheet).parseError.reason <> vbNullString Then
-'                            MsgBox TAX_Utilities_Srv_New.Data(lSheet).parseError.reason
+'                TAX_Utilities_iNTK.Data(lSheet).Load strDataFileName
+'                If TAX_Utilities_iNTK.Data(lSheet).parseError.reason <> vbNullString Then
+'                    If InStr(1, TAX_Utilities_iNTK.Data(lSheet).parseError.reason, "The system cannot locate the object specified.") <> 0 Then
+'                        TAX_Utilities_iNTK.Data(lSheet).Load strOriginDataFileName
+'                        If TAX_Utilities_iNTK.Data(lSheet).parseError.reason <> vbNullString Then
+'                            MsgBox TAX_Utilities_iNTK.Data(lSheet).parseError.reason
 '                        End If
 '                    Else
-'                        MsgBox TAX_Utilities_Srv_New.Data(lSheet).parseError.reason
+'                        MsgBox TAX_Utilities_iNTK.Data(lSheet).parseError.reason
 '                    End If
 '                End If
 '
 '                ' If load original data -> not fill
-'                Set xmlNodeListCell = TAX_Utilities_Srv_New.Data(lSheet).getElementsByTagName("Cell")
+'                Set xmlNodeListCell = TAX_Utilities_iNTK.Data(lSheet).getElementsByTagName("Cell")
 '
 '                For Each xmlNodeCell In xmlNodeListCell
 '                    ParserCellID pGrid, GetAttribute(xmlNodeCell, "CellID"), lCol, lRow
@@ -492,46 +492,46 @@ Public Sub SetupData(pGrid As fpSpread)
     
     
 
-    TAX_Utilities_Srv_New.xmlDataReDim (TAX_Utilities_Srv_New.NodeValidity.childNodes.length - 1)
-    'TAX_Utilities_Srv_New.xmlDataReDim (TAX_Utilities_Srv_New.NodeValidity.childNodes.length)
+    TAX_Utilities_iNTK.xmlDataReDim (TAX_Utilities_iNTK.NodeValidity.childNodes.length - 1)
+    'TAX_Utilities_iNTK.xmlDataReDim (TAX_Utilities_iNTK.NodeValidity.childNodes.length)
     With pGrid
         .EventEnabled(EventAllEvents) = False
-        For lSheet = 0 To TAX_Utilities_Srv_New.xmlDataCount
-            'If GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet), "Active") <> "0" Then
+        For lSheet = 0 To TAX_Utilities_iNTK.xmlDataCount
+            'If GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lSheet), "Active") <> "0" Then
                 blnNewData = False
                 .Sheet = lSheet + 1
-                TAX_Utilities_Srv_New.Data(lSheet) = New MSXML.DOMDocument
-                TAX_Utilities_Srv_New.Data(lSheet).resolveExternals = True
-                TAX_Utilities_Srv_New.Data(lSheet).validateOnParse = True
-                TAX_Utilities_Srv_New.Data(lSheet).async = False
-                strOriginDataFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet), "TemplateFolder")) & GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet), "DataFile") & ".xml"
-                If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = vbNullString Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "0" Then
-                    strDataFileName = GetAbsolutePath("..\DataFiles\") & GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet), "DataFile") & ".xml"
+                TAX_Utilities_iNTK.Data(lSheet) = New MSXML.DOMDocument
+                TAX_Utilities_iNTK.Data(lSheet).resolveExternals = True
+                TAX_Utilities_iNTK.Data(lSheet).validateOnParse = True
+                TAX_Utilities_iNTK.Data(lSheet).async = False
+                strOriginDataFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lSheet), "TemplateFolder")) & GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lSheet), "DataFile") & ".xml"
+                If GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Year") = vbNullString Or GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Year") = "0" Then
+                    strDataFileName = GetAbsolutePath("..\DataFiles\") & GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lSheet), "DataFile") & ".xml"
                 Else
-                    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
-                        strDataFileName = GetAbsolutePath("..\DataFiles\") & GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_Srv_New.Month & TAX_Utilities_Srv_New.Year & ".xml"
-                    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
-                        strDataFileName = GetAbsolutePath("..\DataFiles\") & GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_Srv_New.ThreeMonths & TAX_Utilities_Srv_New.Year & ".xml"
-                    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
-                        strDataFileName = GetAbsolutePath("..\DataFiles\") & GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet), "DataFile") & "_00" & TAX_Utilities_Srv_New.Year & ".xml"
+                    If GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Month") = "1" Then
+                        strDataFileName = GetAbsolutePath("..\DataFiles\") & GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_iNTK.Month & TAX_Utilities_iNTK.Year & ".xml"
+                    ElseIf GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ThreeMonth") = "1" Then
+                        strDataFileName = GetAbsolutePath("..\DataFiles\") & GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_iNTK.ThreeMonths & TAX_Utilities_iNTK.Year & ".xml"
+                    ElseIf GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Year") = "1" Then
+                        strDataFileName = GetAbsolutePath("..\DataFiles\") & GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lSheet), "DataFile") & "_00" & TAX_Utilities_iNTK.Year & ".xml"
                     End If
                 End If
-                TAX_Utilities_Srv_New.Data(lSheet).Load strDataFileName
-                If TAX_Utilities_Srv_New.Data(lSheet).parseError.reason <> vbNullString Then
-                    If InStr(1, TAX_Utilities_Srv_New.Data(lSheet).parseError.errorCode, "2146697210") <> 0 Then
+                TAX_Utilities_iNTK.Data(lSheet).Load strDataFileName
+                If TAX_Utilities_iNTK.Data(lSheet).parseError.reason <> vbNullString Then
+                    If InStr(1, TAX_Utilities_iNTK.Data(lSheet).parseError.errorCode, "2146697210") <> 0 Then
                         'New data
                         blnNewData = True
-                        TAX_Utilities_Srv_New.Data(lSheet).Load strOriginDataFileName
-                        If TAX_Utilities_Srv_New.Data(lSheet).parseError.reason <> vbNullString Then
-                            MsgBox TAX_Utilities_Srv_New.Data(lSheet).parseError.reason
+                        TAX_Utilities_iNTK.Data(lSheet).Load strOriginDataFileName
+                        If TAX_Utilities_iNTK.Data(lSheet).parseError.reason <> vbNullString Then
+                            MsgBox TAX_Utilities_iNTK.Data(lSheet).parseError.reason
                         End If
                     Else
-                        MsgBox TAX_Utilities_Srv_New.Data(lSheet).parseError.reason
+                        MsgBox TAX_Utilities_iNTK.Data(lSheet).parseError.reason
                     End If
                 End If
 
                 ' If load original data -> not fill
-                Set xmlNodeListCell = TAX_Utilities_Srv_New.Data(lSheet).getElementsByTagName("Cell")
+                Set xmlNodeListCell = TAX_Utilities_iNTK.Data(lSheet).getElementsByTagName("Cell")
 
                 For Each xmlNodeCell In xmlNodeListCell
                     ParserCellID pGrid, GetAttribute(xmlNodeCell, "CellID"), lCol, lRow
@@ -1045,7 +1045,7 @@ End Function
 Public Function GetNgayDauQuy(q As Integer, y As Integer, dNgayTaiChinh As Integer, dThangTaiChinh As Integer) As Date
     Dim intYear As Integer, intDay As Integer, intMonth As Integer
     
-    If blnTinhTheoNamTaiChinh And (GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "FinanceYear") = "1") Then
+    If blnTinhTheoNamTaiChinh And (GetAttribute(TAX_Utilities_iNTK.NodeMenu, "FinanceYear") = "1") Then
         intDay = dNgayTaiChinh
         intMonth = (q - 1) * 3 + dThangTaiChinh
         intYear = y
@@ -1101,7 +1101,7 @@ End Function
 Public Function GetNgayDauNam(y As Integer, dThangTaiChinh As Integer, dNgayTaiChinh As Integer) As Date
     Dim intYear As Integer, intDay As Integer, intMonth As Integer
     
-    If blnTinhTheoNamTaiChinh And (GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "FinanceYear") = "1") Then
+    If blnTinhTheoNamTaiChinh And (GetAttribute(TAX_Utilities_iNTK.NodeMenu, "FinanceYear") = "1") Then
         intYear = y
         intMonth = dThangTaiChinh
         intDay = dNgayTaiChinh
@@ -1358,7 +1358,7 @@ Private Function UpdateCellReceive(fps As fpSpread, sSheet As Long, ByVal pCol A
     
     GetCellSpan fps, pCol, pRow
     
-    Set xmlNodeCell = TAX_Utilities_Srv_New.Data(sSheet).nodeFromID(GetCellID(fps, pCol, pRow))
+    Set xmlNodeCell = TAX_Utilities_iNTK.Data(sSheet).nodeFromID(GetCellID(fps, pCol, pRow))
     
     If GetAttribute(xmlNodeCell, "Value") <> pValue Then
         SetAttribute xmlNodeCell, "Value", pValue
@@ -1383,7 +1383,7 @@ Public Function GetDataPkgId() As String
     Dim pkgId As Variant
     Dim ID As Variant
     Dim noiLamViec As Variant
-    Dim clsConn As New TAX_Utilities_Srv_New.clsADO
+    Dim clsConn As New TAX_Utilities_iNTK.clsADO
     If clsConn.Connected = False Then
         'clsConn.CreateConnectionString [MSDAORA.1], "QLT", "TKB", "TKB"
         clsConn.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
@@ -1421,7 +1421,7 @@ Public Function GetTranNo() As String
     Dim noiLamViec As Variant
     Dim tupId As Variant
     Dim tranNo As Variant
-    Dim clsConn As New TAX_Utilities_Srv_New.clsADO
+    Dim clsConn As New TAX_Utilities_iNTK.clsADO
     If clsConn.Connected = False Then
         'clsConn.CreateConnectionString [MSDAORA.1], "QLT", "TKB", "TKB"
         clsConn.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
@@ -1459,7 +1459,7 @@ Public Function GetMupId() As String
     Dim noiLamViec As Variant
     Dim seqMupId As Variant
     Dim mupId As Variant
-    Dim clsConn As New TAX_Utilities_Srv_New.clsADO
+    Dim clsConn As New TAX_Utilities_iNTK.clsADO
     If clsConn.Connected = False Then
         'clsConn.CreateConnectionString [MSDAORA.1], "QLT", "TKB", "TKB"
         clsConn.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
@@ -1495,7 +1495,7 @@ Public Function GetNoiLamViec() As String
     Dim fso As New FileSystemObject
     Dim strFileName As String
     Dim noiLamViec As Variant
-    Dim clsConn As New TAX_Utilities_Srv_New.clsADO
+    Dim clsConn As New TAX_Utilities_iNTK.clsADO
     If clsConn.Connected = False Then
         'clsConn.CreateConnectionString [MSDAORA.1], "QLT", "TKB", "TKB"
         clsConn.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
@@ -1521,7 +1521,7 @@ Public Function GetNoiNhan(str As String) As String
     Dim fso As New FileSystemObject
     Dim strFileName As String
     Dim noiNhan As Variant
-    Dim clsConn As New TAX_Utilities_Srv_New.clsADO
+    Dim clsConn As New TAX_Utilities_iNTK.clsADO
     If clsConn.Connected = False Then
         'clsConn.CreateConnectionString [MSDAORA.1], "QLT", "TKB", "TKB"
         clsConn.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
@@ -1547,7 +1547,7 @@ Public Function GetTnsCode(str As String) As String
     Dim fso As New FileSystemObject
     Dim strFileName As String
     Dim tnsCode As Variant
-    Dim clsConn As New TAX_Utilities_Srv_New.clsADO
+    Dim clsConn As New TAX_Utilities_iNTK.clsADO
     If clsConn.Connected = False Then
         'clsConn.CreateConnectionString [MSDAORA.1], "QLT", "TKB", "TKB"
         clsConn.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
@@ -1592,7 +1592,7 @@ Public Function GetPkgIDErr() As String
     Dim fso As New FileSystemObject
     Dim strFileName As String
     Dim pkgIDErr As Variant
-    Dim clsConn As New TAX_Utilities_Srv_New.clsADO
+    Dim clsConn As New TAX_Utilities_iNTK.clsADO
     pkgIDErr = "('')"
     If clsConn.Connected = False Then
         'clsConn.CreateConnectionString [MSDAORA.1], "QLT", "TKB", "TKB"
@@ -1615,21 +1615,21 @@ Public Function GetPkgIDErr() As String
     GetPkgIDErr = Trim(pkgIDErr)
 End Function
 
-Public Sub DataDM(ByVal Id As String, Optional ByRef TenTN As String)
+Public Sub DataDM(ByVal ID As String, Optional ByRef TenTN As String)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlDomData As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = "..\InterfaceTemplates\xml\Catalogue_Tinh_Thanh.xml"
     
-       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
-                        If Id = arrDanhsach(1) Then
+                        If ID = arrDanhsach(1) Then
                             TenTN = arrDanhsach(3)
                             Exit Sub
                         End If

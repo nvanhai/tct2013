@@ -355,9 +355,9 @@ Public Sub traCuuToKhai()
     
     If chkCBXL.Value = 1 Then
         'neu tra cuu theo can bo xu ly thi danh dau lai de thuc hien ghi du lieu
-        TAX_Utilities_Srv_New.isCanBoXuLyGhiTK = True
+        TAX_Utilities_iNTK.isCanBoXuLyGhiTK = True
     Else
-        TAX_Utilities_Srv_New.isCanBoXuLyGhiTK = False
+        TAX_Utilities_iNTK.isCanBoXuLyGhiTK = False
     End If
     
     'Lay cau lenh truy van
@@ -433,9 +433,9 @@ Public Sub traCuuToKhai()
 '                            End If
 '                        Next
                         strTemp = ""
-                        fpsKetQua.SetText lCol, lRow, TAX_Utilities_Srv_New.Convert(strTemp, TCVN, UNICODE)
+                        fpsKetQua.SetText lCol, lRow, TAX_Utilities_iNTK.Convert(strTemp, TCVN, UNICODE)
                     Else
-                        fpsKetQua.SetText lCol, lRow, TAX_Utilities_Srv_New.Convert(rsReturn.Fields(lIndex - 1).Value, TCVN, UNICODE)
+                        fpsKetQua.SetText lCol, lRow, TAX_Utilities_iNTK.Convert(rsReturn.Fields(lIndex - 1).Value, TCVN, UNICODE)
                     End If
                     lCol = lCol + 1
                     fpsKetQua.RowHeight(lRow) = fpsKetQua.MaxTextRowHeight(lRow)
@@ -598,9 +598,9 @@ Private Sub cmdNhanTkhai_Click()
             End If
             ' Set ky LB
             frmInterfaces.kyLapBo_IHTKK = CStr(kyLB)
-            TAX_Utilities_Srv_New.HthucNopIHTKK = True
-            TAX_Utilities_Srv_New.KyLBIHTKK = kyLB
-            TAX_Utilities_Srv_New.NhanTuDongIHTKK = True
+            TAX_Utilities_iNTK.HthucNopIHTKK = True
+            TAX_Utilities_iNTK.KyLBIHTKK = kyLB
+            TAX_Utilities_iNTK.NhanTuDongIHTKK = True
         End With
    
    End If
@@ -862,9 +862,9 @@ Private Sub cmdNhanTkhai_Click()
         ' Neu con to khai bi loi thi hien ra thong bao
     End If
     'reset bien dung de check khi nhan iHTKK
-    TAX_Utilities_Srv_New.HthucNopIHTKK = False
-    TAX_Utilities_Srv_New.KyLBIHTKK = ""
-    TAX_Utilities_Srv_New.NhanTuDongIHTKK = False
+    TAX_Utilities_iNTK.HthucNopIHTKK = False
+    TAX_Utilities_iNTK.KyLBIHTKK = ""
+    TAX_Utilities_iNTK.NhanTuDongIHTKK = False
     If msgMessValidiHTKK Then
         With fpsKetQua
             For i = 1 To .MaxRows
@@ -979,7 +979,7 @@ Sub SetupData()
             Dim xmlNode As MSXML.IXMLDOMNode
             Dim strDataFileName As String
             Dim i As Integer
-            xmlDocument.Load TAX_Utilities_Srv_New.GetAbsolutePath("menu.xml")
+            xmlDocument.Load TAX_Utilities_iNTK.GetAbsolutePath("menu.xml")
             Set xmlNodeListMenu = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
             i = 0
             larrId(0) = 0

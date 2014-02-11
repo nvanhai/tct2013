@@ -394,7 +394,7 @@ Private Sub btnTraCuu_Click(Index As Integer)
             fpsKetQua.SetText 1, lRow, lSoBG + 1
             For lIndex = 1 To rsReturn.Fields.Count
                 If Not (IsNull(rsReturn.Fields(lIndex - 1).Value)) Then
-                    fpsKetQua.SetText lCol, lRow, TAX_Utilities_Srv_New.Convert(rsReturn.Fields(lIndex - 1).Value, TCVN, UNICODE)
+                    fpsKetQua.SetText lCol, lRow, TAX_Utilities_iNTK.Convert(rsReturn.Fields(lIndex - 1).Value, TCVN, UNICODE)
                     lCol = lCol + 1
                     fpsKetQua.RowHeight(lRow) = fpsKetQua.MaxTextRowHeight(lRow)
                 End If
@@ -569,7 +569,7 @@ Sub SetupData()
             Dim xmlNode As MSXML.IXMLDOMNode
             Dim strDataFileName As String
             Dim i As Integer
-            xmlDocument.Load TAX_Utilities_Srv_New.GetAbsolutePath("menu.xml")
+            xmlDocument.Load TAX_Utilities_iNTK.GetAbsolutePath("menu.xml")
             Set xmlNodeListMenu = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
             i = 0
             larrId(0) = 0
@@ -799,7 +799,7 @@ Private Function LoadTK()
             fpsKetQua.SetText 1, lRow, lSoBG + 1
             For lIndex = 1 To rsReturn.Fields.Count
                 If Not (IsNull(rsReturn.Fields(lIndex - 1).Value)) Then
-                    fpsKetQua.SetText lCol, lRow, TAX_Utilities_Srv_New.Convert(rsReturn.Fields(lIndex - 1).Value, TCVN, UNICODE)
+                    fpsKetQua.SetText lCol, lRow, TAX_Utilities_iNTK.Convert(rsReturn.Fields(lIndex - 1).Value, TCVN, UNICODE)
                     lCol = lCol + 1
                     fpsKetQua.RowHeight(lRow) = fpsKetQua.MaxTextRowHeight(lRow)
                 End If

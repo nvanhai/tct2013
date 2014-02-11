@@ -434,7 +434,7 @@ End Sub
 Private Sub cmdClear_Click()
 
 On Error GoTo ErrHandle
-    If Not TAX_Utilities_Srv_New.Data(0) Is Nothing Then
+    If Not TAX_Utilities_iNTK.Data(0) Is Nothing Then
         If MessageBox("0050", msYesNo, miQuestion) = mrYes Then
             If Not objTaxBusiness Is Nothing Then
                 objTaxBusiness.Prepared4 dNgayDauKy
@@ -478,7 +478,7 @@ On Error GoTo ErrHandle
         End If
     End If
 
-    If Not TAX_Utilities_Srv_New.Data(0) Is Nothing Then
+    If Not TAX_Utilities_iNTK.Data(0) Is Nothing Then
         Select Case MessageBox("0052", msYesNoCancel, miQuestion)
             Case 1 ' Cancel
                 Exit Sub
@@ -544,7 +544,7 @@ On Error GoTo ErrHandle
     Dim isInsertHDR As Boolean
     '***************************
     'Date:23/11/2005
-    If TAX_Utilities_Srv_New.Data(0) Is Nothing Then Exit Sub
+    If TAX_Utilities_iNTK.Data(0) Is Nothing Then Exit Sub
       
     
     '***************************
@@ -605,7 +605,7 @@ On Error GoTo ErrHandle
     ' Kiem tra trang thai 02 -> khong cho ghi, trang thai 03 canh bao van cho ghi
     If checkTT = 2 Then
         'MessageBox "0108", msOKOnly, miCriticalError
-        If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK And TAX_Utilities_Srv_New.isCanBoXuLyGhiTK = False Then
+        If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK And TAX_Utilities_iNTK.isCanBoXuLyGhiTK = False Then
             clsDAO.ExecuteQuery "Update RCV_IHTKK_MVACH set DA_NHAN = 'W' where ID=  " & tkhai_ID_IHTKK
             'clsDAO.CommitTrans
             isIHTKK = False
@@ -613,7 +613,7 @@ On Error GoTo ErrHandle
             Exit Sub
         Else
             'neu la to khai ihtkk va nhan tu dong thi hien message voi thong tin header
-            If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK Then
+            If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK Then
                 mTemp = MessageBox(strThongTinTK & "#" & "0108", msYesNo, miQuestion)
             Else
                 mTemp = MessageBox("0108", msYesNo, miQuestion)
@@ -634,13 +634,13 @@ On Error GoTo ErrHandle
     
     dsTK_DLT = "~1~2~3~4~5~6~11~12~46~47~48~49~15~16~50~51~36~70~71~72~73~74~75~80~81~82~77~86~87~89~42~43~17~59~41~76~90~92~93~98~99~25~"
     ' Kiem tra neu MDL thue khac thi canh bao
-    IdToKhai = Val(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
+    IdToKhai = Val(TAX_Utilities_iNTK.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
     'If IdToKhai = 1 Or IdToKhai = 2 Or IdToKhai = 4 Or IdToKhai = 11 Or IdToKhai = 12 Or IdToKhai = 46 Or IdToKhai = 47 Or IdToKhai = 48 Or IdToKhai = 49 Or IdToKhai = 15 Or IdToKhai = 16 Or IdToKhai = 50 Or IdToKhai = 51 _
     '    Or IdToKhai = 36 Or IdToKhai = 70 Or IdToKhai = 6 Or IdToKhai = 5 Then
     If InStr(1, dsTK_DLT, "~" & IdToKhai & "~", vbTextCompare) > 0 Then
         If isMaDLT(strMaSoThue, strMaDaiLyThue) = False Then
             'neu nhan tu iHTKK thi bo qua nhung to co thong bao khi check chon to khai tu dong
-            If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK And TAX_Utilities_Srv_New.isCanBoXuLyGhiTK = False Then
+            If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK And TAX_Utilities_iNTK.isCanBoXuLyGhiTK = False Then
                 'clsDAO.BeginTrans
                 clsDAO.ExecuteQuery "Update RCV_IHTKK_MVACH set DA_NHAN = 'W' where ID=  " & tkhai_ID_IHTKK
                 'clsDAO.CommitTrans
@@ -649,7 +649,7 @@ On Error GoTo ErrHandle
                 Exit Sub
             Else
                 'neu la to khai ihtkk va nhan tu dong thi hien message voi thong tin header
-                If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK Then
+                If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK Then
                     mTemp = MessageBox(strThongTinTK & "#" & "0115", msYesNo, miQuestion)
                 Else
                     mTemp = MessageBox("0115", msYesNo, miQuestion)
@@ -701,9 +701,9 @@ On Error GoTo ErrHandle
     End If
     ' End
     ' Cac to khai PIT se khong nhan to khai co ky ke khai < thang 7 hoac quy 3
-    If TAX_Utilities_Srv_New.isCheckPIT = True Then
+    If TAX_Utilities_iNTK.isCheckPIT = True Then
         If IdToKhai = 46 Or IdToKhai = 48 Or IdToKhai = 15 Or IdToKhai = 50 Or IdToKhai = 36 Then
-            If TAX_Utilities_Srv_New.Year < 2011 Or (TAX_Utilities_Srv_New.Year = 2011 And TAX_Utilities_Srv_New.Month < 7) Then
+            If TAX_Utilities_iNTK.Year < 2011 Or (TAX_Utilities_iNTK.Year = 2011 And TAX_Utilities_iNTK.Month < 7) Then
                 If isIHTKK = True Then
                     'MessageBox "0118", msOKOnly, miWarning
                     bln1 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "12")
@@ -717,7 +717,7 @@ On Error GoTo ErrHandle
             End If
         End If
         If IdToKhai = 47 Or IdToKhai = 49 Or IdToKhai = 16 Or IdToKhai = 51 Or (IdToKhai = 74 And isTKThang = False) Or (IdToKhai = 75 And isTKThang = False) Then
-            If TAX_Utilities_Srv_New.Year < 2011 Or (TAX_Utilities_Srv_New.Year = 2011 And TAX_Utilities_Srv_New.ThreeMonths < 3) Then
+            If TAX_Utilities_iNTK.Year < 2011 Or (TAX_Utilities_iNTK.Year = 2011 And TAX_Utilities_iNTK.ThreeMonths < 3) Then
                 If isIHTKK = True Then
                     'MessageBox "0119", msOKOnly, miWarning
                     bln1 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "12")
@@ -759,10 +759,10 @@ On Error GoTo ErrHandle
             .EventEnabled(EventAllEvents) = False
             .Sheet = .SheetCount
             .GetText .ColLetterToNumber("B"), 17, qBoSung
-            If qBoSung = 0 And (TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue <> "104") Then
+            If qBoSung = 0 And (TAX_Utilities_iNTK.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue <> "104") Then
                 ' Huy bo thi quay lai man hinh quet to khai
                
-                If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK And TAX_Utilities_Srv_New.isCanBoXuLyGhiTK = False Then
+                If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK And TAX_Utilities_iNTK.isCanBoXuLyGhiTK = False Then
                     clsDAO.ExecuteQuery "Update RCV_IHTKK_MVACH set DA_NHAN = 'W' where ID=  " & tkhai_ID_IHTKK
                     'clsDAO.CommitTrans
                     isIHTKK = False
@@ -771,14 +771,14 @@ On Error GoTo ErrHandle
                 
                 Else
                     'neu la to khai ihtkk va nhan tu dong thi hien message voi thong tin header
-                    If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK Then
+                    If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK Then
                         msgRs = MessageBox(strThongTinTK & "#" & "0084", msYesNoCancel, miQuestion, 1)
                     Else
                         msgRs = MessageBox("0084", msYesNoCancel, miQuestion, 1)
                     End If
 '                    msgRs = MessageBox("0084", msYesNoCancel, miQuestion, 1)
                     If msgRs = mrCancel Then
-                        If Not TAX_Utilities_Srv_New.Data(0) Is Nothing Then
+                        If Not TAX_Utilities_iNTK.Data(0) Is Nothing Then
                             If Not objTaxBusiness Is Nothing Then
                                 objTaxBusiness.Prepared4 dNgayDauKy
                                 objTaxBusiness.GetParams strNgayNhanToKhai, strMaPhongXuLy 'strMaSoTep, strNgayNhanToKhai, strMaPhongXuLy
@@ -799,7 +799,7 @@ On Error GoTo ErrHandle
                         verToKhai = 1
                     ' Neu ghi Bo sung thi phai set lai tinh trang cua to khai la 2 va phai yeu cau quet phu luc KHBS
                     ElseIf msgRs = mrNo Then
-    '                    If TAX_Utilities_Srv_New.NodeValidity.childNodes(.SheetCount - 2).Attributes.getNamedItem("Active").nodeValue = 0 Then
+    '                    If TAX_Utilities_iNTK.NodeValidity.childNodes(.SheetCount - 2).Attributes.getNamedItem("Active").nodeValue = 0 Then
     '                        MessageBox "0086", msOKOnly, miInformation
     '                        Exit Sub
     '                    Else
@@ -813,11 +813,11 @@ On Error GoTo ErrHandle
         End With
     ElseIf verToKhai = 2 Then
         ' Kiem tra neu la to khai TNCN moi thi ko phai quet KHBS
-        ' IdToKhai = Val(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
-        If (TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue <> "104") Then
+        ' IdToKhai = Val(TAX_Utilities_iNTK.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
+        If (TAX_Utilities_iNTK.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue <> "104") Then
             With fpSpread1
 '                ' Neu ghi Bo sung thi phai set lai tinh trang cua to khai la 2 va phai yeu cau quet phu luc KHBS
-'                If TAX_Utilities_Srv_New.NodeValidity.childNodes(.SheetCount - 2).Attributes.getNamedItem("Active").nodeValue = 0 Then
+'                If TAX_Utilities_iNTK.NodeValidity.childNodes(.SheetCount - 2).Attributes.getNamedItem("Active").nodeValue = 0 Then
 '                    MessageBox "0086", msOKOnly, miInformation
 '                    Exit Sub
 '                Else
@@ -827,13 +827,13 @@ On Error GoTo ErrHandle
         End If
         ' 04-01-2011
         ' Kiem tra neu la to khai TNCN thi set lai  trang thai bo sung thanh thay the (2->1)
-        If (TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "104") Then
+        If (TAX_Utilities_iNTK.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "104") Then
             verToKhai = 1
         End If
     End If
     
     ' Lay lai ID cua to khai de biet la to khai co duoc gia han thue hay khong
-    IdToKhai = Val(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
+    IdToKhai = Val(TAX_Utilities_iNTK.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
     ' Truong hop to khai TNCN mau 02 va 07/TNCN hien tai tu 01->05/2009 cho phep gia han thue
     ' ngoai thoi gian nay phai thong bao khong duoc gia han
     ' Do voi to khai 02, 07/TNCN thang
@@ -847,10 +847,10 @@ On Error GoTo ErrHandle
             varTemp = .Value
         End With
         ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2009 thi thong bao khong duoc gia han nop thue
-        If Val(TAX_Utilities_Srv_New.Year) <> 2009 Then
+        If Val(TAX_Utilities_iNTK.Year) <> 2009 Then
             If Val(varTemp) = 1 Then
             
-                If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK And TAX_Utilities_Srv_New.isCanBoXuLyGhiTK = False Then
+                If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK And TAX_Utilities_iNTK.isCanBoXuLyGhiTK = False Then
                 
                     clsDAO.ExecuteQuery "Update RCV_IHTKK_MVACH set DA_NHAN = 'W' where ID=  " & tkhai_ID_IHTKK
                     'clsDAO.CommitTrans
@@ -860,7 +860,7 @@ On Error GoTo ErrHandle
                 
                 Else
             'neu la to khai ihtkk va nhan tu dong thi hien message voi thong tin header
-                    If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK Then
+                    If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK Then
                         MessageBox strThongTinTK & "#" & "0090", msOKOnly, miInformation
                     Else
                         MessageBox "0090", msOKOnly, miInformation
@@ -871,7 +871,7 @@ On Error GoTo ErrHandle
                 End If
             End If
 '        Else
-'            If Val(TAX_Utilities_Srv_New.Month) > 5 Then
+'            If Val(TAX_Utilities_iNTK.Month) > 5 Then
 '                ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu lon hon thang 5 nam 2009 thi thong bao khong duoc gia han nop thue
 '                If Val(varTemp) = 1 Then
 '                    MessageBox "0090", msOKOnly, miInformation
@@ -891,9 +891,9 @@ On Error GoTo ErrHandle
             varTemp = .Value
         End With
         ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2009 thi thong bao khong duoc gia han nop thue
-        If Val(TAX_Utilities_Srv_New.Year) <> 2009 Then
+        If Val(TAX_Utilities_iNTK.Year) <> 2009 Then
             If Val(varTemp) = 1 Then
-                If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK And TAX_Utilities_Srv_New.isCanBoXuLyGhiTK = False Then
+                If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK And TAX_Utilities_iNTK.isCanBoXuLyGhiTK = False Then
                 
                     clsDAO.ExecuteQuery "Update RCV_IHTKK_MVACH set DA_NHAN = 'W' where ID=  " & tkhai_ID_IHTKK
                     'clsDAO.CommitTrans
@@ -903,7 +903,7 @@ On Error GoTo ErrHandle
                 
                 Else
                 'neu la to khai ihtkk va nhan tu dong thi hien message voi thong tin header
-                    If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK Then
+                    If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK Then
                         MessageBox strThongTinTK & "#" & "0090", msOKOnly, miInformation
                     Else
                         MessageBox "0090", msOKOnly, miInformation
@@ -914,7 +914,7 @@ On Error GoTo ErrHandle
                 End If
             End If
 '        Else
-'            If Val(TAX_Utilities_Srv_New.ThreeMonths) > 1 Then
+'            If Val(TAX_Utilities_iNTK.ThreeMonths) > 1 Then
 '                ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu lon hon thang 5 nam 2009 thi thong bao khong duoc gia han nop thue
 '                If Val(varTemp) = 1 Then
 '                    MessageBox "0091", msOKOnly, miInformation
@@ -946,9 +946,9 @@ On Error GoTo ErrHandle
             End With
         End If
         ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2009 thi thong bao khong duoc gia han nop thue
-'        If Val(TAX_Utilities_Srv_New.Year) <> 2009 And Val(TAX_Utilities_Srv_New.Year) <> 2010 And Val(TAX_Utilities_Srv_New.Year) <> 2011 Then
+'        If Val(TAX_Utilities_iNTK.Year) <> 2009 And Val(TAX_Utilities_iNTK.Year) <> 2010 And Val(TAX_Utilities_iNTK.Year) <> 2011 Then
  '           If Val(varTemp) = 1 Then
-  '              If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK And TAX_Utilities_Srv_New.isCanBoXuLyGhiTK = False Then
+  '              If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK And TAX_Utilities_iNTK.isCanBoXuLyGhiTK = False Then
    '
     '                clsDAO.ExecuteQuery "Update RCV_IHTKK_MVACH set DA_NHAN = 'W' where ID=  " & tkhai_ID_IHTKK
      '               'clsDAO.CommitTrans
@@ -958,7 +958,7 @@ On Error GoTo ErrHandle
                 
        '         Else
                     'neu la to khai ihtkk va nhan tu dong thi hien message voi thong tin header
-       '             If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK Then
+       '             If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK Then
        '                 MessageBox strThongTinTK & "#" & "0092", msOKOnly, miInformation
        '             Else
        '                 MessageBox "0092", msOKOnly, miInformation
@@ -971,14 +971,14 @@ On Error GoTo ErrHandle
        ' End If
         ' Kiem tra quy truoc da co gia han canh bao NSD check vao gia han nop thue
         ' nvhai
-        If Val(TAX_Utilities_Srv_New.Year) = 2009 Or Val(TAX_Utilities_Srv_New.Year) = 2010 Or Val(TAX_Utilities_Srv_New.Year) = 2011 Then
+        If Val(TAX_Utilities_iNTK.Year) = 2009 Or Val(TAX_Utilities_iNTK.Year) = 2010 Or Val(TAX_Utilities_iNTK.Year) = 2011 Then
             If Val(varTemp) = 0 Then
                 'lay ngay dau nam tc va ngay ket thuc nam tc de loc de lieu
 
-                dNgayDauNamTC = GetNgayDauNam(TAX_Utilities_Srv_New.Year, iThangTaiChinh, iNgayTaiChinh)
+                dNgayDauNamTC = GetNgayDauNam(TAX_Utilities_iNTK.Year, iThangTaiChinh, iNgayTaiChinh)
                 'set lai dinh dang de so sanh
                 varDate1 = "'" & DatePart("D", dNgayDauNamTC) & "-" & MonthName(DatePart("M", dNgayDauNamTC), True) & "-" & DatePart("YYYY", dNgayDauNamTC) & "'"
-                dNgayCuoiNamTC = NgayCuoiNamTaiChinh(TAX_Utilities_Srv_New.Year, iThangTaiChinh, iNgayTaiChinh)
+                dNgayCuoiNamTC = NgayCuoiNamTaiChinh(TAX_Utilities_iNTK.Year, iThangTaiChinh, iNgayTaiChinh)
                 'set lai dinh dang de so sanh
                 varDate2 = "'" & DatePart("D", dNgayCuoiNamTC) & "-" & MonthName(DatePart("M", dNgayCuoiNamTC), True) & "-" & DatePart("YYYY", dNgayCuoiNamTC) & "'"
                 'connect to database QLT
@@ -991,12 +991,12 @@ On Error GoTo ErrHandle
                 strSQL = strSQL & " where TIN='" & strMST & "' "
                 strSQL = strSQL & "and KYKK_TU_NGAY >= " & varDate1 & " and KYKK_DEN_NGAY < " & varDate2
                 strSQL = strSQL & " and CO_GHAN='Y' "
-                strSQL = strSQL & " and LOAI_TKHAI='" & changeMaToKhai(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue) & "' "
+                strSQL = strSQL & " and LOAI_TKHAI='" & changeMaToKhai(TAX_Utilities_iNTK.NodeMenu.Attributes.getNamedItem("ID").nodeValue) & "' "
                 Set rs = clsDAO.Execute(strSQL)
             
                 If (Not rs Is Nothing) And rs.Fields.Count > 0 Then
                     If Year(dNgayDauKy) < 2011 Or (Year(dNgayDauKy) = 2011 And DatePart("Q", dNgayDauKy) < 4) Then
-                        If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK And TAX_Utilities_Srv_New.isCanBoXuLyGhiTK = False Then
+                        If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK And TAX_Utilities_iNTK.isCanBoXuLyGhiTK = False Then
                             clsDAO.ExecuteQuery "Update RCV_IHTKK_MVACH set DA_NHAN = 'W' where ID=  " & tkhai_ID_IHTKK
                             'clsDAO.CommitTrans
                             isIHTKK = False
@@ -1005,7 +1005,7 @@ On Error GoTo ErrHandle
                         
                         Else
                             'neu la to khai ihtkk va nhan tu dong thi hien message voi thong tin header
-                            If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK Then
+                            If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK Then
                                 mTemp = MessageBox(strThongTinTK & "#" & "0098", msYesNo, miQuestion)
                             Else
                                 mTemp = MessageBox("0098", msYesNo, miQuestion)
@@ -1041,9 +1041,9 @@ On Error GoTo ErrHandle
             varTemp = .Value
         End With
         ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2009 thi thong bao khong duoc gia han nop thue
-'        If Val(TAX_Utilities_Srv_New.Year) <> 2009 Then
+'        If Val(TAX_Utilities_iNTK.Year) <> 2009 Then
 '            If Val(varTemp) = 1 Then
-'                If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK And TAX_Utilities_Srv_New.isCanBoXuLyGhiTK = False Then
+'                If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK And TAX_Utilities_iNTK.isCanBoXuLyGhiTK = False Then
 '                    clsDAO.ExecuteQuery "Update RCV_IHTKK_MVACH set DA_NHAN = 'W' where ID=  " & tkhai_ID_IHTKK
 '                    'clsDAO.CommitTrans
 '                    isIHTKK = False
@@ -1052,7 +1052,7 @@ On Error GoTo ErrHandle
                 
 '                Else
                     'neu la to khai ihtkk va nhan tu dong thi hien message voi thong tin header
-'                    If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK Then
+'                    If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK Then
 '                        MessageBox strThongTinTK & "#" & "0092", msOKOnly, miInformation
 '                    Else
 '                        MessageBox "0092", msOKOnly, miInformation
@@ -1074,9 +1074,9 @@ On Error GoTo ErrHandle
         End With
         ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2009 thi thong bao khong duoc gia han nop thue
         ' mo gia han cho cac ky ke khai
-'        If Val(TAX_Utilities_Srv_New.Year) <> 2009 And Val(TAX_Utilities_Srv_New.Year) <> 2010 And Val(TAX_Utilities_Srv_New.Year) <> 2011 Then
+'        If Val(TAX_Utilities_iNTK.Year) <> 2009 And Val(TAX_Utilities_iNTK.Year) <> 2010 And Val(TAX_Utilities_iNTK.Year) <> 2011 Then
 '            If Val(varTemp) = 1 Then
-'                If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK And TAX_Utilities_Srv_New.isCanBoXuLyGhiTK = False Then
+'                If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK And TAX_Utilities_iNTK.isCanBoXuLyGhiTK = False Then
                 
 '                    clsDAO.ExecuteQuery "Update RCV_IHTKK_MVACH set DA_NHAN = 'W' where ID=  " & tkhai_ID_IHTKK
                     'clsDAO.CommitTrans
@@ -1086,7 +1086,7 @@ On Error GoTo ErrHandle
                 
 '                Else
                     'neu la to khai ihtkk va nhan tu dong thi hien message voi thong tin header
-'                    If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK Then
+'                    If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK Then
 '                        MessageBox strThongTinTK & "#" & "0092", msOKOnly, miInformation
 '                    Else
 '                        MessageBox "0092", msOKOnly, miInformation
@@ -1099,13 +1099,13 @@ On Error GoTo ErrHandle
         
         ' Kiem tra to khai quy da co gia han canh bao NSD check vao gia han nop thue tren to khai quyet toan nam
         ' nvhai
-        If Val(TAX_Utilities_Srv_New.Year) = 2009 Or Val(TAX_Utilities_Srv_New.Year) = 2010 Or Val(TAX_Utilities_Srv_New.Year) = 2011 Then
+        If Val(TAX_Utilities_iNTK.Year) = 2009 Or Val(TAX_Utilities_iNTK.Year) = 2010 Or Val(TAX_Utilities_iNTK.Year) = 2011 Then
             If Val(varTemp) = 0 Then
                 'lay ngay dau nam tc va ngay ket thuc nam tc de loc de lieu
-                dNgayDauNamTC = DateSerial(TAX_Utilities_Srv_New.Year, iThangTaiChinh, iNgayTaiChinh)
+                dNgayDauNamTC = DateSerial(TAX_Utilities_iNTK.Year, iThangTaiChinh, iNgayTaiChinh)
                 'set lai dinh dang de so sanh
                 varDate1 = "'" & DatePart("D", dNgayDauNamTC) & "-" & MonthName(DatePart("M", dNgayDauNamTC), True) & "-" & DatePart("YYYY", dNgayDauNamTC) & "'"
-                dNgayCuoiNamTC = NgayCuoiNamTaiChinh(TAX_Utilities_Srv_New.Year, iThangTaiChinh, iNgayTaiChinh)
+                dNgayCuoiNamTC = NgayCuoiNamTaiChinh(TAX_Utilities_iNTK.Year, iThangTaiChinh, iNgayTaiChinh)
                 'set lai dinh dang de so sanh
                 varDate2 = "'" & DatePart("D", dNgayCuoiNamTC) & "-" & MonthName(DatePart("M", dNgayCuoiNamTC), True) & "-" & DatePart("YYYY", dNgayCuoiNamTC) & "'"
                 'connect to database QLT
@@ -1123,7 +1123,7 @@ On Error GoTo ErrHandle
             
                 If (Not rs Is Nothing) And rs.Fields.Count > 0 Then
                     If Year(dNgayDauKy) <= 2011 Then
-                        If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK And TAX_Utilities_Srv_New.isCanBoXuLyGhiTK = False Then
+                        If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK And TAX_Utilities_iNTK.isCanBoXuLyGhiTK = False Then
                             clsDAO.ExecuteQuery "Update RCV_IHTKK_MVACH set DA_NHAN = 'W' where ID=  " & tkhai_ID_IHTKK
                             'clsDAO.CommitTrans
                             isIHTKK = False
@@ -1132,7 +1132,7 @@ On Error GoTo ErrHandle
                         
                         Else
                             'neu la to khai ihtkk va nhan tu dong thi hien message voi thong tin header
-                            If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK Then
+                            If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK Then
                                 mTemp = MessageBox(strThongTinTK & "#" & "0099", msYesNo, miQuestion)
                             Else
                                 mTemp = MessageBox("0099", msYesNo, miQuestion)
@@ -1172,10 +1172,10 @@ On Error GoTo ErrHandle
 '            varTemp = .Value
 '        End With
         ' Kiem tra xem co thuoc ky duoc gia han thue hay khong, neu khac 2012 thi thong bao khong duoc gia han nop thue
-'        If Val(TAX_Utilities_Srv_New.Year) = 2012 And (Val(TAX_Utilities_Srv_New.Month) = 4 Or Val(TAX_Utilities_Srv_New.Month) = 5 Or Val(TAX_Utilities_Srv_New.Month) = 6) Then
+'        If Val(TAX_Utilities_iNTK.Year) = 2012 And (Val(TAX_Utilities_iNTK.Month) = 4 Or Val(TAX_Utilities_iNTK.Month) = 5 Or Val(TAX_Utilities_iNTK.Month) = 6) Then
 '        Else
 '            If Val(varTemp) = 1 Then
-'                If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK And TAX_Utilities_Srv_New.isCanBoXuLyGhiTK = False Then
+'                If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK And TAX_Utilities_iNTK.isCanBoXuLyGhiTK = False Then
 '                    clsDAO.ExecuteQuery "Update RCV_IHTKK_MVACH set DA_NHAN = 'W' where ID=  " & tkhai_ID_IHTKK
 '                    'clsDAO.CommitTrans
 '                    isIHTKK = False
@@ -1183,7 +1183,7 @@ On Error GoTo ErrHandle
 '                    Exit Sub
 '                Else
 '                    'neu la to khai ihtkk va nhan tu dong thi hien message voi thong tin header
-'                    If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK Then
+'                    If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK Then
 '                        MessageBox strThongTinTK & "#" & "0130", msOKOnly, miInformation
 '                    Else
 '                        MessageBox "0130", msOKOnly, miInformation
@@ -1204,7 +1204,7 @@ On Error GoTo ErrHandle
     If (Val(IdToKhai) <= 68 And Val(IdToKhai) >= 64) Or Val(IdToKhai) = 91 Then
         ' xu ly an chi
         If isTonTaiAC = True Then
-             If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK And TAX_Utilities_Srv_New.isCanBoXuLyGhiTK = False Then
+             If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK And TAX_Utilities_iNTK.isCanBoXuLyGhiTK = False Then
                 'clsDAO.BeginTrans
                 clsDAO.ExecuteQuery "Update RCV_IHTKK_MVACH set DA_NHAN = 'W' where ID=  " & tkhai_ID_IHTKK
                 'clsDAO.CommitTrans
@@ -1214,7 +1214,7 @@ On Error GoTo ErrHandle
                 
             Else
                 'neu la to khai ihtkk va nhan tu dong thi hien message voi thong tin header
-                If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK Then
+                If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK Then
                     mResult = MessageBox(strThongTinTK & "#" & "0047", msYesNo, miQuestion)
                 Else
                     mResult = MessageBox("0047", msYesNo, miQuestion)
@@ -1232,11 +1232,11 @@ On Error GoTo ErrHandle
     Else
     strSQL = "select ID, DA_NHAN from RCV_TKHAI_HDR "
     strSQL = strSQL & " where TIN='" & strMST & "' "
-    strSQL = strSQL & " and LOAI_TKHAI='" & changeMaToKhai(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue) & "' "
+    strSQL = strSQL & " and LOAI_TKHAI='" & changeMaToKhai(TAX_Utilities_iNTK.NodeMenu.Attributes.getNamedItem("ID").nodeValue) & "' "
     
     'Ngay dau ky ke khai va ngay cuoi ky ke khai
     dDate = dNgayDauKy
-    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
+    If GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Month") = "1" Then
             If (Val(IdToKhai) = 1 Or Val(IdToKhai) = 2 Or Val(IdToKhai) = 4 Or Val(IdToKhai) = 71 Or Val(IdToKhai) = 36) And LoaiKyKK = True Then
         strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
                 dDate = DateAdd("m", 3, dDate)
@@ -1249,7 +1249,7 @@ On Error GoTo ErrHandle
         dDate = DateAdd("d", -1, dDate)
         strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
             End If
-    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
+    ElseIf GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ThreeMonth") = "1" Then
             If Val(IdToKhai) = 68 And LoaiKyKK = False Then
         strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
                 dDate = DateAdd("m", 1, dDate)
@@ -1262,7 +1262,7 @@ On Error GoTo ErrHandle
         dDate = DateAdd("d", -1, dDate)
         strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy')"
             End If
-    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
+    ElseIf GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Year") = "1" Then
         strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
         dDate = DateAdd("m", 12, dDate)
         dDate = DateAdd("d", -1, dDate)
@@ -1285,7 +1285,7 @@ On Error GoTo ErrHandle
             flgBCTC = True
             If verToKhai = 0 Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
             
-                If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK And TAX_Utilities_Srv_New.isCanBoXuLyGhiTK = False Then
+                If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK And TAX_Utilities_iNTK.isCanBoXuLyGhiTK = False Then
                     clsDAO.ExecuteQuery "Update RCV_IHTKK_MVACH set DA_NHAN = 'W' where ID=  " & tkhai_ID_IHTKK
                     'clsDAO.CommitTrans
                     isIHTKK = False
@@ -1294,7 +1294,7 @@ On Error GoTo ErrHandle
                 
                 Else
                     'neu la to khai ihtkk va nhan tu dong thi hien message voi thong tin header
-                    If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK Then
+                    If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK Then
                         mResult = MessageBox(strThongTinTK & "#" & "0047", msYesNo, miQuestion)
                     Else
                         mResult = MessageBox("0047", msYesNo, miQuestion)
@@ -1341,7 +1341,7 @@ On Error GoTo ErrHandle
         ' end
             If verToKhai = 0 And isTKTonTai = True Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
             'neu nhan tu iHTKK thi bo qua nhung to co thong bao khi check chon to khai tu dong
-                If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK And TAX_Utilities_Srv_New.isCanBoXuLyGhiTK = False Then
+                If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK And TAX_Utilities_iNTK.isCanBoXuLyGhiTK = False Then
                     clsDAO.ExecuteQuery "Update RCV_IHTKK_MVACH set DA_NHAN = 'W' where ID=  " & tkhai_ID_IHTKK
                     'clsDAO.CommitTrans
                     isIHTKK = False
@@ -1350,7 +1350,7 @@ On Error GoTo ErrHandle
                 
                 Else
                     'neu la to khai ihtkk va nhan tu dong thi hien message voi thong tin header
-                    If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK Then
+                    If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK Then
                         mResult = MessageBox(strThongTinTK & "#" & "0047", msYesNo, miQuestion)
                     Else
                         mResult = MessageBox("0047", msYesNo, miQuestion)
@@ -1392,7 +1392,7 @@ On Error GoTo ErrHandle
     ' xu ly cho 2 to khai 08, 08A/TNCN
     If IdToKhai = "74" Or IdToKhai = "75" Then
         If verToKhai = 0 And isTKTonTai = True Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
-                If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK And TAX_Utilities_Srv_New.isCanBoXuLyGhiTK = False Then
+                If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK And TAX_Utilities_iNTK.isCanBoXuLyGhiTK = False Then
                     clsDAO.ExecuteQuery "Update RCV_IHTKK_MVACH set DA_NHAN = 'W' where ID=  " & tkhai_ID_IHTKK
                     'clsDAO.CommitTrans
                     isIHTKK = False
@@ -1401,7 +1401,7 @@ On Error GoTo ErrHandle
                 
                 Else
                     'neu la to khai ihtkk va nhan tu dong thi hien message voi thong tin header
-                    If isIHTKK And TAX_Utilities_Srv_New.NhanTuDongIHTKK Then
+                    If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK Then
                         mResult = MessageBox(strThongTinTK & "#" & "0047", msYesNo, miQuestion)
                     Else
                         mResult = MessageBox("0047", msYesNo, miQuestion)
@@ -1437,26 +1437,26 @@ On Error GoTo ErrHandle
     ' su loi ghi du lieu hdr va dtl tren transaction khac nhau
    ' clsDAO.CommitTrans
     
-    For i = 0 To TAX_Utilities_Srv_New.NodeValidity.childNodes.length - 1
+    For i = 0 To TAX_Utilities_iNTK.NodeValidity.childNodes.length - 1
         clsDAO.BeginTrans
-        If Val(TAX_Utilities_Srv_New.NodeValidity.childNodes(i).Attributes.getNamedItem("Active").nodeValue) > 0 Then
+        If Val(TAX_Utilities_iNTK.NodeValidity.childNodes(i).Attributes.getNamedItem("Active").nodeValue) > 0 Then
             If i = 0 Then
                 ' Kiem tra xem chkQuetBangKe neu = true thi day la quet them bang ke
-                TAX_Utilities_Srv_New.HthucNopIHTKK = isIHTKK ' set hinh thuc nop xuong lop business
+                TAX_Utilities_iNTK.HthucNopIHTKK = isIHTKK ' set hinh thuc nop xuong lop business
                 If isIHTKK = True Then
-                    TAX_Utilities_Srv_New.IDTokhaiIHTKK = tkhai_ID_IHTKK
-                    TAX_Utilities_Srv_New.NgayNopIHTKK = ngay_nop_IHTKK
+                    TAX_Utilities_iNTK.IDTokhaiIHTKK = tkhai_ID_IHTKK
+                    TAX_Utilities_iNTK.NgayNopIHTKK = ngay_nop_IHTKK
                     If isNhanTuDong = True Then
-                        TAX_Utilities_Srv_New.KyLBIHTKK = kyLapBo_IHTKK
-                        TAX_Utilities_Srv_New.NhanTuDongIHTKK = isNhanTuDong
+                        TAX_Utilities_iNTK.KyLBIHTKK = kyLapBo_IHTKK
+                        TAX_Utilities_iNTK.NhanTuDongIHTKK = isNhanTuDong
                     End If
                 End If
                 ' end
                 
                 If (frmSystem.chkQuetBangKe.Value = True) Then
-                    isInsertHDR = clsDAO.ExecuteQuery(objTaxBusiness.GenerateSQL_Header(TAX_Utilities_Srv_New.Data(i), strSQL_HDR, HdrID, verToKhai, dNgayDauKy, True))
+                    isInsertHDR = clsDAO.ExecuteQuery(objTaxBusiness.GenerateSQL_Header(TAX_Utilities_iNTK.Data(i), strSQL_HDR, HdrID, verToKhai, dNgayDauKy, True))
                 Else ' Day la quet to khai thuan tuy
-                    isInsertHDR = clsDAO.ExecuteQuery(objTaxBusiness.GenerateSQL_Header(TAX_Utilities_Srv_New.Data(i), strSQL_HDR, HdrID, verToKhai, dNgayDauKy))
+                    isInsertHDR = clsDAO.ExecuteQuery(objTaxBusiness.GenerateSQL_Header(TAX_Utilities_iNTK.Data(i), strSQL_HDR, HdrID, verToKhai, dNgayDauKy))
                 End If
                 
                 ' Begin Update them thong tin cua iHTKK
@@ -1478,7 +1478,7 @@ On Error GoTo ErrHandle
                 'clsDAO.CommitTrans
             End If
                 If isInsertHDR = True Then
-                    GenerateSQL_Details TAX_Utilities_Srv_New.Data(i), strSQL_DTL, HdrID, i
+                    GenerateSQL_Details TAX_Utilities_iNTK.Data(i), strSQL_DTL, HdrID, i
                 End If
         End If
         clsDAO.CommitTrans
@@ -1652,7 +1652,7 @@ Private Sub cmdViewNow_Click()
 '        cmdViewNow.Enabled = False
 '        Exit Sub
 '    End If
-    'strBarcode = TAX_Utilities_Srv_New.Convert(strBarcode, UNICODE, TCVN)
+    'strBarcode = TAX_Utilities_iNTK.Convert(strBarcode, UNICODE, TCVN)
     If verToKhai = 2 Then
         strLoaiTK = "bs"
     Else
@@ -2004,7 +2004,7 @@ On Error GoTo ErrHandle
                     'sua loi convert font don vi tinh to khai TTDB
                     'nvanhai sua ngay 01\07\2010
                     
-                    strTemp = TAX_Utilities_Srv_New.Convert(strTemp, TCVN, UNICODE)
+                    strTemp = TAX_Utilities_iNTK.Convert(strTemp, TCVN, UNICODE)
                     
                     Barcode_Scaned strTemp
                     'Debug.Print "a2: " & strTemp
@@ -2042,7 +2042,7 @@ On Error GoTo ErrHandle
     strBarcode = TrimString(strBarcode)
     'Debug.Print strBarcode
     strBarcode = Replace(strBarcode, "&", "", 1)
-    'strBarcode = TAX_Utilities_Srv_New.Convert(strBarcode, TCVN, UNICODE)
+    'strBarcode = TAX_Utilities_iNTK.Convert(strBarcode, TCVN, UNICODE)
     
     If Left$(strBarcode, 1) <> "0" Then
         'Version 1.2.0 and later
@@ -2660,7 +2660,7 @@ On Error GoTo ErrHandler
     Dim arrStrValue() As String
     Dim idToKhaiCheck As Integer
     ' Khong check doi voi cac BCTC
-    idToKhaiCheck = Val(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
+    idToKhaiCheck = Val(TAX_Utilities_iNTK.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
     'remove 24,25,26
     If (idToKhaiCheck >= 27 And idToKhaiCheck <= 35) Or (idToKhaiCheck >= 55 And idToKhaiCheck <= 58) Or (idToKhaiCheck >= 18 And idToKhaiCheck <= 21) Or idToKhaiCheck = 69 Then
         isSheetTk = False
@@ -2911,7 +2911,7 @@ Private Function RestoreDataFile(ByVal strBarcodeData As String) As Boolean ', r
 On Error GoTo ErrHandle
     arrStrData = GetSheetDatas(strBarcodeData)
     
-    If UBound(arrStrData) < TAX_Utilities_Srv_New.NodeValidity.childNodes.length Then
+    If UBound(arrStrData) < TAX_Utilities_iNTK.NodeValidity.childNodes.length Then
         RestoreDataFile = False
         Exit Function
     End If
@@ -2924,14 +2924,14 @@ On Error GoTo ErrHandle
             isSheetTk = False
         End If
         ' end
-        xmlTemplate.Load GetAbsolutePath(GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lIndex - 1), "TemplateFolder")) & GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lIndex - 1), "DataFile") & ".xml"
+        xmlTemplate.Load GetAbsolutePath(GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lIndex - 1), "TemplateFolder")) & GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lIndex - 1), "DataFile") & ".xml"
         
-        If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
-            strFileName = GetAbsolutePath("..\DataFiles\") & GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lIndex - 1), "DataFile") & "_" & TAX_Utilities_Srv_New.Month & TAX_Utilities_Srv_New.Year & ".xml"
-        ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
-            strFileName = GetAbsolutePath("..\DataFiles\") & GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lIndex - 1), "DataFile") & "_" & TAX_Utilities_Srv_New.ThreeMonths & TAX_Utilities_Srv_New.Year & ".xml"
-        ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
-            strFileName = GetAbsolutePath("..\DataFiles\") & GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lIndex - 1), "DataFile") & "_00" & TAX_Utilities_Srv_New.Year & ".xml"
+        If GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Month") = "1" Then
+            strFileName = GetAbsolutePath("..\DataFiles\") & GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lIndex - 1), "DataFile") & "_" & TAX_Utilities_iNTK.Month & TAX_Utilities_iNTK.Year & ".xml"
+        ElseIf GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ThreeMonth") = "1" Then
+            strFileName = GetAbsolutePath("..\DataFiles\") & GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lIndex - 1), "DataFile") & "_" & TAX_Utilities_iNTK.ThreeMonths & TAX_Utilities_iNTK.Year & ".xml"
+        ElseIf GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Year") = "1" Then
+            strFileName = GetAbsolutePath("..\DataFiles\") & GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(lIndex - 1), "DataFile") & "_00" & TAX_Utilities_iNTK.Year & ".xml"
         End If
         
         If arrStrData(lIndex) <> vbNullString Then
@@ -2985,7 +2985,7 @@ On Error GoTo ErrHandle
     
     For Each xmlNode In xmlMenuDom.getElementsByTagName("Root")(0).childNodes
         If GetAttribute(xmlNode, "ID") = strMenuId Then
-            TAX_Utilities_Srv_New.NodeMenu = xmlNode
+            TAX_Utilities_iNTK.NodeMenu = xmlNode
             Exit For
         End If
     Next
@@ -3013,28 +3013,28 @@ On Error GoTo ErrHandle
     Dim strID As String
     strID = Left$(strTaxReportInfo, 2)
     
-    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
-        TAX_Utilities_Srv_New.Month = Left$(strValue, 2)
+    If GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Month") = "1" Then
+        TAX_Utilities_iNTK.Month = Left$(strValue, 2)
         'set ThreeMonths cho to khai thang/quy
         If strID = "01" Or strID = "02" Or strID = "04" Or strID = "71" Or strID = "95" Or strID = "36" Or strID = "68" Or strID = "25" Then
-            TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
+            TAX_Utilities_iNTK.ThreeMonths = Left$(strValue, 2)
         Else
-            TAX_Utilities_Srv_New.ThreeMonths = ""
+            TAX_Utilities_iNTK.ThreeMonths = ""
         End If
-    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = 1 Then
+    ElseIf GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ThreeMonth") = 1 Then
 
         If strID = "68" Then
-            TAX_Utilities_Srv_New.Month = Left$(strValue, 2)
-            TAX_Utilities_Srv_New.ThreeMonths = ""
+            TAX_Utilities_iNTK.Month = Left$(strValue, 2)
+            TAX_Utilities_iNTK.ThreeMonths = ""
         Else
-            TAX_Utilities_Srv_New.Month = ""
-            TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
+            TAX_Utilities_iNTK.Month = ""
+            TAX_Utilities_iNTK.ThreeMonths = Left$(strValue, 2)
         End If
 
-        TAX_Utilities_Srv_New.ThreeMonths = Left$(strValue, 2)
+        TAX_Utilities_iNTK.ThreeMonths = Left$(strValue, 2)
     End If
     
-    TAX_Utilities_Srv_New.Year = Right$(strValue, 4)
+    TAX_Utilities_iNTK.Year = Right$(strValue, 4)
     
     Exit Sub
 ErrHandle:
@@ -3075,10 +3075,10 @@ Private Function InitParameters(ByVal strData As String, arrStrHeaderData() As S
     
 On Error GoTo ErrHandle
     
-    TAX_Utilities_Srv_New.Month = ""
-    TAX_Utilities_Srv_New.ThreeMonths = ""
-    TAX_Utilities_Srv_New.Year = ""
-    TAX_Utilities_Srv_New.FinanceStartDate = ""
+    TAX_Utilities_iNTK.Month = ""
+    TAX_Utilities_iNTK.ThreeMonths = ""
+    TAX_Utilities_iNTK.Year = ""
+    TAX_Utilities_iNTK.FinanceStartDate = ""
     
     
 '    If Left$(strData, 3) = "120" Then
@@ -3262,20 +3262,20 @@ On Error GoTo ErrHandle
         strTempDate = Mid$(strData, 22, 5)
         iNgayTaiChinh = GetNgayTaiChinh(strTempDate)
         iThangTaiChinh = GetThangTaiChinh(strTempDate)
-        TAX_Utilities_Srv_New.FinanceStartDate = strTempDate
+        TAX_Utilities_iNTK.FinanceStartDate = strTempDate
     End If
     
     strID = Left$(strTaxReportInfo, 2)
     SetNodeMenu strID
     SetPeriod Right$(strTaxReportInfo, 6)
-    TAX_Utilities_Srv_New.NodeValidity = GetValidityNode
+    TAX_Utilities_iNTK.NodeValidity = GetValidityNode
     
     '*******************************
 'Date: 13/02/2006
     'Gan gia tri tu ngay, den ngay.
-    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Day") = "1" Then
-        TAX_Utilities_Srv_New.FirstDay = Mid$(strData, 37, 10)
-        TAX_Utilities_Srv_New.LastDay = Mid$(strData, 47, 10)
+    If GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Day") = "1" Then
+        TAX_Utilities_iNTK.FirstDay = Mid$(strData, 37, 10)
+        TAX_Utilities_iNTK.LastDay = Mid$(strData, 47, 10)
     End If
 '*******************************
 '*******************************
@@ -3288,7 +3288,7 @@ On Error GoTo ErrHandle
     On Error GoTo ErrHandle
     'Kiem tra ngay bat dau nam tai chinh doi voi cac loai to
     '   khai co kiem tra ngay bat dau nam tai chinh
-    If InStr(1, "," & rsParams.Fields(0) & ",", "," & GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") & ",") <> 0 Then
+    If InStr(1, "," & rsParams.Fields(0) & ",", "," & GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID") & ",") <> 0 Then
         If Not IsNull(rsTaxInfor.Fields("ngay_tchinh")) Then
             If Mid$(rsTaxInfor("ngay_tchinh"), 1, 5) <> Mid$(strTempDate, 1, 5) Then
                 DisplayMessage "0065", msOKOnly, miCriticalError
@@ -3302,17 +3302,17 @@ On Error GoTo ErrHandle
     End If
     
     'To khai ke khai tu ngay ... den ngay ...
-    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "FinanceYear") = "1" Then
-        If Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <> 17 Then
-            If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Day") = "1" Then
-                If Mid$(rsTaxInfor("ngay_tchinh"), 1, 5) <> Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 5) Then
+    If GetAttribute(TAX_Utilities_iNTK.NodeMenu, "FinanceYear") = "1" Then
+        If Val(GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID")) <> 17 Then
+            If GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Day") = "1" Then
+                If Mid$(rsTaxInfor("ngay_tchinh"), 1, 5) <> Mid$(TAX_Utilities_iNTK.FirstDay, 1, 5) Then
                    'Tu ngay phai bang ngay bat dau nam tai chinh
                    ' hoac ngay bat dau kinh doanh
                     DisplayMessage "0068", msOKOnly, miCriticalError
                     Exit Function
                 End If
                 ''Ky ke khai lon hon ngay bat dau kinh doanh
-                'If CInt(Mid$(rsTaxInfor("ngay_kdoanh"), 7, 4)) > CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)) Then
+                'If CInt(Mid$(rsTaxInfor("ngay_kdoanh"), 7, 4)) > CInt(Mid$(TAX_Utilities_iNTK.FirstDay, 7, 4)) Then
                 '    DisplayMessage "0069", msOKOnly, miCriticalError
                 '    Exit Function
                 'End If
@@ -3331,8 +3331,8 @@ On Error GoTo ErrHandle
     ' Dat lai blnTinhTheoNamTaiChinh = True => Ham GetNgayDauQuy se tra lai dung ket qua
     ' ID = 11 => To khai 01A/TNDN, ID = 12 => To khai 01B/TNDN
     
-    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "FinanceYear") = "1" Then
-        If Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 11 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 12 Then
+    If GetAttribute(TAX_Utilities_iNTK.NodeMenu, "FinanceYear") = "1" Then
+        If Val(GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID")) = 11 Or Val(GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID")) = 12 Then
             blnTinhTheoNamTaiChinh = True
         End If
     End If
@@ -3351,33 +3351,33 @@ On Error GoTo ErrHandle
     End If
     
     'Gan gia tri ngay dau ky
-    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
-        dNgayDauKy = DateSerial(CInt(TAX_Utilities_Srv_New.Year), CInt(TAX_Utilities_Srv_New.Month), 1)
+    If GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Month") = "1" Then
+        dNgayDauKy = DateSerial(CInt(TAX_Utilities_iNTK.Year), CInt(TAX_Utilities_iNTK.Month), 1)
         dNgayCuoiKy = DateAdd("m", 1, dNgayDauKy)
         dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
         
         'Xu ly rieng cho to khai thang/quy
         If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 26 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 95 Or Val(strIDBCTC) = 36 Then
             If LoaiKyKK = True Then
-                dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
+                dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_iNTK.ThreeMonths), CInt(TAX_Utilities_iNTK.Year), iNgayTaiChinh, iThangTaiChinh)
                 dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
                 dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
             End If
 
         End If
 
-    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
+    ElseIf GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ThreeMonth") = "1" Then
         If Val(strIDBCTC) = 68 And LoaiKyKK = False Then
-            dNgayDauKy = DateSerial(CInt(TAX_Utilities_Srv_New.Year), CInt(TAX_Utilities_Srv_New.Month), 1)
+            dNgayDauKy = DateSerial(CInt(TAX_Utilities_iNTK.Year), CInt(TAX_Utilities_iNTK.Month), 1)
             dNgayCuoiKy = DateAdd("m", 1, dNgayDauKy)
             dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
         Else
-        dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
+        dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_iNTK.ThreeMonths), CInt(TAX_Utilities_iNTK.Year), iNgayTaiChinh, iThangTaiChinh)
         dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
         dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
         End If
-    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
-        dNgayDauKy = GetNgayDauNam(CInt(TAX_Utilities_Srv_New.Year), iThangTaiChinh, iNgayTaiChinh)
+    ElseIf GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Year") = "1" Then
+        dNgayDauKy = GetNgayDauNam(CInt(TAX_Utilities_iNTK.Year), iThangTaiChinh, iNgayTaiChinh)
         dNgayCuoiKy = DateAdd("m", 12, dNgayDauKy)
         dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
     End If
@@ -3389,7 +3389,7 @@ On Error GoTo ErrHandle
     If InStr(1, strData, "<S") < 35 Then
         'Ver 1.0
         strTempDate = Mid$(strData, 22, 8)
-        strValidDate = GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "StartDate")
+        strValidDate = GetAttribute(TAX_Utilities_iNTK.NodeValidity, "StartDate")
         If Not DateDiff("d", DateSerial(CInt(Mid$(strValidDate, 7, 4)), CInt(Mid$(strValidDate, 4, 2)), CInt(Mid$(strValidDate, 1, 2))) _
                 , DateSerial(CInt(Mid$(strTempDate, 5, 4)), CInt(Mid$(strTempDate, 3, 2)), CInt(Mid$(strTempDate, 1, 2)))) = 0 Then
             DisplayMessage "0064", msOKOnly, miInformation
@@ -3410,7 +3410,7 @@ On Error GoTo ErrHandle
         End If
         ' End
         
-        strValidDate = GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "StartDate")
+        strValidDate = GetAttribute(TAX_Utilities_iNTK.NodeValidity, "StartDate")
         If Not DateDiff("d", DateSerial(CInt(Mid$(strValidDate, 7, 4)), CInt(Mid$(strValidDate, 4, 2)), CInt(Mid$(strValidDate, 1, 2))) _
                 , DateSerial(CInt(Mid$(strTempDate, 7, 4)), CInt(Mid$(strTempDate, 4, 2)), CInt(Mid$(strTempDate, 1, 2)))) = 0 Then
             ' Truong hop dang bi map nham ID cua cac BCTC giua version 2.5.1 ngay 17/03/1020 voi ID cua version 2.1.0
@@ -3427,7 +3427,7 @@ On Error GoTo ErrHandle
         End If
     '*******************************
         'Get main content
-        If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Day") <> "0" Then
+        If GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Day") <> "0" Then
             If Trim(strID) = "70" Or Trim(strID) = "81" Or Trim(strID) = "91" Then
                 strData = Mid$(strData, 37)
             Else
@@ -3711,7 +3711,7 @@ Private Sub SetupSpread()
             .TextTip = TextTipFloating
         
             If UCase(.SheetName) <> UCase("Header") Then
-                .SheetName = GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(.Sheet - 1), "Caption")
+                .SheetName = GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(.Sheet - 1), "Caption")
             Else
                 mHeaderSheet = .Sheet
             End If
@@ -3881,8 +3881,8 @@ On Error GoTo ErrHandle
     Set rsTaxDLInfor = GetTaxDLInfo(strMST, strTaxDLID, blnDLConnected)
         
     
-    If Trim(GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "Class")) <> vbNullString Then
-        Set objTaxBusiness = CreateObject(GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "Class"))
+    If Trim(GetAttribute(TAX_Utilities_iNTK.NodeValidity, "Class")) <> vbNullString Then
+        Set objTaxBusiness = CreateObject(GetAttribute(TAX_Utilities_iNTK.NodeValidity, "Class"))
         Set objTaxBusiness.fps = fpSpread1
         'objTaxBusiness.strMaSoTep = strMaSoTep
         objTaxBusiness.strPhongXuLy = strMaPhongXuLy
@@ -3897,15 +3897,15 @@ On Error GoTo ErrHandle
 '        Or Trim(LoaiTk) = "16" Or Trim(LoaiTk) = "50" Or Trim(LoaiTk) = "51" Or Trim(LoaiTk) = "36" Or Trim(LoaiTk) = "70" Or Trim(LoaiTk) = "71" _
 '        Or Trim(LoaiTk) = "72" Then
          If InStr(1, dsTK_DLT, "~" & Trim(LoaiTk) & "~", vbTextCompare) > 0 Then
-            If Trim(GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "Class")) <> vbNullString Then
+            If Trim(GetAttribute(TAX_Utilities_iNTK.NodeValidity, "Class")) <> vbNullString Then
                 If Not (rsTaxDLInfor Is Nothing Or rsTaxDLInfor.Fields.Count = 0) Then
                     If Not objTaxBusiness Is Nothing Then
-                        objTaxBusiness.strTenDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(0).Value), "", rsTaxDLInfor.Fields(0).Value), TCVN, UNICODE)
-                        objTaxBusiness.strDiaChiDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(1).Value), "", rsTaxDLInfor.Fields(1).Value), TCVN, UNICODE)
+                        objTaxBusiness.strTenDL = TAX_Utilities_iNTK.Convert(IIf(IsNull(rsTaxDLInfor.Fields(0).Value), "", rsTaxDLInfor.Fields(0).Value), TCVN, UNICODE)
+                        objTaxBusiness.strDiaChiDL = TAX_Utilities_iNTK.Convert(IIf(IsNull(rsTaxDLInfor.Fields(1).Value), "", rsTaxDLInfor.Fields(1).Value), TCVN, UNICODE)
                          objTaxBusiness.strDienThoaiDL = IIf(IsNull(rsTaxDLInfor.Fields(2).Value), "", rsTaxDLInfor.Fields(2).Value)
                         objTaxBusiness.strFaxDL = IIf(IsNull(rsTaxDLInfor.Fields(3).Value), "", rsTaxDLInfor.Fields(3).Value)
-                        objTaxBusiness.strEmailDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(4).Value), "", rsTaxDLInfor.Fields(4).Value), TCVN, UNICODE)
-                        objTaxBusiness.strSoHopDongDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(5).Value), "", rsTaxDLInfor.Fields(5).Value), TCVN, UNICODE)
+                        objTaxBusiness.strEmailDL = TAX_Utilities_iNTK.Convert(IIf(IsNull(rsTaxDLInfor.Fields(4).Value), "", rsTaxDLInfor.Fields(4).Value), TCVN, UNICODE)
+                        objTaxBusiness.strSoHopDongDL = TAX_Utilities_iNTK.Convert(IIf(IsNull(rsTaxDLInfor.Fields(5).Value), "", rsTaxDLInfor.Fields(5).Value), TCVN, UNICODE)
                         objTaxBusiness.strNgayHopDongDL = IIf(IsNull(rsTaxDLInfor.Fields(6).Value), "", rsTaxDLInfor.Fields(6).Value)
                     End If
                 End If
@@ -3934,9 +3934,9 @@ On Error GoTo ErrHandle
         Dim tCQT_CAPCUC   As String
         Dim tCQT_HOANTHUE As String
 
-        If TAX_Utilities_Srv_New.NodeValidity.hasChildNodes Then
-            If GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(TAX_Utilities_Srv_New.NodeValidity.childNodes.length - 1), "ID") = "KHBS" Then
-                If GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(TAX_Utilities_Srv_New.NodeValidity.childNodes.length - 1), "Active") = "1" Then
+        If TAX_Utilities_iNTK.NodeValidity.hasChildNodes Then
+            If GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(TAX_Utilities_iNTK.NodeValidity.childNodes.length - 1), "ID") = "KHBS" Then
+                If GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(TAX_Utilities_iNTK.NodeValidity.childNodes.length - 1), "Active") = "1" Then
                     .Sheet = .SheetCount - 1
                     .GetText .ColLetterToNumber("BI"), .MaxRows - 15, CQT_CAPCUC
                     .GetText .ColLetterToNumber("BI"), .MaxRows - 13, CQT_HOANTHUE
@@ -3965,7 +3965,7 @@ On Error GoTo ErrHandle
     
     ' set ma CQT
     If Not objTaxBusiness Is Nothing Then
-        If (Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) >= 64 And Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <= 68) Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 91 Then
+        If (Val(GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID")) >= 64 And Val(GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID")) <= 68) Or Val(GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID")) = 91 Then
             objTaxBusiness.strMaCQT = strTaxOfficeId
             ' lay ma phong quan ly
             'Get Tax id
@@ -4030,8 +4030,8 @@ On Error GoTo ErrHandle
     End If
     ' Loai to khai la GTGT khau tru mau 01/GTGT thi cho hien check quet du lieu bang ke
     If (verToKhai = 0 And LoaiTk = "01") Then
-        If (TAX_Utilities_Srv_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue = 1 Or _
-                TAX_Utilities_Srv_New.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue = 1) Then
+        If (TAX_Utilities_iNTK.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue = 1 Or _
+                TAX_Utilities_iNTK.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue = 1) Then
             frmSystem.chkQuetBangKe.Visible = True
         Else
             frmSystem.chkQuetBangKe.Value = False
@@ -4039,7 +4039,7 @@ On Error GoTo ErrHandle
         End If
     ' Loai to khai la GTGT hoa hong dai ly mau 02/GTGT thi cho hien check quet du lieu bang ke
     ElseIf (verToKhai = 0 And LoaiTk = "02") Then
-        If (TAX_Utilities_Srv_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue = 1) Then
+        If (TAX_Utilities_iNTK.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue = 1) Then
             frmSystem.chkQuetBangKe.Visible = True
         Else
             frmSystem.chkQuetBangKe.Value = False
@@ -4047,7 +4047,7 @@ On Error GoTo ErrHandle
         End If
     ' Loai to khai la Quyet toan thue TNCN mau 04/TNCN thi cho hien check quet du lieu bang ke
     ElseIf (verToKhai = 0 And LoaiTk = "17") Then
-        If (TAX_Utilities_Srv_New.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue = 1) Then
+        If (TAX_Utilities_iNTK.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue = 1) Then
             frmSystem.chkQuetBangKe.Visible = True
         Else
             frmSystem.chkQuetBangKe.Value = False
@@ -4171,13 +4171,13 @@ Private Function GetSheetDatas(ByVal strBarcodeData As String) As String()
     Dim xmlNode As MSXML.IXMLDOMNode
     
 On Error GoTo ErrHandle
-    For Each xmlNode In TAX_Utilities_Srv_New.NodeValidity.childNodes
+    For Each xmlNode In TAX_Utilities_iNTK.NodeValidity.childNodes
         SetAttribute xmlNode, "Active", "0"
     Next
     
     ReDim arrStrData(0)
     
-    For Each xmlNode In TAX_Utilities_Srv_New.NodeValidity.childNodes
+    For Each xmlNode In TAX_Utilities_iNTK.NodeValidity.childNodes
          Dim i As Integer
         intLoc1 = InStr(1, strBarcodeData, "<S" & GetAttribute(xmlNode, "ID") & ">")
         i = Len(GetAttribute(xmlNode, "ID"))
@@ -4197,8 +4197,8 @@ On Error GoTo ErrHandle
     Next
     
     If strBarcodeData = "" Then
-        If UBound(arrStrData) < TAX_Utilities_Srv_New.NodeValidity.childNodes.length Then
-            ReDim Preserve arrStrData(TAX_Utilities_Srv_New.NodeValidity.childNodes.length)
+        If UBound(arrStrData) < TAX_Utilities_iNTK.NodeValidity.childNodes.length Then
+            ReDim Preserve arrStrData(TAX_Utilities_iNTK.NodeValidity.childNodes.length)
         End If
     Else
         ReDim arrStrData(0)
@@ -4444,13 +4444,13 @@ End Function
 '
 'On Error GoTo ErrHandle
 '        fpSpread1.Sheet = lCtrl + 1
-'        For lIndex = 1 To TAX_Utilities_Srv_New.Data(lCtrl).getElementsByTagName("Section")(0).firstChild.childNodes.length
+'        For lIndex = 1 To TAX_Utilities_iNTK.Data(lCtrl).getElementsByTagName("Section")(0).firstChild.childNodes.length
 '            If lIndex < rsTaxInfor.Fields.Count Then
 '                If Not rsTaxInfor.Fields(lIndex) = vbNullString Then
-'                    TAX_Utilities_Srv_New.Data(lCtrl).getElementsByTagName("Section")(0).firstChild.childNodes(lIndex - 1) _
-'                        .Attributes.getNamedItem("Value").nodeValue = TAX_Utilities_Srv_New.Convert(rsTaxInfor.Fields(lIndex).Value, TCVN, UNICODE)
-'                    ParserCellID fpSpread1, GetAttribute(TAX_Utilities_Srv_New.Data(lCtrl).getElementsByTagName("Section")(0).firstChild.childNodes(lIndex - 1), "CellID"), lCol, lRow
-'                    fpSpread1.SetText lCol, lRow, TAX_Utilities_Srv_New.Convert(rsTaxInfor.Fields(lIndex).Value, TCVN, UNICODE)
+'                    TAX_Utilities_iNTK.Data(lCtrl).getElementsByTagName("Section")(0).firstChild.childNodes(lIndex - 1) _
+'                        .Attributes.getNamedItem("Value").nodeValue = TAX_Utilities_iNTK.Convert(rsTaxInfor.Fields(lIndex).Value, TCVN, UNICODE)
+'                    ParserCellID fpSpread1, GetAttribute(TAX_Utilities_iNTK.Data(lCtrl).getElementsByTagName("Section")(0).firstChild.childNodes(lIndex - 1), "CellID"), lCol, lRow
+'                    fpSpread1.SetText lCol, lRow, TAX_Utilities_iNTK.Convert(rsTaxInfor.Fields(lIndex).Value, TCVN, UNICODE)
 '                    fpSpread1.RowHeight(lRow) = fpSpread1.MaxTextRowHeight(lRow)
 '                End If
 '            Else
@@ -4473,13 +4473,13 @@ Private Sub SetupHeaderData(arrStrHeaderData() As String)
 On Error GoTo ErrHandle
         xmlTemplate123.Load strDataFile123
         fpSpread1.Sheet = lCtrl + 1
-        For lIndex = 0 To UBound(arrStrHeaderData) 'TAX_Utilities_Srv_New.Data(lCtrl).getElementsByTagName("Section")(0).firstChild.childNodes.length
+        For lIndex = 0 To UBound(arrStrHeaderData) 'TAX_Utilities_iNTK.Data(lCtrl).getElementsByTagName("Section")(0).firstChild.childNodes.length
             'If lIndex < UBound(arrStrHeaderData) Then
                 If Not arrStrHeaderData(lIndex) = vbNullString Then
-                    SetAttribute TAX_Utilities_Srv_New.Data(lCtrl).getElementsByTagName("Section")(0).firstChild.childNodes(lIndex) _
-                        , "Value", TAX_Utilities_Srv_New.Convert(arrStrHeaderData(lIndex), TCVN, UNICODE)
-                    ParserCellID fpSpread1, GetAttribute(TAX_Utilities_Srv_New.Data(lCtrl).getElementsByTagName("Section")(0).firstChild.childNodes(lIndex), "CellID"), lCol, lRow
-                    fpSpread1.SetText lCol, lRow, TAX_Utilities_Srv_New.Convert(arrStrHeaderData(lIndex), TCVN, UNICODE)
+                    SetAttribute TAX_Utilities_iNTK.Data(lCtrl).getElementsByTagName("Section")(0).firstChild.childNodes(lIndex) _
+                        , "Value", TAX_Utilities_iNTK.Convert(arrStrHeaderData(lIndex), TCVN, UNICODE)
+                    ParserCellID fpSpread1, GetAttribute(TAX_Utilities_iNTK.Data(lCtrl).getElementsByTagName("Section")(0).firstChild.childNodes(lIndex), "CellID"), lCol, lRow
+                    fpSpread1.SetText lCol, lRow, TAX_Utilities_iNTK.Convert(arrStrHeaderData(lIndex), TCVN, UNICODE)
                     fpSpread1.RowHeight(lRow) = fpSpread1.MaxTextRowHeight(lRow)
                      
                     ' test
@@ -4489,7 +4489,7 @@ On Error GoTo ErrHandle
                     'For Each xmlCellNodeData In xmlCellNode
                     arrColRow = Split(GetAttribute(xmlCellNodeData, "CellID"), "_")
                     If fpSpread1.ColLetterToNumber(arrColRow(0)) = lCol And Val(arrColRow(1)) = lRow Then
-                        SetAttribute xmlCellNodeData, "Value", TAX_Utilities_Srv_New.Convert(arrStrHeaderData(lIndex), TCVN, UNICODE)
+                        SetAttribute xmlCellNodeData, "Value", TAX_Utilities_iNTK.Convert(arrStrHeaderData(lIndex), TCVN, UNICODE)
                 '        Exit For
                     End If
                     'Next
@@ -4532,7 +4532,7 @@ On Error GoTo ErrHandle
         End If
     Next
         
-    strLoaiDL = Trim(TAX_Utilities_Srv_New.NodeValidity.childNodes(lPos).Attributes.getNamedItem("DataFile").nodeValue)
+    strLoaiDL = Trim(TAX_Utilities_iNTK.NodeValidity.childNodes(lPos).Attributes.getNamedItem("DataFile").nodeValue)
     Set xmlList = xmlDomData.getElementsByTagName("Cell")
     If xmlList.length > 0 Then GenerateSQL_Details = "begin"
     ' Them tham so nay de tinh cu 50 dong se bat dau ghi thanh mot block du lieu
@@ -4545,7 +4545,7 @@ On Error GoTo ErrHandle
                 strSQL = strSQL & "'" & vHdrID & "',"
                 strSQL = strSQL & "'" & strLoaiDL & "',"
                 strSQL = strSQL & "'" & xmlNode.Attributes.getNamedItem("MCT").nodeValue & "',"
-                strSQL = strSQL & "'" & Trim(Replace(TAX_Utilities_Srv_New.Convert(xmlNode.Attributes.getNamedItem("Value").nodeValue, UNICODE, TCVN), "'", "''")) & "',"
+                strSQL = strSQL & "'" & Trim(Replace(TAX_Utilities_iNTK.Convert(xmlNode.Attributes.getNamedItem("Value").nodeValue, UNICODE, TCVN), "'", "''")) & "',"
                 If Not xmlNode.Attributes.getNamedItem("RowID") Is Nothing Then
                     strSQL = strSQL & "'" & xmlNode.Attributes.getNamedItem("RowID").nodeValue & "');"
                 Else
@@ -4807,7 +4807,7 @@ On Error GoTo ErrHandle
     lblWarning.Visible = False
     
     strTaxReportInfo = ""
-    TAX_Utilities_Srv_New.xmlDataReDim (0)
+    TAX_Utilities_iNTK.xmlDataReDim (0)
     cmdViewNow.Enabled = False
     cmdClear.Enabled = False
     cmdSave.Enabled = False
@@ -4979,7 +4979,7 @@ On Error GoTo ErrHandle
     While Not tstFile.AtEndOfStream
         GetDataFormFile = GetDataFormFile & tstFile.ReadLine
     Wend
-    GetDataFormFile = TAX_Utilities_Srv_New.Convert(GetDataFormFile, TCVN, UNICODE)
+    GetDataFormFile = TAX_Utilities_iNTK.Convert(GetDataFormFile, TCVN, UNICODE)
     tstFile.Close
     Set fso = Nothing
     
@@ -5000,7 +5000,7 @@ Private Function UpdateCell(ByVal pCol As Long, ByVal pRow As Long, ByVal pValue
     
     GetCellSpan fpSpread1, pCol, pRow
     
-    Set xmlNodeCell = TAX_Utilities_Srv_New.Data(fpSpread1.ActiveSheet - 1).nodeFromID(GetCellID(fpSpread1, pCol, pRow))
+    Set xmlNodeCell = TAX_Utilities_iNTK.Data(fpSpread1.ActiveSheet - 1).nodeFromID(GetCellID(fpSpread1, pCol, pRow))
     
     If GetAttribute(xmlNodeCell, "Value") <> pValue Then
         SetAttribute xmlNodeCell, "Value", pValue
@@ -5057,7 +5057,7 @@ Private Sub LoadInitFiles()
     For i = 0 To fpSpread1.SheetCount - 2
         ReDim Preserve xmlDocumentInit(i)
         Set xmlDocumentInit(i) = New MSXML.DOMDocument
-        xmlDocumentInit(i).Load GetAbsolutePath(GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(i), "Ini"))
+        xmlDocumentInit(i).Load GetAbsolutePath(GetAttribute(TAX_Utilities_iNTK.NodeValidity.childNodes(i), "Ini"))
         Set xmlNodeListIni = xmlDocumentInit(i).getElementsByTagName("Cell")
         For Each xmlNodeIni In xmlNodeListIni
             fpSpread1.Sheet = i + 1
@@ -5719,7 +5719,7 @@ Private Function layThongTinToKhai() As String
     Dim lCol As Long, lRow As Long
     'lay vi tri cell cac gia tri loai to khai va lan nop
     
-    IdToKhai = Val(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
+    IdToKhai = Val(TAX_Utilities_iNTK.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
     
    
     If IdToKhai = 1 Or IdToKhai = 71 Or IdToKhai = 89 Then
@@ -5812,18 +5812,18 @@ Private Function layThongTinToKhai() As String
         'lay gia tri cell to khai chinh thuc
         .GetText lCol, lRow, varTemp
         If Trim(varTemp) <> vbNullString Then
-            thongTinTK = thongTinTK + TAX_Utilities_Srv_New.Convert(" Lo¹i TK : TKCT ", TCVN, UNICODE)
+            thongTinTK = thongTinTK + TAX_Utilities_iNTK.Convert(" Lo¹i TK : TKCT ", TCVN, UNICODE)
         Else 'neu la to bo sung
             'lay vi tri cell to bo sung
             strCell = arrCells(1)
             ParserCellID fpSpread1, strCell, lCol, lRow
             'lay gia tri cell to bo sung
             .GetText lCol, lRow, varTemp
-            thongTinTK = thongTinTK + TAX_Utilities_Srv_New.Convert(" Lo¹i TK: BS  ", TCVN, UNICODE)
+            thongTinTK = thongTinTK + TAX_Utilities_iNTK.Convert(" Lo¹i TK: BS  ", TCVN, UNICODE)
         End If
         'set so lan nop tk
-        thongTinTK = thongTinTK + TAX_Utilities_Srv_New.Convert(" LÇn nép : ", TCVN, UNICODE) + lanNopTKIHTKK
-        thongTinTK = thongTinTK + TAX_Utilities_Srv_New.Convert(" Tê khai : ", TCVN, UNICODE) + changeMaLoaiToKhai(Trim(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue))
+        thongTinTK = thongTinTK + TAX_Utilities_iNTK.Convert(" LÇn nép : ", TCVN, UNICODE) + lanNopTKIHTKK
+        thongTinTK = thongTinTK + TAX_Utilities_iNTK.Convert(" Tê khai : ", TCVN, UNICODE) + changeMaLoaiToKhai(Trim(TAX_Utilities_iNTK.NodeMenu.Attributes.getNamedItem("ID").nodeValue))
         layThongTinToKhai = thongTinTK
     End With
 End Function
