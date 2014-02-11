@@ -1424,14 +1424,24 @@ Private Sub Command1_Click()
     '--03/NTNN V3.1.7
 '    str2 = "aa317810800737709   01201400100100100101/0101/01/1900<S01><S></S><S>01~2222222222~H01~2~01/01/2014~1110~1~5~6~02~0102030405~H02~4~01/01/2014~20~5~1~0</S><S>6~1130~6~6</S><S>1~</S><S>hoten~Hoang Ngoc Hung~cc~11/02/2014~1~1~~</S></S01>"
 '    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-800000055
+    
     '--03/NTNN V3.2.0 ps - thang
     'str2 = "aa320810800737709   01201400100100100101/0101/01/1900<S01><S></S><S>cong viec 01~0102030405~HD0001~11~01/01/2014~10000~10~2~998~cong viec 02~2222222222~Hd0002~12~01/01/2014~22~90~3~17</S><S>23~10022~5~1015</S><S>1~</S><S>hoten~Hoang Ngoc Hung~cc~11/02/2014~1~1~~11/01/2014</S></S01>"
-    str2 = "aa320810800737709   01201400300300100101/0101/01/1900<S01><S></S><S>fadfa~0102030405~HD01~100~01/01/2014~1000~1~10~1~dfda~2222222222~~0~~0~0~0~0</S><S>100~1000~10~1</S><S>1~</S><S>~Hoang Ngoc Hung~~11/02/2014~1~1~~</S></S01>"
-    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-    
-'    str2 = "aa320810800000168   022014ihtkks00100101/0101/01/1900<S01><S></S><S>01~0100231226~11A/01-01-2014~1000000000~01/01/2014~100000000~1.00~1000000~0</S><S>1000000000~100000000~1000000~0</S><S>1~</S><S>~CUONGHD~~11/02/2014~1~~0~</S></S01>"
+'    str2 = "aa320810800737709   01201400300300100101/0101/01/1900<S01><S></S><S>fadfa~0102030405~HD01~100~01/01/2014~1000~1~10~1~dfda~2222222222~~0~~0~0~0~0</S><S>100~1000~10~1</S><S>1~</S><S>~Hoang Ngoc Hung~~11/02/2014~1~1~~</S></S01>"
 '    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+    
+'    str2 = "aa320700800000055   02201400100100100101/0101/01/1900<S01><S></S><S>noi dung 01~0102030405~HD01~100~12/12/2013~1000~10~10~10~1000~10~10~90~100~noi dung 02~2222222222~HD02~200~12/12/2013~2000~10~20~40~20000~20~20~3980~4020</S><S>3000~50~21000~30~10~60</S><S>~X</S><S>hoten~cc~Hoang Ngoc Hung~11/02/2014~1~~~11/02/2014</S></S01>"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+    str2 = "aa320050800737709   02201400400400100401/0101/01/1900<S01><S></S><S>~300000~181818.00~12000~0~106182</S><S>10102~Bao~4567.97~300000~181818.00~65.0~12000~0~106182</S><S>23989~17135.00~6000~0~854</S><S>20101~a~6598.96~23989~1"
+    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+    str2 = "aa320050800737709   0220140040040020047135.00~40.0~6000~0~854</S><S>0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>323989~198953.00~18000~0~107036</S><S>Hoang Ngoc Hung~~~11/02/2014~1~~0~107036~10/02/2014~0</S></S01>"
+    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+    str2 = "aa320050800737709   022014004004003004<S01-1><S>KH123~01~01/01/2014~kh01~10101~quan ao~10~1000~10000~KH123~02~01/01/2014~kh01~10102~ao khoac~20~2000~40000</S><S>    X× gµ (65 %)~10~10000~    Thuèc l¸ ®iÕu (65 %)~20~40000</S></S01-1>"
+    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+    str2 = "aa320050800737709   022014004004004004<S01-2><S>KH001~1~01/01/2014~sat thep~10~1000~100010000~10000000000~KH002~2~01/01/2014~che xanh~20~200~200~2000</S><S>abc~10~vang~100~10~bca~20~kim cuong~20~20</S></S01-2>"
+    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
 
     
 End Sub
@@ -4789,19 +4799,25 @@ Private Function formatMaToKhai(ByVal strID As String) As String
     End If
     formatMaToKhai = strRetValue
 End Function
+
 Private Function formatMaToKhaiQLT(ByVal strID As String) As String
     Dim arrTemp() As String
-    Dim strTemp As String
-    Dim intX As Integer
-    arrTemp = Split(strID, ",")
-    For intX = 0 To UBound(arrTemp)
-        If intX = UBound(arrTemp) Then
-            strTemp = strTemp + "'" + arrTemp(intX) + "'"
-        Else
-            strTemp = strTemp + "'" + arrTemp(intX) + "',"
-        End If
-    Next
-    formatMaToKhaiQLT = "(" + UCase(strTemp) + ")"
+    Dim strTemp   As String
+    Dim intX      As Integer
+
+    If (Trim(strID) = "") Then
+        formatMaToKhaiQLT = "('')"
+    Else
+        arrTemp = Split(strID, ",")
+        For intX = 0 To UBound(arrTemp)
+            If intX = UBound(arrTemp) Then
+                strTemp = strTemp + "'" + arrTemp(intX) + "'"
+            Else
+                strTemp = strTemp + "'" + arrTemp(intX) + "',"
+            End If
+        Next
+        formatMaToKhaiQLT = "(" + UCase(strTemp) + ")"
+    End If
 End Function
 
 Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) As Boolean
