@@ -4792,6 +4792,7 @@ End Function
 Private Function formatMaToKhaiQLT(ByVal strID As String) As String
     Dim arrTemp() As String
     Dim strTemp As String
+    Dim intX As Integer
     arrTemp = Split(strID, ",")
     For intX = 0 To UBound(arrTemp)
         If intX = UBound(arrTemp) Then
