@@ -1410,10 +1410,10 @@ Private Sub Command1_Click()
 '    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
     '--01/TTS to quy
-    str2 = "aa320230800737709   01201400100100100201/0101/01/1900<S01><S></S><S>~~so0001~01/01/2014~HD0001~20~10~10~20~4~10~2~0~10~0</S><S>fix_01~0102030405~10~0~0~"
-    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-    str2 = "aa320230800737709   0120140010010020020~10~0~10~0~10~fix_02~2222222222~90~4~2~0~12~0~0~0~0</S><S>hoten~Hoang Ngoc Hung~cc~10/04/2014~1~1~~1~~</S></S01>"
-    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'    str2 = "aa320230800737709   01201400100100100201/0101/01/1900<S01><S></S><S>~~so0001~01/01/2014~HD0001~20~10~10~20~4~10~2~0~10~0</S><S>fix_01~0102030405~10~0~0~"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'    str2 = "aa320230800737709   0120140010010020020~10~0~10~0~10~fix_02~2222222222~90~4~2~0~12~0~0~0~0</S><S>hoten~Hoang Ngoc Hung~cc~10/04/2014~1~1~~1~~</S></S01>"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
     
     '--01/TTS tu thang -> thang
 '    str2 = "aa320230800737709   01201400200200100201/0101/01/1900<S01><S></S><S>01/2014~02/2014~VB0001~01/01/2014~HD0002~8~4~4~22~2~22~2~0~0~0</S><S>fix____01~2222222222~1"
@@ -1421,7 +1421,16 @@ Private Sub Command1_Click()
 '    str2 = "aa320230800737709   0120140020020020021~0~0~0~11~0~11~0~11~fix_02~0102030405~89~2~2~0~1~1~1~0~1</S><S>hoten~Hoang Ngoc Hung~cc~10/04/2014~1~1~~0~~1</S></S01>"
 '    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
     
+    '--03/NTNN V3.1.7
+'    str2 = "aa317810800737709   01201400100100100101/0101/01/1900<S01><S></S><S>01~2222222222~H01~2~01/01/2014~1110~1~5~6~02~0102030405~H02~4~01/01/2014~20~5~1~0</S><S>6~1130~6~6</S><S>1~</S><S>hoten~Hoang Ngoc Hung~cc~11/02/2014~1~1~~</S></S01>"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
     
+    '--03/NTNN V3.2.0 ps - thang
+    'str2 = "aa320810800737709   01201400100100100101/0101/01/1900<S01><S></S><S>cong viec 01~0102030405~HD0001~11~01/01/2014~10000~10~2~998~cong viec 02~2222222222~Hd0002~12~01/01/2014~22~90~3~17</S><S>23~10022~5~1015</S><S>1~</S><S>hoten~Hoang Ngoc Hung~cc~11/02/2014~1~1~~11/01/2014</S></S01>"
+    str2 = "aa320810800737709   01201400300300100101/0101/01/1900<S01><S></S><S>fadfa~0102030405~HD01~100~01/01/2014~1000~1~10~1~dfda~2222222222~~0~~0~0~0~0</S><S>100~1000~10~1</S><S>1~</S><S>~Hoang Ngoc Hung~~11/02/2014~1~1~~</S></S01>"
+    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+    
+
     
 
     
@@ -4779,7 +4788,17 @@ Private Function formatMaToKhai(ByVal strID As String) As String
     formatMaToKhai = strRetValue
 End Function
 Private Function formatMaToKhaiQLT(ByVal strID As String) As String
-    formatMaToKhaiQLT = "(" + UCase(strID) + ")"
+    Dim arrTemp() As String
+    Dim strTemp As String
+    arrTemp = Split(strID, ",")
+    For intX = 0 To UBound(arrTemp)
+        If intX = UBound(arrTemp) Then
+            strTemp = strTemp + "'" + arrTemp(intX) + "'"
+        Else
+            strTemp = strTemp + "'" + arrTemp(intX) + "',"
+        End If
+    Next
+    formatMaToKhaiQLT = "(" + UCase(strTemp) + ")"
 End Function
 
 Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) As Boolean
@@ -4895,7 +4914,7 @@ Private Function isDA30(ByVal strID As String, arrStrHeaderData() As String, isL
 
     strSQL = "select 1 from qlt_tkhai_hdr tkhai " & _
             "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-            "And UPPER(tkhai.DTK_MA_LOAI_TKHAI) IN '" & formatMaToKhaiQLT(changeMaToKhaiQLT(strID, isLanPS, LoaiKyKK)) & "' " & _
+            "And UPPER(tkhai.DTK_MA_LOAI_TKHAI) IN " & formatMaToKhaiQLT(changeMaToKhaiQLT(strID, isLanPS, LoaiKyKK)) & " " & _
             "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
             "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
             "And ((tkhai.YN_DA30 is null) OR (UPPER(YN_DA30) = 'Y' AND (TTHAI <> '1' AND TTHAI <> '3'))) "
