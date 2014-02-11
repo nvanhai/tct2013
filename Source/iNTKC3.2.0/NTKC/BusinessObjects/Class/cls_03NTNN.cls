@@ -171,15 +171,21 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
             .Row = 44
             i = 0
             Do
-                .GetText .ColLetterToNumber("AV"), .Row, varMaDM
-                If Trim(varMaDM) <> vbNullString Then
-'                    .SetText .ColLetterToNumber("C"), .Row, getTenDMNNKD(varMaDM)
-                    .Col = .ColLetterToNumber("C")
+            '.GetText .ColLetterToNumber("AV"), .Row, varMaDM
+            .GetText .ColLetterToNumber("C"), .Row, varMaDM
+
+            If Trim(varMaDM) <> vbNullString Then
+                '.SetText .ColLetterToNumber("C"), .Row, getTenDMNNKD(varMaDM)
+                .Col = .ColLetterToNumber("C")
+                If (Trim(getTenDMNNKD(varMaDM)) <> "") Then
                     .Text = getTenDMNNKD(varMaDM)
+                Else
+                    .Text = varMaDM
+                End If
                     
                 End If
                 i = i + 1
-                .Col = .ColLetterToNumber("C")
+            .Col = .ColLetterToNumber("B")
                 .Row = 44 + i
             Loop Until UCase(.Text) = "AA"
     End With
