@@ -2164,7 +2164,8 @@ On Error GoTo ErrHandle
         
         'khong nhan cac to khai khong theo mau HTKK3.2.0
         IdToKhai = Mid(strPrefix, 4, 2)
-        If (Val(Left$(strPrefix, 3)) <= 317 And UCase(strLoaiToKhai) = "AA") Then
+        'If (Val(Left$(strPrefix, 3)) <= 317 And UCase(strLoaiToKhai) = "AA") Then
+        If (Val(Left$(strPrefix, 3)) <= 317) Then
             If Trim(IdToKhai) = "01" Or Trim(IdToKhai) = "02" Or Trim(IdToKhai) = "04" Or Trim(IdToKhai) = "11" Or Trim(IdToKhai) = "12" Or Trim(IdToKhai) = "71" _
             Or Trim(IdToKhai) = "72" Or Trim(IdToKhai) = "06" Or Trim(IdToKhai) = "90" Or Trim(IdToKhai) = "25" Or Trim(IdToKhai) = "50" Or Trim(IdToKhai) = "51" Or Trim(IdToKhai) = "19" _
             Or Trim(IdToKhai) = "22" Or Trim(IdToKhai) = "15" Or Trim(IdToKhai) = "16" Or Trim(IdToKhai) = "36" Or Trim(IdToKhai) = "74" Then
@@ -2185,19 +2186,20 @@ On Error GoTo ErrHandle
             End If
         End If
         
-        'khong nhan cac to khai bo sung khong theo mau HTKK3.2.0(GD1)
-        IdToKhai = Mid(strPrefix, 4, 2)
+        'khong nhan cac to khai bo sung khong theo mau HTKK3.2.0(GD1): 01/NTNN 70,03/NTNN 81, 05/GTGT 72
+        idToKhai = Mid(strPrefix, 4, 2)
         If (Val(Left$(strPrefix, 3)) <= 317 And UCase(strLoaiToKhai) = "BS") Then
             'khbs updated GD1
-            If Trim(IdToKhai) = "01" Or Trim(IdToKhai) = "02" Or Trim(IdToKhai) = "04" Or Trim(IdToKhai) = "71" Or Trim(IdToKhai) = "72" Or Trim(IdToKhai) = "11" Or Trim(IdToKhai) = "12" _
-            Or Trim(IdToKhai) = "73" Or Trim(IdToKhai) = "70" Or Trim(IdToKhai) = "81" Or Trim(IdToKhai) = "06" Or Trim(IdToKhai) = "05" Or Trim(IdToKhai) = "90" Or Trim(IdToKhai) = "86" Then
-                If isIHTKK = True Then
+'            If Trim(idToKhai) = "01" Or Trim(idToKhai) = "02" Or Trim(idToKhai) = "04" Or Trim(idToKhai) = "71" Or Trim(idToKhai) = "72" Or Trim(idToKhai) = "11" Or Trim(idToKhai) = "12" _
+'            Or Trim(idToKhai) = "73" Or Trim(idToKhai) = "70" Or Trim(idToKhai) = "81" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "05" Or Trim(idToKhai) = "90" Or Trim(idToKhai) = "86" Then
+            If Trim(idToKhai) = "70" Or Trim(idToKhai) = "81" Or Trim(idToKhai) = "72" Then
+		If isIHTKK = True Then
                     bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "04")
                     isIHTKK = False
                     Unload Me
                     Exit Sub
                 Else
-                    DisplayMessage "0132", msOKOnly, miInformation
+                    DisplayMessage "0133", msOKOnly, miInformation
                     Exit Sub
                 End If
             End If
@@ -5257,7 +5259,18 @@ Private Function formatMaToKhai(ByVal strID As String) As String
 
 End Function
 Private Function formatMaToKhaiQLT(ByVal strID As String) As String
-    formatMaToKhaiQLT = "(" + UCase(strID) + ")"
+    Dim arrTemp() As String
+    Dim strTemp As String
+    Dim intX As Integer
+    arrTemp = Split(strID, ",")
+    For intX = 0 To UBound(arrTemp)
+        If intX = UBound(arrTemp) Then
+            strTemp = strTemp + "'" + arrTemp(intX) + "'"
+        Else
+            strTemp = strTemp + "'" + arrTemp(intX) + "',"
+        End If
+    Next
+    formatMaToKhaiQLT = "(" + UCase(strTemp) + ")"
 End Function
 
 Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) As Boolean
@@ -5373,7 +5386,7 @@ Private Function isDA30(ByVal strID As String, arrStrHeaderData() As String, isL
 
     strSQL = "select 1 from qlt_tkhai_hdr tkhai " & _
             "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-            "And UPPER(tkhai.DTK_MA_LOAI_TKHAI) IN '" & formatMaToKhaiQLT(changeMaToKhaiQLT(strID, isLanPS, LoaiKyKK)) & "' " & _
+            "And UPPER(tkhai.DTK_MA_LOAI_TKHAI) IN " & formatMaToKhaiQLT(changeMaToKhaiQLT(strID, isLanPS, LoaiKyKK)) & " " & _
             "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
             "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
             "And ((tkhai.YN_DA30 is null) OR (UPPER(YN_DA30) = 'Y' AND (TTHAI <> '1' AND TTHAI <> '3'))) "
