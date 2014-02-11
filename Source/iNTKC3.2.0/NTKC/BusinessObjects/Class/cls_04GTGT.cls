@@ -34,6 +34,10 @@ Const PHONG_XU_LY_COL = "V"
 Const TEN_DL_ROW = 18
 Const TEN_DL_COL = "H"
 
+' Ngay phat sinh
+Const NGAY_PS_ROW = 39
+Const NGAY_PS_COL = "L"
+
 Const DIA_CHI_DL_ROW = 22
 Const DIA_CHI_DL_COL = "F"
 
@@ -542,7 +546,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim strMaPhongXuLy As String
     Dim vItkhai_ID, vHthuc_nop As String
     Dim LOAI_KYKK As String	
-    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
+    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC, vNGANH_NGHE_KD, vTO_KHAI_LAN_PS, vNGAY_PS As Variant
     
 On Error GoTo ErrHandle
     strSQL = Replace$(strSQL_HDR, ")", ",LOAI_KYKK)")
@@ -597,8 +601,10 @@ On Error GoTo ErrHandle
     ' end
     If LOAI_KYKK = "0" Then
         LOAI_KYKK = "T"
-    Else
+    ElseIf LOAI_KYKK = "1" Then
         LOAI_KYKK = "Q"
+    Else
+        LOAI_KYKK = ""
     End If
 
 
@@ -624,22 +630,20 @@ On Error GoTo ErrHandle
     End If
     
     'Ky/ Quy KK
-    If LOAI_KYKK = "T" Then
+    If LOAI_KYKK = "Q" Then
+        If Trim(TAX_Utilities_Srv_New.ThreeMonths) <> "" Then
+            dDate = dNgayDauKy
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+            dDate = DateAdd("m", 3, dDate)
+            dDate = DateAdd("d", -1, dDate)
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+        End If
+    Else
         If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
             'Ngay dau ky ke khai va ngay cuoi ky ke khai
             dDate = dNgayDauKy
             strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
             dDate = DateAdd("m", 1, dDate)
-            dDate = DateAdd("d", -1, dDate)
-            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        End If
-
-    Else
-
-        If Trim(TAX_Utilities_Srv_New.ThreeMonths) <> "" Then
-            dDate = dNgayDauKy
-            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-            dDate = DateAdd("m", 3, dDate)
             dDate = DateAdd("d", -1, dDate)
             strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
         End If
@@ -687,6 +691,17 @@ On Error GoTo ErrHandle
             vTIN_DL = Left(vTIN_DL, 10) & "-" & Right(vTIN_DL, 3)
         End If
 
+        vNGANH_NGHE_KD = "null"
+        ' ngay phat sinh
+        .GetText .ColLetterToNumber(NGAY_PS_COL), NGAY_PS_ROW, vNGAY_PS
+        If Trim(vNGAY_PS) = "" Or vNGAY_PS = vbNullString Then
+            vNGAY_PS = "null"
+            vTO_KHAI_LAN_PS = "null"
+        Else
+            vNGAY_PS = "'" & vNGAY_PS & "'"
+            vNGAY_PS = "to_date(" & vNGAY_PS & ",'dd/mm/yyyy')"
+            vTO_KHAI_LAN_PS = "1"
+        End If
         
         If Trim(vNGAY_HOP_DONG) = "" Or vNGAY_HOP_DONG = vbNullString Then
             vNGAY_HOP_DONG = "null"
@@ -698,7 +713,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
     strSQL = strSQL & "null,"
     strSQL = strSQL & vHthuc_nop & "," & vItkhai_ID & ","
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) &  ",'" & LOAI_KYKK & "')"
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & vNGANH_NGHE_KD & "," & vTO_KHAI_LAN_PS & "," & vNGAY_PS & ",'" & LOAI_KYKK & "')"
     GenerateSQL_Header = strSQL
     
     Exit Function
