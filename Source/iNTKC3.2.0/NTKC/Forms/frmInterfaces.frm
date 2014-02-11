@@ -5260,17 +5260,22 @@ Private Function formatMaToKhai(ByVal strID As String) As String
 End Function
 Private Function formatMaToKhaiQLT(ByVal strID As String) As String
     Dim arrTemp() As String
-    Dim strTemp As String
-    Dim intX As Integer
-    arrTemp = Split(strID, ",")
-    For intX = 0 To UBound(arrTemp)
-        If intX = UBound(arrTemp) Then
-            strTemp = strTemp + "'" + arrTemp(intX) + "'"
-        Else
-            strTemp = strTemp + "'" + arrTemp(intX) + "',"
-        End If
-    Next
-    formatMaToKhaiQLT = "(" + UCase(strTemp) + ")"
+    Dim strTemp   As String
+    Dim intX      As Integer
+
+    If (Trim(strID) = "") Then
+        formatMaToKhaiQLT = "('')"
+    Else
+        arrTemp = Split(strID, ",")
+        For intX = 0 To UBound(arrTemp)
+            If intX = UBound(arrTemp) Then
+                strTemp = strTemp + "'" + arrTemp(intX) + "'"
+            Else
+                strTemp = strTemp + "'" + arrTemp(intX) + "',"
+            End If
+        Next
+        formatMaToKhaiQLT = "(" + UCase(strTemp) + ")"
+    End If
 End Function
 
 Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) As Boolean
