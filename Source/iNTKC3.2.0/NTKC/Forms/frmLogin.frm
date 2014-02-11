@@ -203,7 +203,7 @@ On Error GoTo ErrorHandle
     '********************************
     ' set trang thai active cua PIT
     isPITActive = checkActivePIT
-    TAX_Utilities_Srv_New.isCheckPIT = isPITActive
+    TAX_Utilities_iNTK.isCheckPIT = isPITActive
     ' end
     
     Unload Me

@@ -105,7 +105,7 @@ Private Sub MDIForm_Load()
     Me.BackColor = RGB(74, 121, 198)
     Me.icon = LoadPicture(GetAbsolutePath("..\Pictures\icon.ICO"))
     xmlDocCaption.Load App.path & "\Caption.xml"
-    TAX_Utilities_Srv_New.NodeCaption = xmlDocCaption.documentElement
+    TAX_Utilities_iNTK.NodeCaption = xmlDocCaption.documentElement
     
     frmLogin.Top = (frmSystem.Height - frmLogin.Height) / 2
     frmLogin.Left = (frmSystem.Width - frmLogin.Width) / 2
@@ -151,10 +151,10 @@ Private Sub MDIForm_Unload(Cancel As Integer)
     On Error GoTo ErrorHandle
     Set xmlHeaderData = Nothing
     Set xmlNodeListMenu = Nothing
-    TAX_Utilities_Srv_New.NodeMessage = Nothing
-    TAX_Utilities_Srv_New.NodeCaption = Nothing
-    TAX_Utilities_Srv_New.NodeMenu = Nothing
-    TAX_Utilities_Srv_New.NodeValidity = Nothing
+    TAX_Utilities_iNTK.NodeMessage = Nothing
+    TAX_Utilities_iNTK.NodeCaption = Nothing
+    TAX_Utilities_iNTK.NodeMenu = Nothing
+    TAX_Utilities_iNTK.NodeValidity = Nothing
     
     Exit Sub
 ErrorHandle:
@@ -178,7 +178,7 @@ Public Sub LoadListMessage()
     
     xmlDocument.Load App.path & "\Message.xml"
     
-    TAX_Utilities_Srv_New.NodeMessage = xmlDocument.getElementsByTagName("Message").Item(0).childNodes
+    TAX_Utilities_iNTK.NodeMessage = xmlDocument.getElementsByTagName("Message").Item(0).childNodes
     
     Set xmlDocument = Nothing
     

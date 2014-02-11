@@ -270,9 +270,9 @@ Private Sub btnTraCuu_Click(Index As Integer)
                         strMST = Trim(rsReturn.Fields(lIndex - 1).Value)
                     End If
                     If UCase(Trim(rsReturn.Fields(lIndex - 1).Name)) = "NGUOI_DAI_DIEN" Then
-                        fpsKetQua.SetText lCol, lRow, TAX_Utilities_Srv_New.Convert(getTENDTNT(strMST), TCVN, UNICODE)
+                        fpsKetQua.SetText lCol, lRow, TAX_Utilities_iNTK.Convert(getTENDTNT(strMST), TCVN, UNICODE)
                     Else
-                        fpsKetQua.SetText lCol, lRow, TAX_Utilities_Srv_New.Convert(rsReturn.Fields(lIndex - 1).Value, TCVN, UNICODE)
+                        fpsKetQua.SetText lCol, lRow, TAX_Utilities_iNTK.Convert(rsReturn.Fields(lIndex - 1).Value, TCVN, UNICODE)
                     End If
                     lCol = lCol + 1
                     fpsKetQua.RowHeight(lRow) = fpsKetQua.MaxTextRowHeight(lRow)
@@ -414,7 +414,7 @@ Sub SetupData()
             Dim xmlNode As MSXML.IXMLDOMNode
             Dim strDataFileName As String
             Dim i As Integer
-            xmlDocument.Load TAX_Utilities_Srv_New.GetAbsolutePath("menu.xml")
+            xmlDocument.Load TAX_Utilities_iNTK.GetAbsolutePath("menu.xml")
             Set xmlNodeListMenu = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
             i = 0
             larrId(0) = 0
