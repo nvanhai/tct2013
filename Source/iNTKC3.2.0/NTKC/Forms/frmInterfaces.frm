@@ -1778,9 +1778,16 @@ Private Sub Command1_Click()
 '  Barcode_Scaned str2
 '  str2 = "aa320230800000168   042013011011002002300000~225000~50000~0~225000~11250~1250~10000~b2~2222222222~50~300000~225000~50000~0~225000~11250~1250~10000</S><S>~Hïng~~10/02/2014~1~1~~0~1~</S></S01>"
 'Barcode_Scaned str2
-  str2 = "aa320250800000168   03201400100100100101/0101/01/1900<S01><S></S><S>1000000~200000~10000~2000000~200000~100000~10000~0~0~0~220000</S><S>Hïng~10/02/2014~~~1~~~0</S></S01>"
-  Barcode_Scaned str2
-
+'  str2 = "aa320250800000168   03201400100100100101/0101/01/1900<S01><S></S><S>1000000~200000~10000~2000000~200000~100000~10000~0~0~0~220000</S><S>Hïng~10/02/2014~~~1~~~0</S></S01>"
+'  Barcode_Scaned str2
+'  str2 = "aa320810800000168   022014ihtkks00100101/0101/01/1900<S01><S></S><S>01~0100231226~11A/01-01-2014~1000000000~01/01/2014~100000000~1.00~1000000~0</S><S>1000000000~100000000~1000000~0</S><S>1~</S><S>~CUONGHD~~11/02/2014~1~~0~</S></S01>"
+'  Barcode_Scaned str2
+'
+'  str2 = "aa320860800990275   02201400100200100101/0101/01/1900<S01><S></S><S>Kg~52222~33333~010101</S><S>Kg~12323~333333~010102</S><S>~CUONGHD~~11/02/2014~1~~</S></S01>"
+'  Barcode_Scaned str2
+str2 = "aa320900800990275   01201400400400100101/0101/01/1900<S01><S></S><S>T?n~55.000~10000~550000~010201</S><S>~CUONGHD~~12/02/2014~1~~~0~</S></S01><S01-1><S>010201~1213213~0800990275-001~10101~100000.00~100000.00~100.00~10000.00~10000~100000000</S></S01-1>"
+Barcode_Scaned str2
+    
 End Sub
 
 Private Sub Form_Activate()
@@ -2187,13 +2194,13 @@ On Error GoTo ErrHandle
         End If
         
         'khong nhan cac to khai bo sung khong theo mau HTKK3.2.0(GD1): 01/NTNN 70,03/NTNN 81, 05/GTGT 72
-        idToKhai = Mid(strPrefix, 4, 2)
+        IdToKhai = Mid(strPrefix, 4, 2)
         If (Val(Left$(strPrefix, 3)) <= 317 And UCase(strLoaiToKhai) = "BS") Then
             'khbs updated GD1
 '            If Trim(idToKhai) = "01" Or Trim(idToKhai) = "02" Or Trim(idToKhai) = "04" Or Trim(idToKhai) = "71" Or Trim(idToKhai) = "72" Or Trim(idToKhai) = "11" Or Trim(idToKhai) = "12" _
 '            Or Trim(idToKhai) = "73" Or Trim(idToKhai) = "70" Or Trim(idToKhai) = "81" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "05" Or Trim(idToKhai) = "90" Or Trim(idToKhai) = "86" Then
-            If Trim(idToKhai) = "70" Or Trim(idToKhai) = "81" Or Trim(idToKhai) = "72" Then
-		If isIHTKK = True Then
+            If Trim(IdToKhai) = "70" Or Trim(IdToKhai) = "81" Or Trim(IdToKhai) = "72" Then
+                If isIHTKK = True Then
                     bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "04")
                     isIHTKK = False
                     Unload Me
