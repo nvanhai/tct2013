@@ -657,7 +657,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim vPHONG_XU_LY
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
-    
+    Dim vItkhai_ID, vHTHUC_NOP As String
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
     
 On Error GoTo ErrHandle
@@ -698,6 +698,18 @@ On Error GoTo ErrHandle
         End If
         End With
     Next
+    
+    'Neu la to khai iHtkk thi lay ngay nop tu bang rcv_ihtkk_mvach
+    If TAX_Utilities_iNTK.HthucNopIHTKK = True Then
+        vNGAY_NOP = TAX_Utilities_iNTK.NgayNopIHTKK
+        vItkhai_ID = TAX_Utilities_iNTK.IDTokhaiIHTKK
+        vHTHUC_NOP = "'I'"
+    Else
+        vItkhai_ID = "null"
+        vHTHUC_NOP = "null"
+    End If
+    ' end
+    
     
     strSQL = strSQL & "'" & vHdrID & "',"
     strSQL = strSQL & vKKBS & ","
@@ -786,6 +798,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
     'strSQL = strSQL & "null)"
     strSQL = strSQL & "null,"
+    strSQL = strSQL & vHTHUC_NOP & "," & vItkhai_ID & ","
     strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
     GenerateSQL_Header = strSQL
     'Debug.Print GenerateSQL_Header
