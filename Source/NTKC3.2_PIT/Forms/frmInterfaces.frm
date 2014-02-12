@@ -1383,7 +1383,7 @@ Private Sub Command1_Click()
 '    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
     '--02/GTGT
-'    str2 = "aa320020800737709   01201400300300100201/0114/06/2006<S01><S></S><S>11~111~0~0~1~0~0~0~0~0~122~0~0~0~122</S><S>~Hoang Ngoc Hung~~25/02/2014~1~~~0</S></S01>"
+'    str2 = "aa320020800737709   01201400300300100201/0114/06/2006<S01><S></S><S>11~111~0~0~1~0~0~0~0~0~122~0~0~0~122</S><S>~Hoang Ngoc Hung~~25/02/2014~1~~~1</S></S01>"
 '    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 '    str2 = "aa320020800737709   012014003003002002<S01_2_1><S>~~~~~~~~0~0~0~</S><S>0~0</S></S01_2_1>"
 '    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
@@ -1433,15 +1433,28 @@ Private Sub Command1_Click()
 '    str2 = "aa320700800000055   02201400100100100101/0101/01/1900<S01><S></S><S>noi dung 01~0102030405~HD01~100~12/12/2013~1000~10~10~10~1000~10~10~90~100~noi dung 02~2222222222~HD02~200~12/12/2013~2000~10~20~40~20000~20~20~3980~4020</S><S>3000~50~21000~30~10~60</S><S>~X</S><S>hoten~cc~Hoang Ngoc Hung~11/02/2014~1~~~11/02/2014</S></S01>"
 '    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
-    str2 = "aa320050800737709   02201400400400100401/0101/01/1900<S01><S></S><S>~300000~181818.00~12000~0~106182</S><S>10102~Bao~4567.97~300000~181818.00~65.0~12000~0~106182</S><S>23989~17135.00~6000~0~854</S><S>20101~a~6598.96~23989~1"
-    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-    str2 = "aa320050800737709   0220140040040020047135.00~40.0~6000~0~854</S><S>0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>323989~198953.00~18000~0~107036</S><S>Hoang Ngoc Hung~~~11/02/2014~1~~0~107036~10/02/2014~0</S></S01>"
-    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-    str2 = "aa320050800737709   022014004004003004<S01-1><S>KH123~01~01/01/2014~kh01~10101~quan ao~10~1000~10000~KH123~02~01/01/2014~kh01~10102~ao khoac~20~2000~40000</S><S>    X× gµ (65 %)~10~10000~    Thuèc l¸ ®iÕu (65 %)~20~40000</S></S01-1>"
-    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-    str2 = "aa320050800737709   022014004004004004<S01-2><S>KH001~1~01/01/2014~sat thep~10~1000~100010000~10000000000~KH002~2~01/01/2014~che xanh~20~200~200~2000</S><S>abc~10~vang~100~10~bca~20~kim cuong~20~20</S></S01-2>"
-    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'    str2 = "aa320050800737709   02201400400400100401/0101/01/1900<S01><S></S><S>~300000~181818.00~12000~0~106182</S><S>10102~Bao~4567.97~300000~181818.00~65.0~12000~0~106182</S><S>23989~17135.00~6000~0~854</S><S>20101~a~6598.96~23989~1"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'    str2 = "aa320050800737709   0220140040040020047135.00~40.0~6000~0~854</S><S>0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>323989~198953.00~18000~0~107036</S><S>Hoang Ngoc Hung~~~11/02/2014~1~~0~107036~10/02/2014~0</S></S01>"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'    str2 = "aa320050800737709   022014004004003004<S01-1><S>KH123~01~01/01/2014~kh01~10101~quan ao~10~1000~10000~KH123~02~01/01/2014~kh01~10102~ao khoac~20~2000~40000</S><S>    X× gµ (65 %)~10~10000~    Thuèc l¸ ®iÕu (65 %)~20~40000</S></S01-1>"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'    str2 = "aa320050800737709   022014004004004004<S01-2><S>KH001~1~01/01/2014~sat thep~10~1000~100010000~10000000000~KH002~2~01/01/2014~che xanh~20~200~200~2000</S><S>abc~10~vang~100~10~bca~20~kim cuong~20~20</S></S01-2>"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
+'str2 = "aa320710800737709   03201400100200100101/0101/01/1900<S01><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~Hoang Ngoc Hung~~11/04/2014~1~~~0~</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+'str2 = "aa320710800000055   01201400200500100101/0101/01/1900<S01><S></S><S>4000000~3000000~30000~5000000~250000~6000000~180000~8000000~160000~22000000~620000~26000000~620000</S><S>hKb~Ph-¬ng Hoa~HNT~25/02/2014~1~~~0~</S> </S01><S01_1><S>06HDXK~06HDXK5/009~kh01~s001~21/01/2014~H¹nh~~~2000000~~03XKNB~03XKNB4/008~kh02~ s002~22/01/2014~Linh~"
+'str2 = str2 & "~~3000000~</S><S>01GTKT~01GTKT7/023~kh03~s003~20/01/ 2014~Mai~~~4000000~~03XKNB~03XKNB6/089~kh04~s004~20/ 01/2014~Lan~~~500000"
+'str2 = str2 & "0~</S><S>03XKNB~03XKNB4/067~kh05~s005~22/01/2014~YÕn ~~~6000000~~02GTTT~02GTTT3/098~kh06~s006~21/01/2014~Nhi~~~7000000~</S><S>04HGDL~04HGDL2/034~kh07~s007~25/01/2014~Hoµng~~~8000000~~02GTTT~02GT"
+'str2 = str2 & "TT9/067~kh08~s008~25/01/2014~HiÕu~~~9000000~</S><S>07KPTQ~07KPTQ4/056~kh09~s100~26/01/2014~Dòng~~~100000 0~~01GTKT~01GTKT3/06"
+'str2 = str2 & "7~kh010~s101~26/01/2014~Nga~~~800000~</S><S>45800000~5000000~40800000</S></S01_1>"
+'Barcode_Scaned str2
+
+'04/GTGT quy
+str2 = "aa320710800737709   02201400200300100101/0101/01/1900<S01><S></S><S>10000~2000~20~2000~100~1000~30~100~2~5100~152~15100~152</S><S>HOTEN~Hoang Ngoc Hung~CHUNGCHI~12/04/2014~1~~~1~</S></S01>"
+Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
     
 End Sub
@@ -5203,7 +5216,8 @@ Private Function LoaiToKhai(ByVal strData As String) As Boolean
     Dim Tk04_GTGT() As String
     On Error GoTo ErrHandle
     
-    LoaiTk = Mid$(strData, 4, 2)
+    'xu ly rieng cho to 04/GTGT do chi tieu to khai thang quy khac vi tri so voi cac to khac
+    LoaiTk = Mid$(strData, 1, 2)
 
     If LoaiTk = "71" Then
         LoaiTk = Left$(strData, Len(strData) - 10)
