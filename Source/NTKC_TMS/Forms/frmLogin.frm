@@ -156,6 +156,8 @@ Private SHA1Hash As New SHA1Hash
 Private Base64Unicode As New Base64Unicode
 'Lay thong tin NNT tu ESB
 Private xmlResultNSD As MSXML.DOMDocument
+Dim WithEvents cmdSetting As VB.CommandButton
+Attribute cmdSetting.VB_VarHelpID = -1
 
 Private Sub cmdClose_Click()
     Unload Me
@@ -194,7 +196,7 @@ On Error GoTo ErrorHandle
             End If
     End Select
    
-    GetDataInfor
+    ''GetDataInfor
     'Set user name to system caption
     frmSystem.lblUser.caption = Mid$(frmSystem.lblUser.caption, 1, _
         InStr(1, frmSystem.lblUser.caption, ":") + 1) & _
@@ -234,6 +236,22 @@ End Sub
 
 Private Sub Form_Load()
     SetControlCaption Me, "frmLogin"
+    
+'    'btn cau hinh
+'    Dim WithEvents btnSetting As CommandButton
+
+    
+'    Set cmdSetting = Me.Controls.Add("vb.commandbutton", "cmdSetting")
+'    With cmdSetting
+'        .Visible = True
+'        .caption = "Setting"
+'        .Width = 960
+'        .Height = 375
+'        .Top = 1650
+'        .Left = 70
+'        .CausesValidation = False
+'    End With
+    
     'load xml config'
     Set xmlConfig = LoadConfig()
     If xmlConfig Is Nothing Then
@@ -241,7 +259,12 @@ Private Sub Form_Load()
     End If
     ' end xml config
 End Sub
-
+Private Sub cmdSetting_Click()
+    
+    'MsgBox "You Clicked the Command button"
+    frmSetting.Show
+    
+End Sub
 Private Sub Form_Resize()
     SetFormCaption Me, imgCaption, lblCaption
 End Sub
@@ -650,3 +673,4 @@ Private Function IsCompareDateSrv() As Boolean
 ErrHandle:
     SaveErrorLog Me.Name, "IsCompareDateSrv", Err.Number, Err.Description
 End Function
+

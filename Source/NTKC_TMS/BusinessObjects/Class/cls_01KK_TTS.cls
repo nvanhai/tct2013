@@ -438,7 +438,7 @@ Public Function CheckValidData() As Boolean
     CheckValidData = True
     With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("E"), 33, varCheckValue
+        .GetText .ColLetterToNumber("D"), 33, varCheckValue
         .GetText .ColLetterToNumber("M"), 33, varNoteValue
         '
         .GetText .ColLetterToNumber("D"), 29, varNgayNop
@@ -484,14 +484,17 @@ Public Function GenerateSQL_Header(xmlDomData As MSXML.DOMDocument, strSQL_HDR A
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
     Dim vTU_NGAY, vDEN_NGAY, vQT_TUNG_NAM, vQT_DAU_NAM, vTKTHANG As Variant
     Dim vHINH_THUC_QT As Variant
+    Dim LOAI_KYKK      As String
     
 On Error GoTo ErrHandle
     ' PIT
     If TAX_Utilities_Srv_New.isCheckPIT = True Then
-        strSQL = SqlHdr_08TNCN_PIT
+        'strSQL = SqlHdr_08TNCN_PIT
+        strSQL = Replace$(SqlHdr_08TNCN_PIT, ")", ",LOAI_KYKK)")
         strTTGui = 1
     Else
-        strSQL = SqlHdr_08TNCN
+        'strSQL = SqlHdr_08TNCN
+        strSQL = Replace$(SqlHdr_08TNCN, ")", ",LOAI_KYKK)")
     End If
     ' end PIT
     'strSQL = strSQL_HDR
@@ -547,10 +550,18 @@ On Error GoTo ErrHandle
                     vGHI_CHU_LOI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                     vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+                Case "L_35"
+                        LOAI_KYKK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
             End Select
         End If
         End With
     Next
+    
+    If LOAI_KYKK = "0" Then
+        LOAI_KYKK = "T"
+    Else
+        LOAI_KYKK = "Q"
+    End If
     
 '    ' To khai nay set trang thai de khong chuyen sang QLT
 '    If TAX_Utilities_Srv_New.isCheckPIT = True Then
@@ -697,9 +708,9 @@ On Error GoTo ErrHandle
     strSQL = strSQL & vTU_NGAY & "," & vDEN_NGAY & ","
     ' PIT
     If TAX_Utilities_Srv_New.isCheckPIT = True Then
-        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & strTTGui & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & Trim(vHINH_THUC_QT) & "," & Trim(vTKTHANG) & ")"
+        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & strTTGui & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & Trim(vHINH_THUC_QT) & "," & Trim(vTKTHANG) & ",'" & LOAI_KYKK & "')"
     Else
-        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & Trim(vHINH_THUC_QT) & "," & Trim(vTKTHANG) & ")"
+        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & Trim(vHINH_THUC_QT) & "," & Trim(vTKTHANG) & ",'" & LOAI_KYKK & "')"
     End If
     ' end PIT
     

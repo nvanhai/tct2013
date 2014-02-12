@@ -149,12 +149,12 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
 
             Do While Not rsPXL.EOF
                 .TypeComboBoxIndex = -1
-                .TypeComboBoxString = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
+                .TypeComboBoxString = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).value, TCVN, UNICODE)
                 i = i + 1
                 ReDim Preserve larrPhongXuLy(i)
-                larrPhongXuLy(i) = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
+                larrPhongXuLy(i) = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).value, TCVN, UNICODE)
                 ReDim Preserve larrid(i)
-                larrid(i) = rsPXL.Fields(0).Value
+                larrid(i) = rsPXL.Fields(0).value
                 rsPXL.MoveNext
             Loop
 
@@ -174,17 +174,22 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         i = 0
 
         Do
-            .GetText .ColLetterToNumber("AV"), .Row, varMaDM
+            '.GetText .ColLetterToNumber("AV"), .Row, varMaDM
+            .GetText .ColLetterToNumber("C"), .Row, varMaDM
 
             If Trim(varMaDM) <> vbNullString Then
-                '                    .SetText .ColLetterToNumber("C"), .Row, getTenDMNNKD(varMaDM)
+                '.SetText .ColLetterToNumber("C"), .Row, getTenDMNNKD(varMaDM)
                 .Col = .ColLetterToNumber("C")
-                .Text = getTenDMNNKD(varMaDM)
+                If (Trim(getTenDMNNKD(varMaDM)) <> "") Then
+                    .Text = getTenDMNNKD(varMaDM)
+                Else
+                    .Text = varMaDM
+                End If
                     
             End If
 
             i = i + 1
-            .Col = .ColLetterToNumber("C")
+            .Col = .ColLetterToNumber("B")
             .Row = 44 + i
         Loop Until .Text = "aa"
 
@@ -482,7 +487,7 @@ Public Function CheckValidData() As Boolean
     End With
 End Function
 
-Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date, Optional chkQuetBangKe As Boolean) As String
+Public Function GenerateSQL_Header(xmlDomData As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date, Optional chkQuetBangKe As Boolean) As String
     Dim xmlList As MSXML.IXMLDOMNodeList
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim xmlAttribute As MSXML.IXMLDOMAttribute
@@ -501,7 +506,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     
 On Error GoTo ErrHandle
     strSQL = strSQL_HDR
-    Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
+    Set xmlList = xmlDomData.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
         
@@ -710,7 +715,7 @@ End Sub
 Private Function getTenDMNNKD(maDM As Variant) As String
     Dim maDM1 As String
     Dim strDuongDanFile As String
-    Dim xmlDOMdata      As New MSXML.DOMDocument
+    Dim xmlDomData      As New MSXML.DOMDocument
     Dim xmlNodelist     As MSXML.IXMLDOMNodeList
     Dim xmlNode         As MSXML.IXMLDOMNode
     Dim arrStrName()    As String
@@ -721,9 +726,9 @@ Private Function getTenDMNNKD(maDM As Variant) As String
     strDuongDanFile = "..\InterfaceTemplates\xml\Catalogue_TyLeThue_TNDN.xml"
     
     strDuongDanFile = GetAbsolutePath(strDuongDanFile)
-    xmlDOMdata.Load (strDuongDanFile)
+    xmlDomData.Load (strDuongDanFile)
     getTenDMNNKD = ""
-    Set xmlNodelist = xmlDOMdata.getElementsByTagName("Item")
+    Set xmlNodelist = xmlDomData.getElementsByTagName("Item")
         For Each xmlNode In xmlNodelist
             If Left(GetAttribute(xmlNode, "Value"), 2) = maDM1 Then
                 arrStrName = Split(GetAttribute(xmlNode, "Value"), "###")

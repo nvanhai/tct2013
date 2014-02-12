@@ -360,6 +360,8 @@ Private isToKhaiCT As Boolean
 Private isTKDA30 As Boolean  ' kiem tra QLT da co tk theo mau cu chua
 
 Private isTKLanPS As Boolean
+
+
 Private ngayPS As String
 
 Private isToKhaiPsDaNhanTN As Boolean  ' Kiem tra cac to khai phat sinh da nhan trong ngay
@@ -4620,6 +4622,31 @@ On Error GoTo ErrHandle
             End If
         End If
         
+        ' To khai 04/GTGT
+        If Val(strID) = 71 Or Val(strID) = 72 Then
+            strTemp = Left$(strData, InStr(1, strData, "</S></S01>") + 9)
+            arrCT = Split(strTemp, "~")
+            If Trim(arrCT(UBound(arrCT))) <> "" And Left$(Trim(arrCT(UBound(arrCT))), 10) <> "</S></S01>" Then
+                ngayPS = Left$(Trim(arrCT(UBound(arrCT))), 10)
+                isTKLanPS = True
+            End If
+        End If
+        
+        'To khai 01/KK-TTS
+        If Val(strID) = 23 Then
+'            strTemp = Left$(strData, InStr(1, strData, "</S></S01>") + 9)
+'            arrCT = Split(strTemp, "~")
+'            strLoaiTemp = arrCT(UBound(arrCT) - 2)
+'            If (strLoaiTemp = "0") Then
+'                isTKThang = True
+'            End If
+            arrCT = Split(strData, "~")
+            If Trim(arrCT(1)) <> "" Then
+                TuNgay = Right$(arrCT(0), 7)
+                DenNgay = arrCT(1)
+                isTKThang = True
+            End If
+        End If
             
         If Not getSoTTTK(changeMaToKhai(strID), arrStrHeaderData) Then
             DisplayMessage "0079", msOKOnly, miCriticalError
