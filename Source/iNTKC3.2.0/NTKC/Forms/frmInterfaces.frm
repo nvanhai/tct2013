@@ -5852,7 +5852,8 @@ Private Function LoaiToKhai(ByVal strData As String) As Boolean
     Dim Tk04_GTGT() As String
     On Error GoTo ErrHandle
     
-    LoaiTk = Mid$(strData, 4, 2)
+    'xu ly rieng cho to 04/GTGT do chi tieu to khai thang quy khac vi tri so voi cac to khac
+    LoaiTk = Mid$(strData, 1, 2)
 
     If LoaiTk = "71" Then
         LoaiTk = Left$(strData, Len(strData) - 10)
