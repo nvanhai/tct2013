@@ -1139,11 +1139,17 @@ Private Sub CheckDynamicError()
                 
                 ' check ky hieu mau hoa don
                 If Trim(vKyHieuMauHoaDon) = "" And iWhiteRow = 0 Then
+                       If Trim(vMaHoaDon) = "TT120" Then
+                            .Col = .ColLetterToNumber("D")
+                            .CellNote = ""  'static
+                            .BackColor = mNonErrorColor
+                       Else
                             .Col = .ColLetterToNumber("D")
                             .CellNote = errEmty  'static
                             .BackColor = mErrorColor
                             iFlagEmty = 1
-                        Else
+                       End If
+                 Else
                             strLoai = getLoaiHD(CStr(vMaHoaDon))
                             result = CheckMauSoHD(CStr(vKyHieuMauHoaDon), strLoai, CStr(vMaHoaDon))
                             If result = "1" And iWhiteRow = 0 Then
@@ -1161,15 +1167,21 @@ Private Sub CheckDynamicError()
                                 .CellNote = ""  'static
                                 .BackColor = mNonErrorColor
                             End If
-                        End If
+                  End If
                         ' end
                 
                  'ky hieu
                 If Trim(vKyHieuHD) = "" And iWhiteRow = 0 Then
-                     .Col = .ColLetterToNumber("E")
-                     .CellNote = vErr
-                     .BackColor = mErrorColor
-                     iFlagvKyHieuHD = 1
+                    If Trim(vMaHoaDon) = "TT120" Then
+                        .Col = .ColLetterToNumber("E")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    Else
+                        .Col = .ColLetterToNumber("E")
+                        .CellNote = vErr
+                        .BackColor = mErrorColor
+                        iFlagvKyHieuHD = 1
+                    End If
                  Else
                      .Col = .ColLetterToNumber("E")
                      .CellNote = ""
