@@ -1344,11 +1344,11 @@ Public Function InsertDTL_PL1() As String
         STT2 = 0
         STTIN = "'I'"
         GHICHU = "''"
-        MAPL = "'PL01GTKT'"
+        MAPL = "'PL04GT'"
             
         sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & ",''"
                        
-        sSQL = "INSERT INTO TMP_P401" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        sSQL = "INSERT INTO TMP_P1" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
             
         i = 1
@@ -1432,11 +1432,14 @@ Public Function InsertDTL_PL1() As String
                 GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
             End If
                 
-            MAPL = "'PL01GTKT'"
+            MAPL = "'PL04GT'"
+            mact = "''"
+            STT2 = i
+            STTIN = "'" & i & "'"
                 
             sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                 
-            sSQL = "INSERT INTO TMP_P401" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+            sSQL = "INSERT INTO TMP_P1" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
                  
             If NGMUA <> "''" And NGAYPH <> "CTOD('')" Then
                 bln = clsDAO.ExecuteDLL(sSQL)
@@ -1462,7 +1465,7 @@ Public Function InsertDTL_PL1() As String
         STT2 = 0
         STTIN = "'II'"
         GHICHU = "''"
-        MAPL = "'PL01GTKT'"
+        MAPL = "'PL04GT'"
 
         For Each xmlNode In TAX_Utilities_Svr_New.NodeMessage
 
@@ -1475,7 +1478,7 @@ Public Function InsertDTL_PL1() As String
 
         sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & ",''"
                        
-        sSQL = "INSERT INTO TMP_P401" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        sSQL = "INSERT INTO TMP_P1" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
             
         i = 1
@@ -1550,11 +1553,14 @@ Public Function InsertDTL_PL1() As String
                 GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
             End If
                 
-            MAPL = "'PL01GTKT'"
+            MAPL = "'PL04GT'"
+            mact = "''"
+            STT2 = i
+            STTIN = "'" & i & "'"
                 
             sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                            
-            sSQL = "INSERT INTO TMP_P401" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+            sSQL = "INSERT INTO TMP_P1" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
                 
             If NGMUA <> "''" And NGAYPH <> "CTOD('')" Then
                 bln = clsDAO.ExecuteDLL(sSQL)
@@ -1590,11 +1596,11 @@ Public Function InsertDTL_PL1() As String
         STT2 = 0
         STTIN = "'III'"
         GHICHU = "''"
-        MAPL = "'PL01GTKT'"
+        MAPL = "'PL04GT'"
             
         sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & ",''"
                        
-        sSQL = "INSERT INTO TMP_P401" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        sSQL = "INSERT INTO TMP_P1" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
             
         i = 1
@@ -1669,11 +1675,14 @@ Public Function InsertDTL_PL1() As String
                 GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
             End If
                 
-            MAPL = "'PL01GTKT'"
-                
+            MAPL = "'PL04GT'"
+            mact = "''"
+            STT2 = i
+            STTIN = "'" & i & "'"
+            
             sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                            
-            sSQL = "INSERT INTO TMP_P401" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+            sSQL = "INSERT INTO TMP_P1" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
             If NGMUA <> "''" And NGAYPH <> "CTOD('')" Then
                 bln = clsDAO.ExecuteDLL(sSQL)
@@ -1709,11 +1718,11 @@ Public Function InsertDTL_PL1() As String
         STT2 = 0
         STTIN = "'IV'"
         GHICHU = "''"
-        MAPL = "'PL01GTKT'"
+        MAPL = "'PL04GT'"
             
         sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & ",''"
                        
-        sSQL = "INSERT INTO TMP_P401" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        sSQL = "INSERT INTO TMP_P1" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
             
         i = 1
@@ -1788,11 +1797,13 @@ Public Function InsertDTL_PL1() As String
                 GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
             End If
                 
-            MAPL = "'PL01GTKT'"
-                
+            MAPL = "'PL04GT'"
+            mact = "''"
+            STT2 = i
+            STTIN = "'" & i & "'"
             sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                            
-            sSQL = "INSERT INTO TMP_P401" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+            sSQL = "INSERT INTO TMP_P1" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
             If NGMUA <> "''" And NGAYPH <> "CTOD('')" Then
                 bln = clsDAO.ExecuteDLL(sSQL)
@@ -1823,16 +1834,16 @@ Public Function InsertDTL_PL1() As String
         DSOCHUA = 0
         THUESUAT = 0
         THUEGTGT = 0
-        mact = "''"
-        STT = 0
+        mact = "'5000'"
+        STT = 5
         STT2 = 0
         STTIN = "'V'"
         GHICHU = "''"
-        MAPL = "'PL01GTKT'"
+        MAPL = "'PL04GT'"
             
         sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & ",''"
                        
-        sSQL = "INSERT INTO TMP_P401" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        sSQL = "INSERT INTO TMP_P1" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
             
         i = 1
@@ -1908,11 +1919,13 @@ Public Function InsertDTL_PL1() As String
                 GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
             End If
                 
-            MAPL = "'PL01GTKT'"
-                
+            MAPL = "'PL04GT'"
+            mact = "''"
+            STT2 = i
+            STTIN = "'" & i & "'"
             sSQLVal = matkhai & "," & kylbo & "," & kykkhai & "," & madtnt & "," & tthtk & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                            
-            sSQL = "INSERT INTO TMP_P401" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+            sSQL = "INSERT INTO TMP_P1" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
             If NGMUA <> "''" And NGAYPH <> "CTOD('')" Then
                 bln = clsDAO.ExecuteDLL(sSQL)
@@ -2225,7 +2238,7 @@ Public Function TKTT() As Boolean
     strFileNameHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_TK" & sKyKeKhai & ".DBF"
     strFileNameDTL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_GT04" & sKyKeKhai & ".DBF"
     strFileNameBS = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_BS" & sKyKeKhai & ".DBF"
-    strFileNamePL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_P401" & sKyKeKhai & ".DBF"
+    strFileNamePL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_P1" & sKyKeKhai & ".DBF"
     'file HDR
     If fso.FileExists(strFileNameHDR) = False Then
         Dim strTepmauHDR As String
@@ -2242,7 +2255,7 @@ Public Function TKTT() As Boolean
         'file phu luc
     If fso.FileExists(strFileNamePL) = False Then
         Dim strTepmauPL As String
-        strTepmauPL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "\tepmau\TMP_P401.DBF"
+        strTepmauPL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "\tepmau\TMP_P1.DBF"
         fso.CopyFile strTepmauPL, strFileNamePL, False
     End If
     'file bo xung
