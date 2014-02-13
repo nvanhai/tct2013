@@ -1478,18 +1478,18 @@ Private Sub Command1_Click()
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
     
     '--04/GTGT lan phat sinh
-'    str2 = "aa320712300249979   01201400100100100101/0101/01/1900<S01><S></S><S>3210000~1000000~10000~2000000~100000~3000000~90000~5000000~100000~11000000~300000~14210000~300000</S><S>~Nguy‘n H≠¨ng~~13/02/2014~1~~~2~13/02/2014</S></S01>"
-'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+    str2 = "aa320712300249979   01201400100100100101/0101/01/1900<S01><S></S><S>3210000~1000000~10000~2000000~100000~3000000~90000~5000000~100000~11000000~300000~14210000~300000</S><S>~Nguy‘n H≠¨ng~~13/02/2014~1~~~2~13/02/2014</S></S01>"
+    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
     
     '--test truong hop: Chan khbs cua to khai lan phat sinh
     'to khai
 'str2 = "aaa320722300249979   01201400200300100101/0114/06/2006<S01><S></S><S>10000~20000~100~400~500</S><S>~Nguy‘n H≠¨ng~~13/02/2014~1~~~1~13/01/2014</S></S01>"
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
     'bs
-str2 = "bs320722300249979   01201400300300100201/0114/06/2006<S01><S></S><S>222000~20000~2220~400~2620</S><S>~Nguy‘n H≠¨ng~~13/02/2014~~1~1~1~13/01/2014</S></S01>"
-Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-str2 = "bs320722300249979   012014003003002002<SKHBS><S>SË thu’ tπm t›nh ph∂i nÈp k˙ nµy cÒa Hµng h„a, dﬁch vÙ chﬁu thu’ 5%~25~100~2220~2120</S><S>~~0~0~0</S><S>13/02/2014~0~0~0~~~~~0~0~~0~0~2120</S></SKHBS>"
-Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "bs320722300249979   01201400300300100201/0114/06/2006<S01><S></S><S>222000~20000~2220~400~2620</S><S>~Nguy‘n H≠¨ng~~13/02/2014~~1~1~1~13/01/2014</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "bs320722300249979   012014003003002002<SKHBS><S>SË thu’ tπm t›nh ph∂i nÈp k˙ nµy cÒa Hµng h„a, dﬁch vÙ chﬁu thu’ 5%~25~100~2220~2120</S><S>~~0~0~0</S><S>13/02/2014~0~0~0~~~~~0~0~~0~0~2120</S></SKHBS>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 
 End Sub
