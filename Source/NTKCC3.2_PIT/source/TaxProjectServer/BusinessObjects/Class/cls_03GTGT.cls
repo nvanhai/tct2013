@@ -231,10 +231,10 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .GetText .ColLetterToNumber("L"), 61, LoaiKyKK
 
         If LoaiKyKK = "0" Then
-            LOAI_TO_KHAI = "03/GTGT_VB"
+            LOAI_TO_KHAI = "03/GTGT"
             isTkQuy = False
         Else
-            LOAI_TO_KHAI = "03Q/GTGT_VB"
+            LOAI_TO_KHAI = "03Q/GTGT"
             isTkQuy = True
         End If
 
