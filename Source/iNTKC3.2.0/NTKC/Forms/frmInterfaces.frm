@@ -2168,14 +2168,170 @@ On Error GoTo ErrHandle
             End If
         End If
         
+        '--chan doi voi cac to khai bo sung cua lan phat sinh: y/c ngay 13/02/2014----------------
+        Dim tmp_str    As String
+        Dim tkps_spl() As String
+        
+        '04/GTGT
+        If Val(Mid$(strBarcode, 4, 2)) = 71 And UCase(strLoaiToKhai) = "BS" Then
+            tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
+            tkps_spl = Split(tmp_str, "~")
+
+            If tkps_spl(UBound(tkps_spl) - 1) = "2" Then
+	    	If isIHTKK = True Then
+                       bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "45")
+                       isIHTKK = False
+                       Unload Me
+                       Exit Sub
+                Else
+                	DisplayMessage "0134", msOKOnly, miCriticalError
+	                Exit Sub
+		end if
+            End If
+        End If
+        
+        '05/GTGT
+        If Val(Mid$(strBarcode, 4, 2)) = 72 And UCase(strLoaiToKhai) = "BS" Then
+            tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
+            tkps_spl = Split(tmp_str, "~")
+
+            If tkps_spl(UBound(tkps_spl) - 1) = "1" Then
+                If isIHTKK = True Then
+                       bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "45")
+                       isIHTKK = False
+                       Unload Me
+                       Exit Sub
+                Else
+                	DisplayMessage "0134", msOKOnly, miCriticalError
+	                Exit Sub
+		end if
+
+            End If
+        End If
+        
+        '02/TNDN
+        If Val(Mid$(strBarcode, 4, 2)) = 73 And UCase(strLoaiToKhai) = "BS" Then
+            tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S02>", vbTextCompare) + 5)
+            tkps_spl = Split(tmp_str, "~")
+
+            If tkps_spl(UBound(tkps_spl) - 15) = "1" Then
+                If isIHTKK = True Then
+                       bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "45")
+                       isIHTKK = False
+                       Unload Me
+                       Exit Sub
+                Else
+                	DisplayMessage "0134", msOKOnly, miCriticalError
+	                Exit Sub
+		end if
+
+            End If
+        End If
+        
+        '01/NTNN
+        If Val(Mid$(strBarcode, 4, 2)) = 70 And UCase(strLoaiToKhai) = "BS" Then
+            tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
+            tkps_spl = Split(tmp_str, "~")
+
+            If Left$(tkps_spl(UBound(tkps_spl) - 7), 1) = "X" Then
+                If isIHTKK = True Then
+                       bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "45")
+                       isIHTKK = False
+                       Unload Me
+                       Exit Sub
+                Else
+                	DisplayMessage "0134", msOKOnly, miCriticalError
+	                Exit Sub
+		end if
+
+            End If
+        End If
+        
+        '03/NTNN
+        If Val(Mid$(strBarcode, 4, 2)) = 81 And UCase(strLoaiToKhai) = "BS" Then
+            tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
+            tkps_spl = Split(tmp_str, "~")
+
+            If Left$(tkps_spl(UBound(tkps_spl) - 7), 1) = "1" Then
+                If isIHTKK = True Then
+                       bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "45")
+                       isIHTKK = False
+                       Unload Me
+                       Exit Sub
+                Else
+                	DisplayMessage "0134", msOKOnly, miCriticalError
+	                Exit Sub
+		end if
+
+            End If
+        End If
+        
+        '01/TAIN
+        If Val(Mid$(strBarcode, 4, 2)) = 6 And UCase(strLoaiToKhai) = "BS" Then
+            tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
+            tkps_spl = Split(tmp_str, "~")
+
+            If tkps_spl(UBound(tkps_spl) - 1) = "1" Then
+                If isIHTKK = True Then
+                       bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "45")
+                       isIHTKK = False
+                       Unload Me
+                       Exit Sub
+                Else
+                	DisplayMessage "0134", msOKOnly, miCriticalError
+	                Exit Sub
+		end if
+
+            End If
+        End If
+        
+        '01/TTDB
+        If Val(Mid$(strBarcode, 4, 2)) = 5 And UCase(strLoaiToKhai) = "BS" Then
+            tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
+            tkps_spl = Split(tmp_str, "~")
+
+            If Len(tkps_spl(UBound(tkps_spl) - 1)) > 0 Then
+                If isIHTKK = True Then
+                       bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "45")
+                       isIHTKK = False
+                       Unload Me
+                       Exit Sub
+                Else
+                	DisplayMessage "0134", msOKOnly, miCriticalError
+	                Exit Sub
+		end if
+
+            End If
+        End If
+        
+        '01/TBVMT
+        If Val(Mid$(strBarcode, 4, 2)) = 90 And UCase(strLoaiToKhai) = "BS" Then
+            tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
+            tkps_spl = Split(tmp_str, "~")
+
+            If tkps_spl(UBound(tkps_spl) - 1) = "1" Then
+	    	' to khai bo sung lan phat sinh QLT chua nhan
+                If isIHTKK = True Then
+                       bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "45")
+                       isIHTKK = False
+                       Unload Me
+                       Exit Sub
+                Else
+                	DisplayMessage "0134", msOKOnly, miCriticalError
+	                Exit Sub
+		end if
+
+            End If
+        End If
+        '--end chan to phat sinh----------------
         'khong nhan cac to khai khong theo mau HTKK3.2.0
         IdToKhai = Mid(strPrefix, 4, 2)
         'If (Val(Left$(strPrefix, 3)) <= 317 And UCase(strLoaiToKhai) = "AA") Then
         If (Val(Left$(strPrefix, 3)) <= 317) Then
-            If Trim(IdToKhai) = "01" Or Trim(IdToKhai) = "02" Or Trim(IdToKhai) = "04" Or Trim(IdToKhai) = "11" Or Trim(IdToKhai) = "12" Or Trim(IdToKhai) = "71" _
-            Or Trim(IdToKhai) = "72" Or Trim(IdToKhai) = "06" Or Trim(IdToKhai) = "90" Or Trim(IdToKhai) = "25" Or Trim(IdToKhai) = "50" Or Trim(IdToKhai) = "51" Or Trim(IdToKhai) = "19" _
-            Or Trim(IdToKhai) = "22" Or Trim(IdToKhai) = "15" Or Trim(IdToKhai) = "16" Or Trim(IdToKhai) = "36" Or Trim(IdToKhai) = "74" Then
-                If IdToKhai = "72" Then '05/GTGT
+            If Trim(idToKhai) = "01" Or Trim(idToKhai) = "02" Or Trim(idToKhai) = "04" Or Trim(idToKhai) = "11" Or Trim(idToKhai) = "12" Or Trim(idToKhai) = "71" _
+            Or Trim(idToKhai) = "72" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "90" Or Trim(idToKhai) = "25" Or Trim(idToKhai) = "50" Or Trim(idToKhai) = "51" Or Trim(idToKhai) = "19" _
+            Or Trim(idToKhai) = "22" Or Trim(idToKhai) = "15" Or Trim(idToKhai) = "16" Or Trim(idToKhai) = "36" Or Trim(idToKhai) = "74" Or Trim(idToKhai) = "73" Or Trim(idToKhai) = "75" Then
+                If idToKhai = "72" Then '05/GTGT
                     'xu ly voi to khai cau truc khong thay doi thi van cho nhan: 05/GTGT
                     strBarcode = Replace(strBarcode, "</S></S01>", "~~</S></S01>")
                 Else

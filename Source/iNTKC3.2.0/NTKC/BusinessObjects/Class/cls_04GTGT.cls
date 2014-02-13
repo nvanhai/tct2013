@@ -545,7 +545,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
     Dim vItkhai_ID, vHTHUC_NOP As String
-    Dim LOAI_KYKK As String
+    Dim LOAI_KYKK As String, isPhatSinh As Boolean
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC, vNGANH_NGHE_KD, vTO_KHAI_LAN_PS, vNGAY_PS As Variant
     
 On Error GoTo ErrHandle
@@ -599,12 +599,19 @@ On Error GoTo ErrHandle
         vHTHUC_NOP = "null"
     End If
     ' end
+   isPhatSinh = False
+    ' ngay phat sinh
+    With fps
+        .Sheet = 1
+        .GetText .ColLetterToNumber(NGAY_PS_COL), NGAY_PS_ROW, vNGAY_PS
+    End With
     If LOAI_KYKK = "0" Then
         LOAI_KYKK = "T"
     ElseIf LOAI_KYKK = "1" Then
         LOAI_KYKK = "Q"
-    Else
-        LOAI_KYKK = ""
+    ElseIf LOAI_KYKK = "2" Then
+        LOAI_KYKK = "" 'lan phat sinh de rong
+        isPhatSinh = True
     End If
 
 
@@ -647,6 +654,11 @@ On Error GoTo ErrHandle
             dDate = DateAdd("d", -1, dDate)
             strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
         End If
+    ElseIf LOAI_KYKK = "" And isPhatSinh = True Then
+            strSQL = strSQL & "To_date('" & Format(vNGAY_PS, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+            'dDate = DateAdd("m", 1, dDate)
+            'dDate = DateAdd("d", -1, dDate)
+            strSQL = strSQL & "To_date('" & Format(vNGAY_PS, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     End If
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
@@ -692,8 +704,6 @@ On Error GoTo ErrHandle
         End If
 
         vNGANH_NGHE_KD = "null"
-        ' ngay phat sinh
-        .GetText .ColLetterToNumber(NGAY_PS_COL), NGAY_PS_ROW, vNGAY_PS
         If Trim(vNGAY_PS) = "" Or vNGAY_PS = vbNullString Then
             vNGAY_PS = "null"
             vTO_KHAI_LAN_PS = "null"
