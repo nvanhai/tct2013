@@ -531,7 +531,7 @@ Public Function CheckValidData() As Boolean
     End With
 End Function
 
-Public Function GenerateSQL_Header(xmlDomData As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
+Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
     Dim xmlList As MSXML.IXMLDOMNodeList
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim xmlAttribute As MSXML.IXMLDOMAttribute
@@ -544,13 +544,13 @@ Public Function GenerateSQL_Header(xmlDomData As MSXML.DOMDocument, strSQL_HDR A
     Dim vPHONG_XU_LY
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
-    Dim LOAI_KYKK As String
+    Dim LOAI_KYKK As String, isPhatSinh As Boolean, arrTmp() As String
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC, vNGANH_NGHE_KD, vTO_KHAI_LAN_PS, vNGAY_PS As Variant
 
     
 On Error GoTo ErrHandle
     strSQL = Replace$(strSQL_HDR, ")", ",LOAI_KYKK)")
-    Set xmlList = xmlDomData.getElementsByTagName("Cell")
+    Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
         
@@ -589,12 +589,19 @@ On Error GoTo ErrHandle
         End If
         End With
     Next
+    isPhatSinh = False
+    ' ngay phat sinh
+    With fps
+        .Sheet = 1
+        .GetText .ColLetterToNumber(NGAY_PS_COL), NGAY_PS_ROW, vNGAY_PS
+    End With
     If LOAI_KYKK = "0" Then
         LOAI_KYKK = "T"
     ElseIf LOAI_KYKK = "1" Then
         LOAI_KYKK = "Q"
-    Else
-        LOAI_KYKK = ""
+    ElseIf LOAI_KYKK = "2" Then
+        LOAI_KYKK = "" 'lan phat sinh de rong
+        isPhatSinh = True
     End If
     
     strSQL = strSQL & "'" & vHdrID & "',"
@@ -627,7 +634,7 @@ On Error GoTo ErrHandle
             dDate = DateAdd("d", -1, dDate)
             strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
         End If
-    Else
+    ElseIf LOAI_KYKK = "T" Then
         If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
             'Ngay dau ky ke khai va ngay cuoi ky ke khai
             dDate = dNgayDauKy
@@ -636,6 +643,13 @@ On Error GoTo ErrHandle
             dDate = DateAdd("d", -1, dDate)
             strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
         End If
+    ElseIf LOAI_KYKK = "" And isPhatSinh = True Then
+            arrTmp = Split(vNGAY_PS, "/")
+            dDate = ToDate("01/" + arrTmp(1) + "/" + arrTmp(2), "DD/MM/YYYY")
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+            dDate = DateAdd("m", 1, dDate)
+            dDate = DateAdd("d", -1, dDate)
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     End If
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
@@ -681,8 +695,6 @@ On Error GoTo ErrHandle
         End If
 
         vNGANH_NGHE_KD = "null"
-        ' ngay phat sinh
-        .GetText .ColLetterToNumber(NGAY_PS_COL), NGAY_PS_ROW, vNGAY_PS
         If Trim(vNGAY_PS) = "" Or vNGAY_PS = vbNullString Then
             vNGAY_PS = "null"
             vTO_KHAI_LAN_PS = "null"
