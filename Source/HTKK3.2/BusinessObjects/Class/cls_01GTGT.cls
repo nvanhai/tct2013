@@ -1202,10 +1202,16 @@ Private Sub CheckDynamicError()
                     Case "1", "2", "3", "4", "5"
                         ' kiem tra ky hieu mau HD
                         If Trim(vKyHieuMauHoaDon) = "" And iWhiteRow = 0 Then
-                            .Col = .ColLetterToNumber("D")
-                            .CellNote = errEmty  'static
-                            .BackColor = mErrorColor
-                            iFlagEmty = 1
+                            If Trim(vMaHoaDon) = "TT120" Then
+                                .Col = .ColLetterToNumber("D")
+                                .CellNote = ""
+                                .BackColor = mNonErrorColor
+                            Else
+                                .Col = .ColLetterToNumber("D")
+                                .CellNote = errEmty  'static
+                                .BackColor = mErrorColor
+                                iFlagEmty = 1
+                            End If
                         Else
                             strLoai = getLoaiHD(CStr(vMaHoaDon))
                             result = CheckMauSoHD(CStr(vKyHieuMauHoaDon), strLoai, CStr(vMaHoaDon))
@@ -1228,11 +1234,16 @@ Private Sub CheckDynamicError()
                         ' end
                     
                         If Trim(vKyHieuHD) = "" And iWhiteRow = 0 Then
-                            .Col = .ColLetterToNumber("E")
-                            .CellNote = vErrMsgKyHieuHD  'static
-                            .BackColor = mErrorColor
-                            iFlagvKyHieuHD = 1
-                            
+                            If Trim(vMaHoaDon) = "TT120" Then
+                                .Col = .ColLetterToNumber("E")
+                                .CellNote = ""  'static
+                                .BackColor = mNonErrorColor
+                            Else
+                                .Col = .ColLetterToNumber("E")
+                                .CellNote = vErrMsgKyHieuHD  'static
+                                .BackColor = mErrorColor
+                                iFlagvKyHieuHD = 1
+                            End If
                             'capture the first error cell
     '                        If iFocusFlag = 0 Then
     '                            strFocusSheetName = "'" & .SheetName & "'"
@@ -1612,10 +1623,16 @@ Private Sub CheckDynamicError()
                     Case "1", "2", "3", "4", "5"
                         ' kiem tra ky hieu mau HD
                         If Trim(vKyHieuMauHoaDon) = "" And iWhiteRow = 0 Then
-                            .Col = .ColLetterToNumber("D")
-                            .CellNote = errEmty  'static
-                            .BackColor = mErrorColor
-                            iFlagEmty = 1
+                            If Trim(vMaHoaDon) = "TT120" Then
+                                .Col = .ColLetterToNumber("D")
+                                .CellNote = ""  'static
+                                .BackColor = mNonErrorColor
+                            Else
+                                .Col = .ColLetterToNumber("D")
+                                .CellNote = errEmty  'static
+                                .BackColor = mErrorColor
+                                iFlagEmty = 1
+                            End If
                         Else
                             strLoai = getLoaiHD(CStr(vMaHoaDon))
                             result = CheckMauSoHD(CStr(vKyHieuMauHoaDon), strLoai, CStr(vMaHoaDon))
@@ -1639,11 +1656,16 @@ Private Sub CheckDynamicError()
                     
                     
                         If Trim(vKyHieuHD) = "" And iWhiteRow = 0 Then
-                            .Col = .ColLetterToNumber("E")
-                            .CellNote = vErrMsgKyHieuHD  'static
-                            .BackColor = mErrorColor
-                            iFlagvKyHieuHD = 1
-                            
+                            If Trim(vMaHoaDon) = "TT120" Then
+                                 .Col = .ColLetterToNumber("E")
+                                .CellNote = ""
+                                .BackColor = mNonErrorColor
+                            Else
+                                .Col = .ColLetterToNumber("E")
+                                .CellNote = vErrMsgKyHieuHD  'static
+                                .BackColor = mErrorColor
+                                iFlagvKyHieuHD = 1
+                            End If
                             'capture the first error cell
     '                        If iFocusFlag = 0 Then
     '                            strFocusSheetName = "'" & .SheetName & "'"
