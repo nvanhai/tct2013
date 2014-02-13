@@ -297,6 +297,7 @@
 	<Menu ID="73" ParentID="101" Caption="Tờ khai thuế TNDN (02/TNDN)" FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tndn.bmp" FileName="" DirFile="\NTK_TG\">
 		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\02_TNDN.xls" ReportTemplate="..\ReportTemplates\02_TNDN.xls" Class="Tax_Business_Svr_New.cls_02TNDN">
 			<Sheet ID="02" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="02_TNDN" Ini="..\Ini\02_TNDN.xml"/>
+			<Sheet ID="02-1" Caption="02-1/TNDN" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="02_1_TNDN" Ini="..\Ini\02_1_TNDN.xml" />
 			<Sheet ID="KHBS" Caption="KHBS" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="KHBS_02_TNDN" Ini="..\Ini\KHBS_02_TNDN.xml"/>
 		</Validity>
 	</Menu>
