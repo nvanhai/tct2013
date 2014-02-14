@@ -146,7 +146,7 @@
 	<Infor ID="0147" Msg="Không nhận tờ khai TNCN có kỳ kê khai nhỏ hơn Quý 3/2011"/>
 	<Infor ID="0148" Msg="Bạn chưa có tờ khai chính thức."/>
 	<Infor ID="0149" Msg="Dữ liệu không hợp lệ."/>
-	<Infor ID="0150" Msg="Không nhận tờ khai TNCN có kỳ kê khai nhỏ hơn tháng 7/2011"/>
+	<Infor ID="0150" Msg="Không nhận tờ khai TNCN có kỳ kê khai nhỏ hơn tháng 1/2014 hoặc Quý 1/2014"/>
 	<Infor ID="0151" Msg="Kỳ lập bộ không được lớn hơn kỳ hiện tại."/>
 
 	<Infor ID="0152" Msg="Thông báo phát hành hóa đơn"/>
