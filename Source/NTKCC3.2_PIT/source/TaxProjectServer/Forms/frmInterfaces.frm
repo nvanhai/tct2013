@@ -2164,7 +2164,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
             DisplayMessage "0169", msOKOnly, miCriticalError
             Exit Sub
 
-        'Xu ly chan to khai bo sung doi voi to 01/TTS
+            'Xu ly chan to khai bo sung doi voi to 01/TTS
         ElseIf Mid$(strBarcode, 4, 2) = "23" Then
 
             If InStr(1, strBarcode, "<S01>", vbTextCompare) > 0 Then
@@ -2238,17 +2238,6 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 End If
             End If
         
-            '02/TNDN
-            If Val(Mid$(strBarcode, 4, 2)) = 73 And LoaiTk = "TKBS" Then
-                tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S02>", vbTextCompare) + 5)
-                tkps_spl = Split(tmp_str, "~")
-
-                If tkps_spl(UBound(tkps_spl) - 15) = "1" Then
-                    DisplayMessage "0170", msOKOnly, miCriticalError
-                    Exit Sub
-                End If
-            End If
-        
             '01/NTNN
             If Val(Mid$(strBarcode, 4, 2)) = 70 And LoaiTk = "TKBS" Then
                 tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
@@ -2304,7 +2293,21 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 End If
             End If
 
+        ElseIf InStr(1, strBarcode, "</S02>", vbTextCompare) > 0 Then
+
+            '02/TNDN
+            If Val(Mid$(strBarcode, 4, 2)) = 73 And LoaiTk = "TKBS" Then
+                tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S02>", vbTextCompare) + 5)
+                tkps_spl = Split(tmp_str, "~")
+
+                If tkps_spl(UBound(tkps_spl) - 15) = "1" Then
+                    DisplayMessage "0170", msOKOnly, miCriticalError
+                    Exit Sub
+                End If
+            End If
         End If
+
+        'End chan to khai phat sinh
         
         strPrefix = Left$(strBarcode, 36)
         strBarcodeCount = Right$(strPrefix, 6)
