@@ -719,19 +719,19 @@ Private Sub cmdSave_Click()
     If TAX_Utilities_Svr_New.isCheckPIT = True Then
         menuId = Val(GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ID"))
 
-        If menuId = 46 Or menuId = 48 Or menuId = 15 Or menuId = 50 Or menuId = 36 Then
-            If TAX_Utilities_Svr_New.Year <= 2011 And TAX_Utilities_Svr_New.Month < 7 Then
+        If menuId = 46 Or menuId = 48 Or menuId = 15 Or menuId = 50 Or menuId = 36 Or menuId = 47 Or menuId = 49 Or menuId = 16 Or menuId = 51 Or menuId = 23 Or menuId = 25 Then
+            If TAX_Utilities_Svr_New.Year <= 2014 Then
                 MessageBox "0150", msOKOnly, miWarning
                 Exit Sub
             End If
         End If
 
-        If menuId = 47 Or menuId = 49 Or menuId = 16 Or menuId = 51 Then
-            If TAX_Utilities_Svr_New.Year <= 2011 And TAX_Utilities_Svr_New.ThreeMonths < 3 Then
-                MessageBox "0147", msOKOnly, miWarning
-                Exit Sub
-            End If
-        End If
+'        If menuId = 47 Or menuId = 49 Or menuId = 16 Or menuId = 51 Then
+'            If TAX_Utilities_Svr_New.Year <= 2011 And TAX_Utilities_Svr_New.ThreeMonths < 3 Then
+'                MessageBox "0147", msOKOnly, miWarning
+'                Exit Sub
+'            End If
+'        End If
                 
         '16/12/2011 dntai: check 2 truong hop ke khai cua to 08_TNCN va 08A_TNCN
         If menuId = 74 Or menuId = 75 Then
