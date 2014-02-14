@@ -720,18 +720,37 @@ Private Sub cmdSave_Click()
         menuId = Val(GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ID"))
 
         If menuId = 46 Or menuId = 48 Or menuId = 15 Or menuId = 50 Or menuId = 36 Or menuId = 47 Or menuId = 49 Or menuId = 16 Or menuId = 51 Or menuId = 23 Or menuId = 25 Then
-            If TAX_Utilities_Svr_New.Year <= 2014 Then
+
+            'Xu ly chan to khai bo sung doi voi to 01/TTS
+            If menuId = 23 Then
+
+                fpSpread1.Sheet = 1
+                fpSpread1.Col = fpSpread1.ColLetterToNumber("P")
+                fpSpread1.Row = 3
+
+                If Len(fpSpread1.Text) > 4 Then
+                    If Val(Right$(fpSpread1.Text, 4)) < 2014 Then
+                        MessageBox "0150", msOKOnly, miWarning
+                        Exit Sub
+                    End If
+
+                ElseIf TAX_Utilities_Svr_New.Year < 2014 Then
+                    MessageBox "0150", msOKOnly, miWarning
+                    Exit Sub
+                End If
+
+            ElseIf TAX_Utilities_Svr_New.Year < 2014 Then
                 MessageBox "0150", msOKOnly, miWarning
                 Exit Sub
             End If
         End If
 
-'        If menuId = 47 Or menuId = 49 Or menuId = 16 Or menuId = 51 Then
-'            If TAX_Utilities_Svr_New.Year <= 2011 And TAX_Utilities_Svr_New.ThreeMonths < 3 Then
-'                MessageBox "0147", msOKOnly, miWarning
-'                Exit Sub
-'            End If
-'        End If
+        '        If menuId = 47 Or menuId = 49 Or menuId = 16 Or menuId = 51 Then
+        '            If TAX_Utilities_Svr_New.Year <= 2011 And TAX_Utilities_Svr_New.ThreeMonths < 3 Then
+        '                MessageBox "0147", msOKOnly, miWarning
+        '                Exit Sub
+        '            End If
+        '        End If
                 
         '16/12/2011 dntai: check 2 truong hop ke khai cua to 08_TNCN va 08A_TNCN
         If menuId = 74 Or menuId = 75 Then
@@ -1817,9 +1836,9 @@ Private Sub Command1_Click()
 'str2 = "aa320758118111083   0120140010010020025084~491784916~nguyen van b~8118111083~50~1490000000~1000000~0~1490000000~491950000~165084~491784916</S><S>~10/02/2014~~~1~</S></S01>"
 'Barcode_Scaned str2
 '
-str2 = "bs320238118111083   01201400100100100201/0101/01/1900<S01><S></S><S>~~123~01/01/2014~101010~12000000~10000000~2000000~5~600000~5~600000~10000~200~2000000</S><S>nguyen van a~6868686868~5"
+str2 = "aa320238118111083   01201300100100100201/0101/01/1900<S01><S></S><S>01/2014~02/2014~123~01/01/2014~101010~12000000~10000000~2000000~5~600000~5~600000~10000~200~2000000</S><S>nguyen van a~6868686868~5"
 Barcode_Scaned str2
-str2 = "bs320238118111083   0120140010010020020~300000~300000~5000~0~300000~5~0~5~nguyen van b~8118111083~50~300000~300000~5000~0~300000~15000~125~14875</S><S>~~~10/02/2014~1~1~~1~~</S></S01>"
+str2 = "aa320238118111083   0120130010010020020~300000~300000~5000~0~300000~5~0~5~nguyen van b~8118111083~50~300000~300000~5000~0~300000~15000~125~14875</S><S>~~~10/02/2014~1~1~~1~~</S></S01>"
 Barcode_Scaned str2
 
 'str2 = "aa320738118111083   04201300400400100301/0114/06/2006<S02><S></S><S>15000000~12000000~4000000~3000000~2000000~1000000~1000000~1000000~3000000~0~3000000~22~"
@@ -2165,7 +2184,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
             Exit Sub
 
             'Xu ly chan to khai bo sung doi voi to 01/TTS
-        ElseIf Mid$(strBarcode, 4, 2) = "23" Then
+        ElseIf Mid$(strBarcode, 4, 2) = "23" And LoaiTk = "TKBS" Then
 
             If InStr(1, strBarcode, "<S01>", vbTextCompare) > 0 Then
                 tkps_spl = Split(strBarcode, "~")
