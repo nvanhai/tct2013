@@ -596,21 +596,22 @@ Private Sub cmdSave_Click()
     End If
 
     ' End
-    ' Cac to khai PIT se khong nhan to khai co ky ke khai < thang 7 hoac quy 3
+    ' Cac to khai PIT se khong nhan to khai co ky ke khai <01/2014 ho?c <I/2014 (V 3.2.0): add BHDC-25,TTS-23
     If TAX_Utilities_Srv_New.isCheckPIT = True Then
-        If idToKhai = 46 Or idToKhai = 48 Or idToKhai = 15 Or idToKhai = 50 Or idToKhai = 36 Then
-            If TAX_Utilities_Srv_New.Year < 2011 Or (TAX_Utilities_Srv_New.Year = 2011 And TAX_Utilities_Srv_New.Month < 7) Then
+        If idToKhai = 46 Or idToKhai = 48 Or idToKhai = 15 Or idToKhai = 50 Or idToKhai = 36 Or idToKhai = 25 Or idToKhai = 23 _
+        Or idToKhai = 47 Or idToKhai = 49 Or idToKhai = 16 Or idToKhai = 51 Or (idToKhai = 74 And isTKThang = False) Or (idToKhai = 75 And isTKThang = False) Then
+            If TAX_Utilities_Srv_New.Year < 2014 Then
                 MessageBox "0118", msOKOnly, miWarning
                 Exit Sub
             End If
         End If
 
-        If idToKhai = 47 Or idToKhai = 49 Or idToKhai = 16 Or idToKhai = 51 Or (idToKhai = 74 And isTKThang = False) Or (idToKhai = 75 And isTKThang = False) Then
-            If TAX_Utilities_Srv_New.Year < 2011 Or (TAX_Utilities_Srv_New.Year = 2011 And TAX_Utilities_Srv_New.ThreeMonths < 3) Then
-                MessageBox "0119", msOKOnly, miWarning
-                Exit Sub
-            End If
-        End If
+'        If idToKhai = 47 Or idToKhai = 49 Or idToKhai = 16 Or idToKhai = 51 Or (idToKhai = 74 And isTKThang = False) Or (idToKhai = 75 And isTKThang = False) Then
+'            If TAX_Utilities_Srv_New.Year < 2014 Then
+'                MessageBox "0119", msOKOnly, miWarning
+'                Exit Sub
+'            End If
+'        End If
             
         'If ((idToKhai = 74 Or idToKhai = 75) And isTKThang = True) Then
 '        If ((idToKhai = 75) And isTKThang = True) Then
@@ -1444,6 +1445,18 @@ Private Sub Command1_Click()
 'str2 = "aa320012300100778   012014002003012012<S01_7><S>Toyota~Chi’c~1000~20000000~</S><S>lead~Chi’c~200~3000000~</S></S01_7>"
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
+    '--01/GTGT check chan to khai bo sung
+str2 = "aa320012300532898   04201300300400100101/0114/06/2006<S01><S></S><S>0~800000~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~800000~0~800000</S><S>~~kh∏nh linh~23/05/2014~1~~~1701~~~0</S></S01>"
+Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+    
+'str2 = "bs320012300532898   04201300300300100301/0114/06/2006<S01><S></S><S>0~0~0~50000~10000~0~900000~110000~0~400000~50000~500000~60000~900000~110000~100000~0~0~0~100000~0~100000~0~0~0</S><S>~~kh∏nh linh~23/05/2014~~1~1~1701~x~01~0</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "bs320012300532898   042013003003002003<SKHBS><S>Hµng ho∏, dﬁch vÙ b∏n ra chﬁu thu’ su t 5%~31~0~50000~50000~Hµng ho∏, dﬁch vÙ b∏n ra chﬁu thu’ su t 10%~33~0~60000~60000</S><S>TÊng sË thu’"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "bs320012300532898   042013003003003003 GTGT  Æ≠Óc kh u trı k˙ nµy~25~0~10000~10000</S><S>14/02/2014~386~19300~456~lh/056~23/04/2014~10300~10301~21~400~~0~100000~100000~0~0~0</S></SKHBS>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+    
+
     '--02/GTGT
 'str2 = "aa320022300100778   01201400300400100201/0114/06/2006<S01><S></S><S>12000000~100~30000~2500~10~12~2~22~2490~10~12002580~2000~200~2000~11998380</S><S>~Minh NhÀt~~13/02/2014~1~~~0</S></S01>"
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
@@ -1478,8 +1491,8 @@ Private Sub Command1_Click()
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
     
     '--04/GTGT lan phat sinh
-    str2 = "aa320712300249979   01201400100100100101/0101/01/1900<S01><S></S><S>3210000~1000000~10000~2000000~100000~3000000~90000~5000000~100000~11000000~300000~14210000~300000</S><S>~Nguy‘n H≠¨ng~~13/02/2014~1~~~2~13/02/2014</S></S01>"
-    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'    str2 = "aa320712300249979   01201400100100100101/0101/01/1900<S01><S></S><S>3210000~1000000~10000~2000000~100000~3000000~90000~5000000~100000~11000000~300000~14210000~300000</S><S>~Nguy‘n H≠¨ng~~13/02/2014~1~~~2~13/02/2014</S></S01>"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
     
     '--test truong hop: Chan khbs cua to khai lan phat sinh
     'to khai
@@ -1490,7 +1503,32 @@ Private Sub Command1_Click()
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 'str2 = "bs320722300249979   012014003003002002<SKHBS><S>SË thu’ tπm t›nh ph∂i nÈp k˙ nµy cÒa Hµng h„a, dﬁch vÙ chﬁu thu’ 5%~25~100~2220~2120</S><S>~~0~0~0</S><S>13/02/2014~0~0~0~~~~~0~0~~0~0~2120</S></SKHBS>"
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+    
+    '--01A/TNDN
+'str2 = "aa320112300100778   04201300400400100201/0114/06/2006<S01><S></S><S>12~0~12~0~0~12~0~0~12~2~2~8~x~12.12;12;12.2222~0"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa320112300100778   042013004004002002~0~0~0~0~0~0~~~~0~0</S><S>~</S><S>~~Minh NhÀt~14/02/2014~1~0~~1052</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
+    '--01B/TNDN
+'str2 = "aa320122300100778   04201300400400100201/0114/06/2006<S01><S></S><S>x~x~40~30~10~10~10~10~10~~20~22~0~x~11.1212;212;34~11111~0~11111"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa320122300100778   042013004004002002~0~0~0~11111~x~03~10/10/2014~1000~10111</S><S>Minh NhÀt~14/02/2014~hoten~cc~1~~1052</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+    
+    '--02/TNDN
+'str2 = "aa320732300100778   04201300100100100201/0114/06/2006<S02><S></S><S>111~0~0~0~0~0~0~0~111~0~111~22~24~0~24~0~0~22~1~0</S><S>1~~to chuc 1~0102"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa320732300100778   042013001001002002030405~ha noi~10~01/01/2014~01/01/2014</S><S>hoten~chungchi~Minh NhÀt~14/02/2014~1~~~1052~~x</S></S02>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+    '--02/TNDN lan phat sinh
+'str2 = "aa320732300100778   04201400100100100201/0114/06/2006<S02><S></S><S>111~11~11~0~0~0~0~0~100~0~100~22~22~0~22~0~0~22~1~0</S><S>~1~ten~010203"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa320732300100778   0420140010010020020405~hn~11~01/01/2014~02/01/2014</S><S>hoten~cc~Minh NhÀt~14/02/2014~1~~14/01/2014~1052~~x</S></S02>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+    
 
 End Sub
 
@@ -3320,6 +3358,16 @@ On Error GoTo ErrHandle
             End If
         End If
         
+        ' To khai 01/TBVMT
+        If Val(strID) = 90 Then
+            strTemp = Left$(strData, InStr(1, strData, "</S></S01>") + 9)
+            arrCT = Split(strTemp, "~")
+            If Trim(arrCT(UBound(arrCT))) <> "" And Left$(Trim(arrCT(UBound(arrCT))), 10) <> "</S></S01>" Then
+                ngayPS = Left$(Trim(arrCT(UBound(arrCT))), 10)
+                isTKLanPS = True
+            End If
+        End If
+        
         'To khai 01/KK-TTS
         If Val(strID) = 23 Then
 '            strTemp = Left$(strData, InStr(1, strData, "</S></S01>") + 9)
@@ -3343,7 +3391,7 @@ On Error GoTo ErrHandle
        
         ' 18122012
         ' to khai lan phat sinh trog ngay chi nhan 1 to khai
-        If (Val(strID) = 70 Or Val(strID) = 73 Or Val(strID) = 81 Or Val(strID) = 5 Or Val(strID) = 71 Or Val(strID) = 72) And isTKLanPS = True Then
+        If (Val(strID) = 70 Or Val(strID) = 73 Or Val(strID) = 81 Or Val(strID) = 5 Or Val(strID) = 71 Or Val(strID) = 72 Or Val(strID) = 90) And isTKLanPS = True Then
             If isToKhaiPsDaNhanTN = True Then
                 DisplayMessage "0129", msOKOnly, miCriticalError
                 Exit Function
@@ -5078,7 +5126,7 @@ Private Function isDA30(ByVal strID As String, arrStrHeaderData() As String, isL
             "And UPPER(tkhai.DTK_MA_LOAI_TKHAI) IN " & formatMaToKhaiQLT(changeMaToKhaiQLT(strID, isLanPS, LoaiKyKK)) & " " & _
             "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
             "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
-            "And ((tkhai.YN_DA30 is null) OR (UPPER(YN_DA30) = 'Y' AND (TTHAI <> '1' AND TTHAI <> '3'))) "
+            "And ((tkhai.YN_DA30 is null) OR (UPPER(YN_DA30) = 'Y' AND (TTHAI <> '1' AND TTHAI <> '3' AND TTHAI <> '4'))) "
             
     Set rsResult = clsDAO.Execute(strSQL)
     If rsResult Is Nothing Then
