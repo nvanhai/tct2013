@@ -112,8 +112,8 @@
 	<Infor ID="0115" Msg="Mã đại lý thuế không phải của người nộp thuế. Bạn có muốn ghi không?"/>
 	<Infor ID="0116" Msg="Chưa có tờ khai chính thức nên không thể quét tờ khai bổ sung"/>
 	<Infor ID="0117" Msg="Nhập sai định dạng tháng năm của kỳ lập bộ"/>
-	<Infor ID="0118" Msg="Không nhận tờ khai TNCN có kỳ kê khai nhỏ hơn tháng 7/2011"/>
-	<Infor ID="0119" Msg="Không nhận tờ khai TNCN có kỳ kê khai nhỏ hơn Quý 3/2011"/>
+	<Infor ID="0118" Msg="Không nhận tờ khai TNCN có kỳ kê khai nhỏ hơn tháng 01/2014 hoặc Quý I/2014"/>
+	<Infor ID="0119" Msg="Không nhận tờ khai TNCN có kỳ kê khai nhỏ hơn Quý I/2014"/>
 	<Infor ID="0120" Msg="Tờ khai hết hiệu lực."/>
 	<Infor ID="0122" Msg="CQT không nhận các mẫu BC ấn chỉ in bằng HTKK phiên bản nhỏ hơn HTKK3.0.2"/>
 	<Infor ID="0123" Msg="Mất hoá đơn đầu vào"/>
