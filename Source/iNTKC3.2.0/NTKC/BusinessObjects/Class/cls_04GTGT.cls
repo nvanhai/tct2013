@@ -645,7 +645,7 @@ On Error GoTo ErrHandle
             dDate = DateAdd("d", -1, dDate)
             strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
         End If
-    Else
+    ElseIf LOAI_KYKK = "T" Then
         If Trim(TAX_Utilities_iNTK.Month) <> "" Then
             'Ngay dau ky ke khai va ngay cuoi ky ke khai
             dDate = dNgayDauKy
