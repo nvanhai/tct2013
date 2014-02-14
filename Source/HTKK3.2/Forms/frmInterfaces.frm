@@ -2633,7 +2633,7 @@ Private Sub DeleteKHBS()
                         strSheetKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                     End If
 
-                ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "72" Then
+                ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "72" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "81" Then
 
                     If strLoaiTKThang_PS = "TK_THANG" Then
                         strKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
