@@ -50,6 +50,10 @@ Const SO_HOP_DONG_DL_COL = "I"
 Const NGAY_HOP_DONG_DL_ROW = 19
 Const NGAY_HOP_DONG_DL_COL = "S"
 
+' Ngay phat sinh
+Const NGAY_PS_ROW = 33
+Const NGAY_PS_COL = "M"
+
 'Longvh
 Const MA_SO_THUE_X = "G"
 Const MA_SO_THUE_Y = 8
@@ -156,7 +160,7 @@ Public Function Prepared1() As Boolean
     Prepared1 = True
 End Function
 Private Sub setCQTQuanLy()
-        Dim xmlDomData As New MSXML.DOMDocument
+        Dim xmlDOMdata As New MSXML.DOMDocument
         Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
         Dim xmlNode As MSXML.IXMLDOMNode
         Dim arrDanhsach() As String
@@ -168,8 +172,8 @@ Private Sub setCQTQuanLy()
         Dim loaiCq As String
         Dim maLoaiCq As String
         
-        If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
-            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+        If xmlDOMdata.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -184,14 +188,14 @@ Private Sub setCQTQuanLy()
                     'End If
                 End If
             Next
-            Set xmlDomData = Nothing
+            Set xmlDOMdata = Nothing
             Set xmlNodeListCell = Nothing
             Set xmlNode = Nothing
         End If
         
         ' setloai
-        If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_DM_LoaiCq.xml")) Then
-            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+        If xmlDOMdata.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_DM_LoaiCq.xml")) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -199,7 +203,7 @@ Private Sub setCQTQuanLy()
                     maLoaiCq = maLoaiCq + arrDanhsach(0) + Chr$(9)
                 End If
             Next
-            Set xmlDomData = Nothing
+            Set xmlDOMdata = Nothing
             Set xmlNodeListCell = Nothing
             Set xmlNode = Nothing
         End If
@@ -341,13 +345,13 @@ End Function
 Private Sub DataDM(ByVal Id As String, Optional ByRef TenHH As String, Optional ByRef DVT As String, Optional ByRef strMucThue As String)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDomData As New MSXML.DOMDocument
+Dim xmlDOMdata As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = "..\InterfaceTemplates\xml\Catalogue_DM_thue_BVMT.xml"
-       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -364,14 +368,14 @@ End Sub
 Private Sub DataDMCQ(ByVal Id As String, Optional ByRef TenTN As String)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDomData As New MSXML.DOMDocument
+Dim xmlDOMdata As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = "..\InterfaceTemplates\xml\Catalogue_Tinh_Thanh.xml"
     
-       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -644,7 +648,7 @@ Private Sub fps_Click(ByVal Col As Long, ByVal Row As Long)
     End With
 End Sub
 
-Public Function GenerateSQL_Header(xmlDomData As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
+Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
     Dim xmlList As MSXML.IXMLDOMNodeList
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim xmlAttribute As MSXML.IXMLDOMAttribute
@@ -656,13 +660,13 @@ Public Function GenerateSQL_Header(xmlDomData As MSXML.DOMDocument, strSQL_HDR A
     Dim vCO_GTRINH_02B, vCO_GTRINH_02C
     Dim vPHONG_XU_LY
     Dim i As Long, j As Long
-    Dim strMaPhongXuLy As String
+    Dim strMaPhongXuLy As String, vNGANH_NGHE_KD, vTO_KHAI_LAN_PS, vNGAY_PS As Variant
     
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
     
 On Error GoTo ErrHandle
     strSQL = strSQL_HDR
-    Set xmlList = xmlDomData.getElementsByTagName("Cell")
+    Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
         
@@ -699,6 +703,12 @@ On Error GoTo ErrHandle
         End With
     Next
     
+    'Get ngay phat sinh
+    With fps
+        .Sheet = 1
+        .GetText .ColLetterToNumber(NGAY_PS_COL), NGAY_PS_ROW, vNGAY_PS
+    End With
+    
     strSQL = strSQL & "'" & vHdrID & "',"
     strSQL = strSQL & vKKBS & ","
     strSQL = strSQL & "'" & vTIN & "',"
@@ -721,13 +731,17 @@ On Error GoTo ErrHandle
     End If
     
     'Ky/ Quy KK
-    If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
+    If Trim(TAX_Utilities_Srv_New.Month) <> "" And Trim(vNGAY_PS) = "" Then
         'Ngay dau ky ke khai va ngay cuoi ky ke khai
         dDate = dNgayDauKy
         strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
         dDate = DateAdd("m", 1, dDate)
         dDate = DateAdd("d", -1, dDate)
         strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    ElseIf (Trim(vNGAY_PS) <> "") Then
+        'lan phat sinh
+        strSQL = strSQL & "To_date('" & Format(vNGAY_PS, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+        strSQL = strSQL & "To_date('" & Format(vNGAY_PS, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     End If
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
@@ -775,6 +789,17 @@ On Error GoTo ErrHandle
             vTIN_DL = Left(vTIN_DL, 10) & "-" & Right(vTIN_DL, 3)
         End If
         
+        vNGANH_NGHE_KD = "null"
+        
+        '.GetText .ColLetterToNumber(NGAY_PS_COL), NGAY_PS_ROW, vNGAY_PS
+        If Trim(vNGAY_PS) = "" Or vNGAY_PS = vbNullString Then
+            vNGAY_PS = "null"
+            vTO_KHAI_LAN_PS = "null"
+        Else
+            vNGAY_PS = "'" & vNGAY_PS & "'"
+            vNGAY_PS = "to_date(" & vNGAY_PS & ",'dd/mm/yyyy')"
+            vTO_KHAI_LAN_PS = "1"
+        End If
         
         If Trim(vNGAY_HOP_DONG) = "" Or vNGAY_HOP_DONG = vbNullString Then
             vNGAY_HOP_DONG = "null"
@@ -786,7 +811,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
     'strSQL = strSQL & "null)"
     strSQL = strSQL & "null,"
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & vNGANH_NGHE_KD & "," & vTO_KHAI_LAN_PS & "," & vNGAY_PS & ")"
     GenerateSQL_Header = strSQL
     'Debug.Print GenerateSQL_Header
     
