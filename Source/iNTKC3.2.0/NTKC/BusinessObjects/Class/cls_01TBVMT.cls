@@ -530,6 +530,17 @@ Public Function Prepared3() As Boolean
         .Row = PHONG_QUAN_LY_ROW
         .Text = TAX_Utilities_iNTK.Convert(strTenPQL, TCVN, UNICODE)
         UpdateCell fps, .Col, .Row, .Text
+        
+        ' set KyLB doi voi cac truong hop nhan tu dong iHTKK
+        .Col = .ColLetterToNumber(KY_LAP_BO_X)
+        .Row = KY_LAP_BO_Y
+        If TAX_Utilities_iNTK.NhanTuDongIHTKK = True And TAX_Utilities_iNTK.HthucNopIHTKK = True Then
+             If TAX_Utilities_iNTK.KyLBIHTKK <> "" Then
+                .Text = TAX_Utilities_iNTK.KyLBIHTKK
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+        End If
+        
         '.EventEnabled(EventAllEvents) = True
     End With
     
