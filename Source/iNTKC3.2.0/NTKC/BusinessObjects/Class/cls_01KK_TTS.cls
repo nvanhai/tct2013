@@ -648,12 +648,13 @@ On Error GoTo ErrHandle
             vDEN_NGAY = "to_date(" & vDEN_NGAY & ",'dd/mm/yyyy')"
         End If
         
+        'Hinh thuc quyet toan -> ghi vao field NGANH_NGHE_KD
         vHINH_THUC_QT = "''"
-        If UCase(vQT_DAU_NAM) = "X" Then
+        If UCase(vQT_DAU_NAM) = "X" Or vQT_DAU_NAM = "1" Then
             vHINH_THUC_QT = "'01'"  ' QT dau nam
         End If
         
-        If UCase(vQT_TUNG_NAM) = "X" Then
+        If UCase(vQT_TUNG_NAM) = "X" Or vQT_TUNG_NAM = "1" Then
             vHINH_THUC_QT = "'02'" ' QT tung nam
         End If
         
