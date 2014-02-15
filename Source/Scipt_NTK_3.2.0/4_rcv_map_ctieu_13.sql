@@ -1099,7 +1099,7 @@ insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIE
 values ('02_GTGT13', '31', 'N', 5983, '31');
 
 insert into rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
-values ('02_GTGT13', '32', 'C', 5984, '32');
+values ('02_GTGT13', '32', 'N', 5984, '32');
 commit;
 
 -- Phu luc 02-1/GTGT
