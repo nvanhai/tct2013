@@ -167,5 +167,5 @@
 	<Infor ID="0167" Msg="Xe Ôtô"/>
 	<Infor ID="0168" Msg="Xe hai bánh gắn máy"/>
 	<Infor ID="0169" Msg="Kể từ 17/02/2014 trở đi phải kê khai tờ khai bằng HTKK phiên bản 3.2.0 trở lên"/>
-	<Infor ID="0170" Msg="Tờ khai này không nhận mã vạch. Đề nghị nhập tay vào hệ thống"/>
+	<Infor ID="0170" Msg="Ứng dụng không nhận tờ khai mã vạch theo lần phát sinh. Đề nghị nhập tay vào hệ thống VAT"/>
 </Message>
