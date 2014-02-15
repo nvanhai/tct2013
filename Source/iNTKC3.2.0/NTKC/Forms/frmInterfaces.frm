@@ -702,10 +702,9 @@ On Error GoTo ErrHandle
     ' End
     ' Cac to khai PIT se khong nhan to khai co ky ke khai < thang 7 hoac quy 3
     If TAX_Utilities_iNTK.isCheckPIT = True Then
-        If TAX_Utilities_Srv_New.isCheckPIT = True Then
-        If idToKhai = 46 Or idToKhai = 48 Or idToKhai = 15 Or idToKhai = 50 Or idToKhai = 36 Or idToKhai = 25 Or idToKhai = 23 _
-        Or idToKhai = 47 Or idToKhai = 49 Or idToKhai = 16 Or idToKhai = 51 Or (idToKhai = 74 And isTKThang = False) Or (idToKhai = 75 And isTKThang = False) Then
-            If TAX_Utilities_Srv_New.Year < 2014 Then
+        If IdToKhai = 46 Or IdToKhai = 48 Or IdToKhai = 15 Or IdToKhai = 50 Or IdToKhai = 36 Or IdToKhai = 25 Or IdToKhai = 23 _
+        Or IdToKhai = 47 Or IdToKhai = 49 Or IdToKhai = 16 Or IdToKhai = 51 Or (IdToKhai = 74 And isTKThang = False) Or (IdToKhai = 75 And isTKThang = False) Then
+            If TAX_Utilities_iNTK.Year < 2014 Then
 
                 If isIHTKK = True Then
                     'MessageBox "0118", msOKOnly, miWarning
@@ -1283,7 +1282,7 @@ On Error GoTo ErrHandle
         ' Neu la ID cua cac BCTC in bang HTKK 2.1.0
         ' begin
             'remove id 24,25,26 14/11/2013
-            If (Val(idToKhai) = 26 Or Val(idToKhai) = 27 Or Val(idToKhai) = 28 Or Val(idToKhai) = 29 Or Val(idToKhai) = 30 Or Val(idToKhai) = 31 Or Val(idToKhai) = 32 Or Val(idToKhai) = 33 Or Val(idToKhai) = 34 Or Val(idToKhai) = 35 Or Val(idToKhai) = 55 Or Val(idToKhai) = 56 Or Val(idToKhai) = 57 Or Val(idToKhai) = 58) Then
+            If (Val(IdToKhai) = 26 Or Val(IdToKhai) = 27 Or Val(IdToKhai) = 28 Or Val(IdToKhai) = 29 Or Val(IdToKhai) = 30 Or Val(IdToKhai) = 31 Or Val(IdToKhai) = 32 Or Val(IdToKhai) = 33 Or Val(IdToKhai) = 34 Or Val(IdToKhai) = 35 Or Val(IdToKhai) = 55 Or Val(IdToKhai) = 56 Or Val(IdToKhai) = 57 Or Val(IdToKhai) = 58) Then
             flgBCTC = True
             If verToKhai = 0 Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
             
@@ -1419,9 +1418,9 @@ On Error GoTo ErrHandle
     
     Set rs = Nothing
     
-    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 95 Or idToKhai = 92 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 99 Or idToKhai = 24 Or idToKhai = 25 Or idToKhai = 23 Then
+    If IdToKhai = 2 Or IdToKhai = 4 Or IdToKhai = 46 Or IdToKhai = 47 Or IdToKhai = 48 Or IdToKhai = 49 Or IdToKhai = 15 Or IdToKhai = 16 Or IdToKhai = 50 Or IdToKhai = 51 Or IdToKhai = 36 Or IdToKhai = 87 Or IdToKhai = 86 Or IdToKhai = 77 Or IdToKhai = 74 Or IdToKhai = 89 Or IdToKhai = 42 Or IdToKhai = 43 Or IdToKhai = 17 Or IdToKhai = 59 Or IdToKhai = 41 Or IdToKhai = 76 Or IdToKhai = 95 Or IdToKhai = 92 Or IdToKhai = 93 Or IdToKhai = 94 Or IdToKhai = 96 Or IdToKhai = 97 Or IdToKhai = 99 Or IdToKhai = 24 Or IdToKhai = 25 Or IdToKhai = 23 Then
             strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrIhtkkTT28").nodeValue)
-    ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 5 Or idToKhai = 70 Or idToKhai = 71 Or idToKhai = 72 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Or idToKhai = 98 Or idToKhai = 6 Or idToKhai = 90 Then
+    ElseIf IdToKhai = 1 Or IdToKhai = 11 Or IdToKhai = 12 Or IdToKhai = 5 Or IdToKhai = 70 Or IdToKhai = 71 Or IdToKhai = 72 Or IdToKhai = 80 Or IdToKhai = 81 Or IdToKhai = 82 Or IdToKhai = 3 Or IdToKhai = 73 Or IdToKhai = 98 Or IdToKhai = 6 Or IdToKhai = 90 Then
             strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrIhtkkTT28_NNKD").nodeValue)
     Else
             strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrIhtkk").nodeValue)
@@ -1787,7 +1786,9 @@ Private Sub Command1_Click()
 '
 '  str2 = "aa320860800990275   02201400100200100101/0101/01/1900<S01><S></S><S>Kg~52222~33333~010101</S><S>Kg~12323~333333~010102</S><S>~CUONGHD~~11/02/2014~1~~</S></S01>"
 '  Barcode_Scaned str2
-str2 = "aa320900800990275   01201400400400100101/0101/01/1900<S01><S></S><S>T?n~55.000~10000~550000~010201</S><S>~CUONGHD~~12/02/2014~1~~~0~</S></S01><S01-1><S>010201~1213213~0800990275-001~10101~100000.00~100000.00~100.00~10000.00~10000~100000000</S></S01-1>"
+'str2 = "aa320900800990275   01201400400400100101/0101/01/1900<S01><S></S><S>T?n~55.000~10000~550000~010201</S><S>~CUONGHD~~12/02/2014~1~~~0~</S></S01><S01-1><S>010201~1213213~0800990275-001~10101~100000.00~100000.00~100.00~10000.00~10000~100000000</S></S01-1>"
+'Barcode_Scaned str2
+str2 = "aa320120800990275   012014ihtkks00100101/0114/06/2006<S01><S></S><S>~~2300281683~2300281683~2300281683~0~0~0~22.0000~~22.000~20.000~0.000~~0.000~111333633~111333633~0~0~0~0~111333633~~00~0~0~0</S><S>~14/02/2014~~~1~~1052</S></S01><S01-1><S>5000</S><S>AAAA~2300281683~50.00~5000~10100</S></S01-1>"
 Barcode_Scaned str2
     
 End Sub
@@ -2182,15 +2183,15 @@ On Error GoTo ErrHandle
             tkps_spl = Split(tmp_str, "~")
 
             If tkps_spl(UBound(tkps_spl) - 1) = "2" Then
-	    	If isIHTKK = True Then
+                If isIHTKK = True Then
                        bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "45")
                        isIHTKK = False
                        Unload Me
                        Exit Sub
                 Else
-                	DisplayMessage "0134", msOKOnly, miCriticalError
-	                Exit Sub
-		end if
+                        DisplayMessage "0134", msOKOnly, miCriticalError
+                        Exit Sub
+                End If
             End If
         End If
         
@@ -2206,9 +2207,9 @@ On Error GoTo ErrHandle
                        Unload Me
                        Exit Sub
                 Else
-                	DisplayMessage "0134", msOKOnly, miCriticalError
-	                Exit Sub
-		end if
+                        DisplayMessage "0134", msOKOnly, miCriticalError
+                        Exit Sub
+                End If
 
             End If
         End If
@@ -2225,9 +2226,9 @@ On Error GoTo ErrHandle
                        Unload Me
                        Exit Sub
                 Else
-                	DisplayMessage "0134", msOKOnly, miCriticalError
-	                Exit Sub
-		end if
+                        DisplayMessage "0134", msOKOnly, miCriticalError
+                        Exit Sub
+                End If
 
             End If
         End If
@@ -2244,9 +2245,9 @@ On Error GoTo ErrHandle
                        Unload Me
                        Exit Sub
                 Else
-                	DisplayMessage "0134", msOKOnly, miCriticalError
-	                Exit Sub
-		end if
+                        DisplayMessage "0134", msOKOnly, miCriticalError
+                        Exit Sub
+                End If
 
             End If
         End If
@@ -2263,9 +2264,9 @@ On Error GoTo ErrHandle
                        Unload Me
                        Exit Sub
                 Else
-                	DisplayMessage "0134", msOKOnly, miCriticalError
-	                Exit Sub
-		end if
+                        DisplayMessage "0134", msOKOnly, miCriticalError
+                        Exit Sub
+                End If
 
             End If
         End If
@@ -2282,9 +2283,9 @@ On Error GoTo ErrHandle
                        Unload Me
                        Exit Sub
                 Else
-                	DisplayMessage "0134", msOKOnly, miCriticalError
-	                Exit Sub
-		end if
+                        DisplayMessage "0134", msOKOnly, miCriticalError
+                        Exit Sub
+                End If
 
             End If
         End If
@@ -2301,9 +2302,9 @@ On Error GoTo ErrHandle
                        Unload Me
                        Exit Sub
                 Else
-                	DisplayMessage "0134", msOKOnly, miCriticalError
-	                Exit Sub
-		end if
+                        DisplayMessage "0134", msOKOnly, miCriticalError
+                        Exit Sub
+                End If
 
             End If
         End If
@@ -2314,16 +2315,16 @@ On Error GoTo ErrHandle
             tkps_spl = Split(tmp_str, "~")
 
             If tkps_spl(UBound(tkps_spl) - 1) = "1" Then
-	    	' to khai bo sung lan phat sinh QLT chua nhan
+                ' to khai bo sung lan phat sinh QLT chua nhan
                 If isIHTKK = True Then
                        bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "45")
                        isIHTKK = False
                        Unload Me
                        Exit Sub
                 Else
-                	DisplayMessage "0134", msOKOnly, miCriticalError
-	                Exit Sub
-		end if
+                        DisplayMessage "0134", msOKOnly, miCriticalError
+                        Exit Sub
+                End If
 
             End If
         End If
@@ -2333,10 +2334,10 @@ On Error GoTo ErrHandle
         IdToKhai = Mid(strPrefix, 4, 2)
         'If (Val(Left$(strPrefix, 3)) <= 317 And UCase(strLoaiToKhai) = "AA") Then
         If (Val(Left$(strPrefix, 3)) <= 317) Then
-            If Trim(idToKhai) = "01" Or Trim(idToKhai) = "02" Or Trim(idToKhai) = "04" Or Trim(idToKhai) = "11" Or Trim(idToKhai) = "12" Or Trim(idToKhai) = "71" _
-            Or Trim(idToKhai) = "72" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "90" Or Trim(idToKhai) = "25" Or Trim(idToKhai) = "50" Or Trim(idToKhai) = "51" Or Trim(idToKhai) = "19" _
-            Or Trim(idToKhai) = "22" Or Trim(idToKhai) = "15" Or Trim(idToKhai) = "16" Or Trim(idToKhai) = "36" Or Trim(idToKhai) = "74" Or Trim(idToKhai) = "73" Or Trim(idToKhai) = "75" Then
-                If idToKhai = "72" Then '05/GTGT
+            If Trim(IdToKhai) = "01" Or Trim(IdToKhai) = "02" Or Trim(IdToKhai) = "04" Or Trim(IdToKhai) = "11" Or Trim(IdToKhai) = "12" Or Trim(IdToKhai) = "71" _
+            Or Trim(IdToKhai) = "72" Or Trim(IdToKhai) = "06" Or Trim(IdToKhai) = "90" Or Trim(IdToKhai) = "25" Or Trim(IdToKhai) = "50" Or Trim(IdToKhai) = "51" Or Trim(IdToKhai) = "19" _
+            Or Trim(IdToKhai) = "22" Or Trim(IdToKhai) = "15" Or Trim(IdToKhai) = "16" Or Trim(IdToKhai) = "36" Or Trim(IdToKhai) = "74" Or Trim(IdToKhai) = "73" Or Trim(IdToKhai) = "75" Then
+                If IdToKhai = "72" Then '05/GTGT
                     'xu ly voi to khai cau truc khong thay doi thi van cho nhan: 05/GTGT
                     strBarcode = Replace(strBarcode, "</S></S01>", "~~</S></S01>")
                 Else
