@@ -702,8 +702,11 @@ On Error GoTo ErrHandle
     ' End
     ' Cac to khai PIT se khong nhan to khai co ky ke khai < thang 7 hoac quy 3
     If TAX_Utilities_iNTK.isCheckPIT = True Then
-        If IdToKhai = 46 Or IdToKhai = 48 Or IdToKhai = 15 Or IdToKhai = 50 Or IdToKhai = 36 Then
-            If TAX_Utilities_iNTK.Year < 2011 Or (TAX_Utilities_iNTK.Year = 2011 And TAX_Utilities_iNTK.Month < 7) Then
+        If TAX_Utilities_Srv_New.isCheckPIT = True Then
+        If idToKhai = 46 Or idToKhai = 48 Or idToKhai = 15 Or idToKhai = 50 Or idToKhai = 36 Or idToKhai = 25 Or idToKhai = 23 _
+        Or idToKhai = 47 Or idToKhai = 49 Or idToKhai = 16 Or idToKhai = 51 Or (idToKhai = 74 And isTKThang = False) Or (idToKhai = 75 And isTKThang = False) Then
+            If TAX_Utilities_Srv_New.Year < 2014 Then
+
                 If isIHTKK = True Then
                     'MessageBox "0118", msOKOnly, miWarning
                     bln1 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "12")
@@ -716,20 +719,20 @@ On Error GoTo ErrHandle
                 End If
             End If
         End If
-        If IdToKhai = 47 Or IdToKhai = 49 Or IdToKhai = 16 Or IdToKhai = 51 Or (IdToKhai = 74 And isTKThang = False) Or (IdToKhai = 75 And isTKThang = False) Then
-            If TAX_Utilities_iNTK.Year < 2011 Or (TAX_Utilities_iNTK.Year = 2011 And TAX_Utilities_iNTK.ThreeMonths < 3) Then
-                If isIHTKK = True Then
-                    'MessageBox "0119", msOKOnly, miWarning
-                    bln1 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "12")
-                    isIHTKK = False
-                    Unload Me
-                    Exit Sub
-                Else
-                    MessageBox "0119", msOKOnly, miWarning
-                    Exit Sub
-                End If
-            End If
-        End If
+       ' If IdToKhai = 47 Or IdToKhai = 49 Or IdToKhai = 16 Or IdToKhai = 51 Or (IdToKhai = 74 And isTKThang = False) Or (IdToKhai = 75 And isTKThang = False) Then
+       '     If TAX_Utilities_iNTK.Year < 2011 Or (TAX_Utilities_iNTK.Year = 2011 And TAX_Utilities_iNTK.ThreeMonths < 3) Then
+       '         If isIHTKK = True Then
+       '             'MessageBox "0119", msOKOnly, miWarning
+       '             bln1 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "12")
+       '             isIHTKK = False
+       '             Unload Me
+       '             Exit Sub
+       '         Else
+       '             MessageBox "0119", msOKOnly, miWarning
+       '             Exit Sub
+       '         End If
+       '     End If
+       ' End If
 '        If ((IdToKhai = 74 Or IdToKhai = 75) And isTKThang = True) Then
 '             Dim arrNgay() As String
 '            arrNgay = Split(TuNgay, "/")
@@ -1416,11 +1419,11 @@ On Error GoTo ErrHandle
     
     Set rs = Nothing
     
-    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 90 Or idToKhai = 95 Or idToKhai = 92 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 99 Or idToKhai = 24 Or idToKhai = 25 Or idToKhai = 23 Then
+    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 95 Or idToKhai = 92 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 99 Or idToKhai = 24 Or idToKhai = 25 Or idToKhai = 23 Then
             strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrIhtkkTT28").nodeValue)
-    ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 5 Or idToKhai = 70 Or idToKhai = 71 Or idToKhai = 72 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Or idToKhai = 98 Or idToKhai = 6 Then
+    ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 5 Or idToKhai = 70 Or idToKhai = 71 Or idToKhai = 72 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Or idToKhai = 98 Or idToKhai = 6 Or idToKhai = 90 Then
             strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrIhtkkTT28_NNKD").nodeValue)
-     Else
+    Else
             strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrIhtkk").nodeValue)
     End If
     'strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl").nodeValue)
@@ -2172,6 +2175,7 @@ On Error GoTo ErrHandle
         Dim tmp_str    As String
         Dim tkps_spl() As String
         
+        If InStr(1, strBarcode, "</S01>", vbTextCompare) > 0 Then
         '04/GTGT
         If Val(Mid$(strBarcode, 4, 2)) = 71 And UCase(strLoaiToKhai) = "BS" Then
             tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
@@ -2323,6 +2327,7 @@ On Error GoTo ErrHandle
 
             End If
         End If
+    End If
         '--end chan to phat sinh----------------
         'khong nhan cac to khai khong theo mau HTKK3.2.0
         IdToKhai = Mid(strPrefix, 4, 2)
@@ -3782,6 +3787,16 @@ On Error GoTo ErrHandle
             End If
         End If
         
+        ' To khai 01/TBVMT
+        If Val(strID) = 90 Then
+            strTemp = Left$(strData, InStr(1, strData, "</S></S01>") + 9)
+            arrCT = Split(strTemp, "~")
+            If Trim(arrCT(UBound(arrCT))) <> "" And Left$(Trim(arrCT(UBound(arrCT))), 10) <> "</S></S01>" Then
+                ngayPS = Left$(Trim(arrCT(UBound(arrCT))), 10)
+                isTKLanPS = True
+            End If
+        End If
+        
         'To khai 01/KK-TTS
         If Val(strID) = 23 Then
 '            strTemp = Left$(strData, InStr(1, strData, "</S></S01>") + 9)
@@ -3804,7 +3819,7 @@ On Error GoTo ErrHandle
             End If
         ' 18122012
         ' to khai lan phat sinh trog ngay chi nhan 1 to khai
-        If (Val(strID) = 70 Or Val(strID) = 73 Or Val(strID) = 81 Or Val(strID) = 5 Or Val(strID) = 71 Or Val(strID) = 72) And isTKLanPS = True Then
+        If (Val(strID) = 70 Or Val(strID) = 73 Or Val(strID) = 81 Or Val(strID) = 5 Or Val(strID) = 71 Or Val(strID) = 72 Or Val(strID) = 90) And isTKLanPS = True Then
             If isToKhaiPsDaNhanTN = True Then
                 ' nhan tu iHTKK se khong bat message
                     If isIHTKK = True Then
@@ -5466,7 +5481,7 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
                 "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
                 " And tkhai.ngay_ps = to_date('" & ngayPS & "','dd/mm/yyyy')"
-    ElseIf (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "04_GTGT11" Or strID = "05_GTGT11") And isTKLanPS = True Then
+    ElseIf (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "04_GTGT11" Or strID = "05_GTGT11" Or strID = "01_TBVMT13") And isTKLanPS = True Then
         strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
                 "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
@@ -5490,7 +5505,7 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
         strSTT = 0
         isTKTonTai = False
         ' Doi voi cac to khai 01_NTNN, 03_NTNN, 01_TTDB, 02_TNDN
-        If (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "02_TNDN11" Or strID = "04_GTGT11" Or strID = "05_GTGT11") And isTKLanPS = True Then
+        If (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "02_TNDN11" Or strID = "04_GTGT11" Or strID = "05_GTGT11" Or strID = "01_TBVMT13") And isTKLanPS = True Then
             isToKhaiPsDaNhanTN = False
         End If
         
@@ -5498,7 +5513,7 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
         strSTT = rsResult.Fields(0).Value + 1
         isTKTonTai = True
         ' Doi voi cac to khai 01_NTNN, 03_NTNN, 01_TTDB, 02_TNDN trong 1 ngay chi nhan 1 to khai
-        If (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "02_TNDN11" Or strID = "04_GTGT11" Or strID = "05_GTGT11") And isTKLanPS = True Then
+        If (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "02_TNDN11" Or strID = "04_GTGT11" Or strID = "05_GTGT11" Or strID = "01_TBVMT13") And isTKLanPS = True Then
             isToKhaiPsDaNhanTN = True
         End If
     End If
@@ -5556,7 +5571,7 @@ Private Function isDA30(ByVal strID As String, arrStrHeaderData() As String, isL
             "And UPPER(tkhai.DTK_MA_LOAI_TKHAI) IN " & formatMaToKhaiQLT(changeMaToKhaiQLT(strID, isLanPS, LoaiKyKK)) & " " & _
             "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
             "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
-            "And ((tkhai.YN_DA30 is null) OR (UPPER(YN_DA30) = 'Y' AND (TTHAI <> '1' AND TTHAI <> '3'))) "
+            "And ((tkhai.YN_DA30 is null) OR (UPPER(YN_DA30) = 'Y' AND (TTHAI <> '1' AND TTHAI <> '3' AND TTHAI <> '4'))) "
             
     Set rsResult = clsDAO.Execute(strSQL)
     If rsResult Is Nothing Then
