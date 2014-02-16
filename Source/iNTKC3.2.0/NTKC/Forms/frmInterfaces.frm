@@ -5974,9 +5974,11 @@ Private Function layThongTinToKhai() As String
     ElseIf IdToKhai = 4 Then
         'cell chinhthuc ~ cell bosung ~ ky ke khai
         strCellLocation = "L_6~S_6~K_4"
-    ElseIf IdToKhai = 72 Or IdToKhai = 86 Or IdToKhai = 87 Then
+    ElseIf IdToKhai = 72 Then
         'cell chinhthuc ~ cell bosung ~ ky ke khai
-        strCellLocation = "J_5~T_5~B_3"
+        strCellLocation = "J_5~T_5~B_4"
+    ElseIf IdToKhai = 86 Or IdToKhai = 87 Then
+        'cell chinhthuc ~ cell bosung ~ ky ke khai
     ElseIf IdToKhai = 76 Then
         'cell chinhthuc ~ cell bosung ~ ky ke khai
         strCellLocation = "M_7~T_7~O_2"
@@ -5985,7 +5987,7 @@ Private Function layThongTinToKhai() As String
         strCellLocation = "M_6~U_6~K_4"
     ElseIf IdToKhai = 12 Then
         'cell chinhthuc ~ cell bosung ~ ky ke khai
-        strCellLocation = "M_6~T_6~B_4"
+        strCellLocation = "M_5~T_5~B_4"
     ElseIf IdToKhai = 73 Then
         'cell chinhthuc ~ cell bosung ~ ky ke khai
         strCellLocation = "M_6~T_6~P_5"
@@ -6029,6 +6031,15 @@ Private Function layThongTinToKhai() As String
     ElseIf IdToKhai = 68 Then
         'cell chinhthuc ~ cell bosung ~ ky ke khai
         strCellLocation = "A_1~A_2~D_2"
+    ElseIf IdToKhai = 90 Then
+        'cell chinhthuc ~ cell bosung ~ ky ke khai
+        strCellLocation = "J_5~T_5~J_4"
+    ElseIf IdToKhai = 25 Then
+        'cell chinhthuc ~ cell bosung ~ ky ke khai
+        strCellLocation = "L_4~R_4~K_3"
+    ElseIf IdToKhai = 23 Then
+        'cell chinhthuc ~ cell bosung ~ ky ke khai
+        strCellLocation = "O_7~R_7~O_2"
     Else
         'cell chinhthuc ~ cell bosung ~ kykekhai
         strCellLocation = "A_1~A_2~A_3"
