@@ -1037,24 +1037,47 @@ Private Sub cmdSave_Click()
             End If
 
             'vttoan: ky lap bo phai lon hon ky ke khai
-            '29/07/2011
-            If (TAX_Utilities_Svr_New.Month <> vbNullString) And (TAX_Utilities_Svr_New.Month <> "") Then
-                If (Month(vNGAY_DAU_KYLBO) < Int(TAX_Utilities_Svr_New.Month)) And (Year(vNGAY_DAU_KYLBO) <= TAX_Utilities_Svr_New.Year) Then
-                    DisplayMessage "0142", msOKOnly, miCriticalError
-                    clsDAO.Disconnect
-                    Exit Sub
-                End If
-            End If
-            
-            'Ky lap bo phai lon hon ky ke khai doi voi to khai quy
-            If (TAX_Utilities_Svr_New.ThreeMonths <> vbNullString) And (TAX_Utilities_Svr_New.ThreeMonths <> "") Then
-                Dim NgayDauQuy As Date
-                NgayDauQuy = GetNgayDauQuy(CInt(TAX_Utilities_Svr_New.ThreeMonths), CInt(TAX_Utilities_Svr_New.Year), iNgayTaiChinh, iThangTaiChinh)
+            Dim NgayDauQuy As Date
+            If menuId = 1 Or menuId = 2 Or menuId = 4 Or menuId = 71 Or menuId = 36 Or menuId = 68 Or menuId = 25 Then
+                If LoaiKyKK = True Then
 
-                If (Month(vNGAY_DAU_KYLBO) < Month(NgayDauQuy)) And (Year(vNGAY_DAU_KYLBO) <= TAX_Utilities_Svr_New.Year) Then
-                    DisplayMessage "0142", msOKOnly, miCriticalError
-                    clsDAO.Disconnect
-                    Exit Sub
+                    'Ky lap bo phai lon hon ky ke khai doi voi to khai quy
+                    NgayDauQuy = GetNgayDauQuy(CInt(TAX_Utilities_Svr_New.ThreeMonths), CInt(TAX_Utilities_Svr_New.Year), iNgayTaiChinh, iThangTaiChinh)
+
+                    If (Month(vNGAY_DAU_KYLBO) < Month(NgayDauQuy)) And (Year(vNGAY_DAU_KYLBO) <= TAX_Utilities_Svr_New.Year) Then
+                        DisplayMessage "0142", msOKOnly, miCriticalError
+                        clsDAO.Disconnect
+                        Exit Sub
+                    End If
+
+                Else
+
+                    If (Month(vNGAY_DAU_KYLBO) < Int(TAX_Utilities_Svr_New.Month)) And (Year(vNGAY_DAU_KYLBO) <= TAX_Utilities_Svr_New.Year) Then
+                        DisplayMessage "0142", msOKOnly, miCriticalError
+                        clsDAO.Disconnect
+                        Exit Sub
+                    End If
+                End If
+
+            Else
+
+                If (TAX_Utilities_Svr_New.Month <> vbNullString) And (TAX_Utilities_Svr_New.Month <> "") Then
+                    If (Month(vNGAY_DAU_KYLBO) < Int(TAX_Utilities_Svr_New.Month)) And (Year(vNGAY_DAU_KYLBO) <= TAX_Utilities_Svr_New.Year) Then
+                        DisplayMessage "0142", msOKOnly, miCriticalError
+                        clsDAO.Disconnect
+                        Exit Sub
+                    End If
+                End If
+            
+                'Ky lap bo phai lon hon ky ke khai doi voi to khai quy
+                If (TAX_Utilities_Svr_New.ThreeMonths <> vbNullString) And (TAX_Utilities_Svr_New.ThreeMonths <> "") Then
+                    NgayDauQuy = GetNgayDauQuy(CInt(TAX_Utilities_Svr_New.ThreeMonths), CInt(TAX_Utilities_Svr_New.Year), iNgayTaiChinh, iThangTaiChinh)
+
+                    If (Month(vNGAY_DAU_KYLBO) < Month(NgayDauQuy)) And (Year(vNGAY_DAU_KYLBO) <= TAX_Utilities_Svr_New.Year) Then
+                        DisplayMessage "0142", msOKOnly, miCriticalError
+                        clsDAO.Disconnect
+                        Exit Sub
+                    End If
                 End If
             End If
 
@@ -1646,7 +1669,7 @@ Private Sub Command1_Click()
 'str2 = "aa999491700260044   03201300200200100101/0101/01/2010<S01><S></S><S>23432423~3454345~43543</S><S>sdfsf~sdfsf~gdhgfh~19/01/2014~1~~</S></S01>"
 'Barcode_Scaned str2
 ''01 BHDC thang
-'str2 = "aa999251700260044   12201300200200100101/0101/01/1900<S01><S></S><S>35423423~32423423~435435~546467~54647~675775~67578~7567657~4353455~454354~1012014</S><S>dsfsdf~19/01/2014~werwtre~fdbgfdb~1~~~0</S></S01>"
+'str2 = "aa320254100000018   04201400200200100101/0101/01/1900<S01><S></S><S>35423423~32423423~435435~546467~54647~675775~67578~7567657~4353455~454354~1012014</S><S>dsfsdf~19/01/2014~werwtre~fdbgfdb~1~~~1</S></S01>"
 'Barcode_Scaned str2
 ''01 BHDC quy
 'str2 = "aa999251700260044   03201300300300100101/0101/01/1900<S01><S></S><S>234543654~54654645~7657657~564654654~56465465~5465465476~546546548~546546654~657567~78687~610748357</S><S>dfsfsd~19/01/2014~sdg~fdgfdg~1~~~1</S></S01>"
@@ -1841,12 +1864,12 @@ Private Sub Command1_Click()
 'str2 = "aa320238118111083   0120130010010020020~300000~300000~5000~0~300000~5~0~5~nguyen van b~8118111083~50~300000~300000~5000~0~300000~15000~125~14875</S><S>~~~10/02/2014~1~1~~1~~</S></S01>"
 'Barcode_Scaned str2
 
-str2 = "aa320738118111083   04201300400400100301/0114/06/2006<S02><S></S><S>15000000~12000000~4000000~3000000~2000000~1000000~1000000~1000000~3000000~0~3000000~22~"
-Barcode_Scaned str2
-str2 = "aa320738118111083   042013004004002003660000~0~660000~0~0~22~1~0</S><S>1~~~~~2344~01/01/2013~01/01/2013</S><S>sdfsdf~sdfsdfds~~15/01/2014~1~~~~~</S></S02>"
-Barcode_Scaned str2
-str2 = "aa320738118111083   042013004004003003<S02-1><S>sdfsdf~2132121~sdfdsfsd~dsdfsdfsdfsd~dgfsdg~3432432~fgdfgfd~wefsvdfgv</S></S02-1>"
-Barcode_Scaned str2
+'str2 = "aa320738118111083   04201300400400100301/0114/06/2006<S02><S></S><S>15000000~12000000~4000000~3000000~2000000~1000000~1000000~1000000~3000000~0~3000000~22~"
+'Barcode_Scaned str2
+'str2 = "aa320738118111083   042013004004002003660000~0~660000~0~0~22~1~0</S><S>1~~~~~2344~01/01/2013~01/01/2013</S><S>sdfsdf~sdfsdfds~~15/01/2014~1~~~~~</S></S02>"
+'Barcode_Scaned str2
+'str2 = "aa320738118111083   042013004004003003<S02-1><S>sdfsdf~2132121~sdfdsfsd~dsdfsdfsdfsd~dgfsdg~3432432~fgdfgfd~wefsvdfgv</S></S02-1>"
+'Barcode_Scaned str2
 
 'str2 = "aa320718118111083   01201400300300100301/0101/01/1900<S01><S></S><S>1000000000~2000000~20000~400000000~20000000~500000000~15000000~500000000~10000000~1402000000~45020000~2402000000~45020000</S><S>~~~13/02/2014~1~~~1~</S></S01>"
 'Barcode_Scaned str2
@@ -1882,7 +1905,7 @@ Barcode_Scaned str2
 'str2 = "aa320052100343639   012014001001002002/S><S>0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>0~0~0~0~0</S><S>~~~13/02/2014~0~1~1~~13/01/2014~0</S></S01>"
 'Barcode_Scaned str2
 '
-'str2 = "aa320902100343639   01201400100100100101/0101/01/1900<S01><S></S><S>~0.000~0~0~</S><S>~~~13/02/2014~~1~1~0~13/01/2014</S></S01>"
+'str2 = "aa320902100343639   04201400100100100101/0101/01/1900<S01><S></S><S>~0.000~0~0~</S><S>~~~13/02/2014~1~0~0~0~13/01/2014</S></S01>"
 'Barcode_Scaned str2
 
 'str2 = "aa320052100343639   01201400100100100201/0101/01/1900<S01><S>2100462770</S><S>~23423~34.00~0~0~22</S><S>10103~T n~324.00~23423~34.00~65.0~0~0~22</S><S>0~0.00~0~0~0</S><S>~~0.00~0~0"
@@ -1890,13 +1913,30 @@ Barcode_Scaned str2
 'str2 = "aa320052100343639   012014001001002002.00~0.0~0~0~0</S><S>0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>23423~34.00~0~0~22</S><S>~test~test~14/02/2014~1~~0~22~01/01/2014~0</S></S01>"
 'Barcode_Scaned str2
 
-'str2 = "aa320012100343639   01201400600600100301/0114/06/2006<S01><S></S><S>0~0~500000~0~0~500000~0~3566666~0~0~3242432~0~324234~500000~3566666~3566666~0~0~0~3566666~0~3566666~0~0~0</S><S>~~~10/02/2014~1~0~0~1701~~~1</S></S01>"
+'str2 = "aa320012100343639   04201400600600100301/0114/06/2006<S01><S></S><S>0~0~500000~0~0~500000~0~3566666~0~0~3242432~0~324234~500000~3566666~3566666~0~0~0~3566666~0~3566666~0~0~0</S><S>~~~10/02/2014~1~0~0~1701~~~1</S></S01>"
 'Barcode_Scaned str2
-'str2 = "aa320012100343639   012014006006002003<SKHBS><S>Hµng ho∏, dﬁch vÙ b∏n ra chﬁu thu’ su t 5%~31~0~3242432~3242432~Hµng ho∏, dﬁch vÙ b∏n ra chﬁu thu’ su "
+'str2 = "aa320012100343639   042014006006002003<SKHBS><S>Hµng ho∏, dﬁch vÙ b∏n ra chﬁu thu’ su t 5%~31~0~3242432~3242432~Hµng ho∏, dﬁch vÙ b∏n ra chﬁu thu’ su "
 'Barcode_Scaned str2
-'str2 = "aa320012100343639   012014006006003003t 10%~33~0~324234~324234</S><S>~~0~0~0</S><S>14/5 /2014~12~21400~0~~~~~0~0~~0~3566666~3566666~0~0~0</S></SKHBS>"
+'str2 = "aa320012100343639   042014006006003003t 10%~33~0~324234~324234</S><S>~~0~0~0</S><S>14/5 /2014~12~21400~0~~~~~0~0~~0~3566666~3566666~0~0~0</S></SKHBS>"
 'Barcode_Scaned str2
 
+
+'str2 = "aa320112100343639   04201300100100100201/0114/06/2006<S01><S>2100462770</S><S>0~0~0~0~0~0~0~0~0~0~0~0~x~10;20;30;40;50;"
+'Barcode_Scaned str2
+'str2 = "aa320112100343639   04201300100100200260~0~0~0~0~0~0~0~~~~0~0</S><S>~</S><S>test~test~~17/02/2014~1~0~~1052</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa320112100343639   04201300200200100201/0114/06/2006<S01><S>2100462770</S><S>0~0~0~0~0~0~0~0~0~0~0~0~~40.123~0~0~0"
+'Barcode_Scaned str2
+'str2 = "aa320112100343639   042013002002002002~0~0~0~0~~~~0~0</S><S>~</S><S>test~test~~17/02/2014~1~0~~1052</S></S01>"
+'Barcode_Scaned str2
+str2 = "aa320122100343639   04201300100100100201/0114/06/2006<S01><S>2100462770</S><S>~~0~0~0~0~0~0~0~~20~22~0~~30.999"
+Barcode_Scaned str2
+str2 = "aa320122100343639   042013001001002002~0~0~0~0~0~0~0~~~~0~0</S><S>~17/02/2014~test~test~1~~1052</S></S01>"
+Barcode_Scaned str2
+'str2 = "aa320122100343639   04201300200200100201/0114/06/2006<S01><S>2100462770</S><S>~~0~0~0~0~0~0~0~~20~22~0~x~10;20;30"
+'Barcode_Scaned str2
+'str2 = "aa320122100343639   042013002002002002;50;90~0~0~0~0~0~0~0~~~~0~0</S><S>~17/02/2014~test~test~1~~1052</S></S01>"
+'Barcode_Scaned str2
 
 End Sub
 
@@ -2236,7 +2276,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
         If InStr(1, strBarcode, "</S01>", vbTextCompare) > 0 Then
 
             '04/GTGT
-            If Val(Mid$(strBarcode, 4, 2)) = 71 And LoaiTk = "TKBS" Then
+            If Val(Mid$(strBarcode, 4, 2)) = 71 Then
                 tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
                 tkps_spl = Split(tmp_str, "~")
 
@@ -2247,7 +2287,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
             End If
         
             '05/GTGT
-            If Val(Mid$(strBarcode, 4, 2)) = 72 And LoaiTk = "TKBS" Then
+            If Val(Mid$(strBarcode, 4, 2)) = 72 Then
                 tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
                 tkps_spl = Split(tmp_str, "~")
 
@@ -2258,7 +2298,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
             End If
         
             '01/NTNN
-            If Val(Mid$(strBarcode, 4, 2)) = 70 And LoaiTk = "TKBS" Then
+            If Val(Mid$(strBarcode, 4, 2)) = 70 Then
                 tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
                 tkps_spl = Split(tmp_str, "~")
 
@@ -2269,7 +2309,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
             End If
         
             '03/NTNN
-            If Val(Mid$(strBarcode, 4, 2)) = 81 And LoaiTk = "TKBS" Then
+            If Val(Mid$(strBarcode, 4, 2)) = 81 Then
                 tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
                 tkps_spl = Split(tmp_str, "~")
 
@@ -2280,7 +2320,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
             End If
         
             '01/TAIN
-            If Val(Mid$(strBarcode, 4, 2)) = 6 And LoaiTk = "TKBS" Then
+            If Val(Mid$(strBarcode, 4, 2)) = 6 Then
                 tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
                 tkps_spl = Split(tmp_str, "~")
 
@@ -2291,7 +2331,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
             End If
         
             '01/TTDB
-            If Val(Mid$(strBarcode, 4, 2)) = 5 And LoaiTk = "TKBS" Then
+            If Val(Mid$(strBarcode, 4, 2)) = 5 Then
                 tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
                 tkps_spl = Split(tmp_str, "~")
 
@@ -2302,7 +2342,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
             End If
         
             '01/TBVMT
-            If Val(Mid$(strBarcode, 4, 2)) = 90 And LoaiTk = "TKBS" Then
+            If Val(Mid$(strBarcode, 4, 2)) = 90 Then
                 tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
                 tkps_spl = Split(tmp_str, "~")
 
@@ -2315,7 +2355,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
         ElseIf InStr(1, strBarcode, "</S02>", vbTextCompare) > 0 Then
 
             '02/TNDN
-            If Val(Mid$(strBarcode, 4, 2)) = 73 And LoaiTk = "TKBS" Then
+            If Val(Mid$(strBarcode, 4, 2)) = 73 Then
                 tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S02>", vbTextCompare) + 5)
                 tkps_spl = Split(tmp_str, "~")
 
@@ -5606,6 +5646,9 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
             .GetText .ColLetterToNumber("L"), 33, tkPhatSinh
         End If
 
+        If menuId = 71 Then
+            .GetText .ColLetterToNumber("K"), 39, tkPhatSinh
+        End If
     End With
 
     On Error Resume Next
@@ -5639,9 +5682,9 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
         Case "04"
 
             If LoaiKyKK = True Then
-                DHS_MA = "529"
+                DHS_MA = "549"
             Else
-                DHS_MA = "17"
+                DHS_MA = "548"
           
             End If
 
@@ -5757,11 +5800,12 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
             End If
 
         Case "71"
-
-            If LoaiKyKK = True Then
-                DHS_MA = "530"
+            If tkPhatSinh = "2" Then
+                DHS_MA = "552"
+            ElseIf LoaiKyKK = True Then
+                DHS_MA = "551"
             Else
-                DHS_MA = "526"
+                DHS_MA = "550"
             End If
             
         Case "72"
@@ -5780,7 +5824,7 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
             DHS_MA = "450"
             
         Case "91"
-            DHS_MA = "532"
+            DHS_MA = "547"
             
         Case "66"
             DHS_MA = "539"
@@ -5790,7 +5834,13 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
             If tkPhatSinh = "1" Then
                 DHS_MA = "555"
             End If
-            
+
+        Case "25"
+            DHS_MA = "568"
+
+        Case "23"
+            DHS_MA = "570"
+
         Case Else
             DHS_MA = ""
             
