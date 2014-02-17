@@ -271,7 +271,7 @@ insert into qlt_ntk.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_
 values (5819, 'ThuÕ GTGT ph¶i nép cña ho¹t ®éng x¶n xuÊt kinh doanh trong kú(nÕu [40a]=[36]-[22]+[37]-[38]-[39]>0)', '', '40a', '', '', '', '', '', '', '', '', '', 20, '01_GTGT13', '2287', '', '', '', '', '', '', '', '', '', '', '');
 
 insert into qlt_ntk.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
-values (5820, '  ThuÕ GTGT mua vµo cña dù ¸n ®Çu t­(cïng tØnh, thµnh phè trùc thuéc trung ­¬ng) ®­îc bï trõ víi thuÕ GTGT ph¶i nép cña ho¹t ®éng s¶n xuÊt kinh doanh cïng kú tÝnh thuÕ)', '', '40b', '', '', '', '', '', '', '', '', '', 21, '01_GTGT13', '2288', '', '', '', '', '', '', '', '', '', '', '');
+values (5820, '  ThuÕ GTGT mua vµo cña dù ¸n ®Çu t­(cïng tØnh, thµnh phè trùc thuéc trung ­¬ng) ®­îc )', '', '40b', '', '', '', '', '', '', '', '', '', 21, '01_GTGT13', '2288', '', '', '', '', '', '', '', '', '', '', '');
 
 insert into qlt_ntk.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
 values (5821, '  ThuÕ GTGT cßn ph¶i nép trong kú([40]=[40a]-[40b])', '', '40', '', '', '', '', '', '', '', '', '', 22, '01_GTGT13', '2289', '', '', '', '', '', '', '', '', '', '', '');
