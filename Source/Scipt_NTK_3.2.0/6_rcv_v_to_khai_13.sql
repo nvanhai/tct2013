@@ -1082,7 +1082,65 @@ SELECT   dtl.hdr_id, dtl.so_tt so_tt, dtl.row_id row_id,
         AND (dtl.ID = gd.ID)
    GROUP BY dtl.hdr_id, dtl.so_tt, dtl.row_id;
 
-
+ --To khai 01/TAIN
+CREATE OR REPLACE VIEW RCV_V_TKHAI_TNGUYEN_01 AS
+select hdr_id
+      , row_id
+      , so_tt
+      ,ddiem_kthac
+      ,btn_id
+      ,don_vi_tinh
+      ,san_luong
+      ,gia_don_vi
+      ,tsuat_dtnt
+      ,gia_tt_don_vi
+      ,decode(gia_don_vi,0,san_luong*gia_tt_don_vi,san_luong*gia_don_vi*(tsuat_dtnt/100)) thue_psinh_tky_dtnt
+      ,thue_mien_giam_dtnt
+      ,(decode(gia_don_vi,0,san_luong*gia_tt_don_vi,san_luong*gia_don_vi*(tsuat_dtnt/100)) - thue_mien_giam_dtnt) thue_phai_nop_dtnt
+FROM
+(
+SELECT dtl.hdr_id
+     , dtl.row_id
+     , dtl.so_tt
+     , MAX(dtl.ddiem_kthac) ddiem_kthac
+     , MAX(dtl.btn_id) btn_id
+     , MAX(dtl.don_vi_tinh) don_vi_tinh
+     , MAX(dtl.san_luong) san_luong
+     , MAX(dtl.gia_don_vi) gia_don_vi
+     , MAX(dtl.tsuat_dtnt) tsuat_dtnt
+     , MAX(dtl.gia_tt_don_vi) gia_tt_don_vi
+     , MAX(dtl.thue_psinh_tky_dtnt) thue_psinh_tky_dtnt
+     , MAX(dtl.thue_mien_giam_dtnt) thue_mien_giam_dtnt
+     , MAX(dtl.thue_phai_nop_dtnt) thue_phai_nop_dtnt
+FROM rcv_gdien_tkhai gd,
+(
+  SELECT tkd.hdr_id,
+         NVL(tkd.row_id,0) row_id,
+         gdien.id,
+         gdien.so_tt,
+         DECODE(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL) ddiem_kthac,
+    	   DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL) btn_id,
+    	   DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL) don_vi_tinh,
+    	   replace (DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL),',','.') san_luong,
+    	   replace (DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL),',','.') gia_don_vi,
+    	   DECODE(gdien.cot_06, tkd.ky_hieu, NVL(tkd.gia_tri,0), NULL) tsuat_dtnt,
+         DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL) gia_tt_don_vi,
+         DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL) thue_mien_giam_dtnt,
+         DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL) thue_psinh_tky_dtnt,
+         DECODE(gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL) thue_phai_nop_dtnt
+  FROM rcv_tkhai_dtl tkd,
+       rcv_gdien_tkhai gdien,
+       rcv_map_ctieu ctieu
+  WHERE (ctieu.gdn_id = gdien.id)
+	AND (ctieu.ky_hieu = tkd.ky_hieu)
+    AND ( tkd.loai_dlieu = '01_TAIN13')
+) dtl
+WHERE (gd.loai_dlieu = '01_TAIN13')
+  AND (dtl.id = gd.id)
+GROUP BY dtl.hdr_id,
+         dtl.row_id
+         , dtl.so_tt
+);
 
 
 
