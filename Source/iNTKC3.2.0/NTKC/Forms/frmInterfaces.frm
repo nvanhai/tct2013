@@ -2247,23 +2247,23 @@ On Error GoTo ErrHandle
         End If
         
         '02/TNDN
-        If Val(Mid$(strBarcode, 4, 2)) = 73 And UCase(strLoaiToKhai) = "BS" Then
-            tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S02>", vbTextCompare) + 5)
-            tkps_spl = Split(tmp_str, "~")
-
-            If tkps_spl(UBound(tkps_spl) - 15) = "1" Then
-                If isIHTKK = True Then
-                       bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "45")
-                       isIHTKK = False
-                       Unload Me
-                       Exit Sub
-                Else
-                        DisplayMessage "0134", msOKOnly, miCriticalError
-                        Exit Sub
-                End If
-
-            End If
-        End If
+'        If Val(Mid$(strBarcode, 4, 2)) = 73 And UCase(strLoaiToKhai) = "BS" Then
+'            tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S02>", vbTextCompare) + 5)
+'            tkps_spl = Split(tmp_str, "~")
+'
+'            If tkps_spl(UBound(tkps_spl) - 15) = "1" Then
+'                If isIHTKK = True Then
+'                       bln2 = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "45")
+'                       isIHTKK = False
+'                       Unload Me
+'                       Exit Sub
+'                Else
+'                        DisplayMessage "0134", msOKOnly, miCriticalError
+'                        Exit Sub
+'                End If
+'
+'            End If
+'        End If
         
         '01/NTNN
         If Val(Mid$(strBarcode, 4, 2)) = 70 And UCase(strLoaiToKhai) = "BS" Then
