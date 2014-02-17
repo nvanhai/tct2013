@@ -1642,7 +1642,7 @@ Public Function InsertDTL() As String
         matkhai = "'01B/TNDN'"
         
    End With
- 
+    
 
    sSQLVal = QUI & "," & madtnt & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & ","
    sSQLVal = sSQLVal & ngnop & "," & CTIEUTNDN & "," & SOTIEN & "," & SOTIEN2 & "," & tt & "," & LoaiTien & ","
@@ -1650,6 +1650,7 @@ Public Function InsertDTL() As String
 
    
     sSQL = "INSERT INTO TMP_TNDN" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+    SaveErrorLog "", "01B", 0, sSQL
    bln = clsConn.ExecuteDLL(sSQL)
 '-----------------------
   With fps
