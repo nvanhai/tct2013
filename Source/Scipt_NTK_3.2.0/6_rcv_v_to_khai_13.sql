@@ -33,7 +33,24 @@ FROM    (
 GROUP BY DTL.HDR_ID, DTL.CTK_ID;
 -- Phu luc 01-1/GTGT
 -- Phu luc 01-1/GTGT
-CREATE  or replace VIEW QLT_NTK.RCV_V_PLUC_TKHAI_GTGT_KT01_13 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_TKHAI_GTGT_KT01_13
+    (
+        HDR_ID,
+        ROW_ID,
+        SO_TT,
+        NHOM_CTIEU,
+        KY_HIEU_MAU_HDON,
+        KY_HIEU_HDON,
+        SO_HOA_DON,
+        NGAY_HOA_DON,
+        TIN,
+        TEN_DTNT,
+        TEN_HANG,
+        DOANH_SO,
+        THUE_XUAT,
+        SO_THUE,
+        GHI_CHU
+    ) AS
 SELECT
     "HDR_ID",
     "ROW_ID",
@@ -53,12 +70,11 @@ SELECT
 FROM
     (
         SELECT
-            dtl.hdr_id
-            ,
+            dtl.hdr_id ,
             dtl.row_id                                row_id ,
             dtl.so_tt                                 so_tt ,
             DECODE (dtl.so_tt,1,1,3,2,5,3,7,4,9,5, 0) nhom_ctieu ,
-            MAX(dtl.ky_hieu_mau_hdon) ky_hieu_mau_hdon,
+            MAX(dtl.ky_hieu_mau_hdon)                 ky_hieu_mau_hdon,
             MAX(dtl.ky_hieu_hdon)                     ky_hieu_hdon ,
             MAX(dtl.so_hoa_don)                       so_hoa_don ,
             MAX(dtl.ngay_hoa_don)                     ngay_hoa_don ,
@@ -70,29 +86,29 @@ FROM
             MAX(dtl.so_thue)                          so_thue ,
             MAX(dtl.ghi_chu)                          ghi_chu
         FROM
-            QLT_NTK.rcv_gdien_tkhai gd,
+            rcv_gdien_tkhai gd,
             (
                 SELECT
                     tkd.hdr_id,
                     tkd.row_id row_id,
                     gdien.id,
-                    gdien.so_tt so_tt,
+                    gdien.so_tt                                          so_tt,
                     DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL) ky_hieu_mau_hdon,
                     DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) ky_hieu_hdon,
                     DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL) so_hoa_don,
-                    DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL)              ngay_hoa_don,
-                    DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL)              tin,
-                    DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL)              ten_dtnt,
-                    DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL)              ten_hang,
-                    DECODE(gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL)              doanh_so,
+                    DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL) ngay_hoa_don,
+                    DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL) tin,
+                    DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL) ten_dtnt,
+                    DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL) ten_hang,
+                    DECODE(gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL) doanh_so,
                     REPLACE(REPLACE(DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL),'%',''),
                     ',','.')                                             thue_xuat,
                     DECODE(gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL) so_thue,
                     DECODE(gdien.cot_13, tkd.ky_hieu, tkd.gia_tri, NULL) ghi_chu
                 FROM
-                    QLT_NTK.RCV_TKHAI_DTL tkd,
-                    QLT_NTK.rcv_gdien_tkhai gdien,
-                    QLT_NTK.rcv_map_ctieu ctieu
+                    rcv_tkhai_dtl tkd,
+                    rcv_gdien_tkhai gdien,
+                    rcv_map_ctieu ctieu
                 WHERE
                     (
                         ctieu.gdn_id = gdien.id)
@@ -107,7 +123,6 @@ FROM
                 dtl.id = gd.id)
         GROUP BY
             dtl.hdr_id,
-
             dtl.so_tt,
             dtl.row_id )
 WHERE
@@ -466,91 +481,87 @@ GROUP BY dtl.hdr_id,
          dtl.id;
 
 
-CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_GTGT_KT0201_13 AS
-(/* Formatted on 2011/08/11 13:39 (Formatter Plus v4.8.7) */
-SELECT   dtl.hdr_id,dtl.so_tt-2  so_tt, dtl.row_id row_id,
-         '4' nhom_ctieu,
-         MAX (dtl.ky_hieu_mau_hdon) ky_hieu_mau_hdon,
-         MAX (dtl.ky_hieu_hdon) ky_hieu_hdon,
-         MAX (dtl.so_hoa_don) so_hoa_don,
-         MAX (dtl.ngay_hoa_don) ngay_hoa_don,
-         MAX (dtl.tin) tin,
-         MAX (dtl.ten_dtnt) ten_dtnt,
-         MAX (dtl.ten_hang) ten_hang,
-         MAX (dtl.doanh_so) doanh_so,
-         MAX (dtl.thue_xuat) thue_xuat,
-         MAX (dtl.so_thue) so_thue,
-         MAX (dtl.ghi_chu) ghi_chu
-    FROM (SELECT tkd.hdr_id, tkd.row_id row_id, gdien.ID,
-                 gdien.so_tt so_tt,
-                 DECODE (gdien.cot_03,
-                         tkd.ky_hieu, tkd.gia_tri,
-                         NULL
-                        ) ky_hieu_mau_hdon,
-                 DECODE (gdien.cot_04,
-                         tkd.ky_hieu, tkd.gia_tri,
-                         NULL
-                        ) ky_hieu_hdon,
-                 DECODE (gdien.cot_05,
-                         tkd.ky_hieu, tkd.gia_tri,
-                         NULL
-                        ) so_hoa_don,
-                 DECODE (gdien.cot_06,
-                         tkd.ky_hieu, tkd.gia_tri,
-                         NULL
-                        ) ngay_hoa_don,
-                 DECODE (gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL) ten_dtnt,
-
-                 DECODE (gdien.cot_08,
-                         tkd.ky_hieu, tkd.gia_tri,
-                         NULL
-                        ) tin,
-                 DECODE (gdien.cot_09,
-                         tkd.ky_hieu, tkd.gia_tri,
-                         NULL
-                        ) ten_hang,
-                 DECODE (gdien.cot_10,
-                         tkd.ky_hieu, tkd.gia_tri,
-                         NULL
-                        ) doanh_so,
-                 REPLACE (REPLACE (DECODE (gdien.cot_11,
-                                           tkd.ky_hieu, tkd.gia_tri,
-                                           NULL
-                                          ),
-                                   '%',
-                                   ''
-                                  ),
-                          ',',
-                          '.'
-                         ) thue_xuat,
-                 DECODE (gdien.cot_12,
-                         tkd.ky_hieu, tkd.gia_tri,
-                         NULL
-                        ) so_thue,
-                 DECODE (gdien.cot_13,
-                         tkd.ky_hieu, tkd.gia_tri,
-                         NULL
-                        ) ghi_chu
-            FROM QLT_NTK.RCV_TKHAI_DTL tkd, QLT_NTK.rcv_gdien_tkhai gdien,
-                 QLT_NTK.rcv_map_ctieu ctieu
-           WHERE (ctieu.gdn_id = gdien.ID)
-             AND (ctieu.ky_hieu = tkd.ky_hieu)
-             AND (tkd.loai_dlieu IN
-                     ('02_01_GTGT13',
-                      '02_01_1_GTGT13',
-                      '02_01_2_GTGT13',
-                      '02_01_3_GTGT13',
-                      '02_01_4_GTGT13',
-                      '02_01_5_GTGT13',
-                      '02_01_6_GTGT13',
-                      '02_01_7_GTGT13',
-                      '02_01_8_GTGT13',
-                      '02_01_9_GTGT13'
-                     )
-                 )
-             AND tkd.loai_dlieu = gdien.loai_dlieu) dtl
-GROUP BY dtl.hdr_id,dtl.so_tt, dtl.row_id
-);
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_GTGT_KT0201_13
+    (
+        HDR_ID,
+        SO_TT,
+        ROW_ID,
+        NHOM_CTIEU,
+        KY_HIEU_MAU_HDON,
+        KY_HIEU_HDON,
+        SO_HOA_DON,
+        NGAY_HOA_DON,
+        TIN,
+        TEN_DTNT,
+        TEN_HANG,
+        DOANH_SO,
+        THUE_XUAT,
+        SO_THUE,
+        GHI_CHU
+    ) AS
+    (
+        /* Formatted on 2011/08/11 13:39 (Formatter Plus v4.8.7) */
+        SELECT
+            dtl.hdr_id,
+            dtl.so_tt-2                so_tt,
+            dtl.row_id                 row_id,
+            '4'                        nhom_ctieu,
+            MAX (dtl.ky_hieu_mau_hdon) ky_hieu_mau_hdon,
+            MAX (dtl.ky_hieu_hdon)     ky_hieu_hdon,
+            MAX (dtl.so_hoa_don)       so_hoa_don,
+            MAX (dtl.ngay_hoa_don)     ngay_hoa_don,
+            MAX (dtl.tin)              tin,
+            MAX (dtl.ten_dtnt)         ten_dtnt,
+            MAX (dtl.ten_hang)         ten_hang,
+            MAX (dtl.doanh_so)         doanh_so,
+            MAX (dtl.thue_xuat)        thue_xuat,
+            MAX (dtl.so_thue)          so_thue,
+            MAX (dtl.ghi_chu)          ghi_chu
+        FROM
+            (
+                SELECT
+                    tkd.hdr_id,
+                    tkd.row_id row_id,
+                    gdien.ID,
+                    gdien.so_tt                                            so_tt,
+                    DECODE (gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL ) ky_hieu_mau_hdon,
+                    DECODE (gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL ) ky_hieu_hdon,
+                    DECODE (gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL ) so_hoa_don,
+                    DECODE (gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL ) ngay_hoa_don,
+                    DECODE (gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL)  ten_dtnt,
+                    DECODE (gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL ) tin,
+                    DECODE (gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL ) ten_hang,
+                    DECODE (gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL ) doanh_so,
+                    REPLACE (REPLACE (DECODE (gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL ), '%',
+                    '' ), ',', '.' )                                       thue_xuat,
+                    DECODE (gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL ) so_thue,
+                    DECODE (gdien.cot_13, tkd.ky_hieu, tkd.gia_tri, NULL ) ghi_chu
+                FROM
+                    rcv_tkhai_dtl tkd,
+                    rcv_gdien_tkhai gdien,
+                    rcv_map_ctieu ctieu
+                WHERE
+                    (
+                        ctieu.gdn_id = gdien.ID)
+                AND (
+                        ctieu.ky_hieu = tkd.ky_hieu)
+                AND (
+                        tkd.loai_dlieu IN ('02_01_GTGT13',
+                                           '02_01_1_GTGT13',
+                                           '02_01_2_GTGT13',
+                                           '02_01_3_GTGT13',
+                                           '02_01_4_GTGT13',
+                                           '02_01_5_GTGT13',
+                                           '02_01_6_GTGT13',
+                                           '02_01_7_GTGT13',
+                                           '02_01_8_GTGT13',
+                                           '02_01_9_GTGT13' ) )
+                AND tkd.loai_dlieu = gdien.loai_dlieu) dtl
+        GROUP BY
+            dtl.hdr_id,
+            dtl.so_tt,
+            dtl.row_id
+    );
 
 -- To khai 03/GTGT
 
