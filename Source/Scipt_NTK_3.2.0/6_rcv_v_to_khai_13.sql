@@ -163,7 +163,7 @@ GROUP BY dtl.hdr_id,
         ) where so_hoa_don is not null and ngay_hoa_don is not null;
 --bo dk ky_hieu_hdon is not null and 
 -- Phu luc 01-3/GTGT
-CREATE OR REPLACE QLT_NTK.VIEW QLT_NTK.RCV_V_PLUC_TKHAI_GTGT_KT03_13 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_TKHAI_GTGT_KT03_13 AS
 SELECT dtl.hdr_id
      , dtl.row_id so_tt
      , dtl.so_tt nhom,
