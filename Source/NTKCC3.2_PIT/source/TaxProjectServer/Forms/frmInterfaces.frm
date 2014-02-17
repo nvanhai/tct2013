@@ -1900,10 +1900,10 @@ Private Sub Command1_Click()
 'str2 = "bs320062100343639   012014001001002002.00</S><S>~~0.000~0.00~0.000~0~0.00</S><S>~~~13/02/2014~~1~1~1~13/01/2014</S></S01>"
 'Barcode_Scaned str2
 '
-'str2 = "aa320052100343639   01201400100100100201/0101/01/1900<S01><S></S><S>~0~0~0~0~0</S><S>~~0.00~0~0.00~0.0~0~0~0</S><S>0~0.00~0~0~0</S><S>~~0.00~0~0.00~0.0~0~0~0<"
-'Barcode_Scaned str2
-'str2 = "aa320052100343639   012014001001002002/S><S>0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>0~0~0~0~0</S><S>~~~13/02/2014~0~1~1~~13/01/2014~0</S></S01>"
-'Barcode_Scaned str2
+str2 = "aa320052100343639   01201400100100100201/0101/01/1900<S01><S></S><S>~0~0~0~0~0</S><S>~~0.00~0~0.00~0.0~0~0~0</S><S>0~0.00~0~0~0</S><S>~~0.00~0~0.00~0.0~0~0~0<"
+Barcode_Scaned str2
+str2 = "aa320052100343639   012014001001002002/S><S>0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>0~0~0~0~0</S><S>~~~13/02/2014~0~1~1~~13/01/2014~0</S></S01>"
+Barcode_Scaned str2
 '
 'str2 = "aa320902100343639   04201400100100100101/0101/01/1900<S01><S></S><S>~0.000~0~0~</S><S>~~~13/02/2014~1~0~0~0~13/01/2014</S></S01>"
 'Barcode_Scaned str2
@@ -1929,10 +1929,10 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 'str2 = "aa320112100343639   042013002002002002~0~0~0~0~~~~0~0</S><S>~</S><S>test~test~~17/02/2014~1~0~~1052</S></S01>"
 'Barcode_Scaned str2
-str2 = "aa320122100343639   04201300100100100201/0114/06/2006<S01><S>2100462770</S><S>~~0~0~0~0~0~0~0~~20~22~0~~30.999"
-Barcode_Scaned str2
-str2 = "aa320122100343639   042013001001002002~0~0~0~0~0~0~0~~~~0~0</S><S>~17/02/2014~test~test~1~~1052</S></S01>"
-Barcode_Scaned str2
+'str2 = "aa320122100343639   04201300100100100201/0114/06/2006<S01><S>2100462770</S><S>~~0~0~0~0~0~0~0~~20~22~0~~30.123"
+'Barcode_Scaned str2
+'str2 = "aa320122100343639   042013001001002002~0~0~0~0~0~0~0~~~~0~0</S><S>~17/02/2014~test~test~1~~1052</S></S01>"
+'Barcode_Scaned str2
 'str2 = "aa320122100343639   04201300200200100201/0114/06/2006<S01><S>2100462770</S><S>~~0~0~0~0~0~0~0~~20~22~0~x~10;20;30"
 'Barcode_Scaned str2
 'str2 = "aa320122100343639   042013002002002002;50;90~0~0~0~0~0~0~0~~~~0~0</S><S>~17/02/2014~test~test~1~~1052</S></S01>"
@@ -2282,6 +2282,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
 
                 If tkps_spl(UBound(tkps_spl) - 1) = "2" Then
                     DisplayMessage "0170", msOKOnly, miCriticalError
+                    StartReceiveForm
                     Exit Sub
                 End If
             End If
@@ -2293,6 +2294,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
 
                 If tkps_spl(UBound(tkps_spl) - 1) = "1" Then
                     DisplayMessage "0170", msOKOnly, miCriticalError
+                    StartReceiveForm
                     Exit Sub
                 End If
             End If
@@ -2304,6 +2306,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
 
                 If Left$(tkps_spl(UBound(tkps_spl) - 7), 1) = "X" Then
                     DisplayMessage "0170", msOKOnly, miCriticalError
+                    StartReceiveForm
                     Exit Sub
                 End If
             End If
@@ -2315,6 +2318,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
 
                 If Left$(tkps_spl(UBound(tkps_spl) - 7), 1) = "1" Then
                     DisplayMessage "0170", msOKOnly, miCriticalError
+                    StartReceiveForm
                     Exit Sub
                 End If
             End If
@@ -2326,6 +2330,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
 
                 If tkps_spl(UBound(tkps_spl) - 1) = "1" Then
                     DisplayMessage "0170", msOKOnly, miCriticalError
+                    StartReceiveForm
                     Exit Sub
                 End If
             End If
@@ -2337,6 +2342,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
 
                 If Len(tkps_spl(UBound(tkps_spl) - 1)) > 0 Then
                     DisplayMessage "0170", msOKOnly, miCriticalError
+                    StartReceiveForm
                     Exit Sub
                 End If
             End If
@@ -2348,6 +2354,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
 
                 If tkps_spl(UBound(tkps_spl) - 1) = "1" Then
                     DisplayMessage "0170", msOKOnly, miCriticalError
+                    StartReceiveForm
                     Exit Sub
                 End If
             End If
@@ -2361,6 +2368,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
 
                 If tkps_spl(UBound(tkps_spl) - 15) = "1" Then
                     DisplayMessage "0170", msOKOnly, miCriticalError
+                    StartReceiveForm
                     Exit Sub
                 End If
             End If
