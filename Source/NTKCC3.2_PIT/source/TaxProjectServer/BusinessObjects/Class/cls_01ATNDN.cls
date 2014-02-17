@@ -1855,7 +1855,7 @@ Public Function InsertDTL() As String
     sSQLVal = sSQLVal & TTHTK & "," & matkhai & "," & LAN_QUET & "," & DANHAN
    
     sSQL = "INSERT INTO TMP_TNDN" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-    SaveErrorLog "", "01A", 0, sSQL
+    
     bln = clsConn.ExecuteDLL(sSQL)
     '-------------------
    
