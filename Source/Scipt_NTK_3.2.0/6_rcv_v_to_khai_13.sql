@@ -86,7 +86,7 @@ FROM
             MAX(dtl.so_thue)                          so_thue ,
             MAX(dtl.ghi_chu)                          ghi_chu
         FROM
-            rcv_gdien_tkhai gd,
+            QLT_NTK.rcv_gdien_tkhai gd,
             (
                 SELECT
                     tkd.hdr_id,
@@ -106,9 +106,9 @@ FROM
                     DECODE(gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL) so_thue,
                     DECODE(gdien.cot_13, tkd.ky_hieu, tkd.gia_tri, NULL) ghi_chu
                 FROM
-                    rcv_tkhai_dtl tkd,
-                    rcv_gdien_tkhai gdien,
-                    rcv_map_ctieu ctieu
+                    QLT_NTK.rcv_tkhai_dtl tkd,
+                    QLT_NTK.rcv_gdien_tkhai gdien,
+                    QLT_NTK.rcv_map_ctieu ctieu
                 WHERE
                     (
                         ctieu.gdn_id = gdien.id)
@@ -537,9 +537,9 @@ CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_GTGT_KT0201_13
                     DECODE (gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL ) so_thue,
                     DECODE (gdien.cot_13, tkd.ky_hieu, tkd.gia_tri, NULL ) ghi_chu
                 FROM
-                    rcv_tkhai_dtl tkd,
-                    rcv_gdien_tkhai gdien,
-                    rcv_map_ctieu ctieu
+                    QLT_NTK.rcv_tkhai_dtl tkd,
+                    QLT_NTK.rcv_gdien_tkhai gdien,
+                    QLT_NTK.rcv_map_ctieu ctieu
                 WHERE
                     (
                         ctieu.gdn_id = gdien.ID)
