@@ -1,5 +1,5 @@
 -- To khai 01/GTGT
-CREATE  or replace VIEW RCV_V_TKHAI_GTGT_KT13 AS
+CREATE  or replace VIEW QLT_NTK.RCV_V_TKHAI_GTGT_KT13 AS
 SELECT  DTL.HDR_ID
         , DTL.CTK_ID
         , Max(DTL.SO_TT)            SO_TT
@@ -19,10 +19,10 @@ FROM    (
                 , Replace(Decode(GDIEN.COT_02, TKD.KY_HIEU, TKD.GIA_TRI, Null),'%','')  SOTHUE_DTNT
                 , Decode(GDIEN.COT_01, TKD.KY_HIEU, '['||GDIEN.KY_HIEU_CTIEU||']', Null)   KY_HIEU_CTIEU_DS
                 , Decode(GDIEN.COT_02, TKD.KY_HIEU, '['||GDIEN.KY_HIEU_CTIEU||']', Null)   KY_HIEU_CTIEU_ST
-        FROM    Schemas.RCV_TKHAI_DTL   TKD,
+        FROM    RCV_TKHAI_DTL   TKD,
                 (
                 Select GD.*, CT.KY_HIEU, CT.KY_HIEU_CTIEU
-                From Schemas.RCV_GDIEN_TKHAI GD, Schemas.rcv_map_ctieu   CT
+                From RCV_GDIEN_TKHAI GD, RCV_MAP_CTIEU   CT
                 where CT.GDN_ID (+) = GD.ID
                     And GD.LOAI_DLIEU = '01_GTGT13'
                 ) GDIEN
@@ -31,11 +31,9 @@ FROM    (
                 --And HDR_ID (+) = SYS_CONTEXT ('PARAMS', 'v_Hdr_ID')
         ) DTL
 GROUP BY DTL.HDR_ID, DTL.CTK_ID;
-
-
 -- Phu luc 01-1/GTGT
 -- Phu luc 01-1/GTGT
-CREATE  or replace VIEW RCV_V_PLUC_TKHAI_GTGT_KT01_13 AS
+CREATE  or replace VIEW QLT_NTK.RCV_V_PLUC_TKHAI_GTGT_KT01_13 AS
 SELECT
     "HDR_ID",
     "ROW_ID",
@@ -56,7 +54,6 @@ FROM
     (
         SELECT
             dtl.hdr_id
-
             ,
             dtl.row_id                                row_id ,
             dtl.so_tt                                 so_tt ,
@@ -73,7 +70,7 @@ FROM
             MAX(dtl.so_thue)                          so_thue ,
             MAX(dtl.ghi_chu)                          ghi_chu
         FROM
-            Schemas.RCV_GDIEN_TKHAI gd,
+            rcv_gdien_tkhai gd,
             (
                 SELECT
                     tkd.hdr_id,
@@ -93,9 +90,9 @@ FROM
                     DECODE(gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL) so_thue,
                     DECODE(gdien.cot_13, tkd.ky_hieu, tkd.gia_tri, NULL) ghi_chu
                 FROM
-                    Schemas.RCV_TKHAI_DTL tkd,
-                    Schemas.RCV_GDIEN_TKHAI gdien,
-                    Schemas.rcv_map_ctieu ctieu
+                    rcv_tkhai_dtl tkd,
+                    rcv_gdien_tkhai gdien,
+                    rcv_map_ctieu ctieu
                 WHERE
                     (
                         ctieu.gdn_id = gdien.id)
@@ -116,10 +113,8 @@ FROM
 WHERE
     so_hoa_don IS NOT NULL
 AND ngay_hoa_don IS NOT NULL;
-
-
 -- Phu luc 01-2/GTGT
-CREATE  or replace VIEW RCV_V_PLUC_TKHAI_GTGT_KT02_13 AS
+CREATE  or replace VIEW QLT_NTK.RCV_V_PLUC_TKHAI_GTGT_KT02_13 AS
 Select "HDR_ID","SO_TT","ROW_ID","NHOM_CTIEU","KY_HIEU_MAU_HDON","KY_HIEU_HDON","SO_HOA_DON","NGAY_HOA_DON","TIN","TEN_DTNT","TEN_HANG","DOANH_SO","THUE_XUAT","SO_THUE","GHI_CHU"
 From (SELECT dtl.hdr_id
      , dtl.so_tt so_tt
@@ -136,7 +131,7 @@ From (SELECT dtl.hdr_id
      , MAX(dtl.thue_xuat) thue_xuat
      , MAX(dtl.so_thue) so_thue
      , MAX(dtl.ghi_chu) ghi_chu
-FROM Schemas.RCV_GDIEN_TKHAI gd,
+FROM rcv_gdien_tkhai gd,
 (
 SELECT   tkd.hdr_id,
          tkd.row_id row_id,
@@ -153,9 +148,9 @@ SELECT   tkd.hdr_id,
          replace(replace(DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL),'%',''),',','.') thue_xuat,
          DECODE(gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL) so_thue,
          DECODE(gdien.cot_13, tkd.ky_hieu, tkd.gia_tri, NULL) ghi_chu
-  FROM Schemas.RCV_TKHAI_DTL tkd,
-       Schemas.RCV_GDIEN_TKHAI gdien,
-       Schemas.rcv_map_ctieu ctieu
+  FROM rcv_tkhai_dtl tkd,
+       rcv_gdien_tkhai gdien,
+       rcv_map_ctieu ctieu
   WHERE (ctieu.gdn_id = gdien.id)
   AND (ctieu.ky_hieu = tkd.ky_hieu)
     AND (tkd.loai_dlieu = '01_02_GTGT13')
@@ -166,10 +161,9 @@ GROUP BY dtl.hdr_id,
          dtl.so_tt,
          dtl.row_id
         ) where so_hoa_don is not null and ngay_hoa_don is not null;
-/* bo dk ky_hieu_hdon is not null and */;
-
+--bo dk ky_hieu_hdon is not null and 
 -- Phu luc 01-3/GTGT
-CREATE OR REPLACE VIEW RCV_V_PLUC_TKHAI_GTGT_KT03_13 AS
+CREATE OR REPLACE QLT_NTK.VIEW QLT_NTK.RCV_V_PLUC_TKHAI_GTGT_KT03_13 AS
 SELECT dtl.hdr_id
      , dtl.row_id so_tt
      , dtl.so_tt nhom,
@@ -205,7 +199,7 @@ SELECT dtl.hdr_id
      MAX(dtl.TKHHNK_vnd) TKHHNK_vnd,
      MAX(dtl.Chung_tu_tt_khac) Chung_tu_tt_khac,
      MAX(dtl.Ghi_chu) Ghi_chu
-FROM Schemas.RCV_GDIEN_TKHAI gd,
+FROM rcv_gdien_tkhai gd,
 (
   SELECT tkd.hdr_id,
          tkd.row_id row_id,
@@ -243,9 +237,9 @@ FROM Schemas.RCV_GDIEN_TKHAI gd,
          DECODE(gdien.cot_31, tkd.ky_hieu, tkd.gia_tri, NULL) TKHHNK_vnd,
          DECODE(gdien.cot_32, tkd.ky_hieu, tkd.gia_tri, NULL) Chung_tu_tt_khac,
          DECODE(gdien.cot_33, tkd.ky_hieu, tkd.gia_tri, NULL) Ghi_chu
-  FROM Schemas.RCV_TKHAI_DTL tkd,
-       Schemas.RCV_GDIEN_TKHAI gdien,
-       Schemas.rcv_map_ctieu ctieu
+  FROM rcv_tkhai_dtl tkd,
+       rcv_gdien_tkhai gdien,
+       rcv_map_ctieu ctieu
   WHERE (ctieu.gdn_id = gdien.id)
   AND (ctieu.ky_hieu = tkd.ky_hieu)
     AND (tkd.loai_dlieu = '01_03_GTGT13')
@@ -258,14 +252,14 @@ GROUP BY dtl.hdr_id,
 
 
 -- Phu luc 01-4A/GTGT
-CREATE OR REPLACE VIEW RCV_V_TKHAI_GTGT_KT_PLUC4A_13 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_GTGT_KT_PLUC4A_13 AS
 SELECT dtl.hdr_id
      , dtl.so_tt
      , MAX(dtl.ctg_id) ctg_id
      , gd.ten_ctieu
      , MAX(dtl.gia_tri_ctieu) gia_tri_ctieu
      , MAX(dtl.kieu_dlieu_ctieu) kieu_dlieu_ctieu
-FROM Schemas.RCV_GDIEN_TKHAI gd,
+FROM rcv_gdien_tkhai gd,
 (
   SELECT tkd.hdr_id,
          gdien.so_tt so_tt,
@@ -274,9 +268,9 @@ FROM Schemas.RCV_GDIEN_TKHAI gd,
          DECODE(gdien.cot_01, tkd.ky_hieu, gdien.ma_ctieu, NULL) ctg_id,
          gdien.id,
          tkd.row_id
-  FROM Schemas.RCV_TKHAI_DTL tkd,
-       Schemas.RCV_GDIEN_TKHAI gdien,
-       Schemas.rcv_map_ctieu ctieu
+  FROM rcv_tkhai_dtl tkd,
+       rcv_gdien_tkhai gdien,
+       rcv_map_ctieu ctieu
   WHERE (ctieu.gdn_id = gdien.id)
   AND (ctieu.ky_hieu = tkd.ky_hieu)
     AND (tkd.loai_dlieu = '01_4A_GTGT13')
@@ -290,14 +284,14 @@ GROUP BY dtl.hdr_id,
          gd.ten_ctieu;
 
 -- Phu luc 01-4B/GTGT
-CREATE OR REPLACE VIEW RCV_V_TKHAI_GTGT_KT_PLUC4B_13 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_GTGT_KT_PLUC4B_13 AS
 SELECT dtl.hdr_id
      , dtl.so_tt
      , MAX(dtl.ctg_id) ctg_id
      , gd.ten_ctieu
      , MAX(dtl.gia_tri_ctieu) gia_tri_ctieu
      , MAX(dtl.kieu_dlieu_ctieu) kieu_dlieu_ctieu
-FROM Schemas.RCV_GDIEN_TKHAI gd,
+FROM rcv_gdien_tkhai gd,
 (
   SELECT tkd.hdr_id,
          gdien.so_tt,
@@ -306,9 +300,9 @@ FROM Schemas.RCV_GDIEN_TKHAI gd,
     	 DECODE(gdien.cot_01, tkd.ky_hieu, gdien.ma_ctieu, NULL) ctg_id,
          gdien.id,
          tkd.row_id
-  FROM Schemas.RCV_TKHAI_DTL tkd,
-       Schemas.RCV_GDIEN_TKHAI gdien,
-       Schemas.rcv_map_ctieu ctieu
+  FROM rcv_tkhai_dtl tkd,
+       rcv_gdien_tkhai gdien,
+       rcv_map_ctieu ctieu
   WHERE (ctieu.gdn_id = gdien.id)
 	AND (ctieu.ky_hieu = tkd.ky_hieu)
     AND (tkd.loai_dlieu = '01_4B_GTGT13')
@@ -322,7 +316,7 @@ GROUP BY dtl.hdr_id,
          gd.ten_ctieu;
 
 -- Phu luc 01-5/GTGT
-CREATE OR REPLACE VIEW RCV_V_PLUC_TKHAI_GTGT_KT05_13 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_TKHAI_GTGT_KT05_13 AS
 SELECT dtl.hdr_id
      , dtl.row_id  so_tt
      , MAX(dtl.gia_tri_ky_kkhai)        so_ctu
@@ -330,7 +324,7 @@ SELECT dtl.hdr_id
      , MAX(dtl.noi_nop_tien)    noi_nop_tien
      , MAX(dtl.co_quan_thue)            co_quan_thue
      , MAX(dtl.so_tien)       so_tien
-FROM Schemas.RCV_GDIEN_TKHAI gd,
+FROM rcv_gdien_tkhai gd,
 (
   SELECT tkd.hdr_id,
          tkd.row_id,
@@ -343,9 +337,9 @@ FROM Schemas.RCV_GDIEN_TKHAI gd,
        DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) noi_nop_tien,
        DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL) co_quan_thue,
        DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL) so_tien
-  FROM Schemas.RCV_TKHAI_DTL tkd,
-       Schemas.RCV_GDIEN_TKHAI gdien,
-       Schemas.rcv_map_ctieu ctieu
+  FROM rcv_tkhai_dtl tkd,
+       rcv_gdien_tkhai gdien,
+       rcv_map_ctieu ctieu
   WHERE (ctieu.gdn_id = gdien.id)
   AND (ctieu.ky_hieu = tkd.ky_hieu)
     AND (tkd.loai_dlieu = '01_05_GTGT13')
@@ -357,7 +351,7 @@ GROUP BY dtl.hdr_id,
          gd.ma_ctieu;
 
 -- Phu luc 01-6/GTGT
-CREATE OR REPLACE VIEW RCV_V_PLUC_TKHAI_GTGT_KT06_13 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_TKHAI_GTGT_KT06_13 AS
 SELECT dtl.hdr_id
      , dtl.row_id  so_tt
      , MAX(dtl.ten_cs) ten_cs
@@ -368,7 +362,7 @@ SELECT dtl.hdr_id
      , MAX(dtl.so_thue_pn1) so_thue_pn1
      , MAX(dtl.so_thue_pn2) so_thue_pn2
      , MAX(dtl.CQT) CQT
-FROM Schemas.RCV_GDIEN_TKHAI gd,
+FROM rcv_gdien_tkhai gd,
 (
   SELECT tkd.hdr_id,
          tkd.row_id,
@@ -382,10 +376,9 @@ FROM Schemas.RCV_GDIEN_TKHAI gd,
        DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL) so_thue_pn1,
        DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL) so_thue_pn2,
        DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL) CQT
-
-  FROM Schemas.RCV_TKHAI_DTL tkd,
-       Schemas.RCV_GDIEN_TKHAI gdien,
-       Schemas.rcv_map_ctieu ctieu
+  FROM rcv_tkhai_dtl tkd,
+       rcv_gdien_tkhai gdien,
+       rcv_map_ctieu ctieu
   WHERE (ctieu.gdn_id = gdien.id)
   AND (ctieu.ky_hieu = tkd.ky_hieu)
     AND (tkd.loai_dlieu = '01_06_GTGT13')
@@ -400,7 +393,7 @@ GROUP BY dtl.hdr_id,
 
 -- Phu luc 01-7
 
-CREATE OR REPLACE VIEW RCV_V_PLUC_TKHAI_GTGT_KT0713 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_TKHAI_GTGT_KT0713 AS
 SELECT dtl.hdr_id
      , dtl.row_id so_tt
      , dtl.so_tt nhom
@@ -409,7 +402,7 @@ SELECT dtl.hdr_id
      , MAX(dtl.So_xe_ban_td) So_xe_ban_td
      , MAX(dtl.Gia_tren_hd) Gia_tren_hd
      , MAX(dtl.Ghi_chu) Ghi_chu
-FROM Schemas.RCV_GDIEN_TKHAI gd,
+FROM rcv_gdien_tkhai gd,
 (
   SELECT tkd.hdr_id,
          tkd.row_id row_id,
@@ -420,9 +413,9 @@ FROM Schemas.RCV_GDIEN_TKHAI gd,
          DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) So_xe_ban_td,
          DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL) Gia_tren_hd,
          DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL) Ghi_chu
-  FROM Schemas.RCV_TKHAI_DTL tkd,
-       Schemas.RCV_GDIEN_TKHAI gdien,
-       Schemas.rcv_map_ctieu ctieu
+  FROM rcv_tkhai_dtl tkd,
+       rcv_gdien_tkhai gdien,
+       rcv_map_ctieu ctieu
   WHERE (ctieu.gdn_id = gdien.id)
   AND (ctieu.ky_hieu = tkd.ky_hieu)
     AND (tkd.loai_dlieu = '01_07_GTGT13')
@@ -434,7 +427,7 @@ GROUP BY dtl.hdr_id,
          dtl.row_id;
 
 --To khai 02/GTGT
-CREATE OR REPLACE VIEW RCV_V_TKHAI_GTGT_DTU_13 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_GTGT_DTU_13 AS
 SELECT dtl.hdr_id
      , dtl.id
      , dtl.ctk_id
@@ -446,7 +439,7 @@ SELECT dtl.hdr_id
      , MAX(dtl.kieu_dlieu_st) kieu_dlieu_st
      , MAX(dtl.ky_hieu_ctieu_ds) ky_hieu_ctieu_ds
      , MAX(dtl.ky_hieu_ctieu_st) ky_hieu_ctieu_st
-FROM Schemas.RCV_GDIEN_TKHAI gd,
+FROM rcv_gdien_tkhai gd,
 (
   SELECT tkd.hdr_id hdr_id,
          gdien.id id,
@@ -459,9 +452,9 @@ FROM Schemas.RCV_GDIEN_TKHAI gd,
          DECODE(gdien.cot_02, ctieu.ky_hieu, ctieu.kieu_dlieu, NULL) kieu_dlieu_st,
          DECODE(gdien.cot_01, tkd.ky_hieu, '['||ctieu.ky_hieu_ctieu||']', NULL) ky_hieu_ctieu_ds,
          DECODE(gdien.cot_02, tkd.ky_hieu, '['||ctieu.ky_hieu_ctieu||']', NULL) ky_hieu_ctieu_st
-  FROM Schemas.RCV_TKHAI_DTL tkd,
-       Schemas.RCV_GDIEN_TKHAI gdien,
-       Schemas.rcv_map_ctieu ctieu
+  FROM rcv_tkhai_dtl tkd,
+       rcv_gdien_tkhai gdien,
+       rcv_map_ctieu ctieu
   WHERE (ctieu.gdn_id = gdien.id)
   AND (ctieu.ky_hieu = tkd.ky_hieu)
     AND (tkd.loai_dlieu = '02_GTGT13')
@@ -473,7 +466,7 @@ GROUP BY dtl.hdr_id,
          dtl.id;
 
 
-CREATE OR REPLACE VIEW RCV_V_PLUC_GTGT_KT0201_13 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_GTGT_KT0201_13 AS
 (/* Formatted on 2011/08/11 13:39 (Formatter Plus v4.8.7) */
 SELECT   dtl.hdr_id,dtl.so_tt-2  so_tt, dtl.row_id row_id,
          '4' nhom_ctieu,
@@ -520,8 +513,6 @@ SELECT   dtl.hdr_id,dtl.so_tt-2  so_tt, dtl.row_id row_id,
                          tkd.ky_hieu, tkd.gia_tri,
                          NULL
                         ) doanh_so,
-
-
                  REPLACE (REPLACE (DECODE (gdien.cot_11,
                                            tkd.ky_hieu, tkd.gia_tri,
                                            NULL
@@ -540,8 +531,8 @@ SELECT   dtl.hdr_id,dtl.so_tt-2  so_tt, dtl.row_id row_id,
                          tkd.ky_hieu, tkd.gia_tri,
                          NULL
                         ) ghi_chu
-            FROM Schemas.RCV_TKHAI_DTL tkd, Schemas.RCV_GDIEN_TKHAI gdien,
-                 Schemas.rcv_map_ctieu ctieu
+            FROM rcv_tkhai_dtl tkd, rcv_gdien_tkhai gdien,
+                 rcv_map_ctieu ctieu
            WHERE (ctieu.gdn_id = gdien.ID)
              AND (ctieu.ky_hieu = tkd.ky_hieu)
              AND (tkd.loai_dlieu IN
@@ -563,7 +554,7 @@ GROUP BY dtl.hdr_id,dtl.so_tt, dtl.row_id
 
 -- To khai 03/GTGT
 
-CREATE OR REPLACE VIEW RCV_V_TKHAI_03GTGT_13 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_03GTGT_13 AS
 SELECT
     dtl.hdr_id,
     dtl.ctk_id,
@@ -572,7 +563,7 @@ SELECT
     MAX(dtl.kieu_dlieu_ds)    kieu_dlieu_ds ,
     MAX(dtl.ky_hieu_ctieu_st) ky_hieu_ctieu_st
 FROM
-    Schemas.RCV_GDIEN_TKHAI gd,
+    rcv_gdien_tkhai gd,
     (
         SELECT
             tkd.hdr_id                                                             hdr_id,
@@ -585,9 +576,9 @@ FROM
             DECODE(gdien.cot_01, ctieu.ky_hieu, ctieu.kieu_dlieu, NULL)            kieu_dlieu_ds,
             DECODE(gdien.cot_01, tkd.ky_hieu, ctieu.ky_hieu_ctieu, NULL)           ky_hieu_ctieu_st
         FROM
-            Schemas.RCV_TKHAI_DTL tkd,
-            Schemas.RCV_GDIEN_TKHAI gdien,
-            Schemas.rcv_map_ctieu ctieu
+            rcv_tkhai_dtl tkd,
+            rcv_gdien_tkhai gdien,
+            rcv_map_ctieu ctieu
         WHERE
             (
                 ctieu.gdn_id = gdien.id)
@@ -607,7 +598,7 @@ GROUP BY
 
 
 --To khai 04/GTGT
-CREATE OR REPLACE VIEW RCV_V_TKHAI_04GTGT_13 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_04GTGT_13 AS
 SELECT
     dtl.hdr_id,
     dtl.ctk_id,
@@ -621,7 +612,7 @@ SELECT
     MAX(dtl.ky_hieu_ctieu_DTHH_chiu_thue) ky_hieu_ctieu_DTHH_chiu_thue,
     MAX(dtl.ky_hieu_ctieu_Thue_GTGT) ky_hieu_ctieu_Thue_GTGT
 FROM
-    Schemas.RCV_GDIEN_TKHAI gd,
+    rcv_gdien_tkhai gd,
     (
         SELECT
             tkd.hdr_id                                                             hdr_id,
@@ -639,9 +630,9 @@ FROM
             DECODE(gdien.cot_03, tkd.ky_hieu, ctieu.ky_hieu_ctieu, NULL)  ky_hieu_ctieu_DTHH_chiu_thue,
             DECODE(gdien.cot_04, tkd.ky_hieu, ctieu.ky_hieu_ctieu, NULL)  ky_hieu_ctieu_Thue_GTGT
         FROM
-            Schemas.RCV_TKHAI_DTL tkd,
-            Schemas.RCV_GDIEN_TKHAI gdien,
-            Schemas.rcv_map_ctieu ctieu
+            rcv_tkhai_dtl tkd,
+            rcv_gdien_tkhai gdien,
+            rcv_map_ctieu ctieu
         WHERE
             (
                 ctieu.gdn_id = gdien.id)
@@ -660,7 +651,7 @@ GROUP BY
 
 
 -- Phu luc 04-1/GTGT
-CREATE or replace  VIEW RCV_V_PLUC_TK04_01_GTGT_13 AS
+CREATE or replace  VIEW QLT_NTK.RCV_V_PLUC_TK04_01_GTGT_13 AS
 SELECT
     "HDR_ID",
     "ROW_ID",
@@ -679,7 +670,6 @@ FROM
     (
         SELECT
             dtl.hdr_id
-
             ,
             dtl.row_id                                row_id ,
             dtl.so_tt                                 so_tt ,
@@ -694,7 +684,7 @@ FROM
             MAX(dtl.doanh_so)                         doanh_so ,
             MAX(dtl.ghi_chu)                          ghi_chu
         FROM
-            Schemas.RCV_GDIEN_TKHAI gd,
+            rcv_gdien_tkhai gd,
             (
                 SELECT
                     tkd.hdr_id,
@@ -711,9 +701,9 @@ FROM
                     DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL)              doanh_so,                   
                     DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL) ghi_chu
                 FROM
-                    Schemas.RCV_TKHAI_DTL tkd,
-                    Schemas.RCV_GDIEN_TKHAI gdien,
-                    Schemas.rcv_map_ctieu ctieu
+                    rcv_tkhai_dtl tkd,
+                    rcv_gdien_tkhai gdien,
+                    rcv_map_ctieu ctieu
                 WHERE
                     (
                         ctieu.gdn_id = gdien.id)
@@ -728,7 +718,6 @@ FROM
                 dtl.id = gd.id)
         GROUP BY
             dtl.hdr_id,
-
             dtl.so_tt,
             dtl.row_id )
 WHERE
@@ -740,7 +729,7 @@ AND ngay_hoa_don IS NOT NULL;
 -- khong thay doi
 
 -- To khai 01A/TNDN, 01B/TNDN
-CREATE OR REPLACE VIEW RCV_V_TKHAI_TNDN_01_13 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_TNDN_01_13 AS
 SELECT
     dtl.hdr_id,
     dtl.ctk_id,
@@ -749,7 +738,7 @@ SELECT
     MAX(dtl.kieu_dlieu_ds)    kieu_dlieu_ds ,
     MAX(dtl.ky_hieu_ctieu_st) ky_hieu_ctieu_st
 FROM
-    Schemas.RCV_GDIEN_TKHAI gd,
+    rcv_gdien_tkhai gd,
     (
         SELECT
             tkd.hdr_id                                                             hdr_id,
@@ -762,9 +751,9 @@ FROM
             DECODE(gdien.cot_01, ctieu.ky_hieu, ctieu.kieu_dlieu, NULL)            kieu_dlieu_ds,
             DECODE(gdien.cot_01, tkd.ky_hieu, ctieu.ky_hieu_ctieu, NULL)           ky_hieu_ctieu_st
         FROM
-            Schemas.RCV_TKHAI_DTL tkd,
-            Schemas.RCV_GDIEN_TKHAI gdien,
-            Schemas.rcv_map_ctieu ctieu
+            rcv_tkhai_dtl tkd,
+            rcv_gdien_tkhai gdien,
+            rcv_map_ctieu ctieu
         WHERE
             (
                 ctieu.gdn_id = gdien.id)
@@ -784,7 +773,7 @@ GROUP BY
 
 
 -- Phu luc 01-1/TNDN kem theo to khai 01A/TNDN, 01B/TNDN
-CREATE OR REPLACE VIEW RCV_V_PLUC_TKHAI_TNDN_01_13
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_TKHAI_TNDN_01_13
 (hdr_id, row_id, so_tt, ten_dn, mst, co_quan_quan_ly, ty_le, so_thue_phan_bo)
 AS
 SELECT
@@ -797,7 +786,7 @@ SELECT
     MAX(dtl.ty_le)                ty_le ,
     MAX(dtl.so_thue_phan_bo)      so_thue_phan_bo
 FROM
-    Schemas.RCV_GDIEN_TKHAI gd,
+    rcv_gdien_tkhai gd,
     (
         SELECT
             tkd.hdr_id,
@@ -811,9 +800,9 @@ FROM
             DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL) ty_le,
             DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) so_thue_phan_bo
         FROM
-            Schemas.RCV_TKHAI_DTL tkd,
-            Schemas.RCV_GDIEN_TKHAI gdien,
-            Schemas.rcv_map_ctieu ctieu
+            rcv_tkhai_dtl tkd,
+            rcv_gdien_tkhai gdien,
+            rcv_map_ctieu ctieu
         WHERE
             (
                 ctieu.gdn_id = gdien.id)
@@ -836,7 +825,7 @@ GROUP BY
 -- To khai 02/TNDN
 -- view to khai khong thay doi
 -- Phu luc 02-1/TNDN
-CREATE OR REPLACE VIEW RCV_V_PLUC_TKHAI_TNDN_02_13
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_TKHAI_TNDN_02_13
 (hdr_id, row_id, so_tt, ten_ben_cn, ma_so_thue, dia_chi, HD_chuyen_nhuong)
 AS
 SELECT
@@ -848,7 +837,7 @@ SELECT
     MAX(dtl.dia_chi)                dia_chi ,
     MAX(dtl.HD_chuyen_nhuong)      HD_chuyen_nhuong
 FROM
-    Schemas.RCV_GDIEN_TKHAI gd,
+    rcv_gdien_tkhai gd,
     (
         SELECT
             tkd.hdr_id,
@@ -861,9 +850,9 @@ FROM
             DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) dia_chi,
             DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL) HD_chuyen_nhuong
         FROM
-            Schemas.RCV_TKHAI_DTL tkd,
-            Schemas.RCV_GDIEN_TKHAI gdien,
-            Schemas.rcv_map_ctieu ctieu
+            rcv_tkhai_dtl tkd,
+            rcv_gdien_tkhai gdien,
+            rcv_map_ctieu ctieu
         WHERE
             (
                 ctieu.gdn_id = gdien.id)
@@ -884,7 +873,7 @@ GROUP BY
     
    
  --To khai 01/TBVMT  
- CREATE OR REPLACE VIEW RCV_V_TKHAI_TBVMT_01 AS
+ CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_TBVMT_01 AS
 SELECT dtl.hdr_id
      , dtl.row_id
      , dtl.so_tt
@@ -893,7 +882,7 @@ SELECT dtl.hdr_id
      , MAX(dtl.muc_thue) muc_thue
      , MAX(dtl.Thue_BVMT) Thue_BVMT
      , MAX(dtl.ma_hang_hoa) ma_hang_hoa    
-FROM Schemas.RCV_GDIEN_TKHAI gd,
+FROM rcv_gdien_tkhai gd,
 (
   SELECT tkd.hdr_id,
          NVL(tkd.row_id,0) row_id,
@@ -904,9 +893,9 @@ FROM Schemas.RCV_GDIEN_TKHAI gd,
          DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) muc_thue,
          DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL) Thue_BVMT,
          DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL) ma_hang_hoa
-  FROM Schemas.RCV_TKHAI_DTL tkd,
-       Schemas.RCV_GDIEN_TKHAI gdien,
-       Schemas.rcv_map_ctieu ctieu
+  FROM rcv_tkhai_dtl tkd,
+       rcv_gdien_tkhai gdien,
+       rcv_map_ctieu ctieu
   WHERE (ctieu.gdn_id = gdien.id)
   AND (ctieu.ky_hieu = tkd.ky_hieu)
     AND (tkd.loai_dlieu = '01_TBVMT13')
@@ -921,7 +910,7 @@ GROUP BY dtl.hdr_id,
 
 
 -- Phu luc 2/TBVMT kem theo to khai 01/TBVMTT
-CREATE OR REPLACE VIEW RCV_V_PLUC_TKHAI_TBVMT_01_13
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_TKHAI_TBVMT_01_13
 (hdr_id, row_id, so_tt, ma_hang_hoa, ten_dn, mst, co_quan_thue, so_thue_tieu_thu_noi_dia, tong_so_than_thieu_thu, ty_le_phan_bo, san_luong_than_mua, muc_thue_bvmt, muc_thue_phat_sinh_phai_nop)
 AS
 SELECT
@@ -939,7 +928,7 @@ SELECT
 	MAX(dtl.muc_thue_bvmt)      			muc_thue_bvmt,
 	MAX(dtl.muc_thue_phat_sinh_phai_nop)	muc_thue_phat_sinh_phai_nop
 FROM
-    Schemas.RCV_GDIEN_TKHAI gd,
+    rcv_gdien_tkhai gd,
     (
         SELECT
             tkd.hdr_id,
@@ -958,9 +947,9 @@ FROM
 			DECODE(gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL) muc_thue_bvmt,
 			DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL) muc_thue_phat_sinh_phai_nop
         FROM
-            Schemas.RCV_TKHAI_DTL tkd,
-            Schemas.RCV_GDIEN_TKHAI gdien,
-            Schemas.rcv_map_ctieu ctieu
+            rcv_tkhai_dtl tkd,
+            rcv_gdien_tkhai gdien,
+            rcv_map_ctieu ctieu
         WHERE
             (
                 ctieu.gdn_id = gdien.id)
@@ -980,7 +969,7 @@ GROUP BY
     dtl.so_tt;
 
 -- Phu luc 01/KHBS cho to khai 01/GTGT
-CREATE OR REPLACE VIEW RCV_V_PLUC_KHBS_GTGT_KT13 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_KHBS_GTGT_KT13 AS
 SELECT dtl.hdr_id
      , dtl.so_tt so_tt
      , dtl.row_id row_id
@@ -989,7 +978,7 @@ SELECT dtl.hdr_id
      , MAX(dtl.so_da_kk) so_da_kk
      , MAX(dtl.so_dieu_chinh) so_dieu_chinh
      , MAX(dtl.so_chenh_lech) so_chenh_lech
-FROM Schemas.RCV_GDIEN_TKHAI gd,
+FROM rcv_gdien_tkhai gd,
 (
 SELECT   tkd.hdr_id,
          tkd.row_id row_id,
@@ -1000,9 +989,9 @@ SELECT   tkd.hdr_id,
     	   DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL) so_da_kk,
     	   DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) so_dieu_chinh,
     	   DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL) so_chenh_lech
-  FROM Schemas.RCV_TKHAI_DTL tkd,
-       Schemas.RCV_GDIEN_TKHAI gdien,
-       Schemas.rcv_map_ctieu ctieu
+  FROM rcv_tkhai_dtl tkd,
+       rcv_gdien_tkhai gdien,
+       rcv_map_ctieu ctieu
   WHERE (ctieu.gdn_id = gdien.id)
 	AND (ctieu.ky_hieu = tkd.ky_hieu)
     AND (tkd.loai_dlieu = 'KHBS_01_GTGT13')
@@ -1015,13 +1004,13 @@ GROUP BY dtl.hdr_id,
 
 
 -- Phu luc 01/KHBS cho cac to khai con lai theo TT156
-CREATE OR REPLACE VIEW RCV_V_PLUC_KHBS13 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_KHBS13 AS
 SELECT   dtl.hdr_id, dtl.so_tt so_tt, dtl.row_id row_id,
             MAX (dtl.ten_ctieu_dc) ten_ctieu_dc, MAX (dtl.ma_ctieu) ma_ctieu,
             MAX (dtl.so_da_kk) so_da_kk, MAX (dtl.so_dieu_chinh)
                                                                 so_dieu_chinh,
             MAX (dtl.so_chenh_lech) so_chenh_lech
-       FROM Schemas.RCV_GDIEN_TKHAI gd,
+       FROM rcv_gdien_tkhai gd,
             (SELECT tkd.hdr_id, tkd.row_id row_id, gdien.ID,
                     gdien.so_tt so_tt,
                     DECODE (gdien.cot_01,
@@ -1044,9 +1033,9 @@ SELECT   dtl.hdr_id, dtl.so_tt so_tt, dtl.row_id row_id,
                             tkd.ky_hieu, tkd.gia_tri,
                             NULL
                            ) so_chenh_lech
-               FROM Schemas.RCV_TKHAI_DTL tkd,
-                    Schemas.RCV_GDIEN_TKHAI gdien,
-                    Schemas.rcv_map_ctieu ctieu
+               FROM rcv_tkhai_dtl tkd,
+                    rcv_gdien_tkhai gdien,
+                    rcv_map_ctieu ctieu
               WHERE (ctieu.gdn_id = gdien.ID)
                 AND (ctieu.ky_hieu = tkd.ky_hieu)
                 AND (   tkd.loai_dlieu = 'KHBS_01A_TNDN13'
@@ -1083,7 +1072,7 @@ SELECT   dtl.hdr_id, dtl.so_tt so_tt, dtl.row_id row_id,
    GROUP BY dtl.hdr_id, dtl.so_tt, dtl.row_id;
 
  --To khai 01/TAIN
-CREATE OR REPLACE VIEW RCV_V_TKHAI_TNGUYEN_01 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_TNGUYEN_01 AS
 select hdr_id
       , row_id
       , so_tt
@@ -1112,7 +1101,7 @@ SELECT dtl.hdr_id
      , MAX(dtl.thue_psinh_tky_dtnt) thue_psinh_tky_dtnt
      , MAX(dtl.thue_mien_giam_dtnt) thue_mien_giam_dtnt
      , MAX(dtl.thue_phai_nop_dtnt) thue_phai_nop_dtnt
-FROM Schemas.RCV_GDIEN_TKHAI gd,
+FROM rcv_gdien_tkhai gd,
 (
   SELECT tkd.hdr_id,
          NVL(tkd.row_id,0) row_id,
@@ -1128,9 +1117,9 @@ FROM Schemas.RCV_GDIEN_TKHAI gd,
          DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL) thue_mien_giam_dtnt,
          DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL) thue_psinh_tky_dtnt,
          DECODE(gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL) thue_phai_nop_dtnt
-  FROM Schemas.RCV_TKHAI_DTL tkd,
-       Schemas.RCV_GDIEN_TKHAI gdien,
-       Schemas.rcv_map_ctieu ctieu
+  FROM rcv_tkhai_dtl tkd,
+       rcv_gdien_tkhai gdien,
+       rcv_map_ctieu ctieu
   WHERE (ctieu.gdn_id = gdien.id)
 	AND (ctieu.ky_hieu = tkd.ky_hieu)
     AND ( tkd.loai_dlieu = '01_TAIN13')
@@ -1141,6 +1130,4 @@ GROUP BY dtl.hdr_id,
          dtl.row_id
          , dtl.so_tt
 );
-
-
 
