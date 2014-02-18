@@ -1939,7 +1939,10 @@ Private Sub Command1_Click()
 'str2 = "aa320070100100079   02201400100100100101/0101/01/2009<S01><S>Biªn lai thu phÝ, lÖ phÝ kh«ng cã mÖnh gi¸~01BLP3-001~AB-14P~10~0000001~0000010~01/01/2015~fvgfsgvs~fvdvbfdb~6868686868~</S><S>~18/02/2014~Hïng</S></S01>"
 'Barcode_Scaned str2
 
-str2 = "aa320090100100079   04201300100100100101/0101/01/2010<S01><S>18/02/2014</S><S>01BLP3-001~Biªn lai thu phÝ, lÖ phÝ kh«ng cã mÖnh gi¸~AB-14P~0000001~0000010~10~5~01~0</S><S>gfdgd~~Hïng~18/02/2014</S></S01>"
+'str2 = "aa320090100100079   04201300100100100101/0101/01/2010<S01><S>18/02/2014</S><S>01BLP3-001~Biªn lai thu phÝ, lÖ phÝ kh«ng cã mÖnh gi¸~AB-14P~0000001~0000010~10~5~01~0</S><S>gfdgd~~Hïng~18/02/2014</S></S01>"
+'Barcode_Scaned str2
+
+str2 = "aa320100100100079   04201300100100100101/0101/01/2010<S01><S>~~2~18/02/2014~16</S><S>Biªn lai thu phÝ, lÖ phÝ kh«ng cã mÖnh gi¸~01BLP2-100~AA-12T~0000001~0000004~4~0</S><S>~Hïng~18/02/2014</S></S01>"
 Barcode_Scaned str2
 
 End Sub

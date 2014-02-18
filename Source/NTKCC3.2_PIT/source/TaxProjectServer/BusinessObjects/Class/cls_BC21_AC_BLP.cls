@@ -33,7 +33,7 @@ Const NGAY_NOP_X = "E"
 Const NGAY_QUET_Y = 15
 Const NGAY_QUET_X = "S"
 
-Const TEN_GOI_X = "F"
+Const TEN_GOI_X = "O"
 Const TEN_GOI_Y = 5
 Const DIA_CHI_X = "F"
 Const DIA_CHI_Y = 9

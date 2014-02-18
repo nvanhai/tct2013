@@ -20,14 +20,14 @@ Private rs As ADODB.Recordset
 Const MA_SO_TEP_Y = 12
 Const MA_SO_TEP_X = "N"
 'Longvh
-Const MA_SO_THUE_X = "D"
+Const MA_SO_THUE_X = "H"
 Const MA_SO_THUE_Y = 6
 Const NGAY_NOP_Y = 12
 Const NGAY_NOP_X = "D"
 Const NGAY_QUET_Y = 14
 Const NGAY_QUET_X = "N"
 
-Const TEN_GOI_X = "D"
+Const TEN_GOI_X = "H"
 Const TEN_GOI_Y = 4
 Const DIA_CHI_X = "D"
 Const DIA_CHI_Y = 8
