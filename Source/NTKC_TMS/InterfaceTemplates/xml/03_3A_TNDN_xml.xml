@@ -1,31 +1,31 @@
 <PL03_3A_TNDN>
 	<NoiDungPL03_3A>
-		<dieuKienUuDai1>true</dieuKienUuDai1>
-		<dieuKienUuDai2>true</dieuKienUuDai2>
-		<dieuKienUuDai3>true</dieuKienUuDai3>
-		<dieuKienUuDai4>true</dieuKienUuDai4>
-		<dieuKienUuDai5>true</dieuKienUuDai5>
-		<dieuKienUuDai6>true</dieuKienUuDai6>
-		<dieuKienUuDai7>true</dieuKienUuDai7>
-		<dieuKienUuDai8>true</dieuKienUuDai8>
-		<dieuKienUuDai9>true</dieuKienUuDai9>
-		<dieuKienUuDai10>true</dieuKienUuDai10>
-		<dieuKienUuDai11>true</dieuKienUuDai11>
+		<dieuKienUuDai1></dieuKienUuDai1>
+		<dieuKienUuDai2></dieuKienUuDai2>
+		<dieuKienUuDai3></dieuKienUuDai3>
+		<dieuKienUuDai4></dieuKienUuDai4>
+		<dieuKienUuDai5></dieuKienUuDai5>
+		<dieuKienUuDai6></dieuKienUuDai6>
+		<dieuKienUuDai7></dieuKienUuDai7>
+		<dieuKienUuDai8></dieuKienUuDai8>
+		<dieuKienUuDai9></dieuKienUuDai9>
+		<dieuKienUuDai10></dieuKienUuDai10>
+		<dieuKienUuDai11></dieuKienUuDai11>
 		<mucDoUuDai>0.0</mucDoUuDai>
-		<thoiHanUuDai>1</thoiHanUuDai>
-		<namBatDauUuDai>1</namBatDauUuDai>
-		<namMienThueBD>1</namMienThueBD>
-		<namMienThueKT>1</namMienThueKT>
-		<namPNop50Thue>1</namPNop50Thue>
-		<namKTNop50Thue>1</namKTNop50Thue>
-		<ct1>1</ct1>
-		<ct2>1</ct2>
-		<ct3>1</ct3>
-		<ct4>1</ct4>
-		<ct5>1</ct5>
+		<thoiHanUuDai>0</thoiHanUuDai>
+		<namBatDauUuDai>0</namBatDauUuDai>
+		<namMienThueBD>0</namMienThueBD>
+		<namMienThueKT>0</namMienThueKT>
+		<namPNop50Thue>0</namPNop50Thue>
+		<namKTNop50Thue>0</namKTNop50Thue>
+		<ct1>0</ct1>
+		<ct2>0</ct2>
+		<ct3>0</ct3>
+		<ct4>0</ct4>
+		<ct5>0</ct5>
 		<ct6>0.0</ct6>
-		<ct7>1</ct7>
+		<ct7>0</ct7>
 		<ct8>0.0</ct8>
-		<ct9>1</ct9>
+		<ct9>0</ct9>
 	</NoiDungPL03_3A>
 </PL03_3A_TNDN>

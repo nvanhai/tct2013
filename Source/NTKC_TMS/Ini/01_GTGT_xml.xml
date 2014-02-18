@@ -1,11 +1,8 @@
-	<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30" loi_dinh_danh="">
+	<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30" loi_dinh_danh="E_36">
 		<Static GroupName="TKhaiThue">
 			<maTKhai>01</maTKhai>
 			<tenTKhai>TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG (Mẫu số 01/GTGT)</tenTKhai>
-		</Static>
-		<Static GroupName="moTaBMau">
-			<moTaBieuMau>Ban hành kèm theo thông tư số 28/2011/TT-BTC ngày 28/02/2011 của Bộ tài chính</moTaBieuMau>
-			<ghiChuTKhai>Dành cho người nộp thuế khai thuế GTGT theo phương pháp khấu trừ</ghiChuTKhai>
+			<soLan>I_77</soLan>			
 		</Static>
 		<Static GroupName="GiaHan">
 			<maLyDoGiaHan>AB_41</maLyDoGiaHan>
@@ -53,15 +50,15 @@
 		</Static>
 		<Static GroupName="CTieuTKhaiChinh">
 			<ct36>W_57</ct36>
-			<ct37>W_57</ct37>
+			<ct37>W_59</ct37>
 			<ct38>W_60</ct38>
 			<ct39>W_61</ct39>
 			<ct40a>W_63</ct40a>
-			<ct40b>W64</ct40b>
+			<ct40b>W_64</ct40b>
 			<ct40>W_66</ct40>
 			<ct41>W_67</ct41>
 			<ct42>W_69</ct42>
-			<ct43>L_47</ct43>
+			<ct43>W_71</ct43>
 		</Static>
 		<Static GroupName="TKhaiThue">
 			<nguoiKy>T_74</nguoiKy>

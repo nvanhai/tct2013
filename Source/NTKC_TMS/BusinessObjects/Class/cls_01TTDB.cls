@@ -284,7 +284,7 @@ Dim vKHBS
         .Sheet = 1
         .Col = .ColLetterToNumber(PHONG_XU_LY_X)
         .Row = PHONG_XU_LY_Y
-        If rsPXL.Fields.Count > 0 Then
+        If rsPXL.Fields.count > 0 Then
             Do While Not rsPXL.EOF
                 .TypeComboBoxIndex = -1
                 .TypeComboBoxString = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
@@ -728,6 +728,12 @@ On Error GoTo ErrHandle
         End With
     Next
     
+    ' ngay phat sinh
+    With fps
+        .Sheet = 1
+        .GetText .ColLetterToNumber(NGAY_PS_COL), NGAY_PS_ROW, vNGAY_PS
+    End With
+    
     strSQL = strSQL & "'" & vHdrID & "',"
     strSQL = strSQL & vKKBS & ","
     strSQL = strSQL & "'" & vTIN & "',"
@@ -750,7 +756,7 @@ On Error GoTo ErrHandle
     End If
     
     'Ky/ Quy KK
-    If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
+    If Trim(TAX_Utilities_Srv_New.Month) <> "" And Trim(vNGAY_PS) = "" Then
         'Ngay dau ky ke khai va ngay cuoi ky ke khai
         'strDate = Split(TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year, "/")
         'dDate = DateSerial(Val(strDate(1)), Val(strDate(0)), 1)
@@ -759,6 +765,9 @@ On Error GoTo ErrHandle
         dDate = DateAdd("m", 1, dDate)
         dDate = DateAdd("d", -1, dDate)
         strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    ElseIf Trim(vNGAY_PS) <> "" Then
+            strSQL = strSQL & "To_date('" & Format(vNGAY_PS, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+            strSQL = strSQL & "To_date('" & Format(vNGAY_PS, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     End If
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
@@ -806,7 +815,7 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber(NGANH_NGHE_KD_COL), NGANH_NGHE_KD_ROW, vNGANH_NGHE_KD
         vNGANH_NGHE_KD = "'" & vNGANH_NGHE_KD & "'"
         ' ngay phat sinh
-        .GetText .ColLetterToNumber(NGAY_PS_COL), NGAY_PS_ROW, vNGAY_PS
+        '.GetText .ColLetterToNumber(NGAY_PS_COL), NGAY_PS_ROW, vNGAY_PS
         If Trim(vNGAY_PS) = "" Or vNGAY_PS = vbNullString Then
             vNGAY_PS = "null"
             vTO_KHAI_LAN_PS = "null"

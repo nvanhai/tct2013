@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PL01_KHBS>
 	<NDUNGKHAIBOSUNGDIEUCHINH>
+	<DieuChinhTang>
 		<KHBSDieuChinhTang>
 			<ct2></ct2>
 			<ct3></ct3>
@@ -8,6 +9,8 @@
 			<ct5>1</ct5>
 			<ct6>1</ct6>
 		</KHBSDieuChinhTang>
+	</DieuChinhTang>
+	<DieuChinhGiam>	
 		<KHBSDieuChinhGiam>
 			<ct2></ct2>
 			<ct3></ct3>
@@ -15,6 +18,7 @@
 			<ct5>1</ct5>
 			<ct6>1</ct6>
 		</KHBSDieuChinhGiam>
+	</DieuChinhGiam>	
 		<TongHopDCTangGiamPNop>
 			<ct2></ct2>
 			<ct3></ct3>

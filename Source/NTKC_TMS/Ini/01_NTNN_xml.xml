@@ -24,18 +24,18 @@
 			<ct3>L_52</ct3>
 			<ct4>Q_52</ct4>
 			<ct5>V_52</ct5>
-		<ThueGTGT>
-			<ct6>Y_52</ct6>
-			<ct7>AB_52</ct7>
-			<ct8>AD_52</ct8>
-			<ct9>AF_52</ct9>
-		</ThueGTGT>
-		<ThueTNDN>
-			<ct10>AH_52</ct10>
-			<ct11>AN_52</ct11>
-			<ct12>AP_52</ct12>
-			<ct13>AR_52</ct13>
-		</ThueTNDN>
+			<ThueGTGT>
+				<ct6>Y_52</ct6>
+				<ct7>AB_52</ct7>
+				<ct8>AD_52</ct8>
+				<ct9>AF_52</ct9>
+			</ThueGTGT>
+			<ThueTNDN>
+				<ct10>AH_52</ct10>
+				<ct11>AN_52</ct11>
+				<ct12>AP_52</ct12>
+				<ct13>AR_52</ct13>
+			</ThueTNDN>
 			<ct14>AV_52</ct14>
 		</ThueNTNN>
 	</Dynamic>

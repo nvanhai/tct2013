@@ -759,6 +759,12 @@ On Error GoTo ErrHandle
         End With
     Next
     
+    'Get ngay phat sinh
+    With fps
+        .Sheet = 1
+        .GetText .ColLetterToNumber(NGAY_PS_COL), NGAY_PS_ROW, vNGAY_PS
+    End With
+    
     strSQL = strSQL & "'" & vHdrID & "',"
     strSQL = strSQL & vKKBS & ","
     strSQL = strSQL & "'" & vTIN & "',"
@@ -781,13 +787,16 @@ On Error GoTo ErrHandle
     End If
     
     'Ky/ Quy KK
-    If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
+    If Trim(TAX_Utilities_Srv_New.Month) <> "" And Trim(vNGAY_PS) = "" Then
         'Ngay dau ky ke khai va ngay cuoi ky ke khai
         dDate = dNgayDauKy
         strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
         dDate = DateAdd("m", 1, dDate)
         dDate = DateAdd("d", -1, dDate)
         strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    ElseIf Trim(vNGAY_PS) <> "" Then
+            strSQL = strSQL & "To_date('" & Format(vNGAY_PS, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+            strSQL = strSQL & "To_date('" & Format(vNGAY_PS, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     End If
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
@@ -833,7 +842,7 @@ On Error GoTo ErrHandle
         
         ' ngay phat sinh
         vNGANH_NGHE_KD = "null"
-        .GetText .ColLetterToNumber(NGAY_PS_COL), NGAY_PS_ROW, vNGAY_PS
+        '.GetText .ColLetterToNumber(NGAY_PS_COL), NGAY_PS_ROW, vNGAY_PS
         If Trim(vNGAY_PS) = "" Or vNGAY_PS = vbNullString Then
             vNGAY_PS = "null"
             vTO_KHAI_LAN_PS = "null"
