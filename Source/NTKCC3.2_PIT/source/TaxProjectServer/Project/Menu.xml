@@ -403,7 +403,7 @@
 		</Validity>
 	</Menu>
 	<Menu ID="10" PopID="101" ParentID="112" Caption="Thông báo kết quả hủy biên lai thu phí, lệ phí " FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp" DirFile="\NTK_TG\">
-		<Validity StartDate="01/01/2010" InterfaceTemplate="..\InterfaceTemplates\03_TBAC_BLP.xls" ReportTemplate="..\ReportTemplates\excel\03_TBAC_BLP.xls" Class="Tax_Business_Svr_New.cls_03TBAC">
+		<Validity StartDate="01/01/2010" InterfaceTemplate="..\InterfaceTemplates\03_TBAC_BLP.xls" ReportTemplate="..\ReportTemplates\excel\03_TBAC_BLP.xls" Class="Tax_Business_Svr_New.cls_03TBAC_BLP">
 			<Sheet ID="01" Caption="03_TBAC_BLP" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="03_TBAC_BLP" Ini="..\Ini\03_TBAC_BLP.xml" ReportIni="..\ReportIni\03_TBAC_BLP.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
 		</Validity>
