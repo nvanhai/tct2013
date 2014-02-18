@@ -834,7 +834,7 @@ Private Sub cmdSave_Click()
     With fpSpread1
         .Sheet = 1
 
-        If menuId = 8 Or menuId = 9 Then
+        If menuId = 8 Then
             .GetText .ColLetterToNumber("I"), 9, vKYLBO
             ' vttoan: lay KyLapBo
         ElseIf menuId = 15 Then
@@ -872,7 +872,7 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("E"), 30, vKYLBO
             'dntai 12/05/2011
             'lay VKYLBO cho truong to an chi 01/AC
-        ElseIf (menuId >= 64 And menuId <= 68) Or menuId = 91 Then
+        ElseIf (menuId >= 64 And menuId <= 68) Or menuId = 91 Or (menuId >= 7 And menuId <= 10 And menuId <> 8) Then
             vKYLBO = Month(Date) & "/" & Year(Date)
         ElseIf menuId = 23 Then
             .GetText .ColLetterToNumber("D"), 27, vKYLBO
@@ -918,15 +918,15 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("E"), 32, vNgayNop
         ElseIf menuId = 8 Then
             .GetText .ColLetterToNumber("I"), 11, vNgayNop
-        ElseIf menuId = 64 Or menuId = 65 Or menuId = 68 Or menuId = 91 Then
+        ElseIf menuId = 64 Or menuId = 65 Or menuId = 68 Or menuId = 91 Or menuId = 7 Then
             .GetText .ColLetterToNumber("E"), 10, vNgayNop
         ElseIf menuId = 81 Or menuId = 80 Or menuId = 82 Or menuId = 89 Then
             .GetText .ColLetterToNumber("E"), 32, vNgayNop
         ElseIf menuId = 73 Then
             .GetText .ColLetterToNumber("E"), 44, vNgayNop
-        ElseIf menuId = 66 Then
+        ElseIf menuId = 66 Or menuId = 9 Then
             .GetText .ColLetterToNumber("E"), 13, vNgayNop
-        ElseIf menuId = 67 Then
+        ElseIf menuId = 67 Or menuId = 10 Then
             .GetText .ColLetterToNumber("D"), 12, vNgayNop
         ElseIf menuId = 23 Then
             .GetText .ColLetterToNumber("D"), 29, vNgayNop
@@ -1213,8 +1213,6 @@ Private Sub cmdSave_Click()
 
         If menuId = 8 Then  '01_TAIN, 03_TAIN
             .GetText .ColLetterToNumber("T"), 11, vNGAYQUET
-        ElseIf menuId = 9 Then ' 02_TAIN
-            .GetText .ColLetterToNumber("Q"), 11, vNGAYQUET
         ElseIf menuId = 17 Then ' 04_TNCN
             .GetText .ColLetterToNumber("L"), 12, vNGAYQUET
             'vttoan
@@ -1252,15 +1250,15 @@ Private Sub cmdSave_Click()
             'them truong hop cho to 01_AC
         ElseIf menuId = 65 Then ' 01_AC
             .GetText .ColLetterToNumber("K"), 12, vNGAYQUET
-        ElseIf menuId = 64 Then
+        ElseIf menuId = 64 Or menuId = 7 Then
             .GetText .ColLetterToNumber("K"), 12, vNGAYQUET
         ElseIf menuId = 91 Then
             .GetText .ColLetterToNumber("K"), 12, vNGAYQUET
-        ElseIf menuId = 67 Then
+        ElseIf menuId = 67 Or menuId = 10 Then
             .GetText .ColLetterToNumber("N"), 14, vNGAYQUET
         ElseIf menuId = 68 Then
             .GetText .ColLetterToNumber("K"), 12, vNGAYQUET
-        ElseIf menuId = 66 Then
+        ElseIf menuId = 66 Or menuId = 9 Then
             .GetText .ColLetterToNumber("S"), 15, vNGAYQUET
         ElseIf menuId = 77 Then
             .GetText .ColLetterToNumber("R"), 32, vNGAYQUET
@@ -1900,10 +1898,10 @@ Private Sub Command1_Click()
 'str2 = "bs320062100343639   012014001001002002.00</S><S>~~0.000~0.00~0.000~0~0.00</S><S>~~~13/02/2014~~1~1~1~13/01/2014</S></S01>"
 'Barcode_Scaned str2
 '
-str2 = "aa320052100343639   01201400100100100201/0101/01/1900<S01><S></S><S>~0~0~0~0~0</S><S>~~0.00~0~0.00~0.0~0~0~0</S><S>0~0.00~0~0~0</S><S>~~0.00~0~0.00~0.0~0~0~0<"
-Barcode_Scaned str2
-str2 = "aa320052100343639   012014001001002002/S><S>0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>0~0~0~0~0</S><S>~~~13/02/2014~0~1~1~~13/01/2014~0</S></S01>"
-Barcode_Scaned str2
+'str2 = "aa320052100343639   01201400100100100201/0101/01/1900<S01><S></S><S>~0~0~0~0~0</S><S>~~0.00~0~0.00~0.0~0~0~0</S><S>0~0.00~0~0~0</S><S>~~0.00~0~0.00~0.0~0~0~0<"
+'Barcode_Scaned str2
+'str2 = "aa320052100343639   012014001001002002/S><S>0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>0~0~0~0~0</S><S>~~~13/02/2014~0~1~1~~13/01/2014~0</S></S01>"
+'Barcode_Scaned str2
 '
 'str2 = "aa320902100343639   04201400100100100101/0101/01/1900<S01><S></S><S>~0.000~0~0~</S><S>~~~13/02/2014~1~0~0~0~13/01/2014</S></S01>"
 'Barcode_Scaned str2
@@ -1937,6 +1935,12 @@ Barcode_Scaned str2
 'Barcode_Scaned str2
 'str2 = "aa320122100343639   042013002002002002;50;90~0~0~0~0~0~0~0~~~~0~0</S><S>~17/02/2014~test~test~1~~1052</S></S01>"
 'Barcode_Scaned str2
+
+'str2 = "aa320070100100079   02201400100100100101/0101/01/2009<S01><S>Biªn lai thu phÝ, lÖ phÝ kh«ng cã mÖnh gi¸~01BLP3-001~AB-14P~10~0000001~0000010~01/01/2015~fvgfsgvs~fvdvbfdb~6868686868~</S><S>~18/02/2014~Hïng</S></S01>"
+'Barcode_Scaned str2
+
+str2 = "aa320090100100079   04201300100100100101/0101/01/2010<S01><S>18/02/2014</S><S>01BLP3-001~Biªn lai thu phÝ, lÖ phÝ kh«ng cã mÖnh gi¸~AB-14P~0000001~0000010~10~5~01~0</S><S>gfdgd~~Hïng~18/02/2014</S></S01>"
+Barcode_Scaned str2
 
 End Sub
 
