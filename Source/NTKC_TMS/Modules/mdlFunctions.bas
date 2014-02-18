@@ -50,7 +50,7 @@ Public dNgayCuoiKy As Date
 Public Const SS_SORT_ORDER_ASCENDING = 1
 Public Const APP_VERSION = "3.2.0"
 
-Public Const HTKK_LAST_VERSION = "9.9.9"
+Public Const HTKK_LAST_VERSION = "3.2.0"
 
 Public Const SS_BORDER_TYPE_NONE = 0
 Public Const SS_BORDER_TYPE_LEFT = 1
@@ -1158,10 +1158,10 @@ Function NgayCuoiNamTaiChinh(y As Integer, dThangTaiChinh As Integer, dNgayTaiCh
 End Function
 
 Public Function changeMaToKhai(strID As String) As String
-    If strID = "01" Then changeMaToKhai = "01_GTGT11"
-    If strID = "02" Then changeMaToKhai = "02_GTGT11"
+    If strID = "01" Then changeMaToKhai = "01_GTGT13"
+    If strID = "02" Then changeMaToKhai = "02_GTGT13"
     If strID = "04" Then changeMaToKhai = "03_GTGT13"
-    If strID = "07" Then changeMaToKhai = "04_GTGT"
+    If strID = "07" Then changeMaToKhai = "04_GTGT13"
     If strID = "11" Then changeMaToKhai = "01A_TNDN13"
     If strID = "12" Then changeMaToKhai = "01B_TNDN13"
     If strID = "03" Then changeMaToKhai = "03_TNDN11"
@@ -1181,7 +1181,7 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "71" Then changeMaToKhai = "04_GTGT11"
     If strID = "72" Then changeMaToKhai = "05_GTGT11"
     If strID = "86" Then changeMaToKhai = "01_BVMT11"
-    If strID = "90" Then changeMaToKhai = "01_TBVMT11"
+    If strID = "90" Then changeMaToKhai = "01_TBVMT13"
     If strID = "87" Then changeMaToKhai = "02_BVMT11"
     If strID = "77" Then changeMaToKhai = "02_TAIN11"
     
@@ -1274,14 +1274,14 @@ Public Function changeMaToKhaiQLT(strID As String, isLanPS, LoaiKyKK) As String
     ' Voi to khai GTGT LoaiKyKK As Boolean 'True la quy, false la thang
     If strID = "01" And LoaiKyKK = False Then
         changeMaToKhaiQLT = "14"
-    Else
+    ElseIf strID = "01" And LoaiKyKK = True Then
         changeMaToKhaiQLT = "83"
     End If
     
     ' To khai 02_GTGT
     If strID = "02" And LoaiKyKK = False Then
         changeMaToKhaiQLT = "68"
-    Else
+    ElseIf strID = "02" And LoaiKyKK = True Then
         changeMaToKhaiQLT = "84"
     End If
     
@@ -1289,25 +1289,25 @@ Public Function changeMaToKhaiQLT(strID As String, isLanPS, LoaiKyKK) As String
     ' To khai 03_GTGT
     ' TODO cap nhat them ID cu
     If strID = "04" And LoaiKyKK = False Then
-        changeMaToKhaiQLT = "02,A1" ' 02,03
-    Else
-        changeMaToKhaiQLT = "A2"
+        changeMaToKhaiQLT = "02,A1,96,31" ' 02,03
+    ElseIf strID = "04" And LoaiKyKK = True Then
+        changeMaToKhaiQLT = "85,A2,97,88"
     End If
     
     'Khong chan cap to khai 03/GTGT va 04/GTGT cu & moi
     ' To khai 04_GTGT
-    If strID = "71" And isLanPS = True Then
-        changeMaToKhaiQLT = "98"
-    ElseIf strID = "71" And LoaiKyKK = False Then
-        changeMaToKhaiQLT = "96"
-    Else
-        changeMaToKhaiQLT = "97"
+'    If strID = "71" And isLanPS = True Then
+'        changeMaToKhaiQLT = "98"
+    If strID = "71" And LoaiKyKK = False Then
+        changeMaToKhaiQLT = "96,31,02,A1"
+    ElseIf strID = "71" And LoaiKyKK = True Then
+        changeMaToKhaiQLT = "97,88,85,A2"
     End If
     
     ' To khai 05_GTGT
     If strID = "72" And isLanPS = True Then
         changeMaToKhaiQLT = "36"
-    Else
+    ElseIf strID = "72" And isLanPS = False Then
         changeMaToKhaiQLT = "32"
     End If
     
@@ -1319,42 +1319,42 @@ Public Function changeMaToKhaiQLT(strID As String, isLanPS, LoaiKyKK) As String
     ' To khai 02_TNDN
     If strID = "73" And isLanPS = True Then
         changeMaToKhaiQLT = "64"
-    Else
+    ElseIf strID = "73" And isLanPS = False Then
         changeMaToKhaiQLT = "67"
     End If
     
     ' To khai 01_TTDB
     If strID = "05" And isLanPS = True Then
         changeMaToKhaiQLT = "40"
-    Else
+    ElseIf strID = "05" And isLanPS = False Then
         changeMaToKhaiQLT = "25"
     End If
     
     ' To khai 01_TAIN
     If strID = "06" And isLanPS = True Then
         changeMaToKhaiQLT = "92"
-    Else
+    ElseIf strID = "06" And isLanPS = False Then
         changeMaToKhaiQLT = "24"
     End If
 
     ' To khai 01_NTNN
     If strID = "70" And isLanPS = True Then
         changeMaToKhaiQLT = "46"
-    Else
+    ElseIf strID = "70" And isLanPS = False Then
         changeMaToKhaiQLT = "27"
     End If
     
     ' To khai 03_NTNN
     If strID = "81" And isLanPS = True Then
         changeMaToKhaiQLT = "70"
-    Else
+    ElseIf strID = "81" And isLanPS = False Then
         changeMaToKhaiQLT = "69"
     End If
     
     ' To khai 01/TBVMT
     If strID = "90" And isLanPS = True Then
         changeMaToKhaiQLT = "93"
-    Else
+    ElseIf strID = "90" And isLanPS = False Then
         changeMaToKhaiQLT = "91"
     End If
     
