@@ -790,7 +790,7 @@ Private Sub cmdSave_Click()
 
     ' chi kiem tra validate cho cac mau an chi
     ' Kiem tra ngay nop khong duoc lon hon ngay quet
-    If (Val(menuId) >= 64 And Val(menuId) <= 68) Or Val(menuId) = 91 Then
+    If (Val(menuId) >= 64 And Val(menuId) <= 68) Or Val(menuId) = 91 Or Val(menuId) = 7 Or Val(menuId) = 9 Or Val(menuId) = 10 Or Val(menuId) = 13 Then
         If CheckValidData = False Then
             MessageBox "0136", msOKOnly, miWarning
             Exit Sub
@@ -872,7 +872,7 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("E"), 30, vKYLBO
             'dntai 12/05/2011
             'lay VKYLBO cho truong to an chi 01/AC
-        ElseIf (menuId >= 64 And menuId <= 68) Or menuId = 91 Or (menuId >= 7 And menuId <= 10 And menuId <> 8) Then
+        ElseIf (menuId >= 64 And menuId <= 68) Or menuId = 91 Or (menuId >= 7 And menuId <= 10 And menuId <> 8) Or menuId = 13 Then
             vKYLBO = Month(Date) & "/" & Year(Date)
         ElseIf menuId = 23 Then
             .GetText .ColLetterToNumber("D"), 27, vKYLBO
@@ -918,7 +918,7 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("E"), 32, vNgayNop
         ElseIf menuId = 8 Then
             .GetText .ColLetterToNumber("I"), 11, vNgayNop
-        ElseIf menuId = 64 Or menuId = 65 Or menuId = 68 Or menuId = 91 Or menuId = 7 Then
+        ElseIf menuId = 64 Or menuId = 65 Or menuId = 68 Or menuId = 91 Or menuId = 7 Or menuId = 13 Then
             .GetText .ColLetterToNumber("E"), 10, vNgayNop
         ElseIf menuId = 81 Or menuId = 80 Or menuId = 82 Or menuId = 89 Then
             .GetText .ColLetterToNumber("E"), 32, vNgayNop
@@ -1248,7 +1248,7 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("M"), 32, vNGAYQUET
             ' dntai 12/05/2011
             'them truong hop cho to 01_AC
-        ElseIf menuId = 65 Then ' 01_AC
+        ElseIf menuId = 65 Or menuId = 13 Then ' 01_AC
             .GetText .ColLetterToNumber("K"), 12, vNGAYQUET
         ElseIf menuId = 64 Or menuId = 7 Then
             .GetText .ColLetterToNumber("K"), 12, vNGAYQUET
@@ -1462,7 +1462,7 @@ Private Sub cmdSave_Click()
     If frmSystem.chkSaveQHS = True Then
 
         'dntai 13/01/2012 khong ghi cac to an chi vao QHS
-        If (menuId < 64 Or menuId > 68) And menuId <> 91 Then
+        If (menuId < 64 Or menuId > 68) And menuId <> 91 And menuId <> 7 And menuId <> 9 And menuId <> 10 And menuId <> 13 Then
             Insert_QHS
         End If
         
@@ -1942,7 +1942,10 @@ Private Sub Command1_Click()
 'str2 = "aa320090100100079   04201300100100100101/0101/01/2010<S01><S>18/02/2014</S><S>01BLP3-001~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~AB-14P~0000001~0000010~10~5~01~0</S><S>gfdgd~~HÔng~18/02/2014</S></S01>"
 'Barcode_Scaned str2
 
-str2 = "aa320100100100079   04201300100100100101/0101/01/2010<S01><S>~~2~18/02/2014~16</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-100~AA-12T~0000001~0000004~4~0</S><S>~HÔng~18/02/2014</S></S01>"
+'str2 = "aa320100100100079   04201300100100100101/0101/01/2010<S01><S>~~2~18/02/2014~16</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-100~AA-12T~0000001~0000004~4~0</S><S>~HÔng~18/02/2014</S></S01>"
+'Barcode_Scaned str2
+
+str2 = "aa320130100100079   01201400200200100101/0101/01/2009<S01><S>~01/01/2014~30/06/2014</S><S>6868686868~dfsdfsd~21312~01/01/2014~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-14P~0000001~0000010~10~~2222222222~dsfsd~23432~01/01/2014~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP3-001~AB-14P~0000001~0000010~10~</S><S>HÔng~19/02/2014</S></S01>"
 Barcode_Scaned str2
 
 End Sub
@@ -3788,8 +3791,9 @@ Private Function LoadForm(ByVal strData As String) As Boolean
     ' end check
     '    --------------------------
     'lay thong tin ve dai ly thue
-    'bo qua cac to an chi
-    If Val(LoaiTk1) <> 64 And Val(LoaiTk1) <> 65 And Val(LoaiTk1) <> 66 And Val(LoaiTk1) <> 67 And Val(LoaiTk1) <> 68 And Val(LoaiTk1) <> 91 Then
+    'bo qua cac to an chi va bien lai
+    If Val(LoaiTk1) <> 64 And Val(LoaiTk1) <> 65 And Val(LoaiTk1) <> 66 And Val(LoaiTk1) <> 67 And Val(LoaiTk1) <> 68 And Val(LoaiTk1) <> 91 _
+    And Val(LoaiTk1) <> 7 And Val(LoaiTk1) <> 9 And Val(LoaiTk1) <> 10 And Val(LoaiTk1) <> 13 Then
         If getTTDLT = False Then
             If MessageBox("0141", msYesNo, miQuestion) = mrNo Then
                 Exit Function
@@ -3838,7 +3842,7 @@ Private Function LoadForm(ByVal strData As String) As Boolean
         ' An chi
         LoaiTk1 = Mid(strData, 4, 2)
 
-        If (Val(LoaiTk1) >= 64 And Val(LoaiTk1) <= 68) Or Val(LoaiTk1) = 91 Then
+        If (Val(LoaiTk1) >= 64 And Val(LoaiTk1) <= 68) Or Val(LoaiTk1) = 91 Or Val(LoaiTk1) = 7 Or Val(LoaiTk1) = 9 Or Val(LoaiTk1) = 10 Or Val(LoaiTk1) = 13 Then
             objTaxBusiness.strSoTTTKhai = getSoTTTK_AC(changeMaToKhai(LoaiTk1), arrStrHeaderData, strData)
             objTaxBusiness.isTKTonTai = isTonTaiAC
             objTaxBusiness.strMaBPQL = strMaPhongQuanLy
@@ -6645,6 +6649,38 @@ Private Function getSoTTTK_AC(ByVal strID As String, _
             strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.TU_NGAY = CTOD('" & format$(dNgayDauKy, "mm/dd/yyyy") & "')" & "And tkhai.DEN_NGAY = CTOD('" & format$(dNgayCuoiKy, "mm/dd/yyyy") & "')"
 
         End If
+    ElseIf strID = "01_TBAC_BLP" Then
+        arrDeltail = Split(strData, "~")
+
+        arrDate = Split(arrDeltail(UBound(arrDeltail) - 1), "/")
+        dTempDate = DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))
+        
+        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & _
+        "Where tkhai.tin = '" & vMaSoThue & "'" & _
+        "And tkhai.LOAI_BC = '" & strID & "' " & _
+        " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')"
+    ElseIf strID = "03_TBAC_BLP" Then
+        arrDeltail = Split(strData, "~")
+        arrDate = Split(Left$(arrDeltail(UBound(arrDeltail)), 10), "/")
+        dTempDate = DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))
+        
+        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')"
+    ElseIf strID = "BC21_AC_BLP" Then
+        arrDeltail = Split(strData, "~")
+        arrDate = Split(Left$(arrDeltail(UBound(arrDeltail)), 10), "/")
+        dTempDate = DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))
+        
+        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')"
+        
+    ElseIf strID = "01_AC_BLP" Then
+        arrDeltail = Split(strData, "~")
+        arrDate = Split(CStr(arrDeltail(1)), "/")
+        dTempDate = DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))
+        
+        arrDate = Split(Left$(arrDeltail(2), 10), "/")
+        dTempDate1 = DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))
+        
+        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.TU_NGAY = CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')" & "And tkhai.DEN_NGAY = CTOD('" & format(dTempDate1, "mm/dd/yyyy") & "')"
 
     Else
         strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.TU_NGAY = CTOD('" & format$(dNgayDauKy, "mm/dd/yyyy") & "')" & "And tkhai.DEN_NGAY = CTOD('" & format$(dNgayCuoiKy, "mm/dd/yyyy") & "')"

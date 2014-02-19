@@ -1983,6 +1983,7 @@ End Function
 
 ' THong tin AC
 Public Function changeMaToKhai(strID As String) As String
+
     ' Cac mau an chi
     If strID = "64" Then changeMaToKhai = "01_TBAC"
     If strID = "65" Then changeMaToKhai = "01_AC"
@@ -1990,6 +1991,10 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "67" Then changeMaToKhai = "03_TBAC"
     If strID = "68" Then changeMaToKhai = "BC26_AC"
     If strID = "91" Then changeMaToKhai = "04_TBAC"
+    If strID = "07" Then changeMaToKhai = "01_TBAC_BLP"
+    If strID = "13" Then changeMaToKhai = "01_AC_BLP"
+    If strID = "09" Then changeMaToKhai = "BC21_AC_BLP"
+    If strID = "10" Then changeMaToKhai = "03_TBAC_BLP"
 End Function
 
 'lay ten CQT tu ma CQT
