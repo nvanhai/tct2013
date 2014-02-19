@@ -356,7 +356,10 @@ Private Function changeLoaiToKhai(ByVal strLoaiMaToKhai As String) As String
     If strLoaiMaToKhai = "66" Then changeLoaiToKhai = "'%BC21_AC%'"
     If strLoaiMaToKhai = "67" Then changeLoaiToKhai = "'%03_TBAC%'"
     If strLoaiMaToKhai = "68" Then changeLoaiToKhai = "'%BC26_AC%'"
-    
+        If strLoaiMaToKhai = "07" Then changeLoaiToKhai = "'%01_TBAC_BLP%'"
+    If strLoaiMaToKhai = "13" Then changeLoaiToKhai = "'%01_AC_BLP%'"
+    If strLoaiMaToKhai = "09" Then changeLoaiToKhai = "'%BC21_AC_BLP%'"
+    If strLoaiMaToKhai = "10" Then changeLoaiToKhai = "'%03_TBAC_BLP%'"
     If strLoaiMaToKhai = "0" Then changeLoaiToKhai = "'%'"
 End Function
 
