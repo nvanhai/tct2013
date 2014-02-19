@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
+Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Begin VB.Form frmTraCuuAC 
    BorderStyle     =   3  'Fixed Dialog
    ClientHeight    =   6825
@@ -363,12 +363,16 @@ Private Sub btnTraCuu_Click(Index As Integer)
 End Sub
 
 Private Function changeLoaiToKhai(ByVal strLoaiMaToKhai As String) As String
+
     If strLoaiMaToKhai = "64" Then changeLoaiToKhai = " = '01_TBAC'"
     If strLoaiMaToKhai = "65" Then changeLoaiToKhai = " = '01_AC'"
     If strLoaiMaToKhai = "66" Then changeLoaiToKhai = " = 'BC21_AC'"
     If strLoaiMaToKhai = "67" Then changeLoaiToKhai = " = '03_TBAC'"
     If strLoaiMaToKhai = "68" Then changeLoaiToKhai = " = 'BC26_AC'"
-    
+    If strLoaiMaToKhai = "07" Then changeLoaiToKhai = " = '01_TBAC_BLP'"
+    If strLoaiMaToKhai = "13" Then changeLoaiToKhai = " = '01_AC_BLP'"
+    If strLoaiMaToKhai = "09" Then changeLoaiToKhai = " = 'BC21_AC_BLP'"
+    If strLoaiMaToKhai = "10" Then changeLoaiToKhai = " = '03_TBAC_BLP'"
     If strLoaiMaToKhai = "0" Then changeLoaiToKhai = " LIKE '%'"
 End Function
 
