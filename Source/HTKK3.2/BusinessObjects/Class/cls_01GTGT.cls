@@ -706,6 +706,25 @@ Dim NguoiKyCol As Long, NguoiKyRow As Long
                     LockCellBySheet
             End If
             
+            
+            If .ActiveSheet = sheetPl01_3_GTGT Then
+                    i = 1
+                    .Col = .ColLetterToNumber("B")
+                    .Row = rowStartPL01_3
+                    Do
+                         .Text = str(i)
+                         .Col = .ColLetterToNumber("B")
+                         .Row = i + rowStartPL01_3
+                         i = i + 1
+                    Loop Until .Text = "aa"
+                    .SetActiveCell iCol, iRow
+
+                    .Row = iRow
+                    .Col = iCol
+                    .SetActiveCell iCol, iRow
+            End If
+            
+            
             If .ActiveSheet = sheetPl01_7_GTGT Then
                     i = 1
                     .Col = .ColLetterToNumber("B")
