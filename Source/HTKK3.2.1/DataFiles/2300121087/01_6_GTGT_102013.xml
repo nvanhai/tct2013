@@ -1,0 +1,40 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_8" CellID2="C_22" FirstCell="0" Encode="1" Receive="1" Value="cơ sở 1" StatusID="0001"/>
+			<Cell CellID="D_8" CellID2="K_22" Encode="1" Receive="1" Value="0102030405" StatusID="0001"/>
+			<Cell CellID="E_8" CellID2="AB_22" Encode="0" Receive="1" Value="HPH - Cục Thuế TP Hải Phòng" StatusID="0001"/>
+			<Cell CellID="F_8" CellID2="P_22" Encode="0" Receive="1" Value="Chi cục Thuế Quận Ngô Quyền" StatusID="0001"/>
+			<Cell CellID="L_8" CellID2="Z_22" Encode="1" Receive="1" Value="10303" StatusID="0001"/>
+			<Cell CellID="G_8" CellID2="U_22" Encode="1" Receive="1" Value="3000000" StatusID="0001"/>
+			<Cell CellID="H_8" CellID2="V_22" Encode="1" Receive="1" Value="12000000" StatusID="0001"/>
+			<Cell CellID="I_8" CellID2="W_22" Encode="1" Receive="1" Value="15000000" StatusID="0001"/>
+			<Cell CellID="J_8" CellID2="X_22" Encode="1" Receive="1" Value="270000" StatusID="0001"/>
+			<Cell CellID="K_8" CellID2="Y_22" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="M_8" CellID2="AA_22" Encode="0" Receive="1" Value="10300" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_9" CellID2="C_23" FirstCell="1" Encode="1" Receive="1" Value="cơ sở 2" StatusID="0001"/>
+			<Cell CellID="D_9" CellID2="K_23" Encode="1" Receive="1" Value="0010011000" StatusID="0001"/>
+			<Cell CellID="E_9" CellID2="AB_23" Encode="0" Receive="1" Value="HPH - Cục Thuế TP Hải Phòng" StatusID="0001"/>
+			<Cell CellID="F_9" CellID2="P_23" Encode="0" Receive="1" Value="Chi cục Thuế Quận Hồng Bàng" StatusID="0001"/>
+			<Cell CellID="L_9" CellID2="Z_23" Encode="1" Receive="1" Value="10301" StatusID="0001"/>
+			<Cell CellID="G_9" CellID2="U_23" Encode="1" Receive="1" Value="5000000" StatusID="0001"/>
+			<Cell CellID="H_9" CellID2="V_23" Encode="1" Receive="1" Value="20000000" StatusID="0001"/>
+			<Cell CellID="I_9" CellID2="W_23" Encode="1" Receive="1" Value="25000000" StatusID="0001"/>
+			<Cell CellID="J_9" CellID2="X_23" Encode="1" Receive="1" Value="450000" StatusID="0001"/>
+			<Cell CellID="K_9" CellID2="Y_23" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="M_9" CellID2="AA_23" Encode="0" Receive="1" Value="10300" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_13" CellID2="U_27" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="G_15" CellID2="U_29" Encode="1" Receive="1" Value="3000000" StatusID="0001"/>
+			<Cell CellID="I_18" CellID2="W_32" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_20" CellID2="W_34" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

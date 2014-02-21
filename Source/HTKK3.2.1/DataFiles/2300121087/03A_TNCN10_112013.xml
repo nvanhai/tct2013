@@ -1,0 +1,48 @@
+<!-- Edited by hlnam FIS_CMC-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="H_18" CellID2="H_25" Encode="1" Receive="1" Value="0010011000"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="J_7" CellID2="J_13" Encode="1" Receive="1" Value="tổ chức khai thay ABC"/>
+			<Cell CellID="J_9" CellID2="AB_14" Encode="1" Receive="0" Value="0102030405"/>
+			<Cell CellID="F_11" CellID2="F_15" Encode="1" Receive="1" Value="Đinh Liệt - Hoàn Kiếm - HN"/>
+			<Cell CellID="F_13" CellID2="F_16" Encode="1" Receive="0" Value="Hoàn Kiếm"/>
+			<Cell CellID="S_13" CellID2="P_16" Encode="1" Receive="1" Value="HN"/>
+			<Cell CellID="F_15" CellID2="F_17" Encode="1" Receive="1" Value="0987689965"/>
+			<Cell CellID="K_15" CellID2="M_17" Encode="1" Receive="1" Value="015678889"/>
+			<Cell CellID="S_15" CellID2="S_17" Encode="1" Receive="1" Value="abc@yahoo.com"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="U_40" CellID2="U_40" Encode="1" Receive="1" Value="3000000"/>
+			<Cell CellID="U_41" CellID2="U_41" Encode="1" Receive="0" Value="150000"/>
+			<Cell CellID="U_43" CellID2="U_43" Encode="1" Receive="1" Value="1200000"/>
+			<Cell CellID="U_44" CellID2="U_44" Encode="1" Receive="0" Value="1200"/>
+			<Cell CellID="U_46" CellID2="U_46" Encode="1" Receive="1" Value="6000000"/>
+			<Cell CellID="U_47" CellID2="U_47" Encode="1" Receive="1" Value="300000"/>
+			<Cell CellID="U_49" CellID2="U_49" Encode="1" Receive="1" Value="5000000"/>
+			<Cell CellID="U_50" CellID2="U_50" Encode="1" Receive="1" Value="500000"/>
+			<Cell CellID="U_52" CellID2="U_52" Encode="1" Receive="1" Value="2000000"/>
+			<Cell CellID="U_53" CellID2="U_53" Encode="1" Receive="1" Value="20000"/>
+			<Cell CellID="U_55" CellID2="U_55" Encode="1" Receive="1" Value="1000000"/>
+			<Cell CellID="U_56" CellID2="U_56" Encode="1" Receive="1" Value="1000"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="R_58" CellID2="O_67" Encode="1" Receive="1" Value="Hoàng Lan"/>
+			<Cell CellID="R_60" CellID2="R_60" Encode="1" Receive="1" Value="20/12/2013"/>
+			<Cell CellID="H_58" CellID2="D_64" Encode="1" Receive="1" Value="Huyền Trâm"/>
+			<Cell CellID="H_60" CellID2="G_65" Encode="1" Receive="1" Value="KTV"/>
+			<Cell CellID="C_64" CellID2="C_60" Encode="1" Receive="1" Value="1"/>
+			<Cell CellID="F_64" CellID2="F_60" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="I_64" CellID2="I_60" Encode="1" Receive="1" Value=""/>
+		</Cells>
+	</Section>
+</Sections>

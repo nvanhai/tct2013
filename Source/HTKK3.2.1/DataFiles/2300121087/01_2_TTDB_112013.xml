@@ -1,0 +1,41 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by longvh (fpt) -->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="130">
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="B_10" CellID2="B_41" FirstCell="0" Encode="0" Receive="0" Value="1" StatusID="0001"/>
+			<Cell CellID="C_10" CellID2="C_41" Encode="1" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="D_10" CellID2="E_41" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_10" CellID2="H_41" Encode="1" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="F_10" CellID2="L_41" Encode="1" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="G_10" CellID2="P_41" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="H_10" CellID2="T_41" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="I_10" CellID2="X_41" Encode="0" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="J_10" CellID2="AC_41" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="K_10" CellID2="AI_41" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="H_12" CellID2="T_43" Encode="0" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="J_12" CellID2="AC_43" Encode="0" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="K_12" CellID2="AI_43" Encode="0" Receive="0" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="B_20" CellID2="B_51" FirstCell="0" Encode="0" Receive="0" Value="1" StatusID="0001"/>
+			<Cell CellID="C_20" CellID2="C_51" Encode="1" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="E_20" CellID2="H_51" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="F_20" CellID2="L_51" Encode="1" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="H_20" CellID2="T_51" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="J_20" CellID2="AC_51" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="K_20" CellID2="AI_51" Encode="0" Receive="0" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="K_22" CellID2="AI_53" Encode="0" Receive="0" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

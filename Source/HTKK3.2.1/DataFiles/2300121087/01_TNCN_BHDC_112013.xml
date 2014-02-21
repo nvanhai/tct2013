@@ -1,0 +1,36 @@
+<!-- Edited by FIS_CMC-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="H_7" CellID2="H_20" Encode="1" Receive="1" Value="0010011000"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="U_40" CellID2="U_40" Encode="1" Receive="1" Value="4000000"/>
+			<Cell CellID="U_41" CellID2="U_41" Encode="1" Receive="0" Value="200000"/>
+			<Cell CellID="U_42" CellID2="U_42" Encode="1" Receive="1" Value="100000"/>
+			<Cell CellID="U_44" CellID2="U_44" Encode="1" Receive="0" Value="300000"/>
+			<Cell CellID="U_45" CellID2="U_45" Encode="1" Receive="1" Value="30000"/>
+			<Cell CellID="U_47" CellID2="U_47" Encode="1" Receive="1" Value="100000"/>
+			<Cell CellID="U_48" CellID2="U_48" Encode="1" Receive="1" Value="10000"/>
+			<Cell CellID="U_50" CellID2="U_50" Encode="1" Receive="1" Value="130000"/>
+			<Cell CellID="U_51" CellID2="U_51" Encode="1" Receive="1" Value="30000"/>
+			<Cell CellID="U_52" CellID2="U_52" Encode="1" Receive="1" Value="21000"/>
+			<Cell CellID="U_53" CellID2="U_53" Encode="1" Receive="1" Value="161000"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="R_58" CellID2="O_67" Encode="1" Receive="1" Value="Hoàng Lan"/>
+			<Cell CellID="R_60" CellID2="R_60" Encode="1" Receive="1" Value="20/12/2013"/>
+			<Cell CellID="H_58" CellID2="D_64" Encode="1" Receive="1" Value="Huyền Trâm"/>
+			<Cell CellID="H_60" CellID2="G_65" Encode="1" Receive="1" Value="KTV"/>
+			<Cell CellID="C_64" CellID2="C_60" Encode="1" Receive="1" Value="1"/>
+			<Cell CellID="F_64" CellID2="F_60" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="I_64" CellID2="I_60" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="L_64" CellID2="L_60" Encode="1" Receive="1" Value="0"/>
+		</Cells>
+	</Section>
+</Sections>

@@ -1,0 +1,48 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>104</maTKhai>
+		<tenTKhai>Báo cáo mất,cháy,hỏng hóa đơn</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ngayMatChayHongHD>O_8</ngayMatChayHongHD>
+	</Static>
+	<Dynamic GroupName="HoaDon">
+		<ChiTietHoaDon id="id">
+			<tenHDon>E_43</tenHDon>
+			<mauHDon>O_43</mauHDon>
+			<kyHieu>S_43</kyHieu>
+			<tuSo>V_43</tuSo>
+			<denSo>Y_43</denSo>
+			<soLuong>AA_43</soLuong>
+			<lien>AB_43</lien>
+			<ghiChu>AC_43</ghiChu>
+			<ktraLoaiHDon></ktraLoaiHDon>
+		</ChiTietHoaDon>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<lyDo>I_46</lyDo>
+		<nguoiDaiDien>AB_49</nguoiDaiDien>
+		<ngayLapBCao>AB_51</ngayLapBCao>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy></nguoiKy>
+		<ngayKy></ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue></tenNVienDLyThue>
+		<cchiHNghe></cchiHNghe>
+	</Static>
+</HSoKhaiThue>

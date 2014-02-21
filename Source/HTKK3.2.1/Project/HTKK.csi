@@ -1,0 +1,5 @@
+[History]
+1=#P0#=mb	#P1#=CheckPeriod	#P2#=HTKK/mdlFunctions/CheckPeriod	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140218173239	#P7#=0	#P8#=26	.
+2=#P0#=mb	#P1#=DeleteKHBS	#P2#=HTKK/frmInterfaces/DeleteKHBS	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140214101537	#P7#=0	#P8#=47	.
+3=#P0#=mb	#P1#=cmdDelete_Click	#P2#=HTKK/frmInterfaces/cmdDelete_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20140214101422	#P7#=0	#P8#=11	.
+4=#P0#=mb	#P1#=DeleteSheet	#P2#=HTKK/frmInterfaces/DeleteSheet	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140214101328	#P7#=0	#P8#=0	.

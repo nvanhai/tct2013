@@ -1,0 +1,54 @@
+<!-- Edited by hlnam FIS_CMC-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="130">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="H_14" CellID2="J_37" Encode="1" Receive="1" Value="0010011000" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_45" CellID2="C_45" FirstCell="0" Encode="0" Receive="1" Value="Đất hiếm" StatusID="0001"/>
+			<Cell CellID="H_45" CellID2="H_45" Encode="1" Receive="1" Value="Kg" StatusID="0001"/>
+			<Cell CellID="J_45" CellID2="J_45" Encode="1" Receive="1" Value="2345.789" StatusID="0001"/>
+			<Cell CellID="N_45" CellID2="N_45" Encode="1" Receive="1" Value="20000" StatusID="0001"/>
+			<Cell CellID="Q_45" CellID2="Q_45" Encode="0" Receive="1" Value="46915780" StatusID="0001"/>
+			<Cell CellID="V_45" CellID2="V_45" Encode="1" Receive="1" Value="1000000" StatusID="0001"/>
+			<Cell CellID="AC_45" CellID2="AC_45" Encode="1" Receive="1" Value="010203" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_49" CellID2="C_49" FirstCell="0" Encode="0" Receive="1" Value="Bạch kim" StatusID="0001"/>
+			<Cell CellID="H_49" CellID2="H_49" Encode="1" Receive="1" Value="Kg" StatusID="0001"/>
+			<Cell CellID="J_49" CellID2="J_49" Encode="1" Receive="1" Value="456.345" StatusID="0001"/>
+			<Cell CellID="N_49" CellID2="N_49" Encode="1" Receive="1" Value="18000" StatusID="0001"/>
+			<Cell CellID="Q_49" CellID2="Q_49" Encode="0" Receive="1" Value="8214210" StatusID="0001"/>
+			<Cell CellID="V_49" CellID2="V_49" Encode="1" Receive="1" Value="2000000" StatusID="0001"/>
+			<Cell CellID="AC_49" CellID2="AC_49" Encode="1" Receive="1" Value="010208" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_50" CellID2="C_50" FirstCell="1" Encode="0" Receive="1" Value="Chì, kẽm" StatusID="0001"/>
+			<Cell CellID="H_50" CellID2="H_50" Encode="1" Receive="1" Value="Kg" StatusID="0001"/>
+			<Cell CellID="J_50" CellID2="J_50" Encode="1" Receive="1" Value="123.678" StatusID="0001"/>
+			<Cell CellID="N_50" CellID2="N_50" Encode="1" Receive="1" Value="9000" StatusID="0001"/>
+			<Cell CellID="Q_50" CellID2="Q_50" Encode="0" Receive="1" Value="1113102" StatusID="0001"/>
+			<Cell CellID="V_50" CellID2="V_50" Encode="1" Receive="1" Value="980000" StatusID="0001"/>
+			<Cell CellID="AC_50" CellID2="AC_50" Encode="1" Receive="1" Value="010212" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="H_61" CellID2="D_63" Encode="1" Receive="1" Value="Huyền Trâm" StatusID="0001"/>
+			<Cell CellID="R_61" CellID2="O_68" Encode="1" Receive="1" Value="Hoàng Lan" StatusID="0001"/>
+			<Cell CellID="H_63" CellID2="G_64" Encode="1" Receive="1" Value="KTV" StatusID="0001"/>
+			<Cell CellID="R_63" CellID2="R_59" Encode="1" Receive="1" Value="20/12/2013" StatusID="0001"/>
+			<Cell CellID="C_35" CellID2="C_37" Encode="1" Receive="1" Value="1" StatusID="0001"/>
+			<Cell CellID="F_35" CellID2="F_37" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="I_35" CellID2="I_37" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="Q_37" CellID2="Q_37" Encode="0" Receive="1" Value="65570404" StatusID="0001"/>
+			<Cell CellID="V_37" CellID2="V_37" Encode="0" Receive="1" Value="6960000" StatusID="0001"/>
+			<Cell CellID="AB_37" CellID2="AB_37" Encode="0" Receive="1" Value="Sáu  mươi  năm  triệu  năm  trăm  bẩy  mươi  nghìn  bốn  trăm  lẻ  bốn đồng " StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

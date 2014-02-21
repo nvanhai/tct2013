@@ -1,0 +1,58 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="316">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_19" CellID2="CD_55" Encode="1" Receive="1" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="K_22" CellID2="CG_40" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_23" CellID2="CG_41" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_24" CellID2="CG_42" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_25" CellID2="CG_43" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_26" CellID2="CG_44" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_27" CellID2="CG_45" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_28" CellID2="CG_46" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_29" CellID2="CG_47" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_30" CellID2="CG_48" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_31" CellID2="CG_49" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_32" CellID2="CG_50" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_33" CellID2="CG_51" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="F_34" CellID2="AG_35" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="K_34" CellID2="CG_52" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_35" CellID2="CG_53" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_36" CellID2="CG_54" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_37" CellID2="CG_55" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_38" CellID2="CG_56" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_39" CellID2="CG_57" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_40" CellID2="CG_58" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_41" CellID2="CG_59" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="F_43" CellID2="BE_61" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="H_45" CellID2="BE_63" Encode="0" Receive="1" Value=""/>
+			<Cell CellID="P_45" CellID2="AC_63" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="H_47" CellID2="BE_65" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="H_49" CellID2="BE_67" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="H_51" CellID2="BE_69" Encode="1" Receive="1" Value="0"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_11" CellID2="AB_10" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="D_12" CellID2="AB_11" Encode="1" Receive="1" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="E_54" CellID2="M_76" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="E_56" CellID2="Z_77" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="J_54" CellID2="BD_83" Encode="1" Receive="1" Value="Hùng"/>
+			<Cell CellID="J_56" CellID2="C_72" Encode="1" Receive="1" Value="20/01/2014"/>
+			<Cell CellID="E_13" CellID2="AL_35" Encode="1" Receive="1" Value="1"/>
+			<Cell CellID="G_13" CellID2="BC_35" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="E_57" CellID2="BD_35" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="L_15" CellID2="" Encode="1" Receive="1" Value="1052"/>
+		</Cells>
+	</Section>
+</Sections>

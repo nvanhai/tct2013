@@ -1,0 +1,51 @@
+<!-- Edited by nvhai FIS_CMC-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="310">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_20" CellID2="U_22" Encode="1" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="I_36" CellID2="U_42" Encode="1" Value="0"/>
+			<Cell CellID="I_37" CellID2="U_43" Encode="1" Value="0"/>
+			<Cell CellID="I_38" CellID2="U_44" Encode="1" Value="0"/>
+			<Cell CellID="I_39" CellID2="U_45" Encode="1" Value="200000000"/>
+			<Cell CellID="I_40" CellID2="U_46" Encode="1" Value="200000000"/>
+			<Cell CellID="I_41" CellID2="U_47" Encode="1" Value="0"/>
+			<Cell CellID="I_42" CellID2="U_48" Encode="1" Value="0"/>
+			<Cell CellID="I_43" CellID2="U_49" Encode="1" Value="0"/>
+			<Cell CellID="I_44" CellID2="U_50" Encode="1" Value="0"/>
+			<Cell CellID="I_45" CellID2="U_51" Encode="1" Value="0"/>
+			<Cell CellID="I_46" CellID2="U_52" Encode="1" Value="0"/>
+			<Cell CellID="I_47" CellID2="U_53" Encode="1" Value="0"/>
+			<Cell CellID="I_48" CellID2="U_54" Encode="1" Value="0"/>
+			<Cell CellID="I_49" CellID2="U_55" Encode="1" Value="0"/>
+			<Cell CellID="I_50" CellID2="U_56" Encode="1" Value="0"/>
+			<Cell CellID="I_51" CellID2="U_57" Encode="1" Value="0"/>
+			<Cell CellID="I_52" CellID2="U_58" Encode="1" Value="0"/>
+			<Cell CellID="I_53" CellID2="U_59" Encode="1" Value="0"/>
+			<Cell CellID="I_54" CellID2="U_60" Encode="1" Value="0"/>
+			<Cell CellID="I_55" CellID2="U_61" Encode="1" Value="0"/>
+			<Cell CellID="I_56" CellID2="U_62" Encode="1" Value="0"/>
+			<Cell CellID="I_57" CellID2="U_63" Encode="1" Value="0"/>
+			<Cell CellID="I_61" CellID2="U_68" Encode="1" Value="0"/>
+			<Cell CellID="I_62" CellID2="U_69" Encode="1" Value="0"/>
+			<Cell CellID="I_63" CellID2="U_70" Encode="1" Value="0"/>
+			<Cell CellID="I_64" CellID2="U_71" Encode="1" Value="0"/>
+			<Cell CellID="I_65" CellID2="U_72" Encode="1" Value="0"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_69" CellID2="D_80" Encode="1" Value=""/>
+			<Cell CellID="D_71" CellID2="F_81" Encode="1" Value=""/>
+			<Cell CellID="M_69" CellID2="P_85" Encode="1" Value="Hùng"/>
+			<Cell CellID="M_71" CellID2="R_76" Encode="1" Value="10/02/2014"/>
+			<Cell CellID="C_67" CellID2="C_75" Encode="1" Value="1"/>
+			<Cell CellID="F_67" CellID2="F_75" Encode="1" Value=""/>
+			<Cell CellID="I_67" CellID2="I_75" Encode="1" Value=""/>
+		</Cells>
+	</Section>
+</Sections>

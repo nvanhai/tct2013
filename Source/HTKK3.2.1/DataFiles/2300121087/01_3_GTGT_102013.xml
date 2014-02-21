@@ -1,0 +1,45 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_10" CellID2="C_20" FirstCell="0" Encode="1" Receive="1" Value="001" StatusID="0001"/>
+			<Cell CellID="D_10" CellID2="E_20" Encode="1" Receive="1" Value="12/10/2013" StatusID="0001"/>
+			<Cell CellID="E_10" CellID2="G_20" Encode="1" Receive="1" Value="usd" StatusID="0001"/>
+			<Cell CellID="F_10" CellID2="M_20" Encode="1" Receive="1" Value="2000000" StatusID="0001"/>
+			<Cell CellID="G_10" CellID2="R_20" Encode="1" Receive="1" Value="CK" StatusID="0001"/>
+			<Cell CellID="H_10" CellID2="V_20" Encode="1" Receive="1" Value="10 ngày" StatusID="0001"/>
+			<Cell CellID="I_10" CellID2="Z_20" Encode="1" Receive="1" Value="S001" StatusID="0001"/>
+			<Cell CellID="J_10" CellID2="AC_20" Encode="1" Receive="1" Value="13/10/2013" StatusID="0001"/>
+			<Cell CellID="K_10" CellID2="AF_20" Encode="1" Receive="1" Value="usd" StatusID="0001"/>
+			<Cell CellID="L_10" CellID2="AJ_20" Encode="1" Receive="1" Value="3000000" StatusID="0001"/>
+			<Cell CellID="M_10" CellID2="AO_20" Encode="1" Receive="1" Value="003" StatusID="0001"/>
+			<Cell CellID="N_10" CellID2="AR_20" Encode="1" Receive="1" Value="15/10/2013" StatusID="0001"/>
+			<Cell CellID="O_10" CellID2="AU_20" Encode="1" Receive="1" Value="usd" StatusID="0001"/>
+			<Cell CellID="P_10" CellID2="AY_20" Encode="1" Receive="1" Value="1500000" StatusID="0001"/>
+			<Cell CellID="Q_10" CellID2="BB_20" Encode="1" Receive="1" Value="009" StatusID="0001"/>
+			<Cell CellID="R_10" CellID2="BE_20" Encode="1" Receive="1" Value="16/10/2013" StatusID="0001"/>
+			<Cell CellID="S_10" CellID2="BH_20" Encode="1" Receive="1" Value="usd" StatusID="0001"/>
+			<Cell CellID="T_10" CellID2="BK_20" Encode="1" Receive="1" Value="6000000" StatusID="0001"/>
+			<Cell CellID="U_10" CellID2="BO_20" Encode="1" Receive="1" Value="008" StatusID="0001"/>
+			<Cell CellID="V_10" CellID2="BQ_20" Encode="1" Receive="1" Value="12/10/2013" StatusID="0001"/>
+			<Cell CellID="W_10" CellID2="BS_20" Encode="1" Receive="1" Value="usd" StatusID="0001"/>
+			<Cell CellID="X_10" CellID2="BU_20" Encode="1" Receive="1" Value="4000000" StatusID="0001"/>
+			<Cell CellID="Y_10" CellID2="BW_20" Encode="1" Receive="1" Value="004" StatusID="0001"/>
+			<Cell CellID="Z_10" CellID2="BY_20" Encode="1" Receive="1" Value="11/10/2013" StatusID="0001"/>
+			<Cell CellID="AA_10" CellID2="CA_20" Encode="1" Receive="1" Value="usd" StatusID="0001"/>
+			<Cell CellID="AB_10" CellID2="CC_20" Encode="1" Receive="1" Value="2500000" StatusID="0001"/>
+			<Cell CellID="AC_10" CellID2="CE_20" Encode="1" Receive="1" Value="002" StatusID="0001"/>
+			<Cell CellID="AD_10" CellID2="CG_20" Encode="1" Receive="1" Value="17/10/2013" StatusID="0001"/>
+			<Cell CellID="AE_10" CellID2="CI_20" Encode="1" Receive="1" Value="usd" StatusID="0001"/>
+			<Cell CellID="AF_10" CellID2="CK_20" Encode="1" Receive="1" Value="2700000" StatusID="0001"/>
+			<Cell CellID="AG_10" CellID2="CM_20" Encode="1" Receive="1" Value="chứng từ" StatusID="0001"/>
+			<Cell CellID="AH_10" CellID2="CO_20" Encode="1" Receive="1" Value="ghi chú" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_33" CellID2="P_45" Encode="1" Value=""/>
+		</Cells>
+	</Section>
+</Sections>

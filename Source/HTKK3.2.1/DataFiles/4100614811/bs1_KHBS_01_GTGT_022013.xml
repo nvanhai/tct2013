@@ -1,0 +1,40 @@
+<!-- edited by Htphuong CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="130">
+	<Section Dynamic="1" MaxRows="0" DateKHBS="" loaiKHBS="">
+		<Cells>
+			<Cell CellID="BD_9" CellID2="J_39" FirstCell="0" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BE_9" CellID2="AT_39" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BC_9" CellID2="I_39" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BF_9" CellID2="BB_39" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BG_9" CellID2="BU_39" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BH_9" CellID2="CP_39" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="BD_13" CellID2="J_43" FirstCell="0" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BE_13" CellID2="AT_43" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BC_13" CellID2="I_43" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BF_13" CellID2="BB_43" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BG_13" CellID2="BU_43" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BH_13" CellID2="CP_43" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="B_24" CellID2="E_56" Encode="1" Receive="1" Value="19/05/2013" StatusID="0001"/>
+			<Cell CellID="BE_17" CellID2="CI_48" Encode="1" Receive="1" Value="60" StatusID="0001"/>
+			<Cell CellID="BE_18" CellID2="CI_49" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BD_20" CellID2="E_53" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BG_22" CellID2="BS_67" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BG_23" CellID2="C_56" Encode="0" Receive="1" Value="19/05/2013" StatusID="0001"/>
+			<Cell CellID="BF_15" CellID2="BB_45" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="BG_15" CellID2="BU_45" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="BH_15" CellID2="CP_45" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="BF_16" CellID2="BB_46" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="BG_16" CellID2="BU_46" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="BH_16" CellID2="CP_46" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

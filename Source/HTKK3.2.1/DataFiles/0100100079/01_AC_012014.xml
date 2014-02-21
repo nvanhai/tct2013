@@ -1,0 +1,35 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="130">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="B_15" CellID2="N_15" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="D_17" CellID2="D_17" Encode="1" Receive="1" Value="01/01/2014" StatusID="0001"/>
+			<Cell CellID="E_17" CellID2="E_17" Encode="1" Receive="1" Value="30/06/2014" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_22" CellID2="C_22" FirstCell="0" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="D_22" CellID2="D_22" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_22" CellID2="E_22" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_22" CellID2="F_22" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_22" CellID2="G_22" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="H_22" CellID2="Q_22" Encode="0" Receive="1" Value="" StatusID=""/>
+			<Cell CellID="I_22" CellID2="H_22" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="J_22" CellID2="I_22" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="K_22" CellID2="J_22" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="L_22" CellID2="K_22" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="M_22" CellID2="L_22" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="N_22" CellID2="N_22" Encode="0" Receive="1" Value="" StatusID=""/>
+			<Cell CellID="Q_22" CellID2="M_22" Encode="1" Receive="1" Value="" StatusID=""/>
+			<Cell CellID="P_22" CellID2="P_22" Encode="1" Receive="1" Value="" StatusID=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="J_30" CellID2="L_26" Encode="1" Receive="1" Value="Hùng" StatusID="0001"/>
+			<Cell CellID="J_32" CellID2="K_26" Encode="1" Receive="1" Value="18/02/2014" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

@@ -1,0 +1,55 @@
+<!-- edited by nvanhai CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="1" MaxRows="0" DateKHBS="" loaiKHBS="">
+		<Cells>
+			<Cell CellID="BD_9" CellID2="J_39" FirstCell="0" Encode="1" Receive="1" Value="Thuế TNDN phải nộp ([37]=[35] x [36])" StatusID="0001"/>
+			<Cell CellID="BE_9" CellID2="AT_39" Encode="1" Receive="1" Value="37" StatusID="0001"/>
+			<Cell CellID="BC_9" CellID2="I_39" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BF_9" CellID2="BB_39" Encode="1" Receive="1" Value="2200000" StatusID="0001"/>
+			<Cell CellID="BG_9" CellID2="BU_39" Encode="1" Receive="1" Value="22000000" StatusID="0001"/>
+			<Cell CellID="BH_9" CellID2="CP_39" Encode="1" Receive="1" Value="19800000" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="BD_10" CellID2="J_40" FirstCell="1" Encode="1" Receive="1" Value="Thuế TNDN bổ sung kê khai kỳ này ([39] = [37] - [38])" StatusID="0001"/>
+			<Cell CellID="BE_10" CellID2="AT_40" Encode="1" Receive="1" Value="39" StatusID="0001"/>
+			<Cell CellID="BC_10" CellID2="I_40" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BF_10" CellID2="BB_40" Encode="1" Receive="1" Value="2200000" StatusID="0001"/>
+			<Cell CellID="BG_10" CellID2="BU_40" Encode="1" Receive="1" Value="22000000" StatusID="0001"/>
+			<Cell CellID="BH_10" CellID2="CP_40" Encode="1" Receive="1" Value="19800000" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="BD_14" CellID2="J_44" FirstCell="0" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BE_14" CellID2="AT_44" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BC_14" CellID2="I_44" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BF_14" CellID2="BB_44" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BG_14" CellID2="BU_44" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BH_14" CellID2="CP_44" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="B_48" CellID2="E_71" Encode="1" Receive="1" Value="21/01/2014" StatusID="0001"/>
+			<Cell CellID="BE_21" CellID2="CI_51" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BE_22" CellID2="CI_52" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BE_28" CellID2="BZ_55" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BE_30" CellID2="CC_56" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BE_32" CellID2="K_57" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BE_34" CellID2="CI_61" Encode="0" Receive="1" Value="HAN - Cục Thuế Thành phố Hà Nội" StatusID="0001"/>
+			<Cell CellID="BI_34" CellID2="BI_61" Encode="1" Receive="1" Value="10100" StatusID="0001"/>
+			<Cell CellID="BE_36" CellID2="AC_57" Encode="0" Receive="1" Value="Chi cục Thuế Quận Ba Đình" StatusID="0001"/>
+			<Cell CellID="BI_36" CellID2="BI_62" Encode="1" Receive="1" Value="10101" StatusID="0001"/>
+			<Cell CellID="BE_38" CellID2="CI_63" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BE_40" CellID2="CI_65" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BD_44" CellID2="E_68" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BG_46" CellID2="BS_82" Encode="0" Receive="1" Value="Hùng" StatusID="0001"/>
+			<Cell CellID="BG_47" CellID2="C_71" Encode="0" Receive="1" Value="21/01/2014" StatusID="0001"/>
+			<Cell CellID="BF_18" CellID2="BB_48" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="BG_18" CellID2="BU_48" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="BH_18" CellID2="CP_48" Encode="1" Receive="0" Value="19800000" StatusID="0001"/>
+			<Cell CellID="BI_5" CellID2="" Encode="0" Receive="0" Value="19800000" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

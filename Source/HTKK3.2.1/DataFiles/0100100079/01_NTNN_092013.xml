@@ -1,0 +1,60 @@
+<!-- Edited by NTTRUONG FIS_CMC-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="130">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="Y_21" CellID2="N_31" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_55" CellID2="C_53" FirstCell="0" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="L_55" CellID2="L_53" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="R_55" CellID2="R_53" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="X_55" CellID2="X_53" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AD_55" CellID2="AD_53" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="AI_55" CellID2="AI_53" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AM_55" CellID2="AO_53" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AQ_55" CellID2="AR_53" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AU_55" CellID2="AU_53" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AY_55" CellID2="AY_53" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BC_55" CellID2="BC_53" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BG_55" CellID2="BG_53" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BM_55" CellID2="BM_53" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BQ_55" CellID2="BQ_53" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="AI_57" CellID2="AI_55" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AU_48" CellID2="AU_48" Encode="0" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AU_57" CellID2="AU_55" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AY_57" CellID2="AY_55" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BG_57" CellID2="BG_55" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BM_57" CellID2="BM_55" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BM_48" CellID2="BM_48" Encode="0" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BQ_57" CellID2="BQ_55" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BQ_48" CellID2="BQ_48" Encode="0" Receive="1" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="AT_5" CellID2="AT_5" Encode="1" Receive="1" Value="X" StatusID="0001"/>
+			<Cell CellID="BC_5" CellID2="AZ_5" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="S_33" CellID2="AB_28" Encode="0" Receive="1" Value=" đồng " StatusID="0001"/>
+			<Cell CellID="O_32" CellID2="M_31" Encode="0" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="O_67" CellID2="W_65" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="O_69" CellID2="AC_66" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="AX_67" CellID2="AN_71" Encode="1" Receive="1" Value="Hùng" StatusID="0001"/>
+			<Cell CellID="AG_30" CellID2="AG_30" Encode="1" Receive="1" Value="22/01/2014" StatusID="0001"/>
+			<Cell CellID="C_31" CellID2="C_31" Encode="1" Receive="1" Value="1" StatusID="0001"/>
+			<Cell CellID="F_31" CellID2="F_31" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="I_31" CellID2="I_31" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BM_31" CellID2="M_31" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

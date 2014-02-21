@@ -1,0 +1,33 @@
+<!-- Edited by NTTRUONG FIS_CMC-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="321">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="O_8" CellID2="D_58" Encode="1" Receive="1" Value="18/02/2014"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_43" CellID2="AE_40" FirstCell="0" Encode="0" Receive="0" Value="01BLP" StatusID="0001"/>
+			<Cell CellID="E_43" CellID2="C_40" Encode="1" Receive="1" Value="01BLP2-001" StatusID="0001"/>
+			<Cell CellID="H_43" CellID2="H_40" Encode="1" Receive="1" Value="Biên lai thu phí, lệ phí không có mệnh giá" StatusID="0001"/>
+			<Cell CellID="S_43" CellID2="O_40" Encode="1" Receive="1" Value="AA-12P" StatusID="0001"/>
+			<Cell CellID="V_43" CellID2="R_40" Encode="1" Receive="1" Value="0000001" StatusID="0001"/>
+			<Cell CellID="Y_43" CellID2="V_40" Encode="1" Receive="1" Value="0000002" StatusID="0001"/>
+			<Cell CellID="AA_43" CellID2="Z_40" Encode="1" Receive="1" Value="2" StatusID="0001"/>
+			<Cell CellID="AB_43" CellID2="AA_40" Encode="1" Receive="1" Value="dsd" StatusID="0001"/>
+			<Cell CellID="AL_43" CellID2="AF_40" Encode="1" Receive="1" Value="01" StatusID="0001"/>
+			<Cell CellID="AC_43" CellID2="AB_40" Encode="0" Receive="1" Value="Đã sử dụng" StatusID="0001"/>
+			<Cell CellID="AI_43" CellID2="AD_40" Encode="0" Receive="1" Value="0         01BLP     Biên lai thu phí, lệ phí không có mệnh giá                                                                                                                                                              " StatusID="0001"/>
+			<Cell CellID="AK_43" CellID2="AC_40" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="I_46" CellID2="I_51" Encode="1" Receive="1" Value="gfdg" StatusID="0001"/>
+			<Cell CellID="I_48" CellID2="AC_52" Encode="1" Receive="1" Value="dfgdfg" StatusID="0001"/>
+			<Cell CellID="AB_49" CellID2="R_56" Encode="1" Receive="1" Value="Hùng" StatusID="0001"/>
+			<Cell CellID="AB_51" CellID2="R_58" Encode="1" Receive="1" Value="18/02/2014" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

@@ -1,0 +1,43 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="130">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_19" CellID2="CD_55" Encode="1" Receive="1" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="K_22" CellID2="CG_40" Encode="1" Receive="1" Value="4791509751"/>
+			<Cell CellID="K_23" CellID2="CG_41" Encode="1" Receive="1" Value="4935255044"/>
+			<Cell CellID="K_24" CellID2="CG_42" Encode="1" Receive="1" Value="-143745293"/>
+			<Cell CellID="K_25" CellID2="CG_43" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_26" CellID2="CG_44" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_27" CellID2="CG_45" Encode="1" Receive="1" Value="-143745293"/>
+			<Cell CellID="K_28" CellID2="CG_46" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_29" CellID2="CG_47" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_30" CellID2="CG_48" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_31" CellID2="CG_49" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_32" CellID2="CG_50" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="K_33" CellID2="CG_51" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="B_34" CellID2="B_38" Encode="1" Receive="1" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_12" CellID2="AB_11" Encode="1" Receive="1" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="E_41" CellID2="M_59" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="E_43" CellID2="Z_60" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="J_41" CellID2="BD_66" Encode="1" Receive="1" Value="Nguyễn Văn Vũ"/>
+			<Cell CellID="J_43" CellID2="C_55" Encode="1" Receive="1" Value="24/04/2012"/>
+			<Cell CellID="E_13" CellID2="AL_35" Encode="1" Receive="1" Value="1"/>
+			<Cell CellID="G_13" CellID2="BC_35" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="E_44" CellID2="BD_35" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="L_15" CellID2="" Encode="1" Receive="1" Value="1052"/>
+		</Cells>
+	</Section>
+</Sections>

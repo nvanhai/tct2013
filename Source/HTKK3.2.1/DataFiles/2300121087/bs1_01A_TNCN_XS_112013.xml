@@ -1,0 +1,27 @@
+<!-- Edited by hlnam FIS_CMC-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="130">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_7" CellID2="H_20" Encode="1" Receive="1" Value="0010011000"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="U_40" CellID2="U_40" Encode="1" Receive="1" Value="500000"/>
+			<Cell CellID="U_41" CellID2="U_41" Encode="1" Receive="1" Value="444444"/>
+			<Cell CellID="U_42" CellID2="U_42" Encode="1" Receive="1" Value="333333"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="R_44" CellID2="P_54" Encode="1" Receive="1" Value="Hoàng Lan"/>
+			<Cell CellID="G_44" CellID2="F_50" Encode="1" Receive="1" Value="Huyền Trâm"/>
+			<Cell CellID="G_46" CellID2="H_51" Encode="1" Receive="1" Value="KTV"/>
+			<Cell CellID="R_46" CellID2="R_46" Encode="1" Receive="1" Value="20/12/2013"/>
+			<Cell CellID="C_47" CellID2="C_47" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="F_47" CellID2="F_47" Encode="1" Receive="1" Value="1"/>
+			<Cell CellID="I_47" CellID2="I_47" Encode="1" Receive="1" Value="1"/>
+		</Cells>
+	</Section>
+</Sections>

@@ -1,0 +1,40 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="AH_24" CellID2="AH_33" Encode="1" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="CT_40" CellID2="CT_40" Encode="1" Value="0"/>
+			<Cell CellID="CT_41" CellID2="CT_41" Encode="1" Value="0"/>
+			<Cell CellID="BW_43" CellID2="BW_43" Encode="1" Value="1000000"/>
+			<Cell CellID="CT_43" CellID2="CT_43" Encode="1" Value="100000"/>
+			<Cell CellID="BW_45" CellID2="BW_45" Encode="1" Value="0"/>
+			<Cell CellID="CT_45" CellID2="CT_45" Encode="1" Value="0"/>
+			<Cell CellID="BW_46" CellID2="BW_46" Encode="1" Value="0"/>
+			<Cell CellID="CT_46" CellID2="CT_46" Encode="1" Value="0"/>
+			<Cell CellID="CT_47" CellID2="CT_47" Encode="1" Value="100000"/>
+			<Cell CellID="CT_48" CellID2="CT_48" Encode="1" Value="0"/>
+			<Cell CellID="CT_49" CellID2="CT_49" Encode="1" Value="100000"/>
+			<Cell CellID="CT_51" CellID2="CT_51" Encode="1" Value="0"/>
+			<Cell CellID="CT_52" CellID2="CT_52" Encode="1" Value="0"/>
+			<Cell CellID="CT_53" CellID2="CT_53" Encode="1" Value="0"/>
+			<Cell CellID="CT_54" CellID2="CT_54" Encode="1" Value="100000"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="V_57" CellID2="O_59" Encode="1" Value=""/>
+			<Cell CellID="CB_57" CellID2="BM_64" Encode="1" Value="Hùng"/>
+			<Cell CellID="V_59" CellID2="X_60" Encode="1" Value=""/>
+			<Cell CellID="CB_59" CellID2="C_56" Encode="1" Value="14/02/2014"/>
+			<Cell CellID="C_61" CellID2="C_62" Encode="1" Receive="1" Value="1"/>
+			<Cell CellID="F_61" CellID2="F_62" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="I_61" CellID2="I_62" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="K_61" CellID2="O_62" Encode="1" Receive="1" Value="0"/>
+		</Cells>
+	</Section>
+</Sections>

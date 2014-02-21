@@ -1,0 +1,40 @@
+<PL05A_BK-TNCN>
+	<Dynamic GroupName="CHITIETCHIUTHUETNCN">
+		<cacThongTinChiTieuThueTNCN id="id">
+			<ct07>D_22</ct07>
+			<ct08 TINType="1">E_22</ct08>
+			<ct09>F_22</ct09>
+			<ct10>G_22</ct10>
+			<ThuNhapChiuThue>
+				<ct11>H_22</ct11>
+				<ct12>I_22</ct12>
+			</ThuNhapChiuThue>
+			<CacKhoanGiamTru>
+				<ct13>J_22</ct13>
+				<ct14>K_22</ct14>
+				<ct15>L_22</ct15>
+			</CacKhoanGiamTru>
+			<ct16>M_22</ct16>
+			<ct17>N_22</ct17>
+			<ct18>O_22</ct18>
+			<ChiTietKQQuyetToanThay>
+				<ct19>Q_22</ct19>
+				<ct20>R_22</ct20>
+				<ct21>S_22</ct21>
+			</ChiTietKQQuyetToanThay>
+		</cacThongTinChiTieuThueTNCN>
+	</Dynamic>
+	<Static GroupName="PL05A_BK-TNCN">
+		<ct22>H_24</ct22>
+		<ct23>I_24</ct23>
+		<ct24>J_24</ct24>
+		<ct25>K_24</ct25>
+		<ct26>L_24</ct26>
+		<ct27>M_24</ct27>
+		<ct28>N_24</ct28>
+		<ct29>O_24</ct29>
+		<ct30>Q_24</ct30>
+		<ct31>R_24</ct31>
+		<ct32>S_24</ct32>
+	</Static>
+</PL05A_BK-TNCN>

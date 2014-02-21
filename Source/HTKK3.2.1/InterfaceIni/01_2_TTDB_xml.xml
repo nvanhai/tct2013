@@ -1,0 +1,35 @@
+<Pluc_01_2_TTDB>
+	<Dynamic GroupName="ChiTietThueTTDBNLMVao">
+		<ThueNLMVao id="ID_1">
+			<BienLaiChungTuNopThueTTDB>
+				<ct2>C_10</ct2>
+				<ct3>D_10</ct3>
+				<ct4>E_10</ct4>
+			</BienLaiChungTuNopThueTTDB>
+			<ct5>F_10</ct5>
+			<ct6>G_10</ct6>
+			<ct7>H_10</ct7>
+			<ct8>I_10</ct8>
+			<ct9>J_10</ct9>
+			<ct10>K_10</ct10>
+		</ThueNLMVao>
+	</Dynamic>
+	<Static GroupName="TTinThueNLMVao">
+		<tong_ct7>H_12</tong_ct7>
+		<tong_ct9>J_12</tong_ct9>
+		<tong_ct10>K_12</tong_ct10>
+	</Static>
+	<Dynamic GroupName="ChiTietThueTTDBNLDuocKTru">
+		<ThueNLDuocKTru id="ID_2">
+			<ct2>C_20</ct2>
+			<ct3>E_20</ct3>
+			<ct4>F_20</ct4>
+			<ct5>H_20</ct5>
+			<ct6>J_20</ct6>
+			<ct7>K_20</ct7>
+		</ThueNLDuocKTru>
+	</Dynamic>
+	<Static GroupName="TTinThueNLDuocKTru">
+		<tong_ct7>K_22</tong_ct7>
+	</Static>
+</Pluc_01_2_TTDB>

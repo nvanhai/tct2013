@@ -1,0 +1,91 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="130">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="P_40" CellID2="P_40" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_40" CellID2="R_40" Encode="1" Receive="1" Value="1000"/>
+			<Cell CellID="W_40" CellID2="W_40" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_41" CellID2="P_41" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_41" CellID2="R_41" Encode="1" Receive="1" Value="2000"/>
+			<Cell CellID="W_41" CellID2="W_41" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_42" CellID2="P_42" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_42" CellID2="R_42" Encode="1" Receive="1" Value="3000"/>
+			<Cell CellID="W_42" CellID2="W_42" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_43" CellID2="P_43" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_43" CellID2="R_43" Encode="1" Receive="1" Value="4000"/>
+			<Cell CellID="W_43" CellID2="W_43" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_44" CellID2="P_44" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_44" CellID2="R_44" Encode="1" Receive="1" Value="5000"/>
+			<Cell CellID="W_44" CellID2="W_44" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_45" CellID2="P_45" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_45" CellID2="R_45" Encode="1" Receive="1" Value="6000"/>
+			<Cell CellID="W_45" CellID2="W_45" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_46" CellID2="P_46" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_46" CellID2="R_46" Encode="1" Receive="1" Value="7000"/>
+			<Cell CellID="W_46" CellID2="W_46" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_47" CellID2="P_47" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_47" CellID2="R_47" Encode="1" Receive="1" Value="28000"/>
+			<Cell CellID="W_47" CellID2="W_47" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_49" CellID2="P_49" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_49" CellID2="R_49" Encode="1" Receive="1" Value="1000"/>
+			<Cell CellID="W_49" CellID2="W_49" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_50" CellID2="P_50" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_50" CellID2="R_50" Encode="1" Receive="1" Value="2000"/>
+			<Cell CellID="W_50" CellID2="W_50" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_51" CellID2="P_51" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_51" CellID2="R_51" Encode="1" Receive="1" Value="3000"/>
+			<Cell CellID="W_51" CellID2="W_51" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_52" CellID2="P_52" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_52" CellID2="R_52" Encode="1" Receive="1" Value="4000"/>
+			<Cell CellID="W_52" CellID2="W_52" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_53" CellID2="P_53" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_53" CellID2="R_53" Encode="1" Receive="1" Value="5000"/>
+			<Cell CellID="W_53" CellID2="W_53" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_54" CellID2="P_54" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_54" CellID2="R_54" Encode="1" Receive="1" Value="7000"/>
+			<Cell CellID="W_54" CellID2="W_54" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_55" CellID2="P_55" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_55" CellID2="R_55" Encode="1" Receive="1" Value="2000"/>
+			<Cell CellID="W_55" CellID2="W_55" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_56" CellID2="P_56" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_56" CellID2="R_56" Encode="1" Receive="1" Value="24000"/>
+			<Cell CellID="W_56" CellID2="W_56" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_58" CellID2="P_58" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_58" CellID2="R_58" Encode="1" Receive="1" Value="3000"/>
+			<Cell CellID="W_58" CellID2="W_58" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_59" CellID2="P_59" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_59" CellID2="R_59" Encode="1" Receive="1" Value="2000"/>
+			<Cell CellID="W_59" CellID2="W_59" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_60" CellID2="P_60" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_60" CellID2="R_60" Encode="1" Receive="1" Value="5000"/>
+			<Cell CellID="W_60" CellID2="W_60" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_61" CellID2="P_61" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_61" CellID2="R_61" Encode="1" Receive="1" Value="6000"/>
+			<Cell CellID="W_61" CellID2="W_61" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_62" CellID2="P_62" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_62" CellID2="R_62" Encode="1" Receive="1" Value="7000"/>
+			<Cell CellID="W_62" CellID2="W_62" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_63" CellID2="P_63" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_63" CellID2="R_63" Encode="1" Receive="1" Value="9000"/>
+			<Cell CellID="W_63" CellID2="W_63" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_64" CellID2="P_64" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_64" CellID2="R_64" Encode="1" Receive="1" Value="32000"/>
+			<Cell CellID="W_64" CellID2="W_64" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_65" CellID2="P_65" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_65" CellID2="R_65" Encode="1" Receive="1" Value="84000"/>
+			<Cell CellID="W_65" CellID2="W_65" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_66" CellID2="P_66" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_66" CellID2="R_66" Encode="1" Receive="1" Value="8000"/>
+			<Cell CellID="W_66" CellID2="W_66" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_67" CellID2="P_67" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_67" CellID2="R_67" Encode="1" Receive="1" Value="1000"/>
+			<Cell CellID="W_67" CellID2="W_67" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="P_68" CellID2="P_68" Encode="1" Receive="1" Value="VII.34"/>
+			<Cell CellID="R_68" CellID2="R_68" Encode="1" Receive="1" Value="93000"/>
+			<Cell CellID="W_68" CellID2="W_68" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="R_70" CellID2="R_70" Encode="1" Receive="1" Value="Hoa Linh"/>
+			<Cell CellID="R_72" CellID2="R_72" Encode="1" Receive="1" Value="22/10/2013"/>
+		</Cells>
+	</Section>
+</Sections>

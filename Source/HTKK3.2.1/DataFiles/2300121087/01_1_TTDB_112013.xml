@@ -1,0 +1,28 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by ThanhDX (FSS - HN) -->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="130">
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="B_37" CellID2="B_35" FirstCell="0" Encode="0" Receive="0" Value="1" StatusID="0001"/>
+			<Cell CellID="C_37" CellID2="C_35" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="D_37" CellID2="F_35" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_37" CellID2="J_35" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_37" CellID2="N_35" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="I_37" CellID2="S_35" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="J_37" CellID2="V_35" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="K_37" CellID2="U_35" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="L_37" CellID2="T_35" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="N_37" CellID2="Z_35" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="O_37" CellID2="AC_35" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="P_37" CellID2="AF_35" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="B_41" CellID2="B_38" FirstCell="0" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="L_41" CellID2="V_38" Encode="1" Receive="1" Value="Hàng hoá, dịch vụ thứ..." StatusID="0001"/>
+			<Cell CellID="N_41" CellID2="Z_38" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="P_41" CellID2="AF_38" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

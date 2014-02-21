@@ -1,0 +1,140 @@
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="130">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="AN_6" CellID2="AG_9" Encode="0" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="AG_6" CellID2="AH_9" Encode="0" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="M_7" CellID2="I_20" Encode="1" Receive="0" Value="" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="N_34" CellID2="M_40" FirstCell="0" Encode="1" Receive="" Value="" StatusID="0001"/>
+			<Cell CellID="V_36" CellID2="W_41" FirstCell="0" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="AA_36" CellID2="AB_41" FirstCell="0" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="AG_36" CellID2="AF_41" FirstCell="0" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="AJ_36" CellID2="AI_41" FirstCell="0" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="AN_36" CellID2="AM_41" FirstCell="0" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_38" CellID2="F_43" FirstCell="0" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="E_38" CellID2="C_43" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_38" CellID2="C_43" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="G_38" CellID2="C_43" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="O_38" CellID2="C_43" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="P_38" CellID2="O_43" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="Q_38" CellID2="C_43" Encode="0" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="R_38" CellID2="C_43" Encode="0" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="S_38" CellID2="R_43" Encode="1" Receive="1" Value="0.00" StatusID="0001"/>
+			<Cell CellID="V_38" CellID2="W_43" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AA_38" CellID2="AB_43" Encode="1" Receive="1" Value="0.00" StatusID="0001"/>
+			<Cell CellID="AD_38" CellID2="AC_43" Encode="1" Receive="0" Value="0.0" StatusID="0001"/>
+			<Cell CellID="AG_38" CellID2="AF_43" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AJ_38" CellID2="AI_43" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AN_38" CellID2="AM_43" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0" Receive="0">
+		<Cells>
+			<Cell CellID="V_40" CellID2="W_45" FirstCell="0" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="AA_40" CellID2="AB_45" FirstCell="0" Encode="1" Receive="0" Value="0.00" StatusID="0001"/>
+			<Cell CellID="AG_40" CellID2="AF_45" FirstCell="0" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="AJ_40" CellID2="AI_45" FirstCell="0" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="AN_40" CellID2="AM_45" FirstCell="0" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_42" CellID2="F_47" FirstCell="0" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="E_42" CellID2="C_47" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_42" CellID2="C_47" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="G_42" CellID2="C_47" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="O_42" CellID2="C_47" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="P_42" CellID2="O_47" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="Q_42" CellID2="C_47" Encode="0" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="R_42" CellID2="C_47" Encode="0" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="S_42" CellID2="R_47" Encode="1" Receive="1" Value="0.00" StatusID="0001"/>
+			<Cell CellID="V_42" CellID2="W_47" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AA_42" CellID2="AB_47" Encode="1" Receive="1" Value="0.00" StatusID="0001"/>
+			<Cell CellID="AD_42" CellID2="AC_47" Encode="1" Receive="0" Value="0.0" StatusID="0001"/>
+			<Cell CellID="AG_42" CellID2="AF_47" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AJ_42" CellID2="AI_47" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AN_42" CellID2="AM_47" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0" Receive="0">
+		<Cells>
+			<Cell CellID="V_44" CellID2="W_49" FirstCell="0" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_47" CellID2="F_52" FirstCell="0" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="E_47" CellID2="C_52" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_47" CellID2="C_52" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="G_47" CellID2="C_52" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="O_47" CellID2="C_52" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="P_47" CellID2="O_52" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="Q_47" CellID2="C_52" Encode="0" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="R_47" CellID2="C_52" Encode="0" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="S_47" CellID2="R_52" Encode="1" Receive="1" Value="0.00" StatusID="0001"/>
+			<Cell CellID="V_47" CellID2="W_52" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_51" CellID2="F_56" FirstCell="0" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="E_51" CellID2="C_56" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_51" CellID2="C_56" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="G_51" CellID2="C_56" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="O_51" CellID2="C_56" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="P_51" CellID2="O_56" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="Q_51" CellID2="C_56" Encode="0" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="R_51" CellID2="C_56" Encode="0" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="S_51" CellID2="R_56" Encode="1" Receive="1" Value="0.00" StatusID="0001"/>
+			<Cell CellID="V_51" CellID2="W_56" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_55" CellID2="F_60" FirstCell="0" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="E_55" CellID2="C_60" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_55" CellID2="C_60" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="G_55" CellID2="C_60" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="O_55" CellID2="C_60" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="P_55" CellID2="O_60" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="Q_55" CellID2="C_60" Encode="0" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="R_55" CellID2="C_60" Encode="0" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="S_55" CellID2="R_60" Encode="1" Receive="1" Value="0.00" StatusID="0001"/>
+			<Cell CellID="V_55" CellID2="W_60" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0" Receive="0">
+		<Cells>
+			<Cell CellID="V_57" CellID2="W_62" FirstCell="0" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="AA_57" CellID2="AB_62" FirstCell="0" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="AG_57" CellID2="AF_62" FirstCell="0" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="AJ_57" CellID2="AI_62" FirstCell="0" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="AN_57" CellID2="AM_62" FirstCell="0" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="AI_59" CellID2="AB_73" FirstCell="0" Encode="1" Receive="1" Value="Hùng" StatusID="0001"/>
+			<Cell CellID="U_59" CellID2="K_67" FirstCell="0" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="U_61" CellID2="K_68" FirstCell="0" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="AI_61" CellID2="AL_64" FirstCell="0" Encode="1" Receive="1" Value="22/01/2014" StatusID="0001"/>
+			<Cell CellID="Y_12" CellID2="J_19" FirstCell="0" Encode="1" Receive="1" Value="1" StatusID="0001"/>
+			<Cell CellID="AA_12" CellID2="K_19" FirstCell="0" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="AC_12" CellID2="L_19" FirstCell="0" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AI_15" CellID2="" FirstCell="0" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="AN_15" CellID2="" FirstCell="0" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="S_10" CellID2="M_19" FirstCell="0" Encode="0" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="T_10" CellID2="O_19" FirstCell="0" Encode="0" Receive="1" Value="x" StatusID="0001"/>
+			<Cell CellID="AN_10" CellID2="" FirstCell="0" Encode="1" Receive="1" Value="10/01/2014" StatusID="0001"/>
+			<Cell CellID="L_14" CellID2="" FirstCell="0" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

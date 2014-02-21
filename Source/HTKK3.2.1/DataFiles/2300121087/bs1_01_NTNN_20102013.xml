@@ -1,0 +1,76 @@
+<!-- Edited by NTTRUONG FIS_CMC-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="130">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="Y_21" CellID2="N_31" Encode="1" Receive="1" Value="0010011000" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_55" CellID2="C_53" FirstCell="0" Encode="1" Value="nội dung 1" StatusID="0001"/>
+			<Cell CellID="L_55" CellID2="L_53" Encode="1" Receive="1" Value="0102030405" StatusID="0001"/>
+			<Cell CellID="R_55" CellID2="R_53" Encode="1" Receive="1" Value="hd001" StatusID="0001"/>
+			<Cell CellID="X_55" CellID2="X_53" Encode="1" Receive="1" Value="4000000" StatusID="0001"/>
+			<Cell CellID="AD_55" CellID2="AD_53" Encode="1" Receive="1" Value="12/10/2013" StatusID="0001"/>
+			<Cell CellID="AI_55" CellID2="AI_53" Encode="1" Receive="1" Value="5000000" StatusID="0001"/>
+			<Cell CellID="AM_55" CellID2="AO_53" Encode="1" Receive="1" Value="15.78" StatusID="0001"/>
+			<Cell CellID="AQ_55" CellID2="AR_53" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="AU_55" CellID2="AU_53" Encode="1" Receive="1" Value="78900" StatusID="0001"/>
+			<Cell CellID="AY_55" CellID2="AY_53" Encode="1" Receive="1" Value="3400000" StatusID="0001"/>
+			<Cell CellID="BC_55" CellID2="BC_53" Encode="1" Receive="1" Value="34.67" StatusID="0001"/>
+			<Cell CellID="BG_55" CellID2="BG_53" Encode="1" Receive="1" Value="250000" StatusID="0001"/>
+			<Cell CellID="BM_55" CellID2="BM_53" Encode="1" Receive="1" Value="928780" StatusID="0001"/>
+			<Cell CellID="BQ_55" CellID2="BQ_53" Encode="1" Receive="1" Value="1007680" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_56" CellID2="C_54" FirstCell="1" Encode="1" Value="nội dung 1" StatusID="0001"/>
+			<Cell CellID="L_56" CellID2="L_54" Encode="1" Receive="1" Value="0010011000" StatusID="0001"/>
+			<Cell CellID="R_56" CellID2="R_54" Encode="1" Receive="1" Value="hd002" StatusID="0001"/>
+			<Cell CellID="X_56" CellID2="X_54" Encode="1" Receive="1" Value="6000000" StatusID="0001"/>
+			<Cell CellID="AD_56" CellID2="AD_54" Encode="1" Receive="1" Value="15/10/2013" StatusID="0001"/>
+			<Cell CellID="AI_56" CellID2="AI_54" Encode="1" Receive="1" Value="4000000" StatusID="0001"/>
+			<Cell CellID="AM_56" CellID2="AO_54" Encode="1" Receive="1" Value="18.45" StatusID="0001"/>
+			<Cell CellID="AQ_56" CellID2="AR_54" Encode="1" Receive="1" Value="5" StatusID="0001"/>
+			<Cell CellID="AU_56" CellID2="AU_54" Encode="1" Receive="1" Value="36900" StatusID="0001"/>
+			<Cell CellID="AY_56" CellID2="AY_54" Encode="1" Receive="1" Value="2890000" StatusID="0001"/>
+			<Cell CellID="BC_56" CellID2="BC_54" Encode="1" Receive="1" Value="27.34" StatusID="0001"/>
+			<Cell CellID="BG_56" CellID2="BG_54" Encode="1" Receive="1" Value="100000" StatusID="0001"/>
+			<Cell CellID="BM_56" CellID2="BM_54" Encode="1" Receive="1" Value="690126" StatusID="0001"/>
+			<Cell CellID="BQ_56" CellID2="BQ_54" Encode="1" Receive="1" Value="727026" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="AI_58" CellID2="AI_56" Encode="1" Receive="1" Value="40000000" StatusID="0001"/>
+			<Cell CellID="AU_48" CellID2="AU_48" Encode="0" Receive="1" Value="300000" StatusID="0001"/>
+			<Cell CellID="AU_58" CellID2="AU_56" Encode="1" Receive="1" Value="300000" StatusID="0001"/>
+			<Cell CellID="AY_58" CellID2="AY_56" Encode="1" Receive="1" Value="8000000" StatusID="0001"/>
+			<Cell CellID="BG_58" CellID2="BG_56" Encode="1" Receive="1" Value="500000" StatusID="0001"/>
+			<Cell CellID="BM_58" CellID2="BM_56" Encode="1" Receive="1" Value="900000" StatusID="0001"/>
+			<Cell CellID="BM_48" CellID2="BM_48" Encode="0" Receive="1" Value="900000" StatusID="0001"/>
+			<Cell CellID="BQ_58" CellID2="BQ_56" Encode="1" Receive="1" Value="1200000" StatusID="0001"/>
+			<Cell CellID="BQ_48" CellID2="BQ_48" Encode="0" Receive="1" Value="1200000" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="AT_5" CellID2="AT_5" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BC_5" CellID2="AZ_5" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="S_33" CellID2="AB_28" Encode="0" Receive="1" Value="Một  triệu  hai  trăm  nghìn đồng " StatusID="0001"/>
+			<Cell CellID="O_32" CellID2="M_31" Encode="0" Receive="1" Value="20" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="O_68" CellID2="W_66" Encode="1" Receive="1" Value="Huyền Trâm" StatusID="0001"/>
+			<Cell CellID="O_70" CellID2="AC_67" Encode="1" Receive="1" Value="KTV" StatusID="0001"/>
+			<Cell CellID="AX_68" CellID2="AN_72" Encode="1" Receive="1" Value="Hoàng Lan" StatusID="0001"/>
+			<Cell CellID="AG_30" CellID2="AG_30" Encode="1" Receive="1" Value="20/12/2013" StatusID="0001"/>
+			<Cell CellID="C_31" CellID2="C_31" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_31" CellID2="F_31" Encode="1" Receive="1" Value="1" StatusID="0001"/>
+			<Cell CellID="I_31" CellID2="I_31" Encode="1" Receive="1" Value="1" StatusID="0001"/>
+			<Cell CellID="BM_31" CellID2="M_31" Encode="1" Receive="1" Value="20/10/2013" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

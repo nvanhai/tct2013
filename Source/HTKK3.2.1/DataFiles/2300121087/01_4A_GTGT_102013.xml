@@ -1,0 +1,17 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="130">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_5" CellID2="" Encode="1" Receive="0" Value="3750000"/>
+			<Cell CellID="D_7" CellID2="BV_16" Encode="1" Receive="1" Value="700000"/>
+			<Cell CellID="D_9" CellID2="BV_18" Encode="1" Receive="1" Value="1250000"/>
+			<Cell CellID="D_11" CellID2="BV_20" Encode="1" Receive="1" Value="1800000"/>
+			<Cell CellID="D_16" CellID2="CP_25" Encode="1" Receive="1" Value="98000000"/>
+			<Cell CellID="D_17" CellID2="CP_26" Encode="1" Receive="1" Value="90000000"/>
+			<Cell CellID="D_18" CellID2="CP_27" Encode="1" Receive="0" Value="91.84"/>
+			<Cell CellID="D_19" CellID2="CP_28" Encode="1" Receive="1" Value="1800000"/>
+			<Cell CellID="D_20" CellID2="CP_29" Encode="1" Receive="0" Value="1653120"/>
+		</Cells>
+	</Section>
+</Sections>

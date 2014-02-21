@@ -1,0 +1,73 @@
+<!-- edited by TAS CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="1" MaxRows="0" DateKHBS="" loaiKHBS="">
+		<Cells>
+			<Cell CellID="BD_9" CellID2="J_39" FirstCell="0" Encode="1" Receive="1" Value="Thuế GTGT còn được khấu trừ kỳ trước chuyển sang" StatusID="0001"/>
+			<Cell CellID="BE_9" CellID2="AT_39" Encode="1" Receive="1" Value="22" StatusID="0001"/>
+			<Cell CellID="BC_9" CellID2="I_39" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BF_9" CellID2="BB_39" Encode="1" Receive="1" Value="32222000" StatusID="0001"/>
+			<Cell CellID="BG_9" CellID2="BU_39" Encode="1" Receive="1" Value="222000" StatusID="0001"/>
+			<Cell CellID="BH_9" CellID2="CP_39" Encode="1" Receive="1" Value="-32000000" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="BD_10" CellID2="J_40" FirstCell="1" Encode="1" Receive="1" Value="Tổng số thuế GTGT  được khấu trừ kỳ này" StatusID="0001"/>
+			<Cell CellID="BE_10" CellID2="AT_40" Encode="1" Receive="1" Value="25" StatusID="0001"/>
+			<Cell CellID="BC_10" CellID2="I_40" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BF_10" CellID2="BB_40" Encode="1" Receive="1" Value="1328400" StatusID="0001"/>
+			<Cell CellID="BG_10" CellID2="BU_40" Encode="1" Receive="1" Value="928400" StatusID="0001"/>
+			<Cell CellID="BH_10" CellID2="CP_40" Encode="1" Receive="1" Value="-400000" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="BD_11" CellID2="J_41" FirstCell="1" Encode="1" Receive="1" Value="Hàng hoá, dịch vụ bán ra chịu thuế suất 10%" StatusID="0001"/>
+			<Cell CellID="BE_11" CellID2="AT_41" Encode="1" Receive="1" Value="33" StatusID="0001"/>
+			<Cell CellID="BC_11" CellID2="I_41" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BF_11" CellID2="BB_41" Encode="1" Receive="1" Value="2000000" StatusID="0001"/>
+			<Cell CellID="BG_11" CellID2="BU_41" Encode="1" Receive="1" Value="2300000" StatusID="0001"/>
+			<Cell CellID="BH_11" CellID2="CP_41" Encode="1" Receive="1" Value="300000" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="BD_12" CellID2="J_42" FirstCell="1" Encode="1" Receive="1" Value="Thuế GTGT đề nghị hoàn" StatusID="0001"/>
+			<Cell CellID="BE_12" CellID2="AT_42" Encode="1" Receive="1" Value="42" StatusID="0001"/>
+			<Cell CellID="BC_12" CellID2="I_42" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BF_12" CellID2="BB_42" Encode="1" Receive="1" Value="40000" StatusID="0001"/>
+			<Cell CellID="BG_12" CellID2="BU_42" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BH_12" CellID2="CP_42" Encode="1" Receive="1" Value="-40000" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="BD_16" CellID2="J_46" FirstCell="0" Encode="1" Receive="1" Value="Hàng hoá, dịch vụ bán ra chịu thuế suất 5%" StatusID="0001"/>
+			<Cell CellID="BE_16" CellID2="AT_46" Encode="1" Receive="1" Value="31" StatusID="0001"/>
+			<Cell CellID="BC_16" CellID2="I_46" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BF_16" CellID2="BB_46" Encode="1" Receive="1" Value="500000" StatusID="0001"/>
+			<Cell CellID="BG_16" CellID2="BU_46" Encode="1" Receive="1" Value="400000" StatusID="0001"/>
+			<Cell CellID="BH_16" CellID2="CP_46" Encode="1" Receive="1" Value="-100000" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="B_50" CellID2="E_73" Encode="1" Receive="1" Value="19/12/2013" StatusID="0001"/>
+			<Cell CellID="BE_23" CellID2="CI_53" Encode="1" Receive="1" Value="29" StatusID="0001"/>
+			<Cell CellID="BE_24" CellID2="CI_54" Encode="1" Receive="1" Value="46539" StatusID="0001"/>
+			<Cell CellID="BE_30" CellID2="BZ_57" Encode="1" Receive="1" Value="3000000" StatusID="0001"/>
+			<Cell CellID="BE_32" CellID2="CC_58" Encode="1" Receive="1" Value="lh01/bt" StatusID="0001"/>
+			<Cell CellID="BE_34" CellID2="K_59" Encode="1" Receive="1" Value="12/10/2013" StatusID="0001"/>
+			<Cell CellID="BE_36" CellID2="CI_63" Encode="0" Receive="1" Value="HAN - Cục Thuế Thành phố Hà Nội" StatusID="0001"/>
+			<Cell CellID="BI_36" CellID2="BI_63" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BE_38" CellID2="AC_59" Encode="0" Receive="1" Value="HAN - Cục Thuế Thành phố Hà Nội" StatusID="0001"/>
+			<Cell CellID="BI_38" CellID2="BI_64" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BE_40" CellID2="CI_65" Encode="1" Receive="1" Value="40" StatusID="0001"/>
+			<Cell CellID="BE_42" CellID2="CI_67" Encode="1" Receive="1" Value="120000" StatusID="0001"/>
+			<Cell CellID="BD_46" CellID2="E_70" Encode="1" Receive="1" Value="lý do abc" StatusID="0001"/>
+			<Cell CellID="BG_48" CellID2="BS_84" Encode="0" Receive="1" Value="Hoàng Lan" StatusID="0001"/>
+			<Cell CellID="BG_49" CellID2="C_73" Encode="0" Receive="1" Value="19/12/2013" StatusID="0001"/>
+			<Cell CellID="BF_20" CellID2="BB_50" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="BG_20" CellID2="BU_50" Encode="1" Receive="0" Value="3209600" StatusID="0001"/>
+			<Cell CellID="BH_20" CellID2="CP_50" Encode="1" Receive="0" Value="3209600" StatusID="0001"/>
+			<Cell CellID="BF_21" CellID2="BB_51" Encode="1" Receive="0" Value="33910400" StatusID="0001"/>
+			<Cell CellID="BG_21" CellID2="BU_51" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="BH_21" CellID2="CP_51" Encode="1" Receive="0" Value="-33910400" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

@@ -1,0 +1,37 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by namhl (FIS - CMCSOFT) -->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="130">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="B_26" CellID2="B_26" Encode="1" Value="2006"/>
+			<Cell CellID="C_26" CellID2="C_26" Encode="1" Value="0"/>
+			<Cell CellID="H_26" CellID2="H_26" Encode="1" Value="0"/>
+			<Cell CellID="M_26" CellID2="O_26" Encode="1" Value="0"/>
+			<Cell CellID="R_26" CellID2="U_26" Encode="1" Value="0"/>
+			<Cell CellID="B_27" CellID2="B_27" Encode="1" Value="2007"/>
+			<Cell CellID="C_27" CellID2="C_27" Encode="1" Value="129667431"/>
+			<Cell CellID="H_27" CellID2="H_27" Encode="1" Value="110281955"/>
+			<Cell CellID="M_27" CellID2="O_27" Encode="1" Value="19385476"/>
+			<Cell CellID="R_27" CellID2="U_27" Encode="1" Value="0"/>
+			<Cell CellID="B_28" CellID2="B_28" Encode="1" Value="2008"/>
+			<Cell CellID="C_28" CellID2="C_28" Encode="1" Value="535652761"/>
+			<Cell CellID="H_28" CellID2="H_28" Encode="1" Value="0"/>
+			<Cell CellID="M_28" CellID2="O_28" Encode="1" Value="231106035"/>
+			<Cell CellID="R_28" CellID2="U_28" Encode="1" Value="304546726"/>
+			<Cell CellID="B_29" CellID2="B_29" Encode="1" Value="2009"/>
+			<Cell CellID="C_29" CellID2="C_29" Encode="1" Value="59121311"/>
+			<Cell CellID="H_29" CellID2="H_29" Encode="1" Value="59121311"/>
+			<Cell CellID="M_29" CellID2="O_29" Encode="1" Value="0"/>
+			<Cell CellID="R_29" CellID2="U_29" Encode="1" Value="0"/>
+			<Cell CellID="B_30" CellID2="B_30" Encode="1" Value="2010"/>
+			<Cell CellID="C_30" CellID2="C_30" Encode="1" Value="0"/>
+			<Cell CellID="H_30" CellID2="H_30" Encode="1" Value="0"/>
+			<Cell CellID="M_30" CellID2="O_30" Encode="1" Value="0"/>
+			<Cell CellID="R_30" CellID2="U_30" Encode="1" Value="0"/>
+			<Cell CellID="C_32" CellID2="C_32" Encode="1" Value="724441503"/>
+			<Cell CellID="H_32" CellID2="H_32" Encode="1" Value="169403266"/>
+			<Cell CellID="M_32" CellID2="O_32" Encode="1" Value="250491511"/>
+			<Cell CellID="R_32" CellID2="U_32" Encode="1" Value="304546726"/>
+		</Cells>
+	</Section>
+</Sections>

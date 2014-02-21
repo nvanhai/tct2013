@@ -1,0 +1,17 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="313">
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_22" CellID2="C_15" FirstCell="0" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="D_22" CellID2="H_15" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_22" CellID2="L_15" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_22" CellID2="Q_15" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="G_22" CellID2="V_15" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="H_22" CellID2="W_15" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_22" CellID2="X_15" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_22" CellID2="Z_15" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="Y_22" CellID2="AA_15" Encode="0" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

@@ -1,0 +1,44 @@
+<!-- Edited by NVSU FIS_CMC-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="P_49" CellID2="BL_40" Encode="1" Receive="1" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="AF_23" CellID2="BN_19" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="Y_28" CellID2="AK_39" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="AS_28" CellID2="AN_39" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="AM_29" CellID2="BH_34" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="O_30" CellID2="Y_39" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="P_30" CellID2="AB_39" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="Q_30" CellID2="AE_39" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_30" CellID2="AH_39" Encode="1" Receive="1" Value="1"/>
+			<Cell CellID="W_30" CellID2="BZ_39" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="O_31" CellID2="Y_40" Encode="1" Receive="1" Value="19/01/2014"/>
+			<Cell CellID="W_31" CellID2="AO_40" Encode="0" Receive="1" Value=""/>
+			<Cell CellID="P_47" CellID2="AI_51" Encode="1" Receive="1" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="AV_53" CellID2="CL_70" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="AV_54" CellID2="CL_71" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="AV_55" CellID2="CL_72" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="AV_56" CellID2="CL_73" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="AV_57" CellID2="CL_74" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="AV_58" CellID2="CL_75" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="AV_59" CellID2="CL_76" Encode="1" Receive="1" Value="0"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="U_63" CellID2="N_88" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="U_65" CellID2="Y_89" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="AR_63" CellID2="BH_94" Encode="1" Receive="1" Value="Hùng"/>
+			<Cell CellID="AR_65" CellID2="AO_85" Encode="1" Receive="1" Value="19/02/2014"/>
+		</Cells>
+	</Section>
+</Sections>

@@ -1,0 +1,19 @@
+[History]
+1=#P0#=mb	#P1#=checkSheet1	#P2#=TAX_Business_v1/cls_01AC_BLP/checkSheet1	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140219143936	#P7#=0	#P8#=262	.
+2=#P0#=mb	#P1#=fps_LeaveCell	#P2#=TAX_Business_v1/cls_01AC_BLP/fps_LeaveCell	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20140219143901	#P7#=0	#P8#=96	.
+3=#P0#=mb	#P1#=CheckMauSoBLP	#P2#=TAX_Business_v1/mdlFuntions/CheckMauSoBLP	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140219143713	#P7#=0	#P8#=1	.
+4=#P0#=mb	#P1#=CheckDynamicError	#P2#=TAX_Business_v1/cls_01AC_BLP/CheckDynamicError	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140219143645	#P7#=0	#P8#=1	.
+5=#P0#=mb	#P1#=SetData	#P2#=TAX_Business_v1/cls_01AC_BLP/SetData	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140218232207	#P7#=0	#P8#=0	.
+6=#P0#=mb	#P1#=fps_LeaveCell	#P2#=TAX_Business_v1/cls_03TBAC_BLP/fps_LeaveCell	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20140218231419	#P7#=0	#P8#=67	.
+7=#P0#=mb	#P1#=fps_Change	#P2#=TAX_Business_v1/cls_01AC_BLP/fps_Change	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20140218231157	#P7#=0	#P8#=56	.
+8=#P0#=mb	#P1#=Prepare1	#P2#=TAX_Business_v1/cls_01AC_BLP/Prepare1	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140218230351	#P7#=0	#P8#=56	.
+9=#P0#=mb	#P1#=CheckDynamicError	#P2#=TAX_Business_v1/cls_BC21AC_BLP/CheckDynamicError	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140218141640	#P7#=0	#P8#=450	.
+10=#P0#=mb	#P1#=CheckDynamicError	#P2#=TAX_Business_v1/cls_01TBAC_BLP/CheckDynamicError	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140218104109	#P7#=0	#P8#=495	.
+11=#P0#=mb	#P1#=CheckMauSoHD	#P2#=TAX_Business_v1/mdlFuntions/CheckMauSoHD	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140218092304	#P7#=0	#P8#=94	.
+12=#P0#=mb	#P1#=CheckSoBLP	#P2#=TAX_Business_v1/mdlFuntions/CheckSoBLP	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140218092115	#P7#=0	#P8#=1	.
+13=#P0#=mb	#P1#=checkSheet4	#P2#=TAX_Business_v1/cls_09TNCN/checkSheet4	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140214164127	#P7#=0	#P8#=356	.
+14=#P0#=mb	#P1#=CheckDynamicError	#P2#=TAX_Business_v1/cls_04GTGT/CheckDynamicError	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140213114102	#P7#=0	#P8#=138	.
+15=#P0#=mb	#P1#=CheckDynamicError	#P2#=TAX_Business_v1/cls_02GTGT/CheckDynamicError	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140213113923	#P7#=0	#P8#=367	.
+16=#P0#=mb	#P1#=CheckDynamicError	#P2#=TAX_Business_v1/cls_01GTGT/CheckDynamicError	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140213112839	#P7#=0	#P8#=673	.
+17=#P0#=mb	#P1#=FinishImport	#P2#=TAX_Business_v1/cls_01GTGT/FinishImport	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140212231405	#P7#=0	#P8#=1	.
+18=#P0#=mb	#P1#=fps_ComboSelChange	#P2#=TAX_Business_v1/cls_01GTGT/fps_ComboSelChange	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20140210174114	#P7#=0	#P8#=18	.

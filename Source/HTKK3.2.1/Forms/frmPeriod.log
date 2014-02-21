@@ -1,0 +1,30 @@
+Line 358: Class FPUSpreadADO.fpSpread of control fpSpread1 was not a loaded control class.
+Line 404: Class FPUSpreadADO.fpSpread of control fpsNgaykhaiBS was not a loaded control class.
+Line 365: The property name _Version in fpSpread1 is invalid.
+Line 366: The property name _ExtentX in fpSpread1 is invalid.
+Line 367: The property name _ExtentY in fpSpread1 is invalid.
+Line 368: The property name _StockProps in fpSpread1 is invalid.
+Line 369: The property name DisplayColHeaders in fpSpread1 is invalid.
+Line 370: The property name DisplayRowHeaders in fpSpread1 is invalid.
+Line 380: The property name MaxCols in fpSpread1 is invalid.
+Line 381: The property name MaxRows in fpSpread1 is invalid.
+Line 382: The property name NoBeep in fpSpread1 is invalid.
+Line 383: The property name ScrollBars in fpSpread1 is invalid.
+Line 384: The property name SpreadDesigner in fpSpread1 is invalid.
+Line 411: The property name _Version in fpsNgaykhaiBS is invalid.
+Line 412: The property name _ExtentX in fpsNgaykhaiBS is invalid.
+Line 413: The property name _ExtentY in fpsNgaykhaiBS is invalid.
+Line 414: The property name _StockProps in fpsNgaykhaiBS is invalid.
+Line 415: The property name AllowMultiBlocks in fpsNgaykhaiBS is invalid.
+Line 416: The property name BackColorStyle in fpsNgaykhaiBS is invalid.
+Line 418: The property name DisplayColHeaders in fpsNgaykhaiBS is invalid.
+Line 419: The property name DisplayRowHeaders in fpsNgaykhaiBS is invalid.
+Line 429: The property name GridShowHoriz in fpsNgaykhaiBS is invalid.
+Line 430: The property name GridShowVert in fpsNgaykhaiBS is invalid.
+Line 431: The property name MaxCols in fpsNgaykhaiBS is invalid.
+Line 432: The property name MaxRows in fpsNgaykhaiBS is invalid.
+Line 433: The property name ProcessTab in fpsNgaykhaiBS is invalid.
+Line 434: The property name RetainSelBlock in fpsNgaykhaiBS is invalid.
+Line 435: The property name ScrollBars in fpsNgaykhaiBS is invalid.
+Line 436: The property name SpreadDesigner in fpsNgaykhaiBS is invalid.
+Line 437: The property name UserResize in fpsNgaykhaiBS is invalid.
