@@ -2,8 +2,7 @@
 	<Static GroupName="PBoSoThueBVMTChoDPhuong">
 		<tongSoThuePSinhPNop>X_37</tongSoThuePSinhPNop>
 	</Static>
-	<Dynamic GroupName="PLuc_01_1_BVMT">
-		<PBoSoThueBVMTChoDPhuong>
+	<Dynamic GroupName="PBoSoThueBVMTChoDPhuong">		
 			<ChiTietThueBVMTCuaDPhuong>
 				<ct2>D_35</ct2>
 				<ct3>F_35</ct3>
@@ -16,7 +15,6 @@
 				<ct9>V_35</ct9>
 				<ct10>W_35</ct10>
 				<ct11>X_35</ct11>
-			</ChiTietThueBVMTCuaDPhuong>			
-		</PBoSoThueBVMTChoDPhuong>
+			</ChiTietThueBVMTCuaDPhuong>		
 	</Dynamic>
 </PLuc_01_1_BVMT>
