@@ -17,6 +17,15 @@ Begin VB.Form frmPeriod
    ScaleWidth      =   7230
    ShowInTaskbar   =   0   'False
    Visible         =   0   'False
+   Begin VB.TextBox txtLanXuat 
+      Height          =   315
+      Left            =   1800
+      MaxLength       =   3
+      TabIndex        =   43
+      Top             =   6840
+      Visible         =   0   'False
+      Width           =   615
+   End
    Begin VB.CheckBox chkKhiThien 
       Caption         =   "KhÝ thiªn nhiªn"
       BeginProperty Font 
@@ -486,6 +495,53 @@ Begin VB.Form frmPeriod
       SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
+   End
+   Begin VB.Label lblLanXuat 
+      AutoSize        =   -1  'True
+      Caption         =   "LÇn xuÊt b¸n"
+      BeginProperty Font 
+         Name            =   "DS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   255
+      Left            =   360
+      TabIndex        =   42
+      Top             =   6840
+      Visible         =   0   'False
+      Width           =   1170
+   End
+   Begin VB.Label lblLanXuatBan 
+      AutoSize        =   -1  'True
+      BackStyle       =   0  'Transparent
+      Height          =   195
+      Left            =   360
+      TabIndex        =   41
+      Top             =   6960
+      Width           =   45
+   End
+   Begin VB.Label Label1 
+      AutoSize        =   -1  'True
+      BackStyle       =   0  'Transparent
+      Caption         =   "LÇn"
+      BeginProperty Font 
+         Name            =   "DS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   255
+      Left            =   0
+      TabIndex        =   40
+      Top             =   0
+      Width           =   405
    End
    Begin VB.Label lblDenThang 
       AutoSize        =   -1  'True
@@ -4396,8 +4452,8 @@ Private Sub SetupLayout01_TAIN_DK()
     
     Me.Height = 6000 '4385
     Me.Width = 4905
-    frmKy.Height = 2000
-    Frame2.Top = 2200
+    frmKy.Height = 2250
+    Frame2.Top = 2600
     Frame2.Height = 1500
     Frame2.Visible = True
     Frame2.Enabled = True
@@ -4434,6 +4490,18 @@ Private Sub SetupLayout01_TAIN_DK()
     Set txtYear.Container = frmKy
     txtYear.Top = 640
     txtYear.Left = 3130
+    
+    Set lblLanXuat.Container = frmKy
+    lblLanXuat.Top = 1100
+    lblLanXuat.Left = 120
+    
+    Set txtLanXuat.Container = frmKy
+    txtLanXuat.Top = 1100
+    txtLanXuat.Left = 1930
+    
+    lblLanXuat.Visible = True
+    txtLanXuat.Visible = True
+    
         
     Dim dTem As Date
     dTem = Date
@@ -4470,16 +4538,16 @@ Private Sub SetupLayout01_TAIN_DK()
     Set OptBosung.Container = frmKy
     Set OptChinhthuc.Container = frmKy
     
-    OptChinhthuc.Top = 1200
+    OptChinhthuc.Top = 1550
     OptChinhthuc.Left = 1600
-    OptBosung.Top = 1500
+    OptBosung.Top = 1850
     OptBosung.Left = 1600
             
     Set lblSolan.Container = frmKy
-    lblSolan.Top = 1500
+    lblSolan.Top = 1850
     lblSolan.Left = 3100
     Set txtSolan.Container = frmKy
-    txtSolan.Top = 1500
+    txtSolan.Top = 1850
     txtSolan.Left = 3500
     lblSolan.Visible = False
     txtSolan.Visible = False
@@ -5686,6 +5754,29 @@ Private Sub txtDay_LostFocus()
     If Len(txtDay.Text) = 1 Then
          txtDay.Text = "0" & txtDay.Text
     End If
+End Sub
+
+Private Sub txtLanXuat_Change()
+    If txtLanXuat.Text = "0" Then txtLanXuat.Text = "1"
+    strSoLanXuatBan = txtLanXuat.Text
+End Sub
+
+Private Sub txtLanXuat_KeyPress(KeyAscii As Integer)
+    On Error GoTo ErrorHandle
+    Dim sNumber As String
+    sNumber = "0123456789"
+    
+    If KeyAscii = vbKeyBack Then Exit Sub
+    If InStr(1, sNumber, Chr(KeyAscii)) <= 0 Then
+        KeyAscii = 0
+    End If
+    Exit Sub
+ErrorHandle:
+    SaveErrorLog Me.Name, "txtLanXuat_KeyPress", Err.Number, Err.Description
+End Sub
+
+Private Sub txtLanXuat_LostFocus()
+    txtLanXuat.Text = Val(txtLanXuat.Text)
 End Sub
 
 Private Sub txtMonth_Change()
