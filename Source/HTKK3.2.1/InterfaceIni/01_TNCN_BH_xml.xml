@@ -1,0 +1,32 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>45</maTKhai>
+		<tenTKhai>TK-TNCN Mẫu 01/KK-BH</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT/>
+		<maTinhNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct21>U_40</ct21>
+		<ct22>U_41</ct22>
+		<ct23>U_42</ct23>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_44</nguoiKy>
+		<ngayKy>R_46</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>G_44</tenNVienDLyThue>
+		<cchiHNghe>G_46</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

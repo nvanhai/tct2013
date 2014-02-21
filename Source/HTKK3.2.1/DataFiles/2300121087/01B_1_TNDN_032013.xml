@@ -1,0 +1,31 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_7" CellID2="BW_19" Encode="1" Receive="1" Value="13724" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_35" CellID2="R_27" FirstCell="0" Encode="1" Receive="1" Value="doanh nghiệp mh" StatusID="0001"/>
+			<Cell CellID="F_35" CellID2="AW_27" Encode="1" Receive="1" Value="3600247325" StatusID="0001"/>
+			<Cell CellID="G_35" CellID2="GS_27" Encode="0" Receive="1" Value="HDU - Cục Thuế Tỉnh Hải Dương" StatusID="0001"/>
+			<Cell CellID="H_35" CellID2="BU_27" Encode="0" Receive="1" Value="Chi cục Thuế Thị xã Chí Linh" StatusID="0001"/>
+			<Cell CellID="M_35" CellID2="DL_27" Encode="1" Receive="1" Value="45.78" StatusID="0001"/>
+			<Cell CellID="P_35" CellID2="FB_27" Encode="1" Receive="1" Value="6283" StatusID="0001"/>
+			<Cell CellID="R_35" CellID2="GQ_27" Encode="1" Receive="1" Value="10703" StatusID="0001"/>
+			<Cell CellID="S_35" CellID2="GR_27" Encode="0" Receive="1" Value="10700" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_36" CellID2="R_28" FirstCell="1" Encode="1" Receive="1" Value="doanh nghiệp ab" StatusID="0001"/>
+			<Cell CellID="F_36" CellID2="AW_28" Encode="1" Receive="1" Value="0102030405" StatusID="0001"/>
+			<Cell CellID="G_36" CellID2="GS_28" Encode="0" Receive="1" Value="HPH - Cục Thuế TP Hải Phòng" StatusID="0001"/>
+			<Cell CellID="H_36" CellID2="BU_28" Encode="0" Receive="1" Value="Chi cục Thuế Quận Kiến An" StatusID="0001"/>
+			<Cell CellID="M_36" CellID2="DL_28" Encode="1" Receive="1" Value="54.22" StatusID="0001"/>
+			<Cell CellID="P_36" CellID2="FB_28" Encode="1" Receive="1" Value="7441" StatusID="0001"/>
+			<Cell CellID="R_36" CellID2="GQ_28" Encode="1" Receive="1" Value="10307" StatusID="0001"/>
+			<Cell CellID="S_36" CellID2="GR_28" Encode="0" Receive="1" Value="10300" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

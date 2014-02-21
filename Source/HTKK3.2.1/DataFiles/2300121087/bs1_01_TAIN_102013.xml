@@ -1,0 +1,121 @@
+<!-- Edited by TAS_CMC-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="N_11" CellID2="J_24" FirstCell="0" Encode="1" Receive="0" Value="0010011000" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_42" CellID2="E_58" FirstCell="0" Encode="0" Receive="0" Value="Măng-gan" StatusID="0001"/>
+			<Cell CellID="E_42" CellID2="D_58" Encode="1" Receive="1" Value="010103" StatusID="0001"/>
+			<Cell CellID="F_42" CellID2="D_58" Encode="0" Receive="0" Value="Măng-gan                                                                                                                                                                                                010103    Kg        11        0" StatusID="0001"/>
+			<Cell CellID="G_42" CellID2="D_58" Encode="0" Receive="0" Value="Măng-gan" StatusID="0001"/>
+			<Cell CellID="O_42" CellID2="D_58" Encode="0" Receive="0" Value="Măng-gan                                                                                                                                                                                                010103    Kg        11        0" StatusID="0001"/>
+			<Cell CellID="P_42" CellID2="O_58" Encode="1" Receive="0" Value="Kg" StatusID="0001"/>
+			<Cell CellID="S_42" CellID2="R_58" Encode="1" Receive="1" Value="345.789" StatusID="0001"/>
+			<Cell CellID="V_42" CellID2="W_58" Encode="1" Receive="1" Value="12345.68" StatusID="0001"/>
+			<Cell CellID="AA_42" CellID2="Z_58" Encode="1" Receive="1" Value="11.000" StatusID="0001"/>
+			<Cell CellID="AD_42" CellID2="AC_58" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AG_42" CellID2="AF_58" Encode="0" Receive="0" Value="469590" StatusID="0001"/>
+			<Cell CellID="AJ_42" CellID2="AI_58" Encode="1" Receive="1" Value="23.87" StatusID="0001"/>
+			<Cell CellID="AN_42" CellID2="AM_58" Encode="0" Receive="0" Value="469566" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_43" CellID2="E_59" FirstCell="1" Encode="0" Receive="0" Value="Bạch kim" StatusID="0001"/>
+			<Cell CellID="E_43" CellID2="D_59" Encode="1" Receive="1" Value="010208" StatusID="0001"/>
+			<Cell CellID="F_43" CellID2="D_59" Encode="0" Receive="0" Value="Bạch kim                                                                                                                                                                                                010208    Kg        10        0" StatusID="0001"/>
+			<Cell CellID="G_43" CellID2="D_59" Encode="0" Receive="0" Value="Bạch kim" StatusID="0001"/>
+			<Cell CellID="O_43" CellID2="D_59" Encode="0" Receive="0" Value="Bạch kim                                                                                                                                                                                                010208    Kg        10        0" StatusID="0001"/>
+			<Cell CellID="P_43" CellID2="O_59" Encode="1" Receive="0" Value="Kg" StatusID="0001"/>
+			<Cell CellID="S_43" CellID2="R_59" Encode="1" Receive="1" Value="456.782" StatusID="0001"/>
+			<Cell CellID="V_43" CellID2="W_59" Encode="1" Receive="1" Value="0,00" StatusID="0001"/>
+			<Cell CellID="AA_43" CellID2="Z_59" Encode="1" Receive="1" Value="0.000" StatusID="0001"/>
+			<Cell CellID="AD_43" CellID2="AC_59" Encode="1" Receive="1" Value="30000" StatusID="0001"/>
+			<Cell CellID="AG_43" CellID2="AF_59" Encode="0" Receive="0" Value="13703460" StatusID="0001"/>
+			<Cell CellID="AJ_43" CellID2="AI_59" Encode="1" Receive="1" Value="89.34" StatusID="0001"/>
+			<Cell CellID="AN_43" CellID2="AM_59" Encode="0" Receive="0" Value="13703371" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_47" CellID2="E_63" FirstCell="0" Encode="0" Receive="0" Value="Nhôm, bô-xít (bouxite)" StatusID="0001"/>
+			<Cell CellID="E_47" CellID2="D_63" Encode="1" Receive="1" Value="010213" StatusID="0001"/>
+			<Cell CellID="F_47" CellID2="D_63" Encode="0" Receive="0" Value="Nhôm, bô-xít (bouxite)                                                                                                                                                                                  010213    Kg        12        0" StatusID="0001"/>
+			<Cell CellID="G_47" CellID2="D_63" Encode="0" Receive="0" Value="Nhôm, bô-xít (bouxite)" StatusID="0001"/>
+			<Cell CellID="O_47" CellID2="D_63" Encode="0" Receive="0" Value="Nhôm, bô-xít (bouxite)                                                                                                                                                                                  010213    Kg        12        0" StatusID="0001"/>
+			<Cell CellID="P_47" CellID2="O_63" Encode="1" Receive="0" Value="Kg" StatusID="0001"/>
+			<Cell CellID="S_47" CellID2="R_63" Encode="1" Receive="1" Value="543.367" StatusID="0001"/>
+			<Cell CellID="V_47" CellID2="W_63" Encode="1" Receive="1" Value="2897.67" StatusID="0001"/>
+			<Cell CellID="AA_47" CellID2="Z_63" Encode="1" Receive="1" Value="12.000" StatusID="0001"/>
+			<Cell CellID="AD_47" CellID2="AC_63" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AG_47" CellID2="AF_63" Encode="0" Receive="0" Value="188940" StatusID="0001"/>
+			<Cell CellID="AJ_47" CellID2="AI_63" Encode="1" Receive="1" Value="345.27" StatusID="0001"/>
+			<Cell CellID="AN_47" CellID2="AM_63" Encode="0" Receive="0" Value="188595" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_48" CellID2="E_64" FirstCell="1" Encode="0" Receive="0" Value="Vôn-phờ-ram (wolfram), ăng-ti-moan (antimoan)" StatusID="0001"/>
+			<Cell CellID="E_48" CellID2="D_64" Encode="1" Receive="1" Value="010211" StatusID="0001"/>
+			<Cell CellID="F_48" CellID2="D_64" Encode="0" Receive="0" Value="Vôn-phờ-ram (wolfram), ăng-ti-moan (antimoan)                                                                                                                                                           010211    Kg        10        0" StatusID="0001"/>
+			<Cell CellID="G_48" CellID2="D_64" Encode="0" Receive="0" Value="Vôn-phờ-ram (wolfram), ăng-ti-moan (antimoan)" StatusID="0001"/>
+			<Cell CellID="O_48" CellID2="D_64" Encode="0" Receive="0" Value="Vôn-phờ-ram (wolfram), ăng-ti-moan (antimoan)                                                                                                                                                           010211    Kg        10        0" StatusID="0001"/>
+			<Cell CellID="P_48" CellID2="O_64" Encode="1" Receive="0" Value="Kg" StatusID="0001"/>
+			<Cell CellID="S_48" CellID2="R_64" Encode="1" Receive="1" Value="453.789" StatusID="0001"/>
+			<Cell CellID="V_48" CellID2="W_64" Encode="1" Receive="1" Value="0,00" StatusID="0001"/>
+			<Cell CellID="AA_48" CellID2="Z_64" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AD_48" CellID2="AC_64" Encode="1" Receive="1" Value="20000" StatusID="0001"/>
+			<Cell CellID="AG_48" CellID2="AF_64" Encode="0" Receive="0" Value="9075780" StatusID="0001"/>
+			<Cell CellID="AJ_48" CellID2="AI_64" Encode="1" Receive="1" Value="1879.45" StatusID="0001"/>
+			<Cell CellID="AN_48" CellID2="AM_64" Encode="0" Receive="0" Value="9073901" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_52" CellID2="E_68" FirstCell="0" Encode="0" Receive="0" Value="Bạch kim" StatusID="0001"/>
+			<Cell CellID="E_52" CellID2="D_68" Encode="1" Receive="1" Value="010208" StatusID="0001"/>
+			<Cell CellID="F_52" CellID2="D_68" Encode="0" Receive="0" Value="Bạch kim                                                                                                                                                                                                010208    Kg        10        0" StatusID="0001"/>
+			<Cell CellID="G_52" CellID2="D_68" Encode="0" Receive="0" Value="Bạch kim" StatusID="0001"/>
+			<Cell CellID="O_52" CellID2="D_68" Encode="0" Receive="0" Value="Bạch kim                                                                                                                                                                                                010208    Kg        10        0" StatusID="0001"/>
+			<Cell CellID="P_52" CellID2="O_68" Encode="1" Receive="0" Value="Kg" StatusID="0001"/>
+			<Cell CellID="S_52" CellID2="R_68" Encode="1" Receive="1" Value="653.715" StatusID="0001"/>
+			<Cell CellID="V_52" CellID2="W_68" Encode="1" Receive="1" Value="3762.78" StatusID="0001"/>
+			<Cell CellID="AA_52" CellID2="Z_68" Encode="1" Receive="1" Value="10.000" StatusID="0001"/>
+			<Cell CellID="AD_52" CellID2="AC_68" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AG_52" CellID2="AF_68" Encode="0" Receive="0" Value="245979" StatusID="0001"/>
+			<Cell CellID="AJ_52" CellID2="AI_68" Encode="1" Receive="1" Value="5987.34" StatusID="0001"/>
+			<Cell CellID="AN_52" CellID2="AM_68" Encode="0" Receive="0" Value="239992" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_53" CellID2="E_69" FirstCell="1" Encode="0" Receive="0" Value="Bạch kim" StatusID="0001"/>
+			<Cell CellID="E_53" CellID2="D_69" Encode="1" Receive="1" Value="010208" StatusID="0001"/>
+			<Cell CellID="F_53" CellID2="D_69" Encode="0" Receive="0" Value="Bạch kim                                                                                                                                                                                                010208    Kg        10        0" StatusID="0001"/>
+			<Cell CellID="G_53" CellID2="D_69" Encode="0" Receive="0" Value="Bạch kim" StatusID="0001"/>
+			<Cell CellID="O_53" CellID2="D_69" Encode="0" Receive="0" Value="Bạch kim                                                                                                                                                                                                010208    Kg        10        0" StatusID="0001"/>
+			<Cell CellID="P_53" CellID2="O_69" Encode="1" Receive="0" Value="Kg" StatusID="0001"/>
+			<Cell CellID="S_53" CellID2="R_69" Encode="1" Receive="1" Value="433.678" StatusID="0001"/>
+			<Cell CellID="V_53" CellID2="W_69" Encode="1" Receive="1" Value="3243.89" StatusID="0001"/>
+			<Cell CellID="AA_53" CellID2="Z_69" Encode="1" Receive="1" Value="10.000" StatusID="0001"/>
+			<Cell CellID="AD_53" CellID2="AC_69" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AG_53" CellID2="AF_69" Encode="0" Receive="0" Value="140680" StatusID="0001"/>
+			<Cell CellID="AJ_53" CellID2="AI_69" Encode="1" Receive="1" Value="3243.56" StatusID="0001"/>
+			<Cell CellID="AN_53" CellID2="AM_69" Encode="0" Receive="0" Value="137436" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="W_57" CellID2="J_76" Encode="1" Receive="1" Value="Huyền Trâm" StatusID="0001"/>
+			<Cell CellID="W_59" CellID2="J_77" Encode="1" Receive="1" Value="KTV" StatusID="0001"/>
+			<Cell CellID="AJ_57" CellID2="Y_79" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="AJ_59" CellID2="AE_73" Encode="1" Receive="1" Value="20/12/2013" StatusID="0001"/>
+			<Cell CellID="I_15" CellID2="N_33" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="J_15" CellID2="M_33" Encode="1" Receive="1" Value="1" StatusID="0001"/>
+			<Cell CellID="K_15" CellID2="P_33" Encode="1" Receive="1" Value="1" StatusID="0001"/>
+			<Cell CellID="L_15" CellID2="T_33" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="M_15" CellID2="U_33" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="AG_15" CellID2="" Encode="0" Receive="1" Value="23824429" StatusID="0001"/>
+			<Cell CellID="AJ_15" CellID2="" Encode="0" Receive="1" Value="11569" StatusID="0001"/>
+			<Cell CellID="AN_15" CellID2="" Encode="0" Receive="1" Value="23812860" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

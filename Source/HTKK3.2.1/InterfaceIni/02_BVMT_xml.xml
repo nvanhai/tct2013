@@ -1,0 +1,62 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>60</maTKhai>
+		<tenTKhai>Tờ khai QT phí bảo vệ môi trường (02/BVMT)</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT/>
+		<maTinhNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
+	</Static>
+	<Static GroupName="KSCSTuKhaiThac">
+		<tongPhiPhaiNopTrongKyI>Q_43</tongPhiPhaiNopTrongKyI>
+		<tongPhiDaKeKhaiTrongKyI>V_43</tongPhiDaKeKhaiTrongKyI>
+	</Static>
+	<Dynamic GroupName="KSCSTuKhaiThac" Level="2">
+		<NoiDungKS id="ID_1">
+			<maKSan>AB_45</maKSan>
+			<tenKSan>C_45</tenKSan>
+			<donViTinh>H_45</donViTinh>
+			<soLuong>J_45</soLuong>
+			<mucPhi>N_45</mucPhi>
+			<phiPhaiNopTrongKy>Q_45</phiPhaiNopTrongKy>
+			<phiDaKeKhaiTrongKy>V_45</phiDaKeKhaiTrongKy>
+		</NoiDungKS>
+	</Dynamic>
+	<Static GroupName="KSCSThuMua">
+		<tongPhiPhaiNopTrongKyII>Q_47</tongPhiPhaiNopTrongKyII>
+		<tongPhiDaKeKhaiTrongKyII>V_47</tongPhiDaKeKhaiTrongKyII>
+	</Static>
+	<Dynamic GroupName="KSCSThuMua" Level="2">
+		<NoiDungKS id="ID_2">
+			<maKSan>AB_49</maKSan>
+			<tenKSan>C_49</tenKSan>
+			<donViTinh>H_49</donViTinh>
+			<soLuong>J_49</soLuong>
+			<mucPhi>N_49</mucPhi>
+			<phiPhaiNopTrongKy>Q_49</phiPhaiNopTrongKy>
+			<phiDaKeKhaiTrongKy>V_49</phiDaKeKhaiTrongKy>
+		</NoiDungKS>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tongPhiPhaiNopTrongKy>Q_51</tongPhiPhaiNopTrongKy>
+		<tongPhiDaKeKhaiTrongKy>V_51</tongPhiDaKeKhaiTrongKy>
+		<tongTienBangChu>B_55</tongTienBangChu>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_60</nguoiKy>
+		<ngayKy>R_62</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>H_60</tenNVienDLyThue>
+		<cchiHNghe>H_62</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

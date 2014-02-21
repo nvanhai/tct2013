@@ -1,0 +1,37 @@
+<PL05_TNDN>
+	<Static GroupName="ToanBoDoanhNghiep">
+		<ct03>L_34</ct03>
+		<ct04>O_34</ct04>
+		<ct05>P_34</ct05>
+		<ct06>Q_34</ct06>
+		<ct07>R_34</ct07>
+		<ct08>S_34</ct08>
+		<ct09>U_34</ct09>
+		<ct10>W_34</ct10>
+	</Static>
+	<Static GroupName="TaitruSoChinh">
+		<ct03>L_37</ct03>
+		<ct04>O_37</ct04>
+		<ct05>P_37</ct05>
+		<ct06>Q_37</ct06>
+		<ct07>R_37</ct07>
+		<ct08>S_37</ct08>
+		<ct09>U_37</ct09>
+		<ct10>W_37</ct10>
+	</Static>
+	<Dynamic GroupName="TinhNopThueTNDNCoSoHTPT" GroupCellRange="3">
+		<taiCoSoPhuThuoc id="id">
+			<DiaPhuong>F_39</DiaPhuong>
+			<TenCoSo>F_40</TenCoSo>
+			<MST>F_41</MST>
+			<ct03>L_40</ct03>
+			<ct04>O_40</ct04>
+			<ct05>P_40</ct05>
+			<ct06>Q_40</ct06>
+			<ct07>R_40</ct07>
+			<ct08>S_40</ct08>
+			<ct09>U_40</ct09>
+			<ct10>W_40</ct10>
+		</taiCoSoPhuThuoc>
+	</Dynamic>
+</PL05_TNDN>

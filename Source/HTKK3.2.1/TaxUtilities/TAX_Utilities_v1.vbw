@@ -1,0 +1,7 @@
+clsVariables = 100, 100, 943, 370, 
+mdlVariables = 0, 0, 0, 0, C
+clsUnicodeConvert = 0, 0, 0, 0, C
+clsLZWCompress = 0, 0, 0, 0, C
+frmDisplayMessage = 25, 25, 843, 284, C, 100, 100, 943, 370, C
+clsMessageBox = 0, 0, 0, 0, C
+clsADO = 0, 0, 0, 0, C

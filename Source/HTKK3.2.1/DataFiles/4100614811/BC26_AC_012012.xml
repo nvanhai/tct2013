@@ -1,0 +1,75 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="130">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="B_14" CellID2="AA_14" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_14" CellID2="AA_14" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_13" CellID2="E_13" Encode="1" Receive="1" Value="01/01/2012" StatusID="0001"/>
+			<Cell CellID="F_13" CellID2="F_13" Encode="1" Receive="1" Value="31/03/2012" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_22" CellID2="D_22" FirstCell="0" Encode="0" Receive="1" Value="01GTKT" StatusID="0001"/>
+			<Cell CellID="D_22" CellID2="D_22" Encode="1" Receive="1" Value="Hóa đơn giá trị gia tăng" StatusID="0001"/>
+			<Cell CellID="E_22" CellID2="E_22" Encode="1" Receive="1" Value="01GTKT3/001" StatusID="0001"/>
+			<Cell CellID="F_22" CellID2="F_22" Encode="1" Receive="1" Value="DT/11P" StatusID="0001"/>
+			<Cell CellID="G_22" CellID2="G_22" Encode="1" Receive="1" Value="933" StatusID="0001"/>
+			<Cell CellID="H_22" CellID2="H_22" Encode="1" Receive="1" Value="0000068" StatusID=""/>
+			<Cell CellID="I_22" CellID2="I_22" Encode="1" Receive="1" Value="0001000" StatusID="0001"/>
+			<Cell CellID="J_22" CellID2="J_22" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="K_22" CellID2="K_22" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="L_22" CellID2="L_22" Encode="1" Receive="1" Value="0000068" StatusID="0001"/>
+			<Cell CellID="M_22" CellID2="M_22" Encode="1" Receive="1" Value="0000078" StatusID="0001"/>
+			<Cell CellID="N_22" CellID2="N_22" Encode="1" Receive="1" Value="11" StatusID="0001"/>
+			<Cell CellID="P_22" CellID2="P_22" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="Q_22" CellID2="Q_22" Encode="1" Receive="1" Value="1" StatusID="0001"/>
+			<Cell CellID="R_22" CellID2="R_22" Encode="1" Receive="1" Value="00077" StatusID="0001"/>
+			<Cell CellID="S_22" CellID2="S_22" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="T_22" CellID2="T_22" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="U_22" CellID2="U_22" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="V_22" CellID2="V_22" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="X_22" CellID2="X_22" Encode="1" Receive="1" Value="0000079" StatusID="0001"/>
+			<Cell CellID="Y_22" CellID2="Y_22" Encode="1" Receive="1" Value="0001000" StatusID="0001"/>
+			<Cell CellID="Z_22" CellID2="Z_22" Encode="1" Receive="1" Value="922" StatusID="0001"/>
+			<Cell CellID="AA_22" CellID2="AA_22" Encode="0" Receive="1" Value="0         01GTKT    Hóa đơn giá trị gia tăng                                                                                                                                                                                " StatusID="0001"/>
+			<Cell CellID="AB_22" CellID2="AB_22" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AC_22" CellID2="AB_22" Encode="0" Receive="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_23" CellID2="D_23" FirstCell="1" Encode="0" Receive="1" Value="06HDXK" StatusID="0001"/>
+			<Cell CellID="D_23" CellID2="D_23" Encode="1" Receive="1" Value="Hóa đơn xuất khẩu" StatusID="0001"/>
+			<Cell CellID="E_23" CellID2="E_23" Encode="1" Receive="1" Value="06HDXK3/001" StatusID="0001"/>
+			<Cell CellID="F_23" CellID2="F_23" Encode="1" Receive="1" Value="DT/11P" StatusID="0001"/>
+			<Cell CellID="G_23" CellID2="G_23" Encode="1" Receive="1" Value="987" StatusID="0001"/>
+			<Cell CellID="H_23" CellID2="H_23" Encode="1" Receive="1" Value="0000014" StatusID=""/>
+			<Cell CellID="I_23" CellID2="I_23" Encode="1" Receive="1" Value="0001000" StatusID="0001"/>
+			<Cell CellID="J_23" CellID2="J_23" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="K_23" CellID2="K_23" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="L_23" CellID2="L_23" Encode="1" Receive="1" Value="0000014" StatusID="0001"/>
+			<Cell CellID="M_23" CellID2="M_23" Encode="1" Receive="1" Value="0000024" StatusID="0001"/>
+			<Cell CellID="N_23" CellID2="N_23" Encode="1" Receive="1" Value="11" StatusID="0001"/>
+			<Cell CellID="P_23" CellID2="P_23" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="Q_23" CellID2="Q_23" Encode="1" Receive="1" Value="1" StatusID="0001"/>
+			<Cell CellID="R_23" CellID2="R_23" Encode="1" Receive="1" Value="00016" StatusID="0001"/>
+			<Cell CellID="S_23" CellID2="S_23" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="T_23" CellID2="T_23" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="U_23" CellID2="U_23" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="V_23" CellID2="V_23" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="X_23" CellID2="X_23" Encode="1" Receive="1" Value="0000025" StatusID="0001"/>
+			<Cell CellID="Y_23" CellID2="Y_23" Encode="1" Receive="1" Value="0001000" StatusID="0001"/>
+			<Cell CellID="Z_23" CellID2="Z_23" Encode="1" Receive="1" Value="976" StatusID="0001"/>
+			<Cell CellID="AA_23" CellID2="AA_23" Encode="0" Receive="1" Value="0         06HDXK    Hóa đơn xuất khẩu                                                                                                                                                                                       " StatusID="0001"/>
+			<Cell CellID="AB_23" CellID2="AB_23" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AC_23" CellID2="AB_23" Encode="0" Receive="1" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_31" CellID2="E_31" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="N_31" CellID2="K_31" Encode="1" Receive="1" Value="NGUYỄN VĂN VŨ" StatusID="0001"/>
+			<Cell CellID="N_33" CellID2="K_33" Encode="1" Receive="1" Value="17/04/2012" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

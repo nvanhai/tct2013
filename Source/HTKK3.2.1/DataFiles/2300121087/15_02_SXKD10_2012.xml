@@ -1,0 +1,67 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="130">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="H_9" CellID2="P_16" Encode="1" Value="VI.25"/>
+			<Cell CellID="I_9" CellID2="Z_16" Encode="1" Value="30000"/>
+			<Cell CellID="J_9" CellID2="AE_16" Encode="1" Value="0"/>
+			<Cell CellID="H_10" CellID2="P_17" Encode="1" Value=""/>
+			<Cell CellID="I_10" CellID2="Z_17" Encode="1" Value="1000"/>
+			<Cell CellID="J_10" CellID2="AE_17" Encode="1" Value="0"/>
+			<Cell CellID="H_11" CellID2="P_18" Encode="1" Value=""/>
+			<Cell CellID="I_11" CellID2="Z_18" Encode="1" Value="29000"/>
+			<Cell CellID="J_11" CellID2="AE_18" Encode="1" Value="0"/>
+			<Cell CellID="H_12" CellID2="P_19" Encode="1" Value="VI.27"/>
+			<Cell CellID="I_12" CellID2="Z_19" Encode="1" Value="2000"/>
+			<Cell CellID="J_12" CellID2="AE_19" Encode="1" Value="0"/>
+			<Cell CellID="H_13" CellID2="P_20" Encode="1" Value=""/>
+			<Cell CellID="I_13" CellID2="Z_20" Encode="1" Value="27000"/>
+			<Cell CellID="J_13" CellID2="AE_20" Encode="1" Value="0"/>
+			<Cell CellID="H_14" CellID2="P_21" Encode="1" Value="VI.26"/>
+			<Cell CellID="I_14" CellID2="Z_21" Encode="1" Value="1000"/>
+			<Cell CellID="J_14" CellID2="AE_21" Encode="1" Value="0"/>
+			<Cell CellID="H_15" CellID2="P_22" Encode="1" Value="VI.28"/>
+			<Cell CellID="I_15" CellID2="Z_22" Encode="1" Value="4000"/>
+			<Cell CellID="J_15" CellID2="AE_22" Encode="1" Value="0"/>
+			<Cell CellID="H_16" CellID2="P_23" Encode="1" Value=""/>
+			<Cell CellID="I_16" CellID2="Z_23" Encode="1" Value="5000"/>
+			<Cell CellID="J_16" CellID2="AE_23" Encode="1" Value="0"/>
+			<Cell CellID="H_17" CellID2="P_24" Encode="1" Value=""/>
+			<Cell CellID="I_17" CellID2="Z_24" Encode="1" Value="6000"/>
+			<Cell CellID="J_17" CellID2="AE_24" Encode="1" Value="0"/>
+			<Cell CellID="H_18" CellID2="P_25" Encode="1" Value=""/>
+			<Cell CellID="I_18" CellID2="Z_25" Encode="1" Value="2000"/>
+			<Cell CellID="J_18" CellID2="AE_25" Encode="1" Value="0"/>
+			<Cell CellID="H_19" CellID2="P_26" Encode="1" Value=""/>
+			<Cell CellID="I_19" CellID2="Z_26" Encode="1" Value="16000"/>
+			<Cell CellID="J_19" CellID2="AE_26" Encode="1" Value="0"/>
+			<Cell CellID="H_20" CellID2="P_27" Encode="1" Value=""/>
+			<Cell CellID="I_20" CellID2="Z_27" Encode="1" Value="5000"/>
+			<Cell CellID="J_20" CellID2="AE_27" Encode="1" Value="0"/>
+			<Cell CellID="H_21" CellID2="P_28" Encode="1" Value=""/>
+			<Cell CellID="I_21" CellID2="Z_28" Encode="1" Value="3000"/>
+			<Cell CellID="J_21" CellID2="AE_28" Encode="1" Value="0"/>
+			<Cell CellID="H_22" CellID2="P_29" Encode="1" Value=""/>
+			<Cell CellID="I_22" CellID2="Z_29" Encode="1" Value="2000"/>
+			<Cell CellID="J_22" CellID2="AE_29" Encode="1" Value="0"/>
+			<Cell CellID="H_23" CellID2="P_30" Encode="1" Value=""/>
+			<Cell CellID="I_23" CellID2="Z_30" Encode="1" Value="18000"/>
+			<Cell CellID="J_23" CellID2="AE_30" Encode="1" Value="0"/>
+			<Cell CellID="H_24" CellID2="P_31" Encode="1" Value="VI.30"/>
+			<Cell CellID="I_24" CellID2="Z_31" Encode="1" Value="2100"/>
+			<Cell CellID="J_24" CellID2="AE_31" Encode="1" Value="0"/>
+			<Cell CellID="H_25" CellID2="P_32" Encode="1" Value="VI.30"/>
+			<Cell CellID="I_25" CellID2="Z_32" Encode="1" Value="3800"/>
+			<Cell CellID="J_25" CellID2="AE_32" Encode="1" Value="0"/>
+			<Cell CellID="H_26" CellID2="P_33" Encode="1" Value=""/>
+			<Cell CellID="I_26" CellID2="Z_33" Encode="1" Value="12100"/>
+			<Cell CellID="J_26" CellID2="AE_33" Encode="1" Value="0"/>
+			<Cell CellID="H_27" CellID2="P_34" Encode="1" Value=""/>
+			<Cell CellID="I_27" CellID2="Z_34" Encode="1" Value="2000"/>
+			<Cell CellID="J_27" CellID2="AE_34" Encode="1" Value="0"/>
+			<Cell CellID="I_30" CellID2="D_37" Encode="1" Value="Hoa Linh"/>
+			<Cell CellID="I_32" CellID2="C_37" Encode="1" Value="22/10/2013"/>
+		</Cells>
+	</Section>
+</Sections>

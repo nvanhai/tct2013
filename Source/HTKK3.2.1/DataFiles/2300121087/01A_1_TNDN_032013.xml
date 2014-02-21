@@ -1,0 +1,41 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_7" CellID2="BW_19" Encode="1" Receive="1" Value="6000" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_35" CellID2="R_27" FirstCell="0" Encode="1" Receive="1" Value="doanh nghiệp ab" StatusID="0001"/>
+			<Cell CellID="F_35" CellID2="AW_27" Encode="1" Receive="1" Value="0010011000" StatusID="0001"/>
+			<Cell CellID="G_35" CellID2="GS_27" Encode="0" Receive="1" Value="HPH - Cục Thuế TP Hải Phòng" StatusID="0001"/>
+			<Cell CellID="H_35" CellID2="BU_27" Encode="0" Receive="1" Value="Chi cục Thuế Quận Hải An" StatusID="0001"/>
+			<Cell CellID="M_35" CellID2="DL_27" Encode="1" Receive="1" Value="45.67" StatusID="0001"/>
+			<Cell CellID="P_35" CellID2="FB_27" Encode="1" Receive="1" Value="2740" StatusID="0001"/>
+			<Cell CellID="R_35" CellID2="GQ_27" Encode="1" Receive="1" Value="10304" StatusID="0001"/>
+			<Cell CellID="S_35" CellID2="GR_27" Encode="0" Receive="1" Value="10300" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_36" CellID2="R_28" FirstCell="1" Encode="1" Receive="1" Value="cơ sở 1" StatusID="0001"/>
+			<Cell CellID="F_36" CellID2="AW_28" Encode="1" Receive="1" Value="0010011000-001" StatusID="0001"/>
+			<Cell CellID="G_36" CellID2="GS_28" Encode="0" Receive="1" Value="HPH - Cục Thuế TP Hải Phòng" StatusID="0001"/>
+			<Cell CellID="H_36" CellID2="BU_28" Encode="0" Receive="1" Value="Chi cục Thuế Quận Hải An" StatusID="0001"/>
+			<Cell CellID="M_36" CellID2="DL_28" Encode="1" Receive="1" Value="23.88" StatusID="0001"/>
+			<Cell CellID="P_36" CellID2="FB_28" Encode="1" Receive="1" Value="1433" StatusID="0001"/>
+			<Cell CellID="R_36" CellID2="GQ_28" Encode="1" Receive="1" Value="10304" StatusID="0001"/>
+			<Cell CellID="S_36" CellID2="GR_28" Encode="0" Receive="1" Value="10300" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_37" CellID2="R_29" FirstCell="1" Encode="1" Receive="1" Value="cơ sở 2" StatusID="0001"/>
+			<Cell CellID="F_37" CellID2="AW_29" Encode="1" Receive="1" Value="0010011000-002" StatusID="0001"/>
+			<Cell CellID="G_37" CellID2="GS_29" Encode="0" Receive="1" Value="HPH - Cục Thuế TP Hải Phòng" StatusID="0001"/>
+			<Cell CellID="H_37" CellID2="BU_29" Encode="0" Receive="1" Value="Chi cục Thuế Quận Hải An" StatusID="0001"/>
+			<Cell CellID="M_37" CellID2="DL_29" Encode="1" Receive="1" Value="30.45" StatusID="0001"/>
+			<Cell CellID="P_37" CellID2="FB_29" Encode="1" Receive="1" Value="1827" StatusID="0001"/>
+			<Cell CellID="R_37" CellID2="GQ_29" Encode="1" Receive="1" Value="10304" StatusID="0001"/>
+			<Cell CellID="S_37" CellID2="GR_29" Encode="0" Receive="1" Value="10300" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

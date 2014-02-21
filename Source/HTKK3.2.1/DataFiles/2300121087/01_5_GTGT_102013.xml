@@ -1,0 +1,26 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_6" CellID2="E_16" FirstCell="0" Encode="1" Receive="1" Value="CT001" StatusID="0001"/>
+			<Cell CellID="D_6" CellID2="O_16" Encode="1" Receive="1" Value="12/10/2013" StatusID="0001"/>
+			<Cell CellID="E_6" CellID2="S_16" Encode="1" Receive="1" Value="Cục thuế" StatusID="0001"/>
+			<Cell CellID="F_6" CellID2="AM_16" Encode="0" Receive="1" Value="HNA - Cục Thuế Tỉnh Hà Nam" StatusID="0001"/>
+			<Cell CellID="G_6" CellID2="Y_16" Encode="0" Receive="1" Value="Chi cục Thuế Huyện Duy Tiên" StatusID="0001"/>
+			<Cell CellID="J_6" CellID2="AN_16" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="I_6" CellID2="AG_16" Encode="1" Receive="1" Value="3000000" StatusID="0001"/>
+			<Cell CellID="K_6" CellID2="AO_16" Encode="0" Receive="1" Value="11100" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_7" CellID2="E_17" FirstCell="1" Encode="1" Receive="1" Value="CT002" StatusID="0001"/>
+			<Cell CellID="D_7" CellID2="O_17" Encode="1" Receive="1" Value="12/10/2013" StatusID="0001"/>
+			<Cell CellID="E_7" CellID2="S_17" Encode="1" Receive="1" Value="KBNN" StatusID="0001"/>
+			<Cell CellID="F_7" CellID2="AM_17" Encode="0" Receive="1" Value="HNA - Cục Thuế Tỉnh Hà Nam" StatusID="0001"/>
+			<Cell CellID="G_7" CellID2="Y_17" Encode="0" Receive="1" Value="Chi cục Thuế Thành phố Phủ Lý" StatusID="0001"/>
+			<Cell CellID="J_7" CellID2="AN_17" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="I_7" CellID2="AG_17" Encode="1" Receive="1" Value="4000000" StatusID="0001"/>
+			<Cell CellID="K_7" CellID2="AO_17" Encode="0" Receive="1" Value="11100" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

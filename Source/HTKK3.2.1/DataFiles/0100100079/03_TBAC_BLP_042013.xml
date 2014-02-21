@@ -1,0 +1,33 @@
+<!-- Edited by TAS_CMC-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="321">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="J_2" CellID2="J_6" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="K_6" CellID2="L_11" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="N_8" CellID2="L_58" Encode="1" Receive="1" Value="2"/>
+			<Cell CellID="O_8" CellID2="D_58" Encode="1" Receive="1" Value="18/02/2014"/>
+			<Cell CellID="L_8" CellID2="K_58" Encode="1" Receive="1" Value="16"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_43" CellID2="AE_40" FirstCell="0" Encode="0" Receive="0" Value="01BLP" StatusID="0001"/>
+			<Cell CellID="E_43" CellID2="C_40" Encode="1" Receive="1" Value="Biên lai thu phí, lệ phí không có mệnh giá" StatusID="0001"/>
+			<Cell CellID="O_43" CellID2="L_40" Encode="1" Receive="1" Value="01BLP2-100" StatusID="0001"/>
+			<Cell CellID="S_43" CellID2="O_40" Encode="1" Receive="1" Value="AA-12T" StatusID="0001"/>
+			<Cell CellID="V_43" CellID2="R_40" Encode="1" Receive="1" Value="0000001" StatusID="0001"/>
+			<Cell CellID="Y_43" CellID2="V_40" Encode="1" Receive="1" Value="0000004" StatusID="0001"/>
+			<Cell CellID="AA_43" CellID2="Z_40" Encode="1" Receive="1" Value="4" StatusID="0001"/>
+			<Cell CellID="AI_43" CellID2="AC_40" Encode="0" Receive="1" Value="0         01BLP     Biên lai thu phí, lệ phí không có mệnh giá                                                                                                                                                              " StatusID="0001"/>
+			<Cell CellID="AJ_43" CellID2="AD_40" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_47" CellID2="E_56" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="R_47" CellID2="R_56" Encode="1" Receive="1" Value="Hùng" StatusID="0001"/>
+			<Cell CellID="R_49" CellID2="R_58" Encode="1" Receive="1" Value="18/02/2014" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

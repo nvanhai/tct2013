@@ -1,0 +1,19 @@
+<PL02BK_XS>
+	<Dynamic GroupName="BangThuNhapDLyXoSo">
+		<ChiTietTNhapDLyXSo id="id">
+			<ct07>D_22</ct07>
+			<ct08 TINType="1">E_22</ct08>
+			<ct09>F_22</ct09>
+			<ct10>G_22</ct10>
+			<ct11>H_22</ct11>
+			<ct12>I_22</ct12>
+			<ct13>J_22</ct13>
+		</ChiTietTNhapDLyXSo>
+	</Dynamic>
+	<Static GroupName="PL02BK_XS">
+		<ct14>G_24</ct14>
+		<ct15>H_24</ct15>
+		<ct16>I_24</ct16>
+		<ct17>J_24</ct17>
+	</Static>
+</PL02BK_XS>

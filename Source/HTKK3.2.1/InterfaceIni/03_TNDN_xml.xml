@@ -1,0 +1,65 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>03</maTKhai>
+		<tenTKhai>Tờ khai quyết toán thuế TNDN</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan>P_64</maLyDoGiaHan>
+		<lyDoGiaHan>D_64</lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT/>
+		<maTinhNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<doanhNghiepCoCSoHToanPThuoc>D_8</doanhNghiepCoCSoHToanPThuoc>
+		<ctA1>O_23</ctA1>
+		<ctB1>O_25</ctB1>
+		<ctB2>O_26</ctB2>
+		<ctB3>O_27</ctB3>
+		<ctB4>O_28</ctB4>
+		<ctB5>O_29</ctB5>
+		<ctB6>O_30</ctB6>
+		<ctB7>O_31</ctB7>
+		<ctB8>O_32</ctB8>
+		<ctB9>O_33</ctB9>
+		<ctB10>O_34</ctB10>
+		<ctB11>O_35</ctB11>
+		<ctB12>O_36</ctB12>
+		<ctB13>O_37</ctB13>
+		<ctB14>O_38</ctB14>
+		<ctC1>O_40</ctC1>
+		<ctC2>O_41</ctC2>
+		<ctC3>O_42</ctC3>
+		<ctC4>O_43</ctC4>
+		<ctC5>O_44</ctC5>
+		<ctC6>O_45</ctC6>
+		<ctC7>O_46</ctC7>
+		<ctC8>O_47</ctC8>
+		<ctC9>O_48</ctC9>
+		<ctC10>O_49</ctC10>
+		<ctC11>O_50</ctC11>
+		<ctD>O_52</ctD>
+		<ctE>O_53</ctE>
+		<ctE1>O_54</ctE1>
+		<ctE2>O_55</ctE2>
+	</Static>
+	<Dynamic GroupName="TaiLieu_Guikem">
+		<Tailieuguikem id="ID_1">
+			<tenDocument>C_61</tenDocument>
+		</Tailieuguikem>
+	</Dynamic>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>N_65</nguoiKy>
+		<ngayKy>N_67</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>F_65</tenNVienDLyThue>
+		<cchiHNghe>F_67</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

@@ -1,0 +1,656 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="130">
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_8" CellID2="C_18" FirstCell="0" Encode="1" Receive="1" Value="LK/11P" StatusID="0001"/>
+			<Cell CellID="D_8" CellID2="G_18" Encode="1" Receive="1" Value="000182" StatusID="0001"/>
+			<Cell CellID="E_8" CellID2="M_18" Encode="1" Receive="1" Value="25/06/2012" StatusID="0001"/>
+			<Cell CellID="F_8" CellID2="R_18" Encode="1" Receive="1" Value="CTY TNHH LÊ KHỔNG" StatusID="0001"/>
+			<Cell CellID="G_8" CellID2="X_18" Encode="1" Receive="1" Value="3701498501" StatusID="0001"/>
+			<Cell CellID="H_8" CellID2="AB_18" Encode="1" Receive="1" Value="KEO" StatusID="0001"/>
+			<Cell CellID="I_8" CellID2="AF_18" Encode="1" Receive="1" Value="5300000" StatusID="0001"/>
+			<Cell CellID="J_8" CellID2="AJ_18" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_8" CellID2="AN_18" Encode="1" Receive="1" Value="530000" StatusID="0001"/>
+			<Cell CellID="L_8" CellID2="AR_18" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_9" CellID2="C_19" FirstCell="1" Encode="1" Receive="1" Value="KP/11P" StatusID="0001"/>
+			<Cell CellID="D_9" CellID2="G_19" Encode="1" Receive="1" Value="010461" StatusID="0001"/>
+			<Cell CellID="E_9" CellID2="M_19" Encode="1" Receive="1" Value="15/07/2012" StatusID="0001"/>
+			<Cell CellID="F_9" CellID2="R_19" Encode="1" Receive="1" Value="DNTN THƯƠNG MẠI KIM PHÚC" StatusID="0001"/>
+			<Cell CellID="G_9" CellID2="X_19" Encode="1" Receive="1" Value="4100227530" StatusID="0001"/>
+			<Cell CellID="H_9" CellID2="AB_19" Encode="1" Receive="1" Value="LỐP Ô TÔ" StatusID="0001"/>
+			<Cell CellID="I_9" CellID2="AF_19" Encode="1" Receive="1" Value="11500000" StatusID="0001"/>
+			<Cell CellID="J_9" CellID2="AJ_19" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_9" CellID2="AN_19" Encode="1" Receive="1" Value="1150000" StatusID="0001"/>
+			<Cell CellID="L_9" CellID2="AR_19" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_10" CellID2="C_20" FirstCell="1" Encode="1" Receive="1" Value="41AE/11P" StatusID="0001"/>
+			<Cell CellID="D_10" CellID2="G_20" Encode="1" Receive="1" Value="016747" StatusID="0001"/>
+			<Cell CellID="E_10" CellID2="M_20" Encode="1" Receive="1" Value="23/07/2012" StatusID="0001"/>
+			<Cell CellID="F_10" CellID2="R_20" Encode="1" Receive="1" Value="NGUYỄN THỊ MINH HIỀN" StatusID="0001"/>
+			<Cell CellID="G_10" CellID2="X_20" Encode="1" Receive="1" Value="4100260873" StatusID="0001"/>
+			<Cell CellID="H_10" CellID2="AB_20" Encode="1" Receive="1" Value="SƠN" StatusID="0001"/>
+			<Cell CellID="I_10" CellID2="AF_20" Encode="1" Receive="1" Value="13500000" StatusID="0001"/>
+			<Cell CellID="J_10" CellID2="AJ_20" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_10" CellID2="AN_20" Encode="1" Receive="1" Value="1350000" StatusID="0001"/>
+			<Cell CellID="L_10" CellID2="AR_20" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_11" CellID2="C_21" FirstCell="1" Encode="1" Receive="1" Value="NT/11P" StatusID="0001"/>
+			<Cell CellID="D_11" CellID2="G_21" Encode="1" Receive="1" Value="001609" StatusID="0001"/>
+			<Cell CellID="E_11" CellID2="M_21" Encode="1" Receive="1" Value="29/07/2012" StatusID="0001"/>
+			<Cell CellID="F_11" CellID2="R_21" Encode="1" Receive="1" Value="DNTN TM NHẬT TRƯỜNG" StatusID="0001"/>
+			<Cell CellID="G_11" CellID2="X_21" Encode="1" Receive="1" Value="4100400270" StatusID="0001"/>
+			<Cell CellID="H_11" CellID2="AB_21" Encode="1" Receive="1" Value="THÉP" StatusID="0001"/>
+			<Cell CellID="I_11" CellID2="AF_21" Encode="1" Receive="1" Value="50285200" StatusID="0001"/>
+			<Cell CellID="J_11" CellID2="AJ_21" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_11" CellID2="AN_21" Encode="1" Receive="1" Value="5028520" StatusID="0001"/>
+			<Cell CellID="L_11" CellID2="AR_21" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_12" CellID2="C_22" FirstCell="1" Encode="1" Receive="1" Value="LT/11P" StatusID="0001"/>
+			<Cell CellID="D_12" CellID2="G_22" Encode="1" Receive="1" Value="000045" StatusID="0001"/>
+			<Cell CellID="E_12" CellID2="M_22" Encode="1" Receive="1" Value="31/07/2012" StatusID="0001"/>
+			<Cell CellID="F_12" CellID2="R_22" Encode="1" Receive="1" Value="CTY TNHH LÂM TÍN" StatusID="0001"/>
+			<Cell CellID="G_12" CellID2="X_22" Encode="1" Receive="1" Value="4100758595" StatusID="0001"/>
+			<Cell CellID="H_12" CellID2="AB_22" Encode="1" Receive="1" Value="VẬN CHUYỂN" StatusID="0001"/>
+			<Cell CellID="I_12" CellID2="AF_22" Encode="1" Receive="1" Value="6604000" StatusID="0001"/>
+			<Cell CellID="J_12" CellID2="AJ_22" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_12" CellID2="AN_22" Encode="1" Receive="1" Value="660400" StatusID="0001"/>
+			<Cell CellID="L_12" CellID2="AR_22" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_13" CellID2="C_23" FirstCell="1" Encode="1" Receive="1" Value="AB/12P" StatusID="0001"/>
+			<Cell CellID="D_13" CellID2="G_23" Encode="1" Receive="1" Value="644717" StatusID="0001"/>
+			<Cell CellID="E_13" CellID2="M_23" Encode="1" Receive="1" Value="31/07/2012" StatusID="0001"/>
+			<Cell CellID="F_13" CellID2="R_23" Encode="1" Receive="1" Value="VIỄN THÔNG BÌNH ĐỊNH" StatusID="0001"/>
+			<Cell CellID="G_13" CellID2="X_23" Encode="1" Receive="1" Value="4100259162" StatusID="0001"/>
+			<Cell CellID="H_13" CellID2="AB_23" Encode="1" Receive="1" Value="CƯỚC ĐT" StatusID="0001"/>
+			<Cell CellID="I_13" CellID2="AF_23" Encode="1" Receive="1" Value="264000" StatusID="0001"/>
+			<Cell CellID="J_13" CellID2="AJ_23" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_13" CellID2="AN_23" Encode="1" Receive="1" Value="26400" StatusID="0001"/>
+			<Cell CellID="L_13" CellID2="AR_23" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_14" CellID2="C_24" FirstCell="1" Encode="1" Receive="1" Value="AB/12P" StatusID="0001"/>
+			<Cell CellID="D_14" CellID2="G_24" Encode="1" Receive="1" Value="592884" StatusID="0001"/>
+			<Cell CellID="E_14" CellID2="M_24" Encode="1" Receive="1" Value="31/07/2012" StatusID="0001"/>
+			<Cell CellID="F_14" CellID2="R_24" Encode="1" Receive="1" Value="VIỄN THÔNG BÌNH ĐỊNH" StatusID="0001"/>
+			<Cell CellID="G_14" CellID2="X_24" Encode="1" Receive="1" Value="4100259162" StatusID="0001"/>
+			<Cell CellID="H_14" CellID2="AB_24" Encode="1" Receive="1" Value="CƯỚC ĐT" StatusID="0001"/>
+			<Cell CellID="I_14" CellID2="AF_24" Encode="1" Receive="1" Value="20000" StatusID="0001"/>
+			<Cell CellID="J_14" CellID2="AJ_24" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_14" CellID2="AN_24" Encode="1" Receive="1" Value="2000" StatusID="0001"/>
+			<Cell CellID="L_14" CellID2="AR_24" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_15" CellID2="C_25" FirstCell="1" Encode="1" Receive="1" Value="AB/12P" StatusID="0001"/>
+			<Cell CellID="D_15" CellID2="G_25" Encode="1" Receive="1" Value="592623" StatusID="0001"/>
+			<Cell CellID="E_15" CellID2="M_25" Encode="1" Receive="1" Value="31/07/2012" StatusID="0001"/>
+			<Cell CellID="F_15" CellID2="R_25" Encode="1" Receive="1" Value="VIỄN THÔNG BÌNH ĐỊNH" StatusID="0001"/>
+			<Cell CellID="G_15" CellID2="X_25" Encode="1" Receive="1" Value="4100259162" StatusID="0001"/>
+			<Cell CellID="H_15" CellID2="AB_25" Encode="1" Receive="1" Value="CƯỚC ĐT" StatusID="0001"/>
+			<Cell CellID="I_15" CellID2="AF_25" Encode="1" Receive="1" Value="107980" StatusID="0001"/>
+			<Cell CellID="J_15" CellID2="AJ_25" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_15" CellID2="AN_25" Encode="1" Receive="1" Value="10798" StatusID="0001"/>
+			<Cell CellID="L_15" CellID2="AR_25" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_16" CellID2="C_26" FirstCell="1" Encode="1" Receive="1" Value="AB/12P" StatusID="0001"/>
+			<Cell CellID="D_16" CellID2="G_26" Encode="1" Receive="1" Value="592855" StatusID="0001"/>
+			<Cell CellID="E_16" CellID2="M_26" Encode="1" Receive="1" Value="31/07/2012" StatusID="0001"/>
+			<Cell CellID="F_16" CellID2="R_26" Encode="1" Receive="1" Value="VIỄN THÔNG BÌNH ĐỊNH" StatusID="0001"/>
+			<Cell CellID="G_16" CellID2="X_26" Encode="1" Receive="1" Value="4100259162" StatusID="0001"/>
+			<Cell CellID="H_16" CellID2="AB_26" Encode="1" Receive="1" Value="CƯỚC ĐT" StatusID="0001"/>
+			<Cell CellID="I_16" CellID2="AF_26" Encode="1" Receive="1" Value="236290" StatusID="0001"/>
+			<Cell CellID="J_16" CellID2="AJ_26" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_16" CellID2="AN_26" Encode="1" Receive="1" Value="23629" StatusID="0001"/>
+			<Cell CellID="L_16" CellID2="AR_26" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_17" CellID2="C_27" FirstCell="1" Encode="1" Receive="1" Value="41AE/11P" StatusID="0001"/>
+			<Cell CellID="D_17" CellID2="G_27" Encode="1" Receive="1" Value="016939" StatusID="0001"/>
+			<Cell CellID="E_17" CellID2="M_27" Encode="1" Receive="1" Value="31/07/2012" StatusID="0001"/>
+			<Cell CellID="F_17" CellID2="R_27" Encode="1" Receive="1" Value="NGUYỄN THỊ MINH HIỀN" StatusID="0001"/>
+			<Cell CellID="G_17" CellID2="X_27" Encode="1" Receive="1" Value="4100260873" StatusID="0001"/>
+			<Cell CellID="H_17" CellID2="AB_27" Encode="1" Receive="1" Value="VẬT TƯ" StatusID="0001"/>
+			<Cell CellID="I_17" CellID2="AF_27" Encode="1" Receive="1" Value="13765000" StatusID="0001"/>
+			<Cell CellID="J_17" CellID2="AJ_27" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_17" CellID2="AN_27" Encode="1" Receive="1" Value="1376500" StatusID="0001"/>
+			<Cell CellID="L_17" CellID2="AR_27" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_18" CellID2="C_28" FirstCell="1" Encode="1" Receive="1" Value="41AE/11P" StatusID="0001"/>
+			<Cell CellID="D_18" CellID2="G_28" Encode="1" Receive="1" Value="016880" StatusID="0001"/>
+			<Cell CellID="E_18" CellID2="M_28" Encode="1" Receive="1" Value="31/07/2012" StatusID="0001"/>
+			<Cell CellID="F_18" CellID2="R_28" Encode="1" Receive="1" Value="NGUYỄN THỊ MINH HIỀN" StatusID="0001"/>
+			<Cell CellID="G_18" CellID2="X_28" Encode="1" Receive="1" Value="4100260873" StatusID="0001"/>
+			<Cell CellID="H_18" CellID2="AB_28" Encode="1" Receive="1" Value="VẬT TƯ" StatusID="0001"/>
+			<Cell CellID="I_18" CellID2="AF_28" Encode="1" Receive="1" Value="8933182" StatusID="0001"/>
+			<Cell CellID="J_18" CellID2="AJ_28" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_18" CellID2="AN_28" Encode="1" Receive="1" Value="893318" StatusID="0001"/>
+			<Cell CellID="L_18" CellID2="AR_28" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_19" CellID2="C_29" FirstCell="1" Encode="1" Receive="1" Value="BP/12P" StatusID="0001"/>
+			<Cell CellID="D_19" CellID2="G_29" Encode="1" Receive="1" Value="000176" StatusID="0001"/>
+			<Cell CellID="E_19" CellID2="M_29" Encode="1" Receive="1" Value="01/08/2012" StatusID="0001"/>
+			<Cell CellID="F_19" CellID2="R_29" Encode="1" Receive="1" Value="CTY TNHH VT-TM TÂN BÌNH PHƯỚC" StatusID="0001"/>
+			<Cell CellID="G_19" CellID2="X_29" Encode="1" Receive="1" Value="4101362081" StatusID="0001"/>
+			<Cell CellID="H_19" CellID2="AB_29" Encode="1" Receive="1" Value="THÉP" StatusID="0001"/>
+			<Cell CellID="I_19" CellID2="AF_29" Encode="1" Receive="1" Value="18060000" StatusID="0001"/>
+			<Cell CellID="J_19" CellID2="AJ_29" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_19" CellID2="AN_29" Encode="1" Receive="1" Value="1806000" StatusID="0001"/>
+			<Cell CellID="L_19" CellID2="AR_29" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_20" CellID2="C_30" FirstCell="1" Encode="1" Receive="1" Value="BP/12P" StatusID="0001"/>
+			<Cell CellID="D_20" CellID2="G_30" Encode="1" Receive="1" Value="000183" StatusID="0001"/>
+			<Cell CellID="E_20" CellID2="M_30" Encode="1" Receive="1" Value="02/08/2012" StatusID="0001"/>
+			<Cell CellID="F_20" CellID2="R_30" Encode="1" Receive="1" Value="CTY TNHH VT-TM TÂN BÌNH PHƯỚC" StatusID="0001"/>
+			<Cell CellID="G_20" CellID2="X_30" Encode="1" Receive="1" Value="4101362081" StatusID="0001"/>
+			<Cell CellID="H_20" CellID2="AB_30" Encode="1" Receive="1" Value="THÉP" StatusID="0001"/>
+			<Cell CellID="I_20" CellID2="AF_30" Encode="1" Receive="1" Value="17956800" StatusID="0001"/>
+			<Cell CellID="J_20" CellID2="AJ_30" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_20" CellID2="AN_30" Encode="1" Receive="1" Value="1795680" StatusID="0001"/>
+			<Cell CellID="L_20" CellID2="AR_30" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_21" CellID2="C_31" FirstCell="1" Encode="1" Receive="1" Value="TH/11P" StatusID="0001"/>
+			<Cell CellID="D_21" CellID2="G_31" Encode="1" Receive="1" Value="000176" StatusID="0001"/>
+			<Cell CellID="E_21" CellID2="M_31" Encode="1" Receive="1" Value="02/08/2012" StatusID="0001"/>
+			<Cell CellID="F_21" CellID2="R_31" Encode="1" Receive="1" Value="CTY TNHH SX-TM TÍN HUY" StatusID="0001"/>
+			<Cell CellID="G_21" CellID2="X_31" Encode="1" Receive="1" Value="1400472721" StatusID="0001"/>
+			<Cell CellID="H_21" CellID2="AB_31" Encode="1" Receive="1" Value="VẬT TƯ" StatusID="0001"/>
+			<Cell CellID="I_21" CellID2="AF_31" Encode="1" Receive="1" Value="1868000" StatusID="0001"/>
+			<Cell CellID="J_21" CellID2="AJ_31" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_21" CellID2="AN_31" Encode="1" Receive="1" Value="186800" StatusID="0001"/>
+			<Cell CellID="L_21" CellID2="AR_31" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_22" CellID2="C_32" FirstCell="1" Encode="1" Receive="1" Value="BP/12P" StatusID="0001"/>
+			<Cell CellID="D_22" CellID2="G_32" Encode="1" Receive="1" Value="000189" StatusID="0001"/>
+			<Cell CellID="E_22" CellID2="M_32" Encode="1" Receive="1" Value="03/08/2012" StatusID="0001"/>
+			<Cell CellID="F_22" CellID2="R_32" Encode="1" Receive="1" Value="CTY TNHH VT-TM TÂN BÌNH PHƯỚC" StatusID="0001"/>
+			<Cell CellID="G_22" CellID2="X_32" Encode="1" Receive="1" Value="4101362081" StatusID="0001"/>
+			<Cell CellID="H_22" CellID2="AB_32" Encode="1" Receive="1" Value="THÉP" StatusID="0001"/>
+			<Cell CellID="I_22" CellID2="AF_32" Encode="1" Receive="1" Value="17888000" StatusID="0001"/>
+			<Cell CellID="J_22" CellID2="AJ_32" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_22" CellID2="AN_32" Encode="1" Receive="1" Value="1788800" StatusID="0001"/>
+			<Cell CellID="L_22" CellID2="AR_32" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_23" CellID2="C_33" FirstCell="1" Encode="1" Receive="1" Value="BP/12P" StatusID="0001"/>
+			<Cell CellID="D_23" CellID2="G_33" Encode="1" Receive="1" Value="000195" StatusID="0001"/>
+			<Cell CellID="E_23" CellID2="M_33" Encode="1" Receive="1" Value="04/08/2012" StatusID="0001"/>
+			<Cell CellID="F_23" CellID2="R_33" Encode="1" Receive="1" Value="CTY TNHH VT-TM TÂN BÌNH PHƯỚC" StatusID="0001"/>
+			<Cell CellID="G_23" CellID2="X_33" Encode="1" Receive="1" Value="4101362081" StatusID="0001"/>
+			<Cell CellID="H_23" CellID2="AB_33" Encode="1" Receive="1" Value="THÉP" StatusID="0001"/>
+			<Cell CellID="I_23" CellID2="AF_33" Encode="1" Receive="1" Value="17974000" StatusID="0001"/>
+			<Cell CellID="J_23" CellID2="AJ_33" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_23" CellID2="AN_33" Encode="1" Receive="1" Value="1797400" StatusID="0001"/>
+			<Cell CellID="L_23" CellID2="AR_33" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_24" CellID2="C_34" FirstCell="1" Encode="1" Receive="1" Value="BP/12P" StatusID="0001"/>
+			<Cell CellID="D_24" CellID2="G_34" Encode="1" Receive="1" Value="000201" StatusID="0001"/>
+			<Cell CellID="E_24" CellID2="M_34" Encode="1" Receive="1" Value="05/08/2012" StatusID="0001"/>
+			<Cell CellID="F_24" CellID2="R_34" Encode="1" Receive="1" Value="CTY TNHH VT-TM TÂN BÌNH PHƯỚC" StatusID="0001"/>
+			<Cell CellID="G_24" CellID2="X_34" Encode="1" Receive="1" Value="4101362081" StatusID="0001"/>
+			<Cell CellID="H_24" CellID2="AB_34" Encode="1" Receive="1" Value="THÉP" StatusID="0001"/>
+			<Cell CellID="I_24" CellID2="AF_34" Encode="1" Receive="1" Value="18146000" StatusID="0001"/>
+			<Cell CellID="J_24" CellID2="AJ_34" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_24" CellID2="AN_34" Encode="1" Receive="1" Value="1814600" StatusID="0001"/>
+			<Cell CellID="L_24" CellID2="AR_34" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_25" CellID2="C_35" FirstCell="1" Encode="1" Receive="1" Value="BP/12P" StatusID="0001"/>
+			<Cell CellID="D_25" CellID2="G_35" Encode="1" Receive="1" Value="000206" StatusID="0001"/>
+			<Cell CellID="E_25" CellID2="M_35" Encode="1" Receive="1" Value="06/08/2012" StatusID="0001"/>
+			<Cell CellID="F_25" CellID2="R_35" Encode="1" Receive="1" Value="CTY TNHH VT-TM TÂN BÌNH PHƯỚC" StatusID="0001"/>
+			<Cell CellID="G_25" CellID2="X_35" Encode="1" Receive="1" Value="4101362081" StatusID="0001"/>
+			<Cell CellID="H_25" CellID2="AB_35" Encode="1" Receive="1" Value="THÉP" StatusID="0001"/>
+			<Cell CellID="I_25" CellID2="AF_35" Encode="1" Receive="1" Value="18094400" StatusID="0001"/>
+			<Cell CellID="J_25" CellID2="AJ_35" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_25" CellID2="AN_35" Encode="1" Receive="1" Value="1809440" StatusID="0001"/>
+			<Cell CellID="L_25" CellID2="AR_35" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_26" CellID2="C_36" FirstCell="1" Encode="1" Receive="1" Value="NT/11P" StatusID="0001"/>
+			<Cell CellID="D_26" CellID2="G_36" Encode="1" Receive="1" Value="001630" StatusID="0001"/>
+			<Cell CellID="E_26" CellID2="M_36" Encode="1" Receive="1" Value="06/08/2012" StatusID="0001"/>
+			<Cell CellID="F_26" CellID2="R_36" Encode="1" Receive="1" Value="DNTN TM NHẬT TRƯỜNG" StatusID="0001"/>
+			<Cell CellID="G_26" CellID2="X_36" Encode="1" Receive="1" Value="4100400270" StatusID="0001"/>
+			<Cell CellID="H_26" CellID2="AB_36" Encode="1" Receive="1" Value="VLXD" StatusID="0001"/>
+			<Cell CellID="I_26" CellID2="AF_36" Encode="1" Receive="1" Value="51008835" StatusID="0001"/>
+			<Cell CellID="J_26" CellID2="AJ_36" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_26" CellID2="AN_36" Encode="1" Receive="1" Value="5100883" StatusID="0001"/>
+			<Cell CellID="L_26" CellID2="AR_36" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_27" CellID2="C_37" FirstCell="1" Encode="1" Receive="1" Value="BP/12P" StatusID="0001"/>
+			<Cell CellID="D_27" CellID2="G_37" Encode="1" Receive="1" Value="000212" StatusID="0001"/>
+			<Cell CellID="E_27" CellID2="M_37" Encode="1" Receive="1" Value="07/08/2012" StatusID="0001"/>
+			<Cell CellID="F_27" CellID2="R_37" Encode="1" Receive="1" Value="CTY TNHH VT-TM TÂN BÌNH PHƯỚC" StatusID="0001"/>
+			<Cell CellID="G_27" CellID2="X_37" Encode="1" Receive="1" Value="4101362081" StatusID="0001"/>
+			<Cell CellID="H_27" CellID2="AB_37" Encode="1" Receive="1" Value="THÉP" StatusID="0001"/>
+			<Cell CellID="I_27" CellID2="AF_37" Encode="1" Receive="1" Value="18025600" StatusID="0001"/>
+			<Cell CellID="J_27" CellID2="AJ_37" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_27" CellID2="AN_37" Encode="1" Receive="1" Value="1802560" StatusID="0001"/>
+			<Cell CellID="L_27" CellID2="AR_37" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_28" CellID2="C_38" FirstCell="1" Encode="1" Receive="1" Value="NY/11P" StatusID="0001"/>
+			<Cell CellID="D_28" CellID2="G_38" Encode="1" Receive="1" Value="000600" StatusID="0001"/>
+			<Cell CellID="E_28" CellID2="M_38" Encode="1" Receive="1" Value="07/08/2012" StatusID="0001"/>
+			<Cell CellID="F_28" CellID2="R_38" Encode="1" Receive="1" Value="CTY TNHH SX TM VÀ DV NHƯ Ý" StatusID="0001"/>
+			<Cell CellID="G_28" CellID2="X_38" Encode="1" Receive="1" Value="4100755682" StatusID="0001"/>
+			<Cell CellID="H_28" CellID2="AB_38" Encode="1" Receive="1" Value="VLXD" StatusID="0001"/>
+			<Cell CellID="I_28" CellID2="AF_38" Encode="1" Receive="1" Value="50254577" StatusID="0001"/>
+			<Cell CellID="J_28" CellID2="AJ_38" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_28" CellID2="AN_38" Encode="1" Receive="1" Value="5025423" StatusID="0001"/>
+			<Cell CellID="L_28" CellID2="AR_38" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_29" CellID2="C_39" FirstCell="1" Encode="1" Receive="1" Value="BP/12P" StatusID="0001"/>
+			<Cell CellID="D_29" CellID2="G_39" Encode="1" Receive="1" Value="000218" StatusID="0001"/>
+			<Cell CellID="E_29" CellID2="M_39" Encode="1" Receive="1" Value="08/08/2012" StatusID="0001"/>
+			<Cell CellID="F_29" CellID2="R_39" Encode="1" Receive="1" Value="CTY TNHH VT-TM TÂN BÌNH PHƯỚC" StatusID="0001"/>
+			<Cell CellID="G_29" CellID2="X_39" Encode="1" Receive="1" Value="4101362081" StatusID="0001"/>
+			<Cell CellID="H_29" CellID2="AB_39" Encode="1" Receive="1" Value="THÉP" StatusID="0001"/>
+			<Cell CellID="I_29" CellID2="AF_39" Encode="1" Receive="1" Value="18128800" StatusID="0001"/>
+			<Cell CellID="J_29" CellID2="AJ_39" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_29" CellID2="AN_39" Encode="1" Receive="1" Value="1812880" StatusID="0001"/>
+			<Cell CellID="L_29" CellID2="AR_39" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_30" CellID2="C_40" FirstCell="1" Encode="1" Receive="1" Value="BP/12P" StatusID="0001"/>
+			<Cell CellID="D_30" CellID2="G_40" Encode="1" Receive="1" Value="000224" StatusID="0001"/>
+			<Cell CellID="E_30" CellID2="M_40" Encode="1" Receive="1" Value="09/08/2012" StatusID="0001"/>
+			<Cell CellID="F_30" CellID2="R_40" Encode="1" Receive="1" Value="CTY TNHH VT-TM TÂN BÌNH PHƯỚC" StatusID="0001"/>
+			<Cell CellID="G_30" CellID2="X_40" Encode="1" Receive="1" Value="4101362081" StatusID="0001"/>
+			<Cell CellID="H_30" CellID2="AB_40" Encode="1" Receive="1" Value="THÉP" StatusID="0001"/>
+			<Cell CellID="I_30" CellID2="AF_40" Encode="1" Receive="1" Value="17991200" StatusID="0001"/>
+			<Cell CellID="J_30" CellID2="AJ_40" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_30" CellID2="AN_40" Encode="1" Receive="1" Value="1799120" StatusID="0001"/>
+			<Cell CellID="L_30" CellID2="AR_40" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_31" CellID2="C_41" FirstCell="1" Encode="1" Receive="1" Value="TN/11P" StatusID="0001"/>
+			<Cell CellID="D_31" CellID2="G_41" Encode="1" Receive="1" Value="002848" StatusID="0001"/>
+			<Cell CellID="E_31" CellID2="M_41" Encode="1" Receive="1" Value="09/08/2012" StatusID="0001"/>
+			<Cell CellID="F_31" CellID2="R_41" Encode="1" Receive="1" Value="DNTN THANH NHÀN PHÚ TÀI" StatusID="0001"/>
+			<Cell CellID="G_31" CellID2="X_41" Encode="1" Receive="1" Value="4100465630" StatusID="0001"/>
+			<Cell CellID="H_31" CellID2="AB_41" Encode="1" Receive="1" Value="VLXD" StatusID="0001"/>
+			<Cell CellID="I_31" CellID2="AF_41" Encode="1" Receive="1" Value="42986005" StatusID="0001"/>
+			<Cell CellID="J_31" CellID2="AJ_41" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_31" CellID2="AN_41" Encode="1" Receive="1" Value="4298600" StatusID="0001"/>
+			<Cell CellID="L_31" CellID2="AR_41" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_32" CellID2="C_42" FirstCell="1" Encode="1" Receive="1" Value="BP/12P" StatusID="0001"/>
+			<Cell CellID="D_32" CellID2="G_42" Encode="1" Receive="1" Value="000230" StatusID="0001"/>
+			<Cell CellID="E_32" CellID2="M_42" Encode="1" Receive="1" Value="10/08/2012" StatusID="0001"/>
+			<Cell CellID="F_32" CellID2="R_42" Encode="1" Receive="1" Value="CTY TNHH VT-TM TÂN BÌNH PHƯỚC" StatusID="0001"/>
+			<Cell CellID="G_32" CellID2="X_42" Encode="1" Receive="1" Value="4101362081" StatusID="0001"/>
+			<Cell CellID="H_32" CellID2="AB_42" Encode="1" Receive="1" Value="THÉP" StatusID="0001"/>
+			<Cell CellID="I_32" CellID2="AF_42" Encode="1" Receive="1" Value="18163200" StatusID="0001"/>
+			<Cell CellID="J_32" CellID2="AJ_42" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_32" CellID2="AN_42" Encode="1" Receive="1" Value="1816320" StatusID="0001"/>
+			<Cell CellID="L_32" CellID2="AR_42" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_33" CellID2="C_43" FirstCell="1" Encode="1" Receive="1" Value="BP/12P" StatusID="0001"/>
+			<Cell CellID="D_33" CellID2="G_43" Encode="1" Receive="1" Value="000235" StatusID="0001"/>
+			<Cell CellID="E_33" CellID2="M_43" Encode="1" Receive="1" Value="11/08/2012" StatusID="0001"/>
+			<Cell CellID="F_33" CellID2="R_43" Encode="1" Receive="1" Value="CTY TNHH VT-TM TÂN BÌNH PHƯỚC" StatusID="0001"/>
+			<Cell CellID="G_33" CellID2="X_43" Encode="1" Receive="1" Value="4101362081" StatusID="0001"/>
+			<Cell CellID="H_33" CellID2="AB_43" Encode="1" Receive="1" Value="THÉP" StatusID="0001"/>
+			<Cell CellID="I_33" CellID2="AF_43" Encode="1" Receive="1" Value="17200000" StatusID="0001"/>
+			<Cell CellID="J_33" CellID2="AJ_43" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_33" CellID2="AN_43" Encode="1" Receive="1" Value="1720000" StatusID="0001"/>
+			<Cell CellID="L_33" CellID2="AR_43" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_34" CellID2="C_44" FirstCell="1" Encode="1" Receive="1" Value="BP/12P" StatusID="0001"/>
+			<Cell CellID="D_34" CellID2="G_44" Encode="1" Receive="1" Value="000241" StatusID="0001"/>
+			<Cell CellID="E_34" CellID2="M_44" Encode="1" Receive="1" Value="12/08/2012" StatusID="0001"/>
+			<Cell CellID="F_34" CellID2="R_44" Encode="1" Receive="1" Value="CTY TNHH VT-TM TÂN BÌNH PHƯỚC" StatusID="0001"/>
+			<Cell CellID="G_34" CellID2="X_44" Encode="1" Receive="1" Value="4101362081" StatusID="0001"/>
+			<Cell CellID="H_34" CellID2="AB_44" Encode="1" Receive="1" Value="THÉP" StatusID="0001"/>
+			<Cell CellID="I_34" CellID2="AF_44" Encode="1" Receive="1" Value="8772000" StatusID="0001"/>
+			<Cell CellID="J_34" CellID2="AJ_44" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_34" CellID2="AN_44" Encode="1" Receive="1" Value="877200" StatusID="0001"/>
+			<Cell CellID="L_34" CellID2="AR_44" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_35" CellID2="C_45" FirstCell="1" Encode="1" Receive="1" Value="BL/11P" StatusID="0001"/>
+			<Cell CellID="D_35" CellID2="G_45" Encode="1" Receive="1" Value="754963" StatusID="0001"/>
+			<Cell CellID="E_35" CellID2="M_45" Encode="1" Receive="1" Value="12/08/2012" StatusID="0001"/>
+			<Cell CellID="F_35" CellID2="R_45" Encode="1" Receive="1" Value="CTY XĂNG DẦU PHÚ KHÁNH" StatusID="0001"/>
+			<Cell CellID="G_35" CellID2="X_45" Encode="1" Receive="1" Value="4200240380" StatusID="0001"/>
+			<Cell CellID="H_35" CellID2="AB_45" Encode="1" Receive="1" Value="XĂNG" StatusID="0001"/>
+			<Cell CellID="I_35" CellID2="AF_45" Encode="1" Receive="1" Value="1015000" StatusID="0001"/>
+			<Cell CellID="J_35" CellID2="AJ_45" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_35" CellID2="AN_45" Encode="1" Receive="1" Value="101500" StatusID="0001"/>
+			<Cell CellID="L_35" CellID2="AR_45" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_36" CellID2="C_46" FirstCell="1" Encode="1" Receive="1" Value="HL/11P" StatusID="0001"/>
+			<Cell CellID="D_36" CellID2="G_46" Encode="1" Receive="1" Value="000548" StatusID="0001"/>
+			<Cell CellID="E_36" CellID2="M_46" Encode="1" Receive="1" Value="13/08/2012" StatusID="0001"/>
+			<Cell CellID="F_36" CellID2="R_46" Encode="1" Receive="1" Value="CN CTY TNHH HIỆP LỢI GIA LAI TẠI KBANG" StatusID="0001"/>
+			<Cell CellID="G_36" CellID2="X_46" Encode="1" Receive="1" Value="5900190426002" StatusID="0001"/>
+			<Cell CellID="H_36" CellID2="AB_46" Encode="1" Receive="1" Value="GỖ TRÒN" StatusID="0001"/>
+			<Cell CellID="I_36" CellID2="AF_46" Encode="1" Receive="1" Value="140152600" StatusID="0001"/>
+			<Cell CellID="J_36" CellID2="AJ_46" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_36" CellID2="AN_46" Encode="1" Receive="1" Value="14015260" StatusID="0001"/>
+			<Cell CellID="L_36" CellID2="AR_46" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_37" CellID2="C_47" FirstCell="1" Encode="1" Receive="1" Value="LP/11P" StatusID="0001"/>
+			<Cell CellID="D_37" CellID2="G_47" Encode="1" Receive="1" Value="000064" StatusID="0001"/>
+			<Cell CellID="E_37" CellID2="M_47" Encode="1" Receive="1" Value="13/08/2012" StatusID="0001"/>
+			<Cell CellID="F_37" CellID2="R_47" Encode="1" Receive="1" Value="CTY TNHH TM&amp; DV LONG PHÚ" StatusID="0001"/>
+			<Cell CellID="G_37" CellID2="X_47" Encode="1" Receive="1" Value="4100636156" StatusID="0001"/>
+			<Cell CellID="H_37" CellID2="AB_47" Encode="1" Receive="1" Value="MÁY CHÀ NHÁM" StatusID="0001"/>
+			<Cell CellID="I_37" CellID2="AF_47" Encode="1" Receive="1" Value="150000000" StatusID="0001"/>
+			<Cell CellID="J_37" CellID2="AJ_47" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_37" CellID2="AN_47" Encode="1" Receive="1" Value="15000000" StatusID="0001"/>
+			<Cell CellID="L_37" CellID2="AR_47" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_38" CellID2="C_48" FirstCell="1" Encode="1" Receive="1" Value="AA/11P" StatusID="0001"/>
+			<Cell CellID="D_38" CellID2="G_48" Encode="1" Receive="1" Value="000026" StatusID="0001"/>
+			<Cell CellID="E_38" CellID2="M_48" Encode="1" Receive="1" Value="14/08/2012" StatusID="0001"/>
+			<Cell CellID="F_38" CellID2="R_48" Encode="1" Receive="1" Value="CTY TNHH HÀ NHÂN BÌNH" StatusID="0001"/>
+			<Cell CellID="G_38" CellID2="X_48" Encode="1" Receive="1" Value="4000447797" StatusID="0001"/>
+			<Cell CellID="H_38" CellID2="AB_48" Encode="1" Receive="1" Value="GỖ XẺ KEO" StatusID="0001"/>
+			<Cell CellID="I_38" CellID2="AF_48" Encode="1" Receive="1" Value="94400000" StatusID="0001"/>
+			<Cell CellID="J_38" CellID2="AJ_48" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_38" CellID2="AN_48" Encode="1" Receive="1" Value="9440000" StatusID="0001"/>
+			<Cell CellID="L_38" CellID2="AR_48" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_39" CellID2="C_49" FirstCell="1" Encode="1" Receive="1" Value="AA/11P" StatusID="0001"/>
+			<Cell CellID="D_39" CellID2="G_49" Encode="1" Receive="1" Value="020699" StatusID="0001"/>
+			<Cell CellID="E_39" CellID2="M_49" Encode="1" Receive="1" Value="16/08/2012" StatusID="0001"/>
+			<Cell CellID="F_39" CellID2="R_49" Encode="1" Receive="1" Value="CTY CP PETEC BÌNH ĐỊNH" StatusID="0001"/>
+			<Cell CellID="G_39" CellID2="X_49" Encode="1" Receive="1" Value="4100406219" StatusID="0001"/>
+			<Cell CellID="H_39" CellID2="AB_49" Encode="1" Receive="1" Value="XĂNG" StatusID="0001"/>
+			<Cell CellID="I_39" CellID2="AF_49" Encode="1" Receive="1" Value="639818" StatusID="0001"/>
+			<Cell CellID="J_39" CellID2="AJ_49" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_39" CellID2="AN_49" Encode="1" Receive="1" Value="63982" StatusID="0001"/>
+			<Cell CellID="L_39" CellID2="AR_49" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_40" CellID2="C_50" FirstCell="1" Encode="1" Receive="1" Value="AA/11P" StatusID="0001"/>
+			<Cell CellID="D_40" CellID2="G_50" Encode="1" Receive="1" Value="000076" StatusID="0001"/>
+			<Cell CellID="E_40" CellID2="M_50" Encode="1" Receive="1" Value="16/08/2012" StatusID="0001"/>
+			<Cell CellID="F_40" CellID2="R_50" Encode="1" Receive="1" Value="CTY TNHH TM VÀ DV A.S.I.A" StatusID="0001"/>
+			<Cell CellID="G_40" CellID2="X_50" Encode="1" Receive="1" Value="4100710579" StatusID="0001"/>
+			<Cell CellID="H_40" CellID2="AB_50" Encode="1" Receive="1" Value="MÁY IN" StatusID="0001"/>
+			<Cell CellID="I_40" CellID2="AF_50" Encode="1" Receive="1" Value="700000" StatusID="0001"/>
+			<Cell CellID="J_40" CellID2="AJ_50" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_40" CellID2="AN_50" Encode="1" Receive="1" Value="70000" StatusID="0001"/>
+			<Cell CellID="L_40" CellID2="AR_50" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_41" CellID2="C_51" FirstCell="1" Encode="1" Receive="1" Value="AB/12P" StatusID="0001"/>
+			<Cell CellID="D_41" CellID2="G_51" Encode="1" Receive="1" Value="1750461" StatusID="0001"/>
+			<Cell CellID="E_41" CellID2="M_51" Encode="1" Receive="1" Value="16/08/2012" StatusID="0001"/>
+			<Cell CellID="F_41" CellID2="R_51" Encode="1" Receive="1" Value="TẬP ĐOÀN VIỄN THÔNG QUÂN ĐỘI" StatusID="0001"/>
+			<Cell CellID="G_41" CellID2="X_51" Encode="1" Receive="1" Value="0100109106" StatusID="0001"/>
+			<Cell CellID="H_41" CellID2="AB_51" Encode="1" Receive="1" Value="CƯỚC ĐT" StatusID="0001"/>
+			<Cell CellID="I_41" CellID2="AF_51" Encode="1" Receive="1" Value="375831" StatusID="0001"/>
+			<Cell CellID="J_41" CellID2="AJ_51" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_41" CellID2="AN_51" Encode="1" Receive="1" Value="37583" StatusID="0001"/>
+			<Cell CellID="L_41" CellID2="AR_51" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_42" CellID2="C_52" FirstCell="1" Encode="1" Receive="1" Value="AB/12P" StatusID="0001"/>
+			<Cell CellID="D_42" CellID2="G_52" Encode="1" Receive="1" Value="1750480" StatusID="0001"/>
+			<Cell CellID="E_42" CellID2="M_52" Encode="1" Receive="1" Value="16/08/2012" StatusID="0001"/>
+			<Cell CellID="F_42" CellID2="R_52" Encode="1" Receive="1" Value="TẬP ĐOÀN VIỄN THÔNG QUÂN ĐỘI" StatusID="0001"/>
+			<Cell CellID="G_42" CellID2="X_52" Encode="1" Receive="1" Value="0100109106" StatusID="0001"/>
+			<Cell CellID="H_42" CellID2="AB_52" Encode="1" Receive="1" Value="CƯỚC ĐT" StatusID="0001"/>
+			<Cell CellID="I_42" CellID2="AF_52" Encode="1" Receive="1" Value="453201" StatusID="0001"/>
+			<Cell CellID="J_42" CellID2="AJ_52" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_42" CellID2="AN_52" Encode="1" Receive="1" Value="45320" StatusID="0001"/>
+			<Cell CellID="L_42" CellID2="AR_52" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_43" CellID2="C_53" FirstCell="1" Encode="1" Receive="1" Value="AB/12P" StatusID="0001"/>
+			<Cell CellID="D_43" CellID2="G_53" Encode="1" Receive="1" Value="1750532" StatusID="0001"/>
+			<Cell CellID="E_43" CellID2="M_53" Encode="1" Receive="1" Value="16/08/2012" StatusID="0001"/>
+			<Cell CellID="F_43" CellID2="R_53" Encode="1" Receive="1" Value="TẬP ĐOÀN VIỄN THÔNG QUÂN ĐỘI" StatusID="0001"/>
+			<Cell CellID="G_43" CellID2="X_53" Encode="1" Receive="1" Value="0100109106" StatusID="0001"/>
+			<Cell CellID="H_43" CellID2="AB_53" Encode="1" Receive="1" Value="CƯỚC ĐT" StatusID="0001"/>
+			<Cell CellID="I_43" CellID2="AF_53" Encode="1" Receive="1" Value="452123" StatusID="0001"/>
+			<Cell CellID="J_43" CellID2="AJ_53" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_43" CellID2="AN_53" Encode="1" Receive="1" Value="45212" StatusID="0001"/>
+			<Cell CellID="L_43" CellID2="AR_53" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_44" CellID2="C_54" FirstCell="1" Encode="1" Receive="1" Value="41AE/11P" StatusID="0001"/>
+			<Cell CellID="D_44" CellID2="G_54" Encode="1" Receive="1" Value="017020" StatusID="0001"/>
+			<Cell CellID="E_44" CellID2="M_54" Encode="1" Receive="1" Value="17/08/2012" StatusID="0001"/>
+			<Cell CellID="F_44" CellID2="R_54" Encode="1" Receive="1" Value="NGUYỄN THỊ MINH HIỀN" StatusID="0001"/>
+			<Cell CellID="G_44" CellID2="X_54" Encode="1" Receive="1" Value="4100260873" StatusID="0001"/>
+			<Cell CellID="H_44" CellID2="AB_54" Encode="1" Receive="1" Value="VẬT TƯ" StatusID="0001"/>
+			<Cell CellID="I_44" CellID2="AF_54" Encode="1" Receive="1" Value="16500000" StatusID="0001"/>
+			<Cell CellID="J_44" CellID2="AJ_54" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_44" CellID2="AN_54" Encode="1" Receive="1" Value="1650000" StatusID="0001"/>
+			<Cell CellID="L_44" CellID2="AR_54" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_45" CellID2="C_55" FirstCell="1" Encode="1" Receive="1" Value="TN/11P" StatusID="0001"/>
+			<Cell CellID="D_45" CellID2="G_55" Encode="1" Receive="1" Value="000138" StatusID="0001"/>
+			<Cell CellID="E_45" CellID2="M_55" Encode="1" Receive="1" Value="17/08/2012" StatusID="0001"/>
+			<Cell CellID="F_45" CellID2="R_55" Encode="1" Receive="1" Value="DNTN TRUNG NHẬT" StatusID="0001"/>
+			<Cell CellID="G_45" CellID2="X_55" Encode="1" Receive="1" Value="4100536627" StatusID="0001"/>
+			<Cell CellID="H_45" CellID2="AB_55" Encode="1" Receive="1" Value="VẬT TƯ" StatusID="0001"/>
+			<Cell CellID="I_45" CellID2="AF_55" Encode="1" Receive="1" Value="10000000" StatusID="0001"/>
+			<Cell CellID="J_45" CellID2="AJ_55" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_45" CellID2="AN_55" Encode="1" Receive="1" Value="1000000" StatusID="0001"/>
+			<Cell CellID="L_45" CellID2="AR_55" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_46" CellID2="C_56" FirstCell="1" Encode="1" Receive="1" Value="TT/12P" StatusID="0001"/>
+			<Cell CellID="D_46" CellID2="G_56" Encode="1" Receive="1" Value="000152" StatusID="0001"/>
+			<Cell CellID="E_46" CellID2="M_56" Encode="1" Receive="1" Value="17/08/2012" StatusID="0001"/>
+			<Cell CellID="F_46" CellID2="R_56" Encode="1" Receive="1" Value="DNTN TM TRIỆU THÀNH" StatusID="0001"/>
+			<Cell CellID="G_46" CellID2="X_56" Encode="1" Receive="1" Value="4100444775" StatusID="0001"/>
+			<Cell CellID="H_46" CellID2="AB_56" Encode="1" Receive="1" Value="NƯỚC UỐNG" StatusID="0001"/>
+			<Cell CellID="I_46" CellID2="AF_56" Encode="1" Receive="1" Value="1230000" StatusID="0001"/>
+			<Cell CellID="J_46" CellID2="AJ_56" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_46" CellID2="AN_56" Encode="1" Receive="1" Value="123000" StatusID="0001"/>
+			<Cell CellID="L_46" CellID2="AR_56" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_47" CellID2="C_57" FirstCell="1" Encode="1" Receive="1" Value="TH/11P" StatusID="0001"/>
+			<Cell CellID="D_47" CellID2="G_57" Encode="1" Receive="1" Value="000192" StatusID="0001"/>
+			<Cell CellID="E_47" CellID2="M_57" Encode="1" Receive="1" Value="18/08/2012" StatusID="0001"/>
+			<Cell CellID="F_47" CellID2="R_57" Encode="1" Receive="1" Value="CTY TNHH SX-TM TÍN HUY" StatusID="0001"/>
+			<Cell CellID="G_47" CellID2="X_57" Encode="1" Receive="1" Value="1400472721" StatusID="0001"/>
+			<Cell CellID="H_47" CellID2="AB_57" Encode="1" Receive="1" Value="VẬT TƯ" StatusID="0001"/>
+			<Cell CellID="I_47" CellID2="AF_57" Encode="1" Receive="1" Value="7790000" StatusID="0001"/>
+			<Cell CellID="J_47" CellID2="AJ_57" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_47" CellID2="AN_57" Encode="1" Receive="1" Value="779000" StatusID="0001"/>
+			<Cell CellID="L_47" CellID2="AR_57" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_48" CellID2="C_58" FirstCell="1" Encode="1" Receive="1" Value="NK/12P" StatusID="0001"/>
+			<Cell CellID="D_48" CellID2="G_58" Encode="1" Receive="1" Value="000054" StatusID="0001"/>
+			<Cell CellID="E_48" CellID2="M_58" Encode="1" Receive="1" Value="20/08/2012" StatusID="0001"/>
+			<Cell CellID="F_48" CellID2="R_58" Encode="1" Receive="1" Value="DNTN NGUYỄN KHÁNH" StatusID="0001"/>
+			<Cell CellID="G_48" CellID2="X_58" Encode="1" Receive="1" Value="4100266709" StatusID="0001"/>
+			<Cell CellID="H_48" CellID2="AB_58" Encode="1" Receive="1" Value="DẦU DO" StatusID="0001"/>
+			<Cell CellID="I_48" CellID2="AF_58" Encode="1" Receive="1" Value="11880000" StatusID="0001"/>
+			<Cell CellID="J_48" CellID2="AJ_58" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_48" CellID2="AN_58" Encode="1" Receive="1" Value="1188000" StatusID="0001"/>
+			<Cell CellID="L_48" CellID2="AR_58" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_49" CellID2="C_59" FirstCell="1" Encode="1" Receive="1" Value="HS/11P" StatusID="0001"/>
+			<Cell CellID="D_49" CellID2="G_59" Encode="1" Receive="1" Value="769903" StatusID="0001"/>
+			<Cell CellID="E_49" CellID2="M_59" Encode="1" Receive="1" Value="20/08/2012" StatusID="0001"/>
+			<Cell CellID="F_49" CellID2="R_59" Encode="1" Receive="1" Value="CN CTY CP TẬP ĐOÀN HOA SEN TẠI TUY PHƯỚC- BÌNH ĐỊNH" StatusID="0001"/>
+			<Cell CellID="G_49" CellID2="X_59" Encode="1" Receive="1" Value="3700381324-014" StatusID="0001"/>
+			<Cell CellID="H_49" CellID2="AB_59" Encode="1" Receive="1" Value="THÉP" StatusID="0001"/>
+			<Cell CellID="I_49" CellID2="AF_59" Encode="1" Receive="1" Value="128141180" StatusID="0001"/>
+			<Cell CellID="J_49" CellID2="AJ_59" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_49" CellID2="AN_59" Encode="1" Receive="1" Value="12814118" StatusID="0001"/>
+			<Cell CellID="L_49" CellID2="AR_59" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_50" CellID2="C_60" FirstCell="1" Encode="1" Receive="1" Value="AB/12T" StatusID="0001"/>
+			<Cell CellID="D_50" CellID2="G_60" Encode="1" Receive="1" Value="016493" StatusID="0001"/>
+			<Cell CellID="E_50" CellID2="M_60" Encode="1" Receive="1" Value="20/08/2012" StatusID="0001"/>
+			<Cell CellID="F_50" CellID2="R_60" Encode="1" Receive="1" Value="CTY SGS VIỆT NAM TNHH" StatusID="0001"/>
+			<Cell CellID="G_50" CellID2="X_60" Encode="1" Receive="1" Value="0100114025" StatusID="0001"/>
+			<Cell CellID="H_50" CellID2="AB_60" Encode="1" Receive="1" Value="PHÍ ĐÁNH GIÁ" StatusID="0001"/>
+			<Cell CellID="I_50" CellID2="AF_60" Encode="1" Receive="1" Value="38069500" StatusID="0001"/>
+			<Cell CellID="J_50" CellID2="AJ_60" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_50" CellID2="AN_60" Encode="1" Receive="1" Value="3806950" StatusID="0001"/>
+			<Cell CellID="L_50" CellID2="AR_60" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_51" CellID2="C_61" FirstCell="1" Encode="1" Receive="1" Value="QN/12T" StatusID="0001"/>
+			<Cell CellID="D_51" CellID2="G_61" Encode="1" Receive="1" Value="0541672" StatusID="0001"/>
+			<Cell CellID="E_51" CellID2="M_61" Encode="1" Receive="1" Value="21/08/2012" StatusID="0001"/>
+			<Cell CellID="F_51" CellID2="R_61" Encode="1" Receive="1" Value="CTY TNHH METRO CASH&amp; CARRY VIỆT NAM" StatusID="0001"/>
+			<Cell CellID="G_51" CellID2="X_61" Encode="1" Receive="1" Value="0302249586-007" StatusID="0001"/>
+			<Cell CellID="H_51" CellID2="AB_61" Encode="1" Receive="1" Value="VPP" StatusID="0001"/>
+			<Cell CellID="I_51" CellID2="AF_61" Encode="1" Receive="1" Value="448870" StatusID="0001"/>
+			<Cell CellID="J_51" CellID2="AJ_61" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_51" CellID2="AN_61" Encode="1" Receive="1" Value="44887" StatusID="0001"/>
+			<Cell CellID="L_51" CellID2="AR_61" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_52" CellID2="C_62" FirstCell="1" Encode="1" Receive="1" Value="AA/11P" StatusID="0001"/>
+			<Cell CellID="D_52" CellID2="G_62" Encode="1" Receive="1" Value="021033" StatusID="0001"/>
+			<Cell CellID="E_52" CellID2="M_62" Encode="1" Receive="1" Value="24/08/2012" StatusID="0001"/>
+			<Cell CellID="F_52" CellID2="R_62" Encode="1" Receive="1" Value="CTY CP PETEC BÌNH ĐỊNH" StatusID="0001"/>
+			<Cell CellID="G_52" CellID2="X_62" Encode="1" Receive="1" Value="4100406219" StatusID="0001"/>
+			<Cell CellID="H_52" CellID2="AB_62" Encode="1" Receive="1" Value="XĂNG" StatusID="0001"/>
+			<Cell CellID="I_52" CellID2="AF_62" Encode="1" Receive="1" Value="1066364" StatusID="0001"/>
+			<Cell CellID="J_52" CellID2="AJ_62" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_52" CellID2="AN_62" Encode="1" Receive="1" Value="106636" StatusID="0001"/>
+			<Cell CellID="L_52" CellID2="AR_62" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_53" CellID2="C_63" FirstCell="1" Encode="1" Receive="1" Value="AC/11P" StatusID="0001"/>
+			<Cell CellID="D_53" CellID2="G_63" Encode="1" Receive="1" Value="002388" StatusID="0001"/>
+			<Cell CellID="E_53" CellID2="M_63" Encode="1" Receive="1" Value="27/08/2012" StatusID="0001"/>
+			<Cell CellID="F_53" CellID2="R_63" Encode="1" Receive="1" Value="VIỄN THÔNG BÌNH ĐỊNH" StatusID="0001"/>
+			<Cell CellID="G_53" CellID2="X_63" Encode="1" Receive="1" Value="4100259162" StatusID="0001"/>
+			<Cell CellID="H_53" CellID2="AB_63" Encode="1" Receive="1" Value="CƯỚC ĐT" StatusID="0001"/>
+			<Cell CellID="I_53" CellID2="AF_63" Encode="1" Receive="1" Value="3087976" StatusID="0001"/>
+			<Cell CellID="J_53" CellID2="AJ_63" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_53" CellID2="AN_63" Encode="1" Receive="1" Value="308801" StatusID="0001"/>
+			<Cell CellID="L_53" CellID2="AR_63" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_54" CellID2="C_64" FirstCell="1" Encode="1" Receive="1" Value="HS/11P" StatusID="0001"/>
+			<Cell CellID="D_54" CellID2="G_64" Encode="1" Receive="1" Value="770108" StatusID="0001"/>
+			<Cell CellID="E_54" CellID2="M_64" Encode="1" Receive="1" Value="28/08/2012" StatusID="0001"/>
+			<Cell CellID="F_54" CellID2="R_64" Encode="1" Receive="1" Value="CN CTY CP TẬP ĐOÀN HOA SEN TẠI TUY PHƯỚC- BÌNH ĐỊNH" StatusID="0001"/>
+			<Cell CellID="G_54" CellID2="X_64" Encode="1" Receive="1" Value="3700381324-014" StatusID="0001"/>
+			<Cell CellID="H_54" CellID2="AB_64" Encode="1" Receive="1" Value="TÔN" StatusID="0001"/>
+			<Cell CellID="I_54" CellID2="AF_64" Encode="1" Receive="1" Value="146913534" StatusID="0001"/>
+			<Cell CellID="J_54" CellID2="AJ_64" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_54" CellID2="AN_64" Encode="1" Receive="1" Value="14691352" StatusID="0001"/>
+			<Cell CellID="L_54" CellID2="AR_64" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_55" CellID2="C_65" FirstCell="1" Encode="1" Receive="1" Value="AA/11P" StatusID="0001"/>
+			<Cell CellID="D_55" CellID2="G_65" Encode="1" Receive="1" Value="000030" StatusID="0001"/>
+			<Cell CellID="E_55" CellID2="M_65" Encode="1" Receive="1" Value="28/08/2012" StatusID="0001"/>
+			<Cell CellID="F_55" CellID2="R_65" Encode="1" Receive="1" Value="CTY TNHH HÀ NHÂN BÌNH" StatusID="0001"/>
+			<Cell CellID="G_55" CellID2="X_65" Encode="1" Receive="1" Value="4000447797" StatusID="0001"/>
+			<Cell CellID="H_55" CellID2="AB_65" Encode="1" Receive="1" Value="GỖ KEO XẺ" StatusID="0001"/>
+			<Cell CellID="I_55" CellID2="AF_65" Encode="1" Receive="1" Value="200000000" StatusID="0001"/>
+			<Cell CellID="J_55" CellID2="AJ_65" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_55" CellID2="AN_65" Encode="1" Receive="1" Value="20000000" StatusID="0001"/>
+			<Cell CellID="L_55" CellID2="AR_65" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_56" CellID2="C_66" FirstCell="1" Encode="1" Receive="1" Value="TN/11P" StatusID="0001"/>
+			<Cell CellID="D_56" CellID2="G_66" Encode="1" Receive="1" Value="000143" StatusID="0001"/>
+			<Cell CellID="E_56" CellID2="M_66" Encode="1" Receive="1" Value="29/08/2012" StatusID="0001"/>
+			<Cell CellID="F_56" CellID2="R_66" Encode="1" Receive="1" Value="DNTN TRUNG NHẬT" StatusID="0001"/>
+			<Cell CellID="G_56" CellID2="X_66" Encode="1" Receive="1" Value="4100536627" StatusID="0001"/>
+			<Cell CellID="H_56" CellID2="AB_66" Encode="1" Receive="1" Value="VẬT TƯ" StatusID="0001"/>
+			<Cell CellID="I_56" CellID2="AF_66" Encode="1" Receive="1" Value="30000000" StatusID="0001"/>
+			<Cell CellID="J_56" CellID2="AJ_66" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="K_56" CellID2="AN_66" Encode="1" Receive="1" Value="3000000" StatusID="0001"/>
+			<Cell CellID="L_56" CellID2="AR_66" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_61" CellID2="C_71" FirstCell="0" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="D_61" CellID2="G_71" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_61" CellID2="M_71" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_61" CellID2="R_71" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_61" CellID2="X_71" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="H_61" CellID2="AB_71" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="I_61" CellID2="AF_71" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_61" CellID2="AJ_71" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="K_61" CellID2="AN_71" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="L_61" CellID2="AR_71" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_66" CellID2="C_76" FirstCell="0" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="D_66" CellID2="G_76" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_66" CellID2="M_76" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_66" CellID2="R_76" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_66" CellID2="X_76" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="H_66" CellID2="AB_76" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="I_66" CellID2="AF_76" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_66" CellID2="AJ_76" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="K_66" CellID2="AN_76" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="L_66" CellID2="AR_76" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_71" CellID2="C_81" FirstCell="0" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="D_71" CellID2="G_81" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_71" CellID2="M_81" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_71" CellID2="R_81" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_71" CellID2="X_81" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="H_71" CellID2="AB_81" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="I_71" CellID2="AF_81" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_71" CellID2="AJ_81" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="K_71" CellID2="AN_81" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="L_71" CellID2="AR_81" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_76" CellID2="C_86" FirstCell="0" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="D_76" CellID2="G_86" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_76" CellID2="M_86" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_76" CellID2="R_86" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_76" CellID2="X_86" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="H_76" CellID2="AB_86" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="I_76" CellID2="AF_86" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_76" CellID2="AJ_86" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="K_76" CellID2="AN_86" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="L_76" CellID2="AR_86" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_89" CellID2="V_95" Encode="1" Value="1446349066"/>
+			<Cell CellID="F_90" CellID2="V_97" Encode="1" Value="144634872"/>
+		</Cells>
+	</Section>
+</Sections>

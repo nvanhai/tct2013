@@ -1,0 +1,79 @@
+<!-- edited by Htphuong CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="1" MaxRows="0" DateKHBS="" loaiKHBS="">
+		<Cells>
+			<Cell CellID="BD_9" CellID2="J_39" FirstCell="0" Encode="1" Receive="1" Value="Hàng hoá, dịch vụ mua vào trong kỳ" StatusID="0001"/>
+			<Cell CellID="BE_9" CellID2="AT_39" Encode="1" Receive="1" Value="23" StatusID="0001"/>
+			<Cell CellID="BC_9" CellID2="I_39" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BF_9" CellID2="BB_39" Encode="1" Receive="1" Value="500000" StatusID="0001"/>
+			<Cell CellID="BG_9" CellID2="BU_39" Encode="1" Receive="1" Value="400000" StatusID="0001"/>
+			<Cell CellID="BH_9" CellID2="CP_39" Encode="1" Receive="1" Value="-100000" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="BD_13" CellID2="J_43" FirstCell="0" Encode="1" Receive="1" Value="Thuế GTGT chưa được hoàn kỳ trước chuyển sang" StatusID="0001"/>
+			<Cell CellID="BE_13" CellID2="AT_43" Encode="1" Receive="1" Value="21" StatusID="0001"/>
+			<Cell CellID="BC_13" CellID2="I_43" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BF_13" CellID2="BB_43" Encode="1" Receive="1" Value="3000000" StatusID="0001"/>
+			<Cell CellID="BG_13" CellID2="BU_43" Encode="1" Receive="1" Value="3500000" StatusID="0001"/>
+			<Cell CellID="BH_13" CellID2="CP_43" Encode="1" Receive="1" Value="500000" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="BD_14" CellID2="J_44" FirstCell="1" Encode="1" Receive="1" Value="Thuế GTGT nhận bàn giao từ đơn vị khác" StatusID="0001"/>
+			<Cell CellID="BE_14" CellID2="AT_44" Encode="1" Receive="1" Value="21a" StatusID="0001"/>
+			<Cell CellID="BC_14" CellID2="I_44" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BF_14" CellID2="BB_44" Encode="1" Receive="1" Value="1200000" StatusID="0001"/>
+			<Cell CellID="BG_14" CellID2="BU_44" Encode="1" Receive="1" Value="1500000" StatusID="0001"/>
+			<Cell CellID="BH_14" CellID2="CP_44" Encode="1" Receive="1" Value="300000" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="BD_15" CellID2="J_45" FirstCell="1" Encode="1" Receive="1" Value="Thuế GTGT mua vào dự án đầu tư (cùng tỉnh, thành phố trực thuộc trung ương) bù trừ với thuế GTGT phải nộp của hoạt động sản xuất kinh doanh cùng kỳ tính thuế" StatusID="0001"/>
+			<Cell CellID="BE_15" CellID2="AT_45" Encode="1" Receive="1" Value="28a" StatusID="0001"/>
+			<Cell CellID="BC_15" CellID2="I_45" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BF_15" CellID2="BB_45" Encode="1" Receive="1" Value="120000" StatusID="0001"/>
+			<Cell CellID="BG_15" CellID2="BU_45" Encode="1" Receive="1" Value="420000" StatusID="0001"/>
+			<Cell CellID="BH_15" CellID2="CP_45" Encode="1" Receive="1" Value="300000" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="BD_16" CellID2="J_46" FirstCell="1" Encode="1" Receive="1" Value="Thuế GTGT đề nghị hoàn" StatusID="0001"/>
+			<Cell CellID="BE_16" CellID2="AT_46" Encode="1" Receive="1" Value="30" StatusID="0001"/>
+			<Cell CellID="BC_16" CellID2="I_46" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BF_16" CellID2="BB_46" Encode="1" Receive="1" Value="30000" StatusID="0001"/>
+			<Cell CellID="BG_16" CellID2="BU_46" Encode="1" Receive="1" Value="50000" StatusID="0001"/>
+			<Cell CellID="BH_16" CellID2="CP_46" Encode="1" Receive="1" Value="20000" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="BD_17" CellID2="J_47" FirstCell="1" Encode="1" Receive="1" Value="Thuế GTGT chưa được hoàn  bàn giao cho doanh nghiệp mới thành lập trong kỳ" StatusID="0001"/>
+			<Cell CellID="BE_17" CellID2="AT_47" Encode="1" Receive="1" Value="31" StatusID="0001"/>
+			<Cell CellID="BC_17" CellID2="I_47" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BF_17" CellID2="BB_47" Encode="1" Receive="1" Value="20000" StatusID="0001"/>
+			<Cell CellID="BG_17" CellID2="BU_47" Encode="1" Receive="1" Value="70000" StatusID="0001"/>
+			<Cell CellID="BH_17" CellID2="CP_47" Encode="1" Receive="1" Value="50000" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="B_51" CellID2="E_74" Encode="1" Receive="1" Value="19/12/2013" StatusID="0001"/>
+			<Cell CellID="BE_24" CellID2="CI_54" Encode="1" Receive="1" Value="29" StatusID="0001"/>
+			<Cell CellID="BE_25" CellID2="CI_55" Encode="1" Receive="1" Value="400000" StatusID="0001"/>
+			<Cell CellID="BE_31" CellID2="BZ_58" Encode="1" Receive="1" Value="12000000" StatusID="0001"/>
+			<Cell CellID="BE_33" CellID2="CC_59" Encode="1" Receive="1" Value="bt/23lh" StatusID="0001"/>
+			<Cell CellID="BE_35" CellID2="K_60" Encode="1" Receive="1" Value="13/10/13.." StatusID="0001"/>
+			<Cell CellID="BE_37" CellID2="CI_64" Encode="0" Receive="1" Value="HAN - Cục Thuế Thành phố Hà Nội" StatusID="0001"/>
+			<Cell CellID="BI_37" CellID2="BI_64" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BE_39" CellID2="AC_60" Encode="0" Receive="1" Value="Chi cục Thuế Quận Tây Hồ" StatusID="0001"/>
+			<Cell CellID="BI_39" CellID2="BI_65" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BE_41" CellID2="CI_66" Encode="1" Receive="1" Value="32" StatusID="0001"/>
+			<Cell CellID="BE_43" CellID2="CI_68" Encode="1" Receive="1" Value="30000" StatusID="0001"/>
+			<Cell CellID="BD_47" CellID2="E_71" Encode="1" Receive="1" Value="nộp thừa" StatusID="0001"/>
+			<Cell CellID="BG_49" CellID2="BS_85" Encode="0" Receive="1" Value="Hoàng Lan" StatusID="0001"/>
+			<Cell CellID="BG_50" CellID2="C_74" Encode="0" Receive="1" Value="19/12/2013" StatusID="0001"/>
+			<Cell CellID="BF_21" CellID2="BB_51" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="BG_21" CellID2="BU_51" Encode="1" Receive="0" Value="0" StatusID="0001"/>
+			<Cell CellID="BH_21" CellID2="CP_51" Encode="1" Receive="0" Value="330000" StatusID="0001"/>
+			<Cell CellID="BI_5" CellID2="" Encode="0" Receive="0" Value="330000" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

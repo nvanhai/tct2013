@@ -1,0 +1,23 @@
+<PL09B-TNCN>
+	<Static GroupName="ThongTinPLuc">
+		<kemTKChinhNam>O_15</kemTKChinhNam>
+	</Static>
+	<Static GroupName="KeKhai">
+		<ct05>I_16</ct05>
+		<ct06>I_17</ct06>
+		<ct07>I_18</ct07>
+		<ct08>I_19</ct08>
+		<ct09>I_20</ct09>
+		<ct10>I_21</ct10>
+		<ct11>I_22</ct11>
+		<ct12>I_23</ct12>
+		<ct13>I_24</ct13>
+		<ct14>I_25</ct14>
+		<ct15>I_26</ct15>
+		<ct16>I_27</ct16>
+		<ct17>I_28</ct17>
+		<ct18>I_29</ct18>
+		<ct19>I_30</ct19>
+		<ct20>I_31</ct20>
+	</Static>
+</PL09B-TNCN>

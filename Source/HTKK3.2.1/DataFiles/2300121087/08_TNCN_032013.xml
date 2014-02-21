@@ -1,0 +1,37 @@
+<!-- Edited by  TAS_CMC-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_17" CellID2="W_29" Encode="1" Receive="1" Value="0010011000"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="R_48" CellID2="R_47" Encode="1" Receive="1" Value="40000000"/>
+			<Cell CellID="R_49" CellID2="R_48" Encode="1" Receive="1" Value="12000000"/>
+			<Cell CellID="R_50" CellID2="R_49" Encode="1" Receive="1" Value="28000000"/>
+			<Cell CellID="R_51" CellID2="R_50" Encode="1" Receive="0" Value="13650000"/>
+			<Cell CellID="R_52" CellID2="R_51" Encode="1" Receive="1" Value="9000000"/>
+			<Cell CellID="R_53" CellID2="R_52" Encode="1" Receive="1" Value="3600000"/>
+			<Cell CellID="R_54" CellID2="R_53" Encode="1" Receive="1" Value="500000"/>
+			<Cell CellID="R_55" CellID2="R_54" Encode="1" Receive="1" Value="300000"/>
+			<Cell CellID="R_56" CellID2="R_55" Encode="1" Receive="0" Value="250000"/>
+			<Cell CellID="R_57" CellID2="R_56" Encode="1" Receive="1" Value="14350000"/>
+			<Cell CellID="R_58" CellID2="R_57" Encode="1" Receive="1" Value="717500"/>
+			<Cell CellID="R_59" CellID2="R_58" Encode="1" Receive="0" Value="100000"/>
+			<Cell CellID="R_60" CellID2="R_59" Encode="1" Receive="0" Value="1281"/>
+			<Cell CellID="R_61" CellID2="R_60" Encode="1" Receive="0" Value="716219"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="R_64" CellID2="P_72" Encode="1" Receive="1" Value="Hoàng Lan"/>
+			<Cell CellID="R_66" CellID2="R_64" Encode="1" Receive="1" Value="20/12/2013"/>
+			<Cell CellID="H_64" CellID2="D_66" Encode="1" Receive="1" Value="Huyền Trâm"/>
+			<Cell CellID="H_66" CellID2="G_67" Encode="1" Receive="1" Value="KTV"/>
+			<Cell CellID="C_68" CellID2="C_64" Encode="1" Receive="1" Value="1"/>
+			<Cell CellID="I_68" CellID2="I_64" Encode="1" Receive="1" Value=""/>
+		</Cells>
+	</Section>
+</Sections>

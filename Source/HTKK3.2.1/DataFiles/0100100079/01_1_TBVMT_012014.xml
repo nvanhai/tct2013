@@ -1,0 +1,22 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_35" CellID2="C_48" FirstCell="0" Encode="0" Receive="1" Value="Thu từ nhiên liệu bay sản xuất trong nước" StatusID="0001"/>
+			<Cell CellID="Z_35" CellID2="AO_48" Encode="1" Receive="1" Value="010102" StatusID="0001"/>
+			<Cell CellID="F_35" CellID2="H_48" Encode="1" Receive="1" Value="gdgfd" StatusID="0001"/>
+			<Cell CellID="L_35" CellID2="M_48" Encode="1" Receive="1" Value="2222222222" StatusID="0001"/>
+			<Cell CellID="M_35" CellID2="AP_48" Encode="0" Receive="1" Value="HAN - Cục Thuế Thành phố Hà Nội" StatusID="0001"/>
+			<Cell CellID="O_35" CellID2="Q_48" Encode="0" Receive="1" Value="Cục Thuế Thành phố Hà Nội" StatusID="0001"/>
+			<Cell CellID="Q_35" CellID2="AQ_48" Encode="0" Receive="1" Value="10100" StatusID="0001"/>
+			<Cell CellID="R_35" CellID2="AR_48" Encode="1" Receive="1" Value="10100" StatusID="0001"/>
+			<Cell CellID="S_35" CellID2="U_48" Encode="1" Receive="1" Value="10000.00" StatusID="0001"/>
+			<Cell CellID="T_35" CellID2="V_48" Encode="1" Receive="1" Value="10000.00" StatusID="0001"/>
+			<Cell CellID="U_35" CellID2="X_48" Encode="1" Receive="1" Value="100.00" StatusID="0001"/>
+			<Cell CellID="V_35" CellID2="Y_48" Encode="1" Receive="1" Value="0.00" StatusID="0001"/>
+			<Cell CellID="W_35" CellID2="AB_48" Encode="1" Receive="1" Value="1000" StatusID="0001"/>
+			<Cell CellID="X_35" CellID2="AS_48" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

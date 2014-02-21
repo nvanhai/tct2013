@@ -1,0 +1,36 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_8" CellID2="E_20" FirstCell="0" Encode="1" Receive="1" Value="mez" StatusID="0001"/>
+			<Cell CellID="D_8" CellID2="O_20" Encode="1" Receive="1" Value="Chiếc" StatusID="0001"/>
+			<Cell CellID="F_8" CellID2="Z_20" Encode="1" Receive="1" Value="200000" StatusID="0001"/>
+			<Cell CellID="G_8" CellID2="AD_20" Encode="1" Receive="1" Value="150000" StatusID="0001"/>
+			<Cell CellID="H_8" CellID2="AI_20" Encode="1" Receive="1" Value="còn 50.000" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_9" CellID2="E_21" FirstCell="1" Encode="1" Receive="1" Value="raver" StatusID="0001"/>
+			<Cell CellID="D_9" CellID2="O_21" Encode="1" Receive="1" Value="Chiếc" StatusID="0001"/>
+			<Cell CellID="F_9" CellID2="Z_21" Encode="1" Receive="1" Value="300000" StatusID="0001"/>
+			<Cell CellID="G_9" CellID2="AD_21" Encode="1" Receive="1" Value="280000" StatusID="0001"/>
+			<Cell CellID="H_9" CellID2="AI_21" Encode="1" Receive="1" Value="còn 20.000" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_14" CellID2="E_26" FirstCell="0" Encode="1" Receive="1" Value="honda" StatusID="0001"/>
+			<Cell CellID="D_14" CellID2="O_26" Encode="1" Receive="1" Value="Chiếc" StatusID="0001"/>
+			<Cell CellID="F_14" CellID2="Z_26" Encode="1" Receive="1" Value="500000" StatusID="0001"/>
+			<Cell CellID="G_14" CellID2="AD_26" Encode="1" Receive="1" Value="480000" StatusID="0001"/>
+			<Cell CellID="H_14" CellID2="AI_26" Encode="1" Receive="1" Value="còn 20" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_15" CellID2="E_27" FirstCell="1" Encode="1" Receive="1" Value="suzuki" StatusID="0001"/>
+			<Cell CellID="D_15" CellID2="O_27" Encode="1" Receive="1" Value="Chiếc" StatusID="0001"/>
+			<Cell CellID="F_15" CellID2="Z_27" Encode="1" Receive="1" Value="200000" StatusID="0001"/>
+			<Cell CellID="G_15" CellID2="AD_27" Encode="1" Receive="1" Value="190000" StatusID="0001"/>
+			<Cell CellID="H_15" CellID2="AI_27" Encode="1" Receive="1" Value="còn 10" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

@@ -1,0 +1,83 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="130">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="H_9" CellID2="P_16" Encode="1" Value="1916"/>
+			<Cell CellID="I_9" CellID2="U_16" Encode="1" Value="1366"/>
+			<Cell CellID="J_9" CellID2="Z_16" Encode="1" Value="1310"/>
+			<Cell CellID="H_10" CellID2="P_17" Encode="1" Value="123"/>
+			<Cell CellID="I_10" CellID2="U_17" Encode="1" Value="112"/>
+			<Cell CellID="J_10" CellID2="Z_17" Encode="1" Value="400"/>
+			<Cell CellID="H_11" CellID2="P_18" Encode="1" Value="112"/>
+			<Cell CellID="I_11" CellID2="U_18" Encode="1" Value="23"/>
+			<Cell CellID="J_11" CellID2="Z_18" Encode="1" Value="200"/>
+			<Cell CellID="H_12" CellID2="P_19" Encode="1" Value="234"/>
+			<Cell CellID="I_12" CellID2="U_19" Encode="1" Value="233"/>
+			<Cell CellID="J_12" CellID2="Z_19" Encode="1" Value="100"/>
+			<Cell CellID="H_13" CellID2="P_20" Encode="1" Value="123"/>
+			<Cell CellID="I_13" CellID2="U_20" Encode="1" Value="245"/>
+			<Cell CellID="J_13" CellID2="Z_20" Encode="1" Value="150"/>
+			<Cell CellID="H_14" CellID2="P_21" Encode="1" Value="213"/>
+			<Cell CellID="I_14" CellID2="U_21" Encode="1" Value="23"/>
+			<Cell CellID="J_14" CellID2="Z_21" Encode="1" Value="200"/>
+			<Cell CellID="H_15" CellID2="P_22" Encode="1" Value="245"/>
+			<Cell CellID="I_15" CellID2="U_22" Encode="1" Value="25"/>
+			<Cell CellID="J_15" CellID2="Z_22" Encode="1" Value="210"/>
+			<Cell CellID="H_16" CellID2="P_23" Encode="1" Value="123"/>
+			<Cell CellID="I_16" CellID2="U_23" Encode="1" Value="345"/>
+			<Cell CellID="J_16" CellID2="Z_23" Encode="1" Value="10"/>
+			<Cell CellID="H_17" CellID2="P_24" Encode="1" Value="543"/>
+			<Cell CellID="I_17" CellID2="U_24" Encode="1" Value="110"/>
+			<Cell CellID="J_17" CellID2="Z_24" Encode="1" Value="15"/>
+			<Cell CellID="H_18" CellID2="P_25" Encode="1" Value="200"/>
+			<Cell CellID="I_18" CellID2="U_25" Encode="1" Value="250"/>
+			<Cell CellID="J_18" CellID2="Z_25" Encode="1" Value="25"/>
+			<Cell CellID="H_19" CellID2="P_26" Encode="1" Value="100"/>
+			<Cell CellID="I_19" CellID2="U_26" Encode="1" Value="1233"/>
+			<Cell CellID="J_19" CellID2="Z_26" Encode="1" Value="200"/>
+			<Cell CellID="H_20" CellID2="P_27" Encode="1" Value="1816"/>
+			<Cell CellID="I_20" CellID2="U_27" Encode="1" Value="133"/>
+			<Cell CellID="J_20" CellID2="Z_27" Encode="1" Value="1110"/>
+			<Cell CellID="H_21" CellID2="P_28" Encode="1" Value="210"/>
+			<Cell CellID="I_21" CellID2="U_28" Encode="1" Value="110"/>
+			<Cell CellID="J_21" CellID2="Z_28" Encode="1" Value="15"/>
+			<Cell CellID="H_22" CellID2="P_29" Encode="1" Value="2026"/>
+			<Cell CellID="I_22" CellID2="U_29" Encode="1" Value="243"/>
+			<Cell CellID="J_22" CellID2="Z_29" Encode="1" Value="1125"/>
+			<Cell CellID="H_23" CellID2="P_30" Encode="1" Value="320"/>
+			<Cell CellID="I_23" CellID2="U_30" Encode="1" Value="210"/>
+			<Cell CellID="J_23" CellID2="Z_30" Encode="1" Value="300"/>
+			<Cell CellID="H_24" CellID2="P_31" Encode="1" Value="1706"/>
+			<Cell CellID="I_24" CellID2="U_31" Encode="1" Value="33"/>
+			<Cell CellID="J_24" CellID2="Z_31" Encode="1" Value="825"/>
+			<Cell CellID="H_25" CellID2="P_32" Encode="1" Value="215"/>
+			<Cell CellID="I_25" CellID2="U_32" Encode="1" Value="50"/>
+			<Cell CellID="J_25" CellID2="Z_32" Encode="1" Value="50"/>
+			<Cell CellID="H_26" CellID2="P_33" Encode="1" Value="1491"/>
+			<Cell CellID="I_26" CellID2="U_33" Encode="1" Value="-17"/>
+			<Cell CellID="J_26" CellID2="Z_33" Encode="1" Value="775"/>
+			<Cell CellID="H_27" CellID2="P_34" Encode="1" Value="550"/>
+			<Cell CellID="I_27" CellID2="U_34" Encode="1" Value="250"/>
+			<Cell CellID="J_27" CellID2="Z_34" Encode="1" Value="250"/>
+			<Cell CellID="H_28" CellID2="P_35" Encode="1" Value="400"/>
+			<Cell CellID="I_28" CellID2="U_35" Encode="1" Value="200"/>
+			<Cell CellID="J_28" CellID2="Z_35" Encode="1" Value="300"/>
+			<Cell CellID="H_29" CellID2="P_36" Encode="1" Value="150"/>
+			<Cell CellID="I_29" CellID2="U_36" Encode="1" Value="50"/>
+			<Cell CellID="J_29" CellID2="Z_36" Encode="1" Value="-50"/>
+			<Cell CellID="H_30" CellID2="P_37" Encode="1" Value="1641"/>
+			<Cell CellID="I_30" CellID2="U_37" Encode="1" Value="33"/>
+			<Cell CellID="J_30" CellID2="Z_37" Encode="1" Value="725"/>
+			<Cell CellID="H_31" CellID2="P_38" Encode="1" Value="1431"/>
+			<Cell CellID="I_31" CellID2="U_38" Encode="1" Value="-77"/>
+			<Cell CellID="J_31" CellID2="Z_38" Encode="1" Value="710"/>
+			<Cell CellID="H_32" CellID2="P_39" Encode="1" Value="250"/>
+			<Cell CellID="I_32" CellID2="U_39" Encode="1" Value="500"/>
+			<Cell CellID="J_32" CellID2="Z_39" Encode="1" Value="700"/>
+			<Cell CellID="H_33" CellID2="P_40" Encode="1" Value="1391"/>
+			<Cell CellID="I_33" CellID2="U_40" Encode="1" Value="-467"/>
+			<Cell CellID="J_33" CellID2="Z_40" Encode="1" Value="25"/>
+		</Cells>
+	</Section>
+</Sections>

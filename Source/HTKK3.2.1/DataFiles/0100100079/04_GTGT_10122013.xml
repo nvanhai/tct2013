@@ -1,0 +1,39 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft -->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="H_14" CellID2="O_37" Encode="1" Receive="1" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="K_43" CellID2="I_43" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="Q_43" CellID2="N_43" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="Z_43" CellID2="U_43" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="Q_44" CellID2="N_44" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="Z_44" CellID2="U_44" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="Q_45" CellID2="N_45" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="Z_45" CellID2="U_45" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="Q_46" CellID2="N_46" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="Z_46" CellID2="U_46" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="Q_47" CellID2="N_47" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="Z_47" CellID2="U_47" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="S_50" CellID2="Q_56" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="O_52" CellID2="N_57" Encode="1" Receive="1" Value="0"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="H_63" CellID2="D_69" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="T_63" CellID2="O_74" Encode="1" Receive="1" Value="Hùng"/>
+			<Cell CellID="H_65" CellID2="G_70" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="T_65" CellID2="U_59" Encode="1" Receive="1" Value="22/01/2014"/>
+			<Cell CellID="C_37" CellID2="C_37" Encode="1" Receive="1" Value="1"/>
+			<Cell CellID="F_37" CellID2="F_37" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="I_37" CellID2="I_37" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="K_37" CellID2="K_37" Encode="1" Receive="1" Value="2"/>
+			<Cell CellID="L_37" CellID2="L_37" Encode="1" Receive="1" Value="10/12/2013"/>
+		</Cells>
+	</Section>
+</Sections>

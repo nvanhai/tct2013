@@ -1,0 +1,26 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_8" CellID2="AU_18" FirstCell="0" Encode="1" Receive="1" Value="01GTKT" StatusID="0001"/>
+			<Cell CellID="D_8" CellID2="C_18" Encode="1" Receive="1" Value="01GTKT2/100" StatusID="0001"/>
+			<Cell CellID="E_8" CellID2="E_18" Encode="1" Receive="1" Value="AA/12T" StatusID="0001"/>
+			<Cell CellID="F_8" CellID2="G_18" Encode="1" Receive="1" Value="123" StatusID="0001"/>
+			<Cell CellID="G_8" CellID2="M_18" Encode="1" Receive="1" Value="12/01/2014" StatusID="0001"/>
+			<Cell CellID="H_8" CellID2="R_18" Encode="1" Receive="1" Value="gfdgdfg" StatusID="0001"/>
+			<Cell CellID="I_8" CellID2="X_18" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="J_8" CellID2="AB_18" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="K_8" CellID2="AF_18" Encode="1" Receive="1" Value="1000000" StatusID="0001"/>
+			<Cell CellID="L_8" CellID2="AJ_18" Encode="1" Receive="1" Value="10" StatusID="0001"/>
+			<Cell CellID="M_8" CellID2="AN_18" Encode="1" Receive="1" Value="100000" StatusID="0001"/>
+			<Cell CellID="N_8" CellID2="AR_18" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="H_12" CellID2="S_22" Encode="1" Value="1000000"/>
+			<Cell CellID="H_13" CellID2="S_24" Encode="1" Value="100000"/>
+		</Cells>
+	</Section>
+</Sections>

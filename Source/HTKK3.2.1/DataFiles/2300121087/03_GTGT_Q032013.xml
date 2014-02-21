@@ -1,0 +1,32 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft -->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_6" CellID2="AA_32" Encode="1" Receive="1" Value="0010011000"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="Q_36" CellID2="CD_47" Encode="1" Receive="1" Value="5000000"/>
+			<Cell CellID="Q_37" CellID2="CD_48" Encode="1" Receive="1" Value="200000000"/>
+			<Cell CellID="Q_38" CellID2="CD_49" Encode="1" Receive="1" Value="1300000"/>
+			<Cell CellID="Q_39" CellID2="CD_50" Encode="1" Receive="1" Value="500000"/>
+			<Cell CellID="Q_40" CellID2="CD_51" Encode="1" Receive="1" Value="300000"/>
+			<Cell CellID="Q_41" CellID2="CD_52" Encode="1" Receive="1" Value="193500000"/>
+			<Cell CellID="Q_42" CellID2="CD_53" Encode="1" Receive="1" Value="19350000"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="E_59" CellID2="O_64" Encode="1" Receive="0" Value="Huyền Trâm"/>
+			<Cell CellID="O_59" CellID2="BL_68" Encode="1" Receive="0" Value="Hoàng Lan"/>
+			<Cell CellID="E_61" CellID2="U_65" Encode="1" Receive="0" Value="KTV"/>
+			<Cell CellID="O_61" CellID2="BD_60" Encode="1" Receive="0" Value="19/12/2013"/>
+			<Cell CellID="C_67" CellID2="F_60" Encode="1" Receive="0" Value="1"/>
+			<Cell CellID="F_67" CellID2="G_60" Encode="1" Receive="0" Value=""/>
+			<Cell CellID="I_67" CellID2="I_60" Encode="1" Receive="0" Value=""/>
+			<Cell CellID="L_67" CellID2="K_60" Encode="1" Receive="0" Value="1"/>
+		</Cells>
+	</Section>
+</Sections>

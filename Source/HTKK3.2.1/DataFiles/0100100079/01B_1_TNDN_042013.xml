@@ -1,0 +1,21 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_7" CellID2="BW_19" Encode="1" Receive="1" Value="100000" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_35" CellID2="R_27" FirstCell="0" Encode="1" Receive="1" Value="dsfsdf" StatusID="0001"/>
+			<Cell CellID="F_35" CellID2="AW_27" Encode="1" Receive="1" Value="2222222222" StatusID="0001"/>
+			<Cell CellID="G_35" CellID2="GS_27" Encode="0" Receive="1" Value="HAN - Cục Thuế Thành phố Hà Nội" StatusID="0001"/>
+			<Cell CellID="H_35" CellID2="BU_27" Encode="0" Receive="1" Value="Chi cục Thuế Quận Ba Đình" StatusID="0001"/>
+			<Cell CellID="M_35" CellID2="DL_27" Encode="1" Receive="1" Value="100" StatusID="0001"/>
+			<Cell CellID="P_35" CellID2="FB_27" Encode="1" Receive="1" Value="100000" StatusID="0001"/>
+			<Cell CellID="R_35" CellID2="GQ_27" Encode="1" Receive="1" Value="10101" StatusID="0001"/>
+			<Cell CellID="S_35" CellID2="GR_27" Encode="0" Receive="1" Value="10100" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

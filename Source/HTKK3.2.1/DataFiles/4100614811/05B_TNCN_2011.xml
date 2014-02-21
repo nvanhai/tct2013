@@ -1,0 +1,206 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="310">
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_22" CellID2="C_15" FirstCell="0" Encode="1" Value="Đặng Minh Gia" StatusID="0001"/>
+			<Cell CellID="D_22" CellID2="H_15" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_22" CellID2="L_15" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_22" CellID2="Q_15" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_22" CellID2="V_15" Encode="1" Value="1956000" StatusID="0001"/>
+			<Cell CellID="H_22" CellID2="W_15" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_22" CellID2="X_15" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_22" CellID2="Z_15" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_23" CellID2="C_16" FirstCell="1" Encode="1" Value="Đào Thị Lệ Trinh" StatusID="0001"/>
+			<Cell CellID="D_23" CellID2="H_16" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_23" CellID2="L_16" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_23" CellID2="Q_16" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_23" CellID2="V_16" Encode="1" Value="2683000" StatusID="0001"/>
+			<Cell CellID="H_23" CellID2="W_16" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_23" CellID2="X_16" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_23" CellID2="Z_16" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_24" CellID2="C_17" FirstCell="1" Encode="1" Value="Đào Văn Tân" StatusID="0001"/>
+			<Cell CellID="D_24" CellID2="H_17" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_24" CellID2="L_17" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_24" CellID2="Q_17" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_24" CellID2="V_17" Encode="1" Value="3494000" StatusID="0001"/>
+			<Cell CellID="H_24" CellID2="W_17" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_24" CellID2="X_17" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_24" CellID2="Z_17" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_25" CellID2="C_18" FirstCell="1" Encode="1" Value="Đinh Thị Lệ" StatusID="0001"/>
+			<Cell CellID="D_25" CellID2="H_18" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_25" CellID2="L_18" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_25" CellID2="Q_18" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_25" CellID2="V_18" Encode="1" Value="4330000" StatusID="0001"/>
+			<Cell CellID="H_25" CellID2="W_18" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_25" CellID2="X_18" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_25" CellID2="Z_18" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_26" CellID2="C_19" FirstCell="1" Encode="1" Value="Đỗ Thị Bích" StatusID="0001"/>
+			<Cell CellID="D_26" CellID2="H_19" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_26" CellID2="L_19" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_26" CellID2="Q_19" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_26" CellID2="V_19" Encode="1" Value="2979000" StatusID="0001"/>
+			<Cell CellID="H_26" CellID2="W_19" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_26" CellID2="X_19" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_26" CellID2="Z_19" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_27" CellID2="C_20" FirstCell="1" Encode="1" Value="Hà Thị Nguyên" StatusID="0001"/>
+			<Cell CellID="D_27" CellID2="H_20" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_27" CellID2="L_20" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_27" CellID2="Q_20" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_27" CellID2="V_20" Encode="1" Value="2269000" StatusID="0001"/>
+			<Cell CellID="H_27" CellID2="W_20" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_27" CellID2="X_20" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_27" CellID2="Z_20" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_28" CellID2="C_21" FirstCell="1" Encode="1" Value="Hoàng Thị Trong" StatusID="0001"/>
+			<Cell CellID="D_28" CellID2="H_21" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_28" CellID2="L_21" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_28" CellID2="Q_21" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_28" CellID2="V_21" Encode="1" Value="2665000" StatusID="0001"/>
+			<Cell CellID="H_28" CellID2="W_21" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_28" CellID2="X_21" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_28" CellID2="Z_21" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_29" CellID2="C_22" FirstCell="1" Encode="1" Value="Huỳnh Như Tuyết Hạnh" StatusID="0001"/>
+			<Cell CellID="D_29" CellID2="H_22" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_29" CellID2="L_22" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_29" CellID2="Q_22" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_29" CellID2="V_22" Encode="1" Value="2677000" StatusID="0001"/>
+			<Cell CellID="H_29" CellID2="W_22" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_29" CellID2="X_22" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_29" CellID2="Z_22" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_30" CellID2="C_23" FirstCell="1" Encode="1" Value="Lê Thị Kim Hạnh" StatusID="0001"/>
+			<Cell CellID="D_30" CellID2="H_23" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_30" CellID2="L_23" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_30" CellID2="Q_23" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_30" CellID2="V_23" Encode="1" Value="2276000" StatusID="0001"/>
+			<Cell CellID="H_30" CellID2="W_23" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_30" CellID2="X_23" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_30" CellID2="Z_23" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_31" CellID2="C_24" FirstCell="1" Encode="1" Value="Lê Văn Hẹn" StatusID="0001"/>
+			<Cell CellID="D_31" CellID2="H_24" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_31" CellID2="L_24" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_31" CellID2="Q_24" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_31" CellID2="V_24" Encode="1" Value="2667000" StatusID="0001"/>
+			<Cell CellID="H_31" CellID2="W_24" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_31" CellID2="X_24" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_31" CellID2="Z_24" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_32" CellID2="C_25" FirstCell="1" Encode="1" Value="Lê Văn Phụng" StatusID="0001"/>
+			<Cell CellID="D_32" CellID2="H_25" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_32" CellID2="L_25" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_32" CellID2="Q_25" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_32" CellID2="V_25" Encode="1" Value="5860000" StatusID="0001"/>
+			<Cell CellID="H_32" CellID2="W_25" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_32" CellID2="X_25" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_32" CellID2="Z_25" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_33" CellID2="C_26" FirstCell="1" Encode="1" Value="Lưu Thị Kim Hảo" StatusID="0001"/>
+			<Cell CellID="D_33" CellID2="H_26" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_33" CellID2="L_26" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_33" CellID2="Q_26" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_33" CellID2="V_26" Encode="1" Value="3846000" StatusID="0001"/>
+			<Cell CellID="H_33" CellID2="W_26" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_33" CellID2="X_26" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_33" CellID2="Z_26" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_34" CellID2="C_27" FirstCell="1" Encode="1" Value="Nguyễn Công Hoan" StatusID="0001"/>
+			<Cell CellID="D_34" CellID2="H_27" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_34" CellID2="L_27" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_34" CellID2="Q_27" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_34" CellID2="V_27" Encode="1" Value="3672000" StatusID="0001"/>
+			<Cell CellID="H_34" CellID2="W_27" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_34" CellID2="X_27" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_34" CellID2="Z_27" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_35" CellID2="C_28" FirstCell="1" Encode="1" Value="Nguyễn Đôn" StatusID="0001"/>
+			<Cell CellID="D_35" CellID2="H_28" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_35" CellID2="L_28" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_35" CellID2="Q_28" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_35" CellID2="V_28" Encode="1" Value="4883000" StatusID="0001"/>
+			<Cell CellID="H_35" CellID2="W_28" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_35" CellID2="X_28" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_35" CellID2="Z_28" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_36" CellID2="C_29" FirstCell="1" Encode="1" Value="Nguyễn Thị Choi ya" StatusID="0001"/>
+			<Cell CellID="D_36" CellID2="H_29" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_36" CellID2="L_29" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_36" CellID2="Q_29" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_36" CellID2="V_29" Encode="1" Value="4890000" StatusID="0001"/>
+			<Cell CellID="H_36" CellID2="W_29" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_36" CellID2="X_29" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_36" CellID2="Z_29" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_37" CellID2="C_30" FirstCell="1" Encode="1" Value="Nguyễn Thị Chuyển" StatusID="0001"/>
+			<Cell CellID="D_37" CellID2="H_30" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_37" CellID2="L_30" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_37" CellID2="Q_30" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_37" CellID2="V_30" Encode="1" Value="4208000" StatusID="0001"/>
+			<Cell CellID="H_37" CellID2="W_30" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_37" CellID2="X_30" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_37" CellID2="Z_30" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_38" CellID2="C_31" FirstCell="1" Encode="1" Value="Nguyễn Thị Danh" StatusID="0001"/>
+			<Cell CellID="D_38" CellID2="H_31" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_38" CellID2="L_31" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_38" CellID2="Q_31" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_38" CellID2="V_31" Encode="1" Value="2623000" StatusID="0001"/>
+			<Cell CellID="H_38" CellID2="W_31" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_38" CellID2="X_31" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_38" CellID2="Z_31" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_39" CellID2="C_32" FirstCell="1" Encode="1" Value="Nguyến Thị Ngọc Diễm" StatusID="0001"/>
+			<Cell CellID="D_39" CellID2="H_32" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_39" CellID2="L_32" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_39" CellID2="Q_32" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_39" CellID2="V_32" Encode="1" Value="1658000" StatusID="0001"/>
+			<Cell CellID="H_39" CellID2="W_32" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_39" CellID2="X_32" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_39" CellID2="Z_32" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_40" CellID2="C_33" FirstCell="1" Encode="1" Value="Nguyễn Văn Trung" StatusID="0001"/>
+			<Cell CellID="D_40" CellID2="H_33" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_40" CellID2="L_33" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_40" CellID2="Q_33" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_40" CellID2="V_33" Encode="1" Value="2752000" StatusID="0001"/>
+			<Cell CellID="H_40" CellID2="W_33" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_40" CellID2="X_33" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_40" CellID2="Z_33" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_41" CellID2="C_34" FirstCell="1" Encode="1" Value="Trần Thị Kim Luy" StatusID="0001"/>
+			<Cell CellID="D_41" CellID2="H_34" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="E_41" CellID2="L_34" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="F_41" CellID2="Q_34" Encode="1" Value="" StatusID="0001"/>
+			<Cell CellID="G_41" CellID2="V_34" Encode="1" Value="2819000" StatusID="0001"/>
+			<Cell CellID="H_41" CellID2="W_34" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="I_41" CellID2="X_34" Encode="1" Value="0" StatusID="0001"/>
+			<Cell CellID="J_41" CellID2="Z_34" Encode="1" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

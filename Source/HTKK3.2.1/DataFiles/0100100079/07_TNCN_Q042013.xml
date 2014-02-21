@@ -1,0 +1,42 @@
+<!-- Edited by NTTRUONG FIS_CMC-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="I_8" CellID2="H_19" Encode="1" Receive="1" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="V_41" CellID2="V_41" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="R_43" CellID2="R_43" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="R_44" CellID2="R_44" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="R_45" CellID2="R_45" Encode="1" Receive="1" Value="27000000"/>
+			<Cell CellID="R_46" CellID2="R_46" Encode="1" Receive="1" Value="27000000"/>
+			<Cell CellID="R_47" CellID2="R_47" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="R_48" CellID2="R_48" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="R_49" CellID2="R_49" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="R_50" CellID2="R_50" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="R_51" CellID2="R_51" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="R_52" CellID2="R_52" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="R_53" CellID2="R_53" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="R_54" CellID2="R_54" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="R_55" CellID2="R_55" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="R_57" CellID2="R_57" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="R_58" CellID2="R_58" Encode="1" Receive="1" Value="20"/>
+			<Cell CellID="R_59" CellID2="R_59" Encode="1" Receive="1" Value="0"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="R_66" CellID2="O_75" Encode="1" Receive="1" Value="Hùng"/>
+			<Cell CellID="R_68" CellID2="R_67" Encode="1" Receive="1" Value="20/01/2014"/>
+			<Cell CellID="H_66" CellID2="D_72" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="H_68" CellID2="G_73" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="C_70" CellID2="C_67" Encode="1" Receive="1" Value="1"/>
+			<Cell CellID="F_70" CellID2="F_67" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="I_70" CellID2="I_67" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="L_70" CellID2="L_67" Encode="1" Receive="1" Value="1"/>
+		</Cells>
+	</Section>
+</Sections>

@@ -1,0 +1,34 @@
+<!-- Edited by nvhai FIS_CMC-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="310">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_22" CellID2="G_63" Encode="1" Receive="1" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="I_41" CellID2="U_44" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="I_42" CellID2="U_45" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="I_44" CellID2="U_47" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="I_45" CellID2="U_48" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="I_47" CellID2="U_50" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="I_48" CellID2="U_51" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="I_50" CellID2="U_53" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="I_51" CellID2="U_54" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="I_53" CellID2="U_56" Encode="1" Receive="1" Value="0"/>
+			<Cell CellID="I_54" CellID2="U_57" Encode="1" Receive="1" Value="10000000"/>
+			<Cell CellID="I_55" CellID2="U_58" Encode="1" Receive="1" Value="0"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="M_57" CellID2="P_77" Encode="1" Receive="1" Value="Hùng"/>
+			<Cell CellID="M_59" CellID2="R_62" Encode="1" Receive="1" Value="20/01/2014"/>
+			<Cell CellID="D_57" CellID2="H_71" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="D_59" CellID2="H_72" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="C_61" CellID2="C_61" Encode="1" Receive="1" Value="1"/>
+			<Cell CellID="I_61" CellID2="I_61" Encode="1" Receive="1" Value=""/>
+		</Cells>
+	</Section>
+</Sections>

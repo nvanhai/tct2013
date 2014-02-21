@@ -1,0 +1,53 @@
+<!-- Edited by TAS_CMC-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_17" CellID2="R_37" Encode="1" Receive="1" Value="0010011000"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="R_41" CellID2="V_37" Encode="1" Receive="1" Value="80000000"/>
+			<Cell CellID="R_42" CellID2="V_38" Encode="1" Receive="1" Value="5000000"/>
+			<Cell CellID="R_43" CellID2="V_39" Encode="0" Receive="0" Value="75000000"/>
+			<Cell CellID="R_44" CellID2="V_40" Encode="1" Receive="1" Value="60000000"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_51" CellID2="C_48" Encode="1" FirstCell="0" Receive="1" Value="Khánh" StatusID="0001"/>
+			<Cell CellID="H_51" CellID2="H_48" Encode="1" Receive="1" Value="0102030405" StatusID="0001"/>
+			<Cell CellID="L_51" CellID2="M_48" Encode="1" Receive="1" Value="47.13" StatusID="0001"/>
+			<Cell CellID="N_51" CellID2="O_48" Encode="1" Receive="0" Value="35347500" StatusID="0001"/>
+			<Cell CellID="P_51" CellID2="Q_48" Encode="1" Receive="1" Value="28278000" StatusID="0001"/>
+			<Cell CellID="R_51" CellID2="U_48" Encode="1" Receive="0" Value="546548" StatusID="0001"/>
+			<Cell CellID="T_51" CellID2="V_48" Encode="1" Receive="0" Value="34800952" StatusID="0001"/>
+			<Cell CellID="V_51" CellID2="X_48" Encode="1" Receive="1" Value="2970143" StatusID="0001"/>
+			<Cell CellID="X_51" CellID2="AA_48" Encode="1" Receive="0" Value="1188057" StatusID="0001"/>
+			<Cell CellID="Z_51" CellID2="AE_48" Encode="1" Receive="0" Value="1782086" StatusID="0001"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_52" CellID2="C_49" Encode="1" FirstCell="1" Receive="1" Value="Linh" StatusID="0001"/>
+			<Cell CellID="H_52" CellID2="H_49" Encode="1" Receive="1" Value="2300121087" StatusID="0001"/>
+			<Cell CellID="L_52" CellID2="M_49" Encode="1" Receive="1" Value="52.87" StatusID="0001"/>
+			<Cell CellID="N_52" CellID2="O_49" Encode="1" Receive="0" Value="39652500" StatusID="0001"/>
+			<Cell CellID="P_52" CellID2="Q_49" Encode="1" Receive="1" Value="31722000" StatusID="0001"/>
+			<Cell CellID="R_52" CellID2="U_49" Encode="1" Receive="0" Value="766543" StatusID="0001"/>
+			<Cell CellID="T_52" CellID2="V_49" Encode="1" Receive="0" Value="38885957" StatusID="0001"/>
+			<Cell CellID="V_52" CellID2="X_49" Encode="1" Receive="1" Value="3582894" StatusID="0001"/>
+			<Cell CellID="X_52" CellID2="AA_49" Encode="1" Receive="0" Value="1433158" StatusID="0001"/>
+			<Cell CellID="Z_52" CellID2="AE_49" Encode="1" Receive="0" Value="2149736" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="R_56" CellID2="X_66" Encode="1" Receive="1" Value="Hoàng Lan"/>
+			<Cell CellID="R_58" CellID2="R_56" Encode="1" Receive="1" Value="20/12/2013"/>
+			<Cell CellID="G_56" CellID2="F_60" Encode="1" Receive="1" Value="Huyền Trâm"/>
+			<Cell CellID="G_58" CellID2="H_61" Encode="1" Receive="1" Value="KTV"/>
+			<Cell CellID="C_60" CellID2="C_56" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="I_60" CellID2="I_56" Encode="1" Receive="1" Value="1"/>
+		</Cells>
+	</Section>
+</Sections>

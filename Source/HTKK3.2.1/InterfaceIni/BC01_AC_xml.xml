@@ -1,0 +1,48 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>105</maTKhai>
+		<tenTKhai>BÁO CÁO TÌNH HÌNH NHẬN IN HÓA ĐƠN (BC01/AC)</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan>String</maLyDoGiaHan>
+		<lyDoGiaHan>String</lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT>String</maHuyenNNT>
+		<maTinhNNT>String</maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue>String</maHuyenDLyThue>
+		<maTinhDLyThue>String</maTinhDLyThue>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<kyBaoCaoCuoiCung>B_15</kyBaoCaoCuoiCung>
+	</Static>
+	<Dynamic GroupName="HoaDon">
+		<ChiTietHoaDon id="id">
+			<ten>D_22</ten>
+			<diaChi>E_22</diaChi>
+			<so>F_22</so>
+			<ngay>G_22</ngay>
+			<tenHDon>I_22</tenHDon>
+			<mauHDon>J_22</mauHDon>
+			<kyHieu>K_22</kyHieu>
+			<tuSo>L_22</tuSo>
+			<denSo>M_22</denSo>
+			<soLuong>Q_22</soLuong>
+		<ChiTietHoaDon>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<nguoiDaiDien>J_30</nguoiDaiDien>
+		<ngayBCao>J_32</ngayBCao>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy></nguoiKy>
+		<ngayKy></ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue></tenNVienDLyThue>
+		<cchiHNghe></cchiHNghe>
+	</Static>
+</HSoKhaiThue>

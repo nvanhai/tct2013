@@ -1,0 +1,33 @@
+<!-- Edited by FIS_CMC-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="313">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="I_17" CellID2="I_37" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_44" CellID2="C_44" FirstCell="0" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="J_44" CellID2="J_44" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="L_44" CellID2="L_44" Encode="1" Receive="1" Value="0.000" StatusID="0001"/>
+			<Cell CellID="Q_44" CellID2="Q_44" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="U_44" CellID2="U_44" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AC_44" CellID2="AC_44" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="H_55" CellID2="D_57" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="R_55" CellID2="O_62" Encode="1" Receive="1" Value="Hùng" StatusID="0001"/>
+			<Cell CellID="H_57" CellID2="G_58" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="R_57" CellID2="R_53" Encode="1" Receive="1" Value="23/01/2014" StatusID="0001"/>
+			<Cell CellID="C_35" CellID2="C_35" Encode="1" Receive="1" Value="1" StatusID="0001"/>
+			<Cell CellID="F_35" CellID2="F_35" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="I_35" CellID2="I_35" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="T_37" CellID2="T_37" Encode="0" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="L_35" CellID2="T_35" Encode="1" Receive="1" Value="1" StatusID="0001"/>
+			<Cell CellID="M_35" CellID2="U_35" Encode="1" Receive="1" Value="10/01/2014" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by tuyends (FSS) -->
+<!ATTLIST Cell
+	CellID ID #REQUIRED
+	CellID2 CDATA #REQUIRED
+	FirstCell CDATA #IMPLIED
+	Value CDATA #REQUIRED
+	StatusID CDATA #IMPLIED	
+>
+<!ELEMENT Dynamic (#PCDATA)>
+<!ELEMENT First (#PCDATA)>
+<!ELEMENT Cell (#PCDATA)>
+<!ELEMENT Cells (Cell+)>
+<!ATTLIST Section
+	Dynamic CDATA #REQUIRED
+	MaxRows CDATA #REQUIRED
+>
+<!ELEMENT Section (Cells+)>
+<!ELEMENT Sections (Section+)>

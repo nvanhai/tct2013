@@ -1,0 +1,43 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>07</maTKhai>
+		<tenTKhai>TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG (04/GTGT)</tenTKhai>
+		<moTaBMau/>
+		<soLan>T_7</soLan>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct21>K_43</ct21>
+	</Static>
+	<Static GroupName="PPhoiCCapHHoa">
+		<ct22>Q_43</ct22>
+		<ct23>Z_43</ct23>
+	</Static>
+	<Static GroupName="DVuXDungKoBaoThauNVL">
+		<ct24>Q_44</ct24>
+		<ct25>Z_44</ct25>
+	</Static>
+	<Static GroupName="HHoaXDungCoBaoThauNVL">
+		<ct26>Q_45</ct26>
+		<ct27>Z_45</ct27>
+	</Static>
+	<Static GroupName="HDongKDoanhKhac">
+		<ct28>Q_46</ct28>
+		<ct29>Z_46</ct29>
+	</Static>
+	<Static GroupName="TongCong">
+		<ct30>Q_47</ct30>
+		<ct31>Z_47</ct31>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct32>S_50</ct32>
+		<ct33>O_52</ct33>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>T_63</nguoiKy>
+		<ngayKy>T_65</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>H_63</tenNVienDLyThue>
+		<cchiHNghe>H_65</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

@@ -1,0 +1,37 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="130">
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_46" CellID2="AI_46" FirstCell="0" Encode="0" Receive="0" Value="01GTKT" StatusID="0001"/>
+			<Cell CellID="D_46" CellID2="C_46" Encode="1" Receive="1" Value="Hóa đơn giá trị gia tăng" StatusID="0001"/>
+			<Cell CellID="O_46" CellID2="O_46" Encode="1" Receive="1" Value="01GTKT6/009" StatusID="0001"/>
+			<Cell CellID="S_46" CellID2="S_46" Encode="1" Receive="1" Value="AA/12T" StatusID="0001"/>
+			<Cell CellID="V_46" CellID2="V_46" Encode="1" Receive="1" Value="0000001" StatusID="0001"/>
+			<Cell CellID="Y_46" CellID2="Y_46" Encode="1" Receive="1" Value="0000002" StatusID="0001"/>
+			<Cell CellID="AA_46" CellID2="AA_46" Encode="1" Receive="1" Value="2" StatusID="0001"/>
+			<Cell CellID="AI_46" CellID2="AI_46" Encode="0" Receive="1" Value="0         01GTKT    Hóa đơn giá trị gia tăng                                                                                                                                                                                " StatusID="0001"/>
+			<Cell CellID="AJ_46" CellID2="AJ_46" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_50" CellID2="AI_50" FirstCell="0" Encode="0" Receive="0" Value="" StatusID="0001"/>
+			<Cell CellID="D_50" CellID2="C_50" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="O_50" CellID2="O_50" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="S_50" CellID2="S_50" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="V_50" CellID2="V_50" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="Y_50" CellID2="Y_50" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="AA_50" CellID2="AA_50" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="AI_50" CellID2="AI_50" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="AJ_50" CellID2="AJ_50" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="M_54" CellID2="AE_54" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="R_56" CellID2="R_56" Encode="0" Receive="1" Value="Hùng" StatusID="0001"/>
+			<Cell CellID="R_58" CellID2="R_58" Encode="0" Receive="1" Value="12/02/2014" StatusID="0001"/>
+		</Cells>
+	</Section>
+</Sections>
