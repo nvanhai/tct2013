@@ -89,6 +89,8 @@ Public strInterfaceUnloadEventName As String                          ' Name of 
 Public strKHBS As String                          ' Save name KHBS
 Public strSolanBS As String                          ' Save name KHBS
 
+Public strSoLanXuatBan As String
+
 Public strfileFont As String
 Public themDuLieu As Boolean
 Public themXoaDuLieu As Boolean
