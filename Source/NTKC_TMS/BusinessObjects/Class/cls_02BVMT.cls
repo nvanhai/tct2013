@@ -263,7 +263,7 @@ Dim vKHBS
         .Sheet = 1
         .Col = .ColLetterToNumber(PHONG_XU_LY_COL)
         .Row = PHONG_XU_LY_ROW
-        If rsPXL.Fields.Count > 0 Then
+        If rsPXL.Fields.count > 0 Then
             Do While Not rsPXL.EOF
                 .TypeComboBoxIndex = -1
                 .TypeComboBoxString = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
@@ -308,7 +308,7 @@ Dim xmlNode As MSXML.IXMLDOMNode
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                         If Id = arrDanhsach(1) Then
-                            strIdQLT = arrDanhsach(0)
+                            strIdQLT = arrDanhsach(1) 'nshung-20-02-2014:Thay STT thanh ma khoang san arrDanhsach(0) --> arrDanhsach(1)
                             TenTN = arrDanhsach(2)
                             DVT = arrDanhsach(3)
                             strThueSuat = arrDanhsach(4)

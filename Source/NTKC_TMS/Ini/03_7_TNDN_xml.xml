@@ -13,9 +13,9 @@
 		<hHoaHThanhTSCD id="ID_4">
 			<tenLienKet_ctII_1_1>D_37</tenLienKet_ctII_1_1>
 			<gtriDThu_ctII_1_1>K_37</gtriDThu_ctII_1_1>
-			<pphapDThu_ctII_1_1>Q_37</pphapDThu_ctII_1_1>
+			<pphapDThu_ctII_1_1>AH_37</pphapDThu_ctII_1_1>
 			<gtriCPhi_ctII_1_1>W_37</gtriCPhi_ctII_1_1>
-			<pphapCPhi_ctII_1_1>AB_37</pphapCPhi_ctII_1_1>
+			<pphapCPhi_ctII_1_1>AI_37</pphapCPhi_ctII_1_1>
 		</hHoaHThanhTSCD>
 	</Dynamic>
 	<Static GroupName="PL_GCN_01_TNDN">
@@ -26,9 +26,9 @@
 		<hHoaKhongHThanhTSCD id="ID_5">
 			<tenLienKet_ctII_1_2>D_41</tenLienKet_ctII_1_2>
 			<gtriDThu_ctII_1_2>K_41</gtriDThu_ctII_1_2>
-			<pphapDThu_ctII_1_2>Q_41</pphapDThu_ctII_1_2>
+			<pphapDThu_ctII_1_2>AH_41</pphapDThu_ctII_1_2>
 			<gtriCPhi_ctII_1_2>W_41</gtriCPhi_ctII_1_2>
-			<pphapCPhi_ctII_1_2>AB_41</pphapCPhi_ctII_1_2>
+			<pphapCPhi_ctII_1_2>AI_41</pphapCPhi_ctII_1_2>
 		</hHoaKhongHThanhTSCD>
 	</Dynamic>
 	<Static GroupName="PL_GCN_01_TNDN">
@@ -41,9 +41,9 @@
 		<nghienCuuPhatTrien id="ID_6">
 			<tenLienKet_ctII_2_1>D_46</tenLienKet_ctII_2_1>
 			<gtriDThu_ctII_2_1>K_46</gtriDThu_ctII_2_1>
-			<pphapDThu_ctII_2_1>Q_46</pphapDThu_ctII_2_1>
+			<pphapDThu_ctII_2_1>AH_46</pphapDThu_ctII_2_1>
 			<gtriCPhi_ctII_2_1>W_46</gtriCPhi_ctII_2_1>
-			<pphapCPhi_ctII_2_1>AB_46</pphapCPhi_ctII_2_1>
+			<pphapCPhi_ctII_2_1>AI_46</pphapCPhi_ctII_2_1>
 		</nghienCuuPhatTrien>
 	</Dynamic>
 	<Static GroupName="PL_GCN_01_TNDN">
@@ -54,9 +54,9 @@
 		<quangCaoTiepThi id="ID_7">
 			<tenLienKet_ctII_2_2>D_50</tenLienKet_ctII_2_2>
 			<gtriDThu_ctII_2_2>K_50</gtriDThu_ctII_2_2>
-			<pphapDThu_ctII_2_2>Q_50</pphapDThu_ctII_2_2>
+			<pphapDThu_ctII_2_2>AH_50</pphapDThu_ctII_2_2>
 			<gtriCPhi_ctII_2_2>W_50</gtriCPhi_ctII_2_2>
-			<pphapCPhi_ctII_2_2>AB_50</pphapCPhi_ctII_2_2>
+			<pphapCPhi_ctII_2_2>AI_50</pphapCPhi_ctII_2_2>
 		</quangCaoTiepThi>
 	</Dynamic>
 	<Static GroupName="PL_GCN_01_TNDN">
@@ -67,9 +67,9 @@
 		<qLyKDoanhTVDT id="ID_8">
 			<tenLienKet_ctII_2_3>D_54</tenLienKet_ctII_2_3>
 			<gtriDThu_ctII_2_3>K_54</gtriDThu_ctII_2_3>
-			<pphapDThu_ctII_2_3>Q_54</pphapDThu_ctII_2_3>
+			<pphapDThu_ctII_2_3>AH_54</pphapDThu_ctII_2_3>
 			<gtriCPhi_ctII_2_3>W_54</gtriCPhi_ctII_2_3>
-			<pphapCPhi_ctII_2_3>AB_54</pphapCPhi_ctII_2_3>
+			<pphapCPhi_ctII_2_3>AI_54</pphapCPhi_ctII_2_3>
 		</qLyKDoanhTVDT>
 	</Dynamic>
 	<Static GroupName="PL_GCN_01_TNDN">
@@ -82,9 +82,9 @@
 		<tienBanQuyen id="ID_9">
 			<tenLienKet_ctII_2_4_1>D_59</tenLienKet_ctII_2_4_1>
 			<gtriDThu_ctII_2_4_1>K_59</gtriDThu_ctII_2_4_1>
-			<pphapDThu_ctII_2_4_1>Q_59</pphapDThu_ctII_2_4_1>
+			<pphapDThu_ctII_2_4_1>AH_59</pphapDThu_ctII_2_4_1>
 			<gtriCPhi_ctII_2_4_1>W_59</gtriCPhi_ctII_2_4_1>
-			<pphapCPhi_ctII_2_4_1>AB_59</pphapCPhi_ctII_2_4_1>
+			<pphapCPhi_ctII_2_4_1>AI_59</pphapCPhi_ctII_2_4_1>
 		</tienBanQuyen>
 	</Dynamic>
 	<Static GroupName="PL_GCN_01_TNDN">
@@ -95,9 +95,9 @@
 		<choVayDiVay id="ID_10">
 			<tenLienKet_ctII_2_4_2>D_63</tenLienKet_ctII_2_4_2>
 			<gtriDThu_ctII_2_4_2>K_63</gtriDThu_ctII_2_4_2>
-			<pphapDThu_ctII_2_4_2>Q_63</pphapDThu_ctII_2_4_2>
+			<pphapDThu_ctII_2_4_2>AH_63</pphapDThu_ctII_2_4_2>
 			<gtriCPhi_ctII_2_4_2>W_63</gtriCPhi_ctII_2_4_2>
-			<pphapCPhi_ctII_2_4_2>AB_63</pphapCPhi_ctII_2_4_2>
+			<pphapCPhi_ctII_2_4_2>AI_63</pphapCPhi_ctII_2_4_2>
 		</choVayDiVay>
 	</Dynamic>
 	<Static GroupName="PL_GCN_01_TNDN">
@@ -110,9 +110,9 @@
 		<xoaNo id="ID_11">
 			<tenLienKet_ctII_2_5_1>D_68</tenLienKet_ctII_2_5_1>
 			<gtriDThu_ctII_2_5_1>K_68</gtriDThu_ctII_2_5_1>
-			<pphapDThu_ctII_2_5_1>Q_68</pphapDThu_ctII_2_5_1>
+			<pphapDThu_ctII_2_5_1>AH_68</pphapDThu_ctII_2_5_1>
 			<gtriCPhi_ctII_2_5_1>W_68</gtriCPhi_ctII_2_5_1>
-			<pphapCPhi_ctII_2_5_1>AB_68</pphapCPhi_ctII_2_5_1>
+			<pphapCPhi_ctII_2_5_1>AI_68</pphapCPhi_ctII_2_5_1>
 		</xoaNo>
 	</Dynamic>
 	<Static GroupName="PL_GCN_01_TNDN">
@@ -123,9 +123,9 @@
 		<dichVuKhac id="ID_12">
 			<tenLienKet_ctII_2_5_2>D_72</tenLienKet_ctII_2_5_2>
 			<gtriDThu_ctII_2_5_2>K_72</gtriDThu_ctII_2_5_2>
-			<pphapDThu_ctII_2_5_2>Q_72</pphapDThu_ctII_2_5_2>
+			<pphapDThu_ctII_2_5_2>AH_72</pphapDThu_ctII_2_5_2>
 			<gtriCPhi_ctII_2_5_2>W_72</gtriCPhi_ctII_2_5_2>
-			<pphapCPhi_ctII_2_5_2>AB_72</pphapCPhi_ctII_2_5_2>
+			<pphapCPhi_ctII_2_5_2>AI_72</pphapCPhi_ctII_2_5_2>
 		</dichVuKhac>
 	</Dynamic>
 	<Dynamic GroupName="TTinMoiQHeVoiTungLKet">

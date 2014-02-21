@@ -10,8 +10,8 @@
 		<lyDoGiaHan></lyDoGiaHan>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>R_58</nguoiKy>
-		<ngayKy>R_60</ngayKy>
+		<nguoiKy>R_60</nguoiKy>
+		<ngayKy>R_58</ngayKy>
 		<nganhNgheKD></nganhNgheKD>
 	</Static>
 	<Static GroupName="NNT">
@@ -24,28 +24,28 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>H_58</tenNVienDLyThue>
-		<cchiHNghe>H_60</cchiHNghe>
+		<tenNVienDLyThue>H_60</tenNVienDLyThue>
+		<cchiHNghe>H_62</cchiHNghe>
 	</Static>
 	<Static GroupName="TNCuaDLyBHiem">
-		<ct21>U_40</ct21>
-		<ct22>U_41</ct22>
-		<ct23>U_42</ct23>
+		<ct21>U_42</ct21>
+		<ct22>U_43</ct22>
+		<ct23>U_44</ct23>
 	</Static>
 	<Static GroupName="TNTuTienPhiTichLuyBHNT">
-		<ct24>U_44</ct24>
-		<ct25>U_45</ct25>
+		<ct24>U_46</ct24>
+		<ct25>U_47</ct25>
 	</Static>
 	<Static GroupName="TNTuTienTichLuyQuyHTTN">
-		<ct26>U_47</ct26>
-		<ct27>U_48</ct27>
+		<ct26>U_49</ct26>
+		<ct27>U_50</ct27>
 	</Static>
 	<Static GroupName="TNTuThamGiaMangLuoiBHDC">
-		<ct28>U_50</ct28>
-		<ct29>U_51</ct29>
-		<ct30>U_52</ct30>
+		<ct28>U_52</ct28>
+		<ct29>U_53</ct29>
+		<ct30>U_54</ct30>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct31>U_53</ct31>
+		<ct31>U_55</ct31>
 	</Static>
 </HSoKhaiThue>

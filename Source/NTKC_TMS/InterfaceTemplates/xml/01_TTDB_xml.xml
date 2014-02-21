@@ -73,75 +73,75 @@
 				<HangHoaChiuThueTTDB>
 					<ChiTietHangHoaChiuThueTTDB>
 						<NDungTKhaiTTDB>
-							<ct2_maHHDV>String</ct2_maHHDV>
-							<ct2>String</ct2>
-							<ct3>String</ct3>
+							<ct2_maHHDV></ct2_maHHDV>
+							<ct2></ct2>
+							<ct3></ct3>
 							<ct4>0.0</ct4>
-							<ct5>1</ct5>
+							<ct5>0</ct5>
 							<ct6>0.0</ct6>
 							<ct7>0.0</ct7>
-							<ct8>1</ct8>
-							<ct9>1</ct9>
+							<ct8>0</ct8>
+							<ct9>0</ct9>
 						</NDungTKhaiTTDB>
 					</ChiTietHangHoaChiuThueTTDB>
-					<tongDongIcot5>1</tongDongIcot5>
+					<tongDongIcot5>0</tongDongIcot5>
 					<tongDongIcot6>0.0</tongDongIcot6>
-					<tongDongIcot8>1</tongDongIcot8>
-					<tongDongIcot9>1</tongDongIcot9>
+					<tongDongIcot8>0</tongDongIcot8>
+					<tongDongIcot9>0</tongDongIcot9>
 				</HangHoaChiuThueTTDB>
 				<DVuChiuThueTNDB>
 					<ChiTietDVuChiuThueTTDB>
 						<NDungTKhaiTTDB>
-							<ct2_maHHDV>String</ct2_maHHDV>
-							<ct2>String</ct2>
-							<ct3>String</ct3>
+							<ct2_maHHDV></ct2_maHHDV>
+							<ct2></ct2>
+							<ct3></ct3>
 							<ct4>0.0</ct4>
-							<ct5>1</ct5>
+							<ct5>0</ct5>
 							<ct6>0.0</ct6>
 							<ct7>0.0</ct7>
-							<ct8>1</ct8>
-							<ct9>1</ct9>
+							<ct8>0</ct8>
+							<ct9>0</ct9>
 						</NDungTKhaiTTDB>
 					</ChiTietDVuChiuThueTTDB>
-					<tongDongIICot5>1</tongDongIICot5>
+					<tongDongIICot5>0</tongDongIICot5>
 					<tongDongIICot6>0.0</tongDongIICot6>
 					<tongDongIICot8>1</tongDongIICot8>
-					<tongDongIICot9>1</tongDongIICot9>
+					<tongDongIICot9>0</tongDongIICot9>
 				</DVuChiuThueTNDB>
 				<HHoaKhongChiuThueTNDB>
 					<HHXuatKhau>
 						<NDungHHoaKhongThue>
-							<ct2_maHH>String</ct2_maHH>
-							<ct2>String</ct2>
-							<ct3>String</ct3>
+							<ct2_maHH></ct2_maHH>
+							<ct2></ct2>
+							<ct3></ct3>
 							<ct4>0.0</ct4>
-							<ct5>1</ct5>
+							<ct5>0</ct5>
 						</NDungHHoaKhongThue>
 					</HHXuatKhau>
 					<HHBanDeXuatKhau>
 						<NDungHHoaKhongThue>
-							<ct2_maHH>String</ct2_maHH>
-							<ct2>String</ct2>
-							<ct3>String</ct3>
+							<ct2_maHH></ct2_maHH>
+							<ct2></ct2>
+							<ct3></ct3>
 							<ct4>0.0</ct4>
-							<ct5>1</ct5>
+							<ct5>0</ct5>
 						</NDungHHoaKhongThue>
 					</HHBanDeXuatKhau>
 					<HHGiaCongXuatKhau>
 						<NDungHHoaKhongThue>
-							<ct2_maHH>String</ct2_maHH>
-							<ct2>String</ct2>
-							<ct3>String</ct3>
+							<ct2_maHH></ct2_maHH>
+							<ct2></ct2>
+							<ct3></ct3>
 							<ct4>0.0</ct4>
-							<ct5>1</ct5>
+							<ct5>0</ct5>
 						</NDungHHoaKhongThue>
 					</HHGiaCongXuatKhau>
-					<tongDongIIICot5>1</tongDongIIICot5>
+					<tongDongIIICot5>0</tongDongIIICot5>
 				</HHoaKhongChiuThueTNDB>
-				<tongDSoBanChuaThue>1</tongDSoBanChuaThue>
+				<tongDSoBanChuaThue>0</tongDSoBanChuaThue>
 				<tongGiaThue>0.0</tongGiaThue>
-				<tongThueKTru>1</tongThueKTru>
-				<tongThuePNop>1</tongThuePNop>
+				<tongThueKTru>0</tongThueKTru>
+				<tongThuePNop>0</tongThuePNop>
 			</BangChiTietThueTTDB>
 		</CTieuTKhaiChinh>
 		<PLuc>
