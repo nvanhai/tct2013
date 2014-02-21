@@ -51,9 +51,9 @@
 		<ctE2>U_73</ctE2>
 	</Static>
 	<Dynamic GroupName="TaiLieu_Guikem">
-		<TaiLieuGuikem id="ID_1">
+		<Tailieuguikem id="ID_1">
 			<tenDocument>C_79</tenDocument>
-		</TaiLieuGuikem>
+		</Tailieuguikem>
 	</Dynamic>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>S_83</nguoiKy>
