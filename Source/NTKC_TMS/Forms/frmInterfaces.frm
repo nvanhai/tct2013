@@ -125,6 +125,7 @@ Begin VB.Form frmInterfaces
          Left            =   0
          TabIndex        =   15
          Top             =   30
+         Visible         =   0   'False
          Width           =   1335
       End
       Begin ComctlLib.ProgressBar ProgressBar1 
@@ -2926,9 +2927,6 @@ Barcode_Scaned str2
 End Sub
 
 Private Sub Form_Activate()
-
-
-
 'On Error GoTo ErrHandle
 '    If mOnLoad Then
 '        mOnLoad = False
