@@ -125,7 +125,6 @@ Begin VB.Form frmInterfaces
          Left            =   0
          TabIndex        =   15
          Top             =   30
-         Visible         =   0   'False
          Width           =   1335
       End
       Begin ComctlLib.ProgressBar ProgressBar1 
@@ -323,6 +322,8 @@ Const mParity = "N"
 Const mDataBits = 8
 Const mStopBits = 1
 Const mHandshaking = 1
+Const tt156_tkbs = "01~02~04~71~72~11~12~73~15~16~50~51~36~74~75~70~81~06~05~90~23~25~86"
+
 
 Private xmlDocumentInit()       As MSXML.DOMDocument
 Private arrStrElements()        As String               ' array of barcode string or file name string
@@ -358,7 +359,7 @@ Private isTKTonTai As Boolean
 Private strMaSoThue, strMaDaiLyThue As String
 Private isToKhaiCT As Boolean
 
-Private isTKDA30 As Boolean  ' kiem tra QLT da co tk theo mau cu chua
+'Private isTKDA30 As Boolean  ' kiem tra QLT da co tk theo mau cu chua
 
 Private isTKLanPS As Boolean
 Private isTKThang As Boolean
@@ -2005,10 +2006,10 @@ On Error GoTo ErrHandle
         End If
         
         ' Kiem tra xem ben QLT da co to khai theo mau cu chua
-        If isTKDA30 = True Then
-            MessageBox "0114", msOKOnly, miWarning
-            Exit Sub
-        End If
+'        If isTKDA30 = True Then
+'            MessageBox "0114", msOKOnly, miWarning
+'            Exit Sub
+'        End If
         ' end
     End If
     ' End
@@ -3163,12 +3164,12 @@ End Sub
 'Return:
 '**********************************************
 Private Sub Barcode_Scaned(strBarcode As String)
-Dim intBarcodeCount As Long, intBarcodeNo As Long
-Dim strPrefix As String, strBarcodeCount As String, strData As String
-Dim idToKhai As String
-Dim tmp As Variant
-Dim strLoaiToKhai As String
-On Error GoTo ErrHandle
+    Dim intBarcodeCount As Long, intBarcodeNo As Long
+    Dim strPrefix       As String, strBarcodeCount As String, strData As String
+    Dim idToKhai        As String
+    Dim tmp             As Variant
+    Dim strLoaiToKhai   As String
+    On Error GoTo ErrHandle
 
     'get loai to khai
     strLoaiToKhai = Mid(strBarcode, 1, 2)
@@ -3399,7 +3400,9 @@ On Error GoTo ErrHandle
                     Exit Sub
                 End If
             End If
+
         ElseIf InStr(1, strBarcode, "</S02>", vbTextCompare) > 0 Then
+
             '02/TNDN
             If Val(Mid$(strBarcode, 4, 2)) = 73 And UCase(strLoaiToKhai) = "BS" Then
                 tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S02>", vbTextCompare) + 5)
@@ -3434,7 +3437,9 @@ On Error GoTo ErrHandle
         
         'khong nhan cac to khai bo sung khong theo mau HTKK3.2.0(GD1)
         idToKhai = Mid(strPrefix, 4, 2)
+
         If (Val(Left$(strPrefix, 3)) <= 317 And UCase(strLoaiToKhai) = "BS") Then
+
             'khbs updated GD1
             '            If Trim(idToKhai) = "01" Or Trim(idToKhai) = "02" Or Trim(idToKhai) = "04" Or Trim(idToKhai) = "71" Or Trim(idToKhai) = "72" Or Trim(idToKhai) = "11" Or Trim(idToKhai) = "12" _
             '            Or Trim(idToKhai) = "73" Or Trim(idToKhai) = "70" Or Trim(idToKhai) = "81" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "05" Or Trim(idToKhai) = "90" Or Trim(idToKhai) = "86" Then
@@ -3444,6 +3449,25 @@ On Error GoTo ErrHandle
             End If
         End If
         
+        'Xu ly chan to khai bo sung doi voi to 01/TTS
+        If Mid$(strBarcode, 4, 2) = "23" And UCase(strLoaiToKhai) = "BS" Then
+
+            If InStr(1, strBarcode, "<S01>", vbTextCompare) > 0 Then
+                tkps_spl = Split(strBarcode, "~")
+                tmp_str = Right$(tkps_spl(0), 4)
+
+                If Val(tmp_str) > 0 And Val(tmp_str) < 2014 Then
+                    DisplayMessage "0150", msOKOnly, miCriticalError
+                    Exit Sub
+                End If
+            End If
+        'Xu ly chan to khai bo sung doi voi cac to khai con lai trong tt156
+        ElseIf Val(Mid$(strBarcode, 21, 4)) < 2014 And InStr(tt156_tkbs, Mid$(strBarcode, 4, 2)) > 0 And UCase(strLoaiToKhai) = "BS" Then
+
+            DisplayMessage "0150", msOKOnly, miCriticalError
+            Exit Sub
+        End If
+
         '07072011 TT28
         ' Khong nhan cac to khai theo mau cua
         idToKhai = Mid(strPrefix, 4, 2)
@@ -3477,8 +3501,8 @@ On Error GoTo ErrHandle
         'If Trim(idToKhai) = "08" Or Trim(idToKhai) = "24" Then
         'nvsu -- reOpen(01/BCTL_DK)
         If Trim(idToKhai) = "08" Then
-                DisplayMessage "0120", msOKOnly, miInformation
-                Exit Sub
+            DisplayMessage "0120", msOKOnly, miInformation
+            Exit Sub
         End If
 
         ' end
@@ -4908,7 +4932,7 @@ On Error GoTo ErrHandle
     '***********************************
     
 '     Kiem tra to khai ton tai theo mau cu QLT
-    isTKDA30 = isDA30(strID, arrStrHeaderData)
+'    isTKDA30 = isDA30(strID, arrStrHeaderData)
         
         
     InitParameters = True
