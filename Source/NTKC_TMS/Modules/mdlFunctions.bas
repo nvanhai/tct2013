@@ -48,7 +48,7 @@ Public dNgayDauKy As Date
 Public dNgayCuoiKy As Date
 
 Public Const SS_SORT_ORDER_ASCENDING = 1
-Public Const APP_VERSION = "3.2.0"
+Public Const APP_VERSION = "1.0"
 
 Public Const HTKK_LAST_VERSION = "3.2.0"
 
@@ -1775,7 +1775,7 @@ End Function
 
 Public Function LoadConfig() As MSXML.DOMDocument
     Dim xmlConfig As New MSXML.DOMDocument
-    xmlConfig.Load GetAbsolutePath("..\Project\ConfigWithESB.xml")
+    xmlConfig.Load GetAbsolutePath("..\Project\Config.xml")
     Set LoadConfig = xmlConfig
 End Function
 
@@ -1864,16 +1864,16 @@ Public Function ConvertStringToUtf8String(ByRef strText As String) As String
 End Function
 'Push data to ESB by MQ
 Public Function PushDataToESB(ByVal xmlInput As String) As Boolean
-    Dim xmlConfig As New MSXML.DOMDocument
-    Set xmlConfig = LoadConfig()
+'    Dim xmlConfig As New MSXML.DOMDocument
+'    Set xmlConfig = LoadConfig()
     Dim sQueueMgrName As String
     Dim sQueueName    As String
     Dim IsConnectMQ   As Boolean
     
     'xmlInput = TAX_Utilities_Srv_New.Convert(xmlInput, UNICODE, VIQR)
     
-    sQueueMgrName = xmlConfig.getElementsByTagName("queue_manager_name")(0).Text
-    sQueueName = xmlConfig.getElementsByTagName("queue_name")(0).Text
+    sQueueMgrName = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("queue_manager_name")(0).Text)
+    sQueueName = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("queue_name")(0).Text)
     Dim MQPUT As New MQPUT
     IsConnectMQ = MQPUT.open_Conn(sQueueMgrName, sQueueName)
     If IsConnectMQ Then
@@ -1883,7 +1883,7 @@ Public Function PushDataToESB(ByVal xmlInput As String) As Boolean
             PushDataToESB = False
         End If
         'Dong connection den MQ
-        If (MQPUT.close_Conn) Then
+        If (Not MQPUT.close_Conn) Then
            SaveErrorLog "Close MQ:", "Dong ket noi voi MQ cua truc", 1111, "Loi khong dong duoc ket noi voi MQ sau khi truyen tin"
         End If
     Else
@@ -2050,7 +2050,8 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
     Dim fldValue As String
     Dim xmlRequest As String
     Dim bPass() As Byte
-            
+    Dim sPath As String
+    
     Select Case sType
     
         Case "NSD"
@@ -2060,11 +2061,12 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             'set info header ESB
             Set paXmlDoc = SetValueHeaderESB(paXmlDoc)
             
-            sUrlWs = xmlConfig.getElementsByTagName("WsUrlNSD")(0).Text
-            soapAct = xmlConfig.getElementsByTagName("SoapActionNSD")(0).Text
-            xmlRequest = xmlConfig.getElementsByTagName("XmlRequestNSD")(0).lastChild.xml
+            sUrlWs = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("WsUrlNSD")(0).Text)
+            soapAct = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("SoapActionNSD")(0).Text)
+            'xmlRequest = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("XmlRequestNSD")(0).lastChild.xml)
             'sTaxOffice = cfigXml.getElementsByTagName("TaxOffcice")(0).Text
-            fldName = xmlConfig.getElementsByTagName("ParamNameNSD")(0).Text
+            xmlRequest = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("XmlRequestNSD")(0).Text)
+            fldName = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("ParamNameNSD")(0).Text)
             
             'Set value config to file param NSD
             paXmlDoc.getElementsByTagName("UserName")(0).Text = sUserName
@@ -2075,12 +2077,12 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             fldValue = paXmlDoc.xml
             fldValue = ChangeTagASSCII(fldValue, True)
             
-            If (Dir("c:\TempXML\", vbDirectory) = "") Then
-                MkDir "c:\TempXML\"
-            End If
-            Dim sParamUser As String
-            sParamUser = "c:\TempXML\" & "paramUser.xml"
-            paXmlDoc.save sParamUser
+'            If (Dir("c:\TempXML\", vbDirectory) = "") Then
+'                MkDir "c:\TempXML\"
+'            End If
+            
+            sPath = App.path & "\paramNSD.xml"
+            paXmlDoc.save sPath
             
             'Return value from ESB
             sResult = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
@@ -2091,10 +2093,10 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             'set info header ESB
             Set paXmlDoc = SetValueHeaderESB(paXmlDoc)
             
-            sUrlWs = xmlConfig.getElementsByTagName("WsUrlNNT")(0).Text
-            soapAct = xmlConfig.getElementsByTagName("SoapActionNNT")(0).Text
-            xmlRequest = xmlConfig.getElementsByTagName("XmlRequestNNT")(0).lastChild.xml
-            fldName = xmlConfig.getElementsByTagName("ParamNameNNT")(0).Text
+            sUrlWs = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("WsUrlNNT")(0).Text)
+            soapAct = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("SoapActionNNT")(0).Text)
+            xmlRequest = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("XmlRequestNNT")(0).Text)
+            fldName = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("ParamNameNNT")(0).Text)
             
             'Set value config to file param NNT
             paXmlDoc.getElementsByTagName("tin_nnt")(0).Text = strTaxIDString
@@ -2102,12 +2104,12 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             fldValue = paXmlDoc.xml
             fldValue = ChangeTagASSCII(fldValue, True)
             
-            If (Dir("c:\TempXML\", vbDirectory) = "") Then
-                MkDir "c:\TempXML\"
-            End If
-            Dim sParamNNT As String
-            sParamNNT = "c:\TempXML\" & "paramNNT.xml"
-            paXmlDoc.save sParamNNT
+'            If (Dir("c:\TempXML\", vbDirectory) = "") Then
+'                MkDir "c:\TempXML\"
+'            End If
+            'Dim sParamNNT As String
+            sPath = "c:\TempXML\" & "\paramNNT.xml"
+            paXmlDoc.save sPath
             
             'Return value from ESB
             sResult = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
@@ -2118,10 +2120,10 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             'set info header ESB
             Set paXmlDoc = SetValueHeaderESB(paXmlDoc)
             
-            sUrlWs = xmlConfig.getElementsByTagName("WsUrlDLT")(0).Text
-            soapAct = xmlConfig.getElementsByTagName("SoapActionDLT")(0).Text
-            xmlRequest = xmlConfig.getElementsByTagName("XmlRequestDLT")(0).lastChild.xml
-            fldName = xmlConfig.getElementsByTagName("ParamNameDLT")(0).Text
+            sUrlWs = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("WsUrlDLT")(0).Text)
+            soapAct = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("SoapActionDLT")(0).Text)
+            xmlRequest = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("XmlRequestDLT")(0).Text)
+            fldName = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("ParamNameDLT")(0).Text)
             
             'Set value config to file param DLT
             paXmlDoc.getElementsByTagName("tin_dlt")(0).Text = strTaxDLTIDString
@@ -2130,12 +2132,12 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
             fldValue = paXmlDoc.xml
             fldValue = ChangeTagASSCII(fldValue, True)
             
-            If (Dir("c:\TempXML\", vbDirectory) = "") Then
-                MkDir "c:\TempXML\"
-            End If
-            Dim sParamDLT As String
-            sParamDLT = "c:\TempXML\" & "paramDLT.xml"
-            paXmlDoc.save sParamDLT
+'            If (Dir("c:\TempXML\", vbDirectory) = "") Then
+'                MkDir "c:\TempXML\"
+'            End If
+'            Dim sParamDLT As String
+            sPath = App.path & "\paramDLT.xml"
+            paXmlDoc.save sPath
             
             'Return value from ESB
             sResult = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
@@ -2147,13 +2149,13 @@ End Function
 'Set value Header ESB
 Public Function SetValueHeaderESB(ByVal xmlDoc As MSXML.DOMDocument) As MSXML.DOMDocument
     If Not (xmlDoc Is Nothing) Then
-        xmlDoc.getElementsByTagName("VERSION")(0).Text = xmlConfig.getElementsByTagName("VERSION")(0).Text
-        xmlDoc.getElementsByTagName("SENDER_CODE")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text
-        xmlDoc.getElementsByTagName("SENDER_NAME")(0).Text = xmlConfig.getElementsByTagName("SENDER_NAME")(0).Text
-        xmlDoc.getElementsByTagName("RECEIVER_CODE")(0).Text = xmlConfig.getElementsByTagName("RECEIVER_CODE")(0).Text
-        xmlDoc.getElementsByTagName("RECEIVER_NAME")(0).Text = xmlConfig.getElementsByTagName("RECEIVER_NAME")(0).Text
-        xmlDoc.getElementsByTagName("TRAN_CODE")(0).Text = xmlConfig.getElementsByTagName("TRAN_CODE")(0).Text
-        xmlDoc.getElementsByTagName("MSG_ID")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow() 'GetGUID()
+        xmlDoc.getElementsByTagName("VERSION")(0).Text = APP_VERSION 'Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("VERSION")(0).Text)
+        xmlDoc.getElementsByTagName("SENDER_CODE")(0).Text = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text)
+        xmlDoc.getElementsByTagName("SENDER_NAME")(0).Text = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("SENDER_NAME")(0).Text)
+        xmlDoc.getElementsByTagName("RECEIVER_CODE")(0).Text = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("RECEIVER_CODE")(0).Text)
+        xmlDoc.getElementsByTagName("RECEIVER_NAME")(0).Text = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("RECEIVER_NAME")(0).Text)
+        xmlDoc.getElementsByTagName("TRAN_CODE")(0).Text = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("TRAN_CODE")(0).Text)
+        xmlDoc.getElementsByTagName("MSG_ID")(0).Text = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text) & GenerateCodeByNow() 'GetGUID()
         xmlDoc.getElementsByTagName("MSG_REFID")(0).Text = ""
        
         xmlDoc.getElementsByTagName("SEND_DATE")(0).Text = strNgayHeThongSrv 'Format(DateTime.Now, "dd-mmm-yyyy hh:mm:ss")

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Config>
+	<!-- Doan nay cau hinh de ket noi voi webservices cua ESB -->
+	<!-- Xac thuc NSD -->
+	<WsUrlNSD>aHR0cDovLzEwLjY0LjExMi4xNTU6NzA4MC93c0NCVFZlcmlmeQ==</WsUrlNSD>
+	<SoapActionNSD>aHR0cDovL3RlbXB1cmkub3JnL3ZlcmlmeQ==</SoapActionNSD>
+	<XmlRequestNSD>CQk8c29hcGVudjpFbnZlbG9wZSB4bWxuczpzb2FwZW52PSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VudmVsb3BlLyIgeG1sbnM6cTA9Imh0dHA6Ly90ZW1wdXJpLm9yZy9FU0JfVENUX0lOVEVSTkFMX01TRyIgeG1sbnM6eHNkPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYSIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSI+DQoJCQk8c29hcGVudjpCb2R5Pg0KCQkJCTxxMDpVc2VyVmVyaWZ5V1NSZXF1ZXN0PnN0cmluZzwvcTA6VXNlclZlcmlmeVdTUmVxdWVzdD4NCgkJCTwvc29hcGVudjpCb2R5Pg0KCQk8L3NvYXBlbnY6RW52ZWxvcGU+</XmlRequestNSD>
+	<ParamNameNSD>VXNlclZlcmlmeVdTUmVxdWVzdA==</ParamNameNSD>
+	<!-- <TaxOffcice>22300</TaxOffcice> -->
+	<!-- Ket thuc NSD -->
+	<!-- Lay thong tin NNT -->
+	<WsUrlNNT>aHR0cDovLzEwLjY0LjExMi4xNTU6NzA4MC93c0RhbmdLeVRodWU=</WsUrlNNT>
+	<SoapActionNNT>aHR0cDovL2dkdC5nb3Yudm4vZ2V0Tk5U</SoapActionNNT>
+	<XmlRequestNNT>CQk8c29hcGVudjpFbnZlbG9wZSB4bWxuczpzb2FwZW52PSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VudmVsb3BlLyIgeG1sbnM6cTA9Imh0dHA6Ly9nZHQuZ292LnZuL0VTQl9UQ1RfSU5URVJOQUxfTVNHIiB4bWxuczp4c2Q9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hIiB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIj4NCgkJCTxzb2FwZW52OkJvZHk+DQoJCQkJPHEwOk5OVFdTUmVxdWVzdD5zdHJpbmc8L3EwOk5OVFdTUmVxdWVzdD4NCgkJCTwvc29hcGVudjpCb2R5Pg0KCQk8L3NvYXBlbnY6RW52ZWxvcGU+</XmlRequestNNT>
+	<ParamNameNNT>Tk5UV1NSZXF1ZXN0</ParamNameNNT>
+	<!-- Ket thuc lay thong tin NNT -->
+	<!-- Lay thong tin DLT -->
+	<WsUrlDLT>aHR0cDovLzEwLjY0LjExMi4xNTU6NzA4MC93c0RhbmdLeVRodWU=</WsUrlDLT>
+	<SoapActionDLT>aHR0cDovL2dkdC5nb3Yudm4vZ2V0RExU</SoapActionDLT>
+	<XmlRequestDLT>CQk8c29hcGVudjpFbnZlbG9wZSB4bWxuczpzb2FwZW52PSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VudmVsb3BlLyIgeG1sbnM6cTA9Imh0dHA6Ly9nZHQuZ292LnZuL0VTQl9UQ1RfSU5URVJOQUxfTVNHIiB4bWxuczp4c2Q9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hIiB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIj4NCgkJCTxzb2FwZW52OkJvZHk+DQoJCQkJPHEwOkRMVFdTUmVxdWVzdD5zdHJpbmc8L3EwOkRMVFdTUmVxdWVzdD4NCgkJCTwvc29hcGVudjpCb2R5Pg0KCQk8L3NvYXBlbnY6RW52ZWxvcGU+</XmlRequestDLT>
+	<ParamNameDLT>RExUV1NSZXF1ZXN0</ParamNameDLT>
+	<!-- Ket thuc lay thong tin DLT -->
+	<!-- **** Ket thuc ket noi voi webservices cua ESB **** -->
+	<!-- Doan nay cau hinh cho phan Header cua message gui tin len ESB -->
+	<VERSION>MS4w</VERSION>
+	<SENDER_CODE>TlRL</SENDER_CODE>
+	<SENDER_NAME>SGUgdGhvbmcgbmhhbiB0byBraGFpIG1hIHZhY2g=</SENDER_NAME>
+	<RECEIVER_CODE>VE1T</RECEIVER_CODE>
+	<RECEIVER_NAME>SGUgdGhvbmcgcXVhbiBseSB0aHVlIHRhcCB0cnVuZw==</RECEIVER_NAME>
+	<TRAN_CODE>MDEwMDA=</TRAN_CODE>
+	<ORIGINAL_CODE>TlRL</ORIGINAL_CODE>
+	<ORIGINAL_NAME>SGUgdGhvbmcgbmhhbiB0byBraGFpIG1hIHZhY2g=</ORIGINAL_NAME>
+	<!-- Doan nay cau hinh cho phan MQ push data len ESB -->
+	<queue_manager_name>RVNCLklOVC5RTUdS</queue_manager_name>
+	<queue_name>SU5ULklOQk9YLlFVRVVF</queue_name>
+	<!-- Cac cau hinh khac -->
+	<!--ID BCTC va AC bo sung QHS -->
+	<BCTC>Njk7MTk7MjA7MjE7MjI=</BCTC>
+	<QLAC>NjQ7NjU7NjY7Njc7Njg7OTE=</QLAC>
+</Config>
