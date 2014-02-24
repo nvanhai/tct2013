@@ -1,11 +1,4 @@
 ﻿<HSoKhaiThue ngay_nop_tk="D_29" ky_lap_bo="D_27" loi_dinh_danh="D_33">
-	<Static GroupName="TKhaiThue">
-		<maTKhai>252</maTKhai>
-		<tenTKhai>TK thuế hoạt động cho thuê tài sản (01/KK-TTS)</tenTKhai>
-		<soLan>I_91</soLan>
-		<moTaBMau/>
-		<pbanTKhaiXML/>
-	</Static>
 	<Static GroupName="GiaHan">
 		<maLyDoGiaHan/>
 		<lyDoGiaHan/>
@@ -61,5 +54,12 @@
 		<ct49>T_59</ct49>
 		<ct50>U_59</ct50>
 		<ct51>V_59</ct51>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>252</maTKhai>
+		<tenTKhai>TK thuế hoạt động cho thuê tài sản (01/KK-TTS)</tenTKhai>
+		<soLan>I_91</soLan>
+		<moTaBMau/>
+		<pbanTKhaiXML/>
 	</Static>
 </HSoKhaiThue>

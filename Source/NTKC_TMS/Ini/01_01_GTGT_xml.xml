@@ -36,7 +36,7 @@
 	</Static>
 	<Dynamic GroupName="ChiTietHHDVThue5">
 		<HDonBRa id="ID_3">
-	<kyHieuMauHDon>D_35</kyHieuMauHDon>
+			<kyHieuMauHDon>D_35</kyHieuMauHDon>
 			<kyHieuHDon>E_35</kyHieuHDon>
 			<soHDon>F_35</soHDon>
 			<ngayPHanh>G_35</ngayPHanh>
@@ -54,7 +54,7 @@
 	</Static>
 	<Dynamic GroupName="ChiTietHHDVThue10">
 		<HDonBRa id="ID_4">
-	<kyHieuMauHDon>D_40</kyHieuMauHDon>
+			<kyHieuMauHDon>D_40</kyHieuMauHDon>
 			<kyHieuHDon>E_40</kyHieuHDon>
 			<soHDon>F_40</soHDon>
 			<ngayPHanh>G_40</ngayPHanh>
@@ -90,7 +90,7 @@
 	</Static>
 	<Static GroupName="PL01_1_GTGT">
 		<tongDThuBRa>H_49</tongDThuBRa>
-		<tongDThuBRaChiuThue>H_51</tongDThuBRaChiuThue>
-		<tongThueBRa>H_50</tongThueBRa>
+		<tongDThuBRaChiuThue>H_50</tongDThuBRaChiuThue>
+		<tongThueBRa>H_51</tongThueBRa>
 	</Static>
 </PL01_1_GTGT>

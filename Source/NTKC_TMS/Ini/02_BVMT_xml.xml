@@ -2,6 +2,7 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai>60</maTKhai>
 		<tenTKhai>Tờ khai QT phí bảo vệ môi trường (02/BVMT)</tenTKhai>
+		<soLan>I_33</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
@@ -17,8 +18,8 @@
 		<maTinhDLyThue/>
 	</Static>
 	<Static GroupName="KSCSTuKhaiThac">
-		<tongPhiPhaiNopTrongKyI>C_29</tongPhiPhaiNopTrongKyI>
-		<tongPhiDaKeKhaiTrongKyI>E_29</tongPhiDaKeKhaiTrongKyI>
+		<tongPhiPhaiNopTrongKyI>F_35</tongPhiPhaiNopTrongKyI>
+		<tongPhiDaKeKhaiTrongKyI>L_35</tongPhiDaKeKhaiTrongKyI>
 	</Static>
 	<Dynamic GroupName="KSCSTuKhaiThac" Level="2">
 		<NoiDungKS id="ID_1">
@@ -32,8 +33,8 @@
 		</NoiDungKS>
 	</Dynamic>
 	<Static GroupName="KSCSThuMua">
-		<tongPhiPhaiNopTrongKyII>E_30</tongPhiPhaiNopTrongKyII>
-		<tongPhiDaKeKhaiTrongKyII>H_30</tongPhiDaKeKhaiTrongKyII>
+		<tongPhiPhaiNopTrongKyII>F_36</tongPhiPhaiNopTrongKyII>
+		<tongPhiDaKeKhaiTrongKyII>L_36</tongPhiDaKeKhaiTrongKyII>
 	</Static>
 	<Dynamic GroupName="KSCSThuMua" Level="2">
 		<NoiDungKS id="ID_2">

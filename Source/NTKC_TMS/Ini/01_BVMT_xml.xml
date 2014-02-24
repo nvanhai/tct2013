@@ -24,7 +24,7 @@
 		<ct15>F_17</ct15>
 	</Static>
 	<Static GroupName="KSCSoTuKhaiThac">
-		<tongPhiKSanKhaiThacPNop>U_43</tongPhiKSanKhaiThacPNop>
+		<tongPhiKSanKhaiThacPNop>J_35</tongPhiKSanKhaiThacPNop>
 	</Static>
 	<Dynamic GroupName="KSCSoTuKhaiThac" Level="2">
 		<KhoangSan id="ID_2">
@@ -37,7 +37,7 @@
 		</KhoangSan>
 	</Dynamic>
 	<Static GroupName="KSanCoSoThuMuaNopThay">
-		<tongPhiKSanThuMuaPNop>U_47</tongPhiKSanThuMuaPNop>
+		<tongPhiKSanThuMuaPNop>O_35</tongPhiKSanThuMuaPNop>
 	</Static>
 	<Dynamic GroupName="KSanCoSoThuMuaNopThay" Level="2">
 		<KhoangSan id="ID_1">
