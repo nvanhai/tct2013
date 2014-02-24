@@ -43,7 +43,7 @@ Public Function close_Conn() As Boolean
         'close_Conn = False
     End If
     
-    SaveErrorLog "MQPUT", "close_ConnMQ", C_options, "CompCode = " & CompCode & " Reason = " & Reason
+    'SaveErrorLog "MQPUT", "close_ConnMQ", C_options, "CompCode = " & CompCode & " Reason = " & Reason
 'ErrHandle:
 '    'close_Conn = False
 '    SaveErrorLog "Dong ket noi MQ", "close_Conn", Err.Number, "Co loi khi dong ket noi MQ:" & Err.Description
@@ -140,7 +140,7 @@ Public Function open_Conn(ByVal qm As String, ByVal qn As String) As Boolean
     open_Conn = False
   End If
   
-  SaveErrorLog "MQPUT", "open_ConnMQ", O_options, "CompCode = " & CompCode & " Reason = " & Reason
+  'SaveErrorLog "MQPUT", "open_ConnMQ", O_options, "CompCode = " & CompCode & " Reason = " & Reason
 'ErrHandle:
 '    open_Conn = False
 '    SaveErrorLog "Mo ket noi MQ", "open_Conn", Err.Number, "Co loi khi mo ket noi MQ:" & Err.Description
@@ -180,7 +180,7 @@ Public Function put_Msg(ByVal xml As String) As Boolean
         put_Msg = True
     End If
   
-    SaveErrorLog "MQPUT", "close_ConnMQ", buflen, "CompCode = " & CompCode & " Reason = " & Reason
+    'SaveErrorLog "MQPUT", "close_ConnMQ", buflen, "CompCode = " & CompCode & " Reason = " & Reason
 'ErrHandle:
 '    'put_Msg = False
 '    SaveErrorLog "Gui du lieu len MQ", "put_Msg", Err.Number, "Co loi khi gui to khai toi MQ:" & Err.Description

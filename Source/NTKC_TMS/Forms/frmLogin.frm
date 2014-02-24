@@ -236,21 +236,17 @@ End Sub
 
 Private Sub Form_Load()
     SetControlCaption Me, "frmLogin"
-    
-'    'btn cau hinh
-'    Dim WithEvents btnSetting As CommandButton
 
-    
-'    Set cmdSetting = Me.Controls.Add("vb.commandbutton", "cmdSetting")
-'    With cmdSetting
-'        .Visible = True
-'        .caption = "Setting"
-'        .Width = 960
-'        .Height = 375
-'        .Top = 1650
-'        .Left = 70
-'        .CausesValidation = False
-'    End With
+    Set cmdSetting = Me.Controls.Add("vb.commandbutton", "cmdSetting")
+    With cmdSetting
+        .Visible = True
+        .caption = "Setting"
+        .Width = 960
+        .Height = 375
+        .Top = 1650
+        .Left = 70
+        .CausesValidation = False
+    End With
     
     'load xml config'
     Set xmlConfig = LoadConfig()

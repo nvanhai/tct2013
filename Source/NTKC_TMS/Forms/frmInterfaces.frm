@@ -377,6 +377,7 @@ Private DenNgay As String
 Private xmlResultNNT As MSXML.DOMDocument
 'Lay thong tin NNT tu ESB
 Private xmlResultDLT As MSXML.DOMDocument
+Private Base64Unicode As New Base64Unicode
 'Ket thuc NSHUNG bo xung
 
 '****************************
@@ -935,8 +936,8 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     On Error GoTo ErrHandle
     
     'Set value from config, webservices ESB
-    Dim xmlConfig As New MSXML.DOMDocument
-    Set xmlConfig = LoadConfig()
+'    Dim xmlConfig As New MSXML.DOMDocument
+'    Set xmlConfig = LoadConfig()
 
     xmlTK.getElementsByTagName("pbanDVu")(0).Text = APP_VERSION
 
@@ -1910,19 +1911,19 @@ Private Sub ExecuteSave()
 
     xmlTK.documentElement.SetAttribute "xmlns", "http://kekhaithue.gdt.gov.vn/TKhaiThue"
 
-    Dim sFileName As String
-    sFileName = "c:\TempXML\" & strFileName
+'    Dim sFileName As String
+'    sFileName = "c:\TempXML\" & strFileName
     Dim xmlDocSave As New MSXML.DOMDocument
     Set xmlDocSave = AppendXMLStandard(xmlTK, sKyLapBo, sNgayNopTK, sLoiDinhDanh)
     
     
-    xmlDocSave.save sFileName
+'    xmlDocSave.save sFileName
 
-'    ' Push MQ
-'    If (Not PushDataToESB(xmlDocSave.xml)) Then
-'        MessageBox "0137", msOKOnly, miCriticalError
-'    End If
-'    ' End push
+    ' Push MQ
+    If (Not PushDataToESB(xmlDocSave.xml)) Then
+        MessageBox "0137", msOKOnly, miCriticalError
+    End If
+    ' End push
     
     Exit Sub
 ErrHandle:
@@ -2398,31 +2399,31 @@ Private Sub Command1_Click()
 'str2 = "aa320492300031820   04201300100100100101/0101/01/2010<S01><S></S><S>1000000~200000~100000</S><S>Hµ Ph≠¨ng~~~20/02/2014~1~~</S></S01>"
 'Barcode_Scaned str2
 
-'01-GTGT-THANG-CT
-str2 = "aa320012300032119   01201400900900101201/0114/06/2006<S01><S></S><S>0~0~13290000000~1254000000~2609770000~50003234908~15035000000~900000000~35000000~12000000000~600000000~3000000000~300000000~65038234908~900000000~-1709770000~0~0~2500000000~0~0~0~4209770000~0~4209770000</S><S>~~CMCer~14/02/2014~1~~~1701~~~0</S></S01>"
-Barcode_Scaned str2
-str2 = "aa320012300032119   012014009009002012<S01_1><S>02GTTT~02GTTT5/009~K001~S001~01/01/2014~Nguyen Van C~~~50000000000~0~~07KPTQ~07KPTQ6/009~K002~S002~05/01/2014~Tran Van H~~~3234908~0~</S><S>02GTTT~02GTTT2/009~K003~S003~06/01/2014~Nguyen Van T~~~20000000~0~~06HDXK~06HDXK2/009~K004~S004~07/01/2014~Le Viet V~~~15000000~0~</S><S>07KPTQ~07KPTQ3/009~K005~S005~08/01/2014~Tran Le H~~~7000000000~350000000~~04HGDL~04HGDL4/009~K006~S006~09/01"
-Barcode_Scaned str2
-str2 = "aa320012300032119   012014009009003012/2014~Quoc Ca Cuong~~~5000000000~250000000~</S><S>01GTKT~01GTKT7/009~K007~S007~10/01/2014~Van Thi M~~~2000000000~200000000~~02GTTT~02GTTT8/009~K008~S008~11/01/2014~Kieu Van A~~~1000000000~100000000~</S><S>06HDXK~06HDXK9/009~K009~S009~12/01/2014~Nong Van C~~~3000000000~0~~07KPTQ~07KPTQ3/009~K010~S010~13/01/2014~Nguyen Van B~~~24000000000~0~</S><S>65038234908~15035000000~900000000</S></S01_1>"
-Barcode_Scaned str2
-str2 = "aa320012300032119   012014009009004012<S01_2><S>01GTKT~01GTKT2/005~L002~M002~05/01/2014~Tram B~~~12000000000~10~1200000000~~02GTTT~02GTTT3/005~L003~M003~06/01/2014~Tram C~~~200000000~5~10000000~</S><S>06HDXK~06HDXK4/006~L004~M004~07/01/2014~Tram A~~~240000000~10~24000000~~07KPTQ~07KPTQ5/006~L005~M005~08/01/2014~Tram D~~~200"
-Barcode_Scaned str2
-str2 = "aa320012300032119   012014009009005012000000~10~20000000~</S><S>03XKNB~03XKNB7/007~L006~M006~09/01/2014~Tram E~~~200000000~0~0~~04HGDL~04HGDL7/007~L007~M007~10/01/2014~Tram F~~~450000000~0~0~</S><S>~~~~~~~~0~0~0~</S><S>06HDXK~06HDXK8/008~L008~M008~11/01/2014~Tram G~~~2300000000~0~0~</S><S>13290000000~1254000000</S></S01_2>"
-Barcode_Scaned str2
-str2 = "aa320012300032119   012014009009006012<S01_3><S>S001~02/01/2014~USD~15000000000~Tien mat~8~123456~01/01/2014~~0~~~~0~~~~0~~~~0~~~~0~~~~0~~</S><S></S></S01_3>"
-Barcode_Scaned str2
-str2 = "aa320012300032119   012014009009007012<S01_4A><S>1254000000~1210000000~44000000~0~65038234908~15035000000~23.12~0~0</S></S01_4A>"
-Barcode_Scaned str2
-str2 = "aa320012300032119   012014009009008012<S01_4B><S>2014~71000000000~45000000000~1000000000~25000000000~50000000000~35000000000~70~2000000000~1400000000~230000~1399770000</S></S01_4B>"
-Barcode_Scaned str2
-str2 = "aa320012300032119   012014009009009012<S01_5><S>ST001~05/01/2014~Kho Bac ~10100~2500000000</S></S01_5>"
-Barcode_Scaned str2
-str2 = "aa320012300032119   012014009009010012<S01_6><S>Keo Deo~0102030405~10100~2300000~15000000~1"
-Barcode_Scaned str2
-str2 = "aa320012300032119   0120140090090110127300000~323000~0</S><S>0~65038234908~0~0</S></S01_6>"
-Barcode_Scaned str2
-str2 = "aa320012300032119   012014009009012012<S01_7><S>Mercedes~Chi’c~10~50000000000~~BMW~Chi’c~5~25000000000~</S><S>Ducati~Chi’c~30~20000000000~~Hayabache~Chi’c~7~560000000~</S></S01_7>"
-Barcode_Scaned str2
+''01-GTGT-THANG-CT
+'str2 = "aa320012300032119   01201400900900101201/0114/06/2006<S01><S></S><S>0~0~13290000000~1254000000~2609770000~50003234908~15035000000~900000000~35000000~12000000000~600000000~3000000000~300000000~65038234908~900000000~-1709770000~0~0~2500000000~0~0~0~4209770000~0~4209770000</S><S>~~CMCer~14/02/2014~1~~~1701~~~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa320012300032119   012014009009002012<S01_1><S>02GTTT~02GTTT5/009~K001~S001~01/01/2014~Nguyen Van C~~~50000000000~0~~07KPTQ~07KPTQ6/009~K002~S002~05/01/2014~Tran Van H~~~3234908~0~</S><S>02GTTT~02GTTT2/009~K003~S003~06/01/2014~Nguyen Van T~~~20000000~0~~06HDXK~06HDXK2/009~K004~S004~07/01/2014~Le Viet V~~~15000000~0~</S><S>07KPTQ~07KPTQ3/009~K005~S005~08/01/2014~Tran Le H~~~7000000000~350000000~~04HGDL~04HGDL4/009~K006~S006~09/01"
+'Barcode_Scaned str2
+'str2 = "aa320012300032119   012014009009003012/2014~Quoc Ca Cuong~~~5000000000~250000000~</S><S>01GTKT~01GTKT7/009~K007~S007~10/01/2014~Van Thi M~~~2000000000~200000000~~02GTTT~02GTTT8/009~K008~S008~11/01/2014~Kieu Van A~~~1000000000~100000000~</S><S>06HDXK~06HDXK9/009~K009~S009~12/01/2014~Nong Van C~~~3000000000~0~~07KPTQ~07KPTQ3/009~K010~S010~13/01/2014~Nguyen Van B~~~24000000000~0~</S><S>65038234908~15035000000~900000000</S></S01_1>"
+'Barcode_Scaned str2
+'str2 = "aa320012300032119   012014009009004012<S01_2><S>01GTKT~01GTKT2/005~L002~M002~05/01/2014~Tram B~~~12000000000~10~1200000000~~02GTTT~02GTTT3/005~L003~M003~06/01/2014~Tram C~~~200000000~5~10000000~</S><S>06HDXK~06HDXK4/006~L004~M004~07/01/2014~Tram A~~~240000000~10~24000000~~07KPTQ~07KPTQ5/006~L005~M005~08/01/2014~Tram D~~~200"
+'Barcode_Scaned str2
+'str2 = "aa320012300032119   012014009009005012000000~10~20000000~</S><S>03XKNB~03XKNB7/007~L006~M006~09/01/2014~Tram E~~~200000000~0~0~~04HGDL~04HGDL7/007~L007~M007~10/01/2014~Tram F~~~450000000~0~0~</S><S>~~~~~~~~0~0~0~</S><S>06HDXK~06HDXK8/008~L008~M008~11/01/2014~Tram G~~~2300000000~0~0~</S><S>13290000000~1254000000</S></S01_2>"
+'Barcode_Scaned str2
+'str2 = "aa320012300032119   012014009009006012<S01_3><S>S001~02/01/2014~USD~15000000000~Tien mat~8~123456~01/01/2014~~0~~~~0~~~~0~~~~0~~~~0~~~~0~~</S><S></S></S01_3>"
+'Barcode_Scaned str2
+'str2 = "aa320012300032119   012014009009007012<S01_4A><S>1254000000~1210000000~44000000~0~65038234908~15035000000~23.12~0~0</S></S01_4A>"
+'Barcode_Scaned str2
+'str2 = "aa320012300032119   012014009009008012<S01_4B><S>2014~71000000000~45000000000~1000000000~25000000000~50000000000~35000000000~70~2000000000~1400000000~230000~1399770000</S></S01_4B>"
+'Barcode_Scaned str2
+'str2 = "aa320012300032119   012014009009009012<S01_5><S>ST001~05/01/2014~Kho Bac ~10100~2500000000</S></S01_5>"
+'Barcode_Scaned str2
+'str2 = "aa320012300032119   012014009009010012<S01_6><S>Keo Deo~0102030405~10100~2300000~15000000~1"
+'Barcode_Scaned str2
+'str2 = "aa320012300032119   0120140090090110127300000~323000~0</S><S>0~65038234908~0~0</S></S01_6>"
+'Barcode_Scaned str2
+'str2 = "aa320012300032119   012014009009012012<S01_7><S>Mercedes~Chi’c~10~50000000000~~BMW~Chi’c~5~25000000000~</S><S>Ducati~Chi’c~30~20000000000~~Hayabache~Chi’c~7~560000000~</S></S01_7>"
+'Barcode_Scaned str2
 
 ''01-GTGT-THANG-BS
 'str2 = "bs320012300032119   01201401101100100301/0114/06/2006<S01><S></S><S>0~20000000~13290000000~1254000000~2609770000~50003234908~15045000000~900000000~45000000~12000000000~600000000~3000000000~300000000~65048234908~900000000~-1709770000~0~0~2500000000~0~0~0~4229770000~0~4229770000</S><S>~~CMCer~14/02/2014~~1~1~1701~~~0</S></S01>"
@@ -2757,9 +2758,9 @@ Barcode_Scaned str2
 'Barcode_Scaned str2
 
 
-''02-BVMT-2013-CT
-'str2 = "aa320872300032052   00201300100100100101/0101/01/1900<S01><S></S><S>Kg~1000.000~100000~1000000~010102~Kg~2000.000~200000~400000000~010103</S><S>Kg~3000.000~300000~300000000~010207~Kg~4000.000~400000~500000000~010208</S><S>~CMCer~~17/02/2014~1~~</S></S01>"
-'Barcode_Scaned str2
+'02-BVMT-2013-CT
+str2 = "aa320872300032052   00201300100100100101/0101/01/1900<S01><S></S><S>Kg~1000.000~100000~1000000~010102~Kg~2000.000~200000~400000000~010103</S><S>Kg~3000.000~300000~300000000~010207~Kg~4000.000~400000~500000000~010208</S><S>~CMCer~~17/02/2014~1~~</S></S01>"
+Barcode_Scaned str2
 
 ''02-BVMT-2014-CT
 'str2 = "aa320872300032052   00201400100100100101/0101/01/1900<S01><S></S><S>Kg~1000.000~100000~50000000~010101</S><S>Kg~2000.000~200000~100000000~010202~Kg~3000.000~300000~500000000~010203</S><S>~CMCer~~17/02/2014~1~~</S></S01>"
@@ -5564,7 +5565,7 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
     Else
         Dim sResultNNT As String
 
-        sResultNNT = "c:\TempXML\" & "ResultNNT.xml"
+        sResultNNT = App.path & "\ResultNNT.xml"
         xmlResultNNT.save sResultNNT
     
         Dim Err_des As String
@@ -5690,7 +5691,7 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
         Else
                 Dim sResultDLT As String
     
-            sResultDLT = "c:\TempXML\" & "ResultDLT.xml"
+            sResultDLT = App.path & "\ResultDLT.xml"
             xmlResultDLT.save sResultDLT
         
             Dim Err_des As String
@@ -5829,7 +5830,7 @@ On Error GoTo ErrHandle
     Else
         Dim sResultNNT As String
 
-        sResultNNT = "c:\TempXML\" & "ResultNNT.xml"
+        sResultNNT = App.path & "\ResultNNTBCTC.xml"
         xmlResultNNT.save sResultNNT
     
         Dim Err_des As String
@@ -7247,12 +7248,12 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
     'end verify value
     
     ' Set value tag <add_info>
-    XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = ConvertDate(sNgayNopTK, 3, "-") 'Format(sNgayNopTK, "dd-mmm-yyyy hh:mm:ss")
+    XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = IIf(sNgayNopTK <> "", ConvertDate(sNgayNopTK, 3, "-"), sNgayNopTK) 'Format(sNgayNopTK, "dd-mmm-yyyy hh:mm:ss")
     XmlDocStandard.getElementsByTagName("ky_lap_bo")(0).Text = sKyLapBo
-    XmlDocStandard.getElementsByTagName("nguon_goc_tk")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text
+    XmlDocStandard.getElementsByTagName("nguon_goc_tk")(0).Text = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text)
     XmlDocStandard.getElementsByTagName("nguoi_nhan_tk")(0).Text = strUserID '& "." & xmlConfig.getElementsByTagName("CODE_OFFICE")(0).Text
     XmlDocStandard.getElementsByTagName("ngay_nhan_tk")(0).Text = strNgayHeThongSrv 'ConvertDate(Format(DateTime.Now, "dd/mm/yyyy"), True, "-")
-    XmlDocStandard.getElementsByTagName("id_tkhai")(0).Text = xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text & GenerateCodeByNow()
+    XmlDocStandard.getElementsByTagName("id_tkhai")(0).Text = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text) & GenerateCodeByNow()
     
     XmlDocStandard.getElementsByTagName("noi_gui")(0).Text = ""
     XmlDocStandard.getElementsByTagName("noi_nhan")(0).Text = ""
@@ -7264,8 +7265,8 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
     'ID BCTC: 69(15_BCTC); 19(48_BCTC); 20(16_BCTC); 21(99_BCTC); 22(95_BCTC);
     'ID AC:   64(01_TBAC); 65(01_AC); 66(BC21_AC); 67(03_TBAC); 68(BC26_AC); 91(04_TBAC);
     Dim strID_BCTC, strID_QLAC As String
-    strID_BCTC = xmlConfig.getElementsByTagName("BCTC")(0).Text
-    strID_QLAC = xmlConfig.getElementsByTagName("QLAC")(0).Text
+    strID_BCTC = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("BCTC")(0).Text)
+    strID_QLAC = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("QLAC")(0).Text)
     
     Dim tempQHSxml As New MSXML.DOMDocument
     Dim nodeVal      As MSXML.IXMLDOMNode
