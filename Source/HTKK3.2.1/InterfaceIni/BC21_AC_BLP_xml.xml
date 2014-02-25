@@ -1,0 +1,31 @@
+<HSoThueDTu>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>String</maTKhai>
+		<tenTKhai>BÁO CÁO MẤT, CHÁY BIÊN LAI THU PHÍ, LỆ PHÍ (BC21/AC)</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<noiBCao>N_4</noiBCao>
+		<ngayMatChayBLai>O_8</ngayMatChayBLai>
+	</Static>
+	<Dynamic GroupName="BKeBLaiMatChay">
+		<ChiTietBKeBLaiMatChay id="id">
+			<mauSo>E_43</mauSo>
+			<tenBLai>H_43</tenBLai>
+			<kyHieu>S_43</kyHieu>
+			<tuSoDenSo>V_43</tuSoDenSo>
+			<soLuong>AA_43</soLuong>
+			<lienBLai>AB_43</lienBLai>
+			<ghiChu>AC_43</ghiChu>
+			<ktraLoaiBLai></ktraLoaiBLai>
+		</ChiTietBKeBLaiMatChay>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<lyDoMatChayBLai>I_46</lyDoMatChayBLai>
+		<donViNhanBCao>I_48</donViNhanBCao>
+		<nguoiDaiDien>AB_49</nguoiDaiDien>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ngayBCao>AB_51</ngayBCao>
+	</Static>
+</HSoThueDTu>
