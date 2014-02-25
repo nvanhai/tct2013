@@ -542,7 +542,7 @@ Public Sub SetupData(pGrid As fpSpread)
                     Select Case .CellType
                         Case CellTypeCheckBox
                             ' Check box
-                            If UCase(GetAttribute(xmlNodeCell, "Value")) = UCase("x") Then
+                            If UCase(GetAttribute(xmlNodeCell, "Value")) = UCase("x") Or UCase(GetAttribute(xmlNodeCell, "Value")) = UCase("1") Then
                                 .Text = "1"
                             Else
                                 .Text = "0"
@@ -1235,6 +1235,9 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "22" Then changeMaToKhai = "95_BCTC"
     If strID = "95" Then changeMaToKhai = "03B_GTGT11"
     If strID = "23" Then changeMaToKhai = "01_TNCN_TTS"
+    
+    'To khai dau khi thuy dien
+    If strID = "92" Then changeMaToKhai = "01_TAIN_DK"
 End Function
 
 ' Ham change sang ma cua QLT
