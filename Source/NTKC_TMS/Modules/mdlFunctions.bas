@@ -2050,7 +2050,7 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
     Dim fldValue As String
     Dim xmlRequest As String
     Dim bPass() As Byte
-    Dim sPath As String
+    
     
     Select Case sType
     
@@ -2080,7 +2080,7 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
 '            If (Dir("c:\TempXML\", vbDirectory) = "") Then
 '                MkDir "c:\TempXML\"
 '            End If
-            
+            Dim sPath As String
             sPath = App.path & "\paramNSD.xml"
             paXmlDoc.save sPath
             
@@ -2107,9 +2107,9 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
 '            If (Dir("c:\TempXML\", vbDirectory) = "") Then
 '                MkDir "c:\TempXML\"
 '            End If
-            'Dim sParamNNT As String
-            sPath = "c:\TempXML\" & "\paramNNT.xml"
-            paXmlDoc.save sPath
+            Dim sParamNNT As String
+            sParamNNT = App.path & "\paramNNT.xml"
+            paXmlDoc.save sParamNNT
             
             'Return value from ESB
             sResult = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)
@@ -2135,9 +2135,9 @@ Public Function GetDataFromESB(ByVal sUserName As String, ByVal sPass As String,
 '            If (Dir("c:\TempXML\", vbDirectory) = "") Then
 '                MkDir "c:\TempXML\"
 '            End If
-'            Dim sParamDLT As String
-            sPath = App.path & "\paramDLT.xml"
-            paXmlDoc.save sPath
+            Dim sParamDLT As String
+            sParamDLT = App.path & "\paramDLT.xml"
+            paXmlDoc.save sParamDLT
             
             'Return value from ESB
             sResult = DataFromESB(sUrlWs, soapAct, xmlRequest, fldName, fldValue)

@@ -1,10 +1,11 @@
 <Pluc_01_1_TTDB>
 	<Dynamic GroupName="ChiTietPLucBRaChiuThueTTDB">
-<PLucBRaChiuThue id="id">
+		<PLucBRaChiuThue id="id">
 			<ct2>C_25</ct2>
 			<ct3>D_25</ct3>
 			<ct4>E_25</ct4>
 			<ct5>F_25</ct5>
+			<maHHDV>I_25</maHHDV>
 			<ct6>J_25</ct6>
 			<ct7>N_25</ct7>
 			<ct8>O_25</ct8>

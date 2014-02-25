@@ -1,19 +1,18 @@
 ﻿<HSoKhaiThue ngay_nop_tk="D_29" ky_lap_bo="D_27" loi_dinh_danh="D_33">
+	<Static GroupName="TKhaiThue">
+		<maTKhai>252</maTKhai>
+		<tenTKhai>TK thuế hoạt động cho thuê tài sản (01/KK-TTS)</tenTKhai>
+		<soLan>I_35</soLan>
+		<moTaBMau/>
+		<pbanTKhaiXML/>
+	</Static>
 	<Static GroupName="GiaHan">
 		<maLyDoGiaHan/>
 		<lyDoGiaHan/>
-	</Static>
-	<Static GroupName="TKhaiThue">
-		<nguoiKy>O_83</nguoiKy>
-		<ngayKy>O_85</ngayKy>
-		<nganhNgheKD/>
-	</Static>
-	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>E_83</tenNVienDLyThue>
-		<cchiHNghe>E_85</cchiHNghe>
-	</Static>
-	<Static GroupName="HinhThucKeKhai">
-		<quyetToanRiengTungNam>O_91</quyetToanRiengTungNam>
+	</Static>	
+		<Static GroupName="HinhThucKeKhai">
+		<quyetToanRiengTungNam>O_35</quyetToanRiengTungNam>
+		<quyetToanHetVaoNamDau>P_35</quyetToanHetVaoNamDau>
 	</Static>
 	<Static GroupName="CT21">
 		<soVBUQ>H_37</soVBUQ>
@@ -31,35 +30,39 @@
 		<ct28>I_48</ct28>
 		<ct29>I_49</ct29>
 	</Static>
-	<Static GroupName="SoThuePhaiNop">
-		<ct32>C_64</ct32>
-		<ct33>E_64</ct33>
-		<ct34>I_64</ct34>
-		<ct35>L_64</ct35>
-		<ct36>N_64</ct36>
-		<ct37>O_64</ct37>
-		<ct38>P_64</ct38>
-		<ct39>R_64</ct39>
-		<ct40>T_64</ct40>
-		<ct41>U_64</ct41>
-		<ct42>V_64</ct42>
-	</Static>
+	<Dynamic GroupName="BKeSoThuePhaiNop">
+		<SoThuePhaiNop id="id">
+			<ct32>C_64</ct32>
+			<ct33>E_64</ct33>
+			<ct34>I_64</ct34>
+			<ct35>L_64</ct35>
+			<ct36>N_64</ct36>
+			<ct37>O_64</ct37>
+			<ct38>P_64</ct38>
+			<ct39>R_64</ct39>
+			<ct40>T_64</ct40>
+			<ct41>U_64</ct41>
+			<ct42>V_64</ct42>
+		</SoThuePhaiNop>
+	</Dynamic>	
 	<Static GroupName="CT30">
-		<ct43>I_59</ct43>
-		<ct44>L_59</ct44>
-		<ct45>N_59</ct45>
-		<ct46>O_59</ct46>
-		<ct47>P_59</ct47>
-		<ct48>R_59</ct48>
-		<ct49>T_59</ct49>
-		<ct50>U_59</ct50>
-		<ct51>V_59</ct51>
+		<ct43>I_66</ct43>
+		<ct44>L_66</ct44>
+		<ct45>N_66</ct45>
+		<ct46>O_66</ct46>
+		<ct47>P_66</ct47>
+		<ct48>R_66</ct48>
+		<ct49>T_66</ct49>
+		<ct50>U_66</ct50>
+		<ct51>V_66</ct51>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<maTKhai>252</maTKhai>
-		<tenTKhai>TK thuế hoạt động cho thuê tài sản (01/KK-TTS)</tenTKhai>
-		<soLan>I_91</soLan>
-		<moTaBMau/>
-		<pbanTKhaiXML/>
+		<nguoiKy>O_83</nguoiKy>
+		<ngayKy>O_85</ngayKy>
+		<nganhNgheKD/>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>E_83</tenNVienDLyThue>
+		<cchiHNghe>E_85</cchiHNghe>
 	</Static>
 </HSoKhaiThue>
