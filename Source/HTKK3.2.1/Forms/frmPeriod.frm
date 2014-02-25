@@ -21,7 +21,7 @@ Begin VB.Form frmPeriod
       Height          =   315
       Left            =   1800
       MaxLength       =   3
-      TabIndex        =   43
+      TabIndex        =   42
       Top             =   6840
       Visible         =   0   'False
       Width           =   615
@@ -492,7 +492,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":02C8
       UserResize      =   1
       Appearance      =   1
    End
@@ -510,7 +510,7 @@ Begin VB.Form frmPeriod
       EndProperty
       Height          =   255
       Left            =   360
-      TabIndex        =   42
+      TabIndex        =   41
       Top             =   6840
       Visible         =   0   'False
       Width           =   1170
@@ -520,28 +520,9 @@ Begin VB.Form frmPeriod
       BackStyle       =   0  'Transparent
       Height          =   195
       Left            =   360
-      TabIndex        =   41
+      TabIndex        =   40
       Top             =   6960
       Width           =   45
-   End
-   Begin VB.Label Label1 
-      AutoSize        =   -1  'True
-      BackStyle       =   0  'Transparent
-      Caption         =   "LÇn"
-      BeginProperty Font 
-         Name            =   "DS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   255
-      Left            =   0
-      TabIndex        =   40
-      Top             =   0
-      Width           =   405
    End
    Begin VB.Label lblDenThang 
       AutoSize        =   -1  'True
@@ -2338,6 +2319,14 @@ Public Sub cmdOK_Click()
     Else
         strSolanBS = ""
     End If
+    
+    ' set so lan xuat ban dau tho
+    If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92" Then
+        strSoLanXuatBan = txtLanXuat.Text
+    Else
+        strSoLanXuatBan = ""
+    End If
+    
     
     If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "64" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "07" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "91" Then
         txtDay_LostFocus
@@ -5139,16 +5128,16 @@ Private Sub OptBosung_Click()
                     fpsNgaykhaiBS.Top = 1350
                     fpsNgaykhaiBS.Left = 960
                 ElseIf varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "98" Then
-                    frmKy.Height = 2350
-                    Frame2.Top = 2000
+                    frmKy.Height = 2650
+                    Frame2.Top = 2600
                     Set fpsNgaykhaiBS.Container = frmKy
-                    lblSolan.Top = 1500
+                    lblSolan.Top = 1850
                     lblSolan.Left = 3400
-                    txtSolan.Top = 1450
+                    txtSolan.Top = 1850
                     txtSolan.Left = 3800
                     txtSolan.Width = 420
                     lblSolan.Visible = True
-                    fpsNgaykhaiBS.Top = 1800
+                    fpsNgaykhaiBS.Top = 2150
                     fpsNgaykhaiBS.Left = 1600
                 ElseIf varMenuId = "99" Then
                     frmKy.Height = 1850
@@ -5564,8 +5553,8 @@ Private Sub OptChinhthuc_Click()
                     frmKy.Height = 1400
                     Frame2.Top = 1700
                 ElseIf varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "98" Then
-                    frmKy.Height = 2000
-                    Frame2.Top = 2200
+                    frmKy.Height = 2250
+                    Frame2.Top = 2600
                 ElseIf varMenuId = "99" Then
                     frmKy.Height = 1365
                     Frame2.Top = 1815
