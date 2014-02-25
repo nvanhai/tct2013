@@ -265,7 +265,7 @@ Public Sub Prepare2()
         .Sheet = k
         .ActiveSheet = .Sheet
         .Row = 1
-        .Col = .ColLetterToNumber("C")
+        .Col = .ColLetterToNumber("D")
         .CellType = CellTypeButton
         .TypeButtonTextColor = RGB(0, 0, 255)
         .TypeButtonColor = &H8000000F
@@ -1138,55 +1138,55 @@ Private Sub CheckDynamicError()
                 End If
                 
                 ' check ky hieu mau hoa don
-                If Trim(vKyHieuMauHoaDon) = "" And iWhiteRow = 0 Then
-                       If Trim(vMaHoaDon) = "TT120" Then
-                            .Col = .ColLetterToNumber("D")
-                            .CellNote = ""  'static
-                            .BackColor = mNonErrorColor
-                       Else
-                            .Col = .ColLetterToNumber("D")
-                            .CellNote = errEmty  'static
-                            .BackColor = mErrorColor
-                            iFlagEmty = 1
-                       End If
-                 Else
-                            strLoai = getLoaiHD(CStr(vMaHoaDon))
-                            result = CheckMauSoHD(CStr(vKyHieuMauHoaDon), strLoai, CStr(vMaHoaDon))
-                            If result = "1" And iWhiteRow = 0 Then
-                                .Col = .ColLetterToNumber("D")
-                                .CellNote = errMauSoHD  'static
-                                .BackColor = mErrorColor
-                                iFlagMauSoHD = 1
-                            ElseIf result = "2" And iWhiteRow = 0 Then
-                                .Col = .ColLetterToNumber("D")
-                                .CellNote = errSoLienHD  'static
-                                .BackColor = mErrorColor
-                                iFlagSoLienHD = 1
-                            Else
-                                .Col = .ColLetterToNumber("D")
-                                .CellNote = ""  'static
-                                .BackColor = mNonErrorColor
-                            End If
-                  End If
+'                If Trim(vKyHieuMauHoaDon) = "" And iWhiteRow = 0 Then
+'                       If Trim(vMaHoaDon) = "TT120" Then
+'                            .Col = .ColLetterToNumber("D")
+'                            .CellNote = ""  'static
+'                            .BackColor = mNonErrorColor
+'                       Else
+'                            .Col = .ColLetterToNumber("D")
+'                            .CellNote = errEmty  'static
+'                            .BackColor = mErrorColor
+'                            iFlagEmty = 1
+'                       End If
+'                 Else
+'                            strLoai = getLoaiHD(CStr(vMaHoaDon))
+'                            result = CheckMauSoHD(CStr(vKyHieuMauHoaDon), strLoai, CStr(vMaHoaDon))
+'                            If result = "1" And iWhiteRow = 0 Then
+'                                .Col = .ColLetterToNumber("D")
+'                                .CellNote = errMauSoHD  'static
+'                                .BackColor = mErrorColor
+'                                iFlagMauSoHD = 1
+'                            ElseIf result = "2" And iWhiteRow = 0 Then
+'                                .Col = .ColLetterToNumber("D")
+'                                .CellNote = errSoLienHD  'static
+'                                .BackColor = mErrorColor
+'                                iFlagSoLienHD = 1
+'                            Else
+'                                .Col = .ColLetterToNumber("D")
+'                                .CellNote = ""  'static
+'                                .BackColor = mNonErrorColor
+'                            End If
+'                  End If
                         ' end
                 
                  'ky hieu
-                If Trim(vKyHieuHD) = "" And iWhiteRow = 0 Then
-                    If Trim(vMaHoaDon) = "TT120" Then
-                        .Col = .ColLetterToNumber("E")
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                    Else
-                        .Col = .ColLetterToNumber("E")
-                        .CellNote = vErr
-                        .BackColor = mErrorColor
-                        iFlagvKyHieuHD = 1
-                    End If
-                 Else
-                     .Col = .ColLetterToNumber("E")
-                     .CellNote = ""
-                     .BackColor = mNonErrorColor
-                 End If
+'                If Trim(vKyHieuHD) = "" And iWhiteRow = 0 Then
+'                    If Trim(vMaHoaDon) = "TT120" Then
+'                        .Col = .ColLetterToNumber("E")
+'                        .CellNote = ""
+'                        .BackColor = mNonErrorColor
+'                    Else
+'                        .Col = .ColLetterToNumber("E")
+'                        .CellNote = vErr
+'                        .BackColor = mErrorColor
+'                        iFlagvKyHieuHD = 1
+'                    End If
+'                 Else
+'                     .Col = .ColLetterToNumber("E")
+'                     .CellNote = ""
+'                     .BackColor = mNonErrorColor
+'                 End If
                  ' so
                  If Trim(vSoHD) = "" And iWhiteRow = 0 Then
                      .Col = .ColLetterToNumber("F")
@@ -1262,8 +1262,8 @@ Private Sub CheckDynamicError()
             .SetText .ColLetterToNumber("B"), 28, IIf(iFlagNgay1Pl01 = 1, "0", "1")
             
             .SetText .ColLetterToNumber("B"), 34, IIf(iflagNgayPhatHanhHD = 1, "0", "1")
-            .SetText .ColLetterToNumber("B"), 35, IIf(iFlagMauSoHD = 1, "0", "1")
-            .SetText .ColLetterToNumber("B"), 36, IIf(iFlagSoLienHD = 1, "0", "1")
+'            .SetText .ColLetterToNumber("B"), 35, IIf(iFlagMauSoHD = 1, "0", "1")
+'            .SetText .ColLetterToNumber("B"), 36, IIf(iFlagSoLienHD = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 37, IIf(iFlagEmty = 1, "0", "1")
             
             If iFocusFlag = 1 Then
