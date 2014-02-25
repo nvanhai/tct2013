@@ -6,7 +6,7 @@ BEGIN
   DataSourceBehavior  = 0  'vbNone
   MTSTransactionMode  = 0  'NotAnMTSObject
 END
-Attribute VB_Name = "cls_01TAIN_DK"
+Attribute VB_Name = "cls_01ATNDN_DK"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
@@ -17,11 +17,9 @@ Attribute fps.VB_VarHelpID = -1
 Public Strloaitk As String
 Public StrSolanBosung As String
 
-Public strLanXuatBan As String
-
 Const SHEET_PHU_LUC_01 As Integer = 2
 Const sheetPl01_KHBS_GTGT As Integer = 3
-Private Const Row_MSTDN = 51
+Private Const Row_MSTDN = 49
 Private Const Col_MSTDN = "P"
 Private Const Col_TKCT = "R"
 Private Const Row_TKCT = 30
@@ -65,49 +63,30 @@ Public Sub Prepare1()
             
             .Col = .ColLetterToNumber("O")
             .Text = ""
-'
-'            .Col = .ColLetterToNumber("W")
-'            .Text = TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year ' temp
+            
+            .Col = .ColLetterToNumber("W")
+            .Text = TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year ' temp
         Else
             .Col = .ColLetterToNumber("O")
             .Text = TAX_Utilities_v1.Day & "/" & TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year
             
-'            .Col = .ColLetterToNumber("W")
-'            .Text = ""
+            .Col = .ColLetterToNumber("W")
+            .Text = ""
         End If
         
         SetDateFormat fps, 1, 29, .ColLetterToNumber("AM"), DDMMYYYY
-        SetDateFormat fps, 1, 68, fps.ColLetterToNumber("AR"), DDMMYYYY
+        SetDateFormat fps, 1, 74, fps.ColLetterToNumber("AR"), DDMMYYYY
         
-        .Row = 68
+        .Row = 74
         .Col = fps.ColLetterToNumber("AR")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
-
-        '--set data for phu luc 01
-        '--update 25/07/2013
-        '        .Sheet = SHEET_PHU_LUC_01
-        '        .Row = 12
-        '        .Col = .ColLetterToNumber("F")
-        '        .Text = chkDauTho
-        '
-        '        .Row = 12
-        '        .Col = .ColLetterToNumber("G")
-        '        .Text = chkCondensate
-        '
-        '        .Row = 12
-        '        .Col = .ColLetterToNumber("H")
-        '        .Text = chkKhiThienNhien
-        '
-        '        .Row = 13
-        '        .Col = .ColLetterToNumber("I")
-        '        .Text = TAX_Utilities_v1.Day & "/" & TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year
-        
-'        .Sheet = SHEET_PHU_LUC_01
-'        SetDateFormat fps, SHEET_PHU_LUC_01, 34, fps.ColLetterToNumber("AD"), DDMMYYYY
+      
+        .Sheet = SHEET_PHU_LUC_01
+        SetDateFormat fps, SHEET_PHU_LUC_01, 34, fps.ColLetterToNumber("AD"), DDMMYYYY
         '--end set for sheet Phu luc 01
-
-        'end
+        
+        
         fps.EventEnabled(EventAllEvents) = True
         
     End With
@@ -140,7 +119,8 @@ Public Sub Prepare2()
             .BackColor = mLockNonErrorColor
             .Lock = True
         End If
-        
+
+        'end
         .Sheet = 1
         mCurrentSheet = .Sheet
         fps.EventEnabled(EventAllEvents) = False
@@ -152,10 +132,6 @@ Public Sub Prepare2()
             .Row = Row_TKCT
             .Text = 1
             UpdateCell fps, .Col, .Row, .Text
-            '.Col = .ColLetterToNumber("F")
-            '.Row = 27
-            '.Text = ""
-            'UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber(Col_TKBS)
             .Row = Row_TKBS
             .Text = ""
@@ -165,22 +141,12 @@ Public Sub Prepare2()
             .Row = Row_TKCT
             .Text = ""
             UpdateCell fps, .Col, .Row, .Text
-            '.Col = .ColLetterToNumber("F")
-            '.Row = 27
-            '.Text = 1
-            'UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber(Col_TKBS)
             .Row = Row_TKBS
             .Text = StrSolanBosung
             UpdateCell fps, .Col, .Row, .Text
         End If
         'end
-        
-        ' set so lan xuat ban
-        .Col = .ColLetterToNumber("AF")
-        .Row = 23
-        .Text = strLanXuatBan
-        UpdateCell fps, .Col, .Row, .Text
         
         
         mCurrentSheet = .Sheet
@@ -278,7 +244,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 .Row = Row
                 UpdateCell fps, Col, Row, .Text
             End If
-            If Col = .ColLetterToNumber("AR") And Row = 68 Then
+            If Col = .ColLetterToNumber("AR") And Row = 74 Then
                 .GetText Col, Row, varTemp
                 If varTemp <> "" And varTemp <> "../../...." Then
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
@@ -306,22 +272,22 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 .Row = .Row + 1
             Loop Until .value = "aa"
             
-'            If Col = .ColLetterToNumber("AD") And Row = 34 + count - 1 Then
-'                .GetText Col, Row, varTemp
-'                If varTemp <> "" And varTemp <> "../../...." Then
-'                    If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
-'                        .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
-'                    Else
-'                        .SetFocus
-'                        .SetActiveCell Col, Row
-'                    End If
-'                Else
-'                 .SetText Col, Row, ""
-'                End If
-'                .Col = Col
-'                .Row = Row
-'                UpdateCell fps, Col, Row, .Text
-'            End If
+            If Col = .ColLetterToNumber("AD") And Row = 34 + count - 1 Then
+                .GetText Col, Row, varTemp
+                If varTemp <> "" And varTemp <> "../../...." Then
+                    If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+                        .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+                    Else
+                        .SetFocus
+                        .SetActiveCell Col, Row
+                    End If
+                Else
+                 .SetText Col, Row, ""
+                End If
+                .Col = Col
+                .Row = Row
+                UpdateCell fps, Col, Row, .Text
+            End If
         End If
         .EventEnabled(EventAllEvents) = True
     End With
@@ -354,180 +320,16 @@ Private Sub CheckDynamicError()
     Dim iFlagCheckMaST    As Integer, iFlagEmty As Integer
     Dim varTemp           As Variant, vMST As Variant, errMST As Variant, vTenNhaThau As Variant, errEmty As Variant
     Dim vTyLePhanBo As Variant, vSoThuePhatSinh As Variant, vGhiChu As Variant
-    
-    Dim vTongTyLe As Variant, vTongSoThuePhatSinh As Variant
-    Dim vErrorTongTyLe As Variant, vErorrTongSoThuePhatSinh As Variant
-    Dim flagTongTyLe As Integer, flagTongSoThuePhatSinh As Integer
-    
     Dim strFocusSheetName As String, strFocusRow As String, strFocusCol As String, iFocusFlag As Integer
-    
-    Dim strXuatKhau As Variant, strXuatTaiVN As Variant
-    Dim flagXuatKhau As Integer
-    Dim flagXuatKhauEmpty As Integer
-    Dim vErrorXuatKhau As Variant
-    Dim vErrorEmpty As Variant
-    Dim vErrorDVUQ As Variant
-    Dim flagNgayHD As Integer
-    Dim flagTyGia As Integer
-    Dim flagDVUyQuyen As Integer
-    Dim flagDVUyQuyenEmpty As Integer
-    Dim vDVUyQuyen, vDaiLyThue As Variant
-    Dim vNgayHD As Variant
-    Dim vTyGia As Variant
-    
-    
-    Dim iFlagCheckData As Boolean
     
     With fps
         iCurrentSheet = .Sheet
         .Sheet = .SheetCount
         .GetText .ColLetterToNumber("E"), 13, errMST
         .GetText .ColLetterToNumber("E"), 19, errEmty
-        
-        .GetText .ColLetterToNumber("E"), 22, vErrorXuatKhau
-        .GetText .ColLetterToNumber("E"), 23, vErrorEmpty
-        .GetText .ColLetterToNumber("E"), 25, vErrorDVUQ
-        
-        .GetText .ColLetterToNumber("E"), 28, vErrorTongTyLe
-        
 
         iFlagCheckMaST = 0
         iFlagEmty = 0
-        
-        
-        ' kiem tra to khai
-        .Sheet = 1
-        .GetText .ColLetterToNumber("Y"), 28, strXuatKhau
-        .GetText .ColLetterToNumber("AS"), 28, strXuatTaiVN
-        .GetText .ColLetterToNumber("AM"), 29, vNgayHD
-        .GetText .ColLetterToNumber("AV"), 62, vTyGia
-        
-        .GetText .ColLetterToNumber("Q"), 49, vDVUyQuyen
-        .GetText .ColLetterToNumber("Y"), 49, vDaiLyThue
-        
-        If Trim(strXuatKhau) = "1" And Trim$(strXuatTaiVN) = "1" Then
-            .Col = .ColLetterToNumber("Y")
-            .Row = 28
-            .CellNote = vErrorXuatKhau
-            .BackColor = mErrorColor
-            
-            .Col = .ColLetterToNumber("AS")
-            .Row = 28
-            .CellNote = vErrorXuatKhau
-            .BackColor = mErrorColor
-            flagXuatKhau = 1
-        ElseIf Trim(strXuatKhau) = "0" And Trim$(strXuatTaiVN) = "0" Then
-            .Col = .ColLetterToNumber("Y")
-            .Row = 28
-            .CellNote = vErrorEmpty
-            .BackColor = mErrorColor
-            
-            .Col = .ColLetterToNumber("AS")
-            .Row = 28
-            .CellNote = vErrorEmpty
-            .BackColor = mErrorColor
-            flagXuatKhauEmpty = 1
-            
-        Else
-            .Col = .ColLetterToNumber("Y")
-            .Row = 28
-            .CellNote = ""
-            .BackColor = mNonErrorColor
-            
-            .Col = .ColLetterToNumber("AS")
-            .Row = 28
-            .CellNote = ""
-            .BackColor = mNonErrorColor
-        End If
-        
-        ' kiem tra neu chon chi tieu [09] bat buoc nhap chi tieu [10] va [35]
-        If Trim$(strXuatTaiVN) = "1" Then
-            If Trim$(vNgayHD) = "" Or Trim$(vNgayHD) = "../../...." Then
-                .Col = .ColLetterToNumber("AM")
-                .Row = 29
-                .CellNote = vErrorEmpty
-                .BackColor = mErrorColor
-                flagNgayHD = 1
-            Else
-                .Col = .ColLetterToNumber("AM")
-                .Row = 29
-                .CellNote = ""
-                .BackColor = mNonErrorColor
-            End If
-            
-            If Val(vTyGia) = 0 Then
-                .Col = .ColLetterToNumber("AV")
-                .Row = 62
-                .CellNote = vErrorEmpty
-                .BackColor = mErrorColor
-                flagTyGia = 1
-            Else
-                .Col = .ColLetterToNumber("AV")
-                .Row = 62
-                .CellNote = ""
-                .BackColor = mNonErrorColor
-            End If
-        Else
-            .Col = .ColLetterToNumber("AM")
-            .Row = 29
-            .CellNote = ""
-            .BackColor = mNonErrorColor
-        
-            .Col = .ColLetterToNumber("AV")
-            .Row = 62
-            .CellNote = ""
-            .BackColor = mNonErrorColor
-        End If
-        
-        ' kiem tra chi duoc chon  uy quyen hoac dai ly thue
-        If isCheckTTDLT = True Then
-            If Trim$(vDVUyQuyen) = "1" And Trim$(vDaiLyThue) = "1" Then
-                .Col = .ColLetterToNumber("Q")
-                .Row = 49
-                .CellNote = vErrorDVUQ
-                .BackColor = mErrorColor
-                
-                .Col = .ColLetterToNumber("Y")
-                .Row = 49
-                .CellNote = vErrorDVUQ
-                .BackColor = mErrorColor
-                
-                flagDVUyQuyen = 1
-            ElseIf Trim$(vDVUyQuyen) = "0" And Trim$(vDaiLyThue) = "0" Then
-                .Col = .ColLetterToNumber("Q")
-                .Row = 49
-                .CellNote = vErrorEmpty
-                .BackColor = mErrorColor
-                
-                .Col = .ColLetterToNumber("Y")
-                .Row = 49
-                .CellNote = vErrorEmpty
-                .BackColor = mErrorColor
-                flagDVUyQuyenEmpty = 1
-            Else
-                .Col = .ColLetterToNumber("Q")
-                .Row = 49
-                .CellNote = ""
-                .BackColor = mNonErrorColor
-                
-                .Col = .ColLetterToNumber("Y")
-                .Row = 49
-                .CellNote = ""
-                .BackColor = mNonErrorColor
-            
-            End If
-        Else
-                .Col = .ColLetterToNumber("Q")
-                .Row = 49
-                .CellNote = ""
-                .BackColor = mNonErrorColor
-                
-                .Col = .ColLetterToNumber("Y")
-                .Row = 49
-                .CellNote = ""
-                .BackColor = mNonErrorColor
-                        
-        End If
         
         .Sheet = iCurrentSheet
         .Sheet = SHEET_PHU_LUC_01
@@ -547,9 +349,8 @@ Private Sub CheckDynamicError()
                 .GetText .ColLetterToNumber("U"), .Row, vTyLePhanBo
                 .GetText .ColLetterToNumber("AB"), .Row, vSoThuePhatSinh
                 .GetText .ColLetterToNumber("AL"), .Row, vGhiChu
-                If Trim$(vMST) <> "" Or Trim$(vTenNhaThau) <> "" Or Val(vTyLePhanBo) <> "0" Or Val(vSoThuePhatSinh) <> "0" Or Trim$(vGhiChu) <> "" Then
+                If Trim$(vMST) <> "" Or Trim$(vTenNhaThau) <> "" Or Trim$(vTyLePhanBo) <> "0" Or Trim$(vSoThuePhatSinh) <> "0" Or Trim$(vGhiChu) <> "" Then
                     iWhiteRow = 0
-                    iFlagCheckData = True
                 End If
                 If Trim$(vMST) <> vbNullString Then
                     vMST = Replace(vMST, " ", "")
@@ -612,41 +413,12 @@ Private Sub CheckDynamicError()
                 .Col = .ColLetterToNumber("B")
                 .Row = .Row + 1
             Loop Until .Text = "aa"
-            
-            ' kiem tra tong ty le va tong so thue
-            .GetText .ColLetterToNumber("U"), 22, vTongTyLe
-             'neu dong co chua du lieu thi kiem tra cac rang buoc trong cac chi tieu
-             Const colorCell = 16709097
-            If iFlagCheckData Then
-               'lay tong ty le chia TNCT
-                .GetText .ColLetterToNumber("U"), .MaxRows - 6, vTongTyLe
-                'check tong TNCT phai = 100
-                If Val(vTongTyLe) <> 100 Then
-                    .Col = .ColLetterToNumber("U")
-                    .Row = .MaxRows - 6
-                    .BackColor = mErrorColor
-                    .CellNote = vErrorTongTyLe
-                    flagTongTyLe = 1
-                Else
-                    .Col = .ColLetterToNumber("U")
-                    .Row = .MaxRows - 6
-                    .BackColor = colorCell
-                    .CellNote = ""
-                End If
-            End If
+
         End If
 
         .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), 19, IIf(iFlagEmty = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 13, IIf(iFlagCheckMaST = 1, "0", "1")
-        .SetText .ColLetterToNumber("B"), 28, IIf(flagTongTyLe = 1, "0", "1")
-        
-        .SetText .ColLetterToNumber("B"), 22, IIf(flagXuatKhau = 1, "0", "1")
-        .SetText .ColLetterToNumber("B"), 23, IIf(flagNgayHD = 1, "0", "1")
-        .SetText .ColLetterToNumber("B"), 24, IIf(flagTyGia = 1, "0", "1")
-        .SetText .ColLetterToNumber("B"), 25, IIf(flagDVUyQuyen = 1, "0", "1")
-        .SetText .ColLetterToNumber("B"), 26, IIf(flagDVUyQuyenEmpty = 1, "0", "1")
-        .SetText .ColLetterToNumber("B"), 27, IIf(flagXuatKhauEmpty = 1, "0", "1")
         'CheckErrorMST
     End With
     
@@ -874,7 +646,6 @@ Private Sub UpdateSheets()
             Next
 
         End If
-        
         'updated phu luc 01
         .Sheet = SHEET_PHU_LUC_01
         mCurrentSheet = .Sheet
@@ -884,7 +655,6 @@ Private Sub UpdateSheets()
                 UpdateCell fps, lCol, lRow, varTemp
         Next
         'end pl 01
-        
         .Sheet = .ActiveSheet
         .EventEnabled(EventAllEvents) = True
     End With
