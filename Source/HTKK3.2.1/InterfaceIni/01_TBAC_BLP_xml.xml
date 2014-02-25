@@ -1,0 +1,30 @@
+<HSoThueDTu>
+	<Static GroupName="TKhaiThue">
+		<maTKhai></maTKhai>
+		<tenTKhai>BÁO CÁO PHÁT HÀNH  BIÊN LAI THU TIỀN PHÍ, LỆ PHÍ (TB01/AC)</tenTKhai>
+		<moTaBMau></moTaBMau>
+	</Static>
+	<Dynamic GroupName="BienLai">
+		<ChiTietBienLai id="id">
+			<kyHieuMau>J_35</kyHieuMau>
+			<tenBienLai>D_35</tenBienLai>
+			<kyHieu>L_35</kyHieu>
+			<soLuong>N_35</soLuong>
+			<tuSoDenSo></tuSoDenSo>
+			<ngayBDauSDung>T_35</ngayBDauSDung>
+			<DoanhNghiepIn>
+				<mst TINType="1">AE_35</mst>
+				<ten>AD_35</ten>
+			</DoanhNghiepIn>
+			<HopDongDatIn>
+				<so></so>
+				<ngay></ngay>
+			</HopDongDatIn>
+		</ChiTietBienLai>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tenCQTTNhanTBao>K_44</tenCQTTNhanTBao>
+		<ngayKy>AA_44</ngayKy>
+		<thuTruongDonVi>AA_46</thuTruongDonVi>
+	</Static>
+</HSoThueDTu>

@@ -3645,7 +3645,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         End If
                 
         'to TB03,BC21 khong co ky ke khai
-        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "67" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "66" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "09" Then
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "67" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "66" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "09" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "10" Then
 
             If xmlTK.getElementsByTagName("kieuKy").length > 0 Then
                 xmlTK.getElementsByTagName("kieuKy")(0).Text = strKK
@@ -7492,16 +7492,16 @@ Private Sub Form_Resize()
     SetFormCaption Me, imgCaption, lblCaption
 
     'Trien khai GD1
-    If TK_GD1 = True Then
-        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "17" _
-           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "42" _
-           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "43" _
-           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "59" _
-           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "76" _
-           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "41" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "100_1" Then
-            InvisibleXmlButton
-        End If
-    End If
+'    If TK_GD1 = True Then
+'        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "17" _
+'           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "42" _
+'           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "43" _
+'           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "59" _
+'           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "76" _
+'           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "41" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "100_1" Then
+'            InvisibleXmlButton
+'        End If
+'    End If
 
     'End trien khai GD1
     'fpSpread1.Visible = True

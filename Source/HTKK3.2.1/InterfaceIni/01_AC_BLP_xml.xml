@@ -1,0 +1,26 @@
+<HSoThueDTu>
+	<Static GroupName="TKhaiThue">
+		<maTKhai></maTKhai>
+		<tenTKhai>BÁO CÁO VỀ VIỆC NHẬN IN BIÊN LAI THU PHÍ, LỆ PHÍ (BC01/AC)</tenTKhai>
+		<moTaBMau></moTaBMau>
+	</Static>
+	<Dynamic GroupName="BKeTinhHinhNhanIn">
+		<ChiTietBKeTinhHinhNhanIn id="id">
+			<mst>C_22</mst>
+			<ten>D_22</ten>
+			<diaChi></diaChi>
+			<soHopDong>F_22</soHopDong>
+			<ngayHopDong>G_22</ngayHopDong>
+			<kyHieuMauBLai>J_22</kyHieuMauBLai>
+			<tenBLai>I_22</tenBLai>
+			<kyHieuBLai>K_22</kyHieuBLai>
+			<tuSo>L_22</tuSo>
+			<denSo>M_22</denSo>
+			<soLuong>Q_22</soLuong>
+		</ChiTietBKeTinhHinhNhanIn>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<nguoiDaiDien>J_30</nguoiDaiDien>
+		<ngayLapBCao>J_32</ngayLapBCao>
+	</Static>
+</HSoThueDTu>
