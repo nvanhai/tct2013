@@ -144,4 +144,5 @@
 	<Infor ID="0148" Msg="Kể từ 17/02/2014 trở đi phải kê khai tờ khai bổ sung bằng HTKK phiên bản 3.2.0 trở lên"/>
 	<Infor ID="0149" Msg="Kh«ng cã d÷ liÖu xml cña tê khai."/>
 	<Infor ID="0150" Msg="Tờ khai này không nhận mã vạch. Đề nghị nhập tay vào hệ thống"/>
+	<Infor ID="0151" Msg="Cài đặt"/>
 </Message>

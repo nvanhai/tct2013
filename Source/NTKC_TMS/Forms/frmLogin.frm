@@ -156,8 +156,9 @@ Private SHA1Hash As New SHA1Hash
 Private Base64Unicode As New Base64Unicode
 'Lay thong tin NNT tu ESB
 Private xmlResultNSD As MSXML.DOMDocument
-Dim WithEvents cmdSetting As VB.CommandButton
-Attribute cmdSetting.VB_VarHelpID = -1
+'Dim WithEvents cmdSetting As VB.CommandButton
+Dim WithEvents pcBox As VB.PictureBox
+Attribute pcBox.VB_VarHelpID = -1
 
 Private Sub cmdClose_Click()
     Unload Me
@@ -236,16 +237,31 @@ End Sub
 
 Private Sub Form_Load()
     SetControlCaption Me, "frmLogin"
-
-    Set cmdSetting = Me.Controls.Add("vb.commandbutton", "cmdSetting")
-    With cmdSetting
+    
+'    Set cmdSetting = Me.Controls.Add("vb.commandbutton", "cmdSetting")
+'
+'
+'    With cmdSetting
+'        .Visible = False
+'        .caption = GetAttribute(GetMessageCellById("0151"), "Msg")
+'        .Width = 960
+'        .Height = 375
+'        .Top = 1650
+'        .Left = 70
+'        .CausesValidation = False
+'    End With
+    
+    Set pcBox = Me.Controls.Add("vb.picturebox", "pcBox")
+    
+    With pcBox
         .Visible = True
-        .caption = "Setting"
-        .Width = 960
+        .Width = 480
         .Height = 375
+        .Picture = LoadPicture(GetAbsolutePath("..\Pictures\hethong.gif"))
         .Top = 1650
         .Left = 70
         .CausesValidation = False
+        '.AutoSize = True
     End With
     
     'load xml config'
@@ -255,12 +271,19 @@ Private Sub Form_Load()
     End If
     ' end xml config
 End Sub
-Private Sub cmdSetting_Click()
+'Private Sub cmdSetting_Click()
+'
+'    'MsgBox "You Clicked the Command button"
+'    frmSetting.Show
+'
+'End Sub
+Private Sub pcBox_Click()
     
     'MsgBox "You Clicked the Command button"
     frmSetting.Show
     
 End Sub
+
 Private Sub Form_Resize()
     SetFormCaption Me, imgCaption, lblCaption
 End Sub
@@ -316,12 +339,12 @@ Private Function IsValidUserESB() As Integer
             Exit Function
         Else
 
-            If (Dir("c:\TempXML\", vbDirectory) = "") Then
-                MkDir "c:\TempXML\"
-            End If
+'            If (Dir("c:\TempXML\", vbDirectory) = "") Then
+'                MkDir "c:\TempXML\"
+'            End If
 
             Dim sFileName As String
-            sFileName = "c:\TempXML\ResultNSD.xml"
+            sFileName = App.path & "\ResultNSD.xml"
             xmlResultNSD.save sFileName
         
             If (InStr(xmlResultNSD.xml, "Status") <= 0) Then
