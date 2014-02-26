@@ -51,7 +51,7 @@ Const NGAY_HOP_DONG_DL_ROW = 28
 Const NGAY_HOP_DONG_DL_COL = "N"
 
 ' Thong tin nganh nghe KD va to khai PS
-Const NGANH_NGHE_KD_ROW = 74
+Const NGANH_NGHE_KD_ROW = 77
 Const NGANH_NGHE_KD_COL = "K"
 
 
