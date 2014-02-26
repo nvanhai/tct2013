@@ -492,7 +492,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":02C8
+      SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
    End
@@ -2321,7 +2321,7 @@ Public Sub cmdOK_Click()
     End If
     
     ' set so lan xuat ban dau tho
-    If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92" Then
+    If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98" Then
         strSoLanXuatBan = txtLanXuat.Text
     Else
         strSoLanXuatBan = ""
