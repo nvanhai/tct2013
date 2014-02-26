@@ -247,7 +247,7 @@ Dim itemp As Variant, temp As Variant
 Dim cValue As Variant
 
 Dim tempRow As MY_ROW
-Dim arrRow() As MY_ROW, arrRow2() As MY_ROW, arrRow3() As MY_ROW, arrRow4() As MY_ROW
+Dim ArrRow() As MY_ROW, arrRow2() As MY_ROW, arrRow3() As MY_ROW, arrRow4() As MY_ROW
 Dim tempValue As Variant
 Dim varTemp As Variant
 
@@ -285,7 +285,7 @@ End Sub
 Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
 Dim i As Integer, iCol As Long, iRow As Long
 Dim countRowDyn As Long, coundtRowDel As Long
-Dim arrRow() As MY_ROW
+Dim ArrRow() As MY_ROW
 Dim tempRow As MY_ROW
 Dim tempValue As Variant, tempGroup As Variant, tempMaNhom As Variant
 Dim tCol As Long, tRow As Long
@@ -1893,6 +1893,15 @@ Public Sub UpdateSheet()
     Dim lCol As Long, lRow As Long
     Dim xmlCellNode As MSXML.IXMLDOMNodeList
     Dim xmlCellNodeData As MSXML.IXMLDOMNode
+    
+    ' xu ly phan bo ma hoa don ban 321 in datafile 320
+    Dim temp1 As Variant
+    Dim xmlCellNodeData1 As MSXML.IXMLDOMNode
+    Dim xmlCellNodeData2 As MSXML.IXMLDOMNode
+    Dim xmlCellNodeData3 As MSXML.IXMLDOMNode
+    Dim xmlCellNodeData4 As MSXML.IXMLDOMNode
+    ' end
+    
     With fps
         .Sheet = 1
         temp = mCurrentSheet
@@ -1903,6 +1912,36 @@ Public Sub UpdateSheet()
             UpdateCell fps, lCol, lRow, varTemp
         Next
          
+         
+        .Sheet = 2
+        mCurrentSheet = .Sheet
+        blCheck_S2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        If blCheck_S2 = True Then
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(.Sheet - 1).getElementsByTagName("Cell")
+                    ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+                    .GetText lCol, lRow, varTemp
+                    UpdateCell fps, lCol, lRow, varTemp
+            Next
+            
+            ' xu ly truong hop datafile ban 320 se set encode cell dau tien = 0 (bo ma hoa don)
+            Set xmlCellNodeData4 = TAX_Utilities_v1.Data(1).getElementsByTagName("Sections").Item(0)
+            temp1 = GetAttribute(xmlCellNodeData4, "Version")
+            If Val(temp1) = 320 Then
+                For Each xmlCellNodeData1 In TAX_Utilities_v1.Data(1).getElementsByTagName("Section")
+                    If GetAttribute(xmlCellNodeData1, "Dynamic") = "1" Then
+                        For Each xmlCellNodeData2 In xmlCellNodeData1.childNodes
+                            Set xmlCellNodeData3 = xmlCellNodeData2.firstChild
+                            If GetAttribute(xmlCellNodeData3, "FirstCell") <> vbNullString Then
+                                SetAttribute xmlCellNodeData3, "Encode", "0"
+                            End If
+                        Next
+                    End If
+                Next
+            End If
+            
+            ' end xu ly data data
+        End If
+          
         ' Update lai sheet KHBS
         .Sheet = .SheetCount - 1
         mCurrentSheet = .Sheet
@@ -2169,7 +2208,7 @@ End Sub
 Public Sub LockCellBySheet()
     Dim i As Integer
     Dim a As Double, b As Double, c As Double
-    Dim arrRow As Variant, ArrCol As Variant
+    Dim ArrRow As Variant, ArrCol As Variant
     Dim arrCellTag() As String
     Dim cCol As Long, cRow As Long
     Dim varTemp As Variant

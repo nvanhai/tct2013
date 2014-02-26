@@ -1302,16 +1302,16 @@ End Sub
 'some special data that we want to save to data files
 Public Sub SaveExceptionData()
     Dim i As Long, DataText As Variant
-    Dim arrRow As Variant, ArrCol As Variant
+    Dim ArrRow As Variant, ArrCol As Variant
     Dim arrCellTag() As String
     With fps
         .Sheet = 1
         mCurrentSheet = .Sheet
         'J10 , L10, L16, L17, L20
-        arrRow = Array(10, 10, 16, 17, 20)
+        ArrRow = Array(10, 10, 16, 17, 20)
         ArrCol = Array("J", "L", "L", "L", "L")
-        For i = 0 To UBound(arrRow)
-            .Row = arrRow(i)
+        For i = 0 To UBound(ArrRow)
+            .Row = ArrRow(i)
             .Col = .ColLetterToNumber(ArrCol(i))
             UpdateCell fps, .Col, .Row, .value
         Next
@@ -2432,7 +2432,7 @@ End Function
 Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer)
     Dim i As Integer
     Dim a As Double, b As Double, c As Double
-    Dim arrRow As Variant, ArrCol As Variant
+    Dim ArrRow As Variant, ArrCol As Variant
     Dim arrCellTag() As String
     Dim cCol As Long, cRow As Long
     Dim varTemp As Variant
@@ -2510,6 +2510,15 @@ Public Sub UpdateSheet()
     Dim lCol As Long, lRow As Long
     Dim xmlCellNode As MSXML.IXMLDOMNodeList
     Dim xmlCellNodeData As MSXML.IXMLDOMNode
+    
+    ' xu ly phan bo ma hoa don ban 321 in datafile 320
+    Dim temp1 As Variant
+    Dim xmlCellNodeData1 As MSXML.IXMLDOMNode
+    Dim xmlCellNodeData2 As MSXML.IXMLDOMNode
+    Dim xmlCellNodeData3 As MSXML.IXMLDOMNode
+    Dim xmlCellNodeData4 As MSXML.IXMLDOMNode
+    ' end
+    
     With fps
         .Sheet = 1
         temp = mCurrentSheet
@@ -2527,11 +2536,29 @@ Public Sub UpdateSheet()
         mCurrentSheet = k
         blCheck_S2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         If blCheck_S2 = True Then
-            For Each xmlCellNodeData In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(k - 1).getElementsByTagName("Cell")
                 ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                 .GetText lCol, lRow, varTemp
                 UpdateCell fps, lCol, lRow, varTemp
             Next
+            
+            ' xu ly truong hop datafile ban 320 se set encode cell dau tien = 0 (bo ma hoa don)
+            Set xmlCellNodeData4 = TAX_Utilities_v1.Data(k - 1).getElementsByTagName("Sections").Item(0)
+            temp1 = GetAttribute(xmlCellNodeData4, "Version")
+            If Val(temp1) = 320 Then
+                For Each xmlCellNodeData1 In TAX_Utilities_v1.Data(k - 1).getElementsByTagName("Section")
+                    If GetAttribute(xmlCellNodeData1, "Dynamic") = "1" Then
+                        For Each xmlCellNodeData2 In xmlCellNodeData1.childNodes
+                            Set xmlCellNodeData3 = xmlCellNodeData2.firstChild
+                            If GetAttribute(xmlCellNodeData3, "FirstCell") <> vbNullString Then
+                                SetAttribute xmlCellNodeData3, "Encode", "0"
+                            End If
+                        Next
+                    End If
+                Next
+            End If
+            
+            ' end xu ly data data
          End If
     Next
 '        .Sheet = .SheetCount - 1

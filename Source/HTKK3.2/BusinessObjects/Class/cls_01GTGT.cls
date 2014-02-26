@@ -292,7 +292,7 @@ End Sub
 Public Sub Prepare2()
     Dim i As Long, DataText As Variant
     Dim arrCellTag() As String
-    Dim arrRow As Variant, ArrCol As Variant
+    Dim ArrRow As Variant, ArrCol As Variant
     Dim arrRowChange As Variant, arrColChange As Variant
     Dim intCtrl As Integer
     Dim strId As Variant
@@ -941,7 +941,7 @@ End Sub
 Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer)
     Dim i As Integer
     Dim a As Double, b As Double, c As Double
-    Dim arrRow As Variant, ArrCol As Variant
+    Dim ArrRow As Variant, ArrCol As Variant
     Dim arrCellTag() As String
     Dim cCol As Long, cRow As Long
     Dim varTemp As Variant
@@ -2872,15 +2872,15 @@ End Sub
 'some special data that we want to save to data files
 Public Sub SaveExceptionData()
     Dim i As Long, DataText As Variant
-    Dim arrRow As Variant, ArrCol As Variant
+    Dim ArrRow As Variant, ArrCol As Variant
     Dim arrCellTag() As String
     With fps
         .Sheet = 1
         mCurrentSheet = .Sheet
-        arrRow = Array(10, 10, 16, 19, 19, 21, 21, 28, 28, 30, 31, 33, 20, 22, 23, 24, 23, 24)
+        ArrRow = Array(10, 10, 16, 19, 19, 21, 21, 28, 28, 30, 31, 33, 20, 22, 23, 24, 23, 24)
         ArrCol = Array("J", "L", "L", "J", "L", "J", "L", "J", "L", "L", "L", "L", "J", "J", "J", "J", "L", "L")
-        For i = 0 To UBound(arrRow)
-            .Row = arrRow(i)
+        For i = 0 To UBound(ArrRow)
+            .Row = ArrRow(i)
             .Col = .ColLetterToNumber(ArrCol(i))
             UpdateCell fps, .Col, .Row, .value
         Next
@@ -4390,6 +4390,15 @@ Public Sub UpdateSheet()
     Dim lCol As Long, lRow As Long
     Dim xmlCellNode As MSXML.IXMLDOMNodeList
     Dim xmlCellNodeData As MSXML.IXMLDOMNode
+    
+    ' xu ly phan bo ma hoa don ban 321 in datafile 320
+    Dim temp1 As Variant
+    Dim xmlCellNodeData1 As MSXML.IXMLDOMNode
+    Dim xmlCellNodeData2 As MSXML.IXMLDOMNode
+    Dim xmlCellNodeData3 As MSXML.IXMLDOMNode
+    Dim xmlCellNodeData4 As MSXML.IXMLDOMNode
+    ' end
+
     With fps
         .Sheet = 1
         temp = mCurrentSheet
@@ -4414,6 +4423,24 @@ Public Sub UpdateSheet()
                 .GetText lCol, lRow, varTemp
                 UpdateCell fps, lCol, lRow, varTemp
             Next
+            
+            ' xu ly truong hop datafile ban 320 se set encode cell dau tien = 0 (bo ma hoa don)
+            Set xmlCellNodeData4 = TAX_Utilities_v1.Data(1).getElementsByTagName("Sections").Item(0)
+            temp1 = GetAttribute(xmlCellNodeData4, "Version")
+            If Val(temp1) = 320 Then
+                For Each xmlCellNodeData1 In TAX_Utilities_v1.Data(1).getElementsByTagName("Section")
+                    If GetAttribute(xmlCellNodeData1, "Dynamic") = "1" Then
+                        For Each xmlCellNodeData2 In xmlCellNodeData1.childNodes
+                            Set xmlCellNodeData3 = xmlCellNodeData2.firstChild
+                            If GetAttribute(xmlCellNodeData3, "FirstCell") <> vbNullString Then
+                                SetAttribute xmlCellNodeData3, "Encode", "0"
+                            End If
+                        Next
+                    End If
+                Next
+            End If
+            
+            ' end xu ly data data
          End If
         .Sheet = 3
         mCurrentSheet = 3
@@ -4424,6 +4451,25 @@ Public Sub UpdateSheet()
                 .GetText lCol, lRow, varTemp
                 UpdateCell fps, lCol, lRow, varTemp
             Next
+            
+            
+            ' xu ly truong hop datafile ban 320 se set encode cell dau tien = 0 (bo ma hoa don)
+            Set xmlCellNodeData4 = TAX_Utilities_v1.Data(2).getElementsByTagName("Sections").Item(0)
+            temp1 = GetAttribute(xmlCellNodeData4, "Version")
+            If Val(temp1) = 320 Then
+                For Each xmlCellNodeData1 In TAX_Utilities_v1.Data(2).getElementsByTagName("Section")
+                    If GetAttribute(xmlCellNodeData1, "Dynamic") = "1" Then
+                        For Each xmlCellNodeData2 In xmlCellNodeData1.childNodes
+                            Set xmlCellNodeData3 = xmlCellNodeData2.firstChild
+                            If GetAttribute(xmlCellNodeData3, "FirstCell") <> vbNullString Then
+                                SetAttribute xmlCellNodeData3, "Encode", "0"
+                            End If
+                        Next
+                    End If
+                Next
+            End If
+            
+            ' end xu ly data data
         End If
         .Sheet = 4
         mCurrentSheet = 4
@@ -4566,7 +4612,7 @@ Sub CellLock(ByVal Col As Long, ByVal Row As Long)
 
     Dim i As Integer
     Dim a As Double, b As Double, c As Double
-    Dim arrRow As Variant, ArrCol As Variant
+    Dim ArrRow As Variant, ArrCol As Variant
     Dim arrCellTag() As String
     Dim cCol As Long, cRow As Long
     Dim varTemp As Variant
@@ -4581,23 +4627,23 @@ Sub CellLock(ByVal Col As Long, ByVal Row As Long)
                mCurrentSheet = .Sheet
                GetCellSpan fps, Col, Row
                If Row = S1ChkRow And Col = .ColLetterToNumber(S1ChkCol) Then
-                   arrRow = Array(27, 27, 28, 30, 31, 31, 32, 33, 33, 34, 34, 35, 35)
+                   ArrRow = Array(27, 27, 28, 30, 31, 31, 32, 33, 33, 34, 34, 35, 35)
                    ArrCol = Array("J", "L", "L", "J", "J", "L", "J", "J", "L", "J", "L", "J", "L")
                    .Col = .ColLetterToNumber("I")
                    .Row = 23
                    If .Text = "1" Then
-                       For i = 0 To UBound(arrRow)
-                           .Row = arrRow(i)
+                       For i = 0 To UBound(ArrRow)
+                           .Row = ArrRow(i)
                            .Col = .ColLetterToNumber(ArrCol(i))
                            .Text = "0"
                            UpdateCell fps, .Col, .Row, .Text
                            .Lock = True
                        Next
                    ElseIf .Text = "0" Then
-                       For i = 0 To UBound(arrRow)
-                           .Row = arrRow(i)
+                       For i = 0 To UBound(ArrRow)
+                           .Row = ArrRow(i)
                            .Col = .ColLetterToNumber(ArrCol(i))
-                           If (ArrCol(i) = "J" Or ArrCol(i) = "L") And (arrRow(i) = 31 Or arrRow(i) = 35) Then
+                           If (ArrCol(i) = "J" Or ArrCol(i) = "L") And (ArrRow(i) = 31 Or ArrRow(i) = 35) Then
                                .Lock = True
                            Else
                                .Lock = False
@@ -4948,7 +4994,7 @@ End Sub
 Public Sub LockCellBySheet()
     Dim i As Integer
     Dim a As Double, b As Double, c As Double
-    Dim arrRow As Variant, ArrCol As Variant
+    Dim ArrRow As Variant, ArrCol As Variant
     Dim arrCellTag() As String
     Dim cCol As Long, cRow As Long
     Dim varTemp As Variant
