@@ -7414,7 +7414,7 @@ Private Sub Form_Load()
     ' end BC26
     If Not objTaxBusiness Is Nothing Then
          ' set lan xuat ban DK
-        If idMenu = "92" Then
+        If idMenu = "92" Or idMenu = "98" Then
             objTaxBusiness.strLanXuatBan = strSoLanXuatBan
         End If
         

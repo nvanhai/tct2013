@@ -91,7 +91,13 @@
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01B_TNDN" InterfaceIni="..\InterfaceIni\KHBS_01B_TNDN.xml" ReportIni="..\ReportIni\KHBS_01B_TNDN.xml"/>
 		</Validity>
 	</Menu>
-	
+	<Menu ID="99" PopID="101" ParentID="101_2" Caption="TK TNDN TT đối với khí t/nhiên(01B/TNDN-DK)" FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tndn.bmp">
+		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\excel\01B_TNDN_DK.xls" ReportTemplate="..\ReportTemplates\excel\01B_TNDN_DK.xls" Class="TAX_Business.cls_01BTNDN_DK" Class2="TAX_Business.clsReport002">
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01B_TNDN_DK" InterfaceIni="..\InterfaceIni\01B_TNDN_DK.xml" ReportIni="..\ReportIni\01B_TNDN_DK.xml"/>
+			<Sheet ID="01-1" Caption="01/PL-DK" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01B_1_TNDN_DK" InterfaceIni="..\InterfaceIni\01B_1_TNDN_DK.xml" ReportIni="..\ReportIni\01B_1_TNDN_DK.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01B_TNDN_DK" InterfaceIni="..\InterfaceIni\KHBS_01A_TNDN.xml" ReportIni="..\ReportIni\KHBS_01A_TNDN.xml"/>
+		</Validity>
+	</Menu>
 	<Menu ID="73" PopID="101" ParentID="101_2" Caption="TK TNDN cho chuyển nhượng BĐS (02/TNDN)" FormName="" Year="1" Month="0" ThreeMonth="1" Day="1" FinanceYear="1" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\excel\02_TNDN.xls" ReportTemplate="..\ReportTemplates\excel\02_TNDN.xls" Class="TAX_Business_v1.cls_02TNDN" Class2="TAX_Business_v1.clsReport002">
 			<Sheet ID="02" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_TNDN" InterfaceIni="..\InterfaceIni\02_TNDN.xml" ReportIni="..\ReportIni\02_TNDN.xml"/>		
