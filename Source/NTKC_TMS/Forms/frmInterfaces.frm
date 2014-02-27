@@ -2466,21 +2466,27 @@ Private Sub Command1_Click()
 'str2 = "aa320022300032126   012014001001002002<S01_2><S>01GTKT~01GTKT2/009~K002~S002~01/01/2014~Nguyen Van A~0102030405~Linh kien dien tu~120000000~10~12000000~~02GTTT~02GTTT3/009~K003~S003~02/01/2014~Le Thi Rieng~2222222222~Chuot may tinh~80000000~5~4000000~</S><S>200000000~16000000</S></S01_2>"
 'Barcode_Scaned str2
 
-''02-GTGT-THANG-BS
-str2 = "bs321022300032126   01201400700700100301/0114/06/2006<S01><S></S><S>1100000~0~2000000~100000~0~0~0~0~100000~0~1200000~100000~400000~0~700000</S><S>~CMCer~~15/02/2014~~1~1~0</S></S01>"
-Barcode_Scaned str2
-str2 = "bs321022300032126   012014007007002003<SKHBS><S>ThuÕ GTGT ch­a ®­îc hoµn kú tr­íc chuyÓn sang~21~1500000~1100000~-400000~Hµng ho¸, dÞch vô mua vµo trong kú~23~160000~100000~-60000</S><S>ThuÕ GTGT ®Ò nghÞ hoµn~30~0~400000~400000~Trong ®ã"
-Barcode_Scaned str2
-str2 = "bs321022300032126   012014007007003003 thuÕ GTGT ®Çu vµo cña hµng ho¸ nhËp khÈu thuéc lo¹i trong n­íc ch­a s¶n xuÊt ®­îc ®Ó t¹o tµi s¶n cè ®Þnh ®· ®Ò nghÞ hoµn~30a~0~100000~100000</S><S>27/02/2014~6~0~0~~~~~0~0~~0~0~-960000</S></SKHBS>"
-Barcode_Scaned str2
-
-
-'''02-GTGT-QUY3-CT
-'str2 = "aa321022300032126   01201400500500100201/0114/06/2006<S01><S></S><S>1500000~0~2000000~160000~0~0~0~0~160000~0~1660000~0~0~0~1660000</S><S>~CMCEr~~15/02/2014~1~~~0</S></S01>"
+'''02-GTGT-THANG-BS
+'str2 = "bs321022300032126   01201400700700100301/0114/06/2006<S01><S></S><S>1100000~0~2000000~100000~0~0~0~0~100000~0~1200000~100000~400000~0~700000</S><S>~CMCer~~15/02/2014~~1~1~0</S></S01>"
 'Barcode_Scaned str2
-'str2 = "aa321022300032126   012014005005002002<S01_2><S>01GTKT2/009~K002~S002~01/01/2014~Nguyen Van A~0102030405~Linh kien dien tu~1200000~10~120000~~02GTTT3/009~K003~S003~02/01/2014~Le Thi Rieng~2222222222~Chuot may tinh~800000~5~40000~</S><S>2000000~160000</S></S01_2>"
+'str2 = "bs321022300032126   012014007007002003<SKHBS><S>ThuÕ GTGT ch­a ®­îc hoµn kú tr­íc chuyÓn sang~21~1500000~1100000~-400000~Hµng ho¸, dÞch vô mua vµo trong kú~23~160000~100000~-60000</S><S>ThuÕ GTGT ®Ò nghÞ hoµn~30~0~400000~400000~Trong ®ã"
+'Barcode_Scaned str2
+'str2 = "bs321022300032126   012014007007003003 thuÕ GTGT ®Çu vµo cña hµng ho¸ nhËp khÈu thuéc lo¹i trong n­íc ch­a s¶n xuÊt ®­îc ®Ó t¹o tµi s¶n cè ®Þnh ®· ®Ò nghÞ hoµn~30a~0~100000~100000</S><S>27/02/2014~6~0~0~~~~~0~0~~0~0~-960000</S></SKHBS>"
 'Barcode_Scaned str2
 
+''02-GTGT-QUY12014-CT
+'str2 = "aa321022300032126   01201400800800100201/0114/06/2006<S01><S></S><S>100000~0~3000000~200000~0~0~0~0~200000~0~300000~0~0~0~300000</S><S>~CMCer~~27/02/2014~1~~~1</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa321022300032126   012014008008002002<S01_2><S>HD001~KHD001~SHD001~01/01/2014~Ðµo Tiªn~0102030405~H?i bµn dµo~1000000~10~100000~~HD002~KHD002~SHD002~02/01/2014~Qu?t tiªn~6868686868~Ti?c ru«u~2000000~5~100000~</S><S>3000000~200000</S></S01_2>"
+'Barcode_Scaned str2
+
+''02-GTGT-QUY12014-BS
+'str2 = "bs321022300032126   01201401001000100301/0114/06/2006<S01><S></S><S>50000~0~3000000~200000~1000~10~20000~2000~198010~0~248010~0~0~0~248010</S><S>~CMCer~~27/02/2014~~1~1~1</S></S01>"
+'Barcode_Scaned str2
+'str2 = "bs321022300032126   012014010010002003<SKHBS><S>ThuÕ GTGT ch­a ®­îc hoµn kú tr­íc chuyÓn sang~21~100000~50000~-50"
+'Barcode_Scaned str2
+'str2 = "bs321022300032126   012014010010003003000</S><S>~~0~0~0</S><S>27/05/2014~25~0~0~~~~~0~0~~0~0~-51990</S></SKHBS>"
+'Barcode_Scaned str2
 
 ''03-GTGT-THANG-CT
 'str2 = "aa320042300032133   01201400100100100101/0114/06/2006<S01><S></S><S>0~1200000000~560000000~12000000~1400000~629400000~62940000</S><S>~CMCER~~27/02/2014~1~~~0</S></S01>"
@@ -2495,6 +2501,12 @@ Barcode_Scaned str2
 ''03-GTGT-QUY4-CT
 'str2 = "aa320042300032133   04201300100100100101/0114/06/2006<S01><S></S><S>100000~1000000~100000~200000~20000~620000~62000</S><S>~CMCer~~18/02/2014~1~~~1</S></S01>"
 'Barcode_Scaned str2
+
+str2 = "bs321042300032133   04201300300300100201/0114/06/2006<S01><S></S><S>100000~5000000~100000~200000~20000~4620000~462000</S><S>~CMCer~~18/02/2014~~1~1~1</S></S01>"
+Barcode_Scaned str2
+str2 = "bs321042300032133   042013003003002002<SKHBS><S>ThuÕ GTGT ph¶i nép~27~62000~462000~400000</S><S>~~0~0~0</S><S>27/02/2014~27~5400~0~~~~~0~0~~0~0~400000</S></SKHBS>"
+Barcode_Scaned str2
+
 
 ''04-GTGT-THANG-CT
 'str2 = "aa320712300032140   01201400200200100301/0101/01/1900<S01><S></S><S>13000000000~500000000~5000000~200000000~10000000~100000000~3000000~50000000~1000000~850000000~19000000~13850000000~19000000</S><S>~CMCer~~27/02/2014~1~~~0~</S></S01>"
@@ -4462,12 +4474,12 @@ On Error GoTo ErrHandle
 '    If Not blnConnected Then _
 '        Exit Function
     
-    If (rsTaxInfor Is Nothing Or rsTaxInfor.Fields.Count = 0) And Len(strTaxID) = 14 Then
+    If (rsTaxInfor Is Nothing Or rsTaxInfor.Fields.count = 0) And Len(strTaxID) = 14 Then
         strTaxID = Replace(strTaxID, "-", " ")
         Set rsTaxInfor = GetTaxInfo(strTaxID, blnConnected)
     End If
     'Tax id is not exist
-    If rsTaxInfor Is Nothing Or rsTaxInfor.Fields.Count = 0 Then
+    If rsTaxInfor Is Nothing Or rsTaxInfor.Fields.count = 0 Then
         InitParameters = False
         MessageBox "0041", msOKOnly, miCriticalError
         Exit Function
@@ -5201,7 +5213,7 @@ On Error GoTo ErrHandle
             If Trim(GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "Class")) <> vbNullString Then
                 'If Not (rsTaxDLInfor Is Nothing Or rsTaxDLInfor.Fields.Count = 0) Then
                 If Not (rsTaxDLInfor Is Nothing) Then
-                    If Not (rsTaxDLInfor.Fields.Count = 0) Then
+                    If Not (rsTaxDLInfor.Fields.count = 0) Then
                         If Not objTaxBusiness Is Nothing Then
                             objTaxBusiness.strTenDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(0).value), "", rsTaxDLInfor.Fields(0).value), TCVN, UNICODE)
                             objTaxBusiness.strDiaChiDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(1).value), "", rsTaxDLInfor.Fields(1).value), TCVN, UNICODE)
@@ -6235,10 +6247,10 @@ On Error GoTo ErrHandle
         Dim lSheet As Long, lCol As Long, lRow As Long
         
         
-        If cOrder.Count > 0 Then
+        If cOrder.count > 0 Then
             min = Val(Left(cOrder(1), InStr(cOrder(1), "[]")))
             strCell = Right(cOrder(1), Len(cOrder(1)) - InStr(cOrder(1), "[]") - 1)
-            For i = 2 To cOrder.Count
+            For i = 2 To cOrder.count
                 X = Val(Left(cOrder(i), InStr(cOrder(i), "[]")))
                 If min >= X Then
                     min = X
@@ -7001,11 +7013,11 @@ Private Function GetHeaderData(ByVal rsTaxInfor As ADODB.Recordset, arrStrHeader
         Exit Function
     End If
     
-    If rsTaxInfor.Fields.Count = 0 Then
+    If rsTaxInfor.Fields.count = 0 Then
         Exit Function
     End If
     
-    For lCtrl = 0 To rsTaxInfor.Fields.Count - 2
+    For lCtrl = 0 To rsTaxInfor.Fields.count - 2
         ReDim Preserve arrStrData(lCtrl)
         If Not IsNull(rsTaxInfor.Fields(lCtrl + 1).value) Then
             'arrStrData(lCtrl) = clsConvert.Convert(rsTaxInfor.Fields(lCtrl + 1).Value, UNICODE, TCVN)

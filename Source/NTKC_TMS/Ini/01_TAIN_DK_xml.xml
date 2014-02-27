@@ -1,9 +1,9 @@
-﻿<HSoKhaiThue ngay_nop_tk="F_29" ky_lap_bo="F_27" loi_dinh_danh="">
+﻿<HSoKhaiThue ngay_nop_tk="F_29" ky_lap_bo="F_27" loi_dinh_danh="G_33">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>135</maTKhai>
 		<tenTKhai>TỜ KHAI THUẾ TÀI NGUYÊN TẠM TÍNH ĐỐI VỚI DẦU KHÍ</tenTKhai>
-		<moTaBMau/>
 		<soLan>J_37</soLan>
+		<moTaBMau/>		
 	</Static>
 	<Static GroupName="GiaHan">
 		<maLyDoGiaHan/>

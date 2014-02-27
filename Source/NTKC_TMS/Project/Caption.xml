@@ -62,7 +62,7 @@
 		<Item Name="lblBarcode" Caption="Số mã đã quét:"/>
 		<Item Name="lblExit" Caption="Bấm Thoát để quay về màn hình Menu."/>
 		<Item Name="lblLabelVersion" Caption="Phiên bản ứng dụng HTKK dùng để in tờ khai:"/>
-		<Item Name="lblWarning" Caption="(Cần cập nhật phiên bản 3.2.0)" />
+		<Item Name="lblWarning" Caption="(Cần cập nhật phiên bản 3.2.1)" />
 		<Item Name="lblVersion" Caption=""/>
 		<Item Name="cmdClear" Index="" Caption="Xóa"/>
 		<Item Name="cmdSave" Index="" Caption="Ghi"/>
@@ -143,8 +143,9 @@
 	<frmTruyennhanTK Caption="">
 		<Item Name="lblCaption" Index="" Caption="Truyền/Nhận tờ khai TNCN"/>
 	</frmTruyennhanTK>
-	<frmSetting Caption="Cấu hình hệ thống">
+	<frmSetting Caption="Cau hinh">
 		<Item Name="cmdDongY" Index="" Caption="Đồng ý" />
-		<Item Name="cmdThoat" Index="" Caption="Thoát" />		
+		<Item Name="cmdThoat" Index="" Caption="Thoát" />
+		<Item Name="lblQueueManager" Index="" Caption="Đăng nhập hệ thống" />			
 	</frmSetting>
 </Root>
