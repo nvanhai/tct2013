@@ -292,7 +292,7 @@ End Sub
 Public Sub Prepare2()
     Dim i As Long, DataText As Variant
     Dim arrCellTag() As String
-    Dim ArrRow As Variant, ArrCol As Variant
+    Dim arrRow As Variant, ArrCol As Variant
     Dim arrRowChange As Variant, arrColChange As Variant
     Dim intCtrl As Integer
     Dim strId As Variant
@@ -642,6 +642,15 @@ Dim NguoiKyCol As Long, NguoiKyRow As Long
                          .Row = 1 + .Row
                          i = i + 1
                     Loop Until .Text = "dd"
+                    i = 1
+                   .Row = .Row + 4
+                    Do
+                         .Text = str(i)
+                         .Col = .ColLetterToNumber("B")
+                         .Row = 1 + .Row
+                         i = i + 1
+                    Loop Until .Text = "ee"
+                    
                     .SetActiveCell iCol, iRow
                     .Row = iRow
                     .Col = iCol
@@ -941,7 +950,7 @@ End Sub
 Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer)
     Dim i As Integer
     Dim a As Double, b As Double, c As Double
-    Dim ArrRow As Variant, ArrCol As Variant
+    Dim arrRow As Variant, ArrCol As Variant
     Dim arrCellTag() As String
     Dim cCol As Long, cRow As Long
     Dim varTemp As Variant
@@ -2872,15 +2881,15 @@ End Sub
 'some special data that we want to save to data files
 Public Sub SaveExceptionData()
     Dim i As Long, DataText As Variant
-    Dim ArrRow As Variant, ArrCol As Variant
+    Dim arrRow As Variant, ArrCol As Variant
     Dim arrCellTag() As String
     With fps
         .Sheet = 1
         mCurrentSheet = .Sheet
-        ArrRow = Array(10, 10, 16, 19, 19, 21, 21, 28, 28, 30, 31, 33, 20, 22, 23, 24, 23, 24)
+        arrRow = Array(10, 10, 16, 19, 19, 21, 21, 28, 28, 30, 31, 33, 20, 22, 23, 24, 23, 24)
         ArrCol = Array("J", "L", "L", "J", "L", "J", "L", "J", "L", "L", "L", "L", "J", "J", "J", "J", "L", "L")
-        For i = 0 To UBound(ArrRow)
-            .Row = ArrRow(i)
+        For i = 0 To UBound(arrRow)
+            .Row = arrRow(i)
             .Col = .ColLetterToNumber(ArrCol(i))
             UpdateCell fps, .Col, .Row, .value
         Next
@@ -4612,7 +4621,7 @@ Sub CellLock(ByVal Col As Long, ByVal Row As Long)
 
     Dim i As Integer
     Dim a As Double, b As Double, c As Double
-    Dim ArrRow As Variant, ArrCol As Variant
+    Dim arrRow As Variant, ArrCol As Variant
     Dim arrCellTag() As String
     Dim cCol As Long, cRow As Long
     Dim varTemp As Variant
@@ -4627,23 +4636,23 @@ Sub CellLock(ByVal Col As Long, ByVal Row As Long)
                mCurrentSheet = .Sheet
                GetCellSpan fps, Col, Row
                If Row = S1ChkRow And Col = .ColLetterToNumber(S1ChkCol) Then
-                   ArrRow = Array(27, 27, 28, 30, 31, 31, 32, 33, 33, 34, 34, 35, 35)
+                   arrRow = Array(27, 27, 28, 30, 31, 31, 32, 33, 33, 34, 34, 35, 35)
                    ArrCol = Array("J", "L", "L", "J", "J", "L", "J", "J", "L", "J", "L", "J", "L")
                    .Col = .ColLetterToNumber("I")
                    .Row = 23
                    If .Text = "1" Then
-                       For i = 0 To UBound(ArrRow)
-                           .Row = ArrRow(i)
+                       For i = 0 To UBound(arrRow)
+                           .Row = arrRow(i)
                            .Col = .ColLetterToNumber(ArrCol(i))
                            .Text = "0"
                            UpdateCell fps, .Col, .Row, .Text
                            .Lock = True
                        Next
                    ElseIf .Text = "0" Then
-                       For i = 0 To UBound(ArrRow)
-                           .Row = ArrRow(i)
+                       For i = 0 To UBound(arrRow)
+                           .Row = arrRow(i)
                            .Col = .ColLetterToNumber(ArrCol(i))
-                           If (ArrCol(i) = "J" Or ArrCol(i) = "L") And (ArrRow(i) = 31 Or ArrRow(i) = 35) Then
+                           If (ArrCol(i) = "J" Or ArrCol(i) = "L") And (arrRow(i) = 31 Or arrRow(i) = 35) Then
                                .Lock = True
                            Else
                                .Lock = False
@@ -4994,7 +5003,7 @@ End Sub
 Public Sub LockCellBySheet()
     Dim i As Integer
     Dim a As Double, b As Double, c As Double
-    Dim ArrRow As Variant, ArrCol As Variant
+    Dim arrRow As Variant, ArrCol As Variant
     Dim arrCellTag() As String
     Dim cCol As Long, cRow As Long
     Dim varTemp As Variant
