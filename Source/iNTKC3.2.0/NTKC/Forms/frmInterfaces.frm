@@ -2567,7 +2567,11 @@ On Error GoTo ErrHandle
                             strData = tmp & "~" & Right$(strData, Len(strData) - InStr(1, strData, "</S02>", vbTextCompare) + 5)
                     End If
                 End If
-
+                'Check version 320 doi voi cac phu luc 01-1,01-2,04-1 GTGT,cac phu luc cua to 02/GTGT
+                If Val(Left$(strData, 3)) = 320 And (Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "71") Then
+                    strData = ModifyBarcodeV320(Mid$(strData, 4, 2), strData)
+                End If
+                'end check
                 lblLoading.Visible = False
                 lblConnecting.Visible = True
                 frmInterfaces.Refresh
@@ -6138,4 +6142,132 @@ ErrHandle:
     SaveErrorLog Me.Name, "LoaiToKhai", Err.Number, Err.Description
 
     If Err.Number = -2147467259 Then MessageBox "0063", msOKOnly, miCriticalError
+End Function
+
+Function ModifyBarcodeV320(ID As String, strData As String) As String
+    Dim strReturn As String
+    Dim iCount    As Integer
+    Dim idPluc    As String
+    strReturn = strData
+
+    If ID = "01" Then
+        If InStr(strReturn, "<S01_1>") > 0 Then
+            iCount = 10
+            idPluc = "S01_1"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+
+        If InStr(strReturn, "S01_2") > 0 Then
+            iCount = 11
+            idPluc = "S01_2"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+
+    ElseIf ID = "02" Then
+
+        If InStr(strReturn, "<S01_2>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+
+        If InStr(strReturn, "<S01_2_1>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_1"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_2>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_2"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_3>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_3"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_4>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_4"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_5>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_5"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_6>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_6"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_7>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_7"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_8>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_8"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_9>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_9"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+
+    ElseIf ID = "71" Then
+
+        If InStr(strReturn, "<S01_1>") > 0 Then
+            iCount = 9
+            idPluc = "S01_1"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+    End If
+
+    ModifyBarcodeV320 = strReturn
+    Exit Function
+End Function
+
+Function ReplacePlucBarcode(strData As String, _
+                            idPluc As String, _
+                            iCount As Integer) As String
+    Dim sectionSpl() As String
+    Dim strSplit()   As String
+    Dim strPluc      As String
+    Dim strPlucNew   As String
+    Dim i            As Integer
+    Dim section      As Integer
+
+    strPluc = Mid$(strData, InStr(1, strData, "<" & idPluc & ">", vbTextCompare) + Len(idPluc) + 5, InStr(1, strData, "</" & idPluc & ">", vbTextCompare) - InStr(1, strData, "<" & idPluc & ">", vbTextCompare) - Len(idPluc) - 9)
+    sectionSpl = Split(strPluc, "</S><S>")
+
+    For section = 0 To UBound(sectionSpl) - 1
+        strSplit = Split(sectionSpl(section), "~")
+
+        For i = 0 To UBound(strSplit)
+
+            If i Mod (iCount + 1) <> 0 Then
+                If i > 1 Then
+                    strPlucNew = strPlucNew & "~" & strSplit(i)
+                Else
+                    strPlucNew = strPlucNew & strSplit(i)
+                End If
+                    
+            End If
+            
+        Next
+        strPlucNew = strPlucNew & "</S><S>"
+    Next
+    strPlucNew = strPlucNew & sectionSpl(UBound(sectionSpl))
+    ReplacePlucBarcode = Replace$(strData, "<" & idPluc & "><S>" & strPluc, "<" & idPluc & "><S>" & strPlucNew)
 End Function
