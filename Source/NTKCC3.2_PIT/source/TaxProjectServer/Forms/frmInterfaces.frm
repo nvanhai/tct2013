@@ -1945,7 +1945,33 @@ Private Sub Command1_Click()
 'str2 = "aa320100100100079   04201300100100100101/0101/01/2010<S01><S>~~2~18/02/2014~16</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-100~AA-12T~0000001~0000004~4~0</S><S>~HÔng~18/02/2014</S></S01>"
 'Barcode_Scaned str2
 
-str2 = "aa320130100100079   01201400200200100101/0101/01/2009<S01><S>~01/01/2014~30/06/2014</S><S>6868686868~dfsdfsd~21312~01/01/2014~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-14P~0000001~0000010~10~~2222222222~dsfsd~23432~01/01/2014~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP3-001~AB-14P~0000001~0000010~10~</S><S>HÔng~19/02/2014</S></S01>"
+'str2 = "aa320130100100079   01201400200200100101/0101/01/2009<S01><S>~01/01/2014~30/06/2014</S><S>6868686868~dfsdfsd~21312~01/01/2014~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-14P~0000001~0000010~10~~2222222222~dsfsd~23432~01/01/2014~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP3-001~AB-14P~0000001~0000010~10~</S><S>HÔng~19/02/2014</S></S01>"
+'Barcode_Scaned str2
+
+'01-GTGT-THANG-CT
+str2 = "aa320010100100079   01201400900900101201/0114/06/2006<S01><S></S><S>0~0~13290000000~1254000000~2609770000~50003234908~15035000000~900000000~35000000~12000000000~600000000~3000000000~300000000~65038234908~900000000~-1709770000~0~0~2500000000~0~0~0~4209770000~0~4209770000</S><S>~~CMCer~14/02/2014~1~~~1701~~~0</S></S01>"
+Barcode_Scaned str2
+str2 = "aa320010100100079   012014009009002012<S01_1><S>02GTTT~02GTTT5/009~K001~S001~01/01/2014~Nguyen Van C~~~50000000000~0~~07KPTQ~07KPTQ6/009~K002~S002~05/01/2014~Tran Van H~~~3234908~0~</S><S>02GTTT~02GTTT2/009~K003~S003~06/01/2014~Nguyen Van T~~~20000000~0~~06HDXK~06HDXK2/009~K004~S004~07/01/2014~Le Viet V~~~15000000~0~</S><S>07KPTQ~07KPTQ3/009~K005~S005~08/01/2014~Tran Le H~~~7000000000~350000000~~04HGDL~04HGDL4/009~K006~S006~09/01"
+Barcode_Scaned str2
+str2 = "aa320010100100079   012014009009003012/2014~Quoc Ca Cuong~~~5000000000~250000000~</S><S>01GTKT~01GTKT7/009~K007~S007~10/01/2014~Van Thi M~~~2000000000~200000000~~02GTTT~02GTTT8/009~K008~S008~11/01/2014~Kieu Van A~~~1000000000~100000000~</S><S>06HDXK~06HDXK9/009~K009~S009~12/01/2014~Nong Van C~~~3000000000~0~~07KPTQ~07KPTQ3/009~K010~S010~13/01/2014~Nguyen Van B~~~24000000000~0~</S><S>65038234908~15035000000~900000000</S></S01_1>"
+Barcode_Scaned str2
+str2 = "aa320010100100079   012014009009004012<S01_2><S>01GTKT~01GTKT2/005~L002~M002~05/01/2014~Tram B~~~12000000000~10~1200000000~~02GTTT~02GTTT3/005~L003~M003~06/01/2014~Tram C~~~200000000~5~10000000~</S><S>06HDXK~06HDXK4/006~L004~M004~07/01/2014~Tram A~~~240000000~10~24000000~~07KPTQ~07KPTQ5/006~L005~M005~08/01/2014~Tram D~~~200"
+Barcode_Scaned str2
+str2 = "aa320010100100079   012014009009005012000000~10~20000000~</S><S>03XKNB~03XKNB7/007~L006~M006~09/01/2014~Tram E~~~200000000~0~0~~04HGDL~04HGDL7/007~L007~M007~10/01/2014~Tram F~~~450000000~0~0~</S><S>~~~~~~~~0~0~0~</S><S>06HDXK~06HDXK8/008~L008~M008~11/01/2014~Tram G~~~2300000000~0~0~</S><S>13290000000~1254000000</S></S01_2>"
+Barcode_Scaned str2
+str2 = "aa320010100100079   012014009009006012<S01_3><S>S001~02/01/2014~USD~15000000000~Tien mat~8~123456~01/01/2014~~0~~~~0~~~~0~~~~0~~~~0~~~~0~~</S><S></S></S01_3>"
+Barcode_Scaned str2
+str2 = "aa320010100100079   012014009009007012<S01_4A><S>1254000000~1210000000~44000000~0~65038234908~15035000000~23.12~0~0</S></S01_4A>"
+Barcode_Scaned str2
+str2 = "aa320010100100079   012014009009008012<S01_4B><S>2014~71000000000~45000000000~1000000000~25000000000~50000000000~35000000000~70~2000000000~1400000000~230000~1399770000</S></S01_4B>"
+Barcode_Scaned str2
+str2 = "aa320010100100079   012014009009009012<S01_5><S>ST001~05/01/2014~Kho Bac ~10100~2500000000</S></S01_5>"
+Barcode_Scaned str2
+str2 = "aa320010100100079   012014009009010012<S01_6><S>Keo Deo~0102030405~10100~2300000~15000000~1"
+Barcode_Scaned str2
+str2 = "aa320010100100079   0120140090090110127300000~323000~0</S><S>0~65038234908~0~0</S></S01_6>"
+Barcode_Scaned str2
+str2 = "aa320010100100079   012014009009012012<S01_7><S>Mercedes~Chi’c~10~50000000000~~BMW~Chi’c~5~25000000000~</S><S>Ducati~Chi’c~30~20000000000~~Hayabache~Chi’c~7~560000000~</S></S01_7>"
 Barcode_Scaned str2
 
 End Sub
@@ -2540,7 +2566,11 @@ Private Sub Barcode_Scaned(strBarcode As String)
                         LoaiKyKK = LoaiToKhai(tmp)
                     End If
                 End If
-
+                'Check version 320 doi voi cac phu luc 01-1,01-2,04-1 GTGT,cac phu luc cua to 02/GTGT
+                If Val(Left$(strData, 3)) = 320 And (Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "71") Then
+                    strData = ModifyBarcodeV320(Mid$(strData, 4, 2), strData)
+                End If
+                'end check
                 lblLoading.Visible = False
                 lblConnecting.Visible = True
                 frmInterfaces.Refresh
@@ -6879,5 +6909,133 @@ ErrHandle:
     SaveErrorLog Me.Name, "LoaiToKhai", Err.Number, Err.Description
 
     If Err.Number = -2147467259 Then MessageBox "0063", msOKOnly, miCriticalError
+End Function
+
+Function ModifyBarcodeV320(ID As String, strData As String) As String
+    Dim strReturn As String
+    Dim iCount    As Integer
+    Dim idPluc    As String
+    strReturn = strData
+
+    If ID = "01" Then
+        If InStr(strReturn, "<S01_1>") > 0 Then
+            iCount = 10
+            idPluc = "S01_1"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+
+        If InStr(strReturn, "S01_2") > 0 Then
+            iCount = 11
+            idPluc = "S01_2"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+
+    ElseIf ID = "02" Then
+
+        If InStr(strReturn, "<S01_2>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+
+        If InStr(strReturn, "<S01_2_1>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_1"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_2>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_2"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_3>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_3"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_4>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_4"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_5>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_5"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_6>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_6"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_7>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_7"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_8>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_8"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_9>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_9"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+
+    ElseIf ID = "71" Then
+
+        If InStr(strReturn, "<S01_1>") > 0 Then
+            iCount = 9
+            idPluc = "S01_1"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+    End If
+
+    ModifyBarcodeV320 = strReturn
+    Exit Function
+End Function
+
+Function ReplacePlucBarcode(strData As String, _
+                            idPluc As String, _
+                            iCount As Integer) As String
+    Dim sectionSpl() As String
+    Dim strSplit()   As String
+    Dim strPluc      As String
+    Dim strPlucNew   As String
+    Dim i            As Integer
+    Dim section      As Integer
+
+    strPluc = Mid$(strData, InStr(1, strData, "<" & idPluc & ">", vbTextCompare) + Len(idPluc) + 5, InStr(1, strData, "</" & idPluc & ">", vbTextCompare) - InStr(1, strData, "<" & idPluc & ">", vbTextCompare) - Len(idPluc) - 9)
+    sectionSpl = Split(strPluc, "</S><S>")
+
+    For section = 0 To UBound(sectionSpl) - 1
+        strSplit = Split(sectionSpl(section), "~")
+
+        For i = 0 To UBound(strSplit)
+
+            If i Mod (iCount + 1) <> 0 Then
+                If i > 1 Then
+                    strPlucNew = strPlucNew & "~" & strSplit(i)
+                Else
+                    strPlucNew = strPlucNew & strSplit(i)
+                End If
+                    
+            End If
+            
+        Next
+        strPlucNew = strPlucNew & "</S><S>"
+    Next
+    strPlucNew = strPlucNew & sectionSpl(UBound(sectionSpl))
+    ReplacePlucBarcode = Replace$(strData, "<" & idPluc & "><S>" & strPluc, "<" & idPluc & "><S>" & strPlucNew)
 End Function
 
