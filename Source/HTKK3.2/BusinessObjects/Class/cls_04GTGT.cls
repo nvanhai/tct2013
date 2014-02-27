@@ -247,7 +247,7 @@ Dim itemp As Variant, temp As Variant
 Dim cValue As Variant
 
 Dim tempRow As MY_ROW
-Dim arrRow() As MY_ROW, arrRow2() As MY_ROW, arrRow3() As MY_ROW, arrRow4() As MY_ROW
+Dim ArrRow() As MY_ROW, arrRow2() As MY_ROW, arrRow3() As MY_ROW, arrRow4() As MY_ROW
 Dim tempValue As Variant
 Dim varTemp As Variant
 
@@ -269,6 +269,10 @@ Dim varTemp As Variant
      End With
 End Sub
 
+Private Sub fps_EditChange(ByVal Col As Long, ByVal Row As Long)
+    CellChange2 Col, Row
+End Sub
+
 Private Sub fps_KeyDown(KeyCode As Integer, Shift As Integer)
   Dim i As Integer, iCol As Long, iRow As Long
      With fps
@@ -285,7 +289,7 @@ End Sub
 Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
 Dim i As Integer, iCol As Long, iRow As Long
 Dim countRowDyn As Long, coundtRowDel As Long
-Dim arrRow() As MY_ROW
+Dim ArrRow() As MY_ROW
 Dim tempRow As MY_ROW
 Dim tempValue As Variant, tempGroup As Variant, tempMaNhom As Variant
 Dim tCol As Long, tRow As Long
@@ -358,9 +362,9 @@ Dim tCol As Long, tRow As Long
                     .Col = iCol
                      
                     .SetActiveCell iCol, iRow
-                    CellChange2
-                    CellChange3
-                    LockCellBySheet
+                    'CellChange2
+                    'CellChange3
+                    'LockCellBySheet
             End If
         End If
         fps.EventEnabled(EventAllEvents) = True
@@ -476,7 +480,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
       .EventEnabled(EventAllEvents) = True
     End With
     
-    CellChange Col, Row
+    'CellChange Col, Row
 End Sub
 
 
@@ -2142,70 +2146,71 @@ ErrorHandle:
     SaveErrorLog "cls_04GTGT", "getValueCTDC", Err.number, Err.Description
 End Function
 ' Ham set lai gia tri cua cong thuc khi tai bang ke 01_1
-Sub CellChange2()
+Sub CellChange2(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer)
     Dim varTemp As Variant
     Dim cellTagArr() As String
     With fps
         .Sheet = .ActiveSheet
-        Select Case .Sheet
-            Case 2 ' phu luc 01_1
-        ' chi tieu 33
-            .Sheet = 1
-            .Col = .ColLetterToNumber("L")
-            .Row = 34
-            '.Formula = "L53"
-            .Formula = colL & rowHidden53
-             ' chi tieu 26
-            .Sheet = 1
-            .Col = .ColLetterToNumber("J")
-            .Row = 30
-            '.Formula = "E54"
-            .Formula = colE & rowHidden54
-             ' chi tieu 29
-            .Sheet = 1
-            .Col = .ColLetterToNumber("J")
-            .Row = 32
-            '.Formula = "H53"
-            .Formula = colH & rowHidden53
-             ' chi tieu 30
-            .Sheet = 1
-            .Col = .ColLetterToNumber("J")
-            .Row = 33
-            '.Formula = "I53"
-            .Formula = colI & rowHidden53
-             ' chi tieu 32
-            .Sheet = 1
-            .Col = .ColLetterToNumber("J")
-            .Row = 34
-            '.Formula = "K53"
-            .Formula = colK & rowHidden53
-             ' chi tieu 31
-            .Sheet = 1
-            .Col = .ColLetterToNumber("L")
-            .Row = 33
-            '.Formula = "J53"
-            .Formula = colJ & rowHidden53
-        Case 3 ' phu luc 01_2
-            ' chi tieu 23
-            .Sheet = 1
-            .Col = .ColLetterToNumber("J")
-            .Row = 27
-            '.Formula = "D53"
-            .Formula = colD & rowHidden53
-             ' chi tieu 24
-            .Sheet = 1
-            .Col = .ColLetterToNumber("L")
-            .Row = 27
-            '.Formula = "E53"
-            .Formula = colE & rowHidden53
-             ' chi tieu 25
-            .Sheet = 1
-            .Col = .ColLetterToNumber("L")
-            .Row = 28
-            '.Formula = "F53"
-            .Formula = colF & rowHidden53
-            
-        End Select
+        If .Sheet = 2 Then
+             If Col = .ColLetterToNumber("K") Then
+                ' chi tieu 21
+                .Sheet = 1
+                .Col = .ColLetterToNumber("K")
+                .Row = 43
+                .Formula = "K48"
+                 ' chi tieu 22
+                .Sheet = 1
+                .Col = .ColLetterToNumber("Q")
+                .Row = 43
+                .Formula = "L48"
+                 ' chi tieu 24
+                .Sheet = 1
+                .Col = .ColLetterToNumber("Q")
+                .Row = 44
+                .Formula = "M48"
+                 ' chi tieu 26
+                .Sheet = 1
+                .Col = .ColLetterToNumber("Q")
+                .Row = 45
+                .Formula = "N48"
+                 ' chi tieu 28
+                .Sheet = 1
+                .Col = .ColLetterToNumber("Q")
+                .Row = 46
+                .Formula = "O48"
+            End If
+        End If
+    End With
+End Sub
+
+
+Sub resetFormula()
+     With fps
+         ' chi tieu 21
+        .Sheet = 1
+        .Col = .ColLetterToNumber("K")
+        .Row = 43
+        .Formula = ""
+         ' chi tieu 22
+        .Sheet = 1
+        .Col = .ColLetterToNumber("R")
+        .Row = 43
+        .Formula = ""
+         ' chi tieu 24
+        .Sheet = 1
+        .Col = .ColLetterToNumber("R")
+        .Row = 44
+        .Formula = ""
+         ' chi tieu 26
+        .Sheet = 1
+        .Col = .ColLetterToNumber("R")
+        .Row = 45
+        .Formula = ""
+         ' chi tieu 28
+        .Sheet = 1
+        .Col = .ColLetterToNumber("R")
+        .Row = 46
+        .Formula = ""
     End With
 End Sub
 
@@ -2217,7 +2222,7 @@ End Sub
 Public Sub LockCellBySheet()
     Dim i As Integer
     Dim a As Double, b As Double, c As Double
-    Dim arrRow As Variant, ArrCol As Variant
+    Dim ArrRow As Variant, ArrCol As Variant
     Dim arrCellTag() As String
     Dim cCol As Long, cRow As Long
     Dim varTemp As Variant
