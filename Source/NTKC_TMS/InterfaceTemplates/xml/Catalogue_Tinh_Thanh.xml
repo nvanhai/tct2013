@@ -292,6 +292,7 @@
 			<Item Value ="0###30207###302###Chi cục Thuế Huyện Sìn Hồ"/>
 			<Item Value ="0###30209###302###Chi cục Thuế Huyện Than Uyên"/>
 			<Item Value ="0###30211###302###Chi cục Thuế Huyện Tân Uyên"/>
+			<Item Value ="0###30213###302###Chi cục Thuế Huyện Nậm Nhùn"/>			
 			<Item Value ="1###30300###303###SLA - Cục Thuế Tỉnh Sơn La"/>
 			<Item Value ="0###30300###303###Cục Thuế Tỉnh Sơn La"/>
 			<Item Value ="0###30301###303###Chi cục Thuế Thành phố Sơn La"/>
@@ -305,6 +306,7 @@
 			<Item Value ="0###30317###303###Chi cục Thuế Huyện Yên Châu"/>
 			<Item Value ="0###30319###303###Chi cục Thuế Huyện Mộc Châu"/>
 			<Item Value ="0###30321###303###Chi cục Thuế Huyện Sốp Cộp"/>
+			<Item Value ="0###30323###303###Chi cục Thuế Huyện Vân Hồ"/>			
 			<Item Value ="1###30500###305###HBI - Cục Thuế Tỉnh Hoà Bình"/>
 			<Item Value ="0###30500###305###Cục Thuế Tỉnh Hoà Bình"/>
 			<Item Value ="0###30501###305###Chi cục Thuế Thành phố Hoà Bình"/>
@@ -369,6 +371,7 @@
 			<Item Value ="0###40333###403###Chi cục Thuế Huyện Nghi Lộc"/>
 			<Item Value ="0###40335###403###Chi cục Thuế Huyện Nam Đàn"/>
 			<Item Value ="0###40337###403###Chi cục Thuế Huyện Hưng Nguyên"/>
+			<Item Value ="0###40339###403###Chi cục Thuế Thị xã Hoàng Mai"/>
 			<Item Value ="1###40500###405###HTI - Cục Thuế Tỉnh Hà Tĩnh"/>
 			<Item Value ="0###40500###405###Cục Thuế Tỉnh Hà Tĩnh"/>
 			<Item Value ="0###40501###405###Chi cục Thuế Thành phố Hà Tĩnh"/>
@@ -684,7 +687,8 @@
 			<Item Value ="0###80121###801###Chi cục Thuế Huyện Châu Thành"/>
 			<Item Value ="0###80123###801###Chi cục Thuế Huyện Tân Trụ"/>
 			<Item Value ="0###80125###801###Chi cục Thuế Huyện Cần Đước"/>
-			<Item Value ="0###80127###801###Chi cục Thuế Huyện Cần Giuộc"/>
+			<Item Value ="0###80127###801###Chi cục Thuế Huyện Cần Giuộc"/>			
+			<Item Value ="0###80129###801###Chi cục Thuế Thị Xã Kiến Tường"/>			
 			<Item Value ="1###80300###803###DTH - Cục Thuế Tỉnh Đồng Tháp"/>
 			<Item Value ="0###80300###803###Cục Thuế Tỉnh Đồng Tháp"/>
 			<Item Value ="0###80301###803###Chi cục Thuế Thành phố Cao Lãnh"/>
@@ -729,7 +733,7 @@
 			<Item Value ="0###80901###809###Chi cục Thuế Thành phố  Vĩnh Long"/>
 			<Item Value ="0###80903###809###Chi cục Thuế Huyện Long Hồ"/>
 			<Item Value ="0###80905###809###Chi cục Thuế Huyện Mang Thít"/>
-			<Item Value ="0###80907###809###Chi cục Thuế Huyện Bình Minh"/>
+			<Item Value ="0###80907###809###Chi cục thuế thị xã Bình Minh"/>
 			<Item Value ="0###80908###809###Chi cục Thuế huyện Bình Tân"/>
 			<Item Value ="0###80909###809###Chi cục Thuế Huyện Tam Bình"/>
 			<Item Value ="0###80911###809###Chi cục Thuế Huyện Trà Ôn"/>
