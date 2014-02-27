@@ -50,7 +50,7 @@ Public dNgayCuoiKy As Date
 Public Const SS_SORT_ORDER_ASCENDING = 1
 Public Const APP_VERSION = "1.0"
 
-Public Const HTKK_LAST_VERSION = "3.2.0"
+Public Const HTKK_LAST_VERSION = "3.2.1"
 
 Public Const SS_BORDER_TYPE_NONE = 0
 Public Const SS_BORDER_TYPE_LEFT = 1
@@ -1640,7 +1640,7 @@ Public Function GetPkgIDErr() As String
     sSQL = "SELECT id FROM data_pkg " & _
         " WHERE pkg_type = '1' and curr_sta= '01'"
     Set rs = clsConn.Execute(sSQL)
-    If rs.Fields.Count > 0 Then
+    If rs.Fields.count > 0 Then
          pkgIDErr = "'"
          Do While Not rs.EOF
             pkgIDErr = pkgIDErr & Trim(rs.Fields(0).value) & "','"
@@ -2171,6 +2171,7 @@ Public Function SetValueHeaderESB(ByVal xmlDoc As MSXML.DOMDocument) As MSXML.DO
 
     Set SetValueHeaderESB = xmlDoc
 End Function
+
 'Input format: dd/mm/yyyy
 'Result = mm/dd/yyyy if formatDate=1
 'Result = yyyy/mm/dd if formatDate=2
@@ -2179,22 +2180,37 @@ End Function
 'Result = mm/dd/yyyy if formatDate=4
 'Result = yyyy/mm/dd if formatDate=5
 'Result = dd/mm/yyyy if formatDate=6
-Public Function ConvertDate(ByVal tmpDatetime As String, ByVal formatDate As Integer, ByVal Seperator As String) As String
+Public Function ConvertDate(ByVal tmpDatetime As String, _
+                            ByVal formatDate As Integer, _
+                            ByVal Seperator As String) As String
     Dim result As String
-    Select Case formatDate
-        Case 1
-            result = Mid$(tmpDatetime, 4, 2) & Seperator & Left$(tmpDatetime, 2) & Seperator & Mid$(tmpDatetime, 7, 4) & IIf(Mid$(tmpDatetime, 11) <> "", Mid$(tmpDatetime, 11), " 00:00:00")
-        Case 2
-            result = Mid$(tmpDatetime, 7, 4) & Seperator & Mid$(tmpDatetime, 4, 2) & Seperator & Left$(tmpDatetime, 2) & IIf(Mid$(tmpDatetime, 11) <> "", Mid$(tmpDatetime, 11), " 00:00:00")
-        Case 3
-            result = Left$(tmpDatetime, 2) & Seperator & synMonth(Mid$(tmpDatetime, 4, 2), True) & Seperator & Mid$(tmpDatetime, 7, 4) & IIf(Mid$(tmpDatetime, 11) <> "", Mid$(tmpDatetime, 11), " 00:00:00")
-        Case 4
-            result = synMonth(Mid$(tmpDatetime, 4, 3), False) & Seperator & Left$(tmpDatetime, 2) & Seperator & Mid$(tmpDatetime, 8, 4) & IIf(Mid$(tmpDatetime, 12) <> "", Mid$(tmpDatetime, 12), " 00:00:00")
-        Case 5
-            result = Mid$(tmpDatetime, 8, 4) & Seperator & synMonth(Mid$(tmpDatetime, 4, 3), False) & Seperator & Left$(tmpDatetime, 2) & IIf(Mid$(tmpDatetime, 12) <> "", Mid$(tmpDatetime, 12), " 00:00:00")
-        Case 6
-            result = Left$(tmpDatetime, 2) & Seperator & synMonth(Mid$(tmpDatetime, 4, 3), False) & Seperator & Mid$(tmpDatetime, 8, 4) & IIf(Mid$(tmpDatetime, 12) <> "", Mid$(tmpDatetime, 12), " 00:00:00")
-    End Select
+    result = ""
+
+    If tmpDatetime <> "" Then
+
+        Select Case formatDate
+
+            Case 1
+                result = Mid$(tmpDatetime, 4, 2) & Seperator & Left$(tmpDatetime, 2) & Seperator & Mid$(tmpDatetime, 7, 4) & IIf(Mid$(tmpDatetime, 11) <> "", Mid$(tmpDatetime, 11), " 00:00:00")
+
+            Case 2
+                result = Mid$(tmpDatetime, 7, 4) & Seperator & Mid$(tmpDatetime, 4, 2) & Seperator & Left$(tmpDatetime, 2) & IIf(Mid$(tmpDatetime, 11) <> "", Mid$(tmpDatetime, 11), " 00:00:00")
+
+            Case 3
+                result = Left$(tmpDatetime, 2) & Seperator & synMonth(Mid$(tmpDatetime, 4, 2), True) & Seperator & Mid$(tmpDatetime, 7, 4) & IIf(Mid$(tmpDatetime, 11) <> "", Mid$(tmpDatetime, 11), " 00:00:00")
+
+            Case 4
+                result = synMonth(Mid$(tmpDatetime, 4, 3), False) & Seperator & Left$(tmpDatetime, 2) & Seperator & Mid$(tmpDatetime, 8, 4) & IIf(Mid$(tmpDatetime, 12) <> "", Mid$(tmpDatetime, 12), " 00:00:00")
+
+            Case 5
+                result = Mid$(tmpDatetime, 8, 4) & Seperator & synMonth(Mid$(tmpDatetime, 4, 3), False) & Seperator & Left$(tmpDatetime, 2) & IIf(Mid$(tmpDatetime, 12) <> "", Mid$(tmpDatetime, 12), " 00:00:00")
+
+            Case 6
+                result = Left$(tmpDatetime, 2) & Seperator & synMonth(Mid$(tmpDatetime, 4, 3), False) & Seperator & Mid$(tmpDatetime, 8, 4) & IIf(Mid$(tmpDatetime, 12) <> "", Mid$(tmpDatetime, 12), " 00:00:00")
+        End Select
+
+    End If
+
     ConvertDate = result
 End Function
 ' flag = true : 01 = Jan

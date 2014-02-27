@@ -143,4 +143,8 @@
 	<frmTruyennhanTK Caption="">
 		<Item Name="lblCaption" Index="" Caption="Truyền/Nhận tờ khai TNCN"/>
 	</frmTruyennhanTK>
+	<frmSetting Caption="Cấu hình hệ thống">
+		<Item Name="cmdDongY" Index="" Caption="Đồng ý" />
+		<Item Name="cmdThoat" Index="" Caption="Thoát" />		
+	</frmSetting>
 </Root>

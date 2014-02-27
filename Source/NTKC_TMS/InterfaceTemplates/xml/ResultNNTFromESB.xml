@@ -23,6 +23,7 @@
 	<ROW>
 		<ThongTinDangKyThue>
 			<DangKyThue>
+				<fault_code></fault_code>
 				<MaSoThue>2300790401</MaSoThue>
 				<TenNNT>Công Ty Cổ Phần Xây Dựng Hạ Tầng Giao Thông 207</TenNNT>
 				<DiaChi>286A- Lê Thanh Nghị</DiaChi>
@@ -30,7 +31,7 @@
 				<TenTinh>Ðà N?ng</TenTinh>
 				<MaQuanHuyen>50101</MaQuanHuyen>
 				<TenQuanHuyen>Qu?n H?i Châu</TenQuanHuyen>
-				<TrangThaiHoatDong>00</TrangThaiHoatDong>
+				<TrangThaiHoatDong>03</TrangThaiHoatDong>
 				<DienThoai>0511. 3626207</DienThoai>
 				<Fax>0511 3625207</Fax>
 				<Email>cty207@gmail.com</Email>

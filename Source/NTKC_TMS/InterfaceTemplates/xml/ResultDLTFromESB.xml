@@ -23,6 +23,7 @@
 	<ROW>
 		<ThongTinDangKyThue>
 			<DangKyThue>
+				<fault_code></fault_code>
 				<MaSoThue>2100462770</MaSoThue>
 				<TenNNT>Công Ty TNHH Kế Toán Và Tư Vấn Thuế Chiến Thuật</TenNNT>
 				<DiaChi>A3/31, Đường Phạm Ngũ Lão, Khóm 3</DiaChi>
@@ -30,7 +31,7 @@
 				<TenTinh>Trà Vinh</TenTinh>
 				<MaQuanHuyen>81701</MaQuanHuyen>
 				<TenQuanHuyen>Thành ph? Trà Vinh</TenQuanHuyen>
-				<TrangThaiHoatDong>00</TrangThaiHoatDong>
+				<TrangThaiHoatDong>02</TrangThaiHoatDong>
 				<DienThoai>0743.841361</DienThoai>
 				<Fax/>
 				<Email/>
