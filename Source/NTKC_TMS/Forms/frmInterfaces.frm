@@ -3578,7 +3578,11 @@ Private Sub Barcode_Scaned(strBarcode As String)
                         strData = tmp & "~" & Right$(strData, Len(strData) - InStr(1, strData, "</S02>", vbTextCompare) + 5)
                     End If
                 End If
-
+                'Check version 320 doi voi cac phu luc 01-1,01-2,04-1 GTGT,cac phu luc cua to 02/GTGT
+                If Val(Left$(strData, 3)) = 320 And (Mid$(strData, 4, 2) = "01" Or Mid$(strData, 4, 2) = "02" Or Mid$(strData, 4, 2) = "71") Then
+                    strData = ModifyBarcodeV320(Mid$(strData, 4, 2), strData)
+                End If
+                'end check
                 lblLoading.Visible = False
                 lblConnecting.Visible = True
                 frmInterfaces.Refresh
@@ -4458,12 +4462,12 @@ On Error GoTo ErrHandle
 '    If Not blnConnected Then _
 '        Exit Function
     
-    If (rsTaxInfor Is Nothing Or rsTaxInfor.Fields.count = 0) And Len(strTaxID) = 14 Then
+    If (rsTaxInfor Is Nothing Or rsTaxInfor.Fields.Count = 0) And Len(strTaxID) = 14 Then
         strTaxID = Replace(strTaxID, "-", " ")
         Set rsTaxInfor = GetTaxInfo(strTaxID, blnConnected)
     End If
     'Tax id is not exist
-    If rsTaxInfor Is Nothing Or rsTaxInfor.Fields.count = 0 Then
+    If rsTaxInfor Is Nothing Or rsTaxInfor.Fields.Count = 0 Then
         InitParameters = False
         MessageBox "0041", msOKOnly, miCriticalError
         Exit Function
@@ -5197,7 +5201,7 @@ On Error GoTo ErrHandle
             If Trim(GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "Class")) <> vbNullString Then
                 'If Not (rsTaxDLInfor Is Nothing Or rsTaxDLInfor.Fields.Count = 0) Then
                 If Not (rsTaxDLInfor Is Nothing) Then
-                    If Not (rsTaxDLInfor.Fields.count = 0) Then
+                    If Not (rsTaxDLInfor.Fields.Count = 0) Then
                         If Not objTaxBusiness Is Nothing Then
                             objTaxBusiness.strTenDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(0).value), "", rsTaxDLInfor.Fields(0).value), TCVN, UNICODE)
                             objTaxBusiness.strDiaChiDL = TAX_Utilities_Srv_New.Convert(IIf(IsNull(rsTaxDLInfor.Fields(1).value), "", rsTaxDLInfor.Fields(1).value), TCVN, UNICODE)
@@ -6231,10 +6235,10 @@ On Error GoTo ErrHandle
         Dim lSheet As Long, lCol As Long, lRow As Long
         
         
-        If cOrder.count > 0 Then
+        If cOrder.Count > 0 Then
             min = Val(Left(cOrder(1), InStr(cOrder(1), "[]")))
             strCell = Right(cOrder(1), Len(cOrder(1)) - InStr(cOrder(1), "[]") - 1)
-            For i = 2 To cOrder.count
+            For i = 2 To cOrder.Count
                 X = Val(Left(cOrder(i), InStr(cOrder(i), "[]")))
                 If min >= X Then
                     min = X
@@ -6997,11 +7001,11 @@ Private Function GetHeaderData(ByVal rsTaxInfor As ADODB.Recordset, arrStrHeader
         Exit Function
     End If
     
-    If rsTaxInfor.Fields.count = 0 Then
+    If rsTaxInfor.Fields.Count = 0 Then
         Exit Function
     End If
     
-    For lCtrl = 0 To rsTaxInfor.Fields.count - 2
+    For lCtrl = 0 To rsTaxInfor.Fields.Count - 2
         ReDim Preserve arrStrData(lCtrl)
         If Not IsNull(rsTaxInfor.Fields(lCtrl + 1).value) Then
             'arrStrData(lCtrl) = clsConvert.Convert(rsTaxInfor.Fields(lCtrl + 1).Value, UNICODE, TCVN)
@@ -7359,4 +7363,130 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
     Set AppendXMLStandard = XmlDocStandard
 End Function
 
+Function ModifyBarcodeV320(ID As String, strData As String) As String
+    Dim strReturn As String
+    Dim iCount    As Integer
+    Dim idPluc    As String
+    strReturn = strData
 
+    If ID = "01" Then
+        If InStr(strReturn, "<S01_1>") > 0 Then
+            iCount = 10
+            idPluc = "S01_1"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+
+        If InStr(strReturn, "S01_2") > 0 Then
+            iCount = 11
+            idPluc = "S01_2"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+
+    ElseIf ID = "02" Then
+
+        If InStr(strReturn, "<S01_2>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+
+        If InStr(strReturn, "<S01_2_1>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_1"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_2>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_2"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_3>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_3"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_4>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_4"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_5>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_5"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_6>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_6"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_7>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_7"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_8>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_8"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+        
+        If InStr(strReturn, "<S01_2_9>") > 0 Then
+            iCount = 10
+            idPluc = "S01_2_9"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+
+    ElseIf ID = "71" Then
+
+        If InStr(strReturn, "<S01_1>") > 0 Then
+            iCount = 9
+            idPluc = "S01_1"
+            strReturn = ReplacePlucBarcode(strReturn, idPluc, iCount)
+        End If
+    End If
+
+    ModifyBarcodeV320 = strReturn
+    Exit Function
+End Function
+
+Function ReplacePlucBarcode(strData As String, _
+                            idPluc As String, _
+                            iCount As Integer) As String
+    Dim sectionSpl() As String
+    Dim strSplit()   As String
+    Dim strPluc      As String
+    Dim strPlucNew   As String
+    Dim i            As Integer
+    Dim section      As Integer
+
+    strPluc = Mid$(strData, InStr(1, strData, "<" & idPluc & ">", vbTextCompare) + Len(idPluc) + 5, InStr(1, strData, "</" & idPluc & ">", vbTextCompare) - InStr(1, strData, "<" & idPluc & ">", vbTextCompare) - Len(idPluc) - 9)
+    sectionSpl = Split(strPluc, "</S><S>")
+
+    For section = 0 To UBound(sectionSpl) - 1
+        strSplit = Split(sectionSpl(section), "~")
+
+        For i = 0 To UBound(strSplit)
+
+            If i Mod (iCount + 1) <> 0 Then
+                If i > 1 Then
+                    strPlucNew = strPlucNew & "~" & strSplit(i)
+                Else
+                    strPlucNew = strPlucNew & strSplit(i)
+                End If
+                    
+            End If
+            
+        Next
+        strPlucNew = strPlucNew & "</S><S>"
+    Next
+    strPlucNew = strPlucNew & sectionSpl(UBound(sectionSpl))
+    ReplacePlucBarcode = Replace$(strData, "<" & idPluc & "><S>" & strPluc, "<" & idPluc & "><S>" & strPlucNew)
+End Function
