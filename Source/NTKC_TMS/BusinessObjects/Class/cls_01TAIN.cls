@@ -387,7 +387,7 @@ Dim xmlNode As MSXML.IXMLDOMNode
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                         If Id = arrDanhsach(1) Then
-                            strIdQLT = arrDanhsach(0)
+                            strIdQLT = arrDanhsach(1) 'nshung-20-02-2014:Thay STT thanh ma khoang san arrDanhsach(0) --> arrDanhsach(1)
                             TenTN = arrDanhsach(2)
                             DVT = arrDanhsach(3)
                             strThueSuat = arrDanhsach(4)

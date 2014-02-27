@@ -261,7 +261,7 @@ Private Sub Form_Load()
         .Top = 1650
         .Left = 70
         .CausesValidation = False
-        '.AutoSize = True
+        .ToolTipText = "Cau hinh"
     End With
     
     'load xml config'
@@ -281,7 +281,7 @@ Private Sub pcBox_Click()
     
     'MsgBox "You Clicked the Command button"
     frmSetting.Show
-    
+    Me.Hide
 End Sub
 
 Private Sub Form_Resize()
@@ -308,14 +308,14 @@ Private Function IsValidUserESB() As Integer
 '            IsValidUserESB = 2
 '            Exit Function
     
-    strResultNSD = GetDataFromESB(txtUsername.Text, txtPassword.Text, "NSD")
-    'Chuan hoa file xml ket qua - lay duoc tu ESB
-    strResultNSD = ChangeTagASSCII(strResultNSD, False)
-    xmlResultNSD.loadXML strResultNSD
+'    strResultNSD = GetDataFromESB(txtUsername.Text, txtPassword.Text, "NSD")
+'    'Chuan hoa file xml ket qua - lay duoc tu ESB
+'    strResultNSD = ChangeTagASSCII(strResultNSD, False)
+'    xmlResultNSD.loadXML strResultNSD
     
-'    'Du lieu gia lap de test
-'    Set xmlResultNSD = LoadXmlTemp("ResultNSDFromESB")
-'    strResultNSD = "ssdfdsf"
+    'Du lieu gia lap de test
+    Set xmlResultNSD = LoadXmlTemp("ResultNSDFromESB")
+    strResultNSD = "ssdfdsf"
        
     'Check validate xmlResultNSD
     If (strResultNSD = "") Then
@@ -616,8 +616,8 @@ Private Function CheckVersion() As Boolean
     
     On Error GoTo ErrHandle
 
-'    CheckVersion = True
-'    Exit Function
+    CheckVersion = True
+    Exit Function
        If strCurrentVersion = "" Then
             'Can not found table or not exist value
             DisplayMessage "0075", msOKOnly, miCriticalError
@@ -654,7 +654,7 @@ Private Function checkActivePIT() As Boolean
         Set rsObj = clsDAO.Execute(strSQL)
 
         If Not rsObj Is Nothing Then
-            If rsObj.Fields.Count > 0 Then
+            If rsObj.Fields.count > 0 Then
                 If rsObj.Fields(0).value = "1" Then
                     resultPIT = True
                 Else
