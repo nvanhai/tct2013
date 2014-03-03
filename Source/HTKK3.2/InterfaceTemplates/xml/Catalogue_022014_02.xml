@@ -6,9 +6,9 @@
 			<Cell CellID="C_4" CellID2="C_2" Value="573###10101###    Xì gà###Bao###65###0###0###1" StatusID=""/>
 			<Cell CellID="C_5" CellID2="C_2" Value="574###10102###    Thuốc lá điếu###Bao###65###0###0###1" StatusID=""/>
 			<Cell CellID="C_6" CellID2="C_2" Value="575###10103###    Các chế phẩm khác từ cây thuốc lá######65###0###0###1" StatusID=""/>
-			<Cell CellID="C_8" CellID2="C_2" Value="577###10200###    Rượu từ 20 độ trở lên###Lít###45###0###0###1" StatusID=""/>
+			<Cell CellID="C_8" CellID2="C_2" Value="577###10200###    Rượu từ 20 độ trở lên###Lít###50###0###0###1" StatusID=""/>
 			<Cell CellID="C_9" CellID2="C_2" Value="578###10203###    Rượu dưới 20 độ, rượu hoa quả, rượu thuốc###Lít###25###0###0###1" StatusID=""/>
-			<Cell CellID="C_10" CellID2="C_2" Value="579###10300###    Bia###Lít###45###0###0###1" StatusID=""/>
+			<Cell CellID="C_10" CellID2="C_2" Value="579###10300###    Bia###Lít###50###0###0###1" StatusID=""/>
 			<Cell CellID="C_14" CellID2="C_2" Value="583###104040101###            Loại có dung tích xi lanh từ 2.000 cm3 trở xuống###Cái###45###0###0###1" StatusID=""/>
 			<Cell CellID="C_15" CellID2="C_2" Value="584###104040102###            Loại có dung tích xi lanh trên 2.000 cm3 đến 3.000 cm3###Cái###50###0###0###1" StatusID=""/>
 			<Cell CellID="C_16" CellID2="C_2" Value="585###104040103###            Loại có dung tích xi lanh trên 3.000 cm3###Cái###60###0###0###1" StatusID=""/>
