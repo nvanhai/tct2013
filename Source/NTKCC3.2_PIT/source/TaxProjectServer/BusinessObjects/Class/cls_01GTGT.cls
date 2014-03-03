@@ -7613,10 +7613,10 @@ Public Function InsertHDR() As String
     Dim sSQL       As String
     Dim sSQLCol    As String
     Dim sSQLVal    As String
-      Dim kykkhai As Variant
-  Dim matkhai As Variant
-    Dim TENNV As Variant
-    Dim CHUNGCHI As Variant
+    Dim kykkhai    As Variant
+    Dim matkhai    As Variant
+    Dim TENNV      As Variant
+    Dim CHUNGCHI   As Variant
     Dim madtnt     As Variant
     Dim MATHUE     As Variant
     Dim maTM       As Variant
@@ -7655,7 +7655,7 @@ Public Function InsertHDR() As String
     Dim NGAYPS     As Variant
     Dim GIAHAN     As Variant
     Dim MALD       As Variant
-    Dim LoaiKyKK As Variant
+    Dim LoaiKyKK   As Variant
     
     sSQLCol = "MADTNT, MATHUE, MATM, MAPP, KYLBO, NGNOP, "
     sSQLCol = sSQLCol & "LOAITIEN, MABPQL, SHTEP, TTHTK, KYKKHAI, "
@@ -7740,6 +7740,7 @@ Public Function InsertHDR() As String
         Else
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
+
         '.GetText .ColLetterToNumber("M"), 12, NGNHAP
         NgNhap = Date
 
@@ -7831,15 +7832,18 @@ Public Function InsertHDR() As String
         If Trim(LanBS) = vbNullString Then
             LanBS = "0"
         End If
+
         ' Lay loai ky ke khai(thang/quy)
         .GetText .ColLetterToNumber("AB"), 42, LoaiKyKK
+
         If LoaiKyKK = "0" Then
             LoaiKyKK = ".T."
         Else
             LoaiKyKK = ".F."
         End If
- ' Lay so lan quet
- '       .GetText .ColLetterToNumber("M"), 30, LAN_QUET
+
+        ' Lay so lan quet
+        '       .GetText .ColLetterToNumber("M"), 30, LAN_QUET
         If Trim(LAN_QUET) = vbNullString Then
             LAN_QUET = "1"
         End If
@@ -7857,6 +7861,7 @@ Public Function InsertHDR() As String
         
         MaVach = ".T."
         matkhai = "'" & LOAI_TO_KHAI & "'"
+
         If Trim(HANNOP) = vbNullString Then
             HANNOP = "CTOD('')"
         Else
@@ -7898,8 +7903,10 @@ Public Function InsertHDR() As String
                 ElseIf TAX_Utilities_Svr_New.Month = "06" Then
                     HANNOP = "CTOD('" & Format("21/1/2013", "mm/dd/yyyy") & "')"
                 End If
+
                 HANNOP2 = HANNOP
             ElseIf TAX_Utilities_Svr_New.Year = "2013" Then
+
                 If TAX_Utilities_Svr_New.Month = "01" Then
                     HANNOP = "CTOD('" & Format("20/08/2013", "mm/dd/yyyy") & "')"
                 ElseIf TAX_Utilities_Svr_New.Month = "02" Then
@@ -7907,6 +7914,7 @@ Public Function InsertHDR() As String
                 ElseIf TAX_Utilities_Svr_New.Month = "03" Then
                     HANNOP = "CTOD('" & Format("21/10/2013", "mm/dd/yyyy") & "')"
                 End If
+
                 HANNOP2 = HANNOP
             End If
 
@@ -7921,10 +7929,7 @@ Public Function InsertHDR() As String
     sSQLVal = sSQLVal & LoaiTien & "," & MABPQL & "," & SHTEP & "," & TTHTK & "," & kykkhai & ", "
     sSQLVal = sSQLVal & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & ", "
     sSQLVal = sSQLVal & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ", "
-    sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & _
-    ",'" & NGANH & "'," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & "," & LAN_QUET & "," & _
-    DANHAN & "," & MADLT & "," & LanBS & "," & MANNKD & "," & THUECL & "," & DSoCL & "," & _
-    GTTTCL & "," & NGAYPS & "," & GIAHAN & "," & MALD & ",'" & TENNV & "','" & CHUNGCHI & "'"
+    sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & ",'" & NGANH & "'," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & "," & LAN_QUET & "," & DANHAN & "," & MADLT & "," & LanBS & "," & MANNKD & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & NGAYPS & "," & GIAHAN & "," & MALD & ",'" & TENNV & "','" & CHUNGCHI & "'"
        
     sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
