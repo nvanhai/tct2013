@@ -1,4 +1,4 @@
-<HSoKhaiThue ngay_nop_tk="E_12" ky_lap_bo="E_10" loi_dinh_danh="">
+<HSoKhaiThue ngay_nop_tk="E_12" ky_lap_bo="E_10" loi_dinh_danh="E_14">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>49</maTKhai>
 		<tenTKhai>Báo cáo tài chính bộ 15 BCTC</tenTKhai>

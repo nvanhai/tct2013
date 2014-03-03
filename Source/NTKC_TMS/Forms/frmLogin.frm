@@ -167,13 +167,16 @@ End Sub
 
 Private Sub cmdOk_Click()
 On Error GoTo ErrorHandle
-    
+    'frmAmqscnxb.Show
+    'fraPut.Show
+
+
     If Len(txtUsername.Text) = 0 Then
         DisplayMessage "0056", msOKOnly, miInformation
         txtUsername.SetFocus
         Exit Sub
     End If
-    
+
     Dim IsValid As Integer
     IsValid = IsValidUserESB()
     Select Case IsValid
@@ -196,7 +199,7 @@ On Error GoTo ErrorHandle
                 Exit Sub
             End If
     End Select
-   
+
     ''GetDataInfor
     'Set user name to system caption
     frmSystem.lblUser.caption = Mid$(frmSystem.lblUser.caption, 1, _
@@ -209,7 +212,7 @@ On Error GoTo ErrorHandle
         Unload frmSystem
         Exit Sub
     End If
-    
+
     ' Date: 27/04/06
     ' Check version of application
     If Not CheckVersion Then
@@ -222,7 +225,7 @@ On Error GoTo ErrorHandle
     isPITActive = checkActivePIT
     TAX_Utilities_Srv_New.isCheckPIT = isPITActive
     ' end
-    
+
     Unload Me
     frmTreeviewMenu.Show
     Exit Sub
@@ -233,23 +236,19 @@ End Sub
 
 Private Sub Form_Activate()
     txtUsername.SetFocus
+    
+    'load xml config'
+    Set xmlConfig = LoadConfig()
+'    If Not xmlConfig.getElementsByTagName("WsUrlNSD").length > 0 Then
+'    MsgBox "Not found file config"
+'    Unload Me
+'    Unload frmSystem
+'    End If
+    ' end xml config
 End Sub
 
 Private Sub Form_Load()
     SetControlCaption Me, "frmLogin"
-    
-'    Set cmdSetting = Me.Controls.Add("vb.commandbutton", "cmdSetting")
-'
-'
-'    With cmdSetting
-'        .Visible = False
-'        .caption = GetAttribute(GetMessageCellById("0151"), "Msg")
-'        .Width = 960
-'        .Height = 375
-'        .Top = 1650
-'        .Left = 70
-'        .CausesValidation = False
-'    End With
     
     Set pcBox = Me.Controls.Add("vb.picturebox", "pcBox")
     
@@ -263,13 +262,7 @@ Private Sub Form_Load()
         .CausesValidation = False
         .ToolTipText = "Cau hinh"
     End With
-    
-    'load xml config'
-    Set xmlConfig = LoadConfig()
-    If xmlConfig Is Nothing Then
-        Exit Sub
-    End If
-    ' end xml config
+
 End Sub
 'Private Sub cmdSetting_Click()
 '
@@ -300,22 +293,25 @@ End Sub
 Private Function IsValidUserESB() As Integer
     On Error GoTo ErrorHandle
 
+
+
+
     'Dim xmlESBReturn As New MSXML.DOMDocument
     Set xmlResultNSD = New MSXML.DOMDocument
     Dim strResultNSD As String
     Dim sStatus      As String
 
-'            IsValidUserESB = 2
-'            Exit Function
+            IsValidUserESB = 2
+            Exit Function
     
-'    strResultNSD = GetDataFromESB(txtUsername.Text, txtPassword.Text, "NSD")
-'    'Chuan hoa file xml ket qua - lay duoc tu ESB
-'    strResultNSD = ChangeTagASSCII(strResultNSD, False)
-'    xmlResultNSD.loadXML strResultNSD
+    strResultNSD = GetDataFromESB(txtUsername.Text, txtPassword.Text, "NSD")
+    'Chuan hoa file xml ket qua - lay duoc tu ESB
+    strResultNSD = ChangeTagASSCII(strResultNSD, False)
+    xmlResultNSD.loadXML strResultNSD
     
-    'Du lieu gia lap de test
-    Set xmlResultNSD = LoadXmlTemp("ResultNSDFromESB")
-    strResultNSD = "ssdfdsf"
+'    'Du lieu gia lap de test
+'    Set xmlResultNSD = LoadXmlTemp("ResultNSDFromESB")
+'    strResultNSD = "ssdfdsf"
        
     'Check validate xmlResultNSD
     If (strResultNSD = "") Then
@@ -324,7 +320,7 @@ Private Function IsValidUserESB() As Integer
     End If
 
     If (strResultNSD = "" Or strResultNSD = vbNullString Or Not xmlResultNSD.hasChildNodes) Then
-        IsValidUserESB = 1  'Message login thanh cong
+        IsValidUserESB = 1
         Set xmlResultNSD = Nothing
         Exit Function
 
@@ -414,7 +410,7 @@ Private Function IsValidUser() As Integer
 On Error GoTo ErrorHandle
     
     Dim userid As String
-    Dim password As String
+    Dim Password As String
     Dim clsConvert  As New clsUnicodeConvert
     
     Dim rec As ADODB.Recordset
@@ -654,8 +650,8 @@ Private Function checkActivePIT() As Boolean
         Set rsObj = clsDAO.Execute(strSQL)
 
         If Not rsObj Is Nothing Then
-            If rsObj.Fields.count > 0 Then
-                If rsObj.Fields(0).value = "1" Then
+            If rsObj.Fields.Count > 0 Then
+                If rsObj.Fields(0).Value = "1" Then
                     resultPIT = True
                 Else
                     resultPIT = False

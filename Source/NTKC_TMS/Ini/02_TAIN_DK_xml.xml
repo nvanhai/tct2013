@@ -1,7 +1,8 @@
-<HSoKhaiThue ngay_nop_tk="F_29" ky_lap_bo="F_27" loi_dinh_danh="">
+<HSoKhaiThue ngay_nop_tk="F_29" ky_lap_bo="F_27" loi_dinh_danh="G_33">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>88</maTKhai>
 		<tenTKhai>TỜ KHAI QUYẾT TOÁN THUẾ TÀI NGUYÊN ĐỐI VỚI DẦU KHÍ (02/TAIN-DK)</tenTKhai>
+		<soLan>J_37</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">

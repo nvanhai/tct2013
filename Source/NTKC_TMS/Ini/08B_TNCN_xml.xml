@@ -1,7 +1,8 @@
-<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22" loi_dinh_danh="">
+<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30" loi_dinh_danh="E_36">
 	<Static GroupName="TKhaiThue">
 		<maTKhai/>
 		<tenTKhai>token</tenTKhai>
+		<soLan>T_7</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">

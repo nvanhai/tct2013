@@ -1,4 +1,4 @@
-<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22">
+<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30"  loi_dinh_danh="E_36">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>04_NTNN</maTKhai>
 		<tenTKhai>Tờ khai thuế nhà thầu nước ngoài - 04/NTNN</tenTKhai>
@@ -22,53 +22,53 @@
 		<ngayHopNhaThau>N_28</ngayHopNhaThau>
 	</Static>
 	<Static GroupName="GiaTriHDong">
-		<donViTinh>text</donViTinh>
-		<keKhai>text</keKhai>
-		<quyetToan>text</quyetToan>
-		<chenhLech>text</chenhLech>
-		<ghiChu>text</ghiChu>
+		<donViTinh>N_42</donViTinh>
+		<keKhai>P_42</keKhai>
+		<quyetToan>T_42</quyetToan>
+		<chenhLech>X_42</chenhLech>
+		<ghiChu>AB_42</ghiChu>
 	</Static>
 	<Static GroupName="DoanhThu">
-		<donViTinh>text</donViTinh>
-		<keKhai>text</keKhai>
-		<quyetToan>text</quyetToan>
-		<chenhLech>text</chenhLech>
-		<ghiChu>text</ghiChu>
+		<donViTinh>N_43</donViTinh>
+		<keKhai>P_43</keKhai>
+		<quyetToan>T_43</quyetToan>
+		<chenhLech>X_43</chenhLech>
+		<ghiChu>AB_43</ghiChu>
 	</Static>
 	<Static GroupName="DThuNThauVietNam">
-		<donViTinh>text</donViTinh>
-		<keKhai>text</keKhai>
-		<quyetToan>text</quyetToan>
-		<chenhLech>text</chenhLech>
-		<ghiChu>text</ghiChu>
+		<donViTinh>N_44</donViTinh>
+		<keKhai>P_44</keKhai>
+		<quyetToan>T_44</quyetToan>
+		<chenhLech>X_44</chenhLech>
+		<ghiChu>AB_44</ghiChu>
 	</Static>
 	<Static GroupName="DThuTinhThue">
-		<donViTinh>text</donViTinh>
-		<keKhai>text</keKhai>
-		<quyetToan>text</quyetToan>
-		<chenhLech>text</chenhLech>
-		<ghiChu>text</ghiChu>
+		<donViTinh>N_45</donViTinh>
+		<keKhai>P_45</keKhai>
+		<quyetToan>T_45</quyetToan>
+		<chenhLech>X_45</chenhLech>
+		<ghiChu>AB_45</ghiChu>
 	</Static>
 	<Static GroupName="ThueTNDNPhaiNop">
-		<donViTinh>text</donViTinh>
-		<keKhai>text</keKhai>
-		<quyetToan>text</quyetToan>
-		<chenhLech>text</chenhLech>
-		<ghiChu>text</ghiChu>
+		<donViTinh>N_46</donViTinh>
+		<keKhai>P_46</keKhai>
+		<quyetToan>T_46</quyetToan>
+		<chenhLech>X_46</chenhLech>
+		<ghiChu>AB_46</ghiChu>
 	</Static>
 	<Static GroupName="ThueDaNopNTNN">
-		<donViTinh>text</donViTinh>
-		<keKhai>text</keKhai>
-		<quyetToan>text</quyetToan>
-		<chenhLech>text</chenhLech>
-		<ghiChu>text</ghiChu>
+		<donViTinh>N_47</donViTinh>
+		<keKhai>P_47</keKhai>
+		<quyetToan>T_47</quyetToan>
+		<chenhLech>X_47</chenhLech>
+		<ghiChu>AB_47</ghiChu>
 	</Static>
 	<Static GroupName="ThueNTNNNopThuaThieu">
-		<donViTinh>text</donViTinh>
-		<keKhai>text</keKhai>
-		<quyetToan>text</quyetToan>
-		<chenhLech>text</chenhLech>
-		<ghiChu>text</ghiChu>
+		<donViTinh>N_48</donViTinh>
+		<keKhai>P_48</keKhai>
+		<quyetToan>T_48</quyetToan>
+		<chenhLech>X_48</chenhLech>
+		<ghiChu>AB_48</ghiChu>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>AA_51</nguoiKy>

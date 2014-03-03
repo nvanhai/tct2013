@@ -29,6 +29,7 @@
 		<ct27>I_47</ct27>
 		<ct28>I_48</ct28>
 		<ct29>I_49</ct29>
+		<ct30>I_50</ct30>
 	</Static>
 	<Dynamic GroupName="BKeSoThuePhaiNop">
 		<SoThuePhaiNop id="id">
@@ -45,7 +46,7 @@
 			<ct42>V_64</ct42>
 		</SoThuePhaiNop>
 	</Dynamic>	
-	<Static GroupName="CT30">
+	<Static GroupName="ChiTietSoThuePhaiNop">
 		<ct43>I_66</ct43>
 		<ct44>L_66</ct44>
 		<ct45>N_66</ct45>

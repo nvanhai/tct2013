@@ -1,5 +1,5 @@
 ﻿
-	<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30" loi_dinh_danh="">
+	<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30" loi_dinh_danh="E_36">
 		<Static GroupName="TKhaiThue">
 			<maTKhai>07</maTKhai>
 			<tenTKhai>TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG (04/GTGT)</tenTKhai>

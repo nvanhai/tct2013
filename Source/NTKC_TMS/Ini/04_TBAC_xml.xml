@@ -1,13 +1,8 @@
-<HSoKhaiThue ngay_nop_tk="E_10" ky_lap_bo="" loi_dinh_danh="">
-	<Static GroupName="TTinDVu">
-		<maDVu/>
-		<tenDVu/>
-		<pbanDVu/>
-		<ttinNhaCCapDVu/>
-	</Static>
+<HSoKhaiThue ngay_nop_tk="E_10" ky_lap_bo="" loi_dinh_danh="E_12">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>129</maTKhai>
 		<tenTKhai>Thông báo điều chỉnh thông tin (TB04/AC)</tenTKhai>
+		<soLan></soLan>
 		<moTaBMau/>
 		<pbanTKhaiXML/>
 	</Static>
