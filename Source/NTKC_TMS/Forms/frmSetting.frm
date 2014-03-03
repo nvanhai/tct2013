@@ -7,15 +7,6 @@ Begin VB.Form frmSetting
    ClientTop       =   435
    ClientWidth     =   3795
    ControlBox      =   0   'False
-   BeginProperty Font 
-      Name            =   "MS Sans Serif"
-      Size            =   8.25
-      Charset         =   0
-      Weight          =   400
-      Underline       =   0   'False
-      Italic          =   0   'False
-      Strikethrough   =   0   'False
-   EndProperty
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MDIChild        =   -1  'True
@@ -89,6 +80,7 @@ Begin VB.Form frmSetting
       Height          =   375
       Left            =   1800
       TabIndex        =   1
+      Text            =   "10.64.85.170"
       Top             =   240
       Width           =   1815
    End
@@ -141,7 +133,7 @@ Private Base64Unicode As New Base64Unicode
 Private Sub cmdDongY_Click()
 'Save value to file config
 If ValidateIP(txtIpServer.Text) Then
-    SaveConfig
+    SaveConfigBase64
     Unload Me
     frmLogin.Show
 End If
@@ -151,15 +143,29 @@ Private Sub cmdThoat_Click()
 Unload Me
 frmLogin.Show
 End Sub
+Private Function MessageBox(strMsgId As String, intMsgStyle As MsgBoxStyle, intMsgIcon As MsgBoxIcon, Optional msType As Byte) As MsgBoxResult
+    Dim intReturn As Integer
+    
+On Error GoTo ErrHandle
+    
+    
+    MessageBox = DisplayMessage(strMsgId, intMsgStyle, intMsgIcon, , msType)
+    
+    
+    Exit Function
+ErrHandle:
+    SaveErrorLog Me.Name, "MessageBox", Err.Number, Err.Description
+End Function
 Private Function ValidateIP(ByVal IPAddress As String) As Boolean
-        Dim count As Byte
+        Dim Count As Byte
         Dim dotcount As Byte
 
         'check for illegal charaters
-        For count = 1 To Len(IPAddress)
-            If InStr("1234567890.", LCase(Mid(IPAddress, count, 1))) > 0 Then
+        For Count = 1 To Len(IPAddress)
+            If InStr("1234567890.", LCase(Mid(IPAddress, Count, 1))) > 0 Then
             Else
-                MsgBox ("There are illegal characters")
+                MessageBox "0152", msOKOnly, miCriticalError
+                'MsgBox ("There are illegal characters")
                 ValidateIP = False
                 txtIpServer.SetFocus
                 Exit Function
@@ -168,7 +174,8 @@ Private Function ValidateIP(ByVal IPAddress As String) As Boolean
         'check if first character is "."
 
         If InStr(IPAddress, ".") = 1 Then
-            MsgBox ("First Character is '.'")
+            'MsgBox ("First Character is '.'")
+            MessageBox "0152", msOKOnly, miCriticalError
             ValidateIP = False
             txtIpServer.SetFocus
             Exit Function
@@ -177,7 +184,8 @@ Private Function ValidateIP(ByVal IPAddress As String) As Boolean
         'check if there are consecutive ".."
 
         If InStr(IPAddress, "..") > 0 Then
-            MsgBox ("There are consecutive '.'")
+            'MsgBox ("There are consecutive '.'")
+            MessageBox "0152", msOKOnly, miCriticalError
             ValidateIP = False
             txtIpServer.SetFocus
             Exit Function
@@ -185,12 +193,13 @@ Private Function ValidateIP(ByVal IPAddress As String) As Boolean
 
 
         'check for number of dots
-        For count = 1 To Len(IPAddress)
-            If Mid(IPAddress, count, 1) = "." Then
+        For Count = 1 To Len(IPAddress)
+            If Mid(IPAddress, Count, 1) = "." Then
 
                 dotcount = dotcount + 1
                 If dotcount > 3 Then
-                    MsgBox ("There are two many '.'")
+                    'MsgBox ("There are two many '.'")
+                    MessageBox "0152", msOKOnly, miCriticalError
                     ValidateIP = False
                     txtIpServer.SetFocus
                     Exit Function
@@ -203,9 +212,10 @@ Private Function ValidateIP(ByVal IPAddress As String) As Boolean
         Dim num() As String
         num = Split(IPAddress, ".")
         
-        For count = 0 To 3
-            If (num(count)) > 255 Then
-                MsgBox ("IP address is invalid")
+        For Count = 0 To 3
+            If (num(Count)) > 255 Then
+                'MsgBox ("IP address is invalid")
+                MessageBox "0152", msOKOnly, miCriticalError
                 ValidateIP = False
                 txtIpServer.SetFocus
                 Exit Function
@@ -213,7 +223,8 @@ Private Function ValidateIP(ByVal IPAddress As String) As Boolean
 
             'checks if last split is = 255
             If num(3) = 255 Then
-                MsgBox ("IP address is invalid")
+                'MsgBox ("IP address is invalid")
+                MessageBox "0152", msOKOnly, miCriticalError
                 ValidateIP = False
                 txtIpServer.SetFocus
                 Exit Function
@@ -233,7 +244,7 @@ Private Function ValidateIP(ByVal IPAddress As String) As Boolean
         'if all of these things are true return true
 
     End Function
-Private Sub SaveConfig()
+Private Sub SaveConfigBase64()
 On Error GoTo ErrHandle
 
 Dim xmlTempConfig As New MSXML.DOMDocument
@@ -306,27 +317,110 @@ xmlTempConfig.save sFileName
 ErrHandle:
     SaveErrorLog Me.Name, "SaveConfig", Err.Number, Err.Description
 End Sub
+Private Sub SaveConfig()
+On Error GoTo ErrHandle
 
+Dim xmlTempConfig As New MSXML.DOMDocument
+xmlTempConfig.Load GetAbsolutePath("..\Project\Config.xml")
+
+xmlTempConfig.getElementsByTagName("queue_manager_name")(0).Text = "ESB.INT.QMGR"
+xmlTempConfig.getElementsByTagName("queue_name")(0).Text = "INT.INBOX.QUEUE"
+xmlTempConfig.getElementsByTagName("BCTC")(0).Text = "69;19;20;21;22"
+xmlTempConfig.getElementsByTagName("QLAC")(0).Text = "64;65;66;67;68;91"
+xmlTempConfig.getElementsByTagName("TRAN_CODE")(0).Text = "01000"
+xmlTempConfig.getElementsByTagName("RECEIVER_CODE")(0).Text = "TMS"
+
+'NSD
+Dim param As String
+param = "http://" & txtIpServer.Text & ":7080/wsCBTVerify" '10.64.112.155
+xmlTempConfig.getElementsByTagName("WsUrlNSD")(0).Text = param
+param = "http://tempuri.org/verify"
+xmlTempConfig.getElementsByTagName("SoapActionNSD")(0).Text = param
+param = "<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:q0=""http://tempuri.org/ESB_TCT_INTERNAL_MSG"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">" & _
+        "    <soapenv:Body>" & _
+        "        <q0:UserVerifyWSRequest>string</q0:UserVerifyWSRequest>" & _
+        "    </soapenv:Body>" & _
+        "</soapenv:Envelope>"
+xmlTempConfig.getElementsByTagName("XmlRequestNSD")(0).Text = param
+param = "UserVerifyWSRequest"
+xmlTempConfig.getElementsByTagName("ParamNameNSD")(0).Text = param
+
+'NNT
+param = "http://" & txtIpServer.Text & ":7080/wsDangKyThue" 'http://10.64.112.155:7080/wsDangKyThue
+xmlTempConfig.getElementsByTagName("WsUrlNNT")(0).Text = param
+param = "http://gdt.gov.vn/getNNT"
+xmlTempConfig.getElementsByTagName("SoapActionNNT")(0).Text = param
+param = "<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:q0=""http://tempuri.org/ESB_TCT_INTERNAL_MSG"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">" & _
+        "    <soapenv:Body>" & _
+        "        <q0:NNTWSRequest>string</q0:NNTWSRequest>" & _
+        "    </soapenv:Body>" & _
+        "</soapenv:Envelope>"
+xmlTempConfig.getElementsByTagName("XmlRequestNNT")(0).Text = param
+param = "NNTWSRequest"
+xmlTempConfig.getElementsByTagName("ParamNameNNT")(0).Text = param
+
+'DLT
+param = "http://" & txtIpServer.Text & ":7080/wsDangKyThue" '10.64.112.155
+xmlTempConfig.getElementsByTagName("WsUrlDLT")(0).Text = param
+param = "http://gdt.gov.vn/getDLT"
+xmlTempConfig.getElementsByTagName("SoapActionDLT")(0).Text = param
+param = "<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:q0=""http://tempuri.org/ESB_TCT_INTERNAL_MSG"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">" & _
+        "    <soapenv:Body>" & _
+        "        <q0:DLTWSRequest>string</q0:DLTWSRequest>" & _
+        "    </soapenv:Body>" & _
+        "</soapenv:Envelope>"
+xmlTempConfig.getElementsByTagName("XmlRequestDLT")(0).Text = param
+param = "DLTWSRequest"
+xmlTempConfig.getElementsByTagName("ParamNameDLT")(0).Text = param
+
+'Set value const
+xmlTempConfig.getElementsByTagName("VERSION")(0).Text = APP_VERSION
+xmlTempConfig.getElementsByTagName("SENDER_CODE")(0).Text = "NTK"
+xmlTempConfig.getElementsByTagName("SENDER_NAME")(0).Text = "He thong nhan to khai ma vach"
+xmlTempConfig.getElementsByTagName("RECEIVER_NAME")(0).Text = "He thong quan ly thue tap trung"
+xmlTempConfig.getElementsByTagName("ORIGINAL_CODE")(0).Text = "NTK"
+xmlTempConfig.getElementsByTagName("ORIGINAL_NAME")(0).Text = "He thong nhan to khai ma vach"
+
+
+
+Dim sFileName As String
+sFileName = App.path & "\Config.xml"
+xmlTempConfig.save sFileName
+    
+ErrHandle:
+    SaveErrorLog Me.Name, "SaveConfig", Err.Number, Err.Description
+End Sub
 Private Sub Form_Load()
     SetControlCaption Me, "frmSetting"
-   frmSetting.Top = (frmSystem.Height - frmLogin.Height) / 2
+    frmSetting.Top = (frmSystem.Height - frmLogin.Height) / 2
     frmSetting.Left = (frmSystem.Width - frmLogin.Width) / 2
-LoadConfig
+    'LoadConfig
+End Sub
+
+Private Sub LoadConfigBase64()
+   
+'    Dim xmlTempConfig As New MSXML.DOMDocument
+'    Dim sUrl As String
+'
+'    xmlTempConfig.Load GetAbsolutePath("..\Project\Config.xml")
+'    sUrl = Base64Unicode.Base64DecodeString(xmlTempConfig.getElementsByTagName("WsUrlNSD")(0).Text)
+'    sUrl = Mid$(sUrl, InStr(1, sUrl, "//", vbTextCompare) + 2)
+'    sUrl = Mid$(sUrl, 1, InStr(1, sUrl, ":", vbTextCompare) - 1)
+'    txtIpServer.Text = IIf(sUrl <> "", sUrl, "10.64.85.167")
+'    txtPortWs.Text = ""
 End Sub
 
 Private Sub LoadConfig()
-    Dim xmlTempConfig As New MSXML.DOMDocument
-    On Error GoTo ErrHandle
-    Dim sUrl As String
-
-    xmlTempConfig.Load GetAbsolutePath("..\Project\Config.xml")
-    sUrl = Base64Unicode.Base64DecodeString(xmlTempConfig.getElementsByTagName("WsUrlNSD")(0).Text)
-    sUrl = Mid$(sUrl, InStr(1, sUrl, "//", vbTextCompare) + 2)
-    sUrl = Mid$(sUrl, 1, InStr(1, sUrl, ":", vbTextCompare) - 1)
-    txtIpServer.Text = sUrl
-    txtPortWs.Text = ""
-ErrHandle:
-    SaveErrorLog Me.Name, "LoadConfig", Err.Number, Err.Description
+   
+'    Dim xmlTempConfig As New MSXML.DOMDocument
+'    Dim sUrl As String
+'
+'    xmlTempConfig.Load GetAbsolutePath("..\Project\Config.xml")
+'    sUrl = xmlTempConfig.getElementsByTagName("WsUrlNSD")(0).Text
+'    sUrl = Mid$(sUrl, InStr(1, sUrl, "//", vbTextCompare) + 2)
+'    sUrl = Mid$(sUrl, 1, InStr(1, sUrl, ":", vbTextCompare) - 1)
+'    txtIpServer.Text = IIf(sUrl <> "", sUrl, "10.64.85.167")
+'    txtPortWs.Text = ""
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)

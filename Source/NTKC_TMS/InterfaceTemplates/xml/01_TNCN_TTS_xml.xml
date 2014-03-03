@@ -87,7 +87,8 @@
 			<ct27>1</ct27>
 			<ct28>1</ct28>
 			<ct29>1</ct29>
-			<CT30>
+			<ct30></ct30>
+			<ChiTietSoThuePhaiNop>
 				<BKeSoThuePhaiNop>
 					<SoThuePhaiNop>
 						<ct32></ct32>
@@ -112,7 +113,7 @@
 				<ct49>1</ct49>
 				<ct50>1</ct50>
 				<ct51>1</ct51>
-			</CT30>
+			</ChiTietSoThuePhaiNop>
 		</CTieuTKhaiChinh>
 		<PLuc/>
 	</HSoKhaiThue>

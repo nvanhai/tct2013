@@ -600,14 +600,14 @@ Public Sub SetupData(pGrid As fpSpread)
                             End If
 
                         Case Else
-                            If blnNewData And .value <> GetAttribute(xmlNodeCell, "Value") Then
-                                SetAttribute xmlNodeCell, "Value", .value
+                            If blnNewData And .Value <> GetAttribute(xmlNodeCell, "Value") Then
+                                SetAttribute xmlNodeCell, "Value", .Value
                             Else
-                                .value = GetAttribute(xmlNodeCell, "Value")
+                                .Value = GetAttribute(xmlNodeCell, "Value")
                             End If
                     End Select
                   Else
-                    UpdateCellReceive pGrid, lSheet, .Col, .Row, .value
+                    UpdateCellReceive pGrid, lSheet, .Col, .Row, .Value
                   End If
                     
                     .RowHeight(lRow) = 14
@@ -1020,7 +1020,7 @@ With fpsGrid
     .Row = lRow
     For lCtrl = 1 To .MaxCols
         .Col = lCtrl
-        .value = ""
+        .Value = ""
     Next lCtrl
     .RowHeight(lRow) = 14
 End With
@@ -1640,10 +1640,10 @@ Public Function GetPkgIDErr() As String
     sSQL = "SELECT id FROM data_pkg " & _
         " WHERE pkg_type = '1' and curr_sta= '01'"
     Set rs = clsConn.Execute(sSQL)
-    If rs.Fields.count > 0 Then
+    If rs.Fields.Count > 0 Then
          pkgIDErr = "'"
          Do While Not rs.EOF
-            pkgIDErr = pkgIDErr & Trim(rs.Fields(0).value) & "','"
+            pkgIDErr = pkgIDErr & Trim(rs.Fields(0).Value) & "','"
             rs.MoveNext
          Loop
          pkgIDErr = Left$(pkgIDErr, Len(pkgIDErr) - 2)
@@ -1875,20 +1875,21 @@ Public Function PushDataToESB(ByVal xmlInput As String) As Boolean
     sQueueMgrName = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("queue_manager_name")(0).Text)
     sQueueName = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("queue_name")(0).Text)
     Dim MQPUT As New MQPUT
-    IsConnectMQ = MQPUT.open_Conn(sQueueMgrName, sQueueName)
-    If IsConnectMQ Then
-        If MQPUT.put_Msg(xmlInput) Then
-            PushDataToESB = True
-        Else
-            PushDataToESB = False
-        End If
-        'Dong connection den MQ
-        If (Not MQPUT.close_Conn) Then
-           SaveErrorLog "Close MQ:", "Dong ket noi voi MQ cua truc", 1111, "Loi khong dong duoc ket noi voi MQ sau khi truyen tin"
-        End If
-    Else
-        PushDataToESB = False
-    End If
+    PushDataToESB = MQPUT.PUSHMQ(xmlInput)
+    'IsConnectMQ = MQPUT.open_Conn(sQueueMgrName, sQueueName)
+'    If IsConnectMQ Then
+'        If MQPUT.put_Msg(xmlInput) Then
+'            PushDataToESB = True
+'        Else
+'            PushDataToESB = False
+'        End If
+'        'Dong connection den MQ
+'        If (Not MQPUT.close_Conn) Then
+'           SaveErrorLog "Close MQ:", "Dong ket noi voi MQ cua truc", 1111, "Loi khong dong duoc ket noi voi MQ sau khi truyen tin"
+'        End If
+'    Else
+'        PushDataToESB = False
+'    End If
     
 End Function
 ' chuyen the "<", ">" thanh "&lt;", "&gt;" neu IsTagToASSCII = true
@@ -2215,13 +2216,13 @@ Public Function ConvertDate(ByVal tmpDatetime As String, _
 End Function
 ' flag = true : 01 = Jan
 ' flag = false: Jan= 01
-Public Function synMonth(ByVal value As String, ByVal flag As Boolean) As String
+Public Function synMonth(ByVal Value As String, ByVal flag As Boolean) As String
     'flag=true: convert month from 01 to Jan
     Dim sResult As String
 
     If flag Then
 
-        Select Case value
+        Select Case Value
 
             Case "01"
                 sResult = "Jan"
@@ -2272,7 +2273,7 @@ Public Function synMonth(ByVal value As String, ByVal flag As Boolean) As String
 
     Else
 
-        Select Case value
+        Select Case Value
 
             Case "Jan"
                 sResult = "01"

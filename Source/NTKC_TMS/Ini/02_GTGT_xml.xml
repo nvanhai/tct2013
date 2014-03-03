@@ -1,10 +1,10 @@
  
-	<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30" loi_dinh_danh="">
+	<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30" loi_dinh_danh="E_36">
 		<Static GroupName="TKhaiThue">
 			<maTKhai>02</maTKhai>
 			<tenTKhai>TỜ KHAI THUẾ GTGT DÀNH CHO DỰ ÁN ĐẦU TƯ</tenTKhai>
 			<moTaBMau></moTaBMau>
-			<soLan>S_6</soLan>
+			<soLan>I_64</soLan>
 		</Static>
 		<Static GroupName="GiaHan">
 			<maLyDoGiaHan></maLyDoGiaHan>

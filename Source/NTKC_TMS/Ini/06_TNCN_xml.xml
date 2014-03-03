@@ -1,8 +1,8 @@
-<HSoKhaiThue ngay_nop_tk="" ky_lap_bo="" loi_dinh_danh="">
+<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30" loi_dinh_danh="E_36">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>06_TNCN</maTKhai>
 		<tenTKhai>Tờ khai 06/KK-TNCN</tenTKhai>
-		<soLan></soLan>
+		<soLan>S_6</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">

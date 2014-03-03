@@ -14,11 +14,14 @@ Attribute VB_Exposed = False
 Option Explicit
 Dim gHcon As Long
 Dim gHobj As Long
-
+Dim Hcon As Long
+Dim Hobj As Long
+Dim CompCode As Long
+Dim Reason As Long
 Public Function close_Conn() As Boolean
     Dim C_options As Long     ' MQCLOSE options
-    Dim CompCode  As Long      ' Completion code
-    Dim Reason    As Long        ' Reason code
+    'Dim CompCode  As Long      ' Completion code
+    'Dim Reason    As Long        ' Reason code
     'On Error GoTo ErrHandle
 
     ' If queue was opened successfully - then close it
@@ -51,14 +54,14 @@ Public Function close_Conn() As Boolean
 End Function
 
 Public Function open_Conn(ByVal qm As String, ByVal qn As String) As Boolean
-  Dim CompCode As Long      ' Completion code
-  Dim Reason As Long        ' Reason code
+  'Dim CompCode As Long      ' Completion code
+  'Dim Reason As Long        ' Reason code
   Dim O_options As Long     ' MQOPEN options
   Dim od As MQOD            ' Object descriptor
 
   ' Setup constants
   MQ_SETDEFAULTS
-  'On Error GoTo ErrHandle
+  On Error GoTo ErrHandle
   If gHcon = 0 Then
     ' Connect to the default queue manager: qm
     ' gHcon <> -1 okie
@@ -141,9 +144,9 @@ Public Function open_Conn(ByVal qm As String, ByVal qn As String) As Boolean
   End If
   
   'SaveErrorLog "MQPUT", "open_ConnMQ", O_options, "CompCode = " & CompCode & " Reason = " & Reason
-'ErrHandle:
-'    open_Conn = False
-'    SaveErrorLog "Mo ket noi MQ", "open_Conn", Err.Number, "Co loi khi mo ket noi MQ:" & Err.Description
+ErrHandle:
+    open_Conn = False
+    SaveErrorLog "Mo ket noi MQ", "open_Conn", Err.Number, "Co loi khi mo ket noi MQ:" & Err.Description
 End Function
 
 Public Function put_Msg(ByVal xml As String) As Boolean
@@ -151,8 +154,8 @@ Public Function put_Msg(ByVal xml As String) As Boolean
     Dim pmo      As MQPMO          ' MQPUT message options
     Dim buflen   As Long        ' Length of message to be put
     Dim Buffer   As String      ' Message to be put
-    Dim CompCode As Long      ' Completion code
-    Dim Reason   As Long        ' Reason code
+    'Dim CompCode As Long      ' Completion code
+    'Dim Reason   As Long        ' Reason code
     'On Error GoTo ErrHandle
     
     ' Setup MQMD and MQPMO to their respective
@@ -185,4 +188,162 @@ Public Function put_Msg(ByVal xml As String) As Boolean
 '    'put_Msg = False
 '    SaveErrorLog "Gui du lieu len MQ", "put_Msg", Err.Number, "Co loi khi gui to khai toi MQ:" & Err.Description
 End Function
+'Public Function OpenMQ(ByVal qm As String, ByVal qn As String) As Boolean
+'  Dim Selector As Long
+'  Dim OpenCode As Long
+'  Dim od As MQOD
+'  Dim CNOCD As MQCNOCD                           ' MQCNO and MQCD
+'
+'  Dim QmgrNameIn As String * MQ_Q_MGR_NAME_LENGTH  ' Pass to MQCONN
+'  'Dim QmgrNameOut As String * MQ_Q_MGR_NAME_LENGTH ' Get from MQINQ
+'
+'  CompCode = 0                                   ' Reset information
+'  Reason = 0
+'  checkResult                                    ' Display it
+'  txtQueueManagerName.Text = ""
+'
+'  '******************************************************************'
+'  '* Initialise the client channel definition if required           *'
+'  '******************************************************************'
+'  MQCNOCD_DEFAULTS CNOCD                         ' MQCNO defaults
+'
+'  If chkUseClientChannelDefiniton.Value = 1 Then ' Checked ?
+'    CNOCD.ChannelDef.ConnectionName = txtConnName.Text
+'    CNOCD.ChannelDef.ChannelName = txtSvrconnChannelName.Text
+'    CNOCD.ChannelDef.Version = MQCD_VERSION_6    ' Compatible 5.2.x
+'  Else
+'    CNOCD.ConnectOpts.Version = MQCNO_VERSION_1  ' No MQCD passed
+'  End If
+'
+'  '******************************************************************'
+'  '*  Connect to queue manager                                      *'
+'  '******************************************************************'
+'  QmgrNameIn = txtQMgrName.Text                  ' Use fixed length
+'  MQCONNXAny QmgrNameIn, CNOCD, Hcon, CompCode, Reason
+'  checkResult
+'
+'  If Hcon Then
+'    '****************************************************************'
+'    '* Open the queue manager object to find out its name           *'
+'    '****************************************************************'
+'    MQOD_DEFAULTS od                             ' MQOD defaults
+'    od.ObjectType = MQOT_Q_MGR                   ' Queue Manager object
+'    MQOPEN Hcon, od, MQOO_INQUIRE + MQOO_FAIL_IF_QUIESCING, Hobj, _
+'           CompCode, Reason
+'    checkResult
+'  End If
+'
+'  If Hobj Then
+'    '****************************************************************'
+'    '* Inquire the name of the queue manager                        *'
+'    '****************************************************************'
+'    Selector = MQCA_Q_MGR_NAME
+'    MQINQ Hcon, Hobj, 1, Selector, 0, 0, MQ_Q_MGR_NAME_LENGTH, _
+'          QmgrNameOut, CompCode, Reason
+'    checkResult
+'    txtQueueManagerName.Text = QmgrNameOut       ' Fixed length
+'
+'  '******************************************************************'
+'  '* Close the queue manager object                                 *'
+'  '******************************************************************'
+'    MQCLOSE Hcon, Hobj, MQCO_NONE, CompCode, Reason
+'    checkResult
+'  End If
+'
+'  '******************************************************************'
+'  '* Disconnect from MQM                                            *'
+'  '******************************************************************'
+'  If Hcon Then
+'    MQDISC Hcon, CompCode, Reason
+'    checkResult
+'  End If
+'End Sub
+'Public Function CloseMQ(ByVal qm As String, ByVal qn As String) As Boolean
+'
+'End Function
+Public Function PUSHMQ(ByVal xml As String) As Boolean
+    Dim Selector    As Long
+    Dim OpenCode    As Long
+    Dim od          As MQOD
+    Dim CNOCD       As MQCNOCD                           ' MQCNO and MQCD
+    
+    Dim buflen   As Long        ' Length of message to be put
+    Dim Buffer   As String      ' Message to be put
+    Dim md       As MQMD            ' Message descriptor
+    Dim pmo      As MQPMO          ' MQPUT message options
+    Dim O_options As Long
+    
+    Dim QmgrNameIn  As String * MQ_Q_MGR_NAME_LENGTH  ' Pass to MQCONN
 
+    CompCode = 0                                   ' Reset information
+    Reason = 0
+
+    '******************************************************************'
+    '* Initialise the client channel definition if required           *'
+    '******************************************************************'
+    MQCNOCD_DEFAULTS CNOCD                         ' MQCNO defaults
+
+    CNOCD.ChannelDef.ConnectionName = "10.64.112.155(1515)"
+    CNOCD.ChannelDef.ChannelName = "NTK.SVRCONN"
+    CNOCD.ChannelDef.Version = MQCD_VERSION_7    ' Compatible 5.2.x
+    CNOCD.ChannelDef.MCAUserIdentifier = "Administrator"
+    '******************************************************************'
+    '*  Connect to queue manager                                      *'
+    '******************************************************************'
+    QmgrNameIn = "ESB.INT.QMGR"                  ' Use fixed length
+    MQCONNXAny QmgrNameIn, CNOCD, Hcon, CompCode, Reason
+
+    If Hcon Then
+        '****************************************************************'
+        '* Open the queue manager object to find out its name           *'
+        '****************************************************************'
+        MQOD_DEFAULTS od                                ' MQOD defaults
+        od.ObjectType = MQOT_Q                   ' Queue Manager object
+        od.ObjectName = "INT.INBOX.QUEUE"               ' Set Queue name
+        O_options = MQOO_INPUT_SHARED + MQOO_OUTPUT     ' Option MQOPEN
+        MQOPEN Hcon, od, O_options, Hobj, CompCode, Reason
+    End If
+
+    If CompCode = 0 And Reason = 0 Then
+        xml = ConvertStringToUtf8String(xml)
+        MQMD_DEFAULTS md
+        md.CodedCharSetId = 1208
+        '     md.CodedCharSetId = 1258
+        'md.Encoding = 546
+        MQPMO_DEFAULTS pmo
+    
+        ' Get message to be "put" from the Put text box
+        buflen = Len(xml)
+        Buffer = xml
+        MQPUT Hcon, Hobj, md, pmo, buflen, Buffer, CompCode, Reason
+    End If
+    
+    If CompCode <> MQCC_OK Then
+        PUSHMQ = False
+    Else
+        PUSHMQ = True
+    End If
+    If Hobj Then
+        '****************************************************************'
+        '* Inquire the name of the queue manager                        *'
+        '****************************************************************'
+    
+        
+        
+
+        '******************************************************************'
+        '* Close the queue manager object                                 *'
+        '******************************************************************'
+        MQCLOSE Hcon, Hobj, MQCO_NONE, CompCode, Reason
+        
+    End If
+
+    '******************************************************************'
+    '* Disconnect from MQM                                            *'
+    '******************************************************************'
+    If Hcon Then
+        MQDISC Hcon, CompCode, Reason
+        
+    End If
+
+End Function

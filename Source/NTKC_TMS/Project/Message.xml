@@ -145,4 +145,5 @@
 	<Infor ID="0149" Msg="Kh«ng cã d÷ liÖu xml cña tê khai."/>
 	<Infor ID="0150" Msg="Tờ khai này không nhận mã vạch. Đề nghị nhập tay vào hệ thống"/>
 	<Infor ID="0151" Msg="Cài đặt"/>
+	<Infor ID="0152" Msg="Địa chỉ IP không hợp lệ"/>
 </Message>
