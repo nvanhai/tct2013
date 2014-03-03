@@ -925,8 +925,9 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
     Dim intIndexCombo As Integer
     Dim strId As Variant
     
-    fps.EventEnabled(EventAllEvents) = False
+    
     With fps
+        .EventEnabled(EventAllEvents) = False
        If .ActiveSheet = 1 Then
         .Col = Col
         .Row = Row
@@ -948,11 +949,9 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
              .Row = 25
              .Text = Trim(Mid(strId, 221, 10))
              UpdateCell fps, .Col, .Row, .Text
-            .EventEnabled(EventChange) = False
         End If
-        
-       
      End If
+     .EventEnabled(EventAllEvents) = True
    End With
 End Sub
 
@@ -969,36 +968,36 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
 
         If (KeyCode = vbKeyF5) Or (KeyCode = vbKeyF6) Then
             'Ke khai bo sung
-            If .ActiveSheet = .SheetCount - 1 Then
-                'fps_Change iCol, iRow
-                fps.EventEnabled(EventAllEvents) = False
-                i = 1
-                .Col = .ColLetterToNumber("B")
-                .Row = 9
-
-                Do
-                    .Text = str(i)
-                    .Col = .ColLetterToNumber("B")
-                    .Row = i + 9
-                    i = i + 1
-                Loop Until .Text = "aa"
-
-                i = 1
-                .Row = .Row + 3
-
-                Do
-                    .Text = str(i)
-                    .Col = .ColLetterToNumber("B")
-                    .Row = 1 + .Row
-                    i = i + 1
-                Loop Until .Text = "bb"
-
-                .SetActiveCell iCol, iRow
-                .Row = iRow
-                .Col = iCol
-                .SetActiveCell iCol, iRow
-                fps.EventEnabled(EventAllEvents) = True
-            End If
+'            If .ActiveSheet = .SheetCount - 1 Then
+'                'fps_Change iCol, iRow
+'                fps.EventEnabled(EventAllEvents) = False
+'                i = 1
+'                .Col = .ColLetterToNumber("B")
+'                .Row = 9
+'
+'                Do
+'                    .Text = str(i)
+'                    .Col = .ColLetterToNumber("B")
+'                    .Row = i + 9
+'                    i = i + 1
+'                Loop Until .Text = "aa"
+'
+'                i = 1
+'                .Row = .Row + 3
+'
+'                Do
+'                    .Text = str(i)
+'                    .Col = .ColLetterToNumber("B")
+'                    .Row = 1 + .Row
+'                    i = i + 1
+'                Loop Until .Text = "bb"
+'
+'                .SetActiveCell iCol, iRow
+'                .Row = iRow
+'                .Col = iCol
+'                .SetActiveCell iCol, iRow
+'                fps.EventEnabled(EventAllEvents) = True
+'            End If
             'To khai 01
             If .ActiveSheet = 1 Then
                 'fps_Change iCol, iRow
@@ -1021,10 +1020,7 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
                 fps.EventEnabled(EventAllEvents) = True
             End If
         End If
-
-        fps.EventEnabled(EventAllEvents) = True
     End With
-
 End Sub
 
 Private Sub fps_LeaveCell(ByVal Col As Long, _
