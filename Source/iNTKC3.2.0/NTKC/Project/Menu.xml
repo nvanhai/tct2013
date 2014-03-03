@@ -661,10 +661,4 @@
 			<Sheet ID="02" Caption="Biểu thuế tiêu thụ đặc biệt" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" DataFile="Catalogue_022014_02"/>
 		</Validity>
 	</Menu>
-		<Menu ID="91" PopID="101" ParentID="112" Caption="Mẫu thông báo điều chỉnh thông tin (TB04/AC)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="1" FinanceYear="0"  Icon="..\Pictures\tk_tndn.bmp">
-		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\excel\04_TBAC.xls" ReportTemplate="..\ReportTemplates\excel\04_TBAC.xls" CatalogueID="01" Class="Tax_Business_iNTK.cls_04TBAC">
-			<Sheet ID="01" Caption="04_TBAC" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="04_TBAC" Ini="..\Ini\04_TBAC.xml"/>
-			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
-		</Validity>
-	</Menu>
 </Root>
