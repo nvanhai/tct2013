@@ -283,7 +283,7 @@ Public Function PUSHMQ(ByVal xml As String) As Boolean
     '******************************************************************'
     MQCNOCD_DEFAULTS CNOCD                         ' MQCNO defaults
 
-    CNOCD.ChannelDef.ConnectionName = "10.64.112.155(1515)"
+    CNOCD.ChannelDef.ConnectionName = "10.64.85.170(1515)"
     CNOCD.ChannelDef.ChannelName = "NTK.SVRCONN"
     CNOCD.ChannelDef.Version = MQCD_VERSION_7    ' Compatible 5.2.x
     CNOCD.ChannelDef.MCAUserIdentifier = "Administrator"
@@ -304,19 +304,19 @@ Public Function PUSHMQ(ByVal xml As String) As Boolean
         MQOPEN Hcon, od, O_options, Hobj, CompCode, Reason
     End If
 
-    If CompCode = 0 And Reason = 0 Then
-        xml = ConvertStringToUtf8String(xml)
-        MQMD_DEFAULTS md
-        md.CodedCharSetId = 1208
-        '     md.CodedCharSetId = 1258
-        'md.Encoding = 546
-        MQPMO_DEFAULTS pmo
-    
-        ' Get message to be "put" from the Put text box
-        buflen = Len(xml)
-        Buffer = xml
-        MQPUT Hcon, Hobj, md, pmo, buflen, Buffer, CompCode, Reason
-    End If
+'    If CompCode = 0 And Reason = 0 Then
+'        xml = ConvertStringToUtf8String(xml)
+'        MQMD_DEFAULTS md
+'        md.CodedCharSetId = 1208
+'        '     md.CodedCharSetId = 1258
+'        'md.Encoding = 546
+'        MQPMO_DEFAULTS pmo
+'
+'        ' Get message to be "put" from the Put text box
+'        buflen = Len(xml)
+'        Buffer = xml
+'        MQPUT Hcon, Hobj, md, pmo, buflen, Buffer, CompCode, Reason
+'    End If
     
     If CompCode <> MQCC_OK Then
         PUSHMQ = False
