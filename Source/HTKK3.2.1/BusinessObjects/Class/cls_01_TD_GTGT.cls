@@ -62,12 +62,12 @@ Public Sub Prepare1()
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
 
-        SetDateFormat fps, .SheetCount - 1, 23, .ColLetterToNumber("BG"), DDMMYYYY
-        .Sheet = .SheetCount - 1 'KHBS
-        .Row = 23
-        .Col = .ColLetterToNumber("BG")
-        .Text = Format(Date, "dd/mm/yyyy")
-        .TypeHAlign = TypeHAlignLeft
+'        SetDateFormat fps, .SheetCount - 1, 23, .ColLetterToNumber("BG"), DDMMYYYY
+'        .Sheet = .SheetCount - 1 'KHBS
+'        .Row = 23
+'        .Col = .ColLetterToNumber("BG")
+'        .Text = Format(Date, "dd/mm/yyyy")
+'        .TypeHAlign = TypeHAlignLeft
     End With
     setCQTQuanLy
 End Sub
@@ -220,10 +220,10 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
             
             If Col = .ColLetterToNumber("L") Then 'Khi chon Combo
                 'Chuyen sang du lieu tuong ung Lay gia tri index cot L va gia tri Index cot AG
-                intIndexCuc = .TypeComboBoxCurSel
+                intIndexCuc = .typeComboboxCurSel
                 .Col = .ColLetterToNumber("AG")
                 .Row = Row
-                .TypeComboBoxCurSel = intIndexCuc
+                .typeComboboxCurSel = intIndexCuc
                 'Nhap lai Combo cot AG
                 .Col = .ColLetterToNumber("AG")
                 UpdateCell fps, .Col, .Row, .Text
@@ -265,10 +265,10 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
                         
             If Col = .ColLetterToNumber("P") Then 'Khi chon Combo
                 'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
-                intIndexChiCuc = .TypeComboBoxCurSel
+                intIndexChiCuc = .typeComboboxCurSel
                 .Col = .ColLetterToNumber("AH")
                 .Row = Row
-                .TypeComboBoxCurSel = intIndexChiCuc
+                .typeComboboxCurSel = intIndexChiCuc
                 'Nhap lai Combo cot Q
                 .Col = .ColLetterToNumber("AH")
                 UpdateCell fps, .Col, .Row, .Text
@@ -323,31 +323,31 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
             End If
         End If
    'KHBS
-        If .ActiveSheet = .SheetCount - 1 Then
-         Dim count1 As Integer
-            .Row = 9
-            .Col = .ColLetterToNumber("B")
-            Do While .value <> "bb"
-                count1 = count1 + 1
-                .Row = .Row + 1
-            Loop
-                If Col = .ColLetterToNumber("BG") And Row = 20 + count1 - 5 Then
-                       .GetText Col, Row, varTemp
-                       If varTemp <> "" And varTemp <> "../../...." Then
-                           If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
-                               .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
-                               .TypeHAlign = TypeHAlignLeft
-                           Else
-                            .SetFocus
-                            .SetActiveCell Col, Row
-                           End If
-                       Else
-                        .SetText Col, Row, ""
-                       End If
-                      UpdateCell fps, .Col, .Row, .Text
-                   End If
-                .Sheet = .SheetCount - 1
-        End If
+'        If .ActiveSheet = .SheetCount - 1 Then
+'         Dim count1 As Integer
+'            .Row = 9
+'            .Col = .ColLetterToNumber("B")
+'            Do While .value <> "bb"
+'                count1 = count1 + 1
+'                .Row = .Row + 1
+'            Loop
+'                If Col = .ColLetterToNumber("BG") And Row = 20 + count1 - 5 Then
+'                       .GetText Col, Row, varTemp
+'                       If varTemp <> "" And varTemp <> "../../...." Then
+'                           If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+'                               .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+'                               .TypeHAlign = TypeHAlignLeft
+'                           Else
+'                            .SetFocus
+'                            .SetActiveCell Col, Row
+'                           End If
+'                       Else
+'                        .SetText Col, Row, ""
+'                       End If
+'                      UpdateCell fps, .Col, .Row, .Text
+'                   End If
+'                .Sheet = .SheetCount - 1
+'        End If
         .EventEnabled(EventAllEvents) = True
     End With
 '    CellChange Col, Row
@@ -364,32 +364,32 @@ Dim NguoiKyCol As Long, NguoiKyRow As Long
         GetCellSpan fps, iCol, iRow
         
         If (KeyCode = vbKeyF5) Or (KeyCode = vbKeyF6) Then
-            If .ActiveSheet = .SheetCount - 1 Then
-                 fps_Change iCol, iRow
-                 fps.EventEnabled(EventAllEvents) = False
-                    i = 1
-                    .Col = .ColLetterToNumber("B")
-                    .Row = 9
-                    Do
-                         .Text = str(i)
-                         .Col = .ColLetterToNumber("B")
-                         .Row = i + 9
-                         i = i + 1
-                    Loop Until .Text = "aa"
-                    i = 1
-                   .Row = .Row + 3
-                    Do
-                         .Text = str(i)
-                         .Col = .ColLetterToNumber("B")
-                         .Row = 1 + .Row
-                         i = i + 1
-                    Loop Until .Text = "bb"
-                    .SetActiveCell iCol, iRow
-                    .Row = iRow
-                    .Col = iCol
-                    .SetActiveCell iCol, iRow
-                 fps.EventEnabled(EventAllEvents) = True
-            End If
+'            If .ActiveSheet = .SheetCount - 1 Then
+'                 fps_Change iCol, iRow
+'                 fps.EventEnabled(EventAllEvents) = False
+'                    i = 1
+'                    .Col = .ColLetterToNumber("B")
+'                    .Row = 9
+'                    Do
+'                         .Text = str(i)
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = i + 9
+'                         i = i + 1
+'                    Loop Until .Text = "aa"
+'                    i = 1
+'                   .Row = .Row + 3
+'                    Do
+'                         .Text = str(i)
+'                         .Col = .ColLetterToNumber("B")
+'                         .Row = 1 + .Row
+'                         i = i + 1
+'                    Loop Until .Text = "bb"
+'                    .SetActiveCell iCol, iRow
+'                    .Row = iRow
+'                    .Col = iCol
+'                    .SetActiveCell iCol, iRow
+'                 fps.EventEnabled(EventAllEvents) = True
+'            End If
         End If
         fps.EventEnabled(EventAllEvents) = True
     End With
@@ -433,88 +433,88 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 22, errEmty
         
         'Check MST static PL01
-        .Sheet = sheetPl01_1TD_GTGT
-        iFlagCheckMaST = 0
-        iFlagEmty = 0
-        If .SheetVisible = True Then
-            mCurrentSheet = .Sheet
-
-            iFlagCheckMaST = 0
-            iWhiteRow = 1
-            .Row = 7
-
-            Do
-                .GetText .ColLetterToNumber("E"), .Row, vMST
-                .GetText .ColLetterToNumber("C"), .Row, vTenNhaMayTD
-                .GetText .ColLetterToNumber("F"), .Row, vSoThue4
-                .GetText .ColLetterToNumber("H"), .Row, vSoThue5
-                .GetText .ColLetterToNumber("I"), .Row, vSoThue6
-                If Trim$(vMST) <> "" Or Trim$(vTenNhaMayTD) <> "" Or Trim$(vSoThue4) <> "0" Or Trim$(vSoThue5) <> "0" Or Trim$(vSoThue6) <> "0" Then
-                    iWhiteRow = 0
-                End If
-                If Trim$(vMST) <> vbNullString Then
-                    vMST = Replace(vMST, " ", "")
-                    vMST = Replace(vMST, "-", "")
-                    'vMST = Left(vMST, 10)
-
-                    strCheck = ""
-
-                    If Len(vMST) = 10 Or Len(vMST) = 13 Then
-                        strCheck = CheckTaxCode(Mid$(vMST, 1, 1), Mid$(vMST, 2, 1), Mid$(vMST, 3, 1), Mid$(vMST, 4, 1), Mid$(vMST, 5, 1), Mid$(vMST, 6, 1), Mid$(vMST, 7, 1), Mid$(vMST, 8, 1), Mid$(vMST, 9, 1), Mid$(vMST, 10, 1), Mid$(vMST, 11, 1), Mid$(vMST, 12, 1), Mid$(vMST, 13, 1))
-                    End If
-                       
-                    If Mid$(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
-                        .Col = .ColLetterToNumber("E")
-                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                        .CellNote = errMST   'static
-                        .BackColor = mErrorColor
-
-                        iFlagCheckMaST = 1
-                            
-                        'capture the first error cell
-                        If iFocusFlag = 0 Then
-                            strFocusSheetName = "'" & .SheetName & "'"
-                            strFocusCol = str$(.Col)
-                            strFocusRow = str$(.Row)
-
-                            iFocusFlag = 1
-                        End If
-
-                    Else
-                        .Col = .ColLetterToNumber("E")
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                    End If
-
-                Else
-                    If (Trim$(vMST) = vbNullString And iWhiteRow = 0) Then
-                        .Col = .ColLetterToNumber("D")
-                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                        
-                        'iFlagEmty = 1
-                    End If
-                End If
-'                If (Trim$(vTenNhaMayTD) = vbNullString And iWhiteRow = 0) Then
-'                    .Col = .ColLetterToNumber("L")
-'                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-'                    .CellNote = errEmty   'static
-'                    .BackColor = mErrorColor
+'        .Sheet = sheetPl01_1TD_GTGT
+'        iFlagCheckMaST = 0
+'        iFlagEmty = 0
+'        If .SheetVisible = True Then
+'            mCurrentSheet = .Sheet
 '
-'                    iFlagEmty = 1
-'                Else
-'                    .Col = .ColLetterToNumber("L")
-'                    .CellNote = ""
-'                    .BackColor = mNonErrorColor
+'            iFlagCheckMaST = 0
+'            iWhiteRow = 1
+'            .Row = 7
+'
+'            Do
+'                .GetText .ColLetterToNumber("E"), .Row, vMST
+'                .GetText .ColLetterToNumber("C"), .Row, vTenNhaMayTD
+'                .GetText .ColLetterToNumber("F"), .Row, vSoThue4
+'                .GetText .ColLetterToNumber("H"), .Row, vSoThue5
+'                .GetText .ColLetterToNumber("I"), .Row, vSoThue6
+'                If Trim$(vMST) <> "" Or Trim$(vTenNhaMayTD) <> "" Or Trim$(vSoThue4) <> "0" Or Trim$(vSoThue5) <> "0" Or Trim$(vSoThue6) <> "0" Then
+'                    iWhiteRow = 0
 '                End If
-                
-                .Col = .ColLetterToNumber("B")
-                .Row = .Row + 1
-            Loop Until .Text = "aa"
-
-        End If
-        
+'                If Trim$(vMST) <> vbNullString Then
+'                    vMST = Replace(vMST, " ", "")
+'                    vMST = Replace(vMST, "-", "")
+'                    'vMST = Left(vMST, 10)
+'
+'                    strCheck = ""
+'
+'                    If Len(vMST) = 10 Or Len(vMST) = 13 Then
+'                        strCheck = CheckTaxCode(Mid$(vMST, 1, 1), Mid$(vMST, 2, 1), Mid$(vMST, 3, 1), Mid$(vMST, 4, 1), Mid$(vMST, 5, 1), Mid$(vMST, 6, 1), Mid$(vMST, 7, 1), Mid$(vMST, 8, 1), Mid$(vMST, 9, 1), Mid$(vMST, 10, 1), Mid$(vMST, 11, 1), Mid$(vMST, 12, 1), Mid$(vMST, 13, 1))
+'                    End If
+'
+'                    If Mid$(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
+'                        .Col = .ColLetterToNumber("E")
+'                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                        .CellNote = errMST   'static
+'                        .BackColor = mErrorColor
+'
+'                        iFlagCheckMaST = 1
+'
+'                        'capture the first error cell
+'                        If iFocusFlag = 0 Then
+'                            strFocusSheetName = "'" & .SheetName & "'"
+'                            strFocusCol = str$(.Col)
+'                            strFocusRow = str$(.Row)
+'
+'                            iFocusFlag = 1
+'                        End If
+'
+'                    Else
+'                        .Col = .ColLetterToNumber("E")
+'                        .CellNote = ""
+'                        .BackColor = mNonErrorColor
+'                    End If
+'
+'                Else
+'                    If (Trim$(vMST) = vbNullString And iWhiteRow = 0) Then
+'                        .Col = .ColLetterToNumber("D")
+'                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                        .CellNote = ""
+'                        .BackColor = mNonErrorColor
+'
+'                        'iFlagEmty = 1
+'                    End If
+'                End If
+''                If (Trim$(vTenNhaMayTD) = vbNullString And iWhiteRow = 0) Then
+''                    .Col = .ColLetterToNumber("L")
+''                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+''                    .CellNote = errEmty   'static
+''                    .BackColor = mErrorColor
+''
+''                    iFlagEmty = 1
+''                Else
+''                    .Col = .ColLetterToNumber("L")
+''                    .CellNote = ""
+''                    .BackColor = mNonErrorColor
+''                End If
+'
+'                .Col = .ColLetterToNumber("B")
+'                .Row = .Row + 1
+'            Loop Until .Text = "aa"
+'
+'        End If
+'
         'check phu luc 01_2
         .Sheet = sheetPl01_2TD_GTGT
         .Row = 42
@@ -731,28 +731,28 @@ Public Sub SetActiveSheet()
     Dim strValue5 As Variant
     'Check the second sheet
     'Select Case GetAttribute(xmlNodeValid, "ID")
-    For Each xmlNodeValid In TAX_Utilities_New.NodeValidity.childNodes
+    For Each xmlNodeValid In TAX_Utilities_v1.NodeValidity.childNodes
         Select Case GetAttribute(xmlNodeValid, "ID")
+'            Case "01_1"
+'                blnNullValue = True
+'                'Check value of last node in Data
+''                Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell") _
+''                    (TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length - 1)
+''                    strValue1 = GetAttribute(xmlCellNode, "Value")
+'                fps.Sheet = sheetPl01_1TD_GTGT
+'                fps.GetText fps.ColLetterToNumber("C"), 7, strValue4
+'                    If (Not IsNullValue(strValue4)) Then
+'                            blnNullValue = False
+'                    End If
+'
+'                    If blnNullValue Then
+'                        SetAttribute xmlNodeValid, "Active", "0"
+'                    End If
             Case "01_1"
                 blnNullValue = True
                 'Check value of last node in Data
-'                Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
-'                    (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 1)
-'                    strValue1 = GetAttribute(xmlCellNode, "Value")
-                fps.Sheet = sheetPl01_1TD_GTGT
-                fps.GetText fps.ColLetterToNumber("C"), 7, strValue4
-                    If (Not IsNullValue(strValue4)) Then
-                            blnNullValue = False
-                    End If
-
-                    If blnNullValue Then
-                        SetAttribute xmlNodeValid, "Active", "0"
-                    End If
-            Case "01_2"
-                blnNullValue = True
-                'Check value of last node in Data
-                Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
-                    (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 1)
+                Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length - 1)
                     strValue1 = GetAttribute(xmlCellNode, "Value")
                 fps.Sheet = sheetPl01_2TD_GTGT
                 fps.GetText fps.ColLetterToNumber("C"), 42, strValue4
@@ -766,11 +766,11 @@ Public Sub SetActiveSheet()
              Case "KHBS"
                 blnNullValue = True
                 'Check value of last node in Data
-                Set xmlCellNode = TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell") _
-                    (TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell").length - 1)
+                Set xmlCellNode = TAX_Utilities_v1.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_v1.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell").length - 1)
                     strValue1 = GetAttribute(xmlCellNode, "Value")
-                Set xmlCellNode = TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell") _
-                    (TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell").length - 4)
+                Set xmlCellNode = TAX_Utilities_v1.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_v1.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell").length - 4)
                     strValue2 = GetAttribute(xmlCellNode, "Value")
           
                     If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Then
@@ -778,8 +778,8 @@ Public Sub SetActiveSheet()
                     End If
 
                     If blnNullValue Then
-                        'SetAttribute xmlNodeValid, "Active", "0"
-                        'FlagThaydoi = "1"
+                        SetAttribute xmlNodeValid, "Active", "0"
+                        FlagThaydoi = "1"
                     End If
         End Select
     Next
@@ -820,12 +820,12 @@ Public Sub Prepare_KHBS()
     fps.Sheet = fps.SheetCount - 1
     fps.ActiveSheet = fps.Sheet
 
-    strPath = GetAbsolutePath(GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "TemplateFolder")) & "MapMCT.xml"
+    strPath = GetAbsolutePath(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "TemplateFolder")) & "MapMCT.xml"
 
     If xmlDocument.Load(strPath) Then
         Set xmlNodeListItem = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
         For Each xmlNode In xmlNodeListItem
-            If GetAttribute(xmlNode, "ID") = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") Then
+            If GetAttribute(xmlNode, "ID") = GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") Then
                 Exit For
             End If
         Next
@@ -967,12 +967,12 @@ Function getMapCT() As String
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim xmlNodeListItem As MSXML.IXMLDOMNodeList
     Dim xmlNodeItem As MSXML.IXMLDOMNode
-    strPath = GetAbsolutePath(GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "TemplateFolder")) & "MapMCT_TT28.xml"
+    strPath = GetAbsolutePath(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "TemplateFolder")) & "MapMCT_TT28.xml"
     
     If xmlDocument.Load(strPath) Then
         Set xmlNodeListItem = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
         For Each xmlNode In xmlNodeListItem
-            If GetAttribute(xmlNode, "ID") = GetAttribute(TAX_Utilities_New.NodeValidity.childNodes(0), "DataFile") Then
+            If GetAttribute(xmlNode, "ID") = GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") Then
                 Exit For
             End If
         Next
@@ -1044,26 +1044,26 @@ Public Sub UpdateChangeKHBS()
     Dim xmlCellNodeData As MSXML.IXMLDOMNode
     With fps
         .Sheet = 1
-        For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+        For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
             ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
             .GetText lCol, lRow, varTemp
             UpdateLastKHBSCell fps, lCol, lRow, varTemp
         Next
         
         If loaiKHBS = "frmKHBS_BS" Then
-            var28 = GetAttribute(TAX_Utilities_New.DataKHBS.nodeFromID("L_28"), "Value")
-            var17 = GetAttribute(TAX_Utilities_New.DataKHBS.nodeFromID("L_17"), "Value")
-            var7 = GetAttribute(TAX_Utilities_New.DataKHBS.nodeFromID("L_7"), "Value")
+            var28 = GetAttribute(TAX_Utilities_v1.DataKHBS.nodeFromID("L_28"), "Value")
+            var17 = GetAttribute(TAX_Utilities_v1.DataKHBS.nodeFromID("L_17"), "Value")
+            var7 = GetAttribute(TAX_Utilities_v1.DataKHBS.nodeFromID("L_7"), "Value")
 
             If var28 - var17 - var7 > 0 Then
-                SetAttribute TAX_Utilities_New.DataKHBS.nodeFromID("L_30"), "Value", CStr(var28 - var17 - var7)
-                SetAttribute TAX_Utilities_New.DataKHBS.nodeFromID("L_31"), "Value", 0
-                SetAttribute TAX_Utilities_New.DataKHBS.nodeFromID("L_33"), "Value", 0
+                SetAttribute TAX_Utilities_v1.DataKHBS.nodeFromID("L_30"), "Value", CStr(var28 - var17 - var7)
+                SetAttribute TAX_Utilities_v1.DataKHBS.nodeFromID("L_31"), "Value", 0
+                SetAttribute TAX_Utilities_v1.DataKHBS.nodeFromID("L_33"), "Value", 0
                 
             Else
-                SetAttribute TAX_Utilities_New.DataKHBS.nodeFromID("L_30"), "Value", 0
-                SetAttribute TAX_Utilities_New.DataKHBS.nodeFromID("L_31"), "Value", CStr(var28 - var17 - var7)
-                SetAttribute TAX_Utilities_New.DataKHBS.nodeFromID("L_33"), "Value", 0
+                SetAttribute TAX_Utilities_v1.DataKHBS.nodeFromID("L_30"), "Value", 0
+                SetAttribute TAX_Utilities_v1.DataKHBS.nodeFromID("L_31"), "Value", CStr(var28 - var17 - var7)
+                SetAttribute TAX_Utilities_v1.DataKHBS.nodeFromID("L_33"), "Value", 0
             End If
         End If
         .Sheet = mCurrentSheet
@@ -1083,7 +1083,7 @@ Public Sub UpdateSheet()
         .Sheet = 1
         temp = mCurrentSheet
         mCurrentSheet = 1
-        For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+        For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
             ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
             .GetText lCol, lRow, varTemp
             UpdateCell fps, lCol, lRow, varTemp
@@ -1092,9 +1092,9 @@ Public Sub UpdateSheet()
         ' Phu luc 1_2
         .Sheet = sheetPl01_2TD_GTGT
         mCurrentSheet = sheetPl01_2TD_GTGT
-        blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        blCheck_S2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         If blCheck_S2 = True Then
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(sheetPl01_2TD_GTGT - 1).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(sheetPl01_2TD_GTGT - 1).getElementsByTagName("Cell")
                 ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                 .GetText lCol, lRow, varTemp
                 UpdateCell fps, lCol, lRow, varTemp
@@ -1104,9 +1104,9 @@ Public Sub UpdateSheet()
         ' Update lai sheet KHBS
         .Sheet = .SheetCount - 1
         mCurrentSheet = .Sheet
-        blCheck_S2 = IIf(TAX_Utilities_New.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        blCheck_S2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         If blCheck_S2 = True Then
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(.Sheet - 1).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(.Sheet - 1).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                     .GetText lCol, lRow, varTemp
                     UpdateCell fps, lCol, lRow, varTemp
@@ -1133,20 +1133,20 @@ Public Sub SetActiveKHBS() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
     Dim strValue3 As String
     'Check the second sheet
     'Select Case GetAttribute(xmlNodeValid, "ID")
-    For Each xmlNodeValid In TAX_Utilities_New.NodeValidity.childNodes
+    For Each xmlNodeValid In TAX_Utilities_v1.NodeValidity.childNodes
         Select Case GetAttribute(xmlNodeValid, "ID")
                 Case "KHBS"
                 blnNullValue = True
                 'Check value of last node in Data
-                Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
-                    (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 1)
+                Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length - 1)
                     strValue1 = GetAttribute(xmlCellNode, "Value")
-                 Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell")(1)
+                 Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")(1)
                     strValue2 = GetAttribute(xmlCellNode, "Value")
-                 Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell")(7)
+                 Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")(7)
                     strValue3 = GetAttribute(xmlCellNode, "Value")
           
-                    If (Not IsNullValue(strValue1)) Or TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length > 20 Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Then
+                    If (Not IsNullValue(strValue1)) Or TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length > 20 Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Then
                             blnNullValue = False
                     End If
 
@@ -1168,7 +1168,7 @@ Public Sub inThongTinDL()
     tuRowDL = 13
     denRowDL = 18
     'TuRow_DenRow_sheet
-    strTuRowDenRowPL = "10_11_2~11_12_3~20_30_4"
+    strTuRowDenRowPL = "11_12_2~20_30_3"
     ' end
 End Sub
 
