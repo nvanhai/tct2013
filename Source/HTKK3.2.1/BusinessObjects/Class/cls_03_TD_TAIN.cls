@@ -42,6 +42,8 @@ Dim arrDanhSachKHBS() As String
 Public StrSolanBosung As String
 Public Strloaitk As String
 
+Public strTkThangQuy As String
+
 ' Kiem tra thong tin dai ly thue
 ' Neu khong co DL thue se an cac row nay di
 Public FlagDLThue As Boolean
@@ -68,17 +70,65 @@ Public Sub Prepare1()
     Dim strDDKTTN, strDonvitinh As String
     Dim arrDanhsach() As String, blChon As Boolean
     
+    Dim valueDefault As String, textDefault As String, thuesuatDefault As String, temp As String
+    
+    blChon = False
+    strDataFileName = GetCatalogueFileName(blChon)
+    
+    arrTaiNguyen.RemoveAll
+    If xmlDomData.Load(strDataFileName) Then
+        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
+        For Each xmlNode In xmlNodeListCell
+            If GetAttribute(xmlNode, "Value") <> "" Then
+                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                If (blChon = True And arrDanhsach(6) = "1") Or blChon = False Then
+                    strCombo = strCombo + CPab(arrDanhsach(2), 200) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(3), 10) + CPab(arrDanhsach(4), 10) + CPab(arrDanhsach(5), 1) + Chr$(9)
+                    strComboHien = strComboHien + arrDanhsach(2) + Chr$(9)
+                    If Trim(arrDanhsach(1)) = "0702" Or Trim(arrDanhsach(1)) = "0902" Then
+                           valueDefault = Trim(arrDanhsach(1))
+                           textDefault = Trim(arrDanhsach(2))
+                           thuesuatDefault = Trim(arrDanhsach(4))
+                           temp = CPab(arrDanhsach(2), 200) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(3), 10) + CPab(arrDanhsach(4), 10) + CPab(arrDanhsach(5), 1)
+                    End If
+                End If
+            End If
+        Next
+    End If
+    
     With fps
-     SetDateFormat fps, 1, 63, fps.ColLetterToNumber("R"), DDMMYYYY
-    With fps
+        SetDateFormat fps, 1, 63, fps.ColLetterToNumber("R"), DDMMYYYY
         .Sheet = 1
         .Row = 63
         .Col = fps.ColLetterToNumber("R")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
-    End With
         'SetDateFormat fps, 1, 19, .ColLetterToNumber("AJ"), DDMMYYYY
     End With
+    
+     With fps
+        'them danh muc hang vao combobox danh muc 1
+        .Sheet = .ActiveSheet
+        mCurrentSheet = .Sheet
+        .Col = .ColLetterToNumber("Z")
+        .Row = 24
+        .TypeComboBoxList = strCombo 'CPab("Maple", 100) + Chr$(9) + CPab("Oak", 100) + Chr$(9) + CPab("Ash", 100)
+        .Text = temp
+        'Combo Hien
+        .Col = .ColLetterToNumber("H")
+        .Row = 24
+        .TypeComboBoxList = strComboHien
+        .Text = textDefault
+        
+        .Col = .ColLetterToNumber("AA")
+        .Row = 24
+        .Text = valueDefault
+        
+        .Col = .ColLetterToNumber("F")
+        .Row = 25
+        .Text = thuesuatDefault
+       
+    End With
+    
     setCQTQuanLy
 End Sub
 Private Sub setCQTQuanLy()
@@ -158,10 +208,10 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
             
             If Col = .ColLetterToNumber("L") Then 'Khi chon Combo
                 'Chuyen sang du lieu tuong ung Lay gia tri index cot L va gia tri Index cot AG
-                intIndexCuc = .TypeComboBoxCurSel
+                intIndexCuc = .typeComboboxCurSel
                 .Col = .ColLetterToNumber("AG")
                 .Row = Row
-                .TypeComboBoxCurSel = intIndexCuc
+                .typeComboboxCurSel = intIndexCuc
                 'Nhap lai Combo cot AG
                 .Col = .ColLetterToNumber("AG")
                 UpdateCell fps, .Col, .Row, .Text
@@ -203,10 +253,10 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
                         
             If Col = .ColLetterToNumber("P") Then 'Khi chon Combo
                 'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
-                intIndexChiCuc = .TypeComboBoxCurSel
+                intIndexChiCuc = .typeComboboxCurSel
                 .Col = .ColLetterToNumber("AH")
                 .Row = Row
-                .TypeComboBoxCurSel = intIndexChiCuc
+                .typeComboboxCurSel = intIndexChiCuc
                 'Nhap lai Combo cot Q
                 .Col = .ColLetterToNumber("AH")
                 UpdateCell fps, .Col, .Row, .Text
@@ -263,6 +313,20 @@ Public Sub Prepare2()
             .Text = StrSolanBosung
             UpdateCell fps, .Col, .Row, .Text
         End If
+        
+        ' set loai tk thang/ quy
+         If strTkThangQuy = "TK_THANG" Then
+            .Col = .ColLetterToNumber("O")
+            .Row = 27
+            .Text = "0"
+            UpdateCell fps, .Col, .Row, .Text
+        ElseIf strTkThangQuy = "TK_QUY" Then
+            .Col = .ColLetterToNumber("O")
+            .Row = 27
+            .Text = "1"
+            UpdateCell fps, .Col, .Row, .Text
+        End If
+            'end
         mCurrentSheet = .Sheet
     End With
 End Sub
@@ -602,13 +666,13 @@ Public Sub SetActiveSheet()
     Dim strValue5 As Variant
     'Check the second sheet
     'Select Case GetAttribute(xmlNodeValid, "ID")
-    For Each xmlNodeValid In TAX_Utilities_New.NodeValidity.childNodes
+    For Each xmlNodeValid In TAX_Utilities_v1.NodeValidity.childNodes
         Select Case GetAttribute(xmlNodeValid, "ID")
             Case "03-1"
                 blnNullValue = True
                 'Check value of last node in Data
-                Set xmlCellNode = TAX_Utilities_New.Data(1).getElementsByTagName("Cell") _
-                    (TAX_Utilities_New.Data(1).getElementsByTagName("Cell").length - 1)
+                Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length - 1)
                     strValue1 = GetAttribute(xmlCellNode, "Value")
                 fps.Sheet = sheetPl03_1TD_TAIN
                 fps.GetText fps.ColLetterToNumber("C"), 42, strValue4
@@ -622,11 +686,11 @@ Public Sub SetActiveSheet()
              Case "KHBS"
                 blnNullValue = True
                 'Check value of last node in Data
-                Set xmlCellNode = TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell") _
-                    (TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell").length - 1)
+                Set xmlCellNode = TAX_Utilities_v1.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_v1.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell").length - 1)
                     strValue1 = GetAttribute(xmlCellNode, "Value")
-                Set xmlCellNode = TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell") _
-                    (TAX_Utilities_New.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell").length - 4)
+                Set xmlCellNode = TAX_Utilities_v1.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_v1.Data(sheetPl01_KHBS_GTGT - 1).getElementsByTagName("Cell").length - 4)
                     strValue2 = GetAttribute(xmlCellNode, "Value")
           
                     If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Then
@@ -761,21 +825,21 @@ Public Sub UpdateChangeKHBS()
     With fps
        If loaiKHBS = "frmKHBS_TT" Then
             .Sheet = 1
-            For Each xmlCellNodeData In TAX_Utilities_New.Data(0).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
                 ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                 .GetText lCol, lRow, varTemp
                 UpdateLastKHBSCell fps, lCol, lRow, varTemp
             Next
        Else
-            For Each xmlCell In TAX_Utilities_New.Data(1).getElementsByTagName("Cell")
+            For Each xmlCell In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
                If Left(GetAttribute(xmlCell, "CellID"), 2) = "BC" Then
                     strId = Trim(Mid(GetAttribute(xmlCell, "Value"), 200, 10))
                         
-                    For Each xmlCellGoc In TAX_Utilities_New.DataKHBS.getElementsByTagName("Cell")
+                    For Each xmlCellGoc In TAX_Utilities_v1.DataKHBS.getElementsByTagName("Cell")
                         If Left(GetAttribute(xmlCellGoc, "CellID"), 1) = "E" Then
                             If GetAttribute(xmlCellGoc, "Value") = strId Then
                             'update secsion
-                               Set xmlCellUpdate = seachCellNode(TAX_Utilities_New.Data(0).getElementsByTagName("Cell"), GetAttribute(xmlCellGoc, "CellID"))
+                               Set xmlCellUpdate = seachCellNode(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell"), GetAttribute(xmlCellGoc, "CellID"))
                                updateSecsion xmlCellUpdate.parentNode
                                 'updateSecsion (xmlCellGoc.parentNode)
                             Else
@@ -824,10 +888,10 @@ Private Sub filldata()
     With fps
         Dim i           As Integer
         Dim strFormular As String
-        ReDim arrDanhSachKHBS(TAX_Utilities_New.Data(0).getElementsByTagName("Section")(1).childNodes.length - 1)
+        ReDim arrDanhSachKHBS(TAX_Utilities_v1.Data(0).getElementsByTagName("Section")(1).childNodes.length - 1)
         i = 0
 
-        For Each xmlCellNodeData In TAX_Utilities_New.DataKHBS.getElementsByTagName("Cell")
+        For Each xmlCellNodeData In TAX_Utilities_v1.DataKHBS.getElementsByTagName("Cell")
 
             If Left(GetAttribute(xmlCellNodeData, "CellID"), 1) = "F" Then
                 ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
@@ -857,6 +921,39 @@ End Function
 
 Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
     setChangeComb Col, Row
+    
+    Dim intIndexCombo As Integer
+    Dim strId As Variant
+    
+    fps.EventEnabled(EventAllEvents) = False
+    With fps
+       If .ActiveSheet = 1 Then
+        .Col = Col
+        .Row = Row
+         If Col = .ColLetterToNumber("H") And Row = 24 And .Text <> "" Then
+            intIndexCombo = .typeComboboxCurSel
+            .Col = .ColLetterToNumber("Z")
+            .typeComboboxCurSel = intIndexCombo
+            'Update combo F
+            .Col = .ColLetterToNumber("Z")
+            UpdateCell fps, .Col, .Row, .Text
+             
+            'Chon lai combo cua colF
+            .Col = .ColLetterToNumber("AA")
+            .GetText .ColLetterToNumber("Z"), Row, strId
+            .Text = Trim(Mid(strId, 200, 10))
+             UpdateCell fps, .Col, .Row, .Text
+
+             .Col = .ColLetterToNumber("F")
+             .Row = 25
+             .Text = Trim(Mid(strId, 221, 10))
+             UpdateCell fps, .Col, .Row, .Text
+            .EventEnabled(EventChange) = False
+        End If
+        
+       
+     End If
+   End With
 End Sub
 
 Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
