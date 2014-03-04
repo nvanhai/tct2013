@@ -146,4 +146,5 @@
 	<Infor ID="0150" Msg="Tờ khai này không nhận mã vạch. Đề nghị nhập tay vào hệ thống"/>
 	<Infor ID="0151" Msg="Cài đặt"/>
 	<Infor ID="0152" Msg="Địa chỉ IP không hợp lệ"/>
+	<Infor ID="0153" Msg="Không nhận các tờ khai quyết toán TNCN"/>
 </Message>

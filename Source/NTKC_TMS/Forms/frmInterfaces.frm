@@ -125,7 +125,6 @@ Begin VB.Form frmInterfaces
          Left            =   0
          TabIndex        =   15
          Top             =   30
-         Visible         =   0   'False
          Width           =   1335
       End
       Begin ComctlLib.ProgressBar ProgressBar1 
@@ -2389,15 +2388,21 @@ Private Sub Command1_Click()
    Dim str51 As String, str52 As String, str53 As String
    
 '***************** Ra soat giai doan 1 *******************
+'01_GTGT
 'str2 = "aa321012300311472   01201400100100100101/0114/06/2006<S01><S></S><S>0~321000~100000~2000000~300000~342000~11120000~1100000~120000~5000000~400000~6000000~700000~11462000~1100000~800000~438900~128900~239000~550000~20000~530000~0~0~0</S><S>~~HÔng b–o~04/03/2014~1~~~1701~~~0</S></S01>"
 'Barcode_Scaned str2
 
+'01A_TNDN
 'str2 = "aa321112300312042   01201400100100100201/0114/06/2006<S01><S></S><S>54000000~13000000~41000000~2000000~3000000~40000000~8000000~5000000~27000000~7000000~5000000~9000000~~34.897~600"
 'Barcode_Scaned str2
 'str2 = "aa321112300312042   0120140010010020020000~56.873~9053110~7070000~1000000~5000000~1983110~x~02~25/01/2014~321000~1662110</S><S>x~</S><S>~~Ph≠¨ng Mai~04/03/2014~1~0~~1052</S></S01>"
 'Barcode_Scaned str2
 
+'09_TNCN
+str2 = "aa321410102030405   00201300400400100201/0101/01/2009<S09><S></S><S> </S><S>12000000~10000000~5000000~2000000~78000000~78000000~0~0~0~0~0~320000~300000~20000~0~0~0~320000~0~320000</S><S>~04/03/2014~~~01/2013~12/2013~1~</S></S09>"
+Barcode_Scaned str2
 
+'03_TNDN
 'str2 = "aa321032300032165   00201301601900101901/0114/06/200620/10/201231/12/2013<S03><S></S><S>80702500~782000~320000~120000~300000~10000~32000~143200~32100~45000~42100~24000~81341300~81298300~43000~81298300~1"
 'Barcode_Scaned str2
 'str2 = "aa321032300032165   00201301601900201923200~2400000~78775100~0~78775100~19693775~-208488~39060~0~19863203~645000~20508203~19863203~645000</S><S></S><S></S><S></S><S>~~~21/01/2014~1~1~0~1052~</S></S03>"
@@ -2861,9 +2866,9 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 
-'01-BVMT-THANG-CT
-str2 = "aa320862300032052   01201400100100100101/0101/01/1900<S01><S></S><S>Kg~1000~100000~010103~T n~2000~200000~010203</S><S>Kg~3000~300000~010208~T n~4000~400000~010207</S><S>~CMCer~~17/02/2014~1~~</S></S01>"
-Barcode_Scaned str2
+''01-BVMT-THANG-CT
+'str2 = "aa320862300032052   01201400100100100101/0101/01/1900<S01><S></S><S>Kg~1000~100000~010103~T n~2000~200000~010203</S><S>Kg~3000~300000~010208~T n~4000~400000~010207</S><S>~CMCer~~17/02/2014~1~~</S></S01>"
+'Barcode_Scaned str2
 
 ''01-BVMT-THANG-BS
 'str2 = "bs320862300032052   01201400300300100301/0101/01/1900<S01><S></S><S>Kg~500~100000~010103~T n~2500~200000~010203</S><S>Kg~1500~300000~010208~T n~2000~400000~010207</S><S>~CMCer~~17/02/2014~~1~1</S></S01>"
@@ -3534,9 +3539,18 @@ Private Sub Barcode_Scaned(strBarcode As String)
 
         '--end chan to phat sinh----------------
         
+
+        
         'khong nhan cac to khai khong theo mau HTKK3.2.0
         '...,02/TNDN,08A/kk-tncn
         idToKhai = Mid(strPrefix, 4, 2)
+
+        'nshung chan cac to khai quyet toan cho cac tinh trien khai thi diem TMS
+         If (Trim(idToKhai) = "17" Or Trim(idToKhai) = "42" Or Trim(idToKhai) = "43" Or Trim(idToKhai) = "41" Or Trim(idToKhai) = "59" Or Trim(idToKhai) = "76") And (strMaTinhCoQuanThue = "BNI" Or strMaTinhCoQuanThue = "BRV") Then
+            DisplayMessage "0153", msOKOnly, miInformation
+            Exit Sub
+         End If
+        '------------*******end nshung********----------
 
         'If (Val(Left$(strPrefix, 3)) <= 317 And UCase(strLoaiToKhai) = "AA") Then
         If (Val(Left$(strPrefix, 3)) <= 317) Then
@@ -4672,7 +4686,7 @@ On Error GoTo ErrHandle
 '*******************************
 'Date: 16/02/2006
     'Danh sach to khai can kiem tra ngay bat dau nam tai chinh
-    On Error GoTo ThamSoErrHandle
+'    On Error GoTo ThamSoErrHandle
     
 '    Set rsParams = clsDAO.Execute("select gia_tri from rcv_thamso where ten ='LOAI_TK_TAICHINH'")
 '
