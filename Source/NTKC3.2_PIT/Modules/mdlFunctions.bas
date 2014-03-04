@@ -1238,6 +1238,10 @@ Public Function changeMaToKhai(strID As String) As String
     
     'To khai dau khi thuy dien
     If strID = "92" Then changeMaToKhai = "01_TAIN_DK"
+    If strID = "98" Then changeMaToKhai = "01A_TNDN_DK"
+    If strID = "99" Then changeMaToKhai = "01B_TNDN_DK"
+    If strID = "96" Then changeMaToKhai = "03_TD_TAIN"
+    If strID = "94" Then changeMaToKhai = "01_TD_GTGT"
 End Function
 
 ' Ham change sang ma cua QLT

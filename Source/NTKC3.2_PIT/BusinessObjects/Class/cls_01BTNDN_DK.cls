@@ -578,7 +578,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "01B_TNDN_DK13"
+    vLOAI_TKHAI = "01B_TNDN_DK"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
