@@ -18,6 +18,7 @@ Dim Hcon As Long
 Dim Hobj As Long
 Dim CompCode As Long
 Dim Reason As Long
+Private Base64Unicode As New Base64Unicode
 Public Function close_Conn() As Boolean
     Dim C_options As Long     ' MQCLOSE options
     'Dim CompCode  As Long      ' Completion code
@@ -283,14 +284,21 @@ Public Function PUSHMQ(ByVal xml As String) As Boolean
     '******************************************************************'
     MQCNOCD_DEFAULTS CNOCD                         ' MQCNO defaults
 
-    CNOCD.ChannelDef.ConnectionName = "10.64.85.170(1515)"
+    'Get IP ESB from Config
+    Dim IpESB As String
+    IpESB = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("WsUrlNSD")(0).Text)
+    IpESB = Mid$(IpESB, InStr(1, IpESB, "//", vbTextCompare) + 2)
+    IpESB = Mid$(IpESB, 1, InStr(1, IpESB, ":", vbTextCompare) - 1)
+    IpESB = IIf(IpESB <> "", IpESB, "10.64.85.170")
+
+    CNOCD.ChannelDef.ConnectionName = IpESB & "(1515)"
     CNOCD.ChannelDef.ChannelName = "NTK.SVRCONN"
     CNOCD.ChannelDef.Version = MQCD_VERSION_7    ' Compatible 5.2.x
     CNOCD.ChannelDef.MCAUserIdentifier = "Administrator"
     '******************************************************************'
     '*  Connect to queue manager                                      *'
     '******************************************************************'
-    QmgrNameIn = "ESB.INT.QMGR"                  ' Use fixed length
+    QmgrNameIn = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("queue_manager_name")(0).Text)                  ' Use fixed length
     MQCONNXAny QmgrNameIn, CNOCD, Hcon, CompCode, Reason
 
     If Hcon Then
@@ -299,24 +307,24 @@ Public Function PUSHMQ(ByVal xml As String) As Boolean
         '****************************************************************'
         MQOD_DEFAULTS od                                ' MQOD defaults
         od.ObjectType = MQOT_Q                   ' Queue Manager object
-        od.ObjectName = "INT.INBOX.QUEUE"               ' Set Queue name
+        od.ObjectName = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("queue_name")(0).Text)              ' Set Queue name
         O_options = MQOO_INPUT_SHARED + MQOO_OUTPUT     ' Option MQOPEN
         MQOPEN Hcon, od, O_options, Hobj, CompCode, Reason
     End If
 
-'    If CompCode = 0 And Reason = 0 Then
-'        xml = ConvertStringToUtf8String(xml)
-'        MQMD_DEFAULTS md
-'        md.CodedCharSetId = 1208
-'        '     md.CodedCharSetId = 1258
-'        'md.Encoding = 546
-'        MQPMO_DEFAULTS pmo
-'
-'        ' Get message to be "put" from the Put text box
-'        buflen = Len(xml)
-'        Buffer = xml
-'        MQPUT Hcon, Hobj, md, pmo, buflen, Buffer, CompCode, Reason
-'    End If
+    If CompCode = 0 And Reason = 0 Then
+        xml = ConvertStringToUtf8String(xml)
+        MQMD_DEFAULTS md
+        md.CodedCharSetId = 1208
+        '     md.CodedCharSetId = 1258
+        'md.Encoding = 546
+        MQPMO_DEFAULTS pmo
+
+        ' Get message to be "put" from the Put text box
+        buflen = Len(xml)
+        Buffer = xml
+        MQPUT Hcon, Hobj, md, pmo, buflen, Buffer, CompCode, Reason
+    End If
     
     If CompCode <> MQCC_OK Then
         PUSHMQ = False

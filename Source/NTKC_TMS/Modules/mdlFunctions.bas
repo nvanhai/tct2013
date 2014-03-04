@@ -1866,14 +1866,14 @@ End Function
 Public Function PushDataToESB(ByVal xmlInput As String) As Boolean
 '    Dim xmlConfig As New MSXML.DOMDocument
 '    Set xmlConfig = LoadConfig()
-    Dim sQueueMgrName As String
-    Dim sQueueName    As String
-    Dim IsConnectMQ   As Boolean
+    'Dim sQueueMgrName As String
+    'Dim sQueueName    As String
+    'Dim IsConnectMQ   As Boolean
     
     'xmlInput = TAX_Utilities_Srv_New.Convert(xmlInput, UNICODE, VIQR)
     
-    sQueueMgrName = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("queue_manager_name")(0).Text)
-    sQueueName = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("queue_name")(0).Text)
+    'sQueueMgrName = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("queue_manager_name")(0).Text)
+    'sQueueName = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("queue_name")(0).Text)
     Dim MQPUT As New MQPUT
     PushDataToESB = MQPUT.PUSHMQ(xmlInput)
     'IsConnectMQ = MQPUT.open_Conn(sQueueMgrName, sQueueName)
