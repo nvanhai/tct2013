@@ -23,10 +23,9 @@ Private Const S1TxtG6Col = "G"
 
 Private Const Row_MSTDN = 14
 Private Const Col_MSTDN = "H"
-Private Const sheetPl01_1TD_GTGT = 2
-Private Const sheetPl01_2TD_GTGT = 3
+Private Const sheetPl01_2TD_GTGT = 2
 Private Const rowStatic = 42
-Private Const sheetPl01_KHBS_GTGT = 4
+Private Const sheetPl01_KHBS_GTGT = 3
 
 Dim mblKeyF6 As Boolean
 Dim mblKhoiDauToKhai As Boolean
@@ -39,6 +38,8 @@ Public loaiKHBS As String
 Public FlagThaydoi As String
 Public StrSolanBosung As String
 Public Strloaitk As String
+
+Public strTkThangQuy As String
 
 
 ' Kiem tra thong tin dai ly thue
@@ -115,6 +116,20 @@ Public Sub Prepare2()
             .Text = StrSolanBosung
             UpdateCell fps, .Col, .Row, .Text
         End If
+        
+        ' set loai tk thang/ quy
+         If strTkThangQuy = "TK_THANG" Then
+            .Col = .ColLetterToNumber("K")
+            .Row = 59
+            .Text = "0"
+            UpdateCell fps, .Col, .Row, .Text
+        ElseIf strTkThangQuy = "TK_QUY" Then
+            .Col = .ColLetterToNumber("K")
+            .Row = 59
+            .Text = "1"
+            UpdateCell fps, .Col, .Row, .Text
+        End If
+            'end
         mCurrentSheet = .Sheet
     End With
     
@@ -517,112 +532,114 @@ Private Sub CheckDynamicError()
 '
         'check phu luc 01_2
         .Sheet = sheetPl01_2TD_GTGT
-        .Row = 42
-        iWhiteRow = 1
-        Do
-            .GetText .ColLetterToNumber("B"), .Row, vSTT
-            .GetText .ColLetterToNumber("C"), .Row, vTenNhaMay
-            .GetText .ColLetterToNumber("H"), .Row, vMST
-            .GetText .ColLetterToNumber("L"), .Row, vCQTCapCuc
-            .GetText .ColLetterToNumber("P"), .Row, vCQTCapDiaPhuong
-            .GetText .ColLetterToNumber("R"), .Row, vTyLePhanBo
-            .GetText .ColLetterToNumber("U"), .Row, vSoThuePhaiNop
-
-            If Trim$(vSTT) <> "" Or Trim$(vTenNhaMay) <> "" Or Trim$(vMST) <> "" Or Trim$(vCQTCapCuc) <> "" Or Trim$(vCQTCapDiaPhuong) <> "" Or Trim$(vTyLePhanBo) <> "0" Or Trim$(vSoThuePhaiNop) <> "0" Then
-                iWhiteRow = 0
-            End If
-
-            .Col = .ColLetterToNumber("C")
-
-            If (Trim(vTenNhaMay) = "" And iWhiteRow = 0) Then
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                .CellNote = vMessRequire      'static
-                .BackColor = mErrorColor
-
-                iFlagEmpty = 1
-            Else
-                .BackColor = mNonErrorColor
-                .CellNote = ""
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-            End If
-
-            .Col = .ColLetterToNumber("L")
-
-            If (Trim(vCQTCapCuc) = "" And iWhiteRow = 0) Then
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                .CellNote = vMessRequire      'static
-                .BackColor = mErrorColor
-
-                iFlagEmpty = 1
-            Else
-                .BackColor = mNonErrorColor
-                .CellNote = ""
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-            End If
-            
-            .Col = .ColLetterToNumber("P")
-
-            If (Trim(vCQTCapDiaPhuong) = "" And iWhiteRow = 0) Then
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                .CellNote = vMessRequire      'static
-                .BackColor = mErrorColor
-
-                iFlagEmpty = 1
-            Else
-                .BackColor = mNonErrorColor
-                .CellNote = ""
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-            End If
-            
-            'check ma so thue
-                If Trim$(vMST) <> vbNullString Then
-                    vMST = Replace(vMST, " ", "")
-                    vMST = Replace(vMST, "-", "")
-                    'vMST = Left(vMST, 10)
-
-                    strCheck = ""
-
-                    If Len(vMST) = 10 Or Len(vMST) = 13 Then
-                        strCheck = CheckTaxCode(Mid$(vMST, 1, 1), Mid$(vMST, 2, 1), Mid$(vMST, 3, 1), Mid$(vMST, 4, 1), Mid$(vMST, 5, 1), Mid$(vMST, 6, 1), Mid$(vMST, 7, 1), Mid$(vMST, 8, 1), Mid$(vMST, 9, 1), Mid$(vMST, 10, 1), Mid$(vMST, 11, 1), Mid$(vMST, 12, 1), Mid$(vMST, 13, 1))
-                    End If
-                       
-                    If Mid$(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
-                        .Col = .ColLetterToNumber("H")
-                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                        .CellNote = errMST   'static
-                        .BackColor = mErrorColor
-
-                        iFlagCheckMaST = 1
-                            
-                        'capture the first error cell
-                        If iFocusFlag = 0 Then
-                            strFocusSheetName = "'" & .SheetName & "'"
-                            strFocusCol = str$(.Col)
-                            strFocusRow = str$(.Row)
-
-                            iFocusFlag = 1
-                        End If
-
-                    Else
-                        .Col = .ColLetterToNumber("H")
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                    End If
-
+         If .SheetVisible = True Then
+            .Row = 42
+            iWhiteRow = 1
+            Do
+                .GetText .ColLetterToNumber("B"), .Row, vSTT
+                .GetText .ColLetterToNumber("C"), .Row, vTenNhaMay
+                .GetText .ColLetterToNumber("H"), .Row, vMST
+                .GetText .ColLetterToNumber("L"), .Row, vCQTCapCuc
+                .GetText .ColLetterToNumber("P"), .Row, vCQTCapDiaPhuong
+                .GetText .ColLetterToNumber("R"), .Row, vTyLePhanBo
+                .GetText .ColLetterToNumber("U"), .Row, vSoThuePhaiNop
+    
+                If Trim$(vSTT) <> "" Or Trim$(vTenNhaMay) <> "" Or Trim$(vMST) <> "" Or Trim$(vCQTCapCuc) <> "" Or Trim$(vCQTCapDiaPhuong) <> "" Or Trim$(vTyLePhanBo) <> "0" Or Trim$(vSoThuePhaiNop) <> "0" Then
+                    iWhiteRow = 0
+                End If
+    
+                .Col = .ColLetterToNumber("C")
+    
+                If (Trim(vTenNhaMay) = "" And iWhiteRow = 0) Then
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vMessRequire      'static
+                    .BackColor = mErrorColor
+    
+                    iFlagEmpty = 1
                 Else
-                    If (Trim$(vMST) = vbNullString And iWhiteRow = 0) Then
-                        .Col = .ColLetterToNumber("H")
-                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                        
-                        'iFlagEmty = 1
-                    End If
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                End If
+    
+                .Col = .ColLetterToNumber("L")
+    
+                If (Trim(vCQTCapCuc) = "" And iWhiteRow = 0) Then
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vMessRequire      'static
+                    .BackColor = mErrorColor
+    
+                    iFlagEmpty = 1
+                Else
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 End If
                 
-            .Row = .Row + 1
-            .Col = .ColLetterToNumber("B")
-        Loop Until .Text = "aa"
+                .Col = .ColLetterToNumber("P")
+    
+                If (Trim(vCQTCapDiaPhuong) = "" And iWhiteRow = 0) Then
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vMessRequire      'static
+                    .BackColor = mErrorColor
+    
+                    iFlagEmpty = 1
+                Else
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                End If
+                
+                'check ma so thue
+                    If Trim$(vMST) <> vbNullString Then
+                        vMST = Replace(vMST, " ", "")
+                        vMST = Replace(vMST, "-", "")
+                        'vMST = Left(vMST, 10)
+    
+                        strCheck = ""
+    
+                        If Len(vMST) = 10 Or Len(vMST) = 13 Then
+                            strCheck = CheckTaxCode(Mid$(vMST, 1, 1), Mid$(vMST, 2, 1), Mid$(vMST, 3, 1), Mid$(vMST, 4, 1), Mid$(vMST, 5, 1), Mid$(vMST, 6, 1), Mid$(vMST, 7, 1), Mid$(vMST, 8, 1), Mid$(vMST, 9, 1), Mid$(vMST, 10, 1), Mid$(vMST, 11, 1), Mid$(vMST, 12, 1), Mid$(vMST, 13, 1))
+                        End If
+                           
+                        If Mid$(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
+                            .Col = .ColLetterToNumber("H")
+                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                            .CellNote = errMST   'static
+                            .BackColor = mErrorColor
+    
+                            iFlagCheckMaST = 1
+                                
+                            'capture the first error cell
+                            If iFocusFlag = 0 Then
+                                strFocusSheetName = "'" & .SheetName & "'"
+                                strFocusCol = str$(.Col)
+                                strFocusRow = str$(.Row)
+    
+                                iFocusFlag = 1
+                            End If
+    
+                        Else
+                            .Col = .ColLetterToNumber("H")
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                        End If
+    
+                    Else
+                        If (Trim$(vMST) = vbNullString And iWhiteRow = 0) Then
+                            .Col = .ColLetterToNumber("H")
+                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                            
+                            'iFlagEmty = 1
+                        End If
+                    End If
+                    
+                .Row = .Row + 1
+                .Col = .ColLetterToNumber("B")
+            Loop Until .Text = "aa"
+        End If
         
         'set flag
         .Sheet = .SheetCount
