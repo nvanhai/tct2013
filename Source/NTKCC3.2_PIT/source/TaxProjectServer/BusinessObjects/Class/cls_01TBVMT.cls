@@ -91,6 +91,7 @@ Public strPhongXuLy As String
 Private larrid() As String
 Private larrPhongXuLy() As String
 Private lSoPhongXL As Long
+Private LOAI_TO_KHAI As String
 
 'Longvh
 Public strMST As String
@@ -262,6 +263,15 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
             .Row = .Row + 1
         
         Loop Until .Text = "aa"
+        
+        .Row = 33
+        .Col = .ColLetterToNumber("L")
+
+        If .Text = "1" Then
+            LOAI_TO_KHAI = "01PS/TBVMT"
+        Else
+            LOAI_TO_KHAI = "01/TBVMT"
+        End If
         
     End With
     
@@ -664,7 +674,7 @@ Public Function InsertDTL() As String
     With fps
         .Sheet = 1
         'ma to khai
-        matkhai = "'01/TBVMT'"
+        matkhai = "'" & LOAI_TO_KHAI & "'"
         ' ma doi tuong nop thue
           
         .GetText .ColLetterToNumber("G"), 8, madtnt
@@ -916,7 +926,7 @@ Public Function InsertDTL_KHBS() As String
 
         MATHUE = "'21'"
         MAPP = "'2'"
-        matkhai = "'01/TBVMT'"
+        matkhai = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         maTM = "'2001'"
         MaMuc = "'2000'"
@@ -1402,7 +1412,7 @@ Public Function InsertHDR() As String
         MAPP = "'1'"
         MAPP2 = "'1'"
         MaVach = ".T."
-        matkhai = "'01/TBVMT'"
+        matkhai = "'" & LOAI_TO_KHAI & "'"
         THUECL = "0"
 
         ' Han nop: ngay thu 20 cua thang sau
@@ -1416,11 +1426,9 @@ Public Function InsertHDR() As String
         If thang = 12 Then
             nam = nam + 1
             HANNOP = "20/01/" & nam
-            HANNOP = "CTOD('" & Format(HANNOP, "mm/dd/yyyy") & "')"
         Else
             thang = thang + 1
             HANNOP = "20/" & thang & "/" & nam
-            HANNOP = "CTOD('" & Format(HANNOP, "mm/dd/yyyy") & "')"
         End If
 
         GTTinhThue = "0"
@@ -1461,8 +1469,12 @@ Public Function InsertHDR() As String
             Else
                 NGAYPS = "CTOD('" & Format(NGAYPS, "mm/dd/yyyy") & "')"
             End If
+            
+            HANNOP = DateAdd("d", 10, ngnop)
         End If
 
+        HANNOP = "CTOD('" & Format(HANNOP, "mm/dd/yyyy") & "')"
+        HANNOP2 = HANNOP
         'thue gtgt phai nop
         '        .GetText .ColLetterToNumber("U"), 35, ThueTKy
         '
@@ -1573,7 +1585,7 @@ Public Function TKTT() As Boolean
     End If
 
 
-        sSQL = "SELECT MADTNT, NGNOP FROM TMP_TK" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "'" & " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='01/TBVMT' "
+        sSQL = "SELECT MADTNT, NGNOP FROM TMP_TK" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "'" & " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='" & LOAI_TO_KHAI & "' "
         Set rs = clsDAO.Execute(sSQL)
 
         If Not rs Is Nothing Then
@@ -1645,7 +1657,7 @@ Public Function isToKhaiChinhThuc() As Boolean
 
         'kiem tra neu co db thi moi thuc hien truy van
         If fso.FileExists(strTestFileName) Then
-                   sSQL = "SELECT MADTNT, NGNOP FROM TMP_TK" & vKeKhai_temp & " WHERE MADTNT = " & "'" & strMST & "'" & " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='01/TBVMT' "
+                   sSQL = "SELECT MADTNT, NGNOP FROM TMP_TK" & vKeKhai_temp & " WHERE MADTNT = " & "'" & strMST & "'" & " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='" & LOAI_TO_KHAI & "' "
             Set rs = clsDAO.Execute(sSQL)
         End If
         
@@ -1933,7 +1945,7 @@ Public Function TinhSoLanQuet() As Integer
             clsDAO.Connect
         End If
 
-        sSQL = "SELECT max(LAN_QUET) as LAN_QUET FROM TMP_TK" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "'" & " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='01/TBVMT'" & " AND (TTHTK = '1' or TTHTK = '3' )"
+        sSQL = "SELECT max(LAN_QUET) as LAN_QUET FROM TMP_TK" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "'" & " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='" & LOAI_TO_KHAI & "'" & " AND (TTHTK = '1' or TTHTK = '3' )"
     
         Set rs = clsDAO.Execute(sSQL)
 

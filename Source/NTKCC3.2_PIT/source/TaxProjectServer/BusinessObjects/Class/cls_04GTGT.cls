@@ -246,9 +246,12 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         If LoaiKyKK = "0" Then
             LOAI_TO_KHAI = "04/GTGT"
             isTkQuy = False
-        Else
+        ElseIf LoaiKyKK = "1" Then
             LOAI_TO_KHAI = "04Q/GTGT"
             isTkQuy = True
+        Else
+            LOAI_TO_KHAI = "04/PSGTGT"
+            isTkQuy = False
         End If
         
 '        'get ten chi tieu trong danh muc NNKD
@@ -1974,7 +1977,6 @@ Public Function InsertDTL_PL1() As String
    
 End Function
 
-
 Public Function InsertHDR() As String
     Dim sSQL       As String
     Dim sSQLCol    As String
@@ -2020,8 +2022,8 @@ Public Function InsertHDR() As String
     Dim DSoCL      As Variant
     Dim GTTTCL     As Variant
     Dim NGAYPS     As Variant
-            Dim TENNV As Variant
-    Dim CHUNGCHI As Variant
+    Dim TENNV      As Variant
+    Dim CHUNGCHI   As Variant
     sSQLCol = "MADTNT, MATHUE, MATM, MAPP, KYLBO, NGNOP, "
     sSQLCol = sSQLCol & "LOAITIEN, MABPQL, SHTEP, TTHTK, KYKKHAI, "
     sSQLCol = sSQLCol & "NGNHAP, THUETKY, GTTINHTHUE, DAGHI, "
@@ -2029,7 +2031,7 @@ Public Function InsertHDR() As String
     
     With fps
         .Sheet = 1
-                        'lay ten nhan vien dai ly thue, chung chi hanh nghe
+        'lay ten nhan vien dai ly thue, chung chi hanh nghe
         .GetText .ColLetterToNumber("H"), 63, TENNV
         .GetText .ColLetterToNumber("H"), 65, CHUNGCHI
         'set DAGHI2 theo checkbox loi dinh danh
@@ -2045,6 +2047,8 @@ Public Function InsertHDR() As String
         'set cac chi so
         DSoCL = "0"
         GTTTCL = "0"
+        
+        
         NGAYPS = "CTOD('')"
         
         .GetText .ColLetterToNumber("F"), 10, madtnt
@@ -2116,12 +2120,23 @@ Public Function InsertHDR() As String
         
         ' Lay loai ky ke khai(thang/quy)
         .GetText .ColLetterToNumber("K"), 39, LoaiKyKK
+
         If LoaiKyKK = "0" Then
             LoaiKyKK = ".T."
             isTkQuy = False
-        Else
+        ElseIf LoaiKyKK = "1" Then
             LoaiKyKK = ".F."
             isTkQuy = True
+        Else
+            LoaiKyKK = ".T."
+            .GetText .ColLetterToNumber("L"), 39, NGAYPS
+            HANNOP = DateAdd("d", 10, ngnop)
+        End If
+        
+        If Trim(NGAYPS) = vbNullString Then
+            NGAYPS = "CTOD('')"
+        Else
+            NGAYPS = "CTOD('" & Format(NGAYPS, "mm/dd/yyyy") & "')"
         End If
         
         'get MaNNKD
