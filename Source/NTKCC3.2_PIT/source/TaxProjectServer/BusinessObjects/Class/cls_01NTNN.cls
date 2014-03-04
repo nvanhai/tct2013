@@ -1140,6 +1140,7 @@ Public Function InsertHDR() As String
     Dim MANNKD     As Variant
     Dim TENNV      As Variant
     Dim CHUNGCHI   As Variant
+    Dim NgayNop As Variant
 
     sSQLCol = "MADTNT, MATHUE, MATM, MAPP, KYLBO, NGNOP, "
     sSQLCol = sSQLCol & "LOAITIEN, MABPQL, SHTEP, TTHTK, KYKKHAI, "
@@ -1209,6 +1210,7 @@ Public Function InsertHDR() As String
             ngnop = "CTOD('')"
         Else
             ngnop = ToDate(Trim(ngnop), DDMMYYYY)
+            NgayNop = ngnop
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
        
@@ -1288,7 +1290,8 @@ Public Function InsertHDR() As String
         .Col = .ColLetterToNumber("F")
         .Row = 63
         If .Text = "x" Or .Text = "X" Then
-            HANNOP = DateAdd("d", 10, ngnop)
+            HANNOP = DateAdd("d", 10, NgayNop)
+            HANNOP = ToString(HANNOP, "DD/MM/YYYY")
         End If
 
         If Trim(HANNOP) = vbNullString Then

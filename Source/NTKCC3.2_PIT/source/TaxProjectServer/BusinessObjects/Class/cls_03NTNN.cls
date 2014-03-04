@@ -1144,7 +1144,7 @@ Public Function InsertHDR() As String
     Dim MACT2       As Variant
     Dim TENNV       As Variant
     Dim CHUNGCHI    As Variant
-
+    Dim NgayNop As Variant
     Dim iCol        As Long, iRow As Long
     Dim xmlCellNode As MSXML.IXMLDOMNode
     sSQLCol = "MADTNT, MADLT,MATHUE, MATM, MAPP, KYLBO, NGNOP, "
@@ -1215,6 +1215,7 @@ Public Function InsertHDR() As String
             ngnop = "CTOD('')"
         Else
             ngnop = ToDate(Trim(ngnop), DDMMYYYY)
+            NgayNop = ngnop
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
        
@@ -1262,7 +1263,8 @@ Public Function InsertHDR() As String
         End If
 
         If TKTHANG = False Then
-            HANNOP = DateAdd("d", 10, ngnop)
+            HANNOP = DateAdd("d", 10, NgayNop)
+            HANNOP = ToString(HANNOP, "DD/MM/YYYY")
         End If
 
         HANNOP = "CTOD('" & Format(HANNOP, "mm/dd/yyyy") & "')"
@@ -1571,17 +1573,17 @@ End Sub
 
 Public Function CheckValidData() As Boolean
     Dim varCheckValue As Variant, varNoteValue As Variant
-     Dim NGAYNOP As Variant, ngayHienTai As Variant
+     Dim NgayNop As Variant, ngayHienTai As Variant
     CheckValidData = True
     With fps
         .Sheet = 1
         
         ' check ngay nop khong dc lon hon ngay hien tai
-        .GetText .ColLetterToNumber("E"), 32, NGAYNOP
+        .GetText .ColLetterToNumber("E"), 32, NgayNop
         ngayHienTai = IIf(Len(Day(Now())) = 1, "0" & Day(Now()), Day(Now())) & "/" & IIf(Len(Month(Now())) = 1, "0" & Month(Now()), Month(Now())) & "/" & Year(Now())
         ngayHienTai = DateSerial(Int(Mid$(ngayHienTai, 7, 4)), Int(Mid$(ngayHienTai, 4, 2)), Int(Mid$(ngayHienTai, 1, 2)))
-        NGAYNOP = DateSerial(Int(Mid$(NGAYNOP, 7, 4)), Int(Mid$(NGAYNOP, 4, 2)), Int(Mid$(NGAYNOP, 1, 2)))
-        If NGAYNOP > ngayHienTai Then
+        NgayNop = DateSerial(Int(Mid$(NgayNop, 7, 4)), Int(Mid$(NgayNop, 4, 2)), Int(Mid$(NgayNop, 1, 2)))
+        If NgayNop > ngayHienTai Then
             CheckValidData = False
         End If
 
