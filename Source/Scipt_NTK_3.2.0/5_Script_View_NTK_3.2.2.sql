@@ -1,5 +1,5 @@
 --01A_TNDN_DK
-CREATE OR REPLACE VIEW RCV_V_TKHAI_01A_TNDN_DK (HDR_ID, CTK_ID, SO_TT, TEN_CTIEU, GIA_TRI, KY_HIEU_CTIEU) AS SELECT
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_01A_TNDN_DK (HDR_ID, CTK_ID, SO_TT, TEN_CTIEU, GIA_TRI, KY_HIEU_CTIEU) AS SELECT
     DTL.HDR_ID ,
     DTL.CTK_ID ,
     MAX(DTL.SO_TT)         SO_TT ,
@@ -18,15 +18,15 @@ FROM
             REPLACE(DECODE(GDIEN.COT_01, TKD.KY_HIEU, TKD.GIA_TRI, NULL),'%','')   GIA_TRI ,
             DECODE(GDIEN.COT_01, TKD.KY_HIEU, '['||GDIEN.KY_HIEU_CTIEU||']', NULL) KY_HIEU_CTIEU
         FROM
-            RCV_TKHAI_DTL TKD,
+            QLT_NTK.RCV_TKHAI_DTL TKD,
             (
                 SELECT
                     GD.*,
                     CT.KY_HIEU,
                     CT.KY_HIEU_CTIEU
                 FROM
-                    RCV_GDIEN_TKHAI GD,
-                    RCV_MAP_CTIEU CT
+                    QLT_NTK.RCV_GDIEN_TKHAI GD,
+                    QLT_NTK.RCV_MAP_CTIEU CT
                 WHERE
                     CT.GDN_ID (+) = GD.ID
                 AND GD.LOAI_DLIEU = '01A_TNDN_DK' ) GDIEN
@@ -38,7 +38,7 @@ GROUP BY
     DTL.CTK_ID;
 --01A_1_TNDN_DK
 CREATE OR REPLACE VIEW
-    RCV_V_PLUC_01A_1_TNDN_DK
+    QLT_NTK.RCV_V_PLUC_01A_1_TNDN_DK
     (
         HDR_ID,
         SO_TT,
@@ -73,9 +73,9 @@ CREATE OR REPLACE VIEW
                     DECODE (gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL ) SO_THUE_PHAT_SINH_PHAI_NOP,
                     DECODE (gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL)  GHI_CHU
                 FROM
-                    rcv_tkhai_dtl tkd,
-                    rcv_gdien_tkhai gdien,
-                    rcv_map_ctieu ctieu
+                    QLT_NTK.rcv_tkhai_dtl tkd,
+                    QLT_NTK.rcv_gdien_tkhai gdien,
+                    QLT_NTK.rcv_map_ctieu ctieu
                 WHERE
                     (
                         ctieu.gdn_id = gdien.ID)
@@ -90,7 +90,7 @@ CREATE OR REPLACE VIEW
             dtl.row_id
     ) ;    
 --01B_TNDN_DK
-CREATE OR REPLACE VIEW RCV_V_TKHAI_01B_TNDN_DK (HDR_ID, CTK_ID, SO_TT, TEN_CTIEU, GIA_TRI, KY_HIEU_CTIEU) AS SELECT
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_01B_TNDN_DK (HDR_ID, CTK_ID, SO_TT, TEN_CTIEU, GIA_TRI, KY_HIEU_CTIEU) AS SELECT
     DTL.HDR_ID ,
     DTL.CTK_ID ,
     MAX(DTL.SO_TT)         SO_TT ,
@@ -109,15 +109,15 @@ FROM
             REPLACE(DECODE(GDIEN.COT_01, TKD.KY_HIEU, TKD.GIA_TRI, NULL),'%','')   GIA_TRI ,
             DECODE(GDIEN.COT_01, TKD.KY_HIEU, '['||GDIEN.KY_HIEU_CTIEU||']', NULL) KY_HIEU_CTIEU
         FROM
-            RCV_TKHAI_DTL TKD,
+            QLT_NTK.RCV_TKHAI_DTL TKD,
             (
                 SELECT
                     GD.*,
                     CT.KY_HIEU,
                     CT.KY_HIEU_CTIEU
                 FROM
-                    RCV_GDIEN_TKHAI GD,
-                    RCV_MAP_CTIEU CT
+                    QLT_NTK.RCV_GDIEN_TKHAI GD,
+                    QLT_NTK.RCV_MAP_CTIEU CT
                 WHERE
                     CT.GDN_ID (+) = GD.ID
                 AND GD.LOAI_DLIEU = '01B_TNDN_DK' ) GDIEN
@@ -129,7 +129,7 @@ GROUP BY
     DTL.CTK_ID;
 --01B_1_TNDN_DK
 CREATE OR REPLACE VIEW
-    RCV_V_PLUC_01B_1_TNDN_DK
+    QLT_NTK.RCV_V_PLUC_01B_1_TNDN_DK
     (
         HDR_ID,
         SO_TT,
@@ -164,9 +164,9 @@ CREATE OR REPLACE VIEW
                     DECODE (gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL ) SO_THUE_PHAT_SINH_PHAI_NOP,
                     DECODE (gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL)  GHI_CHU
                 FROM
-                    rcv_tkhai_dtl tkd,
-                    rcv_gdien_tkhai gdien,
-                    rcv_map_ctieu ctieu
+                    QLT_NTK.rcv_tkhai_dtl tkd,
+                    QLT_NTK.rcv_gdien_tkhai gdien,
+                    QLT_NTK.rcv_map_ctieu ctieu
                 WHERE
                     (
                         ctieu.gdn_id = gdien.ID)
@@ -181,7 +181,7 @@ CREATE OR REPLACE VIEW
             dtl.row_id
     ) ;    
 --01_TAIN_DK
-CREATE OR REPLACE VIEW RCV_V_TKHAI_01_TAIN_DK (HDR_ID, CTK_ID, SO_TT, TEN_CTIEU, GIA_TRI, KY_HIEU_CTIEU) AS SELECT
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_01_TAIN_DK (HDR_ID, CTK_ID, SO_TT, TEN_CTIEU, GIA_TRI, KY_HIEU_CTIEU) AS SELECT
     DTL.HDR_ID ,
     DTL.CTK_ID ,
     MAX(DTL.SO_TT)         SO_TT ,
@@ -200,15 +200,15 @@ FROM
             REPLACE(DECODE(GDIEN.COT_01, TKD.KY_HIEU, TKD.GIA_TRI, NULL),'%','')   GIA_TRI ,
             DECODE(GDIEN.COT_01, TKD.KY_HIEU, '['||GDIEN.KY_HIEU_CTIEU||']', NULL) KY_HIEU_CTIEU
         FROM
-            RCV_TKHAI_DTL TKD,
+            QLT_NTK.RCV_TKHAI_DTL TKD,
             (
                 SELECT
                     GD.*,
                     CT.KY_HIEU,
                     CT.KY_HIEU_CTIEU
                 FROM
-                    RCV_GDIEN_TKHAI GD,
-                    RCV_MAP_CTIEU CT
+                    QLT_NTK.RCV_GDIEN_TKHAI GD,
+                    QLT_NTK.RCV_MAP_CTIEU CT
                 WHERE
                     CT.GDN_ID (+) = GD.ID
                 AND GD.LOAI_DLIEU = '01_TAIN_DK' ) GDIEN
@@ -220,7 +220,7 @@ GROUP BY
     DTL.CTK_ID;
 -- 01_1_TAIN_DK
 CREATE OR REPLACE VIEW
-    RCV_V_PLUC_01_1_TAIN_DK
+    QLT_NTK.RCV_V_PLUC_01_1_TAIN_DK
     (
         HDR_ID,
         SO_TT,
@@ -255,9 +255,9 @@ CREATE OR REPLACE VIEW
                     DECODE (gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL ) SO_THUE_PHAT_SINH_PHAI_NOP,
                     DECODE (gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL)  GHI_CHU
                 FROM
-                    rcv_tkhai_dtl tkd,
-                    rcv_gdien_tkhai gdien,
-                    rcv_map_ctieu ctieu
+                    QLT_NTK.rcv_tkhai_dtl tkd,
+                    QLT_NTK.rcv_gdien_tkhai gdien,
+                    QLT_NTK.rcv_map_ctieu ctieu
                 WHERE
                     (
                         ctieu.gdn_id = gdien.ID)
@@ -274,7 +274,7 @@ CREATE OR REPLACE VIEW
     
 -- 03_TD_TAIN
 CREATE OR REPLACE VIEW
-    RCV_V_TKHAI_03_TD_TAIN
+    QLT_NTK.RCV_V_TKHAI_03_TD_TAIN
     (
         HDR_ID,
         SO_TT,
@@ -315,9 +315,9 @@ CREATE OR REPLACE VIEW
                     DECODE (gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL)  THUE_MIEN_GIAM,
                     DECODE (gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL)  THUE_PHAI_NOP
                 FROM
-                    rcv_tkhai_dtl tkd,
-                    rcv_gdien_tkhai gdien,
-                    rcv_map_ctieu ctieu
+                    QLT_NTK.rcv_tkhai_dtl tkd,
+                    QLT_NTK.rcv_gdien_tkhai gdien,
+                    QLT_NTK.rcv_map_ctieu ctieu
                 WHERE
                     (
                         ctieu.gdn_id = gdien.ID)
@@ -333,7 +333,7 @@ CREATE OR REPLACE VIEW
     ) ;   
     -- 03_1_TD_TAIN
 CREATE OR REPLACE VIEW
-    RCV_V_PLUC_03_1_TD_TAIN
+    QLT_NTK.RCV_V_PLUC_03_1_TD_TAIN
     (
         HDR_ID,
         SO_TT,
@@ -371,9 +371,9 @@ CREATE OR REPLACE VIEW
                     DECODE (gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL)  TY_LE_PHAN_BO,
                     DECODE (gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL)  THUE_PHAI_NOP
                 FROM
-                    rcv_tkhai_dtl tkd,
-                    rcv_gdien_tkhai gdien,
-                    rcv_map_ctieu ctieu
+                    QLT_NTK.rcv_tkhai_dtl tkd,
+                    QLT_NTK.rcv_gdien_tkhai gdien,
+                    QLT_NTK.rcv_map_ctieu ctieu
                 WHERE
                     (
                         ctieu.gdn_id = gdien.ID)
@@ -388,7 +388,7 @@ CREATE OR REPLACE VIEW
             dtl.row_id
     ) ; 
     --01_TD_GTGT
-CREATE OR REPLACE VIEW RCV_V_TKHAI_01_TD_GTGT (HDR_ID, CTK_ID, SO_TT, TEN_CTIEU, GIA_TRI, KY_HIEU_CTIEU) AS SELECT
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_01_TD_GTGT (HDR_ID, CTK_ID, SO_TT, TEN_CTIEU, GIA_TRI, KY_HIEU_CTIEU) AS SELECT
     DTL.HDR_ID ,
     DTL.CTK_ID ,
     MAX(DTL.SO_TT)         SO_TT ,
@@ -407,15 +407,15 @@ FROM
             REPLACE(DECODE(GDIEN.COT_01, TKD.KY_HIEU, TKD.GIA_TRI, NULL),'%','')   GIA_TRI ,
             DECODE(GDIEN.COT_01, TKD.KY_HIEU, '['||GDIEN.KY_HIEU_CTIEU||']', NULL) KY_HIEU_CTIEU
         FROM
-            RCV_TKHAI_DTL TKD,
+            QLT_NTK.RCV_TKHAI_DTL TKD,
             (
                 SELECT
                     GD.*,
                     CT.KY_HIEU,
                     CT.KY_HIEU_CTIEU
                 FROM
-                    RCV_GDIEN_TKHAI GD,
-                    RCV_MAP_CTIEU CT
+                    QLT_NTK.RCV_GDIEN_TKHAI GD,
+                    QLT_NTK.RCV_MAP_CTIEU CT
                 WHERE
                     CT.GDN_ID (+) = GD.ID
                 AND GD.LOAI_DLIEU = '01_TD_GTGT' ) GDIEN
@@ -427,7 +427,7 @@ GROUP BY
     DTL.CTK_ID;
         -- 01_2_TD_GTGT
 CREATE OR REPLACE VIEW
-    RCV_V_PLUC_01_2_TD_GTGT
+    QLT_NTK.RCV_V_PLUC_01_2_TD_GTGT
     (
         HDR_ID,
         SO_TT,
@@ -465,9 +465,9 @@ CREATE OR REPLACE VIEW
                     DECODE (gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL)  TY_LE_PHAN_BO,
                     DECODE (gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL)  THUE_PHAI_NOP
                 FROM
-                    rcv_tkhai_dtl tkd,
-                    rcv_gdien_tkhai gdien,
-                    rcv_map_ctieu ctieu
+                    QLT_NTK.rcv_tkhai_dtl tkd,
+                    QLT_NTK.rcv_gdien_tkhai gdien,
+                    QLT_NTK.rcv_map_ctieu ctieu
                 WHERE
                     (
                         ctieu.gdn_id = gdien.ID)
