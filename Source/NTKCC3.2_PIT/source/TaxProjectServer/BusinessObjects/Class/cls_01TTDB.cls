@@ -621,6 +621,7 @@ Public Function InsertHDR() As String
     Dim GTTTCL     As Variant
     Dim TENNV      As Variant
     Dim CHUNGCHI   As Variant
+    Dim NgayNop As Variant
 
     'test
     Dim arrMTM()   As String, arrMTMSave() As String
@@ -742,6 +743,7 @@ Public Function InsertHDR() As String
             ngnop = "CTOD('')"
         Else
             ngnop = ToDate(Trim(ngnop), DDMMYYYY)
+            NgayNop = ngnop
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
 
@@ -753,7 +755,8 @@ Public Function InsertHDR() As String
         Else
             NGAYPS = ToDate(Trim(NGAYPS), DDMMYYYY)
             NGAYPS = "CTOD('" & Format(NGAYPS, "mm/dd/yyyy") & "')"
-            HANNOP = DateAdd("d", 10, ngnop)
+            HANNOP = DateAdd("d", 10, NgayNop)
+            HANNOP = ToString(HANNOP, "DD/MM/YYYY")
         End If
 
         ' ma nghanh nghe kinh doanh

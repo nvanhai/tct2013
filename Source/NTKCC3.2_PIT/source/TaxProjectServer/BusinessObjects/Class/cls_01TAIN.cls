@@ -1713,6 +1713,7 @@ Public Function InsertHDR() As String
     Dim GTTTCL     As Variant
     Dim MANNKD     As Variant
     Dim NGAYPS     As Variant
+    Dim NgayNop As Variant
     
     Dim TENNV      As Variant
     Dim CHUNGCHI   As Variant
@@ -1836,6 +1837,7 @@ Public Function InsertHDR() As String
             ngnop = "CTOD('')"
         Else
             ngnop = ToDate(Trim(ngnop), DDMMYYYY)
+            NgayNop = ngnop
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
        
@@ -1861,7 +1863,8 @@ Public Function InsertHDR() As String
         If .Text = "1" Then
             .Col = .ColLetterToNumber("M")
             NGAYPS = .Text
-            HANNOP = DateAdd("d", 10, ngnop)
+            HANNOP = DateAdd("d", 10, NgayNop)
+            HANNOP = ToString(HANNOP, "DD/MM/YYYY")
         End If
 
         kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
