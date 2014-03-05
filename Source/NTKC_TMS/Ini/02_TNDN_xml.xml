@@ -7,7 +7,7 @@
 			<moTaBMau/>
 		</Static>
 		<Static GroupName="GiaHan">
-			<maLyDoGiaHan></maLyDoGiaHan>
+			<maLyDoGiaHan>E_47</maLyDoGiaHan>
 			<lyDoGiaHan></lyDoGiaHan>
 		</Static>
 		<Static GroupName="NNT">
