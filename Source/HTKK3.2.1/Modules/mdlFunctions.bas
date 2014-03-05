@@ -24,16 +24,16 @@ Global zoomindex As Integer
 'Ket xuat XML
 Public Const maDVu = "HTKK"
 Public Const tenDVu = "HTKK"
-Public Const pbanDVu = "3.2.0"
+Public Const pbanDVu = "9.9.9"
 Public Const ttinNhaCCapDVu = ""
-Public Const pbanTKhaiXML = "3.2.0"
+Public Const pbanTKhaiXML = "9.9.9"
 'End XML
 
 'Trien khai GD1
 Public Const TK_GD1 = True
 'End TKGD1
 
-Public Const APP_VERSION = "3.2.0"
+Public Const APP_VERSION = "9.9.9"
 Public Const KIEU_KY_THANG = "M"
 Public Const KIEU_KY_QUY = "Q"
 Public Const KIEU_KY_NAM = "Y"
