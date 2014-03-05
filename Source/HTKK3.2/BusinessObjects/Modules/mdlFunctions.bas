@@ -1200,6 +1200,17 @@ Public Function FormatKyHieu(str As String) As String
   End If
 End Function
 
+' Ham format dinh dang ky hieu bien lai phi
+Public Function FormatKyHieuBLP(str As String) As String
+  Dim strTemp As String
+  strTemp = UCase(str)
+  If Len(str) = 5 Then
+      FormatKyHieuBLP = Left$(strTemp, 2) & "-" & Right$(strTemp, 3)
+  Else
+       FormatKyHieuBLP = strTemp
+  End If
+End Function
+
 ' Kiem tra cau truc ky hieu HD
 ' CheckSoHD = 1 sai cau truc
 ' CheckSoHD = 2 sai length
@@ -1270,6 +1281,58 @@ Public Function CheckSoHD(str As String, strLoai As Variant) As String
             End If
     End If
   CheckSoHD = result
+End Function
+
+
+' Kiem tra cau truc ky hieu BLP
+' CheckSoHD = 1 sai cau truc
+' CheckSoHD = 2 sai length
+
+Public Function CheckSoBLP(str As String, strNamInBLP As Variant) As String
+  Dim result As String
+  Dim str1 As String
+  Dim str2 As String
+  Dim str3 As String
+  Dim strTmpKH As String
+  Dim strLoaiIn As String
+  Dim i As Integer
+  
+  strLoaiIn = "TP"
+  strTmpKH = "ABCDEGHKLMNPQRSTUVXY"
+  result = "0"
+  ' kiem tra length 6 ky tu
+  If Len(Trim(str)) <> 6 Then
+    result = "2"
+    CheckSoBLP = result
+    Exit Function
+  End If
+
+    ' 2 ky tu dau la ca ky tu chu cai "ABCDEGHKLMNPQRSTUVXY"
+    ' ky tu thu 3 "-"
+    ' 2 ky tu tiep theo la nam in BLP
+    ' Ky tu cuoi la "TP"
+    
+'    If Len(Trim(str)) = 8 Then
+'          str1 = Left$(str, 2)
+'          str = Right$(str, 6)
+'    Else
+'          str1 = "01"
+'    End If
+    If InStr(strTmpKH, UCase(Left$(str, 1))) > 0 And InStr(strTmpKH, UCase(Mid$(str, 2, 1))) > 0 Then
+       If InStr(str, "-") > 0 And IsNumeric(Mid$(str, 4, 2)) = True Then
+          If InStr(strLoaiIn, UCase(Right$(str, 1))) > 0 Then
+               result = "0"
+          Else
+               result = "1"
+          End If
+       Else
+          result = "1"
+       End If
+    Else
+         result = "1"
+    End If
+
+  CheckSoBLP = result
 End Function
 
 'Kiem tra cau truc mau so
@@ -1365,6 +1428,66 @@ Public Function CheckMauSoHD(str As String, strLoai As String, strTemp As String
     CheckMauSoHD = result
 End Function
 
+
+'Kiem tra cau truc mau so
+'str: chuoi mau so
+'strLoai: 0,1,2,3
+'strTemp: cac ky tu tien to cua loai HD
+'CheckMauSoHD = 1 sai cau truc
+'CheckMauSoHD = 2 sai so Lien
+
+Public Function CheckMauSoBLP(str As String, strLoai As String, strTemp As String) As String
+    Dim result As String
+    Dim soLien As String
+    Dim kyTuNganCach As String
+    Dim strSoTT As Variant
+    Dim strBD As Variant
+    result = "0"
+    'str = Left$(Trim(str), 11)
+    If strLoai = "0" Then
+        If Len(Trim(str)) <> 10 Then
+            result = "1"
+            CheckMauSoBLP = result
+            Exit Function
+        Else
+            If Left$(Trim(str), 5) <> Trim(strTemp) Then
+                result = "1"
+                CheckMauSoBLP = result
+                Exit Function
+            Else
+                soLien = Mid$(Trim(str), 6, 1)
+                kyTuNganCach = Mid$(Trim(str), 7, 1)
+                strSoTT = Mid$(Trim(str), 8, 3)
+                ' so lien phai nam trong khoang 2->9
+                If IsNumeric(soLien) Then
+                    If Val(soLien) < 2 Or Val(soLien) > 9 Then
+                        result = "2"
+                        CheckMauSoBLP = result
+                        Exit Function
+                    End If
+                Else
+                    result = "2"
+                    CheckMauSoBLP = result
+                    Exit Function
+                End If
+                
+                ' ky tu so 7 phai la "-"
+                If kyTuNganCach <> "-" Then
+                    result = "1"
+                    CheckMauSoBLP = result
+                    Exit Function
+                End If
+                ' 3 ky tu tiep theo la so thu tu cua HD
+                If Not IsNumeric(strSoTT) Or Val(strSoTT) < 0 Then
+                    result = "1"
+                    CheckMauSoBLP = result
+                    Exit Function
+                End If
+            End If
+        End If
+    End If
+    CheckMauSoBLP = result
+End Function
 
 Public Sub ValidateDate(FpSpd As fpSpread, SheetNumber As Long, RowNumber As Long, ColNumber As Long, strFormat As String)
     FpSpd.Sheet = SheetNumber
