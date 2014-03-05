@@ -2,20 +2,20 @@
 <Config>
 	<!-- Doan nay cau hinh de ket noi voi webservices cua ESB -->
 	<!-- Xac thuc NSD -->
-	<WsUrlNSD>aHR0cDovLzEwLjY0LjExMi4xNTU6NzA4MC93c0NCVFZlcmlmeQ==</WsUrlNSD>
+	<WsUrlNSD>aHR0cDovLzEwLjY0Ljg1LjE3MDo3MDgwL3dzQ0JUVmVyaWZ5</WsUrlNSD>
 	<SoapActionNSD>aHR0cDovL3RlbXB1cmkub3JnL3ZlcmlmeQ==</SoapActionNSD>
 	<XmlRequestNSD>PHNvYXBlbnY6RW52ZWxvcGUgeG1sbnM6c29hcGVudj0iaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvc29hcC9lbnZlbG9wZS8iIHhtbG5zOnEwPSJodHRwOi8vdGVtcHVyaS5vcmcvRVNCX1RDVF9JTlRFUk5BTF9NU0ciIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiPiAgICA8c29hcGVudjpCb2R5PiAgICAgICAgPHEwOlVzZXJWZXJpZnlXU1JlcXVlc3Q+c3RyaW5nPC9xMDpVc2VyVmVyaWZ5V1NSZXF1ZXN0PiAgICA8L3NvYXBlbnY6Qm9keT48L3NvYXBlbnY6RW52ZWxvcGU+</XmlRequestNSD>
 	<ParamNameNSD>VXNlclZlcmlmeVdTUmVxdWVzdA==</ParamNameNSD>
 	<!-- <TaxOffcice>22300</TaxOffcice> -->
 	<!-- Ket thuc NSD -->
 	<!-- Lay thong tin NNT -->
-	<WsUrlNNT>aHR0cDovLzEwLjY0LjExMi4xNTU6NzA4MC93c0RhbmdLeVRodWU=</WsUrlNNT>
+	<WsUrlNNT>aHR0cDovLzEwLjY0Ljg1LjE3MDo3MDgwL3dzRGFuZ0t5VGh1ZQ==</WsUrlNNT>
 	<SoapActionNNT>aHR0cDovL2dkdC5nb3Yudm4vZ2V0Tk5U</SoapActionNNT>
 	<XmlRequestNNT>PHNvYXBlbnY6RW52ZWxvcGUgeG1sbnM6c29hcGVudj0iaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvc29hcC9lbnZlbG9wZS8iIHhtbG5zOnEwPSJodHRwOi8vdGVtcHVyaS5vcmcvRVNCX1RDVF9JTlRFUk5BTF9NU0ciIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiPiAgICA8c29hcGVudjpCb2R5PiAgICAgICAgPHEwOk5OVFdTUmVxdWVzdD5zdHJpbmc8L3EwOk5OVFdTUmVxdWVzdD4gICAgPC9zb2FwZW52OkJvZHk+PC9zb2FwZW52OkVudmVsb3BlPg==</XmlRequestNNT>
 	<ParamNameNNT>Tk5UV1NSZXF1ZXN0</ParamNameNNT>
 	<!-- Ket thuc lay thong tin NNT -->
 	<!-- Lay thong tin DLT -->
-	<WsUrlDLT>aHR0cDovLzEwLjY0LjExMi4xNTU6NzA4MC93c0RhbmdLeVRodWU=</WsUrlDLT>
+	<WsUrlDLT>aHR0cDovLzEwLjY0Ljg1LjE3MDo3MDgwL3dzRGFuZ0t5VGh1ZQ==</WsUrlDLT>
 	<SoapActionDLT>aHR0cDovL2dkdC5nb3Yudm4vZ2V0RExU</SoapActionDLT>
 	<XmlRequestDLT>PHNvYXBlbnY6RW52ZWxvcGUgeG1sbnM6c29hcGVudj0iaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvc29hcC9lbnZlbG9wZS8iIHhtbG5zOnEwPSJodHRwOi8vdGVtcHVyaS5vcmcvRVNCX1RDVF9JTlRFUk5BTF9NU0ciIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiPiAgICA8c29hcGVudjpCb2R5PiAgICAgICAgPHEwOkRMVFdTUmVxdWVzdD5zdHJpbmc8L3EwOkRMVFdTUmVxdWVzdD4gICAgPC9zb2FwZW52OkJvZHk+PC9zb2FwZW52OkVudmVsb3BlPg==</XmlRequestDLT>
 	<ParamNameDLT>RExUV1NSZXF1ZXN0</ParamNameDLT>
