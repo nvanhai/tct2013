@@ -1,0 +1,55 @@
+<HSoKhaiThue><Static GroupName="TKhaiThue"><maTKhai>String</maTKhai>
+		<tenTKhai>token</tenTKhai>
+		<moTaBMau/>
+	</Static><Static GroupName="GiaHan"><maLyDoGiaHan>String</maLyDoGiaHan>
+		<lyDoGiaHan>String</lyDoGiaHan>
+	</Static><Static GroupName="TKhaiThue"><nguoiKy>String</nguoiKy>
+		<ngayKy>1967-08-13</ngayKy>
+		<nganhNgheKD>String</nganhNgheKD>
+	</Static><Static GroupName="NNT"><phuongXa>String</phuongXa>
+		<maHuyenNNT>String</maHuyenNNT>
+		<maTinhNNT>String</maTinhNNT>
+	</Static><Static GroupName="DLyThue"><maHuyenDLyThue>String</maHuyenDLyThue>
+		<maTinhDLyThue>String</maTinhDLyThue>
+	</Static><Static GroupName="NVienDLy"><tenNVienDLyThue>token</tenNVienDLyThue>
+		<cchiHNghe>String</cchiHNghe>
+	</Static><Static GroupName="CTieuTKhaiChinh"><hopDongDKhi>String</hopDongDKhi>
+	</Static><Static GroupName="LoaiHinhUyQuyen"><donViUyQuyen>true</donViUyQuyen>
+	</Static><Static GroupName="CTieuTKhaiChinh"><tenDonViUyQuyen>String</tenDonViUyQuyen>
+	</Static><Static GroupName="SanLuongDuKienNam"><tinhTheoThung>0.0</tinhTheoThung>
+		<tinhTheom3>0.0</tinhTheom3>
+	</Static><Static GroupName="NoiDung"><soNgayKThacNam>1</soNgayKThacNam>
+	</Static><Static GroupName="SanLuongBinhQuanNgay"><tinhTheoThung>0.0</tinhTheoThung>
+		<tinhTheom3>0.0</tinhTheom3>
+	</Static><Static GroupName="NoiDung"><tyLeThueTNguyenTamNop>0.0</tyLeThueTNguyenTamNop>
+		<tyLeThueXuatKhauTamNop>0.0</tyLeThueXuatKhauTamNop>
+		<tyLeThueTNDNTamNopTNuoc>0.0</tyLeThueTNDNTamNopTNuoc>
+		<tyLeThueTNDNTamNopXK>0.0</tyLeThueTNDNTamNopXK>
+	</Static><Static GroupName="SanLuongDuKienNam"><tinhTheoThung>0.0</tinhTheoThung>
+		<tinhTheom3>0.0</tinhTheom3>
+	</Static><Static GroupName="NoiDung"><soNgayKThacNam>1</soNgayKThacNam>
+	</Static><Static GroupName="SanLuongBinhQuanNgay"><tinhTheoThung>0.0</tinhTheoThung>
+		<tinhTheom3>0.0</tinhTheom3>
+	</Static><Static GroupName="NoiDung"><tyLeThueTNguyenTamNop>0.0</tyLeThueTNguyenTamNop>
+		<tyLeThueXuatKhauTamNop>0.0</tyLeThueXuatKhauTamNop>
+		<tyLeThueTNDNTamNopTNuoc>0.0</tyLeThueTNDNTamNopTNuoc>
+		<tyLeThueTNDNTamNopXK>0.0</tyLeThueTNDNTamNopXK>
+	</Static><Static GroupName="SanLuongDuKienNam"><tinhTheoThung>0.0</tinhTheoThung>
+		<tinhTheom3>0.0</tinhTheom3>
+	</Static><Static GroupName="NoiDung"><soNgayKThacNam>1</soNgayKThacNam>
+	</Static><Static GroupName="SanLuongBinhQuanNgay"><tinhTheoThung>0.0</tinhTheoThung>
+		<tinhTheom3>0.0</tinhTheom3>
+	</Static><Static GroupName="NoiDung"><tyLeThueTNguyenTamNop>0.0</tyLeThueTNguyenTamNop>
+		<tyLeThueXuatKhauTamNop>0.0</tyLeThueXuatKhauTamNop>
+		<tyLeThueTNDNTamNopTNuoc>0.0</tyLeThueTNDNTamNopTNuoc>
+		<tyLeThueTNDNTamNopXK>0.0</tyLeThueTNDNTamNopXK>
+	</Static><Static GroupName="SanLuongDuKienNam"><tinhTheoThung>0.0</tinhTheoThung>
+		<tinhTheom3>0.0</tinhTheom3>
+	</Static><Static GroupName="NoiDung"><soNgayKThacNam>1</soNgayKThacNam>
+	</Static><Static GroupName="SanLuongBinhQuanNgay"><tinhTheoThung>0.0</tinhTheoThung>
+		<tinhTheom3>0.0</tinhTheom3>
+	</Static><Static GroupName="NoiDung"><tyLeThueTNguyenTamNop>0.0</tyLeThueTNguyenTamNop>
+		<tyLeThueXuatKhauTamNop>0.0</tyLeThueXuatKhauTamNop>
+		<tyLeThueTNDNTamNopTNuoc>0.0</tyLeThueTNDNTamNopTNuoc>
+		<tyLeThueTNDNTamNopXK>0.0</tyLeThueTNDNTamNopXK>
+	</Static></HSoKhaiThue>

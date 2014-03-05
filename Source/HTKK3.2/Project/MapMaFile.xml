@@ -85,4 +85,8 @@
 	<Map MapID="102_5" MaFile=""/>
 	<Map MapID="102_6" MaFile=""/>
 	<Map MapID="102_10" MaFile=""/>
+	<Map MapID="07" MaFile="01_TBAC_BLP"/>
+	<Map MapID="09" MaFile="BC21_AC_BLP"/>
+	<Map MapID="10" MaFile="03_TBAC_BLP"/>
+	<Map MapID="13" MaFile="01_AC_BLP"/>
 </Maps>
