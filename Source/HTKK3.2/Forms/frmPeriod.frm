@@ -509,7 +509,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":02C8
       UserResize      =   1
       Appearance      =   1
    End
@@ -771,6 +771,11 @@ Private strLoaiSacThue As String
 
 Private Sub cboNganhKD_Click()
     strLoaiNNKD = cboNganhKD.ItemData(cboNganhKD.ListIndex)
+    ' xu lý ten data file cho cac to khai DK
+    If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98" Then
+        strLoaiTkDk = cboNganhKD.ItemData(cboNganhKD.ListIndex)
+    End If
+    
 End Sub
 
 Private Sub chkCondensate_Click()
@@ -1183,12 +1188,13 @@ Private Sub chkTkhaiThang_Click()
                 
                 SetControlCaption Me, "frmPeriod"
        
-'                cmbQuy.Visible = False
-'                lblQuy.Visible = False
+                cmbQuy.Visible = False
+                lblQuy.Visible = False
                 lblMonth.Visible = True
                 txtMonth.Visible = True
                 txtNgayDau.Visible = False
                 txtNgayCuoi.Visible = False
+                Call Form_Resize
             Else
                 strQuy = "TK_THANG"
                 chkTKQuy.value = 0
@@ -1697,6 +1703,7 @@ Private Sub chkTKLanPS_Click()
             chkTkhaiThang.value = 0
             chkTKhaiLanXB.value = 0
             frmKy.Height = 2400
+            Frame2.Top = 2700
             
             cmbQuy.Visible = False
             txtMonth.Visible = True
@@ -2561,7 +2568,11 @@ Public Sub cmdOK_Click()
     
     ' set so lan xuat ban dau tho
     If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98" Then
-        strSoLanXuatBan = txtLanXuat.Text
+        If chkTKhaiLanXB.value = 1 Then
+            strSoLanXuatBan = txtLanXuat.Text
+        Else
+            strSoLanXuatBan = ""
+        End If
     Else
         strSoLanXuatBan = ""
     End If
@@ -2607,19 +2618,25 @@ Public Sub cmdOK_Click()
         
     ' validate cho to 04TBAC,01/TAIN-DK
     If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98") Then
-        If (chkKhiThien.value = "1") Then
-            If (objCvt.ToDate("01" + "/" + txtMonth.Text + "/" + txtYear.Text, "DD/MM/YYYY") > Date) Then
-                DisplayMessage "0188", msOKOnly, miInformation
-                Exit Sub
-            End If
-
-        Else
-
+'        If (chkKhiThien.value = "1") Then
+'            If (objCvt.ToDate("01" + "/" + txtMonth.Text + "/" + txtYear.Text, "DD/MM/YYYY") > Date) Then
+'                DisplayMessage "0188", msOKOnly, miInformation
+'                Exit Sub
+'            End If
+'
+'        Else
+'
+'            If (objCvt.ToDate(txtDay.Text + "/" + txtMonth.Text + "/" + txtYear.Text, "DD/MM/YYYY") > Date) Then
+'                DisplayMessage "0188", msOKOnly, miInformation
+'                Exit Sub
+'            End If
+'        End If
+         If strQuy = "TK_LANPS" Or strQuy = "TK_LANXB" Then
             If (objCvt.ToDate(txtDay.Text + "/" + txtMonth.Text + "/" + txtYear.Text, "DD/MM/YYYY") > Date) Then
                 DisplayMessage "0188", msOKOnly, miInformation
                 Exit Sub
             End If
-        End If
+         End If
     End If
         
     ' validate cho to 04TBAC
@@ -3022,7 +3039,7 @@ Public Sub cmdOK_Click()
 
     If strKieuKy = KIEU_KY_THANG Then
         If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "01" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "02" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "04" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "95" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "88" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "71" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "36" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "25" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "96" _
-        Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "94" Then
+        Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "94" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98" Then
 
             If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "71" Then
                 If strQuy = "TK_THANG" Then
@@ -3041,7 +3058,23 @@ Public Sub cmdOK_Click()
                     TAX_Utilities_v1.Day = txtDay.Text
                     TAX_Utilities_v1.month = txtMonth.Text
                 End If
-
+            ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98" Then
+                If strQuy = "TK_THANG" Then
+                    TAX_Utilities_v1.month = txtMonth.Text
+                    TAX_Utilities_v1.ThreeMonths = vbNullString
+                    TAX_Utilities_v1.FirstDay = vbNullString
+                    TAX_Utilities_v1.LastDay = vbNullString
+                ElseIf strQuy = "TK_LANXB" Then
+                    TAX_Utilities_v1.ThreeMonths = "1"
+                    TAX_Utilities_v1.month = txtMonth.Text
+                    TAX_Utilities_v1.Day = txtDay.Text
+                    TAX_Utilities_v1.month = txtMonth.Text
+                ElseIf strQuy = "TK_LANPS" Then
+                    TAX_Utilities_v1.ThreeMonths = "1"
+                    TAX_Utilities_v1.month = txtMonth.Text
+                    TAX_Utilities_v1.Day = txtDay.Text
+                    TAX_Utilities_v1.month = txtMonth.Text
+                End If
             Else
 
                 If strQuy = "TK_THANG" Then
@@ -3142,6 +3175,10 @@ Public Sub cmdOK_Click()
     If idToKhai = "01" Or idToKhai = "11" Or idToKhai = "12" Or idToKhai = "05" Or idToKhai = "03" Then
         'If idToKhai = "01" Or idToKhai = "11" Or idToKhai = "12" Or idToKhai = "05" Or idToKhai = "03" Or idToKhai = "73" Then
         strLoaiNNKD = cboNganhKD.ItemData(cboNganhKD.ListIndex)
+    End If
+    
+    If idToKhai = "98" Then
+        strLoaiTkDk = cboNganhKD.ItemData(cboNganhKD.ListIndex)
     End If
     
     If TAX_Utilities_v1.NodeMenu Is Nothing Then Exit Sub
@@ -7298,7 +7335,7 @@ Private Sub SetValueToList(strId As String)
             ElseIf strId = "98" Then
                 If fldList(0) = "01A_TNDN_DK" Then
                     cboNganhKD.AddItem TAX_Utilities_v1.Convert(fldList(2), UNICODE, TCVN)
-                    cboNganhKD.ItemData(i) = Val(fldList(1))
+                    cboNganhKD.ItemData(i) = fldList(1)
                     i = i + 1
                 End If
             End If
