@@ -124,10 +124,6 @@ values (8118, 'Sè thuÕ GTGT ®Çu vµo ®­îc khÊu trõ cña ho¹t ®éng s¶n xuÊt ®iÖn', 
 insert into QLT_NTK.RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
 values (8119, 'Sè thuÕ GTGT ph¶i nép [27]= [25]-[26]', '27', null, null, null, null, null, null, null, null, null, null, 7, '01_TD_GTGT', '7', null, null, null, null, null, null, null, null, null, null, null);
 
---01_1_TD_GTGT
-insert into QLT_NTK.RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
-values (8120, 'PL 01_2_TD_GTGT', '1', '2', '3', '4', '5', '6', '7', null, null, null, null, 1, '01_2_TD_GTGT', null, null, null, null, null, null, null, null, null, null, null, null);
-
-insert into QLT_NTK.RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
-values (8121, 'Tæng céng', null, null, null, null, null, '8', null, null, null, null, null, 2, '01_2_TD_GTGT', null, null, null, null, null, null, null, null, null, null, null, null);
-
+--01_2_TD_GTGT
+INSERT INTO RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33) VALUES (8120, 'PL 01_2_TD_GTGT', '1', '2', '3', '4', '5', '6', '7', '8', null, null, null, 1, '01_2_TD_GTGT', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33) VALUES (8121, 'Tæng céng', null, null, null, null, null, '9', null, null, null, null, null, 2, '01_2_TD_GTGT', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
