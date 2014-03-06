@@ -426,29 +426,18 @@ GROUP BY
     DTL.HDR_ID,
     DTL.CTK_ID;
         -- 01_2_TD_GTGT
-CREATE OR REPLACE VIEW
-    QLT_NTK.RCV_V_PLUC_01_2_TD_GTGT
-    (
-        HDR_ID,
-        SO_TT,
-        ROW_ID,
-        STT,
-        CHI_TIEU,
-        MA_SO_THUE,
-        CQT_QUAN_LY,
-        TY_LE_PHAN_BO,
-        THUE_PHAI_NOP
-    ) AS
-    (
-        /* Formatted on 2011/08/11 13:39 (Formatter Plus v4.8.7) */
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_01_2_TD_GTGT AS
+(
+        
         SELECT
             dtl.hdr_id,
             dtl.so_tt                so_tt,
             dtl.row_id                 row_id,
             MAX (dtl.STT) STT,
-            MAX (dtl.CHI_TIEU)     CHI_TIEU,
+            MAX (dtl.TEN_NHA_MAY)     TEN_NHA_MAY,
             MAX (dtl.MA_SO_THUE)       MA_SO_THUE,
             MAX (dtl.CQT_QUAN_LY)     CQT_QUAN_LY,
+            MAX (dtl.CQT_PARENT_ID)     CQT_PARENT_ID,
             MAX (dtl.TY_LE_PHAN_BO)              TY_LE_PHAN_BO,
             MAX (dtl.THUE_PHAI_NOP)              THUE_PHAI_NOP
         FROM
@@ -459,11 +448,12 @@ CREATE OR REPLACE VIEW
                     gdien.ID,
                     gdien.so_tt                                            so_tt,
                     DECODE (gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL ) STT,
-                    DECODE (gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL ) CHI_TIEU,
+                    DECODE (gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL ) TEN_NHA_MAY,
                     DECODE (gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL ) MA_SO_THUE,
-                    DECODE (gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL ) CQT_QUAN_LY,
-                    DECODE (gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL)  TY_LE_PHAN_BO,
-                    DECODE (gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL)  THUE_PHAI_NOP
+                    DECODE (gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL ) CQT_QUAN_LY,
+                    DECODE (gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL ) CQT_PARENT_ID,
+                    DECODE (gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL)  TY_LE_PHAN_BO,
+                    DECODE (gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL)  THUE_PHAI_NOP
                 FROM
                     QLT_NTK.rcv_tkhai_dtl tkd,
                     QLT_NTK.rcv_gdien_tkhai gdien,
@@ -480,4 +470,4 @@ CREATE OR REPLACE VIEW
             dtl.hdr_id,
             dtl.so_tt,
             dtl.row_id
-    ) ; 
+);
