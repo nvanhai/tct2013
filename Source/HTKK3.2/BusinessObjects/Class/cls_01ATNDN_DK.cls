@@ -46,6 +46,61 @@ Public Sub Prepare1()
 
     With fps
         fps.EventEnabled(EventAllEvents) = False
+                
+        SetDateFormat fps, 1, 29, .ColLetterToNumber("AM"), DDMMYYYY
+        SetDateFormat fps, 1, 76, fps.ColLetterToNumber("AR"), DDMMYYYY
+        
+        .Row = 76
+        .Col = fps.ColLetterToNumber("AR")
+        .Text = Format(Date, "dd/mm/yyyy")
+        .TypeHAlign = TypeHAlignLeft
+      
+'        .Sheet = SHEET_PHU_LUC_01
+'        SetDateFormat fps, SHEET_PHU_LUC_01, 34, fps.ColLetterToNumber("AD"), DDMMYYYY
+        '--end set for sheet Phu luc 01
+        
+        
+        fps.EventEnabled(EventAllEvents) = True
+        
+    End With
+
+End Sub
+
+'This funtion is called after executing function "SetupData"
+'Its functions is 2st preparing for interface sheets
+'No parameter
+Public Sub Prepare2()
+    Dim strColC As String
+    Dim i       As Long
+    Dim intCtrl As Integer
+    Dim strId   As Variant
+    Dim xmlNode As MSXML.IXMLDOMNode
+
+    With fps
+        'load form
+        .Sheet = 1
+        .Row = 28
+        .Col = .ColLetterToNumber("AS")
+        If (.value = "1") Then
+            .Row = 29
+            .Col = .ColLetterToNumber("AM")
+            .BackColor = mNonErrorColor
+            .Lock = False
+        Else
+            .Row = 29
+            .Col = .ColLetterToNumber("AM")
+            .BackColor = mLockNonErrorColor
+            .Lock = True
+        End If
+
+        'end
+        .Sheet = 1
+        mCurrentSheet = .Sheet
+        fps.EventEnabled(EventAllEvents) = False
+        'update MSTDN luôn bang MST tren phan TT chung
+        UpdateMST fps, Col_MSTDN, Row_MSTDN
+        
+        
         .Sheet = 1
         .Row = 30
         .Col = .ColLetterToNumber("O")
@@ -99,59 +154,6 @@ Public Sub Prepare1()
 '            .Col = .ColLetterToNumber("W")
 '            .Text = ""
         End If
-        
-        SetDateFormat fps, 1, 29, .ColLetterToNumber("AM"), DDMMYYYY
-        SetDateFormat fps, 1, 76, fps.ColLetterToNumber("AR"), DDMMYYYY
-        
-        .Row = 76
-        .Col = fps.ColLetterToNumber("AR")
-        .Text = Format(Date, "dd/mm/yyyy")
-        .TypeHAlign = TypeHAlignLeft
-      
-'        .Sheet = SHEET_PHU_LUC_01
-'        SetDateFormat fps, SHEET_PHU_LUC_01, 34, fps.ColLetterToNumber("AD"), DDMMYYYY
-        '--end set for sheet Phu luc 01
-        
-        
-        fps.EventEnabled(EventAllEvents) = True
-        
-    End With
-
-End Sub
-
-'This funtion is called after executing function "SetupData"
-'Its functions is 2st preparing for interface sheets
-'No parameter
-Public Sub Prepare2()
-    Dim strColC As String
-    Dim i       As Long
-    Dim intCtrl As Integer
-    Dim strId   As Variant
-    Dim xmlNode As MSXML.IXMLDOMNode
-
-    With fps
-        'load form
-        .Sheet = 1
-        .Row = 28
-        .Col = .ColLetterToNumber("AS")
-        If (.value = "1") Then
-            .Row = 29
-            .Col = .ColLetterToNumber("AM")
-            .BackColor = mNonErrorColor
-            .Lock = False
-        Else
-            .Row = 29
-            .Col = .ColLetterToNumber("AM")
-            .BackColor = mLockNonErrorColor
-            .Lock = True
-        End If
-
-        'end
-        .Sheet = 1
-        mCurrentSheet = .Sheet
-        fps.EventEnabled(EventAllEvents) = False
-        'update MSTDN luôn bang MST tren phan TT chung
-        UpdateMST fps, Col_MSTDN, Row_MSTDN
 
         If Strloaitk = "TKCT" Or Strloaitk = "" Then
             .Col = .ColLetterToNumber(Col_TKCT)
