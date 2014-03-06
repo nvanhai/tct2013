@@ -773,7 +773,13 @@ Private Sub cboNganhKD_Click()
     strLoaiNNKD = cboNganhKD.ItemData(cboNganhKD.ListIndex)
     ' xu lý ten data file cho cac to khai DK
     If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98" Then
-        strLoaiTkDk = cboNganhKD.ItemData(cboNganhKD.ListIndex)
+        If strLoaiNNKD = 1 Then
+            strLoaiTkDk = "DT"
+        ElseIf strLoaiNNKD = 2 Then
+            strLoaiTkDk = "KTN"
+        ElseIf strLoaiNNKD = 3 Then
+            strLoaiTkDk = "CD"
+        End If
     End If
     
 End Sub
@@ -3178,7 +3184,14 @@ Public Sub cmdOK_Click()
     End If
     
     If idToKhai = "98" Then
-        strLoaiTkDk = cboNganhKD.ItemData(cboNganhKD.ListIndex)
+       strLoaiNNKD = cboNganhKD.ItemData(cboNganhKD.ListIndex)
+        If strLoaiNNKD = 1 Then
+            strLoaiTkDk = "DT"
+        ElseIf strLoaiNNKD = 2 Then
+            strLoaiTkDk = "KTN"
+        ElseIf strLoaiNNKD = 3 Then
+            strLoaiTkDk = "CD"
+        End If
     End If
     
     If TAX_Utilities_v1.NodeMenu Is Nothing Then Exit Sub
@@ -7335,7 +7348,7 @@ Private Sub SetValueToList(strId As String)
             ElseIf strId = "98" Then
                 If fldList(0) = "01A_TNDN_DK" Then
                     cboNganhKD.AddItem TAX_Utilities_v1.Convert(fldList(2), UNICODE, TCVN)
-                    cboNganhKD.ItemData(i) = fldList(1)
+                    cboNganhKD.ItemData(i) = Val(fldList(1))
                     i = i + 1
                 End If
             End If

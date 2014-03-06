@@ -36,6 +36,7 @@ Public denRowDL As Long
 Public strTuRowDenRowPL As String
  
 Public strLoaiToKhaiDK As String
+Public strTkThangQuy As String
  
 'This funtion is called after an object of this class is created
 'Its functions is 1st preparing for interface sheets, such as
@@ -48,32 +49,47 @@ Public Sub Prepare1()
         .Sheet = 1
         .Row = 30
         .Col = .ColLetterToNumber("O")
-       ' .Text = chkDauTho
+        If strLoaiToKhaiDK = "DT" Then
+            .Text = "1"
+        Else
+            .Text = "0"
+        End If
+        '.Text = chkDauTho
         
         .Row = 30
         .Col = .ColLetterToNumber("P")
+        If strLoaiToKhaiDK = "CD" Then
+            .Text = "1"
+        Else
+            .Text = "0"
+        End If
        ' .Text = chkCondensate
         
         .Row = 30
         .Col = .ColLetterToNumber("Q")
+        If strLoaiToKhaiDK = "KTN" Then
+            .Text = "1"
+        Else
+            .Text = "0"
+        End If
         '.Text = chkKhiThienNhien
                         
         .Row = 31
 
-'        If chkKhiThienNhien = "1" Then
-'
-'            .Col = .ColLetterToNumber("O")
+        'If chkKhiThienNhien = "1" Then
+        If strTkThangQuy = "TK_THANG" Then
+            .Col = .ColLetterToNumber("O")
+            .Text = ""
+
+'            .Col = .ColLetterToNumber("W")
+'            .Text = TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year ' temp
+        Else
+            .Col = .ColLetterToNumber("O")
+            .Text = TAX_Utilities_v1.Day & "/" & TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year
+
+'            .Col = .ColLetterToNumber("W")
 '            .Text = ""
-'
-''            .Col = .ColLetterToNumber("W")
-''            .Text = TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year ' temp
-'        Else
-'            .Col = .ColLetterToNumber("O")
-'            .Text = TAX_Utilities_v1.Day & "/" & TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year
-'
-''            .Col = .ColLetterToNumber("W")
-''            .Text = ""
-'        End If
+        End If
         
         SetDateFormat fps, 1, 29, .ColLetterToNumber("AM"), DDMMYYYY
         SetDateFormat fps, 1, 76, fps.ColLetterToNumber("AR"), DDMMYYYY

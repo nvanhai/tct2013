@@ -17,9 +17,9 @@
 		<Item Value ="02_TNDN###1053###Chuyển quyền thuê đất"/>
 		<Item Value ="02_TNDN###1053###Chuyển quyền sử dụng đất"/>
 		
-		<Item Value ="01A_TNDN_DK###DT###Dầu thô"/>
-		<Item Value ="01A_TNDN_DK###KTN###Khí thiên nhiên"/>
-		<Item Value ="01A_TNDN_DK###CD###Condensate"/>
+		<Item Value ="01A_TNDN_DK###1###Dầu thô"/>
+		<Item Value ="01A_TNDN_DK###2###Khí thiên nhiên"/>
+		<Item Value ="01A_TNDN_DK###3###Condensate"/>
 		
 	</Section>	
 </Sections>
