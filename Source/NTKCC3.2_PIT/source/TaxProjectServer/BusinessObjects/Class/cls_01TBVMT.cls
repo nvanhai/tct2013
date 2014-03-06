@@ -183,10 +183,11 @@ End Function
 
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
 
-    Dim maMh  As Variant
-    Dim tenMh As String
+    Dim maMh   As Variant
+    Dim tenMh  As String
+    Dim NgayPs As Variant
 
-    Dim i     As Integer
+    Dim i      As Integer
     i = 0
     ReDim Preserve larrPhongXuLy(0)
     larrPhongXuLy(0) = "00"
@@ -195,6 +196,19 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
     
     With fps
         .Sheet = 1
+        
+        .Row = 33
+        .Col = .ColLetterToNumber("L")
+
+        If .Text = "1" Then
+            LOAI_TO_KHAI = "01PS/TBVMT"
+            .GetText .ColLetterToNumber("M"), .Row, NgayPs
+            TAX_Utilities_Svr_New.Month = Mid$(NgayPs, 4, 2)
+            TAX_Utilities_Svr_New.Year = Right$(NgayPs, 4)
+        Else
+            LOAI_TO_KHAI = "01/TBVMT"
+        End If
+        
         .Col = .ColLetterToNumber(PHONG_XU_LY_X)
         .Row = PHONG_XU_LY_Y
         PHONG_XU_LY_X1 = PHONG_XU_LY_X
@@ -263,15 +277,6 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
             .Row = .Row + 1
         
         Loop Until .Text = "aa"
-        
-        .Row = 33
-        .Col = .ColLetterToNumber("L")
-
-        If .Text = "1" Then
-            LOAI_TO_KHAI = "01PS/TBVMT"
-        Else
-            LOAI_TO_KHAI = "01/TBVMT"
-        End If
         
     End With
     
@@ -1263,7 +1268,7 @@ Public Function InsertHDR() As String
     Dim THUECL       As Variant
     Dim DSoCL        As Variant
     Dim GTTTCL       As Variant
-    Dim NGAYPS       As Variant
+    Dim NgayPs       As Variant
     Dim MANNKD       As Variant
     Dim TENNV        As Variant
     Dim CHUNGCHI     As Variant
@@ -1458,18 +1463,19 @@ Public Function InsertHDR() As String
         MANNKD = "''"
         
         ' ngay phat sinh
-        NGAYPS = "CTOD('')"
+        NgayPs = "CTOD('')"
 
         .Row = 33
         .Col = .ColLetterToNumber("L")
 
         If .Text = "1" Then
-            .GetText .ColLetterToNumber("M"), .Row, NGAYPS
+            .GetText .ColLetterToNumber("M"), .Row, NgayPs
 
-            If Trim(NGAYPS) = vbNullString Then
-                NGAYPS = "CTOD('')"
+            If Trim(NgayPs) = vbNullString Then
+                NgayPs = "CTOD('')"
             Else
-                NGAYPS = "CTOD('" & Format(NGAYPS, "mm/dd/yyyy") & "')"
+                NgayPs = ToDate(Trim(NgayPs), DDMMYYYY)
+                NgayPs = "CTOD('" & Format(NgayPs, "mm/dd/yyyy") & "')"
             End If
             
             HANNOP = DateAdd("d", 10, NgayNop)
@@ -1503,7 +1509,7 @@ Public Function InsertHDR() As String
                 sSQLVal = sSQLVal & LoaiTien & "," & MABPQL & "," & SHTEP & "," & TTHTK & "," & kykkhai & ", "
                 sSQLVal = sSQLVal & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & ", "
                 sSQLVal = sSQLVal & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ", "
-                sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & LanBS & "," & THUECL & "," & NGAYPS & "," & DANHAN & "," & DSoCL & "," & GTTTCL & "," & MANNKD & ",'" & TENNV & "','" & CHUNGCHI & "'"
+                sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & LanBS & "," & THUECL & "," & NgayPs & "," & DANHAN & "," & DSoCL & "," & GTTTCL & "," & MANNKD & ",'" & TENNV & "','" & CHUNGCHI & "'"
            
                 sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      

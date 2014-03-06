@@ -170,72 +170,89 @@ Public Function Prepared1() As Boolean
 End Function
 
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
-Dim i As Integer, intIndexCombo As Integer
-Dim strLTN As Variant, Col7 As Variant, strLTNCu As Variant, strID As Variant
-Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
-Dim varID As Variant, varDVT As Variant, varThueSuat As Variant
-Dim iTenHHDV As String, strCheck As String
-Dim strThueSuat As String, strDVT As String
-Dim strIdQLT As String
-Dim iCol As Long, iRow As Long, lCurrSheet As Long
-Dim blnLoadThueSuat As Boolean, blnSuaDVT As Boolean
-Dim maTM As String
+    Dim i               As Integer, intIndexCombo As Integer
+    Dim strLTN          As Variant, Col7 As Variant, strLTNCu As Variant, strID As Variant
+    Dim xmlCellNode     As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
+    Dim varID           As Variant, varDVT As Variant, varThueSuat As Variant
+    Dim iTenHHDV        As String, strCheck As String
+    Dim strThueSuat     As String, strDVT As String
+    Dim strIdQLT        As String
+    Dim iCol            As Long, iRow As Long, lCurrSheet As Long
+    Dim blnLoadThueSuat As Boolean, blnSuaDVT As Boolean
+    Dim maTM            As String
+    Dim NgayPs As Variant
     With fps
         lCurrSheet = .Sheet
         
         .Sheet = 1
-            i = 0
-            blnLoadThueSuat = True
-            strCheck = GetAttribute(TAX_Utilities_Svr_New.Data(.Sheet - 1).nodeFromID( _
-                     GetCellID(fps, .ColLetterToNumber(CHECK_COL), CHECK_ROW)), "Value")
-            Do
-                varID = Empty
-               .GetText .ColLetterToNumber("AP"), i + 53, varID
-               If varID <> "" Then
-                    .Row = i + 53
-                    varThueSuat = .Value
-                    DataDM varID, strIdQLT, iTenHHDV, strDVT, strThueSuat, blnSuaDVT, maTM
-                    If strIdQLT <> vbNullString Then
-                        .Col = .ColLetterToNumber("C")
-                        .Row = i + 53
-                        .Text = iTenHHDV
-                        .Col = .ColLetterToNumber("AO")
-                        .Text = maTM
-                       ' UpdateCell fps, .ColLetterToNumber("C"), i + 53, .Text
-                    ElseIf CStr(varID) <> vbNullString Then
-                        DisplayMessage "0081", msOKOnly, miCriticalError
-                        Exit Function
-                    End If
-               End If
-                    .RowHeight(i + 53) = .MaxTextRowHeight(i + 53)
-                    'UpdateCell fps, .Col, .Row, .Text
-                    i = i + 1
-                    .Col = .ColLetterToNumber("B")
-                    .Row = i + 53
-                    If Trim(.Text) = "III" Then blnLoadThueSuat = False
-                    
-            Loop Until .Row >= .MaxRows
-         
-            .Sheet = 2
-            i = 0
-            Do
-                strIdQLT = ""
-                .GetText .ColLetterToNumber("I"), i + 25, varID
+        i = 0
+        
+        .GetText .ColLetterToNumber("AA"), 44, NgayPs
+        If Len(NgayPs) = 10 Then
+            TAX_Utilities_Svr_New.Month = Mid$(NgayPs, 4, 2)
+            TAX_Utilities_Svr_New.Year = Right$(NgayPs, 4)
+        End If
+        
+        blnLoadThueSuat = True
+        strCheck = GetAttribute(TAX_Utilities_Svr_New.Data(.Sheet - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber(CHECK_COL), CHECK_ROW)), "Value")
+
+        Do
+            varID = Empty
+            .GetText .ColLetterToNumber("AP"), i + 53, varID
+
             If varID <> "" Then
-                    .Row = i + 25
-                    DataDM varID, strIdQLT, iTenHHDV, strDVT, strThueSuat, blnSuaDVT, maTM
-                    If strIdQLT <> vbNullString Then
-                        .Col = .ColLetterToNumber("L")
-                        .Row = i + 25
-                        .Text = iTenHHDV
-'                        .Col = .ColLetterToNumber("AO")
-'                        .Text = maTM
-                    End If
-               End If
-                i = i + 1
-                .Col = .ColLetterToNumber("B")
+                .Row = i + 53
+                varThueSuat = .Value
+                DataDM varID, strIdQLT, iTenHHDV, strDVT, strThueSuat, blnSuaDVT, maTM
+
+                If strIdQLT <> vbNullString Then
+                    .Col = .ColLetterToNumber("C")
+                    .Row = i + 53
+                    .Text = iTenHHDV
+                    .Col = .ColLetterToNumber("AO")
+                    .Text = maTM
+                    ' UpdateCell fps, .ColLetterToNumber("C"), i + 53, .Text
+                ElseIf CStr(varID) <> vbNullString Then
+                    DisplayMessage "0081", msOKOnly, miCriticalError
+                    Exit Function
+                End If
+            End If
+
+            .RowHeight(i + 53) = .MaxTextRowHeight(i + 53)
+            'UpdateCell fps, .Col, .Row, .Text
+            i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = i + 53
+
+            If Trim(.Text) = "III" Then blnLoadThueSuat = False
+                    
+        Loop Until .Row >= .MaxRows
+         
+        .Sheet = 2
+        i = 0
+
+        Do
+            strIdQLT = ""
+            .GetText .ColLetterToNumber("I"), i + 25, varID
+
+            If varID <> "" Then
                 .Row = i + 25
-            Loop Until .Row >= .MaxRows
+                DataDM varID, strIdQLT, iTenHHDV, strDVT, strThueSuat, blnSuaDVT, maTM
+
+                If strIdQLT <> vbNullString Then
+                    .Col = .ColLetterToNumber("L")
+                    .Row = i + 25
+                    .Text = iTenHHDV
+                    '                        .Col = .ColLetterToNumber("AO")
+                    '                        .Text = maTM
+                End If
+            End If
+
+            i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = i + 25
+        Loop Until .Row >= .MaxRows
+
         .Sheet = lCurrSheet
     End With
 
@@ -251,7 +268,9 @@ Dim maTM As String
         .Row = PHONG_XU_LY_Y
         PHONG_XU_LY_X1 = PHONG_XU_LY_X
         PHONG_XU_LY_Y1 = PHONG_XU_LY_Y
+
         If rsPXL.Fields.count > 0 Then
+
             Do While Not rsPXL.EOF
                 'dhdang sua combox ngay xu ly
                 'ngay 05-08
@@ -265,14 +284,17 @@ Dim maTM As String
                 larrid(i) = rsPXL.Fields(0).Value
                 rsPXL.MoveNext
             Loop
+
         Else
             DisplayMessage "0077", msOKOnly
             Exit Function
         End If
+
         .TypeComboBoxCurSel = 0
         UpdateCell fps, .Col, .Row, .Text
         lSoPhongXL = i
     End With
+
     Prepared2 = True
 End Function
 
@@ -612,7 +634,7 @@ Public Function InsertHDR() As String
     Dim TEMP       As Variant
     Dim MADLT      As Variant
     Dim LanBS      As Variant
-    Dim NGAYPS     As Variant
+    Dim NgayPs     As Variant
     Dim TTHTK1     As Variant
     Dim solanBS    As Variant
     Dim DANHAN     As Variant
@@ -748,13 +770,13 @@ Public Function InsertHDR() As String
         End If
 
         ' ngay phat sinh
-        .GetText .ColLetterToNumber("AA"), 44, NGAYPS
+        .GetText .ColLetterToNumber("AA"), 44, NgayPs
 
-        If (NGAYPS) = vbNullString Then
-            NGAYPS = "CTOD('')"
+        If (NgayPs) = vbNullString Then
+            NgayPs = "CTOD('')"
         Else
-            NGAYPS = ToDate(Trim(NGAYPS), DDMMYYYY)
-            NGAYPS = "CTOD('" & Format(NGAYPS, "mm/dd/yyyy") & "')"
+            NgayPs = ToDate(Trim(NgayPs), DDMMYYYY)
+            NgayPs = "CTOD('" & Format(NgayPs, "mm/dd/yyyy") & "')"
             HANNOP = DateAdd("d", 10, NgayNop)
             HANNOP = ToString(HANNOP, "DD/MM/YYYY")
         End If
@@ -943,7 +965,7 @@ Public Function InsertHDR() As String
                 sSQLVal = sSQLVal & LoaiTien & "," & MABPQL & "," & SHTEP & "," & TTHTK & "," & kykkhai & ", "
                 sSQLVal = sSQLVal & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & ", "
                 sSQLVal = sSQLVal & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ", "
-                sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & MADLT & "," & LanBS & "," & NGAYPS & "," & THUECL & "," & MANNKD & "," & DSoCL & "," & GTTTCL & "," & DANHAN & ",'" & TENNV & "','" & CHUNGCHI & "'"
+                sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & MADLT & "," & LanBS & "," & NgayPs & "," & THUECL & "," & MANNKD & "," & DSoCL & "," & GTTTCL & "," & DANHAN & ",'" & TENNV & "','" & CHUNGCHI & "'"
                 
                 sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
                 bln = clsDAO.ExecuteDLL(sSQL)
@@ -961,7 +983,7 @@ Public Function InsertHDR() As String
             sSQLVal = sSQLVal & LoaiTien & "," & MABPQL & "," & SHTEP & "," & TTHTK & "," & kykkhai & ", "
             sSQLVal = sSQLVal & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & ", "
             sSQLVal = sSQLVal & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ", "
-            sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & MADLT & "," & LanBS & "," & NGAYPS & "," & THUECL & "," & MANNKD & "," & DSoCL & "," & GTTTCL & "," & DANHAN & ",'" & TENNV & "','" & CHUNGCHI & "'"
+            sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & MADLT & "," & LanBS & "," & NgayPs & "," & THUECL & "," & MANNKD & "," & DSoCL & "," & GTTTCL & "," & DANHAN & ",'" & TENNV & "','" & CHUNGCHI & "'"
                 
             sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)

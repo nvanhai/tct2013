@@ -195,7 +195,8 @@ Public Function Prepared1() As Boolean
 End Function
 
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
-    Dim i As Integer
+    Dim i      As Integer
+    Dim NgayPs As Variant
     i = 0
     ReDim Preserve larrPhongXuLy(0)
     larrPhongXuLy(0) = "00"
@@ -233,16 +234,21 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .TypeComboBoxCurSel = 0
         UpdateCell fps, .Col, .Row, .Text
         lSoPhongXL = i
-        kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         
         .Col = .ColLetterToNumber("J")
         .Row = 64
+
         If .Text = "1" Then
+            .GetText .ColLetterToNumber("K"), 64, NgayPs
+            TAX_Utilities_Svr_New.Month = Mid$(NgayPs, 4, 2)
+            TAX_Utilities_Svr_New.Year = Right$(NgayPs, 4)
             LOAI_TO_KHAI = "05/PSGTGT"
         Else
             LOAI_TO_KHAI = "05/GTGT"
         End If
         
+        kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+
     End With
     
     Prepared2 = True
@@ -1164,12 +1170,12 @@ Public Function InsertHDR() As String
     Dim THUECL     As Variant
     Dim DSoCL      As Variant
     Dim GTTTCL     As Variant
-    Dim NGAYPS     As Variant
+    Dim NgayPs     As Variant
     Dim MANNKD     As Variant
     Dim DANHAN     As Variant
     Dim CHKGIAHAN  As Variant
     Dim bln        As Boolean
-       Dim NgayNop As Variant
+    Dim NgayNop    As Variant
  
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
@@ -1347,8 +1353,7 @@ Public Function InsertHDR() As String
         .Col = .ColLetterToNumber("J")
 
         If .Text = "1" Then
-            .GetText .ColLetterToNumber("K"), 64, NGAYPS
-            matkhai = "05/PSGTGT"
+            .GetText .ColLetterToNumber("K"), 64, NgayPs
             HANNOP = DateAdd("d", 10, NgayNop)
             HANNOP = ToString(HANNOP, "DD/MM/YYYY")
         End If
@@ -1363,11 +1368,17 @@ Public Function InsertHDR() As String
 
         HANNOP2 = HANNOP
 
-        NGAYPS = "CTOD('" & Format(NGAYPS, "mm/dd/yyyy") & "')"
+        If Trim(NgayPs) = vbNullString Then
+            NgayPs = "CTOD('')"
+        Else
+            NgayPs = ToDate(Trim(NgayPs), DDMMYYYY)
+            NgayPs = "CTOD('" & Format(NgayPs, "mm/dd/yyyy") & "')"
+        End If
+
         MANNKD = "''"
         DANHAN = "''"
                   
-        sSQLVal = madtnt & "," & MADLT & "," & MATHUE & "," & maTM & "," & MAPP & "," & KYLBO & "," & ngnop & ", " & LoaiTien & "," & MABPQL & "," & SHTEP & "," & TTHTK & "," & kykkhai & "," & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & "," & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ", " & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & "," & NGANH & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & LAN_QUET & "," & NGAYPS & "," & MANNKD & "," & DANHAN & ",'" & TENNV & "','" & CHUNGCHI & "'"
+        sSQLVal = madtnt & "," & MADLT & "," & MATHUE & "," & maTM & "," & MAPP & "," & KYLBO & "," & ngnop & ", " & LoaiTien & "," & MABPQL & "," & SHTEP & "," & TTHTK & "," & kykkhai & "," & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & "," & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ", " & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & "," & NGANH & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & LAN_QUET & "," & NgayPs & "," & MANNKD & "," & DANHAN & ",'" & TENNV & "','" & CHUNGCHI & "'"
        
         sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
