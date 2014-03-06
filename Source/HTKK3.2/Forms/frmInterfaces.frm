@@ -392,11 +392,18 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
                         End If
                     ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "92" Then
 
-                        If strLoaiTKThang_PS = "TK_THANG" Then
-                            strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
-                        ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
-                            strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
-                        End If
+'                        If strLoaiTKThang_PS = "TK_THANG" Then
+'                            strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+'                        ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+'                            strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+'                        End If
+                         If strQuy = "TK_THANG" Then
+                                strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                         ElseIf strQuy = "TK_LANPS" Then
+                                strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                         ElseIf strQuy = "TK_LANXB" Then
+                                strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                         End If
 
                     ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "72" Then
 
@@ -482,12 +489,18 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
                         End If
                     ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "92" Then
 
-                        If strLoaiTKThang_PS = "TK_THANG" Then
-                            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
-                        ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+'                        If strLoaiTKThang_PS = "TK_THANG" Then
+'                            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+'                        ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+'                            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+'                        End If
+                        If strQuy = "TK_THANG" Then
+                            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                        ElseIf strQuy = "TK_LANPS" Then
+                            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                        ElseIf strQuy = "TK_LANXB" Then
                             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                         End If
-
                     ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "72" Then
 
                         If strLoaiTKThang_PS = "TK_THANG" Then
@@ -2529,12 +2542,18 @@ Private Sub DeleteSheet(pIndex As Integer)
                 End If
             ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "92" Then
 
-                If strLoaiTKThang_PS = "TK_THANG" Then
-                    strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
-                ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
-                    strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
-                End If
-
+'                If strLoaiTKThang_PS = "TK_THANG" Then
+'                    strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+'                ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+'                    strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+'                End If
+                 If strQuy = "TK_THANG" Then
+                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & strLoaiTkDk & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                 ElseIf strQuy = "TK_LANPS" Then
+                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                 ElseIf strQuy = "TK_LANXB" Then
+                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                 End If
             ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "72" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "81" Then
 
                 If strLoaiTKThang_PS = "TK_THANG" Then
@@ -2626,14 +2645,23 @@ Private Sub DeleteKHBS()
                     End If
                 ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "92" Then
 
-                    If strLoaiTKThang_PS = "TK_THANG" Then
-                        strKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
-                        strSheetKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
-                    ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+'                    If strLoaiTKThang_PS = "TK_THANG" Then
+'                        strKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+'                        strSheetKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+'                    ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+'                        strKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+'                        strSheetKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+'                    End If
+                     If strQuy = "TK_THANG" Then
+                        strKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                        strSheetKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                     ElseIf strQuy = "TK_LANPS" Then
                         strKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                         strSheetKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
-                    End If
-
+                     ElseIf strQuy = "TK_LANXB" Then
+                        strKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & "L_" & strSoLanXuatBan & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                        strSheetKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                     End If
                 ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "72" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "81" Then
 
                     If strLoaiTKThang_PS = "TK_THANG" Then
@@ -7296,9 +7324,10 @@ Private Sub Form_Load()
                 strKK = "D"
              End If
         ElseIf idMenu = "92" Or idMenu = "93" Or idMenu = "89" Or idMenu = "98" Then
-            objTaxBusiness.chkDauTho = strDauTho
-            objTaxBusiness.chkCondensate = strCondensate
-            objTaxBusiness.chkKhiThienNhien = strKhiThienNhien
+'            objTaxBusiness.chkDauTho = strDauTho
+'            objTaxBusiness.chkCondensate = strCondensate
+'            objTaxBusiness.chkKhiThienNhien = strKhiThienNhien
+             objTaxBusiness.strLoaiToKhaiDK = strLoaiTkDk
         End If
         ' set ngay dau quy
         If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "71" Then
@@ -10801,9 +10830,11 @@ Private Sub saveKHBS()
             End If
         ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "92" Then
 
-            If strLoaiTKThang_PS = "TK_THANG" Then
-                strDataFileName = TAX_Utilities_v1.DataFolder & "KHBS_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & "_" & TAX_Utilities_v1.DateKHBS & ".xml"
-            ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+            If strQuy = "TK_THANG" Then
+                strDataFileName = TAX_Utilities_v1.DataFolder & "KHBS_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & "_" & TAX_Utilities_v1.DateKHBS & ".xml"
+            ElseIf strQuy = "TK_LANPS" Then
+                strDataFileName = TAX_Utilities_v1.DataFolder & "KHBS_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & "_" & TAX_Utilities_v1.DateKHBS & ".xml"
+            ElseIf strQuy = "TK_LANXB" Then
                 strDataFileName = TAX_Utilities_v1.DataFolder & "KHBS_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & "_" & TAX_Utilities_v1.DateKHBS & ".xml"
             End If
 
