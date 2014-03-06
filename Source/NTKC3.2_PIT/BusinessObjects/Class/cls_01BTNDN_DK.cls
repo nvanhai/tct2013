@@ -513,10 +513,11 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     Dim i              As Long, j As Long
     Dim strMaPhongXuLy As String
     
-    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
+    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC, vKY_KE_KHAI, vLOAI_TK_DK, vLOAI_KYKK As Variant
     
     On Error GoTo ErrHandle
     strSQL = strSQL_HDR
+    strSQL = Replace(strSQL, ")", ",LOAI_TK_DK,LOAI_KYKK)")
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
 
     For Each xmlNode In xmlList
@@ -662,7 +663,11 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
     'strSQL = strSQL & "null)"
     strSQL = strSQL & "null,"
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
+    
+    vLOAI_KYKK = "Q"
+    vLOAI_TK_DK = "KTN"
+    
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ",'" & Trim(vLOAI_TK_DK) & "','" & Trim(vLOAI_KYKK) & "')"
     GenerateSQL_Header = strSQL
     'Debug.Print GenerateSQL_Header
     

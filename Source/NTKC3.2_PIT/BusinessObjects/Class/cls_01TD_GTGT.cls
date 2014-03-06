@@ -56,6 +56,8 @@ Const NGAY_HOP_DONG_DL_COL = "N"
 Const PHONG_QUAN_LY_ROW = 26
 Const PHONG_QUAN_LY_COL = "V"
 
+Const SHEET_PL_01_2_TD_GTGT = 2
+
 Public WithEvents fps As fpSpread
 Attribute fps.VB_VarHelpID = -1
 Public strNgayNhanToKhai As String
@@ -76,7 +78,28 @@ Public strNgayHopDongDL As String
 Public strMaCQT As String
 Public strMaPQL As String
 Public strTenPQL As String
+Private Sub DataDM(ByVal Id As String, Optional ByRef TenTN As String)
+Dim arrDanhsach() As String
+Dim strDataFileName As String
+Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+Dim xmlNode As MSXML.IXMLDOMNode
 
+       strDataFileName = "..\InterfaceTemplates\xml\Catalogue_Tinh_Thanh.xml"
+    
+       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If arrDanhsach(1) = Id Then
+                            TenTN = arrDanhsach(3)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub
 Public Function Prepared1() As Boolean
     With fps
         .Sheet = 1
@@ -133,6 +156,8 @@ End Function
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
     Dim i As Integer
     i = 0
+    Dim varMaDM As Variant
+    Dim tenDM As String
     ReDim Preserve larrPhongXuLy(0)
     larrPhongXuLy(0) = "00"
     ReDim Preserve larrid(0)
@@ -160,6 +185,23 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .TypeComboBoxCurSel = 0
         UpdateCell fps, .Col, .Row, .Text
         lSoPhongXL = i
+        
+        'fill data CQT
+        .Sheet = SHEET_PL_01_2_TD_GTGT
+        i = 0
+        Do
+            .GetText .ColLetterToNumber("AE"), i + 18, varMaDM
+            DataDM varMaDM, tenDM
+            If Trim(tenDM) <> vbNullString Then
+                .Col = .ColLetterToNumber("Q")
+                .Row = 18 + i
+                .Text = tenDM
+            End If
+            UpdateCell fps, .Col, .Row, .Text
+             i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = i + 18
+        Loop Until .Text = "aa" Or varMaDM = ""
     End With
     
     Prepared2 = True
