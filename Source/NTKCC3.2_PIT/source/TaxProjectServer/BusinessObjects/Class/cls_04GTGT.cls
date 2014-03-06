@@ -203,6 +203,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
     Dim varMaDM  As Variant
     Dim i        As Integer
     Dim LoaiKyKK As Variant
+    Dim NgayPs As Variant
     i = 0
     ReDim Preserve larrPhongXuLy(0)
     larrPhongXuLy(0) = "00"
@@ -252,6 +253,9 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         Else
             LOAI_TO_KHAI = "04/PSGTGT"
             isTkQuy = False
+            .GetText .ColLetterToNumber("L"), 39, NgayPs
+            TAX_Utilities_Svr_New.Month = Mid$(NgayPs, 4, 2)
+            TAX_Utilities_Svr_New.Year = Right$(NgayPs, 4)
         End If
         
 '        'get ten chi tieu trong danh muc NNKD
@@ -2021,7 +2025,7 @@ Public Function InsertHDR() As String
     Dim THUECL     As Variant
     Dim DSoCL      As Variant
     Dim GTTTCL     As Variant
-    Dim NGAYPS     As Variant
+    Dim NgayPs     As Variant
     Dim TENNV      As Variant
     Dim CHUNGCHI   As Variant
     Dim NgayNop As Variant
@@ -2050,8 +2054,7 @@ Public Function InsertHDR() As String
         DSoCL = "0"
         GTTTCL = "0"
         
-        
-        NGAYPS = "CTOD('')"
+        NgayPs = "CTOD('')"
         
         .GetText .ColLetterToNumber("F"), 10, madtnt
 
@@ -2127,32 +2130,31 @@ Public Function InsertHDR() As String
         If LoaiKyKK = "0" Then
             LoaiKyKK = ".T."
             isTkQuy = False
+            
         ElseIf LoaiKyKK = "1" Then
             LoaiKyKK = ".F."
             isTkQuy = True
+            
         Else
             LoaiKyKK = ".T."
-            .GetText .ColLetterToNumber("L"), 39, NGAYPS
+            .GetText .ColLetterToNumber("L"), 39, NgayPs
             HANNOP = DateAdd("d", 10, NgayNop)
             HANNOP = ToString(HANNOP, "DD/MM/YYYY")
+            isTkQuy = False
         End If
         
-        If Trim(NGAYPS) = vbNullString Then
-            NGAYPS = "CTOD('')"
+        If Trim(NgayPs) = vbNullString Then
+            NgayPs = "CTOD('')"
         Else
-            NGAYPS = "CTOD('" & Format(NGAYPS, "mm/dd/yyyy") & "')"
+            NgayPs = ToDate(Trim(NgayPs), DDMMYYYY)
+            NgayPs = "CTOD('" & Format(NgayPs, "mm/dd/yyyy") & "')"
         End If
         
-        'get MaNNKD
-        
-        'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         If isTkQuy = True Then
             kykkhai = "'" & Val(TAX_Utilities_Svr_New.Month) & "/" & TAX_Utilities_Svr_New.Year & "'"
         Else
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
-        
-        '        .GetText .ColLetterToNumber("T"), 79, MANNKD
         If Trim(MANNKD) = vbNullString Then
             MANNKD = "''"
         Else
@@ -2245,7 +2247,7 @@ Public Function InsertHDR() As String
     sSQLVal = sSQLVal & LoaiTien & "," & MABPQL & "," & SHTEP & "," & TTHTK & "," & kykkhai & ", "
     sSQLVal = sSQLVal & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & ", "
     sSQLVal = sSQLVal & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ", "
-    sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & ",'" & NGANH & "'," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & "," & LAN_QUET & "," & DANHAN & "," & MADLT & "," & LanBS & "," & MANNKD & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & NGAYPS & ",'" & TENNV & "','" & CHUNGCHI & "'"
+    sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & ",'" & NGANH & "'," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & "," & LAN_QUET & "," & DANHAN & "," & MADLT & "," & LanBS & "," & MANNKD & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & NgayPs & ",'" & TENNV & "','" & CHUNGCHI & "'"
        
     sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      

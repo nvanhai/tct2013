@@ -325,6 +325,9 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
 
         If .Text = "1" Then
             LOAI_TO_KHAI = "01PS/TAIN"
+            .Col = .ColLetterToNumber("M")
+            TAX_Utilities_Svr_New.Month = Mid$(.Text, 4, 2)
+            TAX_Utilities_Svr_New.Year = Right$(.Text, 4)
         Else
             LOAI_TO_KHAI = "01/TAIN"
         End If
@@ -1712,7 +1715,7 @@ Public Function InsertHDR() As String
     Dim DSoCL      As Variant
     Dim GTTTCL     As Variant
     Dim MANNKD     As Variant
-    Dim NGAYPS     As Variant
+    Dim NgayPs     As Variant
     Dim NgayNop As Variant
     
     Dim TENNV      As Variant
@@ -1750,7 +1753,9 @@ Public Function InsertHDR() As String
         Do
             ' Lay ma tieu muc tren cel
             .Col = .ColLetterToNumber("AO")
-            vTemp = vTemp & .Text & "~"
+            If .Text <> "" And .Text <> vbNullString Then
+                  vTemp = vTemp & .Text & "~"
+            End If
                      
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
@@ -1862,7 +1867,7 @@ Public Function InsertHDR() As String
 
         If .Text = "1" Then
             .Col = .ColLetterToNumber("M")
-            NGAYPS = .Text
+            NgayPs = .Text
             HANNOP = DateAdd("d", 10, NgayNop)
             HANNOP = ToString(HANNOP, "DD/MM/YYYY")
         End If
@@ -1887,11 +1892,11 @@ Public Function InsertHDR() As String
         ' ngay phat sinh
         '        .GetText .ColLetterToNumber("AG"), 42, NGAYPS
 
-        If (NGAYPS) = vbNullString Then
-            NGAYPS = "CTOD('')"
+        If (NgayPs) = vbNullString Then
+            NgayPs = "CTOD('')"
         Else
-            NGAYPS = ToDate(Trim(NGAYPS), DDMMYYYY)
-            NGAYPS = "CTOD('" & Format(NGAYPS, "mm/dd/yyyy") & "')"
+            NgayPs = ToDate(Trim(NgayPs), DDMMYYYY)
+            NgayPs = "CTOD('" & Format(NgayPs, "mm/dd/yyyy") & "')"
         End If
 
         ' sua MAMUC & MATM tu nam 2009
@@ -1989,7 +1994,7 @@ Public Function InsertHDR() As String
                 sSQLVal = sSQLVal & LoaiTien & "," & MABPQL & "," & SHTEP & "," & TTHTK & "," & kykkhai & ", "
                 sSQLVal = sSQLVal & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & ", "
                 sSQLVal = sSQLVal & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ", "
-                sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & MADLT & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & MANNKD & "," & DANHAN & "," & NGAYPS & ",'" & TENNV & "','" & CHUNGCHI & "'"
+                sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & MADLT & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & MANNKD & "," & DANHAN & "," & NgayPs & ",'" & TENNV & "','" & CHUNGCHI & "'"
                    
                 sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
                 bln = clsDAO.ExecuteDLL(sSQL)

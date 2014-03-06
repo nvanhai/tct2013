@@ -454,6 +454,9 @@ Public Function Prepared3() As Boolean
             LOAI_TO_KHAI = "02/TNDN"
             NGAY_PS = "CTOD('')"
         Else
+            TAX_Utilities_Svr_New.Month = Mid$(NGAY_PS, 4, 2)
+            TAX_Utilities_Svr_New.Year = Right$(NGAY_PS, 4)
+            TAX_Utilities_Svr_New.ThreeMonths = ""
             NGAY_PS = ToDate(Trim(NGAY_PS), DDMMYYYY)
             NGAY_PS = "CTOD('" & Format(NGAY_PS, "mm/dd/yyyy") & "')"
             LOAI_TO_KHAI = "02PS/TNDN"

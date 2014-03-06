@@ -130,7 +130,7 @@ Public strSoTTTKhai As String
 Public isTKTonTai As Boolean
 Public checkDLTTonTai As Boolean
 Private TKTHANG As Variant
-Private NGAYPS As Variant
+Private NgayPs As Variant
 Public Function Prepared1() As Boolean
     With fps
         .Sheet = 1
@@ -244,38 +244,42 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
 End Function
 
 Public Function Prepared3() As Boolean
+
     With fps
         .EventEnabled(EventAllEvents) = False
         .Sheet = 1
+
         'set check loi dinh danh
         If checkDLTTonTai = False Then
             .Col = .ColLetterToNumber("E")
             .Row = 36
             .Value = 1
         End If
-'        'Set NgayNhanToKhai
-'        .Col = .ColLetterToNumber(NGAY_NHAN_TO_KHAI_X)
-'        .Row = NGAY_NHAN_TO_KHAI_Y
-'        If strNgayNhanToKhai <> "" Then
-'            .Text = strNgayNhanToKhai
-'            UpdateCell fps, .Col, .Row, .Text
-'        End If
 
+        '        'Set NgayNhanToKhai
+        '        .Col = .ColLetterToNumber(NGAY_NHAN_TO_KHAI_X)
+        '        .Row = NGAY_NHAN_TO_KHAI_Y
+        '        If strNgayNhanToKhai <> "" Then
+        '            .Text = strNgayNhanToKhai
+        '            UpdateCell fps, .Col, .Row, .Text
+        '        End If
 
         .Col = .ColLetterToNumber(MA_BPQL_X)
         .Row = MA_BPQL_Y
+
         If strMaBPQL <> "" Then
             .Text = strMaBPQL
             UpdateCell fps, .Col, .Row, .Text
         End If
 
-'        .Col = .ColLetterToNumber("V")
-'        .Row = 30
-'        .Text = Trim(TAX_Utilities_Svr_New.Convert(strTenBpql, TCVN, UNICODE))
-'
-         'set Phong xu ly
+        '        .Col = .ColLetterToNumber("V")
+        '        .Row = 30
+        '        .Text = Trim(TAX_Utilities_Svr_New.Convert(strTenBpql, TCVN, UNICODE))
+        '
+        'set Phong xu ly
         .Col = .ColLetterToNumber(PHONG_XU_LY_X)
         .Row = PHONG_XU_LY_Y
+
         If strPhongXuLy <> "" Then
             .Text = strPhongXuLy
             UpdateCell fps, .Col, .Row, .Text
@@ -283,6 +287,7 @@ Public Function Prepared3() As Boolean
 
         .Col = .ColLetterToNumber(MA_SO_THUE_X)
         .Row = MA_SO_THUE_Y
+
         If strMST <> "" Then
             .Text = strMST
             UpdateCell fps, .Col, .Row, .Text
@@ -290,6 +295,7 @@ Public Function Prepared3() As Boolean
 
         .Col = .ColLetterToNumber("E")
         .Row = 30
+
         If Len(Month(Now())) = 1 Then
             .Text = "0" & Month(Now()) & "/" & Year(Now())
             sKyKeKhai = "0" & Month(Now()) & Year(Now())
@@ -297,12 +303,13 @@ Public Function Prepared3() As Boolean
             .Text = Month(Now()) & "/" & Year(Now())
             sKyKeKhai = Month(Now()) & Year(Now())
         End If
+
         UpdateCell fps, .Col, .Row, .Text
 
         .Col = .ColLetterToNumber("E")
         .Row = 32
         .Text = IIf(Len(Day(Now())) = 1, "0" & Day(Now()), Day(Now())) & "/" & IIf(Len(Month(Now())) = 1, "0" & Month(Now()), Month(Now())) & "/" & Year(Now())
-         UpdateCell fps, .Col, .Row, .Text
+        UpdateCell fps, .Col, .Row, .Text
         .Lock = False
 
         .Col = .ColLetterToNumber("M")
@@ -313,6 +320,7 @@ Public Function Prepared3() As Boolean
         ' ten nguoi nop the
         .Col = .ColLetterToNumber(TEN_GOI_X)
         .Row = TEN_GOI_Y
+
         If strTenGoi <> "" Then
             .Text = Trim(TAX_Utilities_Svr_New.Convert(strTenGoi, TCVN, UNICODE))
             UpdateCell fps, .Col, .Row, .Text
@@ -321,6 +329,7 @@ Public Function Prepared3() As Boolean
         ' dia chi
         .Col = .ColLetterToNumber(DIA_CHI_X)
         .Row = DIA_CHI_Y
+
         If strDchi <> "" Then
             .Text = Trim(TAX_Utilities_Svr_New.Convert(strDchi, TCVN, UNICODE))
             UpdateCell fps, .Col, .Row, .Text
@@ -329,6 +338,7 @@ Public Function Prepared3() As Boolean
         ' dien thoai
         .Col = .ColLetterToNumber(DIEN_THOAI_X)
         .Row = DIEN_THOAI_Y
+
         If strDThoai <> "" Then
             .Text = strDThoai
             UpdateCell fps, .Col, .Row, .Text
@@ -337,6 +347,7 @@ Public Function Prepared3() As Boolean
         ' Fax
         .Col = .ColLetterToNumber(FAX_X)
         .Row = FAX_Y
+
         If strFax <> "" Then
             .Text = strFax
             UpdateCell fps, .Col, .Row, .Text
@@ -345,16 +356,16 @@ Public Function Prepared3() As Boolean
         'Mail
         .Col = .ColLetterToNumber(MAIL_X)
         .Row = MAIL_Y
+
         If strFax <> "" Then
             .Text = strFax
             UpdateCell fps, .Col, .Row, .Text
         End If
 
-
-
-       '------------- them thong tin dai ly thue ------------------------------
+        '------------- them thong tin dai ly thue ------------------------------
         .Col = .ColLetterToNumber(TEN_GOI_DL_X)
         .Row = TEN_GOI_DL_Y
+
         If strTen_DLT <> "" Then
             .Text = Trim(TAX_Utilities_Svr_New.Convert(strTen_DLT, TCVN, UNICODE))
             UpdateCell fps, .Col, .Row, .Text
@@ -363,22 +374,25 @@ Public Function Prepared3() As Boolean
         'mst
         .Col = .ColLetterToNumber(MA_SO_THUE_DL_X)
         .Row = MA_SO_THUE_DL_Y
+
         If strMST_DLT <> "" Then
             .Text = Trim(TAX_Utilities_Svr_New.Convert(strMST_DLT, TCVN, UNICODE))
             UpdateCell fps, .Col, .Row, .Text
         End If
 
-'        'dia chi
+        '        'dia chi
         .Col = .ColLetterToNumber(DIA_CHI_DL_X)
         .Row = DIA_CHI_DL_Y
+
         If strDchi_DLT <> "" Then
             .Text = Trim(TAX_Utilities_Svr_New.Convert(strDchi_DLT, TCVN, UNICODE))
             UpdateCell fps, .Col, .Row, .Text
         End If
         
-''        ' quan huyen
+        ''        ' quan huyen
         .Col = .ColLetterToNumber(QUAN_HUYEN_DL_X)
         .Row = QUAN_HUYEN_DL_Y
+
         If strQHuyen_DLT <> "" Then
             .Text = strQHuyen_DLT
         End If
@@ -386,31 +400,39 @@ Public Function Prepared3() As Boolean
         ' thanh pho
         .Col = .ColLetterToNumber(TINH_TPHO_DL_X)
         .Row = TINH_TPHO_DL_Y
+
         If strTTPho_DLT <> "" Then
             .Text = strTTPho_DLT
         End If
 
-'        'dien thoai
+        '        'dien thoai
         .Col = .ColLetterToNumber(DIEN_THOAI_DL_X)
         .Row = DIEN_THOAI_DL_Y
+
         If strDthoai_DLT <> vbNullString Then
             .Text = strDthoai_DLT
         End If
-'        'fax
+
+        '        'fax
         .Col = .ColLetterToNumber(FAX_DL_X)
         .Row = FAX_DL_Y
+
         If strFax_DLT <> "" Then
             .Text = strFax_DLT
         End If
-'        ' mail
+
+        '        ' mail
         .Col = .ColLetterToNumber(MAIL_DL_X)
         .Row = MAIL_DL_Y
+
         If strMail_DLT <> "" Then
             .Text = strMail_DLT
         End If
-'        ' so hop dong
+
+        '        ' so hop dong
         .Col = .ColLetterToNumber(SO_HDDL_DL_X)
         .Row = SO_HDDL_DL_Y
+
         If strSoHD_DLT <> "" Then
             .Text = strSoHD_DLT
         End If
@@ -418,14 +440,15 @@ Public Function Prepared3() As Boolean
         ' ngay hop dong
         .Col = .ColLetterToNumber(NGAY_HDDL_DL_X)
         .Row = NGAY_HDDL_DL_Y
+
         If strNgayHD_DLT <> "" Then
             .Text = strNgayHD_DLT
         End If
 
         ' ten bo phan quan ly
-'        .Col = .ColLetterToNumber(TEN_BPQL_X)
-'        .Row = TEN_BPQL_Y
-'        .Text = Trim(TAX_Utilities_Svr_New.Convert(strTenBpql, TCVN, UNICODE))
+        '        .Col = .ColLetterToNumber(TEN_BPQL_X)
+        '        .Row = TEN_BPQL_Y
+        '        .Text = Trim(TAX_Utilities_Svr_New.Convert(strTenBpql, TCVN, UNICODE))
         
         'so thu tu to khai
         .Col = .ColLetterToNumber(STT_X)
@@ -440,28 +463,30 @@ Public Function Prepared3() As Boolean
         .Text = Trim(TAX_Utilities_Svr_New.Convert(strSoTTTKhai, TCVN, UNICODE))
         .EventEnabled(EventAllEvents) = True
         
-        
+        ' ngay phat sinh
+        .GetText .ColLetterToNumber("S"), 37, NgayPs
+
         Dim tokhai As Variant
         .GetText .ColLetterToNumber("Q"), 37, tokhai
 
         If tokhai = "1" Then
             LOAI_TO_KHAI = "03/PSNTNN"
             TKTHANG = False
+            TAX_Utilities_Svr_New.Month = Mid$(NgayPs, 4, 2)
+            TAX_Utilities_Svr_New.Year = Right$(NgayPs, 4)
         Else
             LOAI_TO_KHAI = "03/NTNN"
             TKTHANG = True
         End If
-
-        ' ngay phat sinh
-        .GetText .ColLetterToNumber("S"), 37, NGAYPS
-
-        If Trim(NGAYPS) = vbNullString Then
-            NGAYPS = "CTOD('')"
+        
+        If Trim(NgayPs) = vbNullString Then
+            NgayPs = "CTOD('')"
         Else
-            NGAYPS = ToDate(Trim(NGAYPS), DDMMYYYY)
-            NGAYPS = "CTOD('" & Format(NGAYPS, "mm/dd/yyyy") & "')"
+            NgayPs = ToDate(Trim(NgayPs), DDMMYYYY)
+            NgayPs = "CTOD('" & Format(NgayPs, "mm/dd/yyyy") & "')"
         End If
-   End With
+
+    End With
     
     Prepared3 = True
 End Function
@@ -1308,7 +1333,7 @@ Public Function InsertHDR() As String
         sSQLVal = sSQLVal & LoaiTien & "," & MABPQL & "," & SHTEP & "," & TTHTK & "," & kykkhai & ", "
         sSQLVal = sSQLVal & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & ", "
         sSQLVal = sSQLVal & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ", "
-        sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & LanBS & "," & THUECL & "," & NGAYPS & "," & DANHAN & "," & DSoCL & "," & GTTTCL & "," & MANNKD & ",'" & TENNV & "','" & CHUNGCHI & "'"
+        sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & LanBS & "," & THUECL & "," & NgayPs & "," & DANHAN & "," & DSoCL & "," & GTTTCL & "," & MANNKD & ",'" & TENNV & "','" & CHUNGCHI & "'"
            
         sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -1365,7 +1390,7 @@ Public Function TKTT() As Boolean
         sSQL = "SELECT MADTNT, NGNOP FROM TMP_TK" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "'" & " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='" & LOAI_TO_KHAI & "'  AND NGAYPS = CTOD('')"
     
     Else
-        sSQL = "SELECT MADTNT, NGNOP FROM TMP_TK" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "' AND NGAYPS = " & NGAYPS & " AND MATKHAI='" & LOAI_TO_KHAI & "'"
+        sSQL = "SELECT MADTNT, NGNOP FROM TMP_TK" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "' AND NGAYPS = " & NgayPs & " AND MATKHAI='" & LOAI_TO_KHAI & "'"
     End If
 
     Set rs = clsDAO.Execute(sSQL)
