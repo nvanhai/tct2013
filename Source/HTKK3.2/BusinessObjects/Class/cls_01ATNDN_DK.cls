@@ -80,13 +80,22 @@ Public Sub Prepare1()
         If strTkThangQuy = "TK_THANG" Then
             .Col = .ColLetterToNumber("O")
             .Text = ""
-
+            
+            .Col = .ColLetterToNumber("W")
+            .Text = "0"
 '            .Col = .ColLetterToNumber("W")
 '            .Text = TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year ' temp
         Else
             .Col = .ColLetterToNumber("O")
             .Text = TAX_Utilities_v1.Day & "/" & TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year
-
+                
+            If strTkThangQuy = "TK_LANPS" Then
+                .Col = .ColLetterToNumber("W")
+                .Text = "1"
+            ElseIf strTkThangQuy = "TK_LANXB" Then
+                .Col = .ColLetterToNumber("W")
+                .Text = "2"
+            End If
 '            .Col = .ColLetterToNumber("W")
 '            .Text = ""
         End If
