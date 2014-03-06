@@ -34,9 +34,10 @@ Public FlagDLThue As Boolean
 Public tuRowDL As Long
 Public denRowDL As Long
 Public strTuRowDenRowPL As String
-Public chkDauTho As String
-Public chkCondensate As String
-Public chkKhiThienNhien As String
+
+
+Public strLoaiToKhaiDK As String
+Public strTkThangQuy As String
  
 'This funtion is called after an object of this class is created
 'Its functions is 1st preparing for interface sheets, such as
@@ -46,35 +47,6 @@ Public Sub Prepare1()
 
     With fps
         fps.EventEnabled(EventAllEvents) = False
-        .Sheet = 1
-        .Row = 30
-        .Col = .ColLetterToNumber("O")
-        .Text = chkDauTho
-        
-        .Row = 30
-        .Col = .ColLetterToNumber("P")
-        .Text = chkCondensate
-        
-        .Row = 30
-        .Col = .ColLetterToNumber("Q")
-        .Text = chkKhiThienNhien
-                        
-        .Row = 31
-
-        If chkKhiThienNhien = "1" Then
-            
-            .Col = .ColLetterToNumber("O")
-            .Text = ""
-'
-'            .Col = .ColLetterToNumber("W")
-'            .Text = TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year ' temp
-        Else
-            .Col = .ColLetterToNumber("O")
-            .Text = TAX_Utilities_v1.Day & "/" & TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year
-            
-'            .Col = .ColLetterToNumber("W")
-'            .Text = ""
-        End If
         
         SetDateFormat fps, 1, 29, .ColLetterToNumber("AM"), DDMMYYYY
         SetDateFormat fps, 1, 68, fps.ColLetterToNumber("AR"), DDMMYYYY
@@ -146,6 +118,61 @@ Public Sub Prepare2()
         fps.EventEnabled(EventAllEvents) = False
         'update MSTDN luôn bang MST tren phan TT chung
         UpdateMST fps, Col_MSTDN, Row_MSTDN
+        
+        
+        .Sheet = 1
+        .Row = 30
+         .Col = .ColLetterToNumber("O")
+        If strLoaiToKhaiDK = "DT" Then
+            .Text = "1"
+        Else
+            .Text = "0"
+        End If
+        '.Text = chkDauTho
+        
+        .Row = 30
+        .Col = .ColLetterToNumber("P")
+        If strLoaiToKhaiDK = "CD" Then
+            .Text = "1"
+        Else
+            .Text = "0"
+        End If
+       ' .Text = chkCondensate
+        
+        .Row = 30
+        .Col = .ColLetterToNumber("Q")
+        If strLoaiToKhaiDK = "KTN" Then
+            .Text = "1"
+        Else
+            .Text = "0"
+        End If
+        '.Text = chkKhiThienNhien
+                        
+        .Row = 31
+
+        'If chkKhiThienNhien = "1" Then
+        If strTkThangQuy = "TK_THANG" Then
+            .Col = .ColLetterToNumber("O")
+            .Text = ""
+            
+            .Col = .ColLetterToNumber("W")
+            .Text = "0"
+'            .Col = .ColLetterToNumber("W")
+'            .Text = TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year ' temp
+        Else
+            .Col = .ColLetterToNumber("O")
+            .Text = TAX_Utilities_v1.Day & "/" & TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year
+                
+            If strTkThangQuy = "TK_LANPS" Then
+                .Col = .ColLetterToNumber("W")
+                .Text = "1"
+            ElseIf strTkThangQuy = "TK_LANXB" Then
+                .Col = .ColLetterToNumber("W")
+                .Text = "2"
+            End If
+'            .Col = .ColLetterToNumber("W")
+'            .Text = ""
+        End If
 
         If Strloaitk = "TKCT" Or Strloaitk = "" Then
             .Col = .ColLetterToNumber(Col_TKCT)
