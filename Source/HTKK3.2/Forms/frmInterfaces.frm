@@ -7328,6 +7328,14 @@ Private Sub Form_Load()
 '            objTaxBusiness.chkCondensate = strCondensate
 '            objTaxBusiness.chkKhiThienNhien = strKhiThienNhien
              objTaxBusiness.strLoaiToKhaiDK = strLoaiTkDk
+             objTaxBusiness.strTkThangQuy = strQuy
+             If strQuy = "TK_THANG" Then
+                strKK = "M"
+             ElseIf strQuy = "TK_QUY" Then
+                strKK = "Q"
+             ElseIf strQuy = "TK_LANPS" Then
+                strKK = "D"
+             End If
         End If
         ' set ngay dau quy
         If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "71" Then
