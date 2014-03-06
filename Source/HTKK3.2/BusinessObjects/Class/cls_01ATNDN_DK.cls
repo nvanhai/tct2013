@@ -34,9 +34,8 @@ Public FlagDLThue As Boolean
 Public tuRowDL As Long
 Public denRowDL As Long
 Public strTuRowDenRowPL As String
-Public chkDauTho As String
-Public chkCondensate As String
-Public chkKhiThienNhien As String
+ 
+Public strLoaiToKhaiDK As String
  
 'This funtion is called after an object of this class is created
 'Its functions is 1st preparing for interface sheets, such as
@@ -49,32 +48,32 @@ Public Sub Prepare1()
         .Sheet = 1
         .Row = 30
         .Col = .ColLetterToNumber("O")
-        .Text = chkDauTho
+       ' .Text = chkDauTho
         
         .Row = 30
         .Col = .ColLetterToNumber("P")
-        .Text = chkCondensate
+       ' .Text = chkCondensate
         
         .Row = 30
         .Col = .ColLetterToNumber("Q")
-        .Text = chkKhiThienNhien
+        '.Text = chkKhiThienNhien
                         
         .Row = 31
 
-        If chkKhiThienNhien = "1" Then
-            
-            .Col = .ColLetterToNumber("O")
-            .Text = ""
-            
-'            .Col = .ColLetterToNumber("W")
-'            .Text = TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year ' temp
-        Else
-            .Col = .ColLetterToNumber("O")
-            .Text = TAX_Utilities_v1.Day & "/" & TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year
-            
-'            .Col = .ColLetterToNumber("W")
+'        If chkKhiThienNhien = "1" Then
+'
+'            .Col = .ColLetterToNumber("O")
 '            .Text = ""
-        End If
+'
+''            .Col = .ColLetterToNumber("W")
+''            .Text = TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year ' temp
+'        Else
+'            .Col = .ColLetterToNumber("O")
+'            .Text = TAX_Utilities_v1.Day & "/" & TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year
+'
+''            .Col = .ColLetterToNumber("W")
+''            .Text = ""
+'        End If
         
         SetDateFormat fps, 1, 29, .ColLetterToNumber("AM"), DDMMYYYY
         SetDateFormat fps, 1, 76, fps.ColLetterToNumber("AR"), DDMMYYYY
