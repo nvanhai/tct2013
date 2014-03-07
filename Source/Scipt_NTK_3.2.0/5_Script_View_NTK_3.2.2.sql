@@ -342,6 +342,7 @@ CREATE OR REPLACE VIEW
         CHI_TIEU,
         MA_SO_THUE,
         CQT_QUAN_LY,
+		CQT_PARENT_ID,
         TY_LE_PHAN_BO,
         THUE_PHAI_NOP
     ) AS
@@ -355,6 +356,7 @@ CREATE OR REPLACE VIEW
             MAX (dtl.CHI_TIEU)     CHI_TIEU,
             MAX (dtl.MA_SO_THUE)       MA_SO_THUE,
             MAX (dtl.CQT_QUAN_LY)     CQT_QUAN_LY,
+			MAX (dtl.CQT_PARENT_ID)     CQT_PARENT_ID,
             MAX (dtl.TY_LE_PHAN_BO)              TY_LE_PHAN_BO,
             MAX (dtl.THUE_PHAI_NOP)              THUE_PHAI_NOP
         FROM
@@ -368,6 +370,7 @@ CREATE OR REPLACE VIEW
                     DECODE (gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL ) CHI_TIEU,
                     DECODE (gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL ) MA_SO_THUE,
                     DECODE (gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL ) CQT_QUAN_LY,
+					DECODE (gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL ) CQT_PARENT_ID,
                     DECODE (gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL)  TY_LE_PHAN_BO,
                     DECODE (gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL)  THUE_PHAI_NOP
                 FROM
