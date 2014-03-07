@@ -509,7 +509,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":02C8
+      SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
    End
@@ -3744,7 +3744,7 @@ Private Sub Form_Load()
                 Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "41" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "59" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "44" _
                     Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "46" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "47" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "48" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "49" _
                         Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "50" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "51" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "53" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "54" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "76" _
-                        Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "74" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "75" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "26" Then
+                        Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "74" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "75" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "26" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "24" Then
         SetupLayoutTNCN (strKieuKy)
     ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "99" Then
         SetupLayoutTNDN_DK (strKieuKy)

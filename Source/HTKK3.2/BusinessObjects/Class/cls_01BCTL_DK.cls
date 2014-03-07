@@ -73,6 +73,27 @@ Public Sub Prepare2()
         mCurrentSheet = .Sheet
         'update MSTDN luôn bang MST tren phan TT chung
         UpdateMST fps, Col_MSTDN, Row_MSTDN
+        
+        If Strloaitk = "TKCT" Or Strloaitk = "" Then
+            .Col = .ColLetterToNumber("C")
+            .Row = 36
+            .Text = 1
+            UpdateCell fps, .Col, .Row, .Text
+            .Col = .ColLetterToNumber("I")
+            .Row = 36
+            .Text = ""
+            UpdateCell fps, .Col, .Row, .Text
+        ElseIf Strloaitk = "TKBS" Then
+            .Col = .ColLetterToNumber("C")
+            .Row = 36
+            .Text = ""
+            UpdateCell fps, .Col, .Row, .Text
+            .Col = .ColLetterToNumber("I")
+            .Row = 36
+            .Text = StrSolanBosung
+            UpdateCell fps, .Col, .Row, .Text
+        End If
+        'end
     End With
 End Sub
 
@@ -131,7 +152,94 @@ End Sub
 'Cause this interface sheets have dynamic rows, this function will set cellnote of error for rising-error cell
 'no parameter
 Private Sub CheckDynamicError()
-' to do
+    Dim iCurrentSheet As Integer
+    Dim flagDVUyQuyen As Integer
+    Dim flagDVUyQuyenEmpty As Integer
+    Dim vDVUyQuyen, vDaiLyThue As Variant
+    
+    Dim vThongTinDL As Variant
+    Dim flagThongTinDL As Integer
+    Dim vErrorEmpty As Variant
+    Dim vErrorDVUQ As Variant
+    
+    With fps
+        iCurrentSheet = .Sheet
+        .Sheet = .SheetCount
+        .GetText .ColLetterToNumber("E"), 23, vErrorEmpty
+        .GetText .ColLetterToNumber("E"), 22, vErrorDVUQ
+        
+        .GetText .ColLetterToNumber("E"), 25, vThongTinDL
+        
+        ' kiem tra to khai
+        .Sheet = 1
+        .GetText .ColLetterToNumber("I"), 17, vDVUyQuyen
+        .GetText .ColLetterToNumber("O"), 17, vDaiLyThue
+        ' kiem tra chi duoc chon  uy quyen hoac dai ly thue
+        If isCheckTTDLT = True Then
+            If Trim$(vDVUyQuyen) = "1" And Trim$(vDaiLyThue) = "1" Then
+                .Col = .ColLetterToNumber("I")
+                .Row = 17
+                .CellNote = vErrorDVUQ
+                .BackColor = mErrorColor
+                
+                .Col = .ColLetterToNumber("O")
+                .Row = 17
+                .CellNote = vErrorDVUQ
+                .BackColor = mErrorColor
+                
+                flagDVUyQuyen = 1
+            ElseIf Trim$(vDVUyQuyen) = "0" And Trim$(vDaiLyThue) = "0" Then
+                .Col = .ColLetterToNumber("I")
+                .Row = 17
+                .CellNote = vErrorEmpty
+                .BackColor = mErrorColor
+                
+                .Col = .ColLetterToNumber("O")
+                .Row = 17
+                .CellNote = vErrorEmpty
+                .BackColor = mErrorColor
+                flagDVUyQuyenEmpty = 1
+            Else
+                .Col = .ColLetterToNumber("I")
+                .Row = 17
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+                
+                .Col = .ColLetterToNumber("O")
+                .Row = 17
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+            End If
+        Else
+                ' neu khong co don vi uy quyen hoac dai ly thue thi khong duoc check chon
+                If Trim$(vDVUyQuyen) = "0" And Trim$(vDaiLyThue) = "0" Then
+                    .Col = .ColLetterToNumber("I")
+                    .Row = 17
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                    
+                    .Col = .ColLetterToNumber("O")
+                    .Row = 17
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                Else
+                    .Col = .ColLetterToNumber("I")
+                    .Row = 17
+                    .CellNote = vThongTinDL
+                    .BackColor = mErrorColor
+                    
+                    .Col = .ColLetterToNumber("O")
+                    .Row = 17
+                    .CellNote = vThongTinDL
+                    .BackColor = mErrorColor
+                    flagThongTinDL = 1
+                End If
+        End If
+         .Sheet = .SheetCount
+        .SetText .ColLetterToNumber("B"), 22, IIf(flagDVUyQuyen = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 23, IIf(flagDVUyQuyenEmpty = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 25, IIf(flagThongTinDL = 1, "0", "1")
+    End With
 End Sub
 
 Sub CheckErrorMST()
