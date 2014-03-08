@@ -97,6 +97,10 @@ Public Sub Prepare1()
     
     With fps
         SetDateFormat fps, 1, 63, fps.ColLetterToNumber("R"), DDMMYYYY
+        
+        SetDateFormat fps, 3, 46, .ColLetterToNumber("BG"), DDMMYYYY
+        SetDateFormat fps, 3, 31, .ColLetterToNumber("BE"), DDMMYYYY
+        
         .Sheet = 1
         .Row = 63
         .Col = fps.ColLetterToNumber("R")
@@ -130,6 +134,8 @@ Public Sub Prepare1()
     End With
     
     setCQTQuanLy
+    
+    setCQTQuanLyHoanThue fps
 End Sub
 Private Sub setCQTQuanLy()
         Dim xmlDomData As New MSXML.DOMDocument
@@ -365,6 +371,9 @@ Private Sub CheckDynamicError()
     Dim vMST As Variant
     Dim strFocusSheetName As String, strFocusRow As String, strFocusCol As String, iFocusFlag As Integer, errMST As Variant, strCheck As String
     
+    Dim vNhaMayTD, vSanLuong, vDonGia, vThueMG As Variant
+    iWhiteRow = 1
+    
     row_require = 15
     
     With fps
@@ -383,68 +392,77 @@ Private Sub CheckDynamicError()
         If .SheetVisible = True Then
             mCurrentSheet = .Sheet
             Do
+                .GetText .ColLetterToNumber("C"), .Row, vNhaMayTD
+                
                 .GetText .ColLetterToNumber("F"), .Row, vMST
+                .GetText .ColLetterToNumber("I"), .Row, vSanLuong
+                .GetText .ColLetterToNumber("K"), .Row, vDonGia
+                .GetText .ColLetterToNumber("R"), .Row, vThueMG
                 
-                .Col = .ColLetterToNumber("C")
-                If (Trim(.Text) = vbNullString) Then
-                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                    .CellNote = vMessRequire      'static
-                    .BackColor = mErrorColor
-    
-                    iFlagEmpty = 1
-                Else
-                    .BackColor = mNonErrorColor
-                    .CellNote = ""
-                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                End If
+                If Trim(vNhaMayTD) <> "" Or Trim(vMST) <> "" Or Val(vSanLuong) <> 0 Or Val(vDonGia) <> 0 Or Val(vThueMG) <> 0 Then iWhiteRow = 0
                 
-                'validate mst
-                .Col = .ColLetterToNumber("F")
-                If Trim$(vMST) <> vbNullString Then
-                    vMST = Replace(vMST, " ", "")
-                    vMST = Replace(vMST, "-", "")
-                    'vMST = Left(vMST, 10)
-
-                    strCheck = ""
-
-                    If Len(vMST) = 10 Or Len(vMST) = 13 Then
-                        strCheck = CheckTaxCode(Mid$(vMST, 1, 1), Mid$(vMST, 2, 1), Mid$(vMST, 3, 1), Mid$(vMST, 4, 1), Mid$(vMST, 5, 1), Mid$(vMST, 6, 1), Mid$(vMST, 7, 1), Mid$(vMST, 8, 1), Mid$(vMST, 9, 1), Mid$(vMST, 10, 1), Mid$(vMST, 11, 1), Mid$(vMST, 12, 1), Mid$(vMST, 13, 1))
-                    End If
-                       
-                    If Mid$(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
-                        .Col = .ColLetterToNumber("F")
-                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                        .CellNote = errMST   'static
-                        .BackColor = mErrorColor
-
-                        iFlagCheckMaST = 1
-                            
-                        'capture the first error cell
-                        If iFocusFlag = 0 Then
-                            strFocusSheetName = "'" & .SheetName & "'"
-                            strFocusCol = str$(.Col)
-                            strFocusRow = str$(.Row)
-
-                            iFocusFlag = 1
+                If iWhiteRow = 0 Then
+                
+                        .Col = .ColLetterToNumber("C")
+                        If (Trim(.Text) = vbNullString) Then
+                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                            .CellNote = vMessRequire      'static
+                            .BackColor = mErrorColor
+            
+                            iFlagEmpty = 1
+                        Else
+                            .BackColor = mNonErrorColor
+                            .CellNote = ""
+                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                         End If
-
-                    Else
-                        .Col = .ColLetterToNumber("F")
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                    End If
-
-                Else
-                    If (Trim$(vMST) = vbNullString) Then
-                        .Col = .ColLetterToNumber("F")
-                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
                         
-                        'iFlagEmty = 1
-                    End If
+                        'validate mst
+                        .Col = .ColLetterToNumber("F")
+                        If Trim$(vMST) <> vbNullString Then
+                            vMST = Replace(vMST, " ", "")
+                            vMST = Replace(vMST, "-", "")
+                            'vMST = Left(vMST, 10)
+        
+                            strCheck = ""
+        
+                            If Len(vMST) = 10 Or Len(vMST) = 13 Then
+                                strCheck = CheckTaxCode(Mid$(vMST, 1, 1), Mid$(vMST, 2, 1), Mid$(vMST, 3, 1), Mid$(vMST, 4, 1), Mid$(vMST, 5, 1), Mid$(vMST, 6, 1), Mid$(vMST, 7, 1), Mid$(vMST, 8, 1), Mid$(vMST, 9, 1), Mid$(vMST, 10, 1), Mid$(vMST, 11, 1), Mid$(vMST, 12, 1), Mid$(vMST, 13, 1))
+                            End If
+                               
+                            If Mid$(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
+                                .Col = .ColLetterToNumber("F")
+                                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                .CellNote = errMST   'static
+                                .BackColor = mErrorColor
+        
+                                iFlagCheckMaST = 1
+                                    
+                                'capture the first error cell
+                                If iFocusFlag = 0 Then
+                                    strFocusSheetName = "'" & .SheetName & "'"
+                                    strFocusCol = str$(.Col)
+                                    strFocusRow = str$(.Row)
+        
+                                    iFocusFlag = 1
+                                End If
+        
+                            Else
+                                .Col = .ColLetterToNumber("F")
+                                .CellNote = ""
+                                .BackColor = mNonErrorColor
+                            End If
+        
+                        Else
+                            If (Trim$(vMST) = vbNullString) Then
+                                .Col = .ColLetterToNumber("F")
+                                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                .CellNote = ""
+                                .BackColor = mNonErrorColor
+                                
+                                'iFlagEmty = 1
+                            End If
+                        End If
                 End If
-                
                 .Row = .Row + 1
                 .Col = .ColLetterToNumber("B")
             Loop Until .Text = "aa"
@@ -919,6 +937,66 @@ Dim nodeReturn As MSXML.IXMLDOMNode
     Next
 End Function
 
+Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonDown As Integer)
+With fps
+        If Col = .ColLetterToNumber("K") And Row >= 28 And .ActiveSheet = 2 Then
+            fps.EventEnabled(EventAllEvents) = False
+            .Sheet = 2
+            .Row = Row
+            .Col = .ColLetterToNumber("K")
+            If (.value = "1") Then
+                .Row = Row
+                ' chi tieu STT
+                .Col = .ColLetterToNumber("B")
+                .Lock = True
+                ' Chi tieu ten nha may
+                .Col = .ColLetterToNumber("C")
+                .Lock = True
+                ' Chi tieu MST
+                .Col = .ColLetterToNumber("H")
+                .Lock = True
+                'Chi tieu CQT cap Cuc
+                .Col = .ColLetterToNumber("L")
+                .Lock = False
+                ' Chi tieu CQT cap chi CUc
+                .Col = .ColLetterToNumber("P")
+                .Lock = False
+                ' ty le phan bo
+                .Col = .ColLetterToNumber("R")
+                .Lock = False
+                ' thue phai nop
+                .Col = .ColLetterToNumber("U")
+                .Lock = False
+            Else
+                .Row = Row
+                ' chi tieu STT
+                .Col = .ColLetterToNumber("B")
+                .Lock = False
+                ' Chi tieu ten nha may
+                .Col = .ColLetterToNumber("C")
+                .Lock = False
+                ' Chi tieu MST
+                .Col = .ColLetterToNumber("H")
+                .Lock = False
+                'Chi tieu CQT cap Cuc
+                .Col = .ColLetterToNumber("L")
+                .Lock = True
+                ' Chi tieu CQT cap chi CUc
+                .Col = .ColLetterToNumber("P")
+                .Lock = True
+                ' ty le phan bo
+                .Col = .ColLetterToNumber("R")
+                .Lock = True
+                ' thue phai nop
+                .Col = .ColLetterToNumber("U")
+                .Lock = True
+            End If
+            fps.EventEnabled(EventAllEvents) = True
+        End If
+
+    End With
+End Sub
+
 Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
     setChangeComb Col, Row
     
@@ -1130,3 +1208,184 @@ Public Sub inThongTinDL()
     strTuRowDenRowPL = "11_12_2"
     ' end
 End Sub
+
+
+' Lay ve so tong dieu chinh
+Public Function getChiTieuTongDC(strOldValue As String) As String
+    Dim varTemp As Variant
+    Dim strCurrentValue As String
+    With fps
+        .Sheet = 1
+        .GetText .ColLetterToNumber("V"), 37, varTemp
+        strCurrentValue = Val(varTemp) - Val(strOldValue)
+        getChiTieuTongDC = strCurrentValue
+    End With
+End Function
+
+' Lay ve chi tieu 29 o to khai lan truoc
+Public Function getValueCTDC(strFileLoadData As String) As String
+
+    Dim xmlDomLastData As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+
+    'Dim strOriginDataFileName As String
+    Dim strDataFileName As String, strCurrentDataFileName As String
+    Dim result As String
+    Dim iDom As Integer
+    Dim MY As Date
+
+    iDom = 0
+    With xmlDomLastData
+        .resolveExternals = True
+        .validateOnParse = True
+        .async = False
+        If .Load(strFileLoadData) = True Then
+            Set xmlNode = .nodeFromID("V_" & 37)
+            result = Val(GetAttribute(xmlNode, "Value"))
+        End If
+    End With
+    getValueCTDC = result
+    Exit Function
+
+ErrorHandle:
+    SaveErrorLog "cls_03_TD_TAIN", "getValueCTDC", Err.number, Err.Description
+End Function
+
+
+Public Function getValueTK(strFileLoadData As String) As String
+
+    Dim xmlDomLastData As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+
+    'Dim strOriginDataFileName As String
+    Dim strDataFileName As String, strCurrentDataFileName As String
+    Dim result As String
+    Dim iDom As Integer
+    Dim MY As Date
+
+    iDom = 0
+    With xmlDomLastData
+        .resolveExternals = True
+        .validateOnParse = True
+        .async = False
+        If .Load(strFileLoadData) = True Then
+            '[28], [29]
+            Set xmlNode = .nodeFromID("R_" & 37)
+            result = "CT28_" & Val(GetAttribute(xmlNode, "Value"))
+'            Set xmlNode = .nodeFromID("V_" & 37)
+'            result = result & "~" & "CT29_" & Val(GetAttribute(xmlNode, "Value"))
+            Set xmlNode = Nothing
+        End If
+    End With
+    getValueTK = result
+    Exit Function
+
+ErrorHandle:
+    SaveErrorLog "cls_03_TD_TAIN", "getValueTK", Err.number, Err.Description
+End Function
+
+
+Function getMapCT() As String
+    On Error GoTo ErrHandle
+    
+    Dim tempValue As Variant
+    Dim strPath As String
+    Dim i As Integer
+    Dim xmlDocument As New MSXML.DOMDocument
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim xmlNodeListItem As MSXML.IXMLDOMNodeList
+    Dim xmlNodeItem As MSXML.IXMLDOMNode
+    strPath = GetAbsolutePath(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "TemplateFolder")) & "MapMCT_TT28.xml"
+    
+    If xmlDocument.Load(strPath) Then
+        Set xmlNodeListItem = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
+        For Each xmlNode In xmlNodeListItem
+            If GetAttribute(xmlNode, "ID") = GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") Then
+                Exit For
+            End If
+        Next
+    End If
+    
+    Set xmlNodeListItem = xmlNode.childNodes
+    
+    For Each xmlNodeItem In xmlNodeListItem
+         tempValue = tempValue & "~" & GetAttribute(xmlNodeItem, "MCT") & "_" & GetAttribute(xmlNodeItem, "Caption")
+    Next
+    tempValue = Mid(tempValue, 2)
+    getMapCT = tempValue
+    Exit Function
+ErrHandle:
+    SaveErrorLog "03_TD_TAIN", "getMapCT", Err.number, Err.Description
+End Function
+
+
+Public Function getDieuChinhGiam(strOldValue As String) As String
+    Dim varTemp As Variant
+    Dim strCurrentValue, strDieuChinhGiam, strDieuChinhTang As String
+    Dim tempArrOld() As String
+    Dim tempArrCurr() As String
+    Dim tempArrOldValue() As String
+    Dim tempArrCurrValue() As String
+    Dim i, j As Integer
+    Dim strMaCT As String
+    Dim arrMapCT() As String ' Luu gia tri cua dong chi tieu
+    Dim arrMapCTValue() As String ' Luu gia tri cua cac cell chi tieu
+    strMaCT = getMapCT
+    With fps
+                .Sheet = 1
+                '[28], [29]
+                .GetText .ColLetterToNumber("R"), 37, varTemp
+                strCurrentValue = "CT28_" & Trim(varTemp)
+'                .GetText .ColLetterToNumber("V"), 37, varTemp
+'                strCurrentValue = strCurrentValue & "~CT29_" & Trim(varTemp)
+
+                ' tinh chenh lech giua 2 lan dieu chinh
+                tempArrOld = Split(strOldValue, "~")
+                tempArrCurr = Split(strCurrentValue, "~")
+                arrMapCT = Split(strMaCT, "~")
+                strDieuChinhGiam = ""
+                strDieuChinhTang = ""
+                For i = 0 To UBound(tempArrOld)
+                    tempArrOldValue = Split(tempArrOld(i), "_")
+                    tempArrCurrValue = Split(tempArrCurr(i), "_")
+                    ' lay cac gia tri cua tung cot trong sheet KHBS
+                    For j = 0 To UBound(arrMapCT)
+                        arrMapCTValue = Split(arrMapCT(j), "_")
+                        ' phan tu so 0 la ma chi tieu
+                        If arrMapCTValue(0) = Mid(tempArrOldValue(0), 3) Then
+                            strMaCT = arrMapCT(j)
+                            Exit For
+                        End If
+                    Next j
+                
+                If Left(strMaCT, 2) = "28" Then
+                    If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) > 0 Then
+                        ' dieu chinh giam
+                        strDieuChinhGiam = strDieuChinhGiam & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
+                    End If
+                    If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) < 0 Then
+                        ' dieu chinh tang
+                        strDieuChinhTang = strDieuChinhTang & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
+                    End If
+                Else
+                    If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) < 0 Then
+                        ' dieu chinh giam
+                        strDieuChinhGiam = strDieuChinhGiam & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
+                    End If
+                    If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) > 0 Then
+                        ' dieu chinh tang
+                        strDieuChinhTang = strDieuChinhTang & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
+                    End If
+                End If
+                Next i
+                If strDieuChinhGiam <> "" Then
+                    strDieuChinhGiam = Mid(strDieuChinhGiam, 2, Len(strDieuChinhGiam) - 1)
+                End If
+                If strDieuChinhTang <> "" Then
+                    strDieuChinhTang = Mid(strDieuChinhTang, 2, Len(strDieuChinhTang) - 1)
+                End If
+                getDieuChinhGiam = strDieuChinhGiam & "###" & strDieuChinhTang
+      End With
+End Function

@@ -509,7 +509,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":02C8
       UserResize      =   1
       Appearance      =   1
    End
@@ -7690,6 +7690,8 @@ Private Sub SetActiveValueKHBS()
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(14), "Active", 1
     ElseIf varMenuId = "83" Then
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(4), "Active", 1
+    ElseIf varMenuId = "96" Then
+        SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(2), "Active", 1
     End If
 End Sub
 
