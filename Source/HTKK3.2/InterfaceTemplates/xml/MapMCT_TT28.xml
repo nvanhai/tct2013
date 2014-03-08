@@ -96,6 +96,6 @@
 		<Item CellID="S_47" MCT="27" Caption="Số thuế GTGT phải nộp [27]= [25]-[26]"/>
 	</Map>
 	<Map ID="03_TD_TAIN">
-		<Item CellID="S_37" MCT="28" Caption="Thuế TN phát sinh phải nộp trong kỳ"/>
+		<Item CellID="R_37" MCT="28" Caption="Thuế tài nguyên dự kiến được miễn giảm trong kỳ"/>
 	</Map>
 </Root>
