@@ -57,6 +57,9 @@ Public strTuRowDenRowPL As String
 Public Sub Prepare1()
     With fps
         SetDateFormat fps, 1, 64, .ColLetterToNumber("R"), DDMMYYYY
+        
+        SetDateFormat fps, 3, 46, .ColLetterToNumber("BG"), DDMMYYYY
+        SetDateFormat fps, 3, 31, .ColLetterToNumber("BE"), DDMMYYYY
         .Sheet = 1 'To khai GTGT
         .Row = 64
         .Col = .ColLetterToNumber("R")
@@ -71,6 +74,8 @@ Public Sub Prepare1()
 '        .TypeHAlign = TypeHAlignLeft
     End With
     setCQTQuanLy
+    
+    setCQTQuanLyHoanThue fps
 End Sub
 
 'This funtion is called after executing function "SetupData"
@@ -189,6 +194,66 @@ Private Sub setCQTQuanLy()
 End Sub
 
 
+
+Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonDown As Integer)
+With fps
+        If Col = .ColLetterToNumber("J") And Row >= 42 And .ActiveSheet = 2 Then
+            fps.EventEnabled(EventAllEvents) = False
+            .Sheet = 2
+            .Row = Row
+            .Col = .ColLetterToNumber("J")
+            If (.value = "1") Then
+                .Row = Row
+                ' chi tieu STT
+                .Col = .ColLetterToNumber("B")
+                .Lock = True
+                ' Chi tieu ten nha may
+                .Col = .ColLetterToNumber("C")
+                .Lock = True
+                ' Chi tieu MST
+                .Col = .ColLetterToNumber("H")
+                .Lock = True
+                'Chi tieu CQT cap Cuc
+                .Col = .ColLetterToNumber("L")
+                .Lock = False
+                ' Chi tieu CQT cap chi CUc
+                .Col = .ColLetterToNumber("P")
+                .Lock = False
+                ' ty le phan bo
+                .Col = .ColLetterToNumber("R")
+                .Lock = False
+                ' thue phai nop
+                .Col = .ColLetterToNumber("U")
+                .Lock = False
+            Else
+                .Row = Row
+                ' chi tieu STT
+                .Col = .ColLetterToNumber("B")
+                .Lock = False
+                ' Chi tieu ten nha may
+                .Col = .ColLetterToNumber("C")
+                .Lock = False
+                ' Chi tieu MST
+                .Col = .ColLetterToNumber("H")
+                .Lock = False
+                'Chi tieu CQT cap Cuc
+                .Col = .ColLetterToNumber("L")
+                .Lock = True
+                ' Chi tieu CQT cap chi CUc
+                .Col = .ColLetterToNumber("P")
+                .Lock = True
+                ' ty le phan bo
+                .Col = .ColLetterToNumber("R")
+                .Lock = True
+                ' thue phai nop
+                .Col = .ColLetterToNumber("U")
+                .Lock = True
+            End If
+            fps.EventEnabled(EventAllEvents) = True
+        End If
+
+    End With
+End Sub
 
 Public Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
     Dim varTemp    As Variant
@@ -906,10 +971,8 @@ Public Function getValueTK(strFileLoadData As String) As String
         .validateOnParse = True
         .async = False
         If .Load(strFileLoadData) = True Then
-            Set xmlNode = .nodeFromID("K_45")
-            result = "CT25_" & Val(GetAttribute(xmlNode, "Value"))
-            Set xmlNode = .nodeFromID("R_45")
-            result = result & "~" & "CT26_" & Val(GetAttribute(xmlNode, "Value"))
+            Set xmlNode = .nodeFromID("S_47")
+            result = "CT27_" & Val(GetAttribute(xmlNode, "Value"))
             Set xmlNode = Nothing
         End If
     End With
@@ -934,10 +997,8 @@ Public Function getDieuChinhGiam(strOldValue As String) As String
     strMaCT = getMapCT
     With fps
                 .Sheet = 1
-                .GetText .ColLetterToNumber("K"), 45, varTemp
-                strCurrentValue = "CT25_" & Trim(varTemp)
-                .GetText .ColLetterToNumber("R"), 45, varTemp
-                strCurrentValue = strCurrentValue & "~CT26_" & Trim(varTemp)
+                .GetText .ColLetterToNumber("S"), 47, varTemp
+                strCurrentValue = "CT27_" & Trim(varTemp)
                 ' tinh chenh lech giua 2 lan dieu chinh
                 tempArrOld = Split(strOldValue, "~")
                 tempArrCurr = Split(strCurrentValue, "~")
@@ -1004,7 +1065,7 @@ Function getMapCT() As String
     getMapCT = tempValue
     Exit Function
 ErrHandle:
-    SaveErrorLog "05_GTGT", "getMapCT", Err.number, Err.Description
+    SaveErrorLog "cls_01_TD_GTGT", "getMapCT", Err.number, Err.Description
 End Function
 
 ' Lay ve so tong dieu chinh
@@ -1013,7 +1074,7 @@ Public Function getChiTieuTongDC(strOldValue As String) As String
     Dim strCurrentValue As String
     With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("J"), 48, varTemp
+        .GetText .ColLetterToNumber("S"), 47, varTemp
         strCurrentValue = Val(varTemp) - Val(strOldValue)
         getChiTieuTongDC = strCurrentValue
     End With
@@ -1038,7 +1099,7 @@ Public Function getValueCTDC(strFileLoadData As String) As String
         .validateOnParse = True
         .async = False
         If .Load(strFileLoadData) = True Then
-            Set xmlNode = .nodeFromID("J_48")
+            Set xmlNode = .nodeFromID("S_47")
             result = Val(GetAttribute(xmlNode, "Value"))
         End If
     End With
