@@ -720,7 +720,7 @@ Public Sub SetupData(pGrid As fpSpread)
                             Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "05" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "06" _
                             Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "86" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "89" _
                             Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "85" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "90" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "96" _
-                            Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98") And mCurrentSheet = 1 Then
+                            Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92") And mCurrentSheet = 1 Then
                                 ' Kiem tra xem da ton tai lan bo sung nay chua?
                                 If Not fso.FileExists(strDataFileName) Then
                                     ' Neu chua ton tai lan bo sung nay va lan bo sung la 1 thi se lay to khai chinh thuc de cap nhat du lieu
@@ -997,7 +997,7 @@ Public Sub SetupData(pGrid As fpSpread)
                                 strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                                 ' Doi voi to khai quy TNCN
                                 If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_15" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "11" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "12" _
-                                Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") And mCurrentSheet = 1 Then
+                                Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "99") And mCurrentSheet = 1 Then
                                     ' Kiem tra xem da ton tai lan bo sung nay chua?
                                     If Not fso.FileExists(strDataFileName) Then
                                         ' Neu chua ton tai lan bo sung nay va lan bo sung la 1 thi se lay to khai chinh thuc de cap nhat du lieu
@@ -1144,7 +1144,7 @@ Public Sub SetupData(pGrid As fpSpread)
                 Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "72" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "03" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "80" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "81" _
                 Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "82" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "86" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "89" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "73" _
                 Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "83" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "85" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "90" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" _
-                Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "94") And fso.FileExists(strDataFileNameBS) Then
+                Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "94" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "99" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "92") And fso.FileExists(strDataFileNameBS) Then
                      isNewdataBS = False
                 End If
                 

@@ -101,4 +101,10 @@
 	<Map ID="01A_TNDN_DK">
 		<Item CellID="AV_60" MCT="34" Caption="Số thuế TNDN được miễn hoặc giảm (nếu có)"/>
 	</Map>
+	<Map ID="01B_TNDN_DK">
+		<Item CellID="AV_62" MCT="29" Caption="Số thuế TNDN tạm tính được miễn hoặc giảm (nếu có)"/>
+	</Map>
+	<Map ID="01_TAIN_DK">
+		<Item CellID="AV_61" MCT="34" Caption="Số tiền thuế tài nguyên tạm tính phải nộp [34]=[32]x[33]"/>
+	</Map>
 </Root>
