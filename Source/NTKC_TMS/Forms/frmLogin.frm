@@ -732,8 +732,8 @@ Private Function CheckVersion() As Boolean
     
     On Error GoTo ErrHandle
 
-'    CheckVersion = True
-'    Exit Function
+    CheckVersion = True
+    Exit Function
        If strCurrentVersion = "" Then
             'Can not found table or not exist value
             DisplayMessage "0075", msOKOnly, miCriticalError

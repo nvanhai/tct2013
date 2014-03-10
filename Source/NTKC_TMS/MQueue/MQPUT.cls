@@ -295,6 +295,8 @@ Public Function PUSHMQ(ByVal xml As String) As Boolean
     CNOCD.ChannelDef.ChannelName = "NTK.SVRCONN"
     CNOCD.ChannelDef.Version = MQCD_VERSION_7    ' Compatible 5.2.x
     CNOCD.ChannelDef.MCAUserIdentifier = "Administrator"
+
+    
     '******************************************************************'
     '*  Connect to queue manager                                      *'
     '******************************************************************'
