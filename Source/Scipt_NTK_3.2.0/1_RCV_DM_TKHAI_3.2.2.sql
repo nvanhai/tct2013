@@ -12,3 +12,5 @@ values ('03_TD_TAIN', 'Tê khai thuÕ tµi nguyªn(Dµnh cho c¬ së s¶n xuÊt thñy ®iÖn
 --01_TD_GTGT
 insert into QLT_NTK.RCV_DM_TKHAI (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
 values ('01_TD_GTGT', 'Tê khai thuÕ GTGT(01_T§_GTGT)', 'M', '320', to_date('14-06-2008', 'dd-mm-yyyy'), null);
+--01_BCTL_DK
+INSERT INTO RCV_DM_TKHAI (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE) VALUES ('01_BCTL_DK', 'B¸o c¸o dù kiÕn s¶n l­îng dÇu khÝ khai th¸c vµ tû lÖ t¹m nép thuÕ (01/BCTL-DK)', 'M', '320', TIMESTAMP '1900-01-01 00:00:00', null);

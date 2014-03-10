@@ -390,7 +390,8 @@ CREATE OR REPLACE VIEW
             dtl.so_tt,
             dtl.row_id
     ) ; 
-    --01_TD_GTGT
+
+--01_TD_GTGT
 CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_01_TD_GTGT (HDR_ID, CTK_ID, SO_TT, TEN_CTIEU, GIA_TRI, KY_HIEU_CTIEU) AS SELECT
     DTL.HDR_ID ,
     DTL.CTK_ID ,
@@ -474,3 +475,61 @@ CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_01_2_TD_GTGT AS
             dtl.so_tt,
             dtl.row_id
 );
+
+--01_BCTL_DK
+create or replace view rcv_v_tkhai_01_bctl_dk as
+select
+    tmp.hdr_id          hdr_id ,
+    tmp.row_id          row_id ,
+    tmp.ma_ctieu        ma_ctieu ,
+    tmp.so_tt           so_tt ,
+    tmp.DAU_THO         DAU_THO ,
+    tmp.CONDENSATE      CONDENSATE ,
+    tmp.KHI_THIEN_NHIEN KHI_THIEN_NHIEN ,
+    tmp.GHI_CHU         GHI_CHU
+from
+    (
+        select
+            dtl.hdr_id               hdr_id ,
+            dtl.row_id               row_id ,
+            dtl.ma_ctieu             ma_ctieu ,
+            dtl.so_tt                so_tt ,
+            max(dtl.DAU_THO)         DAU_THO ,
+            max(dtl.CONDENSATE)      CONDENSATE ,
+            max(dtl.KHI_THIEN_NHIEN) KHI_THIEN_NHIEN ,
+            max(dtl.GHI_CHU)         GHI_CHU
+        from
+            rcv_gdien_tkhai gd,
+            (
+                select
+                    tkd.hdr_id,
+                    nvl(tkd.row_id,0) row_id,
+                    gdien.id,
+                    gdien.so_tt,
+                    gdien.ma_ctieu,
+                    decode(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, null) DAU_THO,
+                    decode(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, null) CONDENSATE,
+                    decode(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, null) KHI_THIEN_NHIEN,
+                    decode(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, null) GHI_CHU
+                from
+                    rcv_tkhai_dtl tkd,
+                    rcv_gdien_tkhai gdien,
+                    rcv_map_ctieu ctieu
+                where
+                    (
+                        ctieu.gdn_id = gdien.id)
+                and (
+                        ctieu.ky_hieu = tkd.ky_hieu)
+                and (
+                        tkd.loai_dlieu = '01_BCTL_DK') ) dtl
+        where
+            (
+                gd.loai_dlieu = '01_BCTL_DK')
+        and (
+                dtl.id = gd.id)
+        group by
+            dtl.hdr_id,
+            dtl.row_id,
+            dtl.so_tt,
+            dtl.ma_ctieu ) tmp;
+	
