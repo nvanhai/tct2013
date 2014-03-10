@@ -98,4 +98,7 @@
 	<Map ID="03_TD_TAIN">
 		<Item CellID="R_37" MCT="28" Caption="Thuế tài nguyên dự kiến được miễn giảm trong kỳ"/>
 	</Map>
+	<Map ID="01A_TNDN_DK">
+		<Item CellID="AV_60" MCT="34" Caption="Số thuế TNDN được miễn hoặc giảm (nếu có)"/>
+	</Map>
 </Root>
