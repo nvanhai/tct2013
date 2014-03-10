@@ -506,11 +506,11 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
     
-    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
+    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC, vLOAI_KYKK As Variant
     
     
 On Error GoTo ErrHandle
-    strSQL = strSQL_HDR
+    strSQL = Replace(strSQL_HDR, ")", ",LOAI_KYKK)")
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
@@ -543,10 +543,18 @@ On Error GoTo ErrHandle
                     vGHI_CHU_LOI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                     vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+                Case "K_56"
+                    vLOAI_KYKK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
             End Select
         End If
         End With
     Next
+    
+    If vLOAI_KYKK = "0" Then
+        vLOAI_KYKK = "T"
+    ElseIf vLOAI_KYKK = "1" Then
+        vLOAI_KYKK = "Q"
+    End If
     
     strSQL = strSQL & "'" & vHdrID & "',"
     strSQL = strSQL & vKKBS & ","
@@ -569,13 +577,23 @@ On Error GoTo ErrHandle
     
     'Ky/ Quy KK
     'Ngay dau ky ke khai va ngay cuoi ky ke khai
-    If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
-        'Ngay dau ky ke khai va ngay cuoi ky ke khai
-        dDate = dNgayDauKy
-        strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        dDate = DateAdd("m", 1, dDate)
-        dDate = DateAdd("d", -1, dDate)
-        strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    If vLOAI_KYKK = "Q" Then
+        'If Trim(TAX_Utilities_Srv_New.ThreeMonths) <> "" Then
+            dDate = dNgayDauKy
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+            dDate = DateAdd("m", 3, dDate)
+            dDate = DateAdd("d", -1, dDate)
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+        'End If
+    ElseIf vLOAI_KYKK = "T" Then
+        'If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
+            'Ngay dau ky ke khai va ngay cuoi ky ke khai
+            dDate = dNgayDauKy
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+            dDate = DateAdd("m", 1, dDate)
+            dDate = DateAdd("d", -1, dDate)
+            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+        'End If
     End If
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
@@ -630,7 +648,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
     'strSQL = strSQL & "null)"
     strSQL = strSQL & "null,"
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ",'" & Trim(vLOAI_KYKK) & "')"
     GenerateSQL_Header = strSQL
     
     Exit Function

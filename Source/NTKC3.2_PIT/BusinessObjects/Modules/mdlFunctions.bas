@@ -128,7 +128,7 @@ Public Function GetCatalogueFileName(Optional lSheet As Long = 1) As String
     Set xmlCatalogeValidNode = GetValidityNode("107", TAX_Utilities_Srv_New.Month, TAX_Utilities_Srv_New.ThreeMonths, TAX_Utilities_Srv_New.Year)
     
     'Get catalogue ID
-    strCatalogueID = GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "CatalogueID")
+    strCatalogueID = GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "CatalogueID")    'CatalogueID
     
     'Get catalogue pattern name
     strCatalogueName = GetCatalogueName(xmlCatalogeValidNode, strCatalogueID)
@@ -295,10 +295,10 @@ Private Function GetNgayTaiChinh(strDate As String) As Integer
     End If
 End Function
 Private Function MSTBoGach(ByVal strMST As String) As String
-    Dim TEMP As String
-    TEMP = strMST
-    TEMP = Replace(TEMP, "-", "", 1)
-    MSTBoGach = TEMP
+    Dim temp As String
+    temp = strMST
+    temp = Replace(temp, "-", "", 1)
+    MSTBoGach = temp
 End Function
 Public Sub SetDateFormat(FpSpd As fpSpread, SheetNumber As Integer, RowNumber As Long, ColNumber As Long, strFormat As String)
     FpSpd.Sheet = SheetNumber

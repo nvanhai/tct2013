@@ -156,7 +156,7 @@ Public Function GetValidityNode() As MSXML.IXMLDOMNode
     idToKhai = GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")
     
     'thang/quy
-    If idToKhai = "01" Or idToKhai = "02" Or idToKhai = "25" Or idToKhai = "26" Or idToKhai = "04" Or idToKhai = "71" Or idToKhai = "36" Or idToKhai = "68" Then
+    If idToKhai = "01" Or idToKhai = "02" Or idToKhai = "25" Or idToKhai = "26" Or idToKhai = "04" Or idToKhai = "71" Or idToKhai = "36" Or idToKhai = "68" Or idToKhai = "94" Then
         If LoaiKyKK = False Then
 
             Select Case TAX_Utilities_Srv_New.Month
