@@ -1,0 +1,233 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="E_4" Value=""/>
+			<Cell CellID="E_5" Value=""/>
+			<Cell CellID="E_6" Value=""/>
+			<Cell CellID="E_8" Value=""/>
+			<Cell CellID="K_8" Value=""/>
+			<Cell CellID="Q_8" Value=""/>
+			<Cell CellID="E_18" Value=""/>
+			<Cell CellID="E_10" Value=""/>
+			<Cell CellID="K_12" Value=""/>
+			<Cell CellID="Q_12" Value=""/>
+			<Cell CellID="K_10" Value=""/>
+			<Cell CellID="K_18" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="E_14" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="Q_10" Value=""/>
+			<Cell CellID="Q_14" Value="" MaxLen="60"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="E_16" Value="" MCT=""/>
+			<Cell CellID="K_16" Value="" MCT=""/>
+			<Cell CellID="E_23" Value="01/01/2012" MCT=""/>
+			<Cell CellID="F_23" Value="31/03/2012" MCT=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_32" FirstCell="0" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="J_32" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="K_32" Value="AA/01T" MCT="3"/>
+			<Cell CellID="L_32" Value="100" MCT="4"/>
+			<Cell CellID="M_32" Value="" MCT="5"/>
+			<Cell CellID="N_32" Value="" MCT="6"/>
+			<Cell CellID="O_32" Value="0000001" MCT="7"/>
+			<Cell CellID="P_32" Value="0000100" MCT="8"/>
+			<Cell CellID="Q_32" Value="" MCT="9"/>
+			<Cell CellID="R_32" Value="" MCT="10"/>
+			<Cell CellID="S_32" Value="0" MCT="11"/>
+			<Cell CellID="U_32" Value="0" MCT="12"/>
+			<Cell CellID="V_32" Value="0" MCT="13"/>
+			<Cell CellID="W_32" Value="" MCT="14"/>
+			<Cell CellID="X_32" Value="0" MCT="15"/>
+			<Cell CellID="Y_32" Value="" MCT="16"/>
+			<Cell CellID="Z_32" Value="0" MCT="17"/>
+			<Cell CellID="AA_32" Value="" MCT="18"/>
+			<Cell CellID="AC_32" Value="0000001" MCT="19"/>
+			<Cell CellID="AD_32" Value="0000100" MCT="20"/>
+			<Cell CellID="AE_32" Value="100" MCT="21"/>
+			<Cell CellID="AF_32" Value="0" MCT="22"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_33" FirstCell="1" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="J_33" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="K_33" Value="AB/01T" MCT="3"/>
+			<Cell CellID="L_33" Value="100" MCT="4"/>
+			<Cell CellID="M_33" Value="" MCT="5"/>
+			<Cell CellID="N_33" Value="" MCT="6"/>
+			<Cell CellID="O_33" Value="0000001" MCT="7"/>
+			<Cell CellID="P_33" Value="0000100" MCT="8"/>
+			<Cell CellID="Q_33" Value="" MCT="9"/>
+			<Cell CellID="R_33" Value="" MCT="10"/>
+			<Cell CellID="S_33" Value="0" MCT="11"/>
+			<Cell CellID="U_33" Value="0" MCT="12"/>
+			<Cell CellID="V_33" Value="0" MCT="13"/>
+			<Cell CellID="W_33" Value="" MCT="14"/>
+			<Cell CellID="X_33" Value="0" MCT="15"/>
+			<Cell CellID="Y_33" Value="" MCT="16"/>
+			<Cell CellID="Z_33" Value="0" MCT="17"/>
+			<Cell CellID="AA_33" Value="" MCT="18"/>
+			<Cell CellID="AC_33" Value="0000001" MCT="19"/>
+			<Cell CellID="AD_33" Value="0000100" MCT="20"/>
+			<Cell CellID="AE_33" Value="100" MCT="21"/>
+			<Cell CellID="AF_33" Value="0" MCT="22"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_34" FirstCell="1" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="J_34" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="K_34" Value="AC/01T" MCT="3"/>
+			<Cell CellID="L_34" Value="100" MCT="4"/>
+			<Cell CellID="M_34" Value="" MCT="5"/>
+			<Cell CellID="N_34" Value="" MCT="6"/>
+			<Cell CellID="O_34" Value="0000001" MCT="7"/>
+			<Cell CellID="P_34" Value="0000100" MCT="8"/>
+			<Cell CellID="Q_34" Value="" MCT="9"/>
+			<Cell CellID="R_34" Value="" MCT="10"/>
+			<Cell CellID="S_34" Value="0" MCT="11"/>
+			<Cell CellID="U_34" Value="0" MCT="12"/>
+			<Cell CellID="V_34" Value="0" MCT="13"/>
+			<Cell CellID="W_34" Value="" MCT="14"/>
+			<Cell CellID="X_34" Value="0" MCT="15"/>
+			<Cell CellID="Y_34" Value="" MCT="16"/>
+			<Cell CellID="Z_34" Value="0" MCT="17"/>
+			<Cell CellID="AA_34" Value="" MCT="18"/>
+			<Cell CellID="AC_34" Value="0000001" MCT="19"/>
+			<Cell CellID="AD_34" Value="0000100" MCT="20"/>
+			<Cell CellID="AE_34" Value="100" MCT="21"/>
+			<Cell CellID="AF_34" Value="0" MCT="22"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_35" FirstCell="1" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="J_35" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="K_35" Value="BB/01T" MCT="3"/>
+			<Cell CellID="L_35" Value="100" MCT="4"/>
+			<Cell CellID="M_35" Value="" MCT="5"/>
+			<Cell CellID="N_35" Value="" MCT="6"/>
+			<Cell CellID="O_35" Value="0000001" MCT="7"/>
+			<Cell CellID="P_35" Value="0000100" MCT="8"/>
+			<Cell CellID="Q_35" Value="" MCT="9"/>
+			<Cell CellID="R_35" Value="" MCT="10"/>
+			<Cell CellID="S_35" Value="0" MCT="11"/>
+			<Cell CellID="U_35" Value="0" MCT="12"/>
+			<Cell CellID="V_35" Value="0" MCT="13"/>
+			<Cell CellID="W_35" Value="" MCT="14"/>
+			<Cell CellID="X_35" Value="0" MCT="15"/>
+			<Cell CellID="Y_35" Value="" MCT="16"/>
+			<Cell CellID="Z_35" Value="0" MCT="17"/>
+			<Cell CellID="AA_35" Value="" MCT="18"/>
+			<Cell CellID="AC_35" Value="0000001" MCT="19"/>
+			<Cell CellID="AD_35" Value="0000100" MCT="20"/>
+			<Cell CellID="AE_35" Value="100" MCT="21"/>
+			<Cell CellID="AF_35" Value="0" MCT="22"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_36" FirstCell="1" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="J_36" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="K_36" Value="BC/01T" MCT="3"/>
+			<Cell CellID="L_36" Value="100" MCT="4"/>
+			<Cell CellID="M_36" Value="" MCT="5"/>
+			<Cell CellID="N_36" Value="" MCT="6"/>
+			<Cell CellID="O_36" Value="0000001" MCT="7"/>
+			<Cell CellID="P_36" Value="0000100" MCT="8"/>
+			<Cell CellID="Q_36" Value="" MCT="9"/>
+			<Cell CellID="R_36" Value="" MCT="10"/>
+			<Cell CellID="S_36" Value="0" MCT="11"/>
+			<Cell CellID="U_36" Value="0" MCT="12"/>
+			<Cell CellID="V_36" Value="0" MCT="13"/>
+			<Cell CellID="W_36" Value="" MCT="14"/>
+			<Cell CellID="X_36" Value="0" MCT="15"/>
+			<Cell CellID="Y_36" Value="" MCT="16"/>
+			<Cell CellID="Z_36" Value="0" MCT="17"/>
+			<Cell CellID="AA_36" Value="" MCT="18"/>
+			<Cell CellID="AC_36" Value="0000001" MCT="19"/>
+			<Cell CellID="AD_36" Value="0000100" MCT="20"/>
+			<Cell CellID="AE_36" Value="100" MCT="21"/>
+			<Cell CellID="AF_36" Value="0" MCT="22"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_37" FirstCell="1" Value="Hãa ®¬n gi¸ trÞ gia t¨ng" MCT="1"/>
+			<Cell CellID="J_37" Value="01GTKT3/001" MCT="2"/>
+			<Cell CellID="K_37" Value="XK/02T" MCT="3"/>
+			<Cell CellID="L_37" Value="100" MCT="4"/>
+			<Cell CellID="M_37" Value="" MCT="5"/>
+			<Cell CellID="N_37" Value="" MCT="6"/>
+			<Cell CellID="O_37" Value="0000001" MCT="7"/>
+			<Cell CellID="P_37" Value="0000100" MCT="8"/>
+			<Cell CellID="Q_37" Value="" MCT="9"/>
+			<Cell CellID="R_37" Value="" MCT="10"/>
+			<Cell CellID="S_37" Value="0" MCT="11"/>
+			<Cell CellID="U_37" Value="0" MCT="12"/>
+			<Cell CellID="V_37" Value="0" MCT="13"/>
+			<Cell CellID="W_37" Value="" MCT="14"/>
+			<Cell CellID="X_37" Value="0" MCT="15"/>
+			<Cell CellID="Y_37" Value="" MCT="16"/>
+			<Cell CellID="Z_37" Value="0" MCT="17"/>
+			<Cell CellID="AA_37" Value="" MCT="18"/>
+			<Cell CellID="AC_37" Value="0000001" MCT="19"/>
+			<Cell CellID="AD_37" Value="0000100" MCT="20"/>
+			<Cell CellID="AE_37" Value="100" MCT="21"/>
+			<Cell CellID="AF_37" Value="0" MCT="22"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_38" FirstCell="1" Value="Hãa ®¬n b¸n hµng" MCT="1"/>
+			<Cell CellID="J_38" Value="02GTTT3/001" MCT="2"/>
+			<Cell CellID="K_38" Value="BA/01T" MCT="3"/>
+			<Cell CellID="L_38" Value="100" MCT="4"/>
+			<Cell CellID="M_38" Value="" MCT="5"/>
+			<Cell CellID="N_38" Value="" MCT="6"/>
+			<Cell CellID="O_38" Value="0000001" MCT="7"/>
+			<Cell CellID="P_38" Value="0000100" MCT="8"/>
+			<Cell CellID="Q_38" Value="" MCT="9"/>
+			<Cell CellID="R_38" Value="" MCT="10"/>
+			<Cell CellID="S_38" Value="0" MCT="11"/>
+			<Cell CellID="U_38" Value="0" MCT="12"/>
+			<Cell CellID="V_38" Value="0" MCT="13"/>
+			<Cell CellID="W_38" Value="" MCT="14"/>
+			<Cell CellID="X_38" Value="0" MCT="15"/>
+			<Cell CellID="Y_38" Value="" MCT="16"/>
+			<Cell CellID="Z_38" Value="0" MCT="17"/>
+			<Cell CellID="AA_38" Value="" MCT="18"/>
+			<Cell CellID="AC_38" Value="0000001" MCT="19"/>
+			<Cell CellID="AD_38" Value="0000100" MCT="20"/>
+			<Cell CellID="AE_38" Value="100" MCT="21"/>
+			<Cell CellID="AF_38" Value="0" MCT="22"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="D_39" FirstCell="1" Value="Hãa ®¬n xuÊt khÈu" MCT="1"/>
+			<Cell CellID="J_39" Value="06HDXK2/001" MCT="2"/>
+			<Cell CellID="K_39" Value="XK/01T" MCT="3"/>
+			<Cell CellID="L_39" Value="100" MCT="4"/>
+			<Cell CellID="M_39" Value="" MCT="5"/>
+			<Cell CellID="N_39" Value="" MCT="6"/>
+			<Cell CellID="O_39" Value="0000001" MCT="7"/>
+			<Cell CellID="P_39" Value="0000100" MCT="8"/>
+			<Cell CellID="Q_39" Value="" MCT="9"/>
+			<Cell CellID="R_39" Value="" MCT="10"/>
+			<Cell CellID="S_39" Value="0" MCT="11"/>
+			<Cell CellID="U_39" Value="0" MCT="12"/>
+			<Cell CellID="V_39" Value="0" MCT="13"/>
+			<Cell CellID="W_39" Value="" MCT="14"/>
+			<Cell CellID="X_39" Value="0" MCT="15"/>
+			<Cell CellID="Y_39" Value="" MCT="16"/>
+			<Cell CellID="Z_39" Value="0" MCT="17"/>
+			<Cell CellID="AA_39" Value="" MCT="18"/>
+			<Cell CellID="AC_39" Value="0000001" MCT="19"/>
+			<Cell CellID="AD_39" Value="0000100" MCT="20"/>
+			<Cell CellID="AE_39" Value="100" MCT="21"/>
+			<Cell CellID="AF_39" Value="0" MCT="22"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="E_47" Value=""/>
+			<Cell CellID="S_47" Value=""/>
+			<Cell CellID="S_49" Value="18/07/2012"/>
+		</Cells>
+	</Section>
+</Sections>

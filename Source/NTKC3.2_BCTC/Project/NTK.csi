@@ -1,0 +1,18 @@
+[History]
+1=#P0#=mb	#P1#=cmdSave_Click	#P2#=NTK/frmInterfaces/cmdSave_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20140212084633	#P7#=0	#P8#=79	.
+2=#P0#=mb	#P1#=formatMaToKhai	#P2#=NTK/frmInterfaces/formatMaToKhai	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140124171059	#P7#=0	#P8#=15	.
+3=#P0#=mb	#P1#=isDA30	#P2#=NTK/frmInterfaces/isDA30	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140117091722	#P7#=0	#P8#=45	.
+4=#P0#=mb	#P1#=getSoTTTK	#P2#=NTK/frmInterfaces/getSoTTTK	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20131227000304	#P7#=0	#P8#=40	.
+5=#P0#=mb	#P1#=LoadForm	#P2#=NTK/frmInterfaces/LoadForm	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20131227000240	#P7#=0	#P8#=119	.
+6=#P0#=mb	#P1#=Command1_Click	#P2#=NTK/frmInterfaces/Command1_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20131223104145	#P7#=0	#P8#=1	.
+7=#P0#=mb	#P1#=InitParameters	#P2#=NTK/frmInterfaces/InitParameters	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20131223102630	#P7#=0	#P8#=534	.
+8=#P0#=mb	#P1#=GetDataInfor	#P2#=NTK/frmLogin/GetDataInfor	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20131220083829	#P7#=0	#P8#=26	.
+9=#P0#=mb	#P1#=cmdOk_Click	#P2#=NTK/frmLogin/cmdOk_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20131220083816	#P7#=0	#P8#=30	.
+10=#P0#=mb	#P1#=IsValidUser	#P2#=NTK/frmLogin/IsValidUser	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20131127083728	#P7#=0	#P8#=57	.
+11=#P0#=mb	#P1#=btnTraCuu_Click	#P2#=NTK/frmTruyennhanTK/btnTraCuu_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20130826105918	#P7#=0	#P8#=1	.
+12=#P0#=mb	#P1#=cmdNhanTkhai_Click	#P2#=NTK/frmTruyennhanTK/cmdNhanTkhai_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20130826105840	#P7#=0	#P8#=1	.
+13=#P0#=mb	#P1#=GenerateSQL_Details	#P2#=NTK/frmInterfaces/GenerateSQL_Details	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20130620094359	#P7#=0	#P8#=1	.
+14=#P0#=mb	#P1#=GetPhongXuLy	#P2#=NTK/frmInterfaces/GetPhongXuLy	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130523173757	#P7#=0	#P8#=14	.
+15=#P0#=mb	#P1#=GetTaxInfo	#P2#=NTK/frmInterfaces/GetTaxInfo	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130412153611	#P7#=0	#P8#=16	.
+16=#P0#=mb	#P1#=GetSection	#P2#=NTK/frmInterfaces/GetSection	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130305094319	#P7#=0	#P8#=43	.
+17=#P0#=mb	#P1#=GetDataFormFile	#P2#=NTK/frmInterfaces/GetDataFormFile	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130227232742	#P7#=0	#P8#=12	.

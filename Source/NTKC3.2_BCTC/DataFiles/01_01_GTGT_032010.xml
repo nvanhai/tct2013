@@ -1,0 +1,313 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_4" Value=""/>
+			<Cell CellID="G_5" Value=""/>
+			<Cell CellID="G_6" Value=""/>
+			<Cell CellID="E_8" Value=""/>
+			<Cell CellID="M_8" Value=""/>
+			<Cell CellID="V_8" Value=""/>
+			<Cell CellID="E_10" Value=""/>
+			<Cell CellID="E_12" Value=""/>
+			<Cell CellID="M_12" Value=""/>
+			<Cell CellID="V_12" Value=""/>
+			<Cell CellID="M_10" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_16" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_14" Value=""/>
+			<Cell CellID="M_14" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_10" Value="" MaxLen="60"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_25" FirstCell="0" Value="NTTK03" MCT="2"/>
+			<Cell CellID="D_25" Value="313333" MCT="3"/>
+			<Cell CellID="E_25" Value="26/03/2010" MCT="4"/>
+			<Cell CellID="F_25" Value="Công ty máy tính và TBVP á Châu" MCT="5"/>
+			<Cell CellID="G_25" Value="2800721325" MCT="6"/>
+			<Cell CellID="H_25" Value="Thuế giá trị gia tăng" MCT="7"/>
+			<Cell CellID="I_25" Value="50000" MCT="8"/>
+			<Cell CellID="J_25" Value=""/>
+			<Cell CellID="K_25" Value="0" MCT="9"/>
+			<Cell CellID="L_25" Value="" MCT="10"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_30" FirstCell="0" Value="PT03" MCT="14"/>
+			<Cell CellID="D_30" Value="013121" MCT="15"/>
+			<Cell CellID="E_30" Value="02/03/2010" MCT="16"/>
+			<Cell CellID="F_30" Value="CTTNHH Công nghệ  TM á Mỹ" MCT="17"/>
+			<Cell CellID="G_30" Value="0101421452" MCT="18"/>
+			<Cell CellID="H_30" Value="Thuế giá trị gia tăng" MCT="19"/>
+			<Cell CellID="I_30" Value="80000" MCT="20"/>
+			<Cell CellID="J_30" Value="0%" MCT="21"/>
+			<Cell CellID="K_30" Value="0" MCT="22"/>
+			<Cell CellID="L_30" Value="" MCT="23"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_31" FirstCell="1" Value="BH01" MCT="14"/>
+			<Cell CellID="D_31" Value="00230001556" MCT="15"/>
+			<Cell CellID="E_31" Value="18/03/2010" MCT="16"/>
+			<Cell CellID="F_31" Value="Công ty TNHH TM ánh Dương" MCT="17"/>
+			<Cell CellID="G_31" Value="2800963155" MCT="18"/>
+			<Cell CellID="H_31" Value="Bàn B55 mạ sơn có kính" MCT="19"/>
+			<Cell CellID="I_31" Value="95533256" MCT="20"/>
+			<Cell CellID="J_31" Value="0%" MCT="21"/>
+			<Cell CellID="K_31" Value="0" MCT="22"/>
+			<Cell CellID="L_31" Value="" MCT="23"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_32" FirstCell="1" Value="BH01" MCT="14"/>
+			<Cell CellID="D_32" Value="01333644" MCT="15"/>
+			<Cell CellID="E_32" Value="25/03/2010" MCT="16"/>
+			<Cell CellID="F_32" Value="Công ty cổ phần Alpha" MCT="17"/>
+			<Cell CellID="G_32" Value="2801074159" MCT="18"/>
+			<Cell CellID="H_32" Value="Bàn B55 mạ sơn có kính" MCT="19"/>
+			<Cell CellID="I_32" Value="95533256" MCT="20"/>
+			<Cell CellID="J_32" Value="0%" MCT="21"/>
+			<Cell CellID="K_32" Value="0" MCT="22"/>
+			<Cell CellID="L_32" Value="" MCT="23"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_33" FirstCell="1" Value="BH01" MCT="14"/>
+			<Cell CellID="D_33" Value="011220456" MCT="15"/>
+			<Cell CellID="E_33" Value="30/03/2010" MCT="16"/>
+			<Cell CellID="F_33" Value="Công ty xây dựng Anh Dũng" MCT="17"/>
+			<Cell CellID="G_33" Value="2800145992" MCT="18"/>
+			<Cell CellID="H_33" Value="Bàn B55 mạ sơn có kính" MCT="19"/>
+			<Cell CellID="I_33" Value="95533256" MCT="20"/>
+			<Cell CellID="J_33" Value="0%" MCT="21"/>
+			<Cell CellID="K_33" Value="0" MCT="22"/>
+			<Cell CellID="L_33" Value="" MCT="23"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_34" FirstCell="1" Value="BH01" MCT="14"/>
+			<Cell CellID="D_34" Value="7565664124" MCT="15"/>
+			<Cell CellID="E_34" Value="30/03/2010" MCT="16"/>
+			<Cell CellID="F_34" Value="Công ty cổ phần Alpha" MCT="17"/>
+			<Cell CellID="G_34" Value="2801074159" MCT="18"/>
+			<Cell CellID="H_34" Value="Bàn B55 mạ sơn có kính" MCT="19"/>
+			<Cell CellID="I_34" Value="95533256" MCT="20"/>
+			<Cell CellID="J_34" Value="0%" MCT="21"/>
+			<Cell CellID="K_34" Value="0" MCT="22"/>
+			<Cell CellID="L_34" Value="" MCT="23"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_35" FirstCell="1" Value="BH01" MCT="14"/>
+			<Cell CellID="D_35" Value="87900223" MCT="15"/>
+			<Cell CellID="E_35" Value="30/03/2010" MCT="16"/>
+			<Cell CellID="F_35" Value="CT TNHH Anh Phát" MCT="17"/>
+			<Cell CellID="G_35" Value="2800846807" MCT="18"/>
+			<Cell CellID="H_35" Value="Bàn B55 mạ sơn có kính" MCT="19"/>
+			<Cell CellID="I_35" Value="95533256" MCT="20"/>
+			<Cell CellID="J_35" Value="0%" MCT="21"/>
+			<Cell CellID="K_35" Value="0" MCT="22"/>
+			<Cell CellID="L_35" Value="" MCT="23"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_40" FirstCell="0" Value="NTTK01" MCT="28"/>
+			<Cell CellID="D_40" Value="013656" MCT="29"/>
+			<Cell CellID="E_40" Value="11/03/2010" MCT="30"/>
+			<Cell CellID="F_40" Value="CT CP XD CT GT 838" MCT="31"/>
+			<Cell CellID="G_40" Value="2800192456" MCT="32"/>
+			<Cell CellID="H_40" Value="Thuế giá trị gia tăng" MCT="33"/>
+			<Cell CellID="I_40" Value="1082044" MCT="34"/>
+			<Cell CellID="J_40" Value="5%" MCT="35"/>
+			<Cell CellID="K_40" Value="54102" MCT="36"/>
+			<Cell CellID="L_40" Value="" MCT="37"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_41" FirstCell="1" Value="BH01" MCT="28"/>
+			<Cell CellID="D_41" Value="11445666" MCT="29"/>
+			<Cell CellID="E_41" Value="20/03/2010" MCT="30"/>
+			<Cell CellID="F_41" Value="CT CP An Bình Việt Nam" MCT="31"/>
+			<Cell CellID="G_41" Value="2801142218" MCT="32"/>
+			<Cell CellID="H_41" Value="Bàn B55 mạ sơn có kính" MCT="33"/>
+			<Cell CellID="I_41" Value="96189356" MCT="34"/>
+			<Cell CellID="J_41" Value="5%" MCT="35"/>
+			<Cell CellID="K_41" Value="4809468" MCT="36"/>
+			<Cell CellID="L_41" Value="" MCT="37"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_46" FirstCell="0" Value="BH01" MCT="42"/>
+			<Cell CellID="D_46" Value="01333" MCT="43"/>
+			<Cell CellID="E_46" Value="02/03/2010" MCT="44"/>
+			<Cell CellID="F_46" Value="Công ty TNHH 5 T" MCT="45"/>
+			<Cell CellID="G_46" Value="2801124917009" MCT="46"/>
+			<Cell CellID="H_46" Value="Attomat 10A" MCT="47"/>
+			<Cell CellID="I_46" Value="13568328" MCT="48"/>
+			<Cell CellID="J_46" Value="10%" MCT="49"/>
+			<Cell CellID="K_46" Value="1356832" MCT="50"/>
+			<Cell CellID="L_46" Value="" MCT="51"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_47" FirstCell="1" Value="BH01" MCT="42"/>
+			<Cell CellID="D_47" Value="0213333" MCT="43"/>
+			<Cell CellID="E_47" Value="02/03/2010" MCT="44"/>
+			<Cell CellID="F_47" Value="Công ty TNHH 5 T" MCT="45"/>
+			<Cell CellID="G_47" Value="2801124917009" MCT="46"/>
+			<Cell CellID="H_47" Value="AC Adapter" MCT="47"/>
+			<Cell CellID="I_47" Value="946600132" MCT="48"/>
+			<Cell CellID="J_47" Value="10%" MCT="49"/>
+			<Cell CellID="K_47" Value="94660013" MCT="50"/>
+			<Cell CellID="L_47" Value="" MCT="51"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_48" FirstCell="1" Value="BH01" MCT="42"/>
+			<Cell CellID="D_48" Value="1455666" MCT="43"/>
+			<Cell CellID="E_48" Value="02/03/2010" MCT="44"/>
+			<Cell CellID="F_48" Value="Công ty TNHH 5 T" MCT="45"/>
+			<Cell CellID="G_48" Value="2801124917009" MCT="46"/>
+			<Cell CellID="H_48" Value="AC Adapter" MCT="47"/>
+			<Cell CellID="I_48" Value="946635484" MCT="48"/>
+			<Cell CellID="J_48" Value="10%" MCT="49"/>
+			<Cell CellID="K_48" Value="94663548" MCT="50"/>
+			<Cell CellID="L_48" Value="" MCT="51"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_49" FirstCell="1" Value="BH01" MCT="42"/>
+			<Cell CellID="D_49" Value="465899" MCT="43"/>
+			<Cell CellID="E_49" Value="02/03/2010" MCT="44"/>
+			<Cell CellID="F_49" Value="Công ty máy tính và TBVP á Châu" MCT="45"/>
+			<Cell CellID="G_49" Value="2800721325" MCT="46"/>
+			<Cell CellID="H_49" Value="AC Adapter" MCT="47"/>
+			<Cell CellID="I_49" Value="6000" MCT="48"/>
+			<Cell CellID="J_49" Value="10%" MCT="49"/>
+			<Cell CellID="K_49" Value="600" MCT="50"/>
+			<Cell CellID="L_49" Value="" MCT="51"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_50" FirstCell="1" Value="BTL00001" MCT="42"/>
+			<Cell CellID="D_50" Value="132323" MCT="43"/>
+			<Cell CellID="E_50" Value="02/03/2010" MCT="44"/>
+			<Cell CellID="F_50" Value="Công ty TNHH 5 T" MCT="45"/>
+			<Cell CellID="G_50" Value="2801124917009" MCT="46"/>
+			<Cell CellID="H_50" Value="AC Adapter" MCT="47"/>
+			<Cell CellID="I_50" Value="-927668129" MCT="48"/>
+			<Cell CellID="J_50" Value="10%" MCT="49"/>
+			<Cell CellID="K_50" Value="-92766813" MCT="50"/>
+			<Cell CellID="L_50" Value="" MCT="51"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_51" FirstCell="1" Value="GGHB" MCT="42"/>
+			<Cell CellID="D_51" Value="01" MCT="43"/>
+			<Cell CellID="E_51" Value="02/03/2010" MCT="44"/>
+			<Cell CellID="F_51" Value="Công ty TNHH 5 T" MCT="45"/>
+			<Cell CellID="G_51" Value="2801124917009" MCT="46"/>
+			<Cell CellID="H_51" Value="AC Adapter" MCT="47"/>
+			<Cell CellID="I_51" Value="0" MCT="48"/>
+			<Cell CellID="J_51" Value="10%" MCT="49"/>
+			<Cell CellID="K_51" Value="-490" MCT="50"/>
+			<Cell CellID="L_51" Value="" MCT="51"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_52" FirstCell="1" Value="NTTK02" MCT="42"/>
+			<Cell CellID="D_52" Value="01313" MCT="43"/>
+			<Cell CellID="E_52" Value="02/03/2010" MCT="44"/>
+			<Cell CellID="F_52" Value="CT TNHH ABM" MCT="45"/>
+			<Cell CellID="G_52" Value="0303121395" MCT="46"/>
+			<Cell CellID="H_52" Value="Thuế giá trị gia tăng" MCT="47"/>
+			<Cell CellID="I_52" Value="600000" MCT="48"/>
+			<Cell CellID="J_52" Value="10%" MCT="49"/>
+			<Cell CellID="K_52" Value="60000" MCT="50"/>
+			<Cell CellID="L_52" Value="" MCT="51"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_53" FirstCell="1" Value="PT02" MCT="42"/>
+			<Cell CellID="D_53" Value="24545" MCT="43"/>
+			<Cell CellID="E_53" Value="02/03/2010" MCT="44"/>
+			<Cell CellID="F_53" Value="Công ty cổ phần Alpha" MCT="45"/>
+			<Cell CellID="G_53" Value="2801074159" MCT="46"/>
+			<Cell CellID="H_53" Value="Thuế giá trị gia tăng" MCT="47"/>
+			<Cell CellID="I_53" Value="8013400" MCT="48"/>
+			<Cell CellID="J_53" Value="10%" MCT="49"/>
+			<Cell CellID="K_53" Value="801340" MCT="50"/>
+			<Cell CellID="L_53" Value="" MCT="51"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_54" FirstCell="1" Value="BH01" MCT="42"/>
+			<Cell CellID="D_54" Value="1445566" MCT="43"/>
+			<Cell CellID="E_54" Value="08/03/2010" MCT="44"/>
+			<Cell CellID="F_54" Value="Công ty cổ phần Alpha" MCT="45"/>
+			<Cell CellID="G_54" Value="2801074159" MCT="46"/>
+			<Cell CellID="H_54" Value="Bàn B55 mạ sơn có kính" MCT="47"/>
+			<Cell CellID="I_54" Value="96315856" MCT="48"/>
+			<Cell CellID="J_54" Value="10%" MCT="49"/>
+			<Cell CellID="K_54" Value="9631585" MCT="50"/>
+			<Cell CellID="L_54" Value="" MCT="51"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_55" FirstCell="1" Value="BH01" MCT="42"/>
+			<Cell CellID="D_55" Value="7921233" MCT="43"/>
+			<Cell CellID="E_55" Value="08/03/2010" MCT="44"/>
+			<Cell CellID="F_55" Value="Công ty cổ phần Alpha" MCT="45"/>
+			<Cell CellID="G_55" Value="2801074159" MCT="46"/>
+			<Cell CellID="H_55" Value="Bàn B55 mạ sơn có kính" MCT="47"/>
+			<Cell CellID="I_55" Value="96189356" MCT="48"/>
+			<Cell CellID="J_55" Value="10%" MCT="49"/>
+			<Cell CellID="K_55" Value="9618935" MCT="50"/>
+			<Cell CellID="L_55" Value="" MCT="51"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_56" FirstCell="1" Value="BH01" MCT="42"/>
+			<Cell CellID="D_56" Value="79636322" MCT="43"/>
+			<Cell CellID="E_56" Value="08/03/2010" MCT="44"/>
+			<Cell CellID="F_56" Value="Công ty cổ phần Alpha" MCT="45"/>
+			<Cell CellID="G_56" Value="2801074159" MCT="46"/>
+			<Cell CellID="H_56" Value="Bàn B55 mạ sơn có kính" MCT="47"/>
+			<Cell CellID="I_56" Value="96189356" MCT="48"/>
+			<Cell CellID="J_56" Value="10%" MCT="49"/>
+			<Cell CellID="K_56" Value="9618935" MCT="50"/>
+			<Cell CellID="L_56" Value="" MCT="51"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_57" FirstCell="1" Value="BH01" MCT="42"/>
+			<Cell CellID="D_57" Value="1555" MCT="43"/>
+			<Cell CellID="E_57" Value="25/03/2010" MCT="44"/>
+			<Cell CellID="F_57" Value="Công ty máy tính và TBVP á Châu" MCT="45"/>
+			<Cell CellID="G_57" Value="2800721325" MCT="46"/>
+			<Cell CellID="H_57" Value="AC Adapter" MCT="47"/>
+			<Cell CellID="I_57" Value="946668942" MCT="48"/>
+			<Cell CellID="J_57" Value="10%" MCT="49"/>
+			<Cell CellID="K_57" Value="94666894" MCT="50"/>
+			<Cell CellID="L_57" Value="" MCT="51"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_58" FirstCell="1" Value="NVK02" MCT="42"/>
+			<Cell CellID="D_58" Value="0134154" MCT="43"/>
+			<Cell CellID="E_58" Value="26/03/2010" MCT="44"/>
+			<Cell CellID="F_58" Value="Công ty TNHH Phương CHi" MCT="45"/>
+			<Cell CellID="G_58" Value="2800192456" MCT="46"/>
+			<Cell CellID="H_58" Value="Thuế giá trị gia tăng" MCT="47"/>
+			<Cell CellID="I_58" Value="1234650" MCT="48"/>
+			<Cell CellID="J_58" Value="10%" MCT="49"/>
+			<Cell CellID="K_58" Value="123465" MCT="50"/>
+			<Cell CellID="L_58" Value="" MCT="51"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_59" FirstCell="1" Value="BH01" MCT="42"/>
+			<Cell CellID="D_59" Value="788986661" MCT="43"/>
+			<Cell CellID="E_59" Value="31/03/2010" MCT="44"/>
+			<Cell CellID="F_59" Value="CT CP XD CT GT 838" MCT="45"/>
+			<Cell CellID="G_59" Value="2800192456" MCT="46"/>
+			<Cell CellID="H_59" Value="Bàn B55 mạ sơn có kính" MCT="47"/>
+			<Cell CellID="I_59" Value="23352" MCT="48"/>
+			<Cell CellID="J_59" Value="10%" MCT="49"/>
+			<Cell CellID="K_59" Value="2335" MCT="50"/>
+			<Cell CellID="L_59" Value="" MCT="51"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_63" Value="2799444407"/>
+			<Cell CellID="F_64" Value="227300749"/>
+		</Cells>
+	</Section>
+</Sections>

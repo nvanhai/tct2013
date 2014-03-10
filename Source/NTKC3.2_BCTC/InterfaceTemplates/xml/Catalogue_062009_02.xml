@@ -1,0 +1,52 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSOFT -->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_4" Value="385###10101###Xì gà###Bao###65###0###0###1"/>
+			<Cell CellID="C_5" Value="386###10102###Thuốc lá điếu###Bao###65###0###0###1"/>
+			<Cell CellID="C_6" Value="387###10103###Các chế phẩm khác từ cây thuốc lá######65###0###0###1"/>
+			<Cell CellID="C_8" Value="389###10201###Rượu từ 40 độ trở lên###Lit###65###0###0###1"/>
+			<Cell CellID="C_9" Value="390###10202###Rượu từ 20 độ đến dưới 40 độ###Lit###30###0###0###1"/>
+			<Cell CellID="C_10" Value="391###10203###Rượu dưới 20 độ, rượu hoa quả, rượu thuốc###Lit###20###0###0###1"/>
+			<Cell CellID="C_12" Value="393###10301###Bia chai###Lit###75###0###0###1"/>
+			<Cell CellID="C_13" Value="394###10302###Bia hơi, bia tươi###Lit###40###0###0###1"/>
+			<Cell CellID="C_14" Value="395###10303###Bia hộp###Lit###75###3800###0###1"/>
+			<Cell CellID="C_18" Value="399###104040101###Loại có dung tích xi lanh từ 2.000 cm3 trở xuống######45###0###0###1"/>
+			<Cell CellID="C_19" Value="400###104040102###Loại có dung tích xi lanh trên 2.000 cm3 đến 3.000 cm3######50###0###0###1"/>
+			<Cell CellID="C_20" Value="401###104040103###Loại có dung tích xi lanh trên 3.000 cm3######60###0###0###1"/>
+			<Cell CellID="C_21" Value="402###1040402###Xe ô tô chở người từ 10 đến dưới 16 chỗ###Cái###30###0###0###1"/>
+			<Cell CellID="C_22" Value="403###1040403###Xe ô tô chở người từ 16 đến dưới 24 chỗ ngồi###Cái###15###0###0###1"/>
+			<Cell CellID="C_23" Value="404###1040404###Xe ô tô vừa chở người, vừa chở hàng###Cái###15###0###0###1"/>
+			<Cell CellID="C_26" Value="407###10404050101###Loại có dung tích xi lanh từ 2.000 cm3 trở xuống######31.5###0###0###1"/>
+			<Cell CellID="C_27" Value="408###10404050102###Loại có dung tích xi lanh trên 2.000 cm3 đến 3.000 cm3######35###0###0###1"/>
+			<Cell CellID="C_28" Value="409###10404050103###Loại có dung tích xi lanh trên 3.000 cm3######42###0###0###1"/>
+			<Cell CellID="C_29" Value="410###104040502###Xe ô tô chở người từ 10 đến dưới 16 chỗ###Cái###21###0###0###1"/>
+			<Cell CellID="C_30" Value="411###104040503###Xe ô tô chở người từ 16 đến dưới 24 choõ###Cái###10.5###0###0###1"/>
+			<Cell CellID="C_31" Value="412###104040504###Xe ô tô vừa chở người, vừa chở hàng###Cái###10.5###0###0###1"/>
+			<Cell CellID="C_34" Value="415###10404060101###Loại có dung tích xi lanh từ 2.000 cm3 trở xuống######22.5###0###0###1"/>
+			<Cell CellID="C_35" Value="416###10404060102###Loại có dung tích xi lanh trên 2.000 cm3 đến 3.000 cm3######25###0###0###1"/>
+			<Cell CellID="C_36" Value="417###10404060103###Loại có dung tích xi lanh trên 3.000 cm3######30###0###0###1"/>
+			<Cell CellID="C_37" Value="418###104040602###Xe ô tô chở người từ 10 đến dưới 16 chỗ###Cái###15###0###0###1"/>
+			<Cell CellID="C_38" Value="419###104040603###Xe ô tô chở người từ 16 đến dưới 24 chỗ###Cái###7.5###0###0###1"/>
+			<Cell CellID="C_39" Value="420###104040604###Xe ô tô vừa chở người, vừa chở hàng###Cái###7.5###0###0###1"/>
+			<Cell CellID="C_41" Value="422###104040701###Loại chở người từ 9 chỗ trở xuống######25###0###0###1"/>
+			<Cell CellID="C_42" Value="423###104040702###Loại chở người từ 10 đến dưới 16 chỗ######15###0###0###1"/>
+			<Cell CellID="C_43" Value="424###104040703###Loại chở người từ 16 đến dưới 24 chỗ######10###0###0###1"/>
+			<Cell CellID="C_44" Value="425###104040704###Xe ô tô vừa chở người, vừa chở hàng######10###0###0###1"/>
+			<Cell CellID="C_45" Value="426###10900###Xe mô tô hai bánh, xe mô tô ba bánh có dung tích xi lanh trên 125 cm3###Cái###20###0###0###1"/>
+			<Cell CellID="C_46" Value="427###11000###Tàu bay###Chiếc###30###0###0###1"/>
+			<Cell CellID="C_47" Value="428###11100###Du thuyền###Chiếc###30###0###0###1"/>
+			<Cell CellID="C_48" Value="429###10500###Xăng các loại, nap-ta (nap tha), con-đen-sát (condensate), chế phẩm tái hợp (reformade component)  và các chế phẩm khác để pha chế xăng###Lit###10###0###0###1"/>
+			<Cell CellID="C_49" Value="430###10600###Điều hoà nhiệt độ công suất từ 90.000 BTU trở xuống###Cái###15###0###0###1"/>
+			<Cell CellID="C_50" Value="431###10700###Bài lá######40###0###1###1"/>
+			<Cell CellID="C_51" Value="432###10800###Vàng mã, hàng mã######70###0###1###1"/>
+			<Cell CellID="C_53" Value="435###20101###Kinh doanh vũ trường######40###0###1###1"/>
+			<Cell CellID="C_54" Value="436###20102###Kinh doanh mát xa, ka-ra-ô-kê######30###0###1###1"/>
+			<Cell CellID="C_55" Value="437###20200###Kinh doanh ca-si-nô (casino), trò chơi điện tử bằng máy có thưởng######30###0###1###1"/>
+			<Cell CellID="C_56" Value="438###20300###Kinh doanh giải trí có đặt cược######30###0###1###1"/>
+			<Cell CellID="C_57" Value="439###20400###Kinh doanh gôn (golf): bán thẻ hội viên, vé chơi gôn######20###0###1###1"/>
+			<Cell CellID="C_58" Value="569###20500###Kinh doanh xổ số######15###0###1###1"/>
+		</Cells>
+	</Section>
+</Sections>

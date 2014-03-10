@@ -1,0 +1,102 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_12" Value=""/>
+			<Cell CellID="H_10" Value=""/>
+			<Cell CellID="F_14" Value=""/>
+			<Cell CellID="F_18" Value=""/>
+			<Cell CellID="N_18" Value=""/>
+			<Cell CellID="V_18" Value=""/>
+			<Cell CellID="E_32" Value=""/>
+			<Cell CellID="E_34" Value=""/>
+			<Cell CellID="M_34" Value=""/>
+			<Cell CellID="V_34" Value=""/>
+			<Cell CellID="M_32" Value=""/>
+			<Cell CellID="M_25" Value=""/>
+			<Cell CellID="E_38" Value=""/>
+			<Cell CellID="M_38" Value=""/>
+			<Cell CellID="V_32" Value=""/>
+			<Cell CellID="H_20" Value=""/>
+			<Cell CellID="F_24" Value=""/>
+			<Cell CellID="F_26" Value=""/>
+			<Cell CellID="Q_26" Value=""/>
+			<Cell CellID="F_28" Value=""/>
+			<Cell CellID="N_28" Value=""/>
+			<Cell CellID="V_28" Value=""/>
+			<Cell CellID="H_30" Value=""/>
+			<Cell CellID="N_30" Value=""/>
+			<Cell CellID="V_36" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_20" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="U_44" Value="100000000" MCT="A1"/>
+			<Cell CellID="U_46" Value="5000000" MCT="B1"/>
+			<Cell CellID="U_47" Value="1000000" MCT="B2"/>
+			<Cell CellID="U_48" Value="1000000" MCT="B3"/>
+			<Cell CellID="U_49" Value="1000000" MCT="B4"/>
+			<Cell CellID="U_50" Value="1000000" MCT="B5"/>
+			<Cell CellID="U_51" Value="1000000" MCT="B6"/>
+			<Cell CellID="U_52" Value="4000000" MCT="B7"/>
+			<Cell CellID="U_53" Value="1000000" MCT="B8"/>
+			<Cell CellID="U_54" Value="1000000" MCT="B9"/>
+			<Cell CellID="U_55" Value="1000000" MCT="B10"/>
+			<Cell CellID="U_56" Value="1000000" MCT="B11"/>
+			<Cell CellID="U_57" Value="101000000" MCT="B12"/>
+			<Cell CellID="U_58" Value="100000000" MCT="B13"/>
+			<Cell CellID="U_59" Value="1000000" MCT="B14"/>
+			<Cell CellID="U_61" Value="100000000" MCT="C1"/>
+			<Cell CellID="U_62" Value="1000000" MCT="C2"/>
+			<Cell CellID="U_63" Value="1000000" MCT="C3"/>
+			<Cell CellID="U_64" Value="98000000" MCT="C4"/>
+			<Cell CellID="U_65" Value="100000" MCT="C5"/>
+			<Cell CellID="U_66" Value="97900000" MCT="C6"/>
+			<Cell CellID="U_67" Value="100000000" MCT="C7"/>
+			<Cell CellID="U_68" Value="1500001500" MCT="C8"/>
+			<Cell CellID="U_69" Value="100000100" MCT="C9"/>
+			<Cell CellID="U_70" Value="1000000" MCT="C10"/>
+			<Cell CellID="U_71" Value="1000000" MCT="C11"/>
+			<Cell CellID="U_72" Value="" MCT="C12"/>
+			<Cell CellID="U_73" Value="1000000" MCT="D"/>
+			<Cell CellID="U_74" Value="1000000" MCT="E"/>
+			<Cell CellID="U_75" Value="" MCT="E1"/>
+			<Cell CellID="U_76" Value="1000000" MCT="E2"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="H_7" Value="x" MCT="H7"/>
+			<Cell CellID="H_9" Value="" MCT="H9"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_82" FirstCell="0" Value="" MCT="TL"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="E_39" Value="Tr­êng hîp ®­îc gia h¹n:"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_86" Value=""/>
+			<Cell CellID="S_86" Value=""/>
+			<Cell CellID="G_88" Value=""/>
+			<Cell CellID="S_88" Value="01/01/2007"/>
+			<Cell CellID="C_5" Value="1"/>
+			<Cell CellID="F_5" Value="1"/>
+			<Cell CellID="I_5" Value="0"/>
+			<Cell CellID="T_5" Value="1052"/>
+			<Cell CellID="AB_40" Value=""/>
+		</Cells>
+	</Section>
+</Sections>
