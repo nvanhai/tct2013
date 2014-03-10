@@ -1049,6 +1049,17 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(TAX_Utilities_Srv_New.LastDay, "dd/MM/yyyy")
         End If
         xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
+        
+        'To khai 01-KK-TTS
+        If strKieuKy = "D" And GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "23" Then
+            xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
+            xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
+            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = Format$(TAX_Utilities_Srv_New.FirstDay, "dd/MM/yyyy")
+            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(TAX_Utilities_Srv_New.FirstDay, "dd/MM/yyyy")
+            xmlTK.getElementsByTagName("kyKKhaiTuThang")(0).Text = TAX_Utilities_Srv_New.FirstDay
+            xmlTK.getElementsByTagName("kyKKhaiDenThang")(0).Text = TAX_Utilities_Srv_New.LastDay
+        End If
+        
     End If
     Exit Sub
 ErrHandle:
@@ -1059,7 +1070,29 @@ End Sub
 Private Function GetKyKeKhai(ByVal ID_TK As String) As String
     Dim KYKKHAI As String
     On Error GoTo ErrHandle
-
+    
+        '01-KK-TTS
+    If ID_TK = "23" Then
+        fpSpread1.Sheet = 1
+        fpSpread1.Col = fpSpread1.ColLetterToNumber("L")
+        fpSpread1.Row = 35
+        If fpSpread1.Text = "1" Then
+            KYKKHAI = Right$(TAX_Utilities_Srv_New.ThreeMonths, 1) & "/" & TAX_Utilities_Srv_New.Year
+            strKieuKy = "Q"
+        Else
+            strKieuKy = "D"
+            fpSpread1.Row = 3
+            fpSpread1.Col = fpSpread1.ColLetterToNumber("P")
+            TAX_Utilities_Srv_New.FirstDay = fpSpread1.Text
+            KYKKHAI = "01/" & fpSpread1.Text
+            fpSpread1.Row = 3
+            fpSpread1.Col = fpSpread1.ColLetterToNumber("T")
+            TAX_Utilities_Srv_New.LastDay = fpSpread1.Text
+        End If
+        GetKyKeKhai = KYKKHAI
+        Exit Function
+    End If
+    
     If isTKLanPS = True Then
         KYKKHAI = ngayPS
         strKieuKy = "D"
@@ -1072,7 +1105,6 @@ Private Function GetKyKeKhai(ByVal ID_TK As String) As String
             KYKKHAI = TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year
             strKieuKy = "M"
         End If
-            
     Else
         If (Trim(TAX_Utilities_Srv_New.Month) <> vbNullString Or Trim(TAX_Utilities_Srv_New.Month) <> "") And (Trim(TAX_Utilities_Srv_New.ThreeMonths) = vbNullString Or Trim(TAX_Utilities_Srv_New.ThreeMonths) = "") Then
             KYKKHAI = TAX_Utilities_Srv_New.Month & "/" & TAX_Utilities_Srv_New.Year
@@ -1913,14 +1945,14 @@ Private Sub ExecuteSave()
 
     xmlTK.documentElement.SetAttribute "xmlns", "http://kekhaithue.gdt.gov.vn/TKhaiThue"
 
-    Dim sFileName As String
-    sFileName = "c:\TempXML\" & strFileName
-    
+'    Dim sFileName As String
+'    sFileName = "c:\TempXML\" & strFileName
+'
     Dim xmlDocSave As New MSXML.DOMDocument
     Set xmlDocSave = AppendXMLStandard(xmlTK, sKyLapBo, sNgayNopTK, sLoiDinhDanh)
-    
-    
-    xmlDocSave.save sFileName
+'
+'
+'    xmlDocSave.save sFileName
 
     ' Push MQ
     Dim MQPUT As New MQPUT
@@ -2947,11 +2979,11 @@ Private Sub Command1_Click()
 'str2 = "bs320232300032101   042013002002002002yen Van Nhi~0102030405~10~90000~90000~1000000~80000~10000~500~2778~0~Nguyen Van Tam~6868686868~50~450000~450000~5000000~200000~250000~12500~69444~0</S><S>~CMCer~~17/02/2014~~1~1~1~~</S></S01>"
 'Barcode_Scaned str2
 
-'01-KK-TTS-THANG12-THANG03-CT
-str2 = "aa320232300032101   04201300300300100201/0101/01/1900<S01><S></S><S>12/2013~03/2014~~~HD2namlientiep~30000000~20000000~10000000~10~3000000~5~1500000~1000000~10~200000</S><S>Le Viet X~0102030405~50~1500000~750000~500000~100000~650000~32500~10833~21667~Le Viet Y~2222222222~20~600"
-Barcode_Scaned str2
-str2 = "aa320232300032101   042013003003002002000~300000~200000~200000~100000~5000~1667~3333~Le Viet Z~6868686868~10~300000~150000~100000~50000~100000~5000~1667~3333~Le Viet A~0101650999~20~600000~300000~200000~150000~150000~7500~2500~5000</S><S>~CMCer~~17/02/2014~1~1~~0~1~</S></S01>"
-Barcode_Scaned str2
+''01-KK-TTS-THANG12-THANG03-CT
+'str2 = "aa320232300032101   04201300300300100201/0101/01/1900<S01><S></S><S>12/2013~03/2014~~~HD2namlientiep~30000000~20000000~10000000~10~3000000~5~1500000~1000000~10~200000</S><S>Le Viet X~0102030405~50~1500000~750000~500000~100000~650000~32500~10833~21667~Le Viet Y~2222222222~20~600"
+'Barcode_Scaned str2
+'str2 = "aa320232300032101   042013003003002002000~300000~200000~200000~100000~5000~1667~3333~Le Viet Z~6868686868~10~300000~150000~100000~50000~100000~5000~1667~3333~Le Viet A~0101650999~20~600000~300000~200000~150000~150000~7500~2500~5000</S><S>~CMCer~~17/02/2014~1~1~~0~1~</S></S01>"
+'Barcode_Scaned str2
 
 
 ''QD15-BCTC-2013
@@ -5727,6 +5759,7 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
         End If
         If (Err_des <> "") Then
                 MessageBox "0139", msOKOnly, miCriticalError
+                SaveErrorLog Me.Name, "GetTaxInfo", Err.Number, "ERROR_DESC: " & Err_des & Err.Description
                 Set rsReturn = Nothing
                 blnSuccess = False
                 Exit Function
@@ -5739,6 +5772,7 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
                     Exit Function
                 Else
                     flagNNT = True
+                    SaveErrorLog Me.Name, "GetTaxInfo", Err.Number, "fault_code: " & xmlResultNNT.getElementsByTagName("fault_code")(0).Text & Err.Description
                 End If
                 
             End If
@@ -5846,6 +5880,7 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
                 Exit Function
             Else
                 flagDLT = True
+                'SaveErrorLog Me.Name, "GetTaxDLInfo", Err.Number, Err.Description
             End If
     
         Else
@@ -5865,6 +5900,7 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
                     Exit Function
                 Else
                     flagDLT = True
+                    SaveErrorLog Me.Name, "GetTaxDLInfo", Err.Number, "ERROR_DESC: " & xmlResultDLT.getElementsByTagName("ERROR_DESC")(0).Text & Err.Description
                 End If
             Else
     '            If (InStr(xmlResultDLT.xml, "NORM_NAME") <= 0) Then
@@ -5876,13 +5912,14 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
     '            End If
     
                 If (InStr(xmlResultDLT.xml, "fault_code") > 0) Then
-                       If (MessageBox("0141", msOKOnly, miCriticalError) = mrNo) Then
+                    If (MessageBox("0141", msOKOnly, miCriticalError) = mrNo) Then
                         Set rsReturn = Nothing
                         blnSuccess = False
                         Exit Function
-                        Else
+                    Else
                         flagDLT = True
-                        End If
+                        SaveErrorLog Me.Name, "GetTaxDLInfo", Err.Number, "fault_code: " & xmlResultDLT.getElementsByTagName("fault_code")(0).Text & Err.Description
+                    End If
                 End If
 '                If (xmlResultDLT.getElementsByTagName("TrangThaiHoatDong").length > 0) Then
 '                    If (xmlResultDLT.getElementsByTagName("TrangThaiHoatDong")(0).Text = "01") Then
@@ -6007,6 +6044,7 @@ On Error GoTo ErrHandle
         
         If (Err_des <> "") Then
                 MessageBox "0139", msOKOnly, miCriticalError
+                SaveErrorLog Me.Name, "GetTaxInfoBCTC", Err.Number, "ERROR_DESC: " & Err_des & Err.Description
                 Set rsReturn = Nothing
                 blnSuccess = False
                 Exit Function
@@ -6020,6 +6058,7 @@ On Error GoTo ErrHandle
                     Exit Function
                 Else
                     flagNNT = True
+                    SaveErrorLog Me.Name, "GetTaxInfoBCTC", Err.Number, "fault_code: " & xmlResultNNT.getElementsByTagName("fault_code")(0).Text & Err.Description
                 End If
             End If
         End If

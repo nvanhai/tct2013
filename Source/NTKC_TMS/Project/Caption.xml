@@ -143,9 +143,9 @@
 	<frmTruyennhanTK Caption="">
 		<Item Name="lblCaption" Index="" Caption="Truyền/Nhận tờ khai TNCN"/>
 	</frmTruyennhanTK>
-	<frmSetting Caption="Cau hinh">
-		<Item Name="cmdDongY" Index="" Caption="Dong y" />
-		<Item Name="cmdThoat" Index="" Caption="Thoát" />
-		<Item Name="lblQueueManager" Index="" Caption="Dia chi may chu: " />			
+	<frmSetting Caption="Setting">
+		<Item Name="cmdDongY" Index="" Caption="Ok" />
+		<Item Name="cmdThoat" Index="" Caption="Cancel" />
+		<Item Name="lblQueueManager" Index="" Caption="IP Server ESB: " />			
 	</frmSetting>
 </Root>
