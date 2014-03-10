@@ -1,0 +1,143 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSOFT -->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_5A" Value="150###010101###Sắt, mangan, titan,...###Kg###7###0###1"/>
+			<Cell CellID="C_5B" Value="251###010102###Sắt (50_2010/NĐ-CP)###Kg###10###0###1"/>
+			<Cell CellID="C_6" Value="252###010103###Măng-gan(50_2010/NĐ-CP)###Kg###11###0###1"/>
+			<Cell CellID="C_7A" Value="253###010104###Ti-tan (titan)(50_2010/NĐ-CP)###Kg###11###0###1"/>
+			<Cell CellID="C_110" Value="255###010207###Vàng(50_2010/NĐ-CP)###Kg###15###0###1"/>		
+			<Cell CellID="C_7B" Value="152###010201###Vàng sa khoáng###Kg###9###0###1"/>
+			<Cell CellID="C_8" Value="153###010202###Vàng cốm###Kg###9###0###1"/>
+			<Cell CellID="C_9A" Value="154###010203a###Đất hiếm###Kg###12###0###1"/>
+			<Cell CellID="C_9B" Value="256###010203b###Đất hiếm(50_2010/NĐ-CP)###Kg###15###0###1"/>
+			<Cell CellID="C_10" Value="155###010204###Bạch kim, thiếc, Won fram, bạc, antimoan###Kg###7###0###1"/>
+			<Cell CellID="C_11A" Value="257###010208###Bạch kim(50_2010/NĐ-CP)###Kg###10###0###1"/>
+			<Cell CellID="C_12B" Value="258###010209###Bạc(50_2010/NĐ-CP)###Kg###10###0###1"/>
+			<Cell CellID="C_13B" Value="259###010210a###Thiếc(50_2010/NĐ-CP)###Kg###10###0###1"/> 
+			<Cell CellID="C_13A" Value="260###010210b###Vôn-phờ-ram (wolfram), ăng-ti-moan (antimoan)(50_2010/NĐ-CP)###Kg###10###0###1"/>
+			<Cell CellID="C_11B" Value="156###010205###Chì,kẽm,nhôm,bô xít,đồng,niken, coban,Hg, Mg...###Kg###7###0###1"/>
+			<Cell CellID="C_14" Value="261###010211###Chì, kẽm(50_2010/NĐ-CP)###Kg###10###0###1"/>
+			<Cell CellID="C_15A" Value="262###010212###Nhôm, bô-xít (bouxite)(50_2010/NĐ-CP)###Kg###12###0###1"/>
+			<Cell CellID="C_16A" Value="263###010213###Đồng, ni-ken (niken)(50_2010/NĐ-CP)###Kg###10###0###1"/>
+			<Cell CellID="C_17" Value="264###010214###Cô-ban (coban), mô-lip-đen (molipden), thuỷ ngân, ma-nhê (magie), va-na-đi (vanadi)(50_2010/NĐ-CP)###Kg###10###0###1"/>
+			<Cell CellID="C_12A" Value="157###010206###Các loại khoáng sản kim loại màu khác###Kg###7###0###1"/>
+			<Cell CellID="C_19" Value="265###0103###Khoáng sản kim loại khác(50_2010/NĐ-CP)###Kg###10###0###1"/>
+			<Cell CellID="C_15B" Value="160###020101a###Đất khai thác, san lấp, xây đắp công trình###M3###3###0###1"/>
+			<Cell CellID="C_22B" Value="268###020101b###Đất khai thác để san lấp, xây dựng công trình(50_2010/NĐ-CP)###M3###4###0###1"/>
+			<Cell CellID="C_16B" Value="161###020102a###K.sản không KL dùng làm VLXD khác (đá, cát, sỏi, đất làm gạch ...)###M3###5###0###1"/>
+			<Cell CellID="C_22A" Value="269###020102b###Đá, sỏi(50_2010/NĐ-CP)###M3###6###0###1"/>
+			<Cell CellID="C_100A" Value="270###020103###Đá nung vôi và sản xuất xi măng(50_2010/NĐ-CP)###M3###7###0###1"/>
+			<Cell CellID="C_111" Value="271###020104###Cát(50_2010/NĐ-CP)###M3###10###0###1"/>
+			<Cell CellID="C_112" Value="272###020105###Cát làm thuỷ tinh(50_2010/NĐ-CP)###M3###11###0###1"/>
+			<Cell CellID="C_113" Value="273###020106###Đất làm gạch(50_2010/NĐ-CP)###M3###7###0###1"/>
+			<Cell CellID="C_18" Value="163###020201###Granit, đô nô mit, sét chịu lửa...###M3###7###0###1"/>
+			<Cell CellID="C_114" Value="275###020202###Gờ-ra-nít (granite)(50_2010/NĐ-CP)###M3###10###0###1"/>
+			<Cell CellID="C_29A" Value="276###020203###Sét chịu lửa(50_2010/NĐ-CP)###M3###10###0###1"/>
+			<Cell CellID="C_30B" Value="277###020204###Đô-Nô-mít (dolomite), quắc-zít (quartzite)(50_2010/NĐ-CP)###M3###12###0###1"/>
+			<Cell CellID="C_20" Value="165###020301###Pirit,Phosphosit,cao lanh,mica,...###M3###7###0###1"/>
+			<Cell CellID="C_32" Value="279###020303###Cao lanh(50_2010/NĐ-CP)###M3###10###0###1"/>
+			<Cell CellID="C_33" Value="280###020304###Mi-ca (mica), thạch anh kỹ thuật(50_2010/NĐ-CP)###M3###10###0###1"/>
+			<Cell CellID="C_115" Value="281###020305###Pi-rít (pirite), phốt-pho-rít (phosphorite)(50_2010/NĐ-CP)###M3###7###0###1"/>
+			<Cell CellID="C_21" Value="166###020302###Apatít, Secpăngtin###M3###3###0###1"/>
+			<Cell CellID="C_23B" Value="168###0301a###Than an tra xit hầm lò###Tấn###4###0###1"/>
+			<Cell CellID="C_23A" Value="284###0301b###Than an tra xit hầm lò(50_2010/NĐ-CP)###Tấn###5###0###1"/>
+			<Cell CellID="C_24B" Value="169###0302a###Than an tra xit lộ thiên###Tấn###6###0###1"/>
+			<Cell CellID="C_24A" Value="285###0302b###Than an tra xit lộ thiên(50_2010/NĐ-CP)###Tấn###7###0###1"/>
+			<Cell CellID="C_25B" Value="170###0303a###Than nâu, than mỡ###Tấn###6###0###1"/>
+			<Cell CellID="C_25A" Value="286###0303b###Than nâu, than mỡ(50_2010/NĐ-CP)###Tấn###7###0###1"/>
+			<Cell CellID="C_26B" Value="171###0304a###Than khác###Tấn###4###0###1"/>
+			<Cell CellID="C_26A" Value="287###0304b###Than khác(50_2010/NĐ-CP)###Tấn###5###0###1"/>
+			<Cell CellID="C_28B" Value="173###0401a###Kim cương, rubi, saphia ...###M3###16###0###1"/>
+			<Cell CellID="C_28A" Value="289###0401b###Kim cương, rubi, saphia ...(50_2010/NĐ-CP)###M3###22###0###1"/>			
+			<Cell CellID="C_116" Value="290###0405###E-mô-rốt (emerald), a-lếch-xan-đờ-rít (alexandrite), ô-pan (opan) quý màu đen(50_2010/NĐ-CP)###M3###20###0###1"/>
+			<Cell CellID="C_29B" Value="174###0402###A dit, rôdôlit, pyrốp, berin, spinen...###M3###12###0###1"/>
+			<Cell CellID="C_117" Value="291###0406###A-dít, rô-đô-lít (rodolite), py-rốp (pyrope), bê-rin (berin), sờ-pi-nen (spinen), tô-paz (topaz)(50_2010/NĐ-CP)###M3###15###0###1"/>
+			<Cell CellID="C_30A" Value="175###0403###Các loại đá quý khác###M3###10###0###1"/>
+			<Cell CellID="C_118" Value="292###0407###Thạch anh tinh thể màu tím xanh, vàng lục, da cam; cờ-ri-ô-lít (cryolite); ô-pan (opan) quý màu trắng, đỏ lửa; phen-sờ-phát (fenspat); birusa; nê-phờ-rít (nefrite)(50_2010/NĐ-CP)###M3###15###0###1"/>
+			<Cell CellID="C_31B" Value="176###0404a###Các loại khoáng sản không kim loại khác###M3###4###0###1"/>
+			<Cell CellID="C_31A" Value="293###0404b###Các loại khoáng sản không kim loại khác(50_2010/NĐ-CP)###M3###5###0###1"/>
+			<Cell CellID="C_34B" Value="179###050101a###Dầu thô đến 20.000 thùng/ngày đvới DAKKĐT###Tấn###6###1###1"/>
+			<Cell CellID="C_34A" Value="296###050101b###Dầu thô đến 20.000 thùng/ngày đvới DAKKĐT(50_2010/NĐ-CP)###Tấn###7###1###1"/>
+			<Cell CellID="C_35A" Value="180###050102a###Dầu thô trên 20.000 đến 50.000 thùng/ngày đvới DAKKĐT###Tấn###8###1###1"/>
+			<Cell CellID="C_35B" Value="297###050102b###Dầu thô trên 20.000 đến 50.000 thùng/ngày đvới DAKKĐT(50_2010/NĐ-CP)###Tấn###9###1###1"/>
+			<Cell CellID="C_36B" Value="181###050103a###Dầu thô trên 50.000 đến 75.000 thùng/ngày đvới DAKKĐT###Tấn###10###1###1"/>
+			<Cell CellID="C_36A" Value="298###050103b###Dầu thô trên 50.000 đến 75.000 thùng/ngày đvới DAKKĐT(50_2010/NĐ-CP)###Tấn###11###1###1"/>
+			<Cell CellID="C_37B" Value="182###050104a###Dầu thô trên 75.000 đến 100.000 thùng/ngày đvới DAKKĐT###Tấn###12###1###1"/>
+			<Cell CellID="C_37A" Value="299###050104b###Dầu thô trên 75.000 đến 100.000 thùng/ngày đvới DAKKĐT(50_2010/NĐ-CP)###Tấn###13###1###1"/>
+			<Cell CellID="C_38B" Value="183###050105a###Dầu thô trên 100.000 đến 150.000 thùng/ngày đvới DAKKĐT###Tấn###17###1###1"/>
+			<Cell CellID="C_38A" Value="300###050105b###Dầu thô trên 100.000 đến 150.000 thùng/ngày đvới DAKKĐT(50_2010/NĐ-CP)###Tấn###18###1###1"/>
+			<Cell CellID="C_39A" Value="184###050106a###Dầu thô trên 150.000 thùng/ngày đvới DAKKĐT###Tấn###22###1###1"/>
+			<Cell CellID="C_39B" Value="301###050106b###Dầu thô trên 150.000 thùng/ngày đvới DAKKĐT(50_2010/NĐ-CP)###Tấn###23###1###1"/>
+			<Cell CellID="C_41B" Value="186###050201a###Dầu thô đến 20.000 thùng/ngày đvới DA khác###Tấn###8###1###1"/>
+			<Cell CellID="C_41A" Value="303###050201b###Dầu thô đến 20.000 thùng/ngày đvới DA khác(50_2010/NĐ-CP)###Tấn###10###1###1"/>
+			<Cell CellID="C_42B" Value="187###050202a###Dầu thô trên 20.000 đến 50.000 thùng/ngày đvới DA khác###Tấn###10###1###1"/>
+			<Cell CellID="C_42A" Value="304###050202b###Dầu thô trên 20.000 đến 50.000 thùng/ngày đvới DA khác(50_2010/NĐ-CP)###Tấn###12###1###1"/>
+			<Cell CellID="C_43B" Value="188###050203a###Dầu thô trên 50.000 đến 75.000 thùng/ngày đvới DA khác###Tấn###12###1###1"/>
+			<Cell CellID="C_43A" Value="305###050203b###Dầu thô trên 50.000 đến 75.000 thùng/ngày đvới DA khác(50_2010/NĐ-CP)###Tấn###14###1###1"/>
+			<Cell CellID="C_44B" Value="189###050204a###Dầu thô trên 75.000 đến 100.000 thùng/ngày đvới DA khác###Tấn###17###1###1"/>
+			<Cell CellID="C_44A" Value="306###050204b###Dầu thô trên 75.000 đến 100.000 thùng/ngày đvới DA khác(50_2010/NĐ-CP)###Tấn###19###1###1"/>
+			<Cell CellID="C_45B" Value="190###050205a###Dầu thô trên 100.000 đến 150.000 thùng/ngày đvới DA khác###Tấn###22###1###1"/>
+			<Cell CellID="C_45A" Value="307###050205b###Dầu thô trên 100.000 đến 150.000 thùng/ngày đvới DA khác(50_2010/NĐ-CP)###Tấn###24###1###1"/>
+			<Cell CellID="C_46A" Value="191###050206a###Dầu thô trên 150.000 thùng/ngày đvới DA khác###Tấn###27###1###1"/>
+			<Cell CellID="C_46B" Value="308###050206b###Dầu thô trên 150.000 thùng/ngày đvới DA khác(50_2010/NĐ-CP)###Tấn###29###1###1"/>
+			<Cell CellID="C_49A" Value="194###060101a###Khí TN, khí than đến 5 triệu m3/ngày đvới DAKKĐT###M3###0###1###1"/>
+			<Cell CellID="C_49B" Value="311###060101b###Khí TN, khí than đến 5 triệu m3/ngày đvới DAKKĐT(50_2010/NĐ-CP)###M3###1###1###1"/>
+			<Cell CellID="C_50" Value="195###060102###Khí TN, khí than trên 5 đến 10 triệu m3/ngày đvới DAKKĐT###M3###3###1###1"/>						
+			<Cell CellID="C_51" Value="196###060103###Khí TN, khí than trên 10 triệu m3/ngày đvới DAKKĐT###M3###6###1###1"/>
+			<Cell CellID="C_53A" Value="198###060201a###Khí TN, khí than đến 5 triệu m3/ngày đvới DA khác###M3###0###1###1"/>
+			<Cell CellID="C_53B" Value="315###060201b###Khí TN, khí than đến 5 triệu m3/ngày đvới DA khác(50_2010/NĐ-CP)###M3###2###1###1"/>			
+			<Cell CellID="C_54" Value="199###060202###Khí TN, khí than trên 5 đến 10 triệu m3/ngày đvới DA khác###M3###5###1###1"/>
+			<Cell CellID="C_55" Value="200###060203###Khí TN, khí than trên 10 triệu m3/ngày đvới DA khác###M3###10###1###1"/>			
+			<Cell CellID="C_58A" Value="203###070101a###Gỗ nhóm 1###M3###40###0###1"/>
+			<Cell CellID="C_58B" Value="320###070101b###Gỗ nhóm I(50_2010/NĐ-CP)###M3###35###0###1"/>
+			<Cell CellID="C_59A" Value="204###070102a###Gỗ nhóm 2###M3###35###0###1"/>
+			<Cell CellID="C_59B" Value="321###070102b###Gỗ nhóm II(50_2010/NĐ-CP)###M3###30###0###1"/>
+			<Cell CellID="C_60A" Value="205###070103a###Gỗ nhóm 3 , 4###M3###30###0###1"/>
+			<Cell CellID="C_60B" Value="322###070103b###Gỗ nhóm III , IV(50_2010/NĐ-CP)###M3###20###0###1"/>
+			<Cell CellID="C_61A" Value="206###070104a###Gỗ nhóm 5,6,7,8###M3###25###0###1"/>
+			<Cell CellID="C_61B" Value="323###070104b###Gỗ nhóm V,VI,VII,VIII và các loại gỗ khác(50_2010/NĐ-CP)###M3###15###0###1"/>			
+			<Cell CellID="C_67" Value="212###070601a###Gỗ cành, ngọn###M3###15###0###1"/>
+			<Cell CellID="C_78" Value="325###070601b###Cành, ngọn, gốc, rễ (50_2010/NĐ-CP)###M3###10###0###1"/>
+			<Cell CellID="C_68" Value="213###070602###Củi###M3###5###0###1"/>
+			<Cell CellID="C_69" Value="214###0707###Tre, nứa..###M3###10###0###1"/>
+			<Cell CellID="C_82B" Value="329###070801###Trầm hương, kỳ nam ###Kg###25###0###1"/>
+			<Cell CellID="C_83" Value="330###070802###Hồi, quế, sa nhân, thảo quả ###Kg###10###0###1"/>
+			<Cell CellID="C_73" Value="218###070803###Các loại dược liệu khác###Kg###5###0###1"/>
+			<Cell CellID="C_84A" Value="331###0709###Sản phẩm khác của rừng tự nhiên (50_2010/NĐ-CP)###Kg###5###0###1"/>
+			<Cell CellID="C_86" Value="333###0801###Ngọc trai, bào ngư, hải sâm ###Kg###10###0###1"/>
+			<Cell CellID="C_79" Value="224###0802a###Tôm cá mực và các loại thuỷ sản khác###Kg###2###0###1"/>
+			<Cell CellID="C_87B" Value="334###0802b###Hải sản tự nhiên khác (50_2010/NĐ-CP)###Kg###2###0###1"/>
+			<Cell CellID="C_81" Value="226###0901a###Nước khoáng TN, nước TN tinh lọc đóng chai hộp###M3###8###0###1"/>
+			<Cell CellID="C_89A" Value="336###0901b###Nước khoáng thiên nhiên, nước nóng thiên nhiên, nước thiên nhiên tinh lọc đóng chai, đóng hộp (50_2010/NĐ-CP)###M3###8###0###1"/>
+			<Cell CellID="C_82A" Value="227###0902a###Nước TN dùng sản xuất thuỷ điện###KWh###2###0###1"/>
+			<Cell CellID="C_90" Value="337###0902b###Nước thiên nhiên dùng cho sản xuất thủy điện (50_2010/NĐ-CP)###KWh###2###0###1"/>
+			<Cell CellID="C_93B" Value="340###09030101###Sử dụng nước mặt làm nguyên liệu (50_2010/NĐ-CP)###M3###3###0###1"/>
+			<Cell CellID="C_94" Value="341###09030102###Sử dụng nước dưới đất làm nguyên liệu (50_2010/NĐ-CP)###M3###5###0###1"/>
+			<Cell CellID="C_96A" Value="343###09030201###Sử dụng nước mặt phục vụ sản xuất###M3###1###0###1"/>
+			<Cell CellID="C_87A" Value="232###09030202a###Nước TN sử dụng nước dưới đất phục vụ SX###M3###2###0###1"/>
+			<Cell CellID="C_97" Value="344###09030202b###Sử dụng nước dưới đất phục vụ sản xuất (50_2010/NĐ-CP)###M3###3###0###1"/>
+			<Cell CellID="C_92" Value="237###09040101a###Sử dụng nước mặt trong hoạt động dịch vụ###M3###3###0###1"/>
+			<Cell CellID="C_100B" Value="347###09040101b###Sử dụng nước mặt khai thác dùng cho hoạt động dịch vụ, sản xuất công nghiệp, xây dựng, khai khoáng (50_2010/NĐ-CP)###M3###3###0###1"/>
+			<Cell CellID="C_93A" Value="238###09040102a###Sử dụng nước dưới đất trong hoạt động dịch vụ###M3###5###0###1"/>
+			<Cell CellID="C_101A" Value="348###09040102b###Sử dụng nước dưới đất dùng cho hoạt động dịch vụ, sản xuất công nghiệp, xây dựng, khai khoáng (50_2010/NĐ-CP)###M3###6###0###1"/>
+			<Cell CellID="C_95" Value="240###09040201a###Sử dụng nước mặt trong ngành SX công nghiệp và xây dựng###M3###3###0###1"/>
+			<Cell CellID="C_103A" Value="350###09040201b###Sử dụng nước mặt khai thác dùng vào mục đích khác (50_2010/NĐ-CP)###M3###1###0###1"/>
+			<Cell CellID="C_96B" Value="241###09040202a###Sử dụng nước dưới đất trong ngành SX công nghiệp và xây dựng###M3###4###0###1"/>
+			<Cell CellID="C_104" Value="351###09040202b###Sử dụng nước dưới đất khai thác dùng vào mục đích khác (50_2010/NĐ-CP)###M3###3###0###1"/>
+			<Cell CellID="C_62" Value="207###0702###Gỗ Trụ mỏ###M3###20###0###1"/>
+			<Cell CellID="C_63" Value="208###0703###Gỗ làm nguyên liệu giấy###M3###20###0###1"/>
+			<Cell CellID="C_64" Value="209###0704###Gỗ cột buồm, cọc đáy###M3###20###0###1"/>
+			<Cell CellID="C_65" Value="210###0705###Gỗ tẩm, đước, gỗ tràm###M3###20###0###1"/>
+			<Cell CellID="C_75" Value="220###070901###Chim thú rừng (loại được phép khai thác)###Kg###20###0###1"/>
+			<Cell CellID="C_76" Value="221###070902###Sản phẩm rừng tự nhiên khác###Kg###5###0###1"/>
+			<Cell CellID="C_84B" Value="229###090301###Nước TN sử dụng làm NL tạo thành yếu tố vật chất trong SXSP###M3###3###0###1"/>
+			<Cell CellID="C_89B" Value="234###09030301###Trường hợp dùng nước dưới đất SX nước sạch###M3###0.5###0###1"/>	
+			<Cell CellID="C_98" Value="243###09040301###Sử dụng nước mặt khai thác dùng vào mục đích khác###M3###0###0###1"/>
+			<Cell CellID="C_99" Value="244###09040302###Sử dụng nước dưới đất khai thác dùng vào mục đích khác###M3###0.5###0###1"/>
+			<Cell CellID="C_101B" Value="246###1001a###Yến sào thiên nhiên###Kg###20###0###1"/>
+			<Cell CellID="C_103B" Value="248###1101b###Tài nguyên khác###Kg###10###1###1"/>
+		</Cells>
+	</Section>
+</Sections>
