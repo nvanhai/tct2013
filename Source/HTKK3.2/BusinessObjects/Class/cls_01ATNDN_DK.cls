@@ -857,7 +857,8 @@ Private Sub UpdateSheets()
                
                 '.GetText lCol, lRow, varTemp
                 'UpdateCell fps, lCol, lRow, varTemp
-                If (lRow = 28 And lCol = .ColLetterToNumber("Y")) Or (lRow = 28 And lCol = .ColLetterToNumber("AS")) Then
+                If (lRow = 28 And lCol = .ColLetterToNumber("Y")) Or (lRow = 28 And lCol = .ColLetterToNumber("AS")) _
+                Or (lRow = 49 And lCol = .ColLetterToNumber("S")) Or (lRow = 49 And lCol = .ColLetterToNumber("AC")) Then
                     .GetText lCol, lRow, varTemp
 
                     If varTemp = "1" Or UCase(CStr(varTemp)) = "X" Then
