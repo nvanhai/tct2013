@@ -5301,7 +5301,7 @@ Private Sub OptBosung_Click()
                     Set fpsNgaykhaiBS.Container = frmKy
                     fpsNgaykhaiBS.Top = 1350
                     fpsNgaykhaiBS.Left = 960
-                ElseIf varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Then
+                ElseIf varMenuId = "93" Or varMenuId = "89" Then
                     frmKy.Height = 2650
                     Frame2.Top = 2600
                     Set fpsNgaykhaiBS.Container = frmKy
@@ -5784,7 +5784,7 @@ Private Sub OptChinhthuc_Click()
                 ElseIf varMenuId = "80" Or varMenuId = "82" Then
                     frmKy.Height = 1400
                     Frame2.Top = 1700
-                ElseIf varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Then
+                ElseIf varMenuId = "93" Or varMenuId = "89" Then
                     frmKy.Height = 2250
                     Frame2.Top = 2600
                 ElseIf varMenuId = "99" Then
@@ -7582,7 +7582,9 @@ Private Sub SetActiveValueKHBS()
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(14), "Active", 1
     ElseIf varMenuId = "83" Then
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(4), "Active", 1
-    ElseIf varMenuId = "96" Or varMenuId = "94" Or varMenuId = "98" Then
+    ElseIf varMenuId = "96" Or varMenuId = "94" Or varMenuId = "98" Or varMenuId = "99" Then
+        SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(2), "Active", 1
+    ElseIf varMenuId = "92" Then
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(2), "Active", 1
     End If
 End Sub

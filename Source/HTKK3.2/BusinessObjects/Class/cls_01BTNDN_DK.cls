@@ -58,6 +58,8 @@ Public Sub Prepare1()
         fps.EventEnabled(EventAllEvents) = True
         
     End With
+    
+    setCQTQuanLyHoanThue fps
 
 End Sub
 
@@ -658,3 +660,178 @@ Public Sub inThongTinDL()
     ' end
 End Sub
 
+' Lay ve so tong dieu chinh
+Public Function getChiTieuTongDC(strOldValue As String) As String
+    Dim varTemp As Variant
+    Dim strCurrentValue As String
+    With fps
+        .Sheet = 1
+        .GetText .ColLetterToNumber("AV"), 63, varTemp
+        strCurrentValue = Val(varTemp) - Val(strOldValue)
+        getChiTieuTongDC = strCurrentValue
+    End With
+End Function
+
+' Lay ve chi tieu 29 o to khai lan truoc
+Public Function getValueCTDC(strFileLoadData As String) As String
+
+    Dim xmlDomLastData As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+
+    'Dim strOriginDataFileName As String
+    Dim strDataFileName As String, strCurrentDataFileName As String
+    Dim result As String
+    Dim iDom As Integer
+    Dim MY As Date
+
+    iDom = 0
+    With xmlDomLastData
+        .resolveExternals = True
+        .validateOnParse = True
+        .async = False
+        If .Load(strFileLoadData) = True Then
+            Set xmlNode = .nodeFromID("AV_" & 63)
+            result = Val(GetAttribute(xmlNode, "Value"))
+        End If
+    End With
+    getValueCTDC = result
+    Exit Function
+
+ErrorHandle:
+    SaveErrorLog "cls_01BTNDN_DK", "getValueCTDC", Err.number, Err.Description
+End Function
+
+
+Public Function getValueTK(strFileLoadData As String) As String
+
+    Dim xmlDomLastData As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+
+    'Dim strOriginDataFileName As String
+    Dim strDataFileName As String, strCurrentDataFileName As String
+    Dim result As String
+    Dim iDom As Integer
+    Dim MY As Date
+
+    iDom = 0
+    With xmlDomLastData
+        .resolveExternals = True
+        .validateOnParse = True
+        .async = False
+        If .Load(strFileLoadData) = True Then
+            '[29]
+            Set xmlNode = .nodeFromID("AV_" & 62)
+            result = "CT29_" & Val(GetAttribute(xmlNode, "Value"))
+            Set xmlNode = Nothing
+        End If
+    End With
+    getValueTK = result
+    Exit Function
+
+ErrorHandle:
+    SaveErrorLog "cls_01BTNDN_DK", "getValueTK", Err.number, Err.Description
+End Function
+
+
+Function getMapCT() As String
+    On Error GoTo ErrHandle
+    
+    Dim tempValue As Variant
+    Dim strPath As String
+    Dim i As Integer
+    Dim xmlDocument As New MSXML.DOMDocument
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim xmlNodeListItem As MSXML.IXMLDOMNodeList
+    Dim xmlNodeItem As MSXML.IXMLDOMNode
+    strPath = GetAbsolutePath(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "TemplateFolder")) & "MapMCT_TT28.xml"
+    
+    If xmlDocument.Load(strPath) Then
+        Set xmlNodeListItem = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
+        For Each xmlNode In xmlNodeListItem
+            If GetAttribute(xmlNode, "ID") = GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") Then
+                Exit For
+            End If
+        Next
+    End If
+    
+    Set xmlNodeListItem = xmlNode.childNodes
+    
+    For Each xmlNodeItem In xmlNodeListItem
+         tempValue = tempValue & "~" & GetAttribute(xmlNodeItem, "MCT") & "_" & GetAttribute(xmlNodeItem, "Caption")
+    Next
+    tempValue = Mid(tempValue, 2)
+    getMapCT = tempValue
+    Exit Function
+ErrHandle:
+    SaveErrorLog "cls_01BTNDN_DK", "getMapCT", Err.number, Err.Description
+End Function
+
+
+Public Function getDieuChinhGiam(strOldValue As String) As String
+    Dim varTemp As Variant
+    Dim strCurrentValue, strDieuChinhGiam, strDieuChinhTang As String
+    Dim tempArrOld() As String
+    Dim tempArrCurr() As String
+    Dim tempArrOldValue() As String
+    Dim tempArrCurrValue() As String
+    Dim i, j As Integer
+    Dim strMaCT As String
+    Dim arrMapCT() As String ' Luu gia tri cua dong chi tieu
+    Dim arrMapCTValue() As String ' Luu gia tri cua cac cell chi tieu
+    strMaCT = getMapCT
+    With fps
+                .Sheet = 1
+                '[29]
+                .GetText .ColLetterToNumber("AV"), 62, varTemp
+                strCurrentValue = "CT29_" & Trim(varTemp)
+
+                ' tinh chenh lech giua 2 lan dieu chinh
+                tempArrOld = Split(strOldValue, "~")
+                tempArrCurr = Split(strCurrentValue, "~")
+                arrMapCT = Split(strMaCT, "~")
+                strDieuChinhGiam = ""
+                strDieuChinhTang = ""
+                For i = 0 To UBound(tempArrOld)
+                    tempArrOldValue = Split(tempArrOld(i), "_")
+                    tempArrCurrValue = Split(tempArrCurr(i), "_")
+                    ' lay cac gia tri cua tung cot trong sheet KHBS
+                    For j = 0 To UBound(arrMapCT)
+                        arrMapCTValue = Split(arrMapCT(j), "_")
+                        ' phan tu so 0 la ma chi tieu
+                        If arrMapCTValue(0) = Mid(tempArrOldValue(0), 3) Then
+                            strMaCT = arrMapCT(j)
+                            Exit For
+                        End If
+                    Next j
+                
+                If Left(strMaCT, 2) = "29" Then
+                    If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) > 0 Then
+                        ' dieu chinh giam
+                        strDieuChinhGiam = strDieuChinhGiam & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
+                    End If
+                    If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) < 0 Then
+                        ' dieu chinh tang
+                        strDieuChinhTang = strDieuChinhTang & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
+                    End If
+                Else
+                    If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) < 0 Then
+                        ' dieu chinh giam
+                        strDieuChinhGiam = strDieuChinhGiam & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
+                    End If
+                    If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) > 0 Then
+                        ' dieu chinh tang
+                        strDieuChinhTang = strDieuChinhTang & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
+                    End If
+                End If
+                Next i
+                If strDieuChinhGiam <> "" Then
+                    strDieuChinhGiam = Mid(strDieuChinhGiam, 2, Len(strDieuChinhGiam) - 1)
+                End If
+                If strDieuChinhTang <> "" Then
+                    strDieuChinhTang = Mid(strDieuChinhTang, 2, Len(strDieuChinhTang) - 1)
+                End If
+                getDieuChinhGiam = strDieuChinhGiam & "###" & strDieuChinhTang
+      End With
+End Function
