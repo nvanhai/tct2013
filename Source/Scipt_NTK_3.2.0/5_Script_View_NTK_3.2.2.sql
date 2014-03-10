@@ -477,7 +477,7 @@ CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_01_2_TD_GTGT AS
 );
 
 --01_BCTL_DK
-create or replace view rcv_v_tkhai_01_bctl_dk as
+create or replace view QLT_NTK.rcv_v_tkhai_01_bctl_dk as
 select
     tmp.hdr_id          hdr_id ,
     tmp.row_id          row_id ,
@@ -499,7 +499,7 @@ from
             max(dtl.KHI_THIEN_NHIEN) KHI_THIEN_NHIEN ,
             max(dtl.GHI_CHU)         GHI_CHU
         from
-            rcv_gdien_tkhai gd,
+            QLT_NTK.rcv_gdien_tkhai gd,
             (
                 select
                     tkd.hdr_id,
@@ -512,9 +512,9 @@ from
                     decode(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, null) KHI_THIEN_NHIEN,
                     decode(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, null) GHI_CHU
                 from
-                    rcv_tkhai_dtl tkd,
-                    rcv_gdien_tkhai gdien,
-                    rcv_map_ctieu ctieu
+                    QLT_NTK.rcv_tkhai_dtl tkd,
+                    QLT_NTK.rcv_gdien_tkhai gdien,
+                    QLT_NTK.rcv_map_ctieu ctieu
                 where
                     (
                         ctieu.gdn_id = gdien.id)
@@ -532,4 +532,74 @@ from
             dtl.row_id,
             dtl.so_tt,
             dtl.ma_ctieu ) tmp;
-	
+
+--KHBS_01A_TNDN_DK
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_KHBS13 AS
+SELECT   dtl.hdr_id, dtl.so_tt so_tt, dtl.row_id row_id,
+            MAX (dtl.ten_ctieu_dc) ten_ctieu_dc, MAX (dtl.ma_ctieu) ma_ctieu,
+            MAX (dtl.so_da_kk) so_da_kk, MAX (dtl.so_dieu_chinh)
+                                                                so_dieu_chinh,
+            MAX (dtl.so_chenh_lech) so_chenh_lech
+       FROM QLT_NTK.rcv_gdien_tkhai gd,
+            (SELECT tkd.hdr_id, tkd.row_id row_id, gdien.ID,
+                    gdien.so_tt so_tt,
+                    DECODE (gdien.cot_01,
+                            tkd.ky_hieu, tkd.gia_tri,
+                            NULL
+                           ) ten_ctieu_dc,
+                    DECODE (gdien.cot_02,
+                            tkd.ky_hieu, '[' || tkd.gia_tri || ']',
+                            NULL
+                           ) ma_ctieu,
+                    DECODE (gdien.cot_03,
+                            tkd.ky_hieu, tkd.gia_tri,
+                            NULL
+                           ) so_da_kk,
+                    DECODE (gdien.cot_04,
+                            tkd.ky_hieu, tkd.gia_tri,
+                            NULL
+                           ) so_dieu_chinh,
+                    DECODE (gdien.cot_05,
+                            tkd.ky_hieu, tkd.gia_tri,
+                            NULL
+                           ) so_chenh_lech
+               FROM QLT_NTK.RCV_TKHAI_DTL tkd,
+                    QLT_NTK.rcv_gdien_tkhai gdien,
+                    QLT_NTK.rcv_map_ctieu ctieu
+              WHERE (ctieu.gdn_id = gdien.ID)
+                AND (ctieu.ky_hieu = tkd.ky_hieu)
+                AND (   tkd.loai_dlieu = 'KHBS_01A_TNDN13'
+                     OR tkd.loai_dlieu = 'KHBS_01B_TNDN13'
+                     OR tkd.loai_dlieu = 'KHBS_03_GTGT13'
+                     OR tkd.loai_dlieu = 'KHBS_02_GTGT13'
+                     OR tkd.loai_dlieu = 'KHBS_01_TAIN13'
+                     OR tkd.loai_dlieu = 'KHBS_01_TTDB13'
+                     OR tkd.loai_dlieu = 'KHBS_03_NTNN13'
+                     OR tkd.loai_dlieu = 'KHBS_05_GTGT13'
+                     OR tkd.loai_dlieu = 'KHBS_01_BVMT13'
+                     OR tkd.loai_dlieu = 'KHBS_04_GTGT13'
+                     OR tkd.loai_dlieu = 'KHBS_02_TNDN13'
+                     OR tkd.loai_dlieu = 'KHBS_01_PHXD13'
+                      OR tkd.loai_dlieu = 'KHBS_01_NTNN13'
+                       OR tkd.loai_dlieu = 'KHBS_01_TBVMT13'
+                       OR tkd.loai_dlieu = 'KHBS_01A_TNDN_DK'
+                    )) dtl
+      WHERE (   gd.loai_dlieu = 'KHBS_01A_TNDN13'
+             OR gd.loai_dlieu = 'KHBS_01B_TNDN13'
+             OR gd.loai_dlieu = 'KHBS_03_GTGT13'
+             OR gd.loai_dlieu = 'KHBS_02_GTGT13'
+             OR gd.loai_dlieu = 'KHBS_01_TAIN13'
+             OR gd.loai_dlieu = 'KHBS_01_TTDB13'
+             OR gd.loai_dlieu = 'KHBS_03_NTNN13'
+             OR gd.loai_dlieu = 'KHBS_05_GTGT13'
+             OR gd.loai_dlieu = 'KHBS_01_BVMT13'
+             OR gd.loai_dlieu = 'KHBS_04_GTGT13'
+             OR gd.loai_dlieu = 'KHBS_02_TNDN13'
+             OR gd.loai_dlieu = 'KHBS_01_PHXD13'
+			 OR gd.loai_dlieu = 'KHBS_01_NTNN13'
+       OR gd.loai_dlieu = 'KHBS_01_TBVMT13'
+       OR gd.loai_dlieu = 'KHBS_01A_TNDN_DK'
+            )
+        AND (dtl.ID = gd.ID)
+   GROUP BY dtl.hdr_id, dtl.so_tt, dtl.row_id;
+			
