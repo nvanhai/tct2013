@@ -135,9 +135,9 @@
 	<Infor ID="0136" Msg="Chỉ tiêu số [16] hạch toán vào Mục 1000, tiểu mục 1003"/>
 	<Infor ID="0137" Msg="B¹n cã kª khai gi¶m trõ gia c¶nh cho ng­êi phô thuéc kh«ng?"/>
 	<Infor ID="0138" Msg="Tr­êng hîp ®iÒu ch×nh lµm t¨ng sè thuÕ khÊu trõ, ®Ò nghÞ b¹n kh«ng dïng mÉu KHBS mµ kª khai vµo kú hiÖn t¹i vµ kÌm theo gi¶i tr×nh trªn phô lôc 01_3/GTGT "/>
-	<Infor ID="0139" Msg="B¹n h·y vui lßng ®iÒn thªm th«ng tin vÒ c¬ quan thuÕ qu¶n lý sau khi n©ng cÊp UD cã phÇn quyÕt to¸n thuÕ TNCN!"/>
-	<Infor ID="0140" Msg="Th«ng tin kª khai sai. Ph¶i söa ®óng tr­íc khi kÕt xuÊt ra file Excel!"/>
-	<Infor ID="0141" Msg="M· sè thuÕ cña file Excel kh¸c víi m· sè thuÕ ®¨ng nhËp vµo UD HTKK. §Ò nghÞ kiÓm tra l¹i!"/>
+	<Infor ID="0139" Msg="B¹n h·y vui lßng ®iÒn thªm th«ng tin vÒ c¬ quan thuÕ qu¶n lý sau khi n©ng cÊp UD cã phÇn quyÕt to¸n thuÕ TNCN!"/>	
+	<Infor ID="0140" Msg="Th«ng tin kª khai sai. Ph¶i söa ®óng tr­íc khi kÕt xuÊt ra file Excel!"/>	
+	<Infor ID="0141" Msg="M· sè thuÕ cña file Excel kh¸c víi m· sè thuÕ ®¨ng nhËp vµo UD HTKK. §Ò nghÞ kiÓm tra l¹i!"/>	
 	<Infor ID="0142" Msg="Kú kª khai trong file Excel kh«ng n»m trong kú hiÖu lùc cña tê khai TNCN, §Ò nghÞ kiÓm tra l¹i!"/>
 	<Infor ID="0143" Msg="B¹n ®©ng chän sai mÉu. H·y chän ®óng tê khai 05/KK-TNCN!"/>
 	<Infor ID="0144" Msg="B¹n ®©ng chän sai mÉu. H·y chän ®óng tê khai 09/KK-TNCN!"/>
@@ -180,7 +180,7 @@
 	<Infor ID="0187" Msg="Gia hạn nộp theo QĐ 21/2011/QĐ-TTg"/>
 	<Infor ID="0188" Msg="Kú b¸o c¸o kh«ng ®­îc lín h¬n kú hiÖn t¹i"/>
 	<Infor ID="0189" Msg="Hạch toán chỉ tiêu [38] mục 1000,  tiểu mục 1003"/>
-	<Infor ID="0190" Msg="Hạch toán chỉ tiêu [23] vào mục 1000,  tiểu mục 1003"/>
+	<Infor ID="0190" Msg="Hạch toán chỉ tiêu [23] vào mục 1000,  tiểu mục 1003"/>	
 	<Infor ID="0191" Msg="Hạch toán chỉ tiêu [09] vào tiểu mục 1701"/>
 	<Infor ID="0192" Msg="Hạch toán chỉ tiêu [13] vào tiểu mục 1052"/>
 	<Infor ID="0193" Msg="Hạch toán chỉ tiêu [27] vào mục 1700, tiểu mục 1701"/>
@@ -220,16 +220,16 @@
 	<Infor ID="0227" Msg="Lo¹i kho¸ng s¶n nµy ®· ®­îc chän"/>
 	<Infor ID="0228" Msg="Mất, cháy, hỏng hoá đơn đầu vào"/>
 	<Infor ID="0229" Msg="Mất, cháy, hỏng hoá đơn chưa BC sử dụng"/>
-	<Infor ID="0230" Msg="Mất, cháy, hỏng hoá đơn đã BC sử dụng"/>
-	<Infor ID="0231" Msg="Hạch toán chỉ tiêu [22] + [24] vào mục 1000, tiểu mục 1004"/>
-	<Infor ID="0232" Msg="Hạch toán chỉ tiêu [26] vào mục 1000, tiểu mục 1008"/>
-	<Infor ID="0233" Msg="Hạch toán chỉ tiêu [28] vào mục 1000, tiểu mục 1007"/>
+	<Infor ID="0230" Msg="Mất, cháy, hỏng hoá đơn đã BC sử dụng"/>		
+	<Infor ID="0231" Msg="Hạch toán chỉ tiêu [22] + [24] vào mục 1000, tiểu mục 1004"/>	
+	<Infor ID="0232" Msg="Hạch toán chỉ tiêu [26] vào mục 1000, tiểu mục 1008"/>	
+	<Infor ID="0233" Msg="Hạch toán chỉ tiêu [28] vào mục 1000, tiểu mục 1007"/>	
 	<Infor ID="0234" Msg="Hạch toán chỉ tiêu [31] vào mục 1000, tiểu mục 1003"/>
-	<Infor ID="0235" Msg="Ngày thanh toán không được lớn hơn kỳ kê khai."/>
-	<Infor ID="0236" Msg="Tờ khai quý"/>
+	<Infor ID="0235" Msg="Ngày thanh toán không được lớn hơn kỳ kê khai."/>	
+	<Infor ID="0236" Msg="Tờ khai quý"/>	
 	<Infor ID="0237" Msg="Loại tờ khai"/>
-	<Infor ID="0238" Msg="Hạch toán chỉ tiêu [39] + [44] vào tiểu mục 1054"/>
-	<Infor ID="0239" Msg="Hạch toán chỉ tiêu [39] + [44] vào tiểu mục 1053"/>
+	<Infor ID="0238" Msg="Hạch toán chỉ tiêu [39] + [44] vào tiểu mục 1054"/>	
+	<Infor ID="0239" Msg="Hạch toán chỉ tiêu [39] + [44] vào tiểu mục 1053"/>	
 	<Infor ID="0240" Msg="B¹n chØ ®­îc nhËp môc I hoÆc môc II "/>
 	<Infor ID="0241" Msg="Âm "/>
 	<Infor ID="0242" Msg="Tªn ngµnh nghÒ kinh doanh ®· ®­îc chän "/>
@@ -244,22 +244,22 @@
 	<Infor ID="0251" Msg="Hạch toán chỉ tiêu [E] vào mục 1050, tiểu mục 1057"/>
 	<Infor ID="0252" Msg="Tõ th¸ng ph¶i thuéc kú tÝnh thuÕ"/>
 	<Infor ID="0253" Msg="Tõ th¸ng, ®Õn th¸ng cho phÐp kª v¾t n¨m nh­ng kh«ng ®­îc qu¸ 12 th¸ng"/>
-	<Infor ID="0254" Msg="Kú b¸o c¸o tõ ngµy kh«ng ®­îc lín h¬n kú b¸o c¸o ®Õn ngµy"/>
-	<Infor ID="0255" Msg="Kú b¸o c¸o ®Õn ngµy kh«ng ®­îc lín h¬n ngµy cuèi quý"/>
-	<Infor ID="0256" Msg="Kú b¸o c¸o tõ ngµy kh«ng ®­îc nhá h¬n ngµy ®Çu quý"/>
-	<Infor ID="0257" Msg="Kú b¸o c¸o tõ ngµy kh«ng ®­îc nhá h¬n ngµy 01 th¸ng 01 n¨m 2011"/>
+	<Infor ID="0254" Msg="Kú b¸o c¸o tõ ngµy kh«ng ®­îc lín h¬n kú b¸o c¸o ®Õn ngµy"/>	
+	<Infor ID="0255" Msg="Kú b¸o c¸o ®Õn ngµy kh«ng ®­îc lín h¬n ngµy cuèi quý"/>	
+	<Infor ID="0256" Msg="Kú b¸o c¸o tõ ngµy kh«ng ®­îc nhá h¬n ngµy ®Çu quý"/>	
+	<Infor ID="0257" Msg="Kú b¸o c¸o tõ ngµy kh«ng ®­îc nhá h¬n ngµy 01 th¸ng 01 n¨m 2011"/>	
 	<Infor ID="0258" Msg="Hạch toán chỉ tiêu [09] vào tiểu mục 1052 "/>
 	<Infor ID="0259" Msg="Hạch toán chỉ tiêu [4] vào tiểu mục 1052 "/>
-	<Infor ID="0260" Msg="Gia hạn nộp theo QĐ 21/2011/QĐ-TTg; QĐ 54/2011/QĐ-TTg"/>
+	<Infor ID="0260" Msg="Gia hạn nộp theo QĐ 21/2011/QĐ-TTg; QĐ 54/2011/QĐ-TTg"/>	 	
 	<Infor ID="0261" Msg="Tªn hµng hãa nµy ®· ®­îc chän"/>
 	<Infor ID="0262" Msg="Gia hạn"/>
 	<Infor ID="0263" Msg="Gia hạn"/>
 	<Infor ID="0264" Msg="Trường hợp được gia hạn:"/>
 	<Infor ID="0265" Msg="Gia hạn theo NQ02"/>
-	<Infor ID="0266" Msg="Tê khai 07/TNCN chØ ®­îc kª khai theo th¸ng víi c¸c kú kª khai tõ th¸ng 6/2013 trë vÒ tr­íc"/>
-	<Infor ID="0267" Msg="Tê khai 07/TNCN chØ ®­îc kª khai theo quý víi c¸c kú kª khai tõ th¸ng 7/2013 trë ®i"/>
-	<Infor ID="0268" Msg="Cho người phụ thuộc (1.600.000đ x Số người phụ thuộc)"/>
-	<Infor ID="0269" Msg="Cho người phụ thuộc (3.600.000đ x Số người phụ thuộc)"/>
+	<Infor ID="0266" Msg="Tê khai 07/TNCN chØ ®­îc kª khai theo th¸ng víi c¸c kú kª khai tõ th¸ng 6/2013 trë vÒ tr­íc"/>	
+	<Infor ID="0267" Msg="Tê khai 07/TNCN chØ ®­îc kª khai theo quý víi c¸c kú kª khai tõ th¸ng 7/2013 trë ®i"/>	
+	<Infor ID="0268" Msg="Cho người phụ thuộc (1.600.000đ x Số người phụ thuộc)"/>	
+	<Infor ID="0269" Msg="Cho người phụ thuộc (3.600.000đ x Số người phụ thuộc)"/>	
 	<Infor ID="0270" Msg="Th«ng tin nµy ®· ®­îc chän, ®Ò nghÞ chän th«ng tin thay ®æi kh¸c."/>
 	<Infor ID="0271" Msg="Ngµy lËp KHBS ph¶i sau h¹n nép tê khai"/>
 	<Infor ID="0272" Msg="Tê khai GTGT chØ ®­îc kª khai tõ quý 3/2013 trë ®i"/>
