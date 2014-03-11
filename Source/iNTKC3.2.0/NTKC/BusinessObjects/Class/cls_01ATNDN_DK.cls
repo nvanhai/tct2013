@@ -493,6 +493,16 @@ Public Function Prepared3() As Boolean
             .Text = strNgayHopDongDL
             UpdateCell fps, .Col, .Row, .Text
         End If
+        
+        ' set KyLB doi voi cac truong hop nhan tu dong iHTKK
+        .Col = .ColLetterToNumber(KY_LAP_BO_COL)
+        .Row = KY_LAP_BO_ROW
+        If TAX_Utilities_iNTK.NhanTuDongIHTKK = True And TAX_Utilities_iNTK.HthucNopIHTKK = True Then
+             If TAX_Utilities_iNTK.KyLBIHTKK <> "" Then
+                .Text = TAX_Utilities_iNTK.KyLBIHTKK
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+        End If
         '.EventEnabled(EventAllEvents) = True
     End With
     
@@ -629,12 +639,15 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
     
+    Dim vItkhai_ID, vHTHUC_NOP As String
+    
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
     Dim vNGANH_NGHE_KD, vTO_KHAI_LAN_PS, vNGAY_PS As Variant
-    Dim vDAU_THO, vCONDENSATE, vKHI_THIEN_NHIEN, vKY_KE_KHAI As Variant
+    Dim vDAU_THO, vCONDENSATE, vKHI_THIEN_NHIEN, vKY_KE_KHAI, vLOAI_TK_DK, vNGAY_XUAT_BAN_DK, vLAN_XUAN_BAN_DK, vLOAI_KY, vLOAI_KYKK As Variant
     
 On Error GoTo ErrHandle
     strSQL = strSQL_HDR
+    strSQL = Replace(strSQL, ")", ",LOAI_TK_DK,NGAY_XUAT_BAN_DK,LAN_XUAN_BAN_DK,LOAI_KYKK)")
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
@@ -699,10 +712,86 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("G"), 38, vCONDENSATE
         .GetText .ColLetterToNumber("J"), 38, vKHI_THIEN_NHIEN
         .GetText .ColLetterToNumber("D"), 39, vKY_KE_KHAI
+        ' Ma dai ly thue
+        .GetText .ColLetterToNumber("I"), 19, vTIN_DL
+        .GetText .ColLetterToNumber(SO_HOP_DONG_DL_COL), SO_HOP_DONG_DL_ROW, vSO_HOP_DONG
+        .GetText .ColLetterToNumber(NGAY_HOP_DONG_DL_COL), NGAY_HOP_DONG_DL_ROW, vNGAY_HOP_DONG
+        .GetText .ColLetterToNumber("J"), 37, vLAN_BS
+        .GetText .ColLetterToNumber("D"), 37, vCHINH_THUC
+        .GetText .ColLetterToNumber("D"), 39, vNGAY_PS
+        .GetText .ColLetterToNumber("W"), 39, vLOAI_KY
+        .GetText .ColLetterToNumber("Y"), 7, vNGAY_XUAT_BAN_DK
+        .GetText .ColLetterToNumber("Y"), 4, vLAN_XUAN_BAN_DK
+
+        If Trim(vCHINH_THUC) = "1" Then
+            vLAN_BS = "0"
+        End If
+        
+        If Len(Trim(vTIN_DL)) = 13 Then
+            vTIN_DL = Left(vTIN_DL, 10) & "-" & Right(vTIN_DL, 3)
+        End If
+        
+        If Trim(vNGAY_PS) = "" Or vNGAY_PS = vbNullString Then
+            vNGAY_PS = "null"
+        Else
+            vNGAY_PS = "'" & vNGAY_PS & "'"
+            vNGAY_PS = "to_date(" & vNGAY_PS & ",'dd/mm/yyyy')"
+        End If
+        
+        If Trim(vNGAY_XUAT_BAN_DK) = "" Or vNGAY_XUAT_BAN_DK = vbNullString Then
+            vNGAY_XUAT_BAN_DK = "null"
+        Else
+            vNGAY_XUAT_BAN_DK = "'" & vNGAY_XUAT_BAN_DK & "'"
+            vNGAY_XUAT_BAN_DK = "to_date(" & vNGAY_XUAT_BAN_DK & ",'dd/mm/yyyy')"
+        End If
+        
+        If Trim(vNGAY_HOP_DONG) = "" Or vNGAY_HOP_DONG = vbNullString Then
+            vNGAY_HOP_DONG = "null"
+        Else
+            vNGAY_HOP_DONG = "'" & vNGAY_HOP_DONG & "'"
+            vNGAY_HOP_DONG = "to_date(" & vNGAY_HOP_DONG & ",'dd/mm/yyyy')"
+        End If
     End With
     
+     'Neu la to khai iHtkk thi lay ngay nop tu bang rcv_ihtkk_mvach
+    If TAX_Utilities_iNTK.HthucNopIHTKK = True Then
+        vNGAY_NOP = TAX_Utilities_iNTK.NgayNopIHTKK
+        vItkhai_ID = TAX_Utilities_iNTK.IDTokhaiIHTKK
+        vHTHUC_NOP = "'I'"
+    Else
+        vItkhai_ID = "null"
+        vHTHUC_NOP = "null"
+    End If
+    ' end
+    
+    'Giá tr?  =”0’ t? khai tháng, =”1’ t? khai l?n phát sinh, =”2” t? khai theo l?n xu?t bán
+    If (vDAU_THO = "1") Then
+        vLOAI_TK_DK = "DT"
+    ElseIf (vCONDENSATE = "1") Then
+        vLOAI_TK_DK = "CD"
+    ElseIf (vKHI_THIEN_NHIEN = "1") Then
+        vLOAI_TK_DK = "KTN"
+    End If
+    
+    'valid data
+    If (vLOAI_KY <> "2") Then
+        vLAN_XUAN_BAN_DK = "null"
+    End If
+    If (vLOAI_KY = "0") Then
+        vNGAY_XUAT_BAN_DK = "null"
+        vNGAY_PS = "null"
+    End If
+    
+    If (vLOAI_KY = "0") Then
+        vLOAI_KYKK = "T"
+    ElseIf (vLOAI_KY = "1") Then
+        vLOAI_KYKK = "D"
+    ElseIf (vLOAI_KY = "2") Then
+        vLOAI_KYKK = "L"
+    End If
+    
     'Ky/ Quy KK
-    If Trim(vKHI_THIEN_NHIEN) = "1" Then
+    If Trim(vLOAI_KY) = "0" Then
         'ky thang
         'Ngay dau ky ke khai va ngay cuoi ky ke khai
         dDate = dNgayDauKy
@@ -711,7 +800,9 @@ On Error GoTo ErrHandle
         dDate = DateAdd("d", -1, dDate)
         strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     Else
-        strSQL = strSQL & "null,null,"
+        'strSQL = strSQL & "null,null,"
+        strSQL = strSQL & vNGAY_PS & "," 'tu ngay
+        strSQL = strSQL & vNGAY_PS & "," 'toi ngay
     End If
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
@@ -742,52 +833,18 @@ On Error GoTo ErrHandle
                 Exit For
             End If
         Next
-        
-        
-        .Sheet = 1
-       ' Ma dai ly thue
-        .GetText .ColLetterToNumber("I"), 19, vTIN_DL
-        .GetText .ColLetterToNumber(SO_HOP_DONG_DL_COL), SO_HOP_DONG_DL_ROW, vSO_HOP_DONG
-        .GetText .ColLetterToNumber(NGAY_HOP_DONG_DL_COL), NGAY_HOP_DONG_DL_ROW, vNGAY_HOP_DONG
-        .GetText .ColLetterToNumber("J"), 37, vLAN_BS
-        .GetText .ColLetterToNumber("D"), 37, vCHINH_THUC
-        If Trim(vCHINH_THUC) = "1" Then
-            vLAN_BS = "0"
-        End If
-        
-        If Len(Trim(vTIN_DL)) = 13 Then
-            vTIN_DL = Left(vTIN_DL, 10) & "-" & Right(vTIN_DL, 3)
-        End If
-        
-        
-        If Trim(vNGAY_HOP_DONG) = "" Or vNGAY_HOP_DONG = vbNullString Then
-            vNGAY_HOP_DONG = "null"
-        Else
-            vNGAY_HOP_DONG = "'" & vNGAY_HOP_DONG & "'"
-            vNGAY_HOP_DONG = "to_date(" & vNGAY_HOP_DONG & ",'dd/mm/yyyy')"
-        End If
     End With
+
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
     strSQL = strSQL & "null,"
-    'strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
+    strSQL = strSQL & vHTHUC_NOP & "," & vItkhai_ID & ","
     strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ","
-    
-    'NGANH_NGHE_KD-> Loai to khai dau khi,TO_KHAI_LAN_PS,NGAY_PS
-    If (vDAU_THO = "1") Then
-        vNGANH_NGHE_KD = "DT"
-    ElseIf (vCONDENSATE = "1") Then
-        vNGANH_NGHE_KD = "CD"
-    ElseIf (vKHI_THIEN_NHIEN = "1") Then
-        vNGANH_NGHE_KD = "KTN"
-    End If
-    strSQL = strSQL & "'" & vNGANH_NGHE_KD & "',"
-    
-    If (vKHI_THIEN_NHIEN = "1") Then
-        strSQL = strSQL & "null,null,"
+
+    strSQL = strSQL & "null,null,"  'nganh nghe kinh doanh, lan phat sinh = null
+    If (vLOAI_KY = "2") Then
+        strSQL = strSQL & vNGAY_PS & ",'" & vLOAI_TK_DK & "'," & vNGAY_XUAT_BAN_DK & ",'" & vLAN_XUAN_BAN_DK & "','" & vLOAI_KYKK & "')"
     Else
-        'todo ................
-        '.....................
-        strSQL = strSQL & "null,null,"
+        strSQL = strSQL & vNGAY_PS & ",'" & vLOAI_TK_DK & "'," & vNGAY_XUAT_BAN_DK & "," & vLAN_XUAN_BAN_DK & ",'" & vLOAI_KYKK & "')"
     End If
     
     GenerateSQL_Header = strSQL

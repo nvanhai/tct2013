@@ -16,9 +16,9 @@ Public dNgayDauKy As Date
 Public dNgayCuoiKy As Date
 
 Public Const SS_SORT_ORDER_ASCENDING = 1
-Public Const APP_VERSION = "3.2.1"
+Public Const APP_VERSION = "9.9.9"
 
-Public Const HTKK_LAST_VERSION = "3.2.1"
+Public Const HTKK_LAST_VERSION = "9.9.9"
 
 Public Const SS_BORDER_TYPE_NONE = 0
 Public Const SS_BORDER_TYPE_LEFT = 1
@@ -1199,7 +1199,7 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "58" Then changeMaToKhai = "15_04_LCTTGT"
     
     'If strID = "24" Then changeMaToKhai = "48_01_CDKT"
-    If strID = "24" Then changeMaToKhai = "01_BCTL_DK13"
+    If strID = "24" Then changeMaToKhai = "01_BCTL_DK"
     
     'If strID = "25" Then changeMaToKhai = "48_02_SXKD"
     If strID = "25" Then changeMaToKhai = "01_TNCN_BHDC13"
@@ -1220,8 +1220,17 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "65" Then changeMaToKhai = "01_AC"
     If strID = "66" Then changeMaToKhai = "BC21_AC"
     If strID = "67" Then changeMaToKhai = "03_TBAC"
+            If strID = "07" Then changeMaToKhai = "01_TBAC_BLP"
+    If strID = "13" Then changeMaToKhai = "01_AC_BLP"
+    If strID = "09" Then changeMaToKhai = "BC21_AC_BLP"
+    If strID = "10" Then changeMaToKhai = "03_TBAC_BLP"
     If strID = "68" Then changeMaToKhai = "BC26_AC"
     If strID = "91" Then changeMaToKhai = "04_TBAC"
+        ' Cac mau bien lai
+    If strID = "07" Then changeMaToKhai = "01_TBAC_BLP"
+    If strID = "13" Then changeMaToKhai = "01_AC_BLP"
+    If strID = "09" Then changeMaToKhai = "BC21_AC_BLP"
+    If strID = "10" Then changeMaToKhai = "03_TBAC_BLP"
     
     'Mau moi V3.2.0
     If strID = "94" Then changeMaToKhai = "01_TD_GTGT13"
@@ -1229,6 +1238,13 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "22" Then changeMaToKhai = "95_BCTC"
     If strID = "95" Then changeMaToKhai = "03B_GTGT11"
     If strID = "23" Then changeMaToKhai = "01_TNCN_TTS"
+    
+    'To khai dau khi thuy dien
+    If strID = "92" Then changeMaToKhai = "01_TAIN_DK"
+    If strID = "98" Then changeMaToKhai = "01A_TNDN_DK"
+    If strID = "99" Then changeMaToKhai = "01B_TNDN_DK"
+    If strID = "96" Then changeMaToKhai = "03_TD_TAIN"
+    If strID = "94" Then changeMaToKhai = "01_TD_GTGT"
 End Function
 
 ' Ham change sang ma cua QLT
