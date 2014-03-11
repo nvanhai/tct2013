@@ -2924,7 +2924,7 @@ Private Sub CheckDynamicError()
                     End If
 
               .Col = .ColLetterToNumber("B")
-             .Row = i + 6
+             .Row = i + 42
              i = i + 1
         Loop Until .Text = "aa"
 
