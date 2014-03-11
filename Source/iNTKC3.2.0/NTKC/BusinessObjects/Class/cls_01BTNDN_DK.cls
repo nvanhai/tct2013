@@ -373,6 +373,15 @@ Public Function Prepared3() As Boolean
             .Text = strNgayHopDongDL
             UpdateCell fps, .Col, .Row, .Text
         End If
+        ' set KyLB doi voi cac truong hop nhan tu dong iHTKK
+        .Col = .ColLetterToNumber(KY_LAP_BO_COL)
+        .Row = KY_LAP_BO_ROW
+        If TAX_Utilities_iNTK.NhanTuDongIHTKK = True And TAX_Utilities_iNTK.HthucNopIHTKK = True Then
+             If TAX_Utilities_iNTK.KyLBIHTKK <> "" Then
+                .Text = TAX_Utilities_iNTK.KyLBIHTKK
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+        End If
         '.EventEnabled(EventAllEvents) = True
     End With
     
@@ -513,7 +522,9 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     Dim i              As Long, j As Long
     Dim strMaPhongXuLy As String
     
-    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
+    Dim vItkhai_ID, vHTHUC_NOP As String
+    
+    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC, vKY_KE_KHAI, vLOAI_TK_DK, vLOAI_KYKK As Variant
     
     On Error GoTo ErrHandle
     strSQL = strSQL_HDR
@@ -572,13 +583,24 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
 
     Next
     
+     'Neu la to khai iHtkk thi lay ngay nop tu bang rcv_ihtkk_mvach
+    If TAX_Utilities_iNTK.HthucNopIHTKK = True Then
+        vNGAY_NOP = TAX_Utilities_iNTK.NgayNopIHTKK
+        vItkhai_ID = TAX_Utilities_iNTK.IDTokhaiIHTKK
+        vHTHUC_NOP = "'I'"
+    Else
+        vItkhai_ID = "null"
+        vHTHUC_NOP = "null"
+    End If
+    ' end
+    
     strSQL = strSQL & "'" & vHdrID & "',"
     strSQL = strSQL & vKKBS & ","
     strSQL = strSQL & "'" & vTIN & "',"
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
-    'vLOAI_TKHAI = TAX_Utilities_iNTK.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "01B_TNDN_DK13"
+    'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
+    vLOAI_TKHAI = "01B_TNDN_DK"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
@@ -662,7 +684,11 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
     'strSQL = strSQL & "null)"
     strSQL = strSQL & "null,"
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
+    
+    vLOAI_KYKK = "Q"
+    vLOAI_TK_DK = "KTN"
+    strSQL = strSQL & vHTHUC_NOP & "," & vItkhai_ID & ","
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ",'" & Trim(vLOAI_TK_DK) & "','" & Trim(vLOAI_KYKK) & "')"
     GenerateSQL_Header = strSQL
     'Debug.Print GenerateSQL_Header
     
