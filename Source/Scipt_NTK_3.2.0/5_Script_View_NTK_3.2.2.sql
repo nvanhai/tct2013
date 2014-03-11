@@ -586,6 +586,7 @@ SELECT   dtl.hdr_id, dtl.so_tt so_tt, dtl.row_id row_id,
                      OR tkd.loai_dlieu = 'KHBS_01B_TNDN_DK'
                      OR tkd.loai_dlieu = 'KHBS_01_TD_GTGT'
                      OR tkd.loai_dlieu = 'KHBS_03_TD_TAIN'
+					 OR tkd.loai_dlieu = 'KHBS_01_TAIN_DK'
                        
                     )) dtl
       WHERE (   gd.loai_dlieu = 'KHBS_01A_TNDN13'
@@ -600,12 +601,13 @@ SELECT   dtl.hdr_id, dtl.so_tt so_tt, dtl.row_id row_id,
              OR gd.loai_dlieu = 'KHBS_04_GTGT13'
              OR gd.loai_dlieu = 'KHBS_02_TNDN13'
              OR gd.loai_dlieu = 'KHBS_01_PHXD13'
-			       OR gd.loai_dlieu = 'KHBS_01_NTNN13'
+			 OR gd.loai_dlieu = 'KHBS_01_NTNN13'
              OR gd.loai_dlieu = 'KHBS_01_TBVMT13'
              OR gd.loai_dlieu = 'KHBS_01A_TNDN_DK'
              OR gd.loai_dlieu = 'KHBS_01B_TNDN_DK'
              OR gd.loai_dlieu = 'KHBS_01_TD_GTGT'
              OR gd.loai_dlieu = 'KHBS_03_TD_TAIN'
+			 OR gd.loai_dlieu = 'KHBS_01_TAIN_DK'
             )
         AND (dtl.ID = gd.ID)
    GROUP BY dtl.hdr_id, dtl.so_tt, dtl.row_id;
