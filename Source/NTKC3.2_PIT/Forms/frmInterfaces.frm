@@ -1152,9 +1152,9 @@ Private Sub cmdSave_Click()
     Set rs = Nothing
 
     
-    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 95 Or idToKhai = 92 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 99 Or idToKhai = 24 Or idToKhai = 25 Or idToKhai = 23 Then
+    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 95 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 99 Or idToKhai = 24 Or idToKhai = 25 Or idToKhai = 23 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28").nodeValue)
-    ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 5 Or idToKhai = 70 Or idToKhai = 71 Or idToKhai = 72 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Or idToKhai = 98 Or idToKhai = 6 Or idToKhai = 90 Then
+    ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 5 Or idToKhai = 70 Or idToKhai = 71 Or idToKhai = 72 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Or idToKhai = 98 Or idToKhai = 92 Or idToKhai = 6 Or idToKhai = 90 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28_NNKD").nodeValue)
     Else
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdr").nodeValue)
@@ -1757,12 +1757,6 @@ Private Sub Command1_Click()
 'str2 = "aa320132300100778   01201400200200100101/0101/01/2009<S01><S>~01/01/2014~30/06/2014</S><S>6868686868~dfsdfsd~21312~01/01/2014~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-14P~0000001~0000010~10~~2222222222~dsfsd~23432~01/01/2014~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP3-001~AB-14P~0000001~0000010~10~</S><S>HÔng~19/02/2014</S></S01>"
 'Barcode_Scaned str2
 
-'01_TAIN_DK
-'str2 = "aa320922300100778   01201400200200100201/0114/06/2006<S01><S></S><S>3~~x~01/01/2014~1~0~0~1234567~1~1</S><S>10000~10000~100~1000000~10~100000~20000</S><S>123~456~HÔng~25/02/2014~1~~25/01/2014</S></S01>"
-'Barcode_Scaned str2
-'str2 = "aa320922300100778   012014002002002002<S01-1><S>100000</S><S>6868686868~cuong~50~50000~~2300100778~le~50~50000~</S><S>100000</S></S01-1>"
-'Barcode_Scaned str2
-
 'str2 = "aa320982300100778   01201400200200100201/0114/06/2006<S01><S></S><S>5~x~~~1~0~0~fdgfsdg4r542~1~1</S><S>10000~10000~100000000~20~20000000~100000~19900000~20000</S><S>a~b~HÔng~26/02/2014~1~~26/01/2014</S></S01>"
 'Barcode_Scaned str2
 'str2 = "aa320982300100778   012014002002002002<S01-1><S>19900000</S><S>6868686868~sdfsd~50~9950000~~2222222222~dsfsd~50~9950000~</S><S>100~19900000</S></S01-1>"
@@ -1876,14 +1870,9 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '--01B/TNDN-DK
-'str2 = "aa999992300100778   04201300100100100101/0101/01/1900<S01><S></S><S>KhiLo001~x~x</S><S>10000.00~2000.0000~20000000.00~2000.00~19998000.00~10.00~1999800.00~2000.00~1997800.00~21500</S><S>hoten~cc~Minh NhÀt~05/03/2014~1~</S></S01>"
+'str2 = "aa999992300100778   04201300200200100201/0101/01/1900<S01><S></S><S>KhiLo001~x~x</S><S>10000.00~2000.0000~20000000.00~2000.00~19998000.00~10.00~1999800.00~2000.00~1997800.00~21500</S><S>hoten~cc~Minh NhÀt~05/03/2014~1~</S></S01>"
 'Barcode_Scaned str2
-
-
-'--01/TAIN-DK
-'str2 = "aa320922300236909   01201400100100100201/0114/06/2006<S01><S></S><S>1~~x~01/01/2014~0~0~1~KL0002~0~1</S><S>22300~120000~19500~434850000~10~43485000~21500</S><S>hoten~cc~Lan H≠¨ng~04/03/2014~1~~</S></S01>"
-'Barcode_Scaned str2
-'str2 = "aa320922300236909   012014001001002002<S01-1><S>43485000</S><S>0102030405~CMC 01~40~17394000~ghi chu 01~6868686868~CMC 02~60~26091000~ghi chu 02</S><S>100~43485000</S></S01-1>"
+'str2 = "aa999992300100778   042013002002002002<S01-1><S>1997800</S><S>0102030405~cmc 01~10~199780~ok 1~2222222222~cmc 02~90~1798020~ok 2</S><S>100~1997800</S></S01-1>"
 'Barcode_Scaned str2
 
 '--01/TD-GTGT
@@ -1896,7 +1885,6 @@ Private Sub Command1_Click()
 'str2 = "aa999942300100778   04201300300300100101/0101/01/1900<S01><S></S><S>2323~232~538936~23~123955~22~123933</S><S>~Minh NhÀt~~10/03/2014~1~~~1</S></S01>"
 'Barcode_Scaned str2
 
-
 '--03/TD-TAIN
 'str2 = "aa999962300100778   04201300200200100201/0114/06/2006<S03><S></S><S>09040202~3</S><S>Thuy dien 01~0102030405~100002.000~1002.00~1002020~10000~1002020~Thuy dien 02~6868686868~2000.000~299.00~5980~1000~4980</S><S>1008000~11000~997000</S><S>hoten~cc~Minh NhÀt~07/03/2014~1~~~1</S></S03>"
 'Barcode_Scaned str2
@@ -1907,27 +1895,37 @@ Private Sub Command1_Click()
 'str2 = "aa999962300100778   04201300300300100101/0114/06/2006<S03><S></S><S>0902~2</S><S>CMC~0102030405~10000.000~20000.00~4000000~100~3999900</S><S>4000000~100~3999900</S><S>~~Minh NhÀt~10/03/2014~1~~~1</S></S03>"
 'Barcode_Scaned str2
 
-
 '--01/BCTL_DK
 'str2 = "aa999242300100778   00201300100100100101/0101/01/1900<S01><S></S><S>~1~0</S><S>11~22~33~ghi chu 01~22~33~11~ghi chu 2~100~200~200~ghi chu 3~0~0~0~100~0~0~0~200~11.00~22.00~33.00~ok~1.00~2.00~3.00~tl~12.00~32.00~11.00~ok~33.00~32.00~31.00~ok</S><S>hoten~Minh NhÀt~cc~09/03/2014~1~</S></S01>"
 'Barcode_Scaned str2
 
 '--01/TAIN-DK
-'str2 = "aa999922300100778   02201400200200100201/0101/01/1900<S01><S></S><S>~~x~01/01/2014~0~1~0~KL0001~0~1</S><S>123400~11221~12300~1517820000~11~166960200~21500</S><S>hoten~cc~Minh NhÀt~10/03/2014~1~~~0</S></S01>"
+'str2 = "aa999922300100778   03201400400400100201/0101/01/1900<S01><S></S><S>1~~x~01/01/2014~0~0~1~KLO11~x~</S><S>2500~1000~12300~30750000~15~4612500~21500</S><S>hoten~cc~Minh NhÀt~03/03/2014~1~~11/03/2014~2</S></S01>"
 'Barcode_Scaned str2
-'str2 = "aa999922300100778   022014002002002002<S01-1><S>166960200</S><S>0102030405~cmc 01~70~116872140~ghi chu 1~6868686868~cmc 02~30~50088060~ghi chu 2</S><S>100~166960200</S></S01-1>"
+'str2 = "aa999922300100778   032014004004002002<S01-1><S>4612500</S><S>0102030405~cmc 01~20~922500~ghi chu 1~6868686868~cmc 02~80~3690000~ghi chu 2</S><S>100~4612500</S></S01-1>"
 'Barcode_Scaned str2
+
 
 '--TO KHAI BO SUNG
 'str2 = "aa999982300100778   01201400100100100101/0101/01/1900<S01><S></S><S>~~x~01/01/2014~0~1~0~HDKL0002~~x</S><S>2000~100~200000~20~40000~11~39989~21500</S><S>hoten~cc~Minh NhÀt~20/10/2010~1~~~0</S></S01>"
 'Barcode_Scaned str2
 '--bo sung
-str2 = "bs999982300100778   01201400300300100301/0101/01/1900<S01><S></S><S>~~x~01/01/2014~0~1~0~HDKL0002~~x</S><S>2000~100~200000~20~40000~21~39979~21500</S><S>hoten~cc~Minh NhÀt~20/10/2010~~1~~0</S></S01>"
-Barcode_Scaned str2
-str2 = "bs999982300100778   012014003003002003<SKHBS><S>~~0~0~0</S><S>SË thu’ TNDN Æ≠Óc mi‘n ho∆c gi∂m (n’u c„)~34~11~21~10</S><S>"
-Barcode_Scaned str2
-str2 = "bs999982300100778   01201400300300300310/03/2014~18~0~0~hoantra~01/03/2014~10100~10101~1~2~ok con de~0~0~-10</S></SKHBS>"
-Barcode_Scaned str2
+'str2 = "bs999982300100778   01201400300300100301/0101/01/1900<S01><S></S><S>~~x~01/01/2014~0~1~0~HDKL0002~~x</S><S>2000~100~200000~20~40000~21~39979~21500</S><S>hoten~cc~Minh NhÀt~20/10/2010~~1~~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "bs999982300100778   012014003003002003<SKHBS><S>~~0~0~0</S><S>SË thu’ TNDN Æ≠Óc mi‘n ho∆c gi∂m (n’u c„)~34~11~21~10</S><S>"
+'Barcode_Scaned str2
+'str2 = "bs999982300100778   01201400300300300310/03/2014~18~0~0~hoantra~01/03/2014~10100~10101~1~2~ok con de~0~0~-10</S></SKHBS>"
+'Barcode_Scaned str2
+'==========================DATAFILE TRANG GAU ===============
+'--01/TD-GTGT
+'str2 = "aa999942300100778   01201400200200100101/0101/01/1900<S01><S>0010011000</S><S>3200~310~992000~23~228160~42100~186060</S><S>~Minh NhÀt~~11/03/2014~1~~~0</S></S01>"
+'Barcode_Scaned str2
+
+'--01/TAIN-DK
+str2 = "aa999922300100778   03201400300300100201/0101/01/1900<S01><S>0010011000</S><S>1~~x~24/02/2014~1~0~0~HD0678~x~</S><S>345.89~234.17~67.2381~23256.99~32.86~7642.25~18970</S><S>Kh∏nh Linh~MCT~Minh NhÀt~11/03/2014~1~~11/03/2014~2</S></S01>"
+Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+str2 = "aa999922300100778   032014003003002002<S01-1><S>7642.25</S><S>0102030405~nhµ th«u a~27.86~2129.13~~3600247325~nhµ th«u b~34.18~2612.12~~2300236909~nhµ th«u c~37.96~2901~</S><S>100~7642.25</S></S01-1>"
+Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 
 

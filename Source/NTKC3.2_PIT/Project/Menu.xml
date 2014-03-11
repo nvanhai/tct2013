@@ -92,7 +92,7 @@
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\Excel\01B_TNDN_DK.xls" ReportTemplate="..\ReportTemplates\excel\01B_TNDN_DK.xls" CatalogueID="01" Class="Tax_Business_Srv.cls_01BTNDN_DK">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01B_TNDN_DK" Ini="..\Ini\01B_TNDN_DK.xml"/>
 			<Sheet ID="01-1" Caption="01/PL-DK" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01B_1_TNDN_DK" InterfaceIni="..\InterfaceIni\01B_1_TNDN_DK.xml" ReportIni="..\ReportIni\01B_1_TNDN_DK.xml"/>
-			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01B_TNDN_DK" Ini="..\Ini\KHBS_01B_TNDN_DK.xml"/>
 		</Validity>
 	</Menu>	
 	<Menu ID="73" PopID="101" ParentID="103" Caption="TK TNDN cho chuyển nhượng BĐS (02/TNDN)" FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tndn.bmp">
@@ -351,6 +351,7 @@
 		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\Excel\03_TD_TAIN.xls" ReportTemplate="..\ReportTemplates\Excel\03_TD_TAIN.xls" Class="Tax_Business_Srv.cls_03TD_TAIN" CatalogueID="01" Class2="Tax_Business_Srv.clsReport001_1">
 			<Sheet ID="03" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_TD_TAIN" Ini="..\Ini\03_TD_TAIN.xml"/>
 			<Sheet ID="03-1" Caption="03-1/TĐ-TAIN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_1_TD_TAIN" InterfaceIni="..\InterfaceIni\03_1_TD_TAIN.xml" ReportIni="..\ReportIni\03_1_TD_TAIN.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_03_TD_TAIN" Ini="..\Ini\KHBS_03_TD_TAIN.xml"/>
 		</Validity>
 	</Menu>
 	<Menu ID="97" PopID="101" ParentID="105" Caption="Tờ khai thuế tài nguyên (03A/TĐ-TAIN)" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
