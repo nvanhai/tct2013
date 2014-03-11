@@ -495,8 +495,8 @@ Public Function Prepared3() As Boolean
         End If
         
         ' set KyLB doi voi cac truong hop nhan tu dong iHTKK
-        .Col = .ColLetterToNumber(KY_LAP_BO_COL)
-        .Row = KY_LAP_BO_ROW
+        .Col = .ColLetterToNumber("F")
+        .Row = 27
         If TAX_Utilities_iNTK.NhanTuDongIHTKK = True And TAX_Utilities_iNTK.HthucNopIHTKK = True Then
              If TAX_Utilities_iNTK.KyLBIHTKK <> "" Then
                 .Text = TAX_Utilities_iNTK.KyLBIHTKK
