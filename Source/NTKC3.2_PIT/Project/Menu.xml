@@ -78,7 +78,7 @@
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\Excel\01A_TNDN_DK.xls" ReportTemplate="..\ReportTemplates\excel\01A_TNDN_DK.xls" CatalogueID="01" Class="Tax_Business_Srv.cls_01ATNDN_DK">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01A_TNDN_DK" Ini="..\Ini\01A_TNDN_DK.xml"/>
 			<Sheet ID="01-1" Caption="01/PL-DK" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01A_1_TNDN_DK" InterfaceIni="..\InterfaceIni\01A_1_TNDN_DK.xml" ReportIni="..\ReportIni\01A_1_TNDN_DK.xml"/>
-			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01A_TNDN_DK" Ini="..\Ini\01A_TNDN_DK.xml"/>
 		</Validity>
 	</Menu>	
 	<Menu ID="12" PopID="101" ParentID="103" Caption="Tờ khai thuế TNDN tạm tính (01B/TNDN)" FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tndn.bmp">
