@@ -334,7 +334,7 @@
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\Excel\01_TAIN_DK.xls" ReportTemplate="..\ReportTemplates\excel\01_TAIN_DK.xls" CatalogueID="01" Class="Tax_Business_Srv.cls_01TAIN_DK">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_TAIN_DK" Ini="..\Ini\01_TAIN_DK.xml"/>
 			<Sheet ID="01-1" Caption="01/PL-DK" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_1_TAIN_DK" InterfaceIni="..\InterfaceIni\01_1_TAIN_DK.xml" ReportIni="..\ReportIni\01_1_TAIN_DK.xml"/>
-			<Sheet ID="KHBS" Caption="KHBS" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01_TAIN_DK" Ini="..\Ini\KHBS_01_TAIN_DK.xml"/>
 		</Validity>
 	</Menu>
 	
