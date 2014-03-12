@@ -2548,7 +2548,7 @@ Private Sub DeleteSheet(pIndex As Integer)
 '                    strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
 '                End If
                  If strQuy = "TK_THANG" Then
-                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & strLoaiTkDk & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                  ElseIf strQuy = "TK_LANPS" Then
                      strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                  ElseIf strQuy = "TK_LANXB" Then
