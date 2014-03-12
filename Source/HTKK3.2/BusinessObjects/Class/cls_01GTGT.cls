@@ -2835,7 +2835,7 @@ Private Sub CheckDynamicError()
    Dim vSoThueGTGTPN As Variant
    Dim flagCQT As Integer
    
-    iFlagvMst_PL6 = 1
+    iFlagvMst_PL6 = 0
     blCheck_S8 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
 ''    For i = 8 To .MaxRows - 13
     If blCheck_S8 Then
@@ -2924,8 +2924,8 @@ Private Sub CheckDynamicError()
                     End If
 
               .Col = .ColLetterToNumber("B")
-             .Row = i + 42
-             i = i + 1
+             .Row = .Row + 1
+             'i = i + 1
         Loop Until .Text = "aa"
 
 
