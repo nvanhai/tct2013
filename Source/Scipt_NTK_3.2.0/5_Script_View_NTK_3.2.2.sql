@@ -612,4 +612,93 @@ SELECT   dtl.hdr_id, dtl.so_tt so_tt, dtl.row_id row_id,
         AND (dtl.ID = gd.ID)
    GROUP BY dtl.hdr_id, dtl.so_tt, dtl.row_id;
 
+--01/GTGT
+--01/GTGT PL 01_1TD_GTGT13
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_01_1TD_GTGT13 AS
+(
+
+        SELECT
+            dtl.hdr_id,
+            dtl.so_tt                so_tt,
+            dtl.row_id                 row_id,
+            MAX (dtl.TEN_NHA_MAY)     TEN_NHA_MAY,
+            MAX (dtl.MA_SO_THUE)       MA_SO_THUE,
+            MAX (dtl.THUE_DAU_RA)     THUE_DAU_RA,
+            MAX (dtl.THUE_DAU_VAO)     THUE_DAU_VAO,
+            MAX (dtl.THUE_PHAI_NOP)              THUE_PHAI_NOP
+        FROM
+            (
+                SELECT
+                    tkd.hdr_id,
+                    tkd.row_id row_id,
+                    gdien.ID,
+                    gdien.so_tt                                            so_tt,
+                    DECODE (gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL ) TEN_NHA_MAY,
+                    DECODE (gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL ) MA_SO_THUE,
+                    DECODE (gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL ) THUE_DAU_RA,
+                    DECODE (gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL ) THUE_DAU_VAO,
+                    DECODE (gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL)  THUE_PHAI_NOP
+                FROM
+                    QLT_NTK.rcv_tkhai_dtl tkd,
+                    QLT_NTK.rcv_gdien_tkhai gdien,
+                    QLT_NTK.rcv_map_ctieu ctieu
+                WHERE
+                    (
+                        ctieu.gdn_id = gdien.ID)
+                AND (
+                        ctieu.ky_hieu = tkd.ky_hieu)
+                AND (
+                        tkd.loai_dlieu = '01_1TD_GTGT13' )
+                AND tkd.loai_dlieu = gdien.loai_dlieu) dtl
+        GROUP BY
+            dtl.hdr_id,
+            dtl.so_tt,
+            dtl.row_id
+);
+--01/GTGT PL 01_2TD_GTGT13
+CREATE OR REPLACE VIEW RCV_V_PLUC_01_2TD_GTGT13 AS
+(
+
+        SELECT
+            dtl.hdr_id,
+            dtl.so_tt                so_tt,
+            dtl.row_id                 row_id,
+            MAX (dtl.STT) STT,
+            MAX (dtl.CHI_TIEU)     CHI_TIEU,
+            MAX (dtl.MA_SO_THUE)       MA_SO_THUE,
+            MAX (dtl.CQT_QUAN_LY)     CQT_QUAN_LY,
+			MAX (dtl.CQT_PARENT_ID)     CQT_PARENT_ID,
+            MAX (dtl.TY_LE_PHAN_BO)              TY_LE_PHAN_BO,
+            MAX (dtl.THUE_PHAI_NOP)              THUE_PHAI_NOP
+        FROM
+            (
+                SELECT
+                    tkd.hdr_id,
+                    tkd.row_id row_id,
+                    gdien.ID,
+                    gdien.so_tt                                            so_tt,
+                    DECODE (gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL ) STT,
+                    DECODE (gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL ) CHI_TIEU,
+                    DECODE (gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL ) MA_SO_THUE,
+                    DECODE (gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL ) CQT_QUAN_LY,
+					DECODE (gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL ) CQT_PARENT_ID,
+                    DECODE (gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL)  TY_LE_PHAN_BO,
+                    DECODE (gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL)  THUE_PHAI_NOP
+                FROM
+                    QLT_NTK.rcv_tkhai_dtl tkd,
+                    QLT_NTK.rcv_gdien_tkhai gdien,
+                    QLT_NTK.rcv_map_ctieu ctieu
+                WHERE
+                    (
+                        ctieu.gdn_id = gdien.ID)
+                AND (
+                        ctieu.ky_hieu = tkd.ky_hieu)
+                AND (
+                        tkd.loai_dlieu = '01_2TD_GTGT13' )
+                AND tkd.loai_dlieu = gdien.loai_dlieu) dtl
+        GROUP BY
+            dtl.hdr_id,
+            dtl.so_tt,
+            dtl.row_id
+    );
 			
