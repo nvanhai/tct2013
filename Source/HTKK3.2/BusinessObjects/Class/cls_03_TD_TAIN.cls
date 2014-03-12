@@ -463,6 +463,7 @@ Private Sub CheckDynamicError()
         End If
         
         .Sheet = 2
+        Dim vChon As Variant
         If .SheetVisible = True Then
             mCurrentSheet = .Sheet
             'check phu luc 01_2
@@ -470,19 +471,22 @@ Private Sub CheckDynamicError()
             iWhiteRow = 1
             
             Do
-                .GetText .ColLetterToNumber("B"), .Row, vSTT
+             
+                
                 .GetText .ColLetterToNumber("C"), .Row, vTenNhaMay
+                .GetText .ColLetterToNumber("G"), .Row, vChon
                 .GetText .ColLetterToNumber("H"), .Row, vMST
-                .GetText .ColLetterToNumber("L"), .Row, vCQTCapCuc
                 .GetText .ColLetterToNumber("P"), .Row, vCQTCapDiaPhuong
                 .GetText .ColLetterToNumber("R"), .Row, vTyLePhanBo
                 .GetText .ColLetterToNumber("U"), .Row, vSoThuePhaiNop
-                If Trim$(vSTT) <> "" Or Trim$(vTenNhaMay) <> "" Or Trim$(vMST) <> "" Or Trim$(vCQTCapCuc) <> "" Or Trim$(vCQTCapDiaPhuong) <> "" Or Trim$(vTyLePhanBo) <> "0" Or Trim$(vSoThuePhaiNop) <> "0" Then
+                
+                
+                If Trim$(vTenNhaMay) <> "" Or Trim$(vMST) <> "" Or Trim$(vCQTCapDiaPhuong) <> "" Or Trim$(vTyLePhanBo) <> "0" Or Trim$(vSoThuePhaiNop) <> "0" Then
                     iWhiteRow = 0
                 End If
             
                 .Col = .ColLetterToNumber("C")
-                If (Trim(.Text) = vbNullString And iWhiteRow = 0) Then
+                If (Trim(.Text) = vbNullString And Trim(vChon) = "1" And iWhiteRow = 0) Then
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                     .CellNote = vMessRequire      'static
                     .BackColor = mErrorColor
@@ -494,21 +498,9 @@ Private Sub CheckDynamicError()
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 End If
     
-                .Col = .ColLetterToNumber("L")
-                If (Trim(.Text) = vbNullString And iWhiteRow = 0) Then
-                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                    .CellNote = vMessRequire      'static
-                    .BackColor = mErrorColor
-    
-                    iFlagEmpty = 1
-                Else
-                    .BackColor = mNonErrorColor
-                    .CellNote = ""
-                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                End If
                 
                 .Col = .ColLetterToNumber("P")
-                If (Trim(.Text) = vbNullString And iWhiteRow = 0) Then
+                If (Trim(.Text) = vbNullString And Trim(vChon) = "0" And iWhiteRow = 0) Then
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                     .CellNote = vMessRequire      'static
                     .BackColor = mErrorColor
