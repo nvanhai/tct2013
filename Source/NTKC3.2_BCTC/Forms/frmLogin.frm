@@ -281,7 +281,7 @@ On Error GoTo ErrorHandle
     'Date:18/04/06
     ' Them truong ten_nguoisudung dua vao QLT
         'get username
-        strSQL = "SELECT ten_nsd, mo_ta FROM bmt_nsd WHERE ten_nsd='" & userid & "' " & _
+        strSQL = "SELECT ten_nsd, mo_ta, MA_CQT FROM bmt_nsd WHERE ten_nsd='" & userid & "' " & _
         "AND MA_NSD IN (SELECT MA_NSD FROM bmt_nsd_nhom " & _
         "WHERE MA_NHOM IN (SELECT MA_NHOM FROM BMT_NHOM_CHUC_NANG " & _
         "WHERE MA_CHUC_NANG IN (SELECT MA_CHUC_NANG FROM bmt_chuc_nang " & _
@@ -306,7 +306,8 @@ On Error GoTo ErrorHandle
                 Set rec = clsDAO.Execute(strSQL)
             End If
             'get cqt id
-            strTaxOfficeId = clsConvert.Convert(rec.Fields(0).Value, TCVN, UNICODE)
+            'strTaxOfficeId = clsConvert.Convert(rec.Fields(0).Value, TCVN, UNICODE)
+            strTaxOfficeId = rec.Fields(2).Value
             If Len(Trim(strTaxOfficeId)) = 3 Then
                 ' ghep them 2 so 0 vao dang sau la lay duoc ma cuc thue
                 strTaxOfficeId = strTaxOfficeId & "00"
@@ -319,7 +320,7 @@ On Error GoTo ErrorHandle
     ElseIf rec.Fields(0).Value = -1 Then
         IsValidUser = 0
     Else
-        strSQL = "SELECT ten_nsd, mo_ta FROM bmt_nsd WHERE ten_nsd='" & userid & "' " & _
+        strSQL = "SELECT ten_nsd, mo_ta, MA_CQT FROM bmt_nsd WHERE ten_nsd='" & userid & "' " & _
         "AND MA_NSD IN (SELECT MA_NSD FROM bmt_nsd_nhom " & _
         "WHERE MA_NHOM IN (SELECT MA_NHOM FROM BMT_NHOM_CHUC_NANG " & _
         "WHERE MA_CHUC_NANG IN (SELECT MA_CHUC_NANG FROM bmt_chuc_nang " & _
@@ -342,7 +343,8 @@ On Error GoTo ErrorHandle
                 Set rec = clsDAO.Execute(strSQL)
             End If
             'get cqt id
-            strTaxOfficeId = clsConvert.Convert(rec.Fields(0).Value, TCVN, UNICODE)
+            'strTaxOfficeId = clsConvert.Convert(rec.Fields(0).Value, TCVN, UNICODE)
+            strTaxOfficeId = rec.Fields(2).Value
             If Len(Trim(strTaxOfficeId)) = 3 Then
                 ' ghep them 2 so 0 vao dang sau la lay duoc ma cuc thue
                 strTaxOfficeId = strTaxOfficeId & "00"

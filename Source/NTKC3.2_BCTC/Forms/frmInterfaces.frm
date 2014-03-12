@@ -2153,6 +2153,13 @@ Private Sub Barcode_Scaned(strBarcode As String)
     
     If Left$(strBarcode, 1) <> "0" Then
 
+        ' Phien ban NTKC cho chi CUc VAT chi nhan cac mau BCTC
+        If Trim(idToKhai) = "69" And Trim(idToKhai) = "19" And Trim(idToKhai) = "20" And Trim(idToKhai) = "22" And Trim(idToKhai) = "18" And Trim(idToKhai) = "21" Then
+        Else
+            DisplayMessage "0135", msOKOnly, miInformation
+            Exit Sub
+        End If
+
         'Version 1.2.0 and later
         ' Kiem tra neu version in to khai lon hon max_verion thi khong cho phep nhan
         'If Val(Left$(strBarcode, 3)) > Val(Replace$(APP_VERSION, ".", "")) Then
@@ -2288,6 +2295,11 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 Exit Sub
             End If
         End If
+        
+        
+        
+        
+        ' end check
         
         '--chan doi voi cac to khai bo sung cua lan phat sinh: y/c ngay 13/02/2014----------------
         Dim tmp_str    As String
