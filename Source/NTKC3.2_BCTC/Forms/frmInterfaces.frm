@@ -2154,7 +2154,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
     If Left$(strBarcode, 1) <> "0" Then
 
         ' Phien ban NTKC cho chi CUc VAT chi nhan cac mau BCTC
-        If Trim(idToKhai) = "69" And Trim(idToKhai) = "19" And Trim(idToKhai) = "20" And Trim(idToKhai) = "22" And Trim(idToKhai) = "18" And Trim(idToKhai) = "21" Then
+        If Trim(idToKhai) = "69" Or Trim(idToKhai) = "19" Or Trim(idToKhai) = "20" Or Trim(idToKhai) = "22" Or Trim(idToKhai) = "18" Or Trim(idToKhai) = "21" Then
         Else
             DisplayMessage "0135", msOKOnly, miInformation
             Exit Sub
