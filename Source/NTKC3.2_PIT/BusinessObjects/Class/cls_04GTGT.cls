@@ -644,10 +644,10 @@ On Error GoTo ErrHandle
             strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
         End If
     ElseIf LOAI_KYKK = "" And isPhatSinh = True Then
-            strSQL = strSQL & "To_date('" & Format(vNGAY_PS, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+            strSQL = strSQL & "To_date('" & vNGAY_PS & "','dd/mm/yyyy'),"
             'dDate = DateAdd("m", 1, dDate)
             'dDate = DateAdd("d", -1, dDate)
-            strSQL = strSQL & "To_date('" & Format(vNGAY_PS, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+            strSQL = strSQL & "To_date('" & vNGAY_PS & "','dd/mm/yyyy'),"
     End If
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"

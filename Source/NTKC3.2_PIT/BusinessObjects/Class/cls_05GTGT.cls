@@ -567,8 +567,8 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
         dDate = DateAdd("d", -1, dDate)
         strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     ElseIf Trim(vNGAY_PS) <> "" Then
-            strSQL = strSQL & "To_date('" & Format(vNGAY_PS, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-            strSQL = strSQL & "To_date('" & Format(vNGAY_PS, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+            strSQL = strSQL & "To_date('" & vNGAY_PS & "','dd/mm/yyyy'),"
+            strSQL = strSQL & "To_date('" & vNGAY_PS & "','dd/mm/yyyy'),"
     End If
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
