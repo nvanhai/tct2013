@@ -336,7 +336,15 @@ Public Function Prepared3() As Boolean
 '        .Row = PHONG_QUAN_LY_ROW
 '        .Text = TAX_Utilities_Srv_New.Convert(strTenPQL, TCVN, UNICODE)
 '        UpdateCell fps, .Col, .Row, .Text
-
+        ' set KyLB doi voi cac truong hop nhan tu dong iHTKK
+        .Col = .ColLetterToNumber(KY_LAP_BO_COL)
+        .Row = KY_LAP_BO_ROW
+        If TAX_Utilities_iNTK.NhanTuDongIHTKK = True And TAX_Utilities_iNTK.HthucNopIHTKK = True Then
+             If TAX_Utilities_iNTK.KyLBIHTKK <> "" Then
+                .Text = TAX_Utilities_iNTK.KyLBIHTKK
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+        End If
         '.EventEnabled(EventAllEvents) = True
     End With
     
@@ -543,7 +551,7 @@ Public Function GenerateSQL_Header(xmlDomData As MSXML.DOMDocument, strSQL_HDR A
     Dim vPHONG_XU_LY
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
-    
+    Dim vItkhai_ID, vHTHUC_NOP As String
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC, vLOAI_KYKK As Variant
     
     
@@ -588,6 +596,16 @@ On Error GoTo ErrHandle
         End With
     Next
     
+    'Neu la to khai iHtkk thi lay ngay nop tu bang rcv_ihtkk_mvach
+    If TAX_Utilities_iNTK.HthucNopIHTKK = True Then
+        vNGAY_NOP = TAX_Utilities_iNTK.NgayNopIHTKK
+        vItkhai_ID = TAX_Utilities_iNTK.IDTokhaiIHTKK
+        vHTHUC_NOP = "'I'"
+    Else
+        vItkhai_ID = "null"
+        vHTHUC_NOP = "null"
+    End If
+    ' end
     If vLOAI_KYKK = "0" Then
         vLOAI_KYKK = "T"
     ElseIf vLOAI_KYKK = "1" Then
@@ -694,6 +712,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
     'strSQL = strSQL & "null)"
     strSQL = strSQL & "null,"
+    strSQL = strSQL & vHTHUC_NOP & "," & vItkhai_ID & ","
     strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ",'" & Trim(vLOAI_KYKK) & "')"
     GenerateSQL_Header = strSQL
     
