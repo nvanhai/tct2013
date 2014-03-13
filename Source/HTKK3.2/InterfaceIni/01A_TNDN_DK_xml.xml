@@ -1,21 +1,8 @@
-<HSoKhaiThue>
+<HSoThueDTu>
 	<Static GroupName="TKhaiThue">
 		<maTKhai>149</maTKhai>
 		<tenTKhai>TK TNDN tạm tính đối với dầu khí(01A/TNDN-DK)</tenTKhai>
 		<moTaBMau/>
-	</Static>
-	<Static GroupName="GiaHan">
-		<maLyDoGiaHan/>
-		<lyDoGiaHan/>
-	</Static>
-	<Static GroupName="NNT">
-		<phuongXa/>
-		<maHuyenNNT/>
-		<maTinhNNT/>
-	</Static>
-	<Static GroupName="DLyThue">
-		<maHuyenDLyThue/>
-		<maTinhDLyThue/>
 	</Static>
 	<Static GroupName="LoaiDauKhi">
 		<ct01>O_30</ct01>
@@ -34,27 +21,26 @@
 		<ct19>P_47</ct19>
 	</Static>
 	<Static GroupName="CT20">
-		<donViUyQuyen>AB_48</donViUyQuyen>
-		<daiLyThue>AB_48</daiLyThue>
+		<donViUyQuyen>S_49</donViUyQuyen>
+		<daiLyThue>AC_49</daiLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<tenDonViUyQuyen>P_36</tenDonViUyQuyen>
-		<ct29>AV_53</ct29>
-		<ct30>AV_54</ct30>
-		<ct31>AV_55</ct31>
-		<ct32>AV_56</ct32>
-		<ct33>AV_57</ct33>
-		<ct34>AV_58</ct34>
-		<ct35>AV_59</ct35>
-		<ct36>AV_60</ct36>
+		<ct29>AV_55</ct29>
+		<ct30>AV_56</ct30>
+		<ct31>AV_57</ct31>
+		<ct32>AV_58</ct32>
+		<ct33>AV_59</ct33>
+		<ct34>AV_60</ct34>
+		<ct35>AV_61</ct35>
+		<ct36>AV_62</ct36>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>AR_72</nguoiKy>
-		<ngayKy>AR_74</ngayKy>
-		<nganhNgheKD/>
+		<nguoiKy>AR_74</nguoiKy>
+		<ngayKy>AR_76</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>U_72</tenNVienDLyThue>
-		<cchiHNghe>U_74</cchiHNghe>
+		<tenNVienDLyThue>U_74</tenNVienDLyThue>
+		<cchiHNghe>U_76</cchiHNghe>
 	</Static>
-</HSoKhaiThue>
+</HSoThueDTu>

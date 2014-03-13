@@ -4,45 +4,33 @@
 		<tenTKhai>Tờ khai thuế TNDN tạm tính (01B/TNDN)</tenTKhai>
 		<moTaBMau/>
 	</Static>
-	<Static GroupName="GiaHan">
-		<maLyDoGiaHan/>
-		<lyDoGiaHan/>
-	</Static>
-	<Static GroupName="NNT">
-		<phuongXa/>
-		<maHuyenNNT/>
-		<maTinhNNT/>
-	</Static>
-	<Static GroupName="DLyThue">
-		<maHuyenDLyThue/>
-		<maTinhDLyThue/>
-	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<ct12>P_47</ct12>
 	</Static>
 	<Static GroupName="CT13">
-		<donViUyQuyen>AB_48</donViUyQuyen>
+		<donViUyQuyen>S_49</donViUyQuyen>
+		<daiLyThue>AF_49</daiLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<tenDonViUyQuyen>P_36</tenDonViUyQuyen>
-		<ct22>AV_53</ct22>
-		<ct23>AV_54</ct23>
-		<ct24>AV_55</ct24>
-		<ct25>AV_56</ct25>
-		<ct26>AV_57</ct26>
-		<ct27>AV_58</ct27>
-		<ct28>AV_59</ct28>
-		<ct29>AV_60</ct29>
-		<ct30>AV_61</ct30>
-		<ct31>AV_62</ct31>
+		<ct22>AV_55</ct22>
+		<ct23>AV_56</ct23>
+		<ct24>AV_57</ct24>
+		<ct25>AV_58</ct25>
+		<ct26>AV_59</ct26>
+		<ct27>AV_60</ct27>
+		<ct28>AV_61</ct28>
+		<ct29>AV_62</ct29>
+		<ct30>AV_63</ct30>
+		<ct31>AV_65</ct31>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>AR_74</nguoiKy>
-		<ngayKy>AR_76</ngayKy>
+		<nguoiKy>AR_76</nguoiKy>
+		<ngayKy>AR_78</ngayKy>
 		<nganhNgheKD/>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>U_74</tenNVienDLyThue>
-		<cchiHNghe>U_76</cchiHNghe>
+		<tenNVienDLyThue>U_76</tenNVienDLyThue>
+		<cchiHNghe>U_78</cchiHNghe>
 	</Static>
 </HSoKhaiThue>

@@ -1,19 +1,20 @@
 <PL_03_1_TD_TAIN>
-	<NHAMAYTHUYDIEN>
-		<bangPhanBoTAINThuyĐien>
-			<tenNhaMay></tenNhaMay>
-			<mstNhaMay>text</mstNhaMay>
-			<tyLePhanBo>1</tyLePhanBo>
-			<soThueTNguyenPNop>1</soThueTNguyenPNop>
-			<CHITIETTHUYDIENCOQUANDIAPHUONG>
-				<cqtDiaPhuong>
-					<maCQTDPhuong>text</maCQTDPhuong>
-					<tenCQTDPhuong></tenCQTDPhuong>
-					<tyLePBoCQTDPhuong>1</tyLePBoCQTDPhuong>
+	<BKePBoThueTNChoDPhuong>
+		<CTietBKePBoThueTNChoDPhuong id="String">
+			<tenNhaMay>String</tenNhaMay>
+			<mstNhaMay>0000000000</mstNhaMay>
+			<CQTDiaPhuong>
+				<ChiTietCQTDiaPhuong ID="String">
+					<mstCQTDPhuong>0000000000</mstCQTDPhuong>
+					<maCQTDPhuong>1</maCQTDPhuong>
+					<tenCQTDPhuong>String</tenCQTDPhuong>
+					<tyLePBoCQTDPhuong>0.0</tyLePBoCQTDPhuong>
 					<thuePNopCQTDPhuong>1</thuePNopCQTDPhuong>
-				</cqtDiaPhuong>
-			</CHITIETTHUYDIENCOQUANDIAPHUONG>
-		</bangPhanBoTAINThuyĐien>
-	</NHAMAYTHUYDIEN>
+				</ChiTietCQTDiaPhuong>
+			</CQTDiaPhuong>
+			<tyLePhanBo>0.0</tyLePhanBo>
+			<soThueTNguyenPNop>1</soThueTNguyenPNop>
+		</CTietBKePBoThueTNChoDPhuong>
+	</BKePBoThueTNChoDPhuong>
 	<tongCong>1</tongCong>
 </PL_03_1_TD_TAIN>
