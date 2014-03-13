@@ -545,7 +545,7 @@ Public Sub SetupData(pGrid As fpSpread)
                     Select Case .CellType
                         Case CellTypeCheckBox
                             ' Check box
-                            If UCase(GetAttribute(xmlNodeCell, "Value")) = UCase("x") Then
+                            If UCase(GetAttribute(xmlNodeCell, "Value")) = UCase("x") Or UCase(GetAttribute(xmlNodeCell, "Value")) = UCase("1") Then
                                 .Text = "1"
                             Else
                                 .Text = "0"

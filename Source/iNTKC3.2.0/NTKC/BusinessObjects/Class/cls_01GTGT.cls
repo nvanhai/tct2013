@@ -54,8 +54,7 @@ Const NGAY_HOP_DONG_DL_COL = "N"
 Const NGANH_NGHE_KD_ROW = 77
 Const NGANH_NGHE_KD_COL = "K"
 
-
-
+Const SHEET_PLUC_01_2TD_GTGT = 11
 
 Public WithEvents fps As fpSpread
 Attribute fps.VB_VarHelpID = -1
@@ -281,6 +280,24 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
             .Col = .ColLetterToNumber("B")
             .Row = i + 8
         Loop Until .Text = "aa" Or varMaDM = ""
+        
+        'PL 01_2TD_GTGT
+        '--fill data CQT
+        .Sheet = SHEET_PLUC_01_2TD_GTGT
+        i = 0
+        Do
+            .GetText .ColLetterToNumber("AE"), i + 18, varMaDM
+            DataDM varMaDM, tenDM
+            If Trim(tenDM) <> vbNullString Then
+                .Col = .ColLetterToNumber("Q")
+                .Row = 18 + i
+                .Text = tenDM
+            End If
+            UpdateCell fps, .Col, .Row, .Text
+             i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = i + 18
+        Loop Until .Text = "aa"
         
         ' Phu luc 6B
 '        .Sheet = 9
