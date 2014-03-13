@@ -661,7 +661,11 @@ Public Function InsertDTL() As String
         matkhai = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         'ky ke khai
-        kykkhai = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
+        If NGAY_PS <> "CTOD('')" Then
+            kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+        Else
+            kykkhai = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
+        End If
         tt = "' '"
         giatri2 = "0"
             
@@ -773,7 +777,11 @@ Public Function InsertDTL_KHBS() As String
             madtnt = "'" & madtnt & "'"
         End If
 
-        kykkhai = "'" & Right$(TAX_Utilities_Svr_New.ThreeMonths, 1) & "/" & TAX_Utilities_Svr_New.Year & "'"
+        If NGAY_PS <> "CTOD('')" Then
+            kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+        Else
+            kykkhai = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
+        End If
 
         MaMuc = "'1050'"
         MATHUE = "' '"
@@ -1264,7 +1272,7 @@ Public Function InsertHDR() As String
         matkhai = "'" & LOAI_TO_KHAI & "'"
 
         If NGAY_PS <> "CTOD('')" Then
-            kykkhai = "'" & Mid$(NGAY_PS, 7, 2) & Mid$(NGAY_PS, 12, 5) & "'"
+            kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         Else
             kykkhai = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
         End If
@@ -1381,8 +1389,6 @@ Public Function InsertHDR() As String
         's0 hieu tep
         SHTEP = "''"
         
-        'ky ke khai
-        kykkhai = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
         'ghi chu
         .GetText .ColLetterToNumber("M"), 48, GHICHU
 
@@ -1735,7 +1741,11 @@ Public Function InsertDTL_PL1() As String
         matkhai = "'" & LOAI_TO_KHAI & "'"
         DANHAN = "''"
         'ky ke khai
-        kykkhai = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
+                If NGAY_PS <> "CTOD('')" Then
+            kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+        Else
+            kykkhai = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
+        End If
         tt = "' '"
             
         Dim kykkhai2 As Variant

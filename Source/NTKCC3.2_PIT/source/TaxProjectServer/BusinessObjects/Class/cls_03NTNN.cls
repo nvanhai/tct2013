@@ -716,48 +716,48 @@ Public Function InsertDTL() As String
             rowLast = .Row
         Loop Until .Text = "aa"
 
-        .Row = rowLast + 1
-           
-        NoiDung = "''"
-        MaSoThue = "''"
-        HOPDONG = "''"
-        NGAYTT = "CTOD('')"
-        TyLe_DN = "0"
-        TSuat_GT = "0"
-        ' so tien thanh toan
-        .GetText .ColLetterToNumber("X"), .Row, SoTienTT
-
-        If (SoTienTT) = vbNullString Then
-            SoTienTT = "0"
-        End If
-            
-        'doanh so Doanh nghiep
-        .GetText .ColLetterToNumber("AF"), .Row, DSo_DN
-
-        If (DSo_DN) = vbNullString Then
-            DSo_DN = "0"
-        End If
-
-        ' thue mien giam  daonh nghiep
-        .GetText .ColLetterToNumber("AL"), .Row, ThueMG_DN
-
-        If (ThueMG_DN) = vbNullString Then
-            ThueMG_DN = "0"
-        End If
-            
-        ' thue phai nop
-        .GetText .ColLetterToNumber("AQ"), .Row, ThuePN_DN
-
-        If (ThuePN_DN) = vbNullString Then
-            ThuePN_DN = "0"
-        End If
-            
-        CHEXSUM = ".T."
-            
-        sSQLVal = matkhai & "," & madtnt & "," & kykkhai & "," & KYLBO & "," & ngnop & "," & TTHTK & "," & NoiDung & "," & MaSoThue & "," & HOPDONG & "," & SoTienTT & "," & NGAYTT & "," & DSo_GT & "," & TyLe_GT & "," & TSuat_GT & "," & ThuePN_GT & "," & DSo_DN & "," & TyLe_DN & "," & ThueMG_DN & "," & ThuePN_DN & "," & ThuePN & "," & LAN_QUET & "," & DANHAN & "," & CHEXSUM
-        sSQL = "INSERT INTO TMP_NTNN" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-            
-        bln = clsDAO.ExecuteDLL(sSQL)
+'        .Row = rowLast + 1
+'
+'        NoiDung = "''"
+'        MaSoThue = "''"
+'        HOPDONG = "''"
+'        NGAYTT = "CTOD('')"
+'        TyLe_DN = "0"
+'        TSuat_GT = "0"
+'        ' so tien thanh toan
+'        .GetText .ColLetterToNumber("X"), .Row, SoTienTT
+'
+'        If (SoTienTT) = vbNullString Then
+'            SoTienTT = "0"
+'        End If
+'
+'        'doanh so Doanh nghiep
+'        .GetText .ColLetterToNumber("AF"), .Row, DSo_DN
+'
+'        If (DSo_DN) = vbNullString Then
+'            DSo_DN = "0"
+'        End If
+'
+'        ' thue mien giam  daonh nghiep
+'        .GetText .ColLetterToNumber("AL"), .Row, ThueMG_DN
+'
+'        If (ThueMG_DN) = vbNullString Then
+'            ThueMG_DN = "0"
+'        End If
+'
+'        ' thue phai nop
+'        .GetText .ColLetterToNumber("AQ"), .Row, ThuePN_DN
+'
+'        If (ThuePN_DN) = vbNullString Then
+'            ThuePN_DN = "0"
+'        End If
+'
+'        CHEXSUM = ".T."
+'
+'        sSQLVal = matkhai & "," & madtnt & "," & kykkhai & "," & KYLBO & "," & ngnop & "," & TTHTK & "," & NoiDung & "," & MaSoThue & "," & HOPDONG & "," & SoTienTT & "," & NGAYTT & "," & DSo_GT & "," & TyLe_GT & "," & TSuat_GT & "," & ThuePN_GT & "," & DSo_DN & "," & TyLe_DN & "," & ThueMG_DN & "," & ThuePN_DN & "," & ThuePN & "," & LAN_QUET & "," & DANHAN & "," & CHEXSUM
+'        sSQL = "INSERT INTO TMP_NTNN" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+'
+'        bln = clsDAO.ExecuteDLL(sSQL)
         
     End With
 
@@ -1169,7 +1169,7 @@ Public Function InsertHDR() As String
     Dim MACT2       As Variant
     Dim TENNV       As Variant
     Dim CHUNGCHI    As Variant
-    Dim NgayNop As Variant
+    Dim NGAYNOP As Variant
     Dim iCol        As Long, iRow As Long
     Dim xmlCellNode As MSXML.IXMLDOMNode
     sSQLCol = "MADTNT, MADLT,MATHUE, MATM, MAPP, KYLBO, NGNOP, "
@@ -1240,7 +1240,7 @@ Public Function InsertHDR() As String
             ngnop = "CTOD('')"
         Else
             ngnop = ToDate(Trim(ngnop), DDMMYYYY)
-            NgayNop = ngnop
+            NGAYNOP = ngnop
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
        
@@ -1288,7 +1288,7 @@ Public Function InsertHDR() As String
         End If
 
         If TKTHANG = False Then
-            HANNOP = DateAdd("d", 10, NgayNop)
+            HANNOP = DateAdd("d", 10, NGAYNOP)
             HANNOP = ToString(HANNOP, "DD/MM/YYYY")
         End If
 
@@ -1598,17 +1598,17 @@ End Sub
 
 Public Function CheckValidData() As Boolean
     Dim varCheckValue As Variant, varNoteValue As Variant
-     Dim NgayNop As Variant, ngayHienTai As Variant
+     Dim NGAYNOP As Variant, ngayHienTai As Variant
     CheckValidData = True
     With fps
         .Sheet = 1
         
         ' check ngay nop khong dc lon hon ngay hien tai
-        .GetText .ColLetterToNumber("E"), 32, NgayNop
+        .GetText .ColLetterToNumber("E"), 32, NGAYNOP
         ngayHienTai = IIf(Len(Day(Now())) = 1, "0" & Day(Now()), Day(Now())) & "/" & IIf(Len(Month(Now())) = 1, "0" & Month(Now()), Month(Now())) & "/" & Year(Now())
         ngayHienTai = DateSerial(Int(Mid$(ngayHienTai, 7, 4)), Int(Mid$(ngayHienTai, 4, 2)), Int(Mid$(ngayHienTai, 1, 2)))
-        NgayNop = DateSerial(Int(Mid$(NgayNop, 7, 4)), Int(Mid$(NgayNop, 4, 2)), Int(Mid$(NgayNop, 1, 2)))
-        If NgayNop > ngayHienTai Then
+        NGAYNOP = DateSerial(Int(Mid$(NGAYNOP, 7, 4)), Int(Mid$(NGAYNOP, 4, 2)), Int(Mid$(NGAYNOP, 1, 2)))
+        If NGAYNOP > ngayHienTai Then
             CheckValidData = False
         End If
 

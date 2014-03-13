@@ -29,14 +29,14 @@ Const PHONG_XU_LY_X = "Q"
 
 'Longvh
 Const MA_SO_THUE_X = "E"
-Const MA_SO_THUE_Y = 5
+Const MA_SO_THUE_Y = 4
 Const NGAY_NOP_Y = 10
 Const NGAY_NOP_X = "E"
 Const NGAY_QUET_Y = 12
 Const NGAY_QUET_X = "K"
 
 Const TEN_GOI_X = "E"
-Const TEN_GOI_Y = 4
+Const TEN_GOI_Y = 5
 Const DIA_CHI_X = "E"
 Const DIA_CHI_Y = 6
 Const TEN_BPQL_X = "Q"

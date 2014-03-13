@@ -47,7 +47,7 @@ Begin VB.Form frmInterfaces
          _StockProps     =   64
          BorderStyle     =   0
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "MS Sans Serif"
+            Name            =   "Arial"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1466,7 +1466,7 @@ Private Sub cmdSave_Click()
     If frmSystem.chkSaveQHS = True Then
 
         'dntai 13/01/2012 khong ghi cac to an chi vao QHS
-        If (menuId < 64 Or menuId > 68) And menuId <> 91 And menuId <> 7 And menuId <> 9 And menuId <> 10 And menuId <> 13 Then
+        If menuId <> 7 And menuId <> 9 And menuId <> 10 And menuId <> 13 Then
             Insert_QHS
         End If
         
@@ -1663,29 +1663,54 @@ End Sub
 Private Sub Command1_Click()
     Dim str1 As String, str2 As String, str3 As String, str4 As String, str5 As String, str6 As String, str7 As String, str8 As String
     
-str1 = "aa321712300236909   01201400100200100101/0101/01/1900<S01><S></S><S>4365543~35665~357~345345~17267~35342543~1060276~678787685~13575754~714511238~14653654~718876781~14653654</S><S>~Lan H-¨ng~~04/03/2014~1~~~2~04/03/2014</S></S01>"
-Barcode_Scaned str1
+'''Cac to khai phat sinh
+'str1 = "aa321712300236909   01201400100200100101/0101/01/1900<S01><S></S><S>4365543~35665~357~345345~17267~35342543~1060276~678787685~13575754~714511238~14653654~718876781~14653654</S><S>~Lan H-¨ng~~04/03/2014~1~~~2~04/03/2014</S></S01>"
+'Barcode_Scaned str1
+'
+'str1 = "aa321722300236909   03201400000100100101/0114/06/2006<S01><S></S><S>235443625~23535423~2354436~470708~2825144</S><S>~Lan H-¨ng~~04/03/2014~1~~~1~04/03/2014</S></S01>"
+'Barcode_Scaned str1
+'
+'str1 = "aa321732300236909   04201400000100100101/0114/06/2006<S02><S></S><S>1~27~2~3~4~5~6~7~-26~0~-26~22~0~0~0~0~0~22~1~0</S><S>~1~~~~~~</S><S>~~Lan H-¨ng~04/03/2014~1~~04/03/2014~~~</S></S02>"
+'Barcode_Scaned str1
+'
+'str1 = "aa321702300236909   03201400100100100101/0101/01/1900<S01><S></S><S>sfsdf~6868686868~sdfsdf~3243254~01/01/2014~32543543~5~5~81359~43265534~5~0~2163277~2244636</S><S>0~23524352~0~0~42352345~65876697</S><S>~X</S><S>~~Lan H-¨ng~04/03/2014~1~~~04/03/2014</S></S01>"
+'Barcode_Scaned str1
+''
+'str1 = "aa321812300236909   03201400100100100101/0101/01/1900<S01><S></S><S>435423543~6868686868~u4eruew~2542342342~01/01/2014~454353~6~4545~22716</S><S>2542342342~454353~4545~22716</S><S>~1</S><S>~Lan H-¨ng~~04/03/2014~1~1~~04/03/2014</S></S01>"
+'Barcode_Scaned str1
+''
+'str1 = "aa321062300236909   03201400100100100101/0114/06/2006<S01><S></S><S>~~0~0~0~0~0</S><S>~~0.000~0.00~0.000~0~0.00</S><S>010102~Kg~2134.000~54235.00~11.000~0~0.00</S><S>~~~04/03/2014~1~~0~1~04/03/2014</S></S01>"
+'Barcode_Scaned str1
+'
+'str1 = "aa321052300236909   03201400100100100101/0101/01/1900<S01><S></S><S>~1000000~606061.00~0~0~392940</S><S>10101~Bao~10000.00~1000000~606061.00~65.0~1000~0~392940</S><S>11111111~8547008.00~11111~0~2552991</S><S>20200~fdgfd~100.00~11111111~8547008.00~30.0~11111~0~2552991</S><S>0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>12111111~9153069.00~12111~0~2945931</S><S>Lan H-¨ng~~~04/03/2014~1~~0~2945931~04/03/2014~0</S></S01>"
+'Barcode_Scaned str1
+'
+'str1 = "aa321902300236909   03201400000100100101/0101/01/1900<S01><S></S><S>L›t~234.000~300~70200~010104</S><S>~Lan H-¨ng~~04/03/2014~1~~~1~04/03/2014</S></S01>"
+'Barcode_Scaned str1
 
-str1 = "aa321722300236909   03201400000100100101/0114/06/2006<S01><S></S><S>235443625~23535423~2354436~470708~2825144</S><S>~Lan H-¨ng~~04/03/2014~1~~~1~04/03/2014</S></S01>"
-Barcode_Scaned str1
+'str1 = "aa321042300236909   01201400100100100101/0114/06/2006<S01><S></S><S>0~45654665~3534543~564654~423234~41978702~4197870</S><S>sdf~Lan H-¨ng~vcdd~06/03/2014~1~~~0</S></S01>"
+'Barcode_Scaned str1
 
-str1 = "aa321732300236909   04201400000100100101/0114/06/2006<S02><S></S><S>1~27~2~3~4~5~6~7~-26~0~-26~22~0~0~0~0~0~22~1~0</S><S>~1~~~~~~</S><S>~~Lan H-¨ng~04/03/2014~1~~04/03/2014~~~</S></S02>"
-Barcode_Scaned str1
+'''Cac to khai an chi
 
-str1 = "aa321702300236909   03201400100100100101/0101/01/1900<S01><S></S><S>sfsdf~6868686868~sdfsdf~3243254~01/01/2014~32543543~5~5~81359~43265534~5~0~2163277~2244636</S><S>0~23524352~0~0~42352345~65876697</S><S>~X</S><S>~~Lan H-¨ng~04/03/2014~1~~~04/03/2014</S></S01>"
+'str1 = "aa999642300236909   03201400100100100101/0101/01/2009<S01><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/001~AB/12T~10~0000001~0000010~01/05/2014~sdf~2222222222~1~01/01/2014~</S><S>~~~13/03/2014~Lan H≠¨ng</S></S01>"
+'Barcode_Scaned str1
+'
+str1 = "aa999652300236909   01201400100100100101/0101/01/2009<S01><S>~01/01/2014~30/06/2014</S><S>6868686868~a~af~1~01/01/2014~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/001~AB/12T~0000001~0000010~10~</S><S>Lan H≠¨ng~13/03/2014</S></S01>"
 Barcode_Scaned str1
 '
-str1 = "aa321812300236909   03201400100100100101/0101/01/1900<S01><S></S><S>435423543~6868686868~u4eruew~2542342342~01/01/2014~454353~6~4545~22716</S><S>2542342342~454353~4545~22716</S><S>~1</S><S>~Lan H-¨ng~~04/03/2014~1~1~~04/03/2014</S></S01>"
-Barcode_Scaned str1
+'str1 = "aa999662300236909   04201300100100100101/0101/01/2010<S01><S>13/03/2014~9~47</S><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/001~AB/12T~0000001~0000019~19~1~05~0</S><S>~Lan H≠¨ng~13/03/2014</S></S01>"
+'Barcode_Scaned str1
 '
-str1 = "aa321062300236909   03201400100100100101/0114/06/2006<S01><S></S><S>~~0~0~0~0~0</S><S>~~0.000~0.00~0.000~0~0.00</S><S>010102~Kg~2134.000~54235.00~11.000~0~0.00</S><S>~~~04/03/2014~1~~0~1~04/03/2014</S></S01>"
-Barcode_Scaned str1
+'str1 = "aa999672300236909   04201300100100100101/0101/01/2010<S01><S>~~47~13/03/2014~9</S><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/001~AB/12T~0000001~0000010~10~0</S><S>asd~Lan H≠¨ng~13/03/2014</S></S01>"
+'Barcode_Scaned str1
+'
+'str1 = "aa999682300236909   04201300100100100101/0101/01/2009<S01><S>~~01/10/2013~31/12/2013</S><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/001~AB/12T~20~0000001~0000010~0000011~0000020~0000001~0000008~8~5~1~3~1~2~1~1~0000009~0000020~12~0</S><S>~Lan H≠¨ng~13/03/2014~1</S></S01>"
+'Barcode_Scaned str1
+'
+'str1 = "aa999912300236909   03201400100100100101/0101/01/2009<S01><S>a~b~01DVPH</S><S>01/01/2014~~~a~13/03/2014~Lan H≠¨ng</S></S01>"
+'Barcode_Scaned str1
 
-str1 = "aa321052300236909   03201400100100100101/0101/01/1900<S01><S></S><S>~1000000~606061.00~0~0~392940</S><S>10101~Bao~10000.00~1000000~606061.00~65.0~1000~0~392940</S><S>11111111~8547008.00~11111~0~2552991</S><S>20200~fdgfd~100.00~11111111~8547008.00~30.0~11111~0~2552991</S><S>0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>12111111~9153069.00~12111~0~2945931</S><S>Lan H-¨ng~~~04/03/2014~1~~0~2945931~04/03/2014~0</S></S01>"
-Barcode_Scaned str1
-
-str1 = "aa321902300236909   03201400000100100101/0101/01/1900<S01><S></S><S>L›t~234.000~300~70200~010104</S><S>~Lan H-¨ng~~04/03/2014~1~~~1~04/03/2014</S></S01>"
-Barcode_Scaned str1
 
 End Sub
 
@@ -4984,6 +5009,30 @@ Private Function Prepare_QLT() As String
             '         "maDTNT~vKYLBO~NGNOP~MST~DIA_CHI~GHICHU~NGUOI_NOP~NGNHAP"
             strToaDo = "F-10~E-42~E-44~F-10~F-12~M-48~H-8~M-44"
             ThongTin_DLT strToaDo, maDTNT, vKYLBO, NGNOP, MST, DIA_CHI, GHICHU, NGUOI_NOP, NGNHAP
+        ElseIf menuId = 64 Then
+            '         "maDTNT~vKYLBO~NGNOP~MST~DIA_CHI~GHICHU~NGUOI_NOP~NGNHAP"
+            strToaDo = "E-4~E-42~E-10~E-4~E-6~E-14~E-5~K-12"
+            ThongTin_DLT strToaDo, maDTNT, vKYLBO, NGNOP, MST, DIA_CHI, GHICHU, NGUOI_NOP, NGNHAP
+        ElseIf menuId = 65 Then
+            '         "maDTNT~vKYLBO~NGNOP~MST~DIA_CHI~GHICHU~NGUOI_NOP~NGNHAP"
+            strToaDo = "E-4~E-42~E-10~E-4~E-6~E-14~E-5~K-12"
+            ThongTin_DLT strToaDo, maDTNT, vKYLBO, NGNOP, MST, DIA_CHI, GHICHU, NGUOI_NOP, NGNHAP
+        ElseIf menuId = 66 Then
+            '         "maDTNT~vKYLBO~NGNOP~MST~DIA_CHI~GHICHU~NGUOI_NOP~NGNHAP"
+            strToaDo = "F-5~E-42~E-13~F-5~F-8~S-19~F-7~S-15"
+            ThongTin_DLT strToaDo, maDTNT, vKYLBO, NGNOP, MST, DIA_CHI, GHICHU, NGUOI_NOP, NGNHAP
+        ElseIf menuId = 67 Then
+            '         "maDTNT~vKYLBO~NGNOP~MST~DIA_CHI~GHICHU~NGUOI_NOP~NGNHAP"
+            strToaDo = "D-4~E-42~D-12~D-4~D-8~D-16~D-6~N-14"
+            ThongTin_DLT strToaDo, maDTNT, vKYLBO, NGNOP, MST, DIA_CHI, GHICHU, NGUOI_NOP, NGNHAP
+        ElseIf menuId = 68 Then
+            '         "maDTNT~vKYLBO~NGNOP~MST~DIA_CHI~GHICHU~NGUOI_NOP~NGNHAP"
+            strToaDo = "E-4~E-42~E-10~E-4~E-6~E-14~E-5~K-12"
+            ThongTin_DLT strToaDo, maDTNT, vKYLBO, NGNOP, MST, DIA_CHI, GHICHU, NGUOI_NOP, NGNHAP
+        ElseIf menuId = 91 Then
+            '         "maDTNT~vKYLBO~NGNOP~MST~DIA_CHI~GHICHU~NGUOI_NOP~NGNHAP"
+            strToaDo = "E-4~E-42~E-10~E-4~E-6~E-14~E-5~K-12"
+            ThongTin_DLT strToaDo, maDTNT, vKYLBO, NGNOP, MST, DIA_CHI, GHICHU, NGUOI_NOP, NGNHAP
         Else
                
             .GetText .ColLetterToNumber("G"), 4, maDTNT
@@ -5073,6 +5122,7 @@ Private Function Prepare_QLT() As String
             End If
             
         Else
+
             If (Trim(TAX_Utilities_Svr_New.Month) <> vbNullString Or Trim(TAX_Utilities_Svr_New.Month) <> "") And (Trim(TAX_Utilities_Svr_New.ThreeMonths) = vbNullString Or Trim(TAX_Utilities_Svr_New.ThreeMonths) = "") Then
                 KYKKHAI = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
                 Tinhkykekkhaithang (Mid$(KYKKHAI, 2, 7))
@@ -5083,100 +5133,108 @@ Private Function Prepare_QLT() As String
                 KYKK_TU_NGAY = "01/01/" & TAX_Utilities_Svr_New.Year
                 KYKK_TU_NGAY_F = "01/01/" & TAX_Utilities_Svr_New.Year
                 KYKK_DEN_NGAY = "12/31/" & TAX_Utilities_Svr_New.Year
-        End If
+            End If
 
         End If
+
         'TAX_Utilities_Svr_New.ThreeMonths
         
-        
-       'NGNHAN = Date
+        'NGNHAN = Date
         NGAY_NHAN = GetNgayNhap
         NGAY_XL = NGAY_NHAN
         NGAY_HEN = NGAY_XL
-'        If Trim(NGAY_NHAN) = vbNullString Then
-'            NGAY_NHAN = "CTOD('')"
-'        Else
-'            'NGAY_NHAN = ToDate(Trim(NGAY_NHAN), DDMMYYYY)
-'            NGAY_NHAN = "CTOD('" & format(NGAY_NHAN, "mm/dd/yyyy") & "')"
-'        End If
+        '        If Trim(NGAY_NHAN) = vbNullString Then
+        '            NGAY_NHAN = "CTOD('')"
+        '        Else
+        '            'NGAY_NHAN = ToDate(Trim(NGAY_NHAN), DDMMYYYY)
+        '            NGAY_NHAN = "CTOD('" & format(NGAY_NHAN, "mm/dd/yyyy") & "')"
+        '        End If
 
         'dhdang xu ly lay ma phong xu ly tren Form
         'ngay 05-08-2010
         If Not objTaxBusiness Is Nothing Then
-        'Get Params
+            'Get Params
             PHONG_XL_X = objTaxBusiness.PHONG_XU_LY_X1
             PHONG_XL_Y = objTaxBusiness.PHONG_XU_LY_Y1
         End If
+
         If PHONG_XL_X <> "" And PHONG_XL_Y <> "" Then
             .GetText .ColLetterToNumber(PHONG_XL_X), PHONG_XL_Y, PHONG_XL
+
             If PHONG_XL <> vbNullString Then
                 PHONG_XL = Mid(PHONG_XL, InStr(1, PHONG_XL, "{") + 1, InStr(1, PHONG_XL, "}") - InStr(1, PHONG_XL, "{") - 1)
             End If
+
         Else
             PHONG_XL = ""
         End If
-         Dim F As String
-         F = "F"
-         HTHUC_NOP = "02"
-         'Trang thai ho so chinh thuc bo xung
+
+        Dim F As String
+        F = "F"
+        HTHUC_NOP = "02"
+        'Trang thai ho so chinh thuc bo xung
          
-         
-            strSQL = "Select top 1 SO_HOSO from QHSCC.dbo.QHS_SO_HOSO where TTHAI_HOSO <> '02' and DHS_MA = '" + DHS_MA + "'and TIN = '" + MST + "' and KYKK_TU_NGAY = '" + KYKK_TU_NGAY + "' order by ID desc"
-            If clsDAO.Connected = False Then
+        strSQL = "Select top 1 SO_HOSO from QHSCC.dbo.QHS_SO_HOSO where TTHAI_HOSO <> '02' and DHS_MA = '" + DHS_MA + "'and TIN = '" + MST + "' and KYKK_TU_NGAY = '" + KYKK_TU_NGAY + "' order by ID desc"
+
+        If clsDAO.Connected = False Then
             clsDAO.Connect
-            End If
-            Set rs = clsDAO.Execute(strSQL)
-            If Not rs Is Nothing Then
+        End If
+
+        Set rs = clsDAO.Execute(strSQL)
+
+        If Not rs Is Nothing Then
            
-                 SO_HOSO_BSUNG = rs(0)
-                 If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "71" Then
-                    .GetText .ColLetterToNumber("M"), 6, BSUNG
-                 ElseIf ID_TK = "04" Then
-                    .GetText .ColLetterToNumber("L"), 6, BSUNG
-                 ElseIf ID_TK = "72" Then
-                    .GetText .ColLetterToNumber("J"), 5, BSUNG
-                 Else
-                    .GetText .ColLetterToNumber("O"), 2, BSUNG
-                 End If
-                 If Trim(BSUNG) = "X" Then
-                    TRANG_THAI = "01"
-                    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & format(NGAY_XL, "mm/dd/yyyy") & "' where ID = '" & rs(0) & "'"
-                    bln = clsDAO.ExecuteDLL(strSQL)
-                 Else
-                    TRANG_THAI = "02"
-                    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & format(NGAY_XL, "mm/dd/yyyy") & "' where ID = '" & rs(0) & "'"
-                    bln = clsDAO.ExecuteDLL(strSQL)
-                 End If
-                'ssss = hannop()
-                'ssss = Mid$(ssss, 4, 2) + "/" + Mid$(ssss, 1, 2) + "/" + Mid$(ssss, 7, 4)
-                'If (NGNOP > CDate(ssss)) Then
-                '    TRANG_THAI = "02"
-                '    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & NGAY_XL & "' where ID = '" & rs(0) & "'"
-                '    bln = clsDAO.ExecuteDLL(strSQL)
-                'Else
-                    
-                'End If
-      
-'                If CTHUC = "1" And BSUNG = "" Then
-'                    TRANG_THAI = "03"
-'                    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & NGAY_XL & "' where ID = '" & rs(0) & "'"
-'                    bln = clsDAO.ExecuteDLL(strSQL)
-'                ElseIf CTHUC = "" And BSUNG = "1" Then
-'                    TRANG_THAI = "02"
-'                    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & NGAY_XL & "' where ID = '" & rs(0) & "'"
-'                    bln = clsDAO.ExecuteDLL(strSQL)
-'                Else
-'                    TRANG_THAI = "03"
-'                    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & NGAY_XL & "' where ID = '" & rs(0) & "'"
-'                    bln = clsDAO.ExecuteDLL(strSQL)
-'                End If
+            SO_HOSO_BSUNG = rs(0)
+
+            If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "71" Then
+                .GetText .ColLetterToNumber("M"), 6, BSUNG
+            ElseIf ID_TK = "04" Then
+                .GetText .ColLetterToNumber("L"), 6, BSUNG
+            ElseIf ID_TK = "72" Then
+                .GetText .ColLetterToNumber("J"), 5, BSUNG
             Else
-                    TRANG_THAI = "01"
+                .GetText .ColLetterToNumber("O"), 2, BSUNG
             End If
-         
-         
+
+            If Trim(BSUNG) = "X" Then
+                TRANG_THAI = "01"
+                strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & format(NGAY_XL, "mm/dd/yyyy") & "' where ID = '" & rs(0) & "'"
+                bln = clsDAO.ExecuteDLL(strSQL)
+            Else
+                TRANG_THAI = "02"
+                strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & format(NGAY_XL, "mm/dd/yyyy") & "' where ID = '" & rs(0) & "'"
+                bln = clsDAO.ExecuteDLL(strSQL)
+            End If
+
+            'ssss = hannop()
+            'ssss = Mid$(ssss, 4, 2) + "/" + Mid$(ssss, 1, 2) + "/" + Mid$(ssss, 7, 4)
+            'If (NGNOP > CDate(ssss)) Then
+            '    TRANG_THAI = "02"
+            '    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & NGAY_XL & "' where ID = '" & rs(0) & "'"
+            '    bln = clsDAO.ExecuteDLL(strSQL)
+            'Else
+                    
+            'End If
+      
+            '                If CTHUC = "1" And BSUNG = "" Then
+            '                    TRANG_THAI = "03"
+            '                    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & NGAY_XL & "' where ID = '" & rs(0) & "'"
+            '                    bln = clsDAO.ExecuteDLL(strSQL)
+            '                ElseIf CTHUC = "" And BSUNG = "1" Then
+            '                    TRANG_THAI = "02"
+            '                    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & NGAY_XL & "' where ID = '" & rs(0) & "'"
+            '                    bln = clsDAO.ExecuteDLL(strSQL)
+            '                Else
+            '                    TRANG_THAI = "03"
+            '                    strSQL = "Update QHSCC.dbo.QHS_SO_HOSO set HAN_XULY = '" & NGAY_XL & "' where ID = '" & rs(0) & "'"
+            '                    bln = clsDAO.ExecuteDLL(strSQL)
+            '                End If
+        Else
+            TRANG_THAI = "01"
+        End If
          
         strSQL = "Select top 1 SO_TEP from QHSCC.dbo.QHS_SO_HOSO where SO_HIEU_TEP = '' and DHS_MA = '" + DHS_MA + "' and HTHUC_NOP = '02' and NGUOI_NHAP = '" + USER + "' order by ID desc"
+
         If clsDAO.Connected = False Then
             clsDAO.Connect
         End If
@@ -5201,17 +5259,20 @@ Private Function Prepare_QLT() As String
         'bln = clsDAO.ExecuteDLL(sSQL)
         
         'dhdang
-    'in bien ban phat nop cham
-    'ngay 20/09
-    '-----------------------------------------------------------
+        'in bien ban phat nop cham
+        'ngay 20/09
+        '-----------------------------------------------------------
         Dim kieukykk As String
+
         If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "68" Or ID_TK = "25" Then
             If LoaiKyKK = False Then
                 kieukykk = "M"
             Else
                 kieukykk = "Q"
             End If
+
         Else
+
             If GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Month") = "1" Then
                 kieukykk = "M"
             ElseIf GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "ThreeMonth") = "1" Then
@@ -5224,27 +5285,27 @@ Private Function Prepare_QLT() As String
         End If
         
         If CheckThanhTraKiemTra(MST_PRINT, TinhLoaiThue(DHS_MA), KYKK_TU_NGAY_F, KYKK_DEN_NGAY) = True Then
-'            If MessageBox("0130", msYesNo, miQuestion) = mrYes Then
-'                    frmInBienBanPhatNopCham.Show 1
-'            End If
+            '            If MessageBox("0130", msYesNo, miQuestion) = mrYes Then
+            '                    frmInBienBanPhatNopCham.Show 1
+            '            End If
             MessageBox "0132", msOKOnly, miWarning
             Exit Function
         End If
             
-       Dim TK_PS As Variant
+        Dim TK_PS As Variant
      
-       If ID_TK = "73" Then
+        If ID_TK = "73" Then
             .GetText .ColLetterToNumber("Q"), 49, TK_PS
-       End If
+        End If
             
         If KiemTraNopCham(KYKK_TU_NGAY_F, kieukykk, NGNOP_S) = True And TK_PS <> "1" Then
             If MessageBox("0130", msYesNo, miQuestion) = mrYes Then
-                    frmInBienBanPhatNopCham.Show 1
+                frmInBienBanPhatNopCham.Show 1
             End If
         End If
+
         '--------------------------------------
     End With
-     
      
     Prepare_QLT = sSQL
     'clsDAO.Disconnect
@@ -5411,6 +5472,7 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
         If menuId = 71 Then
             .GetText .ColLetterToNumber("K"), 39, tkPhatSinh
         End If
+
     End With
 
     On Error Resume Next
@@ -5562,6 +5624,7 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
             End If
 
         Case "71"
+
             If tkPhatSinh = "2" Then
                 DHS_MA = "552"
             ElseIf LoaiKyKK = True Then
@@ -5586,10 +5649,22 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
             DHS_MA = "450"
             
         Case "91"
-            DHS_MA = "547"
+            DHS_MA = "580"
+            
+        Case "64"
+            DHS_MA = "431"
+            
+        Case "65"
+            DHS_MA = "433"
             
         Case "66"
-            DHS_MA = "539"
+            DHS_MA = "434"
+            
+        Case "67"
+            DHS_MA = "432"
+            
+        Case "68"
+            DHS_MA = "435"
             
         Case "90"
 
@@ -5882,6 +5957,7 @@ Private Sub Insert_QHS()
         
         vNGAY_DAU_KYLBO = "01/" & IIf(Len(Trim(vKYLBO)) = 6, "0" & vKYLBO, vKYLBO) ' Lay ngay dau cua ky lap bo de xem ngay quet co phu hop voi ky khoa so hay khong?
         
+        If menuId <> 64 And menuId <> 65 And menuId <> 66 And menuId <> 67 And menuId <> 68 And menuId <> 91 Then
         If Trim(vKYLBO) = vbNullString Or Trim(vKYLBO) = "../...." Then
            
             DisplayMessage "0106", msOKOnly, miCriticalError
@@ -5894,6 +5970,7 @@ Private Sub Insert_QHS()
             Else
                 vKYLBO = "'" & vKYLBO & "'"
             End If
+        End If
         End If
           
         strSQL_DTL = Prepare_QLT
@@ -6243,19 +6320,25 @@ Private Function StringToDate(s As String) As Date
             StringToDate = DateSerial(Int(Mid$(s, 7, 4)), Int(Mid$(s, 4, 2)), Int(Mid$(s, 1, 2)))
         End If
 End Function
-Public Function CheckThanhTraKiemTra(TIN As String, LOAI_THUE As String, KYKK_TU_NGAY As String, KYKK_DEN_NGAY As String) As Boolean
+
+Public Function CheckThanhTraKiemTra(TIN As String, _
+                                     LOAI_THUE As String, _
+                                     KYKK_TU_NGAY As String, _
+                                     KYKK_DEN_NGAY As String) As Boolean
     Dim k1 As String, k2 As String, strSQL As String
-    Dim b As Boolean
+    Dim b  As Boolean
     Dim rs As ADODB.Recordset
     
     b = False
+
     If clsDAO.Connected_qhs = False Then
-            clsDAO.Connect_qhs
+        clsDAO.Connect_qhs
     End If
     
     Set rs = New Recordset
     strSQL = "SELECT QHS_TTRA_KTRA_DTL.LOAI_THUE, QHS_TTRA_KTRA_DTL.KY_TT_TU, QHS_TTRA_KTRA_DTL.KY_TT_DEN FROM QHS_TTRA_KTRA_HDR INNER JOIN QHS_TTRA_KTRA_DTL ON QHS_TTRA_KTRA_HDR.ID = QHS_TTRA_KTRA_DTL.HDR_ID WHERE  (QHS_TTRA_KTRA_HDR.MA_DTNT = '" + TIN + "') AND (QHS_TTRA_KTRA_DTL.LOAI_THUE =  '" + LOAI_THUE + "')"
     Set rs = clsDAO.Execute_Qhs(strSQL)
+
     'rs.Open s, cn
     If rs Is Nothing Then
         CheckThanhTraKiemTra = b
@@ -6263,20 +6346,20 @@ Public Function CheckThanhTraKiemTra(TIN As String, LOAI_THUE As String, KYKK_TU
         Exit Function
     End If
     
-                Dim D1 As Date
-                Dim d2 As Date
-                Dim d3 As Date
-                Dim d4 As Date
+    Dim D1 As Date
+    Dim d2 As Date
+    Dim d3 As Date
+    Dim d4 As Date
                 
-                D1 = StringToDate(KYKK_TU_NGAY)
-                d2 = StringToDate(KYKK_DEN_NGAY)
+    D1 = StringToDate(KYKK_TU_NGAY)
+    d2 = StringToDate(KYKK_DEN_NGAY)
                 
-                d3 = rs!KY_TT_TU
-                d4 = rs!KY_TT_DEN
+    d3 = rs!KY_TT_TU
+    d4 = rs!KY_TT_DEN
                 
-                If Not ((d4 < D1) Or (d3 > d2)) Then
-                    b = True
-                End If
+    If Not ((d4 < D1) Or (d3 > d2)) Then
+        b = True
+    End If
     
     clsDAO.DisConnect_qhs
     CheckThanhTraKiemTra = b
