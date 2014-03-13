@@ -361,7 +361,7 @@ Private isToKhaiPsDaNhanTN As Boolean  ' Kiem tra cac to khai phat sinh da nhan 
 Private TuNgay As String
 Private DenNgay As String
 Private Loai_TK_DK As String
-
+Private LAN_XUAT_BAN_DK As String
 '****************************
 'Description: StartBarcodeReader procedure start barcode listener on com 1 port
 'Author:TuyenDS
@@ -1441,8 +1441,8 @@ Private Sub Command1_Click()
 '    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
     
     '04/GTGT lan phat sinh
-    'str2 = "aa320710800737709   01201400100100100101/0101/01/1900<S01><S></S><S>22222~22~0~0~0~0~0~0~0~22~0~22244~0</S><S>~Hoang Ngoc Hung~~25/02/2014~1~~~2~25/01/2014</S></S01>"
-    'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'    str2 = "aa320712300100778   01201400100100100101/0101/01/1900<S01><S></S><S>22222~22~0~0~0~0~0~0~0~22~0~22244~0</S><S>~Hoang Ngoc Hung~~25/02/2014~1~~~2~25/01/2014</S></S01>"
+'    Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 'str2 = "aa320202300100778   00201300500500100801/0118/04/2007<S01><S>V.01~45435435~3248209~V.02~456~3434~V.03~684~23908~~56~23423~~564~243~~64~242~V.04~65128~4774~~564~2342~~64564~2432~V.05~54645~2342~V.06~47101~2585~~46456~2342~V.07~645~243~V.08~511557~4708~~456456~2342~~456~2342~~54645~24~V.09~448847~7238~~645~224~~645~24~~446456~243~~456~2423~~645~4324~~7164493~4094~V.10~6461101~2384~~4645~2342~~6456456"
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
@@ -1686,7 +1686,7 @@ Private Sub Command1_Click()
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
     
     '--01/NTNN lan phat sinh
-'str2 = "aa320702300100778   02201400100100100101/0101/01/1900<S01><S></S><S>cong viec 01~0102030405~01010100~1000~02/02/2014~100~10~10~1~10~10~10~0~1</S><S>1~1~1~1~1~2</S><S>~X</S><S>hoten~cc~Minh NhËt~15/02/2014~1~~~15/02/2014</S></S01>"
+'str2 = "aa320702300100778   02201400100100100101/0101/01/1900<S01><S></S><S>cong viec 01~0102030405~01010100~1000~02/02/2014~100~10~10~1~10~10~10~0~1</S><S>1~1~1~1~1~2</S><S>~X</S><S>hoten~cc~Minh NhËt~15/02/2014~1~~~09/02/2014</S></S01>"
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
     '--02/TNDN lan phat sinh
@@ -1929,10 +1929,10 @@ Private Sub Command1_Click()
 
 '--DATA FULL
 '--01A/TNDN-DK
-'str2 = "aa999982300100778   02201400200200100201/0101/01/1900<S01><S>0010011000</S><S>1~~x~02/03/2014~0~1~0~KL123~x~</S><S>12000~2000~24000000~13~3120000~200000~2920000~21500</S><S>Kh¸nh Linh~MCT~Minh NhËt~20/10/2010~1~~11/02/2014~2</S></S01>"
-'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-'str2 = "aa999982300100778   022014002002002002<S01-1><S>2920000</S><S>0102030405~cmc 01~40~1168000~ghi chu 1~2222222222~cmc 02~60~1752000~ghi chu 2</S><S>100~2920000</S></S01-1>"
-'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+str2 = "aa999982300100778   02201400200200100201/0101/01/1900<S01><S>0010011000</S><S>1~~x~02/03/2014~0~1~0~KL123~x~</S><S>12000~2000~24000000~13~3120000~200000~2920000~21500</S><S>Kh¸nh Linh~MCT~Minh NhËt~20/10/2010~1~~11/02/2014~2</S></S01>"
+Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+str2 = "aa999982300100778   022014002002002002<S01-1><S>2920000</S><S>0102030405~cmc 01~40~1168000~ghi chu 1~2222222222~cmc 02~60~1752000~ghi chu 2</S><S>100~2920000</S></S01-1>"
+Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 '--01B/TNDN-DK
 'str2 = "aa999992300100778   04201300100100100201/0101/01/1900<S01><S>0010011000</S><S>KLO987~x~</S><S>10000.00~20000.0000~200000000.00~10000.00~199990000.00~20.00~39998000.00~200.00~39997800.00~21500</S><S>Kh¸nh Linh~MCT~Minh NhËt~11/03/2014~1~</S></S01>"
@@ -1962,14 +1962,14 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '--01_2TD_GTGT
-str2 = "aa999012300100778   02201400200200100401/0114/06/2006<S01><S>0010011000</S><S>0~128991000~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~"
-Barcode_Scaned str2
-str2 = "aa999012300100778   0220140020020020040~128991000~0~128991000</S><S>Kh¸nh Linh~MCT~Minh NhËt~12/03/2014~1~~~1701~~~0</S></S01>"
-Barcode_Scaned str2
-str2 = "aa999012300100778   022014002002003004<S01_1_TD><S>Nha may 01~0102030405~10000~200~9800~nha may 02~2222222222~20000~200~19800</S></S01_1_TD>"
-Barcode_Scaned str2
-str2 = "aa999012300100778   022014002002004004<S01_2_TD><S>01~May 01~~100.00~100000~~~~~0102030405~20.00~20000~10100~~~~2222222222~80.00~80000~10300~</S><S>100000</S></S01_2_TD>"
-Barcode_Scaned str2
+'str2 = "aa999012300100778   02201400200200100401/0114/06/2006<S01><S>0010011000</S><S>0~128991000~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~"
+'Barcode_Scaned str2
+'str2 = "aa999012300100778   0220140020020020040~128991000~0~128991000</S><S>Kh¸nh Linh~MCT~Minh NhËt~12/03/2014~1~~~1701~~~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999012300100778   022014002002003004<S01_1_TD><S>Nha may 01~0102030405~10000~200~9800~nha may 02~2222222222~20000~200~19800</S></S01_1_TD>"
+'Barcode_Scaned str2
+'str2 = "aa999012300100778   022014002002004004<S01_2_TD><S>01~May 01~~100.00~100000~~~~~0102030405~20.00~20000~10100~~~~2222222222~80.00~80000~10300~</S><S>100000</S></S01_2_TD>"
+'Barcode_Scaned str2
 
 
 
@@ -3375,8 +3375,7 @@ On Error GoTo ErrHandle
     TAX_Utilities_Srv_New.ThreeMonths = ""
     TAX_Utilities_Srv_New.Year = ""
     TAX_Utilities_Srv_New.FinanceStartDate = ""
-    
-    
+       
 '    If Left$(strData, 3) = "120" Then
 '        lblVersion.caption = "1.2.0"
 '        strTaxReportVersion = Left$(strData, 3)
@@ -3788,6 +3787,25 @@ On Error GoTo ErrHandle
         isTKLanPS = False
         isTKThang = False
         ngayPS = ""
+        
+        'Get loai to khai dau khi: Loai_TK_DK
+        If (Val(strID) = 92 Or Val(strID) = 98) Then
+            '--TODO....
+            strTemp = Left$(strData, InStr(1, strData, "</S></S01>") - 1)
+            arrCT = Split(strTemp, "~")
+            If UBound(arrCT) > 0 Then
+                ngayPS = arrCT(UBound(arrCT) - 1)
+                LAN_XUAT_BAN_DK = Right(arrCT(0), 1)
+                If (arrCT(4) = "1") Then
+                    Loai_TK_DK = "DT"
+                ElseIf (arrCT(5) = "1") Then
+                    Loai_TK_DK = "CD"
+                ElseIf (arrCT(6) = "1") Then
+                    Loai_TK_DK = "KTN"
+                End If
+            End If
+        End If
+        
         ' 02/TNDN
         If Val(strID) = 73 Then
             arrCT = Split(strData, "~")
@@ -3895,16 +3913,6 @@ On Error GoTo ErrHandle
                 Exit Function
             End If
         End If
-        
-        'get loai to khai dau khi: Loai_TK_DK
-        If (Val(strID) = 92 Or Val(strID) = 98) Then
-            strTemp = Left$(strData, InStr(1, strData, "</S></S01>"))
-            arrCT = Split(strTemp, "~")
-            If Trim(arrCT(UBound(arrCT) - 1)) <> "" Then
-                Loai_TK_DK = arrCT(UBound(arrCT) - 1)
-            End If
-        End If
-            
     End If
     
     '***********************************
@@ -5556,11 +5564,24 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
                 "And tkhai.kykk_tu_ngay = To_Date('" & "01/" & TuNgay & "','DD/MM/RRRR')" & _
                 "And tkhai.kykk_den_ngay = To_Date('" & "01/" & DenNgay & "','DD/MM/RRRR')"
     ElseIf (strID = "01A_TNDN_DK" Or strID = "01_TAIN_DK") Then
-        strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
-                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-                "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
-                "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
-                "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
+        '--TODO
+        If (Trim(LAN_XUAT_BAN_DK) <> "") Then
+            strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
+                    "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                    "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
+                    "And tkhai.LOAI_TK_DK = '" & Loai_TK_DK & "' " & _
+                    "And tkhai.LAN_XUAN_BAN_DK = '" & LAN_XUAT_BAN_DK & "' " & _
+                    "And tkhai.kykk_tu_ngay = To_Date('" & ngayPS & "','DD/MM/YYYY')" & _
+                    "And tkhai.kykk_den_ngay = To_Date('" & ngayPS & "','DD/MM/YYYY')"
+        Else
+            strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
+                    "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                    "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
+                    "And tkhai.LOAI_TK_DK = '" & Loai_TK_DK & "' " & _
+                    "And tkhai.kykk_tu_ngay = To_Date('" & ngayPS & "','DD/MM/YYYY')" & _
+                    "And tkhai.kykk_den_ngay = To_Date('" & ngayPS & "','DD/MM/YYYY')"
+        
+        End If
     Else
         strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
