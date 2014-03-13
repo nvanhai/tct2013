@@ -1302,6 +1302,14 @@ With fps
             'Update combo C
             UpdateCell fps, .Col, .Row, .Text
         End If
+    ElseIf .ActiveSheet = 3 Then
+        If Col = .ColLetterToNumber("P") And .Text <> "" Then
+            intIndexCombo = .typeComboboxCurSel
+            .Col = .ColLetterToNumber("AH")
+            .typeComboboxCurSel = intIndexCombo
+            'Update combo C
+            UpdateCell fps, .Col, .Row, .Text
+        End If
     End If
    End With
    TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
@@ -2292,7 +2300,7 @@ Public Sub inThongTinDL()
     tuRowDL = 23
     denRowDL = 33
     'TuRow_DenRow_sheet
-    strTuRowDenRowPL = "14_16_2~20_30_3"
+    strTuRowDenRowPL = "14_16_2~11_12_3~20_30_4"
     ' end
 End Sub
 
@@ -2367,6 +2375,16 @@ Private Sub setCQTQuanLy()
             .Col = .ColLetterToNumber("R")
             .TypeComboBoxList = maChiCucThue
             '.EventEnabled(EventAllEvents) = True
+            
+            .Sheet = 3
+            
+            .Row = 42
+            .Col = .ColLetterToNumber("P")
+            .TypeComboBoxList = tenCucThue
+            
+            .Row = 42
+            .Col = .ColLetterToNumber("AH")
+            .TypeComboBoxList = maCucThue
         End With
 End Sub
 
