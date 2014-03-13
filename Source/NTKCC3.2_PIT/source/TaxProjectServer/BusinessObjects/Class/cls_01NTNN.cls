@@ -429,300 +429,361 @@ Dim blnValid As Boolean
     End With
 End Sub
 
-
 Public Function InsertDTL() As String
-   Dim sSQL As String
-   Dim sSQLCol As String
-   Dim sSQLVal As String
-   Dim bln  As Boolean
-   Dim matkhai As Variant
-   Dim madtnt As Variant
-   Dim kykkhai As Variant
-   Dim KYLBO As Variant
-   Dim ngnop As Variant
-   Dim NoiDung As Variant
-   Dim MaSoThue As Variant
-   Dim HOPDONG As Variant
-   Dim SoTienTT As Variant
-   Dim NGAYTT As Variant
-   Dim DSo_GT As Variant
-   Dim TyLe_GT As Variant
-   Dim TSuat_GT As Variant
-   Dim ThuePN_GT As Variant
-   Dim DSo_DN As Variant
-   Dim TyLe_DN As Variant
-   Dim ThueMG_DN As Variant
-   Dim ThuePN_DN As Variant
-   Dim ThuePN As Variant
-   Dim TTHTK1 As Variant
-   Dim ROWNUM As Variant
-   Dim DANHAN As Variant
-   Dim CHEXSUM As Variant
+    Dim sSQL      As String
+    Dim sSQLCol   As String
+    Dim sSQLVal   As String
+    Dim bln       As Boolean
+    Dim matkhai   As Variant
+    Dim madtnt    As Variant
+    Dim kykkhai   As Variant
+    Dim KYLBO     As Variant
+    Dim ngnop     As Variant
+    Dim NoiDung   As Variant
+    Dim MaSoThue  As Variant
+    Dim HOPDONG   As Variant
+    Dim SoTienTT  As Variant
+    Dim NGAYTT    As Variant
+    Dim DSo_GT    As Variant
+    Dim TyLe_GT   As Variant
+    Dim TSuat_GT  As Variant
+    Dim ThuePN_GT As Variant
+    Dim DSo_DN    As Variant
+    Dim TyLe_DN   As Variant
+    Dim ThueMG_DN As Variant
+    Dim ThuePN_DN As Variant
+    Dim ThuePN    As Variant
+    Dim TTHTK1    As Variant
+    Dim ROWNUM    As Variant
+    Dim DANHAN    As Variant
+    Dim CHEXSUM   As Variant
    
+    sSQLCol = "MATKHAI, MADTNT, KYKKHAI, KYLBO, NGNOP, TTHTK, NoiDung, MaSoThue, HopDong, SoTienTT, NgayTT "
+    sSQLCol = sSQLCol + ", DSo_GT, TyLe_GT, TSuat_GT, ThuePN_GT, DSo_DN, TyLe_DN, ThueMG_DN, ThuePN_DN, ThuePN, LAN_QUET, DANHAN, CHEXSUM"
    
-   sSQLCol = "MATKHAI, MADTNT, KYKKHAI, KYLBO, NGNOP, TTHTK, NoiDung, MaSoThue, HopDong, SoTienTT, NgayTT "
-   sSQLCol = sSQLCol + ", DSo_GT, TyLe_GT, TSuat_GT, ThuePN_GT, DSo_DN, TyLe_DN, ThueMG_DN, ThuePN_DN, ThuePN, LAN_QUET, DANHAN, CHEXSUM"
-   
-   If clsDAO.Connected = False Then
+    If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
         clsDAO.Connect
-   End If
+    End If
    
-   
-   With fps
-        .Sheet = 1
-        'ma to khai
-        matkhai = "'" & LOAI_TO_KHAI & "'"
-        ' ma doi tuong nop thue
-        .GetText .ColLetterToNumber("H"), 7, madtnt
-        If Trim(madtnt) = vbNullString Then
-            madtnt = "''"
-        Else
-            madtnt = "'" & madtnt & "'"
-        End If
-        'ky ke khai
-        kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
-        ' ngay nop
-        .GetText .ColLetterToNumber("E"), 25, ngnop
-        If Trim(ngnop) = vbNullString Then
-            ngnop = "CTOD('')"
-        Else
-            ngnop = ToDate(Trim(ngnop), DDMMYYYY)
-            ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
-        End If
-         'ky lop bo
-        .GetText .ColLetterToNumber("E"), 23, KYLBO
-        If Trim(KYLBO) = vbNullString Then
-            KYLBO = "CTOD('')"
-        Else
-            KYLBO = "'" & KYLBO & "'"
-        End If
-        DANHAN = "''"
-        'trang thai to khai
-        .GetText .ColLetterToNumber("R"), 4, TTHTK1
-        If Trim(TTHTK1) = vbNullString Then
-            TTHTK = "'" & 2 & "'"
-        End If
-        .Col = .ColLetterToNumber("B")
-        .Row = 52
-            Do
-                CHEXSUM = ".F."
-               'noi dung
-               .GetText .ColLetterToNumber("C"), .Row, NoiDung
-               If (NoiDung) = vbNullString Then
-                    NoiDung = "''"
-                Else
-                    NoiDung = "'" & TAX_Utilities_Svr_New.Convert(CStr(NoiDung), UNICODE, TCVN) & "'"
-                End If
-                'ma so thue
-               .GetText .ColLetterToNumber("H"), .Row, MaSoThue
-               If (MaSoThue) = vbNullString Then
-                  MaSoThue = "''"
-               Else
-                  MaSoThue = "'" & MaSoThue & "'"
-               End If
-               ' hop dong so
-               .GetText .ColLetterToNumber("L"), .Row, HOPDONG
-               If (HOPDONG) = vbNullString Then
-                   HOPDONG = "''"
-               Else
-                   HOPDONG = "'" & HOPDONG & "'"
-               End If
-               ' so tien thanh toan
-               .GetText .ColLetterToNumber("Q"), .Row, SoTienTT
-               If (SoTienTT) = vbNullString Then
-                   SoTienTT = "0"
-               End If
-               ' ngay thanh toan
-               .GetText .ColLetterToNumber("V"), .Row, NGAYTT
-               If (NGAYTT) = vbNullString Then
-                    NGAYTT = "CTOD('')"
-               Else
-                    NGAYTT = ToDate(Trim(NGAYTT), DDMMYYYY)
-                    NGAYTT = "CTOD('" & Format(NGAYTT, "mm/dd/yyyy") & "')"
-               End If
-                ' doanh so gia tang
-               .GetText .ColLetterToNumber("Y"), .Row, DSo_GT
-               If (DSo_GT) = vbNullString Then
-                   DSo_GT = "0"
-               End If
-               ' ty le %
-               .GetText .ColLetterToNumber("AB"), .Row, TyLe_GT
-               If (TyLe_GT) = vbNullString Then
-                   TyLe_GT = "0"
-               End If
-              ' thue suat gt
-              .GetText .ColLetterToNumber("AD"), .Row, TSuat_GT
-               If (TSuat_GT) = vbNullString Then
-                   TSuat_GT = "0"
-               End If
-               ' thue phai nop
-               .GetText .ColLetterToNumber("AF"), .Row, ThuePN_GT
-               If (ThuePN_GT) = vbNullString Then
-                   ThuePN_GT = "0"
-               End If
-                'doanh so Doanh nghiep
-                .GetText .ColLetterToNumber("AH"), .Row, DSo_DN
-               If (DSo_DN) = vbNullString Then
-                   DSo_DN = "0"
-               End If
-               ' ty le % doanh nghiep
-               .GetText .ColLetterToNumber("AN"), .Row, TyLe_DN
-               If (TyLe_DN) = vbNullString Then
-                   TyLe_DN = "0"
-               End If
-               ' thue mien giam  daonh nghiep
-               .GetText .ColLetterToNumber("AP"), .Row, ThueMG_DN
-               If (ThueMG_DN) = vbNullString Then
-                   ThueMG_DN = "0"
-               End If
-               ' thue doanh nghiep phai nop
-               .GetText .ColLetterToNumber("AR"), .Row, ThuePN_DN
-               If (ThuePN_DN) = vbNullString Then
-                   ThuePN_DN = "0"
-               End If
-               ' tong thue phai nop
-               .GetText .ColLetterToNumber("AV"), .Row, ThuePN
-               If (ThuePN) = vbNullString Then
-                   ThuePN = "0"
-               End If
-               
-           sSQLVal = matkhai & "," & madtnt & "," & kykkhai & "," & KYLBO & "," & ngnop & "," & TTHTK & "," & _
-           NoiDung & "," & MaSoThue & "," & HOPDONG & "," & SoTienTT & "," & NGAYTT & "," & _
-           DSo_GT & "," & TyLe_GT & "," & TSuat_GT & "," & ThuePN_GT & "," & DSo_DN & "," & TyLe_DN & "," & _
-           ThueMG_DN & "," & ThuePN_DN & "," & ThuePN & "," & LAN_QUET & "," & DANHAN & "," & CHEXSUM
-           sSQL = "INSERT INTO TMP_NTNN" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-           bln = clsDAO.ExecuteDLL(sSQL)
-
-                .Col = .ColLetterToNumber("B")
-                .Row = .Row + 1
-             Loop Until .Text = "aa"
-             ROWNUM = .Row
-        End With
-   'dong cong
     With fps
         .Sheet = 1
         'ma to khai
         matkhai = "'" & LOAI_TO_KHAI & "'"
         ' ma doi tuong nop thue
         .GetText .ColLetterToNumber("H"), 7, madtnt
+
         If Trim(madtnt) = vbNullString Then
             madtnt = "''"
         Else
             madtnt = "'" & madtnt & "'"
         End If
+
         'ky ke khai
         kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+        ' ngay nop
         .GetText .ColLetterToNumber("E"), 25, ngnop
-        'NGNOP = Date
+
         If Trim(ngnop) = vbNullString Then
             ngnop = "CTOD('')"
         Else
             ngnop = ToDate(Trim(ngnop), DDMMYYYY)
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
-               
-         'ky lop bo
+
+        'ky lop bo
         .GetText .ColLetterToNumber("E"), 23, KYLBO
+
         If Trim(KYLBO) = vbNullString Then
             KYLBO = "CTOD('')"
         Else
             KYLBO = "'" & KYLBO & "'"
-       End If
-       'noi dung
-       .Row = ROWNUM + 1
-             CHEXSUM = ".T."
-             .GetText .ColLetterToNumber("C"), .Row, NoiDung
-             If Trim(NoiDung) = vbNullString Then
-                 NoiDung = "''"
-             Else
-                 NoiDung = "'" & TAX_Utilities_Svr_New.Convert(CStr(NoiDung), UNICODE, TCVN) & "'"
-             End If
-             'ma so thue
-             .GetText .ColLetterToNumber("H"), .Row, MaSoThue
-             If (MaSoThue) = vbNullString Then
+        End If
+
+        DANHAN = "''"
+        'trang thai to khai
+        .GetText .ColLetterToNumber("R"), 4, TTHTK1
+
+        If Trim(TTHTK1) = vbNullString Then
+            TTHTK = "'" & 2 & "'"
+        End If
+
+        .Col = .ColLetterToNumber("B")
+        .Row = 52
+
+        Do
+            CHEXSUM = ".F."
+            'noi dung
+            .GetText .ColLetterToNumber("C"), .Row, NoiDung
+
+            If (NoiDung) = vbNullString Then
+                NoiDung = "''"
+            Else
+                NoiDung = "'" & TAX_Utilities_Svr_New.Convert(CStr(NoiDung), UNICODE, TCVN) & "'"
+            End If
+
+            'ma so thue
+            .GetText .ColLetterToNumber("H"), .Row, MaSoThue
+
+            If (MaSoThue) = vbNullString Then
                 MaSoThue = "''"
-             Else
+            Else
                 MaSoThue = "'" & MaSoThue & "'"
-             End If
-             ' hop dong so
-             .GetText .ColLetterToNumber("L"), .Row, HOPDONG
-             If (HOPDONG) = vbNullString Then
-                 HOPDONG = "''"
-             Else
-                 HOPDONG = "'" & HOPDONG & "'"
-             End If
-             ' so tien thanh toan
-             .GetText .ColLetterToNumber("Q"), .Row, SoTienTT
-             If (SoTienTT) = vbNullString Then
-                 SoTienTT = "0"
-             End If
-             ' ngay thanh toan
-               .GetText .ColLetterToNumber("V"), .Row, NGAYTT
-               If (NGAYTT) = vbNullString Then
-                    NGAYTT = "CTOD('')"
-               Else
-                    NGAYTT = ToDate(Trim(NGAYTT), DDMMYYYY)
-                    NGAYTT = "CTOD('" & Format(NGAYTT, "mm/dd/yyyy") & "')"
-               End If
-             ' doanh so gia tang
-             .GetText .ColLetterToNumber("Y"), .Row, DSo_GT
-             If (DSo_GT) = vbNullString Then
-                 DSo_GT = "0"
-             End If
-             ' ty le %
-             .GetText .ColLetterToNumber("AB"), .Row, TyLe_GT
-             If (TyLe_GT) = vbNullString Then
-                 TyLe_GT = "0"
-             End If
+            End If
+
+            ' hop dong so
+            .GetText .ColLetterToNumber("L"), .Row, HOPDONG
+
+            If (HOPDONG) = vbNullString Then
+                HOPDONG = "''"
+            Else
+                HOPDONG = "'" & HOPDONG & "'"
+            End If
+
+            ' so tien thanh toan
+            .GetText .ColLetterToNumber("Q"), .Row, SoTienTT
+
+            If (SoTienTT) = vbNullString Then
+                SoTienTT = "0"
+            End If
+
+            ' ngay thanh toan
+            .GetText .ColLetterToNumber("V"), .Row, NGAYTT
+
+            If (NGAYTT) = vbNullString Then
+                NGAYTT = "CTOD('')"
+            Else
+                NGAYTT = ToDate(Trim(NGAYTT), DDMMYYYY)
+                NGAYTT = "CTOD('" & Format(NGAYTT, "mm/dd/yyyy") & "')"
+            End If
+
+            ' doanh so gia tang
+            .GetText .ColLetterToNumber("Y"), .Row, DSo_GT
+
+            If (DSo_GT) = vbNullString Then
+                DSo_GT = "0"
+            End If
+
+            ' ty le %
+            .GetText .ColLetterToNumber("AB"), .Row, TyLe_GT
+
+            If (TyLe_GT) = vbNullString Then
+                TyLe_GT = "0"
+            End If
+
             ' thue suat gt
             .GetText .ColLetterToNumber("AD"), .Row, TSuat_GT
-             If (TSuat_GT) = vbNullString Then
-                 TSuat_GT = "0"
-             End If
-             ' thue phai nop
-             .GetText .ColLetterToNumber("AF"), .Row, ThuePN_GT
-             If (ThuePN_GT) = vbNullString Then
-                 ThuePN_GT = "0"
-             End If
-              'doanh so Doanh nghiep
-              .GetText .ColLetterToNumber("AH"), .Row, DSo_DN
-             If (DSo_DN) = vbNullString Then
-                 DSo_DN = "0"
-             End If
-             ' ty le % doanh nghiep
-             .GetText .ColLetterToNumber("AN"), .Row, TyLe_DN
-             If (TyLe_DN) = vbNullString Then
-                 TyLe_DN = "0"
-             End If
-             ' thue mien giam  daonh nghiep
-             .GetText .ColLetterToNumber("AP"), .Row, ThueMG_DN
-             If (ThueMG_DN) = vbNullString Then
-                 ThueMG_DN = "0"
-             End If
-             ' thue doanh nghiep phai nop
-             .GetText .ColLetterToNumber("AR"), .Row, ThuePN_DN
-             If (ThuePN_DN) = vbNullString Then
-                 ThuePN_DN = "0"
-             End If
-             ' tong thue phai nop
-             .GetText .ColLetterToNumber("AV"), .Row, ThuePN
-             If (ThuePN) = vbNullString Then
-                 ThuePN = "0"
-             End If
-                    
-        sSQLVal = matkhai & "," & madtnt & "," & kykkhai & "," & KYLBO & "," & ngnop & "," & TTHTK & "," & _
-        NoiDung & "," & MaSoThue & "," & HOPDONG & "," & SoTienTT & "," & NGAYTT & "," & _
-        DSo_GT & "," & TyLe_GT & "," & TSuat_GT & "," & ThuePN_GT & "," & DSo_DN & "," & TyLe_DN & "," & _
-        ThueMG_DN & "," & ThuePN_DN & "," & ThuePN & "," & LAN_QUET & "," & DANHAN & "," & CHEXSUM
-        sSQL = "INSERT INTO TMP_NTNN" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-        bln = clsDAO.ExecuteDLL(sSQL)
-          
+
+            If (TSuat_GT) = vbNullString Then
+                TSuat_GT = "0"
+            End If
+
+            ' thue phai nop
+            .GetText .ColLetterToNumber("AF"), .Row, ThuePN_GT
+
+            If (ThuePN_GT) = vbNullString Then
+                ThuePN_GT = "0"
+            End If
+
+            'doanh so Doanh nghiep
+            .GetText .ColLetterToNumber("AH"), .Row, DSo_DN
+
+            If (DSo_DN) = vbNullString Then
+                DSo_DN = "0"
+            End If
+
+            ' ty le % doanh nghiep
+            .GetText .ColLetterToNumber("AN"), .Row, TyLe_DN
+
+            If (TyLe_DN) = vbNullString Then
+                TyLe_DN = "0"
+            End If
+
+            ' thue mien giam  daonh nghiep
+            .GetText .ColLetterToNumber("AP"), .Row, ThueMG_DN
+
+            If (ThueMG_DN) = vbNullString Then
+                ThueMG_DN = "0"
+            End If
+
+            ' thue doanh nghiep phai nop
+            .GetText .ColLetterToNumber("AR"), .Row, ThuePN_DN
+
+            If (ThuePN_DN) = vbNullString Then
+                ThuePN_DN = "0"
+            End If
+
+            ' tong thue phai nop
+            .GetText .ColLetterToNumber("AV"), .Row, ThuePN
+
+            If (ThuePN) = vbNullString Then
+                ThuePN = "0"
+            End If
+               
+            sSQLVal = matkhai & "," & madtnt & "," & kykkhai & "," & KYLBO & "," & ngnop & "," & TTHTK & "," & NoiDung & "," & MaSoThue & "," & HOPDONG & "," & SoTienTT & "," & NGAYTT & "," & DSo_GT & "," & TyLe_GT & "," & TSuat_GT & "," & ThuePN_GT & "," & DSo_DN & "," & TyLe_DN & "," & ThueMG_DN & "," & ThuePN_DN & "," & ThuePN & "," & LAN_QUET & "," & DANHAN & "," & CHEXSUM
+            sSQL = "INSERT INTO TMP_NTNN" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+            bln = clsDAO.ExecuteDLL(sSQL)
+
+            .Col = .ColLetterToNumber("B")
+            .Row = .Row + 1
+        Loop Until .Text = "aa"
+
+        ROWNUM = .Row
     End With
+
+'    'dong cong
+'    With fps
+'        .Sheet = 1
+'        'ma to khai
+'        matkhai = "'" & LOAI_TO_KHAI & "'"
+'        ' ma doi tuong nop thue
+'        .GetText .ColLetterToNumber("H"), 7, madtnt
+'
+'        If Trim(madtnt) = vbNullString Then
+'            madtnt = "''"
+'        Else
+'            madtnt = "'" & madtnt & "'"
+'        End If
+'
+'        'ky ke khai
+'        kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+'        .GetText .ColLetterToNumber("E"), 25, ngnop
+'
+'        'NGNOP = Date
+'        If Trim(ngnop) = vbNullString Then
+'            ngnop = "CTOD('')"
+'        Else
+'            ngnop = ToDate(Trim(ngnop), DDMMYYYY)
+'            ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
+'        End If
+'
+'        'ky lop bo
+'        .GetText .ColLetterToNumber("E"), 23, KYLBO
+'
+'        If Trim(KYLBO) = vbNullString Then
+'            KYLBO = "CTOD('')"
+'        Else
+'            KYLBO = "'" & KYLBO & "'"
+'        End If
+'
+'        'noi dung
+'        .Row = ROWNUM + 1
+'        CHEXSUM = ".T."
+'        .GetText .ColLetterToNumber("C"), .Row, NoiDung
+'
+'        If Trim(NoiDung) = vbNullString Then
+'            NoiDung = "''"
+'        Else
+'            NoiDung = "'" & TAX_Utilities_Svr_New.Convert(CStr(NoiDung), UNICODE, TCVN) & "'"
+'        End If
+'
+'        'ma so thue
+'        .GetText .ColLetterToNumber("H"), .Row, MaSoThue
+'
+'        If (MaSoThue) = vbNullString Then
+'            MaSoThue = "''"
+'        Else
+'            MaSoThue = "'" & MaSoThue & "'"
+'        End If
+'
+'        ' hop dong so
+'        .GetText .ColLetterToNumber("L"), .Row, HOPDONG
+'
+'        If (HOPDONG) = vbNullString Then
+'            HOPDONG = "''"
+'        Else
+'            HOPDONG = "'" & HOPDONG & "'"
+'        End If
+'
+'        ' so tien thanh toan
+'        .GetText .ColLetterToNumber("Q"), .Row, SoTienTT
+'
+'        If (SoTienTT) = vbNullString Then
+'            SoTienTT = "0"
+'        End If
+'
+'        ' ngay thanh toan
+'        .GetText .ColLetterToNumber("V"), .Row, NGAYTT
+'
+'        If (NGAYTT) = vbNullString Then
+'            NGAYTT = "CTOD('')"
+'        Else
+'            NGAYTT = ToDate(Trim(NGAYTT), DDMMYYYY)
+'            NGAYTT = "CTOD('" & Format(NGAYTT, "mm/dd/yyyy") & "')"
+'        End If
+'
+'        ' doanh so gia tang
+'        .GetText .ColLetterToNumber("Y"), .Row, DSo_GT
+'
+'        If (DSo_GT) = vbNullString Then
+'            DSo_GT = "0"
+'        End If
+'
+'        ' ty le %
+'        .GetText .ColLetterToNumber("AB"), .Row, TyLe_GT
+'
+'        If (TyLe_GT) = vbNullString Then
+'            TyLe_GT = "0"
+'        End If
+'
+'        ' thue suat gt
+'        .GetText .ColLetterToNumber("AD"), .Row, TSuat_GT
+'
+'        If (TSuat_GT) = vbNullString Then
+'            TSuat_GT = "0"
+'        End If
+'
+'        ' thue phai nop
+'        .GetText .ColLetterToNumber("AF"), .Row, ThuePN_GT
+'
+'        If (ThuePN_GT) = vbNullString Then
+'            ThuePN_GT = "0"
+'        End If
+'
+'        'doanh so Doanh nghiep
+'        .GetText .ColLetterToNumber("AH"), .Row, DSo_DN
+'
+'        If (DSo_DN) = vbNullString Then
+'            DSo_DN = "0"
+'        End If
+'
+'        ' ty le % doanh nghiep
+'        .GetText .ColLetterToNumber("AN"), .Row, TyLe_DN
+'
+'        If (TyLe_DN) = vbNullString Then
+'            TyLe_DN = "0"
+'        End If
+'
+'        ' thue mien giam  daonh nghiep
+'        .GetText .ColLetterToNumber("AP"), .Row, ThueMG_DN
+'
+'        If (ThueMG_DN) = vbNullString Then
+'            ThueMG_DN = "0"
+'        End If
+'
+'        ' thue doanh nghiep phai nop
+'        .GetText .ColLetterToNumber("AR"), .Row, ThuePN_DN
+'
+'        If (ThuePN_DN) = vbNullString Then
+'            ThuePN_DN = "0"
+'        End If
+'
+'        ' tong thue phai nop
+'        .GetText .ColLetterToNumber("AV"), .Row, ThuePN
+'
+'        If (ThuePN) = vbNullString Then
+'            ThuePN = "0"
+'        End If
+'
+'        sSQLVal = matkhai & "," & madtnt & "," & kykkhai & "," & KYLBO & "," & ngnop & "," & TTHTK & "," & NoiDung & "," & MaSoThue & "," & HOPDONG & "," & SoTienTT & "," & NGAYTT & "," & DSo_GT & "," & TyLe_GT & "," & TSuat_GT & "," & ThuePN_GT & "," & DSo_DN & "," & TyLe_DN & "," & ThueMG_DN & "," & ThuePN_DN & "," & ThuePN & "," & LAN_QUET & "," & DANHAN & "," & CHEXSUM
+'        sSQL = "INSERT INTO TMP_NTNN" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+'        bln = clsDAO.ExecuteDLL(sSQL)
+'
+'    End With
     
-   clsDAO.Disconnect
+    clsDAO.Disconnect
    
-   InsertDTL = vbNullString
+    InsertDTL = vbNullString
    
 End Function
 
@@ -1144,7 +1205,7 @@ Public Function InsertHDR() As String
     Dim MANNKD     As Variant
     Dim TENNV      As Variant
     Dim CHUNGCHI   As Variant
-    Dim NgayNop As Variant
+    Dim NGAYNOP As Variant
 
     sSQLCol = "MADTNT, MATHUE, MATM, MAPP, KYLBO, NGNOP, "
     sSQLCol = sSQLCol & "LOAITIEN, MABPQL, SHTEP, TTHTK, KYKKHAI, "
@@ -1214,7 +1275,7 @@ Public Function InsertHDR() As String
             ngnop = "CTOD('')"
         Else
             ngnop = ToDate(Trim(ngnop), DDMMYYYY)
-            NgayNop = ngnop
+            NGAYNOP = ngnop
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
        
@@ -1294,7 +1355,7 @@ Public Function InsertHDR() As String
         .Col = .ColLetterToNumber("F")
         .Row = 63
         If .Text = "x" Or .Text = "X" Then
-            HANNOP = DateAdd("d", 10, NgayNop)
+            HANNOP = DateAdd("d", 10, NGAYNOP)
             HANNOP = ToString(HANNOP, "DD/MM/YYYY")
         End If
 
