@@ -360,15 +360,16 @@ Private isToKhaiCT As Boolean
 Private isTKDA30 As Boolean  ' kiem tra QLT da co tk theo mau cu chua
 
 Private isTKLanPS As Boolean
+Private isTKThang As Boolean
 Private ngayPS As String
 
 Private isToKhaiPsDaNhanTN As Boolean  ' Kiem tra cac to khai phat sinh da nhan trong ngay
-' xu ly cho to khai 08, 08A/TNCN
-Private isTKThang As Boolean
+
+' xu ly cho to khai 08, 08A/TNCN, 01_TNCN_TTS
 Private TuNgay As String
 Private DenNgay As String
 Private Loai_TK_DK As String
-
+Private LAN_XUAT_BAN_DK As String
 '****************************
 'Description: StartBarcodeReader procedure start barcode listener on com 1 port
 'Author:TuyenDS
@@ -1235,7 +1236,8 @@ On Error GoTo ErrHandle
 
     
     ' xu ly nhan cac mau an chi co canh bao khi quet trung
-    If (Val(IdToKhai) <= 68 And Val(IdToKhai) >= 64) Or Val(IdToKhai) = 91 Then
+    If (Val(idToKhai) <= 68 And Val(idToKhai) >= 64) Or Val(idToKhai) = 91 Or Val(idToKhai) = 7 Or Val(idToKhai) = 9 Or Val(idToKhai) = 10 Or Val(idToKhai) = 13 Then
+
         ' xu ly an chi
         If isTonTaiAC = True Then
              If isIHTKK And TAX_Utilities_iNTK.NhanTuDongIHTKK And TAX_Utilities_iNTK.isCanBoXuLyGhiTK = False Then
@@ -3796,6 +3798,25 @@ On Error GoTo ErrHandle
         isTKLanPS = False
         isTKThang = False
         ngayPS = ""
+        
+        'Get loai to khai dau khi: Loai_TK_DK
+        If (Val(strID) = 92 Or Val(strID) = 98) Then
+            '--TODO....
+            strTemp = Left$(strData, InStr(1, strData, "</S></S01>") - 1)
+            arrCT = Split(strTemp, "~")
+            If UBound(arrCT) > 0 Then
+                ngayPS = arrCT(UBound(arrCT) - 1)
+                LAN_XUAT_BAN_DK = Right(arrCT(0), 1)
+                If (arrCT(4) = "1") Then
+                    Loai_TK_DK = "DT"
+                ElseIf (arrCT(5) = "1") Then
+                    Loai_TK_DK = "CD"
+                ElseIf (arrCT(6) = "1") Then
+                    Loai_TK_DK = "KTN"
+                End If
+            End If
+        End If
+        
         ' 02/TNDN
         If Val(strID) = 73 Then
             arrCT = Split(strData, "~")
@@ -3913,14 +3934,7 @@ On Error GoTo ErrHandle
                 Exit Function
             End If
         End If
-        'get loai to khai dau khi: Loai_TK_DK
-        If (Val(strID) = 92 Or Val(strID) = 98) Then
-            strTemp = Left$(strData, InStr(1, strData, "</S></S01>"))
-            arrCT = Split(strTemp, "~")
-            If Trim(arrCT(UBound(arrCT) - 1)) <> "" Then
-                Loai_TK_DK = arrCT(UBound(arrCT) - 1)
-            End If
-        End If
+        
     End If
     '***********************************
     
@@ -5579,11 +5593,24 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
                 "And tkhai.kykk_tu_ngay = To_Date('" & "01/" & TuNgay & "','DD/MM/RRRR')" & _
                 "And tkhai.kykk_den_ngay = To_Date('" & "01/" & DenNgay & "','DD/MM/RRRR')"
     ElseIf (strID = "01A_TNDN_DK" Or strID = "01_TAIN_DK") Then
-        strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
-                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-                "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
-                "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
-                "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
+        '--TODO
+        If (Trim(LAN_XUAT_BAN_DK) <> "") Then
+            strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
+                    "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                    "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
+                    "And tkhai.LOAI_TK_DK = '" & Loai_TK_DK & "' " & _
+                    "And tkhai.LAN_XUAN_BAN_DK = '" & LAN_XUAT_BAN_DK & "' " & _
+                    "And tkhai.kykk_tu_ngay = To_Date('" & ngayPS & "','DD/MM/YYYY')" & _
+                    "And tkhai.kykk_den_ngay = To_Date('" & ngayPS & "','DD/MM/YYYY')"
+        Else
+            strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
+                    "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                    "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
+                    "And tkhai.LOAI_TK_DK = '" & Loai_TK_DK & "' " & _
+                    "And tkhai.kykk_tu_ngay = To_Date('" & ngayPS & "','DD/MM/YYYY')" & _
+                    "And tkhai.kykk_den_ngay = To_Date('" & ngayPS & "','DD/MM/YYYY')"
+        
+        End If
     Else
         strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _

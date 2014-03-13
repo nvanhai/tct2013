@@ -238,7 +238,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
              i = i + 1
             .Col = .ColLetterToNumber("B")
             .Row = i + 18
-        Loop Until .Text = "aa" Or varMaDM = ""
+        Loop Until .Text = "aa"
     End With
     
     Prepared2 = True
