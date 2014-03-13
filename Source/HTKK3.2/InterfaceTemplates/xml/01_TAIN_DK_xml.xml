@@ -69,22 +69,30 @@
 			</TTinTKhaiThue>
 		</TTinChung>
 		<CTieuTKhaiChinh>
-			<ct21>String</ct21>
-			<ct22>0.0</ct22>
-			<BKeThueTN>
-				<ChiTietBKeThueTN id="String">
-					<ct23>String</ct23>
-					<ct24>0000000000</ct24>
-					<ct25>0.0</ct25>
-					<ct26>0.0</ct26>
-					<ct27>1</ct27>
-					<ct28>1</ct28>
-					<ct29>0</ct29>
-				</ChiTietBKeThueTN>
-			</BKeThueTN>
-			<tong_ct27>1</tong_ct27>
-			<tong_ct28>1</tong_ct28>
-			<tong_ct29>0</tong_ct29>
+			<LoaiDauKhi>
+				<ct01>true</ct01>
+				<ct02>true</ct02>
+				<ct03>true</ct03>
+			</LoaiDauKhi>
+			<ct05>1</ct05>
+			<LoaiXuatBan>
+				<ct08>true</ct08>
+				<ct09>true</ct09>
+			</LoaiXuatBan>
+			<ct10>1967-08-13</ct10>
+			<ct19>String</ct19>
+			<CT20>
+				<donViUyQuyen>true</donViUyQuyen>
+				<daiLyThue></daiLyThue>
+			</CT20>
+			<tenDonViUyQuyen>String</tenDonViUyQuyen>
+			<ct30>0.0</ct30>
+			<ct30a>0.0</ct30a>
+			<ct31>0.0</ct31>
+			<ct32>0.0</ct32>
+			<ct33>0.0</ct33>
+			<ct34>0.0</ct34>
+			<ct35>0.0</ct35>
 		</CTieuTKhaiChinh>
 		<PLuc>
 		</PLuc>

@@ -1,20 +1,8 @@
-<HSoKhaiThue>
+<HSoThueDTu>
 	<Static GroupName="TKhaiThue">
 		<maTKhai>132</maTKhai>
 		<tenTKhai>Tờ khai thuế GTGT – 01/TĐ-GTGT</tenTKhai>
 		<moTaBMau/>
-	</Static>
-	<Static GroupName="GiaHan">
-		<maLyDoGiaHan></maLyDoGiaHan>
-		<lyDoGiaHan></lyDoGiaHan>
-	</Static>
-	<Static GroupName="NNT">
-		<maHuyenNNT></maHuyenNNT>
-		<maTinhNNT></maTinhNNT>
-	</Static>
-	<Static GroupName="DLyThue">
-		<maHuyenDLyThue></maHuyenDLyThue>
-		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<ct21>S_41</ct21>
@@ -33,4 +21,4 @@
 		<tenNVienDLyThue>H_62</tenNVienDLyThue>
 		<cchiHNghe>H_64</cchiHNghe>
 	</Static>
-</HSoKhaiThue>
+</HSoThueDTu>

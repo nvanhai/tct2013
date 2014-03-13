@@ -1,28 +1,17 @@
-<HSoKhaiThue>
+<HSoThueDTu>
 	<Static GroupName="TKhaiThue">
 		<maTKhai>86</maTKhai>
 		<tenTKhai>TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP DOANH NGHIỆP ĐỐI VỚI DẦU KHÍ (02/TNDN-DK)</tenTKhai>
 		<moTaBMau/>
 	</Static>
-	<Static GroupName="GiaHan">
-		<maLyDoGiaHan/>
-		<lyDoGiaHan/>
-	</Static>
-	<Static GroupName="NNT">
-		<maHuyenNNT/>
-		<maTinhNNT/>
-	</Static>
-	<Static GroupName="DLyThue">
-		<maHuyenDLyThue/>
-		<maTinhDLyThue/>
-	</Static>
+
 	<Static GroupName="LoaiDauKhi">
-		<dauTho>O_30</dauTho>
-		<condensate>P_30</condensate>
-		<khiThienNhien>Q_30</khiThienNhien>
+		<ct01>O_30</ct01>
+		<ct02>P_30</ct02>
+		<ct03>Q_30</ct03>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<hopDongDKhi>P_47</hopDongDKhi>
+		<ct15>P_47</ct15>
 	</Static>
 	<Static GroupName="LoaiHinhUyQuyen">
 		<donViUyQuyen>AB_48</donViUyQuyen>
@@ -46,8 +35,6 @@
 		<ct36>AV_66</ct36>
 		<ct37>AV_67</ct37>
 		<ct38>AV_68</ct38>
-		<mucLuc/>
-		<tieuMucThu/>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>AR_84</nguoiKy>
@@ -57,4 +44,4 @@
 		<tenNVienDLyThue>U_84</tenNVienDLyThue>
 		<cchiHNghe>U_86</cchiHNghe>
 	</Static>
-</HSoKhaiThue>
+</HSoThueDTu>

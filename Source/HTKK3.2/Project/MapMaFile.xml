@@ -89,4 +89,9 @@
 	<Map MapID="09" MaFile="BC21_AC_BLP"/>
 	<Map MapID="10" MaFile="03_TBAC_BLP"/>
 	<Map MapID="13" MaFile="01_AC_BLP"/>
+	<Map MapID="92" MaFile="01_TAIN_DK"/>
+	<Map MapID="94" MaFile="01_TD_GTGT"/>
+	<Map MapID="96" MaFile="03_TD_TAIN"/>
+	<Map MapID="98" MaFile="01A_TNDN_DK"/>
+	<Map MapID="98" MaFile="01B_TNDN_DK"/>
 </Maps>

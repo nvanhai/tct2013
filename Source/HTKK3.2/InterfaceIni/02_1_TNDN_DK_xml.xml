@@ -3,13 +3,13 @@
 		<ct09>K_19</ct09>
 	</Static>
 	<Dynamic GroupName="NghiaVuThue">
-		<ChiTiet id="id">
-		    <mst>D_27</mst>
-			<tenNhaThau>L_27</tenNhaThau>
-			<tyLePhanBo>U_27</tyLePhanBo>
+		<ChiTietNghiaVuThue id="id">
+		        <mstNThau>D_27</mstNThau>
+			<tenNThau>L_27</tenNThau>
+			<tyLePBoNThau>U_27</tyLePBoNThau>
 			<soThuePSinhPNop>AB_27</soThuePSinhPNop>
-			<ghiChu>AL_27</ghiChu>
-		</ChiTiet>
+			<ghiChuNThau>AL_27</ghiChuNThau>
+		</ChiTietNghiaVuThue>
 	</Dynamic>
 	<Static GroupName="PLuc_01_DK">
 		<tongCong>AB_29</tongCong>
