@@ -370,6 +370,7 @@ Private TuNgay As String
 Private DenNgay As String
 Private Loai_TK_DK As String
 Private LAN_XUAT_BAN_DK As String
+Private LOAI_KY_DK As String
 '****************************
 'Description: StartBarcodeReader procedure start barcode listener on com 1 port
 'Author:TuyenDS
@@ -1452,10 +1453,16 @@ On Error GoTo ErrHandle
     
     Set rs = Nothing
     
-    If IdToKhai = 2 Or IdToKhai = 4 Or IdToKhai = 46 Or IdToKhai = 47 Or IdToKhai = 48 Or IdToKhai = 49 Or IdToKhai = 15 Or IdToKhai = 16 Or IdToKhai = 50 Or IdToKhai = 51 Or IdToKhai = 36 Or IdToKhai = 87 Or IdToKhai = 86 Or IdToKhai = 77 Or IdToKhai = 74 Or IdToKhai = 89 Or IdToKhai = 42 Or IdToKhai = 43 Or IdToKhai = 17 Or IdToKhai = 59 Or IdToKhai = 41 Or IdToKhai = 76 Or IdToKhai = 95 Or IdToKhai = 93 Or IdToKhai = 94 Or IdToKhai = 96 Or IdToKhai = 97 Or IdToKhai = 99 Or IdToKhai = 24 Or IdToKhai = 25 Or IdToKhai = 23 Then
+    If idToKhai = 2 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 87 Or idToKhai = 77 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 95 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 99 Or idToKhai = 24 Or idToKhai = 25 Or idToKhai = 23 Then
             strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrIhtkkTT28").nodeValue)
-    ElseIf IdToKhai = 1 Or IdToKhai = 11 Or IdToKhai = 12 Or IdToKhai = 5 Or IdToKhai = 70 Or IdToKhai = 71 Or IdToKhai = 72 Or IdToKhai = 80 Or IdToKhai = 81 Or IdToKhai = 82 Or IdToKhai = 3 Or IdToKhai = 73 Or IdToKhai = 98 Or IdToKhai = 92 Or IdToKhai = 6 Or IdToKhai = 90 Then
+    '--QCT
+    ElseIf idToKhai = 4 Or idToKhai = 86 Then
+        strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrIhtkkTT28_QCT").nodeValue)
+    ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 70 Or idToKhai = 72 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Or idToKhai = 98 Or idToKhai = 92 Then
             strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrIhtkkTT28_NNKD").nodeValue)
+    '--QCT
+    ElseIf idToKhai = 71 Or idToKhai = 90 Or idToKhai = 6 Or idToKhai = 5 Then
+        strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrIhtkkTT28_NNKD_QCT").nodeValue)
     Else
             strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrIhtkk").nodeValue)
     End If
@@ -3495,6 +3502,9 @@ On Error GoTo ErrHandle
 
     strMST = CStr(rsTaxInfor.Fields(1))
     
+    '--Check QCT
+    TAX_Utilities_iNTK.isCheckQCT = IsTranferQCT(strMST)
+    
     If InStr(1, strData, "<S") < 35 Then
         'Ver 1.0
         ' Get NgayTaiChinh and ThangTaiChinh
@@ -3800,13 +3810,18 @@ On Error GoTo ErrHandle
         ngayPS = ""
         
         'Get loai to khai dau khi: Loai_TK_DK
+        LAN_XUAT_BAN_DK = ""
+        Loai_TK_DK = ""
+        LOAI_KY_DK = ""
         If (Val(strID) = 92 Or Val(strID) = 98) Then
-            '--TODO....
             strTemp = Left$(strData, InStr(1, strData, "</S></S01>") - 1)
             arrCT = Split(strTemp, "~")
             If UBound(arrCT) > 0 Then
+                LOAI_KY_DK = Trim(arrCT(UBound(arrCT)))
                 ngayPS = arrCT(UBound(arrCT) - 1)
-                LAN_XUAT_BAN_DK = Right(arrCT(0), 1)
+                If (Trim(arrCT(UBound(arrCT))) = "2") Then
+                    LAN_XUAT_BAN_DK = Right(arrCT(0), 1)
+                End If
                 If (arrCT(4) = "1") Then
                     Loai_TK_DK = "DT"
                 ElseIf (arrCT(5) = "1") Then
@@ -4535,7 +4550,37 @@ ErrHandle:
     If Err.Number = -2147467259 Then _
         MessageBox "0063", msOKOnly, miCriticalError
 End Function
-
+'****************************
+'Description: IsTranferQCT function check tranfer to QCT
+'Author:SuNV
+'Date:23/11/2005
+'Input:
+'       strMST: string
+'Output:
+'Return: Boolean.
+'****************************
+Private Function IsTranferQCT(strMST As String) As Boolean
+    Dim rsObj As ADODB.Recordset
+    Dim strSQL As String
+    Dim resultQCT As Boolean
+    On Error GoTo ErrHandle
+    resultQCT = False
+    strSQL = "SELECT 1 From QLT_NTK.QCT_DTNT t WHERE t.TIN = '" & Trim(strMST) & "' "
+    'connect to database QLT
+    If clsDAO.Connected Then
+        Set rsObj = clsDAO.Execute(strSQL)
+        If Not rsObj Is Nothing Then
+            If rsObj.Fields.Count > 0 Then
+                resultQCT = True
+            End If
+        End If
+    End If
+    IsTranferQCT = resultQCT
+    
+    Exit Function
+ErrHandle:
+    SaveErrorLog Me.Name, "IsTranferQCT", Err.Number, Err.Description
+End Function
 ' Lay thong tin DL thue 05072011
 Private Function GetTaxDLInfo(ByVal strTaxIDString As String, ByVal strTaxIDDLString As String, ByRef blnSuccess As Boolean) As Object
     Dim rsReturn As New ADODB.Recordset
@@ -5593,8 +5638,7 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
                 "And tkhai.kykk_tu_ngay = To_Date('" & "01/" & TuNgay & "','DD/MM/RRRR')" & _
                 "And tkhai.kykk_den_ngay = To_Date('" & "01/" & DenNgay & "','DD/MM/RRRR')"
     ElseIf (strID = "01A_TNDN_DK" Or strID = "01_TAIN_DK") Then
-        '--TODO
-        If (Trim(LAN_XUAT_BAN_DK) <> "") Then
+        If (LOAI_KY_DK = "2") Then  'to khai lan xuat ban
             strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                     "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
                     "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
@@ -5602,7 +5646,15 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
                     "And tkhai.LAN_XUAN_BAN_DK = '" & LAN_XUAT_BAN_DK & "' " & _
                     "And tkhai.kykk_tu_ngay = To_Date('" & ngayPS & "','DD/MM/YYYY')" & _
                     "And tkhai.kykk_den_ngay = To_Date('" & ngayPS & "','DD/MM/YYYY')"
-        Else
+        ElseIf LOAI_KY_DK = "0" Then    'to khai thang
+            strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
+                    "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                    "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
+                    "And tkhai.LOAI_TK_DK = '" & Loai_TK_DK & "' " & _
+                    "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+                    "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
+        
+        ElseIf LOAI_KY_DK = "1" Then    'to khai lan phat sinh
             strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                     "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
                     "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _

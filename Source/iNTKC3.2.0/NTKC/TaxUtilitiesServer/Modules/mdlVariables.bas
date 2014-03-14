@@ -17,6 +17,7 @@ Public strLastDayOfQuarter As String
 Public strFinanceStartDate As String
 
 Public isUsePIT As Boolean ' su dung PIT
+Public isQCT As Boolean ' -->QCT
 Public strNgayNopIhtkk As String  ' Luu ngay nop cua iHTKK
 Public strKyLBIhtkk As String   ' Luu ky lap bo cua truong hop nhan tu dong iHTKK
 Public isNhanTuDongIHTKK As Boolean  ' Luu gia tri truong hop nhan tu dong iHTKK
