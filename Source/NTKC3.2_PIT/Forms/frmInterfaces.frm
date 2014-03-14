@@ -1152,11 +1152,16 @@ Private Sub cmdSave_Click()
     
     Set rs = Nothing
 
-    
-    If idToKhai = 2 Or idToKhai = 4 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 87 Or idToKhai = 86 Or idToKhai = 77 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 95 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 99 Or idToKhai = 24 Or idToKhai = 25 Or idToKhai = 23 Then
+    If idToKhai = 2 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 87 Or idToKhai = 77 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 95 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 99 Or idToKhai = 24 Or idToKhai = 25 Or idToKhai = 23 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28").nodeValue)
-    ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 5 Or idToKhai = 70 Or idToKhai = 71 Or idToKhai = 72 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Or idToKhai = 98 Or idToKhai = 92 Or idToKhai = 6 Or idToKhai = 90 Then
+    '--QCT
+    ElseIf idToKhai = 4 Or idToKhai = 86 Then
+        strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28_QCT").nodeValue)
+    ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 70 Or idToKhai = 72 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Or idToKhai = 98 Or idToKhai = 92 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28_NNKD").nodeValue)
+    '--QCT
+    ElseIf idToKhai = 71 Or idToKhai = 90 Or idToKhai = 6 Or idToKhai = 5 Then
+        strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28_NNKD_QCT").nodeValue)
     Else
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdr").nodeValue)
     End If
@@ -1941,8 +1946,8 @@ Private Sub Command1_Click()
 'str2 = "aa999982300100778   022014004004002002<S01-1><S>2221990</S><S>0102030405~thau~100~2221990~1000</S><S>100~2221990</S></S01-1>"
 'Barcode_Scaned str2
     
-str2 = "aa999982300100778   02201400400400100101/0101/01/1900<S01><S>0010011000</S><S>~x~~~0~0~1~~~x</S><S>0~0~0~0~0~0~0~0</S><S>Kh¸nh Linh~MCT~Minh NhËt~13/03/2014~1~~13/02/2014~1</S></S01>"
-Barcode_Scaned str2
+'str2 = "aa999982300100778   02201400400400100101/0101/01/1900<S01><S>0010011000</S><S>~x~~~0~0~1~~~x</S><S>0~0~0~0~0~0~0~0</S><S>Kh¸nh Linh~MCT~Minh NhËt~13/03/2014~1~~13/02/2014~1</S></S01>"
+'Barcode_Scaned str2
     
 '--01B/TNDN-DK
 'str2 = "aa999992300100778   04201300100100100201/0101/01/1900<S01><S>0010011000</S><S>KLO987~x~</S><S>10000.00~20000.0000~200000000.00~10000.00~199990000.00~20.00~39998000.00~200.00~39997800.00~21500</S><S>Kh¸nh Linh~MCT~Minh NhËt~11/03/2014~1~</S></S01>"
@@ -1985,6 +1990,34 @@ Barcode_Scaned str2
 'Barcode_Scaned str2
 'str2 = "aa999942300100778   022014005005002002<S01_1><S>0001~TD 01~~100~100000~~x~~~0102030405~40~40000~10100~~~~2222222222~60~60000~11100~</S><S>100000</S></S01_1>"
 'Barcode_Scaned str2
+
+'str2 = "aa321012300330323   01201400400600100101/0114/06/2006<S01><S></S><S>0~0~0~0~0~0~9392740~939260~0~0~0~9392740~93"
+'str2 = str2 & "9260~9392740~939260~939260~0~0~0~939260~0~939260~0~0~0</S><S>~~Nguyª~n H-~u Hoa`ng~14/02/2014~1~~~1701~~</S></S01>"
+'Barcode_Scaned str2
+
+'--CHECK QCT======================
+'--03/GTGT
+'str2 = "aa999042300100778   02201400100100100101/0114/06/2006<S01><S>0010011000</S><S>123000~100000000~1000000~100000~200000~98977000~9897700</S><S>Kh¸nh Linh~Minh NhËt~MCT~14/03/2014~1~~~0</S></S01>"
+'Barcode_Scaned str2
+'--04/GTGT
+'str2 = "aa999712300100778   02201400000000100101/0101/01/1900<S01><S>0010011000</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>Kh¸nh Linh~Minh NhËt~MCT~14/03/2014~1~~~0~</S></S01>"
+'Barcode_Scaned str2
+'--01/BVMT
+'str2 = "aa999862300100778   02201400000000100101/0101/01/1900<S01><S>0010011000</S><S>~0~0~</S><S>~0~0~</S><S>Kh¸nh Linh~Minh NhËt~MCT~14/03/2014~1~~</S></S01>"
+'Barcode_Scaned str2
+'--01/TBVMT
+'str2 = "aa999902300100778   02201400000000100101/0101/01/1900<S01><S>0010011000</S><S>~0.000~0~0~</S><S>Kh¸nh Linh~Minh NhËt~MCT~14/03/2014~1~~~0~</S></S01>"
+'Barcode_Scaned str2
+'--01/TAIN
+'str2 = "aa999062300100778   02201400000000100201/0114/06/2006<S01><S>0010011000</S><S>~~0.000~0.00~0.000~0~0.00</S><S>~~0.000~0.00~0.000~0~0."
+'Barcode_Scaned str2
+'str2 = "aa999062300100778   02201400000000200200</S><S>~~0.000~0.00~0.000~0~0.00</S><S>Kh¸nh Linh~MCT~Minh NhËt~14/03/2014~1~~0~0~</S></S01>"
+'Barcode_Scaned str2
+'--01/TTDB
+str2 = "aa999052300100778   02201400000000100201/0101/01/1900<S01><S>0010011000</S><S>~0~0~0~0~0</S><S>~~0.00~0~0.00~0.0~0~0~0</S><S>0~0.00~0~0~0</S><S>~~0.00~0~0.00~0.0~0~0~0<"
+Barcode_Scaned str2
+str2 = "aa999052300100778   022014000000002002/S><S>0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>~~0.00~0</S><S>0~0~0~0~0</S><S>Minh NhËt~Kh¸nh Linh~MCT~14/03/2014~1~~0~~~0</S></S01>"
+Barcode_Scaned str2
 
 
 End Sub
@@ -3538,6 +3571,9 @@ On Error GoTo ErrHandle
 
     strMST = CStr(rsTaxInfor.Fields(1))
     
+    '--Check QCT
+    TAX_Utilities_Srv_New.isCheckQCT = IsTranferQCT(strMST)
+    
     If InStr(1, strData, "<S") < 35 Then
         'Ver 1.0
         ' Get NgayTaiChinh and ThangTaiChinh
@@ -3807,7 +3843,6 @@ On Error GoTo ErrHandle
         Loai_TK_DK = ""
         LOAI_KY_DK = ""
         If (Val(strID) = 92 Or Val(strID) = 98) Then
-            '--TODO....
             strTemp = Left$(strData, InStr(1, strData, "</S></S01>") - 1)
             arrCT = Split(strTemp, "~")
             If UBound(arrCT) > 0 Then
@@ -4543,7 +4578,37 @@ ErrHandle:
     If Err.Number = -2147467259 Then _
         MessageBox "0063", msOKOnly, miCriticalError
 End Function
-
+'****************************
+'Description: IsTranferQCT function check tranfer to QCT
+'Author:SuNV
+'Date:23/11/2005
+'Input:
+'       strMST: string
+'Output:
+'Return: Boolean.
+'****************************
+Private Function IsTranferQCT(strMST As String) As Boolean
+    Dim rsObj As ADODB.Recordset
+    Dim strSQL As String
+    Dim resultQCT As Boolean
+    On Error GoTo ErrHandle
+    resultQCT = False
+    strSQL = "SELECT 1 From QLT_NTK.QCT_DTNT t WHERE t.TIN = '" & Trim(strMST) & "' "
+    'connect to database QLT
+    If clsDAO.Connected Then
+        Set rsObj = clsDAO.Execute(strSQL)
+        If Not rsObj Is Nothing Then
+            If rsObj.Fields.Count > 0 Then
+                resultQCT = True
+            End If
+        End If
+    End If
+    IsTranferQCT = resultQCT
+    
+    Exit Function
+ErrHandle:
+    SaveErrorLog Me.Name, "IsTranferQCT", Err.Number, Err.Description
+End Function
 ' Lay thong tin DL thue 05072011
 Private Function GetTaxDLInfo(ByVal strTaxIDString As String, ByVal strTaxIDDLString As String, ByRef blnSuccess As Boolean) As Object
     Dim rsReturn As New ADODB.Recordset
@@ -5584,7 +5649,6 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
                 "And tkhai.kykk_tu_ngay = To_Date('" & "01/" & TuNgay & "','DD/MM/RRRR')" & _
                 "And tkhai.kykk_den_ngay = To_Date('" & "01/" & DenNgay & "','DD/MM/RRRR')"
     ElseIf (strID = "01A_TNDN_DK" Or strID = "01_TAIN_DK") Then
-        '--TODO
         If (LOAI_KY_DK = "2") Then  'to khai lan xuat ban
             strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                     "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _

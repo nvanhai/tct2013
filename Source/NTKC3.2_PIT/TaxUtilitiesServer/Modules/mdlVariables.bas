@@ -17,3 +17,4 @@ Public strLastDayOfQuarter As String
 Public strFinanceStartDate As String
 
 Public isUsePIT As Boolean ' su dung PIT
+Public isQCT As Boolean ' -->QCT
