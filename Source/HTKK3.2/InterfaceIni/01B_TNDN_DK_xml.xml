@@ -8,8 +8,8 @@
 		<ct12>P_47</ct12>
 	</Static>
 	<Static GroupName="CT13">
-		<donViUyQuyen>S_49</donViUyQuyen>
-		<daiLyThue>AF_49</daiLyThue>
+		<donViUyQuyen MinOccur="1">S_49</donViUyQuyen>
+		<daiLyThue MinOccur="1">AF_49</daiLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<tenDonViUyQuyen>P_36</tenDonViUyQuyen>
@@ -22,7 +22,7 @@
 		<ct28>AV_61</ct28>
 		<ct29>AV_62</ct29>
 		<ct30>AV_63</ct30>
-		<ct31>AV_65</ct31>
+		<ct31>AV_64</ct31>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>AR_76</nguoiKy>
