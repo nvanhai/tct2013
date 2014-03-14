@@ -348,6 +348,8 @@ Public Sub finish()
         
         CheckDynamicError 'Set Exception Error on cells of interface
             
+        UpdateSheet
+            
         .ActiveSheet = ASheet
         .Sheet = SSheet
         .EventEnabled(EventAllEvents) = True
@@ -1375,3 +1377,62 @@ Public Function getDieuChinhGiam(strOldValue As String) As String
                 getDieuChinhGiam = strDieuChinhGiam & "###" & strDieuChinhTang
       End With
 End Function
+
+
+
+Public Sub UpdateSheet()
+    Dim varTemp As Variant
+    Dim temp As Integer
+    Dim blCheck_S2 As Boolean
+    Dim lCol As Long, lRow As Long
+    Dim xmlCellNode As MSXML.IXMLDOMNodeList
+    Dim xmlCellNodeData As MSXML.IXMLDOMNode
+    With fps
+        .Sheet = 1
+        temp = mCurrentSheet
+        mCurrentSheet = 1
+        For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
+            ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+            .GetText lCol, lRow, varTemp
+            UpdateCell fps, lCol, lRow, varTemp
+        Next
+        
+        ' Phu luc 1_2
+        .Sheet = 2
+        mCurrentSheet = 2
+        blCheck_S2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        If blCheck_S2 = True Then
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
+                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+                 If (lRow >= 42 And lCol = .ColLetterToNumber("G")) Or (lRow >= 42 And lCol = .ColLetterToNumber("AI")) Then
+                        .GetText lCol, lRow, varTemp
+                        If varTemp = "1" Or UCase(CStr(varTemp)) = "X" Then
+                            UpdateCell fps, lCol, lRow, "x"
+                        Else
+                            UpdateCell fps, lCol, lRow, ""
+                        End If
+                  Else
+                    .GetText lCol, lRow, varTemp
+                    UpdateCell fps, lCol, lRow, varTemp
+                End If
+            Next
+        End If
+        
+        ' Update lai sheet KHBS
+        .Sheet = .SheetCount - 1
+        mCurrentSheet = .Sheet
+        blCheck_S2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        If blCheck_S2 = True Then
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(.Sheet - 1).getElementsByTagName("Cell")
+               ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+                    .GetText lCol, lRow, varTemp
+                    UpdateCell fps, lCol, lRow, varTemp
+            Next
+        End If
+         
+  
+        mCurrentSheet = temp
+    End With
+    Set xmlCellNodeData = Nothing
+    Set xmlCellNode = Nothing
+End Sub
