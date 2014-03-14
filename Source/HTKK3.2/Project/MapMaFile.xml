@@ -93,5 +93,6 @@
 	<Map MapID="94" MaFile="01_TD_GTGT"/>
 	<Map MapID="96" MaFile="03_TD_TAIN"/>
 	<Map MapID="98" MaFile="01A_TNDN_DK"/>
-	<Map MapID="98" MaFile="01B_TNDN_DK"/>
+	<Map MapID="99" MaFile="01B_TNDN_DK"/>
+	<Map MapID="24" MaFile="01_BCTL_DK"/>
 </Maps>

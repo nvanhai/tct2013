@@ -4484,7 +4484,6 @@ Private Sub KetXuatXML()
                     SetAttribute CloneNode.firstChild, "id", "ID_" & CStr(id)
                     SetAttribute CloneNode.firstChild, "ID", "ID_" & CStr(id)
 
-
                     If Level = "2" Then
 
                         xmlTK.getElementsByTagName(currentGroup)(0).firstChild.insertBefore CloneNode.firstChild.CloneNode(True), xmlTK.getElementsByTagName(currentGroup)(0).firstChild.selectNodes(CloneNode.firstChild.nodeName)(xmlTK.getElementsByTagName(currentGroup)(0).firstChild.selectNodes(CloneNode.firstChild.nodeName).length - 1)
@@ -4511,6 +4510,7 @@ Private Sub KetXuatXML()
                     End If
 
                     cellArray = Split(cellID, "_")
+                    MinOccur = GetAttribute(xmlCellNode, "MinOccur")
 
                     If currentGroup = vbNullString Or currentGroup = "" Then
                         Set xmlCellTKNode = xmlTK.getElementsByTagName(xmlCellNode.nodeName)(0)
@@ -4585,6 +4585,11 @@ Private Sub KetXuatXML()
                                 xmlCellTKNode.Text = ToDateString(.Text, True)
                             End If
                         End If
+                    End If
+                    
+                    If MinOccur = "1" And (xmlCellTKNode.Text = "0" Or xmlCellTKNode.Text = "") Then
+                        xmlCellTKNode.parentNode.removeChild xmlCellTKNode
+                                                
                     End If
 
                 Next
@@ -4729,7 +4734,7 @@ Private Sub KetXuatXML()
                                 End If
 
                                 SetAttribute CloneNode.firstChild, "id", "ID_" & CStr(id)
-                                 SetAttribute CloneNode.firstChild, "ID", "ID_" & CStr(id)
+                                SetAttribute CloneNode.firstChild, "ID", "ID_" & CStr(id)
 
                                 If InStr(GetAttribute(nodeVal, "DataFile"), "KHBS") > 0 Then
                                     xmlPL.getElementsByTagName(currentGroup)(0).insertBefore CloneNode.firstChild.CloneNode(True), xmlPL.getElementsByTagName(currentGroup)(0).lastChild
@@ -4759,6 +4764,8 @@ Private Sub KetXuatXML()
                                 Else
                                     cellID = ""
                                 End If
+                                
+                                MinOccur = GetAttribute(xmlCellNode, "MinOccur")
 
                                 cellArray = Split(cellID, "_")
 
@@ -4835,6 +4842,11 @@ Private Sub KetXuatXML()
                                         End If
                                     End If
                                 End If
+                                
+                                If MinOccur = "1" And (xmlCellTKNode.Text = "0" Or xmlCellTKNode.Text = "") Then
+                                    xmlCellTKNode.parentNode.removeChild xmlCellTKNode
+                                
+                                End If
 
                             Next
 
@@ -4842,7 +4854,7 @@ Private Sub KetXuatXML()
                             Dim childID        As Integer
                             Dim childCloneNode As New MSXML.DOMDocument
                             Dim childGroup     As String
-                            Dim OrginalNode As New MSXML.DOMDocument
+                            Dim OrginalNode    As New MSXML.DOMDocument
                             
                             id = 1
                             currentGroup = GetAttribute(xmlSection, "GroupName")
@@ -7641,6 +7653,7 @@ Private Sub Form_Resize()
            And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "99" _
            And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "92" _
            And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "96" _
+            And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "24" _
            Then
             InvisibleXmlButton
         End If

@@ -5,24 +5,24 @@
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="LoaiDauKhi">
-		<ct01>O_30</ct01>
-		<ct02>P_30</ct02>
-		<ct03>Q_30</ct03>
+		<ct01 MinOccur="1">O_30</ct01>
+		<ct02 MinOccur="1">P_30</ct02>
+		<ct03 MinOccur="1">Q_30</ct03>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<ct05>AF_23</ct05>
 	</Static>
 	<Static GroupName="LoaiXuatBan">
-		<ct08>Y_28</ct08>
-		<ct09>AS_28</ct09>
+		<ct08 MinOccur="1">Y_28</ct08>
+		<ct09 MinOccur="1">AS_28</ct09>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<ct10>AM_29</ct10>
 		<ct19>P_47</ct19>
 	</Static>
 	<Static GroupName="CT20">
-		<donViUyQuyen>Q_49</donViUyQuyen>
-		<daiLyThue>Y_49</daiLyThue>
+		<donViUyQuyen MinOccur="1">Q_49</donViUyQuyen>
+		<daiLyThue MinOccur="1">Y_49</daiLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<tenDonViUyQuyen>P_36</tenDonViUyQuyen>
