@@ -458,7 +458,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
     Dim vItkhai_ID, vHTHUC_NOP As String
-    Dim LOAI_KYKK As String
+    Dim LOAI_KYKK, sQCT As String
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
     
 On Error GoTo ErrHandle
@@ -517,6 +517,13 @@ On Error GoTo ErrHandle
     Else
         LOAI_KYKK = "Q"
     End If
+    
+    If isCheckQCT = True Then
+        sQCT = "'Y'"
+    Else
+        sQCT = "null"
+    End If
+    
     strSQL = strSQL & "'" & vHdrID & "',"
     strSQL = strSQL & vKKBS & ","
     strSQL = strSQL & "'" & vTIN & "',"
@@ -613,7 +620,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
     strSQL = strSQL & "null,"
     strSQL = strSQL & vHTHUC_NOP & "," & vItkhai_ID & ","
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ",'" & LOAI_KYKK & "')"
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & sQCT & ",'" & LOAI_KYKK & "')"
     GenerateSQL_Header = strSQL
     
     Exit Function

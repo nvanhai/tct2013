@@ -674,6 +674,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim strMaPhongXuLy As String, vNGANH_NGHE_KD, vTO_KHAI_LAN_PS, vNGAY_PS As Variant
     Dim vItkhai_ID, vHTHUC_NOP As String
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
+    Dim sQCT As String
     
 On Error GoTo ErrHandle
     strSQL = strSQL_HDR
@@ -724,7 +725,11 @@ On Error GoTo ErrHandle
         vHTHUC_NOP = "null"
     End If
     ' end
-    
+      If isCheckQCT = True Then
+        sQCT = "'Y'"
+    Else
+        sQCT = "null"
+    End If  
     
     'Get ngay phat sinh
     With fps
@@ -763,8 +768,8 @@ On Error GoTo ErrHandle
         strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     ElseIf (Trim(vNGAY_PS) <> "") Then
         'lan phat sinh
-        strSQL = strSQL & "To_date('" & Format(vNGAY_PS, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        strSQL = strSQL & "To_date('" & Format(vNGAY_PS, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+        strSQL = strSQL & "To_date('" & vNGAY_PS & "','dd/mm/yyyy'),"
+        strSQL = strSQL & "To_date('" & vNGAY_PS & "','dd/mm/yyyy'),"
     End If
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
@@ -835,7 +840,7 @@ On Error GoTo ErrHandle
     'strSQL = strSQL & "null)"
     strSQL = strSQL & "null,"
     strSQL = strSQL & vHTHUC_NOP & "," & vItkhai_ID & ","
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & vNGANH_NGHE_KD & "," & vTO_KHAI_LAN_PS & "," & vNGAY_PS & ")"
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & vNGANH_NGHE_KD & "," & vTO_KHAI_LAN_PS & "," & vNGAY_PS & "," & sQCT & ")"
     GenerateSQL_Header = strSQL
     'Debug.Print GenerateSQL_Header
     

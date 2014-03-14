@@ -184,6 +184,14 @@ Public Property Get isCheckPIT() As Boolean
     isCheckPIT = isUsePIT
 End Property
 
+
+Public Property Get isCheckQCT() As Boolean
+    isCheckQCT = isQCT
+End Property
+Public Property Let isCheckQCT(ByVal checkQCT As Boolean)
+    isQCT = checkQCT
+End Property
+
 Public Property Let isCheckPIT(ByVal checkPIT As Boolean)
     isUsePIT = checkPIT
 End Property
