@@ -544,7 +544,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim vPHONG_XU_LY
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
-    Dim LOAI_KYKK As String, isPhatSinh As Boolean
+    Dim LOAI_KYKK, sQCT  As String, isPhatSinh As Boolean
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC, vNGANH_NGHE_KD, vTO_KHAI_LAN_PS, vNGAY_PS As Variant
 
     
@@ -602,6 +602,12 @@ On Error GoTo ErrHandle
     ElseIf LOAI_KYKK = "2" Then
         LOAI_KYKK = "" 'lan phat sinh de rong
         isPhatSinh = True
+    End If
+    
+    If isCheckQCT = True Then
+        sQCT = "'Y'"
+    Else
+        sQCT = "null"
     End If
     
     strSQL = strSQL & "'" & vHdrID & "',"
@@ -712,7 +718,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
     'strSQL = strSQL & "null)"
     strSQL = strSQL & "null,"
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & vNGANH_NGHE_KD & "," & vTO_KHAI_LAN_PS & "," & vNGAY_PS & ",'" & LOAI_KYKK & "')"
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & vNGANH_NGHE_KD & "," & vTO_KHAI_LAN_PS & "," & vNGAY_PS & "," & sQCT & ",'" & LOAI_KYKK & "')"
     GenerateSQL_Header = strSQL
     
     Exit Function
