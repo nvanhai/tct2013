@@ -54,6 +54,7 @@ Const NGAY_HOP_DONG_DL_COL = "N"
 ' Thong tin nganh nghe KD va to khai PS
 Const NGANH_NGHE_KD_ROW = 77
 Const NGANH_NGHE_KD_COL = "L"
+Const SHEET_PL_01A_2_TD_TNDN = 3
 
 Public WithEvents fps As fpSpread
 Attribute fps.VB_VarHelpID = -1
@@ -251,6 +252,24 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
             .Col = .ColLetterToNumber("C")
             .Row = i + 35
         Loop Until .Text = "aa" Or varMaDM = ""
+        
+                'fill data CQT PL 02 TD TNDN
+        .Sheet = SHEET_PL_01A_2_TD_TNDN
+        i = 0
+        Do
+            .GetText .ColLetterToNumber("AE"), i + 18, varMaDM
+            DataDM varMaDM, tenDM
+            If Trim(tenDM) <> vbNullString Then
+                .Col = .ColLetterToNumber("Q")
+                .Row = 18 + i
+                .Text = tenDM
+            End If
+            UpdateCell fps, .Col, .Row, .Text
+             i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = i + 18
+        Loop Until .Text = "aa"
+        
     End With
     
     Prepared2 = True

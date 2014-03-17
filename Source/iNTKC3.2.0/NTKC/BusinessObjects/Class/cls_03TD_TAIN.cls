@@ -512,8 +512,8 @@ Public Function CheckValidData() As Boolean
     CheckValidData = True
     With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("E"), 36, varCheckValue
-        .GetText .ColLetterToNumber("M"), 36, varNoteValue
+        .GetText .ColLetterToNumber("E"), 34, varCheckValue
+        .GetText .ColLetterToNumber("M"), 34, varNoteValue
         '
         .GetText .ColLetterToNumber("E"), 32, varNgayNop
         If CStr(varCheckValue) = "1" And Trim(CStr(varNoteValue)) = "" Then
@@ -583,8 +583,8 @@ On Error GoTo ErrHandle
                 '    ' vSO_HIEU_TEP = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 '    ' Tu phien ban 1.3.0 song tep se thuc hien bang tay=> So hieu tep luon bang ""
                 '    vSO_HIEU_TEP = ""
-                'Case HEADER_SO_TT_TRONG_TEP_COL & "_" & HEADER_SO_TT_TRONG_TEP_ROW
-                '   vSO_TT_TK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+                Case "M_30"
+                   vSO_TT_TK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case "M_34"
                     vGHI_CHU_LOI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW

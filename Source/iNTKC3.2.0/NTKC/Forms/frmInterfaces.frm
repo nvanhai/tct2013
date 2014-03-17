@@ -634,7 +634,7 @@ On Error GoTo ErrHandle
     End If
     ' end
     
-    dsTK_DLT = "~1~2~3~4~5~6~11~12~46~47~48~49~15~16~50~51~36~70~71~72~73~74~75~80~81~82~77~86~87~89~42~43~17~59~41~76~90~92~93~98~99~25~"
+    dsTK_DLT = "~1~2~3~4~5~6~11~12~46~47~48~49~15~16~50~51~36~70~71~72~73~74~75~80~81~82~77~86~87~89~42~43~17~59~41~76~90~92~93~94~96~98~99~25~"
     ' Kiem tra neu MDL thue khac thi canh bao
     IdToKhai = Val(TAX_Utilities_iNTK.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
     'If IdToKhai = 1 Or IdToKhai = 2 Or IdToKhai = 4 Or IdToKhai = 11 Or IdToKhai = 12 Or IdToKhai = 46 Or IdToKhai = 47 Or IdToKhai = 48 Or IdToKhai = 49 Or IdToKhai = 15 Or IdToKhai = 16 Or IdToKhai = 50 Or IdToKhai = 51 _
@@ -1274,7 +1274,7 @@ On Error GoTo ErrHandle
     'Ngay dau ky ke khai va ngay cuoi ky ke khai
     dDate = dNgayDauKy
     If GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Month") = "1" Then
-            If (Val(IdToKhai) = 1 Or Val(IdToKhai) = 2 Or Val(IdToKhai) = 4 Or Val(IdToKhai) = 71 Or Val(IdToKhai) = 36) And LoaiKyKK = True Then
+            If (Val(idToKhai) = 1 Or Val(idToKhai) = 2 Or Val(idToKhai) = 4 Or Val(idToKhai) = 71 Or Val(idToKhai) = 36 Or Val(idToKhai) = 94 Or Val(idToKhai) = 96) And LoaiKyKK = True Then
         strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
                 dDate = DateAdd("m", 3, dDate)
                 dDate = DateAdd("d", -1, dDate)
