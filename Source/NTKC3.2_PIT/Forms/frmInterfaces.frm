@@ -1399,15 +1399,25 @@ Private Sub Command1_Click()
 
 '--FIX loi 3.2.2
     '--01A_TNDN_DK
-'    str2 = "aa999982300100778   02201400400400100101/0101/01/1900<S01><S>0010011000</S><S>~x~~~1~0~0~HD01~x~</S><S>0~0~0~0~0~0~0~0</S><S>Kh¸nh Linh~MCT~Minh NhËt~17/03/2014~1~~~0</S></S01>"
-'    Barcode_Scaned str2
+'str2 = "aa999982300100778   02201400400400100101/0101/01/1900<S01><S>0010011000</S><S>~x~~~1~0~0~HD01~x~</S><S>0~0~0~0~0~0~0~0</S><S>Kh¸nh Linh~MCT~Minh NhËt~17/03/2014~1~~~0</S></S01>"
+'Barcode_Scaned str2
+'
+'str2 = "aa999982300100778   02201400500500100101/0101/01/1900<S01><S>0010011000</S><S>1~~x~01/01/2014~1~0~0~HD02~~x</S><S>0~0~0~0~0~0~0~21500</S><S>Kh¸nh Linh~MCT~Minh NhËt~17/03/2014~1~~17/02/2014~2</S></S01>"
+'Barcode_Scaned str2
 
-    str2 = "aa999982300100778   02201400500500100101/0101/01/1900<S01><S>0010011000</S><S>1~~x~01/01/2014~1~0~0~HD02~~x</S><S>0~0~0~0~0~0~0~21500</S><S>Kh¸nh Linh~MCT~Minh NhËt~17/03/2014~1~~17/02/2014~2</S></S01>"
-    Barcode_Scaned str2
+'check dai ly thue or co quan?
+'str2 = "aa999982300100778   02201400500600100101/0101/01/1900<S01><S>0010011000</S><S>2~~x~01/01/2014~1~0~0~~x~</S><S>0~0~0~0~0~0~0~21000</S><S>Kh¸nh Linh~MCT~Minh NhËt~17/03/2014~1~~17/02/2014~2</S></S01>"
+'Barcode_Scaned str2
 
-
-    
-    
+'--03_TD_GTGT
+'str2 = "aa999962300100778   02201400400400100201/0114/06/2006<S03><S>0010011000</S><S>080205~24</S><S>Song Ranh~0102030405~102020~1002~24533770~100000~24433770~song Da~6868686868~22923~20000~110030400~2323~110028077</S><S>134564170~102323~134461847</S><S>Kh¸nh Linh~MCT~Minh NhËt~17/03/2014~1~~~0</S></S03>"
+'Barcode_Scaned str2
+'str2 = "aa999962300100778   022014004004002002<S03-1><S>001~Nha may 1~2222222222~100~100~~x~001-01~ - nha may 1.1~0102030405~40~40~10100~~001-02~ - nha may 1.2~6868686868~50~60~10900~</S><S>100</S></S03-1>"
+'Barcode_Scaned str2
+  
+'--01B_TNDN_DK
+str2 = "aa999992300100778   04201300000000100101/0101/01/1900<S01><S>0010011000</S><S>~x~</S><S>0.00~0.0000~0~0.00~0~0.00~0~0.00~0~0</S><S>Kh¸nh Linh~MCT~Minh NhËt~17/03/2014~1~</S></S01>"
+Barcode_Scaned str2
 
 End Sub
 
@@ -2961,7 +2971,11 @@ On Error GoTo ErrHandle
     strMST = CStr(rsTaxInfor.Fields(1))
     
     '--Check QCT
-    TAX_Utilities_Srv_New.isCheckQCT = IsTranferQCT(strMST)
+    '--LIST: 03/GTGT, 04/GTGT, 01/BVMT,01/TBVMT,01/TAIN,01/TTÐB
+    strID = Left$(strTaxReportInfo, 2)
+    If (strID = "04" Or strID = "71" Or strID = "86" Or strID = "90" Or strID = "06" Or strID = "05") Then
+        TAX_Utilities_Srv_New.isCheckQCT = IsTranferQCT(strMST)
+    End If
     
     If InStr(1, strData, "<S") < 35 Then
         'Ver 1.0
@@ -3239,6 +3253,7 @@ On Error GoTo ErrHandle
                 ngayPS = arrCT(UBound(arrCT) - 1)
                 If (Trim(arrCT(UBound(arrCT))) = "2") Then
                     LAN_XUAT_BAN_DK = Right(arrCT(0), 1)
+                    isTKLanPS = True
                 End If
                 If (arrCT(4) = "1") Then
                     Loai_TK_DK = "DT"
@@ -3350,8 +3365,9 @@ On Error GoTo ErrHandle
        End If
        
         ' 18122012
-        ' to khai lan phat sinh trog ngay chi nhan 1 to khai
-        If (Val(strID) = 70 Or Val(strID) = 73 Or Val(strID) = 81 Or Val(strID) = 5 Or Val(strID) = 71 Or Val(strID) = 72 Or Val(strID) = 90) And isTKLanPS = True Then
+        ' to khai lan phat sinh, lan xuat ban trog ngay chi nhan 1 to khai
+        ' todo
+        If (Val(strID) = 70 Or Val(strID) = 73 Or Val(strID) = 81 Or Val(strID) = 5 Or Val(strID) = 71 Or Val(strID) = 72 Or Val(strID) = 90 Or Val(strID) = 92 Or Val(strID) = 98) And isTKLanPS = True Then
             If isToKhaiPsDaNhanTN = True Then
                 DisplayMessage "0129", msOKOnly, miCriticalError
                 Exit Function
@@ -3982,7 +3998,7 @@ Private Function IsTranferQCT(strMST As String) As Boolean
     Dim resultQCT As Boolean
     On Error GoTo ErrHandle
     resultQCT = False
-    strSQL = "SELECT 1 From QLT_NTK.QCT_DTNT t WHERE t.TIN = '" & Trim(strMST) & "' "
+    strSQL = "SELECT 1 FROM QCT_DTNT t WHERE t.TIN = '" & Trim(strMST) & "' "
     'connect to database QLT
     If clsDAO.Connected Then
         Set rsObj = clsDAO.Execute(strSQL)
@@ -5075,15 +5091,15 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
         strSTT = 0
         isTKTonTai = False
         ' Doi voi cac to khai 01_NTNN, 03_NTNN, 01_TTDB, 02_TNDN
-        If (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "02_TNDN11" Or strID = "04_GTGT11" Or strID = "05_GTGT11" Or strID = "01_TBVMT13") And isTKLanPS = True Then
+        If (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "02_TNDN11" Or strID = "04_GTGT11" Or strID = "05_GTGT11" Or strID = "01_TBVMT13" Or strID = "01A_TNDN_DK" Or strID = "01_TAIN_DK") And isTKLanPS = True Then
             isToKhaiPsDaNhanTN = False
         End If
         
     Else
         strSTT = rsResult.Fields(0).Value + 1
         isTKTonTai = True
-        ' Doi voi cac to khai 01_NTNN, 03_NTNN, 01_TTDB, 02_TNDN trong 1 ngay chi nhan 1 to khai
-        If (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "02_TNDN11" Or strID = "04_GTGT11" Or strID = "05_GTGT11" Or strID = "01_TBVMT13") And isTKLanPS = True Then
+        ' Doi voi cac to khai 01_NTNN, 03_NTNN, 01_TTDB, 02_TNDN, 01A_TNDN_DK, 01_TAIN_DK trong 1 ngay chi nhan 1 to khai
+        If (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "02_TNDN11" Or strID = "04_GTGT11" Or strID = "05_GTGT11" Or strID = "01_TBVMT13" Or strID = "01A_TNDN_DK" Or strID = "01_TAIN_DK") And isTKLanPS = True Then
             isToKhaiPsDaNhanTN = True
         End If
     End If

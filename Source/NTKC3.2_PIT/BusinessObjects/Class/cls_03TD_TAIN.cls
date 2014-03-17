@@ -223,6 +223,12 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .Row = 26
         .Text = iTenTN
         
+        'updated ID cho tai nguyen
+        .Col = .ColLetterToNumber("S")
+        .Row = 36
+        .Text = strIdQLT
+        UpdateCell fps, .Col, .Row, .Text
+        
         'fill data CQT
         .Sheet = SHEET_PL_01_2_TD_GTGT
         i = 0
