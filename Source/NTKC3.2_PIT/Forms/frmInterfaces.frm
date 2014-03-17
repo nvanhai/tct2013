@@ -1397,11 +1397,14 @@ Private Sub Command1_Click()
     Dim str41 As String, str42 As String, str43 As String, str44 As String, str45 As String, str46 As String, str47 As String, str48 As String, str49 As String, str50 As String
     Dim str51 As String, str52 As String, str53 As String
 
-'--01/TAIN-DK
-str2 = "aa999922300100778   03201400400400100201/0101/01/1900<S01><S></S><S>1~~x~01/01/2014~0~0~1~KLO11~x~</S><S>2500~1000~12300~30750000~15~4612500~21500</S><S>hoten~cc~Minh NhËt~03/03/2014~1~~11/03/2014~2</S></S01>"
-Barcode_Scaned str2
-str2 = "aa999922300100778   032014004004002002<S01-1><S>4612500</S><S>0102030405~cmc 01~20~922500~ghi chu 1~6868686868~cmc 02~80~3690000~ghi chu 2</S><S>100~4612500</S></S01-1>"
-Barcode_Scaned str2
+'--FIX loi 3.2.2
+    '--01A_TNDN_DK
+'    str2 = "aa999982300100778   02201400400400100101/0101/01/1900<S01><S>0010011000</S><S>~x~~~1~0~0~HD01~x~</S><S>0~0~0~0~0~0~0~0</S><S>Kh¸nh Linh~MCT~Minh NhËt~17/03/2014~1~~~0</S></S01>"
+'    Barcode_Scaned str2
+
+    str2 = "aa999982300100778   02201400500500100101/0101/01/1900<S01><S>0010011000</S><S>1~~x~01/01/2014~1~0~0~HD02~~x</S><S>0~0~0~0~0~0~0~21500</S><S>Kh¸nh Linh~MCT~Minh NhËt~17/03/2014~1~~17/02/2014~2</S></S01>"
+    Barcode_Scaned str2
+
 
     
     

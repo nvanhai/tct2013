@@ -645,7 +645,7 @@ On Error GoTo ErrHandle
             Select Case Trim(GetAttribute(xmlNode, "CellID"))
                 Case "I_11"
                     vTIN = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "I_9"
+                Case "I_10"
                     vTEN_DTNT = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case "I_13"
                     vDIA_CHI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
@@ -709,8 +709,8 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("D"), 37, vCHINH_THUC
         .GetText .ColLetterToNumber("D"), 39, vNGAY_PS
         .GetText .ColLetterToNumber("W"), 39, vLOAI_KY
-        .GetText .ColLetterToNumber("Y"), 7, vNGAY_XUAT_BAN_DK
-        .GetText .ColLetterToNumber("Y"), 4, vLAN_XUAN_BAN_DK
+        .GetText .ColLetterToNumber("Y"), 8, vNGAY_XUAT_BAN_DK
+        .GetText .ColLetterToNumber("Y"), 5, vLAN_XUAN_BAN_DK
 
         If Trim(vCHINH_THUC) = "1" Then
             vLAN_BS = "0"
