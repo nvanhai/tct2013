@@ -70,7 +70,7 @@ Begin VB.Form frmTreeviewMenu
          Strikethrough   =   0   'False
       EndProperty
       ScrollBarExtMode=   -1  'True
-      SpreadDesigner  =   "frmTreeviewMenu.frx":021A
+      SpreadDesigner  =   "frmTreeviewMenu.frx":026C
       VirtualScrollBuffer=   -1  'True
       Appearance      =   1
    End
@@ -1474,6 +1474,14 @@ Public Sub ProcessMenuAction(pID As String)
             Me.Show
             '02/GH-GTGT
             ShowPLMienThueTT140 "PL_02GH_GTGT_TT16_MaSoThue.xls"
+            Exit Sub
+          Case "102_17" ' bang ke ban ra tK 04/GTGT
+            Me.Show
+            ShowPLMienThueTT140 "Bangkebanra_04GTGT.xls"
+            Exit Sub
+          Case "102_18" ' bang ke ban ra tK 01-3/GTGT
+            Me.Show
+            ShowPLMienThueTT140 "Bangkebanra_01_3.xls"
             Exit Sub
         Case Else
             ShowFormFunction lnode

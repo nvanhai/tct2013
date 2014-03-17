@@ -533,6 +533,8 @@
 	<Menu ID="102_2" PopID="1" ParentID="102" Caption="Nội dung hướng dẫn" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>
 	<Menu ID="102_3" PopID="1" ParentID="102" Caption="Bảng kê bán ra 01_1/GTGT" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>		
 	<Menu ID="102_4" PopID="1" ParentID="102" Caption="Bảng kê mua vào 01_2/GTGT" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>
+	<Menu ID="102_18" PopID="1" ParentID="102" Caption="Bảng kê bán ra 01_3/GTGT" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>		
+	<Menu ID="102_17" PopID="1" ParentID="102" Caption="Bảng kê bán ra 04_1/GTGT" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>		
 	<Menu ID="102_5" PopID="1" ParentID="102" Caption="Bảng kê bán ra 01_1/TTĐB" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>
 	<Menu ID="102_6" PopID="1" ParentID="102" Caption="Bảng kê mua vào 01_2/TTĐB" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>
 	<Menu ID="102_10" PopID="1" ParentID="102" Caption="Tờ khai 01/NTNN" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>

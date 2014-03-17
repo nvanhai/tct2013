@@ -409,6 +409,16 @@ Public Sub Prepare2()
                 .TypeButtonColor = &H8000000F
                 .TypeButtonAlign = TypeButtonAlignRight
                 .TypeButtonText = GetAttribute(GetMessageCellById("0104"), "Msg")
+                
+        .Sheet = sheetPl01_3_GTGT 'PL3
+             .ActiveSheet = .Sheet
+                .Row = 1
+                .Col = .ColLetterToNumber("C")
+                .CellType = CellTypeButton
+                .TypeButtonTextColor = RGB(0, 0, 255)
+                .TypeButtonColor = &H8000000F
+                .TypeButtonAlign = TypeButtonAlignRight
+                .TypeButtonText = GetAttribute(GetMessageCellById("0104"), "Msg")
         
          .ActiveSheet = 1
          mCurrentSheet = tempCurrSheet
@@ -4216,6 +4226,23 @@ fps.EventEnabled(EventAllEvents) = False
                     .SetActiveCell iCol, iRow
                     CellChange2
                     CellChange3
+            End If
+            
+            If .ActiveSheet = 4 Then
+                    i = 1
+                    .Col = .ColLetterToNumber("B")
+                    .Row = rowStartPL01_3
+                    Do
+                         .Text = str(i)
+                         .Col = .ColLetterToNumber("B")
+                         .Row = i + rowStartPL01_3
+                         i = i + 1
+                    Loop Until .Text = "aa"
+                    .SetActiveCell iCol, iRow
+
+                    .Row = iRow
+                    .Col = iCol
+                    .SetActiveCell iCol, iRow
             End If
 
         fps.EventEnabled(EventAllEvents) = True
