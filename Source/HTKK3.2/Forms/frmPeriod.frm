@@ -989,6 +989,7 @@ Private Sub chkTKhaiLanXB_Click()
         txtDay.Visible = False
     End If
     If chkTKhaiLanXB.value = 1 Then
+            SetValueToListDK ("0")
             strLoaiTKThang_PS = "TK_LANPS"
             strQuy = "TK_LANXB"
             'strKieuKy = "D"
@@ -1187,7 +1188,8 @@ Private Sub chkTkhaiThang_Click()
                 cboNganhKD.Top = 1900
                 cboNganhKD.Left = 120
                 ' set gia tri nganh nghe kinh doanh cho combo
-                SetValueToList GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
+                'SetValueToList GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
+                SetValueToListDK ("1")
                 
                 lblLanXuat.Visible = False
                 txtLanXuat.Visible = False
@@ -4644,14 +4646,14 @@ Private Sub SetupLayout01_TAIN_DK()
     'frmKy.Height = 1300
     Set chkTKhaiLanXB.Container = frmKy
     chkTKhaiLanXB.Top = 200
-    chkTKhaiLanXB.Left = 1500
+    chkTKhaiLanXB.Left = 3100
     chkTKhaiLanXB.value = 0
     chkTkhaiThang.value = 1
     
     
     Set chkTkhaiThang.Container = frmKy
     chkTkhaiThang.Top = 200
-    chkTkhaiThang.Left = 50
+    chkTkhaiThang.Left = 250
     
     Set chkTKLanPS.Container = frmKy
     chkTKLanPS.Top = 200
@@ -4670,7 +4672,8 @@ Private Sub SetupLayout01_TAIN_DK()
     cboNganhKD.Top = 1900
     cboNganhKD.Left = 120
     ' set gia tri nganh nghe kinh doanh cho combo
-    SetValueToList GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
+    'SetValueToList GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
+    SetValueToListDK ("1")
     
     Set lblNgay.Container = frmKy
     lblNgay.Top = 570
@@ -8104,3 +8107,55 @@ ErrorHandle:
     SaveErrorLog Me.Name, "SetLayoutToKhaiThangQuyLanPS", Err.Number, Err.Description
     
 End Sub
+
+
+
+' loaiKyKK = 1, to khai thang, 0 to khai lan xuat ban
+Private Sub SetValueToListDK(loaiKyKK As String)
+    On Error GoTo ErrHandle
+    
+    Dim fldList() As String
+    Dim tempValue As Variant
+    Dim strDataFileName As String
+    Dim i As Integer
+        
+    Dim xmlDocument As New MSXML.DOMDocument
+    Dim xmlNode As MSXML.IXMLDOMNode
+    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_DM_NNKD.xml"))
+    Dim xmlNodeListItems As MSXML.IXMLDOMNodeList
+    Dim xmlDomData As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
+    strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_DM_NNKD.xml")
+    ' Lay danh muc loai hoa don
+    ' 17/03/2014
+    i = 0
+    If xmlDomData.Load(strDataFileName) Then
+        Set xmlNodeListItems = xmlDomData.getElementsByTagName("Item")
+        cboNganhKD.Clear
+        For Each xmlNode In xmlNodeListItems
+            fldList = Split(GetAttribute(xmlNode, "Value"), "###")
+            If fldList(0) = "01A_TNDN_DK" Then
+                If Trim$(loaiKyKK) = "1" Then
+                    If Val(fldList(1)) = 2 Then
+                        cboNganhKD.AddItem TAX_Utilities_v1.Convert(fldList(2), UNICODE, TCVN)
+                        cboNganhKD.ItemData(i) = Val(fldList(1))
+                    End If
+                Else
+                    If Val(fldList(1)) <> 2 Then
+                        cboNganhKD.AddItem TAX_Utilities_v1.Convert(fldList(2), UNICODE, TCVN)
+                        cboNganhKD.ItemData(i) = Val(fldList(1))
+                    End If
+                End If
+                i = i + 1
+            End If
+        Next
+    End If
+   
+  
+    If cboNganhKD.listcount > 0 Then _
+        cboNganhKD.ListIndex = 0
+    Exit Sub
+ErrHandle:
+    SaveErrorLog Me.Name, "SetValueToListDK", Err.Number, Err.Description
+End Sub
+
+
