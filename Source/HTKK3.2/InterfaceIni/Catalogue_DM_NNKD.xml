@@ -15,11 +15,9 @@
 		<Item Value ="03_TNDN###1056###Từ hoạt động thăm dò, phát triển mỏ và khai thác dầu, khí thiên nhiên"/>
 		<Item Value ="03_TNDN###1057###Từ hoạt động xổ số kiến thiết của các công ty xổ số kiến thiết"/>
 		<Item Value ="02_TNDN###1053###Chuyển quyền thuê đất"/>
-		<Item Value ="02_TNDN###1053###Chuyển quyền sử dụng đất"/>
-		
+		<Item Value ="02_TNDN###1053###Chuyển quyền sử dụng đất"/>		
 		<Item Value ="01A_TNDN_DK###1###Dầu thô"/>
 		<Item Value ="01A_TNDN_DK###2###Khí thiên nhiên"/>
-		<Item Value ="01A_TNDN_DK###3###Condensate"/>
-		
+		<Item Value ="01A_TNDN_DK###3###Condensate"/>		
 	</Section>	
 </Sections>
