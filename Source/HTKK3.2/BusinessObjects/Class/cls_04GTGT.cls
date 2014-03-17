@@ -221,15 +221,15 @@ Public Sub Prepare2()
         End If
             'end
         
-'        .Sheet = sheetPl01_1_GTGT 'PL1
-'            .ActiveSheet = .Sheet
-'                .Row = 1
-'                .Col = .ColLetterToNumber("C")
-'                .CellType = CellTypeButton
-'                .TypeButtonTextColor = RGB(0, 0, 255)
-'                .TypeButtonColor = &H8000000F
-'                .TypeButtonAlign = TypeButtonAlignRight
-'                .TypeButtonText = GetAttribute(GetMessageCellById("0104"), "Msg")
+        .Sheet = sheetPl01_1_GTGT 'PL1
+            .ActiveSheet = .Sheet
+                .Row = 1
+                .Col = .ColLetterToNumber("D")
+                .CellType = CellTypeButton
+                .TypeButtonTextColor = RGB(0, 0, 255)
+                .TypeButtonColor = &H8000000F
+                .TypeButtonAlign = TypeButtonAlignRight
+                .TypeButtonText = GetAttribute(GetMessageCellById("0104"), "Msg")
                 
         fps.EventEnabled(EventAllEvents) = True
         
@@ -247,7 +247,7 @@ Dim itemp As Variant, temp As Variant
 Dim cValue As Variant
 
 Dim tempRow As MY_ROW
-Dim ArrRow() As MY_ROW, arrRow2() As MY_ROW, arrRow3() As MY_ROW, arrRow4() As MY_ROW
+Dim arrRow() As MY_ROW, arrRow2() As MY_ROW, arrRow3() As MY_ROW, arrRow4() As MY_ROW
 Dim tempValue As Variant
 Dim varTemp As Variant
 
@@ -289,7 +289,7 @@ End Sub
 Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
 Dim i As Integer, iCol As Long, iRow As Long
 Dim countRowDyn As Long, coundtRowDel As Long
-Dim ArrRow() As MY_ROW
+Dim arrRow() As MY_ROW
 Dim tempRow As MY_ROW
 Dim tempValue As Variant, tempGroup As Variant, tempMaNhom As Variant
 Dim tCol As Long, tRow As Long
@@ -2222,7 +2222,7 @@ End Sub
 Public Sub LockCellBySheet()
     Dim i As Integer
     Dim a As Double, b As Double, c As Double
-    Dim ArrRow As Variant, ArrCol As Variant
+    Dim arrRow As Variant, ArrCol As Variant
     Dim arrCellTag() As String
     Dim cCol As Long, cRow As Long
     Dim varTemp As Variant
@@ -2418,3 +2418,114 @@ Public Sub inThongTinDL()
     ' end
 End Sub
 
+Public Sub FinishImport()
+Dim i As Integer, iCol As Long, iRow As Long
+Dim varTemp As Variant
+With fps
+fps.EventEnabled(EventAllEvents) = False
+    If .ActiveSheet = 2 Then
+             i = 1
+             .Col = .ColLetterToNumber("B")
+             .Row = 8
+             Do
+                  .Text = str(i)
+'                         .Col = .ColLetterToNumber("K")
+'                         .Text = "0"
+'                         UpdateCell fps, .Col, .Row, .Text
+                   ' chuyen ky hieu thanh chu hoa
+                   .Col = .ColLetterToNumber("E")
+                   .GetText .Col, .Row, varTemp
+                   .Text = UCase$(CStr(varTemp))
+                   UpdateCell fps, .Col, .Row, .Text
+                   ' end
+                  .Col = .ColLetterToNumber("B")
+                  .Row = i + 8
+                  i = i + 1
+             Loop Until .Text = "aa"
+             i = 1
+            .Row = .Row + 4
+             Do
+                  .Text = str(i)
+
+'                         .Col = .ColLetterToNumber("M")
+'                         .Text = "0"
+'                         UpdateCell fps, .Col, .Row, .Text
+                  
+                  ' chuyen ky hieu thanh chu hoa
+                  .Col = .ColLetterToNumber("E")
+                   .GetText .Col, .Row, varTemp
+                   .Text = UCase$(CStr(varTemp))
+                   UpdateCell fps, .Col, .Row, .Text
+                  ' end
+                  
+                  .Col = .ColLetterToNumber("B")
+                  .Row = 1 + .Row
+                  i = i + 1
+             Loop Until .Text = "bb"
+             i = 1
+            .Row = .Row + 4
+             Do
+                  .Text = str(i)
+'                         .Col = .ColLetterToNumber("J")
+'                         .TypeHAlign = TypeHAlignCenter
+'                         .Text = "5%"
+'                         UpdateCell fps, .Col, .Row, .Text
+
+                 ' chuyen ky hieu thanh chu hoa
+                  .Col = .ColLetterToNumber("E")
+                   .GetText .Col, .Row, varTemp
+                   .Text = UCase$(CStr(varTemp))
+                   UpdateCell fps, .Col, .Row, .Text
+                  ' end
+
+                  .Col = .ColLetterToNumber("B")
+                  .Row = 1 + .Row
+                  i = i + 1
+             Loop Until .Text = "cc"
+             i = 1
+            .Row = .Row + 4
+             Do
+                  .Text = str(i)
+'                         .Col = .ColLetterToNumber("J")
+'                         .TypeHAlign = TypeHAlignCenter
+'                         .Text = "10%"
+'                         UpdateCell fps, .Col, .Row, .Text
+                   ' chuyen ky hieu thanh chu hoa
+                  .Col = .ColLetterToNumber("E")
+                   .GetText .Col, .Row, varTemp
+                   .Text = UCase$(CStr(varTemp))
+                   UpdateCell fps, .Col, .Row, .Text
+                  ' end
+
+                  .Col = .ColLetterToNumber("B")
+
+                  .Row = 1 + .Row
+                  i = i + 1
+             Loop Until .Text = "dd"
+             i = 1
+             .Row = .Row + 4
+             Do
+                  .Text = str(i)
+'                         .Col = .ColLetterToNumber("J")
+'                         .TypeHAlign = TypeHAlignCenter
+'                         .Text = "10%"
+'                         UpdateCell fps, .Col, .Row, .Text
+
+                  ' chuyen ky hieu thanh chu hoa
+                  .Col = .ColLetterToNumber("E")
+                   .GetText .Col, .Row, varTemp
+                   .Text = UCase$(CStr(varTemp))
+                   UpdateCell fps, .Col, .Row, .Text
+                  ' end
+
+                  .Col = .ColLetterToNumber("B")
+                  .Row = 1 + .Row
+                  i = i + 1
+             Loop Until .Text = "ee"
+             .SetActiveCell iCol, iRow
+             .Row = iRow
+             .Col = iCol
+        End If
+        fps.EventEnabled(EventAllEvents) = True
+        End With
+End Sub

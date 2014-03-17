@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":19A5
+         SpreadDesigner  =   "frmInterfaces.frx":1969
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1C69
+      SpreadDesigner  =   "frmInterfaces.frx":1BF1
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -834,6 +834,9 @@ ElseIf Trim(varMenuId) = "01" And fpSpread1.ActiveSheet = 2 Then
 ElseIf Trim(varMenuId) = "01" And fpSpread1.ActiveSheet = 3 Then
     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_01_2_GTGT.xml"))
     colStart = 3
+ElseIf Trim(varMenuId) = "01" And fpSpread1.ActiveSheet = 4 Then
+    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_01_3_GTGT.xml"))
+    colStart = 3
 ElseIf Trim(varMenuId) = "02" Then
     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_02_1_GTGT.xml"))
     colStart = 3
@@ -852,6 +855,9 @@ ElseIf Trim(varMenuId) = "59" And fpSpread1.ActiveSheet = 2 Then
 ElseIf Trim(varMenuId) = "70" And fpSpread1.ActiveSheet = 1 Then
     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_01_NTNN.xml"))
     colStart = 2
+ElseIf Trim(varMenuId) = "71" And fpSpread1.ActiveSheet = 2 Then
+    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_04_1_GTGT.xml"))
+    colStart = 3
 End If
 
 Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
@@ -918,7 +924,7 @@ ProgressBar1.value = fpSpread2.Row
     fpSpread1.sheet = mCurrentSheet
     fpSpread2.Row = fpSpread2.Row + 1
     value = fpSpread2.value
-    If ((Mid(value, 1, 1) = "T" Or Trim(value) = "" Or Trim(value) = vbNullString) And (Trim(varMenuId) = "01" Or Trim(varMenuId) = "02" Or Trim(varMenuId) = "14" Or Trim(varMenuId) = "05" Or Trim(varMenuId) = "59")) Or ((Trim(value) = "" Or Trim(value) = vbNullString) And (Trim(varMenuId) = "17" Or Trim(varMenuId) = "42" Or Trim(varMenuId) = "43" Or Trim(varMenuId) = "26" Or Trim(varMenuId) = "44")) Then
+    If ((Mid(value, 1, 1) = "T" Or Trim(value) = "" Or Trim(value) = vbNullString) And (Trim(varMenuId) = "01" Or Trim(varMenuId) = "02" Or Trim(varMenuId) = "71" Or Trim(varMenuId) = "14" Or Trim(varMenuId) = "05" Or Trim(varMenuId) = "59")) Or ((Trim(value) = "" Or Trim(value) = vbNullString) And (Trim(varMenuId) = "17" Or Trim(varMenuId) = "42" Or Trim(varMenuId) = "43" Or Trim(varMenuId) = "26" Or Trim(varMenuId) = "44")) Then
         count = count + 1
         inc = True
         ProgressBar1.value = fpSpread2.MaxRows
