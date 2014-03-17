@@ -73,6 +73,7 @@
 		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\Excel\01A_TNDN11.xls" ReportTemplate="..\ReportTemplates\Excel\01A_TNDN11.xls" Class="Tax_Business_iNTK.cls_01ATNDN" Class2="Tax_Business_iNTK.clsReport001_1">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01A_TNDN13" Ini="..\Ini\01A_TNDN13.xml"/>
 			<Sheet ID="01-1" Caption="Phụ lục 01_1" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01A_01_TNDN13" Ini="..\Ini\01A_01_TNDN13.xml"/>			
+			<Sheet ID="01-2" Caption="PL 02-1/TĐ-TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01A_2_TD_TNDN13" Ini="..\Ini\01A_2_TD_TNDN13.xml"/>			
 			<Sheet ID="KHBS" Caption="KHBS" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01A_TNDN13" Ini="..\Ini\KHBS_01A_TNDN.xml"/>
 		</Validity>
 	</Menu>
@@ -87,6 +88,7 @@
 		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\Excel\01B_TNDN11.xls" ReportTemplate="..\ReportTemplates\Excel\01B_TNDN11.xls" Class="Tax_Business_iNTK.cls_01BTNDN" Class2="Tax_Business_iNTK.clsReport002">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01B_TNDN13" Ini="..\Ini\01B_TNDN13.xml"/>
 			<Sheet ID="01-1" Caption="Phụ lục 01_1" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01B_01_TNDN13" Ini="..\Ini\01B_01_TNDN13.xml"/>
+			<Sheet ID="01-2" Caption="PL 02-1/TĐ-TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01B_2_TD_TNDN13" Ini="..\Ini\01B_2_TD_TNDN13.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01B_TNDN13" Ini="..\Ini\KHBS_01B_TNDN.xml"/>
 		</Validity>
 	</Menu>
