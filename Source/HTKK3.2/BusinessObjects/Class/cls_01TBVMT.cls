@@ -69,6 +69,10 @@ Public Sub Prepare1()
     Dim xmlNodeListItems As MSXML.IXMLDOMNodeList
     Dim strCboTenHH As String
     Dim strCboMaHHAn As String
+    
+    Dim strCboTenHHThan As String
+    Dim strCboMaHHAnThan As String
+    
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim i As Integer
     Dim fldList() As String
@@ -96,6 +100,10 @@ Public Sub Prepare1()
           fldList = Split(GetAttribute(xmlNode, "Value"), "###")
           strCboTenHH = strCboTenHH + fldList(1) + Chr$(9)
           strCboMaHHAn = strCboMaHHAn + fldList(0) + "~" + fldList(1) + "~" + fldList(2) + "~" + fldList(3) + Chr$(9)
+          If Left$(Trim(fldList(0)), 4) = "0102" Then
+                strCboTenHHThan = strCboTenHHThan + fldList(1) + Chr$(9)
+                strCboMaHHAnThan = strCboMaHHAnThan + fldList(0) + "~" + fldList(1) + "~" + fldList(2) + "~" + fldList(3) + Chr$(9)
+          End If
       Next
     End If
 
@@ -114,11 +122,11 @@ Public Sub Prepare1()
         .Sheet = SheetPL01_1
         .Col = .ColLetterToNumber("Y")
         .Row = rowStart
-        .TypeComboBoxList = strCboMaHHAn
+        .TypeComboBoxList = strCboMaHHAnThan
         'Combo Hien
         .Col = .ColLetterToNumber("D")
         .Row = rowStart
-        .TypeComboBoxList = strCboTenHH
+        .TypeComboBoxList = strCboTenHHThan
      End With
         
      setCQTQuanLy
@@ -325,9 +333,9 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
         If .ActiveSheet = 1 Then
             .Sheet = 1
             If Col = .ColLetterToNumber("C") And .Text <> "" Then
-                intIndexCombo = .TypeComboBoxCurSel
+                intIndexCombo = .typeComboboxCurSel
                 .Col = .ColLetterToNumber("AB")
-                .TypeComboBoxCurSel = intIndexCombo
+                .typeComboboxCurSel = intIndexCombo
     
                 .Col = .ColLetterToNumber("AC")
                 .GetText .ColLetterToNumber("AB"), Row, strId
@@ -382,9 +390,9 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
          ElseIf .ActiveSheet = 2 Then
             .Sheet = 2
             If Col = .ColLetterToNumber("D") And .Text <> "" Then
-                intIndexCombo = .TypeComboBoxCurSel
+                intIndexCombo = .typeComboboxCurSel
                 .Col = .ColLetterToNumber("Y")
-                .TypeComboBoxCurSel = intIndexCombo
+                .typeComboboxCurSel = intIndexCombo
     
                 .Col = .ColLetterToNumber("Z")
                 .GetText .ColLetterToNumber("Y"), Row, strId
@@ -531,25 +539,25 @@ With fps
         .Row = Row
         
          If Col = .ColLetterToNumber(Col_CQT_Cuc) And .Text <> "" Then
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber(Col_Ma_CQT_Cuc)
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             'Update combo C
             UpdateCell fps, .Col, .Row, .Text
         End If
         
          If Col = .ColLetterToNumber(Col_CQT_CCuc) And .Text <> "" Then
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber(Col_Ma_CQT_CCuc)
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             'Update combo C
             UpdateCell fps, .Col, .Row, .Text
         End If
         
         If Col = .ColLetterToNumber(Col_HH) And .Text <> "" Then
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber(Col_Ma_HH)
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             'Update combo C
             UpdateCell fps, .Col, .Row, .Text
         End If
@@ -574,10 +582,10 @@ With fps
             
             If Col = .ColLetterToNumber("BE") And Row = iRow Then 'Khi chon Combo
                 'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
-                intIndexCuc = .TypeComboBoxCurSel
+                intIndexCuc = .typeComboboxCurSel
                 .Col = .ColLetterToNumber("BI")
                 .Row = Row
-                .TypeComboBoxCurSel = intIndexCuc
+                .typeComboboxCurSel = intIndexCuc
                 'Nhap lai Combo cot Q
                 .Col = .ColLetterToNumber("BI")
                 UpdateCell fps, .Col, .Row, .Text
@@ -617,10 +625,10 @@ With fps
                         
             If Col = .ColLetterToNumber("BE") And Row = iRow + 2 Then 'Khi chon Combo
                 'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
-                intIndexChiCuc = .TypeComboBoxCurSel
+                intIndexChiCuc = .typeComboboxCurSel
                 .Col = .ColLetterToNumber("BI")
                 .Row = Row
-                .TypeComboBoxCurSel = intIndexChiCuc
+                .typeComboboxCurSel = intIndexChiCuc
                 'Nhap lai Combo cot Q
                 .Col = .ColLetterToNumber("BI")
                 UpdateCell fps, .Col, .Row, .Text
@@ -699,10 +707,10 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
             
             If Col = .ColLetterToNumber(Col_CQT_Cuc) Then 'Khi chon Combo
                 'Chuyen sang du lieu tuong ung Lay gia tri index cot G va gia tri Index cot S
-                intIndexCuc = .TypeComboBoxCurSel
+                intIndexCuc = .typeComboboxCurSel
                 .Col = .ColLetterToNumber(Col_Ma_CQT_Cuc)
                 .Row = Row
-                .TypeComboBoxCurSel = intIndexCuc
+                .typeComboboxCurSel = intIndexCuc
                 'Nhap lai Combo ma cuc
                 .Col = .ColLetterToNumber(Col_Ma_CQT_Cuc)
                 UpdateCell fps, .Col, .Row, .Text
@@ -752,10 +760,10 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
                         
             If Col = .ColLetterToNumber(Col_CQT_CCuc) Then 'Khi chon Combo
                 'Chuyen sang du lieu tuong ung Lay gia tri index cot L va gia tri Index cot R
-                intIndexChiCuc = .TypeComboBoxCurSel
+                intIndexChiCuc = .typeComboboxCurSel
                 .Col = .ColLetterToNumber(Col_Ma_CQT_CCuc)
                 .Row = Row
-                .TypeComboBoxCurSel = intIndexChiCuc
+                .typeComboboxCurSel = intIndexChiCuc
                 'Nhap lai Combo cot R
                 .Col = .ColLetterToNumber(Col_Ma_CQT_CCuc)
                 UpdateCell fps, .Col, .Row, .Text
@@ -763,10 +771,10 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
             
             If Col = .ColLetterToNumber(Col_HH) Then 'Khi chon Combo
                 'Chuyen sang du lieu tuong ung Lay gia tri index cot L va gia tri Index cot R
-                intIndexChiCuc = .TypeComboBoxCurSel
+                intIndexChiCuc = .typeComboboxCurSel
                 .Col = .ColLetterToNumber(Col_Ma_HH)
                 .Row = Row
-                .TypeComboBoxCurSel = intIndexChiCuc
+                .typeComboboxCurSel = intIndexChiCuc
                 'Nhap lai Combo cot R
                 .Col = .ColLetterToNumber(Col_Ma_HH)
                 UpdateCell fps, .Col, .Row, .Text
@@ -910,7 +918,7 @@ Dim CountRow As Integer
             Dim strKyHieu As Variant, strCheckMST As String
             Dim strTongTLPhanBo As Variant
             
-            Dim fLagTongTyLe As Integer
+            Dim flagTongTyLe As Integer
             Const colorCell = 16709097
             
             Dim iFlagCheckData As Boolean
@@ -1065,7 +1073,7 @@ Dim CountRow As Integer
                 .Row = .MaxRows - 12
                 .BackColor = mErrorColor
                 .CellNote = vMsgErrorTongTyLe
-                fLagTongTyLe = 1
+                flagTongTyLe = 1
             Else
                 .Col = .ColLetterToNumber("U")
                 .Row = .MaxRows - 12
@@ -1082,7 +1090,7 @@ Dim CountRow As Integer
             .SetText .ColLetterToNumber("B"), 17, IIf(iFlagEmpty = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 18, IIf(iFlagCheckMaST = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 21, IIf(iFlagMSTTrung = 1, "0", "1")
-            .SetText .ColLetterToNumber("B"), 22, IIf(fLagTongTyLe = 1, "0", "1")
+            .SetText .ColLetterToNumber("B"), 22, IIf(flagTongTyLe = 1, "0", "1")
         Else
             .SetText .ColLetterToNumber("B"), 20, "1"
             .SetText .ColLetterToNumber("B"), 17, "1"
