@@ -1356,6 +1356,25 @@ Public Function changeMaToKhaiQLT(strID As String, isLanPS, LoaiKyKK) As String
     ' To khai 07_TNCN11
     If strID = "36" Then changeMaToKhaiQLT = "19"
     
+    'TODO........
+'    '--Cap nhat to khai thuy dien, dau khi 18/03/2010 ver 3.2.2
+'    '--01A/TNDN-DK
+'    If (strID = "98") Then changeMaToKhaiQLT = ""
+'
+'    '--01B/TNDN-DK
+'    If (strID = "") Then changeMaToKhaiQLT = ""
+'
+'    '--01/TAIN-DK
+'    If (strID = "") Then changeMaToKhaiQLT = ""
+'
+'    '--01/TD-GTGT
+'    If (strID = "") Then changeMaToKhaiQLT = ""
+'
+'    '--03/TD-TAIN
+'    If (strID = "") Then changeMaToKhaiQLT = ""
+'
+'    '--01/BCTL-DK
+'    If (strID = "") Then changeMaToKhaiQLT = ""
 End Function
 
 
