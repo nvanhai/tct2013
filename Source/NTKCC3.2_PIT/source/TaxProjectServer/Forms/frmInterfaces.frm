@@ -5327,7 +5327,7 @@ Private Function Prepare_QLT() As String
             .GetText .ColLetterToNumber("L"), 33, TK_PS
         End If
             
-        If KiemTraNopCham(KYKK_TU_NGAY_F, kieukykk, NGNOP_S) = True And TK_PS <> "1" Then
+        If KiemTraNopCham(KYKK_TU_NGAY_F, kieukykk, NGNOP_S) = True And TK_PS <> "1" And ID_TK <> "64" And ID_TK <> "65" And ID_TK <> "66" And ID_TK <> "67" And ID_TK <> "68" And ID_TK <> "91" Then
             If MessageBox("0130", msYesNo, miQuestion) = mrYes Then
                 frmInBienBanPhatNopCham.Show 1
             End If
