@@ -127,4 +127,7 @@
 	<Infor ID="0132" Msg="Kể từ 17/02/2014 trở đi phải kê khai tờ khai bằng HTKK phiên bản 3.2.0 trở lên"/>
 	<Infor ID="0133" Msg="Kể từ 17/02/2014 trở đi phải kê khai tờ khai bổ sung bằng HTKK phiên bản 3.2.0 trở lên"/>
 	<Infor ID="0134" Msg="Tờ khai này không nhận mã vạch. Đề nghị nhập tay vào hệ thống"/>
+	<Infor ID="0135" Msg="Đã sử dụng"/>
+	<Infor ID="0136" Msg="Chưa sử dụng"/>
+	<Infor ID="0137" Msg="Tờ khai bổ sung phải thực hiện nhập trên ứng dụng QCT"/>
 </Message>
