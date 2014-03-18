@@ -1670,8 +1670,8 @@ Private Sub Command1_Click()
 'str1 = "aa321722300236909   03201400000100100101/0114/06/2006<S01><S></S><S>235443625~23535423~2354436~470708~2825144</S><S>~Lan H-¨ng~~04/03/2014~1~~~1~04/03/2014</S></S01>"
 'Barcode_Scaned str1
 '
-'str1 = "aa321732300236909   04201400000100100101/0114/06/2006<S02><S></S><S>1~27~2~3~4~5~6~7~-26~0~-26~22~0~0~0~0~0~22~1~0</S><S>~1~~~~~~</S><S>~~Lan H-¨ng~04/03/2014~1~~04/03/2014~~~</S></S02>"
-'Barcode_Scaned str1
+str1 = "aa321732300236909   04201400000100100101/0114/06/2006<S02><S></S><S>1~27~2~3~4~5~6~7~-26~0~-26~22~0~0~0~0~0~22~1~0</S><S>~1~~~~~~</S><S>~~Lan H-¨ng~04/03/2014~1~~04/03/2014~~~</S></S02>"
+Barcode_Scaned str1
 '
 'str1 = "aa321702300236909   03201400100100100101/0101/01/1900<S01><S></S><S>sfsdf~6868686868~sdfsdf~3243254~01/01/2014~32543543~5~5~81359~43265534~5~0~2163277~2244636</S><S>0~23524352~0~0~42352345~65876697</S><S>~X</S><S>~~Lan H-¨ng~04/03/2014~1~~~04/03/2014</S></S01>"
 'Barcode_Scaned str1
@@ -1696,9 +1696,9 @@ Private Sub Command1_Click()
 'str1 = "aa999642300236909   03201400100100100101/0101/01/2009<S01><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/001~AB/12T~10~0000001~0000010~01/05/2014~sdf~2222222222~1~01/01/2014~</S><S>~~~13/03/2014~Lan H≠¨ng</S></S01>"
 'Barcode_Scaned str1
 '
-str1 = "aa999652300236909   01201400100100100101/0101/01/2009<S01><S>~01/01/2014~30/06/2014</S><S>6868686868~a~af~1~01/01/2014~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/001~AB/12T~0000001~0000010~10~</S><S>Lan H≠¨ng~13/03/2014</S></S01>"
-Barcode_Scaned str1
-'
+'str1 = "aa999652300236909   01201400100100100101/0101/01/2009<S01><S>~01/01/2014~30/06/2014</S><S>6868686868~a~af~1~01/01/2014~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/001~AB/12T~0000001~0000010~10~</S><S>Lan H≠¨ng~13/03/2014</S></S01>"
+'Barcode_Scaned str1
+''
 'str1 = "aa999662300236909   04201300100100100101/0101/01/2010<S01><S>13/03/2014~9~47</S><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/001~AB/12T~0000001~0000019~19~1~05~0</S><S>~Lan H≠¨ng~13/03/2014</S></S01>"
 'Barcode_Scaned str1
 '
@@ -5296,6 +5296,35 @@ Private Function Prepare_QLT() As String
      
         If ID_TK = "73" Then
             .GetText .ColLetterToNumber("Q"), 49, TK_PS
+        ElseIf ID_TK = "70" Then
+            .GetText .ColLetterToNumber("F"), 63, TK_PS
+
+            If TK_PS = "X" Then
+                TK_PS = "1"
+            End If
+
+        ElseIf ID_TK = "71" Then
+            .GetText .ColLetterToNumber("K"), 39, TK_PS
+
+            If TK_PS = "2" Then
+                TK_PS = "1"
+            End If
+
+        ElseIf ID_TK = "72" Then
+            .GetText .ColLetterToNumber("J"), 64, TK_PS
+        ElseIf ID_TK = "81" Then
+            .GetText .ColLetterToNumber("Q"), 37, TK_PS
+        ElseIf ID_TK = "05" Then
+            .GetText .ColLetterToNumber("AA"), 44, TK_PS
+
+            If Len(TK_PS) > 0 Then
+                TK_PS = "1"
+            End If
+
+        ElseIf ID_TK = "06" Then
+            .GetText .ColLetterToNumber("L"), 35, TK_PS
+        ElseIf ID_TK = "90" Then
+            .GetText .ColLetterToNumber("L"), 33, TK_PS
         End If
             
         If KiemTraNopCham(KYKK_TU_NGAY_F, kieukykk, NGNOP_S) = True And TK_PS <> "1" Then

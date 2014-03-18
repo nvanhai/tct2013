@@ -554,18 +554,18 @@ Private Sub fps_KeyPress(KeyAscii As Integer)
 End Sub
 
 Public Function CheckValidData() As Boolean
-    Dim NgayNop As Variant, ngayHienTai As Variant
+    Dim NGAYNOP As Variant, ngayHienTai As Variant
     
     CheckValidData = True
     With fps
         .Sheet = 1
         
         ' check ngay nop khong dc lon hon ngay hien tai
-        .GetText .ColLetterToNumber("E"), 44, NgayNop
+        .GetText .ColLetterToNumber("E"), 44, NGAYNOP
         ngayHienTai = IIf(Len(Day(Now())) = 1, "0" & Day(Now()), Day(Now())) & "/" & IIf(Len(Month(Now())) = 1, "0" & Month(Now()), Month(Now())) & "/" & Year(Now())
         ngayHienTai = DateSerial(Int(Mid$(ngayHienTai, 7, 4)), Int(Mid$(ngayHienTai, 4, 2)), Int(Mid$(ngayHienTai, 1, 2)))
-        NgayNop = DateSerial(Int(Mid$(NgayNop, 7, 4)), Int(Mid$(NgayNop, 4, 2)), Int(Mid$(NgayNop, 1, 2)))
-        If NgayNop > ngayHienTai Then
+        NGAYNOP = DateSerial(Int(Mid$(NGAYNOP, 7, 4)), Int(Mid$(NGAYNOP, 4, 2)), Int(Mid$(NGAYNOP, 1, 2)))
+        If NGAYNOP > ngayHienTai Then
             CheckValidData = False
         End If
 
@@ -665,19 +665,10 @@ Public Function InsertDTL() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         Else
             kykkhai = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
+            kykkhai = Right$(kykkhai, 7)
         End If
         tt = "' '"
         giatri2 = "0"
-            
-        Dim kykkhai2 As Variant
-            
-        kykkhai2 = Mid$(kykkhai, 2, 1)
-            
-        If kykkhai2 <> "0" Then
-            kykkhai2 = kykkhai
-        Else
-            kykkhai2 = "'" & Right$(kykkhai, 7)
-        End If
             
         '--- End thong tin chung -------------------------------
         .Row = 54
@@ -698,7 +689,7 @@ Public Function InsertDTL() As String
             End If
 
             sSQLVal = madtnt & "," & MaMuc & "," & maTM & "," & ngnop & "," & TTHTK & "," & MAHIEU & "," & giatri & ", "
-            sSQLVal = sSQLVal & kykkhai2 & "," & matkhai & "," & giatri2 & "," & tt & "," & KD_MADTNT & "," & DANHAN & "," & LAN_QUET
+            sSQLVal = sSQLVal & kykkhai & "," & matkhai & "," & giatri2 & "," & tt & "," & KD_MADTNT & "," & DANHAN & "," & LAN_QUET
 
             sSQL = "INSERT INTO TMP_SD" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -1275,16 +1266,7 @@ Public Function InsertHDR() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         Else
             kykkhai = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
-        End If
-
-        Dim kykkhai2 As Variant
-            
-        kykkhai2 = Mid$(kykkhai, 2, 1)
-            
-        If kykkhai2 <> "0" Then
-            kykkhai2 = kykkhai
-        Else
-            kykkhai2 = "'" & Right$(kykkhai, 7)
+            kykkhai = Right$(kykkhai, 7)
         End If
         
         ' ---------- han nop -----------------------
@@ -1421,7 +1403,7 @@ Public Function InsertHDR() As String
         DANHAN = "''"
                 
         sSQLVal = madtnt & "," & MaMuc & "," & maTM & "," & KD_MADTNT & "," & TEN_TC & "," & DC_TC & "," & QD_TC & ", "
-        sSQLVal = sSQLVal & HOPDONG & "," & ngnop & "," & TTHTK & "," & kykkhai2 & "," & matkhai & "," & HANNOP & "," & HANNOP2 & ", "
+        sSQLVal = sSQLVal & HOPDONG & "," & ngnop & "," & TTHTK & "," & kykkhai & "," & matkhai & "," & HANNOP & "," & HANNOP2 & ", "
         sSQLVal = sSQLVal & ThueTKy & "," & ThueTKy2 & "," & NGAYHD & "," & NGAYXN & "," & GHICHU & ", "
         sSQLVal = sSQLVal & SHTEP & "," & MaVach & "," & AUTO_CAL & "," & DaGhi & ", "
         sSQLVal = sSQLVal & KYLBO & "," & THUECL & "," & MADLT & "," & LanBS & "," & LAN_QUET & "," & DoanhSo & "," & GTTinhThue & "," & GTTTCL & "," & DSoCL & "," & DAGHI2 & "," & DANHAN & "," & NGAY_PS & ",'" & TENNV & "','" & CHUNGCHI & "'," & GIA_HAN
@@ -1745,18 +1727,10 @@ Public Function InsertDTL_PL1() As String
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         Else
             kykkhai = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
+            kykkhai = "'" & Right$(kykkhai, 7)
         End If
         tt = "' '"
-            
-        Dim kykkhai2 As Variant
-            
-        kykkhai2 = Mid$(kykkhai, 2, 1)
-            
-        If kykkhai2 <> "0" Then
-            kykkhai2 = kykkhai
-        Else
-            kykkhai2 = "'" & Right$(kykkhai, 7)
-        End If
+        
         
         .Sheet = 2
         .Row = 7
@@ -1774,7 +1748,7 @@ Public Function InsertDTL_PL1() As String
             diaChi = "'" & diaChi & "'"
             HOPDONG = "'" & HOPDONG & "'"
             
-            sSQLVal = matkhai & "," & madtnt & "," & KYLBO & "," & kykkhai2 & "," & ngnop & "," & TTHTK _
+            sSQLVal = matkhai & "," & madtnt & "," & KYLBO & "," & kykkhai & "," & ngnop & "," & TTHTK _
             & "," & tt & "," & MST & "," & diaChi & "," & TENBN & "," & HOPDONG & "," & DANHAN & "," & LAN_QUET
             
             sSQL = "INSERT INTO TMP_P2DN" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
@@ -1979,18 +1953,15 @@ Public Function isToKhaiChinhThuc() As Boolean
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
         clsDAO.Connect
     End If
-        
-    Dim kykkhai2 As Variant
-    Dim kykkhai  As Variant
-    kykkhai = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
-    kykkhai2 = Mid$(kykkhai, 2, 1)
-    If kykkhai2 <> "0" Then
-        kykkhai2 = kykkhai
+
+    Dim kykkhai As Variant
+
+    If NGAY_PS <> "CTOD('')" Then
+        kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
     Else
-        kykkhai2 = "'" & Right$(kykkhai, 7)
+        kykkhai = "'" & TAX_Utilities_Svr_New.ThreeMonths & "/" & TAX_Utilities_Svr_New.Year & "'"
+        kykkhai = "'" & Right$(kykkhai, 7)
     End If
-    
-    
 
     Do While flag
    
@@ -1998,7 +1969,7 @@ Public Function isToKhaiChinhThuc() As Boolean
 
         'kiem tra neu co db thi moi thuc hien truy van
         If fso.FileExists(strTestFileName) Then
-            sSQL = "SELECT MADTNT, NGNOP FROM TMP_SM" & vKeKhai_temp & " WHERE MADTNT = " & "'" & strMST & "' AND KYKKHAI = " & kykkhai2 & " AND MATKHAI='" & LOAI_TO_KHAI & "' AND NGAY_PS = CTOD('')"
+            sSQL = "SELECT MADTNT, NGNOP FROM TMP_SM" & vKeKhai_temp & " WHERE MADTNT = " & "'" & strMST & "' AND KYKKHAI = " & kykkhai & " AND MATKHAI='" & LOAI_TO_KHAI & "' AND NGAY_PS = CTOD('')"
             Set rs = clsDAO.Execute(sSQL)
         End If
         
