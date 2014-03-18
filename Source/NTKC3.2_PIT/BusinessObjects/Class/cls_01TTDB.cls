@@ -604,7 +604,7 @@ Dim blnValid As Boolean
             
             .Col = .ColLetterToNumber("B")
             .Row = 17
-            
+
             If Not blnValid Then
                 .Formula = "0"
             Else
