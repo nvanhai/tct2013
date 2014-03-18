@@ -1444,11 +1444,19 @@ Private Sub Command1_Click()
 
 
 '--to khai bo sung
-str2 = "bs999982300100778   02201400600600100301/0101/01/1900<S01><S>0010011000</S><S>1~x~~~1~0~0~KLO01~x~</S><S>111~232~25752~32~8240.64~232~8008.64~3424</S><S>Kh¸nh Linh~MCT~Minh NhËt~18/03/2014~~1~18/02/2014~2</S></S01>"
+'str2 = "bs999982300100778   02201400600600100301/0101/01/1900<S01><S>0010011000</S><S>1~x~~~1~0~0~KLO01~x~</S><S>111~232~25752~32~8240.64~232~8008.64~3424</S><S>Kh¸nh Linh~MCT~Minh NhËt~18/03/2014~~1~18/02/2014~2</S></S01>"
+'Barcode_Scaned str2
+'str2 = "bs999982300100778   022014006006002003<SKHBS><S>~~0~0~0</S><S>Sè thuÕ TNDN ®­îc miÔn hoÆc gi¶m (nÕu cã)~34~0~"
+'Barcode_Scaned str2
+'str2 = "bs999982300100778   022014006006003003232~232</S><S>18/03/2014~0~0~0~~~10100~10101~0~0~~0~0~8009</S></SKHBS>"
+'Barcode_Scaned str2
+
+'--To khai bo sung QCT - 04/GTGT
+str2 = "bs999712300100778   04201300300300100301/0101/01/1900<S01><S>0010011000</S><S>12123~2323~23~232~12~2323~70~2323~46~7201~151~19324~151</S><S>Kh¸nh Linh~Minh NhËt~MCT~18/03/2014~~1~1~1~</S></S01>"
 Barcode_Scaned str2
-str2 = "bs999982300100778   022014006006002003<SKHBS><S>~~0~0~0</S><S>Sè thuÕ TNDN ®­îc miÔn hoÆc gi¶m (nÕu cã)~34~0~"
+str2 = "bs999712300100778   042013003003002003<SKHBS><S>Ph©n phèi, cung cÊp hµng ho¸~23~0~23~23~DÞch vô, x©y dùng kh«ng bao thÇu nguyªn vËt liÖu~25~0~12~12~S¶n xuÊt, vËn t¶i, dÞch vô cã g¾n víi hµng ho¸, x©"
 Barcode_Scaned str2
-str2 = "bs999982300100778   022014006006003003232~232</S><S>18/03/2014~0~0~0~~~10100~10101~0~0~~0~0~8009</S></SKHBS>"
+str2 = "bs999712300100778   042013003003003003y dùng cã bao thÇu nguyªn vËt liÖu~27~0~70~70~Ho¹t ®éng kinh doanh kh¸c~29~0~46~46</S><S>~~0~0~0</S><S>18/03/2014~46~3~0~~~10300~10303~0~0~~0~0~151</S></SKHBS>"
 Barcode_Scaned str2
 
 
@@ -1849,7 +1857,6 @@ Private Sub Barcode_Scaned(strBarcode As String)
         
         '--chan doi voi cac to khai bo sung cua lan phat sinh: y/c ngay 13/02/2014----------------
         '--bo sung chan them cac to: 01A_TNDN_DK, 01_TAIN_DK (lan xuat ban) 18/03/2014
-        '--todo
         Dim tmp_str    As String
         Dim tkps_spl() As String
 
@@ -1986,6 +1993,18 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 DisplayMessage "0131", msOKOnly, miInformation
                 Exit Sub
             End If
+        End If
+        
+        '--Chan cac to khai bo sung cua to QCT y/c ngay: 18/03/2014
+        '--LIST: 03/GTGT, 04/GTGT, 01/BVMT,01/TBVMT,01/TAIN,01/TTÐB
+        '--TODO
+        If InStr(1, strBarcode, "</S01>", vbTextCompare) > 0 Then
+        If (Trim(idToKhai) = "04" Or Trim(idToKhai) = "71" Or Trim(idToKhai) = "86" Or Trim(idToKhai) = "90" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "05") Then
+            If (UCase(strLoaiToKhai) = "BS") Then
+                DisplayMessage "0135", msOKOnly, miInformation
+                Exit Sub
+            End If
+        End If
         End If
         
         '07072011 TT28
@@ -3015,8 +3034,9 @@ On Error GoTo ErrHandle
 
     strMST = CStr(rsTaxInfor.Fields(1))
     
-    '--Check QCT
+    '--Check to khai QCT
     '--LIST: 03/GTGT, 04/GTGT, 01/BVMT,01/TBVMT,01/TAIN,01/TTÐB
+    '--TODO
     strID = Left$(strTaxReportInfo, 2)
     If (strID = "04" Or strID = "71" Or strID = "86" Or strID = "90" Or strID = "06" Or strID = "05") Then
         TAX_Utilities_Srv_New.isCheckQCT = IsTranferQCT(strMST)

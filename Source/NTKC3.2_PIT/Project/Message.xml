@@ -128,4 +128,5 @@
 	<Infor ID="0132" Msg="Tờ khai này không nhận mã vạch. Đề nghị nhập tay vào hệ thống"/>
 	<Infor ID="0133" Msg="Đã sử dụng"/>
 	<Infor ID="0134" Msg="Chưa sử dụng"/>
+	<Infor ID="0135" Msg="Tờ khai bổ sung phải thực hiện nhập trên ứng dụng QCT"/>
 </Message>
