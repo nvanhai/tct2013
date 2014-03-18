@@ -509,7 +509,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":02C8
+      SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
    End
@@ -1649,24 +1649,14 @@ Private Sub chkTKLanPS_Click()
             txtSolan.Visible = False
             fpsNgaykhaiBS.Visible = False
             
-            m = month(dtem2)
-            Y = Year(dtem2)
-            d = Day(dtem2)
-            txtDay.Text = d
-            txtMonth.Text = m
-            txtYear.Text = Y
-            If Len(txtDay.Text) = 1 Then
-                txtDay.Text = "0" & txtDay.Text
-            End If
-            If Len(txtMonth.Text) = 1 Then
-                txtMonth.Text = "0" & txtMonth.Text
-            End If
             chkTkhaiThang.value = 0
             chkTKQuy.value = 0
             frmKy.Height = 1600
             
             cmbQuy.Visible = False
+            lblQuy.Visible = False
             txtMonth.Visible = True
+            lblMonth.Visible = True
             
             Set OptChinhthuc.Container = frmKy
             OptChinhthuc.Top = 900
@@ -1685,6 +1675,20 @@ Private Sub chkTKLanPS_Click()
             
             lblSolan.Visible = False
             txtSolan.Visible = False
+                        
+            m = month(dtem2)
+            Y = Year(dtem2)
+            d = Day(dtem2)
+            txtDay.Text = d
+            txtMonth.Text = m
+            txtYear.Text = Y
+            If Len(txtDay.Text) = 1 Then
+                txtDay.Text = "0" & txtDay.Text
+            End If
+            If Len(txtMonth.Text) = 1 Then
+                txtMonth.Text = "0" & txtMonth.Text
+            End If
+            
             Call Form_Resize
             
         ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "92" Then
