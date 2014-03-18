@@ -1429,7 +1429,26 @@ Private Sub Command1_Click()
 'str2 = "aa999012300100778   042013001001004004<S01_2_TD><S>01~Nha may~0102030405~100~1000000~~x~01-1~ - nha may 01-1~2222222222~30~300000~10700~~01-2~ - nha may 01-2~6868686868~70~700000~10100~</S><S>1000000</S></S01_2_TD>"
 'Barcode_Scaned str2
 
-str2 = "aa999992300100778   01201400300300100101/0101/01/1900<S01><S>0010011000</S><S>KL001~x~</S><S>1000.00~2.0000~2000.00~3.00~1997.00~3.00~59.91~2.00~57.91~12500</S><S>Kh∏nh Linh~MCT~Minh NhÀt~18/03/2014~1~</S></S01>"
+'--03/GTGT
+'str2 = "aa999042300100778   01201400100200100101/0114/06/2006<S01><S>0010011000</S><S>0~20~2~2~2~18~2</S><S>2~Minh NhÀt~MCT~18/03/2014~1~~~1</S></S01>"
+'Barcode_Scaned str2
+
+'--04/GTGT
+'str2 = "aa999712300100778   01201400200200100101/0101/01/1900<S01><S>0010011000</S><S>1~1~0~1~0~1~0~2~0~5~0~6~0</S><S>Kh∏nh Linh~Minh NhÀt~MCT~18/03/2014~1~~~1~</S></S01>"
+'Barcode_Scaned str2
+
+'--01A_TNDN_DK bs lan xuat ban
+'--to khai chinh thuc
+'str2 = "aa999982300100778   02201400500600100101/0101/01/1900<S01><S>0010011000</S><S>1~x~~~1~0~0~~x~</S><S>0~0~0~0~0~0~0~0</S><S>Kh∏nh Linh~MCT~Minh NhÀt~18/03/2014~1~~18/02/2014~2</S></S01>"
+'Barcode_Scaned str2
+
+
+'--to khai bo sung
+str2 = "bs999982300100778   02201400600600100301/0101/01/1900<S01><S>0010011000</S><S>1~x~~~1~0~0~KLO01~x~</S><S>111~232~25752~32~8240.64~232~8008.64~3424</S><S>Kh∏nh Linh~MCT~Minh NhÀt~18/03/2014~~1~18/02/2014~2</S></S01>"
+Barcode_Scaned str2
+str2 = "bs999982300100778   022014006006002003<SKHBS><S>~~0~0~0</S><S>SË thu’ TNDN Æ≠Óc mi‘n ho∆c gi∂m (n’u c„)~34~0~"
+Barcode_Scaned str2
+str2 = "bs999982300100778   022014006006003003232~232</S><S>18/03/2014~0~0~0~~~10100~10101~0~0~~0~0~8009</S></SKHBS>"
 Barcode_Scaned str2
 
 
@@ -1829,6 +1848,8 @@ Private Sub Barcode_Scaned(strBarcode As String)
         End If
         
         '--chan doi voi cac to khai bo sung cua lan phat sinh: y/c ngay 13/02/2014----------------
+        '--bo sung chan them cac to: 01A_TNDN_DK, 01_TAIN_DK (lan xuat ban) 18/03/2014
+        '--todo
         Dim tmp_str    As String
         Dim tkps_spl() As String
 
@@ -1906,6 +1927,16 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 tkps_spl = Split(tmp_str, "~")
 
                 If tkps_spl(UBound(tkps_spl) - 1) = "1" Then
+                    DisplayMessage "0132", msOKOnly, miCriticalError
+                    Exit Sub
+                End If
+            End If
+            
+            '01A/TNDN-DK, 01/TAIN-DK
+            If ((Val(Mid$(strBarcode, 4, 2)) = 92 Or Val(Mid$(strBarcode, 4, 2)) = 98) And UCase(strLoaiToKhai) = "BS") Then
+                tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
+                tkps_spl = Split(tmp_str, "~")
+                If Left(tkps_spl(UBound(tkps_spl)), 1) = "2" Then
                     DisplayMessage "0132", msOKOnly, miCriticalError
                     Exit Sub
                 End If
