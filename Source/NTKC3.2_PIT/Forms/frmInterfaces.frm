@@ -1997,7 +1997,6 @@ Private Sub Barcode_Scaned(strBarcode As String)
         
         '--Chan cac to khai bo sung cua to QCT y/c ngay: 18/03/2014
         '--LIST: 03/GTGT, 04/GTGT, 01/BVMT,01/TBVMT,01/TAIN,01/TTÐB
-        '--TODO
         If InStr(1, strBarcode, "</S01>", vbTextCompare) > 0 Then
         If (Trim(idToKhai) = "04" Or Trim(idToKhai) = "71" Or Trim(idToKhai) = "86" Or Trim(idToKhai) = "90" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "05") Then
             If (UCase(strLoaiToKhai) = "BS") Then
@@ -3036,7 +3035,6 @@ On Error GoTo ErrHandle
     
     '--Check to khai QCT
     '--LIST: 03/GTGT, 04/GTGT, 01/BVMT,01/TBVMT,01/TAIN,01/TTÐB
-    '--TODO
     strID = Left$(strTaxReportInfo, 2)
     If (strID = "04" Or strID = "71" Or strID = "86" Or strID = "90" Or strID = "06" Or strID = "05") Then
         TAX_Utilities_Srv_New.isCheckQCT = IsTranferQCT(strMST)
@@ -3431,7 +3429,6 @@ On Error GoTo ErrHandle
        
         ' 18122012
         ' to khai lan phat sinh, lan xuat ban trog ngay chi nhan 1 to khai
-        ' todo
         If (Val(strID) = 70 Or Val(strID) = 73 Or Val(strID) = 81 Or Val(strID) = 5 Or Val(strID) = 71 Or Val(strID) = 72 Or Val(strID) = 90 Or Val(strID) = 92 Or Val(strID) = 98) And isTKLanPS = True Then
             If isToKhaiPsDaNhanTN = True Then
                 DisplayMessage "0129", msOKOnly, miCriticalError
