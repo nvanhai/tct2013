@@ -998,18 +998,7 @@ Private Sub chkTKhaiLanXB_Click()
             txtSolan.Visible = False
             fpsNgaykhaiBS.Visible = False
             
-            m = month(dtem2)
-            Y = Year(dtem2)
-            d = Day(dtem2)
-            txtDay.Text = d
-            txtMonth.Text = m
-            txtYear.Text = Y
-            If Len(txtDay.Text) = 1 Then
-                txtDay.Text = "0" & txtDay.Text
-            End If
-            If Len(txtMonth.Text) = 1 Then
-                txtMonth.Text = "0" & txtMonth.Text
-            End If
+            
             chkTkhaiThang.value = 0
             chkTKLanPS.value = 0
             frmKy.Height = 3000
@@ -1045,6 +1034,19 @@ Private Sub chkTKhaiLanXB_Click()
             
             lblSolan.Visible = False
             txtSolan.Visible = False
+            
+            m = month(dtem2)
+            Y = Year(dtem2)
+            d = Day(dtem2)
+            txtDay.Text = d
+            txtMonth.Text = m
+            txtYear.Text = Y
+            If Len(txtDay.Text) = 1 Then
+                txtDay.Text = "0" & txtDay.Text
+            End If
+            If Len(txtMonth.Text) = 1 Then
+                txtMonth.Text = "0" & txtMonth.Text
+            End If
             
             Frame2.Top = 3300
             
@@ -6480,6 +6482,8 @@ Dim lCtrl As Long, lRow As Long, lLoc As Long
 Dim strDataFileName As String
 Dim blnExistData As Boolean, blnExceptData As Boolean
 
+Dim strIDTkhai As String
+
 On Error GoTo ErrHandle
     
     'set data
@@ -6509,17 +6513,40 @@ On Error GoTo ErrHandle
 
         .Col = 1
         .ColWidth(1) = 37
+        
+        ' xu ly cho to khai DK
+        strIDTkhai = GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID")
+        ' end
+        
         For Each xmlNode In TAX_Utilities_v1.NodeValidity.childNodes
           If GetAttribute(xmlNode, "Caption") <> "KHBS" Then
                 ' Get name of data file
                 If blnExistData Then
                     If strKieuKy = KIEU_KY_THANG Then
-                        If strQuy = "TK_THANG" Then
-                            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & txtMonth.Text & txtYear.Text & ".xml"
-                        ElseIf strQuy = "TK_QUY" Then
-                            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_Q0" & cmbQuy.Text & txtYear.Text & ".xml"
+                        If Trim$(strIDTkhai) = "92" Or Trim$(strIDTkhai) = "98" Then
+'                            If strQuy = "TK_THANG" Then
+'                                strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & txtMonth.Text & txtYear.Text & ".xml"
+'                            ElseIf strQuy = "TK_LANXB" Then
+'                                strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_Q0" & cmbQuy.Text & txtYear.Text & ".xml"
+'                            Else
+'                                strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & txtMonth.Text & txtYear.Text & ".xml"
+'                            End If
+                            
+                             If strQuy = "TK_THANG" Then
+                                strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                            ElseIf strQuy = "TK_LANPS" Then
+                                strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                            ElseIf strQuy = "TK_LANXB" Then
+                                strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                            End If
                         Else
-                            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & txtMonth.Text & txtYear.Text & ".xml"
+                            If strQuy = "TK_THANG" Then
+                                strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & txtMonth.Text & txtYear.Text & ".xml"
+                            ElseIf strQuy = "TK_QUY" Then
+                                strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_Q0" & cmbQuy.Text & txtYear.Text & ".xml"
+                            Else
+                                strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & txtMonth.Text & txtYear.Text & ".xml"
+                            End If
                         End If
                     ElseIf strKieuKy = KIEU_KY_QUY Then
                         If strQuy = "TK_TU_THANG" Then
