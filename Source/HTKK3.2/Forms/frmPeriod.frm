@@ -509,7 +509,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":02C8
       UserResize      =   1
       Appearance      =   1
    End
@@ -8138,14 +8138,15 @@ Private Sub SetValueToListDK(loaiKyKK As String)
                     If Val(fldList(1)) = 2 Then
                         cboNganhKD.AddItem TAX_Utilities_v1.Convert(fldList(2), UNICODE, TCVN)
                         cboNganhKD.ItemData(i) = Val(fldList(1))
+                        i = i + 1
                     End If
                 Else
                     If Val(fldList(1)) <> 2 Then
                         cboNganhKD.AddItem TAX_Utilities_v1.Convert(fldList(2), UNICODE, TCVN)
                         cboNganhKD.ItemData(i) = Val(fldList(1))
+                        i = i + 1
                     End If
                 End If
-                i = i + 1
             End If
         Next
     End If
