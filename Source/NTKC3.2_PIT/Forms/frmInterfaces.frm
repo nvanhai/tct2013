@@ -1998,13 +1998,19 @@ Private Sub Barcode_Scaned(strBarcode As String)
         '--Chan cac to khai bo sung cua to QCT y/c ngay: 18/03/2014
         '--LIST: 03/GTGT, 04/GTGT, 01/BVMT,01/TBVMT,01/TAIN,01/TTÐB
         If InStr(1, strBarcode, "</S01>", vbTextCompare) > 0 Then
-        If (Trim(idToKhai) = "04" Or Trim(idToKhai) = "71" Or Trim(idToKhai) = "86" Or Trim(idToKhai) = "90" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "05") Then
-            If (UCase(strLoaiToKhai) = "BS") Then
-                DisplayMessage "0135", msOKOnly, miInformation
-                Exit Sub
+            If (Trim(idToKhai) = "04" Or Trim(idToKhai) = "71" Or Trim(idToKhai) = "86" Or Trim(idToKhai) = "90" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "05") Then
+                TAX_Utilities_Srv_New.isCheckQCT = IsTranferQCT(strMST)
+            End If
+            If (TAX_Utilities_Srv_New.isCheckQCT = True) Then
+                If (Trim(idToKhai) = "04" Or Trim(idToKhai) = "71" Or Trim(idToKhai) = "86" Or Trim(idToKhai) = "90" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "05") Then
+                    If (UCase(strLoaiToKhai) = "BS") Then
+                        DisplayMessage "0135", msOKOnly, miInformation
+                        Exit Sub
+                    End If
+                End If
             End If
         End If
-        End If
+        '----------------------------------------------------------
         
         '07072011 TT28
         ' Khong nhan cac to khai theo mau cua
@@ -3033,12 +3039,12 @@ On Error GoTo ErrHandle
 
     strMST = CStr(rsTaxInfor.Fields(1))
     
-    '--Check to khai QCT
-    '--LIST: 03/GTGT, 04/GTGT, 01/BVMT,01/TBVMT,01/TAIN,01/TTÐB
-    strID = Left$(strTaxReportInfo, 2)
-    If (strID = "04" Or strID = "71" Or strID = "86" Or strID = "90" Or strID = "06" Or strID = "05") Then
-        TAX_Utilities_Srv_New.isCheckQCT = IsTranferQCT(strMST)
-    End If
+'    '--Check to khai QCT
+'    '--LIST: 03/GTGT, 04/GTGT, 01/BVMT,01/TBVMT,01/TAIN,01/TTÐB
+'    strID = Left$(strTaxReportInfo, 2)
+'    If (strID = "04" Or strID = "71" Or strID = "86" Or strID = "90" Or strID = "06" Or strID = "05") Then
+'        TAX_Utilities_Srv_New.isCheckQCT = IsTranferQCT(strMST)
+'    End If
     
     If InStr(1, strData, "<S") < 35 Then
         'Ver 1.0
