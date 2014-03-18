@@ -3308,7 +3308,7 @@ On Error GoTo ErrHandle
     If GetAttribute(TAX_Utilities_iNTK.NodeMenu, "Month") = "1" Then
         TAX_Utilities_iNTK.Month = Left$(strValue, 2)
         'set ThreeMonths cho to khai thang/quy
-        If strID = "01" Or strID = "02" Or strID = "04" Or strID = "71" Or strID = "95" Or strID = "36" Or strID = "68" Or strID = "25" Then
+        If strID = "01" Or strID = "02" Or strID = "04" Or strID = "71" Or strID = "95" Or strID = "36" Or strID = "68" Or strID = "25" Or strID = "94" Or strID = "96" Then
             TAX_Utilities_iNTK.ThreeMonths = Left$(strValue, 2)
         Else
             TAX_Utilities_iNTK.ThreeMonths = ""
