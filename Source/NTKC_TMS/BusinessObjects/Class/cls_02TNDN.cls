@@ -572,8 +572,8 @@ On Error GoTo ErrHandle
         strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     ElseIf (Trim(vNGAY_PS) <> "") Then
         'lan phat sinh
-        strSQL = strSQL & "To_date('" & Format(vNGAY_PS, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        strSQL = strSQL & "To_date('" & Format(vNGAY_PS, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+        strSQL = strSQL & "To_date('" & vNGAY_PS & "','dd/mm/yyyy'),"
+        strSQL = strSQL & "To_date('" & vNGAY_PS & "','dd/mm/yyyy'),"
     End If
 
     

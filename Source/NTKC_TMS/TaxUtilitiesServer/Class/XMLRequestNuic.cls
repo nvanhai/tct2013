@@ -29,9 +29,15 @@ Public Function PostWebservice(ByVal AsmxUrl As String, ByVal SoapActionUrl As S
     ' Creating the DOMDocument and XMLHTTP Object´s
     Set objDom = CreateObject("MSXML2.DOMDocument")
     Set objXmlHttp = CreateObject("MSXML2.XMLHTTP")
+    
+    'Convert font
+    XmlBody = ConvertStringToUtf8String(XmlBody)
+    
     ' Load the XML
     objDom.async = False
     objDom.loadXML XmlBody
+    
+    
     'Open the Web service Connection
     objXmlHttp.open "POST", AsmxUrl, False
     ' creating the XML header´s
@@ -70,4 +76,42 @@ Public Function buscarXML(ByVal tag As String, ByVal xml As String) As String
     Else
         buscarXML = Mid(xml, iPosI, iPosF - iPosI)
     End If
+End Function
+Public Function ConvertStringToUtf8String(ByRef strText As String) As String
+
+    Dim objStream As ADODB.Stream
+    Dim Data() As Byte
+    Dim strUTF8String As String
+    Dim i As Long
+    
+    ' init stream
+    If strText = "" Or strText = vbNullString Then
+        ConvertStringToUtf8String = ""
+        Exit Function
+    End If
+    Set objStream = New ADODB.Stream
+    objStream.Charset = "utf-8"
+    objStream.Mode = adModeReadWrite
+    objStream.Type = adTypeText
+    objStream.open
+    
+    ' write bytes into stream
+    objStream.WriteText strText
+    objStream.Flush
+    
+    ' rewind stream and read text
+    objStream.position = 0
+    objStream.Type = adTypeBinary
+    objStream.Read 3 ' skip first 3 bytes as this is the utf-8 marker
+    Data = objStream.Read()
+    
+    ' close up and return
+    objStream.Close
+    
+    'Convert back to ascii
+    For i = 0 To UBound(Data)
+        strUTF8String = strUTF8String & Chr(Data(i))
+    Next i
+    ConvertStringToUtf8String = strUTF8String
+
 End Function

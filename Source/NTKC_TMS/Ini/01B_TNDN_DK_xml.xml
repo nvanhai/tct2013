@@ -23,9 +23,10 @@
 	</Static>
 	<Static GroupName="CT13">
 		<donViUyQuyen></donViUyQuyen>
+		<daiLyThue/>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<tenDonViUyQuyen></tenDonViUyQuyen>
+		<tenDonViUyQuyen>I_44</tenDonViUyQuyen>
 		<ct22>AJ_52</ct22>
 		<ct23>AJ_53</ct23>
 		<ct24>AJ_54</ct24>

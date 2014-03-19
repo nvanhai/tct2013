@@ -1,7 +1,8 @@
-<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30" loi_dinh_danh="">
+<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30" loi_dinh_danh="E_34">
 	<Static GroupName="TKhaiThue">
 		<maTKhai>133</maTKhai>
 		<tenTKhai>Tờ khai thuế tài nguyên(03/TĐ-TAIN)</tenTKhai>
+		<soLan>S_6</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
@@ -25,18 +26,18 @@
 	<Dynamic GroupName="BANGKEKHAITAIN">
 		<chiTietThueTAIN id="id">
 			<ct23>C_44</ct23>
-			<ct24>G_44</ct24>
+			<ct24 TINType="1">G_44</ct24>
 			<ct25>J_44</ct25>
 			<ct26>N_44</ct26>
 			<ct27>R_44</ct27>
 			<ct28>W_44</ct28>
-			<ct29></ct29>
+			<ct29>AB_44</ct29>
 		</chiTietThueTAIN>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
-		<tong_ct27>N_46</tong_ct27>
-		<tong_ct28>R_46</tong_ct28>
-		<tong_ct29>W_46</tong_ct29>
+		<tong_ct27>R_46</tong_ct27>
+		<tong_ct28>W_46</tong_ct28>
+		<tong_ct29>AB_46</tong_ct29>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>R_51</nguoiKy>

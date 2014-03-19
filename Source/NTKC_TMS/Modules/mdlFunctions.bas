@@ -48,7 +48,7 @@ Public dNgayDauKy As Date
 Public dNgayCuoiKy As Date
 
 Public Const SS_SORT_ORDER_ASCENDING = 1
-Public Const APP_VERSION = "1.0"
+Public Const APP_VERSION = "1.1"
 
 Public Const HTKK_LAST_VERSION = "3.2.1"
 
@@ -96,6 +96,7 @@ Public isPITActive As Boolean   ' Kiem tra trang thai active cua PIT
 Private SHA1Hash As New SHA1Hash
 Private Base64Unicode As New Base64Unicode
 Public xmlConfig As MSXML.DOMDocument
+
 
 ''' GetAttribute description
 ''' Get an attribute value of xmlNode
@@ -192,7 +193,7 @@ Public Function GetValidityNode() As MSXML.IXMLDOMNode
     idToKhai = GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")
     
     'thang/quy
-    If idToKhai = "01" Or idToKhai = "02" Or idToKhai = "25" Or idToKhai = "26" Or idToKhai = "04" Or idToKhai = "71" Or idToKhai = "36" Or idToKhai = "68" Then
+    If idToKhai = "01" Or idToKhai = "02" Or idToKhai = "25" Or idToKhai = "26" Or idToKhai = "04" Or idToKhai = "71" Or idToKhai = "36" Or idToKhai = "68" Or idToKhai = "94" Then
         If LoaiKyKK = False Then
 
             Select Case TAX_Utilities_Srv_New.Month
@@ -580,7 +581,7 @@ Public Sub SetupData(pGrid As fpSpread)
                     Select Case .CellType
                         Case CellTypeCheckBox
                             ' Check box
-                            If UCase(GetAttribute(xmlNodeCell, "Value")) = UCase("x") Then
+                            If UCase(GetAttribute(xmlNodeCell, "Value")) = UCase("x") Or UCase(GetAttribute(xmlNodeCell, "Value")) = UCase("1") Then
                                 .Text = "1"
                             Else
                                 .Text = "0"
@@ -1234,7 +1235,7 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "58" Then changeMaToKhai = "15_04_LCTTGT"
     
     'If strID = "24" Then changeMaToKhai = "48_01_CDKT"
-    If strID = "24" Then changeMaToKhai = "01_BCTL_DK13"
+    If strID = "24" Then changeMaToKhai = "01_BCTL_DK"
     
     'If strID = "25" Then changeMaToKhai = "48_02_SXKD"
     If strID = "25" Then changeMaToKhai = "01_TNCN_BHDC13"
@@ -1255,6 +1256,10 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "65" Then changeMaToKhai = "01_AC"
     If strID = "66" Then changeMaToKhai = "BC21_AC"
     If strID = "67" Then changeMaToKhai = "03_TBAC"
+            If strID = "07" Then changeMaToKhai = "01_TBAC_BLP"
+    If strID = "13" Then changeMaToKhai = "01_AC_BLP"
+    If strID = "09" Then changeMaToKhai = "BC21_AC_BLP"
+    If strID = "10" Then changeMaToKhai = "03_TBAC_BLP"
     If strID = "68" Then changeMaToKhai = "BC26_AC"
     If strID = "91" Then changeMaToKhai = "04_TBAC"
         ' Cac mau bien lai
@@ -1269,6 +1274,13 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "22" Then changeMaToKhai = "95_BCTC"
     If strID = "95" Then changeMaToKhai = "03B_GTGT11"
     If strID = "23" Then changeMaToKhai = "01_TNCN_TTS"
+    
+    'To khai dau khi thuy dien
+    If strID = "92" Then changeMaToKhai = "01_TAIN_DK"
+    If strID = "98" Then changeMaToKhai = "01A_TNDN_DK"
+    If strID = "99" Then changeMaToKhai = "01B_TNDN_DK"
+    If strID = "96" Then changeMaToKhai = "03_TD_TAIN"
+    If strID = "94" Then changeMaToKhai = "01_TD_GTGT"
 End Function
 
 ' Ham change sang ma cua QLT
@@ -1818,10 +1830,30 @@ IIf((udtGUID.Data4(7) < &H10), "0", "") & Hex$(udtGUID.Data4(7))
 End If
 
 End Function
-
-Public Function GenerateCodeByNow() As String
-GenerateCodeByNow = DateTime.Year(DateTime.Now) & DateTime.Month(DateTime.Now) & DateTime.Day(DateTime.Now) & DateTime.Hour(DateTime.Now) & DateTime.Minute(DateTime.Now) & DateTime.Second(DateTime.Now)
+Public Function Clientid() As String
+'Dim computer As String
+'Dim wmi As Variant
+'Dim query As Variant
+'Dim mac As Variant
+'Dim mac_ids As String
+'
+'    computer = "."
+'    Set wmi = GetObject("winmgmts:" & _
+'        "{impersonationLevel=impersonate}!\\" & _
+'        computer & "\root\cimv2")
+'    Set query = wmi.ExecQuery("SELECT * FROM Win32_NetworkAdapterConfiguration where IPEnabled = true")
+'
+'    For Each mac In query
+'        mac_ids = mac.IPAddress(0)
+'    Next mac
+'    If Len(mac_ids) > 0 Then mac_ids = Replace$(mac_ids, ".", "")
+'
+    Randomize
+'
+'    Clientid = mac_ids & Mid(Format(DateTime.Now, "HH:mm:ss"), 1, 2) & Mid(Format(DateTime.Now, "HH:mm:ss"), 4, 2) & Format(DateTime.Now, "ss") & CInt(Int((10000 * Rnd()) + 1))
+Clientid = Day(DateTime.Now) & Month(DateTime.Now) & Year(DateTime.Now) & Mid(Format(DateTime.Now, "HH:mm:ss"), 1, 2) & Mid(Format(DateTime.Now, "HH:mm:ss"), 4, 2) & Format(DateTime.Now, "ss") & Format(DateTime.Now, "ms") & CInt(Int((10000 * Rnd()) + 1))
 End Function
+
 
 'chuyen string sang utf8
 Public Function ConvertStringToUtf8String(ByRef strText As String) As String
@@ -2156,7 +2188,7 @@ Public Function SetValueHeaderESB(ByVal xmlDoc As MSXML.DOMDocument) As MSXML.DO
         xmlDoc.getElementsByTagName("RECEIVER_CODE")(0).Text = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("RECEIVER_CODE")(0).Text)
         xmlDoc.getElementsByTagName("RECEIVER_NAME")(0).Text = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("RECEIVER_NAME")(0).Text)
         xmlDoc.getElementsByTagName("TRAN_CODE")(0).Text = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("TRAN_CODE")(0).Text)
-        xmlDoc.getElementsByTagName("MSG_ID")(0).Text = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text) & GenerateCodeByNow() 'GetGUID()
+        xmlDoc.getElementsByTagName("MSG_ID")(0).Text = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text) & Clientid 'GenerateCodeByNow() 'GetGUID()
         xmlDoc.getElementsByTagName("MSG_REFID")(0).Text = ""
        
         xmlDoc.getElementsByTagName("SEND_DATE")(0).Text = strNgayHeThongSrv 'Format(DateTime.Now, "dd-mmm-yyyy hh:mm:ss")

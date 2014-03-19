@@ -22,3 +22,4 @@ Public isUsePIT As Boolean ' su dung PIT
 Public strDataFolder As String                      ' Current data folder
 Public strDay As String
 ' Ket thuc XML - nshung
+Public isQCT As Boolean ' -->QCT

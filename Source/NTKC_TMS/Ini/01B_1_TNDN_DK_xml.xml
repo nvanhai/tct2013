@@ -4,7 +4,7 @@
 	</Static>
 	<Dynamic GroupName="NghiaVuThue">
 		<ChiTiet id="id">
-			<mstNThau>D_27</mstNThau>
+			<mstNThau TINType="1">D_27</mstNThau>
 			<tenNThau>L_27</tenNThau>
 			<tyLePBoNThau>U_27</tyLePBoNThau>
 			<soThuePSinhPNopNThau>AB_27</soThuePSinhPNopNThau>

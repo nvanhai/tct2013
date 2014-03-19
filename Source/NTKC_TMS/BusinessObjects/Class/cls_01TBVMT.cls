@@ -238,7 +238,7 @@ Dim iCol As Long, iRow As Long
 Dim varID As Variant
 Dim strTenHH As String, strDVT As String, strMucThue  As String
 Dim varMaDM As Variant
-Dim TenDM As String
+Dim tenDM As String
     
     With fps
         .Sheet = .ActiveSheet
@@ -296,11 +296,11 @@ Dim TenDM As String
         i = 0
         Do
             .GetText .ColLetterToNumber("R"), i + 35, varMaDM
-            DataDMCQ varMaDM, TenDM
-            If Trim(TenDM) <> vbNullString Then
+            DataDMCQ varMaDM, tenDM
+            If Trim(tenDM) <> vbNullString Then
                 .Col = .ColLetterToNumber("O")
                 .Row = 35 + i
-                .Text = TenDM
+                .Text = tenDM
             End If
             UpdateCell fps, .Col, .Row, .Text
              i = i + 1
@@ -663,6 +663,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim strMaPhongXuLy As String, vNGANH_NGHE_KD, vTO_KHAI_LAN_PS, vNGAY_PS As Variant
     
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
+    Dim sQCT As String
     
 On Error GoTo ErrHandle
     strSQL = strSQL_HDR
@@ -703,6 +704,12 @@ On Error GoTo ErrHandle
         End With
     Next
     
+    If isCheckQCT = True Then
+        sQCT = "'Y'"
+    Else
+        sQCT = "null"
+    End If
+    
     'Get ngay phat sinh
     With fps
         .Sheet = 1
@@ -740,8 +747,8 @@ On Error GoTo ErrHandle
         strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     ElseIf (Trim(vNGAY_PS) <> "") Then
         'lan phat sinh
-        strSQL = strSQL & "To_date('" & Format(vNGAY_PS, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        strSQL = strSQL & "To_date('" & Format(vNGAY_PS, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+        strSQL = strSQL & "To_date('" & vNGAY_PS & "','dd/mm/yyyy'),"
+        strSQL = strSQL & "To_date('" & vNGAY_PS & "','dd/mm/yyyy'),"
     End If
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
@@ -811,7 +818,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
     'strSQL = strSQL & "null)"
     strSQL = strSQL & "null,"
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & vNGANH_NGHE_KD & "," & vTO_KHAI_LAN_PS & "," & vNGAY_PS & ")"
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & vNGANH_NGHE_KD & "," & vTO_KHAI_LAN_PS & "," & vNGAY_PS & "," & sQCT & ")"
     GenerateSQL_Header = strSQL
     'Debug.Print GenerateSQL_Header
     

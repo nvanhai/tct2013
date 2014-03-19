@@ -6,7 +6,7 @@
 			<soHDon>F_8</soHDon>
 			<ngayPHanh>G_8</ngayPHanh>
 			<tenNBAN>H_8</tenNBAN>
-			<mstNBAN>I_8</mstNBAN>
+			<mstNBAN TINType="1">I_8</mstNBAN>
 			<matHang>J_8</matHang>
 			<dsoMuaChuaThue>K_8</dsoMuaChuaThue>
 			<thueSuat>L_8</thueSuat>
@@ -25,7 +25,7 @@
 			<soHDon>F_13</soHDon>
 			<ngayPHanh>G_13</ngayPHanh>
 			<tenNBAN>H_13</tenNBAN>
-			<mstNBAN>I_13</mstNBAN>
+			<mstNBAN TINType="1">I_13</mstNBAN>
 			<matHang>J_13</matHang>
 			<dsoMuaChuaThue>K_13</dsoMuaChuaThue>
 			<thueSuat>L_13</thueSuat>
@@ -44,7 +44,7 @@
 			<soHDon>F_18</soHDon>
 			<ngayPHanh>G_18</ngayPHanh>
 			<tenNBAN>H_18</tenNBAN>
-			<mstNBAN>I_18</mstNBAN>
+			<mstNBAN TINType="1">I_18</mstNBAN>
 			<matHang>J_18</matHang>
 			<dsoMuaChuaThue>K_18</dsoMuaChuaThue>
 			<thueSuat>L_18</thueSuat>
@@ -63,7 +63,7 @@
 			<soHDon>F_23</soHDon>
 			<ngayPHanh>G_23</ngayPHanh>
 			<tenNBAN>H_23</tenNBAN>
-			<mstNBAN>I_23</mstNBAN>
+			<mstNBAN TINType="1">I_23</mstNBAN>
 			<matHang>J_23</matHang>
 			<dsoMuaChuaThue>K_23</dsoMuaChuaThue>
 			<thueSuat>L_23</thueSuat>
@@ -82,7 +82,7 @@
 			<soHDon>F_28</soHDon>
 			<ngayPHanh>G_28</ngayPHanh>
 			<tenNBAN>H_28</tenNBAN>
-			<mstNBAN>I_28</mstNBAN>
+			<mstNBAN TINType="1">I_28</mstNBAN>
 			<matHang>J_28</matHang>
 			<dsoMuaChuaThue>K_28</dsoMuaChuaThue>
 			<thueSuat>L_28</thueSuat>

@@ -169,7 +169,7 @@ Public Function put_Msg(ByVal xml As String) As Boolean
     ' Assume Windows Latin 1 - this should be changed for other scripts
     'md.CodedCharSetId = 1252
     md.CodedCharSetId = 1208
-'     md.CodedCharSetId = 1258
+    'md.CodedCharSetId = 1258
     'md.Encoding = 546
     MQPMO_DEFAULTS pmo
 
@@ -294,7 +294,7 @@ Public Function PUSHMQ(ByVal xml As String) As Boolean
     CNOCD.ChannelDef.ConnectionName = IpESB & "(1515)"
     CNOCD.ChannelDef.ChannelName = "NTK.SVRCONN"
     CNOCD.ChannelDef.Version = MQCD_VERSION_7    ' Compatible 5.2.x
-    CNOCD.ChannelDef.MCAUserIdentifier = "Administrator"
+    'CNOCD.ChannelDef.MCAUserIdentifier = "Administrator"
 
     
     '******************************************************************'
@@ -330,8 +330,10 @@ Public Function PUSHMQ(ByVal xml As String) As Boolean
     
     If CompCode <> MQCC_OK Then
         PUSHMQ = False
+        SaveErrorLog "MQPUT", "PUSHMQ", Err.Number, "ERROR: CompCode = " & CompCode & " Reason = " & Reason
     Else
         PUSHMQ = True
+        
     End If
     If Hobj Then
         '****************************************************************'

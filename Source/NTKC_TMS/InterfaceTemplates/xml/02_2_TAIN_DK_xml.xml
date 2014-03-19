@@ -1,27 +1,12 @@
-<PL_02_1TAIN_DK>
-	<LoaiDKhi>
-		<ct01>true</ct01>
-		<ct02>true</ct02>
-		<ct03>true</ct03>
-	</LoaiDKhi>
-	<SLuongDThuXBan>
-		<SLuongDThu>
-			<bangKKhai>
-				<donViTinh>text</donViTinh>
-				<KhaiThacDauKhi>
-					<ngayThang>1967-08-13</ngayThang>
-					<soLuong>1</soLuong>
-				</KhaiThacDauKhi>
-				<XuatBanDauKhi>
-					<ngayThang>1967-08-13</ngayThang>
-					<sanLuong>1</sanLuong>
-					<giaTinhThue>1</giaTinhThue>
-					<doanhThu>1</doanhThu>
-				</XuatBanDauKhi>
-				<ghiChu></ghiChu>
-			</bangKKhai>
-		</SLuongDThu>
-		<tongCot6>1</tongCot6>
-		<tongCot8>1</tongCot8>
-	</SLuongDThuXBan>
-</PL_02_1TAIN_DK>
+<PL_02_2TAIN_DK>
+	<SoThueTAINTamTinhDaNop>
+		<ChiTiet>
+			<toKhaiThueTaiNguyen></toKhaiThueTaiNguyen>
+			<soTienThueDaNop_NgoaiTe>1</soTienThueDaNop_NgoaiTe>
+			<soTienThueDaNop_VietNam>1</soTienThueDaNop_VietNam>
+			<ghiChu></ghiChu>
+		</ChiTiet>
+		<tongSoTienThueDaNop_NgoaiTe>1</tongSoTienThueDaNop_NgoaiTe>
+		<tongSoTienThueDaNop_VietNam>0.0</tongSoTienThueDaNop_VietNam>
+	</SoThueTAINTamTinhDaNop>
+</PL_02_2TAIN_DK>
