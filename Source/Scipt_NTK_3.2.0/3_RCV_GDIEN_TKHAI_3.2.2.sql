@@ -25,7 +25,7 @@ insert into QLT_NTK.RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_
 values (8167, '01/PL-DK', '1', '2', '3', '4', '5', null, null, null, null, null, null, 2, '01_1_TAIN_DK', null, null, null, null, null, null, null, null, null, null, null, null);
 
 insert into QLT_NTK.RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22)
-values (8168, 'Tæng céng', null, null, null, '7', null, null, null, null, null, null, null, 3, '01_1_TAIN_DK', null, null, null, null, null, null, null, null, null, null, null, null);
+values (8168, 'Tæng céng', null, null, '7', null, null, null, null, null, null, null, null, 3, '01_1_TAIN_DK', null, null, null, null, null, null, null, null, null, null, null, null);
 commit;
 
 --01A_TNDN_DK
