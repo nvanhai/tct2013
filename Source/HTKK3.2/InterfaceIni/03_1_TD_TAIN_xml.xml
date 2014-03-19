@@ -5,7 +5,6 @@
 			<mstNhaMay TINType="1">D_42</mstNhaMay>
 			<Dynamic GroupName="CQTDiaPhuong">
 				<ChiTietCQTDiaPhuong ID="String">
-					<mstCQTDPhuong TINType="1">D_43</mstCQTDPhuong>
 					<maCQTDPhuong>AH_43</maCQTDPhuong>
 					<tenCQTDPhuong>P_43</tenCQTDPhuong>
 					<tyLePBoCQTDPhuong>R_43</tyLePBoCQTDPhuong>

@@ -1,21 +1,21 @@
 <PL_01_2_TD_GTGT>
-	<Dynamic GroupName="BangPhanBoThueGTGTSXThuyDien">
-		<chiTietPhanBoGTGTChoTungNMay id="id">
+	<P_Dynamic GroupName="BangPBoThueGTGTChoDPhuong" CellID="G_43">
+		<ChiTietPBoThueGTGTChoDPhuong id="id">
 			<tenNhaMay>C_42</tenNhaMay>
-			<mstNhaMay>C_42</mstNhaMay>
-			<PHANBOCHOCQTDIAPHUONG>
-				<tyLePBoThueChoTungCQT>
-					<maCQTPBo>C_42</maCQTPBo>
-					<tenCQTPBo>C_42</tenCQTPBo>
-					<tyLePBo>C_42</tyLePBo>
-					<thuePNopPBo>C_42</thuePNopPBo>
+			<mstNhaMay TINType="1">D_42</mstNhaMay>
+			<Dynamic GroupName="PhanBoChoCQTDiaPhuong">
+				<tyLePBoThueChoTungCQT id="id">
+					<maCQTPBo>AH_43</maCQTPBo>
+					<tenCQTPBo>P_43</tenCQTPBo>
+					<tyLePBo>R_43</tyLePBo>
+					<thuePNopPBo>U_43</thuePNopPBo>
 				</tyLePBoThueChoTungCQT>
-			</PHANBOCHOCQTDIAPHUONG>
-			<tyLePhanBoNhaMay>C_42</tyLePhanBoNhaMay>
-			<thuePNopNhaMay>C_42</thuePNopNhaMay>
-		</chiTietPhanBoGTGTChoTungNMay>
-	</Dynamic>
+			</Dynamic>
+			<tyLePhanBoNhaMay>R_42</tyLePhanBoNhaMay>
+			<thuePNopNhaMay>U_42</thuePNopNhaMay>
+		</ChiTietPBoThueGTGTChoDPhuong>
+	</P_Dynamic>
 	<Static GroupName="PL_01_2_TD_GTGT">
-		<tongCong>1</tongCong>
+		<tongCong>U_44</tongCong>
 	</Static>
 </PL_01_2_TD_GTGT>
