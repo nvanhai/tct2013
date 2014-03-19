@@ -482,7 +482,7 @@ Public Function Prepared3() As Boolean
         
         Dim j       As Integer
         Dim lastRow As Variant
-        Dim strID, tenTN   As String
+        Dim strID, TenTN   As String
         Dim maTM1 As String
         .Sheet = 1
         .Row = 45
@@ -490,9 +490,9 @@ Public Function Prepared3() As Boolean
         Do
 
             .GetText .ColLetterToNumber("AB"), .Row, strID
-            DataDM strID, , tenTN, , , , maTM1
-            .SetText .ColLetterToNumber("C"), .Row, tenTN
-            UpdateCell fps, .ColLetterToNumber("C"), .Row, tenTN
+            DataDM strID, , TenTN, , , , maTM1
+            .SetText .ColLetterToNumber("C"), .Row, TenTN
+            UpdateCell fps, .ColLetterToNumber("C"), .Row, TenTN
             
             .SetText .ColLetterToNumber("AC"), .Row, maTM1
             UpdateCell fps, .ColLetterToNumber("AC"), .Row, maTM1
@@ -540,21 +540,21 @@ End Sub
 
 Private Sub DataDM(ByVal Id As String, _
                    Optional ByRef strIdQLT As String, _
-                   Optional ByRef tenTN As String, _
+                   Optional ByRef TenTN As String, _
                    Optional ByRef strDVT As String, _
                    Optional ByRef strThueSuat As String, _
                    Optional ByRef blnSuaThueSuat As Boolean, _
                    Optional ByRef maTM As String)
     Dim arrDanhsach()   As String
     Dim strDataFileName As String
-    Dim xmlDomData      As New MSXML.DOMDocument
+    Dim xmlDOMdata      As New MSXML.DOMDocument
     Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
     Dim xmlNode         As MSXML.IXMLDOMNode
 
     strDataFileName = GetAbsolutePath("..\InterfaceTemplates\Catalogue_DM_thue_BVMT.xml")
     
-    If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
-        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+    If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+        Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
 
         For Each xmlNode In xmlNodeListCell
 
@@ -562,7 +562,7 @@ Private Sub DataDM(ByVal Id As String, _
                 arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                     
                 If Id = arrDanhsach(0) Then
-                    tenTN = arrDanhsach(1)
+                    TenTN = arrDanhsach(1)
                     strDVT = arrDanhsach(2)
                     strThueSuat = arrDanhsach(3)
 
@@ -606,18 +606,18 @@ End Sub
 
 Public Function CheckValidData() As Boolean
     
-        Dim NgayNop As Variant, ngayHienTai As Variant
+        Dim NGAYNOP As Variant, ngayHienTai As Variant
     
     CheckValidData = True
     With fps
         .Sheet = 1
         
         ' check ngay nop khong dc lon hon ngay hien tai
-        .GetText .ColLetterToNumber("E"), 24, NgayNop
+        .GetText .ColLetterToNumber("E"), 24, NGAYNOP
         ngayHienTai = IIf(Len(Day(Now())) = 1, "0" & Day(Now()), Day(Now())) & "/" & IIf(Len(Month(Now())) = 1, "0" & Month(Now()), Month(Now())) & "/" & Year(Now())
         ngayHienTai = DateSerial(Int(Mid$(ngayHienTai, 7, 4)), Int(Mid$(ngayHienTai, 4, 2)), Int(Mid$(ngayHienTai, 1, 2)))
-        NgayNop = DateSerial(Int(Mid$(NgayNop, 7, 4)), Int(Mid$(NgayNop, 4, 2)), Int(Mid$(NgayNop, 1, 2)))
-        If NgayNop > ngayHienTai Then
+        NGAYNOP = DateSerial(Int(Mid$(NGAYNOP, 7, 4)), Int(Mid$(NGAYNOP, 4, 2)), Int(Mid$(NGAYNOP, 1, 2)))
+        If NGAYNOP > ngayHienTai Then
             CheckValidData = False
         End If
 
@@ -759,7 +759,7 @@ Public Function InsertDTL() As String
                 donvi = "''"
             Else
 
-                donvi = "'" & donvi & "'"
+                donvi = "'" & TAX_Utilities_Svr_New.Convert(Trim(donvi), UNICODE, TCVN) & "'"
             End If
 
             ' so luong
@@ -1282,7 +1282,7 @@ Public Function InsertHDR() As String
     Dim strThueTKy   As String
     Dim ROWNUM       As Variant
     Dim vTemp2       As String
-    Dim NgayNop As Variant
+    Dim NGAYNOP As Variant
     
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
@@ -1389,7 +1389,7 @@ Public Function InsertHDR() As String
             ngnop = "CTOD('')"
         Else
             ngnop = ToDate(Trim(ngnop), DDMMYYYY)
-            NgayNop = ngnop
+            NGAYNOP = ngnop
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
        
@@ -1478,7 +1478,7 @@ Public Function InsertHDR() As String
                 NgayPs = "CTOD('" & Format(NgayPs, "mm/dd/yyyy") & "')"
             End If
             
-            HANNOP = DateAdd("d", 10, NgayNop)
+            HANNOP = DateAdd("d", 10, NGAYNOP)
             HANNOP = ToString(HANNOP, "DD/MM/YYYY")
         End If
 
@@ -2003,22 +2003,22 @@ Public Function GetMaCqt() As String
 End Function
 
 'lay ten mat hang
-Public Sub getTenMH(ByVal Id As String, Optional ByRef tenTN As String)
+Public Sub getTenMH(ByVal Id As String, Optional ByRef TenTN As String)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDomData As New MSXML.DOMDocument
+Dim xmlDOMdata As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = "..\InterfaceTemplates\Catalogue_DM_thue_BVMT.xml"
     
-       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                         If Id = arrDanhsach(0) Then
-                            tenTN = arrDanhsach(1)
+                            TenTN = arrDanhsach(1)
                             Exit Sub
                         End If
                 End If

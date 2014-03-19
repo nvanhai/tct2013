@@ -81,7 +81,7 @@ Public sSaiCT11 As String
 Public sKyKeKhai As String
 Public dNgayNopDB As Variant
 Public HANNOP As String
-Public tthtk As String
+Public TTHTK As String
 Public strTenBpql As String
 
 Public Function InsertDTL_KHBS() As String
@@ -356,7 +356,7 @@ Public Function InsertHDR() As String
    Dim DaGhi As Variant
    Dim LoaiTK As Variant
    Dim TEMP As Variant
-   Dim kylbo As Variant
+   Dim KYLBO As Variant
    Dim DATHAY As Variant
    Dim MaVach As Variant
    Dim DoanhSo As Variant
@@ -427,11 +427,11 @@ Public Function InsertHDR() As String
             madtnt = "'" & madtnt & "'"
         End If
        
-        .GetText .ColLetterToNumber("I"), 9, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        .GetText .ColLetterToNumber("I"), 9, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
-            kylbo = "'" & kylbo & "'"
+            KYLBO = "'" & KYLBO & "'"
         End If
     
     
@@ -481,7 +481,7 @@ Public Function InsertHDR() As String
             HANNOP = "CTOD('" & Format(HANNOP, "mm/dd/yyyy") & "')"
         End If
         
-        KyDC = kylbo
+        KyDC = KYLBO
         DATHAY = ".F."
         MaVach = ".T."
         DoanhSo = 0
@@ -514,7 +514,7 @@ Public Function InsertHDR() As String
         NGANH = "''"
             
          sSQLVal = namQT & "," & TuKy & "," & DenKy & "," & madtnt & "," & MaMuc & "," & maTM & "," & ngnop & _
-        "," & NgNhap & "," & LoaiTien & "," & KyDC & "," & THUEKY & "," & DaGhi & "," & LoaiTK & "," & tthtk & "," & kylbo & "," & DATHAY & "," & MaVach & "," & HANNOP & "," & DoanhSo & "," & GTTinhThue & "," & LAN_QUET & "," & DANHAN
+        "," & NgNhap & "," & LoaiTien & "," & KyDC & "," & THUEKY & "," & DaGhi & "," & LoaiTK & "," & TTHTK & "," & KYLBO & "," & DATHAY & "," & MaVach & "," & HANNOP & "," & DoanhSo & "," & GTTinhThue & "," & LAN_QUET & "," & DANHAN
            
         sSQL = "INSERT INTO TMP_QTTN" & Right(sKyKeKhai, 4) & _
          "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
@@ -623,7 +623,7 @@ Public Function InsertDTL() As String
                      If Trim(DVTinh) = vbNullString Then
                            DVTinh = "''"
                      Else
-                           DVTinh = "'" & DVTinh & "'"
+                           DVTinh = "'" & TAX_Utilities_Svr_New.Convert(Trim(DVTinh), UNICODE, TCVN) & "'"
                      End If
                      
                     .Col = .ColLetterToNumber("R")
@@ -676,7 +676,7 @@ Public Function InsertDTL() As String
                      
                        sSQLVal = namQT & "," & madtnt & "," & MaMuc & "," & maTM & "," & ngnop & "," & LoaiTK & "," & _
                        NganhTN & "," & SanLuong & "," & DVTinh & "," & DONGIA & "," & GTTT & "," & _
-                       THUESUAT & "," & MucThue & "," & THUEPS & "," & MG & "," & THUETN & "," & tthtk & "," & LAN_QUET & "," & DANHAN
+                       THUESUAT & "," & MucThue & "," & THUEPS & "," & MG & "," & THUETN & "," & TTHTK & "," & LAN_QUET & "," & DANHAN
                        sSQL = "INSERT INTO TMP_QA" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
                        bln = clsDAO.ExecuteDLL(sSQL)
 
@@ -844,7 +844,7 @@ End Function
 Public Function XoaTKTT() As Boolean
 
     Dim sSQL As String
-    Dim kylbo As Variant
+    Dim KYLBO As Variant
     Dim rs As ADODB.Recordset
     
     If clsDAO.Connected = False Then
@@ -866,14 +866,14 @@ Public Function XoaTKTT() As Boolean
    
    With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("I"), 9, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        .GetText .ColLetterToNumber("I"), 9, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
    End With
@@ -1049,10 +1049,10 @@ Dim maTM As String
     Prepared2 = True
 End Function
 
-Private Sub DataDM(ByVal Id As String, Optional ByRef strIdQLT As String, Optional ByRef tenTN As String, Optional ByRef DVT As String, Optional ByRef strThueSuat As String, Optional ByRef blnSuaThueSuat As Boolean, Optional ByRef maTM As String)
+Private Sub DataDM(ByVal Id As String, Optional ByRef strIdQLT As String, Optional ByRef TenTN As String, Optional ByRef DVT As String, Optional ByRef strThueSuat As String, Optional ByRef blnSuaThueSuat As Boolean, Optional ByRef maTM As String)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDomData As New MSXML.DOMDocument
+Dim xmlDOMdata As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
         
@@ -1064,14 +1064,14 @@ Dim xmlNode As MSXML.IXMLDOMNode
             strDataFileName = GetCatalogueFileName
        End If
       
-       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
+       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Cell")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                         If Id = arrDanhsach(1) Then
                             strIdQLT = arrDanhsach(0)
-                            tenTN = arrDanhsach(2)
+                            TenTN = arrDanhsach(2)
                             DVT = arrDanhsach(3)
                             strThueSuat = arrDanhsach(4)
                             blnSuaThueSuat = IIf(arrDanhsach(5) = "1", True, False)

@@ -752,7 +752,7 @@ Public Function InsertDTL() As String
             If Trim(DVTinh) = vbNullString Then
                 DVTinh = "''"
             Else
-                DVTinh = "'" & DVTinh & "'"
+                DVTinh = "'" & TAX_Utilities_Svr_New.Convert(Trim(DVTinh), UNICODE, TCVN) & "'"
             End If
                 
             .Col = .ColLetterToNumber("P")
@@ -1716,7 +1716,7 @@ Public Function InsertHDR() As String
     Dim GTTTCL     As Variant
     Dim MANNKD     As Variant
     Dim NgayPs     As Variant
-    Dim NgayNop As Variant
+    Dim NGAYNOP As Variant
     
     Dim TENNV      As Variant
     Dim CHUNGCHI   As Variant
@@ -1842,7 +1842,7 @@ Public Function InsertHDR() As String
             ngnop = "CTOD('')"
         Else
             ngnop = ToDate(Trim(ngnop), DDMMYYYY)
-            NgayNop = ngnop
+            NGAYNOP = ngnop
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
        
@@ -1868,7 +1868,7 @@ Public Function InsertHDR() As String
         If .Text = "1" Then
             .Col = .ColLetterToNumber("M")
             NgayPs = .Text
-            HANNOP = DateAdd("d", 10, NgayNop)
+            HANNOP = DateAdd("d", 10, NGAYNOP)
             HANNOP = ToString(HANNOP, "DD/MM/YYYY")
         End If
 
@@ -2135,21 +2135,21 @@ End Function
 
 Private Sub DataDM(ByVal Id As String, _
                    Optional ByRef strIdQLT As String, _
-                   Optional ByRef tenTN As String, _
+                   Optional ByRef TenTN As String, _
                    Optional ByRef strDVT As String, _
                    Optional ByRef strThueSuat As String, _
                    Optional ByRef blnSuaThueSuat As Boolean, _
                    Optional ByRef maTM As String)
     Dim arrDanhsach()   As String
     Dim strDataFileName As String
-    Dim xmlDomData      As New MSXML.DOMDocument
+    Dim xmlDOMdata      As New MSXML.DOMDocument
     Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
     Dim xmlNode         As MSXML.IXMLDOMNode
 
     strDataFileName = GetCatalogueFileName
     
-    If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
-        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
+    If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+        Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Cell")
 
         For Each xmlNode In xmlNodeListCell
 
@@ -2158,7 +2158,7 @@ Private Sub DataDM(ByVal Id As String, _
                     
                 If Id = arrDanhsach(1) Then
                     strIdQLT = arrDanhsach(0)
-                    tenTN = arrDanhsach(2)
+                    TenTN = arrDanhsach(2)
                     strDVT = arrDanhsach(3)
                     strThueSuat = arrDanhsach(4)
                     blnSuaThueSuat = IIf(arrDanhsach(5) = "1", True, False)
