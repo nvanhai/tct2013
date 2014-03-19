@@ -5,7 +5,6 @@
 			<mstNhaMay>0000000000</mstNhaMay>
 			<CQTDiaPhuong>
 				<ChiTietCQTDiaPhuong ID="String">
-					<mstCQTDPhuong>0000000000</mstCQTDPhuong>
 					<maCQTDPhuong>1</maCQTDPhuong>
 					<tenCQTDPhuong>String</tenCQTDPhuong>
 					<tyLePBoCQTDPhuong>0.0</tyLePBoCQTDPhuong>
