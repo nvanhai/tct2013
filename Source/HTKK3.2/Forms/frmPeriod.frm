@@ -37,11 +37,11 @@ Begin VB.Form frmPeriod
    Begin VB.TextBox txtLanXuat 
       Height          =   315
       Left            =   1800
-      MaxLength       =   3
+      MaxLength       =   10
       TabIndex        =   42
       Top             =   6840
       Visible         =   0   'False
-      Width           =   615
+      Width           =   1575
    End
    Begin VB.CheckBox chkKhiThien 
       Caption         =   "KhÝ thiªn nhiªn"
@@ -780,8 +780,8 @@ Private Sub cboNganhKD_Click()
         ElseIf strLoaiNNKD = 3 Then
             strLoaiTkDk = "CD"
         End If
+        LoadGrid
     End If
-    
 End Sub
 
 Private Sub chkCondensate_Click()
@@ -1058,6 +1058,8 @@ Private Sub chkTKhaiLanXB_Click()
             cboNganhKD.Top = 2500
             cboNganhKD.Left = 120
             Call Form_Resize
+            
+            LoadGrid
      End If
 End Sub
 
@@ -5132,7 +5134,7 @@ Else
         chkSelectAll.value = 1
     Else
         chkSelectAll.Enabled = True
-'        chkSelectAll.value = 0
+        chkSelectAll.value = 0
     End If
 End If
 
@@ -5218,7 +5220,7 @@ Private Sub OptBosung_Click()
     
     varMenuId = GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID")
     If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11") Or ((TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_15")) Or varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "06" Or varMenuId = "05" Or varMenuId = "70" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "73" _
-    Or varMenuId = "03" Or varMenuId = "77" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "86" Or varMenuId = "90" Or varMenuId = "87" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "96" Or varMenuId = "97" Or varMenuId = "98" Or varMenuId = "99" Then
+    Or varMenuId = "03" Or varMenuId = "77" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "86" Or varMenuId = "90" Or varMenuId = "87" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "96" Or varMenuId = "97" Or varMenuId = "98" Or varMenuId = "99" Or varMenuId = "24" Then
         For i = 1 To 50
             ' Doi voi to khai thang neu la truong hop bo sung thi quet tat ca cac file xem lan bo sung lon nhat la bao nhieu
             ' Thu tu file bo sung tu 1 den 50
@@ -5267,6 +5269,8 @@ Private Sub OptBosung_Click()
 '                strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.Year & ".xml"
             ElseIf varMenuId = "80" Or varMenuId = "82" Then
                 strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
+            ElseIf varMenuId = "24" Then
+                strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.Year & ".xml"
             End If
             If fso.FileExists(strDataFileName) Then
                 txtSolan.Text = i
@@ -6013,26 +6017,30 @@ Private Sub txtDay_LostFocus()
 End Sub
 
 Private Sub txtLanXuat_Change()
-    If txtLanXuat.Text = "0" Then txtLanXuat.Text = "1"
-    strSoLanXuatBan = txtLanXuat.Text
+    'If txtLanXuat.Text = "0" Then txtLanXuat.Text = "1"
+    'strSoLanXuatBan = txtLanXuat.Text
 End Sub
 
 Private Sub txtLanXuat_KeyPress(KeyAscii As Integer)
-    On Error GoTo ErrorHandle
-    Dim sNumber As String
-    sNumber = "0123456789"
-    
-    If KeyAscii = vbKeyBack Then Exit Sub
-    If InStr(1, sNumber, Chr(KeyAscii)) <= 0 Then
-        KeyAscii = 0
-    End If
-    Exit Sub
-ErrorHandle:
-    SaveErrorLog Me.Name, "txtLanXuat_KeyPress", Err.Number, Err.Description
+'    On Error GoTo ErrorHandle
+'    Dim sNumber As String
+'    sNumber = "0123456789"
+'
+'    If KeyAscii = vbKeyBack Then Exit Sub
+'    If InStr(1, sNumber, Chr(KeyAscii)) <= 0 Then
+'        KeyAscii = 0
+'    End If
+'    Exit Sub
+'ErrorHandle:
+'    SaveErrorLog Me.Name, "txtLanXuat_KeyPress", Err.Number, Err.Description
 End Sub
 
 Private Sub txtLanXuat_LostFocus()
-    txtLanXuat.Text = Val(txtLanXuat.Text)
+    'txtLanXuat.Text = txtLanXuat.Text)
+    If txtLanXuat.Text <> strSoLanXuatBan Then
+        strSoLanXuatBan = txtLanXuat.Text
+        LoadGrid
+    End If
 End Sub
 
 Private Sub txtMonth_Change()

@@ -5,10 +5,10 @@ Begin VB.Form frmTreeviewMenu
    Appearance      =   0  'Flat
    BackColor       =   &H00E0E0E0&
    BorderStyle     =   0  'None
-   ClientHeight    =   4590
+   ClientHeight    =   6345
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   7560
+   ClientWidth     =   9870
    ControlBox      =   0   'False
    FillColor       =   &H80000005&
    LinkTopic       =   "Form1"
@@ -16,25 +16,25 @@ Begin VB.Form frmTreeviewMenu
    MDIChild        =   -1  'True
    MinButton       =   0   'False
    Moveable        =   0   'False
-   ScaleHeight     =   4590
-   ScaleWidth      =   7560
+   ScaleHeight     =   6345
+   ScaleWidth      =   9870
    ShowInTaskbar   =   0   'False
    Begin MSComDlg.CommonDialog CommonDialog1 
-      Left            =   4920
-      Top             =   1320
+      Left            =   8160
+      Top             =   1200
       _ExtentX        =   847
       _ExtentY        =   847
       _Version        =   393216
    End
    Begin FPUSpreadADO.fpSpread fpSpread1 
       Height          =   615
-      Left            =   60
+      Left            =   120
       TabIndex        =   1
-      Top             =   3600
+      Top             =   5400
       Visible         =   0   'False
-      Width           =   4455
+      Width           =   6135
       _Version        =   458752
-      _ExtentX        =   7858
+      _ExtentX        =   10821
       _ExtentY        =   1085
       _StockProps     =   64
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -49,14 +49,14 @@ Begin VB.Form frmTreeviewMenu
       SpreadDesigner  =   "frmTreeviewMenu.frx":0000
    End
    Begin FPUSpreadADO.fpSpread sstv 
-      Height          =   3375
+      Height          =   5055
       Left            =   180
       TabIndex        =   0
       Top             =   150
-      Width           =   4215
+      Width           =   6015
       _Version        =   458752
-      _ExtentX        =   7435
-      _ExtentY        =   5953
+      _ExtentX        =   10610
+      _ExtentY        =   8916
       _StockProps     =   64
       BorderStyle     =   0
       DAutoSizeCols   =   0
