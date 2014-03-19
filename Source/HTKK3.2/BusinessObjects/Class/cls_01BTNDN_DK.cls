@@ -621,6 +621,8 @@ Private Sub UpdateSheets()
     Dim xmlCellNode     As MSXML.IXMLDOMNodeList
     Dim xmlCellNodeData As MSXML.IXMLDOMNode
 
+    Dim blCheckS2 As Boolean
+
     With fps
         .EventEnabled(EventAllEvents) = False
         ssSheet = mCurrentSheet
@@ -631,12 +633,27 @@ Private Sub UpdateSheets()
         'updated phu luc 01
         .Sheet = SHEET_PHU_LUC_01
         mCurrentSheet = .Sheet
-        For Each xmlCellNodeData In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
-           ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-                .GetText lCol, lRow, varTemp
-                UpdateCell fps, lCol, lRow, varTemp
-        Next
+        blCheckS2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        If blCheckS2 = True Then
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
+               ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+                    .GetText lCol, lRow, varTemp
+                    UpdateCell fps, lCol, lRow, varTemp
+            Next
+        End If
         'end pl 01
+        
+        ' Update lai sheet KHBS
+        .Sheet = .SheetCount - 1
+        mCurrentSheet = .Sheet
+        blCheckS2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        If blCheckS2 = True Then
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(.Sheet - 1).getElementsByTagName("Cell")
+               ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+                    .GetText lCol, lRow, varTemp
+                    UpdateCell fps, lCol, lRow, varTemp
+            Next
+        End If
         .Sheet = .ActiveSheet
         .EventEnabled(EventAllEvents) = True
     End With
