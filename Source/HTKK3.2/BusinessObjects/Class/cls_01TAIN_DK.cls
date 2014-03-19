@@ -408,6 +408,11 @@ Private Sub CheckDynamicError()
     Dim vNgayHD As Variant
     Dim vTyGia As Variant
     
+    Dim vErorrNhapDVUQ As Variant
+    Dim flagNhapDVUQ As Integer
+    
+    flagNhapDVUQ = 0
+    
     
     Dim iFlagCheckData As Boolean
     
@@ -423,6 +428,7 @@ Private Sub CheckDynamicError()
         
         .GetText .ColLetterToNumber("E"), 28, vErrorTongTyLe
         
+        .GetText .ColLetterToNumber("E"), 29, vErorrNhapDVUQ
 
         iFlagCheckMaST = 0
         iFlagEmty = 0
@@ -550,16 +556,42 @@ Private Sub CheckDynamicError()
             
             End If
         Else
-                .Col = .ColLetterToNumber("Q")
-                .Row = 49
-                .CellNote = ""
-                .BackColor = mNonErrorColor
-                
-                .Col = .ColLetterToNumber("Y")
-                .Row = 49
-                .CellNote = ""
-                .BackColor = mNonErrorColor
-                        
+                If Trim$(vDVUyQuyen) = "1" Or Trim$(vDaiLyThue) = "1" Then
+                    If Trim$(vDVUyQuyen) = "1" Then
+                        .Col = .ColLetterToNumber("Q")
+                        .Row = 49
+                        .CellNote = vErorrNhapDVUQ
+                        .BackColor = mErrorColor
+                    Else
+                        .Col = .ColLetterToNumber("Q")
+                        .Row = 49
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
+                    
+                    If Trim$(vDaiLyThue) = "1" Then
+                        .Col = .ColLetterToNumber("Y")
+                        .Row = 49
+                        .CellNote = vErorrNhapDVUQ
+                        .BackColor = mErrorColor
+                    Else
+                        .Col = .ColLetterToNumber("Y")
+                        .Row = 49
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
+                    flagNhapDVUQ = 1
+                Else
+                    .Col = .ColLetterToNumber("Q")
+                    .Row = 49
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                    
+                    .Col = .ColLetterToNumber("Y")
+                    .Row = 49
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
         End If
         
         .Sheet = iCurrentSheet
@@ -680,6 +712,8 @@ Private Sub CheckDynamicError()
         .SetText .ColLetterToNumber("B"), 25, IIf(flagDVUyQuyen = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 26, IIf(flagDVUyQuyenEmpty = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 27, IIf(flagXuatKhauEmpty = 1, "0", "1")
+        
+        .SetText .ColLetterToNumber("B"), 28, IIf(flagNhapDVUQ = 1, "0", "1")
         'CheckErrorMST
     End With
     
