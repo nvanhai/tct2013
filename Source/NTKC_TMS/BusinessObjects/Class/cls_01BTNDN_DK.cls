@@ -441,15 +441,15 @@ Dim blnValid As Boolean
             Else
                 blnValid = False
             End If
-            
-            .Col = .ColLetterToNumber("B")
-            .Row = 17
-            
-            If Not blnValid Then
-                .Formula = "0"
-            Else
-                .Formula = "1"
-            End If
+'
+'            .Col = .ColLetterToNumber("B")
+'            .Row = 17
+'
+'            If Not blnValid Then
+'                .Formula = "0"
+'            Else
+'                .Formula = "1"
+'            End If
             ' kiem tra ky lap bo khong duoc lon hon ky hien tai
             If DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1) > Date Then
                 blnValid = False
@@ -513,10 +513,11 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     Dim i              As Long, j As Long
     Dim strMaPhongXuLy As String
     
-    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
+    Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC, vKY_KE_KHAI, vLOAI_TK_DK, vLOAI_KYKK As Variant
     
     On Error GoTo ErrHandle
     strSQL = strSQL_HDR
+    strSQL = Replace(strSQL, ")", ",LOAI_TK_DK,LOAI_KYKK)")
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
 
     For Each xmlNode In xmlList
@@ -578,7 +579,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "01B_TNDN_DK13"
+    vLOAI_TKHAI = "01B_TNDN_DK"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
@@ -662,7 +663,11 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
     'strSQL = strSQL & "null)"
     strSQL = strSQL & "null,"
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
+    
+    vLOAI_KYKK = "Q"
+    vLOAI_TK_DK = "KTN"
+    
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ",'" & Trim(vLOAI_TK_DK) & "','" & Trim(vLOAI_KYKK) & "')"
     GenerateSQL_Header = strSQL
     'Debug.Print GenerateSQL_Header
     

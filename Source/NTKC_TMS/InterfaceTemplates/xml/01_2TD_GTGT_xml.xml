@@ -1,19 +1,19 @@
 <PL_01_2_TD_GTGT>
-	<BangPhanBoThueGTGTSXThuyDien>
-		<chiTietPhanBoGTGTChoTungNMay>
+	<BangPBoThueGTGTChoDPhuong>
+		<ChiTietPBoThueGTGTChoDPhuong ID="String">
 			<tenNhaMay></tenNhaMay>
 			<mstNhaMay></mstNhaMay>
-			<PHANBOCHOCQTDIAPHUONG>
-				<tyLePBoThueChoTungCQT>
-					<maCQTPBo></maCQTPBo>
+			<PhanBoChoCQTDiaPhuong>
+				<tyLePBoThueChoTungCQT id="String">
+					<maCQTPBo>1</maCQTPBo>
 					<tenCQTPBo></tenCQTPBo>
-					<tyLePBo><tyLePBo>
-					<thuePNopPBo></thuePNopPBo>
+					<tyLePBo>0.0</tyLePBo>
+					<thuePNopPBo>1</thuePNopPBo>
 				</tyLePBoThueChoTungCQT>
-			</PHANBOCHOCQTDIAPHUONG>
-			<tyLePhanBoNhaMay></tyLePhanBoNhaMay>
-			<thuePNopNhaMay></thuePNopNhaMay>
-		</chiTietPhanBoGTGTChoTungNMay>
-	</BangPhanBoThueGTGTSXThuyDien>
-	<tongCong></tongCong>
+			</PhanBoChoCQTDiaPhuong>
+			<tyLePhanBoNhaMay>0.0</tyLePhanBoNhaMay>
+			<thuePNopNhaMay>1</thuePNopNhaMay>
+		</ChiTietPBoThueGTGTChoDPhuong>
+	</BangPBoThueGTGTChoDPhuong>
+	<tongCong>1</tongCong>
 </PL_01_2_TD_GTGT>

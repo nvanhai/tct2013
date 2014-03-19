@@ -3,7 +3,7 @@
 		<ChiTietBangKeHH id="id">
 			<HopDongXuatKhau>
 				<so>C_10</so>
-				<ngay>D_10</ngay>
+				<ngay date="1">D_10</ngay>
 				<ngoaiTe>E_10</ngoaiTe>
 				<dongVietNam>F_10</dongVietNam>
 				<hinhThucThanhToanHDongXKhau>G_10</hinhThucThanhToanHDongXKhau>
@@ -11,32 +11,32 @@
 			</HopDongXuatKhau>
 			<ToKhaiHHoaXKhau>
 				<so>I_10</so>
-				<ngay>J_10</ngay>
+				<ngay date="1">J_10</ngay>
 				<ngoaiTe>K_10</ngoaiTe>
 				<dongVietNam>L_10</dongVietNam>
 			</ToKhaiHHoaXKhau>
 			<HoaDonXKhau>
 				<so>M_10</so>
-				<ngay>N_10</ngay>
+				<ngay date="1">N_10</ngay>
 				<ngoaiTe>O_10</ngoaiTe>
 				<dongVietNam>P_10</dongVietNam>
 			</HoaDonXKhau>
 			<CTuTToanNganHang>
 				<so>Q_10</so>
-				<ngay>R_10</ngay>
+				<ngay date="1">R_10</ngay>
 				<ngoaiTe>S_10</ngoaiTe>
 				<dongVietNam>T_10</dongVietNam>
 			</CTuTToanNganHang>
 			<ChungTuThanhToanBuTru>
 				<VBanXNhanVoiNNgoai>
 					<so>U_10</so>
-					<ngay>V_10</ngay>
+					<ngay date="1">V_10</ngay>
 					<ngoaiTe>W_10</ngoaiTe>
 					<dongVietNam>X_10</dongVietNam>
 				</VBanXNhanVoiNNgoai>
 				<HDongNhapKhau>
 					<so>Y_10</so>
-					<ngay>Z_10</ngay>
+					<ngay date="1">Z_10</ngay>
 					<ngoaiTe>AA_10</ngoaiTe>
 					<dongVietNam>AB_10</dongVietNam>
 				</HDongNhapKhau>

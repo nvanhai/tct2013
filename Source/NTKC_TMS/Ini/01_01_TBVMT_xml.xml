@@ -3,7 +3,7 @@
 		<tongSoThuePSinhPNop>Y_1</tongSoThuePSinhPNop>
 	</Static>
 	<Dynamic GroupName="PBoSoThueBVMTChoDPhuong">		
-			<ChiTietThueBVMTCuaDPhuong>
+			<ChiTietThueBVMTCuaDPhuong id="id">
 				<maHangHoa>Z_35</maHangHoa>
 				<ct2>D_35</ct2>
 				<ct3>F_35</ct3>

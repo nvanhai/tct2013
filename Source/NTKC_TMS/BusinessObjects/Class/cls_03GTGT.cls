@@ -277,35 +277,6 @@ Dim blnValid As Boolean
         'Go to last sheet (header sheet)
         .Sheet = .SheetCount
         
-'        If dNgayDauKy > DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1) Then
-'            blnValid = False
-'        End If
-'
-'        .Col = .ColLetterToNumber(HEADER_KY_LAP_BO_COL)
-'        .Row = HEADER_KY_LAP_BO_ROW
-'
-'        If Not blnValid Then
-'            .Formula = "0"
-'        Else
-'            .Formula = "1"
-'        End If
-'
-'        ' Kiem tra xem ky ke khai trong cung ky hay khac ky
-'        If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
-'            blnValid = True
-'        Else
-'            blnValid = False
-'        End If
-'
-'        .Col = .ColLetterToNumber("B")
-'        .Row = 17
-'
-'        If Not blnValid Then
-'            .Formula = "0"
-'        Else
-'            .Formula = "1"
-'        End If
-        ' Kiem tra neu ky lap bo trang se bao loi
         If Trim(strKyLapBo) = "" Or Trim(strKyLapBo) = "../...." Then
             blnValid = False
             .Col = .ColLetterToNumber("B")
@@ -338,14 +309,14 @@ Dim blnValid As Boolean
                 blnValid = False
             End If
             
-            .Col = .ColLetterToNumber("B")
-            .Row = 17
-            
-            If Not blnValid Then
-                .Formula = "0"
-            Else
-                .Formula = "1"
-            End If
+'            .Col = .ColLetterToNumber("B")
+'            .Row = 17
+'
+'            If Not blnValid Then
+'                .Formula = "0"
+'            Else
+'                .Formula = "1"
+'            End If
             ' kiem tra ky lap bo khong duoc lon hon ky hien tai
             If DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1) > Date Then
                 blnValid = False
@@ -448,10 +419,10 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim vPHONG_XU_LY
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
-    Dim LOAI_KYKK As String
+    Dim LOAI_KYKK, sQCT As String
 
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
-    
+
     
 On Error GoTo ErrHandle
     strSQL = Replace$(strSQL_HDR, ")", ",LOAI_KYKK)")
@@ -494,11 +465,19 @@ On Error GoTo ErrHandle
         End If
         End With
     Next
+    
     If LOAI_KYKK = "0" Then
         LOAI_KYKK = "T"
     Else
         LOAI_KYKK = "Q"
     End If
+    
+    If isCheckQCT = True Then
+        sQCT = "'Y'"
+    Else
+        sQCT = "null"
+    End If
+    
     strSQL = strSQL & "'" & vHdrID & "',"
     strSQL = strSQL & vKKBS & ","
     strSQL = strSQL & "'" & vTIN & "',"
@@ -595,7 +574,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
     'strSQL = strSQL & "null)"
     strSQL = strSQL & "null,"
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ",'" & LOAI_KYKK & "')"
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & sQCT & ",'" & LOAI_KYKK & "')"
     GenerateSQL_Header = strSQL
     
     Exit Function

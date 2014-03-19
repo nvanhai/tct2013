@@ -157,6 +157,7 @@ Private Base64Unicode As New Base64Unicode
 'Lay thong tin NNT tu ESB
 Private xmlResultNSD As MSXML.DOMDocument
 'Dim WithEvents cmdSetting As VB.CommandButton
+
 Dim WithEvents pcBox As VB.PictureBox
 Attribute pcBox.VB_VarHelpID = -1
 
@@ -288,11 +289,6 @@ End Sub
 'Return:
 '****************************************************
 Private Function IsValidUserESB() As Integer
-    On Error GoTo ErrorHandle
-
-
-
-
     'Dim xmlESBReturn As New MSXML.DOMDocument
     Set xmlResultNSD = New MSXML.DOMDocument
     Dim strResultNSD As String
@@ -353,84 +349,16 @@ Private Function IsValidUserESB() As Integer
                 Set xmlResultNSD = Nothing
                 Exit Function
         End Select
-
+    Else
+        IsValidUserESB = 1
+        Exit Function
     End If
-
-'    If (strResultNSD = "" Or strResultNSD = vbNullString Or Not xmlResultNSD.hasChildNodes) Then
-'        IsValidUserESB = 1
-'        Set xmlResultNSD = Nothing
-'        Exit Function
-'
-'    Else
-'        Dim Err_des As String
-'        If (xmlResultNSD.getElementsByTagName("ERROR_DESC").length > 0) Then
-'            Err_des = xmlResultNSD.getElementsByTagName("ERROR_DESC")(0).Text
-'        End If
-'        If (Err_des <> "") Then
-'            IsValidUserESB = 1
-'            Set xmlResultNSD = Nothing
-'            Exit Function
-'        Else
-'
-''            If (Dir("c:\TempXML\", vbDirectory) = "") Then
-''                MkDir "c:\TempXML\"
-''            End If
-'
-
-'
-'            If (InStr(xmlResultNSD.xml, "Status") <= 0) Then
-'                IsValidUserESB = 1
-'                Set xmlResultNSD = Nothing
-'                Exit Function
-'            Else
-'                sStatus = xmlResultNSD.getElementsByTagName("Status")(0).Text
-'                strCurrentVersion = xmlResultNSD.getElementsByTagName("NTKversion")(0).Text
-'                strUserName = xmlResultNSD.getElementsByTagName("UserName")(0).Text
-'                strUserID = txtUsername.Text
-'                strNgayHeThongSrv = xmlResultNSD.getElementsByTagName("CurrentSysTime")(0).Text
-'                strMaCoQuanThue = xmlResultNSD.getElementsByTagName("TaxOffcice")(0).Text
-'                strTenCoQuanThue = xmlResultNSD.getElementsByTagName("TaxOffName")(0).Text
-'                strMaTinhCoQuanThue = xmlResultNSD.getElementsByTagName("Province")(0).Text
-'
-'
-'                Select Case sStatus
-'
-'                    Case "01"  ' Thanh cong
-'                        IsValidUserESB = 2  'Message login thanh cong
-'                        Set xmlResultNSD = Nothing
-'                        Exit Function
-'
-'                    Case "02" 'Loi xac thuc NSD
-'                        IsValidUserESB = 0   'Message loi use, pass
-'                        Set xmlResultNSD = Nothing
-'                        Exit Function
-'
-'                    Case "03" 'Cac loi khac cua he thong TMS
-'                        IsValidUserESB = 1  'Message loi khong dang nhap duoc
-'                        Set xmlResultNSD = Nothing
-'                        Exit Function
-'
-'                    Case Else
-'                        IsValidUserESB = 1
-'                        Set xmlResultNSD = Nothing
-'                        Exit Function
-'                End Select
-'
-'            End If
-'        End If
-'
-'    End If
     
-ErrorHandle:
-    IsValidUserESB = 1
-    Me.MousePointer = vbDefault
-    frmSystem.MousePointer = vbDefault
-    SaveErrorLog Me.Name, "IsValidUserESB", Err.Number, Err.Description & "Loi check trang thai nguoi dung"
 End Function
 
 Private Function IsValidXMLUser(ByVal objUser As MSXML.DOMDocument) As Boolean
 Dim sVar As String
-'On Error GoTo ErrHandle
+On Error GoTo ErrHandle
     If objUser.hasChildNodes Then
     
         If objUser.getElementsByTagName("ERROR_CODE").length > 0 Then
@@ -442,14 +370,14 @@ Dim sVar As String
             End If
         End If
         
-        If objUser.getElementsByTagName("ERROR_DESC").length > 0 Then
-            sVar = objUser.getElementsByTagName("ERROR_DESC")(0).Text
-            If sVar <> vbNullString Or sVar <> "" Then
-                IsValidXMLUser = False
-                SaveErrorLog "frmLogin", "IsValidXMLUser", Err.Number, Err.Description & " Xuat hien gia tri loi trong ERROR_DESC:" & sVar
-                Exit Function
-            End If
-        End If
+'        If objUser.getElementsByTagName("ERROR_DESC").length > 0 Then
+'            sVar = objUser.getElementsByTagName("ERROR_DESC")(0).Text
+'            If sVar <> vbNullString Or sVar <> "" Then
+'                IsValidXMLUser = False
+'                SaveErrorLog "frmLogin", "IsValidXMLUser", Err.Number, Err.Description & " Xuat hien gia tri loi trong ERROR_DESC:" & sVar
+'                Exit Function
+'            End If
+'        End If
         
         If objUser.getElementsByTagName("faultcode").length > 0 Then
             sVar = objUser.getElementsByTagName("faultcode")(0).Text
@@ -506,13 +434,15 @@ Dim sVar As String
         End If
         
         IsValidXMLUser = True
+        Exit Function
     Else
         IsValidXMLUser = False
-        SaveErrorLog "frmLogin", "IsValidXMLUser", Err.Number, Err.Description & "Message tra ve cua TMS khong dung cau truc truy van NSD"
+        SaveErrorLog "frmLogin", "IsValidXMLUser", Err.Number, Err.Description & "Message tra ve cua TMS khong dung cau truc truy van NSD: " & objUser.xml
+        Exit Function
     End If
-'ErrHandle:
-'    IsValidXMLUser = False
-'    SaveErrorLog "frmLogin", "IsValidXMLUser", Err.Number, Err.Description & " Loi khi check file xml User"
+ErrHandle:
+    IsValidXMLUser = False
+    SaveErrorLog "frmLogin", "IsValidXMLUser", Err.Number, Err.Description & " Loi khi check file xml User"
 End Function
 
 '****************************************************
@@ -732,8 +662,8 @@ Private Function CheckVersion() As Boolean
     
     On Error GoTo ErrHandle
 
-    CheckVersion = True
-    Exit Function
+'    CheckVersion = True
+'    Exit Function
        If strCurrentVersion = "" Then
             'Can not found table or not exist value
             DisplayMessage "0075", msOKOnly, miCriticalError
@@ -808,6 +738,7 @@ Private Function IsCompareDateSrv() As Boolean
     
     Exit Function
 ErrHandle:
+    IsCompareDateSrv = False
     SaveErrorLog Me.Name, "IsCompareDateSrv", Err.Number, Err.Description
 End Function
 

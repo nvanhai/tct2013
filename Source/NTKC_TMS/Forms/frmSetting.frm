@@ -151,7 +151,6 @@ On Error GoTo ErrHandle
     
     MessageBox = DisplayMessage(strMsgId, intMsgStyle, intMsgIcon, , msType)
     
-    
     Exit Function
 ErrHandle:
     SaveErrorLog Me.Name, "MessageBox", Err.Number, Err.Description
@@ -313,7 +312,7 @@ xmlTempConfig.getElementsByTagName("ORIGINAL_NAME")(0).Text = Base64Unicode.Base
 Dim sFileName As String
 sFileName = App.path & "\Config.xml"
 xmlTempConfig.save sFileName
-    
+Exit Sub
 ErrHandle:
     SaveErrorLog Me.Name, "SaveConfig", Err.Number, Err.Description
 End Sub
@@ -386,7 +385,7 @@ xmlTempConfig.getElementsByTagName("ORIGINAL_NAME")(0).Text = "He thong nhan to 
 Dim sFileName As String
 sFileName = App.path & "\Config.xml"
 xmlTempConfig.save sFileName
-    
+Exit Sub
 ErrHandle:
     SaveErrorLog Me.Name, "SaveConfig", Err.Number, Err.Description
 End Sub

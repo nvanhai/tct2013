@@ -24,29 +24,29 @@
 		<ct03>J_38</ct03>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct05>Y_4</ct05>
+		<ct05>Y_5</ct05>
 	</Static>
 	<Static GroupName="LoaiXuatBan">
-		<ct08>O_38</ct08>
-		<ct09>P_38</ct09>
+		<ct08>V_7</ct08>
+		<ct09>AE_7</ct09>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct10>Y_7</ct10>
+		<ct10>Y_8</ct10>
 		<ct19>I_16</ct19>
 	</Static>
 	<Static GroupName="CT20">
-		<donViUyQuyen></donViUyQuyen>
-		<daiLyThue></daiLyThue>
+		<donViUyQuyen>I_44</donViUyQuyen>
+		<daiLyThue>P_44</daiLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<tenDonViUyQuyen></tenDonViUyQuyen>
-		<ct29>AJ_53</ct29>
-		<ct29a>AJ_55</ct29a>
-		<ct30>AJ_56</ct30>
-		<ct31>AJ_57</ct31>
-		<ct32>AJ_58</ct32>
-		<ct33>AJ_59</ct33>
-		<ct34>AJ_60</ct34>
+		<tenDonViUyQuyen>I_44</tenDonViUyQuyen>
+		<ct30>AJ_53</ct30>
+		<ct30a>AJ_55</ct30a>		
+		<ct31>AJ_56</ct31>
+		<ct32>AJ_57</ct32>
+		<ct33>AJ_58</ct33>
+		<ct34>AJ_59</ct34>
+		<ct35>AJ_60</ct35>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>AI_63</nguoiKy>
