@@ -224,12 +224,12 @@
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>R_143</nguoiKy>
-		<ngayKy>R_145</ngayKy>
+		<ngayKy date="1">R_145</ngayKy>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<nguoiLapBieu></nguoiLapBieu>
-		<keToanTruong></keToanTruong>
-		<ngayLap></ngayLap>
-		<giamDoc></giamDoc>
+		<nguoiLapBieu>Y_21</nguoiLapBieu>
+		<keToanTruong>Y_21</keToanTruong>
+		<ngayLap date="1">Y_21</ngayLap>
+		<giamDoc>Y_21</giamDoc>
 	</Static>
 </HSoKhaiThue>

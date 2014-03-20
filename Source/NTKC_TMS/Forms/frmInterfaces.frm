@@ -1663,7 +1663,21 @@ Private Sub ExecuteSave()
                                 TinTypeAttribute.nodeValue = "true"
                                 xmlCellTKNode.Attributes.setNamedItem TinTypeAttribute
                             End If
+                        ElseIf GetAttribute(xmlCellNode, "date") = "1" Then
+                            xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
 
+                            If xmlCellTKNode.hasChildNodes Then
+                                xmlCellTKNode.removeChild xmlCellTKNode.firstChild
+                            End If
+
+                            If .Text <> vbNullString Or .Text <> "" Then
+                                xmlCellTKNode.Text = .Text
+                            Else
+                                Set TinTypeAttribute = xmlTK.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
+                                TinTypeAttribute.nodeValue = "true"
+                                xmlCellTKNode.Attributes.setNamedItem TinTypeAttribute
+                            End If
+                            
                         Else
                         If .CellType = CellTypeNumber Then
                                 If (.Value = "" Or .Value = vbNullString) Then
@@ -1983,7 +1997,20 @@ Private Sub ExecuteSave()
                                             TinTypeAttribute.nodeValue = "true"
                                             xmlCellTKNode.Attributes.setNamedItem TinTypeAttribute
                                         End If
-
+                                        
+                                    ElseIf GetAttribute(xmlCellNode, "date") = "1" Then
+                                        xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
+                                        If xmlCellTKNode.hasChildNodes Then
+                                            xmlCellTKNode.removeChild xmlCellTKNode.firstChild
+                                        End If
+                                    
+                                        If Len(.Text) <> vbNullString Or Len(.Text) <> "" Then
+                                            xmlCellTKNode.Text = .Text
+                                        Else
+                                            Set TinTypeAttribute = xmlPL.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
+                                            TinTypeAttribute.nodeValue = "true"
+                                            xmlCellTKNode.Attributes.setNamedItem TinTypeAttribute
+                                        End If
                                     Else
 
                                         If .CellType = CellTypeNumber Then
@@ -2146,11 +2173,11 @@ Private Sub ExecuteSave()
 '
     xmlDocSave.save sFileName
 
-    ' Push MQ
-    Dim MQPUT As New MQPUT
-    If (Not MQPUT.PUSHMQ(xmlDocSave.xml)) Then
-        MessageBox "0137", msOKOnly, miCriticalError
-    End If
+'    ' Push MQ
+'    Dim MQPUT As New MQPUT
+'    If (Not MQPUT.PUSHMQ(xmlDocSave.xml)) Then
+'        MessageBox "0137", msOKOnly, miCriticalError
+'    End If
 
 '   Clear variable global
 Set xmlResultDLT = Nothing
@@ -2625,10 +2652,10 @@ Private Sub Command1_Click()
 'str2 = "aa321920102030405   02201400200200100101/0101/01/1900<S01><S></S><S>~x~~~0~0~1~~~</S><S>0~0~0~0~0~0~0</S><S>~~~18/03/2014~1~~~0</S></S01>"
 'Barcode_Scaned str2
 
-'03-TD-TAIN
-str2 = "aa321960102030405   02201400100100100101/0114/06/2006<S03><S></S><S>0702~4</S><S>~~0~0~0~0~0</S><S>0~0~0</S><S>~~~18/03/2014~1~~~0</S></S03>"
-Barcode_Scaned str2
-'
+''03-TD-TAIN
+'str2 = "aa321960102030405   02201400100100100101/0114/06/2006<S03><S></S><S>0702~4</S><S>~~0~0~0~0~0</S><S>0~0~0</S><S>~~~18/03/2014~1~~~0</S></S03>"
+'Barcode_Scaned str2
+
 ''01-TD-GTGT
 'str2 = "aa999940102030405   02201400100100100101/0101/01/1900<S01><S></S><S>0~0~0~0~0~0~0</S><S>~~~18/03/2014~1~~~0</S></S01>"
 'Barcode_Scaned str2
@@ -3213,23 +3240,23 @@ Barcode_Scaned str2
 'Barcode_Scaned str2
 
 
-''QD15-BCTC-2013
-'str2 = "aa320692300029469   00201300000000100801/0123/06/2006<S01><S>~73920~0~~21000~0~V.01~1000~0~~20000~0~V.02~3000~0~~1000~0~~2000~0~~33000~0~~3000~0~~4000~0~~5000~0~~6000~0~V.03~7000~0~~8000~0~~3000~0~V.04~1000~0~~2000~0~~13920~0~~3000~0~~5000~0~V.05~3450~0~~2470~0~~95780~0~~19940~0~~6920~0~~3420~0~V.06~5600~0~V.07~1300~0~~2700~0~~41000~0~V.08~9400~0~~6000~0"
-'Barcode_Scaned str2
-'str2 = "aa320692300029469   002013000000002008~~3400~0~V.09~7400~0~~2900~0~~4500~0~V.10~14800~0~~6700~0~~8100~0~V.11~9400~0~V.12~12000~0~~9000~0~~3000~0~~11000~0~~2000~0~~1000~0~V.13~3000~0~~5000~0~~11840~0~V.14~5630~0~V.21~3210~0~~3000~0~~169700~0~~97680~0~~53030~0~V.15~1000~0~~2000~0~~3000~0~V.16~4000~0~~5000~0~V.17~6000~0~~7000~0~~8000~0~V.18~9000~0~~3450~0~~"
-'Barcode_Scaned str2
-'str2 = "aa320692300029469   0020130000000030084580~0~~44650~0~~3980~0~V.19~8430~0~~2180~0~V.20~1560~0~V.21~4000~0~~5300~0~~7500~0~~3600~0~~8100~0~~72020~0~V.22~59565~0~~4700~0~~2000~0~~1000~0~~4000~0~~2000~0~~6000~0~~9000~0~~3000~0~~5000~0~~6000~0~~7000~0~~9865~0~~12455~0~V.23~9455~0~~3000~0~~169700~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~Hoa Linh~22/10/2013</S></S01>"
-'Barcode_Scaned str2
-'str2 = "aa320692300029469   002013000000004008<S01-1><S>VI.25~30000~0~~1000~0~~29000~0~VI.27~2000~0~~27000~0~VI.26~1000~0~VI.28~4000~0~~5000~0~~6000~0~~2000~0~~16000~0~~5000~0~~3000~0~~2000~0~~18000~0~VI.30~2100~0~VI.30~3800~0~~12100~0~~2000~0~Hoa Linh~22/10/2013</S></S01-1>"
-'Barcode_Scaned str2
-'str2 = "aa320692300029469   002013000000005008<S01-2><S>~1000~0~~2000~0~~3000~0~~4000~0~~5000~0~~6000~0~~7000~0~~28000~0~~1000~0~~2000~0~~3000~0~~4000~0~~5000~0~~7000~0~~2000~0~~240"
-'Barcode_Scaned str2
-'str2 = "aa320692300029469   00201300000000600800~0~~3000~0~~2000~0~~5000~0~~6000~0~~7000~0~~9000~0~~32000~0~~84000~0~~8000~0~~1000~0~VII.34~93000~0~Hoa Linh~22/10/2013</S></S01-2>"
-'Barcode_Scaned str2
-'str2 = "aa320692300029469   002013000000007008<S01-3><S>~12000~0~~1000~0~~2000~0~~3000~0~~4000~0~~5000~0~~27000~0~~2000~0~~7000~0~~3000~0~~2000~0~~1000~0~~8000~0~~3000~0~~2000~0~~55000~0~~1000~0~~3000~0~~4000~0~~"
-'Barcode_Scaned str2
-'str2 = "aa320692300029469   0020130000000080087000~0~~2000~0~~4000~0~~8000~0~~29000~0~~4000~0~~2000~0~~6000~0~~9000~0~~2000~0~~1000~0~~24000~0~~108000~0~~7000~0~~2000~0~~117000~0~Hoa Linh~22/10/2013</S></S01-3>"
-'Barcode_Scaned str2
+'QD15-BCTC-2013
+str2 = "aa320692300029469   00201300000000100801/0123/06/2006<S01><S>~73920~0~~21000~0~V.01~1000~0~~20000~0~V.02~3000~0~~1000~0~~2000~0~~33000~0~~3000~0~~4000~0~~5000~0~~6000~0~V.03~7000~0~~8000~0~~3000~0~V.04~1000~0~~2000~0~~13920~0~~3000~0~~5000~0~V.05~3450~0~~2470~0~~95780~0~~19940~0~~6920~0~~3420~0~V.06~5600~0~V.07~1300~0~~2700~0~~41000~0~V.08~9400~0~~6000~0"
+Barcode_Scaned str2
+str2 = "aa320692300029469   002013000000002008~~3400~0~V.09~7400~0~~2900~0~~4500~0~V.10~14800~0~~6700~0~~8100~0~V.11~9400~0~V.12~12000~0~~9000~0~~3000~0~~11000~0~~2000~0~~1000~0~V.13~3000~0~~5000~0~~11840~0~V.14~5630~0~V.21~3210~0~~3000~0~~169700~0~~97680~0~~53030~0~V.15~1000~0~~2000~0~~3000~0~V.16~4000~0~~5000~0~V.17~6000~0~~7000~0~~8000~0~V.18~9000~0~~3450~0~~"
+Barcode_Scaned str2
+str2 = "aa320692300029469   0020130000000030084580~0~~44650~0~~3980~0~V.19~8430~0~~2180~0~V.20~1560~0~V.21~4000~0~~5300~0~~7500~0~~3600~0~~8100~0~~72020~0~V.22~59565~0~~4700~0~~2000~0~~1000~0~~4000~0~~2000~0~~6000~0~~9000~0~~3000~0~~5000~0~~6000~0~~7000~0~~9865~0~~12455~0~V.23~9455~0~~3000~0~~169700~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~Hoa Linh~22/10/2013</S></S01>"
+Barcode_Scaned str2
+str2 = "aa320692300029469   002013000000004008<S01-1><S>VI.25~30000~0~~1000~0~~29000~0~VI.27~2000~0~~27000~0~VI.26~1000~0~VI.28~4000~0~~5000~0~~6000~0~~2000~0~~16000~0~~5000~0~~3000~0~~2000~0~~18000~0~VI.30~2100~0~VI.30~3800~0~~12100~0~~2000~0~Hoa Linh~22/10/2013</S></S01-1>"
+Barcode_Scaned str2
+str2 = "aa320692300029469   002013000000005008<S01-2><S>~1000~0~~2000~0~~3000~0~~4000~0~~5000~0~~6000~0~~7000~0~~28000~0~~1000~0~~2000~0~~3000~0~~4000~0~~5000~0~~7000~0~~2000~0~~240"
+Barcode_Scaned str2
+str2 = "aa320692300029469   00201300000000600800~0~~3000~0~~2000~0~~5000~0~~6000~0~~7000~0~~9000~0~~32000~0~~84000~0~~8000~0~~1000~0~VII.34~93000~0~Hoa Linh~22/10/2013</S></S01-2>"
+Barcode_Scaned str2
+str2 = "aa320692300029469   002013000000007008<S01-3><S>~12000~0~~1000~0~~2000~0~~3000~0~~4000~0~~5000~0~~27000~0~~2000~0~~7000~0~~3000~0~~2000~0~~1000~0~~8000~0~~3000~0~~2000~0~~55000~0~~1000~0~~3000~0~~4000~0~~"
+Barcode_Scaned str2
+str2 = "aa320692300029469   0020130000000080087000~0~~2000~0~~4000~0~~8000~0~~29000~0~~4000~0~~2000~0~~6000~0~~9000~0~~2000~0~~1000~0~~24000~0~~108000~0~~7000~0~~2000~0~~117000~0~Hoa Linh~22/10/2013</S></S01-3>"
+Barcode_Scaned str2
 
 ''QD48-BCTC-2013
 'str2 = "aa320192300029469   00201300100100101201/0114/09/2006<S01><S>~2315~400~III.01~10~10~III.05~2020~35~~2010~20~~10~15~~145~155~~20~30~~35~30~~40~45~~50~50~~45~45~III.02~20~25~~25~20~~95~155~~10~20~~30~35~~35~50~~20~50~~1205~3130~III.03.04~1022~2650~~947~2380~~25~200~~50~70~~40~40~~20~10~~20~30~III.05~80~60~~30~40~~50~20~~63~380~~30~230~~10~120~~23~30~~3520~3530~~1860~20"
@@ -5990,15 +6017,15 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
     Set xmlResultNNT = New MSXML.DOMDocument
     Dim strResultNNT As String
 
-'    'Du lieu gia lap de test
-'        Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-'        strResultNNT = "sdfsfds"
+    'Du lieu gia lap de test
+        Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+        strResultNNT = "sdfsfds"
     
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         strMaNNT = strTaxIDString
-        strResultNNT = GetDataFromESB("", "", "NNT")
-        strResultNNT = ChangeTagASSCII(strResultNNT, False)
-        xmlResultNNT.loadXML strResultNNT
+'        strResultNNT = GetDataFromESB("", "", "NNT")
+'        strResultNNT = ChangeTagASSCII(strResultNNT, False)
+'        xmlResultNNT.loadXML strResultNNT
     Else
         Set rsReturn = Nothing
         blnSuccess = False
@@ -6130,15 +6157,15 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
 '        Exit Function
 '    End If
 
-'    'Du lieu gia lap de test
-'    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
-'    strResultDLT = "sdfsfds"
+    'Du lieu gia lap de test
+    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
+    strResultDLT = "sdfsfds"
 
     If (strTaxIDDLString <> "" And strTaxIDDLString <> vbNullString) Then
         strMaDLT = strTaxIDDLString
-        strResultDLT = GetDataFromESB("", "", "DLT")
-        strResultDLT = ChangeTagASSCII(strResultDLT, False)
-        xmlResultDLT.loadXML strResultDLT
+'        strResultDLT = GetDataFromESB("", "", "DLT")
+'        strResultDLT = ChangeTagASSCII(strResultDLT, False)
+'        xmlResultDLT.loadXML strResultDLT
     End If
     
     If strTaxIDDLString <> "" And strTaxIDDLString <> vbNullString Then
@@ -6275,15 +6302,15 @@ On Error GoTo ErrHandle
     Set xmlResultNNT = New MSXML.DOMDocument
     Dim strResultNNT As String
 
-'   'Du lieu gia lap de test
-'    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-'    strResultNNT = "test"
+   'Du lieu gia lap de test
+    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+    strResultNNT = "test"
 
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         strMaNNT = strTaxIDString
-        strResultNNT = GetDataFromESB("", "", "NNT")
-        strResultNNT = ChangeTagASSCII(strResultNNT, False)
-        xmlResultNNT.loadXML strResultNNT
+'        strResultNNT = GetDataFromESB("", "", "NNT")
+'        strResultNNT = ChangeTagASSCII(strResultNNT, False)
+'        xmlResultNNT.loadXML strResultNNT
     Else
         Set rsReturn = Nothing
         blnSuccess = False
