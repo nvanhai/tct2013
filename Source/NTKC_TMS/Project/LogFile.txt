@@ -1,57 +1,33 @@
-3/1/2013 1:16:42 PM mdlFunctions SetupData
- 16 : Expression too complex
+3/20/2014 10:27:28 AM frmInterfaces GetTaxInfoBCTC
+ 0 : fault_code: 
 ------------------------------------------------------------
-3/1/2013 1:18:58 PM mdlFunctions SetupData
- 16 : Expression too complex
-------------------------------------------------------------
-3/1/2013 1:29:17 PM mdlFunctions SetupData
- 16 : Expression too complex
-------------------------------------------------------------
-3/1/2013 1:30:36 PM mdlFunctions SetupData
- 16 : Expression too complex
-------------------------------------------------------------
-3/1/2013 1:41:55 PM mdlFunctions SetupData
- 16 : Expression too complex
-------------------------------------------------------------
-3/1/2013 2:19:42 PM mdlFunctions SetupData
- 16 : Expression too complex
-------------------------------------------------------------
-4/3/2013 11:14:24 AM mdlFunctions SetupData
- 16 : Expression too complex
-------------------------------------------------------------
-4/3/2013 11:18:28 AM mdlFunctions SetupData
- 16 : Expression too complex
-------------------------------------------------------------
-4/3/2013 11:21:24 AM mdlFunctions SetupData
- 16 : Expression too complex
-------------------------------------------------------------
-4/3/2013 11:25:47 AM mdlFunctions SetupData
- 16 : Expression too complex
-------------------------------------------------------------
-4/3/2013 11:30:35 AM mdlFunctions SetupData
- 16 : Expression too complex
-------------------------------------------------------------
-4/3/2013 11:33:01 AM mdlFunctions SetupData
- 16 : Expression too complex
-------------------------------------------------------------
-4/3/2013 11:36:57 AM mdlFunctions SetupData
- 16 : Expression too complex
-------------------------------------------------------------
-4/3/2013 11:42:09 AM mdlFunctions SetupData
- 16 : Expression too complex
-------------------------------------------------------------
-4/3/2013 11:44:19 AM mdlFunctions SetupData
- 16 : Expression too complex
-------------------------------------------------------------
-4/3/2013 11:47:58 AM frmInterfaces LoadForm
+3/20/2014 10:27:31 AM frmInterfaces Execute_save
  13 : Type mismatch
 ------------------------------------------------------------
-4/3/2013 11:48:21 AM frmInterfaces LoadForm
+3/20/2014 10:31:51 AM frmInterfaces GetTaxInfoBCTC
+ 0 : fault_code: 
+------------------------------------------------------------
+3/20/2014 10:32:42 AM frmInterfaces Execute_save
  13 : Type mismatch
 ------------------------------------------------------------
-4/3/2013 11:48:23 AM frmInterfaces LoadForm
- 13 : Type mismatch
+3/20/2014 10:32:45 AM frmInterfaces GetTaxInfoBCTC
+ 0 : fault_code: 
 ------------------------------------------------------------
-4/3/2013 11:50:50 AM mdlFunctions SetupData
- 16 : Expression too complex
+3/20/2014 10:33:48 AM frmInterfaces GetTaxInfoBCTC
+ 0 : fault_code: 
+------------------------------------------------------------
+3/20/2014 10:42:49 AM frmInterfaces GetTaxInfoBCTC
+ 0 : fault_code: 
+------------------------------------------------------------
+3/20/2014 10:43:01 AM frmInterfaces GetTaxInfoBCTC
+ 0 : fault_code: 
+------------------------------------------------------------
+3/20/2014 10:48:55 AM frmInterfaces GetTaxInfoBCTC
+ 0 : fault_code: 
+------------------------------------------------------------
+3/20/2014 10:51:19 AM frmInterfaces GetTaxInfoBCTC
+ 0 : fault_code: 
+------------------------------------------------------------
+3/20/2014 10:51:36 AM frmInterfaces GetTaxInfoBCTC
+ 0 : fault_code: 
 ------------------------------------------------------------

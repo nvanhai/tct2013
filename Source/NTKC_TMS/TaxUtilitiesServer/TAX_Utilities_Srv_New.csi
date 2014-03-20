@@ -1,3 +1,4 @@
 [History]
-1=#P0#=mb	#P1#=Connect	#P2#=TAX_Utilities_Srv_New/clsADO/Connect	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20130301113046	#P7#=0	#P8#=2	.
-2=#P0#=mb	#P1#=Execute	#P2#=TAX_Utilities_Srv_New/clsADO/Execute	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20120411173418	#P7#=0	#P8#=2	.
+1=#P0#=mb	#P1#=PostWebservice	#P2#=TAX_Utilities_Srv_New/XMLRequestNuic/PostWebservice	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140318172923	#P7#=0	#P8#=10	.
+2=#P0#=mb	#P1#=xmlDataReDim	#P2#=TAX_Utilities_Srv_New/clsVariables/xmlDataReDim	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140318155043	#P7#=0	#P8#=4	.
+3=#P0#=mb	#P1#=isCheckQCT	#P2#=TAX_Utilities_Srv_New/clsVariables/isCheckQCT [Get]	#P3#=	#P4#=	#P5#=MembPropertyPrivate	#P6#=20140318103405	#P7#=0	#P8#=1	.

@@ -1,7 +1,8 @@
-clsVariables = 0, 0, 0, 0, C
-mdlVariables = 0, 0, 0, 0, C
+clsVariables = 44, 58, 929, 370, Z
+mdlVariables = 110, 145, 959, 611, C
 clsLZWCompress = 0, 0, 0, 0, C
-frmDisplayMessage = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+frmDisplayMessage = 0, 0, 0, 0, C, 154, 203, 995, 669, C
 clsMessageBox = 0, 0, 0, 0, C
-clsADO = 0, 0, 0, 0, C
-clsUnicodeConvert = 0, 0, 0, 0, C
+clsADO = 44, 58, 913, 370, C
+clsUnicodeConvert = 22, 29, 907, 341, C
+XMLRequestNuic = 132, 174, 937, 577, 

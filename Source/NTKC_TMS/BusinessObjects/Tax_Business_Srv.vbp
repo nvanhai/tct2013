@@ -1,7 +1,7 @@
 Type=OleDll
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#C:\Windows\system32\stdole2.tlb#OLE Automation
-Reference=*\G{D63E0CE2-A0A2-11D0-9C02-00C04FC99C8E}#2.0#0#e:\Setup\MSXML.DLL#Microsoft XML, version 2.0
-Reference=*\G{EF53050B-882E-4776-B643-EDA472E8E3F2}#2.7#0#C:\Program Files\Common Files\System\ado\msado27.tlb#Microsoft ActiveX Data Objects 2.7 Library
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#C:\WINDOWS\system32\STDOLE2.TLB#OLE Automation
+Reference=*\G{D63E0CE2-A0A2-11D0-9C02-00C04FC99C8E}#2.0#0#C:\WINDOWS\system32\msxml.dll#Microsoft XML, version 2.0
+Reference=*\G{EF53050B-882E-4776-B643-EDA472E8E3F2}#2.7#0#C:\Program Files\Common Files\system\ado\msado27.tlb#Microsoft ActiveX Data Objects 2.7 Library
 Reference=*\A..\TaxUtilitiesServer\TAX_Utilities_Srv_New.vbp
 Object={B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0; fpSpru70.ocx
 Module=mdlFunctions; Modules\mdlFunctions.bas
@@ -80,6 +80,19 @@ Class=cls_02BVMT; Class\cls_02BVMT.cls
 Class=cls_01TBVMT; Class\cls_01TBVMT.cls
 Class=cls_09TNCN; Class\cls_09TNCN.cls
 Class=cls_01BVMT; Class\cls_01BVMT.cls
+Class=cls_05GTGT; Class\cls_05GTGT.cls
+Class=cls_03_TBAC; Class\cls_03_TBAC.cls
+Class=cls_04TBAC; Class\cls_04TBAC.cls
+Class=cls_95_BCTC; Class\cls_95_BCTC.cls
+Class=cls_01TNCN_BHDC; Class\cls_01TNCN_BHDC.cls
+Class=cls_01KK_TTS; Class\cls_01KK_TTS.cls
+Class=cls_01TAIN_DK; Class\cls_01TAIN_DK.cls
+Class=cls_01ATNDN_DK; Class\cls_01ATNDN_DK.cls
+Class=cls_01BTNDN_DK; Class\cls_01BTNDN_DK.cls
+Class=cls_01_BCTL_DK; Class\cls_01_BCTL_DK.cls
+Class=cls_03TD_TAIN; Class\cls_03TD_TAIN.cls
+Class=cls_01TDGTGT; Class\cls_01_TDGTGT.cls
+Class=cls_01TD_GTGT; Class\cls_01TD_GTGT.cls
 Startup="(None)"
 HelpFile=""
 Title="BusinessObjectSvr"
@@ -117,3 +130,6 @@ DebugStartupOption=0
 
 [MS Transaction Server]
 AutoRefresh=1
+
+[CodeSMART]
+Task_UID=26_02_14_17_31_32
