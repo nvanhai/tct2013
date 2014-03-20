@@ -472,7 +472,7 @@ On Error GoTo ErrHandle
         LOAI_KYKK = "Q"
     End If
     
-    If isCheckQCT = True Then
+    If TAX_Utilities_Srv_New.isCheckQCT = True Then
         sQCT = "'Y'"
     Else
         sQCT = "null"
