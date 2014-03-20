@@ -1399,7 +1399,7 @@ Private Sub Command1_Click()
 
 '--FIX loi 3.2.2
     '--01A_TNDN_DK
-'str2 = "aa999982300100778   02201400400400100101/0101/01/1900<S01><S>0010011000</S><S>~x~~~1~0~0~HD01~x~</S><S>0~0~0~0~0~0~0~0</S><S>Kh¸nh Linh~MCT~Minh NhËt~17/03/2014~1~~~0</S></S01>"
+'str2 = "aa999982300100778   01201400400400100101/0101/01/1900<S01><S>0010011000</S><S>~x~~~1~0~0~HD01~x~</S><S>0~0~0~0~0~0~0~0</S><S>Kh¸nh Linh~MCT~Minh NhËt~17/03/2014~1~~~0</S></S01>"
 'Barcode_Scaned str2
 '
 'str2 = "aa999982300100778   02201400500500100101/0101/01/1900<S01><S>0010011000</S><S>1~~x~01/01/2014~1~0~0~HD02~~x</S><S>0~0~0~0~0~0~0~21500</S><S>Kh¸nh Linh~MCT~Minh NhËt~17/03/2014~1~~17/02/2014~2</S></S01>"
@@ -1452,14 +1452,23 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '--To khai bo sung QCT - 04/GTGT
-str2 = "bs999712300558938   04201300300300100301/0101/01/1900<S01><S>0010011000</S><S>12123~2323~23~232~12~2323~70~2323~46~7201~151~19324~151</S><S>Kh¸nh Linh~Minh NhËt~MCT~18/03/2014~~1~1~1~</S></S01>"
-Barcode_Scaned str2
-str2 = "bs999712300558938   042013003003002003<SKHBS><S>Ph©n phèi, cung cÊp hµng ho¸~23~0~23~23~DÞch vô, x©y dùng kh«ng bao thÇu nguyªn vËt liÖu~25~0~12~12~S¶n xuÊt, vËn t¶i, dÞch vô cã g¾n víi hµng ho¸, x©"
-Barcode_Scaned str2
-str2 = "bs999712300558938   042013003003003003y dùng cã bao thÇu nguyªn vËt liÖu~27~0~70~70~Ho¹t ®éng kinh doanh kh¸c~29~0~46~46</S><S>~~0~0~0</S><S>18/03/2014~46~3~0~~~10300~10303~0~0~~0~0~151</S></SKHBS>"
-Barcode_Scaned str2
+'str2 = "bs999712300558938   04201300300300100301/0101/01/1900<S01><S>0010011000</S><S>12123~2323~23~232~12~2323~70~2323~46~7201~151~19324~151</S><S>Kh¸nh Linh~Minh NhËt~MCT~18/03/2014~~1~1~1~</S></S01>"
+'Barcode_Scaned str2
+'str2 = "bs999712300558938   042013003003002003<SKHBS><S>Ph©n phèi, cung cÊp hµng ho¸~23~0~23~23~DÞch vô, x©y dùng kh«ng bao thÇu nguyªn vËt liÖu~25~0~12~12~S¶n xuÊt, vËn t¶i, dÞch vô cã g¾n víi hµng ho¸, x©"
+'Barcode_Scaned str2
+'str2 = "bs999712300558938   042013003003003003y dùng cã bao thÇu nguyªn vËt liÖu~27~0~70~70~Ho¹t ®éng kinh doanh kh¸c~29~0~46~46</S><S>~~0~0~0</S><S>18/03/2014~46~3~0~~~10300~10303~0~0~~0~0~151</S></SKHBS>"
+'Barcode_Scaned str2
 
+'--CHECK TEST TICH HOP 9.100
+'0100691488 ; 0102810719 (not QCT)
+'str2 = "aa999040102810719   01201400100200100101/0114/06/2006<S01><S>0010011000</S><S>0~20~2~2~2~18~2</S><S>2~Minh NhËt~MCT~18/03/2014~1~~~1</S></S01>"
+'Barcode_Scaned str2
 
+'--01/TAIN-DK
+str2 = "aa999922300100778   01201400400400100201/0101/01/1900<S01><S></S><S>1~~x~01/01/2014~0~0~1~KLO11~x~</S><S>2500~1000~12300~30750000~15~4612500~21500</S><S>hoten~cc~Minh NhËt~03/03/2014~1~~11/03/2014~2</S></S01>"
+Barcode_Scaned str2
+str2 = "aa999922300100778   012014004004002002<S01-1><S>4612500</S><S>0102030405~cmc 01~20~922500~ghi chu 1~6868686868~cmc 02~80~3690000~ghi chu 2</S><S>100~4612500</S></S01-1>"
+Barcode_Scaned str2
 End Sub
 
 
