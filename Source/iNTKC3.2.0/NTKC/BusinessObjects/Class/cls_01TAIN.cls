@@ -375,14 +375,14 @@ End Function
 Private Sub DataDM(ByVal Id As String, Optional ByRef strIdQLT As String, Optional ByRef TenTN As String, Optional ByRef DVT As String, Optional ByRef strThueSuat As String, Optional ByRef blnSuaThueSuat As Boolean)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlDomData As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = GetCatalogueFileName
     
-       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Cell")
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -713,7 +713,7 @@ Private Sub fps_Click(ByVal Col As Long, ByVal Row As Long)
     End With
 End Sub
 
-Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
+Public Function GenerateSQL_Header(xmlDomData As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
     Dim xmlList As MSXML.IXMLDOMNodeList
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim xmlAttribute As MSXML.IXMLDOMAttribute
@@ -732,7 +732,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     
 On Error GoTo ErrHandle
     strSQL = strSQL_HDR
-    Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
+    Set xmlList = xmlDomData.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
         
@@ -780,7 +780,7 @@ On Error GoTo ErrHandle
     End If
     ' end
     
-    If isCheckQCT = True Then
+    If TAX_Utilities_iNTK.isCheckQCT = True Then
         sQCT = "'Y'"
     Else
         sQCT = "null"
@@ -891,7 +891,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
     strSQL = strSQL & "null,"
     strSQL = strSQL & vHTHUC_NOP & "," & vItkhai_ID & ","
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & vNGANH_NGHE_KD & "," & vTO_KHAI_LAN_PS & "," & vNGAY_PS & "," & sQCT &  ")"
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & "," & vNGANH_NGHE_KD & "," & vTO_KHAI_LAN_PS & "," & vNGAY_PS & "," & sQCT & ")"
     GenerateSQL_Header = strSQL
     'Debug.Print GenerateSQL_Header
     

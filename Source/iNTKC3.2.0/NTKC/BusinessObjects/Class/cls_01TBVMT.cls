@@ -160,7 +160,7 @@ Public Function Prepared1() As Boolean
     Prepared1 = True
 End Function
 Private Sub setCQTQuanLy()
-        Dim xmlDOMdata As New MSXML.DOMDocument
+        Dim xmlDomData As New MSXML.DOMDocument
         Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
         Dim xmlNode As MSXML.IXMLDOMNode
         Dim arrDanhsach() As String
@@ -172,8 +172,8 @@ Private Sub setCQTQuanLy()
         Dim loaiCq As String
         Dim maLoaiCq As String
         
-        If xmlDOMdata.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
-            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+        If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -188,14 +188,14 @@ Private Sub setCQTQuanLy()
                     'End If
                 End If
             Next
-            Set xmlDOMdata = Nothing
+            Set xmlDomData = Nothing
             Set xmlNodeListCell = Nothing
             Set xmlNode = Nothing
         End If
         
         ' setloai
-        If xmlDOMdata.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_DM_LoaiCq.xml")) Then
-            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+        If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_DM_LoaiCq.xml")) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -203,7 +203,7 @@ Private Sub setCQTQuanLy()
                     maLoaiCq = maLoaiCq + arrDanhsach(0) + Chr$(9)
                 End If
             Next
-            Set xmlDOMdata = Nothing
+            Set xmlDomData = Nothing
             Set xmlNodeListCell = Nothing
             Set xmlNode = Nothing
         End If
@@ -345,13 +345,13 @@ End Function
 Private Sub DataDM(ByVal Id As String, Optional ByRef TenHH As String, Optional ByRef DVT As String, Optional ByRef strMucThue As String)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlDomData As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = "..\InterfaceTemplates\xml\Catalogue_DM_thue_BVMT.xml"
-       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -368,14 +368,14 @@ End Sub
 Private Sub DataDMCQ(ByVal Id As String, Optional ByRef TenTN As String)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlDomData As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = "..\InterfaceTemplates\xml\Catalogue_Tinh_Thanh.xml"
     
-       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -659,7 +659,7 @@ Private Sub fps_Click(ByVal Col As Long, ByVal Row As Long)
     End With
 End Sub
 
-Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
+Public Function GenerateSQL_Header(xmlDomData As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
     Dim xmlList As MSXML.IXMLDOMNodeList
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim xmlAttribute As MSXML.IXMLDOMAttribute
@@ -678,7 +678,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     
 On Error GoTo ErrHandle
     strSQL = strSQL_HDR
-    Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
+    Set xmlList = xmlDomData.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
         
@@ -725,11 +725,11 @@ On Error GoTo ErrHandle
         vHTHUC_NOP = "null"
     End If
     ' end
-      If isCheckQCT = True Then
+    If TAX_Utilities_iNTK.isCheckQCT = True Then
         sQCT = "'Y'"
     Else
         sQCT = "null"
-    End If  
+    End If
     
     'Get ngay phat sinh
     With fps

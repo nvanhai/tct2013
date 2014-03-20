@@ -444,7 +444,7 @@ Public Function CheckValidData() As Boolean
     End With
 End Function
 
-Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
+Public Function GenerateSQL_Header(xmlDomData As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
     Dim xmlList As MSXML.IXMLDOMNodeList
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim xmlAttribute As MSXML.IXMLDOMAttribute
@@ -463,7 +463,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     
 On Error GoTo ErrHandle
     strSQL = Replace$(strSQL_HDR, ")", ",LOAI_KYKK)")
-    Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
+    Set xmlList = xmlDomData.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
         
@@ -518,7 +518,7 @@ On Error GoTo ErrHandle
         LOAI_KYKK = "Q"
     End If
     
-    If isCheckQCT = True Then
+    If TAX_Utilities_iNTK.isCheckQCT = True Then
         sQCT = "'Y'"
     Else
         sQCT = "null"
