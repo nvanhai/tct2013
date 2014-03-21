@@ -3469,7 +3469,7 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                     
                     Dim strIdTkhaiTT156 As String
                     Dim strIdTkCheck As String
-                    strIdTkhaiTT156 = "~02~04~71~72~11~12~73~70~81~06~05~86~90~"
+                    strIdTkhaiTT156 = "~02~04~71~72~11~12~73~70~81~06~05~86~90~94~96~98~99~92~"
                     strIdTkCheck = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
                         
                     If isNewdataBS = False Then

@@ -667,17 +667,40 @@ nextPrinter:
 '    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 99 Then
 '        fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0277"), "Msg")
     'set footer for 01/TAIN-DK,02/TAIN-DK, 02/TNDN-DK
-    ElseIf (GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 92 Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 93 Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 98 Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 89) Then
-        If (strDauTho = "1") Then
-            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0275"), "Msg")
-        ElseIf (strCondensate = "1") Then
-            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0276"), "Msg")
-        ElseIf (strKhiThienNhien = "1") Then
-            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0277"), "Msg")
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 98 Then
+'        If (strDauTho = "1") Then
+'            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0275"), "Msg")
+'        ElseIf (strCondensate = "1") Then
+'            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0276"), "Msg")
+'        ElseIf (strKhiThienNhien = "1") Then
+'            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0277"), "Msg")
+'        End If
+        'fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0300"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0301"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0302"), "Msg")
+        If strLoaiTkDk = "DT" Then
+            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0300"), "Msg")
+        ElseIf strLoaiTkDk = "KTN" Then
+            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0302"), "Msg")
+        ElseIf strLoaiTkDk = "CD" Then
+            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0301"), "Msg")
+        End If
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 92 Then
+'        If (strDauTho = "1") Then
+'            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0275"), "Msg")
+'        ElseIf (strCondensate = "1") Then
+'            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0276"), "Msg")
+'        ElseIf (strKhiThienNhien = "1") Then
+'            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0277"), "Msg")
+'        End If
+        'fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0300"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0301"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0302"), "Msg")
+        If strLoaiTkDk = "DT" Then
+            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0303"), "Msg")
+        ElseIf strLoaiTkDk = "KTN" Then
+            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0305"), "Msg")
+        ElseIf strLoaiTkDk = "CD" Then
+            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0304"), "Msg")
         End If
     ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 25 Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0284"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0285"), "Msg")
-    
     End If
     
     'KHBS khong thay doi so thue se ko in phu luc va co cau canh bao
