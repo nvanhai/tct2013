@@ -290,4 +290,12 @@
 	<Infor ID="0297" Msg="Đã sử dụng"/>
 	<Infor ID="0298" Msg="Chưa sử dụng"/>
 	<Infor ID="0299" Msg="Tê khai ngµy"/>
+	<Infor ID="0300" Msg="Đối với dầu thô: Hạch toán ct [35] vào tiểu mục 3752"/>
+	<Infor ID="0301" Msg="Đối với condensate: Hạch toán ct [35] vào tiểu mục 3952"/>
+	<Infor ID="0302" Msg="Đối với khí thiên nhiên: Hạch toán ct [35] vào tiểu mục 3802"/>
+	
+	<Infor ID="0303" Msg="Đối với dầu thô: Hạch toán ct [34] vào tiểu mục 3751"/>
+	<Infor ID="0304" Msg="Đối với condensate: Hạch toán ct [34] vào tiểu mục 3951"/>
+	<Infor ID="0305" Msg="Đối với khí thiên nhiên: Hạch toán ct [34] vào tiểu mục 3801"/>
+	
 </Message>
