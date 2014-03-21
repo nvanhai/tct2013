@@ -101,7 +101,7 @@ Begin VB.Form frmTraCuu
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuu.frx":0584
+         SpreadDesigner  =   "frmTracuu.frx":05BC
          UserResize      =   1
          Appearance      =   1
       End
@@ -132,21 +132,21 @@ Begin VB.Form frmTraCuu
          Width           =   45
       End
       Begin VB.OptionButton optRecv 
-         Caption         =   "Ch­a nhËn sang QLT"
+         Caption         =   "Ch­a nhËn sang BCTC"
          Height          =   255
          Left            =   2640
          TabIndex        =   11
          Top             =   840
-         Width           =   1905
+         Width           =   2505
       End
       Begin VB.OptionButton optQLT 
-         Caption         =   "NhËn sang QLT"
+         Caption         =   "NhËn sang BCTC"
          Height          =   255
-         Left            =   1110
+         Left            =   750
          TabIndex        =   10
          Top             =   840
          Value           =   -1  'True
-         Width           =   1485
+         Width           =   1845
       End
       Begin FPUSpreadADO.fpSpread fpsLoaiTK 
          Height          =   525
@@ -179,7 +179,7 @@ Begin VB.Form frmTraCuu
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuu.frx":0A81
+         SpreadDesigner  =   "frmTracuu.frx":0AF1
          UserResize      =   1
       End
    End
@@ -266,10 +266,11 @@ Private Sub btnTraCuu_Click(Index As Integer)
     xmlSQL.Load App.path & "\SQL.xml"
     strSQL = GetAttribute(xmlSQL.childNodes(1), "SqlTraCuu")
     strSQL = Replace(strSQL, "nhohon=", "<=")
-    strSQL = Replace(strSQL, "ma_tkhai", "" & changeLoaiToKhai(lmaTK) & "")
+    strSQL = Replace(strSQL, "ma_tkhai", "" & changeLoaiToKhaiBCTC(lmaTK) & "")
     strSQL = Replace(strSQL, "strDa_Nhan", "" & strDaNhan & "")
     strSQL = Replace(strSQL, "ngay_nop_dau", "To_date('" & format(DteTuN, "dd/mm/yyyy") & "','dd/mm/yyyy') ")
     strSQL = Replace(strSQL, "ngay_nop_cuoi", "To_date('" & format(DteDeN, "dd/mm/yyyy") & "','dd/mm/yyyy') ")
+    strSQL = Replace(strSQL, "phong_xu_ly", "'" & strTaxOfficeId & "%'")
     'Khoi tao bien
     lCol = 2
     lRow = 1
@@ -344,6 +345,17 @@ Private Function changeLoaiToKhai(ByVal strLoaiMaToKhai As String) As String
     If strLoaiMaToKhai = "111" Then changeLoaiToKhai = "'%95%'"
     
     If strLoaiMaToKhai = "0" Then changeLoaiToKhai = "'%'"
+End Function
+
+Private Function changeLoaiToKhaiBCTC(ByVal strLoaiMaToKhai As String) As String
+    
+    If strLoaiMaToKhai = "108" Then changeLoaiToKhaiBCTC = " like '%15%'"
+    If strLoaiMaToKhai = "109" Then changeLoaiToKhaiBCTC = " like '%48%'"
+    If strLoaiMaToKhai = "110" Then changeLoaiToKhaiBCTC = " like '%16%'"
+    If strLoaiMaToKhai = "111" Then changeLoaiToKhaiBCTC = " like '%99%'"
+    If strLoaiMaToKhai = "111" Then changeLoaiToKhaiBCTC = " like '%95%'"
+    
+    If strLoaiMaToKhai = "0" Then changeLoaiToKhaiBCTC = "like '%BCTC%'"
 End Function
 
 
