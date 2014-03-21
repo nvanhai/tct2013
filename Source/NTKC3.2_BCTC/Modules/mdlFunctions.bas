@@ -16,9 +16,9 @@ Public dNgayDauKy As Date
 Public dNgayCuoiKy As Date
 
 Public Const SS_SORT_ORDER_ASCENDING = 1
-Public Const APP_VERSION = "3.2.2"
+Public Const APP_VERSION = "9.9.9"
 
-Public Const HTKK_LAST_VERSION = "3.2.2"
+Public Const HTKK_LAST_VERSION = "3.2.1"
 
 Public Const SS_BORDER_TYPE_NONE = 0
 Public Const SS_BORDER_TYPE_LEFT = 1
@@ -60,6 +60,12 @@ Public strUserID As String                                ' ID of User
 Public LoaiKyKK As Boolean 'True la quy, false la thang
 
 Public isPITActive As Boolean   ' Kiem tra trang thai active cua PIT
+
+
+Public strDBUserNameBMT As String                              ' Userid for db QLT
+Public strDBPasswordBMT As String                              ' Password for db QLT
+Public strMaNSD As String
+
 
 ''' GetAttribute description
 ''' Get an attribute value of xmlNode
