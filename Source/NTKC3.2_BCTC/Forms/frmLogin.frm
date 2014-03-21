@@ -300,6 +300,9 @@ On Error GoTo ErrorHandle
             IsValidUser = 2
             'get User ID
             strUserID = rec.Fields(0).Value
+            ' ma cqt
+            strMaNSD = rec.Fields(2).Value
+            
             'get User name
             strUserName = clsConvert.Convert(rec.Fields(1).Value, TCVN, UNICODE)
             '***********************************
@@ -314,7 +317,7 @@ On Error GoTo ErrorHandle
             End If
             'get cqt id
             'strTaxOfficeId = clsConvert.Convert(rec.Fields(0).Value, TCVN, UNICODE)
-            strMaNSD = rec.Fields(2).Value
+            
             If Len(Trim(strTaxOfficeId)) = 3 Then
                 ' ghep them 2 so 0 vao dang sau la lay duoc ma cuc thue
                 strTaxOfficeId = strTaxOfficeId & "00"
@@ -338,6 +341,9 @@ On Error GoTo ErrorHandle
             IsValidUser = 2
             'get User ID
             strUserID = rec.Fields(0).Value
+            ' ma cqt
+            strMaNSD = rec.Fields(2).Value
+            
             'get User name
             strUserName = clsConvert.Convert(rec.Fields(1).Value, TCVN, UNICODE)
             ' get cqt id (Chi cuc thue)
@@ -351,7 +357,7 @@ On Error GoTo ErrorHandle
             End If
             'get cqt id
             'strTaxOfficeId = clsConvert.Convert(rec.Fields(0).Value, TCVN, UNICODE)
-            strMaNSD = rec.Fields(2).Value
+            
             If Len(Trim(strTaxOfficeId)) = 3 Then
                 ' ghep them 2 so 0 vao dang sau la lay duoc ma cuc thue
                 strTaxOfficeId = strTaxOfficeId & "00"
