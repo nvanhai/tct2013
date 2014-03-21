@@ -727,7 +727,7 @@ On Error GoTo ErrHandle
         End If
         End With
     Next
-    If isCheckQCT = True Then
+    If TAX_Utilities_Srv_New.isCheckQCT = True Then
         sQCT = "'Y'"
     Else
         sQCT = "null"

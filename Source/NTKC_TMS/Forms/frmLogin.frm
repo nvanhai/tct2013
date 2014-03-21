@@ -312,12 +312,11 @@ Private Function IsValidUserESB() As Integer
         Exit Function
     End If
     
+    Dim sFileName As String
+    sFileName = App.path & "\ResultNSD.xml"
+    xmlResultNSD.save sFileName
+    
     If IsValidXMLUser(xmlResultNSD) Then
-
-        Dim sFileName As String
-        sFileName = App.path & "\ResultNSD.xml"
-        xmlResultNSD.save sFileName
-        
         sStatus = xmlResultNSD.getElementsByTagName("Status")(0).Text
         strCurrentVersion = xmlResultNSD.getElementsByTagName("NTKversion")(0).Text
         strUserName = xmlResultNSD.getElementsByTagName("UserName")(0).Text

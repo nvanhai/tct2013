@@ -148,7 +148,6 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
     
     With fps
         .Sheet = 1
-       
         .Col = .ColLetterToNumber(PHONG_XU_LY_COL)
         .Row = PHONG_XU_LY_ROW
         If rsPXL.Fields.count > 0 Then
