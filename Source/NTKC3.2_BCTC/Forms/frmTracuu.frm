@@ -101,7 +101,7 @@ Begin VB.Form frmTraCuu
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuu.frx":05BC
+         SpreadDesigner  =   "frmTracuu.frx":0584
          UserResize      =   1
          Appearance      =   1
       End
@@ -179,7 +179,7 @@ Begin VB.Form frmTraCuu
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuu.frx":0AF1
+         SpreadDesigner  =   "frmTracuu.frx":0A81
          UserResize      =   1
       End
    End
@@ -341,6 +341,7 @@ Private Function changeLoaiToKhai(ByVal strLoaiMaToKhai As String) As String
     If strLoaiMaToKhai = "109" Then changeLoaiToKhai = "'%48%'"
     If strLoaiMaToKhai = "110" Then changeLoaiToKhai = "'%16%'"
     If strLoaiMaToKhai = "111" Then changeLoaiToKhai = "'%99%'"
+    If strLoaiMaToKhai = "111" Then changeLoaiToKhai = "'%95%'"
     
     If strLoaiMaToKhai = "0" Then changeLoaiToKhai = "'%'"
 End Function

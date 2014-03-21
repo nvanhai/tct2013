@@ -188,6 +188,11 @@ On Error GoTo ErrorHandle
     End Select
    
     GetDataInfor
+    ' lay thong tin owner
+    GetDataInforBMT
+    ' lay thong tin CQT
+    getMaCQT
+    
     'Set user name to system caption
     frmSystem.lblUser.caption = Mid$(frmSystem.lblUser.caption, 1, _
         InStr(1, frmSystem.lblUser.caption, ":") + 1) & _
@@ -248,6 +253,7 @@ On Error GoTo ErrorHandle
     Dim strSQL As String
     Dim cmd As New ADODB.Command
     
+    Dim clsConnBMT As New TAX_Utilities_Srv_New.clsADO
     
     'connect to database BMT
     If clsDAO.Connected = False Then
@@ -258,6 +264,7 @@ On Error GoTo ErrorHandle
         Me.MousePointer = vbDefault
         frmSystem.MousePointer = vbDefault
     End If
+    
     
     'set key trong BMT, call prc_get_key
     cmd.ActiveConnection = clsDAO.Connection
@@ -281,7 +288,7 @@ On Error GoTo ErrorHandle
     'Date:18/04/06
     ' Them truong ten_nguoisudung dua vao QLT
         'get username
-        strSQL = "SELECT ten_nsd, mo_ta, MA_CQT FROM bmt_nsd WHERE ten_nsd='" & userid & "' " & _
+        strSQL = "SELECT ten_nsd, mo_ta, MA_NSD FROM bmt_nsd WHERE ten_nsd='" & userid & "' " & _
         "AND MA_NSD IN (SELECT MA_NSD FROM bmt_nsd_nhom " & _
         "WHERE MA_NHOM IN (SELECT MA_NHOM FROM BMT_NHOM_CHUC_NANG " & _
         "WHERE MA_CHUC_NANG IN (SELECT MA_CHUC_NANG FROM bmt_chuc_nang " & _
@@ -307,7 +314,7 @@ On Error GoTo ErrorHandle
             End If
             'get cqt id
             'strTaxOfficeId = clsConvert.Convert(rec.Fields(0).Value, TCVN, UNICODE)
-            strTaxOfficeId = rec.Fields(2).Value
+            strMaNSD = rec.Fields(2).Value
             If Len(Trim(strTaxOfficeId)) = 3 Then
                 ' ghep them 2 so 0 vao dang sau la lay duoc ma cuc thue
                 strTaxOfficeId = strTaxOfficeId & "00"
@@ -320,7 +327,7 @@ On Error GoTo ErrorHandle
     ElseIf rec.Fields(0).Value = -1 Then
         IsValidUser = 0
     Else
-        strSQL = "SELECT ten_nsd, mo_ta, MA_CQT FROM bmt_nsd WHERE ten_nsd='" & userid & "' " & _
+        strSQL = "SELECT ten_nsd, mo_ta, MA_NSD FROM bmt_nsd WHERE ten_nsd='" & userid & "' " & _
         "AND MA_NSD IN (SELECT MA_NSD FROM bmt_nsd_nhom " & _
         "WHERE MA_NHOM IN (SELECT MA_NHOM FROM BMT_NHOM_CHUC_NANG " & _
         "WHERE MA_CHUC_NANG IN (SELECT MA_CHUC_NANG FROM bmt_chuc_nang " & _
@@ -344,7 +351,7 @@ On Error GoTo ErrorHandle
             End If
             'get cqt id
             'strTaxOfficeId = clsConvert.Convert(rec.Fields(0).Value, TCVN, UNICODE)
-            strTaxOfficeId = rec.Fields(2).Value
+            strMaNSD = rec.Fields(2).Value
             If Len(Trim(strTaxOfficeId)) = 3 Then
                 ' ghep them 2 so 0 vao dang sau la lay duoc ma cuc thue
                 strTaxOfficeId = strTaxOfficeId & "00"
@@ -505,3 +512,89 @@ Private Function checkActivePIT() As Boolean
 ErrHandle:
     SaveErrorLog Me.Name, "checkActivePIT", Err.Number, Err.Description
 End Function
+
+
+Private Sub GetDataInforBMT()
+On Error GoTo ErrorHandle
+    Dim userid As String
+    Dim clsConvert  As New clsUnicodeConvert
+    Dim rec As ADODB.Recordset
+    Dim cmd As New ADODB.Command
+    Dim para As New ADODB.Parameter
+    
+    'connect to database BMT
+    If clsDAO.Connected = False Then
+        clsDAO.CreateConnectionString [MSDAORA.1], "BMT", "LOGIN_USER", "LOGIN_USER"
+        clsDAO.Connect
+    End If
+    
+    'set key trong BMT, call prc_get_key
+    cmd.ActiveConnection = clsDAO.Connection
+    cmd.CommandType = adCmdStoredProc
+    cmd.CommandText = "BMT_PCK_BMHT.prc_get_key"
+   
+    
+    cmd.Execute
+    Set cmd = Nothing
+    
+    Set cmd = New ADODB.Command
+    cmd.ActiveConnection = clsDAO.Connection
+    cmd.CommandType = adCmdStoredProc
+    cmd.CommandText = "BMT_PCK_BMHT.Prc_Get_App_Owner"
+    cmd.Parameters.Append cmd.CreateParameter("P_USER_NAME", adVarChar, adParamOutput, 4000)
+    cmd.Parameters.Append cmd.CreateParameter("P_PASSWORD", adVarChar, adParamOutput, 4000)
+    cmd.Parameters.Append cmd.CreateParameter("P_Ma_UD", adVarChar, adParamInput, 4000)
+    cmd.Parameters("P_Ma_UD").Value = "BMT"
+    cmd.Execute
+    
+    strDBUserNameBMT = cmd.Parameters("P_USER_NAME").Value
+    strDBPasswordBMT = cmd.Parameters("P_PASSWORD").Value
+
+    Set cmd = Nothing
+    ' Destroy connect to BMT
+    clsDAO.Disconnect
+    
+    'connect to database QLT
+    clsDAO.CreateConnectionString [MSDAORA.1], "QLT", strDBUserName, strDBPassword
+    clsDAO.Connect
+    
+    Exit Sub
+ErrorHandle:
+
+    SaveErrorLog Me.Name, "GetDataInforBMT", Err.Number, Err.Description
+End Sub
+
+
+
+Private Sub getMaCQT()
+    On Error GoTo ErrorHandle
+    Dim clsConnBMT As New TAX_Utilities_Srv_New.clsADO
+    Dim strSQL As String
+    Dim rec As ADODB.Recordset
+    'connect to database BMT
+    If clsConnBMT.Connected = False Then
+        clsConnBMT.CreateConnectionString [MSDAORA.1], "BMT", strDBUserNameBMT, strDBPasswordBMT
+        clsConnBMT.Connect
+    End If
+    
+    
+    'create slq query check username and password
+    strSQL = "select distinct ma_BPQL from  bmt_nhom_bpql a where a.ma_nhom in (select MA_NHOM from bmt_nsd_nhom where  ma_nsd='" & strMaNSD & "')"
+    
+    'check username and password
+    Set rec = clsDAO.Execute(strSQL)
+    If Not rec Is Nothing Then
+        If rec.Fields.Count > 0 Then
+            strTaxOfficeId = rec.Fields(0).Value
+        End If
+    End If
+    
+    rec.Close
+    Set rec = Nothing
+    clsConnBMT.Disconnect
+    
+    Exit Sub
+ErrorHandle:
+
+    SaveErrorLog Me.Name, "getMaCQT", Err.Number, Err.Description
+End Sub
