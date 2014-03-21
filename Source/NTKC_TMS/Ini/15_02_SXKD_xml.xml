@@ -20,7 +20,7 @@
 		<ct60_nNay>R_56</ct60_nNay>
 		<ct70_nNay>R_57</ct70_nNay>
 	</Static>
-	<Static GroupName="SoNamNgoai">
+	<Static GroupName="SoNamNgoai">	
 		<ct01_nNgoai>W_39</ct01_nNgoai>
 		<ct02_nNgoai>W_40</ct02_nNgoai>
 		<ct10_nNgoai>W_41</ct10_nNgoai>
@@ -40,5 +40,11 @@
 		<ct52_nNgoai>W_55</ct52_nNgoai>
 		<ct60_nNgoai>W_56</ct60_nNgoai>
 		<ct70_nNgoai>W_57</ct70_nNgoai>
+	</Static>
+	<Static GroupName="PhanKy">
+		<nguoiLapBieu>R_39</nguoiLapBieu>
+		<keToanTruong>R_39</keToanTruong>
+		<ngayLap date="1">R_39</ngayLap>
+		<giamDoc>R_39</giamDoc>
 	</Static>
 </PL_KQHDXSKD>
