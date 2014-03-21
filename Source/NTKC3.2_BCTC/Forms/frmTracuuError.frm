@@ -167,7 +167,7 @@ Begin VB.Form frmTraCuuError
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuuError.frx":06A9
+         SpreadDesigner  =   "frmTracuuError.frx":06E1
          UserResize      =   1
          Appearance      =   1
       End
@@ -236,7 +236,7 @@ Begin VB.Form frmTraCuuError
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuuError.frx":0BA6
+         SpreadDesigner  =   "frmTracuuError.frx":0C16
          UserResize      =   1
       End
    End
@@ -376,10 +376,12 @@ Private Sub btnTraCuu_Click(Index As Integer)
     xmlSQL.Load App.path & "\SQL.xml"
     strSQL = GetAttribute(xmlSQL.childNodes(1), "SqlTraCuuError")
     strSQL = Replace(strSQL, "nhohon=", "<=")
-    strSQL = Replace(strSQL, "ma_tkhai", "" & changeLoaiToKhai(lmaTK) & "")
+    strSQL = Replace(strSQL, "ma_tkhai", "" & changeLoaiToKhaiBCTC(lmaTK) & "")
     strSQL = Replace(strSQL, "strDa_Nhan", "" & strDaNhan & "")
     strSQL = Replace(strSQL, "ngay_nop_dau", "To_date('" & format(DteTuN, "dd/mm/yyyy") & "','dd/mm/yyyy') ")
     strSQL = Replace(strSQL, "ngay_nop_cuoi", "To_date('" & format(DteDeN, "dd/mm/yyyy") & "','dd/mm/yyyy') ")
+    strSQL = Replace(strSQL, "phong_xu_ly", "'" & strTaxOfficeId & "%'")
+    
     'Khoi tao bien
     lCol = 2
     lRow = 1
@@ -845,3 +847,15 @@ End Sub
 Private Sub OptToLoi_Click()
      strDaNhan = "='E'"
 End Sub
+
+
+Private Function changeLoaiToKhaiBCTC(ByVal strLoaiMaToKhai As String) As String
+    
+    If strLoaiMaToKhai = "108" Then changeLoaiToKhaiBCTC = " like '%15%'"
+    If strLoaiMaToKhai = "109" Then changeLoaiToKhaiBCTC = " like '%48%'"
+    If strLoaiMaToKhai = "110" Then changeLoaiToKhaiBCTC = " like '%16%'"
+    If strLoaiMaToKhai = "111" Then changeLoaiToKhaiBCTC = " like '%99%'"
+    If strLoaiMaToKhai = "111" Then changeLoaiToKhaiBCTC = " like '%95%'"
+    
+    If strLoaiMaToKhai = "0" Then changeLoaiToKhaiBCTC = " like '%BCTC%'"
+End Function
