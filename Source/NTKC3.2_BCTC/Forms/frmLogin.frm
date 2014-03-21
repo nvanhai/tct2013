@@ -585,7 +585,7 @@ Private Sub getMaCQT()
     
     
     'create slq query check username and password
-    strSQL = "select distinct ma_BPQL from  bmt_nhom_bpql a where a.ma_nhom in (select MA_NHOM from bmt_nsd_nhom where  ma_nsd='" & strMaNSD & "')"
+    strSQL = "select distinct ma_BPQL from  bmt_nhom_bpql a where a.ma_nhom in (select MA_NHOM from bmt_nsd_nhom where  ma_nsd='" & strMaNSD & "'  and rownum <=1)"
     
     'check username and password
     Set rec = clsDAO.Execute(strSQL)
