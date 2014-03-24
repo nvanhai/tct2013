@@ -3458,14 +3458,14 @@ Public Sub SetActiveSheet() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
                For Each xmlCellNode In TAX_Utilities_v1.Data(3).getElementsByTagName("Cell")
                     ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
                     'Check value in E column and F column
-                    If lCol = fps.ColLetterToNumber("E") Or _
-                       lCol = fps.ColLetterToNumber("F") Then
+'                    If lCol = fps.ColLetterToNumber("E") Or _
+'                       lCol = fps.ColLetterToNumber("F") Then
                         strValue = GetAttribute(xmlCellNode, "Value")
                         If Not IsNullValue(strValue) Then
                             blnNullValue = False
                             Exit For
                         End If
-                    End If
+'                    End If
                 Next
             
                 If blnNullValue Then
@@ -3534,13 +3534,13 @@ Public Sub SetActiveSheet() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
                For Each xmlCellNode In TAX_Utilities_v1.Data(7).getElementsByTagName("Cell")
                     ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
                     'Check value I column
-                    If lCol = fps.ColLetterToNumber("I") Then
+                   ' If lCol = fps.ColLetterToNumber("I") Then
                         strValue = GetAttribute(xmlCellNode, "Value")
                         If Not IsNullValue(strValue) Then
                             blnNullValue = False
                             Exit For
                         End If
-                    End If
+                    'End If
                 Next
             
                 If blnNullValue Then

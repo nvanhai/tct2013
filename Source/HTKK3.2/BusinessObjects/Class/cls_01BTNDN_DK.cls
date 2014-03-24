@@ -72,6 +72,8 @@ Public Sub Prepare2()
     Dim intCtrl As Integer
     Dim strId   As Variant
     Dim xmlNode As MSXML.IXMLDOMNode
+    
+    Dim checkUq, checkDLT As Variant
 
     With fps
         .Sheet = 1
@@ -102,10 +104,72 @@ Public Sub Prepare2()
         'end
         
         
+         If isCheckTTDLT = True Then
+            .Row = 49
+            .Col = .ColLetterToNumber("S")
+             checkUq = .value
+             
+             .Row = 49
+            .Col = .ColLetterToNumber("AF")
+             checkDLT = .value
+             
+             If checkUq = 0 And checkDLT = 0 Then
+                .Row = 49
+                .Col = .ColLetterToNumber("AF")
+                 .value = 1
+                 UpdateCell fps, .Col, .Row, "x"
+             End If
+             
+        End If
+        
+        
         mCurrentSheet = .Sheet
         fps.EventEnabled(EventAllEvents) = True
     End With
 
+End Sub
+
+Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonDown As Integer)
+     With fps
+        ' xu ly check 1 trong 2 o uy quyen hoac DLT
+        If Col = .ColLetterToNumber("S") And Row = 49 And .ActiveSheet = 1 Then
+            fps.EventEnabled(EventAllEvents) = False
+            .Sheet = 1
+            .Row = 49
+            .Col = .ColLetterToNumber("S")
+            If (.value = "1") Then
+                .Row = 49
+                .Col = .ColLetterToNumber("AF")
+                .value = 0
+                UpdateCell fps, .Col, .Row, ""
+            Else
+                .Row = 49
+                .Col = .ColLetterToNumber("AF")
+                .value = 1
+                UpdateCell fps, .Col, .Row, "x"
+            End If
+            fps.EventEnabled(EventAllEvents) = True
+        End If
+        
+        If Col = .ColLetterToNumber("AF") And Row = 49 And .ActiveSheet = 1 Then
+            fps.EventEnabled(EventAllEvents) = False
+            .Sheet = 1
+            .Row = 49
+            .Col = .ColLetterToNumber("AF")
+            If (.value = "1") Then
+                .Row = 49
+                .Col = .ColLetterToNumber("S")
+                .value = 0
+                UpdateCell fps, .Col, .Row, ""
+            Else
+                .Row = 49
+                .Col = .ColLetterToNumber("S")
+                .value = 1
+                UpdateCell fps, .Col, .Row, "x"
+            End If
+            fps.EventEnabled(EventAllEvents) = True
+        End If
+    End With
 End Sub
 
 Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
