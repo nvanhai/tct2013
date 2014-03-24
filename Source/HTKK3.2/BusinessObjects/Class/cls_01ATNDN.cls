@@ -352,6 +352,23 @@ Public Sub Prepare2()
                     Loop Until .Text = "aa"
             End If
          'end
+         
+         ' set lock CQT phan bo
+        .Sheet = 3
+        Dim vChon As Variant
+        If .SheetVisible = True Then
+        .Row = 42
+         Do
+                .GetText .ColLetterToNumber("G"), .Row, vChon
+                If vChon = 1 Then
+                    .Col = .ColLetterToNumber("P")
+                    .Lock = True
+                End If
+                
+                .Row = .Row + 1
+                .Col = .ColLetterToNumber("B")
+            Loop Until .Text = "aa"
+         End If
     End With
     
 End Sub
@@ -562,6 +579,35 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
             End If
     End If
     
+    With fps
+
+            If Col = .ColLetterToNumber("G") And Row >= 42 And .ActiveSheet = 3 Then
+                   fps.EventEnabled(EventAllEvents) = False
+                   .Sheet = 23
+                   .Row = Row
+                   .Col = .ColLetterToNumber("G")
+                   If (.value = "1") Then
+                       .Row = Row
+                       ' chi tieu STT
+                       .Col = .ColLetterToNumber("P")
+                       .Lock = True
+                       
+                       .Text = ""
+                       UpdateCell fps, .Col, .Row, .Text
+                       
+                       .Col = .ColLetterToNumber("AH")
+                       .Text = ""
+                       UpdateCell fps, .Col, .Row, .Text
+                   Else
+                       .Row = Row
+                       ' chi tieu STT
+                       .Col = .ColLetterToNumber("P")
+                       .Lock = False
+                      
+                   End If
+                   fps.EventEnabled(EventAllEvents) = True
+               End If
+    End With
     fps.EventEnabled(EventAllEvents) = True
 End Sub
 
