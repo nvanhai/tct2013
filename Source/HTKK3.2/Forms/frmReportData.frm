@@ -703,6 +703,10 @@ nextPrinter:
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0306"), "Msg")
     ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 25 Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0284"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0285"), "Msg")
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 94 Then
+        fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0307"), "Msg")
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 96 Then
+        fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0308"), "Msg")
     End If
     
     'KHBS khong thay doi so thue se ko in phu luc va co cau canh bao

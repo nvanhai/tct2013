@@ -331,6 +331,7 @@ Private lngRowFocus As Long
 Private blnDKienTraCuu As Boolean               'Kiem tra dieu kien tra cuu co hop le hay ko
 
 Private strTkGTGT As String
+Private strTkDK As String
 Private strGtgtIdTmp As String
 
 Private Sub btnMo_Click()
@@ -399,7 +400,7 @@ Private Sub btnMo_Click()
 
         
         If GetAttribute(TAX_Utilities_v1.NodeMenu, "Month") = "1" Then
-            If varId = "01" Or varId = "02" Or varId = "04" Or varId = "71" Or varId = "36" Then
+            If varId = "01" Or varId = "02" Or varId = "04" Or varId = "71" Or varId = "36" Or varId = "94" Or varId = "96" Then
                 ' Neu datafile co ky tu Q la to khai quy
                 If Left$(Right$(varFileName, 7), 1) = "Q" Then
                     strTkGTGT = "TK_QUY"
@@ -448,7 +449,7 @@ Private Sub btnMo_Click()
         Me.Hide
         
         ' kiem tra to khai GTGT thang/quy
-        If varId = "01" Or varId = "02" Or varId = "04" Or varId = "71" Or varId = "36" Then
+        If varId = "01" Or varId = "02" Or varId = "04" Or varId = "71" Or varId = "36" Or varId = "94" Or varId = "96" Then
             If strTkGTGT = "TK_QUY" Then
                 strQuy = "TK_QUY"
             Else
@@ -835,7 +836,7 @@ Private Sub fpsDkNgay_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewC
             End If
                 'bat dk nam
             If lstrMonth = "0" And lstrThreemonths = "0" Then
-                If arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "80" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "82" Then
+                If arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "80" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "82" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "981" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "982" Then
                 Else
                     Select Case Len(Trim(strarrdate(0)))
                         Case 1
@@ -868,7 +869,7 @@ Private Sub fpsDkNgay_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewC
             .Col = .ColLetterToNumber(f1dteTuNCol)
             .Row = f1dteTuNRow
             If lstrMonth = "0" And lstrThreemonths = "0" Then
-                If arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "80" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "82" Then
+                If arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "80" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "82" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "981" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "982" Then
                     
                 Else
                     .SetText .Col, .Row, strarrdate(0)
@@ -902,7 +903,7 @@ Private Sub fpsDkNgay_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewC
             End If
             'bat dk nam
             If lstrMonth = "0" And lstrThreemonths = "0" Then
-                If arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "80" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "82" Then
+                If arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "80" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "82" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "981" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "982" Then
                     
                 Else
                     Select Case Len(Trim(strarrdate(0)))
@@ -936,7 +937,7 @@ Private Sub fpsDkNgay_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewC
             .Col = .ColLetterToNumber(f1dteDeNCol)
             .Row = f1dteDeNRow
             If lstrMonth = "0" And lstrThreemonths = "0" Then
-                If arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "80" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "82" Then
+                If arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "80" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "82" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "981" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "982" Then
                     
                 Else
                     .SetText .Col, .Row, strarrdate(0)
@@ -1110,7 +1111,7 @@ Dim xmlDocument As New MSXML.DOMDocument
                 If Parentid = "101" Then
                     Dim strIdGTGT As String
                     strIdGTGT = arrStrId(.TypeComboBoxCurSel)
-                    If strIdGTGT = "011" Or strIdGTGT = "021" Or strIdGTGT = "041" Or strIdGTGT = "711" Or strIdGTGT = "361" Then
+                    If strIdGTGT = "011" Or strIdGTGT = "021" Or strIdGTGT = "041" Or strIdGTGT = "711" Or strIdGTGT = "361" Or strIdGTGT = "941" Or strIdGTGT = "961" Then
                         strTkGTGT = "TK_QUY"
                          If Left$(strIdGTGT, 2) = GetAttribute(xmlNode, "ID") Then
                             lstryear = GetAttribute(xmlNode, "Year")
@@ -1122,6 +1123,16 @@ Dim xmlDocument As New MSXML.DOMDocument
                         If arrStrId(.TypeComboBoxCurSel) = GetAttribute(xmlNode, "ID") Then
                             lstryear = GetAttribute(xmlNode, "Year")
                             lstrMonth = GetAttribute(xmlNode, "Month")
+                            lstrThreemonths = GetAttribute(xmlNode, "ThreeMonth")
+                            lstrDay = "1"
+                            Exit For
+                        End If
+                    ElseIf strIdGTGT = "981" Or strIdGTGT = "982" Then
+                        If Left$(strIdGTGT, 2) = GetAttribute(xmlNode, "ID") Then
+                            strTkDK = "TK_LANXB"
+                            strTkGTGT = "TK_LANXB"
+                            lstrMonth = 0
+                            lstryear = GetAttribute(xmlNode, "Year")
                             lstrThreemonths = GetAttribute(xmlNode, "ThreeMonth")
                             lstrDay = "1"
                             Exit For
@@ -1449,7 +1460,7 @@ Private Function GetTaxReportsById(ByVal strId As String, ByVal strPeriodFrom As
     If Len(strPeriodFrom) = 4 Then
         strPeriodFrom = "01/01/" & strPeriodFrom
     Else
-        If strId = "80" Or strId = "82" Then
+        If strId = "80" Or strId = "82" Or strId = "98" Then
         Else
             strPeriodFrom = "01/" & strPeriodFrom
         End If
@@ -1458,7 +1469,7 @@ Private Function GetTaxReportsById(ByVal strId As String, ByVal strPeriodFrom As
     If Len(strPeriodTo) = 4 Then
         strPeriodTo = "01/12/" & strPeriodTo
     Else
-        If strId = "80" Or strId = "82" Then
+        If strId = "80" Or strId = "82" Or strId = "98" Then
         Else
             strPeriodTo = "01/" & strPeriodTo
         End If
@@ -1483,11 +1494,15 @@ Private Function GetTaxReportsById(ByVal strId As String, ByVal strPeriodFrom As
     'Lay kieu ky ke khai
     If GetAttribute(xmlNodeMenu, "Month") = "1" Then
         ' to khai quy GTGT
-        If strId = "01" Or strId = "02" Or strId = "04" Or strId = "71" Or strId = "36" Then
+        If strId = "01" Or strId = "02" Or strId = "04" Or strId = "71" Or strId = "36" Or strId = "94" Or strId = "96" Then
             If strTkGTGT = "TK_QUY" Then
                 strKieu_Ky = KIEU_KY_QUY
             Else
                 strKieu_Ky = KIEU_KY_THANG
+            End If
+        ElseIf strId = "98" Then
+            If strTkGTGT = "TK_LANXB" Then
+                strKieu_Ky = KIEU_KY_NGAY_NAM
             End If
         Else
             strKieu_Ky = KIEU_KY_THANG
@@ -1541,11 +1556,15 @@ Private Function GetTaxReportsById(ByVal strId As String, ByVal strPeriodFrom As
             If InStr(1, arrStrXMLFileNames(lngIndex), Split(strDataFile, ",")(0)) = 1 Then
                     If IsValidPeriod(strKieu_Ky, strDataFile, strNextPeriod, arrStrXMLFileNames(lngIndex), strPeriodFrom, strPeriodTo, blnValidFinanceYear, strPeriodReturn) Then
                         Dim tmpFileNam As String
-                        If strId = "01" Or strId = "02" Or strId = "04" Or strId = "71" Or strId = "36" Then
+                        If strId = "01" Or strId = "02" Or strId = "04" Or strId = "71" Or strId = "36" Or strId = "94" Or strId = "96" Then
                             If strTkGTGT = "TK_QUY" Then
                                 tmpFileNam = GetAttribute(xmlNodeMenu, "Caption") & " quý"
                             Else
                                 tmpFileNam = GetAttribute(xmlNodeMenu, "Caption")
+                            End If
+                        ElseIf strId = "98" Then
+                            If strTkGTGT = "TK_LANXB" Then
+                                tmpFileNam = GetAttribute(xmlNodeMenu, "Caption") & " Lan XB"
                             End If
                         Else
                             tmpFileNam = GetAttribute(xmlNodeMenu, "Caption")
@@ -1617,6 +1636,10 @@ Private Function IsValidPeriod(ByVal strKieu_Ky As String, ByVal strDataFile As 
     If arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "80" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "82" Or InStr(strFileName, "02_NTNN") > 0 Or InStr(strFileName, "04_NTNN") > 0 Then
         dPeriodFrom = DateSerial(CInt(Mid$(strPeriodFrom, 7, 4)), CInt(Mid$(strPeriodFrom, 4, 2)), CInt(Mid$(strPeriodFrom, 1, 2)))
         dPeriodTo = DateSerial(CInt(Mid$(strPeriodTo, 7, 4)), CInt(Mid$(strPeriodTo, 4, 2)), CInt(Mid$(strPeriodTo, 1, 2)))
+    ElseIf arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "981" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "982" Then
+        dPeriodFrom = DateSerial(CInt(Mid$(strPeriodFrom, 7, 4)), CInt(Mid$(strPeriodFrom, 4, 2)), CInt(Mid$(strPeriodFrom, 1, 2)))
+        dPeriodTo = DateSerial(CInt(Mid$(strPeriodTo, 7, 4)), CInt(Mid$(strPeriodTo, 4, 2)), CInt(Mid$(strPeriodTo, 1, 2)))
+        
     Else
         dPeriodFrom = DateSerial(CInt(Mid$(strPeriodFrom, 7, 4)), CInt(Mid$(strPeriodFrom, 4, 2)), CInt(Mid$(strPeriodFrom, 1, 2)))
         dPeriodTo = DateSerial(CInt(Mid$(strPeriodTo, 7, 4)), CInt(Mid$(strPeriodTo, 4, 2)), CInt(Mid$(strPeriodTo, 1, 2)))
@@ -1822,6 +1845,50 @@ Private Function IsValidPeriod(ByVal strKieu_Ky As String, ByVal strDataFile As 
                     End If
                 End If
                 
+            ElseIf arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "981" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "982" Then
+                lStrPeriod = Right$(strFileName, 17)
+                
+                If strDataFiles(0) <> Mid(strFileName, 1, Len(strFileName) - Len(lStrPeriod) - 1) Then
+                ' This is not valid file name
+                    Exit Function
+                End If
+                    
+                If IsValidDate(Mid$(lStrPeriod, 1, 8)) <> "" And IsValidDate(Mid$(lStrPeriod, 10, 8)) <> "" Then
+                    dPeriod = DateSerial(CInt(Mid$(lStrPeriod, 5, 4)), CInt(Mid$(lStrPeriod, 3, 2)), CInt(Mid$(lStrPeriod, 1, 2)))
+                    If dPeriod >= dPeriodFrom And _
+                            dPeriod <= dPeriodTo Then
+                        strPeriod = Mid$(lStrPeriod, 1, 2) & "/" & Mid$(lStrPeriod, 3, 2) & "/" & Mid$(lStrPeriod, 5, 4) & "~" & IsValidDate(Mid$(lStrPeriod, 1, 8)) & "~" & IsValidDate(Mid$(lStrPeriod, 10, 8))  '& "~True"
+                        
+                        If blnValidFinanceYear Then
+                            'Lay trang thai to khai
+                            dPeriod = NgayCuoiNamTaiChinh(CInt(Mid$(lStrPeriod, 5, 4)), iThangTaiChinh, iNgayTaiChinh)
+                            If dPeriod >= dNextPeriod Then
+                                strPeriod = strPeriod & "~False~" & LOI_KY_HIEU_LUC
+                            Else
+                                Set objDateUtils = New DateUtils
+                                dNgayDauQuy = GetNgayDauQuy(4, CInt(Mid$(lStrPeriod, 5, 4)) - 1, iNgayTaiChinh, iThangTaiChinh)
+                                dNgayCuoiQuy = GetNgayCuoiQuy(1, CInt(Mid$(lStrPeriod, 5, 4)) + 1, iNgayTaiChinh, iThangTaiChinh)
+                                dNgayDau = objDateUtils.ToDate(IsValidDate(Mid$(lStrPeriod, 1, 8)), "DD/MM/YYYY")
+                                dNgayCuoi = objDateUtils.ToDate(IsValidDate(Mid$(lStrPeriod, 10, 8)), "DD/MM/YYYY")
+                                
+                                'Kiem tra gia tri tu ngay va den ngay
+                                If dNgayDau < dNgayDauQuy Or dNgayCuoi > dNgayCuoiQuy _
+                                   Or DateDiff("M", dNgayDau, dNgayCuoi) + 1 > 15 Or dNgayCuoi < dNgayDau Then
+                                     strPeriod = strPeriod & "~False~" & LOI_TU_NGAY_DEN_NGAY
+                                Else
+                                    strPeriod = strPeriod & "~True~"
+                                End If
+                            End If
+                        Else
+                            strPeriod = strPeriod & "~False~" & LOI_NGAY_BAT_DAU_NAM_TAI_CHINH
+                        End If
+                        
+                        'Lay danh sach ten cac file data
+                        strPeriod = strPeriod & "~" & GetDataFileNames(strDataFiles, lStrPeriod)
+                        IsValidPeriod = True
+                        Exit Function
+                    End If
+                End If
             Else
                 lStrPeriod = Right$(strFileName, 22)
                 
@@ -2057,6 +2124,11 @@ Private Sub TraCuu()
     ReDim Preserve arrStrPeriods(0)
     If fpsLoaiTK.TypeComboBoxCurSel <> 0 Then
         If strTkGTGT = "TK_QUY" Then
+            GetTaxReportsById Left$(arrStrId(fpsLoaiTK.TypeComboBoxCurSel), 2), strFromDay, _
+                        strToDay, arrStrPeriods
+                        
+            strGtgtIdTmp = arrStrId(fpsLoaiTK.TypeComboBoxCurSel)
+        ElseIf strTkGTGT = "TK_LANXB" Then
             GetTaxReportsById Left$(arrStrId(fpsLoaiTK.TypeComboBoxCurSel), 2), strFromDay, _
                         strToDay, arrStrPeriods
                         
