@@ -245,6 +245,11 @@ Private Sub CheckDynamicError()
     
     Dim iFlagCheckData As Boolean
     
+    Dim vCt09 As Variant
+    Dim flagCt09 As Integer
+    Dim vErrorCt09 As Variant
+    
+    
     With fps
         iCurrentSheet = .Sheet
         .Sheet = .SheetCount
@@ -254,6 +259,8 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 22, vErrorDVUQ
         .GetText .ColLetterToNumber("E"), 23, vErrorTongTyLe
         .GetText .ColLetterToNumber("E"), 24, vErrorEmpty
+        
+        .GetText .ColLetterToNumber("E"), 26, vErrorCt09
 
         iFlagCheckMaST = 0
         iFlagEmty = 0
@@ -322,7 +329,9 @@ Private Sub CheckDynamicError()
             'iWhiteRow = 1
             .Row = 27
             iWhiteRow = 1
-
+            
+            .GetText .ColLetterToNumber("K"), 19, vCt09
+            
             Do
                 .GetText .ColLetterToNumber("D"), .Row, vMST
                 .GetText .ColLetterToNumber("L"), .Row, vTenNhaThau
@@ -331,6 +340,7 @@ Private Sub CheckDynamicError()
                 .GetText .ColLetterToNumber("AL"), .Row, vGhiChu
                 If Trim$(vMST) <> "" Or Trim$(vTenNhaThau) <> "" Or Trim$(vTyLePhanBo) <> "0" Or Trim$(vSoThuePhatSinh) <> "0" Or Trim$(vGhiChu) <> "" Then
                     iWhiteRow = 0
+                    iFlagCheckData = True
                 End If
                 If Trim$(vMST) <> vbNullString Then
                     vMST = Replace(vMST, " ", "")
@@ -413,6 +423,20 @@ Private Sub CheckDynamicError()
                     .BackColor = colorCell
                     .CellNote = ""
                 End If
+                
+                ' kiem tra cot (5) = [09]
+                If Val(vCt09) <> Val(vCt09) * Val(vTongTyLe) / 100 Then
+                    .Col = .ColLetterToNumber("AB")
+                    .Row = .MaxRows - 6
+                    .BackColor = mErrorColor
+                    .CellNote = vErrorCt09
+                    flagCt09 = 1
+                Else
+                    .Col = .ColLetterToNumber("AB")
+                    .Row = .MaxRows - 6
+                    .BackColor = colorCell
+                    .CellNote = ""
+                End If
             End If
 
         End If
@@ -424,6 +448,7 @@ Private Sub CheckDynamicError()
         .SetText .ColLetterToNumber("B"), 22, IIf(flagDVUyQuyen = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 23, IIf(flagTongTyLe = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 24, IIf(flagDVUyQuyenEmpty = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 26, IIf(flagCt09 = 1, "0", "1")
         'CheckErrorMST
     End With
     

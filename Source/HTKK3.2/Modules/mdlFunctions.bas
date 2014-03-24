@@ -1585,7 +1585,7 @@ Public Sub SetupReportData(fpsGrid As fpSpread, Optional IsInterface As Boolean 
                                     ElseIf InStr(1, GetAttribute(xmlNodeCell, "Value"), ".") > 0 Then
                                         If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "17" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "42" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "26" Then
                                             .TypeNumberDecPlaces = 0
-                                        ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "99" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "92" Then
+                                        ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "99" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "92" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "24" Then
                                             .TypeNumberDecPlaces = Len(GetAttribute(xmlNodeCell, "Value")) - InStr(1, GetAttribute(xmlNodeCell, "Value"), ".")
                                         Else
                                             .TypeNumberDecPlaces = 3 'Len(GetAttribute(xmlNodeCell, "Value")) - InStr(1, GetAttribute(xmlNodeCell, "Value"), ".")

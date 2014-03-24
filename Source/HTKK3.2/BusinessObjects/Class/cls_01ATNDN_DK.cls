@@ -62,7 +62,26 @@ Public Sub Prepare1()
 '        .Sheet = SHEET_PHU_LUC_01
 '        SetDateFormat fps, SHEET_PHU_LUC_01, 34, fps.ColLetterToNumber("AD"), DDMMYYYY
         '--end set for sheet Phu luc 01
-        
+        ' set dai ly thue hoac uy quyen
+        If isCheckTTDLT = True Then
+            .Row = 49
+            .Col = .ColLetterToNumber("S")
+            .Lock = False
+            
+            .Row = 49
+            .Col = .ColLetterToNumber("AC")
+            .Lock = False
+            .value = 1
+            
+        Else
+            .Row = 49
+            .Col = .ColLetterToNumber("S")
+            .Lock = True
+            
+            .Row = 49
+            .Col = .ColLetterToNumber("AC")
+            .Lock = True
+        End If
         
         fps.EventEnabled(EventAllEvents) = True
         
@@ -81,6 +100,8 @@ Public Sub Prepare2()
     Dim intCtrl As Integer
     Dim strId   As Variant
     Dim xmlNode As MSXML.IXMLDOMNode
+    
+    Dim checkUq, checkDLT As Variant
 
     With fps
         'load form
@@ -188,6 +209,38 @@ Public Sub Prepare2()
         .Text = strLanXuatBan
         UpdateCell fps, .Col, .Row, .Text
         
+        
+         If isCheckTTDLT = True Then
+            .Row = 49
+            .Col = .ColLetterToNumber("S")
+             checkUq = .value
+             
+             .Row = 49
+            .Col = .ColLetterToNumber("AC")
+             checkDLT = .value
+             
+             If checkUq = 0 And checkDLT = 0 Then
+                .Row = 49
+                .Col = .ColLetterToNumber("AC")
+                 .value = 1
+                 UpdateCell fps, .Col, .Row, .value
+             End If
+             
+        End If
+        
+        ' set chi tieu 36
+         ' cho phep nhap chi tieu 36
+         .Col = .ColLetterToNumber("AS")
+         .Row = 28
+         If .value = 1 Then
+            .Col = .ColLetterToNumber("AV")
+            .Row = 62
+            .Lock = False
+         Else
+            .Col = .ColLetterToNumber("AV")
+            .Row = 62
+            .Lock = True
+        End If
         mCurrentSheet = .Sheet
         fps.EventEnabled(EventAllEvents) = True
     End With
@@ -218,7 +271,128 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
             End If
             fps.EventEnabled(EventAllEvents) = True
         End If
-
+        
+        
+        ' xu ly check 1 trong 2 o uy quyen hoac DLT
+        If Col = .ColLetterToNumber("S") And Row = 49 And .ActiveSheet = 1 Then
+            fps.EventEnabled(EventAllEvents) = False
+            .Sheet = 1
+            .Row = 49
+            .Col = .ColLetterToNumber("S")
+            If (.value = "1") Then
+                .Row = 49
+                .Col = .ColLetterToNumber("AC")
+                .value = 0
+                UpdateCell fps, .Col, .Row, ""
+            Else
+                .Row = 49
+                .Col = .ColLetterToNumber("AC")
+                .value = 1
+                UpdateCell fps, .Col, .Row, "x"
+            End If
+            fps.EventEnabled(EventAllEvents) = True
+        End If
+        
+        If Col = .ColLetterToNumber("AC") And Row = 49 And .ActiveSheet = 1 Then
+            fps.EventEnabled(EventAllEvents) = False
+            .Sheet = 1
+            .Row = 49
+            .Col = .ColLetterToNumber("AC")
+            If (.value = "1") Then
+                .Row = 49
+                .Col = .ColLetterToNumber("S")
+                .value = 0
+                UpdateCell fps, .Col, .Row, ""
+            Else
+                .Row = 49
+                .Col = .ColLetterToNumber("S")
+                .value = 1
+                UpdateCell fps, .Col, .Row, "x"
+            End If
+            fps.EventEnabled(EventAllEvents) = True
+        End If
+        
+        
+        ' chi tieu 08, 09 chi cho phep nhap 1
+         If Col = .ColLetterToNumber("Y") And Row = 28 And .ActiveSheet = 1 Then
+            fps.EventEnabled(EventAllEvents) = False
+            .Sheet = 1
+            .Row = 28
+            .Col = .ColLetterToNumber("Y")
+            If (.value = "1") Then
+                .Row = 28
+                .Col = .ColLetterToNumber("AS")
+                .value = 0
+                UpdateCell fps, .Col, .Row, ""
+                
+                .Row = 29
+                .Col = .ColLetterToNumber("AM")
+                .BackColor = mLockNonErrorColor
+                .Lock = True
+                '.BorderStyle = BorderStyleNone
+                .Text = ""
+                UpdateCell fps, .Col, .Row, ""
+                
+                ' cho phep nhap chi tieu 36
+                .Col = .ColLetterToNumber("AV")
+                .Row = 62
+                .Lock = True
+                .Text = "0"
+                UpdateCell fps, .Col, .Row, .Text
+            Else
+                .Row = 28
+                .Col = .ColLetterToNumber("AS")
+                .value = 1
+                UpdateCell fps, .Col, .Row, "x"
+                
+                .Row = 29
+                .Col = .ColLetterToNumber("AM")
+                .BackColor = mNonErrorColor
+                '.BorderStyle = BorderStyleFixedSingle
+                .Lock = False
+                
+                ' cho phep nhap chi tieu 36
+                .Col = .ColLetterToNumber("AV")
+                .Row = 62
+                .Lock = False
+               
+            End If
+            fps.EventEnabled(EventAllEvents) = True
+        End If
+        
+        If Col = .ColLetterToNumber("AS") And Row = 28 And .ActiveSheet = 1 Then
+            fps.EventEnabled(EventAllEvents) = False
+            .Sheet = 1
+            .Row = 28
+            .Col = .ColLetterToNumber("AS")
+            If (.value = "1") Then
+                .Row = 28
+                .Col = .ColLetterToNumber("Y")
+                .value = 0
+                UpdateCell fps, .Col, .Row, ""
+                
+                
+                ' cho phep nhap chi tieu 36
+                .Col = .ColLetterToNumber("AV")
+                .Row = 62
+                .Lock = False
+                
+            Else
+                .Row = 28
+                .Col = .ColLetterToNumber("Y")
+                .value = 1
+                UpdateCell fps, .Col, .Row, "x"
+                
+                
+                ' cho phep nhap chi tieu 36
+                .Col = .ColLetterToNumber("AV")
+                .Row = 62
+                .Lock = True
+                .Text = "0"
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+            fps.EventEnabled(EventAllEvents) = True
+        End If
     End With
 End Sub
 Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
