@@ -109,8 +109,11 @@ Dim strDataFileName As String
 Dim xmlDOMdata As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
-
-       strDataFileName = GetCatalogueFileName
+        
+        fps.Sheet = 1
+        fps.Row = 36
+        fps.Col = fps.ColLetterToNumber("O")
+       strDataFileName = GetCatalogueFileNameTk_03TD_TAIN(1, fps.Text)
     
        If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
             Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Cell")
