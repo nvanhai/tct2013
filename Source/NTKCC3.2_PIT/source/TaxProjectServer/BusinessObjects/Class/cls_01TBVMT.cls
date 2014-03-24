@@ -1482,7 +1482,12 @@ Public Function InsertHDR() As String
             HANNOP = ToString(HANNOP, "DD/MM/YYYY")
         End If
 
-        HANNOP = "CTOD('" & Format(HANNOP, "mm/dd/yyyy") & "')"
+        If Trim(HANNOP) = vbNullString Then
+            HANNOP = "CTOD('')"
+        Else
+            HANNOP = ToDate(Trim(HANNOP), DDMMYYYY)
+            HANNOP = "CTOD('" & Format(HANNOP, "mm/dd/yyyy") & "')"
+        End If
         HANNOP2 = HANNOP
         'thue gtgt phai nop
         '        .GetText .ColLetterToNumber("U"), 35, ThueTKy
