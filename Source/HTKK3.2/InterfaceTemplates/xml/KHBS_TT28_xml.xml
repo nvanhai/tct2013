@@ -4,28 +4,28 @@
 		<KHBSDieuChinhTang>
 			<ct2/>
 			<ct3/>
-			<ct4>1</ct4>
-			<ct5>1</ct5>
-			<ct6>1</ct6>
+			<ct4></ct4>
+			<ct5></ct5>
+			<ct6></ct6>
 		</KHBSDieuChinhTang>
 		<KHBSDieuChinhGiam>
 			<ct2/>
 			<ct3/>
-			<ct4>1</ct4>
-			<ct5>1</ct5>
-			<ct6>1</ct6>
+			<ct4></ct4>
+			<ct5></ct5>
+			<ct6></ct6>
 		</KHBSDieuChinhGiam>
 		<TongHopDCTangGiamPNop>
 			<ct2/>
 			<ct3/>
-			<ct4>1</ct4>
-			<ct5>1</ct5>
-			<ct6>1</ct6>
+			<ct4></ct4>
+			<ct5></ct5>
+			<ct6></ct6>
 		</TongHopDCTangGiamPNop>
 	</NDUNGKHAIBOSUNGDIEUCHINH>
 	<PhatChamNop>
-		<soNgayNopCham>1</soNgayNopCham>
-		<soTienPhatNopCham>1</soTienPhatNopCham>
+		<soNgayNopCham></soNgayNopCham>
+		<soTienPhatNopCham></soTienPhatNopCham>
 	</PhatChamNop>
 	<NOIDUNGGIAITHICH>
 		<tenTKhaiThue></tenTKhaiThue>
