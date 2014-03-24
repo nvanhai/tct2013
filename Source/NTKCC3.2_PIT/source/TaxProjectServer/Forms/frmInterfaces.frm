@@ -1729,10 +1729,10 @@ Private Sub Command1_Click()
 'str1 = "bs322812100343639   022014004004003003~0~0~0</S><S>24/03/2014~10~105856~0~~~~~0~0~~0~0~21171162</S></SKHBS>"
 'Barcode_Scaned str1
 
-'str1 = "aa322732100343639   04201400100200100201/0114/06/2006<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0~22~0~0~0~0~0~22~1"
-'Barcode_Scaned str1
-'str1 = "aa322732100343639   042014001002002002~0</S><S>~1~~~~~~</S><S>~~~24/03/2014~1~~24/02/2014~1052~~</S></S02>"
-'Barcode_Scaned str1
+str1 = "aa322732100343639   04201400100200100201/0114/06/2006<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0~22~0~0~0~0~0~22~1"
+Barcode_Scaned str1
+str1 = "aa322732100343639   042014001002002002~0</S><S>~1~~~~~~</S><S>~~~24/03/2014~1~~24/02/2014~1052~~</S></S02>"
+Barcode_Scaned str1
 'str1 = "bs322732100343639   04201400500600100301/0114/06/2006<S02><S></S><S>23432~475336475~3242~432432423~234234~324234~42342342~0~-475313043~0~-"
 'Barcode_Scaned str1
 'str1 = "bs322732100343639   042014005006002003475313043~22~0~23423~0~0~0~22~1~0</S><S>~1~~~~~~</S><S>~~~24/03/2014~~1~24/02/2014~1052~~</S></S02>"
@@ -1764,8 +1764,8 @@ Private Sub Command1_Click()
 'str1 = "bs322052100343639   022014004004003003<SKHBS><S>~~0~0~0</S><S>~~0~0~0</S><S>24/03/2014~423~2342342~0~~~~~0~0~~0~0~15225</S></SKHBS>"
 'Barcode_Scaned str1
 
-str1 = "aa322902100343639   02201400000000100101/0101/01/1900<S01><S></S><S>~0.000~0~0~</S><S>~~~24/03/2014~1~~~1~24/02/2014</S></S01>"
-Barcode_Scaned str1
+'str1 = "aa322902100343639   02201400000000100101/0101/01/1900<S01><S></S><S>~0.000~0~0~</S><S>~~~24/03/2014~1~~~1~24/02/2014</S></S01>"
+'Barcode_Scaned str1
 'str1 = "bs322902100343639   02201400300300100201/0101/01/1900<S01><S></S><S>LÝt~324234.000~500~162117000~010103</S><S>~~~24/03/2014~~1~1~1~24/02/2014</S></S01>"
 'Barcode_Scaned str1
 'str1 = "bs322902100343639   022014003003002002<SKHBS><S>ThuÕ BVMT ph¶i nép trong kú~6~0~162117000~162117000</S><S>~~0~0~0</S><S>24/03/2014~34~45434353~0~~~~~0~0~~0~0~162117000</S></SKHBS>"
@@ -5408,8 +5408,8 @@ Private Function Prepare_QLT() As String
             .GetText .ColLetterToNumber("L"), 33, TK_PS
         End If
 
-        If ID_TK <> "64" And ID_TK <> "65" And ID_TK <> "66" And ID_TK <> "67" And ID_TK <> "68" And ID_TK <> "91" Then
-            If KiemTraNopCham(KYKK_TU_NGAY_F, kieukykk, NGNOP_S) = True And TK_PS <> "1" Then
+        If TK_PS <> "1" And ID_TK <> "64" And ID_TK <> "65" And ID_TK <> "66" And ID_TK <> "67" And ID_TK <> "68" And ID_TK <> "91" Then
+            If KiemTraNopCham(KYKK_TU_NGAY_F, kieukykk, NGNOP_S) = True Then
                 If MessageBox("0130", msYesNo, miQuestion) = mrYes Then
                     frmInBienBanPhatNopCham.Show 1
                 End If
