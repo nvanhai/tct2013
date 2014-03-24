@@ -16,7 +16,7 @@
 		<maHuyenDLyThue></maHuyenDLyThue>
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
-	<Dynamic GroupName="NDUNGKHAIBOSUNGDIEUCHINH">
+	<Dynamic GroupName="NDUNGKHAIBOSUNGDIEUCHINH" MinOccur="1">
 		<KHBSDieuChinhTang id="ID_1">
 			<ct2>BD_9</ct2>
 			<ct3>BE_9</ct3>
@@ -25,7 +25,7 @@
 			<ct6>BH_9</ct6>
 		</KHBSDieuChinhTang>
 	</Dynamic>
-	<Dynamic GroupName="NDUNGKHAIBOSUNGDIEUCHINH">
+	<Dynamic GroupName="NDUNGKHAIBOSUNGDIEUCHINH" MinOccur="1">
 		<KHBSDieuChinhGiam id="ID_2">
 			<ct2>BD_13</ct2>
 			<ct3>BE_13</ct3>
