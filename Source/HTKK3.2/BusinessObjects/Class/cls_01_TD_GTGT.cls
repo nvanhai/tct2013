@@ -197,57 +197,23 @@ End Sub
 
 Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonDown As Integer)
 With fps
-        If Col = .ColLetterToNumber("J") And Row >= 42 And .ActiveSheet = 2 Then
+        If Col = .ColLetterToNumber("G") And Row >= 42 And .ActiveSheet = 2 Then
             fps.EventEnabled(EventAllEvents) = False
             .Sheet = 2
             .Row = Row
-            .Col = .ColLetterToNumber("J")
+            .Col = .ColLetterToNumber("G")
             If (.value = "1") Then
                 .Row = Row
                 ' chi tieu STT
-                .Col = .ColLetterToNumber("B")
-                .Lock = True
-                ' Chi tieu ten nha may
-                .Col = .ColLetterToNumber("C")
-                .Lock = True
-                ' Chi tieu MST
-                .Col = .ColLetterToNumber("H")
-                .Lock = True
-                'Chi tieu CQT cap Cuc
-                .Col = .ColLetterToNumber("L")
-                .Lock = False
-                ' Chi tieu CQT cap chi CUc
                 .Col = .ColLetterToNumber("P")
-                .Lock = False
-                ' ty le phan bo
-                .Col = .ColLetterToNumber("R")
-                .Lock = False
-                ' thue phai nop
-                .Col = .ColLetterToNumber("U")
-                .Lock = False
+                .Lock = True
+                
             Else
                 .Row = Row
                 ' chi tieu STT
-                .Col = .ColLetterToNumber("B")
-                .Lock = False
-                ' Chi tieu ten nha may
-                .Col = .ColLetterToNumber("C")
-                .Lock = False
-                ' Chi tieu MST
-                .Col = .ColLetterToNumber("H")
-                .Lock = False
-                'Chi tieu CQT cap Cuc
-                .Col = .ColLetterToNumber("L")
-                .Lock = True
-                ' Chi tieu CQT cap chi CUc
                 .Col = .ColLetterToNumber("P")
-                .Lock = True
-                ' ty le phan bo
-                .Col = .ColLetterToNumber("R")
-                .Lock = True
-                ' thue phai nop
-                .Col = .ColLetterToNumber("U")
-                .Lock = True
+                .Lock = False
+               
             End If
             fps.EventEnabled(EventAllEvents) = True
         End If
