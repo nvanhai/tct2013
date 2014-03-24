@@ -2340,9 +2340,13 @@ Public Function CheckPeriod(ByVal strMonth As String, ByVal strYear As String) A
     ' ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "Day") = "1" Then 'strKieuKy = KIEU_KY_NAM
     ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "Year") = "1" Then 'strKieuKy = KIEU_KY_NAM
     '************************************
-        If CInt(strYear) > CInt(Year(Date)) Then
-            DisplayMessage "0063", msOKOnly, miInformation
+        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "24" Then
+        Else
+            If CInt(strYear) > CInt(Year(Date)) Then
+                DisplayMessage "0063", msOKOnly, miInformation
             Exit Function
+        End If
+            
         End If
 '    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "Year") = "1/2" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then  'Bao cao an chi
 '        If CInt(strYear) > CInt(Year(Date)) Then

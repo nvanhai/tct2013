@@ -329,6 +329,22 @@ Public Sub Prepare2()
             UpdateCell fps, .Col, .Row, .Text
         End If
             'end
+        ' set lock CQT phan bo
+        .Sheet = 2
+        Dim vChon As Variant
+        If .SheetVisible = True Then
+        .Row = 42
+         Do
+                .GetText .ColLetterToNumber("G"), .Row, vChon
+                If vChon = 1 Then
+                    .Col = .ColLetterToNumber("P")
+                    .Lock = True
+                End If
+                
+                .Row = .Row + 1
+                .Col = .ColLetterToNumber("B")
+            Loop Until .Text = "aa"
+         End If
         mCurrentSheet = .Sheet
     End With
 End Sub
@@ -369,7 +385,10 @@ Private Sub CheckDynamicError()
     Dim vMST As Variant
     Dim strFocusSheetName As String, strFocusRow As String, strFocusCol As String, iFocusFlag As Integer, errMST As Variant, strCheck As String
     
-    Dim vNhaMayTD, vSanLuong, vDonGia, vThueMG As Variant
+    Dim vNhaMayTD, vSanLuong, vDonGia, vThueMG, vThuePS As Variant
+    Dim errorThueMG As Variant
+    Dim flagThueMG As Integer
+    
     iWhiteRow = 1
     
     row_require = 15
@@ -380,6 +399,8 @@ Private Sub CheckDynamicError()
         .Sheet = .SheetCount
         .GetText .ColLetterToNumber("E"), row_require, vMessRequire
         .GetText .ColLetterToNumber("E"), 13, errMST
+        
+        .GetText .ColLetterToNumber("E"), 17, errorThueMG
         
         .Sheet = iCurrentSheet
         
@@ -395,6 +416,7 @@ Private Sub CheckDynamicError()
                 .GetText .ColLetterToNumber("F"), .Row, vMST
                 .GetText .ColLetterToNumber("I"), .Row, vSanLuong
                 .GetText .ColLetterToNumber("K"), .Row, vDonGia
+                .GetText .ColLetterToNumber("O"), .Row, vThuePS
                 .GetText .ColLetterToNumber("R"), .Row, vThueMG
                 
                 If Trim(vNhaMayTD) <> "" Or Trim(vMST) <> "" Or Val(vSanLuong) <> 0 Or Val(vDonGia) <> 0 Or Val(vThueMG) <> 0 Then iWhiteRow = 0
@@ -459,6 +481,19 @@ Private Sub CheckDynamicError()
                                 
                                 'iFlagEmty = 1
                             End If
+                        End If
+                        
+                        ' kiem tra chi tieu 28 <= 27
+                        If Val(vThueMG) > Val(vThuePS) Then
+                            .Col = .ColLetterToNumber("R")
+                            .CellNote = errorThueMG   'static
+                            .BackColor = mErrorColor
+    
+                            flagThueMG = 1
+                        Else
+                            .Col = .ColLetterToNumber("R")
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
                         End If
                 End If
                 .Row = .Row + 1
@@ -571,6 +606,8 @@ Private Sub CheckDynamicError()
         .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), row_require, IIf(iFlagEmpty = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 13, IIf(iFlagCheckMaST = 1, "0", "1")
+        
+        .SetText .ColLetterToNumber("B"), 17, IIf(flagThueMG = 1, "0", "1")
     End With
 End Sub
 Sub CheckErrorMST()
@@ -929,57 +966,29 @@ End Function
 
 Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonDown As Integer)
 With fps
-        If Col = .ColLetterToNumber("K") And Row >= 28 And .ActiveSheet = 2 Then
+        If Col = .ColLetterToNumber("G") And Row >= 42 And .ActiveSheet = 2 Then
             fps.EventEnabled(EventAllEvents) = False
             .Sheet = 2
+            mCurrentSheet = .Sheet
             .Row = Row
-            .Col = .ColLetterToNumber("K")
+            .Col = .ColLetterToNumber("G")
             If (.value = "1") Then
                 .Row = Row
                 ' chi tieu STT
-                .Col = .ColLetterToNumber("B")
-                .Lock = True
-                ' Chi tieu ten nha may
-                .Col = .ColLetterToNumber("C")
-                .Lock = True
-                ' Chi tieu MST
-                .Col = .ColLetterToNumber("H")
-                .Lock = True
-                'Chi tieu CQT cap Cuc
-                .Col = .ColLetterToNumber("L")
-                .Lock = False
-                ' Chi tieu CQT cap chi CUc
                 .Col = .ColLetterToNumber("P")
-                .Lock = False
-                ' ty le phan bo
-                .Col = .ColLetterToNumber("R")
-                .Lock = False
-                ' thue phai nop
-                .Col = .ColLetterToNumber("U")
-                .Lock = False
+                .Lock = True
+                .Text = ""
+                UpdateCell fps, .Col, .Row, .Text
+                
+                .Col = .ColLetterToNumber("AH")
+                .Text = ""
+                UpdateCell fps, .Col, .Row, .Text
             Else
                 .Row = Row
                 ' chi tieu STT
-                .Col = .ColLetterToNumber("B")
-                .Lock = False
-                ' Chi tieu ten nha may
-                .Col = .ColLetterToNumber("C")
-                .Lock = False
-                ' Chi tieu MST
-                .Col = .ColLetterToNumber("H")
-                .Lock = False
-                'Chi tieu CQT cap Cuc
-                .Col = .ColLetterToNumber("L")
-                .Lock = True
-                ' Chi tieu CQT cap chi CUc
                 .Col = .ColLetterToNumber("P")
-                .Lock = True
-                ' ty le phan bo
-                .Col = .ColLetterToNumber("R")
-                .Lock = True
-                ' thue phai nop
-                .Col = .ColLetterToNumber("U")
-                .Lock = True
+                .Lock = False
+                
             End If
             fps.EventEnabled(EventAllEvents) = True
         End If

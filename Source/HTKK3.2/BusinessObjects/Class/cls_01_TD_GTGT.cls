@@ -135,6 +135,24 @@ Public Sub Prepare2()
             UpdateCell fps, .Col, .Row, .Text
         End If
             'end
+            
+        ' set lock CQT phan bo
+        .Sheet = 2
+        Dim vChon As Variant
+        If .SheetVisible = True Then
+        .Row = 42
+         Do
+                .GetText .ColLetterToNumber("G"), .Row, vChon
+                If vChon = 1 Then
+                    .Col = .ColLetterToNumber("P")
+                    .Lock = True
+                End If
+                
+                .Row = .Row + 1
+                .Col = .ColLetterToNumber("B")
+            Loop Until .Text = "aa"
+         End If
+            
         mCurrentSheet = .Sheet
     End With
     
@@ -208,6 +226,12 @@ With fps
                 .Col = .ColLetterToNumber("P")
                 .Lock = True
                 
+                .Text = ""
+                UpdateCell fps, .Col, .Row, .Text
+                
+                .Col = .ColLetterToNumber("AH")
+                .Text = ""
+                UpdateCell fps, .Col, .Row, .Text
             Else
                 .Row = Row
                 ' chi tieu STT

@@ -66,6 +66,7 @@ End Sub
 'Its functions is 2st preparing for interface sheets
 'No parameter
 Public Sub Prepare2()
+        Dim checkUq, checkDLT As Variant
     With fps
         mblKhoiDauToKhai = True
         .EventEnabled(EventAllEvents) = False
@@ -93,6 +94,25 @@ Public Sub Prepare2()
             .Text = StrSolanBosung
             UpdateCell fps, .Col, .Row, .Text
         End If
+        
+        
+         If isCheckTTDLT = True Then
+            .Row = 17
+            .Col = .ColLetterToNumber("I")
+             checkUq = .value
+             
+             .Row = 17
+            .Col = .ColLetterToNumber("O")
+             checkDLT = .value
+             
+             If checkUq = 0 And checkDLT = 0 Then
+                .Row = 17
+                .Col = .ColLetterToNumber("O")
+                 .value = 1
+                 UpdateCell fps, .Col, .Row, "x"
+             End If
+             
+        End If
         'end
     End With
 End Sub
@@ -101,6 +121,49 @@ End Sub
 
 
         
+
+Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonDown As Integer)
+     With fps
+     ' xu ly check 1 trong 2 o uy quyen hoac DLT
+        If Col = .ColLetterToNumber("I") And Row = 17 And .ActiveSheet = 1 Then
+            fps.EventEnabled(EventAllEvents) = False
+            .Sheet = 1
+            .Row = 17
+            .Col = .ColLetterToNumber("I")
+            If (.value = "1") Then
+                .Row = 17
+                .Col = .ColLetterToNumber("O")
+                .value = 0
+                UpdateCell fps, .Col, .Row, ""
+            Else
+                .Row = 17
+                .Col = .ColLetterToNumber("O")
+                .value = 1
+                UpdateCell fps, .Col, .Row, "x"
+            End If
+            fps.EventEnabled(EventAllEvents) = True
+        End If
+        
+        If Col = .ColLetterToNumber("O") And Row = 17 And .ActiveSheet = 1 Then
+            fps.EventEnabled(EventAllEvents) = False
+            .Sheet = 1
+            .Row = 17
+            .Col = .ColLetterToNumber("O")
+            If (.value = "1") Then
+                .Row = 17
+                .Col = .ColLetterToNumber("I")
+                .value = 0
+                UpdateCell fps, .Col, .Row, ""
+            Else
+                .Row = 17
+                .Col = .ColLetterToNumber("I")
+                .value = 1
+                UpdateCell fps, .Col, .Row, "x"
+            End If
+            fps.EventEnabled(EventAllEvents) = True
+        End If
+     End With
+End Sub
 
 Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As Long, ByVal NewRow As Long, Cancel As Boolean)
     Dim varTemp As Variant
@@ -439,14 +502,24 @@ Private Sub UpdateSheets()
         mCurrentSheet = .Sheet
          For Each xmlCellNodeData In TAX_Utilities_v1.Data(.Sheet - 1).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-               .Col = lCol
-               .Row = lRow
-               If .CellType = CellTypeNumber Then
-                    varTemp = .value
+               If (lRow = 17 And lCol = .ColLetterToNumber("I")) Or (lRow = 17 And lCol = .ColLetterToNumber("O")) Then
+                    .GetText lCol, lRow, varTemp
+
+                    If varTemp = "1" Or UCase(CStr(varTemp)) = "X" Then
+                        UpdateCell fps, lCol, lRow, "x"
+                    Else
+                        UpdateCell fps, lCol, lRow, ""
+                    End If
                Else
-                    varTemp = .Text
+                    .Col = lCol
+                    .Row = lRow
+                    If .CellType = CellTypeNumber Then
+                         varTemp = .value
+                    Else
+                         varTemp = .Text
+                    End If
+                    UpdateCell fps, lCol, lRow, varTemp
                End If
-               UpdateCell fps, lCol, lRow, varTemp
          Next
        .Sheet = .ActiveSheet
       .EventEnabled(EventAllEvents) = True
