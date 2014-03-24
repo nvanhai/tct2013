@@ -299,5 +299,6 @@
 	<Infor ID="0305" Msg="Đối với khí thiên nhiên: Hạch toán ct [34] vào mục 3800, tiểu mục 3801"/>
 	
 	<Infor ID="0306" Msg="Hạch toán chỉ tiêu [30] vào mục 3850, tiêu mục 3852"/>
-	
+	<Infor ID="0307" Msg="Hạch toán tổng cột [27] vào mục 1700, tiểu mục 1701"/>	
+	<Infor ID="0308" Msg="Hạch toán tổng cột [29] vào mục 1550, tiểu mục 1552"/>	
 </Message>

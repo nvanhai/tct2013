@@ -2586,9 +2586,15 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
                     .Col = .ColLetterToNumber("H")
                     .TypeComboBoxList = tenChiCucThue
                     
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
+                    
                     .Row = Row
                     .Col = .ColLetterToNumber("R")
                     .TypeComboBoxList = maChiCucThue
+                    
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
                    
                 End If
             End If

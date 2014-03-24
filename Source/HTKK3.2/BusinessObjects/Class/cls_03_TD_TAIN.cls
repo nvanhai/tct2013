@@ -156,7 +156,7 @@ Private Sub setCQTQuanLy()
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                     
                     If arrDanhsach(0) = "1" Then
-                        tenCucThue = tenCucThue + arrDanhsach(3) + Chr$(9)
+                        tenCucThue = tenCucThue + Right$(arrDanhsach(3), Len(arrDanhsach(3)) - 6) + Chr$(9)
                         maCucThue = maCucThue + arrDanhsach(1) + Chr$(9)
                     End If
                     'If arrDanhsach(0) = "0" Then
