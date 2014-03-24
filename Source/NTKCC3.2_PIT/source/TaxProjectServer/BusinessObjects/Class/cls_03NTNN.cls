@@ -1169,7 +1169,7 @@ Public Function InsertHDR() As String
     Dim MACT2       As Variant
     Dim TENNV       As Variant
     Dim CHUNGCHI    As Variant
-    Dim NGAYNOP As Variant
+    Dim NGAYNOP     As Variant
     Dim iCol        As Long, iRow As Long
     Dim xmlCellNode As MSXML.IXMLDOMNode
     sSQLCol = "MADTNT, MADLT,MATHUE, MATM, MAPP, KYLBO, NGNOP, "
@@ -1292,7 +1292,12 @@ Public Function InsertHDR() As String
             HANNOP = ToString(HANNOP, "DD/MM/YYYY")
         End If
 
-        HANNOP = "CTOD('" & Format(HANNOP, "mm/dd/yyyy") & "')"
+        If Trim(HANNOP) = vbNullString Then
+            HANNOP = "CTOD('')"
+        Else
+            HANNOP = ToDate(Trim(HANNOP), DDMMYYYY)
+            HANNOP = "CTOD('" & Format(HANNOP, "mm/dd/yyyy") & "')"
+        End If
 
         GTTinhThue = "0"
         KTTRUOC = "0"
