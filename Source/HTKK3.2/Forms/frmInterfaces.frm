@@ -7139,14 +7139,27 @@ Private Sub Command1_Click()
         GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01NTNN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TBVMT" _
         Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01ATNDN_DK" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01BTNDN_DK" _
         Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TAIN_DK" Then
-            fpSpread1.EventEnabled(EventAllEvents) = False
-            tempCurrSheet = mCurrentSheet
-            mCurrentSheet = fpSpread1.SheetCount - 1
-            fpSpread1.sheet = mCurrentSheet
-            fpSpread1.SetText fpSpread1.ColLetterToNumber("BI"), 5, Round(Val(strTongCurr), 0)
-            UpdateCell fpSpread1.ColLetterToNumber("BI"), 5, Round(Val(strTongCurr), 0)
-            mCurrentSheet = tempCurrSheet
-            fpSpread1.EventEnabled(EventAllEvents) = True
+        
+            If strIDTkTT156 = "99" Or strIDTkTT156 = "98" Or strIDTkTT156 = "92" Then
+                fpSpread1.EventEnabled(EventAllEvents) = False
+                tempCurrSheet = mCurrentSheet
+                mCurrentSheet = fpSpread1.SheetCount - 1
+                fpSpread1.sheet = mCurrentSheet
+                fpSpread1.SetText fpSpread1.ColLetterToNumber("BI"), 5, Round(Val(strTongCurr), 2)
+                UpdateCell fpSpread1.ColLetterToNumber("BI"), 5, Round(Val(strTongCurr), 2)
+                mCurrentSheet = tempCurrSheet
+                fpSpread1.EventEnabled(EventAllEvents) = True
+
+            Else
+                fpSpread1.EventEnabled(EventAllEvents) = False
+                tempCurrSheet = mCurrentSheet
+                mCurrentSheet = fpSpread1.SheetCount - 1
+                fpSpread1.sheet = mCurrentSheet
+                fpSpread1.SetText fpSpread1.ColLetterToNumber("BI"), 5, Round(Val(strTongCurr), 0)
+                UpdateCell fpSpread1.ColLetterToNumber("BI"), 5, Round(Val(strTongCurr), 0)
+                mCurrentSheet = tempCurrSheet
+                fpSpread1.EventEnabled(EventAllEvents) = True
+            End If
         End If
         
         ' I. Dieu chinh tang so thue
@@ -7176,22 +7189,42 @@ Private Sub Command1_Click()
         Next j
         ' set cac gia tri cua cot
         If flagTang = True Then
-            For j = 0 To numRowI
-                
-                arrValue = Split(arrDieuChinhTang(j), "_")
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("B"), 9 + j, j + 1
-                
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BE"), 9 + j, arrValue(0)
-                UpdateCell fpSpread1.ColLetterToNumber("BE"), 9 + j, arrValue(0)
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BD"), 9 + j, arrValue(1)
-                UpdateCell fpSpread1.ColLetterToNumber("BD"), 9 + j, arrValue(1)
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BF"), 9 + j, Round(Val(arrValue(2)), 0)
-                UpdateCell fpSpread1.ColLetterToNumber("BF"), 9 + j, Round(Val(arrValue(2)), 0)
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BG"), 9 + j, Round(Val(arrValue(3)), 0)
-                UpdateCell fpSpread1.ColLetterToNumber("BG"), 9 + j, Round(Val(arrValue(3)), 0)
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BH"), 9 + j, Round(Val(arrValue(4)), 0)
-                UpdateCell fpSpread1.ColLetterToNumber("BH"), 9 + j, Round(Val(arrValue(4)), 0)
-            Next j
+            If strIDTkTT156 = "99" Or strIDTkTT156 = "98" Or strIDTkTT156 = "92" Then
+                ' tien USD lam tron 2 so
+                For j = 0 To numRowI
+                    arrValue = Split(arrDieuChinhTang(j), "_")
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("B"), 9 + j, j + 1
+                    
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BE"), 9 + j, arrValue(0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BE"), 9 + j, arrValue(0)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BD"), 9 + j, arrValue(1)
+                    UpdateCell fpSpread1.ColLetterToNumber("BD"), 9 + j, arrValue(1)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BF"), 9 + j, Round(Val(arrValue(2)), 2)
+                    UpdateCell fpSpread1.ColLetterToNumber("BF"), 9 + j, Round(Val(arrValue(2)), 2)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BG"), 9 + j, Round(Val(arrValue(3)), 2)
+                    UpdateCell fpSpread1.ColLetterToNumber("BG"), 9 + j, Round(Val(arrValue(3)), 2)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BH"), 9 + j, Round(Val(arrValue(4)), 2)
+                    UpdateCell fpSpread1.ColLetterToNumber("BH"), 9 + j, Round(Val(arrValue(4)), 2)
+                Next j
+            Else
+        
+                For j = 0 To numRowI
+                    arrValue = Split(arrDieuChinhTang(j), "_")
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("B"), 9 + j, j + 1
+                    
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BE"), 9 + j, arrValue(0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BE"), 9 + j, arrValue(0)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BD"), 9 + j, arrValue(1)
+                    UpdateCell fpSpread1.ColLetterToNumber("BD"), 9 + j, arrValue(1)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BF"), 9 + j, Round(Val(arrValue(2)), 0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BF"), 9 + j, Round(Val(arrValue(2)), 0)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BG"), 9 + j, Round(Val(arrValue(3)), 0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BG"), 9 + j, Round(Val(arrValue(3)), 0)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BH"), 9 + j, Round(Val(arrValue(4)), 0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BH"), 9 + j, Round(Val(arrValue(4)), 0)
+                Next j
+            End If
+            
         End If
         
         ' II. Dieu chinh giam so thue
@@ -7221,21 +7254,40 @@ Private Sub Command1_Click()
         Next j
         ' set cac gia tri cua cot
         If flagGiam = True Then
-            For j = 0 To numRowII
-                arrValue = Split(arrDieuChinhGiam(j), "_")
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("B"), 13 + numRowI + j, j + 1
-                
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BE"), 13 + numRowI + j, arrValue(0)
-                UpdateCell fpSpread1.ColLetterToNumber("BE"), 13 + numRowI + j, arrValue(0)
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BD"), 13 + numRowI + j, arrValue(1)
-                UpdateCell fpSpread1.ColLetterToNumber("BD"), 13 + numRowI + j, arrValue(1)
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BF"), 13 + numRowI + j, Round(Val(arrValue(2)), 0)
-                UpdateCell fpSpread1.ColLetterToNumber("BF"), 13 + numRowI + j, Round(Val(arrValue(2)), 0)
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BG"), 13 + numRowI + j, Round(Val(arrValue(3)), 0)
-                UpdateCell fpSpread1.ColLetterToNumber("BG"), 13 + numRowI + j, Round(Val(arrValue(3)), 0)
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BH"), 13 + numRowI + j, Round(Val(arrValue(4)), 0)
-                UpdateCell fpSpread1.ColLetterToNumber("BH"), 13 + numRowI + j, Round(Val(arrValue(4)), 0)
-            Next j
+            If strIDTkTT156 = "99" Or strIDTkTT156 = "98" Or strIDTkTT156 = "92" Then
+                ' tien USD lam tron 2 so
+                For j = 0 To numRowII
+                    arrValue = Split(arrDieuChinhGiam(j), "_")
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("B"), 13 + numRowI + j, j + 1
+                    
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BE"), 13 + numRowI + j, arrValue(0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BE"), 13 + numRowI + j, arrValue(0)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BD"), 13 + numRowI + j, arrValue(1)
+                    UpdateCell fpSpread1.ColLetterToNumber("BD"), 13 + numRowI + j, arrValue(1)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BF"), 13 + numRowI + j, Round(Val(arrValue(2)), 2)
+                    UpdateCell fpSpread1.ColLetterToNumber("BF"), 13 + numRowI + j, Round(Val(arrValue(2)), 2)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BG"), 13 + numRowI + j, Round(Val(arrValue(3)), 2)
+                    UpdateCell fpSpread1.ColLetterToNumber("BG"), 13 + numRowI + j, Round(Val(arrValue(3)), 2)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BH"), 13 + numRowI + j, Round(Val(arrValue(4)), 2)
+                    UpdateCell fpSpread1.ColLetterToNumber("BH"), 13 + numRowI + j, Round(Val(arrValue(4)), 2)
+                Next j
+            Else
+                For j = 0 To numRowII
+                    arrValue = Split(arrDieuChinhGiam(j), "_")
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("B"), 13 + numRowI + j, j + 1
+                    
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BE"), 13 + numRowI + j, arrValue(0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BE"), 13 + numRowI + j, arrValue(0)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BD"), 13 + numRowI + j, arrValue(1)
+                    UpdateCell fpSpread1.ColLetterToNumber("BD"), 13 + numRowI + j, arrValue(1)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BF"), 13 + numRowI + j, Round(Val(arrValue(2)), 0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BF"), 13 + numRowI + j, Round(Val(arrValue(2)), 0)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BG"), 13 + numRowI + j, Round(Val(arrValue(3)), 0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BG"), 13 + numRowI + j, Round(Val(arrValue(3)), 0)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BH"), 13 + numRowI + j, Round(Val(arrValue(4)), 0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BH"), 13 + numRowI + j, Round(Val(arrValue(4)), 0)
+                Next j
+            End If
         End If
 
         ' bo set cac cong thuc tinh phat nop cham
@@ -11956,14 +12008,25 @@ Private Sub TonghopKHBS()
         Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_04GTGT" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01NTNN" _
         Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TBVMT" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01ATNDN_DK" _
         Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01BTNDN_DK" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TAIN_DK" Then
-            fpSpread1.EventEnabled(EventAllEvents) = False
-            tempCurrSheet = mCurrentSheet
-            mCurrentSheet = fpSpread1.SheetCount - 1
-            fpSpread1.sheet = mCurrentSheet
-            fpSpread1.SetText fpSpread1.ColLetterToNumber("BI"), 5, Round(Val(strTongCurr), 0)
-            UpdateCell fpSpread1.ColLetterToNumber("BI"), 5, Round(Val(strTongCurr), 0)
-            mCurrentSheet = tempCurrSheet
-            fpSpread1.EventEnabled(EventAllEvents) = True
+            If strIdTK_TT156 = "99" Or strIdTK_TT156 = "98" Or strIdTK_TT156 = "92" Then
+                fpSpread1.EventEnabled(EventAllEvents) = False
+                tempCurrSheet = mCurrentSheet
+                mCurrentSheet = fpSpread1.SheetCount - 1
+                fpSpread1.sheet = mCurrentSheet
+                fpSpread1.SetText fpSpread1.ColLetterToNumber("BI"), 5, Round(Val(strTongCurr), 2)
+                UpdateCell fpSpread1.ColLetterToNumber("BI"), 5, Round(Val(strTongCurr), 2)
+                mCurrentSheet = tempCurrSheet
+                fpSpread1.EventEnabled(EventAllEvents) = True
+            Else
+                fpSpread1.EventEnabled(EventAllEvents) = False
+                tempCurrSheet = mCurrentSheet
+                mCurrentSheet = fpSpread1.SheetCount - 1
+                fpSpread1.sheet = mCurrentSheet
+                fpSpread1.SetText fpSpread1.ColLetterToNumber("BI"), 5, Round(Val(strTongCurr), 0)
+                UpdateCell fpSpread1.ColLetterToNumber("BI"), 5, Round(Val(strTongCurr), 0)
+                mCurrentSheet = tempCurrSheet
+                fpSpread1.EventEnabled(EventAllEvents) = True
+            End If
         End If
         
         ' I. Dieu chinh tang so thue
@@ -11993,22 +12056,42 @@ Private Sub TonghopKHBS()
         Next j
         ' set cac gia tri cua cot
         If flagTang = True Then
-            For j = 0 To numRowI
-                
-                arrValue = Split(arrDieuChinhTang(j), "_")
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("B"), 9 + j, j + 1
-                
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BE"), 9 + j, arrValue(0)
-                UpdateCell fpSpread1.ColLetterToNumber("BE"), 9 + j, arrValue(0)
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BD"), 9 + j, arrValue(1)
-                UpdateCell fpSpread1.ColLetterToNumber("BD"), 9 + j, arrValue(1)
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BF"), 9 + j, Round(Val(arrValue(2)), 0)
-                UpdateCell fpSpread1.ColLetterToNumber("BF"), 9 + j, Round(Val(arrValue(2)), 0)
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BG"), 9 + j, Round(Val(arrValue(3)), 0)
-                UpdateCell fpSpread1.ColLetterToNumber("BG"), 9 + j, Round(Val(arrValue(3)), 0)
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BH"), 9 + j, Round(Val(arrValue(4)), 0)
-                UpdateCell fpSpread1.ColLetterToNumber("BH"), 9 + j, Round(Val(arrValue(4)), 0)
-            Next j
+            If strIdTK_TT156 = "99" Or strIdTK_TT156 = "98" Or strIdTK_TT156 = "92" Then
+                 For j = 0 To numRowI
+                    arrValue = Split(arrDieuChinhTang(j), "_")
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("B"), 9 + j, j + 1
+                    
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BE"), 9 + j, arrValue(0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BE"), 9 + j, arrValue(0)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BD"), 9 + j, arrValue(1)
+                    UpdateCell fpSpread1.ColLetterToNumber("BD"), 9 + j, arrValue(1)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BF"), 9 + j, Round(Val(arrValue(2)), 2)
+                    UpdateCell fpSpread1.ColLetterToNumber("BF"), 9 + j, Round(Val(arrValue(2)), 2)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BG"), 9 + j, Round(Val(arrValue(3)), 2)
+                    UpdateCell fpSpread1.ColLetterToNumber("BG"), 9 + j, Round(Val(arrValue(3)), 2)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BH"), 9 + j, Round(Val(arrValue(4)), 2)
+                    UpdateCell fpSpread1.ColLetterToNumber("BH"), 9 + j, Round(Val(arrValue(4)), 2)
+                Next j
+            Else
+                 For j = 0 To numRowI
+                    arrValue = Split(arrDieuChinhTang(j), "_")
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("B"), 9 + j, j + 1
+                    
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BE"), 9 + j, arrValue(0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BE"), 9 + j, arrValue(0)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BD"), 9 + j, arrValue(1)
+                    UpdateCell fpSpread1.ColLetterToNumber("BD"), 9 + j, arrValue(1)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BF"), 9 + j, Round(Val(arrValue(2)), 0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BF"), 9 + j, Round(Val(arrValue(2)), 0)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BG"), 9 + j, Round(Val(arrValue(3)), 0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BG"), 9 + j, Round(Val(arrValue(3)), 0)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BH"), 9 + j, Round(Val(arrValue(4)), 0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BH"), 9 + j, Round(Val(arrValue(4)), 0)
+                Next j
+            
+            End If
+        
+
         End If
         
         ' II. Dieu chinh giam so thue
@@ -12038,21 +12121,39 @@ Private Sub TonghopKHBS()
         Next j
         ' set cac gia tri cua cot
         If flagGiam = True Then
-            For j = 0 To numRowII
-                arrValue = Split(arrDieuChinhGiam(j), "_")
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("B"), 13 + numRowI + j, j + 1
-                
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BE"), 13 + numRowI + j, arrValue(0)
-                UpdateCell fpSpread1.ColLetterToNumber("BE"), 13 + numRowI + j, arrValue(0)
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BD"), 13 + numRowI + j, arrValue(1)
-                UpdateCell fpSpread1.ColLetterToNumber("BD"), 13 + numRowI + j, arrValue(1)
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BF"), 13 + numRowI + j, Round(Val(arrValue(2)), 0)
-                UpdateCell fpSpread1.ColLetterToNumber("BF"), 13 + numRowI + j, Round(Val(arrValue(2)), 0)
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BG"), 13 + numRowI + j, Round(Val(arrValue(3)), 0)
-                UpdateCell fpSpread1.ColLetterToNumber("BG"), 13 + numRowI + j, Round(Val(arrValue(3)), 0)
-                fpSpread1.SetText fpSpread1.ColLetterToNumber("BH"), 13 + numRowI + j, Round(Val(arrValue(4)), 0)
-                UpdateCell fpSpread1.ColLetterToNumber("BH"), 13 + numRowI + j, Round(Val(arrValue(4)), 0)
-            Next j
+            If strIdTK_TT156 = "99" Or strIdTK_TT156 = "98" Or strIdTK_TT156 = "92" Then
+                 For j = 0 To numRowII
+                    arrValue = Split(arrDieuChinhGiam(j), "_")
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("B"), 13 + numRowI + j, j + 1
+                    
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BE"), 13 + numRowI + j, arrValue(0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BE"), 13 + numRowI + j, arrValue(0)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BD"), 13 + numRowI + j, arrValue(1)
+                    UpdateCell fpSpread1.ColLetterToNumber("BD"), 13 + numRowI + j, arrValue(1)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BF"), 13 + numRowI + j, Round(Val(arrValue(2)), 2)
+                    UpdateCell fpSpread1.ColLetterToNumber("BF"), 13 + numRowI + j, Round(Val(arrValue(2)), 2)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BG"), 13 + numRowI + j, Round(Val(arrValue(3)), 2)
+                    UpdateCell fpSpread1.ColLetterToNumber("BG"), 13 + numRowI + j, Round(Val(arrValue(3)), 2)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BH"), 13 + numRowI + j, Round(Val(arrValue(4)), 2)
+                    UpdateCell fpSpread1.ColLetterToNumber("BH"), 13 + numRowI + j, Round(Val(arrValue(4)), 2)
+                Next j
+            Else
+                 For j = 0 To numRowII
+                    arrValue = Split(arrDieuChinhGiam(j), "_")
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("B"), 13 + numRowI + j, j + 1
+                    
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BE"), 13 + numRowI + j, arrValue(0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BE"), 13 + numRowI + j, arrValue(0)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BD"), 13 + numRowI + j, arrValue(1)
+                    UpdateCell fpSpread1.ColLetterToNumber("BD"), 13 + numRowI + j, arrValue(1)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BF"), 13 + numRowI + j, Round(Val(arrValue(2)), 0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BF"), 13 + numRowI + j, Round(Val(arrValue(2)), 0)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BG"), 13 + numRowI + j, Round(Val(arrValue(3)), 0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BG"), 13 + numRowI + j, Round(Val(arrValue(3)), 0)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("BH"), 13 + numRowI + j, Round(Val(arrValue(4)), 0)
+                    UpdateCell fpSpread1.ColLetterToNumber("BH"), 13 + numRowI + j, Round(Val(arrValue(4)), 0)
+                Next j
+            End If
         End If
 
         mCurrentSheet = tempCurrSheet

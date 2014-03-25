@@ -313,6 +313,9 @@ Private Sub CheckDynamicError()
     Dim flagCt09 As Integer
     Dim vErrorCt09 As Variant
     
+    Dim ct23, ct24, ct25, ct26, ct28, ct29, ct30, ct31 As Variant
+    Dim flagTyGia As Integer
+    
     
     With fps
         iCurrentSheet = .Sheet
@@ -333,6 +336,18 @@ Private Sub CheckDynamicError()
         .Sheet = 1
         .GetText .ColLetterToNumber("S"), 49, vDVUyQuyen
         .GetText .ColLetterToNumber("AF"), 49, vDaiLyThue
+        
+        
+        .GetText .ColLetterToNumber("AV"), 56, ct23
+        .GetText .ColLetterToNumber("AV"), 57, ct24
+        .GetText .ColLetterToNumber("AV"), 58, ct25
+        .GetText .ColLetterToNumber("AV"), 59, ct26
+        
+        .GetText .ColLetterToNumber("AV"), 61, ct28
+        .GetText .ColLetterToNumber("AV"), 62, ct29
+        .GetText .ColLetterToNumber("AV"), 63, ct30
+        .GetText .ColLetterToNumber("AV"), 64, ct31
+        
         ' kiem tra chi duoc chon  uy quyen hoac dai ly thue
         If isCheckTTDLT = True Then
             If Trim$(vDVUyQuyen) = "1" And Trim$(vDaiLyThue) = "1" Then
@@ -380,6 +395,20 @@ Private Sub CheckDynamicError()
                 .Row = 49
                 .CellNote = ""
                 .BackColor = mNonErrorColor
+        End If
+        
+        ' kiem tra ty gia
+        If (Val(ct23) <> 0 Or Val(ct24) <> 0 Or Val(ct25) <> 0 Or Val(ct26) <> 0 Or Val(ct28) <> 0 Or Val(ct29) <> 0 Or Val(ct30) <> 0) And Val(ct31) = 0 Then
+            .Col = .ColLetterToNumber("AV")
+            .Row = 64
+            .CellNote = vErrorEmpty
+            .BackColor = mErrorColor
+            flagTyGia = 1
+        Else
+            .Col = .ColLetterToNumber("AV")
+            .Row = 64
+            .CellNote = ""
+            .BackColor = mNonErrorColor
         End If
         
         .Sheet = iCurrentSheet
@@ -512,6 +541,7 @@ Private Sub CheckDynamicError()
         .SetText .ColLetterToNumber("B"), 22, IIf(flagDVUyQuyen = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 23, IIf(flagTongTyLe = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 24, IIf(flagDVUyQuyenEmpty = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 25, IIf(flagTyGia = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 26, IIf(flagCt09 = 1, "0", "1")
         'CheckErrorMST
     End With
