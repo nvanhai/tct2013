@@ -2184,6 +2184,42 @@ Sub CellChange2(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Intege
 End Sub
 
 
+' Ham set lai gia tri cua cong thuc khi tai bang ke 01_1
+Sub CellChange4()
+    Dim varTemp As Variant
+    Dim cellTagArr() As String
+    With fps
+        .Sheet = .ActiveSheet
+        If .Sheet = 2 Then
+                ' chi tieu 21
+                .Sheet = 1
+                .Col = .ColLetterToNumber("K")
+                .Row = 43
+                .Formula = "K48"
+                 ' chi tieu 22
+                .Sheet = 1
+                .Col = .ColLetterToNumber("Q")
+                .Row = 43
+                .Formula = "L48"
+                 ' chi tieu 24
+                .Sheet = 1
+                .Col = .ColLetterToNumber("Q")
+                .Row = 44
+                .Formula = "M48"
+                 ' chi tieu 26
+                .Sheet = 1
+                .Col = .ColLetterToNumber("Q")
+                .Row = 45
+                .Formula = "N48"
+                 ' chi tieu 28
+                .Sheet = 1
+                .Col = .ColLetterToNumber("Q")
+                .Row = 46
+                .Formula = "O48"
+        End If
+    End With
+End Sub
+
 Sub resetFormula()
      With fps
          ' chi tieu 21
@@ -2525,6 +2561,7 @@ fps.EventEnabled(EventAllEvents) = False
              .SetActiveCell iCol, iRow
              .Row = iRow
              .Col = iCol
+             CellChange4
         End If
         fps.EventEnabled(EventAllEvents) = True
         End With
