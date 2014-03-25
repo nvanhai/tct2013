@@ -434,6 +434,28 @@ Dim NguoiKyCol As Long, NguoiKyRow As Long
         GetCellSpan fps, iCol, iRow
         
         If (KeyCode = vbKeyF5) Or (KeyCode = vbKeyF6) Then
+            ' set lock CQT phan bo
+            If .ActiveSheet = 2 Then
+                .Sheet = 2
+                Dim vChon As Variant
+                If .SheetVisible = True Then
+                .Row = 42
+                 Do
+                        .GetText .ColLetterToNumber("G"), .Row, vChon
+                        If vChon = 1 Then
+                            .Col = .ColLetterToNumber("P")
+                            .Lock = True
+                        Else
+                            .Col = .ColLetterToNumber("P")
+                            .Lock = False
+                        End If
+                        
+                        .Row = .Row + 1
+                        .Col = .ColLetterToNumber("B")
+                    Loop Until .Text = "aa"
+                 End If
+            End If
+        
 '            If .ActiveSheet = .SheetCount - 1 Then
 '                 fps_Change iCol, iRow
 '                 fps.EventEnabled(EventAllEvents) = False

@@ -1096,6 +1096,28 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
                 .SetActiveCell iCol, iRow
                 fps.EventEnabled(EventAllEvents) = True
             End If
+            
+            ' set lock CQT phan bo
+            If .ActiveSheet = 2 Then
+                .Sheet = 2
+                Dim vChon As Variant
+                If .SheetVisible = True Then
+                .Row = 42
+                 Do
+                        .GetText .ColLetterToNumber("G"), .Row, vChon
+                        If vChon = 1 Then
+                            .Col = .ColLetterToNumber("P")
+                            .Lock = True
+                        Else
+                            .Col = .ColLetterToNumber("P")
+                            .Lock = False
+                        End If
+                        
+                        .Row = .Row + 1
+                        .Col = .ColLetterToNumber("B")
+                    Loop Until .Text = "aa"
+                 End If
+            End If
         End If
     End With
 End Sub
