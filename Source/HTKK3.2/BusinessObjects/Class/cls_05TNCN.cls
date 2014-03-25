@@ -1856,7 +1856,7 @@ Private Sub kiemtra5A()
                 ' Ma 10 so
                 If Len(Trim(varMST)) = 10 Then
                     strCheck = CheckTaxCode(Mid(Trim(varMST), 1, 1), Mid(Trim(varMST), 2, 1), Mid(Trim(varMST), 3, 1), Mid(Trim(varMST), 4, 1), Mid(Trim(varMST), 5, 1), Mid(Trim(varMST), 6, 1), Mid(Trim(varMST), 7, 1), Mid(Trim(varMST), 8, 1), Mid(Trim(varMST), 9, 1), Mid(Trim(varMST), 10, 1), Mid(Trim(varMST), 11, 1), Mid(Trim(varMST), 12, 1), Mid(Trim(varMST), 13, 1))
-                    If Mid(strCheck, 2, 1) <> "0" Then
+                    If Mid(strCheck, 2, 1) <> "0" Or Not IsNumeric(varMST) Then
                         flgErr5A = False
                         ' Danh dau cot MST nay sai de sau nay bat loi
                         flagCheck = False
@@ -2167,7 +2167,7 @@ Private Sub kiemtra5B()
                 ' Ma 10 so
                 If Len(Trim(varMST)) = 10 Then
                     strCheck = CheckTaxCode(Mid(Trim(varMST), 1, 1), Mid(Trim(varMST), 2, 1), Mid(Trim(varMST), 3, 1), Mid(Trim(varMST), 4, 1), Mid(Trim(varMST), 5, 1), Mid(Trim(varMST), 6, 1), Mid(Trim(varMST), 7, 1), Mid(Trim(varMST), 8, 1), Mid(Trim(varMST), 9, 1), Mid(Trim(varMST), 10, 1), Mid(Trim(varMST), 11, 1), Mid(Trim(varMST), 12, 1), Mid(Trim(varMST), 13, 1))
-                    If Mid(strCheck, 2, 1) <> "0" Then
+                    If Mid(strCheck, 2, 1) <> "0" Or Not IsNumeric(varMST) Then
                         flgErr5B = False
                         ' Danh dau cot MST nay sai de sau nay bat loi
                         .Col = .ColLetterToNumber("O")
@@ -2807,7 +2807,7 @@ Public Sub CheckDynamicSheet1()
 
                     ' check cau truc mst
                      strCheck = CheckTaxCode(Mid(Trim(vMST), 1, 1), Mid(Trim(vMST), 2, 1), Mid(Trim(vMST), 3, 1), Mid(Trim(vMST), 4, 1), Mid(Trim(vMST), 5, 1), Mid(Trim(vMST), 6, 1), Mid(Trim(vMST), 7, 1), Mid(Trim(vMST), 8, 1), Mid(Trim(vMST), 9, 1), Mid(Trim(vMST), 10, 1), Mid(Trim(vMST), 11, 1), Mid(Trim(vMST), 12, 1), Mid(Trim(vMST), 13, 1))
-                    If Mid(strCheck, 2, 1) <> "0" Then
+                    If Mid(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
                             .Col = .ColLetterToNumber("E")
                             .CellNote = vErrMsgMST
                             .BackColor = mErrorColor
@@ -3466,7 +3466,7 @@ Private Sub CheckDynamicSheet2()
                     'check cau truc mst
                     If Len(Trim(vMST)) = 10 Then
                          strCheck = CheckTaxCode(Mid(Trim(vMST), 1, 1), Mid(Trim(vMST), 2, 1), Mid(Trim(vMST), 3, 1), Mid(Trim(vMST), 4, 1), Mid(Trim(vMST), 5, 1), Mid(Trim(vMST), 6, 1), Mid(Trim(vMST), 7, 1), Mid(Trim(vMST), 8, 1), Mid(Trim(vMST), 9, 1), Mid(Trim(vMST), 10, 1), Mid(Trim(vMST), 11, 1), Mid(Trim(vMST), 12, 1), Mid(Trim(vMST), 13, 1))
-                         If Mid(strCheck, 2, 1) <> "0" Then
+                         If Mid(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
                             .Col = .ColLetterToNumber("D")
                             .CellNote = vErrMsgMST
                             .BackColor = mErrorColor

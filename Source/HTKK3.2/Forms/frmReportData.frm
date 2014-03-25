@@ -126,7 +126,7 @@ Begin VB.Form frmReportData
       DisplayText     =   ""
       BarWidthReduction=   -1
       TextAlignment   =   0
-      Quality         =   68
+      Quality         =   0
    End
 End
 Attribute VB_Name = "frmReportData"
@@ -1687,7 +1687,7 @@ Private Sub SetupPrinter()
                             End If
                         Else
                             If lCtrl = .SheetCount - 1 Then
-                                strIdKHBS_TT156 = "~02~04~71~72~11~12~73~70~81~06~05~86~90~94~96~98~99~92~"
+                                strIdKHBS_TT156 = "~01~02~04~71~72~11~12~73~70~81~06~05~86~90~94~96~98~99~92~"
                                 strIdKHBS = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
                                 If InStr(1, strIdKHBS_TT156, "~" & Trim$(strIdKHBS) & "~", vbTextCompare) > 0 Then
                                     .Row = GetLastDataRowKHBS(lCtrl)
@@ -1698,7 +1698,11 @@ Private Sub SetupPrinter()
                                 If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" And lCtrl = 4 Then
                                     .Row = .MaxRows - 10
                                 Else
-                                    .Row = GetLastDataRow(lCtrl)
+                                    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "92" And isDLT = True And lCtrl = 1 Then
+                                        .Row = 78
+                                    Else
+                                        .Row = GetLastDataRow(lCtrl)
+                                    End If
                                 End If
                             End If
                         End If
