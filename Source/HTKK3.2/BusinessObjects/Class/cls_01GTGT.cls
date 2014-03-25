@@ -860,6 +860,29 @@ Dim NguoiKyCol As Long, NguoiKyRow As Long
                     .Col = iCol
                     .SetActiveCell iCol, iRow
             End If
+            
+            
+            ' set lock CQT phan bo
+            If .ActiveSheet = sheetPl01_2TD_GTGT Then
+                .Sheet = sheetPl01_2TD_GTGT
+                Dim vChon As Variant
+                If .SheetVisible = True Then
+                .Row = 42
+                 Do
+                        .GetText .ColLetterToNumber("G"), .Row, vChon
+                        If vChon = 1 Then
+                            .Col = .ColLetterToNumber("P")
+                            .Lock = True
+                        Else
+                            .Col = .ColLetterToNumber("P")
+                            .Lock = False
+                        End If
+                        
+                        .Row = .Row + 1
+                        .Col = .ColLetterToNumber("B")
+                    Loop Until .Text = "aa"
+                 End If
+            End If
         End If
   
       fps.EventEnabled(EventAllEvents) = True

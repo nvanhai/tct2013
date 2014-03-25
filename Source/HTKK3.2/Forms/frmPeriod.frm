@@ -509,7 +509,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":02C8
       UserResize      =   1
       Appearance      =   1
    End
@@ -4664,8 +4664,7 @@ Private Sub SetupLayout01_TAIN_DK()
     chkTKhaiLanXB.Top = 200
     'chkTKhaiLanXB.Left = 3100
     chkTKhaiLanXB.Left = 250
-    chkTKhaiLanXB.value = 1
-    chkTkhaiThang.value = 0
+
     
     
 '    Set lblLanXuat.Container = frmKy
@@ -4727,6 +4726,9 @@ Private Sub SetupLayout01_TAIN_DK()
     txtYear.Top = 540
     txtYear.Left = 3130
         
+        
+    lblNgay.Visible = True
+    txtDay.Visible = True
 
    ' frmKy.Height = 1600
     
@@ -4760,6 +4762,7 @@ Private Sub SetupLayout01_TAIN_DK()
     
     chkTkhaiThang.value = 0
     chkTKLanPS.value = 0
+    chkTKhaiLanXB.value = 1
     frmKy.Height = 3000
     
     cmbQuy.Visible = False
