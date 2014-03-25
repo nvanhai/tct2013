@@ -333,6 +333,7 @@ Private strTaxReportVersion     As String
 Private arrBCBuffer() As String
 Private arrBCNew() As String
 Private verToKhai As Byte                               ' Luu cac kieu ma vach cho cac version ke khai khac nhau
+Private strLoaiToKhai As String   ' phan biet to bo sung hay chinh thuc
 Private maxBarCode As Long       ' Su dung trong truong hop to khai 04/TNCN
 
 Private checkSoCT As Integer
@@ -1325,7 +1326,7 @@ Private Sub cmdViewNow_Click()
     Dim i, j, t, counter As Integer
     Dim chkToKhai As Boolean
     
-    Dim strLoaiTK As String
+    Dim strLoaiTk As String
     ' Phien ban 1.3.1, Danh dau ma vach cua to khai Bo sung la TT (verToKhai = 2)
 '    If verToKhai = 2 Then
 '        MessageBox "0085", msOKOnly, miInformation
@@ -1334,9 +1335,9 @@ Private Sub cmdViewNow_Click()
 '    End If
     'strBarcode = TAX_Utilities_Srv_New.Convert(strBarcode, UNICODE, TCVN)
     If verToKhai = 2 Then
-        strLoaiTK = "bs"
+        strLoaiTk = "bs"
     Else
-        strLoaiTK = "aa"
+        strLoaiTk = "aa"
     End If
     
     For i = 1 To UBound(arrBCBuffer)
@@ -1370,7 +1371,7 @@ Private Sub cmdViewNow_Click()
                 intBarcodeIncre = intBarcodeIncre + 1
                 strBarcodeCount = Right("000" & intBarcodeIncre, 3) & Right("000" & intBarcodeCount, 3)
             End If
-            arrBCNew(counter) = strLoaiTK & strPrefix & strBarcodeCount & strBarcode
+            arrBCNew(counter) = strLoaiTk & strPrefix & strBarcodeCount & strBarcode
         End If
     Next
     ' Neu chua quet to khai ma co yeu cau hien thi thi thong bao phai quet to khai
@@ -1434,7 +1435,7 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '--04/GTGT
-'str2 = "aa999712300100778   01201400200200100101/0101/01/1900<S01><S>0010011000</S><S>1~1~0~1~0~1~0~2~0~5~0~6~0</S><S>Kh∏nh Linh~Minh NhÀt~MCT~18/03/2014~1~~~1~</S></S01>"
+'str2 = "aa999710100229844   01201400200200100101/0101/01/1900<S01><S>0010011000</S><S>1~1~0~1~0~1~0~2~0~5~0~6~0</S><S>Kh∏nh Linh~Minh NhÀt~MCT~18/03/2014~1~~~1~</S></S01>"
 'Barcode_Scaned str2
 
 '--01A_TNDN_DK bs lan xuat ban
@@ -1465,10 +1466,45 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '--01/TAIN-DK
-str2 = "aa999922300100778   01201400400400100201/0101/01/1900<S01><S></S><S>1~~x~01/01/2014~0~0~1~KLO11~x~</S><S>2500~1000~12300~30750000~15~4612500~21500</S><S>hoten~cc~Minh NhÀt~03/03/2014~1~~11/03/2014~2</S></S01>"
+'str2 = "aa999922300100778   01201400400400100201/0101/01/1900<S01><S></S><S>1~~x~01/01/2014~0~0~1~KLO11~x~</S><S>2500~1000~12300~30750000~15~4612500~21500</S><S>hoten~cc~Minh NhÀt~03/03/2014~1~~11/03/2014~2</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999922300100778   012014004004002002<S01-1><S>4612500</S><S>0102030405~cmc 01~20~922500~ghi chu 1~6868686868~cmc 02~80~3690000~ghi chu 2</S><S>100~4612500</S></S01-1>"
+'Barcode_Scaned str2
+
+'str2 = "aa999710100663628   02201400100100100101/0101/01/1900<S01><S></S><S>10000000~2000000~20000~3000000~150000~4000000~120000~5000000~100000~14000000~390000~24000000~390000</S><S>~Nguyen Van A~~20/03/2014~1~~~0~</S></S01>"
+'Barcode_Scaned str2
+
+'04/GTGT-QCT
+'str2 = "aa999712300100778   01201400400400100101/0101/01/1900<S01><S>0010011000</S><S>23432~2323~23~3232~162~3232~97~32323~646~41110~928~64542~928</S><S>Kh∏nh Linh~Minh NhÀt~MCT~25/03/2014~1~~~2~25/03/2014</S></S01>"
+'Barcode_Scaned str2
+
+'03_TD_GTGT
+'str2 = "aa999962300100778   02201400300300100101/0114/06/2006<S03><S>0010011000</S><S>0702~4</S><S>adad~~0~0~0~0~0</S><S>0~0~0</S><S>Kh∏nh Linh~MCT~Minh NhÀt~25/03/2014~1~~~0</S></S03>"
+'Barcode_Scaned str2
+
+'bs
+'str2 = "bs999962300100778   02201400500500100301/0114/06/2006<S03><S>0010011000</S><S>0702~4</S><S>adad~~22323~23~20537~0~20537</S><S>20537~0~20537</S><S>Kh∏nh Linh~MCT~Minh NhÀt~25/03/2014~~1~1~0</S></S03>"
+'Barcode_Scaned str2
+'str2 = "bs999962300100778   022014005005002003<SKHBS><S>~~0~0~0</S><S>~~0~0~0</S><S>25/03/"
+'Barcode_Scaned str2
+'str2 = "bs999962300100778   0220140050050030032014~5~51~0~~~~~0~0~~0~0~20537</S></SKHBS>"
+'Barcode_Scaned str2
+
+'01/GTGT bo sung chan theo NNKD: Chan voi m„ NNKD = 1704, 1705
+'str2 = "aa999012300100778   02201401201200100201/0114/06/2006<S01><S>0010011000</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~"
+'Barcode_Scaned str2
+'str2 = "aa999012300100778   0220140120120020020~0~0~0~0~0</S><S>Kh∏nh Linh~MCT~Minh NhÀt~25/03/2014~1~~~1704~~~0</S></S01>"
+'Barcode_Scaned str2
+
+str2 = "bs999012300100778   02201401501500100401/0114/06/2006<S01><S>0010011000</S><S>0~232~232~232~2323~222~22~0~22~0~0~0~0~244~0~-2323~"
 Barcode_Scaned str2
-str2 = "aa999922300100778   012014004004002002<S01-1><S>4612500</S><S>0102030405~cmc 01~20~922500~ghi chu 1~6868686868~cmc 02~80~3690000~ghi chu 2</S><S>100~4612500</S></S01-1>"
+str2 = "bs999012300100778   0220140150150020040~0~0~0~0~0~2555~0~2555</S><S>Kh∏nh Linh~MCT~Minh NhÀt~25/03/2014~~1~1~1704~~~0</S></S01>"
 Barcode_Scaned str2
+str2 = "bs999012300100778   022014015015003004<SKHBS><S>~~0~0~0</S><S>Thu’ GTGT cﬂn Æ≠Óc kh u trı k˙ tr≠Ìc chuy”n sang~22~0~232~232~TÊng sË thu’ GTG"
+Barcode_Scaned str2
+str2 = "bs999012300100778   022014015015004004T  Æ≠Óc kh u trı k˙ nµy~25~0~2323~2323</S><S>25/03/2014~5~0~0~~~~~0~0~~0~0~0~0~2555~2555</S></SKHBS>"
+Barcode_Scaned str2
+
 End Sub
 
 
@@ -1713,12 +1749,13 @@ Private Sub Barcode_Scaned(strBarcode As String)
     Dim strPrefix       As String, strBarcodeCount As String, strData As String
     Dim idToKhai        As String
     Dim tmp             As Variant
-    Dim strLoaiToKhai   As String
+    'Dim strLoaiToKhai   As String
     Dim strMST_QCT As String
     On Error GoTo ErrHandle
 
     'get loai to khai
     strLoaiToKhai = Mid(strBarcode, 1, 2)
+    'strLoaiTkhai = Mid(strBarcode, 1, 2)
     
     'Convert from TCVN to UNICODE format
     strBarcode = TrimString(strBarcode)
@@ -2004,7 +2041,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 Exit Sub
             End If
         End If
-        
+               
         '--Chan cac to khai bo sung cua to QCT y/c ngay: 18/03/2014
         '--LIST: 03/GTGT, 04/GTGT, 01/BVMT,01/TBVMT,01/TAIN,01/TT–B
         strMST_QCT = Trim(Mid(strBarcode, 6, 13))
@@ -3454,6 +3491,21 @@ On Error GoTo ErrHandle
         End If
     End If
     
+    '-   To khai 01/GTGT bo sung voi ma NNKD = 1704, 1705: ì–? ngh? c·n b? thu? nh?p tay v‡o h? th?ng QLTî
+    Dim strNNKD As String
+    'Dim strLoaiTk As String
+    Dim str_tmp    As String
+    Dim arr_tmp() As String
+    If (Val(strID) = 1) Then
+        str_tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
+        arr_tmp = Split(str_tmp, "~")
+        'strLoaiTk = arr_tmp(UBound(arr_tmp) - 5) ' LAY RIENG CHO TUNG TO KHAI(bo sung?)
+        strNNKD = arr_tmp(UBound(arr_tmp) - 3)
+        If (UCase(Trim(strLoaiToKhai)) = "BS" And (Trim(strNNKD) = "1704" Or Trim(strNNKD) = "1705")) Then
+            DisplayMessage "0136", msOKOnly, miInformation
+            Exit Function
+        End If
+    End If
     '***********************************
     
 '     Kiem tra to khai ton tai theo mau cu QLT

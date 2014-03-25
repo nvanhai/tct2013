@@ -129,4 +129,5 @@
 	<Infor ID="0133" Msg="Đã sử dụng"/>
 	<Infor ID="0134" Msg="Chưa sử dụng"/>
 	<Infor ID="0135" Msg="Tờ khai bổ sung phải thực hiện nhập trên ứng dụng QCT"/>
+	<Infor ID="0136" Msg="Đề nghị cán bộ thuế nhập tay vào hệ thống QLT"/>
 </Message>
