@@ -516,6 +516,10 @@ Private Sub CheckDynamicError()
     row_require = 27
     Dim vTenNhaMayTD As Variant, vSoThue4 As Variant, vSoThue5 As Variant, vSoThue6 As Variant, errEmty As Variant, iFlagEmty As Integer
     
+    Dim errorCt27 As Variant
+    Dim ct27 As Variant
+    Dim flagCt27 As Integer
+    
     With fps
         iCurrentSheet = .Sheet
         'get message
@@ -523,6 +527,8 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), row_require, vMessRequire
         .GetText .ColLetterToNumber("E"), 13, errMST
         .GetText .ColLetterToNumber("E"), 22, errEmty
+        
+        .GetText .ColLetterToNumber("E"), 26, errorCt27
         
         'Check MST static PL01
 '        .Sheet = sheetPl01_1TD_GTGT
@@ -606,10 +612,14 @@ Private Sub CheckDynamicError()
 '            Loop Until .Text = "aa"
 '
 '        End If
+        .Sheet = 1
+        .GetText .ColLetterToNumber("S"), 47, ct27
 '
         'check phu luc 01_2
         .Sheet = sheetPl01_2TD_GTGT
         Dim vChon As Variant
+        Dim iFlagCheckData As Boolean
+        Dim vTongCot6 As Variant
          If .SheetVisible = True Then
             .Row = 42
             iWhiteRow = 1
@@ -625,6 +635,7 @@ Private Sub CheckDynamicError()
     
                 If Trim$(vChon) <> "0" Or Trim$(vTenNhaMay) <> "" Or Trim$(vMST) <> "" Or Trim$(vCQTCapDiaPhuong) <> "" Or Trim$(vTyLePhanBo) <> "0" Or Trim$(vSoThuePhaiNop) <> "0" Then
                     iWhiteRow = 0
+                    iFlagCheckData = True
                 End If
     
                 .Col = .ColLetterToNumber("C")
@@ -705,12 +716,32 @@ Private Sub CheckDynamicError()
                 .Row = .Row + 1
                 .Col = .ColLetterToNumber("B")
             Loop Until .Text = "aa"
+            
+            Const colorCell = 16709097
+            If iFlagCheckData Then
+               'lay tong ty le chia TNCT
+                .GetText .ColLetterToNumber("U"), .MaxRows - 21, vTongCot6
+                
+                If Val(vTongCot6) <> Val(ct27) Then
+                    .Col = .ColLetterToNumber("U")
+                    .Row = .MaxRows - 21
+                    .BackColor = mErrorColor
+                    .CellNote = errorCt27
+                    flagCt27 = 1
+                Else
+                    .Col = .ColLetterToNumber("U")
+                    .Row = .MaxRows - 21
+                    .BackColor = colorCell
+                    .CellNote = ""
+                End If
+            End If
         End If
         
         'set flag
         .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), row_require, IIf(iFlagEmpty = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 13, IIf(iFlagCheckMaST = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 26, IIf(flagCt27 = 1, "0", "1")
     End With
     
 End Sub
