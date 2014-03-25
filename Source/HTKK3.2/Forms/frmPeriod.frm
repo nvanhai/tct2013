@@ -509,7 +509,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":02C8
+      SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
    End
@@ -3696,6 +3696,26 @@ Private Sub Form_Load()
     '********************
     ' added
     LoadGrid
+    
+    ' xu ly cho to khai DK
+    Dim m, Y, d As Integer
+    Dim dTem, dtem1, dtem2 As Date
+    Dim varMenuId As String
+    dtem2 = Date
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "92" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "98" Then
+         m = month(dtem2)
+        Y = Year(dtem2)
+        d = Day(dtem2)
+        txtDay.Text = d
+        txtMonth.Text = m
+        txtYear.Text = Y
+        If Len(txtDay.Text) = 1 Then
+            txtDay.Text = "0" & txtDay.Text
+        End If
+        If Len(txtMonth.Text) = 1 Then
+            txtMonth.Text = "0" & txtMonth.Text
+        End If
+    End If
     
     ' Cac to quyet toan TNCN kiem tra xem de dat lai nut Dong y, Dong cho dung, dat sau Frame 2
     If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_10") Then
