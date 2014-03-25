@@ -640,6 +640,7 @@ On Error GoTo ErrHandle
             End If
         Next
         
+        vLAN_BS = "0"
        .Sheet = 1
        ' Ma dai ly thue
         .GetText .ColLetterToNumber("F"), 18, vTIN_DL
@@ -659,7 +660,6 @@ On Error GoTo ErrHandle
         If Trim(vCHINH_THUC) = "1" Then
             vLAN_BS = "0"
         End If
-        vLAN_BS = "0"
         If Len(Trim(vTIN_DL)) = 13 Then
             vTIN_DL = Left(vTIN_DL, 10) & "-" & Right(vTIN_DL, 3)
         End If
