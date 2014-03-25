@@ -645,16 +645,16 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("F"), 18, vTIN_DL
         .GetText .ColLetterToNumber(SO_HOP_DONG_DL_COL), SO_HOP_DONG_DL_ROW, vSO_HOP_DONG
         .GetText .ColLetterToNumber(NGAY_HOP_DONG_DL_COL), NGAY_HOP_DONG_DL_ROW, vNGAY_HOP_DONG
-'        .GetText .ColLetterToNumber("I"), 56, vLAN_BS
-'        .GetText .ColLetterToNumber("C"), 56, vCHINH_THUC
+        .GetText .ColLetterToNumber("I"), 36, vLAN_BS
+        .GetText .ColLetterToNumber("C"), 36, vCHINH_THUC
                 
-        Set xmlCellNode = TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell") _
-                    (TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell").length - 3)
-        vCHINH_THUC = GetAttribute(xmlCellNode, "Value")
-        
-        Set xmlCellNode = TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell") _
-                    (TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell").length - 1)
-        vLAN_BS = GetAttribute(xmlCellNode, "Value")
+'        Set xmlCellNode = TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell") _
+'                    (TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell").length - 3)
+'        vCHINH_THUC = GetAttribute(xmlCellNode, "Value")
+'
+'        Set xmlCellNode = TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell") _
+'                    (TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell").length - 1)
+'        vLAN_BS = GetAttribute(xmlCellNode, "Value")
         
         If Trim(vCHINH_THUC) = "1" Then
             vLAN_BS = "0"
