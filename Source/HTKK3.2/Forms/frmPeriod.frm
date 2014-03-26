@@ -2750,6 +2750,12 @@ Public Sub cmdOK_Click()
         Exit Sub
     End If
     
+    
+    If Len(txtLanXuat.Text) = 0 And txtLanXuat.Visible Then
+        DisplayMessage "0017", msOKOnly, miInformation
+        txtLanXuat.SetFocus
+        Exit Sub
+    End If
     '***************************
     'Check period with valid date
     If CInt(txtYear.Text) < CInt(Right$(GetAttribute(TAX_Utilities_v1.NodeMenu.childNodes(0), "StartDate"), 4)) Then
