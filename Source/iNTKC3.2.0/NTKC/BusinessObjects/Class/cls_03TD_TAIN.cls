@@ -658,6 +658,7 @@ On Error GoTo ErrHandle
             End If
         Next
         
+        vLAN_BS = "0"
        .Sheet = 1
        ' Ma dai ly thue
         .GetText .ColLetterToNumber("F"), 18, vTIN_DL
@@ -666,18 +667,17 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("I"), 36, vLAN_BS
         .GetText .ColLetterToNumber("C"), 36, vCHINH_THUC
                 
-'        Set xmlCellNode = TAX_Utilities_iNTK.Data(0).getElementsByTagName("Cell") _
-'                    (TAX_Utilities_iNTK.Data(0).getElementsByTagName("Cell").length - 3)
+'        Set xmlCellNode = TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell") _
+'                    (TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell").length - 3)
 '        vCHINH_THUC = GetAttribute(xmlCellNode, "Value")
 '
-'        Set xmlCellNode = TAX_Utilities_iNTK.Data(0).getElementsByTagName("Cell") _
-'                    (TAX_Utilities_iNTK.Data(0).getElementsByTagName("Cell").length - 1)
+'        Set xmlCellNode = TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell") _
+'                    (TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell").length - 1)
 '        vLAN_BS = GetAttribute(xmlCellNode, "Value")
         
         If Trim(vCHINH_THUC) = "1" Then
             vLAN_BS = "0"
         End If
-        vLAN_BS = "0"
         If Len(Trim(vTIN_DL)) = 13 Then
             vTIN_DL = Left(vTIN_DL, 10) & "-" & Right(vTIN_DL, 3)
         End If
