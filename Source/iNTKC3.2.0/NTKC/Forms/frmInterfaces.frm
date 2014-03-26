@@ -332,6 +332,8 @@ Private strTaxReportVersion     As String
 Private arrBCBuffer() As String
 Private arrBCNew() As String
 Private verToKhai As Byte                               ' Luu cac kieu ma vach cho cac version ke khai khac nhau
+Private strLoaiToKhai As String   ' phan biet to bo sung hay chinh thuc
+Private strNNKD As String   'get Nganh nghe Kinh Doanh cho to 01/GTGT
 Private maxBarCode As Long       ' Su dung trong truong hop to khai 04/TNCN
 
 Public isIHTKK As Boolean           ' Xac dinh loai tkhai co phai la iHTKK khong?
@@ -1232,7 +1234,24 @@ On Error GoTo ErrHandle
  '           End If
  '       End If
  '   End If
-    
+ 'Chan theo nganh nghe kinh doanh cho to 01/GTGT
+    If Val(idToKhai) = 1 And UCase(Trim(strLoaiToKhai)) = "BS" And (Trim(strNNKD) = "1704" Or Trim(strNNKD) = "1705") Then
+        'To khai bs quy: <1/2014 -> chan  => dk<nam 2014
+	'todo
+        If LoaiKyKK = True Then
+            If (Val(TAX_Utilities_Srv_New.Year) < 2014) Then
+                DisplayMessage "0136", msOKOnly, miInformation
+                Exit Sub
+            End If
+        End If
+        'To khai bs thang: < 3/2014 -> chan
+        If LoaiKyKK = False Then
+            If (Val(TAX_Utilities_Srv_New.Year) < 2014) Or (TAX_Utilities_Srv_New.Year = "2014" And Val(TAX_Utilities_Srv_New.Month) < 3) Then
+                DisplayMessage "0136", msOKOnly, miInformation
+                Exit Sub
+            End If
+        End If
+    End If   
     
 
     
@@ -2089,7 +2108,7 @@ Dim strPrefix As String, strBarcodeCount As String, strData As String
 Dim IdToKhai As String
 
 Dim bln2 As Boolean
-Dim strLoaiToKhai As String
+    'Dim strLoaiToKhai   As String
     Dim strMST_QCT As String
 On Error GoTo ErrHandle
 
@@ -3958,6 +3977,14 @@ On Error GoTo ErrHandle
             End If
         End If
             
+        'get thong tin chan theo nganh nghe kinh doanh to 01/GTGT
+        Dim str_tmp    As String
+        Dim arr_tmp() As String
+        If (Val(strID) = 1) Then
+            str_tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
+            arr_tmp = Split(str_tmp, "~")
+            strNNKD = arr_tmp(UBound(arr_tmp) - 3)
+        End If
     If Not getSoTTTK(changeMaToKhai(strID), arrStrHeaderData) Then
         DisplayMessage "0079", msOKOnly, miCriticalError
         Exit Function
@@ -5695,6 +5722,14 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
                     "And tkhai.kykk_den_ngay = To_Date('" & ngayPS & "','DD/MM/YYYY')"
         
         End If
+    ElseIf strID = "01_GTGT13" Or strID = "01_GTGT11" Or strID = "01_GTGT" Then
+        'bo sung check theo nganh nghe kinh doanh cho to 01/GTGT
+        strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
+                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                "And tkhai.NGANH_NGHE_KD = '" & Trim(strNNKD) & "'" & _
+                "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
+                "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+                "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
     Else
         strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
