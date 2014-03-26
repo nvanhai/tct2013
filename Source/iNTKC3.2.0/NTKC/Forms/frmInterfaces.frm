@@ -1235,23 +1235,42 @@ On Error GoTo ErrHandle
  '       End If
  '   End If
  'Chan theo nganh nghe kinh doanh cho to 01/GTGT
-    If Val(idToKhai) = 1 And UCase(Trim(strLoaiToKhai)) = "BS" And (Trim(strNNKD) = "1704" Or Trim(strNNKD) = "1705") Then
+    If Val(IdToKhai) = 1 And UCase(Trim(strLoaiToKhai)) = "BS" And (Trim(strNNKD) = "1704" Or Trim(strNNKD) = "1705") Then
         'To khai bs quy: <1/2014 -> chan  => dk<nam 2014
-	'todo
+        'todo
+        Dim tmp As Boolean
         If LoaiKyKK = True Then
-            If (Val(TAX_Utilities_Srv_New.Year) < 2014) Then
-                DisplayMessage "0136", msOKOnly, miInformation
-                Exit Sub
+            If (Val(TAX_Utilities_iNTK.Year) < 2014) Then
+                If isIHTKK = True Then
+                    'InitParameters = False
+                    'MessageBox "0041", msOKOnly, miCriticalError
+                    tmp = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "47")
+                    Unload Me
+                    isIHTKK = False
+                    Exit Sub
+                Else
+                    DisplayMessage "0138", msOKOnly, miInformation
+                    Exit Sub
+                End If
             End If
         End If
         'To khai bs thang: < 3/2014 -> chan
         If LoaiKyKK = False Then
-            If (Val(TAX_Utilities_Srv_New.Year) < 2014) Or (TAX_Utilities_Srv_New.Year = "2014" And Val(TAX_Utilities_Srv_New.Month) < 3) Then
-                DisplayMessage "0136", msOKOnly, miInformation
-                Exit Sub
+            If (Val(TAX_Utilities_iNTK.Year) < 2014) Or (TAX_Utilities_iNTK.Year = "2014" And Val(TAX_Utilities_iNTK.Month) < 3) Then
+                If isIHTKK = True Then
+                    'InitParameters = False
+                    'MessageBox "0041", msOKOnly, miCriticalError
+                    tmp = updateTk1(tkhai_ID_IHTKK, strTaxOfficeId, "47")
+                    Unload Me
+                    isIHTKK = False
+                    Exit Sub
+                Else
+                    DisplayMessage "0138", msOKOnly, miInformation
+                    Exit Sub
+                End If
             End If
         End If
-    End If   
+    End If
     
 
     
