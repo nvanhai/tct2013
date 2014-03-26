@@ -1874,8 +1874,40 @@ Private Sub Command1_Click()
 'str2 = "aa999992300135474   04201300100100100101/0101/01/1900<S01><S></S><S>KKK~~</S><S>300.00~5000.0000~1500000.00~400000.00~1100000.00~40.00~440000.00~5000.00~435000.00~4000</S><S>~~~18/03/2014~1~</S></S01><S01-1><S>435000</S><S>0100231226~Ho?ng H?~100~435000~ghi cho</S><S>100~435000</S></S01-1>"
 'Barcode_Scaned str2
 'bs
-str2 = "bs999992300135474   04201300300300100101/0101/01/1900<S01><S></S><S>HHHH~~</S><S>4000.00~6000.0000~24000000.00~50000.00~23950000.00~60.00~14370000.00~50400.00~14319600.00~300000</S><S>~~~18/03/2014~~1</S></S01><SKHBS><S>~~0~0~0</S><S>Se thu? TNDN t?m tYnh ?-ic miOn ho?c gi?m (n?u c?)~29~5000~50400~45400</S><S>18/03/2014~46~30000~3000~jjjj~01/01/2014~10300~10301~30~34000~ghi cho~0~0~13884600</S></SKHBS>"
+'str2 = "bs999992300135474   04201300300300100101/0101/01/1900<S01><S></S><S>HHHH~~</S><S>4000.00~6000.0000~24000000.00~50000.00~23950000.00~60.00~14370000.00~50400.00~14319600.00~300000</S><S>~~~18/03/2014~~1</S></S01><SKHBS><S>~~0~0~0</S><S>Se thu? TNDN t?m tYnh ?-ic miOn ho?c gi?m (n?u c?)~29~5000~50400~45400</S><S>18/03/2014~46~30000~3000~jjjj~01/01/2014~10300~10301~30~34000~ghi cho~0~0~13884600</S></SKHBS>"
+'Barcode_Scaned str2
+
+'check NNKD
+'01/GTGT bo sung chan theo NNKD: Chan voi m„ NNKD = 1704, 1705
+'str2 = "aa999012300100778   02201401201200100201/0114/06/2006<S01><S>0010011000</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~"
+'Barcode_Scaned str2
+'str2 = "aa999012300100778   0220140120120020020~0~0~0~0~0</S><S>Kh∏nh Linh~MCT~Minh NhÀt~25/03/2014~1~~~1704~~~0</S></S01>"
+'Barcode_Scaned str2
+
+'str2 = "bs999012300100778   02201401501500100401/0114/06/2006<S01><S>0010011000</S><S>0~232~232~232~2323~222~22~0~22~0~0~0~0~244~0~-2323~"
+'Barcode_Scaned str2
+'str2 = "bs999012300100778   0220140150150020040~0~0~0~0~0~2555~0~2555</S><S>Kh∏nh Linh~MCT~Minh NhÀt~25/03/2014~~1~1~1704~~~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "bs999012300100778   022014015015003004<SKHBS><S>~~0~0~0</S><S>Thu’ GTGT cﬂn Æ≠Óc kh u trı k˙ tr≠Ìc chuy”n sang~22~0~232~232~TÊng sË thu’ GTG"
+'Barcode_Scaned str2
+'str2 = "bs999012300100778   022014015015004004T  Æ≠Óc kh u trı k˙ nµy~25~0~2323~2323</S><S>25/03/2014~5~0~0~~~~~0~0~~0~0~0~0~2555~2555</S></SKHBS>"
+'Barcode_Scaned str2
+
+'Q
+'str2 = "aa999012300100778   04201300000000100201/0114/06/2006<S01><S>0010011000</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~"
+'Barcode_Scaned str2
+'str2 = "aa999012300100778   0420130000000020020~0~0~0~0~0</S><S>Kh∏nh Linh~MCT~Minh NhÀt~26/03/2014~1~~~1704~~~1</S></S01>"
+'Barcode_Scaned str2
+
+str2 = "bs999012300100778   04201300200200100401/0114/06/2006<S01><S>0010011000</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~3324~2334~3434"
 Barcode_Scaned str2
+str2 = "bs999012300100778   042013002002002004~0~0~0~2444~0~2444</S><S>Kh∏nh Linh~MCT~Minh NhÀt~26/03/2014~~1~1~1704~~~1</S></S01>"
+Barcode_Scaned str2
+str2 = "bs999012300100778   042013002002003004<SKHBS><S>~~0~0~0</S><S>~~0~0~0</S><S>26/03/2014"
+Barcode_Scaned str2
+str2 = "bs999012300100778   042013002002004004~54~0~0~~~~~0~0~~0~0~0~0~2444~2444</S></SKHBS>"
+Barcode_Scaned str2
+
 
 End Sub
 
@@ -6234,6 +6266,25 @@ Private Function layThongTinToKhai() As String
     ElseIf IdToKhai = 23 Then
         'cell chinhthuc ~ cell bosung ~ ky ke khai
         strCellLocation = "O_7~R_7~O_2"
+    '--UPDATE cho to khai thuy dien, dau khi 26/03/2014
+    ElseIf IdToKhai = 94 Then '01_TD_GTGT
+        'cell chinhthuc ~ cell bosung ~ ky ke khai
+        strCellLocation = "L_6~S_6~K_4"
+    ElseIf IdToKhai = 96 Then '03_TD_TAIN
+        'cell chinhthuc ~ cell bosung ~ ky ke khai
+        strCellLocation = "L_6~S_6~K_4"
+    ElseIf IdToKhai = 98 Then '01A_TNDN_DK
+        'cell chinhthuc ~ cell bosung ~ ky ke khai
+        strCellLocation = "V_6~AE_6~U_3"
+    ElseIf IdToKhai = 99 Then '01B_TNDN_DK
+        'cell chinhthuc ~ cell bosung ~ ky ke khai
+        strCellLocation = "V_5~AE_5~U_3"
+    ElseIf IdToKhai = 92 Then '01_TAIN_DK
+        'cell chinhthuc ~ cell bosung ~ ky ke khai
+        strCellLocation = "V_6~AE_6~U_3"
+    ElseIf IdToKhai = 24 Then '01_BCTL_DK
+        'cell chinhthuc ~ cell bosung ~ ky ke khai
+        strCellLocation = "U_3~AC_3~T_2"
     Else
         'cell chinhthuc ~ cell bosung ~ kykekhai
         strCellLocation = "A_1~A_2~A_3"
