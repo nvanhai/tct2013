@@ -242,11 +242,12 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
                 .Col = .ColLetterToNumber("Q")
                 .Row = 18 + i
                 .Text = tenDM
+                UpdateCell fps, .Col, .Row, .Text
             End If
-            UpdateCell fps, .Col, .Row, .Text
              i = i + 1
             .Col = .ColLetterToNumber("B")
             .Row = i + 18
+            tenDM = ""
         Loop Until .Text = "aa"
     End With
     
@@ -657,7 +658,7 @@ On Error GoTo ErrHandle
                 Exit For
             End If
         Next
-        
+        vLAN_BS = "0"
         vLAN_BS = "0"
        .Sheet = 1
        ' Ma dai ly thue
