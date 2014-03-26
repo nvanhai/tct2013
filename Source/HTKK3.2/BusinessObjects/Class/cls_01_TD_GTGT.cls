@@ -725,7 +725,7 @@ Private Sub CheckDynamicError()
                 If Val(vTongCot6) <> Val(ct27) Then
                     .Col = .ColLetterToNumber("U")
                     .Row = .MaxRows - 21
-                    .BackColor = mErrorColor
+                    .BackColor = mAlertColor
                     .CellNote = errorCt27
                     flagCt27 = 1
                 Else
