@@ -509,7 +509,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":02C8
       UserResize      =   1
       Appearance      =   1
    End
@@ -3490,13 +3490,17 @@ Public Sub cmdOK_Click()
         
         Dim hnps As Date
         If strLoaiTKThang_PS = "TK_LANPS" Then
-            hnps = DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), CInt(TAX_Utilities_v1.Day)))
+            If idToKhai = "98" Or idToKhai = "92" Then
+                hnps = DateAdd("D", 35, DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), CInt(TAX_Utilities_v1.Day)))
+            Else
+                hnps = DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), CInt(TAX_Utilities_v1.Day)))
+            End If
             If DateDiff("D", hnps, ngayBs) <= 0 Then
                 DisplayMessage "0271", msOKOnly, miInformation
                 Exit Sub
             End If
         ElseIf strQuy = "TK_LANPS" And idToKhai = "71" Then
-            hnps = DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), CInt(TAX_Utilities_v1.Day)))
+                hnps = DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), CInt(TAX_Utilities_v1.Day)))
             If DateDiff("D", hnps, ngayBs) <= 0 Then
                 DisplayMessage "0271", msOKOnly, miInformation
                 Exit Sub
