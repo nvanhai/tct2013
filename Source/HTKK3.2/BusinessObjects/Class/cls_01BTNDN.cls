@@ -1672,6 +1672,8 @@ Private Sub CheckDynamicError()
         Dim vTenNhaMay, vCQTCapDiaPhuong, vTyLePhanBo, vSoThuePhaiNop As Variant
         Dim vMessRequire As Variant
         
+        Dim flagSoThue As Integer
+        
         .GetText .ColLetterToNumber("E"), 39, vMessRequire
         .GetText .ColLetterToNumber("E"), 41, errMST
         
@@ -1721,6 +1723,18 @@ Private Sub CheckDynamicError()
                     .BackColor = mNonErrorColor
                     .CellNote = ""
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                End If
+                
+                ' bat buoc nhap cot so thue
+                .Col = .ColLetterToNumber("U")
+                If Val(vSoThuePhaiNop) = 0 And iWhiteRow = 0 Then
+                    .CellNote = vMessRequire      'static
+                    .BackColor = mErrorColor
+    
+                    flagSoThue = 1
+                Else
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
                 End If
                 
                 'check mst
@@ -1778,6 +1792,8 @@ Private Sub CheckDynamicError()
         .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), 39, IIf(iFlagEmpty = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 41, IIf(iFlagCheckMaST = 1, "0", "1")
+        
+        .SetText .ColLetterToNumber("B"), 42, IIf(flagSoThue = 1, "0", "1")
         
         '.ReDraw = True
         '.Visible = True
