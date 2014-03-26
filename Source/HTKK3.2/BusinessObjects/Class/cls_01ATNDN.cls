@@ -382,7 +382,7 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
     Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
     Dim txmlCellNode As MSXML.IXMLDOMNode, txmlCellsNode As MSXML.IXMLDOMNode
     
-    Dim CT26 As Variant, CT27 As Variant, CT28 As Variant, vCheck20 As Variant
+    Dim ct26 As Variant, ct27 As Variant, ct28 As Variant, vCheck20 As Variant
     
     fps.EventEnabled(EventAllEvents) = False
 ' set gia lock cell ly do gia han
@@ -623,7 +623,7 @@ Dim cValueF As Variant
 Dim i As Integer
 Dim xmlNodeH15 As MSXML.IXMLDOMNode
 
-Dim CT26, CT27, CT28, ct29, CT30, ct31, ct32, ct32a, CT33, ct33a, ct34, CT35, ct35a, ct35b, CT36 As Variant
+Dim ct26, ct27, ct28, ct29, ct30, ct31, ct32, ct32a, CT33, ct33a, ct34, CT35, ct35a, ct35b, CT36 As Variant
 'Dim vCheck20 As Variant
 
 With fps
@@ -792,11 +792,11 @@ With fps
                 ' 12062011
                 ' set lai cac rang buoc cong thuc
                 .Sheet = 1
-                .GetText .ColLetterToNumber("K"), 27, CT26
-                .GetText .ColLetterToNumber("K"), 28, CT27
-                .GetText .ColLetterToNumber("K"), 29, CT28
+                .GetText .ColLetterToNumber("K"), 27, ct26
+                .GetText .ColLetterToNumber("K"), 28, ct27
+                .GetText .ColLetterToNumber("K"), 29, ct28
                 .GetText .ColLetterToNumber("K"), 30, ct29
-                .GetText .ColLetterToNumber("K"), 31, CT30
+                .GetText .ColLetterToNumber("K"), 31, ct30
                 .GetText .ColLetterToNumber("K"), 32, ct31
                 .GetText .ColLetterToNumber("K"), 33, ct32
                 .GetText .ColLetterToNumber("K"), 34, ct32a
@@ -813,7 +813,7 @@ With fps
                 ' set chi tieu 28
                 'sua bat loi theo chi tieu [26]<0 thi lock 28-32
                 ' set lai gia tri 30,31,32
-                If Val(CT26) <= 0 Then
+                If Val(ct26) <= 0 Then
                     '28
                    .Row = 29
                    .Col = .ColLetterToNumber("K")
@@ -875,7 +875,7 @@ With fps
                    .Lock = True
                    UpdateCell fps, .Col, .Row, 0
                 Else
-                    If Val(CT26) - Val(CT27) < 0 Then
+                    If Val(ct26) - Val(ct27) < 0 Then
                         '28
                        .Row = 29
                        .Col = .ColLetterToNumber("K")
@@ -891,7 +891,7 @@ With fps
 '                    .Row = 29
 '                   .Col = .ColLetterToNumber("K")
 '                   .Lock = False
-                    If Val(CT26) - Val(CT27) - Val(CT28) < 0 Then
+                    If Val(ct26) - Val(ct27) - Val(ct28) < 0 Then
                         '30
                         .Row = 31
                         .Col = .ColLetterToNumber("K")
@@ -1842,6 +1842,8 @@ Private Sub CheckDynamicError()
         Dim vTenNhaMay, vCQTCapDiaPhuong, vTyLePhanBo, vSoThuePhaiNop As Variant
         Dim vMessRequire As Variant
         
+        Dim flagSoThue As Integer
+        
         .GetText .ColLetterToNumber("E"), 45, vMessRequire
         .GetText .ColLetterToNumber("E"), 47, errMST
         
@@ -1891,6 +1893,18 @@ Private Sub CheckDynamicError()
                     .BackColor = mNonErrorColor
                     .CellNote = ""
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                End If
+                
+                ' bat buoc nhap cot so thue
+                .Col = .ColLetterToNumber("U")
+                If Val(vSoThuePhaiNop) = 0 And iWhiteRow = 0 Then
+                    .CellNote = vMessRequire      'static
+                    .BackColor = mErrorColor
+    
+                    flagSoThue = 1
+                Else
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
                 End If
                 
                 'check mst
@@ -1948,6 +1962,8 @@ Private Sub CheckDynamicError()
         .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), 45, IIf(iFlagEmpty = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 47, IIf(iFlagCheckMaST = 1, "0", "1")
+        
+        .SetText .ColLetterToNumber("B"), 48, IIf(flagSoThue = 1, "0", "1")
     End With
     
 End Sub
