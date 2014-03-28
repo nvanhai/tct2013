@@ -5,14 +5,14 @@ Begin VB.Form frmTraCuu
    ClientHeight    =   5355
    ClientLeft      =   45
    ClientTop       =   45
-   ClientWidth     =   9030
+   ClientWidth     =   10485
    ControlBox      =   0   'False
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MDIChild        =   -1  'True
    MinButton       =   0   'False
    ScaleHeight     =   5355
-   ScaleWidth      =   9030
+   ScaleWidth      =   10485
    ShowInTaskbar   =   0   'False
    Begin VB.CommandButton btnTracuu 
       Caption         =   "Tra &cøu"
@@ -27,7 +27,7 @@ Begin VB.Form frmTraCuu
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      Left            =   3990
+      Left            =   5430
       TabIndex        =   3
       Top             =   4950
       Width           =   1200
@@ -44,7 +44,7 @@ Begin VB.Form frmTraCuu
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      Left            =   6510
+      Left            =   7950
       TabIndex        =   5
       Top             =   4950
       Width           =   1200
@@ -61,7 +61,7 @@ Begin VB.Form frmTraCuu
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      Left            =   7770
+      Left            =   9210
       TabIndex        =   6
       Top             =   4950
       Width           =   1200
@@ -78,7 +78,7 @@ Begin VB.Form frmTraCuu
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      Left            =   5250
+      Left            =   6690
       TabIndex        =   4
       Top             =   4950
       Width           =   1200
@@ -151,15 +151,15 @@ Begin VB.Form frmTraCuu
       Left            =   4530
       TabIndex        =   8
       Top             =   420
-      Width           =   4425
+      Width           =   5865
       Begin FPUSpreadADO.fpSpread fpsDkNgay 
          Height          =   495
-         Left            =   300
+         Left            =   120
          TabIndex        =   1
          Top             =   240
-         Width           =   4005
+         Width           =   5445
          _Version        =   458752
-         _ExtentX        =   7064
+         _ExtentX        =   9604
          _ExtentY        =   873
          _StockProps     =   64
          AllowMultiBlocks=   -1  'True
@@ -178,7 +178,7 @@ Begin VB.Form frmTraCuu
          EndProperty
          GridShowHoriz   =   0   'False
          GridShowVert    =   0   'False
-         MaxCols         =   12
+         MaxCols         =   14
          MaxRows         =   3
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
@@ -203,15 +203,15 @@ Begin VB.Form frmTraCuu
       Left            =   30
       TabIndex        =   9
       Top             =   1320
-      Width           =   8925
+      Width           =   10365
       Begin FPUSpreadADO.fpSpread fpSKetQua 
          Height          =   3225
-         Left            =   90
+         Left            =   120
          TabIndex        =   2
-         Top             =   270
-         Width           =   8745
+         Top             =   240
+         Width           =   10185
          _Version        =   458752
-         _ExtentX        =   15425
+         _ExtentX        =   17965
          _ExtentY        =   5689
          _StockProps     =   64
          AllowMultiBlocks=   -1  'True
@@ -231,7 +231,7 @@ Begin VB.Form frmTraCuu
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          RowsFrozen      =   1
-         SpreadDesigner  =   "frmTracuu.frx":0A50
+         SpreadDesigner  =   "frmTracuu.frx":0B23
       End
    End
    Begin VB.Label lblStatus 
@@ -276,7 +276,7 @@ Begin VB.Form frmTraCuu
       Left            =   0
       Stretch         =   -1  'True
       Top             =   0
-      Width           =   8295
+      Width           =   10335
    End
 End
 Attribute VB_Name = "frmTraCuu"
@@ -301,12 +301,12 @@ Attribute VB_Exposed = False
 '******************************************************
 
 Option Explicit
-Private Const f1dteTuNRow = 2
-Private Const f1dteTuNCol = "F"
-Private Const f1dteDeNRow = 2
-Private Const f1dteDeNCol = "K"
-Private Const f4cboLoTRow = 2
-Private Const f4cboLoTCol = "C"
+Private Const fpsDkNgayRow = 2
+Private Const fpsDkNgayColF = "F"
+Private Const fpsDkNgayColT = "K"
+Private Const fpsDkNgayColXB = "M"
+Private Const fpsLoaiTkRow = 2
+Private Const fpsLoaiTkCol = "C"
 Private Const mFormColor = -2147483633
 Private Const mHeaderColor = 16709097
 Private Const LOI_KY_HIEU_LUC = "1"
@@ -334,22 +334,30 @@ Private strTkGTGT As String
 Private strTkDK As String
 Private strGtgtIdTmp As String
 
+Private tkNode As MSXML.IXMLDOMNode
+
 Private Sub btnMo_Click()
-    Dim frmTK As frmInterfaces
-    Dim strxoa As Variant, varErrDesc As Variant
-    Dim varId As Variant, varPeriod As Variant
+    Dim frmTK       As frmInterfaces
+    Dim strxoa      As Variant, varErrDesc As Variant
+    Dim varId       As Variant, varPeriod As Variant
     Dim varFirstDay As Variant, varLastDay As Variant, vCheckStatus As Variant
     Dim varFileName As Variant
     Dim i, j As Integer
     Dim varDateKHBS As Variant, strFileName As Variant
+
     With fpSKetQua
+
         If IsErrRow(lngRowFocus) Then
             .GetText 12, lngRowFocus, varErrDesc
+
             Select Case Trim(CStr(varErrDesc))
+
                 Case LOI_KY_HIEU_LUC
                     DisplayMessage "0096", msOKOnly, miCriticalError
+
                 Case LOI_TU_NGAY_DEN_NGAY
                     DisplayMessage "0101", msOKOnly, miCriticalError
+
                 Case LOI_NGAY_BAT_DAU_NAM_TAI_CHINH
                     DisplayMessage "0100", msOKOnly, miCriticalError
             End Select
@@ -364,68 +372,63 @@ Private Sub btnMo_Click()
         .GetText 8, lngRowFocus, varLastDay    ' Get last day
         .GetText 11, lngRowFocus, varFileName    ' Get File name
         
-        
         If Left(varId, 4) = "KHBS" Then
             varId = Right(varId, 2)
             strKHBS = "frmKHBS_BS"
             TAX_Utilities_v1.DateKHBS = varDateKHBS
         End If
+
         If Left(varFileName, 2) = "bs" Then
             strKHBS = "TKBS"
             strSolanBS = Right(Split(varFileName, "_")(0), Len(Split(varFileName, "_")(0)) - 2)
             'TAX_Utilities_v1.DateKHBS = varDateKHBS
         Else
+
             ' Neu la loai to khai TNCN thi dat trang thai cua strKHBS ="TKCT"
-            If Trim(varId) = "46" Or Trim(varId) = "47" Or Trim(varId) = "48" Or Trim(varId) = "49" Or Trim(varId) = "15" Or Trim(varId) = "16" _
-                Or Trim(varId) = "53" Or Trim(varId) = "37" Or Trim(varId) = "50" Or Trim(varId) = "51" Or Trim(varId) = "54" Or Trim(varId) = "38" _
-                    Or Trim(varId) = "39" Or Trim(varId) = "40" Or Trim(varId) = "36" Or Trim(varId) = "70" Or Trim(varId) = "17" Or Trim(varId) = "41" Or Trim(varId) = "42" Or Trim(varId) = "43" Then
+            If Trim(varId) = "46" Or Trim(varId) = "47" Or Trim(varId) = "48" Or Trim(varId) = "49" Or Trim(varId) = "15" Or Trim(varId) = "16" Or Trim(varId) = "53" Or Trim(varId) = "37" Or Trim(varId) = "50" Or Trim(varId) = "51" Or Trim(varId) = "54" Or Trim(varId) = "38" Or Trim(varId) = "39" Or Trim(varId) = "40" Or Trim(varId) = "36" Or Trim(varId) = "70" Or Trim(varId) = "17" Or Trim(varId) = "41" Or Trim(varId) = "42" Or Trim(varId) = "43" Then
                 strKHBS = "TKCT"
             End If
             
         End If
         
+        varId = Left$(varId, 2)
+        
         TAX_Utilities_v1.NodeMenu = getNode(CStr(varId))
+
         ' 12110211 xu ly to khai BS
         If strKHBS = "TKBS" Then
+
             For i = 1 To TAX_Utilities_v1.NodeMenu.childNodes(0).childNodes.length - 1
+
                 If i = TAX_Utilities_v1.NodeMenu.childNodes(0).childNodes.length - 1 Then
                     SetAttribute TAX_Utilities_v1.NodeMenu.childNodes(0).childNodes(i), "Active", "1"
                 Else
                     SetAttribute TAX_Utilities_v1.NodeMenu.childNodes(0).childNodes(i), "Active", "0"
                 End If
+
             Next
             
         End If
         
+        If GetAttribute(tkNode, "LoaiTK") = "M" Then
+            TAX_Utilities_v1.month = Mid$(CStr(varPeriod), 1, 2)
+            TAX_Utilities_v1.Year = Mid$(CStr(varPeriod), 4, 4)
 
-        
-        If GetAttribute(TAX_Utilities_v1.NodeMenu, "Month") = "1" Then
-            If varId = "01" Or varId = "02" Or varId = "04" Or varId = "71" Or varId = "36" Or varId = "94" Or varId = "96" Then
-                ' Neu datafile co ky tu Q la to khai quy
-                If Left$(Right$(varFileName, 7), 1) = "Q" Then
-                    strTkGTGT = "TK_QUY"
-                End If
-                If strTkGTGT = "TK_QUY" Then
-                    TAX_Utilities_v1.ThreeMonths = CInt(Mid$(CStr(varPeriod), 1, 2))
-                    TAX_Utilities_v1.month = Mid$(CStr(varPeriod), 1, 2)
-                    TAX_Utilities_v1.Year = Mid$(CStr(varPeriod), 4, 4)
-                Else
-                    TAX_Utilities_v1.month = Mid$(CStr(varPeriod), 1, 2)
-                    TAX_Utilities_v1.Year = Mid$(CStr(varPeriod), 4, 4)
-                End If
-            Else
-                TAX_Utilities_v1.month = Mid$(CStr(varPeriod), 1, 2)
-                TAX_Utilities_v1.Year = Mid$(CStr(varPeriod), 4, 4)
+            If GetAttribute(tkNode, "TkThangQuy") = "1" Then
+                strQuy = "TK_THANG"
             End If
-        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ThreeMonth") = "1" Then
+
+        ElseIf GetAttribute(tkNode, "LoaiTK") = "Q" Then
             TAX_Utilities_v1.ThreeMonths = CInt(Mid$(CStr(varPeriod), 1, 2))
             TAX_Utilities_v1.Year = Mid$(CStr(varPeriod), 4, 4)
-        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "Day") = "1" Then
-            If varId = "80" Or varId = "82" Then
-                TAX_Utilities_v1.Year = Right(CStr(varPeriod), 4)
-            Else
-                TAX_Utilities_v1.Year = CStr(varPeriod)
+
+            If GetAttribute(tkNode, "TkThangQuy") = "1" Then
+                strQuy = "TK_QUY"
             End If
+
+        ElseIf GetAttribute(tkNode, "LoaiTK") = "D" Then
+
+            TAX_Utilities_v1.Year = Right(CStr(varPeriod), 4)
             TAX_Utilities_v1.FirstDay = CStr(varFirstDay)
             TAX_Utilities_v1.LastDay = CStr(varLastDay)
         Else
@@ -435,27 +438,22 @@ Private Sub btnMo_Click()
         j = 1
         ReDim Preserve arrCheckStatus(0)
         arrCheckStatus(0) = 0
+
         For i = 2 To lSoBG + 1
             .GetText 2, i, vCheckStatus
+
             If vCheckStatus = 1 Or vCheckStatus = "1" Then
                 ReDim Preserve arrCheckStatus(j)
                 arrCheckStatus(j) = i
                 j = j + 1
             End If
+
         Next
 
         DoEvents
         strHiddenFormName = Me.Name
         Me.Hide
-        
-        ' kiem tra to khai GTGT thang/quy
-        If varId = "01" Or varId = "02" Or varId = "04" Or varId = "71" Or varId = "36" Or varId = "94" Or varId = "96" Then
-            If strTkGTGT = "TK_QUY" Then
-                strQuy = "TK_QUY"
-            Else
-                strQuy = "TK_THANG"
-            End If
-        End If
+
         ' to khai BC26
         If varId = "68" Then
             strQuy = "TK_QUY"
@@ -600,7 +598,7 @@ Private Sub Form_Load()
     FormatGrid
     SetupData
     With fpsLoaiTK
-        .SetActiveCell .ColLetterToNumber(f4cboLoTCol), f4cboLoTRow
+        .SetActiveCell .ColLetterToNumber(fpsLoaiTkCol), fpsLoaiTkRow
     End With
     
     blnOnExit = False
@@ -616,44 +614,65 @@ Private Sub Form_Load()
 End Sub
 Sub FormatGrid()
     Dim i As Integer
+
     With fpsDkNgay
         .BackColor = mFormColor
-      'fpSpread1.BorderStyle = BorderStyleNone
+        'fpSpread1.BorderStyle = BorderStyleNone
         .ColHeadersShow = False
         .RowHeadersShow = False
         .EditModePermanent = True
         .EditModeReplace = True
         '.BorderStyle = BorderStyleNone
-        .Col = .ColLetterToNumber(f1dteTuNCol)
-        .Row = f1dteTuNRow
+        .Col = .ColLetterToNumber(fpsDkNgayColF)
+        .Row = fpsDkNgayRow
         .BackColor = vbWhite
         .CellType = CellTypePic
         .TypePicMask = "9999"
         
-        .Col = .ColLetterToNumber(f1dteDeNCol)
-        .Row = f1dteDeNRow
+        .Col = .ColLetterToNumber(fpsDkNgayColT)
+        .Row = fpsDkNgayRow
         .BackColor = vbWhite
         .CellType = CellTypePic
         .TypePicMask = "9999"
         
-            fpsDkNgay.Col = 2
-            fpsDkNgay.ColHidden = True
-            fpsDkNgay.Col = 3
-            fpsDkNgay.ColHidden = False
-            fpsDkNgay.Col = 4
-            fpsDkNgay.ColHidden = True
-            fpsDkNgay.Col = 5
-            fpsDkNgay.ColHidden = True
-            
-            fpsDkNgay.Col = 7
-            fpsDkNgay.ColHidden = True
-            fpsDkNgay.Col = 8
-            fpsDkNgay.ColHidden = False
-            fpsDkNgay.Col = 9
-            fpsDkNgay.ColHidden = True
-            fpsDkNgay.Col = 10
-            fpsDkNgay.ColHidden = True
+        .Col = .ColLetterToNumber(fpsDkNgayColXB)
+        .Row = fpsDkNgayRow
+        .BackColor = vbWhite
+        .CellType = CellTypeNumber
+        .TypeNumberDecimal = ","
+        .TypeNumberSeparator = "."
+        .TypeNumberDecPlaces = 0
+        .TypeNumberShowSep = True
+        
+        .Col = .ColLetterToNumber(fpsDkNgayColXB) + 1
+        .Row = fpsDkNgayRow
+        .BackColor = mFormColor
+        .Lock = True
+        
+        .Col = 2
+        .ColHidden = True
+        .Col = 3
+        .ColHidden = False
+        .Col = 4
+        .ColHidden = True
+        .Col = 5
+        .ColHidden = True
+                
+        .Col = 7
+        .ColHidden = True
+        .Col = 8
+        .ColHidden = False
+        .Col = 9
+        .ColHidden = True
+        .Col = 10
+        .ColHidden = True
+        .Col = 12
+        .ColHidden = True
+        .Col = 13
+        .ColHidden = True
+
     End With
+
     With fpsLoaiTK
         .BackColor = mFormColor
         'fpSpread4.BorderStyle = BorderStyleNone
@@ -661,10 +680,11 @@ Sub FormatGrid()
         .RowHeadersShow = False
         .EditModePermanent = True
         .EditModeReplace = True
-        .Col = .ColLetterToNumber(f4cboLoTCol)
-        .Row = f4cboLoTRow
+        .Col = .ColLetterToNumber(fpsLoaiTkCol)
+        .Row = fpsLoaiTkRow
         .BackColor = vbWhite
     End With
+
     With fpSKetQua
         .MaxCols = 12
         .EditModePermanent = True
@@ -684,62 +704,68 @@ Sub FormatGrid()
         Next
 
     End With
+
 End Sub
 Sub SetupData()
     Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
     
-        With fpsDkNgay
-            Dim vdtehientai As String
-            vdtehientai = format(Date, "dd/mm/yyyy")
-            Dim strarrdate() As String
-            formatPrefix vdtehientai, strarrdate
-            
-            .Col = .ColLetterToNumber(f1dteTuNCol)
-            .Row = f1dteTuNRow
-            .Text = strarrdate(2)
-            '.Text = strarrdate(0) & "/" & strarrdate(2)
-            
-            .Col = .ColLetterToNumber(f1dteDeNCol)
-            .Row = f1dteDeNRow
-            .Text = strarrdate(2)
-            '.Text = strarrdate(0) & "/" & strarrdate(2)
-        End With
-    'Lay du lieu cho cbo
-        With fpsLoaiTK
-            .Col = .ColLetterToNumber(f4cboLoTCol)
-            .Row = f4cboLoTRow
-            Dim xmlDocument As New MSXML.DOMDocument
-            Dim xmlNode As MSXML.IXMLDOMNode
-            Dim strDataFileName As String
-            Dim i As Integer
+    With fpsDkNgay
+        Dim vdtehientai As String
+        vdtehientai = format(Date, "dd/mm/yyyy")
+        Dim strarrdate() As String
 
-            xmlDocument.Load TAX_Utilities_v1.GetAbsolutePath("Map.xml")
-            Set xmlNodeListMap = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
-            ReDim Preserve arrStrId(0)
-            arrStrId(0) = "00"
-            For Each xmlNode In xmlNodeListMap
-                Dim id As String
-                Dim LoaiTk As String
-                Dim Parentid As String
-                'Parentid = GetAttribute(xmlNode, "ParentID")
-                   '.TypeComboBoxIndex = 0
-                'If Parentid = "101" Then
-                i = i + 1
-                ReDim Preserve arrStrId(i)
-                arrStrId(i) = GetAttribute(xmlNode, "ID")
-                LoaiTk = GetAttribute(xmlNode, "Caption")
-                .TypeComboBoxIndex = -1
-                .TypeComboBoxString = LoaiTk
-                'End If
-            Next
-            'lintSoTk = i
-            .TypeComboBoxCurSel = 0
-            lstryear = "1"
-            lstrMonth = "0"
-            lstrThreemonths = "0"
-            Set xmlNode = Nothing
-            Set xmlDocument = Nothing
-        End With
+        formatPrefix vdtehientai, strarrdate
+            
+        .Col = .ColLetterToNumber(fpsDkNgayColF)
+        .Row = fpsDkNgayRow
+        .Text = strarrdate(2)
+        '.Text = strarrdate(0) & "/" & strarrdate(2)
+            
+        .Col = .ColLetterToNumber(fpsDkNgayColT)
+        .Row = fpsDkNgayRow
+        .Text = strarrdate(2)
+        '.Text = strarrdate(0) & "/" & strarrdate(2)
+    End With
+
+    'Lay du lieu cho cbo
+    With fpsLoaiTK
+        .Col = .ColLetterToNumber(fpsLoaiTkCol)
+        .Row = fpsLoaiTkRow
+        Dim xmlDocument     As New MSXML.DOMDocument
+        Dim xmlNode         As MSXML.IXMLDOMNode
+        Dim strDataFileName As String
+        Dim i               As Integer
+
+        xmlDocument.Load TAX_Utilities_v1.GetAbsolutePath("Map.xml")
+        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
+        ReDim Preserve arrStrId(0)
+        arrStrId(0) = "00"
+
+        For Each xmlNode In xmlNodeListMap
+            Dim id       As String
+            Dim loaitk   As String
+            Dim Parentid As String
+            'Parentid = GetAttribute(xmlNode, "ParentID")
+            '.TypeComboBoxIndex = 0
+            'If Parentid = "101" Then
+            i = i + 1
+            ReDim Preserve arrStrId(i)
+            arrStrId(i) = GetAttribute(xmlNode, "ID")
+            loaitk = GetAttribute(xmlNode, "Caption")
+            .TypeComboBoxIndex = -1
+            .TypeComboBoxString = loaitk
+            'End If
+        Next
+
+        'lintSoTk = i
+        .TypeComboBoxCurSel = 0
+        lstryear = "1"
+        lstrMonth = "0"
+        lstrThreemonths = "0"
+        Set xmlNode = Nothing
+        Set xmlDocument = Nothing
+    End With
+
 End Sub
 Private Sub Form_Resize()
     SetFormCaption Me, imgCaption, lblCaption
@@ -765,22 +791,22 @@ End Sub
 Private Sub fpsDkNgay_Keydown(KeyCode As Integer, Shift As Integer)
 If KeyCode = vbKeyTab And Shift = 0 Then
     With fpsDkNgay
-        If fpsDkNgay.ActiveRow = f1dteDeNRow And fpsDkNgay.ActiveCol = fpsDkNgay.ColLetterToNumber(f1dteDeNCol) Then
+        If fpsDkNgay.ActiveRow = fpsDkNgayRow And fpsDkNgay.ActiveCol = fpsDkNgay.ColLetterToNumber(fpsDkNgayColT) Then
             fpSKetQua.SetFocus
         End If
     End With
 End If
 If KeyCode = vbKeyTab And Shift = 1 Then
-    If fpsDkNgay.ActiveRow = f1dteTuNRow And fpsDkNgay.ActiveCol = fpsDkNgay.ColLetterToNumber(f1dteTuNCol) Then
+    If fpsDkNgay.ActiveRow = fpsDkNgayRow And fpsDkNgay.ActiveCol = fpsDkNgay.ColLetterToNumber(fpsDkNgayColF) Then
         fpsLoaiTK.SetFocus
         With fpsLoaiTK
-            .SetActiveCell .ColLetterToNumber(f4cboLoTCol), f4cboLoTRow
+            .SetActiveCell .ColLetterToNumber(fpsLoaiTkCol), fpsLoaiTkRow
         End With
     End If
-    If fpsDkNgay.ActiveRow = f1dteDeNRow And fpsDkNgay.ActiveCol = fpsDkNgay.ColLetterToNumber(f1dteDeNCol) Then
+    If fpsDkNgay.ActiveRow = fpsDkNgayRow And fpsDkNgay.ActiveCol = fpsDkNgay.ColLetterToNumber(fpsDkNgayColT) Then
         fpsDkNgay.SetFocus
         With fpsDkNgay
-            .SetActiveCell .ColLetterToNumber(f1dteTuNCol), f1dteTuNRow
+            .SetActiveCell .ColLetterToNumber(fpsDkNgayColF), fpsDkNgayRow
         End With
     End If
 End If
@@ -791,11 +817,18 @@ Private Sub fpsDkNgay_KeyPress(KeyAscii As Integer)
         KeyAscii = 0
     End If
 End Sub
-Private Sub fpsDkNgay_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As Long, ByVal NewRow As Long, Cancel As Boolean)
+
+Private Sub fpsDkNgay_LeaveCell(ByVal Col As Long, _
+                                ByVal Row As Long, _
+                                ByVal NewCol As Long, _
+                                ByVal NewRow As Long, _
+                                Cancel As Boolean)
+
     With fpsDkNgay
-        Dim strarrdate() As String
-        Dim strPrefix As String
-        Dim vdtehientai As String
+        Dim strarrdate()                  As String
+        Dim strPrefix                     As String
+        Dim vdtehientai                   As String
+        Dim loaitk                        As String
         Static blnOnDKienTraCuu_LeaveCell As Boolean          'Kiem tra su kien LeaveCell dang dc goi ???
         
         'Khi nguoi dung bam nut Thoat -> Bo qua ham nay.
@@ -815,137 +848,208 @@ Private Sub fpsDkNgay_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewC
         blnDKienTraCuu = False
         
         vdtehientai = format(Date, "dd/mm/yyyy")
-        .Col = .ColLetterToNumber(f1dteTuNCol)
-        .Row = f1dteTuNRow
-        
-        If Trim(Replace(.Text, "/", "")) <> "" Then
-            formatPrefix .Text, strarrdate
-            'Bat dk thang
-            If (Val(strarrdate(0)) > 12 Or Val(strarrdate(0)) <= 0) And lstrMonth = "1" Then
-                .Text = ""
-                DisplayMessage "0090", msOKOnly, miInformation
-                blnOnDKienTraCuu_LeaveCell = False
-                Exit Sub
-            End If
-            'Bat dk quy
-            If (Val(strarrdate(0)) > 4 Or Val(strarrdate(0)) <= 0) And lstrThreemonths = "1" Then
-                .Text = ""
-                DisplayMessage "0091", msOKOnly, miInformation
-                blnOnDKienTraCuu_LeaveCell = False
-                Exit Sub
-            End If
+
+        If fpsLoaiTK.TypeComboBoxCurSel <> 0 Then
+            loaitk = GetAttribute(tkNode, "LoaiTK")
+            .Col = .ColLetterToNumber(fpsDkNgayColF)
+            .Row = fpsDkNgayRow
+
+            If Trim(Replace(.Text, "/", "")) <> "" Then
+
+                formatPrefix .Text, strarrdate
+
+                'Bat dk thang
+                If (Val(strarrdate(0)) > 12 Or Val(strarrdate(0)) <= 0) And (loaitk = KIEU_KY_THANG Or loaitk = KIEU_KY_THANG_NAM Or loaitk = "KT") Then
+                    .Text = ""
+                    DisplayMessage "0090", msOKOnly, miInformation
+                    blnOnDKienTraCuu_LeaveCell = False
+                    Exit Sub
+                End If
+
+                'Bat dk quy
+                If (Val(strarrdate(0)) > 4 Or Val(strarrdate(0)) <= 0) And loaitk = KIEU_KY_QUY Then
+                    .Text = ""
+                    DisplayMessage "0091", msOKOnly, miInformation
+                    blnOnDKienTraCuu_LeaveCell = False
+                    Exit Sub
+                End If
+
+                'Bat dk ngay
+                If loaitk = KIEU_KY_NGAY_PS Or loaitk = KIEU_KY_NGAY_NAM Or loaitk = "DT" Or loaitk = "CD" Then
+                    If (Val(strarrdate(1)) > 12 Or Val(strarrdate(1)) <= 0) Then
+                        .Text = ""
+                        DisplayMessage "0091", msOKOnly, miInformation
+                        blnOnDKienTraCuu_LeaveCell = False
+                        Exit Sub
+                    ElseIf (Val(strarrdate(0)) > Day(GetNgayCuoiThang(Val(strarrdate(2)), Val(strarrdate(1)))) Or Val(strarrdate(0)) <= 0) Then
+                        .Text = ""
+                        DisplayMessage "0071", msOKOnly, miInformation
+                        blnOnDKienTraCuu_LeaveCell = False
+                        Exit Sub
+                    End If
+
+                End If
+
                 'bat dk nam
-            If lstrMonth = "0" And lstrThreemonths = "0" Then
-                If arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "80" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "82" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "981" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "982" Then
-                Else
+                If loaitk = KIEU_KY_NAM Then
+
                     Select Case Len(Trim(strarrdate(0)))
+
                         Case 1
                             strarrdate(0) = Year(vdtehientai)
+
                         Case 2
                             strarrdate(0) = "20" & Trim(strarrdate(0))
+
                         Case 3
                             strarrdate(0) = "2" & Trim(strarrdate(0))
+
                         Case 4
+
                             If Val(strarrdate(0)) < 2000 Then
                                 strarrdate(0) = "2000"
                             End If
+
                     End Select
-               End If
-            Else
-                Select Case Len(Trim(strarrdate(1)))
-                Case 1
-                    strarrdate(1) = Year(vdtehientai)
-                Case 2
-                    strarrdate(1) = "20" & Trim(strarrdate(1))
-                Case 3
-                    strarrdate(1) = "2" & Trim(strarrdate(1))
-                Case 4
-                    If Val(strarrdate(1)) < 2000 Then
-                          strarrdate(1) = "2000"
-                    End If
-                End Select
-            End If
-            'Hien thi lai kq
-            .Col = .ColLetterToNumber(f1dteTuNCol)
-            .Row = f1dteTuNRow
-            If lstrMonth = "0" And lstrThreemonths = "0" Then
-                If arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "80" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "82" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "981" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "982" Then
-                    
+
+                End If
+
+                'Hien thi lai kq
+                .Col = .ColLetterToNumber(fpsDkNgayColF)
+                .Row = fpsDkNgayRow
+
+                If loaitk = KIEU_KY_NGAY_PS Or loaitk = KIEU_KY_NGAY_NAM Or loaitk = "DT" Or loaitk = "CD" Then
+                    .SetText .Col, .Row, strarrdate(0) & "/" & strarrdate(1) & "/" & strarrdate(2)
+                ElseIf loaitk = KIEU_KY_THANG Or loaitk = KIEU_KY_THANG_NAM Or loaitk = "KT" Or loaitk = KIEU_KY_QUY Then
+                    .SetText .Col, .Row, strarrdate(0) & "/" & strarrdate(1)
                 Else
                     .SetText .Col, .Row, strarrdate(0)
                 End If
-            Else
-                .SetText .Col, .Row, strarrdate(0) & "/" & strarrdate(1)
             End If
+
+            .Col = .ColLetterToNumber(fpsDkNgayColT)
+            .Row = fpsDkNgayRow
+
+            If Trim(Replace(.Text, "/", "")) <> "" Then
+
+                formatPrefix .Text, strarrdate
+
+                'Bat dk thang
+                If (Val(strarrdate(0)) > 12 Or Val(strarrdate(0)) <= 0) And (loaitk = KIEU_KY_THANG Or loaitk = KIEU_KY_THANG_NAM Or loaitk = "KT") Then
+                    .Text = ""
+                    DisplayMessage "0090", msOKOnly, miInformation
+                    blnOnDKienTraCuu_LeaveCell = False
+                    Exit Sub
+                End If
+
+                'Bat dk quy
+                If (Val(strarrdate(0)) > 4 Or Val(strarrdate(0)) <= 0) And loaitk = KIEU_KY_QUY Then
+                    .Text = ""
+                    DisplayMessage "0091", msOKOnly, miInformation
+                    blnOnDKienTraCuu_LeaveCell = False
+                    Exit Sub
+                End If
+
+                'Bat dk ngay
+                If loaitk = KIEU_KY_NGAY_PS Or loaitk = KIEU_KY_NGAY_NAM Or loaitk = "DT" Or loaitk = "CD" Then
+                    If (Val(strarrdate(1)) > 12 Or Val(strarrdate(1)) <= 0) Then
+                        .Text = ""
+                        DisplayMessage "0091", msOKOnly, miInformation
+                        blnOnDKienTraCuu_LeaveCell = False
+                        Exit Sub
+                    ElseIf (Val(strarrdate(0)) > Day(GetNgayCuoiThang(Val(strarrdate(2)), Val(strarrdate(1)))) Or Val(strarrdate(0)) <= 0) Then
+                        .Text = ""
+                        DisplayMessage "0071", msOKOnly, miInformation
+                        blnOnDKienTraCuu_LeaveCell = False
+                        Exit Sub
+                    End If
+
+                End If
+
+                'bat dk nam
+                If loaitk = KIEU_KY_NAM Then
+
+                    Select Case Len(Trim(strarrdate(0)))
+
+                        Case 1
+                            strarrdate(0) = Year(vdtehientai)
+
+                        Case 2
+                            strarrdate(0) = "20" & Trim(strarrdate(0))
+
+                        Case 3
+                            strarrdate(0) = "2" & Trim(strarrdate(0))
+
+                        Case 4
+
+                            If Val(strarrdate(0)) < 2000 Then
+                                strarrdate(0) = "2000"
+                            End If
+
+                    End Select
+
+                End If
+
+                'Hien thi lai kq
+                .Col = .ColLetterToNumber(fpsDkNgayColT)
+                .Row = fpsDkNgayRow
+
+                If loaitk = KIEU_KY_NGAY_PS Or loaitk = KIEU_KY_NGAY_NAM Or loaitk = "DT" Or loaitk = "CD" Then
+                    .SetText .Col, .Row, strarrdate(0) & "/" & strarrdate(1) & "/" & strarrdate(2)
+                ElseIf loaitk = KIEU_KY_THANG Or loaitk = KIEU_KY_THANG_NAM Or loaitk = "KT" Or loaitk = KIEU_KY_QUY Then
+                    .SetText .Col, .Row, strarrdate(0) & "/" & strarrdate(1)
+                Else
+                    .SetText .Col, .Row, strarrdate(0)
+                End If
+            End If
+
+        Else
+            .Row = fpsDkNgayRow
+
+            .Col = .ColLetterToNumber(fpsDkNgayColF)
+
+            Select Case Len(Trim(.Text))
+
+                Case 1
+                    .Text = Year(vdtehientai)
+
+                Case 2
+                    .Text = "20" & Trim(.Text)
+
+                Case 3
+                    .Text = "2" & Trim(.Text)
+
+                Case 4
+
+                    If Val(.Text) < 2000 Then
+                        .Text = "2000"
+                    End If
+
+            End Select
+            
+            .Col = .ColLetterToNumber(fpsDkNgayColT)
+
+            Select Case Len(Trim(.Text))
+
+                Case 1
+                    .Text = Year(vdtehientai)
+
+                Case 2
+                    .Text = "20" & Trim(.Text)
+
+                Case 3
+                    .Text = "2" & Trim(.Text)
+
+                Case 4
+
+                    If Val(.Text) < 2000 Then
+                        .Text = "2000"
+                    End If
+
+            End Select
+
         End If
 
-        .Col = .ColLetterToNumber(f1dteDeNCol)
-        .Row = f1dteDeNRow
-        If Trim(Replace(.Text, "/", "")) <> "" Then
-            formatPrefix .Text, strarrdate
-            If (Val(strarrdate(0)) > 12 Or Val(strarrdate(0)) <= 0) And lstrMonth = "1" Then
-                DisplayMessage "0090", msOKOnly, miInformation
-                Cancel = True
-                .SetFocus
-                .Text = ""
-                .SetActiveCell .Col, .Row
-                blnOnDKienTraCuu_LeaveCell = False
-                Exit Sub
-            End If
-            If (Val(strarrdate(0)) > 4 Or Val(strarrdate(0)) <= 0) And lstrThreemonths = "1" Then
-                DisplayMessage "0091", msOKOnly, miInformation
-                Cancel = True
-                .SetFocus
-                .Text = ""
-                .SetActiveCell .Col, .Row
-                blnOnDKienTraCuu_LeaveCell = False
-                Exit Sub
-            End If
-            'bat dk nam
-            If lstrMonth = "0" And lstrThreemonths = "0" Then
-                If arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "80" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "82" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "981" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "982" Then
-                    
-                Else
-                    Select Case Len(Trim(strarrdate(0)))
-                    Case 1
-                        strarrdate(0) = Year(vdtehientai)
-                    Case 2
-                        strarrdate(0) = "20" & Trim(strarrdate(0))
-                    Case 3
-                        strarrdate(0) = "2" & Trim(strarrdate(0))
-                    Case 4
-                        If Val(strarrdate(0)) < 2000 Then
-                            strarrdate(0) = "2000"
-                        End If
-                    End Select
-                End If
-            Else
-                Select Case Len(Trim(strarrdate(1)))
-                Case 1
-                     strarrdate(1) = Year(vdtehientai)
-                Case 2
-                    strarrdate(1) = "20" & Trim(strarrdate(1))
-                Case 3
-                    strarrdate(1) = "2" & Trim(strarrdate(1))
-                Case 4
-                    If Val(strarrdate(1)) < 2000 Then
-                          strarrdate(1) = "2000"
-                    End If
-                End Select
-            End If
-            'Hien thi lai kq
-            .Col = .ColLetterToNumber(f1dteDeNCol)
-            .Row = f1dteDeNRow
-            If lstrMonth = "0" And lstrThreemonths = "0" Then
-                If arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "80" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "82" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "981" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "982" Then
-                    
-                Else
-                    .SetText .Col, .Row, strarrdate(0)
-                End If
-            Else
-                .SetText .Col, .Row, strarrdate(0) & "/" & strarrdate(1)
-            End If
-        End If
     End With
     
     blnOnDKienTraCuu_LeaveCell = False
@@ -1033,7 +1137,7 @@ Private Sub fpSKetQua_KeyDown(KeyCode As Integer, Shift As Integer)
 If KeyCode = vbKeyTab And Shift = 1 Then
        fpsDkNgay.SetFocus
         With fpsDkNgay
-            .SetActiveCell .ColLetterToNumber(f1dteDeNCol), f1dteDeNRow
+            .SetActiveCell .ColLetterToNumber(fpsDkNgayColT), fpsDkNgayRow
         End With
     End If
     If KeyCode = vbKeyDown And lngRowFocus < fpSKetQua.MaxRows Then
@@ -1045,33 +1149,38 @@ If KeyCode = vbKeyTab And Shift = 1 Then
 End Sub
 
 Private Sub fpsLoaiTK_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
-Dim xmlDocument As New MSXML.DOMDocument
-    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim xmlDocument     As New MSXML.DOMDocument
+    Dim xmlNode         As MSXML.IXMLDOMNode
     Dim strDataFileName As String
-    
+    Dim tkID            As String
     strTkGTGT = ""
+
     With fpsLoaiTK
-        .Col = .ColLetterToNumber(f4cboLoTCol)
-        .Row = f4cboLoTRow
+        .Col = .ColLetterToNumber(fpsLoaiTkCol)
+        .Row = fpsLoaiTkRow
+
         If .TypeComboBoxCurSel = 0 Then
+
             With fpsDkNgay
                 Dim vdtehientai As String
                 vdtehientai = format(Date, "dd/mm/yyyy")
                 Dim strarrdate() As String
+
                 formatPrefix vdtehientai, strarrdate
             
-                .Col = .ColLetterToNumber(f1dteTuNCol)
-                .Row = f1dteTuNRow
+                .Col = .ColLetterToNumber(fpsDkNgayColF)
+                .Row = fpsDkNgayRow
                 .CellType = CellTypePic
                 .TypePicMask = "9999"
                 '.Text = strarrdate(0) & "/" & strarrdate(2)
                 .Text = strarrdate(2)
                 
-                .Col = .ColLetterToNumber(f1dteDeNCol)
-                .Row = f1dteDeNRow
+                .Col = .ColLetterToNumber(fpsDkNgayColT)
+                .Row = fpsDkNgayRow
                 .CellType = CellTypePic
                 .TypePicMask = "9999"
                 .Text = strarrdate(2)
+                
                 lstryear = "1"
                 lstrMonth = "0"
                 lstrThreemonths = "0"
@@ -1079,76 +1188,46 @@ Dim xmlDocument As New MSXML.DOMDocument
                 fpsDkNgay.Col = 2
                 fpsDkNgay.ColHidden = True
                 fpsDkNgay.Col = 3
-                fpsDkNgay.ColHidden = False
+                fpsDkNgay.ColHidden = True
                 fpsDkNgay.Col = 4
                 fpsDkNgay.ColHidden = True
                 fpsDkNgay.Col = 5
-                fpsDkNgay.ColHidden = True
+                fpsDkNgay.ColHidden = False
                 
                 fpsDkNgay.Col = 7
                 fpsDkNgay.ColHidden = True
                 fpsDkNgay.Col = 8
-                fpsDkNgay.ColHidden = False
+                fpsDkNgay.ColHidden = True
                 fpsDkNgay.Col = 9
                 fpsDkNgay.ColHidden = True
                 fpsDkNgay.Col = 10
+                fpsDkNgay.ColHidden = False
+                                fpsDkNgay.Col = 12
+                fpsDkNgay.ColHidden = True
+                fpsDkNgay.Col = 13
                 fpsDkNgay.ColHidden = True
             End With
+
             Exit Sub
         End If
-        'xmlDocument.Load TAX_Utilities_v1.GetAbsolutePath("menu.xml")
-        'Set xmlNodeListMenu = xmlDocument.getElementsByTagName("Root").Item(0).childNodes
-            For Each xmlNode In xmlNodeListMenu
-            If arrStrId(.TypeComboBoxCurSel) = "KHBS" Then
-                lstryear = "1"
-                lstrMonth = "1"
-                lstrThreemonths = "0"
+
+        xmlDocument.Load TAX_Utilities_v1.GetAbsolutePath("map.xml")
+        tkID = arrStrId(.TypeComboBoxCurSel)
+
+        For Each xmlNode In xmlDocument.getElementsByTagName("Map")
+
+            If GetAttribute(xmlNode, "ID") = tkID Then
+                Set tkNode = xmlNode.CloneNode(True)
                 Exit For
             End If
-                Dim Parentid As String
-                Parentid = GetAttribute(xmlNode, "PopID")
-                '.TypeComboBoxIndex = 0
-                If Parentid = "101" Then
-                    Dim strIdGTGT As String
-                    strIdGTGT = arrStrId(.TypeComboBoxCurSel)
-                    If strIdGTGT = "011" Or strIdGTGT = "021" Or strIdGTGT = "041" Or strIdGTGT = "711" Or strIdGTGT = "361" Or strIdGTGT = "941" Or strIdGTGT = "961" Then
-                        strTkGTGT = "TK_QUY"
-                         If Left$(strIdGTGT, 2) = GetAttribute(xmlNode, "ID") Then
-                            lstryear = GetAttribute(xmlNode, "Year")
-                            lstrMonth = 0
-                            lstrThreemonths = 1
-                            Exit For
-                        End If
-                    ElseIf strIdGTGT = "64" Then
-                        If arrStrId(.TypeComboBoxCurSel) = GetAttribute(xmlNode, "ID") Then
-                            lstryear = GetAttribute(xmlNode, "Year")
-                            lstrMonth = GetAttribute(xmlNode, "Month")
-                            lstrThreemonths = GetAttribute(xmlNode, "ThreeMonth")
-                            lstrDay = "1"
-                            Exit For
-                        End If
-                    ElseIf strIdGTGT = "981" Or strIdGTGT = "982" Then
-                        If Left$(strIdGTGT, 2) = GetAttribute(xmlNode, "ID") Then
-                            strTkDK = "TK_LANXB"
-                            strTkGTGT = "TK_LANXB"
-                            lstrMonth = 0
-                            lstryear = GetAttribute(xmlNode, "Year")
-                            lstrThreemonths = GetAttribute(xmlNode, "ThreeMonth")
-                            lstrDay = "1"
-                            Exit For
-                        End If
-                    Else
-                        If arrStrId(.TypeComboBoxCurSel) = GetAttribute(xmlNode, "ID") Then
-                            lstryear = GetAttribute(xmlNode, "Year")
-                            lstrMonth = GetAttribute(xmlNode, "Month")
-                            lstrThreemonths = GetAttribute(xmlNode, "ThreeMonth")
-                            Exit For
-                        End If
-                    End If
-                End If
-            Next
-        CreateDkKy
+            
+        Next
+        
     End With
+    
+   
+    CreateDkKy
+    
 End Sub
 
 Private Sub fpsLoaiTK_GotFocus()
@@ -1159,7 +1238,7 @@ Private Sub fpsLoaiTK_Keydown(KeyCode As Integer, Shift As Integer)
     If KeyCode = vbKeyTab And Shift = 0 Then
         fpsDkNgay.SetFocus
         With fpsDkNgay
-            .SetActiveCell .ColLetterToNumber(f1dteTuNCol), f1dteTuNRow
+            .SetActiveCell .ColLetterToNumber(fpsDkNgayColF), fpsDkNgayRow
         End With
     End If
     If KeyCode = vbKeyTab And Shift = 1 Then
@@ -1182,239 +1261,285 @@ Sub CreateDkKy()
     Dim vdtehientai As String
     vdtehientai = format(Date, "dd/mm/yyyy")
     Dim strarrdate() As String
+
     formatPrefix vdtehientai, strarrdate
     
     With fpsDkNgay
         
-         If lstrDay = "1" Then
-            .Col = .ColLetterToNumber(f1dteTuNCol)
-            .Row = f1dteTuNRow
-            .CellType = CellTypePic
-            .TypePicMask = "99//99//9999"
-            .Text = strarrdate(0) & "/" & strarrdate(1) & "/" & strarrdate(2)
-            
-            .Col = .ColLetterToNumber(f1dteDeNCol)
-            .Row = f1dteDeNRow
-            .CellType = CellTypePic
-            .TypePicMask = "99//99//9999"
-            .Text = strarrdate(0) & "/" & strarrdate(1) & "/" & strarrdate(2)
-            fpsDkNgay.Col = 2
-            fpsDkNgay.ColHidden = False
-            fpsDkNgay.Col = 3
-            fpsDkNgay.ColHidden = True
-            fpsDkNgay.Col = 4
-            fpsDkNgay.ColHidden = True
-            fpsDkNgay.Col = 5
-            fpsDkNgay.ColHidden = True
-            
-            fpsDkNgay.Col = 7
-            fpsDkNgay.ColHidden = False
-            fpsDkNgay.Col = 8
-            fpsDkNgay.ColHidden = True
-            fpsDkNgay.Col = 9
-            fpsDkNgay.ColHidden = True
-            fpsDkNgay.Col = 10
-            fpsDkNgay.ColHidden = True
-            Exit Sub
-        End If
+        .Col = 2
+        .ColHidden = True
+        .Col = 3
+        .ColHidden = True
+        .Col = 4
+        .ColHidden = True
+        .Col = 5
+        .ColHidden = True
+                
+        .Col = 7
+        .ColHidden = True
+        .Col = 8
+        .ColHidden = True
+        .Col = 9
+        .ColHidden = True
+        .Col = 10
+        .ColHidden = True
+        .Col = 12
+        .ColHidden = True
+        .Col = 13
+        .ColHidden = True
         
-        If lstrMonth = "0" And lstrThreemonths = "0" Then
-            If arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "80" Or arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "82" Then
-                .Col = .ColLetterToNumber(f1dteTuNCol)
-                .Row = f1dteTuNRow
-                .CellType = CellTypePic
-                .TypePicMask = "99//99//9999"
-                .Text = strarrdate(0) & "/" & strarrdate(1) & "/" & strarrdate(2)
-                
-                .Col = .ColLetterToNumber(f1dteDeNCol)
-                .Row = f1dteDeNRow
-                .CellType = CellTypePic
-                .TypePicMask = "99//99//9999"
-                .Text = strarrdate(0) & "/" & strarrdate(1) & "/" & strarrdate(2)
-                fpsDkNgay.Col = 2
-                fpsDkNgay.ColHidden = False
-                fpsDkNgay.Col = 3
-                fpsDkNgay.ColHidden = True
-                fpsDkNgay.Col = 4
-                fpsDkNgay.ColHidden = True
-                fpsDkNgay.Col = 5
-                fpsDkNgay.ColHidden = True
-                
-                fpsDkNgay.Col = 7
-                fpsDkNgay.ColHidden = False
-                fpsDkNgay.Col = 8
-                fpsDkNgay.ColHidden = True
-                fpsDkNgay.Col = 9
-                fpsDkNgay.ColHidden = True
-                fpsDkNgay.Col = 10
-                fpsDkNgay.ColHidden = True
-                Exit Sub
-            
-            Else
-                .Col = .ColLetterToNumber(f1dteTuNCol)
-                .Row = f1dteTuNRow
-                .CellType = CellTypePic
-                .TypePicMask = "9999"
-                .Text = strarrdate(2)
-                
-                .Col = .ColLetterToNumber(f1dteDeNCol)
-                .Row = f1dteDeNRow
-                .CellType = CellTypePic
-                .TypePicMask = "9999"
-                .Text = strarrdate(2)
-                
-                fpsDkNgay.Col = 2
-                fpsDkNgay.ColHidden = True
-                fpsDkNgay.Col = 3
-                fpsDkNgay.ColHidden = False
-                fpsDkNgay.Col = 4
-                fpsDkNgay.ColHidden = True
-                fpsDkNgay.Col = 5
-                fpsDkNgay.ColHidden = True
-                
-                fpsDkNgay.Col = 7
-                fpsDkNgay.ColHidden = True
-                fpsDkNgay.Col = 8
-                fpsDkNgay.ColHidden = False
-                fpsDkNgay.Col = 9
-                fpsDkNgay.ColHidden = True
-                fpsDkNgay.Col = 10
-                fpsDkNgay.ColHidden = True
-                Exit Sub
-             End If
-        End If
-        If lstrMonth = "1" Then
-             .Col = .ColLetterToNumber(f1dteTuNCol)
-            .Row = f1dteTuNRow
-            .CellType = CellTypePic
-            .TypePicMask = "99//9999"
-            .Text = strarrdate(1) & "/" & strarrdate(2)
-            .Col = .ColLetterToNumber(f1dteDeNCol)
-            .Row = f1dteDeNRow
+        Dim loaitk As String
+        loaitk = GetAttribute(tkNode, "LoaiTK")
+        .Row = fpsDkNgayRow
+
+        If loaitk = KIEU_KY_THANG Or loaitk = KIEU_KY_THANG_NAM Then
+        
+            lstryear = ""
+            lstrMonth = "1"
+            lstrThreemonths = ""
+            lstrDay = ""
+            .Col = 3
+            .ColHidden = False
+            .Col = 8
+            .ColHidden = False
+            .Col = .ColLetterToNumber(fpsDkNgayColF)
+            .Row = fpsDkNgayRow
             .CellType = CellTypePic
             .TypePicMask = "99//9999"
             .Text = strarrdate(1) & "/" & strarrdate(2)
             
-            fpsDkNgay.Col = 2
-            fpsDkNgay.ColHidden = True
-            fpsDkNgay.Col = 3
-            fpsDkNgay.ColHidden = True
-            fpsDkNgay.Col = 4
-            fpsDkNgay.ColHidden = False
-            fpsDkNgay.Col = 5
-            fpsDkNgay.ColHidden = True
+            .Col = .ColLetterToNumber(fpsDkNgayColT)
+            .Row = fpsDkNgayRow
+            .CellType = CellTypePic
+            .TypePicMask = "99//9999"
+            .Text = strarrdate(1) & "/" & strarrdate(2)
+        ElseIf loaitk = KIEU_KY_QUY Then
+            lstryear = ""
+            lstrMonth = ""
+            lstrThreemonths = "1"
+            lstrDay = ""
+            .Col = 4
+            .ColHidden = False
+            .Col = 9
+            .ColHidden = False
             
-            fpsDkNgay.Col = 7
-            fpsDkNgay.ColHidden = True
-            fpsDkNgay.Col = 8
-            fpsDkNgay.ColHidden = True
-            fpsDkNgay.Col = 9
-            fpsDkNgay.ColHidden = False
-            fpsDkNgay.Col = 10
-            fpsDkNgay.ColHidden = True
-        
-            Exit Sub
-        End If
-        If lstrThreemonths = "1" Then
             Dim strQuy As String
-            If Val(strarrdate(0)) < 4 Then
+
+            If Val(strarrdate(1)) < 4 Then
                 strQuy = "01"
-            ElseIf Val(strarrdate(0)) >= 4 And Val(strarrdate(0)) < 7 Then
-                 strQuy = "02"
-            ElseIf Val(strarrdate(0)) >= 7 And Val(strarrdate(0)) < 10 Then
+            ElseIf Val(strarrdate(1)) >= 4 And Val(strarrdate(1)) < 7 Then
+                strQuy = "02"
+            ElseIf Val(strarrdate(1)) >= 7 And Val(strarrdate(1)) < 10 Then
                 strQuy = "03"
             Else
                 strQuy = "04"
             End If
-             .Col = .ColLetterToNumber(f1dteTuNCol)
-            .Row = f1dteTuNRow
+
+            .Col = .ColLetterToNumber(fpsDkNgayColF)
+            .Row = fpsDkNgayRow
             .CellType = CellTypePic
             .TypePicMask = "99//9999"
+            .Text = strQuy & "/" & strarrdate(2)
             
-            If Val(strQuy) = "04" Then
-                .Text = strQuy & "/" & Val(strarrdate(2)) - 1
-            Else
-                .Text = strQuy & "/" & strarrdate(2)
-            End If
-            .Col = .ColLetterToNumber(f1dteDeNCol)
-            .Row = f1dteDeNRow
+            .Col = .ColLetterToNumber(fpsDkNgayColT)
+            .Row = fpsDkNgayRow
             .CellType = CellTypePic
             .TypePicMask = "99//9999"
+            .Text = strQuy & "/" & strarrdate(2)
+        ElseIf loaitk = KIEU_KY_NAM Then
+            lstryear = "1"
+            lstrMonth = ""
+            lstrThreemonths = ""
+            lstrDay = ""
+            .Col = 5
+            .ColHidden = False
+            .Col = 10
+            .ColHidden = False
+            .Col = .ColLetterToNumber(fpsDkNgayColF)
+            .Row = fpsDkNgayRow
+            .CellType = CellTypePic
+            .TypePicMask = "9999"
+            .Text = strarrdate(2)
             
-            If Val(strQuy) = "04" Then
-                .Text = strQuy & "/" & Val(strarrdate(2)) - 1
-            Else
-                .Text = strQuy & "/" & strarrdate(2)
-            End If
+            .Col = .ColLetterToNumber(fpsDkNgayColT)
+            .Row = fpsDkNgayRow
+            .CellType = CellTypePic
+            .TypePicMask = "9999"
+            .Text = strarrdate(2)
+        ElseIf loaitk = KIEU_KY_NGAY_PS Or loaitk = KIEU_KY_NGAY_NAM Then
+            lstryear = "1"
+            lstrMonth = "1"
+            lstrThreemonths = ""
+            lstrDay = "1"
+            .Col = 2
+            .ColHidden = False
+            .Col = 7
+            .ColHidden = False
+            .Col = .ColLetterToNumber(fpsDkNgayColF)
+            .Row = fpsDkNgayRow
+            .CellType = CellTypePic
+            .TypePicMask = "99//99//9999"
+            .Text = strarrdate(0) & "/" & strarrdate(1) & "/" & strarrdate(2)
             
-            fpsDkNgay.Col = 2
-            fpsDkNgay.ColHidden = True
-            fpsDkNgay.Col = 3
-            fpsDkNgay.ColHidden = True
-            fpsDkNgay.Col = 4
-            fpsDkNgay.ColHidden = True
-            fpsDkNgay.Col = 5
-            fpsDkNgay.ColHidden = False
+            .Col = .ColLetterToNumber(fpsDkNgayColT)
+            .Row = fpsDkNgayRow
+            .CellType = CellTypePic
+            .TypePicMask = "99//99//9999"
+            .Text = strarrdate(0) & "/" & strarrdate(1) & "/" & strarrdate(2)
+        ElseIf loaitk = "DT" Or loaitk = "CD" Then
+            lstryear = "1"
+            lstrMonth = "1"
+            lstrThreemonths = ""
+            lstrDay = "1"
+            .Col = 2
+            .ColHidden = False
+            .Col = 7
+            .ColHidden = False
+            .Col = 12
+            .ColHidden = False
+            .Col = 13
+            .ColHidden = False
+            .Col = .ColLetterToNumber(fpsDkNgayColF)
+            .Row = fpsDkNgayRow
+            .CellType = CellTypePic
+            .TypePicMask = "99//99//9999"
+            .Text = strarrdate(0) & "/" & strarrdate(1) & "/" & strarrdate(2)
             
-            fpsDkNgay.Col = 7
-            fpsDkNgay.ColHidden = True
-            fpsDkNgay.Col = 8
-            fpsDkNgay.ColHidden = True
-            fpsDkNgay.Col = 9
-            fpsDkNgay.ColHidden = True
-            fpsDkNgay.Col = 10
-            fpsDkNgay.ColHidden = False
-            Exit Sub
+            .Col = .ColLetterToNumber(fpsDkNgayColT)
+            .Row = fpsDkNgayRow
+            .CellType = CellTypePic
+            .TypePicMask = "99//99//9999"
+            .Text = strarrdate(0) & "/" & strarrdate(1) & "/" & strarrdate(2)
+        ElseIf loaitk = "KT" Then
+            .Col = 3
+            .ColHidden = False
+            .Col = 8
+            .ColHidden = False
+            .Col = .ColLetterToNumber(fpsDkNgayColF)
+            .Row = fpsDkNgayRow
+            .CellType = CellTypePic
+            .TypePicMask = "99//9999"
+            .Text = strarrdate(1) & "/" & strarrdate(2)
+            
+            .Col = .ColLetterToNumber(fpsDkNgayColT)
+            .Row = fpsDkNgayRow
+            .CellType = CellTypePic
+            .TypePicMask = "99//9999"
+            .Text = strarrdate(1) & "/" & strarrdate(2)
         End If
-               
+    
     End With
+
 End Sub
+
 Private Function KiemTraDKngay() As Boolean
-Dim strarrdate() As String
-With fpsDkNgay
-        KiemTraDKngay = True
-        
-        .Col = .ColLetterToNumber(f1dteTuNCol)
-        .Row = f1dteTuNRow
-        If .Text = "" Then
-            Dtetun = "199000"
-        Else
-            formatPrefix .Text, strarrdate
-            If lstrMonth <> "0" Or lstrThreemonths <> 0 Then
-                Dtetun = strarrdate(1) & strarrdate(0)
+    Dim strarrdate() As String
+    Dim loaitk       As Variant
+    Dim strF         As String
+    Dim strT         As String
+    
+    KiemTraDKngay = True
+
+    With fpsDkNgay
+        .Row = fpsDkNgayRow
+        .Col = .ColLetterToNumber(fpsDkNgayColF)
+        strF = .Text
+        .Col = .ColLetterToNumber(fpsDkNgayColT)
+        strT = .Text
+
+        If fpsLoaiTK.TypeComboBoxCurSel <> 0 Then
+            loaitk = GetAttribute(tkNode, "LoaiTK")
+            
+            If loaitk = KIEU_KY_NGAY_PS Or loaitk = KIEU_KY_NGAY_NAM Or loaitk = "DT" Or loaitk = "CD" Then
+
+                If Trim$(Replace$(strF, "/", "")) = "" Then
+                    strF = "01/01/1900"
+                End If
+
+                If Trim$(Replace$(strT, "/", "")) = "" Then
+                    strT = "01/01/9900"
+                End If
+                    
+                If ToDate(Replace$(strF, "/", "")) > ToDate(Replace$(strT, "/", "")) Then
+                    DisplayMessage "0309", msOKOnly, miCriticalError
+                    .SetFocus
+                    .SetActiveCell .Col, .Row
+                    KiemTraDKngay = False
+                End If
+
+            ElseIf loaitk = KIEU_KY_THANG Or loaitk = KIEU_KY_THANG_NAM Or loaitk = "KT" Then
+
+                If Trim$(Replace$(strF, "/", "")) = "" Then
+                    strF = "01/1900"
+                End If
+
+                If Trim$(Replace$(strT, "/", "")) = "" Then
+                    strT = "01/9900"
+                End If
+                    
+                If ToDate("01" & Replace$(strF, "/", "")) > ToDate("01" & Replace$(strT, "/", "")) Then
+                    DisplayMessage "0097", msOKOnly, miCriticalError
+                    .SetFocus
+                    .SetActiveCell .Col, .Row
+                    KiemTraDKngay = False
+                End If
+
+            ElseIf loaitk = KIEU_KY_QUY Then
+
+                If Trim$(Replace$(strF, "/", "")) = "" Then
+                    strF = "01/1900"
+                End If
+
+                If Trim$(Replace$(strT, "/", "")) = "" Then
+                    strT = "01/9900"
+                End If
+                    
+                If ToDate("01" & Replace$(strF, "/", "")) > ToDate("01" & Replace$(strT, "/", "")) Then
+                    DisplayMessage "0098", msOKOnly, miCriticalError
+                    .SetFocus
+                    .SetActiveCell .Col, .Row
+                    KiemTraDKngay = False
+                End If
+
             Else
-                Dtetun = strarrdate(0) & "00"
+
+                If Trim$(Replace$(strF, "/", "")) = "" Then
+                    strF = "1900"
+                End If
+
+                If Trim$(Replace$(strT, "/", "")) = "" Then
+                    strT = "9900"
+                End If
+
+                If Val(strF) > Val(strT) Then
+                    DisplayMessage "0093", msOKOnly, miCriticalError
+                    .SetFocus
+                    .SetActiveCell .Col, .Row
+                    KiemTraDKngay = False
+                End If
+
             End If
-        End If
-        
-        .Col = .ColLetterToNumber(f1dteDeNCol)
-        .Row = f1dteDeNRow
-        
-        If Trim(Replace(.Text, "/", "")) = "" Then
-            Dteden = "999099"
+
         Else
-            formatPrefix .Text, strarrdate
-            If lstrMonth <> "0" Or lstrThreemonths <> "0" Then
-                Dteden = strarrdate(1) & strarrdate(0)
-            Else
-                Dteden = strarrdate(0) & "99"
+
+            If Trim$(Replace$(strF, "/", "")) = "" Then
+                strF = "1900"
+            End If
+
+            If Trim$(Replace$(strT, "/", "")) = "" Then
+                strT = "9900"
+            End If
+
+            If Val(strF) > Val(strT) Then
+                DisplayMessage "0093", msOKOnly, miCriticalError
+                .SetFocus
+                .SetActiveCell .Col, .Row
+                KiemTraDKngay = False
             End If
         End If
-        If Dtetun > Dteden Then
-            If lstrMonth = "0" And lstrThreemonths = "0" Then
-                DisplayMessage "0093", msOKOnly, miInformation
-            End If
-            If lstrMonth = "1" Then
-                DisplayMessage "0097", msOKOnly, miInformation
-            End If
-            If lstrThreemonths = "1" Then
-                DisplayMessage "0098", msOKOnly, miInformation
-            End If
-            KiemTraDKngay = False
-            .SetFocus
-            .SetActiveCell .ColLetterToNumber(f1dteTuNCol), f1dteDeNRow
-        End If
+
     End With
+
 End Function
 
 '*********************************************************
@@ -1603,6 +1728,316 @@ Private Function GetTaxReportsById(ByVal strId As String, ByVal strPeriodFrom As
 ErrHandle:
     SaveErrorLog Me.Name, "GetTaxReportsById", Err.Number, Err.Description
 End Function
+
+Private Sub GetDsToKhai(strFroms As String, _
+                        strTos As String, _
+                        lanXB As String, _
+                        ByRef strPeriods() As String)
+    On Error GoTo ErrHandle
+    Dim loaitk           As String
+    Dim DataFileName     As String
+    Dim ListDataFile()   As String
+    Dim tkThangQuy       As String
+    Dim kyKeKhai         As String
+    Dim strId            As String
+    Dim strThueKhauTruId As String
+    Dim strThuePhaiNopId As String
+    Dim strPeriodReturn  As String
+    Dim tenTk            As String
+    Dim tkIndex          As Integer
+    Dim fileStr          As Variant
+    Dim strFrom          As String
+    Dim strTo            As String
+    Dim tkSplit()        As String
+    
+    loaitk = GetAttribute(tkNode, "LoaiTK")
+    DataFileName = GetAttribute(tkNode.firstChild, "DataFile")
+    ListDataFile = Split(DataFileName, ",")
+    DataFileName = ListDataFile(0)
+    tkThangQuy = GetAttribute(tkNode, "TkThangQuy")
+    strId = GetAttribute(tkNode, "ID")
+    strThueKhauTruId = GetAttribute(tkNode.firstChild, "ThueKhauTru")
+    strThuePhaiNopId = GetAttribute(tkNode.firstChild, "ThuePhaiNop")
+    tenTk = ""
+        
+    tkIndex = UBound(strPeriods) + 1
+
+    If loaitk = KIEU_KY_THANG Then
+        If Len(strFroms) = 4 And Len(strTos) = 4 Then
+            strFrom = "01/" & strFroms
+            strTo = "12/" & strTos
+        End If
+
+        For Each fileStr In arrStrXMLFileNames
+
+            kyKeKhai = Replace$(fileStr, DataFileName & "_", "")
+            tenTk = GetAttribute(tkNode, "Caption")
+
+            If InStr(kyKeKhai, "bs") > 0 Then
+                tenTk = tenTk & "BS lan " & Mid$(kyKeKhai, 2, InStr(kyKeKhai, "_") - 2)
+                kyKeKhai = Right$(kyKeKhai, Len(kyKeKhai) - InStr(kyKeKhai, "_"))
+            End If
+                
+            strPeriodReturn = Mid$(kyKeKhai, 1, 2) & "/" & Mid$(kyKeKhai, 3, 4) & "~" & "~" & "~True~~" & fileStr
+
+            If Len(kyKeKhai) = 6 And Val(Left$(kyKeKhai, 2)) > 0 And Val(Right$(kyKeKhai, 4)) > 0 Then
+
+                If ToDate("01" & kyKeKhai) >= ToDate("01" & strFrom) And ToDate("01" & kyKeKhai) <= ToDate("01" & strTo) Then
+                    ReDim Preserve strPeriods(tkIndex)
+                    strPeriods(tkIndex) = strId & "~" & tenTk & "~" & GetAttribute(tkNode.firstChild, "StartDate") & "~" & strPeriodReturn & "~" & GetTaxValue(fileStr, strThueKhauTruId, False) & "~" & GetTaxValue(fileStr, strThuePhaiNopId, False)
+                    tkIndex = tkIndex + 1
+                End If
+               
+            End If
+                
+        Next
+
+    ElseIf loaitk = KIEU_KY_QUY Then
+
+        If Len(strFroms) = 4 And Len(strTos) = 4 Then
+            strFrom = "01/" & strFroms
+            strTo = "04/" & strTos
+        End If
+
+        For Each fileStr In arrStrXMLFileNames
+
+            If tkThangQuy = "1" Then
+                kyKeKhai = Replace$(fileStr, DataFileName & "_Q", "")
+            Else
+                kyKeKhai = Replace$(fileStr, DataFileName & "_", "")
+            End If
+
+            tenTk = GetAttribute(tkNode, "Caption")
+     
+            If InStr(kyKeKhai, "bs") > 0 Then
+                tenTk = tenTk & " BS lan " & Mid$(kyKeKhai, 3, InStr(kyKeKhai, "_") - 3)
+                kyKeKhai = Right$(kyKeKhai, Len(kyKeKhai) - InStr(kyKeKhai, "_"))
+            End If
+
+            strPeriodReturn = Mid$(kyKeKhai, 1, 2) & "/" & Mid$(kyKeKhai, 3, 4) & "~" & "~" & "~True~~" & fileStr
+
+            If Len(kyKeKhai) = 6 And Val(Left$(kyKeKhai, 2)) > 0 And Val(Right$(kyKeKhai, 4)) > 0 Then
+
+                If ToDate("01" & kyKeKhai) >= ToDate("01" & strFrom) And ToDate("01" & kyKeKhai) <= ToDate("01" & strTo) Then
+                    ReDim Preserve strPeriods(tkIndex)
+                    strPeriods(tkIndex) = strId & "~" & tenTk & "~" & GetAttribute(tkNode.firstChild, "StartDate") & "~" & strPeriodReturn & "~" & GetTaxValue(fileStr, strThueKhauTruId, False) & "~" & GetTaxValue(fileStr, strThuePhaiNopId, False)
+                    tkIndex = tkIndex + 1
+                End If
+               
+            End If
+
+        Next
+
+    ElseIf loaitk = KIEU_KY_NAM Then
+        strFrom = strFroms
+        strTo = strTos
+
+        For Each fileStr In arrStrXMLFileNames
+
+            kyKeKhai = Replace$(fileStr, DataFileName & "_", "")
+            tenTk = GetAttribute(tkNode, "Caption")
+
+            If InStr(kyKeKhai, "bs") > 0 Then
+                tenTk = tenTk & "BS lan " & Mid$(kyKeKhai, 3, InStr(kyKeKhai, "_") - 3)
+                kyKeKhai = Right$(kyKeKhai, Len(kyKeKhai) - InStr(kyKeKhai, "_"))
+            End If
+                
+            strPeriodReturn = Mid$(kyKeKhai, 1, 2) & "/" & Mid$(kyKeKhai, 3, 4) & "~" & "~" & "~True~~" & fileStr
+
+            If Len(kyKeKhai) = 4 And Val(Right$(kyKeKhai, 4)) > 0 Then
+
+                If (Val(Right$(kyKeKhai, 4)) >= Val(Right$(strFrom, 4)) And Val(Right$(kyKeKhai, 4)) <= Val(Right$(strTo, 4))) Then
+                    ReDim Preserve strPeriods(tkIndex)
+                    strPeriods(tkIndex) = strId & "~" & tenTk & "~" & GetAttribute(tkNode.firstChild, "StartDate") & "~" & strPeriodReturn & "~" & GetTaxValue(fileStr, strThueKhauTruId, False) & "~" & GetTaxValue(fileStr, strThuePhaiNopId, False)
+                    tkIndex = tkIndex + 1
+                End If
+               
+            End If
+                
+        Next
+
+    ElseIf loaitk = KIEU_KY_NGAY_PS Then
+
+        If Len(strFroms) = 4 And Len(strTos) = 4 Then
+            strFrom = "01/01/" & strFroms
+            strTo = "31/12/" & strTos
+        End If
+
+        For Each fileStr In arrStrXMLFileNames
+
+            kyKeKhai = Replace$(fileStr, DataFileName & "_", "")
+            tenTk = GetAttribute(tkNode, "Caption")
+
+            If InStr(kyKeKhai, "bs") > 0 Then
+                tenTk = tenTk & "BS lan " & Mid$(kyKeKhai, 3, InStr(kyKeKhai, "_") - 3)
+                kyKeKhai = Right$(kyKeKhai, Len(kyKeKhai) - InStr(kyKeKhai, "_"))
+            End If
+    
+            strPeriodReturn = Left$(kyKeKhai, 2) & "/" & Mid$(kyKeKhai, 3, 2) & "/" & Right$(kyKeKhai, 4) & "~" & "~" & "~True~~" & fileStr
+
+            If Len(kyKeKhai) = 8 And Val(Left$(kyKeKhai, 2)) > 0 And Val(Right$(kyKeKhai, 4)) > 0 And Val(Mid$(kyKeKhai, 2, 2)) > 0 Then
+
+                If ToDate(kyKeKhai) >= ToDate(strFrom) And ToDate(kyKeKhai) <= ToDate(strTo) Then
+                    ReDim Preserve strPeriods(tkIndex)
+                    strPeriods(tkIndex) = strId & "~" & tenTk & "~" & GetAttribute(tkNode.firstChild, "StartDate") & "~" & strPeriodReturn & "~" & GetTaxValue(fileStr, strThueKhauTruId, False) & "~" & GetTaxValue(fileStr, strThuePhaiNopId, False)
+                    tkIndex = tkIndex + 1
+                End If
+               
+            End If
+
+        Next
+
+    ElseIf loaitk = KIEU_KY_NGAY_NAM Then
+
+        If Len(strFroms) = 4 And Len(strTos) = 4 Then
+            strFrom = "01/01/" & strFroms
+            strTo = "31/12/" & strTos
+        End If
+
+        For Each fileStr In arrStrXMLFileNames
+
+            kyKeKhai = Replace$(fileStr, DataFileName & "_", "")
+            tenTk = GetAttribute(tkNode, "Caption")
+
+            If InStr(kyKeKhai, "bs") > 0 Then
+                tenTk = tenTk & "BS lan " & Mid$(kyKeKhai, 3, InStr(kyKeKhai, "_") - 3)
+                kyKeKhai = Right$(kyKeKhai, Len(kyKeKhai) - InStr(kyKeKhai, "_"))
+            End If
+    
+            tkSplit = Split(kyKeKhai, "_")
+
+            If UBound(tkSplit) = 3 Then
+                If Len(tkSplit(0)) = 4 And Len(tkSplit(1)) = 8 And Len(tkSplit(2)) = 8 Then
+                    If ToDate(tkSplit(1)) >= ToDate(strFrom) And ToDate(tkSplit(2)) <= ToDate(strTo) Then
+                        strPeriodReturn = tkSplit(0) & "~" & Left$(tkSplit(1), 2) & "/" & Mid$(tkSplit(1), 3, 2) & "/" & Right$(tkSplit(1), 4) & "~" & Left$(tkSplit(2), 2) & "/" & Mid$(tkSplit(2), 3, 2) & "/" & Right$(tkSplit(2), 4) & "~True~~" & fileStr
+
+                        ReDim Preserve strPeriods(tkIndex)
+                        strPeriods(tkIndex) = strId & "~" & tenTk & "~" & GetAttribute(tkNode.firstChild, "StartDate") & "~" & strPeriodReturn & "~" & GetTaxValue(fileStr, strThueKhauTruId, False) & "~" & GetTaxValue(fileStr, strThuePhaiNopId, False)
+                        tkIndex = tkIndex + 1
+                    End If
+                End If
+               
+            End If
+            
+        Next
+        
+    ElseIf loaitk = KIEU_KY_THANG_NAM Then
+
+        If Len(strFroms) = 4 And Len(strTos) = 4 Then
+            strFrom = "01/01/" & strFroms
+            strTo = "31/12/" & strTos
+        End If
+
+        For Each fileStr In arrStrXMLFileNames
+
+            kyKeKhai = Replace$(fileStr, DataFileName & "_", "")
+            tenTk = GetAttribute(tkNode, "Caption")
+
+            If InStr(kyKeKhai, "bs") > 0 Then
+                tenTk = tenTk & "BS lan " & Mid$(kyKeKhai, 3, InStr(kyKeKhai, "_") - 3)
+                kyKeKhai = Right$(kyKeKhai, Len(kyKeKhai) - InStr(kyKeKhai, "_"))
+            End If
+
+            tkSplit = Split(kyKeKhai, "_")
+            
+            strPeriodReturn = Left$(kyKeKhai, 2) & "/" & Mid$(kyKeKhai, 3, 4) & "~" & "~" & "~True~~" & fileStr
+
+            If UBound(tkSplit) = 2 Then
+                If Len(tkSplit(0)) = 6 And Len(tkSplit(1)) = 6 Then
+
+                    If ToDate("01" & tkSplit(0)) >= ToDate("01" & strFrom) And ToDate("01" & tkSplit(1)) <= ToDate("01" & strTo) Then
+                        ReDim Preserve strPeriods(tkIndex)
+                        strPeriods(tkIndex) = strId & "~" & tenTk & "~" & GetAttribute(tkNode.firstChild, "StartDate") & "~" & strPeriodReturn & "~" & GetTaxValue(fileStr, strThueKhauTruId, False) & "~" & GetTaxValue(fileStr, strThuePhaiNopId, False)
+                        tkIndex = tkIndex + 1
+                    End If
+                End If
+               
+            End If
+
+        Next
+
+    ElseIf loaitk = "DT" Or loaitk = "CD" Then
+
+        If Len(strFroms) = 4 And Len(strTos) = 4 Then
+            strFrom = "01/01/" & strFroms
+            strTo = "31/12/" & strTos
+        End If
+
+        For Each fileStr In arrStrXMLFileNames
+
+            kyKeKhai = Replace$(fileStr, DataFileName & "_", "")
+
+            If InStr(kyKeKhai, "bs") > 0 Then
+                kyKeKhai = Right$(kyKeKhai, Len(kyKeKhai) - InStr(kyKeKhai, "_"))
+                tenTk = " BS lan " & Mid$(kyKeKhai, 3, InStr(kyKeKhai, "_") - 3)
+            End If
+
+            strPeriodReturn = Mid$(kyKeKhai, 1, 2) & "/" & Mid$(kyKeKhai, 3, 4) & "~" & "~" & "~True~~" & fileStr
+            tkSplit = Split(kyKeKhai, "_")
+
+            If UBound(tkSplit) = 3 Then
+                If tkSplit(0) = loaitk And tkSplit(1) = "L" & lanXB Then
+                    kyKeKhai = tkSplit(2)
+
+                    If lanXB <> "" Then
+                        tenTk = GetAttribute(tkNode, "Caption") & " Lan XB " & lanXB & tenTk
+                    Else
+                        tenTk = GetAttribute(tkNode, "Caption") & tenTk
+                    End If
+                       
+                    If Len(kyKeKhai) = 8 And Val(Left$(kyKeKhai, 2)) > 0 And Val(Right$(kyKeKhai, 4)) > 0 And Val(Mid$(kyKeKhai, 2, 2)) > 0 Then
+
+                        If ToDate(kyKeKhai) >= ToDate(strFrom) And ToDate(kyKeKhai) <= ToDate(strTo) Then
+                            ReDim Preserve strPeriods(tkIndex)
+                            strPeriods(tkIndex) = strId & "~" & tenTk & "~" & GetAttribute(tkNode.firstChild, "StartDate") & "~" & strPeriodReturn & "~" & GetTaxValue(fileStr, strThueKhauTruId, False) & "~" & GetTaxValue(fileStr, strThuePhaiNopId, False)
+                            tkIndex = tkIndex + 1
+                        End If
+               
+                    End If
+
+                End If
+                    
+            End If
+                
+        Next
+
+    ElseIf loaitk = "KTN" Then
+
+        If Len(strFroms) = 4 And Len(strTos) = 4 Then
+            strFrom = "01/" & strFroms
+            strTo = "12/" & strTos
+        End If
+
+        For Each fileStr In arrStrXMLFileNames
+
+            kyKeKhai = Replace$(fileStr, DataFileName & "_KTN_", "")
+            tenTk = GetAttribute(tkNode, "Caption")
+
+            If InStr(kyKeKhai, "bs") > 0 Then
+                tenTk = tenTk & "BS lan " & Mid$(kyKeKhai, 2, InStr(kyKeKhai, "_") - 2)
+                kyKeKhai = Right$(kyKeKhai, Len(kyKeKhai) - InStr(kyKeKhai, "_"))
+            End If
+                
+            strPeriodReturn = Mid$(kyKeKhai, 1, 2) & "/" & Mid$(kyKeKhai, 3, 4) & "~" & "~" & "~True~~" & fileStr
+
+            If Len(kyKeKhai) = 6 And Val(Left$(kyKeKhai, 2)) > 0 And Val(Right$(kyKeKhai, 4)) > 0 Then
+
+                If ToDate("01" & kyKeKhai) >= ToDate("01" & strFrom) And ToDate("01" & kyKeKhai) <= ToDate("01" & strTo) Then
+                    ReDim Preserve strPeriods(tkIndex)
+                    strPeriods(tkIndex) = strId & "~" & tenTk & "~" & GetAttribute(tkNode.firstChild, "StartDate") & "~" & strPeriodReturn & "~" & GetTaxValue(fileStr, strThueKhauTruId, False) & "~" & GetTaxValue(fileStr, strThuePhaiNopId, False)
+                    tkIndex = tkIndex + 1
+                End If
+               
+            End If
+                
+        Next
+   
+    End If
+
+    Exit Sub
+ErrHandle:
+    SaveErrorLog Me.Name, "GetTaxReportsById", Err.Number, Err.Description
+End Sub
 
 Private Sub LoadXMLFileNames()
     Dim lngIndex As Long
@@ -2084,14 +2519,15 @@ Private Sub DeleteDataFiles(ByVal strFileNames As String)
 End Sub
 
 Private Sub TraCuu()
-    Dim lRow As Long
+    Dim lRow            As Long
     Dim arrStrPeriods() As String
-    Dim strFromDay As String, strToDay As String
-    Dim arrStrTemp() As String
-    Dim lCtrl As Long
+    Dim strFromDay      As String, strToDay As String
+    Dim arrStrTemp()    As String
+    Dim lCtrl           As Long
+    Dim lanXB           As String
     
-        
     fpsDkNgay_LeaveCell 1, 1, 2, 1, False
+
     If blnDKienTraCuu = False Then
         fpsDkNgay.SetFocus
         Exit Sub
@@ -2102,12 +2538,16 @@ Private Sub TraCuu()
     
     'Kiem tra, khoi tao cac gia tri dieu kien tra cuu
     With fpsDkNgay
-        .Col = .ColLetterToNumber(f1dteTuNCol)
-        .Row = f1dteTuNRow
+        .Col = .ColLetterToNumber(fpsDkNgayColF)
+        .Row = fpsDkNgayRow
         strFromDay = .Text
-        .Col = .ColLetterToNumber(f1dteDeNCol)
-        .Row = f1dteDeNRow
+        .Col = .ColLetterToNumber(fpsDkNgayColT)
+        .Row = fpsDkNgayRow
         strToDay = .Text
+        
+        .Col = .ColLetterToNumber(fpsDkNgayColXB)
+        .Row = fpsDkNgayRow
+        lanXB = .Text
     End With
     
     If Trim(Replace(strFromDay, "/", "")) = "" Then
@@ -2122,39 +2562,24 @@ Private Sub TraCuu()
     LoadXMLFileNames
     
     ReDim Preserve arrStrPeriods(0)
+    
     If fpsLoaiTK.TypeComboBoxCurSel <> 0 Then
-        If strTkGTGT = "TK_QUY" Then
-            GetTaxReportsById Left$(arrStrId(fpsLoaiTK.TypeComboBoxCurSel), 2), strFromDay, _
-                        strToDay, arrStrPeriods
-                        
-            strGtgtIdTmp = arrStrId(fpsLoaiTK.TypeComboBoxCurSel)
-        ElseIf strTkGTGT = "TK_LANXB" Then
-            GetTaxReportsById Left$(arrStrId(fpsLoaiTK.TypeComboBoxCurSel), 2), strFromDay, _
-                        strToDay, arrStrPeriods
-                        
-            strGtgtIdTmp = arrStrId(fpsLoaiTK.TypeComboBoxCurSel)
-        Else
-            GetTaxReportsById arrStrId(fpsLoaiTK.TypeComboBoxCurSel), strFromDay, _
-                        strToDay, arrStrPeriods
-        End If
+        GetDsToKhai strFromDay, strToDay, lanXB, arrStrPeriods
     Else
-        For lCtrl = 1 To UBound(arrStrId)
-            strTkGTGT = ""
-            If arrStrId(lCtrl) = "011" Or arrStrId(lCtrl) = "021" Or arrStrId(lCtrl) = "041" Or arrStrId(lCtrl) = "711" Or arrStrId(lCtrl) = "361" Then
-                strTkGTGT = "TK_QUY"
-                    GetTaxReportsById Left$(arrStrId(lCtrl), 2), strFromDay, _
-                strToDay, arrStrPeriods
-                        
-                strGtgtIdTmp = arrStrId(lCtrl)
-            Else
-                GetTaxReportsById arrStrId(lCtrl), strFromDay, _
-                        strToDay, arrStrPeriods
-            End If
+        Dim xmlDocument As New MSXML.DOMDocument
+        xmlDocument.Load TAX_Utilities_v1.GetAbsolutePath("map.xml")
+       
+        For Each tkNode In xmlDocument.getElementsByTagName("Map")
+
+            GetDsToKhai strFromDay, strToDay, lanXB, arrStrPeriods
+            
         Next
+
     End If
     
     lSoBG = 0
     ReDim arrLngErrRows(0)
+
     With fpSKetQua
         .Visible = False
         
@@ -2168,7 +2593,9 @@ Private Sub TraCuu()
         .value = "0"
         
         lRow = 2
+
         For lCtrl = 1 To UBound(arrStrPeriods)
+
             If lRow > .MaxRows Then
                 .MaxRows = .MaxRows + 1
             End If
@@ -2188,7 +2615,7 @@ Private Sub TraCuu()
             .TypeHAlign = TypeHAlignCenter
             .Lock = False
             
-             'Check
+            'Check
             .Col = 6
             .Row = lRow
             .TypeHAlign = TypeHAlignCenter
@@ -2229,8 +2656,9 @@ Private Sub TraCuu()
                 ReDim Preserve arrLngErrRows(UBound(arrLngErrRows) + 1)
                 arrLngErrRows(UBound(arrLngErrRows)) = lRow
             End If
+
             'CheckErrTaxReport arrStrTemp(0), arrStrTemp(2), _
-                              arrStrTemp(3), lRow - 1
+             arrStrTemp(3), lRow - 1
             lRow = lRow + 1
         Next
         
@@ -2239,6 +2667,7 @@ Private Sub TraCuu()
         'Hien thi dong duoc chon de mo to khai.
         .Row = 2
         .Col = 3 ' Id
+
         If .MaxRows > 2 Or .value <> vbNullString Then
             If lngRowFocus = 0 Then
                 lngRowFocus = SetRowFocus(2, 2, True)
@@ -2247,6 +2676,7 @@ Private Sub TraCuu()
             Else
                 lngRowFocus = SetRowFocus(2, lngRowFocus, True)
             End If
+
             btnMo.Enabled = True
         Else
             btnMo.Enabled = False
@@ -2262,6 +2692,7 @@ Private Sub TraCuu()
     Else
         lblStatus.Visible = False
     End If
+
 End Sub
 
 
