@@ -300,4 +300,5 @@
 	<Infor ID="0307" Msg="Hạch toán chỉ tiêu [27] vào mục 1700, tiểu mục 1701"/>	
 	<Infor ID="0308" Msg="Hạch toán tổng cột [29] vào mục 1550, tiểu mục 1552"/>	
 	<Infor ID="0309" Msg="Tõ ngµy ph¶i nhá h¬n hoÆc b»ng ®Õn ngµy"/>
+	<Infor ID="0310" Msg="Ngµy lËp ph¶i nhá h¬n hoÆc b»ng ngµy hiÖn t¹i"/>
 </Message>
