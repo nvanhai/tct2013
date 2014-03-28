@@ -144,7 +144,11 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
+<<<<<<< .mine
+         SpreadDesigner  =   "frmInterfaces.frx":1993
+=======
          SpreadDesigner  =   "frmInterfaces.frx":19A5
+>>>>>>> .r1804
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +295,11 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
+<<<<<<< .mine
+      SpreadDesigner  =   "frmInterfaces.frx":1C45
+=======
       SpreadDesigner  =   "frmInterfaces.frx":1C69
+>>>>>>> .r1804
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -3720,17 +3728,17 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
                     End If
             
                     If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
-                        xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = GetNgayCuoiThang(TAX_Utilities_v1.Year, TAX_Utilities_v1.month)
+                        xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = format$(GetNgayCuoiThang(TAX_Utilities_v1.Year, TAX_Utilities_v1.month), DDMMYYY)
                     End If
 
                 ElseIf strKK = "Q" Then
 
                     If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
-                        xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = GetNgayDauQuy(TAX_Utilities_v1.ThreeMonths, TAX_Utilities_v1.Year, iNgayTaiChinh, iThangTaiChinh)
+                        xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = format$(GetNgayDauQuy(TAX_Utilities_v1.ThreeMonths, TAX_Utilities_v1.Year, iNgayTaiChinh, iThangTaiChinh), DDMMYYY)
                     End If
             
                     If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
-                        xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = GetNgayCuoiQuy(TAX_Utilities_v1.ThreeMonths, TAX_Utilities_v1.Year, iNgayTaiChinh, iThangTaiChinh)
+                        xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = format$(GetNgayCuoiQuy(TAX_Utilities_v1.ThreeMonths, TAX_Utilities_v1.Year, iNgayTaiChinh, iThangTaiChinh), DDMMYYY)
                     End If
 
                 ElseIf strKK = "Y" Then
@@ -5125,9 +5133,6 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
 
                 If UBound(cellArray) = 1 And RowNumber > 0 Then
                     
-                    '                    .MaxRows = .MaxRows + nodeTK.childNodes.length - 1
-                    '                    .InsertRows Val(cellArray(1)) + cellRange + 1, nodeTK.childNodes.length - 1
-
                     RowCount = 0
                     RowLength = 0
 
@@ -5151,33 +5156,6 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
 
                             If GetAttribute(valXml.firstChild, "id") <> "" Then
     
-                                '                                For Each childNodeCT In xmlCts.lastChild.childNodes
-                                '                                    cellid = childNodeCT.Text
-                                '                                    cellArray = Split(cellid, "_")
-                                '                                    .Row = Val(cellArray(1)) + cellRange
-                                '                                    .Col = .ColLetterToNumber(cellArray(0))
-                                '
-                                '                                    If valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "true" Then
-                                '                                        .Text = 1
-                                '                                    ElseIf valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "false" Then
-                                '                                        .Text = 0
-                                '                                    Else
-                                '
-                                '                                        If .CellType = CellTypeNumber Then
-                                '                                            .value = valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text
-                                '                                        Else
-                                '
-                                '                                            If valXml.getElementsByTagName(childNodeCT.nodeName)(0).hasChildNodes Then
-                                '                                                .Text = valXml.getElementsByTagName(childNodeCT.nodeName)(0).firstchild.nodeValue
-                                '
-                                '                                            Else
-                                '                                                .Text = valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text
-                                '                                            End If
-                                '                                        End If
-                                '                                    End If
-                                '
-                                '                                    UpdateCell .Col, .Row, .Text
-                                '                                Next
                                 SetValueFromXml nodeMapCT, valXml, cellRange, .sheet
                                 cellRange = cellRange + GroupCellRange
     
@@ -5197,9 +5175,7 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
 
                 End If
                                 
-            Else
-'                xmlCts.loadXML "<Cts></Cts>"
-'                getAllNodes nodeMapCT, xmlCts
+            ElseIf nodeMapCT.nodeName = "Static" Then
                 GroupName = GetAttribute(nodeMapCT, "GroupName")
 
                 If xmlDuLieuImport.getElementsByTagName(GroupName).length > 0 Then
@@ -5207,40 +5183,67 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
                     valXml.loadXML xmlDuLieuImport.getElementsByTagName(GroupName)(0).xml
                     
                     SetValueFromXml nodeMapCT, valXml, cellRange, .sheet
-'                    For Each childNodeCT In xmlCts.firstchild.childNodes
-'                        cellid = childNodeCT.Text
-'                        cellArray = Split(cellid, "_")
-'
-'                        If UBound(cellArray) = 1 Then
-'                            If Len(cellid) < 6 Then
-'                                .Row = Val(cellArray(1)) + cellRange
-'                                .Col = .ColLetterToNumber(cellArray(0))
-'
-'                                If valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "true" Then
-'                                    .Text = 1
-'                                ElseIf valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text = "false" Then
-'                                    .Text = 0
-'                                Else
-'
-'                                    If .CellType = CellTypeNumber Then
-'                                        .value = valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text
-'                                    Else
-'
-'                                        If valXml.getElementsByTagName(childNodeCT.nodeName)(0).hasChildNodes Then
-'                                            .Text = valXml.getElementsByTagName(childNodeCT.nodeName)(0).firstchild.nodeValue
-'
-'                                        Else
-'                                            .Text = valXml.getElementsByTagName(childNodeCT.nodeName)(0).Text
-'                                        End If
-'                                    End If
-'                                End If
-'                            End If
-'                        End If
-'
-'                    Next
 
                 End If
 
+            ElseIf nodeMapCT.nodeName = "P_Dynamic" Then
+                Dim P_dynamicID As Integer
+                
+                GroupName = GetAttribute(nodeMapCT, "GroupName")
+                
+                cellID = GetAttribute(nodeMapCT, "CellID")
+                
+                nodeTK.loadXML xmlDuLieuImport.getElementsByTagName(GroupName)(0).xml
+                                
+                xmlCts.loadXML "<Cts></Cts>"
+
+                getAllNodes nodeMapCT, xmlCts
+                cellID = xmlCts.firstChild.firstChild.Text
+                cellArray = Split(cellID, "_")
+                RowNumber = nodeTK.getElementsByTagName(nodeMapCT.firstChild.nodeName).length
+
+                If UBound(cellArray) = 1 And RowNumber > 0 Then
+                    
+                    RowCount = 0
+                    RowLength = 0
+
+                    Do While RowLength < RowNumber
+                        
+                        If RowCount + 10000 <= RowNumber Then
+                            RowCount = RowCount + 10000
+                        Else
+                            RowCount = RowCount + RowNumber
+                        End If
+
+                        For dynamicID = RowLength To RowCount - 1
+
+                            If Level = "2" Then
+                        
+                                valXml.loadXML nodeTK.getElementsByTagName(nodeMapCT.firstChild.nodeName)(dynamicID).xml
+                            Else
+                        
+                                valXml.loadXML nodeTK.getElementsByTagName(nodeMapCT.firstChild.nodeName)(dynamicID).xml
+                            End If
+
+                            If GetAttribute(valXml.firstChild, "id") <> "" Then
+    
+                                SetValueFromXml nodeMapCT, valXml, cellRange, .sheet
+                                cellRange = cellRange + GroupCellRange
+    
+                                If dynamicID <> RowCount - 1 Then
+                                    InsertNode .ColLetterToNumber(cellArray(0)), Val(cellArray(1)) + cellRange - 1
+                                End If
+                            End If
+                            
+                        Next
+
+                        RowLength = RowCount + 1
+
+                    Loop
+
+                    cellRange = cellRange - GroupCellRange
+                    CurrentCellRange = cellRange
+                End If
             End If
 
         Next
