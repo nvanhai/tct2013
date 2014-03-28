@@ -33,13 +33,14 @@ Public Const pbanTKhaiXML = "9.9.9"
 Public Const TK_GD1 = True
 'End TKGD1
 
-Public Const APP_VERSION = "9.9.9"
+Public Const APP_VERSION = "3.2.2"
 Public Const KIEU_KY_THANG = "M"
 Public Const KIEU_KY_QUY = "Q"
 Public Const KIEU_KY_NAM = "Y"
 Public Const KIEU_KY_NGAY_NAM = "D_Y"
 Public Const KIEU_KY_NGAY_THANG = "D_M"
 Public Const KIEU_KY_NGAY_PS = "D"
+Public Const KIEU_KY_THANG_NAM = "M_Y"
 
 Public Const DDMMYYY = "DD/MM/YYYY"
 Public Const DDMM = "DD/MM"
@@ -4489,4 +4490,8 @@ Public Function ToDateString(str As String, mmmmYYdd As Boolean) As String
 
     ToDateString = str
     Exit Function
+End Function
+
+Public Function ToDate(str As String) As Date
+     ToDate = DateSerial(Val(Right$(str, 4)), Val(Mid$(str, 3, 2)), Val(Left$(str, 2)))
 End Function
