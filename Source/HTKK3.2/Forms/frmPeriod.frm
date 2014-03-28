@@ -6852,7 +6852,7 @@ Private Sub SetDefaultActiveProperties()
 End Sub
 
 
-Private Function ExistTokhai(LoaiTk As String, thang As Boolean, period As String) As Boolean
+Private Function ExistTokhai(loaitk As String, thang As Boolean, period As String) As Boolean
     Dim lngIndex As Long
     Dim fso As New FileSystemObject
     Dim fle As file
@@ -6863,21 +6863,21 @@ Private Function ExistTokhai(LoaiTk As String, thang As Boolean, period As Strin
     
     If thang Then
         If Left(period, 1) = "1" Then
-           strFileName1 = LoaiTk & "01" & Right(period, 4) & ".xml"
-           strFileName2 = LoaiTk & "02" & Right(period, 4) & ".xml"
-           strFileName3 = LoaiTk & "03" & Right(period, 4) & ".xml"
+           strFileName1 = loaitk & "01" & Right(period, 4) & ".xml"
+           strFileName2 = loaitk & "02" & Right(period, 4) & ".xml"
+           strFileName3 = loaitk & "03" & Right(period, 4) & ".xml"
         ElseIf Left(period, 1) = "2" Then
-           strFileName1 = LoaiTk & "04" & Right(period, 4) & ".xml"
-           strFileName2 = LoaiTk & "05" & Right(period, 4) & ".xml"
-           strFileName3 = LoaiTk & "06" & Right(period, 4) & ".xml"
+           strFileName1 = loaitk & "04" & Right(period, 4) & ".xml"
+           strFileName2 = loaitk & "05" & Right(period, 4) & ".xml"
+           strFileName3 = loaitk & "06" & Right(period, 4) & ".xml"
         ElseIf Left(period, 1) = "3" Then
-           strFileName1 = LoaiTk & "07" & Right(period, 4) & ".xml"
-           strFileName2 = LoaiTk & "08" & Right(period, 4) & ".xml"
-           strFileName3 = LoaiTk & "09" & Right(period, 4) & ".xml"
+           strFileName1 = loaitk & "07" & Right(period, 4) & ".xml"
+           strFileName2 = loaitk & "08" & Right(period, 4) & ".xml"
+           strFileName3 = loaitk & "09" & Right(period, 4) & ".xml"
         Else
-           strFileName1 = LoaiTk & "10" & Right(period, 4) & ".xml"
-           strFileName2 = LoaiTk & "11" & Right(period, 4) & ".xml"
-           strFileName3 = LoaiTk & "12" & Right(period, 4) & ".xml"
+           strFileName1 = loaitk & "10" & Right(period, 4) & ".xml"
+           strFileName2 = loaitk & "11" & Right(period, 4) & ".xml"
+           strFileName3 = loaitk & "12" & Right(period, 4) & ".xml"
          End If
     Else
         If Left(period, 2) = "01" Or Left(period, 2) = "02" Or Left(period, 2) = "03" Then
@@ -6890,7 +6890,7 @@ Private Function ExistTokhai(LoaiTk As String, thang As Boolean, period As Strin
             period = "04" & Right(period, 4)
         End If
         
-         strFileName1 = LoaiTk & period & ".xml"
+         strFileName1 = loaitk & period & ".xml"
         
     End If
     
