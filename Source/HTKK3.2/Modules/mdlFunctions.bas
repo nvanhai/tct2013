@@ -4493,5 +4493,5 @@ Public Function ToDateString(str As String, mmmmYYdd As Boolean) As String
 End Function
 
 Public Function ToDate(str As String) As Date
-     ToDate = DateSerial(Val(Right$(str, 4)), Val(Mid$(str, 3, 2)), Val(Left$(str, 2)))
+     ToDate = DateSerial(Val(Right$(Replace$(str, "/", ""), 4)), Val(Mid$(Replace$(str, "/", ""), 3, 2)), Val(Left$(Replace$(str, "/", ""), 2)))
 End Function
