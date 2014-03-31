@@ -70,7 +70,7 @@ Begin VB.Form frmTreeviewMenu
          Strikethrough   =   0   'False
       EndProperty
       ScrollBarExtMode=   -1  'True
-      SpreadDesigner  =   "frmTreeviewMenu.frx":026C
+      SpreadDesigner  =   "frmTreeviewMenu.frx":021A
       VirtualScrollBuffer=   -1  'True
       Appearance      =   1
    End
@@ -1537,7 +1537,7 @@ Private Sub ShowFormFunction(pNode As MSXML.IXMLDOMNode)
             frPeriod.Show
             
             ' Neu la in mau bia ho so quyet toan thi vao luon ma ko can click Ok
-            If pNode.Attributes.getNamedItem("ID").nodeValue = "52" Or pNode.Attributes.getNamedItem("ID").nodeValue = "66" Or pNode.Attributes.getNamedItem("ID").nodeValue = "67" Or pNode.Attributes.getNamedItem("ID").nodeValue = "10" Then
+            If pNode.Attributes.getNamedItem("ID").nodeValue = "52" Or pNode.Attributes.getNamedItem("ID").nodeValue = "66" Or pNode.Attributes.getNamedItem("ID").nodeValue = "67" Or pNode.Attributes.getNamedItem("ID").nodeValue = "10" Or pNode.Attributes.getNamedItem("ID").nodeValue = "09" Then
                 frPeriod.Hide
                 frPeriod.cmdOK_Click
             End If
