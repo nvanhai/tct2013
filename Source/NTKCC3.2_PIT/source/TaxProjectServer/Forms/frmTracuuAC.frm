@@ -149,12 +149,12 @@ Begin VB.Form frmTraCuuAC
       End
       Begin FPUSpreadADO.fpSpread fpsLoaiTK 
          Height          =   525
-         Left            =   360
+         Left            =   120
          TabIndex        =   0
          Top             =   240
-         Width           =   4725
+         Width           =   5085
          _Version        =   458752
-         _ExtentX        =   8334
+         _ExtentX        =   8969
          _ExtentY        =   926
          _StockProps     =   64
          AllowMultiBlocks=   -1  'True
@@ -369,9 +369,9 @@ Private Function changeLoaiToKhai(ByVal strLoaiMaToKhai As String) As String
     If strLoaiMaToKhai = "66" Then changeLoaiToKhai = " = 'BC21_AC'"
     If strLoaiMaToKhai = "67" Then changeLoaiToKhai = " = '03_TBAC'"
     If strLoaiMaToKhai = "68" Then changeLoaiToKhai = " = 'BC26_AC'"
-    If strLoaiMaToKhai = "07" Then changeLoaiToKhai = " = '01_TBAC_BLP'"
+    If strLoaiMaToKhai = "7" Then changeLoaiToKhai = " = '01_TBAC_BLP'"
     If strLoaiMaToKhai = "13" Then changeLoaiToKhai = " = '01_AC_BLP'"
-    If strLoaiMaToKhai = "09" Then changeLoaiToKhai = " = 'BC21_AC_BLP'"
+    If strLoaiMaToKhai = "9" Then changeLoaiToKhai = " = 'BC21_AC_BLP'"
     If strLoaiMaToKhai = "10" Then changeLoaiToKhai = " = '03_TBAC_BLP'"
     If strLoaiMaToKhai = "0" Then changeLoaiToKhai = " LIKE '%'"
 End Function
@@ -379,11 +379,16 @@ End Function
 ' Lay ve ten cua cac BC AC
 Private Function changeTenBC(ByVal strLoaiBC As String) As String
     changeTenBC = ""
+
     If strLoaiBC = "01_TBAC" Then changeTenBC = GetAttribute(GetMessageCellById("0152"), "Msg")
     If strLoaiBC = "01_AC" Then changeTenBC = GetAttribute(GetMessageCellById("0153"), "Msg")
     If strLoaiBC = "BC21_AC" Then changeTenBC = GetAttribute(GetMessageCellById("0154"), "Msg")
     If strLoaiBC = "03_TBAC" Then changeTenBC = GetAttribute(GetMessageCellById("0155"), "Msg")
     If strLoaiBC = "BC26_AC" Then changeTenBC = GetAttribute(GetMessageCellById("0156"), "Msg")
+    If strLoaiBC = "01_TBAC_BLP" Then changeTenBC = GetAttribute(GetMessageCellById("0173"), "Msg")
+    If strLoaiBC = "01_AC_BLP" Then changeTenBC = GetAttribute(GetMessageCellById("0174"), "Msg")
+    If strLoaiBC = "BC21_AC_BLP" Then changeTenBC = GetAttribute(GetMessageCellById("0175"), "Msg")
+    If strLoaiBC = "03_TBAC_BLP" Then changeTenBC = GetAttribute(GetMessageCellById("0176"), "Msg")
 End Function
 
 
