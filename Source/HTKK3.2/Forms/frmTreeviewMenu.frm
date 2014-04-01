@@ -690,7 +690,7 @@ On Error GoTo ErrorHandle
         .ColWidth(1) = 2.375
         .ColWidth(2) = 2.525
         .ColWidth(3) = 1.75
-        .ColWidth(4) = 19.1
+        .ColWidth(4) = 36
         
         'Initialize every cell as a Picture cell
         .Col = 1
@@ -730,8 +730,8 @@ Private Sub Form_Resize()
     'Me.Visible = False
     Me.Top = 0
     Me.Left = 0
-    Me.Width = 4150 'frmSystem.ScaleWidth / 4
-    Me.Height = 6830 'frmSystem.ScaleHeight
+    Me.Width = 6150 'frmSystem.ScaleWidth / 4
+    Me.Height = 8200 'frmSystem.ScaleHeight
 
     sstv.Top = 0
     sstv.Left = 0
