@@ -2,10 +2,10 @@ VERSION 5.00
 Begin VB.MDIForm frmSystem 
    BackColor       =   &H8000000C&
    Caption         =   "Hç trî kª khai"
-   ClientHeight    =   8490
+   ClientHeight    =   9630
    ClientLeft      =   60
    ClientTop       =   345
-   ClientWidth     =   11880
+   ClientWidth     =   14310
    Icon            =   "frmSystem.frx":0000
    LinkTopic       =   "MDIForm1"
    StartUpPosition =   2  'CenterScreen
@@ -17,10 +17,10 @@ Begin VB.MDIForm frmSystem
       Height          =   300
       Left            =   0
       ScaleHeight     =   300
-      ScaleWidth      =   11880
+      ScaleWidth      =   14310
       TabIndex        =   0
       Top             =   0
-      Width           =   11880
+      Width           =   14310
       Begin VB.Label lblUserInfo 
          BackStyle       =   0  'Transparent
          Caption         =   "M· sè thuÕ: "
@@ -147,6 +147,7 @@ Private Sub MDIForm_Resize()
     Else
         Me.Picture = LoadPicture(GetAbsolutePath("..\Pictures\bg.gif"))
     End If
+    
     clickexit = False
     Exit Sub
 ErrorHandle:
