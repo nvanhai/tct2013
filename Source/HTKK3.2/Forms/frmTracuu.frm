@@ -231,7 +231,7 @@ Begin VB.Form frmTraCuu
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          RowsFrozen      =   1
-         SpreadDesigner  =   "frmTracuu.frx":0B03
+         SpreadDesigner  =   "frmTracuu.frx":0B23
       End
    End
    Begin VB.Label lblStatus 
