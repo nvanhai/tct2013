@@ -301,4 +301,6 @@
 	<Infor ID="0308" Msg="Hạch toán tổng cột [29] vào mục 1550, tiểu mục 1552"/>	
 	<Infor ID="0309" Msg="Tõ ngµy ph¶i nhá h¬n hoÆc b»ng ®Õn ngµy"/>
 	<Infor ID="0310" Msg="Ngµy lËp ph¶i nhá h¬n hoÆc b»ng ngµy hiÖn t¹i"/>
+	<Infor ID="0311" Msg="Gi¸ trÞ cña kú ph¶i nhá h¬n 03 vµ lín h¬n 00."/>
+	<Infor ID="0312" Msg="Tõ kú ph¶i nhá h¬n hoÆc b»ng §Õn kú."/>
 </Message>

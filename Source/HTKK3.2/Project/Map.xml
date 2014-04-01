@@ -148,13 +148,13 @@
 	<Map ID="64" FinanceYear="1" Year="0" Month="0" ThreeMonth="0" Day="1" Caption="Thông báo phát hành hóa đơn(01_TBAC)" LoaiTK="D">
 		<Validity StartDate="23/06/2006" DataFile="01_TBAC,KHBS_01_TBAC" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
-	<Map ID="65" FinanceYear="1" Year="1/2" Month="0" ThreeMonth="1" Day="0" Caption="Báo cáo tình hình nhận in hóa đơn(01_AC)" LoaiTK="M">
+	<Map ID="65" FinanceYear="1" Year="1/2" Month="0" ThreeMonth="1" Day="0" Caption="Báo cáo tình hình nhận in hóa đơn(01_AC)" LoaiTK="K">
 		<Validity StartDate="23/06/2006" DataFile="01_AC,KHBS_01_AC" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
-	<Map ID="66" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Báo cáo mất,cháy,hỏng hóa đơn(BC21_AC)" LoaiTK="M">
+	<Map ID="66" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Báo cáo mất,cháy,hỏng hóa đơn(BC21_AC)" LoaiTK="N">
 		<Validity StartDate="23/06/2006" DataFile="BC21_AC,KHBS_BC21_AC" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
-	<Map ID="67" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Thông báo kết quả hủy hóa đơn(03_TBAC)" LoaiTK="M">
+	<Map ID="67" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Thông báo kết quả hủy hóa đơn(03_TBAC)" LoaiTK="N">
 		<Validity StartDate="23/06/2006" DataFile="03_TBAC,KHBS_03_TBAC" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
 	<Map ID="68" FinanceYear="1" Year="1/2" Month="0" ThreeMonth="1" Day="0" Caption="Báo cáo tình hình sử dụng hóa đơn (BC26_AC)" LoaiTK="Q">
