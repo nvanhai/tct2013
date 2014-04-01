@@ -267,7 +267,7 @@ Public Function Prepared3() As Boolean
             .GetText .ColLetterToNumber("AI"), .Row, tempValue
             If CStr(tempValue) = "01" Then
                 .SetText .ColLetterToNumber("AF"), .Row, GetAttribute(GetMessageCellById("0171"), "Msg")
-            ElseIf CStr(tempValue) = "02" Then
+            ElseIf CStr(tempValue) = "03" Then
                 .SetText .ColLetterToNumber("AF"), .Row, GetAttribute(GetMessageCellById("0172"), "Msg")
             End If
             .Row = .Row + 1
@@ -522,7 +522,7 @@ Public Function InsertHDR() As String
     Dim Loai_bc As Variant
     Dim Ngay_nop As Variant
     Dim Ngay_cn As Variant
-    Dim nguoi_cn As Variant
+    Dim Nguoi_cn As Variant
     Dim So_tt_tk As Variant
     Dim Phong_xly As Variant
     Dim Phong_qly As Variant
@@ -587,12 +587,12 @@ Public Function InsertHDR() As String
             Ngay_cn = "CTOD('" & Format(Ngay_cn, "mm/dd/yyyy") & "')"
         End If
         ' nguoi cap nhat
-        .GetText .ColLetterToNumber("AC"), 15, nguoi_cn
-        If Trim(nguoi_cn) = vbNullString Then
-            nguoi_cn = "''"
+        .GetText .ColLetterToNumber("AC"), 15, Nguoi_cn
+        If Trim(Nguoi_cn) = vbNullString Then
+            Nguoi_cn = "''"
         Else
-            nguoi_cn = TAX_Utilities_Svr_New.Convert(CStr(nguoi_cn), UNICODE, TCVN)
-            nguoi_cn = "'" & nguoi_cn & "'"
+            Nguoi_cn = TAX_Utilities_Svr_New.Convert(CStr(Nguoi_cn), UNICODE, TCVN)
+            Nguoi_cn = "'" & Nguoi_cn & "'"
         End If
         'set ly do mat chay hong
         .GetText .ColLetterToNumber("C"), 31, ly_DO_MAT_CHAY_HONG
@@ -662,7 +662,7 @@ Public Function InsertHDR() As String
             Else
                 Ghi_chu = "'" & TAX_Utilities_Svr_New.Convert(CStr(Ghi_chu), UNICODE, TCVN) & "'"
         End If
-     sSQLVal = Id & "," & Tin & "," & Loai_bc & "," & Ngay_nop & "," & Ngay_cn & "," & nguoi_cn & "," & So_tt_tk & "," & _
+     sSQLVal = Id & "," & Tin & "," & Loai_bc & "," & Ngay_nop & "," & Ngay_cn & "," & Nguoi_cn & "," & So_tt_tk & "," & _
                 Phong_xly & "," & Phong_qly & "," & Ngay_bc & "," & Nguoi_dd & "," & ngay_Thang_Nam_Mat & "," & maCQT & "," & Ghi_chu & "," & DA_NHAN & "," & ly_DO_MAT_CHAY_HONG
        
         sSQL = "INSERT INTO TMP_BCAO_HDR_AC( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
