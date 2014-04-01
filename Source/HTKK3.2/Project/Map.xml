@@ -208,4 +208,20 @@
 	<Map ID="961" FinanceYear="0" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Tờ khai thuế tài nguyên(03/TĐ-TAIN) (quý)" LoaiTK="Q" TkThangQuy="1">
 		<Validity StartDate="01/01/1900" DataFile="03_TD_TAIN,03_1_TD_TAIN,KHBS_03_TD_TAIN" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
+	
+	<Map ID="07" FinanceYear="1" Year="0" Month="0" ThreeMonth="0" Day="1" Caption="BC phát hành biên lai thu phí, lệ phí" LoaiTK="D">
+		<Validity StartDate="01/01/2009" DataFile="01_TBAC_BLP,KHBS_01_TBAC_BLP" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="13" FinanceYear="1" Year="1/2" Month="0" ThreeMonth="1" Day="0" Caption="BC tình hình nhận in biên lai thu phí, lệ phí" LoaiTK="M">
+		<Validity StartDate="01/01/2009" DataFile="01_AC_BLP,KHBS_01_AC_BLP" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="09" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="BC mất, cháy biên lai thu phí, lệ phí" LoaiTK="M">
+		<Validity StartDate="01/01/2010" DataFile="BC21_AC_BLP,KHBS_BC21_AC_BLP" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="10" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="TB kết quả hủy biên lai thu phí, lệ phí" LoaiTK="M">
+		<Validity StartDate="23/06/2006" DataFile="03_TBAC_BLP,KHBS_03_TBAC_BLP" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
 </Root>
