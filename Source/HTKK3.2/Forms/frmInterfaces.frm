@@ -9864,10 +9864,6 @@ Const end_1 As String = "aa"
         'fpSpread1_LeaveCell_PL04_1_GTGT = count3 + count2
 End Function
 
-Private Sub fpSpread1_LostFocus()
-
-End Sub
-
 ''' fpSpread1_SheetChanged description
 ''' Event fpSpread1_SheetChanged
 ''' mapping value betweed active sheet and mCurrentSheet variable
