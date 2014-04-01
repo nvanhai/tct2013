@@ -6923,6 +6923,7 @@ Private Sub Command1_Click()
     Dim strIDTkTT156 As String
     
     Dim vSoTien As Variant
+    Dim vSoNgay As Variant
     
     Dim xmlNodeCell_temp As MSXML.IXMLDOMNode
     strIDTkTT156 = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
@@ -6936,6 +6937,7 @@ Private Sub Command1_Click()
             fpSpread1.Row = lRow_temp
             
             fpSpread1.Formula = "BD5"
+            fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
 '            fpSpread1.value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
 '                            (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 11), "Value")
                             
@@ -6948,7 +6950,7 @@ Private Sub Command1_Click()
             temp = lRow_temp - 21
             ' sua ct tinh
             fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 17 + temp, vSoTien
-            strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 17 + temp)
+            strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 17 + temp, CDbl(vSoNgay))
             'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
             fpSpread1.Formula = strFormula
             ' end
@@ -6991,7 +6993,13 @@ Private Sub Command1_Click()
                 fpSpread1.sheet = fpSpread1.SheetCount - 1
                 fpSpread1.Col = lCol_temp
                 fpSpread1.Row = lRow_temp
+                
+                fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
+                
                 fpSpread1.Formula = "BD5"
+                
+                
+                
     '            fpSpread1.value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
     '                            (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7), "Value")
                 
@@ -7004,7 +7012,7 @@ Private Sub Command1_Click()
                 
                 ' sua ct tinh
                 fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 17 + temp, vSoTien
-                strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 17 + temp)
+                strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 17 + temp, CDbl(vSoNgay))
                 
                 'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
                 fpSpread1.Formula = strFormula
@@ -7017,7 +7025,12 @@ Private Sub Command1_Click()
                 fpSpread1.sheet = fpSpread1.SheetCount - 1
                 fpSpread1.Col = lCol_temp
                 fpSpread1.Row = lRow_temp
+                
+                fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
+                
                 fpSpread1.Formula = "BD5"
+                
+                
     '            fpSpread1.value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
     '                            (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7), "Value")
                 
@@ -7030,7 +7043,7 @@ Private Sub Command1_Click()
                 
                 ' sua ct tinh
                 fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 15 + temp, vSoTien
-                strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp)
+                strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp, CDbl(vSoNgay))
                 
                 'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
                 fpSpread1.Formula = strFormula
@@ -9584,6 +9597,11 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
         ' 31-12-2013
         strIdKHBS_TT156 = "~02~04~71~72~11~12~73~70~81~06~05~86~90~96~94~98~99~92~"
         strIdKHBS = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
+        
+        Dim vSoTien, vSoNgay As Variant
+        Dim rowTienNC As Long
+        Dim strFormula As String
+        
         If strIdKHBS = "01" Then
             .EventEnabled(EventAllEvents) = False
              If .ActiveSheet = .SheetCount - 1 Then
@@ -9606,6 +9624,24 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
                         .Row = Row
                         UpdateCell .Col, .Row, .Text
                      End If
+                     
+                      ' set lai cong thuc tinh tien nop cham
+                    Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 19)
+                    ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                    
+                    fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
+                    rowTienNC = lRow_temp + 1
+                    If Col = lCol_temp And Row = lRow_temp Then
+                        fpSpread1.sheet = fpSpread1.SheetCount - 1
+                        fpSpread1.Col = lCol_temp
+                        fpSpread1.Row = rowTienNC
+                        temp = lRow_temp - 21
+                        ' sua ct tinh
+                        fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 17 + temp, vSoTien
+                        strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 17 + temp, CDbl(vSoNgay))
+                        'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
+                        fpSpread1.Formula = strFormula
+                    End If
             End If
             .EventEnabled(EventAllEvents) = True
         ElseIf InStr(1, strIdKHBS_TT156, "~" & Trim$(strIdKHBS) & "~", vbTextCompare) > 0 Then
@@ -9630,6 +9666,27 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
                         .Row = Row
                         UpdateCell .Col, .Row, .Text
                      End If
+                     
+                    ' set lai cong thuc tinh tien nop cham
+                    
+                    Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18)
+                    ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
+                    
+                    fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
+                    rowTienNC = lRow_temp + 1
+                    If Col = lCol_temp And Row = lRow_temp Then
+                        fpSpread1.sheet = fpSpread1.SheetCount - 1
+                        fpSpread1.Col = lCol_temp
+                        fpSpread1.Row = rowTienNC
+                        temp = rowTienNC - 21
+                        
+                        ' sua ct tinh
+                        fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 17 + temp, vSoTien
+                        strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 17 + temp, CDbl(vSoNgay))
+                        
+                        'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
+                        fpSpread1.Formula = strFormula
+                    End If
             End If
             .EventEnabled(EventAllEvents) = True
         End If
@@ -9806,6 +9863,10 @@ Const end_1 As String = "aa"
         
         'fpSpread1_LeaveCell_PL04_1_GTGT = count3 + count2
 End Function
+
+Private Sub fpSpread1_LostFocus()
+
+End Sub
 
 ''' fpSpread1_SheetChanged description
 ''' Event fpSpread1_SheetChanged
@@ -11854,6 +11915,8 @@ Private Sub TonghopKHBS()
     Dim strFormula As String
     Dim vSoTien As Variant
     
+    Dim vSoNgay As Variant
+    
     
     
     Dim strIdTK_TT156 As String
@@ -12171,6 +12234,8 @@ Private Sub TonghopKHBS()
                     fpSpread1.Formula = "BD5"
                     fpSpread1.value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
                                     (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 20), "Value")
+                    
+                    fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
     
                     ' so tien nop cham
                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 19)
@@ -12182,7 +12247,7 @@ Private Sub TonghopKHBS()
                     ' kiem tra neu set lai cong thuc
                     ' sua ct tinh
                     fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 15 + temp, vSoTien
-                    strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp)
+                    strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp, CDbl(vSoNgay))
                     
                     'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
                     fpSpread1.Formula = strFormula
@@ -12222,6 +12287,8 @@ Private Sub TonghopKHBS()
                         fpSpread1.value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
                                         (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18), "Value")
         
+                        fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
+        
                         Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 17)
                         ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                         fpSpread1.sheet = fpSpread1.SheetCount - 1
@@ -12231,7 +12298,7 @@ Private Sub TonghopKHBS()
                         ' kiem tra set lai cong thuc
                         ' sua ct tinh
                         fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 17 + temp, vSoTien
-                        strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 17 + temp)
+                        strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 17 + temp, CDbl(vSoNgay))
                         
                         'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
                         fpSpread1.Formula = strFormula
@@ -12248,6 +12315,8 @@ Private Sub TonghopKHBS()
                         fpSpread1.value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
                                         (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7), "Value")
         
+                        fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
+                        
                         Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6)
                         ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                         fpSpread1.sheet = fpSpread1.SheetCount - 1
@@ -12257,7 +12326,7 @@ Private Sub TonghopKHBS()
                         ' kiem tra set lai cong thuc
                         ' sua ct tinh
                         fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 15 + temp, vSoTien
-                        strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp)
+                        strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp, CDbl(vSoNgay))
                         
                         'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
                         fpSpread1.Formula = strFormula
@@ -12276,7 +12345,7 @@ Private Sub TonghopKHBS()
                     fpSpread1.Row = lRow_temp
     
                     fpSpread1.Formula = "BD5"
-                    
+                    fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
     
                     ' so ngay nop cham
                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 19)
@@ -12288,7 +12357,7 @@ Private Sub TonghopKHBS()
                     ' kiem tra neu set lai cong thuc
                     ' sua ct tinh
                     fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 15 + temp, vSoTien
-                    strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp)
+                    strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp, CDbl(vSoNgay))
                     
                     'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
                     fpSpread1.Formula = strFormula
@@ -12322,6 +12391,8 @@ Private Sub TonghopKHBS()
                         fpSpread1.Row = lRow_temp
                         fpSpread1.Formula = "BD5"
                         
+                        fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
+                        
                         Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 17)
                         ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                         fpSpread1.sheet = fpSpread1.SheetCount - 1
@@ -12331,7 +12402,7 @@ Private Sub TonghopKHBS()
                         ' kiem tra set lai cong thuc
                         ' sua ct tinh
                         fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 17 + temp, vSoTien
-                        strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 17 + temp)
+                        strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 17 + temp, CDbl(vSoNgay))
                         
                         'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
                         fpSpread1.Formula = strFormula
@@ -12344,6 +12415,8 @@ Private Sub TonghopKHBS()
                         fpSpread1.Row = lRow_temp
                         fpSpread1.Formula = "BD5"
                         
+                        fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
+                        
                         Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6)
                         ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                         fpSpread1.sheet = fpSpread1.SheetCount - 1
@@ -12353,7 +12426,7 @@ Private Sub TonghopKHBS()
                         ' kiem tra set lai cong thuc
                         ' sua ct tinh
                         fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 15 + temp, vSoTien
-                        strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp)
+                        strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp, CDbl(vSoNgay))
                         
                         'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
                         fpSpread1.Formula = strFormula
@@ -15141,7 +15214,7 @@ Private Sub gridData01NTNN(rowStartSpread1 As Long, _
 End Sub
 
 ' ham get formula tinh so tien phat nop cham
-Private Function getFormulaTienPNC(t As Long, soTien As Double, strColRow As String) As String
+Private Function getFormulaTienPNC(t As Long, soTien As Double, strColRow As String, soNgayNC As Double) As String
     Dim songaynopcham As Long
     Dim soNgayNopChamTruocHl As Long
     Dim arrDate() As String
@@ -15151,7 +15224,9 @@ Private Function getFormulaTienPNC(t As Long, soTien As Double, strColRow As Str
     
     Dim result As String
     
-    songaynopcham = getSoNgay(hanNopTk, ngayLapTkBs)
+    'songaynopcham = getSoNgay(hanNopTk, ngayLapTkBs)
+    
+    songaynopcham = soNgayNC
     soNgayNopChamTruocHl = getSoNgay(hanNopTk, "01/07/2013") - 1
     If hanNopTk <> "" Then
         arrDate = Split(hanNopTk, "/")
@@ -15179,7 +15254,7 @@ Private Function getFormulaTienPNC(t As Long, soTien As Double, strColRow As Str
             result = 90 & "*" & strColRow & "*0.05/100+" & (songaynopcham - 90) & "*" & strColRow & "*0.07/100"
         End If
     End If
-    getFormulaTienPNC = "IF(" & result & ">0;ROUND(" & result & ";0);0)"  'result
+    getFormulaTienPNC = "IF(" & result & ">0,ROUND(" & result & ",0),0)"  'result
     Exit Function
 End Function
 
@@ -15223,7 +15298,7 @@ Private Function getFormulaTienPNCHoanThue(t As Long, soTien As Double, strColRo
             result = 90 & "*" & strColRow & "*0.05/100+" & (songaynopcham - 90) & "*" & strColRow & "*0.07/100"
         End If
     End If
-    getFormulaTienPNCHoanThue = "IF(" & result & ">0;ROUND(" & result & ";0);0)"  'result
+    getFormulaTienPNCHoanThue = "IF(" & result & ">0,ROUND(" & result & ",0),0)"  'result
     Exit Function
 End Function
 
