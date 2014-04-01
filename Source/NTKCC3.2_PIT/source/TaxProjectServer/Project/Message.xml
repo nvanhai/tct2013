@@ -170,4 +170,8 @@
 	<Infor ID="0170" Msg="Ứng dụng không nhận tờ khai mã vạch theo lần phát sinh. Đề nghị nhập tay vào hệ thống VAT"/>
 	<Infor ID="0171" Msg="Đã sử dụng"/>
 	<Infor ID="0172" Msg="Chưa sử dụng"/>
+	<Infor ID="0173" Msg="Thông báo phát hành biên lai thu phí, lệ phí"/>
+	<Infor ID="0174" Msg="Báo cáo tình hình nhận in biên lai thu phí, lệ phí"/>
+	<Infor ID="0175" Msg="Báo cáo mất,cháy,hỏng biên lai thu phí, lệ phí"/>
+	<Infor ID="0176" Msg="Thông báo kết quả hủy biên lai thu phí, lệ phí"/>
 </Message>
