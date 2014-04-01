@@ -1,6 +1,6 @@
 --01_AC
 CREATE OR REPLACE VIEW
-    RCV_V_01_AC_BLP
+    QLT_NTK.RCV_V_01_AC_BLP
     (
         HDR_ID,
         SO_TT,
@@ -74,9 +74,9 @@ FROM
                     DECODE(gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL)       loaiHD,
                     tkd.id                                                     dtl_id
                 FROM
-                    rcv_bcao_dtl_ac tkd,
-                    rcv_gdien_tkhai gdien,
-                    rcv_map_ctieu ctieu
+                    QLT_NTK.rcv_bcao_dtl_ac tkd,
+                    QLT_NTK.rcv_gdien_tkhai gdien,
+                    QLT_NTK.rcv_map_ctieu ctieu
                 WHERE
                     (
                         ctieu.gdn_id = gdien.id)
@@ -92,7 +92,7 @@ FROM
 
 --01_TBAC            
 CREATE OR REPLACE VIEW
-    RCV_V_01_TBAC_BLP
+    QLT_NTK.RCV_V_01_TBAC_BLP
     (
         HDR_ID,
         SO_TT,
@@ -166,9 +166,9 @@ FROM
                     DECODE(gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL)       loaiHD,
                     tkd.id                                                     dtl_id
                 FROM
-                    rcv_bcao_dtl_ac tkd,
-                    rcv_gdien_tkhai gdien,
-                    rcv_map_ctieu ctieu
+                    QLT_NTK.rcv_bcao_dtl_ac tkd,
+                    QLT_NTK.rcv_gdien_tkhai gdien,
+                    QLT_NTK.rcv_map_ctieu ctieu
                 WHERE
                     (
                         ctieu.gdn_id = gdien.id)
@@ -184,7 +184,7 @@ FROM
             
 --03_TBAC            
 CREATE OR REPLACE VIEW
-    RCV_V_03_TBAC_BLP
+    QLT_NTK.RCV_V_03_TBAC_BLP
     (
         HDR_ID,
         SO_TT,
@@ -237,9 +237,9 @@ FROM
                     DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL)       loaiHD,
                     tkd.id                                                     dtl_id
                 FROM
-                    rcv_bcao_dtl_ac tkd,
-                    rcv_gdien_tkhai gdien,
-                    rcv_map_ctieu ctieu
+                    QLT_NTK.rcv_bcao_dtl_ac tkd,
+                    QLT_NTK.rcv_gdien_tkhai gdien,
+                    QLT_NTK.rcv_map_ctieu ctieu
                 WHERE
                     (
                         ctieu.gdn_id = gdien.id)
@@ -255,7 +255,7 @@ FROM
 
 --BC21_AC            
 CREATE OR REPLACE VIEW
-    RCV_V_BC21_AC_BLP
+    QLT_NTK.RCV_V_BC21_AC_BLP
     (
         HDR_ID,
         SO_TT,
@@ -316,9 +316,9 @@ FROM
                     DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL)       Loai_BLP,
                     tkd.id                                                     dtl_id
                 FROM
-                    rcv_bcao_dtl_ac tkd,
-                    rcv_gdien_tkhai gdien,
-                    rcv_map_ctieu ctieu
+                    QLT_NTK.rcv_bcao_dtl_ac tkd,
+                    QLT_NTK.rcv_gdien_tkhai gdien,
+                    QLT_NTK.rcv_map_ctieu ctieu
                 WHERE
                     (
                         ctieu.gdn_id = gdien.id)
