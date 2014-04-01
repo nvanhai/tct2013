@@ -91,25 +91,7 @@ FROM
             dtl.row_id ) ;
 
 --01_TBAC            
-CREATE OR REPLACE VIEW
-    QLT_NTK.RCV_V_01_TBAC_BLP
-    (
-        HDR_ID,
-        SO_TT,
-        TEN_BLP,
-        MAU_SO,
-        KY_HIEU_BLP,
-        TU_SO,
-        DEN_SO,
-        SO_LUONG,
-        NGAY_BD_SD,
-        TEN_DN_IN,
-        MST_DN_IN,
-        SO_BLP_IN,
-        NGAY_BLP_IN,
-        LOAI_BLP,
-        DTL_ID
-    ) AS
+CREATE OR REPLACE VIEW RCV_V_01_TBAC_BLP AS
 SELECT
     hdr_id ,
     row_id so_tt ,
@@ -152,16 +134,16 @@ FROM
                     NVL(tkd.row_id,0) row_id,
                     gdien.id          id,
                     gdien.so_tt,
-                    dump(DECODE(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL)) ten_BLP,
-                    dump(DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL)) Mau_so,
-                    dump(DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL)) Ky_hieu_BLP,
+                    (DECODE(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL)) ten_BLP,
+                    (DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL)) Mau_so,
+                    (DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL)) Ky_hieu_BLP,
                     DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL)       So_luong,
                     DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL)       Tu_so,
                     DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL)       Den_so,
                     DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL)       Ngay_BD_SD,
-                    dump(DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL)) Ten_DN_in,
-                    DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL)       MST_DN_in,
-                    dump(DECODE(gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL)) So_BLP_in,
+                    DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL) So_BLP_in,
+                    DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL) Ten_DN_in,
+                    DECODE(gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL)       MST_DN_in,                   
                     DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL)       Ngay_BLP_in,
                     DECODE(gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL)       loaiHD,
                     tkd.id                                                     dtl_id
@@ -180,7 +162,7 @@ FROM
                         gdien.loai_dlieu ='01_TBAC_BLP') ) dtl
         GROUP BY
             dtl.hdr_id,
-            dtl.row_id ) ;
+            dtl.row_id );
             
 --03_TBAC            
 CREATE OR REPLACE VIEW
