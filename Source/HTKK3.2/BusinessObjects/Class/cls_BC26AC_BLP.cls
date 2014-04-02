@@ -321,35 +321,35 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
                 .SetText .ColLetterToNumber(Col_E), .Row, Trim(Mid(strId, 11, 6))
                 UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_E), .Row, .Text
                 .Col = .ColLetterToNumber(Col_E)
-                .TypeMaxEditLen = 13
+                '.TypeMaxEditLen = 13
                 .Col = .ColLetterToNumber(Col_D)
                 .SetText .ColLetterToNumber(Col_D), .Row, Trim(Mid(strId, 21))
                 UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_D), .Row, .Text
-            ElseIf Trim(Left(strId, 1)) = "3" Then
-                .SetText .ColLetterToNumber(Col_E), .Row, ""
-                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_E), .Row, .Text
-                .Col = .ColLetterToNumber(Col_E)
-                .TypeMaxEditLen = 20
-                
-                .Col = .ColLetterToNumber(Col_D)
-                .SetText .ColLetterToNumber(Col_D), .Row, ""
-                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_D), .Row, .Text
-            ElseIf Trim(Left(strId, 1)) = "4" Then
-                .SetText .ColLetterToNumber(Col_E), .Row, Trim(Mid(strId, 11, 6))
-                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_E), .Row, .Text
-                .Col = .ColLetterToNumber(Col_E)
-                .TypeMaxEditLen = 13
-                .Col = .ColLetterToNumber(Col_D)
-                .SetText .ColLetterToNumber(Col_D), .Row, Trim(Mid(strId, 21))
-                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_D), .Row, .Text
-            Else
-                .SetText .ColLetterToNumber(Col_E), .Row, Trim(Mid(strId, 11, 3))
-                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_E), .Row, .Text
-                .Col = .ColLetterToNumber(Col_E)
-                .TypeMaxEditLen = 20
-                .Col = .ColLetterToNumber(Col_D)
-                .SetText .ColLetterToNumber(Col_D), .Row, Trim(Mid(strId, 21))
-                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_D), .Row, .Text
+'            ElseIf Trim(Left(strId, 1)) = "3" Then
+'                .SetText .ColLetterToNumber(Col_E), .Row, ""
+'                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_E), .Row, .Text
+'                .Col = .ColLetterToNumber(Col_E)
+'                .TypeMaxEditLen = 20
+'
+'                .Col = .ColLetterToNumber(Col_D)
+'                .SetText .ColLetterToNumber(Col_D), .Row, ""
+'                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_D), .Row, .Text
+'            ElseIf Trim(Left(strId, 1)) = "4" Then
+'                .SetText .ColLetterToNumber(Col_E), .Row, Trim(Mid(strId, 11, 6))
+'                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_E), .Row, .Text
+'                .Col = .ColLetterToNumber(Col_E)
+'                .TypeMaxEditLen = 13
+'                .Col = .ColLetterToNumber(Col_D)
+'                .SetText .ColLetterToNumber(Col_D), .Row, Trim(Mid(strId, 21))
+'                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_D), .Row, .Text
+'            Else
+'                .SetText .ColLetterToNumber(Col_E), .Row, Trim(Mid(strId, 11, 3))
+'                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_E), .Row, .Text
+'                .Col = .ColLetterToNumber(Col_E)
+'                .TypeMaxEditLen = 20
+'                .Col = .ColLetterToNumber(Col_D)
+'                .SetText .ColLetterToNumber(Col_D), .Row, Trim(Mid(strId, 21))
+'                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_D), .Row, .Text
             End If
             .SetText .ColLetterToNumber(Col_AC), .Row, Trim(Left(strId, 1))
             UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_AC), .Row, .Text
@@ -911,13 +911,13 @@ Private Sub checkSheet1()
             Else
                 strLoai = Trim(Left(strId, 1))
                 If strLoai = "0" Then
-                    strTemp = Trim(Mid(strId, 11, 6))
-                ElseIf strLoai = "4" Then
-                    strTemp = Trim(Mid(strId, 11, 6))
-                Else
-                    strTemp = Trim(Mid(strId, 11, 3))
+                    strTemp = Trim(Mid(strId, 11, 5))
+'                ElseIf strLoai = "4" Then
+'                    strTemp = Trim(Mid(strId, 11, 6))
+'                Else
+'                    strTemp = Trim(Mid(strId, 11, 3))
                 End If
-                result = CheckMauSoHD(CStr(strMauSoHD), strLoai, strTemp)
+                result = CheckMauSoBLP(CStr(strMauSoHD), strLoai, strTemp)
                 If result = "1" And iWhiteRow = 0 Then
                     .Col = .ColLetterToNumber(Col_E)
                     .CellNote = errMauSoHD  'static
@@ -938,7 +938,7 @@ Private Sub checkSheet1()
                 .BackColor = mErrorColor
                 iFlagEmty = 1
             Else
-                result = CheckSoHD(CStr(strKyHieuHD), strLoai)
+                result = CheckSoBLP(CStr(strKyHieuHD), strLoai)
                 If result = "1" And iWhiteRow = 0 Then
                     .Col = .ColLetterToNumber(Col_F)
                     .CellNote = errKyHieuHD  'static
