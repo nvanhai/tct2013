@@ -378,6 +378,8 @@ Private Sub btnMo_Click()
         .GetText 14, lngRowFocus, tkThangQuy ' get loai tk thang/quy
         .GetText 15, lngRowFocus, LanXB ' get lan xuat ban
 
+        ResetAllProperty
+
         If Left(varId, 4) = "KHBS" Then
             varId = Right(varId, 2)
             strKHBS = "frmKHBS_BS"
@@ -422,6 +424,7 @@ Private Sub btnMo_Click()
 
             If tkThangQuy = "1" Then
                 strQuy = "TK_THANG"
+                TAX_Utilities_v1.ThreeMonths = CInt(Mid$(CStr(varPeriod), 1, 2))
             End If
 
             strLoaiTKThang_PS = "TK_THANG"
@@ -433,13 +436,13 @@ Private Sub btnMo_Click()
 
             strLoaiTkDk = LoaiTk
         ElseIf LoaiTk = KIEU_KY_QUY Then
+            
             TAX_Utilities_v1.ThreeMonths = CInt(Mid$(CStr(varPeriod), 1, 2))
             TAX_Utilities_v1.Year = Mid$(CStr(varPeriod), 4, 4)
-
+            strQuy = "TK_QUY"
             If tkThangQuy = "1" Then
-                strQuy = "TK_QUY"
+                TAX_Utilities_v1.month = CInt(Mid$(CStr(varPeriod), 1, 2))
             End If
-
         ElseIf LoaiTk = KIEU_KY_NGAY_PS Then
             TAX_Utilities_v1.Day = Mid$(CStr(varPeriod), 1, 2)
             TAX_Utilities_v1.month = Mid$(CStr(varPeriod), 4, 2)
@@ -447,6 +450,7 @@ Private Sub btnMo_Click()
             TAX_Utilities_v1.FirstDay = CStr(varFirstDay)
             TAX_Utilities_v1.LastDay = CStr(varLastDay)
             strQuy = "TK_LANPS"
+            strLoaiTKThang_PS = "TK_LANPS"
         ElseIf LoaiTk = "CD" Or LoaiTk = "DT" Then
             TAX_Utilities_v1.Day = Mid$(CStr(varPeriod), 1, 2)
             TAX_Utilities_v1.month = Mid$(CStr(varPeriod), 4, 2)
@@ -468,6 +472,15 @@ Private Sub btnMo_Click()
         ElseIf LoaiTk = "N" Then
             TAX_Utilities_v1.ThreeMonths = CInt(Mid$(CStr(varPeriod), 1, 2))
             TAX_Utilities_v1.Year = Mid$(CStr(varPeriod), 4, 4)
+
+        ElseIf LoaiTk = KIEU_KY_THANG_NAM Then
+            TAX_Utilities_v1.month = Mid$(CStr(varPeriod), 1, 2)
+            TAX_Utilities_v1.Year = Mid$(CStr(varPeriod), 4, 4)
+            TAX_Utilities_v1.FirstDay = varFirstDay
+            TAX_Utilities_v1.LastDay = varLastDay
+            strQuy = "TK_TU_THANG"
+            strLoaiTKThang_PS = "TK_TU_THANG"
+            TAX_Utilities_v1.ThreeMonths = GetQuyHienTai(iNgayTaiChinh, iThangTaiChinh).q
         Else
         
             TAX_Utilities_v1.Year = CStr(varPeriod)
@@ -868,10 +881,6 @@ Private Sub fpsDkNgay_KeyPress(KeyAscii As Integer)
     If KeyAscii = Asc(".") Then
         KeyAscii = 0
     End If
-End Sub
-
-Private Sub fpsDkNgay_KeyUp(KeyCode As Integer, Shift As Integer)
-
 End Sub
 
 Private Sub fpsDkNgay_LeaveCell(ByVal Col As Long, _
@@ -2055,7 +2064,7 @@ Private Sub GetDsToKhai(strFroms As String, _
     
             tkSplit = Split(kyKeKhai, "_")
 
-            If UBound(tkSplit) = 3 Then
+            If UBound(tkSplit) = 2 Then
                 If Len(tkSplit(0)) = 4 And Len(tkSplit(1)) = 8 And Len(tkSplit(2)) = 8 Then
                     If ToDate(tkSplit(1)) >= ToDate(strFrom) And ToDate(tkSplit(2)) <= ToDate(strTo) Then
                         strPeriodReturn = tkSplit(0) & "~" & Left$(tkSplit(1), 2) & "/" & Mid$(tkSplit(1), 3, 2) & "/" & Right$(tkSplit(1), 4) & "~" & Left$(tkSplit(2), 2) & "/" & Mid$(tkSplit(2), 3, 2) & "/" & Right$(tkSplit(2), 4) & "~True~~" & GetDataFileNames(ListDataFile, kyKeKhai, "", tkBoSung)
@@ -2090,12 +2099,11 @@ Private Sub GetDsToKhai(strFroms As String, _
 
             tkSplit = Split(kyKeKhai, "_")
             
-            strPeriodReturn = Left$(kyKeKhai, 2) & "/" & Mid$(kyKeKhai, 3, 4) & "~" & "~" & "~True~~" & GetDataFileNames(ListDataFile, kyKeKhai, "", tkBoSung)
-
-            If UBound(tkSplit) = 2 Then
+            If UBound(tkSplit) = 1 Then
                 If Len(tkSplit(0)) = 6 And Len(tkSplit(1)) = 6 Then
 
                     If ToDate("01" & tkSplit(0)) >= ToDate("01" & strFrom) And ToDate("01" & tkSplit(1)) <= ToDate("01" & strTo) Then
+                        strPeriodReturn = Left$(kyKeKhai, 2) & "/" & Mid$(kyKeKhai, 3, 4) & "~" & Left$(tkSplit(0), 2) & "/" & Right$(tkSplit(0), 4) & "~" & Left$(tkSplit(1), 2) & "/" & Right$(tkSplit(1), 4) & "~True~~" & GetDataFileNames(ListDataFile, kyKeKhai, "", tkBoSung)
                         ReDim Preserve strPeriods(tkIndex)
                         strPeriods(tkIndex) = strId & "~" & tenTk & "~" & GetAttribute(tkNode.firstChild, "StartDate") & "~" & strPeriodReturn & "~" & GetTaxValue(fileStr, strThueKhauTruId, False) & "~" & GetTaxValue(fileStr, strThuePhaiNopId, False) & "~" & LoaiTk & "~" & tkThangQuy & "~"
                         tkIndex = tkIndex + 1
@@ -3009,7 +3017,7 @@ Private Function getKHBSDate(DataFile As String) As String
     getKHBSDate = ""
 End Function
 
-Private Function getCellValue(DataFile As String, CellID As String) As String
+Private Function getCellValue(DataFile As String, cellID As String) As String
     Dim xmlDoc As New MSXML.DOMDocument
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim fso    As New FileSystemObject
@@ -3017,7 +3025,7 @@ Private Function getCellValue(DataFile As String, CellID As String) As String
 
     If fso.FileExists(GetAbsolutePath(TAX_Utilities_v1.DataFolder & DataFile & ".xml")) Then
         xmlDoc.Load GetAbsolutePath(TAX_Utilities_v1.DataFolder & DataFile & ".xml")
-        Set xmlNode = xmlDoc.nodeFromID(CellID)
+        Set xmlNode = xmlDoc.nodeFromID(cellID)
 
         If Not xmlNode Is Nothing Then
             getCellValue = GetAttribute(xmlNode, "Value")
@@ -3031,3 +3039,23 @@ ErrHandle:
     getCellValue = ""
     SaveErrorLog "frmTraCuu", "getCellValue", Err.Number, Err.Description
 End Function
+
+Sub ResetAllProperty()
+    TAX_Utilities_v1.month = ""
+    TAX_Utilities_v1.ThreeMonths = ""
+    TAX_Utilities_v1.Year = ""
+    TAX_Utilities_v1.DateKHBS = ""
+    TAX_Utilities_v1.Day = ""
+    TAX_Utilities_v1.FirstDay = ""
+    TAX_Utilities_v1.LastDay = ""
+    strQuy = ""
+    strKHBS = ""
+    strKieuKy = ""
+    strLoaiNNKD = ""
+    strLoaiTkDk = ""
+    strLoaiTKQT = ""
+    strLoaiTKThang_PS = ""
+    strTkDK = ""
+    strTkGTGT = ""
+    ngayLapTkBs = ""
+End Sub

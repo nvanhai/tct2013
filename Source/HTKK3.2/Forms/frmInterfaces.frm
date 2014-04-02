@@ -4854,6 +4854,7 @@ Private Sub KetXuatXML()
                             id = 1
                             currentGroup = GetAttribute(xmlSection, "GroupName")
                             cellID = GetAttribute(xmlSection, "CellID")
+                            childGroup = GetAttribute(xmlSection.firstChild.selectNodes("Dynamic")(0), "GroupName")
                             
                             OrginalNode.loadXML xmlPL.getElementsByTagName(currentGroup)(0).firstChild.xml
 
@@ -4879,9 +4880,7 @@ Private Sub KetXuatXML()
                                     End If
                                 
                                     childCloneNode.loadXML xmlSection.firstChild.selectNodes("Dynamic")(0).firstChild.xml
-                                    
-                                    childGroup = GetAttribute(xmlSection.firstChild.selectNodes("Dynamic")(0), "GroupName")
-                                
+                                                                    
                                     SetCloneNode childCloneNode, xmlSection.firstChild.selectNodes("Dynamic")(0), Blank, cellRange, sRow
 
                                     SetAttribute childCloneNode.firstChild, "id", "ID_" & CStr(childID)
