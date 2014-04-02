@@ -546,7 +546,7 @@ Public Sub SetupData(pGrid As fpSpread)
                                 Else
                                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                                 End If
-                            ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "68" Then
+                            ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "14" Then
                                 ' BC 26
                                 If strQuy = "TK_THANG" Then
                                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_T" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
@@ -2254,7 +2254,7 @@ Public Function CheckPeriod(ByVal strMonth As String, ByVal strYear As String) A
     On Error GoTo ErrHandle
     
     If GetAttribute(TAX_Utilities_v1.NodeMenu, "ThreeMonth") = "1" Then ' strKieuKy = KIEU_KY_QUY
-        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Then
             If strQuy = "TK_THANG" Then
                 If CInt(strYear) > CInt(Year(Date)) Then
                     DisplayMessage "0044", msOKOnly, miInformation

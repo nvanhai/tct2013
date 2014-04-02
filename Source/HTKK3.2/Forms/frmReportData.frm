@@ -126,7 +126,7 @@ Begin VB.Form frmReportData
       DisplayText     =   ""
       BarWidthReduction=   -1
       TextAlignment   =   0
-      Quality         =   0
+      Quality         =   68
    End
 End
 Attribute VB_Name = "frmReportData"
@@ -1375,7 +1375,7 @@ If GetAttribute(TAX_Utilities_v1.NodeMenu, "Month") = "1" Then
         strReturn = strReturn & TAX_Utilities_v1.month & TAX_Utilities_v1.Year
     End If
 ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ThreeMonth") = "1" Then
-    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Then
         If strQuy = "TK_THANG" Then
             strReturn = strReturn & TAX_Utilities_v1.month & TAX_Utilities_v1.Year
         Else
@@ -1736,7 +1736,7 @@ Private Sub SetupPrinter()
                                     
             If blnActiveSheet Then
                 ' Tinh lai so ma vach tren mau AC
-                If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
+                If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Then
                     intPageCount = .PrintPageCount
                 
                     If LenB(strDataBarcode(intIndex)) / intPageCount <= 1000 Then
