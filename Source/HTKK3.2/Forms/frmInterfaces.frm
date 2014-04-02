@@ -533,7 +533,7 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
                             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                         End If
 
-                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "68" Then
+                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "14" Then
 
                         ' BC26
                         If strQuy = "TK_THANG" Then
@@ -840,9 +840,9 @@ ElseIf Trim(varMenuId) = "01" And fpSpread1.ActiveSheet = 4 Then
 ElseIf Trim(varMenuId) = "02" Then
     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_02_1_GTGT.xml"))
     colStart = 3
-ElseIf Trim(varMenuId) = "14" Then
-    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\HHDL_05_TNDN.xml"))
-    colStart = 3
+'ElseIf Trim(varMenuId) = "14" Then
+'    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\HHDL_05_TNDN.xml"))
+'    colStart = 3
 ElseIf Trim(varMenuId) = "05" And fpSpread1.ActiveSheet = 2 Then
     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_01_1_TTDB.xml"))
     colStart = 3
@@ -2518,7 +2518,7 @@ Private Sub DeleteSheet(pIndex As Integer)
         Else
             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
         End If
-    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Then
         'BC26
         If strQuy = "TK_THANG" Then
             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_T" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
@@ -3983,7 +3983,7 @@ Private Function GetKyKeKhai(ByVal ID_TK As String) As String
         KYKKHAI = TAX_Utilities_v1.Day & "/" & TAX_Utilities_v1.month & "/" & TAX_Utilities_v1.Year
     Else
 
-        If ID_TK = "01" Or ID_TK = "95" Or ID_TK = "88" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "25" Or ID_TK = "68" Or ID_TK = "96" Or ID_TK = "94" Then
+        If ID_TK = "01" Or ID_TK = "95" Or ID_TK = "88" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "25" Or ID_TK = "68" Or ID_TK = "14" Or ID_TK = "96" Or ID_TK = "94" Then
             If strQuy = "TK_THANG" Then
                 KYKKHAI = TAX_Utilities_v1.month & "/" & TAX_Utilities_v1.Year
             ElseIf strQuy = "TK_QUY" Then
@@ -7470,7 +7470,7 @@ Private Sub Form_Load()
         Set objTaxBusiness = CreateObject(GetAttribute(TAX_Utilities_v1.NodeValidity, "Class"))
         Set objTaxBusiness.fps = fpSpread1
             ' to khai GTGT se co to khai thang / quy
-        If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "95" Or idMenu = "88" Or idMenu = "71" Or idMenu = "36" Or idMenu = "25" Or idMenu = "68" Or idMenu = "96" _
+        If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "95" Or idMenu = "88" Or idMenu = "71" Or idMenu = "36" Or idMenu = "25" Or idMenu = "68" Or idMenu = "14" Or idMenu = "96" _
         Or idMenu = "94" Then
              objTaxBusiness.strTkThangQuy = strQuy
              If strQuy = "TK_THANG" Then
@@ -7581,7 +7581,7 @@ Private Sub Form_Load()
     ' Ho tro load so ton dau ky BC26
     varMenuId = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
     TAX_Utilities_v1.CheckNewDataBC26 = isNewdata
-    If Val(varMenuId) = 68 And isNewdata = True Then
+    If (Val(varMenuId) = 68 Or Val(varMenuId) = 14) And isNewdata = True Then
         If Not objTaxBusiness Is Nothing Then
              arrResult = objTaxBusiness.loadTonCuoiKy
             numRowI = objTaxBusiness.numRowInsert

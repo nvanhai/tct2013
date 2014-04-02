@@ -509,7 +509,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":02C8
+      SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
    End
@@ -2830,7 +2830,7 @@ Public Sub cmdOK_Click()
             End If
         End If
         ' BC 26
-        If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "68" Then
+        If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "68" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "14" Then
             If strQuy = "TK_THANG" Then
                  If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
                     txtMonth.SetFocus
@@ -3091,7 +3091,7 @@ Public Sub cmdOK_Click()
 ' phuc vu an chi
 ' dhdang comment to khai nao???
     ElseIf strKieuKy = "H_Y" Then
-        If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "68" Then
+        If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "68" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "14" Then
 '            If strQuy = "TK_THANG" Then
 '                TAX_Utilities_v1.month = txtMonth.Text
 '            Else
@@ -3281,7 +3281,7 @@ Public Sub cmdOK_Click()
     ' Check validate BC AC
     ' BC26
     ' Kiem tra tu ngay
-    If idToKhai = "68" Then
+    If idToKhai = "68" Or idToKhai = "14" Then
 '        If strQuy = "TK_THANG" Then
 '            dNgayDau = DateSerial(CInt(Mid$(TAX_Utilities_v1.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_v1.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_v1.FirstDay, 1, 2)))
 '            dNgayCuoi = DateSerial(CInt(Mid$(TAX_Utilities_v1.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_v1.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_v1.LastDay, 1, 2)))
@@ -3694,7 +3694,7 @@ Private Sub Form_Load()
     ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "23" Then
         SetupLayout01TTS
     Else
-        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Then
             strQuy = "TK_QUY"
         End If
         SetupLayout (strKieuKy)
@@ -5027,7 +5027,7 @@ Private Sub LoadDefaultInfor()
             'dhdang sua them kieu ky nua nam phuc vu an chi
         Case "H_Y"
 
-            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
+            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Then
                 q = GetQuyHienTai(iNgayTaiChinh, iThangTaiChinh)
 
                 If q.q = 1 Then
@@ -5150,7 +5150,7 @@ Private Sub initNgayDauNgayCuoiKy(Y As Integer, ky As Integer)
     Dim dCuoiKyNam As Date
     Dim objDateUtils As DateUtils
     
-    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Then
             If ky = 0 Then
                 dDauKyNam = DateSerial(CInt(Y), 1, 1)
                 dCuoiKyNam = DateAdd("M", 3, dDauKyNam)
@@ -5246,7 +5246,7 @@ For lCtrl = 2 To fpSpread1.MaxRows
         rowcheck = -1
     End If
 Next lCtrl
-If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
+If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Then
     chkSelectAll.Enabled = False
     fpSpread1.Col = 1
         For lCtrl = 2 To fpSpread1.MaxRows
@@ -6298,7 +6298,7 @@ Private Sub txtMonth_LostFocus()
     End If
     
     ' set lai ngay dau ky va cuoi ky
-    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "68" Then
+    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "14" Then
         If strQuy = "TK_THANG" Then
             ' set ngay dau
             txtNgayDau.Text = "01/" & txtMonth.Text & "/" & txtYear.Text
@@ -6549,7 +6549,7 @@ Private Sub txtYear_LostFocus()
 
 
     ' set lai ngay dau ky va cuoi ky
-    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "68" Then
+    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "14" Then
         If strQuy = "TK_THANG" Then
             ' set ngay dau
             txtNgayDau.Text = "01/" & txtMonth.Text & "/" & txtYear.Text
@@ -7949,7 +7949,7 @@ End Sub
 
 
 Private Sub setValueDefault()
-    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Then
         chkTkhaiThang.value = 0
         chkTKQuy.value = 1
     Else
