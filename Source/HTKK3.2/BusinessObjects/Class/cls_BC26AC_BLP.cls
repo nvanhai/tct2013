@@ -745,8 +745,8 @@ Private Sub checkSheet1()
     
     Dim strTrung67() As String, strTrung89() As String, strTrung2021() As String, strCheckTrung() As String
     
-    blCheck_S2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-    blCheck_S3 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+   ' blCheck_S2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+   ' blCheck_S3 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
     
     strTrung67 = checkTrung(fps, 22, Col_H, Col_I, "B", Col_D, Col_E, Col_F, "", False, 1)
     strTrung89 = checkTrung(fps, 22, Col_J, Col_K, "B", Col_D, Col_E, Col_F, "", False, 1)
@@ -1635,131 +1635,131 @@ Private Sub checkSheet1()
          Dim strTempTS_DS As String
          Dim arrGroupHDNewTS_DS As String
          
-         If blCheck_S2 = True Or blCheck_S3 = True Then
-             Do
-                .GetText .ColLetterToNumber(Col_D), .Row, strTenHD
-                .GetText .ColLetterToNumber(Col_E), .Row, strMauSoHD
-                .GetText .ColLetterToNumber(Col_F), .Row, strKyHieuHD
-                .GetText .ColLetterToNumber(Col_Z), .Row, strSoLuong
-                
-     
-                
-                If .Row = 22 Then
-                    strGroupHD = Trim(strTenHD) & "~" & Trim(strMauSoHD) & "~" & Trim(strKyHieuHD) & "~0"
-                    'strGroupHDTS_DS = Trim(strTenHD) & "~" & Trim(strMauSoHD) & "~" & Trim(strKyHieuHD) & "~" & getListHDTS_DS(CStr(strTuSo), CStr(strDenso))
-                    strGroupHDTS_DS = Trim(strTenHD) & "~" & Trim(strMauSoHD) & "~" & Trim(strKyHieuHD) & "~"
-                Else
-                    arrGroupHD = Split(strGroupHD, "###")
-                    coutCheck = 0
-                    countCheckTrung = 0
-                    For i = 0 To UBound(arrGroupHD)
-                        coutCheck = coutCheck + 1
-                        arrGroupValue = Split(arrGroupHD(i), "~")
-                        If Trim(strTenHD) = arrGroupValue(0) And Trim(strMauSoHD) = arrGroupValue(1) And Trim(strKyHieuHD) = arrGroupValue(2) Then
-                            Exit For
-                        Else
-                            countCheckTrung = countCheckTrung + 1
-                        End If
-                    Next i
-                    If coutCheck = countCheckTrung Then
-                        strGroupHD = strGroupHD & "###" & Trim(strTenHD) & "~" & Trim(strMauSoHD) & "~" & Trim(strKyHieuHD) & "~0"
-                        'strGroupHDTS_DS = strGroupHDTS_DS & "###" & Trim(strTenHD) & "~" & Trim(strMauSoHD) & "~" & Trim(strKyHieuHD) & "~" & getListHDTS_DS(CStr(strTuSo), CStr(strDenso))
-                         strGroupHDTS_DS = strGroupHDTS_DS & "###" & Trim(strTenHD) & "~" & Trim(strMauSoHD) & "~" & Trim(strKyHieuHD) & "~"
-                    End If
-                End If
-                .Row = .Row + 1
-             Loop Until .Text = "aa"
-             
-             'test
-             Dim hoaDon As HOA_DON
-             Dim tgHoaDon As HOA_DON
-             Dim arrHoaDon() As HOA_DON
-             Dim arrTempHoaDon() As HOA_DON
-             Dim loaiHoaDon() As LOAI_HOA_DON
-             Dim index As Long
-             Dim vitri As Long
-             .Row = 22
-             .Col = .ColLetterToNumber("B")
-             index = 0
-             arrGroupHD = Split(strGroupHD, "###")
-             ReDim Preserve loaiHoaDon(UBound(arrGroupHD))
-             For i = 0 To UBound(arrGroupHD)
-                ReDim Preserve arrHoaDon(0)
-                loaiHoaDon(i).loaiHD = arrGroupHD(i)
-                loaiHoaDon(i).hoaDon = arrHoaDon
-             Next i
-             
-             Do
-                .GetText .ColLetterToNumber(Col_D), .Row, strTenHD
-                .GetText .ColLetterToNumber(Col_E), .Row, strMauSoHD
-                .GetText .ColLetterToNumber(Col_F), .Row, strKyHieuHD
-                .GetText .ColLetterToNumber("X"), .Row, strTuSo
-                .GetText .ColLetterToNumber("Y"), .Row, strDenso
-                hoaDon.tenHD = CStr(strTenHD)
-                hoaDon.mauSoHD = CStr(strMauSoHD)
-                hoaDon.kyHieuHD = CStr(strKyHieuHD)
-                hoaDon.tuSo = Val(CStr(strTuSo))
-                hoaDon.denso = Val(CStr(strDenso))
-                'If UBound(loaiHoaDon) > 0 Then
-                For i = 0 To UBound(loaiHoaDon)
-                    If loaiHoaDon(i).loaiHD = hoaDon.tenHD & "~" & hoaDon.mauSoHD & "~" & hoaDon.kyHieuHD & "~0" Then
-                        arrTempHoaDon = loaiHoaDon(i).hoaDon
-                        If Trim(arrTempHoaDon(0).mauSoHD) = "" Then
-                            vitri = 0
-                        Else
-                            vitri = UBound(arrTempHoaDon) + 1
-                            ReDim Preserve arrTempHoaDon(vitri)
-                        End If
-                        arrTempHoaDon(vitri) = hoaDon
-                        loaiHoaDon(i).hoaDon = arrTempHoaDon
-                    End If
-                Next i
-    '            Else
-    '
-    '            End If
-                .Row = .Row + 1
-             Loop Until .Text = "aa"
-             ' Sap xep theo thu tu tang dan trong tung nhom hoa don
-             'If UBound(loaiHoaDon) > 0 Then
-            For i = 0 To UBound(loaiHoaDon)
-                arrTempHoaDon = loaiHoaDon(i).hoaDon
-                If UBound(arrTempHoaDon) > 0 Then
-                    For j = 0 To UBound(arrTempHoaDon) - 1
-                        For k = j + 1 To UBound(arrTempHoaDon)
-                            If arrTempHoaDon(j).tuSo > arrTempHoaDon(k).tuSo Then
-                                tgHoaDon = arrTempHoaDon(j)
-                                arrTempHoaDon(j) = arrTempHoaDon(k)
-                                arrTempHoaDon(k) = tgHoaDon
-                            End If
-                        Next k
-                    Next j
-                End If
-                loaiHoaDon(i).hoaDon = arrTempHoaDon
-            Next i
-             'End If
-             ' Tim cac khoang lien nhau trong cung mot nhom
-             Dim tmpArrHoaDon() As HOA_DON
-             'If UBound(loaiHoaDon) > 0 Then
-            For i = 0 To UBound(loaiHoaDon)
-                arrTempHoaDon = loaiHoaDon(i).hoaDon
-                If UBound(arrTempHoaDon) > 0 Then
-                    For j = 0 To UBound(arrTempHoaDon) - 1
-                        For k = j + 1 To UBound(arrTempHoaDon)
-                            If arrTempHoaDon(j).denso + 1 = arrTempHoaDon(k).tuSo Then
-                               arrTempHoaDon(j).isDelete = True
-                               arrTempHoaDon(k).tuSo = arrTempHoaDon(j).tuSo
-                               Exit For
-                            End If
-                        Next k
-                    Next j
-                End If
-                loaiHoaDon(i).hoaDon = arrTempHoaDon
-            Next i
-             'End If
-             
-             loaiHoaDonS1 = loaiHoaDon
-         End If
-         
+'         If blCheck_S2 = True Or blCheck_S3 = True Then
+'             Do
+'                .GetText .ColLetterToNumber(Col_D), .Row, strTenHD
+'                .GetText .ColLetterToNumber(Col_E), .Row, strMauSoHD
+'                .GetText .ColLetterToNumber(Col_F), .Row, strKyHieuHD
+'                .GetText .ColLetterToNumber(Col_Z), .Row, strSoLuong
+'
+'
+'
+'                If .Row = 22 Then
+'                    strGroupHD = Trim(strTenHD) & "~" & Trim(strMauSoHD) & "~" & Trim(strKyHieuHD) & "~0"
+'                    'strGroupHDTS_DS = Trim(strTenHD) & "~" & Trim(strMauSoHD) & "~" & Trim(strKyHieuHD) & "~" & getListHDTS_DS(CStr(strTuSo), CStr(strDenso))
+'                    strGroupHDTS_DS = Trim(strTenHD) & "~" & Trim(strMauSoHD) & "~" & Trim(strKyHieuHD) & "~"
+'                Else
+'                    arrGroupHD = Split(strGroupHD, "###")
+'                    coutCheck = 0
+'                    countCheckTrung = 0
+'                    For i = 0 To UBound(arrGroupHD)
+'                        coutCheck = coutCheck + 1
+'                        arrGroupValue = Split(arrGroupHD(i), "~")
+'                        If Trim(strTenHD) = arrGroupValue(0) And Trim(strMauSoHD) = arrGroupValue(1) And Trim(strKyHieuHD) = arrGroupValue(2) Then
+'                            Exit For
+'                        Else
+'                            countCheckTrung = countCheckTrung + 1
+'                        End If
+'                    Next i
+'                    If coutCheck = countCheckTrung Then
+'                        strGroupHD = strGroupHD & "###" & Trim(strTenHD) & "~" & Trim(strMauSoHD) & "~" & Trim(strKyHieuHD) & "~0"
+'                        'strGroupHDTS_DS = strGroupHDTS_DS & "###" & Trim(strTenHD) & "~" & Trim(strMauSoHD) & "~" & Trim(strKyHieuHD) & "~" & getListHDTS_DS(CStr(strTuSo), CStr(strDenso))
+'                         strGroupHDTS_DS = strGroupHDTS_DS & "###" & Trim(strTenHD) & "~" & Trim(strMauSoHD) & "~" & Trim(strKyHieuHD) & "~"
+'                    End If
+'                End If
+'                .Row = .Row + 1
+'             Loop Until .Text = "aa"
+'
+'             'test
+'             Dim hoaDon As HOA_DON
+'             Dim tgHoaDon As HOA_DON
+'             Dim arrHoaDon() As HOA_DON
+'             Dim arrTempHoaDon() As HOA_DON
+'             Dim loaiHoaDon() As LOAI_HOA_DON
+'             Dim index As Long
+'             Dim vitri As Long
+'             .Row = 22
+'             .Col = .ColLetterToNumber("B")
+'             index = 0
+'             arrGroupHD = Split(strGroupHD, "###")
+'             ReDim Preserve loaiHoaDon(UBound(arrGroupHD))
+'             For i = 0 To UBound(arrGroupHD)
+'                ReDim Preserve arrHoaDon(0)
+'                loaiHoaDon(i).loaiHD = arrGroupHD(i)
+'                loaiHoaDon(i).hoaDon = arrHoaDon
+'             Next i
+'
+'             Do
+'                .GetText .ColLetterToNumber(Col_D), .Row, strTenHD
+'                .GetText .ColLetterToNumber(Col_E), .Row, strMauSoHD
+'                .GetText .ColLetterToNumber(Col_F), .Row, strKyHieuHD
+'                .GetText .ColLetterToNumber("X"), .Row, strTuSo
+'                .GetText .ColLetterToNumber("Y"), .Row, strDenso
+'                hoaDon.tenHD = CStr(strTenHD)
+'                hoaDon.mauSoHD = CStr(strMauSoHD)
+'                hoaDon.kyHieuHD = CStr(strKyHieuHD)
+'                hoaDon.tuSo = Val(CStr(strTuSo))
+'                hoaDon.denso = Val(CStr(strDenso))
+'                'If UBound(loaiHoaDon) > 0 Then
+'                For i = 0 To UBound(loaiHoaDon)
+'                    If loaiHoaDon(i).loaiHD = hoaDon.tenHD & "~" & hoaDon.mauSoHD & "~" & hoaDon.kyHieuHD & "~0" Then
+'                        arrTempHoaDon = loaiHoaDon(i).hoaDon
+'                        If Trim(arrTempHoaDon(0).mauSoHD) = "" Then
+'                            vitri = 0
+'                        Else
+'                            vitri = UBound(arrTempHoaDon) + 1
+'                            ReDim Preserve arrTempHoaDon(vitri)
+'                        End If
+'                        arrTempHoaDon(vitri) = hoaDon
+'                        loaiHoaDon(i).hoaDon = arrTempHoaDon
+'                    End If
+'                Next i
+'    '            Else
+'    '
+'    '            End If
+'                .Row = .Row + 1
+'             Loop Until .Text = "aa"
+'             ' Sap xep theo thu tu tang dan trong tung nhom hoa don
+'             'If UBound(loaiHoaDon) > 0 Then
+'            For i = 0 To UBound(loaiHoaDon)
+'                arrTempHoaDon = loaiHoaDon(i).hoaDon
+'                If UBound(arrTempHoaDon) > 0 Then
+'                    For j = 0 To UBound(arrTempHoaDon) - 1
+'                        For k = j + 1 To UBound(arrTempHoaDon)
+'                            If arrTempHoaDon(j).tuSo > arrTempHoaDon(k).tuSo Then
+'                                tgHoaDon = arrTempHoaDon(j)
+'                                arrTempHoaDon(j) = arrTempHoaDon(k)
+'                                arrTempHoaDon(k) = tgHoaDon
+'                            End If
+'                        Next k
+'                    Next j
+'                End If
+'                loaiHoaDon(i).hoaDon = arrTempHoaDon
+'            Next i
+'             'End If
+'             ' Tim cac khoang lien nhau trong cung mot nhom
+'             Dim tmpArrHoaDon() As HOA_DON
+'             'If UBound(loaiHoaDon) > 0 Then
+'            For i = 0 To UBound(loaiHoaDon)
+'                arrTempHoaDon = loaiHoaDon(i).hoaDon
+'                If UBound(arrTempHoaDon) > 0 Then
+'                    For j = 0 To UBound(arrTempHoaDon) - 1
+'                        For k = j + 1 To UBound(arrTempHoaDon)
+'                            If arrTempHoaDon(j).denso + 1 = arrTempHoaDon(k).tuSo Then
+'                               arrTempHoaDon(j).isDelete = True
+'                               arrTempHoaDon(k).tuSo = arrTempHoaDon(j).tuSo
+'                               Exit For
+'                            End If
+'                        Next k
+'                    Next j
+'                End If
+'                loaiHoaDon(i).hoaDon = arrTempHoaDon
+'            Next i
+'             'End If
+'
+'             loaiHoaDonS1 = loaiHoaDon
+'         End If
+'
          ' end test
          ' Tinh tong cac so hoa don cung 1 loai
          ' Kiem tra neu co phu luc moi check so luong HD ben phu luc va to khai
