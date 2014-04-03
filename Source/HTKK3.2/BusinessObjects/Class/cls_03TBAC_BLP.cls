@@ -273,6 +273,8 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
     Dim strTemp As Variant
     Dim countRowDynamic As Integer
     
+    Dim maLoaiBLP As Variant
+    
     With fps
         .EventEnabled(EventAllEvents) = False
         mCurrentSheet = .Sheet
@@ -363,7 +365,8 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
            'Kiem tra cau truc cua ky hieu neu sai set cot an =1 dung =0
             If Col = .ColLetterToNumber("S") Then
                  .GetText Col, Row, varTemp
-                 .SetText .ColLetterToNumber("AH"), Row, CheckSoBLP(CStr(varTemp), strLoai)
+                 .GetText .ColLetterToNumber("C"), Row, maLoaiBLP
+                 .SetText .ColLetterToNumber("AH"), Row, CheckSoBLP(CStr(varTemp), maLoaiBLP)
                  .Col = .ColLetterToNumber("AH")
                  .Row = Row
                 UpdateCell fps, .Col, .Row, .Text
@@ -428,6 +431,8 @@ Private Sub CheckDynamicError()
     Dim i As Integer, countDynamicRow As Integer, j As Integer, k As Integer
     
     Dim str() As String
+    
+    Dim maLoaiBLP As Variant
     ' tra ve mang cac row bi trung khoang
     str = checkTrung(fps, 43, "V", "Y", "B", "E", "O", "S", "", False, 1)
     
@@ -537,7 +542,9 @@ Private Sub CheckDynamicError()
                 .BackColor = mErrorColor
                 iFlagEmty = 1
             Else
-                result = CheckSoBLP(CStr(strKyHieuHD), strLoai)
+            
+                .GetText .ColLetterToNumber("C"), .Row, maLoaiBLP
+                result = CheckSoBLP(CStr(strKyHieuHD), maLoaiBLP)
                 If result = "1" And iWhiteRow = 0 Then
                     .Col = .ColLetterToNumber("S")
                     .CellNote = errKyHieuHD  'static
