@@ -1,7 +1,7 @@
 <HSoThueDTu>
 	<Static GroupName="TKhaiThue">
-		<maTKhai></maTKhai>
-		<tenTKhai>THÔNG BÁO KẾT QUẢ HỦY BIÊN LAI THU TIỀN PHÍ, LỆ PHÍ (TB03/AC)</tenTKhai>
+		<maTKhai>263</maTKhai>
+		<tenTKhai>Thông báo kết quả hủy biên lai thu tiền phí, lệ phí</tenTKhai>
 		<moTaBMau></moTaBMau>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">

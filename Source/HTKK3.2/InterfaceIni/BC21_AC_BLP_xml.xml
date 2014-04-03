@@ -1,7 +1,7 @@
 <HSoThueDTu>
 	<Static GroupName="TKhaiThue">
-		<maTKhai>String</maTKhai>
-		<tenTKhai>BÁO CÁO MẤT, CHÁY BIÊN LAI THU PHÍ, LỆ PHÍ (BC21/AC)</tenTKhai>
+		<maTKhai>262</maTKhai>
+		<tenTKhai>Báo cáo mất, cháy biên lai thu phí, lệ phí</tenTKhai>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
