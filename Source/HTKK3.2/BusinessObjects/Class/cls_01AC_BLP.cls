@@ -677,11 +677,13 @@ Private Sub checkSheet1()
             End If
             'Kiem tra cau truc cua ky hieu
             Dim varTemp As Variant
+            Dim maLoaiBLP As Variant
             .GetText .ColLetterToNumber("K"), .Row, varTemp
 '            .SetText .ColLetterToNumber("O"), .Row, CheckSoBLP(CStr(varTemp), strLoai)
 '            .Col = .ColLetterToNumber("O")
 '            UpdateCell fps, .Col, .Row, .Text
-            SohieuHD = CheckSoBLP(CStr(varTemp), strLoai)
+            .GetText .ColLetterToNumber("H"), .Row, maLoaiBLP
+            SohieuHD = CheckSoBLP(CStr(varTemp), maLoaiBLP)
             
 
             If (Trim(SohieuHD) = "1" Or Trim(SohieuHD) = "2") And iWhiteRow = 0 Then

@@ -740,6 +740,8 @@ Private Sub checkSheet1()
     Dim arrGroupHD() As String
     Dim strGroupHD As String
     
+    Dim maLoaiBLP As Variant
+    
     Dim str() As String
     Dim strLietKe() As String
     
@@ -938,7 +940,8 @@ Private Sub checkSheet1()
                 .BackColor = mErrorColor
                 iFlagEmty = 1
             Else
-                result = CheckSoBLP(CStr(strKyHieuHD), strLoai)
+                .GetText .ColLetterToNumber("C"), .Row, maLoaiBLP
+                result = CheckSoBLP(CStr(strKyHieuHD), maLoaiBLP)
                 If result = "1" And iWhiteRow = 0 Then
                     .Col = .ColLetterToNumber(Col_F)
                     .CellNote = errKyHieuHD  'static

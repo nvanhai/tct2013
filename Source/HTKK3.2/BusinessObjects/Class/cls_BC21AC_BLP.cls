@@ -290,6 +290,8 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
     Dim strLoai As Variant
     Dim strTemp As Variant
     
+    Dim maLoaiBLP As Variant
+    
     With fps
         .EventEnabled(EventAllEvents) = False
         mCurrentSheet = .Sheet
@@ -393,7 +395,8 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
            'Kiem tra cau truc cua ky hieu neu sai set cot an =1 dung =0
             If Col = .ColLetterToNumber("S") Then
                  .GetText Col, Row, varTemp
-                 .SetText .ColLetterToNumber("AH"), Row, CheckSoBLP(CStr(varTemp), strLoai)
+                 .GetText .ColLetterToNumber("C"), Row, maLoaiBLP
+                 .SetText .ColLetterToNumber("AH"), Row, CheckSoBLP(CStr(varTemp), maLoaiBLP)
                  .Col = .ColLetterToNumber("AH")
                  .Row = Row
                 UpdateCell fps, .Col, .Row, .Text
@@ -667,8 +670,10 @@ Private Sub CheckDynamicError()
             
             'Kiem tra cau truc cua ky hieu
             Dim varTemp As Variant
+            Dim maLoaiBLP As Variant
             .GetText .ColLetterToNumber("S"), .Row, varTemp
-            SohieuHD = CheckSoBLP(CStr(varTemp), strLoai)
+            .GetText .ColLetterToNumber("C"), .Row, maLoaiBLP
+            SohieuHD = CheckSoBLP(CStr(varTemp), maLoaiBLP)
             
 
             If (Trim(SohieuHD) = "1" Or Trim(SohieuHD) = "2" Or Trim(varTemp) = vbNullString) And iWhiteRow = 0 Then

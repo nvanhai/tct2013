@@ -39,6 +39,10 @@ Public Const SxMST12Col = "O"
 Public Const SxMST13Row = 2
 Public Const SxMST13Col = "P"
 
+Public Const Str_01BLP = "01BLP"
+Public Const Str_02BLP = "02BLP"
+
+
 Public mCurrentSheet As Integer
 Public strFirstTimeRunID As String
 Public arrErrorCells As Scripting.Dictionary
@@ -1288,7 +1292,7 @@ End Function
 ' CheckSoHD = 1 sai cau truc
 ' CheckSoHD = 2 sai length
 
-Public Function CheckSoBLP(str As String, strNamInBLP As Variant) As String
+Public Function CheckSoBLP(str As String, strMaLoaiBLP As Variant) As String
   Dim result As String
   Dim str1 As String
   Dim str2 As String
@@ -1300,11 +1304,21 @@ Public Function CheckSoBLP(str As String, strNamInBLP As Variant) As String
   strLoaiIn = "TP"
   strTmpKH = "ABCDEGHKLMNPQRSTUVXY"
   result = "0"
-  ' kiem tra length 6 ky tu
-  If Len(Trim(str)) <> 6 Then
-    result = "2"
-    CheckSoBLP = result
-    Exit Function
+  
+  If strMaLoaiBLP = Str_01BLP Then
+        ' kiem tra length 6 ky tu hoac 8 ky tu
+        If Len(Trim(str)) <> 6 And Len(Trim(str)) <> 8 Then
+          result = "2"
+          CheckSoBLP = result
+          Exit Function
+        End If
+  Else
+       ' kiem tra length 6 ky tu
+       If Len(Trim(str)) <> 6 Then
+          result = "2"
+          CheckSoBLP = result
+          Exit Function
+        End If
   End If
 
     ' 2 ky tu dau la ca ky tu chu cai "ABCDEGHKLMNPQRSTUVXY"
@@ -1312,24 +1326,42 @@ Public Function CheckSoBLP(str As String, strNamInBLP As Variant) As String
     ' 2 ky tu tiep theo la nam in BLP
     ' Ky tu cuoi la "TP"
     
-'    If Len(Trim(str)) = 8 Then
-'          str1 = Left$(str, 2)
-'          str = Right$(str, 6)
-'    Else
-'          str1 = "01"
-'    End If
-    If InStr(strTmpKH, UCase(Left$(str, 1))) > 0 And InStr(strTmpKH, UCase(Mid$(str, 2, 1))) > 0 Then
-       If InStr(str, "-") > 0 And IsNumeric(Mid$(str, 4, 2)) = True Then
-          If InStr(strLoaiIn, UCase(Right$(str, 1))) > 0 Then
-               result = "0"
-          Else
-               result = "1"
-          End If
-       Else
-          result = "1"
-       End If
+    If Len(Trim(str)) = 8 Then
+          str1 = Left$(str, 2)
+          str = Right$(str, 6)
     Else
-         result = "1"
+          str1 = "01"
+    End If
+    
+    If strMaLoaiBLP = Str_01BLP Then
+        ' check cau truc co do dai 6 hoac 8 ky tu
+        If InStr(strTmpKH, UCase(Left$(str, 1))) > 0 And InStr(strTmpKH, UCase(Mid$(str, 2, 1))) > 0 And IsNumeric(str1) = True And (0 < Val(str1)) And (Val(str1) < 65) Then
+           If InStr(str, "-") > 0 And IsNumeric(Mid$(str, 4, 2)) = True Then
+              If InStr(strLoaiIn, UCase(Right$(str, 1))) > 0 Then
+                   result = "0"
+              Else
+                   result = "1"
+              End If
+           Else
+              result = "1"
+           End If
+        Else
+             result = "1"
+        End If
+    Else
+        If InStr(strTmpKH, UCase(Left$(str, 1))) > 0 And InStr(strTmpKH, UCase(Mid$(str, 2, 1))) > 0 Then
+           If InStr(str, "-") > 0 And IsNumeric(Mid$(str, 4, 2)) = True Then
+              If InStr(strLoaiIn, UCase(Right$(str, 1))) > 0 Then
+                   result = "0"
+              Else
+                   result = "1"
+              End If
+           Else
+              result = "1"
+           End If
+        Else
+             result = "1"
+        End If
     End If
 
   CheckSoBLP = result
