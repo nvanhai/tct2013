@@ -3,31 +3,31 @@
 	<NDUNGKHAIBOSUNGDIEUCHINH>
 		<DieuChinhTang>
 			<KHBSDieuChinhTang>
-				<ct2/>
-				<ct3/>
-				<ct4/>
-				<ct5/>
-				<ct6/>
+			<ct2></ct2>
+			<ct3></ct3>
+			<ct4>0</ct4>
+			<ct5>0</ct5>
+			<ct6>0</ct6>
 			</KHBSDieuChinhTang>
 		</DieuChinhTang>
 		<DieuChinhGiam>
 			<KHBSDieuChinhGiam>
-				<ct2/>
-				<ct3/>
-				<ct4/>
-				<ct5/>
-				<ct6/>
+			<ct2></ct2>
+			<ct3></ct3>
+			<ct4>0</ct4>
+			<ct5>0</ct5>
+			<ct6>0</ct6>
 			</KHBSDieuChinhGiam>
 		</DieuChinhGiam>
 		<TongHopDCTangGiamPNop>
-			<ct4/>
-			<ct5/>
-			<ct6/>
+			<ct4>0</ct4>
+			<ct5>0</ct5>
+			<ct6>0</ct6>
 		</TongHopDCTangGiamPNop>
 	</NDUNGKHAIBOSUNGDIEUCHINH>
 	<PhatChamNop>
-		<soNgayNopCham/>
-		<soTienPhatNopCham/>
+		<soNgayNopCham>0</soNgayNopCham>
+		<soTienPhatNopCham>0</soTienPhatNopCham>
 	</PhatChamNop>
 	<noiDungGiaiThich/>
 </PL01_KHBS>

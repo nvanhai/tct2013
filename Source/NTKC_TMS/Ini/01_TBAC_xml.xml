@@ -18,27 +18,27 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Dynamic GroupName="HoaDon">
-		<ChiTiet id="ID_1">
+		<ChiTiet ID="ID_1">
 			<tenLoaiHDon>D_29</tenLoaiHDon>
 			<mauSo>I_29</mauSo>
 			<kyHieu>J_29</kyHieu>
 			<soLuong>K_29</soLuong>
 			<tuSo>M_29</tuSo>
 			<denSo>O_29</denSo>
-			<ngayBDauSDung>Q_29</ngayBDauSDung>
+			<ngayBDauSDung date="1">Q_29</ngayBDauSDung>
 			<DoanhNghiepIn>
 				<ten>S_29</ten>
-				<mst>X_29</mst>
+				<mst TINType="1">X_29</mst>
 			</DoanhNghiepIn>
 			<HopDongDatIn>
 				<so>Z_29</so>
-				<ngay>AC_29</ngay>
+				<ngay date="1">AC_29</ngay>
 			</HopDongDatIn>
 		</ChiTiet>
 	</Dynamic>
 	<Static GroupName="DonViChuQuan">
 		<ten>E_34</ten>
-		<mst>E_36</mst>
+		<mst TINType="1">E_36</mst>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<tenCQTTiepNhan>J_38</tenCQTTiepNhan>

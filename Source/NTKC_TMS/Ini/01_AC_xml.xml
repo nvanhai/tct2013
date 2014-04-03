@@ -31,7 +31,7 @@
 			</ToChucCNDatIn>
 			<HopDong>
 				<so>K_29</so>
-				<ngay>M_29</ngay>
+				<ngay date="1">M_29</ngay>
 			</HopDong>
 			<tenHDon>O_29</tenHDon>
 			<mauHDon>R_29</mauHDon>
@@ -43,11 +43,11 @@
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
 		<nguoiDaiDien>S_36</nguoiDaiDien>
-		<ngayBCao>S_38</ngayBCao>
+		<ngayLapBCao date="1">S_38</ngayLapBCao>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy></nguoiKy>
-		<ngayKy></ngayKy>
+		<ngayKy date="1"></ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
 		<tenNVienDLyThue></tenNVienDLyThue>

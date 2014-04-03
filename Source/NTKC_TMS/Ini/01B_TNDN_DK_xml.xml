@@ -22,11 +22,11 @@
 		<ct12>I_16</ct12>
 	</Static>
 	<Static GroupName="CT13">
-		<donViUyQuyen></donViUyQuyen>
-		<daiLyThue/>
+		<donViUyQuyen Choice="1">I_44</donViUyQuyen>
+		<daiLyThue Choice="1">P_44</daiLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<tenDonViUyQuyen>I_44</tenDonViUyQuyen>
+		<tenDonViUyQuyen>I_17</tenDonViUyQuyen>
 		<ct22>AJ_52</ct22>
 		<ct23>AJ_53</ct23>
 		<ct24>AJ_54</ct24>
