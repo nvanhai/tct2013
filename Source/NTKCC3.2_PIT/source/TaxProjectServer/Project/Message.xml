@@ -174,4 +174,5 @@
 	<Infor ID="0174" Msg="Báo cáo tình hình nhận in biên lai thu phí, lệ phí"/>
 	<Infor ID="0175" Msg="Báo cáo mất,cháy,hỏng biên lai thu phí, lệ phí"/>
 	<Infor ID="0176" Msg="Thông báo kết quả hủy biên lai thu phí, lệ phí"/>
+	<Infor ID="0177" Msg="Báo cáo tình hình sử dụng biên lai thu phí, lệ phí"/>
 </Message>

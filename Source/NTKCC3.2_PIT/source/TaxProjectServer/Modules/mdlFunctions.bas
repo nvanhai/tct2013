@@ -30,8 +30,8 @@ Public dNgayDauKy As Date
 Public dNgayCuoiKy As Date
 
 Public Const SS_SORT_ORDER_ASCENDING = 1
-Public Const APP_VERSION = "3.2.2"
-Public Const HTKK_LAST_VERSION = "3.2.2"
+Public Const APP_VERSION = "9.9.9"
+Public Const HTKK_LAST_VERSION = "9.9.9"
 Public Const SS_BORDER_TYPE_NONE = 0
 Public Const SS_BORDER_TYPE_LEFT = 1
 Public Const SS_BORDER_TYPE_RIGHT = 2
@@ -1995,6 +1995,7 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "13" Then changeMaToKhai = "01_AC_BLP"
     If strID = "09" Then changeMaToKhai = "BC21_AC_BLP"
     If strID = "10" Then changeMaToKhai = "03_TBAC_BLP"
+    If strID = "14" Then changeMaToKhai = "BC26_AC_BLP"
 End Function
 
 'lay ten CQT tu ma CQT

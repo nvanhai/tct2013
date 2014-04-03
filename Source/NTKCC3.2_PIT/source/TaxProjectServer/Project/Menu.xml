@@ -84,12 +84,6 @@
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="KHBS_03_TNDN" InterfaceIni="..\Ini\KHBS_03_TNDN.xml" ReportIni="..\ReportIni\KHBS_03_TNDN.xml"/>
 		</Validity>
 	</Menu>
-	<Menu ID="14" ParentID="101" Caption="Tờ khai thuế TNDN khấu trừ HHĐL (05/TNDN)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp" FileName="" DirFile="\NTK_TG\">
-		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\05_TNDN.xls" ReportTemplate="..\ReportTemplates\05_TNDN.xls" Class="Tax_Business_Svr_New.cls_05TNDN">
-			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="05_TNDN" Ini="..\Ini\05_TNDN.xml"/>
-			<Sheet ID="KHBS" Caption="KHBS" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
-		</Validity>
-	</Menu>
 	<Menu ID="06" ParentID="101" Caption="Tờ khai thuế tài nguyên(01/TAIN)" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Icon="..\Pictures\tk_tndn.bmp" FileName="" DirFile="\NTK_TG\">
 		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\01_TAIN.xls" ReportTemplate="..\ReportTemplates\01_TAIN.xls" CatalogueID="01" Class="Tax_Business_Svr_New.cls_01TAIN">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="01_TAIN" Ini="..\Ini\01_TAIN.xml"/>
@@ -412,6 +406,12 @@
 		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\01_AC_BLP.xls" ReportTemplate="..\ReportTemplates\Excel\01_AC_BLP.xls" Class="Tax_Business_Svr_New.cls_01_AC_BLP">
 			<Sheet ID="01" Caption="01_AC_BLP" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="01_AC_BLP" Ini="..\Ini\01_AC_BLP.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml"/>
+		</Validity>
+	</Menu>
+	<Menu ID="14" PopID="101" ParentID="112" Caption="Báo cáo tình hình sử dụng biên lai thu phí, lệ phí" FormName="" Year="1/2" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tncn.bmp" DirFile="\NTK_TG\">
+		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\BC26_AC_BLP.xls" ReportTemplate="..\ReportTemplates\Excel\BC26_AC_BLP.xls" Class="Tax_Business_Svr_New.cls_BC26AC_BLP">
+			<Sheet ID="01" Caption="BC26_AC_BLP" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="BC26_AC_BLP" Ini="..\Ini\BC26_AC_BLP.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
 		</Validity>
 	</Menu>
 </Root>
