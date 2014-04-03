@@ -790,7 +790,7 @@ Private Sub cmdSave_Click()
 
     ' chi kiem tra validate cho cac mau an chi
     ' Kiem tra ngay nop khong duoc lon hon ngay quet
-    If (Val(menuId) >= 64 And Val(menuId) <= 68) Or Val(menuId) = 91 Or Val(menuId) = 7 Or Val(menuId) = 9 Or Val(menuId) = 10 Or Val(menuId) = 13 Then
+    If (Val(menuId) >= 64 And Val(menuId) <= 68) Or Val(menuId) = 91 Or Val(menuId) = 7 Or Val(menuId) = 9 Or Val(menuId) = 10 Or Val(menuId) = 13 Or Val(menuId) = 14 Then
         If CheckValidData = False Then
             MessageBox "0136", msOKOnly, miWarning
             Exit Sub
@@ -872,7 +872,7 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("E"), 30, vKYLBO
             'dntai 12/05/2011
             'lay VKYLBO cho truong to an chi 01/AC
-        ElseIf (menuId >= 64 And menuId <= 68) Or menuId = 91 Or (menuId >= 7 And menuId <= 10 And menuId <> 8) Or menuId = 13 Then
+        ElseIf (menuId >= 64 And menuId <= 68) Or menuId = 91 Or (menuId >= 7 And menuId <= 10 And menuId <> 8) Or menuId = 13 Or menuId = 14 Then
             vKYLBO = Month(Date) & "/" & Year(Date)
         ElseIf menuId = 23 Then
             .GetText .ColLetterToNumber("D"), 27, vKYLBO
@@ -918,7 +918,7 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("E"), 32, vNgayNop
         ElseIf menuId = 8 Then
             .GetText .ColLetterToNumber("I"), 11, vNgayNop
-        ElseIf menuId = 64 Or menuId = 65 Or menuId = 68 Or menuId = 91 Or menuId = 7 Or menuId = 13 Then
+        ElseIf menuId = 64 Or menuId = 65 Or menuId = 68 Or menuId = 91 Or menuId = 7 Or menuId = 13 Or menuId = 14 Then
             .GetText .ColLetterToNumber("E"), 10, vNgayNop
         ElseIf menuId = 81 Or menuId = 80 Or menuId = 82 Or menuId = 89 Then
             .GetText .ColLetterToNumber("E"), 32, vNgayNop
@@ -1260,7 +1260,7 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("K"), 12, vNGAYQUET
         ElseIf menuId = 67 Or menuId = 10 Then
             .GetText .ColLetterToNumber("N"), 14, vNGAYQUET
-        ElseIf menuId = 68 Then
+        ElseIf menuId = 68 Or menuId = 14 Then
             .GetText .ColLetterToNumber("K"), 12, vNGAYQUET
         ElseIf menuId = 66 Or menuId = 9 Then
             .GetText .ColLetterToNumber("S"), 15, vNGAYQUET
@@ -1795,8 +1795,16 @@ Private Sub Command1_Click()
 'Barcode_Scaned str1
 'str1 = "aa322102100343639   01201400100100100101/0101/01/2010<S01><S>~~45~01/04/2014~13</S><S>Bi™n lai thu ph›, l÷ ph›kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~0000001~0000010~10</S><S>sdf~dsf~01/04/2014</S></S01>"
 'Barcode_Scaned str1
-str1 = "aa322132100343639   01201400100100100101/0101/01/2009<S01><S>~01/01/2014~30/06/2014</S><S>6868686868~2342~234~01/01/2014~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~0000001~0000010~10</S><S>sdf~01/04/2014</S></S01>"
+'str1 = "aa322132100343639   01201400100100100101/0101/01/2009<S01><S>~01/01/2014~30/06/2014</S><S>6868686868~2342~234~01/01/2014~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~0000001~0000010~10</S><S>sdf~01/04/2014</S></S01>"
+'Barcode_Scaned str1
+
+str1 = "aa999142100343639   01201400200200100101/0101/01/2009<S01><S>1~1~01/01/2014~31/03/2014</S><S>Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-001~AB-12T~20~0000001~0000010~0000011~0000020~0000001~0000008~8~5~1~1~1~2~1~3~0000009~0000020~12~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~20~0000001~0000010~0000011~0000020~0000001~0000007~7~4~1~1~1~2~1~3~0000008~0000020~13</S><S>~Nguyen Van A~03/04/2014</S></S01>"
 Barcode_Scaned str1
+
+'str1 = "aa999682100343639   01201400200200100101/0101/01/2009<S01><S>~~01/01/2014~31/03/2014</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~Nguyen Van A~03/04/2014~1</S></S01>"
+'Barcode_Scaned str1
+
+
 End Sub
 
 Private Sub Form_Activate()
@@ -3219,7 +3227,7 @@ On Error GoTo ErrHandle
         dNgayCuoiKy = DateAdd("m", 1, dNgayDauKy)
         dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
 
-        If Val(strID) = 1 Or Val(strID) = 2 Or Val(strID) = 4 Or Val(strID) = 71 Or Val(strID) = 36 Or Val(strID) = 68 Or Val(strID) = 95 Then
+        If Val(strID) = 1 Or Val(strID) = 2 Or Val(strID) = 4 Or Val(strID) = 71 Or Val(strID) = 36 Or Val(strID) = 68 Or Val(strID) = 95 Or Val(strID) = 14 Then
             If LoaiKyKK = True Then
                 dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_Svr_New.ThreeMonths), CInt(TAX_Utilities_Svr_New.Year), iNgayTaiChinh, iThangTaiChinh)
                 dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
@@ -3646,7 +3654,7 @@ Private Function LoadForm(ByVal strData As String) As Boolean
     'lay thong tin ve dai ly thue
     'bo qua cac to an chi va bien lai
     If Val(LoaiTk1) <> 64 And Val(LoaiTk1) <> 65 And Val(LoaiTk1) <> 66 And Val(LoaiTk1) <> 67 And Val(LoaiTk1) <> 68 And Val(LoaiTk1) <> 91 _
-    And Val(LoaiTk1) <> 7 And Val(LoaiTk1) <> 9 And Val(LoaiTk1) <> 10 And Val(LoaiTk1) <> 13 Then
+    And Val(LoaiTk1) <> 7 And Val(LoaiTk1) <> 9 And Val(LoaiTk1) <> 10 And Val(LoaiTk1) <> 13 And Val(LoaiTk1) <> 14 Then
         If getTTDLT = False Then
             If MessageBox("0141", msYesNo, miQuestion) = mrNo Then
                 Exit Function
@@ -3695,7 +3703,7 @@ Private Function LoadForm(ByVal strData As String) As Boolean
         ' An chi
         LoaiTk1 = Mid(strData, 4, 2)
 
-        If (Val(LoaiTk1) >= 64 And Val(LoaiTk1) <= 68) Or Val(LoaiTk1) = 91 Or Val(LoaiTk1) = 7 Or Val(LoaiTk1) = 9 Or Val(LoaiTk1) = 10 Or Val(LoaiTk1) = 13 Then
+        If (Val(LoaiTk1) >= 64 And Val(LoaiTk1) <= 68) Or Val(LoaiTk1) = 91 Or Val(LoaiTk1) = 7 Or Val(LoaiTk1) = 9 Or Val(LoaiTk1) = 10 Or Val(LoaiTk1) = 13 Or Val(LoaiTk1) = 14 Then
             objTaxBusiness.strSoTTTKhai = getSoTTTK_AC(changeMaToKhai(LoaiTk1), arrStrHeaderData, strData)
             objTaxBusiness.isTKTonTai = isTonTaiAC
             objTaxBusiness.strMaBPQL = strMaPhongQuanLy
@@ -5110,7 +5118,7 @@ Private Function Prepare_QLT() As String
             '         "maDTNT~vKYLBO~NGNOP~MST~DIA_CHI~GHICHU~NGUOI_NOP~NGNHAP"
             strToaDo = "D-4~E-42~D-12~D-4~D-8~D-16~D-6~N-14"
             ThongTin_DLT strToaDo, maDTNT, vKYLBO, NGNOP, MST, DIA_CHI, GHICHU, NGUOI_NOP, NGNHAP
-        ElseIf menuId = 68 Then
+        ElseIf menuId = 68 Or menuId = 14 Then
             '         "maDTNT~vKYLBO~NGNOP~MST~DIA_CHI~GHICHU~NGUOI_NOP~NGNHAP"
             strToaDo = "E-4~E-42~E-10~E-4~E-6~E-14~E-5~K-12"
             ThongTin_DLT strToaDo, maDTNT, vKYLBO, NGNOP, MST, DIA_CHI, GHICHU, NGUOI_NOP, NGNHAP
@@ -6552,11 +6560,7 @@ Private Function getSoTTTK_AC(ByVal strID As String, _
         arrDate = Split(arrDeltail(UBound(arrDeltail) - 1), "/")
         dTempDate = DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))
         
-        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & _
-        "Where tkhai.tin = '" & vMaSoThue & "'" & _
-        "And tkhai.LOAI_BC = '" & strID & "' " & _
-        " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')" & _
-        " And tkhai.TIN_DV_CQ='" & Trim(arrDeltail(UBound(arrDeltail) - 3)) & "'"
+        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')" & " And tkhai.TIN_DV_CQ='" & Trim(arrDeltail(UBound(arrDeltail) - 3)) & "'"
     ElseIf strID = "03_TBAC" Then
         arrDeltail = Split(strData, "~")
         arrDate = Split(Left$(arrDeltail(UBound(arrDeltail)), 10), "/")
@@ -6597,16 +6601,14 @@ Private Function getSoTTTK_AC(ByVal strID As String, _
             strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.TU_NGAY = CTOD('" & format$(dNgayDauKy, "mm/dd/yyyy") & "')" & "And tkhai.DEN_NGAY = CTOD('" & format$(dNgayCuoiKy, "mm/dd/yyyy") & "')"
 
         End If
+
     ElseIf strID = "01_TBAC_BLP" Then
         arrDeltail = Split(strData, "~")
 
         arrDate = Split(arrDeltail(UBound(arrDeltail) - 1), "/")
         dTempDate = DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))
         
-        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & _
-        "Where tkhai.tin = '" & vMaSoThue & "'" & _
-        "And tkhai.LOAI_BC = '" & strID & "' " & _
-        " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')"
+        strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')"
     ElseIf strID = "03_TBAC_BLP" Then
         arrDeltail = Split(strData, "~")
         arrDate = Split(Left$(arrDeltail(UBound(arrDeltail)), 10), "/")
@@ -6629,12 +6631,21 @@ Private Function getSoTTTK_AC(ByVal strID As String, _
         dTempDate1 = DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))
         
         strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.TU_NGAY = CTOD('" & format(dTempDate, "mm/dd/yyyy") & "')" & "And tkhai.DEN_NGAY = CTOD('" & format(dTempDate1, "mm/dd/yyyy") & "')"
+    ElseIf strID = "BC26_AC_BLP" Then
+
+        If LoaiKyKK = False Then
+            strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.QUY_BC = CTOD('" & format$(dNgayDauKy, "mm/dd/yyyy") & "')"
+        Else
+            strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.TU_NGAY = CTOD('" & format$(dNgayDauKy, "mm/dd/yyyy") & "')" & "And tkhai.DEN_NGAY = CTOD('" & format$(dNgayCuoiKy, "mm/dd/yyyy") & "')"
+
+        End If
 
     Else
         strSQL = "select max(so_tt_tk) from tmp_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & vMaSoThue & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.TU_NGAY = CTOD('" & format$(dNgayDauKy, "mm/dd/yyyy") & "')" & "And tkhai.DEN_NGAY = CTOD('" & format$(dNgayCuoiKy, "mm/dd/yyyy") & "')"
     End If
     
     Set rsResult = clsConn.Execute(strSQL)
+
     If rsResult Is Nothing Then
         strSTT = 0
         isTonTaiAC = False

@@ -100,7 +100,7 @@ Begin VB.Form frmTraCuuACError
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuuACError.frx":0577
+         SpreadDesigner  =   "frmTracuuACError.frx":05AF
          UserResize      =   1
          Appearance      =   1
       End
@@ -161,7 +161,7 @@ Begin VB.Form frmTraCuuACError
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuuACError.frx":0A74
+         SpreadDesigner  =   "frmTracuuACError.frx":0AE4
          UserResize      =   1
       End
    End
@@ -345,10 +345,11 @@ Private Function changeLoaiToKhai(ByVal strLoaiMaToKhai As String) As String
     If strLoaiMaToKhai = "66" Then changeLoaiToKhai = " = 'BC21_AC'"
     If strLoaiMaToKhai = "67" Then changeLoaiToKhai = " = '03_TBAC'"
     If strLoaiMaToKhai = "68" Then changeLoaiToKhai = " = 'BC26_AC'"
-    If strLoaiMaToKhai = "07" Then changeLoaiToKhai = " = '01_TBAC_BLP'"
+    If strLoaiMaToKhai = "7" Then changeLoaiToKhai = " = '01_TBAC_BLP'"
     If strLoaiMaToKhai = "13" Then changeLoaiToKhai = " = '01_AC_BLP'"
-    If strLoaiMaToKhai = "09" Then changeLoaiToKhai = " = 'BC21_AC_BLP'"
+    If strLoaiMaToKhai = "9" Then changeLoaiToKhai = " = 'BC21_AC_BLP'"
     If strLoaiMaToKhai = "10" Then changeLoaiToKhai = " = '03_TBAC_BLP'"
+     If strLoaiMaToKhai = "14" Then changeLoaiToKhai = " = 'BC26_AC_BLP'"
     If strLoaiMaToKhai = "0" Then changeLoaiToKhai = " LIKE '%'"
 End Function
 

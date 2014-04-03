@@ -100,7 +100,7 @@ Begin VB.Form frmTraCuuAC
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuuAC.frx":058B
+         SpreadDesigner  =   "frmTracuuAC.frx":05C3
          UserResize      =   1
          Appearance      =   1
       End
@@ -178,7 +178,7 @@ Begin VB.Form frmTraCuuAC
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuuAC.frx":0A88
+         SpreadDesigner  =   "frmTracuuAC.frx":0AF8
          UserResize      =   1
       End
    End
@@ -373,6 +373,7 @@ Private Function changeLoaiToKhai(ByVal strLoaiMaToKhai As String) As String
     If strLoaiMaToKhai = "13" Then changeLoaiToKhai = " = '01_AC_BLP'"
     If strLoaiMaToKhai = "9" Then changeLoaiToKhai = " = 'BC21_AC_BLP'"
     If strLoaiMaToKhai = "10" Then changeLoaiToKhai = " = '03_TBAC_BLP'"
+    If strLoaiMaToKhai = "14" Then changeLoaiToKhai = " = 'BC26_AC_BLP'"
     If strLoaiMaToKhai = "0" Then changeLoaiToKhai = " LIKE '%'"
 End Function
 
@@ -389,6 +390,7 @@ Private Function changeTenBC(ByVal strLoaiBC As String) As String
     If strLoaiBC = "01_AC_BLP" Then changeTenBC = GetAttribute(GetMessageCellById("0174"), "Msg")
     If strLoaiBC = "BC21_AC_BLP" Then changeTenBC = GetAttribute(GetMessageCellById("0175"), "Msg")
     If strLoaiBC = "03_TBAC_BLP" Then changeTenBC = GetAttribute(GetMessageCellById("0176"), "Msg")
+    If strLoaiBC = "BC26_AC_BLP" Then changeTenBC = GetAttribute(GetMessageCellById("0177"), "Msg")
 End Function
 
 
@@ -396,14 +398,14 @@ Private Function getQuyBC(ByVal strDate As String, ByVal strLoaiBC As String) As
     Dim arrDate() As String
     arrDate = Split(strDate, "/")
     getQuyBC = strDate
-    If strLoaiBC = "01_AC" Then
+    If strLoaiBC = "01_AC" Or strLoaiBC = "01_AC_BLP" Then
         If arrDate(0) = "01" And arrDate(1) = "01" Then
             getQuyBC = GetAttribute(GetMessageCellById("0157"), "Msg") & " 1/" & arrDate(2)
         ElseIf arrDate(0) = "01" And arrDate(1) = "07" Then
             getQuyBC = GetAttribute(GetMessageCellById("0157"), "Msg") & " 2/" & arrDate(2)
         End If
     End If
-    If strLoaiBC = "BC26_AC" Then
+    If strLoaiBC = "BC26_AC" Or strLoaiBC = "BC26_AC_BLP" Then
         getQuyBC = GetAttribute(GetMessageCellById("0158"), "Msg") & " " & DatePart("Q", DateSerial(Val(arrDate(2)), Val(arrDate(1)), Val(arrDate(0)))) & "/" & arrDate(2)
     End If
 End Function
