@@ -1,7 +1,7 @@
 <HSoThueDTu>
 	<Static GroupName="TKhaiThue">
-		<maTKhai></maTKhai>
-		<tenTKhai>BÁO CÁO PHÁT HÀNH  BIÊN LAI THU TIỀN PHÍ, LỆ PHÍ (TB01/AC)</tenTKhai>
+		<maTKhai>260</maTKhai>
+		<tenTKhai>Thông báo phát hành biên lai thu phí, lệ phí</tenTKhai>
 		<moTaBMau></moTaBMau>
 	</Static>
 	<Dynamic GroupName="BienLai">
