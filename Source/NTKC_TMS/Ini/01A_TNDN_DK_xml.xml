@@ -19,24 +19,24 @@
 		<maTinhDLyThue/>
 	</Static>
 	<Static GroupName="LoaiDauKhi">
-		<ct01>D_38</ct01>
-		<ct02>G_38</ct02>
-		<ct03>J_38</ct03>
+		<ct01 Choice="1">D_38</ct01>
+		<ct02 Choice="1">G_38</ct02>
+		<ct03 Choice="1">J_38</ct03>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<ct05>Y_5</ct05>
 	</Static>
 	<Static GroupName="LoaiXuatBan">
-		<ct08>M_38</ct08>
-		<ct09>N_38</ct09>
+		<ct08 Choice="1">M_38</ct08>
+		<ct09 Choice="1">N_38</ct09>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<ct10>Y_8</ct10>
 		<ct19>I_16</ct19>
 	</Static>
 	<Static GroupName="CT20">
-		<donViUyQuyen>I_44</donViUyQuyen>
-		<daiLyThue>P_44</daiLyThue>
+		<donViUyQuyen Choice="1">I_44</donViUyQuyen>
+		<daiLyThue Choice="1">P_44</daiLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<tenDonViUyQuyen></tenDonViUyQuyen>

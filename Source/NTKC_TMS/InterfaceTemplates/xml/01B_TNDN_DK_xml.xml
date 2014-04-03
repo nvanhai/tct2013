@@ -3,37 +3,37 @@
 	<HSoKhaiThue>
 		<TTinChung>
 			<TTinDVu>
-				<maDVu>String</maDVu>
-				<tenDVu>token</tenDVu>
-				<pbanDVu>String</pbanDVu>
-				<ttinNhaCCapDVu>String</ttinNhaCCapDVu>
+				<maDVu></maDVu>
+				<tenDVu></tenDVu>
+				<pbanDVu></pbanDVu>
+				<ttinNhaCCapDVu></ttinNhaCCapDVu>
 			</TTinDVu>
 			<TTinTKhaiThue>
 				<TKhaiThue>
-					<maTKhai>String</maTKhai>
-					<tenTKhai>token</tenTKhai>
-					<moTaBMau>String</moTaBMau>
-					<pbanTKhaiXML>String</pbanTKhaiXML>
-					<loaiTKhai>C</loaiTKhai>
+					<maTKhai></maTKhai>
+					<tenTKhai></tenTKhai>
+					<moTaBMau></moTaBMau>
+					<pbanTKhaiXML></pbanTKhaiXML>
+					<loaiTKhai></loaiTKhai>
 					<soLan>1</soLan>
 					<KyKKhaiThue>
-						<kieuKy>D</kieuKy>
-						<kyKKhai>String</kyKKhai>
-						<kyKKhaiTuNgay>String</kyKKhaiTuNgay>
-						<kyKKhaiDenNgay>String</kyKKhaiDenNgay>
-						<kyKKhaiTuThang>String</kyKKhaiTuThang>
-						<kyKKhaiDenThang>String</kyKKhaiDenThang>
+						<kieuKy></kieuKy>
+						<kyKKhai></kyKKhai>
+						<kyKKhaiTuNgay></kyKKhaiTuNgay>
+						<kyKKhaiDenNgay></kyKKhaiDenNgay>
+						<kyKKhaiTuThang></kyKKhaiTuThang>
+						<kyKKhaiDenThang></kyKKhaiDenThang>
 					</KyKKhaiThue>
-					<maCQTNoiNop>String</maCQTNoiNop>
-					<tenCQTNoiNop>token</tenCQTNoiNop>
-					<ngayLapTKhai>String</ngayLapTKhai>
+					<maCQTNoiNop></maCQTNoiNop>
+					<tenCQTNoiNop></tenCQTNoiNop>
+					<ngayLapTKhai></ngayLapTKhai>
 					<GiaHan>
-						<maLyDoGiaHan>String</maLyDoGiaHan>
-						<lyDoGiaHan>String</lyDoGiaHan>
+						<maLyDoGiaHan></maLyDoGiaHan>
+						<lyDoGiaHan></lyDoGiaHan>
 					</GiaHan>
-					<nguoiKy>String</nguoiKy>
-					<ngayKy>1967-08-13</ngayKy>
-					<nganhNgheKD>String</nganhNgheKD>
+					<nguoiKy></nguoiKy>
+					<ngayKy></ngayKy>
+					<nganhNgheKD></nganhNgheKD>
 				</TKhaiThue>
 				<NNT>
 					<mst></mst>
@@ -69,12 +69,12 @@
 			</TTinTKhaiThue>
 		</TTinChung>
 		<CTieuTKhaiChinh>
-			<ct12>String</ct12>
+			<ct12></ct12>
 			<CT13>
-				<donViUyQuyen>true</donViUyQuyen>
+				<donViUyQuyen></donViUyQuyen>
 				<daiLyThue></daiLyThue>
 			</CT13>
-			<tenDonViUyQuyen>String</tenDonViUyQuyen>
+			<tenDonViUyQuyen></tenDonViUyQuyen>
 			<ct22>0.0</ct22>
 			<ct23>0.0</ct23>
 			<ct24>0.0</ct24>

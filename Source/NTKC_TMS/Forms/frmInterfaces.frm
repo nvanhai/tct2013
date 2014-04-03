@@ -1118,17 +1118,15 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
 '    End If
     
     'To 03/TBAC
-    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "67" Then
-        xmlTK.getElementsByTagName("kyKKhai")(0).Text = ""
+    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "67" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "66" Then
+        xmlTK.getElementsByTagName("kyKKhai")(0).Text = Format$(strNgayHeThongSrv, "dd/MM/yyyy")
         xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = ""
         xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = ""
-        xmlTK.getElementsByTagName("kieuKy")(0).Text = ""
-
-        'Xu ly rieng cho truong hop to khai 01_TAIN_DK
+        xmlTK.getElementsByTagName("kieuKy")(0).Text = "D"
+        'Xu ly rieng cho truong hop to khai 01_TAIN_DK, 01A_TNDN_DK
     ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "92" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "98" Then
-
-        If xmlTK.getElementsByTagName("ct03").length > 0 Then
-            If xmlTK.getElementsByTagName("ct03")(0).Text = "1" Then
+        'Khi thien nhien ct03 chi co to khai thang
+            If xmlTK.getElementsByTagName("ct03").length > 0 Then
                 xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
                 xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = Format$(dNgayDauKy, "dd/MM/yyyy")
                 xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(dNgayCuoiKy, "dd/MM/yyyy")
@@ -1139,7 +1137,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
                 xmlTK.getElementsByTagName("kyKKhai")(0).Text = fpSpread1.Text
                 xmlTK.getElementsByTagName("kieuKy")(0).Text = "D"
             End If
-        End If
+
     Else
         xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
 
@@ -1165,7 +1163,13 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             xmlTK.getElementsByTagName("kyKKhaiTuThang")(0).Text = TAX_Utilities_Srv_New.FirstDay
             xmlTK.getElementsByTagName("kyKKhaiDenThang")(0).Text = TAX_Utilities_Srv_New.LastDay
         End If
-        
+        '01-AC
+        If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "65" Then
+            xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
+            xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
+            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = TAX_Utilities_Srv_New.FirstDay
+            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = TAX_Utilities_Srv_New.LastDay
+        End If
     End If
     Exit Sub
 ErrHandle:
@@ -1199,6 +1203,16 @@ Private Function GetKyKeKhai(ByVal ID_TK As String) As String
         Exit Function
     End If
     
+    If ID_TK = "65" Then
+        isTKLanPS = False
+        fpSpread1.Row = 23
+        fpSpread1.Col = fpSpread1.ColLetterToNumber("E")
+        TAX_Utilities_Srv_New.FirstDay = fpSpread1.Text
+        fpSpread1.Row = 23
+        fpSpread1.Col = fpSpread1.ColLetterToNumber("F")
+        TAX_Utilities_Srv_New.LastDay = fpSpread1.Text
+    End If
+    
     If isTKLanPS = True Then
         KYKKHAI = ngayPS
         strKieuKy = "D"
@@ -1217,7 +1231,7 @@ Private Function GetKyKeKhai(ByVal ID_TK As String) As String
             strKieuKy = "M"
         ElseIf (Trim(TAX_Utilities_Srv_New.Month) = vbNullString Or Trim(TAX_Utilities_Srv_New.Month) = "") And (Trim(TAX_Utilities_Srv_New.ThreeMonths) <> vbNullString Or Trim(TAX_Utilities_Srv_New.ThreeMonths) <> "") Then
             If ID_TK = "65" Then
-                KYKKHAI = Right$(TAX_Utilities_Srv_New.ThreeMonths, 1) & "/" & TAX_Utilities_Srv_New.Year
+                KYKKHAI = "0" & Right$(TAX_Utilities_Srv_New.ThreeMonths, 1) & "/" & TAX_Utilities_Srv_New.Year
                 strKieuKy = "K"
             Else
                 KYKKHAI = Right$(TAX_Utilities_Srv_New.ThreeMonths, 1) & "/" & TAX_Utilities_Srv_New.Year
@@ -1496,16 +1510,16 @@ Private Sub ExecuteSave()
     xmlMapCT.Load GetAbsolutePath("..\Ini\" & MaTK & "_xml.xml")
    
     If xmlTK.hasChildNodes = False Or xmlMapCT.hasChildNodes = False Then
-     DisplayMessage "0149", msOKOnly, miCriticalError
-     Exit Sub
+        DisplayMessage "0149", msOKOnly, miCriticalError
+        Exit Sub
     End If
    
     With fpSpread1
-        Dim cellid         As String
-        Dim cellArray()    As String
-        Dim nodeValIndex   As Integer
-        Dim cellRange      As Integer
-        Dim GroupCellRange As Integer
+        Dim cellid           As String
+        Dim cellArray()      As String
+        Dim nodeValIndex     As Integer
+        Dim cellRange        As Integer
+        Dim GroupCellRange   As Integer
         Dim TinTypeAttribute As MSXML.IXMLDOMNode
         Dim MinOccur         As String
         .Sheet = 1
@@ -1537,16 +1551,16 @@ Private Sub ExecuteSave()
                 MinOccur = GetAttribute(xmlNodeMapCT, "MinOccur")
                 Blank = True
 
-'                If xmlTK.getElementsByTagName(currentGroup)(0).hasChildNodes Then
-'                    If Level = "2" Then
-'                        xmlTK.getElementsByTagName(currentGroup)(0).firstChild.removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild.firstChild
-'
-'                    Else
-'                        xmlTK.getElementsByTagName(currentGroup)(0).removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild
-'
-'                    End If
-'
-'                End If
+                '                If xmlTK.getElementsByTagName(currentGroup)(0).hasChildNodes Then
+                '                    If Level = "2" Then
+                '                        xmlTK.getElementsByTagName(currentGroup)(0).firstChild.removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild.firstChild
+                '
+                '                    Else
+                '                        xmlTK.getElementsByTagName(currentGroup)(0).removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild
+                '
+                '                    End If
+                '
+                '                End If
 
                 Do
                     Blank = True
@@ -1559,13 +1573,14 @@ Private Sub ExecuteSave()
                         If ID > 1 Then
                             cellRange = cellRange - GroupCellRange
                         End If
-                          If ID > 1 Or MinOccur <> "1" Then
-                          If Level = "2" Then
-                              xmlTK.getElementsByTagName(currentGroup)(0).firstChild.removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild.selectNodes(CloneNode.firstChild.nodeName)(xmlTK.getElementsByTagName(currentGroup)(0).firstChild.selectNodes(CloneNode.firstChild.nodeName).length - 1)
-                          Else
-                              xmlTK.getElementsByTagName(currentGroup)(0).removeChild xmlTK.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName)(xmlTK.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName).length - 1)
 
-                          End If
+                        If ID > 1 Or MinOccur <> "1" Then
+                            If Level = "2" Then
+                                xmlTK.getElementsByTagName(currentGroup)(0).firstChild.removeChild xmlTK.getElementsByTagName(currentGroup)(0).firstChild.selectNodes(CloneNode.firstChild.nodeName)(xmlTK.getElementsByTagName(currentGroup)(0).firstChild.selectNodes(CloneNode.firstChild.nodeName).length - 1)
+                            Else
+                                xmlTK.getElementsByTagName(currentGroup)(0).removeChild xmlTK.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName)(xmlTK.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName).length - 1)
+
+                            End If
                         End If
 
                         Exit Do
@@ -1606,7 +1621,7 @@ Private Sub ExecuteSave()
                     cellRange = cellRange + GroupCellRange
                 Loop
                 
-            Else
+            Else ' Set gia tri cho group STATIC
                 Dim xmlChildNode As MSXML.IXMLDOMNode
                 currentGroup = GetAttribute(xmlNodeMapCT, "GroupName")
                 
@@ -1622,12 +1637,12 @@ Private Sub ExecuteSave()
                     If (xmlCellNode.nodeName = "maTKhai") Then
                         strMaToKhai = cellid
                     End If
+
                     'Ket thuc lay ID to khai
                     
                     If cellid = "O_55" Then
                         MsgBox "Err"
                     End If
-                    
                     
                     cellArray = Split(cellid, "_")
 
@@ -1652,10 +1667,9 @@ Private Sub ExecuteSave()
                     Else
                         .Col = .ColLetterToNumber(cellArray(0))
                         .Row = Val(cellArray(1)) + cellRange
-
+                        
                         If GetAttribute(xmlCellNode, "TINType") = "1" Then
                             xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
-
 
                             If xmlCellTKNode.hasChildNodes Then
                                 xmlCellTKNode.removeChild xmlCellTKNode.firstChild
@@ -1671,6 +1685,12 @@ Private Sub ExecuteSave()
                                 TinTypeAttribute.nodeValue = "true"
                                 xmlCellTKNode.Attributes.setNamedItem TinTypeAttribute
                             End If
+
+                            ' Xu ly cho truong hop la choice
+                        ElseIf (GetAttribute(xmlCellNode, "Choice") = "1" And (.Text = "" Or .Text = "0")) Then
+                        
+                            xmlCellTKNode.parentNode.removeChild xmlTK.getElementsByTagName(xmlCellTKNode.nodeName)(0)
+                            
                         ElseIf GetAttribute(xmlCellNode, "date") = "1" Then
                             xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
 
@@ -1679,7 +1699,7 @@ Private Sub ExecuteSave()
                             End If
 
                             If .Text <> vbNullString Or .Text <> "" Then
-                                xmlCellTKNode.Text = .Text
+                                xmlCellTKNode.Text = Format$(.Text, "YYYY-MM-dd")
                             Else
                                 Set TinTypeAttribute = xmlTK.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
                                 TinTypeAttribute.nodeValue = "true"
@@ -1687,7 +1707,8 @@ Private Sub ExecuteSave()
                             End If
                             
                         Else
-                        If .CellType = CellTypeNumber Then
+
+                            If .CellType = CellTypeNumber Then
                                 If (.Value = "" Or .Value = vbNullString) Then
                                     xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
 
@@ -1701,6 +1722,7 @@ Private Sub ExecuteSave()
                                 Else
                                     xmlCellTKNode.Text = .Value
                                 End If
+
                             ElseIf .CellType = CellTypePic Then
                                 xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
 
@@ -1727,26 +1749,31 @@ Private Sub ExecuteSave()
                                 End If
 
                             Else
-                                xmlCellTKNode.Text = ToDateString(.Text)
+
+                                If LCase$(.Text) = "x" Then
+                                    xmlCellTKNode.Text = "1"
+                                Else
+                                    xmlCellTKNode.Text = ToDateString(.Text)
+                                End If
                             End If
                         End If
 
-'                        If .CellType = CellTypeNumber Then
-'                            xmlCellTKNode.Text = .value
-'                        ElseIf .CellType = CellTypeCheckBox Then
-'
-'                            If LCase$(.Text) = "x" Then
-'                                xmlCellTKNode.Text = "1"
-'                            ElseIf .Text = "" Then
-'                                xmlCellTKNode.Text = "0"
-'                            Else
-'                                xmlCellTKNode.Text = .Text
-'                            End If
-'
-'                        Else
-'                            xmlCellTKNode.Text = ToDateString(.Text)
-'
-'                        End If
+                        '                        If .CellType = CellTypeNumber Then
+                        '                            xmlCellTKNode.Text = .value
+                        '                        ElseIf .CellType = CellTypeCheckBox Then
+                        '
+                        '                            If LCase$(.Text) = "x" Then
+                        '                                xmlCellTKNode.Text = "1"
+                        '                            ElseIf .Text = "" Then
+                        '                                xmlCellTKNode.Text = "0"
+                        '                            Else
+                        '                                xmlCellTKNode.Text = .Text
+                        '                            End If
+                        '
+                        '                        Else
+                        '                            xmlCellTKNode.Text = ToDateString(.Text)
+                        '
+                        '                        End If
                     End If
 
                 Next
@@ -1821,7 +1848,7 @@ Private Sub ExecuteSave()
                         xmlMapPL.Load GetAbsolutePath("..\Ini\KHBS_01_GTGT_xml.xml")
                     Else
 
-                        If MaTK = "02_GTGT" Or MaTK = "03_GTGT" Or MaTK = "04_GTGT" Or MaTK = "05_GTGT" Or MaTK = "01A_TNDN" Or MaTK = "01B_TNDN" Or MaTK = "02_TNDN" Or MaTK = "01_NTNN" Or MaTK = "03_NTNN" Or MaTK = "01_TAIN" Or MaTK = "01_TTDB" Or MaTK = "01_BVMT" Or MaTK = "01_TBVMT" Then
+                        If MaTK = "02_GTGT" Or MaTK = "03_GTGT" Or MaTK = "04_GTGT" Or MaTK = "05_GTGT" Or MaTK = "01A_TNDN" Or MaTK = "01A_TNDN_DK" Or MaTK = "01B_TNDN" Or MaTK = "01B_TNDN_DK" Or MaTK = "02_TNDN" Or MaTK = "01_NTNN" Or MaTK = "03_NTNN" Or MaTK = "01_TAIN" Or MaTK = "01_TAIN_DK" Or MaTK = "01_TTDB" Or MaTK = "01_BVMT" Or MaTK = "01_TBVMT" Then
                             xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_TT156_xml.xml")
 
                             xmlMapPL.Load GetAbsolutePath("..\Ini\KHBS_TT156_xml.xml")
@@ -1869,11 +1896,12 @@ Private Sub ExecuteSave()
                                 GroupCellRange = Val(GetAttribute(xmlSection, "GroupCellRange"))
                             End If
 
+                            MinOccur = GetAttribute(xmlSection, "MinOccur")
                             Blank = True
 
-'                            If xmlPL.getElementsByTagName(currentGroup)(0).hasChildNodes Then
-'                                xmlPL.getElementsByTagName(currentGroup)(0).removeChild xmlPL.getElementsByTagName(currentGroup)(0).firstChild
-'                            End If
+                            '                            If xmlPL.getElementsByTagName(currentGroup)(0).hasChildNodes Then
+                            '                                xmlPL.getElementsByTagName(currentGroup)(0).removeChild xmlPL.getElementsByTagName(currentGroup)(0).firstChild
+                            '                            End If
 
                             Do
                                 Blank = True
@@ -1888,21 +1916,16 @@ Private Sub ExecuteSave()
                                         cellRange = cellRange - GroupCellRange
                                     End If
 
-                                    If InStr(GetAttribute(nodeVal, "DataFile"), "KHBS") > 0 And ID = 1 Then
-                                        xmlPL.getElementsByTagName(currentGroup)(0).insertBefore CloneNode.firstChild.CloneNode(True), xmlPL.getElementsByTagName(currentGroup)(0).lastChild
-                                    Else
-
-                                        If ID > 1 Or MinOccur <> "1" Then
-                                            If Level = "2" Then
-                                                xmlPL.getElementsByTagName(currentGroup)(0).firstChild.removeChild xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName)(xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName).length - 1)
-                                            Else
-                                                xmlPL.getElementsByTagName(currentGroup)(0).removeChild xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName)(xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName).length - 1)
-                                            End If
+                                    If ID > 1 Or MinOccur <> "1" Then
+                                        If Level = "2" Then
+                                            xmlPL.getElementsByTagName(currentGroup)(0).firstChild.removeChild xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName)(xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName).length - 1)
+                                        Else
+                                            xmlPL.getElementsByTagName(currentGroup)(0).removeChild xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName)(xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName).length - 1)
                                         End If
                                     End If
+                                    
                                     Exit Do
                                 End If
-
 
                                 .Col = .ColLetterToNumber("C")
                                 .Row = sRow
@@ -1912,43 +1935,33 @@ Private Sub ExecuteSave()
                                         cellRange = cellRange - GroupCellRange
                                     End If
 
-                                    If InStr(GetAttribute(nodeVal, "DataFile"), "KHBS") > 0 And ID = 1 Then
-                                        xmlPL.getElementsByTagName(currentGroup)(0).insertBefore CloneNode.firstChild.CloneNode(True), xmlPL.getElementsByTagName(currentGroup)(0).lastChild
-                                    Else
-
-                                        If ID > 1 Or MinOccur <> "1" Then
-                                            If Level = "2" Then
-                                                xmlPL.getElementsByTagName(currentGroup)(0).firstChild.removeChild xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName)(xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName).length - 1)
-                                            Else
-                                                xmlPL.getElementsByTagName(currentGroup)(0).removeChild xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName)(xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName).length - 1)
+                                    If ID > 1 Or MinOccur <> "1" Then
+                                        If Level = "2" Then
+                                            xmlPL.getElementsByTagName(currentGroup)(0).firstChild.removeChild xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName)(xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName).length - 1)
+                                        Else
+                                            xmlPL.getElementsByTagName(currentGroup)(0).removeChild xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName)(xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName).length - 1)
   
-                                            End If
                                         End If
+                                       
                                     End If
 
                                     Exit Do
                                 End If
                                 
-                                
                                 SetAttribute CloneNode.firstChild, "id", "ID_" & CStr(ID)
 
-'                                If Level = "2" Then
-'                                    xmlPL.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
-'                                Else
-'                                    xmlPL.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
-'                                End If
+                                '                                If Level = "2" Then
+                                '                                    xmlPL.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
+                                '                                Else
+                                '                                    xmlPL.getElementsByTagName(currentGroup)(0).appendChild CloneNode.firstChild.CloneNode(True)
+                                '                                End If
 
-                                If InStr(GetAttribute(nodeVal, "DataFile"), "KHBS") > 0 Then
-                                    xmlPL.getElementsByTagName(currentGroup)(0).insertBefore CloneNode.firstChild.CloneNode(True), xmlPL.getElementsByTagName(currentGroup)(0).lastChild
+                                If Level = "2" Then
+
+                                    xmlPL.getElementsByTagName(currentGroup)(0).firstChild.insertBefore CloneNode.firstChild.CloneNode(True), xmlPL.getElementsByTagName(currentGroup)(0).firstChild.selectNodes(CloneNode.firstChild.nodeName)(xmlPL.getElementsByTagName(currentGroup)(0).firstChild.selectNodes(CloneNode.firstChild.nodeName).length - 1)
                                 Else
 
-                                    If Level = "2" Then
-
-                                        xmlPL.getElementsByTagName(currentGroup)(0).firstChild.insertBefore CloneNode.firstChild.CloneNode(True), xmlPL.getElementsByTagName(currentGroup)(0).firstChild.selectNodes(CloneNode.firstChild.nodeName)(xmlPL.getElementsByTagName(currentGroup)(0).firstChild.selectNodes(CloneNode.firstChild.nodeName).length - 1)
-                                    Else
-
-                                        xmlPL.getElementsByTagName(currentGroup)(0).insertBefore CloneNode.firstChild.CloneNode(True), xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName)(xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName).length - 1)
-                                    End If
+                                    xmlPL.getElementsByTagName(currentGroup)(0).insertBefore CloneNode.firstChild.CloneNode(True), xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName)(xmlPL.getElementsByTagName(currentGroup)(0).selectNodes(CloneNode.firstChild.nodeName).length - 1)
                                 End If
 
                                 ID = ID + 1
@@ -1992,6 +2005,7 @@ Private Sub ExecuteSave()
 
                                     If GetAttribute(xmlCellNode, "TINType") = "1" Then
                                         xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
+
                                         If xmlCellTKNode.hasChildNodes Then
                                             xmlCellTKNode.removeChild xmlCellTKNode.firstChild
                                         End If
@@ -2005,24 +2019,29 @@ Private Sub ExecuteSave()
                                             TinTypeAttribute.nodeValue = "true"
                                             xmlCellTKNode.Attributes.setNamedItem TinTypeAttribute
                                         End If
-                                        
+
+                                        ' Xu ly cho truong hop la choice
+                                    ElseIf (GetAttribute(xmlCellNode, "Choice") = "1" And (.Text = "" Or .Text = "0")) Then
+                                        xmlCellTKNode.parentNode.removeChild xmlTK.getElementsByTagName(xmlCellTKNode.nodeName)(0)
                                     ElseIf GetAttribute(xmlCellNode, "date") = "1" Then
                                         xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
+
                                         If xmlCellTKNode.hasChildNodes Then
                                             xmlCellTKNode.removeChild xmlCellTKNode.firstChild
                                         End If
                                     
-                                        If Len(.Text) <> vbNullString Or Len(.Text) <> "" Then
-                                            xmlCellTKNode.Text = .Text
+                                        If .Text <> vbNullString Or .Text <> "" Then
+                                            xmlCellTKNode.Text = Format$(.Text, "YYYY-MM-DD")
                                         Else
                                             Set TinTypeAttribute = xmlPL.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
                                             TinTypeAttribute.nodeValue = "true"
                                             xmlCellTKNode.Attributes.setNamedItem TinTypeAttribute
                                         End If
+
                                     Else
 
                                         If .CellType = CellTypeNumber Then
-                                            xmlCellTKNode.Text = .Value
+                                            xmlCellTKNode.Text = .Text
                                         ElseIf .CellType = CellTypePic Then
                                             xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
                                             
@@ -2037,6 +2056,7 @@ Private Sub ExecuteSave()
                                             Else
                                                 xmlCellTKNode.Text = ToDateString(.Text)
                                             End If
+
                                         ElseIf .CellType = CellTypeCheckBox Then
 
                                             If LCase$(.Text) = "x" Then
@@ -2054,6 +2074,7 @@ Private Sub ExecuteSave()
                                 End If
 
                             Next
+
                         ElseIf UCase(xmlSection.nodeName) = "P_DYNAMIC" Then
                             Dim childID        As Integer
                             Dim childCloneNode As New MSXML.DOMDocument
@@ -2064,6 +2085,7 @@ Private Sub ExecuteSave()
                             currentGroup = GetAttribute(xmlSection, "GroupName")
                             cellid = GetAttribute(xmlSection, "CellID")
                             
+                            childGroup = GetAttribute(xmlSection.firstChild.selectNodes("Dynamic")(0), "GroupName")
                             OrginalNode.loadXML xmlPL.getElementsByTagName(currentGroup)(0).firstChild.xml
 
                             Blank = True
@@ -2079,17 +2101,15 @@ Private Sub ExecuteSave()
 
                                 Do
                                     
-                                    .Col = .ColLetterToNumber(cellArray(0))
                                     .Row = Val(cellArray(1)) + cellRange
+                                    .Col = .ColLetterToNumber(cellArray(0))
 
                                     If .Text <> "0" Then
                                         CloneNode.getElementsByTagName(childGroup)(0).removeChild CloneNode.getElementsByTagName(childGroup)(0).selectNodes(childCloneNode.firstChild.nodeName)(CloneNode.getElementsByTagName(childGroup)(0).selectNodes(childCloneNode.firstChild.nodeName).length - 1)
                                         Exit Do
                                     End If
-                                
+
                                     childCloneNode.loadXML xmlSection.firstChild.selectNodes("Dynamic")(0).firstChild.xml
-                                    
-                                    childGroup = GetAttribute(xmlSection.firstChild.selectNodes("Dynamic")(0), "GroupName")
                                 
                                     SetCloneNode childCloneNode, xmlSection.firstChild.selectNodes("Dynamic")(0), Blank, cellRange, sRow
 
@@ -2137,6 +2157,7 @@ Private Sub ExecuteSave()
                                 ID = ID + 1
                                 cellRange = cellRange + 1
                             Loop
+
                         End If
 
                     Next
@@ -2174,25 +2195,25 @@ Private Sub ExecuteSave()
 
     Dim sFileName As String
     sFileName = "c:\TempXML\" & strFileName
-'
+    '
     Dim xmlDocSave As New MSXML.DOMDocument
     Set xmlDocSave = AppendXMLStandard(xmlTK, sKyLapBo, sNgayNopTK, sLoiDinhDanh)
-'
-'
+    '
+    '
     xmlDocSave.save sFileName
 
-    ' Push MQ
-    Dim MQPUT As New MQPUT
-    If (Not MQPUT.PUSHMQ(xmlDocSave.xml)) Then
-        MessageBox "0137", msOKOnly, miCriticalError
-    End If
+        ' Push MQ
+        Dim MQPUT As New MQPUT
+        If (Not MQPUT.PUSHMQ(xmlDocSave.xml)) Then
+            MessageBox "0137", msOKOnly, miCriticalError
+        End If
 
-'   Clear variable global
-Set xmlResultDLT = Nothing
-Set xmlResultNNT = Nothing
-Set xmlTK = Nothing
+    '   Clear variable global
+    Set xmlResultDLT = Nothing
+    Set xmlResultNNT = Nothing
+    Set xmlTK = Nothing
 
-'    ' End push
+    '    ' End push
     
     Exit Sub
 ErrHandle:
@@ -2647,9 +2668,9 @@ ErrHandle:
     
 End Sub
 
-Private Sub txtBarcodeUSB_KeyPress(Keyascii As Integer)
+Private Sub txtBarcodeUSB_KeyPress(KeyAscii As Integer)
     Static strTemp As String
-    If Keyascii = 13 Then
+    If KeyAscii = 13 Then
         'Xu ly ma vach qua USB tai day
         If txtBarcodeUSB.Text <> "" Or txtBarcodeUSB.Text <> vbNullString Then
             strTemp = TAX_Utilities_Srv_New.Convert(txtBarcodeUSB.Text, TCVN, UNICODE)
@@ -2669,11 +2690,11 @@ Private Sub Command1_Click()
         Dim str41 As String, str42 As String, str43 As String, str44 As String, str45 As String, str46 As String, str47 As String, str48 As String, str49 As String, str50 As String
         Dim str51 As String, str52 As String, str53 As String
    
-'   '01A-TNDN-DK-LanPS-DauTho-ChinhThuc
-'    str2 = "aa321982300034966   03201400100100100201/0101/01/1900<S01><S></S><S>1~~x~21/03/2014~1~0~0~HD123456~~</S><S>200~50000~10000000~35~3500000~2000000~1500000~22000</S><S>~~CMCer~21/03/2014~1~~21/03/2014~2</S></S01>"
-'    Barcode_Scaned str2
-'    str2 = "aa321982300034966   032014001001002002<S01-1><S>1500000</S><S>0102030405~CMCTester~50~750000~~6868686868~Lotterial~50~750000~</S><S>100~1500000</S></S01-1>"
-'    Barcode_Scaned str2
+''01A-TNDN-DK-LanPS-DauTho-ChinhThuc
+' str2 = "aa321982300034966   03201400100100100201/0101/01/1900<S01><S></S><S>1~~x~21/03/2014~1~0~0~HD123456~~</S><S>200~50000~10000000~35~3500000~2000000~1500000~22000</S><S>~~CMCer~21/03/2014~1~~21/03/2014~2</S></S01>"
+' Barcode_Scaned str2
+' str2 = "aa321982300034966   032014001001002002<S01-1><S>1500000</S><S>0102030405~CMCTester~50~750000~~6868686868~Lotterial~50~750000~</S><S>100~1500000</S></S01-1>"
+' Barcode_Scaned str2
 
 ''01A-TNDN-DK-LanPS-Condensate-ChinhThuc
 'str2 = "aa999982300034973   03201400200200100201/0101/01/1900<S01><S></S><S>1~~x~20/03/2014~0~1~0~HD01~x~</S><S>20~20~400~25~100~20~80~20000</S><S>~~cmcTERT~20/03/2014~1~~20/03/2014~2</S></S01>"
@@ -2687,11 +2708,18 @@ Private Sub Command1_Click()
 'str2 = "aa999982300034980   022014001001002002<S01-1><S>182.5</S><S>0102030405~cty ABC~30~54.75~ok~6868686868~nha may ZM~45~82.13~ok~2222222222~cmc tower~25~45.63~</S><S>100~182.51</S></S01-1>"
 'Barcode_Scaned str2
 
-
 ''01B-TNDN-DK-QUY-ChinhThuc
 'str2 = "aa999992300034772   04201300200200100201/0101/01/1900<S01><S></S><S>hd 010101~x~</S><S>20.00~20.0000~400.00~10.00~390.00~10.00~39.00~5.00~34.00~21000</S><S>~~cmm~20/03/2014~1~</S></S01>"
 'Barcode_Scaned str2
 'str2 = "aa999992300034772   042013002002002002<S01-1><S>34</S><S>0102030405~cty MsM~35~12~ok~6868686868~nha may ABX~65~22~</S><S>100~34</S></S01-1>"
+'Barcode_Scaned str2
+
+''01B-TNDN-DK-QUY-BoSung
+'str2 = "bs322992300034772   04201300500500100301/0101/01/1900<S01><S></S><S>hd 010101~x~</S><S>20.00~20.0000~400.00~10.00~390.00~10.00~39.00~10.00~29.00~21000</S><S>~~cmm~20/03/2014~~1</S></S01>"
+'Barcode_Scaned str2
+'str2 = "bs322992300034772   042013005005002003<SKHBS><S>~~0~0~0</S><S>SË thu’ TNDN tπm t›nh Æ≠Óc mi‘n ho∆c gi∂m (n’u c„)~29~5~10~5<"
+'Barcode_Scaned str2
+'str2 = "bs322992300034772   042013005005003003/S><S>01/04/2014~60~0~1000~adh~01/04/2014~10100~10101~2~5000~test~0~0~-5</S></SKHBS>"
 'Barcode_Scaned str2
 
 ''01-TAIN-DK-LanPS-Consendate-ChinhThuc
@@ -2701,14 +2729,59 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 ''01-TAIN-DK-DauTho-ChinhThuc
-'str2 = "aa999922300034807   03201400100100100201/0101/01/1900<S01><S>2222222222</S><S>1~~x~20/03/2014~1~0~0~HD 19~~x</S><S>45~50~27~1215~12~145.8~21000</S><S>~~nguyen van a~20/03/2014~1~~20/03/2014~2</S></S01>"
+'str2 = "aa999922300034807   03201400100100100201/0101/01/1900<S01><S></S><S>1~~x~20/03/2014~1~0~0~HD 19~~x</S><S>45~50~27~1215~12~145.8~21000</S><S>~~nguyen van a~20/03/2014~1~~20/03/2014~2</S></S01>"
 'Barcode_Scaned str2
 'str2 = "aa999922300034807   032014001001002002<S01-1><S>145.8</S><S>0102030405~cty CNAS~57~83.11~ok~6868686868~nha may HCG~43~62.69~ok</S><S>100~145.8</S></S01-1>"
 'Barcode_Scaned str2
 
-'04-TBAC
-str2 = "aa999910102030405   03201400100100100101/0101/01/2009<S01><S>CTy Giay Bai Bang~Cty TNHH giay Bai Bang~01DVPH~120- Hung Vuong - Phu Tho~110 - Hung Vuong - Phu Tho~02DCTS</S><S>21/02/2014~~~~21/03/2014~CMCtest</S></S01>"
-Barcode_Scaned str2
+''01-TAIN-DK-DauTho-BS
+'str2 = "bs999922300034807   03201400700900100301/0101/01/1900<S01><S>2222222222</S><S>1~~x~20/03/2014~1~0~0~HD 19~~x</S><S>100~35~27~2700~50~1350~22000</S><S>~~nguyen van a~20/03/2014~~1~20/03/2014~2</S></S01>"
+'Barcode_Scaned str2
+'str2 = "bs999922300034807   032014007009002003<SKHBS><S>~~0~0~0</S><S>~~0~0~0</S><S>24/05/2014~33~200~1000"
+'Barcode_Scaned str2
+'str2 = "bs999922300034807   0320140070090030030~123456~23/05/2014~10300~10303~5~100000~~0~0~</S></SKHBS>"
+'Barcode_Scaned str2
+
+''01_GTGT_BS
+'str2 = "bs321012300031891   01201400200200100301/0114/06/2006<S01><S></S><S>0~23000~9640000~669400~51900~700000~5068000~413600~368000~1128000~156400~3572000~257200~5768000~413600~361700~0~0~0~338700~21000~317700~0~0~0</S><S>~~Lan H≠¨ng~28/02/2014~~1~1~1701~x~02~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "bs321012300031891   012014002002002003<SKHBS><S>Hµng ho∏, dﬁch vÙ b∏n ra chﬁu thu’ su t 5%~31~56400~156400~100000~Hµng ho∏, dﬁch vÙ b∏n ra chﬁu thu’ su t 10%~33~57200~257200~200000</S><S>Thu’ GTGT cﬂn Æ≠Óc"
+'Barcode_Scaned str2
+'str2 = "bs321012300031891   012014002002003003 kh u trı k˙ tr≠Ìc chuy”n sang~22~0~23000~23000</S><S>05/03/2014~11~1408~2100~lh/001~14/01/2014~11100~11107~21~32000~l˝ do kh∏c~61700~317700~256000~0~0~0</S></SKHBS>"
+'Barcode_Scaned str2
+
+''04-TBAC: Kieu D
+'str2 = "aa999910102030405   03201400100100100101/0101/01/2009<S01><S>CTy Giay Bai Bang~Cty TNHH giay Bai Bang~01DVPH~120- Hung Vuong - Phu Tho~110 - Hung Vuong - Phu Tho~02DCTS</S><S>21/02/2014~~~~21/03/2014~CMCtest</S></S01>"
+'Barcode_Scaned str2
+
+''01-TBAC: kieu D
+'str2 = "aa999642300034807   03201400200200100101/0101/01/2009<S01><S>~~~~~~~~~~~</S><S>~~~24/03/2014~nguyen van a</S></S01>"
+'Barcode_Scaned str2
+
+''BC-01-AC: Kieu ky
+'str2 = "aa999652300034807   01201400200200100101/0101/01/2009<S01><S>~01/01/2014~30/06/2014</S><S>~~~~~~~~~~~</S><S>nguyen van a~24/03/2014</S></S01>"
+'Barcode_Scaned str2
+
+''BC-21AC
+'str2 = "aa999662300034807   04201300000000100101/0101/01/2010<S01><S>24/03/2014~17~16</S><S>~ ~      ~~~~~~</S><S>~nguyen van a~24/03/2014</S></S01>"
+'Barcode_Scaned str2
+
+''TB-03-AC
+'str2 = "aa999672300034807   04201300200200100101/0101/01/2010<S01><S>~~4~24/03/2014~18</S><S>~~~~~0~</S><S>~nguyen van a~24/03/2014</S></S01>"
+'Barcode_Scaned str2
+
+''BC-26-AC
+'str2 = "aa999682300034807   04201300200200100201/0101/01/2009<S01><S>X~~01/10/2013~31/12/2013</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~nguyen van a~24/03/2014~1</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999682300034807   042013002002002002<S01_1><S>~~~~~0~</S><S>~~~~~0~</S><S></S></S01_1>"
+'Barcode_Scaned str2
+
+''01_GTGT_PL1_TD
+'str2 = "aa322940102030405   02201400200300100201/0101/01/1900<S01><S></S><S>200~2000~400000~5~20000~100000~0</S><S>~CMCer~~18/03/2014~1~~~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa322940102030405   022014002003002002<S01_1><S>~Thuy Dien Na Hang - Tuyen Quang~0101650999~10~500000~~x~~Thuy Dien Thac Ba- Yen Bai~2222222222~5~1000000~10100~~~Thuy Dien Hoa Binh - Hoa Binh~6868686868~5~2000000~10700~</S><S>0</S></S01_1>"
+'Barcode_Scaned str2
+
 
 End Sub
 
@@ -3186,15 +3259,15 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 End If
             End If
             
-            '01A/TNDN-DK, 01/TAIN-DK
-            If ((Val(Mid$(strBarcode, 4, 2)) = 92 Or Val(Mid$(strBarcode, 4, 2)) = 98) And UCase(strLoaiToKhai) = "BS") Then
-                tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
-                tkps_spl = Split(tmp_str, "~")
-                If Left(tkps_spl(UBound(tkps_spl)), 1) = "2" Then
-                    DisplayMessage "0132", msOKOnly, miCriticalError
-                    Exit Sub
-                End If
-            End If
+'            '01A/TNDN-DK, 01/TAIN-DK
+'            If ((Val(Mid$(strBarcode, 4, 2)) = 92 Or Val(Mid$(strBarcode, 4, 2)) = 98) And UCase(strLoaiToKhai) = "BS") Then
+'                tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
+'                tkps_spl = Split(tmp_str, "~")
+'                If Left(tkps_spl(UBound(tkps_spl)), 1) = "2" Then
+'                    DisplayMessage "0150", msOKOnly, miCriticalError
+'                    Exit Sub
+'                End If
+'            End If
         ElseIf InStr(1, strBarcode, "</S02>", vbTextCompare) > 0 Then
 
             '02/TNDN
@@ -4588,10 +4661,10 @@ On Error GoTo ErrHandle
                 isTKLanPS = True
             End If
         End If
-            If Not getSoTTTK_AC(changeMaToKhai(strID), arrStrHeaderData, strData) Then
-                DisplayMessage "0079", msOKOnly, miCriticalError
-                Exit Function
-            End If
+        If Not getSoTTTK_AC(changeMaToKhai(strID), arrStrHeaderData, strData) Then
+            DisplayMessage "0079", msOKOnly, miCriticalError
+            Exit Function
+        End If
     Else
         ' cac to khai binh thuong
         isTKLanPS = False

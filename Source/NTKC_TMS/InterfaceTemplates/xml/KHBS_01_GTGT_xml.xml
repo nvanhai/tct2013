@@ -5,44 +5,44 @@
 			<KHBSDieuChinhTang>
 				<ct2/>
 				<ct3/>
-				<ct4>1</ct4>
-				<ct5>1</ct5>
-				<ct6>1</ct6>
+				<ct4>0</ct4>
+				<ct5>0</ct5>
+				<ct6>0</ct6>
 			</KHBSDieuChinhTang>
 		</DieuChinhTang>
 		<DieuChinhGiam>
 			<KHBSDieuChinhGiam>
 				<ct2/>
 				<ct3/>
-				<ct4>1</ct4>
-				<ct5>1</ct5>
-				<ct6>1</ct6>
+				<ct4>0</ct4>
+				<ct5>0</ct5>
+				<ct6>0</ct6>
 			</KHBSDieuChinhGiam>
 		</DieuChinhGiam>		
 		<TongHopDCTangGiamPNop>
 			<ct40>
-				<ct4>1</ct4>
-				<ct5>1</ct5>
-				<ct6>1</ct6>
+				<ct4>0</ct4>
+				<ct5>0</ct5>
+				<ct6>0</ct6>
 			</ct40>
 			<ct43>
-				<ct4>1</ct4>
-				<ct5>1</ct5>
-				<ct6>1</ct6>
+				<ct4>0</ct4>
+				<ct5>0</ct5>
+				<ct6>0</ct6>
 			</ct43>
 		</TongHopDCTangGiamPNop>
 	</NDUNGKHAIBOSUNGDIEUCHINH>
 	<PhatChamNop>
-		<soNgayNopCham>1</soNgayNopCham>
-		<soTienPhatNopCham>1</soTienPhatNopCham>
+		<soNgayNopCham>0</soNgayNopCham>
+		<soTienPhatNopCham>0</soTienPhatNopCham>
 	</PhatChamNop>
 	<NOIDUNGGIAITHICH>
-		<soTienTraNSNN>1</soTienTraNSNN>
+		<soTienTraNSNN>0</soTienTraNSNN>
 		<quyetDinhHoanThueSo/>
 		<ngay></ngay>
 		<coQuanThue/>
-		<soNgayNhanDuocTienHoan>1</soNgayNhanDuocTienHoan>
-		<soTienChamNop>1</soTienChamNop>
+		<soNgayNhanDuocTienHoan>0</soNgayNhanDuocTienHoan>
+		<soTienChamNop>0</soTienChamNop>
 		<lyDoKhac/>
 	</NOIDUNGGIAITHICH>
 </PL01_KHBS>
