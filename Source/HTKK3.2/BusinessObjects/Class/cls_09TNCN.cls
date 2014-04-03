@@ -324,7 +324,7 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
     Dim tuThang, denThang As Variant
     ' get so thang quyet toan
     Dim soThangKG As Integer
-    Dim CT22      As Variant, CT26 As Variant, varCT31 As Variant
+    Dim CT22      As Variant, ct26 As Variant, varCT31 As Variant
     Dim varCT15   As Variant
     Dim mSheet    As Long
     
@@ -383,6 +383,13 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
 '                .Formula = "ROUND(S57,0)"
 '            End If
 '            ' end
+
+           ' chi tieu 36 set lai ct
+           If Col = .ColLetterToNumber("I") And (Row = 52 Or Row = 45 Or Row = 42) Then
+                .Col = .ColLetterToNumber("I")
+                .Row = 56
+                .Formula = "ROUND(S56,0)"
+           End If
             
         End If
 
@@ -403,7 +410,13 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
             End If
             ' End
             
-            
+            ' set lai cong thu cho chi tie 36
+            If Col = .ColLetterToNumber("I") And Row = 24 Then
+                .Sheet = 1
+                .Col = .ColLetterToNumber("I")
+                .Row = 56
+                .Formula = "ROUND(S56,0)"
+            End If
         End If
 
             'check CT15 <0 thi khong cho nhap CT16 tren PL 09B
@@ -424,23 +437,31 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
                     End If
 
                 End If
-            ' Set ct khi thay doi cac chi tieu 23,25  - 31072012
-            If .Col = .ColLetterToNumber("I") And (Row = 26 Or Row = 27 Or Row = 30) Then
-                .Sheet = 1
-                .Col = .ColLetterToNumber("I")
-                .Row = 57
-                .Formula = "ROUND(S57,0)"
-            End If
-            ' End
+                ' Set ct khi thay doi cac chi tieu 23,25  - 31072012
+                If .Col = .ColLetterToNumber("I") And (Row = 26 Or Row = 27 Or Row = 30) Then
+                    .Sheet = 1
+                    .Col = .ColLetterToNumber("I")
+                    .Row = 57
+                    .Formula = "ROUND(S57,0)"
+                End If
+                ' End
+                
+                ' set lai cong thu cho chi tie 36
+                If Col = .ColLetterToNumber("I") And Row = 31 Then
+                    .Sheet = 1
+                    .Col = .ColLetterToNumber("I")
+                    .Row = 56
+                    .Formula = "ROUND(S56,0)"
+                End If
                 fps.EventEnabled(EventAllEvents) = True
             End If
         
             If .ActiveSheet = 4 Then
                 If Col = .ColLetterToNumber("I") And .Text <> "" Then
-                    intIndexCombo = .TypeComboBoxCurSel
+                    intIndexCombo = .typeComboboxCurSel
                     .Row = Row
                     .Col = .ColLetterToNumber("H")
-                    .TypeComboBoxCurSel = intIndexCombo
+                    .typeComboboxCurSel = intIndexCombo
                     UpdateCell fps, .Col, .Row, .value
                 End If
                 fps.EventEnabled(EventAllEvents) = False
@@ -472,10 +493,10 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
     With fps
         If .ActiveSheet = 4 Then
             If Col = .ColLetterToNumber("I") And .Text <> "" Then
-                intIndexCombo = .TypeComboBoxCurSel
+                intIndexCombo = .typeComboboxCurSel
                  .Row = Row
                  .Col = .ColLetterToNumber("H")
-                 .TypeComboBoxCurSel = intIndexCombo
+                 .typeComboboxCurSel = intIndexCombo
                 UpdateCell fps, .Col, .Row, .value
             End If
         End If
@@ -531,7 +552,7 @@ End Sub
     Dim tuThang, denThang As Variant
     ' get so thang quyet toan
     Dim soThangQT As Integer, soThangKG As Integer
-    Dim CT22      As Variant, CT26 As Variant
+    Dim CT22      As Variant, ct26 As Variant
     
     
     With fps
@@ -780,6 +801,14 @@ End Sub
                 End If
 
             End If
+            
+            ' chi tieu 36
+            If Col = .ColLetterToNumber("I") And Row = 56 Then
+                .Col = .ColLetterToNumber("I")
+                .Row = 56
+                .Formula = ""
+            End If
+            
         End If
             
         
