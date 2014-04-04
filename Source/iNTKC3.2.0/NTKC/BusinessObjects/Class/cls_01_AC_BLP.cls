@@ -282,12 +282,14 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim dDate As Date, strDate() As String
     Dim vTIN, vTEN_DTNT, vDIA_CHI, vLOAI_TKHAI, vNGAY_NOP, vPHONG_QUAN_LY, vNGUOI_DAI_DIEN, vGHI_CHU, vNGAY_BC, vLY_DO
     Dim vNGAY_CAP_NHAT, vNGUOI_CAP_NHAT, vCO_LOI_DDANH, vNGAY_CHAY_HONG, vMA_CQT, vKY_BC_TUNGAY, vKY_BC_DENNGAY, vQUY_BC, vLoai_BC26
-    Dim vSO_TT_TK, vDA_NHAN, vGHI_CHU_LOI, vHTHUC_NOP
+    Dim vSO_TT_TK, vDA_NHAN, vGHI_CHU_LOI
     
     Dim vPHONG_XU_LY
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
     Dim vKyBCCuoi
+    
+    Dim vItkhai_ID, vHTHUC_NOP As String
     
 On Error GoTo ErrHandle
     strSQL = SqlHdr_AC
@@ -340,11 +342,12 @@ On Error GoTo ErrHandle
         vNGUOI_CAP_NHAT = TAX_Utilities_iNTK.Convert(CStr(vNGUOI_CAP_NHAT), UNICODE, TCVN)
         vGHI_CHU_LOI = TAX_Utilities_iNTK.Convert(CStr(vGHI_CHU_LOI), UNICODE, TCVN)
     ' Lay gia tri ky bao cao cuoi cung
-    If UCase(vKyBCCuoi) = "X" Or Val(vKyBCCuoi) = 1 Then
-        vLoai_BC26 = "Y"
-    Else
-        vLoai_BC26 = "N"
-    End If
+'    If UCase(vKyBCCuoi) = "X" Or Val(vKyBCCuoi) = 1 Then
+'        vLoai_BC26 = "Y"
+'    Else
+'        vLoai_BC26 = "N"
+'    End If
+     vLoai_BC26 = "null"
         
      ' Lay Quy BC
     If Trim(TAX_Utilities_iNTK.ThreeMonths) <> "" Then
@@ -353,7 +356,19 @@ On Error GoTo ErrHandle
         vQUY_BC = Format(dDate, "dd/mm/yyyy")
     End If
     
-    ' Tach ma so thue thanh ma 14 ky tu
+    
+    'Neu la to khai iHtkk thi lay ngay nop tu bang rcv_ihtkk_mvach
+    If TAX_Utilities_iNTK.HthucNopIHTKK = True Then
+        vNGAY_NOP = TAX_Utilities_iNTK.NgayNopIHTKK
+        vItkhai_ID = TAX_Utilities_iNTK.IDTokhaiIHTKK
+        vHTHUC_NOP = "'I'"
+    Else
+        vItkhai_ID = "null"
+        vHTHUC_NOP = "null"
+    End If
+    ' end
+    
+        ' Tach ma so thue thanh ma 14 ky tu
     If Len(Trim(CStr(vTIN))) = 13 Then
         vTIN = Left(CStr(vTIN), 10) & "-" & Right(CStr(vTIN), 3)
     End If
@@ -383,7 +398,8 @@ On Error GoTo ErrHandle
     End With
     strSQL = strSQL & "'" & strMaPhongXuLy & "',"
     strSQL = strSQL & "'" & vPHONG_QUAN_LY & "',"
-    strSQL = strSQL & "'" & vHTHUC_NOP & "',null,null,null,null,"
+    strSQL = strSQL & "0,"
+    strSQL = strSQL & vHTHUC_NOP & "," & vItkhai_ID & ",null,null,"
     strSQL = strSQL & "To_date('" & vNGAY_BC & "','dd/mm/yyyy'),"
     strSQL = strSQL & "'" & vNGUOI_DAI_DIEN & "',null,null,null,null,null,"
     strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"

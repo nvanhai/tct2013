@@ -124,11 +124,6 @@
 			<Sheet ID="03-7" Caption="GCN-01/QLT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_7_TNDN11" Ini="..\Ini\03_7_TNDN11.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_03_TNDN" Ini="..\Ini\KHBS_03_TNDN.xml"/>
 		</Validity>
-	</Menu>	
-	<Menu ID="14" PopID="101" ParentID="103" Caption="Tờ khai thuế TNDN khấu trừ HHĐL (05/TNDN)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
-		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\Excel\05_TNDN.xls" ReportTemplate="..\ReportTemplates\Excel\05_TNDN.xls" Class="Tax_Business_iNTK.cls_05TNDN">
-			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="05_TNDN" Ini="..\Ini\05_TNDN.xml"/>
-		</Validity>
 	</Menu>
 	<Menu ID="104" PopID="" ParentID="101" Caption="Thuế Thu Nhập Cá Nhân" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\kekhai.gif"/>	
 	<Menu ID="46" PopID="101" ParentID="104" Caption="TK-TNCN Mẫu 01/KK-BH theo tháng" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
@@ -665,7 +660,7 @@
 			<Sheet ID="02" Caption="Biểu thuế tiêu thụ đặc biệt" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" DataFile="Catalogue_022014_02"/>
 		</Validity>
 	</Menu>
-	<Menu ID="07" PopID="101" ParentID="112" Caption="Thông báo phát hành biên lai thu phí, lệ phí " FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp" FileName="" >
+	<Menu ID="07" PopID="101" ParentID="112" Caption="Báo cáo phát hành biên lai thu phí, lệ phí " FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp" FileName="" >
 		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\excel\01_TBAC_BLP.xls" ReportTemplate="..\ReportTemplates\excel\01_TBAC_BLP.xls" Class="Tax_Business_iNTK.cls_01_TBAC_BLP">
 			<Sheet ID="01" Caption="01_TBAC_BLP" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_TBAC_BLP" Ini="..\Ini\01_TBAC_BLP.xml" ReportIni="..\ReportIni\01_TBAC_BLP.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
@@ -686,6 +681,12 @@
 	<Menu ID="13" PopID="101" ParentID="112" Caption="Báo cáo tình hình nhận in biên lai thu phí, lệ phí" FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\excel\01_AC_BLP.xls" ReportTemplate="..\ReportTemplates\Excel\01_AC_BLP.xls" Class="Tax_Business_iNTK.cls_01_AC_BLP">
 			<Sheet ID="01" Caption="01_AC_BLP" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_AC_BLP" Ini="..\Ini\01_AC_BLP.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml"/>
+		</Validity>
+	</Menu>
+	<Menu ID="14" PopID="101" ParentID="112" Caption="Báo cáo tình hình sử dụng biên lai thu phí, lệ phí" FormName="" Year="1/2" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tncn.bmp">
+		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\excel\BC26_AC_BLP.xls" ReportTemplate="..\ReportTemplates\Excel\BC26_AC_BLP.xls" Class="Tax_Business_iNTK.cls_BC26AC_BLP">
+			<Sheet ID="01" Caption="BC26_AC_BLP" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BC26_AC_BLP" Ini="..\Ini\BC26_AC_BLP.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml"/>
 		</Validity>
 	</Menu>
