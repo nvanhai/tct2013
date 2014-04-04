@@ -1,0 +1,106 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_10" Value=""/>
+			<Cell CellID="H_8" Value=""/>
+			<Cell CellID="F_12" Value=""/>
+			<Cell CellID="F_16" Value=""/>
+			<Cell CellID="N_16" Value=""/>
+			<Cell CellID="V_16" Value=""/>
+			<Cell CellID="E_30" Value=""/>
+			<Cell CellID="E_32" Value=""/>
+			<Cell CellID="M_32" Value=""/>
+			<Cell CellID="V_32" Value=""/>
+			<Cell CellID="M_30" Value=""/>
+			<Cell CellID="V_39" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_36" Value=""/>
+			<Cell CellID="M_36" Value=""/>
+			<Cell CellID="V_30" Value=""/>
+			<Cell CellID="H_18" Value=""/>
+			<Cell CellID="F_22" Value=""/>
+			<Cell CellID="F_26" Value=""/>
+			<Cell CellID="N_26" Value=""/>
+			<Cell CellID="V_26" Value=""/>
+			<Cell CellID="H_28" Value=""/>
+			<Cell CellID="N_28" Value=""/>
+			<Cell CellID="V_34" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_20" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="L_43" Value="0" MCT="2"/>
+			<Cell CellID="R_43" Value="0" MCT="3"/>
+			<Cell CellID="X_43" Value="0" MCT="4"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="K_45" FirstCell="0" Value="0" MCT="6"/>
+			<Cell CellID="Q_45" Value="0" MCT="7"/>
+			<Cell CellID="W_45" Value="0" MCT="8"/>
+			<Cell CellID="AE_45" Value="" MCT="5"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="K_49" FirstCell="0" Value="0" MCT="14"/>
+			<Cell CellID="Q_49" Value="0" MCT="15"/>
+			<Cell CellID="W_49" Value="0" MCT="16"/>
+			<Cell CellID="AE_49" Value="" MCT="13"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="L_51" Value="0" MCT="18"/>
+			<Cell CellID="R_51" Value="0" MCT="19"/>
+			<Cell CellID="X_51" Value="0" MCT="20"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="K_53" FirstCell="0" Value="0" MCT="22"/>
+			<Cell CellID="Q_53" Value="0" MCT="23"/>
+			<Cell CellID="W_53" Value="0" MCT="24"/>
+			<Cell CellID="AE_53" Value="" MCT="21"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="L_55" Value="0" MCT="26"/>
+			<Cell CellID="R_55" Value="0" MCT="27"/>
+			<Cell CellID="X_55" Value="0" MCT="28"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="K_57" FirstCell="0" Value="0" MCT="30"/>
+			<Cell CellID="Q_57" Value="0" MCT="31"/>
+			<Cell CellID="W_57" Value="0" MCT="32"/>
+			<Cell CellID="AE_57" Value="" MCT="29"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="S_60" Value="0" MCT="33"/>
+			<Cell CellID="O_62" Value="0" MCT="34"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="H_73" Value=""/>
+			<Cell CellID="T_73" Value=""/>
+			<Cell CellID="H_75" Value=""/>
+			<Cell CellID="T_75" Value="03/04/2013"/>
+			<Cell CellID="C_39" Value="1"/>
+			<Cell CellID="F_39" Value=""/>
+			<Cell CellID="I_39" Value=""/>
+		</Cells>
+	</Section>
+</Sections>

@@ -1,0 +1,39 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="G_4" Value=""/>
+			<Cell CellID="G_5" Value=""/>
+			<Cell CellID="G_6" Value=""/>
+			<Cell CellID="E_6" Value=""/>
+			<Cell CellID="M_6" Value=""/>
+			<Cell CellID="V_6" Value=""/>
+			<Cell CellID="E_7" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="N_10" Value="terter" MCT="1"/>
+			<Cell CellID="N_12" Value="200000" MCT="2"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_26" FirstCell="0" Value="2011" MCT="3"/>
+			<Cell CellID="E_26" Value="12.23" MCT="4"/>
+			<Cell CellID="O_26" Value="42342342" MCT="5"/>
+			<Cell CellID="Q_26" Value="324234234" MCT="6"/>
+			<Cell CellID="R_26" Value="324234234" MCT="7"/>
+			<Cell CellID="U_26" Value="42342342" MCT="8"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_27" FirstCell="1" Value="2012" MCT="3"/>
+			<Cell CellID="E_27" Value="15" MCT="4"/>
+			<Cell CellID="O_27" Value="1000000" MCT="5"/>
+			<Cell CellID="Q_27" Value="200000" MCT="6"/>
+			<Cell CellID="R_27" Value="200000" MCT="7"/>
+			<Cell CellID="U_27" Value="1000000" MCT="8"/>
+		</Cells>
+	</Section>
+</Sections>
