@@ -15,7 +15,7 @@ CREATE OR REPLACE VIEW
         TU_SO,
         DEN_SO,
         SO_LUONG,
-        LOAI_BLP,
+        --LOAI_BLP,
         DTL_ID
     ) AS
 SELECT
@@ -33,7 +33,7 @@ SELECT
     Tu_so ,
     Den_so ,
     So_luong ,
-    Loai_BLP ,
+    --Loai_BLP ,
     Dtl_id
 FROM
     (
@@ -51,7 +51,7 @@ FROM
             MAX(dtl.Tu_so)         Tu_so ,
             MAX(dtl.Den_so)        Den_so ,
             MAX(dtl.So_luong)      So_luong ,
-            MAX(dtl.loaiHD)        Loai_BLP ,
+            --MAX(dtl.loaiHD)        Loai_BLP ,
             MAX(dtl.dtl_id)        Dtl_id
         FROM
             (
@@ -71,7 +71,7 @@ FROM
                     DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL)       Tu_so,
                     DECODE(gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL)       Den_so,
                     DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL)       So_luong,
-                    DECODE(gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL)       loaiHD,
+                    --DECODE(gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL)       loaiHD,
                     tkd.id                                                     dtl_id
                 FROM
                     QLT_NTK.rcv_bcao_dtl_ac tkd,
@@ -107,7 +107,7 @@ SELECT
     3),trim(MST_DN_in)) MST_DN_in ,
     So_BLP_in ,
     Ngay_BLP_in ,
-    Loai_BLP ,
+    --Loai_BLP ,
     Dtl_Id
 FROM
     (
@@ -125,7 +125,7 @@ FROM
             MAX(dtl.MST_DN_in)  MST_DN_in ,
             MAX(dtl.So_BLP_in)   So_BLP_in ,
             MAX(dtl.Ngay_BLP_in) Ngay_BLP_in ,
-            MAX(dtl.loaiHD)     Loai_BLP ,
+            --MAX(dtl.loaiHD)     Loai_BLP ,
             MAX(dtl.id)         dtl_id
         FROM
             (
@@ -134,18 +134,18 @@ FROM
                     NVL(tkd.row_id,0) row_id,
                     gdien.id          id,
                     gdien.so_tt,
-                    (DECODE(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL)) ten_BLP,
-                    (DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL)) Mau_so,
-                    (DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL)) Ky_hieu_BLP,
+                    dump(DECODE(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL)) ten_BLP,
+                    dump(DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL)) Mau_so,
+                    dump(DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL)) Ky_hieu_BLP,
                     DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL)       So_luong,
                     DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL)       Tu_so,
                     DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL)       Den_so,
                     DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL)       Ngay_BD_SD,
                     DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL) So_BLP_in,
-                    DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL) Ten_DN_in,
+                    dump(DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL)) Ten_DN_in,
                     DECODE(gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL)       MST_DN_in,                   
                     DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL)       Ngay_BLP_in,
-                    DECODE(gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL)       loaiHD,
+                    --DECODE(gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL)       loaiHD,
                     tkd.id                                                     dtl_id
                 FROM
                     QLT_NTK.rcv_bcao_dtl_ac tkd,
@@ -176,7 +176,7 @@ CREATE OR REPLACE VIEW
         TU_SO,
         DEN_SO,
         SO_LUONG,
-        LOAI_BLP,
+        --LOAI_BLP,
         DTL_ID
     ) AS
 SELECT
@@ -188,7 +188,7 @@ SELECT
     Tu_so ,
     Den_so ,
     So_luong ,
-    Loai_BLP ,
+    --Loai_BLP ,
     dtl_Id
 FROM
     (
@@ -201,7 +201,7 @@ FROM
             MAX(dtl.Tu_so)      Tu_so ,
             MAX(dtl.Den_so)     Den_so ,
             MAX(dtl.So_luong)   So_luong ,
-            MAX(dtl.loaiHD)     Loai_BLP ,
+            --MAX(dtl.loaiHD)     Loai_BLP ,
             MAX(dtl.Id)         dtl_Id
         FROM
             (
@@ -216,7 +216,7 @@ FROM
                     DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL)       Tu_so,
                     DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL)       Den_so,
                     DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL)       So_luong,
-                    DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL)       loaiHD,
+                    --DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL)       loaiHD,
                     tkd.id                                                     dtl_id
                 FROM
                     QLT_NTK.rcv_bcao_dtl_ac tkd,
@@ -249,7 +249,7 @@ CREATE OR REPLACE VIEW
         SO_LUONG,
         LIEN_BLP,
         GHI_CHU,
-        LOAI_BLP,
+        --LOAI_BLP,
         DTL_ID
     ) AS
 SELECT
@@ -263,7 +263,7 @@ SELECT
     So_luong ,
     Lien_BLP ,
     Ghi_chu ,
-    Loai_BLP ,
+    --Loai_BLP ,
     DTL_Id
 FROM
     (
@@ -278,7 +278,7 @@ FROM
             MAX(dtl.So_luong)   So_luong ,
             MAX(dtl.Lien_BLP)    Lien_BLP ,
             MAX(dtl.Ghi_chu)    Ghi_chu ,
-            MAX(dtl.Loai_BLP)    Loai_BLP ,
+            --MAX(dtl.Loai_BLP)    Loai_BLP ,
             MAX(dtl.Id)         dtl_Id
         FROM
             (
@@ -295,7 +295,7 @@ FROM
                     DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL)       So_luong,
                     dump(DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL)) Lien_BLP,
                     dump(DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL)) Ghi_chu,
-                    DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL)       Loai_BLP,
+                    --DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL)       Loai_BLP,
                     tkd.id                                                     dtl_id
                 FROM
                     QLT_NTK.rcv_bcao_dtl_ac tkd,
