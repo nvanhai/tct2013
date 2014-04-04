@@ -1539,8 +1539,8 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '--bc26_ac-BLP
-'str2 = "aa999142300100778   01201400700700100101/0101/01/2009<S01><S>0~1~01/01/2014~31/03/2014</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP8-009~KH-56T~84~0000001~0000022~0000023~0000084~0000001~0000003~3~0~1~1~1~3~1~2~0000004~0000084~81~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP6-034~AD-89T~7~0000002~0000005~0000006~0000008~0000002~0000005~4~1~1~2~1~3~1~4~0000006~0000008~3</S><S>nvsu~Minh NhÀt~03/04/2014</S></S01>"
-'Barcode_Scaned str2
+str2 = "aa999142300100778   01201400700700100101/0101/01/2009<S01><S>0~1~01/01/2014~31/03/2014</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP8-009~KH-56T~84~0000001~0000022~0000023~0000084~0000001~0000003~3~0~1~1~1~3~1~2~0000004~0000084~81~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP6-034~AD-89T~7~0000002~0000005~0000006~0000008~0000002~0000005~4~1~1~2~1~3~1~4~0000006~0000008~3</S><S>nvsu~Minh NhÀt~03/04/2014</S></S01>"
+Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 '--01_TBAC_BLP
 'str2 = "aa999072300100778   04201400900900100101/0101/01/2009<S01><S>Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP4-003~AB-32T~50~0000010~0000059~23/04/2014~HD879~~~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP9-005~CD-45P~121~0000030~0000150~20/04/2014~HD037~Doanh nghi÷p abc~0010011000</S><S>Chi cÙc thu’ TP Hﬂa B◊nh~01/04/2014~Nguy‘n Minh</S></S01>"
@@ -1551,8 +1551,8 @@ Private Sub Command1_Click()
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 '--BC21_AC_BLP
-str2 = "aa999092300100778   01201400400400100101/0101/01/2010<S01><S>01/04/2014</S><S>02BLP4-023~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~DK-56T~0000010~0000040~31~17;38~03~01BLP5-089~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~HL-38P~0000025~0000089~65~39;68;82~01</S><S>m t h„a Æ¨n~Chi cÙc thu’ TP H∂i Phﬂng~Nguy‘n Minh~01/04/2014</S></S01>"
-Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999092300100778   01201400400400100101/0101/01/2010<S01><S>01/04/2014</S><S>02BLP4-023~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~DK-56T~0000010~0000040~31~17;38~03~01BLP5-089~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~HL-38P~0000025~0000089~65~39;68;82~01</S><S>m t h„a Æ¨n~Chi cÙc thu’ TP H∂i Phﬂng~Nguy‘n Minh~01/04/2014</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 '--huy hoa don
 'str2 = "aa999102300100778   01201400600600100101/0101/01/2010<S01><S>C´ng ty TNHH ABC~Ph≠¨ng ph∏p hÒy abc~0~01/04/2014~11</S><S>Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP6-089~DH-21T~0000010~0000085~76~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP8-032~TK-56P~0000024~0000093~70</S><S>Lan H≠¨ng~Nguy‘n Minh~01/04/2014</S></S01>"
