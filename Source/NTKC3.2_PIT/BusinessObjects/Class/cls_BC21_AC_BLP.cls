@@ -182,7 +182,7 @@ Public Function Prepared3() As Boolean
             .GetText .ColLetterToNumber("AI"), .Row, tempValue
             If CStr(tempValue) = "01" Then
                 .SetText .ColLetterToNumber("AF"), .Row, GetAttribute(GetMessageCellById("0133"), "Msg")
-            ElseIf CStr(tempValue) = "02" Then
+            ElseIf CStr(tempValue) = "03" Then
                 .SetText .ColLetterToNumber("AF"), .Row, GetAttribute(GetMessageCellById("0134"), "Msg")
             End If
             .Row = .Row + 1
@@ -367,7 +367,7 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("C"), 31, vLY_DO
         .GetText .ColLetterToNumber("L"), 31, vNGUOI_DAI_DIEN
         .GetText .ColLetterToNumber("P"), 31, vNGAY_BC
-        .GetText .ColLetterToNumber("N"), 15, vNGAY_CHAY_HONG
+        .GetText .ColLetterToNumber("S"), 17, vNGAY_CHAY_HONG
         .EventEnabled(EventAllEvents) = False
     End With
     vLY_DO = Trim(TAX_Utilities_Srv_New.Convert(CStr(vLY_DO), UNICODE, TCVN))
