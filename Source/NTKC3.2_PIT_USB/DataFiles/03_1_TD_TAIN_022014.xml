@@ -1,0 +1,63 @@
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_10" Value=""/>
+			<Cell CellID="H_8" Value=""/>
+			<Cell CellID="F_12" Value=""/>
+			<Cell CellID="F_14" Value=""/>
+			<Cell CellID="N_14" Value=""/>
+			<Cell CellID="V_14" Value=""/>
+			<Cell CellID="E_32" Value=""/>
+			<Cell CellID="E_34" Value=""/>
+			<Cell CellID="M_34" Value=""/>
+			<Cell CellID="V_34" Value=""/>
+			<Cell CellID="M_32" Value="" MaxLen="20" HelpContexID="01_01_M_10"/>
+			<Cell CellID="V_40" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
+			<Cell CellID="E_38" Value=""/>
+			<Cell CellID="M_38" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="V_32" Value=""/>
+			<Cell CellID="H_16" Value=""/>
+			<Cell CellID="F_22" Value=""/>
+			<Cell CellID="F_24" Value=""/>
+			<Cell CellID="N_24" Value=""/>
+			<Cell CellID="V_24" Value=""/>
+			<Cell CellID="H_26" Value=""/>
+			<Cell CellID="N_26" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="B_18" FirstCell="0" Value="001" MCT="1"/>
+			<Cell CellID="C_18" Value="Nha may 1" MCT="2"/>
+			<Cell CellID="F_18" Value="2222222222" MCT="3"/>
+			<Cell CellID="T_18" Value="100" MCT="4"/>
+			<Cell CellID="W_18" Value="100" MCT="5"/>
+			<Cell CellID="AE_18" Value="" MCT="7"/>
+			<Cell CellID="AF_18" Value="x" MCT="8"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="B_19" FirstCell="1" Value="001-01" MCT="1"/>
+			<Cell CellID="C_19" Value=" - nha may 1.1" MCT="2"/>
+			<Cell CellID="F_19" Value="0102030405" MCT="3"/>
+			<Cell CellID="T_19" Value="40" MCT="4"/>
+			<Cell CellID="W_19" Value="40" MCT="5"/>
+			<Cell CellID="AE_19" Value="10100" MCT="7"/>
+			<Cell CellID="AF_19" Value="" MCT="8"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="B_20" FirstCell="1" Value="001-02" MCT="1"/>
+			<Cell CellID="C_20" Value=" - nha may 1.2" MCT="2"/>
+			<Cell CellID="F_20" Value="6868686868" MCT="3"/>
+			<Cell CellID="T_20" Value="50" MCT="4"/>
+			<Cell CellID="W_20" Value="60" MCT="5"/>
+			<Cell CellID="AE_20" Value="10900" MCT="7"/>
+			<Cell CellID="AF_20" Value="" MCT="8"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="W_22" Value="100" MCT="9"/>
+		</Cells>
+	</Section>
+</Sections>

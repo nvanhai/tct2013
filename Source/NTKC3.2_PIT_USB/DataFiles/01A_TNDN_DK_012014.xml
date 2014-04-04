@@ -1,0 +1,73 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="I_11" Value=""/>
+			<Cell CellID="I_10" Value=""/>
+			<Cell CellID="I_13" Value=""/>
+			<Cell CellID="I_15" Value=""/>
+			<Cell CellID="S_15" Value=""/>
+			<Cell CellID="AG_15" Value=""/>
+			<Cell CellID="F_27" Value=""/>
+			<Cell CellID="F_29" Value=""/>
+			<Cell CellID="S_29" Value=""/>
+			<Cell CellID="AG_29" Value=""/>
+			<Cell CellID="S_27" Value=""/>
+			<Cell CellID="V_43" Value=""/>
+			<Cell CellID="G_33" Value=""/>
+			<Cell CellID="N_33" Value=""/>
+			<Cell CellID="AG_27" Value=""/>
+			<Cell CellID="I_17" Value=""/>
+			<Cell CellID="I_21" Value=""/>
+			<Cell CellID="I_23" Value=""/>
+			<Cell CellID="S_23" Value="" MaxLen="60"/>
+			<Cell CellID="AG_23" Value=""/>
+			<Cell CellID="I_25" Value=""/>
+			<Cell CellID="S_25" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="I_19" Value="0010011000"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="Y_5" Value="" MCT="1"/>
+			<Cell CellID="M_38" Value="x" MCT="2"/>
+			<Cell CellID="N_38" Value="" MCT="3"/>
+			<Cell CellID="Y_8" Value="" MCT="4"/>
+			<Cell CellID="D_38" Value="1" MCT="5"/>
+			<Cell CellID="G_38" Value="0" MCT="6"/>
+			<Cell CellID="J_38" Value="0" MCT="7"/>
+			<Cell CellID="J_41" Value="HD01" MCT="8"/>
+			<Cell CellID="I_44" Value="x" MCT="9"/>
+			<Cell CellID="P_44" Value="" MCT="10"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="AJ_52" Value="0" MCT="11"/>
+			<Cell CellID="AJ_53" Value="0" MCT="12"/>
+			<Cell CellID="AJ_54" Value="0" MCT="13"/>
+			<Cell CellID="AJ_55" Value="0" MCT="14"/>
+			<Cell CellID="AJ_56" Value="0" MCT="15"/>
+			<Cell CellID="AJ_57" Value="0" MCT="16"/>
+			<Cell CellID="AJ_58" Value="0" MCT="17"/>
+			<Cell CellID="AJ_59" Value="0" MCT="18"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="T_67" Value="Kh¸nh Linh"/>
+			<Cell CellID="T_69" Value="MCT"/>
+			<Cell CellID="AI_67" Value="Minh NhËt"/>
+			<Cell CellID="AI_69" Value="17/03/2014"/>
+			<Cell CellID="D_37" Value="1"/>
+			<Cell CellID="J_37" Value=""/>
+			<Cell CellID="D_39" Value=""/>
+			<Cell CellID="W_39" Value="0"/>
+		</Cells>
+	</Section>
+</Sections>

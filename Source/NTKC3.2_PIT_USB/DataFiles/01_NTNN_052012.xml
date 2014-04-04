@@ -1,0 +1,114 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="H_7" Value=""/>
+			<Cell CellID="H_5" Value=""/>
+			<Cell CellID="H_9" Value=""/>
+			<Cell CellID="H_11" Value=""/>
+			<Cell CellID="R_11" Value=""/>
+			<Cell CellID="AF_11" Value=""/>
+			<Cell CellID="E_23" Value=""/>
+			<Cell CellID="E_25" Value=""/>
+			<Cell CellID="R_25" Value=""/>
+			<Cell CellID="AF_25" Value=""/>
+			<Cell CellID="R_23" Value=""/>
+			<Cell CellID="V_39" Value=""/>
+			<Cell CellID="F_27" Value=""/>
+			<Cell CellID="E_29" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
+			<Cell CellID="AF_23" Value=""/>
+			<Cell CellID="H_13" Value=""/>
+			<Cell CellID="H_17" Value=""/>
+			<Cell CellID="H_19" Value=""/>
+			<Cell CellID="R_19" Value=""/>
+			<Cell CellID="AF_19" Value=""/>
+			<Cell CellID="H_21" Value=""/>
+			<Cell CellID="R_21" Value=""/>
+			<Cell CellID="AF_27" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="H_15" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_52" FirstCell="0" Value="1. PhÝ b#n quy•n th¸ng 5/2012 ()" MCT="1"/>
+			<Cell CellID="H_52" Value="" MCT="2"/>
+			<Cell CellID="L_52" Value="H ngµy 15/04/2007" MCT="3"/>
+			<Cell CellID="Q_52" Value="241731965" MCT="4"/>
+			<Cell CellID="V_52" Value="" MCT="5"/>
+			<Cell CellID="Y_52" Value="265905162" MCT="6"/>
+			<Cell CellID="AB_52" Value="0.0" MCT="7"/>
+			<Cell CellID="AD_52" Value="0" MCT="8"/>
+			<Cell CellID="AF_52" Value="0" MCT="9"/>
+			<Cell CellID="AH_52" Value="241731965" MCT="10"/>
+			<Cell CellID="AN_52" Value="10.0" MCT="11"/>
+			<Cell CellID="AP_52" Value="0" MCT="12"/>
+			<Cell CellID="AR_52" Value="24173197" MCT="13"/>
+			<Cell CellID="AV_52" Value="24173197" MCT="14"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_53" FirstCell="1" Value="2. PhÝ b#n quy•n  ()" MCT="1"/>
+			<Cell CellID="H_53" Value="" MCT="2"/>
+			<Cell CellID="L_53" Value="H MK062" MCT="3"/>
+			<Cell CellID="Q_53" Value="10500000" MCT="4"/>
+			<Cell CellID="V_53" Value="" MCT="5"/>
+			<Cell CellID="Y_53" Value="11550000" MCT="6"/>
+			<Cell CellID="AB_53" Value="0.0" MCT="7"/>
+			<Cell CellID="AD_53" Value="0" MCT="8"/>
+			<Cell CellID="AF_53" Value="0" MCT="9"/>
+			<Cell CellID="AH_53" Value="10500000" MCT="10"/>
+			<Cell CellID="AN_53" Value="10.0" MCT="11"/>
+			<Cell CellID="AP_53" Value="0" MCT="12"/>
+			<Cell CellID="AR_53" Value="1050000" MCT="13"/>
+			<Cell CellID="AV_53" Value="1050000" MCT="14"/>
+		</Cells>
+		<Cells>
+			<Cell CellID="C_54" FirstCell="1" Value="3. PhÝ b#n quy¸n ()" MCT="1"/>
+			<Cell CellID="H_54" Value="" MCT="2"/>
+			<Cell CellID="L_54" Value="Statement Acc 30/4/2012" MCT="3"/>
+			<Cell CellID="Q_54" Value="2694300" MCT="4"/>
+			<Cell CellID="V_54" Value="" MCT="5"/>
+			<Cell CellID="Y_54" Value="2963730" MCT="6"/>
+			<Cell CellID="AB_54" Value="0.0" MCT="7"/>
+			<Cell CellID="AD_54" Value="0" MCT="8"/>
+			<Cell CellID="AF_54" Value="0" MCT="9"/>
+			<Cell CellID="AH_54" Value="2694300" MCT="10"/>
+			<Cell CellID="AN_54" Value="10.0" MCT="11"/>
+			<Cell CellID="AP_54" Value="0" MCT="12"/>
+			<Cell CellID="AR_54" Value="269430" MCT="13"/>
+			<Cell CellID="AV_54" Value="269430" MCT="14"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="Y_56" Value="280418892" MCT="15"/>
+			<Cell CellID="AF_56" Value="0" MCT="16"/>
+			<Cell CellID="AH_56" Value="254926265" MCT="17"/>
+			<Cell CellID="AP_56" Value="0" MCT="18"/>
+			<Cell CellID="AR_56" Value="25492627" MCT="19"/>
+			<Cell CellID="AV_56" Value="25492627" MCT="20"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="Z_3" Value="X"/>
+			<Cell CellID="AD_3" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="E_41" Value=""/>
+			<Cell CellID="E_42" Value=""/>
+			<Cell CellID="J_41" Value="kydientu"/>
+			<Cell CellID="J_42" Value="18/06/2012"/>
+			<Cell CellID="C_40" Value="1"/>
+			<Cell CellID="F_40" Value=""/>
+			<Cell CellID="I_40" Value=""/>
+			<Cell CellID="AG_42" Value="05/2012"/>
+		</Cells>
+	</Section>
+</Sections>
