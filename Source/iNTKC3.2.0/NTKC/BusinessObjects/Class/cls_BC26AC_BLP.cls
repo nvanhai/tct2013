@@ -6,7 +6,7 @@ BEGIN
   DataSourceBehavior  = 0  'vbNone
   MTSTransactionMode  = 0  'NotAnMTSObject
 END
-Attribute VB_Name = "cls_BC21_AC_BLP"
+Attribute VB_Name = "cls_BC26AC_BLP"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
@@ -16,16 +16,16 @@ Option Explicit
 'Const KY_LAP_BO_COL = "E"
 'Const MA_SO_TEP_ROW = 10
 'Const MA_SO_TEP_COL = "M"
-Const NGAY_NHAN_TO_KHAI_ROW = 15
-Const NGAY_NHAN_TO_KHAI_COL = "S"
-Const NGUOI_SU_DUNG_ROW = 15
-Const NGUOI_SU_DUNG_COL = "AC"
+Const NGAY_NHAN_TO_KHAI_ROW = 10
+Const NGAY_NHAN_TO_KHAI_COL = "E"
+Const NGUOI_SU_DUNG_ROW = 12
+Const NGUOI_SU_DUNG_COL = "Q"
 
-Const HEADER_SO_TT_TRONG_TEP_ROW = 13 'Dong 24 da dc Hidden
-Const HEADER_SO_TT_TRONG_TEP_COL = "S"
+Const HEADER_SO_TT_TRONG_TEP_ROW = 10 'Dong 24 da dc Hidden
+Const HEADER_SO_TT_TRONG_TEP_COL = "K"
 
-Const PHONG_XU_LY_ROW = 13
-Const PHONG_XU_LY_COL = "AC"
+Const PHONG_XU_LY_ROW = 10
+Const PHONG_XU_LY_COL = "Q"
 
 Public WithEvents fps As fpSpread
 Attribute fps.VB_VarHelpID = -1
@@ -35,7 +35,6 @@ Public strPhongXuLy As String
 Private larrid() As String
 Private larrPhongXuLy() As String
 Private lSoPhongXL As Long
-
 Public strMaCQT As String
 Public strMaPQL As String
 Public strTenPQL As String
@@ -57,15 +56,15 @@ Public Function Prepared1() As Boolean
 '        .TypeMaxEditLen = 20
         
         'Ghi chu
-        .Col = .ColLetterToNumber("S")
-        .Row = 19
+        .Col = .ColLetterToNumber("E")
+        .Row = 14
         .CellType = CellTypeEdit
         .TypeEditCharSet = TypeEditCharSetASCII
         .TypeMaxEditLen = 100
         
         'Phong xu ly
-        .Col = .ColLetterToNumber("AC")
-        .Row = 13
+        .Col = .ColLetterToNumber("Q")
+        .Row = 10
         .CellType = CellTypeComboBox
         .TypeEditCharSet = TypeEditCharSetASCII
         .TypeMaxEditLen = 60
@@ -75,18 +74,19 @@ Public Function Prepared1() As Boolean
 '        .TypeHAlign = TypeHAlignLeft
         
         ' Ngay nop
-        SetDateFormat fps, 1, 13, .ColLetterToNumber("E"), DDMMYYYY
-        .Row = 13
+        SetDateFormat fps, 1, 10, .ColLetterToNumber("E"), DDMMYYYY
+        .Row = 10
         .Col = .ColLetterToNumber("E")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
         
         ' Ngay quet
-        SetDateFormat fps, 1, 15, .ColLetterToNumber("S"), DDMMYYYY
-        .Row = 15
-        .Col = .ColLetterToNumber("S")
+        SetDateFormat fps, 1, 12, .ColLetterToNumber("K"), DDMMYYYY
+        .Row = 12
+        .Col = .ColLetterToNumber("K")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
+        
     
     End With
     
@@ -139,17 +139,45 @@ Public Function Prepared3() As Boolean
     Dim strId, strMauso, strTuSo, strDenSo As Variant
     Dim strTen As String
     Dim i As Integer
-    Dim tempValue As Variant
     With fps
         '.EventEnabled(EventAllEvents) = False
         'Set MaSoTep
         .Sheet = 1
+        
+        
+'        strDataFileName = GetAbsolutePath("..\InterfaceTemplates\xml\Catalogue_loai_HD.xml")
+   
+    ' Lay danh muc loai hoa don
+'        i = 42
+'        Do
+'
+'             .Row = i
+'             .GetText .ColLetterToNumber("AH"), .Row, strId
+'             .GetText .ColLetterToNumber("O"), .Row, strMauso
+'             .GetText .ColLetterToNumber("V"), .Row, strTuSo
+'             .GetText .ColLetterToNumber("Y"), .Row, strDenSo
+'
+'             DataDM Trim(CStr(strId)), Trim(CStr(strMauso)), strTen
+'             .SetText .ColLetterToNumber("C"), .Row, strTen
+'
+'             UpdateCell fps, .ColLetterToNumber("C"), .Row, .Text
+'
+'             .SetText .ColLetterToNumber("AA"), .Row, Val(strDenSo) - Val(strTuSo) + 1
+'             UpdateCell fps, .ColLetterToNumber("AA"), .Row, .Text
+'
+'             .Col = .ColLetterToNumber("B")
+'             i = i + 1
+'        Loop Until .Text = "aa"
+        
         ' set Phong quan ly
-        .Col = .ColLetterToNumber("AC")
-        .Row = 17
+        .Col = .ColLetterToNumber("Q")
+        .Row = 14
         .Text = TAX_Utilities_iNTK.Convert(strTenPQL, TCVN, UNICODE)
         
         UpdateCell fps, .Col, .Row, .Text
+        
+        
+        
         
         'Set NgayNhanToKhai
         .Col = .ColLetterToNumber(NGAY_NHAN_TO_KHAI_COL)
@@ -174,20 +202,6 @@ Public Function Prepared3() As Boolean
             .Text = strPhongXuLy
             UpdateCell fps, .Col, .Row, .Text
         End If
-        
-        ' set lai gia tri cho o ghi chu
-        .Row = 41
-        .Col = .ColLetterToNumber("B")
-        Do
-            .GetText .ColLetterToNumber("AI"), .Row, tempValue
-            If CStr(tempValue) = "01" Then
-                .SetText .ColLetterToNumber("AF"), .Row, GetAttribute(GetMessageCellById("0133"), "Msg")
-            ElseIf CStr(tempValue) = "03" Then
-                .SetText .ColLetterToNumber("AF"), .Row, GetAttribute(GetMessageCellById("0134"), "Msg")
-            End If
-            .Row = .Row + 1
-        Loop Until .Text = "aa"
-        
         '.EventEnabled(EventAllEvents) = True
     End With
     'UpdateSheets
@@ -280,10 +294,10 @@ Public Function CheckValidData() As Boolean
     CheckValidData = True
     With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("F"), 19, varCheckValue
-        .GetText .ColLetterToNumber("S"), 19, varNoteValue
+        .GetText .ColLetterToNumber("E"), 12, varCheckValue
+        .GetText .ColLetterToNumber("E"), 14, varNoteValue
         
-        .GetText .ColLetterToNumber("E"), 13, varNgayNop
+        .GetText .ColLetterToNumber("E"), 10, varNgayNop
         
         If CStr(varCheckValue) = "1" And Trim(CStr(varNoteValue)) = "" Then
             .Sheet = .SheetCount
@@ -302,7 +316,7 @@ Public Function CheckValidData() As Boolean
             .Sheet = .SheetCount
             .SetText 2, 12, "1"
         End If
-        
+
         
     End With
 End Function
@@ -313,12 +327,15 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim xmlAttribute As MSXML.IXMLDOMAttribute
     Dim iRowID As Long, strSQL As String, strTempSQL As String
     Dim dDate As Date, strDate() As String
-    Dim vTIN, vTEN_DTNT, vDIA_CHI, vLOAI_TKHAI, vNGAY_NOP, vKyLB, vPHONG_QUAN_LY, vNGUOI_DAI_DIEN, vGHI_CHU, vNGAY_BC, vLY_DO
-    Dim vNGAY_CAP_NHAT, vNGUOI_CAP_NHAT, vCO_LOI_DDANH, vNGAY_CHAY_HONG, vMA_CQT
-    Dim vSO_HIEU_TEP, vSO_TT_TK, vDA_NHAN, vGHI_CHU_LOI
+    Dim vTIN, vTEN_DTNT, vDIA_CHI, vLOAI_TKHAI, vNGAY_NOP, vKyLB, vPHONG_QUAN_LY, vNGUOI_DAI_DIEN, vTEN_CQ_TIEP_NHAN, vGHI_CHU, vNGAY_BC, vLY_DO
+    Dim vNGAY_CAP_NHAT, vNGUOI_CAP_NHAT, vCO_LOI_DDANH, vNGAY_CHAY_HONG, vMA_CQT, vNGUOI_LB, vKY_BC_TUNGAY, vKY_BC_DENNGAY, vQUY_BC, vLoai_BC26
+    Dim vSO_HIEU_TEP, vSO_TT_TK, vDA_NHAN, vGHI_CHU_LOI, vCO_GTRINH_02A
+    Dim vCO_BANG_KE1, vCO_BANG_KE2, vCO_BANG_KE
     Dim vPHONG_XU_LY
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
+    Dim vKyBCCuoi, vChuyenDiaDiem
+    Dim PP_HUY As Variant
     
     Dim vItkhai_ID, vHTHUC_NOP As String
     
@@ -330,68 +347,90 @@ On Error GoTo ErrHandle
         
         If Trim(GetAttribute(xmlNode, "MCT")) = vbNullString Then
             Select Case Trim(GetAttribute(xmlNode, "CellID"))
-                Case "F_7"
+                Case "E_4"
                     vTIN = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "O_5"
+                Case "E_5"
                     vTEN_DTNT = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "F_9"
+                Case "E_6"
                     vDIA_CHI = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "E_13"
+                Case "E_10"
                     vNGAY_NOP = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "S_15"
+                Case "K_12"
                     vNGAY_CAP_NHAT = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "AC_15"
+                Case "Q_12"
                     vNGUOI_CAP_NHAT = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "F_19"
+                Case "E_12"
                     vCO_LOI_DDANH = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case HEADER_SO_TT_TRONG_TEP_COL & "_" & HEADER_SO_TT_TRONG_TEP_ROW
                     vSO_TT_TK = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "S_19"
+                Case "E_14"
                     vGHI_CHU_LOI = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                     vPHONG_XU_LY = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "AC_17"
-                    vPHONG_QUAN_LY = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "C_30"
-'                    vGHI_CHU = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-'                Case "L_30"
-'                    vNGUOI_DAI_DIEN = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-'                Case "P_30"
-'                    vNGAY_BC = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
             End Select
         End If
         End With
     Next
+    
+    vCO_BANG_KE1 = TAX_Utilities_iNTK.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue
+    'vCO_BANG_KE2 = TAX_Utilities_iNTK.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue
+    If vCO_BANG_KE1 = 1 Then
+        vCO_BANG_KE = 1
+'        fps.Sheet = 2
+'        fps.GetText fps.ColLetterToNumber("M"), 19, vTEN_CQ_TIEP_NHAN
+    ElseIf vCO_BANG_KE2 = 1 Then
+        vCO_BANG_KE = 1
+        vTEN_CQ_TIEP_NHAN = ""
+    Else
+        vCO_BANG_KE = 0
+        vTEN_CQ_TIEP_NHAN = ""
+    End If
+    
     'Lay thong tin ly do, nguoi dai dien, ngay BC
     With fps
         .EventEnabled(EventAllEvents) = False
         .Sheet = 1
-        .GetText .ColLetterToNumber("C"), 31, vLY_DO
-        .GetText .ColLetterToNumber("L"), 31, vNGUOI_DAI_DIEN
-        .GetText .ColLetterToNumber("P"), 31, vNGAY_BC
-        .GetText .ColLetterToNumber("S"), 17, vNGAY_CHAY_HONG
+        .GetText .ColLetterToNumber("I"), 19, vNGUOI_LB
+        .GetText .ColLetterToNumber("J"), 19, vNGUOI_DAI_DIEN
+        .GetText .ColLetterToNumber("K"), 19, vNGAY_BC
+        
+        .GetText .ColLetterToNumber("E"), 23, vKY_BC_TUNGAY
+        .GetText .ColLetterToNumber("F"), 23, vKY_BC_DENNGAY
+        
+        .GetText .ColLetterToNumber("E"), 16, vKyBCCuoi
+        .GetText .ColLetterToNumber("K"), 16, vChuyenDiaDiem
+                
         .EventEnabled(EventAllEvents) = False
     End With
-    vLY_DO = Trim(TAX_Utilities_iNTK.Convert(CStr(vLY_DO), UNICODE, TCVN))
+    vNGUOI_LB = Trim(TAX_Utilities_iNTK.Convert(CStr(vNGUOI_LB), UNICODE, TCVN))
     vNGUOI_DAI_DIEN = Trim(TAX_Utilities_iNTK.Convert(CStr(vNGUOI_DAI_DIEN), UNICODE, TCVN))
-    
-    
-    ' Tach ma so thue thanh ma 14 ky tu
-    If Len(Trim(CStr(vTIN))) = 13 Then
-        vTIN = Left(CStr(vTIN), 10) & "-" & Right(CStr(vTIN), 3)
+    If Trim(vTEN_CQ_TIEP_NHAN) <> "" Then
+        vTEN_CQ_TIEP_NHAN = Trim(TAX_Utilities_iNTK.Convert(CStr(vTEN_CQ_TIEP_NHAN), UNICODE, TCVN))
+        vTEN_CQ_TIEP_NHAN = Mid(vTEN_CQ_TIEP_NHAN, InStr(vTEN_CQ_TIEP_NHAN, "{") + 1, InStr(vTEN_CQ_TIEP_NHAN, "}") - InStr(vTEN_CQ_TIEP_NHAN, "{") - 1)
+    End If
+    vPHONG_QUAN_LY = strMaPQL
+    ' Lay Quy BC
+    If Trim(TAX_Utilities_iNTK.ThreeMonths) <> "" Then
+        dDate = dNgayDauKy
+        vQUY_BC = Format(dDate, "dd/mm/yyyy")
+    End If
+    ' lay gia tri loai BC 26
+    If Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
+        ' bao cao quy
+        vLoai_BC26 = "01"
+    ElseIf Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "1" Then
+        ' bao cao chuyen dia diem
+        vLoai_BC26 = "03"
+    ElseIf Trim(CStr(vKyBCCuoi)) = "1" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
+        ' bao cao quyet toan cuoi tung
+        vLoai_BC26 = "02"
+    Else
+        '
+        vLoai_BC26 = "04"
     End If
     
     
-    strSQL = strSQL & "'" & vHdrID & "',"
-    strSQL = strSQL & "'" & vTIN & "',"
-'    strSQL = strSQL & "'" & vTEN_DTNT & "',"
-'    strSQL = strSQL & "'" & vDIA_CHI & "',"
-    
-    vLOAI_TKHAI = "BC21_AC_BLP"
-    vMA_CQT = strMaCQT
-    vPHONG_QUAN_LY = strMaPQL
-    
-    'Neu la to khai iHtkk thi lay ngay nop tu bang rcv_ihtkk_mvach
+   'Neu la to khai iHtkk thi lay ngay nop tu bang rcv_ihtkk_mvach
     If TAX_Utilities_iNTK.HthucNopIHTKK = True Then
         vNGAY_NOP = TAX_Utilities_iNTK.NgayNopIHTKK
         vItkhai_ID = TAX_Utilities_iNTK.IDTokhaiIHTKK
@@ -401,11 +440,23 @@ On Error GoTo ErrHandle
         vHTHUC_NOP = "null"
     End If
     ' end
+    ' Tach ma so thue thanh ma 14 ky tu
+    If Len(Trim(CStr(vTIN))) = 13 Then
+        vTIN = Left(CStr(vTIN), 10) & "-" & Right(CStr(vTIN), 3)
+    End If
     
+    strSQL = strSQL & "'" & vHdrID & "',"
+    strSQL = strSQL & "'" & vTIN & "',"
+'    strSQL = strSQL & "'" & vTEN_DTNT & "',"
+'    strSQL = strSQL & "'" & vDIA_CHI & "',"
+    
+    vLOAI_TKHAI = "BC26_AC_BLP"
+    vMA_CQT = strMaCQT
     
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
-    strSQL = strSQL & "null,null,"
+    strSQL = strSQL & "To_date('" & vKY_BC_TUNGAY & "','dd/mm/yyyy'),"
+    strSQL = strSQL & "To_date('" & vKY_BC_DENNGAY & "','dd/mm/yyyy'),"
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
     strSQL = strSQL & "'" & vNGUOI_CAP_NHAT & "',"
 '    strSQL = strSQL & "'" & vCO_LOI_DDANH & "',"
@@ -424,26 +475,27 @@ On Error GoTo ErrHandle
             End If
         Next
     End With
-    strSQL = strSQL & "'" & strMaPhongXuLy & "',"
-    strSQL = strSQL & "'" & vPHONG_QUAN_LY & "',0,"
-    strSQL = strSQL & vHTHUC_NOP & "," & vItkhai_ID & ",null,null,"
-    If vNGAY_BC <> vbNullString And vNGAY_BC <> "" Then
-        strSQL = strSQL & "To_date('" & vNGAY_BC & "','dd/mm/yyyy'),"
-    Else
-        strSQL = strSQL & "null,"
-    End If
     
-    strSQL = strSQL & "'" & vNGUOI_DAI_DIEN & "',null,"
-    strSQL = strSQL & "'" & vLY_DO & "',"
-    strSQL = strSQL & "To_date('" & vNGAY_CHAY_HONG & "','dd/mm/yyyy'),"
+    strSQL = strSQL & "'" & strMaPhongXuLy & "',"
+    strSQL = strSQL & "'" & vPHONG_QUAN_LY & "',"
+    strSQL = strSQL & vCO_BANG_KE & ","
+    strSQL = strSQL & vHTHUC_NOP & "," & vItkhai_ID & ",null,null,"
+    strSQL = strSQL & "To_date('" & vNGAY_BC & "','dd/mm/yyyy'),"
+    strSQL = strSQL & "'" & vNGUOI_DAI_DIEN & "',"
+    strSQL = strSQL & "'" & vTEN_CQ_TIEP_NHAN & "',"
+    strSQL = strSQL & "'" & "" & "',"
+    strSQL = strSQL & "null,"
     strSQL = strSQL & "null,null,"
     strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
-    strSQL = strSQL & "'" & vMA_CQT & "',null,"
-    strSQL = strSQL & "null,null)"
+    strSQL = strSQL & "'" & vMA_CQT & "',"
+    strSQL = strSQL & "'" & vLoai_BC26 & "',"
+    'strSQL = strSQL & "null,"
+    strSQL = strSQL & "'" & vNGUOI_LB & "',"
+    strSQL = strSQL & "To_date('" & vQUY_BC & "','dd/mm/yyyy'))"
     GenerateSQL_Header = strSQL
     Exit Function
 ErrHandle:
-    SaveErrorLog "BC21_AC_BLP", "GenerateSQL_Header", Err.Number, Err.Description
+    SaveErrorLog "BC26_AC_BLP", "GenerateSQL_Header", Err.Number, Err.Description
 End Function
 
 Public Function KiemTraKhoaSo(ByVal strDate As String) As Boolean
@@ -462,8 +514,8 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
  Dim varTemp As Variant
  With fps
     If .ActiveSheet = 1 Then
-        If Col = .ColLetterToNumber("E") And Row = 13 Then
-            .Sheet = 1
+        .Sheet = 1
+        If Col = .ColLetterToNumber("E") And Row = 10 Then
             .GetText Col, Row, varTemp
             If varTemp <> "" And varTemp <> "../../...." Then
                 If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
@@ -475,7 +527,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
 '             .SetActiveCell Col, Row
             End If
             .Col = .ColLetterToNumber("E")
-            .Row = 13
+            .Row = 10
            UpdateCell fps, .Col, .Row, .Text
         End If
     End If

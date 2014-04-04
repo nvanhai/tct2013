@@ -298,6 +298,8 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
     
+    Dim vItkhai_ID, vHTHUC_NOP As String
+    
 On Error GoTo ErrHandle
     strSQL = SqlHdr_AC
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
@@ -368,6 +370,17 @@ On Error GoTo ErrHandle
     vMA_CQT = strMaCQT
     vPHONG_QUAN_LY = strMaPQL
     
+    'Neu la to khai iHtkk thi lay ngay nop tu bang rcv_ihtkk_mvach
+    If TAX_Utilities_iNTK.HthucNopIHTKK = True Then
+        vNGAY_NOP = TAX_Utilities_iNTK.NgayNopIHTKK
+        vItkhai_ID = TAX_Utilities_iNTK.IDTokhaiIHTKK
+        vHTHUC_NOP = "'I'"
+    Else
+        vItkhai_ID = "null"
+        vHTHUC_NOP = "null"
+    End If
+    ' end
+    
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     strSQL = strSQL & "null,null,"
@@ -390,7 +403,8 @@ On Error GoTo ErrHandle
         Next
     End With
     strSQL = strSQL & "'" & strMaPhongXuLy & "',"
-    strSQL = strSQL & "'" & vPHONG_QUAN_LY & "',null,null,null,null,null,"
+    strSQL = strSQL & "'" & vPHONG_QUAN_LY & "',0,"
+    strSQL = strSQL & vHTHUC_NOP & "," & vItkhai_ID & ",null,null,"
     strSQL = strSQL & "To_date('" & vNGAY_BC & "','dd/mm/yyyy'),"
     strSQL = strSQL & "'" & vNGUOI_DAI_DIEN & "',null,"
      strSQL = strSQL & "'" & vLY_DO & "',"
