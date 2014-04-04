@@ -129,6 +129,7 @@
 	<Infor ID="0133" Msg="Đã sử dụng"/>
 	<Infor ID="0134" Msg="Chưa sử dụng"/>
 	<Infor ID="0135" Msg="Tờ khai bổ sung phải thực hiện nhập trên ứng dụng QCT"/>
-	<Infor ID="0136" Msg="Sử dụng máy quét mã vạch qua cổng USB? Nếu chọn không chương trình mặc định sử dụng cổng COM"/>
-	<Infor ID="0137" Msg="Chương trình đang sử dụng máy quét bằng cổng USB, nếu muốn sự dụng cổng COM, bạn hãy đăng nhập lại"/>
+	<Infor ID="0136" Msg="Đề nghị cán bộ thuế nhập tay vào hệ thống QLT"/>
+	<Infor ID="0137" Msg="Sử dụng máy quét mã vạch qua cổng USB? Nếu chọn không chương trình mặc định sử dụng cổng COM"/>
+	<Infor ID="0138" Msg="Chương trình đang sử dụng máy quét bằng cổng USB, nếu muốn sự dụng cổng COM, bạn hãy đăng nhập lại"/>
 </Message>
