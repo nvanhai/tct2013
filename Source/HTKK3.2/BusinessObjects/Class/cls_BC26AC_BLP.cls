@@ -2107,7 +2107,11 @@ Private Sub UpdateSheets()
                     IsUpdate = True
                     ' tam thoi xu ly de ghi gia tri xuong file xml
                     .GetText lCol, lRow, varTemp
-                    UpdateCell fps, lCol, lRow, varTemp
+                    If varTemp = "1" Or varTemp = "x" Or varTemp = "X" Then
+                        UpdateCell fps, lCol, lRow, "x"
+                    Else
+                        UpdateCell fps, lCol, lRow, ""
+                    End If
                Else
                     IsUpdate = False
                End If
