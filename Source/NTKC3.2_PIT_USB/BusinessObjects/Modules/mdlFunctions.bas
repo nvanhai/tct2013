@@ -137,6 +137,28 @@ Public Function GetCatalogueFileName(Optional lSheet As Long = 1) As String
         strCatalogueName & ".xml")
 End Function
 
+Public Function GetCatalogueFileNameTk_03TD_TAIN(Optional lSheet As Long = 1, Optional tkQuy As String = "0") As String
+    Dim strCatalogueName     As String, strCatalogueID As String
+    Dim xmlCatalogeValidNode As MSXML.IXMLDOMNode
+    
+    'Get valid catalogue node
+    If tkQuy = "1" Then
+        Set xmlCatalogeValidNode = GetValidityNode("107", TAX_Utilities_Srv_New.Month, TAX_Utilities_Srv_New.ThreeMonths, TAX_Utilities_Srv_New.Year)
+
+    Else
+        Set xmlCatalogeValidNode = GetValidityNode("107", TAX_Utilities_Srv_New.Month, "", TAX_Utilities_Srv_New.Year)
+
+    End If
+    
+    'Get catalogue ID
+    strCatalogueID = GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "CatalogueID")    'CatalogueID
+    
+    'Get catalogue pattern name
+    strCatalogueName = GetCatalogueName(xmlCatalogeValidNode, strCatalogueID)
+    
+    GetCatalogueFileNameTk_03TD_TAIN = GetAbsolutePath(GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet - 1), "TemplateFolder") & strCatalogueName & ".xml")
+End Function
+
 Private Function GetCatalogueName(xmlCatalogueNode As MSXML.IXMLDOMNode, strId As String) As String
 Dim xmlNode As MSXML.IXMLDOMNode
 
@@ -171,7 +193,10 @@ Public Function GetValidityNode(Id As String, Optional strMonth As String, Optio
         iThangTaiChinh = 1
     End If
     
-    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
+    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "96" And strThreeMonths <> "" Then
+        ValidityDate = GetNgayCuoiQuy(CInt(strThreeMonths), _
+                            CInt(strYear), iNgayTaiChinh, iThangTaiChinh)
+    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
         Select Case strMonth
             Case "01", "03", "05", "07", "08", "10", "12"
                 ValidityDate = Format("31/" & strMonth & "/" & strYear, "dd/mm/yyyy")

@@ -84,14 +84,14 @@ Public strTenPQL As String
 Private Sub DataDM(ByVal Id As String, Optional ByRef TenTN As String)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlDomData As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = "..\InterfaceTemplates\xml\Catalogue_Tinh_Thanh.xml"
     
-       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -106,14 +106,17 @@ End Sub
 Private Sub DataDM_TAIN(ByVal Id As String, Optional ByRef strIdQLT As String, Optional ByRef TenTN As String, Optional ByRef DVT As String, Optional ByRef strThueSuat As String, Optional ByRef blnSuaThueSuat As Boolean)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlDomData As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
-
-       strDataFileName = GetCatalogueFileName
+        
+        fps.Sheet = 1
+        fps.Row = 36
+        fps.Col = fps.ColLetterToNumber("O")
+       strDataFileName = GetCatalogueFileNameTk_03TD_TAIN(1, fps.Text)
     
-       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Cell")
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -239,11 +242,12 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
                 .Col = .ColLetterToNumber("Q")
                 .Row = 18 + i
                 .Text = tenDM
+                UpdateCell fps, .Col, .Row, .Text
             End If
-            UpdateCell fps, .Col, .Row, .Text
              i = i + 1
             .Col = .ColLetterToNumber("B")
             .Row = i + 18
+            tenDM = ""
         Loop Until .Text = "aa"
     End With
     
@@ -507,7 +511,7 @@ Public Function CheckValidData() As Boolean
     End With
 End Function
 
-Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
+Public Function GenerateSQL_Header(xmlDomData As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
     Dim xmlCellNode As MSXML.IXMLDOMNode
     Dim xmlList As MSXML.IXMLDOMNodeList
     Dim xmlNode As MSXML.IXMLDOMNode
@@ -527,7 +531,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     
 On Error GoTo ErrHandle
     strSQL = Replace(strSQL_HDR, ")", ",LOAI_KYKK)")
-    Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
+    Set xmlList = xmlDomData.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
         
@@ -637,26 +641,26 @@ On Error GoTo ErrHandle
             End If
         Next
         
+        vLAN_BS = "0"
        .Sheet = 1
        ' Ma dai ly thue
         .GetText .ColLetterToNumber("F"), 18, vTIN_DL
         .GetText .ColLetterToNumber(SO_HOP_DONG_DL_COL), SO_HOP_DONG_DL_ROW, vSO_HOP_DONG
         .GetText .ColLetterToNumber(NGAY_HOP_DONG_DL_COL), NGAY_HOP_DONG_DL_ROW, vNGAY_HOP_DONG
-'        .GetText .ColLetterToNumber("I"), 56, vLAN_BS
-'        .GetText .ColLetterToNumber("C"), 56, vCHINH_THUC
+        .GetText .ColLetterToNumber("I"), 36, vLAN_BS
+        .GetText .ColLetterToNumber("C"), 36, vCHINH_THUC
                 
-        Set xmlCellNode = TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell") _
-                    (TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell").length - 3)
-        vCHINH_THUC = GetAttribute(xmlCellNode, "Value")
-        
-        Set xmlCellNode = TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell") _
-                    (TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell").length - 1)
-        vLAN_BS = GetAttribute(xmlCellNode, "Value")
+'        Set xmlCellNode = TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell") _
+'                    (TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell").length - 3)
+'        vCHINH_THUC = GetAttribute(xmlCellNode, "Value")
+'
+'        Set xmlCellNode = TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell") _
+'                    (TAX_Utilities_Srv_New.Data(0).getElementsByTagName("Cell").length - 1)
+'        vLAN_BS = GetAttribute(xmlCellNode, "Value")
         
         If Trim(vCHINH_THUC) = "1" Then
             vLAN_BS = "0"
         End If
-        vLAN_BS = "0"
         If Len(Trim(vTIN_DL)) = 13 Then
             vTIN_DL = Left(vTIN_DL, 10) & "-" & Right(vTIN_DL, 3)
         End If
