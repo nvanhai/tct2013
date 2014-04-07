@@ -533,7 +533,7 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
                             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                         End If
 
-                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "14" Then
+                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "14" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "13" Then
 
                         ' BC26
                         If strQuy = "TK_THANG" Then
@@ -2518,7 +2518,7 @@ Private Sub DeleteSheet(pIndex As Integer)
         Else
             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
         End If
-    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Then
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "13" Then
         'BC26
         If strQuy = "TK_THANG" Then
             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_T" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
