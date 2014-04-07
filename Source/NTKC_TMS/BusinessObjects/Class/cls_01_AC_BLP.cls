@@ -339,12 +339,13 @@ On Error GoTo ErrHandle
         vNGUOI_DAI_DIEN = TAX_Utilities_Srv_New.Convert(CStr(vNGUOI_DAI_DIEN), UNICODE, TCVN)
         vNGUOI_CAP_NHAT = TAX_Utilities_Srv_New.Convert(CStr(vNGUOI_CAP_NHAT), UNICODE, TCVN)
         vGHI_CHU_LOI = TAX_Utilities_Srv_New.Convert(CStr(vGHI_CHU_LOI), UNICODE, TCVN)
-    ' Lay gia tri ky bao cao cuoi cung
-    If UCase(vKyBCCuoi) = "X" Or Val(vKyBCCuoi) = 1 Then
-        vLoai_BC26 = "Y"
-    Else
-        vLoai_BC26 = "N"
-    End If
+'    ' Lay gia tri ky bao cao cuoi cung
+'    If UCase(vKyBCCuoi) = "X" Or Val(vKyBCCuoi) = 1 Then
+'        vLoai_BC26 = "Y"
+'    Else
+'        vLoai_BC26 = "N"
+'    End If
+     vLoai_BC26 = "null"
         
      ' Lay Quy BC
     If Trim(TAX_Utilities_Srv_New.ThreeMonths) <> "" Then
@@ -388,7 +389,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vNGUOI_DAI_DIEN & "',null,null,null,null,null,"
     strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
     strSQL = strSQL & "'" & vMA_CQT & "',"
-    strSQL = strSQL & "'" & vLoai_BC26 & "',null, "
+    strSQL = strSQL & "" & vLoai_BC26 & ",null, "
     strSQL = strSQL & "To_date('" & vQUY_BC & "','dd/mm/yyyy'))"
     GenerateSQL_Header = strSQL
     Exit Function

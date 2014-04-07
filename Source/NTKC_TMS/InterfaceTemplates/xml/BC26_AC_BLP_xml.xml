@@ -14,10 +14,10 @@
 					<tenTKhai></tenTKhai>
 					<moTaBMau></moTaBMau>
 					<pbanTKhaiXML></pbanTKhaiXML>
-					<loaiTKhai>C</loaiTKhai>
-					<soLan>1</soLan>
+					<loaiTKhai></loaiTKhai>
+					<soLan></soLan>
 					<KyKKhaiThue>
-						<kieuKy>D</kieuKy>
+						<kieuKy></kieuKy>
 						<kyKKhai></kyKKhai>
 						<kyKKhaiTuNgay></kyKKhaiTuNgay>
 						<kyKKhaiDenNgay></kyKKhaiDenNgay>
@@ -36,7 +36,7 @@
 					<nganhNgheKD></nganhNgheKD>
 				</TKhaiThue>
 				<NNT>
-					<mst></mst>
+					<mst>0000000000</mst>
 					<tenNNT></tenNNT>
 					<dchiNNT></dchiNNT>
 					<phuongXa></phuongXa>
@@ -69,24 +69,42 @@
 			</TTinTKhaiThue>
 		</TTinChung>
 		<CTieuTKhaiChinh>
+			<kyBCaoCuoi>true</kyBCaoCuoi>
+			<chuyenDiaDiem>true</chuyenDiaDiem>
+			<ngayDauKyBC></ngayDauKyBC>
+			<ngayCuoiKyBC></ngayCuoiKyBC>
 			<BKeBienLai>
-				<ChiTietBKeBienLai ID="">
-					<tenLoaiBienLai></tenLoaiBienLai>
+				<CTietBKeBienLai id="">
+					<maBienLai></maBienLai>
+					<tenBienLai></tenBienLai>
 					<kyHieuMauBienLai></kyHieuMauBienLai>
 					<kyHieuBienLai></kyHieuBienLai>
-					<soLuong></soLuong>
-					<tuSo></tuSo>
-					<denSo></denSo>
-					<ngayBDauSDung></ngayBDauSDung>
-					<hopDongInBienLai></hopDongInBienLai>
-					<ten></ten>
-					<mst></mst>
-				</ChiTietBKeBienLai>
+					<soTonMuaTrKy_tongSo>1</soTonMuaTrKy_tongSo>
+					<soTonDauKy_tuSo>1</soTonDauKy_tuSo>
+					<soTonDauKy_denSo>1</soTonDauKy_denSo>
+					<muaTrongKy_tuSo>1</muaTrongKy_tuSo>
+					<muaTrongKy_denSo>1</muaTrongKy_denSo>
+					<tongSoSuDung_tuSo>1</tongSoSuDung_tuSo>
+					<tongSoSuDung_denSo>1</tongSoSuDung_denSo>
+					<tongSoSuDung_cong>1</tongSoSuDung_cong>
+					<soDaSDung>1</soDaSDung>
+					<xoaBo_soLuong>1</xoaBo_soLuong>
+					<xoaBo_so></xoaBo_so>
+					<mat_soLuong>1</mat_soLuong>
+					<mat_so></mat_so>
+					<huy_soLuong>1</huy_soLuong>
+					<huy_so></huy_so>
+					<tonCuoiKy_tuSo>1</tonCuoiKy_tuSo>
+					<tonCuoiKy_denSo>1</tonCuoiKy_denSo>
+					<tonCuoiKy_soLuong>1</tonCuoiKy_soLuong>
+				</CTietBKeBienLai>
 			</BKeBienLai>
-			<tenCQTTNhanTBao></tenCQTTNhanTBao>
-			<noiKy></noiKy>
-			<ngayKy></ngayKy>
-			<thuTruongDonVi></thuTruongDonVi>
+			<tongCongSoTonDKy>1</tongCongSoTonDKy>
+			<tongCongSDung>1</tongCongSDung>
+			<tongCongSoTonCKy>1</tongCongSoTonCKy>
+			<nguoiLapBieu></nguoiLapBieu>
+			<nguoiDaiDien></nguoiDaiDien>
+			<ngayBCao></ngayBCao>
 		</CTieuTKhaiChinh>
 		<PLuc/>
 	</HSoKhaiThue>

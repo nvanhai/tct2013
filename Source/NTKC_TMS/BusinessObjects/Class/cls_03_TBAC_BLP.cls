@@ -345,7 +345,7 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("K"), 28, vNGUOI_DAI_DIEN
         .GetText .ColLetterToNumber("Q"), 28, vNGAY_BC
         .GetText .ColLetterToNumber("P"), 24, vNGAY_HUY
-        .GetText .ColLetterToNumber("I"), 22, vPHUONG_PHAP_HUY
+        .GetText .ColLetterToNumber("K"), 22, vPHUONG_PHAP_HUY
         .EventEnabled(EventAllEvents) = False
     End With
     

@@ -1,0 +1,34 @@
+<HSoThueDTu ngay_nop_tk="E_10" ky_lap_bo="" loi_dinh_danh="E_12">
+	<Static GroupName="TKhaiThue">
+		<maTKhai>261</maTKhai>
+		<tenTKhai>Báo cáo nhận in biên lai thu phí, lệ phí </tenTKhai>
+		<moTaBMau></moTaBMau>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<kyBCaoCuoiCung>E_16</kyBCaoCuoiCung>
+		<tuNgay>E_23</tuNgay>
+		<denNgay>F_23</denNgay>
+	</Static>
+	<Dynamic GroupName="BKeNhanInBienLai">
+		<CTietBKeNhanInBienLai id="id">
+			<mst>D_29</mst>
+			<ten>E_29</ten>
+			<soHopDong>K_29</soHopDong>
+			<ngayHopDong>M_29</ngayHopDong>
+			<tenLoaiBienLai>O_29</tenLoaiBienLai>
+			<kyHieuMauBienLai>R_29</kyHieuMauBienLai>
+			<kyHieuBienLai>T_29</kyHieuBienLai>
+			<tuSo>V_29</tuSo>
+			<denSo>X_29</denSo>
+			<soLuong>Z_29</soLuong>
+		</CTietBKeNhanInBienLai>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<noiBCao></noiBCao>
+		<ngayLapBCao>S_38</ngayLapBCao>
+		<nguoiDaiDien>S_36</nguoiDaiDien>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<ngayKy>S_38</ngayKy>
+	</Static>
+</HSoThueDTu>
