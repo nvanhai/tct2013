@@ -6,8 +6,8 @@
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<kyBCaoCuoiCung>B_15</kyBCaoCuoiCung>
-		<tuNgay>G_14</tuNgay>
-		<denNgay>H_14</denNgay>
+		<tuNgay>D_17</tuNgay>
+		<denNgay>E_17</denNgay>
 	</Static>
 	<Dynamic GroupName="BKeNhanInBienLai">
 		<CTietBKeNhanInBienLai id="id">
