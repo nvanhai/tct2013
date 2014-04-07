@@ -1275,7 +1275,7 @@ On Error GoTo ErrHandle
 
     
     ' xu ly nhan cac mau an chi co canh bao khi quet trung
-    If (Val(IdToKhai) <= 68 And Val(IdToKhai) >= 64) Or Val(IdToKhai) = 91 Or Val(IdToKhai) = 7 Or Val(IdToKhai) = 9 Or Val(IdToKhai) = 10 Or Val(IdToKhai) = 13 Then
+    If (Val(idToKhai) <= 68 And Val(idToKhai) >= 64) Or Val(idToKhai) = 91 Or Val(idToKhai) = 7 Or Val(idToKhai) = 9 Or Val(idToKhai) = 10 Or Val(idToKhai) = 13 Or Val(idToKhai) = 14 Then
 
         ' xu ly an chi
         If isTonTaiAC = True Then
