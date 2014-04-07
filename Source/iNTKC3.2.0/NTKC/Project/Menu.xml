@@ -668,7 +668,7 @@
 	</Menu>
 	<Menu ID="09" PopID="101" ParentID="112" Caption="Báo cáo mất,cháy,hỏng biên lai thu phí, lệ phí " FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp" >
 		<Validity StartDate="01/01/2010" InterfaceTemplate="..\InterfaceTemplates\excel\BC21_AC_BLP.xls" ReportTemplate="..\ReportTemplates\excel\BC21_AC_BLP.xls" Class="Tax_Business_iNTK.cls_BC21_AC_BLP">
-			<Sheet ID="01" Caption="BC21_AC_BLP" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BC21_AC_BLP" Ini="..\Ini\BC21_AC_BLP.xml" ReportIni="..\ReportIni\BC21_AC_BLP.xml"/>
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BC21_AC_BLP" Ini="..\Ini\BC21_AC_BLP.xml" ReportIni="..\ReportIni\BC21_AC_BLP.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
 		</Validity>
 	</Menu>
@@ -686,7 +686,7 @@
 	</Menu>
 	<Menu ID="14" PopID="101" ParentID="112" Caption="Báo cáo tình hình sử dụng biên lai thu phí, lệ phí" FormName="" Year="1/2" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\excel\BC26_AC_BLP.xls" ReportTemplate="..\ReportTemplates\Excel\BC26_AC_BLP.xls" Class="Tax_Business_iNTK.cls_BC26AC_BLP">
-			<Sheet ID="01" Caption="BC26_AC_BLP" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BC26_AC_BLP" Ini="..\Ini\BC26_AC_BLP.xml"/>
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BC26_AC_BLP" Ini="..\Ini\BC26_AC_BLP.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml"/>
 		</Validity>
 	</Menu>
