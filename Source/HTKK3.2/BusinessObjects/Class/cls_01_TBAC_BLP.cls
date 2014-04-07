@@ -48,7 +48,7 @@ strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_loai_BLP.xml")
      With fps
         SetDateFormat fps, 1, 46, .ColLetterToNumber("AA"), DDMMYYYY
         SetDateFormat fps, 1, 35, .ColLetterToNumber("T"), DDMMYYYY
-        'SetDateFormat fps, 1, 35, .ColLetterToNumber("AA"), DDMMYYYY
+        SetDateFormat fps, 1, 35, .ColLetterToNumber("AA"), DDMMYYYY
         'SetKyHieuHDFormat fps, 1, 35, .ColLetterToNumber("L")
         .Sheet = 1
 
@@ -270,22 +270,22 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 UpdateCell fps, Col, Row, .Text
             End If
         'check ngay in hop dong
-'            If Col = .ColLetterToNumber("AE") Then
-'                .GetText Col, Row, varTemp
-'                If varTemp <> "" And varTemp <> "../../...." Then
-'                    If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
-'                        .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
-'                    Else
-'                        .SetFocus
-'                        .SetActiveCell Col, Row
-'                    End If
-'                Else
-'                 .SetText Col, Row, ""
-'                End If
-'                .Col = Col
-'                .Row = Row
-'                UpdateCell fps, Col, Row, .Text
-'            End If
+            If Col = .ColLetterToNumber("AA") Then
+                .GetText Col, Row, varTemp
+                If varTemp <> "" And varTemp <> "../../...." Then
+                    If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+                        .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+                    Else
+                        .SetFocus
+                        .SetActiveCell Col, Row
+                    End If
+                Else
+                 .SetText Col, Row, ""
+                End If
+                .Col = Col
+                .Row = Row
+                UpdateCell fps, Col, Row, .Text
+            End If
         ' check ngay ky TBAC
         .Row = 35
             Do
