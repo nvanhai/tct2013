@@ -692,7 +692,7 @@ Private Sub CheckDynamicError()
                       NgaySD = DateSerial(Mid(Trim(strDateSD), 7, 4), Mid(Trim(strDateSD), 4, 2), Mid(Trim(strDateSD), 1, 2))
                       ngayHienTai = DateSerial(Mid(Trim(DateNgayKy), 7, 4), Mid(Trim(DateNgayKy), 4, 2), Mid(Trim(DateNgayKy), 1, 2))
                       CheckNgaySD = DateDiff("d", ngayHienTai, NgaySD)
-                     If CheckNgaySD < 15 Then
+                     If CheckNgaySD < 10 Then
                          .Col = .ColLetterToNumber("T")
 '                         .CellNote = errCheckNgaySD
 '                         .BackColor = mAlertColor
