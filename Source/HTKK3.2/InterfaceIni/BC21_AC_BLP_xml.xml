@@ -10,10 +10,11 @@
 	</Static>
 	<Dynamic GroupName="BKeBLaiMatChay">
 		<ChiTietBKeBLaiMatChay id="id">
-			<mauSo>E_43</mauSo>
-			<tenBLai>H_43</tenBLai>
-			<kyHieu>S_43</kyHieu>
-			<tuSoDenSo>V_43</tuSoDenSo>
+			<kyHieuMauBienLai>E_43</kyHieuMauBienLai>
+			<tenLoaiBienLai>H_43</tenLoaiBienLai>
+			<kyHieuBienLai>S_43</kyHieuBienLai>
+			<tuSo>V_43</tuSo>
+			<denSo>Y_43</denSo>
 			<soLuong>AA_43</soLuong>
 			<lienBLai>AB_43</lienBLai>
 			<ghiChu>AC_43</ghiChu>
