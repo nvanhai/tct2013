@@ -1210,6 +1210,12 @@ Public Function FormatKyHieuBLP(str As String) As String
   strTemp = UCase(str)
   If Len(str) = 5 Then
       FormatKyHieuBLP = Left$(strTemp, 2) & "-" & Right$(strTemp, 3)
+  ElseIf Len(str) = 7 Then
+        If IsNumeric(Left$(strTemp, 2)) Then
+            FormatKyHieuBLP = Left$(strTemp, 4) & "-" & Right$(strTemp, 3)
+        Else
+            FormatKyHieuBLP = Left$(strTemp, 2) & "-" & Right$(strTemp, 5)
+        End If
   Else
        FormatKyHieuBLP = strTemp
   End If
@@ -1490,9 +1496,9 @@ Public Function CheckMauSoBLP(str As String, strLoai As String, strTemp As Strin
                 soLien = Mid$(Trim(str), 6, 1)
                 kyTuNganCach = Mid$(Trim(str), 7, 1)
                 strSoTT = Mid$(Trim(str), 8, 3)
-                ' so lien phai nam trong khoang 2->9
+                ' so lien phai nam trong khoang 1->9
                 If IsNumeric(soLien) Then
-                    If Val(soLien) < 2 Or Val(soLien) > 9 Then
+                    If Val(soLien) < 1 Or Val(soLien) > 9 Then
                         result = "2"
                         CheckMauSoBLP = result
                         Exit Function
