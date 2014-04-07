@@ -1,0 +1,30 @@
+<HSoThueDTu ngay_nop_tk="E_10" ky_lap_bo="" loi_dinh_danh="E_12">
+	<Static GroupName="TKhaiThue">
+		<maTKhai>260</maTKhai>
+		<tenTKhai>Thông báo phát hành biên lai thu phí, lệ phí</tenTKhai>
+		<moTaBMau></moTaBMau>
+	</Static>
+	<Dynamic GroupName="BKeBienLai" MinOccur="1">
+		<ChiTietBKeBienLai ID="id">
+			<tenLoaiBienLai>D_29</tenLoaiBienLai>
+			<kyHieuMauBienLai>I_29</kyHieuMauBienLai>			
+			<kyHieuBienLai>J_29</kyHieuBienLai>
+			<soLuong>K_29</soLuong>
+			<tuSo>M_29</tuSo>
+			<denSo>O_29</denSo>
+			<ngayBDauSDung>Q_29</ngayBDauSDung>
+			<hopDongInBienLai>S_29</hopDongInBienLai>
+			<ten>Z_29</ten>
+			<mst TINType="1">AC_29</mst>							
+		</ChiTietBKeBienLai>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tenCQTTNhanTBao>J_38</tenCQTTNhanTBao>
+		<noiKy></noiKy>
+		<ngayKy>V_40</ngayKy>
+		<thuTruongDonVi>V_42</thuTruongDonVi>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<ngayKy>V_40</ngayKy>
+	</Static>
+</HSoThueDTu>
