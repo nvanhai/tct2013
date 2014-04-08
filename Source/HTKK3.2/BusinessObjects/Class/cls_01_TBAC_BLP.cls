@@ -276,7 +276,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
                         .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
                     Else
-                        .SetFocus
+                        '.SetFocus
                         .SetActiveCell Col, Row
                     End If
                 Else
@@ -649,6 +649,7 @@ Private Sub CheckDynamicError()
             .GetText .ColLetterToNumber("AD"), .Row, strTenDN
             .GetText .ColLetterToNumber("T"), .Row, strDateSD
             .GetText .ColLetterToNumber("AE"), .Row, strMstDN
+            .GetText .ColLetterToNumber("AA"), .Row, strDateIn
             strLoai = Trim(Left(strId, 1))
             
         If Trim(strTenHD) <> "" Or Trim(strMauSoHD) <> "" Or Trim(strKyHieuHD) <> "" Or Trim(strId) <> "" Or Trim(strMstDN) <> "" Or Trim(strTuSo) <> "" Or Trim(strDenso) <> "" Or _
@@ -745,26 +746,26 @@ Private Sub CheckDynamicError()
        ' neu ky tu thu 6 = "P" thi hien thi phan thong tin doanh nghiep( ten, mst, so hop dong va ngay ky)
         If Mid(Trim(strKyHieuHD), 6, 1) = "P" And iWhiteRow = 0 Then
             '   ngay in phai nho hon ngay thong bao phat hanh ( ngay Ky)
-'                If Trim(strDateIn) = "" Then
-'                      .Col = .ColLetterToNumber("AE")
-'                      .CellNote = errThongTinDN
-'                      .BackColor = mErrorColor
-'                      iFlagEmty = 1
-'                Else
-'                NgayIn = DateSerial(Mid(Trim(strDateIn), 7, 4), Mid(Trim(strDateIn), 4, 2), Mid(Trim(strDateIn), 1, 2))
-'                ngayHienTai = DateSerial(Mid(Trim(DateNgayKy), 7, 4), Mid(Trim(DateNgayKy), 4, 2), Mid(Trim(DateNgayKy), 1, 2))
-'                CheckNgayIn = DateDiff("d", NgayIn, ngayHienTai)
-'                    If Trim(strDateIn) <> "" And CheckNgayIn < 0 Then
-'                        .Col = .ColLetterToNumber("AE")
-'                        .CellNote = errCheckNgayIn
-'                        .BackColor = mErrorColor
-'                        iFlagNgayBatDau = 1
-'                    Else
-'                        .Col = .ColLetterToNumber("AE")
-'                        .CellNote = ""
-'                        .BackColor = mNonErrorColor
-'                    End If
-'                End If
+                If Trim(strDateIn) = "" Then
+                      .Col = .ColLetterToNumber("AA")
+                      .CellNote = errThongTinDN
+                      .BackColor = mErrorColor
+                      iFlagEmty = 1
+                Else
+                NgayIn = DateSerial(Mid(Trim(strDateIn), 7, 4), Mid(Trim(strDateIn), 4, 2), Mid(Trim(strDateIn), 1, 2))
+                ngayHienTai = DateSerial(Mid(Trim(DateNgayKy), 7, 4), Mid(Trim(DateNgayKy), 4, 2), Mid(Trim(DateNgayKy), 1, 2))
+                CheckNgayIn = DateDiff("d", NgayIn, ngayHienTai)
+                    If Trim(strDateIn) <> "" And CheckNgayIn < 0 Then
+                        .Col = .ColLetterToNumber("AA")
+                        .CellNote = errCheckNgayIn
+                        .BackColor = mErrorColor
+                        iFlagNgayBatDau = 1
+                    Else
+                        .Col = .ColLetterToNumber("AA")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
+                End If
           '  kiem tra ten doanh nghiep
                If Trim(strTenDN) = "" Then
                    .Col = .ColLetterToNumber("AD")
