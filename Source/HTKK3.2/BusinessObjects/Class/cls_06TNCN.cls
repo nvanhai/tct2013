@@ -427,7 +427,7 @@ Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
     iFlagvChiTieu15 = 0
     
     ' check chi tieu 31
-    Dim vCt31
+    Dim vCT31
     Dim vErrorCt31
     Dim iFlagCheckCT31 As Integer
     
@@ -704,8 +704,8 @@ Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
                         .Col = .ColLetterToNumber("F")
                         .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                         .CellNote = vErrMsgTrungCMT      'static
-                        .BackColor = mErrorColor
-                        iFlagTrungCMT = 1
+                        .BackColor = mAlertColor
+                        'iFlagTrungCMT = 1
                     Else
                         If InStr(1, Trim(vCMT), " ", vbTextCompare) <> 0 Then
                                 .Col = .ColLetterToNumber("F")
@@ -805,13 +805,13 @@ Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
         End If
         
         'trong TH trung CMT set lai gia tri cua header
-        If iFlagTrungCMT = 1 Then
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 26, "0"
-        Else
+'        If iFlagTrungCMT = 1 Then
+'            .Sheet = .SheetCount
+'            .SetText .ColLetterToNumber("B"), 26, "0"
+'        Else
             .Sheet = .SheetCount
             .SetText .ColLetterToNumber("B"), 26, "1"
-        End If
+'        End If
         
         .Sheet = iCurrentSheet
     End With
