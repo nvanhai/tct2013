@@ -142,9 +142,9 @@ FROM
                     DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL)       Den_so,
                     DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL)       Ngay_BD_SD,
                     DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL) So_BLP_in,
-                    dump(DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL)) Ten_DN_in,
-                    DECODE(gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL)       MST_DN_in,                   
-                    DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL)       Ngay_BLP_in,
+                    dump(DECODE(gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL)) Ten_DN_in,
+                    DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL)       MST_DN_in,
+                    DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL)       Ngay_BLP_in,
                     --DECODE(gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL)       loaiHD,
                     tkd.id                                                     dtl_id
                 FROM
@@ -163,7 +163,6 @@ FROM
         GROUP BY
             dtl.hdr_id,
             dtl.row_id );
-            
 --03_TBAC            
 CREATE OR REPLACE VIEW
     QLT_NTK.RCV_V_03_TBAC_BLP
@@ -412,7 +411,7 @@ from
             dtl.row_id );
 
 --VIEW HDR BC26_AC_BLP
-CREATE OR REPLACE VIEW QLT_NTK.RCV_V_BC26_BLP_HDR
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_BC26_HDR_BLP
 (id, ma_cqt, ma_cqt_cden, loai_bcao, ky_tungay, ky_denngay, bcao_tungay, bcao_denngay, dtnt_tin, thu_truong, ngay_nop_bcao, hthuc_nhap, ghi_chu, tthai_nhan, ngay_nhan, ngay_bc, loai_bc26, itkhai_id, phong_xly)
 AS
 SELECT  id,
