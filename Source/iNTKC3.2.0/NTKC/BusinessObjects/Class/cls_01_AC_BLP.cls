@@ -353,7 +353,8 @@ On Error GoTo ErrHandle
     If Trim(TAX_Utilities_iNTK.ThreeMonths) <> "" Then
         dNgayDauKy = vKY_BC_TUNGAY
         dDate = dNgayDauKy
-        vQUY_BC = Format(dDate, "dd/mm/yyyy")
+        'vQUY_BC = Format(dDate, "dd/mm/yyyy")
+        vQUY_BC = vKY_BC_TUNGAY
     End If
     
     
