@@ -548,7 +548,7 @@ Private Sub checkSheet1()
             
             ' check dong duoc phep in
             
-             If Trim(Tenloaihd1) <> "" Or Trim(mauso1) <> "" Or Trim(kyhieu1) <> "" Or Trim(Tuso1) <> "" Or Trim(denso1) <> "" Or Trim(strId) <> "" Then
+             If Trim(Tenloaihd1) <> "" Or Trim(mauso1) <> "" Or Trim(kyhieu1) <> "" Or Trim(Tuso1) <> "" Or Trim(denso1) <> "" Then
                 ' Khong phai dong trang
                 iWhiteRow1 = 0
             End If
