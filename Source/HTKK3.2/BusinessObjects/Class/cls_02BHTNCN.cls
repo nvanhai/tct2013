@@ -750,7 +750,7 @@ out:
                 'neu trung CMND thi set color va cellnote cho cell
                 If iFlagCheckCMNDTrungTemp = 1 Then
                         .Col = .ColLetterToNumber("F")
-                        .BackColor = mErrorColor
+                        .BackColor = mAlertColor
                         .CellNote = vErrMsgSoCMNDTrung
                 End If
                 'neu trung MST thi set color va cellnote cho cell
@@ -907,7 +907,7 @@ out:
         .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), 34, IIf(iFlagErrCT12CT10 = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 38, IIf(iFlagEmty = 1, "0", "1")
-        .SetText .ColLetterToNumber("B"), 36, IIf(iFlagCMNDTrung = 1, "0", "1")
+        '.SetText .ColLetterToNumber("B"), 36, IIf(iFlagCMNDTrung = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 37, IIf(iFlagCMNDCoCach = 1, "0", "1")
         .Sheet = iCurrentSheet
         .EventEnabled(EventAllEvents) = True

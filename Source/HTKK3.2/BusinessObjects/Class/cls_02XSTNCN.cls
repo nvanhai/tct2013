@@ -782,8 +782,8 @@ Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
                             .Col = .ColLetterToNumber("F")
                             .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                             .CellNote = vErrMsgCMTTrungNhau     'static
-                            .BackColor = mErrorColor
-                            iFlagCMT = 0
+                            .BackColor = mAlertColor
+                            'iFlagCMT = 0
                         End If
                         
                     End If
@@ -925,13 +925,13 @@ loitieptheo1:
             .SetText .ColLetterToNumber("B"), 31, "0"
         End If
         
-        If iFlagCMT = 1 Then
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 32, "1"
-        Else
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 32, "0"
-        End If
+'        If iFlagCMT = 1 Then
+'            .Sheet = .SheetCount
+'            .SetText .ColLetterToNumber("B"), 32, "1"
+'        Else
+'            .Sheet = .SheetCount
+'            .SetText .ColLetterToNumber("B"), 32, "0"
+'        End If
         If iFlagErrRow37 = 1 Then
             .Sheet = .SheetCount
             .SetText .ColLetterToNumber("B"), 36, "0"
