@@ -119,13 +119,6 @@ Begin VB.Form frmInterfaces
       TabIndex        =   4
       Top             =   6990
       Width           =   11535
-      Begin VB.TextBox txtBarcodeUSB 
-         Height          =   285
-         Left            =   1800
-         TabIndex        =   20
-         Top             =   120
-         Width           =   4335
-      End
       Begin VB.CommandButton Command1 
          Caption         =   "Command1"
          Height          =   255
@@ -2668,20 +2661,6 @@ ErrHandle:
     
 End Sub
 
-Private Sub txtBarcodeUSB_KeyPress(KeyAscii As Integer)
-    Static strTemp As String
-    If KeyAscii = 13 Then
-        'Xu ly ma vach qua USB tai day
-        If txtBarcodeUSB.Text <> "" Or txtBarcodeUSB.Text <> vbNullString Then
-            strTemp = TAX_Utilities_Srv_New.Convert(txtBarcodeUSB.Text, TCVN, UNICODE)
-            Barcode_Scaned strTemp
-        End If
-        'Debug.Print "a2: " & strTemp
-        strTemp = vbNullString
-    End If
-End Sub
-
-
 Private Sub Command1_Click()
         Dim str1 As String, str2 As String, str3 As String, str4 As String, str5 As String, str6 As String, str7 As String, str8 As String, str9 As String, str10 As String
         Dim str11 As String, str12 As String, str13 As String, str14 As String, str15 As String, str16 As String, str17 As String, str18 As String, str19 As String, str20 As String
@@ -2689,6 +2668,12 @@ Private Sub Command1_Click()
         Dim str31 As String, str32 As String, str33 As String, str34 As String, str35 As String, str36 As String, str37 As String, str38 As String, str39 As String, str40 As String
         Dim str41 As String, str42 As String, str43 As String, str44 As String, str45 As String, str46 As String, str47 As String, str48 As String, str49 As String, str50 As String
         Dim str51 As String, str52 As String, str53 As String
+        
+'BC26-AC
+str2 = "aa999680102030405   01201400200200100201/0101/01/2009<S01><S>X~~01/01/2014~31/03/2014</S><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/009~QS/11T~20~0000011~0000023~0000024~0000030~0000011~0000023~13~10~1~15~1~16~1~17~0000024~0000030~7~0</S><S>~CMCER~08/04/2014~1</S></S01>"
+ Barcode_Scaned str2
+str2 = "aa999680102030405   012014002002002002<S01_1><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/009~QS/11T~0000024~0000030~7~0</S><S>~~~~~0~</S><S>HAN - CÙc Thu’ Thµnh phË Hµ NÈi                                                                                                                                                             {10100}</S></S01_1>"
+ Barcode_Scaned str2
    
 ''01A-TNDN-DK-LanPS-DauTho-ChinhThuc
 ' str2 = "aa321982300034966   03201400100100100201/0101/01/1900<S01><S></S><S>1~~x~21/03/2014~1~0~0~HD123456~~</S><S>200~50000~10000000~35~3500000~2000000~1500000~22000</S><S>~~CMCer~21/03/2014~1~~21/03/2014~2</S></S01>"
@@ -2706,6 +2691,14 @@ Private Sub Command1_Click()
 'str2 = "aa999982300034980   02201400100100100201/0101/01/1900<S01><S></S><S>~~x~20/03/2014~0~0~1~hd dk123~~x</S><S>25~50~1250~15~187.5~5~182.5~21000</S><S>~~cmc test~20/03/2014~1~~~0</S></S01>"
 'Barcode_Scaned str2
 'str2 = "aa999982300034980   022014001001002002<S01-1><S>182.5</S><S>0102030405~cty ABC~30~54.75~ok~6868686868~nha may ZM~45~82.13~ok~2222222222~cmc tower~25~45.63~</S><S>100~182.51</S></S01-1>"
+'Barcode_Scaned str2
+
+'''01A-TNDN-DK-THANG-KhiThienNhien-BS
+'str2 = "bs322982300034980   02201400300300100301/0101/01/1900<S01><S></S><S>~~x~20/03/2014~0~0~1~hd dk123~~x</S><S>25~50~1250~15~187.5~10~177.5~21000</S><S>~~cmc test~20/03/2014~~1~~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "bs322982300034980   022014003003002003<SKHBS><S>~~0~0~0</S><S>SË thu’ TNDN Æ≠Óc mi‘n ho∆c gi∂m (n’u c„)~34~5~10~5</S><S>"
+'Barcode_Scaned str2
+'str2 = "bs322982300034980   02201400300300300304/04/2014~15~0~20000~01234abc~03/04/2014~10100~10103~2~2000~~0~0~-5</S></SKHBS>"
 'Barcode_Scaned str2
 
 ''01B-TNDN-DK-QUY-ChinhThuc
