@@ -477,7 +477,7 @@ Public Function InsertDTL() As String
                      Ngay_bd_sd = "CTOD('" & Format(Ngay_bd_sd, "mm/dd/yyyy") & "')"
                 End If
                 ' ten doanh nghiep in
-                .Col = .ColLetterToNumber("S")
+                .Col = .ColLetterToNumber("Z")
                 Ten_datin = .Text
                 If Trim(Ten_datin) = vbNullString Then
                     Ten_datin = "''"
@@ -489,7 +489,7 @@ Public Function InsertDTL() As String
                     Ten_datin = "'" & Ten_datin & "'"
                 End If
                 'ma so thue doanh nghiep in
-                .Col = .ColLetterToNumber("X")
+                .Col = .ColLetterToNumber("AC")
                 Mst_datin = .Text
                 If Trim(Mst_datin) = vbNullString Then
                     Mst_datin = "''"
@@ -501,7 +501,7 @@ Public Function InsertDTL() As String
                     Mst_datin = "'" & Mst_datin & "'"
                 End If
                 ' so hop dong in
-                .Col = .ColLetterToNumber("Z")
+                .Col = .ColLetterToNumber("S")
                 So_bl_in = .Text
                 If Trim(So_bl_in) = vbNullString Then
                     So_bl_in = "''"
@@ -509,7 +509,7 @@ Public Function InsertDTL() As String
                     So_bl_in = "'" & So_bl_in & "'"
                 End If
                 ' ngay hop dong dat in
-                .GetText .ColLetterToNumber("AC"), .Row, Ngay_bl_in
+                .GetText .ColLetterToNumber("V"), .Row, Ngay_bl_in
                 If Trim(Ngay_bl_in) = vbNullString Then
                    Ngay_bl_in = "CTOD('')"
                 Else
