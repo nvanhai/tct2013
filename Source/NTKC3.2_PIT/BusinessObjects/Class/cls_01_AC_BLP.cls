@@ -351,7 +351,8 @@ On Error GoTo ErrHandle
     If Trim(TAX_Utilities_Srv_New.ThreeMonths) <> "" Then
         dNgayDauKy = vKY_BC_TUNGAY
         dDate = dNgayDauKy
-        vQUY_BC = Format(dDate, "dd/mm/yyyy")
+        'vQUY_BC = Format(dDate, "dd/mm/yyyy")
+        vQUY_BC = vKY_BC_TUNGAY
     End If
     
     ' Tach ma so thue thanh ma 14 ky tu
