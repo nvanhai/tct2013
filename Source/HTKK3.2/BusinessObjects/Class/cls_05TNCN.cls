@@ -2877,8 +2877,8 @@ Public Sub CheckDynamicSheet1()
                         .Col = .ColLetterToNumber("F")
                         .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                         .CellNote = vErrMsgCMT        'static
-                        .BackColor = mErrorColor
-                        iFlagLoiCMT = 1
+                        .BackColor = mAlertColor
+                        'iFlagLoiCMT = 1
                     End If
                 End If
             End If
@@ -3532,8 +3532,8 @@ Private Sub CheckDynamicSheet2()
                             .Col = .ColLetterToNumber("E")
                             .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                             .CellNote = vErrMsgCMT        'static
-                            .BackColor = mErrorColor
-                            iFlagLoiCMT = 1
+                            .BackColor = mAlertColor
+                            'iFlagLoiCMT = 1
                         End If
                     End If
                  End If

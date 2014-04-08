@@ -463,6 +463,8 @@ Private Sub checkSheet1()
     
     Dim vSoHopDong As Variant
     
+    Dim iWhiteRow1 As Variant
+    
     With fps
         .EventEnabled(EventAllEvents) = False
         iCurrentSheet = .Sheet
@@ -534,6 +536,8 @@ Private Sub checkSheet1()
             .GetText .ColLetterToNumber("G"), .Row, ngayHD
             
             iWhiteRow = 1
+            iWhiteRow1 = 1
+            
             .GetText .ColLetterToNumber("Q"), .Row, strSoLuong
             .GetText .ColLetterToNumber("N"), .Row, strId
             'check mau so hoa don
@@ -542,8 +546,15 @@ Private Sub checkSheet1()
                 iWhiteRow = 0
             End If
             
+            ' check dong duoc phep in
+            
+             If Trim(Tenloaihd1) <> "" Or Trim(mauso1) <> "" Or Trim(kyhieu1) <> "" Or Trim(Tuso1) <> "" Or Trim(denso1) <> "" Or Trim(strId) <> "" Then
+                ' Khong phai dong trang
+                iWhiteRow1 = 0
+            End If
+            
             'Ten HD
-            If Trim(Tenloaihd1) = "" And iWhiteRow = 0 Then
+            If Trim(Tenloaihd1) = "" And iWhiteRow = 0 And iWhiteRow1 = 0 Then
                 .Col = .ColLetterToNumber("I")
                 .CellNote = vErrMsgMSTReq  'static
                 .BackColor = mErrorColor
@@ -555,7 +566,7 @@ Private Sub checkSheet1()
             End If
             
             'tu so den so bat buoc nhap
-            If Trim(Tuso1) = "" And iWhiteRow = 0 Then
+            If Trim(Tuso1) = "" And iWhiteRow = 0 And iWhiteRow1 = 0 Then
                 .Col = .ColLetterToNumber("L")
                 .CellNote = vErrMsgMSTReq  'static
                 .BackColor = mErrorColor
@@ -567,7 +578,7 @@ Private Sub checkSheet1()
 '                .BackColor = mNonErrorColor
             End If
             
-            If Trim(denso1) = "" And iWhiteRow = 0 Then
+            If Trim(denso1) = "" And iWhiteRow = 0 And iWhiteRow1 = 0 Then
                 .Col = .ColLetterToNumber("M")
                 .CellNote = vErrMsgMSTReq  'static
                 .BackColor = mErrorColor
@@ -623,7 +634,7 @@ Private Sub checkSheet1()
                 .BackColor = mNonErrorColor
             End If
             ' Mau so HD
-            If Trim(mauso1) = "" And iWhiteRow = 0 Then
+            If Trim(mauso1) = "" And iWhiteRow = 0 And iWhiteRow1 = 0 Then
                 .Col = .ColLetterToNumber("J")
                 .CellNote = vErrMsgMSTReq  'static
                 .BackColor = mErrorColor
@@ -642,13 +653,13 @@ Private Sub checkSheet1()
 '                strTemp = Trim(Mid(strId, 11, 3))
             End If
             result = CheckMauSoBLP(CStr(mauso1), strLoai, strTemp)
-            If result = "1" And iWhiteRow = 0 Then
+            If result = "1" And iWhiteRow = 0 And iWhiteRow1 = 0 Then
                 .Col = .ColLetterToNumber("J")
                 .CellNote = errMauSoHD  'static
                 .BackColor = mErrorColor
                 'iFlagMauSoHD = 1
                 blCheck_S7 = False
-            ElseIf result = "2" And iWhiteRow = 0 Then
+            ElseIf result = "2" And iWhiteRow = 0 And iWhiteRow1 = 0 Then
                 .Col = .ColLetterToNumber("J")
                 .CellNote = errSoLienHD  'static
                 .BackColor = mErrorColor
@@ -686,7 +697,7 @@ Private Sub checkSheet1()
             SohieuHD = CheckSoBLP(CStr(varTemp), maLoaiBLP)
             
 
-            If (Trim(SohieuHD) = "1" Or Trim(SohieuHD) = "2") And iWhiteRow = 0 Then
+            If (Trim(SohieuHD) = "1" Or Trim(SohieuHD) = "2") And iWhiteRow = 0 And iWhiteRow1 = 0 Then
                 .Col = .ColLetterToNumber("K")
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = vErrMsgSoHD    'static
