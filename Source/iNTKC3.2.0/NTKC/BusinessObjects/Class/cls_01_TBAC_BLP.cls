@@ -393,7 +393,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "To_date('" & vNGAY_BC & "','dd/mm/yyyy'),"
     strSQL = strSQL & "'" & vNGUOI_DAI_DIEN & "',"
     strSQL = strSQL & "'" & vTEN_CQ_TIEP_NHAN & "',null,null,null,"
-    strSQL = strSQL & "'" & vDUNG_DN_CQ & "',"
+    strSQL = strSQL & "" & vDUNG_DN_CQ & ","
     strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
     strSQL = strSQL & "'" & vMA_CQT & "',null,null,null)"
     GenerateSQL_Header = strSQL

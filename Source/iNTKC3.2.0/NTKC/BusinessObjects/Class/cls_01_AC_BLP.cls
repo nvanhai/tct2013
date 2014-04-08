@@ -405,7 +405,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vNGUOI_DAI_DIEN & "',null,null,null,null,null,"
     strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
     strSQL = strSQL & "'" & vMA_CQT & "',"
-    strSQL = strSQL & "'" & vLoai_BC26 & "',null, "
+    strSQL = strSQL & "" & vLoai_BC26 & ",null, "
     strSQL = strSQL & "To_date('" & vQUY_BC & "','dd/mm/yyyy'))"
     GenerateSQL_Header = strSQL
     Exit Function
