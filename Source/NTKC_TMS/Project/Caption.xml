@@ -143,9 +143,10 @@
 	<frmTruyennhanTK Caption="">
 		<Item Name="lblCaption" Index="" Caption="Truyền/Nhận tờ khai TNCN"/>
 	</frmTruyennhanTK>
-	<frmSetting Caption="Setting">
-		<Item Name="cmdDongY" Index="" Caption="Ok" />
-		<Item Name="cmdThoat" Index="" Caption="Cancel" />
-		<Item Name="lblQueueManager" Index="" Caption="IP Server ESB: " />			
+	<frmSetting Caption="">
+		<Item Name="lblCaption" Index="" Caption="Cấu hình" />
+		<Item Name="cmdDongY" Index="" Caption="Đồng ý" />
+		<Item Name="cmdThoat" Index="" Caption="Thoát" />
+		<Item Name="lblQueueManager" Index="" Caption="Địa chỉ IP máy chủ truyền tin" />			
 	</frmSetting>
 </Root>
