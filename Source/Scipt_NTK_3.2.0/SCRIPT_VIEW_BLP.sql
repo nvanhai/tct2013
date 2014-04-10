@@ -374,7 +374,7 @@ from
                     gdien.so_tt,
                     dump(decode(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, null)) ten_HD,
                     dump(decode(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, null)) Mau_so,
-                    decode(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, null)       Ky_hieu_HD,
+                    dump(decode(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, null)) Ky_hieu_HD,
                     decode(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, null)       Tong_so,
                     decode(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, null)       Tu_so_ton_dk,
                     decode(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, null)       Den_so_ton_dk,
