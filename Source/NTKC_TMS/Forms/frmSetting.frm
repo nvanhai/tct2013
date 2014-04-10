@@ -1,18 +1,53 @@
 VERSION 5.00
+Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Begin VB.Form frmSetting 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "C?u hình"
-   ClientHeight    =   1290
-   ClientLeft      =   45
-   ClientTop       =   435
-   ClientWidth     =   3795
+   ClientHeight    =   1785
+   ClientLeft      =   15
+   ClientTop       =   15
+   ClientWidth     =   4470
    ControlBox      =   0   'False
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MDIChild        =   -1  'True
    MinButton       =   0   'False
-   ScaleHeight     =   1290
-   ScaleWidth      =   3795
+   ScaleHeight     =   1785
+   ScaleWidth      =   4470
+   Begin VB.Frame Frame1 
+      Height          =   855
+      Left            =   30
+      TabIndex        =   2
+      Top             =   360
+      Width           =   4365
+      Begin MSForms.TextBox txtUsername 
+         Height          =   315
+         Left            =   2520
+         TabIndex        =   4
+         Top             =   300
+         Width           =   1695
+         VariousPropertyBits=   746604571
+         Size            =   "2990;556"
+         Value           =   "10.64.85.170"
+         FontName        =   "Tahoma"
+         FontHeight      =   165
+         FontCharSet     =   0
+         FontPitchAndFamily=   2
+      End
+      Begin MSForms.Label lblQueueManager 
+         Height          =   195
+         Left            =   240
+         TabIndex        =   3
+         Top             =   360
+         Width           =   2205
+         VariousPropertyBits=   276824091
+         Caption         =   "Username"
+         Size            =   "3889;344"
+         FontName        =   "Tahoma"
+         FontHeight      =   165
+         FontCharSet     =   0
+         FontPitchAndFamily=   2
+      End
+   End
    Begin VB.TextBox txtPortWs 
       Appearance      =   0  'Flat
       BeginProperty Font 
@@ -25,64 +60,59 @@ Begin VB.Form frmSetting
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      Left            =   600
-      TabIndex        =   5
+      Left            =   120
+      TabIndex        =   1
       Text            =   "PortWs"
-      Top             =   960
+      Top             =   1320
       Visible         =   0   'False
       Width           =   1815
    End
-   Begin VB.CommandButton cmdThoat 
-      Caption         =   "Exit"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   360
-      Left            =   1800
-      TabIndex        =   3
-      Top             =   720
-      Width           =   1470
+   Begin MSForms.Label lblCaption 
+      Height          =   255
+      Left            =   330
+      TabIndex        =   7
+      Top             =   60
+      Width           =   1965
+      ForeColor       =   -2147483634
+      Size            =   "3466;450"
+      FontName        =   "Tahoma"
+      FontEffects     =   1073741825
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+      FontWeight      =   700
    End
-   Begin VB.CommandButton cmdDongY 
-      Caption         =   "Ok"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   360
-      Left            =   240
-      TabIndex        =   2
-      Top             =   720
-      Width           =   1455
-   End
-   Begin VB.TextBox txtIpServer 
-      Appearance      =   0  'Flat
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
+   Begin MSForms.CommandButton cmdDongY 
+      Default         =   -1  'True
       Height          =   375
-      Left            =   1800
-      TabIndex        =   1
-      Text            =   "10.64.85.170"
-      Top             =   240
-      Width           =   1815
+      Left            =   1680
+      TabIndex        =   6
+      Top             =   1320
+      Width           =   1305
+      Caption         =   "Login"
+      Size            =   "2302;661"
+      Accelerator     =   78
+      FontName        =   "Tahoma"
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+      ParagraphAlign  =   3
+   End
+   Begin MSForms.CommandButton cmdThoat 
+      CausesValidation=   0   'False
+      Height          =   375
+      Left            =   3090
+      TabIndex        =   5
+      Top             =   1320
+      Width           =   1305
+      Caption         =   "Exit"
+      Size            =   "2302;661"
+      Accelerator     =   84
+      FontName        =   "Tahoma"
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+      ParagraphAlign  =   3
    End
    Begin VB.Label lblPortServices 
       AutoSize        =   -1  'True
@@ -98,30 +128,17 @@ Begin VB.Form frmSetting
          Strikethrough   =   0   'False
       EndProperty
       Height          =   195
-      Left            =   120
-      TabIndex        =   4
-      Top             =   840
+      Left            =   600
+      TabIndex        =   0
+      Top             =   1200
       Visible         =   0   'False
       Width           =   945
    End
-   Begin VB.Label lblQueueManager 
-      AutoSize        =   -1  'True
-      BackStyle       =   0  'Transparent
-      Caption         =   "IP may chu truc ESB"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   195
-      Left            =   120
-      TabIndex        =   0
-      Top             =   360
-      Width           =   1440
+   Begin VB.Image imgCaption 
+      Height          =   315
+      Left            =   0
+      Top             =   0
+      Width           =   3915
    End
 End
 Attribute VB_Name = "frmSetting"
@@ -420,6 +437,10 @@ Private Sub LoadConfig()
 '    sUrl = Mid$(sUrl, 1, InStr(1, sUrl, ":", vbTextCompare) - 1)
 '    txtIpServer.Text = IIf(sUrl <> "", sUrl, "10.64.85.167")
 '    txtPortWs.Text = ""
+End Sub
+
+Private Sub Form_Resize()
+    SetFormCaption Me, imgCaption, lblCaption
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
