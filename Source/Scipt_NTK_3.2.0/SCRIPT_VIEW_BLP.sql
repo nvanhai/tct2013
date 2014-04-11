@@ -235,22 +235,7 @@ FROM
             dtl.row_id ) ;
 
 --BC21_AC            
-CREATE OR REPLACE VIEW
-    QLT_NTK.RCV_V_BC21_AC_BLP
-    (
-        HDR_ID,
-        SO_TT,
-        TEN_BLP,
-        MAU_SO,
-        KY_HIEU_BLP,
-        TU_SO,
-        DEN_SO,
-        SO_LUONG,
-        LIEN_BLP,
-        GHI_CHU,
-        --LOAI_BLP,
-        DTL_ID
-    ) AS
+CREATE OR REPLACE VIEW RCV_V_BC21_AC_BLP AS
 SELECT
     hdr_id ,
     row_id so_tt ,
@@ -262,7 +247,7 @@ SELECT
     So_luong ,
     Lien_BLP ,
     Ghi_chu ,
-    --Loai_BLP ,
+
     DTL_Id
 FROM
     (
@@ -277,7 +262,7 @@ FROM
             MAX(dtl.So_luong)   So_luong ,
             MAX(dtl.Lien_BLP)    Lien_BLP ,
             MAX(dtl.Ghi_chu)    Ghi_chu ,
-            --MAX(dtl.Loai_BLP)    Loai_BLP ,
+
             MAX(dtl.Id)         dtl_Id
         FROM
             (
@@ -286,15 +271,15 @@ FROM
                     NVL(tkd.row_id,0) row_id,
                     gdien.id          id,
                     gdien.so_tt,
-                    dump(DECODE(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL)) ten_BLP,
-                    dump(DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL)) Mau_so,
+                    dump(DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL)) ten_BLP,
+                    dump(DECODE(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL)) Mau_so,
                     dump(DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL)) Ky_hieu_BLP,
                     DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL)       Tu_so,
                     DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL)       Den_so,
                     DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL)       So_luong,
                     dump(DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL)) Lien_BLP,
                     dump(DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL)) Ghi_chu,
-                    --DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL)       Loai_BLP,
+
                     tkd.id                                                     dtl_id
                 FROM
                     QLT_NTK.rcv_bcao_dtl_ac tkd,
@@ -311,7 +296,7 @@ FROM
                         gdien.loai_dlieu ='BC21_AC_BLP') ) dtl
         GROUP BY
             dtl.hdr_id,
-            dtl.row_id ) ;
+            dtl.row_id );
 
 --BC26_AC
 create or replace view QLT_NTK.rcv_v_bc26_ac_blp as
