@@ -934,7 +934,7 @@ Public Function InsertDTL() As String
             Id = GetDtlIdAC(spathVat)
             Hdr_id = vHDR_ID
             .GetText .ColLetterToNumber("B"), .Row, So_tt
-            ' ten hoa don
+            ' ten bien lai
             .GetText .ColLetterToNumber("D"), .Row, Ten_bl
             If Trim(Ten_bl) = vbNullString Then
                 Ten_bl = "''"
@@ -942,21 +942,21 @@ Public Function InsertDTL() As String
                 Ten_bl = TAX_Utilities_Svr_New.Convert(CStr(Ten_bl), UNICODE, TCVN)
                 Ten_bl = "'" & Trim(Ten_bl) & "'"
             End If
-            ' mau so hoa don
+            ' mau so bien lai
             .GetText .ColLetterToNumber("J"), .Row, Mau_so
             If Trim(Mau_so) = vbNullString Then
                 Mau_so = "''"
             Else
                 Mau_so = "'" & Trim(Mau_so) & "'"
             End If
-            ' ky hieu hoa don
+            ' ky hieu bien lai
             .GetText .ColLetterToNumber("K"), .Row, Ky_hieu_bl
             If Trim(Ky_hieu_bl) = vbNullString Then
                 Ky_hieu_bl = "''"
             Else
                 Ky_hieu_bl = "'" & Trim(Ky_hieu_bl) & "'"
             End If
-            ' tong so hoa don
+            ' tong so bien lai
             .GetText .ColLetterToNumber("L"), .Row, TONG_SO
             If Trim(TONG_SO) = vbNullString Then
                 TONG_SO = "0"
@@ -1068,7 +1068,7 @@ Public Function InsertDTL() As String
             If Trim(SL_TON_CK) = vbNullString Then
                 SL_TON_CK = "0"
             End If
-            ' loai hoa don
+            ' loai bien lai
             .GetText .ColLetterToNumber("AF"), .Row, Loai_bl
             If Trim(Loai_bl) = vbNullString Then
                 Loai_bl = "''"

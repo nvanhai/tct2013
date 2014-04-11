@@ -415,7 +415,7 @@ Public Function InsertDTL() As String
                 If Trim(So_tt) = vbNullString Then
                     So_tt = "0"
                 End If
-                'ten hoa don
+                'ten bien lai
                 .GetText .ColLetterToNumber("C"), .Row, Ten_bl
                 If Trim(Ten_bl) = vbNullString Then
                     Ten_bl = "''"
@@ -426,7 +426,7 @@ Public Function InsertDTL() As String
                     End If
                     Ten_bl = "'" & Ten_bl & "'"
                 End If
-                ' mau so hoa don
+                ' mau so bien lai
                 .GetText .ColLetterToNumber("O"), .Row, Mau_so
                 If Trim(Mau_so) = vbNullString Then
                     Mau_so = "''"
@@ -434,7 +434,7 @@ Public Function InsertDTL() As String
                     Mau_so = TAX_Utilities_Svr_New.Convert(CStr(Mau_so), UNICODE, TCVN)
                     Mau_so = "'" & Mau_so & "'"
                 End If
-                'ky hieu hoa don
+                'ky hieu bien lai
                 .GetText .ColLetterToNumber("S"), .Row, Ky_hieu_bl
                 If Trim(Ky_hieu_bl) = vbNullString Then
                     Ky_hieu_bl = "''"

@@ -29,7 +29,7 @@ Const NGAY_NOP_X = "E"
 Const NGAY_QUET_Y = 12
 Const NGAY_QUET_X = "K"
 
-Const TEN_GOI_X = "E"
+Const TEN_GOI_X = "J"
 Const TEN_GOI_Y = 4
 Const DIA_CHI_X = "E"
 Const DIA_CHI_Y = 6
@@ -417,7 +417,7 @@ Public Function InsertDTL() As String
                 If Trim(So_tt) = vbNullString Then
                     So_tt = "0"
                 End If
-                'ten hoa don
+                'ten bien lai
                 .GetText .ColLetterToNumber("D"), .Row, Ten_bl
                 If Trim(Ten_bl) = vbNullString Then
                     Ten_bl = "''"
@@ -428,7 +428,7 @@ Public Function InsertDTL() As String
                     End If
                     Ten_bl = "'" & Ten_bl & "'"
                 End If
-                ' mau so hoa don
+                ' mau so bien lai
                 .GetText .ColLetterToNumber("I"), .Row, Mau_so
                 If Trim(Mau_so) = vbNullString Then
                     Mau_so = "''"
@@ -436,7 +436,7 @@ Public Function InsertDTL() As String
                     Mau_so = TAX_Utilities_Svr_New.Convert(CStr(Mau_so), UNICODE, TCVN)
                     Mau_so = "'" & Mau_so & "'"
                 End If
-                'ky hieu hoa don
+                'ky hieu bien lai
                 .Col = .ColLetterToNumber("J")
                 Ky_hieu_bl = .Text
                 If Trim(Ky_hieu_bl) = vbNullString Then
