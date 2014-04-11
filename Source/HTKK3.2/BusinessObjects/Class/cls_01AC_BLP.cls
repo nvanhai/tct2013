@@ -178,13 +178,13 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
             .GetText .ColLetterToNumber("N"), .Row, strId
             
            If Trim(Left(strId, 1)) = "0" Then
-                .SetText .ColLetterToNumber("J"), .Row, Trim(Mid(strId, 11, 5))
-                UpdateCell_sheet fps, 1, .ColLetterToNumber("J"), .Row, .Text
-                .Col = .ColLetterToNumber("J")
-                '.TypeMaxEditLen = 13
-                .Col = .ColLetterToNumber("I")
-                .SetText .ColLetterToNumber("I"), .Row, Trim(Mid(strId, 21))
+                .SetText .ColLetterToNumber("I"), .Row, Trim(Mid(strId, 11, 5))
                 UpdateCell_sheet fps, 1, .ColLetterToNumber("I"), .Row, .Text
+                .Col = .ColLetterToNumber("I")
+                '.TypeMaxEditLen = 13
+                .Col = .ColLetterToNumber("J")
+                .SetText .ColLetterToNumber("J"), .Row, Trim(Mid(strId, 21))
+                UpdateCell_sheet fps, 1, .ColLetterToNumber("J"), .Row, .Text
 '            ElseIf Trim(Left(strId, 1)) = "3" Then
 '                .SetText .ColLetterToNumber("J"), .Row, ""
 '                UpdateCell_sheet fps, 1, .ColLetterToNumber("J"), .Row, .Text
@@ -333,7 +333,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 UpdateCell fps, .Col, .Row, .Text
             End If
            ' chuyen mau so thanh chu hoa
-           If Col = .ColLetterToNumber("J") And (Row <> totalRowD + 31) And (Row <> totalRowD + 29) Then
+           If Col = .ColLetterToNumber("I") And (Row <> totalRowD + 31) And (Row <> totalRowD + 29) Then
                  .GetText Col, Row, varTemp
                  '.SetText Col, Row, FormatKyHieuBLP(CStr(varTemp))
                  .SetText Col, Row, UCase(varTemp)
@@ -528,8 +528,8 @@ Private Sub checkSheet1()
             .GetText .ColLetterToNumber("C"), .Row, vMST
             .GetText .ColLetterToNumber("L"), .Row, Tuso1
             .GetText .ColLetterToNumber("M"), .Row, denso1
-            .GetText .ColLetterToNumber("I"), .Row, Tenloaihd1
-            .GetText .ColLetterToNumber("J"), .Row, mauso1
+            .GetText .ColLetterToNumber("J"), .Row, Tenloaihd1
+            .GetText .ColLetterToNumber("I"), .Row, mauso1
             .GetText .ColLetterToNumber("K"), .Row, kyhieu1
             
             .GetText .ColLetterToNumber("F"), .Row, vSoHopDong
@@ -555,12 +555,12 @@ Private Sub checkSheet1()
             
             'Ten HD
             If Trim(Tenloaihd1) = "" And iWhiteRow = 0 And iWhiteRow1 = 0 Then
-                .Col = .ColLetterToNumber("I")
+                .Col = .ColLetterToNumber("J")
                 .CellNote = vErrMsgMSTReq  'static
                 .BackColor = mErrorColor
                 blCheck_S3 = False
             Else
-                .Col = .ColLetterToNumber("I")
+                .Col = .ColLetterToNumber("J")
                 .CellNote = ""
                 .BackColor = mNonErrorColor
             End If
@@ -635,12 +635,12 @@ Private Sub checkSheet1()
             End If
             ' Mau so HD
             If Trim(mauso1) = "" And iWhiteRow = 0 And iWhiteRow1 = 0 Then
-                .Col = .ColLetterToNumber("J")
+                .Col = .ColLetterToNumber("I")
                 .CellNote = vErrMsgMSTReq  'static
                 .BackColor = mErrorColor
                ' iFlagEmty = 1
             Else
-                .Col = .ColLetterToNumber("J")
+                .Col = .ColLetterToNumber("I")
                 .CellNote = ""
                 .BackColor = mNonErrorColor
             End If
@@ -654,19 +654,19 @@ Private Sub checkSheet1()
             End If
             result = CheckMauSoBLP(CStr(mauso1), strLoai, strTemp)
             If result = "1" And iWhiteRow = 0 And iWhiteRow1 = 0 Then
-                .Col = .ColLetterToNumber("J")
+                .Col = .ColLetterToNumber("I")
                 .CellNote = errMauSoHD  'static
                 .BackColor = mErrorColor
                 'iFlagMauSoHD = 1
                 blCheck_S7 = False
             ElseIf result = "2" And iWhiteRow = 0 And iWhiteRow1 = 0 Then
-                .Col = .ColLetterToNumber("J")
+                .Col = .ColLetterToNumber("I")
                 .CellNote = errSoLienHD  'static
                 .BackColor = mErrorColor
                 'iFlagSoLienHD = 1
                 blCheck_S8 = False
             Else
-                .Col = .ColLetterToNumber("O")
+                .Col = .ColLetterToNumber("I")
                 .CellNote = ""
                 .BackColor = mNonErrorColor
             
@@ -804,8 +804,8 @@ Private Sub checkSheet1()
                         .GetText .ColLetterToNumber("M"), i, denso2
                         Tuso2 = Val(Tuso2)
                         denso2 = Val(denso2)
-                        .GetText .ColLetterToNumber("I"), i, Tenloaihd2
-                        .GetText .ColLetterToNumber("J"), i, mauso2
+                        .GetText .ColLetterToNumber("J"), i, Tenloaihd2
+                        .GetText .ColLetterToNumber("I"), i, mauso2
                         .GetText .ColLetterToNumber("K"), i, kyhieu2
                         Dim vMST2 As Variant
                         .GetText .ColLetterToNumber("C"), i, vMST2
