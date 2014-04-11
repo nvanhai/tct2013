@@ -299,13 +299,13 @@ FROM
             dtl.row_id );
 
 --BC26_AC
-create or replace view QLT_NTK.rcv_v_bc26_ac_blp as
+create or replace view rcv_v_bc26_ac_blp as
 select
     hdr_id ,
     row_id so_tt ,
-    ten_HD ,
+    ten_BLP ,
     Mau_so ,
-    Ky_hieu_HD ,
+    Ky_hieu_BLP ,
     Tong_so ,
     Tu_so_ton_dk ,
     Den_so_ton_dk ,
@@ -329,9 +329,9 @@ from
         select
             dtl.hdr_id ,
             dtl.row_id ,
-            max(dtl.ten_HD)             ten_HD ,
+            max(dtl.ten_BLP)             ten_BLP ,
             max(dtl.Mau_so)             Mau_so ,
-            max(dtl.Ky_hieu_HD)         Ky_hieu_HD ,
+            max(dtl.Ky_hieu_BLP)         Ky_hieu_BLP ,
             max(dtl.Tong_so)            Tong_so ,
             max(dtl.Tu_so_ton_dk)       Tu_so_ton_dk ,
             max(dtl.Den_so_ton_dk)      Den_so_ton_dk ,
@@ -357,9 +357,9 @@ from
                     nvl(tkd.row_id,0) row_id,
                     gdien.id,
                     gdien.so_tt,
-                    dump(decode(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, null)) ten_HD,
+                    dump(decode(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, null)) ten_BLP,
                     dump(decode(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, null)) Mau_so,
-                    dump(decode(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, null)) Ky_hieu_HD,
+                    dump(decode(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, null)) Ky_hieu_BLP,
                     decode(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, null)       Tong_so,
                     decode(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, null)       Tu_so_ton_dk,
                     decode(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, null)       Den_so_ton_dk,
