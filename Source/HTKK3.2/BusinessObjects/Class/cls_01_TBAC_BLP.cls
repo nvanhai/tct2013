@@ -270,7 +270,13 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 UpdateCell fps, Col, Row, .Text
             End If
         'check ngay in hop dong
-            If Col = .ColLetterToNumber("AA") Then
+        .Row = 35
+            Do
+                countRowDynamic = countRowDynamic + 1
+                .Col = .ColLetterToNumber("B")
+                .Row = .Row + 1
+            Loop Until .Text = "aa"
+            If Col = .ColLetterToNumber("AA") And Row < countRowDynamic + 45 Then
                 .GetText Col, Row, varTemp
                 If varTemp <> "" And varTemp <> "../../...." Then
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
@@ -287,12 +293,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 UpdateCell fps, Col, Row, .Text
             End If
         ' check ngay ky TBAC
-        .Row = 35
-            Do
-                countRowDynamic = countRowDynamic + 1
-                .Col = .ColLetterToNumber("B")
-                .Row = .Row + 1
-            Loop Until .Text = "aa"
+        
                 If Col = .ColLetterToNumber("AA") And Row = countRowDynamic + 45 Then
                      .GetText Col, Row, varTemp
                      If varTemp <> "" And varTemp <> "../../...." Then
