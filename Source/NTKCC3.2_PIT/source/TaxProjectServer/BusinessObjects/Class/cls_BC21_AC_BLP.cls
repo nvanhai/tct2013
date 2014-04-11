@@ -416,7 +416,7 @@ Public Function InsertDTL() As String
                 Else
                     So_tt = So_tt
                 End If
-                'ten hoa don
+                'ten bien lai
                 .GetText .ColLetterToNumber("C"), .Row, Ten_bl
                 If Trim(Ten_bl) = vbNullString Then
                     Ten_bl = "''"
@@ -424,7 +424,7 @@ Public Function InsertDTL() As String
                     Ten_bl = TAX_Utilities_Svr_New.Convert(CStr(Ten_bl), UNICODE, TCVN)
                     Ten_bl = "'" & Ten_bl & "'"
                 End If
-                ' mau so hoa don
+                ' mau so bien lai
                 .GetText .ColLetterToNumber("O"), .Row, Mau_so
                 If Trim(Mau_so) = vbNullString Then
                     Mau_so = "''"
@@ -432,7 +432,7 @@ Public Function InsertDTL() As String
                     Mau_so = TAX_Utilities_Svr_New.Convert(CStr(Mau_so), UNICODE, TCVN)
                     Mau_so = "'" & Mau_so & "'"
                 End If
-                'ky hieu hoa don
+                'ky hieu bien lai
                 .GetText .ColLetterToNumber("S"), .Row, Ky_hieu_bl
                 If Trim(Ky_hieu_bl) = vbNullString Then
                     Ky_hieu_bl = "''"
@@ -458,7 +458,7 @@ Public Function InsertDTL() As String
                 If Trim(So_luong) = vbNullString Then
                     So_luong = "0"
                 End If
-                ' Lien hoa don
+                ' Lien bien lai
                 .GetText .ColLetterToNumber("AE"), .Row, vLienHD
                 If Trim(vLienHD) = vbNullString Then
                     vLienHD = "''"
@@ -522,7 +522,7 @@ Public Function InsertHDR() As String
     Dim Loai_bc As Variant
     Dim Ngay_nop As Variant
     Dim Ngay_cn As Variant
-    Dim Nguoi_cn As Variant
+    Dim nguoi_cn As Variant
     Dim So_tt_tk As Variant
     Dim Phong_xly As Variant
     Dim Phong_qly As Variant
@@ -587,12 +587,12 @@ Public Function InsertHDR() As String
             Ngay_cn = "CTOD('" & Format(Ngay_cn, "mm/dd/yyyy") & "')"
         End If
         ' nguoi cap nhat
-        .GetText .ColLetterToNumber("AC"), 15, Nguoi_cn
-        If Trim(Nguoi_cn) = vbNullString Then
-            Nguoi_cn = "''"
+        .GetText .ColLetterToNumber("AC"), 15, nguoi_cn
+        If Trim(nguoi_cn) = vbNullString Then
+            nguoi_cn = "''"
         Else
-            Nguoi_cn = TAX_Utilities_Svr_New.Convert(CStr(Nguoi_cn), UNICODE, TCVN)
-            Nguoi_cn = "'" & Nguoi_cn & "'"
+            nguoi_cn = TAX_Utilities_Svr_New.Convert(CStr(nguoi_cn), UNICODE, TCVN)
+            nguoi_cn = "'" & nguoi_cn & "'"
         End If
         'set ly do mat chay hong
         .GetText .ColLetterToNumber("C"), 31, ly_DO_MAT_CHAY_HONG
@@ -662,7 +662,7 @@ Public Function InsertHDR() As String
             Else
                 Ghi_chu = "'" & TAX_Utilities_Svr_New.Convert(CStr(Ghi_chu), UNICODE, TCVN) & "'"
         End If
-     sSQLVal = Id & "," & Tin & "," & Loai_bc & "," & Ngay_nop & "," & Ngay_cn & "," & Nguoi_cn & "," & So_tt_tk & "," & _
+     sSQLVal = Id & "," & Tin & "," & Loai_bc & "," & Ngay_nop & "," & Ngay_cn & "," & nguoi_cn & "," & So_tt_tk & "," & _
                 Phong_xly & "," & Phong_qly & "," & Ngay_bc & "," & Nguoi_dd & "," & ngay_Thang_Nam_Mat & "," & maCQT & "," & Ghi_chu & "," & DA_NHAN & "," & ly_DO_MAT_CHAY_HONG
        
         sSQL = "INSERT INTO TMP_BCAO_HDR_AC( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"

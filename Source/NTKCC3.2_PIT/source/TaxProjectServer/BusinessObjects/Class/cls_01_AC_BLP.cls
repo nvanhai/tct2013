@@ -86,6 +86,7 @@ Public TTHTK As String
 Public strTenBpql As String
 Private tempKyLb As Variant
 Private tempNgayNop As Variant
+Private NgayDauKy As Date
 
 Public strMaCQT As String
 Public strMaPQL As String
@@ -364,6 +365,8 @@ Dim blnValid As Boolean
         .Sheet = .SheetCount
         
         .EventEnabled(EventAllEvents) = True
+        
+        NgayDauKy = dNgayDauKy
     End With
 End Sub
 
@@ -452,9 +455,9 @@ Public Function InsertDTL() As String
    Dim diaChi As Variant
    Dim soHopDong As Variant
    Dim ngayHopDong As Variant
-   Dim tenLoaiHoaDon As Variant
-   Dim kyHieuMauHoaDon As Variant
-   Dim kyHieuHoaDdon As Variant
+   Dim tenLoaiBienLai As Variant
+   Dim kyHieuMauBienLai As Variant
+   Dim kyHieuBienLai As Variant
    Dim tuSO As Variant
    Dim denSo As Variant
    Dim SOLUONG As Variant
@@ -533,30 +536,30 @@ Public Function InsertDTL() As String
                 ngayHopDong = ToDate(Trim(ngayHopDong), DDMMYYYY)
                 ngayHopDong = "CTOD('" & Format(ngayHopDong, "mm/dd/yyyy") & "')"
             End If
-            'set tenloaihoadon
-            .GetText .ColLetterToNumber("O"), .Row, tenLoaiHoaDon
-            If tenLoaiHoaDon = vbNullString Then
-                tenLoaiHoaDon = "''"
+            'set tenloaiBienLai
+            .GetText .ColLetterToNumber("O"), .Row, tenLoaiBienLai
+            If tenLoaiBienLai = vbNullString Then
+                tenLoaiBienLai = "''"
             Else
-                tenLoaiHoaDon = TAX_Utilities_Svr_New.Convert(CStr(tenLoaiHoaDon), UNICODE, TCVN)
-                If Len(tenLoaiHoaDon) > 250 Then
-                    tenLoaiHoaDon = Left(CStr(tenLoaiHoaDon), 250)
+                tenLoaiBienLai = TAX_Utilities_Svr_New.Convert(CStr(tenLoaiBienLai), UNICODE, TCVN)
+                If Len(tenLoaiBienLai) > 250 Then
+                    tenLoaiBienLai = Left(CStr(tenLoaiBienLai), 250)
                 End If
-                tenLoaiHoaDon = "'" & tenLoaiHoaDon & "'"
+                tenLoaiBienLai = "'" & tenLoaiBienLai & "'"
             End If
             'set mauso
-            .GetText .ColLetterToNumber("R"), .Row, kyHieuMauHoaDon
-            If kyHieuMauHoaDon = vbNullString Then
-                kyHieuMauHoaDon = "''"
+            .GetText .ColLetterToNumber("Q"), .Row, kyHieuMauBienLai
+            If kyHieuMauBienLai = vbNullString Then
+                kyHieuMauBienLai = "''"
             Else
-                kyHieuMauHoaDon = "'" & kyHieuMauHoaDon & "'"
+                kyHieuMauBienLai = "'" & kyHieuMauBienLai & "'"
             End If
-            'set kyhieu hoa don
-            .GetText .ColLetterToNumber("T"), .Row, kyHieuHoaDdon
-            If kyHieuHoaDdon = vbNullString Then
-                kyHieuHoaDdon = "''"
+            'set kyhieu bien lai
+            .GetText .ColLetterToNumber("T"), .Row, kyHieuBienLai
+            If kyHieuBienLai = vbNullString Then
+                kyHieuBienLai = "''"
             Else
-                kyHieuHoaDdon = "'" & kyHieuHoaDdon & "'"
+                kyHieuBienLai = "'" & kyHieuBienLai & "'"
             End If
             'set tuso
             .GetText .ColLetterToNumber("V"), .Row, tuSO
@@ -577,14 +580,14 @@ Public Function InsertDTL() As String
             If SOLUONG = vbNullString Then
                 SOLUONG = "0"
             End If
-            'set loaihoadon
+            'set loaiBienLai
             .GetText .ColLetterToNumber("AB"), .Row, LOAIHD
             If LOAIHD = vbNullString Then
                 LOAIHD = "''"
             Else
                 LOAIHD = "'" & LOAIHD & "'"
             End If
-            sSQLVal = Id1 & "," & vHDR_ID & "," & STT & "," & MST & "," & tenToChuc & "," & diaChi & "," & soHopDong & "," & ngayHopDong & "," & tenLoaiHoaDon & "," & kyHieuMauHoaDon & "," & kyHieuHoaDdon & "," & tuSO & "," & denSo & "," & SOLUONG & "," & LOAIHD
+            sSQLVal = Id1 & "," & vHDR_ID & "," & STT & "," & MST & "," & tenToChuc & "," & diaChi & "," & soHopDong & "," & ngayHopDong & "," & tenLoaiBienLai & "," & kyHieuMauBienLai & "," & kyHieuBienLai & "," & tuSO & "," & denSo & "," & SOLUONG & "," & LOAIHD
             
             sSQL = "INSERT INTO tmp_dtl_01_AC_BLP( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -955,7 +958,7 @@ Public Function InsertHDR() As String
         'set quy bao cao
         
         If Trim(TAX_Utilities_Svr_New.ThreeMonths) <> "" Then
-            vQUY_BC = kyBCTuNgay
+            vQUY_BC = "CTOD('" & Format(NgayDauKy, "mm/dd/yyyy") & "')"
         End If
                   
         'set ngayLapBC
