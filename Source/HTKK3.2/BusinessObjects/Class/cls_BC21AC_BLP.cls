@@ -184,13 +184,13 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
             .GetText .ColLetterToNumber("AI"), .Row, strId
             
             If Trim(Left(strId, 1)) = "0" Then
-                .SetText .ColLetterToNumber("E"), .Row, Trim(Mid(strId, 11, 5))
-                UpdateCell_sheet fps, 1, .ColLetterToNumber("E"), .Row, .Text
-                .Col = .ColLetterToNumber("E")
+                .SetText .ColLetterToNumber("O"), .Row, Trim(Mid(strId, 11, 5))
+                UpdateCell_sheet fps, 1, .ColLetterToNumber("O"), .Row, .Text
+                .Col = .ColLetterToNumber("O")
                 '.TypeMaxEditLen = 13
-                .Col = .ColLetterToNumber("H")
-                .SetText .ColLetterToNumber("H"), .Row, Trim(Mid(strId, 21))
-                UpdateCell_sheet fps, 1, .ColLetterToNumber("H"), .Row, .Text
+                .Col = .ColLetterToNumber("E")
+                .SetText .ColLetterToNumber("E"), .Row, Trim(Mid(strId, 21))
+                UpdateCell_sheet fps, 1, .ColLetterToNumber("E"), .Row, .Text
 '            ElseIf Trim(Left(strId, 1)) = "3" Then
 '                .SetText .ColLetterToNumber("O"), .Row, ""
 '                UpdateCell_sheet fps, 1, .ColLetterToNumber("O"), .Row, .Text
@@ -382,7 +382,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 UpdateCell fps, .Col, .Row, .Text
             End If
            ' chuyen Mau so thanh chu hoa
-            If Col = .ColLetterToNumber("E") Then
+            If Col = .ColLetterToNumber("O") Then
                  .GetText Col, Row, varTemp
                  '.SetText Col, Row, FormatKyHieuBLP(CStr(varTemp))
                  .SetText Col, Row, UCase(varTemp)
@@ -402,7 +402,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 UpdateCell fps, .Col, .Row, .Text
             End If
            'Kiem tra cau truc cua Mau so
-           If Col = .ColLetterToNumber("E") Then
+           If Col = .ColLetterToNumber("O") Then
                 .GetText .ColLetterToNumber("AI"), .Row, strId
                 strLoai = Trim(Left(strId, 1))
                 If strLoai = "0" Then
@@ -514,7 +514,7 @@ Private Sub CheckDynamicError()
         .Col = .ColLetterToNumber("B")
         .Row = 43
         Do
-            .Col = .ColLetterToNumber("E")
+            .Col = .ColLetterToNumber("O")
             .CellNote = ""
             .BackColor = mNonErrorColor
             
@@ -547,11 +547,11 @@ Private Sub CheckDynamicError()
         Do
              ' Lay cac gia tri cua 1 row
              iWhiteRow = 1
-            .GetText .ColLetterToNumber("H"), .Row, strTenHD
-            .GetText .ColLetterToNumber("H"), .Row, Tenloaihd1
-            .GetText .ColLetterToNumber("E"), .Row, strMauSoHD
+            .GetText .ColLetterToNumber("E"), .Row, strTenHD
+            .GetText .ColLetterToNumber("E"), .Row, Tenloaihd1
+            .GetText .ColLetterToNumber("O"), .Row, strMauSoHD
             .GetText .ColLetterToNumber("S"), .Row, strKyHieuHD
-            .GetText .ColLetterToNumber("E"), .Row, mauso1
+            .GetText .ColLetterToNumber("O"), .Row, mauso1
             .GetText .ColLetterToNumber("S"), .Row, kyhieu1
             .GetText .ColLetterToNumber("V"), .Row, strTuSo
             .GetText .ColLetterToNumber("Y"), .Row, strDenso
@@ -600,23 +600,23 @@ Private Sub CheckDynamicError()
             
             'Ten HD
             If Trim(strTenHD) = "" And iWhiteRow = 0 Then
-                .Col = .ColLetterToNumber("H")
+                .Col = .ColLetterToNumber("E")
                 .CellNote = errEmty  'static
                 .BackColor = mErrorColor
                 iFlagEmty = 1
             Else
-                .Col = .ColLetterToNumber("H")
+                .Col = .ColLetterToNumber("E")
                 .CellNote = ""
                 .BackColor = mNonErrorColor
             End If
             ' Mau so HD
             If Trim(strMauSoHD) = "" And iWhiteRow = 0 Then
-                .Col = .ColLetterToNumber("E")
+                .Col = .ColLetterToNumber("O")
                 .CellNote = errEmty  'static
                 .BackColor = mErrorColor
                 iFlagEmty = 1
             Else
-                .Col = .ColLetterToNumber("E")
+                .Col = .ColLetterToNumber("O")
                 .CellNote = ""
                 .BackColor = mNonErrorColor
             End If
@@ -630,17 +630,17 @@ Private Sub CheckDynamicError()
             End If
             result = CheckMauSoBLP(CStr(strMauSoHD), strLoai, strTemp)
             If result = "1" And iWhiteRow = 0 Then
-                .Col = .ColLetterToNumber("E")
+                .Col = .ColLetterToNumber("O")
                 .CellNote = errMauSoHD  'static
                 .BackColor = mErrorColor
                 iFlagMauSoHD = 1
             ElseIf result = "2" And iWhiteRow = 0 Then
-                .Col = .ColLetterToNumber("E")
+                .Col = .ColLetterToNumber("O")
                 .CellNote = errSoLienHD  'static
                 .BackColor = mErrorColor
                 iFlagSoLienHD = 1
             ElseIf Trim(strMauSoHD) <> "" Then
-                .Col = .ColLetterToNumber("E")
+                .Col = .ColLetterToNumber("O")
                 .CellNote = ""
                 .BackColor = mNonErrorColor
             
