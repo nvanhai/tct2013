@@ -301,7 +301,7 @@ On Error GoTo ErrHandle
             Select Case Trim(GetAttribute(xmlNode, "CellID"))
                 Case "E_5"
                     vTIN = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "E_4"
+                Case "J_4"
                     vTEN_DTNT = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case "E_6"
                     vDIA_CHI = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
@@ -351,10 +351,8 @@ On Error GoTo ErrHandle
         
      ' Lay Quy BC
     If Trim(TAX_Utilities_iNTK.ThreeMonths) <> "" Then
-        dNgayDauKy = vKY_BC_TUNGAY
         dDate = dNgayDauKy
-        'vQUY_BC = Format(dDate, "dd/mm/yyyy")
-        vQUY_BC = vKY_BC_TUNGAY
+        vQUY_BC = Format(dDate, "dd/mm/yyyy")
     End If
     
     
