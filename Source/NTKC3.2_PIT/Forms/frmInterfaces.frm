@@ -1542,10 +1542,6 @@ Private Sub Command1_Click()
 'str2 = "aa999142300100778   01201400700700100101/0101/01/2009<S01><S>0~1~01/01/2014~31/03/2014</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP8-009~KH-56T~84~0000001~0000022~0000023~0000084~0000001~0000003~3~0~1~1~1~3~1~2~0000004~0000084~81~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP6-034~AD-89T~7~0000002~0000005~0000006~0000008~0000002~0000005~4~1~1~2~1~3~1~4~0000006~0000008~3</S><S>nvsu~Minh NhÀt~03/04/2014</S></S01>"
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
-'--01_TBAC_BLP
-'str2 = "aa999074400101144   04201400900900100101/0101/01/2009<S01><S>Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP4-003~AB-32T~50~0000010~0000059~23/04/2014~HD879~~~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP9-005~CD-45P~121~0000030~0000150~20/04/2014~HD037~Doanh nghi÷p abc~0010011000</S><S>Chi cÙc thu’ TP Hﬂa B◊nh~01/04/2014~Nguy‘n Minh</S></S01>"
-'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-
 '--01_AC_BLP
 'str2 = "aa999132300100778   01201400800800100101/0101/01/2009<S01><S>x~01/01/2014~30/06/2014</S><S>3600247325~tÊ ch¯c x∑ hÈi~S048~28/03/2014~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP9-043~MN-32T~0000025~0000170~146~2300641174~tÊ ch¯c MCM~S058~21/03/2014~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP7-082~KH-34P~0000031~0000200~170</S><S>Nguy‘n Minh~01/04/2014</S></S01>"
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
@@ -1580,7 +1576,19 @@ Private Sub Command1_Click()
 'str2 = "aa999134400101144   02201400300400100101/0101/01/2009<S01><S>~01/04/2014~30/06/2014</S><S>0102030405~abc~100 hoang quoc viet~01~04/04/2014~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP1-002~01AB-34T~0000001~0000060~60~6868686868~def~101 hoang quoc viet~02~16/03/2014~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-003~CD-12P~0000003~0000200~198</S><S>Nguy‘n Minh~08/04/2014</S></S01>"
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
-str2 = "aa999074400101987   04201402302300100101/0101/01/2009<S01><S>Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP6-078~CD-89P~141~0000010~0000150~18/04/2014~S045~06/04/2014~doanh nghiep anc~0010011000~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP3-023~05AB-67T~226~0000025~0000250~19/04/2014~S067~07/04/2014~~</S><S>~08/04/2014~Minh Ph≠¨ng</S></S01>"
+'str2 = "aa999074400101987   04201402302300100101/0101/01/2009<S01><S>Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP6-078~CD-89P~141~0000010~0000150~18/04/2014~S045~06/04/2014~doanh nghiep anc~0010011000~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP3-023~05AB-67T~226~0000025~0000250~19/04/2014~S067~07/04/2014~~</S><S>~08/04/2014~Minh Ph≠¨ng</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+'--nhan in
+'str2 = "aa999134400101144   01201401501500100101/0101/01/2009<S01><S>x~06/01/2014~21/03/2014</S><S>0102030405~nvsu~ha noi~01~10/01/2014~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~DK-56T~0001000~0200000~199001~6868686868~ntnam~ha noi 2~02~20/02/2014~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP3-002~DK-58T~0000200~0000400~201</S><S>Nguy‘n Minh~11/04/2014</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+'--tinh hinh su dung
+'str2 = "aa999144400101144   01201401301300100101/0101/01/2009<S01><S>x~x~13/01/2014~12/03/2014</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~DK-56T~301~0000200~0000300~0000301~0000500~0000200~0000299~100~100~0~~0~~0~~0000300~0000500~201~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP3-005~DK-59T~351~0000050~0000100~0000101~0000400~0000050~0000059~10~10~0~~0~~0~~0000060~0000400~341</S><S>nguoi lao bieu~Nguy‘n Minh~11/04/2014</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+'--mat, hong, chat new
+str2 = "aa999094400101144   01201400600600100101/0101/01/2010<S01><S>11/04/2014</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~DK-56T~0000100~0000200~101~2000~01~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP3-002~DK-59T~0000200~0000400~201~2000~03~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP4-003~DK-51T~0000050~0000100~51~23~03</S><S>thich thi hong~tong cuc thue~Nguy‘n Minh~11/04/2014</S></S01>"
 Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 End Sub
