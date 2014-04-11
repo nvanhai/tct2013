@@ -122,6 +122,9 @@ Public Sub Prepare2()
             .SetText .ColLetterToNumber("J"), totalRow + 29, GetNguoiKy()
         End If
         
+        
+        
+        
          'Xoa cong thuc cua o Chu ky
         Set xmlCellNode = TAX_Utilities_v1.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 22))
         Set xmlCellNode = xmlCellNode.parentNode
@@ -134,6 +137,16 @@ Public Sub Prepare2()
         .Col = iCol
         .Formula = ""
         
+        
+        ' set lai gia tri tu ngay den ngay
+        .Sheet = 1
+        .Row = 17
+        .Col = .ColLetterToNumber("D")
+        .Formula = "TRIM(Header!T6)"
+        
+        .Row = 17
+        .Col = .ColLetterToNumber("E")
+        .Formula = "TRIM(Header!T7)"
         
         .EventEnabled(EventAllEvents) = True
     End With

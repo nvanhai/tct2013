@@ -268,6 +268,19 @@ Public Sub Prepare2()
         UpdateCell fps, .Col, .Row, .Text
        ' End If
             'end
+            
+            
+            
+       ' set lai gia tri tu ngay den ngay
+        .Sheet = 1
+        .Row = 13
+        .Col = .ColLetterToNumber("E")
+        .Formula = "TRIM(Header!T6)"
+        
+        .Row = 13
+        .Col = .ColLetterToNumber("F")
+        .Formula = "TRIM(Header!T7)"
+        
         mCurrentSheet = tmpSheet
         .EventEnabled(EventAllEvents) = True
     End With
