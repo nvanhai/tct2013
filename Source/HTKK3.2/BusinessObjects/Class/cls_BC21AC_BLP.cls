@@ -86,7 +86,7 @@ Dim xmlNode As MSXML.IXMLDOMNode
         .Col = .ColLetterToNumber("AC")
         .TypeComboBoxList = strCboGhiChu
         
-        strCboValueGhiChu = "01" + Chr$(9) + "03"
+        strCboValueGhiChu = "02" + Chr$(9) + "04"
         .Row = 43
         .Col = .ColLetterToNumber("AL")
         .TypeComboBoxList = strCboValueGhiChu
