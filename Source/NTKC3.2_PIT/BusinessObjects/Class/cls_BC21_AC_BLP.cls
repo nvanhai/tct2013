@@ -365,8 +365,8 @@ On Error GoTo ErrHandle
         .EventEnabled(EventAllEvents) = False
         .Sheet = 1
         .GetText .ColLetterToNumber("C"), 31, vLY_DO
-        .GetText .ColLetterToNumber("L"), 31, vNGUOI_DAI_DIEN
-        .GetText .ColLetterToNumber("P"), 31, vNGAY_BC
+        .GetText .ColLetterToNumber("AE"), 31, vNGUOI_DAI_DIEN
+        .GetText .ColLetterToNumber("AF"), 31, vNGAY_BC
         .GetText .ColLetterToNumber("S"), 17, vNGAY_CHAY_HONG
         .EventEnabled(EventAllEvents) = False
     End With
