@@ -537,7 +537,7 @@ Public Function InsertDTL() As String
                 ngayHopDong = "CTOD('" & Format(ngayHopDong, "mm/dd/yyyy") & "')"
             End If
             'set tenloaiBienLai
-            .GetText .ColLetterToNumber("O"), .Row, tenLoaiBienLai
+            .GetText .ColLetterToNumber("Q"), .Row, tenLoaiBienLai
             If tenLoaiBienLai = vbNullString Then
                 tenLoaiBienLai = "''"
             Else
@@ -548,7 +548,7 @@ Public Function InsertDTL() As String
                 tenLoaiBienLai = "'" & tenLoaiBienLai & "'"
             End If
             'set mauso
-            .GetText .ColLetterToNumber("Q"), .Row, kyHieuMauBienLai
+            .GetText .ColLetterToNumber("O"), .Row, kyHieuMauBienLai
             If kyHieuMauBienLai = vbNullString Then
                 kyHieuMauBienLai = "''"
             Else
