@@ -180,9 +180,9 @@ Public Function Prepared3() As Boolean
         .Col = .ColLetterToNumber("B")
         Do
             .GetText .ColLetterToNumber("AI"), .Row, tempValue
-            If CStr(tempValue) = "01" Then
+            If CStr(tempValue) = "04" Then
                 .SetText .ColLetterToNumber("AF"), .Row, GetAttribute(GetMessageCellById("0133"), "Msg")
-            ElseIf CStr(tempValue) = "03" Then
+            ElseIf CStr(tempValue) = "02" Then
                 .SetText .ColLetterToNumber("AF"), .Row, GetAttribute(GetMessageCellById("0134"), "Msg")
             End If
             .Row = .Row + 1

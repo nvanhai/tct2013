@@ -1588,7 +1588,7 @@ Private Sub Command1_Click()
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 '--mat, hong, chat new
-'str2 = "aa999094400101144   01201400600600100101/0101/01/2010<S01><S>11/04/2014</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~DK-56T~0000100~0000200~101~2000~01~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP3-002~DK-59T~0000200~0000400~201~2000~03~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP4-003~DK-51T~0000050~0000100~51~23~03</S><S>thich thi hong~tong cuc thue~Nguy‘n Minh~11/04/2014</S></S01>"
+'str2 = "aa999094400101144   01201400600600100101/0101/01/2010<S01><S>11/04/2014</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~DK-56T~0000100~0000200~101~2000~02~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP3-002~DK-59T~0000200~0000400~201~2000~04~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP4-003~DK-51T~0000050~0000100~51~23~02</S><S>thich thi hong~tong cuc thue~Nguy‘n Minh~11/04/2014</S></S01>"
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 '--bao cao phat hanh OK
@@ -1596,7 +1596,11 @@ Private Sub Command1_Click()
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 '--bao cao nhan in OK
-str2 = "aa999134400101144   01201402602600100101/0101/01/2009<S01><S>x~01/01/2014~31/03/2014</S><S>0102030405~cmc~duy tan - ha noi~100~30/03/2014~01BLP1-001~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~DK-58T~0000020~0000040~21~2222222222~tct~hitc tower~200~30/03/2014~02BLP2-002~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~DK-50T~0000010~0000020~11</S><S>Nguy‘n Minh~11/04/2014</S></S01>"
+'str2 = "aa999134400101144   01201402602600100101/0101/01/2009<S01><S>x~01/01/2014~31/03/2014</S><S>0102030405~cmc~duy tan - ha noi~100~30/03/2014~01BLP1-001~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~DK-58T~0000020~0000040~21~2222222222~tct~hitc tower~200~30/03/2014~02BLP2-002~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~DK-50T~0000010~0000020~11</S><S>Nguy‘n Minh~11/04/2014</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+'--phat hanh
+str2 = "aa999074400101144   04201401601800100101/0101/01/2009<S01><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP1-001~DK-50T~101~0000100~0000200~30/04/2014~100~01/01/2014~test~0102030405~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-002~DK-51T~201~0000200~0000400~30/04/2014~200~01/01/2014~test 2~6868686868</S><S>nguoi nhan~14/04/2014~Nguy‘n Minh</S></S01>"
 Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 End Sub
