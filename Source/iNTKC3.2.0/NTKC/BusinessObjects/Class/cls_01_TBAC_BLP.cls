@@ -317,7 +317,7 @@ On Error GoTo ErrHandle
         .EventEnabled(EventAllEvents) = False
         .Sheet = 1
         .GetText .ColLetterToNumber("R"), 22, vNGUOI_DAI_DIEN
-        .GetText .ColLetterToNumber("O"), 22, vNGAY_BC
+        .GetText .ColLetterToNumber("V"), 22, vNGAY_BC
         .GetText .ColLetterToNumber("E"), 22, vTEN_DV_CQ
         .GetText .ColLetterToNumber("I"), 22, vTIN_DV_CQ
         .GetText .ColLetterToNumber("L"), 22, vTEN_CQ_TIEP_NHAN
