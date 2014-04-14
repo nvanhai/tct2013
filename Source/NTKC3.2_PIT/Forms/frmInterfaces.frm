@@ -1588,8 +1588,8 @@ Private Sub Command1_Click()
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 '--mat, hong, chat new
-str2 = "aa999094400101144   01201400600600100101/0101/01/2010<S01><S>11/04/2014</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~DK-56T~0000100~0000200~101~2000~02~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP3-002~DK-59T~0000200~0000400~201~2000~04~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP4-003~DK-51T~0000050~0000100~51~23~02</S><S>thich thi hong~tong cuc thue~Nguy‘n Minh~11/04/2014</S></S01>"
-Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999094400101144   01201400600600100101/0101/01/2010<S01><S>11/04/2014</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~DK-56T~0000100~0000200~101~2000~02~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP3-002~DK-59T~0000200~0000400~201~2000~04~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP4-003~DK-51T~0000050~0000100~51~23~02</S><S>thich thi hong~tong cuc thue~Nguy‘n Minh~11/04/2014</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 '--bao cao phat hanh OK
 'str2 = "aa999074400101144   04201401401500100101/0101/01/2009<S01><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP1-001~DK-58T~101~0000100~0000200~30/04/2014~200~10/04/2014~cmc~0102030405~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-002~DK-48T~51~0000050~0000100~30/04/2014~100~10/04/2014~tct~6868686868</S><S>tct~11/04/2014~Nguy‘n Minh</S></S01>"
@@ -1602,6 +1602,14 @@ Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 '--phat hanh
 'str2 = "aa999074400101144   04201401601800100101/0101/01/2009<S01><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP1-001~DK-50T~101~0000100~0000200~30/04/2014~100~01/01/2014~test~0102030405~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-002~DK-51T~201~0000200~0000400~30/04/2014~200~01/01/2014~test 2~6868686868</S><S>nguoi nhan~14/04/2014~Nguy‘n Minh</S></S01>"
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+'str2 = "aa999134400101144   01201402702700100101/0101/01/2009<S01><S>01/01/2014~31/03/2014</S><S>0102030405~nvsu~hn~100~20/02/2014~01BLP1-001~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~DK-20T~0000100~0000200~101~2222222222~nvsu 2~hn 2~200~30/03/2014~02BLP2-002~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~DK-21T~0000020~0000040~21</S><S>Nguy‘n Minh~14/04/2014</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+str2 = "aa999144400101144   01201401701700100101/0101/01/2009<S01><S>01/01/2014~31/03/2014</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0</S><S>~Nguy‘n Minh~14/04/2014</S></S01>"
+Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+
 
 End Sub
 
@@ -5519,7 +5527,7 @@ Private Function getSoTTTK_AC(ByVal strID As String, _
         strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=to_date('" & Left$(arrDeltail(UBound(arrDeltail)), 10) & "','dd/mm/rrrr')"
     ElseIf strID = "01_AC_BLP" Then
         arrDeltail = Split(strData, "~")
-        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.KYBC_TU_NGAY = to_date('" & arrDeltail(1) & "','dd/mm/rrrr')" & "And tkhai.KYBC_DEN_NGAY = to_date('" & Left$(arrDeltail(2), 10) & "','dd/mm/rrrr')"
+        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.KYBC_TU_NGAY = to_date('" & Right(arrDeltail(0), 10) & "','dd/mm/rrrr')" & "And tkhai.KYBC_DEN_NGAY = to_date('" & Left$(arrDeltail(1), 10) & "','dd/mm/rrrr')"
     ElseIf strID = "BC26_AC_BLP" Then
         If LoaiKyKK = False Then
             strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.QUY_BC = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
