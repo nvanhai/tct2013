@@ -202,7 +202,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
                 'dhdang sua combox ngay xu ly
                 'ngay 05-08
                 .TypeComboBoxIndex = -1
-                .TypeComboBoxString = TAX_Utilities_Svr_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE) + "                {" + TAX_Utilities_Svr_New.Convert(Trim(rsPXL.Fields(0).Value), TCVN, UNICODE) + "}"
+                .TypeComboBoxString = TAX_Utilities_Svr_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE) + "     {" + TAX_Utilities_Svr_New.Convert(Trim(rsPXL.Fields(0).Value), TCVN, UNICODE) + "}"
                 .TextTip = TextTipOff
                 i = i + 1
                 ReDim Preserve larrPhongXuLy(i)
@@ -855,63 +855,66 @@ Public Function InsertDTL_KHBS() As String
    
 End Function
 
-
-
 Public Function InsertHDR() As String
-    Dim sSQL As String
-    Dim sSQLCol As String
-    Dim sSQLVal As String
-    Dim strComboBox As Variant
+    Dim sSQL         As String
+    Dim sSQLCol      As String
+    Dim sSQLVal      As String
+    Dim strComboBox  As Variant
     Dim combovalue() As String
     
-    Dim maST As Variant
-    Dim kyBCTuNgay As Variant
-    Dim kyBCDenNgay As Variant
-    Dim ngayLapBC As Variant
-    Dim nguoiDDPL As Variant
-    Dim loaiBC As String
-    Dim NGAYNOP As Variant
-    Dim DANHAN As Variant
-    Dim phongXuLy As Variant
-    Dim phongQuanLy As Variant
-    Dim NGAYQUET As Variant
+    Dim maST         As Variant
+    Dim kyBCTuNgay   As Variant
+    Dim kyBCDenNgay  As Variant
+    Dim ngayLapBC    As Variant
+    Dim nguoiDDPL    As Variant
+    Dim loaiBC       As String
+    Dim NGAYNOP      As Variant
+    Dim DANHAN       As Variant
+    Dim phongXuLy    As Variant
+    Dim phongQuanLy  As Variant
+    Dim NGAYQUET     As Variant
     Dim nguoiCapNhat As Variant
     Dim kyBCCuoiCung As Variant
-    Dim STT As Variant
-    Dim maCQT As Variant
-    Dim quyBC As Variant
-    Dim dDate As Date
+    Dim STT          As Variant
+    Dim maCQT        As Variant
+    Dim quyBC        As Variant
+    Dim dDate        As Date
     Dim vQUY_BC
     Dim Ghi_chu As Variant
     
-    
-   Dim bln  As Boolean
-   ' end
-   If clsDAO.Connected = False Then
+    Dim bln     As Boolean
+
+    ' end
+    If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
         clsDAO.Connect
-   End If
-    
+    End If
   
     sSQLCol = "id,tin,loai_bc,ngay_nop,tu_ngay,den_ngay,ngay_cn,nguoi_cn,da_nhan,phong_xly,phong_qly,ngay_bc,nguoi_dd,loai_bc26,so_tt_tk,ma_cqt,quy_bc,ghi_chu"
+
     'set hdrID
     If vHDR_ID = vbNullString Then
         vHDR_ID = "0"
     End If
+
     With fps
         .Sheet = 1
         .GetText .ColLetterToNumber(MA_SO_THUE_X), MA_SO_THUE_Y, maST
+
         If Trim(maST) = vbNullString Then
             maST = "''"
         Else
             maST = Trim(CStr(maST))
+
             If Len(maST) = 13 Then
                 maST = Left(CStr(maST), 10) & "-" & Right(CStr(maST), 3)
             End If
+
             maST = "'" & maST & "'"
         End If
 
         .GetText .ColLetterToNumber("E"), 10, NGAYNOP
+
         If Trim(NGAYNOP) = vbNullString Then
             NGAYNOP = "CTOD('')"
         Else
@@ -921,24 +924,27 @@ Public Function InsertHDR() As String
         
         ' set ngayquet
         .GetText .ColLetterToNumber("K"), 12, NGAYQUET
-'        NGAYQUET = Date
+
+        '        NGAYQUET = Date
         If Trim(NGAYQUET) = vbNullString Then
             NGAYQUET = "CTOD('')"
         Else
             NGAYQUET = ToDate(Trim(NGAYQUET), DDMMYYYY)
             NGAYQUET = "CTOD('" & Format(NGAYQUET, "mm/dd/yyyy") & "')"
         End If
+
         'get nguoi cap nhat
-'        .GetText .ColLetterToNumber("Q"), 12, nguoi_cn
-'        If Trim(nguoi_cn) = vbNullString Then
-'            nguoi_cn = "''"
-'        Else
-'            nguoi_cn = TAX_Utilities_Svr_New.Convert(CStr(nguoi_cn), UNICODE, TCVN)
-'            nguoi_cn = "'" & nguoi_cn & "'"
-'        End If
+        '        .GetText .ColLetterToNumber("Q"), 12, nguoi_cn
+        '        If Trim(nguoi_cn) = vbNullString Then
+        '            nguoi_cn = "''"
+        '        Else
+        '            nguoi_cn = TAX_Utilities_Svr_New.Convert(CStr(nguoi_cn), UNICODE, TCVN)
+        '            nguoi_cn = "'" & nguoi_cn & "'"
+        '        End If
         
         'set ngay baocaotungay
         .GetText .ColLetterToNumber("E"), 23, kyBCTuNgay
+
         If Trim(kyBCTuNgay) = vbNullString Then
             kyBCTuNgay = "CTOD('')"
         Else
@@ -948,6 +954,7 @@ Public Function InsertHDR() As String
         
         'set ngaybaocaodenngay
         .GetText .ColLetterToNumber("F"), 23, kyBCDenNgay
+
         If Trim(kyBCDenNgay) = vbNullString Then
             kyBCDenNgay = "CTOD('')"
         Else
@@ -963,6 +970,7 @@ Public Function InsertHDR() As String
                   
         'set ngayLapBC
         .GetText .ColLetterToNumber("L"), 23, ngayLapBC
+
         If Trim(ngayLapBC) = vbNullString Then
             ngayLapBC = "CTOD('')"
         Else
@@ -972,6 +980,7 @@ Public Function InsertHDR() As String
         
         'set nguoi dai dien phap luat
         .GetText .ColLetterToNumber("J"), 23, nguoiDDPL
+
         If Trim(nguoiDDPL) = vbNullString Then
             nguoiDDPL = "''"
         Else
@@ -990,6 +999,7 @@ Public Function InsertHDR() As String
         .Row = 10
         
         .GetText .ColLetterToNumber("Q"), 10, strComboBox
+
         If strComboBox = vbNullString Then
             phongXuLy = "''"
         Else
@@ -1004,8 +1014,10 @@ Public Function InsertHDR() As String
         Else
             phongQuanLy = "'" & Trim(strMaBPQL) & "'"
         End If
+
         'set nguoi capnhat
         .GetText .ColLetterToNumber("Q"), 12, nguoiCapNhat
+
         If nguoiCapNhat = vbNullString Then
             nguoiCapNhat = "''"
         Else
@@ -1014,38 +1026,36 @@ Public Function InsertHDR() As String
         End If
         
         'set ky bao cao cuoi cung
-        .GetText .ColLetterToNumber("E"), 16, kyBCCuoiCung
-        If kyBCCuoiCung = 1 Then
-            kyBCCuoiCung = "'Y'"
-            Else
-            kyBCCuoiCung = "'N'"
-        End If
+        kyBCCuoiCung = "''"
         
         'set sTT
         STT = strSoTTTKhai
+
         If STT = vbNullString Then
             STT = "0"
         End If
+
         'set maCQT
         maCQT = GetMaCqt
 
         'set ghichu
         
         .GetText .ColLetterToNumber("E"), 14, Ghi_chu
+
         If Ghi_chu = vbNullString Then
             Ghi_chu = "''"
         Else
             Ghi_chu = TAX_Utilities_Svr_New.Convert(CStr(Ghi_chu), UNICODE, TCVN)
             Ghi_chu = "'" & Ghi_chu & "'"
         End If
-'sSQLCol = "id,tin,loai_bc,ngay_nop,tu_ngay,den_ngay,ngay_cn,nguoi_cn,da_nhan,phong_xly,phong_qly,ngay_bc,nguoi_dd,loai_bc26,so_tt_tk,ma_cqt,quy_bc,ghi_chu"
+
+        'sSQLCol = "id,tin,loai_bc,ngay_nop,tu_ngay,den_ngay,ngay_cn,nguoi_cn,da_nhan,phong_xly,phong_qly,ngay_bc,nguoi_dd,loai_bc26,so_tt_tk,ma_cqt,quy_bc,ghi_chu"
 
         sSQLVal = vHDR_ID & "," & maST & "," & loaiBC & "," & NGAYNOP & "," & kyBCTuNgay + "," & kyBCDenNgay & "," & NGAYQUET & "," & nguoiCapNhat & "," & DANHAN & "," & phongXuLy & "," & phongQuanLy & "," & ngayLapBC & "," & nguoiDDPL & "," & kyBCCuoiCung & "," & STT & "," & maCQT & "," & vQUY_BC & "," & Ghi_chu
         sSQL = "INSERT INTO tmp_bcao_hdr_ac( " & sSQLCol & " ) VALUES ( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
 
     End With
-
 
     InsertHDR = vbNullString
     clsDAO.Disconnect

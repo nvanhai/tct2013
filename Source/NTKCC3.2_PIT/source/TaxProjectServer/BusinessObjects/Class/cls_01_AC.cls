@@ -201,7 +201,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
                 'dhdang sua combox ngay xu ly
                 'ngay 05-08
                 .TypeComboBoxIndex = -1
-                .TypeComboBoxString = TAX_Utilities_Svr_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE) + "                {" + TAX_Utilities_Svr_New.Convert(Trim(rsPXL.Fields(0).Value), TCVN, UNICODE) + "}"
+                .TypeComboBoxString = TAX_Utilities_Svr_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE) + "     {" + TAX_Utilities_Svr_New.Convert(Trim(rsPXL.Fields(0).Value), TCVN, UNICODE) + "}"
                 .TextTip = TextTipOff
                 i = i + 1
                 ReDim Preserve larrPhongXuLy(i)

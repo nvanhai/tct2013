@@ -409,52 +409,49 @@ Public Sub GetParams(ByRef strPNgayNhanToKhai As String, ByRef strPPhongXuLy As 
     strPPhongXuLy = strPhongXuLy
 End Sub
 
-
-
 Public Function InsertHDR() As String
-    Dim sSQL As String
-    Dim sSQLCol As String
-    Dim sSQLVal As String
-    Dim bln  As Boolean
+    Dim sSQL     As String
+    Dim sSQLCol  As String
+    Dim sSQLVal  As String
+    Dim bln      As Boolean
     
-    Dim Id As Variant
-    Dim Tin As Variant
+    Dim Id       As Variant
+    Dim Tin      As Variant
     Dim Loai_bc  As Variant
     Dim Ngay_nop As Variant
-    Dim TU_NGAY As Variant
+    Dim TU_NGAY  As Variant
     Dim DEN_NGAY As Variant
-    Dim Ngay_cn As Variant
+    Dim Ngay_cn  As Variant
     Dim nguoi_cn As Variant
     Dim So_tt_tk As Variant
-    Dim DA_NHAN As Variant
+    Dim DA_NHAN  As Variant
     Dim PHONG_XL As Variant
     Dim PHONG_QL As Variant
     Dim CO_BANG_KE, CO_BANG_KE1, CO_BANG_KE2 As Variant
-    Dim Ten_dv_cq As Variant
-    Dim Tin_dv_cq As Variant
-    Dim Ngay_bc As Variant
-    Dim Nguoi_dd As Variant
-    Dim Cq_nhan As Variant
-    Dim LY_DO_MAT As Variant
-    Dim Ngay_mat_h As Variant
-    Dim Pp_huy As Variant
-    Dim DUNG_DN_CQ As Variant
-    Dim Ghi_chu As Variant
-    Dim MA_CQT As Variant
-    Dim LOAI_BC26 As Variant
-    Dim Nguoi_lb As Variant
-    Dim QUY_BC As Variant
+    Dim Ten_dv_cq    As Variant
+    Dim Tin_dv_cq    As Variant
+    Dim Ngay_bc      As Variant
+    Dim Nguoi_dd     As Variant
+    Dim Cq_nhan      As Variant
+    Dim LY_DO_MAT    As Variant
+    Dim Ngay_mat_h   As Variant
+    Dim Pp_huy       As Variant
+    Dim DUNG_DN_CQ   As Variant
+    Dim Ghi_chu      As Variant
+    Dim MA_CQT       As Variant
+    Dim LOAI_BC26    As Variant
+    Dim Nguoi_lb     As Variant
+    Dim QUY_BC       As Variant
     
     Dim vPHONG_XU_LY As Variant
-    Dim arrPXL()   As String
+    Dim arrPXL()     As String
     
     Dim vKyBCCuoi, vChuyenDiaDiem As Variant
       
-   If clsDAO.Connected = False Then
+    If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
         clsDAO.Connect
-   End If
-    
+    End If
     
     sSQLCol = "ID, TIN, LOAI_BC, NGAY_NOP, TU_NGAY, DEN_NGAY, "
     sSQLCol = sSQLCol & "NGAY_CN, NGUOI_CN, SO_TT_TK, DA_NHAN, PHONG_XLY, "
@@ -467,62 +464,78 @@ Public Function InsertHDR() As String
         .Sheet = 1
         ' Thong tin ma so thue
         .GetText .ColLetterToNumber("E"), 4, Tin
+
         If Trim(Tin) = vbNullString Then
             Tin = "''"
         Else
             Tin = Trim(CStr(Tin))
+
             If Len(Tin) = 13 Then
                 Tin = Left(CStr(Tin), 10) & "-" & Right(CStr(Tin), 3)
             End If
+
             Tin = "'" & Trim(Tin) & "'"
         End If
+
         ' Ma loai bao cao
         Loai_bc = "'BC26_AC_BLP'"
         ' Thong tin ngay nop bao cao an chi
         .GetText .ColLetterToNumber("E"), 10, Ngay_nop
+
         If Trim(Ngay_nop) = vbNullString Then
             Ngay_nop = "CTOD('')"
         Else
             Ngay_nop = ToDate(Trim(Ngay_nop), DDMMYYYY)
             Ngay_nop = "CTOD('" & Format(Ngay_nop, "mm/dd/yyyy") & "')"
         End If
+
         ' Ky bao cao tu ngay
         .GetText .ColLetterToNumber("E"), 23, TU_NGAY
+
         If Trim(TU_NGAY) = vbNullString Then
             TU_NGAY = "CTOD('')"
         Else
             TU_NGAY = ToDate(Trim(TU_NGAY), DDMMYYYY)
             TU_NGAY = "CTOD('" & Format(TU_NGAY, "mm/dd/yyyy") & "')"
         End If
+
         ' Ky bao cao den ngay
         .GetText .ColLetterToNumber("F"), 23, DEN_NGAY
+
         If Trim(DEN_NGAY) = vbNullString Then
             DEN_NGAY = "CTOD('')"
         Else
             DEN_NGAY = ToDate(Trim(DEN_NGAY), DDMMYYYY)
             DEN_NGAY = "CTOD('" & Format(DEN_NGAY, "mm/dd/yyyy") & "')"
         End If
+
         ' Thong tin ngay cap nhat
         .GetText .ColLetterToNumber("K"), 12, Ngay_cn
+
         If Trim(Ngay_cn) = vbNullString Then
             Ngay_cn = "CTOD('')"
         Else
             Ngay_cn = ToDate(Trim(Ngay_cn), DDMMYYYY)
             Ngay_cn = "CTOD('" & Format(Ngay_cn, "mm/dd/yyyy") & "')"
         End If
+
         ' Thong tin nguoi cap nhat
         .GetText .ColLetterToNumber("Q"), 12, nguoi_cn
+
         If Trim(nguoi_cn) = vbNullString Then
             nguoi_cn = "''"
         Else
             nguoi_cn = TAX_Utilities_Svr_New.Convert(CStr(nguoi_cn), UNICODE, TCVN)
             nguoi_cn = "'" & Trim(nguoi_cn) & "'"
         End If
+
         ' So thu tu quet to khai
         .GetText .ColLetterToNumber("K"), 10, So_tt_tk
+
         If Trim(So_tt_tk) = vbNullString Then
             So_tt_tk = 0
         End If
+
         ' trang thai chuyen sang an chi
         DA_NHAN = "''"
         ' Thong tin ma phong xu ly
@@ -530,6 +543,7 @@ Public Function InsertHDR() As String
         arrPXL = Split(vPHONG_XU_LY, "{")
         PHONG_XL = arrPXL(1)
         PHONG_XL = Left$(PHONG_XL, Len(PHONG_XL) - 1)
+
         If Trim(PHONG_XL) = vbNullString Then
             PHONG_XL = "''"
         Else
@@ -548,14 +562,17 @@ Public Function InsertHDR() As String
         Tin_dv_cq = "''"
         ' Thong tin ngay bao cao
         .GetText .ColLetterToNumber("K"), 19, Ngay_bc
+
         If Trim(Ngay_bc) = vbNullString Then
             Ngay_bc = "CTOD('')"
         Else
             Ngay_bc = ToDate(Trim(Ngay_bc), DDMMYYYY)
             Ngay_bc = "CTOD('" & Format(Ngay_bc, "mm/dd/yyyy") & "')"
         End If
+
         ' thong tin nguoi dai dien
         .GetText .ColLetterToNumber("J"), 19, Nguoi_dd
+
         If Trim(Nguoi_dd) = vbNullString Then
             Nguoi_dd = "''"
         Else
@@ -569,43 +586,33 @@ Public Function InsertHDR() As String
         DUNG_DN_CQ = "''"
         ' thong tin ghi chu
         .GetText .ColLetterToNumber("E"), 14, Ghi_chu
+
         If Trim(Ghi_chu) = vbNullString Then
             Ghi_chu = "''"
         Else
             Ghi_chu = TAX_Utilities_Svr_New.Convert(CStr(Ghi_chu), UNICODE, TCVN)
             Ghi_chu = "'" & Trim(Ghi_chu) & "'"
         End If
+
         ' thong tin ma co quan thue
         MA_CQT = GetMaCqt
         
         ' Loai bao cao BC26
-        .GetText .ColLetterToNumber("E"), 16, vKyBCCuoi
-        .GetText .ColLetterToNumber("K"), 16, vChuyenDiaDiem
-        If Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
-        ' bao cao quy
-            LOAI_BC26 = "'01'"
-        ElseIf Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "1" Then
-            ' bao cao chuyen dia diem
-            LOAI_BC26 = "'03'"
-        ElseIf Trim(CStr(vKyBCCuoi)) = "1" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
-            ' bao cao quyet toan cuoi tung
-            LOAI_BC26 = "'02'"
-        Else
-            '
-            LOAI_BC26 = "'04'"
-        End If
+        LOAI_BC26 = "''"
         ' thong tin nguoi lap bieu
         .GetText .ColLetterToNumber("I"), 19, Nguoi_lb
+
         If Trim(Nguoi_lb) = vbNullString Then
             Nguoi_lb = "''"
         Else
             Nguoi_lb = TAX_Utilities_Svr_New.Convert(CStr(Nguoi_lb), UNICODE, TCVN)
             Nguoi_lb = "'" & Trim(Nguoi_lb) & "'"
         End If
+
         ' Ky bao cao
         If Trim(TAX_Utilities_Svr_New.ThreeMonths) <> "" Then
             QUY_BC = "CTOD('" & Format(vNgayDauKy, "mm/dd/yyyy") & "')"
-         End If
+        End If
         
         Cq_nhan = "''"
         CO_BANG_KE = "0"
@@ -619,15 +626,14 @@ Public Function InsertHDR() As String
     sSQLVal = sSQLVal & Ngay_bc & "," & Nguoi_dd & "," & Cq_nhan & "," & LY_DO_MAT & "," & Ngay_mat_h & ","
     sSQLVal = sSQLVal & Pp_huy & "," & DUNG_DN_CQ & "," & Ghi_chu & "," & MA_CQT & "," & LOAI_BC26 & "," & Nguoi_lb & "," & QUY_BC
 
-    sSQL = "INSERT INTO tmp_bcao_hdr_ac" & _
-     "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+    sSQL = "INSERT INTO tmp_bcao_hdr_ac" & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
-     bln = clsDAO.ExecuteDLL(sSQL)
-' '----------------
+    bln = clsDAO.ExecuteDLL(sSQL)
+    ' '----------------
  
-   clsDAO.Disconnect
+    clsDAO.Disconnect
    
-   InsertHDR = vbNullString
+    InsertHDR = vbNullString
 End Function
 
 
