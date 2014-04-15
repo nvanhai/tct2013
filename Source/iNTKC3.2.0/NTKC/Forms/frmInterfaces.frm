@@ -1275,7 +1275,7 @@ On Error GoTo ErrHandle
 
     
     ' xu ly nhan cac mau an chi co canh bao khi quet trung
-    If (Val(idToKhai) <= 68 And Val(idToKhai) >= 64) Or Val(idToKhai) = 91 Or Val(idToKhai) = 7 Or Val(idToKhai) = 9 Or Val(idToKhai) = 10 Or Val(idToKhai) = 13 Or Val(idToKhai) = 14 Then
+    If (Val(IdToKhai) <= 68 And Val(IdToKhai) >= 64) Or Val(IdToKhai) = 91 Or Val(IdToKhai) = 7 Or Val(IdToKhai) = 9 Or Val(IdToKhai) = 10 Or Val(IdToKhai) = 13 Or Val(IdToKhai) = 14 Then
 
         ' xu ly an chi
         If isTonTaiAC = True Then
@@ -1506,7 +1506,7 @@ On Error GoTo ErrHandle
     End If
     'strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl").nodeValue)
  ' xu ly de ghi cac mau an chi
-    If Val(idToKhai) = 66 Or Val(idToKhai) = 68 Or Val(idToKhai) = 67 Or Val(idToKhai) = 64 Or Val(idToKhai) = 65 Or Val(idToKhai) = 91 Or Val(idToKhai) = 7 Or Val(idToKhai) = 9 Or Val(idToKhai) = 13 Or Val(idToKhai) = 10 Or Val(idToKhai) = 14 Then
+    If Val(IdToKhai) = 66 Or Val(IdToKhai) = 68 Or Val(IdToKhai) = 67 Or Val(IdToKhai) = 64 Or Val(IdToKhai) = 65 Or Val(IdToKhai) = 91 Or Val(IdToKhai) = 7 Or Val(IdToKhai) = 9 Or Val(IdToKhai) = 13 Or Val(IdToKhai) = 10 Or Val(IdToKhai) = 14 Then
         strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl_AC").nodeValue)
     Else
         strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl").nodeValue)
@@ -1924,10 +1924,47 @@ Private Sub Command1_Click()
 'str2 = "aa320922300745159   012014ihtkks00100101/0101/01/1900<S01><S></S><S>1~~x~01/01/2014~~~1~1~~~hhhh~0~1</S><S>3000.00~400.00~30.0000~90000.00~30.00~27000.00~4000</S><S>~~~24/03/2014~1~~0~24/03/2014~0</S></S01><S01-1><S>27.000,00</S><S>1~0100231226~nh? thCu 1~100,00~27000,00~ghi cho</S><S>100,00~27.000,00</S></S01-1>"
 'aa322960100284482
 
-str2 = "aa999962300100778   02201400300400100201/0114/06/2006<S03><S>0102030405</S><S>07030202~5</S><S>abcdef~0102030405~1212~1111~67327~11~67316</S><S>67327~11~67316</S><S>Lan H≠¨ng~KTV~Nguy‘n Minh~26/03/2014~1~~~0</S></S03>"
-Barcode_Scaned str2
-str2 = "aa999962300100778   022014003004002002<S03-1><S>10001~LOL~~0~0~~x~~~0102030405~30~30~10100~~~~6868686868~70~70~10700~~10002~LOL2~~0~0~~x~~~2222222222~20~20~10300~~~~2300100778~80~80~10100~</S><S>100</S></S03-1>"
-Barcode_Scaned str2
+'str2 = "aa999962300323855   02201400300400100201/0114/06/2006<S03><S>0102030405</S><S>07030202~5</S><S>abcdef~0102030405~1212~1111~67327~11~67316</S><S>67327~11~67316</S><S>Lan H≠¨ng~KTV~Nguy‘n Minh~26/03/2014~1~~~0</S></S03>"
+'Barcode_Scaned str2
+'str2 = "aa999962300323855   022014003004002002<S03-1><S>10001~LOL~~0~0~~x~~~0102030405~30~30~10100~~~~6868686868~70~70~10700~~10002~LOL2~~0~0~~x~~~2222222222~20~20~10300~~~~2300100778~80~80~10100~</S><S>100</S></S03-1>"
+'Barcode_Scaned str2
+
+'str2 = "aa999812300323855   01201400200200100101/0101/01/1900<S01><S></S><S>L∑i ti“n gˆi"
+''str2 = str2 & ""
+'str2 = str2 & "~5200475440~~104062542~17/01/2014~104062542~5~0~5203127~L∑i ti“n gˆi"
+'str2 = str2 & "~5200475440~~5202600~27/01/2014~5202600~5~0~260130~Thu nhÀp tı vi phπm hÓp ÆÂng"
+''str2 = str2 & ""
+'str2 = str2 & "~5200475440~DHIC-PC-CAR-01 NGµY 26/03/2010~3436666594~21/01/2014~3436666594~2~0~68733332</S><S>3545931736~3545931736~0~74196589</S><S>1~</S><S>~KIM TAE KYUNG~~10/02/2014~1~1~~</S></S01>"
+'Barcode_Scaned str2
+
+'--01_TBAC_BLP
+'str2 = "aa322072300100778   04201400000000100101/0101/01/2009<S01><S>Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP4-003~AB-32T~50~0000010~0000059~23/04/2014~HD879~~~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP9-005~CD-45P~121~0000030~0000150~20/04/2014~HD037~Doanh nghi÷p abc~0010011000</S><S>Chi cÙc thu’ TP Hﬂa B◊nh~01/04/2014~Nguy‘n Minh</S></S01>"
+'Barcode_Scaned str2
+
+'--
+'str2 = "aa322132300100778   01201400000000100101/0101/01/2009<S01><S>x~01/01/2014~30/06/2014</S><S>3600247325~tÊ ch¯c x∑ hÈi~S048~28/03/2014~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP9-043~MN-32T~0000025~0000170~146~2300641174~tÊ ch¯c MCM~S058~21/03/2014~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP7-082~KH-34P~0000031~0000200~170</S><S>Nguy‘n Minh~01/04/2014</S></S01>"
+'Barcode_Scaned str2
+
+'--
+'str2 = "aa322092300100778   01201400000000100101/0101/01/2010<S01><S>01/04/2014</S><S>02BLP4-023~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~DK-56T~0000010~0000040~31~17;38~03~01BLP5-089~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~HL-38P~0000025~0000089~65~39;68;82~01</S><S>m t h„a Æ¨n~Chi cÙc thu’ TP H∂i Phﬂng~Nguy‘n Minh~01/04/2014</S></S01>"
+'Barcode_Scaned str2
+
+'str2 = "aa322102300100778   01201400000000100101/0101/01/2010<S01><S>C´ng ty TNHH ABC~Ph≠¨ng ph∏p hÒy abc~0~01/04/2014~11</S><S>Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP6-089~DH-21T~0000010~0000085~76~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP8-032~TK-56P~0000024~0000093~70</S><S>Lan H≠¨ng~Nguy‘n Minh~01/04/2014</S></S01>"
+'Barcode_Scaned TAX_Utilities_iNTK.Convert(str2, TCVN, UNICODE)
+
+'str2 = "aa322012300100778   03201400200200100401/0114/06/2006<S01><S>0102030405</S><S>0~100000~0~0~0~10000~0~0~0~0~0~0~0~10000~0~0~0~0~0~0~0~0~100000~0~100000</S><S>a~a1~Hong~01/04/2014~1~~~1701~~~0</S></S01>"
+'Barcode_Scaned TAX_Utilities_iNTK.Convert(str2, TCVN, UNICODE)
+
+'--CHECK IHTKK BIEN LAI PHI 112.54 4400101144
+'str2 = "aa999104400101144   01201400000000100101/0101/01/2010<S01><S>CTT Thanh Xu?n~C?t g?c~59~07/04/2014~13</S><S>Bi?n lai thu phY, lO phY khng c? mOnh gi?~01BLP2-111~AB-13P~0000002~0000009~8</S><S>Ho?ng Lan~Quang Minh~07/04/2014</S></S01>"
+''str2 = "aa999074400101144   04201400100100100101/0101/01/2009<S01><S>Bi?n lai thu phY, lO phY kh<ng c? mOnh gi?~01BLP2-111~AB-13P~6~0000002~0000007~30/04/2014~HHHHH123~Ho?ng H?~0100231226</S><S>CTT Thanh Xu?n~07/04/2014~Quang Minh</S></S01>"
+'Barcode_Scaned TAX_Utilities_iNTK.Convert(str2, TCVN, UNICODE)
+
+'str2 = "aa999094400820660   01201400100100100101/0101/01/2010<S01><S>08/04/2014</S><S>01BLP2-111~Bi?n lai thu phY, lO phY khng c? mOnh gi?~AB-11P~0000002~0000009~8~5~03</S><S>hoa hoan~ctt thanh xuan~quang minh~08/04/2014</S></S01>"
+'Barcode_Scaned TAX_Utilities_iNTK.Convert(str2, TCVN, UNICODE)
+
+str2 = "aa320033700313821   002013ihtkks00100101/0114/06/200601/01/201331/12/2013<S03><S></S><S>65820599283~1168630323~0~0~973740103~0~194890220~1209444750~0~0~0~1209444750~65779784856~65779784856~0~65779784856~0~0~65779784856~0~65779784856~16444946214~0~0~0~16444946214~0~16444946214~16444946214~0</S><S></S><S></S><S></S><S>~KyDienTu~~10/04/2014~1~~~1052~00</S></S03><S03-1A><S>627991037651~579298534478~2347061767~546938418~1471017324~329106025~0~6955873136~559071236138~528535130048~12092127086~18443979004~8380721170~3221621664~65147891712~1600431892~927724321~672707571~65820599283</S></S03-1A>"
+Barcode_Scaned TAX_Utilities_iNTK.Convert(str2, TCVN, UNICODE)
 
 End Sub
 
@@ -6312,6 +6349,13 @@ Private Function layThongTinToKhai() As String
     ElseIf IdToKhai = 24 Then '01_BCTL_DK
         'cell chinhthuc ~ cell bosung ~ ky ke khai
         strCellLocation = "U_3~AC_3~T_2"
+    '--Cap nhat cho cac to khai BLP
+    ElseIf IdToKhai = 13 Then 'BC21
+        'cell chinhthuc ~ cell bosung ~ ky ke khai
+        strCellLocation = "A_1~A_2~B_2"
+    ElseIf IdToKhai = 14 Then 'BC26
+        'cell chinhthuc ~ cell bosung ~ ky ke khai
+        strCellLocation = "A_1~A_2~D_2"
     Else
         'cell chinhthuc ~ cell bosung ~ kykekhai
         strCellLocation = "A_1~A_2~A_3"
