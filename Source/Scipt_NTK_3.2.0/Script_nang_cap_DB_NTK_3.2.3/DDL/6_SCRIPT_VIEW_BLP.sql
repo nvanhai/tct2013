@@ -91,7 +91,7 @@ FROM
             dtl.row_id ) ;
 
 --01_TBAC            
-CREATE OR REPLACE VIEW RCV_V_01_TBAC_BLP AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_01_TBAC_BLP AS
 SELECT
     hdr_id ,
     row_id so_tt ,
@@ -233,9 +233,8 @@ FROM
         GROUP BY
             dtl.hdr_id,
             dtl.row_id ) ;
-
 --BC21_AC            
-CREATE OR REPLACE VIEW RCV_V_BC21_AC_BLP AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_BC21_AC_BLP AS
 SELECT
     hdr_id ,
     row_id so_tt ,
@@ -247,7 +246,6 @@ SELECT
     So_luong ,
     Lien_BLP ,
     Ghi_chu ,
-
     DTL_Id
 FROM
     (
@@ -262,7 +260,6 @@ FROM
             MAX(dtl.So_luong)   So_luong ,
             MAX(dtl.Lien_BLP)    Lien_BLP ,
             MAX(dtl.Ghi_chu)    Ghi_chu ,
-
             MAX(dtl.Id)         dtl_Id
         FROM
             (
@@ -279,7 +276,6 @@ FROM
                     DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL)       So_luong,
                     dump(DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL)) Lien_BLP,
                     dump(DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL)) Ghi_chu,
-
                     tkd.id                                                     dtl_id
                 FROM
                     QLT_NTK.rcv_bcao_dtl_ac tkd,
@@ -299,7 +295,7 @@ FROM
             dtl.row_id );
 
 --BC26_AC
-create or replace view rcv_v_bc26_ac_blp as
+create or replace view QLT_NTK.rcv_v_bc26_ac_blp as
 select
     hdr_id ,
     row_id so_tt ,
@@ -422,7 +418,7 @@ SELECT  id,
     Where Loai_Bc = 'BC26_AC_BLP'
         And Da_Nhan Is Null;
 --VIEW HDR 
-CREATE OR REPLACE VIEW RCV_V_HDR_BLP
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_HDR_BLP
 (id, tin, loai_bc, ngay_nop, kybc_tu_ngay, kybc_den_ngay, ngay_cap_nhat, nguoi_cap_nhat, so_tt_tk, da_nhan, phong_xly, phong_qly, co_bang_ke, hthuc_nop, itkhai_id, ten_dv_cq, tin_dv_cq, ngay_bc, nguoi_dai_dien, ten_cq_tiep_nhan, ly_do_mat, ngay_mat_huy, phuong_phap_huy, dung_dn_cq, ghi_chu, ma_cqt, loai_bc26, nguoi_lap_bieu, quy_bc, ngay_tb_ph)
 AS
 SELECT ID, tin, loai_bc, ngay_nop, kybc_tu_ngay, kybc_den_ngay,
