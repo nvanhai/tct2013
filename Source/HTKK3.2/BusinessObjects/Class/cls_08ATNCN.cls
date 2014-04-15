@@ -561,7 +561,7 @@ Private Sub CheckDynamicError()
                 .CellNote = ""
             End If
             'check Tong CT 29 phai = CT23
-            If vTongCT29 <> vCT23 Then
+            If Abs(vTongCT29 - vCT23) > 5 Then
                 .Col = .ColLetterToNumber("N")
                 .Row = .MaxRows - 6
                 .BackColor = mErrorColor
@@ -574,7 +574,7 @@ Private Sub CheckDynamicError()
                 .CellNote = ""
             End If
             'check Tong CT30 = CT24
-            If vTongCT30 <> vCT24 Then
+            If Abs(vTongCT30 - vCT24) > 5 Then
                 .Col = .ColLetterToNumber("P")
                 .Row = .MaxRows - 6
                 .BackColor = mErrorColor
