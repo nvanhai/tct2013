@@ -2,7 +2,8 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai>260</maTKhai>
 		<tenTKhai>Thông báo phát hành biên lai thu phí, lệ phí</tenTKhai>
-		<moTaBMau></moTaBMau>
+		<soLan></soLan>		
+		<moTaBMau></moTaBMau>		
 	</Static>
 	<Dynamic GroupName="BKeBienLai" MinOccur="1">
 		<ChiTietBKeBienLai ID="id">
@@ -12,8 +13,9 @@
 			<soLuong>K_29</soLuong>
 			<tuSo>M_29</tuSo>
 			<denSo>O_29</denSo>
-			<ngayBDauSDung>Q_29</ngayBDauSDung>
-			<hopDongInBienLai>S_29</hopDongInBienLai>
+			<ngayBDauSDung>Q_29</ngayBDauSDung>			
+			<soHDongInBLai>S_29</soHDongInBLai>
+			<ngayHDongInBLai>V_29</ngayHDongInBLai>
 			<ten>Z_29</ten>
 			<mst TINType="1">AC_29</mst>							
 		</ChiTietBKeBienLai>
@@ -23,8 +25,5 @@
 		<noiKy></noiKy>
 		<ngayKy>V_40</ngayKy>
 		<thuTruongDonVi>V_42</thuTruongDonVi>
-	</Static>
-	<Static GroupName="TKhaiThue">
-		<ngayKy>V_40</ngayKy>
 	</Static>
 </HSoThueDTu>

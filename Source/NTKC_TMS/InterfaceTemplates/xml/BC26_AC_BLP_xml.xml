@@ -69,10 +69,8 @@
 			</TTinTKhaiThue>
 		</TTinChung>
 		<CTieuTKhaiChinh>
-			<kyBCaoCuoi>true</kyBCaoCuoi>
-			<chuyenDiaDiem>true</chuyenDiaDiem>
-			<ngayDauKyBC></ngayDauKyBC>
-			<ngayCuoiKyBC></ngayCuoiKyBC>
+			<ngayDauKyBC>1967-08-13</ngayDauKyBC>
+			<ngayCuoiKyBC>1967-08-13</ngayCuoiKyBC>
 			<BKeBienLai>
 				<CTietBKeBienLai id="">
 					<maBienLai></maBienLai>

@@ -31,7 +31,7 @@ Public Function PostWebservice(ByVal AsmxUrl As String, ByVal SoapActionUrl As S
     Set objXmlHttp = CreateObject("MSXML2.XMLHTTP")
     
     'Convert font
-    XmlBody = ConvertStringToUtf8String(XmlBody)
+    'XmlBody = ConvertStringToUtf8String(XmlBody)
     
     ' Load the XML
     objDom.async = False

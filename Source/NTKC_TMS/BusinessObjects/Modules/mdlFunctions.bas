@@ -13,9 +13,8 @@ Public Const SqlHdr_08TNCN_PIT = "INSERT INTO RCV_TKHAI_HDR(ID,KKBS,TIN,TEN_DTNT
 
 Public Const SqlHdr_08TNCN = "INSERT INTO RCV_TKHAI_HDR(ID,KKBS,TIN,TEN_DTNT,DIA_CHI,LOAI_TKHAI,NGAY_NOP,KYLB_TU_NGAY,KYLB_DEN_NGAY,KYKK_TU_NGAY,KYKK_DEN_NGAY,NGAY_CAP_NHAT,NGUOI_CAP_NHAT,CO_LOI_DDANH,SO_HIEU_TEP,SO_TT_TK,DA_NHAN,GHI_CHU_LOI,CO_GTRINH_02A,CO_GTRINH_02B,CO_GTRINH_02C, CO_PLUC_GTGT_01, CO_PLUC_GTGT_02, CO_PLUC_GTGT_03, TU_NGAY, DEN_NGAY, PHONG_XLY, CO_BANG_KE, CO_GHAN,TIN_DLY,SO_HOP_DONG,NGAY_HOP_DONG,LAN_BS,NGANH_NGHE_KD,TO_KHAI_LAN_PS) VALUES("
 
-
-
 Public Const SqlHdr_AC = "INSERT INTO RCV_BCAO_HDR_AC (ID,TIN,LOAI_BC,NGAY_NOP,KYBC_TU_NGAY,KYBC_DEN_NGAY,NGAY_CAP_NHAT, NGUOI_CAP_NHAT, SO_TT_TK, DA_NHAN, PHONG_XLY, PHONG_QLY, CO_BANG_KE, HTHUC_NOP, ITKHAI_ID, TEN_DV_CQ,TIN_DV_CQ, NGAY_BC,NGUOI_DAI_DIEN,TEN_CQ_TIEP_NHAN,LY_DO_MAT, NGAY_MAT_HUY,PHUONG_PHAP_HUY,DUNG_DN_CQ, GHI_CHU, MA_CQT,LOAI_BC26,NGUOI_LAP_BIEU,QUY_BC) VALUES("
+Public Const SqlHdr_BLP = "INSERT INTO RCV_BCAO_HDR_AC (ID,TIN,LOAI_BC,NGAY_NOP,KYBC_TU_NGAY,KYBC_DEN_NGAY,NGAY_CAP_NHAT, NGUOI_CAP_NHAT, SO_TT_TK, DA_NHAN, PHONG_XLY, PHONG_QLY, CO_BANG_KE, HTHUC_NOP, ITKHAI_ID, TEN_DV_CQ,TIN_DV_CQ, NGAY_BC,NGUOI_DAI_DIEN,TEN_CQ_TIEP_NHAN,LY_DO_MAT, NGAY_MAT_HUY,PHUONG_PHAP_HUY,DUNG_DN_CQ, GHI_CHU, MA_CQT,LOAI_BC26,NGUOI_LAP_BIEU,QUY_BC,NGAY_TB_PH) VALUES("
 
 
 Public Function GetAttribute(xmlNodeCell As MSXML.IXMLDOMNode, pAttributeName As String) As String
@@ -139,6 +138,28 @@ Public Function GetCatalogueFileName(Optional lSheet As Long = 1) As String
         strCatalogueName & ".xml")
 End Function
 
+Public Function GetCatalogueFileNameTk_03TD_TAIN(Optional lSheet As Long = 1, Optional tkQuy As String = "0") As String
+    Dim strCatalogueName     As String, strCatalogueID As String
+    Dim xmlCatalogeValidNode As MSXML.IXMLDOMNode
+    
+    'Get valid catalogue node
+    If tkQuy = "1" Then
+        Set xmlCatalogeValidNode = GetValidityNode("107", TAX_Utilities_Srv_New.Month, TAX_Utilities_Srv_New.ThreeMonths, TAX_Utilities_Srv_New.Year)
+
+    Else
+        Set xmlCatalogeValidNode = GetValidityNode("107", TAX_Utilities_Srv_New.Month, "", TAX_Utilities_Srv_New.Year)
+
+    End If
+    
+    'Get catalogue ID
+    strCatalogueID = GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "CatalogueID")    'CatalogueID
+    
+    'Get catalogue pattern name
+    strCatalogueName = GetCatalogueName(xmlCatalogeValidNode, strCatalogueID)
+    
+    GetCatalogueFileNameTk_03TD_TAIN = GetAbsolutePath(GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet - 1), "TemplateFolder") & strCatalogueName & ".xml")
+End Function
+
 Private Function GetCatalogueName(xmlCatalogueNode As MSXML.IXMLDOMNode, strId As String) As String
 Dim xmlNode As MSXML.IXMLDOMNode
 
@@ -173,7 +194,10 @@ Public Function GetValidityNode(Id As String, Optional strMonth As String, Optio
         iThangTaiChinh = 1
     End If
     
-    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
+    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "96" And strThreeMonths <> "" Then
+        ValidityDate = GetNgayCuoiQuy(CInt(strThreeMonths), _
+                            CInt(strYear), iNgayTaiChinh, iThangTaiChinh)
+    ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Month") = "1" Then
         Select Case strMonth
             Case "01", "03", "05", "07", "08", "10", "12"
                 ValidityDate = Format("31/" & strMonth & "/" & strYear, "dd/mm/yyyy")

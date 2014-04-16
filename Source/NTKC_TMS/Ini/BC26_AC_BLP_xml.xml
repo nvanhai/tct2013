@@ -1,12 +1,12 @@
-<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30" loi_dinh_danh="E_36">
+<HSoKhaiThue ngay_nop_tk="E_10" ky_lap_bo="" loi_dinh_danh="E_12">
 	<Static GroupName="TKhaiThue">
-		<maTKhai>265</maTKhai>
+		<maTKhai>275</maTKhai>
 		<tenTKhai>Báo cáo tình hình sử dụng biên lai thu phí, lệ phí</tenTKhai>
+		<soLan></soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<kyBCaoCuoi>E_16</kyBCaoCuoi>
-		<chuyenDiaDiem>K_16</chuyenDiaDiem>
+		
 		<ngayDauKyBC>E_23</ngayDauKyBC>
 		<ngayCuoiKyBC>F_23</ngayCuoiKyBC>
 	</Static>
@@ -43,8 +43,5 @@
 		<nguoiLapBieu>E_40</nguoiLapBieu>
 		<nguoiDaiDien>S_40</nguoiDaiDien>
 		<ngayBCao>S_42</ngayBCao>
-	</Static>
-	<Static GroupName="TKhaiThue">
-		<ngayKy>S_42</ngayKy>
 	</Static>
 </HSoKhaiThue>
