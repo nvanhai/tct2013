@@ -22,7 +22,7 @@
 	<!-- Ket thuc lay thong tin DLT -->
 	<!-- **** Ket thuc ket noi voi webservices cua ESB **** -->
 	<!-- Doan nay cau hinh cho phan Header cua message gui tin len ESB -->
-	<VERSION>MS4w</VERSION>
+	<VERSION>MS4x</VERSION>
 	<SENDER_CODE>TlRL</SENDER_CODE>
 	<SENDER_NAME>SGUgdGhvbmcgbmhhbiB0byBraGFpIG1hIHZhY2g=</SENDER_NAME>
 	<RECEIVER_CODE>VE1T</RECEIVER_CODE>
@@ -36,5 +36,5 @@
 	<!-- Cac cau hinh khac -->
 	<!--ID BCTC va AC bo sung QHS -->
 	<BCTC>Njk7MTk7MjA7MjE7MjI=</BCTC>
-	<QLAC>NjQ7NjU7NjY7Njc7Njg7OTE=</QLAC>
+	<QLAC>NjQ7NjU7NjY7Njc7Njg7OTE7MDc7MDk7MTA7MTM7MTQ=</QLAC>
 </Config>

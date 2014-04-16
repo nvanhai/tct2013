@@ -19,7 +19,7 @@ Begin VB.Form frmSetting
       TabIndex        =   2
       Top             =   360
       Width           =   4365
-      Begin MSForms.TextBox txtUsername 
+      Begin MSForms.TextBox txtIpServer 
          Height          =   315
          Left            =   2520
          TabIndex        =   4
@@ -269,7 +269,7 @@ xmlTempConfig.Load GetAbsolutePath("..\Project\Config.xml")
 xmlTempConfig.getElementsByTagName("queue_manager_name")(0).Text = Base64Unicode.Base64EncodeString("ESB.INT.QMGR")
 xmlTempConfig.getElementsByTagName("queue_name")(0).Text = Base64Unicode.Base64EncodeString("INT.INBOX.QUEUE")
 xmlTempConfig.getElementsByTagName("BCTC")(0).Text = Base64Unicode.Base64EncodeString("69;19;20;21;22")
-xmlTempConfig.getElementsByTagName("QLAC")(0).Text = Base64Unicode.Base64EncodeString("64;65;66;67;68;91")
+xmlTempConfig.getElementsByTagName("QLAC")(0).Text = Base64Unicode.Base64EncodeString("64;65;66;67;68;91;07;09;10;13;14")
 xmlTempConfig.getElementsByTagName("TRAN_CODE")(0).Text = Base64Unicode.Base64EncodeString("01000")
 xmlTempConfig.getElementsByTagName("RECEIVER_CODE")(0).Text = Base64Unicode.Base64EncodeString("TMS")
 

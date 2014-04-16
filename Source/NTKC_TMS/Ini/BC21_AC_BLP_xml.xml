@@ -2,6 +2,7 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai>262</maTKhai>
 		<tenTKhai>Báo cáo mất, cháy biên lai thu phí, lệ phí</tenTKhai>
+		<soLan></soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
@@ -18,7 +19,7 @@
 			<soLuong>AA_42</soLuong>
 			<lienBLai>AE_42</lienBLai>
 			<ghiChu>AF_42</ghiChu>
-			<ktraLoaiBLai></ktraLoaiBLai>
+			
 		</ChiTietBKeBLaiMatChay>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
@@ -28,8 +29,5 @@
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<ngayBCao>AE_50</ngayBCao>
-	</Static>
-	<Static GroupName="TKhaiThue">
-		<ngayKy>AE_50</ngayKy>
 	</Static>
 </HSoThueDTu>

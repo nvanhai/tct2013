@@ -2,6 +2,7 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai>263</maTKhai>
 		<tenTKhai>Thông báo kết quả hủy biên lai thu tiền phí, lệ phí</tenTKhai>
+		<soLan></soLan>
 		<moTaBMau></moTaBMau>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
@@ -22,8 +23,5 @@
 	<Static GroupName="CTieuTKhaiChinh">
 		<ngayKy>R_49</ngayKy>
 		<thuTruongDonVi>R_47</thuTruongDonVi>
-	</Static>
-	<Static GroupName="TKhaiThue">
-		<ngayKy>R_49</ngayKy>
 	</Static>
 </HSoThueDTu>

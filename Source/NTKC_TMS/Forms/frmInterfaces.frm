@@ -342,7 +342,9 @@ Private strTaxReportVersion     As String
 
 Private arrBCBuffer() As String
 Private arrBCNew() As String
-Private verToKhai As Byte       ' Luu cac kieu ma vach cho cac version ke khai khac nhau
+Private verToKhai As Byte                               ' Luu cac kieu ma vach cho cac version ke khai khac nhau
+Private strLoaiToKhai As String   ' phan biet to bo sung hay chinh thuc
+Private strNNKD As String   'get Nganh nghe Kinh Doanh cho to 01/GTGT
 Private maxBarCode As Long       ' Su dung trong truong hop to khai 04/TNCN
 
 Private checkSoCT As Integer
@@ -1110,8 +1112,8 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
 '        strLoaiToKhai = GetAttribute(GetMessageCellById("0132"), "Msg")
 '    End If
     
-    'To 03/TBAC
-    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "67" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "66" Then
+    'To 03/TBAC, BLP
+    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "10" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "09" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "07" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "67" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "66" Then
         xmlTK.getElementsByTagName("kyKKhai")(0).Text = Format$(strNgayHeThongSrv, "dd/MM/yyyy")
         xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = ""
         xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = ""
@@ -1145,6 +1147,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = Format$(TAX_Utilities_Srv_New.FirstDay, "dd/MM/yyyy")
             xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = Format$(TAX_Utilities_Srv_New.LastDay, "dd/MM/yyyy")
         End If
+        
         xmlTK.getElementsByTagName("kieuKy")(0).Text = strKieuKy
         
         'To khai 01-KK-TTS
@@ -2669,11 +2672,37 @@ Private Sub Command1_Click()
         Dim str41 As String, str42 As String, str43 As String, str44 As String, str45 As String, str46 As String, str47 As String, str48 As String, str49 As String, str50 As String
         Dim str51 As String, str52 As String, str53 As String
         
-'BC26-AC
-str2 = "aa999680102030405   01201400200200100201/0101/01/2009<S01><S>X~~01/01/2014~31/03/2014</S><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/009~QS/11T~20~0000011~0000023~0000024~0000030~0000011~0000023~13~10~1~15~1~16~1~17~0000024~0000030~7~0</S><S>~CMCER~08/04/2014~1</S></S01>"
- Barcode_Scaned str2
-str2 = "aa999680102030405   012014002002002002<S01_1><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/009~QS/11T~0000024~0000030~7~0</S><S>~~~~~0~</S><S>HAN - CÙc Thu’ Thµnh phË Hµ NÈi                                                                                                                                                             {10100}</S></S01_1>"
- Barcode_Scaned str2
+ '02/GTGT-Thang
+ str2 = "aa999020102030405   03201400100100100101/0114/06/2006<S01><S></S><S>0~0~100727693010~10065972688~0~0~0~0~10065972688~0~10065972688~0~0~0~10065972688</S><S>~ABC~~16/04/2014~1~~~0</S></S01>"
+Barcode_Scaned str2
+
+''01-TBAC-BLP: 05/03/2014
+'str2 = "aa999074400000019   03201400000000100101/0101/01/2009<S01><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-009~QS-11T~401~0000100~0000500~15/03/2014~10~05/03/2014~CMC Corporation~0101650999~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP3-009~QS-12T~401~0000200~0000600~16/03/2014~20~05/03/2014~SCAT Corporation~6868686868</S><S>Chi cuc Thue Cau Giay~05/03/2014~Hoang Ngoc Hung</S></S01>"
+'Barcode_Scaned str2
+
+''01-BLP(01-AC_BLP)
+'str2 = "aa999134400000019   01201400200200100101/0101/01/2009<S01><S>~01/01/2014~31/03/2014</S><S>0101650999~CMC Corporation~Duy Tan - Cau Giay~10~05/03/2014~01BLP2-009~Bien Lai thu phi~QS-11T~0000010~0000050~41~6868686868~SCAT Corp~Hoang Mai ~20~05/03/2014~02BLP3-008~Bien lai thu phi le phi~QS-13T~0000030~0000050~21</S><S>Hoang Ngoc Hung~11/04/2014</S></S01>"
+'Barcode_Scaned str2
+
+''BC21-BLP
+'str2 = "aa999094400000019   01201400100100100101/0101/01/2010<S01><S>11/04/2014</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~QS-12T~0000100~0000200~101~3~~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~QS-11T~0000300~0000400~101~2~</S><S>Hoa hoan~Chi cuc thue Cau Giay~CMCer~11/04/2014</S></S01>"
+'Barcode_Scaned str2
+
+''03-TBAC-BLP
+'str2 = "aa999104400000019   01201400000000100101/0101/01/2010<S01><S>Chi cuc Thue Cau Giay~Cho vao may huy giay~55~11/04/2014~9</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP1-009~QS-10T~0000100~0000200~101~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-009~QS-11T~0000050~0000100~51</S><S>CMCer~Hoang Ngoc Hung~11/04/2014</S></S01>"
+'Barcode_Scaned str2
+
+''26-BCAC-BLP
+'str2 = "aa999144400000019   01201400000000100101/0101/01/2009<S01><S>~~01/01/2014~31/03/2014</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-009~QS-10T~301~0000100~0000200~0000201~0000400~0000100~0000122~23~20~1~102~1~103~1~104~0000123~0000400~278~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP3-008~QS-11T~501~0000300~0000400~0000401~0000800~0000300~0000372~73~70~1~301~1~302~1~305~0000373~0000800~428</S><S>CMCer~Hoang Ngoc Hung~11/04/2014</S></S01>"
+'Barcode_Scaned str2
+
+
+
+
+
+
+
+
    
 ''01A-TNDN-DK-LanPS-DauTho-ChinhThuc
 ' str2 = "aa321982300034966   03201400100100100201/0101/01/1900<S01><S></S><S>1~~x~21/03/2014~1~0~0~HD123456~~</S><S>200~50000~10000000~35~3500000~2000000~1500000~22000</S><S>~~CMCer~21/03/2014~1~~21/03/2014~2</S></S01>"
@@ -4813,7 +4842,16 @@ On Error GoTo ErrHandle
                 isTKThang = True
             End If
         End If
-            
+
+        'get thong tin chan theo nganh nghe kinh doanh to 01/GTGT
+        Dim str_tmp    As String
+        Dim arr_tmp() As String
+        If (Val(strID) = 1) Then
+            str_tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
+            arr_tmp = Split(str_tmp, "~")
+            strNNKD = arr_tmp(UBound(arr_tmp) - 3)
+        End If
+
         If Not getSoTTTK(changeMaToKhai(strID), arrStrHeaderData) Then
             DisplayMessage "0079", msOKOnly, miCriticalError
             Exit Function
@@ -5164,7 +5202,7 @@ On Error GoTo ErrHandle
     ' set ma CQT
     If Not objTaxBusiness Is Nothing Then
         If (Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) >= 64 And Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <= 68) Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 91 _
-        Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 7 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 9 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 10 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 13 Then
+        Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 7 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 9 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 10 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 13 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 14 Then
             objTaxBusiness.strMaCQT = strTaxOfficeId
             ' lay ma phong quan ly
             'Get Tax id
@@ -5634,7 +5672,7 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
     '            End If
     
                 If (InStr(xmlResultDLT.xml, "fault_code") > 0) Then
-                    If (MessageBox("0141", msOKOnly, miCriticalError) = mrNo) Then
+                    If (MessageBox("0141", msYesNo, miCriticalError) = mrNo) Then
                         Set rsReturn = Nothing
                         blnSuccess = False
                         Exit Function
@@ -7179,7 +7217,7 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
     'end verify value
     
     ' Set value tag <add_info>
-    XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = IIf(sNgayNopTK <> "", ConvertDate(sNgayNopTK, 3, "-"), sNgayNopTK) 'Format(sNgayNopTK, "dd-mmm-yyyy hh:mm:ss")
+    XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = IIf(sNgayNopTK <> "", ConvertDate(sNgayNopTK, 3, "-"), strNgayHeThongSrv) 'Format(sNgayNopTK, "dd-mmm-yyyy hh:mm:ss")
     XmlDocStandard.getElementsByTagName("ky_lap_bo")(0).Text = sKyLapBo
     XmlDocStandard.getElementsByTagName("nguon_goc_tk")(0).Text = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text)
     XmlDocStandard.getElementsByTagName("nguoi_nhan_tk")(0).Text = strUserID '& "." & xmlConfig.getElementsByTagName("CODE_OFFICE")(0).Text
@@ -7192,9 +7230,10 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
     XmlDocStandard.getElementsByTagName("loi_dinh_danh")(0).Text = IIf(sLoiDinhDanh = "1", "X", "")
     
     
-    'Bo sung tag <QHS> cho BCTC va AC
+    'Bo sung tag <QHS> cho BCTC va AC va BLP
     'ID BCTC: 69(15_BCTC); 19(48_BCTC); 20(16_BCTC); 21(99_BCTC); 22(95_BCTC);
     'ID AC:   64(01_TBAC); 65(01_AC); 66(BC21_AC); 67(03_TBAC); 68(BC26_AC); 91(04_TBAC);
+    'ID BLP:  07(01_TBAC_BLP);13(01_AC_BLP); 09(BC21_AC_BLP); 10(03_TBAC_BLP);  14(BC26_AC_BLP)
     Dim strID_BCTC, strID_QLAC As String
     strID_BCTC = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("BCTC")(0).Text)
     strID_QLAC = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("QLAC")(0).Text)
