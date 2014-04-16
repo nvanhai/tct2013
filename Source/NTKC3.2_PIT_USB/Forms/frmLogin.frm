@@ -206,10 +206,17 @@ On Error GoTo ErrorHandle
     TAX_Utilities_Srv_New.isCheckPIT = isPITActive
     ' end
     
-   If DisplayMessage("0136", vbYesNo, miWarning) = mrYes Then
+    'IsPortUSBScaner = True: Scaner cable USB, else Scaner cable RS232
+    Dim objConfig As New MSXML.DOMDocument
+    objConfig.loadXML App.path & "\Config.xml"
+    If (objConfig.getElementsByTagName("ScanerCableUSB")(0).Text = "1") Then
+        'Su dung cong USB
         IsPortUSBScaner = True
-   End If
-   
+    Else
+        'Su dung cong COM
+        IsPortUSBScaner = False
+    End If
+
     Unload Me
     frmTreeviewMenu.Show
     
