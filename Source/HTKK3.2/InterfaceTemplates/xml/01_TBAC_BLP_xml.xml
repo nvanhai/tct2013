@@ -78,7 +78,8 @@
 					<tuSo></tuSo>
 					<denSo></denSo>
 					<ngayBDauSDung></ngayBDauSDung>
-					<hopDongInBienLai></hopDongInBienLai>
+					<soHDongInBLai></soHDongInBLai>
+					<ngayHDongInBLai></ngayHDongInBLai>
 					<ten></ten>
 					<mst></mst>
 				</ChiTietBKeBienLai>

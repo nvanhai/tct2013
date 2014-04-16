@@ -4,23 +4,24 @@
 		<tenTKhai>Thông báo phát hành biên lai thu phí, lệ phí</tenTKhai>
 		<moTaBMau/>
 	</Static>
-	<Dynamic GroupName="BKeBienLai">
+	<Dynamic GroupName="BKeBienLai" MinOccur="1">
 		<ChiTietBKeBienLai id="id">
-					<tenLoaiBienLai>D_35</tenLoaiBienLai>
-					<kyHieuMauBienLai>J_35</kyHieuMauBienLai>
-					<kyHieuBienLai>L_35</kyHieuBienLai>
-					<soLuong>N_35</soLuong>
-					<tuSo>P_35</tuSo>
-					<denSo>R_35</denSo>
-					<ngayBDauSDung>T_35</ngayBDauSDung>
-					<hopDongInBienLai>W_35</hopDongInBienLai>
-					<ten>AD_35</ten>
-					<mst>AE_35</mst>
+			<tenLoaiBienLai>D_35</tenLoaiBienLai>
+			<kyHieuMauBienLai>J_35</kyHieuMauBienLai>
+			<kyHieuBienLai>L_35</kyHieuBienLai>
+			<soLuong>N_35</soLuong>
+			<tuSo>P_35</tuSo>
+			<denSo>R_35</denSo>
+			<ngayBDauSDung>T_35</ngayBDauSDung>
+			<soHDongInBLai>W_35</soHDongInBLai>
+			<ngayHDongInBLai>AA_35</ngayHDongInBLai>
+			<ten>AD_35</ten>
+			<mst>AE_35</mst>
 		</ChiTietBKeBienLai>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
 		<tenCQTTNhanTBao>K_44</tenCQTTNhanTBao>
-		<noiKy></noiKy>
+		<noiKy/>
 		<ngayKy>AA_44</ngayKy>
 		<thuTruongDonVi>AA_46</thuTruongDonVi>
 	</Static>

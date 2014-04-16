@@ -69,13 +69,13 @@
 			</TTinTKhaiThue>
 		</TTinChung>
 		<CTieuTKhaiChinh>
-			<kyBCaoCuoiCung>true</kyBCaoCuoiCung>
 			<tuNgay></tuNgay>
 			<denNgay></denNgay>
 			<BKeNhanInBienLai>
 				<CTietBKeNhanInBienLai id="">
 					<mst></mst>
 					<ten></ten>
+					<diaChi></diaChi>
 					<soHopDong></soHopDong>
 					<ngayHopDong></ngayHopDong>
 					<tenLoaiBienLai></tenLoaiBienLai>

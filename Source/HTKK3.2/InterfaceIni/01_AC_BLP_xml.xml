@@ -5,7 +5,6 @@
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<kyBCaoCuoiCung>B_15</kyBCaoCuoiCung>
 		<tuNgay>D_17</tuNgay>
 		<denNgay>E_17</denNgay>
 	</Static>
@@ -13,10 +12,11 @@
 		<CTietBKeNhanInBienLai id="id">
 			<mst>C_22</mst>
 			<ten>D_22</ten>
+			<diaChi>E_22</diaChi>
 			<soHopDong>F_22</soHopDong>
 			<ngayHopDong>G_22</ngayHopDong>
-			<tenLoaiBienLai>I_22</tenLoaiBienLai>
-			<kyHieuMauBienLai>J_22</kyHieuMauBienLai>
+			<tenLoaiBienLai>J_22</tenLoaiBienLai>
+			<kyHieuMauBienLai>I_22</kyHieuMauBienLai>
 			<kyHieuBienLai>K_22</kyHieuBienLai>
 			<tuSo>L_22</tuSo>
 			<denSo>M_22</denSo>
