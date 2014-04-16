@@ -853,7 +853,7 @@ Private Sub cmdSave_Click()
         ElseIf menuId = 36 Then
             .GetText .ColLetterToNumber("E"), 22, vKYLBO
         ElseIf menuId = 6 Then
-            .GetText .ColLetterToNumber("E"), 23, vKYLBO
+            .GetText .ColLetterToNumber("F"), 23, vKYLBO
         ElseIf menuId = 70 Then
             .GetText .ColLetterToNumber("E"), 23, vKYLBO
         ElseIf menuId = 81 Or menuId = 80 Or menuId = 82 Or menuId = 89 Then
@@ -902,7 +902,7 @@ Private Sub cmdSave_Click()
         ElseIf menuId = 5 Then
             .GetText .ColLetterToNumber("E"), 25, vNgayNop
         ElseIf menuId = 6 Then
-            .GetText .ColLetterToNumber("E"), 25, vNgayNop
+            .GetText .ColLetterToNumber("F"), 25, vNgayNop
         ElseIf menuId = 70 Then
             .GetText .ColLetterToNumber("E"), 25, vNgayNop
                 
@@ -1236,7 +1236,7 @@ Private Sub cmdSave_Click()
         ElseIf menuId = 36 Then
             .GetText .ColLetterToNumber("M"), 24, vNGAYQUET
         ElseIf menuId = 6 Then
-            .GetText .ColLetterToNumber("R"), 25, vNGAYQUET
+            .GetText .ColLetterToNumber("S"), 25, vNGAYQUET
         ElseIf menuId = 70 Then
             .GetText .ColLetterToNumber("R"), 25, vNGAYQUET
             
@@ -1793,7 +1793,7 @@ Private Sub Command1_Click()
 'Barcode_Scaned str1
 'str1 = "aa322092100343639   01201400200200100101/0101/01/2010<S01><S>01/04/2014</S><S>01BLP2-001~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~AB-12T~0000001~0000010~10~2~01~02BLP2-001~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~AB-12T~0000001~0000009~9~1~03</S><S>dsf~fdbfd~sdf~01/04/2014</S></S01>"
 'Barcode_Scaned str1
-'str1 = "aa322102100343639   01201400100100100101/0101/01/2010<S01><S>~~45~01/04/2014~13</S><S>Bi™n lai thu ph›, l÷ ph›kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~0000001~0000010~10</S><S>sdf~dsf~01/04/2014</S></S01>"
+'str1 = "aa322102100343639   01201400100100100101/0101/01/2010<S01><S>3242~123~45~01/04/2014~13</S><S>Bi™n lai thu ph›, l÷ ph›kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~0000001~0000010~10</S><S>sdf~dsf~01/04/2014</S></S01>"
 'Barcode_Scaned str1
 'str1 = "aa322132100343639   01201400100100100101/0101/01/2009<S01><S>~01/01/2014~30/06/2014</S><S>6868686868~2342~234~01/01/2014~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~0000001~0000010~10</S><S>sdf~01/04/2014</S></S01>"
 'Barcode_Scaned str1
@@ -1808,11 +1808,19 @@ Private Sub Command1_Click()
 'Barcode_Scaned str1
 'str1 = "aa999132100343639   01201400600600100101/0101/01/2009<S01><S>~01/01/2014~31/03/2014</S><S>6868686868~sdsada~sad231rfwerwe~21313~01/01/2014~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~0000001~0000010~10~2222222222~sdfsdf~324532ttgsdf~213423~01/01/2014~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-001~AB-12T~0000001~0000010~10</S><S>Nguyen Van A~08/04/2014</S></S01>"
 'Barcode_Scaned str1
-
+'
 'str1 = "aa999132100343639   01201400100100100101/0101/01/2009<S01><S>01/01/2014~31/03/2014</S><S>6868686868~sdfsdfs~324sdfsf~234234~01/01/2015~01BLP2-001~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~AB-12T~0000001~0000010~10~2222222222~sdfsd~sdfsf~fdfsd~01/01/2015~02BLP2-001~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~AB-12T~0000001~0000019~19</S><S>sadfsa~14/04/2014</S></S01>"
 'Barcode_Scaned str1
 
-str1 = "aa999142100343639   01201400200200100101/0101/01/2009<S01><S>01/01/2014~31/03/2014</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~12~0000001~0000010~0000011~0000012~0000001~0000007~8~5~1~1~1~2~1~3~0000008~0000011~4~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-001~AB-12T~15~0000001~0000009~0000010~0000015~0000001~0000010~10~7~1~1~1~2~1~3~0000011~0000015~5</S><S>dsfsdf~dfs~14/04/2014</S></S01>"
+'str1 = "aa999142100343639   01201400200200100101/0101/01/2009<S01><S>01/01/2014~31/03/2014</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~12~0000001~0000010~0000011~0000012~0000001~0000007~8~5~1~1~1~2~1~3~0000008~0000011~4~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-001~AB-12T~15~0000001~0000009~0000010~0000015~0000001~0000010~10~7~1~1~1~2~1~3~0000011~0000015~5</S><S>dsfsdf~dfs~14/04/2014</S></S01>"
+'Barcode_Scaned str1
+
+'str1 = "aa999092100343639   01201400300500100101/0101/01/2010<S01><S>14/04/2014</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~0000001~0000010~10~sdfsdf~01~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-001~AB-12T~0000001~0000010~10~sdfsg~03</S><S>fsdg~fgd~Nguyen Van A~14/04/2014</S></S01>"
+'Barcode_Scaned str1
+
+str1 = "aa999062100343639   03201400000000100201/0114/06/2006<S01><S></S><S>~~0.000~0.00~0.000~0~0.00</S><S>~~0.000~0.00~0.00"
+Barcode_Scaned str1
+str1 = "aa999062100343639   0320140000000020020~0~0.00</S><S>~~0.000~0.00~0.000~0~0.00</S><S>~~~16/04/2014~1~~0~0~</S></S01>"
 Barcode_Scaned str1
 
 End Sub
