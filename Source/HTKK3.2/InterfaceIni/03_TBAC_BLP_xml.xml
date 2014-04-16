@@ -9,10 +9,10 @@
 		<ppHuyBienLai>K_6</ppHuyBienLai>
 		<ngayHuyBienLai>O_9</ngayHuyBienLai>
 	</Static>
-	<Dynamic GroupName="BKeKQuaHuyBLai">
+	<Dynamic GroupName="BKeKQuaHuyBLai" MinOccur="1">
 		<ChiTietBKeKQuaHuyBLai id="id">
-			<tenLoaiBienLai>O_43</tenLoaiBienLai>
-			<kyHieuMauBienLai>E_43</kyHieuMauBienLai>
+			<tenLoaiBienLai>E_43</tenLoaiBienLai>
+			<kyHieuMauBienLai>O_43</kyHieuMauBienLai>
 			<kyHieuBienLai>S_43</kyHieuBienLai>
 			<tuSo>V_43</tuSo>
 			<denSo>Y_43</denSo>
