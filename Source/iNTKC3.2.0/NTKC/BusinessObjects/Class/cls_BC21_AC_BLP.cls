@@ -16,8 +16,8 @@ Option Explicit
 'Const KY_LAP_BO_COL = "E"
 'Const MA_SO_TEP_ROW = 10
 'Const MA_SO_TEP_COL = "M"
-Const NGAY_NHAN_TO_KHAI_ROW = 15
-Const NGAY_NHAN_TO_KHAI_COL = "S"
+Const NGAY_NHAN_TO_KHAI_ROW = 13
+Const NGAY_NHAN_TO_KHAI_COL = "E"
 Const NGUOI_SU_DUNG_ROW = 15
 Const NGUOI_SU_DUNG_COL = "AC"
 
