@@ -208,7 +208,7 @@ Dim cValueF As Variant
 Dim i As Integer
 Dim xmlNodeH15 As MSXML.IXMLDOMNode
 
-Dim CT26, CT27, CT28, ct29, ct31, CT30, ct32 As Variant
+Dim ct26, ct27, ct28, ct29, ct31, ct30, ct32 As Variant
 
 
 With fps
@@ -632,7 +632,7 @@ Private Sub CheckDynamicError()
     Dim strFocusSheetName, strFocusRow, strFocusCol, strFormula As String
     
     ' check Ma so thue
-    CheckErrorMST3 41, 23, "F", 2
+    'CheckErrorMST3 41, 23, "F", 2
 
 
     'kiem tra lan phat sinh de nhap muc I và II tren form nhap
