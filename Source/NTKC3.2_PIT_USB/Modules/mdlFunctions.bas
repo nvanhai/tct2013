@@ -16,7 +16,7 @@ Public dNgayDauKy As Date
 Public dNgayCuoiKy As Date
 
 Public Const SS_SORT_ORDER_ASCENDING = 1
-Public Const APP_VERSION = "3.2.2"
+Public Const APP_VERSION = "3.2.3"
 
 Public Const HTKK_LAST_VERSION = "9.9.9"
 

@@ -1559,10 +1559,11 @@ Private Sub Form_Activate()
 End Sub
 
 Private Sub txtBarcodeUSB_KeyPress(KeyCode As Integer)
-    If KeyCode = 13 Then
+    Static strTemp As String
+    If KeyCode = 13 Or KeyCode = 35 Then
         If IsPortUSBScaner Then
-            Static strTemp As String
-            If (txtBarcodeUSB.Text <> vbNullString Or txtBarcodeUSB.Text <> "") Then
+            If (txtBarcodeUSB.Text <> vbNullString And txtBarcodeUSB.Text <> "") Then
+                strTemp = Replace$(txtBarcodeUSB.Text, "#", "")
                 strTemp = TAX_Utilities_Srv_New.Convert(txtBarcodeUSB.Text, TCVN, UNICODE)
                 Barcode_Scaned strTemp
             End If
