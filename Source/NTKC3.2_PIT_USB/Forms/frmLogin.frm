@@ -208,7 +208,8 @@ On Error GoTo ErrorHandle
     
     'IsPortUSBScaner = True: Scaner cable USB, else Scaner cable RS232
     Dim objConfig As New MSXML.DOMDocument
-    objConfig.loadXML App.path & "\Config.xml"
+    'objConfig.loadXML App.path & "\Config.xml"
+    objConfig.Load App.path & "\Config.xml"
     If (objConfig.getElementsByTagName("ScanerCableUSB")(0).Text = "1") Then
         'Su dung cong USB
         IsPortUSBScaner = True
