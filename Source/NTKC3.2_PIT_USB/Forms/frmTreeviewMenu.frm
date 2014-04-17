@@ -1390,7 +1390,9 @@ Private Sub ProcessMenuAction(pID As String)
             Exit Sub
         Case "101_1"
             If PortNotOnpened Then
-                MSComm1.PortOpen = False
+                If IsPortUSBScaner = False Then
+                    MSComm1.PortOpen = False
+                End If
                 frmInterfaces.SetReceiveByBarcode True
                 frmInterfaces.Show
             Else
@@ -1611,8 +1613,13 @@ End Sub
 '******************************
 Private Function PortNotOnpened() As Boolean
     On Error GoTo ErrHandle
-    MSComm1.PortOpen = True
-    PortNotOnpened = True
+    
+    If IsPortUSBScaner = False Then
+        MSComm1.PortOpen = True
+        PortNotOnpened = True
+    Else
+        PortNotOnpened = True
+    End If
     Exit Function
 ErrHandle:
     DisplayMessage "0061", msOKOnly, miCriticalError

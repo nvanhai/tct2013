@@ -4829,7 +4829,10 @@ End Function
 '****************************
 Private Sub ShowFormReceiveFromBarcode()
 On Error GoTo ErrHandle
-    StartBarcodeReader
+    
+    If IsPortUSBScaner = False Then
+        StartBarcodeReader
+    End If
     StartReceiveForm
     
     Exit Sub
