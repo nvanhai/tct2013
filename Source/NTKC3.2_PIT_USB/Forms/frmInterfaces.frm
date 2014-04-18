@@ -1568,12 +1568,14 @@ Private Sub txtBarcodeUSB_KeyPress(KeyCode As Integer)
                 Barcode_Scaned strTemp
             End If
             
+            KeyCode = 0
             strTemp = vbNullString
             txtBarcodeUSB.Text = ""
             SetFocusBarcode
         End If
     End If
 End Sub
+
 'Private Sub txtBarcodeUSB_LostFocus()
 '    If IsPortUSBScaner Then
 '        SetFocusBarcode
@@ -4971,8 +4973,9 @@ On Error GoTo ErrHandle
     
     MessageBox = DisplayMessage(strMsgId, intMsgStyle, intMsgIcon, , msType)
     
-    If blnReceiveByBarcode Then StartBarcodeReader
-    
+    If blnReceiveByBarcode Then
+        If IsPortUSBScaner = False Then StartBarcodeReader
+    End If
     Exit Function
 ErrHandle:
     SaveErrorLog Me.Name, "MessageBox", Err.Number, Err.Description
