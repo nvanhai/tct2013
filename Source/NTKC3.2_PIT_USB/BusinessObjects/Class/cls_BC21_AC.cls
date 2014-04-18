@@ -105,7 +105,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .Sheet = 1
         .Col = .ColLetterToNumber(PHONG_XU_LY_COL)
         .Row = PHONG_XU_LY_ROW
-        If rsPXL.Fields.Count > 0 Then
+        If rsPXL.Fields.count > 0 Then
             Do While Not rsPXL.EOF
                 .TypeComboBoxIndex = -1
                 .TypeComboBoxString = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
@@ -139,7 +139,7 @@ Public Function Prepared3() As Boolean
     Dim strId, strMauso, strTuSo, strDenSo As Variant
     Dim strTen As String
     Dim i As Integer
-    dim tempValue as variant
+    Dim tempValue As Variant
     With fps
         '.EventEnabled(EventAllEvents) = False
         'Set MaSoTep

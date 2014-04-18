@@ -272,14 +272,14 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim vTIN, vTEN_DTNT, vLOAI_TKHAI, vNGAY_NOP, vPHONG_QUAN_LY, vNGUOI_DAI_DIEN, vGHI_CHU, vNGAY_BC, vLY_DO
     Dim vNGAY_CAP_NHAT, vDIA_CHI, vNGUOI_CAP_NHAT, vCO_LOI_DDANH, vNGAY_CHAY_HONG, vMA_CQT, vNGUOI_LB, vKY_BC_TUNGAY, vKY_BC_DENNGAY
     Dim vSO_HIEU_TEP, vSO_TT_TK, vDA_NHAN, vGHI_CHU_LOI, vHTHUC_NOP, vTEN_DV_CQ, vTIN_DV_CQ, vTEN_CQ_TIEP_NHAN
-    Dim vDUNG_DN_CQ As Variant
+    Dim vDUNG_DN_CQ, vNGAY_TB_PH As Variant
     Dim vPHONG_XU_LY
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
     Dim vKyBCCuoi, vChuyenDiaDiem
     
 On Error GoTo ErrHandle
-    strSQL = SqlHdr_AC
+    strSQL = SqlHdr_BLP
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
@@ -315,10 +315,11 @@ On Error GoTo ErrHandle
         .EventEnabled(EventAllEvents) = False
         .Sheet = 1
         .GetText .ColLetterToNumber("R"), 22, vNGUOI_DAI_DIEN
-        .GetText .ColLetterToNumber("O"), 22, vNGAY_BC
+        .GetText .ColLetterToNumber("V"), 22, vNGAY_BC
         .GetText .ColLetterToNumber("E"), 22, vTEN_DV_CQ
         .GetText .ColLetterToNumber("I"), 22, vTIN_DV_CQ
         .GetText .ColLetterToNumber("L"), 22, vTEN_CQ_TIEP_NHAN
+        .GetText .ColLetterToNumber("V"), 22, vNGAY_TB_PH
         .EventEnabled(EventAllEvents) = False
     End With
 
@@ -347,13 +348,14 @@ On Error GoTo ErrHandle
     vLOAI_TKHAI = "01_TBAC_BLP"
     vMA_CQT = strMaCQT
     vPHONG_QUAN_LY = strMaPQL
-    ' Lay thong tin don vi chu quan dat in, tu in
-    If Trim(vTIN) = Trim(vTIN_DV_CQ) Or Trim(vTIN_DV_CQ) = "" Then
-        vDUNG_DN_CQ = "N"
-    Else
-        vDUNG_DN_CQ = "Y"
-    End If
+'    ' Lay thong tin don vi chu quan dat in, tu in
+'    If Trim(vTIN) = Trim(vTIN_DV_CQ) Or Trim(vTIN_DV_CQ) = "" Then
+'        vDUNG_DN_CQ = "N"
+'    Else
+'        vDUNG_DN_CQ = "Y"
+'    End If
     
+    vDUNG_DN_CQ = "null"
     
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
@@ -380,9 +382,10 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "To_date('" & vNGAY_BC & "','dd/mm/yyyy'),"
     strSQL = strSQL & "'" & vNGUOI_DAI_DIEN & "',"
     strSQL = strSQL & "'" & vTEN_CQ_TIEP_NHAN & "',null,null,null,"
-    strSQL = strSQL & "'" & vDUNG_DN_CQ & "',"
+    strSQL = strSQL & "" & vDUNG_DN_CQ & ","
     strSQL = strSQL & "'" & vGHI_CHU_LOI & "',"
-    strSQL = strSQL & "'" & vMA_CQT & "',null,null,null)"
+    strSQL = strSQL & "'" & vMA_CQT & "',null,null,null,"
+    strSQL = strSQL & "To_date('" & vNGAY_TB_PH & "','dd/mm/yyyy'))"
     GenerateSQL_Header = strSQL
     Exit Function
 ErrHandle:
