@@ -1,4 +1,4 @@
-﻿<Sections Version="321">
+﻿<Sections Version="323">
 	<Section Dynamic="0" MaxRows="0">
 		<Items>
 			<Item Value ="1###10100###101###HAN - Cục Thuế Thành phố Hà Nội"/>
@@ -289,7 +289,7 @@
 			<Item Value ="1###30200###302###LCH - Cục Thuế Tỉnh Lai Châu"/>
 			<Item Value ="0###30200###302###Cục Thuế Tỉnh Lai Châu"/>
 			<Item Value ="0###30201###302###Chi cục Thuế Huyện Mường Tè"/>
-			<Item Value ="0###30202###302###Chi cục Thuế Thị xã Lai Châu"/>
+			<Item Value ="0###30202###302###Chi cục Thuế Thành phố Lai Châu"/>
 			<Item Value ="0###30203###302###Chi cục Thuế Huyện Phong Thổ"/>
 			<Item Value ="0###30205###302###Chi cục Thuế Huyện Tam Đường"/>
 			<Item Value ="0###30207###302###Chi cục Thuế Huyện Sìn Hồ"/>
