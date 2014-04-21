@@ -1,0 +1,22 @@
+<PL_02_1_TD_TNDN>
+	<Static GroupName="ChiTietBangPBoThueTNDN">
+		<tenDonViTDPhuThuoc>C_18</tenDonViTDPhuThuoc>
+		<soThueTNDNPNop>W_18</soThueTNDNPNop>
+	</Static>
+	<P_Dynamic GroupName="NhaMayThuyDien" CellID="AF_20">
+		<ChiTietNhaMayThuyDien id="id">
+			<tenNMayTDien>C_19</tenNMayTDien>
+			<mstNMayTDien TINType="1">F_19</mstNMayTDien>
+			<tyLePBoNMayTDien>T_19</tyLePBoNMayTDien>
+			<soThuePNopNMayTDien>W_19</soThuePNopNMayTDien>
+			<Dynamic GroupName="CQTDiaPhuong">
+				<ChiTietCQTDiaPhuong id="id">
+					<maCQTDPhuong>AE_20</maCQTDPhuong>
+					<tenCQTDPhuong>Q_20</tenCQTDPhuong>
+					<tyLePBoCQTDPhuong>T_20</tyLePBoCQTDPhuong>
+					<thuePNopCQTDPhuong>W_20</thuePNopCQTDPhuong>
+				</ChiTietCQTDiaPhuong>
+			</Dynamic>
+		</ChiTietNhaMayThuyDien>
+	</P_Dynamic>
+</PL_02_1_TD_TNDN>
