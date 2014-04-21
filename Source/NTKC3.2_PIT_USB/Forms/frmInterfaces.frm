@@ -110,24 +110,6 @@ Begin VB.Form frmInterfaces
       TabIndex        =   4
       Top             =   6990
       Width           =   11535
-      Begin VB.TextBox txtBarcodeUSB 
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   375
-         Left            =   2000
-         MaxLength       =   9999
-         MultiLine       =   -1  'True
-         TabIndex        =   19
-         Top             =   30
-         Width           =   9500
-      End
       Begin VB.CommandButton Command1 
          Caption         =   "Command1"
          Height          =   255
@@ -295,6 +277,23 @@ Begin VB.Form frmInterfaces
          FontPitchAndFamily=   2
          ParagraphAlign  =   3
       End
+   End
+   Begin VB.TextBox txtBarcodeUSB 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   495
+      Left            =   1560
+      MaxLength       =   9999
+      TabIndex        =   19
+      Top             =   3720
+      Width           =   9255
    End
    Begin MSForms.Label lblCaption 
       Height          =   375
