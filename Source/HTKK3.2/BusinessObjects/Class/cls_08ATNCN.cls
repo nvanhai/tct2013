@@ -548,7 +548,7 @@ Private Sub CheckDynamicError()
             'lay tong CT30
             .GetText .ColLetterToNumber("P"), .MaxRows - 6, vTongCT30
             'check tong TNCT phai = 100
-            If Int(vTongTNCN) <> 100 Then
+            If Round(CDbl(vTongTNCN), 2) <> 100 Then
                 .Col = .ColLetterToNumber("L")
                 .Row = .MaxRows - 6
                 .BackColor = mErrorColor
