@@ -1778,7 +1778,7 @@ Private Sub CheckDynamicError()
                 .Row = .Row + 1
             Loop Until .Text = "aa"
             
-            If vTongTyLe <> 100 And iWhiteRow = 0 Then
+            If Round(vTongTyLe, 2) <> 100 And iWhiteRow = 0 Then
                     .Col = .ColLetterToNumber("M")
                     .Row = .Row + 1
                     .BackColor = mErrorColor

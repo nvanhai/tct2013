@@ -545,7 +545,7 @@ Private Sub CheckDynamicError()
         ' ThuyNT: Kiem tra tong ty le phai bang 100% 29/4/2010
         .GetText .ColLetterToNumber("K"), .Row + 1, TongTyLe
         If checkExistData Then
-            If TongTyLe <> 100 Then
+            If Round(CDbl(TongTyLe), 2) <> 100 Then
                 .Col = .ColLetterToNumber("K")
                 .Row = .Row + 1
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent

@@ -561,7 +561,7 @@ Dim MST1 As Variant, MST2 As Variant, MST3 As Variant, MST4 As Variant
             'lay tong CT37
             .GetText .ColLetterToNumber("O"), .MaxRows - 25, vTongCT37
             'check tong TNCT phai = 100
-            If Int(vTongTNCN) <> 100 Then
+            If Round(CDbl(vTongTNCN), 2) <> 100 Then
                 .Col = .ColLetterToNumber("I")
                 .Row = .MaxRows - 25
                 .BackColor = mErrorColor
