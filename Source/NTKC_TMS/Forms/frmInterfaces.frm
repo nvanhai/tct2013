@@ -1442,7 +1442,7 @@ ErrHandle:
     SaveErrorLog Me.Name, "cmdExit_Click", Err.Number, Err.Description
 End Sub
 
-Private Sub ExecuteSave()
+Private Function ExecuteSave() As Boolean
     Dim xmlMapCT     As New MSXML.DOMDocument
     Dim xmlTK        As New MSXML.DOMDocument
     Dim xmlPL        As New MSXML.DOMDocument
@@ -1469,7 +1469,7 @@ Private Sub ExecuteSave()
     blnFinish = CheckValidData
     
     If blnFinish = False Then
-        Exit Sub
+        Exit Function
     End If
         
     MaTK = GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(0), "DataFile")
@@ -1507,7 +1507,7 @@ Private Sub ExecuteSave()
    
     If xmlTK.hasChildNodes = False Or xmlMapCT.hasChildNodes = False Then
         DisplayMessage "0149", msOKOnly, miCriticalError
-        Exit Sub
+        Exit Function
     End If
    
     With fpSpread1
@@ -2189,33 +2189,35 @@ Private Sub ExecuteSave()
 
     xmlTK.documentElement.SetAttribute "xmlns", "http://kekhaithue.gdt.gov.vn/TKhaiThue"
 
-    Dim sFileName As String
-    sFileName = "c:\TempXML\" & strFileName
+'    Dim sFileName As String
+'    sFileName = "c:\TempXML\" & strFileName
     '
     Dim xmlDocSave As New MSXML.DOMDocument
     Set xmlDocSave = AppendXMLStandard(xmlTK, sKyLapBo, sNgayNopTK, sLoiDinhDanh)
     '
     '
-    xmlDocSave.save sFileName
+    'xmlDocSave.save sFileName
 
-        ' Push MQ
-        Dim MQPUT As New MQPUT
-        If (Not MQPUT.PUSHMQ(xmlDocSave.xml)) Then
-            MessageBox "0137", msOKOnly, miCriticalError
-        End If
+    '' Push MQ
 
-    '   Clear variable global
-    Set xmlResultDLT = Nothing
-    Set xmlResultNNT = Nothing
-    Set xmlTK = Nothing
-
-    '    ' End push
+    If (Not MQPUT.PUSHMQ(xmlDocSave.xml)) Then
+        MessageBox "0137", msOKOnly, miCriticalError
+        ExecuteSave = False
+    Else
     
-    Exit Sub
+        ExecuteSave = True
+        '   Clear variable global
+        Set xmlResultDLT = Nothing
+        Set xmlResultNNT = Nothing
+        Set xmlTK = Nothing
+        '    ' End push
+    End If
+    Exit Function
 ErrHandle:
     SaveErrorLog Me.Name, "Execute_save", Err.Number, Err.Description
     MessageBox "0154", msOKOnly, miCriticalError
-End Sub
+    ExecuteSave = False
+End Function
 Private Sub cmdSave_Click()
 
 On Error GoTo ErrHandle
@@ -2491,22 +2493,20 @@ On Error GoTo ErrHandle
     End If
     
     'Push data to ESB
-    ExecuteSave
-    '**********End push data to ESB*****************
-    
-    ' Clear data
-    If Not objTaxBusiness Is Nothing Then
-        'Get Params
-        objTaxBusiness.GetParams strNgayNhanToKhai, strMaPhongXuLy 'strMaSoTep, strNgayNhanToKhai, strMaPhongXuLy
+   If ExecuteSave Then
+        ' Clear data
+        If Not objTaxBusiness Is Nothing Then
+            'Get Params
+            objTaxBusiness.GetParams strNgayNhanToKhai, strMaPhongXuLy 'strMaSoTep, strNgayNhanToKhai, strMaPhongXuLy
+        End If
+        StartReceiveForm
+        
+        Set xmlResultDLT = Nothing
+        Set xmlResultNNT = Nothing
+        'Set xmlResultNSD = Nothing
+        '***************************
+        blnSaveSuccess = True
     End If
-    StartReceiveForm
-    
-    Set xmlResultDLT = Nothing
-    Set xmlResultNNT = Nothing
-    'Set xmlResultNSD = Nothing
-    '***************************
-    blnSaveSuccess = True
-    
     Exit Sub
 ErrHandle:
     SaveErrorLog Me.Name, "cmdSave_Click", Err.Number, Err.Description
@@ -2672,9 +2672,9 @@ Private Sub Command1_Click()
         Dim str41 As String, str42 As String, str43 As String, str44 As String, str45 As String, str46 As String, str47 As String, str48 As String, str49 As String, str50 As String
         Dim str51 As String, str52 As String, str53 As String
         
- '02/GTGT-Thang
- str2 = "aa999020102030405   03201400100100100101/0114/06/2006<S01><S></S><S>0~0~100727693010~10065972688~0~0~0~0~10065972688~0~10065972688~0~0~0~10065972688</S><S>~ABC~~16/04/2014~1~~~0</S></S01>"
-Barcode_Scaned str2
+' '02/GTGT-Thang
+' str2 = "aa999020102030405   03201400100100100101/0114/06/2006<S01><S></S><S>0~0~100727693010~10065972688~0~0~0~0~10065972688~0~10065972688~0~0~0~10065972688</S><S>~ABC~~16/04/2014~1~~~0</S></S01>"
+'Barcode_Scaned str2
 
 ''01-TBAC-BLP: 05/03/2014
 'str2 = "aa999074400000019   03201400000000100101/0101/01/2009<S01><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-009~QS-11T~401~0000100~0000500~15/03/2014~10~05/03/2014~CMC Corporation~0101650999~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP3-009~QS-12T~401~0000200~0000600~16/03/2014~20~05/03/2014~SCAT Corporation~6868686868</S><S>Chi cuc Thue Cau Giay~05/03/2014~Hoang Ngoc Hung</S></S01>"
@@ -2698,10 +2698,22 @@ Barcode_Scaned str2
 
 
 
+''Phu luc 01A_TNDN thuy dien
+'str2 = "aa999110102030405   01201400900900100301/0114/06/2006<S01><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~~0~0~0~0~"
+'Barcode_Scaned str2
+'str2 = "aa999110102030405   0120140090090020030~0~0~0~~~~0~0</S><S>~</S><S>~~~18/05/2014~1~0~~1052</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999110102030405   012014009009003003<S01-2><S>1~Tong Cong ty truyen tai dien mien Bac~~0~3000000~~x~2~Nha may thuy dien Ha Noi 1~0102030405~100~3000000~~x~3~~2222222222~50~1500000~10700~~4~~6868686868~50~1500000~10900~</S><S>3000000</S></S01-2>"
+'Barcode_Scaned str2
 
 
-
-
+''Phu luc 01B_TNDN thuy dien
+str2 = "aa999120102030405   01201400200200100301/0114/06/2006<S01><S></S><S>~~0~0~0~0~0~0~0~~20~22~0~~0~0"
+Barcode_Scaned str2
+str2 = "aa999120102030405   012014002002002003~0~0~0~0~0~0~~~~0~0</S><S>~18/05/2014~~~1~~1052</S></S01>"
+Barcode_Scaned str2
+str2 = "aa999120102030405   012014002002003003<S01-2><S>1~Tong cong ty truyen tai dien Quoc Gia~~0~7000000~~x~2~Cong ty truyen tai dien 1~~100~7000000~~x~3~~6868686868~50~3500000~10700~~4~~0102030405~50~3500000~10100~</S><S>7000000</S></S01-2>"
+Barcode_Scaned str2
 
    
 ''01A-TNDN-DK-LanPS-DauTho-ChinhThuc
@@ -2803,6 +2815,7 @@ Barcode_Scaned str2
 'Barcode_Scaned str2
 'str2 = "aa322940102030405   022014002003002002<S01_1><S>~Thuy Dien Na Hang - Tuyen Quang~0101650999~10~500000~~x~~Thuy Dien Thac Ba- Yen Bai~2222222222~5~1000000~10100~~~Thuy Dien Hoa Binh - Hoa Binh~6868686868~5~2000000~10700~</S><S>0</S></S01_1>"
 'Barcode_Scaned str2
+
 
 
 End Sub
@@ -5532,7 +5545,7 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
                     Exit Function
                 Else
                     flagNNT = True
-                    SaveErrorLog Me.Name, "GetTaxInfo", Err.Number, "fault_code: " & xmlResultNNT.getElementsByTagName("fault_code")(0).Text & Err.Description
+                    SaveErrorLog Me.Name, "GetTaxInfo", Err.Number, "fault_code: " & xmlResultNNT.getElementsByTagName("fault_code")(0).Text & xmlResultNNT.getElementsByTagName("fault_desc")(0).Text
                 End If
                 
             End If
