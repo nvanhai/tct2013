@@ -526,7 +526,7 @@ Public Function InsertDTL() As String
             If soHopDong = vbNullString Then
                 soHopDong = "''"
             Else
-                soHopDong = "'" & soHopDong & "'"
+                soHopDong = "'" & TAX_Utilities_Svr_New.Convert(CStr(soHopDong), UNICODE, TCVN) & "'"
             End If
             'set ngayhopdong
             .GetText .ColLetterToNumber("M"), .Row, ngayHopDong

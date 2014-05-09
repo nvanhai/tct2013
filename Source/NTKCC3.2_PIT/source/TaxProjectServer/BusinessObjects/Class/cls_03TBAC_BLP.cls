@@ -615,7 +615,7 @@ Public Function InsertHDR() As String
             Ngay_mat_h = "CTOD('" & Format(Ngay_mat_h, "mm/dd/yyyy") & "')"
         End If
         'phuong phap huy
-        .GetText .ColLetterToNumber("I"), 22, Pp_huy
+        .GetText .ColLetterToNumber("K"), 22, Pp_huy
         If Trim(Pp_huy) = vbNullString Then
             Pp_huy = "''"
         Else

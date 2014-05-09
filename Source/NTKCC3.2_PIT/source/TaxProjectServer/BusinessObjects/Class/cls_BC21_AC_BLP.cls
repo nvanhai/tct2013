@@ -646,7 +646,7 @@ Public Function InsertHDR() As String
         'set da nhan
         DA_NHAN = "''"
         ' ngay mat chay hong
-        .GetText .ColLetterToNumber("N"), 15, ngay_Thang_Nam_Mat
+        .GetText .ColLetterToNumber("S"), 17, ngay_Thang_Nam_Mat
         If Trim(ngay_Thang_Nam_Mat) = vbNullString Then
             ngay_Thang_Nam_Mat = "CTOD('')"
         Else
