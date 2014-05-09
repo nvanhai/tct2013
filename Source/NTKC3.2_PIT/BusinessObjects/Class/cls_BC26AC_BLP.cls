@@ -425,7 +425,7 @@ On Error GoTo ErrHandle
 '        '
 '        vLoai_BC26 = "04"
 '    End If
-    vLoai_BC26 = "04"
+    vLoai_BC26 = "01"
     
     
     ' Tach ma so thue thanh ma 14 ky tu
