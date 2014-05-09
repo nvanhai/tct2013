@@ -675,12 +675,7 @@ Public Function InsertHDR() As String
         
         
            ' Lay thong tin don vi chu quan dat in, tu in
-        If Trim(Tin) = Trim(Tin_dv_cq) Then
-            DUNG_DN_CQ = "'N'"
-        Else
-            DUNG_DN_CQ = "'Y'"
-        End If
-        
+        DUNG_DN_CQ = "''"
         
         ' ngay bao cao
         .GetText .ColLetterToNumber("O"), 22, Ngay_bc
