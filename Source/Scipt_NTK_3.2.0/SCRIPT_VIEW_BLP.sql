@@ -141,7 +141,7 @@ FROM
                     DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL)       Tu_so,
                     DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL)       Den_so,
                     DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL)       Ngay_BD_SD,
-                    DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL) So_BLP_in,
+                    dump(DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL)) So_BLP_in,
                     dump(DECODE(gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL)) Ten_DN_in,
                     DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL)       MST_DN_in,
                     DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL)       Ngay_BLP_in,
