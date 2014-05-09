@@ -506,7 +506,7 @@ Public Function InsertDTL() As String
                 If Trim(So_bl_in) = vbNullString Then
                     So_bl_in = "''"
                 Else
-                    So_bl_in = "'" & So_bl_in & "'"
+                    So_bl_in = "'" & TAX_Utilities_Svr_New.Convert(CStr(So_bl_in), UNICODE, TCVN) & "'"
                 End If
                 ' ngay hop dong dat in
                 .GetText .ColLetterToNumber("V"), .Row, Ngay_bl_in
