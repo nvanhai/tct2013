@@ -2,7 +2,7 @@
 	<P_Dynamic GroupName="BangPBoThueGTGTChoDPhuong" CellID="J_42">
 		<ChiTietPBoThueGTGTChoDPhuong id="id">
 			<tenNhaMay>C_42</tenNhaMay>
-			<mstNhaMay TINType="1">D_42</mstNhaMay>
+			<mstNhaMay TINType="1">H_42</mstNhaMay>
 			<Dynamic GroupName="PhanBoChoCQTDiaPhuong">
 				<tyLePBoThueChoTungCQT id="id">
 					<mstCQTDPhuong TINType="1">H_43</mstCQTDPhuong>
