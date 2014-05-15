@@ -415,19 +415,20 @@ On Error GoTo ErrHandle
         vQUY_BC = Format(dDate, "dd/mm/yyyy")
     End If
     ' lay gia tri loai BC 26
-    If Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
-        ' bao cao quy
-        vLoai_BC26 = "01"
-    ElseIf Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "1" Then
-        ' bao cao chuyen dia diem
-        vLoai_BC26 = "03"
-    ElseIf Trim(CStr(vKyBCCuoi)) = "1" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
-        ' bao cao quyet toan cuoi tung
-        vLoai_BC26 = "02"
-    Else
-        '
-        vLoai_BC26 = "04"
-    End If
+'    If Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
+'        ' bao cao quy
+'        vLoai_BC26 = "01"
+'    ElseIf Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "1" Then
+'        ' bao cao chuyen dia diem
+'        vLoai_BC26 = "03"
+'    ElseIf Trim(CStr(vKyBCCuoi)) = "1" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
+'        ' bao cao quyet toan cuoi tung
+'        vLoai_BC26 = "02"
+'    Else
+'        '
+'        vLoai_BC26 = "04"
+'    End If
+    vLoai_BC26 = "01"
     
     
    'Neu la to khai iHtkk thi lay ngay nop tu bang rcv_ihtkk_mvach
