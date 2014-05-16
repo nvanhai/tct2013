@@ -792,7 +792,7 @@ Private Sub cmdSave_Click()
     ' Kiem tra ngay nop khong duoc lon hon ngay quet
     If (Val(menuId) >= 64 And Val(menuId) <= 68) Or Val(menuId) = 91 Or Val(menuId) = 7 Or Val(menuId) = 9 Or Val(menuId) = 10 Or Val(menuId) = 13 Or Val(menuId) = 14 Then
         If CheckValidData = False Then
-            MessageBox "0136", msOKOnly, miWarning
+            MessageBox "0144", msOKOnly, miWarning
             Exit Sub
         End If
     End If
@@ -1693,7 +1693,7 @@ Private Sub Command1_Click()
 
 '''Cac to khai an chi
 
-'str1 = "aa999642300236909   03201400100100100101/0101/01/2009<S01><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/001~AB/12T~10~0000001~0000010~01/05/2014~sdf~2222222222~1~01/01/2014~</S><S>~~~13/03/2014~Lan H≠¨ng</S></S01>"
+'str1 = "aa999642300236909   03201400100100100101/0101/01/2009<S01><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/001~AB/12T~10~0000001~0000010~01/05/2014~sdf~2100343639~1~01/01/2014~</S><S>~~~13/03/2014~Lan H≠¨ng</S></S01>"
 'Barcode_Scaned str1
 '
 'str1 = "aa999652300236909   01201400100100100101/0101/01/2009<S01><S>~01/01/2014~30/06/2014</S><S>6868686868~a~af~1~01/01/2014~H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/001~AB/12T~0000001~0000010~10~</S><S>Lan H≠¨ng~13/03/2014</S></S01>"
@@ -1722,7 +1722,7 @@ Private Sub Command1_Click()
 
 'str1 = "aa322812100343639   02201400300300100101/0101/01/1900<S01><S></S><S>sadsadsad~6868686868~2314324~214312321~~32412312321~50~0~16206156161</S><S>214312321~32412312321~0~16206156161</S><S>~1</S><S>~~~24/03/2014~1~1~~24/02/2014</S></S01>"
 'Barcode_Scaned str1
-'str1 = "bs322812100343639   02201400400400100301/0101/01/1900<S01><S></S><S>sadsadsad~6868686868~2314324~214312321~~32412312321~50~0~16206156161~sdfsdf~2222222222~32423432~43543543~~42342323~50~0~21171162</S><S>257855864~32454654644~0~16227327323</S><S>~1</S><S>~~~24/03/2014~~1~1~24/02/2014</S></S01>"
+'str1 = "bs322812100343639   02201400400400100301/0101/01/1900<S01><S></S><S>sadsadsad~6868686868~2314324~214312321~~32412312321~50~0~16206156161~sdfsdf~2100343639~32423432~43543543~~42342323~50~0~21171162</S><S>257855864~32454654644~0~16227327323</S><S>~1</S><S>~~~24/03/2014~~1~1~24/02/2014</S></S01>"
 'Barcode_Scaned str1
 'str1 = "bs322812100343639   022014004004002003<SKHBS><S>Thu’ TNDN ph∂i nÈp~9~16206156161~16227327323~21171162</S><S>~"
 'Barcode_Scaned str1
@@ -1789,7 +1789,7 @@ Private Sub Command1_Click()
 'str1 = "bs322722100343639   022014003003003003Hµng h„a, dﬁch vÙ chﬁu thu’ 10%~26~0~870706891~870706891</S><S>~~0~0~0</S><S>24/03/2014~4~2132121~0~~~~~0~0~~0~0~873049233</S></SKHBS>"
 'Barcode_Scaned str1
 '
-'str1 = "aa322072100343639   04201400200200100101/0101/01/2009<S01><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~19~0000001~0000019~01/01/2015~sfsdf~32432~6868686868~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-001~AB-12P~20~0000001~0000020~01/01/2015~fdgs~dgsdfg~2222222222</S><S>~01/04/2014~fdsfsdf</S></S01>"
+'str1 = "aa322072100343639   04201400200200100101/0101/01/2009<S01><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~19~0000001~0000019~01/01/2015~sfsdf~32432~6868686868~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-001~AB-12P~20~0000001~0000020~01/01/2015~fdgs~dgsdfg~2100343639</S><S>~01/04/2014~fdsfsdf</S></S01>"
 'Barcode_Scaned str1
 'str1 = "aa322092100343639   01201400200200100101/0101/01/2010<S01><S>01/04/2014</S><S>01BLP2-001~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~AB-12T~0000001~0000010~10~2~01~02BLP2-001~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~AB-12T~0000001~0000009~9~1~03</S><S>dsf~fdbfd~sdf~01/04/2014</S></S01>"
 'Barcode_Scaned str1
@@ -1804,12 +1804,12 @@ Private Sub Command1_Click()
 'str1 = "aa999112100343639   01201400100100100101/0114/06/2006<S01><S></S><S>100000000~5000000~95000000~10000000~10000000~95000000~10000000~10000000~75000000~50000000~5000000~20000000~~0~0~0~11100000~0~0~0~11100000~x~01~01/01/2014~3423~11096577</S><S>~</S><S>sfs~fs~dfsd~10/02/2014~1~0~~1052</S></S01>"
 'Barcode_Scaned str1
 
-'str1 = "aa999072100343639   04201400400500100101/0101/01/2009<S01><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~10~0000001~0000010~01/01/2015~sdfs~01/01/2014~dsfdsf~6868686868~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-001~AB-12T~10~0000001~0000010~01/01/2015~sfds~01/01/2014~sdfs~2222222222</S><S>sdfsdfdfs~08/04/2014~Nguyen Van A</S></S01>"
+'str1 = "aa999072100343639   04201400400500100101/0101/01/2009<S01><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~10~0000001~0000010~01/01/2015~sdfs~01/01/2014~dsfdsf~6868686868~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-001~AB-12T~10~0000001~0000010~01/01/2015~sfds~01/01/2014~sdfs~2100343639</S><S>sdfsdfdfs~08/04/2014~Nguyen Van A</S></S01>"
 'Barcode_Scaned str1
-'str1 = "aa999132100343639   01201400600600100101/0101/01/2009<S01><S>~01/01/2014~31/03/2014</S><S>6868686868~sdsada~sad231rfwerwe~21313~01/01/2014~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~0000001~0000010~10~2222222222~sdfsdf~324532ttgsdf~213423~01/01/2014~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-001~AB-12T~0000001~0000010~10</S><S>Nguyen Van A~08/04/2014</S></S01>"
+'str1 = "aa999132100343639   01201400600600100101/0101/01/2009<S01><S>~01/01/2014~31/03/2014</S><S>6868686868~sdsada~sad231rfwerwe~21313~01/01/2014~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~0000001~0000010~10~2100343639~sdfsdf~324532ttgsdf~213423~01/01/2014~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-001~AB-12T~0000001~0000010~10</S><S>Nguyen Van A~08/04/2014</S></S01>"
 'Barcode_Scaned str1
 '
-'str1 = "aa999132100343639   01201400100100100101/0101/01/2009<S01><S>01/01/2014~31/03/2014</S><S>6868686868~sdfsdfs~324sdfsf~234234~01/01/2015~01BLP2-001~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~AB-12T~0000001~0000010~10~2222222222~sdfsd~sdfsf~fdfsd~01/01/2015~02BLP2-001~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~AB-12T~0000001~0000019~19</S><S>sadfsa~14/04/2014</S></S01>"
+'str1 = "aa999132100343639   01201400100100100101/0101/01/2009<S01><S>01/01/2014~31/03/2014</S><S>6868686868~sdfsdfs~324sdfsf~234234~01/01/2015~01BLP2-001~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~AB-12T~0000001~0000010~10~2100343639~sdfsd~sdfsf~fdfsd~01/01/2015~02BLP2-001~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~AB-12T~0000001~0000019~19</S><S>sadfsa~14/04/2014</S></S01>"
 'Barcode_Scaned str1
 
 'str1 = "aa999142100343639   01201400200200100101/0101/01/2009<S01><S>01/01/2014~31/03/2014</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~12~0000001~0000010~0000011~0000012~0000001~0000007~8~5~1~1~1~2~1~3~0000008~0000011~4~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-001~AB-12T~15~0000001~0000009~0000010~0000015~0000001~0000010~10~7~1~1~1~2~1~3~0000011~0000015~5</S><S>dsfsdf~dfs~14/04/2014</S></S01>"
@@ -1818,9 +1818,15 @@ Private Sub Command1_Click()
 'str1 = "aa999092100343639   01201400300500100101/0101/01/2010<S01><S>14/04/2014</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~0000001~0000010~10~sdfsdf~01~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-001~AB-12T~0000001~0000010~10~sdfsg~03</S><S>fsdg~fgd~Nguyen Van A~14/04/2014</S></S01>"
 'Barcode_Scaned str1
 
-str1 = "aa999062100343639   03201400000000100201/0114/06/2006<S01><S></S><S>~~0.000~0.00~0.000~0~0.00</S><S>~~0.000~0.00~0.00"
-Barcode_Scaned str1
-str1 = "aa999062100343639   0320140000000020020~0~0.00</S><S>~~0.000~0.00~0.000~0~0.00</S><S>~~~16/04/2014~1~~0~0~</S></S01>"
+'str1 = "aa999062100343639   03201400000000100201/0114/06/2006<S01><S></S><S>~~0.000~0.00~0.000~0~0.00</S><S>~~0.000~0.00~0.00"
+'Barcode_Scaned str1
+'str1 = "aa999062100343639   0320140000000020020~0~0.00</S><S>~~0.000~0.00~0.000~0~0.00</S><S>~~~16/04/2014~1~~0~0~</S></S01>"
+'Barcode_Scaned str1
+
+'str1 = "aa999162100343639   01201400100100100101/0101/01/2010<S01><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>Nguyen Van A~28/04/2014~~~1~~</S></S01>"
+'Barcode_Scaned str1
+
+str1 = "aa99914030517293400101201400100100100101/0101/01/2009<S01><S>01/01/2014~31/03/2014</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0</S><S>~df~09/05/2014</S></S01>"
 Barcode_Scaned str1
 
 End Sub
@@ -1849,28 +1855,52 @@ Private Sub Form_Activate()
 End Sub
 
 Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
-'    On Error GoTo ErrorHandle
-'    Dim strHelpContexID As String
-'    Dim i As Integer
-'    Dim lCol As Long, lRow As Long
+    Dim str1 As String
+
+    '    On Error GoTo ErrorHandle
+    '    Dim strHelpContexID As String
+    '    Dim i As Integer
+    '    Dim lCol As Long, lRow As Long
+    '
+'    If KeyCode = vbKeyF12 Then
+'    str1 = "aa999732100343639   01201400100100100201/0114/06/2006<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0~22~0~0~0~0"
+'Barcode_Scaned str1
+'str1 = "aa999732100343639   012014001001002002~0~22~1~0</S><S>1~~~~~~~</S><S>~~~16/04/2014~1~~~~~</S></S02>"
+'Barcode_Scaned str1
+''        str1 = "aa322102100343639   01201400100100100101/0101/01/2010<S01><S>3242~123~45~01/04/2014~13</S><S>Bi™n lai thu ph›, l÷ ph›kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~0000001~0000010~10</S><S>sdf~dsf~01/04/2014</S></S01>"
+''        Barcode_Scaned str1
+''
+''        str1 = "aa999112100343639   01201400100100100101/0114/06/2006<S01><S></S><S>100000000~5000000~95000000~10000000~10000000~95000000~10000000~10000000~75000000~50000000~5000000~20000000~~0~0~0~11100000~0~0~0~11100000~x~01~01/01/2014~3423~11096577</S><S>~</S><S>sfs~fs~dfsd~10/02/2014~1~0~~1052</S></S01>"
+''        Barcode_Scaned str1
 '
-'    If KeyCode = vbKeyF1 Then
-'        fpSpread1.Sheet = mCurrentSheet
-'        lCol = fpSpread1.ActiveCol
-'        lRow = fpSpread1.ActiveRow
-'        GetCellSpan fpSpread1, lCol, lRow
-'        strHelpContexID = GetAttribute(xmlDocumentInit(mCurrentSheet - 1).nodeFromID(GetCellID(fpSpread1, lCol, lRow)), "HelpContextID") 'Split(GetAttribute(xmlDocumentInit(mCurrentSheet - 1).nodeFromID(GetCellID(fpSpread1, lCol, lRow)), "HelpContexID"), "_")
-'        If strHelpContexID <> vbNullString Then
-'            fpSpread1.HelpContextID = CLng(strHelpContexID) 'Val(strHelpContexID(0) & strHelpContexID(1) & CStr(fpSpread1.ColLetterToNumber(strHelpContexID(2))) & strHelpContexID(3))
-'        Else
-'            fpSpread1.HelpContextID = 0
-'        End If
+''        str1 = "aa999072100343639   04201400400500100101/0101/01/2009<S01><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~10~0000001~0000010~01/01/2015~sdfs~01/01/2014~dsfdsf~6868686868~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-001~AB-12T~10~0000001~0000010~01/01/2015~sfds~01/01/2014~sdfs~2100343639</S><S>sdfsdfdfs~08/04/2014~Nguyen Van A</S></S01>"
+''        Barcode_Scaned str1
+'        '
+''        str1 = "aa999132100343639   01201400100100100101/0101/01/2009<S01><S>01/01/2014~31/03/2014</S><S>6868686868~sdfsdfs~324sdfsf~234234~01/01/2015~01BLP2-001~Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~AB-12T~0000001~0000010~10~2100343639~sdfsd~sdfsf~fdfsd~01/01/2015~02BLP2-001~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~AB-12T~0000001~0000019~19</S><S>sadfsa~14/04/2014</S></S01>"
+''        Barcode_Scaned str1
+'
+''        str1 = "aa999142100343639   01201400200200100101/0101/01/2009<S01><S>01/01/2014~31/03/2014</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~12~0000001~0000010~0000011~0000012~0000001~0000007~8~5~1~1~1~2~1~3~0000008~0000011~4~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-001~AB-12T~15~0000001~0000009~0000010~0000015~0000001~0000010~10~7~1~1~1~2~1~3~0000011~0000015~5</S><S>dsfsdf~dfs~14/04/2014</S></S01>"
+''        Barcode_Scaned str1
+'
+'        str1 = "aa999092100343639   01201400300500100101/0101/01/2010<S01><S>14/04/2014</S><S>Bi™n lai thu ph›, l÷ ph› kh´ng c„ m÷nh gi∏~01BLP2-001~AB-12T~0000001~0000010~10~sdfsdf~01~Bi™n lai thu ph›, l÷ ph› c„ m÷nh gi∏~02BLP2-001~AB-12T~0000001~0000010~10~sdfsg~03</S><S>fsdg~fgd~Nguyen Van A~14/04/2014</S></S01>"
+'        Barcode_Scaned str1
+'        '        fpSpread1.Sheet = mCurrentSheet
+'        '        lCol = fpSpread1.ActiveCol
+'        '        lRow = fpSpread1.ActiveRow
+'        '        GetCellSpan fpSpread1, lCol, lRow
+'        '        strHelpContexID = GetAttribute(xmlDocumentInit(mCurrentSheet - 1).nodeFromID(GetCellID(fpSpread1, lCol, lRow)), "HelpContextID") 'Split(GetAttribute(xmlDocumentInit(mCurrentSheet - 1).nodeFromID(GetCellID(fpSpread1, lCol, lRow)), "HelpContexID"), "_")
+'        '        If strHelpContexID <> vbNullString Then
+'        '            fpSpread1.HelpContextID = CLng(strHelpContexID) 'Val(strHelpContexID(0) & strHelpContexID(1) & CStr(fpSpread1.ColLetterToNumber(strHelpContexID(2))) & strHelpContexID(3))
+'        '        Else
+'        '            fpSpread1.HelpContextID = 0
+'        '        End If
 '    End If
-'
-'    Exit Sub
-'
-'ErrorHandle:
-'    SaveErrorLog Me.Name, "Form_KeyDown", Err.Number, Err.Description
+
+    '
+    '    Exit Sub
+    '
+    'ErrorHandle:
+    '    SaveErrorLog Me.Name, "Form_KeyDown", Err.Number, Err.Description
 End Sub
 
 Private Sub Form_Load()
@@ -3600,6 +3630,14 @@ Private Function LoadForm(ByVal strData As String) As Boolean
     'end
     
     If clsDAO.Connected = False Then
+        Me.MousePointer = vbHourglass
+        frmSystem.MousePointer = vbHourglass
+        clsDAO.CreateConnectionString spathVat & "\dtnt\"
+        clsDAO.Connect
+        frmSystem.MousePointer = vbDefault
+        Me.MousePointer = vbDefault
+    Else
+        clsDAO.Disconnect
         Me.MousePointer = vbHourglass
         frmSystem.MousePointer = vbHourglass
         clsDAO.CreateConnectionString spathVat & "\dtnt\"
