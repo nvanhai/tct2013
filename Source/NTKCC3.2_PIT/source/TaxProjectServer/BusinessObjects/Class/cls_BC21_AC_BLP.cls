@@ -267,8 +267,12 @@ Public Function Prepared3() As Boolean
             .GetText .ColLetterToNumber("AI"), .Row, tempValue
             If CStr(tempValue) = "02" Then
                 .SetText .ColLetterToNumber("AF"), .Row, GetAttribute(GetMessageCellById("0171"), "Msg")
+                .SetText .ColLetterToNumber("AI"), .Row, "04"
+                UpdateCell fps, .ColLetterToNumber("AI"), .Row, "04"
             ElseIf CStr(tempValue) = "04" Then
                 .SetText .ColLetterToNumber("AF"), .Row, GetAttribute(GetMessageCellById("0172"), "Msg")
+                .SetText .ColLetterToNumber("AI"), .Row, "02"
+                UpdateCell fps, .ColLetterToNumber("AI"), .Row, "02"
             End If
             .Row = .Row + 1
         Loop Until .Text = "aa"
