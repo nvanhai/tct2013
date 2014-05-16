@@ -7436,10 +7436,15 @@ Private Sub Form_Activate()
     If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = 17 Then
         LoadDataFiles
     End If
-
+    'Set culture EN-US de format number thap phan "."
+    SetAmerican
     Exit Sub
 ErrorHandle:
     SaveErrorLog Me.Name, "Form_Activate", Err.Number, Err.Description
+End Sub
+
+Public Sub SetAmerican()
+    Call SetThreadLocale(LANG_EN_US)
 End Sub
 
 ''' Form_KeyDown description
