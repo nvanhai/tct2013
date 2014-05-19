@@ -6786,6 +6786,7 @@ Private Sub cmdPrint_Click()
     End If
     '****************************
         
+    If isLocaleDecimalClient = True Then
         If CheckValidData = True Then
             ' Trong truong hop in dieu chinh thi cac to khai quyet toan TNCN hien thi o check "In thong tin dieu chinh"
             Dim varMenuId As String
@@ -6944,6 +6945,10 @@ Private Sub cmdPrint_Click()
         Else
             DisplayMessage "0016", msOKOnly, miInformation
         End If
+        
+    Else
+        DisplayMessage "0313", msOKOnly, miInformation
+    End If
     
     '****************************
     ' added

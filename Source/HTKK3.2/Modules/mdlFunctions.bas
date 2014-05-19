@@ -4617,6 +4617,15 @@ End Function
 Public Function ToDate(str As String) As Date
      ToDate = DateSerial(Val(Right$(Replace$(str, "/", ""), 4)), Val(Mid$(Replace$(str, "/", ""), 3, 2)), Val(Left$(Replace$(str, "/", ""), 2)))
 End Function
+Public Function isLocaleDecimalClient() As Boolean
+    Dim LocaleDecimal As String
+    LocaleDecimal = Mid$(CStr(11 / 10), 2, 1)
+    If InStr(1, LocaleDecimal, ",") > 0 Then
+        isLocaleDecimalClient = False
+    ElseIf InStr(1, LocaleDecimal, ".") > 0 Then
+        isLocaleDecimalClient = True
+    End If
+End Function
 
 Public Sub ParseCell(cellID As String, lCol As Long, lRow As Long)
     Dim cellArray() As String
