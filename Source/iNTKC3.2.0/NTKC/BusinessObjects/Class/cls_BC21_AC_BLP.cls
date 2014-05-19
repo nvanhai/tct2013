@@ -182,12 +182,12 @@ Public Function Prepared3() As Boolean
             '//04: Da su dung; 02: Chua su dung. ben HTKK dang bi lon - > NTK dao lai
             .GetText .ColLetterToNumber("AI"), .Row, tempValue
             If CStr(tempValue) = "04" Then ' da su dung
-                .SetText .ColLetterToNumber("AF"), .Row, GetAttribute(GetMessageCellById("0134"), "Msg")
+                .SetText .ColLetterToNumber("AF"), .Row, GetAttribute(GetMessageCellById("0136"), "Msg")
                 'fix for HTKK
                 .SetText .ColLetterToNumber("AI"), .Row, "02"
                 UpdateCell fps, .ColLetterToNumber("AI"), .Row, "02"
             ElseIf CStr(tempValue) = "02" Then ' chua
-                .SetText .ColLetterToNumber("AF"), .Row, GetAttribute(GetMessageCellById("0133"), "Msg")
+                .SetText .ColLetterToNumber("AF"), .Row, GetAttribute(GetMessageCellById("0135"), "Msg")
                 'fix for HTKK
                 .SetText .ColLetterToNumber("AI"), .Row, "04"
                 UpdateCell fps, .ColLetterToNumber("AI"), .Row, "04"
