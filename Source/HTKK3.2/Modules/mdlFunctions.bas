@@ -2,6 +2,7 @@ Attribute VB_Name = "mdlFunctions"
 Option Explicit
 Public Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hwnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
 Public Declare Function HTMLHelp Lib "hhctrl.ocx" Alias "HtmlHelpA" (ByVal hwnd As Long, ByVal lpHelpFile As String, ByVal wCommand As Long, dwData As Any) As Long
+Public Declare Function SetThreadLocale Lib "kernel32" (ByVal Locale As Long) As Long
 
 Public Type activeForm
     id As String
@@ -20,7 +21,7 @@ Global zoomindex As Integer
 'Public APP_VERSION As String
 'Public Const APP_VERSION = "3.0.0"
 'Demo
-
+Public Const LANG_EN_US = 1033
 'Ket xuat XML
 Public Const maDVu = "HTKK"
 Public Const tenDVu = "HTKK"
@@ -167,7 +168,7 @@ Private Sub SetActiveCell(pGrid As fpSpread, pCellString As String)
     Dim lAnchor As Integer
     
     lAnchor = InStr(1, pCellString, "_")
-    pGrid.col = pGrid.ColLetterToNumber(Left(pCellString, lAnchor - 1))
+    pGrid.Col = pGrid.ColLetterToNumber(Left(pCellString, lAnchor - 1))
     pGrid.Row = Val(Right(pCellString, Len(pCellString) - lAnchor))
     
     Exit Sub
@@ -1309,7 +1310,7 @@ Public Sub SetupData(pGrid As fpSpread)
                 
                     '  ParserCellID pGrid, vCellID, lCol, lRow
                     
-                    .col = lCol
+                    .Col = lCol
                     .Row = lRow
 
                     If Not .Lock And Not blnHasSetActiveCell Then
@@ -1343,7 +1344,7 @@ Public Sub SetupData(pGrid As fpSpread)
                                 SetAttribute xmlNodeCell, "Value", .Text
                             Else
                                 .Text = vValue
-                                .col = lCol
+                                .Col = lCol
                                 .Row = lRow
 
                                 If vValue <> .Text Then
@@ -1369,7 +1370,7 @@ Public Sub SetupData(pGrid As fpSpread)
                                 SetAttribute xmlNodeCell, "Value", .Text
                             Else
                                 .Text = vValue
-                                .col = lCol
+                                .Col = lCol
                                 .Row = lRow
 
                                 If vValue <> .Text Then
@@ -1433,7 +1434,7 @@ Public Sub SetupData(pGrid As fpSpread)
                                 SetAttribute xmlNodeCell, "Value", .Text
                             Else
                                 .Text = vValue
-                                .col = lCol
+                                .Col = lCol
                                 .Row = lRow
 
                                 If vValue <> .Text Then
@@ -1454,7 +1455,7 @@ Public Sub SetupData(pGrid As fpSpread)
                                     SetAttribute xmlNodeCell, "Value", .value
                                 Else
                                     .Text = vValue
-                                    .col = lCol
+                                    .Col = lCol
                                     .Row = lRow
 
                                     If vValue <> .Text Then
@@ -1474,7 +1475,7 @@ Public Sub SetupData(pGrid As fpSpread)
                                 SetAttribute xmlNodeCell, "Value", .value
                             Else
                                 .value = vValue
-                                .col = lCol
+                                .Col = lCol
                                 .Row = lRow
 
                                 If vValue <> .value Then
@@ -1660,7 +1661,7 @@ Public Sub SetupReportData(fpsGrid As fpSpread, Optional IsInterface As Boolean 
                     InsertRow fpsGrid, lRow, lRow2s, True
                     ResetRow xmlNodeCell, fpsGrid, lRow, lRow2s
                 End If
-                .col = lCol
+                .Col = lCol
                 .Row = lRow
                 
                 If GetAttribute(xmlNodeCell, "PageBreak") = "1" Then
@@ -1736,7 +1737,7 @@ Public Sub SetupReportData(fpsGrid As fpSpread, Optional IsInterface As Boolean 
                  '   .SetText lCol, lRow, GetAttribute(xmlNodeCell, "Value")
                 End If
                 
-                If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "12" And .col = .ColLetterToNumber("CD") And (.Row = "54" Or .Row = "56" Or .Row = "57" Or .Row = "58") Then
+                If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "12" And .Col = .ColLetterToNumber("CD") And (.Row = "54" Or .Row = "56" Or .Row = "57" Or .Row = "58") Then
                    If .Text <> "" Then
                         If Len(.Text) <= 2 Then
                             .Text = Left(.Text & ".000", 6)
@@ -1758,7 +1759,7 @@ Public Sub SetupReportData(fpsGrid As fpSpread, Optional IsInterface As Boolean 
                     End If
                 End If
                 
-                 If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "12" And .col = .ColLetterToNumber("CD") And .Row = "59" And .Text <> "" Then
+                 If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "12" And .Col = .ColLetterToNumber("CD") And .Row = "59" And .Text <> "" Then
                     If GetAttribute(TAX_Utilities_v1.Data(0).nodeFromID("H_47"), "Value") = "x" Or GetAttribute(TAX_Utilities_v1.Data(0).nodeFromID("H_47"), "Value") = "1" Then
                         .cellType = CellTypeEdit
                         .TypeHAlign = TypeHAlignRight
@@ -2185,7 +2186,7 @@ Private Sub ResetRow(ByVal xmlCellNode As MSXML.IXMLDOMNode, fpsGrid As fpSpread
     For Each xmlTempCellNode In xmlCellsNode.childNodes
         ParserCellID fpsGrid, GetAttribute(xmlTempCellNode, "CellID2"), lngCol, lngRow
         With fpsGrid
-            .col = lngCol
+            .Col = lngCol
             .Row = lngRow
             If .cellType = CellTypeNumber Then
                 .value = 0
@@ -2564,7 +2565,7 @@ Public Sub InsertRow(fpSpread1 As fpSpread, ByVal pRow As Long, lRows As Long, O
                     '***************************
                     'ThanhDX added
                     'Date: 26/12/2005
-                    .col = i
+                    .Col = i
                     lBgColor = .BackColor
                     .Row = pRow + lRows - lRowCtrl
                     If Not .Lock Then
@@ -3392,7 +3393,7 @@ Public Sub SetupDataKHBS(pGrid As fpSpread)
                     .SetText .ColLetterToNumber("B"), 24, hannop
                     .SetText .ColLetterToNumber("BE"), 17, songaynopcham
                     .SetText .ColLetterToNumber("BG"), 23, CStr(format(Date, "dd/mm/yyyy"))
-                    .col = .ColLetterToNumber("BG")
+                    .Col = .ColLetterToNumber("BG")
                     .Row = 22
                      SetAttribute TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).nodeFromID("BG_22"), "Value", .Text
                     
@@ -3607,7 +3608,7 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                         If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
                                 Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 20)
                                 ParserCellID pGrid, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
-                                .col = lCol_temp
+                                .Col = lCol_temp
                                 .Row = lRow_temp
                                 '.Formula = ""
                                 .value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
@@ -3616,7 +3617,7 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                                 
                                 Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 19)
                                 ParserCellID pGrid, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
-                                .col = lCol_temp
+                                .Col = lCol_temp
                                 .Row = lRow_temp
                                 '.Formula = ""
                                 '.value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 1), "Value")
@@ -3626,7 +3627,7 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                                 If InStr(1, strIdTkhaiTT156, "~" & Trim$(strIdTkCheck) & "~", vbTextCompare) > 0 Then
                                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18)
                                     ParserCellID pGrid, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
-                                    .col = lCol_temp
+                                    .Col = lCol_temp
                                     .Row = lRow_temp
                                     '.Formula = ""
                                     .value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
@@ -3635,7 +3636,7 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                                     
                                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 17)
                                     ParserCellID pGrid, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
-                                    .col = lCol_temp
+                                    .Col = lCol_temp
                                     .Row = lRow_temp
                                     
                                     '.Formula = ""
@@ -3645,7 +3646,7 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                                 Else
                                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
                                     ParserCellID pGrid, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
-                                    .col = lCol_temp
+                                    .Col = lCol_temp
                                     .Row = lRow_temp
                                     '.Formula = ""
                                     .value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
@@ -3654,7 +3655,7 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                                     
                                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6)
                                     ParserCellID pGrid, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
-                                    .col = lCol_temp
+                                    .Col = lCol_temp
                                     .Row = lRow_temp
                                     
                                     '.Formula = ""
@@ -3703,7 +3704,7 @@ Public Sub FillData(pGrid As fpSpread, xmlNodeList As MSXML.IXMLDOMNodeList, mCu
        
        For Each xmlNodeCell In xmlNodeList
             ParserCellID pGrid, GetAttribute(xmlNodeCell, "CellID"), lCol, lRow
-            .col = lCol
+            .Col = lCol
             .Row = lRow
             If Not .Lock And Not blnHasSetActiveCell Then
                 .SetActiveCell lCol, lRow
@@ -3730,7 +3731,7 @@ Public Sub FillData(pGrid As fpSpread, xmlNodeList As MSXML.IXMLDOMNodeList, mCu
                             SetAttribute xmlNodeCell, "Value", .Text
                         Else
                             .Text = GetAttribute(xmlNodeCell, "Value")
-                            .col = lCol
+                            .Col = lCol
                             .Row = lRow
                             If GetAttribute(xmlNodeCell, "Value") <> .Text Then
                                 SetAttribute xmlNodeCell, "Value", .Text
@@ -3746,7 +3747,7 @@ Public Sub FillData(pGrid As fpSpread, xmlNodeList As MSXML.IXMLDOMNodeList, mCu
                             SetAttribute xmlNodeCell, "Value", .Text
                         Else
                             .Text = GetAttribute(xmlNodeCell, "Value")
-                            .col = lCol
+                            .Col = lCol
                             .Row = lRow
                             If GetAttribute(xmlNodeCell, "Value") <> .Text Then
                                 SetAttribute xmlNodeCell, "Value", .Text
@@ -3791,7 +3792,7 @@ Public Sub FillData(pGrid As fpSpread, xmlNodeList As MSXML.IXMLDOMNodeList, mCu
                             SetAttribute xmlNodeCell, "Value", .Text
                         Else
                             .Text = GetAttribute(xmlNodeCell, "Value")
-                            .col = lCol
+                            .Col = lCol
                             .Row = lRow
                             If GetAttribute(xmlNodeCell, "Value") <> .Text Then
                                 SetAttribute xmlNodeCell, "Value", .Text
@@ -3809,7 +3810,7 @@ Public Sub FillData(pGrid As fpSpread, xmlNodeList As MSXML.IXMLDOMNodeList, mCu
                                 SetAttribute xmlNodeCell, "Value", .value
                             Else
                             .Text = GetAttribute(xmlNodeCell, "Value")
-                            .col = lCol
+                            .Col = lCol
                             .Row = lRow
                             If GetAttribute(xmlNodeCell, "Value") <> .Text Then
                                 SetAttribute xmlNodeCell, "Value", .Text
@@ -3826,7 +3827,7 @@ Public Sub FillData(pGrid As fpSpread, xmlNodeList As MSXML.IXMLDOMNodeList, mCu
                             SetAttribute xmlNodeCell, "Value", .value
                         Else
                             .value = GetAttribute(xmlNodeCell, "Value")
-                            .col = lCol
+                            .Col = lCol
                             .Row = lRow
                             If GetAttribute(xmlNodeCell, "Value") <> .value Then
                                 SetAttribute xmlNodeCell, "Value", .value
@@ -3928,7 +3929,7 @@ Private Sub ResetKHBSData(fpSp As fpSpread, blnExitsData As Boolean)
      For Each xmlNodeReset In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
                 fpSp.sheet = 1
                 ParserCellID fpSp, GetAttribute(xmlNodeReset, "CellID"), lCol, lRow
-                fpSp.col = lCol
+                fpSp.Col = lCol
                 fpSp.Row = lRow
                 Select Case fpSp.cellType
 '                    Case CellTypeCheckBox
@@ -3956,7 +3957,7 @@ Private Sub ResetKHBSData(fpSp As fpSpread, blnExitsData As Boolean)
                                     strValue = CStr(CDbl(GetAttribute(xmlNodeC, "Value")) - CDbl(GetAttribute(xmlNodeH, "Value")))
                                     ParserCellID fpSp, strCellID1, lCol, lRow
                                     fpSp.sheet = 1
-                                    fpSp.col = lCol
+                                    fpSp.Col = lCol
                                     fpSp.Row = lRow
                                     fpSp.value = strValue
                                     
@@ -3983,7 +3984,7 @@ End Sub
 Private Sub FormatTextPercent(fps As fpSpread, ByVal intSheet As Integer, ByVal lCol As Long, ByVal lRow As Long)
     fps.sheet = intSheet
     fps.Row = lRow
-    fps.col = lCol
+    fps.Col = lCol
     fps.cellType = CellTypeNumber
     ' Set the characters to right
     fps.TypeHAlign = TypeHAlignRight
@@ -4003,37 +4004,37 @@ Private Sub PrintLabelKHBS(idTK As String, fps As fpSpread, ByVal intSheet As In
     .sheet = 1
         Select Case idTK
             Case "01"
-                .col = .ColLetterToNumber("CM")
+                .Col = .ColLetterToNumber("CM")
                 .Row = 1
             Case "02"
-                .col = .ColLetterToNumber("CI")
+                .Col = .ColLetterToNumber("CI")
                 .Row = 1
             Case "04"
-                .col = .ColLetterToNumber("CI")
+                .Col = .ColLetterToNumber("CI")
                 .Row = 1
             Case "07"
-                .col = .ColLetterToNumber("CI")
+                .Col = .ColLetterToNumber("CI")
                 .Row = 1
             Case "11"
-                .col = .ColLetterToNumber("CI")
+                .Col = .ColLetterToNumber("CI")
                 .Row = 1
             Case "12"
-                .col = .ColLetterToNumber("CI")
+                .Col = .ColLetterToNumber("CI")
                 .Row = 1
             Case "03"
-                .col = .ColLetterToNumber("AB")
+                .Col = .ColLetterToNumber("AB")
                 .Row = 1
             Case "06"
-                .col = .ColLetterToNumber("AI")
+                .Col = .ColLetterToNumber("AI")
                 .Row = 1
             Case "09"
-                .col = .ColLetterToNumber("AI")
+                .Col = .ColLetterToNumber("AI")
                 .Row = 1
             Case "08"
-                .col = .ColLetterToNumber("AI")
+                .Col = .ColLetterToNumber("AI")
                 .Row = 1
             Case "05"
-                .col = .ColLetterToNumber("AI")
+                .Col = .ColLetterToNumber("AI")
                 .Row = 1
         End Select
                 .BorderStyle = BorderStyleFixedSingle
