@@ -6458,7 +6458,7 @@ Private Sub cmdSave_Click()
     
     Debug.Print "Bat dau ghi" & Time
     Lbload.Visible = True
-    
+
     flgloadToKhai = False
     Dim varMenuId As String
     varMenuId = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
@@ -7431,7 +7431,8 @@ End Sub
 ''' No parameter
 Private Sub Form_Activate()
     On Error GoTo ErrorHandle
-        
+    Dim dwLCID As Long
+    
     ResizeGrid
 
     '    Me.Top = (frmSystem.ScaleHeight - Me.Height) \ 2 + 100
@@ -7441,15 +7442,13 @@ Private Sub Form_Activate()
     If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = 17 Then
         LoadDataFiles
     End If
-    'Set culture EN-US de format number thap phan "."
-    SetAmerican
+    
+    'Set format number thap phan "."
+    dwLCID = GetSystemDefaultLCID
+    SetLocaleInfo dwLCID, LOCALE_SDECIMAL, "."
     Exit Sub
 ErrorHandle:
     SaveErrorLog Me.Name, "Form_Activate", Err.Number, Err.Description
-End Sub
-
-Public Sub SetAmerican()
-    Call SetThreadLocale(LANG_EN_US)
 End Sub
 
 ''' Form_KeyDown description
@@ -7804,7 +7803,7 @@ Private Sub Form_Resize()
             And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "13" _
             And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "14" _
            Then
-            InvisibleXmlButton
+            'InvisibleXmlButton
         End If
     End If
 
@@ -15596,4 +15595,3 @@ Public Sub ParseCell(cellID As String, lCol As Long, lRow As Long)
         lCol = 0
     End If
 End Sub
-
