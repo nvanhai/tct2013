@@ -169,7 +169,7 @@
 	<Infor ID="0176" Msg="§· hÕt hiÓu lùc cña mÉu tê khai theo th«ng t­ 84. B¹n h·y kiÓm tra l¹i"/>
 	<Infor ID="0177" Msg="Th¸ng 1/2010 b¹n h·y kª khai mÉu 02/KK-TNCN vµ 03/KK-TNCN theo mÉu tê khai cña th«ng t­ 84"/>
 	<Infor ID="0178" Msg="Hạch toán Chỉ tiêu [35] + [36] +[37] vào mục 1000, tiểu mục 1001"/>
-	<Infor ID="0179" Msg="Hạch toán chỉ tiêu [30] + [32] vào mục 1000, tiểu mục 1004"/>
+	<Infor ID="0179" Msg="Hạch toán chỉ tiêu [30] vào mục 1000, tiểu mục 1004"/>
 	<Infor ID="0180" Msg="Hạch toán chỉ tiêu [34] vào mục 1000, tiểu mục 1008"/>
 	<Infor ID="0181" Msg="Hạch toán chỉ tiêu [36] vào mục 1000, tiểu mục 1007"/>
 	<Infor ID="0182" Msg="Hạch toán chỉ tiêu [38] vào mục 1000, tiểu mục 1003"/>
@@ -277,7 +277,7 @@
 	<Infor ID="0284" Msg="Hạch toán chỉ tiêu [23] + [30] vào mục 1000, tiểu mục 1003"/>
 	<Infor ID="0285" Msg="Hạch toán chỉ tiêu [25] + [27] vào mục 1000, tiểu mục 1001"/>
 	<Infor ID="0286" Msg="B¹n ®©ng chän sai mÉu. H·y chän ®óng tê khai 02/KK-BH§C!"/>
-	<Infor ID="0287" Msg="o	Hạch toán chỉ tiêu [40] vào mục 1000, tiểu mục 1005"/>
+	<Infor ID="0287" Msg="Hạch toán chỉ tiêu [32] + [40] vào mục 1000, tiểu mục 1005"/>
 	<Infor ID="0288" Msg="Hạch toán chỉ tiêu [43] vào mục 1700, tiểu mục 1701"/>
 	<Infor ID="0289" Msg="Hạch toán cột (5) vào mục, tiểu mục 1700-1701 và 1050-1052"/>
 	<Infor ID="0290" Msg="Phô lôc 01-1/GTGT cã d÷ liÖu ë dßng 'Hµng hãa, dÞch vô chÞu thuÕ suÊt thuÕ GTGT 0% (*)', b¾t buéc ph¶i cã phôc lôc 01-3/GTGT"/>
