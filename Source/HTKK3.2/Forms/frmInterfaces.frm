@@ -7016,8 +7016,9 @@ Private Sub Command1_Click()
             fpSpread1.Col = lCol_temp
             fpSpread1.Row = lRow_temp
             
-            fpSpread1.Formula = "BD5"
             fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
+            fpSpread1.Formula = "BD5"
+            
 '            fpSpread1.value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
 '                            (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 11), "Value")
                             
