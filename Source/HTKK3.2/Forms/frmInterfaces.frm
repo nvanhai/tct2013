@@ -7444,9 +7444,10 @@ Private Sub Form_Activate()
         LoadDataFiles
     End If
     
-    'Set format number thap phan "."
+    'Set format number thap phan "." phan cach ","
     dwLCID = GetSystemDefaultLCID
     SetLocaleInfo dwLCID, LOCALE_SDECIMAL, "."
+    SetLocaleInfo dwLCID, LOCALE_STHOUSAND, ","
     Exit Sub
 ErrorHandle:
     SaveErrorLog Me.Name, "Form_Activate", Err.Number, Err.Description

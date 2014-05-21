@@ -30,7 +30,7 @@ Global zoomindex As Integer
 'Public Const APP_VERSION = "3.0.0"
 'Demo
 Public Const LOCALE_SDECIMAL = &HE
-
+Public Const LOCALE_STHOUSAND = &HF
 'Ket xuat XML
 Public Const maDVu = "HTKK"
 Public Const tenDVu = "HTKK"
