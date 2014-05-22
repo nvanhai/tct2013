@@ -126,7 +126,7 @@ Begin VB.Form frmReportData
       DisplayText     =   ""
       BarWidthReduction=   -1
       TextAlignment   =   0
-      Quality         =   0
+      Quality         =   68
    End
 End
 Attribute VB_Name = "frmReportData"
@@ -506,9 +506,9 @@ nextPrinter:
             fpsReport.Row = 34
             fpsReport.Col = fpsReport.ColLetterToNumber("C")
             fpsReport.SetText fpsReport.ColLetterToNumber("C"), 34, GetAttribute(GetMessageCellById("0264"), "Msg")
-            fpsReport.FontSize = 6
+            fpsReport.fontSize = 6
             fpsReport.Col = fpsReport.ColLetterToNumber("O")
-            fpsReport.FontSize = 7
+            fpsReport.fontSize = 7
 '            fpsReport.RowHeight(34) = 20
 '            fpsReport.Row = 67
 '            fpsReport.RowHeight(67) = 45
@@ -616,37 +616,37 @@ nextPrinter:
         Do
             fpsReport.Row = idx
             fpsReport.Col = fpsReport.ColLetterToNumber("M")
-            fpsReport.CellType = 1
+            fpsReport.cellType = 1
             fpsReport.TypeVAlign = TypeVAlignCenter
             'fpsReport.TypeTextWordWrap = True
             
             fpsReport.Col = fpsReport.ColLetterToNumber("AJ")
-            fpsReport.CellType = 1
+            fpsReport.cellType = 1
             fpsReport.TypeVAlign = TypeVAlignCenter
             'fpsReport.TypeTextWordWrap = True
             
             fpsReport.Col = fpsReport.ColLetterToNumber("AY")
-            fpsReport.CellType = 1
+            fpsReport.cellType = 1
             fpsReport.TypeVAlign = TypeVAlignCenter
             'fpsReport.TypeTextWordWrap = True
             
             fpsReport.Col = fpsReport.ColLetterToNumber("BK")
-            fpsReport.CellType = 1
+            fpsReport.cellType = 1
             fpsReport.TypeVAlign = TypeVAlignCenter
             'fpsReport.TypeTextWordWrap = True
             
             fpsReport.Col = fpsReport.ColLetterToNumber("BU")
-            fpsReport.CellType = 1
+            fpsReport.cellType = 1
             fpsReport.TypeVAlign = TypeVAlignCenter
             'fpsReport.TypeTextWordWrap = True
             
             fpsReport.Col = fpsReport.ColLetterToNumber("CC")
-            fpsReport.CellType = 1
+            fpsReport.cellType = 1
             fpsReport.TypeVAlign = TypeVAlignCenter
             'fpsReport.TypeTextWordWrap = True
             
             fpsReport.Col = fpsReport.ColLetterToNumber("CK")
-            fpsReport.CellType = 1
+            fpsReport.cellType = 1
             fpsReport.TypeVAlign = TypeVAlignCenter
             'fpsReport.TypeTextWordWrap = True
             
@@ -854,13 +854,13 @@ On Error GoTo ErrHandle
                 For intRow = 1 To .MaxRows
                     .Col = intCol
                     .Row = intRow
-                    If .CellType = CellTypeNumber Then
+                    If .cellType = CellTypeNumber Then
                         .TypeNumberSeparator = "."
                         .TypeNumberDecimal = ","
                         .TypeNumberMax = 99999999999999#
                         .TypeNumberMin = -99999999999999#
                         .TypeNumberNegStyle = TypeNumberNegStyle1
-                    ElseIf .CellType = CellTypeEdit Then
+                    ElseIf .cellType = CellTypeEdit Then
                         .TypeEditMultiLine = True
                     End If
                     
@@ -1032,14 +1032,14 @@ On Error GoTo ErrHandle
     
     Printer.CurrentX = 0
     Printer.CurrentY = 0
-    Printer.FontSize = 1
+    Printer.fontSize = 1
     
     ' Begin print Barcode into page 1 or pages in PDF Barcode of iHTKK
     ' Ghep them the nhan dang ma vach <TCT-BARCODE> chuoi ma vach </TCT-BARCODE>
     strBarcodeInPDF = "<TCT-BARCODE>" & strBarcodeInPDF & "</TCT-BARCODE>"
     arrStrValueBarCode = CutStringByNumChar(strBarcodeInPDF, 124)
     For i = 1 To UBound(arrStrValueBarCode)
-        Printer.FontSize = 1
+        Printer.fontSize = 1
         Printer.ForeColor = vbWhite
         Printer.Print arrStrValueBarCode(i)
         Printer.ForeColor = vbBlack
@@ -1049,7 +1049,8 @@ On Error GoTo ErrHandle
 
 
     ' Neu la to quyet toan TNCN thi ko in ma vach, Cac to khai khac van in ma vach binh thuong
-    If (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" Or (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "41" And isDLT = True)) And (intCurrPage = 1 Or intCurrPage = 2) Then
+    'If (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" Or (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "41" And isDLT = True)) And (intCurrPage = 1 Or intCurrPage = 2) Then
+    If (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17") And (intCurrPage = 1 Or intCurrPage = 2) Then
 '   Print right align
         For intCtrl = intNumberOfBarcode - 1 To 0 Step -1
             If intStart + intCtrl <= UBound(arrStrValue) And IsPrintedPage(intCurrPage) Then
@@ -1057,7 +1058,8 @@ On Error GoTo ErrHandle
                 lXOffset = lXOffset - lXSize - lXRange
             End If
         Next intCtrl
-    ElseIf (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "59" Or (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "41" And isDLT = False)) And intCurrPage = 1 Then
+    'ElseIf (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "59" Or (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "41" And isDLT = False)) And intCurrPage = 1 Then
+    ElseIf (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "59") And intCurrPage = 1 Then
 '   Print right align
         For intCtrl = intNumberOfBarcode - 1 To 0 Step -1
             If intStart + intCtrl <= UBound(arrStrValue) And IsPrintedPage(intCurrPage) Then
@@ -1065,7 +1067,8 @@ On Error GoTo ErrHandle
                 lXOffset = lXOffset - lXSize - lXRange
             End If
         Next intCtrl
-    ElseIf (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "17" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "41" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "42" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "43" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "59") Then
+    'ElseIf (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "17" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "41" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "42" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "43" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "59") Then
+    ElseIf (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "17" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "42" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "43" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "59") Then
 '   Print right align
         For intCtrl = intNumberOfBarcode - 1 To 0 Step -1
             If intStart + intCtrl <= UBound(arrStrValue) And IsPrintedPage(intCurrPage) Then
@@ -1310,7 +1313,7 @@ On Error GoTo ErrHandle
 
                 'Printer.CurrentY = Printer.ScaleHeight - Printer.ScaleY(0.13, vbInches)     'Printer.ScaleY(4, vbMillimeters) ' Printer.ScaleY(280, vbMillimeters)
                 Printer.ForeColor = vbBlack
-                Printer.FontSize = 8
+                Printer.fontSize = 8
                 Printer.Print "Trang " & intCurrPage & "/" & lPageNumber
             End If
             
@@ -1806,7 +1809,7 @@ Private Sub LoadInitFiles()
                 If Val(GetAttribute(xmlNode, "MaxLen")) <> 0 Then
                     fpsReport.TypeMaxEditLen = Val(GetAttribute(xmlNode, "MaxLen"))
                 End If
-                If fpsReport.CellType = CellTypeNumber Then
+                If fpsReport.cellType = CellTypeNumber Then
                     fpsReport.TypeNumberMin = Val(GetAttribute(xmlNode, "MinValue"))
                     fpsReport.TypeNumberMax = Val(GetAttribute(xmlNode, "MaxValue"))
                 End If
@@ -1957,7 +1960,7 @@ On Error GoTo ErrHandle
 
                 'Printer.CurrentY = Printer.ScaleHeight - Printer.ScaleY(0.13, vbInches)     'Printer.ScaleY(4, vbMillimeters) ' Printer.ScaleY(280, vbMillimeters)
                 Printer.ForeColor = vbBlack
-                Printer.FontSize = 8
+                Printer.fontSize = 8
                 Printer.Print "Trang " & intCurrPage & "/" & lPageNumber
             End If
             
