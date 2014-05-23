@@ -6,18 +6,21 @@
 		<moTaBMau></moTaBMau>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<tuNgay>D_17</tuNgay>
-		<denNgay>E_17</denNgay>
+		<noiBCao>E_6</noiBCao>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tuNgay>E_23</tuNgay>
+		<denNgay>F_23</denNgay>
 	</Static>
 	<Dynamic GroupName="BKeNhanInBienLai">
 		<CTietBKeNhanInBienLai id="id">
-			<mst>D_29</mst>
+			<mst TINType="1">D_29</mst>
 			<ten>E_29</ten>
 			<diaChi>J_29</diaChi>
 			<soHopDong>K_29</soHopDong>
 			<ngayHopDong>M_29</ngayHopDong>
-			<tenLoaiBienLai>O_29</tenLoaiBienLai>
-			<kyHieuMauBienLai>R_29</kyHieuMauBienLai>
+			<tenLoaiBienLai>R_29</tenLoaiBienLai>
+			<kyHieuMauBienLai>O_29</kyHieuMauBienLai>
 			<kyHieuBienLai>T_29</kyHieuBienLai>
 			<tuSo>V_29</tuSo>
 			<denSo>X_29</denSo>
@@ -25,8 +28,11 @@
 		</CTietBKeNhanInBienLai>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
-		<noiBCao></noiBCao>
 		<ngayLapBCao>S_38</ngayLapBCao>
 		<nguoiDaiDien>S_36</nguoiDaiDien>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>S_36</nguoiKy>
+		<ngayKy>S_38</ngayKy>
 	</Static>
 </HSoThueDTu>

@@ -5,8 +5,7 @@
 		<soLan></soLan>
 		<moTaBMau/>
 	</Static>
-	<Static GroupName="CTieuTKhaiChinh">
-		
+	<Static GroupName="CTieuTKhaiChinh">		
 		<ngayDauKyBC>E_23</ngayDauKyBC>
 		<ngayCuoiKyBC>F_23</ngayCuoiKyBC>
 	</Static>
@@ -43,5 +42,9 @@
 		<nguoiLapBieu>E_40</nguoiLapBieu>
 		<nguoiDaiDien>S_40</nguoiDaiDien>
 		<ngayBCao>S_42</ngayBCao>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>S_40</nguoiKy>
+		<ngayKy>S_42</ngayKy>
 	</Static>
 </HSoKhaiThue>

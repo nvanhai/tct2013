@@ -23,5 +23,10 @@
 	<Static GroupName="CTieuTKhaiChinh">
 		<ngayKy>R_49</ngayKy>
 		<thuTruongDonVi>R_47</thuTruongDonVi>
+		<nguoiLapBieu>D_47</nguoiLapBieu>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_47</nguoiKy>
+		<ngayKy>R_49</ngayKy>
 	</Static>
 </HSoThueDTu>

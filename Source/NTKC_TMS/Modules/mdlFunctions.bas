@@ -1,6 +1,20 @@
 Attribute VB_Name = "mdlFunctions"
 Option Explicit
 
+Public Declare Function SetLocaleInfo _
+   Lib "kernel32.dll" _
+     Alias "SetLocaleInfoA" _
+       (ByVal Locale As Long, _
+        ByVal LCType As Long, _
+        ByVal lpLCData As String) As Boolean
+        
+Public Declare Function GetSystemDefaultLCID _
+   Lib "kernel32.dll" () As Long
+
+
+Public Const LOCALE_SDECIMAL = &HE
+Public Const LOCALE_STHOUSAND = &HF
+
 Public Type Quy
     q As Integer
     y As Integer
@@ -48,9 +62,9 @@ Public dNgayDauKy As Date
 Public dNgayCuoiKy As Date
 
 Public Const SS_SORT_ORDER_ASCENDING = 1
-Public Const APP_VERSION = "1.1"
+Public Const APP_VERSION = "1.2"
 
-Public Const HTKK_LAST_VERSION = "9.9.9"
+Public Const HTKK_LAST_VERSION = "3.2.3"
 
 Public Const SS_BORDER_TYPE_NONE = 0
 Public Const SS_BORDER_TYPE_LEFT = 1

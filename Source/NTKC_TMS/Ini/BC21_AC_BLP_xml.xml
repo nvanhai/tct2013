@@ -11,23 +11,26 @@
 	</Static>
 	<Dynamic GroupName="BKeBLaiMatChay">
 		<ChiTietBKeBLaiMatChay id="id">
-			<kyHieuMauBienLai>C_42</kyHieuMauBienLai>
-			<tenLoaiBienLai>F_42</tenLoaiBienLai>
+			<kyHieuMauBienLai>O_42</kyHieuMauBienLai>
+			<tenLoaiBienLai>C_42</tenLoaiBienLai>
 			<kyHieuBienLai>S_42</kyHieuBienLai>
 			<tuSo>V_42</tuSo>
 			<denSo>Y_42</denSo>
 			<soLuong>AA_42</soLuong>
 			<lienBLai>AE_42</lienBLai>
-			<ghiChu>AF_42</ghiChu>
-			
+			<ghiChu>AI_42</ghiChu>			
 		</ChiTietBKeBLaiMatChay>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
 		<lyDoMatChayBLai>I_45</lyDoMatChayBLai>
 		<donViNhanBCao>I_47</donViNhanBCao>
-		<nguoiDaiDien>AR_48</nguoiDaiDien>
+		<nguoiDaiDien>AE_48</nguoiDaiDien>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<ngayBCao>AE_50</ngayBCao>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>AE_48</nguoiKy>
+		<ngayKy>AE_50</ngayKy>
 	</Static>
 </HSoThueDTu>
