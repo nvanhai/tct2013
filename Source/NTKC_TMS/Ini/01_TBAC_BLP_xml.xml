@@ -5,8 +5,11 @@
 		<soLan></soLan>		
 		<moTaBMau></moTaBMau>		
 	</Static>
+	<Static GroupName="CTieuTKhaiChinh">		
+		<noiKy>E_6</noiKy>
+	</Static>
 	<Dynamic GroupName="BKeBienLai" MinOccur="1">
-		<ChiTietBKeBienLai ID="id">
+		<ChiTietBKeBienLai ID="ID">
 			<tenLoaiBienLai>D_29</tenLoaiBienLai>
 			<kyHieuMauBienLai>I_29</kyHieuMauBienLai>			
 			<kyHieuBienLai>J_29</kyHieuBienLai>
@@ -21,9 +24,12 @@
 		</ChiTietBKeBienLai>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
-		<tenCQTTNhanTBao>J_38</tenCQTTNhanTBao>
-		<noiKy></noiKy>
+		<tenCQTTNhanTBao>J_38</tenCQTTNhanTBao>	
 		<ngayKy>V_40</ngayKy>
 		<thuTruongDonVi>V_42</thuTruongDonVi>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>V_42</nguoiKy>
+		<ngayKy>V_40</ngayKy>
 	</Static>
 </HSoThueDTu>

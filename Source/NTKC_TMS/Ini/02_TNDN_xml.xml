@@ -19,14 +19,14 @@
 			<maTinhDLyThue>Q_36</maTinhDLyThue>
 		</Static>
 		<Static GroupName="CTieuTKhaiChinh">
-			<dnQuiMoVuaVaNho>Z_16</dnQuiMoVuaVaNho>
+			<dnQuiMoVuaVaNho>H_7</dnQuiMoVuaVaNho>
 		</Static>
 		<Static GroupName="ThongTinChuyenNhuong">
 			<ct12>K_20</ct12>
 			<ct13>R_22</ct13>
 			<ct14>E_24</ct14>
 		</Static>
-		<Static GroupName="ct15">
+		<Static GroupName="CT15">
 			<soHD>K_26</soHD>
 			<ngayHD>N_26</ngayHD>
 			<ngayXN>Q_28</ngayXN>
@@ -49,7 +49,6 @@
 			<ct39>V_69</ct39>
 		</Static>
 		<Static GroupName="KKhaiThuTienTheoTienDo">
-
 			<ct40>V_71</ct40>
 			<ct41>V_72</ct41>
 			<ct42>V_73</ct42>

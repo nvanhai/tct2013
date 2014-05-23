@@ -1067,6 +1067,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         If (xmlResultDLT.hasChildNodes And (InStr(xmlResultDLT.xml, "fault_code") <= 0)) Then
             isDLyThue = True
             ' xmlTK.getElementsByTagName("tenDLyThue")(0).Text = "test"
+            xmlTK.getElementsByTagName("mstDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("MaSoThue")(0).Text
             xmlTK.getElementsByTagName("tenDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("TenNNT")(0).Text
             'xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = "test"
             xmlTK.getElementsByTagName("dchiDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("DiaChi")(0).Text
@@ -1081,7 +1082,6 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             xmlTK.getElementsByTagName("maTinhDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("MaTinh")(0).Text
         End If
     End If
-    xmlTK.getElementsByTagName("mstDLyThue")(0).Text = strMaDLT
     xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = "1.0"
     xmlTK.getElementsByTagName("maDVu")(0).Text = GetAttribute(GetMessageCellById("0133"), "Msg")
     xmlTK.getElementsByTagName("tenDVu")(0).Text = GetAttribute(GetMessageCellById("0134"), "Msg")
@@ -1112,8 +1112,8 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
 '        strLoaiToKhai = GetAttribute(GetMessageCellById("0132"), "Msg")
 '    End If
     
-    'To 03/TBAC, BLP
-    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "10" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "09" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "07" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "67" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "66" Then
+    'To 03/TBAC, BLP bo Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "07"
+    If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "10" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "09" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "67" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "66" Then
         xmlTK.getElementsByTagName("kyKKhai")(0).Text = Format$(strNgayHeThongSrv, "dd/MM/yyyy")
         xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = ""
         xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = ""
@@ -1177,6 +1177,15 @@ Private Function GetKyKeKhai(ByVal ID_TK As String) As String
     Dim KYKKHAI As String
     On Error GoTo ErrHandle
     
+    If ID_TK = "07" Then
+        isTKLanPS = True
+        fpSpread1.Row = 22
+        fpSpread1.Col = fpSpread1.ColLetterToNumber("V")
+        KYKKHAI = fpSpread1.Text
+        strKieuKy = "D"
+        GetKyKeKhai = KYKKHAI
+        Exit Function
+    End If
         '01-KK-TTS
     If ID_TK = "23" Then
         fpSpread1.Sheet = 1
@@ -1603,6 +1612,8 @@ Private Function ExecuteSave() As Boolean
                     End If
                     
                     SetAttribute CloneNode.firstChild, "id", "ID_" & CStr(ID)
+                    
+                    SetAttribute CloneNode.firstChild, "ID", "ID_" & CStr(ID)
 
                     If Level = "2" Then
 
@@ -1705,19 +1716,19 @@ Private Function ExecuteSave() As Boolean
                         Else
 
                             If .CellType = CellTypeNumber Then
-                                If (.Value = "" Or .Value = vbNullString) Then
-                                    xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
-
-                                    If xmlCellTKNode.hasChildNodes Then
-                                        xmlCellTKNode.removeChild xmlCellTKNode.firstChild
-                                    End If
-                                    
-                                    Set TinTypeAttribute = xmlTK.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
-                                    TinTypeAttribute.nodeValue = "true"
-                                    xmlCellTKNode.Attributes.setNamedItem TinTypeAttribute
-                                Else
+'                                If (.Value = "" Or .Value = vbNullString) Then
+'                                    xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
+'
+'                                    If xmlCellTKNode.hasChildNodes Then
+'                                        xmlCellTKNode.removeChild xmlCellTKNode.firstChild
+'                                    End If
+'
+'                                    Set TinTypeAttribute = xmlTK.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
+'                                    TinTypeAttribute.nodeValue = "true"
+'                                    xmlCellTKNode.Attributes.setNamedItem TinTypeAttribute
+'                                Else
                                     xmlCellTKNode.Text = .Value
-                                End If
+'                                End If
 
                             ElseIf .CellType = CellTypePic Then
                                 xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
@@ -1945,6 +1956,8 @@ Private Function ExecuteSave() As Boolean
                                 End If
                                 
                                 SetAttribute CloneNode.firstChild, "id", "ID_" & CStr(ID)
+                                
+                                SetAttribute CloneNode.firstChild, "ID", "ID_" & CStr(ID)
 
                                 '                                If Level = "2" Then
                                 '                                    xmlPL.getElementsByTagName(currentGroup)(0).firstChild.appendChild CloneNode.firstChild.CloneNode(True)
@@ -2196,23 +2209,31 @@ Private Function ExecuteSave() As Boolean
     Set xmlDocSave = AppendXMLStandard(xmlTK, sKyLapBo, sNgayNopTK, sLoiDinhDanh)
     '
     '
-    'xmlDocSave.save sFileName
-    'ExecuteSave = True
+'    xmlDocSave.save sFileName
+    
+    'Kiem tra su ton tai cua xmlDocSave
+    If (xmlDocSave.getElementsByTagName("DATA").length < 0 Or xmlDocSave.getElementsByTagName("HEADER").length < 0 Or xmlDocSave.getElementsByTagName("BODY").length < 0) Then
+        ExecuteSave = False
+        SaveErrorLog Me.Name, "Execute_save: ", Err.Number, xmlDocSave.xml & Err.Description
+        Exit Function
+    End If
+
     '' Push MQ
     Dim MQPUT As New MQPUT
     If (Not MQPUT.PUSHMQ(xmlDocSave.xml)) Then
         MessageBox "0137", msOKOnly, miCriticalError
         ExecuteSave = False
+        Exit Function
     Else
-
         ExecuteSave = True
 '        '   Clear variable global
         Set xmlResultDLT = Nothing
         Set xmlResultNNT = Nothing
         Set xmlTK = Nothing
 '        '    ' End push
+        Exit Function
     End If
-    Exit Function
+    
 ErrHandle:
     SaveErrorLog Me.Name, "Execute_save", Err.Number, Err.Description
     MessageBox "0154", msOKOnly, miCriticalError
@@ -2884,6 +2905,13 @@ Barcode_Scaned str2
 End Sub
 
 Private Sub Form_Activate()
+    Dim dwLCID As Long
+    'Set format number thap phan "."
+    dwLCID = GetSystemDefaultLCID
+    SetLocaleInfo dwLCID, LOCALE_SDECIMAL, "."
+    SetLocaleInfo dwLCID, LOCALE_STHOUSAND, ","
+    
+    Exit Sub
 'On Error GoTo ErrHandle
 '    If mOnLoad Then
 '        mOnLoad = False
@@ -5151,7 +5179,9 @@ On Error GoTo ErrHandle
     'Get Tax id
     strMST = Trim(Mid$(strTaxReportInfo, 3, 13))
     
-    If LoaiTk <> "64" And LoaiTk <> "65" And LoaiTk <> "" And LoaiTk <> "66" And LoaiTk <> "67" And LoaiTk <> "68" And LoaiTk <> "91" And LoaiTk <> "69" And LoaiTk <> "19" And LoaiTk <> "20" And LoaiTk <> "21" And LoaiTk <> "22" Then
+    'BCTC,QLAC,BLP thi khong truy van DLThue
+    'LoaiTk <> "64" And LoaiTk <> "65" And LoaiTk <> "66" And LoaiTk <> "67" And LoaiTk <> "68" And LoaiTk <> "91" And LoaiTk <> "69" And LoaiTk <> "19" And LoaiTk <> "20" And LoaiTk <> "21" And LoaiTk <> "22"
+    If InStr(1, "64,65,66,67,68,69,18,19,20,21,22,91,07,09,10,13,14", LoaiTk) <= 0 Then
         strTaxDLID = Mid(strData, InStr(1, strData, "<S>") + 3, InStr(1, strData, "</S>") - InStr(1, strData, "<S>") - 3)
     Else
         strTaxDLID = vbNullString

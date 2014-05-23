@@ -324,7 +324,7 @@ Private Function IsValidUserESB() As Integer
         strNgayHeThongSrv = xmlResultNSD.getElementsByTagName("CurrentSysTime")(0).Text
         strMaCoQuanThue = xmlResultNSD.getElementsByTagName("TaxOffcice")(0).Text
         strTenCoQuanThue = xmlResultNSD.getElementsByTagName("TaxOffName")(0).Text
-        strMaTinhCoQuanThue = "PYO" 'xmlResultNSD.getElementsByTagName("Province")(0).Text
+        strMaTinhCoQuanThue = xmlResultNSD.getElementsByTagName("Province")(0).Text
 
         Select Case sStatus
 
