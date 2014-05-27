@@ -236,53 +236,51 @@ End Sub
 'Cause this interface sheets have dynamic rows, this function will set cellnote of error for rising-error cell
 'no parameter
 Private Sub CheckDynamicError()
-    Dim MST1 As Variant, MST2 As Variant, MST3 As Variant, MST4 As Variant
-    Dim MST5 As Variant, MST6 As Variant, MST7 As Variant, MST8 As Variant
-    Dim MST9 As Variant, MST10 As Variant, MST11 As Variant, MST12 As Variant, MST13 As Variant
-        Dim Phone As Variant, Fax As Variant, Email As Variant, Account As Variant, StartDate As Variant
-    Dim Err1 As Integer, Err2 As Integer, Err3 As Integer
-    Dim Err4 As Integer, Err5 As Integer, Err6 As Integer
-    Dim Err7 As Integer, ErrStartDate As Integer
-    Dim strCheck As String
+    Dim MST1                 As Variant, MST2 As Variant, MST3 As Variant, MST4 As Variant
+    Dim MST5                 As Variant, MST6 As Variant, MST7 As Variant, MST8 As Variant
+    Dim MST9                 As Variant, MST10 As Variant, MST11 As Variant, MST12 As Variant, MST13 As Variant
+    Dim Phone                As Variant, Fax As Variant, Email As Variant, Account As Variant, StartDate As Variant
+    Dim Err1                 As Integer, Err2 As Integer, Err3 As Integer
+    Dim Err4                 As Integer, Err5 As Integer, Err6 As Integer
+    Dim Err7                 As Integer, ErrStartDate As Integer
+    Dim strCheck             As String
     ' vttoan: them phan thong tin don vi chu quan
-    Dim strMSTDVCQ As Variant
-    Dim vErrMsgMST As Variant
-    Dim iFlagEmty As Variant
+    Dim strMSTDVCQ           As Variant
+    Dim vErrMsgMST           As Variant
+    Dim iFlagEmty            As Variant
     
-    Dim iFlagTrungMST As Integer
+    Dim iFlagTrungMST        As Integer
     
     ' vttoan them thong tin dai ly thue
-    Dim vErrmstDaiLy As Variant
-    Dim vErrtenDaiLy As Variant
-    Dim vErrdiachiDaiLy As Variant
-    Dim vErrqhuyenDaiLy As Variant
-    Dim vErrtphoDaiLy As Variant
-    Dim vErrTenNhanVienDLT As Variant
-    Dim vErrChungChiSo As Variant
-    Dim vErrNgayHDDaiLy As Variant
-    Dim vErrSoHDDaiLy As Variant
+    Dim vErrmstDaiLy         As Variant
+    Dim vErrtenDaiLy         As Variant
+    Dim vErrdiachiDaiLy      As Variant
+    Dim vErrqhuyenDaiLy      As Variant
+    Dim vErrtphoDaiLy        As Variant
+    Dim vErrTenNhanVienDLT   As Variant
+    Dim vErrChungChiSo       As Variant
+    Dim vErrNgayHDDaiLy      As Variant
+    Dim vErrSoHDDaiLy        As Variant
     Dim vErrNgayHDDaiLyEmpty As Variant
     
-    
-    Dim mstDL As Variant
-    Dim tenDL As Variant
-    Dim diachiDL As Variant
-    Dim qhuyenDL As Variant
-    Dim tphoDL As Variant
-    Dim checkDL As Variant
+    Dim mstDL                As Variant
+    Dim tenDL                As Variant
+    Dim diachiDL             As Variant
+    Dim qhuyenDL             As Variant
+    Dim tphoDL               As Variant
+    Dim checkDL              As Variant
     Dim strMST1, vTempValue As Variant
     Dim vTenNhanVienDLT As Variant
-    Dim vChungChiSo As Variant
-    Dim vNgayHDDaiLy As Variant
-    Dim arrNgay() As String
+    Dim vChungChiSo     As Variant
+    Dim vNgayHDDaiLy    As Variant
+    Dim arrNgay()       As String
     
-    Dim vSoHDDaiLy As Variant
+    Dim vSoHDDaiLy      As Variant
     
-    
-    Dim vErrorTrungMST As Variant
-    Dim chkDVCQ As Variant
-    Dim vMErrTenDVCQ As Variant, vTenDVCQ As Variant, iFlagTenDVCQEmpty As Integer
-    Dim vMErrMSTDVCQ As Variant, iFlagMSTDVCQEmpty As Integer
+    Dim vErrorTrungMST  As Variant
+    Dim chkDVCQ         As Variant
+    Dim vMErrTenDVCQ    As Variant, vTenDVCQ As Variant, iFlagTenDVCQEmpty As Integer
+    Dim vMErrMSTDVCQ    As Variant, iFlagMSTDVCQEmpty As Integer
     ' end dvcq
     Err1 = 0
     Err2 = 0
@@ -292,17 +290,19 @@ Private Sub CheckDynamicError()
     Err6 = 0
     Err7 = 0
     ErrStartDate = 0
+
     iFlagTrungMST = 0
     Dim vValue
+
     With fps
 
         .Sheet = .SheetCount
         ' Lay thong bao ve sai ma so thue trong sheet header
-            .GetText .ColLetterToNumber("E"), 23, vErrMsgMST
+        .GetText .ColLetterToNumber("E"), 23, vErrMsgMST
         ' lay thong bao loi ten dvcq bat buoc phai nhap
-            .GetText .ColLetterToNumber("E"), 36, vMErrTenDVCQ
+        .GetText .ColLetterToNumber("E"), 36, vMErrTenDVCQ
         ' lay thong bao loi mst dvcq bat buoc phai nhap
-            .GetText .ColLetterToNumber("E"), 37, vMErrMSTDVCQ
+        .GetText .ColLetterToNumber("E"), 37, vMErrMSTDVCQ
         .Sheet = 1
         ' Lay ve MSt
         .GetText .ColLetterToNumber("C"), 2, vTempValue
@@ -334,51 +334,69 @@ Private Sub CheckDynamicError()
         
         'get chk Thong tin don vi chu quan
         .GetText .ColLetterToNumber("P"), 32, chkDVCQ
+
         If Trim(chkDVCQ) = "1" Or UCase(Trim(chkDVCQ)) = "X" Then
             
             .GetText .ColLetterToNumber("C"), 34, strMSTDVCQ
             .Row = 34
-       ' vttoan: check cau truc mst don vi chu quan
-            'dntai set mst valid truoc khi check
-                .Col = .ColLetterToNumber("C")
-                .CellNote = ""
-                .BackColor = mNonErrorColor
 
-                If Trim(strMSTDVCQ) <> vbNullString Then
-                       strCheck = ""
-                       If Len(strMSTDVCQ) = 10 Or Len(strMSTDVCQ) = 13 Then
-                         strCheck = CheckTaxCode(Mid(strMSTDVCQ, 1, 1), Mid(strMSTDVCQ, 2, 1), Mid(strMSTDVCQ, 3, 1), Mid(strMSTDVCQ, 4, 1), Mid(strMSTDVCQ, 5, 1), Mid(strMSTDVCQ, 6, 1), Mid(strMSTDVCQ, 7, 1), Mid(strMSTDVCQ, 8, 1), Mid(strMSTDVCQ, 9, 1), Mid(strMSTDVCQ, 10, 1), Mid(strMSTDVCQ, 11, 1), Mid(strMSTDVCQ, 12, 1), Mid(strMSTDVCQ, 13, 1))
-                            If Len(strMSTDVCQ) = 10 And strCheck <> "000" Then
-                                .Col = .ColLetterToNumber("C")
-                                .CellNote = vErrMsgMST
-                                .BackColor = mErrorColor
-                                iFlagEmty = 1
-                            ElseIf Len(strMSTDVCQ) = 13 And (strCheck <> "000" Or IsNumeric(strMSTDVCQ) = False) Then
-                                .Col = .ColLetterToNumber("C")
-                                .CellNote = vErrMsgMST
-                                .BackColor = mErrorColor
-                                iFlagEmty = 1
-                            End If
-                       ElseIf Len(strMSTDVCQ) <> 10 Or Len(strMSTDVCQ) <> 13 Then
-                            .Col = .ColLetterToNumber("C")
-                            .CellNote = vErrMsgMST
-                            .BackColor = mErrorColor
-                            iFlagEmty = 1
-                       End If
-                       Else
-                    .Col = .ColLetterToNumber("C")
-                    .CellNote = vMErrMSTDVCQ
-                    .BackColor = mErrorColor
-                    iFlagMSTDVCQEmpty = 1
+            If GetAttribute(TAX_Utilities_v1.NodeMenu, "Year") = vbNullString Or GetAttribute(TAX_Utilities_v1.NodeMenu, "Year") = "0" Then
+                If Len(strMSTDVCQ) = 14 Then
+                    strMSTDVCQ = Left$(strMSTDVCQ, 10) & Right$(strMSTDVCQ, 3)
                 End If
+            End If
+
+            ' vttoan: check cau truc mst don vi chu quan
+            'dntai set mst valid truoc khi check
+            .Col = .ColLetterToNumber("C")
+            .CellNote = ""
+            .BackColor = mNonErrorColor
+
+            If Trim(strMSTDVCQ) <> vbNullString Then
+                strCheck = ""
+
+                If Len(strMSTDVCQ) = 10 Or Len(strMSTDVCQ) = 13 Then
+                    strCheck = CheckTaxCode(Mid(strMSTDVCQ, 1, 1), Mid(strMSTDVCQ, 2, 1), Mid(strMSTDVCQ, 3, 1), Mid(strMSTDVCQ, 4, 1), Mid(strMSTDVCQ, 5, 1), Mid(strMSTDVCQ, 6, 1), Mid(strMSTDVCQ, 7, 1), Mid(strMSTDVCQ, 8, 1), Mid(strMSTDVCQ, 9, 1), Mid(strMSTDVCQ, 10, 1), Mid(strMSTDVCQ, 11, 1), Mid(strMSTDVCQ, 12, 1), Mid(strMSTDVCQ, 13, 1))
+
+                    If Len(strMSTDVCQ) = 10 And strCheck <> "000" Then
+                        .Col = .ColLetterToNumber("C")
+                        .CellNote = vErrMsgMST
+                        .BackColor = mErrorColor
+
+                        iFlagEmty = 1
+                    ElseIf Len(strMSTDVCQ) = 13 And (strCheck <> "000" Or IsNumeric(strMSTDVCQ) = False) Then
+                        .Col = .ColLetterToNumber("C")
+                        .CellNote = vErrMsgMST
+                        .BackColor = mErrorColor
+
+                        iFlagEmty = 1
+                    End If
+
+                ElseIf Len(strMSTDVCQ) <> 10 Or Len(strMSTDVCQ) <> 13 Then
+                    .Col = .ColLetterToNumber("C")
+                    .CellNote = vErrMsgMST
+                    .BackColor = mErrorColor
+
+                    iFlagEmty = 1
+                End If
+
+            Else
+                .Col = .ColLetterToNumber("C")
+                .CellNote = vMErrMSTDVCQ
+                .BackColor = mErrorColor
+
+                iFlagMSTDVCQEmpty = 1
+            End If
                         
             'get ten dvcq
             .GetText .ColLetterToNumber("C"), 32, vTenDVCQ
+
             If Trim(vTenDVCQ) = vbNullString Then
                 .Col = .ColLetterToNumber("C")
                 .Row = 32
                 .CellNote = vMErrTenDVCQ
                 .BackColor = mErrorColor
+
                 iFlagTenDVCQEmpty = 1
             Else
                 .Col = .ColLetterToNumber("C")
@@ -386,6 +404,7 @@ Private Sub CheckDynamicError()
                 .CellNote = ""
                 .BackColor = mNonErrorColor
             End If
+
         Else
             .Col = .ColLetterToNumber("C")
             .Row = 34
@@ -396,242 +415,280 @@ Private Sub CheckDynamicError()
             .CellNote = ""
             .BackColor = mNonErrorColor
         End If
+
         ' vttoan them thong tin dai ly thue "thong tu 28"
         .Sheet = .SheetCount
-            .GetText .ColLetterToNumber("E"), 24, vErrmstDaiLy
-            .GetText .ColLetterToNumber("E"), 25, vErrtenDaiLy
-            .GetText .ColLetterToNumber("E"), 26, vErrdiachiDaiLy
-            .GetText .ColLetterToNumber("E"), 27, vErrqhuyenDaiLy
-            .GetText .ColLetterToNumber("E"), 28, vErrtphoDaiLy
-            .GetText .ColLetterToNumber("E"), 29, vErrorTrungMST
+        .GetText .ColLetterToNumber("E"), 24, vErrmstDaiLy
+        .GetText .ColLetterToNumber("E"), 25, vErrtenDaiLy
+        .GetText .ColLetterToNumber("E"), 26, vErrdiachiDaiLy
+        .GetText .ColLetterToNumber("E"), 27, vErrqhuyenDaiLy
+        .GetText .ColLetterToNumber("E"), 28, vErrtphoDaiLy
+        .GetText .ColLetterToNumber("E"), 29, vErrorTrungMST
             
-            .GetText .ColLetterToNumber("E"), 31, vErrTenNhanVienDLT
-            .GetText .ColLetterToNumber("E"), 32, vErrChungChiSo
-            .GetText .ColLetterToNumber("E"), 33, vErrNgayHDDaiLy
+        .GetText .ColLetterToNumber("E"), 31, vErrTenNhanVienDLT
+        .GetText .ColLetterToNumber("E"), 32, vErrChungChiSo
+        .GetText .ColLetterToNumber("E"), 33, vErrNgayHDDaiLy
             
-            .GetText .ColLetterToNumber("E"), 34, vErrSoHDDaiLy
-            .GetText .ColLetterToNumber("E"), 35, vErrNgayHDDaiLyEmpty
+        .GetText .ColLetterToNumber("E"), 34, vErrSoHDDaiLy
+        .GetText .ColLetterToNumber("E"), 35, vErrNgayHDDaiLyEmpty
             
         .Sheet = 1
-            .GetText .ColLetterToNumber("C"), 39, mstDL
-            .GetText .ColLetterToNumber("C"), 41, tenDL
-            .GetText .ColLetterToNumber("C"), 43, diachiDL
-            .GetText .ColLetterToNumber("C"), 45, qhuyenDL
-            .GetText .ColLetterToNumber("C"), 47, tphoDL
-            .GetText .ColLetterToNumber("C"), 37, checkDL
+        .GetText .ColLetterToNumber("C"), 39, mstDL
+
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "Year") = vbNullString Or GetAttribute(TAX_Utilities_v1.NodeMenu, "Year") = "0" Then
+            If Len(mstDL) = 14 Then
+                mstDL = Left$(mstDL, 10) & Right$(mstDL, 3)
+            End If
+        End If
+
+        .GetText .ColLetterToNumber("C"), 41, tenDL
+        .GetText .ColLetterToNumber("C"), 43, diachiDL
+        .GetText .ColLetterToNumber("C"), 45, qhuyenDL
+        .GetText .ColLetterToNumber("C"), 47, tphoDL
+        .GetText .ColLetterToNumber("C"), 37, checkDL
             
-            .GetText .ColLetterToNumber("C"), 59, vTenNhanVienDLT
-            .GetText .ColLetterToNumber("C"), 61, vChungChiSo
+        .GetText .ColLetterToNumber("C"), 59, vTenNhanVienDLT
+        .GetText .ColLetterToNumber("C"), 61, vChungChiSo
             
-            .GetText .ColLetterToNumber("C"), 55, vSoHDDaiLy
-            .GetText .ColLetterToNumber("C"), 57, vNgayHDDaiLy
-                    If Trim(checkDL) = 1 Then
-                            If Trim(mstDL) = "" Then
-                                .Col = .ColLetterToNumber("C")
-                                .Row = 39
-                                .CellNote = vErrmstDaiLy
-                                .BackColor = mErrorColor
-                                iFlagEmty = 1
-                            ElseIf Trim(mstDL) <> vbNullString Then
-                                strCheck = ""
-                                If Len(mstDL) = 10 Or Len(mstDL) = 13 Then
-                                  strCheck = CheckTaxCode(Mid(mstDL, 1, 1), Mid(mstDL, 2, 1), Mid(mstDL, 3, 1), Mid(mstDL, 4, 1), Mid(mstDL, 5, 1), Mid(mstDL, 6, 1), Mid(mstDL, 7, 1), Mid(mstDL, 8, 1), Mid(mstDL, 9, 1), Mid(mstDL, 10, 1), Mid(mstDL, 11, 1), Mid(mstDL, 12, 1), Mid(mstDL, 13, 1))
-                                     If Len(mstDL) = 10 And strCheck <> "000" Then
-                                         .Col = .ColLetterToNumber("C")
-                                         .Row = 39
-                                         .CellNote = vErrMsgMST
-                                         .BackColor = mErrorColor
-                                         iFlagEmty = 1
-                                     ElseIf Len(mstDL) = 13 And (strCheck <> "000" Or IsNumeric(mstDL) = False) Then
-                                         .Col = .ColLetterToNumber("C")
-                                         .Row = 39
-                                         .CellNote = vErrMsgMST
-                                         .BackColor = mErrorColor
-                                         iFlagEmty = 1
-                                     ElseIf Trim(mstDL) = Trim(strMST1) Then
-                                         .Col = .ColLetterToNumber("C")
-                                         .Row = 39
-                                         .CellNote = vErrorTrungMST
-                                         .BackColor = mAlertColor
-                                         iFlagTrungMST = 1
-                                     Else
-                                         .Col = .ColLetterToNumber("C")
-                                         .Row = 39
-                                         .CellNote = ""
-                                         .BackColor = mNonErrorColor
-                                     End If
-                                ElseIf Len(mstDL) <> 10 Or Len(mstDL) <> 13 Then
-                                     .Col = .ColLetterToNumber("C")
-                                     .Row = 39
-                                     .CellNote = vErrMsgMST
-                                     .BackColor = mErrorColor
-                                     iFlagEmty = 1
-                                Else
-                                     .Col = .ColLetterToNumber("C")
-                                     .Row = 39
-                                     .CellNote = ""
-                                     .BackColor = mNonErrorColor
-                                End If
-                            
-                            Else
-                                .Col = .ColLetterToNumber("C")
-                                .Row = 39
-                                .CellNote = ""
-                                .BackColor = mNonErrorColor
-                            End If
-                            If Trim(tenDL) = "" Then
-                                .Col = .ColLetterToNumber("C")
-                                .Row = 41
-                                .CellNote = vErrtenDaiLy
-                                .BackColor = mErrorColor
-                                iFlagEmty = 1
-                            Else
-                                .Col = .ColLetterToNumber("C")
-                                .Row = 41
-                                .CellNote = ""
-                                .BackColor = mNonErrorColor
-                            End If
-                            If Trim(diachiDL) = "" Then
-                                .Col = .ColLetterToNumber("C")
-                                .Row = 43
-                                .CellNote = vErrdiachiDaiLy
-                                .BackColor = mErrorColor
-                                iFlagEmty = 1
-                            Else
-                                .Col = .ColLetterToNumber("C")
-                                .Row = 43
-                                .CellNote = ""
-                                .BackColor = mNonErrorColor
-                            End If
-                            If Trim(qhuyenDL) = "" Then
-                                .Col = .ColLetterToNumber("C")
-                                .Row = 45
-                                .CellNote = vErrqhuyenDaiLy
-                                .BackColor = mErrorColor
-                                iFlagEmty = 1
-                            Else
-                                .Col = .ColLetterToNumber("C")
-                                .Row = 45
-                                .CellNote = ""
-                                .BackColor = mNonErrorColor
-                            End If
-                            If Trim(tphoDL) = "" Then
-                                .Col = .ColLetterToNumber("C")
-                                .Row = 47
-                                .CellNote = vErrtphoDaiLy
-                                .BackColor = mErrorColor
-                                iFlagEmty = 1
-                            Else
-                                .Col = .ColLetterToNumber("C")
-                                .Row = 47
-                                .CellNote = ""
-                                .BackColor = mNonErrorColor
-                            End If
-                            ' Kiem tra ten nhan vien dai ly
-                            If Trim(vTenNhanVienDLT) = "" Then
-                                .Col = .ColLetterToNumber("C")
-                                .Row = 59
-                                .CellNote = vErrTenNhanVienDLT
-                                .BackColor = mErrorColor
-                                iFlagEmty = 1
-                            Else
-                                .Col = .ColLetterToNumber("C")
-                                .Row = 59
-                                .CellNote = ""
-                                .BackColor = mNonErrorColor
-                            End If
-                            ' Kiem tra chung chi so
-                            If Trim(vChungChiSo) = "" Then
-                                .Col = .ColLetterToNumber("C")
-                                .Row = 61
-                                .CellNote = vErrChungChiSo
-                                .BackColor = mErrorColor
-                                iFlagEmty = 1
-                            Else
-                                .Col = .ColLetterToNumber("C")
-                                .Row = 61
-                                .CellNote = ""
-                                .BackColor = mNonErrorColor
-                            End If
-                            ' Kiem tra ngay HD khong duoc lon hon ngay hien tai
-                            If Trim(vNgayHDDaiLy) <> "" And Trim$(vNgayHDDaiLy) <> "../../...." Then
-                                arrNgay = Split(vNgayHDDaiLy, "/")
-                                If DateDiff("D", DateSerial(CInt(arrNgay(2)), CInt(arrNgay(1)), CInt(arrNgay(0))), Date) < 0 Then
-                                    .Col = .ColLetterToNumber("C")
-                                    .Row = 57
-                                    .CellNote = vErrNgayHDDaiLy
-                                    .BackColor = mErrorColor
-                                    iFlagEmty = 1
-                                Else
-                                    .Col = .ColLetterToNumber("C")
-                                    .Row = 57
-                                    .CellNote = ""
-                                    .BackColor = mNonErrorColor
-                                End If
-                            Else
-                                .Col = .ColLetterToNumber("C")
-                                .Row = 57
-                                .CellNote = vErrNgayHDDaiLyEmpty
-                                .BackColor = mErrorColor
-                                iFlagEmty = 1
-                            End If
-                            ' Kiem tra so HDDL
-                            If Trim$(vSoHDDaiLy) = "" Or vSoHDDaiLy = vbNullString Then
-                                 .Col = .ColLetterToNumber("C")
-                                .Row = 55
-                                .CellNote = vErrSoHDDaiLy
-                                .BackColor = mErrorColor
-                                iFlagEmty = 1
-                            Else
-                                 .Col = .ColLetterToNumber("C")
-                                .Row = 55
-                                .CellNote = ""
-                                .BackColor = mNonErrorColor
-                            End If
+        .GetText .ColLetterToNumber("C"), 55, vSoHDDaiLy
+        .GetText .ColLetterToNumber("C"), 57, vNgayHDDaiLy
+
+        If Trim(checkDL) = 1 Then
+            If Trim(mstDL) = "" Then
+                .Col = .ColLetterToNumber("C")
+                .Row = 39
+                .CellNote = vErrmstDaiLy
+                .BackColor = mErrorColor
+
+                iFlagEmty = 1
+            ElseIf Trim(mstDL) <> vbNullString Then
+                strCheck = ""
+
+                If Len(mstDL) = 10 Or Len(mstDL) = 13 Then
+                    strCheck = CheckTaxCode(Mid(mstDL, 1, 1), Mid(mstDL, 2, 1), Mid(mstDL, 3, 1), Mid(mstDL, 4, 1), Mid(mstDL, 5, 1), Mid(mstDL, 6, 1), Mid(mstDL, 7, 1), Mid(mstDL, 8, 1), Mid(mstDL, 9, 1), Mid(mstDL, 10, 1), Mid(mstDL, 11, 1), Mid(mstDL, 12, 1), Mid(mstDL, 13, 1))
+
+                    If Len(mstDL) = 10 And strCheck <> "000" Then
+                        .Col = .ColLetterToNumber("C")
+                        .Row = 39
+                        .CellNote = vErrMsgMST
+                        .BackColor = mErrorColor
+
+                        iFlagEmty = 1
+                    ElseIf Len(mstDL) = 13 And (strCheck <> "000" Or IsNumeric(mstDL) = False) Then
+                        .Col = .ColLetterToNumber("C")
+                        .Row = 39
+                        .CellNote = vErrMsgMST
+                        .BackColor = mErrorColor
+
+                        iFlagEmty = 1
+                    ElseIf Trim(mstDL) = Trim(strMST1) Then
+                        .Col = .ColLetterToNumber("C")
+                        .Row = 39
+                        .CellNote = vErrorTrungMST
+                        .BackColor = mAlertColor
+
+                        iFlagTrungMST = 1
                     Else
                         .Col = .ColLetterToNumber("C")
                         .Row = 39
                         .CellNote = ""
                         .BackColor = mNonErrorColor
-                        .Col = .ColLetterToNumber("C")
-                        .Row = 41
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                        .Col = .ColLetterToNumber("C")
-                        .Row = 43
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                        .Col = .ColLetterToNumber("C")
-                        .Row = 45
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                        .Col = .ColLetterToNumber("C")
-                        .Row = 47
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                        .Col = .ColLetterToNumber("C")
-                        .Row = 59
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                        .Col = .ColLetterToNumber("C")
-                        .Row = 61
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                        .Col = .ColLetterToNumber("C")
-                        .Row = 55
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                        .Row = 57
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                        
-                        
                     End If
-'----------------------------------------------------------------------------
+
+                ElseIf Len(mstDL) <> 10 Or Len(mstDL) <> 13 Then
+                    .Col = .ColLetterToNumber("C")
+                    .Row = 39
+                    .CellNote = vErrMsgMST
+                    .BackColor = mErrorColor
+
+                    iFlagEmty = 1
+                Else
+                    .Col = .ColLetterToNumber("C")
+                    .Row = 39
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
+                            
+            Else
+                .Col = .ColLetterToNumber("C")
+                .Row = 39
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+            End If
+
+            If Trim(tenDL) = "" Then
+                .Col = .ColLetterToNumber("C")
+                .Row = 41
+                .CellNote = vErrtenDaiLy
+                .BackColor = mErrorColor
+
+                iFlagEmty = 1
+            Else
+                .Col = .ColLetterToNumber("C")
+                .Row = 41
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+            End If
+
+            If Trim(diachiDL) = "" Then
+                .Col = .ColLetterToNumber("C")
+                .Row = 43
+                .CellNote = vErrdiachiDaiLy
+                .BackColor = mErrorColor
+
+                iFlagEmty = 1
+            Else
+                .Col = .ColLetterToNumber("C")
+                .Row = 43
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+            End If
+
+            If Trim(qhuyenDL) = "" Then
+                .Col = .ColLetterToNumber("C")
+                .Row = 45
+                .CellNote = vErrqhuyenDaiLy
+                .BackColor = mErrorColor
+
+                iFlagEmty = 1
+            Else
+                .Col = .ColLetterToNumber("C")
+                .Row = 45
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+            End If
+
+            If Trim(tphoDL) = "" Then
+                .Col = .ColLetterToNumber("C")
+                .Row = 47
+                .CellNote = vErrtphoDaiLy
+                .BackColor = mErrorColor
+
+                iFlagEmty = 1
+            Else
+                .Col = .ColLetterToNumber("C")
+                .Row = 47
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+            End If
+
+            ' Kiem tra ten nhan vien dai ly
+            If Trim(vTenNhanVienDLT) = "" Then
+                .Col = .ColLetterToNumber("C")
+                .Row = 59
+                .CellNote = vErrTenNhanVienDLT
+                .BackColor = mErrorColor
+
+                iFlagEmty = 1
+            Else
+                .Col = .ColLetterToNumber("C")
+                .Row = 59
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+            End If
+
+            ' Kiem tra chung chi so
+            If Trim(vChungChiSo) = "" Then
+                .Col = .ColLetterToNumber("C")
+                .Row = 61
+                .CellNote = vErrChungChiSo
+                .BackColor = mErrorColor
+
+                iFlagEmty = 1
+            Else
+                .Col = .ColLetterToNumber("C")
+                .Row = 61
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+            End If
+
+            ' Kiem tra ngay HD khong duoc lon hon ngay hien tai
+            If Trim(vNgayHDDaiLy) <> "" And Trim$(vNgayHDDaiLy) <> "../../...." Then
+                arrNgay = Split(vNgayHDDaiLy, "/")
+
+                If DateDiff("D", DateSerial(CInt(arrNgay(2)), CInt(arrNgay(1)), CInt(arrNgay(0))), Date) < 0 Then
+                    .Col = .ColLetterToNumber("C")
+                    .Row = 57
+                    .CellNote = vErrNgayHDDaiLy
+                    .BackColor = mErrorColor
+
+                    iFlagEmty = 1
+                Else
+                    .Col = .ColLetterToNumber("C")
+                    .Row = 57
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
+
+            Else
+                .Col = .ColLetterToNumber("C")
+                .Row = 57
+                .CellNote = vErrNgayHDDaiLyEmpty
+                .BackColor = mErrorColor
+
+                iFlagEmty = 1
+            End If
+
+            ' Kiem tra so HDDL
+            If Trim$(vSoHDDaiLy) = "" Or vSoHDDaiLy = vbNullString Then
+                .Col = .ColLetterToNumber("C")
+                .Row = 55
+                .CellNote = vErrSoHDDaiLy
+                .BackColor = mErrorColor
+
+                iFlagEmty = 1
+            Else
+                .Col = .ColLetterToNumber("C")
+                .Row = 55
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+            End If
+
+        Else
+            .Col = .ColLetterToNumber("C")
+            .Row = 39
+            .CellNote = ""
+            .BackColor = mNonErrorColor
+            .Col = .ColLetterToNumber("C")
+            .Row = 41
+            .CellNote = ""
+            .BackColor = mNonErrorColor
+            .Col = .ColLetterToNumber("C")
+            .Row = 43
+            .CellNote = ""
+            .BackColor = mNonErrorColor
+            .Col = .ColLetterToNumber("C")
+            .Row = 45
+            .CellNote = ""
+            .BackColor = mNonErrorColor
+            .Col = .ColLetterToNumber("C")
+            .Row = 47
+            .CellNote = ""
+            .BackColor = mNonErrorColor
+            .Col = .ColLetterToNumber("C")
+            .Row = 59
+            .CellNote = ""
+            .BackColor = mNonErrorColor
+            .Col = .ColLetterToNumber("C")
+            .Row = 61
+            .CellNote = ""
+            .BackColor = mNonErrorColor
+            .Col = .ColLetterToNumber("C")
+            .Row = 55
+            .CellNote = ""
+            .BackColor = mNonErrorColor
+            .Row = 57
+            .CellNote = ""
+            .BackColor = mNonErrorColor
+                        
+        End If
+
+        '----------------------------------------------------------------------------
         .Sheet = 1
-         mCurrentSheet = .Sheet
+        mCurrentSheet = .Sheet
         .Row = 2
         .GetText .ColLetterToNumber(S1StartDateCol), S1StartDateRow, StartDate
+
         If Format_ddmm(CStr(StartDate)) = "" Then
             ErrStartDate = 1
         Else
@@ -661,7 +718,6 @@ Private Sub CheckDynamicError()
         strCheck = Right(strCheck, Len(strCheck) - 1)
         Err3 = CInt(strCheck)
         
-        
         .Sheet = .SheetCount
         'set formula for MST
         .Col = .ColLetterToNumber("B")
@@ -681,13 +737,14 @@ Private Sub CheckDynamicError()
         
         '.ReDraw = True
         '.Visible = True
-         'set lai trang thai header
+        'set lai trang thai header
         .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), 23, IIf(iFlagEmty = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 29, IIf(iFlagTrungMST = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 36, IIf(iFlagTenDVCQEmpty = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 37, IIf(iFlagMSTDVCQEmpty = 1, "0", "1")
     End With
+
 End Sub
 
 'This function is ued to support report
