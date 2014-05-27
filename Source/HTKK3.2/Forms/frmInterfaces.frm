@@ -4994,7 +4994,8 @@ Private Sub KetXuatXML()
             xmlTK.getElementsByTagName("PLuc")(0).parentNode.removeChild xmlTK.getElementsByTagName("PLuc")(0)
         End If
     End If
-
+    
+    'Xu ly doi voi cac to khai chua co xmlns:xsi, xmlns
     xmlTK.documentElement.SetAttribute "xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance"
 
     xmlTK.documentElement.SetAttribute "xmlns", "http://kekhaithue.gdt.gov.vn/TKhaiThue"
@@ -7805,7 +7806,7 @@ Private Sub Form_Resize()
             And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "13" _
             And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "14" _
            Then
-            'InvisibleXmlButton
+            InvisibleXmlButton
         End If
     End If
 
@@ -7890,7 +7891,7 @@ Private Sub SetupSpread()
             .TabStripPolicy = TabStripPolicyAsNeeded
             .TabStripFont.Name = "Tahoma"
             .TextTip = TextTipFloating
-        
+            
             If UCase(.SheetName) <> UCase("Header") Then
                 .SheetName = GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(.sheet - 1), "Caption")
             Else
@@ -8664,6 +8665,7 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
         
         .Col = Col
         .Row = Row
+        
         If arrErrCells.Exists(mCurrentSheet & "_" & GetCellID(fpSpread1, Col, Row)) Then
             .CellNote = ""
             .BackColor = arrErrCells.Item(mCurrentSheet & "_" & GetCellID(fpSpread1, Col, Row))
@@ -8677,6 +8679,16 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
         Else
             lValue = .Text
         End If
+                
+        'Xu ly mst cho thong tin header
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "Year") = vbNullString Or GetAttribute(TAX_Utilities_v1.NodeMenu, "Year") = "0" Then
+            If .Col = 3 And (.Row = 34 Or .Row = 39) Then
+                If Len(lValue) = 14 Then
+                    lValue = Left$(lValue, 10) & Right$(lValue, 3)
+                End If
+            End If
+        End If
+        
         Select Case .cellType
             Case 10
             ' Checkbox -> See Business object
@@ -9547,6 +9559,16 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
         .sheet = mCurrentSheet
         .Col = Col
         .Row = Row
+        
+        'Xu ly mst cho thong tin header
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "Year") = vbNullString Or GetAttribute(TAX_Utilities_v1.NodeMenu, "Year") = "0" Then
+            If .Col = 3 And (.Row = 34 Or .Row = 39) Then
+                If Len(.Text) = 13 Then
+                    .Text = Left$(.Text, 10) & "-" & Right$(.Text, 3)
+                End If
+            End If
+        End If
+        
         If .cellType = CellTypeNumber Then
             .TypeNumberNegStyle = TypeNumberNegStyle1
         End If

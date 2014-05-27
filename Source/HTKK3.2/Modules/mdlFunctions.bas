@@ -1311,7 +1311,15 @@ Public Sub SetupData(pGrid As fpSpread)
                         lRows = GetDynRowCount(pGrid, xmlNodeCell.parentNode)
                         InsertRow pGrid, lRow, lRows, True
                     End If
-
+                    
+                    'Xu ly mst phan thong tin header
+                    If GetAttribute(TAX_Utilities_v1.NodeMenu, "Year") = vbNullString Or GetAttribute(TAX_Utilities_v1.NodeMenu, "Year") = "0" Then
+                        If lCol = 3 And (lRow = 34 Or lRow = 39) Then
+                            If Len(vValue) = 13 Then
+                                vValue = Left$(vValue, 10) & "-" & Right$(vValue, 3)
+                            End If
+                        End If
+                    End If
                     'Next
                     '.EventEnabled(EventChange) = True
                 
