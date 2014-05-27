@@ -1826,7 +1826,16 @@ Private Sub Command1_Click()
 'str1 = "aa999162100343639   01201400100100100101/0101/01/2010<S01><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>Nguyen Van A~28/04/2014~~~1~~</S></S01>"
 'Barcode_Scaned str1
 
-str1 = "aa99914030517293400101201400100100100101/0101/01/2009<S01><S>01/01/2014~31/03/2014</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0</S><S>~df~09/05/2014</S></S01>"
+'str1 = "aa99914030517293400101201400100100100101/0101/01/2009<S01><S>01/01/2014~31/03/2014</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0</S><S>~df~09/05/2014</S></S01>"
+'Barcode_Scaned str1
+
+'str1 = "aa999062100343639   04201400100100100201/0114/06/2006<S01><S></S><S>010101~Kg~0.000~0.00~12.000~0~0.00</S><S>010103~Kg~"
+'Barcode_Scaned str1
+'str1 = "aa999062100343639   0420140010010020020.000~0.00~16.000~0~0.00</S><S>~~0~0~0~0~0</S><S>~~~23/05/2014~1~~0~0~</S></S01>"
+'Barcode_Scaned str1
+str1 = "aa999772100343639   00201300100100100201/0114/06/2006<S01><S></S><S>010104~Kg~0~0~11~0~0</S><S>01020"
+Barcode_Scaned str1
+str1 = "aa999772100343639   0020130010010020028~Kg~0~0~10~0~0</S><S>Nguyen Van A~23/05/2014~~~1~</S></S01>"
 Barcode_Scaned str1
 
 End Sub
@@ -5098,7 +5107,7 @@ Private Function Prepare_QLT() As String
                 
             .GetText .ColLetterToNumber("E"), 28, GHICHU
             GHICHU = TAX_Utilities_Svr_New.Convert(Trim(GHICHU), UNICODE, TCVN)
-        ElseIf menuId = 6 Or menuId = 5 Or menuId = 70 Then
+        ElseIf menuId = 5 Or menuId = 70 Then
             .GetText .ColLetterToNumber("H"), 7, maDTNT
                 
             .GetText .ColLetterToNumber("H"), 7, MST
@@ -5123,6 +5132,32 @@ Private Function Prepare_QLT() As String
             .GetText .ColLetterToNumber("R"), 25, NGNHAP
                 
             .GetText .ColLetterToNumber("E"), 29, GHICHU
+            GHICHU = TAX_Utilities_Svr_New.Convert(Trim(GHICHU), UNICODE, TCVN)
+        ElseIf menuId = 6 Then
+            .GetText .ColLetterToNumber("I"), 7, maDTNT
+                
+            .GetText .ColLetterToNumber("I"), 7, MST
+                
+            .GetText .ColLetterToNumber("I"), 5, NGUOI_NOP
+            NGUOI_NOP = TAX_Utilities_Svr_New.Convert(Trim(NGUOI_NOP), UNICODE, TCVN)
+                
+            .GetText .ColLetterToNumber("I"), 9, DIA_CHI
+            DIA_CHI = TAX_Utilities_Svr_New.Convert(Trim(DIA_CHI), UNICODE, TCVN)
+                
+            .GetText .ColLetterToNumber("I"), 15, MA_DLT
+                
+            .GetText .ColLetterToNumber("I"), 13, TEN_DLT
+            TEN_DLT = TAX_Utilities_Svr_New.Convert(Trim(TEN_DLT), UNICODE, TCVN)
+                
+            .GetText .ColLetterToNumber("S"), 21, NGAY_HDONG_DLT
+                
+            .GetText .ColLetterToNumber("F"), 23, vKYLBO
+                
+            .GetText .ColLetterToNumber("F"), 25, NGNOP
+                
+            .GetText .ColLetterToNumber("S"), 25, NGNHAP
+                
+            .GetText .ColLetterToNumber("F"), 29, GHICHU
             GHICHU = TAX_Utilities_Svr_New.Convert(Trim(GHICHU), UNICODE, TCVN)
         ElseIf menuId = 8 Or menuId = 9 Then
             .GetText .ColLetterToNumber("K"), 4, maDTNT
@@ -6129,8 +6164,10 @@ Private Sub Insert_QHS()
             ' vttoan: lay KyLapBo
         ElseIf menuId = 15 Or menuId = 16 Or menuId = 50 Or menuId = 51 Or menuId = 36 Or menuId = 72 Or menuId = 86 Or menuId = 87 Or menuId = 72 Then
             .GetText .ColLetterToNumber("E"), 22, vKYLBO
-        ElseIf menuId = 5 Or menuId = 6 Or menuId = 70 Then
+        ElseIf menuId = 5 Or menuId = 70 Then
             .GetText .ColLetterToNumber("E"), 23, vKYLBO
+        ElseIf menuId = 6 Then
+            .GetText .ColLetterToNumber("F"), 23, vKYLBO
         ElseIf menuId = 1 Or menuId = 2 Or menuId = 4 Or menuId = 11 Or menuId = 12 Or menuId = 80 Or menuId = 81 Or menuId = 82 Or menuId = 89 Or menuId = 71 Or menuId = 3 Or menuId = 59 Or menuId = 74 Or menuId = 75 Or menuId = 77 Then
             .GetText .ColLetterToNumber("E"), 30, vKYLBO
         ElseIf menuId = 73 Then
