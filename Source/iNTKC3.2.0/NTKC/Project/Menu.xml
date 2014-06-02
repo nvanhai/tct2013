@@ -660,31 +660,33 @@
 			<Sheet ID="02" Caption="Biểu thuế tiêu thụ đặc biệt" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" DataFile="Catalogue_022014_02"/>
 		</Validity>
 	</Menu>
-	<Menu ID="07" PopID="101" ParentID="112" Caption="Báo cáo phát hành biên lai thu phí, lệ phí " FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp" FileName="" >
+	
+	<Menu ID="114" PopID="" ParentID="101" Caption="Biên lai thu phí, lệ Phí" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\kekhai.gif"/>
+	<Menu ID="07" PopID="101" ParentID="114" Caption="Báo cáo phát hành biên lai thu phí, lệ phí " FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp" FileName="" >
 		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\excel\01_TBAC_BLP.xls" ReportTemplate="..\ReportTemplates\excel\01_TBAC_BLP.xls" Class="Tax_Business_iNTK.cls_01_TBAC_BLP">
 			<Sheet ID="01" Caption="01_TBAC" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_TBAC_BLP" Ini="..\Ini\01_TBAC_BLP.xml" ReportIni="..\ReportIni\01_TBAC_BLP.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
 		</Validity>
 	</Menu>
-	<Menu ID="09" PopID="101" ParentID="112" Caption="Báo cáo mất,cháy,hỏng biên lai thu phí, lệ phí " FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp" >
+	<Menu ID="09" PopID="101" ParentID="114" Caption="Báo cáo mất,cháy,hỏng biên lai thu phí, lệ phí " FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp" >
 		<Validity StartDate="01/01/2010" InterfaceTemplate="..\InterfaceTemplates\excel\BC21_AC_BLP.xls" ReportTemplate="..\ReportTemplates\excel\BC21_AC_BLP.xls" Class="Tax_Business_iNTK.cls_BC21_AC_BLP">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BC21_AC_BLP" Ini="..\Ini\BC21_AC_BLP.xml" ReportIni="..\ReportIni\BC21_AC_BLP.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
 		</Validity>
 	</Menu>
-	<Menu ID="10" PopID="101" ParentID="112" Caption="Thông báo kết quả hủy biên lai thu phí, lệ phí " FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp" >
+	<Menu ID="10" PopID="101" ParentID="114" Caption="Thông báo kết quả hủy biên lai thu phí, lệ phí " FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp" >
 		<Validity StartDate="01/01/2010" InterfaceTemplate="..\InterfaceTemplates\excel\03_TBAC_BLP.xls" ReportTemplate="..\ReportTemplates\excel\03_TBAC_BLP.xls" Class="Tax_Business_iNTK.cls_03_TBAC_BLP">
 			<Sheet ID="01" Caption="03_TBAC" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_TBAC_BLP" Ini="..\Ini\03_TBAC_BLP.xml" ReportIni="..\ReportIni\03_TBAC_BLP.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
 		</Validity>
 	</Menu>
-	<Menu ID="13" PopID="101" ParentID="112" Caption="Báo cáo tình hình nhận in biên lai thu phí, lệ phí" FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
+	<Menu ID="13" PopID="101" ParentID="114" Caption="Báo cáo tình hình nhận in biên lai thu phí, lệ phí" FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\excel\01_AC_BLP.xls" ReportTemplate="..\ReportTemplates\Excel\01_AC_BLP.xls" Class="Tax_Business_iNTK.cls_01_AC_BLP">
 			<Sheet ID="01" Caption="01_AC" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_AC_BLP" Ini="..\Ini\01_AC_BLP.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml"/>
 		</Validity>
 	</Menu>
-	<Menu ID="14" PopID="101" ParentID="112" Caption="Báo cáo tình hình sử dụng biên lai thu phí, lệ phí" FormName="" Year="1/2" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tncn.bmp">
+	<Menu ID="14" PopID="101" ParentID="114" Caption="Báo cáo tình hình sử dụng biên lai thu phí, lệ phí" FormName="" Year="1/2" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\excel\BC26_AC_BLP.xls" ReportTemplate="..\ReportTemplates\Excel\BC26_AC_BLP.xls" Class="Tax_Business_iNTK.cls_BC26AC_BLP">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BC26_AC_BLP" Ini="..\Ini\BC26_AC_BLP.xml" ReportIni="..\ReportIni\BC26_AC_BLP.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml"/>
