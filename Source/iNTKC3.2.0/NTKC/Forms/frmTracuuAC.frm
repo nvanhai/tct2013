@@ -448,7 +448,7 @@ Sub SetupData()
                 Parentid = GetAttribute(xmlNode, "ParentID")
                 LoaiTk = GetAttribute(xmlNode, "Caption")
                 '.TypeComboBoxIndex = 0
-                If Parentid = "112" Then
+                If Parentid = "112" Or Parentid = "114" Then
                     i = i + 1
                     .TypeComboBoxIndex = -1
                     .TypeComboBoxString = LoaiTk
