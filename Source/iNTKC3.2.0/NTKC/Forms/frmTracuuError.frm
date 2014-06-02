@@ -36,7 +36,7 @@ Begin VB.Form frmTraCuuError
       Caption         =   "NhËn l¹i TK"
       Default         =   -1  'True
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -54,7 +54,7 @@ Begin VB.Form frmTraCuuError
    Begin VB.CommandButton btnThoat 
       Caption         =   "&Tho¸t"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -72,7 +72,7 @@ Begin VB.Form frmTraCuuError
    Begin VB.CommandButton btnTraCuu 
       Caption         =   "Tra &cøu"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -123,7 +123,7 @@ Begin VB.Form frmTraCuuError
    Begin VB.Frame Frame1 
       Caption         =   "Chän ngµy nép"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -175,7 +175,7 @@ Begin VB.Form frmTraCuuError
    Begin VB.Frame Frame2 
       Caption         =   "KÕt qu¶"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -192,7 +192,7 @@ Begin VB.Form frmTraCuuError
    Begin VB.Frame Frame3 
       Caption         =   "Chän lo¹i tê khai"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -579,7 +579,7 @@ Sub SetupData()
                 Parentid = GetAttribute(xmlNode, "ParentID")
                 LoaiTk = GetAttribute(xmlNode, "Caption")
                 '.TypeComboBoxIndex = 0
-                If Parentid = "101" And Val(GetAttribute(xmlNode, "ID")) <> 112 Then
+                If Parentid = "101" And Val(GetAttribute(xmlNode, "ID")) <> 112 And Val(GetAttribute(xmlNode, "ID")) <> 114 Then
                     i = i + 1
                     .TypeComboBoxIndex = -1
                     .TypeComboBoxString = LoaiTk
