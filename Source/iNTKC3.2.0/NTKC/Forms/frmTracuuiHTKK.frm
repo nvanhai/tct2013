@@ -173,7 +173,7 @@ Begin VB.Form frmTraCuuiHTKK
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuuiHTKK.frx":078A
+         SpreadDesigner  =   "frmTracuuiHTKK.frx":0752
          UserResize      =   1
          Appearance      =   1
       End
@@ -224,7 +224,7 @@ Begin VB.Form frmTraCuuiHTKK
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuuiHTKK.frx":0D64
+         SpreadDesigner  =   "frmTracuuiHTKK.frx":0CF4
          UserResize      =   1
       End
    End
@@ -506,6 +506,7 @@ Private Function changeLoaiToKhai(ByVal strLoaiMaToKhai As String) As String
     If strLoaiMaToKhai = "112" Then changeLoaiToKhai = " IN ('64','65','66','67','68','91') "
     If strLoaiMaToKhai = "101" Then changeLoaiToKhai = " IN ('70','80','81','82') "
     If strLoaiMaToKhai = "113" Then changeLoaiToKhai = " IN ('86','87','89') "
+    If strLoaiMaToKhai = "114" Then changeLoaiToKhai = " IN ('07','09','10','13','14') "
     
     If strLoaiMaToKhai = "0" Then changeLoaiToKhai = " LIKE '%' "
     If Trim(txtMST.Text) <> vbNullString Then
