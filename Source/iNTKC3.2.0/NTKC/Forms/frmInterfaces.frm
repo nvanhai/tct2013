@@ -1963,8 +1963,28 @@ Private Sub Command1_Click()
 'str2 = "aa999094400820660   01201400100100100101/0101/01/2010<S01><S>08/04/2014</S><S>01BLP2-111~Bi?n lai thu phY, lO phY khng c? mOnh gi?~AB-11P~0000002~0000009~8~5~03</S><S>hoa hoan~ctt thanh xuan~quang minh~08/04/2014</S></S01>"
 'Barcode_Scaned TAX_Utilities_iNTK.Convert(str2, TCVN, UNICODE)
 
-str2 = "aa320033700313821   002013ihtkks00100101/0114/06/200601/01/201331/12/2013<S03><S></S><S>65820599283~1168630323~0~0~973740103~0~194890220~1209444750~0~0~0~1209444750~65779784856~65779784856~0~65779784856~0~0~65779784856~0~65779784856~16444946214~0~0~0~16444946214~0~16444946214~16444946214~0</S><S></S><S></S><S></S><S>~KyDienTu~~10/04/2014~1~~~1052~00</S></S03><S03-1A><S>627991037651~579298534478~2347061767~546938418~1471017324~329106025~0~6955873136~559071236138~528535130048~12092127086~18443979004~8380721170~3221621664~65147891712~1600431892~927724321~672707571~65820599283</S></S03-1A>"
-Barcode_Scaned TAX_Utilities_iNTK.Convert(str2, TCVN, UNICODE)
+' 4400334156
+'str2 = "aa323074400331187   04201400100100100101/0101/01/2009<S01><S>Bi?n lai thu phY, lO phY khng c? mOnh gi?~01BLP3-333~AB-11P~6~0000002~0000007~30/04/2014~kkk~01/01/2014~Hang Hai~0100231226</S><S>CTT thanh xuan~16/04/2014~Quang Minh</S></S01>"
+'Barcode_Scaned TAX_Utilities_iNTK.Convert(str2, TCVN, UNICODE)
+
+'252: 2100343639
+'str2 = "aa321712100343639   03201400100100100101/0101/01/1900<S01><S></S><S>0~0~0~16016000~800800~0~0~0~0~16016000~800800~16016000~800800</S><S>~HÔYNH MINH TÛ~~05/04/2014~1~~~0~</S></S01>"
+'Barcode_Scaned TAX_Utilities_iNTK.Convert(str2, TCVN, UNICODE)
+
+'--Chi cuc thue Mong Cai - QNI
+
+'str2 = "aa322125701552625   01201400000000100101/0114/06/2006<S01><S></S><S>~~0~0~0~0~0~0~0~~20~22~0~~0~0~0~0~0~0~0~0~~~~0~0</S><S>~24/04/2014~~~1~~1052</S></S01>"
+'Barcode_Scaned TAX_Utilities_iNTK.Convert(str2, TCVN, UNICODE)
+
+'str2 = "aa321012100343639   04201300100100100101/0114/06/2006<S01><S></S><S>0~41756614~1357116686~135607853~135607853~0~0~0~0~0~0~0~0~0~0~-135607853~0~0~0~0~0~0~177364467~0~177364467</S><S>~~~07/05/2014~1~~~1701~~~0</S></S01>"
+'Barcode_Scaned TAX_Utilities_iNTK.Convert(str2, TCVN, UNICODE)
+
+'str2 = "aa323142100343639   01201400500500100101/0101/01/2009<S01><S>01/01/2014~31/03/2014</S><S> ,"
+'str2 = str2 & "h› kh´ng c„ m÷nh gi∏~01BLP3-001~AA -14T~10000~~~0000001~0010000~0000001~0000060~60~38~2~5;7~10~31-40~10~51-60~0000061~0010000"
+'str2 = str2 & "~9940~Bi™n lai thu ph› , l÷ ph› c„ m÷nh gi∏~02BLP3-001~AA -14T~10000~~~0000001~0010000~0000001~0000060~60~38~2~7;9~10~31-40~10"
+'str2 = str2 & "~51-60~0000061~0010000~9940</S><S >Ng≠Íi lÀp bi”u~ThÒ tr≠Îng Æ¨n vﬁ thuyntk1605~22/04/2014</S></S01>"
+'Barcode_Scaned str2
+
 
 End Sub
 
@@ -4426,7 +4446,7 @@ On Error GoTo ErrHandle
     ' set ma CQT
     If Not objTaxBusiness Is Nothing Then
         If (Val(GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID")) >= 64 And Val(GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID")) <= 68) Or Val(GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID")) = 91 _
-        Or Val(GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID")) = 7 Or Val(GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID")) = 9 Or Val(GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID")) = 10 Or Val(GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID")) = 13 Then
+        Or Val(GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID")) = 7 Or Val(GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID")) = 9 Or Val(GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID")) = 10 Or Val(GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID")) = 13 Or Val(GetAttribute(TAX_Utilities_iNTK.NodeMenu, "ID")) = 14 Then
             objTaxBusiness.strMaCQT = strTaxOfficeId
             ' lay ma phong quan ly
             'Get Tax id
