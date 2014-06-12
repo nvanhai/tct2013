@@ -268,6 +268,10 @@
 	<Menu ID="41" PopID="101" ParentID="104" Caption="TK-TNCN Mẫu 09/TNCN Quyết toán TNCN" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\Excel\09_TNCN11.xls" ReportTemplate="..\ReportTemplates\Excel\09_TNCN11.xls" Class="Tax_Business_iNTK.cls_09TNCN">
 			<Sheet ID="09" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="09_TNCN11" Ini="..\Ini\09_TNCN11.xml"/>
+			<Sheet ID="09A" Caption="09APL-TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="09A_TNCN11" Ini="..\Ini\09A_TNCN11.xml"/>
+			<Sheet ID="09B" Caption="09BPL-TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="09B_TNCN11" Ini="..\Ini\09B_TNCN11.xml"/>
+			<Sheet ID="09C" Caption="09CPL-TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="09C_TNCN11" Ini="..\Ini\09C_TNCN11.xml" />			
+			<Sheet ID="26MT" Caption="26MT-TNCN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="09MT_TNCN11" Ini="..\Ini\09MT_TNCN11.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
 		</Validity>
 	</Menu>
