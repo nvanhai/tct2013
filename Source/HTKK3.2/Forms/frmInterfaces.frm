@@ -6787,7 +6787,6 @@ Private Sub cmdPrint_Click()
     End If
     '****************************
         
-    If isLocaleDecimalClient = True Then
         If CheckValidData = True Then
             ' Trong truong hop in dieu chinh thi cac to khai quyet toan TNCN hien thi o check "In thong tin dieu chinh"
             Dim varMenuId As String
@@ -6946,10 +6945,6 @@ Private Sub cmdPrint_Click()
         Else
             DisplayMessage "0016", msOKOnly, miInformation
         End If
-        
-    Else
-        DisplayMessage "0313", msOKOnly, miInformation
-    End If
     
     '****************************
     ' added
@@ -7441,9 +7436,6 @@ Private Sub Form_Activate()
     '    Me.Left = (frmSystem.Width - Me.Width) \ 2 - 100
     '    If Me.Top < 0 Then Me.Top = 0
     '    If Me.Left < 0 Then Me.Left = 0
-    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = 17 Then
-        LoadDataFiles
-    End If
     
     'Set format number thap phan "." phan cach ","
     dwLCID = GetSystemDefaultLCID
@@ -15429,193 +15421,3 @@ Sub InvisibleXmlButton()
     cmdInsert.Left = cmdInsert.Left + 2680
 End Sub
 
-Private Sub LoadDataFiles()
-    Dim lSheet         As Long
-    Dim cellNode       As MSXML.IXMLDOMNode
-    Dim lCol           As Long, lRow As Long
-    Dim vValue         As Variant
-    Dim vCellID        As String
-    Dim DynamicCount   As Long
-    Dim a              As Long
-    Dim formatGridXml  As New MSXML.DOMDocument
-    Dim formatGridNode As MSXML.IXMLDOMNode
-    Dim colArray()     As String
-    Dim Col            As Variant
- 
-    On Error GoTo herr
-
-    formatGridXml.Load GetAbsolutePath("../Project/FormatGrid.xml")
-    ProgressBar1.Visible = True
-    Lbload.Visible = True
-
-    With fpSpread1
-        .EventEnabled(EventAllEvents) = False
-
-        For lSheet = 0 To TAX_Utilities_v1.xmlDataCount
-            a = 0
-            .sheet = lSheet + 1
-            .ActiveSheet = lSheet + 1
-            
-            For Each formatGridNode In formatGridXml.lastChild.childNodes
-
-                If GetAttribute(formatGridNode, "ID") = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") And GetAttribute(formatGridNode, "Sheet") = .sheet Then
-                    Exit For
-                End If
-            
-            Next
-
-            'set du lieu
-            For Each cellNode In TAX_Utilities_v1.Data(lSheet).getElementsByTagName("Cell")
-        
-                If GetAttribute(cellNode, "FirstCell") = "0" Then
-                    vCellID = GetAttribute(cellNode, "CellID")
-                    ParseCell vCellID, lCol, lRow
-                    DynamicCount = cellNode.parentNode.parentNode.childNodes.length
-                    .MaxRows = .MaxRows + DynamicCount - 1
-                    .InsertRows lRow + 1, DynamicCount - 1
-
-                    ProgressBar1.max = DynamicCount
-                    
-                    'set format
-                    colArray = Split(GetAttribute(formatGridNode, "FormatCol"), ",")
-
-                    For Each Col In colArray
-                        setFormatColumn lSheet + 1, .ColLetterToNumber(Col), Val(GetAttribute(formatGridNode, "FirstRow")), Val(GetAttribute(formatGridNode, "FirstRow")) + DynamicCount
-                    Next
-
-                End If
-
-                DoEvents
-
-                If GetAttribute(cellNode, "FirstCell") <> vbNullString Then
-                    ProgressBar1.value = a
-                    a = a + 1
-                End If
-
-                vCellID = GetAttribute(cellNode, "CellID")
-                vValue = GetAttribute(cellNode, "Value")
-                ParseCell vCellID, lCol, lRow
-                .SetText lCol, lRow, vValue
-            Next
-
-            If Not formatGridNode Is Nothing Then
-                'set border
-                .SetCellBorder .ColLetterToNumber(GetAttribute(formatGridNode, "FirstCol")), Val(GetAttribute(formatGridNode, "FirstRow")), .ColLetterToNumber(GetAttribute(formatGridNode, "LastCol")), (Val(GetAttribute(formatGridNode, "FirstRow")) + DynamicCount), 15, &O0, CellBorderStyleSolid
-                'Copy range
-                a = 0
-                colArray = Split(GetAttribute(formatGridNode, "CopyRowRange"), ",")
-
-                Do While a * 2 < DynamicCount
-
-                    If a = 0 Then
-
-                        For Each Col In colArray
-                            .CopyRange .ColLetterToNumber(Col), Val(GetAttribute(formatGridNode, "FirstRow")), .ColLetterToNumber(Col), Val(GetAttribute(formatGridNode, "FirstRow")) + a, .ColLetterToNumber(Col), (Val(GetAttribute(formatGridNode, "FirstRow")) + a + 1)
-
-                        Next
-
-                        a = a + 2
-                    ElseIf a <> 0 Then
-
-                        For Each Col In colArray
-                            .CopyRange .ColLetterToNumber(Col), Val(GetAttribute(formatGridNode, "FirstRow")), .ColLetterToNumber(Col), Val(GetAttribute(formatGridNode, "FirstRow")) + a - 1, .ColLetterToNumber(Col), Val(GetAttribute(formatGridNode, "FirstRow")) + a
-
-                        Next
-
-                        a = a * 2
-                    End If
-
-                Loop
-
-                For Each Col In colArray
-                    .CopyRange .ColLetterToNumber(Col), Val(GetAttribute(formatGridNode, "FirstRow")), .ColLetterToNumber(Col), Val(GetAttribute(formatGridNode, "FirstRow")) + (DynamicCount - a - 1), .ColLetterToNumber(Col), (Val(GetAttribute(formatGridNode, "FirstRow")) + a)
-
-                Next
-
-            End If
-
-        Next
-
-        .EventEnabled(EventAllEvents) = True
-        .ActiveSheet = 1
-    End With
-
-    ProgressBar1.Visible = False
-    Lbload.Visible = False
-    Exit Sub
-herr:
-    SaveErrorLog "mdlFunctions", "LoadDataFiles", Err.Number, Err.Description
-End Sub
-
-Private Sub setFormatColumn(lSheet As Long, _
-                            Col As Long, _
-                            firstRow As Long, _
-                            lastRow As Long)
-    Dim cellType            As Variant
-    Dim TypeHAlign          As Variant
-    Dim TypeVAlign          As Variant
-    Dim TypeMaxEditLen      As Variant
-    Dim TypeNumberDecPlaces As Variant
-    Dim TypeNumberSeparator As Variant
-    Dim TypeNumberShowSep   As Variant
-    Dim isLock              As Variant
-    Dim fontName            As Variant
-    Dim fontSize            As Variant
-
-    With fpSpread1
-        .sheet = lSheet
-        .Row = firstRow
-        .Col = Col
-        cellType = .cellType
-        TypeVAlign = .TypeVAlign
-        TypeHAlign = .TypeHAlign
-        TypeMaxEditLen = .TypeMaxEditLen
-        isLock = .Lock
-        fontName = .fontName
-        fontSize = .fontSize
-
-        If cellType = CellTypeNumber Then
-            TypeNumberDecPlaces = .TypeNumberDecPlaces
-            TypeNumberSeparator = .TypeNumberSeparator
-            TypeNumberShowSep = .TypeNumberShowSep
-        End If
-        
-        .Row2 = lastRow - 1
-        .Col2 = Col
-        .BlockMode = True
-        .cellType = cellType
-        .TypeVAlign = TypeVAlign
-        .TypeHAlign = TypeHAlign
-        .TypeMaxEditLen = TypeMaxEditLen
-        .Lock = isLock
-        .fontName = fontName
-        .fontSize = fontSize
-
-        If cellType = CellTypeNumber Then
-            .TypeNumberDecPlaces = TypeNumberDecPlaces
-            .TypeNumberSeparator = TypeNumberSeparator
-            .TypeNumberShowSep = TypeNumberShowSep
-        End If
-
-        .BlockMode = False
-    End With
-
-End Sub
-
-
-Public Sub ParseCell(cellID As String, lCol As Long, lRow As Long)
-    Dim cellArray() As String
-    cellArray = Split(cellID, "_")
-    If UBound(cellArray) = 1 Then
-        If Val(cellArray(1)) > 0 Then
-            lRow = Val(cellArray(1))
-            lCol = fpSpread1.ColLetterToNumber(cellArray(0))
-        Else
-            lRow = 0
-            lCol = 0
-        End If
-    Else
-        lRow = 0
-        lCol = 0
-    End If
-End Sub

@@ -167,9 +167,9 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
         .Col = Col
         .Row = Row
          If Col = .ColLetterToNumber("H") And .Text <> "" Then
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber("N")
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             'Update combo F
             .Col = .ColLetterToNumber("N")
             UpdateCell_sheet fps, 1, .Col, .Row, .Text
@@ -731,6 +731,12 @@ Private Sub checkSheet1()
                    'vMST = Replace(vMST, " ", "")
     '               vMST = Replace(vMST, "-", "")
     '                vMST = Left(vMST, 10)
+    
+                   If Len(vMST) = 14 And InStr(vMST, "-") > 0 Then
+                        vMST = Left$(vMST, 10) & Right$(vMST, 3)
+                    End If
+                    vMST = Replace(vMST, "-", "")
+                    
                    strCheck = ""
                    If vMST <> Replace(vMST, " ", "") Then
                         strCheck = ""
@@ -740,7 +746,7 @@ Private Sub checkSheet1()
                         End If
                    End If
                    ' Kiem tra dinh dang theo cau truc cua co quan thue
-                   If Mid(strCheck, 2, 1) <> "0" Then
+                   If Mid(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
                         .Col = .ColLetterToNumber("C")
                         .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                         .CellNote = vErrMsgMST   'static
