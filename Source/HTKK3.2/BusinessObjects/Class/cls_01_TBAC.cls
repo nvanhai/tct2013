@@ -144,9 +144,9 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
         .Col = Col
         .Row = Row
          If Col = .ColLetterToNumber("C") And .Text <> "" Then
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber("AG")
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             'Update combo F
             .Col = .ColLetterToNumber("AG")
             UpdateCell fps, .Col, .Row, .Text
@@ -860,6 +860,12 @@ Private Sub CheckDynamicError()
                 End If
             ' bat cau truc MST doanh nghiep
                 If Trim(strMstDN) <> vbNullString Then
+                    strMstDN = Replace(strMstDN, " ", "")
+                    If Len(strMstDN) = 14 And InStr(strMstDN, "-") > 0 Then
+                        strMstDN = Left$(strMstDN, 10) & Right$(strMstDN, 3)
+                    End If
+                    strMstDN = Replace(strMstDN, "-", "")
+                    
                     strCheck = ""
                     If Len(strMstDN) = 10 Or Len(strMstDN) = 13 Then
                         If strMstDN <> Replace(strMstDN, " ", "") Then
@@ -873,7 +879,7 @@ Private Sub CheckDynamicError()
                             .CellNote = errMSTDN
                             .BackColor = mErrorColor
                             iFlagEmty = 1
-                        ElseIf Len(strMstDN) = 13 And strCheck <> "000" Then
+                        ElseIf (Len(strMstDN) = 13 And strCheck <> "000") Or Not IsNumeric(strMstDN) Then
                             .Col = .ColLetterToNumber("AA")
                             .CellNote = errMSTDN
                             .BackColor = mErrorColor

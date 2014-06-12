@@ -1285,7 +1285,7 @@ Public Sub SetupData(pGrid As fpSpread)
                 End If
             End If
             
-            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "17" Then
+                
                 Dim vCellID As String
                 Dim vValue  As String
                 ' If load original data -> not fill
@@ -1513,7 +1513,6 @@ Public Sub SetupData(pGrid As fpSpread)
                 Set xmlNodeCell = Nothing
                 Set xmlNodeListCell = Nothing
 
-            End If
 
             'End If
         Next

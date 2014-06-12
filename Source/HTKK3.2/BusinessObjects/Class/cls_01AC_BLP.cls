@@ -757,6 +757,13 @@ Private Sub checkSheet1()
                    'vMST = Replace(vMST, " ", "")
     '               vMST = Replace(vMST, "-", "")
     '                vMST = Left(vMST, 10)
+                    
+                    If Len(vMST) = 14 And InStr(vMST, "-") > 0 Then
+                        vMST = Left$(vMST, 10) & Right$(vMST, 3)
+                    End If
+                    vMST = Replace(vMST, "-", "")
+    
+    
                    strCheck = ""
                    If vMST <> Replace(vMST, " ", "") Then
                         strCheck = ""
@@ -766,7 +773,7 @@ Private Sub checkSheet1()
                         End If
                    End If
                    ' Kiem tra dinh dang theo cau truc cua co quan thue
-                   If Mid(strCheck, 2, 1) <> "0" Then
+                   If Mid(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
                         .Col = .ColLetterToNumber("C")
                         .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                         .CellNote = vErrMsgMST   'static
