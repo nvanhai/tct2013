@@ -460,9 +460,9 @@ With fps
         .Col = Col
         .Row = Row
         If Col = .ColLetterToNumber("Q") Then 'Khi chon Combo
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber("AJ")
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             .GetText .Col, .Row, strMa
             'Nhap lai Combo cot AJ: Combo AJ
             
@@ -474,9 +474,9 @@ With fps
         .Col = Col
         .Row = Row
         If Col = .ColLetterToNumber("AB") Then 'Khi chon Combo
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber("AK")
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             .GetText .Col, .Row, strMa
             'Nhap lai Combo cot AK: Combo AK
             
@@ -804,9 +804,9 @@ With fps
             .Col = Col
             .Row = Row
              If Col = .ColLetterToNumber("D") And Row = 62 + count Then
-                intIndexCombo = .TypeComboBoxCurSel
+                intIndexCombo = .typeComboboxCurSel
                 .Col = .ColLetterToNumber("P")
-                .TypeComboBoxCurSel = intIndexCombo
+                .typeComboboxCurSel = intIndexCombo
                 'Update combo C
                 UpdateCell fps, .Col, .Row, .Text
             End If
@@ -1799,7 +1799,7 @@ Private Sub CheckDynamicError()
                     iWhiteRow = 1
                     .GetText .ColLetterToNumber("AH"), .Row, vCheckMST
                     If Trim$(CStr(vCheckMST)) = "GB" Then
-                       .GetText .ColLetterToNumber("D"), .Row, vDiaChi
+                       .GetText .ColLetterToNumber("D"), .Row, vTenLK
                        .GetText .ColLetterToNumber("I"), .Row, vDiaChi
                        .GetText .ColLetterToNumber("O"), .Row, vMST
                         
@@ -1826,29 +1826,30 @@ Private Sub CheckDynamicError()
                             iWhiteRow = 0
                         End If
                       ' Kiem tra cau truc MST
-                      If Trim(vMST) <> vbNullString Then
-                            vMSTtemp = vMST
-                            vMST = Replace(vMST, " ", "")
-                            vMST = Replace(vMST, "-", "")
-                             'vMST = Left(vMST, 10)
-                            strCheck = ""
-                           If Len(vMST) = 10 Or Len(vMST) = 13 Then
-                                If Len(vMST) = Len(vMSTtemp) Or Mid(vMSTtemp, 11, 1) = "-" Then
-                                    strCheck = CheckTaxCode(Mid(vMST, 1, 1), Mid(vMST, 2, 1), Mid(vMST, 3, 1), Mid(vMST, 4, 1), Mid(vMST, 5, 1), Mid(vMST, 6, 1), Mid(vMST, 7, 1), Mid(vMST, 8, 1), Mid(vMST, 9, 1), Mid(vMST, 10, 1), Mid(vMST, 11, 1), Mid(vMST, 12, 1), Mid(vMST, 13, 1))
-                                End If
-                           End If
-                           If Mid(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
-                                .Col = .ColLetterToNumber("O")
-                                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                .CellNote = errMST
-                                .BackColor = mErrorColor
-                                iFlagMST = 1
-                            End If
-                        Else
-                            .Col = .ColLetterToNumber("O")
-                            .CellNote = ""
-                            .BackColor = mNonErrorColor
-                        End If
+                      ' Khong kiem tra cau truc MST vi co nhieu MST nuoc ngoai
+'                      If Trim(vMST) <> vbNullString Then
+'                            vMSTtemp = vMST
+'                            vMST = Replace(vMST, " ", "")
+'                            vMST = Replace(vMST, "-", "")
+'                             'vMST = Left(vMST, 10)
+'                            strCheck = ""
+'                           If Len(vMST) = 10 Or Len(vMST) = 13 Then
+'                                If Len(vMST) = Len(vMSTtemp) Or Mid(vMSTtemp, 11, 1) = "-" Then
+'                                    strCheck = CheckTaxCode(Mid(vMST, 1, 1), Mid(vMST, 2, 1), Mid(vMST, 3, 1), Mid(vMST, 4, 1), Mid(vMST, 5, 1), Mid(vMST, 6, 1), Mid(vMST, 7, 1), Mid(vMST, 8, 1), Mid(vMST, 9, 1), Mid(vMST, 10, 1), Mid(vMST, 11, 1), Mid(vMST, 12, 1), Mid(vMST, 13, 1))
+'                                End If
+'                           End If
+'                           If Mid(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
+'                                .Col = .ColLetterToNumber("O")
+'                                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                                .CellNote = errMST
+'                                .BackColor = mErrorColor
+'                                iFlagMST = 1
+'                            End If
+'                        Else
+'                            .Col = .ColLetterToNumber("O")
+'                            .CellNote = ""
+'                            .BackColor = mNonErrorColor
+'                        End If
                         
                         ' Kiem tra rang buoc check
                         If isCheck = False And iWhiteRow = 0 Then
