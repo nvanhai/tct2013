@@ -1565,6 +1565,11 @@ Private Sub CheckDynamicError()
           ' Check MST
                         If Trim(vMST) <> vbNullString Then
                            vMST = Replace(vMST, " ", "")
+                           
+                            If Len(vMST) = 14 And InStr(vMST, "-") > 0 Then
+                                vMST = Left$(vMST, 10) & Right$(vMST, 3)
+                            End If
+                           
                            vMST = Replace(vMST, "-", "")
                             'vMST = Left(vMST, 10)
     
@@ -2000,6 +2005,11 @@ Private Sub CheckDynamicError()
              'Check MST
                         If Trim(vMST) <> vbNullString Then
                         vMST = Replace(vMST, " ", "")
+                        
+                        If Len(vMST) = 14 And InStr(vMST, "-") > 0 Then
+                             vMST = Left$(vMST, 10) & Right$(vMST, 3)
+                        End If
+                        
                         vMST = Replace(vMST, "-", "")
                          'vMST = Left(vMST, 10)
                         strCheck = ""

@@ -874,6 +874,12 @@ Private Sub CheckDynamicError()
             ' bat cau truc MST doanh nghiep
                 If Trim(strMstDN) <> vbNullString Then
                     strCheck = ""
+                    
+                    If Len(strMstDN) = 14 And InStr(strMstDN, "-") > 0 Then
+                        strMstDN = Left$(strMstDN, 10) & Right$(strMstDN, 3)
+                    End If
+                    strMstDN = Replace(strMstDN, "-", "")
+                    
                     If Len(strMstDN) = 10 Or Len(strMstDN) = 13 Then
                         If strMstDN <> Replace(strMstDN, " ", "") Then
                             strCheck = ""
@@ -886,7 +892,7 @@ Private Sub CheckDynamicError()
                             .CellNote = errMSTDN
                             .BackColor = mErrorColor
                             iFlagEmty = 1
-                        ElseIf Len(strMstDN) = 13 And strCheck <> "000" Then
+                        ElseIf (Len(strMstDN) = 13 And strCheck <> "000") Or Not IsNumeric(strMstDN) Then
                             .Col = .ColLetterToNumber("AE")
                             .CellNote = errMSTDN
                             .BackColor = mErrorColor

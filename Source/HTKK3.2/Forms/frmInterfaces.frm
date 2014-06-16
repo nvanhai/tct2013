@@ -944,7 +944,7 @@ ProgressBar1.value = fpSpread2.Row
             fpSpread1.Col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
     'check type of cell
             If Conversion.CInt(GetAttribute(xmlNode, "type")) = 13 Then
-                If fpSpread1.cellType = CellTypeNumber Then
+                If fpSpread1.CellType = CellTypeNumber Then
                     fpSpread1.TypeNumberNegStyle = TypeNumberNegStyle1
                 End If
                 fpSpread1.value = value
@@ -1671,7 +1671,7 @@ ProgressBar1.value = fpSpread2.Row
         fpSpread1.Col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
 'check type of cell
         If Conversion.CInt(GetAttribute(xmlNode, "type")) = 13 Then
-            If fpSpread1.cellType = CellTypeNumber Then
+            If fpSpread1.CellType = CellTypeNumber Then
                 fpSpread1.TypeNumberNegStyle = TypeNumberNegStyle1
             End If
             fpSpread1.value = Round(value, 0)
@@ -4069,10 +4069,10 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                                     dNode.Attributes.removeNamedItem "TINType"
                                 Else
 
-                                    If .cellType = CellTypeNumber Then
+                                    If .CellType = CellTypeNumber Then
 
                                         dNode.Text = .value
-                                    ElseIf .cellType = CellTypePic Then
+                                    ElseIf .CellType = CellTypePic Then
                                         dNode.Attributes.removeNamedItem "xsi:nil"
 
                                         If dNode.hasChildNodes Then
@@ -4093,7 +4093,7 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                                             dNode.Text = ToDateString(.Text, True)
                                         End If
 
-                                    ElseIf .cellType = CellTypeCheckBox Then
+                                    ElseIf .CellType = CellTypeCheckBox Then
 
                                         If LCase$(.Text) = "x" Then
                                             dNode.Text = "1"
@@ -4116,13 +4116,13 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                     End If
 
                     If .Text <> "" And .Text <> vbNullString Then
-                        If .cellType = CellTypeNumber Then
+                        If .CellType = CellTypeNumber Then
                             If .Text <> "0" Then
                                 Blank = False
                     
                             End If
 
-                        ElseIf .cellType = CellTypePic Then
+                        ElseIf .CellType = CellTypePic Then
 
                             If .Text <> "../../...." Then
                                 Blank = False
@@ -4180,12 +4180,12 @@ Private Sub SetValueFromXml(ByVal nodes As MSXML.IXMLDOMNode, _
 
                                 If dNode.parentNode.nodeName = cNode.parentNode.nodeName Or cNode.parentNode.nodeName = "Static" Then
                         
-                                    If .cellType = CellTypeNumber Then
+                                    If .CellType = CellTypeNumber Then
 
                                         .value = dNode.Text
                                         UpdateCell .Col, .Row, .value
 
-                                    ElseIf .cellType = CellTypeCheckBox Then
+                                    ElseIf .CellType = CellTypeCheckBox Then
 
                                         If LCase$(dNode.Text) = "x" Then
                                             .Text = "1"
@@ -4587,11 +4587,11 @@ Private Sub KetXuatXML()
 
                         Else
 
-                            If .cellType = CellTypeNumber Then
+                            If .CellType = CellTypeNumber Then
                                 xmlCellTKNode.Text = .value
                                 
                                 'Set gia tri cho cac the kieu ngay thang
-                            ElseIf .cellType = CellTypePic Then
+                            ElseIf .CellType = CellTypePic Then
                                 xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
 
                                 If xmlCellTKNode.hasChildNodes Then
@@ -4606,7 +4606,7 @@ Private Sub KetXuatXML()
                                     xmlCellTKNode.Text = ToDateString(.Text, True)
                                 End If
 
-                            ElseIf .cellType = CellTypeCheckBox Then
+                            ElseIf .CellType = CellTypeCheckBox Then
 
                                 If LCase$(.Text) = "x" Then
                                     xmlCellTKNode.Text = "1"
@@ -4840,9 +4840,9 @@ Private Sub KetXuatXML()
 
                                     Else
 
-                                        If .cellType = CellTypeNumber Then
+                                        If .CellType = CellTypeNumber Then
                                             xmlCellTKNode.Text = .value
-                                        ElseIf .cellType = CellTypePic Then
+                                        ElseIf .CellType = CellTypePic Then
                                             xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
 
                                             If .Text = vbNullString Or .Text = "../../...." Then
@@ -4857,7 +4857,7 @@ Private Sub KetXuatXML()
                                                 xmlCellTKNode.Text = ToDateString(.Text, True)
                                             End If
 
-                                        ElseIf .cellType = CellTypeCheckBox Then
+                                        ElseIf .CellType = CellTypeCheckBox Then
 
                                             If LCase$(.Text) = "x" Then
                                                 xmlCellTKNode.Text = "1"
@@ -7947,7 +7947,7 @@ Private Sub FormatGrid()
                             .BackColor = RGB(255, 255, 235)
                         End If
                         
-                        If .cellType = CellTypeNumber Then
+                        If .CellType = CellTypeNumber Then
                             .TypeNumberDecimal = ","
                             .TypeNumberSeparator = "."
                             .TypeNumberNegStyle = TypeNumberNegStyle1
@@ -7955,7 +7955,7 @@ Private Sub FormatGrid()
                             .TypeNumberMin = -99999999999999#
                         End If
                         
-                        If .cellType = CellTypeDate Then
+                        If .CellType = CellTypeDate Then
                             .TypeDateCentury = True
                             .TypeDateFormat = TypeDateFormatDDMMYY
                             .TypeDateSeparator = Asc("/")
@@ -7963,15 +7963,15 @@ Private Sub FormatGrid()
                         
                         Select Case Trim(.Text)
                             Case "chk"
-                                .cellType = CellTypeCheckBox
+                                .CellType = CellTypeCheckBox
                                 .TypeCheckCenter = True
                             Case "cbo"
-                                .cellType = CellTypeComboBox
+                                .CellType = CellTypeComboBox
                                 .Text = ""
                             Case "cmd"
-                                .cellType = CellTypeButton
+                                .CellType = CellTypeButton
                             Case "picture"
-                                .cellType = CellTypePicture
+                                .CellType = CellTypePicture
                         End Select
                     Next
                 Next
@@ -8081,11 +8081,11 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         GetCellSpan fpSpread1, Col, Row
         .Col = Col
         .Row = Row
-        If .cellType = CellTypeCheckBox Then
+        If .CellType = CellTypeCheckBox Then
             UpdateCell Col, Row, IIf(ButtonDown = 1, "x", vbNullString)
         End If
         If Row < 10 Then
-            If .cellType = CellTypeButton Then
+            If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 strFileName = frmDD.getFileName
                 If Trim(strFileName) = vbNullString Or Trim(strFileName) = "" Then
@@ -8114,7 +8114,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         End If
         'dhdang edit dieu khien cell C_19 to 05_09
         If Row = 19 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "45" Then
-            If .cellType = CellTypeButton Then
+            If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
                 Dim i As Integer
@@ -8165,7 +8165,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         'xu ly nut check chon tren to 05A(cell N20)
         
         If Row = 20 And Col = .ColLetterToNumber("G") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" Then
-            If .cellType = CellTypeButton Then
+            If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
                 'Dim i As Integer
@@ -8242,7 +8242,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         End If
         'xu ly nut chech chon 05A_C20
         If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" Then
-            If .cellType = CellTypeButton Then
+            If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
                 'Dim i As Integer
@@ -8300,7 +8300,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         
         'xu ly nut chech chon 05B_W19
         If Row = 20 And Col = .ColLetterToNumber("Y") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" Then
-            If .cellType = CellTypeButton Then
+            If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
                 'Dim i As Integer
@@ -8361,7 +8361,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         ' xu ly nut check chon tren to khai 06KK-TNCN
         'xu ly nut chech chon 06B_C20
         If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "59" Then
-            If .cellType = CellTypeButton Then
+            If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
                 'Dim i As Integer
@@ -8414,7 +8414,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         
         'xu ly nut chech chon 02BH_C20
         If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "42" Then
-            If .cellType = CellTypeButton Then
+            If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
                 'Dim i As Integer
@@ -8466,7 +8466,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         
         'xu ly nut chech chon 02BHDC_C20
         If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "26" Then
-            If .cellType = CellTypeButton Then
+            If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
                 'Dim i As Integer
@@ -8517,7 +8517,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         End If
         'xu ly nut chech chon 02XS_C20
         If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "43" Then
-            If .cellType = CellTypeButton Then
+            If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
                 'Dim i As Integer
@@ -8628,7 +8628,7 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
                 'This event raise to formula cell
                 If .Formula <> "" Then
                         .ReCalcCell Col, Row
-                        If .cellType = CellTypeNumber Then
+                        If .CellType = CellTypeNumber Then
                             lValue = .value
                         Else
                             lValue = .Text
@@ -8637,7 +8637,7 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
                     Exit Sub
                 End If
                 '*****************************************
-                Select Case .cellType
+                Select Case .CellType
                     Case 10
                     ' Checkbox -> See Business object
                     Case Else
@@ -8666,7 +8666,7 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
         'If .Lock = False Then
         ' When user change value of cell, call UpdateCell function
         
-        If .cellType = CellTypeNumber Then
+        If .CellType = CellTypeNumber Then
             lValue = .value
         Else
             lValue = .Text
@@ -8681,7 +8681,7 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
             End If
         End If
         
-        Select Case .cellType
+        Select Case .CellType
             Case 10
             ' Checkbox -> See Business object
             Case Else
@@ -9182,7 +9182,7 @@ Public Sub InsertNode(ByVal pCol As Long, ByVal pRow As Long)
         ' Reset empty value for new node
         fpSpread1.Col = lCol
         fpSpread1.Row = lRow
-        Select Case fpSpread1.cellType
+        Select Case fpSpread1.CellType
             Case CellTypeNumber
                 SetAttribute xmlNodeNewCell, "Value", "0"
             Case Else
@@ -9367,7 +9367,7 @@ Private Sub fpSpread1_Click(ByVal Col As Long, ByVal Row As Long)
         .sheet = .ActiveSheet
         .Col = Col
         .Row = Row
-        If Not (.cellType = CellTypeCheckBox Or .cellType = CellTypeButton) Then
+        If Not (.CellType = CellTypeCheckBox Or .CellType = CellTypeButton) Then
         '*********************************
         'Sua loi xoc xech form
             .Refresh
@@ -9415,7 +9415,7 @@ Private Sub fpSpread1_EditMode(ByVal Col As Long, ByVal Row As Long, ByVal Mode 
             .sheet = mCurrentSheet
             .Col = Col
             .Row = Row
-            If .cellType = CellTypeNumber Then
+            If .CellType = CellTypeNumber Then
                 .TypeNumberNegStyle = TypeNumberNegStyle2
             End If
         End With
@@ -9515,7 +9515,7 @@ Private Sub fpSpread1_KeyUp(KeyCode As Integer, Shift As Integer)
             fpSpread1.sheet = mCurrentSheet
             fpSpread1.Col = fpSpread1.ActiveCol
             fpSpread1.Row = fpSpread1.ActiveRow
-            If fpSpread1.cellType = CellTypeComboBox Then
+            If fpSpread1.CellType = CellTypeComboBox Then
                 fpSpread1.Text = vbNullString
                 UpdateCell fpSpread1.ActiveCol, fpSpread1.ActiveRow, vbNullString
                 If (Not objTaxBusiness Is Nothing) Then objTaxBusiness.CellChange fpSpread1.Col, fpSpread1.Row
@@ -9561,7 +9561,7 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
             End If
         End If
         
-        If .cellType = CellTypeNumber Then
+        If .CellType = CellTypeNumber Then
             .TypeNumberNegStyle = TypeNumberNegStyle1
         End If
         If .SheetName = "PL 01-1/TTDB" Then
@@ -9827,7 +9827,7 @@ Const end_1 As String = "aa"
         .sheet = 2
         .Col = Col
         .Row = Row
-        If .cellType = CellTypeNumber Then
+        If .CellType = CellTypeNumber Then
             .TypeNumberNegStyle = TypeNumberNegStyle1
         End If
         If .SheetName = "PL 04-1/GTGT" Then
@@ -10496,7 +10496,7 @@ Private Sub LoadInitFiles()
                 If Val(GetAttribute(xmlNodeIni, "MaxLen")) <> 0 Then
                     fpSpread1.TypeMaxEditLen = Val(GetAttribute(xmlNodeIni, "MaxLen"))
                 End If
-                If fpSpread1.cellType = CellTypeNumber Then
+                If fpSpread1.CellType = CellTypeNumber Then
                     If strKHBS = "frmKHBS_BS" Then
                         fpSpread1.TypeNumberMin = Val("-999999999999")
                         fpSpread1.TypeNumberMax = Val(GetAttribute(xmlNodeIni, "MaxValue"))
@@ -10561,7 +10561,7 @@ Private Sub ResetData()
             ElseIf (idtkhai = "11" Or idtkhai = "12") And mCurrentSheet = 2 And lRow < 35 Then
                 GoTo nextClear1
             Else
-                Select Case fpSpread1.cellType
+                Select Case fpSpread1.CellType
                     Case CellTypeCheckBox
                         fpSpread1.Text = vbNullString
                         IsUpdate = UpdateCell(lCol, lRow, vbNullString)
@@ -10589,7 +10589,7 @@ nextClear1:
             fpSpread1.Col = lCol
             fpSpread1.Row = lRow
             If ((Trim(GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")) = "41" And countCell <= 3) Or ((idtkhai = "46" Or idtkhai = "47" Or idtkhai = "48" Or idtkhai = "49") And (lRow < 36 Or lRow > 43)) Or ((idtkhai = "15" Or idtkhai = "16") And (lRow < 38 Or lRow > 57)) Or ((idtkhai = "50" Or idtkhai = "51") And (lRow < 36 Or lRow > 56)) Or ((idtkhai = "36") And (lRow < 36 Or lRow > 63)) Or ((idtkhai = "76") And (lRow < 36)) Or ((idtkhai = "59") And (lRow < 27 Or lRow > 60)) Or idtkhai = "42" Or idtkhai = "43") And mCurrentSheet = 1 Then GoTo nextClear
-            Select Case fpSpread1.cellType
+            Select Case fpSpread1.CellType
                 Case CellTypeCheckBox
                     fpSpread1.Text = vbNullString
                     IsUpdate = UpdateCell(lCol, lRow, vbNullString)
@@ -10630,7 +10630,7 @@ nextClear:
             ParserCellID fpSpread1, GetAttribute(xmlNodeReset, "CellID"), lCol, lRow
             fpSpread1.Col = lCol
             fpSpread1.Row = lRow
-            Select Case fpSpread1.cellType
+            Select Case fpSpread1.CellType
                 Case CellTypeCheckBox
                     fpSpread1.Text = vbNullString
                     IsUpdate = UpdateCell(lCol, lRow, vbNullString)
@@ -10727,7 +10727,7 @@ With fpSpread1
                 GetCellSpan fpSpread1, lCol, lRow
                 .Row = lRow
                 .Col = lCol
-                If .Lock = False And .cellType <> CellTypeCheckBox Then
+                If .Lock = False And .CellType <> CellTypeCheckBox Then
                     .SetActiveCell .Col, .Row
                     blFirstCell = True
                     Exit For
@@ -10896,7 +10896,7 @@ Private Sub ClearRows(xmlCellsNode As MSXML.IXMLDOMNode) '(ByVal lRow As Long, B
             .Col = lCol
             .Row = lRow
             If .Lock = False Or (.Lock = True And .Formula = vbNullString) Then
-                Select Case .cellType
+                Select Case .CellType
                     Case CellTypeNumber
                         .Text = "0"
                         SetAttribute xmlCellNode, "Value", "0"
@@ -10979,7 +10979,7 @@ Private Function IsEmptyValue(xmlCellsNode As MSXML.IXMLDOMNode) As Boolean
         ParserCellID fpSpread1, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
         fpSpread1.Col = lCol
         fpSpread1.Row = lRow
-        Select Case fpSpread1.cellType
+        Select Case fpSpread1.CellType
             Case CellTypeNumber, CellTypePercent
                 If Not IsNullNumber(GetAttribute(xmlCellNode, "Value")) Then
                     blnIsEmptyValue = False
@@ -12647,7 +12647,7 @@ ProgressBar1.value = fpSpread2.Row
             fpSpread1.Col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
     'check type of cell
             If Conversion.CInt(GetAttribute(xmlNode, "type")) = 13 Then
-                If fpSpread1.cellType = CellTypeNumber Then
+                If fpSpread1.CellType = CellTypeNumber Then
                     fpSpread1.TypeNumberNegStyle = TypeNumberNegStyle1
                 End If
                 fpSpread1.value = value
@@ -12770,7 +12770,7 @@ Private Sub moveDataToKhai08B()
             GoTo nextClear1
         Else
 
-            Select Case fpSpread1.cellType
+            Select Case fpSpread1.CellType
 
                 Case CellTypeCheckBox
                     fpSpread1.Text = vbNullString
@@ -12852,7 +12852,7 @@ nextClear1:
 
                 'check type of cell
                 If Conversion.CInt(GetAttribute(xmlNode, "type")) = 13 Then
-                    If fpSpread1.cellType = CellTypeNumber Then
+                    If fpSpread1.CellType = CellTypeNumber Then
                         fpSpread1.TypeNumberNegStyle = TypeNumberNegStyle1
                     End If
 
@@ -13054,7 +13054,7 @@ ProgressBar1.value = fpSpread2.Row
             fpSpread1.Col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
     'check type of cell
             If Conversion.CInt(GetAttribute(xmlNode, "type")) = 13 Then
-                If fpSpread1.cellType = CellTypeNumber Then
+                If fpSpread1.CellType = CellTypeNumber Then
                     fpSpread1.TypeNumberNegStyle = TypeNumberNegStyle1
                 End If
                 fpSpread1.value = value
@@ -14446,7 +14446,7 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("F")
         .BlockMode = True
-        .cellType = CellTypeCheckBox
+        .CellType = CellTypeCheckBox
         .TypeHAlign = TypeHAlignCenter
         .BlockMode = False
 
@@ -14456,7 +14456,7 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("J")
         .BlockMode = True
-        .cellType = CellTypeNumber
+        .CellType = CellTypeNumber
         .TypeNumberDecPlaces = 0
         .TypeNumberSeparator = "."
         .TypeNumberShowSep = True
@@ -14469,7 +14469,7 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("J")
         .BlockMode = True
-        .fontSize = 8
+        .FontSize = 8
         .Lock = False
         .BlockMode = False
         
@@ -14487,7 +14487,7 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("Y")
         .BlockMode = True
-        .cellType = CellTypeCheckBox
+        .CellType = CellTypeCheckBox
         .Lock = False
         .BlockMode = False
         
@@ -14791,7 +14791,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("C")
         .BlockMode = True
-        .cellType = CellTypeCheckBox
+        .CellType = CellTypeCheckBox
         .TypeHAlign = TypeHAlignCenter
         .BlockMode = False
 
@@ -14828,7 +14828,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Row2 = lrowCount + rowStartSpread11
                 .Col2 = .ColLetterToNumber("G")
                 .BlockMode = True
-                .cellType = CellTypeCheckBox
+                .CellType = CellTypeCheckBox
                 .TypeHAlign = TypeHAlignCenter
                 .BlockMode = False
         
@@ -14838,7 +14838,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("S")
         .BlockMode = True
-        .cellType = CellTypeNumber
+        .CellType = CellTypeNumber
         .TypeNumberDecPlaces = 0
         .TypeNumberSeparator = "."
         .TypeNumberShowSep = True
@@ -14851,8 +14851,8 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
         .Col2 = .ColLetterToNumber("S")
         .BlockMode = True
         .TypeVAlign = TypeVAlignCenter
-        .fontSize = 8
-        .fontName = "Tahoma"
+        .FontSize = 8
+        .FontName = "Tahoma"
         .Lock = False
         .BlockMode = False
         
@@ -14997,7 +14997,7 @@ Private Sub gridData06TNCN(rowStartSpread1 As Long, _
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("C")
         .BlockMode = True
-         .cellType = CellTypeCheckBox
+         .CellType = CellTypeCheckBox
         .BlockMode = False
 
         '               'format max lenght cot [E]
@@ -15034,7 +15034,7 @@ Private Sub gridData06TNCN(rowStartSpread1 As Long, _
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("H")
         .BlockMode = True
-        .cellType = CellTypeNumber
+        .CellType = CellTypeNumber
         .TypeNumberDecPlaces = 0
         .TypeNumberSeparator = "."
         .TypeNumberShowSep = True
@@ -15047,8 +15047,8 @@ Private Sub gridData06TNCN(rowStartSpread1 As Long, _
         .Col2 = .ColLetterToNumber("H")
         .BlockMode = True
         .TypeVAlign = TypeVAlignCenter
-        .fontSize = 8
-        .fontName = "Tahoma"
+        .FontSize = 8
+        .FontName = "Tahoma"
         .Lock = False
         .BlockMode = False
         

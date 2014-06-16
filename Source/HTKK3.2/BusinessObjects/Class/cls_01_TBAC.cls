@@ -40,8 +40,15 @@ strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_loai_HD.xml")
         For Each xmlNode In xmlNodeListCell
             If GetAttribute(xmlNode, "Value") <> "" Then
                 arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
-                strCombo = strCombo + CPab(arrDanhsach(0), 10) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(2), 200) + Chr$(9)
-                strComboHien = strComboHien + arrDanhsach(1) + Chr$(9)
+                If (TAX_Utilities_v1.Year = 2014 And Val(TAX_Utilities_v1.Month) < 6) Or Val(TAX_Utilities_v1.Year) < 2014 Then
+                    strCombo = strCombo + CPab(arrDanhsach(0), 10) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(2), 200) + Chr$(9)
+                    strComboHien = strComboHien + arrDanhsach(1) + Chr$(9)
+                Else
+                    If arrDanhsach(1) <> "06HDXK" Then
+                        strCombo = strCombo + CPab(arrDanhsach(0), 10) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(2), 200) + Chr$(9)
+                        strComboHien = strComboHien + arrDanhsach(1) + Chr$(9)
+                    End If
+                End If
             End If
         Next
     End If

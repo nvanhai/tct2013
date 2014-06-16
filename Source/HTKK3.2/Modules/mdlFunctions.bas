@@ -1335,7 +1335,7 @@ Public Sub SetupData(pGrid As fpSpread)
                         blnHasSetActiveCell = True
                     End If
 
-                    Select Case .cellType
+                    Select Case .CellType
 
                         Case CellTypeCheckBox
 
@@ -1711,7 +1711,7 @@ Public Sub SetupReportData(fpsGrid As fpSpread, Optional IsInterface As Boolean 
                 If Not IsNullNumber_ And GetAttribute(xmlNodeCell, "Value") <> "" And lRow <> 0 And lCol <> 0 Then
                 'htphuong edit 19/05/2008
                 'cut "000" sau dau ","
-                    If .cellType = CellTypeNumber Then
+                    If .CellType = CellTypeNumber Then
 
                                 varTemp = GetAttribute(xmlNodeCell, "Value")
                                 If IsNumeric(CStr(varTemp)) Then
@@ -1762,12 +1762,12 @@ Public Sub SetupReportData(fpsGrid As fpSpread, Optional IsInterface As Boolean 
                         End If
                         
                         If Right(.Text, Len(.Text) - InStr(1, .Text, ".")) = "000" Then
-                              .cellType = CellTypeEdit
+                              .CellType = CellTypeEdit
                               .TypeHAlign = TypeHAlignRight
                              ' .Text = Left(.Text, Len(.Text) - 4) & "%"
                               .Text = Left(.Text, Len(.Text) - 4)
                           Else
-                              .cellType = CellTypeEdit
+                              .CellType = CellTypeEdit
                               .TypeHAlign = TypeHAlignRight
                               '.Text = Left(.Text, Len(.Text) - 4) & "," & Right(.Text, 3) & "%"
                               .Text = Left(.Text, Len(.Text) - 4) & "," & Right(.Text, 3)
@@ -1777,7 +1777,7 @@ Public Sub SetupReportData(fpsGrid As fpSpread, Optional IsInterface As Boolean 
                 
                  If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "12" And .Col = .ColLetterToNumber("CD") And .Row = "59" And .Text <> "" Then
                     If GetAttribute(TAX_Utilities_v1.Data(0).nodeFromID("H_47"), "Value") = "x" Or GetAttribute(TAX_Utilities_v1.Data(0).nodeFromID("H_47"), "Value") = "1" Then
-                        .cellType = CellTypeEdit
+                        .CellType = CellTypeEdit
                         .TypeHAlign = TypeHAlignRight
                         '.Text = .Text & "%"
                     Else
@@ -1788,12 +1788,12 @@ Public Sub SetupReportData(fpsGrid As fpSpread, Optional IsInterface As Boolean 
                             .Text = Left$(.Text & "000", 6)
                         End If
                         If Right(.Text, Len(.Text) - InStr(1, .Text, ".")) = "000" Then
-                            .cellType = CellTypeEdit
+                            .CellType = CellTypeEdit
                             .TypeHAlign = TypeHAlignRight
                             '.Text = Left(.Text, Len(.Text) - 4) & "%"
                             .Text = Left(.Text, Len(.Text) - 4)
                         Else
-                            .cellType = CellTypeEdit
+                            .CellType = CellTypeEdit
                             .TypeHAlign = TypeHAlignRight
                             '.Text = Left(.Text, Len(.Text) - InStr(1, .Text, ".")) & "," & Right(.Text, 3)
                             .Text = Mid(.Text, 1, InStr(1, .Text, ".") - 1) & "," & Mid(.Text, InStr(1, .Text, ".") + 1, 3)
@@ -2204,7 +2204,7 @@ Private Sub ResetRow(ByVal xmlCellNode As MSXML.IXMLDOMNode, fpsGrid As fpSpread
         With fpsGrid
             .Col = lngCol
             .Row = lngRow
-            If .cellType = CellTypeNumber Then
+            If .CellType = CellTypeNumber Then
                 .value = 0
             Else
                 .Text = vbNullString
@@ -2606,7 +2606,7 @@ Public Sub InsertRow(fpSpread1 As fpSpread, ByVal pRow As Long, lRows As Long, O
                     '***************************
                     ' Reset empty value for new row on grid
                     If .Lock = False Then
-                        Select Case .cellType
+                        Select Case .CellType
                             Case CellTypeNumber
                                 .SetText i, .Row, 0
                             Case Else
@@ -2618,7 +2618,7 @@ Public Sub InsertRow(fpSpread1 As fpSpread, ByVal pRow As Long, lRows As Long, O
                     ' Date: 08/04/06
                     Else
                         If Not TAX_Utilities_v1.Data(mCurrentSheet - 1).nodeFromID(GetCellID(fpSpread1, i, pRow - lRowCtrl)) Is Nothing Then
-                            Select Case .cellType
+                            Select Case .CellType
                                 Case CellTypeNumber
                                     .SetText i, .Row, 0
                                 Case Else
@@ -3598,6 +3598,8 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                     hannop = format(hannop, "dd/mm/yyyy")
                 End If
                 
+                ' chuyen ve dinh dang string dd/mm/yyyy
+                hannop = Day(hannop) & "/" & month(hannop) & "/" & Year(hannop)
                 
                 ngayKHBS = Mid(TAX_Utilities_v1.DateKHBS, 1, 2) & "/" & Mid(TAX_Utilities_v1.DateKHBS, 3, 2) & "/" & Mid(TAX_Utilities_v1.DateKHBS, 5, 4)
                 songaynopcham = numberb2d(hannop, ngayKHBS)
@@ -3726,7 +3728,7 @@ Public Sub FillData(pGrid As fpSpread, xmlNodeList As MSXML.IXMLDOMNodeList, mCu
                 .SetActiveCell lCol, lRow
                 blnHasSetActiveCell = True
             End If
-                Select Case .cellType
+                Select Case .CellType
                     Case CellTypeCheckBox
                         ' Check box
                         If UCase(GetAttribute(xmlNodeCell, "Value")) = UCase("x") Then
@@ -3944,7 +3946,7 @@ Private Sub ResetKHBSData(fpSp As fpSpread, blnExitsData As Boolean)
         fpSp.Col = lCol
         fpSp.Row = lRow
 
-        Select Case fpSp.cellType
+        Select Case fpSp.CellType
 
                 '                    Case CellTypeCheckBox
                 '                        fpSp.Text = vbNullString
@@ -4007,7 +4009,7 @@ Private Sub FormatTextPercent(fps As fpSpread, _
     fps.sheet = intSheet
     fps.Row = lRow
     fps.Col = lCol
-    fps.cellType = CellTypeNumber
+    fps.CellType = CellTypeNumber
     ' Set the characters to right
     fps.TypeHAlign = TypeHAlignRight
     fps.TypeVAlign = TypeHAlignCenter
@@ -4076,7 +4078,7 @@ Private Sub PrintLabelKHBS(idTK As String, fps As fpSpread, ByVal intSheet As In
         .BorderStyle = BorderStyleFixedSingle
         .TypeHAlign = TypeHAlignRight
         .TypeVAlign = TypeVAlignTop
-        .fontSize = 10
+        .FontSize = 10
         .FontBold = True
         .Text = GetAttribute(GetMessageCellById("0115"), "Msg")
     End With

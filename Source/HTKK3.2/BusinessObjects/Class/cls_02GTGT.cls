@@ -271,6 +271,10 @@ Public Sub Prepare2()
         .TypeButtonColor = &H8000000F
         .TypeButtonAlign = TypeButtonAlignRight
         .TypeButtonText = GetAttribute(GetMessageCellById("0104"), "Msg")
+        
+        .Row = 1
+        .Col = .ColLetterToNumber("E")
+        .Lock = True
     Next
     
      If Not TAX_Utilities_v1.DataKHBS Is Nothing Then
@@ -834,13 +838,13 @@ Private Sub CheckDynamicError()
     Dim ctCT21 As Variant
     Dim ct29 As Variant
     Dim ctCT29 As Variant
-    Dim CT30 As Variant
+    Dim ct30 As Variant
     Dim CT30a As Variant
     Dim ct31 As Variant
     Dim ct21 As Variant
     Dim ct32 As Variant
     Dim CT22 As Variant
-    Dim CT23 As Variant
+    Dim ct23 As Variant
     Dim ngayHienTai As Variant
     Dim strDateNHT As Variant
     Dim CheckNgayKy As Variant
@@ -913,7 +917,7 @@ Private Sub CheckDynamicError()
             .GetText .ColLetterToNumber("DO"), rowCt21, ctCT21
             .GetText .ColLetterToNumber("CT"), rowCt29, ct29
             .GetText .ColLetterToNumber("DO"), rowCt29, ctCT29
-            .GetText .ColLetterToNumber("CT"), rowCt30, CT30
+            .GetText .ColLetterToNumber("CT"), rowCt30, ct30
             
             .GetText .ColLetterToNumber("CT"), rowCt30a, CT30a
             
@@ -949,7 +953,7 @@ Private Sub CheckDynamicError()
                     .BackColor = mNonErrorColor
                 End If
              'ct30, ct31, 30a
-                If Val(CT30) > Val(ct29) - Val(CT30a) Then
+                If Val(ct30) > Val(ct29) - Val(CT30a) Then
                     .Col = .ColLetterToNumber("CT")
                     .Row = rowCt30
                     .CellNote = Errct29
@@ -1211,7 +1215,13 @@ Private Sub CheckDynamicError()
                  End If
                  'Check MST
                  If Trim(vMST) <> vbNullString Then
-                 strCheck = ""
+                     strCheck = ""
+                     
+                     If Len(vMST) = 14 And InStr(vMST, "-") > 0 Then
+                        vMST = Left$(vMST, 10) & Right$(vMST, 3)
+                     End If
+                     vMST = Replace(vMST, "-", "")
+                     
                      If Len(vMST) = 10 Or Len(vMST) = 13 Then
                          strCheck = CheckTaxCode(Mid(vMST, 1, 1), Mid(vMST, 2, 1), Mid(vMST, 3, 1), Mid(vMST, 4, 1), Mid(vMST, 5, 1), Mid(vMST, 6, 1), Mid(vMST, 7, 1), Mid(vMST, 8, 1), Mid(vMST, 9, 1), Mid(vMST, 10, 1), Mid(vMST, 11, 1), Mid(vMST, 12, 1), Mid(vMST, 13, 1))
                          If Len(vMST) = 10 And strCheck <> "000" Then
@@ -1302,16 +1312,16 @@ End Sub
 'some special data that we want to save to data files
 Public Sub SaveExceptionData()
     Dim i As Long, DataText As Variant
-    Dim ArrRow As Variant, ArrCol As Variant
+    Dim arrRow As Variant, ArrCol As Variant
     Dim arrCellTag() As String
     With fps
         .Sheet = 1
         mCurrentSheet = .Sheet
         'J10 , L10, L16, L17, L20
-        ArrRow = Array(10, 10, 16, 17, 20)
+        arrRow = Array(10, 10, 16, 17, 20)
         ArrCol = Array("J", "L", "L", "L", "L")
-        For i = 0 To UBound(ArrRow)
-            .Row = ArrRow(i)
+        For i = 0 To UBound(arrRow)
+            .Row = arrRow(i)
             .Col = .ColLetterToNumber(ArrCol(i))
             UpdateCell fps, .Col, .Row, .value
         Next
@@ -2432,7 +2442,7 @@ End Function
 Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer)
     Dim i As Integer
     Dim a As Double, b As Double, c As Double
-    Dim ArrRow As Variant, ArrCol As Variant
+    Dim arrRow As Variant, ArrCol As Variant
     Dim arrCellTag() As String
     Dim cCol As Long, cRow As Long
     Dim varTemp As Variant
