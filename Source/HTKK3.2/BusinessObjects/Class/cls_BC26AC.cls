@@ -349,17 +349,17 @@ Public Sub Prepare2()
         mCurrentSheet = 1
         .Sheet = 1
         ' set loai tk thang/ quy
-'        If strTkThangQuy = "TK_THANG" Then
-'            .Col = .ColLetterToNumber("H")
-'            .Row = 13
-'            .Text = "0"
-'            UpdateCell fps, .Col, .Row, .Text
-'        ElseIf strTkThangQuy = "TK_QUY" Then
-        .Col = .ColLetterToNumber("H")
-        .Row = 13
-        .Text = "1"
-        UpdateCell fps, .Col, .Row, .Text
-       ' End If
+        If strTkThangQuy = "TK_THANG" Then
+            .Col = .ColLetterToNumber("H")
+            .Row = 13
+            .Text = "0"
+            UpdateCell fps, .Col, .Row, .Text
+        ElseIf strTkThangQuy = "TK_QUY" Then
+            .Col = .ColLetterToNumber("H")
+            .Row = 13
+            .Text = "1"
+            UpdateCell fps, .Col, .Row, .Text
+        End If
             'end
         mCurrentSheet = tmpSheet
         .EventEnabled(EventAllEvents) = True
@@ -397,9 +397,9 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
         .Col = Col
         .Row = Row
          If Col = .ColLetterToNumber("C") And .Text <> "" Then
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber(Col_AA)
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             'Update combo F
             .Col = .ColLetterToNumber(Col_AA)
             UpdateCell_sheet fps, 1, .Col, .Row, .Text
@@ -453,9 +453,9 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
         .Col = Col
         .Row = Row
          If Col = .ColLetterToNumber("C") And .Text <> "" Then
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber("AI")
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             'Update combo F
             .Col = .ColLetterToNumber("AI")
             UpdateCell_sheet fps, 2, .Col, .Row, .Text
@@ -504,9 +504,9 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
         .Col = Col
         .Row = Row
          If Col = .ColLetterToNumber("C") And .Text <> "" Then
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber("AI")
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             'Update combo F
             .Col = .ColLetterToNumber("AI")
             UpdateCell_sheet fps, 3, .Col, .Row, .Text

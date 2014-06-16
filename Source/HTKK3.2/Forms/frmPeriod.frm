@@ -3092,11 +3092,11 @@ Public Sub cmdOK_Click()
 ' dhdang comment to khai nao???
     ElseIf strKieuKy = "H_Y" Then
         If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "68" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "14" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "13" Then
-'            If strQuy = "TK_THANG" Then
-'                TAX_Utilities_v1.month = txtMonth.Text
-'            Else
-            TAX_Utilities_v1.month = vbNullString
-            'End If
+            If strQuy = "TK_THANG" Then
+                TAX_Utilities_v1.month = txtMonth.Text
+            Else
+                TAX_Utilities_v1.month = vbNullString
+            End If
             TAX_Utilities_v1.ThreeMonths = cmbQuy.Text
             TAX_Utilities_v1.FirstDay = txtNgayDau.Text
             TAX_Utilities_v1.LastDay = txtNgayCuoi.Text
@@ -3282,39 +3282,39 @@ Public Sub cmdOK_Click()
     ' BC26
     ' Kiem tra tu ngay
     If idToKhai = "68" Or idToKhai = "14" Or idToKhai = "13" Then
-'        If strQuy = "TK_THANG" Then
-'            dNgayDau = DateSerial(CInt(Mid$(TAX_Utilities_v1.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_v1.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_v1.FirstDay, 1, 2)))
-'            dNgayCuoi = DateSerial(CInt(Mid$(TAX_Utilities_v1.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_v1.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_v1.LastDay, 1, 2)))
-'
-'            dNgayDauQuy = DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), 1)
-'            Dim temp As Integer
-'            Dim temp1 As Date
-'            temp = CInt(TAX_Utilities_v1.month) + 1
-'            If TAX_Utilities_v1.month = "12" Then
-'                temp1 = DateSerial(CInt(TAX_Utilities_v1.Year) + 1, 1, 1)
-'                dNgayCuoiQuy = DateAdd("D", -1, temp1)
-'            Else
-'                temp1 = DateSerial(CInt(TAX_Utilities_v1.Year), temp, 1)
-'                dNgayCuoiQuy = DateAdd("D", -1, temp1)
-'            End If
-'
-'            ' Ky bao cao tu ngay khong duoc lon hon ky bao cao den ngay
-'            If dNgayCuoi < dNgayDau Then
-'                DisplayMessage "0254", msOKOnly, miWarning
-'                Exit Sub
-'            End If
-'            ' Ky bao cao den ngay khong duoc lon hon ngay cuoi quy
-'            If dNgayCuoi > dNgayCuoiQuy Then
-'                DisplayMessage "0255", msOKOnly, miWarning
-'                Exit Sub
-'            End If
-'            ' Ky bao cao tu ngay khong duoc nho hon ngay dau quy
-'            If dNgayDau < dNgayDauQuy Then
-'                DisplayMessage "0256", msOKOnly, miWarning
-'                txtNgayDau.SetFocus
-'                Exit Sub
-'            End If
-'        Else
+        If strQuy = "TK_THANG" Then
+            dNgayDau = DateSerial(CInt(Mid$(TAX_Utilities_v1.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_v1.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_v1.FirstDay, 1, 2)))
+            dNgayCuoi = DateSerial(CInt(Mid$(TAX_Utilities_v1.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_v1.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_v1.LastDay, 1, 2)))
+
+            dNgayDauQuy = DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), 1)
+            Dim temp As Integer
+            Dim temp1 As Date
+            temp = CInt(TAX_Utilities_v1.month) + 1
+            If TAX_Utilities_v1.month = "12" Then
+                temp1 = DateSerial(CInt(TAX_Utilities_v1.Year) + 1, 1, 1)
+                dNgayCuoiQuy = DateAdd("D", -1, temp1)
+            Else
+                temp1 = DateSerial(CInt(TAX_Utilities_v1.Year), temp, 1)
+                dNgayCuoiQuy = DateAdd("D", -1, temp1)
+            End If
+
+            ' Ky bao cao tu ngay khong duoc lon hon ky bao cao den ngay
+            If dNgayCuoi < dNgayDau Then
+                DisplayMessage "0254", msOKOnly, miWarning
+                Exit Sub
+            End If
+            ' Ky bao cao den ngay khong duoc lon hon ngay cuoi quy
+            If dNgayCuoi > dNgayCuoiQuy Then
+                DisplayMessage "0255", msOKOnly, miWarning
+                Exit Sub
+            End If
+            ' Ky bao cao tu ngay khong duoc nho hon ngay dau quy
+            If dNgayDau < dNgayDauQuy Then
+                DisplayMessage "0256", msOKOnly, miWarning
+                txtNgayDau.SetFocus
+                Exit Sub
+            End If
+        Else
             dNgayDau = DateSerial(CInt(Mid$(TAX_Utilities_v1.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_v1.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_v1.FirstDay, 1, 2)))
             dNgayCuoi = DateSerial(CInt(Mid$(TAX_Utilities_v1.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_v1.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_v1.LastDay, 1, 2)))
             dNgayDauQuy = GetNgayDauQuy(CInt(TAX_Utilities_v1.ThreeMonths), TAX_Utilities_v1.Year, 1, 1)
@@ -3341,7 +3341,7 @@ Public Sub cmdOK_Click()
                 txtNgayDau.SetFocus
                 Exit Sub
             End If
-        'End If
+        End If
     End If
     
     If idToKhai = "71" Then
@@ -3693,6 +3693,8 @@ Private Sub Form_Load()
 '        SetupLayout02_TAIN_DK
     ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "23" Then
         SetupLayout01TTS
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
+        SetupLayoutBC26
     Else
         If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "13" Then
             strQuy = "TK_QUY"
