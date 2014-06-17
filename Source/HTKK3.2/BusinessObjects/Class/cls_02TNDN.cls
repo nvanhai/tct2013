@@ -192,6 +192,18 @@ Public Sub Prepare2()
                 
         End If
 
+        
+        .Sheet = 2
+        .ActiveSheet = .Sheet
+        .Row = 1
+        .Col = .ColLetterToNumber("C")
+        .CellType = CellTypeButton
+        .TypeButtonTextColor = RGB(0, 0, 255)
+        .TypeButtonColor = &H8000000F
+        .TypeButtonAlign = TypeButtonAlignRight
+        .Font = "Tahoma"
+        .FontSize = 8
+        .TypeButtonText = GetAttribute(GetMessageCellById("0104"), "Msg")
     End With
     
 End Sub
@@ -1573,3 +1585,30 @@ Public Function isCheckGh() As Boolean
     Exit Function
 End Function
 
+Public Sub FinishImport()
+Dim i As Integer, iCol As Long, iRow As Long
+Dim maTM As Variant, strId As Variant
+Dim idx As Integer
+Dim varTemp As Variant
+    With fps
+        fps.EventEnabled(EventAllEvents) = False
+           If .ActiveSheet = 2 Then
+                   i = 1
+                   .Col = .ColLetterToNumber("B")
+                   .Row = 7
+                   Do
+                        .Text = str(i)
+                        
+                        
+                        .Col = .ColLetterToNumber("B")
+                        .Row = i + 7
+                        i = i + 1
+                   Loop Until .Text = "aa"
+    
+                   .Row = iRow
+                   .Col = iCol
+                   .SetActiveCell iCol, iRow
+           End If
+       fps.EventEnabled(EventAllEvents) = True
+   End With
+End Sub

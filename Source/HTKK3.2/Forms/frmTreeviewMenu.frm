@@ -70,7 +70,7 @@ Begin VB.Form frmTreeviewMenu
          Strikethrough   =   0   'False
       EndProperty
       ScrollBarExtMode=   -1  'True
-      SpreadDesigner  =   "frmTreeviewMenu.frx":021A
+      SpreadDesigner  =   "frmTreeviewMenu.frx":026C
       VirtualScrollBuffer=   -1  'True
       Appearance      =   1
    End
