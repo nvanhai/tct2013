@@ -3009,6 +3009,28 @@ Public Sub cmdOK_Click()
     End If
     '***************************
     
+    Dim idxPL As Long
+    Dim countPL As Integer
+    ' BCTC kiem tra chi chon PL LCTTGT hoac LCTTTT
+    If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "69" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "19" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "20" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "22" Then
+        With fpSpread1
+            .Col = 1
+            For idxPL = 2 To .MaxRows
+                .Row = idxPL
+                If .value = 1 And (idxPL = 3 Or idxPL = 4) Then
+                    countPL = countPL + 1
+                End If
+            Next idxPL
+        End With
+        
+        If countPL = 2 Then
+            If DisplayMessage("0314", msYesNo, miQuestion, , mrNo) = mrYes Then
+            Else
+                Exit Sub
+            End If
+        End If
+    End If
+    
     'set data
     TAX_Utilities_v1.Year = txtYear.Text
     If strKieuKy = KIEU_KY_THANG Then
@@ -5223,6 +5245,9 @@ End Sub
 Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonDown As Integer)
 Dim lCtrl As Long
 Dim intSelectAll As Integer
+
+Dim isCheckPLLCTTGT As Boolean
+
 'dhdang sua
 Dim rowcheck As Integer
 

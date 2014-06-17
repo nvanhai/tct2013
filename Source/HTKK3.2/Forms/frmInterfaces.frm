@@ -858,6 +858,9 @@ ElseIf Trim(varMenuId) = "70" And fpSpread1.ActiveSheet = 1 Then
 ElseIf Trim(varMenuId) = "71" And fpSpread1.ActiveSheet = 2 Then
     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_04_1_GTGT.xml"))
     colStart = 3
+ElseIf Trim(varMenuId) = "73" And fpSpread1.ActiveSheet = 2 Then
+    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_02_1_TNDN.xml"))
+    colStart = 3
 End If
 
 Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
@@ -924,7 +927,7 @@ ProgressBar1.value = fpSpread2.Row
     fpSpread1.sheet = mCurrentSheet
     fpSpread2.Row = fpSpread2.Row + 1
     value = fpSpread2.value
-    If ((Mid(value, 1, 1) = "T" Or Trim(value) = "" Or Trim(value) = vbNullString) And (Trim(varMenuId) = "01" Or Trim(varMenuId) = "02" Or Trim(varMenuId) = "71" Or Trim(varMenuId) = "14" Or Trim(varMenuId) = "05" Or Trim(varMenuId) = "59")) Or ((Trim(value) = "" Or Trim(value) = vbNullString) And (Trim(varMenuId) = "17" Or Trim(varMenuId) = "42" Or Trim(varMenuId) = "43" Or Trim(varMenuId) = "26" Or Trim(varMenuId) = "44")) Then
+    If ((Mid(value, 1, 1) = "T" Or Trim(value) = "" Or Trim(value) = vbNullString) And (Trim(varMenuId) = "01" Or Trim(varMenuId) = "02" Or Trim(varMenuId) = "71" Or Trim(varMenuId) = "14" Or Trim(varMenuId) = "05" Or Trim(varMenuId) = "59")) Or ((Trim(value) = "" Or Trim(value) = vbNullString) And (Trim(varMenuId) = "17" Or Trim(varMenuId) = "42" Or Trim(varMenuId) = "43" Or Trim(varMenuId) = "26" Or Trim(varMenuId) = "44" Or Trim(varMenuId) = "73")) Then
         count = count + 1
         inc = True
         ProgressBar1.value = fpSpread2.MaxRows
@@ -9398,6 +9401,10 @@ Private Sub fpSpread1_Click(ByVal Col As Long, ByVal Row As Long)
             ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "02_TNCN_XS" Then
                 If .sheet = 2 And .Col = .ColLetterToNumber("D") And .Row = 3 Then
                     Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bang_Ke_02ABK_XS.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
+                End If
+            ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "02_TNDN" Then
+                 If .sheet = 2 And .Col = .ColLetterToNumber("C") And .Row = 2 Then
+                    Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bangke_02_1TNDN.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
                 End If
             End If
         End If

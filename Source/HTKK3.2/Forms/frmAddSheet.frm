@@ -194,6 +194,28 @@ Private Sub cmdClose_Click()
 End Sub
 
 Private Sub cmdOK_Click()
+    ' BCTC kiem tra chi chon PL LCTTGT hoac LCTTTT
+    Dim idxPL As Long
+    Dim countPL As Integer
+    If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "69" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "19" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "20" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "22" Then
+        With fpSpread1
+            .Col = 1
+            For idxPL = 2 To .MaxRows
+                .Row = idxPL
+                If (.value = 1 Or .value = 2) And (idxPL = 3 Or idxPL = 4) Then
+                    countPL = countPL + 1
+                End If
+            Next idxPL
+        End With
+        
+        If countPL = 2 Then
+            If DisplayMessage("0314", msYesNo, miQuestion, , mrNo) = mrYes Then
+            Else
+                Exit Sub
+            End If
+        End If
+    End If
+    ' end
     GetSelectedSheets
     Unload Me
 End Sub
