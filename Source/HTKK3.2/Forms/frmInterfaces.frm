@@ -7781,25 +7781,25 @@ Private Sub Form_Resize()
     SetFormCaption Me, imgCaption, lblCaption
 
     'Trien khai GD1
+    Dim strIdTkhai As Variant
+    strIdTkhai = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
     If TK_GD1 = True Then
-        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "17" _
-           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "42" _
-           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "43" _
-           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "59" _
-           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "76" _
-           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "41" _
-           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "100_1" _
-           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "94" _
-           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "98" _
-           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "99" _
-           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "92" _
-           And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "96" _
-            And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "24" _
-            And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "07" _
-            And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "09" _
-            And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "10" _
-            And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "13" _
-            And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "14" _
+        If strIdTkhai <> "17" _
+           And strIdTkhai <> "42" And strIdTkhai <> "43" And strIdTkhai <> "59" And strIdTkhai <> "76" And strIdTkhai <> "41" And strIdTkhai <> "100_1" _
+           And strIdTkhai <> "01" And strIdTkhai <> "02" And strIdTkhai <> "04" And strIdTkhai <> "71" And strIdTkhai <> "72" _
+           And strIdTkhai <> "11" And strIdTkhai <> "12" And strIdTkhai <> "73" _
+           And strIdTkhai <> "48" And strIdTkhai <> "49" And strIdTkhai <> "25" And strIdTkhai <> "15" And strIdTkhai <> "16" And strIdTkhai <> "50" And strIdTkhai <> "51" _
+           And strIdTkhai <> "70" And strIdTkhai <> "81" _
+           And strIdTkhai <> "06" _
+           And strIdTkhai <> "05" _
+           And strIdTkhai <> "69" And strIdTkhai <> "19" And strIdTkhai <> "20" And strIdTkhai <> "22" _
+           And strIdTkhai <> "64" And strIdTkhai <> "65" And strIdTkhai <> "66" And strIdTkhai <> "67" And strIdTkhai <> "68" And strIdTkhai <> "91" _
+           And strIdTkhai <> "86" _
+           And strIdTkhai <> "90" _
+           And strIdTkhai <> "23" _
+           And strIdTkhai <> "94" And strIdTkhai <> "96" _
+           And strIdTkhai <> "98" And strIdTkhai <> "99" And strIdTkhai <> "92" And strIdTkhai <> "24" _
+           And strIdTkhai <> "07" And strIdTkhai <> "13" And strIdTkhai <> "09" And strIdTkhai <> "10" And strIdTkhai <> "14" _
            Then
             InvisibleXmlButton
         End If
