@@ -4897,8 +4897,8 @@ Private Sub KetXuatXML()
                             'Lay ten cua group dong con
                             ChildGroup = GetAttribute(xmlSection.firstChild.selectNodes(".//Dynamic")(0), "GroupName")
                             'Lay node chua cac group dong cha
-                            Set CurrentGroupNode = xmlTK.getElementsByTagName(currentGroup)(0)
-                            
+                            Set CurrentGroupNode = xmlPL.getElementsByTagName(currentGroup)(0)
+                            'Set CurrentGroupNode = xmlTK.getElementsByTagName(currentGroup)(0)
 
                             Blank = True
 
@@ -4918,14 +4918,18 @@ Private Sub KetXuatXML()
                                     .Col = .ColLetterToNumber(cellArray(0))
                                     .Row = Val(cellArray(1)) + cellRange
                                     
+                                    'Tao document moi de inser cac group dong con
+                                    childCloneNode.loadXML xmlSection.firstChild.selectNodes(".//Dynamic")(0).firstChild.xml
                                     'Ket thuc cac group dong con trong group dong cha
                                     If .Text <> "0" Then
-                                        CloneNode.getElementsByTagName(ChildGroup)(0).removeChild CloneNode.getElementsByTagName(ChildGroup)(0).selectNodes(childCloneNode.firstChild.nodeName)(CloneNode.getElementsByTagName(ChildGroup)(0).selectNodes(childCloneNode.firstChild.nodeName).length - 1)
+                                        If CloneNode.getElementsByTagName(ChildGroup)(0).selectNodes(childCloneNode.firstChild.nodeName).length - 1 >= 0 Then
+                                            CloneNode.getElementsByTagName(ChildGroup)(0).removeChild CloneNode.getElementsByTagName(ChildGroup)(0).selectNodes(childCloneNode.firstChild.nodeName)(CloneNode.getElementsByTagName(ChildGroup)(0).selectNodes(childCloneNode.firstChild.nodeName).length - 1)
+                                        End If
                                         Exit Do
                                     End If
                                     
-                                    'Tao document moi de inser cac group dong con
-                                    childCloneNode.loadXML xmlSection.firstChild.selectNodes(".//Dynamic")(0).firstChild.xml
+'                                    'Tao document moi de inser cac group dong con
+'                                    childCloneNode.loadXML xmlSection.firstChild.selectNodes(".//Dynamic")(0).firstChild.xml
                                     'Set gia tri cho group dong con
                                     SetCloneNode childCloneNode, xmlSection.firstChild.selectNodes("Dynamic")(0), Blank, cellRange, sRow
 
