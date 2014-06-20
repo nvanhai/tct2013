@@ -21,6 +21,8 @@ Public Strloaitk As String
 Public StrSolanBosung As String
 Public flgLoadToKhai As Boolean
 Private totalRow As Long
+
+Public strTkThangQuy As String
   
 'This funtion is called after an object of this class is created
 'Its functions is 1st preparing for interface sheets, such as
@@ -52,9 +54,17 @@ Public Sub Prepare1()
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                     If arrDanhsach(0) <> "3" Then
-                        strCombo = strCombo + CPab(arrDanhsach(0), 10) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(2), 200) + Chr$(9)
-    '                    strCombo = strCombo + CPab(arrDanhsach(1), 10) + Chr$(9)
-                        strComboHien = strComboHien + arrDanhsach(1) + Chr$(9)
+                        If strTkThangQuy = "TK_QUY" Then
+                            If arrDanhsach(1) <> "06HDXK" Then
+                                strCombo = strCombo + CPab(arrDanhsach(0), 10) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(2), 200) + Chr$(9)
+            '                    strCombo = strCombo + CPab(arrDanhsach(1), 10) + Chr$(9)
+                                strComboHien = strComboHien + arrDanhsach(1) + Chr$(9)
+                            End If
+                        Else
+                            strCombo = strCombo + CPab(arrDanhsach(0), 10) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(2), 200) + Chr$(9)
+        '                    strCombo = strCombo + CPab(arrDanhsach(1), 10) + Chr$(9)
+                            strComboHien = strComboHien + arrDanhsach(1) + Chr$(9)
+                        End If
                     End If
                 End If
             Next

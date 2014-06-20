@@ -304,6 +304,8 @@
 	<Infor ID="0311" Msg="Gi¸ trÞ cña kú ph¶i nhá h¬n 03 vµ lín h¬n 00."/>
 	<Infor ID="0312" Msg="Tõ kú ph¶i nhá h¬n hoÆc b»ng §Õn kú."/>
 	<Infor ID="0313" Msg="M¸y tr¹m ®ang thiÕt lËp dÊu chÊm thËp ph©n sai. §Ò nghÞ thiÕt lËp l¹i theo h­íng dÉn trong phÇn trî gióp!"/>
-	<Infor ID="0314" Msg="B¹n cã ch¾c ch¾n nhËp c¶ 2 PL LCTTTT, LCTTGT hay kh«ng?
-"/>
+	<Infor ID="0314" Msg="B¹n cã ch¾c ch¾n nhËp c¶ 2 PL LCTTTT, LCTTGT hay kh«ng?"/>
+	<Infor ID="0315" Msg="Tê khai BC01/AC chØ ®­îc kª khai theo th¸ng víi c¸c kú kª khai tõ kú 6/2013 trë vÒ tr­íc"/>	
+	<Infor ID="0316" Msg="Tê khai BC01/AC chØ ®­îc kª khai theo quý víi c¸c kú kª khai tõ th¸ng 6/2014 trë ®i"/>
+	<Infor ID="0317" Msg="§Õn ngµy kh«ng ®­îc lín h¬n ngµy 30 th¸ng 06 n¨m 2014 "/>
 </Message>

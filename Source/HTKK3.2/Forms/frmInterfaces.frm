@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":1969
+         SpreadDesigner  =   "frmInterfaces.frx":19A5
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1BF1
+      SpreadDesigner  =   "frmInterfaces.frx":1C69
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -7557,7 +7557,7 @@ Private Sub Form_Load()
         Set objTaxBusiness.fps = fpSpread1
             ' to khai GTGT se co to khai thang / quy
         If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "95" Or idMenu = "88" Or idMenu = "71" Or idMenu = "36" Or idMenu = "25" Or idMenu = "68" Or idMenu = "14" Or idMenu = "96" _
-        Or idMenu = "94" Then
+        Or idMenu = "94" Or idMenu = "65" Then
              objTaxBusiness.strTkThangQuy = strQuy
              If strQuy = "TK_THANG" Then
                 strKK = "M"
@@ -7781,25 +7781,25 @@ Private Sub Form_Resize()
     SetFormCaption Me, imgCaption, lblCaption
 
     'Trien khai GD1
-    Dim strIdTkhai As Variant
-    strIdTkhai = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
+    Dim strIDTkhai As Variant
+    strIDTkhai = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
     If TK_GD1 = True Then
-        If strIdTkhai <> "17" _
-           And strIdTkhai <> "42" And strIdTkhai <> "43" And strIdTkhai <> "59" And strIdTkhai <> "76" And strIdTkhai <> "41" And strIdTkhai <> "100_1" _
-           And strIdTkhai <> "01" And strIdTkhai <> "02" And strIdTkhai <> "04" And strIdTkhai <> "71" And strIdTkhai <> "72" _
-           And strIdTkhai <> "11" And strIdTkhai <> "12" And strIdTkhai <> "73" _
-           And strIdTkhai <> "48" And strIdTkhai <> "49" And strIdTkhai <> "25" And strIdTkhai <> "15" And strIdTkhai <> "16" And strIdTkhai <> "50" And strIdTkhai <> "51" _
-           And strIdTkhai <> "70" And strIdTkhai <> "81" _
-           And strIdTkhai <> "06" _
-           And strIdTkhai <> "05" _
-           And strIdTkhai <> "69" And strIdTkhai <> "19" And strIdTkhai <> "20" And strIdTkhai <> "22" _
-           And strIdTkhai <> "64" And strIdTkhai <> "65" And strIdTkhai <> "66" And strIdTkhai <> "67" And strIdTkhai <> "68" And strIdTkhai <> "91" _
-           And strIdTkhai <> "86" _
-           And strIdTkhai <> "90" _
-           And strIdTkhai <> "23" _
-           And strIdTkhai <> "94" And strIdTkhai <> "96" _
-           And strIdTkhai <> "98" And strIdTkhai <> "99" And strIdTkhai <> "92" And strIdTkhai <> "24" _
-           And strIdTkhai <> "07" And strIdTkhai <> "13" And strIdTkhai <> "09" And strIdTkhai <> "10" And strIdTkhai <> "14" _
+        If strIDTkhai <> "17" _
+           And strIDTkhai <> "42" And strIDTkhai <> "43" And strIDTkhai <> "59" And strIDTkhai <> "76" And strIDTkhai <> "41" And strIDTkhai <> "100_1" _
+           And strIDTkhai <> "01" And strIDTkhai <> "02" And strIDTkhai <> "04" And strIDTkhai <> "71" And strIDTkhai <> "72" _
+           And strIDTkhai <> "11" And strIDTkhai <> "12" And strIDTkhai <> "73" _
+           And strIDTkhai <> "48" And strIDTkhai <> "49" And strIDTkhai <> "25" And strIDTkhai <> "15" And strIDTkhai <> "16" And strIDTkhai <> "50" And strIDTkhai <> "51" _
+           And strIDTkhai <> "70" And strIDTkhai <> "81" _
+           And strIDTkhai <> "06" _
+           And strIDTkhai <> "05" _
+           And strIDTkhai <> "69" And strIDTkhai <> "19" And strIDTkhai <> "20" And strIDTkhai <> "22" _
+           And strIDTkhai <> "64" And strIDTkhai <> "65" And strIDTkhai <> "66" And strIDTkhai <> "67" And strIDTkhai <> "68" And strIDTkhai <> "91" _
+           And strIDTkhai <> "86" _
+           And strIDTkhai <> "90" _
+           And strIDTkhai <> "23" _
+           And strIDTkhai <> "94" And strIDTkhai <> "96" _
+           And strIDTkhai <> "98" And strIDTkhai <> "99" And strIDTkhai <> "92" And strIDTkhai <> "24" _
+           And strIDTkhai <> "07" And strIDTkhai <> "13" And strIDTkhai <> "09" And strIDTkhai <> "10" And strIDTkhai <> "14" _
            Then
             InvisibleXmlButton
         End If
