@@ -2349,6 +2349,7 @@ Private Sub checkSheet2()
         .Col = .ColLetterToNumber("B")
         Do
             .Col = .ColLetterToNumber(Col_AA)
+            '.Col = .ColLetterToNumber("U")
             .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
             .CellNote = ""     'static
             .BackColor = mNonErrorColor
