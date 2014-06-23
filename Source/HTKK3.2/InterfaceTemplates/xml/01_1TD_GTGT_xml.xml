@@ -1,6 +1,6 @@
 <PL_01_1_TD_GTGT>
 	<BANGTHUEGTGTCUASXTHUYDIEN>
-		<chiTietThueGTGTCuaSXThuyDien>
+		<chiTietThueGTGTCuaSXThuyDien id="ID_15">
 			<tenNhaMay></tenNhaMay>
 			<mstNhaMay></mstNhaMay>
 			<thueDauRaNhaMay>1</thueDauRaNhaMay>

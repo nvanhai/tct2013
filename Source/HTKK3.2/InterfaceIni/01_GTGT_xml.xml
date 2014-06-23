@@ -20,7 +20,7 @@
 		<maTinhDLyThue/>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<maTMNSNN>L_14</maTMNSNN>
+		<tieuMucHachToan>L_14</tieuMucHachToan>
 		<ct21>I_23</ct21>
 		<ct22>L_24</ct22>
 	</Static>
