@@ -6,7 +6,7 @@
 			<soHDon>F_8</soHDon>
 			<ngayPHanh>G_8</ngayPHanh>
 			<tenNBAN>H_8</tenNBAN>
-			<mstNBAN>I_8</mstNBAN>
+			<mstNBAN TINType="1">I_8</mstNBAN>
 			<matHang>J_8</matHang>
 			<gtriMuaChuaThue>K_8</gtriMuaChuaThue>
 			<thueSuat>L_8</thueSuat>
