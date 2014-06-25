@@ -17,6 +17,7 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
+		<tieuMucHachToan>L_14</tieuMucHachToan>
 		<dnQuiMoVuaVaNho>F_6</dnQuiMoVuaVaNho>
 		<dnCoCSoHToanPThuoc>F_7</dnCoCSoHToanPThuoc>
 		<ct21>K_36</ct21>
