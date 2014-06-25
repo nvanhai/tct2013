@@ -3596,7 +3596,7 @@ Private Sub SetKieuKy()
     End If
     
     If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "96" _
-    Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "94" Then
+    Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "94" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
 
         If strQuy = "TK_THANG" Then
             strKK = "M"
@@ -3605,6 +3605,11 @@ Private Sub SetKieuKy()
         ElseIf strQuy = "TK_LANPS" Then
             strKK = "D"
         End If
+    End If
+    
+    ' Bao cao hoa don
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "64" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "91" Then
+        strKK = "D"
     End If
     
     If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_10") Then
@@ -3686,7 +3691,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         End If
                 
         'to TB03,BC21 khong co ky ke khai
-        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "67" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "66" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "09" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "10" Then
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "09" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "10" Then
 
             If xmlTK.getElementsByTagName("kieuKy").length > 0 Then
                 xmlTK.getElementsByTagName("kieuKy")(0).Text = strKK

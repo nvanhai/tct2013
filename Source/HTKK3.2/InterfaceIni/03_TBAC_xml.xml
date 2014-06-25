@@ -19,7 +19,7 @@
 	<Static GroupName="CTieuTKhaiChinh">
 		<kinhGui>J_2</kinhGui>
 		<phuongPhapHuy>I_6</phuongPhapHuy>
-		<ThoiGian>O_9</ThoiGian>
+		<ThoiGian>O_8</ThoiGian>
 	</Static>
 	<Dynamic GroupName="HoaDon">
 		<ChiTiet id="ID_1">
@@ -37,8 +37,8 @@
 		<ngayBCao>R_49</ngayBCao>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy></nguoiKy>
-		<ngayKy></ngayKy>
+		<nguoiKy>R_47</nguoiKy>
+		<ngayKy>R_49</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
 		<tenNVienDLyThue></tenNVienDLyThue>

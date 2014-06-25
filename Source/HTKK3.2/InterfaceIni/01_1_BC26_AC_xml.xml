@@ -5,9 +5,9 @@
 			<tenHoaDon>D_46</tenHoaDon>
 			<kyHieuMau>O_46</kyHieuMau>
 			<kyHieuHD>S_46</kyHieuHD>
+			<soLuong>AA_46</soLuong>
 			<tuSo>V_46</tuSo>
 			<denSo>Y_46</denSo>
-			<soLuong>AA_46</soLuong>
 		</ChiTietHoaDon>
 	</Dynamic>
 	<Dynamic GroupName="HDonDKiTiepSDung">
@@ -16,9 +16,9 @@
 			<tenHoaDon>D_50</tenHoaDon>
 			<kyHieuMau>O_50</kyHieuMau>
 			<kyHieuHD>S_50</kyHieuHD>
+			<soLuong>AA_50</soLuong>
 			<tuSo>V_50</tuSo>
 			<denSo>Y_50</denSo>
-			<soLuong>AA_50</soLuong>
 		</ChiTietHoaDon>
 	</Dynamic>
 	<Static GroupName="PL_BK_01AC_01">
