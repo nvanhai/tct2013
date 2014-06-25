@@ -71,7 +71,7 @@
 		<CTieuTKhaiChinh>
 			<ngayTBaoPHanhHDon></ngayTBaoPHanhHDon>
 			<TTinThayDoi>
-				<ChiTietTTinThayDoi>
+				<ChiTietTTinThayDoi ID="String">
 					<thongTinThayDoi></thongTinThayDoi>
 					<thongTinCu></thongTinCu>
 					<thongTinMoi></thongTinMoi>

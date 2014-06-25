@@ -71,7 +71,7 @@
 		<CTieuTKhaiChinh>
 			<ngayMatChayHongHD>2001-12-17T09:30:47Z</ngayMatChayHongHD>
 			<HoaDon>
-				<ChiTietHoaDon>
+				<ChiTietHoaDon id="String">
 					<tenHDon></tenHDon>
 					<mauHDon></mauHDon>
 					<kyHieu></kyHieu>

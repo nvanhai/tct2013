@@ -24,12 +24,7 @@
 	<Static GroupName="GiaHan">
 		<maLyDoGiaHan/>
 		<lyDoGiaHan/>
-	</Static>
-	<Static GroupName="TKhaiThue">
-		<nguoiKy/>
-		<ngayKy/>
-		<nganhNgheKD/>
-	</Static>
+	</Static>	
 	<Static GroupName="NNT">
 		<mst/>
 		<tenNNT/>
@@ -79,5 +74,9 @@
 		<tenCQTTiepNhanTBao>K_44</tenCQTTiepNhanTBao>
 		<ngayThongBao>Q_47</ngayThongBao>
 		<nguoiDaiDien>Q_49</nguoiDaiDien>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>Q_49</nguoiKy>
+		<ngayKy>Q_47</ngayKy>
 	</Static>
 </HSoKhaiThue>

@@ -13,16 +13,16 @@
 			<tuSo>P_35</tuSo>
 			<denSo>R_35</denSo>
 			<ngayBDauSDung>T_35</ngayBDauSDung>
-			<soHDongInBLai>W_35</soHDongInBLai>
-			<ngayHDongInBLai>AA_35</ngayHDongInBLai>
-			<ten>AD_35</ten>
-			<mst>AE_35</mst>
+			<soHDongInBLai>AD_35</soHDongInBLai>
+			<ngayHDongInBLai>AE_35</ngayHDongInBLai>
+			<ten>W_35</ten>
+			<mst>AA_35</mst>
 		</ChiTietBKeBienLai>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
 		<tenCQTTNhanTBao>K_44</tenCQTTNhanTBao>
 		<noiKy/>
-		<ngayKy>AA_44</ngayKy>
-		<thuTruongDonVi>AA_46</thuTruongDonVi>
+		<ngayKy>AA_46</ngayKy>
+		<thuTruongDonVi>AA_48</thuTruongDonVi>
 	</Static>
 </HSoThueDTu>

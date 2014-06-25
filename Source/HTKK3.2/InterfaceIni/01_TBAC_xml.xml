@@ -27,7 +27,7 @@
 			<ngayBDauSDung>T_35</ngayBDauSDung>
 			<DoanhNghiepIn>
 				<ten>W_35</ten>
-				<mst>AA_35</mst>
+				<mst TINType="1">AA_35</mst>
 			</DoanhNghiepIn>
 			<HopDongDatIn>
 				<so>AD_35</so>
@@ -41,12 +41,12 @@
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<tenCQTTiepNhan>K_44</tenCQTTiepNhan>
-		<nguoiDaiDien>AA_46</nguoiDaiDien>
-		<ngayBCao>AA_48</ngayBCao>
+		<nguoiDaiDien>AA_48</nguoiDaiDien>
+		<ngayBCao>AA_46</ngayBCao>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy></nguoiKy>
-		<ngayKy></ngayKy>
+		<nguoiKy>AA_48</nguoiKy>
+		<ngayKy>AA_46</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
 		<tenNVienDLyThue></tenNVienDLyThue>

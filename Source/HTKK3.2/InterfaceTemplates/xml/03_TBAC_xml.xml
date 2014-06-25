@@ -73,7 +73,7 @@
 			<phuongPhapHuy></phuongPhapHuy>
 			<thoiGian>2001-12-17T09:30:47Z</thoiGian>
 			<HoaDon>
-				<ChiTiet>
+				<ChiTiet ID="String">
 					<tenHDon></tenHDon>
 					<mauHDon></mauHDon>
 					<kyHieu></kyHieu>

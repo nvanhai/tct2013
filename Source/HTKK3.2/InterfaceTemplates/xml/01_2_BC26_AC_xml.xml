@@ -1,5 +1,5 @@
 <PL_BK_01AC_02>
-	<ChiTietHoaDon>
+	<ChiTietHoaDon id="String">
 		<maHoaDon>text</maHoaDon>
 		<tenHoaDon></tenHoaDon>
 		<kyHieuMau></kyHieuMau>

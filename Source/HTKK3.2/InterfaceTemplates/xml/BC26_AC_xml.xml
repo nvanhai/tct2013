@@ -74,7 +74,7 @@
 			<ngayDauKyBC></ngayDauKyBC>
 			<ngayCuoiKyBC></ngayCuoiKyBC>
 			<HoaDon>
-				<ChiTiet>
+				<ChiTiet id="String">
 					<maHoaDon></maHoaDon>
 					<tenHDon></tenHDon>
 					<kHieuMauHDon></kHieuMauHDon>

@@ -70,7 +70,7 @@
 		</TTinChung>
 		<CTieuTKhaiChinh>
 			<HoaDon>
-				<ChiTiet>
+				<ChiTiet ID= "ID_1">
 					<tenLoaiHDon></tenLoaiHDon>
 					<mauSo></mauSo>
 					<kyHieu></kyHieu>
