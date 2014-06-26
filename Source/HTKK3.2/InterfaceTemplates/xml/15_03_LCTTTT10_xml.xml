@@ -1,33 +1,4 @@
 <PL_LCTTTT>
-	<ThuyetMinh>
-		<ct01_tMinh></ct01_tMinh>
-		<ct02_tMinh></ct02_tMinh>
-		<ct03_tMinh></ct03_tMinh>
-		<ct04_tMinh></ct04_tMinh>
-		<ct05_tMinh></ct05_tMinh>
-		<ct06_tMinh></ct06_tMinh>
-		<ct07_tMinh></ct07_tMinh>
-		<ct20_tMinh></ct20_tMinh>
-		<ct21_tMinh></ct21_tMinh>
-		<ct22_tMinh></ct22_tMinh>
-		<ct23_tMinh></ct23_tMinh>
-		<ct24_tMinh></ct24_tMinh>
-		<ct25_tMinh></ct25_tMinh>
-		<ct26_tMinh></ct26_tMinh>
-		<ct27_tMinh></ct27_tMinh>
-		<ct30_tMinh></ct30_tMinh>
-		<ct31_tMinh></ct31_tMinh>
-		<ct32_tMinh></ct32_tMinh>
-		<ct33_tMinh></ct33_tMinh>
-		<ct34_tMinh></ct34_tMinh>
-		<ct35_tMinh></ct35_tMinh>
-		<ct36_tMinh></ct36_tMinh>
-		<ct40_tMinh></ct40_tMinh>
-		<ct50_tMinh></ct50_tMinh>
-		<ct60_tMinh></ct60_tMinh>
-		<ct61_tMinh></ct61_tMinh>
-		<ct70_tMinh></ct70_tMinh>
-	</ThuyetMinh>
 	<SoNamNay>
 		<ct01_nNay>2147483647</ct01_nNay>
 		<ct02_nNay>2147483647</ct02_nNay>
@@ -86,4 +57,10 @@
 		<ct61_nNgoai>2147483647</ct61_nNgoai>
 		<ct70_nNgoai>2147483647</ct70_nNgoai>
 	</SoNamNgoai>
+	<PhanKy>
+		<nguoiLapBieu>String</nguoiLapBieu>
+		<keToanTruong>String</keToanTruong>
+		<ngayLap>1967-08-13</ngayLap>
+		<giamDoc>String</giamDoc>
+	</PhanKy>
 </PL_LCTTTT>

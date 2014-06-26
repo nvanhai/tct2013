@@ -7,7 +7,7 @@
 	<Static GroupName="CTieuTKhaiChinh">
 		<kinhGui>J_2</kinhGui>
 		<ppHuyBienLai>K_6</ppHuyBienLai>
-		<ngayHuyBienLai>O_9</ngayHuyBienLai>
+		<ngayHuyBienLai>O_8</ngayHuyBienLai>
 	</Static>
 	<Dynamic GroupName="BKeKQuaHuyBLai" MinOccur="1">
 		<ChiTietBKeKQuaHuyBLai id="id">
@@ -21,6 +21,11 @@
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
 		<ngayKy>R_49</ngayKy>
+		<nguoiLapBieu>D_47</nguoiLapBieu>
 		<thuTruongDonVi>R_47</thuTruongDonVi>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_47</nguoiKy>
+		<ngayKy>R_49</ngayKy>
 	</Static>
 </HSoThueDTu>

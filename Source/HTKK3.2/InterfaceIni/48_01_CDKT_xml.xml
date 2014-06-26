@@ -170,4 +170,10 @@
 		<tenNVienDLyThue/>
 		<cchiHNghe/>
 	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<nguoiLapBieu></nguoiLapBieu>
+		<keToanTruong></keToanTruong>
+		<ngayLap>R_115</ngayLap>
+		<giamDoc>R_113</giamDoc>
+	</Static>
 </HSoKhaiThue>

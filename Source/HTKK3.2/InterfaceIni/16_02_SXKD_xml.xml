@@ -49,4 +49,10 @@
 		<ctXIV_nNgoai>J_30</ctXIV_nNgoai>
 		<ctXV_nNgoai>J_31</ctXV_nNgoai>
 	</Static>
+	<Static GroupName="PhanKy">
+		<nguoiLapBieu></nguoiLapBieu>
+		<keToanTruong></keToanTruong>
+		<ngayLap DateType="1">I_36</ngayLap>
+		<giamDoc>I_33</giamDoc>
+	</Static>
 </PL_KQHDXSKD>

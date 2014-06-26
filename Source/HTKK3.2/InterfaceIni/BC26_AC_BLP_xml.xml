@@ -42,4 +42,8 @@
 		<nguoiDaiDien>N_30</nguoiDaiDien>
 		<ngayBCao>N_32</ngayBCao>
 	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>N_30</nguoiKy>
+		<ngayKy>N_32</ngayKy>
+	</Static>
 </HSoKhaiThue>

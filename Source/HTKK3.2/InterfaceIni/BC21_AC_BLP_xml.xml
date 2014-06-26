@@ -24,8 +24,10 @@
 		<lyDoMatChayBLai>I_46</lyDoMatChayBLai>
 		<donViNhanBCao>I_48</donViNhanBCao>
 		<nguoiDaiDien>AB_49</nguoiDaiDien>
-	</Static>
-	<Static GroupName="CTieuTKhaiChinh">
 		<ngayBCao>AB_51</ngayBCao>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>AB_49</nguoiKy>
+		<ngayKy>AB_51</ngayKy>
 	</Static>
 </HSoThueDTu>

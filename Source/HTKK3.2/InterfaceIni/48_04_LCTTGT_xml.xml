@@ -1,5 +1,4 @@
 <PL_LCTTGT>
-
 	<Static GroupName="SoNamNay">
 		<ct01_nNay>R_40</ct01_nNay>
 		<ct02_nNay>R_42</ct02_nNay>
@@ -73,5 +72,11 @@
 		<ct60_nNgoai>W_75</ct60_nNgoai>
 		<ct61_nNgoai>W_76</ct61_nNgoai>
 		<ct70_nNgoai>W_77</ct70_nNgoai>
+	</Static>
+	<Static GroupName="PL_LCTTGT">
+		<nguoiLapBieu></nguoiLapBieu>
+		<keToanTruong></keToanTruong>
+		<ngayLap DateType="1">R_81</ngayLap>
+		<giamDoc>R_79</giamDoc>
 	</Static>
 </PL_LCTTGT>

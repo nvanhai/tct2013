@@ -10,7 +10,7 @@
 	</Static>
 	<Dynamic GroupName="BKeNhanInBienLai">
 		<CTietBKeNhanInBienLai id="id">
-			<mst>C_22</mst>
+			<mst TINType="1">C_22</mst>
 			<ten>D_22</ten>
 			<diaChi>E_22</diaChi>
 			<soHopDong>F_22</soHopDong>
@@ -27,5 +27,9 @@
 		<noiBCao></noiBCao>
 		<ngayLapBCao>J_32</ngayLapBCao>
 		<nguoiDaiDien>J_30</nguoiDaiDien>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>J_30</nguoiKy>
+		<ngayKy>J_32</ngayKy>
 	</Static>
 </HSoThueDTu>

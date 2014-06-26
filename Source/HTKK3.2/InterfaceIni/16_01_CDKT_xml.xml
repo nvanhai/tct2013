@@ -186,4 +186,10 @@
 		<tenNVienDLyThue></tenNVienDLyThue>
 		<cchiHNghe></cchiHNghe>
 	</Static>
+	<Static GroupName="PhanKy">
+		<nguoiLapBieu></nguoiLapBieu>
+		<keToanTruong></keToanTruong>
+		<ngayLap DateType="1">R_124</ngayLap>
+		<giamDoc>R_122</giamDoc>
+	</Static>
 </HSoKhaiThue>
