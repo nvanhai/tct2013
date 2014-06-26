@@ -93,4 +93,10 @@
 		<ctVI_nNgoai>W_87</ctVI_nNgoai>
 		<ctVII_nNgoai>W_88</ctVII_nNgoai>
 	</Static>
+	<Static GroupName="PhanKy">
+		<nguoiLapBieu></nguoiLapBieu>
+		<keToanTruong></keToanTruong>
+		<ngayLap DateType="1">R_92</ngayLap>
+		<giamDoc>R_90</giamDoc>
+	</Static>
 </PL_LCTTTT>

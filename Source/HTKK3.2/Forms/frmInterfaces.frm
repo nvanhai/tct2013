@@ -3608,9 +3608,16 @@ Private Sub SetKieuKy()
     End If
     
     ' Bao cao hoa don
-    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "64" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "91" Then
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "64" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "91" _
+    Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "07" Then
         strKK = "D"
     End If
+    
+    ' Bao cao bien lai phi
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "13" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Then
+        strKK = "Q"
+    End If
+    
     
     If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_10") Then
         soLanBs = Val(objTaxBusiness.StrSolanBosung)
@@ -3691,7 +3698,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         End If
                 
         'to TB03,BC21 khong co ky ke khai
-        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "09" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "10" Then
+'        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "10" Then
 
             If xmlTK.getElementsByTagName("kieuKy").length > 0 Then
                 xmlTK.getElementsByTagName("kieuKy")(0).Text = strKK
@@ -3763,13 +3770,13 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
                 End If
             End If
 
-        Else
-            xmlTK.getElementsByTagName("kieuKy")(0).Text = ""
-            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = ""
-            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = ""
-            xmlTK.getElementsByTagName("kyKKhai")(0).Text = ""
-
-        End If
+'        Else
+'            xmlTK.getElementsByTagName("kieuKy")(0).Text = ""
+'            xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = ""
+'            xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = ""
+'            xmlTK.getElementsByTagName("kyKKhai")(0).Text = ""
+'
+'        End If
         
         .sheet = .SheetCount
         .GetText .ColLetterToNumber("R"), 7, vlue
@@ -4845,7 +4852,19 @@ Private Sub KetXuatXML()
                                             TinTypeAttribute.nodeValue = "true"
                                             xmlCellTKNode.Attributes.setNamedItem TinTypeAttribute
                                         End If
+                                    ElseIf GetAttribute(xmlCellNode, "DateType") = "1" Then
+                                        xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
+                                        If .Text = vbNullString Or .Text = "../../...." Then
+                                            If xmlCellTKNode.hasChildNodes Then
+                                                xmlCellTKNode.removeChild xmlCellTKNode.firstChild
+                                            End If
 
+                                            Set TinTypeAttribute = xmlTK.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
+                                            TinTypeAttribute.nodeValue = "true"
+                                            xmlCellTKNode.Attributes.setNamedItem TinTypeAttribute
+                                        Else
+                                            xmlCellTKNode.Text = ToDateString(.Text, True)
+                                        End If
                                     Else
 
                                         If .CellType = CellTypeNumber Then

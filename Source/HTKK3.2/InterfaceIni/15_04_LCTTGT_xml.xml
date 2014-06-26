@@ -73,4 +73,10 @@
 		<ct61_nNgoai>W_76</ct61_nNgoai>
 		<ct70_nNgoai>W_77</ct70_nNgoai>
 	</Static>
+	<Static GroupName="PhanKy">
+		<nguoiLapBieu></nguoiLapBieu>
+		<keToanTruong></keToanTruong>
+		<ngayLap DateType="1">R_81</ngayLap>
+		<giamDoc>R_79</giamDoc>
+	</Static>
 </PL_LCTTGT>

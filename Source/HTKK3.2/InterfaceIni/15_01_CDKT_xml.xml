@@ -222,14 +222,14 @@
 		<ngoaiTe_nNgoai>W_140</ngoaiTe_nNgoai>
 		<duToanChi_nNgoai>W_141</duToanChi_nNgoai>
 	</Static>
-		<Static GroupName="TKhaiThue">
+	<Static GroupName="TKhaiThue">
 		<nguoiKy>R_144</nguoiKy>
 		<ngayKy>R_146</ngayKy>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<nguoiLapBieu></nguoiLapBieu>
 		<keToanTruong></keToanTruong>
-		<ngayLap></ngayLap>
-		<giamDoc></giamDoc>
+		<ngayLap>R_146</ngayLap>
+		<giamDoc>R_144</giamDoc>
 	</Static>
 </HSoKhaiThue>

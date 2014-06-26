@@ -36,4 +36,10 @@
 		<ct51_nNgoai>J_23</ct51_nNgoai>
 		<ct60_nNgoai>J_24</ct60_nNgoai>
 	</Static>
+	<Static GroupName="PL_KQHDXSKD">
+		<nguoiLapBieu></nguoiLapBieu>
+		<keToanTruong></keToanTruong>
+		<ngayLap DateType="1">I_30</ngayLap>
+		<giamDoc>I_28</giamDoc>
+	</Static>
 </PL_KQHĐXSKD>
