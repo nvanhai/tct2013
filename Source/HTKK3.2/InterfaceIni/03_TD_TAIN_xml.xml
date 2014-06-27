@@ -1,7 +1,7 @@
 <HSoThueDTu>
 	<Static GroupName="TKhaiThue">
-		<maTKhai>03_TD_TAIN</maTKhai>
-		<tenTKhai>03_TD_TAIN</tenTKhai>
+		<maTKhai>133</maTKhai>
+		<tenTKhai>Tờ khai thuế tài nguyên dành cho cơ sở sản xuất thuỷ điện</tenTKhai>
 		<moTaBMau></moTaBMau>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
