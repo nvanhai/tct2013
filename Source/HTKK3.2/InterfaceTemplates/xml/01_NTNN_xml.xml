@@ -70,7 +70,7 @@
 		</TTinChung>
 		<CTieuTKhaiChinh>
 			<BKThueNTNN>
-				<ThueNTNN>
+				<ThueNTNN id="String">
 					<ct1></ct1>
 					<ct2></ct2>
 					<ct3></ct3>
