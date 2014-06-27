@@ -1,19 +1,18 @@
-<PL02_BVMT>
-	<Static GroupName="PL02_BVMT">
-		<ngayNopTKhaiChinh></ngayNopTKhaiChinh>
-	</Static>
-	<Dynamic GroupName="PL02_BVMT">
-		<PBoSoThueBVMTChoDPhuong id="ID_2">
+<PLuc_01_1_BVMT>
+	<Dynamic GroupName="PBoSoThueBVMTChoDPhuong">
+		<ChiTietThueBVMTCuaDPhuong id="">
+			<maHangHoa>Y_34</maHangHoa>
 			<ct2>D_34</ct2>
-			<ct3>L_34</ct3>
-			<ct4>M_34</ct4>
-			<ct5>N_34</ct5>
-			<ct6>O_34</ct6>
-			<ct7>P_34</ct7>
-			<ct8>Q_34</ct8>
-			<ct9></ct9>
-			<ct10></ct10>
-			<ct11></ct11>
-		</PBoSoThueBVMTChoDPhuong>
-	</Dynamic>
-</PL02_BVMT>
+			<ct3>F_34</ct3>
+			<ct4>L_34</ct4>
+			<ct5_cct>O_34</ct5_cct>
+			<ct5_ct>M_34</ct5_ct>
+			<ct6>S_34</ct6>
+			<ct7>T_34</ct7>
+			<ct8>U_34</ct8>
+			<ct9>V_34</ct9>
+			<ct10>W_34</ct10>
+			<ct11>X_34</ct11>
+		</ChiTietThueBVMTCuaDPhuong>	
+	</Dynamic>	
+</PLuc_01_1_BVMT>

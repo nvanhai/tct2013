@@ -69,10 +69,11 @@
 			</TTinTKhaiThue>
 		</TTinChung>
 		<CTieuTKhaiChinh>
+			<tieuMucHachToan>String</tieuMucHachToan>
 			<BangChiTietThueTTDB>
 				<HangHoaChiuThueTTDB>
 					<ChiTietHangHoaChiuThueTTDB>
-						<NDungTKhaiTTDB>
+						<NDungTKhaiTTDB id="String">
 							<ct2_maHHDV>String</ct2_maHHDV>
 							<ct2>String</ct2>
 							<ct3>String</ct3>
@@ -91,7 +92,7 @@
 				</HangHoaChiuThueTTDB>
 				<DVuChiuThueTNDB>
 					<ChiTietDVuChiuThueTTDB>
-						<NDungTKhaiTTDB>
+						<NDungTKhaiTTDB id="String">
 							<ct2_maHHDV>String</ct2_maHHDV>
 							<ct2>String</ct2>
 							<ct3>String</ct3>
@@ -110,7 +111,7 @@
 				</DVuChiuThueTNDB>
 				<HHoaKhongChiuThueTNDB>
 					<HHXuatKhau>
-						<NDungHHoaKhongThue>
+						<NDungHHoaKhongThue id="String">
 							<ct2_maHH>String</ct2_maHH>
 							<ct2>String</ct2>
 							<ct3>String</ct3>
@@ -119,7 +120,7 @@
 						</NDungHHoaKhongThue>
 					</HHXuatKhau>
 					<HHBanDeXuatKhau>
-						<NDungHHoaKhongThue>
+						<NDungHHoaKhongThue id="String">
 							<ct2_maHH>String</ct2_maHH>
 							<ct2>String</ct2>
 							<ct3>String</ct3>
@@ -128,7 +129,7 @@
 						</NDungHHoaKhongThue>
 					</HHBanDeXuatKhau>
 					<HHGiaCongXuatKhau>
-						<NDungHHoaKhongThue>
+						<NDungHHoaKhongThue id="String">
 							<ct2_maHH>String</ct2_maHH>
 							<ct2>String</ct2>
 							<ct3>String</ct3>

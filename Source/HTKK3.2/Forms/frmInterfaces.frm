@@ -4361,6 +4361,10 @@ Private Sub KetXuatXML()
     Dim cFolder        As New Scripting.FileSystemObject
     Dim nFolder        As String
     
+    Dim firstDynamic As Boolean
+    Dim firstRowDynamic As Long
+    firstDynamic = True
+    
     SetKieuKy
     MaTk = GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile")
     
@@ -4484,6 +4488,13 @@ Private Sub KetXuatXML()
                     'Set gia tri cho group dong
                     SetCloneNode CloneNode, xmlNodeMapCT, Blank, cellRange, sRow
                     
+                    ' test dynamic
+                    If firstDynamic = True Then
+                        firstRowDynamic = sRow
+                        firstDynamic = False
+                    End If
+                    ' end test
+                    
                     'Truong hop ket thuc group dong thi xoa group cuoi cung di
                     .Col = .ColLetterToNumber("B")
                     .Row = sRow
@@ -4579,8 +4590,13 @@ Private Sub KetXuatXML()
                         xmlCellTKNode.Text = cellID
                     Else
                         .Col = .ColLetterToNumber(cellArray(0))
-                        .Row = Val(cellArray(1)) + cellRange
-                        
+                        ' test Dynamic
+                        If Val(cellArray(1)) > firstRowDynamic Then
+                            .Row = Val(cellArray(1)) + cellRange
+                        Else
+                            .Row = Val(cellArray(1))
+                        End If
+                        ' end test
                         'Set gia tri cho cac the la ma so thue
                         If GetAttribute(xmlCellNode, "TINType") = "1" Then
                             xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
