@@ -71,7 +71,7 @@
 		<CTieuTKhaiChinh>
 			<HinhThucKeKhai>
 				<quyetToanRiengTungNam>true</quyetToanRiengTungNam>
-				<quyetToanHetVaoNamDau></quyetToanHetVaoNamDau>
+				<quyetToanHetVaoNamDau>true</quyetToanHetVaoNamDau>
 			</HinhThucKeKhai>
 			<CT21>
 				<soVBUQ></soVBUQ>
@@ -87,11 +87,12 @@
 			<ct27>1</ct27>
 			<ct28>1</ct28>
 			<ct29>1</ct29>
-			<CT30>
+			<ct30>1</ct30>
+			<ChiTietSoThuePhaiNop>
 				<BKeSoThuePhaiNop>
-					<SoThuePhaiNop>
-						<ct32></ct32>
-						<ct33></ct33>
+					<SoThuePhaiNop id="String">
+						<ct32>String</ct32>
+						<ct33>0000000000</ct33>
 						<ct34>0.0</ct34>
 						<ct35>1</ct35>
 						<ct36>1</ct36>
@@ -112,7 +113,7 @@
 				<ct49>1</ct49>
 				<ct50>1</ct50>
 				<ct51>1</ct51>
-			</CT30>
+			</ChiTietSoThuePhaiNop>
 		</CTieuTKhaiChinh>
 		<PLuc/>
 	</HSoKhaiThue>

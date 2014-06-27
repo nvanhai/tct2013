@@ -1,7 +1,6 @@
 <HSoThueDTu>
 	<Static GroupName="HinhThucKeKhai">
 		<quyetToanRiengTungNam>O_29</quyetToanRiengTungNam>
-		<quyetToanHetVaoNamDau>R_29</quyetToanHetVaoNamDau>
 	</Static>
 	<Static GroupName="CT21">
 		<soVBUQ>H_13</soVBUQ>
@@ -34,7 +33,7 @@
 			<ct42>V_40</ct42>
 		</SoThuePhaiNop>
 	</Dynamic>
-	<Static GroupName="CT30">
+	<Static GroupName="ChiTietSoThuePhaiNop">
 		<ct43>I_42</ct43>
 		<ct44>L_42</ct44>
 		<ct45>N_42</ct45>
