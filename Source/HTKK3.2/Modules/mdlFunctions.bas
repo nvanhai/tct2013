@@ -36,7 +36,7 @@ Public Const maDVu = "HTKK"
 Public Const tenDVu = "HTKK"
 Public Const pbanDVu = "9.9.9"
 Public Const ttinNhaCCapDVu = ""
-Public Const pbanTKhaiXML = "9.9.9"
+Public Const pbanTKhaiXML = "2.0.0"
 'End XML
 
 'Trien khai GD1
