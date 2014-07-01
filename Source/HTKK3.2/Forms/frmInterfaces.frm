@@ -3637,19 +3637,19 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     On Error GoTo ErrHandle
 
     'Set ma to khai cho cac to 01/GTGT, 02/GTGT , 03B/GTGT, 04/GTGT quy
-    If xmlTK.getElementsByTagName("maTKhai").length > 0 Then
-        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
-            xmlTK.getElementsByTagName("maTKhai")(0).Text = "122"
-        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "02" Then
-            xmlTK.getElementsByTagName("maTKhai")(0).Text = "123"
-        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" Then
-            xmlTK.getElementsByTagName("maTKhai")(0).Text = "130"
-        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "88" Then
-            xmlTK.getElementsByTagName("maTKhai")(0).Text = "130"
-        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Then
-            xmlTK.getElementsByTagName("maTKhai")(0).Text = "126"
-        End If
-    End If
+'    If xmlTK.getElementsByTagName("maTKhai").length > 0 Then
+'        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
+'            xmlTK.getElementsByTagName("maTKhai")(0).Text = "122"
+'        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "02" Then
+'            xmlTK.getElementsByTagName("maTKhai")(0).Text = "123"
+'        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" Then
+'            xmlTK.getElementsByTagName("maTKhai")(0).Text = "130"
+'        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "88" Then
+'            xmlTK.getElementsByTagName("maTKhai")(0).Text = "130"
+'        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Then
+'            xmlTK.getElementsByTagName("maTKhai")(0).Text = "126"
+'        End If
+'    End If
 
     With fpSpread1
         
