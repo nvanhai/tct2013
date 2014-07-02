@@ -5,7 +5,7 @@
 		<moTaBMau/>
 	</Static>
 	<Dynamic GroupName="BKeBienLai" MinOccur="1">
-		<ChiTietBKeBienLai id="id">
+		<ChiTietBKeBienLai ID="id">
 			<tenLoaiBienLai>D_35</tenLoaiBienLai>
 			<kyHieuMauBienLai>J_35</kyHieuMauBienLai>
 			<kyHieuBienLai>L_35</kyHieuBienLai>

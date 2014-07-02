@@ -17,7 +17,7 @@
 		<maTinhDLyThue>P_19</maTinhDLyThue>
 	</Static>
 	<Dynamic GroupName="ChiTietThueBVMT">
-		<ThueBVMT id="id">
+		<ThueBVMT ID="id">
 			<ct2>AC_44</ct2>
 			<ct3>J_44</ct3>
 			<ct4>L_44</ct4>
