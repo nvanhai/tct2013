@@ -93,7 +93,7 @@ Begin VB.Form frmInterfaces
          Caption         =   "§ang xö lý ..."
          BeginProperty Font 
             Name            =   "DS Sans Serif"
-            Size            =   9.75
+            Size            =   8.25
             Charset         =   0
             Weight          =   700
             Underline       =   0   'False
@@ -7832,7 +7832,7 @@ Private Sub Form_Resize()
            And strIDTkhai <> "42" And strIDTkhai <> "43" And strIDTkhai <> "59" And strIDTkhai <> "76" And strIDTkhai <> "41" And strIDTkhai <> "100_1" _
            And strIDTkhai <> "01" And strIDTkhai <> "02" And strIDTkhai <> "04" And strIDTkhai <> "71" And strIDTkhai <> "72" _
            And strIDTkhai <> "11" And strIDTkhai <> "12" And strIDTkhai <> "73" _
-           And strIDTkhai <> "48" And strIDTkhai <> "49" And strIDTkhai <> "25" And strIDTkhai <> "15" And strIDTkhai <> "16" And strIDTkhai <> "50" And strIDTkhai <> "51" _
+           And strIDTkhai <> "48" And strIDTkhai <> "49" And strIDTkhai <> "25" And strIDTkhai <> "15" And strIDTkhai <> "16" And strIDTkhai <> "50" And strIDTkhai <> "51" And strIDTkhai <> "36" And strIDTkhai <> "74" And strIDTkhai <> "75" _
            And strIDTkhai <> "70" And strIDTkhai <> "81" _
            And strIDTkhai <> "06" _
            And strIDTkhai <> "05" _
