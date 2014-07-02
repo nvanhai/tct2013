@@ -1,0 +1,22 @@
+<PL_02_1_TD_TNDN>
+  <Static GroupName="ChiTietBangPBoThueTNDN">
+    <tenDonViTDPhuThuoc>C_42</tenDonViTDPhuThuoc>
+    <soThueTNDNPNop>U_42</soThueTNDNPNop>
+  </Static>
+  <P_Dynamic GroupName="NhaMayThuyDien" CellID="AI_44">
+    <ChiTietNhaMayThuyDien id="id">
+      <tenNMayTDien>C_43</tenNMayTDien>
+      <mstNMayTDien TINType="1">H_43</mstNMayTDien>
+      <tyLePBoNMayTDien>R_43</tyLePBoNMayTDien>
+      <soThuePNopNMayTDien>U_43</soThuePNopNMayTDien>
+      <Dynamic GroupName="CQTDiaPhuong">
+        <ChiTietCQTDiaPhuong id="id">
+          <maCQTDPhuong>AH_44</maCQTDPhuong>
+          <tenCQTDPhuong>P_44</tenCQTDPhuong>
+          <tyLePBoCQTDPhuong>R_44</tyLePBoCQTDPhuong>
+          <thuePNopCQTDPhuong>U_44</thuePNopCQTDPhuong>
+        </ChiTietCQTDiaPhuong>
+      </Dynamic>
+    </ChiTietNhaMayThuyDien>
+  </P_Dynamic>
+</PL_02_1_TD_TNDN>
