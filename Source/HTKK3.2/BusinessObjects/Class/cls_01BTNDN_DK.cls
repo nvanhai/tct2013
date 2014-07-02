@@ -46,6 +46,7 @@ Public Sub Prepare1()
         fps.EventEnabled(EventAllEvents) = False
         .Sheet = 1
         SetDateFormat fps, 1, 78, fps.ColLetterToNumber("AR"), DDMMYYYY
+        SetDateFormat fps, 3, 31, .ColLetterToNumber("BE"), DDMMYYYY
         
         .Row = 78
         .Col = fps.ColLetterToNumber("AR")
