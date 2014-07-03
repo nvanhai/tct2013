@@ -18,11 +18,15 @@
 		</KHBSDieuChinhGiam>
 	</Dynamic>
 	<Static GroupName="ct40">
+		<ct2>BD_17</ct2>
+		<ct3>BE_17</ct3>
 		<ct4>BF_17</ct4>
 		<ct5>BG_17</ct5>
 		<ct6>BH_17</ct6>
 	</Static>
 	<Static GroupName="ct43">
+		<ct2>BD_18</ct2>
+		<ct3>BE_18</ct3>
 		<ct4>BF_18</ct4>
 		<ct5>BG_18</ct5>
 		<ct6>BH_18</ct6>
