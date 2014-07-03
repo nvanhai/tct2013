@@ -2193,23 +2193,23 @@ Private Function ExecuteSave() As Boolean
         End If
     End If
 
-'    If (Dir("c:\TempXML\", vbDirectory) = "") Then
-'        MkDir "c:\TempXML\"
-'    End If
+    If (Dir("c:\TempXML\", vbDirectory) = "") Then
+        MkDir "c:\TempXML\"
+    End If
 
     'Add namespace xml
     xmlTK.documentElement.SetAttribute "xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance"
 
     xmlTK.documentElement.SetAttribute "xmlns", "http://kekhaithue.gdt.gov.vn/TKhaiThue"
 
-'    Dim sFileName As String
-'    sFileName = "c:\TempXML\" & strFileName
+    Dim sFileName As String
+    sFileName = "c:\TempXML\" & strFileName
     '
     Dim xmlDocSave As New MSXML.DOMDocument
     Set xmlDocSave = AppendXMLStandard(xmlTK, sKyLapBo, sNgayNopTK, sLoiDinhDanh)
     '
     '
-'    xmlDocSave.save sFileName
+    xmlDocSave.save sFileName
     
     'Kiem tra su ton tai cua xmlDocSave
     If (xmlDocSave.getElementsByTagName("DATA").length < 0 Or xmlDocSave.getElementsByTagName("HEADER").length < 0 Or xmlDocSave.getElementsByTagName("BODY").length < 0) Then
@@ -2219,12 +2219,12 @@ Private Function ExecuteSave() As Boolean
     End If
 
     '' Push MQ
-    Dim MQPUT As New MQPUT
-    If (Not MQPUT.PUSHMQ(xmlDocSave.xml)) Then
-        MessageBox "0137", msOKOnly, miCriticalError
-        ExecuteSave = False
-        Exit Function
-    Else
+'    Dim MQPUT As New MQPUT
+'    If (Not MQPUT.PUSHMQ(xmlDocSave.xml)) Then
+'        MessageBox "0137", msOKOnly, miCriticalError
+'        ExecuteSave = False
+'        Exit Function
+'    Else
         ExecuteSave = True
 '        '   Clear variable global
         Set xmlResultDLT = Nothing
@@ -2232,7 +2232,7 @@ Private Function ExecuteSave() As Boolean
         Set xmlTK = Nothing
 '        '    ' End push
         Exit Function
-    End If
+'    End If
     
 ErrHandle:
     SaveErrorLog Me.Name, "Execute_save", Err.Number, Err.Description
@@ -2693,213 +2693,33 @@ Private Sub Command1_Click()
         Dim str41 As String, str42 As String, str43 As String, str44 As String, str45 As String, str46 As String, str47 As String, str48 As String, str49 As String, str50 As String
         Dim str51 As String, str52 As String, str53 As String
         
-'03-TNDN
-str2 = "aa999032300032165   00201301702200101901/0114/06/200620/10/201231/12/2013<S03><S></S><S>80702500~782000~320000~120000~300000~10000~32000~143200~32100~45000~42100~24000~81341300~81298300~43000~81298300~1"
-Barcode_Scaned str2
-str2 = "aa999032300032165   00201301702200201923200~2400000~78775100~0~78775100~19693775~-208488~39060~0~19863203~645000~20508203~19863203~645000</S><S></S><S></S><S></S><S>~~~21/01/2014~1~1~0~1052~</S></S03>"
-Barcode_Scaned str2
-str2 = "aa999032300032165   002013017022003019<S03-1A><S>10000000~4000000~1275300~500000~320000~221000~234300~250000~829400~223400~363000~243000~52100~42000~8093200~234300~32000~202300~8295500</S></S03-1A>"
-Barcode_Scaned str2
-str2 = "aa999032300032165   002013017022004019<S03-1B><S>2500000~120000~2380000~340000~100000~240000~23000~12000~1500000~500000~600000~-100000~200000~300000~1200000~2755000</S></S03-1B>"
-Barcode_Scaned str2
-str2 = "aa999032300032165   002013017022005019<S03-1C><S>140962000~100000000~2000000~1000000~500000~10000000~23000000~450000~4000000~12000~71310000~23000000~320000"
-Barcode_Scaned str2
-str2 = "aa999032300032165   0020130170220060190~9000000~4300000~6000000~3000000~1000000~600000~20000000~1000000~200000~10000~69652000~0~0~0~69652000</S></S03-1C>"
-Barcode_Scaned str2
-str2 = "aa999032300032165   002013017022007019<S03-2A><S>2008~5000000~0~0~5000000~2009~0~0~0~0~2010~7000000~3000000~1000000~3000000~2011~4000000~1000000~500000~2500000~2012~3000000~1400000~900000~700000~19000000~5400000~2400000~11200000</S></S03-2A>"
-Barcode_Scaned str2
-str2 = "aa999032300032165   002013017022008019<S03-2B><S>2008~1000000~100000~100000~800000~2009~2000000~1000000~10000~990000~2010~500000~100000~30000~370000~2011~7000000~50000~20000~6930000~2012~12000000~4000000~200000~7800000~22500000~5250000~360000~16890000</S></S03-2B>"
-Barcode_Scaned str2
-str2 = "aa999032300032165   002013017022009019<S03-3A><S>x~~x~x~x~~x~~x~~x~45.789~2~2011~3~2011~2~2012~100000"
-Barcode_Scaned str2
-str2 = "aa999032300032165   0020130170220100190~457890~250000~-207890~200000~45~90000~20~18000</S></S03-3A>"
-Barcode_Scaned str2
-str2 = "aa999032300032165   002013017022011019<S03-3B><S>x~~x~~x~~x~h¹ng môc 1~h¹ng môc 15~h¹ng môc 12~23/01/2011~54.890~3~2011~"
-Barcode_Scaned str2
-str2 = "aa999032300032165   0020130170220120194~2010~2~2012~100000~100000~2000~2000~500~1098~-598~100~2000~53~1060</S></S03-3B>"
-Barcode_Scaned str2
-str2 = "aa999032300032165   002013017022013019<S03-3C><S>x~230~32~23/01/2014~x~10~402~25/01/2014~x~~20000000~2000000~300000~20000</S></S03-3C>"
-Barcode_Scaned str2
-str2 = "aa999032300032165   002013017022014019<S03-4><S>John Smith~1200~USD~30000000~200~10000000~1400~40000000~25~10000000~0~Ronnie Coleman~3500~USD~50000000~300~15000000~3800~65000000~25~16250000~0</S></S03-4>"
-Barcode_Scaned str2
-str2 = "aa999032300032165   002013017022015019<S03-5><S>35000000~31100000~25000000~2000000~500000~1200000~2000000~400000~3900000~1000000~2900000~200000~2700000~35~945000~200000~100000~645000</S></S03-5>"
-Barcode_Scaned str2
-str2 = "aa999032300032165   002013017022016019<S03-05><S>100~2500000~3000000~5000000~5500000~16000000~20508203~4508203~CMC Corporation~75~1875000~2250000~3750000~4125000~12000000~15381152~3381152~2300029934</S><S>CAU GIAY~Chi nhanh HCM~15.46~375000~450000~750000~825000~2400000~3076230~676230~2300029934-123~Da Nang~Chi nhanh Da Nang~9.54~250000~300000~500000~550000~1600000~2050820~450820~2300029934-456</S></S03-05>"
-Barcode_Scaned str2
-str2 = "aa999032300032165   002013017022017019<S03-6><S>100~2000000</S><S>2012~20~1500000~500000~2000000~3000000~2013~10~1200000~400000~1000000~1800000</S></S03-6>"
-Barcode_Scaned str2
-str2 = "aa999032300032165   002013017022018019<S03-7><S>vn ®ång~32000000~13400000</S><S>hµng hãa 1~3200000~430000~PP3~PP5</S><S>hµng hãa 2~421000~230000~PP1~PP6</S><S>nghiªn cøu 1~320000~218000~PP3~PP2</S><S>qu¶ng c¸o 1~322900~122000~PP2~PP4</S><S>kinh doanh 1~421900~18900"
-Barcode_Scaned str2
-str2 = "aa999032300032165   002013017022019019~PP5~PP1</S><S>b¶n quyÒn 1~521200~278000~PP6~PP3</S><S>cho vay~100000~411000~PP4~PP4</S><S>hÕt nî~200000~213000~PP5~PP5</S><S>dÞch vô kh¸c~410000~523120~PP6~PP6</S><S>liªn kÕt a~Ba ®×nh~0102030405~~x~~~x~~~x~~x~~~x</S></S03-7>"
-Barcode_Scaned str2
+' Thong bao phat hanh bien lai TB01/AC
+str2 = "aa323074400104402   01201400200200100101/0101/01/2009<S01><S>Biªn lai thu phÝ, lÖ phÝ kh«ng cã mÖnh gi¸~01BLP3-001~AA-14T~10000~0000001~0010000~16/01/2014~Sè hîp ®ång 1~01/12/2013~Tªn doanh nghiÖp 1~4400113301~Biªn lai thu phÝ, lÖ phÝ cã mÖnh gi¸~02BLP3-001~AA-14T~10000~0000001~0010000~17/01/2014~Sè hîp ®ång 2~02/12/2013~Tªn doanh nghiÖp 2~4400113301001</S><S>Tªn c¬ quan tiÕp nhËn th«ng b¸o~01/01/2014~NguyÔn ThÞ Kim Thóy</S></S01>"
+Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+'' Bao cao nhan in, cung cap phan mem
+'str2 = "aa999134400104402   01201400200200100101/0101/01/2009<S01><S>01/01/2014~31/03/2014</S><S>4400113301~Tªn tæ chøc, c¸ nh©n, ®Æt in1~§Þa chØ tæ chøc, c¸ nh©n ®Æt in 1~Sè hîp ®ång 1~01/01/2014~01BLP3-001~Biªn lai thu phÝ, lÖ phÝ kh«ng cã mÖnh gi¸~AA-14T~0000001~0100000~100000~4400113301001~Tªn tæ chøc, c¸ nh©n, ®Æt in3~§Þa chØ tæ chøc, c¸ nh©n ®Æt in 3~Sè hîp ®ång 3~01/01/2014~~~~~~</S><S>NguyÔn ThÞ Kim Thóy~22/04/2014</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
         
-' '02/GTGT-Thang
-' str2 = "aa999020102030405   03201400100100100101/0114/06/2006<S01><S></S><S>0~0~100727693010~10065972688~0~0~0~0~10065972688~0~10065972688~0~0~0~10065972688</S><S>~ABC~~16/04/2014~1~~~0</S></S01>"
-'Barcode_Scaned str2
+''Bao cao mat chay bien lai BC21/AC
+'str2 = "aa323094400104402   01201400600600100101/0101/01/2010<S01><S>01/03/2014</S><S>Biªn lai thu phÝ, lÖ phÝ kh«ng cãmÖnh gi¸~01BLP3-001~AA-14T~0000021~0000030~10~Liªn 1~02~Biªn lai thu phÝ, lÖ phÝ kh«ng cã mÖnh gi¸~01BLP3-001~AA-14T~0000031~0000040~10~Liªn 2~04~Biªn lai thu phÝ, lÖ phÝ cã mÖnh gi¸~02BLP3-001~AA-14T~0000021~0000030~10~Liªn 1~02~Biªn lai thu phÝ,lÖ phÝ cã mÖnh gi¸~02BLP3-001~AA-14T~0000031~0000040~10~Liªn 2~04</S><S>Ph­¬ng ph¸p mÊt, ch¸y, háng~§¬n vÞ b¸o c¸o~Ng­êi ®¹i diÖn ph¸p luËt thuyntk1605~22/04/2014</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
-''01-TBAC-BLP: 05/03/2014
-'str2 = "aa999074400000019   03201400000000100101/0101/01/2009<S01><S>Biªn lai thu phÝ, lÖ phÝ kh«ng cã mÖnh gi¸~01BLP2-009~QS-11T~401~0000100~0000500~15/03/2014~10~05/03/2014~CMC Corporation~0101650999~Biªn lai thu phÝ, lÖ phÝ cã mÖnh gi¸~02BLP3-009~QS-12T~401~0000200~0000600~16/03/2014~20~05/03/2014~SCAT Corporation~6868686868</S><S>Chi cuc Thue Cau Giay~05/03/2014~Hoang Ngoc Hung</S></S01>"
-'Barcode_Scaned str2
+''Bao cao nhan in BC01/AC
+'str2 = "aa323134400104402   01201400600600100101/0101/01/2009<S01><S>01/01/2014~31/03/2014</S><S>4400113301~Tªn tæ chøc, c¸ nh©n ®Æt in 1~§Þa chØ tæ chøc, c¸ nh©n ®Æt in 1~Sè hîp ®ång 101/01/2014~01/01/2014~01BLP3-001~Biªn lai thu phÝ, lÖ phÝkh«ng cã mÖnh gi¸~AA-14T~0000001~0100000~100000~4400113301001~Tªn tæ chøc, c¸ nh©n ®Æt in 3~§Þa chØ tæ chøc, c¸ nh©n ®Æt in3~Sè hîp ®ång 3~01/01/2014~~~~~~</S><S>Thñ tr­ëng ®¬n vÞ thuyntk1605~22/04/2014</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
-''01-BLP(01-AC_BLP)
-'str2 = "aa999134400000019   01201400200200100101/0101/01/2009<S01><S>~01/01/2014~31/03/2014</S><S>0101650999~CMC Corporation~Duy Tan - Cau Giay~10~05/03/2014~01BLP2-009~Bien Lai thu phi~QS-11T~0000010~0000050~41~6868686868~SCAT Corp~Hoang Mai ~20~05/03/2014~02BLP3-008~Bien lai thu phi le phi~QS-13T~0000030~0000050~21</S><S>Hoang Ngoc Hung~11/04/2014</S></S01>"
-'Barcode_Scaned str2
+''Bao cao phat hanh bien lai TB01/AC
+'str2 = "aa323074400104402   01201400600700100101/0101/01/2009<S01><S>Biªn lai thu phÝ, lÖ phÝ kh«ng cã mÖnh gi¸~01BLP3-001~AA-14T~10000~0000001~0010000~16/01/2014~Sè hîp ®ång 1~01/12/2013~Tªn doanh nghiÖp 1~4400113301~Biªn lai thu phÝ, lÖ phÝcã mÖnh gi¸~02BLP3-001~AA-14T~10000~0000001~0010000~17/01/2014~Sè hîp ®ång 2~02/12/2013~Tªn doanh nghiÖp 2~4400113301001</S><S>Tªn c¬ quan tiÕp nhËn th«ng b¸o~01/01/2014~Thñ tr­ëng ®¬n vÞ thuyntk1605</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
-''BC21-BLP
-'str2 = "aa999094400000019   01201400100100100101/0101/01/2010<S01><S>11/04/2014</S><S>Biªn lai thu phÝ, lÖ phÝ kh«ng cã mÖnh gi¸~Biªn lai thu phÝ, lÖ phÝ kh«ng cã mÖnh gi¸~QS-12T~0000100~0000200~101~3~~Biªn lai thu phÝ, lÖ phÝ cã mÖnh gi¸~Biªn lai thu phÝ, lÖ phÝ cã mÖnh gi¸~QS-11T~0000300~0000400~101~2~</S><S>Hoa hoan~Chi cuc thue Cau Giay~CMCer~11/04/2014</S></S01>"
-'Barcode_Scaned str2
+''Bao cao tinh hinh su dung BLP BC7/AC
+'str2 = "aa323144400104402   01201400500500100101/0101/01/2009<S01><S>01/01/2014~31/03/2014</S><S>Biªn lai thu phÝ, lÖ phÝ kh«ng cã mÖnh gi¸~01BLP3-001~AA-14T~10000~~~0000001~0010000~0000001~0000060~60~38~2~5;7~10~31-40~10~51-60~0000061~0010000~9940~Biªn lai thu phÝ, lÖ phÝ cã mÖnh gi¸~02BLP3-001~AA-14T~10000~~~0000001~0010000~0000001~0000060~60~38~2~7;9~10~31-40~10~51-60~0000061~0010000~9940</S><S>Ng­êi lËp biÓu~Thñ tr­ëng ®¬n vÞ thuyntk1605~22/04/2014</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
-''03-TBAC-BLP
-'str2 = "aa999104400000019   01201400000000100101/0101/01/2010<S01><S>Chi cuc Thue Cau Giay~Cho vao may huy giay~55~11/04/2014~9</S><S>Biªn lai thu phÝ, lÖ phÝ kh«ng cã mÖnh gi¸~01BLP1-009~QS-10T~0000100~0000200~101~Biªn lai thu phÝ, lÖ phÝ cã mÖnh gi¸~02BLP2-009~QS-11T~0000050~0000100~51</S><S>CMCer~Hoang Ngoc Hung~11/04/2014</S></S01>"
-'Barcode_Scaned str2
-
-''26-BCAC-BLP
-'str2 = "aa999144400000019   01201400000000100101/0101/01/2009<S01><S>~~01/01/2014~31/03/2014</S><S>Biªn lai thu phÝ, lÖ phÝ kh«ng cã mÖnh gi¸~01BLP2-009~QS-10T~301~0000100~0000200~0000201~0000400~0000100~0000122~23~20~1~102~1~103~1~104~0000123~0000400~278~Biªn lai thu phÝ, lÖ phÝ cã mÖnh gi¸~02BLP3-008~QS-11T~501~0000300~0000400~0000401~0000800~0000300~0000372~73~70~1~301~1~302~1~305~0000373~0000800~428</S><S>CMCer~Hoang Ngoc Hung~11/04/2014</S></S01>"
-'Barcode_Scaned str2
-
-
-
-''Phu luc 01A_TNDN thuy dien
-'str2 = "aa999110102030405   01201400900900100301/0114/06/2006<S01><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~~0~0~0~0~"
-'Barcode_Scaned str2
-'str2 = "aa999110102030405   0120140090090020030~0~0~0~~~~0~0</S><S>~</S><S>~~~18/05/2014~1~0~~1052</S></S01>"
-'Barcode_Scaned str2
-'str2 = "aa999110102030405   012014009009003003<S01-2><S>1~Tong Cong ty truyen tai dien mien Bac~~0~3000000~~x~2~Nha may thuy dien Ha Noi 1~0102030405~100~3000000~~x~3~~2222222222~50~1500000~10700~~4~~6868686868~50~1500000~10900~</S><S>3000000</S></S01-2>"
-'Barcode_Scaned str2
-
-
-'''Phu luc 01B_TNDN thuy dien
-'str2 = "aa999120102030405   01201400200200100301/0114/06/2006<S01><S></S><S>~~0~0~0~0~0~0~0~~20~22~0~~0~0"
-'Barcode_Scaned str2
-'str2 = "aa999120102030405   012014002002002003~0~0~0~0~0~0~~~~0~0</S><S>~18/05/2014~~~1~~1052</S></S01>"
-'Barcode_Scaned str2
-'str2 = "aa999120102030405   012014002002003003<S01-2><S>1~Tong cong ty truyen tai dien Quoc Gia~~0~7000000~~x~2~Cong ty truyen tai dien 1~~100~7000000~~x~3~~6868686868~50~3500000~10700~~4~~0102030405~50~3500000~10100~</S><S>7000000</S></S01-2>"
-'Barcode_Scaned str2
-
-   
-''01A-TNDN-DK-LanPS-DauTho-ChinhThuc
-' str2 = "aa321982300034966   03201400100100100201/0101/01/1900<S01><S></S><S>1~~x~21/03/2014~1~0~0~HD123456~~</S><S>200~50000~10000000~35~3500000~2000000~1500000~22000</S><S>~~CMCer~21/03/2014~1~~21/03/2014~2</S></S01>"
-' Barcode_Scaned str2
-' str2 = "aa321982300034966   032014001001002002<S01-1><S>1500000</S><S>0102030405~CMCTester~50~750000~~6868686868~Lotterial~50~750000~</S><S>100~1500000</S></S01-1>"
-' Barcode_Scaned str2
-
-''01A-TNDN-DK-LanPS-Condensate-ChinhThuc
-'str2 = "aa999982300034973   03201400200200100201/0101/01/1900<S01><S></S><S>1~~x~20/03/2014~0~1~0~HD01~x~</S><S>20~20~400~25~100~20~80~20000</S><S>~~cmcTERT~20/03/2014~1~~20/03/2014~2</S></S01>"
-'Barcode_Scaned str2
-'str2 = "aa999982300034973   032014002002002002<S01-1><S>80</S><S>0102030405~ABC~40~32~~6868686868~XYZ~40~32~FSDF S DF~2222222222~CM~20~16~DFSASDFASD</S><S>100~80</S></S01-1>"
-'Barcode_Scaned str2
-
-''01A-TNDN-DK-THANG-KhiThienNhien-ChinhThuc
-'str2 = "aa999982300034980   02201400100100100201/0101/01/1900<S01><S></S><S>~~x~20/03/2014~0~0~1~hd dk123~~x</S><S>25~50~1250~15~187.5~5~182.5~21000</S><S>~~cmc test~20/03/2014~1~~~0</S></S01>"
-'Barcode_Scaned str2
-'str2 = "aa999982300034980   022014001001002002<S01-1><S>182.5</S><S>0102030405~cty ABC~30~54.75~ok~6868686868~nha may ZM~45~82.13~ok~2222222222~cmc tower~25~45.63~</S><S>100~182.51</S></S01-1>"
-'Barcode_Scaned str2
-
-'''01A-TNDN-DK-THANG-KhiThienNhien-BS
-'str2 = "bs322982300034980   02201400300300100301/0101/01/1900<S01><S></S><S>~~x~20/03/2014~0~0~1~hd dk123~~x</S><S>25~50~1250~15~187.5~10~177.5~21000</S><S>~~cmc test~20/03/2014~~1~~0</S></S01>"
-'Barcode_Scaned str2
-'str2 = "bs322982300034980   022014003003002003<SKHBS><S>~~0~0~0</S><S>Sè thuÕ TNDN ®­îc miÔn hoÆc gi¶m (nÕu cã)~34~5~10~5</S><S>"
-'Barcode_Scaned str2
-'str2 = "bs322982300034980   02201400300300300304/04/2014~15~0~20000~01234abc~03/04/2014~10100~10103~2~2000~~0~0~-5</S></SKHBS>"
-'Barcode_Scaned str2
-
-''01B-TNDN-DK-QUY-ChinhThuc
-'str2 = "aa999992300034772   04201300200200100201/0101/01/1900<S01><S></S><S>hd 010101~x~</S><S>20.00~20.0000~400.00~10.00~390.00~10.00~39.00~5.00~34.00~21000</S><S>~~cmm~20/03/2014~1~</S></S01>"
-'Barcode_Scaned str2
-'str2 = "aa999992300034772   042013002002002002<S01-1><S>34</S><S>0102030405~cty MsM~35~12~ok~6868686868~nha may ABX~65~22~</S><S>100~34</S></S01-1>"
-'Barcode_Scaned str2
-
-''01B-TNDN-DK-QUY-BoSung
-'str2 = "bs322992300034772   04201300500500100301/0101/01/1900<S01><S></S><S>hd 010101~x~</S><S>20.00~20.0000~400.00~10.00~390.00~10.00~39.00~10.00~29.00~21000</S><S>~~cmm~20/03/2014~~1</S></S01>"
-'Barcode_Scaned str2
-'str2 = "bs322992300034772   042013005005002003<SKHBS><S>~~0~0~0</S><S>Sè thuÕ TNDN t¹m tÝnh ®­îc miÔn hoÆc gi¶m (nÕu cã)~29~5~10~5<"
-'Barcode_Scaned str2
-'str2 = "bs322992300034772   042013005005003003/S><S>01/04/2014~60~0~1000~adh~01/04/2014~10100~10101~2~5000~test~0~0~-5</S></SKHBS>"
-'Barcode_Scaned str2
-
-''01-TAIN-DK-LanPS-Consendate-ChinhThuc
-'str2 = "aa999922300034797   03201400200200100201/0101/01/1900<S01><S>2222222222</S><S>1~~x~20/03/2014~0~1~0~HD 99~~x</S><S>100~23~60~6000~10~600~20000</S><S>~~cmc~20/03/2014~1~~20/03/2014~2</S></S01>"
-'Barcode_Scaned str2
-'str2 = "aa999922300034797   032014002002002002<S01-1><S>600</S><S>0102030405~cty ABC~35~210~ok~6868686868~nha may H~65~390~ok roi</S><S>100~600</S></S01-1>"
-'Barcode_Scaned str2
-
-''01-TAIN-DK-DauTho-ChinhThuc
-'str2 = "aa999922300034807   03201400100100100201/0101/01/1900<S01><S></S><S>1~~x~20/03/2014~1~0~0~HD 19~~x</S><S>45~50~27~1215~12~145.8~21000</S><S>~~nguyen van a~20/03/2014~1~~20/03/2014~2</S></S01>"
-'Barcode_Scaned str2
-'str2 = "aa999922300034807   032014001001002002<S01-1><S>145.8</S><S>0102030405~cty CNAS~57~83.11~ok~6868686868~nha may HCG~43~62.69~ok</S><S>100~145.8</S></S01-1>"
-'Barcode_Scaned str2
-
-''01-TAIN-DK-DauTho-BS
-'str2 = "bs999922300034807   03201400700900100301/0101/01/1900<S01><S>2222222222</S><S>1~~x~20/03/2014~1~0~0~HD 19~~x</S><S>100~35~27~2700~50~1350~22000</S><S>~~nguyen van a~20/03/2014~~1~20/03/2014~2</S></S01>"
-'Barcode_Scaned str2
-'str2 = "bs999922300034807   032014007009002003<SKHBS><S>~~0~0~0</S><S>~~0~0~0</S><S>24/05/2014~33~200~1000"
-'Barcode_Scaned str2
-'str2 = "bs999922300034807   0320140070090030030~123456~23/05/2014~10300~10303~5~100000~~0~0~</S></SKHBS>"
-'Barcode_Scaned str2
-
-''01_GTGT_BS
-'str2 = "bs321012300031891   01201400200200100301/0114/06/2006<S01><S></S><S>0~23000~9640000~669400~51900~700000~5068000~413600~368000~1128000~156400~3572000~257200~5768000~413600~361700~0~0~0~338700~21000~317700~0~0~0</S><S>~~Lan H­¬ng~28/02/2014~~1~1~1701~x~02~0</S></S01>"
-'Barcode_Scaned str2
-'str2 = "bs321012300031891   012014002002002003<SKHBS><S>Hµng ho¸, dÞch vô b¸n ra chÞu thuÕ suÊt 5%~31~56400~156400~100000~Hµng ho¸, dÞch vô b¸n ra chÞu thuÕ suÊt 10%~33~57200~257200~200000</S><S>ThuÕ GTGT cßn ®­îc"
-'Barcode_Scaned str2
-'str2 = "bs321012300031891   012014002002003003 khÊu trõ kú tr­íc chuyÓn sang~22~0~23000~23000</S><S>05/03/2014~11~1408~2100~lh/001~14/01/2014~11100~11107~21~32000~lý do kh¸c~61700~317700~256000~0~0~0</S></SKHBS>"
-'Barcode_Scaned str2
-
-''04-TBAC: Kieu D
-'str2 = "aa999910102030405   03201400100100100101/0101/01/2009<S01><S>CTy Giay Bai Bang~Cty TNHH giay Bai Bang~01DVPH~120- Hung Vuong - Phu Tho~110 - Hung Vuong - Phu Tho~02DCTS</S><S>21/02/2014~~~~21/03/2014~CMCtest</S></S01>"
-'Barcode_Scaned str2
-
-''01-TBAC: kieu D
-'str2 = "aa999642300034807   03201400200200100101/0101/01/2009<S01><S>~~~~~~~~~~~</S><S>~~~24/03/2014~nguyen van a</S></S01>"
-'Barcode_Scaned str2
-
-''BC-01-AC: Kieu ky
-'str2 = "aa999652300034807   01201400200200100101/0101/01/2009<S01><S>~01/01/2014~30/06/2014</S><S>~~~~~~~~~~~</S><S>nguyen van a~24/03/2014</S></S01>"
-'Barcode_Scaned str2
-
-''BC-21AC
-'str2 = "aa999662300034807   04201300000000100101/0101/01/2010<S01><S>24/03/2014~17~16</S><S>~ ~      ~~~~~~</S><S>~nguyen van a~24/03/2014</S></S01>"
-'Barcode_Scaned str2
-
-''TB-03-AC
-'str2 = "aa999672300034807   04201300200200100101/0101/01/2010<S01><S>~~4~24/03/2014~18</S><S>~~~~~0~</S><S>~nguyen van a~24/03/2014</S></S01>"
-'Barcode_Scaned str2
-
-''BC-26-AC
-'str2 = "aa999682300034807   04201300200200100201/0101/01/2009<S01><S>X~~01/10/2013~31/12/2013</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~nguyen van a~24/03/2014~1</S></S01>"
-'Barcode_Scaned str2
-'str2 = "aa999682300034807   042013002002002002<S01_1><S>~~~~~0~</S><S>~~~~~0~</S><S></S></S01_1>"
-'Barcode_Scaned str2
-
-''01_GTGT_PL1_TD
-'str2 = "aa322940102030405   02201400200300100201/0101/01/1900<S01><S></S><S>200~2000~400000~5~20000~100000~0</S><S>~CMCer~~18/03/2014~1~~~0</S></S01>"
-'Barcode_Scaned str2
-'str2 = "aa322940102030405   022014002003002002<S01_1><S>~Thuy Dien Na Hang - Tuyen Quang~0101650999~10~500000~~x~~Thuy Dien Thac Ba- Yen Bai~2222222222~5~1000000~10100~~~Thuy Dien Hoa Binh - Hoa Binh~6868686868~5~2000000~10700~</S><S>0</S></S01_1>"
-'Barcode_Scaned str2
-
-''03/TNDN
-'str2 = "aa999030102030405   00201300200200100201/0114/06/200601/01/201331/12/2013<S03><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0"
-'Barcode_Scaned str2
-'str2 = "aa999030102030405   002013002002002002~0~0~0~0~0~0~0~0~0~0~0</S><S></S><S></S><S></S><S>~~~25/04/2014~1~1~0~1052~</S></S03>"
-'Barcode_Scaned str2
-
-
-'str2 = "aa999690102030405   00201300000000100801/0123/06/2006<S01><S>~0~0~~0~0~V.01~0~0~~0~0~V.02~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~V.03~0~0~~0~0~~0~0~V.04~0~0~~0~0~~0~0~~0~0~~0~0~V.05~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~V.06~0~0~V.07~0~0~~0~0~~0~0~V.08~0~0~~0~0"
-'Barcode_Scaned str2
-'str2 = "aa999690102030405   002013000000002008~~0~0~V.09~0~0~~0~0~~0~0~V.10~0~0~~0~0~~0~0~V.11~0~0~V.12~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~V.13~0~0~~0~0~~0~0~V.14~0~0~V.21~0~0~~0~0~~0~0~~0~0~~0~0~V.15~0~0~~0~0~~0~0~V.16~0~0~~0~0~V.17~0~0~~0~0~~0~0~V.18~0~0~~0~0~~0~0"
-'Barcode_Scaned str2
-'str2 = "aa999690102030405   002013000000003008~~0~0~~0~0~V.19~0~0~~0~0~V.20~0~0~V.21~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~V.22~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~V.23~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~25/04/2014</S></S01>"
-'Barcode_Scaned str2
-'str2 = "aa999690102030405   002013000000004008<S01-1><S>VI.25~0~0~~0~0~~0~0~VI.27~0~0~~0~0~VI.26~0~0~VI.28~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~VI.30~0~0~VI.30~0~0~~0~0~~0~0~~25/04/2014</S></S01-1>"
-'Barcode_Scaned str2
-'str2 = "aa999690102030405   002013000000005008<S01-2><S>~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~"
-'Barcode_Scaned str2
-'str2 = "aa999690102030405   0020130000000060080~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~VII.34~0~0~~25/04/2014</S></S01-2>"
-'Barcode_Scaned str2
-'str2 = "aa999690102030405   002013000000007008<S01-3><S>~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~"
-'Barcode_Scaned str2
-'str2 = "aa999690102030405   002013000000008008~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~0~0~~25/04/2014</S></S01-3>"
-'Barcode_Scaned str2
+'' Thong bao ket qua huy bien lai TB03/AC
+'str2 = "aa323104400104402   01201400500500100101/0101/01/2010<S01><S>Cuc thue Phu Yen~ph­¬ng ph¸p hñy~31~01/03/2014~11</S><S>Biªn lai thu phÝ, lÖ phÝ kh«ng cã mÖnh gi¸~01BLP3-001~AA-14T~0000051~0000060~10~Biªn lai thu phÝ, lÖ phÝ cã mÖnh gi¸~02BLP3-001~AA-14T~0000051~0000060~10</S><S>ng­êi lËp biÓu~thñ tr­ëng ®¬n vÞ thuyntk1605~22/04/2014</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 
 End Sub
@@ -5587,15 +5407,15 @@ Private Function GetTaxInfo(ByVal strTaxIDString As String, _
     Set xmlResultNNT = New MSXML.DOMDocument
     Dim strResultNNT As String
 
-'    'Du lieu gia lap de test
-'        Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-'        strResultNNT = "sdfsfds"
+    'Du lieu gia lap de test
+        Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+        strResultNNT = "sdfsfds"
     
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         strMaNNT = strTaxIDString
-        strResultNNT = GetDataFromESB("", "", "NNT")
-        strResultNNT = ChangeTagASSCII(strResultNNT, False)
-        xmlResultNNT.loadXML strResultNNT
+'        strResultNNT = GetDataFromESB("", "", "NNT")
+'        strResultNNT = ChangeTagASSCII(strResultNNT, False)
+'        xmlResultNNT.loadXML strResultNNT
     Else
         Set rsReturn = Nothing
         blnSuccess = False
@@ -5727,15 +5547,15 @@ Private Function GetTaxDLInfo(ByVal strTaxIDString As String, _
 '        Exit Function
 '    End If
 
-'    'Du lieu gia lap de test
-'    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
-'    strResultDLT = "sdfsfds"
+    'Du lieu gia lap de test
+    Set xmlResultDLT = LoadXmlTemp("ResultDLTFromESB")
+    strResultDLT = "sdfsfds"
 
     If (strTaxIDDLString <> "" And strTaxIDDLString <> vbNullString) Then
         strMaDLT = strTaxIDDLString
-        strResultDLT = GetDataFromESB("", "", "DLT")
-        strResultDLT = ChangeTagASSCII(strResultDLT, False)
-        xmlResultDLT.loadXML strResultDLT
+'        strResultDLT = GetDataFromESB("", "", "DLT")
+'        strResultDLT = ChangeTagASSCII(strResultDLT, False)
+'        xmlResultDLT.loadXML strResultDLT
     End If
     
     If strTaxIDDLString <> "" And strTaxIDDLString <> vbNullString Then
@@ -5872,15 +5692,15 @@ On Error GoTo ErrHandle
     Set xmlResultNNT = New MSXML.DOMDocument
     Dim strResultNNT As String
 
-'   'Du lieu gia lap de test
-'    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
-'    strResultNNT = "test"
+   'Du lieu gia lap de test
+    Set xmlResultNNT = LoadXmlTemp("ResultNNTFromESB")
+    strResultNNT = "test"
 
     If (strTaxIDString <> "" Or strTaxIDString <> vbNullString) Then
         strMaNNT = strTaxIDString
-        strResultNNT = GetDataFromESB("", "", "NNT")
-        strResultNNT = ChangeTagASSCII(strResultNNT, False)
-        xmlResultNNT.loadXML strResultNNT
+'        strResultNNT = GetDataFromESB("", "", "NNT")
+'        strResultNNT = ChangeTagASSCII(strResultNNT, False)
+'        xmlResultNNT.loadXML strResultNNT
     Else
         Set rsReturn = Nothing
         blnSuccess = False
@@ -7321,6 +7141,10 @@ Public Function AppendXMLStandard(ByVal xmlDoc As MSXML.DOMDocument, _
     XmlDocStandard.getElementsByTagName("SPARE3")(0).Text = strLoaiToKhai
     XmlDocStandard.getElementsByTagName("MSG_ID")(0).Text = Base64Unicode.Base64DecodeString(xmlConfig.getElementsByTagName("SENDER_CODE")(0).Text) & Clientid  ' GenerateCodeByNow()
     'end verify value
+    
+    'Set version XML
+    XmlDocStandard.getElementsByTagName("pbanTKhaiXML")(0).Text = "2.0.0"
+    
     
     ' Set value tag <add_info>
     XmlDocStandard.getElementsByTagName("ngay_nop_tk")(0).Text = IIf(sNgayNopTK <> "", ConvertDate(sNgayNopTK, 3, "-"), strNgayHeThongSrv) 'Format(sNgayNopTK, "dd-mmm-yyyy hh:mm:ss")

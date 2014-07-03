@@ -18,6 +18,8 @@
 		</KHBSDieuChinhGiam>
 	</Dynamic>
 	<Static GroupName="TongHopDCTangGiamPNop">
+			<ct2>BD_17</ct2>
+			<ct3>BE_17</ct3>
 			<ct4>BF_17</ct4>
 			<ct5>BG_17</ct5>
 			<ct6>BH_17</ct6>
