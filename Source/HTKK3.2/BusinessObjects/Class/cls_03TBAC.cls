@@ -165,9 +165,9 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
         .Col = Col
         .Row = Row
          If Col = .ColLetterToNumber("C") And .Text <> "" Then
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber("AI")
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             'Update combo F
             .Col = .ColLetterToNumber("AI")
             UpdateCell_sheet fps, 1, .Col, .Row, .Text
@@ -424,6 +424,8 @@ Private Sub CheckDynamicError()
     Dim iWhiteRow As Integer, iFlagLengHD As Integer, iFlagSoLuong As Integer, iFlagNgayKy As Integer, iFlagNgayHuy As Integer, iFlagNgayHuyHL As Integer, iFlagNgayKyHL As Integer
     Dim iFlagKhoangTSDSTrung As Integer, iFocusFlag As Integer
     
+    Dim errSoLienHDDT As Variant
+    
     Dim strId As Variant, strLoai As String, strTemp As String, result As String
     Dim i As Integer, countDynamicRow As Integer, j As Integer, k As Integer
     
@@ -447,6 +449,8 @@ Private Sub CheckDynamicError()
 
         .GetText .ColLetterToNumber("E"), 27, errNgayHuyHL
         .GetText .ColLetterToNumber("E"), 28, errNgayKyHL
+        
+        .GetText .ColLetterToNumber("E"), 29, errSoLienHDDT
         
         
         'set flag bang 0
@@ -519,15 +523,40 @@ Private Sub CheckDynamicError()
                     .BackColor = mErrorColor
                     iFlagMauSoHD = 1
                 ElseIf result = "2" And iWhiteRow = 0 Then
-                    .Col = .ColLetterToNumber("O")
-                    .CellNote = errSoLienHD  'static
-                    .BackColor = mErrorColor
-                    iFlagSoLienHD = 1
+                    If Right$(Trim$(strKyHieuHD), 1) = "E" Then
+                        If CheckSoLienHDDT(CStr(strMauSoHD), strLoai, strTemp, CStr(strKyHieuHD)) = "3" Then
+                             .Col = .ColLetterToNumber("O")
+                            .CellNote = errSoLienHDDT  'static
+                            .BackColor = mErrorColor
+                            iFlagSoLienHD = 2
+                        Else
+                            .Col = .ColLetterToNumber("O")
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                        End If
+                    Else
+                        .Col = .ColLetterToNumber("O")
+                        .CellNote = errSoLienHD  'static
+                        .BackColor = mErrorColor
+                        iFlagSoLienHD = 1
+                    End If
                 Else
-                    .Col = .ColLetterToNumber("O")
-                    .CellNote = ""
-                    .BackColor = mNonErrorColor
-                
+                     If Right$(Trim$(strKyHieuHD), 1) = "E" Then
+                        If CheckSoLienHDDT(CStr(strMauSoHD), strLoai, strTemp, CStr(strKyHieuHD)) = "3" Then
+                             .Col = .ColLetterToNumber("O")
+                            .CellNote = errSoLienHDDT  'static
+                            .BackColor = mErrorColor
+                            iFlagSoLienHD = 2
+                        Else
+                            .Col = .ColLetterToNumber("O")
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                        End If
+                    Else
+                        .Col = .ColLetterToNumber("O")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
                 End If
             End If
             ' check ky hieu
@@ -729,6 +758,8 @@ Private Sub CheckDynamicError()
          
          .SetText .ColLetterToNumber("B"), 27, IIf(iFlagNgayHuyHL = 1, "0", "1")
          .SetText .ColLetterToNumber("B"), 28, IIf(iFlagNgayKyHL = 1, "0", "1")
+         
+         .SetText .ColLetterToNumber("B"), 29, IIf(iFlagSoLienHD = 2, "0", "1")
          
         ' CheckErrorMST
         '.ReDraw = True

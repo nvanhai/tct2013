@@ -443,6 +443,7 @@ Private Sub checkSheet1()
     Dim vSoThueDaKhauTru As Variant, vErrMsgSoThueDaKhauTru As Variant, vErrMsgTusoDenSo As Variant
     Dim errMauSoHD As Variant
     Dim errSoLienHD As Variant
+    Dim errSoLienHDDT As Variant
     Dim vLastRow As Variant
     Dim vMSTCQCT As Variant
     Dim vMST1 As Variant
@@ -466,7 +467,7 @@ Private Sub checkSheet1()
     Dim strFocusSheetName As String, strFocusRow As String, strFocusCol As String
     Dim i, j As Integer
     Dim blCheck_S1, blCheck_S2, blCheck_S3, blCheck_S4, blCheck_S5, blCheck_S6, blCheck_S7, blCheck_S8, blCheck_S9 As Boolean
-    
+    Dim blCheck_SoLienHDDT As Boolean
     Dim vTuNgayBC As Variant
     Dim errNgayBCHL As Variant
     Dim blCheck_NgayBCHL As Boolean
@@ -488,6 +489,8 @@ Private Sub checkSheet1()
         .GetText .ColLetterToNumber("E"), 19, vErrNgayHD
         .GetText .ColLetterToNumber("E"), 20, vErrNgayKy
         .GetText .ColLetterToNumber("E"), 21, errNgayBCHL
+        
+        .GetText .ColLetterToNumber("E"), 22, errSoLienHDDT
         
         .GetText .ColLetterToNumber("T"), 6, vTuNgayBC
 
@@ -511,6 +514,7 @@ Private Sub checkSheet1()
         blCheck_S8 = True
         blCheck_S9 = True
         
+        blCheck_SoLienHDDT = True
         blCheck_NgayBCHL = True
         
         .Row = 22
@@ -659,15 +663,42 @@ Private Sub checkSheet1()
                 'iFlagMauSoHD = 1
                 blCheck_S7 = False
             ElseIf result = "2" And iWhiteRow = 0 Then
-                .Col = .ColLetterToNumber("J")
-                .CellNote = errSoLienHD  'static
-                .BackColor = mErrorColor
-                'iFlagSoLienHD = 1
-                blCheck_S8 = False
+                 If Right$(Trim$(kyhieu1), 1) = "E" Then
+                    If CheckSoLienHDDT(CStr(mauso1), strLoai, strTemp, CStr(kyhieu1)) = "3" Then
+                         .Col = .ColLetterToNumber("J")
+                        .CellNote = errSoLienHDDT  'static
+                        .BackColor = mErrorColor
+                    Else
+                        .Col = .ColLetterToNumber("J")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                        blCheck_SoLienHDDT = False
+                    End If
+                Else
+                    .Col = .ColLetterToNumber("J")
+                    .CellNote = errSoLienHD  'static
+                    .BackColor = mErrorColor
+                    'iFlagSoLienHD = 1
+                    blCheck_S8 = False
+                End If
             Else
-                .Col = .ColLetterToNumber("O")
-                .CellNote = ""
-                .BackColor = mNonErrorColor
+                If Right$(Trim$(kyhieu1), 1) = "E" Then
+                    If CheckSoLienHDDT(CStr(mauso1), strLoai, strTemp, CStr(kyhieu1)) = "3" Then
+                         .Col = .ColLetterToNumber("J")
+                        .CellNote = errSoLienHDDT  'static
+                        .BackColor = mErrorColor
+                        
+                    Else
+                        .Col = .ColLetterToNumber("J")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                        blCheck_SoLienHDDT = False
+                    End If
+                Else
+                    .Col = .ColLetterToNumber("J")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
             
             End If
             '/-----------------------------------
@@ -1012,6 +1043,17 @@ Private Sub checkSheet1()
             .Sheet = .SheetCount
             .SetText .ColLetterToNumber("B"), 21, "0"
         End If
+        
+        If blCheck_SoLienHDDT = True Then
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 22, "1"
+        Else
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 22, "0"
+        End If
+        
+        
+        
         
         .Sheet = iCurrentSheet
         .EventEnabled(EventAllEvents) = True

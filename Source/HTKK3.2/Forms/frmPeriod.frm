@@ -3494,12 +3494,12 @@ Public Sub cmdOK_Click()
             End If
             ' Ky bao cao den ngay khong duoc lon hon ngay cuoi quy
             If dNgayCuoi > dNgayCuoiQuy Then
-                DisplayMessage "0255", msOKOnly, miWarning
+                DisplayMessage "0319", msOKOnly, miWarning
                 Exit Sub
             End If
             ' Ky bao cao tu ngay khong duoc nho hon ngay dau quy
             If dNgayDau < dNgayDauQuy Then
-                DisplayMessage "0256", msOKOnly, miWarning
+                DisplayMessage "0318", msOKOnly, miWarning
                 txtNgayDau.SetFocus
                 Exit Sub
             End If
@@ -3527,11 +3527,11 @@ Public Sub cmdOK_Click()
 '                Exit Sub
 '            End If
 '            ' Kiem tra ngay dau quy khong dc nho hon ngay 01/01/2011
-            If dNgayCuoi > DateSerial(2014, 6, 30) Then
-                DisplayMessage "0317", msOKOnly, miWarning
-                txtNgayDau.SetFocus
-                Exit Sub
-            End If
+'            If dNgayCuoi > DateSerial(2014, 6, 30) Then
+'                DisplayMessage "0317", msOKOnly, miWarning
+'                txtNgayDau.SetFocus
+'                Exit Sub
+'            End If
         Else
             dNgayDau = DateSerial(CInt(Mid$(TAX_Utilities_v1.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_v1.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_v1.FirstDay, 1, 2)))
             dNgayCuoi = DateSerial(CInt(Mid$(TAX_Utilities_v1.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_v1.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_v1.LastDay, 1, 2)))
@@ -3572,7 +3572,7 @@ Public Sub cmdOK_Click()
                 Exit Sub
             End If
         Else
-            If Val(txtYear) > 2014 Or (Val(txtYear) = 2014 And Val(cmbQuy.Text) >= 3) Then
+            If Val(txtYear) > 2014 Or (Val(txtYear) = 2014 And Val(cmbQuy.Text) >= 2) Then
                 DisplayMessage "0315", msOKOnly, miWarning
                 cmbQuy.SetFocus
                 Exit Sub
