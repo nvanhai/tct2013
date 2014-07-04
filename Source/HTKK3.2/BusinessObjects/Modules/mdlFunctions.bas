@@ -1380,6 +1380,7 @@ End Function
 'CheckMauSoHD = 1 sai cau truc
 'CheckMauSoHD = 2 sai so Lien
 
+
 Public Function CheckMauSoHD(str As String, strLoai As String, strTemp As String) As String
     Dim result As String
     Dim soLien As String
@@ -1415,7 +1416,7 @@ Public Function CheckMauSoHD(str As String, strLoai As String, strTemp As String
                     CheckMauSoHD = result
                     Exit Function
                 End If
-                
+           
                 ' ky tu so 8 phai la "/"
                 If kyTuNganCach <> "/" Then
                     result = "1"
@@ -2497,4 +2498,56 @@ Public Function getLoaiHD(maHoaDon As String) As String
         Next
     End If
     getLoaiHD = strTemp
+End Function
+
+
+
+
+
+'Kiem tra cau truc mau so
+'str: chuoi mau so
+'strLoai: 0,1,2,3
+'strTemp: cac ky tu tien to cua loai HD
+'strKyHieuHD: ky hieu hoa don
+
+'CheckSoLienHDDT = 3 sai so Lien hoa don dien tu
+
+
+Public Function CheckSoLienHDDT(str As String, strLoai As String, strTemp As String, strKyHieuHD As String) As String
+    Dim result As String
+    Dim soLien As String
+    Dim kyTuNganCach As String
+    Dim strSoTT As Variant
+    Dim strBD As Variant
+    result = "0"
+    If strLoai = "0" Then
+        If Len(Trim(str)) <> 11 And Len(Trim(str)) <> 13 Then
+        Else
+            If Left$(Trim(str), 6) = Trim(strTemp) Then
+                soLien = Mid$(Trim(str), 7, 1)
+                kyTuNganCach = Mid$(Trim(str), 8, 1)
+                strSoTT = Mid$(Trim(str), 9, 3)
+                strBD = Mid$(Trim(str), 12, 2)
+                ' so lien phai phai bang 0
+                If IsNumeric(soLien) Then
+                    If Right$(Trim$(strKyHieuHD), 1) = "E" Then
+                        If Val(soLien) <> 0 Then
+                            result = "3"
+                            CheckSoLienHDDT = result
+                            Exit Function
+                        End If
+                    Else
+                        result = "0"
+                        CheckSoLienHDDT = result
+                        Exit Function
+                    End If
+                Else
+                    result = "3"
+                    CheckSoLienHDDT = result
+                    Exit Function
+                End If
+            End If
+        End If
+    End If
+    CheckSoLienHDDT = result
 End Function

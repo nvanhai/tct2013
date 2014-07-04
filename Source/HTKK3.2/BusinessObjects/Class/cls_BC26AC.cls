@@ -1134,7 +1134,7 @@ End Sub
 Private Sub checkSheet1()
 
     Dim strCheck As String
-    Dim errMauSoHD As Variant, errKyHieuHD As Variant, errSoLuong As Variant, errSoLienHD As Variant
+    Dim errMauSoHD As Variant, errKyHieuHD As Variant, errSoLuong As Variant, errSoLienHD As Variant, errSoLienHDDT As Variant
     Dim errKhoangGN As Variant, errLengthHD As Variant, errEmty As Variant, errNgayKy As Variant, errNgayKyHL As Variant, errNgayHuy As Variant, errTrungKhoang As Variant, errLienKhoang As Variant, errSoXoa As Variant, errSaiDD As Variant
     Dim errSLSudung As Variant, errSLXoa As Variant, errSLMat As Variant, errSLHuy As Variant, errSLSD_Xoa_Mat_Huy As Variant
     Dim strTenHD As Variant, strMauSoHD As Variant, strKyHieuHD As Variant, strTuSo6 As Variant, strDenSo7 As Variant, strTuso8 As Variant, strDenso9 As Variant, strTuSo10 As Variant, strDenSo11 As Variant, strTuSo20 As Variant, strDenSo21 As Variant, errSLTonDK As Variant
@@ -1201,6 +1201,8 @@ Private Sub checkSheet1()
         .GetText .ColLetterToNumber(Col_E), 49, errSLTonDK
         
         .GetText .ColLetterToNumber(Col_E), 52, errNgayKyHL
+        
+        .GetText .ColLetterToNumber(Col_E), 53, errSoLienHDDT
         
         .GetText .ColLetterToNumber("T"), 6, vKyBCTuNgay
         
@@ -1346,10 +1348,40 @@ Private Sub checkSheet1()
                     .BackColor = mErrorColor
                     iFlagMauSoHD = 1
                 ElseIf result = "2" And iWhiteRow = 0 Then
-                    .Col = .ColLetterToNumber(Col_E)
-                    .CellNote = errSoLienHD  'static
-                    .BackColor = mErrorColor
-                    iFlagSoLienHD = 1
+                    If Right$(Trim$(strKyHieuHD), 1) = "E" Then
+                        If CheckSoLienHDDT(CStr(strMauSoHD), strLoai, strTemp, CStr(strKyHieuHD)) = "3" Then
+                             .Col = .ColLetterToNumber(Col_E)
+                            .CellNote = errSoLienHDDT  'static
+                            .BackColor = mErrorColor
+                            iFlagSoLienHD = 2
+                        Else
+                            .Col = .ColLetterToNumber(Col_E)
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                        End If
+                    Else
+                        .Col = .ColLetterToNumber(Col_E)
+                        .CellNote = errSoLienHD  'static
+                        .BackColor = mErrorColor
+                        iFlagSoLienHD = 1
+                    End If
+                Else
+                    If Right$(Trim$(strKyHieuHD), 1) = "E" Then
+                        If CheckSoLienHDDT(CStr(strMauSoHD), strLoai, strTemp, CStr(strKyHieuHD)) = "3" Then
+                             .Col = .ColLetterToNumber(Col_E)
+                            .CellNote = errSoLienHDDT  'static
+                            .BackColor = mErrorColor
+                            iFlagSoLienHD = 2
+                        Else
+                            .Col = .ColLetterToNumber(Col_E)
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                        End If
+                    Else
+                        .Col = .ColLetterToNumber(Col_E)
+                        .CellNote = ""  'static
+                        .BackColor = mNonErrorColor
+                    End If
                 End If
             End If
             
@@ -2274,12 +2306,15 @@ Private Sub checkSheet1()
          .SetText .ColLetterToNumber("B"), 28, IIf(iFlagSLHuy = 1, "0", "1")
         '
         .SetText .ColLetterToNumber("B"), 52, IIf(iFlagNgayKyHL = 1, "0", "1")
+        
+        .SetText .ColLetterToNumber("B"), 53, IIf(iFlagSoLienHD = 2, "0", "1")
+        
         .EventEnabled(EventAllEvents) = True
     End With
 End Sub
 Private Sub checkSheet2()
     Dim strCheck As String
-    Dim errMauSoHD As Variant, errKyHieuHD As Variant, errSoLuong As Variant, errSoLienHD As Variant, errTon As Variant, errTonTK As Variant
+    Dim errMauSoHD As Variant, errKyHieuHD As Variant, errSoLuong As Variant, errSoLienHD As Variant, errTon As Variant, errTonTK As Variant, errSoLienHDDT As Variant
     Dim errKhoangGN As Variant, errLengthHD As Variant, errEmty As Variant, errNgayKy As Variant, errNgayHuy As Variant, errTrungKhoang As Variant
     Dim strTenHD As Variant, strMauSoHD As Variant, strKyHieuHD As Variant, strTuSo As Variant, strDenso As Variant
     Dim strTenHD1 As Variant, strMauSoHD1 As Variant, strKyHieuHD1 As Variant, strTuso1 As Variant, strDenso1 As Variant
@@ -2326,6 +2361,8 @@ Private Sub checkSheet2()
 
         .GetText .ColLetterToNumber(Col_E), 50, errTon
         .GetText .ColLetterToNumber(Col_E), 48, errTonTK
+        
+        .GetText .ColLetterToNumber(Col_E), 54, errSoLienHDDT
         
         'set flag bang 0
         iFlagTenHD = 0
@@ -2417,15 +2454,40 @@ Private Sub checkSheet2()
                     .BackColor = mErrorColor
                     iFlagMauSoHD = 1
                 ElseIf result = "2" And iWhiteRow = 0 Then
-                    .Col = .ColLetterToNumber(Col_O)
-                    .CellNote = errSoLienHD  'static
-                    .BackColor = mErrorColor
-                    iFlagSoLienHD = 1
+                     If Right$(Trim$(strKyHieuHD), 1) = "E" Then
+                        If CheckSoLienHDDT(CStr(strMauSoHD), strLoai, strTemp, CStr(strKyHieuHD)) = "3" Then
+                             .Col = .ColLetterToNumber(Col_O)
+                            .CellNote = errSoLienHDDT  'static
+                            .BackColor = mErrorColor
+                            iFlagSoLienHD = 2
+                        Else
+                            .Col = .ColLetterToNumber(Col_O)
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                        End If
+                    Else
+                        .Col = .ColLetterToNumber(Col_O)
+                        .CellNote = errSoLienHD  'static
+                        .BackColor = mErrorColor
+                        iFlagSoLienHD = 1
+                    End If
                 Else
-                    .Col = .ColLetterToNumber(Col_O)
-                    .CellNote = ""
-                    .BackColor = mNonErrorColor
-                
+                    If Right$(Trim$(strKyHieuHD), 1) = "E" Then
+                        If CheckSoLienHDDT(CStr(strMauSoHD), strLoai, strTemp, CStr(strKyHieuHD)) = "3" Then
+                             .Col = .ColLetterToNumber(Col_O)
+                            .CellNote = errSoLienHDDT  'static
+                            .BackColor = mErrorColor
+                            iFlagSoLienHD = 2
+                        Else
+                            .Col = .ColLetterToNumber(Col_O)
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                        End If
+                    Else
+                        .Col = .ColLetterToNumber(Col_O)
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
                 End If
             End If
             ' check ky hieu
@@ -2894,6 +2956,7 @@ Private Sub checkSheet2()
          .SetText .ColLetterToNumber("B"), 50, IIf(iFlagTon = 1, "0", "1")
          .SetText .ColLetterToNumber("B"), 48, IIf(iFlagTonTK = 1, "0", "1")
          
+         .SetText .ColLetterToNumber("B"), 54, IIf(iFlagSoLienHD = 2, "0", "1")
         ' CheckErrorMST
         '.ReDraw = True
         '.Visible = True
@@ -2903,7 +2966,7 @@ Private Sub checkSheet2()
 End Sub
 Private Sub checkSheet3()
     Dim strCheck As String
-    Dim errMauSoHD As Variant, errKyHieuHD As Variant, errSoLuong As Variant, errSoLienHD As Variant
+    Dim errMauSoHD As Variant, errKyHieuHD As Variant, errSoLuong As Variant, errSoLienHD As Variant, errSoLienHDDT As Variant
     Dim errKhoangGN As Variant, errLengthHD As Variant, errEmty As Variant, errNgayKy As Variant, errNgayHuy As Variant, errTrungKhoang As Variant, errTon As Variant, errTonTK As Variant
     Dim strTenHD As Variant, strMauSoHD As Variant, strKyHieuHD As Variant, strTuSo As Variant, strDenso As Variant
     Dim strTenHD1 As Variant, strMauSoHD1 As Variant, strKyHieuHD1 As Variant, strTuso1 As Variant, strDenso1 As Variant
@@ -2949,6 +3012,7 @@ Private Sub checkSheet3()
         .GetText .ColLetterToNumber(Col_E), 48, errTon
         .GetText .ColLetterToNumber(Col_E), 51, errTonTK
         
+        .GetText .ColLetterToNumber(Col_E), 55, errSoLienHDDT
         
         'set flag bang 0
         iFlagTenHD = 0
@@ -3034,15 +3098,40 @@ Private Sub checkSheet3()
                     .BackColor = mErrorColor
                     iFlagMauSoHD = 1
                 ElseIf result = "2" And iWhiteRow = 0 Then
-                    .Col = .ColLetterToNumber(Col_O)
-                    .CellNote = errSoLienHD  'static
-                    .BackColor = mErrorColor
-                    iFlagSoLienHD = 1
+                     If Right$(Trim$(strKyHieuHD), 1) = "E" Then
+                        If CheckSoLienHDDT(CStr(strMauSoHD), strLoai, strTemp, CStr(strKyHieuHD)) = "3" Then
+                             .Col = .ColLetterToNumber(Col_O)
+                            .CellNote = errSoLienHDDT  'static
+                            .BackColor = mErrorColor
+                            iFlagSoLienHD = 2
+                        Else
+                            .Col = .ColLetterToNumber(Col_O)
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                        End If
+                    Else
+                        .Col = .ColLetterToNumber(Col_O)
+                        .CellNote = errSoLienHD  'static
+                        .BackColor = mErrorColor
+                        iFlagSoLienHD = 1
+                    End If
                 Else
-                    .Col = .ColLetterToNumber(Col_O)
-                    .CellNote = ""
-                    .BackColor = mNonErrorColor
-                
+                    If Right$(Trim$(strKyHieuHD), 1) = "E" Then
+                        If CheckSoLienHDDT(CStr(strMauSoHD), strLoai, strTemp, CStr(strKyHieuHD)) = "3" Then
+                             .Col = .ColLetterToNumber(Col_O)
+                            .CellNote = errSoLienHDDT  'static
+                            .BackColor = mErrorColor
+                            iFlagSoLienHD = 2
+                        Else
+                            .Col = .ColLetterToNumber(Col_O)
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                        End If
+                    Else
+                        .Col = .ColLetterToNumber(Col_O)
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
                 End If
             End If
             ' check ky hieu
@@ -3559,6 +3648,8 @@ Private Sub checkSheet3()
          .SetText .ColLetterToNumber("B"), 40, IIf(iFlagKhoangTSDSTrung = 1, "0", "1")
          .SetText .ColLetterToNumber("B"), 48, IIf(iFlagTon = 1, "0", "1")
          .SetText .ColLetterToNumber("B"), 51, IIf(iFlagTonTK = 1, "0", "1")
+         
+         .SetText .ColLetterToNumber("B"), 55, IIf(iFlagSoLienHD = 2, "0", "1")
         ' CheckErrorMST
         '.ReDraw = True
         '.Visible = True

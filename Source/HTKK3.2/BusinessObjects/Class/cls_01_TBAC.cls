@@ -445,7 +445,7 @@ End Sub
 
 Private Sub CheckDynamicError()
     Dim strCheck As String
-    Dim errMauSoHD As Variant, errKyHieuHD As Variant, errSoLuong As Variant, errSoLienHD As Variant, errDVCQ As Variant, errNgayKy As Variant, errMsgTusoDenSo As Variant, errMsgMSTTrungNhau As Variant
+    Dim errMauSoHD As Variant, errKyHieuHD As Variant, errSoLuong As Variant, errSoLienHD As Variant, errDVCQ As Variant, errNgayKy As Variant, errMsgTusoDenSo As Variant, errMsgMSTTrungNhau As Variant, errSoLienHDDT As Variant
     Dim errKhoangTN As Variant, errLengthHD As Variant, errEmty As Variant, errThongTinDN As Variant, errCheckNgaySD As Variant, errCheckNgayIn As Variant, errMSTDN As Variant, errMST As Variant, errMstDVCQ As Variant
     
     Dim errNgayInTB As Variant
@@ -506,6 +506,10 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 32, errNgayInTB
         
         .GetText .ColLetterToNumber("E"), 33, errCheckNgaySD
+        
+        .GetText .ColLetterToNumber("E"), 34, errSoLienHDDT
+        
+        
         .GetText .ColLetterToNumber("AI"), 3, chkTTDVCQ
         ' Kiem tra tren sheet 1
         .Sheet = 1
@@ -955,14 +959,40 @@ Private Sub CheckDynamicError()
                             .BackColor = mErrorColor
                             iFlagMauSoHD = 1
                         ElseIf result = "2" And iWhiteRow = 0 Then
-                            .Col = .ColLetterToNumber("J")
-                            .CellNote = errSoLienHD  'static
-                            .BackColor = mErrorColor
-                            iFlagSoLienHD = 1
+                            If Right$(Trim$(strKyHieuHD), 1) = "E" Then
+                                If CheckSoLienHDDT(CStr(strMauSoHD), strLoai, strTemp, CStr(strKyHieuHD)) = "3" Then
+                                     .Col = .ColLetterToNumber("J")
+                                    .CellNote = errSoLienHDDT  'static
+                                    .BackColor = mErrorColor
+                                    iFlagSoLienHD = 2
+                                Else
+                                    .Col = .ColLetterToNumber("J")
+                                    .CellNote = ""
+                                    .BackColor = mNonErrorColor
+                                End If
+                            Else
+                                .Col = .ColLetterToNumber("J")
+                                .CellNote = errSoLienHD  'static
+                                .BackColor = mErrorColor
+                                iFlagSoLienHD = 1
+                            End If
                         Else
-                            .Col = .ColLetterToNumber("J")
-                            .CellNote = ""
-                            .BackColor = mNonErrorColor
+                            If Right$(Trim$(strKyHieuHD), 1) = "E" Then
+                                If CheckSoLienHDDT(CStr(strMauSoHD), strLoai, strTemp, CStr(strKyHieuHD)) = "3" Then
+                                     .Col = .ColLetterToNumber("J")
+                                    .CellNote = errSoLienHDDT  'static
+                                    .BackColor = mErrorColor
+                                    iFlagSoLienHD = 2
+                                Else
+                                    .Col = .ColLetterToNumber("J")
+                                    .CellNote = ""
+                                    .BackColor = mNonErrorColor
+                                End If
+                            Else
+                                .Col = .ColLetterToNumber("J")
+                                .CellNote = ""
+                                .BackColor = mNonErrorColor
+                            End If
                         End If
             Else
                     .Col = .ColLetterToNumber("J")
@@ -1048,7 +1078,10 @@ Private Sub CheckDynamicError()
               .Sheet = .SheetCount
              .SetText .ColLetterToNumber("B"), 24, IIf(iFlagEmty = 1, "0", "1")
              .SetText .ColLetterToNumber("B"), 18, IIf(iFlagMauSoHD = 1, "0", "1")
+             
              .SetText .ColLetterToNumber("B"), 20, IIf(iFlagSoLienHD = 1, "0", "1")
+             .SetText .ColLetterToNumber("B"), 34, IIf(iFlagSoLienHD = 2, "0", "1")
+             
              .SetText .ColLetterToNumber("B"), 27, IIf(iFlagDVCQ = 1, "0", "1")
              .SetText .ColLetterToNumber("B"), 30, IIf(iFlagNgayKy = 1, "0", "1")
              .SetText .ColLetterToNumber("B"), 26, IIf(iFlagNgayBatDau = 1, "0", "1")
