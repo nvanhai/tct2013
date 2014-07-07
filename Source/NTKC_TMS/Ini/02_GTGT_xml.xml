@@ -19,6 +19,7 @@
 			<maTinhDLyThue></maTinhDLyThue>
 		</Static>
 		<Static GroupName="CTieuTKhaiChinh">
+			<tieuMucHachToan></tieuMucHachToan>
 			<ct21>W_42</ct21>
 			<ct21a>W_43</ct21a>
 		</Static>

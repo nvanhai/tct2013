@@ -69,6 +69,7 @@
 			</TTinTKhaiThue>
 		</TTinChung>
 		<CTieuTKhaiChinh>
+			<tieuMucHachToan></tieuMucHachToan>
 			<doanhNghiepCoCSoHToanPThuoc>true</doanhNghiepCoCSoHToanPThuoc>
 			<ctA1>0</ctA1>
 			<ctB1>1</ctB1>
