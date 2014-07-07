@@ -69,6 +69,7 @@
 			</TTinTKhaiThue>
 		</TTinChung>
 		<CTieuTKhaiChinh>
+			<chuyenHThucHDon>true</chuyenHThucHDon>
 			<kyBCaoCuoi>true</kyBCaoCuoi>
 			<chuyenDiaDiem>true</chuyenDiaDiem>
 			<ngayDauKyBC></ngayDauKyBC>

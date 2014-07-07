@@ -6,7 +6,7 @@ BEGIN
   DataSourceBehavior  = 0  'vbNone
   MTSTransactionMode  = 0  'NotAnMTSObject
 END
-Attribute VB_Name = "cls_BC26AC"
+Attribute VB_Name = "cls_BC26AC_SL"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
@@ -260,7 +260,7 @@ Public Sub Prepare2()
                 .Col = .ColLetterToNumber("P")
                 .Text = ""
                 .Lock = True
-            ElseIf TAX_Utilities_v1.NodeValidity.childNodes(3).Attributes.getNamedItem("Active").nodeValue <> "0" Then
+            ElseIf TAX_Utilities_v1.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0" Then
                 .Row = 14
                 .Col = .ColLetterToNumber("B")
                 .Text = ""
@@ -292,53 +292,53 @@ Public Sub Prepare2()
                 .Lock = True
         End If
         ' Set format ngay ky
-        If numRowInsert >= 0 And TAX_Utilities_v1.CheckNewDataBC26 = True Then
-            .Row = 22
-            For i = 0 To numRowInsert
-                ' set du lieu ton dau ky
-                strTemp_ton = result_ton(i)
-                mCurrentSheet = 1
-                arrCellInRow = Split(strTemp_ton, "~")
-                'Mau so
-                .Col = .ColLetterToNumber(Col_E)
-                .SetText .Col, .Row, arrCellInRow(0)
-                UpdateCell fps, .Col, .Row, .Text
-                ' Ky hieu
-                .Col = .ColLetterToNumber(Col_F)
-                .SetText .Col, .Row, arrCellInRow(1)
-                UpdateCell fps, .Col, .Row, .Text
-                ' tu so
-                .Col = .ColLetterToNumber(Col_H)
-                .SetText .Col, .Row, arrCellInRow(2)
-                UpdateCell fps, .Col, .Row, .Text
-                ' den so
-                .Col = .ColLetterToNumber(Col_I)
-                .SetText .Col, .Row, arrCellInRow(3)
-                UpdateCell fps, .Col, .Row, .Text
-                ' Tong so
-                .Col = .ColLetterToNumber(Col_G)
-                .SetText .Col, .Row, Val(arrCellInRow(3)) - Val(arrCellInRow(2)) + 1
-                UpdateCell fps, .Col, .Row, .Text
-                ' strCheck
-                .Col = .ColLetterToNumber(Col_AA)
-                .SetText .Col, .Row, arrCellInRow(4)
-                UpdateCell fps, .Col, .Row, .Text
-                ' ten HD
-                .Col = .ColLetterToNumber(Col_D)
-                .SetText .Col, .Row, arrCellInRow(5)
-                UpdateCell fps, .Col, .Row, .Text
-                'Ma HD
-                .Col = .ColLetterToNumber("C")
-                .SetText .Col, .Row, arrCellInRow(6)
-                UpdateCell fps, .Col, .Row, .Text
-                'luu trang thai ton
-                .Col = .ColLetterToNumber("AC")
-                .SetText .Col, .Row, "1"
-                UpdateCell fps, .Col, .Row, .Text
-                
-                .Row = .Row + 1
-            Next i
-        End If
+'        If numRowInsert >= 0 And TAX_Utilities_v1.CheckNewDataBC26 = True Then
+'            .Row = 22
+'            For i = 0 To numRowInsert
+'                ' set du lieu ton dau ky
+'                strTemp_ton = result_ton(i)
+'                mCurrentSheet = 1
+'                arrCellInRow = Split(strTemp_ton, "~")
+'                'Mau so
+'                .Col = .ColLetterToNumber(Col_E)
+'                .SetText .Col, .Row, arrCellInRow(0)
+'                UpdateCell fps, .Col, .Row, .Text
+'                ' Ky hieu
+'                .Col = .ColLetterToNumber(Col_F)
+'                .SetText .Col, .Row, arrCellInRow(1)
+'                UpdateCell fps, .Col, .Row, .Text
+'                ' tu so
+'                .Col = .ColLetterToNumber(Col_H)
+'                .SetText .Col, .Row, arrCellInRow(2)
+'                UpdateCell fps, .Col, .Row, .Text
+'                ' den so
+'                .Col = .ColLetterToNumber(Col_I)
+'                .SetText .Col, .Row, arrCellInRow(3)
+'                UpdateCell fps, .Col, .Row, .Text
+'                ' Tong so
+'                .Col = .ColLetterToNumber(Col_G)
+'                .SetText .Col, .Row, Val(arrCellInRow(3)) - Val(arrCellInRow(2)) + 1
+'                UpdateCell fps, .Col, .Row, .Text
+'                ' strCheck
+'                .Col = .ColLetterToNumber(Col_AA)
+'                .SetText .Col, .Row, arrCellInRow(4)
+'                UpdateCell fps, .Col, .Row, .Text
+'                ' ten HD
+'                .Col = .ColLetterToNumber(Col_D)
+'                .SetText .Col, .Row, arrCellInRow(5)
+'                UpdateCell fps, .Col, .Row, .Text
+'                'Ma HD
+'                .Col = .ColLetterToNumber("C")
+'                .SetText .Col, .Row, arrCellInRow(6)
+'                UpdateCell fps, .Col, .Row, .Text
+'                'luu trang thai ton
+'                .Col = .ColLetterToNumber("AC")
+'                .SetText .Col, .Row, "1"
+'                UpdateCell fps, .Col, .Row, .Text
+'
+'                .Row = .Row + 1
+'            Next i
+'        End If
 
         
         

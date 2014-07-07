@@ -392,9 +392,22 @@
 			<Sheet ID="01" Caption="BC26-AC" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BC26_AC" InterfaceIni="..\InterfaceIni\BC26_AC.xml" ReportIni="..\ReportIni\BC26_AC.xml"/>
 			<Sheet ID="01_1" Caption="Mẫu 3.12(Kỳ báo cáo cuối cùng)" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_1_BC26_AC" InterfaceIni="..\InterfaceIni\01_1_BC26_AC.xml" ReportIni="..\ReportIni\01_1_BC26_AC.xml"/>
 			<Sheet ID="01_2" Caption="Mẫu 3.10(Chuyển địa điểm)" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_2_BC26_AC" InterfaceIni="..\InterfaceIni\01_2_BC26_AC.xml" ReportIni="..\ReportIni\01_2_BC26_AC.xml"/>
+			<Sheet ID="01_3" Caption="Mẫu 3.12(Chuyển hình thức)" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_3_BC26_AC" InterfaceIni="..\InterfaceIni\01_3_BC26_AC.xml" ReportIni="..\ReportIni\01_3_BC26_AC.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
 		</Validity>
 	</Menu>
+	
+	
+	<Menu ID="18" PopID="101" ParentID="101_7" Caption="Báo cáo tình hình sử dụng hóa đơn theo số lượng (BC26/AC)" FormName="" Year="1/2" Month="0" ThreeMonth="1" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
+		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\excel\BC26_AC_SL.xls" ReportTemplate="..\ReportTemplates\excel\BC26_AC_SL.xls" CatalogueID="01" Class="TAX_Business_v1.cls_BC26AC_SL">
+			<Sheet ID="01" Caption="BC26-AC" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BC26_AC_SL" InterfaceIni="..\InterfaceIni\BC26_AC_SL.xml" ReportIni="..\ReportIni\BC26_AC_SL.xml"/>
+			<Sheet ID="01_1" Caption="Mẫu 3.12(Kỳ báo cáo cuối cùng)" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_1_BC26_AC_SL" InterfaceIni="..\InterfaceIni\01_1_BC26_AC_SL.xml" ReportIni="..\ReportIni\01_1_BC26_AC_SL.xml"/>
+			<Sheet ID="01_2" Caption="Mẫu 3.10(Chuyển địa điểm)" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_2_BC26_AC_SL" InterfaceIni="..\InterfaceIni\01_2_BC26_AC_SL.xml" ReportIni="..\ReportIni\01_2_BC26_AC_SL.xml"/>
+			<Sheet ID="01_3" Caption="Mẫu 3.12(Chuyển hình thức)" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_3_BC26_AC_SL" InterfaceIni="..\InterfaceIni\01_3_BC26_AC_SL.xml" ReportIni="..\ReportIni\01_3_BC26_AC_SL.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
+		</Validity>
+	</Menu>
+	
 	<Menu ID="91" PopID="101" ParentID="101_7" Caption="Thông báo điều chỉnh thông tin (TB04/AC)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="1" FinanceYear="0"  Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\excel\04_TBAC.xls" ReportTemplate="..\ReportTemplates\excel\04_TBAC.xls" CatalogueID="01" Class="TAX_Business_v1.cls_04TBAC">
 			<Sheet ID="01" Caption="TB04/AC" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="04_TBAC" InterfaceIni="..\InterfaceIni\04_TBAC.xml" ReportIni="..\ReportIni\04_TBAC.xml"/>
