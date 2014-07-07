@@ -68,7 +68,7 @@
 		</TTinTKhaiThue>
 	</TTinChung>
 	<CTieuTKhaiChinh>
-		<maTMNSNN>String</maTMNSNN>
+		<tieuMucHachToan>String</tieuMucHachToan>
 		<ct21>true</ct21>
 		<ct22>1</ct22>
 		<ct23>1</ct23>
