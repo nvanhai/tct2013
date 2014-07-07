@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":19A5
+         SpreadDesigner  =   "frmInterfaces.frx":1969
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1C69
+      SpreadDesigner  =   "frmInterfaces.frx":1BF1
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -533,7 +533,7 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
                             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                         End If
 
-                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "14" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "13" Then
+                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "14" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "13" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "18" Then
 
                         ' BC26
                         If strQuy = "TK_THANG" Then
@@ -2521,7 +2521,7 @@ Private Sub DeleteSheet(pIndex As Integer)
         Else
             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
         End If
-    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "13" Then
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "13" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "18" Then
         'BC26
         If strQuy = "TK_THANG" Then
             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_T" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
@@ -3596,7 +3596,7 @@ Private Sub SetKieuKy()
     End If
     
     If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "96" _
-    Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "94" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
+    Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "94" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "18" Then
 
         If strQuy = "TK_THANG" Then
             strKK = "M"
@@ -3998,7 +3998,7 @@ Private Function GetKyKeKhai(ByVal ID_TK As String) As String
         KYKKHAI = TAX_Utilities_v1.Day & "/" & TAX_Utilities_v1.month & "/" & TAX_Utilities_v1.Year
     Else
 
-        If ID_TK = "01" Or ID_TK = "95" Or ID_TK = "88" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "25" Or ID_TK = "68" Or ID_TK = "14" Or ID_TK = "96" Or ID_TK = "94" Then
+        If ID_TK = "01" Or ID_TK = "95" Or ID_TK = "88" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "25" Or ID_TK = "68" Or ID_TK = "14" Or ID_TK = "96" Or ID_TK = "94" Or ID_TK = "18" Then
             If strQuy = "TK_THANG" Then
                 KYKKHAI = TAX_Utilities_v1.month & "/" & TAX_Utilities_v1.Year
             ElseIf strQuy = "TK_QUY" Then
@@ -7601,7 +7601,7 @@ Private Sub Form_Load()
         Set objTaxBusiness.fps = fpSpread1
             ' to khai GTGT se co to khai thang / quy
         If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "95" Or idMenu = "88" Or idMenu = "71" Or idMenu = "36" Or idMenu = "25" Or idMenu = "68" Or idMenu = "14" Or idMenu = "96" _
-        Or idMenu = "94" Or idMenu = "65" Then
+        Or idMenu = "94" Or idMenu = "65" Or idMenu = "18" Then
              objTaxBusiness.strTkThangQuy = strQuy
              If strQuy = "TK_THANG" Then
                 strKK = "M"
@@ -7837,7 +7837,7 @@ Private Sub Form_Resize()
            And strIDTkhai <> "06" _
            And strIDTkhai <> "05" _
            And strIDTkhai <> "69" And strIDTkhai <> "19" And strIDTkhai <> "20" And strIDTkhai <> "22" _
-           And strIDTkhai <> "64" And strIDTkhai <> "65" And strIDTkhai <> "66" And strIDTkhai <> "67" And strIDTkhai <> "68" And strIDTkhai <> "91" _
+           And strIDTkhai <> "64" And strIDTkhai <> "65" And strIDTkhai <> "66" And strIDTkhai <> "67" And strIDTkhai <> "68" And strIDTkhai <> "18" And strIDTkhai <> "91" _
            And strIDTkhai <> "86" _
            And strIDTkhai <> "90" _
            And strIDTkhai <> "23" _
