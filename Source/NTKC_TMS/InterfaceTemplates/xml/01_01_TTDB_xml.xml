@@ -13,7 +13,12 @@
 				<ct9></ct9>
 			</PLucBRaChiuThue>
 		</ChiTietPLucBRaChiuThueTTDB>
-		<tongSoLuong></tongSoLuong>
-		<tongDoanhSoBan></tongDoanhSoBan>
+		<TongCong>
+			<CTietTongCong>
+				<tenHHoaDVu/>
+				<tongSoLuong/>
+				<tongDoanhSoBan/>
+			</CTietTongCong>
+		</TongCong>
 	</PLucBRaChiuThueTTDB>
 </Pluc_01_1_TTDB>
