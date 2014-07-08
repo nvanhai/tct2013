@@ -12,8 +12,11 @@
 			<ct9>P_25</ct9>
 		</PLucBRaChiuThue>
 	</Dynamic>
-	<Static GroupName="PLucBRaChiuThueTTDB">
-		<tongSoLuong>N_29</tongSoLuong>
-		<tongDoanhSoBan>P_29</tongDoanhSoBan>
-	</Static>
+	<Dynamic GroupName="TongCong">
+		<CTietTongCong id="id">
+				<tenHHoaDVu>L_29</tenHHoaDVu>
+				<tongSoLuong>N_29</tongSoLuong>
+				<tongDoanhSoBan>P_29</tongDoanhSoBan>
+		</CTietTongCong>
+	</Dynamic>
 </Pluc_01_1_TTDB>
