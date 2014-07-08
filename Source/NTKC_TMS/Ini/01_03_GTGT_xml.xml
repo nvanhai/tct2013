@@ -42,7 +42,7 @@
 				</HDongNhapKhau>
 				<ToKhaiHHoaNhapKhau>
 					<soTKhai>AC_10</soTKhai>
-					<ngayDKyTKhai>AD_10</ngayDKyTKhai>
+					<ngayDKyTKhai date="1">AD_10</ngayDKyTKhai>
 					<ngoaiTe>AE_10</ngoaiTe>
 					<dongVietNam>AF_10</dongVietNam>
 				</ToKhaiHHoaNhapKhau>
