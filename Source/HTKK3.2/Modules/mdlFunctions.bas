@@ -3489,6 +3489,7 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                             ElseIf Val(TAX_Utilities_v1.ThreeMonths) = 1 Then
                                 hannop = "02/" & "05" & "/" & TAX_Utilities_v1.Year
                             End If
+                            hannop = format(hannop, "dd/mm/yyyy")
                         End If
                     ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" _
                             Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "99" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "92" Then
@@ -3512,6 +3513,7 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                                 ElseIf Val(TAX_Utilities_v1.ThreeMonths) = 1 Then
                                     hannop = "02/" & "05" & "/" & TAX_Utilities_v1.Year
                                 End If
+                                hannop = format(hannop, "dd/mm/yyyy")
                             ElseIf strQuy = "TK_LANPS" Then
                                 hannop = format(DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v1.Year), CInt(TAX_Utilities_v1.month), CInt(TAX_Utilities_v1.Day))), "dd/mm/yyyy")
                             ElseIf strQuy = "TK_LANXB" Then
@@ -3539,6 +3541,7 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                                 ElseIf Val(TAX_Utilities_v1.ThreeMonths) = 1 Then
                                     hannop = "02/" & "05" & "/" & TAX_Utilities_v1.Year
                                 End If
+                                hannop = format(hannop, "dd/mm/yyyy")
                             End If
                         End If
                     Else
@@ -3578,6 +3581,7 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                     End If
 '                    dNgayCuoiKy = DateAdd("D", 30, GetNgayCuoiQuy(TAX_Utilities_v1.ThreeMonths, CInt(TAX_Utilities_v1.Year), iNgayTaiChinh, iThangTaiChinh))
 '                    hannop = format(dNgayCuoiKy, "dd/mm/yyyy")
+                    hannop = format(hannop, "dd/mm/yyyy")
                 Else
                     If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "80" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "82" Then
                         strarrdate = Split(TAX_Utilities_v1.LastDay, "/")
