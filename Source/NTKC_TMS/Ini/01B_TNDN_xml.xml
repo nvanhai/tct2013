@@ -17,8 +17,7 @@
 		<maHuyenDLyThue></maHuyenDLyThue>
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
-	<Static GroupName="CTieuTKhaiChinh">
-		<tieuMucHachToan>AB_39</tieuMucHachToan>
+	<Static GroupName="CTieuTKhaiChinh">		
 		<dnQuiMoVuaVaNho>H_6</dnQuiMoVuaVaNho>
 		<dnCoCSoHToanPThuoc>H_7</dnCoCSoHToanPThuoc>
 		<ct21>U_40</ct21>
@@ -50,6 +49,7 @@
 
 		<ct32c>M_68</ct32c>
 		<ct32d>M_70</ct32d>
+		<tieuMucHachToan>L_77</tieuMucHachToan>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>T_72</nguoiKy>

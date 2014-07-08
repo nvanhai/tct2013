@@ -4,8 +4,10 @@
 			<soChungTu>C_22</soChungTu>
 			<ngayNop>D_22</ngayNop>
 			<noiNopTien>E_22</noiNopTien>
-			<cqtQLy_CCT>F_22</cqtQLy_CCT>
-			<cqtQLy_CT>K_22</cqtQLy_CT>
+			<maCQTQLy_CCT>F_22</maCQTQLy_CCT>
+			<cqtQLy_CCT>G_22</cqtQLy_CCT>
+			<maCQTQLy_CT></maCQTQLy_CT>
+			<cqtQLy_CT></cqtQLy_CT>
 			<sotienKKhai>H_22</sotienKKhai>
 		</ThueGTGTDaKKhai>
 	</Dynamic>
