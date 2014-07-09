@@ -1248,24 +1248,27 @@ Public Function CheckSoHD(str As String, strLoai As Variant) As String
             ' 2 ky tu dau la ca ky tu chu cai "ABCDEGHKLMNPQRSTUVXY"
             ' ky tu cuoi thuoc chuoi "ETP"
             'dhdang sua truong hop 8 ky tu
-            If Len(Trim(str)) = 8 Then
-                  str1 = Mid$(str, 4, 4)
-                  str2 = Right$(str, 3)
-                  str3 = Left$(str, 3)
-            End If
-            If InStr(strTmpKH, UCase(Left$(str3, 1))) > 0 And InStr(strTmpKH, UCase(Mid$(str3, 2, 1))) > 0 And IsNumeric(str1) = True Then
-               If InStr(str3, "/") > 0 Then
-                  If InStr(strLoaiIn120, UCase(Right$(str2, 1))) > 0 Then
-                       result = "0"
-                  Else
-                       result = "1"
-                  End If
-               Else
-                  result = "1"
-               End If
-            Else
-                 result = "1"
-            End If
+            
+            'TT39 khong bat cau truc ky hieu voi cac hoa don chon loai TT120
+            
+'            If Len(Trim(str)) = 8 Then
+'                  str1 = Mid$(str, 4, 4)
+'                  str2 = Right$(str, 3)
+'                  str3 = Left$(str, 3)
+'            End If
+'            If InStr(strTmpKH, UCase(Left$(str3, 1))) > 0 And InStr(strTmpKH, UCase(Mid$(str3, 2, 1))) > 0 And IsNumeric(str1) = True Then
+'               If InStr(str3, "/") > 0 Then
+'                  If InStr(strLoaiIn120, UCase(Right$(str2, 1))) > 0 Then
+'                       result = "0"
+'                  Else
+'                       result = "1"
+'                  End If
+'               Else
+'                  result = "1"
+'               End If
+'            Else
+'                 result = "1"
+'            End If
   Else
             ' 2 ky tu dau la ca ky tu chu cai "ABCDEGHKLMNPQRSTUVXY"
             ' ky tu cuoi thuoc chuoi "ETP"
