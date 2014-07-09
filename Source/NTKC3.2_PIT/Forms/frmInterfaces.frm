@@ -1651,14 +1651,28 @@ Private Sub Command1_Click()
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 '2300641174
-str2 = "aa999412100343639   00201200700700100401/0101/01/2009<S09><S></S><S> </S><S>101232323~101000000~344343~232323~50003423~48000000~2000000~1212~2211~51228900~1280723~3337302~3334747~2323~232~2178~0~2058757~0~2058757</S><S>minh lan~12/06/2014~21~~01/2012~12/2012~1~</S></S09>"
-Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-str2 = "aa999412100343639   002012007007002004<S09A><S>101232323~101000000~344343~232323~3334747~3332424~2323~2323~232</S></S09A>"
-Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-str2 = "aa999412100343639   002012007007003004<S09C><S>~~</S><S>nhat nam~01/01/2010~~~01~con~12~2000000</S></S09C>"
-Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-str2 = "aa999412100343639   002012007007004004<S26MT><S>2561445~1280722~1280723</S></S26MT>"
-Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa323412100343639   00201200700700100401/0101/01/2009<S09><S></S><S> </S><S>101232323~101000000~344343~232323~50003423~48000000~2000000~1212~2211~51228900~1280723~3337302~3334747~2323~232~2178~0~2058757~0~2058757</S><S>minh lan~12/06/2014~21~~01/2012~12/2012~1~</S></S09>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa323412100343639   002012007007002004<S09A><S>101232323~101000000~344343~232323~3334747~3332424~2323~2323~232</S></S09A>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa323412100343639   002012007007003004<S09C><S>~~</S><S>nhat nam~01/01/2010~~~01~con~12~2000000</S></S09C>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa323412100343639   002012007007004004<S26MT><S>2561445~1280722~1280723</S></S26MT>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+'str2 = "aa323682100343639   05201400200200100101/0101/01/2009<S01><S>~~01/05/2014~31/05/2014</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~minh lan~17/06/2014~0</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+'str2 = "aa323683300322878   05201400100100100101/0101/01/1900<S01><S></S><S>Kg~20001~1200~010101</S><S>Kg~12300~200~010102</S><S>~Nguyen van a~~30/06/2014~1~~</S></S01>"
+'Barcode_Scaned str2
+
+'//TEST CAC TO HOA DON VTV ONLINE
+''quy
+'str2 = "aa323682100343639   02201400500700100101/0101/01/2009<S01><S>~~01/04/2014~30/06/2014</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~minh lan~09/07/2014~1</S></S01>"
+str2 = "aa324682100343639   02201400400400100101/0101/01/2009<S01><S>~~01/04/2014~30/06/2014</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~minh lan~09/07/2014~1~1</S></S01>"
+''thang
+'str2 = "aa323682100343639   06201400600900100101/0101/01/2009<S01><S>~~01/06/2014~30/06/2014</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~minh lan~09/07/2014~0</S></S01>"
+Barcode_Scaned str2
 
 End Sub
 
@@ -2180,6 +2194,13 @@ Private Sub Barcode_Scaned(strBarcode As String)
                     DisplayMessage "0130", msOKOnly, miInformation
                     Exit Sub
                 End If
+            End If
+        End If
+        
+        'xu ly ma vach BC26: Chuyen doi hinh thuc su dung hoa don(bo sung tu 3.2.4)
+        If Trim(idToKhai) = "68" And InStr(1, strBarcode, "</S01>", vbTextCompare) > 0 Then
+            If (Val(Left$(strPrefix, 3)) <= 323) Then
+                strBarcode = Replace(strBarcode, "</S></S01>", "~</S></S01>")
             End If
         End If
         
