@@ -132,6 +132,9 @@ Public Sub Prepare2()
             .SetText .ColLetterToNumber("J"), totalRow + 29, GetNguoiKy()
         End If
         
+        
+        
+        
          'Xoa cong thuc cua o Chu ky
         Set xmlCellNode = TAX_Utilities_v1.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 22))
         Set xmlCellNode = xmlCellNode.parentNode
@@ -144,6 +147,16 @@ Public Sub Prepare2()
         .Col = iCol
         .Formula = ""
         
+        
+        ' set lai gia tri tu ngay den ngay
+        .Sheet = 1
+        .Row = 17
+        .Col = .ColLetterToNumber("D")
+        .Formula = "TRIM(Header!T6)"
+        
+        .Row = 17
+        .Col = .ColLetterToNumber("E")
+        .Formula = "TRIM(Header!T7)"
         
         .EventEnabled(EventAllEvents) = True
     End With
@@ -474,6 +487,8 @@ Private Sub checkSheet1()
     
     Dim vSoHopDong As Variant
     
+    Dim iWhiteRow1 As Variant
+    
     With fps
         .EventEnabled(EventAllEvents) = False
         iCurrentSheet = .Sheet
@@ -548,6 +563,8 @@ Private Sub checkSheet1()
             .GetText .ColLetterToNumber("G"), .Row, ngayHD
             
             iWhiteRow = 1
+            iWhiteRow1 = 1
+            
             .GetText .ColLetterToNumber("Q"), .Row, strSoLuong
             .GetText .ColLetterToNumber("N"), .Row, strId
             'check mau so hoa don
@@ -556,8 +573,15 @@ Private Sub checkSheet1()
                 iWhiteRow = 0
             End If
             
+            ' check dong duoc phep in
+            
+             If Trim(Tenloaihd1) <> "" Or Trim(mauso1) <> "" Or Trim(kyhieu1) <> "" Or Trim(Tuso1) <> "" Or Trim(denso1) <> "" Then
+                ' Khong phai dong trang
+                iWhiteRow1 = 0
+            End If
+            
             'Ten HD
-            If Trim(Tenloaihd1) = "" And iWhiteRow = 0 Then
+            If Trim(Tenloaihd1) = "" And iWhiteRow = 0 And iWhiteRow1 = 0 Then
                 .Col = .ColLetterToNumber("I")
                 .CellNote = vErrMsgMSTReq  'static
                 .BackColor = mErrorColor
@@ -569,7 +593,7 @@ Private Sub checkSheet1()
             End If
             
             'tu so den so bat buoc nhap
-            If Trim(Tuso1) = "" And iWhiteRow = 0 Then
+            If Trim(Tuso1) = "" And iWhiteRow = 0 And iWhiteRow1 = 0 Then
                 .Col = .ColLetterToNumber("L")
                 .CellNote = vErrMsgMSTReq  'static
                 .BackColor = mErrorColor
@@ -581,7 +605,7 @@ Private Sub checkSheet1()
 '                .BackColor = mNonErrorColor
             End If
             
-            If Trim(denso1) = "" And iWhiteRow = 0 Then
+            If Trim(denso1) = "" And iWhiteRow = 0 And iWhiteRow1 = 0 Then
                 .Col = .ColLetterToNumber("M")
                 .CellNote = vErrMsgMSTReq  'static
                 .BackColor = mErrorColor
@@ -637,7 +661,7 @@ Private Sub checkSheet1()
                 .BackColor = mNonErrorColor
             End If
             ' Mau so HD
-            If Trim(mauso1) = "" And iWhiteRow = 0 Then
+            If Trim(mauso1) = "" And iWhiteRow = 0 And iWhiteRow1 = 0 Then
                 .Col = .ColLetterToNumber("J")
                 .CellNote = vErrMsgMSTReq  'static
                 .BackColor = mErrorColor
@@ -656,13 +680,13 @@ Private Sub checkSheet1()
                 strTemp = Trim(Mid(strId, 11, 3))
             End If
             result = CheckMauSoHD(CStr(mauso1), strLoai, strTemp)
-            If result = "1" And iWhiteRow = 0 Then
+            If result = "1" And iWhiteRow = 0 And iWhiteRow1 = 0 Then
                 .Col = .ColLetterToNumber("J")
                 .CellNote = errMauSoHD  'static
                 .BackColor = mErrorColor
                 'iFlagMauSoHD = 1
                 blCheck_S7 = False
-            ElseIf result = "2" And iWhiteRow = 0 Then
+            ElseIf result = "2" And iWhiteRow = 0 And iWhiteRow1 = 0 Then
                  If Right$(Trim$(kyhieu1), 1) = "E" Then
                     If CheckSoLienHDDT(CStr(mauso1), strLoai, strTemp, CStr(kyhieu1)) = "3" Then
                          .Col = .ColLetterToNumber("J")
@@ -682,7 +706,7 @@ Private Sub checkSheet1()
                     blCheck_S8 = False
                 End If
             Else
-                If Right$(Trim$(kyhieu1), 1) = "E" Then
+                If Right$(Trim$(kyhieu1), 1) = "E" And iWhiteRow1 = 0 Then
                     If CheckSoLienHDDT(CStr(mauso1), strLoai, strTemp, CStr(kyhieu1)) = "3" Then
                          .Col = .ColLetterToNumber("J")
                         .CellNote = errSoLienHDDT  'static
@@ -725,7 +749,7 @@ Private Sub checkSheet1()
             SohieuHD = CheckSoHD(CStr(varTemp), strLoai)
             
 
-            If (Trim(SohieuHD) = "1" Or Trim(SohieuHD) = "2") And iWhiteRow = 0 Then
+            If (Trim(SohieuHD) = "1" Or Trim(SohieuHD) = "2") And iWhiteRow = 0 And iWhiteRow1 = 0 Then
                 .Col = .ColLetterToNumber("K")
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = vErrMsgSoHD    'static
