@@ -105,7 +105,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .Sheet = 1
         .Col = .ColLetterToNumber(PHONG_XU_LY_COL)
         .Row = PHONG_XU_LY_ROW
-        If rsPXL.Fields.Count > 0 Then
+        If rsPXL.Fields.count > 0 Then
             Do While Not rsPXL.EOF
                 .TypeComboBoxIndex = -1
                 .TypeComboBoxString = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
@@ -334,7 +334,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim vPHONG_XU_LY
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
-    Dim vKyBCCuoi, vChuyenDiaDiem
+    Dim vKyBCCuoi, vChuyenDiaDiem, vChuyenDoiHinhThucSD
     
 On Error GoTo ErrHandle
     strSQL = SqlHdr_AC
@@ -396,6 +396,8 @@ On Error GoTo ErrHandle
         
         .GetText .ColLetterToNumber("E"), 16, vKyBCCuoi
         .GetText .ColLetterToNumber("K"), 16, vChuyenDiaDiem
+        .GetText .ColLetterToNumber("Q"), 16, vChuyenDoiHinhThucSD
+        
                 
         .EventEnabled(EventAllEvents) = False
     End With
@@ -406,13 +408,21 @@ On Error GoTo ErrHandle
         vTEN_CQ_TIEP_NHAN = Mid(vTEN_CQ_TIEP_NHAN, InStr(vTEN_CQ_TIEP_NHAN, "{") + 1, InStr(vTEN_CQ_TIEP_NHAN, "}") - InStr(vTEN_CQ_TIEP_NHAN, "{") - 1)
     End If
     vPHONG_QUAN_LY = strMaPQL
+    
     ' Lay Quy BC
-    If Trim(TAX_Utilities_Srv_New.ThreeMonths) <> "" Then
-        dDate = dNgayDauKy
-        vQUY_BC = Format(dDate, "dd/mm/yyyy")
+'    If Trim(TAX_Utilities_Srv_New.ThreeMonths) <> "" Then
+'        dDate = dNgayDauKy
+'        vQUY_BC = Format(dDate, "dd/mm/yyyy")
+'    End If
+'"To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
+    If (vKY_BC_TUNGAY <> "") Then
+        vQUY_BC = vKY_BC_TUNGAY
     End If
+    
     ' lay gia tri loai BC 26
-    If Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
+    If Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" And Trim(CStr(vChuyenDoiHinhThucSD)) = "1" Then
+        vLoai_BC26 = "05"
+    ElseIf Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
         ' bao cao quy
         vLoai_BC26 = "01"
     ElseIf Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "1" Then
