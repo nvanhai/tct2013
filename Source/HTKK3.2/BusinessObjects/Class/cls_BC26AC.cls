@@ -205,6 +205,37 @@ Public Sub Prepare1()
             .Row = 45
             .TypeComboBoxList = strCombo
             
+            
+         .Sheet = 4
+            .Row = 54
+            .Col = .ColLetterToNumber("M")
+            .TypeComboBoxList = tenChiCucThue
+            'SetKyHieuHDFormat fps, 2, 46, .ColLetterToNumber("S")
+            'SetKyHieuHDFormat fps, 2, 50, .ColLetterToNumber("S")
+            SetDateFormat fps, 4, 58, .ColLetterToNumber(Col_R), DDMMYYYY
+            .Row = 58
+            .Col = .ColLetterToNumber(Col_R)
+            .Text = Format(Date, "dd/mm/yyyy")
+            .TypeHAlign = TypeHAlignLeft
+            ' Set gia tri ten loai hoa don
+            .Col = .ColLetterToNumber("C")
+            .Row = 46
+            .TypeComboBoxList = strComboHien
+
+            ' Set gia tri cho combo an
+            .Col = .ColLetterToNumber("AI")
+            .Row = 46
+            .TypeComboBoxList = strCombo
+
+            .Col = .ColLetterToNumber("C")
+            .Row = 50
+            .TypeComboBoxList = strComboHien
+
+            ' Set gia tri cho combo an
+            .Col = .ColLetterToNumber("AI")
+            .Row = 50
+            .TypeComboBoxList = strCombo
+            
     End With
 End Sub
 
@@ -582,6 +613,58 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
             End If
             .EventEnabled(EventChange) = True
          End If
+    ElseIf .ActiveSheet = 4 Then
+        .Col = Col
+        .Row = Row
+         If Col = .ColLetterToNumber("C") And .Text <> "" Then
+            intIndexCombo = .typeComboboxCurSel
+            .Col = .ColLetterToNumber("AI")
+            .typeComboboxCurSel = intIndexCombo
+            'Update combo F
+            .Col = .ColLetterToNumber("AI")
+            UpdateCell_sheet fps, 4, .Col, .Row, .Text
+             
+            
+            .GetText .ColLetterToNumber("AI"), .Row, strId
+
+            
+            .Col = .ColLetterToNumber(Col_O)
+            If Trim(Left(strId, 1)) = "0" Then
+                .SetText .ColLetterToNumber(Col_O), .Row, Trim(Mid(strId, 11, 6))
+                UpdateCell_sheet fps, 4, .ColLetterToNumber(Col_O), .Row, .Text
+                .Col = .ColLetterToNumber(Col_O)
+                .TypeMaxEditLen = 13
+                .Col = .ColLetterToNumber(Col_D)
+                .SetText .ColLetterToNumber(Col_D), .Row, Trim(Mid(strId, 21))
+                UpdateCell_sheet fps, 4, .ColLetterToNumber(Col_D), .Row, .Text
+            ElseIf Trim(Left(strId, 1)) = "3" Then
+                .SetText .ColLetterToNumber(Col_O), .Row, ""
+                UpdateCell_sheet fps, 4, .ColLetterToNumber(Col_O), .Row, .Text
+                .Col = .ColLetterToNumber(Col_O)
+                .TypeMaxEditLen = 20
+                .Col = .ColLetterToNumber(Col_D)
+                .SetText .ColLetterToNumber(Col_D), .Row, ""
+                UpdateCell_sheet fps, 4, .ColLetterToNumber(Col_D), .Row, .Text
+            ElseIf Trim(Left(strId, 1)) = "4" Then
+                .SetText .ColLetterToNumber(Col_O), .Row, Trim(Mid(strId, 11, 6))
+                UpdateCell_sheet fps, 4, .ColLetterToNumber(Col_O), .Row, .Text
+                .Col = .ColLetterToNumber(Col_O)
+                .TypeMaxEditLen = 13
+                .Col = .ColLetterToNumber(Col_D)
+                .SetText .ColLetterToNumber(Col_D), .Row, Trim(Mid(strId, 21))
+                UpdateCell_sheet fps, 4, .ColLetterToNumber(Col_D), .Row, .Text
+            Else
+                .SetText .ColLetterToNumber(Col_O), .Row, Trim(Mid(strId, 11, 3))
+                UpdateCell_sheet fps, 4, .ColLetterToNumber(Col_O), .Row, .Text
+                .Col = .ColLetterToNumber(Col_O)
+                .TypeMaxEditLen = 20
+                .Col = .ColLetterToNumber(Col_D)
+                .SetText .ColLetterToNumber(Col_D), .Row, Trim(Mid(strId, 21))
+                UpdateCell_sheet fps, 4, .ColLetterToNumber(Col_D), .Row, .Text
+            End If
+            .EventEnabled(EventChange) = True
+         End If
+         
     End If
     End With
    fps.EventEnabled(EventAllEvents) = True
@@ -613,6 +696,12 @@ Private Sub fps_KeyPress(KeyAscii As Integer)
                 End If
             End If
         ElseIf .ActiveSheet = 3 Then
+            If .Col = .ColLetterToNumber(Col_V) Or .Col = .ColLetterToNumber(Col_Y) Then
+                If (KeyAscii < 48 And KeyAscii <> 3 And KeyAscii <> 22 And KeyAscii <> 13 And KeyAscii <> 8) Or KeyAscii > 57 Then
+                    KeyAscii = 0
+                End If
+            End If
+        ElseIf .ActiveSheet = 4 Then
             If .Col = .ColLetterToNumber(Col_V) Or .Col = .ColLetterToNumber(Col_Y) Then
                 If (KeyAscii < 48 And KeyAscii <> 3 And KeyAscii <> 22 And KeyAscii <> 13 And KeyAscii <> 8) Or KeyAscii > 57 Then
                     KeyAscii = 0
@@ -691,6 +780,35 @@ Dim tCol As Long, tRow As Long
                          totalRow2ABH = i
                          i = i + 1
                     Loop Until UCase(.Text) = "AA"
+                    
+                    .SetActiveCell iCol, iRow
+                    .Row = iRow
+                    .Col = iCol
+                    
+                    .SetActiveCell iCol, iRow
+            ElseIf .ActiveSheet = 4 Then
+                    'Dim sec As Variant
+                     i = 1
+                    .Col = .ColLetterToNumber("B")
+                    .Row = 46
+                    Do
+                         .Text = str(i)
+                         .Col = .ColLetterToNumber("B")
+                         .Row = i + 46
+                         sec = i
+                         i = i + 1
+                    Loop Until UCase(.Text) = "AA"
+                    
+                    j = 1
+                    .Col = .ColLetterToNumber("B")
+                    .Row = 49 + sec
+                    Do
+                         .Text = str(j)
+                         .Col = .ColLetterToNumber("B")
+                         .Row = j + 49 + sec
+                         'totalRow2ABH = i
+                         j = j + 1
+                    Loop Until .Text = "bb"
                     
                     .SetActiveCell iCol, iRow
                     .Row = iRow
@@ -1112,6 +1230,90 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                          .Row = Row
                         UpdateCell_sheet fps, 3, .Col, .Row, .Text
                     End If
+            ElseIf .ActiveSheet = 4 Then
+                    ' Dem so dong dong sec 1
+                    .Row = 46
+                    Do
+                        countRowDynamic1_PL1 = countRowDynamic1_PL1 + 1
+                        .Col = .ColLetterToNumber("B")
+                        .Row = .Row + 1
+                    Loop Until UCase(.Text) = "AA"
+                    .Row = 49 + countRowDynamic1_PL1
+                    Do
+                        countRowDynamic2_PL1 = countRowDynamic2_PL1 + 1
+                        .Col = .ColLetterToNumber("B")
+                        .Row = .Row + 1
+                    Loop Until .Text = "bb"
+                ' check ngay ky
+                    If Col = .ColLetterToNumber(Col_R) And Row = countRowDynamic1_PL1 + countRowDynamic2_PL1 + 51 Then
+                        .GetText Col, Row, varTemp
+                        If varTemp <> "" And varTemp <> "../../...." Then
+                            If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+                                .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+                            Else
+                                .SetFocus
+                                .SetActiveCell Col, Row
+                            End If
+                        Else
+                         .SetText Col, Row, ""
+                        End If
+                        .Col = Col
+                        .Row = Row
+                        UpdateCell_sheet fps, 4, Col, Row, .Text
+                    End If
+                  ' Format dinh dang tu so den so co 7 ky tu
+                    If Col = .ColLetterToNumber(Col_V) Or Col = .ColLetterToNumber(Col_Y) Then
+                         .GetText Col, Row, varTemp
+                         .SetText Col, Row, FormatSoHD(CStr(varTemp))
+                         .Col = Col
+                         .Row = Row
+                        UpdateCell_sheet fps, 4, .Col, .Row, .Text
+                   ' Ho tro tinh so luong
+                        .GetText .ColLetterToNumber(Col_V), Row, tuSo
+                        .GetText .ColLetterToNumber(Col_Y), Row, denso
+                        If Trim(tuSo) <> "" Or Trim(denso) <> "" Then
+                            .SetText .ColLetterToNumber(Col_AA), Row, Val(denso) - Val(tuSo) + 1
+                            .Col = .ColLetterToNumber(Col_AA)
+                            .Row = Row
+                            UpdateCell_sheet fps, 4, .Col, .Row, .Text
+                        End If
+                        
+                    End If
+                    
+                  ' Chuyen ky hieu HD thanh chu cai in hoa
+                    If Col = .ColLetterToNumber(Col_S) Then
+                         .GetText Col, Row, varTemp
+                         .SetText Col, Row, FormatKyHieu(CStr(varTemp))
+                         .Col = Col
+                         .Row = Row
+                        UpdateCell_sheet fps, 4, .Col, .Row, .Text
+                    End If
+                   'Kiem tra cau truc cua ky hieu neu sai set cot an =1 dung =0
+                    If Col = .ColLetterToNumber(Col_S) Then
+                         .GetText Col, Row, varTemp
+                         .SetText .ColLetterToNumber("AH"), Row, CheckSoHD(CStr(varTemp), strLoai)
+                         .Col = .ColLetterToNumber("AH")
+                         .Row = Row
+                        UpdateCell_sheet fps, 4, .Col, .Row, .Text
+                    End If
+                   'Kiem tra cau truc cua Mau so
+                   If Col = .ColLetterToNumber(Col_O) Then
+                        .GetText .ColLetterToNumber("AI"), Row, strId
+                        strLoai = Trim(Left(strId, 1))
+                        If strLoai = "0" Then
+                            strTemp = Trim(Mid(strId, 11, 6))
+                        ElseIf strLoai = "4" Then
+                            strTemp = Trim(Mid(strId, 11, 6))
+                        Else
+                            strTemp = Trim(Mid(strId, 11, 3))
+                        End If
+                        .GetText Col, Row, varTemp
+                        .SetText Col, Row, IIf(strLoai = "3", varTemp, UCase(varTemp))
+                         .SetText .ColLetterToNumber("AJ"), Row, CheckMauSoHD(CStr(varTemp), CStr(strLoai), CStr(strTemp))
+                         .Col = .ColLetterToNumber("AJ")
+                         .Row = Row
+                        UpdateCell_sheet fps, 4, .Col, .Row, .Text
+                    End If
             End If
         .EventEnabled(EventAllEvents) = True
     End With
@@ -1155,6 +1357,9 @@ Private Sub CheckDynamicError()
             End If
             If TAX_Utilities_v1.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0" Then
                 checkSheet3
+            End If
+            If TAX_Utilities_v1.NodeValidity.childNodes(3).Attributes.getNamedItem("Active").nodeValue <> "0" Then
+                checkSheet4
             End If
     End With
     'result = loadTonCuoiKy
@@ -4840,4 +5045,659 @@ Private Sub clearCellErorrHDR()
             .SetText .ColLetterToNumber("B"), i, "1"
         Next i
     End With
+End Sub
+
+
+
+Private Sub checkSheet4()
+    Dim strCheck As String
+    Dim errMauSoHD As Variant, errKyHieuHD As Variant, errSoLuong As Variant, errSoLienHD As Variant, errTon As Variant, errTonTK As Variant, errSoLienHDDT As Variant
+    Dim errKhoangGN As Variant, errLengthHD As Variant, errEmty As Variant, errNgayKy As Variant, errNgayHuy As Variant, errTrungKhoang As Variant
+    Dim strTenHD As Variant, strMauSoHD As Variant, strKyHieuHD As Variant, strTuSo As Variant, strDenso As Variant
+    Dim strTenHD1 As Variant, strMauSoHD1 As Variant, strKyHieuHD1 As Variant, strTuso1 As Variant, strDenso1 As Variant
+    Dim strSoLuong As Variant, strNguoiKy As Variant, strNguoiLapBieu As Variant, strNgayKy As Variant, strNgayHuy As Variant
+    Dim iFlagTenHD As Integer, iFlagMauSoHD As Integer, iFlagKyHieu As Integer, iFlagSoLienHD As Integer, iFlagEmty As Integer
+    Dim iWhiteRow As Integer, iFlagLengHD As Integer, iFlagSoLuong As Integer, iFlagNgayKy As Integer, iFlagNgayHuy As Integer, iFlagTon As Integer, iFlagTonTK As Integer
+    Dim iFlagKhoangTSDSTrung As Integer, iFocusFlag As Integer
+    
+    Dim strId As Variant, strLoai As String, strTemp As String, result As String
+    Dim i As Integer, countDynamicRow As Integer, j As Integer, k As Integer
+    
+    ' group theo tung nhom
+    Dim arrGroupHD() As String
+    Dim strGroupHD As String
+    Dim arrGroupHD_TK() As String
+    Dim arrGroupValue_TK() As String
+    
+    ' Danh sach cac hoa don ton tren sheet 1
+'    Dim arrGroupHD_Ton() As String
+'    Dim arrHD_Ton() As String
+'
+    
+    Dim str() As String
+    Dim str1 As String
+    ' tra ve mang cac row bi trung khoang
+    str = checkTrung_01(fps, 46, Col_V, Col_Y, "B", "C", Col_O, Col_S, "", False, 4)
+    ' check trung ton
+    ' str1 = checkTon(fps, 46, Col_V, Col_Y, "B", "D", Col_O, Col_S, "", False, 2)
+    'arrGroupHD_Ton = Split(strCheckTonKhoang, "###")
+    
+    With fps
+        .EventEnabled(EventAllEvents) = False
+        .Sheet = .SheetCount
+        .GetText .ColLetterToNumber(Col_E), 32, errMauSoHD
+        .GetText .ColLetterToNumber(Col_E), 33, errKyHieuHD
+        .GetText .ColLetterToNumber(Col_E), 34, errSoLienHD
+        .GetText .ColLetterToNumber(Col_E), 35, errKhoangGN
+        .GetText .ColLetterToNumber(Col_E), 36, errLengthHD
+        .GetText .ColLetterToNumber(Col_E), 37, errSoLuong
+        .GetText .ColLetterToNumber(Col_E), 38, errEmty
+        .GetText .ColLetterToNumber(Col_E), 39, errNgayHuy
+        .GetText .ColLetterToNumber(Col_E), 40, errNgayKy
+        .GetText .ColLetterToNumber(Col_E), 41, errTrungKhoang
+
+        .GetText .ColLetterToNumber(Col_E), 50, errTon
+        .GetText .ColLetterToNumber(Col_E), 48, errTonTK
+        
+        .GetText .ColLetterToNumber(Col_E), 54, errSoLienHDDT
+        
+        'set flag bang 0
+        iFlagTenHD = 0
+        iFlagMauSoHD = 0
+        iFlagKyHieu = 0
+        iFlagSoLienHD = 0
+        iFlagEmty = 0
+        iFlagSoLuong = 0
+        iFlagNgayKy = 0
+        iFlagNgayHuy = 0
+        iFlagKhoangTSDSTrung = 0
+        
+ 
+        
+        ' dem so row dynamic
+        countDynamicRow = 0
+        ' Kiem tra tren sheet 1
+        .Sheet = 4
+               ' re set cac cellnote
+        .Row = 46
+        .Col = .ColLetterToNumber("B")
+        Do
+            .Col = .ColLetterToNumber(Col_AA)
+            '.Col = .ColLetterToNumber("U")
+            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+            .CellNote = ""     'static
+            .BackColor = mNonErrorColor
+            .Row = .Row + 1
+            .Col = .ColLetterToNumber("B")
+        Loop Until UCase(.Text) = "AA"
+        
+        
+        
+        
+        .Col = .ColLetterToNumber("B")
+        .Row = 46
+        'i = 1
+        Do
+            j = .Row
+            countDynamicRow = countDynamicRow + 1
+             ' Lay cac gia tri cua 1 row
+             iWhiteRow = 1
+            .GetText .ColLetterToNumber(Col_D), .Row, strTenHD
+            .GetText .ColLetterToNumber(Col_O), .Row, strMauSoHD
+            .GetText .ColLetterToNumber(Col_S), .Row, strKyHieuHD
+            .GetText .ColLetterToNumber(Col_V), .Row, strTuSo
+            .GetText .ColLetterToNumber(Col_Y), .Row, strDenso
+            .GetText .ColLetterToNumber(Col_AA), .Row, strSoLuong
+            .GetText .ColLetterToNumber("AI"), .Row, strId
+'
+            If Trim(strTenHD) <> "" Or Trim(strMauSoHD) <> "" Or Trim(strKyHieuHD) <> "" Or Trim(strId) <> "" Then
+                ' Khong phai dong trang
+                iWhiteRow = 0
+            End If
+            If Trim(strTenHD) <> "" Or Trim(strMauSoHD) <> "" Then
+                ' Khong phai dong trang
+                iWhiteRow = 0
+            End If
+            'Ten HD
+            If Trim(strTenHD) = "" And iWhiteRow = 0 Then
+                .Col = .ColLetterToNumber(Col_D)
+                .CellNote = errEmty  'static
+                .BackColor = mErrorColor
+                iFlagEmty = 1
+            Else
+                .Col = .ColLetterToNumber(Col_D)
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+            End If
+            ' Mau so HD
+            If Trim(strMauSoHD) = "" And iWhiteRow = 0 Then
+                .Col = .ColLetterToNumber(Col_O)
+                .CellNote = errEmty  'static
+                .BackColor = mErrorColor
+                iFlagEmty = 1
+            Else
+                strLoai = Trim(Left(strId, 1))
+                If strLoai = "0" Then
+                    strTemp = Trim(Mid(strId, 11, 6))
+                ElseIf strLoai = "4" Then
+                    strTemp = Trim(Mid(strId, 11, 6))
+                Else
+                    strTemp = Trim(Mid(strId, 11, 3))
+                End If
+                result = CheckMauSoHD(CStr(strMauSoHD), strLoai, strTemp)
+                If result = "1" And iWhiteRow = 0 Then
+                    .Col = .ColLetterToNumber(Col_O)
+                    .CellNote = errMauSoHD  'static
+                    .BackColor = mErrorColor
+                    iFlagMauSoHD = 1
+                ElseIf result = "2" And iWhiteRow = 0 Then
+                     If Right$(Trim$(strKyHieuHD), 1) = "E" Then
+                        If CheckSoLienHDDT(CStr(strMauSoHD), strLoai, strTemp, CStr(strKyHieuHD)) = "3" Then
+                             .Col = .ColLetterToNumber(Col_O)
+                            .CellNote = errSoLienHDDT  'static
+                            .BackColor = mErrorColor
+                            iFlagSoLienHD = 2
+                        Else
+                            .Col = .ColLetterToNumber(Col_O)
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                        End If
+                    Else
+                        .Col = .ColLetterToNumber(Col_O)
+                        .CellNote = errSoLienHD  'static
+                        .BackColor = mErrorColor
+                        iFlagSoLienHD = 1
+                    End If
+                Else
+                    If Right$(Trim$(strKyHieuHD), 1) = "E" Then
+                        If CheckSoLienHDDT(CStr(strMauSoHD), strLoai, strTemp, CStr(strKyHieuHD)) = "3" Then
+                             .Col = .ColLetterToNumber(Col_O)
+                            .CellNote = errSoLienHDDT  'static
+                            .BackColor = mErrorColor
+                            iFlagSoLienHD = 2
+                        Else
+                            .Col = .ColLetterToNumber(Col_O)
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                        End If
+                    Else
+                        .Col = .ColLetterToNumber(Col_O)
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
+                End If
+            End If
+            ' check ky hieu
+            If Trim(strKyHieuHD) = "" And iWhiteRow = 1 Then
+                .Col = .ColLetterToNumber(Col_S)
+                .CellNote = ""  'static
+                .BackColor = mNonErrorColor
+                'iFlagEmty = 1
+            ElseIf Trim(strKyHieuHD) = "" And iWhiteRow = 0 Then
+                .Col = .ColLetterToNumber(Col_S)
+                .CellNote = errEmty  'static
+                .BackColor = mErrorColor
+                iFlagEmty = 1
+            Else
+                result = CheckSoHD(CStr(strKyHieuHD), strLoai)
+                If result = "1" Then
+                    .Col = .ColLetterToNumber(Col_S)
+                    .CellNote = errKyHieuHD  'static
+                    .BackColor = mErrorColor
+                    iFlagKyHieu = 1
+                ElseIf result = "2" Then
+                    .Col = .ColLetterToNumber(Col_S)
+                    .CellNote = errLengthHD  'static
+                    .BackColor = mErrorColor
+                    iFlagLengHD = 1
+                Else
+                    .Col = .ColLetterToNumber(Col_S)
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
+            End If
+            ' kiem tra tu so den so
+            If iWhiteRow = 0 Then
+                If Trim(strTuSo) = "" And Trim(strDenso) = "" Then
+                    ' tu so
+                    .Col = .ColLetterToNumber(Col_V)
+                    .CellNote = errEmty  'static
+                    .BackColor = mErrorColor
+                    ' den so
+                    .Col = .ColLetterToNumber(Col_Y)
+                    .CellNote = errEmty  'static
+                    .BackColor = mErrorColor
+                    iFlagEmty = 1
+                ElseIf Trim(strTuSo) = "" And Trim(strDenso) <> "" Then
+                    ' tu so
+                    .Col = .ColLetterToNumber(Col_V)
+                    .CellNote = errEmty  'static
+                    .BackColor = mErrorColor
+                    iFlagEmty = 1
+                    ' den so
+                    .Col = .ColLetterToNumber(Col_Y)
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                ElseIf Trim(strTuSo) <> "" And Trim(strDenso) = "" Then
+                    .Col = .ColLetterToNumber(Col_Y)
+                    .CellNote = errEmty  'static
+                    .BackColor = mErrorColor
+                    iFlagEmty = 1
+                    ' tu so
+                    .Col = .ColLetterToNumber(Col_V)
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+
+                Else
+                    If (Val(strDenso) - Val(strTuSo) >= 0 And Val(strDenso) > 0) Or (Val(strTuSo) = 0 And Val(strDenso) = 0) Then
+                        ' tu so
+                        .Col = .ColLetterToNumber(Col_V)
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                        ' den so
+                        .Col = .ColLetterToNumber(Col_Y)
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    Else
+                        .Col = .ColLetterToNumber(Col_V)
+                        .CellNote = errSoLuong  'static
+                        .BackColor = mErrorColor
+                        .Col = .ColLetterToNumber(Col_Y)
+                        .CellNote = errSoLuong  'static
+                        .BackColor = mErrorColor
+                        iFlagSoLuong = 1
+                    End If
+                End If
+            Else
+                ' tu so
+                .Col = .ColLetterToNumber(Col_V)
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+                ' den so
+                .Col = .ColLetterToNumber(Col_Y)
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+            End If
+            ' kiem tra trung khoang HD
+            If UBound(str) > 0 And iWhiteRow = 0 Then
+                For i = 0 To UBound(str)
+                    If j = str(i) Then
+                        .Col = .ColLetterToNumber(Col_V)
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = errTrungKhoang     'static
+                        .BackColor = mErrorColor
+                        
+                         .Col = .ColLetterToNumber(Col_Y)
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = errTrungKhoang     'static
+                        .BackColor = mErrorColor
+                        iFlagKhoangTSDSTrung = 1
+                        Exit For
+                    End If
+                Next i
+            End If
+            ' end check trung
+            
+                'dhdang so luong ton cuoi ky
+            ' kiem tra trung khoang HD
+            'If InStr(str1, j) <> 0 And iWhiteRow = 0 Then
+'            Dim strListHD As String
+'            Dim arrHD_PL2() As String
+'            Dim arrHD_BC() As String
+'            Dim idxCheckTon As Double
+'            Dim isCheck As Boolean
+'            strListHD = getListHDTS_DS(CStr(strTuSo), CStr(strDenso))
+'            arrHD_PL2 = Split(Mid(strListHD, 1, Len(strListHD) - 1), ";")
+'            isCheck = False
+'            For i = 0 To UBound(arrHD_PL2)
+'                For idxCheckTon = 0 To UBound(arrGroupHD_Ton)
+'                    arrHD_BC = Split(arrGroupHD_Ton(idxCheckTon), "~")
+'                    If iWhiteRow = 0 And Trim(strTenHD) = arrHD_BC(0) And Trim(strMauSoHD) = arrHD_BC(1) And Trim(strKyHieuHD) = arrHD_BC(2) Then
+'                        'For i = 0 To UBound(str1)
+'                            'If j = str1(i) Then
+'                              If InStr(";" & arrHD_BC(3), ";" & arrHD_PL2(i) & ";") = 0 Then
+'                                    .Col = .ColLetterToNumber(Col_V)
+'                                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                                    .CellNote = errTonTK     'static
+'                                    .BackColor = mErrorColor
+'
+'                                     .Col = .ColLetterToNumber(Col_Y)
+'                                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                                    .CellNote = errTonTK     'static
+'                                    .BackColor = mErrorColor
+'                                    iFlagTonTK = 1
+'                                    isCheck = True
+'                                    Exit For
+'                               End If
+'                        'Next i
+'                    End If
+'                Next idxCheckTon
+'                If isCheck = True Then Exit For
+'            Next i
+            ' test
+            Dim arrHoaDonS1() As HOA_DON
+            Dim isTrongKhoang As Boolean ' Kiem tra tu so den so thuoc khoang 20,21
+            Dim isNotCheckTrongKhoang As Boolean
+            Dim isHoaDonS1 As Boolean  ' la hoa don ben TK
+            Dim isExitFor As Boolean  ' thoat khoi vong lap
+            
+            'If UBound(loaiHoaDonS1) > 0 Then
+            isTrongKhoang = False
+            isHoaDonS1 = False
+            isExitFor = False
+            For i = 0 To UBound(loaiHoaDonS1)
+                If loaiHoaDonS1(i).loaiHD = Trim(strTenHD) & "~" & Trim(strMauSoHD) & "~" & Trim(strKyHieuHD) & "~0" And iWhiteRow = 0 Then
+                    isHoaDonS1 = True
+                    arrHoaDonS1 = loaiHoaDonS1(i).hoaDon
+                    'If UBound(arrHoaDonS1) > 0 Then
+                    For k = 0 To UBound(arrHoaDonS1)
+                        If Val(strTuSo) >= arrHoaDonS1(k).tuSo And Val(strDenso) <= arrHoaDonS1(k).denso And arrHoaDonS1(k).isDelete = False Then
+                            isTrongKhoang = True
+                            isExitFor = True
+                            Exit For
+                        End If
+                    Next k
+                    'End If
+                End If
+                If isExitFor = True Then
+                    Exit For
+                End If
+            Next i
+            'End If
+            ' end test
+            If iWhiteRow = 0 Then
+                If isHoaDonS1 = True Then
+                    .Col = .ColLetterToNumber(Col_V)
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = ""     'static
+                    .BackColor = mNonErrorColor
+
+                     .Col = .ColLetterToNumber(Col_Y)
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = ""     'static
+                    .BackColor = mNonErrorColor
+                    If isNotCheckTrongKhoang = False Then
+                        If isTrongKhoang = True Then
+                            .Col = .ColLetterToNumber(Col_V)
+                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                            .CellNote = ""     'static
+                            .BackColor = mNonErrorColor
+        
+                             .Col = .ColLetterToNumber(Col_Y)
+                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                            .CellNote = ""     'static
+                            .BackColor = mNonErrorColor
+                        Else
+            
+                            .Col = .ColLetterToNumber(Col_V)
+                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                            .CellNote = errTonTK     'static
+                            .BackColor = mErrorColor
+        
+                             .Col = .ColLetterToNumber(Col_Y)
+                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                            .CellNote = errTonTK     'static
+                            .BackColor = mErrorColor
+                            iFlagTonTK = 1
+                        End If
+                     End If
+                Else
+                    .Col = .ColLetterToNumber(Col_V)
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = errTon     'static
+                    .BackColor = mErrorColor
+
+                     .Col = .ColLetterToNumber(Col_Y)
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = errTon     'static
+                    .BackColor = mErrorColor
+                    iFlagTon = 1
+                End If
+            Else
+                .Col = .ColLetterToNumber(Col_V)
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = ""     'static
+                .BackColor = mNonErrorColor
+
+                 .Col = .ColLetterToNumber(Col_Y)
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = ""     'static
+                .BackColor = mNonErrorColor
+            End If
+            
+            
+
+            .Row = j
+            .Row = .Row + 1
+            .Col = .ColLetterToNumber("B")
+
+            If UCase(.Text) = "AA" Then
+                isNotCheckTrongKhoang = True
+                .Row = .Row + 3
+            End If
+        Loop Until .Text = "bb"
+                
+        ' Kiem tra du lieu nguoi dai dien
+         .GetText .ColLetterToNumber(Col_R), countDynamicRow + 54, strNguoiKy
+         .GetText .ColLetterToNumber(Col_D), countDynamicRow + 54, strNguoiLapBieu
+         .GetText .ColLetterToNumber(Col_R), countDynamicRow + 56, strNgayKy
+         .GetText .ColLetterToNumber(Col_O), 8, strNgayHuy
+         ' kiem tra nguoi ky bat buoc nhap
+         If Trim(strNguoiKy) = "" Then
+            .Row = countDynamicRow + 54
+            .Col = .ColLetterToNumber(Col_R)
+            .CellNote = errEmty  'static
+            .BackColor = mErrorColor
+            iFlagEmty = 1
+         Else
+            .Row = countDynamicRow + 54
+            .Col = .ColLetterToNumber(Col_R)
+            .CellNote = ""
+            .BackColor = mNonErrorColor
+         End If
+         'kiem tra ngay ky
+         If Trim(strNgayKy) = "" Or Trim(strNgayKy) = "../../...." Then
+            .Row = countDynamicRow + 56
+            .Col = .ColLetterToNumber(Col_R)
+            .CellNote = errEmty  'static
+            .BackColor = mErrorColor
+            iFlagEmty = 1
+         Else
+                strNgayKy = DateSerial(CInt(Mid$(strNgayKy, 7, 4)), CInt(Mid$(strNgayKy, 4, 2)), CInt(Mid$(strNgayKy, 1, 2)))
+                If strNgayKy > Now Then
+                    .Col = .ColLetterToNumber(Col_R)
+                    .Row = countDynamicRow + 56
+                    .CellNote = errNgayKy  'static
+                    .BackColor = mErrorColor
+                    iFlagNgayKy = 1
+                Else
+                    .Row = countDynamicRow + 56
+                    .Col = .ColLetterToNumber(Col_R)
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
+         End If
+         
+         ' group so hoa don vao thanh tung nhom
+         
+'         .Row = 46
+'         .Col = .ColLetterToNumber("B")
+'         Dim arrGroupValue() As String  ' Luu thong tin cua tung dong check
+'         Dim coutCheck, countCheckTrung As Long
+'         Dim arrGroupHDNew As String
+'         Dim vitriGhep As Long
+'
+'         Dim strGroupHDTS_DS As String
+'         'Dim isTrung As Boolean
+'
+'         Do
+'            .GetText .ColLetterToNumber(Col_D), .Row, strTenHD
+'            .GetText .ColLetterToNumber(Col_O), .Row, strMauSoHD
+'            .GetText .ColLetterToNumber(Col_S), .Row, strKyHieuHD
+'            .GetText .ColLetterToNumber(Col_V), .Row, strTuSo
+'            .GetText .ColLetterToNumber(Col_Y), .Row, strDenso
+'            .GetText .ColLetterToNumber(Col_AA), .Row, strSoLuong
+'            .GetText .ColLetterToNumber("AI"), .Row, strId
+'            If .Row = 46 Then
+'                strGroupHD = Trim(strTenHD) & "~" & Trim(strMauSoHD) & "~" & Trim(strKyHieuHD) & "~0"
+'                strGroupHDTS_DS = Trim(strTenHD) & "~" & Trim(strMauSoHD) & "~" & Trim(strKyHieuHD) & getListHDTS_DS(CStr(strTuSo), CStr(strDenso))
+'            Else
+'                arrGroupHD = Split(strGroupHD, "###")
+'                coutCheck = 0
+'                countCheckTrung = 0
+'                For i = 0 To UBound(arrGroupHD)
+'                    coutCheck = coutCheck + 1
+'                    arrGroupValue = Split(arrGroupHD(i), "~")
+'                    If Trim(strTenHD) = arrGroupValue(0) And Trim(strMauSoHD) = arrGroupValue(1) And Trim(strKyHieuHD) = arrGroupValue(2) Then
+'                        Exit For
+'                    Else
+'                        countCheckTrung = countCheckTrung + 1
+'                    End If
+'                Next i
+'                If coutCheck = countCheckTrung Then
+'                    strGroupHD = strGroupHD & "###" & Trim(strTenHD) & "~" & Trim(strMauSoHD) & "~" & Trim(strKyHieuHD) & "~0"
+'                    strGroupHDTS_DS = strGroupHDTS_DS & "###" & Trim(strTenHD) & "~" & Trim(strMauSoHD) & "~" & Trim(strKyHieuHD) & getListHDTS_DS(CStr(strTuSo), CStr(strDenso))
+'                End If
+'            End If
+'            .Row = .Row + 1
+'         Loop Until .Text = "aa"
+'         ' Tinh tong cac so hoa don cung 1 loai
+'            .Row = 46
+'            .Col = .ColLetterToNumber("B")
+'             Do
+'            .GetText .ColLetterToNumber(Col_D), .Row, strTenHD
+'            .GetText .ColLetterToNumber(Col_O), .Row, strMauSoHD
+'            .GetText .ColLetterToNumber(Col_S), .Row, strKyHieuHD
+'            .GetText .ColLetterToNumber(Col_V), .Row, strTuSo
+'            .GetText .ColLetterToNumber(Col_Y), .Row, strDenso
+'            .GetText .ColLetterToNumber(Col_AA), .Row, strSoLuong
+'            .GetText .ColLetterToNumber("AI"), .Row, strId
+'            arrGroupHD = Split(strGroupHD, "###")
+'            arrGroupHDNew = ""
+'            If UBound(arrGroupHD) > 0 Then
+'                For i = 0 To UBound(arrGroupHD)
+'                    arrGroupValue = Split(arrGroupHD(i), "~")
+'                    If Trim(strTenHD) = arrGroupValue(0) And Trim(strMauSoHD) = arrGroupValue(1) And Trim(strKyHieuHD) = arrGroupValue(2) Then
+'                        arrGroupValue(3) = Val(arrGroupValue(3)) + Val(strSoLuong)
+'                        arrGroupHDNew = arrGroupValue(0) & "~" & arrGroupValue(1) & "~" & arrGroupValue(2) & "~" & arrGroupValue(3)
+'                        vitriGhep = i
+'                        Exit For
+'                    End If
+'                Next i
+'                ' ghep lai chuoi moi khi da cong du lieu
+'                strGroupHD = ""
+'                For i = 0 To UBound(arrGroupHD)
+'                    If i = vitriGhep Then
+'                        strGroupHD = strGroupHD & "###" & arrGroupHDNew
+'                    Else
+'                        strGroupHD = strGroupHD & "###" & arrGroupHD(i)
+'                    End If
+'                Next i
+'                strGroupHD = Mid$(strGroupHD, 4)
+'            Else
+'                arrGroupValue = Split(arrGroupHD(0), "~")
+'                arrGroupValue(3) = Val(arrGroupValue(3)) + Val(strSoLuong)
+'                strGroupHD = arrGroupValue(0) & "~" & arrGroupValue(1) & "~" & arrGroupValue(2) & "~" & arrGroupValue(3)
+'            End If
+'
+'
+'            .Row = .Row + 1
+'         Loop Until .Text = "aa"
+'
+'         ' Lay ve group cua sheet 1
+'         Dim isNotExistBC As Boolean
+'         arrGroupHD_TK = Split(strCheckTon, "###")
+'         arrGroupHD = Split(strGroupHD, "###")
+'        ' If UBound(arrGroupHD) > 0 Then
+'            For i = 0 To UBound(arrGroupHD)
+'                arrGroupValue = Split(arrGroupHD(i), "~")
+'                isNotExistBC = False
+'                For j = 0 To UBound(arrGroupHD_TK)
+'                    arrGroupValue_TK = Split(arrGroupHD_TK(j), "~")
+'                    If arrGroupValue(0) = arrGroupValue_TK(0) And arrGroupValue(1) = arrGroupValue_TK(1) And arrGroupValue(2) = arrGroupValue_TK(2) Then
+'                        isNotExistBC = True ' co ton tai trong bao cao
+'                        If arrGroupValue(3) <> arrGroupValue_TK(3) Then
+'                            .Row = 46
+'                            .Col = .ColLetterToNumber("B")
+'                            Do
+'                                .GetText .ColLetterToNumber(Col_D), .Row, strTenHD
+'                                .GetText .ColLetterToNumber(Col_O), .Row, strMauSoHD
+'                                .GetText .ColLetterToNumber(Col_S), .Row, strKyHieuHD
+'                                If arrGroupValue(0) = Trim(strTenHD) And arrGroupValue(1) = Trim(strMauSoHD) And arrGroupValue(2) = Trim(strKyHieuHD) Then
+'                                    .Col = .ColLetterToNumber(Col_AA)
+'                                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                                    .CellNote = errTon     'static
+'                                    .BackColor = mErrorColor
+'                                    iFlagTon = 1
+'                                 End If
+'                                 .Row = .Row + 1
+'                                 .Col = .ColLetterToNumber("B")
+'                            Loop Until UCase(.Text) = "AA"
+'                            Exit For ' Thoat vong lap trong
+'                        End If
+'                    Else
+'
+''                        .Row = 46
+''                        .Col = .ColLetterToNumber("B")
+''                        Do
+''                            .Col = .ColLetterToNumber(Col_AA)
+''                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+''                            .CellNote = ""     'static
+''                            .BackColor = mNonErrorColor
+''                            iFlagTon = 0
+''                            .Row = .Row + 1
+''                            .Col = .ColLetterToNumber("B")
+''                        Loop Until UCase(.Text) = "AA"
+'                    End If
+'                Next j
+'                ' Neu truong hop khong ton tai trong bao cao thi se thong bao loi
+'                If isNotExistBC = False Then
+'                        .Row = 46
+'                        .Col = .ColLetterToNumber("B")
+'                        Do
+'                            .GetText .ColLetterToNumber(Col_D), .Row, strTenHD
+'                            .GetText .ColLetterToNumber(Col_O), .Row, strMauSoHD
+'                            .GetText .ColLetterToNumber(Col_S), .Row, strKyHieuHD
+'                            If arrGroupValue(0) = Trim(strTenHD) And arrGroupValue(1) = Trim(strMauSoHD) And arrGroupValue(2) = Trim(strKyHieuHD) Then
+'                                .Col = .ColLetterToNumber(Col_AA)
+'                                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                                .CellNote = errTon     'static
+'                                .BackColor = mErrorColor
+'                                iFlagTon = 1
+'                             End If
+'                             .Row = .Row + 1
+'                             .Col = .ColLetterToNumber("B")
+'                        Loop Until UCase(.Text) = "AA"
+'                End If
+'            Next i
+'         Else
+'
+'         End If
+         
+         ' So sanh ton tren group sheet 1 va group sheet 2
+         'for i = 0 to Ubound(
+         
+         ' end
+        
+        ' set lai trang thai cua HDR
+          .Sheet = .SheetCount
+         .SetText .ColLetterToNumber("B"), 37, IIf(iFlagEmty = 1, "0", "1")
+         .SetText .ColLetterToNumber("B"), 32, IIf(iFlagMauSoHD = 1, "0", "1")
+         .SetText .ColLetterToNumber("B"), 34, IIf(iFlagSoLienHD = 1, "0", "1")
+         .SetText .ColLetterToNumber("B"), 33, IIf(iFlagKyHieu = 1, "0", "1")
+         .SetText .ColLetterToNumber("B"), 35, IIf(iFlagLengHD = 1, "0", "1")
+         .SetText .ColLetterToNumber("B"), 36, IIf(iFlagSoLuong = 1, "0", "1")
+         .SetText .ColLetterToNumber("B"), 38, IIf(iFlagNgayHuy = 1, "0", "1")
+         .SetText .ColLetterToNumber("B"), 39, IIf(iFlagNgayKy = 1, "0", "1")
+         .SetText .ColLetterToNumber("B"), 40, IIf(iFlagKhoangTSDSTrung = 1, "0", "1")
+         .SetText .ColLetterToNumber("B"), 50, IIf(iFlagTon = 1, "0", "1")
+         .SetText .ColLetterToNumber("B"), 48, IIf(iFlagTonTK = 1, "0", "1")
+         
+         .SetText .ColLetterToNumber("B"), 54, IIf(iFlagSoLienHD = 2, "0", "1")
+        ' CheckErrorMST
+        '.ReDraw = True
+        '.Visible = True
+        .EventEnabled(EventAllEvents) = True
+    End With
+    
 End Sub
