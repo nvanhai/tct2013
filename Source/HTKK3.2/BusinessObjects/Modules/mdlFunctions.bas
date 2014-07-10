@@ -1239,10 +1239,13 @@ Public Function CheckSoHD(str As String, strLoai As Variant) As String
   strTmpKH = "ABCDEGHKLMNPQRSTUVXY"
   result = "0"
   ' kiem tra length 6 ky tu
-  If Len(Trim(str)) <> 6 And Len(Trim(str)) <> 8 Then
-    result = "2"
-    CheckSoHD = result
-    Exit Function
+  If strLoai = "3" Then
+  Else
+    If Len(Trim(str)) <> 6 And Len(Trim(str)) <> 8 Then
+      result = "2"
+      CheckSoHD = result
+      Exit Function
+    End If
   End If
   If strLoai = "3" Then
             ' 2 ky tu dau la ca ky tu chu cai "ABCDEGHKLMNPQRSTUVXY"
