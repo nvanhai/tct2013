@@ -392,7 +392,6 @@
 			<Sheet ID="01" Caption="BC26-AC" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BC26_AC" InterfaceIni="..\InterfaceIni\BC26_AC.xml" ReportIni="..\ReportIni\BC26_AC.xml"/>
 			<Sheet ID="01_1" Caption="Mẫu 3.12(Kỳ báo cáo cuối cùng)" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_1_BC26_AC" InterfaceIni="..\InterfaceIni\01_1_BC26_AC.xml" ReportIni="..\ReportIni\01_1_BC26_AC.xml"/>
 			<Sheet ID="01_2" Caption="Mẫu 3.10(Chuyển địa điểm)" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_2_BC26_AC" InterfaceIni="..\InterfaceIni\01_2_BC26_AC.xml" ReportIni="..\ReportIni\01_2_BC26_AC.xml"/>
-			<Sheet ID="01_3" Caption="Mẫu 3.12(Chuyển hình thức)" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_3_BC26_AC" InterfaceIni="..\InterfaceIni\01_3_BC26_AC.xml" ReportIni="..\ReportIni\01_3_BC26_AC.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
 		</Validity>
 	</Menu>
@@ -403,7 +402,6 @@
 			<Sheet ID="01" Caption="BC26-AC" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BC26_AC_SL" InterfaceIni="..\InterfaceIni\BC26_AC_SL.xml" ReportIni="..\ReportIni\BC26_AC_SL.xml"/>
 			<Sheet ID="01_1" Caption="Mẫu 3.12(Kỳ báo cáo cuối cùng)" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_1_BC26_AC_SL" InterfaceIni="..\InterfaceIni\01_1_BC26_AC_SL.xml" ReportIni="..\ReportIni\01_1_BC26_AC_SL.xml"/>
 			<Sheet ID="01_2" Caption="Mẫu 3.10(Chuyển địa điểm)" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_2_BC26_AC_SL" InterfaceIni="..\InterfaceIni\01_2_BC26_AC_SL.xml" ReportIni="..\ReportIni\01_2_BC26_AC_SL.xml"/>
-			<Sheet ID="01_3" Caption="Mẫu 3.12(Chuyển hình thức)" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_3_BC26_AC_SL" InterfaceIni="..\InterfaceIni\01_3_BC26_AC_SL.xml" ReportIni="..\ReportIni\01_3_BC26_AC_SL.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
 		</Validity>
 	</Menu>
