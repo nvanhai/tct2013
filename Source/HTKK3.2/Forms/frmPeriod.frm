@@ -3931,12 +3931,12 @@ Private Sub Form_Load()
 '        SetupLayout02_TAIN_DK
     ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "23" Then
         SetupLayout01TTS
-    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "18" Then
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
         SetupLayoutBC26
     ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "65" Then
         SetupLayoutBC01
     Else
-        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "13" Then
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "13" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "18"  Then
             strQuy = "TK_QUY"
         End If
         SetupLayout (strKieuKy)
