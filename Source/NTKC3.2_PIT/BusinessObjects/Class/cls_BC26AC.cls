@@ -334,7 +334,8 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim vPHONG_XU_LY
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
-    Dim vKyBCCuoi, vChuyenDiaDiem, vChuyenDoiHinhThucSD
+    Dim vKyBCCuoi, vChuyenDiaDiem ', vChuyenDoiHinhThucSD
+    Dim vFlagThangQuy
     
 On Error GoTo ErrHandle
     strSQL = SqlHdr_AC
@@ -396,7 +397,8 @@ On Error GoTo ErrHandle
         
         .GetText .ColLetterToNumber("E"), 16, vKyBCCuoi
         .GetText .ColLetterToNumber("K"), 16, vChuyenDiaDiem
-        .GetText .ColLetterToNumber("Q"), 16, vChuyenDoiHinhThucSD
+        '.GetText .ColLetterToNumber("Q"), 16, vChuyenDoiHinhThucSD
+        .GetText .ColLetterToNumber("AF"), 1, vFlagThangQuy
         
                 
         .EventEnabled(EventAllEvents) = False
@@ -409,34 +411,44 @@ On Error GoTo ErrHandle
     End If
     vPHONG_QUAN_LY = strMaPQL
     
-    ' Lay Quy BC
-'    If Trim(TAX_Utilities_Srv_New.ThreeMonths) <> "" Then
-'        dDate = dNgayDauKy
-'        vQUY_BC = Format(dDate, "dd/mm/yyyy")
-'    End If
-'"To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
-    If (vKY_BC_TUNGAY <> "") Then
+    ''Lay Quy BC
+    If vFlagThangQuy = "1" Then
+        If Trim(TAX_Utilities_Srv_New.ThreeMonths) <> "" Then
+            dDate = dNgayDauKy
+            vQUY_BC = Format(dDate, "dd/mm/yyyy")
+        End If
+    Else
+        'TO KHAI THANG
         vQUY_BC = vKY_BC_TUNGAY
     End If
     
-    ' lay gia tri loai BC 26
-    If Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" And Trim(CStr(vChuyenDoiHinhThucSD)) = "1" Then
-        vLoai_BC26 = "05"
-    ElseIf Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
-        ' bao cao quy
-        vLoai_BC26 = "01"
-    ElseIf Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "1" Then
-        ' bao cao chuyen dia diem
-        vLoai_BC26 = "03"
-    ElseIf Trim(CStr(vKyBCCuoi)) = "1" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
-        ' bao cao quyet toan cuoi tung
-        vLoai_BC26 = "02"
+    If vFlagThangQuy = "1" Then
+        If Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
+            ' bao cao quy
+            vLoai_BC26 = "01"
+        ElseIf Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "1" Then
+            ' bao cao chuyen dia diem
+            vLoai_BC26 = "03"
+        ElseIf Trim(CStr(vKyBCCuoi)) = "1" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
+            ' bao cao quyet toan cuoi tung
+            vLoai_BC26 = "02"
+        Else
+            '
+            vLoai_BC26 = "04"
+        End If
     Else
-        '
-        vLoai_BC26 = "04"
+        If Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
+            vLoai_BC26 = "01T"
+        ElseIf Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "1" Then
+            ' bao cao chuyen dia diem
+            vLoai_BC26 = "03T"
+        ElseIf Trim(CStr(vKyBCCuoi)) = "1" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
+            ' bao cao quyet toan cuoi tung
+            vLoai_BC26 = "02T"
+        Else
+            vLoai_BC26 = "04T"
+        End If
     End If
-    
-    
     ' Tach ma so thue thanh ma 14 ky tu
     If Len(Trim(CStr(vTIN))) = 13 Then
         vTIN = Left(CStr(vTIN), 10) & "-" & Right(CStr(vTIN), 3)
