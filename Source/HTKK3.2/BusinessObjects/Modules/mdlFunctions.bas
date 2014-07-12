@@ -42,6 +42,7 @@ Public Const SxMST13Col = "P"
 Public Const Str_01BLP = "01BLP"
 Public Const Str_02BLP = "02BLP"
 
+Public strMauSoHD_01GTKT As Variant
 
 Public mCurrentSheet As Integer
 Public strFirstTimeRunID As String
@@ -1236,6 +1237,9 @@ Public Function CheckSoHD(str As String, strLoai As Variant) As String
   
   strLoaiIn = "ETP"
   strLoaiIn120 = "BNT"
+  
+  strLoaiInNNXC = "TP"
+  
   strTmpKH = "ABCDEGHKLMNPQRSTUVXY"
   result = "0"
   ' kiem tra length 6 ky tu
@@ -1293,7 +1297,20 @@ Public Function CheckSoHD(str As String, strLoai As Variant) As String
                   result = "1"
                End If
             Else
-                 result = "1"
+                'kiem tra ne 01GTKT thi cho phep nhap them NN/XC
+                If Left$(Trim$(CStr(strMauSoHD_01GTKT)), 6) = "01GTKT" Then
+                    If InStr(str, "/") > 0 And str1 = "NN" And Mid$(str, 2, 2) = "XC" Then
+                       If InStr(strLoaiInNNXC, UCase(Right$(str, 1))) > 0 Then
+                            result = "0"
+                       Else
+                            result = "1"
+                       End If
+                    Else
+                       result = "1"
+                    End If
+                Else
+                    result = "1"
+                End If
             End If
     End If
   CheckSoHD = result

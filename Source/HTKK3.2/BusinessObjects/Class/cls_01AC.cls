@@ -567,6 +567,11 @@ Private Sub checkSheet1()
             
             .GetText .ColLetterToNumber("Q"), .Row, strSoLuong
             .GetText .ColLetterToNumber("N"), .Row, strId
+            
+            ' set gia tri cho check KH NN/XC
+            strMauSoHD_01GTKT = Trim(Mid(strId, 11, 6))
+            ' end
+            
             'check mau so hoa don
             If Trim(Tenloaihd1) <> "" Or Trim(mauso1) <> "" Or Trim(kyhieu1) <> "" Or Trim(Tuso1) <> "" Or Trim(denso1) <> "" Or Trim(strId) <> "" Or Trim(vMST) <> "" Then
                 ' Khong phai dong trang
