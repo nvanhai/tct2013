@@ -526,7 +526,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":02C8
+      SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
    End
@@ -6954,7 +6954,11 @@ On Error GoTo ErrHandle
                         End If
                     ' phuc vu an chi
                     ElseIf strKieuKy = "H_Y" Then
-                        strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_0" & cmbQuy.Text & txtYear.Text & ".xml"
+                        If strQuy = "TK_THANG" Then
+                            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_T" & txtMonth.Text & txtYear.Text & ".xml"
+                        Else
+                            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_0" & cmbQuy.Text & txtYear.Text & ".xml"
+                        End If
                     ' end
                     ElseIf strKieuKy = KIEU_KY_NGAY_NAM Then
                         If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "80" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "82" Then
