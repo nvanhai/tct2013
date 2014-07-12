@@ -1020,7 +1020,7 @@ Private Sub cmdSave_Click()
     '*************************************************************
     
     ' xu ly nhan cac mau an chi co canh bao khi quet trung
-    If (Val(idToKhai) <= 68 And Val(idToKhai) >= 64) Or Val(idToKhai) = 91 Or Val(idToKhai) = 7 Or Val(idToKhai) = 9 Or Val(idToKhai) = 10 Or Val(idToKhai) = 13 Or Val(idToKhai) = 14 Then
+    If (Val(idToKhai) <= 68 And Val(idToKhai) >= 64) Or Val(idToKhai) = 91 Or Val(idToKhai) = 18 Or Val(idToKhai) = 27 Or Val(idToKhai) = 7 Or Val(idToKhai) = 9 Or Val(idToKhai) = 10 Or Val(idToKhai) = 13 Or Val(idToKhai) = 14 Then
 
         ' xu ly an chi
         If isTonTaiAC = True Then
@@ -1090,8 +1090,8 @@ Private Sub cmdSave_Click()
             ' nvhai
             ' Neu la ID cua cac BCTC in bang HTKK 2.1.0
             ' begin
-            'remove id 24,25,26 14/11/2013
-            If (Val(idToKhai) = 26 Or Val(idToKhai) = 27 Or Val(idToKhai) = 28 Or Val(idToKhai) = 29 Or Val(idToKhai) = 30 Or Val(idToKhai) = 31 Or Val(idToKhai) = 32 Or Val(idToKhai) = 33 Or Val(idToKhai) = 34 Or Val(idToKhai) = 35 Or Val(idToKhai) = 55 Or Val(idToKhai) = 56 Or Val(idToKhai) = 57 Or Val(idToKhai) = 58) Then
+            'remove id 24,25,26 14/11/2013, remote 27
+            If (Val(idToKhai) = 26 Or Val(idToKhai) = 28 Or Val(idToKhai) = 29 Or Val(idToKhai) = 30 Or Val(idToKhai) = 31 Or Val(idToKhai) = 32 Or Val(idToKhai) = 33 Or Val(idToKhai) = 34 Or Val(idToKhai) = 35 Or Val(idToKhai) = 55 Or Val(idToKhai) = 56 Or Val(idToKhai) = 57 Or Val(idToKhai) = 58) Then
                 flgBCTC = True
 
                 If verToKhai = 0 Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
@@ -1187,7 +1187,7 @@ Private Sub cmdSave_Click()
     End If
 
     ' xu ly de ghi cac mau an chi
-    If Val(idToKhai) = 66 Or Val(idToKhai) = 68 Or Val(idToKhai) = 67 Or Val(idToKhai) = 64 Or Val(idToKhai) = 65 Or Val(idToKhai) = 91 Or Val(idToKhai) = 7 Or Val(idToKhai) = 9 Or Val(idToKhai) = 13 Or Val(idToKhai) = 10 Or Val(idToKhai) = 14 Then
+    If Val(idToKhai) = 66 Or Val(idToKhai) = 68 Or Val(idToKhai) = 18 Or Val(idToKhai) = 27 Or Val(idToKhai) = 67 Or Val(idToKhai) = 64 Or Val(idToKhai) = 65 Or Val(idToKhai) = 91 Or Val(idToKhai) = 7 Or Val(idToKhai) = 9 Or Val(idToKhai) = 13 Or Val(idToKhai) = 10 Or Val(idToKhai) = 14 Then
         strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl_AC").nodeValue)
     Else
         strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl").nodeValue)
@@ -1666,12 +1666,67 @@ Private Sub Command1_Click()
 'str2 = "aa323683300322878   05201400100100100101/0101/01/1900<S01><S></S><S>Kg~20001~1200~010101</S><S>Kg~12300~200~010102</S><S>~Nguyen van a~~30/06/2014~1~~</S></S01>"
 'Barcode_Scaned str2
 
-'//TEST CAC TO HOA DON VTV ONLINE
-''quy
-'str2 = "aa323682100343639   02201400500700100101/0101/01/2009<S01><S>~~01/04/2014~30/06/2014</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~minh lan~09/07/2014~1</S></S01>"
-str2 = "aa324682100343639   02201400400400100101/0101/01/2009<S01><S>~~01/04/2014~30/06/2014</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~minh lan~09/07/2014~1~1</S></S01>"
-''thang
-'str2 = "aa323682100343639   06201400600900100101/0101/01/2009<S01><S>~~01/06/2014~30/06/2014</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~minh lan~09/07/2014~0</S></S01>"
+'str2 = "aa324682100343639   06201400801400100201/0101/01/2009<S01><S>X~~13/06/2014~30/06/2014</S><S>~~~0~~~~~~~0~0~0~~0~~0~~~~0~0</S><S>~minh lan~11/07/2014~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa324682100343639   062014008014002002<S01_1><S>~~~~~0~</S><S>~~~~~0~</S><S></S></S01_1>"
+'Barcode_Scaned str2
+
+''IN CHO EN
+''01_TBAC
+'str2 = "aa324642100343639   07201400200200100101/0101/01/2009<S01><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT2/001~QS/11P~100~0000001~0000100~01/01/2015~Doanh nghi?p A~2222222222~HDKT23~01/03/2014~~Hãa ®¬n b¸n hang dù tr÷ quèc gia~01BHDT2/001~QD/11T~9801~0000200~0010000~09/09/2014~~~~~~Hoa don cu~DFTTT~HD/SGT~30~0000001~0000030~09/08/2014~~~~~</S><S>LAI KUAN PING~2222222222~CCt Cau Giay~10/07/2014~LAI KUAN PING</S></S01>"
+'Barcode_Scaned str2
+'
+''01_AC
+'str2 = "aa324652100343639   01201400400400100101/0101/01/2009<S01><S>x~01/01/2014~30/06/2014</S><S>2222222222~Cty ABC~Duy Tan - Cau Giay~HDKR21~01/03/2014~Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT2/001~QS/11T~0000001~0000100~100~~0102030405~cty XYZ~Hai Ba Trung~HKDt14~09/05/2014~~~~~~~~2222222222~cty abd~Xuan Thuy~sdff~01/02/2014~Hãa ®¬n b¸n hang dù tr÷ quèc gia~01BHDT2/001~QS/11T~0000200~0001000~801~</S><S>LAI KUAN PING~10/07/2014</S></S01>"
+'Barcode_Scaned str2
+'
+''BC21_AC
+'str2 = "aa324662100343639   02201400100100100101/0101/01/2010<S01><S>10/07/2014~9~27</S><S>Hãa ®¬n b¸n hang dù tr÷ quèc gia~01BHDT2/001~QS/11T~0000001~0000100~100~Lien 1~05~0~Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT2/001~QD/11T~0000020~0000400~381~Lien 7, 8~02~0</S><S>Chay nha~LAI KUAN PING~10-07-2014</S></S01>"
+'Barcode_Scaned str2
+'
+''03_TBAC
+'str2 = "aa324672100343639   02201400200200100101/0101/01/2010<S01><S>CCT Cau Giay~Dung may huy~28~10/07/2014~9</S><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT2/001~QS/11T~0000001~0000100~100~0~Hãa ®¬n b¸n hang dù tr÷ quèc gia~01BHDT3/009~QH/12P~0000020~0003000~2981~0</S><S>Nguyen Van A~LAI KUAN PING~10/07/2014</S></S01>"
+'Barcode_Scaned str2
+'
+''04_TBAC
+'str2 = "aa324912100343639   07201400100100100101/0101/01/2009<S01><S>cu~moi~01DVPH~cu2~moi2~02DCTS</S><S>01/01/2014~LAI KUAN PING~2222222222~tct~10/07/2014~LAI KUAN PING</S></S01>"
+'Barcode_Scaned str2
+
+''DATA for BC26_AC
+'01T
+'str2 = "aa324682100343639   06201400100100100101/0101/01/2009<S01><S>~~01/06/2014~30/06/2014</S><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT2/001~QS/11T~21~0000010~0000020~0000021~0000030~0000010~0000011~2~1~0~~1~11~0~~0000012~0000030~19~0~Hãa ®¬n b¸n hang dù tr÷ quèc gia~01BHDT2/001~QS/11T~201~0000100~0000200~0000201~0000300~0000100~0000100~1~1~0~~0~~0~~0000101~0000300~200~0</S><S>NGUYEN VAN B~NGUYEN VAN A~12/07/2014~0</S></S01>"
+'Barcode_Scaned str2
+
+''02T
+'str2 = "aa324682100343639   06201400300300100201/0101/01/2009<S01><S>X~~01/06/2014~30/06/2014</S><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT2/001~QS/11T~21~0000010~0000020~0000021~0000030~0000010~0000011~2~1~0~~1~11~0~~0000012~0000030~19~0~Hãa ®¬n b¸n hang dù tr÷ quèc gia~01BHDT2/001~QS/11T~201~0000100~0000200~0000201~0000300~0000100~0000100~1~1~0~~0~~0~~0000101~0000300~200~0</S><S>NGUYEN VAN B~NGUYEN VAN A~12/07/2014~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa324682100343639   062014003003002002<S01_1><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT2/001~QS/11T~0000015~0000019~5~0</S><S>~~~~~0~</S><S>HAN - Côc ThuÕ Thµnh phè Hµ Néi                                                                                                                                                             {10100}</S></S01_1>"
+'Barcode_Scaned str2
+
+''03T
+'str2 = "aa324682100343639   06201400700800100201/0101/01/2009<S01><S>~X~01/06/2014~30/06/2014</S><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT2/001~QS/11T~281~0000120~0000320~0000321~0000400~0000120~0000219~100~100~0~~0~~0~~0000220~0000400~181~0~Hãa ®¬n b¸n hang dù tr÷ quèc gia~01BHDT2/001~QD/11P~201~0000100~0000200~0000201~0000300~0000100~0000299~200~200~0~~0~~0~~0000300~0000300~1~0</S><S>~NGUYEN VAN A~12/07/2014~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa324682100343639   062014007008002002<S01_2><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT2/001~QS/11T~0000220~0000230~11</S></S01_2>"
+'Barcode_Scaned str2
+
+''//BC26_AC_SL
+'str2 = "aa324182100343639   02201400100100100101/0101/01/2009<S01><S>~~01/04/2014~30/06/2014</S><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT0/001~E~10~20~10~0~0~~~30~GHI CHU 1~0~Hãa ®¬n b¸n hang dù tr÷ quèc gia~01BHDT2/001~P~20~30~30~0~0~~~50~GHI CHU 2~0</S><S>NGUYEN VAN A~NGUYEN VAN B~12/07/2014</S></S01>"
+'Barcode_Scaned str2
+
+'02SL
+'str2 = "aa324182100343639   02201400300300100201/0101/01/2009<S01><S>X~~01/04/2014~30/06/2014</S><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT0/001~E~10~20~10~0~0~~10~20~GHI CHU 1~0~Hãa ®¬n b¸n hang dù tr÷ quèc gia~01BHDT2/001~P~20~30~30~0~0~~30~20~GHI CHU 2~0</S><S>NGUYEN VAN A~NGUYEN VAN B~12/07/2014</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa324182100343639   022014003003002002<S01_1><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT2/001~QS/11T~0000010~0000015~6~0</S><S>~~~~~0~1</S><S></S></S01_1>"
+'Barcode_Scaned str2
+
+''03SL
+'str2 = "aa324182100343639   02201400400400100201/0101/01/2009<S01><S>~X~01/04/2014~30/06/2014</S><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT2/001~P~100~200~100~10~10~10~130~170~ghi chu1~0~Hãa ®¬n b¸n hang dù tr÷ quèc gia~01BHDT0/002~E~200~300~200~100~20~10~330~170~ghi chu 2~0</S><S>nguyen van a~nguyen van b~12/07/2014</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa324182100343639   022014004004002002<S01_2><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT2/001~QS/11T~0000130~0000150~21</S></S01_2>"
+'Barcode_Scaned str2
+
+''BK01_AC
+str2 = "aa324272100343639   07201400200200100101/0101/01/2009<S01><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT2/001~QS/11P~0000100~0000200~101~~Hãa ®¬n b¸n hang dù tr÷ quèc gia~01BHDT2/001~AB/13P~0000200~0000500~301~</S><S>Nguyen van A~12/07/2014</S></S01>"
 Barcode_Scaned str2
 
 End Sub
@@ -1961,10 +2016,10 @@ Private Sub Barcode_Scaned(strBarcode As String)
         ' 2. To khai CDKT phien ban 2.0.0 co ID la 18 (bo 15) -> chuyen thanh ID la 55
         If Left$(strPrefix, 3) = "210" Or Left$(strPrefix, 3) = "200" Or Left$(strPrefix, 3) = "131" Or Left$(strPrefix, 3) = "130" Then
             idToKhai = Mid(strPrefix, 4, 2)
-
-            If Trim(idToKhai) = "18" Then
-                strPrefix = Left$(strPrefix, 3) & "55" & Mid$(strPrefix, 6, Len(strPrefix) - 5)
-            End If
+'remove for 01_BK_BC26_AC
+'            If Trim(idToKhai) = "18" Then
+'                strPrefix = Left$(strPrefix, 3) & "55" & Mid$(strPrefix, 6, Len(strPrefix) - 5)
+'            End If
 
             If Trim(idToKhai) = "19" Then
                 strPrefix = Left$(strPrefix, 3) & "56" & Mid$(strPrefix, 6, Len(strPrefix) - 5)
@@ -2258,7 +2313,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
         
         '17102011 khong nhan cac mau an chi in ra bang HTKK phien ban nho hon 302
         If (Val(Left$(strPrefix, 3)) < 302) Then
-            If Trim(idToKhai) = "64" Or Trim(idToKhai) = "65" Or Trim(idToKhai) = "66" Or Trim(idToKhai) = "67" Or Trim(idToKhai) = "68" Then
+            If Trim(idToKhai) = "64" Or Trim(idToKhai) = "65" Or Trim(idToKhai) = "66" Or Trim(idToKhai) = "67" Or Trim(idToKhai) = "68" Or Trim(idToKhai) = "18" Or Trim(idToKhai) = "27" Then
                 DisplayMessage "0122", msOKOnly, miInformation
                 Exit Sub
             End If
@@ -2697,8 +2752,8 @@ On Error GoTo ErrHandler
     Dim idToKhaiCheck As Integer
     ' Khong check doi voi cac BCTC
     idToKhaiCheck = Val(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
-    'remove 24,25,26
-    If (idToKhaiCheck >= 27 And idToKhaiCheck <= 35) Or (idToKhaiCheck >= 55 And idToKhaiCheck <= 58) Or (idToKhaiCheck >= 18 And idToKhaiCheck <= 21) Or idToKhaiCheck = 69 Then
+    'remove 24,25,26,18,27
+    If (idToKhaiCheck >= 28 And idToKhaiCheck <= 35) Or (idToKhaiCheck >= 55 And idToKhaiCheck <= 58) Or (idToKhaiCheck >= 19 And idToKhaiCheck <= 21) Or idToKhaiCheck = 69 Then
         isSheetTk = False
     End If
     
@@ -3200,9 +3255,9 @@ On Error GoTo ErrHandle
     ' begin
     Dim strIDBCTC As String
     strIDBCTC = Left$(strTaxReportInfo, 2)
-     If (Val(strIDBCTC) = 27 Or Val(strIDBCTC) = 28 Or Val(strIDBCTC) = 29 _
+     If (Val(strIDBCTC) = 28 Or Val(strIDBCTC) = 29 _
             Or Val(strIDBCTC) = 30 Or Val(strIDBCTC) = 31 Or Val(strIDBCTC) = 32 Or Val(strIDBCTC) = 33 Or Val(strIDBCTC) = 34 Or Val(strIDBCTC) = 35 _
-            Or Val(strIDBCTC) = 55 Or Val(strIDBCTC) = 56 Or Val(strIDBCTC) = 57 Or Val(strIDBCTC) = 58 Or Val(strIDBCTC) = 18 Or Val(strIDBCTC) = 19 _
+            Or Val(strIDBCTC) = 55 Or Val(strIDBCTC) = 56 Or Val(strIDBCTC) = 57 Or Val(strIDBCTC) = 58 Or Val(strIDBCTC) = 19 _
             Or Val(strIDBCTC) = 20 Or Val(strIDBCTC) = 21 Or Val(strIDBCTC) = 69) Then
         Set rsTaxInfor = GetTaxInfoBCTC(strTaxID, blnConnected)
     Else
@@ -3359,7 +3414,7 @@ On Error GoTo ErrHandle
     
     On Error GoTo ErrHandle
     
-    If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 26 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Or Val(strIDBCTC) = 68 Or Val(strIDBCTC) = 94 Or Val(strIDBCTC) = 96 Then
+    If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 26 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Or Val(strIDBCTC) = 68 Or Val(strIDBCTC) = 18 Or Val(strIDBCTC) = 94 Or Val(strIDBCTC) = 96 Then
         If Val(strIDBCTC) = 36 Then
             LoaiKyKK = LoaiToKhai(strData)
         Else
@@ -3520,7 +3575,7 @@ On Error GoTo ErrHandle
     ' Lay so thu tu cua to khai da dua vao RCV_TKHAI_HDR
     ' So thu tu nay phai lay theo cung Nguoi nop thue, ky ke khai, va cung loai to khai
     ' An chi
-    If (Val(strID) >= 64 And Val(strID) <= 68) Or Val(strID) = 91 Or Val(strID) = 7 Or Val(strID) = 9 Or Val(strID) = 10 Or Val(strID) = 13 Or Val(strID) = 14 Then
+    If (Val(strID) >= 64 And Val(strID) <= 68) Or Val(strID) = 18 Or Val(strID) = 27 Or Val(strID) = 91 Or Val(strID) = 7 Or Val(strID) = 9 Or Val(strID) = 10 Or Val(strID) = 13 Or Val(strID) = 14 Then
 
         ' An chi
         If Not getSoTTTK_AC(changeMaToKhai(strID), arrStrHeaderData, strData) Then
@@ -3984,7 +4039,7 @@ Private Function LoadForm(ByVal strData As String) As Boolean
     
     ' set ma CQT
     If Not objTaxBusiness Is Nothing Then
-        If (Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) >= 64 And Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <= 68) Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 91 _
+        If (Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) >= 64 And Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <= 68) Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 18 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 27 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 91 _
         Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 7 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 9 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 10 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 13 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 14 Then
             objTaxBusiness.strMaCQT = strTaxOfficeId
             ' lay ma phong quan ly
@@ -5562,6 +5617,15 @@ Private Function getSoTTTK_AC(ByVal strID As String, _
         End If
         
         strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=to_date('" & arrDeltail(UBound(arrDeltail) - 1) & "','dd/mm/rrrr')" & " And tkhai.TIN_DV_CQ='" & Trim(arrDeltail(UBound(arrDeltail) - 3)) & "'"
+    ElseIf strID = "01_BK_BC26_AC" Then
+        arrDeltail = Split(strData, "~")
+
+'        If Len(Trim(arrDeltail(UBound(arrDeltail) - 3))) = 13 Then
+'            arrDeltail(UBound(arrDeltail) - 3) = Left(arrDeltail(UBound(arrDeltail) - 3), 10) & "-" & Right(arrDeltail(UBound(arrDeltail) - 3), 3)
+'        End If
+        
+        'strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=to_date('" & arrDeltail(UBound(arrDeltail) - 1) & "','dd/mm/rrrr')" & " And tkhai.TIN_DV_CQ='" & Trim(arrDeltail(UBound(arrDeltail) - 3)) & "'"
+        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=to_date('" & Left(arrDeltail(UBound(arrDeltail)), 10) & "','dd/mm/rrrr')" '"
     ElseIf strID = "03_TBAC" Then
         arrDeltail = Split(strData, "~")
         strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=to_date('" & Left$(arrDeltail(UBound(arrDeltail)), 10) & "','dd/mm/rrrr')"
@@ -5577,6 +5641,14 @@ Private Function getSoTTTK_AC(ByVal strID As String, _
         strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC = to_date('" & arrDeltail(UBound(arrDeltail) - 1) & "','dd/mm/rrrr')" & " And tkhai.NGAY_TB_PH = to_date('" & Right$(arrDeltail(UBound(arrDeltail) - 5), 10) & "','dd/mm/rrrr')"
 
     ElseIf strID = "BC26_AC" Then
+
+        If LoaiKyKK = False Then
+            strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.QUY_BC = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
+        Else
+            strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.KYBC_TU_NGAY = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & "And tkhai.KYBC_DEN_NGAY = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
+
+        End If
+    ElseIf strID = "BC26_AC_SL" Then
 
         If LoaiKyKK = False Then
             strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.QUY_BC = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
