@@ -205,6 +205,11 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
                 .SetText .ColLetterToNumber(Col_D), .Row, Trim(Mid(strId, 21))
                 UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_D), .Row, .Text
             End If
+            
+                .Col = .ColLetterToNumber("AK")
+                .SetText .ColLetterToNumber("AK"), .Row, Trim(Left$(strId, 1))
+                UpdateCell_sheet fps, 1, .ColLetterToNumber("AK"), .Row, .Text
+            
             .EventEnabled(EventChange) = True
          End If
     End If
