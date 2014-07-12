@@ -19,62 +19,22 @@ Public WithEvents fps As fpSpread
 Attribute fps.VB_VarHelpID = -1
 Public Strloaitk As String
 Public StrSolanBosung As String
-Public flgLoadToKhai As Boolean
-Private totalRow2ABH As Long
-Public numRowInsert As Integer
-'dhdang sua check ton dau ky
-'ngay 18-05
-Dim result_ton() As String
-Dim arrCellInRow() As String
-Dim strTemp_ton As String
 
 Private Const Col_D = "D"
 Private Const Col_E = "E"
-Private Const Col_F = "F"
-Private Const Col_G = "G"
-Private Const Col_H = "H"
-Private Const Col_I = "I"
-Private Const Col_J = "J"
-Private Const Col_K = "K"
-Private Const Col_L = "L"
-Private Const Col_M = "M"
-Private Const Col_N = "N"
+
+
 Private Const Col_O = "O"
-Private Const Col_Q = "Q"
-Private Const Col_R = "R"
 Private Const Col_S = "S"
-Private Const Col_T = "T"
+
 Private Const Col_U = "U"
 Private Const Col_V = "V"
-Private Const Col_W = "W"
 Private Const Col_Y = "Y"
-Private Const Col_Z = "Z"
+
+Private Const Col_R = "R"
 Private Const Col_AA = "AA"
-Private Const Col_AB = "AB"
-Private Const Col_AC = "AC"
-Private Const Col_AD = "AD"
 
-Public strTkThangQuy As String
 
-'Private strCheckTon As String
-'Private strCheckTonKhoang As String
-Private loaiHoaDonS1() As LOAI_HOA_DON
-
-'Dinh nghia type luu du  HD
-Public Type HOA_DON
-    tenHD As String
-    mauSoHD As String
-    kyHieuHD As String
-    tuSo As Double
-    denso As Double
-    isDelete As Boolean
-End Type
-
-'Dinh nghia type luu du lieu bang HD
-Public Type LOAI_HOA_DON
-    loaiHD As String
-    hoaDon() As HOA_DON
-End Type
   
 'This funtion is called after an object of this class is created
 'Its functions is 1st preparing for interface sheets, such as
@@ -137,47 +97,57 @@ End Sub
 'Its functions is 2st preparing for interface sheets
 'No parameter
 Public Sub Prepare2()
-    Dim i As Integer, j As Integer
-'    Dim result() As String
-'    Dim arrCellInRow() As String
-'    Dim strTemp As String
-    result_ton = loadTonCuoiKy
+    Dim countRowDynamic As Variant
+    Dim nguoiky As Variant
+    Dim strId As Variant
+    Dim indexCombo As Integer
     
     Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
     Dim txmlCellNode As MSXML.IXMLDOMNode, txmlCellsNode As MSXML.IXMLDOMNode
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim iCol As Long, iRow As Long
-    
-    Dim tmpSheet As Integer
-    
     With fps
-        .Sheet = 1
         .EventEnabled(EventAllEvents) = False
-        tmpSheet = mCurrentSheet
-        mCurrentSheet = 1
         .Sheet = 1
-        ' set loai tk thang/ quy
-'        If strTkThangQuy = "TK_THANG" Then
-'            .Col = .ColLetterToNumber("H")
-'            .Row = 13
-'            .Text = "0"
-'            UpdateCell fps, .Col, .Row, .Text
-'        ElseIf strTkThangQuy = "TK_QUY" Then
-'            .Col = .ColLetterToNumber("H")
-'            .Row = 13
-'            .Text = "1"
-'            UpdateCell fps, .Col, .Row, .Text
-'        End If
-            'end
-        mCurrentSheet = tmpSheet
+         mCurrentSheet = .Sheet
+        .Row = 45
+        Do
+            countRowDynamic = countRowDynamic + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = .Row + 1
+        Loop Until .Text = "aa"
+        'lay ten nguoi ky tren header
+        .Row = countRowDynamic + 48
+        .Col = .ColLetterToNumber("R")
+        If Trim(.Text) = "" Then
+            nguoiky = GetNguoiKy()
+            .SetText .ColLetterToNumber("R"), countRowDynamic + 48, nguoiky
+        End If
+        
+         'Xoa cong thuc cua o Chu ky
+        Set xmlCellNode = TAX_Utilities_v1.Data(0).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 45))
+        Set xmlCellNode = xmlCellNode.parentNode
+        Set xmlCellNode = xmlCellNode.parentNode
+        Set xmlCellNode = xmlCellNode.parentNode.lastChild
+        Set xmlCellNode = xmlCellNode.firstChild
+        Set xmlCellNode = xmlCellNode.firstChild
+        ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+        .Row = iRow
+        .Col = iCol
+        .Formula = ""
+        
+        ' Set format ngay ky
+        .Row = countRowDynamic + 50
+        .Col = .ColLetterToNumber("R")
+        '.Text = Format(Date, "dd/mm/yyyy")
+        .Text = TAX_Utilities_v1.Day & "/" & TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year
+        .TypeHAlign = TypeHAlignLeft
+        
         .EventEnabled(EventAllEvents) = True
     End With
 End Sub
 
-Private Function GetValidatedCellIndex(ByVal lSheet As Long, lAnchorRow As Long, ByVal lAnchorCol As Long) As Integer
-    
-    
-End Function
+
 
 Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
      Dim strId As Variant
@@ -243,11 +213,6 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
 
 End Sub
 
-Public Sub kiemTraDuLieuImport()
-   
-End Sub
-
-
 Private Sub fps_KeyPress(KeyAscii As Integer)
     With fps
         If .ActiveSheet = 1 Then
@@ -280,7 +245,6 @@ Dim tCol As Long, tRow As Long
                          .Text = str(i)
                          .Col = .ColLetterToNumber("B")
                          .Row = i + 45
-                         totalRow2ABH = i
                          i = i + 1
                     Loop Until UCase(.Text) = "AA"
                     
@@ -298,8 +262,6 @@ End Sub
 
 Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As Long, ByVal NewRow As Long, Cancel As Boolean)
     Dim varTemp As Variant
-    Dim varMST As Variant, varMST5A As Variant, varMST5B As Variant
-    Dim sumThuNhap5A As Variant, sumThuNhap5B As Variant
     Dim tuSo As Variant
     Dim denso As Variant
     Dim TongSo As Variant
@@ -406,22 +368,16 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
     End With
 End Sub
 
-Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer)
-    
-End Sub
 
 'Calling this function whenever we don't need this class anymore.
 'No parameter
 Public Sub finish()
     Dim ASheet As Integer, SSheet As Integer
-    'If flgLoadToKhai = True Then Exit Sub
     With fps
         .EventEnabled(EventAllEvents) = False
         ASheet = .ActiveSheet
         SSheet = .Sheet
         
-        SetData
-        ' 4/1/2011 dhdang sua
         UpdateSheets
         CheckDynamicError 'Set Exception Error on cells of interface
             
@@ -2073,141 +2029,141 @@ End Function
 
 ' ham xoa cell errorr
 Private Sub clearCellErorr(startRow As Long)
-    With fps
-        .Row = startRow
-        .Sheet = 1
-        Do
-            ' ten Hoa don
-            .Col = .ColLetterToNumber(Col_D)
-            .CellNote = ""
-            .BackColor = mNonErrorColor
-            ' Mau so HD
-            .Col = .ColLetterToNumber(Col_E)
-            .CellNote = ""
-            .BackColor = mNonErrorColor
-            ' Ky hieu HD
-            .Col = .ColLetterToNumber(Col_F)
-            .CellNote = ""
-            .BackColor = mNonErrorColor
-            ' Tu so 6
-            .Col = .ColLetterToNumber(Col_H)
-            .CellNote = ""
-            .BackColor = mNonErrorColor
-            ' Den so 7
-            .Col = .ColLetterToNumber(Col_I)
-            .CellNote = ""
-            .BackColor = mNonErrorColor
-            ' Tu so 8
-            .Col = .ColLetterToNumber(Col_J)
-            .CellNote = ""
-            .BackColor = mNonErrorColor
-            ' Den so 9
-            .Col = .ColLetterToNumber(Col_K)
-            .CellNote = ""
-            .BackColor = mNonErrorColor
-            
-            ' Tu so 20
-            .Col = .ColLetterToNumber("X")
-            .CellNote = ""
-            .BackColor = mNonErrorColor
-            ' Den so 21
-            .Col = .ColLetterToNumber("Y")
-            .CellNote = ""
-            .BackColor = mNonErrorColor
-            ' So da SD
-            .Col = .ColLetterToNumber("P")
-            .CellNote = ""
-            .BackColor = mNonErrorColor
-            ' So xoa
-            .Col = .ColLetterToNumber(Col_R)
-            .CellNote = ""
-            .BackColor = mNonErrorColor
-            ' So Mat
-            .Col = .ColLetterToNumber(Col_T)
-            .CellNote = ""
-            .BackColor = mNonErrorColor
-            ' So Huy
-            .Col = .ColLetterToNumber(Col_V)
-            .CellNote = ""
-            .BackColor = mNonErrorColor
-            ' next
-            .Row = .Row + 1
-            .Col = .ColLetterToNumber("B")
-        Loop Until UCase(.Text) = Col_AA
-    End With
+'    With fps
+'        .Row = startRow
+'        .Sheet = 1
+'        Do
+'            ' ten Hoa don
+'            .Col = .ColLetterToNumber(Col_D)
+'            .CellNote = ""
+'            .BackColor = mNonErrorColor
+'            ' Mau so HD
+'            .Col = .ColLetterToNumber(Col_E)
+'            .CellNote = ""
+'            .BackColor = mNonErrorColor
+'            ' Ky hieu HD
+'            .Col = .ColLetterToNumber(Col_F)
+'            .CellNote = ""
+'            .BackColor = mNonErrorColor
+'            ' Tu so 6
+'            .Col = .ColLetterToNumber(Col_H)
+'            .CellNote = ""
+'            .BackColor = mNonErrorColor
+'            ' Den so 7
+'            .Col = .ColLetterToNumber(Col_I)
+'            .CellNote = ""
+'            .BackColor = mNonErrorColor
+'            ' Tu so 8
+'            .Col = .ColLetterToNumber(Col_J)
+'            .CellNote = ""
+'            .BackColor = mNonErrorColor
+'            ' Den so 9
+'            .Col = .ColLetterToNumber(Col_K)
+'            .CellNote = ""
+'            .BackColor = mNonErrorColor
+'
+'            ' Tu so 20
+'            .Col = .ColLetterToNumber("X")
+'            .CellNote = ""
+'            .BackColor = mNonErrorColor
+'            ' Den so 21
+'            .Col = .ColLetterToNumber("Y")
+'            .CellNote = ""
+'            .BackColor = mNonErrorColor
+'            ' So da SD
+'            .Col = .ColLetterToNumber("P")
+'            .CellNote = ""
+'            .BackColor = mNonErrorColor
+'            ' So xoa
+'            .Col = .ColLetterToNumber(Col_R)
+'            .CellNote = ""
+'            .BackColor = mNonErrorColor
+'            ' So Mat
+'            .Col = .ColLetterToNumber(Col_T)
+'            .CellNote = ""
+'            .BackColor = mNonErrorColor
+'            ' So Huy
+'            .Col = .ColLetterToNumber(Col_V)
+'            .CellNote = ""
+'            .BackColor = mNonErrorColor
+'            ' next
+'            .Row = .Row + 1
+'            .Col = .ColLetterToNumber("B")
+'        Loop Until UCase(.Text) = Col_AA
+'    End With
 End Sub
 
 ' Ham load du lieu ton cuoi ky truoc
-Public Function loadTonCuoiKy() As String()
-    Dim xmlDomLastData As New MSXML.DOMDocument
-    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
-    Dim xmlNode As MSXML.IXMLDOMNode
-    Dim xmlSectionsTemplate As MSXML.IXMLDOMNode
-    Dim xmlSectionTemplate As MSXML.IXMLDOMNode
-    Dim xmlNodeCells As MSXML.IXMLDOMNode
-    Dim xmlNodeCell As MSXML.IXMLDOMNode
-    'Dim strOriginDataFileName As String
-    Dim strDataFileName As String, str43Target As String
-    Dim strTempValue As String, strValue As String
-    Dim result() As String
-    Dim isInsert As Boolean
-    Dim iDom As Integer, lCtrl As Integer, i As Integer, slTonCuoiKy As Double
-    
-    Dim MY As Date
-    
-    iDom = 0
-    With xmlDomLastData
-        .resolveExternals = True
-        .validateOnParse = True
-        .async = False
-        MY = DateSerial(TAX_Utilities_v1.Year, getThangDauKy(TAX_Utilities_v1.ThreeMonths), 1)
-        
-        MY = DateAdd(Col_M, -3, MY)
-        MY = DateSerial(Year(MY), getKyBC(Month(MY)), 1)
-        strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(GetValidityNode("68", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
-        '***************************************
-        If .Load(strDataFileName) = True Then
-            Set xmlSectionsTemplate = .getElementsByTagName("Sections")(0)
-            For lCtrl = 1 To xmlSectionsTemplate.childNodes.length - 2
-                Set xmlSectionTemplate = xmlSectionsTemplate.childNodes(lCtrl)
-                For i = 0 To xmlSectionTemplate.childNodes.length - 1
-                    Set xmlNodeCells = xmlSectionTemplate.childNodes(i)
-                    Set xmlNodeCell = xmlNodeCells.childNodes(21)  ' so luong
-                    slTonCuoiKy = Val(GetAttribute(xmlNodeCell, "Value"))
-                    strTempValue = ""
-                    If slTonCuoiKy > 0 Then
-                        Set xmlNodeCell = xmlNodeCells.childNodes(2)  ' Mau so
-                        strTempValue = GetAttribute(xmlNodeCell, "Value")
-                        Set xmlNodeCell = xmlNodeCells.childNodes(3)  ' Ky hieu
-                        strTempValue = strTempValue & "~" & GetAttribute(xmlNodeCell, "Value")
-                        Set xmlNodeCell = xmlNodeCells.childNodes(19)  ' so ton tu so
-                        strTempValue = strTempValue & "~" & GetAttribute(xmlNodeCell, "Value")
-                        Set xmlNodeCell = xmlNodeCells.childNodes(20)  ' so ton den so
-                        strTempValue = strTempValue & "~" & GetAttribute(xmlNodeCell, "Value")
-                        Set xmlNodeCell = xmlNodeCells.childNodes(22)  ' so strCheck
-                        strTempValue = strTempValue & "~" & GetAttribute(xmlNodeCell, "Value")
-                        Set xmlNodeCell = xmlNodeCells.childNodes(1)  ' so ten
-                        strTempValue = strTempValue & "~" & GetAttribute(xmlNodeCell, "Value")
-                        Set xmlNodeCell = xmlNodeCells.childNodes(0)  ' Ma hoa don
-                        strTempValue = strTempValue & "~" & GetAttribute(xmlNodeCell, "Value")
-                        isInsert = True
-                        strValue = strValue & "###" & strTempValue
-                    End If
-                Next i
-            Next lCtrl
-            If isInsert = True Then
-                strValue = Mid$(strValue, 4)
-                result = Split(strValue, "###")
-                numRowInsert = UBound(result)
-            Else
-                numRowInsert = -1
-            End If
-        Else
-            numRowInsert = -1
-        End If
-    End With
-    loadTonCuoiKy = result
-End Function
+'Public Function loadTonCuoiKy() As String()
+'    Dim xmlDomLastData As New MSXML.DOMDocument
+'    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+'    Dim xmlNode As MSXML.IXMLDOMNode
+'    Dim xmlSectionsTemplate As MSXML.IXMLDOMNode
+'    Dim xmlSectionTemplate As MSXML.IXMLDOMNode
+'    Dim xmlNodeCells As MSXML.IXMLDOMNode
+'    Dim xmlNodeCell As MSXML.IXMLDOMNode
+'    'Dim strOriginDataFileName As String
+'    Dim strDataFileName As String, str43Target As String
+'    Dim strTempValue As String, strValue As String
+'    Dim result() As String
+'    Dim isInsert As Boolean
+'    Dim iDom As Integer, lCtrl As Integer, i As Integer, slTonCuoiKy As Double
+'
+'    Dim MY As Date
+'
+'    iDom = 0
+'    With xmlDomLastData
+'        .resolveExternals = True
+'        .validateOnParse = True
+'        .async = False
+'        MY = DateSerial(TAX_Utilities_v1.Year, getThangDauKy(TAX_Utilities_v1.ThreeMonths), 1)
+'
+'        MY = DateAdd(Col_M, -3, MY)
+'        MY = DateSerial(Year(MY), getKyBC(Month(MY)), 1)
+'        strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(GetValidityNode("68", Format(Month(MY), "0#"), , Format(Year(MY), "####")).childNodes(iDom), "DataFile") & "_" & Format(Month(MY), "0#") & Format(Year(MY), "####") & ".xml"
+'        '***************************************
+'        If .Load(strDataFileName) = True Then
+'            Set xmlSectionsTemplate = .getElementsByTagName("Sections")(0)
+'            For lCtrl = 1 To xmlSectionsTemplate.childNodes.length - 2
+'                Set xmlSectionTemplate = xmlSectionsTemplate.childNodes(lCtrl)
+'                For i = 0 To xmlSectionTemplate.childNodes.length - 1
+'                    Set xmlNodeCells = xmlSectionTemplate.childNodes(i)
+'                    Set xmlNodeCell = xmlNodeCells.childNodes(21)  ' so luong
+'                    slTonCuoiKy = Val(GetAttribute(xmlNodeCell, "Value"))
+'                    strTempValue = ""
+'                    If slTonCuoiKy > 0 Then
+'                        Set xmlNodeCell = xmlNodeCells.childNodes(2)  ' Mau so
+'                        strTempValue = GetAttribute(xmlNodeCell, "Value")
+'                        Set xmlNodeCell = xmlNodeCells.childNodes(3)  ' Ky hieu
+'                        strTempValue = strTempValue & "~" & GetAttribute(xmlNodeCell, "Value")
+'                        Set xmlNodeCell = xmlNodeCells.childNodes(19)  ' so ton tu so
+'                        strTempValue = strTempValue & "~" & GetAttribute(xmlNodeCell, "Value")
+'                        Set xmlNodeCell = xmlNodeCells.childNodes(20)  ' so ton den so
+'                        strTempValue = strTempValue & "~" & GetAttribute(xmlNodeCell, "Value")
+'                        Set xmlNodeCell = xmlNodeCells.childNodes(22)  ' so strCheck
+'                        strTempValue = strTempValue & "~" & GetAttribute(xmlNodeCell, "Value")
+'                        Set xmlNodeCell = xmlNodeCells.childNodes(1)  ' so ten
+'                        strTempValue = strTempValue & "~" & GetAttribute(xmlNodeCell, "Value")
+'                        Set xmlNodeCell = xmlNodeCells.childNodes(0)  ' Ma hoa don
+'                        strTempValue = strTempValue & "~" & GetAttribute(xmlNodeCell, "Value")
+'                        isInsert = True
+'                        strValue = strValue & "###" & strTempValue
+'                    End If
+'                Next i
+'            Next lCtrl
+'            If isInsert = True Then
+'                strValue = Mid$(strValue, 4)
+'                result = Split(strValue, "###")
+'                numRowInsert = UBound(result)
+'            Else
+'                numRowInsert = -1
+'            End If
+'        Else
+'            numRowInsert = -1
+'        End If
+'    End With
+'    loadTonCuoiKy = result
+'End Function
 
 ' Lay ve thang dau tien cua ky
 Private Function getThangDauKy(strPeriod As String) As Integer
