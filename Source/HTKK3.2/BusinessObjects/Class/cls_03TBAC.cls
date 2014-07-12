@@ -485,6 +485,11 @@ Private Sub CheckDynamicError()
             .GetText .ColLetterToNumber("AI"), .Row, strId
             strLoai = Trim(Left(strId, 1))
             
+            
+            ' set gia tri cho check KH NN/XC
+            strMauSoHD_01GTKT = Trim(Mid(strId, 11, 6))
+            ' end
+            
             If Trim(strTenHD) <> "" Or Trim(strMauSoHD) <> "" Or Trim(strKyHieuHD) <> "" Or Trim(strId) <> "" Or Trim(strTuSo) <> "" Or Trim(strDenso) <> "" Then
                 ' Khong phai dong trang
                 iWhiteRow = 0
