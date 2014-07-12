@@ -382,7 +382,13 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                  .Row = Row
                 UpdateCell fps, .Col, .Row, .Text
             End If
+            
+            
+            .GetText .ColLetterToNumber("AG"), .Row, strId
             strLoai = Trim(Left(strId, 1))
+            
+            ' set gia tri cho check KH NN/XC
+            strMauSoHD_01GTKT = Trim(Mid(strId, 11, 6))
            'Kiem tra cau truc cua ky hieu neu sai set cot an =1 dung =0
             If Col = .ColLetterToNumber("L") Then
                  .GetText Col, Row, varTemp
@@ -657,6 +663,10 @@ Private Sub CheckDynamicError()
             .GetText .ColLetterToNumber("T"), .Row, strDateSD
             .GetText .ColLetterToNumber("AE"), .Row, strDateIn
             strLoai = Trim(Left(strId, 1))
+            
+            ' set gia tri cho check KH NN/XC
+            strMauSoHD_01GTKT = Trim(Mid(strId, 11, 6))
+            ' end
             
         If Trim(strTenHD) <> "" Or Trim(strMauSoHD) <> "" Or Trim(strKyHieuHD) <> "" Or Trim(strId) <> "" Or Trim(strMstDN) <> "" Or Trim(strTuSo) <> "" Or Trim(strDenso) <> "" Or _
         Trim(strTenDN) <> "" Or Trim(strSoHD) <> "" Then
