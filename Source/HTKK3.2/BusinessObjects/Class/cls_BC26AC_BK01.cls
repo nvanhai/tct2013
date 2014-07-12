@@ -498,6 +498,10 @@ Private Sub checkSheet3()
             .GetText .ColLetterToNumber("AA"), .Row, strSoLuong
             .GetText .ColLetterToNumber("AI"), .Row, strId
             
+            ' set gia tri cho check KH NN/XC
+            strMauSoHD_01GTKT = Trim(Mid(strId, 11, 6))
+            ' end
+            
             If Trim(strTenHD) <> "" Or Trim(strMauSoHD) <> "" Or Trim(strKyHieuHD) <> "" Or Trim(strId) <> "" Then
                 ' Khong phai dong trang
                 iWhiteRow = 0

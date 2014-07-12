@@ -1265,6 +1265,11 @@ Private Sub checkSheet1()
             
             .GetText .ColLetterToNumber(Col_AA), .Row, strId
             .GetText .ColLetterToNumber("AC"), .Row, strTon
+            
+            
+            ' set gia tri cho check KH NN/XC
+            strMauSoHD_01GTKT = Trim(Mid(strId, 11, 6))
+            ' end
             'dhdang sua check ton dau ky
             'ngay 18-05
             '--------------------------------------------Begin
@@ -2412,6 +2417,10 @@ Private Sub checkSheet2()
             .GetText .ColLetterToNumber(Col_Y), .Row, strDenso
             .GetText .ColLetterToNumber(Col_AA), .Row, strSoLuong
             .GetText .ColLetterToNumber("AI"), .Row, strId
+            
+            ' set gia tri cho check KH NN/XC
+            strMauSoHD_01GTKT = Trim(Mid(strId, 11, 6))
+            ' end
 '
             If Trim(strTenHD) <> "" Or Trim(strMauSoHD) <> "" Or Trim(strKyHieuHD) <> "" Or Trim(strId) <> "" Then
                 ' Khong phai dong trang
@@ -3059,6 +3068,10 @@ Private Sub checkSheet3()
             .GetText .ColLetterToNumber("Y"), .Row, strDenso
             .GetText .ColLetterToNumber("AA"), .Row, strSoLuong
             .GetText .ColLetterToNumber("AI"), .Row, strId
+            
+            ' set gia tri cho check KH NN/XC
+            strMauSoHD_01GTKT = Trim(Mid(strId, 11, 6))
+            ' end
             
             If Trim(strTenHD) <> "" Or Trim(strMauSoHD) <> "" Or Trim(strKyHieuHD) <> "" Or Trim(strId) <> "" Then
                 ' Khong phai dong trang
