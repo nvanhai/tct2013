@@ -4057,7 +4057,7 @@ Private Sub SetupLayout(strKieuKy As String)
             Set lblQuy.Container = frmKy
             lblQuy.Top = 300
             lblQuy.Left = 120
-            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "65" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "18" Then
+            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "65" Then
                 lblQuy.caption = "Ky`"
             End If
             SetControlCaption Me, "frmPeriodHY"
