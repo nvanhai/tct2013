@@ -86,10 +86,10 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         If rsPXL.Fields.count > 0 Then
             Do While Not rsPXL.EOF
                 .TypeComboBoxIndex = -1
-                .TypeComboBoxString = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
+                .TypeComboBoxString = TAX_Utilities_iNTK.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
                 i = i + 1
                 ReDim Preserve larrPhongXuLy(i)
-                larrPhongXuLy(i) = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
+                larrPhongXuLy(i) = TAX_Utilities_iNTK.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
                 ReDim Preserve larrid(i)
                 larrid(i) = rsPXL.Fields(0).Value
                 rsPXL.MoveNext
@@ -159,7 +159,7 @@ Public Function Prepared3() As Boolean
         ' set Phong quan ly
         .Col = .ColLetterToNumber("Q")
         .Row = 14
-        .Text = TAX_Utilities_Srv_New.Convert(strTenPQL, TCVN, UNICODE)
+        .Text = TAX_Utilities_iNTK.Convert(strTenPQL, TCVN, UNICODE)
         UpdateCell fps, .Col, .Row, .Text
               
     End With
@@ -271,12 +271,14 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim dDate As Date, strDate() As String
     Dim vTIN, vTEN_DTNT, vLOAI_TKHAI, vNGAY_NOP, vPHONG_QUAN_LY, vNGUOI_DAI_DIEN, vGHI_CHU, vNGAY_BC, vLY_DO
     Dim vNGAY_CAP_NHAT, vDIA_CHI, vNGUOI_CAP_NHAT, vCO_LOI_DDANH, vNGAY_CHAY_HONG, vMA_CQT, vNGUOI_LB, vKY_BC_TUNGAY, vKY_BC_DENNGAY
-    Dim vSO_HIEU_TEP, vSO_TT_TK, vDA_NHAN, vGHI_CHU_LOI, vHTHUC_NOP, vTEN_DV_CQ, vTIN_DV_CQ, vTEN_CQ_TIEP_NHAN
+    Dim vSO_HIEU_TEP, vSO_TT_TK, vDA_NHAN, vGHI_CHU_LOI, vTEN_DV_CQ, vTIN_DV_CQ, vTEN_CQ_TIEP_NHAN
     Dim vDUNG_DN_CQ As Variant
     Dim vPHONG_XU_LY
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
     Dim vKyBCCuoi, vChuyenDiaDiem
+    
+    Dim vItkhai_ID, vHTHUC_NOP As String
     
 On Error GoTo ErrHandle
     strSQL = SqlHdr_AC
@@ -287,25 +289,25 @@ On Error GoTo ErrHandle
         If Trim(GetAttribute(xmlNode, "MCT")) = vbNullString Then
             Select Case Trim(GetAttribute(xmlNode, "CellID"))
                 Case "E_4"
-                    vTIN = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+                    vTIN = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case "E_5"
-                    vTEN_DTNT = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+                    vTEN_DTNT = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case "E_6"
-                    vDIA_CHI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+                    vDIA_CHI = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case "E_10"
-                    vNGAY_NOP = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+                    vNGAY_NOP = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case "K_12"
-                    vNGAY_CAP_NHAT = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+                    vNGAY_CAP_NHAT = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case "Q_12"
-                    vNGUOI_CAP_NHAT = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+                    vNGUOI_CAP_NHAT = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case "E_12"
-                    vCO_LOI_DDANH = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+                    vCO_LOI_DDANH = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case HEADER_SO_TT_TRONG_TEP_COL & "_" & HEADER_SO_TT_TRONG_TEP_ROW
-                    vSO_TT_TK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+                    vSO_TT_TK = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case "E_14"
-                    vGHI_CHU_LOI = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+                    vGHI_CHU_LOI = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
-                    vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+                    vPHONG_XU_LY = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
             End Select
         End If
         End With
@@ -322,13 +324,22 @@ On Error GoTo ErrHandle
         .EventEnabled(EventAllEvents) = False
     End With
 
-    vNGUOI_DAI_DIEN = TAX_Utilities_Srv_New.Convert(CStr(vNGUOI_DAI_DIEN), UNICODE, TCVN)
-    vNGUOI_CAP_NHAT = TAX_Utilities_Srv_New.Convert(CStr(vNGUOI_CAP_NHAT), UNICODE, TCVN)
-    vGHI_CHU_LOI = TAX_Utilities_Srv_New.Convert(CStr(vGHI_CHU_LOI), UNICODE, TCVN)
-    vTEN_DV_CQ = TAX_Utilities_Srv_New.Convert(CStr(vTEN_DV_CQ), UNICODE, TCVN)
-    vTEN_CQ_TIEP_NHAN = TAX_Utilities_Srv_New.Convert(CStr(vTEN_CQ_TIEP_NHAN), UNICODE, TCVN)
+    vNGUOI_DAI_DIEN = TAX_Utilities_iNTK.Convert(CStr(vNGUOI_DAI_DIEN), UNICODE, TCVN)
+    vNGUOI_CAP_NHAT = TAX_Utilities_iNTK.Convert(CStr(vNGUOI_CAP_NHAT), UNICODE, TCVN)
+    vGHI_CHU_LOI = TAX_Utilities_iNTK.Convert(CStr(vGHI_CHU_LOI), UNICODE, TCVN)
+    vTEN_DV_CQ = TAX_Utilities_iNTK.Convert(CStr(vTEN_DV_CQ), UNICODE, TCVN)
+    vTEN_CQ_TIEP_NHAN = TAX_Utilities_iNTK.Convert(CStr(vTEN_CQ_TIEP_NHAN), UNICODE, TCVN)
     
-    
+   'Neu la to khai iHtkk thi lay ngay nop tu bang rcv_ihtkk_mvach
+    If TAX_Utilities_iNTK.HthucNopIHTKK = True Then
+        vNGAY_NOP = TAX_Utilities_iNTK.NgayNopIHTKK
+        vItkhai_ID = TAX_Utilities_iNTK.IDTokhaiIHTKK
+        vHTHUC_NOP = "'I'"
+    Else
+        vItkhai_ID = "null"
+        vHTHUC_NOP = "null"
+    End If
+    ' end
     ' Tach ma so thue thanh ma 14 ky tu
     If Len(Trim(CStr(vTIN))) = 13 Then
         vTIN = Left(CStr(vTIN), 10) & "-" & Right(CStr(vTIN), 3)
@@ -367,14 +378,15 @@ On Error GoTo ErrHandle
 '    strSQL = strSQL & "'',null,null,"
     With fps
         For i = 1 To lSoPhongXL
-            If vPHONG_XU_LY = TAX_Utilities_Srv_New.Convert(larrPhongXuLy(i), UNICODE, TCVN) Then
+            If vPHONG_XU_LY = TAX_Utilities_iNTK.Convert(larrPhongXuLy(i), UNICODE, TCVN) Then
                 strMaPhongXuLy = larrid(i)
                 Exit For
             End If
         Next
     End With
     strSQL = strSQL & "'" & strMaPhongXuLy & "',"
-    strSQL = strSQL & "'" & vPHONG_QUAN_LY & "',null,null,null,"
+    strSQL = strSQL & "'" & vPHONG_QUAN_LY & "',0,"
+    strSQL = strSQL & vHTHUC_NOP & "," & vItkhai_ID & ","
     strSQL = strSQL & "'" & vTEN_DV_CQ & "',"
     strSQL = strSQL & "'" & vTIN_DV_CQ & "',"
     strSQL = strSQL & "To_date('" & vNGAY_BC & "','dd/mm/yyyy'),"
@@ -394,7 +406,7 @@ Public Function KiemTraKhoaSo(ByVal strDate As String) As Boolean
     
     KiemTraKhoaSo = False
 '    dNgayKhoaSo = Format(strDate, "dd/mm/yyyy")
-'    dKyLapBo = Format("01/" & GetAttribute(TAX_Utilities_Srv_New.Data(0).nodeFromID("E_10"), "Value"), "dd/mm/yyyy")
+'    dKyLapBo = Format("01/" & GetAttribute(TAX_Utilities_iNTK.Data(0).nodeFromID("E_10"), "Value"), "dd/mm/yyyy")
 '
 '    If dNgayKhoaSo < dKyLapBo Then
 '        KiemTraKhoaSo = False
