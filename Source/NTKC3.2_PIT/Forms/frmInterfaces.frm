@@ -2252,12 +2252,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
             End If
         End If
         
-        'xu ly ma vach BC26: Chuyen doi hinh thuc su dung hoa don(bo sung tu 3.2.4)
-        If Trim(idToKhai) = "68" And InStr(1, strBarcode, "</S01>", vbTextCompare) > 0 Then
-            If (Val(Left$(strPrefix, 3)) <= 323) Then
-                strBarcode = Replace(strBarcode, "</S></S01>", "~</S></S01>")
-            End If
-        End If
+       
         
         'khong nhan cac to khai bo sung khong theo mau HTKK3.2.0(GD1): 01/NTNN 70,03/NTNN 81, 05/GTGT 72
         idToKhai = Mid(strPrefix, 4, 2)

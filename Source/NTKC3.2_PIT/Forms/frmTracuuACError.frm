@@ -343,6 +343,7 @@ Private Function changeLoaiToKhai(ByVal strLoaiMaToKhai As String) As String
     If (strLoaiMaToKhai = "07" Or strLoaiMaToKhai = "7") Then changeLoaiToKhai = "'%01_TBAC_BLP%'"
     If strLoaiMaToKhai = "13" Then changeLoaiToKhai = "'%01_AC_BLP%'"
     If (strLoaiMaToKhai = "09" Or strLoaiMaToKhai = "9") Then changeLoaiToKhai = "'%BC21_AC_BLP%'"
+    If strLoaiMaToKhai = "14" Then changeLoaiToKhai = "'%BC26_AC_BLP%'"
     If strLoaiMaToKhai = "10" Then changeLoaiToKhai = "'%03_TBAC_BLP%'"
     If strLoaiMaToKhai = "0" Then changeLoaiToKhai = "'%'"
 End Function
@@ -430,7 +431,7 @@ Sub SetupData()
                 Parentid = GetAttribute(xmlNode, "ParentID")
                 LoaiTk = GetAttribute(xmlNode, "Caption")
                 '.TypeComboBoxIndex = 0
-                If Parentid = "112" Then
+                If Parentid = "112" Or Parentid = "114" Then
                     i = i + 1
                     .TypeComboBoxIndex = -1
                     .TypeComboBoxString = LoaiTk
