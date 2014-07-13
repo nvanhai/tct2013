@@ -133,7 +133,7 @@ Public Sub Prepare2()
         .Col = .ColLetterToNumber("AA")
         '.Text = Format(Date, "dd/mm/yyyy")
         .Text = TAX_Utilities_v1.Day & "/" & TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year
-        .TypeHAlign = TypeHAlignLeft
+        '.TypeHAlign = TypeHAlignLeft
         
         .EventEnabled(EventAllEvents) = True
     End With
@@ -456,7 +456,7 @@ Private Sub CheckDynamicError()
     
     Dim errNgayInTB As Variant
     
-    Dim strTenHD As Variant, strMauSoHD As Variant, strKyHieuHD As Variant, strTuSo As Variant, strDenso As Variant, strDvcq As Variant, strTenDvcq As Variant, strMST As Variant
+    Dim strTenHD As Variant, strMauSoHD As Variant, strKyHieuHD As Variant, strTuSo As Variant, strDenso As Variant, strDvcq As Variant, strTenDvcq As Variant, strMst As Variant
     Dim strSoLuong As Variant, strTenDN As Variant, strMstDN As Variant, strSoHD As Variant, strDateSD As Variant, strDateIn As Variant, DateNgayKy As Variant, strNguoiKy As Variant
     Dim iFlagMauSoHD As Integer, iFlagSoLienHD As Integer, iFlagEmty As Integer, iFlagDVCQ As Integer, iFlagNgayKy As Integer, iFlagNgayBatDau As Integer, iFlagNgayIn As Integer, iFlagTusoDenSo As Integer, iFlagNgayInTB As Integer
     Dim iWhiteRow As Integer
@@ -521,7 +521,7 @@ Private Sub CheckDynamicError()
         .Sheet = 1
         .Row = 4
         .Col = .ColLetterToNumber("F")
-        .GetText .ColLetterToNumber("F"), 4, strMST
+        .GetText .ColLetterToNumber("F"), 4, strMst
         .Row = 35
         .Col = .ColLetterToNumber("B")
         i = 1
@@ -576,7 +576,7 @@ Private Sub CheckDynamicError()
         'neu  MST don vi chu quan trung voi mst trong thong tin Doanh nghiep thi khong hien thi thong tin don vi chu quan
         'dntai neu check vao don vi chu quan tren header thi moi bat buoc nhap dl
         If Trim(chkTTDVCQ) = "1" Or UCase(Trim(chkTTDVCQ)) = "X" Then
-        MST = Trim(strMST)
+        MST = Trim(strMst)
         mstDVCQ = Trim(strDvcq)
         If MST <> mstDVCQ Then
                 ' ten don vi chu quan
@@ -1285,9 +1285,15 @@ End Sub
 
 Public Function GetDVCQ() As String
     Dim xmlDomHeader As New MSXML.DOMDocument
+    Dim strMst As String
     
     xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_v1.DataFolder & "Header_01.xml")
-    GetDVCQ = GetAttribute(xmlDomHeader.nodeFromID("C_34"), "Value")
+    strMst = GetAttribute(xmlDomHeader.nodeFromID("C_34"), "Value")
+    If Len(strMst) = 13 Then
+        strMst = Left$(strMst, 10) & "-" & Right$(strMst, 3)
+    End If
+    'GetDVCQ = GetAttribute(xmlDomHeader.nodeFromID("C_34"), "Value")
+    GetDVCQ = strMst
     
     Set xmlDomHeader = Nothing
 End Function

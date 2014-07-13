@@ -159,9 +159,9 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
         .Row = Row
 
         If Col = .ColLetterToNumber("C") And .Text <> "" Then
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber("AA")
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             'Update combo F
             .Col = .ColLetterToNumber("AA")
             UpdateCell fps, .Col, .Row, .Text
@@ -709,10 +709,22 @@ End Sub
 
 
 Public Function GetDVCQ() As String
+'    Dim xmlDomHeader As New MSXML.DOMDocument
+'
+'    xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_v1.DataFolder & "Header_01.xml")
+'    GetDVCQ = GetAttribute(xmlDomHeader.nodeFromID("C_34"), "Value")
+'
+'    Set xmlDomHeader = Nothing
     Dim xmlDomHeader As New MSXML.DOMDocument
+    Dim strMst As String
     
     xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_v1.DataFolder & "Header_01.xml")
-    GetDVCQ = GetAttribute(xmlDomHeader.nodeFromID("C_34"), "Value")
+    strMst = GetAttribute(xmlDomHeader.nodeFromID("C_34"), "Value")
+    If Len(strMst) = 13 Then
+        strMst = Left$(strMst, 10) & "-" & Right$(strMst, 3)
+    End If
+    'GetDVCQ = GetAttribute(xmlDomHeader.nodeFromID("C_34"), "Value")
+    GetDVCQ = strMst
     
     Set xmlDomHeader = Nothing
 End Function
