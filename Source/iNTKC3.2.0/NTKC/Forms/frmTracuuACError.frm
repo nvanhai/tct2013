@@ -333,6 +333,8 @@ Private Function changeLoaiToKhai(ByVal strLoaiMaToKhai As String) As String
     If strLoaiMaToKhai = "110" Then changeLoaiToKhai = "'%16%'"
     If strLoaiMaToKhai = "111" Then changeLoaiToKhai = "'%99%'"
     If strLoaiMaToKhai = "64" Then changeLoaiToKhai = "'%01_TBAC%'"
+    If strLoaiMaToKhai = "27" Then changeLoaiToKhai = "'%01_BK_BC26_AC%'"
+    If strLoaiMaToKhai = "18" Then changeLoaiToKhai = "'%BC26_AC_SL%'"
     If strLoaiMaToKhai = "65" Then changeLoaiToKhai = "'%01_AC%'"
     If strLoaiMaToKhai = "66" Then changeLoaiToKhai = "'%BC21_AC%'"
     If strLoaiMaToKhai = "67" Then changeLoaiToKhai = "'%03_TBAC%'"
