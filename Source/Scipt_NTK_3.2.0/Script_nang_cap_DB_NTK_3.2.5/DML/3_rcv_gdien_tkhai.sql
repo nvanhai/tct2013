@@ -106,3 +106,29 @@ insert into QLT_NTK.RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_
 values (10088, 'Sè thuÕ ph¶i nép sau khi miÔn', '8', null, null, null, null, null, null, null, null, null, null, 3, '09MT_TNCN11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 commit;
+
+--BC26_AC_SL
+insert into QLT_NTK.RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
+values (10138, 'D÷ liÖu chi tiÕt b¸o c¸o t×nh h×nh sö dông hãa ®¬n', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', 1, 'BC26_AC_SL', null, '12', '13', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+commit;
+
+--PL BK26SL_01_AC
+insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
+values (10139, 'D÷ liÖu chi tiÕt BK01 b¸o c¸o t×nh h×nh sö dông hãa ®¬n', '1', '2', '3', '4', '5', '6', '7', '8', null, null, null, 1, 'BK26SL_01_AC', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+
+insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
+values (10140, 'D÷ liÖu chi tiÕt BK01 b¸o c¸o t×nh h×nh sö dông hãa ®¬n', '9', '10', '11', '12', '13', '14', '15', '16', null, null, null, 1, 'BK26SL_01_AC', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+
+commit;
+
+--PL BK26SL_02_AC
+insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
+values (10141, 'D÷ liÖu chi tiÕt BK02 b¸o c¸o t×nh h×nh sö dông hãa ®¬n', '1', '2', '3', '4', '5', '6', '7', null, null, null, null, 1, 'BK26SL_02_AC', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+
+commit;
+
+--To khai 01_BK_BC26_AC
+insert into QLT_NTK.RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
+values (10191, 'C¸c lo¹i hãa ®¬n ch­a sö dông', '1', '2', '3', '4', '5', '6', '7', null, null, null, null, 1, '01_BK_BC26_AC', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+
+commit;

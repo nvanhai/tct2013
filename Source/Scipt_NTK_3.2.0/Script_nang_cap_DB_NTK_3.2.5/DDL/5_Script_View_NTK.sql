@@ -371,4 +371,44 @@ FROM
 GROUP BY dtl.hdr_id,
          dtl.row_id
 );
-	
+
+--View HDR cac to hoa don
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_BC26_HDR_SL
+(id, ma_cqt, ma_cqt_cden, loai_bcao, ky_tungay, ky_denngay, bcao_tungay, bcao_denngay, dtnt_tin, thu_truong, ngay_nop_bcao, hthuc_nhap, ghi_chu, tthai_nhan, ngay_nhan, ngay_bc, loai_bc26, itkhai_id, phong_xly)
+AS
+SELECT  id,
+        ma_cqt,
+        TEN_CQ_TIEP_NHAN MA_CQT_CDEN,
+        '01' Loai_Bcao,
+        quy_bc ky_tungay,
+        last_day(add_months(quy_bc,2)) ky_denngay,
+        kybc_tu_ngay BCAO_TUNGAY,
+        kybc_den_ngay BCAO_DENNGAY,
+        DECODE(length(trim(tin)),13,substr(trim(tin),1,10)||'-'||substr(trim(tin),11,3),trim(tin)) DTNT_TIN,
+        dump(nguoi_dai_dien) thu_truong,
+        ngay_nop NGAY_NOP_BCAO,
+        hthuc_nop HTHUC_NHAP,
+        dump(ghi_chu) ghi_chu,
+        '01',
+        NGAY_CAP_NHAT,
+        NGAY_BC,
+        Loai_Bc26,
+        itkhai_id ,
+        PHONG_XLY
+  FROM QLT_NTK.rcv_bcao_hdr_ac
+    Where Loai_Bc = 'BC26_AC_SL'
+        And Da_Nhan Is Null;	
+		
+-- cap nhat hdr cho 01_BK_BC26_AC
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_HDR
+(id, tin, loai_bc, ngay_nop, kybc_tu_ngay, kybc_den_ngay, ngay_cap_nhat, nguoi_cap_nhat, so_tt_tk, da_nhan, phong_xly, phong_qly, co_bang_ke, hthuc_nop, itkhai_id, ten_dv_cq, tin_dv_cq, ngay_bc, nguoi_dai_dien, ten_cq_tiep_nhan, ly_do_mat, ngay_mat_huy, phuong_phap_huy, dung_dn_cq, ghi_chu, ma_cqt, loai_bc26, nguoi_lap_bieu, quy_bc, ngay_tb_ph)
+AS
+SELECT ID, tin, loai_bc, ngay_nop, kybc_tu_ngay, kybc_den_ngay,
+          ngay_cap_nhat, DUMP (nguoi_cap_nhat), so_tt_tk, da_nhan, phong_xly,
+          phong_qly, co_bang_ke, hthuc_nop, itkhai_id, DUMP (ten_dv_cq), tin_dv_cq,
+          ngay_bc, DUMP (nguoi_dai_dien), DUMP (ten_cq_tiep_nhan), DUMP (ly_do_mat),
+          ngay_mat_huy, DUMP (phuong_phap_huy), dung_dn_cq, DUMP (ghi_chu), ma_cqt,
+          loai_bc26, DUMP (nguoi_lap_bieu), quy_bc, ngay_tb_ph
+     FROM QLT_NTK.rcv_bcao_hdr_ac
+    WHERE loai_bc IN ('BC21_AC','01_TBAC','01_AC','03_TBAC','01_BK_BC26_AC') AND da_nhan IS NULL;
+		
