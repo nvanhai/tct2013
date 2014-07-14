@@ -49,14 +49,14 @@ Begin VB.Form frmTreeviewMenu
       SpreadDesigner  =   "frmTreeviewMenu.frx":0000
    End
    Begin FPUSpreadADO.fpSpread sstv 
-      Height          =   5055
+      Height          =   5100
       Left            =   180
       TabIndex        =   0
       Top             =   150
       Width           =   6015
       _Version        =   458752
       _ExtentX        =   10610
-      _ExtentY        =   8916
+      _ExtentY        =   8996
       _StockProps     =   64
       BorderStyle     =   0
       DAutoSizeCols   =   0
@@ -70,7 +70,7 @@ Begin VB.Form frmTreeviewMenu
          Strikethrough   =   0   'False
       EndProperty
       ScrollBarExtMode=   -1  'True
-      SpreadDesigner  =   "frmTreeviewMenu.frx":026C
+      SpreadDesigner  =   "frmTreeviewMenu.frx":021A
       VirtualScrollBuffer=   -1  'True
       Appearance      =   1
    End
@@ -121,7 +121,7 @@ Dim fillerline As Picture
 Dim endline As Picture
 Dim prevbnum As Long, prevprow As Long
 Dim prevsel(0, 1) As Long
-Dim arrnodemenu(100, 4) As String    'Store the demo info
+Dim arrnodemenu(104, 4) As String    'Store the demo info
 Dim isend As Boolean
 Dim actRow As Long
 
@@ -678,7 +678,7 @@ On Error GoTo ErrorHandle
         .ArrowsExitEditMode = True
         .GrayAreaBackColor = RGB(244, 238, 202) 'vbWhite
         .MaxCols = 10  'Set the maximum number of columns
-        .MaxRows = 100  'Set the maximum number of rows
+        .MaxRows = 104  'Set the maximum number of rows
         .GridSolid = True
         .BackColorStyle = BackColorStyleOverGrid
         .ScrollBars = ScrollBarsNone
@@ -1483,6 +1483,11 @@ Public Sub ProcessMenuAction(pID As String)
             Me.Show
             ShowPLMienThueTT140 "Bangkebanra_01_3.xls"
             Exit Sub
+          Case "102_19" ' bang ke 02-1/TNDN
+            Me.Show
+            ShowPLMienThueTT140 "Bangke_02_1TNDN.xls"
+            Exit Sub
+            
         Case Else
             ShowFormFunction lnode
     End Select

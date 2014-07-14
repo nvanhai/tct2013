@@ -1230,7 +1230,8 @@ Private Sub checkSheet2()
                     .Col = .ColLetterToNumber("I")
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                     .CellNote = vErrMsgSoThueKhauTru
-                    .BackColor = mErrorColor
+                    '.BackColor = mErrorColor
+                    .BackColor = mAlertColor
                 End If
             Else
                 .Col = .ColLetterToNumber("C")
@@ -2908,8 +2909,9 @@ Public Sub CheckDynamicSheet1()
                 .Col = .ColLetterToNumber("N")
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = vErrMsgSoThueKhauTru
-                .BackColor = mErrorColor
-                iFlagCheckCT17CT11 = 1
+                '.BackColor = mErrorColor
+                .BackColor = mAlertColor
+                'iFlagCheckCT17CT11 = 1
             Else
                 .Col = .ColLetterToNumber("N")
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
