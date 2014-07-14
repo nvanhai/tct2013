@@ -93,7 +93,7 @@ Begin VB.Form frmInterfaces
          Caption         =   "§ang xö lý ..."
          BeginProperty Font 
             Name            =   "DS Sans Serif"
-            Size            =   8.25
+            Size            =   9.75
             Charset         =   0
             Weight          =   700
             Underline       =   0   'False
@@ -9455,10 +9455,10 @@ Private Sub fpSpread1_Click(ByVal Col As Long, ByVal Row As Long)
                 If .sheet = 2 And .Col = .ColLetterToNumber("D") And .Row = 3 Then
                     Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bang_Ke_02ABK_XS.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
                 End If
-            ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "02_TNDN" Then
-                 If .sheet = 2 And .Col = .ColLetterToNumber("C") And .Row = 2 Then
-                    Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bangke_02_1TNDN.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
-                End If
+'            ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "02_TNDN" Then
+'                 If .sheet = 2 And .Col = .ColLetterToNumber("C") And .Row = 2 Then
+'                    Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bangke_02_1TNDN.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
+'                End If
             End If
         End If
         

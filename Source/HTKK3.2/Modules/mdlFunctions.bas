@@ -43,7 +43,7 @@ Public Const pbanTKhaiXML = "2.0.0"
 Public Const TK_GD1 = True
 'End TKGD1
 
-Public Const APP_VERSION = "9.9.9"
+Public Const APP_VERSION = "3.2.4"
 Public Const KIEU_KY_THANG = "M"
 Public Const KIEU_KY_QUY = "Q"
 Public Const KIEU_KY_NAM = "Y"
