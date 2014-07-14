@@ -400,7 +400,7 @@ SELECT  id,
         And Da_Nhan Is Null;	
 		
 -- cap nhat hdr cho 01_BK_BC26_AC
-CREATE OR REPLACE VIEW QLT_NTK.RCV_V_HDR
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_HDR_BK01_AC
 (id, tin, loai_bc, ngay_nop, kybc_tu_ngay, kybc_den_ngay, ngay_cap_nhat, nguoi_cap_nhat, so_tt_tk, da_nhan, phong_xly, phong_qly, co_bang_ke, hthuc_nop, itkhai_id, ten_dv_cq, tin_dv_cq, ngay_bc, nguoi_dai_dien, ten_cq_tiep_nhan, ly_do_mat, ngay_mat_huy, phuong_phap_huy, dung_dn_cq, ghi_chu, ma_cqt, loai_bc26, nguoi_lap_bieu, quy_bc, ngay_tb_ph)
 AS
 SELECT ID, tin, loai_bc, ngay_nop, kybc_tu_ngay, kybc_den_ngay,
@@ -410,5 +410,5 @@ SELECT ID, tin, loai_bc, ngay_nop, kybc_tu_ngay, kybc_den_ngay,
           ngay_mat_huy, DUMP (phuong_phap_huy), dung_dn_cq, DUMP (ghi_chu), ma_cqt,
           loai_bc26, DUMP (nguoi_lap_bieu), quy_bc, ngay_tb_ph
      FROM QLT_NTK.rcv_bcao_hdr_ac
-    WHERE loai_bc IN ('BC21_AC','01_TBAC','01_AC','03_TBAC','01_BK_BC26_AC') AND da_nhan IS NULL;
+    WHERE loai_bc = '01_BK_BC26_AC' AND da_nhan IS NULL;
 		
