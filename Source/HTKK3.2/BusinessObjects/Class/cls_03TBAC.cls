@@ -532,8 +532,9 @@ Private Sub CheckDynamicError()
                         If CheckSoLienHDDT(CStr(strMauSoHD), strLoai, strTemp, CStr(strKyHieuHD)) = "3" Then
                              .Col = .ColLetterToNumber("O")
                             .CellNote = errSoLienHDDT  'static
-                            .BackColor = mErrorColor
-                            iFlagSoLienHD = 2
+'                            .BackColor = mErrorColor
+'                            iFlagSoLienHD = 2
+                             .BackColor = mAlertColor
                         Else
                             .Col = .ColLetterToNumber("O")
                             .CellNote = ""
@@ -550,8 +551,9 @@ Private Sub CheckDynamicError()
                         If CheckSoLienHDDT(CStr(strMauSoHD), strLoai, strTemp, CStr(strKyHieuHD)) = "3" Then
                              .Col = .ColLetterToNumber("O")
                             .CellNote = errSoLienHDDT  'static
-                            .BackColor = mErrorColor
-                            iFlagSoLienHD = 2
+'                            .BackColor = mErrorColor
+'                            iFlagSoLienHD = 2
+                             .BackColor = mAlertColor
                         Else
                             .Col = .ColLetterToNumber("O")
                             .CellNote = ""

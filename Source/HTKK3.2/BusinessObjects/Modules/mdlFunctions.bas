@@ -1429,10 +1429,18 @@ Public Function CheckMauSoHD(str As String, strLoai As String, strTemp As String
                 strBD = Mid$(Trim(str), 12, 2)
                 ' so lien phai nam trong khoang 2->9
                 If IsNumeric(soLien) Then
-                    If Val(soLien) < 2 Or Val(soLien) > 9 Then
-                        result = "2"
-                        CheckMauSoHD = result
-                        Exit Function
+                    If strTemp = "01BHDT" Then
+                        If Val(soLien) < 0 Or Val(soLien) > 9 Then
+                            result = "2"
+                            CheckMauSoHD = result
+                            Exit Function
+                        End If
+                    Else
+                        If Val(soLien) < 2 Or Val(soLien) > 9 Then
+                            result = "2"
+                            CheckMauSoHD = result
+                            Exit Function
+                        End If
                     End If
                 Else
                     result = "2"

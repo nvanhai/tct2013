@@ -529,7 +529,7 @@ Private Sub checkSheet1()
         blCheck_S8 = True
         blCheck_S9 = True
         
-        blCheck_SoLienHDDT = True
+        blCheck_SoLienHDDT = False
         blCheck_NgayBCHL = True
         
         .Row = 22
@@ -696,7 +696,8 @@ Private Sub checkSheet1()
                     If CheckSoLienHDDT(CStr(mauso1), strLoai, strTemp, CStr(kyhieu1)) = "3" Then
                          .Col = .ColLetterToNumber("J")
                         .CellNote = errSoLienHDDT  'static
-                        .BackColor = mErrorColor
+                        '.BackColor = mErrorColor
+                        .BackColor = mAlertColor
                     Else
                         .Col = .ColLetterToNumber("J")
                         .CellNote = ""
@@ -715,8 +716,8 @@ Private Sub checkSheet1()
                     If CheckSoLienHDDT(CStr(mauso1), strLoai, strTemp, CStr(kyhieu1)) = "3" Then
                          .Col = .ColLetterToNumber("J")
                         .CellNote = errSoLienHDDT  'static
-                        .BackColor = mErrorColor
-                        
+                        '.BackColor = mErrorColor
+                        .BackColor = mAlertColor
                     Else
                         .Col = .ColLetterToNumber("J")
                         .CellNote = ""
@@ -1073,13 +1074,13 @@ Private Sub checkSheet1()
             .SetText .ColLetterToNumber("B"), 21, "0"
         End If
         
-        If blCheck_SoLienHDDT = True Then
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 22, "1"
-        Else
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 22, "0"
-        End If
+'        If blCheck_SoLienHDDT = True Then
+'            .Sheet = .SheetCount
+'            .SetText .ColLetterToNumber("B"), 22, "1"
+'        Else
+'            .Sheet = .SheetCount
+'            .SetText .ColLetterToNumber("B"), 22, "0"
+'        End If
         
         
         
