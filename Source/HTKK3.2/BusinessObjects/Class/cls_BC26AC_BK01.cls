@@ -549,8 +549,9 @@ Private Sub checkSheet3()
                         If CheckSoLienHDDT(CStr(strMauSoHD), strLoai, strTemp, CStr(strKyHieuHD)) = "3" Then
                              .Col = .ColLetterToNumber(Col_O)
                             .CellNote = errSoLienHDDT  'static
-                            .BackColor = mErrorColor
-                            iFlagSoLienHD = 2
+'                            .BackColor = mErrorColor
+'                            iFlagSoLienHD = 2
+                             .BackColor = mAlertColor
                         Else
                             .Col = .ColLetterToNumber(Col_O)
                             .CellNote = ""
@@ -567,8 +568,9 @@ Private Sub checkSheet3()
                         If CheckSoLienHDDT(CStr(strMauSoHD), strLoai, strTemp, CStr(strKyHieuHD)) = "3" Then
                              .Col = .ColLetterToNumber(Col_O)
                             .CellNote = errSoLienHDDT  'static
-                            .BackColor = mErrorColor
-                            iFlagSoLienHD = 2
+'                            .BackColor = mErrorColor
+'                            iFlagSoLienHD = 2
+                             .BackColor = mAlertColor
                         Else
                             .Col = .ColLetterToNumber(Col_O)
                             .CellNote = ""
