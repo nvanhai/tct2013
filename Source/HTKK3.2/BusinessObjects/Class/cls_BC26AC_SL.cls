@@ -56,6 +56,8 @@ Private Const Col_AD = "AD"
 
 Public strTkThangQuy As String
 
+Private strTongHDton As Variant
+
 'Private strCheckTon As String
 'Private strCheckTonKhoang As String
 Private loaiHoaDonS1() As LOAI_HOA_DON
@@ -1503,6 +1505,7 @@ Private Sub checkSheet1()
                 End If
          End If
         
+        .GetText .ColLetterToNumber("N"), 23 + countDynamicRow, strTongHDton
         
 
       
@@ -1558,6 +1561,7 @@ Private Sub checkSheet2()
 '    Dim arrGroupHD_Ton() As String
 '    Dim arrHD_Ton() As String
 '
+    Dim strTongSoHD_BK As Variant
     
     Dim str() As String
     Dim str1 As String
@@ -1973,6 +1977,11 @@ Private Sub checkSheet2()
          .GetText .ColLetterToNumber(Col_D), countDynamicRow + 54, strNguoiLapBieu
          .GetText .ColLetterToNumber(Col_R), countDynamicRow + 56, strNgayKy
          .GetText .ColLetterToNumber(Col_O), 8, strNgayHuy
+         
+         
+         .GetText .ColLetterToNumber("U"), countDynamicRow + 51, strTongSoHD_BK
+         
+         
          ' kiem tra nguoi ky bat buoc nhap
 '         If Trim(strNguoiKy) = "" Then
 '            .Row = countDynamicRow + 54
@@ -2211,6 +2220,8 @@ Private Sub checkSheet3()
     Dim strGroupHD As String
     Dim arrGroupHD_TK() As String
     Dim arrGroupValue_TK() As String
+    
+    Dim strTongHD_BK1 As Variant
     
     ' Danh sach cac hoa don ton tren sheet 1
     Dim arrGroupHD_Ton() As String
@@ -2633,6 +2644,8 @@ Private Sub checkSheet3()
 '         .GetText .ColLetterToNumber(Col_R), countDynamicRow + 48, strNguoiKy
 '         .GetText .ColLetterToNumber(Col_D), countDynamicRow + 48, strNguoiLapBieu
 '         .GetText .ColLetterToNumber(Col_R), countDynamicRow + 50, strNgayKy
+          .GetText .ColLetterToNumber("U"), countDynamicRow + 46, strTongHD_BK1
+
          ' kiem tra nguoi ky bat buoc nhap
 '         If Trim(strNguoiKy) = "" Then
 '            .Row = countDynamicRow + 48
