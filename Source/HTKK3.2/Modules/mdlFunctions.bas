@@ -34,7 +34,7 @@ Public Const LOCALE_STHOUSAND = &HF
 'Ket xuat XML
 Public Const maDVu = "HTKK"
 Public Const tenDVu = "HTKK"
-Public Const pbanDVu = "9.9.9"
+Public Const pbanDVu = "3.2.4"
 Public Const ttinNhaCCapDVu = ""
 Public Const pbanTKhaiXML = "2.0.0"
 'End XML

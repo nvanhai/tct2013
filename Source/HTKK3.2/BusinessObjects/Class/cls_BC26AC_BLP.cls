@@ -61,7 +61,7 @@ Public strTkThangQuy As String
 Private loaiHoaDonS1() As LOAI_HOA_DON
 
 'Dinh nghia type luu du  HD
-Public Type HOA_DON
+Private Type HOA_DON
     tenHD As String
     mauSoHD As String
     kyHieuHD As String
@@ -71,7 +71,7 @@ Public Type HOA_DON
 End Type
 
 'Dinh nghia type luu du lieu bang HD
-Public Type LOAI_HOA_DON
+Private Type LOAI_HOA_DON
     loaiHD As String
     hoaDon() As HOA_DON
 End Type
