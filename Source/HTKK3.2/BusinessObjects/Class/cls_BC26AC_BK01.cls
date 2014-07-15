@@ -75,10 +75,10 @@ Public Sub Prepare1()
         .Sheet = 1
             'SetKyHieuHDFormat fps, 3, 45, .ColLetterToNumber("S")
             SetDateFormat fps, 1, 51, .ColLetterToNumber(Col_R), DDMMYYYY
-            .Row = 51
-            .Col = .ColLetterToNumber(Col_R)
-            .Text = Format(Date, "dd/mm/yyyy")
-            .TypeHAlign = TypeHAlignLeft
+'            .Row = 51
+'            .Col = .ColLetterToNumber(Col_R)
+'            .Text = Format(Date, "dd/mm/yyyy")
+'            .TypeHAlign = TypeHAlignLeft
             ' Set gia tri ten loai hoa don
             .Col = .ColLetterToNumber("C")
             .Row = 45
@@ -122,6 +122,7 @@ Public Sub Prepare2()
         If Trim(.Text) = "" Then
             nguoiky = GetNguoiKy()
             .SetText .ColLetterToNumber("R"), countRowDynamic + 48, nguoiky
+            UpdateCell_sheet fps, 1, .Col, .Row, .Text
         End If
         
          'Xoa cong thuc cua o Chu ky
@@ -142,7 +143,7 @@ Public Sub Prepare2()
         '.Text = Format(Date, "dd/mm/yyyy")
         .Text = TAX_Utilities_v1.Day & "/" & TAX_Utilities_v1.Month & "/" & TAX_Utilities_v1.Year
         .TypeHAlign = TypeHAlignLeft
-        
+        UpdateCell_sheet fps, 1, .Col, .Row, .Text
         .EventEnabled(EventAllEvents) = True
     End With
 End Sub

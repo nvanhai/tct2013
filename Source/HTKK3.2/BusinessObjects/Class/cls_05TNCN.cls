@@ -978,7 +978,8 @@ Private Sub checkSheet1()
                     .Col = .ColLetterToNumber("N")
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                     .CellNote = vErrMsgSoThueKhauTru
-                    .BackColor = mErrorColor
+                    '.BackColor = mErrorColor
+                    .BackColor = mAlertColor
                 End If
                 ' Check so thu da nop thua va so thue con phai khau tru them
                 .GetText .ColLetterToNumber("AT"), .Row, varTemp
@@ -3560,8 +3561,9 @@ Private Sub CheckDynamicSheet2()
                     .Col = .ColLetterToNumber("I")
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                     .CellNote = vErrMsgSoThueKhauTru
-                    .BackColor = mErrorColor
-                    iFlagCT13CT11 = 1
+'                    .BackColor = mErrorColor
+'                    iFlagCT13CT11 = 1
+                     .BackColor = mAlertColor
                 Else
                     .Col = .ColLetterToNumber("I")
                     .CellNote = ""
