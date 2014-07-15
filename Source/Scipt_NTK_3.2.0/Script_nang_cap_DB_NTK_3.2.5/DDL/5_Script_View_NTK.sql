@@ -200,7 +200,7 @@ FROM
          DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL) SL_su_dung,
          DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL) SL_xoa,
          DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL) SL_mat,
-         DECODE(gdien.cot_19, tkd.ky_hieu, tkd.gia_tri, NULL) SL_huy,
+         DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL) SL_huy,
          DECODE(gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL) Tong_so,
          DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL) Ton_cuoi_ky,
          DECODE(gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL) Ghi_chu,
