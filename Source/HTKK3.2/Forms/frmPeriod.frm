@@ -526,7 +526,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":02C8
       UserResize      =   1
       Appearance      =   1
    End
@@ -2367,6 +2367,8 @@ Private Sub chkTKQuy_Click()
             lblNgayCuoi.Visible = True
             frmKy.Height = 1300
             Frame2.Top = 1600
+            
+            LoadDefaultInfor
         End If
     ElseIf strLoaiSacThue = "BC01" Then
 
