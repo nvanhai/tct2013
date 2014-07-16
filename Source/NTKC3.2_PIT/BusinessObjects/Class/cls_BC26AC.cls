@@ -336,6 +336,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim strMaPhongXuLy As String
     Dim vKyBCCuoi, vChuyenDiaDiem ', vChuyenDoiHinhThucSD
     Dim vFlagThangQuy
+    Dim vDay As Variant
     
 On Error GoTo ErrHandle
     strSQL = SqlHdr_AC
@@ -415,6 +416,7 @@ On Error GoTo ErrHandle
     If vFlagThangQuy = "1" Then
         If Trim(TAX_Utilities_Srv_New.ThreeMonths) <> "" Then
             dDate = dNgayDauKy
+            vDay = DatePart("d", dNgayDauKy)
             vQUY_BC = Format(dDate, "dd/mm/yyyy")
         End If
     Else
@@ -423,18 +425,33 @@ On Error GoTo ErrHandle
     End If
     
     If vFlagThangQuy = "1" Then
-        If Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
-            ' bao cao quy
-            vLoai_BC26 = "01"
-        ElseIf Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "1" Then
-            ' bao cao chuyen dia diem
-            vLoai_BC26 = "03"
-        ElseIf Trim(CStr(vKyBCCuoi)) = "1" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
-            ' bao cao quyet toan cuoi tung
-            vLoai_BC26 = "02"
+        'Bo sung xu ly truong hop ngay dau ky khong trung ngay bao cao
+        If (Left(vKY_BC_TUNGAY, 2) = "01" Or Left(vKY_BC_TUNGAY, 2) = "1") Then
+            If Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
+                ' bao cao quy
+                vLoai_BC26 = "01"
+            ElseIf Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "1" Then
+                ' bao cao chuyen dia diem
+                vLoai_BC26 = "03"
+            ElseIf Trim(CStr(vKyBCCuoi)) = "1" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
+                ' bao cao quyet toan cuoi tung
+                vLoai_BC26 = "02"
+            Else
+                vLoai_BC26 = "04"
+            End If
         Else
-            '
-            vLoai_BC26 = "04"
+            If Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
+                ' bao cao quy
+                vLoai_BC26 = "01TT39"
+            ElseIf Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "1" Then
+                ' bao cao chuyen dia diem
+                vLoai_BC26 = "03TT39"
+            ElseIf Trim(CStr(vKyBCCuoi)) = "1" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
+                ' bao cao quyet toan cuoi tung
+                vLoai_BC26 = "02TT39"
+            Else
+                vLoai_BC26 = "04TT39"
+            End If
         End If
     Else
         If Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
