@@ -336,3 +336,31 @@ FROM
 GROUP BY dtl.hdr_id,
          dtl.row_id
 );
+--cap nhat view cho to thang
+CREATE OR REPLACE VIEW RCV_V_BC26_HDR
+(id, ma_cqt, ma_cqt_cden, loai_bcao, ky_tungay, ky_denngay, bcao_tungay, bcao_denngay, dtnt_tin, thu_truong, ngay_nop_bcao, hthuc_nhap, ghi_chu, tthai_nhan, ngay_nhan, ngay_bc, loai_bc26, itkhai_id, phong_xly)
+AS
+SELECT  id,
+        ma_cqt,
+        TEN_CQ_TIEP_NHAN MA_CQT_CDEN,
+        '01' Loai_Bcao,
+        --quy_bc ky_tungay,
+        --last_day(add_months(quy_bc,2)) ky_denngay,
+        Decode((to_char(kybc_tu_ngay, 'mm') - to_char(kybc_den_ngay, 'mm')),'0',TRUNC(kybc_tu_ngay, 'MONTH'),quy_bc) ky_denngay,
+        Decode((to_char(kybc_tu_ngay, 'mm') - to_char(kybc_den_ngay, 'mm')),'0',last_day(kybc_tu_ngay),last_day(add_months(quy_bc,2))) ky_denngay,
+        kybc_tu_ngay BCAO_TUNGAY,
+        kybc_den_ngay BCAO_DENNGAY,
+        DECODE(length(trim(tin)),13,substr(trim(tin),1,10)||'-'||substr(trim(tin),11,3),trim(tin)) DTNT_TIN,
+        dump(nguoi_dai_dien) thu_truong,
+        ngay_nop NGAY_NOP_BCAO,
+        hthuc_nop HTHUC_NHAP,
+        dump(ghi_chu) ghi_chu,
+        '01',
+        NGAY_CAP_NHAT,
+        NGAY_BC,
+        Loai_Bc26,
+        itkhai_id ,
+        PHONG_XLY
+  FROM QLT_NTK.rcv_bcao_hdr_ac
+    Where Loai_Bc = 'BC26_AC'
+        And Da_Nhan Is Null;
