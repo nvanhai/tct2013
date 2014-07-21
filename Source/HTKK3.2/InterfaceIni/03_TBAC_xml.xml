@@ -1,6 +1,6 @@
 <HSoKhaiThue>
 	<Static GroupName="TKhaiThue">
-		<maTKhai>107</maTKhai>
+		<maTKhai>263</maTKhai>
 		<tenTKhai>Thông báo kết quả hủy hóa đơn</tenTKhai>
 		<moTaBMau/>
 	</Static>
@@ -22,7 +22,7 @@
 		<ThoiGian>O_8</ThoiGian>
 	</Static>
 	<Dynamic GroupName="HoaDon">
-		<ChiTiet id="ID_1">
+		<ChiTiet ID="ID_1">
 			<tenHDon>E_43</tenHDon>
 			<mauHDon>O_43</mauHDon>
 			<kyHieu>S_43</kyHieu>

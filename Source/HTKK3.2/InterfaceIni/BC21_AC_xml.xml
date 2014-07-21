@@ -1,6 +1,6 @@
 <HSoKhaiThue>
 	<Static GroupName="TKhaiThue">
-		<maTKhai>104</maTKhai>
+		<maTKhai>262</maTKhai>
 		<tenTKhai>Báo cáo mất,cháy,hỏng hóa đơn</tenTKhai>
 		<moTaBMau/>
 	</Static>
@@ -17,7 +17,7 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ngayMatChayHongHD>O_8</ngayMatChayHongHD>
+		<ngayMatChayHongHD>S_9</ngayMatChayHongHD>
 	</Static>
 	<Dynamic GroupName="HoaDon">
 		<ChiTietHoaDon id="id">

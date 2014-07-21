@@ -290,7 +290,7 @@
 			<ckctt_TVienLuuKy>R_170</ckctt_TVienLuuKy>
 			<ckctt_KHangTrongNuoc>R_170</ckctt_KHangTrongNuoc>
 			<ckctt_KHangNuocNgoai>R_170</ckctt_KHangNuocNgoai>
-			<ckctt_ToChucKhac>R_170/ckctt_ToChucKhac>
+			<ckctt_ToChucKhac>R_170</ckctt_ToChucKhac>
 			<ckPhongToaChoRut>R_171</ckPhongToaChoRut>
 			<ckptcr_TVienLuuKy>R_171</ckptcr_TVienLuuKy>
 			<ckptcr_KHangTrongNuoc>R_171</ckptcr_KHangTrongNuoc>
@@ -432,6 +432,5 @@
 		<keToanTruong></keToanTruong>
 		<ngayLap></ngayLap>
 		<giamDoc></giamDoc>
-	</Static>
-	</Static>
+	</Static>	
 </HSoKhaiThue>

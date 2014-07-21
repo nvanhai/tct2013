@@ -1,6 +1,6 @@
 <HSoThueDTu>
 	<Static GroupName="HinhThucKeKhai">
-		<quyetToanRiengTungNam>O_29</quyetToanRiengTungNam>
+		<quyetToanRiengTungNam MinOccur="1">O_29</quyetToanRiengTungNam>		
 	</Static>
 	<Static GroupName="CT21">
 		<soVBUQ>H_13</soVBUQ>
