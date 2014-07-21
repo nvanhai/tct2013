@@ -1,4 +1,4 @@
---09A_TNDN11
+--09A_TNCN11
 
 insert into QLT_NTK.RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('09A_TNCN11', '5', 'N', 10000, '5');
@@ -29,7 +29,7 @@ values ('09A_TNCN11', '13', 'N', 10008, '13');
 
 commit;
 
---09B_TNDN11
+--09B_TNCN11
 
 insert into QLT_NTK.RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('09B_TNCN11', '5', 'N', 10028, '5');
@@ -81,7 +81,7 @@ values ('09B_TNCN11', '20', 'N', 10043, '20');
 
 commit;
 
---09C_TNDN11
+--09C_TNCN11
 
 insert into QLT_NTK.RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('09C_TNCN11', '3', 'C', 10063, '3');
@@ -115,7 +115,7 @@ values ('09C_TNCN11', '15', 'N', 10066, '15');
 
 commit;
 
---09MT_TNDN11
+--09MT_TNCN11
 
 insert into QLT_NTK.RCV_MAP_CTIEU (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('09MT_TNCN11', '6', 'N', 10086, '6');

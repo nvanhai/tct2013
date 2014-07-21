@@ -1,4 +1,4 @@
---09A_TNDN11
+--09A_TNCN11
 insert into QLT_NTK.RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10000, 'Tæng thu nhËp chÞu thuÕ ph¸t sinh trong kú', '5', null, null, null, null, null, null, null, null, null, null, 1, '09A_TNCN11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
@@ -28,7 +28,7 @@ values (10008, 'Tæng sè thuÕ ®· nép ngoµi ViÖt Nam', '13', null, null, n
 
 commit;
 
---09B_TNDN11
+--09B_TNCN11
 insert into QLT_NTK.RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10028, 'Doanh thu b¸n hµng ho¸ vµ cung cÊp dÞch vô', '5', null, null, null, null, null, null, null, null, null, null, 1, '09B_TNCN11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
@@ -79,7 +79,7 @@ values (10043, 'Tæng sè thuÕ ®· nép ngoµi ViÖt Nam', '20', null, null, n
 
 commit;
 
---09C_TNDN11
+--09C_TNCN11
 insert into QLT_NTK.RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10063, 'Hä vµ tªn vî (chång) nÕu cã :', '3', null, null, null, null, null, null, null, null, null, null, 1, '09C_TNCN11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
@@ -94,7 +94,7 @@ values (10066, 'Th«ng tin', '9', '10', '11', '12', '13', '14', '15', null, null
 
 commit;
 
---09MT_TNDN11
+--09MT_TNCN11
 
 insert into QLT_NTK.RCV_GDIEN_TKHAI (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10086, 'Sè thuÕ ph¶i nép tr­íc khi miÔn', '6', null, null, null, null, null, null, null, null, null, null, 1, '09MT_TNCN11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
