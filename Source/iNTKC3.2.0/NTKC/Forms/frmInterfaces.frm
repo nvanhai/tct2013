@@ -1506,7 +1506,7 @@ On Error GoTo ErrHandle
     End If
     'strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl").nodeValue)
  ' xu ly de ghi cac mau an chi
-    If Val(idToKhai) = 66 Or Val(idToKhai) = 68 Or Val(idToKhai) = 18 Or Val(idToKhai) = 27 Or Val(idToKhai) = 67 Or Val(idToKhai) = 64 Or Val(idToKhai) = 65 Or Val(idToKhai) = 91 Or Val(idToKhai) = 7 Or Val(idToKhai) = 9 Or Val(idToKhai) = 13 Or Val(idToKhai) = 10 Or Val(idToKhai) = 14 Then
+    If Val(IdToKhai) = 66 Or Val(IdToKhai) = 68 Or Val(IdToKhai) = 18 Or Val(IdToKhai) = 27 Or Val(IdToKhai) = 67 Or Val(IdToKhai) = 64 Or Val(IdToKhai) = 65 Or Val(IdToKhai) = 91 Or Val(IdToKhai) = 7 Or Val(IdToKhai) = 9 Or Val(IdToKhai) = 13 Or Val(IdToKhai) = 10 Or Val(IdToKhai) = 14 Then
         strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl_AC").nodeValue)
     Else
         strSQL_DTL = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlDtl").nodeValue)
@@ -1985,6 +1985,12 @@ Private Sub Command1_Click()
 'str2 = str2 & "~51-60~0000061~0010000~9940</S><S >Ng­êi lËp biÓu~Thñ tr­ëng ®¬n vÞ thuyntk1605~22/04/2014</S></S01>"
 'Barcode_Scaned str2
 
+'str2 = "aa324184200536821   02201400500500100101/0101/01/2009<S01><S>~~02/04/2014~30/06/2014</S><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT0/001~E~540~200~20~10~2~3~35~705~ghi chu 01~0~Hãa ®¬n b¸n hµng dù tr÷ quèc gia~01BHDT0/001~P~100~450~120~23~11~9~163~387~ghi chu 02~0</S><S>Nguyen Van A~LAI KUAN PING~15/07/2014</S></S01>"
+'Barcode_Scaned str2
+
+str2 = "aa320664200536821   072014ihtkks00100101/0101/01/2010<S01><S>17/07/2014~12~54</S><S>Hoa d?n ban hang d? tr? qu?c gia~01BHDT0/001~AA/11E~0000045~0000050~6~0~02~0~Hoa d?n gia tr? gia tang~01GTKT3/001~NN/XC12P~0000070~0000090~21~3~02~0</S><S>DOT CHHAY~FDF~17/07/2014</S></S01>"
+'str2 = "aa324664200170126   02201400100100100101/0101/01/2010<S01><S>01/07/2014~15~30</S><S>Hoa d?n ban hang d? tr? qu?c gia~01BHDT3/001~QS/11T~0000001~0000100~100~LIEN 1~05~0~Hoa d?n gia tr? gia tang~01GTKT3/009~NN/XC11T~0000020~0000100~81~LIEN 3~04~0</S><S>CHAY NHA~Hoang Ng?c Hung~01/07/2014</S></S01>"
+Barcode_Scaned str2
 
 End Sub
 
