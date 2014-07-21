@@ -136,6 +136,9 @@ Public strLoaiNNKD As String
 Public strDauTho As String
 Public strCondensate As String
 Public strKhiThienNhien As String
+
+
+Public pbanTKhaiXML_TK As String
  
 ' bien xu ly luu datafile cho to khai TAIN_DK
 ' DT dau tho

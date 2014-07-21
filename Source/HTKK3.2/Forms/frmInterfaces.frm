@@ -3703,7 +3703,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         End If
 
         If xmlTK.getElementsByTagName("pbanTKhaiXML").length > 0 Then
-            xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = pbanTKhaiXML
+            xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = pbanTKhaiXML_TK
         End If
                 
         'to TB03,BC21 khong co ky ke khai
@@ -3974,6 +3974,7 @@ Private Function getFileName(MaTk As String) As String
 
         If GetAttribute(NodeMaFile, "MapID") = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") Then
             MaFile = GetAttribute(NodeMaFile, "MaFile")
+            pbanTKhaiXML_TK = GetAttribute(NodeMaFile, "Version")
             Exit For
         End If
 
