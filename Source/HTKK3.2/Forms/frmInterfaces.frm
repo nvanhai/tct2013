@@ -3702,10 +3702,22 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             xmlTK.getElementsByTagName("moTaBMau")(0).Text = GetAttribute(GetMessageCellById("0283"), "Msg")
         End If
 
-        If xmlTK.getElementsByTagName("pbanTKhaiXML").length > 0 Then
-            xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = pbanTKhaiXML_TK
+        ' set ma to khai ket xuat XML
+        If maTKhaiXML <> "" Then
+            xmlTK.getElementsByTagName("maTKhai")(0).Text = maTKhaiXML
         End If
-                
+        
+
+        'set version cua tk chinh thuc và to khai BS
+        If soLanBs > 0 Then
+            If xmlTK.getElementsByTagName("pbanTKhaiXML").length > 0 Then
+                xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = pbanTKhaiXML_TK_KHBS
+            End If
+        Else
+            If xmlTK.getElementsByTagName("pbanTKhaiXML").length > 0 Then
+                xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = pbanTKhaiXML_TK
+            End If
+        End If
         'to TB03,BC21 khong co ky ke khai
 '        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "10" Then
 
@@ -3975,6 +3987,8 @@ Private Function getFileName(MaTk As String) As String
         If GetAttribute(NodeMaFile, "MapID") = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") Then
             MaFile = GetAttribute(NodeMaFile, "MaFile")
             pbanTKhaiXML_TK = GetAttribute(NodeMaFile, "Version")
+            pbanTKhaiXML_TK_KHBS = GetAttribute(NodeMaFile, "VersionKHBS")
+            maTKhaiXML = GetAttribute(NodeMaFile, "MaTK")
             Exit For
         End If
 
