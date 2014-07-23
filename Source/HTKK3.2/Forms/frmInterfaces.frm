@@ -3586,7 +3586,7 @@ Private Sub SetKieuKy()
     strKK = strKieuKy
     
     '01_NTNN
-    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "06" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "90" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "81" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "72" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "92" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "98" Then
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "06" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "90" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "81" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "72" Then
         If strLoaiTKThang_PS = "TK_LANPS" Then
             strKK = "D"
         Else
@@ -3594,6 +3594,18 @@ Private Sub SetKieuKy()
         End If
       
     End If
+    
+    ' to khai DK
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "92" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "98" Then
+        If strQuy = "TK_THANG" Then
+            strKK = "M"
+        ElseIf strQuy = "TK_LANPS" Then
+            strKK = "D"
+        ElseIf strQuy = "TK_LANXB" Then
+            strKK = "D"
+        End If
+    End If
+    
     
     ' To khai 02/TNDN
     If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "73" Then
