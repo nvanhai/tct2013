@@ -1,12 +1,12 @@
 <PL_03_1_TD_TAIN>
 	<BKePBoThueTNChoDPhuong>
-		<CTietBKePBoThueTNChoDPhuong id="String">
-			<tenNhaMay>String</tenNhaMay>
+		<CTietBKePBoThueTNChoDPhuong id="">
+			<tenNhaMay></tenNhaMay>
 			<mstNhaMay>0000000000</mstNhaMay>
 			<CQTDiaPhuong>
-				<ChiTietCQTDiaPhuong ID="String">
+				<ChiTietCQTDiaPhuong ID="">
 					<maCQTDPhuong>1</maCQTDPhuong>
-					<tenCQTDPhuong>String</tenCQTDPhuong>
+					<tenCQTDPhuong></tenCQTDPhuong>
 					<tyLePBoCQTDPhuong>0.0</tyLePBoCQTDPhuong>
 					<thuePNopCQTDPhuong>1</thuePNopCQTDPhuong>
 				</ChiTietCQTDiaPhuong>

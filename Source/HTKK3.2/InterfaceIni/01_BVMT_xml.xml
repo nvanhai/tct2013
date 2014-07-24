@@ -27,7 +27,7 @@
 	</Static>
 	<Dynamic GroupName="KSCSoTuKhaiThac" Level="2">
 		<KhoangSan id="ID_2">
-			<maKhoangSan>AB_45</maKhoangSan>
+			<maKhoangSan>AC_45</maKhoangSan>
 			<tenKhoangSan>C_45</tenKhoangSan>
 			<donViTinh>J_45</donViTinh>
 			<soLuong>L_45</soLuong>
@@ -40,7 +40,7 @@
 	</Static>
 	<Dynamic GroupName="KSanCoSoThuMuaNopThay" Level="2">
 		<KhoangSan id="ID_1">
-			<maKhoangSan>AB_49</maKhoangSan>
+			<maKhoangSan>AC_49</maKhoangSan>
 			<tenKhoangSan>C_49</tenKhoangSan>
 			<donViTinh>J_49</donViTinh>
 			<soLuong>L_49</soLuong>

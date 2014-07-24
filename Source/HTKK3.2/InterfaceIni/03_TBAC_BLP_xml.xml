@@ -7,7 +7,7 @@
 	<Static GroupName="CTieuTKhaiChinh">
 		<kinhGui>J_2</kinhGui>
 		<ppHuyBienLai>K_6</ppHuyBienLai>
-		<ngayHuyBienLai>O_8</ngayHuyBienLai>
+		<ngayHuyBienLai>O_9</ngayHuyBienLai>
 	</Static>
 	<Dynamic GroupName="BKeKQuaHuyBLai" MinOccur="1">
 		<ChiTietBKeKQuaHuyBLai id="id">
