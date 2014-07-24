@@ -150,4 +150,7 @@
 	<Infor ID="0154" Msg="Có lỗi khi gửi tờ khai"/>
 	<Infor ID="0155" Msg="Đã sử dụng"/>
 	<Infor ID="0156" Msg="Chưa sử dụng"/>
+	<Infor ID="0157" Msg="Tờ khai bổ sung phải thực hiện nhập trên ứng dụng QCT"/>
+	<Infor ID="0158" Msg="Đề nghị cán bộ thuế nhập tay vào hệ thống QLT"/>
+
 </Message>
