@@ -150,12 +150,12 @@ Begin VB.Form frmTraCuuAC
       End
       Begin FPUSpreadADO.fpSpread fpsLoaiTK 
          Height          =   525
-         Left            =   360
+         Left            =   240
          TabIndex        =   0
          Top             =   240
-         Width           =   4725
+         Width           =   4965
          _Version        =   458752
-         _ExtentX        =   8334
+         _ExtentX        =   8758
          _ExtentY        =   926
          _StockProps     =   64
          AllowMultiBlocks=   -1  'True
@@ -357,7 +357,7 @@ Private Function changeLoaiToKhai(ByVal strLoaiMaToKhai As String) As String
     If strLoaiMaToKhai = "66" Then changeLoaiToKhai = "'%BC21_AC%'"
     If strLoaiMaToKhai = "67" Then changeLoaiToKhai = "'%03_TBAC%'"
     If strLoaiMaToKhai = "91" Then changeLoaiToKhai = "'%04_TBAC%'"
-    If strLoaiMaToKhai = "68" Then changeLoaiToKhai = "'%BC26_AC%'"
+    If strLoaiMaToKhai = "68" Then changeLoaiToKhai = "'%BC26_AC'" 'fix (same %BC26_AC_SL%)
     If strLoaiMaToKhai = "27" Then changeLoaiToKhai = "'%01_BK_BC26_AC%'"
     If (strLoaiMaToKhai = "07" Or strLoaiMaToKhai = "7") Then changeLoaiToKhai = "'%01_TBAC_BLP%'"
     If strLoaiMaToKhai = "13" Then changeLoaiToKhai = "'%01_AC_BLP%'"

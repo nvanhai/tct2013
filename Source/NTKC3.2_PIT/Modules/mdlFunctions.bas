@@ -252,13 +252,16 @@ Public Function GetValidityNode() As MSXML.IXMLDOMNode
             End Select
         
         ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ThreeMonth") = "1" Then
-
-            Select Case TAX_Utilities_Srv_New.ThreeMonths
-
-                Case "01", "02", "03", "04"
-                    ValidityDate = GetNgayCuoiQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
-            End Select
-
+            'todo ??? 66,67
+            If (idToKhai = 66 Or idToKhai = 67) Then
+                ValidityDate = Date
+            Else
+                Select Case TAX_Utilities_Srv_New.ThreeMonths
+    
+                    Case "01", "02", "03", "04"
+                        ValidityDate = GetNgayCuoiQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
+                End Select
+            End If
         ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
             ValidityDate = NgayCuoiNamTaiChinh(CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
         Else
