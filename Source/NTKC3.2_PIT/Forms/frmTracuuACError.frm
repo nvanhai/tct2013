@@ -339,7 +339,7 @@ Private Function changeLoaiToKhai(ByVal strLoaiMaToKhai As String) As String
     If strLoaiMaToKhai = "66" Then changeLoaiToKhai = "'%BC21_AC%'"
     If strLoaiMaToKhai = "67" Then changeLoaiToKhai = "'%03_TBAC%'"
     If strLoaiMaToKhai = "91" Then changeLoaiToKhai = "'%04_TBAC%'"
-    If strLoaiMaToKhai = "68" Then changeLoaiToKhai = "'%BC26_AC%'"
+    If strLoaiMaToKhai = "68" Then changeLoaiToKhai = "'%BC26_AC'" 'fix (same %BC26_AC_SL%)
     If (strLoaiMaToKhai = "07" Or strLoaiMaToKhai = "7") Then changeLoaiToKhai = "'%01_TBAC_BLP%'"
     If strLoaiMaToKhai = "13" Then changeLoaiToKhai = "'%01_AC_BLP%'"
     If (strLoaiMaToKhai = "09" Or strLoaiMaToKhai = "9") Then changeLoaiToKhai = "'%BC21_AC_BLP%'"
