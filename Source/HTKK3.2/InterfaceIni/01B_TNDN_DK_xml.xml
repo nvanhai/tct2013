@@ -12,7 +12,7 @@
 		<daiLyThue MinOccur="1">AF_49</daiLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<tenDonViUyQuyen>P_36</tenDonViUyQuyen>
+		<tenDonViUyQuyen>AI_49</tenDonViUyQuyen>
 		<ct22>AV_55</ct22>
 		<ct23>AV_56</ct23>
 		<ct24>AV_57</ct24>
