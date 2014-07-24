@@ -555,7 +555,7 @@
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
 		</Validity>
 	</Menu>
-	<Menu ID="68" PopID="101" ParentID="112" Caption="Báo cáo tình hình sử dụng hóa đơn" FormName="" Year="1/2" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tncn.bmp">
+	<Menu ID="68" PopID="101" ParentID="112" Caption="B/c tình hình sử dụng hóa đơn" FormName="" Year="1/2" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\Excel\BC26_AC.xls" ReportTemplate="..\ReportTemplates\Excel\BC26_AC.xls" Class="Tax_Business_iNTK.cls_BC26AC">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BC26_AC" Ini="..\Ini\BC26_AC.xml"/>
 			<Sheet ID="01_1" Caption="BK01_1/AC" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BK26_01_AC" Ini="..\Ini\BK26_01_AC.xml"/>
@@ -563,7 +563,7 @@
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>	
 		</Validity>
 	</Menu>
-	<Menu ID="18" PopID="101" ParentID="112" Caption="Báo cáo tình hình sử dụng hóa đơn theo số lượng" FormName="" Year="1/2" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tncn.bmp">
+	<Menu ID="18" PopID="101" ParentID="112" Caption="B/c tình hình sử dụng hóa đơn theo số lượng" FormName="" Year="1/2" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\Excel\BC26_AC_SL.xls" ReportTemplate="..\ReportTemplates\Excel\BC26_AC_SL.xls" Class="Tax_Business_iNTK.cls_BC26ACSL">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BC26_AC_SL" Ini="..\Ini\BC26_AC_SL.xml"/>
 			<Sheet ID="01_1" Caption="BK01_1/AC" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BK26SL_01_AC" Ini="..\Ini\BK26SL_01_AC.xml"/>
