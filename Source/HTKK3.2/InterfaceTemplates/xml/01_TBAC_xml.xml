@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <HSoThueDTu>
-	<HSoKhaiThue>
+	<HSoKhaiThue id="ID_1">
 		<TTinChung>
 			<TTinDVu>
 				<maDVu></maDVu>

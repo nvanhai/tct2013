@@ -17,7 +17,7 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Dynamic GroupName="HoaDon">
-		<ChiTiet id="ID_1">
+		<ChiTiet ID="String">
 			<tenLoaiHDon>D_35</tenLoaiHDon>
 			<mauSo>J_35</mauSo>
 			<kyHieu>L_35</kyHieu>

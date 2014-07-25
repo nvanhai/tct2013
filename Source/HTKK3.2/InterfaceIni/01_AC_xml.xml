@@ -41,8 +41,8 @@
 		<ngayLapBCao>J_32</ngayLapBCao>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy></nguoiKy>
-		<ngayKy></ngayKy>
+		<nguoiKy>J_30</nguoiKy>
+		<ngayKy>J_32</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
 		<tenNVienDLyThue></tenNVienDLyThue>
