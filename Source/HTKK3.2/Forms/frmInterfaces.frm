@@ -3650,6 +3650,15 @@ Private Sub SetKieuKy()
     If strKK = "D_Y" Then
         strKK = "Y"
     End If
+    '
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "65" Then
+        If strQuy = "TK_QUY" Then
+            strKK = "Q"
+        Else
+            strKK = "K"
+        End If
+    End If
+    
 End Sub
 
 ' Set gia tri mac dinh cho to khai xml

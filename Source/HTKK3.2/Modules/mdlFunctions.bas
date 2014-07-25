@@ -4689,21 +4689,43 @@ Public Function ToDateString(str As String, mmmmYYdd As Boolean) As String
     Dim strArray() As String
 
     If mmmmYYdd = True Then
-        strArray = Split(str, "/")
-
-        If UBound(strArray) <> 2 Then
-            ToDateString = str
-            Exit Function
-        Else
-
-            If Val(strArray(0)) > 0 And Val(strArray(1)) > 0 And Val(strArray(2)) > 0 Then
-                If Val(strArray(0)) <= 31 And Val(strArray(1)) <= 12 And Val(strArray(2)) < 9999 Then
-                    ToDateString = strArray(2) & "-" & strArray(1) & "-" & strArray(0)
+        If Len(str) > 10 Then
+            If Len(str) > 20 Then
+                ToDateString = str
+                Exit Function
+            Else
+                ' format lai dinh dang kieu datetime cua chuan XML
+                strArray = Split(Left(str, 10), "/")
+                If UBound(strArray) <> 2 Then
+                    ToDateString = str
                     Exit Function
+                Else
+        
+                    If Val(strArray(0)) > 0 And Val(strArray(1)) > 0 And Val(strArray(2)) > 0 Then
+                        If Val(strArray(0)) <= 31 And Val(strArray(1)) <= 12 And Val(strArray(2)) < 9999 Then
+                            ToDateString = strArray(2) & "-" & strArray(1) & "-" & strArray(0) & Right(str, Len(str) - 10)
+                            Exit Function
+                        End If
+                    End If
+                End If
+            End If
+        Else
+            ' format theo dinh dang date cua chuan XML
+            strArray = Split(str, "/")
+    
+            If UBound(strArray) <> 2 Then
+                ToDateString = str
+                Exit Function
+            Else
+    
+                If Val(strArray(0)) > 0 And Val(strArray(1)) > 0 And Val(strArray(2)) > 0 Then
+                    If Val(strArray(0)) <= 31 And Val(strArray(1)) <= 12 And Val(strArray(2)) < 9999 Then
+                        ToDateString = strArray(2) & "-" & strArray(1) & "-" & strArray(0)
+                        Exit Function
+                    End If
                 End If
             End If
         End If
-
     Else
         strArray = Split(str, "-")
 
