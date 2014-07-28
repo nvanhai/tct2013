@@ -112,12 +112,31 @@ Dim txmlCellNode As MSXML.IXMLDOMNode, txmlCellsNode As MSXML.IXMLDOMNode
 Dim xmlNode As MSXML.IXMLDOMNode
 Dim iCol As Long, iRow As Long
 
+Dim strGio, strPhut, strNgay As Variant
 
 Dim totalRow As Integer
     With fps
         .EventEnabled(EventAllEvents) = False
         .Sheet = 1
         mCurrentSheet = .Sheet
+        
+        ' set gia tri de ket xuat XML
+        .GetText .ColLetterToNumber("O"), 8, strNgay
+        .GetText .ColLetterToNumber("K"), 8, strGio
+        .GetText .ColLetterToNumber("M"), 8, strPhut
+        
+        If Len(strGio) = 1 Then
+            strGio = "0" & strGio
+        End If
+        
+        If Len(strPhut) = 1 Then
+            strPhut = "0" & strPhut
+        End If
+        .Row = 9
+        .Col = .ColLetterToNumber("O")
+        .Text = strNgay & "T" & strGio & ":" & strPhut & ":00Z"
+        ' end set gia tri de ket xuat XML
+        
         i = 1
         .Col = .ColLetterToNumber("B")
         .Row = 43
@@ -168,6 +187,8 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
 'Dim cValueF As Variant
 'Dim i As Integer
 'Dim xmlNodeH15 As MSXML.IXMLDOMNode
+
+Dim strGio, strPhut, strNgay As Variant
 
     fps.EventEnabled(EventAllEvents) = False
     With fps
@@ -237,6 +258,26 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
             'Update combo F
             .Col = .ColLetterToNumber("AL")
             UpdateCell_sheet fps, 1, .Col, .Row, .Text
+         End If
+         
+         
+         If (.Col = .ColLetterToNumber("O") Or .Col = .ColLetterToNumber("K") Or .Col = .ColLetterToNumber("M")) And .Row = 8 Then
+            ' set gia tri de ket xuat XML
+            .GetText .ColLetterToNumber("O"), 8, strNgay
+            .GetText .ColLetterToNumber("K"), 8, strGio
+            .GetText .ColLetterToNumber("M"), 8, strPhut
+            
+            If Len(strGio) = 1 Then
+                strGio = "0" & strGio
+            End If
+            
+            If Len(strPhut) = 1 Then
+                strPhut = "0" & strPhut
+            End If
+            .Row = 9
+            .Col = .ColLetterToNumber("O")
+            .Text = strNgay & "T" & strGio & ":" & strPhut & ":00Z"
+            ' end set gia tri de ket xuat XML
          End If
     End With
    fps.EventEnabled(EventAllEvents) = True

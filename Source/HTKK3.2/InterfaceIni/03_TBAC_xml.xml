@@ -4,23 +4,13 @@
 		<tenTKhai>Thông báo kết quả hủy hóa đơn</tenTKhai>
 		<moTaBMau/>
 	</Static>
-	<Static GroupName="GiaHan">
-		<maLyDoGiaHan></maLyDoGiaHan>
-		<lyDoGiaHan></lyDoGiaHan>
-	</Static>
-	<Static GroupName="NNT">
-		<maHuyenNNT></maHuyenNNT>
-		<maTinhNNT></maTinhNNT>
-	</Static>
-	<Static GroupName="DLyThue">
-		<maHuyenDLyThue></maHuyenDLyThue>
-		<maTinhDLyThue></maTinhDLyThue>
-	</Static>
+	
 	<Static GroupName="CTieuTKhaiChinh">
 		<kinhGui>J_2</kinhGui>
 		<phuongPhapHuy>I_6</phuongPhapHuy>
-		<ThoiGian>O_8</ThoiGian>
+		<thoiGian>O_9</thoiGian>
 	</Static>
+	
 	<Dynamic GroupName="HoaDon">
 		<ChiTiet ID="ID_1">
 			<tenHDon>E_43</tenHDon>
@@ -40,8 +30,5 @@
 		<nguoiKy>R_47</nguoiKy>
 		<ngayKy>R_49</ngayKy>
 	</Static>
-	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue></tenNVienDLyThue>
-		<cchiHNghe></cchiHNghe>
-	</Static>
+
 </HSoKhaiThue>

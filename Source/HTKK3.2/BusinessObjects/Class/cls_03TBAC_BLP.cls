@@ -31,6 +31,8 @@ Dim xmlDomData As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocum
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
+
+
  strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_loai_BLP.xml")
         ' Lay danh muc loai hoa don
         ' 18/02/2014
@@ -52,6 +54,7 @@ Dim xmlNode As MSXML.IXMLDOMNode
         'SetKyHieuHDFormat fps, 1, 43, .ColLetterToNumber("S")
         'SetKyHieuHDFormat fps, 1, 43, .ColLetterToNumber("S")
           .Sheet = 1
+          .EventEnabled(EventAllEvents) = False
           .Row = 43
           ' set ma hoa don
         .Col = .ColLetterToNumber("C")
@@ -84,7 +87,7 @@ Dim xmlNode As MSXML.IXMLDOMNode
         .Col = .ColLetterToNumber("AI")
         .Row = 43
         .TypeComboBoxList = strCombo
-        
+        .EventEnabled(EventAllEvents) = True
     End With
     
     
@@ -102,12 +105,34 @@ Dim txmlCellNode As MSXML.IXMLDOMNode, txmlCellsNode As MSXML.IXMLDOMNode
 Dim xmlNode As MSXML.IXMLDOMNode
 Dim iCol As Long, iRow As Long
 
+Dim strGio, strPhut, strNgay As Variant
+
 Dim totalRow As Integer
     With fps
         .EventEnabled(EventAllEvents) = False
         .Sheet = 1
         mCurrentSheet = .Sheet
         i = 1
+        
+        ' set gia tri de ket xuat XML
+        .GetText .ColLetterToNumber("O"), 8, strNgay
+        .GetText .ColLetterToNumber("L"), 8, strGio
+        .GetText .ColLetterToNumber("N"), 8, strPhut
+        
+        If Len(strGio) = 1 Then
+            strGio = "0" & strGio
+        End If
+        
+        If Len(strPhut) = 1 Then
+            strPhut = "0" & strPhut
+        End If
+        .Row = 9
+        .Col = .ColLetterToNumber("O")
+        .Text = strNgay & "T" & strGio & ":" & strPhut & ":00Z"
+        ' end set gia tri de ket xuat XML
+        
+        
+        
         .Col = .ColLetterToNumber("B")
         .Row = 43
         Do
@@ -157,6 +182,9 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
 'Dim cValueF As Variant
 'Dim i As Integer
 'Dim xmlNodeH15 As MSXML.IXMLDOMNode
+
+Dim strGio, strPhut, strNgay As Variant
+
     Dim strTuSo As Variant
     Dim strDenso As Variant
     fps.EventEnabled(EventAllEvents) = False
@@ -219,6 +247,26 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
             
             .EventEnabled(EventChange) = True
          End If
+         
+         If (.Col = .ColLetterToNumber("O") Or .Col = .ColLetterToNumber("L") Or .Col = .ColLetterToNumber("N")) And .Row = 8 Then
+            ' set gia tri de ket xuat XML
+            .GetText .ColLetterToNumber("O"), 8, strNgay
+            .GetText .ColLetterToNumber("L"), 8, strGio
+            .GetText .ColLetterToNumber("N"), 8, strPhut
+            
+            If Len(strGio) = 1 Then
+                strGio = "0" & strGio
+            End If
+            
+            If Len(strPhut) = 1 Then
+                strPhut = "0" & strPhut
+            End If
+            .Row = 9
+            .Col = .ColLetterToNumber("O")
+            .Text = strNgay & "T" & strGio & ":" & strPhut & ":00Z"
+            ' end set gia tri de ket xuat XML
+         End If
+         
     End With
    fps.EventEnabled(EventAllEvents) = True
 End Sub
@@ -286,7 +334,6 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
                         .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
                     Else
-                        .SetFocus
                         .SetActiveCell Col, Row
                     End If
                 Else
