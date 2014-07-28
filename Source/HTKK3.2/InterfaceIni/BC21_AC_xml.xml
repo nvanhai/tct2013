@@ -4,20 +4,9 @@
 		<tenTKhai>Báo cáo mất,cháy,hỏng hóa đơn</tenTKhai>
 		<moTaBMau/>
 	</Static>
-	<Static GroupName="GiaHan">
-		<maLyDoGiaHan></maLyDoGiaHan>
-		<lyDoGiaHan></lyDoGiaHan>
-	</Static>
-	<Static GroupName="NNT">
-		<maHuyenNNT></maHuyenNNT>
-		<maTinhNNT></maTinhNNT>
-	</Static>
-	<Static GroupName="DLyThue">
-		<maHuyenDLyThue></maHuyenDLyThue>
-		<maTinhDLyThue></maTinhDLyThue>
-	</Static>
+	
 	<Static GroupName="CTieuTKhaiChinh">
-		<ngayMatChayHongHD>S_9</ngayMatChayHongHD>
+		<ngayMatChayHongHD>O_9</ngayMatChayHongHD>
 	</Static>
 	<Dynamic GroupName="HoaDon">
 		<ChiTietHoaDon id="id">
@@ -41,8 +30,5 @@
 		<nguoiKy>AB_49</nguoiKy>
 		<ngayKy>AB_51</ngayKy>
 	</Static>
-	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue></tenNVienDLyThue>
-		<cchiHNghe></cchiHNghe>
-	</Static>
+
 </HSoKhaiThue>
