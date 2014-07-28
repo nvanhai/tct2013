@@ -18,7 +18,7 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ngay date="1">N_15</ngay>
+		<ngayMatChayHongHD date="1">N_15</ngayMatChayHongHD>
 	</Static>
 	<Dynamic GroupName="HoaDon">
 		<ChiTietHoaDon id="id">
@@ -39,8 +39,8 @@
 		<ngayLapBCao>AE_50</ngayLapBCao>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy></nguoiKy>
-		<ngayKy></ngayKy>
+		<nguoiKy>AE_48</nguoiKy>
+		<ngayKy date="1">AE_50</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
 		<tenNVienDLyThue></tenNVienDLyThue>

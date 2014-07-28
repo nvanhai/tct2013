@@ -46,8 +46,8 @@
 		<ngayBCao>Q_40</ngayBCao>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy></nguoiKy>
-		<ngayKy></ngayKy>
+		<nguoiKy>Q_42</nguoiKy>
+		<ngayKy>Q_40</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
 		<tenNVienDLyThue></tenNVienDLyThue>

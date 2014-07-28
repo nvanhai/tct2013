@@ -23,16 +23,12 @@
 		<kyBaoCaoCuoiCung>E_16</kyBaoCaoCuoiCung>
 	</Static>
 	<Dynamic GroupName="HoaDon">
-		<ChiTietHoaDon id="id">
-			<ToChucCNDatIn>
-				<mst>D_29</mst>
-				<ten>E_29</ten>
-				<diaChi>I_29</diaChi>
-			</ToChucCNDatIn>
-			<HopDong>
-				<so>K_29</so>
-				<ngay date="1">M_29</ngay>
-			</HopDong>
+		<ChiTietHoaDon id="id">			
+			<mst>D_29</mst>
+			<ten>E_29</ten>
+			<diaChi>I_29</diaChi>	
+			<so>K_29</so>
+			<ngay date="1">M_29</ngay>
 			<tenHDon>O_29</tenHDon>
 			<mauHDon>R_29</mauHDon>
 			<kyHieu>T_29</kyHieu>
@@ -46,8 +42,8 @@
 		<ngayLapBCao date="1">S_38</ngayLapBCao>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy></nguoiKy>
-		<ngayKy date="1"></ngayKy>
+		<nguoiKy>S_36</nguoiKy>
+		<ngayKy date="1">S_38</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
 		<tenNVienDLyThue></tenNVienDLyThue>

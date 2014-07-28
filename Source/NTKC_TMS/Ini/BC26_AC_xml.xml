@@ -58,8 +58,8 @@
 		<ngayBCao>S_42</ngayBCao>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy></nguoiKy>
-		<ngayKy></ngayKy>
+		<nguoiKy>S_40</nguoiKy>
+		<ngayKy>S_42</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
 		<tenNVienDLyThue></tenNVienDLyThue>

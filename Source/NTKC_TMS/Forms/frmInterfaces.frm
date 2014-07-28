@@ -1114,7 +1114,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
     
     'To 03/TBAC, BLP bo Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "07"
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "10" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "09" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "67" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "66" Then
-        xmlTK.getElementsByTagName("kyKKhai")(0).Text = Format$(strNgayHeThongSrv, "dd/MM/yyyy")
+        xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID"))
         xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = ""
         xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = ""
         xmlTK.getElementsByTagName("kieuKy")(0).Text = "D"
@@ -1176,6 +1176,27 @@ End Sub
 Private Function GetKyKeKhai(ByVal ID_TK As String) As String
     Dim KYKKHAI As String
     On Error GoTo ErrHandle
+    
+     If ID_TK = "66" Then
+        isTKLanPS = True
+        fpSpread1.Row = 15
+        fpSpread1.Col = fpSpread1.ColLetterToNumber("N")
+        KYKKHAI = fpSpread1.Text
+        strKieuKy = "D"
+        GetKyKeKhai = KYKKHAI
+        Exit Function
+    End If
+    
+     If ID_TK = "67" Then
+        isTKLanPS = True
+        fpSpread1.Row = 24
+        fpSpread1.Col = fpSpread1.ColLetterToNumber("P")
+        KYKKHAI = fpSpread1.Text
+        strKieuKy = "D"
+        GetKyKeKhai = KYKKHAI
+        Exit Function
+    End If
+    
     
     If ID_TK = "07" Then
         isTKLanPS = True
@@ -2193,23 +2214,23 @@ Private Function ExecuteSave() As Boolean
         End If
     End If
 
-    If (Dir("c:\TempXML\", vbDirectory) = "") Then
-        MkDir "c:\TempXML\"
-    End If
+'    If (Dir("c:\TempXML\", vbDirectory) = "") Then
+'        MkDir "c:\TempXML\"
+'    End If
 
     'Add namespace xml
     xmlTK.documentElement.SetAttribute "xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance"
 
     xmlTK.documentElement.SetAttribute "xmlns", "http://kekhaithue.gdt.gov.vn/TKhaiThue"
 
-    Dim sFileName As String
-    sFileName = "c:\TempXML\" & strFileName
+'    Dim sFileName As String
+'    sFileName = "c:\TempXML\" & strFileName
     '
     Dim xmlDocSave As New MSXML.DOMDocument
     Set xmlDocSave = AppendXMLStandard(xmlTK, sKyLapBo, sNgayNopTK, sLoiDinhDanh)
     '
     '
-    xmlDocSave.save sFileName
+'    xmlDocSave.save sFileName
     
     'Kiem tra su ton tai cua xmlDocSave
     If (xmlDocSave.getElementsByTagName("DATA").length < 0 Or xmlDocSave.getElementsByTagName("HEADER").length < 0 Or xmlDocSave.getElementsByTagName("BODY").length < 0) Then
@@ -2218,21 +2239,21 @@ Private Function ExecuteSave() As Boolean
         Exit Function
     End If
 
-    '' Push MQ
-'    Dim MQPUT As New MQPUT
-'    If (Not MQPUT.PUSHMQ(xmlDocSave.xml)) Then
-'        MessageBox "0137", msOKOnly, miCriticalError
-'        ExecuteSave = False
-'        Exit Function
-'    Else
+    ' Push MQ
+    Dim MQPUT As New MQPUT
+    If (Not MQPUT.PUSHMQ(xmlDocSave.xml)) Then
+        MessageBox "0137", msOKOnly, miCriticalError
+        ExecuteSave = False
+        Exit Function
+    Else
         ExecuteSave = True
-'        '   Clear variable global
+        '   Clear variable global
         Set xmlResultDLT = Nothing
         Set xmlResultNNT = Nothing
         Set xmlTK = Nothing
-'        '    ' End push
+        '    ' End push
         Exit Function
-'    End If
+    End If
     
 ErrHandle:
     SaveErrorLog Me.Name, "Execute_save", Err.Number, Err.Description
@@ -2694,6 +2715,35 @@ Private Sub Command1_Click()
         Dim str51 As String, str52 As String, str53 As String
 
 
+'01A_TNDN_Q1
+'str2 = "aa999112300039555   01201400600600100101/0114/06/2006<S01><S></S><S>1000000~200000~800000~1000~20000~781000~500000~0~281000~200000~41000~40000~~0~0~0~4"
+'str2 = str2 & "9020~40000~10000~30000~9020~~~~0~0</S><S>~</S><S>Nguyen Van A~123456~Nguyen Van B~25/03/2014~1~0~~1052</S></S01>"
+'str2 = str2 & "<S01-1><S>9020</S><S>Cty TNHH giai phap phan mem CMC~0101650999~30~2706~10101~Cty ABC~6868686868~70~6314~10705</S></S01-1>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+str2 = "aa999112300039555   01201400600600100101/0114/06/2006<S01><S></S><S>1000000~200000~800000~1000~20000~781000~500000~0~281000~200000~41000~40000~~0~0~0~49020~40000~10000~30000~9020~~~~0~0</S><S>~</S><S>Nguyen Van A~123456~Nguyen Van B~25/03/2014~1~0~~1052</S></S01><S01-1><S>9020</S><S>Cty TNHH giai phap phan mem CMC~0101650999~30~2706~10101~Cty ABC~6868686868~70~6314~10705</S></S01-1>"
+Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+''TB04_AC
+'str2 = "aa999914200124112   07201400200200100101/0101/01/2009<S01><S>Cty bu«n hãa ®¬n VAT~Cty bu«n hãa ®¬n VAT vµ GTGT~01DVPH~Tõ Liªm - Hµ Néi~CÇu GiÊy - Hµ Néi~02DCTS~048 324352~048123456~03PHONE</S><S>01/07/2014~~~Chi côc ThuÕ Tõ Liªm~14/07/2014~Hoµng Ngäc Hïng</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+''TB03_AC
+'str2 = "aa999674200124112   02201400100100100101/0101/01/2010<S01><S>~~31~01/07/2014~15</S><S>Hãa®¬n xuÊt khÈu~06HDXK2/001~QS/11T~0000001~0000500~500~0~Hãa ®¬n b¸n hµng~02GTTT3/009~DS/11T~0000050~0001000~951~0</S><S>NGUYEN HAI DANG~Hoµng NgäcHïng~01/07/2014</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+''TB01_AC
+'str2 = "aa999644200124112   06201400100100100101/0101/01/2009<S01><S>Hãa ®¬n gi¸ trÞ gia t¨ng~01GTKT2/100~AA/12T~14~0000001~0000014~30/07/2014~NVA~0102030405~12345t~24/06/2014~~Hãa ®¬n b¸n hµng~02GTTT2/100~AA/12T~971~0000030~0001000~30/08/2014~~~~~</S><S>~~Côc thuÕ Hµ Néi~24/06/2014~Nguyan van A</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+
+''01_TAIN_DK_BS
+'str2 = "bs999922300039594   06201400400400100101/0101/01/1900<S01><S></S><S>~~x~01/05/2014~0~0~1~H¬p dong xuat khau dautho~~</S><S>500~10~20~10000~5~500~20000</S><S>Nguyen Van A~123456~Nguyen Van C~04/07/2014~~1~~0</S></S01>"
+'str2 = str2 & "<SKHBS><S>Sè tiÒn thuÕ tµi nguyªn t¹m tÝnh ph¶i nép [34]=[32]x[33]~34~5~500~495</S><S>~~0~0~0</S>"
+'str2 = str2 & "<S>08/08/2014~11~3~12124~lenh hoan~01/01/2015~11100~11105~123~32.23~giasdasd~0~0~495</S></SKHBS>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+
+
 ''01_GTGT
 'str2 = "aa999012300039509   01201400300400101201/0114/06/2006<S01><S></S><S>0~0~7531242~553124~486070~12000000~82600000~4550000~5600000~63000000~3150000~14000000~1400000~94600000~4550000~4063930~0~0~3324324~739606~0~739606~0~0~0</S><S>nhan vien dai ly~chung chi hanh nghe~Nguyan van A~19/06/2014~1~~~1701~x~03~0</S></S01>"
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
@@ -2721,13 +2771,13 @@ Private Sub Command1_Click()
 'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 
-'02_GTGT
-str2 = "aa999022300039523   01201400200300100301/0114/06/2006<S01><S></S><S>100000~15000~74110810~4078258~23423~43~0~0~4078301~0~4193301~4324~3424~43~4185510</S><S>nhan vien dai ly~Nguyan van A~chung chi hanh nghe~19/06/2014~1~~~0</S></S01>"
-Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-str2 = "aa999022300039523   012014002003002003<S01_2><S>01GTGT2/001~QS11T~123~01/01/2014~nguyen A~2222222222~kinh mat~2000000~10~200000~ghi chu~01GTGT2/004~SDFSA1~456~01/01/2014~BNL~0102030405~quan ao~1000000~5~50000~3dfd</S><S>3000000~250000</S></S01_2>"
-Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-str2 = "aa999022300039523   012014002003003003<S01_2_1><S>gfh~HHF~4656~01/01/2014~645654~0102030405~6565~65656456~5~3282823~65465~fsdf~FSD~fr43~01/01/2014~53454~~5435~5454354~10~545435~</S><S>71110810~3828258</S></S01_2_1>"
-Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+''02_GTGT
+'str2 = "aa999022300039523   01201400200300100301/0114/06/2006<S01><S></S><S>100000~15000~74110810~4078258~23423~43~0~0~4078301~0~4193301~4324~3424~43~4185510</S><S>nhan vien dai ly~Nguyan van A~chung chi hanh nghe~19/06/2014~1~~~0</S></S01>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999022300039523   012014002003002003<S01_2><S>01GTGT2/001~QS11T~123~01/01/2014~nguyen A~2222222222~kinh mat~2000000~10~200000~ghi chu~01GTGT2/004~SDFSA1~456~01/01/2014~BNL~0102030405~quan ao~1000000~5~50000~3dfd</S><S>3000000~250000</S></S01_2>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999022300039523   012014002003003003<S01_2_1><S>gfh~HHF~4656~01/01/2014~645654~0102030405~6565~65656456~5~3282823~65465~fsdf~FSD~fr43~01/01/2014~53454~~5435~5454354~10~545435~</S><S>71110810~3828258</S></S01_2_1>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 
 
@@ -4614,7 +4664,7 @@ On Error GoTo ErrHandle
     If (Val(strID) >= 64 And Val(strID) <= 68) Or Val(strID) = 91 Or Val(strID) = 7 Or Val(strID) = 9 Or Val(strID) = 10 Or Val(strID) = 13 Then
             ' An chi
                     ' 01/TBAC
-        If Val(strID) = 64 Then
+        If Val(strID) = 64 Or Val(strID) = 91 Then
             arrCT = Split(strData, "~")
             If Trim(arrCT(UBound(arrCT) - 1)) <> "" Then
                 ngayPS = arrCT(UBound(arrCT) - 1)
