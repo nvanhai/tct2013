@@ -16,7 +16,7 @@
 			</ThueNLMVao>
 		</ChiTietThueTTDBNLMVao>
 		<tong_ct7>1</tong_ct7>
-		<tong_ct9>text</tong_ct9>
+		<tong_ct9></tong_ct9>
 		<tong_ct10>1</tong_ct10>
 	</TTinThueNLMVao>
 	<TTinThueNLDuocKTru>
@@ -30,6 +30,6 @@
 				<ct7>1</ct7>
 			</ThueNLDuocKTru>
 		</ChiTietThueTTDBNLDuocKTru>
-		<tong_ct7>text</tong_ct7>
+		<tong_ct7></tong_ct7>
 	</TTinThueNLDuocKTru>
 </Pluc_01_2_TTDB>

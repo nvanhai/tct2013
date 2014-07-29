@@ -1,7 +1,7 @@
 <PL_BK_01AC_01>
 	<HDonHetGTriSDung>
 		<ChiTietHoaDon id="String">
-			<maHoaDon>text</maHoaDon>
+			<maHoaDon></maHoaDon>
 			<tenHoaDon></tenHoaDon>
 			<kyHieuMau></kyHieuMau>
 			<kyHieuHD></kyHieuHD>
@@ -12,7 +12,7 @@
 	</HDonHetGTriSDung>
 	<HDonDKiTiepSDung>
 		<ChiTietHoaDon id="String">
-			<maHoaDon>text</maHoaDon>
+			<maHoaDon></maHoaDon>
 			<tenHoaDon></tenHoaDon>
 			<kyHieuMau></kyHieuMau>
 			<kyHieuHD></kyHieuHD>

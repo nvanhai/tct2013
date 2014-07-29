@@ -3763,11 +3763,11 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
 
                 If strKK = "D" Then
                     If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
-                        xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = ""
+                        xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_v1.NodeMenu, "ID"))
                     End If
             
                     If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
-                        xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = ""
+                        xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_v1.NodeMenu, "ID"))
                     End If
 
                 ElseIf strKK = "M" Then
@@ -7882,7 +7882,7 @@ Private Sub Form_Resize()
            And strIDTkhai <> "06" _
            And strIDTkhai <> "05" _
            And strIDTkhai <> "69" And strIDTkhai <> "19" And strIDTkhai <> "20" And strIDTkhai <> "22" _
-           And strIDTkhai <> "64" And strIDTkhai <> "65" And strIDTkhai <> "66" And strIDTkhai <> "67" And strIDTkhai <> "68" And strIDTkhai <> "18" And strIDTkhai <> "91" _
+           And strIDTkhai <> "64" And strIDTkhai <> "65" And strIDTkhai <> "66" And strIDTkhai <> "67" And strIDTkhai <> "68" And strIDTkhai <> "18" And strIDTkhai <> "91" And strIDTkhai <> "27" _
            And strIDTkhai <> "86" _
            And strIDTkhai <> "90" _
            And strIDTkhai <> "23" _

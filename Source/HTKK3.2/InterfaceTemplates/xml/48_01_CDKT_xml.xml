@@ -203,17 +203,17 @@
 			</SoDauNam>
 			<NgoaiBangCDKT>
 				<SoCuoiNam>
-					<taiSanThueNgoai>2147483647</taiSanThueNgoai>
-					<hangHoaNhanGiuHo>2147483647</hangHoaNhanGiuHo>
-					<hangHoaNhanBanHo>2147483647</hangHoaNhanBanHo>
-					<noKhoDoiDaXLy>2147483647</noKhoDoiDaXLy>
+					<taiSanThueNgoai></taiSanThueNgoai>
+					<hangHoaNhanGiuHo></hangHoaNhanGiuHo>
+					<hangHoaNhanBanHo></hangHoaNhanBanHo>
+					<noKhoDoiDaXLy></noKhoDoiDaXLy>
 					<ngoaiTeCacLoai>0.0</ngoaiTeCacLoai>
 				</SoCuoiNam>
 				<SoDauNam>
-					<taiSanThueNgoai>2147483647</taiSanThueNgoai>
-					<hangHoaNhanGiuHo>2147483647</hangHoaNhanGiuHo>
-					<hangHoaNhanBanHo>2147483647</hangHoaNhanBanHo>
-					<noKhoDoiDaXLy>2147483647</noKhoDoiDaXLy>
+					<taiSanThueNgoai></taiSanThueNgoai>
+					<hangHoaNhanGiuHo></hangHoaNhanGiuHo>
+					<hangHoaNhanBanHo></hangHoaNhanBanHo>
+					<noKhoDoiDaXLy></noKhoDoiDaXLy>
 					<ngoaiTeCacLoai>0.0</ngoaiTeCacLoai>
 				</SoDauNam>
 			</NgoaiBangCDKT>
