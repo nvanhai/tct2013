@@ -3,10 +3,10 @@
 	<NghiaVuThue>
 		<ChiTietNghiaVuThue id="String">
 			<mstNThau>0000000000</mstNThau>
-			<tenNThau>String</tenNThau>
+			<tenNThau></tenNThau>
 			<tyLePBoNThau>0.0</tyLePBoNThau>
 			<soThuePSinhPNopNThau>0.0</soThuePSinhPNopNThau>
-			<ghiChuNThau>String</ghiChuNThau>
+			<ghiChuNThau></ghiChuNThau>
 		</ChiTietNghiaVuThue>
 	</NghiaVuThue>
 	<tongCong>0.0</tongCong>

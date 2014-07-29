@@ -69,14 +69,14 @@
 			</TTinTKhaiThue>
 		</TTinChung>
 		<CTieuTKhaiChinh>
-			<tieuMucHachToan>String</tieuMucHachToan>
+			<tieuMucHachToan></tieuMucHachToan>
 			<BangChiTietThueTTDB>
 				<HangHoaChiuThueTTDB>
 					<ChiTietHangHoaChiuThueTTDB>
-						<NDungTKhaiTTDB id="String">
-							<ct2_maHHDV>String</ct2_maHHDV>
-							<ct2>String</ct2>
-							<ct3>String</ct3>
+						<NDungTKhaiTTDB id="">
+							<ct2_maHHDV></ct2_maHHDV>
+							<ct2></ct2>
+							<ct3></ct3>
 							<ct4>0.0</ct4>
 							<ct5>1</ct5>
 							<ct6>0.0</ct6>
@@ -92,10 +92,10 @@
 				</HangHoaChiuThueTTDB>
 				<DVuChiuThueTNDB>
 					<ChiTietDVuChiuThueTTDB>
-						<NDungTKhaiTTDB id="String">
-							<ct2_maHHDV>String</ct2_maHHDV>
-							<ct2>String</ct2>
-							<ct3>String</ct3>
+						<NDungTKhaiTTDB id="">
+							<ct2_maHHDV></ct2_maHHDV>
+							<ct2></ct2>
+							<ct3></ct3>
 							<ct4>0.0</ct4>
 							<ct5>1</ct5>
 							<ct6>0.0</ct6>
@@ -111,28 +111,28 @@
 				</DVuChiuThueTNDB>
 				<HHoaKhongChiuThueTNDB>
 					<HHXuatKhau>
-						<NDungHHoaKhongThue id="String">
-							<ct2_maHH>String</ct2_maHH>
-							<ct2>String</ct2>
-							<ct3>String</ct3>
+						<NDungHHoaKhongThue id="">
+							<ct2_maHH></ct2_maHH>
+							<ct2></ct2>
+							<ct3></ct3>
 							<ct4>0.0</ct4>
 							<ct5>1</ct5>
 						</NDungHHoaKhongThue>
 					</HHXuatKhau>
 					<HHBanDeXuatKhau>
-						<NDungHHoaKhongThue id="String">
-							<ct2_maHH>String</ct2_maHH>
-							<ct2>String</ct2>
-							<ct3>String</ct3>
+						<NDungHHoaKhongThue id="">
+							<ct2_maHH></ct2_maHH>
+							<ct2></ct2>
+							<ct3></ct3>
 							<ct4>0.0</ct4>
 							<ct5>1</ct5>
 						</NDungHHoaKhongThue>
 					</HHBanDeXuatKhau>
 					<HHGiaCongXuatKhau>
-						<NDungHHoaKhongThue id="String">
-							<ct2_maHH>String</ct2_maHH>
-							<ct2>String</ct2>
-							<ct3>String</ct3>
+						<NDungHHoaKhongThue id="">
+							<ct2_maHH></ct2_maHH>
+							<ct2></ct2>
+							<ct3></ct3>
 							<ct4>0.0</ct4>
 							<ct5>1</ct5>
 						</NDungHHoaKhongThue>

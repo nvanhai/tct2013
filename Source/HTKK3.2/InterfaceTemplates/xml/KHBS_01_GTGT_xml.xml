@@ -42,11 +42,11 @@
 	</PhatChamNop>
 	<NOIDUNGGIAITHICH>
 					<soTienTraNSNN>1</soTienTraNSNN>
-					<quyetDinhHoanThueSo>String</quyetDinhHoanThueSo>
+					<quyetDinhHoanThueSo></quyetDinhHoanThueSo>
 					<ngay>1967-08-13</ngay>
-					<coQuanThue>String</coQuanThue>
+					<coQuanThue></coQuanThue>
 					<soNgayNhanDuocTienHoan>1</soNgayNhanDuocTienHoan>
 					<soTienChamNop>1</soTienChamNop>
-					<lyDoKhac>String</lyDoKhac>
+					<lyDoKhac></lyDoKhac>
 	</NOIDUNGGIAITHICH>
 </PL01_KHBS>

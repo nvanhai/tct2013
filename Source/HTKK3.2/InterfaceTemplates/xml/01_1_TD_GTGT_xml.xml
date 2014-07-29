@@ -1,13 +1,13 @@
 <PL_01_2_TD_GTGT>
 	<BangPBoThueGTGTChoDPhuong>
-		<ChiTietPBoThueGTGTChoDPhuong ID="String">
-			<tenNhaMay>String</tenNhaMay>
+		<ChiTietPBoThueGTGTChoDPhuong ID="">
+			<tenNhaMay></tenNhaMay>
 			<mstNhaMay>0000000000</mstNhaMay>
 			<PhanBoChoCQTDiaPhuong>
-				<tyLePBoThueChoTungCQT id="String">
+				<tyLePBoThueChoTungCQT id="">
 					<mstCQTDPhuong>0000000000</mstCQTDPhuong>
 					<maCQTPBo>1</maCQTPBo>
-					<tenCQTPBo>String</tenCQTPBo>
+					<tenCQTPBo></tenCQTPBo>
 					<tyLePBo>0.0</tyLePBo>
 					<thuePNopPBo>1</thuePNopPBo>
 				</tyLePBoThueChoTungCQT>
