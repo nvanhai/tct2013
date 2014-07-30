@@ -267,6 +267,20 @@
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
 		</Validity>
 	</Menu>
+	<Menu ID="18" PopID="101" ParentID="112" Caption="B/c tình hình sử dụng hóa đơn theo số lượng" FormName="" Year="1/2" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tncn.bmp" DirFile="\NTK_TG\">
+		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\BC26_AC_SL.xls" ReportTemplate="..\ReportTemplates\BC26_AC_SL.xls" Class="Tax_Business_Svr_New.cls_BC26ACSL">
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="BC26_AC_SL" Ini="..\Ini\BC26_AC_SL.xml"/>
+			<Sheet ID="01_1" Caption="BK01_1/AC" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="BK26SL_01_AC" Ini="..\Ini\BK26SL_01_AC.xml"/>
+			<Sheet ID="01_2" Caption="BK01_2/AC" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="BK26SL_02_AC" Ini="..\Ini\BK26SL_02_AC.xml"/>			
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>	
+		</Validity>
+	</Menu>
+	<Menu ID="27" PopID="101" ParentID="112" Caption="BKHĐ chưa sử dụng của tổ chức, cá nhân (BK01/AC)" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp" DirFile="\NTK_TG\">
+		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\01_BK_BC26_AC.xls" ReportTemplate="..\ReportTemplates\01_BK_BC26_AC.xls" Class="Tax_Business_Svr_New.cls_BC26AC_BK01">
+			<Sheet ID="01" Caption="Mẫu 3.10(Chuyển địa điểm)" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="01_BK_BC26_AC" Ini="..\Ini\01_BK_BC26_AC"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
+		</Validity>
+	</Menu>		
 	<Menu ID="80" PopID="101" ParentID="101_8" Caption="Tờ khai quyết toán thuế NTNN - 02/NTNN" FormName="" Year="1" Month="0" ThreeMonth="0" Day="1" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp" DirFile="\NTK_TG\">
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\02_NTNN.xls" ReportTemplate="..\ReportTemplates\Excel\02_NTNN.xls" Class="Tax_Business_Svr_New.cls_02NTNN">
 			<Sheet ID="01" Caption="02_NTNN" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="02_NTNN" Ini="..\Ini\02_NTNN.xml"/>

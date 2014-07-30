@@ -6,7 +6,7 @@ BEGIN
   DataSourceBehavior  = 0  'vbNone
   MTSTransactionMode  = 0  'NotAnMTSObject
 END
-Attribute VB_Name = "cls_BC26AC"
+Attribute VB_Name = "cls_BC26ACSL"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
@@ -439,12 +439,11 @@ Public Function InsertHDR() As String
     Dim Ngay_mat_h As Variant
     Dim Pp_huy As Variant
     Dim Dung_dn_cq As Variant
-    Dim Ghi_chu As Variant
+    Dim GHI_CHU As Variant
     Dim MA_CQT As Variant
     Dim LOAI_BC26 As Variant
     Dim Nguoi_lb As Variant
     Dim QUY_BC As Variant
-    Dim vFlagThangQuy
     
     Dim vPHONG_XU_LY As Variant
     Dim arrPXL()   As String
@@ -478,10 +477,9 @@ Public Function InsertHDR() As String
             Tin = "'" & Trim(Tin) & "'"
         End If
         ' Ma loai bao cao
-        Loai_bc = "'BC26_AC'"
+        Loai_bc = "'BC26_AC_SL'"
         ' Thong tin ngay nop bao cao an chi
         .GetText .ColLetterToNumber("E"), 10, Ngay_nop
-        .GetText .ColLetterToNumber("N"), 19, vFlagThangQuy
         
         If Trim(Ngay_nop) = vbNullString Then
             Ngay_nop = "CTOD('')"
@@ -598,12 +596,12 @@ Public Function InsertHDR() As String
         Pp_huy = "''"
         Dung_dn_cq = "''"
         ' thong tin ghi chu
-        .GetText .ColLetterToNumber("E"), 14, Ghi_chu
-        If Trim(Ghi_chu) = vbNullString Then
-            Ghi_chu = "''"
+        .GetText .ColLetterToNumber("E"), 14, GHI_CHU
+        If Trim(GHI_CHU) = vbNullString Then
+            GHI_CHU = "''"
         Else
-            Ghi_chu = TAX_Utilities_Svr_New.Convert(CStr(Ghi_chu), UNICODE, TCVN)
-            Ghi_chu = "'" & Trim(Ghi_chu) & "'"
+            GHI_CHU = TAX_Utilities_Svr_New.Convert(CStr(GHI_CHU), UNICODE, TCVN)
+            GHI_CHU = "'" & Trim(GHI_CHU) & "'"
         End If
         ' thong tin ma co quan thue
         MA_CQT = GetMaCqt
@@ -612,47 +610,17 @@ Public Function InsertHDR() As String
         .GetText .ColLetterToNumber("E"), 16, vKyBCCuoi
         .GetText .ColLetterToNumber("K"), 16, vChuyenDiaDiem
         
-        If vFlagThangQuy = "1" Then
-            'Bo sung xu ly truong hop ngay dau ky khong trung ngay bao cao
-            If (Left(TU_NGAY, 2) = "01" Or Left(TU_NGAY, 2) = "1") Then
-                If Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
-                    ' bao cao quy
-                    LOAI_BC26 = "'01'"
-                ElseIf Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "1" Then
-                    ' bao cao chuyen dia diem
-                    LOAI_BC26 = "'03'"
-                ElseIf Trim(CStr(vKyBCCuoi)) = "1" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
-                    ' bao cao quyet toan cuoi tung
-                    LOAI_BC26 = "'02'"
-                Else
-                    LOAI_BC26 = "'04'"
-                End If
-            Else
-                If Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
-                    ' bao cao quy
-                    LOAI_BC26 = "'01TT39'"
-                ElseIf Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "1" Then
-                    ' bao cao chuyen dia diem
-                    LOAI_BC26 = "'03TT39'"
-                ElseIf Trim(CStr(vKyBCCuoi)) = "1" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
-                    ' bao cao quyet toan cuoi tung
-                    LOAI_BC26 = "'02TT39'"
-                Else
-                    LOAI_BC26 = "'04TT39'"
-                End If
-            End If
+        If Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
+            ' bao cao quy
+            LOAI_BC26 = "'01SL'"
+        ElseIf Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "1" Then
+            ' bao cao chuyen dia diem
+            LOAI_BC26 = "'03SL'"
+        ElseIf Trim(CStr(vKyBCCuoi)) = "1" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
+            ' bao cao quyet toan cuoi tung
+            LOAI_BC26 = "'02SL'"
         Else
-            If Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
-                LOAI_BC26 = "'01T'"
-            ElseIf Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "1" Then
-                ' bao cao chuyen dia diem
-                LOAI_BC26 = "'03T'"
-            ElseIf Trim(CStr(vKyBCCuoi)) = "1" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
-                ' bao cao quyet toan cuoi tung
-                LOAI_BC26 = "'02T'"
-            Else
-                LOAI_BC26 = "'04T'"
-            End If
+            LOAI_BC26 = "'04SL'"
         End If
     
         ' thong tin nguoi lap bieu
@@ -665,13 +633,8 @@ Public Function InsertHDR() As String
         End If
         
         ' Ky bao cao
-        If vFlagThangQuy = "1" Then
-            If Trim(TAX_Utilities_Svr_New.ThreeMonths) <> "" Then
-                QUY_BC = "CTOD('" & Format(vNgayDauKy, "mm/dd/yyyy") & "')"
-            End If
-        Else
-            'TO KHAI THANG
-            QUY_BC = TU_NGAY
+        If Trim(TAX_Utilities_Svr_New.ThreeMonths) <> "" Then
+            QUY_BC = "CTOD('" & Format(vNgayDauKy, "mm/dd/yyyy") & "')"
         End If
         
         
@@ -683,7 +646,7 @@ Public Function InsertHDR() As String
     sSQLVal = sSQLVal & Ngay_cn & "," & Nguoi_cn & "," & So_tt_tk & "," & DA_NHAN & "," & PHONG_XL
     sSQLVal = sSQLVal & "," & PHONG_QL & "," & CO_BANG_KE & "," & Ten_dv_cq & "," & Tin_dv_cq & ","
     sSQLVal = sSQLVal & Ngay_bc & "," & Nguoi_dd & "," & Cq_nhan & "," & LY_DO_MAT & "," & Ngay_mat_h & ","
-    sSQLVal = sSQLVal & Pp_huy & "," & Dung_dn_cq & "," & Ghi_chu & "," & MA_CQT & "," & LOAI_BC26 & "," & Nguoi_lb & "," & QUY_BC
+    sSQLVal = sSQLVal & Pp_huy & "," & Dung_dn_cq & "," & GHI_CHU & "," & MA_CQT & "," & LOAI_BC26 & "," & Nguoi_lb & "," & QUY_BC
 
     sSQL = "INSERT INTO tmp_bcao_hdr_ac" & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
@@ -1013,21 +976,21 @@ Public Function InsertDTL_PL1() As String
                         Ky_hieu_hd = "'" & Trim(Ky_hieu_hd) & "'"
                   End If
                   ' tu so
-                  .GetText .ColLetterToNumber("V"), .Row, Tu_so
+                  .GetText .ColLetterToNumber("Y"), .Row, Tu_so
                   If Trim(Tu_so) = vbNullString Then
                         Tu_so = "''"
                   Else
                         Tu_so = "'" & Trim(Tu_so) & "'"
                   End If
                   ' den so
-                  .GetText .ColLetterToNumber("Y"), .Row, Den_so
+                  .GetText .ColLetterToNumber("AA"), .Row, Den_so
                   If Trim(Den_so) = vbNullString Then
                         Den_so = "''"
                   Else
                         Den_so = "'" & Trim(Den_so) & "'"
                   End If
                   ' so luong
-                  .GetText .ColLetterToNumber("AA"), .Row, So_luong
+                  .GetText .ColLetterToNumber("V"), .Row, So_luong
                   If Trim(So_luong) = vbNullString Then
                         So_luong = 0
                   End If
@@ -1049,7 +1012,7 @@ Public Function InsertDTL_PL1() As String
                   sSQLVal = Id & "," & Hdr_id & "," & So_tt & "," & Ten_hd & "," & Mau_so & "," & _
                   Ky_hieu_hd & "," & Tu_so & "," & Den_so & "," & So_luong & "," & Loai_hd & "," & TT_SU_DUNG
                   
-                  sSQL = "INSERT INTO tmp_dtl_bk26_01_ac ( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+                  sSQL = "INSERT INTO tmp_dtl_bk26_01_ac_sl ( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
                   If Mau_so <> "''" Then
                     bln = clsDAO.ExecuteDLL(sSQL)
                   End If
@@ -1134,21 +1097,21 @@ Public Function InsertDTL_PL2() As String
                         Ky_hieu_hd = "'" & Trim(Ky_hieu_hd) & "'"
                   End If
                   ' tu so
-                  .GetText .ColLetterToNumber("V"), .Row, Tu_so
+                  .GetText .ColLetterToNumber("Y"), .Row, Tu_so
                   If Trim(Tu_so) = vbNullString Then
                         Tu_so = "''"
                   Else
                         Tu_so = "'" & Trim(Tu_so) & "'"
                   End If
                   ' den so
-                  .GetText .ColLetterToNumber("Y"), .Row, Den_so
+                  .GetText .ColLetterToNumber("AA"), .Row, Den_so
                   If Trim(Den_so) = vbNullString Then
                         Den_so = "''"
                   Else
                         Den_so = "'" & Trim(Den_so) & "'"
                   End If
                   ' so luong
-                  .GetText .ColLetterToNumber("AA"), .Row, So_luong
+                  .GetText .ColLetterToNumber("V"), .Row, So_luong
                   If Trim(So_luong) = vbNullString Then
                         So_luong = 0
                   End If
@@ -1165,7 +1128,7 @@ Public Function InsertDTL_PL2() As String
                   sSQLVal = Id & "," & Hdr_id & "," & So_tt & "," & Ten_hd & "," & Mau_so & "," & _
                   Ky_hieu_hd & "," & Tu_so & "," & Den_so & "," & So_luong & "," & Loai_hd & "," & TT_SU_DUNG
                   
-                  sSQL = "INSERT INTO tmp_dtl_bk26_02_ac ( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+                  sSQL = "INSERT INTO tmp_dtl_bk26_02_ac_sl ( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
                   If Mau_so <> "''" Then
                         bln = clsDAO.ExecuteDLL(sSQL)
                   End If
@@ -1197,32 +1160,24 @@ Public Function InsertDTL() As String
  Dim So_tt As Variant
  Dim Ten_hd As Variant
  Dim Mau_so As Variant
- Dim Ky_hieu_hd As Variant
- Dim TONG_SO As Variant
- Dim TU_SO_TON As Variant
- Dim DEN_SO_TON As Variant
- Dim TU_SO_PS As Variant
- Dim DEN_SO_PS As Variant
- Dim TSO_SD_MAT As Variant
- Dim DSO_SD_MAT As Variant
- Dim SUM_SD_MAT As Variant
+ Dim KY_HIEU_MAU As Variant
+ Dim HINH_THUC_HD As Variant
+ Dim SL_TON_DK As Variant
+ Dim SL_MUA_PH As Variant
  Dim SL_DA_SD As Variant
  Dim SL_XOA As Variant
- Dim SO_XOA As Variant
  Dim SL_MAT As Variant
- Dim SO_MAT As Variant
  Dim SL_HUY As Variant
- Dim SO_HUY As Variant
+ Dim SL_TONG_CONG As Variant
  Dim TSO_TON_CK As Variant
- Dim DSO_TON_CK As Variant
- Dim SL_TON_CK As Variant
+ Dim GHI_CHU As Variant
  Dim Loai_hd As Variant
    
     
  
    
-   sSQLCol = "ID, HDR_ID, SO_TT, TEN_HD, MAU_SO, KY_HIEU_HD, TONG_SO, TU_SO_TON, DEN_SO_TON, TU_SO_PS, DEN_SO_PS, TSO_SD_MAT, DSO_SD_MAT, SUM_SD_MAT, "
-   sSQLCol = sSQLCol & "SL_DA_SD, SL_XOA, SO_XOA, SL_MAT, SO_MAT, SL_HUY, SO_HUY, TSO_TON_CK, DSO_TON_CK, SL_TON_CK,LOAI_HD"
+   sSQLCol = "ID, HDR_ID, SO_TT, TEN_HD, k_h_mau, h_thuc_hd, SL_TON_DK, SL_MUA_PH, "
+   sSQLCol = sSQLCol & "SL_DA_SD, SL_XOA, SL_MAT, SL_HUY,SL_TONG, TSO_TON_CK, GHI_CHU, LOAI_HD"
    If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
         clsDAO.Connect
@@ -1245,131 +1200,67 @@ Public Function InsertDTL() As String
                 Ten_hd = TAX_Utilities_Svr_New.Convert(CStr(Ten_hd), UNICODE, TCVN)
                 Ten_hd = "'" & Trim(Ten_hd) & "'"
             End If
-            ' mau so hoa don
-            .GetText .ColLetterToNumber("J"), .Row, Mau_so
-            If Trim(Mau_so) = vbNullString Then
-                Mau_so = "''"
+            ' KY_HIEU_MAU
+            .GetText .ColLetterToNumber("J"), .Row, KY_HIEU_MAU
+            If Trim(KY_HIEU_MAU) = vbNullString Then
+                KY_HIEU_MAU = "''"
             Else
-                Mau_so = "'" & Trim(Mau_so) & "'"
+                KY_HIEU_MAU = "'" & Trim(KY_HIEU_MAU) & "'"
             End If
-            ' ky hieu hoa don
-            .GetText .ColLetterToNumber("K"), .Row, Ky_hieu_hd
-            If Trim(Ky_hieu_hd) = vbNullString Then
-                Ky_hieu_hd = "''"
+            ' HINH_THUC_HD
+            .GetText .ColLetterToNumber("K"), .Row, HINH_THUC_HD
+            If Trim(HINH_THUC_HD) = vbNullString Then
+                HINH_THUC_HD = "''"
             Else
-                Ky_hieu_hd = "'" & Trim(Ky_hieu_hd) & "'"
+                HINH_THUC_HD = "'" & Trim(HINH_THUC_HD) & "'"
             End If
-            ' tong so hoa don
-            .GetText .ColLetterToNumber("L"), .Row, TONG_SO
-            If Trim(TONG_SO) = vbNullString Then
-                TONG_SO = "0"
+            ' SL_TON_DK
+            .GetText .ColLetterToNumber("L"), .Row, SL_TON_DK
+            If Trim(SL_TON_DK) = vbNullString Then
+                SL_TON_DK = "0"
             End If
-            ' tu so ton dau ky
-            .GetText .ColLetterToNumber("M"), .Row, TU_SO_TON
-            If Trim(TU_SO_TON) = vbNullString Then
-                TU_SO_TON = "''"
-            Else
-                TU_SO_TON = "'" & Trim(TU_SO_TON) & "'"
-            End If
-            ' den so ton dau ky
-            .GetText .ColLetterToNumber("N"), .Row, DEN_SO_TON
-            If Trim(DEN_SO_TON) = vbNullString Then
-                DEN_SO_TON = "''"
-            Else
-                DEN_SO_TON = "'" & Trim(DEN_SO_TON) & "'"
-            End If
-            ' tu so phat sinh
-            .GetText .ColLetterToNumber("O"), .Row, TU_SO_PS
-            If Trim(TU_SO_PS) = vbNullString Then
-                TU_SO_PS = "''"
-            Else
-                TU_SO_PS = "'" & Trim(TU_SO_PS) & "'"
-            End If
-            ' den so phat sinh
-            .GetText .ColLetterToNumber("P"), .Row, DEN_SO_PS
-            If Trim(DEN_SO_PS) = vbNullString Then
-                DEN_SO_PS = "''"
-            Else
-                DEN_SO_PS = "'" & Trim(DEN_SO_PS) & "'"
-            End If
-            ' tu so su dung, mat, xoa , huy
-            .GetText .ColLetterToNumber("Q"), .Row, TSO_SD_MAT
-            If Trim(TSO_SD_MAT) = vbNullString Then
-                TSO_SD_MAT = "''"
-            Else
-                TSO_SD_MAT = "'" & Trim(TSO_SD_MAT) & "'"
-            End If
-            ' den so su dung, mat, xoa, huy
-            .GetText .ColLetterToNumber("R"), .Row, DSO_SD_MAT
-            If Trim(DSO_SD_MAT) = vbNullString Then
-                DSO_SD_MAT = "''"
-            Else
-                DSO_SD_MAT = "'" & Trim(DSO_SD_MAT) & "'"
-            End If
-            'so luong su dung, mat, xoa , huy
-            .GetText .ColLetterToNumber("S"), .Row, SUM_SD_MAT
-            If Trim(SUM_SD_MAT) = vbNullString Then
-                SUM_SD_MAT = "0"
+            ' SL_MUA_PH
+            .GetText .ColLetterToNumber("M"), .Row, SL_MUA_PH
+            If Trim(SL_MUA_PH) = vbNullString Then
+                SL_MUA_PH = "0"
             End If
             ' So luong da su dung
-            .GetText .ColLetterToNumber("U"), .Row, SL_DA_SD
+            .GetText .ColLetterToNumber("N"), .Row, SL_DA_SD
             If Trim(SL_DA_SD) = vbNullString Then
                 SL_DA_SD = "0"
             End If
             ' so luong xoa
-            .GetText .ColLetterToNumber("V"), .Row, SL_XOA
+            .GetText .ColLetterToNumber("O"), .Row, SL_XOA
             If Trim(SL_XOA) = vbNullString Then
                 SL_XOA = "0"
             End If
-            ' so xoa
-            .GetText .ColLetterToNumber("W"), .Row, SO_XOA
-            If Trim(SO_XOA) = vbNullString Then
-                SO_XOA = "''"
-            Else
-                SO_XOA = "'" & Trim(SO_XOA) & "'"
-            End If
             ' so luong mat
-            .GetText .ColLetterToNumber("X"), .Row, SL_MAT
+            .GetText .ColLetterToNumber("P"), .Row, SL_MAT
             If Trim(SL_MAT) = vbNullString Then
                 SL_MAT = "0"
             End If
-            ' So mat
-            .GetText .ColLetterToNumber("Y"), .Row, SO_MAT
-            If Trim(SO_MAT) = vbNullString Then
-                SO_MAT = "''"
-            Else
-                SO_MAT = "'" & Trim(SO_MAT) & "'"
-            End If
             ' so luong huy
-            .GetText .ColLetterToNumber("Z"), .Row, SL_HUY
+            .GetText .ColLetterToNumber("Q"), .Row, SL_HUY
             If Trim(SL_HUY) = vbNullString Then
                 SL_HUY = "0"
             End If
-            ' so huy
-            .GetText .ColLetterToNumber("AA"), .Row, SO_HUY
-            If Trim(SO_HUY) = vbNullString Then
-                SO_HUY = "''"
-            Else
-                SO_HUY = "'" & Trim(SO_HUY) & "'"
+            ' Cong
+            .GetText .ColLetterToNumber("R"), .Row, SL_TONG_CONG
+            If Trim(SL_TONG_CONG) = vbNullString Then
+                SL_TONG_CONG = "0"
             End If
-            ' tu so ton cuoi ky
-            .GetText .ColLetterToNumber("AC"), .Row, TSO_TON_CK
+            ' ton cuoi ky
+            .GetText .ColLetterToNumber("S"), .Row, TSO_TON_CK
             If Trim(TSO_TON_CK) = vbNullString Then
-                TSO_TON_CK = "''"
-            Else
-                TSO_TON_CK = "'" & Trim(TSO_TON_CK) & "'"
+                TSO_TON_CK = "0"
             End If
-            ' den so ton cuoi ky
-            .GetText .ColLetterToNumber("AD"), .Row, DSO_TON_CK
-            If Trim(DSO_TON_CK) = vbNullString Then
-                DSO_TON_CK = "''"
+            'GHI_CHU
+            .GetText .ColLetterToNumber("U"), .Row, GHI_CHU
+            If Trim(GHI_CHU) = vbNullString Then
+                GHI_CHU = "''"
             Else
-                DSO_TON_CK = "'" & Trim(DSO_TON_CK) & "'"
-            End If
-            ' so luong ton cuoi ky
-            .GetText .ColLetterToNumber("AE"), .Row, SL_TON_CK
-            If Trim(SL_TON_CK) = vbNullString Then
-                SL_TON_CK = "0"
+                GHI_CHU = TAX_Utilities_Svr_New.Convert(CStr(GHI_CHU), UNICODE, TCVN)
+                GHI_CHU = "'" & Trim(GHI_CHU) & "'"
             End If
             ' loai hoa don
             .GetText .ColLetterToNumber("AF"), .Row, Loai_hd
@@ -1379,13 +1270,11 @@ Public Function InsertDTL() As String
                 Loai_hd = "'" & Trim(Loai_hd) & "'"
             End If
             
-             sSQLVal = Id & "," & Hdr_id & "," & So_tt & "," & Ten_hd & "," & Mau_so & "," & _
-            Ky_hieu_hd & "," & TONG_SO & "," & TU_SO_TON & "," & DEN_SO_TON & "," & TU_SO_PS & "," & DEN_SO_PS & "," & _
-            TSO_SD_MAT & "," & DSO_SD_MAT & "," & SUM_SD_MAT & "," & SL_DA_SD & "," & SL_XOA & "," & SO_XOA & _
-            "," & SL_MAT & "," & SO_MAT & "," & SL_HUY & "," & SO_HUY & "," & TSO_TON_CK & "," & _
-            DSO_TON_CK & "," & SL_TON_CK & "," & Loai_hd
+             sSQLVal = Id & "," & Hdr_id & "," & So_tt & "," & Ten_hd & "," & KY_HIEU_MAU & "," & _
+            HINH_THUC_HD & "," & SL_TON_DK & "," & SL_MUA_PH & "," & SL_DA_SD & "," & SL_XOA & "," & _
+            SL_MAT & "," & SL_HUY & "," & SL_TONG_CONG & "," & TSO_TON_CK & "," & GHI_CHU & "," & Loai_hd
         
-            sSQL = "INSERT INTO tmp_dtl_bc26_ac( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+            sSQL = "INSERT INTO tmp_dtl_bc26_ac_sl( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
             
         .Col = .ColLetterToNumber("B")
