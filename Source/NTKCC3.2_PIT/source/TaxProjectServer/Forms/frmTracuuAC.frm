@@ -100,7 +100,7 @@ Begin VB.Form frmTraCuuAC
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuuAC.frx":05C3
+         SpreadDesigner  =   "frmTracuuAC.frx":058B
          UserResize      =   1
          Appearance      =   1
       End
@@ -178,7 +178,7 @@ Begin VB.Form frmTraCuuAC
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuuAC.frx":0AF8
+         SpreadDesigner  =   "frmTracuuAC.frx":0823
          UserResize      =   1
       End
    End
@@ -365,10 +365,12 @@ End Sub
 Private Function changeLoaiToKhai(ByVal strLoaiMaToKhai As String) As String
 
     If strLoaiMaToKhai = "64" Then changeLoaiToKhai = " = '01_TBAC'"
+    If strLoaiMaToKhai = "27" Then changeLoaiToKhai = " = '01_BK_BC26_AC'"
     If strLoaiMaToKhai = "65" Then changeLoaiToKhai = " = '01_AC'"
     If strLoaiMaToKhai = "66" Then changeLoaiToKhai = " = 'BC21_AC'"
     If strLoaiMaToKhai = "67" Then changeLoaiToKhai = " = '03_TBAC'"
     If strLoaiMaToKhai = "68" Then changeLoaiToKhai = " = 'BC26_AC'"
+    If strLoaiMaToKhai = "18" Then changeLoaiToKhai = " = 'BC26_AC_SL'"
     If strLoaiMaToKhai = "7" Then changeLoaiToKhai = " = '01_TBAC_BLP'"
     If strLoaiMaToKhai = "13" Then changeLoaiToKhai = " = '01_AC_BLP'"
     If strLoaiMaToKhai = "9" Then changeLoaiToKhai = " = 'BC21_AC_BLP'"
@@ -391,6 +393,8 @@ Private Function changeTenBC(ByVal strLoaiBC As String) As String
     If strLoaiBC = "BC21_AC_BLP" Then changeTenBC = GetAttribute(GetMessageCellById("0175"), "Msg")
     If strLoaiBC = "03_TBAC_BLP" Then changeTenBC = GetAttribute(GetMessageCellById("0176"), "Msg")
     If strLoaiBC = "BC26_AC_BLP" Then changeTenBC = GetAttribute(GetMessageCellById("0177"), "Msg")
+    If strLoaiBC = "BC26_AC_SL" Then changeTenBC = GetAttribute(GetMessageCellById("0178"), "Msg")
+    If strLoaiBC = "01_BK_BC26_AC" Then changeTenBC = GetAttribute(GetMessageCellById("0179"), "Msg")
 End Function
 
 
