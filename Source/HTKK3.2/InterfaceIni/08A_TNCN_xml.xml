@@ -1,7 +1,7 @@
 <HSoKhaiThue>
 	<Static GroupName="TKhaiThue">
 		<maTKhai>151</maTKhai>
-		<tenTKhai>TK tạm nộp thuế TNCN (08A/KK-TNCN)</tenTKhai>
+		<tenTKhai>TỜ KHAI TẠM NỘP THUẾ THU NHẬP CÁ NHÂN - MẪU SỐ 08A/KK-TNCN</tenTKhai>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">

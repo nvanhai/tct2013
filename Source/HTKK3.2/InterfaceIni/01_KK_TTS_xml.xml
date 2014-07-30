@@ -1,4 +1,9 @@
-<HSoThueDTu>
+﻿<HSoThueDTu>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>87</maTKhai>
+		<tenTKhai>TỜ KHAI THUẾ HOẠT ĐỘNG CHO THUÊ TÀI SẢN</tenTKhai>
+		<moTaBMau/>
+	</Static>
 	<Static GroupName="HinhThucKeKhai">
 		<quyetToanRiengTungNam MinOccur="1">O_29</quyetToanRiengTungNam>		
 	</Static>

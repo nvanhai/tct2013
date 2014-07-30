@@ -1,7 +1,7 @@
 <HSoThueDTu>
 	<Static GroupName="TKhaiThue">
 		<maTKhai>149</maTKhai>
-		<tenTKhai>TK TNDN tạm tính đối với dầu khí(01A/TNDN-DK)</tenTKhai>
+		<tenTKhai>TỜ KHAI THUẾ THU NHẬP DOANH NGHIỆP TẠM TÍNH ĐỐI VỚI DẦU KHÍ (01A/TNDN-DK)</tenTKhai>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="LoaiDauKhi">

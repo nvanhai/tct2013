@@ -1,7 +1,7 @@
 <HSoKhaiThue>
 	<Static GroupName="TKhaiThue">
 		<maTKhai>85</maTKhai>
-		<tenTKhai>Tờ khai thuế TNDN tạm tính (01B/TNDN)</tenTKhai>
+		<tenTKhai>TỜ KHAI THUẾ THU NHẬP DOANH NGHIỆP TẠM TÍNH ĐỐI VỚI KHÍ THIÊN NHIÊN (01B/TNDN-DK)</tenTKhai>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
