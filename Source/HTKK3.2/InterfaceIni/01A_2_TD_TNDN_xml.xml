@@ -11,6 +11,8 @@
       <soThuePNopNMayTDien>U_43</soThuePNopNMayTDien>
       <Dynamic GroupName="CQTDiaPhuong">
         <ChiTietCQTDiaPhuong id="id">
+										<tenCoSo>C_44</tenCoSo>
+										<mstCoSo>H_44</mstCoSo>
           <maCQTDPhuong>AH_44</maCQTDPhuong>
           <tenCQTDPhuong>P_44</tenCQTDPhuong>
           <tyLePBoCQTDPhuong>R_44</tyLePBoCQTDPhuong>
