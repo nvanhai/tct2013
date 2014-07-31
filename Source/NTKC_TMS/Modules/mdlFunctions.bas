@@ -62,9 +62,9 @@ Public dNgayDauKy As Date
 Public dNgayCuoiKy As Date
 
 Public Const SS_SORT_ORDER_ASCENDING = 1
-Public Const APP_VERSION = "1.2"
+Public Const APP_VERSION = "1.3"
 
-Public Const HTKK_LAST_VERSION = "9.9.9"
+Public Const HTKK_LAST_VERSION = "3.2.4"
 
 Public Const SS_BORDER_TYPE_NONE = 0
 Public Const SS_BORDER_TYPE_LEFT = 1
@@ -2395,22 +2395,47 @@ Dim xmlNode As MSXML.IXMLDOMNode
 End Sub
 
 Public Function ToDateString(str As String) As String
-    Dim strArray() As String
+     Dim strArray() As String
 
-    strArray = Split(str, "/")
-
-    If UBound(strArray) <> 2 Then
-        ToDateString = str
-        Exit Function
-    Else
-
-        If Val(strArray(0)) > 0 And Val(strArray(1)) > 0 And Val(strArray(2)) > 0 Then
-            If Val(strArray(0)) <= 31 And Val(strArray(1)) <= 12 And Val(strArray(2)) < 9999 Then
-                ToDateString = strArray(2) & "-" & strArray(1) & "-" & strArray(0)
+   
+        If Len(str) > 10 Then
+            If Len(str) > 20 Then
+                ToDateString = str
                 Exit Function
+            Else
+                ' format lai dinh dang kieu datetime cua chuan XML
+                strArray = Split(Left(str, 10), "/")
+                If UBound(strArray) <> 2 Then
+                    ToDateString = str
+                    Exit Function
+                Else
+        
+                    If Val(strArray(0)) > 0 And Val(strArray(1)) > 0 And Val(strArray(2)) > 0 Then
+                        If Val(strArray(0)) <= 31 And Val(strArray(1)) <= 12 And Val(strArray(2)) < 9999 Then
+                            ToDateString = strArray(2) & "-" & strArray(1) & "-" & strArray(0) & Right(str, Len(str) - 10)
+                            Exit Function
+                        End If
+                    End If
+                End If
+            End If
+        Else
+            ' format theo dinh dang date cua chuan XML
+            strArray = Split(str, "/")
+    
+            If UBound(strArray) <> 2 Then
+                ToDateString = str
+                Exit Function
+            Else
+    
+                If Val(strArray(0)) > 0 And Val(strArray(1)) > 0 And Val(strArray(2)) > 0 Then
+                    If Val(strArray(0)) <= 31 And Val(strArray(1)) <= 12 And Val(strArray(2)) < 9999 Then
+                        ToDateString = strArray(2) & "-" & strArray(1) & "-" & strArray(0)
+                        Exit Function
+                    End If
+                End If
             End If
         End If
-    End If
+   
 
     ToDateString = str
     Exit Function
