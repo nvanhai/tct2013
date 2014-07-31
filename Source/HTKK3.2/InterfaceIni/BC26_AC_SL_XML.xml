@@ -1,7 +1,7 @@
 <HSoKhaiThue>
 	<Static GroupName="TKhaiThue">
 		<maTKhai>102</maTKhai>
-		<tenTKhai>Báo cáo tình hình sử dụng hóa đơn</tenTKhai>
+		<tenTKhai>Báo cáo tình hình sử dụng hóa đơn theo số lượng</tenTKhai>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
