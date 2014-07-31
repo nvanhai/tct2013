@@ -11,8 +11,8 @@
 					<soThuePNopNMayTDien>1</soThuePNopNMayTDien>
 					<CQTDiaPhuong>
 						<ChiTietCQTDiaPhuong>
-										<tenCoSo></tenCoSo>
-										<mstCoSo>0000000000</mstCoSo>
+							<tenCoSo></tenCoSo>
+							<mstCoSo>0000000000</mstCoSo>
 							<maCQTDPhuong>1</maCQTDPhuong>
 							<tenCQTDPhuong></tenCQTDPhuong>
 							<tyLePBoCQTDPhuong>0.0</tyLePBoCQTDPhuong>

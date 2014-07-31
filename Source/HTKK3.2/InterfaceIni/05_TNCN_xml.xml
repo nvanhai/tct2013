@@ -1,7 +1,7 @@
 <HSoKhaiThue>
 	<Static GroupName="TKhaiThue">
 		<maTKhai>42</maTKhai>
-		<tenTKhai>>Tờ khai 05/KK-TNCN</tenTKhai>
+		<tenTKhai>Tờ khai 05/KK-TNCN</tenTKhai>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">

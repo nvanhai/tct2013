@@ -3728,6 +3728,11 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             xmlTK.getElementsByTagName("maTKhai")(0).Text = maTKhaiXML
         End If
         
+        ' set ten TK
+        If tenTKhaiXML <> "" Then
+            xmlTK.getElementsByTagName("tenTKhai")(0).Text = tenTKhaiXML
+        End If
+        
 
         'set version cua tk chinh thuc và to khai BS
         If soLanBs > 0 Then
@@ -3979,8 +3984,10 @@ End Sub
 Private Function getFileName(MaTk As String) As String
     Dim MstNnt        As String
     Dim xmlMapMaFile  As New MSXML.DOMDocument
+    Dim xmlMapTenTK  As New MSXML.DOMDocument
     Dim MaFile        As String
     Dim NodeMaFile    As MSXML.IXMLDOMNode
+    Dim NodeTenTK    As MSXML.IXMLDOMNode
     Dim taxOfficeName As Variant
     Dim ctBs          As Variant
     Dim xmlDomHeader  As New MSXML.DOMDocument
@@ -3988,6 +3995,8 @@ Private Function getFileName(MaTk As String) As String
     xmlDomHeader.Load GetAbsolutePath("..\DataFiles\" & strTaxIdString & "\Header_01.xml")
     taxOfficeName = GetAttribute(xmlDomHeader.getElementsByTagName("Cell")(25), "Value")
     xmlMapMaFile.Load GetAbsolutePath("..\Project\MapMaFile.xml")
+    ' load map ten tk
+    xmlMapTenTK.Load GetAbsolutePath("..\Project\MapTenTK.xml")
 
     If xmlMapMaFile Is Nothing Then
         getFileName = ""
@@ -4010,6 +4019,16 @@ Private Function getFileName(MaTk As String) As String
             pbanTKhaiXML_TK = GetAttribute(NodeMaFile, "Version")
             pbanTKhaiXML_TK_KHBS = GetAttribute(NodeMaFile, "VersionKHBS")
             maTKhaiXML = GetAttribute(NodeMaFile, "MaTK")
+            Exit For
+        End If
+
+    Next
+    
+    ' Lay ten TK
+     For Each NodeTenTK In xmlMapTenTK.lastChild.childNodes
+
+        If GetAttribute(NodeTenTK, "MapID") = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") Then
+            tenTKhaiXML = GetAttribute(NodeTenTK, "TenTK")
             Exit For
         End If
 
@@ -4384,7 +4403,11 @@ End Sub
 Private Sub KetXuatXML()
     Dim xmlMapCT       As New MSXML.DOMDocument
     Dim xmlTK          As New MSXML.DOMDocument
+    
     Dim xmlPL          As New MSXML.DOMDocument
+    
+    Dim xmlPLTemplate          As New MSXML.DOMDocument
+    
     Dim xmlMapPL       As New MSXML.DOMDocument
     Dim xmlNodeTK      As MSXML.IXMLDOMNode
     Dim xmlNodeMapCT   As MSXML.IXMLDOMNode
@@ -4493,6 +4516,9 @@ Private Sub KetXuatXML()
         Dim TinTypeAttribute As MSXML.IXMLDOMNode
         Dim MinOccur         As String
         Dim CurrentGroupNode As MSXML.IXMLDOMNode
+        
+        Dim CurrentGroupNodeTemp As MSXML.IXMLDOMNode
+        
         Dim LastChildNode    As MSXML.IXMLDOMNode
         .sheet = 1
         
@@ -4519,6 +4545,8 @@ Private Sub KetXuatXML()
                 
                 'Lay node chua cac group dong
                 Set CurrentGroupNode = xmlTK.getElementsByTagName(currentGroup)(0)
+                
+                
 
                 'Lay group cuoi cung de insert cac group dong theo vi tri cua group nay
                 If Level = "2" Then
@@ -4765,6 +4793,9 @@ Private Sub KetXuatXML()
 
                 Else
                     xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTk & "_xml.xml")
+                    ' load template
+                    xmlPLTemplate.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTk & "_xml.xml")
+                    ' end load
 
                     xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\" & MaTk & "_xml.xml")
                 End If
@@ -4984,12 +5015,15 @@ Private Sub KetXuatXML()
                             'Lay node chua cac group dong cha
                             Set CurrentGroupNode = xmlPL.getElementsByTagName(currentGroup)(0)
                             'Set CurrentGroupNode = xmlTK.getElementsByTagName(currentGroup)(0)
+                            Set CurrentGroupNodeTemp = xmlPLTemplate.getElementsByTagName(currentGroup)(0)
 
                             Blank = True
 
                             Do
                                 'Tao document moi de insert cac group dong cha
-                                CloneNode.loadXML CurrentGroupNode.firstChild.xml
+                                'CloneNode.loadXML CurrentGroupNode.firstChild.xml
+                                CloneNode.loadXML CurrentGroupNodeTemp.firstChild.xml
+                                
                                 cellArray = Split(cellID, "_")
 
                                 Blank = True
@@ -5006,7 +5040,7 @@ Private Sub KetXuatXML()
                                     'Tao document moi de inser cac group dong con
                                     childCloneNode.loadXML xmlSection.firstChild.selectNodes(".//Dynamic")(0).firstChild.xml
                                     'Ket thuc cac group dong con trong group dong cha
-                                    If .Text <> "0" Then
+                                    If .value <> "0" Then
                                         If CloneNode.getElementsByTagName(ChildGroup)(0).selectNodes(childCloneNode.firstChild.nodeName).length - 1 >= 0 Then
                                             CloneNode.getElementsByTagName(ChildGroup)(0).removeChild CloneNode.getElementsByTagName(ChildGroup)(0).selectNodes(childCloneNode.firstChild.nodeName)(CloneNode.getElementsByTagName(ChildGroup)(0).selectNodes(childCloneNode.firstChild.nodeName).length - 1)
                                         End If
