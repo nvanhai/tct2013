@@ -422,6 +422,7 @@ Public Function InsertHDR() As String
     Dim Loai_bc  As Variant
     Dim Ngay_nop As Variant
     Dim TU_NGAY As Variant
+    Dim sTU_NGAY As String
     Dim DEN_NGAY As Variant
     Dim Ngay_cn As Variant
     Dim Nguoi_cn As Variant
@@ -491,6 +492,7 @@ Public Function InsertHDR() As String
         End If
         ' Ky bao cao tu ngay
         .GetText .ColLetterToNumber("E"), 23, TU_NGAY
+        sTU_NGAY = TU_NGAY
         If Trim(TU_NGAY) = vbNullString Then
             TU_NGAY = "CTOD('')"
         Else
@@ -614,7 +616,7 @@ Public Function InsertHDR() As String
         
         If vFlagThangQuy = "1" Then
             'Bo sung xu ly truong hop ngay dau ky khong trung ngay bao cao
-            If (Left(TU_NGAY, 2) = "01" Or Left(TU_NGAY, 2) = "1") Then
+            If (Left(sTU_NGAY, 2) = "01" Or Left(sTU_NGAY, 2) = "1") Then
                 If Trim(CStr(vKyBCCuoi)) = "0" And Trim(CStr(vChuyenDiaDiem)) = "0" Then
                     ' bao cao quy
                     LOAI_BC26 = "'01'"
