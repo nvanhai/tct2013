@@ -177,4 +177,7 @@
 	<Infor ID="0177" Msg="Báo cáo tình hình sử dụng biên lai thu phí, lệ phí"/>
 	<Infor ID="0178" Msg="B/c tình hình sử dụng hóa đơn theo số lượng"/>
 	<Infor ID="0179" Msg="BKHĐ chưa sử dụng của tổ chức, cá nhân (BK01/AC)"/>
+	<Infor ID="0180" Msg="Mất, cháy, hỏng hoá đơn đầu vào"/>
+	<Infor ID="0181" Msg="Mất, cháy, hỏng hoá đơn chưa BC sử dụng"/>
+	<Infor ID="0182" Msg="Mất, cháy, hỏng hoá đơn đã BC sử dụng"/>	
 </Message>
