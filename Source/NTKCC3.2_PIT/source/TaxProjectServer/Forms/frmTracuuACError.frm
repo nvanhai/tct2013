@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
+Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Begin VB.Form frmTraCuuACError 
    BorderStyle     =   3  'Fixed Dialog
    ClientHeight    =   6825
@@ -161,7 +161,7 @@ Begin VB.Form frmTraCuuACError
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuuACError.frx":080F
+         SpreadDesigner  =   "frmTracuuACError.frx":0A74
          UserResize      =   1
       End
    End

@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
+Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Begin VB.Form frmTruyennhanTK 
    BorderStyle     =   3  'Fixed Dialog
    ClientHeight    =   7095
@@ -143,7 +143,7 @@ Begin VB.Form frmTruyennhanTK
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTruyennhanTK.frx":0A0A
+         SpreadDesigner  =   "frmTruyennhanTK.frx":0A34
          UserResize      =   1
          Appearance      =   1
       End
@@ -194,7 +194,7 @@ Begin VB.Form frmTruyennhanTK
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTruyennhanTK.frx":0CA2
+         SpreadDesigner  =   "frmTruyennhanTK.frx":1006
          UserResize      =   1
       End
    End
