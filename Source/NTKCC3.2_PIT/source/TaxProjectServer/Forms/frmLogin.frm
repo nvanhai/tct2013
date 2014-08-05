@@ -76,6 +76,22 @@ Begin VB.Form frmLogin
          FontPitchAndFamily=   2
       End
    End
+   Begin MSForms.CommandButton cmdVAT 
+      Default         =   -1  'True
+      Height          =   360
+      Left            =   120
+      TabIndex        =   8
+      Top             =   1695
+      Width           =   2025
+      Caption         =   "VAT"
+      Size            =   "3572;635"
+      Accelerator     =   78
+      FontName        =   "Tahoma"
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+      ParagraphAlign  =   3
+   End
    Begin MSForms.Label lblCaption 
       Height          =   255
       Left            =   360
@@ -114,7 +130,6 @@ Begin VB.Form frmLogin
       ParagraphAlign  =   3
    End
    Begin MSForms.CommandButton cmdOK 
-      Default         =   -1  'True
       Height          =   360
       Left            =   2295
       TabIndex        =   5
@@ -216,25 +231,29 @@ On Error GoTo ErrorHandle
 '            Call WritePathFile(App.path & "\config.txt", txtDir.Text)
             'spathVat = txtDir.Text
     
-    
     '26/12/2011
     'dntai
     'get user login
+    If spathVat = "" Then
+        DisplayMessage "0092", msOKOnly, miCriticalError
+        frmThamso.Show
+        Exit Sub
+    End If
+
     strUserID = txtUsername.Text
     Select Case IsValidUser()
         Case 2
             GetDataInfor
             'Set user name to system caption
-            frmSystem.lblUser.caption = Mid$(frmSystem.lblUser.caption, 1, _
-                InStr(1, frmSystem.lblUser.caption, ":") + 1) & _
-                strUserName
+            frmSystem.lblUser.caption = Mid$(frmSystem.lblUser.caption, 1, InStr(1, frmSystem.lblUser.caption, ":") + 1) & strUserName
+
             '********************************
             ' ThanhDX added
             ' Date: 27/04/06
             ' Check version of application
             If Not CheckVersion Then
-                Unload Me
-                Unload frmSystem
+                '                Unload Me
+                '                frmLogin.Show
                 Exit Sub
             End If
             '********************************
@@ -307,6 +326,20 @@ Public Function BrowseFolder(szDialogTitle As String) As String
         BrowseFolder = vbNullString
     End If
 End Function
+
+Private Sub cmdVAT_Click()
+    Me.Hide
+    frmThamso.Show
+End Sub
+
+Private Sub Form_Activate()
+     If spathVat = "" Then
+        'DisplayMessage "0092", msOKOnly, miCriticalError
+        Me.Hide
+        frmThamso.Show
+        Exit Sub
+    End If
+End Sub
 
 Private Sub Form_Load()
 On Error GoTo ErrorHandle
@@ -519,36 +552,57 @@ Private Sub txtUsername_Validate(Cancel As Boolean)
 End Sub
 
 Private Function CheckVersion() As Boolean
-    Dim rsObj As ADODB.Recordset
-    Dim strSQL As String
+    Dim sSQL As String
+    Dim rs As ADODB.Recordset
+    Dim fso    As New FileSystemObject
+    Dim strFileName As String
+    Dim clsConn As New TAX_Utilities_Svr_New.clsADO
+    strFileName = spathVat & "\NTK_TG\tepmau\cg_ref_codes.DBF"
+    Dim result As Boolean
     
     On Error GoTo ErrHandle
+    result = False
+    If fso.FileExists(strFileName) = True Then
+        If clsConn.Connected = False Then
+            clsConn.CreateConnectionString spathVat & "\NTK_TG\tepmau\"
+            clsConn.Connect
+        End If
+        sSQL = "SELECT rv_low_v From cg_ref_codes WHERE rv_domain = 'HTKK_ABOUT.VERSION'"
+        Set rs = clsConn.Execute(sSQL)
+        If Not rs Is Nothing Then
+            If rs.Fields.Count > 0 Then
+                If CInt(Replace(rs.Fields(0).Value, ".", "")) = CInt(Replace(APP_VERSION, ".", "")) Then
+                    result = True
+                Else
+                    If CInt(Replace(rs.Fields(0).Value, ".", "")) > CInt(Replace(APP_VERSION, ".", "")) Then
+                        'Versions is differed
+                        DisplayMessage "0076", msOKOnly, miCriticalError
+                        result = False
+                    ElseIf CInt(Replace(rs.Fields(0).Value, ".", "")) < CInt(Replace(APP_VERSION, ".", "")) Then
+                        DisplayMessage "0075", msOKOnly, miCriticalError
+                        result = False
+                    Else
+                        DisplayMessage "0162", msOKOnly, miCriticalError
+                        result = False
+                    End If
+                End If
+            Else
+                DisplayMessage "0162", msOKOnly, miCriticalError
+                result = False
+            End If
+        Else
+            DisplayMessage "0162", msOKOnly, miCriticalError
+            result = False
+        End If
+    Else
+        DisplayMessage "0161", msOKOnly, miCriticalError
+        result = False
+    End If
     
-'    strSQL = "SELECT rv_low_value phien_ban " & _
-'           "From cg_ref_codes " & _
-'           "WHERE (rv_domain = 'HTKK_ABOUT.VERSION')"
-'    'connect to database BMT
-'    If clsDAO.Connected Then
-'        Set rsObj = clsDAO.Execute(strSQL)
-'        If rsObj.Fields(0).Value = "" Then
-'            'Can not found table or not exist value
-'            DisplayMessage "0075", msOKOnly, miCriticalError
-'            Exit Function
-'        ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) > _
-'               CInt(Replace(APP_VERSION, ".", "")) Then
-'            'Versions is differed
-'            DisplayMessage "0076", msOKOnly, miCriticalError
-'            Exit Function
-'        ElseIf CInt(Replace(rsObj.Fields(0).Value, ".", "")) < _
-'               CInt(Replace(APP_VERSION, ".", "")) Then
-'            DisplayMessage "0075", msOKOnly, miCriticalError
-'            Exit Function
-'        End If
-'    Else
-'        DisplayMessage "0063", msOKOnly, miCriticalError
-'        Exit Function
-'    End If
-    CheckVersion = True
+    If clsConn.Connected = True Then
+            clsConn.Disconnect
+    End If
+    CheckVersion = result
     
     Exit Function
 ErrHandle:
