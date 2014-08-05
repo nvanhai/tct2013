@@ -139,7 +139,7 @@ Private Type BROWSEINFO
   lpszTitle As String
   ulFlags As Long
   lpfn As Long
-  lParam As Long
+  lparam As Long
   iImage As Long
 End Type
 
@@ -149,7 +149,9 @@ Private Declare Function SHBrowseForFolder Lib "shell32.dll" Alias "SHBrowseForF
             
 Private Const BIF_RETURNONLYFSDIRS = &H1
 Private Sub cmdClose_Click()
+    Set frmThamso = Nothing
     Unload Me
+    frmLogin.Show
 End Sub
 
 Private Sub cmdOK_Click()
@@ -174,18 +176,26 @@ On Error GoTo ErrorHandle
         txtDir.SetFocus
         Exit Sub
     End If
-
+    If Not fs.FolderExists(txtDir.Text & "\NTK_TG\") Then
+        DisplayMessage "0092", msOKOnly, miInformation
+        txtDir.SetFocus
+        Exit Sub
+    End If
             '********************************
-            If txtDir.Text <> spathVat Then
-                Dim txt As String
-                txt = txtDir.Text & "," & strFile(1) & "," & strFile(2) & "," & strFile(3)
-                Call WritePathFile(App.path & "\config.txt", txt)
-                DisplayMessage "0090", msOKOnly, miInformation
+            If fs.FileExists(App.path & "\config.txt") Then
+                If txtDir.Text <> spathVat Then
+                    Dim txt As String
+                    txt = txtDir.Text & "," & strFile(1) & "," & strFile(2) & "," & strFile(3)
+                    Call WritePathFile(App.path & "\config.txt", txt)
+                    DisplayMessage "0090", msOKOnly, miInformation
+                    spathVat = txtDir.Text
+                End If
+            Else
                 spathVat = txtDir.Text
             End If
-                      
-    Unload Me
     Set frmThamso = Nothing
+    Unload Me
+    frmLogin.Show
     Exit Sub
    ' frmSystem.Show
     
@@ -224,8 +234,7 @@ End Sub
 
 Private Sub Form_Load()
     SetControlCaption Me, "frmThamso"
-    Call ReadPathFile(App.path & "\config.txt")
-    txtDir.Text = strFile(0)
+    txtDir.Text = spathVat
 End Sub
 
 Private Sub Form_Resize()
