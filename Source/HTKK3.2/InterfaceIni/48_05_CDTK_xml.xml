@@ -1,5 +1,5 @@
 <PL_CDTK>
-		<Static GroupName="No" Idx="1">
+		<Static GroupName="No" parentGroup="SoDuDauNam">
 			<ct111>R_39</ct111>
 			<ct1111>R_40</ct1111>
 			<ct1112>R_41</ct1112>
@@ -131,7 +131,7 @@
 			<ct4>R_168</ct4>
 			<ct7>R_169</ct7>
 		</Static>
-		<Static GroupName="Co" Idx="1">
+		<Static GroupName="Co" parentGroup="SoDuDauNam">
 			<ct111>V_39</ct111>
 			<ct1111>V_40</ct1111>
 			<ct1112>V_41</ct1112>
@@ -263,7 +263,7 @@
 			<ct4>V_168</ct4>
 			<ct7>V_169</ct7>
 		</Static>	
-		<Static GroupName="No" Idx="2">
+		<Static GroupName="No" parentGroup="SoPhatSinhTrongNam">
 			<ct111>Z_39</ct111>
 			<ct1111>Z_40</ct1111>
 			<ct1112>Z_41</ct1112>
@@ -395,7 +395,7 @@
 			<ct4>Z_168</ct4>
 			<ct7>Z_169</ct7>
 		</Static>		
-		<Static GroupName="Co" Idx="2">
+		<Static GroupName="Co" parentGroup="SoPhatSinhTrongNam">
 			<ct111>AD_39</ct111>
 			<ct1111>AD_40</ct1111>
 			<ct1112>AD_41</ct1112>
@@ -527,7 +527,7 @@
 			<ct4>AD_168</ct4>
 			<ct7>AD_169</ct7>
 		</Static>
-		<Static GroupName="No" Idx="3">
+		<Static GroupName="No" parentGroup="SoDuCuoiNam">
 			<ct111>AH_39</ct111>
 			<ct1111>AH_40</ct1111>
 			<ct1112>AH_41</ct1112>
@@ -659,7 +659,7 @@
 			<ct4>AH_168</ct4>
 			<ct7>AH_169</ct7>
 		</Static>		
-		<Static GroupName="Co" Idx="3">
+		<Static GroupName="Co" parentGroup="SoDuCuoiNam">
 			<ct111>AM_39</ct111>
 			<ct1111>AM_40</ct1111>
 			<ct1112>AM_41</ct1112>
