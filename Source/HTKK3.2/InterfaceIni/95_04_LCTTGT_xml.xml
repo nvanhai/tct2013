@@ -36,7 +36,7 @@
 		<ct61>R_76</ct61>
 		<ct70>R_77</ct70>
 	</Static>
-	<Static GroupName="SoNamNgoai">
+	<Static GroupName="SoNamTruoc">
 		<ct01>W_40</ct01>
 		<ct02>W_42</ct02>
 		<ct03>W_43</ct03>
@@ -74,9 +74,9 @@
 		<ct70>W_77</ct70>
 	</Static>
 	<Static GroupName="PL_LCTTGT">
-		<nguoiLapBieu>String</nguoiLapBieu>
-		<keToanTruong>String</keToanTruong>
-		<ngayLap>1967-08-13</ngayLap>
-		<giamDoc>String</giamDoc>
+		<nguoiLapBieu></nguoiLapBieu>
+		<keToanTruong></keToanTruong>
+		<ngayLap DateType="1">R_81</ngayLap>
+		<giamDoc>R_79</giamDoc>
 	</Static>
 </PL_LCTTGT>

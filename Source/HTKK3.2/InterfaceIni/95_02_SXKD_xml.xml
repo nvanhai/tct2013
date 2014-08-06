@@ -25,7 +25,7 @@
 		<ct60>I_35</ct60>
 		<ct70>I_36</ct70>
 	</Static>
-	<Static GroupName="SoNamNgoai">
+	<Static GroupName="SoNamTruoc">
 		<ct01>J_9</ct01>
 		<ct01_1>J_10</ct01_1>
 		<ct01_2>J_11</ct01_2>
@@ -52,9 +52,9 @@
 		<ct70>J_36</ct70>
 	</Static>
 	<Static GroupName="PL_KQHDXSKD">
-		<nguoiLapBieu>String</nguoiLapBieu>
-		<keToanTruong>String</keToanTruong>
-		<ngayLap>1967-08-13</ngayLap>
-		<giamDoc>String</giamDoc>
+		<nguoiLapBieu></nguoiLapBieu>
+		<keToanTruong></keToanTruong>
+		<ngayLap DateType="1">I_41</ngayLap>
+		<giamDoc>I_39</giamDoc>
 	</Static>
 </PL_KQHDXSKD>
