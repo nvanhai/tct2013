@@ -52,9 +52,9 @@
 		<ct70>J_36</ct70>
 	</Static>
 	<Static GroupName="PL_KQHDXSKD">
-		<nguoiLapBieu>String</nguoiLapBieu>
-		<keToanTruong>String</keToanTruong>
-		<ngayLap>1967-08-13</ngayLap>
-		<giamDoc>String</giamDoc>
+		<nguoiLapBieu>I_39</nguoiLapBieu>
+		<keToanTruong></keToanTruong>
+		<ngayLap>I_41</ngayLap>
+		<giamDoc></giamDoc>
 	</Static>
 </PL_KQHDXSKD>

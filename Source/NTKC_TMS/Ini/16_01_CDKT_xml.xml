@@ -17,6 +17,12 @@
 		<maHuyenDLyThue></maHuyenDLyThue>
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
+	<Static GroupName="PhanKy">
+			<nguoiLapBieu>R_122</nguoiLapBieu>
+			<keToanTruong></keToanTruong>
+			<ngayLap>R_124</ngayLap>
+			<giamDoc></giamDoc>
+	</Static>
 	<Static GroupName="SoNamNay">
 		<ctA_I_nNay>R_40</ctA_I_nNay>
 		<ctA_II_nNay>R_41</ctA_II_nNay>

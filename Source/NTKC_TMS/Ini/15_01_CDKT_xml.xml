@@ -227,9 +227,9 @@
 		<ngayKy date="1">R_145</ngayKy>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<nguoiLapBieu>Y_21</nguoiLapBieu>
-		<keToanTruong>Y_21</keToanTruong>
-		<ngayLap date="1">Y_21</ngayLap>
-		<giamDoc>Y_21</giamDoc>
+		<nguoiLapBieu>R_143</nguoiLapBieu>
+		<keToanTruong>R_143</keToanTruong>
+		<ngayLap date="1">R_145</ngayLap>
+		<giamDoc></giamDoc>
 	</Static>
 </HSoKhaiThue>
