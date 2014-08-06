@@ -4659,7 +4659,7 @@ Private Sub KetXuatXML()
 
                     End If
 
-                    If UBound(cellArray) <> 1 Or Len(cellID) > 5 Then
+                    If UBound(cellArray) <> 1 Then
                         xmlCellTKNode.Text = cellID
                     Else
                         .Col = .ColLetterToNumber(cellArray(0))
@@ -4893,6 +4893,9 @@ Private Sub KetXuatXML()
                         ElseIf UCase(xmlSection.nodeName) = "STATIC" Then
                             Dim xmlChildNodePL As MSXML.IXMLDOMNode
                             currentGroup = GetAttribute(xmlSection, "GroupName")
+                            
+                            Dim parentGroup As String
+                            parentGroup = GetAttribute(xmlSection, "parentGroup")
 
                             For Each xmlCellNode In xmlSection.childNodes
 
@@ -4909,19 +4912,28 @@ Private Sub KetXuatXML()
                                 If currentGroup = vbNullString Or currentGroup = "" Then
                                     Set xmlCellTKNode = xmlPL.getElementsByTagName(xmlCellNode.nodeName)(0)
                                 Else
-
-                                    For Each xmlChildNodePL In xmlPL.getElementsByTagName(xmlCellNode.nodeName)
-
-                                        If xmlChildNodePL.parentNode.nodeName = currentGroup Then
-                                            Set xmlCellTKNode = xmlChildNodePL
-                                            Exit For
-                                        End If
-
-                                    Next
-
+                                    If parentGroup = vbNullString Or parentGroup = "" Then
+                                        For Each xmlChildNodePL In xmlPL.getElementsByTagName(xmlCellNode.nodeName)
+    
+                                            If xmlChildNodePL.parentNode.nodeName = currentGroup Then
+                                                Set xmlCellTKNode = xmlChildNodePL
+                                                Exit For
+                                            End If
+    
+                                        Next
+                                    Else
+                                        For Each xmlChildNodePL In xmlPL.getElementsByTagName(xmlCellNode.nodeName)
+    
+                                            If xmlChildNodePL.parentNode.nodeName = currentGroup And xmlChildNodePL.parentNode.parentNode.nodeName = parentGroup Then
+                                                Set xmlCellTKNode = xmlChildNodePL
+                                                Exit For
+                                            End If
+    
+                                        Next
+                                    End If
                                 End If
 
-                                If UBound(cellArray) <> 1 Or Len(cellID) > 5 Then
+                                If UBound(cellArray) <> 1 Then
                                     xmlCellTKNode.Text = cellID
                                 Else
                                     .Col = .ColLetterToNumber(cellArray(0))
