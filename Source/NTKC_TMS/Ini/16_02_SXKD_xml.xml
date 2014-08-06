@@ -49,27 +49,34 @@
 		<ctXIV_nNay>R_60</ctXIV_nNay>
 		<ctXV_nNay>R_61</ctXV_nNay>	</Static>
 	<Static GroupName="SoNamNgoai">
-		<ct1_nNay>W_39</ct1_nNay>
-		<ct2_nNay>W_40</ct2_nNay>
-		<ctI_nNay>W_41</ctI_nNay>
-		<ct3_nNay>W_42</ct3_nNay>
-		<ct4_nNay>W_43</ct4_nNay>
-		<ctII_nNay>W_44</ctII_nNay>
-		<ctIII_nNay>W_45</ctIII_nNay>
-		<ctIV_nNay>W_46</ctIV_nNay>
-		<ctV_nNay>W_47</ctV_nNay>
-		<ct5_nNay>W_48</ct5_nNay>
-		<ct6_nNay>W_49</ct6_nNay>
-		<ctVI_nNay>W_50</ctVI_nNay>
-		<ctVII_nNay>W_51</ctVII_nNay>
-		<ctVIII_nNay>W_52</ctVIII_nNay>
-		<ctIX_nNay>W_53</ctIX_nNay>
-		<ctX_nNay>W_54</ctX_nNay>
-		<ctXI_nNay>W_55</ctXI_nNay>
-		<ct7_nNay>W_56</ct7_nNay>
-		<ct8_nNay>W_57</ct8_nNay>
-		<ctXII_nNay>W_58</ctXII_nNay>
-		<ctXIII_nNay>W_59</ctXIII_nNay>
-		<ctXIV_nNay>W_60</ctXIV_nNay>
-		<ctXV_nNay>W_61</ctXV_nNay>	</Static>
+		<ct1_nNgoai>W_39</ct1_nNgoai>
+		<ct2_nNgoai>W_40</ct2_nNgoai>
+		<ctI_nNgoai>W_41</ctI_nNgoai>
+		<ct3_nNgoai>W_42</ct3_nNgoai>
+		<ct4_nNgoai>W_43</ct4_nNgoai>
+		<ctII_nNgoai>W_44</ctII_nNgoai>
+		<ctIII_nNgoai>W_45</ctIII_nNgoai>
+		<ctIV_nNgoai>W_46</ctIV_nNgoai>
+		<ctV_nNgoai>W_47</ctV_nNgoai>
+		<ct5_nNgoai>W_48</ct5_nNgoai>
+		<ct6_nNgoai>W_49</ct6_nNgoai>
+		<ctVI_nNgoai>W_50</ctVI_nNgoai>
+		<ctVII_nNgoai>W_51</ctVII_nNgoai>
+		<ctVIII_nNgoai>W_52</ctVIII_nNgoai>
+		<ctIX_nNgoai>W_53</ctIX_nNgoai>
+		<ctX_nNgoai>W_54</ctX_nNgoai>
+		<ctXI_nNgoai>W_55</ctXI_nNgoai>
+		<ct7_nNgoai>W_56</ct7_nNgoai>
+		<ct8_nNgoai>W_57</ct8_nNgoai>
+		<ctXII_nNgoai>W_58</ctXII_nNgoai>
+		<ctXIII_nNgoai>W_59</ctXIII_nNgoai>
+		<ctXIV_nNgoai>W_60</ctXIV_nNgoai>
+		<ctXV_nNgoai>W_61</ctXV_nNgoai>	
+		</Static>
+		<Static GroupName="PhanKy">
+			<nguoiLapBieu>R_63</nguoiLapBieu>
+			<keToanTruong></keToanTruong>
+			<ngayLap>R_65</ngayLap>
+			<giamDoc></giamDoc>
+	</Static>
 </PL_KQHĐXSKD>

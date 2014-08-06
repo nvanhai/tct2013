@@ -155,4 +155,10 @@
 		<ctVI_nNgoai>W_93</ctVI_nNgoai>
 		<ctVII_nNgoai>W_94</ctVII_nNgoai>
 	</Static>
+	<Static GroupName="PhanKy">
+			<nguoiLapBieu>R_96</nguoiLapBieu>
+			<keToanTruong></keToanTruong>
+			<ngayLap>R_98</ngayLap>
+			<giamDoc></giamDoc>
+	</Static>
 </PL_LCTTGT>

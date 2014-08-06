@@ -74,9 +74,9 @@
 		<ct70>W_77</ct70>
 	</Static>
 	<Static GroupName="PL_LCTTGT">
-		<nguoiLapBieu>String</nguoiLapBieu>
-		<keToanTruong>String</keToanTruong>
-		<ngayLap>1967-08-13</ngayLap>
-		<giamDoc>String</giamDoc>
+		<nguoiLapBieu>R_79</nguoiLapBieu>
+		<keToanTruong></keToanTruong>
+		<ngayLap>R_81</ngayLap>
+		<giamDoc></giamDoc>
 	</Static>
 </PL_LCTTGT>

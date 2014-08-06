@@ -327,7 +327,7 @@ Const tt156_tkbs = "01~02~04~71~72~11~12~73~15~16~50~51~36~74~75~70~81~06~05~90~
 Private xmlDocumentInit()       As MSXML.DOMDocument
 Private arrStrElements()        As String               ' array of barcode string or file name string
 Private mHeaderSheet            As Integer              ' Save value of Header sheet (last sheet)
-Private blnReceiveByBarcode     As Boolean                    ' Check whether form is loaded
+Private blnReceiveByBarcode     As Boolean              ' Check whether form is loaded
 Private objTaxBusiness          As Object               ' private business object (cls001, cls002, cls003, ...)
 Private strTaxReportInfo        As String               ' Info about current tax report
 
@@ -344,7 +344,7 @@ Private arrBCBuffer() As String
 Private arrBCNew() As String
 Private verToKhai As Byte                               ' Luu cac kieu ma vach cho cac version ke khai khac nhau
 Private strLoaiToKhai As String   ' phan biet to bo sung hay chinh thuc
-Private strNNKD As String   'get Nganh nghe Kinh Doanh cho to 01/GTGT
+Private strNNKD As String       'get Nganh nghe Kinh Doanh cho to 01/GTGT
 Private maxBarCode As Long       ' Su dung trong truong hop to khai 04/TNCN
 
 Private checkSoCT As Integer
@@ -1727,7 +1727,7 @@ Private Function ExecuteSave() As Boolean
                             End If
 
                             If .Text <> vbNullString Or .Text <> "" Then
-                                xmlCellTKNode.Text = Format$(.Text, "YYYY-MM-dd")
+                                xmlCellTKNode.Text = ToDateString(.Text)
                             Else
                                 Set TinTypeAttribute = xmlTK.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
                                 TinTypeAttribute.nodeValue = "true"
@@ -2001,6 +2001,8 @@ Private Function ExecuteSave() As Boolean
                         ElseIf UCase(xmlSection.nodeName) = "STATIC" Then
                             Dim xmlChildNodePL As MSXML.IXMLDOMNode
                             currentGroup = GetAttribute(xmlSection, "GroupName")
+                            Dim parentGroup As String
+                            parentGroup = GetAttribute(xmlSection, "parentGroup")
 
                             For Each xmlCellNode In xmlSection.childNodes
 
@@ -2015,19 +2017,28 @@ Private Function ExecuteSave() As Boolean
                                 If currentGroup = vbNullString Or currentGroup = "" Then
                                     Set xmlCellTKNode = xmlPL.getElementsByTagName(xmlCellNode.nodeName)(0)
                                 Else
-
-                                    For Each xmlChildNodePL In xmlPL.getElementsByTagName(xmlCellNode.nodeName)
-
-                                        If xmlChildNodePL.parentNode.nodeName = currentGroup Then
-                                            Set xmlCellTKNode = xmlChildNodePL
-                                            Exit For
-                                        End If
-
-                                    Next
-
+                                    If parentGroup = vbNullString Or parentGroup = "" Then
+                                        For Each xmlChildNodePL In xmlPL.getElementsByTagName(xmlCellNode.nodeName)
+    
+                                            If xmlChildNodePL.parentNode.nodeName = currentGroup Then
+                                                Set xmlCellTKNode = xmlChildNodePL
+                                                Exit For
+                                            End If
+    
+                                        Next
+                                    Else
+                                         For Each xmlChildNodePL In xmlPL.getElementsByTagName(xmlCellNode.nodeName)
+    
+                                            If xmlChildNodePL.parentNode.nodeName = currentGroup And xmlChildNodePL.parentNode.parentNode.nodeName = parentGroup Then
+                                                Set xmlCellTKNode = xmlChildNodePL
+                                                Exit For
+                                            End If
+    
+                                        Next
+                                    End If
                                 End If
 
-                                If UBound(cellArray) <> 1 Or Len(cellid) > 5 Then
+                                If UBound(cellArray) <> 1 Or Len(cellid) > 10 Then
                                     xmlCellTKNode.Text = cellid
                                 Else
                                     .Col = .ColLetterToNumber(cellArray(0))
@@ -2061,7 +2072,7 @@ Private Function ExecuteSave() As Boolean
                                         End If
                                     
                                         If .Text <> vbNullString Or .Text <> "" Then
-                                            xmlCellTKNode.Text = Format$(.Text, "YYYY-MM-DD")
+                                            xmlCellTKNode.Text = ToDateString(.Text)
                                         Else
                                             Set TinTypeAttribute = xmlPL.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
                                             TinTypeAttribute.nodeValue = "true"
