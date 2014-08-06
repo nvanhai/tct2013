@@ -1028,7 +1028,8 @@ Private Sub cmdSave_Click()
             'to cac to khai lan phat sinh thi ky lap bo bang ky ke khai van ghi binh thuong
             If NgayPS = "" Or NgayPS = vbNullString Then
 
-                If TAX_Utilities_Svr_New.isCheckPIT = False And menuId <> 91 Then
+                If TAX_Utilities_Svr_New.isCheckPIT = False And menuId <> 91 And menuId <> 64 And menuId <> 65 And menuId <> 66 And menuId <> 67 And menuId <> 68 _
+                And menuId <> 18 And menuId <> 27 And menuId <> 7 And menuId <> 13 And menuId <> 9 And menuId <> 10 And menuId <> 14 Then
                     If (TAX_Utilities_Svr_New.Month <> vbNullString) And (TAX_Utilities_Svr_New.Month <> "") Then
                         If (Month(vNGAY_DAU_KYLBO) = Int(TAX_Utilities_Svr_New.Month)) And (Year(vNGAY_DAU_KYLBO) = TAX_Utilities_Svr_New.Year) Then
                             DisplayMessage "0120", msOKOnly, miCriticalError

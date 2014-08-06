@@ -598,7 +598,7 @@ Public Function InsertHDR() As String
         MA_CQT = GetMaCqt
         
         ' Loai bao cao BC26
-        LOAI_BC26 = "Null"
+        LOAI_BC26 = "'01'"
         ' thong tin nguoi lap bieu
         .GetText .ColLetterToNumber("I"), 19, Nguoi_lb
 
