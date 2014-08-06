@@ -105,7 +105,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .Sheet = 1
         .Col = .ColLetterToNumber(PHONG_XU_LY_COL)
         .Row = PHONG_XU_LY_ROW
-        If rsPXL.Fields.Count > 0 Then
+        If rsPXL.Fields.count > 0 Then
             Do While Not rsPXL.EOF
                 .TypeComboBoxIndex = -1
                 .TypeComboBoxString = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
@@ -139,7 +139,7 @@ Public Function Prepared3() As Boolean
     Dim strId, strMauso, strTuSo, strDenSo As Variant
     Dim strTen As String
     Dim i As Integer
-    dim tempValue as variant
+    Dim tempValue As Variant
     With fps
         '.EventEnabled(EventAllEvents) = False
         'Set MaSoTep
@@ -201,6 +201,7 @@ End Function
 Public Sub Prepared4(ByVal dNgayDauKy As Date)
 Dim strKyLapBo As String
 Dim blnValid As Boolean
+Dim strNgay, strGio, strPhut As Variant
 
     blnValid = True
     
@@ -222,6 +223,22 @@ Dim blnValid As Boolean
         .Col = .ColLetterToNumber(NGAY_NHAN_TO_KHAI_COL)
         .Row = NGAY_NHAN_TO_KHAI_ROW
         strNgayNhanToKhai = .Text
+        
+        'Set gia tri ngay chay hong vao truong an N_25 de ket xuat XML
+        .GetText .ColLetterToNumber("N"), 15, strNgay
+        .GetText .ColLetterToNumber("H"), 15, strGio
+        .GetText .ColLetterToNumber("K"), 15, strPhut
+        
+        IIf Len(strGio) = 1, "0" & strGio, strGio
+        IIf Len(strPhut) = 1, "0" & strPhut, strPhut
+        
+        .Row = 25
+        .Col = .ColLetterToNumber("N")
+        .Text = strNgay & "T" & strGio & ":" & strPhut & ":00Z"
+        'Ket thuc set gia tri vao truong an N_25
+        
+        
+        
 '
 '        'Go to last sheet (header sheet)
 '        .Sheet = .SheetCount
