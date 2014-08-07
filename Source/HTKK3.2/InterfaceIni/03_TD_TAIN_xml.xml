@@ -4,8 +4,22 @@
 		<tenTKhai>Tờ khai thuế tài nguyên dành cho cơ sở sản xuất thuỷ điện</tenTKhai>
 		<moTaBMau></moTaBMau>
 	</Static>
+	
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT/>
+		<maTinhNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
+	</Static>
+	
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct21>H_24</ct21>
+		<ct21>Z_24</ct21>
 		<ct22>F_25</ct22>
 	</Static>
 	<Dynamic GroupName="BKeThueTN">
@@ -23,5 +37,14 @@
 		<tong_ct27>O_46</tong_ct27>
 		<tong_ct28>R_46</tong_ct28>
 		<tong_ct29>V_46</tong_ct29>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_61</nguoiKy>
+		<ngayKy>R_63</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>F_61</tenNVienDLyThue>
+		<cchiHNghe>F_63</cchiHNghe>
+		<nganhNgheKD></nganhNgheKD>
 	</Static>
 </HSoThueDTu>
