@@ -58,7 +58,7 @@
 		<ct70_nNgoai>W_68</ct70_nNgoai>
 	</Static>
 	<Static GroupName="PL_LCTTTT">
-		<nguoiLapBieu></nguoiLapBieu>
+		<nguoiLapBieu>R_70</nguoiLapBieu>
 		<keToanTruong></keToanTruong>
 		<ngayLap>R_72</ngayLap>
 		<giamDoc></giamDoc>
