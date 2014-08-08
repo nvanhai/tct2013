@@ -4134,9 +4134,9 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                                         dNode.removeChild dNode.firstChild
                                     End If
 
-                                    If Len(.Text) = 13 Then
+                                    If Len(Trim(.Text)) = 13 Then
                                         dNode.Text = Left$(.Text, 10) & "-" & Right$(.Text, 3)
-                                    ElseIf Len(.Text) = 10 Then
+                                    ElseIf Len(Trim(.Text)) = 10 Or Len(Trim(.Text)) = 14 Then
                                         dNode.Text = .Text
                                     Else
 
@@ -4678,9 +4678,9 @@ Private Sub KetXuatXML()
                                 xmlCellTKNode.removeChild xmlCellTKNode.firstChild
                             End If
 
-                            If Len(.Text) = 13 Then
+                            If Len(Trim(.Text)) = 13 Then
                                 xmlCellTKNode.Text = Left$(.Text, 10) & "-" & Right$(.Text, 3)
-                            ElseIf Len(.Text) = 10 Then
+                            ElseIf Len(Trim(.Text)) = 10 Or Len(Trim(.Text)) = 14 Then
                                 xmlCellTKNode.Text = .Text
                             Else
 
@@ -4946,9 +4946,9 @@ Private Sub KetXuatXML()
                                             xmlCellTKNode.removeChild xmlCellTKNode.firstChild
                                         End If
 
-                                        If Len(.Text) = 13 Then
+                                        If Len(Trim(.Text)) = 13 Then
                                             xmlCellTKNode.Text = Left$(.Text, 10) & "-" & Right$(.Text, 3)
-                                        ElseIf Len(.Text) = 10 Then
+                                        ElseIf Len(Trim(.Text)) = 10 Or Len(Trim(.Text)) = 14 Then
                                             xmlCellTKNode.Text = .Text
                                         Else
 
