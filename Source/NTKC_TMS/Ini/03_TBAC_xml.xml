@@ -18,12 +18,12 @@
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<kinhGui></kinhGui>
+		<kinhGui>D_27</kinhGui>
 		<phuongPhapHuy>I_22</phuongPhapHuy>
-		<ThoiGian>P_24</ThoiGian>
+		<ThoiGian>P_26</ThoiGian>
 	</Static>
 	<Dynamic GroupName="HoaDon">
-		<ChiTiet id="ID_1">
+		<ChiTiet ID="ID_1">
 			<tenHDon>C_43</tenHDon>
 			<mauHDon>O_43</mauHDon>
 			<kyHieu>S_43</kyHieu>
