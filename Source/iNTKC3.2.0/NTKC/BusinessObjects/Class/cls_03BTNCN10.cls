@@ -466,7 +466,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     
     Dim strTTGui As Integer
     
-    Dim vItkhai_ID, vHTHUC_NOP As String
+    Dim vItkhai_ID, vHthuc_nop As String
      Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
 On Error GoTo ErrHandle
     'strSQL = strSQL_HDR
@@ -499,7 +499,7 @@ On Error GoTo ErrHandle
                     SaveSetting "HTKK", "TNCN", "tempKyLb", vKyLB
                 Case "M_28"
                     vNGAY_CAP_NHAT = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "V_24"
+                Case "V_28"
                     vNGUOI_CAP_NHAT = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case "E_28"
                     vCO_LOI_DDANH = Trim(TAX_Utilities_iNTK.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
@@ -535,10 +535,10 @@ On Error GoTo ErrHandle
     If TAX_Utilities_iNTK.HthucNopIHTKK = True Then
         vNGAY_NOP = TAX_Utilities_iNTK.NgayNopIHTKK
         vItkhai_ID = TAX_Utilities_iNTK.IDTokhaiIHTKK
-        vHTHUC_NOP = "'I'"
+        vHthuc_nop = "'I'"
     Else
         vItkhai_ID = "null"
-        vHTHUC_NOP = "null"
+        vHthuc_nop = "null"
     End If
     ' end
     
@@ -626,9 +626,9 @@ On Error GoTo ErrHandle
     'strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null)"
     ' PIT
     If TAX_Utilities_iNTK.isCheckPIT = True Then
-        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & strTTGui & "," & vHTHUC_NOP & "," & vItkhai_ID & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
+        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & strTTGui & "," & vHthuc_nop & "," & vItkhai_ID & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
     Else
-        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & vHTHUC_NOP & "," & vItkhai_ID & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
+        strSQL = strSQL & "'" & strMaPhongXuLy & "', null, null," & vHthuc_nop & "," & vItkhai_ID & "," & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
     End If
     ' end PIT
     
