@@ -3659,6 +3659,15 @@ Private Sub SetKieuKy()
         End If
     End If
     
+    ' to khai TTS
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "23" Then
+        If strQuy = "TK_QUY" Then
+            strKK = "Q"
+        Else
+            strKK = "K"
+        End If
+    End If
+    
 End Sub
 
 ' Set gia tri mac dinh cho to khai xml
@@ -3756,14 +3765,31 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             End If
 
             If TAX_Utilities_v1.FirstDay <> vbNullString And TAX_Utilities_v1.LastDay <> vbNullString Then
-                If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
-                    xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = TAX_Utilities_v1.FirstDay
-                End If
+                If strKK = "K" Then
+                    If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
+                        xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = "01/" & TAX_Utilities_v1.FirstDay
+                    End If
             
-                If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
-                    xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = TAX_Utilities_v1.LastDay
+                    If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
+                        xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = "01/" & TAX_Utilities_v1.LastDay
+                    End If
+                    
+                    If xmlTK.getElementsByTagName("kyKKhaiTuThang").length > 0 Then
+                        xmlTK.getElementsByTagName("kyKKhaiTuThang")(0).Text = TAX_Utilities_v1.FirstDay
+                    End If
+            
+                    If xmlTK.getElementsByTagName("kyKKhaiDenThang").length > 0 Then
+                        xmlTK.getElementsByTagName("kyKKhaiDenThang")(0).Text = TAX_Utilities_v1.LastDay
+                    End If
+                Else
+                    If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
+                        xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = TAX_Utilities_v1.FirstDay
+                    End If
+                
+                    If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
+                        xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = TAX_Utilities_v1.LastDay
+                    End If
                 End If
-
             Else
 
                 If strKK = "D" Then
@@ -3804,7 +3830,6 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
                     If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
                         xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = "31/12/" & TAX_Utilities_v1.Year
                     End If
-
                 Else
 
                     If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
@@ -4076,7 +4101,15 @@ Private Function GetKyKeKhai(ByVal ID_TK As String) As String
             If (Trim(TAX_Utilities_v1.month) <> vbNullString Or Trim(TAX_Utilities_v1.month) <> "") And (Trim(TAX_Utilities_v1.ThreeMonths) = vbNullString Or Trim(TAX_Utilities_v1.ThreeMonths) = "") Then
                 KYKKHAI = TAX_Utilities_v1.month & "/" & TAX_Utilities_v1.Year
             ElseIf (Trim(TAX_Utilities_v1.month) = vbNullString Or Trim(TAX_Utilities_v1.month) = "") And (Trim(TAX_Utilities_v1.ThreeMonths) <> vbNullString Or Trim(TAX_Utilities_v1.ThreeMonths) <> "") Then
-                KYKKHAI = Right$(TAX_Utilities_v1.ThreeMonths, 1) & "/" & TAX_Utilities_v1.Year
+                If ID_TK = "23" Then
+                    If strQuy = "TK_QUY" Then
+                        KYKKHAI = Right$(TAX_Utilities_v1.ThreeMonths, 1) & "/" & TAX_Utilities_v1.Year
+                    Else
+                        KYKKHAI = TAX_Utilities_v1.FirstDay & "_" & TAX_Utilities_v1.LastDay
+                    End If
+                Else
+                    KYKKHAI = Right$(TAX_Utilities_v1.ThreeMonths, 1) & "/" & TAX_Utilities_v1.Year
+                End If
             Else
                 KYKKHAI = TAX_Utilities_v1.Year
             End If
