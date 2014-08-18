@@ -1,0 +1,13 @@
+<PL_BK_01AC_02>
+	<Dynamic GroupName="PL_BK_01AC_02">
+		<ChiTietHoaDon id="id">
+			<maHoaDon>AI_45</maHoaDon>
+			<tenHoaDon>C_45</tenHoaDon>
+			<kyHieuMau>O_45</kyHieuMau>
+			<kyHieuHD>S_45</kyHieuHD>
+			<soLuong>V_45</soLuong>
+			<tuSo>Y_45</tuSo>
+			<denSo>AA_45</denSo>
+		</ChiTietHoaDon>
+	</Dynamic>
+</PL_BK_01AC_02>
