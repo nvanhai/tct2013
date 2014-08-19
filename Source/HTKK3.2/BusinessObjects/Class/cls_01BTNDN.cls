@@ -2597,3 +2597,34 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
         .EventEnabled(EventAllEvents) = True
     End With
 End Sub
+
+
+
+Public Sub fillCQT()
+    Dim CQT_CAPCUC    As Variant
+    Dim CQT_CAPCHICUC  As Variant
+    Dim tCQT_CAPCUC   As String
+    Dim tCQT_CAPCHICUC As String
+    With fps
+        .Sheet = 2
+        If .SheetVisible = True Then
+                .Row = 35
+                Do
+                     .GetText .ColLetterToNumber("S"), .Row, CQT_CAPCUC
+                     .GetText .ColLetterToNumber("R"), .Row, CQT_CAPCHICUC
+                     GetCQTByMaCQT CQT_CAPCUC, tCQT_CAPCUC
+                     GetCQTByMaCQT CQT_CAPCHICUC, tCQT_CAPCHICUC
+                     .Col = .ColLetterToNumber("G")
+                     .Text = tCQT_CAPCUC
+                     UpdateCell fps, .Col, .Row, .Text
+                     
+                     .Col = .ColLetterToNumber("H")
+                     .Text = tCQT_CAPCHICUC
+                     UpdateCell fps, .Col, .Row, .Text
+                     
+                     .Col = .ColLetterToNumber("C")
+                    .Row = .Row + 1
+                Loop Until .Text = "aa"
+        End If
+    End With
+End Sub
