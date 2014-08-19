@@ -1291,3 +1291,32 @@ Public Sub inThongTinDL()
     ' end
 End Sub
 
+' ham set thong tin sau khi tai XML
+Public Sub finishImportXML()
+    Dim i As Integer
+    Dim CQT As Variant
+    With fps
+        .EventEnabled(EventAllEvents) = False
+         .Sheet = 2
+         If .SheetVisible = True Then
+                .Row = 42
+                .Col = .ColLetterToNumber("B")
+                i = 1
+                Do
+                     .GetText .ColLetterToNumber("P"), .Row, CQT
+                     If Trim$(CStr(CQT)) = "" Or CQT = vbNullString Then
+                        .Text = i
+                        .Col = .ColLetterToNumber("G")
+                        .value = 1
+                        .Col = .ColLetterToNumber("P")
+                        .Lock = True
+                        i = i + 1
+                     End If
+                     .Col = .ColLetterToNumber("B")
+                    .Row = .Row + 1
+                Loop Until .Text = "aa"
+                
+         End If
+        .EventEnabled(EventAllEvents) = True
+    End With
+End Sub
