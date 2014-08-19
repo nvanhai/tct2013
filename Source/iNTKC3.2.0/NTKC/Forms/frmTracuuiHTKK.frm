@@ -173,7 +173,7 @@ Begin VB.Form frmTraCuuiHTKK
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuuiHTKK.frx":0752
+         SpreadDesigner  =   "frmTracuuiHTKK.frx":077C
          UserResize      =   1
          Appearance      =   1
       End
@@ -224,7 +224,7 @@ Begin VB.Form frmTraCuuiHTKK
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuuiHTKK.frx":0CF4
+         SpreadDesigner  =   "frmTracuuiHTKK.frx":0D48
          UserResize      =   1
       End
    End
@@ -499,11 +499,12 @@ Private Function changeLoaiToKhai(ByVal strLoaiMaToKhai As String) As String
     If strLoaiMaToKhai = "104" Then changeLoaiToKhai = " IN ('46', '47', '48', '49', '15', '16', '53', '37', '50', '51', '54', '38', '39', '40', '36', '17','42','43','41','59','74','75')"
     If strLoaiMaToKhai = "105" Then changeLoaiToKhai = " IN ('06', '08', '09','77')"
     If strLoaiMaToKhai = "106" Then changeLoaiToKhai = " IN ('05')"
-    If strLoaiMaToKhai = "108" Then changeLoaiToKhai = " IN ('18','55','56','57','58','69') "
-    If strLoaiMaToKhai = "109" Then changeLoaiToKhai = " IN ('19','24','26','27') "     '" IN ('19','24','25','26','27') "
+    'Cap nhat theo TT39: remove ID 18
+    If strLoaiMaToKhai = "108" Then changeLoaiToKhai = " IN ('55','56','57','58','69') " '  " IN ('18','55','56','57','58','69') "
+    If strLoaiMaToKhai = "109" Then changeLoaiToKhai = " IN ('19','24','26') "     '" IN ('19','24','25','26','27') "
     If strLoaiMaToKhai = "110" Then changeLoaiToKhai = " IN ('20','28','29','30','31') "
     If strLoaiMaToKhai = "111" Then changeLoaiToKhai = " IN ('21','32','33','34','35') "
-    If strLoaiMaToKhai = "112" Then changeLoaiToKhai = " IN ('64','65','66','67','68','91') "
+    If strLoaiMaToKhai = "112" Then changeLoaiToKhai = " IN ('64','65','66','67','68','91','27','18') "
     If strLoaiMaToKhai = "101" Then changeLoaiToKhai = " IN ('70','80','81','82') "
     If strLoaiMaToKhai = "113" Then changeLoaiToKhai = " IN ('86','87','89') "
     If strLoaiMaToKhai = "114" Then changeLoaiToKhai = " IN ('07','09','10','13','14') "
