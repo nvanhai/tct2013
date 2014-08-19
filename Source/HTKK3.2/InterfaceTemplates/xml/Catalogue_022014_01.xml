@@ -55,7 +55,7 @@
 			<Cell CellID="C_66" CellID2="C_2" Value="465###0601###Ngọc trai, bào ngư, hải sâm###Kg###10###0###1" StatusID=""/>
 			<Cell CellID="C_67" CellID2="C_2" Value="466###0602###Hải sản tự nhiên khác###Kg###2###0###1" StatusID=""/>
 			<Cell CellID="C_69" CellID2="C_2" Value="468###0701###Nước khoáng thiên nhiên, nước nóng thiên nhiên, nước thiên nhiên tinh lọc đóng chai, đóng hộp###M3###8###0###1" StatusID=""/>
-			<Cell CellID="C_70" CellID2="C_2" Value="469###0702###Nước thiên nhiên dùng cho sản xuất thủy điện###KWh###4###0###1" StatusID=""/>
+			<Cell CellID="C_70" CellID2="C_2" Value="469###0902###Nước thiên nhiên dùng cho sản xuất thủy điện###KWh###4###0###1" StatusID=""/>
 			<Cell CellID="C_73" CellID2="C_2" Value="472###07030101###Nước dùng cho sản xuất nước sạch###M3###1###0###1" StatusID=""/>
 			<Cell CellID="C_74" CellID2="C_2" Value="473###07030102###Nước dùng cho mục đích khác###M3###3###0###1" StatusID=""/>
 			<Cell CellID="C_76" CellID2="C_2" Value="475###07030201###Nước dùng cho sản xuất nước sạch (Nước dưới đất)###M3###3###0###1" StatusID=""/>
