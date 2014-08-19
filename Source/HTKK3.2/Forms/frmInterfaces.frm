@@ -5264,6 +5264,20 @@ Private Sub cmdImportXML_Click()
     End If
     ' end
     
+    ' cac to khai co du lieu dong tao lai cac stt va ten danh muc
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "05" Then
+        If Not objTaxBusiness Is Nothing Then
+            objTaxBusiness.finishImportXML
+        Else
+            Set objTaxBusiness = CreateObject(GetAttribute(TAX_Utilities_v1.NodeValidity, "Class"))
+
+            If Not objTaxBusiness Is Nothing Then
+                objTaxBusiness.finishImportXML
+            End If
+        End If
+    End If
+    
+    'End
     'Load co quan thue KHBS
     With fpSpread1
         Dim CQT_CAPCUC    As Variant
