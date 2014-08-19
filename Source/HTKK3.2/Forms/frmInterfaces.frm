@@ -5251,7 +5251,7 @@ Private Sub cmdImportXML_Click()
     End If
         
     ' to khai 01A/TNDN
-    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "11" Then
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "11" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "12" Then
         If Not objTaxBusiness Is Nothing Then
             objTaxBusiness.fillCQT
         Else
