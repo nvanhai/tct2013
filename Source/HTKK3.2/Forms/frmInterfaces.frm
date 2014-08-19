@@ -4299,7 +4299,7 @@ Private Sub SetValueFromXml(ByVal nodes As MSXML.IXMLDOMNode, _
 
                                     ElseIf .CellType = CellTypeCheckBox Then
 
-                                        If LCase$(dNode.Text) = "x" Then
+                                        If LCase$(dNode.Text) = "x" Or dNode.Text = "1" Then
                                             .Text = "1"
                                         ElseIf dNode.Text = "" Then
                                             .Text = "0"
@@ -5265,7 +5265,7 @@ Private Sub cmdImportXML_Click()
     ' end
     
     ' cac to khai co du lieu dong tao lai cac stt va ten danh muc
-    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "05" Then
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "11" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "12" Then
         If Not objTaxBusiness Is Nothing Then
             objTaxBusiness.finishImportXML
         Else
@@ -5491,83 +5491,85 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
 
                 End If
             ElseIf nodeMapCT.nodeName = "P_Dynamic" Then
-                Dim P_dynamicID As Integer
-                Dim ChildGroup  As String
-                Dim ChildNode   As MSXML.IXMLDOMNode
-                Dim childXml    As New MSXML.DOMDocument
-                Dim DynamicNode As MSXML.IXMLDOMNode
-                Dim ChildNumber As Integer
-                Dim TotalRow As Integer
-                
-                GroupName = GetAttribute(nodeMapCT, "GroupName")
-
-                If nodeMapCT.Attributes.length > 0 Then
-                    IDstr = nodeMapCT.firstChild.Attributes(0).nodeName
-                Else
-                    IDstr = "id"
-                End If
-
-                Set ChildNode = nodeMapCT.selectSingleNode(".//Dynamic")
-                
-                ChildGroup = GetAttribute(ChildNode, "GroupName")
-                
-                cellID = GetAttribute(nodeMapCT, "CellID")
-                
-                If ChildNode.Attributes.length > 0 Then
-                    ChildIdStr = ChildNode.firstChild.Attributes(0).nodeName
-                Else
-                    ChildIdStr = "id"
-                End If
-                
-                nodeTK.loadXML xmlDuLieuImport.getElementsByTagName(GroupName)(0).xml
-                                
-                cellID = nodeMapCT.firstChild.firstChild.Text
-                cellArray = Split(cellID, "_")
-                For Each DynamicNode In nodeTK.getElementsByTagName(nodeMapCT.firstChild.nodeName)
-                    RowNumber = RowNumber + 1
-                    TotalRow = TotalRow + 1 + DynamicNode.selectNodes(ChildGroup)(0).childNodes.length
-                Next
-                For RowCount = 1 To TotalRow - 1
-                    InsertNode .ColLetterToNumber(cellArray(0)), Val(cellArray(1)) + RowCount - 1
-                Next
-                If UBound(cellArray) = 1 And RowNumber > 0 Then
-
-                    For P_dynamicID = 0 To RowNumber - 1
-                        
-                        valXml.loadXML nodeTK.getElementsByTagName(nodeMapCT.firstChild.nodeName)(P_dynamicID).xml
-
-                        If GetAttribute(valXml.firstChild, IDstr) <> "" Then
-
-                            If P_dynamicID <> 0 Then
-                                cellRange = cellRange + 1
-                            End If
-                            SetValueFromXml nodeMapCT, valXml, cellRange, .sheet
-
-                            Set DynamicNode = valXml.getElementsByTagName(ChildGroup)(0)
-                            ChildNumber = DynamicNode.childNodes.length
-
-                            
-                            If ChildNumber > 0 Then
-
-                                For dynamicID = 0 To ChildNumber - 1
-                                    childXml.loadXML DynamicNode.childNodes(dynamicID).xml
-
-                                    If GetAttribute(childXml.firstChild, ChildIdStr) <> "" Then
-                                        SetValueFromXml ChildNode, childXml, cellRange, .sheet
-                                        cellRange = cellRange + 1
-                                    End If
-
-                                Next
-
-                            End If
-
-                        End If
-
-                        
+                    Dim P_dynamicID As Integer
+                    Dim ChildGroup  As String
+                    Dim ChildNode   As MSXML.IXMLDOMNode
+                    Dim childXml    As New MSXML.DOMDocument
+                    Dim DynamicNode As MSXML.IXMLDOMNode
+                    Dim ChildNumber As Integer
+                    Dim TotalRow As Integer
+                    
+                    GroupName = GetAttribute(nodeMapCT, "GroupName")
+    
+                    If nodeMapCT.Attributes.length > 0 Then
+                        IDstr = nodeMapCT.firstChild.Attributes(0).nodeName
+                    Else
+                        IDstr = "id"
+                    End If
+    
+                    Set ChildNode = nodeMapCT.selectSingleNode(".//Dynamic")
+                    
+                    ChildGroup = GetAttribute(ChildNode, "GroupName")
+                    
+                    cellID = GetAttribute(nodeMapCT, "CellID")
+                    
+                    If ChildNode.Attributes.length > 0 Then
+                        ChildIdStr = ChildNode.firstChild.Attributes(0).nodeName
+                    Else
+                        ChildIdStr = "id"
+                    End If
+                    
+                    nodeTK.loadXML xmlDuLieuImport.getElementsByTagName(GroupName)(0).xml
+                                    
+                    cellID = nodeMapCT.firstChild.firstChild.Text
+                    cellArray = Split(cellID, "_")
+                    For Each DynamicNode In nodeTK.getElementsByTagName(nodeMapCT.firstChild.nodeName)
+                        RowNumber = RowNumber + 1
+                        TotalRow = TotalRow + 1 + DynamicNode.selectNodes(ChildGroup)(0).childNodes.length
                     Next
+                    For RowCount = 1 To TotalRow - 1
+                        InsertNode .ColLetterToNumber(cellArray(0)), Val(cellArray(1)) + RowCount - 1
+                    Next
+                    If UBound(cellArray) = 1 And RowNumber > 0 Then
+    
+                        For P_dynamicID = 0 To RowNumber - 1
+                            
+                            valXml.loadXML nodeTK.getElementsByTagName(nodeMapCT.firstChild.nodeName)(P_dynamicID).xml
+    
+                            If GetAttribute(valXml.firstChild, IDstr) <> "" Or (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "11" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "12") Then
+    
+                                If P_dynamicID <> 0 Then
+                                    cellRange = cellRange + 1
+                                End If
+                                SetValueFromXml nodeMapCT, valXml, cellRange, .sheet
+    
+                                Set DynamicNode = valXml.getElementsByTagName(ChildGroup)(0)
+                                ChildNumber = DynamicNode.childNodes.length
+    
+                                
+                                If ChildNumber > 0 Then
+    
+                                    For dynamicID = 0 To ChildNumber - 1
+                                        childXml.loadXML DynamicNode.childNodes(dynamicID).xml
+    
+                                        If GetAttribute(childXml.firstChild, ChildIdStr) <> "" Then
+                                            SetValueFromXml ChildNode, childXml, cellRange, .sheet
+                                            cellRange = cellRange + 1
+                                        End If
+    
+                                    Next
+    
+                                End If
+    
+                            End If
+    
+                            
+                        Next
+                        
+                    End If
                     
                 End If
-            End If
+                
 
         Next
 

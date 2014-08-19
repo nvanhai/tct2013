@@ -704,14 +704,15 @@ End Sub
 
 Public Function ResetData() As Boolean
     With fps
+        .EventEnabled(EventAllEvents) = False
         .Sheet = 1
         .Row = 49
         .Col = .ColLetterToNumber("S")
-        .Text = "0"
+        .value = "0"
 
         .Col = .ColLetterToNumber("AF")
-        .Text = "0"
-
+        .value = "0"
+        .EventEnabled(EventAllEvents) = True
     End With
 End Function
 
