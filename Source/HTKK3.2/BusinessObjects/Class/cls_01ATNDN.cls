@@ -79,7 +79,7 @@ Public Sub Prepare1()
         Dim Thongtu As String
         
         
-        Dim xmlDomData As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
+        Dim xmlDOMdata As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
         Dim strDataFileName As String
         Dim xmlNodeListItems As MSXML.IXMLDOMNodeList
         Dim strCboLyDo As String
@@ -134,8 +134,8 @@ Public Sub Prepare1()
             
             ' Ky dc gia han moi set gia tri ly do gia han
             strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_DM_Lydo_GH_TT16.xml")
-            If xmlDomData.Load(strDataFileName) Then
-                 Set xmlNodeListItems = xmlDomData.getElementsByTagName("Item")
+            If xmlDOMdata.Load(strDataFileName) Then
+                 Set xmlNodeListItems = xmlDOMdata.getElementsByTagName("Item")
                  For Each xmlNode In xmlNodeListItems
                      fldList = Split(GetAttribute(xmlNode, "Value"), "###")
                      strCboLyDo = strCboLyDo + fldList(1) + Chr$(9)
@@ -1259,7 +1259,7 @@ Dim cValue As Variant
 
 Dim intIndexCuc As Integer, intIndexChiCuc As Integer
 Dim varIdCucThue As Variant
-Dim xmlDomData As New MSXML.DOMDocument
+Dim xmlDOMdata As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 Dim arrDanhsach() As String
@@ -2530,7 +2530,7 @@ End Sub
 
 
 Private Sub setCQTQuanLy()
-        Dim xmlDomData As New MSXML.DOMDocument
+        Dim xmlDOMdata As New MSXML.DOMDocument
         Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
         Dim xmlNode As MSXML.IXMLDOMNode
         Dim arrDanhsach() As String
@@ -2542,8 +2542,8 @@ Private Sub setCQTQuanLy()
         Dim loaiCq As String
         Dim maLoaiCq As String
         
-        If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
-            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+        If xmlDOMdata.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -2558,14 +2558,14 @@ Private Sub setCQTQuanLy()
                     'End If
                 End If
             Next
-            Set xmlDomData = Nothing
+            Set xmlDOMdata = Nothing
             Set xmlNodeListCell = Nothing
             Set xmlNode = Nothing
         End If
         
         ' setloai
-        If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_DM_LoaiCq.xml")) Then
-            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+        If xmlDOMdata.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_DM_LoaiCq.xml")) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -2573,7 +2573,7 @@ Private Sub setCQTQuanLy()
                     maLoaiCq = maLoaiCq + arrDanhsach(0) + Chr$(9)
                 End If
             Next
-            Set xmlDomData = Nothing
+            Set xmlDOMdata = Nothing
             Set xmlNodeListCell = Nothing
             Set xmlNode = Nothing
         End If
@@ -2617,7 +2617,7 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
     Dim intIndexChiCuc As Integer
     Dim varIdCucThue As Variant
     
-    Dim xmlDomData As New MSXML.DOMDocument
+    Dim xmlDOMdata As New MSXML.DOMDocument
     Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim arrDanhsach() As String
@@ -2650,8 +2650,8 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
                     ' Lay thong tin cho chi cuc thue
                     varIdCucThue = Left$(varIdCucThue, 3)
                     
-                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
-                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+                    If xmlDOMdata.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+                        Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
                         For Each xmlNode In xmlNodeListCell
                             If GetAttribute(xmlNode, "Value") <> "" Then
                                 arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -2662,7 +2662,7 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
                                 End If
                             End If
                         Next
-                        Set xmlDomData = Nothing
+                        Set xmlDOMdata = Nothing
                         Set xmlNodeListCell = Nothing
                         Set xmlNode = Nothing
                     End If
@@ -2696,5 +2696,35 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
             End If
         End If
         .EventEnabled(EventAllEvents) = True
+    End With
+End Sub
+
+
+Public Sub fillCQT()
+    Dim CQT_CAPCUC    As Variant
+    Dim CQT_CAPCHICUC  As Variant
+    Dim tCQT_CAPCUC   As String
+    Dim tCQT_CAPCHICUC As String
+    With fps
+        .Sheet = 2
+        If .SheetVisible = True Then
+                .Row = 35
+                Do
+                     .GetText .ColLetterToNumber("S"), .Row, CQT_CAPCUC
+                     .GetText .ColLetterToNumber("R"), .Row, CQT_CAPCHICUC
+                     GetCQTByMaCQT CQT_CAPCUC, tCQT_CAPCUC
+                     GetCQTByMaCQT CQT_CAPCHICUC, tCQT_CAPCHICUC
+                     .Col = .ColLetterToNumber("G")
+                     .Text = tCQT_CAPCUC
+                     UpdateCell fps, .Col, .Row, .Text
+                     
+                     .Col = .ColLetterToNumber("H")
+                     .Text = tCQT_CAPCHICUC
+                     UpdateCell fps, .Col, .Row, .Text
+                     
+                     .Col = .ColLetterToNumber("C")
+                    .Row = .Row + 1
+                Loop Until .Text = "aa"
+        End If
     End With
 End Sub

@@ -13,7 +13,7 @@ Public Declare Function GetSystemDefaultLCID _
    Lib "kernel32.dll" () As Long
    
 Public Type activeForm
-    id As String
+    ID As String
     showed As Boolean
 End Type
 
@@ -2063,7 +2063,7 @@ Public Function getFormIndex(pID As String) As Integer
     Dim i As Long
     
     For i = 1 To UBound(arrActiveForm)
-        If arrActiveForm(i).id = pID Then
+        If arrActiveForm(i).ID = pID Then
             getFormIndex = i
             Exit For
         End If
@@ -2647,14 +2647,14 @@ ErrorHandle:
     SaveErrorLog "mdlFunctions", "InsertRow", Err.Number, Err.Description
 End Sub
 
-Public Sub IncreaseRowInDOM(fpSpread1 As fpSpread, xmlDomData As MSXML.DOMDocument, ByVal pRow As Long, ByVal lRows As Long, ByVal lRow2s As Long)
+Public Sub IncreaseRowInDOM(fpSpread1 As fpSpread, xmlDOMdata As MSXML.DOMDocument, ByVal pRow As Long, ByVal lRows As Long, ByVal lRow2s As Long)
     On Error GoTo ErrorHandle
     
     Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
     Dim lCol As Long, lRow As Long, i As Long
         
-    If xmlDomData Is Nothing Then Exit Sub
-    Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
+    If xmlDOMdata Is Nothing Then Exit Sub
+    Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Cell")
     
     For i = xmlNodeListCell.length - 1 To 0 Step -1
         ParserCellID fpSpread1, GetAttribute(xmlNodeListCell(i), "CellID"), lCol, lRow
@@ -4782,4 +4782,28 @@ Public Sub ParseCell(cellID As String, lCol As Long, lRow As Long)
         lCol = 0
     End If
 
+End Sub
+
+' Lay ten CQT theo ma
+Public Sub GetCQT(ByVal maCQT As String, Optional ByRef TenCQT As String)
+Dim arrDanhsach() As String
+Dim strDataFileName As String
+Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+Dim xmlNode As MSXML.IXMLDOMNode
+
+       strDataFileName = "..\InterfaceIni\Catalogue_Tinh_Thanh.xml"
+    
+       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If maCQT = arrDanhsach(1) Then
+                            TenCQT = arrDanhsach(3)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
 End Sub

@@ -1045,7 +1045,16 @@ Public Sub ResetErrorCells()
 End Sub
 
 Public Function ResetData() As Boolean
+With fps
+        .Sheet = 1
+        .Row = 49
+        .Col = .ColLetterToNumber("Q")
+        .Text = "0"
 
+        .Col = .ColLetterToNumber("Y")
+        .Text = "0"
+
+    End With
 End Function
 
 Public Sub SetData()
