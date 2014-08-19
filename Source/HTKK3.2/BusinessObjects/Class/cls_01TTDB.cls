@@ -1050,9 +1050,9 @@ fps.EventEnabled(EventAllEvents) = False
                 
                 'Chuyen sang du lieu tuong ung
                 'Lay gia tri Combo cot G Combo Hienthi
-                intIndexCombo = .TypeComboBoxCurSel
+                intIndexCombo = .typeComboboxCurSel
                 .Col = .ColLetterToNumber("F")
-                .TypeComboBoxCurSel = intIndexCombo
+                .typeComboboxCurSel = intIndexCombo
                 'Nhap lai Combo cot F: Combo F
                 
                 .Col = .ColLetterToNumber("F")
@@ -1285,9 +1285,9 @@ fps.EventEnabled(EventAllEvents) = False
 '           Dim strId As Variant
                     'Chuyen sang du lieu tuong ung
                     'Lay gia tri Combo cot G Combo Hienthi
-                    intIndexCombo = .TypeComboBoxCurSel
+                    intIndexCombo = .typeComboboxCurSel
                     .Col = .ColLetterToNumber("K")
-                    .TypeComboBoxCurSel = intIndexCombo
+                    .typeComboboxCurSel = intIndexCombo
                     'Nhap lai Combo cot F: Combo F
                     Trim (Mid(strId, 200, 10))
                     .Col = .ColLetterToNumber("K")
@@ -3711,11 +3711,11 @@ fps.EventEnabled(EventAllEvents) = False
                          idx = 0
                          .Col = .ColLetterToNumber("K")
                          For idx = 0 To .TypeComboBoxCount
-                            .TypeComboBoxCurSel = idx
+                            .typeComboboxCurSel = idx
                             .GetText .ColLetterToNumber("K"), .Row, strId
                             If Trim$(maTM) = Trim(Mid(strId, 200, 10)) Then
                                 .Col = .ColLetterToNumber("L")
-                                .TypeComboBoxCurSel = idx
+                                .typeComboboxCurSel = idx
                                 Exit For
                             End If
                          Next idx
@@ -4046,3 +4046,134 @@ Public Sub inThongTinDL()
     ' end
 End Sub
 
+'
+Public Sub getNhomHH(ByVal maNhom As String, ByRef tenNhom As String)
+    Dim arrDanhsach() As String
+    Dim strDataFileName As String
+    Dim xmlDomData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+
+       strDataFileName = GetCatalogueFileName(False)
+    
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If maNhom = arrDanhsach(1) Then
+                            tenNhom = arrDanhsach(2) + " (" + arrDanhsach(4) + " %)"
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub
+
+' ham set thong tin sau khi tai XML
+Public Sub finishImportXML()
+    Dim i As Integer
+    Dim j As Integer
+    Dim maNhom    As Variant
+    Dim tenNhom  As String
+    With fps
+        .EventEnabled(EventAllEvents) = False
+        .Sheet = 1
+        mCurrentSheet = .Sheet
+        ' group 1
+        i = 1
+        .Row = 38
+        .Col = .ColLetterToNumber("C")
+        Do
+             .Text = str(i)
+             UpdateCell fps, .Col, .Row, .value
+             .Row = i + 38
+             i = i + 1
+        Loop Until .Text = "aa"
+        ' group 2
+        .Row = .Row + 3
+        i = 1
+         Do
+             .Text = str(i)
+             UpdateCell fps, .Col, .Row, .value
+             .Row = .Row + 1
+             i = i + 1
+        Loop Until .Text = "aa"
+        ' group 3
+        .Row = .Row + 4
+        i = 1
+         Do
+             .Text = str(i)
+             UpdateCell fps, .Col, .Row, .value
+             .Row = .Row + 1
+             i = i + 1
+        Loop Until .Text = "aa"
+        ' group 4
+        .Row = .Row + 3
+        i = 1
+         Do
+             .Text = str(i)
+             UpdateCell fps, .Col, .Row, .value
+             .Row = .Row + 1
+             i = i + 1
+        Loop Until .Text = "aa"
+        
+        ' group 5
+        .Row = .Row + 3
+        i = 1
+         Do
+             .Text = str(i)
+             UpdateCell fps, .Col, .Row, .value
+             .Row = .Row + 1
+             i = i + 1
+        Loop Until .Text = "aa"
+        
+        .Sheet = 2
+        If .SheetVisible = True Then
+                mCurrentSheet = .Sheet
+                i = 1
+                .Row = 37
+                Do
+                    .GetText .ColLetterToNumber("I"), .Row, maNhom
+                     getNhomHH maNhom, tenNhom
+                    .Col = .ColLetterToNumber("L")
+                    .Text = tenNhom
+                    UpdateCell fps, .Col, .Row, .Text
+                    
+                     .Col = .ColLetterToNumber("B")
+                     .Text = str(i)
+                     .Col = .ColLetterToNumber("B")
+                     UpdateCell fps, .Col, .Row, .value
+                     .Row = i + 37
+                     i = i + 1
+                Loop Until .Text = "aa"
+            
+        End If
+        
+        .Sheet = 3
+        If .SheetVisible = True Then
+                mCurrentSheet = .Sheet
+                i = 1
+                j = 1
+                .Col = .ColLetterToNumber("B")
+                .Row = 10
+                Do
+                     .Text = str(i)
+                     .Col = .ColLetterToNumber("B")
+                     UpdateCell fps, .Col, .Row, .value
+                     .Row = i + 10
+                     i = i + 1
+                Loop Until .Text = "aa"
+                
+                .Row = 17 + i + j
+                Do
+                     .Text = str(j - 1)
+                     .Col = .ColLetterToNumber("B")
+                     UpdateCell fps, .Col, .Row, .value
+                     .Row = j + i + 17
+                     j = j + 1
+                Loop Until .Text = "aa"
+        End If
+        .EventEnabled(EventAllEvents) = True
+    End With
+End Sub
