@@ -3737,6 +3737,8 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             xmlTK.getElementsByTagName("maTKhai")(0).Text = maTKhaiXML
         End If
         
+        
+        
         ' set ten TK
         If tenTKhaiXML <> "" Then
             xmlTK.getElementsByTagName("tenTKhai")(0).Text = tenTKhaiXML
@@ -4044,6 +4046,15 @@ Private Function getFileName(MaTk As String) As String
             pbanTKhaiXML_TK = GetAttribute(NodeMaFile, "Version")
             pbanTKhaiXML_TK_KHBS = GetAttribute(NodeMaFile, "VersionKHBS")
             maTKhaiXML = GetAttribute(NodeMaFile, "MaTK")
+            
+            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
+                If strQuy = "TK_QUY" Then
+                    maTKhaiXML = "102"
+                Else
+                    maTKhaiXML = "131"
+                End If
+            End If
+            
             Exit For
         End If
 
