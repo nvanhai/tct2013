@@ -155,7 +155,8 @@ Private Sub setCQTQuanLy()
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                     
                     If arrDanhsach(0) = "1" Then
-                        tenCucThue = tenCucThue + arrDanhsach(3) + Chr$(9)
+                        'tenCucThue = tenCucThue + arrDanhsach(3) + Chr$(9)
+                        tenCucThue = tenCucThue + Right$(arrDanhsach(3), Len(arrDanhsach(3)) - 6) + Chr$(9)
                         maCucThue = maCucThue + arrDanhsach(1) + Chr$(9)
                     End If
                     'If arrDanhsach(0) = "0" Then
@@ -1641,4 +1642,85 @@ Private Sub test()
     Dim LocaleComma As String
     LocaleDecimal = Mid$(CStr(11 / 10), 2, 1)
     LocaleComma = Chr$(90 - Asc(LocaleDecimal))
+End Sub
+
+
+
+Public Sub fillCQT()
+    Dim CQT_CAPCUC    As Variant
+    Dim CQT_CAPCHICUC  As Variant
+    Dim tCQT_CAPCUC   As String
+    Dim tCQT_CAPCHICUC As String
+    With fps
+        .Sheet = 2
+        If .SheetVisible = True Then
+                .Row = 35
+                Do
+                     .GetText .ColLetterToNumber("Q"), .Row, CQT_CAPCUC
+                     .GetText .ColLetterToNumber("R"), .Row, CQT_CAPCHICUC
+                     GetCQTByMaCQT CQT_CAPCUC, tCQT_CAPCUC
+                     GetCQTByMaCQT CQT_CAPCHICUC, tCQT_CAPCHICUC
+                     .Col = .ColLetterToNumber("M")
+                     .Text = tCQT_CAPCUC
+                     UpdateCell fps, .Col, .Row, .Text
+                     
+                     .Col = .ColLetterToNumber("O")
+                     .Text = tCQT_CAPCHICUC
+                     UpdateCell fps, .Col, .Row, .Text
+                     
+                     .Col = .ColLetterToNumber("C")
+                    .Row = .Row + 1
+                Loop Until .Text = "aa"
+        End If
+    End With
+End Sub
+
+
+
+' ham set thong tin sau khi tai XML
+Public Sub finishImportXML()
+    Dim maNhom    As Variant
+    Dim tenNhom  As String
+    With fps
+        .EventEnabled(EventAllEvents) = False
+          .Sheet = 1
+          mCurrentSheet = .Sheet
+            .Row = 44
+            Do
+                .GetText .ColLetterToNumber("AC"), .Row, maNhom
+                 getNhomHH maNhom, tenNhom
+                .Col = .ColLetterToNumber("C")
+                .Text = tenNhom
+                UpdateCell fps, .Col, .Row, .Text
+                
+                 .Col = .ColLetterToNumber("B")
+                 .Row = .Row + 1
+            Loop Until .Text = "aa"
+        .EventEnabled(EventAllEvents) = True
+    End With
+End Sub
+
+
+'
+Public Sub getNhomHH(ByVal maNhom As String, ByRef tenNhom As String)
+    Dim arrDanhsach() As String
+    Dim strDataFileName As String
+    Dim xmlDomData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+
+       strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_DM_thue_BVMT.xml")
+    
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If maNhom = arrDanhsach(0) Then
+                            tenNhom = arrDanhsach(1)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
 End Sub

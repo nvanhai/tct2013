@@ -2242,3 +2242,43 @@ Private Sub clearCellErorrHDR()
         Next i
     End With
 End Sub
+
+
+
+' ham set thong tin sau khi tai XML
+Public Sub finishImportXML()
+    Dim maHD    As Variant
+    Dim tenHD  As String
+    Dim arrTemp() As String
+    
+    With fps
+        .EventEnabled(EventAllEvents) = False
+          .Sheet = 1
+              mCurrentSheet = .Sheet
+                .Row = 45
+                Do
+                    .GetText .ColLetterToNumber("O"), .Row, maHD
+                     GetMaHoaDon maHD, tenHD
+                     If tenHD <> "" Then
+                        arrTemp = Split(tenHD, "###")
+                        If UBound(arrTemp) > 0 Then
+                            .Col = .ColLetterToNumber("C")
+                            .Text = arrTemp(0)
+                            UpdateCell fps, .Col, .Row, .Text
+                            .Col = .ColLetterToNumber("AI")
+                            .Text = CStr(arrTemp(1))
+                            UpdateCell fps, .Col, .Row, .Text
+                            
+                            .Col = .ColLetterToNumber("AK")
+                            .Text = Left$(CStr(arrTemp(1)), 1)
+                             UpdateCell fps, .Col, .Row, .Text
+                        End If
+                     End If
+                     
+                     
+                     .Col = .ColLetterToNumber("B")
+                     .Row = .Row + 1
+                Loop Until .Text = "aa"
+        .EventEnabled(EventAllEvents) = True
+    End With
+End Sub

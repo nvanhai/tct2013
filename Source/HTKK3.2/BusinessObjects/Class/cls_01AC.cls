@@ -1336,6 +1336,13 @@ Private Sub UpdateSheets()
                If lCol <> .ColLetterToNumber("B") And lRow <> 15 Then
                     .GetText lCol, lRow, varTemp
                     UpdateCell fps, lCol, lRow, varTemp
+                Else
+                    .GetText lCol, lRow, varTemp
+                    If varTemp = "1" Then
+                        UpdateCell fps, lCol, lRow, "x"
+                    Else
+                        UpdateCell fps, lCol, lRow, ""
+                    End If
                 End If
              Next
 
@@ -1414,3 +1421,35 @@ Public Function GetNguoiKy() As String
     Set xmlDomHeader = Nothing
 End Function
 
+' ham set thong tin sau khi tai XML
+Public Sub finishImportXML()
+    Dim maHD    As Variant
+    Dim tenHD  As String
+    Dim arrTemp() As String
+    With fps
+        .EventEnabled(EventAllEvents) = False
+          .Sheet = 1
+          mCurrentSheet = .Sheet
+            .Row = 22
+            Do
+                .GetText .ColLetterToNumber("J"), .Row, maHD
+                 GetMaHoaDon maHD, tenHD
+                 If tenHD <> "" Then
+                    arrTemp = Split(tenHD, "###")
+                    If UBound(arrTemp) > 0 Then
+                        .Col = .ColLetterToNumber("H")
+                        .Text = arrTemp(0)
+                        UpdateCell fps, .Col, .Row, .Text
+                        .Col = .ColLetterToNumber("N")
+                        .Text = CStr(arrTemp(1))
+                        UpdateCell fps, .Col, .Row, .Text
+                    End If
+                 End If
+                 
+                 
+                 .Col = .ColLetterToNumber("B")
+                 .Row = .Row + 1
+            Loop Until .Text = "aa"
+        .EventEnabled(EventAllEvents) = True
+    End With
+End Sub

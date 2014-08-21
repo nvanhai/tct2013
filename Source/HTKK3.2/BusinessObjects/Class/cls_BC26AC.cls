@@ -4830,3 +4830,134 @@ Private Sub clearCellErorrHDR()
         Next i
     End With
 End Sub
+
+
+' ham set thong tin sau khi tai XML
+Public Sub finishImportXML()
+    Dim maHD    As Variant
+    Dim tenHD  As String
+    Dim arrTemp() As String
+    
+    With fps
+        .EventEnabled(EventAllEvents) = False
+          .Sheet = 1
+          mCurrentSheet = .Sheet
+            .Row = 22
+            Do
+                .GetText .ColLetterToNumber("E"), .Row, maHD
+                 GetMaHoaDon maHD, tenHD
+                 If tenHD <> "" Then
+                    arrTemp = Split(tenHD, "###")
+                    If UBound(arrTemp) > 0 Then
+                        .Col = .ColLetterToNumber("C")
+                        .Text = arrTemp(0)
+                        UpdateCell fps, .Col, .Row, .Text
+                        .Col = .ColLetterToNumber("AA")
+                        .Text = CStr(arrTemp(1))
+                        UpdateCell fps, .Col, .Row, .Text
+                        
+                        .Col = .ColLetterToNumber("AC")
+                        .SetText .Col, .Row, "0"
+                        UpdateCell fps, .Col, .Row, .Text
+                    End If
+                 End If
+                 
+                 
+                 .Col = .ColLetterToNumber("B")
+                 .Row = .Row + 1
+            Loop Until .Text = "aa"
+            
+            
+            .Sheet = 2
+            If .SheetVisible = True Then
+              maHD = ""
+              tenHD = ""
+              mCurrentSheet = .Sheet
+                .Row = 46
+                Do
+                    .GetText .ColLetterToNumber("O"), .Row, maHD
+                     GetMaHoaDon maHD, tenHD
+                     If tenHD <> "" Then
+                        arrTemp = Split(tenHD, "###")
+                        If UBound(arrTemp) > 0 Then
+                            .Col = .ColLetterToNumber("C")
+                            .Text = arrTemp(0)
+                            UpdateCell fps, .Col, .Row, .Text
+                            .Col = .ColLetterToNumber("AI")
+                            .Text = CStr(arrTemp(1))
+                            UpdateCell fps, .Col, .Row, .Text
+                            
+                            .Col = .ColLetterToNumber("AJ")
+                            .Text = CheckMauSoHD(CStr(maHD), Left$(CStr(arrTemp(1)), 1), arrTemp(0))
+                             UpdateCell fps, .Col, .Row, .Text
+                        End If
+                     End If
+                     
+                     
+                     .Col = .ColLetterToNumber("B")
+                     .Row = .Row + 1
+                Loop Until .Text = "aa"
+                
+                maHD = ""
+                tenHD = ""
+                .Row = .Row + 3
+                Do
+                    .GetText .ColLetterToNumber("O"), .Row, maHD
+                     GetMaHoaDon maHD, tenHD
+                     If tenHD <> "" Then
+                        arrTemp = Split(tenHD, "###")
+                        If UBound(arrTemp) > 0 Then
+                            .Col = .ColLetterToNumber("C")
+                            .Text = arrTemp(0)
+                            UpdateCell fps, .Col, .Row, .Text
+                            .Col = .ColLetterToNumber("AI")
+                            .Text = CStr(arrTemp(1))
+                            UpdateCell fps, .Col, .Row, .Text
+                            
+    '                        .Col = .ColLetterToNumber("AJ")
+    '                        .Text = Left$(CStr(arrTemp(1)), 1)
+    '                         UpdateCell fps, .Col, .Row, .Text
+                        End If
+                     End If
+                     
+                     
+                     .Col = .ColLetterToNumber("B")
+                     .Row = .Row + 1
+                Loop Until .Text = "bb"
+                
+             End If
+             
+             
+             .Sheet = 3
+             If .SheetVisible = True Then
+              maHD = ""
+              tenHD = ""
+              mCurrentSheet = .Sheet
+                .Row = 45
+                Do
+                    .GetText .ColLetterToNumber("O"), .Row, maHD
+                     GetMaHoaDon maHD, tenHD
+                     If tenHD <> "" Then
+                        arrTemp = Split(tenHD, "###")
+                        If UBound(arrTemp) > 0 Then
+                            .Col = .ColLetterToNumber("C")
+                            .Text = arrTemp(0)
+                            UpdateCell fps, .Col, .Row, .Text
+                            .Col = .ColLetterToNumber("AI")
+                            .Text = CStr(arrTemp(1))
+                            UpdateCell fps, .Col, .Row, .Text
+                            
+    '                        .Col = .ColLetterToNumber("AJ")
+    '                        .Text = Left$(CStr(arrTemp(1)), 1)
+    '                         UpdateCell fps, .Col, .Row, .Text
+                        End If
+                     End If
+                     
+                     
+                     .Col = .ColLetterToNumber("B")
+                     .Row = .Row + 1
+                Loop Until .Text = "aa"
+             End If
+        .EventEnabled(EventAllEvents) = True
+    End With
+End Sub
