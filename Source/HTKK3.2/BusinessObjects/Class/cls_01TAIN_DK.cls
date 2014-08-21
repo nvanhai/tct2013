@@ -38,6 +38,8 @@ Public strTuRowDenRowPL As String
 
 Public strLoaiToKhaiDK As String
 Public strTkThangQuy As String
+
+Public isImportXML As Boolean
  
 'This funtion is called after an object of this class is created
 'Its functions is 1st preparing for interface sheets, such as
@@ -1047,13 +1049,15 @@ End Sub
 Public Function ResetData() As Boolean
 With fps
         .EventEnabled(EventAllEvents) = False
-        .Sheet = 1
-        .Row = 49
-        .Col = .ColLetterToNumber("Q")
-        .value = "0"
-
-        .Col = .ColLetterToNumber("Y")
-        .value = "0"
+        If isImportXML = True Then
+            .Sheet = 1
+            .Row = 49
+            .Col = .ColLetterToNumber("Q")
+            .value = "0"
+    
+            .Col = .ColLetterToNumber("Y")
+            .value = "0"
+        End If
         .EventEnabled(EventAllEvents) = True
     End With
 End Function
@@ -1068,15 +1072,17 @@ Public Sub SetData()
     With fps
         .EventEnabled(EventAllEvents) = False
         ssSheet = mCurrentSheet
-        .Sheet = 1
-        mCurrentSheet = .Sheet
-        'clear checkbox
-        .Row = 28
-        .Col = .ColLetterToNumber("Y")
-        .value = 0
-        .Col = .ColLetterToNumber("AS")
-        .value = 0
-        .Sheet = .ActiveSheet
+        If mCurrentSheet = 1 Then
+            .Sheet = 1
+            mCurrentSheet = .Sheet
+            'clear checkbox
+            .Row = 28
+            .Col = .ColLetterToNumber("Y")
+            .value = 0
+            .Col = .ColLetterToNumber("AS")
+            .value = 0
+            .Sheet = .ActiveSheet
+        End If
         .EventEnabled(EventAllEvents) = True
     End With
 

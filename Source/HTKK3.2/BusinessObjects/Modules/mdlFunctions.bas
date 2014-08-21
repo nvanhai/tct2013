@@ -2619,7 +2619,7 @@ Public Sub GetMaHoaDon(ByVal maHD As String, Optional ByRef tenHD As String)
     Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_loai_HD.xml")
-    
+       tenHD = ""
        If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
             Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
@@ -2634,3 +2634,27 @@ Public Sub GetMaHoaDon(ByVal maHD As String, Optional ByRef tenHD As String)
         End If
 End Sub
 
+
+' Lay ma bien lai phi, le phi theo ten
+Public Sub GetMaBLP(ByVal maBLP As String, Optional ByRef tenBLP As String)
+     Dim arrDanhsach() As String
+    Dim strDataFileName As String
+    Dim xmlDomData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+
+       strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_loai_BLP.xml")
+       tenBLP = ""
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If InStr(1, maBLP, arrDanhsach(1)) > 0 Then
+                            tenBLP = arrDanhsach(1) & "###" & strCombo + CPab(arrDanhsach(0), 10) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(2), 200)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub

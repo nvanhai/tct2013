@@ -1083,3 +1083,54 @@ Public Function GetNguoiKy() As String
     
     Set xmlDomHeader = Nothing
 End Function
+
+
+
+' ham set thong tin sau khi tai XML
+Public Sub finishImportXML()
+    Dim maBLP    As Variant
+    Dim tenBLP  As String
+    Dim arrTemp() As String
+    
+    With fps
+        .EventEnabled(EventAllEvents) = False
+          .Sheet = 1
+          mCurrentSheet = .Sheet
+          '
+            .Row = 43
+            Do
+                .GetText .ColLetterToNumber("O"), .Row, maBLP
+                 GetMaBLP maBLP, tenBLP
+                 If tenBLP <> "" Then
+                    arrTemp = Split(tenBLP, "###")
+                    If UBound(arrTemp) > 0 Then
+                        .Col = .ColLetterToNumber("C")
+                        .Text = arrTemp(0)
+                        UpdateCell fps, .Col, .Row, .Text
+                        .Col = .ColLetterToNumber("AI")
+                        .Text = CStr(arrTemp(1))
+                        UpdateCell fps, .Col, .Row, .Text
+                        
+                        .Col = .ColLetterToNumber("AK")
+                        .Text = Left$(CStr(arrTemp(1)), 1)
+                         UpdateCell fps, .Col, .Row, .Text
+                    End If
+                 End If
+                 ' set lai ma cho truong ghi chu
+                 .GetText .ColLetterToNumber("AC"), .Row, maBLP
+                 If maBLP = GetAttribute(GetMessageCellById("0297"), "Msg") Then
+                    .Col = .ColLetterToNumber("AL")
+                    .Text = "02"
+                    UpdateCell fps, .Col, .Row, .Text
+                 ElseIf maBLP = GetAttribute(GetMessageCellById("0298"), "Msg") Then
+                    .Col = .ColLetterToNumber("AL")
+                    .Text = "04"
+                    UpdateCell fps, .Col, .Row, .Text
+                 End If
+                 
+                 .Col = .ColLetterToNumber("B")
+                 .Row = .Row + 1
+            Loop Until .Text = "aa"
+        .EventEnabled(EventAllEvents) = True
+    End With
+End Sub

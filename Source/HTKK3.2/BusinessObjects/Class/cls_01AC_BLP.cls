@@ -1247,3 +1247,35 @@ Public Function GetNguoiKy() As String
     Set xmlDomHeader = Nothing
 End Function
 
+' ham set thong tin sau khi tai XML
+Public Sub finishImportXML()
+    Dim maBLP    As Variant
+    Dim tenBLP  As String
+    Dim arrTemp() As String
+    With fps
+        .EventEnabled(EventAllEvents) = False
+          .Sheet = 1
+          mCurrentSheet = .Sheet
+            .Row = 22
+            Do
+                .GetText .ColLetterToNumber("I"), .Row, maBLP
+                 GetMaBLP maBLP, tenBLP
+                 If tenBLP <> "" Then
+                    arrTemp = Split(tenBLP, "###")
+                    If UBound(arrTemp) > 0 Then
+                        .Col = .ColLetterToNumber("H")
+                        .Text = arrTemp(0)
+                        UpdateCell fps, .Col, .Row, .Text
+                        .Col = .ColLetterToNumber("N")
+                        .Text = CStr(arrTemp(1))
+                        UpdateCell fps, .Col, .Row, .Text
+                    End If
+                 End If
+                 
+                 
+                 .Col = .ColLetterToNumber("B")
+                 .Row = .Row + 1
+            Loop Until .Text = "aa"
+        .EventEnabled(EventAllEvents) = True
+    End With
+End Sub

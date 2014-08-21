@@ -5223,11 +5223,13 @@ Private Sub cmdImportXML_Click()
     ' reset data
     If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "24" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "99" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "92" Then
         If Not objTaxBusiness Is Nothing Then
+            objTaxBusiness.isImportXML = True
             objTaxBusiness.ResetData
         Else
             Set objTaxBusiness = CreateObject(GetAttribute(TAX_Utilities_v1.NodeValidity, "Class"))
 
             If Not objTaxBusiness Is Nothing Then
+                objTaxBusiness.isImportXML = True
                 objTaxBusiness.ResetData
             End If
         End If
@@ -5279,7 +5281,8 @@ Private Sub cmdImportXML_Click()
     If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "11" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "12" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" _
     Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "94" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "90" _
     Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "64" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "65" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "66" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "67" _
-    Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "18" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "27" Then
+    Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "18" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "27" _
+    Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "07" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "13" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "09" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "10" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Then
         If Not objTaxBusiness Is Nothing Then
             objTaxBusiness.finishImportXML
         Else
@@ -5302,35 +5305,40 @@ Private Sub cmdImportXML_Click()
         If TAX_Utilities_v1.NodeValidity.hasChildNodes Then
             If GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(TAX_Utilities_v1.NodeValidity.childNodes.length - 1), "ID") = "KHBS" Then
                 If GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(TAX_Utilities_v1.NodeValidity.childNodes.length - 1), "Active") = "1" Then
-                    .sheet = .SheetCount - 1
-                    .GetText .ColLetterToNumber("BI"), .MaxRows - 13, CQT_HOANTHUE
-                    CQT_CAPCUC = Left$(CQT_HOANTHUE, 3) & "00"
-                    GetCQT CQT_CAPCUC, tCQT_CAPCUC
-                    GetCQT CQT_HOANTHUE, tCQT_HOANTHUE
-                    .Col = .ColLetterToNumber("BE")
-
-                    If tCQT_CAPCUC <> vbNullString Then
-                        .Row = .MaxRows - 15
-                        .Text = tCQT_CAPCUC
-                        UpdateCell .Col, .Row, tCQT_CAPCUC
-
-                    End If
                     
-                    If tCQT_HOANTHUE <> vbNullString Then
-                        .Row = .MaxRows - 13
-                        .Text = tCQT_HOANTHUE
-                        UpdateCell .Col, .Row, tCQT_HOANTHUE
- 
-                    End If
-                    
-                     If CQT_CAPCUC <> vbNullString Then
-                        .Row = .MaxRows - 15
-                        .Col = .ColLetterToNumber("BI")
-                        .Text = CQT_CAPCUC
-                        UpdateCell .Col, .Row, CQT_CAPCUC
+                        .sheet = .SheetCount - 1
+                        .GetText .ColLetterToNumber("BI"), .MaxRows - 13, CQT_HOANTHUE
+                        CQT_CAPCUC = Left$(CQT_HOANTHUE, 3) & "00"
+                        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
+                            GetCQT_01GTGT CQT_CAPCUC, tCQT_CAPCUC
+                        Else
+                            GetCQT CQT_CAPCUC, tCQT_CAPCUC
+                        End If
+                        GetCQT CQT_HOANTHUE, tCQT_HOANTHUE
+                        .Col = .ColLetterToNumber("BE")
+    
+                        If tCQT_CAPCUC <> vbNullString Then
+                            .Row = .MaxRows - 15
+                            .Text = tCQT_CAPCUC
+                            UpdateCell .Col, .Row, tCQT_CAPCUC
+    
+                        End If
+                        
+                        If tCQT_HOANTHUE <> vbNullString Then
+                            .Row = .MaxRows - 13
+                            .Text = tCQT_HOANTHUE
+                            UpdateCell .Col, .Row, tCQT_HOANTHUE
+     
+                        End If
+                        
+                         If CQT_CAPCUC <> vbNullString Then
+                            .Row = .MaxRows - 15
+                            .Col = .ColLetterToNumber("BI")
+                            .Text = CQT_CAPCUC
+                            UpdateCell .Col, .Row, CQT_CAPCUC
+                        End If
                     End If
                 End If
-            End If
         End If
     
     End With
@@ -5369,7 +5377,7 @@ Private Function GetAllMapPhuLuc() As MSXML.DOMDocument
                 Else
     
                     'If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01A_TNDN" Or MaPL = "02_TNDN" Or MaPL = "01_NTNN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Then
-                    If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01A_TNDN" Or MaPL = "02_TNDN" Or MaPL = "01_NTNN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Or MaPL = "01_TD_GTGT" Or MaPL = "01A_TNDN_DK" Or MaPL = "01B_TNDN_DK" Or MaPL = "01_TAIN_DK" Or MaPL = "02_TNDN_DK" Or MaPL = "03_TD_TAIN" Or MaPL = "01_BCTL_DK" Then
+                    If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01B_TNDN" Or MaPL = "02_TNDN" Or MaPL = "01_NTNN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Or MaPL = "01_TD_GTGT" Or MaPL = "01A_TNDN_DK" Or MaPL = "01B_TNDN_DK" Or MaPL = "01_TAIN_DK" Or MaPL = "02_TNDN_DK" Or MaPL = "03_TD_TAIN" Or MaPL = "01_BCTL_DK" Then
                         MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT156_xml.xml")
                     Else
                         MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT28_xml.xml")
@@ -9039,6 +9047,8 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
                              
                  If Col = .ColLetterToNumber("BE") And Row = lRow_temp + 2 Then 'Khi chon Combo
                      'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+                     .Row = Row
+                     .Col = Col
                      intIndexChiCuc = .TypeComboBoxCurSel
                      .Col = .ColLetterToNumber("BI")
                      .Row = Row

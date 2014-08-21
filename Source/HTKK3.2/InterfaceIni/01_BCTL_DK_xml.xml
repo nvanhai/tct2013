@@ -8,8 +8,8 @@
 		<ct12>H_15</ct12>
 	</Static>
 	<Static GroupName="LoaiHinhUyQuyen">
-		<donViUyQuyen>I_17</donViUyQuyen>
-		<daiLyThue>O_17</daiLyThue>
+		<donViUyQuyen MinOccur="1">I_17</donViUyQuyen>
+		<daiLyThue MinOccur="1">O_17</daiLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<tenDonViUyQuyen>I_8</tenDonViUyQuyen>

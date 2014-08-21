@@ -4070,12 +4070,38 @@ Public Sub getNhomHH(ByVal maNhom As String, ByRef tenNhom As String)
         End If
 End Sub
 
+
+Public Sub getRowDanhMuc(ByVal maNhom As String, ByRef tenNhom As String)
+    Dim arrDanhsach() As String
+    Dim strDataFileName As String
+    Dim xmlDomData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+
+       strDataFileName = GetCatalogueFileName(False)
+    
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If maNhom = arrDanhsach(1) Then
+                            tenNhom = CPab(arrDanhsach(2), 200) + CPab(arrDanhsach(1), 15) + CPab(arrDanhsach(3), 10) + CPab(arrDanhsach(4), 5) + CPab(arrDanhsach(5), 14) + CPab(arrDanhsach(6), 1)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub
+
 ' ham set thong tin sau khi tai XML
 Public Sub finishImportXML()
     Dim i As Integer
     Dim j As Integer
     Dim maNhom    As Variant
     Dim tenNhom  As String
+    
+    Dim tong1, tong2 As Variant
     With fps
         .EventEnabled(EventAllEvents) = False
         .Sheet = 1
@@ -4085,6 +4111,28 @@ Public Sub finishImportXML()
         .Row = 38
         .Col = .ColLetterToNumber("C")
         Do
+            .GetText .ColLetterToNumber("E"), .Row, maNhom
+            getRowDanhMuc maNhom, tenNhom
+            
+            .Col = .ColLetterToNumber("F")
+            .Text = tenNhom
+            UpdateCell fps, .Col, .Row, .Text
+            
+            If tenNhom <> "" Then
+                .Col = .ColLetterToNumber("O")
+                .Text = tenNhom
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+            
+            .Col = .ColLetterToNumber("D")
+            .Text = Trim(Left(tenNhom, 200))
+            UpdateCell fps, .Col, .Row, .Text
+            
+            .Col = .ColLetterToNumber("R")
+            .value = Trim(Mid(tenNhom, 245, 1))
+            UpdateCell fps, .Col, .Row, .Text
+            
+            .Col = .ColLetterToNumber("C")
              .Text = str(i)
              UpdateCell fps, .Col, .Row, .value
              .Row = i + 38
@@ -4094,6 +4142,30 @@ Public Sub finishImportXML()
         .Row = .Row + 3
         i = 1
          Do
+         
+            .GetText .ColLetterToNumber("E"), .Row, maNhom
+            getRowDanhMuc maNhom, tenNhom
+            
+            .Col = .ColLetterToNumber("F")
+            .Text = tenNhom
+            UpdateCell fps, .Col, .Row, .Text
+            
+            If tenNhom <> "" Then
+                .Col = .ColLetterToNumber("O")
+                .Text = tenNhom
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+            
+            .Col = .ColLetterToNumber("D")
+            .Text = Trim(Left(tenNhom, 200))
+            UpdateCell fps, .Col, .Row, .Text
+            
+            .Col = .ColLetterToNumber("R")
+            .value = Trim(Mid(tenNhom, 245, 1))
+            UpdateCell fps, .Col, .Row, .Text
+
+            
+            .Col = .ColLetterToNumber("C")
              .Text = str(i)
              UpdateCell fps, .Col, .Row, .value
              .Row = .Row + 1
@@ -4103,6 +4175,30 @@ Public Sub finishImportXML()
         .Row = .Row + 4
         i = 1
          Do
+         
+            .GetText .ColLetterToNumber("E"), .Row, maNhom
+            getRowDanhMuc maNhom, tenNhom
+            
+            .Col = .ColLetterToNumber("F")
+            .Text = tenNhom
+            UpdateCell fps, .Col, .Row, .Text
+            
+            If tenNhom <> "" Then
+                .Col = .ColLetterToNumber("O")
+                .Text = tenNhom
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+            
+            .Col = .ColLetterToNumber("D")
+            .Text = Trim(Left(tenNhom, 200))
+            UpdateCell fps, .Col, .Row, .Text
+            
+            .Col = .ColLetterToNumber("R")
+            .value = Trim(Mid(tenNhom, 245, 1))
+            UpdateCell fps, .Col, .Row, .Text
+
+            
+            .Col = .ColLetterToNumber("C")
              .Text = str(i)
              UpdateCell fps, .Col, .Row, .value
              .Row = .Row + 1
@@ -4112,6 +4208,30 @@ Public Sub finishImportXML()
         .Row = .Row + 3
         i = 1
          Do
+         
+            .GetText .ColLetterToNumber("E"), .Row, maNhom
+            getRowDanhMuc maNhom, tenNhom
+            
+            .Col = .ColLetterToNumber("F")
+            .Text = tenNhom
+            UpdateCell fps, .Col, .Row, .Text
+            
+            If tenNhom <> "" Then
+                .Col = .ColLetterToNumber("O")
+                .Text = tenNhom
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+            
+            .Col = .ColLetterToNumber("D")
+            .Text = Trim(Left(tenNhom, 200))
+            UpdateCell fps, .Col, .Row, .Text
+            
+            .Col = .ColLetterToNumber("R")
+            .value = Trim(Mid(tenNhom, 245, 1))
+            UpdateCell fps, .Col, .Row, .Text
+
+            
+            .Col = .ColLetterToNumber("C")
              .Text = str(i)
              UpdateCell fps, .Col, .Row, .value
              .Row = .Row + 1
@@ -4122,21 +4242,80 @@ Public Sub finishImportXML()
         .Row = .Row + 3
         i = 1
          Do
+         
+            .GetText .ColLetterToNumber("E"), .Row, maNhom
+            getRowDanhMuc maNhom, tenNhom
+            
+            .Col = .ColLetterToNumber("F")
+            .Text = tenNhom
+            UpdateCell fps, .Col, .Row, .Text
+            
+            If tenNhom <> "" Then
+                .Col = .ColLetterToNumber("O")
+                .Text = tenNhom
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+            
+            .Col = .ColLetterToNumber("D")
+            .Text = Trim(Left(tenNhom, 200))
+            UpdateCell fps, .Col, .Row, .Text
+            
+            .Col = .ColLetterToNumber("R")
+            .value = Trim(Mid(tenNhom, 245, 1))
+            UpdateCell fps, .Col, .Row, .Text
+
+            
+            .Col = .ColLetterToNumber("C")
              .Text = str(i)
              UpdateCell fps, .Col, .Row, .value
              .Row = .Row + 1
              i = i + 1
         Loop Until .Text = "aa"
         
+        .Row = .Row + 1
+        .GetText .ColLetterToNumber("AG"), .Row, tong1
+        .GetText .ColLetterToNumber("AN"), .Row, tong2
+        
+        
+        .Col = .ColLetterToNumber("AI")
+        .Row = 15
+        .Text = tong1
+        UpdateCell fps, .Col, .Row, .value
+        
+        .Col = .ColLetterToNumber("AN")
+        .Row = 15
+        .Text = tong2
+        UpdateCell fps, .Col, .Row, .value
+        
+        .Col = .ColLetterToNumber("AI")
+        .Row = 6
+        .Text = tong1
+        UpdateCell fps, .Col, .Row, .value
+        
+        .Col = .ColLetterToNumber("AN")
+        .Row = 6
+        .Text = tong2
+        UpdateCell fps, .Col, .Row, .value
+        
+        
         .Sheet = 2
         If .SheetVisible = True Then
+                tenNhom = ""
                 mCurrentSheet = .Sheet
                 i = 1
                 .Row = 37
                 Do
+                    tenNhom = ""
                     .GetText .ColLetterToNumber("I"), .Row, maNhom
                      getNhomHH maNhom, tenNhom
                     .Col = .ColLetterToNumber("L")
+                    .Text = tenNhom
+                    UpdateCell fps, .Col, .Row, .Text
+                    
+                    .GetText .ColLetterToNumber("I"), .Row, maNhom
+                    getRowDanhMuc maNhom, tenNhom
+                    
+                    .Col = .ColLetterToNumber("K")
                     .Text = tenNhom
                     UpdateCell fps, .Col, .Row, .Text
                     
