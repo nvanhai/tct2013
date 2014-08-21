@@ -287,9 +287,9 @@ Dim xmlNodeH15 As MSXML.IXMLDOMNode
        'vttoan
        'khi tron danh muc khoang san mac dinh don vi tinh la kg va cho phep sua sua
        If Col = .ColLetterToNumber("C") And .Text <> "" Then
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber("AB")
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             'Update combo F
             .Col = .ColLetterToNumber("AB")
             UpdateCell fps, .Col, .Row, .Text
@@ -403,8 +403,9 @@ Private Sub doiTien2()
 
     With fps
          .EventEnabled(EventAllEvents) = False
-        mCurrentSheet = .Sheet
-        If .ActiveSheet = 1 Then
+        'If .ActiveSheet = 1 Then
+            .Sheet = 1
+            mCurrentSheet = .Sheet
             .GetText .ColLetterToNumber("T"), 37, tongNTNN
             tongNTNN = Replace(tongNTNN, ".", "")
             tongNTNN = Replace(tongNTNN, ",", "")
@@ -432,7 +433,10 @@ Private Sub doiTien2()
             .SetText .ColLetterToNumber("B"), .Row + 5, tienDoiThanhChu
             UpdateCell fps, .ColLetterToNumber("B"), .Row + 5, tienDoiThanhChu
             
-            End If
+            .SetText .ColLetterToNumber("AB"), 37, tienDoiThanhChu
+            UpdateCell fps, .ColLetterToNumber("AB"), 37, tienDoiThanhChu
+            
+            
             
         .EventEnabled(EventAllEvents) = True
     End With
@@ -1595,3 +1599,7 @@ Public Sub inThongTinDL()
     ' end
 End Sub
 
+' ham set thong tin sau khi tai XML
+Public Sub finishImportXML()
+    doiTien2
+End Sub

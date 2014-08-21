@@ -763,7 +763,17 @@ Private Sub UpdateSheets()
         .Sheet = 1
         mCurrentSheet = .Sheet
         'process.....
-        
+        For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
+           ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+           If lRow = 49 And (lCol = .ColLetterToNumber("S") Or lCol = .ColLetterToNumber("AF")) Then
+                .GetText lCol, lRow, varTemp
+                If varTemp = "1" Then
+                    UpdateCell fps, lCol, lRow, "x"
+                ElseIf varTemp = "0" Then
+                    UpdateCell fps, lCol, lRow, ""
+                End If
+           End If
+        Next
         'updated phu luc 01
         .Sheet = SHEET_PHU_LUC_01
         mCurrentSheet = .Sheet

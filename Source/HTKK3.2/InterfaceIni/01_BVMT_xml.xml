@@ -25,6 +25,9 @@
 	<Static GroupName="KSCSoTuKhaiThac">
 		<tongPhiKSanKhaiThacPNop>J_37</tongPhiKSanKhaiThacPNop>
 	</Static>
+	<Static GroupName="KSanCoSoThuMuaNopThay">
+		<tongPhiKSanThuMuaPNop>N_37</tongPhiKSanThuMuaPNop>
+	</Static>
 	<Dynamic GroupName="KSCSoTuKhaiThac" Level="2">
 		<KhoangSan id="ID_2">
 			<maKhoangSan>AC_45</maKhoangSan>
@@ -35,9 +38,7 @@
 			<soPhiPNop>U_45</soPhiPNop>
 		</KhoangSan>
 	</Dynamic>
-	<Static GroupName="KSanCoSoThuMuaNopThay">
-		<tongPhiKSanThuMuaPNop>N_37</tongPhiKSanThuMuaPNop>
-	</Static>
+
 	<Dynamic GroupName="KSanCoSoThuMuaNopThay" Level="2">
 		<KhoangSan id="ID_1">
 			<maKhoangSan>AC_49</maKhoangSan>

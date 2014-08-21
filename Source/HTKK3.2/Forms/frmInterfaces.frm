@@ -2682,6 +2682,9 @@ Private Sub DeleteKHBS()
                         strSheetKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
 
                     End If
+                Else
+                    strKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                    strSheetKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                 End If
 
             ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ThreeMonth") = "1" Then
@@ -2769,7 +2772,7 @@ Private Sub DeleteKHBS()
         End If
 
     ElseIf strKHBS = "TKBS" And (varMenuId1 = "02" Or varMenuId1 = "01" Or varMenuId1 = "04" Or varMenuId1 = "11" Or varMenuId1 = "12" Or varMenuId1 = "05" Or varMenuId1 = "06" Or varMenuId1 = "86" Or varMenuId1 = "87" Or varMenuId1 = "89" Or varMenuId1 = "71" Or varMenuId1 = "72" Or varMenuId1 = "77" Or varMenuId1 = "03" Or varMenuId1 = "73" Or varMenuId1 = "80" Or varMenuId1 = "81" Or varMenuId1 = "70" Or varMenuId1 = "82" Or varMenuId1 = "83" Or varMenuId1 = "85" Or varMenuId1 = "90" Or varMenuId1 = "95" Or varMenuId1 = "96" Or varMenuId1 = "88" Or varMenuId1 = "98" _
-    Or varMenuId1 = "94" Or varMenuId1 = "92") Then
+    Or varMenuId1 = "94" Or varMenuId1 = "92" Or varMenuId1 = "99") Then
 
         If loFile.FileExists(strSheetKHBSDataFileName) = True Then
             loFile.DeleteFile strSheetKHBSDataFileName, True
@@ -5282,7 +5285,8 @@ Private Sub cmdImportXML_Click()
     Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "94" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "90" _
     Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "64" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "65" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "66" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "67" _
     Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "18" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "27" _
-    Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "07" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "13" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "09" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "10" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Then
+    Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "07" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "13" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "09" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "10" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" _
+    Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "86" Then
         If Not objTaxBusiness Is Nothing Then
             objTaxBusiness.finishImportXML
         Else
@@ -5677,8 +5681,14 @@ Private Function validateTkHeader(ByVal xmlDuLieuImport As MSXML.DOMDocument) As
     
     If xmlDuLieuImport.getElementsByTagName("kyKKhai").length > 0 Then
         Dim strKykk() As String
+        Dim tuThang As String
+        Dim denThang As String
+        
+        
         strKykk = Split(xmlDuLieuImport.getElementsByTagName("kyKKhai")(0).Text, "/")
-
+        tuThang = xmlDuLieuImport.getElementsByTagName("kyKKhaiTuThang")(0).Text
+        denThang = xmlDuLieuImport.getElementsByTagName("kyKKhaiDenThang")(0).Text
+        
         If strKK = "M" Then
             If Val(strKykk(0)) <> TAX_Utilities_v1.month Or Val(strKykk(1)) <> TAX_Utilities_v1.Year Then
                 validateTkHeader = False
@@ -5691,7 +5701,11 @@ Private Function validateTkHeader(ByVal xmlDuLieuImport As MSXML.DOMDocument) As
                 validateTkHeader = False
                 Exit Function
             End If
-
+        ElseIf strKK = "K" Then
+            If tuThang <> TAX_Utilities_v1.FirstDay Or denThang <> TAX_Utilities_v1.LastDay Then
+                validateTkHeader = False
+                Exit Function
+            End If
         Else
 
             If Val(strKykk(UBound(strKykk))) <> TAX_Utilities_v1.Year Then
