@@ -5679,6 +5679,20 @@ Private Function validateTkHeader(ByVal xmlDuLieuImport As MSXML.DOMDocument) As
         End If
     End If
     
+    
+    If xmlDuLieuImport.getElementsByTagName("loaiTKhai").length > 0 Then
+        If strKHBS = "TKBS" Then
+            LoaiTkCtBs = "B"
+        Else
+            LoaiTkCtBs = "C"
+        End If
+        
+        If xmlDuLieuImport.getElementsByTagName("loaiTKhai")(0).Text <> LoaiTkCtBs Then
+            validateTkHeader = False
+            Exit Function
+        End If
+    End If
+    
     If xmlDuLieuImport.getElementsByTagName("kyKKhai").length > 0 Then
         Dim strKykk() As String
         Dim tuThang As String
