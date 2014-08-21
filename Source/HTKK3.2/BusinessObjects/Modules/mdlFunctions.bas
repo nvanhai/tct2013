@@ -2383,7 +2383,7 @@ End Function
 
 ' set co quan thue ra quyet dinh hoan thue
 Public Sub setCQTQuanLyHoanThue(pGrid As fpSpread)
-        Dim xmlDOMdata As New MSXML.DOMDocument
+        Dim xmlDomData As New MSXML.DOMDocument
         Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
         Dim xmlNode As MSXML.IXMLDOMNode
         Dim arrDanhsach() As String
@@ -2398,8 +2398,8 @@ Public Sub setCQTQuanLyHoanThue(pGrid As fpSpread)
         
         
         
-        If xmlDOMdata.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
-            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+        If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -2414,14 +2414,14 @@ Public Sub setCQTQuanLyHoanThue(pGrid As fpSpread)
                     'End If
                 End If
             Next
-            Set xmlDOMdata = Nothing
+            Set xmlDomData = Nothing
             Set xmlNodeListCell = Nothing
             Set xmlNode = Nothing
         End If
         
         ' setloai
-        If xmlDOMdata.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_DM_LoaiCq.xml")) Then
-            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+        If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_DM_LoaiCq.xml")) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -2429,7 +2429,7 @@ Public Sub setCQTQuanLyHoanThue(pGrid As fpSpread)
                     maLoaiCq = maLoaiCq + arrDanhsach(0) + Chr$(9)
                 End If
             Next
-            Set xmlDOMdata = Nothing
+            Set xmlDomData = Nothing
             Set xmlNodeListCell = Nothing
             Set xmlNode = Nothing
         End If
@@ -2507,7 +2507,7 @@ Public Function getLoaiHD(maHoaDon As String) As String
     Dim strComboHien As String
     Dim strCombo As String
     Dim MSTDN As String
-    Dim xmlDOMdata As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
+    Dim xmlDomData As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
     Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
     Dim xmlNode As MSXML.IXMLDOMNode
     
@@ -2516,8 +2516,8 @@ Public Function getLoaiHD(maHoaDon As String) As String
     
     strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_loai_HD.xml")
     ' Lay danh muc loai hoa don
-    If xmlDOMdata.Load(strDataFileName) Then
-        Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+    If xmlDomData.Load(strDataFileName) Then
+        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
         For Each xmlNode In xmlNodeListCell
             If GetAttribute(xmlNode, "Value") <> "" Then
                 arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -2589,14 +2589,14 @@ End Function
 Public Sub GetCQTByMaCQT(ByVal maCQT As String, Optional ByRef TenCQT As String)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlDomData As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = "..\InterfaceIni\Catalogue_Tinh_Thanh.xml"
     
-       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -2608,3 +2608,29 @@ Dim xmlNode As MSXML.IXMLDOMNode
             Next
         End If
 End Sub
+
+
+' Lay ma hoa don theo ten
+Public Sub GetMaHoaDon(ByVal maHD As String, Optional ByRef tenHD As String)
+     Dim arrDanhsach() As String
+    Dim strDataFileName As String
+    Dim xmlDomData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+
+       strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_loai_HD.xml")
+    
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If InStr(1, maHD, arrDanhsach(1)) > 0 Then
+                            tenHD = arrDanhsach(1) & "###" & strCombo + CPab(arrDanhsach(0), 10) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(2), 200)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub
+

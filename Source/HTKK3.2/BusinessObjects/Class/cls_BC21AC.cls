@@ -1109,3 +1109,86 @@ Public Function GetNguoiKy() As String
     
     Set xmlDomHeader = Nothing
 End Function
+
+
+
+' ham set thong tin sau khi tai XML
+Public Sub finishImportXML()
+    Dim maHD    As Variant
+    Dim tenHD  As String
+    Dim arrTemp() As String
+    Dim arrTemp1() As String
+    Dim arrNgay() As String
+    
+    Dim strGio, strPhut, strNgay As Variant
+    With fps
+        .EventEnabled(EventAllEvents) = False
+          .Sheet = 1
+          mCurrentSheet = .Sheet
+          ' lay ve gio phut ngay
+          .Row = 9
+          .GetText .ColLetterToNumber("O"), .Row, maHD
+          If maHD <> "" Then
+              arrTemp1 = Split(maHD, "T")
+              If UBound(arrTemp1) > 0 Then
+                    ' set ngay
+                    .Row = 8
+                    .Col = .ColLetterToNumber("O")
+                    arrNgay = Split(arrTemp1(0), "-")
+                    If UBound(arrNgay) > 1 Then
+                        .Text = arrNgay(2) & "/" & arrNgay(1) & "/" & arrNgay(0)
+                        UpdateCell fps, .Col, .Row, .Text
+                    End If
+                    
+                    .Col = .ColLetterToNumber("K")
+                    .Text = Val(Left$(arrTemp1(1), 2))
+                    UpdateCell fps, .Col, .Row, .Text
+                    
+                    .Col = .ColLetterToNumber("M")
+                    .Text = Val(Mid$(arrTemp1(1), 4, 2))
+                    UpdateCell fps, .Col, .Row, .Text
+              End If
+          End If
+          
+          '
+            .Row = 43
+            Do
+                .GetText .ColLetterToNumber("O"), .Row, maHD
+                 GetMaHoaDon maHD, tenHD
+                 If tenHD <> "" Then
+                    arrTemp = Split(tenHD, "###")
+                    If UBound(arrTemp) > 0 Then
+                        .Col = .ColLetterToNumber("C")
+                        .Text = arrTemp(0)
+                        UpdateCell fps, .Col, .Row, .Text
+                        .Col = .ColLetterToNumber("AI")
+                        .Text = CStr(arrTemp(1))
+                        UpdateCell fps, .Col, .Row, .Text
+                        
+                        .Col = .ColLetterToNumber("AK")
+                        .Text = Left$(CStr(arrTemp(1)), 1)
+                         UpdateCell fps, .Col, .Row, .Text
+                    End If
+                 End If
+                 ' set lai ma cho truong ghi chu
+                 .GetText .ColLetterToNumber("AC"), .Row, maHD
+                 If maHD = GetAttribute(GetMessageCellById("0228"), "Msg") Then
+                    .Col = .ColLetterToNumber("AL")
+                    .Text = "05"
+                    UpdateCell fps, .Col, .Row, .Text
+                 ElseIf maHD = GetAttribute(GetMessageCellById("0229"), "Msg") Then
+                    .Col = .ColLetterToNumber("AL")
+                    .Text = "02"
+                    UpdateCell fps, .Col, .Row, .Text
+                 ElseIf maHD = GetAttribute(GetMessageCellById("0230"), "Msg") Then
+                    .Col = .ColLetterToNumber("AL")
+                    .Text = "04"
+                    UpdateCell fps, .Col, .Row, .Text
+                 End If
+                 
+                 .Col = .ColLetterToNumber("B")
+                 .Row = .Row + 1
+            Loop Until .Text = "aa"
+        .EventEnabled(EventAllEvents) = True
+    End With
+End Sub
