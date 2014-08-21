@@ -72,6 +72,7 @@
 			<ct12></ct12>
 			<LoaiHinhUyQuyen>
 				<donViUyQuyen>true</donViUyQuyen>
+				<daiLyThue></daiLyThue>
 			</LoaiHinhUyQuyen>
 			<tenDonViUyQuyen></tenDonViUyQuyen>
 			<CT1>

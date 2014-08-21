@@ -4812,3 +4812,28 @@ Dim xmlNode As MSXML.IXMLDOMNode
             Next
         End If
 End Sub
+
+
+' Lay ten CQT theo ma
+Public Sub GetCQT_01GTGT(ByVal maCQT As String, Optional ByRef TenCQT As String)
+Dim arrDanhsach() As String
+Dim strDataFileName As String
+Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+Dim xmlNode As MSXML.IXMLDOMNode
+
+       strDataFileName = "..\InterfaceIni\Catalogue_Tinh_Thanh.xml"
+    
+       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If maCQT = arrDanhsach(1) And arrDanhsach(0) = "0" Then
+                            TenCQT = arrDanhsach(3)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub

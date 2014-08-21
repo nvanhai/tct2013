@@ -46,6 +46,8 @@ Public tuRowDL As Long
 Public denRowDL As Long
 Public strTuRowDenRowPL As String
 
+Public isImportXML As Boolean
+
 'This funtion is called after an object of this class is created
 'Its functions is 1st preparing for interface sheets, such as
 'add control, data for the control, celltag...
@@ -404,13 +406,15 @@ End Sub
 Public Function ResetData() As Boolean
     With fps
         .EventEnabled(EventAllEvents) = False
-        .Sheet = 1
-        .Row = 17
-        .Col = .ColLetterToNumber("I")
-        .value = "0"
-
-        .Col = .ColLetterToNumber("O")
-        .value = "0"
+        If isImportXML = True Then
+            .Sheet = 1
+            .Row = 17
+            .Col = .ColLetterToNumber("I")
+            .value = "0"
+    
+            .Col = .ColLetterToNumber("O")
+            .value = "0"
+        End If
         .EventEnabled(EventAllEvents) = True
     End With
 End Function

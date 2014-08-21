@@ -971,3 +971,72 @@ Public Function GetNguoiKy() As String
     
     Set xmlDomHeader = Nothing
 End Function
+
+
+
+' ham set thong tin sau khi tai XML
+Public Sub finishImportXML()
+    Dim maBLP    As Variant
+    Dim tenBLP  As String
+    Dim arrTemp() As String
+    Dim arrTemp1() As String
+    Dim arrNgay() As String
+    
+    Dim strGio, strPhut, strNgay As Variant
+    With fps
+        .EventEnabled(EventAllEvents) = False
+          .Sheet = 1
+          mCurrentSheet = .Sheet
+          ' lay ve gio phut ngay
+          .Row = 9
+          .GetText .ColLetterToNumber("O"), .Row, maBLP
+          If maBLP <> "" Then
+              arrTemp1 = Split(maBLP, "T")
+              If UBound(arrTemp1) > 0 Then
+                    ' set ngay
+                    .Row = 8
+                    .Col = .ColLetterToNumber("O")
+                    arrNgay = Split(arrTemp1(0), "-")
+                    If UBound(arrNgay) > 1 Then
+                        .Text = arrNgay(2) & "/" & arrNgay(1) & "/" & arrNgay(0)
+                        UpdateCell fps, .Col, .Row, .Text
+                    End If
+                    
+                    .Col = .ColLetterToNumber("L")
+                    .Text = Val(Left$(arrTemp1(1), 2))
+                    UpdateCell fps, .Col, .Row, .Text
+                    
+                    .Col = .ColLetterToNumber("N")
+                    .Text = Val(Mid$(arrTemp1(1), 4, 2))
+                    UpdateCell fps, .Col, .Row, .Text
+              End If
+          End If
+          
+          '
+            .Row = 43
+            Do
+                .GetText .ColLetterToNumber("O"), .Row, maBLP
+                 GetMaBLP maBLP, tenBLP
+                 If tenBLP <> "" Then
+                    arrTemp = Split(tenBLP, "###")
+                    If UBound(arrTemp) > 0 Then
+                        .Col = .ColLetterToNumber("C")
+                        .Text = arrTemp(0)
+                        UpdateCell fps, .Col, .Row, .Text
+                        .Col = .ColLetterToNumber("AI")
+                        .Text = CStr(arrTemp(1))
+                        UpdateCell fps, .Col, .Row, .Text
+                        
+                        .Col = .ColLetterToNumber("AJ")
+                        .Text = Left$(CStr(arrTemp(1)), 1)
+                         UpdateCell fps, .Col, .Row, .Text
+                    End If
+                 End If
+                 
+                 
+                 .Col = .ColLetterToNumber("B")
+                 .Row = .Row + 1
+            Loop Until .Text = "aa"
+        .EventEnabled(EventAllEvents) = True
+    End With
+End Sub
