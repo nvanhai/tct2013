@@ -5515,6 +5515,12 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
                
                     valXml.loadXML xmlDuLieuImport.getElementsByTagName(GroupName)(0).xml
                     
+                    If GroupName = "TKhaiThue" And nodeMapCT.lastChild.nodeName = "soLan" Then
+                        If strKHBS = "TKCT" Then
+                            nodeMapCT.lastChild.Text = ""
+                        End If
+                    End If
+                    
                     SetValueFromXml nodeMapCT, valXml, cellRange, .sheet
 
                 End If
