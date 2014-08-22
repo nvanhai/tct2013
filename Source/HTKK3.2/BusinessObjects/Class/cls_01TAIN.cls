@@ -192,7 +192,7 @@ End Sub
 'No parameter
 Public Sub Prepare2()
 Dim i As Integer, intIndexCombo As Integer
-Dim strLTN As Variant, Col7 As Variant, strLTNCu As Variant, strID As Variant
+Dim strLTN As Variant, Col7 As Variant, strLTNCu As Variant, strId As Variant
 Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
 Dim xmlNodeListItem As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
@@ -272,13 +272,13 @@ Dim count1 As Long
             Do
                 .GetText .ColLetterToNumber("F"), .Row, strLTN
                 .GetText .ColLetterToNumber("AD"), .Row, Col7
-                .GetText .ColLetterToNumber("E"), .Row, strID
+                .GetText .ColLetterToNumber("E"), .Row, strId
                 .GetText .ColLetterToNumber("O"), .Row, strLTNCu
                 
                 GTSua = Mid(strLTNCu, 231, 1)
                 
                 If Col7 = 0 Then
-                     If Trim(strID) = "1101" Or GTSua = "1" Then
+                     If Trim(strId) = "1101" Or GTSua = "1" Then
                         .Col = .ColLetterToNumber("AA")
                         .Lock = False
                      Else
@@ -320,20 +320,20 @@ Dim count1 As Long
                     fps_Change .Col, .Row
                 End If
                 
-                If strLTN = "" And strLTNCu = "" And strID <> "" Then
-                     If arrTaiNguyen.Exists(strID) Then
+                If strLTN = "" And strLTNCu = "" And strId <> "" Then
+                     If arrTaiNguyen.Exists(strId) Then
                         .Col = .ColLetterToNumber("F")
                         .CellNote = ""
                         .BackColor = mNonErrorColor
                         '.TypeComboBoxList = strCombo + strLTNCu + Chr$(9)
-                        .Text = arrTaiNguyenGoc.Item(strID)
+                        .Text = arrTaiNguyenGoc.Item(strId)
                         UpdateCell fps, .Col, .Row, .Text
     
                         'Combo Hien
                         .Col = .ColLetterToNumber("G")
                         '.TypeComboBoxList = strComboHien + Trim(Mid(strLTN, 1, 200)) + Chr$(9)
-                        .value = Trim(Mid(arrTaiNguyenGoc.Item(strID), 1, 200))
-                        .Text = Trim(Mid(arrTaiNguyenGoc.Item(strID), 1, 200))
+                        .value = Trim(Mid(arrTaiNguyenGoc.Item(strId), 1, 200))
+                        .Text = Trim(Mid(arrTaiNguyenGoc.Item(strId), 1, 200))
                         UpdateCell fps, .Col, .Row, .Text
                         .CellNote = ""
                         .BackColor = mNonErrorColor
@@ -345,15 +345,15 @@ Dim count1 As Long
                         .CellNote = ""
                         .BackColor = mNonErrorColor
                         '.TypeComboBoxList = strCombo + strLTNCu + Chr$(9)
-                        .TypeComboBoxString = arrTaiNguyenGoc.Item(strID)
-                        .Text = arrTaiNguyenGoc.Item(strID)
+                        .TypeComboBoxString = arrTaiNguyenGoc.Item(strId)
+                        .Text = arrTaiNguyenGoc.Item(strId)
                         UpdateCell fps, .Col, .Row, .Text
     
                         'Combo Hien
                         .Col = .ColLetterToNumber("G")
                         '.TypeComboBoxList = strComboHien + Trim(Mid(strLTN, 1, 200)) + Chr$(9)
-                        .TypeComboBoxString = Trim(Mid(arrTaiNguyenGoc.Item(strID), 1, 200))
-                        .Text = Trim(Mid(arrTaiNguyenGoc.Item(strID), 1, 200))
+                        .TypeComboBoxString = Trim(Mid(arrTaiNguyenGoc.Item(strId), 1, 200))
+                        .Text = Trim(Mid(arrTaiNguyenGoc.Item(strId), 1, 200))
                         UpdateCell fps, .Col, .Row, .Text
                         .CellNote = ""
                         .BackColor = mNonErrorColor
@@ -383,13 +383,13 @@ Dim count1 As Long
             Do
                 .GetText .ColLetterToNumber("F"), .Row, strLTN
                 .GetText .ColLetterToNumber("AD"), .Row, Col7
-                .GetText .ColLetterToNumber("E"), .Row, strID
+                .GetText .ColLetterToNumber("E"), .Row, strId
                 .GetText .ColLetterToNumber("O"), .Row, strLTNCu
                 
                 GTSua = Mid(strLTNCu, 231, 1)
                 
                 If Col7 = 0 Then
-                     If Trim(strID) = "1101" Or GTSua = "1" Then
+                     If Trim(strId) = "1101" Or GTSua = "1" Then
                         .Col = .ColLetterToNumber("AA")
                         .Lock = False
                      Else
@@ -431,20 +431,20 @@ Dim count1 As Long
                     fps_Change .Col, .Row
                 End If
                 
-                If strLTN = "" And strLTNCu = "" And strID <> "" Then
-                     If arrTaiNguyen.Exists(strID) Then
+                If strLTN = "" And strLTNCu = "" And strId <> "" Then
+                     If arrTaiNguyen.Exists(strId) Then
                         .Col = .ColLetterToNumber("F")
                         .CellNote = ""
                         .BackColor = mNonErrorColor
                         '.TypeComboBoxList = strCombo + strLTNCu + Chr$(9)
-                        .Text = arrTaiNguyenGoc.Item(strID)
+                        .Text = arrTaiNguyenGoc.Item(strId)
                         UpdateCell fps, .Col, .Row, .Text
     
                         'Combo Hien
                         .Col = .ColLetterToNumber("G")
                         '.TypeComboBoxList = strComboHien + Trim(Mid(strLTN, 1, 200)) + Chr$(9)
-                        .value = Trim(Mid(arrTaiNguyenGoc.Item(strID), 1, 200))
-                        .Text = Trim(Mid(arrTaiNguyenGoc.Item(strID), 1, 200))
+                        .value = Trim(Mid(arrTaiNguyenGoc.Item(strId), 1, 200))
+                        .Text = Trim(Mid(arrTaiNguyenGoc.Item(strId), 1, 200))
                         UpdateCell fps, .Col, .Row, .Text
                         .CellNote = ""
                         .BackColor = mNonErrorColor
@@ -456,15 +456,15 @@ Dim count1 As Long
                         .CellNote = ""
                         .BackColor = mNonErrorColor
                         '.TypeComboBoxList = strCombo + strLTNCu + Chr$(9)
-                        .TypeComboBoxString = arrTaiNguyenGoc.Item(strID)
-                        .Text = arrTaiNguyenGoc.Item(strID)
+                        .TypeComboBoxString = arrTaiNguyenGoc.Item(strId)
+                        .Text = arrTaiNguyenGoc.Item(strId)
                         UpdateCell fps, .Col, .Row, .Text
     
                         'Combo Hien
                         .Col = .ColLetterToNumber("G")
                         '.TypeComboBoxList = strComboHien + Trim(Mid(strLTN, 1, 200)) + Chr$(9)
-                        .TypeComboBoxString = Trim(Mid(arrTaiNguyenGoc.Item(strID), 1, 200))
-                        .Text = Trim(Mid(arrTaiNguyenGoc.Item(strID), 1, 200))
+                        .TypeComboBoxString = Trim(Mid(arrTaiNguyenGoc.Item(strId), 1, 200))
+                        .Text = Trim(Mid(arrTaiNguyenGoc.Item(strId), 1, 200))
                         UpdateCell fps, .Col, .Row, .Text
                         .CellNote = ""
                         .BackColor = mNonErrorColor
@@ -495,13 +495,13 @@ Dim count1 As Long
             Do
                 .GetText .ColLetterToNumber("F"), .Row, strLTN
                 .GetText .ColLetterToNumber("AD"), .Row, Col7
-                .GetText .ColLetterToNumber("E"), .Row, strID
+                .GetText .ColLetterToNumber("E"), .Row, strId
                 .GetText .ColLetterToNumber("O"), .Row, strLTNCu
                 
                 GTSua = Mid(strLTNCu, 231, 1)
                 
                 If Col7 = 0 Then
-                     If Trim(strID) = "1101" Or GTSua = "1" Then
+                     If Trim(strId) = "1101" Or GTSua = "1" Then
                         .Col = .ColLetterToNumber("AA")
                         .Lock = False
                      Else
@@ -543,20 +543,20 @@ Dim count1 As Long
                     fps_Change .Col, .Row
                 End If
                 
-                If strLTN = "" And strLTNCu = "" And strID <> "" Then
-                     If arrTaiNguyen.Exists(strID) Then
+                If strLTN = "" And strLTNCu = "" And strId <> "" Then
+                     If arrTaiNguyen.Exists(strId) Then
                         .Col = .ColLetterToNumber("F")
                         .CellNote = ""
                         .BackColor = mNonErrorColor
                         '.TypeComboBoxList = strCombo + strLTNCu + Chr$(9)
-                        .Text = arrTaiNguyenGoc.Item(strID)
+                        .Text = arrTaiNguyenGoc.Item(strId)
                         UpdateCell fps, .Col, .Row, .Text
     
                         'Combo Hien
                         .Col = .ColLetterToNumber("G")
                         '.TypeComboBoxList = strComboHien + Trim(Mid(strLTN, 1, 200)) + Chr$(9)
-                        .value = Trim(Mid(arrTaiNguyenGoc.Item(strID), 1, 200))
-                        .Text = Trim(Mid(arrTaiNguyenGoc.Item(strID), 1, 200))
+                        .value = Trim(Mid(arrTaiNguyenGoc.Item(strId), 1, 200))
+                        .Text = Trim(Mid(arrTaiNguyenGoc.Item(strId), 1, 200))
                         UpdateCell fps, .Col, .Row, .Text
                         .CellNote = ""
                         .BackColor = mNonErrorColor
@@ -568,15 +568,15 @@ Dim count1 As Long
                         .CellNote = ""
                         .BackColor = mNonErrorColor
                         '.TypeComboBoxList = strCombo + strLTNCu + Chr$(9)
-                        .TypeComboBoxString = arrTaiNguyenGoc.Item(strID)
-                        .Text = arrTaiNguyenGoc.Item(strID)
+                        .TypeComboBoxString = arrTaiNguyenGoc.Item(strId)
+                        .Text = arrTaiNguyenGoc.Item(strId)
                         UpdateCell fps, .Col, .Row, .Text
     
                         'Combo Hien
                         .Col = .ColLetterToNumber("G")
                         '.TypeComboBoxList = strComboHien + Trim(Mid(strLTN, 1, 200)) + Chr$(9)
-                        .TypeComboBoxString = Trim(Mid(arrTaiNguyenGoc.Item(strID), 1, 200))
-                        .Text = Trim(Mid(arrTaiNguyenGoc.Item(strID), 1, 200))
+                        .TypeComboBoxString = Trim(Mid(arrTaiNguyenGoc.Item(strId), 1, 200))
+                        .Text = Trim(Mid(arrTaiNguyenGoc.Item(strId), 1, 200))
                         UpdateCell fps, .Col, .Row, .Text
                         .CellNote = ""
                         .BackColor = mNonErrorColor
@@ -794,7 +794,7 @@ Dim count1 As Long
 End Sub
 
 Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
-Dim strID As Variant, strLTN As Variant
+Dim strId As Variant, strLTN As Variant
 Dim intIndexCombo As Integer
 Dim Col7 As Variant
 Dim iRow As Long, iCol As Long, GTSua As String
@@ -824,23 +824,23 @@ Dim xmlNodeH15 As MSXML.IXMLDOMNode
              
             'Chon lai combo cua colF
             .Col = .ColLetterToNumber("E")
-            .GetText .ColLetterToNumber("F"), Row, strID
-            .Text = Trim(Mid(strID, 200, 10))
+            .GetText .ColLetterToNumber("F"), Row, strId
+            .Text = Trim(Mid(strId, 200, 10))
              UpdateCell fps, .Col, .Row, .Text
              .Col = .ColLetterToNumber("D")
-             .Text = Trim(Left(strID, 200))
+             .Text = Trim(Left(strId, 200))
              UpdateCell fps, .Col, .Row, .Text
              .Col = .ColLetterToNumber("P")
-             .Text = Trim(Mid(strID, 210, 10))
+             .Text = Trim(Mid(strId, 210, 10))
              UpdateCell fps, .Col, .Row, .Text
-             If strID <> "" Then
+             If strId <> "" Then
                 .Col = .ColLetterToNumber("O")
-                .Text = strID
+                .Text = strId
                 UpdateCell fps, .Col, .Row, .Text
              End If
             .GetText .ColLetterToNumber("AD"), .Row, Col7
             
-            GTSua = Mid(strID, 231, 1)
+            GTSua = Mid(strId, 231, 1)
             
             .EventEnabled(EventChange) = True
 'Lock or unlock
@@ -852,13 +852,13 @@ Dim xmlNodeH15 As MSXML.IXMLDOMNode
             End If
             If Col7 = 0 Then
                 .Col = .ColLetterToNumber("AA")
-                If Trim(Mid(strID, 200, 10)) = "1101" Or GTSua = "1" Then
+                If Trim(Mid(strId, 200, 10)) = "1101" Or GTSua = "1" Then
                     If mblKhoiDau Or mblKeyF5 Then
                         .Lock = False
                         mblKhoiDau = False
                     Else
                         .Col = .ColLetterToNumber("AA")
-                        .value = Trim(Mid(strID, 221, 10))
+                        .value = Trim(Mid(strId, 221, 10))
                         .Col = .ColLetterToNumber("AA")
                         .Row = Row
                         UpdateCell fps, .Col, .Row, .value
@@ -867,7 +867,7 @@ Dim xmlNodeH15 As MSXML.IXMLDOMNode
                     End If
                 Else
                     .Col = .ColLetterToNumber("AA")
-                    .value = Trim(Mid(strID, 221, 10))
+                    .value = Trim(Mid(strId, 221, 10))
                     .Col = .ColLetterToNumber("AA")
                     .Row = Row
                     UpdateCell fps, .Col, .Row, .value
@@ -895,31 +895,31 @@ Dim xmlNodeH15 As MSXML.IXMLDOMNode
         
         If Col = .ColLetterToNumber("F") Then
             .Col = .ColLetterToNumber("E")
-            .GetText .ColLetterToNumber("F"), Row, strID
-            .Text = Trim(Mid(strID, 200, 10))
+            .GetText .ColLetterToNumber("F"), Row, strId
+            .Text = Trim(Mid(strId, 200, 10))
              UpdateCell fps, .Col, .Row, .Text
              .Col = .ColLetterToNumber("D")
-             .Text = Trim(Left(strID, 200))
+             .Text = Trim(Left(strId, 200))
              UpdateCell fps, .Col, .Row, .Text
              .Col = .ColLetterToNumber("P")
-             .Text = Trim(Mid(strID, 210, 10))
+             .Text = Trim(Mid(strId, 210, 10))
              UpdateCell fps, .Col, .Row, .Text
             .GetText .ColLetterToNumber("AD"), .Row, Col7
-            If strID <> "" Then
+            If strId <> "" Then
                 .Col = .ColLetterToNumber("O")
-                .Text = strID
+                .Text = strId
                 UpdateCell fps, .Col, .Row, .Text
             End If
             
-            GTSua = Mid(strID, 231, 1)
+            GTSua = Mid(strId, 231, 1)
             
             If Col7 = 0 Then
                 .Col = .ColLetterToNumber("AA")
-                .value = Trim(Mid(strID, 221, 10))
+                .value = Trim(Mid(strId, 221, 10))
                 .Col = .ColLetterToNumber("AA")
                 .Row = Row
                 UpdateCell fps, .Col, .Row, .value
-                If Trim(Mid(strID, 200, 10)) = "1101" Or GTSua = "1" Then
+                If Trim(Mid(strId, 200, 10)) = "1101" Or GTSua = "1" Then
                     .Lock = False
                 Else
                     .Lock = True
@@ -931,9 +931,9 @@ Dim xmlNodeH15 As MSXML.IXMLDOMNode
                 .Row = Row
                 UpdateCell fps, .Col, .Row, 0
                 
-                GTSua = Mid(strID, 231, 1)
+                GTSua = Mid(strId, 231, 1)
                 
-                If Trim(Mid(strID, 200, 10)) = "1101" Or GTSua = "1" Then
+                If Trim(Mid(strId, 200, 10)) = "1101" Or GTSua = "1" Then
                     .Lock = False
                 Else
                     .Lock = True
@@ -945,7 +945,7 @@ Dim xmlNodeH15 As MSXML.IXMLDOMNode
         If Col = .ColLetterToNumber("V") Then
             If Val(.value) > 0 Then
                 .Col = .ColLetterToNumber("E")
-                .GetText .ColLetterToNumber("F"), Row, strID
+                .GetText .ColLetterToNumber("F"), Row, strId
     
                 'Cot 7 = 0
                 .Col = .ColLetterToNumber("AD")
@@ -953,21 +953,21 @@ Dim xmlNodeH15 As MSXML.IXMLDOMNode
                 UpdateCell fps, .Col, .Row, .Text
                 .Lock = True
                 
-                GTSua = Mid(strID, 231, 1)
+                GTSua = Mid(strId, 231, 1)
     
                 'Hien lai Thue suat
                 .Col = .ColLetterToNumber("AA")
-                If Trim(Mid(strID, 200, 10)) = "1101" Or GTSua = "1" Then
+                If Trim(Mid(strId, 200, 10)) = "1101" Or GTSua = "1" Then
                     If Val(.value) = 0 Then
                         .Col = .ColLetterToNumber("AA")
-                        .value = Trim(Mid(strID, 221, 10))
+                        .value = Trim(Mid(strId, 221, 10))
                         UpdateCell fps, .Col, .Row, .value
                         
                     End If
                     .Lock = False
                 Else
                     .Col = .ColLetterToNumber("AA")
-                    .value = Trim(Mid(strID, 221, 10))
+                    .value = Trim(Mid(strId, 221, 10))
                     UpdateCell fps, .Col, .Row, .value
                     .Lock = True
                 End If
@@ -1121,7 +1121,7 @@ Dim xmlNodeH15 As MSXML.IXMLDOMNode
 End Sub
 
 Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
-Dim strID As Variant
+Dim strId As Variant
 Dim iCol As Long, iRow As Long
 Dim intIndexCombo As Integer, i As Integer
 Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
@@ -1224,7 +1224,7 @@ Dim i As Integer, iCol As Long, iRow As Long
 Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
 Dim txmlCellNode As MSXML.IXMLDOMNode, txmlCellsNode As MSXML.IXMLDOMNode
 Dim tCol As Long, tRow As Long
-Dim strID As Variant, Col7 As Variant, intIndexCombo As Integer
+Dim strId As Variant, Col7 As Variant, intIndexCombo As Integer
 Dim NguoiKyCol As Long, NguoiKyRow As Long
 Dim count1 As Integer
 Dim STT As Variant
@@ -2305,7 +2305,7 @@ Public Sub UpdateChangeKHBS()
     Dim xmlCell As MSXML.IXMLDOMNode
     Dim xmlCellUpdate As MSXML.IXMLDOMNode
     Dim xmlCellGoc As MSXML.IXMLDOMNode
-    Dim strID As String
+    Dim strId As String
     With fps
        If loaiKHBS = "frmKHBS_TT" Then
             .Sheet = 1
@@ -2317,11 +2317,11 @@ Public Sub UpdateChangeKHBS()
        Else
             For Each xmlCell In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
                If Left(GetAttribute(xmlCell, "CellID"), 2) = "BC" Then
-                    strID = Trim(Mid(GetAttribute(xmlCell, "Value"), 200, 10))
+                    strId = Trim(Mid(GetAttribute(xmlCell, "Value"), 200, 10))
                         
                     For Each xmlCellGoc In TAX_Utilities_v1.DataKHBS.getElementsByTagName("Cell")
                         If Left(GetAttribute(xmlCellGoc, "CellID"), 1) = "E" Then
-                            If GetAttribute(xmlCellGoc, "Value") = strID Then
+                            If GetAttribute(xmlCellGoc, "Value") = strId Then
                             'update secsion
                                Set xmlCellUpdate = seachCellNode(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell"), GetAttribute(xmlCellGoc, "CellID"))
                                updateSecsion xmlCellUpdate.parentNode
@@ -2671,6 +2671,13 @@ Private Sub UpdateSheets()
     Dim xmlCellNodeData As MSXML.IXMLDOMNode
     With fps
         .EventEnabled(EventAllEvents) = False
+        .Sheet = 1
+        For Each xmlCellNodeData In TAX_Utilities_v1.Data(.Sheet - 1).getElementsByTagName("Cell")
+               ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+                    .GetText lCol, lRow, varTemp
+                    UpdateCell fps, lCol, lRow, varTemp
+        Next
+        
         ssSheet = mCurrentSheet
        ' Update lai sheet KHBS
         .Sheet = .SheetCount - 1
@@ -2705,13 +2712,26 @@ Public Sub inThongTinDL()
 End Sub
 
 Public Sub LoadDanhMuc()
-    Dim strID              As Variant
+    Dim strId              As Variant
     Dim typeComboboxCurSel As Integer
 
     With fps
+        .EventEnabled(EventAllEvents) = False
         .Sheet = 1
+        
+        .Row = 15
+        .Col = .ColLetterToNumber("AG")
+        UpdateCell fps, .Col, .Row, .Text
+        
+        .Col = .ColLetterToNumber("AJ")
+        UpdateCell fps, .Col, .Row, .Text
+        
+        .Col = .ColLetterToNumber("AN")
+        UpdateCell fps, .Col, .Row, .Text
+        
+        
+        
         .Row = 42
-
         Do
     
             .Col = .ColLetterToNumber("G")
@@ -2721,6 +2741,17 @@ Public Sub LoadDanhMuc()
             .BackColor = mNonErrorColor
             .typeComboboxCurSel = typeComboboxCurSel
             UpdateCell fps, .Col, .Row, .Text
+            
+            .GetText .Col, .Row, strId
+            .Col = .ColLetterToNumber("O")
+            .Text = strId
+            UpdateCell fps, .Col, .Row, .Text
+            
+            .GetText .ColLetterToNumber("G"), .Row, strId
+            .Col = .ColLetterToNumber("D")
+            .Text = strId
+            UpdateCell fps, .Col, .Row, .Text
+            
             .Row = .Row + 1
             .Col = .ColLetterToNumber("C")
         Loop Until .Text = "aa"
@@ -2736,6 +2767,17 @@ Public Sub LoadDanhMuc()
             .BackColor = mNonErrorColor
             .typeComboboxCurSel = typeComboboxCurSel
             UpdateCell fps, .Col, .Row, .Text
+            
+            .GetText .Col, .Row, strId
+            .Col = .ColLetterToNumber("O")
+            .Text = strId
+            UpdateCell fps, .Col, .Row, .Text
+            
+            .GetText .ColLetterToNumber("G"), .Row, strId
+            .Col = .ColLetterToNumber("D")
+            .Text = strId
+            UpdateCell fps, .Col, .Row, .Text
+            
             .Row = .Row + 1
             .Col = .ColLetterToNumber("C")
         Loop Until .Text = "aa"
@@ -2751,11 +2793,25 @@ Public Sub LoadDanhMuc()
             .BackColor = mNonErrorColor
             .typeComboboxCurSel = typeComboboxCurSel
             UpdateCell fps, .Col, .Row, .Text
+            
+            .GetText .Col, .Row, strId
+            .Col = .ColLetterToNumber("O")
+            .Text = strId
+            UpdateCell fps, .Col, .Row, .Text
+            
+            .GetText .ColLetterToNumber("G"), .Row, strId
+            .Col = .ColLetterToNumber("D")
+            .Text = strId
+            UpdateCell fps, .Col, .Row, .Text
+            
             .Row = .Row + 1
             .Col = .ColLetterToNumber("C")
         Loop Until .Text = "aa"
-
+        .EventEnabled(EventAllEvents) = True
     End With
 
 End Sub
+
+
+
 
