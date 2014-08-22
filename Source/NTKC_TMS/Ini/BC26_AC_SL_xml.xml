@@ -44,14 +44,14 @@
 		</ChiTiet>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
-			<tongCongSoTonDKy>L_33</tongCongSoTonDKy>
-			<tongCongSoMuaPHanhTKy>M_33</tongCongSoMuaPHanhTKy>
-			<tongCongSoSuDung>N_33</tongCongSoSuDung>
-			<tongCongSoXoaBo>O_33</tongCongSoXoaBo>
-			<tongCongSoMat>P_33</tongCongSoMat>
-			<tongCongSoHuy>Q_33</tongCongSoHuy>
-			<tongCong_Cong>R_33</tongCong_Cong>
-			<tongCongTonCuoiKy>S_33</tongCongTonCuoiKy>
+			<tongCongSoTonDKy>L_36</tongCongSoTonDKy>
+			<tongCongSoMuaPHanhTKy>M_36</tongCongSoMuaPHanhTKy>
+			<tongCongSoSuDung>N_36</tongCongSoSuDung>
+			<tongCongSoXoaBo>O_36</tongCongSoXoaBo>
+			<tongCongSoMat>P_36</tongCongSoMat>
+			<tongCongSoHuy>Q_36</tongCongSoHuy>
+			<tongCong_Cong>R_36</tongCong_Cong>
+			<tongCongTonCuoiKy>S_36</tongCongTonCuoiKy>
 		<nguoiLapBieu>E_40</nguoiLapBieu>
 		<nguoiDaiDien>S_40</nguoiDaiDien>
 		<ngayBCao>S_42</ngayBCao>
