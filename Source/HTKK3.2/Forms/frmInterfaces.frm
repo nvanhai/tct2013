@@ -5228,12 +5228,14 @@ Private Sub cmdImportXML_Click()
         If Not objTaxBusiness Is Nothing Then
             objTaxBusiness.isImportXML = True
             objTaxBusiness.ResetData
+            objTaxBusiness.isImportXML = False
         Else
             Set objTaxBusiness = CreateObject(GetAttribute(TAX_Utilities_v1.NodeValidity, "Class"))
 
             If Not objTaxBusiness Is Nothing Then
                 objTaxBusiness.isImportXML = True
                 objTaxBusiness.ResetData
+                objTaxBusiness.isImportXML = False
             End If
         End If
     End If

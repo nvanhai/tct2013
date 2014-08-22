@@ -50,6 +50,7 @@ Public Sub Prepare1()
         SetDateFormat fps, 1, 78, fps.ColLetterToNumber("AR"), DDMMYYYY
         SetDateFormat fps, 3, 31, .ColLetterToNumber("BE"), DDMMYYYY
         
+        .Sheet = 1
         .Row = 78
         .Col = fps.ColLetterToNumber("AR")
         .Text = Format(Date, "dd/mm/yyyy")
