@@ -6121,8 +6121,25 @@ End Sub
 Public Sub finishImportXML()
     Dim i As Integer
     Dim CQT As Variant
+    
+    Dim maLyDoGiaHan As Variant
     With fps
         .EventEnabled(EventAllEvents) = False
+         .Sheet = 1
+         .Row = 20
+         .GetText .ColLetterToNumber("P"), .Row, maLyDoGiaHan
+         If Trim$(maLyDoGiaHan) <> "" Then
+               .Row = 18
+               .Col = .ColLetterToNumber("B")
+               .value = 1
+               UpdateCell fps, .Col, .Row, "x"
+         Else
+                .Row = 18
+               .Col = .ColLetterToNumber("B")
+               .value = 1
+               UpdateCell fps, .Col, .Row, ""
+         End If
+        
          .Sheet = 11
          If .SheetVisible = True Then
                 .Row = 42
