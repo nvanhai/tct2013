@@ -245,6 +245,11 @@ Dim blnValid As Boolean
 '        Else
 '            .Formula = "1"
 '        End If
+
+        'Set mahoadon vao cell an dung ket xuat XML
+        
+
+
         .EventEnabled(EventAllEvents) = True
     End With
     
@@ -321,7 +326,7 @@ Public Function CheckValidData() As Boolean
     End With
 End Function
 
-Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
+Public Function GenerateSQL_Header(xmlDomData As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
     Dim xmlList As MSXML.IXMLDOMNodeList
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim xmlAttribute As MSXML.IXMLDOMAttribute
@@ -339,7 +344,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     
 On Error GoTo ErrHandle
     strSQL = SqlHdr_AC
-    Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
+    Set xmlList = xmlDomData.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
         
@@ -483,7 +488,7 @@ On Error GoTo ErrHandle
     GenerateSQL_Header = strSQL
     Exit Function
 ErrHandle:
-    SaveErrorLog "BC26_AC_SL", "GenerateSQL_Header", Err.Number, Err.Description
+    SaveErrorLog "BC26_AC_SL", "GenerateSQL_Header", Err.number, Err.Description
 End Function
 
 Public Function KiemTraKhoaSo(ByVal strDate As String) As Boolean
@@ -526,14 +531,14 @@ End Sub
 Private Sub DataDM(ByVal Id As String, ByVal strMauso As String, Optional ByRef strTen As String)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlDomData As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = GetAbsolutePath("..\InterfaceTemplates\xml\Catalogue_loai_HD.xml")
     
-       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")

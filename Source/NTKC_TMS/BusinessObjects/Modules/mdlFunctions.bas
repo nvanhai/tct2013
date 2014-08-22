@@ -85,7 +85,7 @@ Public Sub GetCellSpan(pGrid As fpSpread, pCol As Long, pRow As Long, Optional p
     
     Exit Sub
 ErrorHandle:
-    SaveErrorLog "mdlFunctions", "GetCellSpan", Err.Number, Err.Description
+    SaveErrorLog "mdlFunctions", "GetCellSpan", Err.number, Err.Description
 End Sub
 
 ''' GetCellID description
@@ -255,7 +255,7 @@ Public Function GetValidityNode(Id As String, Optional strMonth As String, Optio
     
     Exit Function
 ErrorHandle:
-    SaveErrorLog "mdlFunctions", "GetValidityNode", Err.Number, Err.Description
+    SaveErrorLog "mdlFunctions", "GetValidityNode", Err.number, Err.Description
 End Function
 
 Private Function GetNgayCuoiQuy(q As Integer, Y As Integer, dNgayTaiChinh As Integer, dThangTaiChinh As Integer) As Date
@@ -437,7 +437,7 @@ Public Sub ParserCellID(pGrid As fpSpread, pCellID As String, pCol As Long, pRow
     
     Exit Sub
 ErrorHandle:
-    SaveErrorLog "mdlFunctions", "ParserCellID", Err.Number, Err.Description
+    SaveErrorLog "mdlFunctions", "ParserCellID", Err.number, Err.Description
 End Sub
 
 
@@ -451,3 +451,53 @@ Public Function GetMessageCellById(ByVal strId As String) As MSXML.IXMLDOMNode
         End If
     Next
 End Function
+Public Function CPab(ByVal str As String, ByVal number As Integer) As String
+    CPab = str & Space(number - Len(str))
+End Function
+' Lay ma hoa don theo ten
+Public Sub GetMaHoaDon(ByVal maHD As String, Optional ByRef tenHD As String)
+     Dim arrDanhsach() As String
+    Dim strDataFileName As String
+    Dim xmlDomData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+
+       strDataFileName = GetAbsolutePath("..\InterfaceTemplates\xml\Catalogue_loai_HD.xml")
+       tenHD = ""
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If InStr(1, maHD, arrDanhsach(1)) > 0 Then
+                            tenHD = arrDanhsach(1) & "###" & CPab(arrDanhsach(0), 10) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(2), 200)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub
+
+' Lay ma bien lai phi, le phi theo ten
+Public Sub GetMaBLP(ByVal maBLP As String, Optional ByRef tenBLP As String)
+     Dim arrDanhsach() As String
+    Dim strDataFileName As String
+    Dim xmlDomData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+
+       strDataFileName = GetAbsolutePath("..\InterfaceTemplates\xml\Catalogue_loai_BLP.xml")
+       tenBLP = ""
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If InStr(1, maBLP, arrDanhsach(1)) > 0 Then
+                            tenBLP = arrDanhsach(1) & "###" & CPab(arrDanhsach(0), 10) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(2), 200)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub
