@@ -147,13 +147,13 @@ Public Sub Prepare1()
         .TypeComboBoxList = strDonvitinh
         End With
 
-        Set xmlNodeListCell = Nothing
-        ' Lay dia diem khai thac tai nguyen
-        If TAX_Utilities_v1.Month = "01" Then 'Thang 1 ve thang 12 nam truoc
-            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & "12" & Trim(str(CInt(TAX_Utilities_v1.Year) - 1)) & ".xml"
-        Else
-            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & Right("00" & Trim(str(CInt(TAX_Utilities_v1.Month) - 1)), 2) & TAX_Utilities_v1.Year & ".xml"
-        End If
+'        Set xmlNodeListCell = Nothing
+'        ' Lay dia diem khai thac tai nguyen
+'        If TAX_Utilities_v1.Month = "01" Then 'Thang 1 ve thang 12 nam truoc
+'            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & "12" & Trim(str(CInt(TAX_Utilities_v1.Year) - 1)) & ".xml"
+'        Else
+'            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & Right("00" & Trim(str(CInt(TAX_Utilities_v1.Month) - 1)), 2) & TAX_Utilities_v1.Year & ".xml"
+'        End If
         
    mblKeyF5 = False
    
@@ -221,43 +221,43 @@ Dim tongNTNN As Variant, tienDoiThanhChu As String
         .SetText .ColLetterToNumber("B"), 55, tienDoiThanhChu
         UpdateCell fps, .ColLetterToNumber("B"), 55, tienDoiThanhChu
         
-        .Sheet = 1
-            mCurrentSheet = 1
-
-            Set xmlCellNode = TAX_Utilities_v1.Data(1 - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("C"), 45))
-
-            Set xmlCellNode = xmlCellNode.parentNode
-            Set xmlCellNode = xmlCellNode.parentNode
-            Set xmlCellNode = xmlCellNode.parentNode.lastChild
-            Set xmlCellNode = xmlCellNode.firstChild
-
-            'set ten nhan vien dai ly
-            Set xmlCellNode = xmlCellNode.firstChild
-            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
-            .Row = iRow
-            .Col = iCol
-            .Formula = ""
-            'set nguoi ky
-            Set xmlCellNode = xmlCellNode.nextSibling
-            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
-            .Row = iRow
-            .Col = iCol
-            .Formula = ""
-            'set chung chi hanh nghe
-            Set xmlCellNode = xmlCellNode.nextSibling
-            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
-            .Row = iRow
-            .Col = iCol
-            .Formula = ""
-            'set ngay ky
-            Set xmlCellNode = xmlCellNode.nextSibling
-            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
-            .Row = iRow
-            .Col = iCol
-            .Formula = ""
-        
-        'Lay gia tri khoi dau cho bien strGiaTriCu
-        .GetText .ColLetterToNumber("C"), 45, strGiaTriCu
+'        .Sheet = 1
+'            mCurrentSheet = 1
+'
+'            Set xmlCellNode = TAX_Utilities_v1.Data(1 - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("C"), 45))
+'
+'            Set xmlCellNode = xmlCellNode.parentNode
+'            Set xmlCellNode = xmlCellNode.parentNode
+'            Set xmlCellNode = xmlCellNode.parentNode.lastChild
+'            Set xmlCellNode = xmlCellNode.firstChild
+'
+'            'set ten nhan vien dai ly
+'            Set xmlCellNode = xmlCellNode.firstChild
+'            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+'            .Row = iRow
+'            .Col = iCol
+'            .Formula = ""
+'            'set nguoi ky
+'            Set xmlCellNode = xmlCellNode.nextSibling
+'            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+'            .Row = iRow
+'            .Col = iCol
+'            .Formula = ""
+'            'set chung chi hanh nghe
+'            Set xmlCellNode = xmlCellNode.nextSibling
+'            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+'            .Row = iRow
+'            .Col = iCol
+'            .Formula = ""
+'            'set ngay ky
+'            Set xmlCellNode = xmlCellNode.nextSibling
+'            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+'            .Row = iRow
+'            .Col = iCol
+'            .Formula = ""
+'
+'        'Lay gia tri khoi dau cho bien strGiaTriCu
+'        .GetText .ColLetterToNumber("C"), 45, strGiaTriCu
        
     End With
     
@@ -649,30 +649,30 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
         iRow = .ActiveRow
         GetCellSpan fps, iCol, iRow
         
-        If (KeyCode = vbKeyF5) Or (KeyCode = vbKeyF6) Then
-            If .ActiveSheet = 1 Then
-            fps.EventEnabled(EventAllEvents) = False
-                 i = 1
-                 .Col = .ColLetterToNumber("B")
-                 .Row = 45
-                 Do
-                      .Text = str(i)
-                      .Col = .ColLetterToNumber("B")
-                      .Row = i + 45
-                      i = i + 1
-                 Loop Until .Text = "aa"
-                 .Row = .Row
-                 i = 1
-                 .Row = .Row + 3
-                 Do
-                     .Text = str(i)
-                     .Col = .ColLetterToNumber("B")
-                     .Row = .Row + 1
-                     i = i + 1
-                 Loop Until .Text = "aa"
-            End If
-            fps.EventEnabled(EventAllEvents) = True
-         End If
+'        If (KeyCode = vbKeyF5) Or (KeyCode = vbKeyF6) Then
+'            If .ActiveSheet = 1 Then
+'            fps.EventEnabled(EventAllEvents) = False
+'                 i = 1
+'                 .Col = .ColLetterToNumber("B")
+'                 .Row = 45
+'                 Do
+'                      .Text = str(i)
+'                      .Col = .ColLetterToNumber("B")
+'                      .Row = i + 45
+'                      i = i + 1
+'                 Loop Until .Text = "aa"
+'                 .Row = .Row
+'                 i = 1
+'                 .Row = .Row + 3
+'                 Do
+'                     .Text = str(i)
+'                     .Col = .ColLetterToNumber("B")
+'                     .Row = .Row + 1
+'                     i = i + 1
+'                 Loop Until .Text = "aa"
+'            End If
+'            fps.EventEnabled(EventAllEvents) = True
+'         End If
          If .ActiveSheet = .SheetCount - 1 Then
                 If (KeyCode = vbKeyF5) Or (KeyCode = vbKeyF6) Then
                  fps.EventEnabled(EventAllEvents) = False
@@ -715,53 +715,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
     With fps
         .EventEnabled(EventAllEvents) = False
         mCurrentSheet = .Sheet
-        If .ActiveSheet = 1 Then
-            .GetText .ColLetterToNumber("T"), 37, tongNTNN
-            tongNTNN = Replace(tongNTNN, ".", "")
-            tongNTNN = Replace(tongNTNN, ",", "")
-            tienDoiThanhChu = doiTien(CStr(tongNTNN))
-            .SetText .ColLetterToNumber("AB"), 37, tienDoiThanhChu
-            UpdateCell fps, .ColLetterToNumber("AB"), 37, tienDoiThanhChu
-            Dim i As Variant
-            i = 1
-            .Col = .ColLetterToNumber("B")
-            .Row = 45
-            Do
-                 .Text = str(i)
-                 .Col = .ColLetterToNumber("B")
-                 .Row = i + 45
-                 i = i + 1
-            Loop Until .Text = "aa"
-            .Row = .Row
-            i = 1
-            .Row = .Row + 3
-            Do
-                .Text = str(i)
-                .Col = .ColLetterToNumber("B")
-                .Row = .Row + 1
-                i = i + 1
-            Loop Until .Text = "aa"
-            .SetText .ColLetterToNumber("B"), .Row + 5, tienDoiThanhChu
-            UpdateCell fps, .ColLetterToNumber("B"), .Row + 5, tienDoiThanhChu
         
-            If Col = .ColLetterToNumber("R") And Row = .MaxRows - 1 Then
-                .GetText Col, Row, varTemp
-                If varTemp <> "" And varTemp <> "../../...." Then
-                    If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
-                        .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
-                        .TypeHAlign = TypeHAlignLeft
-                    Else
-                               .SetActiveCell Col, Row
-                               .SetFocus
-                    End If
-                Else
-                    .SetText Col, Row, ""
-                End If
-                .Col = Col
-                .Row = Row
-                UpdateCell fps, .Col, .Row, .Text
-            End If
-        End If
         .EventEnabled(EventAllEvents) = True
     End With
     'CellChange Col, Row
@@ -786,25 +740,7 @@ Public Sub finish()
         .ActiveSheet = ASheet
         .Sheet = SSheet
         .Sheet = 1
-        Dim i As Integer
-        i = 1
-         .Col = .ColLetterToNumber("B")
-         .Row = 45
-         Do
-              .Text = str(i)
-              .Col = .ColLetterToNumber("B")
-              .Row = i + 45
-              i = i + 1
-         Loop Until .Text = "aa"
-         .Row = .Row
-         i = 1
-         .Row = .Row + 3
-         Do
-             .Text = str(i)
-             .Col = .ColLetterToNumber("B")
-             .Row = .Row + 1
-             i = i + 1
-         Loop Until .Text = "aa"
+        
          
         .EventEnabled(EventAllEvents) = True
     End With
@@ -821,69 +757,6 @@ Dim mphi As Variant
 Dim iFlagEmty As Variant
 Dim CountRow As Integer
     With fps
-      .Sheet = .SheetCount
-        .GetText .ColLetterToNumber("E"), 15, Error
-      .Sheet = 1
-      Dim i As Integer
-     i = 1
-     CountRow = 0
-     .Row = 45
-     .Col = .ColLetterToNumber("B")
-      Do
-        .GetText .ColLetterToNumber("L"), .Row, sluong
-        .GetText .ColLetterToNumber("Q"), .Row, mphi
-        .GetText .ColLetterToNumber("C"), .Row, loaiks
-        .GetText .ColLetterToNumber("J"), .Row, Dvtinh
-            If Trim(sluong) <> 0 Or Trim(mphi) <> 0 Or Trim(Dvtinh) <> "" Then
-                If Trim(loaiks) = "" Then
-                    .Col = .ColLetterToNumber("C")
-                    .CellNote = Error
-                    .BackColor = mErrorColor
-                    iFlagEmty = 1
-                Else
-                    .Col = .ColLetterToNumber("C")
-                    .CellNote = ""
-                    .BackColor = mNonErrorColor
-                End If
-            Else
-                .ColLetterToNumber ("C")
-                .CellNote = ""
-                .BackColor = mNonErrorColor
-            End If
-      .Col = .ColLetterToNumber("B")
-      .Row = 45 + i
-      i = i + 1
-      CountRow = CountRow + 1
-      Loop Until .Text = "aa"
-      
-      i = 1
-      .Row = 48 + CountRow
-      .Col = .ColLetterToNumber("B")
-      Do
-        .GetText .ColLetterToNumber("L"), .Row, sluong
-        .GetText .ColLetterToNumber("Q"), .Row, mphi
-        .GetText .ColLetterToNumber("C"), .Row, loaiks
-        .GetText .ColLetterToNumber("J"), .Row, Dvtinh
-            If Trim(sluong) <> 0 Or Trim(mphi) <> 0 Or Trim(Dvtinh) <> "" Then
-                If Trim(loaiks) = "" Then
-                    .Col = .ColLetterToNumber("C")
-                    .CellNote = Error
-                    .BackColor = mErrorColor
-                    iFlagEmty = 1
-                Else
-                    .Col = .ColLetterToNumber("C")
-                    .CellNote = ""
-                    .BackColor = mNonErrorColor
-                End If
-            Else
-                .ColLetterToNumber ("C")
-                .CellNote = ""
-                .BackColor = mNonErrorColor
-            End If
-      .Col = .ColLetterToNumber("B")
-      .Row = 48 + CountRow + i
-      i = i + 1
-      Loop Until .Text = "aa"
      .Sheet = .SheetCount
      .SetText .ColLetterToNumber("B"), 15, IIf(iFlagEmty = 1, "0", "1")
   
@@ -1307,7 +1180,7 @@ Public Function getValueTK(strFileLoadData As String) As String
     Exit Function
 
 ErrorHandle:
-    SaveErrorLog "cls_01BVMT", "getValueTK", Err.number, Err.Description
+    SaveErrorLog "cls_02PHLP", "getValueTK", Err.number, Err.Description
 End Function
 
 Public Function getDieuChinhGiam(strOldValue As String) As String
@@ -1393,7 +1266,7 @@ Function getMapCT() As String
     getMapCT = tempValue
     Exit Function
 ErrHandle:
-    SaveErrorLog "01_BVMT", "getMapCT", Err.number, Err.Description
+    SaveErrorLog "02_PHLP", "getMapCT", Err.number, Err.Description
 End Function
 
 ' Lay ve so tong dieu chinh
@@ -1434,7 +1307,7 @@ Public Function getValueCTDC(strFileLoadData As String) As String
     Exit Function
 
 ErrorHandle:
-    SaveErrorLog "cls_01BVMT", "getValueCTDC", Err.number, Err.Description
+    SaveErrorLog "cls_02PHLP", "getValueCTDC", Err.number, Err.Description
 End Function
 '******************************
 'Set trang thai Flag KHBS active
