@@ -715,7 +715,18 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
     With fps
         .EventEnabled(EventAllEvents) = False
         mCurrentSheet = .Sheet
-        
+        If .ActiveSheet = 1 Then
+            Dim i As Variant
+            i = 1
+            .Col = .ColLetterToNumber("B")
+            .Row = 49
+            Do
+                 .Text = str(i)
+                 .Col = .ColLetterToNumber("B")
+                 .Row = i + 49
+                 i = i + 1
+            Loop Until .Text = "aa"
+        End If
         .EventEnabled(EventAllEvents) = True
     End With
     'CellChange Col, Row

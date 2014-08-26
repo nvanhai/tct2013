@@ -310,4 +310,8 @@
 	<Infor ID="0317" Msg="B¹n ph¶i thùc hiÖn kª khai theo quý tõ kú 2/2014"/>	
 	<Infor ID="0318" Msg="Kú b¸o c¸o tõ ngµy kh«ng ®­îc nhá h¬n ngµy ®Çu th¸ng/quý"/>	
 	<Infor ID="0319" Msg="Kú b¸o c¸o ®Õn ngµy kh«ng ®­îc lín h¬n ngµy cuèi th¸ng/quý"/>
+	<Infor ID="0320" Msg="Hạch toán chỉ tiêu [25] + [36] vào tiểu mục 1003"/>
+	<Infor ID="0321" Msg="Hạch toán chỉ tiêu [28] + [31] vào tiểu mục 1001"/>
+	<Infor ID="0322" Msg="Hạch toán chỉ tiêu [23] + [30] vào mục 1000, tiểu mục 1003"/>
+	<Infor ID="0323" Msg="Hạch toán chỉ tiêu [25] + [27] vào mục 1000, tiểu mục 1001"/>
 </Message>

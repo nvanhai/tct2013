@@ -5,12 +5,12 @@ Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Begin VB.Form frmInterfaces 
    AutoRedraw      =   -1  'True
    Caption         =   "Hç trî kª khai - Phiªn b¶n 2.5.0"
-   ClientHeight    =   8070
+   ClientHeight    =   8415
    ClientLeft      =   165
    ClientTop       =   450
-   ClientWidth     =   11280
+   ClientWidth     =   14655
    BeginProperty Font 
-      Name            =   "DS Sans Serif"
+      Name            =   "Arial"
       Size            =   8.25
       Charset         =   0
       Weight          =   400
@@ -22,8 +22,8 @@ Begin VB.Form frmInterfaces
    KeyPreview      =   -1  'True
    LinkTopic       =   "frmInterfaces"
    LockControls    =   -1  'True
-   ScaleHeight     =   8070
-   ScaleWidth      =   11280
+   ScaleHeight     =   8415
+   ScaleWidth      =   14655
    Visible         =   0   'False
    WindowState     =   2  'Maximized
    Begin VB.Frame Frame3 
@@ -92,7 +92,7 @@ Begin VB.Form frmInterfaces
       Begin VB.Label Lbload 
          Caption         =   "§ang xö lý ..."
          BeginProperty Font 
-            Name            =   "DS Sans Serif"
+            Name            =   "Arial"
             Size            =   9.75
             Charset         =   0
             Weight          =   700
@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":1969
+         SpreadDesigner  =   "frmInterfaces.frx":19A5
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1BF1
+      SpreadDesigner  =   "frmInterfaces.frx":1C69
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -5846,8 +5846,8 @@ Private Sub cmdInsert_Click()
                 objTaxBusiness.LockCellBySheet
             End If
         End If
-        ' to khai 03A_GTGT
-        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "88" Then
+        ' to khai 02_PHLP,02_TNCN_BHDC
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "26" Then
             If Not objTaxBusiness Is Nothing Then
                 objTaxBusiness.LockCellBySheet
             End If
@@ -6780,7 +6780,7 @@ Private Sub cmdSave_Click()
     varMenuId = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
     
     If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "96" _
-    Or varMenuId = "94" Or varMenuId = "98" Or varMenuId = "99" Or varMenuId = "92") Then
+    Or varMenuId = "94" Or varMenuId = "98" Or varMenuId = "99" Or varMenuId = "92" Or varMenuId = "26") Then
         TonghopKHBS
     End If
     
@@ -6861,7 +6861,7 @@ Private Sub cmdSave_Click()
     End If
     
     ' Set lai co isNewDataBS sau khi bam nut ghi
-    If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "96" _
+    If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "26" Or varMenuId = "96" _
     Or varMenuId = "94" Or varMenuId = "98" Or varMenuId = "99" Or varMenuId = "92") Then
         isNewdataBS = False
     End If
@@ -7761,6 +7761,10 @@ ErrorHandle:
     SaveErrorLog Me.Name, "Form_Activate", Err.Number, Err.Description
 End Sub
 
+Public Sub SetAmerican()
+    'Call SetThreadLocale(LANG_EN_US)
+End Sub
+
 ''' Form_KeyDown description
 ''' Form keydown event:
 ''' When user press F1 -> process help
@@ -7868,7 +7872,8 @@ Private Sub Form_Load()
         Set objTaxBusiness = CreateObject(GetAttribute(TAX_Utilities_v1.NodeValidity, "Class"))
         Set objTaxBusiness.fps = fpSpread1
             ' to khai GTGT se co to khai thang / quy
-        If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "95" Or idMenu = "88" Or idMenu = "71" Or idMenu = "36" Or idMenu = "25" Or idMenu = "68" Or idMenu = "14" Or idMenu = "96" _
+        'todo thang-quy
+        If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "95" Or idMenu = "71" Or idMenu = "36" Or idMenu = "25" Or idMenu = "68" Or idMenu = "14" Or idMenu = "96" _
         Or idMenu = "94" Or idMenu = "65" Or idMenu = "18" Then
              objTaxBusiness.strTkThangQuy = strQuy
              If strQuy = "TK_THANG" Then
@@ -8030,7 +8035,7 @@ Private Sub Form_Load()
     ' tesst
     If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" _
     Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" _
-    Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "96" _
+    Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "26" Or varMenuId = "96" _
     Or varMenuId = "94" Or varMenuId = "99" Or varMenuId = "92" Or varMenuId = "98") Then
         fpSpread1.sheet = fpSpread1.SheetCount - 1
         fpSpread1.SheetVisible = True
@@ -10769,7 +10774,7 @@ Private Sub ResizeButton()
     ' set cac to khai bo sung theo TT28 moi hien thi nut tong hop to khai
     If strKHBS = "TKBS" And (menuID = "01" Or menuID = "02" Or menuID = "04" Or menuID = "71" Or menuID = "72" _
     Or menuID = "11" Or menuID = "12" Or menuID = "06" Or menuID = "05" Or menuID = "86" Or menuID = "87" Or menuID = "89" Or menuID = "77" Or menuID = "03" Or menuID = "73" _
-    Or menuID = "80" Or menuID = "81" Or menuID = "70" Or menuID = "82" Or menuID = "83" Or menuID = "85" Or menuID = "90" Or menuID = "95" Or menuID = "88" Or menuID = "96" _
+    Or menuID = "80" Or menuID = "81" Or menuID = "70" Or menuID = "82" Or menuID = "83" Or menuID = "85" Or menuID = "90" Or menuID = "95" Or menuID = "88" Or menuID = "26" Or menuID = "96" _
     Or menuID = "94" Or menuID = "98" Or menuID = "99" Or menuID = "92") Then
         Command1.Visible = True
         Command1.Left = Frame1.Width - (8460 + 2700)
@@ -10869,7 +10874,7 @@ Private Sub ResetData()
     'vttoan: them ID (86,87,88) cua cac to (01_BVMT,02BVMT,01_PHXD)
     'dntai : them ID 77 to 02_TAIN
     idtkhai = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
-    If (idtkhai = "01" Or idtkhai = "02" Or idtkhai = "04" Or idtkhai = "11" Or idtkhai = "12" Or idtkhai = "06" Or idtkhai = "05" Or idtkhai = "70" Or idtkhai = "90" Or idtkhai = "72" Or idtkhai = "77" Or idtkhai = "75" Or idtkhai = "74" Or idtkhai = "23" Or idtkhai = "95" Or idtkhai = "88" Or idtkhai = "96" Or idtkhai = "94" Or idtkhai = "98" Or idtkhai = "99" Or idtkhai = "92") Then
+    If (idtkhai = "01" Or idtkhai = "02" Or idtkhai = "04" Or idtkhai = "11" Or idtkhai = "12" Or idtkhai = "06" Or idtkhai = "05" Or idtkhai = "70" Or idtkhai = "90" Or idtkhai = "72" Or idtkhai = "77" Or idtkhai = "75" Or idtkhai = "74" Or idtkhai = "23" Or idtkhai = "95" Or idtkhai = "88" Or idtkhai = "26" Or idtkhai = "96" Or idtkhai = "94" Or idtkhai = "98" Or idtkhai = "99" Or idtkhai = "92") Then
         For Each xmlNodeReset In TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
             fpSpread1.sheet = mCurrentSheet
             ParserCellID fpSpread1, GetAttribute(xmlNodeReset, "CellID"), lCol, lRow
@@ -10877,7 +10882,7 @@ Private Sub ResetData()
             fpSpread1.Row = lRow
 
             If ((idtkhai = "01" And (lRow < 22 Or lRow > 48)) Or (idtkhai = "02" And (lRow < 38 Or lRow > 54)) Or (idtkhai = "04" And (lRow < 34 Or lRow > 41)) Or (idtkhai = "11" And (lRow < 20 Or lRow > 35)) Or (idtkhai = "12" And (lRow < 34 Or lRow > 49)) Or (idtkhai = "06" And (lRow < 34 Or lRow > 48 + (TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 11) / 13)) Or (idtkhai = "05" And (lRow < 31 Or lRow > fpSpread1.MaxRows - 15)) Or (idtkhai = "70" And (lRow < 51 Or lRow > 58 + (TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 19) / 14)) Or (idtkhai = "77" And (lRow < 18 Or lRow > fpSpread1.MaxRows - 11)) _
-            Or (idtkhai = "75" And (lRow < 38 Or lRow > fpSpread1.MaxRows - 5)) Or (idtkhai = "74" And (lRow < 19 Or lRow > 61)) Or (idtkhai = "72" And (lRow < 43 Or lRow > 48)) Or (idtkhai = "95" And (lRow < 34 Or lRow > 44)) Or (idtkhai = "88" And (lRow < 34 Or lRow > 44))) And mCurrentSheet = 1 Then
+            Or (idtkhai = "75" And (lRow < 38 Or lRow > fpSpread1.MaxRows - 5)) Or (idtkhai = "74" And (lRow < 19 Or lRow > 61)) Or (idtkhai = "72" And (lRow < 43 Or lRow > 48)) Or (idtkhai = "95" And (lRow < 34 Or lRow > 44)) Or (idtkhai = "88" And (lRow < 39 Or lRow > 59)) Or (idtkhai = "26" And (lRow < 37 Or lRow > 60))) And mCurrentSheet = 1 Then
 
                 GoTo nextClear1
             ElseIf (idtkhai = "11" Or idtkhai = "12") And mCurrentSheet = 2 And lRow < 35 Then
