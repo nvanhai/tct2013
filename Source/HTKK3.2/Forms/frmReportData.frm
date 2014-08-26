@@ -126,7 +126,7 @@ Begin VB.Form frmReportData
       DisplayText     =   ""
       BarWidthReduction=   -1
       TextAlignment   =   0
-      Quality         =   68
+      Quality         =   0
    End
 End
 Attribute VB_Name = "frmReportData"
@@ -506,9 +506,9 @@ nextPrinter:
             fpsReport.Row = 34
             fpsReport.Col = fpsReport.ColLetterToNumber("C")
             fpsReport.SetText fpsReport.ColLetterToNumber("C"), 34, GetAttribute(GetMessageCellById("0264"), "Msg")
-            fpsReport.fontSize = 6
+            fpsReport.FontSize = 6
             fpsReport.Col = fpsReport.ColLetterToNumber("O")
-            fpsReport.fontSize = 7
+            fpsReport.FontSize = 7
 '            fpsReport.RowHeight(34) = 20
 '            fpsReport.Row = 67
 '            fpsReport.RowHeight(67) = 45
@@ -616,37 +616,37 @@ nextPrinter:
         Do
             fpsReport.Row = idx
             fpsReport.Col = fpsReport.ColLetterToNumber("M")
-            fpsReport.cellType = 1
+            fpsReport.CellType = 1
             fpsReport.TypeVAlign = TypeVAlignCenter
             'fpsReport.TypeTextWordWrap = True
             
             fpsReport.Col = fpsReport.ColLetterToNumber("AJ")
-            fpsReport.cellType = 1
+            fpsReport.CellType = 1
             fpsReport.TypeVAlign = TypeVAlignCenter
             'fpsReport.TypeTextWordWrap = True
             
             fpsReport.Col = fpsReport.ColLetterToNumber("AY")
-            fpsReport.cellType = 1
+            fpsReport.CellType = 1
             fpsReport.TypeVAlign = TypeVAlignCenter
             'fpsReport.TypeTextWordWrap = True
             
             fpsReport.Col = fpsReport.ColLetterToNumber("BK")
-            fpsReport.cellType = 1
+            fpsReport.CellType = 1
             fpsReport.TypeVAlign = TypeVAlignCenter
             'fpsReport.TypeTextWordWrap = True
             
             fpsReport.Col = fpsReport.ColLetterToNumber("BU")
-            fpsReport.cellType = 1
+            fpsReport.CellType = 1
             fpsReport.TypeVAlign = TypeVAlignCenter
             'fpsReport.TypeTextWordWrap = True
             
             fpsReport.Col = fpsReport.ColLetterToNumber("CC")
-            fpsReport.cellType = 1
+            fpsReport.CellType = 1
             fpsReport.TypeVAlign = TypeVAlignCenter
             'fpsReport.TypeTextWordWrap = True
             
             fpsReport.Col = fpsReport.ColLetterToNumber("CK")
-            fpsReport.cellType = 1
+            fpsReport.CellType = 1
             fpsReport.TypeVAlign = TypeVAlignCenter
             'fpsReport.TypeTextWordWrap = True
             
@@ -707,6 +707,10 @@ nextPrinter:
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0307"), "Msg")
     ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 96 Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0308"), "Msg")
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 25 Then
+        fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0322"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0323"), "Msg")
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 26 Then
+        fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0320"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0321"), "Msg")
     End If
     
     'KHBS khong thay doi so thue se ko in phu luc va co cau canh bao
@@ -854,13 +858,13 @@ On Error GoTo ErrHandle
                 For intRow = 1 To .MaxRows
                     .Col = intCol
                     .Row = intRow
-                    If .cellType = CellTypeNumber Then
+                    If .CellType = CellTypeNumber Then
                         .TypeNumberSeparator = "."
                         .TypeNumberDecimal = ","
                         .TypeNumberMax = 99999999999999#
                         .TypeNumberMin = -99999999999999#
                         .TypeNumberNegStyle = TypeNumberNegStyle1
-                    ElseIf .cellType = CellTypeEdit Then
+                    ElseIf .CellType = CellTypeEdit Then
                         .TypeEditMultiLine = True
                     End If
                     
@@ -1032,14 +1036,14 @@ On Error GoTo ErrHandle
     
     Printer.CurrentX = 0
     Printer.CurrentY = 0
-    Printer.fontSize = 1
+    Printer.FontSize = 1
     
     ' Begin print Barcode into page 1 or pages in PDF Barcode of iHTKK
     ' Ghep them the nhan dang ma vach <TCT-BARCODE> chuoi ma vach </TCT-BARCODE>
     strBarcodeInPDF = "<TCT-BARCODE>" & strBarcodeInPDF & "</TCT-BARCODE>"
     arrStrValueBarCode = CutStringByNumChar(strBarcodeInPDF, 124)
     For i = 1 To UBound(arrStrValueBarCode)
-        Printer.fontSize = 1
+        Printer.FontSize = 1
         Printer.ForeColor = vbWhite
         Printer.Print arrStrValueBarCode(i)
         Printer.ForeColor = vbBlack
@@ -1313,7 +1317,7 @@ On Error GoTo ErrHandle
 
                 'Printer.CurrentY = Printer.ScaleHeight - Printer.ScaleY(0.13, vbInches)     'Printer.ScaleY(4, vbMillimeters) ' Printer.ScaleY(280, vbMillimeters)
                 Printer.ForeColor = vbBlack
-                Printer.fontSize = 8
+                Printer.FontSize = 8
                 Printer.Print "Trang " & intCurrPage & "/" & lPageNumber
             End If
             
@@ -1809,7 +1813,7 @@ Private Sub LoadInitFiles()
                 If Val(GetAttribute(xmlNode, "MaxLen")) <> 0 Then
                     fpsReport.TypeMaxEditLen = Val(GetAttribute(xmlNode, "MaxLen"))
                 End If
-                If fpsReport.cellType = CellTypeNumber Then
+                If fpsReport.CellType = CellTypeNumber Then
                     fpsReport.TypeNumberMin = Val(GetAttribute(xmlNode, "MinValue"))
                     fpsReport.TypeNumberMax = Val(GetAttribute(xmlNode, "MaxValue"))
                 End If
@@ -1960,7 +1964,7 @@ On Error GoTo ErrHandle
 
                 'Printer.CurrentY = Printer.ScaleHeight - Printer.ScaleY(0.13, vbInches)     'Printer.ScaleY(4, vbMillimeters) ' Printer.ScaleY(280, vbMillimeters)
                 Printer.ForeColor = vbBlack
-                Printer.fontSize = 8
+                Printer.FontSize = 8
                 Printer.Print "Trang " & intCurrPage & "/" & lPageNumber
             End If
             

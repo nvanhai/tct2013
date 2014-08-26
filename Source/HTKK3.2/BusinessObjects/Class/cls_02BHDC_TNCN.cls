@@ -63,31 +63,31 @@ Public Sub Prepare2()
         .Sheet = 1
         mCurrentSheet = .Sheet
         
-        If Strloaitk = "TKCT" And StrSolanBosung = "" Then
-            .Col = .ColLetterToNumber("C")
-            .Row = 48
-            .Text = 1
-            UpdateCell fps, .Col, .Row, .Text
-            .Col = .ColLetterToNumber("I")
-            .Row = 48
-            .Text = ""
-            UpdateCell fps, .Col, .Row, .Text
-        ElseIf Strloaitk = "TKCT" And Val(StrSolanBosung) > 0 Then
-            .Col = .ColLetterToNumber("C")
-            .Row = 48
-            .Text = ""
-            UpdateCell fps, .Col, .Row, .Text
-            .Col = .ColLetterToNumber("I")
-            .Row = 48
-            .Text = StrSolanBosung
-            UpdateCell fps, .Col, .Row, .Text
-            
-            ' Neu la truong hop bo sung thi hien thi cot C trong bang ke 2A (Có dieu chinh so lieu)
-            .Sheet = 2
-            .Col = .ColLetterToNumber("C")
-            .ColHidden = False
-            
-        End If
+'        If Strloaitk = "TKCT" And StrSolanBosung = "" Then
+'            .Col = .ColLetterToNumber("C")
+'            .Row = 48
+'            .Text = 1
+'            UpdateCell fps, .Col, .Row, .Text
+'            .Col = .ColLetterToNumber("I")
+'            .Row = 48
+'            .Text = ""
+'            UpdateCell fps, .Col, .Row, .Text
+'        ElseIf Strloaitk = "TKCT" And Val(StrSolanBosung) > 0 Then
+'            .Col = .ColLetterToNumber("C")
+'            .Row = 48
+'            .Text = ""
+'            UpdateCell fps, .Col, .Row, .Text
+'            .Col = .ColLetterToNumber("I")
+'            .Row = 48
+'            .Text = StrSolanBosung
+'            UpdateCell fps, .Col, .Row, .Text
+'
+'            ' Neu la truong hop bo sung thi hien thi cot C trong bang ke 2A (Có dieu chinh so lieu)
+'            .Sheet = 2
+'            .Col = .ColLetterToNumber("C")
+'            .ColHidden = False
+'
+'        End If
         
         .Sheet = 2
         .ActiveSheet = .Sheet
@@ -468,12 +468,12 @@ Private Sub CheckDynamicError()
     With fps
         tSheet = .Sheet
         'If flgLoadToKhai = True Then Exit Sub
-        
+
         'get MST cua DTNT
         .Sheet = 1
         .GetText .ColLetterToNumber("D"), 10, MSTDTNT
         MSTDTNT = Trim(MSTDTNT)
-        
+
         'check thong tin header khong dc trong
         'lay vi tri header tren tk theo thu tu MSTDL, TENDLT, DIACHIDLT,QUAN/HUYEN,TP,SO HDDLT,NGAYDH,Ten NV DLT, CC Hanh Nghe
 
@@ -484,7 +484,7 @@ Private Sub CheckDynamicError()
         checkErrorHeader fps, viTriHeaderTk, viTriSheetHeader, mangMessage, MSTDTNT
         
         .Sheet = tSheet
-        
+
         CheckErrorMST
         ' Neu ton tai file data bang ke 05A thi kiem tra tren bang ke 5A
         If IIf(TAX_Utilities_v1.NodeValidity.childNodes(.SheetCount - 3).Attributes.getNamedItem("Active").nodeValue <> "0", True, False) Then
