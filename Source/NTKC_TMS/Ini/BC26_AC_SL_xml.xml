@@ -28,7 +28,7 @@
 	</Static>
 	<Dynamic GroupName="HoaDon">
 		<ChiTiet id="ID_1">
-			<maHoaDon>C_32</maHoaDon>
+			<maHoaDon>AF_32</maHoaDon>
 			<tenHDon>D_32</tenHDon>
 			<kHieuMauHDon>J_32</kHieuMauHDon>
 			<hinhThucHDon>K_32</hinhThucHDon>

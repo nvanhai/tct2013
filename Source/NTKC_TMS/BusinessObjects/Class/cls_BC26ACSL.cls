@@ -247,9 +247,40 @@ Dim blnValid As Boolean
 '        End If
 
         'Set mahoadon vao cell an dung ket xuat XML
+        Dim kyHieu As Variant
+        Dim maHD As String
+        .Row = 32
+        Do
+            .GetText .ColLetterToNumber("J"), .Row, kyHieu
+            GetMaHoaDon kyHieu, maHD
+            If maHD <> "" Then
+                .Col = .ColLetterToNumber("AF")
+                .Text = maHD
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+            
+            .Col = .ColLetterToNumber("B")
+            .Row = .Row + 1
+            
+        Loop Until .Text = "aa"
+
+        .Sheet = 3 'Phu luc PL_BK02
+        If fps.SheetVisible Then
+            .Row = 45
+            Do
+                .GetText .ColLetterToNumber("O"), .Row, kyHieu
+                GetMaHoaDon kyHieu, maHD
+                If maHD <> "" Then
+                    .Col = .ColLetterToNumber("AK")
+                    .Text = maHD
+                    UpdateCell fps, .Col, .Row, .Text
+                End If
+                .Col = .ColLetterToNumber("B")
+                .Row = .Row + 1
+            Loop Until .Text = "aa"
+        End If
+        ' Ket thuc lay mahoadon vao cell an
         
-
-
         .EventEnabled(EventAllEvents) = True
     End With
     
