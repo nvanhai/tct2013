@@ -19,7 +19,7 @@
 	<Dynamic GroupName="BKThueNTNN">
 		<ThueNTNN id="ID_1">
 			<ct1>C_55</ct1>
-			<ct2>L_55</ct2>
+			<ct2 TINType="1">L_55</ct2>
 			<ct3>R_55</ct3>
 			<ct4>X_55</ct4>
 			<ct5>AD_55</ct5>

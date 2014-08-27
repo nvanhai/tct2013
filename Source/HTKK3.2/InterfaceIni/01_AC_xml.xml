@@ -23,7 +23,7 @@
 	</Static>
 	<Dynamic GroupName="HoaDon">
 		<ChiTietHoaDon id="id">
-				<mst>C_22</mst>
+				<mst TINType="1">C_22</mst>
 				<ten>D_22</ten>
 				<diaChi>E_22</diaChi>
 				<so>F_22</so>
