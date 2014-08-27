@@ -8025,7 +8025,7 @@ Private Sub Form_Load()
         
         objTaxBusiness.Prepare2
         ' set han nop tk
-        If idMenu = "11" Or idMenu = "12" Then
+        If idMenu = "11" Or idMenu = "12" Or idMenu = "03" Then
             objTaxBusiness.hanNopTKTNDN = GetHanNopTk
         End If
     End If

@@ -77,6 +77,8 @@ Public FlagThaydoi As String
 Public strLoaiNNKD As String
 
 
+Public hanNopTKTNDN As String
+
 ' Kiem tra thong tin dai ly thue
 ' Neu khong co DL thue se an cac row nay di
 Public FlagDLThue As Boolean
@@ -445,30 +447,43 @@ Public Sub Prepare2()
             .Lock = False
         End If
         ' End check
-        
-'        ' Lay ve row check gia han
-'        Dim count As Integer
-'        count = 0
-'        .Sheet = 1
-'        .Row = 60
-'        .Col = .ColLetterToNumber("B")
-'        Do
-'            count = count + 1
-'            .Row = .Row + 1
-'        Loop Until .Text = "aa"
-'        ' Neu check gia han moi cho phep chon GT
-'        .Col = .ColLetterToNumber("B")
-'        .Row = 61 + count
-'        If .Text = "1" Or UCase$(.Text) = "X" Then
-'            .Col = .ColLetterToNumber("D")
-'            .Row = 62 + count
-'            .Lock = False
-'        Else
-'            .Col = .ColLetterToNumber("D")
-'            .Row = 62 + count
-'            .Lock = True
-'        End If
-'        ' End set gia han
+        ' Neu check gia han moi cho phep chon GT
+        .Col = .ColLetterToNumber("F")
+        .Row = 74
+        If .Text = "1" Or UCase$(.Text) = "X" Then
+            .Col = .ColLetterToNumber("I")
+            .Row = 76
+            .Lock = False
+            
+            .Col = .ColLetterToNumber("I")
+            .Row = 78
+            .Lock = False
+            
+            .Col = .ColLetterToNumber("I")
+            .Row = 80
+            .Lock = False
+            
+            .Col = .ColLetterToNumber("I")
+            .Row = 82
+            .Lock = False
+        Else
+            .Col = .ColLetterToNumber("I")
+            .Row = 76
+            .Lock = True
+            
+            .Col = .ColLetterToNumber("I")
+            .Row = 78
+            .Lock = True
+            
+            .Col = .ColLetterToNumber("I")
+            .Row = 80
+            .Lock = True
+            
+            .Col = .ColLetterToNumber("I")
+            .Row = 82
+            .Lock = True
+        End If
+        ' End set gia han
      .EventEnabled(EventAllEvents) = True
     .ActiveSheet = 1
     .Sheet = 1
@@ -1110,41 +1125,239 @@ Private Sub CheckDynamicError()
     Dim vMSTCheckTrung As Variant
     
     ' PL03-6
-    Dim vSTT, vCTieu, vTyLe, vThueGTGT As Variant
     Dim blCheck_S12 As Boolean
-    Dim iWhiteRow As Integer, iFlagCtieu As Integer, iFlagMST As Integer
-    Dim errCTieu, vMSTtemp, alertThueTNDN As Variant
-    Dim strCheck As String
-    Dim vThuePL05 As Variant
-    Dim tempRow As Long, tempRow1 As Long
+    Dim iWhiteRow As Integer, iFlagMST As Integer
+
+
+
+
     ' end
     ' PL 03-3A
     Dim vCtieu1, vCTieu5, vCTieuC4TK As Variant
     Dim vErrCtieuC4 As Variant
-    ' lSheet
-    Dim lSheet03_2A As Long, lSheet03_2B As Long, lSheet03_3A As Long, lSheet03_3B As Long, lSheet03_3C As Long
-    Dim lSheet03_4 As Long, lSheet03_5 As Long, lSheet03_05 As Long
-    Dim lSheet03_6 As Long, lSheet03_7 As Long
     
     ' check gh
-    Dim vCheckGH, vLyDoGH, vErrorCheckGH As Variant
-    Dim iflagCheckGH As Integer, count As Integer
+    Dim vCheckGH As Variant, vLyDoGH As Variant, vErrorCheckGH As Variant, vThoiHanGH As Variant, vErrorCheckThoiHanGH As Variant, vSoThueGH As Variant, vErrorCheckSoThueGH As Variant
+    Dim iflagCheckGH As Integer, iflagCheckThoiHanGH As Integer, iflagCheckSoThueGH As Integer
+    Dim arrDateGH() As String
+    Dim arrDateHanNop() As String
+    Dim vErrorCheckHN As Variant
+    ' end
     
-    Dim isCheckGh As Boolean
+    ' check TK
+    Dim pL_3A_U50, pL_3B_U60 As Double
+    Dim pL_3A_U56, pL_3B_U65, pL_3C_X43 As Double
+    Dim blCheck_S3A, blCheck_S3B, blCheck_S3C As Boolean
     
-    lSheet03_3A = 7
-    lSheet03_3B = 8
-    lSheet03_3C = 9
-    lSheet03_4 = 10
-    lSheet03_5 = 11
-    lSheet03_05 = 12
-    lSheet03_6 = 13
-    lSheet03_7 = 14
+    Dim vCheckLienKet, vCheckCSHachToan As Variant
+    Dim errCheckLienKet, errCheckCSHachToan As Variant
+    Dim iFlagCheckLienKet As Integer, iFlagCheckCSHachToan As Integer
     
+    iFlagCheckLienKet = 0
+    iFlagCheckCSHachToan = 0
     
     CheckErrorMST
     With fps
         .EventEnabled(EventAllEvents) = False
+        ' check validate TK
+        .Sheet = .SheetCount
+        ' xy ly to khai
+        .GetText .ColLetterToNumber("E"), 47, errCheckCSHachToan
+        .GetText .ColLetterToNumber("E"), 48, errCheckLienKet
+        
+        .GetText .ColLetterToNumber("E"), 46, vErrorCheckGH
+        .GetText .ColLetterToNumber("E"), 53, vErrorCheckThoiHanGH
+        .GetText .ColLetterToNumber("E"), 52, vErrorCheckHN
+        .GetText .ColLetterToNumber("E"), 54, vErrorCheckSoThueGH
+        
+        ' end
+        
+        .Sheet = sheetTK03_TNDN
+        .GetText .ColLetterToNumber("D"), 10, vCheckCSHachToan
+        .GetText .ColLetterToNumber("D"), 12, vCheckLienKet
+        
+        If vCheckCSHachToan = "1" Or UCase$(vCheckCSHachToan) = "X" Then
+            iFlagCheckCSHachToan = 1
+        End If
+        
+        If vCheckLienKet = "1" Or UCase$(vCheckLienKet) = "X" Then
+            iFlagCheckLienKet = 1
+        End If
+        
+        blCheck_S3A = IIf(TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_3A_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        blCheck_S3B = IIf(TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_3B_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        blCheck_S3C = IIf(TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_3C_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+        ' Lay gia tri cua chi tieu dong trong PL 03-3A, 03-3B, 03-3C
+        pL_3A_U50 = Sum_Cell(sheetPl03_3A_TNDN, 50, .ColLetterToNumber("U")) 'PL 03-3A
+        pL_3B_U60 = Sum_Cell(sheetPl03_3B_TNDN, 60, .ColLetterToNumber("U")) 'PL 03-3B
+'        ' Lay gia tri chi tieu C8 tren to khai quyet toan
+        mCurrentSheet = 1
+        .Sheet = mCurrentSheet
+        If blCheck_S3A = True Or blCheck_S3B = True Then
+            Dim vC59 As Variant
+            .GetText .ColLetterToNumber("O"), 59, vC59
+            If (vC59 = pL_3A_U50 + pL_3B_U60) Then
+                ' Update gia tri dung (khong loi) trong sheet header
+                .Sheet = .SheetCount
+                .SetText .ColLetterToNumber("B"), 23, "1"
+                ' Chuyen chi tieu C11 ve trang thai dung
+                mCurrentSheet = 1
+                .Sheet = 1
+                .Col = .ColLetterToNumber("O")
+                .Row = 59
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+            Else
+                ' Update gia tri sai (co loi) trong sheet header
+                .Sheet = .SheetCount
+                .SetText .ColLetterToNumber("B"), 23, "0"
+                ' Lay thong bao loi
+                .GetText .ColLetterToNumber("E"), 23, vErrMsg1
+                ' Chuyen chi tieu ve trang thai loi
+                mCurrentSheet = 1
+                .Sheet = 1
+                .Col = .ColLetterToNumber("O")
+                .Row = 59
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = vErrMsg1 'static
+                .BackColor = mErrorColor
+            End If
+        End If
+'        ' Lay gia tri dong o cac Phu Luc tuong ung
+        pL_3A_U56 = Sum_Cell(sheetPl03_3A_TNDN, 56, .ColLetterToNumber("U"))
+        pL_3B_U65 = Sum_Cell(sheetPl03_3B_TNDN, 65, .ColLetterToNumber("U"))
+        pL_3C_X43 = Sum_Cell(sheetPl03_3C_TNDN, 43, .ColLetterToNumber("X"))
+'        ' Lay gia tri cua chi tieu C8 tren to khai
+        mCurrentSheet = 1
+        .Sheet = mCurrentSheet
+        If blCheck_S3A = True Or blCheck_S3B = True Or blCheck_S3C = True Then
+            Dim vC60 As Variant
+            .GetText .ColLetterToNumber("O"), 60, vC60
+            If (vC60 = pL_3A_U56 + pL_3B_U65 + pL_3C_X43) Then
+                ' Update gia tri dung trong sheet header
+                .Sheet = .SheetCount
+                .SetText .ColLetterToNumber("B"), 24, "1"
+                ' Chuyen trang thai dung cho C9
+                mCurrentSheet = 1
+                .Sheet = 1
+                .Col = .ColLetterToNumber("O")
+                .Row = 60
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+            Else
+                ' Update gia tri sai trong sheet header
+                .Sheet = .SheetCount
+                .SetText .ColLetterToNumber("B"), 24, "0"
+                ' Lay thong bao loi
+                Dim vErrMsg2 As Variant
+                .GetText .ColLetterToNumber("E"), 24, vErrMsg2
+                ' Chuyen C9 ve trang thai bao loi
+                mCurrentSheet = 1
+                .Sheet = 1
+                .Col = .ColLetterToNumber("O")
+                .Row = 60
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = vErrMsg2 'static
+                .BackColor = mErrorColor
+            End If
+        End If
+        
+        ' check gia han
+        .Sheet = 1
+        .GetText .ColLetterToNumber("F"), 74, vCheckGH
+        .GetText .ColLetterToNumber("I"), 76, vLyDoGH
+        .GetText .ColLetterToNumber("I"), 78, vThoiHanGH
+        .GetText .ColLetterToNumber("I"), 80, vSoThueGH
+        
+         If (Trim$(vCheckGH) = "1" Or Trim$(UCase$(vCheckGH)) = "X") Then
+             ' Kiem tra ly do gia han
+             If Trim$(vLyDoGH) = "" Then
+                 .Col = .ColLetterToNumber("I")
+                 .Row = 76
+                 .CellNote = vErrorCheckGH  'static
+                 .BackColor = mErrorColor
+                 iflagCheckGH = 1
+             Else
+                 .Col = .ColLetterToNumber("I")
+                 .Row = 76
+                 .CellNote = ""  'static
+                 .BackColor = mNonErrorColor
+                 iflagCheckGH = 0
+             End If
+             ' Kiem tra thoi han gia han
+             If Trim$(vThoiHanGH) = "" Or Trim$(vThoiHanGH) = "../../...." Then
+                 .Col = .ColLetterToNumber("I")
+                 .Row = 78
+                 .CellNote = vErrorCheckThoiHanGH  'static
+                 .BackColor = mErrorColor
+                 iflagCheckThoiHanGH = 1
+             Else
+                 ' kiem tra han nop
+                 arrDateGH = Split(vThoiHanGH, "/")
+                 arrDateHanNop = Split(hanNopTKTNDN, "/")
+                 Dim dThoiHanGH As Date
+                 Dim dHanNop As Date
+
+                dThoiHanGH = DateSerial(CInt(arrDateGH(2)), CInt(arrDateGH(1)), CInt(arrDateGH(0)))
+                dHanNop = DateSerial(CInt(arrDateHanNop(2)), CInt(arrDateHanNop(1)), CInt(arrDateHanNop(0)))
+                If DateDiff("D", dThoiHanGH, dHanNop) > 0 Then
+                    
+                    .Col = .ColLetterToNumber("I")
+                    .Row = 78
+                    .CellNote = vErrorCheckHN  'static
+                    .BackColor = mAlertColor
+                Else
+                    .Col = .ColLetterToNumber("I")
+                    .Row = 78
+                    .CellNote = ""  'static
+                    .BackColor = mNonErrorColor
+                 End If
+             End If
+             ' Kiem tra so thue
+             If Val(vSoThueGH) <= 0 Then
+                 .Col = .ColLetterToNumber("I")
+                 .Row = 80
+                 .CellNote = vErrorCheckSoThueGH
+                 .BackColor = mErrorColor
+                 iflagCheckSoThueGH = 1
+             Else
+                 .Col = .ColLetterToNumber("I")
+                 .Row = 80
+                 .CellNote = ""  'static
+                 .BackColor = mNonErrorColor
+                 iflagCheckSoThueGH = 0
+             End If
+             
+         Else
+                ' Ly do gia han
+                 .Col = .ColLetterToNumber("I")
+                 .Row = 76
+                 .CellNote = ""  'static
+                 .BackColor = mNonErrorColor
+                 iflagCheckGH = 0
+                 ' Thoi han gia han
+                 .Col = .ColLetterToNumber("I")
+                 .Row = 78
+                 .CellNote = ""  'static
+                 .BackColor = mNonErrorColor
+                 iflagCheckThoiHanGH = 0
+                 ' So thue gia han
+                 .Col = .ColLetterToNumber("I")
+                 .Row = 80
+                 .CellNote = ""  'static
+                 .BackColor = mNonErrorColor
+                 iflagCheckSoThueGH = 0
+         End If
+         
+         .Sheet = .SheetCount
+        .SetText .ColLetterToNumber("B"), 46, IIf(iflagCheckGH = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 53, IIf(iflagCheckThoiHanGH = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 54, IIf(iflagCheckSoThueGH = 1, "0", "1")
+        
+        .SetText .ColLetterToNumber("B"), 47, IIf(iFlagCheckCSHachToan = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 48, IIf(iFlagCheckLienKet = 1, "0", "1")
+        
+        
         ' Phu Luc 03-1A
         .Sheet = 2
         blCheck_S03_1A = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
@@ -1164,66 +1377,66 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 46, vErrorCheckGH
         
         ' check ly do gia han
-        If TAX_Utilities_v1.Year = 2009 Then
-            isCheckGh = False
-        ElseIf TAX_Utilities_v1.Year = 2010 Then
-            isCheckGh = False
-        ElseIf TAX_Utilities_v1.Year = 2011 Then
-            isCheckGh = False
-        Else
-             isCheckGh = True
-        End If
-        
-        
-        
-        .Sheet = 1
-         count = 0
-        .Row = 60
-        .Col = .ColLetterToNumber("B")
-        Do
-            count = count + 1
-            .Row = .Row + 1
-        Loop Until .Text = "aa"
-        
-        .GetText .ColLetterToNumber("B"), 61 + count, vCheckGH
-        
-        .GetText .ColLetterToNumber("D"), 62 + count, vLyDoGH
-         If (Trim(vCheckGH) = "1" Or Trim$(UCase(vCheckGH)) = "X") And isCheckGh Then
-             If Trim$(vLyDoGH) = "" Then
-                 .Col = .ColLetterToNumber("D")
-                 .Row = 62 + count
-                 .CellNote = vErrorCheckGH  'static
-                 .BackColor = mErrorColor
-                 iflagCheckGH = 1
-             Else
-                 .Col = .ColLetterToNumber("D")
-                 .Row = 62 + count
-                 .CellNote = ""  'static
-                 .BackColor = mNonErrorColor
-                 iflagCheckGH = 0
-             End If
-         Else
-                 .Col = .ColLetterToNumber("D")
-                 .Row = 62 + count
-                 .CellNote = ""  'static
-                 .BackColor = mNonErrorColor
-                 iflagCheckGH = 0
-         End If
-        .Sheet = .SheetCount
-        .SetText .ColLetterToNumber("B"), 46, IIf(iflagCheckGH = 1, "0", "1")
+'        If TAX_Utilities_v1.Year = 2009 Then
+'            isCheckGh = False
+'        ElseIf TAX_Utilities_v1.Year = 2010 Then
+'            isCheckGh = False
+'        ElseIf TAX_Utilities_v1.Year = 2011 Then
+'            isCheckGh = False
+'        Else
+'             isCheckGh = True
+'        End If
+'
+'
+'
+'        .Sheet = 1
+'         count = 0
+'        .Row = 60
+'        .Col = .ColLetterToNumber("B")
+'        Do
+'            count = count + 1
+'            .Row = .Row + 1
+'        Loop Until .Text = "aa"
+'
+'        .GetText .ColLetterToNumber("B"), 61 + count, vCheckGH
+'
+'        .GetText .ColLetterToNumber("D"), 62 + count, vLyDoGH
+'         If (Trim(vCheckGH) = "1" Or Trim$(UCase(vCheckGH)) = "X") And isCheckGh Then
+'             If Trim$(vLyDoGH) = "" Then
+'                 .Col = .ColLetterToNumber("D")
+'                 .Row = 62 + count
+'                 .CellNote = vErrorCheckGH  'static
+'                 .BackColor = mErrorColor
+'                 iflagCheckGH = 1
+'             Else
+'                 .Col = .ColLetterToNumber("D")
+'                 .Row = 62 + count
+'                 .CellNote = ""  'static
+'                 .BackColor = mNonErrorColor
+'                 iflagCheckGH = 0
+'             End If
+'         Else
+'                 .Col = .ColLetterToNumber("D")
+'                 .Row = 62 + count
+'                 .CellNote = ""  'static
+'                 .BackColor = mNonErrorColor
+'                 iflagCheckGH = 0
+'         End If
+'        .Sheet = .SheetCount
+'        .SetText .ColLetterToNumber("B"), 46, IIf(iflagCheckGH = 1, "0", "1")
         
         
         ' Kiem tra validate cua PL 03-3C
-        .Sheet = lSheet03_3C
+        .Sheet = sheetPl03_3C_TNDN
         blCheck_S03_3C = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         If blCheck_S03_3C = True Then
             checkPL03_3C
         End If
         
         
-        ' Chuyen ve Sheet 9 (Phu Luc 03-4) lay gia tri cac cot can validate du lieu
-        mCurrentSheet = lSheet03_4
-        .Sheet = lSheet03_4
+        ' Check validate PL 03-4
+        mCurrentSheet = sheetPl03_4_TNDN
+        .Sheet = sheetPl03_4_TNDN
         blCheck_S03_4 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         If blCheck_S03_4 = True Then
             XacDinhLoi = False
@@ -1289,140 +1502,140 @@ Private Sub CheckDynamicError()
          End If
         
         ' Check phu  luc 05
-        .Sheet = lSheet03_05
-        If .SheetVisible = True Then
-            mCurrentSheet = .Sheet
-            .GetText .ColLetterToNumber("F"), 38, vMSTDN
-            iFlagEmpty = 0
-            'check not empty ten doanh nghiep
-            .Row = 39
-            Do
-            .Col = .ColLetterToNumber("F")
-            strValue = .Text
-            'check du lieu bat buoc phai nhap
-            If (strValue = "") Then
-                .Col = .ColLetterToNumber("F")
-                .BackColor = mErrorColor
-                .CellNote = errEmty
-                iFlagEmpty = 1
-            Else
-                .Col = .ColLetterToNumber("F")
-                .BackColor = mNonErrorColor
-                .CellNote = ""
-                'iFlagEmpty = 0
-            End If
-            'lay du lieu nhap vao
-            .GetText .ColLetterToNumber("E"), .Row, strKyHieu
-            If strKyHieu = "T" And Val(iFlagTongPhanBo) = 0 Then
-                .Col = .ColLetterToNumber("L")
-                .BackColor = mErrorColor
-                .CellNote = errTongTLPB
-            ElseIf Val(iFlagTongPhanBo) = 1 Then
-                .Col = .ColLetterToNumber("L")
-                .BackColor = mNonErrorColor
-                .CellNote = ""
-            End If
-            If strKyHieu = "M" And .Row <> 38 Then
-                
-                .Col = .ColLetterToNumber("F")
-                vMST = .Text
-                vMSTCheckTrung = vMST
-                If vMST <> vbNullString Then
-                    vMST = Replace(vMST, " ", "")
-                    'check MST 14 ky tu
-                    If Len(vMST) = 14 And Mid(vMST, 11, 1) = "-" Then
-                        vMST = Replace(vMST, "-", "")
-                    End If
-                    strCheckMST = ""
-                    If Len(vMST) = 10 Or Len(vMST) = 13 Then
-                        strCheckMST = CheckTaxCode(Mid(vMST, 1, 1), Mid(vMST, 2, 1), Mid(vMST, 3, 1), Mid(vMST, 4, 1), Mid(vMST, 5, 1), Mid(vMST, 6, 1), Mid(vMST, 7, 1), Mid(vMST, 8, 1), Mid(vMST, 9, 1), Mid(vMST, 10, 1), Mid(vMST, 11, 1), Mid(vMST, 12, 1), Mid(vMST, 13, 1))
-                        If Left(vMST, 10) <> Left(Trim(vMSTDN), 10) Then
-                            .Col = .ColLetterToNumber("F")
-                            .BackColor = mErrorColor
-                            .CellNote = errMSTDN
-                            iFlagCheckMaSTDN = 1
-                        ElseIf Len(vMST) = 10 And strCheckMST = "000" Then
-                            .Col = .ColLetterToNumber("F")
-                            .BackColor = mErrorColor
-                            .CellNote = errMst10
-                            iFlagCheckMaSTDN10 = 1
-                        ElseIf Len(vMST) = 10 And strCheckMST <> "000" Then
-                            .Col = .ColLetterToNumber("F")
-                            .BackColor = mErrorColor
-                            .CellNote = errMST
-                            iFlagCheckMaST = 1
-                        ElseIf Len(vMST) = 13 And (strCheckMST <> "000" Or IsNumeric(vMST) = False) Then
-                            .Col = .ColLetterToNumber("F")
-                            .BackColor = mErrorColor
-                            .CellNote = errMST
-                            iFlagCheckMaST = 1
-                        Else
-                            .Col = .ColLetterToNumber("F")
-                            .BackColor = mNonErrorColor
-                            .CellNote = ""
-                            'iFlagCheckMaST = 0
-                        End If
-                    ElseIf Len(vMST) <> 10 Or Len(vMST) <> 13 Then
-                           .Col = .ColLetterToNumber("F")
-                            .BackColor = mErrorColor
-                            .CellNote = errMST
-                            iFlagCheckMaST = 1
-                    
-                    End If
-                    
-                      'check MST trung nhau
-                     CountRow = .SearchCol(.ColLetterToNumber("F"), -1, -1, vMSTCheckTrung, SearchFlagsNone)
-                     rowDes = .SearchCol(.ColLetterToNumber("F"), CountRow, -1, vMSTCheckTrung, SearchFlagsNone)
-                    If rowDes > -1 Then
-                        .Col = .ColLetterToNumber("F")
-                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                        .CellNote = mErrMSTTrung      'static
-                        .BackColor = mErrorColor
-                        iFlagMSTTrung = 1
-                    End If
-                    
-                Else
-                         .Col = .ColLetterToNumber("F")
-    '                    .BackColor = mNonErrorColor
-    '                    .CellNote = ""
-                        'iFlagCheckMaST = 0
-                        .BackColor = mErrorColor
-                        .CellNote = errEmty
-                        iFlagEmpty = 1
-                End If
-            End If
-            
-            .Col = .ColLetterToNumber("C")
-            .Row = .Row + 1
-            Loop Until .Text = "aa"
-        End If
+'        .Sheet = lSheet03_05
+'        If .SheetVisible = True Then
+'            mCurrentSheet = .Sheet
+'            .GetText .ColLetterToNumber("F"), 38, vMSTDN
+'            iFlagEmpty = 0
+'            'check not empty ten doanh nghiep
+'            .Row = 39
+'            Do
+'            .Col = .ColLetterToNumber("F")
+'            strValue = .Text
+'            'check du lieu bat buoc phai nhap
+'            If (strValue = "") Then
+'                .Col = .ColLetterToNumber("F")
+'                .BackColor = mErrorColor
+'                .CellNote = errEmty
+'                iFlagEmpty = 1
+'            Else
+'                .Col = .ColLetterToNumber("F")
+'                .BackColor = mNonErrorColor
+'                .CellNote = ""
+'                'iFlagEmpty = 0
+'            End If
+'            'lay du lieu nhap vao
+'            .GetText .ColLetterToNumber("E"), .Row, strKyHieu
+'            If strKyHieu = "T" And Val(iFlagTongPhanBo) = 0 Then
+'                .Col = .ColLetterToNumber("L")
+'                .BackColor = mErrorColor
+'                .CellNote = errTongTLPB
+'            ElseIf Val(iFlagTongPhanBo) = 1 Then
+'                .Col = .ColLetterToNumber("L")
+'                .BackColor = mNonErrorColor
+'                .CellNote = ""
+'            End If
+'            If strKyHieu = "M" And .Row <> 38 Then
+'
+'                .Col = .ColLetterToNumber("F")
+'                vMST = .Text
+'                vMSTCheckTrung = vMST
+'                If vMST <> vbNullString Then
+'                    vMST = Replace(vMST, " ", "")
+'                    'check MST 14 ky tu
+'                    If Len(vMST) = 14 And Mid(vMST, 11, 1) = "-" Then
+'                        vMST = Replace(vMST, "-", "")
+'                    End If
+'                    strCheckMST = ""
+'                    If Len(vMST) = 10 Or Len(vMST) = 13 Then
+'                        strCheckMST = CheckTaxCode(Mid(vMST, 1, 1), Mid(vMST, 2, 1), Mid(vMST, 3, 1), Mid(vMST, 4, 1), Mid(vMST, 5, 1), Mid(vMST, 6, 1), Mid(vMST, 7, 1), Mid(vMST, 8, 1), Mid(vMST, 9, 1), Mid(vMST, 10, 1), Mid(vMST, 11, 1), Mid(vMST, 12, 1), Mid(vMST, 13, 1))
+'                        If Left(vMST, 10) <> Left(Trim(vMSTDN), 10) Then
+'                            .Col = .ColLetterToNumber("F")
+'                            .BackColor = mErrorColor
+'                            .CellNote = errMSTDN
+'                            iFlagCheckMaSTDN = 1
+'                        ElseIf Len(vMST) = 10 And strCheckMST = "000" Then
+'                            .Col = .ColLetterToNumber("F")
+'                            .BackColor = mErrorColor
+'                            .CellNote = errMst10
+'                            iFlagCheckMaSTDN10 = 1
+'                        ElseIf Len(vMST) = 10 And strCheckMST <> "000" Then
+'                            .Col = .ColLetterToNumber("F")
+'                            .BackColor = mErrorColor
+'                            .CellNote = errMST
+'                            iFlagCheckMaST = 1
+'                        ElseIf Len(vMST) = 13 And (strCheckMST <> "000" Or IsNumeric(vMST) = False) Then
+'                            .Col = .ColLetterToNumber("F")
+'                            .BackColor = mErrorColor
+'                            .CellNote = errMST
+'                            iFlagCheckMaST = 1
+'                        Else
+'                            .Col = .ColLetterToNumber("F")
+'                            .BackColor = mNonErrorColor
+'                            .CellNote = ""
+'                            'iFlagCheckMaST = 0
+'                        End If
+'                    ElseIf Len(vMST) <> 10 Or Len(vMST) <> 13 Then
+'                           .Col = .ColLetterToNumber("F")
+'                            .BackColor = mErrorColor
+'                            .CellNote = errMST
+'                            iFlagCheckMaST = 1
+'
+'                    End If
+'
+'                      'check MST trung nhau
+'                     CountRow = .SearchCol(.ColLetterToNumber("F"), -1, -1, vMSTCheckTrung, SearchFlagsNone)
+'                     rowDes = .SearchCol(.ColLetterToNumber("F"), CountRow, -1, vMSTCheckTrung, SearchFlagsNone)
+'                    If rowDes > -1 Then
+'                        .Col = .ColLetterToNumber("F")
+'                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                        .CellNote = mErrMSTTrung      'static
+'                        .BackColor = mErrorColor
+'                        iFlagMSTTrung = 1
+'                    End If
+'
+'                Else
+'                         .Col = .ColLetterToNumber("F")
+'    '                    .BackColor = mNonErrorColor
+'    '                    .CellNote = ""
+'                        'iFlagCheckMaST = 0
+'                        .BackColor = mErrorColor
+'                        .CellNote = errEmty
+'                        iFlagEmpty = 1
+'                End If
+'            End If
+'
+'            .Col = .ColLetterToNumber("C")
+'            .Row = .Row + 1
+'            Loop Until .Text = "aa"
+'        End If
         'end
-        blCheck_S11 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(lSheet03_05 - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-        .Sheet = .SheetCount
-        If blCheck_S11 Then
-            .SetText .ColLetterToNumber("B"), 28, IIf(iFlagCheckMaSTDN10 = 1, "0", "1")
-            .SetText .ColLetterToNumber("B"), 35, IIf(iFlagMSTTrung = 1, "0", "1")
-        Else
-            .SetText .ColLetterToNumber("B"), 28, "1"
-            .SetText .ColLetterToNumber("B"), 35, "1"
-        End If
-        
-        .SetText .ColLetterToNumber("B"), 29, IIf(iFlagEmpty = 1, "0", "1")
-        .SetText .ColLetterToNumber("B"), 30, IIf(iFlagCheckMaST = 1, "0", "1")
-        .SetText .ColLetterToNumber("B"), 31, IIf(iFlagCheckMaSTDN = 1, "0", "1")
+'        blCheck_S11 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(lSheet03_05 - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+'        .Sheet = .SheetCount
+'        If blCheck_S11 Then
+'            .SetText .ColLetterToNumber("B"), 28, IIf(iFlagCheckMaSTDN10 = 1, "0", "1")
+'            .SetText .ColLetterToNumber("B"), 35, IIf(iFlagMSTTrung = 1, "0", "1")
+'        Else
+'            .SetText .ColLetterToNumber("B"), 28, "1"
+'            .SetText .ColLetterToNumber("B"), 35, "1"
+'        End If
+'
+'        .SetText .ColLetterToNumber("B"), 29, IIf(iFlagEmpty = 1, "0", "1")
+'        .SetText .ColLetterToNumber("B"), 30, IIf(iFlagCheckMaST = 1, "0", "1")
+'        .SetText .ColLetterToNumber("B"), 31, IIf(iFlagCheckMaSTDN = 1, "0", "1")
         
 
             
-            .Sheet = lSheet03_3A
-            blCheck_S03_3A = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-            If blCheck_S03_3A = True Then
-                ' Lay gia tri chi tieu tren PL 03-3A
-                .GetText .ColLetterToNumber("U"), 47, vCtieu1
-                .GetText .ColLetterToNumber("U"), 52, vCTieu5
-                ' Lay gia tri chi tieu C4
-                .Sheet = 1
-                .GetText .ColLetterToNumber("O"), 43, vCTieuC4TK
-            End If
+'            .Sheet = sheetPl03_3A_TNDN
+'            blCheck_S03_3A = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+'            If blCheck_S03_3A = True Then
+'                ' Lay gia tri chi tieu tren PL 03-3A
+'                .GetText .ColLetterToNumber("U"), 47, vCtieu1
+'                .GetText .ColLetterToNumber("U"), 52, vCTieu5
+'                ' Lay gia tri chi tieu C4
+'                .Sheet = 1
+'                .GetText .ColLetterToNumber("O"), 43, vCTieuC4TK
+'            End If
             
             ' Check validate sheet 01/GCN-QLT
             Dim vCheckMST, vDiaChi, vTenLK As Variant
@@ -1436,10 +1649,10 @@ Private Sub CheckDynamicError()
             .Sheet = .SheetCount
             .GetText .ColLetterToNumber("E"), 33, errMST
             .GetText .ColLetterToNumber("E"), 38, errHinhThucLK
-            .Sheet = lSheet03_7
+            .Sheet = sheetPl03_7_TNDN
             blCheck_S12 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
             If blCheck_S12 = True Then
-                .Row = 82
+                .Row = 31
                 .Col = .ColLetterToNumber("B")
                 strCol = "U~V~W~X~Y~Z~AA~AB~AC~AD~AE~AF~AG"
                 ArrCol = Split(strCol, "~")
@@ -1496,6 +1709,10 @@ Private Sub CheckDynamicError()
                     .Row = .Row + 1
                     .Col = .ColLetterToNumber("B")
                 Loop Until .Text = "kk"
+                
+                
+                
+                
                 .Sheet = .SheetCount
                 .SetText .ColLetterToNumber("B"), 33, IIf(iFlagMST = 1, "0", "1")
                 .SetText .ColLetterToNumber("B"), 38, IIf(iFlagCheck = 1, "0", "1")
@@ -1510,91 +1727,10 @@ End Sub
 'It will do some special task with special Error/ special Data
 'no parameter
 Public Sub finish()
-    Dim pL_3A_U50, pL_3B_U60 As Double
-    Dim pL_3A_U56, pL_3B_U65, pL_3C_X43 As Double
-    Dim blCheck_S3A, blCheck_S3B, blCheck_S3C As Boolean
-        
     ResetWarning
 
     With fps
-        blCheck_S3A = IIf(TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_3A_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-        blCheck_S3B = IIf(TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_3B_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-        blCheck_S3C = IIf(TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_3C_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-        ' Lay gia tri cua chi tieu dong trong PL 03-3A, 03-3B, 03-3C
-        pL_3A_U50 = Sum_Cell(sheetPl03_3A_TNDN, 50, .ColLetterToNumber("U")) 'PL 03-3A
-        pL_3B_U60 = Sum_Cell(sheetPl03_3B_TNDN, 60, .ColLetterToNumber("U")) 'PL 03-3B
-'        ' Lay gia tri chi tieu C8 tren to khai quyet toan
-        mCurrentSheet = 1
-        .Sheet = mCurrentSheet
-        If blCheck_S3A = True Or blCheck_S3B = True Then
-            Dim vC59 As Variant
-            .GetText .ColLetterToNumber("O"), 59, vC59
-            If (vC59 = pL_3A_U50 + pL_3B_U60) Then
-                ' Update gia tri dung (khong loi) trong sheet header
-                .Sheet = .SheetCount
-                .SetText .ColLetterToNumber("B"), 23, "1"
-                ' Chuyen chi tieu C11 ve trang thai dung
-                mCurrentSheet = 1
-                .Sheet = 1
-                .Col = .ColLetterToNumber("O")
-                .Row = 59
-                .CellNote = ""
-                .BackColor = mNonErrorColor
-            Else
-                ' Update gia tri sai (co loi) trong sheet header
-                .Sheet = .SheetCount
-                .SetText .ColLetterToNumber("B"), 23, "0"
-                ' Lay thong bao loi
-                Dim vErrMsg1 As Variant
-                .GetText .ColLetterToNumber("E"), 23, vErrMsg1
-                ' Chuyen chi tieu ve trang thai loi
-                mCurrentSheet = 1
-                .Sheet = 1
-                .Col = .ColLetterToNumber("O")
-                .Row = 59
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                .CellNote = vErrMsg1 'static
-                .BackColor = mErrorColor
-            End If
-        End If
-'        ' Lay gia tri dong o cac Phu Luc tuong ung
-        pL_3A_U56 = Sum_Cell(sheetPl03_3A_TNDN, 56, .ColLetterToNumber("U"))
-        pL_3B_U65 = Sum_Cell(sheetPl03_3B_TNDN, 65, .ColLetterToNumber("U"))
-        pL_3C_X43 = Sum_Cell(sheetPl03_3C_TNDN, 43, .ColLetterToNumber("X"))
-'        ' Lay gia tri cua chi tieu C8 tren to khai
-        mCurrentSheet = 1
-        .Sheet = mCurrentSheet
-        If blCheck_S3A = True Or blCheck_S3B = True Or blCheck_S3C = True Then
-            Dim vC60 As Variant
-            .GetText .ColLetterToNumber("O"), 60, vC60
-            If (vC60 = pL_3A_U56 + pL_3B_U65 + pL_3C_X43) Then
-                ' Update gia tri dung trong sheet header
-                .Sheet = .SheetCount
-                .SetText .ColLetterToNumber("B"), 24, "1"
-                ' Chuyen trang thai dung cho C9
-                mCurrentSheet = 1
-                .Sheet = 1
-                .Col = .ColLetterToNumber("O")
-                .Row = 60
-                .CellNote = ""
-                .BackColor = mNonErrorColor
-            Else
-                ' Update gia tri sai trong sheet header
-                .Sheet = .SheetCount
-                .SetText .ColLetterToNumber("B"), 24, "0"
-                ' Lay thong bao loi
-                Dim vErrMsg2 As Variant
-                .GetText .ColLetterToNumber("E"), 24, vErrMsg2
-                ' Chuyen C9 ve trang thai bao loi
-                mCurrentSheet = 1
-                .Sheet = 1
-                .Col = .ColLetterToNumber("O")
-                .Row = 60
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                .CellNote = vErrMsg2 'static
-                .BackColor = mErrorColor
-            End If
-        End If
+        
 '        ' Phu Luc 03-5
         UpdateSheets
         CheckDynamicError
