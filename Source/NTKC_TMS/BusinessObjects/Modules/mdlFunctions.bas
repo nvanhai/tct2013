@@ -455,7 +455,7 @@ Public Function CPab(ByVal str As String, ByVal number As Integer) As String
     CPab = str & Space(number - Len(str))
 End Function
 ' Lay ma hoa don theo ten
-Public Sub GetMaHoaDon(ByVal maHD As String, Optional ByRef tenHD As String)
+Public Sub GetMaHoaDon(ByVal kyHieu As String, Optional ByRef maHD As String)
      Dim arrDanhsach() As String
     Dim strDataFileName As String
     Dim xmlDomData As New MSXML.DOMDocument
@@ -463,14 +463,14 @@ Public Sub GetMaHoaDon(ByVal maHD As String, Optional ByRef tenHD As String)
     Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = GetAbsolutePath("..\InterfaceTemplates\xml\Catalogue_loai_HD.xml")
-       tenHD = ""
+       maHD = ""
        If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
             Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
-                        If InStr(1, maHD, arrDanhsach(1)) > 0 Then
-                            tenHD = arrDanhsach(1) & "###" & CPab(arrDanhsach(0), 10) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(2), 200)
+                        If InStr(1, kyHieu, arrDanhsach(1)) > 0 Then
+                            maHD = arrDanhsach(1)
                             Exit Sub
                         End If
                 End If
