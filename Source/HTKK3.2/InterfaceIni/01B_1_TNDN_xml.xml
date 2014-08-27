@@ -5,7 +5,7 @@
 	<Dynamic GroupName="BangThueTNDNTamTinh">
 		<chiTietBangThueTNDNTamTinh id="ID_1">
 			<ct8>D_35</ct8>
-			<ct9>F_35</ct9>
+			<ct9 TINType="1">F_35</ct9>
 			<ct10_ct>S_35</ct10_ct>
 			<ct10_cct>R_35</ct10_cct>
 			<ct11>M_35</ct11>

@@ -2,7 +2,7 @@
 	<Dynamic GroupName="BANGTHUEGTGTCUASXTHUYDIEN">
 		<chiTietThueGTGTCuaSXThuyDien id="id">
 			<tenNhaMay>C_7</tenNhaMay>
-			<mstNhaMay>E_7</mstNhaMay>
+			<mstNhaMay TINType="1">E_7</mstNhaMay>
 			<thueDauRaNhaMay>F_7</thueDauRaNhaMay>
 			<thueDauVaoNhaMay>H_7</thueDauVaoNhaMay>
 			<thuePNopNhaMay>I_7</thuePNopNhaMay>

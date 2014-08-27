@@ -2,7 +2,7 @@
 	<Dynamic GroupName="PBoThueGTGTChoDiaPhuong">
 		<PhanBoGTGT id="ID_13">
 			<ct09>C_8</ct09>
-			<ct10>D_8</ct10>
+			<ct10 TINType="1">D_8</ct10>
 			<ct11_maCT>M_8</ct11_maCT>
 			<ct11_ct>E_8</ct11_ct>
 			<ct11_maCCT>L_8</ct11_maCCT>

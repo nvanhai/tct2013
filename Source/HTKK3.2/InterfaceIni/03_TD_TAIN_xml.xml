@@ -25,7 +25,7 @@
 	<Dynamic GroupName="BKeThueTN">
 		<ChiTietBKeThueTN id="String">
 			<ct23>C_44</ct23>
-			<ct24>F_44</ct24>
+			<ct24 TINType="1">F_44</ct24>
 			<ct25>I_44</ct25>
 			<ct26>K_44</ct26>
 			<ct27>O_44</ct27>
