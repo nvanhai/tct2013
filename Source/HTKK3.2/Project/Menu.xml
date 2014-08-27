@@ -111,9 +111,9 @@
 			<Sheet ID="03-3C" Caption="03-3C/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_3C_TNDN" InterfaceIni="..\InterfaceIni\03_3C_TNDN.xml" ReportIni="..\ReportIni\03_3C_TNDN.xml"/>			
 			<Sheet ID="03-4" Caption="03-4/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_4_TNDN" InterfaceIni="..\InterfaceIni\03_4_TNDN.xml" ReportIni="..\ReportIni\03_4_TNDN.xml"/>
 			<Sheet ID="03-5" Caption="03-5/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_5_TNDN" InterfaceIni="..\InterfaceIni\03_5_TNDN.xml" ReportIni="..\ReportIni\03_5_TNDN.xml"/>
-			<Sheet ID="03-6" Caption="03-6/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_05_TNDN" InterfaceIni="..\InterfaceIni\03_05_TNDN.xml" ReportIni="..\ReportIni\03_05_TNDN.xml"/>
-			<Sheet ID="03-7" Caption="03-7/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_6_TNDN" InterfaceIni="..\InterfaceIni\03_6_TNDN.xml" ReportIni="..\ReportIni\03_6_TNDN.xml"/>
-			<Sheet ID="03-8" Caption="03-8/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_7_TNDN" InterfaceIni="..\InterfaceIni\03_7_TNDN.xml" ReportIni="..\ReportIni\03_7_TNDN.xml"/>
+			<Sheet ID="03-6" Caption="03-6/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_6_TNDN" InterfaceIni="..\InterfaceIni\03_05_TNDN.xml" ReportIni="..\ReportIni\03_05_TNDN.xml"/>
+			<Sheet ID="03-7" Caption="03-7/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_7_TNDN" InterfaceIni="..\InterfaceIni\03_6_TNDN.xml" ReportIni="..\ReportIni\03_6_TNDN.xml"/>
+			<Sheet ID="03-8" Caption="03-8/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_8_TNDN" InterfaceIni="..\InterfaceIni\03_7_TNDN.xml" ReportIni="..\ReportIni\03_7_TNDN.xml"/>
 			<Sheet ID="03-9" Caption="PL 02-1/TĐ-TNDN " Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_9_TD_TNDN" InterfaceIni="..\InterfaceIni\03_9_TD_TNDN.xml" ReportIni="..\ReportIni\03_9_TD_TNDN.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_03_TNDN" InterfaceIni="..\InterfaceIni\KHBS_03_TNDN.xml" ReportIni="..\ReportIni\KHBS_03_TNDN.xml"/>
 		</Validity>
