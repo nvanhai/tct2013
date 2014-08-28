@@ -414,7 +414,7 @@
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01_BVMT" InterfaceIni="..\InterfaceIni\KHBS_01_BVMT.xml" ReportIni="..\ReportIni\KHBS_01_BVMT.xml"/>
 		</Validity>
 	</Menu>
-	<Menu ID="87" PopID="101" ParentID="101_9" Caption="Tờ khai QT phí bảo vệ môi trường (02/BVMT)" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
+	<Menu ID="87" PopID="101" ParentID="101_9" Caption="Tờ khai QT phí bảo vệ môi trường (02/BVMT)" FormName="" Year="1" Month="0" ThreeMonth="0" Day="1" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\02_BVMT.xls" ReportTemplate="..\ReportTemplates\excel\02_BVMT.xls" CatalogueID="01" Class="TAX_Business_v1.cls_02BVMT">
 			<Sheet ID="01" Caption="02/BVMT" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_BVMT" InterfaceIni="..\InterfaceIni\02_BVMT.xml" ReportIni="..\ReportIni\02_BVMT.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_02_BVMT" InterfaceIni="..\InterfaceIni\KHBS_02_BVMT.xml" ReportIni="..\ReportIni\KHBS_02_BVMT.xml"/>

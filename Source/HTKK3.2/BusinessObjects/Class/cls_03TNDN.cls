@@ -277,6 +277,9 @@ With fps
         Next
     .ActiveSheet = 1
 End With
+
+    ' set co quan thue quan ly
+    setCQTQuanLy
 End Sub
 
 'This funtion is called after executing function "SetupData"
@@ -1805,13 +1808,127 @@ Private Sub CheckDynamicError()
                 .SetText .ColLetterToNumber("B"), 87, "1"
             End If
             
-            
-            ' PL 03-9 Phu luc phan bo thuy dien
-            
-            
             .SetText .ColLetterToNumber("B"), 29, IIf(iFlagEmpty = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 30, IIf(iFlagCheckMaST = 1, "0", "1")
         
+            ' PL 03-9 Phu luc phan bo thuy dien
+            .Sheet = .SheetCount
+            
+            Dim vChon As Variant
+            Dim vTenNhaMay, vCQTCapDiaPhuong, vTyLePhanBo, vSoThuePhaiNop As Variant
+            Dim vMessRequire As Variant
+            
+            Dim flagSoThue As Integer
+            
+            .GetText .ColLetterToNumber("E"), 88, vMessRequire
+            .GetText .ColLetterToNumber("E"), 89, errMST
+            
+            .Sheet = sheetPl03_9_TNDN
+            blCheck_S12 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+            If blCheck_S12 = True Then
+                mCurrentSheet = .Sheet
+                'check phu luc 01_2
+                .Row = 42
+                iWhiteRow = 1
+                
+                Do
+                    .GetText .ColLetterToNumber("C"), .Row, vTenNhaMay
+                    .GetText .ColLetterToNumber("G"), .Row, vChon
+                    .GetText .ColLetterToNumber("H"), .Row, vMST
+                    .GetText .ColLetterToNumber("P"), .Row, vCQTCapDiaPhuong
+                    .GetText .ColLetterToNumber("R"), .Row, vTyLePhanBo
+                    .GetText .ColLetterToNumber("U"), .Row, vSoThuePhaiNop
+                    
+                    
+                    If Trim$(vTenNhaMay) <> "" Or Trim$(vMST) <> "" Or Trim$(vCQTCapDiaPhuong) <> "" Or Trim$(vTyLePhanBo) <> "0" Or Trim$(vSoThuePhaiNop) <> "0" Then
+                        iWhiteRow = 0
+                    End If
+                
+                    .Col = .ColLetterToNumber("C")
+                    If (Trim(.Text) = vbNullString And Trim(vChon) = "1" And iWhiteRow = 0) Then
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = vMessRequire      'static
+                        .BackColor = mErrorColor
+        
+                        iFlagEmpty = 1
+                    Else
+                        .BackColor = mNonErrorColor
+                        .CellNote = ""
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    End If
+        
+                    
+                    .Col = .ColLetterToNumber("P")
+                    If (Trim(.Text) = vbNullString And Trim(vChon) = "0" And iWhiteRow = 0) Then
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = vMessRequire      'static
+                        .BackColor = mErrorColor
+        
+                        iFlagEmpty = 1
+                    Else
+                        .BackColor = mNonErrorColor
+                        .CellNote = ""
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    End If
+                    
+                    ' bat buoc nhap cot so thue
+                    .Col = .ColLetterToNumber("U")
+                    If Val(vSoThuePhaiNop) = 0 And iWhiteRow = 0 Then
+                        .CellNote = vMessRequire      'static
+                        .BackColor = mErrorColor
+        
+                        flagSoThue = 1
+                    Else
+                        .BackColor = mNonErrorColor
+                        .CellNote = ""
+                    End If
+                    
+                    'check mst
+                    If Trim$(vMST) <> vbNullString Then
+                        vMST = Replace(vMST, " ", "")
+                        vMST = Replace(vMST, "-", "")
+                        'vMST = Left(vMST, 10)
+    
+                        strCheck = ""
+    
+                        If Len(vMST) = 10 Or Len(vMST) = 13 Then
+                            strCheck = CheckTaxCode(Mid$(vMST, 1, 1), Mid$(vMST, 2, 1), Mid$(vMST, 3, 1), Mid$(vMST, 4, 1), Mid$(vMST, 5, 1), Mid$(vMST, 6, 1), Mid$(vMST, 7, 1), Mid$(vMST, 8, 1), Mid$(vMST, 9, 1), Mid$(vMST, 10, 1), Mid$(vMST, 11, 1), Mid$(vMST, 12, 1), Mid$(vMST, 13, 1))
+                        End If
+                           
+                        If Mid$(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMST) Then
+                            .Col = .ColLetterToNumber("H")
+                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                            .CellNote = errMST   'static
+                            .BackColor = mErrorColor
+    
+                            iFlagCheckMaST = 1
+                        Else
+                            .Col = .ColLetterToNumber("H")
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                        End If
+    
+                    Else
+                        If (Trim$(vMST) = vbNullString And iWhiteRow = 0) Then
+                            .Col = .ColLetterToNumber("H")
+                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                            
+                            'iFlagEmty = 1
+                        End If
+                    End If
+                    
+                    .Row = .Row + 1
+                    .Col = .ColLetterToNumber("B")
+                Loop Until .Text = "aa"
+            End If
+            
+            'set flag
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 88, IIf(iFlagEmpty = 1, "0", "1")
+            .SetText .ColLetterToNumber("B"), 89, IIf(iFlagCheckMaST = 1, "0", "1")
+            
         .EventEnabled(EventAllEvents) = True
     End With
     
@@ -3053,3 +3170,79 @@ Public Sub inThongTinDL()
     ' end
 End Sub
 
+' set co quan thue ra quyet dinh hoan thue
+Private Sub setCQTQuanLy()
+        Dim xmlDomData As New MSXML.DOMDocument
+        Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+        Dim xmlNode As MSXML.IXMLDOMNode
+        Dim arrDanhsach() As String
+        Dim tenCucThue As String
+        Dim maCucThue As String
+        Dim tenChiCucThue As String
+        Dim maChiCucThue As String
+        
+        Dim loaiCq As String
+        Dim maLoaiCq As String
+        
+        
+        
+        
+        If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                    
+                    If arrDanhsach(0) = "1" Then
+                        tenCucThue = tenCucThue + arrDanhsach(3) + Chr$(9)
+                        maCucThue = maCucThue + arrDanhsach(1) + Chr$(9)
+                    End If
+                    'If arrDanhsach(0) = "0" Then
+                        tenChiCucThue = tenChiCucThue + arrDanhsach(3) + Chr$(9)
+                        maChiCucThue = maChiCucThue + arrDanhsach(1) + Chr$(9)
+                    'End If
+                End If
+            Next
+            Set xmlDomData = Nothing
+            Set xmlNodeListCell = Nothing
+            Set xmlNode = Nothing
+        End If
+        
+        ' setloai
+        If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_DM_LoaiCq.xml")) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                    loaiCq = loaiCq + arrDanhsach(1) + Chr$(9)
+                    maLoaiCq = maLoaiCq + arrDanhsach(0) + Chr$(9)
+                End If
+            Next
+            Set xmlDomData = Nothing
+            Set xmlNodeListCell = Nothing
+            Set xmlNode = Nothing
+        End If
+        
+        With fps
+            .Sheet = .SheetCount - 1 'set thong tin CQL
+            '.EventEnabled(EventAllEvents) = False
+            
+            .Row = 33
+            .Col = .ColLetterToNumber("BE")
+            .TypeComboBoxList = tenCucThue
+            
+            .Row = 33
+            .Col = .ColLetterToNumber("BI")
+            .TypeComboBoxList = maCucThue
+            
+            .Row = 35
+            .Col = .ColLetterToNumber("BE")
+            .TypeComboBoxList = tenChiCucThue
+    
+            .Row = 35
+            .Col = .ColLetterToNumber("BI")
+            .TypeComboBoxList = maChiCucThue
+                                
+            '.EventEnabled(EventAllEvents) = True
+        End With
+End Sub

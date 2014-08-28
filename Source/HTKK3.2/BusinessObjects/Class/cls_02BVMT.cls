@@ -153,6 +153,8 @@ Public Sub Prepare1()
         .TypeComboBoxList = strDonvitinh
     End With
    mblKeyF5 = False
+       ' set co quan thue quan ly
+    setCQTQuanLy
 End Sub
 
 'This funtion is called after executing function "SetupData"
@@ -202,17 +204,17 @@ Dim tongNTNN As Variant, tienDoiThanhChu As String
             UpdateCell fps, .Col, .Row, .Text
         End If
          'tong tien bang chu
-         .GetText .ColLetterToNumber("Q"), 37, tongNTNN
-        If str(tongNTNN) <> "" Then
-            tongNTNN = Replace(tongNTNN, ".", "")
-            tongNTNN = Replace(tongNTNN, ",", "")
-            tienDoiThanhChu = doiTien(CStr(tongNTNN))
-            .SetText .ColLetterToNumber("AB"), 37, tienDoiThanhChu
-            UpdateCell fps, .ColLetterToNumber("AB"), 37, tienDoiThanhChu
-        End If
-        'set gia tri cho cot so tien bang chu
-        .SetText .ColLetterToNumber("B"), 55, tienDoiThanhChu
-        UpdateCell fps, .ColLetterToNumber("B"), 55, tienDoiThanhChu
+'         .GetText .ColLetterToNumber("Q"), 37, tongNTNN
+'        If str(tongNTNN) <> "" Then
+'            tongNTNN = Replace(tongNTNN, ".", "")
+'            tongNTNN = Replace(tongNTNN, ",", "")
+'            tienDoiThanhChu = doiTien(CStr(tongNTNN))
+'            .SetText .ColLetterToNumber("AB"), 37, tienDoiThanhChu
+'            UpdateCell fps, .ColLetterToNumber("AB"), 37, tienDoiThanhChu
+'        End If
+'        'set gia tri cho cot so tien bang chu
+'        .SetText .ColLetterToNumber("B"), 55, tienDoiThanhChu
+'        UpdateCell fps, .ColLetterToNumber("B"), 55, tienDoiThanhChu
         .Sheet = 1
             mCurrentSheet = 1
 
@@ -277,9 +279,9 @@ Dim xmlNodeH15 As MSXML.IXMLDOMNode
        'vttoan
        'khi tron danh muc khoang san mac dinh don vi tinh la kg va cho phep sua sua
        If Col = .ColLetterToNumber("C") And .Text <> "" Then
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber("AB")
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             'Update combo F
             .Col = .ColLetterToNumber("AB")
             UpdateCell fps, .Col, .Row, .Text
@@ -446,9 +448,9 @@ With fps
              .Col = Col
              .Row = Row
               If Col = .ColLetterToNumber("BD") And .Text <> "" Then
-                 intIndexCombo = .TypeComboBoxCurSel
+                 intIndexCombo = .typeComboboxCurSel
                  .Col = .ColLetterToNumber("BC")
-                 .TypeComboBoxCurSel = intIndexCombo
+                 .typeComboboxCurSel = intIndexCombo
                  'Update combo C
                  UpdateCell fps, .Col, .Row, .Text
                  .Col = .ColLetterToNumber("BE")
@@ -562,12 +564,12 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
         .EventEnabled(EventAllEvents) = False
         mCurrentSheet = .Sheet
         If .ActiveSheet = 1 Then
-            .GetText .ColLetterToNumber("Q"), 37, tongNTNN
-            tongNTNN = Replace(tongNTNN, ".", "")
-            tongNTNN = Replace(tongNTNN, ",", "")
-            tienDoiThanhChu = doiTien(CStr(tongNTNN))
-            .SetText .ColLetterToNumber("AB"), 37, tienDoiThanhChu
-            UpdateCell fps, .ColLetterToNumber("AB"), 37, tienDoiThanhChu
+'            .GetText .ColLetterToNumber("Q"), 37, tongNTNN
+'            tongNTNN = Replace(tongNTNN, ".", "")
+'            tongNTNN = Replace(tongNTNN, ",", "")
+'            tienDoiThanhChu = doiTien(CStr(tongNTNN))
+'            .SetText .ColLetterToNumber("AB"), 37, tienDoiThanhChu
+'            UpdateCell fps, .ColLetterToNumber("AB"), 37, tienDoiThanhChu
             Dim i As Variant
             i = 1
             .Col = .ColLetterToNumber("B")
@@ -587,8 +589,8 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 .Row = .Row + 1
                 i = i + 1
             Loop Until .Text = "aa"
-            .SetText .ColLetterToNumber("B"), .Row + 5, tienDoiThanhChu
-            UpdateCell fps, .ColLetterToNumber("B"), .Row + 5, tienDoiThanhChu
+'            .SetText .ColLetterToNumber("B"), .Row + 5, tienDoiThanhChu
+'            UpdateCell fps, .ColLetterToNumber("B"), .Row + 5, tienDoiThanhChu
             If Col = .ColLetterToNumber("R") And Row = .MaxRows - 1 Then
                 .GetText Col, Row, varTemp
                 If varTemp <> "" And varTemp <> "../../...." Then
@@ -931,14 +933,14 @@ Dim i As Integer
     .Sheet = 1
     mCurrentSheet = 1
     'tong tien bang chu
-         .GetText .ColLetterToNumber("Q"), 37, tongNTNN
-        If str(tongNTNN) <> "" Then
-            tongNTNN = Replace(tongNTNN, ".", "")
-            tongNTNN = Replace(tongNTNN, ",", "")
-            tienDoiThanhChu = doiTien(CStr(tongNTNN))
-            .SetText .ColLetterToNumber("AB"), 37, tienDoiThanhChu
-            UpdateCell fps, .ColLetterToNumber("AB"), 37, tienDoiThanhChu
-        End If
+'         .GetText .ColLetterToNumber("Q"), 37, tongNTNN
+'        If str(tongNTNN) <> "" Then
+'            tongNTNN = Replace(tongNTNN, ".", "")
+'            tongNTNN = Replace(tongNTNN, ",", "")
+'            tienDoiThanhChu = doiTien(CStr(tongNTNN))
+'            .SetText .ColLetterToNumber("AB"), 37, tienDoiThanhChu
+'            UpdateCell fps, .ColLetterToNumber("AB"), 37, tienDoiThanhChu
+'        End If
         
         i = 1
          .Col = .ColLetterToNumber("B")
@@ -959,8 +961,8 @@ Dim i As Integer
              i = i + 1
          Loop Until .Text = "aa"
          
-        .SetText .ColLetterToNumber("B"), .Row + 5, tienDoiThanhChu
-        UpdateCell fps, .ColLetterToNumber("B"), .Row + 5, tienDoiThanhChu
+'        .SetText .ColLetterToNumber("B"), .Row + 5, tienDoiThanhChu
+'        UpdateCell fps, .ColLetterToNumber("B"), .Row + 5, tienDoiThanhChu
     End With
 End Sub
 
@@ -1335,7 +1337,7 @@ Public Sub SetActiveKHBS() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
                  Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")(7)
                     strValue3 = GetAttribute(xmlCellNode, "Value")
           
-                    If (Not IsNullValue(strValue1)) Or TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length > 20 Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Then
+                    If (Not IsNullValue(strValue1)) Or TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length > 31 Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Then
                             blnNullValue = False
                     End If
 
@@ -1382,72 +1384,72 @@ Private Sub UpdateSheets()
     Set xmlCellNode = Nothing
 End Sub
 'doc vao mot so va tra ve chu cua so do
-Private Function doiSoThanhChu(ByVal so As String) As String
-    Dim result As String
-    result = ""
-    Select Case so
-            Case "0": result = ""
-            Case "1": result = GetAttribute(GetMessageCellById("0204"), "Msg")
-            Case "2": result = GetAttribute(GetMessageCellById("0205"), "Msg")
-            Case "3": result = GetAttribute(GetMessageCellById("0206"), "Msg")
-            Case "4": result = GetAttribute(GetMessageCellById("0207"), "Msg")
-            Case "5": result = GetAttribute(GetMessageCellById("0208"), "Msg")
-            Case "6": result = GetAttribute(GetMessageCellById("0209"), "Msg")
-            Case "7": result = GetAttribute(GetMessageCellById("0210"), "Msg")
-            Case "8": result = GetAttribute(GetMessageCellById("0211"), "Msg")
-            Case "9": result = GetAttribute(GetMessageCellById("0212"), "Msg")
-    End Select
-    doiSoThanhChu = result
-End Function
-'ham doi tien tu so thanh chu
-Private Function doiTien(ByVal so As String) As String
-    Dim GTtien As String
-    Dim value As String
-    Dim i As Integer
-    'luu lai gia tri so ban dau de xu ly
-    Dim soTam2 As String
-    Dim soTam As String
-    soTam = so
-    soTam2 = "1"
-    For i = 0 To Len(so) - 1 Step 1
-
-            If Len(so) Mod 3 = 2 And Mid(so, 1, 1) = "1" Then
-                value = GetAttribute(GetMessageCellById("0213"), "Msg")
-            Else
-                value = doiSoThanhChu(Mid(so, 1, 1))
-            End If
-            doiTien = doiTien + value
-            If (Len(so) Mod 3 = 0) Then
-                soTam2 = so
-            End If
-            If (Len(so) Mod 3 = 0) And Mid(so, 1, 1) <> "0" Then
-                doiTien = doiTien + GetAttribute(GetMessageCellById("0214"), "Msg")
-            ElseIf Len(so) Mod 3 = 2 And Mid(so, 1, 1) <> "0" And Mid(so, 1, 1) <> "1" Then
-                doiTien = doiTien + GetAttribute(GetMessageCellById("0219"), "Msg")
-            ElseIf Len(so) Mod 3 = 2 And Mid(so, 1, 1) = "0" And Mid(so, 2, 1) <> "0" Then
-                doiTien = doiTien + GetAttribute(GetMessageCellById("0220"), "Msg")
-            ElseIf Len(so) Mod 3 = 1 And Len(so) <> 1 And Val(Mid(soTam2, 1, 3)) <> 0 Then
-                doiTien = doiTien + giaTriTien(so)
-            End If
-            so = Mid(so, 2, Len(so) - 1)
-    Next
-    doiTien = Trim(doiTien) + GetAttribute(GetMessageCellById("0221"), "Msg")
-    doiTien = UCase(Left(doiTien, 1)) + Mid(doiTien, 2)
-End Function
-'xac dinh menh gia tien
-Private Function giaTriTien(ByVal tien As String) As String
-    If Len(tien) < 4 Then
-        giaTriTien = GetAttribute(GetMessageCellById("0214"), "Msg")
-    ElseIf Len(tien) >= 4 And Len(tien) < 7 Then
-        giaTriTien = GetAttribute(GetMessageCellById("0215"), "Msg")
-    ElseIf Len(tien) >= 7 And Len(tien) < 10 Then
-        giaTriTien = GetAttribute(GetMessageCellById("0216"), "Msg")
-    ElseIf Len(tien) >= 10 And Len(tien) < 13 Then
-        giaTriTien = GetAttribute(GetMessageCellById("0217"), "Msg")
-    ElseIf Len(tien) = "13" Then
-        giaTriTien = GetAttribute(GetMessageCellById("0218"), "Msg")
-    End If
-End Function
+'Private Function doiSoThanhChu(ByVal so As String) As String
+'    Dim result As String
+'    result = ""
+'    Select Case so
+'            Case "0": result = ""
+'            Case "1": result = GetAttribute(GetMessageCellById("0204"), "Msg")
+'            Case "2": result = GetAttribute(GetMessageCellById("0205"), "Msg")
+'            Case "3": result = GetAttribute(GetMessageCellById("0206"), "Msg")
+'            Case "4": result = GetAttribute(GetMessageCellById("0207"), "Msg")
+'            Case "5": result = GetAttribute(GetMessageCellById("0208"), "Msg")
+'            Case "6": result = GetAttribute(GetMessageCellById("0209"), "Msg")
+'            Case "7": result = GetAttribute(GetMessageCellById("0210"), "Msg")
+'            Case "8": result = GetAttribute(GetMessageCellById("0211"), "Msg")
+'            Case "9": result = GetAttribute(GetMessageCellById("0212"), "Msg")
+'    End Select
+'    doiSoThanhChu = result
+'End Function
+''ham doi tien tu so thanh chu
+'Private Function doiTien(ByVal so As String) As String
+'    Dim GTtien As String
+'    Dim value As String
+'    Dim i As Integer
+'    'luu lai gia tri so ban dau de xu ly
+'    Dim soTam2 As String
+'    Dim soTam As String
+'    soTam = so
+'    soTam2 = "1"
+'    For i = 0 To Len(so) - 1 Step 1
+'
+'            If Len(so) Mod 3 = 2 And Mid(so, 1, 1) = "1" Then
+'                value = GetAttribute(GetMessageCellById("0213"), "Msg")
+'            Else
+'                value = doiSoThanhChu(Mid(so, 1, 1))
+'            End If
+'            doiTien = doiTien + value
+'            If (Len(so) Mod 3 = 0) Then
+'                soTam2 = so
+'            End If
+'            If (Len(so) Mod 3 = 0) And Mid(so, 1, 1) <> "0" Then
+'                doiTien = doiTien + GetAttribute(GetMessageCellById("0214"), "Msg")
+'            ElseIf Len(so) Mod 3 = 2 And Mid(so, 1, 1) <> "0" And Mid(so, 1, 1) <> "1" Then
+'                doiTien = doiTien + GetAttribute(GetMessageCellById("0219"), "Msg")
+'            ElseIf Len(so) Mod 3 = 2 And Mid(so, 1, 1) = "0" And Mid(so, 2, 1) <> "0" Then
+'                doiTien = doiTien + GetAttribute(GetMessageCellById("0220"), "Msg")
+'            ElseIf Len(so) Mod 3 = 1 And Len(so) <> 1 And Val(Mid(soTam2, 1, 3)) <> 0 Then
+'                doiTien = doiTien + giaTriTien(so)
+'            End If
+'            so = Mid(so, 2, Len(so) - 1)
+'    Next
+'    doiTien = Trim(doiTien) + GetAttribute(GetMessageCellById("0221"), "Msg")
+'    doiTien = UCase(Left(doiTien, 1)) + Mid(doiTien, 2)
+'End Function
+''xac dinh menh gia tien
+'Private Function giaTriTien(ByVal tien As String) As String
+'    If Len(tien) < 4 Then
+'        giaTriTien = GetAttribute(GetMessageCellById("0214"), "Msg")
+'    ElseIf Len(tien) >= 4 And Len(tien) < 7 Then
+'        giaTriTien = GetAttribute(GetMessageCellById("0215"), "Msg")
+'    ElseIf Len(tien) >= 7 And Len(tien) < 10 Then
+'        giaTriTien = GetAttribute(GetMessageCellById("0216"), "Msg")
+'    ElseIf Len(tien) >= 10 And Len(tien) < 13 Then
+'        giaTriTien = GetAttribute(GetMessageCellById("0217"), "Msg")
+'    ElseIf Len(tien) = "13" Then
+'        giaTriTien = GetAttribute(GetMessageCellById("0218"), "Msg")
+'    End If
+'End Function
 
 
 ' ham kiem tra thong tin dai ly
@@ -1462,3 +1464,79 @@ Public Sub inThongTinDL()
 End Sub
 
 
+' set co quan thue ra quyet dinh hoan thue
+Private Sub setCQTQuanLy()
+        Dim xmlDomData As New MSXML.DOMDocument
+        Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+        Dim xmlNode As MSXML.IXMLDOMNode
+        Dim arrDanhsach() As String
+        Dim tenCucThue As String
+        Dim maCucThue As String
+        Dim tenChiCucThue As String
+        Dim maChiCucThue As String
+        
+        Dim loaiCq As String
+        Dim maLoaiCq As String
+        
+        
+        
+        
+        If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                    
+                    If arrDanhsach(0) = "1" Then
+                        tenCucThue = tenCucThue + arrDanhsach(3) + Chr$(9)
+                        maCucThue = maCucThue + arrDanhsach(1) + Chr$(9)
+                    End If
+                    'If arrDanhsach(0) = "0" Then
+                        tenChiCucThue = tenChiCucThue + arrDanhsach(3) + Chr$(9)
+                        maChiCucThue = maChiCucThue + arrDanhsach(1) + Chr$(9)
+                    'End If
+                End If
+            Next
+            Set xmlDomData = Nothing
+            Set xmlNodeListCell = Nothing
+            Set xmlNode = Nothing
+        End If
+        
+        ' setloai
+        If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_DM_LoaiCq.xml")) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                    loaiCq = loaiCq + arrDanhsach(1) + Chr$(9)
+                    maLoaiCq = maLoaiCq + arrDanhsach(0) + Chr$(9)
+                End If
+            Next
+            Set xmlDomData = Nothing
+            Set xmlNodeListCell = Nothing
+            Set xmlNode = Nothing
+        End If
+        
+        With fps
+            .Sheet = .SheetCount - 1 'set thong tin CQL
+            '.EventEnabled(EventAllEvents) = False
+            
+            .Row = 33
+            .Col = .ColLetterToNumber("BE")
+            .TypeComboBoxList = tenCucThue
+            
+            .Row = 33
+            .Col = .ColLetterToNumber("BI")
+            .TypeComboBoxList = maCucThue
+            
+            .Row = 35
+            .Col = .ColLetterToNumber("BE")
+            .TypeComboBoxList = tenChiCucThue
+    
+            .Row = 35
+            .Col = .ColLetterToNumber("BI")
+            .TypeComboBoxList = maChiCucThue
+                                
+            '.EventEnabled(EventAllEvents) = True
+        End With
+End Sub
