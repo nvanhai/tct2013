@@ -4754,29 +4754,20 @@ Private Sub SetupLayout03TNDN()
     
     lblSolan.Visible = False
     txtSolan.Visible = False
-'    ' Nganh nghe kinh doanh
-    If (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "03") Then
-        frmKy.Height = 2400
-        Frame2.Top = 2700
-        Set lblNganhKD.Container = frmKy
-        lblNganhKD.Top = 1700
-        lblNganhKD.Left = 120
+    ' Nganh nghe kinh doanh
+     frmKy.Height = 2400
+    Frame2.Top = 2700
+    Set lblNganhKD.Container = frmKy
+    lblNganhKD.Top = 1700
+    lblNganhKD.Left = 120
     
-        Set cboNganhKD.Container = frmKy
-        cboNganhKD.Top = 1950
-        cboNganhKD.Left = 120
-        ' set gia tri nganh nghe kinh doanh cho combo
-        SetValueToList GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
-    End If
+    Set cboNganhKD.Container = frmKy
+    cboNganhKD.Top = 1950
+    cboNganhKD.Left = 120
+    ' set gia tri nganh nghe kinh doanh cho combo
+    SetValueToList GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
     
-    'fpSpread1.Visible
-    If (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "26") Then
-        'todo
-'        Frame2.Height = 2400
-'        Frame2.Top = 2700
-'        Set fpSpread1.Container = Frame2
-'        fpSpread1.Visible = True
-    End If
+
     
     SetControlCaption Me, "frmPeriodQuy"
     
@@ -7660,13 +7651,13 @@ Private Sub SetValueToList(strId As String)
     Dim xmlNode As MSXML.IXMLDOMNode
     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_DM_NNKD.xml"))
     Dim xmlNodeListItems As MSXML.IXMLDOMNodeList
-    Dim xmlDOMdata As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
+    Dim xmlDomData As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
     strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_DM_NNKD.xml")
     ' Lay danh muc loai hoa don
     ' 15/11/2010
     i = 0
-    If xmlDOMdata.Load(strDataFileName) Then
-        Set xmlNodeListItems = xmlDOMdata.getElementsByTagName("Item")
+    If xmlDomData.Load(strDataFileName) Then
+        Set xmlNodeListItems = xmlDomData.getElementsByTagName("Item")
         cboNganhKD.Clear
         For Each xmlNode In xmlNodeListItems
             fldList = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -8653,13 +8644,13 @@ Private Sub SetValueToListDK(loaiKyKK As String)
     Dim xmlNode As MSXML.IXMLDOMNode
     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_DM_NNKD.xml"))
     Dim xmlNodeListItems As MSXML.IXMLDOMNodeList
-    Dim xmlDOMdata As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
+    Dim xmlDomData As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
     strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_DM_NNKD.xml")
     ' Lay danh muc loai hoa don
     ' 17/03/2014
     i = 0
-    If xmlDOMdata.Load(strDataFileName) Then
-        Set xmlNodeListItems = xmlDOMdata.getElementsByTagName("Item")
+    If xmlDomData.Load(strDataFileName) Then
+        Set xmlNodeListItems = xmlDomData.getElementsByTagName("Item")
         cboNganhKD.Clear
         For Each xmlNode In xmlNodeListItems
             fldList = Split(GetAttribute(xmlNode, "Value"), "###")
