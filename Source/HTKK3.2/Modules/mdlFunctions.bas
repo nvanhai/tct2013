@@ -1055,7 +1055,7 @@ Public Sub SetupData(pGrid As fpSpread)
                                             & Replace$(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace$(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                                         End If
                                     End If
-                                ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "03" Then
+                                ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "03" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "87" Then
                                         'Data file not contain Day from and to.
                                         strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" _
                                         & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
@@ -2528,14 +2528,14 @@ ErrorHandle:
     SaveErrorLog "mdlFunctions", "InsertRow", Err.Number, Err.Description
 End Sub
 
-Public Sub IncreaseRowInDOM(fpSpread1 As fpSpread, xmlDomData As MSXML.DOMDocument, ByVal pRow As Long, ByVal lRows As Long, ByVal lRow2s As Long)
+Public Sub IncreaseRowInDOM(fpSpread1 As fpSpread, xmlDOMdata As MSXML.DOMDocument, ByVal pRow As Long, ByVal lRows As Long, ByVal lRow2s As Long)
     On Error GoTo ErrorHandle
     
     Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
     Dim lCol As Long, lRow As Long, i As Long
         
-    If xmlDomData Is Nothing Then Exit Sub
-    Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
+    If xmlDOMdata Is Nothing Then Exit Sub
+    Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Cell")
     
     For i = xmlNodeListCell.length - 1 To 0 Step -1
         ParserCellID fpSpread1, GetAttribute(xmlNodeListCell(i), "CellID"), lCol, lRow
@@ -4263,9 +4263,9 @@ Public Function getTemplateTk(ByVal strId As String) As String()
         Case "87"
             ReDim strResult(4)
             strResult(0) = "H_14~Dynamic_0"
-            strResult(1) = "C_45~H_45~J_45~N_45~Q_45~V_45~AC_45~Dynamic_1"
-            strResult(2) = "C_49~H_49~J_49~N_49~Q_49~V_49~AC_49~Dynamic_1"
-            strResult(3) = "H_60~R_60~H_62~R_62~C_35~F_35~I_35~Q_37~V_37~AB_37~Dynamic_0"
+            strResult(1) = "C_45~H_45~J_45~N_45~Q_45~V_45~Y_45~AC_45~Dynamic_1"
+            strResult(2) = "C_49~H_49~J_49~N_49~Q_49~V_49~Y_49~AC_49~Dynamic_1"
+            strResult(3) = "H_60~R_60~H_62~R_62~C_35~F_35~I_35~Q_37~V_37~Y_37~Dynamic_0"
             
             ' 01_PHXD
         Case "89"
