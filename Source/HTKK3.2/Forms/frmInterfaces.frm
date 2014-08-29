@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":1969
+         SpreadDesigner  =   "frmInterfaces.frx":19A5
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1BF1
+      SpreadDesigner  =   "frmInterfaces.frx":1C69
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -2772,7 +2772,7 @@ Private Sub DeleteKHBS()
         End If
 
     ElseIf strKHBS = "TKBS" And (varMenuId1 = "02" Or varMenuId1 = "01" Or varMenuId1 = "04" Or varMenuId1 = "11" Or varMenuId1 = "12" Or varMenuId1 = "05" Or varMenuId1 = "06" Or varMenuId1 = "86" Or varMenuId1 = "87" Or varMenuId1 = "89" Or varMenuId1 = "71" Or varMenuId1 = "72" Or varMenuId1 = "77" Or varMenuId1 = "03" Or varMenuId1 = "73" Or varMenuId1 = "80" Or varMenuId1 = "81" Or varMenuId1 = "70" Or varMenuId1 = "82" Or varMenuId1 = "83" Or varMenuId1 = "85" Or varMenuId1 = "90" Or varMenuId1 = "95" Or varMenuId1 = "96" Or varMenuId1 = "88" Or varMenuId1 = "98" _
-    Or varMenuId1 = "94" Or varMenuId1 = "92" Or varMenuId1 = "99") Then
+    Or varMenuId1 = "94" Or varMenuId1 = "92" Or varMenuId1 = "99" Or varMenuId1 = "97") Then
 
         If loFile.FileExists(strSheetKHBSDataFileName) = True Then
             loFile.DeleteFile strSheetKHBSDataFileName, True
@@ -3318,7 +3318,7 @@ Private Sub cmdExport_Click()
         And idToKhaiKHBS <> "06" And idToKhaiKHBS <> "08" And idToKhaiKHBS <> "11" And idToKhaiKHBS <> "12" And idToKhaiKHBS <> "86" And idToKhaiKHBS <> "87" _
         And idToKhaiKHBS <> "89" And idToKhaiKHBS <> "71" And idToKhaiKHBS <> "72" And idToKhaiKHBS <> "77" And idToKhaiKHBS <> "03" And idToKhaiKHBS <> "73" _
         And idToKhaiKHBS <> "80" And idToKhaiKHBS <> "81" And idToKhaiKHBS <> "70" And idToKhaiKHBS <> "82" And idToKhaiKHBS <> "83" And idToKhaiKHBS <> "85" And idToKhaiKHBS <> "90" And idToKhaiKHBS <> "95" And idToKhaiKHBS <> "88" And idToKhaiKHBS <> "98" And idToKhaiKHBS <> "96" _
-        And idToKhaiKHBS <> "94" And idToKhaiKHBS <> "99" And idToKhaiKHBS <> "92" Then
+        And idToKhaiKHBS <> "94" And idToKhaiKHBS <> "99" And idToKhaiKHBS <> "92" And idToKhaiKHBS <> "97" Then
                 fpSpread1.sheet = fpSpread1.SheetCount - 1
                 If fpSpread1.SheetName = "KHBS" Then
                     fpSpread1.DeleteSheets fpSpread1.SheetCount - 1, 1
@@ -6775,7 +6775,7 @@ Private Sub cmdSave_Click()
     varMenuId = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
     
     If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "96" _
-    Or varMenuId = "94" Or varMenuId = "98" Or varMenuId = "99" Or varMenuId = "92" Or varMenuId = "26") Then
+    Or varMenuId = "94" Or varMenuId = "98" Or varMenuId = "99" Or varMenuId = "92" Or varMenuId = "26" Or varMenuId = "97") Then
         TonghopKHBS
     End If
     
@@ -6857,7 +6857,7 @@ Private Sub cmdSave_Click()
     
     ' Set lai co isNewDataBS sau khi bam nut ghi
     If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "26" Or varMenuId = "96" _
-    Or varMenuId = "94" Or varMenuId = "98" Or varMenuId = "99" Or varMenuId = "92") Then
+    Or varMenuId = "94" Or varMenuId = "98" Or varMenuId = "99" Or varMenuId = "92" Or varMenuId = "97") Then
         isNewdataBS = False
     End If
     
@@ -7375,7 +7375,7 @@ Private Sub Command1_Click()
         Else
             If strIDTkTT156 = "04" Or strIDTkTT156 = "11" Or strIDTkTT156 = "12" Or strIDTkTT156 = "73" Or strIDTkTT156 = "06" Or strIDTkTT156 = "05" Or strIDTkTT156 = "90" Or strIDTkTT156 = "86" Or strIDTkTT156 = "71" Or strIDTkTT156 = "70" Or strIDTkTT156 = "81" Or strIDTkTT156 = "96" Or strIDTkTT156 = "94" Or strIDTkTT156 = "98" _
             Or strIDTkTT156 = "99" Or strIDTkTT156 = "92" _
-            Or strIDTkTT156 = "03" Or strIDTkTT156 = "87" Then
+            Or strIDTkTT156 = "03" Or strIDTkTT156 = "87" Or strIDTkTT156 = "97" Then
                 Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18)
                 ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                 fpSpread1.sheet = fpSpread1.SheetCount - 1
@@ -7719,7 +7719,7 @@ Private Sub Command1_Click()
         mCurrentSheet = tempCurrSheet
         If strIDTkTT156 = "02" Or strIDTkTT156 = "01" Or strIDTkTT156 = "72" Or strIDTkTT156 = "04" Or strIDTkTT156 = "11" Or strIDTkTT156 = "12" Or strIDTkTT156 = "06" Or strIDTkTT156 = "05" Or strIDTkTT156 = "90" Or strIDTkTT156 = "86" Or strIDTkTT156 = "71" Or strIDTkTT156 = "73" Or strIDTkTT156 = "70" Or strIDTkTT156 = "81" Or strIDTkTT156 = "96" _
         Or strIDTkTT156 = "94" Or strIDTkTT156 = "98" Or strIDTkTT156 = "99" Or strIDTkTT156 = "92" _
-        Or strIDTkTT156 = "03" Or strIDTkTT156 = "87" Then
+        Or strIDTkTT156 = "03" Or strIDTkTT156 = "87" Or strIDTkTT156 = "97" Then
             UpdateDataKHBS_TT156 fpSpread1
             fpSpread1.EventEnabled(EventAllEvents) = True
         Else
@@ -8028,7 +8028,7 @@ Private Sub Form_Load()
     If strKHBS = "TKBS" And (varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "05" Or varMenuId = "06" _
     Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "89" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "77" Or varMenuId = "03" Or varMenuId = "73" _
     Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "26" Or varMenuId = "96" _
-    Or varMenuId = "94" Or varMenuId = "99" Or varMenuId = "92" Or varMenuId = "98") Then
+    Or varMenuId = "94" Or varMenuId = "99" Or varMenuId = "92" Or varMenuId = "98" Or varMenuId = "97") Then
         fpSpread1.sheet = fpSpread1.SheetCount - 1
         fpSpread1.SheetVisible = True
         LoadKHBS_TT28
@@ -10767,7 +10767,7 @@ Private Sub ResizeButton()
     If strKHBS = "TKBS" And (menuID = "01" Or menuID = "02" Or menuID = "04" Or menuID = "71" Or menuID = "72" _
     Or menuID = "11" Or menuID = "12" Or menuID = "06" Or menuID = "05" Or menuID = "86" Or menuID = "87" Or menuID = "89" Or menuID = "77" Or menuID = "03" Or menuID = "73" _
     Or menuID = "80" Or menuID = "81" Or menuID = "70" Or menuID = "82" Or menuID = "83" Or menuID = "85" Or menuID = "90" Or menuID = "95" Or menuID = "88" Or menuID = "26" Or menuID = "96" _
-    Or menuID = "94" Or menuID = "98" Or menuID = "99" Or menuID = "92") Then
+    Or menuID = "94" Or menuID = "98" Or menuID = "99" Or menuID = "92" Or menuID = "97") Then
         Command1.Visible = True
         Command1.Left = Frame1.Width - (8460 + 2700)
     Else
@@ -12642,7 +12642,7 @@ Private Sub TonghopKHBS()
         mCurrentSheet = tempCurrSheet
         If strIdTK_TT156 = "02" Or strIdTK_TT156 = "72" Or strIdTK_TT156 = "01" Or strIdTK_TT156 = "04" Or strIdTK_TT156 = "11" Or strIdTK_TT156 = "12" Or strIdTK_TT156 = "06" Or strIdTK_TT156 = "05" Or strIdTK_TT156 = "90" Or strIdTK_TT156 = "86" Or strIdTK_TT156 = "71" Or strIdTK_TT156 = "73" Or strIdTK_TT156 = "70" Or strIdTK_TT156 = "81" Or strIdTK_TT156 = "96" _
         Or strIdTK_TT156 = "94" Or strIdTK_TT156 = "98" Or strIdTK_TT156 = "99" Or strIdTK_TT156 = "92" _
-        Or strIdTK_TT156 = "03" Or strIdTK_TT156 = "87" Then
+        Or strIdTK_TT156 = "03" Or strIdTK_TT156 = "87" Or strIdTK_TT156 = "97" Then
             UpdateDataKHBS_TT156 fpSpread1
         Else
             UpdateDataKHBS_TT28 fpSpread1
@@ -12704,7 +12704,7 @@ Private Sub TonghopKHBS()
                     ' TT156
                     If strIdTK_TT156 = "04" Or strIdTK_TT156 = "11" Or strIdTK_TT156 = "12" Or strIdTK_TT156 = "06" Or strIdTK_TT156 = "05" Or strIdTK_TT156 = "90" Or strIdTK_TT156 = "86" Or strIdTK_TT156 = "71" Or strIdTK_TT156 = "73" Or strIdTK_TT156 = "70" Or strIdTK_TT156 = "81" Or strIdTK_TT156 = "96" Or strIdTK_TT156 = "94" Or strIdTK_TT156 = "98" Or strIdTK_TT156 = "99" _
                     Or strIdTK_TT156 = "92" _
-                    Or strIdTK_TT156 = "03" Or strIdTK_TT156 = "87" Then
+                    Or strIdTK_TT156 = "03" Or strIdTK_TT156 = "87" Or strIdTK_TT156 = "97" Then
                         Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18)
                         ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                         fpSpread1.sheet = fpSpread1.SheetCount - 1
@@ -12811,7 +12811,7 @@ Private Sub TonghopKHBS()
                 Else
                     If strIdTK_TT156 = "04" Or strIdTK_TT156 = "11" Or strIdTK_TT156 = "12" Or strIdTK_TT156 = "06" Or strIdTK_TT156 = "05" Or strIdTK_TT156 = "90" Or strIdTK_TT156 = "86" Or strIdTK_TT156 = "71" Or strIdTK_TT156 = "73" Or strIdTK_TT156 = "70" Or strIdTK_TT156 = "81" Or strIdTK_TT156 = "96" Or strIdTK_TT156 = "94" _
                     Or strIdTK_TT156 = "98" Or strIdTK_TT156 = "99" Or strIdTK_TT156 = "92" _
-                    Or strIdTK_TT156 = "03" Or strIdTK_TT156 = "87" Then
+                    Or strIdTK_TT156 = "03" Or strIdTK_TT156 = "87" Or strIdTK_TT156 = "97" Then
                         Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18)
                         ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                         fpSpread1.sheet = fpSpread1.SheetCount - 1

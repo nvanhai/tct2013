@@ -1055,7 +1055,7 @@ Public Sub SetupData(pGrid As fpSpread)
                                             & Replace$(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace$(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                                         End If
                                     End If
-                                ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "03" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "87" Then
+                                ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "03" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "97" Then
                                         'Data file not contain Day from and to.
                                         strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" _
                                         & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
@@ -1161,7 +1161,8 @@ Public Sub SetupData(pGrid As fpSpread)
                 Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "72" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "03" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "80" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "81" _
                 Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "82" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "86" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "89" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "73" _
                 Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "83" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "85" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "90" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" _
-                Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "94" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "99" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "92") And fso.FileExists(strDataFileNameBS) Then
+                Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "94" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "99" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "92" _
+                Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "97") And fso.FileExists(strDataFileNameBS) Then
                      isNewdataBS = False
                 End If
                 
