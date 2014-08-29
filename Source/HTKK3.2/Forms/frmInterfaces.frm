@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":19A5
+         SpreadDesigner  =   "frmInterfaces.frx":1969
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1C69
+      SpreadDesigner  =   "frmInterfaces.frx":1BF1
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -7534,7 +7534,7 @@ Private Sub Command1_Click()
         GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_03_TD_TAIN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_04GTGT" Or _
         GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01NTNN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TBVMT" _
         Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01ATNDN_DK" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01BTNDN_DK" _
-        Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TAIN_DK" Then
+        Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TAIN_DK" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_03A_TD_TAIN" Then
         
             If strIDTkTT156 = "99" Or strIDTkTT156 = "98" Or strIDTkTT156 = "92" Then
                 fpSpread1.EventEnabled(EventAllEvents) = False
@@ -12490,7 +12490,8 @@ Private Sub TonghopKHBS()
         Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01_TD_GTGT" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_03_TD_TAIN" _
         Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_04GTGT" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01NTNN" _
         Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TBVMT" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01ATNDN_DK" _
-        Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01BTNDN_DK" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TAIN_DK" Then
+        Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01BTNDN_DK" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TAIN_DK" _
+        Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_03A_TD_TAIN" Then
             If strIdTK_TT156 = "99" Or strIdTK_TT156 = "98" Or strIdTK_TT156 = "92" Then
                 fpSpread1.EventEnabled(EventAllEvents) = False
                 tempCurrSheet = mCurrentSheet
