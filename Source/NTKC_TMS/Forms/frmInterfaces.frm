@@ -482,7 +482,7 @@ Private Sub cmdCommand2_Click()
 
     Dim cSheet       As Integer, oSheet As Integer
     Dim strFileName  As String
-    Dim MaTK         As String
+    Dim maTK         As String
     Dim nodeVal      As MSXML.IXMLDOMNode
     Dim blnFinish    As Boolean
     Dim sRow         As Integer
@@ -506,19 +506,19 @@ Private Sub cmdCommand2_Click()
         Exit Sub
     End If
         
-    MaTK = GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(0), "DataFile")
+    maTK = GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(0), "DataFile")
 
-    If InStr(MaTK, "11") > 0 Then
-        MaTK = Replace$(MaTK, "11", "")
-    ElseIf InStr(MaTK, "10") > 0 Then
-        MaTK = Replace$(MaTK, "10", "")
+    If InStr(maTK, "11") > 0 Then
+        maTK = Replace$(maTK, "11", "")
+    ElseIf InStr(maTK, "10") > 0 Then
+        maTK = Replace$(maTK, "10", "")
     End If
     
     'Chuan xml khi ket xuat cho cac to TNCN thang, quy
     'vi du 01A_TNCN -> 01_TNCN, 01B_TNCN -> 01_TNCN
-    If InStr(MaTK, "TNCN") > 0 Then
-        If Val(Left$(MaTK, 2)) < 6 Then
-            MaTK = Replace$(Replace$(MaTK, "B", ""), "A", "")
+    If InStr(maTK, "TNCN") > 0 Then
+        If Val(Left$(maTK, 2)) < 6 Then
+            maTK = Replace$(Replace$(maTK, "B", ""), "A", "")
      
         End If
     End If
@@ -541,8 +541,8 @@ Private Sub cmdCommand2_Click()
 
     strFileName = "test.xml" 'getFileName
         
-    xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
-    xmlMapCT.Load GetAbsolutePath("..\Ini\" & MaTK & "_xml.xml")
+    xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & maTK & "_xml.xml")
+    xmlMapCT.Load GetAbsolutePath("..\Ini\" & maTK & "_xml.xml")
 
     With fpSpread1
         Dim cellid         As String
@@ -677,19 +677,19 @@ Private Sub cmdCommand2_Click()
                 Dim currentRow As Integer
                 Dim xmlSection As MSXML.IXMLDOMNode
         
-                MaTK = GetAttribute(nodeVal, "DataFile")
+                maTK = GetAttribute(nodeVal, "DataFile")
 
-                If InStr(MaTK, "11") > 0 Then
-                    MaTK = Replace$(MaTK, "11", "")
-                ElseIf InStr(MaTK, "10") > 0 Then
-                    MaTK = Replace$(MaTK, "10", "")
+                If InStr(maTK, "11") > 0 Then
+                    maTK = Replace$(maTK, "11", "")
+                ElseIf InStr(maTK, "10") > 0 Then
+                    maTK = Replace$(maTK, "10", "")
                 End If
-                If InStr(MaTK, "KHBS") > 0 Then
-                    MaTK = "KHBS"
+                If InStr(maTK, "KHBS") > 0 Then
+                    maTK = "KHBS"
                 End If
-                xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
+                xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & maTK & "_xml.xml")
 
-                xmlMapPL.Load GetAbsolutePath("..\ini\" & MaTK & "_xml.xml")
+                xmlMapPL.Load GetAbsolutePath("..\ini\" & maTK & "_xml.xml")
 
                 cellRange = 0
                 .Sheet = nodeValIndex + 1
@@ -1082,13 +1082,13 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             xmlTK.getElementsByTagName("maTinhDLyThue")(0).Text = xmlResultDLT.getElementsByTagName("MaTinh")(0).Text
         End If
     End If
-    xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = "2.0.0"
+    
+    
     xmlTK.getElementsByTagName("maDVu")(0).Text = GetAttribute(GetMessageCellById("0133"), "Msg")
     xmlTK.getElementsByTagName("tenDVu")(0).Text = GetAttribute(GetMessageCellById("0134"), "Msg")
     xmlTK.getElementsByTagName("ttinNhaCCapDVu")(0).Text = ""
     
     vlue = xmlTK.getElementsByTagName("soLan")(0).Text
-    'vlue = xmlTK.getElementsByTagName("loaiTKhai")(0).Text
     
     If Val(vlue) > 0 Then
         xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0132"), "Msg")
@@ -1100,17 +1100,27 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         strLoaiToKhai = GetAttribute(GetMessageCellById("0131"), "Msg")
     End If
     
-'    vlue = xmlTK.getElementsByTagName("soLan")(0).Text
-'
-'    If InStr(xmlTK.getElementsByTagName("loaiTKhai")(0).Text, "C") Or InStr(xmlTK.getElementsByTagName("loaiTKhai")(0).Text, "c") > 0 Then
-'        xmlTK.getElementsByTagName("soLan")(0).Text = "0"
-'        xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0131"), "Msg")
-'        strLoaiToKhai = GetAttribute(GetMessageCellById("0131"), "Msg")
-'    Else
-'        xmlTK.getElementsByTagName("loaiTKhai")(0).Text = GetAttribute(GetMessageCellById("0132"), "Msg")
-'        xmlTK.getElementsByTagName("soLan")(0).Text = Val(vlue)
-'        strLoaiToKhai = GetAttribute(GetMessageCellById("0132"), "Msg")
-'    End If
+    'Map version xml
+    Dim maTK As Variant
+    maTK = xmlTK.getElementsByTagName("maTKhai")(0).Text
+    
+    If maTK <> "" Then
+        Dim xmlVersion As New MSXML.DOMDocument
+        xmlVersion.Load GetAbsolutePath("..\InterfaceTemplates\xml\MapMaFile.xml")
+        Dim xmlNodeVrs As MSXML.IXMLDOMNode
+        
+        For Each xmlNodeVrs In xmlVersion.lastChild.childNodes
+            If GetAttribute(xmlNodeVrs, "MaTK") = maTK Then
+                If strLoaiToKhai = "B" Then
+                    xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = GetAttribute(xmlNodeVrs, "VersionKHBS")
+                Else
+                    xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = GetAttribute(xmlNodeVrs, "Version")
+                End If
+                Exit For
+            End If
+        Next
+    End If
+    'End map version
     
     'To 03/TBAC, BLP bo Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "07"
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "10" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "09" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "67" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "66" Then
@@ -1482,7 +1492,7 @@ Private Function ExecuteSave() As Boolean
 
     Dim cSheet       As Integer, oSheet As Integer
     Dim strFileName  As String
-    Dim MaTK         As String
+    Dim maTK         As String
     Dim nodeVal      As MSXML.IXMLDOMNode
     Dim blnFinish    As Boolean
     Dim Level        As String
@@ -1502,18 +1512,18 @@ Private Function ExecuteSave() As Boolean
         Exit Function
     End If
         
-    MaTK = GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(0), "DataFile")
+    maTK = GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(0), "DataFile")
 
-    strFileName = MaTK & ".xml" 'getFileName
+    strFileName = maTK & ".xml" 'getFileName
 
-    If InStr(MaTK, "11") > 0 Then
-        MaTK = Replace$(MaTK, "11", "")
-    ElseIf InStr(MaTK, "10") > 0 Then
-        MaTK = Replace$(MaTK, "10", "")
-    ElseIf InStr(MaTK, "12") > 0 Then
-        MaTK = Replace$(MaTK, "12", "")
-    ElseIf InStr(MaTK, "13") > 0 Then
-        MaTK = Replace$(MaTK, "13", "")
+    If InStr(maTK, "11") > 0 Then
+        maTK = Replace$(maTK, "11", "")
+    ElseIf InStr(maTK, "10") > 0 Then
+        maTK = Replace$(maTK, "10", "")
+    ElseIf InStr(maTK, "12") > 0 Then
+        maTK = Replace$(maTK, "12", "")
+    ElseIf InStr(maTK, "13") > 0 Then
+        maTK = Replace$(maTK, "13", "")
     End If
     
     '    With CommonDialog1
@@ -1532,8 +1542,8 @@ Private Function ExecuteSave() As Boolean
     '        End If
     '    End With
         
-    xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
-    xmlMapCT.Load GetAbsolutePath("..\Ini\" & MaTK & "_xml.xml")
+    xmlTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & maTK & "_xml.xml")
+    xmlMapCT.Load GetAbsolutePath("..\Ini\" & maTK & "_xml.xml")
    
     If xmlTK.hasChildNodes = False Or xmlMapCT.hasChildNodes = False Then
         DisplayMessage "0149", msOKOnly, miCriticalError
@@ -1854,29 +1864,29 @@ Private Function ExecuteSave() As Boolean
                 Dim currentRow As Integer
                 Dim xmlSection As MSXML.IXMLDOMNode
         
-                MaTK = GetAttribute(nodeVal, "DataFile")
+                maTK = GetAttribute(nodeVal, "DataFile")
 
-                If InStr(MaTK, "11") > 0 Then
-                    MaTK = Replace$(MaTK, "11", "")
-                ElseIf InStr(MaTK, "10") > 0 Then
-                    MaTK = Replace$(MaTK, "10", "")
-                ElseIf InStr(MaTK, "12") > 0 Then
-                    MaTK = Replace$(MaTK, "12", "")
-                ElseIf InStr(MaTK, "13") > 0 Then
-                    MaTK = Replace$(MaTK, "13", "")
+                If InStr(maTK, "11") > 0 Then
+                    maTK = Replace$(maTK, "11", "")
+                ElseIf InStr(maTK, "10") > 0 Then
+                    maTK = Replace$(maTK, "10", "")
+                ElseIf InStr(maTK, "12") > 0 Then
+                    maTK = Replace$(maTK, "12", "")
+                ElseIf InStr(maTK, "13") > 0 Then
+                    maTK = Replace$(maTK, "13", "")
                 End If
                 
-                If InStr(MaTK, "KHBS") > 0 Then
+                If InStr(maTK, "KHBS") > 0 Then
                     'MaTK = "KHBS"
-                    MaTK = Right$(MaTK, Len(MaTK) - 5)
+                    maTK = Right$(maTK, Len(maTK) - 5)
                     
-                    If MaTK = "01_GTGT" Then
+                    If maTK = "01_GTGT" Then
                         xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_01_GTGT_xml.xml")
 
                         xmlMapPL.Load GetAbsolutePath("..\Ini\KHBS_01_GTGT_xml.xml")
                     Else
 
-                        If MaTK = "02_GTGT" Or MaTK = "03_GTGT" Or MaTK = "04_GTGT" Or MaTK = "05_GTGT" Or MaTK = "01A_TNDN" Or MaTK = "01A_TNDN_DK" Or MaTK = "01B_TNDN" Or MaTK = "01B_TNDN_DK" Or MaTK = "02_TNDN" Or MaTK = "01_NTNN" Or MaTK = "03_NTNN" Or MaTK = "01_TAIN" Or MaTK = "01_TAIN_DK" Or MaTK = "01_TTDB" Or MaTK = "01_BVMT" Or MaTK = "01_TBVMT" Then
+                        If maTK = "02_GTGT" Or maTK = "03_GTGT" Or maTK = "04_GTGT" Or maTK = "05_GTGT" Or maTK = "01A_TNDN" Or maTK = "01A_TNDN_DK" Or maTK = "01B_TNDN" Or maTK = "01B_TNDN_DK" Or maTK = "02_TNDN" Or maTK = "01_NTNN" Or maTK = "03_NTNN" Or maTK = "01_TAIN" Or maTK = "01_TAIN_DK" Or maTK = "01_TTDB" Or maTK = "01_BVMT" Or maTK = "01_TBVMT" Then
                             xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_TT156_xml.xml")
 
                             xmlMapPL.Load GetAbsolutePath("..\Ini\KHBS_TT156_xml.xml")
@@ -1890,7 +1900,7 @@ Private Function ExecuteSave() As Boolean
                             End If
 
                             If xmlPL.getElementsByTagName("mauSo").length > 0 Then
-                                xmlPL.getElementsByTagName("mauSo")(0).Text = MaTK
+                                xmlPL.getElementsByTagName("mauSo")(0).Text = maTK
                             End If
 
                             If xmlPL.getElementsByTagName("kyTinhThue").length > 0 And xmlTK.getElementsByTagName("kyKKhai").length > 0 Then
@@ -1900,9 +1910,9 @@ Private Function ExecuteSave() As Boolean
                     End If
 
                 Else
-                    xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & MaTK & "_xml.xml")
+                    xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & maTK & "_xml.xml")
 
-                    xmlMapPL.Load GetAbsolutePath("..\ini\" & MaTK & "_xml.xml")
+                    xmlMapPL.Load GetAbsolutePath("..\ini\" & maTK & "_xml.xml")
                 End If
 
                 If xmlPL.hasChildNodes = True And xmlMapPL.hasChildNodes = True Then
