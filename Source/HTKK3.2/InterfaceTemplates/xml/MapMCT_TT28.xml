@@ -84,8 +84,8 @@
 		<Item CellID="BM_48" MCT="13" Caption="Thuế TNDN phải nộp"/>
 	</Map>
     <Map ID="02_NTNN">
-		<Item CellID="AF_36" MCT="4a" Caption="Thuế GTGT phải nộp của nhà thầu nước ngoài"/>
-		<Item CellID="AF_37" MCT="4b" Caption="Thuế TNDN phải nộp của nhà thầu nước ngoài"/>
+		<Item CellID="AF_41" MCT="7a" Caption="a. Thuế giá trị gia tăng (7a=5a-6a)"/>
+		<Item CellID="AF_42" MCT="7b" Caption="b. Thuế thu nhập doanh nghiệp (7b=5b-6b)"/>
 	</Map>
 	<Map ID="03_NTNN">
 		<Item CellID="CG_26" MCT="9" Caption="Thuế TNDN phải nộp"/>
