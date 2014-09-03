@@ -1,7 +1,10 @@
 <PL_BK_01AC_01>
+	<Static GroupName="PL_BK_01AC_01">
+		<cqtChuyenDen>AK_30</cqtChuyenDen>
+	</Static>
 	<Dynamic GroupName="HDonHetGTriSDung">
 		<ChiTietHoaDon id="id">
-			<maHoaDon>AE_46</maHoaDon>
+			<maHoaDon>AK_46</maHoaDon>
 			<tenHoaDon>C_46</tenHoaDon>
 			<kyHieuMau>O_46</kyHieuMau>
 			<kyHieuHD>S_46</kyHieuHD>
@@ -12,7 +15,7 @@
 	</Dynamic>
 	<Dynamic GroupName="HDonDKiTiepSDung">
 		<ChiTietHoaDon id="id">
-			<maHoaDon>AE_50</maHoaDon>
+			<maHoaDon>AK_50</maHoaDon>
 			<tenHoaDon>C_50</tenHoaDon>
 			<kyHieuMau>O_50</kyHieuMau>
 			<kyHieuHD>S_50</kyHieuHD>
@@ -20,8 +23,5 @@
 			<tuSo>Y_50</tuSo>
 			<denSo>AA_50</denSo>
 		</ChiTietHoaDon>
-	</Dynamic>
-	<Static GroupName="PL_BK_01AC_01">
-		<cqtChuyenDen>M_53</cqtChuyenDen>
-	</Static>
+	</Dynamic>	
 </PL_BK_01AC_01>

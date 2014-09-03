@@ -203,6 +203,30 @@ Public Function Prepared3() As Boolean
             UpdateCell fps, .Col, .Row, .Text
         End If
         '.EventEnabled(EventAllEvents) = True
+        
+        'Cat chuoi co quan thue chuyen den cua phu luc BK01 lay ma dua vao cell an AK_53
+        'Chuoi co dang: "HAN-Cuc thue thanh pho Ha Noi {10100}"
+        .Sheet = 2
+        Dim strMaCT As Variant
+        Dim viewCucThue As String
+        Dim arrCT() As String
+        .GetText .ColLetterToNumber("M"), "30", strMaCT
+        If strMaCT <> "" And InStr(strMaCT, "{") <> 0 Then
+            arrCT = Split(strMaCT, "{")
+            strMaCT = Left$(arrCT(1), 5)
+            viewCucThue = arrCT(0)
+        End If
+        
+        .Col = .ColLetterToNumber("N")
+        .Row = 30
+        .Text = viewCucThue
+        UpdateCell fps, .Col, .Row, .Text
+        
+        .Col = .ColLetterToNumber("AK")
+        .Row = 30
+        .Text = strMaCT
+        UpdateCell fps, .Col, .Row, .Text
+        
     End With
     'UpdateSheets
     Prepared3 = True
@@ -263,6 +287,37 @@ Dim blnValid As Boolean
             .Row = .Row + 1
             
         Loop Until .Text = "aa"
+
+        .Sheet = 2 'Phu luc PL_BK01
+        If fps.SheetVisible Then
+            'Hoa don het gia tri su dung
+            .Row = 46
+            Do
+                .GetText .ColLetterToNumber("O"), .Row, kyHieu
+                GetMaHoaDon kyHieu, maHD
+                If maHD <> "" Then
+                    .Col = .ColLetterToNumber("AK")
+                    .Text = maHD
+                    UpdateCell fps, .Col, .Row, .Text
+                End If
+                .Col = .ColLetterToNumber("B")
+                .Row = .Row + 1
+            Loop Until .Text = "aa"
+            
+            'Hoa don dang ky tiep tuc su dung
+            .Row = 50
+            Do
+                .GetText .ColLetterToNumber("O"), .Row, kyHieu
+                GetMaHoaDon kyHieu, maHD
+                If maHD <> "" Then
+                    .Col = .ColLetterToNumber("AK")
+                    .Text = maHD
+                    UpdateCell fps, .Col, .Row, .Text
+                End If
+                .Col = .ColLetterToNumber("B")
+                .Row = .Row + 1
+            Loop Until .Text = "bb"
+        End If
 
         .Sheet = 3 'Phu luc PL_BK02
         If fps.SheetVisible Then
