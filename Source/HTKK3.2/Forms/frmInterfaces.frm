@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":1969
+         SpreadDesigner  =   "frmInterfaces.frx":19A5
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1BF1
+      SpreadDesigner  =   "frmInterfaces.frx":1C69
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -7375,7 +7375,7 @@ Private Sub Command1_Click()
         Else
             If strIDTkTT156 = "04" Or strIDTkTT156 = "11" Or strIDTkTT156 = "12" Or strIDTkTT156 = "73" Or strIDTkTT156 = "06" Or strIDTkTT156 = "05" Or strIDTkTT156 = "90" Or strIDTkTT156 = "86" Or strIDTkTT156 = "71" Or strIDTkTT156 = "70" Or strIDTkTT156 = "81" Or strIDTkTT156 = "96" Or strIDTkTT156 = "94" Or strIDTkTT156 = "98" _
             Or strIDTkTT156 = "99" Or strIDTkTT156 = "92" _
-            Or strIDTkTT156 = "03" Or strIDTkTT156 = "87" Or strIDTkTT156 = "97" Then
+            Or strIDTkTT156 = "03" Or strIDTkTT156 = "87" Or strIDTkTT156 = "97" Or strIDTkTT156 = "80" Then
                 Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18)
                 ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                 fpSpread1.sheet = fpSpread1.SheetCount - 1
@@ -7719,7 +7719,7 @@ Private Sub Command1_Click()
         mCurrentSheet = tempCurrSheet
         If strIDTkTT156 = "02" Or strIDTkTT156 = "01" Or strIDTkTT156 = "72" Or strIDTkTT156 = "04" Or strIDTkTT156 = "11" Or strIDTkTT156 = "12" Or strIDTkTT156 = "06" Or strIDTkTT156 = "05" Or strIDTkTT156 = "90" Or strIDTkTT156 = "86" Or strIDTkTT156 = "71" Or strIDTkTT156 = "73" Or strIDTkTT156 = "70" Or strIDTkTT156 = "81" Or strIDTkTT156 = "96" _
         Or strIDTkTT156 = "94" Or strIDTkTT156 = "98" Or strIDTkTT156 = "99" Or strIDTkTT156 = "92" _
-        Or strIDTkTT156 = "03" Or strIDTkTT156 = "87" Or strIDTkTT156 = "97" Then
+        Or strIDTkTT156 = "03" Or strIDTkTT156 = "87" Or strIDTkTT156 = "97" Or strIDTkTT156 = "80" Then
             UpdateDataKHBS_TT156 fpSpread1
             fpSpread1.EventEnabled(EventAllEvents) = True
         Else
@@ -12366,7 +12366,7 @@ Private Sub TonghopKHBS()
                 ' ca to khai sua theo TT156
                 If strIdTK_TT156 = "72" Or strIdTK_TT156 = "02" Or strIdTK_TT156 = "04" Or strIdTK_TT156 = "11" Or strIdTK_TT156 = "12" Or strIdTK_TT156 = "06" Or strIdTK_TT156 = "05" Or strIdTK_TT156 = "90" Or strIdTK_TT156 = "86" Or strIdTK_TT156 = "71" Or strIdTK_TT156 = "73" Or strIdTK_TT156 = "70" Or strIdTK_TT156 = "81" Or strIdTK_TT156 = "96" _
                 Or strIdTK_TT156 = "94" Or strIdTK_TT156 = "98" Or strIdTK_TT156 = "99" Or strIdTK_TT156 = "92" _
-                Or strIdTK_TT156 = "03" Then
+                Or strIdTK_TT156 = "03" Or strIdTK_TT156 = "97" Or strIdTK_TT156 = "80" Then
                     ' so ngay nop cham
                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18)
                     ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
@@ -12643,7 +12643,7 @@ Private Sub TonghopKHBS()
         mCurrentSheet = tempCurrSheet
         If strIdTK_TT156 = "02" Or strIdTK_TT156 = "72" Or strIdTK_TT156 = "01" Or strIdTK_TT156 = "04" Or strIdTK_TT156 = "11" Or strIdTK_TT156 = "12" Or strIdTK_TT156 = "06" Or strIdTK_TT156 = "05" Or strIdTK_TT156 = "90" Or strIdTK_TT156 = "86" Or strIdTK_TT156 = "71" Or strIdTK_TT156 = "73" Or strIdTK_TT156 = "70" Or strIdTK_TT156 = "81" Or strIdTK_TT156 = "96" _
         Or strIdTK_TT156 = "94" Or strIdTK_TT156 = "98" Or strIdTK_TT156 = "99" Or strIdTK_TT156 = "92" _
-        Or strIdTK_TT156 = "03" Or strIdTK_TT156 = "87" Or strIdTK_TT156 = "97" Then
+        Or strIdTK_TT156 = "03" Or strIdTK_TT156 = "87" Or strIdTK_TT156 = "97" Or strIdTK_TT156 = "80" Then
             UpdateDataKHBS_TT156 fpSpread1
         Else
             UpdateDataKHBS_TT28 fpSpread1
@@ -12705,7 +12705,7 @@ Private Sub TonghopKHBS()
                     ' TT156
                     If strIdTK_TT156 = "04" Or strIdTK_TT156 = "11" Or strIdTK_TT156 = "12" Or strIdTK_TT156 = "06" Or strIdTK_TT156 = "05" Or strIdTK_TT156 = "90" Or strIdTK_TT156 = "86" Or strIdTK_TT156 = "71" Or strIdTK_TT156 = "73" Or strIdTK_TT156 = "70" Or strIdTK_TT156 = "81" Or strIdTK_TT156 = "96" Or strIdTK_TT156 = "94" Or strIdTK_TT156 = "98" Or strIdTK_TT156 = "99" _
                     Or strIdTK_TT156 = "92" _
-                    Or strIdTK_TT156 = "03" Or strIdTK_TT156 = "87" Or strIdTK_TT156 = "97" Then
+                    Or strIdTK_TT156 = "03" Or strIdTK_TT156 = "87" Or strIdTK_TT156 = "97" Or strIdTK_TT156 = "80" Then
                         Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18)
                         ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                         fpSpread1.sheet = fpSpread1.SheetCount - 1
@@ -12812,7 +12812,7 @@ Private Sub TonghopKHBS()
                 Else
                     If strIdTK_TT156 = "04" Or strIdTK_TT156 = "11" Or strIdTK_TT156 = "12" Or strIdTK_TT156 = "06" Or strIdTK_TT156 = "05" Or strIdTK_TT156 = "90" Or strIdTK_TT156 = "86" Or strIdTK_TT156 = "71" Or strIdTK_TT156 = "73" Or strIdTK_TT156 = "70" Or strIdTK_TT156 = "81" Or strIdTK_TT156 = "96" Or strIdTK_TT156 = "94" _
                     Or strIdTK_TT156 = "98" Or strIdTK_TT156 = "99" Or strIdTK_TT156 = "92" _
-                    Or strIdTK_TT156 = "03" Or strIdTK_TT156 = "87" Or strIdTK_TT156 = "97" Then
+                    Or strIdTK_TT156 = "03" Or strIdTK_TT156 = "87" Or strIdTK_TT156 = "97" Or strIdTK_TT156 = "80" Then
                         Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18)
                         ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                         fpSpread1.sheet = fpSpread1.SheetCount - 1
