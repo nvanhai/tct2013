@@ -91,7 +91,8 @@
 		<Item CellID="CG_26" MCT="9" Caption="Thuế TNDN phải nộp"/>
 	</Map>
 	<Map ID="04_NTNN">
-		<Item CellID="AB_33" MCT="4" Caption="Thuế TNDN phải nộp"/>
+		<Item CellID="AB_34" MCT="5" Caption="Số thuế thu nhập doanh nghiệp phải nộp"/>
+		<Item CellID="AB_35" MCT="6" Caption="Số thuế đã nộp"/>
 	</Map>
 	<Map ID="01_TD_GTGT">
 		<Item CellID="S_47" MCT="27" Caption="Số thuế GTGT phải nộp [27]= [25]-[26]"/>

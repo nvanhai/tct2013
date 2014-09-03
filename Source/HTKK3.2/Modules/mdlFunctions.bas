@@ -72,6 +72,10 @@ Public Const SS_BORDER_STYLE_FINE_DOT = 13
 
 Public Const SS_BDM_CURRENT_ROW = 4
 
+
+Public Const strIdKHBS_TT156 = "~02~04~71~72~11~12~73~03~70~80~81~82~06~77~05~86~87~88~90~94~96~97~98~99~92~"
+
+
 Const mYear_____ = "T_2"
 Const mMonth____ = "T_3"
 Const mThreeMonths = "T_4"
@@ -4249,7 +4253,7 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             ReDim strResult(4)
             strResult(0) = "J_19~Dynamic_0"
             strResult(1) = "N_21~AH_21~Dynamic_0"
-            strResult(2) = "T_30~AB_30~AJ_30~AT_30~T_31~AB_31~AJ_31~AT_31~T_32~AB_32~AJ_32~AT_32~T_33~AB_33~AJ_33~AT_33~T_34~AB_34~AJ_34~AT_34~Dynamic_0"
+            strResult(2) = "T_30~AB_30~AJ_30~AT_30~T_31~AB_31~AJ_31~AT_31~T_32~AB_32~AJ_32~AT_32~T_33~AB_33~AJ_33~AT_33~T_34~AB_34~AJ_34~AT_34~T_35~AB_35~AJ_35~AT_35~T_36~AB_36~AJ_36~AT_36~Dynamic_0"
             strResult(3) = "M_44~AL_44~M_46~AL_46~M_23~N_23~O_23~S_23~Z_23~Dynamic_0"
             
             ' 01_BVMT
