@@ -111,7 +111,18 @@
 	<Map ID="01B_TNDN_DK">
 		<Item CellID="AV_62" MCT="29" Caption="Số thuế TNDN tạm tính được miễn hoặc giảm (nếu có)"/>
 	</Map>
+	
+	<Map ID="02_TNDN_DK">
+		<Item CellID="AV_66" MCT="34" Caption="Số thuế thu nhập doanh nghiệp phải nộp [34]=[32]x[33]"/>
+		<Item CellID="AV_67" MCT="35" Caption="Số thuế thu nhập doanh nghiệp được miễn hoặc giảm"/>
+	</Map>
+	
 	<Map ID="01_TAIN_DK">
 		<Item CellID="AV_61" MCT="34" Caption="Số tiền thuế tài nguyên tạm tính phải nộp [34]=[32]x[33]"/>
+	</Map>
+	
+	<Map ID="02_TAIN_DK">
+		<Item CellID="AV_73" MCT="39" Caption="Số tiền thuế tài nguyên kỳ trước chuyển sang [39]=[33]x[37]"/>
+		<Item CellID="AV_74" MCT="40" Caption="Số tiền thuế tài nguyên phát sinh trong kỳ tính thuế [40]=([28]-[26])x[32]x[37]"/>
 	</Map>
 </Root>
