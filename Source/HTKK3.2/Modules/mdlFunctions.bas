@@ -73,7 +73,7 @@ Public Const SS_BORDER_STYLE_FINE_DOT = 13
 Public Const SS_BDM_CURRENT_ROW = 4
 
 
-Public Const strIdKHBS_TT156 = "~02~04~71~72~11~12~73~03~70~80~81~82~06~77~05~86~87~88~90~94~96~97~98~99~92~"
+Public Const strIdKHBS_TT156 = "~02~04~71~72~11~12~73~03~70~80~81~82~06~77~05~86~87~88~90~94~96~97~98~99~93~92~89~"
 
 
 Const mYear_____ = "T_2"
@@ -590,10 +590,10 @@ Public Sub SetupData(pGrid As fpSpread)
                                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" _
                                     & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                         Else
-                                If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Then
+                                If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "89" Then
                                     'Data file not contain Day from and to.
                                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" _
-                                    & strLoaiTkDk & "_" & TAX_Utilities_v1.Year & ".xml"
+                                    & strLoaiTkDk & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                                 Else
                                     'Data file not contain Day from and to.
                                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" _
@@ -719,8 +719,8 @@ Public Sub SetupData(pGrid As fpSpread)
                                         ElseIf strQuy = "TK_LANXB" Then
                                             strDataFileBS = TAX_Utilities_v1.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk & "_L" & strSoLanXuatBan & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                                         End If
-                                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Then
-                                        strDataFileBS = TAX_Utilities_v1.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.Year & ".xml"
+                                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "89" Then
+                                        strDataFileBS = TAX_Utilities_v1.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                                     ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "70" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "06" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "90" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "05" Then
                                         If strLoaiTKThang_PS = "TK_THANG" Then
                                             strDataFileBS = TAX_Utilities_v1.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
@@ -741,7 +741,7 @@ Public Sub SetupData(pGrid As fpSpread)
                             Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "05" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "06" _
                             Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "86" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "89" _
                             Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "85" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "90" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "96" _
-                            Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "94") And mCurrentSheet = 1 Then
+                            Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "94" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "93") And mCurrentSheet = 1 Then
                                 ' Kiem tra xem da ton tai lan bo sung nay chua?
                                 If Not fso.FileExists(strDataFileName) Then
                                     ' Neu chua ton tai lan bo sung nay va lan bo sung la 1 thi se lay to khai chinh thuc de cap nhat du lieu
@@ -1096,19 +1096,19 @@ Public Sub SetupData(pGrid As fpSpread)
                                 & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
                         
                         Else
-                                If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Then
+                                If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "89" Then
                                     'Data file not contain Day from and to.
                                     strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" _
-                                    & strLoaiTkDk & "_" & TAX_Utilities_v1.Year & ".xml"
+                                    & strLoaiTkDk & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                                     If lSheet = 0 Then
                                         ' Neu chua ton tai lan bo sung nay va lan bo sung la 1 thi se lay to khai chinh thuc de cap nhat du lieu
                                         If Trim(strSolanBS) = "1" Then
                                             strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" _
-                                            & strLoaiTkDk & TAX_Utilities_v1.Year & ".xml"
+                                            & strLoaiTkDk & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                                         Else
                                             ' Neu bo sung tu lan thu 2 tro di thi se lay lan gan voi lan bo sung nhat
                                             strDataFileBS = TAX_Utilities_v1.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" _
-                                            & strLoaiTkDk & TAX_Utilities_v1.Year & ".xml"
+                                            & strLoaiTkDk & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                                         End If
                                     End If
                                     
@@ -1116,11 +1116,11 @@ Public Sub SetupData(pGrid As fpSpread)
                                         ' Neu chua ton tai lan bo sung nay va lan bo sung la 1 thi se lay to khai chinh thuc de cap nhat du lieu
                                         If Trim(strSolanBS) = "1" Then
                                             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" _
-                                            & strLoaiTkDk & TAX_Utilities_v1.Year & ".xml"
+                                            & strLoaiTkDk & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                                         Else
                                             ' Neu bo sung tu lan thu 2 tro di thi se lay lan gan voi lan bo sung nhat
                                             strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" _
-                                            & strLoaiTkDk & TAX_Utilities_v1.Year & ".xml"
+                                            & strLoaiTkDk & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                                         End If
                                     End If
                                 Else
@@ -1166,7 +1166,7 @@ Public Sub SetupData(pGrid As fpSpread)
                 Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "82" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "86" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "89" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "73" _
                 Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "83" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "85" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "90" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" _
                 Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "94" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "99" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "92" _
-                Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "97") And fso.FileExists(strDataFileNameBS) Then
+                Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "97" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "93") And fso.FileExists(strDataFileNameBS) Then
                      isNewdataBS = False
                 End If
                 
@@ -4272,7 +4272,7 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             strResult(2) = "C_49~H_49~J_49~N_49~Q_49~V_49~Y_49~AC_49~Dynamic_1"
             strResult(3) = "H_60~R_60~H_62~R_62~C_35~F_35~I_35~Q_37~V_37~Y_37~Dynamic_0"
             
-            ' 01_PHXD
+            ' 02/TAIN-DK
         Case "89"
            ReDim strResult(3)
             strResult(0) = "H_14~Dynamic_0"

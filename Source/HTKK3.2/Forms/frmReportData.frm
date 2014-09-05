@@ -1545,7 +1545,7 @@ Private Sub SetupPrinter()
     Dim arrLngRowPageBreak() As Long, lngTemp As Long
     Dim blnActiveSheet As Boolean
     
-    Dim strIdKHBS As String, strIdKHBS_TT156  As String
+    Dim strIdKHBS As String
     
     lBarcodeNumber = 0
     lPageNumber = 0
@@ -1694,9 +1694,9 @@ Private Sub SetupPrinter()
                             End If
                         Else
                             If lCtrl = .SheetCount - 1 Then
-                                strIdKHBS_TT156 = "~01~02~04~71~72~11~12~73~70~81~06~05~86~90~94~96~98~99~92~"
+                                'strIdKHBS_TT156 = "~01~02~04~71~72~11~12~73~70~81~06~05~86~90~94~96~98~99~92~"
                                 strIdKHBS = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
-                                If InStr(1, strIdKHBS_TT156, "~" & Trim$(strIdKHBS) & "~", vbTextCompare) > 0 Then
+                                If InStr(1, strIdKHBS_TT156, "~" & Trim$(strIdKHBS) & "~", vbTextCompare) > 0 Or strIdKHBS = "01" Then
                                     .Row = GetLastDataRowKHBS(lCtrl)
                                 Else
                                     .Row = GetLastDataRow(lCtrl)
@@ -1707,6 +1707,12 @@ Private Sub SetupPrinter()
                                 Else
                                     If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "92" And isDLT = True And lCtrl = 1 Then
                                         .Row = 78
+                                    Else
+                                        .Row = GetLastDataRow(lCtrl)
+                                    End If
+                                    
+                                    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "93" And lCtrl = 1 Then
+                                        .Row = GetLastDataRow3(lCtrl)
                                     Else
                                         .Row = GetLastDataRow(lCtrl)
                                     End If
@@ -1844,6 +1850,19 @@ Private Function GetLastDataRow(ByVal lngSheet As Long) As Long
     ParserCellID fpsReport, GetAttribute(xmlNode, "CellID2"), lCol, lRow
     
     GetLastDataRow = lRow
+End Function
+
+Private Function GetLastDataRow3(ByVal lngSheet As Long) As Long
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim xmlNodeList As MSXML.IXMLDOMNodeList
+    Dim lCol As Long, lRow As Long
+    
+    Set xmlNodeList = TAX_Utilities_v1.Data(lngSheet - 1).getElementsByTagName("Cell")
+    Set xmlNode = xmlNodeList(xmlNodeList.length - 4)
+    
+    ParserCellID fpsReport, GetAttribute(xmlNode, "CellID2"), lCol, lRow
+    
+    GetLastDataRow3 = lRow
 End Function
 
 Private Function GetLastDataRowKHBS(ByVal lngSheet As Long) As Long

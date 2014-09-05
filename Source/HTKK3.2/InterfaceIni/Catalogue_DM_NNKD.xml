@@ -18,6 +18,12 @@
 		<Item Value ="02_TNDN###1053###Chuyển quyền sử dụng đất"/>		
 		<Item Value ="01A_TNDN_DK###1###Dầu thô"/>
 		<Item Value ="01A_TNDN_DK###2###Khí thiên nhiên"/>
-		<Item Value ="01A_TNDN_DK###3###Condensate"/>		
+		<Item Value ="01A_TNDN_DK###3###Condensate"/>
+		<Item Value ="02_TNDN_DK###1###Dầu thô"/>
+		<Item Value ="02_TNDN_DK###2###Khí thiên nhiên"/>
+		<Item Value ="02_TNDN_DK###3###Condensate"/>
+		<Item Value ="02_TAIN_DK###1###Dầu thô"/>
+		<Item Value ="02_TAIN_DK###2###Khí thiên nhiên"/>
+		<Item Value ="02_TAIN_DK###3###Condensate"/>				
 	</Section>	
 </Sections>
