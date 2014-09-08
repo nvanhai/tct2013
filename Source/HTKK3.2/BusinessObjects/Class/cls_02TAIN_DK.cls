@@ -45,6 +45,8 @@ Public isImportXML As Boolean
 'No parameter
 Public Sub Prepare1()
 
+    
+
     With fps
         .EventEnabled(EventAllEvents) = False
         SetDateFormat fps, 1, 94, fps.ColLetterToNumber("AR"), DDMMYYYY
@@ -78,6 +80,15 @@ Public Sub Prepare1()
             .Lock = True
         End If
         
+        .Sheet = 3
+        .Row = 29
+        .Col = .ColLetterToNumber("D")
+        If strLoaiToKhaiDK = "DT" Then
+            .Text = GetAttribute(GetMessageCellById("0324"), "Msg")
+        Else
+            .Text = GetAttribute(GetMessageCellById("0325"), "Msg")
+        End If
+        
         '--end set for sheet Phu luc 02
         .EventEnabled(EventAllEvents) = True
     End With
@@ -97,7 +108,7 @@ Dim strColC As String
     Dim xmlNode As MSXML.IXMLDOMNode
     
     Dim checkUq, checkDLT As Variant
-
+    
     With fps
         .Sheet = 1
         mCurrentSheet = .Sheet
@@ -169,6 +180,7 @@ Dim strColC As String
              End If
              
         End If
+        
         mCurrentSheet = .Sheet
         .EventEnabled(EventAllEvents) = True
     End With
@@ -224,6 +236,11 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
         
     End With
 End Sub
+
+Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
+    CellChange Col, Row
+End Sub
+
 Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
 Dim i As Integer, iCol As Long, iRow As Long
 Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
@@ -250,6 +267,14 @@ Dim strId As Variant, Col7 As Variant, intIndexCombo As Integer
                          i = i + 1
                          .Text = str(i)
                          .Col = .ColLetterToNumber("B")
+                         If .ActiveSheet = SHEET_PHU_LUC_SAN_LUONG Then
+                            .Col = .ColLetterToNumber("D")
+                             If strLoaiToKhaiDK = "DT" Then
+                                .Text = GetAttribute(GetMessageCellById("0324"), "Msg")
+                             Else
+                                .Text = GetAttribute(GetMessageCellById("0325"), "Msg")
+                             End If
+                         End If
                          .Row = .Row + 1
                     Loop Until .Text = "aa"
                     .SetActiveCell iCol, iRow
@@ -319,8 +344,8 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
 
         .EventEnabled(EventAllEvents) = True
     End With
-
-    'CellChange Col, Row
+    
+    CellChange Col, Row
 End Sub
 
 'Calling this function whenever we don't need this class anymore.
@@ -558,30 +583,30 @@ Private Sub CheckDynamicError()
         
         'validate sheet phu luc san luong
         .Sheet = SHEET_PHU_LUC_SAN_LUONG
-        If .SheetVisible = True Then
-            .Row = 27
-            iFlagDateCompare = 0
-            Do
-                .GetText .ColLetterToNumber("K"), .Row, vDate1
-                .GetText .ColLetterToNumber("U"), .Row, vDate2
-                arrDate1 = Split(CStr(vDate1), "/")
-                arrDate2 = Split(CStr(vDate2), "/")
-                If (Trim$(vDate1) <> vbNullString And Trim$(vDate2) <> vbNullString) Then
-                    If DateSerial(CInt(arrDate1(2)), CInt(arrDate1(1)), CInt(arrDate1(0))) >= DateSerial(CInt(arrDate2(2)), CInt(arrDate2(1)), CInt(arrDate2(0))) Then
-                        iFlagDateCompare = 1
-                        .Col = .ColLetterToNumber("U")
-                        .BackColor = mErrorColor
-                        .CellNote = errDateCompare
-                    Else
-                        .Col = .ColLetterToNumber("U")
-                        .CellNote = ""  'static
-                        .BackColor = mNonErrorColor
-                    End If
-                End If
-                .Col = .ColLetterToNumber("B")
-                .Row = .Row + 1
-            Loop Until .Text = "aa"
-        End If
+'        If .SheetVisible = True Then
+'            .Row = 27
+'            iFlagDateCompare = 0
+'            Do
+'                .GetText .ColLetterToNumber("K"), .Row, vDate1
+'                .GetText .ColLetterToNumber("U"), .Row, vDate2
+'                arrDate1 = Split(CStr(vDate1), "/")
+'                arrDate2 = Split(CStr(vDate2), "/")
+'                If (Trim$(vDate1) <> vbNullString And Trim$(vDate2) <> vbNullString) Then
+'                    If DateSerial(CInt(arrDate1(2)), CInt(arrDate1(1)), CInt(arrDate1(0))) >= DateSerial(CInt(arrDate2(2)), CInt(arrDate2(1)), CInt(arrDate2(0))) Then
+'                        iFlagDateCompare = 1
+'                        .Col = .ColLetterToNumber("U")
+'                        .BackColor = mErrorColor
+'                        .CellNote = errDateCompare
+'                    Else
+'                        .Col = .ColLetterToNumber("U")
+'                        .CellNote = ""  'static
+'                        .BackColor = mNonErrorColor
+'                    End If
+'                End If
+'                .Col = .ColLetterToNumber("B")
+'                .Row = .Row + 1
+'            Loop Until .Text = "aa"
+'        End If
         
         .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), 19, IIf(iFlagEmty = 1, "0", "1")
@@ -722,26 +747,26 @@ Public Sub SetActiveSheet()
                         SetAttribute xmlNodeValid, "Active", "0"
                     End If
              Case "01-2"
-                blnNullValue = True
-                'Check value of last node in Data
-'                Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell") _
-'                    (TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length - 1)
-'                    strValue1 = GetAttribute(xmlCellNode, "Value")
-                fps.Sheet = SHEET_PHU_LUC_SAN_LUONG
-                fps.GetText fps.ColLetterToNumber("D"), 27, strValue1
-                fps.GetText fps.ColLetterToNumber("K"), 27, strValue2
-                fps.GetText fps.ColLetterToNumber("P"), 27, strValue3
-                fps.GetText fps.ColLetterToNumber("U"), 27, strValue4
-                fps.GetText fps.ColLetterToNumber("Y"), 27, strValue5
-                fps.GetText fps.ColLetterToNumber("AD"), 27, strValue6
-                fps.GetText fps.ColLetterToNumber("AQ"), 27, strValue7
-                    If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Or Val(strValue3) <> 0 Or (Not IsNullValue(strValue4)) Or Val(strValue5) <> 0 Or Val(strValue6) <> 0 Or (Not IsNullValue(strValue7)) Then
-                            blnNullValue = False
-                    End If
-
-                    If blnNullValue Then
-                        SetAttribute xmlNodeValid, "Active", "0"
-                    End If
+'                blnNullValue = True
+'                'Check value of last node in Data
+''                Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell") _
+''                    (TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length - 1)
+''                    strValue1 = GetAttribute(xmlCellNode, "Value")
+'                fps.Sheet = SHEET_PHU_LUC_SAN_LUONG
+'                fps.GetText fps.ColLetterToNumber("D"), 29, strValue1
+'                fps.GetText fps.ColLetterToNumber("K"), 29, strValue2
+'                fps.GetText fps.ColLetterToNumber("P"), 29, strValue3
+'                fps.GetText fps.ColLetterToNumber("U"), 29, strValue4
+'                fps.GetText fps.ColLetterToNumber("Y"), 29, strValue5
+'                fps.GetText fps.ColLetterToNumber("AD"), 29, strValue6
+'                fps.GetText fps.ColLetterToNumber("AQ"), 29, strValue7
+'                    If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Or Val(strValue3) <> 0 Or (Not IsNullValue(strValue4)) Or Val(strValue5) <> 0 Or Val(strValue6) <> 0 Or (Not IsNullValue(strValue7)) Then
+'                            blnNullValue = False
+'                    End If
+'
+'                    If blnNullValue Then
+'                        SetAttribute xmlNodeValid, "Active", "0"
+'                    End If
              Case "KHBS"
                 blnNullValue = True
                 'Check value of last node in Data
@@ -1087,3 +1112,32 @@ Public Function getDieuChinhGiam(strOldValue As String) As String
       End With
 End Function
 
+
+
+'When cell's data is changed or a control at a cell is handled, This sub is called
+'parameter Col: the column of cell that rise event
+'parameter Row: the row of cell that rise event
+'parameter f: the flag to mark some special option
+'**: when this sub is on executing, all events of fpspread will be disabled until the end of the sub
+Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer)
+            
+    With fps
+        'Because of unclearly-rised events, this function is here for turning it off
+        'at the end of this sub, this event will be turned on
+        .EventEnabled(EventAllEvents) = False
+        .Sheet = .ActiveSheet
+        mCurrentSheet = .ActiveSheet
+        If .ActiveSheet = SHEET_PHU_LUC_SAN_LUONG Then
+                mCurrentSheet = .Sheet
+                If Col = .ColLetterToNumber("AJ") Then
+                    .Sheet = 1
+                    ' tong hop chi tieu cot 8 len chi tieu 31 cua to khai
+                    .Col = .ColLetterToNumber("AV")
+                    .Row = 64
+                    .Formula = "BG64"
+                End If
+        End If
+        
+        .EventEnabled(EventAllEvents) = True
+    End With
+End Sub

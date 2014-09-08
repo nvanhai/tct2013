@@ -314,4 +314,6 @@
 	<Infor ID="0321" Msg="Hạch toán chỉ tiêu [28] + [31] vào tiểu mục 1001"/>
 	<Infor ID="0322" Msg="Hạch toán chỉ tiêu [23] + [30] vào mục 1000, tiểu mục 1003"/>
 	<Infor ID="0323" Msg="Hạch toán chỉ tiêu [25] + [27] vào mục 1000, tiểu mục 1001"/>
+	<Infor ID="0324" Msg="Thùng"/>
+	<Infor ID="0325" Msg="m3"/>
 </Message>
