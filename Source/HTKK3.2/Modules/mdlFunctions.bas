@@ -73,7 +73,7 @@ Public Const SS_BORDER_STYLE_FINE_DOT = 13
 Public Const SS_BDM_CURRENT_ROW = 4
 
 
-Public Const strIdKHBS_TT156 = "~02~04~71~72~11~12~73~03~70~80~81~82~06~77~05~86~87~88~90~94~96~97~98~99~93~92~89~"
+Public Const strIdKHBS_TT156 = "~02~04~71~72~11~12~73~03~70~80~81~82~06~77~05~86~87~88~90~94~96~97~98~99~93~92~89~85~"
 
 
 Const mYear_____ = "T_2"
@@ -1617,7 +1617,7 @@ Public Sub SetupReportData(fpsGrid As fpSpread, Optional IsInterface As Boolean 
                                         If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "17" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "42" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "26" Then
                                             .TypeNumberDecPlaces = 0
                                         ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "99" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "92" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "24" _
-                                        Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "19" Then
+                                        Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "19" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "89" Then
                                             .TypeNumberDecPlaces = Len(GetAttribute(xmlNodeCell, "Value")) - InStr(1, GetAttribute(xmlNodeCell, "Value"), ".")
                                         Else
                                             .TypeNumberDecPlaces = 3 'Len(GetAttribute(xmlNodeCell, "Value")) - InStr(1, GetAttribute(xmlNodeCell, "Value"), ".")
@@ -4274,10 +4274,11 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             
             ' 02/TAIN-DK
         Case "89"
-           ReDim strResult(3)
-            strResult(0) = "H_14~Dynamic_0"
-            strResult(1) = "T_42~T_43~T_44~T_46~T_47~T_48~T_49~T_50~T_51~T_52~L_54~O_36~Dynamic_0"
-            strResult(2) = "H_60~R_60~H_62~R_62~C_59~F_59~I_59~Dynamic_0"
+           ReDim strResult(4)
+            strResult(0) = "P_51~Dynamic_0"
+            strResult(1) = "O_30~P_30~Q_30~P_47~P_49~AA_49~Dynamic_0"
+            strResult(2) = "AV_55~AV_57~AV_58~AV_59~AV_60~AV_61~AV_62~AV_63~AV_64~AV_65~AV_67~AV_68~AV_69~AV_70~AV_71~AV_72~AV_73~AV_74~AV_75~AV_76~Dynamic_0"
+            strResult(3) = "U_92~U_94~AR_92~AR_94~R_30~W_30~O_31~Dynamic_0"
             '01/KK-TTS
         Case "23"
             ReDim strResult(4)

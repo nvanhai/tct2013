@@ -125,4 +125,9 @@
 		<Item CellID="AV_73" MCT="39" Caption="Số tiền thuế tài nguyên kỳ trước chuyển sang [39]=[33]x[37]"/>
 		<Item CellID="AV_74" MCT="40" Caption="Số tiền thuế tài nguyên phát sinh trong kỳ tính thuế [40]=([28]-[26])x[32]x[37]"/>
 	</Map>
+	
+	<Map ID="01_PHLP">
+		<Item CellID="L_37" MCT="4" Caption="Số tiền phí, lệ phí  thu được "/>
+		<Item CellID="R_37" MCT="6" Caption="Số tiền phí, lệ phí trích sử dụng theo chế độ"/>
+	</Map>
 </Root>
