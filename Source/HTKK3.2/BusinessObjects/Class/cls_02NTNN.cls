@@ -36,7 +36,6 @@ Public strTuRowDenRowPL As String
 'add control, data for the control, celltag...
 'No parameter
 Public Sub Prepare1()
-    Dim blCheck_S1 As Boolean, blCheck_S2 As Boolean
     With fps
 '       nkhoan: format dinh dang ngay thang
         SetDateFormat fps, 1, 47, .ColLetterToNumber("AU"), DDMMYYYY
@@ -45,11 +44,11 @@ Public Sub Prepare1()
 '        SetDateFormat fps, 3, 24, .ColLetterToNumber("AR"), DDMMYYYY
             
         .Sheet = 1
-        .Row = 22
-        .Col = .ColLetterToNumber("AH")
-        .Text = Format(Date, "dd/mm/yyyy")
-        .TypeHAlign = TypeHAlignLeft
-        
+'        .Row = 22
+'        .Col = .ColLetterToNumber("AH")
+'        .Text = Format(Date, "dd/mm/yyyy")
+'        .TypeHAlign = TypeHAlignLeft
+'
         
         .Row = 47
         .Col = .ColLetterToNumber("AU")
@@ -64,6 +63,8 @@ Public Sub Prepare1()
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
     End With
+    
+    setCQTQuanLyHoanThue fps
 
 End Sub
 
@@ -110,15 +111,7 @@ Public Sub Prepare2()
 End Sub
 
 Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
-            Dim blCheck_S2 As Boolean
-    With fps
-        .EventEnabled(EventAllEvents) = False
-        .Sheet = .ActiveSheet
-        'currentSheet2 = mCurrentSheet
-        mCurrentSheet = .Sheet
-        
-        .EventEnabled(EventAllEvents) = True
-    End With
+    CellChange Col, Row
 End Sub
 
 Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
@@ -248,6 +241,8 @@ Private Sub fps_LeaveCell(ByVal Col As Long, _
         End Select
         .EventEnabled(EventAllEvents) = True
     End With
+    
+    CellChange Col, Row
 End Sub
 
 'Calling this function whenever we don't need this class anymore.
@@ -1085,3 +1080,58 @@ Public Sub inThongTinDL()
 End Sub
 
 
+
+'When cell's data is changed or a control at a cell is handled, This sub is called
+'parameter Col: the column of cell that rise event
+'parameter Row: the row of cell that rise event
+'parameter f: the flag to mark some special option
+'**: when this sub is on executing, all events of fpspread will be disabled until the end of the sub
+Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer)
+            
+    With fps
+        'Because of unclearly-rised events, this function is here for turning it off
+        'at the end of this sub, this event will be turned on
+        .EventEnabled(EventAllEvents) = False
+        .Sheet = .ActiveSheet
+        mCurrentSheet = .ActiveSheet
+        If .ActiveSheet = 2 Then
+                mCurrentSheet = .Sheet
+                If Col = .ColLetterToNumber("BG") Then
+                    .Sheet = 1
+                    ' tong hop chi tieu cot 10b PL 02-1/NTNN va cot 9b PL 02-2/NTNN
+                    .Col = .ColLetterToNumber("AF")
+                    .Row = 30
+                    .Formula = "BK30"
+                End If
+                
+                If Col = .ColLetterToNumber("BY") Then
+                    .Sheet = 1
+                    ' tong hop chi tieu cot 11b PL 02-1/NTNN
+                    .Col = .ColLetterToNumber("AF")
+                    .Row = 31
+                    .Formula = "BK31"
+                End If
+        End If
+        
+        If .ActiveSheet = 3 Then
+                mCurrentSheet = .Sheet
+                If Col = .ColLetterToNumber("BG") Then
+                    .Sheet = 1
+                    ' tong hop chi tieu cot 10b PL 02-1/NTNN va cot 9b PL 02-2/NTNN
+                    .Col = .ColLetterToNumber("AF")
+                    .Row = 30
+                    .Formula = "BK30"
+                End If
+                
+                If Col = .ColLetterToNumber("BY") Then
+                    .Sheet = 1
+                    ' tong hop chi tieu cot 10b
+                    .Col = .ColLetterToNumber("AF")
+                    .Row = 32
+                    .Formula = "BK32"
+                End If
+        End If
+        
+        .EventEnabled(EventAllEvents) = True
+    End With
+End Sub

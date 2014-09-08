@@ -174,7 +174,7 @@ Dim strColC As String
              
              If checkUq = 0 And checkDLT = 0 Then
                 .Row = 49
-                .Col = .ColLetterToNumber("P")
+                .Col = .ColLetterToNumber("AA")
                  .value = 1
                  UpdateCell fps, .Col, .Row, .value
              End If
@@ -243,10 +243,6 @@ End Sub
 
 Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
 Dim i As Integer, iCol As Long, iRow As Long
-Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
-Dim txmlCellNode As MSXML.IXMLDOMNode, txmlCellsNode As MSXML.IXMLDOMNode
-Dim tCol As Long, tRow As Long
-Dim strId As Variant, Col7 As Variant, intIndexCombo As Integer
 
     With fps
         iCol = .ActiveCol
@@ -265,7 +261,7 @@ Dim strId As Variant, Col7 As Variant, intIndexCombo As Integer
                     End If
                     Do
                          i = i + 1
-                         .Text = str(i)
+                         .Text = str$(i)
                          .Col = .ColLetterToNumber("B")
                          If .ActiveSheet = SHEET_PHU_LUC_SAN_LUONG Then
                             .Col = .ColLetterToNumber("D")
@@ -274,6 +270,7 @@ Dim strId As Variant, Col7 As Variant, intIndexCombo As Integer
                              Else
                                 .Text = GetAttribute(GetMessageCellById("0325"), "Msg")
                              End If
+                             .Col = .ColLetterToNumber("B")
                          End If
                          .Row = .Row + 1
                     Loop Until .Text = "aa"
