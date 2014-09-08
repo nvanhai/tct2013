@@ -316,4 +316,10 @@
 	<Infor ID="0323" Msg="Hạch toán chỉ tiêu [25] + [27] vào mục 1000, tiểu mục 1001"/>
 	<Infor ID="0324" Msg="Thùng"/>
 	<Infor ID="0325" Msg="m3"/>
+	<Infor ID="0326" Msg="Đối với dầu thô: Hạch toán chỉ tiêu [38]vào mục 3750, tiểu mục 3752"/>
+	<Infor ID="0327" Msg="Đối với condensate: Hạch toán chỉ tiêu [38] vào mục 3950, tiểu mục 3952"/>
+	<Infor ID="0328" Msg="Đối với khí thiên nhiên: Hạch toán chỉ tiêu [38] vào mục 3800, tiểu mục 3802"/>
+	<Infor ID="0329" Msg="Đối với dầu thô: Hạch toán chỉ tiêu [42]vào mục 3750, tiểu mục 3751"/>
+	<Infor ID="0330" Msg="Đối với condensate: Hạch toán chỉ tiêu [42] vào mục 3950, tiểu mục 3951"/>
+	<Infor ID="0331" Msg="Đối với khí thiên nhiên: Hạch toán chỉ tiêu [42] vào mục 3800, tiểu mục 3801"/>	
 </Message>

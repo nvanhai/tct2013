@@ -699,6 +699,22 @@ nextPrinter:
         ElseIf strLoaiTkDk = "CD" Then
             fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0304"), "Msg")
         End If
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 93 Then
+        If strLoaiTkDk = "DT" Then
+            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0326"), "Msg")
+        ElseIf strLoaiTkDk = "KTN" Then
+            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0328"), "Msg")
+        ElseIf strLoaiTkDk = "CD" Then
+            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0327"), "Msg")
+        End If
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 89 Then
+        If strLoaiTkDk = "DT" Then
+            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0329"), "Msg")
+        ElseIf strLoaiTkDk = "KTN" Then
+            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0331"), "Msg")
+        ElseIf strLoaiTkDk = "CD" Then
+            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0330"), "Msg")
+        End If
     ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 99 Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0306"), "Msg")
     ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 25 Then
@@ -734,7 +750,7 @@ nextPrinter:
     End If
         
     ' Kiem tra neu khong co DLT se an cac row DLT di
-    dsTK_checkDLT = "~01~02~04~71~72~11~12~73~03~46~47~48~49~15~16~50~51~36~74~75~70~80~81~82~17~42~43~59~76~41~06~77~05~86~87~89~90~95~92~94~96~98~99~24~"
+    dsTK_checkDLT = "~01~02~04~71~72~11~12~73~03~46~47~48~49~25~15~16~50~51~36~74~75~70~80~81~82~17~42~43~26~59~76~41~06~77~05~86~87~85~88~90~23~94~96~97~98~99~93~92~89~24~"
 
     If InStr(1, dsTK_checkDLT, "~" & Trim$(idToKhai) & "~", vbTextCompare) > 0 Then
         If objTaxBusiness Is Nothing Then

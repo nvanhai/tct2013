@@ -81,9 +81,16 @@ Public Sub Prepare1()
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
         
-        SetDateFormat fps, 2, 23, .ColLetterToNumber("BG"), DDMMYYYY
-        .Sheet = 2
-        .Row = 23
+'        SetDateFormat fps, 2, 23, .ColLetterToNumber("BG"), DDMMYYYY
+'        .Sheet = 2
+'        .Row = 23
+'        .Col = .ColLetterToNumber("BG")
+'        .Text = Format(Date, "dd/mm/yyyy")
+'        .TypeHAlign = TypeHAlignLeft
+       SetDateFormat fps, .SheetCount - 1, 31, .ColLetterToNumber("BE"), DDMMYYYY
+        SetDateFormat fps, .SheetCount - 1, 46, .ColLetterToNumber("BG"), DDMMYYYY
+        .Sheet = .SheetCount - 1 'KHBS
+        .Row = 46
         .Col = .ColLetterToNumber("BG")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
@@ -1316,9 +1323,7 @@ End Function
 'Set trang thai Flag KHBS active
 Public Sub SetActiveKHBS() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
     Dim xmlNodeValid As MSXML.IXMLDOMNode, xmlCellNode As MSXML.IXMLDOMNode
-    Dim lCtrl As Long, lCol As Long, lRow As Long
     Dim blnNullValue As Boolean
-    Dim strValue As String
     Dim strValue1 As String
     Dim strValue2 As String
     Dim strValue3 As String

@@ -112,7 +112,7 @@ Public Sub Prepare1()
     
      With fps
         'them danh muc hang vao combobox danh muc 1
-        .Sheet = .ActiveSheet
+        .Sheet = 1
         mCurrentSheet = .Sheet
         .Col = .ColLetterToNumber("Z")
         .Row = 24
@@ -1203,11 +1203,11 @@ Public Function getValueTK(strFileLoadData As String) As String
         .validateOnParse = True
         .async = False
         If .Load(strFileLoadData) = True Then
-            '[28], [29]
+            '[27], [28]
+            Set xmlNode = .nodeFromID("O_" & 37)
+            result = "CT27_" & Val(GetAttribute(xmlNode, "Value"))
             Set xmlNode = .nodeFromID("R_" & 37)
-            result = "CT28_" & Val(GetAttribute(xmlNode, "Value"))
-'            Set xmlNode = .nodeFromID("V_" & 37)
-'            result = result & "~" & "CT29_" & Val(GetAttribute(xmlNode, "Value"))
+            result = result & "~" & "CT28_" & Val(GetAttribute(xmlNode, "Value"))
             Set xmlNode = Nothing
         End If
     End With
@@ -1268,10 +1268,10 @@ Public Function getDieuChinhGiam(strOldValue As String) As String
     With fps
                 .Sheet = 1
                 '[28], [29]
+                .GetText .ColLetterToNumber("O"), 37, varTemp
+                strCurrentValue = "CT27_" & Trim(varTemp)
                 .GetText .ColLetterToNumber("R"), 37, varTemp
-                strCurrentValue = "CT28_" & Trim(varTemp)
-'                .GetText .ColLetterToNumber("V"), 37, varTemp
-'                strCurrentValue = strCurrentValue & "~CT29_" & Trim(varTemp)
+                strCurrentValue = strCurrentValue & "~CT28_" & Trim(varTemp)
 
                 ' tinh chenh lech giua 2 lan dieu chinh
                 tempArrOld = Split(strOldValue, "~")

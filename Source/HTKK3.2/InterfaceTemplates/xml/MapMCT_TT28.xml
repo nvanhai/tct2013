@@ -102,7 +102,8 @@
 	</Map>
 	
 	<Map ID="03A_TD_TAIN">
-		<Item CellID="R_37" MCT="28" Caption="Thuế tài nguyên dự kiến được miễn giảm trong kỳ"/>
+		<Item CellID="O_37" MCT="27" Caption="Thuế tài nguyên phát sinh trong kỳ tính thuế"/>
+		<Item CellID="R_37" MCT="28" Caption="Thuế tài nguyên dự kiến được miễn giảm trong kỳ tính thuế"/>
 	</Map>
 	
 	<Map ID="01A_TNDN_DK">

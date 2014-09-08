@@ -49,10 +49,10 @@ Public Sub Prepare1()
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
         
-        .Row = 21
-        .Col = .ColLetterToNumber("AH")
-        .Text = Format(Date, "dd/mm/yyyy")
-        .TypeHAlign = TypeHAlignLeft
+'        .Row = 21
+'        .Col = .ColLetterToNumber("AH")
+'        .Text = Format(Date, "dd/mm/yyyy")
+'        .TypeHAlign = TypeHAlignLeft
         
 
         SetDateFormat fps, .SheetCount - 1, 31, .ColLetterToNumber("BE"), DDMMYYYY
@@ -175,6 +175,10 @@ Public Sub updateSomeCell()
     End With
 End Sub
 
+Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
+    CellChange Col, Row
+End Sub
+
 Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
     Dim i As Integer
     With fps
@@ -248,6 +252,8 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 End If
         .EventEnabled(EventAllEvents) = True
     End With
+    
+    CellChange Col, Row
 End Sub
 
 'Calling this function whenever we don't need this class anymore.
@@ -922,16 +928,25 @@ Public Function getDieuChinhGiam(strOldValue As String) As String
                         End If
                     Next j
                     
-                   
-                    If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) < 0 Then
-                        ' dieu chinh giam
-                        strDieuChinhGiam = strDieuChinhGiam & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
-                    End If
-                    If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) > 0 Then
-                        ' dieu chinh tang
-                        strDieuChinhTang = strDieuChinhTang & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
-                    End If
-                   
+                   If Left(strMaCT, 1) = "5" Then
+                        If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) < 0 Then
+                            ' dieu chinh giam
+                            strDieuChinhGiam = strDieuChinhGiam & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
+                        End If
+                        If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) > 0 Then
+                            ' dieu chinh tang
+                            strDieuChinhTang = strDieuChinhTang & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
+                        End If
+                   Else
+                         If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) > 0 Then
+                            ' dieu chinh giam
+                            strDieuChinhGiam = strDieuChinhGiam & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
+                        End If
+                        If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) < 0 Then
+                            ' dieu chinh tang
+                            strDieuChinhTang = strDieuChinhTang & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
+                        End If
+                   End If
                 Next i
                 If strDieuChinhGiam <> "" Then
                     strDieuChinhGiam = Mid(strDieuChinhGiam, 2, Len(strDieuChinhGiam) - 1)
@@ -1114,4 +1129,41 @@ Private Sub setCQTQuanLy()
                                 
             '.EventEnabled(EventAllEvents) = True
         End With
+End Sub
+
+
+
+'When cell's data is changed or a control at a cell is handled, This sub is called
+'parameter Col: the column of cell that rise event
+'parameter Row: the row of cell that rise event
+'parameter f: the flag to mark some special option
+'**: when this sub is on executing, all events of fpspread will be disabled until the end of the sub
+Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer)
+            
+    With fps
+        'Because of unclearly-rised events, this function is here for turning it off
+        'at the end of this sub, this event will be turned on
+        .EventEnabled(EventAllEvents) = False
+        .Sheet = .ActiveSheet
+        mCurrentSheet = .ActiveSheet
+        If .ActiveSheet = 2 Then
+                mCurrentSheet = .Sheet
+                If Col = .ColLetterToNumber("BD") Then
+                    .Sheet = 1
+                    ' tong hop chi tieu cot 9b PL 02-2/NTNN
+                    .Col = .ColLetterToNumber("AB")
+                    .Row = 30
+                    .Formula = "BD30"
+                End If
+                
+                If Col = .ColLetterToNumber("BY") Then
+                    .Sheet = 1
+                    ' tong hop chi tieu cot 10b PL 02-2/NTNN
+                    .Col = .ColLetterToNumber("AB")
+                    .Row = 32
+                    .Formula = "BD32"
+                End If
+        End If
+        .EventEnabled(EventAllEvents) = True
+    End With
 End Sub

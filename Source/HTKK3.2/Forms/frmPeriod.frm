@@ -526,7 +526,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":02C8
       UserResize      =   1
       Appearance      =   1
    End
@@ -3037,7 +3037,7 @@ Public Sub cmdOK_Click()
         End If
         
         ' 02/TNDN-DK
-        If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "93" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "89" Then
+        If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "93" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "89" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "87" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "97" Then
             TAX_Utilities_v1.FirstDay = txtNgayDau.Text
             TAX_Utilities_v1.LastDay = txtNgayCuoi.Text
         End If
@@ -3174,7 +3174,7 @@ Public Sub cmdOK_Click()
     End If
     
     ' 02/TNDN-DK
-    If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "93" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "89" Then
+    If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "93" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "89" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "87" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "97" Then
             If Trim(txtNgayDau.Text) <> "" Then
                  strTempValue = Trim(txtNgayDau.Text)
                  dNgayDau = objCvt.ToDate("01" & "/" & strTempValue, "DD/MM/YYYY")
@@ -3337,7 +3337,7 @@ Public Sub cmdOK_Click()
         TAX_Utilities_v1.ThreeMonths = vbNullString
         TAX_Utilities_v1.FirstDay = vbNullString
         TAX_Utilities_v1.LastDay = vbNullString
-        If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "93" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "89" Then
+        If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "93" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "89" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "87" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "97" Then
             TAX_Utilities_v1.FirstDay = txtNgayDau.Text
             TAX_Utilities_v1.LastDay = txtNgayCuoi.Text
         Else
@@ -5424,7 +5424,7 @@ Private Sub LoadDefaultInfor()
             ' end
         Case KIEU_KY_NAM
 
-            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "89" Then
+            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "89" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "97" Then
                 Y = GetNamHienTai(iNgayTaiChinh, iThangTaiChinh)
                 txtYear.Text = Y
             ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "24" Then
@@ -6435,7 +6435,7 @@ Private Sub OptChinhthuc_Click()
                 ' set to khai 02/BVMT
                 If varMenuId = "87" Or varMenuId = "97" Then
                      frmKy.Height = 1740
-                    Frame2.Top = 2700
+                    Frame2.Top = 2050
                 End If
                 
                 ' set to khai 01/TTDB
@@ -6735,13 +6735,18 @@ Private Sub txtNgayCuoi_LostFocus()
         Set objCvt = New DateUtils
         '01/KK-TTS
         ' To khai 08/TNCN va to khai 08A/TNCN set o nay tu thang den thang
-        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "75" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "23" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "89" Then
+        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "75" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "23" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "89" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "97" Then
             If IsNull(objCvt.ToDate(txtNgayCuoi, "MM/YYYY")) Then
                 DisplayMessage "0248", msOKOnly, miCriticalError
                 txtNgayCuoi.SetFocus
                 Exit Sub
             Else
                 txtNgayCuoi = objCvt.ToString(objCvt.ToDate(txtNgayCuoi, "MM/YYYY"), "MM/YYYY")
+                If txtNgayCuoi.Text <> TAX_Utilities_v1.LastDay Then
+                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "89" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "97" Then
+                        LoadGrid
+                    End If
+                End If
             End If
         Else
             If IsNull(objCvt.ToDate(txtNgayCuoi, "DD/MM/YYYY")) Then
@@ -6759,7 +6764,6 @@ Private Sub txtNgayCuoi_LostFocus()
             End If
         End If
     End If
-    LoadGrid
     blnValidInfo(4) = True
 End Sub
 
@@ -6769,13 +6773,18 @@ Private Sub txtNgayDau_LostFocus()
     If Len(txtNgayDau.Text) > 0 Then
         Set objCvt = New DateUtils
         ' To khai 08/TNCN va to khai 08A/TNCN set o nay tu thang den thang
-        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "75" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "23" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "89" Then
+        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "75" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "23" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "89" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "97" Then
             If IsNull(objCvt.ToDate(txtNgayDau, "MM/YYYY")) Then
                 DisplayMessage "0248", msOKOnly, miCriticalError
                 txtNgayDau.SetFocus
                 Exit Sub
             Else
                 txtNgayDau = objCvt.ToString(objCvt.ToDate(txtNgayDau, "MM/YYYY"), "MM/YYYY")
+                If txtNgayDau.Text <> TAX_Utilities_v1.LastDay Then
+                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "89" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "97" Then
+                        LoadGrid
+                    End If
+                End If
             End If
         Else
             If IsNull(objCvt.ToDate(txtNgayDau, "DD/MM/YYYY")) Then
@@ -6793,7 +6802,6 @@ Private Sub txtNgayDau_LostFocus()
             End If
         End If
     End If
-    LoadGrid
     blnValidInfo(3) = True
 End Sub
 
@@ -7126,6 +7134,8 @@ On Error GoTo ErrHandle
                     ElseIf strKieuKy = KIEU_KY_NAM Then
                         If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "89" Then
                             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & strLoaiTkDk & "_" & txtYear.Text & "_" & Replace$(txtNgayDau.Text, "/", "") & "_" & Replace$(txtNgayCuoi.Text, "/", "") & ".xml"
+                        ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "97" Then
+                            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & txtYear.Text & "_" & Replace$(txtNgayDau.Text, "/", "") & "_" & Replace$(txtNgayCuoi.Text, "/", "") & ".xml"
                         Else
                             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & txtYear.Text & ".xml"
                         End If
@@ -8532,17 +8542,17 @@ Private Sub SetupLayout02BVMT()
     txtYear.Top = 240
     txtYear.Left = 1000 '1200
     
-    Set lblNgayDau.Container = frmKy
-    lblNgayDau.Top = 630
-    lblNgayDau.Left = 120
+    Set lblTuThang.Container = frmKy
+    lblTuThang.Top = 630
+    lblTuThang.Left = 120
     
     Set txtNgayDau.Container = frmKy
     txtNgayDau.Top = 600
     txtNgayDau.Left = 1000 '1200
     
-    Set lblNgayCuoi.Container = frmKy
-    lblNgayCuoi.Top = 630
-    lblNgayCuoi.Left = 2600 '2400
+    Set lblDenThang.Container = frmKy
+    lblDenThang.Top = 630
+    lblDenThang.Left = 2600 '2400
     
     Set txtNgayCuoi.Container = frmKy
     txtNgayCuoi.Top = 600
