@@ -1,9 +1,10 @@
+--03/TNDN
 CREATE OR REPLACE VIEW RCV_V_TKHAI_03_TNDN AS
 SELECT dtl.hdr_id, dtl.ctk_id, MAX(dtl.so_tt) so_tt
 , MAX(dtl.so_dtnt) so_dtnt
 , MAX(dtl.kieu_dlieu_ds) kieu_dlieu_ds
 , MAX(dtl.ky_hieu_ctieu_st) ky_hieu_ctieu_st
-FROM rcv_gdien_tkhai gd,
+FROM QLT_NTK.rcv_gdien_tkhai gd,
 (SELECT tkd.hdr_id hdr_id,
 gdien.id id,
 tkd.loai_dlieu loai_dlieu,
@@ -27,6 +28,7 @@ GROUP BY dtl.hdr_id,
 dtl.ctk_id
 ;
 
+--02/TAIN
 CREATE OR REPLACE VIEW RCV_V_TKHAI_02_TAIN AS
 SELECT hdr_id
       ,row_id
@@ -85,4 +87,42 @@ GROUP BY dtl.hdr_id,
          dtl.row_id
          , dtl.so_tt
 );
+
+--01/PHLP
+CREATE OR REPLACE VIEW RCV_V_TKHAI_01_PHLP AS
+SELECT dtl.hdr_id
+     , dtl.row_id
+     , dtl.so_tt
+     , MAX(dtl.loai_phi) loai_phi
+     , MAX(dtl.tieu_muc) tieu_muc
+     , MAX(dtl.so_tien_thu_duoc) so_tien_thu_duoc
+     , MAX(dtl.ty_le) ty_le
+     , MAX(dtl.so_tien_trich_cho_che_do) so_tien_trich_cho_che_do
+     , MAX(dtl.so_tien_phai_nop) so_tien_phai_nop
+FROM QLT_NTK.rcv_gdien_tkhai gd,
+(
+  SELECT tkd.hdr_id,
+         NVL(tkd.row_id,0) row_id,
+         gdien.id,
+         gdien.so_tt,
+         DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL) loai_phi,
+         DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL) tieu_muc,
+         DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) so_tien_thu_duoc,
+         DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL) ty_le,
+         DECODE(gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL) so_tien_trich_cho_che_do,
+         DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL) so_tien_phai_nop
+  FROM QLT_NTK.rcv_tkhai_dtl tkd,
+       QLT_NTK.rcv_gdien_tkhai gdien,
+       QLT_NTK.rcv_map_ctieu ctieu
+  WHERE (ctieu.gdn_id = gdien.id)
+  AND (ctieu.ky_hieu = tkd.ky_hieu)
+    AND (tkd.loai_dlieu = '01_PHLP')
+    and gdien.loai_dlieu =  '01_PHLP'
+   and ctieu.loai_dlieu =  '01_PHLP'
+) dtl
+WHERE (gd.loai_dlieu = '01_PHLP')
+  AND (dtl.id = gd.id)
+GROUP BY dtl.hdr_id,
+         dtl.row_id,
+          dtl.so_tt;
 
