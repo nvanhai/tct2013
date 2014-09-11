@@ -44,10 +44,10 @@ Public strTuRowDenRowPL As String
 Public Sub Prepare1()
     With fps
         
-        SetDateFormat fps, 1, 59, .ColLetterToNumber("M"), DDMMYYYY
+        SetDateFormat fps, 1, 62, .ColLetterToNumber("M"), DDMMYYYY
         
         .Sheet = 1
-        .Row = 59
+        .Row = 62
         .Col = .ColLetterToNumber("M")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
@@ -70,20 +70,20 @@ Public Sub Prepare2()
         
         If Strloaitk = "TKCT" And StrSolanBosung = "" Then
             .Col = .ColLetterToNumber("C")
-            .Row = 61
+            .Row = 64
             .Text = 1
             UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber("I")
-            .Row = 61
+            .Row = 64
             .Text = ""
             UpdateCell fps, .Col, .Row, .Text
         ElseIf Strloaitk = "TKCT" And Val(StrSolanBosung) > 0 Then
             .Col = .ColLetterToNumber("C")
-            .Row = 61
+            .Row = 64
             .Text = ""
             UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber("I")
-            .Row = 61
+            .Row = 64
             .Text = StrSolanBosung
             UpdateCell fps, .Col, .Row, .Text
                ' Neu la truong hop bo sung thi hien thi cot C trong bang ke 6B (Có dieu chinh so lieu)
@@ -144,7 +144,7 @@ Public Sub Prepare2()
     
     'check thong tin ma so thue dai ly
     'set vi tri theo thu tu MSTDL~TENNVDLT~ChungChiHN
-    viTriMSTDL = "D_22~D_57~D_59"
+    viTriMSTDL = "D_22~D_60~D_62"
     updateMSTDL fps, viTriMSTDL
     
         ' Kiem tra xem phien ban 3.1.3 hay phien ban 3.1.2 tro xuong
@@ -156,14 +156,14 @@ Public Sub Prepare2()
     Dim i As Integer
     With fps
        ' test
-        Set xmlCellNode = TAX_Utilities_v1.Data(1).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 22))
-        Set xmlCellNode = xmlCellNode.parentNode
-        Set xmlCellNode = xmlCellNode.lastChild
-        If Left$(GetAttribute(xmlCellNode, "CellID"), 1) = "C" Then
-            isDFOld = False
-        Else
-            isDFOld = True
-        End If
+'        Set xmlCellNode = TAX_Utilities_v1.Data(1).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 22))
+'        Set xmlCellNode = xmlCellNode.parentNode
+'        Set xmlCellNode = xmlCellNode.lastChild
+'        If Left$(GetAttribute(xmlCellNode, "CellID"), 1) = "C" Then
+'            isDFOld = False
+'        Else
+'            isDFOld = True
+'        End If
         ' end test
     
         .Sheet = 2
@@ -172,10 +172,10 @@ Public Sub Prepare2()
         .Col = .ColLetterToNumber("B")
         .Row = 22
         Do
-            If isDFOld = True Then
-                 .Col = .ColLetterToNumber("C")
-                 .Text = "0"
-            End If
+'            If isDFOld = True Then
+'                 .Col = .ColLetterToNumber("C")
+'                 .Text = "0"
+'            End If
              .Col = .ColLetterToNumber("B")
              .Row = i + 22
              totalRow6B = i
@@ -311,7 +311,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
         mCurrentSheet = .Sheet
         If .ActiveSheet = 1 Then
             'check date
-            If Col = .ColLetterToNumber("M") And Row = 59 Then
+            If Col = .ColLetterToNumber("M") And Row = 62 Then
                 .GetText Col, Row, varTemp
                 If varTemp <> "" And varTemp <> "../../...." Then
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
@@ -384,7 +384,7 @@ Private Sub CheckDynamicError()
         'check thong tin header khong dc trong
         'lay vi tri header tren tk theo thu tu MSTDL, TENDLT, DIACHIDLT,QUAN/HUYEN,TP,SO HDDLT,NGAYDH,Ten NV DLT, CC Hanh Nghe
 
-        viTriHeaderTk = "D_22~D_20~D_24~D_26~M_26~D_32~M_32~D_57~D_59"
+        viTriHeaderTk = "D_22~D_20~D_24~D_26~M_26~D_32~M_32~D_60~D_62"
         viTriSheetHeader = "B_30~B_31~B_32~B_33~B_34~B_35~B_36~B_37~B_38"
         mangMessage = "E_30~E_31~E_32~E_33~E_34~E_35~E_36~E_37~E_38"
         'check header

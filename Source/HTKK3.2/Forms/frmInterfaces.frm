@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":1969
+         SpreadDesigner  =   "frmInterfaces.frx":19A5
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1BF1
+      SpreadDesigner  =   "frmInterfaces.frx":1C69
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -566,6 +566,8 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
                         'Data file not contain Day from and to.
                         strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                     ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "97" Then
+                        strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
+                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "76" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "59" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Then
                         strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                     Else
                         'Data file not contain Day from and to.
