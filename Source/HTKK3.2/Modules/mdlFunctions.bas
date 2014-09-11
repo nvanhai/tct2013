@@ -598,7 +598,7 @@ Public Sub SetupData(pGrid As fpSpread)
                                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" _
                                 & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                                 ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "76" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "59" _
-                                Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Then
+                                Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "41" Then
                                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" _
                                 & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                                 Else
@@ -4209,10 +4209,10 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             ' 09_TNCN \TT28
         Case "41"
             ReDim strResult(4)
-            strResult(0) = "D_24~Dynamic_0"
-            strResult(1) = "M_20~Dynamic_0"
-            strResult(2) = "I_42~I_43~I_44~I_45~I_46~I_47~I_48~I_49~I_50~I_51~I_52~I_53~I_54~I_55~I_56~I_57~I_58~I_59~I_60~I_61~Dynamic_0"
-            strResult(3) = "M_63~M_65~D_63~D_65~L_4 ~N_4 ~C_70~I_70~Dynamic_0"
+            strResult(0) = "F_24~Dynamic_0"
+            strResult(1) = "O_20~Dynamic_0"
+            strResult(2) = "K_42~K_43~K_44~K_45~K_46~K_47~K_48~K_49~K_50~K_51~K_52~K_53~K_54~K_55~K_56~K_57~K_58~K_59~K_60~K_61~K_62~K_63~K_64~K_65~K_66~K_67~Dynamic_0"
+            strResult(3) = "O_69~O_71~F_69~F_71~N_4 ~P_4 ~E_76~K_76~Dynamic_0"
 '
 '        ' TAIN
         ' 01_TAIN  \TT28

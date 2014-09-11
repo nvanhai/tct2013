@@ -3043,7 +3043,7 @@ Public Sub cmdOK_Click()
         End If
         
         ' QT TNCN
-        If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "76" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "59" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "43" Then
+        If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "76" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "59" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "43" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "41" Then
             TAX_Utilities_v1.FirstDay = txtNgayDau.Text
             TAX_Utilities_v1.LastDay = txtNgayCuoi.Text
         End If
@@ -3346,7 +3346,7 @@ Public Sub cmdOK_Click()
         If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "93" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "89" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "87" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "97" Then
             TAX_Utilities_v1.FirstDay = txtNgayDau.Text
             TAX_Utilities_v1.LastDay = txtNgayCuoi.Text
-        ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "76" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "59" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "43" Then
+        ElseIf TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "76" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "59" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "43" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "41" Then
             ' QT TNCN
             TAX_Utilities_v1.FirstDay = txtNgayDau.Text
             TAX_Utilities_v1.LastDay = txtNgayCuoi.Text
@@ -3815,7 +3815,7 @@ Public Sub cmdOK_Click()
     ' chi ky ke khai nam 2012 bo sung them PL
     If idToKhai = "41" Then
         If TAX_Utilities_v1.Year = "2012" Then
-            SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(4), "Active", "1"
+            SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(5), "Active", "1"
         End If
     End If
     
@@ -3940,12 +3940,12 @@ Private Sub Form_Load()
     
     If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "15" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "16" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "37" _
             Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "38" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "39" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "40" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" _
-                Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "41" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "44" _
+                 Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "44" _
                     Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "46" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "47" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "48" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "49" _
                         Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "50" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "51" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "53" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "54" _
                         Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "74" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "75" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "24" Then
         SetupLayoutTNCN (strKieuKy)
-    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "76" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "59" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "43" Then
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "76" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "59" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "41" Then
         SetupLayoutTNCN_QT
     ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "99" Then
         SetupLayoutTNDN_DK (strKieuKy)
@@ -5515,6 +5515,10 @@ Private Sub LoadDefaultInfor()
                 Y = GetNamHienTai(iNgayTaiChinh, iThangTaiChinh)
                 Y = Y - 1
                 txtYear.Text = Y
+                If GetAttribute(TAX_Utilities_v1.NodeMenu, "ParentID") = "101_10" Then
+                    txtNgayDau.Text = "01/" & Y
+                    txtNgayCuoi.Text = "12/" & Y
+                End If
             End If
 
         Case KIEU_KY_NGAY_NAM
@@ -6817,7 +6821,7 @@ Private Sub txtNgayCuoi_LostFocus()
         '01/KK-TTS
         ' To khai 08/TNCN va to khai 08A/TNCN set o nay tu thang den thang
         If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "75" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "23" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "89" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "97" _
-        Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "76" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "59" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Then
+        Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "76" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "59" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "41" Then
             If IsNull(objCvt.ToDate(txtNgayCuoi, "MM/YYYY")) Then
                 DisplayMessage "0248", msOKOnly, miCriticalError
                 txtNgayCuoi.SetFocus
@@ -6856,7 +6860,7 @@ Private Sub txtNgayDau_LostFocus()
         Set objCvt = New DateUtils
         ' To khai 08/TNCN va to khai 08A/TNCN set o nay tu thang den thang
         If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "74" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "75" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "23" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "89" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "97" _
-        Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "76" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "59" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Then
+        Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "76" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "59" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "41" Then
             If IsNull(objCvt.ToDate(txtNgayDau, "MM/YYYY")) Then
                 DisplayMessage "0248", msOKOnly, miCriticalError
                 txtNgayDau.SetFocus
@@ -7219,7 +7223,8 @@ On Error GoTo ErrHandle
                             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & strLoaiTkDk & "_" & txtYear.Text & "_" & Replace$(txtNgayDau.Text, "/", "") & "_" & Replace$(txtNgayCuoi.Text, "/", "") & ".xml"
                         ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "97" Then
                             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & txtYear.Text & "_" & Replace$(txtNgayDau.Text, "/", "") & "_" & Replace$(txtNgayCuoi.Text, "/", "") & ".xml"
-                        ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "76" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "59" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Then
+                        ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "76" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "59" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" _
+                        Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "41" Then
                             ' QT TNCN
                             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & txtYear.Text & "_" & Replace$(txtNgayDau.Text, "/", "") & "_" & Replace$(txtNgayCuoi.Text, "/", "") & ".xml"
                         Else
