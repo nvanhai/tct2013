@@ -597,6 +597,10 @@ Public Sub SetupData(pGrid As fpSpread)
                                 ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "97" Then
                                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" _
                                 & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
+                                ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "76" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "59" _
+                                Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Then
+                                    strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" _
+                                & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                                 Else
                                     'Data file not contain Day from and to.
                                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" _
@@ -4177,8 +4181,8 @@ Public Function getTemplateTk(ByVal strId As String) As String()
         Case "59"
             ReDim strResult(3)
             strResult(0) = "D_22~Dynamic_0"
-            strResult(1) = "I_41~I_42~I_44~I_45~I_47~I_48~I_50~I_51~I_53~I_54~I_55~Dynamic_0"
-            strResult(2) = "M_57~M_59~D_57~D_59~C_61~I_61~Dynamic_0"
+            strResult(1) = "I_41~I_42~I_44~I_45~I_47~I_48~I_50~I_51~I_53~I_54~I_55~I_57~I_58~Dynamic_0"
+            strResult(2) = "M_60~M_62~D_60~D_62~C_64~I_64~Dynamic_0"
             
             ' 08_TNCN  \TT28
         Case "74"
