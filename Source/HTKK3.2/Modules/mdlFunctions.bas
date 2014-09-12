@@ -4290,6 +4290,12 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             strResult(2) = "T_30~AB_30~AJ_30~AT_30~T_31~AB_31~AJ_31~AT_31~T_32~AB_32~AJ_32~AT_32~T_33~AB_33~AJ_33~AT_33~T_34~AB_34~AJ_34~AT_34~T_35~AB_35~AJ_35~AT_35~T_36~AB_36~AJ_36~AT_36~Dynamic_0"
             strResult(3) = "M_44~AL_44~M_46~AL_46~M_23~N_23~O_23~S_23~Z_23~Dynamic_0"
             
+        Case "88"
+            ReDim strResult(4)
+            strResult(0) = "I_17~Dynamic_0"
+            strResult(1) = "C_49~E_49~H_49~L_49~N_49~Q_49~T_49~X_49~AB_49~Dynamic_1"
+            strResult(3) = "Q_37~T_37~X_37~Dynamic_0"
+            strResult(4) = "H_60~R_60~H_62~R_62~C_35~F_35~I_35~Dynamic_1"
             ' 01_BVMT
         Case "86"
             ReDim strResult(4)
@@ -4533,7 +4539,6 @@ End Function
 
 Public Function ToDateString(str As String, mmmmYYdd As Boolean) As String
     Dim strArray() As String
-
     If mmmmYYdd = True Then
         If Len(str) > 10 Then
             If Len(str) > 20 Then
