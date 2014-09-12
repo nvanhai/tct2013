@@ -223,7 +223,7 @@ Dim xmlNodeH15 As MSXML.IXMLDOMNode
             .typeComboboxCurSel = intIndexCombo
             UpdateCell fps, .Col, .Row, .Text
             'Chon lai combo cua colF
-            .Col = .ColLetterToNumber("AB")
+            .Col = .ColLetterToNumber("AD")
             .GetText .ColLetterToNumber("AC"), Row, strId
             .Text = Trim(Mid(strId, 200, 10))
              UpdateCell fps, .Col, .Row, .Text

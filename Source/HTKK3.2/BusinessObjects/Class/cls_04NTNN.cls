@@ -41,7 +41,7 @@ Public Sub Prepare1()
     With fps
         SetDateFormat fps, 1, 46, .ColLetterToNumber("AL"), DDMMYYYY
         SetDateFormat fps, 1, 21, .ColLetterToNumber("AH"), DDMMYYYY
-        SetDateFormat fps, 2, 24, .ColLetterToNumber("AR"), DDMMYYYY
+        'SetDateFormat fps, 2, 24, .ColLetterToNumber("AR"), DDMMYYYY
         
         .Sheet = 1 'To khai 04/NTNN
         .Row = 46
@@ -141,34 +141,15 @@ Public Sub updateSomeCell()
         blCheck_S2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
 
         If blCheck_S2 = True Then
-            .Col = .ColLetterToNumber("T")
-            .Row = 31
-            .Lock = True
-            .Formula = "'02-2/NTNN'!BD26"
-            'UpdateCell fps, .Col, .Row, .value
-            
-           
+             ' tong hop chi tieu cot 9b PL 02-2/NTNN
             .Col = .ColLetterToNumber("AB")
-            .Row = 31
-            .Lock = True
-            .Formula = "'02-2/NTNN'!BS26"
-            'UpdateCell fps, .Col, .Row, .value
+            .Row = 30
+            .Formula = "BD30"
             
-       
-        Else
-            .Col = .ColLetterToNumber("T")
-            .Row = 31
-            '.value = 0
-            
-            .Lock = False
-            'UpdateCell fps, .Col, .Row, .value
-           
+             ' tong hop chi tieu cot 10b PL 02-2/NTNN
             .Col = .ColLetterToNumber("AB")
-            .Row = 31
-            '.value = 0
-            .Lock = False
-            'UpdateCell fps, .Col, .Row, .value
-            
+            .Row = 32
+            .Formula = "BD32"
         End If
       
         .EventEnabled(EventAllEvents) = True
@@ -234,23 +215,23 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 .Row = Row
                 UpdateCell fps, Col, Row, .Text
             End If
-        .Sheet = 2
-            If Col = .ColLetterToNumber("AR") Then
-                    .GetText Col, Row, varTemp
-                    If varTemp <> "" And varTemp <> "../../...." Then
-                        If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
-                            .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
-                        Else
-                            .SetActiveCell Col, Row
-                        End If
-                    Else
-                        .SetText Col, Row, ""
-                    End If
-                    .Col = Col
-                    .Row = Row
-                    UpdateCell fps, Col, Row, .Text
-                End If
-        .EventEnabled(EventAllEvents) = True
+'        .Sheet = 2
+'            If Col = .ColLetterToNumber("AR") Then
+'                    .GetText Col, Row, varTemp
+'                    If varTemp <> "" And varTemp <> "../../...." Then
+'                        If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+'                            .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+'                        Else
+'                            .SetActiveCell Col, Row
+'                        End If
+'                    Else
+'                        .SetText Col, Row, ""
+'                    End If
+'                    .Col = Col
+'                    .Row = Row
+'                    UpdateCell fps, Col, Row, .Text
+'                End If
+'        .EventEnabled(EventAllEvents) = True
     End With
     
     CellChange Col, Row
@@ -1019,12 +1000,12 @@ Public Sub SetActiveKHBS() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
                 Case "KHBS"
                     blnNullValue = True
                     'Check value of last node in Data
-                    Set xmlCellNode = TAX_Utilities_v1.Data(11).getElementsByTagName("Cell") _
-                        (TAX_Utilities_v1.Data(11).getElementsByTagName("Cell").length - 1)
+                    Set xmlCellNode = TAX_Utilities_v1.Data(2).getElementsByTagName("Cell") _
+                        (TAX_Utilities_v1.Data(2).getElementsByTagName("Cell").length - 1)
                     strValue1 = GetAttribute(xmlCellNode, "Value")
-                 Set xmlCellNode = TAX_Utilities_v1.Data(11).getElementsByTagName("Cell")(1)
+                 Set xmlCellNode = TAX_Utilities_v1.Data(2).getElementsByTagName("Cell")(1)
                     strValue2 = GetAttribute(xmlCellNode, "Value")
-                 Set xmlCellNode = TAX_Utilities_v1.Data(11).getElementsByTagName("Cell")(7)
+                 Set xmlCellNode = TAX_Utilities_v1.Data(2).getElementsByTagName("Cell")(7)
                     strValue3 = GetAttribute(xmlCellNode, "Value")
           
                     If (Not IsNullValue(strValue1)) Or TAX_Utilities_v1.Data(2).getElementsByTagName("Cell").length > 31 Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Then
@@ -1156,7 +1137,7 @@ Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer
                     .Formula = "BD30"
                 End If
                 
-                If Col = .ColLetterToNumber("BY") Then
+                If Col = .ColLetterToNumber("BS") Then
                     .Sheet = 1
                     ' tong hop chi tieu cot 10b PL 02-2/NTNN
                     .Col = .ColLetterToNumber("AB")

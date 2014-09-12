@@ -256,7 +256,7 @@ With fps
             Next
         End If
         .Sheet = sheetPl03_7_TNDN
-        strTemp = "46~51~55~60~64~68~73~77~81"
+        strTemp = "51~55~60~64~68~73~77~81"
         arrRowCom = Split(strTemp, "~")
         For i = 0 To UBound(arrRowCom)
             .Row = CLng(arrRowCom(i))
@@ -280,6 +280,9 @@ End With
 
     ' set co quan thue quan ly
     setCQTQuanLy
+    
+    setCQTQuanLyHoanThue fps
+    
 End Sub
 
 'This funtion is called after executing function "SetupData"
@@ -3224,25 +3227,146 @@ Private Sub setCQTQuanLy()
         End If
         
         With fps
-            .Sheet = .SheetCount - 1 'set thong tin CQL
+            .Sheet = sheetPl03_8_TNDN 'set thong tin CQL
             '.EventEnabled(EventAllEvents) = False
             
-            .Row = 33
-            .Col = .ColLetterToNumber("BE")
+            .Row = 41
+            .Col = .ColLetterToNumber("I")
             .TypeComboBoxList = tenCucThue
             
-            .Row = 33
-            .Col = .ColLetterToNumber("BI")
+            .Row = 41
+            .Col = .ColLetterToNumber("Y")
             .TypeComboBoxList = maCucThue
             
-            .Row = 35
-            .Col = .ColLetterToNumber("BE")
+            .Row = 41
+            .Col = .ColLetterToNumber("K")
             .TypeComboBoxList = tenChiCucThue
     
-            .Row = 35
-            .Col = .ColLetterToNumber("BI")
+            .Row = 41
+            .Col = .ColLetterToNumber("Z")
             .TypeComboBoxList = maChiCucThue
-                                
+            
+            ' Phu luc 03_9
+            .Sheet = sheetPl03_9_TNDN 'set thong tin CQL
+            .Row = 42
+            .Col = .ColLetterToNumber("P")
+            .TypeComboBoxList = tenCucThue
+            
+            .Row = 42
+            .Col = .ColLetterToNumber("AH")
+            .TypeComboBoxList = maCucThue
+            
             '.EventEnabled(EventAllEvents) = True
         End With
+End Sub
+
+
+
+Private Sub setChangeComb(ByVal Col As Long, Row As Long)
+    Dim varTemp As Variant
+    Dim intIndexCuc As Integer
+    Dim intIndexChiCuc As Integer
+    Dim varIdCucThue As Variant
+    
+    Dim xmlDomData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim arrDanhsach() As String
+    Dim tenChiCucThue As String
+    Dim maChiCucThue As String
+    
+    
+    Dim tenCucThue As String
+    Dim maCucThue As String
+    Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
+    Dim intIndexCombo As Integer, i As Integer
+    Dim iCol As Long, iRow As Long
+  '  Dim checkDL As Variant
+    With fps
+        .EventEnabled(EventAllEvents) = False
+        If .ActiveSheet = sheetPl03_8_TNDN Then
+            .Sheet = sheetPl03_8_TNDN
+            mCurrentSheet = sheetPl03_8_TNDN
+            
+            .Col = Col
+            .Row = Row
+            
+            If Col = .ColLetterToNumber("I") Then 'Khi chon Combo
+                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+                intIndexCuc = .typeComboboxCurSel
+                .Col = .ColLetterToNumber("Y")
+                .Row = Row
+                .typeComboboxCurSel = intIndexCuc
+                'Nhap lai Combo cot Q
+                .Col = .ColLetterToNumber("Y")
+                UpdateCell fps, .Col, .Row, .Text
+                ' Lay Id cua cuc thue vua chon o tren
+                fps.GetText .Col, .Row, varIdCucThue
+                
+                If varIdCucThue <> "" Or varIdCucThue <> vbNullString Then
+                    ' Lay thong tin cho chi cuc thue
+                    varIdCucThue = Left$(varIdCucThue, 3)
+                    
+                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+                        For Each xmlNode In xmlNodeListCell
+                            If GetAttribute(xmlNode, "Value") <> "" Then
+                                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                                
+                                If arrDanhsach(0) = "0" And arrDanhsach(2) = varIdCucThue Then
+                                    tenChiCucThue = tenChiCucThue + arrDanhsach(3) + Chr$(9)
+                                    maChiCucThue = maChiCucThue + arrDanhsach(1) + Chr$(9)
+                                End If
+                            End If
+                        Next
+                        Set xmlDomData = Nothing
+                        Set xmlNodeListCell = Nothing
+                        Set xmlNode = Nothing
+                    End If
+                    
+                    .Row = Row
+                    .Col = .ColLetterToNumber("K")
+                    .TypeComboBoxList = tenChiCucThue
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
+                    
+                    .Row = Row
+                    .Col = .ColLetterToNumber("Z")
+                    .TypeComboBoxList = maChiCucThue
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
+                   
+                End If
+            End If
+                        
+            If Col = .ColLetterToNumber("K") Then 'Khi chon Combo
+                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+                intIndexChiCuc = .typeComboboxCurSel
+                .Col = .ColLetterToNumber("Z")
+                .Row = Row
+                .typeComboboxCurSel = intIndexChiCuc
+                'Nhap lai Combo cot Q
+                .Col = .ColLetterToNumber("Z")
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+        ElseIf .ActiveSheet = sheetPl03_9_TNDN Then
+            .Sheet = sheetPl03_9_TNDN
+            mCurrentSheet = sheetPl03_9_TNDN
+            .Col = Col
+            .Row = Row
+            
+            
+            If Col = .ColLetterToNumber("P") Then 'Khi chon Combo
+                'Chuyen sang du lieu tuong ung Lay gia tri index cot G va gia tri Index cot L
+                intIndexChiCuc = .typeComboboxCurSel
+                .Col = .ColLetterToNumber("AH")
+                .Row = Row
+                .typeComboboxCurSel = intIndexChiCuc
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+           
+ 
+            End If
+        .EventEnabled(EventAllEvents) = True
+    End With
 End Sub

@@ -733,61 +733,29 @@ Public Sub updateSomeCell()
         blCheck_S1 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
 
         If blCheck_S1 = True Then
-            .Col = .ColLetterToNumber("W")
-            .Row = 30
-            .Lock = True
-            .Formula = "'02-1/NTNN'!BG25"
-            'UpdateCell fps, .Col, .Row, .value
-           
+            ' tong hop chi tieu cot 10b PL 02-1/NTNN va cot 9b PL 02-2/NTNN
             .Col = .ColLetterToNumber("AF")
             .Row = 30
-            .Lock = True
-            .Formula = "'02-1/NTNN'!BY25"
-            'UpdateCell fps, .Col, .Row, .value
+            .Formula = "BK30"
            
-        Else
-            .Col = .ColLetterToNumber("W")
-            .Row = 30
-            '.value = 0
-            
-            .Lock = False
-            'UpdateCell fps, .Col, .Row, .value
-           
+             ' tong hop chi tieu cot 11b PL 02-1/NTNN
             .Col = .ColLetterToNumber("AF")
-            .Row = 30
-            '.value = 0
-            .Lock = False
-            'UpdateCell fps, .Col, .Row, .value
+            .Row = 31
+            .Formula = "BK31"
         End If
         
         blCheck_S2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
 
         If blCheck_S2 = True Then
-           
-            .Col = .ColLetterToNumber("W")
-            .Row = 31
-            .Lock = True
-            .Formula = "'02-2/NTNN'!BD26"
-            'UpdateCell fps, .Col, .Row, .value
-           
+            ' tong hop chi tieu cot 10b PL 02-1/NTNN va cot 9b PL 02-2/NTNN
+             .Col = .ColLetterToNumber("AF")
+             .Row = 30
+             .Formula = "BK30"
+             
+               ' tong hop chi tieu cot 10b
             .Col = .ColLetterToNumber("AF")
-            .Row = 31
-            .Lock = True
-            .Formula = "'02-2/NTNN'!BS26"
-            'UpdateCell fps, .Col, .Row, .value
-        Else
-           
-            .Col = .ColLetterToNumber("W")
-            .Row = 31
-            '.value = 0
-            .Lock = False
-            'UpdateCell fps, .Col, .Row, .value
-           
-            .Col = .ColLetterToNumber("AF")
-            .Row = 31
-            '.value = 0
-            .Lock = False
-            'UpdateCell fps, .Col, .Row, .value
+            .Row = 32
+            .Formula = "BK32"
         End If
       
         .EventEnabled(EventAllEvents) = True
@@ -1045,12 +1013,12 @@ Public Sub SetActiveKHBS() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
                 Case "KHBS"
                     blnNullValue = True
                     'Check value of last node in Data
-                    Set xmlCellNode = TAX_Utilities_v1.Data(11).getElementsByTagName("Cell") _
-                        (TAX_Utilities_v1.Data(11).getElementsByTagName("Cell").length - 1)
+                    Set xmlCellNode = TAX_Utilities_v1.Data(3).getElementsByTagName("Cell") _
+                        (TAX_Utilities_v1.Data(3).getElementsByTagName("Cell").length - 1)
                     strValue1 = GetAttribute(xmlCellNode, "Value")
-                 Set xmlCellNode = TAX_Utilities_v1.Data(11).getElementsByTagName("Cell")(1)
+                 Set xmlCellNode = TAX_Utilities_v1.Data(3).getElementsByTagName("Cell")(1)
                     strValue2 = GetAttribute(xmlCellNode, "Value")
-                 Set xmlCellNode = TAX_Utilities_v1.Data(11).getElementsByTagName("Cell")(7)
+                 Set xmlCellNode = TAX_Utilities_v1.Data(3).getElementsByTagName("Cell")(7)
                     strValue3 = GetAttribute(xmlCellNode, "Value")
           
                     If (Not IsNullValue(strValue1)) Or TAX_Utilities_v1.Data(2).getElementsByTagName("Cell").length > 31 Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Then
