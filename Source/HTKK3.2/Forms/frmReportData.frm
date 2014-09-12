@@ -126,7 +126,7 @@ Begin VB.Form frmReportData
       DisplayText     =   ""
       BarWidthReduction=   -1
       TextAlignment   =   0
-      Quality         =   68
+      Quality         =   0
    End
 End
 Attribute VB_Name = "frmReportData"
@@ -727,6 +727,8 @@ nextPrinter:
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0322"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0323"), "Msg")
     ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 26 Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0320"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0321"), "Msg")
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 80 Then
+        fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0333"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0334"), "Msg")
     End If
     
     'KHBS khong thay doi so thue se ko in phu luc va co cau canh bao

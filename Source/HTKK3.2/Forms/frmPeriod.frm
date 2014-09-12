@@ -5507,7 +5507,11 @@ Private Sub LoadDefaultInfor()
 
             If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "89" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "97" Then
                 Y = GetNamHienTai(iNgayTaiChinh, iThangTaiChinh)
+                Y = Y - 1
                 txtYear.Text = Y
+                
+                txtNgayDau.Text = "01/" & Y
+                txtNgayCuoi.Text = "12/" & Y
             ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "24" Then
                 Y = GetNamHienTai(iNgayTaiChinh, iThangTaiChinh)
                 txtYear.Text = Y
@@ -8263,7 +8267,7 @@ Private Sub SetActiveValueKHBS()
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(3), "Active", 1
     ElseIf varMenuId = "73" Or varMenuId = "71" Then
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(2), "Active", 1
-    ElseIf varMenuId = "82" Or varMenuId = "85" Or varMenuId = "90" Then
+    ElseIf varMenuId = "85" Or varMenuId = "90" Then
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(1), "Active", 1
     ElseIf varMenuId = "12" Or varMenuId = "11" Then
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(3), "Active", 1
@@ -8279,7 +8283,7 @@ Private Sub SetActiveValueKHBS()
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(4), "Active", 1
     ElseIf varMenuId = "96" Or varMenuId = "94" Or varMenuId = "98" Or varMenuId = "99" Or varMenuId = "97" Then
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(2), "Active", 1
-    ElseIf varMenuId = "92" Or varMenuId = "93" Then
+    ElseIf varMenuId = "92" Or varMenuId = "93" Or varMenuId = "82" Then
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(2), "Active", 1
     End If
 End Sub
