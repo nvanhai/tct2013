@@ -218,3 +218,41 @@ CREATE OR REPLACE VIEW RCV_V_PLUC_03_1_TD_TAIN AS
             dtl.row_id
     );
 	
+--02/BVMT
+CREATE OR REPLACE VIEW RCV_V_TKHAI_02_BVMT AS
+SELECT dtl.hdr_id
+     , dtl.row_id
+     , dtl.so_tt
+     , MAX(dtl.don_vi_tinh) don_vi_tinh
+     , MAX(dtl.so_luong) so_luong
+     , MAX(dtl.muc_phi) muc_phi
+     , (MAX(dtl.so_luong)*MAX(dtl.muc_phi)) phi_phai_nop
+     , MAX(dtl.phi_ke_khai) phi_ke_khai
+     , MAX(dtl.chenh_lech) chenh_lech
+     , MAX(dtl.loai_khoang_san) loai_khoang_san
+FROM QLT_NTK.rcv_gdien_tkhai gd,
+(
+  SELECT tkd.hdr_id,
+         NVL(tkd.row_id,0) row_id,
+         gdien.id,
+         gdien.so_tt,
+         DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL) don_vi_tinh,
+         DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) so_luong,
+         DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL) muc_phi,
+         DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL) phi_ke_khai,
+         DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL) chenh_lech,
+         DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL) loai_khoang_san
+  FROM QLT_NTK.rcv_tkhai_dtl tkd,
+       QLT_NTK.rcv_gdien_tkhai gdien,
+       QLT_NTK.rcv_map_ctieu ctieu
+  WHERE (ctieu.gdn_id = gdien.id)
+  AND (ctieu.ky_hieu = tkd.ky_hieu)
+    AND (tkd.loai_dlieu = '02_BVMT11')
+    and gdien.loai_dlieu =  '02_BVMT11'
+   and ctieu.loai_dlieu =  '02_BVMT11'
+) dtl
+WHERE (gd.loai_dlieu = '02_BVMT11')
+  AND (dtl.id = gd.id)
+GROUP BY dtl.hdr_id,
+         dtl.row_id,
+          dtl.so_tt;
