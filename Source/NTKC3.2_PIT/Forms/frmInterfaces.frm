@@ -1175,7 +1175,7 @@ Private Sub cmdSave_Click()
     
     Set rs = Nothing
 
-    If idToKhai = 2 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 87 Or idToKhai = 77 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 95 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 99 Or idToKhai = 24 Or idToKhai = 25 Or idToKhai = 23 Or idToKhai = 85 Or idToKhai = 88 Then
+    If idToKhai = 2 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 87 Or idToKhai = 77 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 95 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 99 Or idToKhai = 24 Or idToKhai = 25 Or idToKhai = 23 Or idToKhai = 85 Or idToKhai = 88 Or idToKhai = 89 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28").nodeValue)
         '--QCT
     ElseIf idToKhai = 4 Or idToKhai = 86 Then
@@ -1500,15 +1500,36 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '04/NTNN
-str2 = "aa325822100343639   00201300200200100101/0101/07/201101/01/201331/12/2013<S01><S>2222222222</S><S>HD-0001~01/01/2014</S><S>16~0~-16~ghi chu 1~10~13~3~ghi chu 2~5~4~-1~ghi chu 3~5~9~4~ghi chu 4~2~1~-1~ghu chu 5~1~2~1~ghu chu 6~1~0~-1~ghi chu 7</S><S>NGUYEN VAN A~nguoi ky~ICT001~15/09/2014~1~~~01/01/2013~31/12/2013</S></S01>"
-Barcode_Scaned str2
+'str2 = "aa325822100343639   00201300200200100101/0101/07/201101/01/201331/12/2013<S01><S>2222222222</S><S>HD-0001~01/01/2014</S><S>16~0~-16~ghi chu 1~10~13~3~ghi chu 2~5~4~-1~ghi chu 3~5~9~4~ghi chu 4~2~1~-1~ghu chu 5~1~2~1~ghu chu 6~1~0~-1~ghi chu 7</S><S>NGUYEN VAN A~nguoi ky~ICT001~15/09/2014~1~~~01/01/2013~31/12/2013</S></S01>"
+'Barcode_Scaned str2
 
-    'PL
+'    'PL
 'str2 = "aa325822100343639   00201300100100100201/0101/07/201101/01/201331/12/2013<S01><S>2222222222</S><S>HD-0001~01/01/2014</S><S>16~120~104~ghi chu 1~10~13~3~ghi chu 2~5~4~-1~ghi chu 3~5~9~4~ghi chu 4~2~1~-1~ghu chu 5~1~2~1~ghu chu 6~1~0~-1~ghi chu 7</S><S>NGUYEN VAN A~nguoi ky~ICT001~15/09/2014~1~~~01/01/2013~31/12/2013</S></S01>"
 'Barcode_Scaned str2
 'str2 = "aa325822100343639   002013001001002002<S01-1><S>thau 1~0102030405~ten-mst~hd-001~noi dung~dia diem~01/01/2015~20~80~10~40~thau 2~2222222222~ten-mst2~hd-002~noi dung2~dia diem2~01/01/2016~10~40~5~20</S><S>120~60</S></S01-1>"
 'Barcode_Scaned str2
 
+'02/TNDN-DK
+str2 = "aa325932100343639   00201400200200100201/0101/01/1900<S01><S>2222222222</S><S>1~0~0~HDKL-0001~x~</S><S>1000~500~21~10~11~13~487~979~500~1479~10~147.9~100~47.9~10~37.9</S><S>NGUYEN VAN A~ICT001~nguoi ky~15/09/2014~1~~</S></S01>"
+Barcode_Scaned str2
+str2 = "aa325932100343639   002014002002002002<S01-1><S>47.9</S><S>0102030405~cmc~30~14.37~ghi chu 01~2222222222~fpt~70~33.53~ghi chu 0 2</S><S>100~47.9</S></S01-1>"
+Barcode_Scaned str2
+
+'02/TAIN-DK
+'str2 = "aa325892100343639   00201400300300100201/0101/01/1900<S01><S>2222222222</S><S>1~0~0~HD-001~~x</S><S>100~20~10~10~5~5~20~0.1~160000~50~10~5~"
+'Barcode_Scaned str2
+'str2 = "aa325892100343639   0020140030030020025~10~16000~160000~160000~0~10~159990</S><S>NGUYEN VAN A~ICT001~nguoi ky~15/09/2014~1~~2000</S></S01>"
+'Barcode_Scaned str2
+    
+    'PL
+'str2 = "aa325892100343639   00201400300300100401/0101/01/1900<S01><S>2222222222</S><S>1~0~0~HD-001~~x</S><S>100~20~10~10~5~5~20~0.1~160000~50~10~5~"
+'Barcode_Scaned str2
+'str2 = "aa325892100343639   0020140030030020045~10~16000~160000~160000~0~10~159990</S><S>NGUYEN VAN A~ICT001~nguoi ky~15/09/2014~1~~2000</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa325892100343639   002014003003003004<S01-1><S>160000</S><S>0102030405~cmc~20~32000~ghi chu1~2222222222~fpt~80~128000~ghi chu2</S><S>100~160000</S></S01-1>"
+'Barcode_Scaned str2
+'str2 = "aa325892100343639   002014003003004004<S01-2><S>Thïng~01/01/2014~1000~01/01/2015~500~100~50000~ghi chu 01~Thïng~01/01/2014~2000~01/01/2015~550~200~110000~ghi chu 2</S><S>160000</S></S01-2>"
+'Barcode_Scaned str2
 
     
 End Sub
@@ -3835,7 +3856,7 @@ Private Function LoadForm(ByVal strData As String) As Boolean
     
     ' Set Phong quan ly
     If Not objTaxBusiness Is Nothing Then
-        If Val(LoaiTk) = 70 Or Val(LoaiTk) = 71 Or Val(LoaiTk) = 72 Or Val(LoaiTk) = 73 Or Val(LoaiTk) = 74 Or Val(LoaiTk) = 77 Or Val(LoaiTk) = 3 Or Val(LoaiTk) = 75 Or Val(LoaiTk) = 80 Or Val(LoaiTk) = 81 Or Val(LoaiTk) = 82 Or Val(LoaiTk) = 86 Or Val(LoaiTk) = 87 Or Val(LoaiTk) = 89 Or Val(LoaiTk) = 17 Or Val(LoaiTk) = 42 Or Val(LoaiTk) = 43 Or Val(LoaiTk) = 59 Or Val(LoaiTk) = 76 Or Val(LoaiTk) = 41 Then
+        If Val(LoaiTk) = 70 Or Val(LoaiTk) = 71 Or Val(LoaiTk) = 72 Or Val(LoaiTk) = 73 Or Val(LoaiTk) = 74 Or Val(LoaiTk) = 77 Or Val(LoaiTk) = 3 Or Val(LoaiTk) = 75 Or Val(LoaiTk) = 80 Or Val(LoaiTk) = 81 Or Val(LoaiTk) = 82 Or Val(LoaiTk) = 86 Or Val(LoaiTk) = 87 Or Val(LoaiTk) = 17 Or Val(LoaiTk) = 42 Or Val(LoaiTk) = 43 Or Val(LoaiTk) = 59 Or Val(LoaiTk) = 76 Or Val(LoaiTk) = 41 Then
             ' lay ma phong quan ly
             'Get Tax id
             strMST = Trim(Mid$(Left$(strData, 21), 6, 13))
