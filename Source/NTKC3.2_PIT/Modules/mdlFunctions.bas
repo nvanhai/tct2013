@@ -1132,7 +1132,7 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "73" Then changeMaToKhai = "02_TNDN11"
     
     If strID = "70" Then changeMaToKhai = "01_NTNN"
-    If strID = "80" Then changeMaToKhai = "02_NTNN11"
+    If strID = "80" Then changeMaToKhai = "02_NTNN"
     If strID = "81" Then changeMaToKhai = "03_NTNN11"
     If strID = "82" Then changeMaToKhai = "04_NTNN11"
     
@@ -1237,6 +1237,9 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "99" Then changeMaToKhai = "01B_TNDN_DK"
     If strID = "96" Then changeMaToKhai = "03_TD_TAIN"
     If strID = "94" Then changeMaToKhai = "01_TD_GTGT"
+    
+    If strID = "85" Then changeMaToKhai = "01_PHLP"
+    If strID = "88" Then changeMaToKhai = "02_PHLP"
 End Function
 
 ' Ham change sang ma cua QLT
