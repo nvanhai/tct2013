@@ -4210,7 +4210,7 @@ Public Function getTemplateTk(ByVal strId As String) As String()
         Case "41"
             ReDim strResult(4)
             strResult(0) = "F_24~Dynamic_0"
-            strResult(1) = "O_20~Dynamic_0"
+            strResult(1) = "F_20~O_20~Dynamic_0"
             strResult(2) = "K_42~K_43~K_44~K_45~K_46~K_47~K_48~K_49~K_50~K_51~K_52~K_53~K_54~K_55~K_56~K_57~K_58~K_59~K_60~K_61~K_62~K_63~K_64~K_65~K_66~K_67~Dynamic_0"
             strResult(3) = "O_69~O_71~F_69~F_71~N_4 ~P_4 ~E_76~K_76~Dynamic_0"
 '
