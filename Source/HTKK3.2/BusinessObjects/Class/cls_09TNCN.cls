@@ -55,43 +55,18 @@ Public Sub Prepare1()
         
         SetDateFormat fps, 1, 4, .ColLetterToNumber("N"), MMYYYY
         SetDateFormat fps, 1, 4, .ColLetterToNumber("P"), MMYYYY
-'        If TAX_Utilities_v1.Year = 2009 Then
-'            .Row = 4
-'            .Col = .ColLetterToNumber("N")
-'            .Text = Format("07/2009", "mm/yyyy")
-'            .TypeHAlign = TypeHAlignLeft
-'
-'            ' Set ky cho thang ket thuc tinh thue
-'            .Row = 4
-'            .Col = .ColLetterToNumber("N")
-'            .Text = Format("12/2009", "mm/yyyy")
-'            .TypeHAlign = TypeHAlignLeft
-'        Else
-'            .Row = 4
-'            .Col = .ColLetterToNumber("L")
-'            .Text = Format("01/" & TAX_Utilities_v1.Year, "mm/yyyy")
-'            .TypeHAlign = TypeHAlignLeft
-'
-'            .Row = 4
-'            .Col = .ColLetterToNumber("N")
-'            .Text = Format("12/" & TAX_Utilities_v1.Year, "mm/yyyy")
-'            .TypeHAlign = TypeHAlignLeft
-'        End If
-                
-            .Row = 4
-            .Col = .ColLetterToNumber("N")
-            .Text = Format(TAX_Utilities_v1.FirstDay, "mm/yyyy")
-            .TypeHAlign = TypeHAlignLeft
+            
+        .Row = 4
+        .Col = .ColLetterToNumber("N")
+        .Text = Format(TAX_Utilities_v1.FirstDay, "mm/yyyy")
+        .TypeHAlign = TypeHAlignLeft
 
-            .Row = 4
-            .Col = .ColLetterToNumber("P")
-            .Text = Format(TAX_Utilities_v1.LastDay, "mm/yyyy")
-            .TypeHAlign = TypeHAlignLeft
+        .Row = 4
+        .Col = .ColLetterToNumber("P")
+        .Text = Format(TAX_Utilities_v1.LastDay, "mm/yyyy")
+        .TypeHAlign = TypeHAlignLeft
         
         ' Tinh tong so thang theo dinh dang tu ky den ky
-'        .Row = 8
-'        .Col = .ColLetterToNumber("P")
-'        .Text = DateDiff("M", Format("07/2009", "mm/yyyy"), Format("12/2009", "mm/yyyy")) + 1
         .GetText .ColLetterToNumber("N"), 4, tuThang
         .GetText .ColLetterToNumber("P"), 4, denThang
         
@@ -122,8 +97,7 @@ Public Sub Prepare1()
             .Col = .ColLetterToNumber("K")
             .value = 4000000 * soThang1 + 9000000 * soThang2
         End If
-        
-        
+                
         ' Set format va gia tri cho ngay ky
         SetDateFormat fps, 1, 71, .ColLetterToNumber("O"), DDMMYYYY
                 
@@ -131,24 +105,18 @@ Public Sub Prepare1()
         .Col = .ColLetterToNumber("O")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
-        
-               
+                       
         ' Dinh dang ngay thang cho cot ngay sinh trong phu luc 09-3/TNCN
         SetDateFormat fps, phuLuc09_3_TNCN, 24, .ColLetterToNumber("E"), DDMMYYYY
         SetDateFormat fps, phuLuc09_3_TNCN, 33, .ColLetterToNumber("E"), DDMMYYYY
               
+        SetDateFormat fps, phuLuc09_3_TNCN, 24, .ColLetterToNumber("O"), MMYYYY
+        SetDateFormat fps, phuLuc09_3_TNCN, 24, .ColLetterToNumber("P"), MMYYYY
+              
+        SetDateFormat fps, phuLuc09_3_TNCN, 33, .ColLetterToNumber("O"), MMYYYY
+        SetDateFormat fps, phuLuc09_3_TNCN, 33, .ColLetterToNumber("P"), MMYYYY
+              
         .Sheet = phuLuc09_3_TNCN
-'        If Val(TAX_Utilities_v1.Year) >= 2012 Then
-'            .Col = .ColLetterToNumber("K")
-'            .Row = 22
-'            .Formula = ""
-'            .Lock = False
-'        Else
-'            .Col = .ColLetterToNumber("K")
-'            .Row = 22
-'            .Lock = True
-'        End If
-        
         ' Lay danh muc quan he voi NNT
         Dim xmlDocument As New MSXML.DOMDocument
         Dim xmlNode As MSXML.IXMLDOMNode
@@ -156,6 +124,18 @@ Public Sub Prepare1()
         Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
         Dim strQuanHeNNTID As String
         Dim strQuanHeNNT As String
+        
+        Dim strQuocTich As String
+        Dim strMaQuocTich As String
+        Dim strTenTinh As String
+        Dim strTenHuyen As String
+        Dim strTenXa As String
+        Dim strMaTinh As String
+        Dim strMaHuyen  As String
+        Dim strMaXa As String
+        Dim temValue As String
+        Dim arrValue() As String
+        
         ' Chuoi gia tri ve quan he NNT bao gom:
         ' 01-Con, 02-Vo, 03-Chong, 04-Cha, 05-Me, 06-Chau Ruot, 07-Ho Hang, 99-Khac
         Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
@@ -165,11 +145,95 @@ Public Sub Prepare1()
         strQuanHeNNTID = "01" + Chr$(9) + "02" + Chr$(9) + "03" + Chr$(9) + "04" + Chr$(9) + "05" + Chr$(9) + "06" + Chr$(9) + "07" + Chr$(9) + "99" + Chr$(9)
         .Row = 24
         .Col = .ColLetterToNumber("L")
-        
         .TypeComboBoxList = strQuanHeNNT
         
         .Col = .ColLetterToNumber("R")
         .TypeComboBoxList = strQuanHeNNTID
+        
+        .Row = 33
+        .Col = .ColLetterToNumber("N")
+        .TypeComboBoxList = strQuanHeNNT
+        
+        .Col = .ColLetterToNumber("S")
+        .TypeComboBoxList = strQuanHeNNTID
+        
+        
+        ' lay du lieu danh muc dia ban
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban.xml"))
+        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+        For Each xmlNode In xmlNodeListMap
+            temValue = GetAttribute(xmlNode, "Value")
+            arrValue = Split(temValue, "###")
+            ' danh sach tinh
+            If arrValue(0) = "1" Then
+                strTenTinh = strTenTinh + arrValue(4) + Chr$(9)
+                strMaTinh = strMaTinh + arrValue(3) + Chr$(9)
+            End If
+            ' danh sach huyen
+            If arrValue(0) = "0" Then
+                strTenHuyen = strTenHuyen + arrValue(4) + Chr$(9)
+                strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
+            End If
+            ' danh sach xa
+            If arrValue(0) = "2" Then
+                strTenXa = strTenXa + arrValue(4) + Chr$(9)
+                strMaXa = strMaXa + arrValue(1) + Chr$(9)
+            End If
+
+        Next
+        
+        .Row = 33
+        ' set danh sach tinh
+        .Col = .ColLetterToNumber("I")
+        .TypeComboBoxList = strTenTinh
+        .Col = .ColLetterToNumber("W")
+        .TypeComboBoxList = strMaTinh
+        ' set danh sach huyen
+        .Col = .ColLetterToNumber("J")
+        .TypeComboBoxList = strTenHuyen
+        .Col = .ColLetterToNumber("X")
+        .TypeComboBoxList = strMaHuyen
+        ' set danh sach xa
+        .Col = .ColLetterToNumber("K")
+        .TypeComboBoxList = strTenXa
+        .Col = .ColLetterToNumber("Y")
+        .TypeComboBoxList = strMaXa
+        
+        ' lay du lieu dia ban
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Quoc_Gia.xml"))
+        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+        For Each xmlNode In xmlNodeListMap
+            temValue = GetAttribute(xmlNode, "Value")
+            arrValue = Split(temValue, "###")
+            strQuocTich = strQuocTich + arrValue(1) + Chr$(9)
+            strMaQuocTich = strMaQuocTich + arrValue(0) + Chr$(9)
+        Next
+        
+        .Row = 24
+        ' set danh sach quoc tich
+        .Col = .ColLetterToNumber("H")
+        .TypeComboBoxList = strQuocTich
+        .typeComboboxCurSel = 0
+        .Col = .ColLetterToNumber("Q")
+        .TypeComboBoxList = strMaQuocTich
+        .typeComboboxCurSel = 0
+        
+        .Row = 33
+        ' set danh sach quoc gia
+        .Col = .ColLetterToNumber("H")
+        .TypeComboBoxList = strQuocTich
+        .typeComboboxCurSel = 0
+        .Col = .ColLetterToNumber("Q")
+        .TypeComboBoxList = strMaQuocTich
+        .typeComboboxCurSel = 0
+        
+        ' set danh sach quoc tich
+        .Col = .ColLetterToNumber("L")
+        .TypeComboBoxList = strQuocTich
+        .typeComboboxCurSel = 0
+        .Col = .ColLetterToNumber("R")
+        .TypeComboBoxList = strMaQuocTich
+        .typeComboboxCurSel = 0
     End With
 End Sub
 
@@ -258,39 +322,6 @@ Public Sub Prepare2()
             .value = 4000000 * soThang1 + 9000000 * soThang2
         End If
         
-        
-'        ''       lay gia tri CT32 da ghi trong datafile neu co
-'        For Each xmlNode In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
-'            ParserCellID fps, GetAttribute(xmlNode, "CellID"), iCol, iRow
-'
-'            If iCol = .ColLetterToNumber("I") And iRow = 47 Then
-'                oldValue = GetAttribute(xmlNode, "Value")
-'                .Col = iCol
-'                .Row = iRow
-'                .Text = oldValue
-''                .Formula = ""
-'            End If
-'
-'            If iCol = .ColLetterToNumber("I") And iRow = 52 Then
-'                oldValue = GetAttribute(xmlNode, "Value")
-'                .Col = iCol
-'                .Row = iRow
-'                .Text = oldValue
-''                .Formula = ""
-'            End If
-'
-'            ' chi tieu 57
-'            ' dntai 17022012
-'            If iCol = .ColLetterToNumber("I") And iRow = 57 Then
-'                oldValue = GetAttribute(xmlNode, "Value")
-'                .Col = iCol
-'                .Row = iRow
-'                .Text = oldValue
-''                .Formula = ""
-'            End If
-'
-'        Next
-        
         'check CT 15 < 0 thi khong cho nhap CT 16 tren PL 09-2
         .Sheet = phuLuc09_2_TNCN
         .GetText .ColLetterToNumber("I"), 26, varCT15
@@ -312,7 +343,23 @@ Public Sub Prepare2()
         'set active vao cell tu ngay
 '        .Sheet = 1
 '        .SetActiveCell .ColLetterToNumber("N"), 4
+
+        .Sheet = phuLuc09_3_TNCN
+        .Row = 24
+        Do
+            .Col = .ColLetterToNumber("B")
+            tinhGiamTruNPT_Load .Row
+            .Col = .ColLetterToNumber("B")
+            .Row = .Row + 1
+        Loop Until .Text = "aa"
         
+        .Row = .Row + 8
+        Do
+            .Col = .ColLetterToNumber("B")
+            tinhGiamTruNPT_Load .Row
+            .Col = .ColLetterToNumber("B")
+            .Row = .Row + 1
+        Loop Until .Text = "bb"
         .EventEnabled(EventAllEvents) = True
     End With
 
@@ -349,14 +396,6 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
     With fps
     
         .EventEnabled(EventAllEvents) = False
-'
-'        If Col = .ColLetterToNumber("I") And Row = 53 Then
-'            .GetText .ColLetterToNumber("I"), 53, varCT33
-'            If varCT33 <= 0 Then
-'                .SetText .ColLetterToNumber("I"), 54, 0
-'            End If
-'        End If
-        
         If .ActiveSheet = 1 Then
             If Col = .ColLetterToNumber("K") And Row = 54 Then
                 .Formula = ""
@@ -367,46 +406,6 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
                 .Row = 54
                 .Formula = "ROUND(T59,0)"
             End If
-            
-           
-
-            
-''            ' Set ct khi thay doi cac chi tieu 32,24,22  - 31072012
-'            If Col = .ColLetterToNumber("K") And Row = 57 Then
-'                .Col = .ColLetterToNumber("K")
-'                .Row = 42
-'                .GetText .Col, .Row, chiTieu22
-'                If Val(chiTieu22) > 0 Then
-'                    .Col = .ColLetterToNumber("K")
-'                    .Row = 57
-'                    .Formula = ""
-'                Else
-'                    .Col = .ColLetterToNumber("I")
-'                    .Row = 57
-'                    .Formula = "ROUND(S57,0)"
-'                End If
-'            End If
-'
-'            If Col = .ColLetterToNumber("I") And (Row = 52 Or Row = 44 Or Row = 42) Then
-'                .Col = .ColLetterToNumber("I")
-'                .Row = 57
-'                .Formula = "ROUND(S57,0)"
-'            End If
-'
-''            If Col = .ColLetterToNumber("I") And (Row = 52 Or Row = 44 Or Row = 42) Then
-''                .Col = .ColLetterToNumber("I")
-''                .Row = 57
-''                .Formula = "ROUND(S57,0)"
-''            End If
-''            ' end
-
-           ' chi tieu 36 set lai ct
-'           If Col = .ColLetterToNumber("I") And (Row = 52 Or Row = 45 Or Row = 42) Then
-'                .Col = .ColLetterToNumber("I")
-'                .Row = 56
-'                .Formula = "ROUND(S56,0)"
-'           End If
-            
         End If
 
         If .ActiveSheet = 2 Then
@@ -416,23 +415,6 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
                 .Row = 54
                 .Formula = "ROUND(T59,0)"
             End If
-            
-'            ' Set ct khi thay doi cac chi tieu 23,25  - 31072012
-'            If .Col = .ColLetterToNumber("J") And (Row = 17 Or Row = 18 Or Row = 19 Or Row = 20) Then
-'                .Sheet = 1
-'                .Col = .ColLetterToNumber("K")
-'                .Row = 57
-'                .Formula = "ROUND(S57,0)"
-'            End If
-'            ' End
-'
-'            ' set lai cong thu cho chi tie 36
-'            If Col = .ColLetterToNumber("I") And Row = 24 Then
-'                .Sheet = 1
-'                .Col = .ColLetterToNumber("I")
-'                .Row = 56
-'                .Formula = "ROUND(S56,0)"
-'            End If
         End If
 
             'check CT15 <0 thi khong cho nhap CT16 tren PL 09B
@@ -453,22 +435,6 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
                     End If
 
                 End If
-'                ' Set ct khi thay doi cac chi tieu 23,25  - 31072012
-'                If .Col = .ColLetterToNumber("I") And (Row = 26 Or Row = 27 Or Row = 30) Then
-'                    .Sheet = 1
-'                    .Col = .ColLetterToNumber("I")
-'                    .Row = 57
-'                    .Formula = "ROUND(S57,0)"
-'                End If
-'                ' End
-                
-'                ' set lai cong thu cho chi tie 36
-'                If Col = .ColLetterToNumber("I") And Row = 31 Then
-'                    .Sheet = 1
-'                    .Col = .ColLetterToNumber("I")
-'                    .Row = 56
-'                    .Formula = "ROUND(S56,0)"
-'                End If
                 fps.EventEnabled(EventAllEvents) = True
             End If
         
@@ -488,29 +454,11 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
                     .typeComboboxCurSel = intIndexCombo
                     UpdateCell fps, .Col, .Row, .value
                 End If
-                
-'                fps.EventEnabled(EventAllEvents) = False
-'                If Col = .ColLetterToNumber("K") And Row = 4 Then
-'                    mSheet = .Sheet
-'                    'lay tong chi tieu 15 de so sanh
-'                    .GetText Col, Row, varTemp2
-'                    .Sheet = 1
-'                    .GetText .ColLetterToNumber("Q"), 48, varTemp
-'                    If Trim(varTemp) <> vbNullString Then
-'                        If Val(Trim(varTemp)) <> Val(Trim(varTemp2)) Then
-'                            .Col = .ColLetterToNumber("I")
-'                            .Row = 52
-'                            .Formula = "ROUND(R57,0)"
-'                        End If
-'                    End If
-'                    .Sheet = mSheet
-'                End If
-'                fps.EventEnabled(EventAllEvents) = True
             End If
             
         .EventEnabled(EventAllEvents) = True
         End With
-
+        tinhGiamTruNPT Col, Row
     End Sub
 
 Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
@@ -604,193 +552,6 @@ End Sub
         mCurrentSheet = .Sheet
 
         If .ActiveSheet = 1 Then
-
-            'check tu thang
-'            If Col = .ColLetterToNumber("L") And Row = 4 Then
-'                .GetText Col, Row, varTemp
-'
-'                If varTemp <> "" And varTemp <> "../...." Then
-'                    If Format_mmyyyy(CStr(varTemp)) <> "" Then
-'                        .SetText Col, Row, Format_mmyyyy(CStr(varTemp))
-'                        tuThang = varTemp
-'                        .GetText .ColLetterToNumber("N"), 4, denThang
-'
-'                        'check tu thang phai nam trong ky tinh thue
-'                        If Val(Right(CStr(tuThang), 4)) <> Val(TAX_Utilities_v1.Year) Then
-'                            DisplayMessage "0252", msOKOnly, miWarning
-''                            .SetFocus
-'                            .SetActiveCell Col, Row
-'                        Else
-'                            'check tu thang phai nho hon den thang
-'                            If (DateDiff("M", Format_mmyyyy(CStr(varTemp)), Format_mmyyyy(CStr(denThang))) + 1) <= 0 Then
-'                                DisplayMessage "0151", msOKOnly, miWarning
-''                                .SetFocus
-'                                .SetActiveCell Col, Row
-'                            ElseIf Month(Format_mmyyyy(CStr(varTemp))) < 7 And TAX_Utilities_v1.Year = 2009 Then
-'                                DisplayMessage "0152", msOKOnly, miWarning
-''                                .SetFocus
-'                                .SetActiveCell Col, Row
-'                            Else
-'                                .Row = 4
-'                                .Col = .ColLetterToNumber("P")
-'                                .Text = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy(CStr(denThang))) + 1
-'
-'                                .GetText .ColLetterToNumber("P"), 4, soThang
-'                                ' set ct27
-'                                arrTuThang = Split(tuThang, "/")
-'                                arrDenThang = Split(denThang, "/")
-'
-'                                ' neu den thang < 7/2013
-'                                If Val(arrDenThang(1)) < 2013 Or (Val(arrDenThang(1)) = 2013 And Val(arrDenThang(0)) < 7) Then
-'                                    .Row = 47
-'                                    .Col = .ColLetterToNumber("I")
-'                                    .value = 4000000 * Val(soThang)
-'                                ElseIf (Val(arrTuThang(1)) > 2013) Or ((Val(arrTuThang(1)) = 2013) And (Val(arrTuThang(0)) >= 7)) Then
-'                                    .Row = 47
-'                                    .Col = .ColLetterToNumber("I")
-'                                    .value = 9000000 * Val(soThang)
-'                                Else
-'                                    soThang1 = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy("06/2013")) + 1
-'                                    soThang2 = DateDiff("M", Format_mmyyyy("07/2013"), Format_mmyyyy(CStr(denThang))) + 1
-'                                    .Row = 47
-'                                    .Col = .ColLetterToNumber("I")
-'                                    .value = 4000000 * soThang1 + 9000000 * soThang2
-'                                End If
-'
-'                            End If
-'                        End If
-'
-'                    Else
-''                        .SetFocus
-'                        .SetActiveCell Col, Row
-'                    End If
-'
-'                Else
-'                    DisplayMessage "0149", msOKOnly, miWarning
-''                    .SetFocus
-'                    .SetActiveCell Col, Row
-'                    '.SetText Col, Row, ""
-'                End If
-'
-'                .Col = Col
-'                .Row = Row
-'                UpdateCell fps, Col, Row, .Text
-'            End If
-
-'            ' check den thang
-'            If Col = .ColLetterToNumber("N") And Row = 4 Then
-'                .GetText Col, Row, varTemp
-'
-'                If varTemp <> "" And varTemp <> "../...." Then
-'                    If Format_mmyyyy(CStr(varTemp)) <> "" Then
-'                        .SetText Col, Row, Format_mmyyyy(CStr(varTemp))
-'
-'                        denThang = varTemp
-'                        .GetText .ColLetterToNumber("L"), 4, tuThang
-'
-'                        If (DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy(CStr(denThang))) + 1) <= 0 Then
-'                            DisplayMessage "0151", msOKOnly, miWarning
-''                            .SetFocus
-'                            .SetActiveCell Col, Row
-'                        Else
-'                            .Row = 4
-'                            .Col = .ColLetterToNumber("P")
-'                            .Text = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy(CStr(denThang))) + 1
-'
-'                            .GetText .ColLetterToNumber("P"), 4, soThang
-'                            ' set ct27
-'                                arrTuThang = Split(tuThang, "/")
-'                                arrDenThang = Split(denThang, "/")
-'
-'                                ' neu den thang < 7/2013
-'                                If Val(arrDenThang(1)) < 2013 Or (Val(arrDenThang(1)) = 2013 And Val(arrDenThang(0)) < 7) Then
-'                                    .Row = 47
-'                                    .Col = .ColLetterToNumber("I")
-'                                    .value = 4000000 * Val(soThang)
-'                                ElseIf (Val(arrTuThang(1)) > 2013) Or ((Val(arrTuThang(1)) = 2013) And (Val(arrTuThang(0)) >= 7)) Then
-'                                    .Row = 47
-'                                    .Col = .ColLetterToNumber("I")
-'                                    .value = 9000000 * Val(soThang)
-'                                Else
-'                                    soThang1 = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy("06/2013")) + 1
-'                                    soThang2 = DateDiff("M", Format_mmyyyy("07/2013"), Format_mmyyyy(CStr(denThang))) + 1
-'                                    .Row = 47
-'                                    .Col = .ColLetterToNumber("I")
-'                                    .value = 4000000 * soThang1 + 9000000 * soThang2
-'                                End If
-'                        End If
-'
-'                    Else
-''                        .SetFocus
-'                        .SetActiveCell Col, Row
-'                    End If
-'
-'                Else
-'                    DisplayMessage "0150", msOKOnly, miWarning
-'                    '                    .SetFocus
-'                    .SetActiveCell Col, Row
-'                    '.SetText Col, Row, ""
-'                End If
-'
-'                .Col = Col
-'                .Row = Row
-'                UpdateCell fps, Col, Row, .Text
-'            End If
-            
-'            'set lai so thang tinh thue
-'            If (Col = .ColLetterToNumber("L") Or Col = .ColLetterToNumber("N")) And Row = 4 Then
-'                'set so thang tinh thue neu la nam 2011 thi co tinh so thang mien giam
-'                .GetText .ColLetterToNumber("L"), 4, tuThang
-'                .GetText .ColLetterToNumber("N"), 4, denThang
-'
-'                'tinh so thang ke khai
-'                'ke khai nam 2011 se settext vao cell Q, <>2011 set vao cell P
-'                'ke khai nam 2009 thi so thang quyet toan = 6
-'                soThangKG = DateDiff("M", Format(tuThang, "mm/yyyy"), Format(denThang, "mm/yyyy")) + 1
-'
-'                If TAX_Utilities_v1.Year = "2011" Or TAX_Utilities_v1.Year = "2012" Then
-'                    'tinh so thang ke khai
-'                    soThangKG = getSoThangQTMienGiam(CStr(tuThang), CStr(denThang))
-'                    .SetText .ColLetterToNumber("Q"), 4, soThangKG
-'
-'                    If isMienGiamPL26(CStr(tuThang), CStr(denThang)) Then
-'                        .SetText .ColLetterToNumber("T"), 51, 1
-'                    Else
-'                        .SetText .ColLetterToNumber("T"), 51, 0
-'                    End If
-'                ElseIf TAX_Utilities_v1.Year = "2009" Then
-'                    .SetText .ColLetterToNumber("Q"), 4, "6"
-'                Else
-'                    .SetText .ColLetterToNumber("Q"), 4, "1"
-'                End If
-'
-'                .Col = .ColLetterToNumber("P")
-'                .Row = 4
-'                .Text = DateDiff("M", Format(CStr(tuThang), "mm/yyyy"), Format(CStr(denThang), "mm/yyyy")) + 1
-'
-'                .GetText .ColLetterToNumber("P"), 4, soThang
-'                ' set ct27
-'                arrTuThang = Split(tuThang, "/")
-'                arrDenThang = Split(denThang, "/")
-'
-'                ' neu den thang < 7/2013
-'                If Val(arrDenThang(1)) < 2013 Or (Val(arrDenThang(1)) = 2013 And Val(arrDenThang(0)) < 7) Then
-'                    .Row = 47
-'                    .Col = .ColLetterToNumber("I")
-'                    .value = 4000000 * Val(soThang)
-'                ElseIf (Val(arrTuThang(1)) > 2013) Or ((Val(arrTuThang(1)) = 2013) And (Val(arrTuThang(0)) >= 7)) Then
-'                    .Row = 47
-'                    .Col = .ColLetterToNumber("I")
-'                    .value = 9000000 * Val(soThang)
-'                Else
-'                    soThang1 = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy("06/2013")) + 1
-'                    soThang2 = DateDiff("M", Format_mmyyyy("07/2013"), Format_mmyyyy(CStr(denThang))) + 1
-'                    .Row = 47
-'                    .Col = .ColLetterToNumber("I")
-'                    .value = 4000000 * soThang1 + 9000000 * soThang2
-'                End If
-'            End If
-                        
             'check date
             If Col = .ColLetterToNumber("O") And Row = 71 Then
                 .GetText Col, Row, varTemp
@@ -811,51 +572,8 @@ End Sub
                 .Row = Row
                 UpdateCell fps, Col, Row, .Text
             End If
-        
-'            If (Col = .ColLetterToNumber("L") Or Col = .ColLetterToNumber("N")) And Row = 4 Then
-'                .GetText .ColLetterToNumber("L"), 4, tuThang
-'                .GetText .ColLetterToNumber("N"), 4, denThang
-'
-'                If DateDiff("M", Format(tuThang, "mm/yyyy"), Format(denThang, "mm/yyyy")) > 12 Then
-'                    DisplayMessage "0253", msOKOnly, miWarning
-'                    .SetActiveCell Col, Row
-'                Else
-'                    'get CT31 / so thang quyet toan
-'                    'kekhai nam 2009 thi so thang qt = 6
-'                    .GetText .ColLetterToNumber("Q"), 57, varTemp
-'
-'                    If varTemp <= 5000000 And (TAX_Utilities_v1.Year = "2011" Or TAX_Utilities_v1.Year = "2012") Then
-'                        'tinh so thang ke khai
-'                        soThangQT = getSoThangQTMienGiam(tuThang, denThang)
-'                        .SetText .ColLetterToNumber("Q"), 4, soThangQT
-'                        If isMienGiamPL26(CStr(tuThang), CStr(denThang)) Then
-'                            .SetText .ColLetterToNumber("T"), 51, 1
-'                        Else
-'                            .SetText .ColLetterToNumber("T"), 51, 0
-'                        End If
-'
-''                    ElseIf TAX_Utilities_v1.Year = "2009" Then
-''                        .SetText .ColLetterToNumber("Q"), 4, "6"
-''                    Else
-''                        .SetText .ColLetterToNumber("Q"), 4, "1"
-'                    End If
-'                    .Col = .ColLetterToNumber("I")
-'                    .Row = 52
-'                    .Formula = "ROUND(R57,0)"
-'                End If
-'
-'            End If
-            
-            ' chi tieu 36
-'            If Col = .ColLetterToNumber("I") And Row = 56 Then
-'                .Col = .ColLetterToNumber("I")
-'                .Row = 56
-'                .Formula = ""
-'            End If
-            
         End If
-            
-        
+                    
         If .ActiveSheet = 4 Then
             If Col = .ColLetterToNumber("E") And Row >= 24 Then
                        .GetText Col, Row, varTemp
@@ -884,6 +602,7 @@ End Sub
         
         .EventEnabled(EventAllEvents) = True
     End With
+    tinhGiamTruNPT Col, Row
 End Sub
 
 Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer)
@@ -932,38 +651,9 @@ Private Sub CheckDynamicError()
         'check header
         checkErrorHeader fps, viTriHeaderTk, viTriSheetHeader, mangMessage, MSTDTNT
         
-        'dntai comment rang buoc nay tam thoi k dung
-'        'check neu CT 40 > 0 thi bat buoc phai nhap CT 12
-'        'get message loi
-'        .Sheet = .SheetCount
-'        .GetText .ColLetterToNumber("E"), 77, mErrCT12
-'        .Sheet = 1
-'        'get ct40 & ct 12
-'        .GetText .ColLetterToNumber("I"), 60, cT40
-'        .GetText .ColLetterToNumber("D"), 20, ct12
-'        iFlagErrCT12 = 0
-'        If cT40 > 0 And Trim(ct12) = vbNullString Then
-'            .Col = .ColLetterToNumber("D")
-'            .Row = 20
-'            .CellNote = mErrCT12
-'            .BackColor = mErrorColor
-'            iFlagErrCT12 = 1
-'        Else
-'            .Col = .ColLetterToNumber("D")
-'            .Row = 20
-'            .CellNote = ""
-'            .BackColor = mFormColor
-'        End If
-'        'set lai sheet header
-'        .Sheet = .SheetCount
-'        .SetText .ColLetterToNumber("B"), 77, IIf(iFlagErrCT12 = 1, "0", "1")
-'        'end check ct40 nhap thi bat buoc nhap ct12
-        
-        'end check ct40 nhap thi bat buoc nhap ct12
-        
         .Sheet = tSheet
         ' Neu ton tai file data phu luc 09C thi kiem tra tren phu luc 09C
-        If IIf(TAX_Utilities_v1.NodeValidity.childNodes(.SheetCount - 5).Attributes.getNamedItem("Active").nodeValue <> "0", True, False) Then
+        If IIf(TAX_Utilities_v1.NodeValidity.childNodes(3).Attributes.getNamedItem("Active").nodeValue <> "0", True, False) Then
             checkSheet4
         Else
             clearCheckSheet4
@@ -980,24 +670,21 @@ Private Sub checkSheet4()
     Dim vCMT As Variant, vErrMsgCMT As Variant
     Dim vHoVaTen As Variant, vErrMsgHoVaTen As Variant
     Dim vNgaySinh As Variant, vErrMsgNgaySinh As Variant
-    Dim vSoThangGiamTru As Variant, vErrMsgSoThangGiamTru As Variant
     Dim vQuanHeNNT As Variant, vErrMsgQuanHeNNT As Variant
     Dim vLastRow As Variant
-    Dim vTuThang, vDenThang, vSoThangQuyetToan As Variant
+    Dim vTuThang, vDenThang As Variant
     Dim vErrMSGSOCMND As Variant, vCMND As Variant, iFlagCMDN_HC As Integer
     Dim vErrEmpty As Variant, iFlagEmty As Integer
     Dim vErrMSTSoCMND As Variant, iFlagCheckEmptyMSTCMND As Integer
-    Dim vErrCheckCT15, vCT15 As Variant, iFlagCheckCT15 As Integer
     Dim iFlagvHoVaTen As Integer, iFlagvMst As Integer, iFlagvNgaySinh As Integer, iFlagvSoThanhGiamTru As Integer, iFocusFlag As Integer
     Dim strFocusSheetName As String, strFocusRow As String, strFocusCol As String
     Dim mErrNgaySinhPhuThuoc As Variant, iFlagNgaySinhPhuThuoc As Integer
     Dim mErrMSTCT5Trung As Variant, iFlagMSTCT5Trung As Integer, rowMSTTrung As Integer
     
-    Dim vErrorThueGiamTru As Variant
-    Dim iFlagThueGiamTru As Integer
+
 
     Dim i, j As Integer
-    Dim blCheck_S1, blCheck_S2, blCheck_S3, blCheck_S4, blCheck_S5 As Boolean
+    Dim blCheck_S1, blCheck_S2, blCheck_S3, blCheck_S4, blCheck_S5, blCheck_S6, blCheck_S7, blCheck_S8, blCheck_S9, blCheck_S10, blCheck_S11 As Boolean
     
     With fps
         iCurrentSheet = .Sheet
@@ -1005,7 +692,6 @@ Private Sub checkSheet4()
         .Sheet = 1
         .GetText .ColLetterToNumber("N"), 4, vTuThang
         .GetText .ColLetterToNumber("P"), 4, vDenThang
-        vSoThangQuyetToan = DateDiff("M", Format_mmyyyy(CStr(vTuThang)), Format_mmyyyy(CStr(vDenThang))) + 1
         
         .Sheet = .SheetCount
         
@@ -1013,33 +699,24 @@ Private Sub checkSheet4()
         .GetText .ColLetterToNumber("E"), 17, vErrMsgHoVaTen
         ' Lay thong bao sai ve ngay thanh toan trong sheet header
         .GetText .ColLetterToNumber("E"), 18, vErrMsgNgaySinh
-        ' Lay thong bao ve ko nhap ma so thue trong sheet header
-        '.GetText .ColLetterToNumber("E"), 19, vErrMsgMSTReq
-        
         ' Lay thong bao ve ko chon quan he voi NNT trong sheet header
         .GetText .ColLetterToNumber("E"), 19, vErrMsgQuanHeNNT
         ' Lay thong bao ve ko nhap ma so thue trong sheet header
         .GetText .ColLetterToNumber("E"), 20, vErrMsgCMT
         ' Lay thong bao ve sai ma so thue trong sheet header
         .GetText .ColLetterToNumber("E"), 21, vErrMsgMST
-        ' Lay thong bao ve sai ve so thang duoc giam tru thue cua nguoi phu thuoc trong sheet header
-        .GetText .ColLetterToNumber("E"), 22, vErrMsgSoThangGiamTru
         'lay thong bao ve nhap sai cmnd/ho chieu khi nguoi dung nhap dau cach
-        .GetText .ColLetterToNumber("E"), 61, vErrMsgCMT
+        .GetText .ColLetterToNumber("E"), 44, vErrMsgCMT
         'lay thong bao ve truong bat buoc phai nhap
-        .GetText .ColLetterToNumber("E"), 62, vErrEmpty
-        'lay thong bao ve truong nhap ma so thue hoac so cmnd
-        .GetText .ColLetterToNumber("E"), 63, vErrMSTSoCMND
-        'lay thong bao ve chi tieu 15 < chi tieu 14 * 1600000
-        .GetText .ColLetterToNumber("E"), 64, vErrCheckCT15
+        .GetText .ColLetterToNumber("E"), 45, vErrEmpty
         'lay thong bao ve ngay sinh cua nguoi phu thuoc phai truoc ky tinh thue
-        .GetText .ColLetterToNumber("E"), 66, mErrNgaySinhPhuThuoc
-        'lay thong bao ve MST cua vo hoac chong trung voi MST  nguoi phu thuoc
-        .GetText .ColLetterToNumber("E"), 67, mErrMSTCT5Trung
+        .GetText .ColLetterToNumber("E"), 46, mErrNgaySinhPhuThuoc
         
-        .GetText .ColLetterToNumber("E"), 78, vErrorThueGiamTru
+        .GetText .ColLetterToNumber("E"), 47, mErrMSTCT5Trung
         
-        .Sheet = 4 'Check tinh xac thuc cua cac thong tin tren bang ke 05B/TNCN
+        
+        
+        .Sheet = 4 'Check tinh xac thuc cua cac thong tin tren bang ke 09-3/TNCN
         
         blCheck_S1 = True
         blCheck_S2 = True
@@ -1199,32 +876,8 @@ Private Sub checkSheet4()
                     .CellNote = ""
                 End If
                 
-                'check khong dc de trong dong thoi 2 truong MST va so CMND
-'                If Trim(vMST) = vbNullString And Trim(vCMT) = vbNullString Then
-'                    .Col = .ColLetterToNumber("F")
-'                    .BackColor = mErrorColor
-'                    .CellNote = vErrMSTSoCMND
-'                    .Col = .ColLetterToNumber("G")
-'                    .BackColor = mErrorColor
-'                    .CellNote = vErrMSTSoCMND
-'                    iFlagCheckEmptyMSTCMND = 1
-'                Else
-'                    .Col = .ColLetterToNumber("F")
-'                    .CellNote = ""
-'                    .BackColor = mNonErrorColor
-'
-'                    .Col = .ColLetterToNumber("G")
-'                    .CellNote = ""
-'                    .BackColor = mNonErrorColor
-'                End If
-                
-                
-                
-                'Check ma so thue tren phu luc 09C/TNCN
-
+                'Check ma so thue tren phu luc 09-3/TNCN
                 If Trim(vMST) <> vbNullString Then
-'                    vMST = Left(vMST, 10)
-                   
                    strCheck = ""
                    If Len(vMST) = 14 And InStr(1, vMST, "-") = 11 Then
                     vMST = Replace(vMST, "-", "")
@@ -1256,36 +909,8 @@ Private Sub checkSheet4()
                         .CellNote = ""
                         .BackColor = mNonErrorColor
                     End If
-'                ElseIf (Trim(vMST) = vbNullString And Trim(vCMT) = vbNullString) Then
-'                    .Col = .ColLetterToNumber("F")
-'                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-'                    .CellNote = vErrMsgMSTReq    'static
-'                    .BackColor = mErrorColor
-'
-'                    .Col = .ColLetterToNumber("G")
-'                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-'                    .CellNote = vErrMsgCMT    'static
-'                    .BackColor = mErrorColor
-'
-'
-'                    iFlagvMst = 1
-'                    blCheck_S3 = False
-'                    'capture the first error cell
-'                    If iFocusFlag = 0 Then
-'                        strFocusSheetName = "'" & .SheetName & "'"
-'                        strFocusCol = str(.Col)
-'                        strFocusRow = str(.Row)
-'                        iFocusFlag = 1
-'                    End If
                 Else
-                        ' check mst k dc de trong
-'                        .Col = .ColLetterToNumber("F")
-'                        .CellNote = vErrEmpty
-'                        .BackColor = mErrorColor
-'                        iFlagEmty = 1
                 End If
-                
-                
                 
                 'check SoCMND khong dc co dau cach
                 If Trim(vCMT) <> vbNullString Then
@@ -1301,7 +926,7 @@ Private Sub checkSheet4()
                     End If
                 End If
                 ' Check quan he voi NNT
-                'Check Ho va ten tren phu luc 09C/TNCN
+                'Check Ho va ten tren phu luc 09-3/TNCN
                 If Trim(vQuanHeNNT) = vbNullString Then
                     .Col = .ColLetterToNumber("L")
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
@@ -1320,47 +945,121 @@ Private Sub checkSheet4()
                     .CellNote = ""
                     .BackColor = mNonErrorColor
                 End If
-                
-                'check chi tieu [15] <= chitieu [14] * 1600000
-                
-                'vCT15 = Replace(CStr(vCT15), ".", "")
-'                 If Val(TAX_Utilities_v1.Year) >= 2012 Then
-'                    If (Val(vCT15) > Val(vSoThangGiamTru) * 3600000) Then
-'                        .Col = .ColLetterToNumber("K")
-'                        .BackColor = mErrorColor
-'                        .CellNote = vErrorThueGiamTru
-'                        iFlagCheckCT15 = 1
-'                    Else
-'                        .Col = .ColLetterToNumber("K")
-'                        .BackColor = mNonErrorColor
-'                        .CellNote = ""
-'                    End If
-'                End If
-                'Check So thang duoc giam tru thue cua nguoi phu thuoc tren phu luc 09C/TNCN
-                
-'                If DateDiff("M", vTuThang, vDenThang) + 1 > Val(vSoThangQuyetToan) Then
-'                    .Col = .ColLetterToNumber("J")
-'                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-'                    .CellNote = vErrMsgSoThangGiamTru    'static
-'                    .BackColor = mErrorColor
-'                    iFlagvSoThanhGiamTru = 1
-'                    blCheck_S4 = False
-'                    'capture the first error cell
-'                    If iFocusFlag = 0 Then
-'                        strFocusSheetName = "'" & .SheetName & "'"
-'                        strFocusCol = str(.Col)
-'                        strFocusRow = str(.Row)
-'                        iFocusFlag = 1
-'                    End If
-'                Else
-'                    .Col = .ColLetterToNumber("J")
-'                    .CellNote = ""
-'                    .BackColor = mNonErrorColor
-'                End If
             End If
-            
         'ket thuc vong lap
         Next
+        
+        ' check group 2
+        Dim vSo As Variant
+        Dim vQuyenSo As Variant
+        Dim vQuocGia, vTinh, vHuyen, vXa, vQuocTich As Variant
+        
+        .Row = .Row + 8
+        For j = .Row To .MaxRows
+            .Row = j
+            
+            .GetText .ColLetterToNumber("D"), .Row, vHoVaTen
+            .GetText .ColLetterToNumber("E"), .Row, vNgaySinh
+            .GetText .ColLetterToNumber("F"), .Row, vSo
+            .GetText .ColLetterToNumber("G"), .Row, vQuyenSo
+            .GetText .ColLetterToNumber("H"), .Row, vQuocGia
+            .GetText .ColLetterToNumber("I"), .Row, vTinh
+            .GetText .ColLetterToNumber("J"), .Row, vHuyen
+            .GetText .ColLetterToNumber("K"), .Row, vXa
+            .GetText .ColLetterToNumber("L"), .Row, vQuocTich
+            .GetText .ColLetterToNumber("N"), .Row, vQuanHeNNT
+            .GetText .ColLetterToNumber("O"), .Row, vTuThang
+            .GetText .ColLetterToNumber("P"), .Row, vDenThang
+            .GetText .ColLetterToNumber("B"), .Row, vLastRow
+            'reset du lieu loi
+            .Col = .ColLetterToNumber("F")
+            .CellNote = ""
+            .BackColor = mNonErrorColor
+
+            
+            If UCase(vLastRow) = "AA" Then Exit For ' Check cho den het cac dong co du lieu thi thoi
+            
+            If Trim(vHoVaTen) = vbNullString And Trim(vNgaySinh) = vbNullString And Trim(vSo) = vbNullString And Trim(vQuyenSo) = vbNullString _
+            And Trim(vTinh) = vbNullString And Trim(vHuyen) = vbNullString And Trim(vXa) = vbNullString And Trim(vQuanHeNNT) = vbNullString And vTuThang = vbNullString And vDenThang = vbNullString Then
+            Else
+                'Check Ho va ten tren phu luc 09-3/TNCN
+                If Trim(vHoVaTen) = vbNullString Then
+                    .Col = .ColLetterToNumber("D")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vErrMsgHoVaTen    'static
+                    .BackColor = mErrorColor
+                    iFlagvHoVaTen = 1
+                    blCheck_S1 = False
+                    'capture the first error cell
+                    If iFocusFlag = 0 Then
+                        strFocusSheetName = "'" & .SheetName & "'"
+                        strFocusCol = str(.Col)
+                        strFocusRow = str(.Row)
+                        iFocusFlag = 1
+                    End If
+                Else
+                    .Col = .ColLetterToNumber("D")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
+                
+                'Check Ngay sinh tren phu luc 09-3/TNCN
+                If Trim(vNgaySinh) = vbNullString Then
+                    .Col = .ColLetterToNumber("E")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vErrMsgNgaySinh     'static
+                    .BackColor = mErrorColor
+                    iFlagvNgaySinh = 1
+                    blCheck_S2 = False
+                    'capture the first error cell
+                    If iFocusFlag = 0 Then
+                        strFocusSheetName = "'" & .SheetName & "'"
+                        strFocusCol = str(.Col)
+                        strFocusRow = str(.Row)
+                        iFocusFlag = 1
+                    End If
+                Else
+                    .Col = .ColLetterToNumber("E")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
+                
+                'check ngay sinh phai sau ky tinh thue
+                If Val(Right(CStr(Trim(vNgaySinh)), 4)) > Val(TAX_Utilities_v1.Year) Then
+                    .Col = .ColLetterToNumber("E")
+                    .BackColor = mErrorColor
+                    .CellNote = mErrNgaySinhPhuThuoc
+                    iFlagNgaySinhPhuThuoc = 1
+                Else
+                    .Col = .ColLetterToNumber("E")
+                    .BackColor = mNonErrorColor
+                    .CellNote = ""
+                End If
+                
+                ' Check quan he voi NNT
+                'Check Ho va ten tren phu luc 09-3/TNCN
+                If Trim(vQuanHeNNT) = vbNullString Then
+                    .Col = .ColLetterToNumber("N")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vErrMsgQuanHeNNT     'static
+                    .BackColor = mErrorColor
+                    blCheck_S3 = False
+                    'capture the first error cell
+                    If iFocusFlag = 0 Then
+                        strFocusSheetName = "'" & .SheetName & "'"
+                        strFocusCol = str(.Col)
+                        strFocusRow = str(.Row)
+                        iFocusFlag = 1
+                    End If
+                Else
+                    .Col = .ColLetterToNumber("N")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
+            End If
+        Next
+        
+        
         ' Trong truong hop blCheck_S1 khong co Ho va ten nao bi loi thi set lai gia tri cua Header la 1
         If blCheck_S1 = True Then
             .Sheet = .SheetCount
@@ -1393,10 +1092,10 @@ Private Sub checkSheet4()
         ' Trong truong hop NSD k nhap mst
         If iFlagEmty = 1 Then
             .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 62, "0"
+            .SetText .ColLetterToNumber("B"), 45, "0"
         Else
             .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 62, "1"
+            .SetText .ColLetterToNumber("B"), 45, "1"
         End If
         ' Trong truong hop blCheck_S4 so thang duoc giam tru ko sai thi set lai gia tri cua Header la 1
         If blCheck_S4 = True Then
@@ -1419,42 +1118,27 @@ Private Sub checkSheet4()
         ' Trong truong hop nguoi su dung nhap dau cach khi nhap cmnd/ ho chieu thi set lai gia tri tren Header
         If iFlagCMDN_HC = 1 Then
             .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 61, "0"
+            .SetText .ColLetterToNumber("B"), 44, "0"
         Else
             .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 61, "1"
+            .SetText .ColLetterToNumber("B"), 44, "1"
         End If
-        'Trong truong hop nguoi su dung khong nhap ca MST va so CMND thi set lai gia tri tren Header
-        If iFlagCheckEmptyMSTCMND = 1 Then
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 63, "0"
-        Else
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 63, "1"
-        End If
-        'trong truong hop ct [15] > ct [14] * 1600000 thi set lai gia tri tren header
-        If iFlagCheckCT15 = 1 Then
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 78, "0"
-        Else
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 78, "1"
-        End If
+
         ' Trong truong hop Ngay sinh nguoi phu thuoc sau ky tinh thue set lai header
         If iFlagNgaySinhPhuThuoc = 1 Then
             .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 66, "0"
+            .SetText .ColLetterToNumber("B"), 46, "0"
         Else
             .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 66, "1"
+            .SetText .ColLetterToNumber("B"), 46, "1"
         End If
        ' Trong truong hop MST cha me trung voi mst nguoi phu thuoc thi set lai header
         If iFlagMSTCT5Trung = 1 Then
             .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 67, "0"
+            .SetText .ColLetterToNumber("B"), 47, "0"
         Else
             .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 67, "1"
+            .SetText .ColLetterToNumber("B"), 47, "1"
         End If
         .Sheet = iCurrentSheet
     End With
@@ -1635,7 +1319,7 @@ Public Sub SetActiveSheet()
             Case "26MT"
                 blnNullValue = True
 
-                For Each xmlCellNode In TAX_Utilities_v1.Data(4).getElementsByTagName("Cell")
+                For Each xmlCellNode In TAX_Utilities_v1.Data(5).getElementsByTagName("Cell")
                     ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
                     'Check value in D column and E column
                     If lCol = fps.ColLetterToNumber("I") Then
@@ -1937,3 +1621,111 @@ Private Function isMienGiamPL26(ByVal tuThang As String, ByVal denThang As Strin
     
     isMienGiamPL26 = result
 End Function
+
+
+
+Private Sub tinhGiamTruNPT(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer)
+    Dim tuThang As Variant
+    Dim denThang As Variant
+    Dim arrTuThang() As String
+    Dim arrDenThang() As String
+    
+    With fps
+        If .ActiveSheet = phuLuc09_3_TNCN Then
+            .Sheet = phuLuc09_3_TNCN
+            If (Col = .ColLetterToNumber("O") Or Col = .ColLetterToNumber("P")) And Row >= 24 Then
+                .Col = .ColLetterToNumber("O")
+                .Row = Row
+                .GetText .Col, .Row, tuThang
+                .Col = .ColLetterToNumber("P")
+                .GetText .Col, .Row, denThang
+                If tuThang <> vbNullString And denThang <> vbNullString And tuThang <> "../...." And denThang <> "../...." Then
+                    .Col = .ColLetterToNumber("T")
+                    .Row = Row
+                    .Text = DateDiff("M", Format(CStr(tuThang), "mm/yyyy"), Format(CStr(denThang), "mm/yyyy")) + 1
+                    
+                    .GetText .ColLetterToNumber("T"), Row, soThang
+                    
+                    arrTuThang = Split(tuThang, "/")
+                    arrDenThang = Split(denThang, "/")
+                    
+                    ' neu den thang < 7/2013
+                    If Val(arrDenThang(1)) < 2013 Or (Val(arrDenThang(1)) = 2013 And Val(arrDenThang(0)) < 7) Then
+                        .Row = Row
+                        .Col = .ColLetterToNumber("U")
+                        .value = 1600000 * Val(soThang)
+                    ElseIf (Val(arrTuThang(1)) > 2013) Or ((Val(arrTuThang(1)) = 2013) And (Val(arrTuThang(0)) >= 7)) Then
+                        .Row = Row
+                        .Col = .ColLetterToNumber("U")
+                        .value = 3600000 * Val(soThang)
+                    Else
+                        soThang1 = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy("06/2013")) + 1
+                        soThang2 = DateDiff("M", Format_mmyyyy("07/2013"), Format_mmyyyy(CStr(denThang))) + 1
+                        .Row = Row
+                        .Col = .ColLetterToNumber("U")
+                        .value = 1600000 * soThang1 + 3600000 * soThang2
+                    End If
+                    tuThang = ""
+                    denThang = ""
+                Else
+                    .Row = Row
+                    .Col = .ColLetterToNumber("U")
+                    .value = 0
+                End If
+            End If
+        End If
+    End With
+End Sub
+
+
+
+
+
+Private Sub tinhGiamTruNPT_Load(ByVal Row As Long)
+    Dim tuThang As Variant
+    Dim denThang As Variant
+    Dim arrTuThang() As String
+    Dim arrDenThang() As String
+    
+    With fps
+            .Sheet = phuLuc09_3_TNCN
+            .Col = .ColLetterToNumber("O")
+            .Row = Row
+            .GetText .Col, .Row, tuThang
+            .Col = .ColLetterToNumber("P")
+            .GetText .Col, .Row, denThang
+            If tuThang <> vbNullString And denThang <> vbNullString And tuThang <> "../...." And denThang <> "../...." Then
+                .Col = .ColLetterToNumber("T")
+                .Row = Row
+                .Text = DateDiff("M", Format(CStr(tuThang), "mm/yyyy"), Format(CStr(denThang), "mm/yyyy")) + 1
+                
+                .GetText .ColLetterToNumber("T"), Row, soThang
+                
+                arrTuThang = Split(tuThang, "/")
+                arrDenThang = Split(denThang, "/")
+                
+                ' neu den thang < 7/2013
+                If Val(arrDenThang(1)) < 2013 Or (Val(arrDenThang(1)) = 2013 And Val(arrDenThang(0)) < 7) Then
+                    .Row = Row
+                    .Col = .ColLetterToNumber("U")
+                    .value = 1600000 * Val(soThang)
+                ElseIf (Val(arrTuThang(1)) > 2013) Or ((Val(arrTuThang(1)) = 2013) And (Val(arrTuThang(0)) >= 7)) Then
+                    .Row = Row
+                    .Col = .ColLetterToNumber("U")
+                    .value = 3600000 * Val(soThang)
+                Else
+                    soThang1 = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy("06/2013")) + 1
+                    soThang2 = DateDiff("M", Format_mmyyyy("07/2013"), Format_mmyyyy(CStr(denThang))) + 1
+                    .Row = Row
+                    .Col = .ColLetterToNumber("U")
+                    .value = 1600000 * soThang1 + 3600000 * soThang2
+                End If
+                tuThang = ""
+                denThang = ""
+            Else
+                .Row = Row
+                .Col = .ColLetterToNumber("U")
+                .value = 0
+            End If
+    End With
+End Sub
