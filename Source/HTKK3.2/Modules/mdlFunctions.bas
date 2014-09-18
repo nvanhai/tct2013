@@ -598,7 +598,7 @@ Public Sub SetupData(pGrid As fpSpread)
                                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" _
                                 & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                                 ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "76" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "59" _
-                                Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "41" Then
+                                Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "41" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "17" Then
                                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" _
                                 & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                                 Else
@@ -4164,7 +4164,7 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             ReDim strResult(3)
             strResult(0) = "D_20~Dynamic_0"
             strResult(1) = "I_36~I_37~I_38~I_39~I_40~I_41~I_42~I_43~I_44~I_45~I_46~I_47~I_48~I_49~I_50~I_51~I_52~I_53~I_54~I_55~I_56~I_57~I_61~I_62~I_63~I_64~I_65~Dynamic_0"
-            strResult(2) = "D_69~D_71~M_69~M_71~C_67~F_67~I_67~Dynamic_0"
+            strResult(2) = "D_69~D_71~M_69~M_71~C_67~F_67~I_67~M_67~N_67~Dynamic_0"
         ' 02_TNCN_BH  \TT28
         Case "42"
             ReDim strResult(3)

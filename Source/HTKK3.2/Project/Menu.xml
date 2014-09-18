@@ -228,8 +228,9 @@
 	<Menu ID="17" PopID="101" ParentID="101_10" Caption="Tờ khai 05/KK-TNCN" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\excel\05_TNCN.xls" ReportTemplate="..\ReportTemplates\excel\05_TNCN.xls" CatalogueID="01" Class="TAX_Business_v1.cls_05TNCN">
 			<Sheet ID="05" Caption="05KK-TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="05_TNCN" InterfaceIni="..\InterfaceIni\05_TNCN.xml"/>
-			<Sheet ID="05A" Caption="05ABK-TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="05A_TNCN" InterfaceIni="..\InterfaceIni\05A_TNCN.xml" ReportIni="..\ReportIni\05A_TNCN.xml"/>
-			<Sheet ID="05B" Caption="05BBK-TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="05B_TNCN" InterfaceIni="..\InterfaceIni\05B_TNCN.xml" ReportIni="..\ReportIni\05B_TNCN.xml"/>
+			<Sheet ID="05-1" Caption="PL 05-1/TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="05_1_TNCN" InterfaceIni="..\InterfaceIni\05_1_TNCN.xml" ReportIni="..\ReportIni\05_1_TNCN.xml"/>
+			<Sheet ID="05-2" Caption="PL 05-2/TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="05_2_TNCN" InterfaceIni="..\InterfaceIni\05_2_TNCN.xml" ReportIni="..\ReportIni\05_2_TNCN.xml"/>
+			<Sheet ID="05-3" Caption="PL 05-3/TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="05_3_TNCN" InterfaceIni="..\InterfaceIni\05_3_TNCN.xml" ReportIni="..\ReportIni\05_3_TNCN.xml"/>
 			<Sheet ID="05MT" Caption="27MT-TNCN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="05MT_TNCN" InterfaceIni="..\InterfaceIni\05MT_TNCN.xml" ReportIni="..\ReportIni\05B_TNCN.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
 		</Validity>

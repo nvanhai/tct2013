@@ -20,8 +20,10 @@
 	<cell c1="13" c2="13" type="13" numDec="0"/>
 	<cell c1="14" c2="14" type="13" numDec="0"/>
 	<cell c1="15" c2="15" type="13" numDec="0"/>
-	<cell c1="16" c2="16" type="0" numDec="0"/>
+	<cell c1="16" c2="16" type="13" numDec="0"/>
 	<cell c1="17" c2="17" type="13" numDec="0"/>
-	<cell c1="18" c2="18" type="13" numDec="0"/>
+	<cell c1="18" c2="18" type="0" numDec="0"/>
 	<cell c1="19" c2="19" type="13" numDec="0"/>
+	<cell c1="20" c2="20" type="13" numDec="0"/>
+	<cell c1="21" c2="21" type="13" numDec="0"/>
 </root_of_bangke>
