@@ -204,12 +204,7 @@ values ('03_1A_TNDN14', '18', 'N', 10875, '18');
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_1A_TNDN14', '19', 'N', 10876, '19');
 
-prompt Done.
-
 		--PL 03-1B
-prompt Importing table QLT_NTK.rcv_map_ctieu...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_1B_TNDN14', '1', 'N', 10887, '1');
 
@@ -258,11 +253,7 @@ values ('03_1B_TNDN14', '15', 'N', 10901, '15');
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_1B_TNDN14', '16', 'N', 10902, '16');
 
-prompt Done.
 	--PL 03-1C
-prompt Importing table QLT_NTK.rcv_map_ctieu...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_1C_TNDN14', '1', 'N', 10913, '1');
 
@@ -347,11 +338,7 @@ values ('03_1C_TNDN14', '27', 'N', 10939, '27');
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_1C_TNDN14', '28', 'N', 10940, '28');
 
-prompt Done.
 		--PL 03-2A
-prompt Importing table QLT_NTK.rcv_map_ctieu...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_2A_TNDN14', '1', 'N', 10950, null);
 
@@ -439,11 +426,7 @@ values ('03_2A_TNDN14', '29', 'N', 10955, null);
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_2A_TNDN14', '30', 'N', 10955, null);
 
-prompt Done.
 			--PL 03-2B
-prompt Importing table QLT_NTK.rcv_map_ctieu...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_2B_TNDN14', '1', 'N', 10965, null);
 
@@ -531,11 +514,7 @@ values ('03_2B_TNDN14', '29', 'N', 10970, null);
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_2B_TNDN14', '30', 'N', 10970, null);
 
-prompt Done.
 				--PL 03-3A
-prompt Importing table QLT_NTK.rcv_map_ctieu...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_3A_TNDN14', '1', 'C', 10981, null);
 
@@ -623,11 +602,7 @@ values ('03_3A_TNDN14', '4.4', 'N', 11009, '[8]');
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_3A_TNDN14', '4.5', 'N', 11010, '[9]');
 
-prompt Done.
 					--PL 03-3B
-prompt Importing table QLT_NTK.rcv_map_ctieu...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_3B_TNDN14', '1', 'C', 11022, null);
 
@@ -724,11 +699,7 @@ values ('03_3B_TNDN14', '5.3', 'N', 11055, '[10]');
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_3B_TNDN14', '5.4', 'N', 11056, '[11]');
 
-prompt Done.
 						--03_3C_TNDN14
-prompt Importing table QLT_NTK.rcv_map_ctieu...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_3C_TNDN14', '1', 'C', 11067, null);
 
@@ -774,11 +745,7 @@ values ('03_3C_TNDN14', '3.3', 'N', 11081, '[3]');
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_3C_TNDN14', '3.4', 'N', 11082, '[4]');
 
-prompt Done.
 							--03_4_TNDN14
-prompt Importing table QLT_NTK.rcv_map_ctieu...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_4_TNDN14', '1', 'C', 11092, null);
 
@@ -836,11 +803,7 @@ values ('03_4_TNDN14', '19', 'N', 11093, null);
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_4_TNDN14', '20', 'N', 11093, null);
 
-prompt Done.
 	--03_5_TNDN14
-prompt Importing table QLT_NTK.rcv_map_ctieu...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_5_TNDN14', '1', 'N', 11103, '[01]');
 
@@ -895,11 +858,7 @@ values ('03_5_TNDN14', '17', 'N', 11119, '[17]');
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_5_TNDN14', '18', 'N', 11120, '[18]');
 
-prompt Done.
 	--03_6_TNDN14
-prompt Importing table QLT_NTK.rcv_map_ctieu...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_6_TNDN14', '1', 'C', 11131, null);
 
@@ -939,11 +898,7 @@ values ('03_6_TNDN14', '12', 'N', 11135, null);
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_6_TNDN14', '13', 'N', 11135, null);
 
-prompt Done.
 	--03_7_TNDN14
-prompt Importing table QLT_NTK.rcv_map_ctieu...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_7_TNDN14', '1', 'C', 10721, null);
 
@@ -1511,11 +1466,7 @@ values ('03_7_TNDN14', '188', 'C', 10743, null);
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_7_TNDN14', '189', 'C', 10743, null);
 
-prompt Done.
 	--03_8_TNDN14
-prompt Importing table QLT_NTK.rcv_map_ctieu...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_8_TNDN14', '05', 'N', 10370, '05');
 
@@ -1555,11 +1506,7 @@ values ('03_8_TNDN14', '09', 'C', 10371, '09');
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_8_TNDN14', '09cc', 'C', 10371, '09cc');
 
-prompt Done.
 	--03_9_TD_TNDN14
-prompt Importing table QLT_NTK.rcv_map_ctieu...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_9_TD_TNDN14', '1', 'C', 10380, '1');
 
@@ -1584,11 +1531,7 @@ values ('03_9_TD_TNDN14', '7', 'C', 10380, '7');
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('03_9_TD_TNDN14', '8', 'N', 10381, '8');
 
-prompt Done.
 	--KHBS_03_TNDN14
-prompt Importing table QLT_NTK.rcv_map_ctieu...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('KHBS_03_TNDN14', '1', 'C', 10391, null);
 
@@ -3220,5 +3163,4 @@ values ('KHBS_02_TAIN_DK', '24', 'C', 11732, null);
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('KHBS_02_TAIN_DK', '25', 'D', 11733, null);
 
-prompt Done.
 commit;	
