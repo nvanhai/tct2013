@@ -207,11 +207,7 @@ values (10875, 'Lîi nhuËn kh¸c ([18]=[16]-[17])   ', '18', null, null, null, 
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10876, 'Tæng lîi nhuËn kÕ to¸n tr­íc thuÕ thu nhËp doanh nghiÖp ([19]=[15]+[18])   ', '19', null, null, null, null, null, null, null, null, null, null, 20, '03_1A_TNDN14', '284', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
-prompt Done.
 		--PL 03-1B
-prompt Importing table QLT_NTK.rcv_gdien_tkhai...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10886, 'KÕt  qu¶  kinh doanh ghi nhËn theo b¸o c¸o tµi chÝnh  ', null, null, null, null, null, null, null, null, null, null, null, 1, '03_1B_TNDN14', '568', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
@@ -263,11 +259,7 @@ values (10901, 'Chi phÝ dù phßng rñi ro tÝn dông   ', '15', null, null, nu
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10902, 'Tæng lîi nhuËn tr­íc thuÕ ([16] = [3]+[6]+[7]+[8]+[9]+[12]+[13]-[14]-[15])   ', '16', null, null, null, null, null, null, null, null, null, null, 17, '03_1B_TNDN14', '265', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
-prompt Done.
 	--PL 03-1C
-prompt Importing table QLT_NTK.rcv_gdien_tkhai...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10912, 'KÕt  qu¶  kinh doanh ghi nhËn theo b¸o c¸o tµi chÝnh  ', null, null, null, null, null, null, null, null, null, null, null, 1, '03_1C_TNDN14', '569', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
@@ -355,11 +347,7 @@ values (10939, 'L·i (lç) kh¸c ngoµi cung cÊp dÞch vô cho kh¸ch hµng vµ
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10940, 'Tæng lîi nhuËn kÕ to¸n tr­íc thuÕ thu nhËp doanh nghiÖp ([28]=[24]+[27])  ', '28', null, null, null, null, null, null, null, null, null, null, 29, '03_1C_TNDN14', '312', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
-prompt Done.
 		--PL 03_2A_TNDN14
-prompt Importing table QLT_NTK.rcv_gdien_tkhai...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10950, 'X¸c ®Þnh sè lç ®­îc chuyÓn trong kú tÝnh thuÕ (2002)  ', '1', '2', '3', '4', '5', null, null, null, null, null, null, 1, '03_2A_TNDN14', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
@@ -378,11 +366,7 @@ values (10954, 'X¸c ®Þnh sè lç ®­îc chuyÓn trong kú tÝnh thuÕ (2006)
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10955, 'Tæng céng  ', null, '27', '28', '29', '30', null, null, null, null, null, null, 6, '03_2A_TNDN14', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
-prompt Done.
 		--PL 03-2B
-prompt Importing table QLT_NTK.rcv_gdien_tkhai...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10965, 'X¸c ®Þnh sè lç ®­îc chuyÓn trong kú tÝnh thuÕ (2002)  ', '1', '2', '3', '4', '5', null, null, null, null, null, null, 1, '03_2B_TNDN14', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
@@ -401,11 +385,7 @@ values (10969, 'X¸c ®Þnh sè lç ®­îc chuyÓn trong kú tÝnh thuÕ (2006)
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10970, 'Tæng céng  ', null, '27', '28', '29', '30', null, null, null, null, null, null, 6, '03_2B_TNDN14', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
-prompt Done.
 			--PL 03-3A
-prompt Importing table QLT_NTK.rcv_gdien_tkhai...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10980, '1. §iÒu kiÖn ­u ®·i  ', null, null, null, null, null, null, null, null, null, null, null, 1, '03_3A_TNDN14', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
@@ -499,11 +479,7 @@ values (11009, 'Tû lÖ thuÕ TNDN ®­îc miÔn hoÆc gi¶m (%)   ', '4.4', nul
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (11010, 'ThuÕ TNDN ®­îc miÔn, gi¶m   ', '4.5', null, null, null, null, null, null, null, null, null, null, 31, '03_3A_TNDN14', '566', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
-prompt Done.
 				--PL 03_3B_TNDN14
-prompt Importing table QLT_NTK.rcv_gdien_tkhai...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (11020, '1. §iÒu kiÖn ­u ®·i  ', null, null, null, null, null, null, null, null, null, null, null, 1, '03_3B_TNDN14', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
@@ -615,11 +591,7 @@ values (11055, 'Tû lÖ thuÕ TNDN ®­îc miÔn hoÆc gi¶m (%)   ', '5.3', nul
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (11056, 'ThuÕ Thu nhËp doanh nghiÖp ®­îc miÔn, gi¶m  ', '5.4', null, null, null, null, null, null, null, null, null, null, 37, '03_3B_TNDN14', '555', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
-prompt Done.
 					--03_3C_TNDN14
-prompt Importing table QLT_NTK.rcv_gdien_tkhai...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (11066, '1. §iÒu kiÖn ­u ®·i  ', null, null, null, null, null, null, null, null, null, null, null, 1, '03_3C_TNDN14', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
@@ -671,22 +643,14 @@ values (11081, 'ThuÕ thu nhËp doanh nghiÖp ph¶i nép', '3.3', null, null, nu
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (11082, 'ThuÕ TNDN ®­îc gi¶m t­¬ng øng møc chi cho lao ®éng n÷, lao ®éng lµ ng­êi d©n téc thiÓu sè (Kh«ng qu¸ sè thuÕ TNDN ph¶i nép) ', '3.4', null, null, null, null, null, null, null, null, null, null, 17, '03_3C_TNDN14', '541', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
-prompt Done.
 						--03_4_TNDN14
-prompt Importing table QLT_NTK.rcv_gdien_tkhai...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (11092, 'ThuÕ thu nhËp doanh nghiÖp ®· nép ë n­íc ngoµi ®­îc trõ trong kú tÝnh thuÕ ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', 1, '03_4_TNDN14', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (11093, 'Tæng céng ', null, '12', null, '14', '15', '16', '17', '18', null, '19', '20', 2, '03_4_TNDN14', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
-prompt Done.
 	--03_5_TNDN14
-prompt Importing table QLT_NTK.rcv_gdien_tkhai...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (11103, 'Doanh thu tõ ho¹t ®éng chuyÓn nh­îng bÊt ®éng s¶n ', '1', null, null, null, null, null, null, null, null, null, null, 1, '03_5_TNDN14', '490', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
@@ -741,11 +705,7 @@ values (11119, 'ThuÕ TNDN ®· t¹m nép kª khai theo tiÕn ®é', '17', null,
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (11120, 'ThuÕ TNDN cßn ph¶i nép ([18] = [15] - [16] - [17])', '18', null, null, null, null, null, null, null, null, null, null, 18, '03_5_TNDN14', '507', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
-prompt Done.
 	--03_6_TNDN14
-prompt Importing table QLT_NTK.rcv_gdien_tkhai...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (11130, 'I. X¸c ®Þnh sè trÝch lËp Quü ph¸t triÓn khoa häc vµ c«ng nghÖ trong kú tÝnh thuÕ', null, null, null, null, null, null, null, null, null, null, null, 1, '03_6_TNDN14', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
@@ -764,11 +724,7 @@ values (11134, 'B¶ng kª chi tiÕt', null, '3', '4', '5', '6', '7', '8', null, 
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (11135, 'Tæng céng', null, null, '9', '10', '11', '12', '13', null, null, null, null, 6, '03_6_TNDN14', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
-prompt Done.
 	--03_7_TNDN14
-prompt Importing table QLT_NTK.rcv_gdien_tkhai...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10720, 'PHÇN A. TH¤NG TIN VÒ C¸C B£N LI£N KÕT. ', null, null, null, null, null, null, null, null, null, null, null, 1, '03_7_TNDN14', null, '12', '13', '14', '15', '16', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
@@ -841,33 +797,21 @@ values (10742, 'DÞch vô kh¸c ', null, '173', '174', '175', '176', '177', '178
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10743, '2.5.1', '180', '181', '182', '183', '184', '185', '186', '187', '188', '189', null, 24, '03_7_TNDN14', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
-prompt Done.
 	--03_8_TNDN14
-prompt Importing table QLT_NTK.rcv_gdien_tkhai...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10370, '[05] Tæng sè thuÕ ph¶i nép trªn tê khai quyÕt to¸n', '05', null, null, null, null, null, null, null, null, null, null, 1, '03_8_TNDN14', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10371, 'PL 03-8/TNDN', '07', '08', '10', '11', '12', '13', '14', '15', '16', '17', '09cc', 2, '03_8_TNDN14', null, '09', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
-prompt Done.
 	--03_9_TD_TNDN14
-prompt Importing table QLT_NTK.rcv_gdien_tkhai...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10380, 'PL 03-9/TNDN', '1', '2', '3', '5', '6', '4', '7', null, null, null, null, 1, '03_9_TD_TNDN14', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10381, 'Total', null, null, null, null, '8', null, null, null, null, null, null, 2, '03_9_TD_TNDN14', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
-prompt Done.
 	--KHBS_03_TNDN14
-prompt Importing table QLT_NTK.rcv_gdien_tkhai...
-set feedback off
-set define off
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (10391, 'ChØ tiªu ®iÒu chØnh t¨ng sè thuÕ ph¶i nép', '1', '2', '3', '4', '5', null, null, null, null, null, null, 1, 'KHBS_03_TNDN14', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
@@ -1650,5 +1594,4 @@ values (11732, 'Lý do kh¸c:', null, null, null, null, '24', null, null, null, 
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
 values (11733, 'Ngay BS', null, null, null, null, '25', null, null, null, null, null, null, 14, 'KHBS_02_TAIN_DK', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
-prompt Done.
 commit;	
