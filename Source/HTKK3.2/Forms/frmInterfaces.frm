@@ -567,7 +567,7 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
                         strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                     ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "97" Then
                         strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
-                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "76" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "59" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "41" Then
+                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "76" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "59" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "41" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "17" Then
                         strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                     Else
                         'Data file not contain Day from and to.
@@ -1103,490 +1103,490 @@ ErrHandle:
 
 End Sub
 
-Private Sub moveData5A()
-    Dim value As String
-    Dim xmlDocument As New MSXML.DOMDocument
-    Dim xmlNode As MSXML.IXMLDOMNode
-    
-    Dim i, count, count1, count2 As Long, countRow As Integer
-    
-    Dim colStart As Integer
-    Dim rowStart As Long
-    Dim rowStartSpread2 As Long
-    
-    Dim varMenuId As String
-    
-    On Error GoTo ErrHandle
-    
-    fpSpread1.EventEnabled(EventAllEvents) = False
-        ' Truong hop them du lieu va xoa du lieu da ton tai
-        If themXoaDuLieu Then
-            ResetData
-            ResetDataAndForm mCurrentSheet
-        End If
-        
-    ' Lay ID cua Menu
-    varMenuId = GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID")
-    
-    fpSpread1.Visible = False
-    
-    fpSpread2.Visible = True
-    ProgressBar1.Visible = True
-    ProgressBar1.max = fpSpread2.MaxRows
-    ProgressBar1.value = 0
-    If Trim(varMenuId) = "17" And fpSpread1.ActiveSheet = 2 Then
-        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\BK_05A_TNCN.xml"))
-        colStart = 4
-        rowStart = 22
-        rowStartSpread2 = 5
-    ElseIf Trim(varMenuId) = "17" And fpSpread1.ActiveSheet = 3 Then
-        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\BK_05B_TNCN.xml"))
-        colStart = 3
-        rowStart = 22
-        rowStartSpread2 = 4
-    End If
-    
-    fpSpread1.Row = rowStart
-    
-    Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
-    Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
-   
-   fpSpread1.EventEnabled(EventAllEvents) = False
-    
-    ' Truong hop them tiep du lieu
-    Dim xmlSecionNode As MSXML.IXMLDOMNode
-    Dim currentRow As Long
-    Dim varData1, varData2 As Variant
-    Set xmlSecionNode = TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Section")(0)
-    If themDuLieu Then
-        'fpSpread1.Visible = False
-        If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
-            currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row
-        End If
-    End If
-    ' Ket thuc truong hop them tiep du lieu
-    Frame2.Enabled = False
-    
-    fpSpread1.sheet = mCurrentSheet
-    
-    Dim lRowCtrl, lrowCount, pRow As Long
-    Dim varTemp, varTemp1  As Variant
-    ' Kiem tra tu dong maxrow len, neu gap bat ky mot dong nao bat dau co du lieu thi se lay do la maxrow luon
-    For lrowCount = fpSpread2.MaxRows To 0 Step -1
-       fpSpread2.GetText fpSpread2.ColLetterToNumber("B"), lrowCount, varTemp
-       fpSpread2.GetText fpSpread2.ColLetterToNumber("F"), lrowCount, varTemp1
-       If (Trim(varTemp) <> vbNullString Or Trim(varTemp) <> "") And (Trim(varTemp1) <> vbNullString Or Trim(varTemp1) <> "") Then
-            ' Tru tiep 4 dong header dau tien thi se duoc tong so dong can import vao
-            If mCurrentSheet = 2 Then
-                lrowCount = lrowCount - 4
-            ElseIf mCurrentSheet = 3 Then
-                lrowCount = lrowCount - 3
-            End If
-            Exit For
-       End If
-    Next
-    ' Ca hai bang ke thi dong du lieu bat dau = dong du lieu bat dau - 1
-    rowStartSpread2 = rowStartSpread2 - 1
-    ' Ca hai bang ke trong to quyet toan 5A bat dau tu dong 22, 5B bat dau tu dong 21
-    If themDuLieu Then
-        rowStart = currentRow - 3
-    Else
-        rowStart = rowStart - 2
-    End If
-        
-    With fpSpread1
-        
-        Dim blockRow, stepRow  As Integer
-        
-        
-        blockRow = 50
-        stepRow = 1
-        
-        .MaxRows = .MaxRows + lrowCount
-        
-'        Debug.Print "start: " & Time
-        Lbload.Visible = True
-        If themDuLieu And xmlSecionNode.childNodes.length > 1 Then
-            lrowCount = lrowCount + 1
-        End If
-        For lRowCtrl = 1 To lrowCount - 1
-
-            DoEvents
-
-            ProgressBar1.value = lRowCtrl
-
-            pRow = lRowCtrl + 1
-
-            If (pRow <= blockRow + 1) Or ((blockRow * stepRow) + 1 > lrowCount) Then
-                'dhdang sua ngay 27/05
-                If mCurrentSheet = 2 Then
-                    'dntai 03/02/2012 set thanh 2 mang de xu ly cho cot 16 mat formula tu tinh
-                    ReDim fparray(0, 8) As Variant
-                    ReDim fparray1(0, 1) As Variant
-                ElseIf mCurrentSheet = 3 Then
-                    ReDim fparray(0, 7) As Variant
-                End If
-                'lay gia tri, bo qua cot 16 de set lai gia tri
-                fpSpread2.GetArray 2, lRowCtrl + rowStartSpread2, fparray
-                ' set BK 05A/TNCN
-                If mCurrentSheet = 2 Then
-                    fpSpread2.GetArray 12, lRowCtrl + rowStartSpread2, fparray1
-                    'lam tron so cac cell tren 05A_TNCN
-                    For countRow = 0 To UBound(fparray)
-                        If fparray(countRow, 4) <> vbNullString Then
-                            fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
-                        End If
-                        If fparray(countRow, 5) <> vbNullString Then
-                            fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
-                        End If
-                        If fparray(countRow, 7) <> vbNullString Then
-                            fparray(countRow, 7) = Round(fparray(countRow, 7), 0)
-                        End If
-                        If fparray(countRow, 8) <> vbNullString Then
-                            fparray(countRow, 8) = Round(fparray(countRow, 8), 0)
-                        End If
-                        If fparray1(countRow, 0) <> vbNullString Then
-                            fparray1(countRow, 0) = Round(fparray1(countRow, 0), 0)
-                        End If
-                    Next
-                    countRow = 0
-                ElseIf mCurrentSheet = 3 Then
-                    'lam tron cac cell tren 05_TNCN
-                    For countRow = 0 To UBound(fparray)
-                        If fparray(countRow, 4) <> vbNullString Then
-                            fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
-                        End If
-                        If fparray(countRow, 5) <> vbNullString Then
-                            fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
-                        End If
-                        If fparray(countRow, 6) <> vbNullString Then
-                            fparray(countRow, 6) = Round(fparray(countRow, 6), 0)
-                        End If
-                    Next
-                    countRow = 0
-                End If
-                    
-                .InsertRows (rowStart + 1 + pRow), 1
-                .CopyRowRange rowStart + pRow, rowStart + pRow, (rowStart + 1) + pRow
-                
-                If xmlSecionNode.childNodes.length > 1 Then
-                    .SetArray colStart, rowStart + pRow + 1, fparray
-                    ' Chi bang ke 05A/TNCN moi set lai
-                    If mCurrentSheet = 2 Then
-                    .SetArray .ColLetterToNumber("N"), rowStart + pRow + 1, fparray1
-                    End If
-                Else
-                    .SetArray colStart, rowStart + pRow, fparray
-                    ' Chi bang ke 05A/TNCN moi set lai
-                    If mCurrentSheet = 2 Then
-                    .SetArray .ColLetterToNumber("N"), rowStart + pRow, fparray1
-                    End If
-                End If
-
-                If pRow = blockRow + 1 Then stepRow = 2
-                If (lRowCtrl = lrowCount - 1) And (stepRow > 1) Then
-                    If xmlSecionNode.childNodes.length = 1 Then
-                        fpSpread2.GetArray 2, lrowCount + rowStartSpread2, fparray
-                        
-                        'lam tron so tren cac cell truoc khi set value
-                        If mCurrentSheet = 2 Then
-                            'lam tron so cac cell tren 05A_TNCN
-                            For countRow = 0 To UBound(fparray)
-                                If fparray(countRow, 4) <> vbNullString Then
-                                    fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
-                                End If
-                                If fparray(countRow, 5) <> vbNullString Then
-                                    fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
-                                End If
-                                If fparray(countRow, 7) <> vbNullString Then
-                                    fparray(countRow, 7) = Round(fparray(countRow, 7), 0)
-                                End If
-                                If fparray(countRow, 8) <> vbNullString Then
-                                    fparray(countRow, 8) = Round(fparray(countRow, 8), 0)
-                                End If
-                            Next
-                            countRow = 0
-                        ElseIf mCurrentSheet = 3 Then
-                            'lam tron cac cell tren 05_TNCN
-                            For countRow = 0 To UBound(fparray)
-                                If fparray(countRow, 4) <> vbNullString Then
-                                    fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
-                                End If
-                                If fparray(countRow, 5) <> vbNullString Then
-                                    fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
-                                End If
-                                If fparray(countRow, 6) <> vbNullString Then
-                                    fparray(countRow, 6) = Round(fparray(countRow, 6), 0)
-                                End If
-                            Next
-                            countRow = 0
-                        End If
-                        'end
-                        
-                        .SetArray colStart, rowStart + pRow + 1, fparray
-                        ' Chi bang ke 05A/TNCN moi set lai
-                        If mCurrentSheet = 2 Then
-                        fpSpread2.GetArray 12, lrowCount + rowStartSpread2, fparray1
-                        
-                        'lam trong so truoc khi set
-                            For countRow = 0 To UBound(fparray1)
-                                If fparray1(countRow, 0) <> vbNullString Then
-                                    fparray1(countRow, 0) = Round(fparray1(countRow, 0), 0)
-                                End If
-                            Next
-                            countRow = 0
-                        'end
-                        .SetArray .ColLetterToNumber("N"), rowStart + pRow + 1, fparray1
-                        End If
-                    Else
-                        fpSpread2.GetArray 2, lrowCount + rowStartSpread2 - 1, fparray
-                        
-                        'lam tron so tren cac cell truoc khi set value
-                        If mCurrentSheet = 2 Then
-                            'lam tron so cac cell tren 05A_TNCN
-                            For countRow = 0 To UBound(fparray)
-                                If fparray(countRow, 4) <> vbNullString Then
-                                    fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
-                                End If
-                                If fparray(countRow, 5) <> vbNullString Then
-                                    fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
-                                End If
-                                If fparray(countRow, 7) <> vbNullString Then
-                                    fparray(countRow, 7) = Round(fparray(countRow, 7), 0)
-                                End If
-                                If fparray(countRow, 8) <> vbNullString Then
-                                    fparray(countRow, 8) = Round(fparray(countRow, 8), 0)
-                                End If
-                            Next
-                            countRow = 0
-                        ElseIf mCurrentSheet = 3 Then
-                            'lam tron cac cell tren 05_TNCN
-                            For countRow = 0 To UBound(fparray)
-                                If fparray(countRow, 4) <> vbNullString Then
-                                     fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
-                                 End If
-                                 If fparray(countRow, 5) <> vbNullString Then
-                                     fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
-                                 End If
-                                 If fparray(countRow, 6) <> vbNullString Then
-                                     fparray(countRow, 6) = Round(fparray(countRow, 6), 0)
-                                 End If
-                            Next
-                            countRow = 0
-                        End If
-                        'end
-                        
-                        
-                        .SetArray colStart, rowStart + pRow + 1, fparray
-                        ' Chi bang ke 05A/TNCN moi set lai
-                        If mCurrentSheet = 2 Then
-                        fpSpread2.GetArray 12, lrowCount + rowStartSpread2 - 1, fparray1
-                        
-                        
-                        'lam trong so truoc khi set
-                            For countRow = 0 To UBound(fparray1)
-                                If fparray1(countRow, 0) <> vbNullString Then
-                                    fparray1(countRow, 0) = Round(fparray1(countRow, 0), 0)
-                                End If
-                            Next
-                            countRow = 0
-                        'end
-                        
-                        
-                        .SetArray .ColLetterToNumber("N"), rowStart + pRow + 1, fparray1
-                        End If
-                    End If
-                ElseIf (lRowCtrl = lrowCount - 1) And xmlSecionNode.childNodes.length = 1 Then
-                    fpSpread2.GetArray 2, lrowCount + rowStartSpread2, fparray
-                    
-                    'lam tron so tren cac cell truoc khi set value
-                    If mCurrentSheet = 2 Then
-                        'lam tron so cac cell tren 05A_TNCN
-                        For countRow = 0 To UBound(fparray)
-                            If fparray(countRow, 4) <> vbNullString Then
-                                fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
-                            End If
-                            If fparray(countRow, 5) <> vbNullString Then
-                                fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
-                            End If
-                            If fparray(countRow, 7) <> vbNullString Then
-                                fparray(countRow, 7) = Round(fparray(countRow, 7), 0)
-                            End If
-                            If fparray(countRow, 8) <> vbNullString Then
-                                fparray(countRow, 8) = Round(fparray(countRow, 8), 0)
-                            End If
-                        Next
-                        countRow = 0
-                    ElseIf mCurrentSheet = 3 Then
-                        'lam tron cac cell tren 05_TNCN
-                        For countRow = 0 To UBound(fparray)
-                            If fparray(countRow, 4) <> vbNullString Then
-                                fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
-                            End If
-                            If fparray(countRow, 5) <> vbNullString Then
-                                fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
-                            End If
-                            If fparray(countRow, 6) <> vbNullString Then
-                                fparray(countRow, 6) = Round(fparray(countRow, 6), 0)
-                            End If
-                        Next
-                        countRow = 0
-                    End If
-                    'end
-                    
-                    
-                    .SetArray colStart, rowStart + pRow + 1, fparray
-                    ' Chi bang ke 05A/TNCN moi set lai
-                    If mCurrentSheet = 2 Then
-                    fpSpread2.GetArray 12, lrowCount + rowStartSpread2, fparray1
-                    
-                    'lam trong so truoc khi set
-                        For countRow = 0 To UBound(fparray1)
-                                If fparray1(countRow, 0) <> vbNullString Then
-                                    fparray1(countRow, 0) = Round(fparray1(countRow, 0), 0)
-                                End If
-                        Next
-                        countRow = 0
-                    'end
-                    
-                    .SetArray .ColLetterToNumber("N"), rowStart + pRow + 1, fparray1
-                    End If
-                End If
-            ElseIf pRow = (blockRow * stepRow) + 1 Then
-                'dhdang sua ngay 27/05
-                If mCurrentSheet = 2 Then
-                    ReDim fparray(50, 8) As Variant
-                    ReDim fparray1(50, 1) As Variant
-                ElseIf mCurrentSheet = 3 Then
-                    ReDim fparray(50, 7) As Variant
-                End If
-                fpSpread2.GetArray 2, (blockRow * (stepRow - 1) + rowStartSpread2 + 1), fparray
-                
-                'lam tron so tren cac cell truoc khi set value
-                If mCurrentSheet = 2 Then
-                    'lam tron so cac cell tren 05A_TNCN
-                    For countRow = 0 To UBound(fparray)
-                        If fparray(countRow, 4) <> vbNullString Then
-                            fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
-                        End If
-                        If fparray(countRow, 5) <> vbNullString Then
-                            fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
-                        End If
-                        If fparray(countRow, 7) <> vbNullString Then
-                            fparray(countRow, 7) = Round(fparray(countRow, 7), 0)
-                        End If
-                        If fparray(countRow, 8) <> vbNullString Then
-                            fparray(countRow, 8) = Round(fparray(countRow, 8), 0)
-                        End If
-                    Next
-                    countRow = 0
-                ElseIf mCurrentSheet = 3 Then
-                    'lam tron cac cell tren 05_TNCN
-                    For countRow = 0 To UBound(fparray)
-                        If fparray(countRow, 4) <> vbNullString Then
-                            fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
-                        End If
-                        If fparray(countRow, 5) <> vbNullString Then
-                            fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
-                        End If
-                        If fparray(countRow, 6) <> vbNullString Then
-                            fparray(countRow, 6) = Round(fparray(countRow, 6), 0)
-                        End If
-                    Next
-                    countRow = 0
-                End If
-                'end
-                
-                ' set cho BK 05A/TNCN
-                If mCurrentSheet = 2 Then
-                fpSpread2.GetArray 12, (blockRow * (stepRow - 1) + rowStartSpread2 + 1), fparray1
-                
-                'lam trong so truoc khi set
-                    For countRow = 0 To UBound(fparray1)
-                        If fparray1(countRow, 0) <> vbNullString Then
-                            fparray1(countRow, 0) = Round(fparray1(countRow, 0), 0)
-                        End If
-                    Next
-                    countRow = 0
-                'end
-                
-                End If
-                
-                stepRow = stepRow + 1
-                
-                .InsertRows (rowStart + 2) + (blockRow * (stepRow - 2)) + 1, blockRow
-                
-                '.CopyRowRange (rowStart + 2), (rowStart + 2) + blockRow - 1, (rowStart + 2) + (blockRow * (stepRow - 2)) + 1
-                .CopyRowRange 22, 71, (rowStart + 2) + (blockRow * (stepRow - 2)) + 1
-                
-                .SetArray colStart, (rowStart + 2) + (blockRow * (stepRow - 2)), fparray
-                ' set BK 05A/TNCN
-                If mCurrentSheet = 2 Then
-                .SetArray .ColLetterToNumber("N"), (rowStart + 2) + (blockRow * (stepRow - 2)), fparray1
-                End If
-            End If
-
-        Next
-        'dhdang and nvhai edit convert font to unicode
-        'Debug.Print "begin" & Time
-        If strfileFont <> "UNICODE" Then
-            For lRowCtrl = 1 To lrowCount
-                fpSpread1.Col = fpSpread1.ColLetterToNumber("D")
-                fpSpread1.Row = lRowCtrl + rowStart + 1
-                Select Case strfileFont
-                   Case "TCVN"
-                      fpSpread1.Text = TAX_Utilities_v1.Convert(fpSpread1.Text, TCVN, UNICODE)
-                   Case "VNI"
-                    fpSpread1.Text = TAX_Utilities_v1.Convert(fpSpread1.Text, VNI, UNICODE)
-                   Case "VIQR"
-                    fpSpread1.Text = TAX_Utilities_v1.Convert(fpSpread1.Text, VIQR, UNICODE)
-                   Case "VISCII"
-                    fpSpread1.Text = TAX_Utilities_v1.Convert(fpSpread1.Text, VISCII, UNICODE)
-                   Case Else
-                    fpSpread1.Text = fpSpread1.Text
-                End Select
-                UpdateCell fpSpread1.ColLetterToNumber("D"), fpSpread1.Row, fpSpread1.Text
-            Next
-        End If
-         'Debug.Print "end" & Time
-        .Col = colStart
-        .Row = rowStart + 2
-        UpdateCell colStart, rowStart + 2, .Text
-        .Col = colStart + 1
-        UpdateCell colStart + 1, rowStart + 2, .Text
-        .Col = colStart + 2
-        UpdateCell colStart + 2, rowStart + 2, .Text
-        .Col = colStart + 3
-        UpdateCell colStart + 3, rowStart + 2, .Text
-        
-'        Debug.Print "end: " & Time
-        Lbload.Visible = False
-        .ReDraw = True
-        
-    End With
-    
-    fpSpread1.Visible = True
-    
-    ProgressBar1.Visible = False
-    Frame2.Enabled = True
-    fpSpread1.EventEnabled(EventAllEvents) = True
-    If Not objTaxBusiness Is Nothing Then objTaxBusiness.FinishImport
-    'If Not objTaxBusiness Is Nothing Then objTaxBusiness.finish
-'    If mCurrentSheet = 2 Then
-'        If Not objTaxBusiness Is Nothing Then objTaxBusiness.InsertNode 22, lRowCount, mCurrentSheet
-'    ElseIf mCurrentSheet = 3 Then
-'        If Not objTaxBusiness Is Nothing Then objTaxBusiness.InsertNode 21, lRowCount, mCurrentSheet
+'Private Sub moveData5A()
+'    Dim value As String
+'    Dim xmlDocument As New MSXML.DOMDocument
+'    Dim xmlNode As MSXML.IXMLDOMNode
+'
+'    Dim i, count, count1, count2 As Long, countRow As Integer
+'
+'    Dim colStart As Integer
+'    Dim rowStart As Long
+'    Dim rowStartSpread2 As Long
+'
+'    Dim varMenuId As String
+'
+'    On Error GoTo ErrHandle
+'
+'    fpSpread1.EventEnabled(EventAllEvents) = False
+'        ' Truong hop them du lieu va xoa du lieu da ton tai
+'        If themXoaDuLieu Then
+'            ResetData
+'            ResetDataAndForm mCurrentSheet
+'        End If
+'
+'    ' Lay ID cua Menu
+'    varMenuId = GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID")
+'
+'    fpSpread1.Visible = False
+'
+'    fpSpread2.Visible = True
+'    ProgressBar1.Visible = True
+'    ProgressBar1.max = fpSpread2.MaxRows
+'    ProgressBar1.value = 0
+'    If Trim(varMenuId) = "17" And fpSpread1.ActiveSheet = 2 Then
+'        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\BK_05A_TNCN.xml"))
+'        colStart = 4
+'        rowStart = 22
+'        rowStartSpread2 = 5
+'    ElseIf Trim(varMenuId) = "17" And fpSpread1.ActiveSheet = 3 Then
+'        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\BK_05B_TNCN.xml"))
+'        colStart = 3
+'        rowStart = 22
+'        rowStartSpread2 = 4
 '    End If
-    Exit Sub
-ErrHandle:
-    DisplayMessage "0122", msOKOnly, miCriticalError
-    ProgressBar1.Visible = False
-    ResetData
-    ResetDataAndForm mCurrentSheet
-    Frame2.Enabled = True
-    fpSpread1.EventEnabled(EventAllEvents) = True
-
-End Sub
+'
+'    fpSpread1.Row = rowStart
+'
+'    Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
+'    Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
+'
+'   fpSpread1.EventEnabled(EventAllEvents) = False
+'
+'    ' Truong hop them tiep du lieu
+'    Dim xmlSecionNode As MSXML.IXMLDOMNode
+'    Dim currentRow As Long
+'    Dim varData1, varData2 As Variant
+'    Set xmlSecionNode = TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Section")(0)
+'    If themDuLieu Then
+'        'fpSpread1.Visible = False
+'        If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
+'            currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row
+'        End If
+'    End If
+'    ' Ket thuc truong hop them tiep du lieu
+'    Frame2.Enabled = False
+'
+'    fpSpread1.sheet = mCurrentSheet
+'
+'    Dim lRowCtrl, lrowCount, pRow As Long
+'    Dim varTemp, varTemp1  As Variant
+'    ' Kiem tra tu dong maxrow len, neu gap bat ky mot dong nao bat dau co du lieu thi se lay do la maxrow luon
+'    For lrowCount = fpSpread2.MaxRows To 0 Step -1
+'       fpSpread2.GetText fpSpread2.ColLetterToNumber("B"), lrowCount, varTemp
+'       fpSpread2.GetText fpSpread2.ColLetterToNumber("F"), lrowCount, varTemp1
+'       If (Trim(varTemp) <> vbNullString Or Trim(varTemp) <> "") And (Trim(varTemp1) <> vbNullString Or Trim(varTemp1) <> "") Then
+'            ' Tru tiep 4 dong header dau tien thi se duoc tong so dong can import vao
+'            If mCurrentSheet = 2 Then
+'                lrowCount = lrowCount - 4
+'            ElseIf mCurrentSheet = 3 Then
+'                lrowCount = lrowCount - 3
+'            End If
+'            Exit For
+'       End If
+'    Next
+'    ' Ca hai bang ke thi dong du lieu bat dau = dong du lieu bat dau - 1
+'    rowStartSpread2 = rowStartSpread2 - 1
+'    ' Ca hai bang ke trong to quyet toan 5A bat dau tu dong 22, 5B bat dau tu dong 21
+'    If themDuLieu Then
+'        rowStart = currentRow - 3
+'    Else
+'        rowStart = rowStart - 2
+'    End If
+'
+'    With fpSpread1
+'
+'        Dim blockRow, stepRow  As Integer
+'
+'
+'        blockRow = 50
+'        stepRow = 1
+'
+'        .MaxRows = .MaxRows + lrowCount
+'
+''        Debug.Print "start: " & Time
+'        Lbload.Visible = True
+'        If themDuLieu And xmlSecionNode.childNodes.length > 1 Then
+'            lrowCount = lrowCount + 1
+'        End If
+'        For lRowCtrl = 1 To lrowCount - 1
+'
+'            DoEvents
+'
+'            ProgressBar1.value = lRowCtrl
+'
+'            pRow = lRowCtrl + 1
+'
+'            If (pRow <= blockRow + 1) Or ((blockRow * stepRow) + 1 > lrowCount) Then
+'                'dhdang sua ngay 27/05
+'                If mCurrentSheet = 2 Then
+'                    'dntai 03/02/2012 set thanh 2 mang de xu ly cho cot 16 mat formula tu tinh
+'                    ReDim fparray(0, 8) As Variant
+'                    ReDim fparray1(0, 1) As Variant
+'                ElseIf mCurrentSheet = 3 Then
+'                    ReDim fparray(0, 7) As Variant
+'                End If
+'                'lay gia tri, bo qua cot 16 de set lai gia tri
+'                fpSpread2.GetArray 2, lRowCtrl + rowStartSpread2, fparray
+'                ' set BK 05A/TNCN
+'                If mCurrentSheet = 2 Then
+'                    fpSpread2.GetArray 12, lRowCtrl + rowStartSpread2, fparray1
+'                    'lam tron so cac cell tren 05A_TNCN
+'                    For countRow = 0 To UBound(fparray)
+'                        If fparray(countRow, 4) <> vbNullString Then
+'                            fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
+'                        End If
+'                        If fparray(countRow, 5) <> vbNullString Then
+'                            fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
+'                        End If
+'                        If fparray(countRow, 7) <> vbNullString Then
+'                            fparray(countRow, 7) = Round(fparray(countRow, 7), 0)
+'                        End If
+'                        If fparray(countRow, 8) <> vbNullString Then
+'                            fparray(countRow, 8) = Round(fparray(countRow, 8), 0)
+'                        End If
+'                        If fparray1(countRow, 0) <> vbNullString Then
+'                            fparray1(countRow, 0) = Round(fparray1(countRow, 0), 0)
+'                        End If
+'                    Next
+'                    countRow = 0
+'                ElseIf mCurrentSheet = 3 Then
+'                    'lam tron cac cell tren 05_TNCN
+'                    For countRow = 0 To UBound(fparray)
+'                        If fparray(countRow, 4) <> vbNullString Then
+'                            fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
+'                        End If
+'                        If fparray(countRow, 5) <> vbNullString Then
+'                            fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
+'                        End If
+'                        If fparray(countRow, 6) <> vbNullString Then
+'                            fparray(countRow, 6) = Round(fparray(countRow, 6), 0)
+'                        End If
+'                    Next
+'                    countRow = 0
+'                End If
+'
+'                .InsertRows (rowStart + 1 + pRow), 1
+'                .CopyRowRange rowStart + pRow, rowStart + pRow, (rowStart + 1) + pRow
+'
+'                If xmlSecionNode.childNodes.length > 1 Then
+'                    .SetArray colStart, rowStart + pRow + 1, fparray
+'                    ' Chi bang ke 05A/TNCN moi set lai
+'                    If mCurrentSheet = 2 Then
+'                    .SetArray .ColLetterToNumber("N"), rowStart + pRow + 1, fparray1
+'                    End If
+'                Else
+'                    .SetArray colStart, rowStart + pRow, fparray
+'                    ' Chi bang ke 05A/TNCN moi set lai
+'                    If mCurrentSheet = 2 Then
+'                    .SetArray .ColLetterToNumber("N"), rowStart + pRow, fparray1
+'                    End If
+'                End If
+'
+'                If pRow = blockRow + 1 Then stepRow = 2
+'                If (lRowCtrl = lrowCount - 1) And (stepRow > 1) Then
+'                    If xmlSecionNode.childNodes.length = 1 Then
+'                        fpSpread2.GetArray 2, lrowCount + rowStartSpread2, fparray
+'
+'                        'lam tron so tren cac cell truoc khi set value
+'                        If mCurrentSheet = 2 Then
+'                            'lam tron so cac cell tren 05A_TNCN
+'                            For countRow = 0 To UBound(fparray)
+'                                If fparray(countRow, 4) <> vbNullString Then
+'                                    fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
+'                                End If
+'                                If fparray(countRow, 5) <> vbNullString Then
+'                                    fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
+'                                End If
+'                                If fparray(countRow, 7) <> vbNullString Then
+'                                    fparray(countRow, 7) = Round(fparray(countRow, 7), 0)
+'                                End If
+'                                If fparray(countRow, 8) <> vbNullString Then
+'                                    fparray(countRow, 8) = Round(fparray(countRow, 8), 0)
+'                                End If
+'                            Next
+'                            countRow = 0
+'                        ElseIf mCurrentSheet = 3 Then
+'                            'lam tron cac cell tren 05_TNCN
+'                            For countRow = 0 To UBound(fparray)
+'                                If fparray(countRow, 4) <> vbNullString Then
+'                                    fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
+'                                End If
+'                                If fparray(countRow, 5) <> vbNullString Then
+'                                    fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
+'                                End If
+'                                If fparray(countRow, 6) <> vbNullString Then
+'                                    fparray(countRow, 6) = Round(fparray(countRow, 6), 0)
+'                                End If
+'                            Next
+'                            countRow = 0
+'                        End If
+'                        'end
+'
+'                        .SetArray colStart, rowStart + pRow + 1, fparray
+'                        ' Chi bang ke 05A/TNCN moi set lai
+'                        If mCurrentSheet = 2 Then
+'                        fpSpread2.GetArray 12, lrowCount + rowStartSpread2, fparray1
+'
+'                        'lam trong so truoc khi set
+'                            For countRow = 0 To UBound(fparray1)
+'                                If fparray1(countRow, 0) <> vbNullString Then
+'                                    fparray1(countRow, 0) = Round(fparray1(countRow, 0), 0)
+'                                End If
+'                            Next
+'                            countRow = 0
+'                        'end
+'                        .SetArray .ColLetterToNumber("N"), rowStart + pRow + 1, fparray1
+'                        End If
+'                    Else
+'                        fpSpread2.GetArray 2, lrowCount + rowStartSpread2 - 1, fparray
+'
+'                        'lam tron so tren cac cell truoc khi set value
+'                        If mCurrentSheet = 2 Then
+'                            'lam tron so cac cell tren 05A_TNCN
+'                            For countRow = 0 To UBound(fparray)
+'                                If fparray(countRow, 4) <> vbNullString Then
+'                                    fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
+'                                End If
+'                                If fparray(countRow, 5) <> vbNullString Then
+'                                    fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
+'                                End If
+'                                If fparray(countRow, 7) <> vbNullString Then
+'                                    fparray(countRow, 7) = Round(fparray(countRow, 7), 0)
+'                                End If
+'                                If fparray(countRow, 8) <> vbNullString Then
+'                                    fparray(countRow, 8) = Round(fparray(countRow, 8), 0)
+'                                End If
+'                            Next
+'                            countRow = 0
+'                        ElseIf mCurrentSheet = 3 Then
+'                            'lam tron cac cell tren 05_TNCN
+'                            For countRow = 0 To UBound(fparray)
+'                                If fparray(countRow, 4) <> vbNullString Then
+'                                     fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
+'                                 End If
+'                                 If fparray(countRow, 5) <> vbNullString Then
+'                                     fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
+'                                 End If
+'                                 If fparray(countRow, 6) <> vbNullString Then
+'                                     fparray(countRow, 6) = Round(fparray(countRow, 6), 0)
+'                                 End If
+'                            Next
+'                            countRow = 0
+'                        End If
+'                        'end
+'
+'
+'                        .SetArray colStart, rowStart + pRow + 1, fparray
+'                        ' Chi bang ke 05A/TNCN moi set lai
+'                        If mCurrentSheet = 2 Then
+'                        fpSpread2.GetArray 12, lrowCount + rowStartSpread2 - 1, fparray1
+'
+'
+'                        'lam trong so truoc khi set
+'                            For countRow = 0 To UBound(fparray1)
+'                                If fparray1(countRow, 0) <> vbNullString Then
+'                                    fparray1(countRow, 0) = Round(fparray1(countRow, 0), 0)
+'                                End If
+'                            Next
+'                            countRow = 0
+'                        'end
+'
+'
+'                        .SetArray .ColLetterToNumber("N"), rowStart + pRow + 1, fparray1
+'                        End If
+'                    End If
+'                ElseIf (lRowCtrl = lrowCount - 1) And xmlSecionNode.childNodes.length = 1 Then
+'                    fpSpread2.GetArray 2, lrowCount + rowStartSpread2, fparray
+'
+'                    'lam tron so tren cac cell truoc khi set value
+'                    If mCurrentSheet = 2 Then
+'                        'lam tron so cac cell tren 05A_TNCN
+'                        For countRow = 0 To UBound(fparray)
+'                            If fparray(countRow, 4) <> vbNullString Then
+'                                fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
+'                            End If
+'                            If fparray(countRow, 5) <> vbNullString Then
+'                                fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
+'                            End If
+'                            If fparray(countRow, 7) <> vbNullString Then
+'                                fparray(countRow, 7) = Round(fparray(countRow, 7), 0)
+'                            End If
+'                            If fparray(countRow, 8) <> vbNullString Then
+'                                fparray(countRow, 8) = Round(fparray(countRow, 8), 0)
+'                            End If
+'                        Next
+'                        countRow = 0
+'                    ElseIf mCurrentSheet = 3 Then
+'                        'lam tron cac cell tren 05_TNCN
+'                        For countRow = 0 To UBound(fparray)
+'                            If fparray(countRow, 4) <> vbNullString Then
+'                                fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
+'                            End If
+'                            If fparray(countRow, 5) <> vbNullString Then
+'                                fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
+'                            End If
+'                            If fparray(countRow, 6) <> vbNullString Then
+'                                fparray(countRow, 6) = Round(fparray(countRow, 6), 0)
+'                            End If
+'                        Next
+'                        countRow = 0
+'                    End If
+'                    'end
+'
+'
+'                    .SetArray colStart, rowStart + pRow + 1, fparray
+'                    ' Chi bang ke 05A/TNCN moi set lai
+'                    If mCurrentSheet = 2 Then
+'                    fpSpread2.GetArray 12, lrowCount + rowStartSpread2, fparray1
+'
+'                    'lam trong so truoc khi set
+'                        For countRow = 0 To UBound(fparray1)
+'                                If fparray1(countRow, 0) <> vbNullString Then
+'                                    fparray1(countRow, 0) = Round(fparray1(countRow, 0), 0)
+'                                End If
+'                        Next
+'                        countRow = 0
+'                    'end
+'
+'                    .SetArray .ColLetterToNumber("N"), rowStart + pRow + 1, fparray1
+'                    End If
+'                End If
+'            ElseIf pRow = (blockRow * stepRow) + 1 Then
+'                'dhdang sua ngay 27/05
+'                If mCurrentSheet = 2 Then
+'                    ReDim fparray(50, 8) As Variant
+'                    ReDim fparray1(50, 1) As Variant
+'                ElseIf mCurrentSheet = 3 Then
+'                    ReDim fparray(50, 7) As Variant
+'                End If
+'                fpSpread2.GetArray 2, (blockRow * (stepRow - 1) + rowStartSpread2 + 1), fparray
+'
+'                'lam tron so tren cac cell truoc khi set value
+'                If mCurrentSheet = 2 Then
+'                    'lam tron so cac cell tren 05A_TNCN
+'                    For countRow = 0 To UBound(fparray)
+'                        If fparray(countRow, 4) <> vbNullString Then
+'                            fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
+'                        End If
+'                        If fparray(countRow, 5) <> vbNullString Then
+'                            fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
+'                        End If
+'                        If fparray(countRow, 7) <> vbNullString Then
+'                            fparray(countRow, 7) = Round(fparray(countRow, 7), 0)
+'                        End If
+'                        If fparray(countRow, 8) <> vbNullString Then
+'                            fparray(countRow, 8) = Round(fparray(countRow, 8), 0)
+'                        End If
+'                    Next
+'                    countRow = 0
+'                ElseIf mCurrentSheet = 3 Then
+'                    'lam tron cac cell tren 05_TNCN
+'                    For countRow = 0 To UBound(fparray)
+'                        If fparray(countRow, 4) <> vbNullString Then
+'                            fparray(countRow, 4) = Round(fparray(countRow, 4), 0)
+'                        End If
+'                        If fparray(countRow, 5) <> vbNullString Then
+'                            fparray(countRow, 5) = Round(fparray(countRow, 5), 0)
+'                        End If
+'                        If fparray(countRow, 6) <> vbNullString Then
+'                            fparray(countRow, 6) = Round(fparray(countRow, 6), 0)
+'                        End If
+'                    Next
+'                    countRow = 0
+'                End If
+'                'end
+'
+'                ' set cho BK 05A/TNCN
+'                If mCurrentSheet = 2 Then
+'                fpSpread2.GetArray 12, (blockRow * (stepRow - 1) + rowStartSpread2 + 1), fparray1
+'
+'                'lam trong so truoc khi set
+'                    For countRow = 0 To UBound(fparray1)
+'                        If fparray1(countRow, 0) <> vbNullString Then
+'                            fparray1(countRow, 0) = Round(fparray1(countRow, 0), 0)
+'                        End If
+'                    Next
+'                    countRow = 0
+'                'end
+'
+'                End If
+'
+'                stepRow = stepRow + 1
+'
+'                .InsertRows (rowStart + 2) + (blockRow * (stepRow - 2)) + 1, blockRow
+'
+'                '.CopyRowRange (rowStart + 2), (rowStart + 2) + blockRow - 1, (rowStart + 2) + (blockRow * (stepRow - 2)) + 1
+'                .CopyRowRange 22, 71, (rowStart + 2) + (blockRow * (stepRow - 2)) + 1
+'
+'                .SetArray colStart, (rowStart + 2) + (blockRow * (stepRow - 2)), fparray
+'                ' set BK 05A/TNCN
+'                If mCurrentSheet = 2 Then
+'                .SetArray .ColLetterToNumber("N"), (rowStart + 2) + (blockRow * (stepRow - 2)), fparray1
+'                End If
+'            End If
+'
+'        Next
+'        'dhdang and nvhai edit convert font to unicode
+'        'Debug.Print "begin" & Time
+'        If strfileFont <> "UNICODE" Then
+'            For lRowCtrl = 1 To lrowCount
+'                fpSpread1.Col = fpSpread1.ColLetterToNumber("D")
+'                fpSpread1.Row = lRowCtrl + rowStart + 1
+'                Select Case strfileFont
+'                   Case "TCVN"
+'                      fpSpread1.Text = TAX_Utilities_v1.Convert(fpSpread1.Text, TCVN, UNICODE)
+'                   Case "VNI"
+'                    fpSpread1.Text = TAX_Utilities_v1.Convert(fpSpread1.Text, VNI, UNICODE)
+'                   Case "VIQR"
+'                    fpSpread1.Text = TAX_Utilities_v1.Convert(fpSpread1.Text, VIQR, UNICODE)
+'                   Case "VISCII"
+'                    fpSpread1.Text = TAX_Utilities_v1.Convert(fpSpread1.Text, VISCII, UNICODE)
+'                   Case Else
+'                    fpSpread1.Text = fpSpread1.Text
+'                End Select
+'                UpdateCell fpSpread1.ColLetterToNumber("D"), fpSpread1.Row, fpSpread1.Text
+'            Next
+'        End If
+'         'Debug.Print "end" & Time
+'        .Col = colStart
+'        .Row = rowStart + 2
+'        UpdateCell colStart, rowStart + 2, .Text
+'        .Col = colStart + 1
+'        UpdateCell colStart + 1, rowStart + 2, .Text
+'        .Col = colStart + 2
+'        UpdateCell colStart + 2, rowStart + 2, .Text
+'        .Col = colStart + 3
+'        UpdateCell colStart + 3, rowStart + 2, .Text
+'
+''        Debug.Print "end: " & Time
+'        Lbload.Visible = False
+'        .ReDraw = True
+'
+'    End With
+'
+'    fpSpread1.Visible = True
+'
+'    ProgressBar1.Visible = False
+'    Frame2.Enabled = True
+'    fpSpread1.EventEnabled(EventAllEvents) = True
+'    If Not objTaxBusiness Is Nothing Then objTaxBusiness.FinishImport
+'    'If Not objTaxBusiness Is Nothing Then objTaxBusiness.finish
+''    If mCurrentSheet = 2 Then
+''        If Not objTaxBusiness Is Nothing Then objTaxBusiness.InsertNode 22, lRowCount, mCurrentSheet
+''    ElseIf mCurrentSheet = 3 Then
+''        If Not objTaxBusiness Is Nothing Then objTaxBusiness.InsertNode 21, lRowCount, mCurrentSheet
+''    End If
+'    Exit Sub
+'ErrHandle:
+'    DisplayMessage "0122", msOKOnly, miCriticalError
+'    ProgressBar1.Visible = False
+'    ResetData
+'    ResetDataAndForm mCurrentSheet
+'    Frame2.Enabled = True
+'    fpSpread1.EventEnabled(EventAllEvents) = True
+'
+'End Sub
 
 Private Sub moveDataToKhai()
 Dim value As String
@@ -1795,6 +1795,11 @@ Private Sub moveDataToKhai5A()
     ElseIf Trim(varMenuId) = "17" And fpSpread1.ActiveSheet = 3 Then
         xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\TK_BK_05B_TNCN.xml"))
         colStart = 3
+        rowStart = 22
+        rowStartSpread2 = 22
+    ElseIf Trim(varMenuId) = "17" And fpSpread1.ActiveSheet = 4 Then
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\TK_BK_05_3_TNCN.xml"))
+        colStart = 4
         rowStart = 22
         rowStartSpread2 = 22
     End If
@@ -9712,12 +9717,15 @@ Private Sub fpSpread1_Click(ByVal Col As Long, ByVal Row As Long)
             '*********************************
             If GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "05_TNCN" Then
                 If .sheet = 2 And .Col = .ColLetterToNumber("D") And .Row = 5 Then
-                    Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bang_Ke_05AK.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
+                    Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bang_Ke_05_1.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
                 End If
                 If .sheet = 3 And .Col = .ColLetterToNumber("C") And .Row = 4 Then
-                    Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bang_Ke_05BK.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
+                    Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bang_Ke_05_2.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
                 End If
-                If .sheet = 4 And .Col = .ColLetterToNumber("C") And .Row = 4 Then
+                If .sheet = 4 And .Col = .ColLetterToNumber("D") And .Row = 5 Then
+                    Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bang_Ke_05_3.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
+                End If
+                If .sheet = 5 And .Col = .ColLetterToNumber("C") And .Row = 4 Then
                     Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "PhuLuc_01.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
                 End If
             ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "06_TNCN10" Then
@@ -14306,7 +14314,12 @@ Public Sub moveDataNKH()
         xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\BK_05B_TNCN.xml"))
  
         rowStartSpread1 = 22
-        rowStartSpread2 = 4
+        rowStartSpread2 = 5
+    ElseIf Trim(varMenuId) = "17" And fpSpread1.ActiveSheet = 4 Then
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\BK_05_3_TNCN.xml"))
+ 
+        rowStartSpread1 = 22
+        rowStartSpread2 = 5
     ElseIf Trim(varMenuId) = "59" And fpSpread1.ActiveSheet = 2 Then
         xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\06_TNCN10.xml"))
  

@@ -4,7 +4,7 @@
 		<font_name>Tahoma</font_name>
 		<font_size>8</font_size>
 		<Row1>22</Row1>
-		<Row2>4</Row2>
+		<Row2>5</Row2>
 		<Col>2</Col>
 		<count>1</count>
 	</set_data>
@@ -16,4 +16,5 @@
 	<cell c1="8" c2="7" type="13" numDec="0"/>
 	<cell c1="9" c2="8" type="13" numDec="0"/>
 	<cell c1="10" c2="9" type="13" numDec="0"/>
+	<cell c1="11" c2="10" type="13" numDec="0"/>
 </root_of_bangke>
