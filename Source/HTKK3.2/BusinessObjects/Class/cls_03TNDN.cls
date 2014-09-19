@@ -206,10 +206,7 @@ With fps
     
      SetDateFormat fps, .SheetCount - 1, 23, .ColLetterToNumber("BG"), DDMMYYYY
      
-     .Sheet = sheetPl03_4_TNDN
-     .Col = .ColLetterToNumber("AK")
-     .Row = 26
-     .Formula = "25"
+    
      
      SetDateFormat fps, .SheetCount - 1, 31, .ColLetterToNumber("BE"), DDMMYYYY
      SetDateFormat fps, .SheetCount - 1, 46, .ColLetterToNumber("BG"), DDMMYYYY
@@ -510,7 +507,7 @@ Dim cValueF As Variant
 Dim i As Integer
 Dim xmlNodeH15 As MSXML.IXMLDOMNode
 
-Dim chiTieuC4 As Variant
+Dim chiTieuC1, chiTieuC2, chiTieuC3, chiTieuC4 As Variant
 
 Dim intIndexCombo As Integer
 Dim strMa As Variant
@@ -550,34 +547,40 @@ With fps
     End If
     
     ' Kiem tra neu C4 <0 thi lock C5 , C7, C8
-    .Sheet = sheetTK03_TNDN
-    .GetText .ColLetterToNumber("O"), 51, chiTieuC4
-    If Val(chiTieuC4) < 0 Then
-        .Col = .ColLetterToNumber("O")
-        ' chi tieu C5
-        .Row = 52
-        .Lock = True
-        .Text = 0
-        ' chi tieu C7
-        .Row = 54
-        .Lock = True
-        .Text = 0
-        ' Chi tieu C8
-        .Row = 55
-        .Lock = True
-        .Text = 0
-    Else
-        .Col = .ColLetterToNumber("O")
-        ' chi tieu C5
-        .Row = 53
-        .Lock = False
-        ' chi tieu C7
-        .Row = 54
-        .Lock = False
-        ' Chi tieu C8
-        .Row = 55
-        .Lock = False
-    End If
+    If .ActiveSheet = sheetTK03_TNDN Then
+        .Sheet = sheetTK03_TNDN
+        If Col = .ColLetterToNumber("O") And (Row = 45 Or Row = 49 Or Row = 50) Then
+            .GetText .ColLetterToNumber("O"), 48, chiTieuC1
+            .GetText .ColLetterToNumber("O"), 49, chiTieuC2
+            .GetText .ColLetterToNumber("O"), 50, chiTieuC3
+            If Val(chiTieuC1) - Val(chiTieuC2) - Val(chiTieuC3) < 0 Then
+                .Col = .ColLetterToNumber("O")
+                ' chi tieu C5
+                .Row = 52
+                .Lock = True
+                .Text = 0
+                ' chi tieu C7
+                .Row = 54
+                .Lock = True
+                .Text = 0
+                ' Chi tieu C8
+                .Row = 55
+                .Lock = True
+                .Text = 0
+            Else
+                .Col = .ColLetterToNumber("O")
+                ' chi tieu C5
+                .Row = 52
+                .Lock = False
+                ' chi tieu C7
+                .Row = 54
+                .Lock = False
+                ' Chi tieu C8
+                .Row = 55
+                .Lock = False
+            End If
+        End If
+     End If
      mblKhoiDauToKhai = False
    End With
 
@@ -785,6 +788,8 @@ Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer
     Dim arrRowCol() As String
     Dim idx As Long
     
+    Dim chiTieuC4 As Variant
+    
             
 With fps
     'Because of unclearly-rised events, this function is here for turning it off
@@ -832,6 +837,35 @@ With fps
                 .Col = .ColLetterToNumber("O")
                 .Row = 50
                 .Formula = "P50"
+                
+                
+                .GetText .ColLetterToNumber("O"), 51, chiTieuC4
+                If Val(chiTieuC4) < 0 Then
+                    .Col = .ColLetterToNumber("O")
+                    ' chi tieu C5
+                    .Row = 52
+                    .Lock = True
+                    .Text = 0
+                    ' chi tieu C7
+                    .Row = 54
+                    .Lock = True
+                    .Text = 0
+                    ' Chi tieu C8
+                    .Row = 55
+                    .Lock = True
+                    .Text = 0
+                Else
+                    .Col = .ColLetterToNumber("O")
+                    ' chi tieu C5
+                    .Row = 52
+                    .Lock = False
+                    ' chi tieu C7
+                    .Row = 54
+                    .Lock = False
+                    ' Chi tieu C8
+                    .Row = 55
+                    .Lock = False
+                End If
             End If
         Case sheetPl03_3A_TNDN ' Phu luc 03-3A
             mCurrentSheet = .Sheet
@@ -1183,11 +1217,33 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("D"), 12, vCheckLienKet
         
         If vCheckCSHachToan = "1" Or UCase$(vCheckCSHachToan) = "X" Then
-            iFlagCheckCSHachToan = 1
+            If TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_6_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0" Then
+                .Col = .ColLetterToNumber("D")
+                .Row = 10
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+            Else
+                .Col = .ColLetterToNumber("D")
+                .Row = 10
+                .CellNote = errCheckCSHachToan
+                .BackColor = mErrorColor
+                iFlagCheckCSHachToan = 1
+            End If
         End If
         
         If vCheckLienKet = "1" Or UCase$(vCheckLienKet) = "X" Then
-            iFlagCheckLienKet = 1
+            If TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_7_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0" Then
+                 .Col = .ColLetterToNumber("D")
+                .Row = 12
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+            Else
+                 .Col = .ColLetterToNumber("D")
+                .Row = 12
+                .CellNote = errCheckLienKet
+                .BackColor = mErrorColor
+                iFlagCheckLienKet = 1
+            End If
         End If
         
         blCheck_S3A = IIf(TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_3A_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
@@ -2357,13 +2413,13 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
                  Loop Until .Text = "aa"
             End If
             
-            ' PL 03-4
-            If KeyCode = vbKeyF5 Then
-                If mCurrentSheet = sheetPl03_4_TNDN Then
-                    .SetText .ColLetterToNumber("AK"), .ActiveRow + 1, "25"
-                    UpdateCell fps, .ColLetterToNumber("AK"), .ActiveRow + 1, "25"
-                End If
-            End If
+'            ' PL 03-4
+'            If KeyCode = vbKeyF5 Then
+'                If mCurrentSheet = sheetPl03_4_TNDN Then
+'                    .SetText .ColLetterToNumber("AK"), .ActiveRow + 1, "25"
+'                    UpdateCell fps, .ColLetterToNumber("AK"), .ActiveRow + 1, "25"
+'                End If
+'            End If
             
             If mCurrentSheet = sheetPl03_4_TNDN Then
                 fps.EventEnabled(EventAllEvents) = False
