@@ -526,7 +526,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":02C8
+      SpreadDesigner  =   "frmPeriod.frx":0344
       UserResize      =   1
       Appearance      =   1
    End
@@ -3040,12 +3040,36 @@ Public Sub cmdOK_Click()
         If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "93" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "89" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "87" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "97" Then
             TAX_Utilities_v1.FirstDay = txtNgayDau.Text
             TAX_Utilities_v1.LastDay = txtNgayCuoi.Text
+            ' check khong dc vuot qua 15 thang
+            If DateDiff("M", format(txtNgayDau.Text, "mm/yyyy"), format(txtNgayCuoi.Text, "mm/yyyy")) + 1 > 15 Then
+                    DisplayMessage "0335", msOKOnly, miInformation
+                    txtNgayCuoi.SetFocus
+                    Exit Sub
+            End If
+            ' check tu thang thuoc ky tinh thue
+            If Right$(txtNgayDau.Text, 4) <> TAX_Utilities_v1.Year Then
+                    DisplayMessage "0336", msOKOnly, miInformation
+                    txtNgayCuoi.SetFocus
+                    Exit Sub
+            End If
         End If
         
         ' QT TNCN
         If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "76" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "59" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "43" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "41" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "17" Then
             TAX_Utilities_v1.FirstDay = txtNgayDau.Text
             TAX_Utilities_v1.LastDay = txtNgayCuoi.Text
+            ' check khong dc vuot qua 15 thang
+            If DateDiff("M", format(txtNgayDau.Text, "mm/yyyy"), format(txtNgayCuoi.Text, "mm/yyyy")) + 1 > 15 Then
+                    DisplayMessage "0335", msOKOnly, miInformation
+                    txtNgayCuoi.SetFocus
+                    Exit Sub
+            End If
+             ' check tu thang thuoc ky tinh thue
+            If Right$(txtNgayDau.Text, 4) <> TAX_Utilities_v1.Year Then
+                    DisplayMessage "0336", msOKOnly, miInformation
+                    txtNgayCuoi.SetFocus
+                    Exit Sub
+            End If
         End If
     
    ' dntai them vao ngay 08/05/2011
