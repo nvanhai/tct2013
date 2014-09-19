@@ -5,14 +5,14 @@ Begin VB.Form frmTraCuu
    ClientHeight    =   5355
    ClientLeft      =   45
    ClientTop       =   45
-   ClientWidth     =   10485
+   ClientWidth     =   11565
    ControlBox      =   0   'False
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MDIChild        =   -1  'True
    MinButton       =   0   'False
    ScaleHeight     =   5355
-   ScaleWidth      =   10485
+   ScaleWidth      =   11565
    ShowInTaskbar   =   0   'False
    Begin VB.CommandButton btnTracuu 
       Caption         =   "Tra &cøu"
@@ -151,7 +151,7 @@ Begin VB.Form frmTraCuu
       Left            =   4530
       TabIndex        =   8
       Top             =   420
-      Width           =   5865
+      Width           =   6945
       Begin FPUSpreadADO.fpSpread fpsDkNgay 
          Height          =   495
          Left            =   120
@@ -183,7 +183,7 @@ Begin VB.Form frmTraCuu
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuu.frx":048B
+         SpreadDesigner  =   "frmTracuu.frx":044F
          UserResize      =   1
          Appearance      =   1
       End
@@ -200,18 +200,18 @@ Begin VB.Form frmTraCuu
          Strikethrough   =   0   'False
       EndProperty
       Height          =   3585
-      Left            =   30
+      Left            =   0
       TabIndex        =   9
       Top             =   1320
-      Width           =   10365
+      Width           =   11445
       Begin FPUSpreadADO.fpSpread fpSKetQua 
          Height          =   3225
          Left            =   120
          TabIndex        =   2
          Top             =   240
-         Width           =   10185
+         Width           =   11145
          _Version        =   458752
-         _ExtentX        =   17965
+         _ExtentX        =   19659
          _ExtentY        =   5689
          _StockProps     =   64
          AllowMultiBlocks=   -1  'True
@@ -231,7 +231,7 @@ Begin VB.Form frmTraCuu
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          RowsFrozen      =   1
-         SpreadDesigner  =   "frmTracuu.frx":0BDB
+         SpreadDesigner  =   "frmTracuu.frx":0B63
       End
    End
    Begin VB.Label lblStatus 
@@ -482,8 +482,13 @@ Private Sub btnMo_Click()
             strLoaiTKThang_PS = "TK_TU_THANG"
             TAX_Utilities_v1.ThreeMonths = GetQuyHienTai(iNgayTaiChinh, iThangTaiChinh).q
         Else
-        
-            TAX_Utilities_v1.Year = CStr(varPeriod)
+            'If varId = "87" Then
+                TAX_Utilities_v1.FirstDay = CStr(varFirstDay)
+                TAX_Utilities_v1.LastDay = CStr(varLastDay)
+                TAX_Utilities_v1.Year = CStr(varPeriod)
+            'Else
+'                TAX_Utilities_v1.Year = CStr(varPeriod)
+'            End If
         End If
 
         TAX_Utilities_v1.NodeValidity = GetValidityNode()
@@ -1988,28 +1993,51 @@ Private Sub GetDsToKhai(strFroms As String, _
         strTo = strTos
 
         For Each fileStr In arrStrXMLFileNames
-
-            kyKeKhai = Replace$(fileStr, DataFileName & "_", "")
-            tenTk = GetAttribute(tkNode, "Caption")
-
-            If InStr(kyKeKhai, "bs") > 0 Then
-                tenTk = tenTk & " BS lan " & Mid$(kyKeKhai, 3, InStr(kyKeKhai, "_") - 3)
-                tkBoSung = Left$(kyKeKhai, InStr(kyKeKhai, "_"))
-                kyKeKhai = Right$(kyKeKhai, Len(kyKeKhai) - InStr(kyKeKhai, "_"))
-            End If
+            ' xy ly cac to khai QT bo sung them tu thang den thang
+            'If arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "87" or   Then
+                kyKeKhai = Replace$(fileStr, DataFileName & "_", "")
+                If Len(kyKeKhai) = 18 And Val(Left$(kyKeKhai, 4)) > 100 Then
+                    tkSplit = Split(kyKeKhai, "_")
+                    If UBound(tkSplit) = 2 Then
+                        tenTk = GetAttribute(tkNode, "Caption") & "(" & Left$(tkSplit(1), 2) & "/" & Right$(tkSplit(1), 4) & "-" & Left$(tkSplit(2), 2) & "/" & Right$(tkSplit(2), 4) & ")"
+                    End If
+                    
+                    If InStr(kyKeKhai, "bs") > 0 Then
+                        tenTk = tenTk & " BS lan " & Mid$(kyKeKhai, 3, InStr(kyKeKhai, "_") - 3)
+                        tkBoSung = Left$(kyKeKhai, InStr(kyKeKhai, "_"))
+                        kyKeKhai = Right$(kyKeKhai, Len(kyKeKhai) - InStr(kyKeKhai, "_"))
+                    End If
                 
-            strPeriodReturn = kyKeKhai & "~" & "~" & "~True~~" & GetDataFileNames(ListDataFile, kyKeKhai, "", tkBoSung)
-
-            If Len(kyKeKhai) = 4 And Val(Right$(kyKeKhai, 4)) > 0 Then
-
-                If (Val(Right$(kyKeKhai, 4)) >= Val(Right$(strFrom, 4)) And Val(Right$(kyKeKhai, 4)) <= Val(Right$(strTo, 4))) Then
-                    ReDim Preserve strPeriods(tkIndex)
-                    strPeriods(tkIndex) = strId & "~" & tenTk & "~" & GetAttribute(tkNode.firstChild, "StartDate") & "~" & strPeriodReturn & "~" & GetTaxValue(fileStr, strThueKhauTruId, False) & "~" & GetTaxValue(fileStr, strThuePhaiNopId, False) & "~" & LoaiTk & "~" & tkThangQuy & "~"
-                    tkIndex = tkIndex + 1
+                    strPeriodReturn = Left$(kyKeKhai, 4) & "~" & Left$(tkSplit(1), 2) & "/" & Right$(tkSplit(1), 4) & "~" & Left$(tkSplit(2), 2) & "/" & Right$(tkSplit(2), 4) & "~True~~" & GetDataFileNames(ListDataFile, kyKeKhai, "", tkBoSung)
+                    If (Val(Left$(kyKeKhai, 4)) >= Val(Right$(strFrom, 4)) And Val(Left$(kyKeKhai, 4)) <= Val(Right$(strTo, 4))) Then
+                        ReDim Preserve strPeriods(tkIndex)
+                        strPeriods(tkIndex) = strId & "~" & tenTk & "~" & GetAttribute(tkNode.firstChild, "StartDate") & "~" & strPeriodReturn & "~" & GetTaxValue(fileStr, strThueKhauTruId, False) & "~" & GetTaxValue(fileStr, strThuePhaiNopId, False) & "~" & LoaiTk & "~" & tkThangQuy & "~"
+                        tkIndex = tkIndex + 1
+                    End If
+                   
                 End If
-               
-            End If
-                
+'            Else
+'                kyKeKhai = Replace$(fileStr, DataFileName & "_", "")
+'                tenTk = GetAttribute(tkNode, "Caption")
+'
+'                If InStr(kyKeKhai, "bs") > 0 Then
+'                    tenTk = tenTk & " BS lan " & Mid$(kyKeKhai, 3, InStr(kyKeKhai, "_") - 3)
+'                    tkBoSung = Left$(kyKeKhai, InStr(kyKeKhai, "_"))
+'                    kyKeKhai = Right$(kyKeKhai, Len(kyKeKhai) - InStr(kyKeKhai, "_"))
+'                End If
+'
+'                strPeriodReturn = kyKeKhai & "~" & "~" & "~True~~" & GetDataFileNames(ListDataFile, kyKeKhai, "", tkBoSung)
+'
+'                If Len(kyKeKhai) = 4 And Val(Right$(kyKeKhai, 4)) > 0 Then
+'
+'                    If (Val(Right$(kyKeKhai, 4)) >= Val(Right$(strFrom, 4)) And Val(Right$(kyKeKhai, 4)) <= Val(Right$(strTo, 4))) Then
+'                        ReDim Preserve strPeriods(tkIndex)
+'                        strPeriods(tkIndex) = strId & "~" & tenTk & "~" & GetAttribute(tkNode.firstChild, "StartDate") & "~" & strPeriodReturn & "~" & GetTaxValue(fileStr, strThueKhauTruId, False) & "~" & GetTaxValue(fileStr, strThuePhaiNopId, False) & "~" & LoaiTk & "~" & tkThangQuy & "~"
+'                        tkIndex = tkIndex + 1
+'                    End If
+'
+'                End If
+'             End If
         Next
 
     ElseIf LoaiTk = KIEU_KY_NGAY_PS Then
@@ -2109,9 +2137,7 @@ Private Sub GetDsToKhai(strFroms As String, _
                         tkIndex = tkIndex + 1
                     End If
                 End If
-               
             End If
-
         Next
 
     ElseIf LoaiTk = "DT" Or LoaiTk = "CD" Then

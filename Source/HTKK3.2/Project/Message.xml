@@ -325,4 +325,6 @@
 	<Infor ID="0332" Msg="Hạch toán chỉ tiêu [33] vào mục 1000, tiểu mục 1005"/>	
 	<Infor ID="0333" Msg="Hạch toán chỉ tiêu [5a] cột (5) vào mục 1700, tiểu mục 1701"/>
 	<Infor ID="0334" Msg="Hạch toán chỉ tiêu [5b] cột (5) vào mục 1050, tiểu mục 1052"/>
+	<Infor ID="0335" Msg="Kho¶ng c¸ch tõ th¸ng ®Õn th¸ng kh«ng ®­îc v­ît qu¸ 15 th¸ng"/>
+	<Infor ID="0336" Msg="Tõ th¸ng ph¶i thuéc kú tÝnh thuÕ"/>
 </Message>
