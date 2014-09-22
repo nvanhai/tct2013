@@ -1996,16 +1996,21 @@ Private Sub GetDsToKhai(strFroms As String, _
             ' xy ly cac to khai QT bo sung them tu thang den thang
             'If arrStrId(fpsLoaiTK.TypeComboBoxCurSel) = "87" or   Then
                 kyKeKhai = Replace$(fileStr, DataFileName & "_", "")
-                If Len(kyKeKhai) = 18 And Val(Left$(kyKeKhai, 4)) > 100 Then
+                'If Len(kyKeKhai) = 18 And Val(Left$(kyKeKhai, 4)) > 100 Then
+                If InStr(fileStr, DataFileName) > 0 And InStr(fileStr, "KHBS") <= 0 Then
                     tkSplit = Split(kyKeKhai, "_")
+                    tenTk = ""
                     If UBound(tkSplit) = 2 Then
                         tenTk = GetAttribute(tkNode, "Caption") & "(" & Left$(tkSplit(1), 2) & "/" & Right$(tkSplit(1), 4) & "-" & Left$(tkSplit(2), 2) & "/" & Right$(tkSplit(2), 4) & ")"
+                    ElseIf UBound(tkSplit) = 3 Then
+                        tenTk = GetAttribute(tkNode, "Caption") & "(" & Left$(tkSplit(2), 2) & "/" & Right$(tkSplit(2), 4) & "-" & Left$(tkSplit(3), 2) & "/" & Right$(tkSplit(3), 4) & ")"
                     End If
                     
                     If InStr(kyKeKhai, "bs") > 0 Then
                         tenTk = tenTk & " BS lan " & Mid$(kyKeKhai, 3, InStr(kyKeKhai, "_") - 3)
                         tkBoSung = Left$(kyKeKhai, InStr(kyKeKhai, "_"))
                         kyKeKhai = Right$(kyKeKhai, Len(kyKeKhai) - InStr(kyKeKhai, "_"))
+                        tkSplit = Split(kyKeKhai, "_")
                     End If
                 
                     strPeriodReturn = Left$(kyKeKhai, 4) & "~" & Left$(tkSplit(1), 2) & "/" & Right$(tkSplit(1), 4) & "~" & Left$(tkSplit(2), 2) & "/" & Right$(tkSplit(2), 4) & "~True~~" & GetDataFileNames(ListDataFile, kyKeKhai, "", tkBoSung)

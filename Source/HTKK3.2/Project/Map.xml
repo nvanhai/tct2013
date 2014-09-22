@@ -202,6 +202,10 @@
 	<Map ID="961" FinanceYear="0" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Tờ khai thuế tài nguyên(03/TĐ-TAIN) (quý)" LoaiTK="Q" TkThangQuy="1">
 		<Validity StartDate="01/01/1900" DataFile="03_TD_TAIN,03_1_TD_TAIN,KHBS_03_TD_TAIN" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
+	
+	<Map ID="97" FinanceYear="0" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Tờ khai quyết toán thuế tài nguyên(03A/TĐ-TAIN)" LoaiTK="Y">
+		<Validity StartDate="01/01/1900" DataFile="03A_TD_TAIN,03A_1_TD_TAIN,KHBS_03A_TD_TAIN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
 	<Map ID="07" FinanceYear="1" Year="0" Month="0" ThreeMonth="0" Day="1" Caption="BC phát hành biên lai thu phí, lệ phí" LoaiTK="D">
 		<Validity StartDate="01/01/2009" DataFile="01_TBAC_BLP,KHBS_01_TBAC_BLP" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
