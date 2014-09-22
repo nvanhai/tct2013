@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":19CF
+         SpreadDesigner  =   "frmInterfaces.frx":1969
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1CBD
+      SpreadDesigner  =   "frmInterfaces.frx":1BF1
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -2600,6 +2600,8 @@ Private Sub DeleteSheet(pIndex As Integer)
 
             If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "89" Then
                 strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
+            ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "77" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "97" Then
+                strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
             Else
                 If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ParentID") = "101_10" Then
                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"

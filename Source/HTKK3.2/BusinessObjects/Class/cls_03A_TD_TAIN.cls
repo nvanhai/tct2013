@@ -270,6 +270,17 @@ Public Sub Prepare2()
             UpdateCell fps, .Col, .Row, .Text
         End If
             'end
+        ' set ky ke khai tu thang den thang
+        .Row = 27
+        .Col = .ColLetterToNumber("M")
+        .Text = TAX_Utilities_v1.FirstDay
+        UpdateCell fps, .Col, .Row, .Text
+            
+        .Row = 27
+        .Col = .ColLetterToNumber("N")
+        .Text = TAX_Utilities_v1.LastDay
+        UpdateCell fps, .Col, .Row, .Text
+        
         ' set lock CQT phan bo
         .Sheet = 2
         Dim vChon As Variant

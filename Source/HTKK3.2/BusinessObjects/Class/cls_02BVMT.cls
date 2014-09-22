@@ -210,6 +210,17 @@ Dim tongNTNN As Variant, tienDoiThanhChu As String
             .Text = StrSolanBosung
             UpdateCell fps, .Col, .Row, .Text
         End If
+        
+        ' set tu thang den thang
+        .Col = .ColLetterToNumber("K")
+        .Row = 35
+        .Text = TAX_Utilities_v1.FirstDay
+        UpdateCell fps, .Col, .Row, .Text
+        
+        .Col = .ColLetterToNumber("L")
+        .Row = 35
+        .Text = TAX_Utilities_v1.LastDay
+        UpdateCell fps, .Col, .Row, .Text
          'tong tien bang chu
 '         .GetText .ColLetterToNumber("Q"), 37, tongNTNN
 '        If str(tongNTNN) <> "" Then

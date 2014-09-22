@@ -1651,7 +1651,7 @@ Public Sub SetupReportData(fpsGrid As fpSpread, Optional IsInterface As Boolean 
                                         If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "17" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "42" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "26" Then
                                             .TypeNumberDecPlaces = 0
                                         ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "99" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "92" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "24" _
-                                        Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "19" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "89" Then
+                                        Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "19" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "89" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "76" Then
                                             .TypeNumberDecPlaces = Len(GetAttribute(xmlNodeCell, "Value")) - InStr(1, GetAttribute(xmlNodeCell, "Value"), ".")
                                         Else
                                             .TypeNumberDecPlaces = 3 'Len(GetAttribute(xmlNodeCell, "Value")) - InStr(1, GetAttribute(xmlNodeCell, "Value"), ".")
@@ -4310,7 +4310,7 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             strResult(0) = "H_14~Dynamic_0"
             strResult(1) = "C_45~H_45~J_45~N_45~Q_45~V_45~Y_45~AC_45~Dynamic_1"
             strResult(2) = "C_49~H_49~J_49~N_49~Q_49~V_49~Y_49~AC_49~Dynamic_1"
-            strResult(3) = "H_60~R_60~H_62~R_62~C_35~F_35~I_35~Q_37~V_37~Y_37~Dynamic_0"
+            strResult(3) = "H_60~R_60~H_62~R_62~C_35~F_35~I_35~K_35~L_35~Q_37~V_37~Y_37~Dynamic_0"
             
             ' 02/TAIN-DK
         Case "89"
