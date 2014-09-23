@@ -1094,7 +1094,7 @@ Private Sub cmdSave_Click()
             ' Neu la ID cua cac BCTC in bang HTKK 2.1.0
             ' begin
             'remove id 24,25,26 14/11/2013, remote 27
-            If (Val(idToKhai) = 26 Or Val(idToKhai) = 28 Or Val(idToKhai) = 29 Or Val(idToKhai) = 30 Or Val(idToKhai) = 31 Or Val(idToKhai) = 32 Or Val(idToKhai) = 33 Or Val(idToKhai) = 34 Or Val(idToKhai) = 35 Or Val(idToKhai) = 55 Or Val(idToKhai) = 56 Or Val(idToKhai) = 57 Or Val(idToKhai) = 58) Then
+            If (Val(idToKhai) = 28 Or Val(idToKhai) = 29 Or Val(idToKhai) = 30 Or Val(idToKhai) = 31 Or Val(idToKhai) = 32 Or Val(idToKhai) = 33 Or Val(idToKhai) = 34 Or Val(idToKhai) = 35 Or Val(idToKhai) = 55 Or Val(idToKhai) = 56 Or Val(idToKhai) = 57 Or Val(idToKhai) = 58) Then
                 flgBCTC = True
 
                 If verToKhai = 0 Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
@@ -1441,17 +1441,78 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 'str2 = "aa325032100343639   002013007007005005<S03-1A><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S></S03-1A>"
 'Barcode_Scaned str2
+    'PL 03-6
+'str2 = "aa325032100343639   00201301201500100501/0114/06/200601/01/201331/12/2013<S03><S></S><S>~~~~0."
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   00201301201500200500</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   002013012015003005~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~0~0</S><S></S><S"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   002013012015004005>NGUYEN VAN A~~ICT001~16/09/2014~1~1~0~1052</S></S03>"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   002013012015005005<S03-6><S>~0</S><S>0~0~0~0~0~0</S></S03-6>"
+'Barcode_Scaned str2
+    'PL03-7
+'str2 = "aa325032100343639   00201302703200101201/0114/06/200601/01/201331/12/2013<S03><S></S><S>~~~~11"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   002013027032002012.00</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   0020130270320030120~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~0~0</S><S></S><"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   002013027032004012S>NGUYEN VAN A~~ICT001~16/09/2014~1~1~0~1052</S></S03>"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   002013027032005012<S03-7><S>Lien ket 01~Viet Nam~0102030405~x~~x~~~x~x~~~~~~~Lien Ket 02~Thai Lan~2222222222~~~~x"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   002013027032006012~x~x~~~~~~~</S><S>0~200~200~0~0~0~200~~</S><S>462~191~33~179~119~60~79</S><S>18~26~13~5~0~5~16<"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   002013027032007012/S><S>7~12~5~5~8~5~10</S><S>hang hoa 1.1~2~4~2~3~0~3~5~~</S><S>11~22~11~22~2~20~31</S><S>hang 1"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   002013027032008012.2.1~11~22~11~2~2~0~11~~</S><S>444~165~20~174~119~55~63</S><S>30~22~2~11~11~11~12</S><S>hang 2."
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   0020130270320090121.1~20~22~2~10~0~10~12~~</S><S>30~22~2~20~20~0~2</S><S>qc 1~20~22~2~10~10~0~2~~</S><S>82~94~12~"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   00201302703201001255~30~55~67</S><S>quan ly 01~2~4~2~33~0~33~35~~</S><S>196~110~14~11~22~-11~14</S><S>186~287~101"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   002013027032011012~8~3~5~101</S><S>ban quyen 1~87~88~1~0~0~0~1~~</S><S>10~22~13~11~22~-11~13</S><S>lai vay 1~9~22"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   002013027032012012~13~0~0~0~13~~</S><S>106~206~100~88~99~-11~100</S><S>dich vu 1~7~7~0~0~0~0~0~~</S></S03-7>"
+'Barcode_Scaned str2
+
+    'PL 03-8
+'str2 = "aa325032100343639   00201302803400101001/0114/06/200601/01/201331/12/2013<S03><S></S><S>~~~~11"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   002013028034002010.00</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   0020130280340030100~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~0~0</S><S></S><"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   002013028034004010S>NGUYEN VAN A~~ICT001~16/09/2014~1~1~0~1052</S></S03>"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   002013028034005010<S03-8><S>0</S><S>cm"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   002013028034006010c~0102030405~40~10~2"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   0020130280340070100~30~40~100~0~-100~~"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   002013028034008010~fpt~2222222222~60~1"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   0020130280340090101~22~33~44~110~0~-11"
+'Barcode_Scaned str2
+'str2 = "aa325032100343639   0020130280340100100~~</S></S03-8>"
+'Barcode_Scaned str2
+  
     'PL 09
-'str2 = "aa325032100343639   00201301101300100501/0114/06/200601/01/201331/12/2013<S03><S></S><S>~~~~0."
+'str2 = "aa325032100343639   00201303103700100501/0114/06/200601/01/201331/12/2013<S03><S></S><S>~~~~11"
 'Barcode_Scaned str2
-'str2 = "aa325032100343639   00201301101300200500</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0"
+'str2 = "aa325032100343639   002013031037002005.00</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~"
 'Barcode_Scaned str2
-'str2 = "aa325032100343639   002013011013003005~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~0~0</S><S></S><S"
+'str2 = "aa325032100343639   0020130310370030050~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~0~0</S><S></S><"
 'Barcode_Scaned str2
-'str2 = "aa325032100343639   002013011013004005>NGUYEN VAN A~~ICT001~10/09/2014~1~1~0~1052</S></S03>"
+'str2 = "aa325032100343639   002013031037004005S>NGUYEN VAN A~~ICT001~16/09/2014~1~1~0~1052</S></S03>"
 'Barcode_Scaned str2
-'str2 = "aa325032100343639   002013011013005005<S03-9><S>~~~0~0~~</S><S>0</S></S03-9>"
+'str2 = "aa325032100343639   002013031037005005<S03-9><S>001~ct001~0102030405~100~100~~1~001-1~ct001-1~2222222222~40~40~~0~001-2~ct001-2~6868686868~60~60~~0</S><S>100</S></S03-9>"
 'Barcode_Scaned str2
+
+
 
 '02/TAIN
 'str2 = "aa325772100343639   00201300300300100201/0114/06/2006<S01><S>2222222222</S><S>010102~Kg~25000000~0~0~12~2~10000000~289999998~010102~Kg~21000000~2500~10~0~0~"
@@ -1510,10 +1571,10 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '02/TNDN-DK
-str2 = "aa325932100343639   00201400200200100201/0101/01/1900<S01><S>2222222222</S><S>1~0~0~HDKL-0001~x~</S><S>1000~500~21~10~11~13~487~979~500~1479~10~147.9~100~47.9~10~37.9</S><S>NGUYEN VAN A~ICT001~nguoi ky~15/09/2014~1~~</S></S01>"
-Barcode_Scaned str2
-str2 = "aa325932100343639   002014002002002002<S01-1><S>47.9</S><S>0102030405~cmc~30~14.37~ghi chu 01~2222222222~fpt~70~33.53~ghi chu 0 2</S><S>100~47.9</S></S01-1>"
-Barcode_Scaned str2
+'str2 = "aa325932100343639   00201400200200100201/0101/01/1900<S01><S>2222222222</S><S>1~0~0~HDKL-0001~x~</S><S>1000~500~21~10~11~13~487~979~500~1479~10~147.9~100~47.9~10~37.9</S><S>NGUYEN VAN A~ICT001~nguoi ky~15/09/2014~1~~</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa325932100343639   002014002002002002<S01-1><S>47.9</S><S>0102030405~cmc~30~14.37~ghi chu 01~2222222222~fpt~70~33.53~ghi chu 0 2</S><S>100~47.9</S></S01-1>"
+'Barcode_Scaned str2
 
 '02/TAIN-DK
 'str2 = "aa325892100343639   00201400300300100201/0101/01/1900<S01><S>2222222222</S><S>1~0~0~HD-001~~x</S><S>100~20~10~10~5~5~20~0.1~160000~50~10~5~"
@@ -1530,6 +1591,29 @@ Barcode_Scaned str2
 'Barcode_Scaned str2
 'str2 = "aa325892100343639   002014003003004004<S01-2><S>Thïng~01/01/2014~1000~01/01/2015~500~100~50000~ghi chu 01~Thïng~01/01/2014~2000~01/01/2015~550~200~110000~ghi chu 2</S><S>160000</S></S01-2>"
 'Barcode_Scaned str2
+
+'03A/TD-TAIN
+str2 = "aa325972100343639   00201300100100100201/0114/06/2006<S03><S>2222222222</S><S>0902~2</S><S>Son La~0102030405~150~1200~3600~1000~2600~500~2100~Song DA~2222222222~2"
+Barcode_Scaned str2
+str2 = "aa325972100343639   00201300100100200240~1300~6240~700~5540~400~5140</S><S>9840~1700~8140~900~7240</S><S>NGUYEN VAN A~ICT001~NGUOI KY~18/09/2014~1~~~~</S></S03>"
+Barcode_Scaned str2
+
+    'PL03-1
+'str2 = "aa325972100343639   00201300200200100301/0114/06/2006<S03><S>2222222222</S><S>0902~2</S><S>Son La~0102030405~150~1200~3600~1000~2600~500~2100~Song DA~2222222222~2"
+'Barcode_Scaned str2
+'str2 = "aa325972100343639   00201300200200200340~1300~6240~700~5540~400~5140</S><S>9840~1700~8140~900~7240</S><S>NGUYEN VAN A~ICT001~NGUOI KY~18/09/2014~1~~~~</S></S03>"
+'Barcode_Scaned str2
+'str2 = "aa325972100343639   002013002002003003<S03-1><S>001~ctieu1~0102030405~100~100~~x~001-1~chi tieu 2~2222222222~70~70~10100~~001-2~chi tieu 3~6868686868~30~30~10300~</S><S>90</S></S03-1>"
+'Barcode_Scaned str2
+
+'09/KK-TNCN
+str2 = "aa325412100343639   00201300200200100301/0101/01/2009<S09><S>2222222222</S><S>~ </S><S>0~0~0~0~0~79100200~78000000~0~1000000~100000~200~0~0~0~0~0~0~3000000~0"
+Barcode_Scaned str2
+str2 = "aa325412100343639   002013002002002003~3000000~0~3000000~1500000~500000~1000000~1500000</S><S>ky~19/09/2014~NGUYEN VAN A~ICT001~01/2013~12/2013~1~</S></S09>"
+Barcode_Scaned str2
+str2 = "aa325412100343639   002013002002003003<S09-4><S>0~0~0~0~0~0~0~0~0~0</S></S09-4>"
+Barcode_Scaned str2
+
 
     
 End Sub
@@ -3212,7 +3296,7 @@ On Error GoTo ErrHandle
     
     On Error GoTo ErrHandle
     
-    If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 26 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Or Val(strIDBCTC) = 68 Or Val(strIDBCTC) = 18 Or Val(strIDBCTC) = 94 Or Val(strIDBCTC) = 96 Then
+    If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Or Val(strIDBCTC) = 68 Or Val(strIDBCTC) = 18 Or Val(strIDBCTC) = 94 Or Val(strIDBCTC) = 96 Then
         If Val(strIDBCTC) = 36 Then
             LoaiKyKK = LoaiToKhai(strData)
         Else
@@ -3233,7 +3317,7 @@ On Error GoTo ErrHandle
         dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
         
         'Xu ly rieng cho to khai thang/quy
-        If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 26 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 95 Or Val(strIDBCTC) = 36 Or Val(strIDBCTC) = 94 Or Val(strIDBCTC) = 96 Then
+        If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 95 Or Val(strIDBCTC) = 36 Or Val(strIDBCTC) = 94 Or Val(strIDBCTC) = 96 Then
             If LoaiKyKK = True Then
                 dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
                 dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
@@ -5141,11 +5225,13 @@ Private Function formatMaToKhai(ByVal strID As String) As String
     strCode = Mid$(strID, Len(strID) - 1, 2)
     strItem = Left$(strID, Len(strID) - 2)
     If (strCode = "11") Then
-        strRetValue = "('" & strItem & "','" & strID & "','" & strItem & "13')"
+        strRetValue = "('" & strItem & "','" & strID & "','" & strItem & "13','" & strItem & "14')"
     ElseIf strCode = "13" Then
-        strRetValue = "('" & strItem & "','" & strItem & "11','" & strID & "')"
+        strRetValue = "('" & strItem & "','" & strItem & "11','" & strID & "','" & strItem & "14')"
+    ElseIf strCode = "14" Then
+        strRetValue = "('" & strItem & "','" & strItem & "11','" & strID & "','" & strItem & "13')"
     Else
-        strRetValue = "('" & strID & "','" & strID & "11','" & strID & "13')"
+        strRetValue = "('" & strID & "','" & strID & "11','" & strID & "13','" & strItem & "14')"
     End If
     formatMaToKhai = strRetValue
 End Function

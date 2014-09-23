@@ -190,26 +190,26 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         
         
         
-        'lay ten DM tren PL 07-7
-        If TAX_Utilities_Srv_New.NodeValidity.childNodes(13).Attributes.getNamedItem("Active").nodeValue = 1 Then
-            .Sheet = 14
-            .Col = .ColLetterToNumber("B")
-            .Row = 37
-            i = 0
-            Do
-                .GetText .ColLetterToNumber("AH"), .Row, varMaDM
-                If Trim(varMaDM) <> vbNullString Then
-                    .SetText .ColLetterToNumber("Q"), .Row, getTenDMPPDG(varMaDM)
-                End If
-                .GetText .ColLetterToNumber("AI"), .Row, varMaDM
-                If Trim(varMaDM) <> vbNullString Then
-                    .SetText .ColLetterToNumber("AB"), .Row, getTenDMPPDG(varMaDM)
-                End If
-                i = i + 1
-                .Col = .ColLetterToNumber("B")
-                .Row = 37 + i
-            Loop Until UCase(.Text) = "II"
-        End If
+'''        'lay ten DM tren PL 07-7
+'''        If TAX_Utilities_Srv_New.NodeValidity.childNodes(13).Attributes.getNamedItem("Active").nodeValue = 1 Then
+'''            .Sheet = 14
+'''            .Col = .ColLetterToNumber("B")
+'''            .Row = 37
+'''            i = 0
+'''            Do
+'''                .GetText .ColLetterToNumber("AH"), .Row, varMaDM
+'''                If Trim(varMaDM) <> vbNullString Then
+'''                    .SetText .ColLetterToNumber("Q"), .Row, getTenDMPPDG(varMaDM)
+'''                End If
+'''                .GetText .ColLetterToNumber("AI"), .Row, varMaDM
+'''                If Trim(varMaDM) <> vbNullString Then
+'''                    .SetText .ColLetterToNumber("AB"), .Row, getTenDMPPDG(varMaDM)
+'''                End If
+'''                i = i + 1
+'''                .Col = .ColLetterToNumber("B")
+'''                .Row = 37 + i
+'''            Loop Until UCase(.Text) = "II"
+'''        End If
         
         
         'get ten chi tieu trong danh muc NNKD
@@ -665,7 +665,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "03_TNDN11"
+    vLOAI_TKHAI = "03_TNDN14"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
