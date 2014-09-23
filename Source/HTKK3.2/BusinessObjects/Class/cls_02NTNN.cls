@@ -242,7 +242,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, _
         .EventEnabled(EventAllEvents) = True
     End With
     
-    CellChange Col, Row
+    'CellChange Col, Row
 End Sub
 
 'Calling this function whenever we don't need this class anymore.
@@ -484,16 +484,16 @@ Public Sub CheckErrorMST2(iRow As Integer, _
                     iFlagvMst = 1
                         
                     ' Forcus ve Cell co du lieu bi loi
-                    If iFocusFlag = 0 Then
-                        strFocusSheetName = "'" & .SheetName & "'"
-                        strFocusCol = str(.Col)
-                        strFocusRow = str(.Row)
-                        .Sheet = .SheetCount
-                        strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
-                        .Col = .ColLetterToNumber("C")
-                        .Row = iRow2
-                        .Formula = strFormula
-                    End If
+'                    If iFocusFlag = 0 Then
+'                        strFocusSheetName = "'" & .SheetName & "'"
+'                        strFocusCol = str(.Col)
+'                        strFocusRow = str(.Row)
+'                        .Sheet = .SheetCount
+'                        strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
+'                        .Col = .ColLetterToNumber("C")
+'                        .Row = iRow2
+'                        .Formula = strFormula
+'                    End If
 
                 Else
                     .Sheet = isheet
@@ -1059,12 +1059,12 @@ Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer
     With fps
         'Because of unclearly-rised events, this function is here for turning it off
         'at the end of this sub, this event will be turned on
-        .EventEnabled(EventAllEvents) = False
+        '.EventEnabled(EventAllEvents) = False
         .Sheet = .ActiveSheet
         mCurrentSheet = .ActiveSheet
         If .ActiveSheet = 2 Then
                 mCurrentSheet = .Sheet
-                If Col = .ColLetterToNumber("BG") Then
+                If Col = .ColLetterToNumber("BG") And Row >= 23 And Row <= .MaxRows - 9 Then
                     .Sheet = 1
                     ' tong hop chi tieu cot 10b PL 02-1/NTNN va cot 9b PL 02-2/NTNN
                     .Col = .ColLetterToNumber("AF")
@@ -1072,7 +1072,7 @@ Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer
                     .Formula = "BK30"
                 End If
                 
-                If Col = .ColLetterToNumber("BY") Then
+                If Col = .ColLetterToNumber("BY") And Row >= 23 And Row <= .MaxRows - 9 Then
                     .Sheet = 1
                     ' tong hop chi tieu cot 11b PL 02-1/NTNN
                     .Col = .ColLetterToNumber("AF")
@@ -1083,7 +1083,7 @@ Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer
         
         If .ActiveSheet = 3 Then
                 mCurrentSheet = .Sheet
-                If Col = .ColLetterToNumber("BG") Then
+                If Col = .ColLetterToNumber("BG") And Row >= 24 And Row <= .MaxRows - 9 Then
                     .Sheet = 1
                     ' tong hop chi tieu cot 10b PL 02-1/NTNN va cot 9b PL 02-2/NTNN
                     .Col = .ColLetterToNumber("AF")
@@ -1091,7 +1091,7 @@ Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer
                     .Formula = "BK30"
                 End If
                 
-                If Col = .ColLetterToNumber("BY") Then
+                If Col = .ColLetterToNumber("BY") And Row >= 24 And Row <= .MaxRows - 9 Then
                     .Sheet = 1
                     ' tong hop chi tieu cot 10b
                     .Col = .ColLetterToNumber("AF")
@@ -1100,6 +1100,6 @@ Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer
                 End If
         End If
         
-        .EventEnabled(EventAllEvents) = True
+        '.EventEnabled(EventAllEvents) = True
     End With
 End Sub

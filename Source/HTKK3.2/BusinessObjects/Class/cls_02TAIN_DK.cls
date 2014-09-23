@@ -746,26 +746,19 @@ Public Sub SetActiveSheet()
                         SetAttribute xmlNodeValid, "Active", "0"
                     End If
              Case "01-2"
-'                blnNullValue = True
-'                'Check value of last node in Data
-''                Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell") _
-''                    (TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length - 1)
-''                    strValue1 = GetAttribute(xmlCellNode, "Value")
-'                fps.Sheet = SHEET_PHU_LUC_SAN_LUONG
-'                fps.GetText fps.ColLetterToNumber("D"), 29, strValue1
-'                fps.GetText fps.ColLetterToNumber("K"), 29, strValue2
-'                fps.GetText fps.ColLetterToNumber("P"), 29, strValue3
-'                fps.GetText fps.ColLetterToNumber("U"), 29, strValue4
-'                fps.GetText fps.ColLetterToNumber("Y"), 29, strValue5
-'                fps.GetText fps.ColLetterToNumber("AD"), 29, strValue6
-'                fps.GetText fps.ColLetterToNumber("AQ"), 29, strValue7
-'                    If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Or Val(strValue3) <> 0 Or (Not IsNullValue(strValue4)) Or Val(strValue5) <> 0 Or Val(strValue6) <> 0 Or (Not IsNullValue(strValue7)) Then
-'                            blnNullValue = False
-'                    End If
-'
-'                    If blnNullValue Then
-'                        SetAttribute xmlNodeValid, "Active", "0"
-'                    End If
+                blnNullValue = True
+                'Check value of last node in Data
+                Set xmlCellNode = TAX_Utilities_v1.Data(2).getElementsByTagName("Cell") _
+                    (TAX_Utilities_v1.Data(2).getElementsByTagName("Cell").length - 1)
+                    strValue1 = GetAttribute(xmlCellNode, "Value")
+                fps.Sheet = 3
+                If Val(strValue1) <> 0 Then
+                        blnNullValue = False
+                End If
+
+                If blnNullValue Then
+                    SetAttribute xmlNodeValid, "Active", "0"
+                End If
              Case "KHBS"
                 blnNullValue = True
                 'Check value of last node in Data
