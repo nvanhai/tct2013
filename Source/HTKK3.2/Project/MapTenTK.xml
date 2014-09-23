@@ -9,7 +9,7 @@
 	<Map MapID="11" TenTK="Tờ khai thuế TNDN tạm tính (01A/TNDN)"/>
 	<Map MapID="12" TenTK="Tờ khai thuế TNDN tạm tính (01B/TNDN)"/>
 	<Map MapID="73" TenTK="TỜ KHAI THUẾ THU NHẬP DOANH NGHIỆP"/>
-	<Map MapID="03" TenTK="03_TNDN"/>
+	<Map MapID="03" TenTK="TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP DOANH NGHIỆP (Mẫu số 03/TNDN)"/>
 	
 	<Map MapID="48" TenTK="TỜ KHAI KHẤU TRỪ THUẾ THU NHẬP CÁ NHÂN - MẪU 01/KK-XS"/>
 	<Map MapID="49" TenTK="TỜ KHAI KHẤU TRỪ THUẾ THU NHẬP CÁ NHÂN - MẪU 01/KK-XS"/>

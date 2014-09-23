@@ -135,6 +135,11 @@
 	<Map ID="811" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="1" Caption="Tờ khai thuế nhà thầu nước ngoài - 03/NTNN lần phát sinh" LoaiTK="D">
 		<Validity StartDate="01/01/1900" DataFile="03_NTNN,KHBS_03_NTNN" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
+	
+	<Map ID="82" FinanceYear="0" Year="1" Month="0" ThreeMonth="0" Day="1" Caption="Tờ khai quyết toán thuế NTNN (04/NTNN)" LoaiTK="D_D">
+		<Validity StartDate="01/01/1900" DataFile="04_NTNN,04_1_NTNN,KHBS_04_NTNN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>	
+	
 	<Map ID="86" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai phí bảo vệ môi trường (01/BVMT)" LoaiTK="M">
 		<Validity StartDate="01/01/1900" DataFile="01_BVMT,KHBS_01_BVMT" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>

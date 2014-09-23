@@ -1,0 +1,23 @@
+<PL_02_1_TD_TNDN><Dynamic GroupName="BangPBoThueTNDN"><ChiTietBangPBoThueTNDN id="String">
+			<tenDonViTDPhuThuoc/>
+			<soThueTNDNPNop/>
+			<NhaMayThuyDien>
+				<ChiTietNhaMayThuyDien id="String">
+					<tenNMayTDien/>
+					<mstNMayTDien/>
+					<tyLePBoNMayTDien/>
+					<soThuePNopNMayTDien/>
+					<CQTDiaPhuong>
+						<ChiTietCQTDiaPhuong id="String">
+							<tenCoSo/>
+							<mstCoSo/>
+							<maCQTDPhuong/>
+							<tenCQTDPhuong/>
+							<tyLePBoCQTDPhuong/>
+							<thuePNopCQTDPhuong/>
+						</ChiTietCQTDiaPhuong>
+					</CQTDiaPhuong>
+				</ChiTietNhaMayThuyDien>
+			</NhaMayThuyDien>
+		</ChiTietBangPBoThueTNDN>
+	</Dynamic></PL_02_1_TD_TNDN>
