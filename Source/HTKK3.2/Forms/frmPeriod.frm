@@ -526,7 +526,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":0344
+      SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
    End
@@ -3095,6 +3095,11 @@ Public Sub cmdOK_Click()
 
             If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "80") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "82") Then
                 ' To khai 02/NTNN vaf 04/NTNN se khong check dk nay
+                If DateDiff("M", dNgayDau, dNgayCuoi) + 1 > 15 Then
+                    DisplayMessage "0068", msOKOnly, miInformation
+                    txtNgayCuoi.SetFocus
+                    Exit Sub
+                End If
             Else
                 'Cap nhat to 02/PHLP
                 If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "03" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "88" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "26" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "87" _

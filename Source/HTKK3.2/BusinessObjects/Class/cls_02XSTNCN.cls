@@ -92,6 +92,17 @@ Public Sub Prepare2()
             
         End If
         
+        ' set ky ke khai tu thang den thang
+        .Row = 51
+        .Col = .ColLetterToNumber("K")
+        .Text = TAX_Utilities_v1.FirstDay
+        UpdateCell fps, .Col, .Row, .Text
+        
+        .Row = 51
+        .Col = .ColLetterToNumber("L")
+        .Text = TAX_Utilities_v1.LastDay
+        UpdateCell fps, .Col, .Row, .Text
+        
         .Sheet = 2
         .ActiveSheet = .Sheet
         .Row = 2
@@ -649,7 +660,7 @@ Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
                             strFocusRow = str(.Row)
                             iFocusFlag = 1
                         End If
-                        GoTo loitieptheo
+'                        GoTo loitieptheo
                     End If
                     ' Kiem tra trung voi co quan chi tra
                    vMST = Replace(vMST, " ", "")
@@ -686,9 +697,9 @@ Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
                         i = .Row + 1
                         .GetText .ColLetterToNumber("E"), i, vMST1
                         
-                        .Col = .ColLetterToNumber("F")
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
+'                        .Col = .ColLetterToNumber("F")
+'                        .CellNote = ""
+'                        .BackColor = mNonErrorColor
                         
                         vMST = Replace(vMST, " ", "")
                         vMST = Replace(vMST, "-", "")
@@ -733,7 +744,7 @@ Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
                         .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                         .CellNote = vErrMsgMSTTrungNhau     'static
                         .BackColor = mErrorColor
-                        GoTo loitieptheo1
+'                        GoTo loitieptheo1
 '                    Else
 '                        .Row = j
 '                        .Col = .ColLetterToNumber("E")
@@ -747,7 +758,7 @@ Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
                 End If
                 
                 If Trim(vCMT) <> vbNullString Then
-                    .Col = .ColLetterToNumber("E")
+                    .Col = .ColLetterToNumber("F")
                     .CellNote = ""
                     .BackColor = mNonErrorColor
                     
@@ -851,11 +862,11 @@ Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
                     .BackColor = mNonErrorColor
                 End If
             End If
-loitieptheo:
+'loitieptheo:
             .Row = .Row + 1
             .Col = .ColLetterToNumber("B")
         Loop Until UCase(.Text) = "AA"
-loitieptheo1:
+'loitieptheo1:
         ' Trong truong hop blCheck_S1 khong co Ho va ten nao bi loi thi set lai gia tri cua Header la 1
         If blCheck_S1 = True Then
             .Sheet = .SheetCount

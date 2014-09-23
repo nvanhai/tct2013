@@ -124,6 +124,11 @@
 	<Map ID="701" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="1" Caption="Tờ khai thuế nhà thầu nước ngoài(01/NTNN) lần phát sinh" LoaiTK="D">
 		<Validity StartDate="01/01/2010" DataFile="01_NTNN,KHBS_01_NTNN" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
+	
+	<Map ID="80" FinanceYear="0" Year="1" Month="0" ThreeMonth="0" Day="1" Caption="Tờ khai quyết toán thuế NTNN (02/NTNN)" LoaiTK="D_D">
+		<Validity StartDate="01/01/1900" DataFile="02_NTNN,02_1_NTNN,02_2_NTNN,KHBS_02_NTNN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
 	<Map ID="81" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="1" Caption="Tờ khai thuế nhà thầu nước ngoài - 03/NTNN" LoaiTK="M">
 		<Validity StartDate="01/01/1900" DataFile="03_NTNN,KHBS_03_NTNN" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
@@ -136,6 +141,11 @@
 	<Map ID="87" FinanceYear="0" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Tờ khai quyết toán phí bảo vệ môi trường (02/BVMT)" LoaiTK="Y">
 		<Validity StartDate="01/01/1900" DataFile="02_BVMT,KHBS_02_BVMT" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
+	
+	<Map ID="85" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai Phí, lệ phí (01/PHLP)" LoaiTK="M">
+		<Validity StartDate="01/01/1900" DataFile="01_PHLP,KHBS_01_PHLP" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
 	<Map ID="89" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai phí xăng dầu">
 		<Validity StartDate="01/01/1900" DataFile="01_PHXD,KHBS_01_PHXD" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
@@ -178,6 +188,19 @@
 	<Map ID="99" FinanceYear="0" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="TK TNDN TT đối với khí t/nhiên(01B/TNDN-DK)" LoaiTK="Q">
 		<Validity StartDate="01/01/1900" DataFile="01B_TNDN_DK,01B_TNDN_DK,KHBS_01B_TNDN_DK" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
+	
+	<Map ID="93" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="TK Quyết toán TNDN đối với khí thiên nhiên(02/TNDN-DK)" LoaiTK="KTN_Y">
+		<Validity StartDate="01/01/1900" DataFile="02_TNDN_DK_KTN,02_1_TNDN_DK_KTN,KHBS_02_TNDN_DK_KTN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="931" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="TK Quyết toán TNDN đối với Condensate(02/TNDN-DK)" LoaiTK="CD_Y">
+		<Validity StartDate="01/01/1900" DataFile="02_TNDN_DK_CD,02_1_TNDN_DK_CD,KHBS_02_TNDN_DK_CD" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="932" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="TK Quyết toán TNDN đối với dầu thô(02/TNDN-DK)" LoaiTK="DT_Y">
+		<Validity StartDate="01/01/1900" DataFile="02_TNDN_DK_DT,02_1_TNDN_DK_DT,KHBS_02_TNDN_DK_DT" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
 	<Map ID="92" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="TK thuế TN tạm tính với khí thiên nhiên(01/TAIN-DK)" LoaiTK="KTN">
 		<Validity StartDate="01/01/1900" DataFile="01_TAIN_DK_KTN,01_1_TAIN_DK_KTN,KHBS_01_TAIN_DK_KTN" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
@@ -187,6 +210,17 @@
 	<Map ID="922" FinanceYear="0" Year="1" Month="0" ThreeMonth="0" Day="1" Caption="TK thuế TN tạm tính với dầu thô(01/TAIN-DK)" LoaiTK="DT">
 		<Validity StartDate="01/01/1900" DataFile="01_TAIN_DK_DT,01_1_TAIN_DK_DT,KHBS_01_TAIN_DK_DT" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
+	
+	<Map ID="89" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="TK quyết toán thuế TN đối với khí thiên nhiên(02/TAIN-DK)" LoaiTK="KTN_Y">
+		<Validity StartDate="01/01/1900" DataFile="02_TAIN_DK_KTN,02_1_TAIN_DK_KTN,02_2_TAIN_DK_KTN,KHBS_02_TAIN_DK_KTN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="891" FinanceYear="0" Year="1" Month="0" ThreeMonth="0" Day="1" Caption="TK quyết toán thuế TN đối với Condensate(02/TAIN-DK)" LoaiTK="CD_Y">
+		<Validity StartDate="01/01/1900" DataFile="02_TAIN_DK_CD,02_1_TAIN_DK_CD,02_2_TAIN_DK_CD,KHBS_02_TAIN_DK_CD" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="892" FinanceYear="0" Year="1" Month="0" ThreeMonth="0" Day="1" Caption="TK quyết toán thuế TN đối với dầu thô(02/TAIN-DK)" LoaiTK="DT_Y">
+		<Validity StartDate="01/01/1900" DataFile="02_TAIN_DK_DT,02_1_TAIN_DK_DT,02_2_TAIN_DK_DT,KHBS_02_TAIN_DK_DT" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
 	<Map ID="24" FinanceYear="0" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="BC DKSL dầu khí khai thác(01/BCTL-DK)" LoaiTK="Y">
 		<Validity StartDate="01/01/1900" DataFile="01_BCTL_DK,KHBS_01_BCTL_DK" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
