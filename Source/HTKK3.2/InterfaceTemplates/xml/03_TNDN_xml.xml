@@ -1,108 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <HSoThueDTu>
-	<HSoKhaiThue>
+	<HSoKhaiThue id="ID_1">
 		<TTinChung>
 			<TTinDVu>
-				<maDVu></maDVu>
-				<tenDVu></tenDVu>
-				<pbanDVu></pbanDVu>
-				<ttinNhaCCapDVu></ttinNhaCCapDVu>
+				<maDVu/>
+				<tenDVu/>
+				<pbanDVu/>
+				<ttinNhaCCapDVu/>
 			</TTinDVu>
 			<TTinTKhaiThue>
 				<TKhaiThue>
-					<maTKhai></maTKhai>
-					<tenTKhai></tenTKhai>
+					<maTKhai/>
+					<tenTKhai/>
 					<moTaBMau/>
-					<pbanTKhaiXML></pbanTKhaiXML>
-					<loaiTKhai>C</loaiTKhai>
-					<soLan>1</soLan>
+					<pbanTKhaiXML/>
+					<loaiTKhai/>
+					<soLan/>
 					<KyKKhaiThue>
-						<kieuKy>D</kieuKy>
-						<kyKKhai></kyKKhai>
-						<kyKKhaiTuNgay></kyKKhaiTuNgay>
-						<kyKKhaiDenNgay></kyKKhaiDenNgay>
-						<kyKKhaiTuThang></kyKKhaiTuThang>
-						<kyKKhaiDenThang></kyKKhaiDenThang>
+						<kieuKy/>
+						<kyKKhai/>
+						<kyKKhaiTuNgay/>
+						<kyKKhaiDenNgay/>
+						<kyKKhaiTuThang/>
+						<kyKKhaiDenThang/>
 					</KyKKhaiThue>
-					<maCQTNoiNop></maCQTNoiNop>
-					<tenCQTNoiNop></tenCQTNoiNop>
-					<ngayLapTKhai></ngayLapTKhai>
+					<maCQTNoiNop/>
+					<tenCQTNoiNop/>
+					<ngayLapTKhai/>
 					<GiaHan>
-						<maLyDoGiaHan></maLyDoGiaHan>
-						<lyDoGiaHan></lyDoGiaHan>
+						<maLyDoGiaHan/>
+						<lyDoGiaHan/>
 					</GiaHan>
-					<nguoiKy></nguoiKy>
-					<ngayKy></ngayKy>
-					<nganhNgheKD></nganhNgheKD>
+					<nguoiKy/>
+					<ngayKy/>
+					<nganhNgheKD/>
 				</TKhaiThue>
 				<NNT>
-					<mst></mst>
-					<tenNNT></tenNNT>
-					<dchiNNT></dchiNNT>
-					<phuongXa></phuongXa>
-					<maHuyenNNT></maHuyenNNT>
-					<tenHuyenNNT></tenHuyenNNT>
-					<maTinhNNT></maTinhNNT>
-					<tenTinhNNT></tenTinhNNT>
-					<dthoaiNNT></dthoaiNNT>
-					<faxNNT></faxNNT>
-					<emailNNT></emailNNT>
+					<mst/>
+					<tenNNT/>
+					<dchiNNT/>
+					<phuongXa/>
+					<maHuyenNNT/>
+					<tenHuyenNNT/>
+					<maTinhNNT/>
+					<tenTinhNNT/>
+					<dthoaiNNT/>
+					<faxNNT/>
+					<emailNNT/>
 				</NNT>
 				<DLyThue>
-					<mstDLyThue></mstDLyThue>
-					<tenDLyThue></tenDLyThue>
-					<dchiDLyThue></dchiDLyThue>
-					<maHuyenDLyThue></maHuyenDLyThue>
-					<tenHuyenDLyThue></tenHuyenDLyThue>
-					<maTinhDLyThue></maTinhDLyThue>
-					<tenTinhDLyThue></tenTinhDLyThue>
-					<dthoaiDLyThue></dthoaiDLyThue>
-					<faxDLyThue></faxDLyThue>
-					<emailDLyThue></emailDLyThue>
-					<soHDongDLyThue></soHDongDLyThue>
-					<ngayKyHDDLyThue></ngayKyHDDLyThue>
+					<mstDLyThue/>
+					<tenDLyThue/>
+					<dchiDLyThue/>
+					<maHuyenDLyThue/>
+					<tenHuyenDLyThue/>
+					<maTinhDLyThue/>
+					<tenTinhDLyThue/>
+					<dthoaiDLyThue/>
+					<faxDLyThue/>
+					<emailDLyThue/>
+					<soHDongDLyThue/>
+					<ngayKyHDDLyThue/>
 					<NVienDLy>
-						<tenNVienDLyThue></tenNVienDLyThue>
-						<cchiHNghe></cchiHNghe>
+						<tenNVienDLyThue/>
+						<cchiHNghe/>
 					</NVienDLy>
 				</DLyThue>
 			</TTinTKhaiThue>
 		</TTinChung>
 		<CTieuTKhaiChinh>
-			<doanhNghiepCoCSoHToanPThuoc>true</doanhNghiepCoCSoHToanPThuoc>
-			<ctA1>0</ctA1>
-			<ctB1>1</ctB1>
-			<ctB2>1</ctB2>
-			<ctB3>1</ctB3>
-			<ctB4>1</ctB4>
-			<ctB5>1</ctB5>
-			<ctB6>1</ctB6>
-			<ctB7>1</ctB7>
-			<ctB8>1</ctB8>
-			<ctB9>1</ctB9>
-			<ctB10>1</ctB10>
-			<ctB11>1</ctB11>
-			<ctB12>1</ctB12>
-			<ctB13>1</ctB13>
-			<ctB14>0</ctB14>
-			<ctC1>1</ctC1>
-			<ctC2>1</ctC2>
-			<ctC3>1</ctC3>
-			<ctC4>1</ctC4>
-			<ctC5>1</ctC5>
-			<ctC6>1</ctC6>
-			<ctC7>1</ctC7>
-			<ctC8>1</ctC8>
-			<ctC9>1</ctC9>
-			<ctC10>1</ctC10>
-			<ctC11>1</ctC11>
-			<ctD>1</ctD>
-			<ctE>1</ctE>
-			<ctE1>1</ctE1>
-			<ctE2>1</ctE2>
+			<tieuMucHachToan/>
+			<doanhNghiepCoQuyMoVuaVaNho/>
+			<doanhNghiepCoCSoHToanPThuoc/>
+			<doanhNghiepKeKhaiTTinLienKet/>
+			<ct_04/>
+			<ct_05/>
+			<ctA1/>
+			<ctB1/>
+			<ctB2/>
+			<ctB3/>
+			<ctB4/>
+			<ctB5/>
+			<ctB6/>
+			<ctB7/>
+			<ctB8/>
+			<ctB9/>
+			<ctB10/>
+			<ctB11/>
+			<ctB12/>
+			<ctB13/>
+			<ctB14/>
+			<ctC1/>
+			<ctC2/>
+			<ctC3/>
+			<ctC4/>
+			<ctC5/>
+			<ctC6/>
+			<ctC7/>
+			<ctC8/>
+			<ctC9/>
+			<ctC9a/>
+			<ctC10/>
+			<ctC11/>
+			<ctC12/>
+			<ctC13/>
+			<ctC14/>
+			<ctC15/>
+			<ctC16/>
+			<ctD/>
+			<ctE/>
+			<ctE1/>
+			<ctE2/>
+			<ctE3/>
+			<ctF/>
+			<ctG/>
+			<GiaHanNopThue>
+				<ctH1/>
+				<ctH2_ma/>
+				<ctH2_ten/>
+				<ctH3/>
+				<ctH4/>
+				<ctH5/>
+			</GiaHanNopThue>
 			<TaiLieu_Guikem>
-				<Tailieuguikem>
-					<tenDocument></tenDocument>
+				<Tailieuguikem id="String">
+					<tenTaiLieu/>
 				</Tailieuguikem>
 			</TaiLieu_Guikem>
 		</CTieuTKhaiChinh>

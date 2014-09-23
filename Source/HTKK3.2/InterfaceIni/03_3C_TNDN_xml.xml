@@ -1,18 +1,17 @@
-<PL03_3C_TNDN>
-	<Static GroupName="NoiDungPL3_03C">
-		<dieuKienUuDai1>D_24</dieuKienUuDai1>
-		<tongSoLD1>S_25</tongSoLD1>
-		<soXacNhanCQT1>J_27</soXacNhanCQT1>
-		<ngayXacNhanCQT1>V_27</ngayXacNhanCQT1>
-		<dieuKienUuDai2>D_28</dieuKienUuDai2>
-		<tongSoLD2>S_29</tongSoLD2>
-		<soXacNhanCQT2>O_31</soXacNhanCQT2>
-		<ngayXacNhanCQT2>Y_31</ngayXacNhanCQT2>
-		<mucDoUuDai1>D_33</mucDoUuDai1>
-		<mucDoUuDai2>D_34</mucDoUuDai2>
-		<ct1>X_40</ct1>
-		<ct2>X_41</ct2>
-		<ct3>X_42</ct3>
-		<ct4>X_43</ct4>
-	</Static>
-</PL03_3C_TNDN>
+<PL03_3C_TNDN><Dynamic GroupName="PL03_3C_TNDN"><NoiDungPL03_3C id="String">
+			<dieuKienUuDai1/>
+			<tongSoLD1/>
+			<soXacNhanCQT1/>
+			<ngayXacNhanCQT1/>
+			<dieuKienUuDai2/>
+			<tongSoLD2/>
+			<soXacNhanCQT2/>
+			<ngayXacNhanCQT2/>
+			<mucDoUuDai1/>
+			<mucDoUuDai2/>
+			<ct01/>
+			<ct02/>
+			<ct03/>
+			<ct04/>
+		</NoiDungPL03_3C>
+	</Dynamic></PL03_3C_TNDN>
