@@ -1129,7 +1129,7 @@ Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer
         mCurrentSheet = .ActiveSheet
         If .ActiveSheet = 2 Then
                 mCurrentSheet = .Sheet
-                If Col = .ColLetterToNumber("BD") Then
+                If Col = .ColLetterToNumber("BD") And Row >= 24 And Row <= .MaxRows - 3 Then
                     .Sheet = 1
                     ' tong hop chi tieu cot 9b PL 02-2/NTNN
                     .Col = .ColLetterToNumber("AB")
@@ -1137,7 +1137,7 @@ Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer
                     .Formula = "BD30"
                 End If
                 
-                If Col = .ColLetterToNumber("BS") Then
+                If Col = .ColLetterToNumber("BS") And Row >= 24 And Row <= .MaxRows - 3 Then
                     .Sheet = 1
                     ' tong hop chi tieu cot 10b PL 02-2/NTNN
                     .Col = .ColLetterToNumber("AB")

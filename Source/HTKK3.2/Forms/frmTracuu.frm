@@ -183,7 +183,7 @@ Begin VB.Form frmTraCuu
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuu.frx":04DD
+         SpreadDesigner  =   "frmTracuu.frx":044F
          UserResize      =   1
          Appearance      =   1
       End
@@ -231,7 +231,7 @@ Begin VB.Form frmTraCuu
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          RowsFrozen      =   1
-         SpreadDesigner  =   "frmTracuu.frx":0C7F
+         SpreadDesigner  =   "frmTracuu.frx":0B63
       End
    End
    Begin VB.Label lblStatus 
@@ -462,6 +462,10 @@ Private Sub btnMo_Click()
             strSoLanXuatBan = LanXB
         ElseIf LoaiTk = KIEU_KY_NGAY_NAM Then
             TAX_Utilities_v1.Year = Right(CStr(varPeriod), 4)
+            TAX_Utilities_v1.FirstDay = CStr(varFirstDay)
+            TAX_Utilities_v1.LastDay = CStr(varLastDay)
+        ElseIf LoaiTk = KIEU_KY_TU_NGAY_DEN_NGAY Then
+            TAX_Utilities_v1.Year = CStr(varPeriod)
             TAX_Utilities_v1.FirstDay = CStr(varFirstDay)
             TAX_Utilities_v1.LastDay = CStr(varLastDay)
         ElseIf LoaiTk = "K" Then
@@ -957,7 +961,7 @@ Private Sub fpsDkNgay_LeaveCell(ByVal Col As Long, _
                 End If
 
                 'Bat dk ngay
-                If LoaiTk = KIEU_KY_NGAY_PS Or LoaiTk = KIEU_KY_NGAY_NAM Or LoaiTk = "DT" Or LoaiTk = "CD" Then
+                If LoaiTk = KIEU_KY_NGAY_PS Or LoaiTk = KIEU_KY_NGAY_NAM Or LoaiTk = "DT" Or LoaiTk = "CD" Or LoaiTk = KIEU_KY_TU_NGAY_DEN_NGAY Then
                     If (Val(strarrdate(1)) > 12 Or Val(strarrdate(1)) <= 0) Then
                         .Text = ""
                         DisplayMessage "0091", msOKOnly, miInformation
@@ -1008,7 +1012,7 @@ Private Sub fpsDkNgay_LeaveCell(ByVal Col As Long, _
                 .Col = .ColLetterToNumber(fpsDkNgayColF)
                 .Row = fpsDkNgayRow
 
-                If LoaiTk = KIEU_KY_NGAY_PS Or LoaiTk = KIEU_KY_NGAY_NAM Or LoaiTk = "DT" Or LoaiTk = "CD" Then
+                If LoaiTk = KIEU_KY_NGAY_PS Or LoaiTk = KIEU_KY_NGAY_NAM Or LoaiTk = "DT" Or LoaiTk = "CD" Or LoaiTk = KIEU_KY_TU_NGAY_DEN_NGAY Then
                     .SetText .Col, .Row, strarrdate(0) & "/" & strarrdate(1) & "/" & strarrdate(2)
                 ElseIf LoaiTk = KIEU_KY_THANG Or LoaiTk = KIEU_KY_THANG_NAM Or LoaiTk = "KTN" Or LoaiTk = KIEU_KY_QUY Or LoaiTk = "K" Then
                     .SetText .Col, .Row, strarrdate(0) & "/" & strarrdate(1)
@@ -1049,7 +1053,7 @@ Private Sub fpsDkNgay_LeaveCell(ByVal Col As Long, _
                 End If
 
                 'Bat dk ngay
-                If LoaiTk = KIEU_KY_NGAY_PS Or LoaiTk = KIEU_KY_NGAY_NAM Or LoaiTk = "DT" Or LoaiTk = "CD" Then
+                If LoaiTk = KIEU_KY_NGAY_PS Or LoaiTk = KIEU_KY_NGAY_NAM Or LoaiTk = "DT" Or LoaiTk = "CD" Or LoaiTk = KIEU_KY_TU_NGAY_DEN_NGAY Then
                     If (Val(strarrdate(1)) > 12 Or Val(strarrdate(1)) <= 0) Then
                         .Text = ""
                         DisplayMessage "0091", msOKOnly, miInformation
@@ -1092,7 +1096,7 @@ Private Sub fpsDkNgay_LeaveCell(ByVal Col As Long, _
                 .Col = .ColLetterToNumber(fpsDkNgayColT)
                 .Row = fpsDkNgayRow
 
-                If LoaiTk = KIEU_KY_NGAY_PS Or LoaiTk = KIEU_KY_NGAY_NAM Or LoaiTk = "DT" Or LoaiTk = "CD" Then
+                If LoaiTk = KIEU_KY_NGAY_PS Or LoaiTk = KIEU_KY_NGAY_NAM Or LoaiTk = "DT" Or LoaiTk = "CD" Or LoaiTk = KIEU_KY_TU_NGAY_DEN_NGAY Then
                     .SetText .Col, .Row, strarrdate(0) & "/" & strarrdate(1) & "/" & strarrdate(2)
                 ElseIf LoaiTk = KIEU_KY_THANG Or LoaiTk = KIEU_KY_THANG_NAM Or LoaiTk = "KTN" Or LoaiTk = KIEU_KY_QUY Or LoaiTk = "K" Then
                     .SetText .Col, .Row, strarrdate(0) & "/" & strarrdate(1)
@@ -1474,7 +1478,7 @@ Sub CreateDkKy()
             .CellType = CellTypePic
             .TypePicMask = "9999"
             .Text = strarrdate(2)
-        ElseIf LoaiTk = KIEU_KY_NGAY_PS Or LoaiTk = KIEU_KY_NGAY_NAM Then
+        ElseIf LoaiTk = KIEU_KY_NGAY_PS Or LoaiTk = KIEU_KY_NGAY_NAM Or LoaiTk = KIEU_KY_TU_NGAY_DEN_NGAY Then
             lstryear = "1"
             lstrMonth = "1"
             lstrThreemonths = ""
