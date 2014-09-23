@@ -3861,9 +3861,11 @@ Private Sub CheckDynamicSheet3()
     Dim vTinh, vHuyen, vXa, vTuThang, vDenThang As Variant
     
     Dim vErrHoVaTenNNT, vErrMSTNNT, vErrHoVaTenNPT, vErrNgaySinhNPT, vErrMSTNPT, vErrSoCMNDNPT, vErrTuThang, vErrDenThang     As Variant
+    Dim vErrEmpty As Variant
     
     Dim iFlagHoVaTenNNT As Integer, iFlagMSTNNT As Integer, iFlagHoVaTenNPT As Integer, iFlagNgaySinhNPT As Integer
     Dim iFlagMSTNPT As Integer, iFlagSoCMNDNPT As Integer, iFlagTuThang As Integer, iFlagDenThang As Integer
+    Dim iFlagEmpty As Integer
     
     Dim strColReset As String
     Dim arrColReset() As String
@@ -3882,6 +3884,8 @@ Private Sub CheckDynamicSheet3()
         .GetText .ColLetterToNumber("E"), 76, vErrSoCMNDNPT
         .GetText .ColLetterToNumber("E"), 77, vErrTuThang
         .GetText .ColLetterToNumber("E"), 78, vErrDenThang
+        .GetText .ColLetterToNumber("E"), 79, vErrEmpty
+        
         
         .Sheet = 4
         .Row = 22
@@ -3904,8 +3908,8 @@ Private Sub CheckDynamicSheet3()
             .GetText .ColLetterToNumber("T"), .Row, vDenThang
             
             If Trim(vHoVaTenNNT) = vbNullString And Trim(vMSTNNT) = vbNullString And Trim(vHoVaTenNPT) = vbNullString And Trim(vNgaySinhNPT) = vbNullString _
-            And Trim(vMSTNPT) = vbNullString And Trim(vQuocTich) = vbNullString And Trim(vSoCMNDNPT) = vbNullString And Trim(vQuanHeNPT) = vbNullString _
-            And Trim(vSo) = vbNullString And Trim(vQuyenSo) = vbNullString And Trim(vQuocGia) = vbNullString And Trim(vTinh) = vbNullString _
+            And Trim(vMSTNPT) = vbNullString And Trim(vSoCMNDNPT) = vbNullString And Trim(vQuanHeNPT) = vbNullString _
+            And Trim(vSo) = vbNullString And Trim(vQuyenSo) = vbNullString And Trim(vTinh) = vbNullString _
             And Trim(vHuyen) = vbNullString And Trim(vXa) = vbNullString And Trim(vTuThang) = vbNullString And Trim(vDenThang) = vbNullString Then
                 'reset color and cellnote on sheet
                 strColReset = "D~E~F~G~H~I~J~K~L~M~N~O~Q~R~S~T"
@@ -4020,38 +4024,65 @@ Private Sub CheckDynamicSheet3()
                         .BackColor = mNonErrorColor
                     End If
                  End If
-                ' Kiem tra tu thang, den thang
-                
-                If DateDiff("M", Format(vTuThang, "mm/yyyy"), Format(vDenThang, "mm/yyyy")) > 0 Then
-                        .Col = .ColLetterToNumber("S")
-                        .CellNote = vErrTuThang
-                        .BackColor = mErrorColor
-                        
-                        .Col = .ColLetterToNumber("T")
-                        .CellNote = vErrTuThang
-                        .BackColor = mErrorColor
-                        iFlagTuThang = 1
-                Else
-                        .Col = .ColLetterToNumber("S")
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                        
-                        .Col = .ColLetterToNumber("T")
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                End If
-                ' kiem tra den thang voi den thang ky QT
-                If DateDiff("M", Format(vDenThang, "mm/yyyy"), Format(TAX_Utilities_v1.LastDay, "mm/yyyy")) > 0 Then
-                     .Col = .ColLetterToNumber("T")
-                    .CellNote = vErrDenThang
-                    .BackColor = mErrorColor
-                    iFlagDenThang = 1
-                Else
-                    .Col = .ColLetterToNumber("T")
+                 
+                 ' Kiem tra tu thang bat buoc nhap
+                 If Trim(vTuThang) <> "" Then
+                    .Col = .ColLetterToNumber("S")
                     .CellNote = ""
                     .BackColor = mNonErrorColor
+                 Else
+                    .Col = .ColLetterToNumber("S")
+                    .CellNote = vErrEmpty
+                    .BackColor = mErrorColor
+                    iFlagEmpty = 1
+                 End If
+                 
+                 ' kiem tra den thang bat buoc nhap
+                 If Trim(vDenThang) <> "" Then
+                    .Col = .ColLetterToNumber("P")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                 Else
+                    .Col = .ColLetterToNumber("P")
+                    .CellNote = vErrEmpty
+                    .BackColor = mErrorColor
+                    iFlagEmpty = 1
+                 End If
+                 
+                ' Kiem tra tu thang, den thang
+                If Trim(vTuThang) <> "" And Trim(vDenThang) <> "" Then
+                    If DateDiff("M", Format(vTuThang, "mm/yyyy"), Format(vDenThang, "mm/yyyy")) > 0 Then
+                            .Col = .ColLetterToNumber("S")
+                            .CellNote = vErrTuThang
+                            .BackColor = mErrorColor
+                            
+                            .Col = .ColLetterToNumber("T")
+                            .CellNote = vErrTuThang
+                            .BackColor = mErrorColor
+                            iFlagTuThang = 1
+                    Else
+                            .Col = .ColLetterToNumber("S")
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                            
+                            .Col = .ColLetterToNumber("T")
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                    End If
+                 End If
+                ' kiem tra den thang voi den thang ky QT
+                If vDenThang <> "" Then
+                    If DateDiff("M", Format(vDenThang, "mm/yyyy"), Format(TAX_Utilities_v1.LastDay, "mm/yyyy")) > 0 Then
+                         .Col = .ColLetterToNumber("T")
+                        .CellNote = vErrDenThang
+                        .BackColor = mErrorColor
+                        iFlagDenThang = 1
+                    Else
+                        .Col = .ColLetterToNumber("T")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
                 End If
-                
             End If
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
@@ -4067,7 +4098,7 @@ Private Sub CheckDynamicSheet3()
         .SetText .ColLetterToNumber("B"), 76, IIf(iFlagSoCMNDNPT = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 77, IIf(iFlagTuThang = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 78, IIf(iFlagDenThang = 1, "0", "1")
-        
+        .SetText .ColLetterToNumber("B"), 79, IIf(iFlagEmpty = 1, "0", "1")
     End With
 End Sub
 

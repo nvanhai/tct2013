@@ -977,7 +977,7 @@ Private Sub checkSheet4()
             .BackColor = mNonErrorColor
 
             
-            If UCase(vLastRow) = "AA" Then Exit For ' Check cho den het cac dong co du lieu thi thoi
+            If UCase(vLastRow) = "BB" Then Exit For ' Check cho den het cac dong co du lieu thi thoi
             
             If Trim(vHoVaTen) = vbNullString And Trim(vNgaySinh) = vbNullString And Trim(vSo) = vbNullString And Trim(vQuyenSo) = vbNullString _
             And Trim(vTinh) = vbNullString And Trim(vHuyen) = vbNullString And Trim(vXa) = vbNullString And Trim(vQuanHeNNT) = vbNullString And vTuThang = vbNullString And vDenThang = vbNullString Then
