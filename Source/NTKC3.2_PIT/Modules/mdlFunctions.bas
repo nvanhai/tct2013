@@ -156,7 +156,7 @@ Public Function GetValidityNode() As MSXML.IXMLDOMNode
     idToKhai = GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")
     
     'thang/quy
-    If idToKhai = "01" Or idToKhai = "02" Or idToKhai = "25" Or idToKhai = "26" Or idToKhai = "04" Or idToKhai = "71" Or idToKhai = "36" Or idToKhai = "68" Or idToKhai = "94" Then
+    If idToKhai = "01" Or idToKhai = "02" Or idToKhai = "25" Or idToKhai = "04" Or idToKhai = "71" Or idToKhai = "36" Or idToKhai = "68" Or idToKhai = "94" Then
         If LoaiKyKK = False Then
 
             Select Case TAX_Utilities_Srv_New.Month
@@ -1123,7 +1123,7 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "07" Then changeMaToKhai = "01_TBAC_BLP"
     If strID = "11" Then changeMaToKhai = "01A_TNDN13"
     If strID = "12" Then changeMaToKhai = "01B_TNDN13"
-    If strID = "03" Then changeMaToKhai = "03_TNDN11"
+    If strID = "03" Then changeMaToKhai = "03_TNDN14"
     If strID = "06" Then changeMaToKhai = "01_TAIN13"
     'If strID = "09" Then changeMaToKhai = "02_TAIN"
     If strID = "08" Then changeMaToKhai = "03_TAIN"
@@ -1195,7 +1195,7 @@ Public Function changeMaToKhai(strID As String) As String
     'If strID = "25" Then changeMaToKhai = "48_02_SXKD"
     If strID = "25" Then changeMaToKhai = "01_TNCN_BHDC13"
     
-    If strID = "26" Then changeMaToKhai = "48_03_LCTTTT"
+    'If strID = "26" Then changeMaToKhai = "48_03_LCTTTT"
     If strID = "27" Then changeMaToKhai = "01_BK_BC26_AC"
     If strID = "28" Then changeMaToKhai = "16_01_CDKT"
     If strID = "29" Then changeMaToKhai = "16_02_SXKD"
@@ -1240,6 +1240,8 @@ Public Function changeMaToKhai(strID As String) As String
     
     If strID = "85" Then changeMaToKhai = "01_PHLP"
     If strID = "88" Then changeMaToKhai = "02_PHLP"
+    If strID = "97" Then changeMaToKhai = "03A_TD_TAIN"
+    If strID = "26" Then changeMaToKhai = "02_TNCN_BHDC"
 End Function
 
 ' Ham change sang ma cua QLT
