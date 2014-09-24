@@ -487,6 +487,23 @@ Public Sub Prepare2()
             .Lock = True
         End If
         ' End set gia han
+        
+         ' set lock CQT phan bo
+        .Sheet = sheetPl03_9_TNDN
+        Dim vChon As Variant
+        If .SheetVisible = True Then
+        .Row = 42
+         Do
+                .GetText .ColLetterToNumber("G"), .Row, vChon
+                If vChon = 1 Then
+                    .Col = .ColLetterToNumber("P")
+                    .Lock = True
+                End If
+                
+                .Row = .Row + 1
+                .Col = .ColLetterToNumber("B")
+            Loop Until .Text = "aa"
+         End If
      .EventEnabled(EventAllEvents) = True
     .ActiveSheet = 1
     .Sheet = 1
@@ -592,6 +609,7 @@ With fps
         arrErrorCells.Remove mCurrentSheet & "_" & GetCellID(fps, Col, Row)
     End If
     CellChange Col, Row
+    setChangeComb Col, Row
 End Sub
 
 'inner class event: ButtonClicked
@@ -658,6 +676,34 @@ Public Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonD
                 End If
             End If
         End If
+        
+        
+        If Col = .ColLetterToNumber("G") And Row >= 42 And .ActiveSheet = sheetPl03_9_TNDN Then
+                   fps.EventEnabled(EventAllEvents) = False
+                   .Sheet = 23
+                   .Row = Row
+                   .Col = .ColLetterToNumber("G")
+                   If (.value = "1") Then
+                       .Row = Row
+                       ' chi tieu STT
+                       .Col = .ColLetterToNumber("P")
+                       .Lock = True
+                       
+                       .Text = ""
+                       UpdateCell fps, .Col, .Row, .Text
+                       
+                       .Col = .ColLetterToNumber("AH")
+                       .Text = ""
+                       UpdateCell fps, .Col, .Row, .Text
+                   Else
+                       .Row = Row
+                       ' chi tieu STT
+                       .Col = .ColLetterToNumber("P")
+                       .Lock = False
+                      
+                   End If
+                   fps.EventEnabled(EventAllEvents) = True
+           End If
         fps.EventEnabled(EventAllEvents) = True
     End With
 End Sub

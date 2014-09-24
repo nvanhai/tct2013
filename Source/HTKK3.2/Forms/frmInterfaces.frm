@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":1993
+         SpreadDesigner  =   "frmInterfaces.frx":1969
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1C45
+      SpreadDesigner  =   "frmInterfaces.frx":1BF1
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -5395,13 +5395,12 @@ Private Function GetAllMapPhuLuc() As MSXML.DOMDocument
                     MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_01_GTGT_xml.xml")
                 Else
     
-                    'If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01A_TNDN" Or MaPL = "02_TNDN" Or MaPL = "01_NTNN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Then
-                    If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01B_TNDN" Or MaPL = "02_TNDN" Or MaPL = "01_NTNN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Or MaPL = "01_TD_GTGT" Or MaPL = "01A_TNDN_DK" Or MaPL = "01B_TNDN_DK" Or MaPL = "01_TAIN_DK" Or MaPL = "02_TNDN_DK" Or MaPL = "03_TD_TAIN" Or MaPL = "01_BCTL_DK" Then
-                        MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT156_xml.xml")
-                    Else
-                        MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT28_xml.xml")
-                                
-                    End If
+'                    'If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01A_TNDN" Or MaPL = "02_TNDN" Or MaPL = "01_NTNN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Then
+'                    If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01B_TNDN" Or MaPL = "02_TNDN" Or MaPL = "01_NTNN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Or MaPL = "01_TD_GTGT" Or MaPL = "01A_TNDN_DK" Or MaPL = "01B_TNDN_DK" Or MaPL = "01_TAIN_DK" Or MaPL = "02_TNDN_DK" Or MaPL = "03_TD_TAIN" Or MaPL = "01_BCTL_DK" Then
+                     MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT156_xml.xml")
+'                    Else
+'                        MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT28_xml.xml")
+'                    End If
                 End If
             End If
         Else
