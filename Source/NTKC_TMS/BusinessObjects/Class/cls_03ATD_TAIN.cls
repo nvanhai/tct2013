@@ -123,6 +123,11 @@ End Function
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
     Dim i As Integer
     i = 0
+    Dim varMaDM As Variant
+    Dim TenDM As String
+    Dim varID            As Variant, varDVT As Variant, varThueSuat As Variant
+    Dim iTenTN           As String, strDVT As String, strThueSuat As String
+    Dim strIdQLT         As String, blnSuaThueSuat As Boolean
     ReDim Preserve larrPhongXuLy(0)
     larrPhongXuLy(0) = "00"
     ReDim Preserve larrid(0)
@@ -150,6 +155,29 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .TypeComboBoxCurSel = 0
         UpdateCell fps, .Col, .Row, .Text
         lSoPhongXL = i
+        
+        'fill data TAI NGUYEN
+        .Sheet = 1
+        strIdQLT = ""
+        varID = Empty
+        varDVT = Empty
+        varThueSuat = Empty
+        strDVT = vbNullString
+        strThueSuat = vbNullString
+
+        'Lay gia tri Ma
+        .Sheet = 1
+        .GetText .ColLetterToNumber("S"), 36, varID
+        DataDM_TAIN varID, strIdQLT, iTenTN, strDVT, strThueSuat, blnSuaThueSuat
+        .Col = .ColLetterToNumber("F")
+        .Row = 26
+        .Text = iTenTN
+        
+        'updated ID cho tai nguyen
+        .Col = .ColLetterToNumber("S")
+        .Row = 36
+        .Text = strIdQLT
+        UpdateCell fps, .Col, .Row, .Text
     End With
     
     Prepared2 = True
@@ -408,7 +436,35 @@ Private Sub fps_KeyPress(KeyAscii As Integer)
 '        End If
 '    End With
 End Sub
-
+Private Sub DataDM_TAIN(ByVal Id As String, Optional ByRef strIdQLT As String, Optional ByRef TenTN As String, Optional ByRef DVT As String, Optional ByRef strThueSuat As String, Optional ByRef blnSuaThueSuat As Boolean)
+Dim arrDanhsach() As String
+Dim strDataFileName As String
+Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+Dim xmlNode As MSXML.IXMLDOMNode
+        
+        fps.Sheet = 1
+        fps.Row = 36
+        fps.Col = fps.ColLetterToNumber("O")
+       strDataFileName = GetCatalogueFileNameTk_03TD_TAIN(1, fps.Text)
+    
+       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Cell")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If Id = arrDanhsach(1) Then
+                            strIdQLT = arrDanhsach(0)
+                            TenTN = arrDanhsach(2)
+                            DVT = arrDanhsach(3)
+                            strThueSuat = arrDanhsach(4)
+                            blnSuaThueSuat = IIf(arrDanhsach(5) = "1", True, False)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub
 Public Function CheckValidData() As Boolean
     Dim varCheckValue As Variant, varNoteValue As Variant
     Dim varNgayNop As Variant
@@ -522,7 +578,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "03A_TD_TAIN13"
+    vLOAI_TKHAI = "03A_TD_TAIN"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     

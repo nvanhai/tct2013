@@ -2337,7 +2337,7 @@ On Error GoTo ErrHandle
     End If
     ' end
     
-    dsTK_DLT = "~1~2~3~4~5~6~11~12~46~47~48~49~15~16~50~51~36~70~71~72~73~74~75~80~81~82~77~86~87~89~42~43~17~59~41~76~90~92~93~94~96~98~99~25~"
+    dsTK_DLT = "~1~2~3~4~5~6~11~12~46~47~48~49~15~16~50~51~36~70~71~72~73~74~75~80~81~82~77~85~86~87~89~42~43~17~59~41~76~90~92~93~94~96~98~99~25~"
     ' Kiem tra neu MDL thue khac thi canh bao
     idToKhai = Val(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
     'If IdToKhai = 1 Or IdToKhai = 2 Or IdToKhai = 4 Or IdToKhai = 11 Or IdToKhai = 12 Or IdToKhai = 46 Or IdToKhai = 47 Or IdToKhai = 48 Or IdToKhai = 49 Or IdToKhai = 15 Or IdToKhai = 16 Or IdToKhai = 50 Or IdToKhai = 51 _
@@ -3119,10 +3119,10 @@ Private Sub Barcode_Scaned(strBarcode As String)
         ' 2. To khai CDKT phien ban 2.0.0 co ID la 18 (bo 15) -> chuyen thanh ID la 55
         If Left$(strPrefix, 3) = "210" Or Left$(strPrefix, 3) = "200" Or Left$(strPrefix, 3) = "131" Or Left$(strPrefix, 3) = "130" Then
             idToKhai = Mid(strPrefix, 4, 2)
-
-            If Trim(idToKhai) = "18" Then
-                strPrefix = Left$(strPrefix, 3) & "55" & Mid$(strPrefix, 6, Len(strPrefix) - 5)
-            End If
+'remove for 01_BK_BC26_AC
+'            If Trim(idToKhai) = "18" Then
+'                strPrefix = Left$(strPrefix, 3) & "55" & Mid$(strPrefix, 6, Len(strPrefix) - 5)
+'            End If
 
             If Trim(idToKhai) = "19" Then
                 strPrefix = Left$(strPrefix, 3) & "56" & Mid$(strPrefix, 6, Len(strPrefix) - 5)
@@ -3419,7 +3419,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
         
         '17102011 khong nhan cac mau an chi in ra bang HTKK phien ban nho hon 302
         If (Val(Left$(strPrefix, 3)) < 302) Then
-            If Trim(idToKhai) = "64" Or Trim(idToKhai) = "65" Or Trim(idToKhai) = "66" Or Trim(idToKhai) = "67" Or Trim(idToKhai) = "68" Then
+            If Trim(idToKhai) = "64" Or Trim(idToKhai) = "65" Or Trim(idToKhai) = "66" Or Trim(idToKhai) = "67" Or Trim(idToKhai) = "68" Or Trim(idToKhai) = "18" Or Trim(idToKhai) = "27" Then
                 DisplayMessage "0122", msOKOnly, miInformation
                 Exit Sub
             End If
@@ -3859,8 +3859,8 @@ On Error GoTo ErrHandler
     Dim idToKhaiCheck As Integer
     ' Khong check doi voi cac BCTC
     idToKhaiCheck = Val(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
-    'remove 24,25,26
-    If (idToKhaiCheck >= 27 And idToKhaiCheck <= 35) Or (idToKhaiCheck >= 55 And idToKhaiCheck <= 58) Or (idToKhaiCheck >= 18 And idToKhaiCheck <= 21) Or idToKhaiCheck = 69 Then
+    'remove 24,25,26,18,27
+    If (idToKhaiCheck >= 28 And idToKhaiCheck <= 35) Or (idToKhaiCheck >= 55 And idToKhaiCheck <= 58) Or (idToKhaiCheck >= 19 And idToKhaiCheck <= 21) Or idToKhaiCheck = 69 Then
         isSheetTk = False
     End If
     
@@ -4543,7 +4543,7 @@ On Error GoTo ErrHandle
     
     On Error GoTo ErrHandle
     
-    If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 26 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Or Val(strIDBCTC) = 68 Or Val(strIDBCTC) = 94 Or Val(strIDBCTC) = 96 Then
+    If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Or Val(strIDBCTC) = 68 Or Val(strIDBCTC) = 18 Or Val(strIDBCTC) = 94 Or Val(strIDBCTC) = 96 Then
         If Val(strIDBCTC) = 36 Then
             LoaiKyKK = LoaiToKhai(strData)
         Else
@@ -4564,7 +4564,7 @@ On Error GoTo ErrHandle
         dNgayCuoiKy = DateAdd("d", -1, dNgayCuoiKy)
         
         'Xu ly rieng cho to khai thang/quy
-        If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 26 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 95 Or Val(strIDBCTC) = 36 Or Val(strIDBCTC) = 94 Or Val(strIDBCTC) = 96 Then
+        If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 95 Or Val(strIDBCTC) = 36 Or Val(strIDBCTC) = 94 Or Val(strIDBCTC) = 96 Then
             If LoaiKyKK = True Then
                 dNgayDauKy = GetNgayDauQuy(CInt(TAX_Utilities_Srv_New.ThreeMonths), CInt(TAX_Utilities_Srv_New.Year), iNgayTaiChinh, iThangTaiChinh)
                 dNgayCuoiKy = DateAdd("m", 3, dNgayDauKy)
@@ -4704,7 +4704,7 @@ On Error GoTo ErrHandle
     ' Lay so thu tu cua to khai da dua vao RCV_TKHAI_HDR
     ' So thu tu nay phai lay theo cung Nguoi nop thue, ky ke khai, va cung loai to khai
     ' An chi
-    If (Val(strID) >= 64 And Val(strID) <= 68) Or Val(strID) = 91 Or Val(strID) = 7 Or Val(strID) = 9 Or Val(strID) = 10 Or Val(strID) = 13 Then
+    If (Val(strID) >= 64 And Val(strID) <= 68) Or Val(strID) = 18 Or Val(strID) = 27 Or Val(strID) = 91 Or Val(strID) = 7 Or Val(strID) = 9 Or Val(strID) = 10 Or Val(strID) = 13 Or Val(strID) = 14 Then
             ' An chi
                     ' 01/TBAC
         If Val(strID) = 64 Or Val(strID) = 91 Then
@@ -6820,11 +6820,13 @@ Private Function formatMaToKhai(ByVal strID As String) As String
     strCode = Mid$(strID, Len(strID) - 1, 2)
     strItem = Left$(strID, Len(strID) - 2)
     If (strCode = "11") Then
-        strRetValue = "('" & strItem & "','" & strID & "','" & strItem & "13')"
+        strRetValue = "('" & strItem & "','" & strID & "','" & strItem & "13','" & strItem & "14')"
     ElseIf strCode = "13" Then
-        strRetValue = "('" & strItem & "','" & strItem & "11','" & strID & "')"
+        strRetValue = "('" & strItem & "','" & strItem & "11','" & strID & "','" & strItem & "14')"
+    ElseIf strCode = "14" Then
+        strRetValue = "('" & strItem & "','" & strItem & "11','" & strID & "','" & strItem & "13')"
     Else
-        strRetValue = "('" & strID & "','" & strID & "11','" & strID & "13')"
+        strRetValue = "('" & strID & "','" & strID & "11','" & strID & "13','" & strItem & "14')"
     End If
     formatMaToKhai = strRetValue
 End Function
