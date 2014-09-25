@@ -33,41 +33,41 @@
 		<ghiChu>AT_31</ghiChu>
 	</Static>
 	<Static GroupName="DThuNTPhu">
-		<keKhai>2147483647</keKhai>
-				<quyetToan>2147483647</quyetToan>
-				<chenhLech>2147483647</chenhLech>
-				<ghiChu>String</ghiChu>
+		<keKhai>T_32</keKhai>
+		<quyetToan>AB_32</quyetToan>
+		<chenhLech>AJ_32</chenhLech>
+		<ghiChu>AT_32</ghiChu>
 	</Static>
 	<Static GroupName="DThuTinhThue">
-		<keKhai>2147483647</keKhai>
-				<quyetToan>2147483647</quyetToan>
-				<chenhLech>2147483647</chenhLech>
-				<ghiChu>String</ghiChu>
+		<keKhai>T_33</keKhai>
+		<quyetToan>AB_33</quyetToan>
+		<chenhLech>AJ_33</chenhLech>
+		<ghiChu>AT_33</ghiChu>
 	</Static>
 	<Static GroupName="SoThueTNDNPNop">
-		<keKhai>2147483647</keKhai>
-				<quyetToan>2147483647</quyetToan>
-				<chenhLech>2147483647</chenhLech>
-				<ghiChu>String</ghiChu>
+		<keKhai>T_34</keKhai>
+		<quyetToan>AB_34</quyetToan>
+		<chenhLech>AJ_34</chenhLech>
+		<ghiChu>AT_34</ghiChu>
 	</Static>
 	<Static GroupName="SoThueDaNop">
-		<keKhai>2147483647</keKhai>
-				<quyetToan>2147483647</quyetToan>
-				<chenhLech>2147483647</chenhLech>
-				<ghiChu>String</ghiChu>
+		<keKhai>T_35</keKhai>
+		<quyetToan>AB_35</quyetToan>
+		<chenhLech>AJ_35</chenhLech>
+		<ghiChu>AT_35</ghiChu>
 	</Static>
 	<Static GroupName="SoThueConPNop">
-		<keKhai>2147483647</keKhai>
-				<quyetToan>2147483647</quyetToan>
-				<chenhLech>2147483647</chenhLech>
-				<ghiChu>String</ghiChu>
+		<keKhai>T_36</keKhai>
+		<quyetToan>AB_36</quyetToan>
+		<chenhLech>AJ_36</chenhLech>
+		<ghiChu>AT_36</ghiChu>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>AL_46</nguoiKy>
-		<ngayKy>AL_48</ngayKy>
+		<nguoiKy>AL_44</nguoiKy>
+		<ngayKy>AL_46</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>M_46</tenNVienDLyThue>
-		<cchiHNghe>M_48</cchiHNghe>
+		<tenNVienDLyThue>M_44</tenNVienDLyThue>
+		<cchiHNghe>M_46</cchiHNghe>
 	</Static>
 </HSoKhaiThue>

@@ -1,13 +1,13 @@
 <PLuc_01_DK>
 	<Static GroupName="PLuc_01_DK">
-		<ct09>K_19</ct09>
+		<ct09>R_19</ct09>
 	</Static>
 	<Dynamic GroupName="NghiaVuThue">
-		<ChiTietNghiaVuThue id="id">
-		        <mstNThau>D_27</mstNThau>
+		<ChiTietNghiaVuThue id="ID_1">
+		    <mstNThau TINType="1">D_27</mstNThau>
 			<tenNThau>L_27</tenNThau>
 			<tyLePBoNThau>U_27</tyLePBoNThau>
-			<soThuePSinhPNop>AB_27</soThuePSinhPNop>
+			<soThuePSinhPNopNThau>AB_27</soThuePSinhPNopNThau>
 			<ghiChuNThau>AL_27</ghiChuNThau>
 		</ChiTietNghiaVuThue>
 	</Dynamic>

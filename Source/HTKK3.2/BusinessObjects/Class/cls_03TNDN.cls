@@ -2045,11 +2045,22 @@ End Sub
 Public Sub finish()
     ResetWarning
 
+    Dim ASheet As Integer, SSheet As Integer
+    Dim xmlCellNode As MSXML.IXMLDOMNode
+    Dim vTemp As Variant
+    Dim iCol As Long, iRow As Long, i As Long
     With fps
-        
-'        ' Phu Luc 03-5
-        UpdateSheets
+        .EventEnabled(EventAllEvents) = False
+        ASheet = .ActiveSheet
+        SSheet = .Sheet
+                  
+        Set xmlCellNode = Nothing
         CheckDynamicError
+        UpdateSheets
+        .ActiveSheet = ASheet
+        .Sheet = SSheet
+        .EventEnabled(EventAllEvents) = True
+        
     End With
 End Sub
 

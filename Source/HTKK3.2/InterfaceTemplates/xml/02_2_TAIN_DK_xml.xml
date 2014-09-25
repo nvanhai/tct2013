@@ -1,12 +1,16 @@
-<PL_02_2TAIN_DK>
-	<SoThueTAINTamTinhDaNop>
-		<ChiTiet>
-			<toKhaiThueTaiNguyen></toKhaiThueTaiNguyen>
-			<soTienThueDaNop_NgoaiTe>1</soTienThueDaNop_NgoaiTe>
-			<soTienThueDaNop_VietNam>1</soTienThueDaNop_VietNam>
-			<ghiChu></ghiChu>
-		</ChiTiet>
-		<tongSoTienThueDaNop_NgoaiTe>1</tongSoTienThueDaNop_NgoaiTe>
-		<tongSoTienThueDaNop_VietNam>0.0</tongSoTienThueDaNop_VietNam>
-	</SoThueTAINTamTinhDaNop>
-</PL_02_2TAIN_DK>
+<PL_02_1TAIN_DK>
+		<SLuongDThu>
+			<CTietSLuongDThu ID="ID_1">
+				<ct2></ct2>
+				<ct3></ct3>
+				<ct4>0.0</ct4>
+				<ct5></ct5>
+				<ct6>0.0</ct6>
+				<ct7>0.0</ct7>
+				<ct8>0.0</ct8>
+				<ct9></ct9>
+			</CTietSLuongDThu>
+			<tong_ct6>0.0</tong_ct6>
+			<tong_ct8>0.0</tong_ct8>
+		</SLuongDThu>
+</PL_02_1TAIN_DK>

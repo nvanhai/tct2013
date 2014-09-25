@@ -46,6 +46,7 @@
 	<Map MapID="70" MaFile="01_NTNN" Version ="2.0.1" VersionKHBS ="2.0.2" MaTK="41"/>
 	<Map MapID="80" MaFile="02_NTNN" Version ="2.0.5" VersionKHBS ="2.0.5" MaTK="74"/>
 	<Map MapID="81" MaFile="03_NTNN" Version ="2.0.1" VersionKHBS ="2.0.2" MaTK="73"/>
+	<Map MapID="82" MaFile="04_NTNN" Version ="2.0.5" VersionKHBS ="2.0.5" MaTK="72"/>
 	
 	<Map MapID="101_10" MaFile="" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK=""/>
 	
@@ -114,6 +115,8 @@
 	<Map MapID="10" MaFile="03_TBAC_BLP" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="263"/> 
 	<Map MapID="13" MaFile="01_AC_BLP" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="261"/> 
 	<Map MapID="92" MaFile="01_TAIN_DK" Version ="2.0.3" VersionKHBS ="2.0.3" MaTK="135"/> 
+	<Map MapID="93" MaFile="02_TNDN_DK" Version ="2.0.5" VersionKHBS ="2.0.5" MaTK="86"/> 
+	<Map MapID="89" MaFile="02_TAIN_DK" Version ="2.0.5" VersionKHBS ="2.0.5" MaTK="86"/> 
 	<Map MapID="94" MaFile="01_TD_GTGT" Version ="2.0.1" VersionKHBS ="2.0.2" MaTK="132"/> 
 	<Map MapID="96" MaFile="03_TD_TAIN" Version ="2.0.2" VersionKHBS ="2.0.2" MaTK="133"/> 
 	<Map MapID="97" MaFile="03A_TD_TAIN" Version ="2.0.5" VersionKHBS ="2.0.5" MaTK="84"/> 
