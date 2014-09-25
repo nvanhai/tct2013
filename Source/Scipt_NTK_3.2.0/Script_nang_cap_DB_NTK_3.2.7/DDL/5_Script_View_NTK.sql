@@ -1,5 +1,5 @@
 --view BC26 PL01
-CREATE OR REPLACE VIEW RCV_V_BK26_01_AC AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_BK26_01_AC AS
 select hdr_id
       , row_id so_tt
      , ten_HD
@@ -54,7 +54,7 @@ GROUP BY dtl.hdr_id,
 where ky_hieu_hd is not null;
 
 --view BC26 PL02
-CREATE OR REPLACE VIEW RCV_V_BK26_02_AC AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_BK26_02_AC AS
 select hdr_id
       , row_id so_tt
      , ten_HD
@@ -364,7 +364,7 @@ SELECT ID, tin, loai_bc, ngay_nop, kybc_tu_ngay, kybc_den_ngay,
     WHERE loai_bc = '01_BK_BC26_AC' AND da_nhan IS NULL;
 	
 --restore
-CREATE OR REPLACE VIEW RCV_V_HDR
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_HDR
 (id, tin, loai_bc, ngay_nop, kybc_tu_ngay, kybc_den_ngay, ngay_cap_nhat, nguoi_cap_nhat, so_tt_tk, da_nhan, phong_xly, phong_qly, co_bang_ke, hthuc_nop, itkhai_id, ten_dv_cq, tin_dv_cq, ngay_bc, nguoi_dai_dien, ten_cq_tiep_nhan, ly_do_mat, ngay_mat_huy, phuong_phap_huy, dung_dn_cq, ghi_chu, ma_cqt, loai_bc26, nguoi_lap_bieu, quy_bc, ngay_tb_ph)
 AS
 SELECT ID, tin, loai_bc, ngay_nop, kybc_tu_ngay, kybc_den_ngay,
@@ -378,7 +378,7 @@ SELECT ID, tin, loai_bc, ngay_nop, kybc_tu_ngay, kybc_den_ngay,
 
 	
 --updated 01_AC cho truong hop NULL: mau so, loai hoa don
-CREATE OR REPLACE VIEW RCV_V_01_AC AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_01_AC AS
 select hdr_id
       , row_id so_tt
      , DECODE(length(trim(MST_TC_dat_in)),13,substr(trim(MST_TC_dat_in),1,10)||'-'||substr(trim(MST_TC_dat_in),11,3),trim(MST_TC_dat_in)) MST_TC_dat_in
@@ -442,7 +442,7 @@ GROUP BY dtl.hdr_id,
          dtl.row_id
 );
 --cap nhat view cho to thang
-CREATE OR REPLACE VIEW RCV_V_BC26_HDR
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_BC26_HDR
 (id, ma_cqt, ma_cqt_cden, loai_bcao, ky_tungay, ky_denngay, bcao_tungay, bcao_denngay, dtnt_tin, thu_truong, ngay_nop_bcao, hthuc_nhap, ghi_chu, tthai_nhan, ngay_nhan, ngay_bc, loai_bc26, itkhai_id, phong_xly)
 AS
 SELECT  id,
