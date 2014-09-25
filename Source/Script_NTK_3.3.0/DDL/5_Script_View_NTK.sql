@@ -1,7 +1,7 @@
 --------------------------------
 --03/TNDN
 --------------------------------
-CREATE OR REPLACE VIEW RCV_V_TKHAI_QTOAN_TNDN_14 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_QTOAN_TNDN_14 AS
 SELECT dtl.hdr_id, dtl.ctk_id, MAX(dtl.so_tt) so_tt
 , MAX(dtl.so_dtnt) so_dtnt
 , MAX(dtl.kieu_dlieu_ds) kieu_dlieu_ds
@@ -30,7 +30,7 @@ GROUP BY dtl.hdr_id,
 dtl.ctk_id
 ;
 	--PL 03 - 1x/TNDN
-CREATE OR REPLACE VIEW RCV_V_PLUC_QTOAN_TNDN_01ABC_14 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_01ABC_14 AS
 SELECT dtl.hdr_id
      , dtl.loai_dlieu
      , MAX(dtl.so_tien) so_tien
@@ -64,7 +64,7 @@ GROUP BY dtl.hdr_id,
          dtl.so_tt
 ;
 	--PL03-2x/TNDN
-CREATE OR REPLACE VIEW RCV_V_PLUC_QTOAN_TNDN_2AB_14 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_2AB_14 AS
 SELECT dtl.hdr_id
      , dtl.loai_dlieu
      , MAX(dtl.nam_phat_sinh_lo) nam_phat_sinh_lo
@@ -105,7 +105,7 @@ GROUP BY dtl.hdr_id,
          dtl.so_tt
 ;
 	--PL 03-3A
-CREATE OR REPLACE VIEW RCV_V_PLUC_QTOAN_TNDN_3A_14 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_3A_14 AS
 SELECT dtl.hdr_id
      , dtl.loai_dlieu
      , MAX(dtl.dieu_kien_uu_dai_hoac_so_tien) dieu_kien_uu_dai_hoac_so_tien
@@ -144,7 +144,7 @@ GROUP BY dtl.hdr_id,
          dtl.kieu_dlieu
 ;
 	--PL 03
-CREATE OR REPLACE VIEW RCV_V_PLUC_QTOAN_TNDN_3B_14 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_3B_14 AS
 SELECT dtl.hdr_id
      , dtl.loai_dlieu
      , dtl.ten_ctieu
@@ -184,7 +184,7 @@ GROUP BY dtl.hdr_id,
          dtl.kieu_dlieu
 ;	
 	--PL 03
-CREATE OR REPLACE VIEW RCV_V_PLUC_QTOAN_TNDN_3C_14 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_3C_14 AS
 SELECT dtl.hdr_id
      , dtl.loai_dlieu
      , MAX(dtl.dieu_kien_uu_dai_hoac_so_tien) dieu_kien_uu_dai_hoac_so_tien
@@ -224,7 +224,7 @@ GROUP BY dtl.hdr_id,
          dtl.kieu_dlieu
 ;	
 	--PL 03
-CREATE OR REPLACE VIEW RCV_V_PLUC_QTOAN_TNDN_4_14 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_4_14 AS
 SELECT dtl.hdr_id
      , dtl.loai_dlieu
      , MAX(dtl.ten_dia_chi_NNT) ten_dia_chi_NNT
@@ -279,7 +279,7 @@ GROUP BY dtl.hdr_id,
          dtl.so_tt
 ;	
 	--PL 03
-CREATE OR REPLACE VIEW RCV_V_PLUC_QTOAN_TNDN_5_14 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_5_14 AS
 SELECT dtl.hdr_id
      , dtl.loai_dlieu
      , MAX(dtl.so_tien) so_tien
@@ -316,7 +316,7 @@ GROUP BY dtl.hdr_id,
          dtl.so_tt
 ;	
 	--PL 03
-CREATE OR REPLACE VIEW RCV_V_PLUC_QTOAN_TNDN_6_14 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_6_14 AS
 SELECT dtl.hdr_id
      , dtl.loai_dlieu
      , dtl.ten_ctieu
@@ -362,7 +362,7 @@ GROUP BY dtl.hdr_id,
          dtl.so_tt
 ;
 	--PL 03-7
-CREATE OR REPLACE VIEW RCV_V_PLUC_QTOAN_TNDN_7_14 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_7_14 AS
 SELECT dtl.hdr_id
      , dtl.loai_dlieu
      , dtl.ten_ctieu
@@ -449,7 +449,7 @@ GROUP BY dtl.hdr_id,
          dtl.so_tt
 ;	
 	--PL 03-8
-CREATE OR REPLACE VIEW RCV_V_PLUC_QTOAN_TNDN_8_14 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_8_14 AS
 SELECT dtl.hdr_id
      , dtl.loai_dlieu
      , dtl.row_id
@@ -506,7 +506,7 @@ GROUP BY dtl.hdr_id,
          dtl.so_tt
 ;	
 	--PL 03-9
-CREATE OR REPLACE VIEW RCV_V_PLUC_QTOAN_TNDN_9_14 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_9_14 AS
 (
         SELECT
             dtl.hdr_id,
@@ -554,7 +554,7 @@ CREATE OR REPLACE VIEW RCV_V_PLUC_QTOAN_TNDN_9_14 AS
 --------------------------------
 --02/TAIN
 -------------------------------
-CREATE OR REPLACE VIEW RCV_V_TKHAI_02_TAIN_14 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_02_TAIN_14 AS
 SELECT hdr_id
       ,row_id
       ,so_tt
@@ -562,10 +562,12 @@ SELECT hdr_id
       ,btn_id
       ,don_vi_tinh
       ,san_luong
-      ,gia_don_vi
+      ,gia_tinh_thue
       ,tsuat_dtnt
-      ,gia_tt_don_vi
-      ,decode(gia_don_vi,0,san_luong*gia_tt_don_vi,san_luong*gia_don_vi*(tsuat_dtnt/100)) thue_phai_nop_dtnt
+      ,muc_thue_an_dinh
+      ,decode(gia_tinh_thue,0,san_luong*muc_thue_an_dinh,san_luong*gia_tinh_thue*(tsuat_dtnt/100)) thue_phai_nop_dtnt     
+      ,thue_du_kien_duoc_mien_giam
+      ,(decode(gia_tinh_thue,0,san_luong*muc_thue_an_dinh,san_luong*gia_tinh_thue*(tsuat_dtnt/100)) - thue_du_kien_duoc_mien_giam)thue_tai_nguyen_phat_sinh
       ,thue_da_ke_khai
       ,chenh_lech
 FROM
@@ -577,10 +579,11 @@ SELECT dtl.hdr_id
      , MAX(dtl.btn_id) btn_id
      , MAX(dtl.don_vi_tinh) don_vi_tinh
      , MAX(dtl.san_luong) san_luong
-     , MAX(dtl.gia_don_vi) gia_don_vi
+     , MAX(dtl.gia_tinh_thue) gia_tinh_thue
      , MAX(dtl.tsuat_dtnt) tsuat_dtnt
-     , MAX(dtl.gia_tt_don_vi) gia_tt_don_vi
-     , MAX(dtl.thue_phai_nop_dtnt) thue_phai_nop_dtnt
+     , MAX(dtl.muc_thue_an_dinh) muc_thue_an_dinh
+     --, MAX(dtl.thue_phai_nop_dtnt) thue_phai_nop_dtnt
+     , MAX(dtl.thue_du_kien_duoc_mien_giam) thue_du_kien_duoc_mien_giam
      , MAX(dtl.thue_da_ke_khai) thue_da_ke_khai
      , MAX(dtl.chenh_lech) chenh_lech
 FROM QLT_NTK.rcv_gdien_tkhai gd,
@@ -590,20 +593,21 @@ FROM QLT_NTK.rcv_gdien_tkhai gd,
          gdien.id,
          gdien.so_tt,
          DECODE(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL) ddiem_kthac,
-    	   DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL) btn_id,
-    	   DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL) don_vi_tinh,
-    	   DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) san_luong,
-    	   replace(DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL),',','.') gia_don_vi,
-    	   DECODE(gdien.cot_06, tkd.ky_hieu, NVL(tkd.gia_tri,0), NULL) tsuat_dtnt,
-         DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL) gia_tt_don_vi,
-         DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL) thue_phai_nop_dtnt,
+         DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL) btn_id,
+         DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL) don_vi_tinh,
+         DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) san_luong,
+         replace(DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL),',','.') gia_tinh_thue,
+         DECODE(gdien.cot_06, tkd.ky_hieu, NVL(tkd.gia_tri,0), NULL) tsuat_dtnt,
+         DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL) muc_thue_an_dinh,
+         --DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL) thue_phai_nop_dtnt,
+         DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL) thue_du_kien_duoc_mien_giam,--
          DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL) thue_da_ke_khai,
          DECODE(gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL) chenh_lech
   FROM QLT_NTK.rcv_tkhai_dtl tkd,
        QLT_NTK.rcv_gdien_tkhai gdien,
        QLT_NTK.rcv_map_ctieu ctieu
   WHERE (ctieu.gdn_id = gdien.id)
-	AND (ctieu.ky_hieu = tkd.ky_hieu)
+  AND (ctieu.ky_hieu = tkd.ky_hieu)
     AND (tkd.loai_dlieu = '02_TAIN14')
 ) dtl
 WHERE (gd.loai_dlieu = '02_TAIN14')
@@ -612,10 +616,11 @@ GROUP BY dtl.hdr_id,
          dtl.row_id
          , dtl.so_tt
 );
+
 --------------------------------
 --02/BVMT
 -------------------------------
-CREATE OR REPLACE VIEW RCV_V_TKHAI_02_BVMT_14 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_02_BVMT_14 AS
 SELECT dtl.hdr_id
      , dtl.row_id
      , dtl.so_tt
@@ -655,7 +660,7 @@ GROUP BY dtl.hdr_id,
 --------------------------------
 --02/PHLP
 --------------------------------
-CREATE OR REPLACE VIEW RCV_V_TKHAI_02_PHLP AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_02_PHLP AS
 SELECT dtl.hdr_id
      , dtl.row_id
      , dtl.so_tt
@@ -698,7 +703,7 @@ GROUP BY dtl.hdr_id,
 --------------------------------
 --03A_TD_TAIN
 --------------------------------
-CREATE OR REPLACE VIEW RCV_V_TKHAI_03A_TD_TAIN AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_03A_TD_TAIN AS
 (
 
         SELECT
@@ -751,7 +756,7 @@ CREATE OR REPLACE VIEW RCV_V_TKHAI_03A_TD_TAIN AS
             dtl.ten_ctieu
     );
 	--PL 03A-1
-CREATE OR REPLACE VIEW RCV_V_PLUC_03A_1_TD_TAIN AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_03A_1_TD_TAIN AS
 (
         
         SELECT
@@ -799,7 +804,7 @@ CREATE OR REPLACE VIEW RCV_V_PLUC_03A_1_TD_TAIN AS
 --------------------------------
 --01/PHLP
 --------------------------------
-CREATE OR REPLACE VIEW RCV_V_TKHAI_01_PHLP AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_01_PHLP AS
 SELECT dtl.hdr_id
      , dtl.row_id
      , dtl.so_tt
@@ -838,7 +843,7 @@ GROUP BY dtl.hdr_id,
 --------------------------------
 --02/NTNN
 --------------------------------
-CREATE OR REPLACE VIEW RCV_V_TKHAI_02_NTNN AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_02_NTNN AS
 SELECT dtl.hdr_id
      , dtl.row_id
      , dtl.so_tt
@@ -874,7 +879,7 @@ GROUP BY dtl.hdr_id,
           dtl.so_tt,
           dtl.ctq_id;
 	-- PL 02-1
-CREATE OR REPLACE VIEW RCV_V_PLUC_02_1_NTNN AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_02_1_NTNN AS
 SELECT dtl.hdr_id
      , dtl.loai_dlieu
      , MAX(dtl.ten_nha_thau_nuoc_ngoai) ten_nha_thau_nuoc_ngoai
@@ -927,7 +932,7 @@ GROUP BY dtl.hdr_id,
          dtl.so_tt
 ;	
 	-- PL 02-2
-CREATE OR REPLACE VIEW RCV_V_PLUC_02_2_NTNN AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_02_2_NTNN AS
 SELECT dtl.hdr_id
      , dtl.loai_dlieu
      , MAX(dtl.ten_nha_thau_phu_VN) ten_nha_thau_phu_VN
@@ -978,7 +983,7 @@ GROUP BY dtl.hdr_id,
 --------------------------------
 --04/NTNN
 --------------------------------
-CREATE OR REPLACE VIEW RCV_V_TKHAI_04_NTNN AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_04_NTNN AS
 SELECT dtl.hdr_id
      , dtl.row_id
      , dtl.so_tt
@@ -1014,7 +1019,7 @@ GROUP BY dtl.hdr_id,
           dtl.so_tt,
           dtl.ctq_id;
 	--PL 04-1
-CREATE OR REPLACE VIEW RCV_V_PLUC_04_1_NTNN AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_04_1_NTNN AS
 SELECT dtl.hdr_id
      , dtl.loai_dlieu
      , MAX(dtl.ten_nha_thau_phu_VN) ten_nha_thau_phu_VN
@@ -1065,7 +1070,7 @@ GROUP BY dtl.hdr_id,
 --------------------------------
 --02/TNDN-DK
 --------------------------------
-CREATE OR REPLACE VIEW RCV_V_TKHAI_02_TNDN_DK AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_02_TNDN_DK AS
 SELECT
     DTL.HDR_ID ,
     DTL.CTK_ID ,
@@ -1104,7 +1109,7 @@ GROUP BY
     DTL.HDR_ID,
     DTL.CTK_ID;
 	--PL 02-1
-CREATE OR REPLACE VIEW RCV_V_PLUC_02_1_TNDN_DK AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_02_1_TNDN_DK AS
 (
 
         SELECT
@@ -1148,7 +1153,7 @@ CREATE OR REPLACE VIEW RCV_V_PLUC_02_1_TNDN_DK AS
 --------------------------------
 --02/TAIN-DK
 --------------------------------
-CREATE OR REPLACE VIEW RCV_V_TKHAI_02_TAIN_DK AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_02_TAIN_DK AS
 SELECT
     DTL.HDR_ID ,
     DTL.CTK_ID ,
@@ -1187,7 +1192,7 @@ GROUP BY
     DTL.HDR_ID,
     DTL.CTK_ID;
 	--PL 02-1
-CREATE OR REPLACE VIEW RCV_V_PLUC_02_1_TAIN_DK AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_02_1_TAIN_DK AS
 (
 
         SELECT
@@ -1229,7 +1234,7 @@ CREATE OR REPLACE VIEW RCV_V_PLUC_02_1_TAIN_DK AS
             dtl.row_id
     );	
 	--PL 02-2
-CREATE OR REPLACE VIEW RCV_V_PLUC_02_2_TAIN_DK AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_02_2_TAIN_DK AS
 (
 
         SELECT
@@ -1279,7 +1284,7 @@ CREATE OR REPLACE VIEW RCV_V_PLUC_02_2_TAIN_DK AS
 --------------------------------
 --KHBS 2014
 --------------------------------
-CREATE OR REPLACE VIEW RCV_V_PLUC_KHBS14 AS
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_KHBS14 AS
 SELECT   dtl.hdr_id, dtl.so_tt so_tt, dtl.row_id row_id,
             MAX (dtl.ten_ctieu_dc) ten_ctieu_dc, MAX (dtl.ma_ctieu) ma_ctieu,
             MAX (dtl.so_da_kk) so_da_kk, MAX (dtl.so_dieu_chinh)
