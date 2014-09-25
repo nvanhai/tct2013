@@ -1772,6 +1772,9 @@ insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_H
 values ('02_BVMT14', '5', 'N', 11300, '5');
 
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('02_BVMT14', '6', 'N', 11300, '6');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('02_BVMT14', '7', 'N', 11300, '7');
 
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
@@ -1788,6 +1791,9 @@ values ('02_BVMT14', 'II4', 'N', 11301, 'II4');
 
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('02_BVMT14', 'II5', 'N', 11301, 'II5');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('02_BVMT14', 'II6', 'N', 11301, 'II6');
 
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('02_BVMT14', 'II7', 'N', 11301, 'II7');
