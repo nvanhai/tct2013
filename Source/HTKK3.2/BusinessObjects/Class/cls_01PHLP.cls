@@ -219,12 +219,12 @@ Dim xmlNodeH15 As MSXML.IXMLDOMNode
        'khi tron danh muc khoang san mac dinh don vi tinh la kg va cho phep sua sua
        If Col = .ColLetterToNumber("C") And .Text <> "" Then
             intIndexCombo = .typeComboboxCurSel
-            .Col = .ColLetterToNumber("AC")
+            .Col = .ColLetterToNumber("AB")
             .typeComboboxCurSel = intIndexCombo
             UpdateCell fps, .Col, .Row, .Text
             'Chon lai combo cua colF
-            .Col = .ColLetterToNumber("AD")
-            .GetText .ColLetterToNumber("AC"), Row, strId
+            .Col = .ColLetterToNumber("AC")
+            .GetText .ColLetterToNumber("AB"), Row, strId
             .Text = Trim(Mid(strId, 200, 10))
              UpdateCell fps, .Col, .Row, .Text
        End If

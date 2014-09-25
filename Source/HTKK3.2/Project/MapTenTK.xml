@@ -24,6 +24,7 @@
 	<Map MapID="75" TenTK="TỜ KHAI TẠM NỘP THUẾ THU NHẬP CÁ NHÂN - MẪU SỐ 08A/KK-TNCN"/>
 	
 	<Map MapID="70" TenTK="Tờ khai thuế nhà thầu nước ngoài - MẪU SỐ 01/NTNN"/>
+	<Map MapID="80" TenTK="TỜ KHAI QUYẾT TOÁN THUẾ NHÀ THẦU NƯỚC NGOÀI (Mẫu số 02/NTNN)"/>
 	<Map MapID="81" TenTK="Tờ khai thuế nhà thầu nước ngoài - MẪU SỐ 03/NTNN"/>
 	
 	<Map MapID="17" TenTK="TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP CÁ NHÂN - MẪU SỐ 05/KK-TNCN"/>
@@ -34,7 +35,7 @@
 	<Map MapID="41" TenTK="TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP CÁ NHÂN - MẪU SỐ 09/KK-TNCN"/>
 	
 	<Map MapID="06" TenTK="Tờ khai thuế tài nguyên(01/TAIN)"/>
-	<Map MapID="77" TenTK="02_TAIN"/>
+	<Map MapID="77" TenTK="TỜ KHAI QUYẾT TOÁN THUẾ TÀI NGUYÊN (MẪU SỐ 02/TAIN)"/>
 	
 	<Map MapID="05" TenTK="Thuế Tiêu Thụ Đặc Biệt"/>
 	
@@ -53,7 +54,10 @@
 	<Map MapID="27" TenTK="BẢNG KÊ HOÁ ĐƠN CHƯA SỬ DỤNG CỦA TỔ CHỨC, CÁ NHÂN CHUYỂN ĐỊA ĐIỂM KINH DOANH KHÁC ĐỊA BÀN CƠ QUAN THUẾ QUẢN LÝ"/> 
 		
 	<Map MapID="86" TenTK="Tờ khai phí bảo vệ môi trường (01/BVMT)"/> 
-	<Map MapID="87" TenTK="02_BVMT"/> 
+	<Map MapID="87" TenTK="TỜ KHAI QUYẾT TOÁN PHÍ BẢO VỆ MÔI TRƯỜNG (Mẫu số 02/BVMT)"/> 
+	<Map MapID="85" TenTK="TỜ KHAI PHÍ, LỆ PHÍ (Mẫu số 01/PHLP)"/> 
+	<Map MapID="88" TenTK="TỜ KHAI QUYẾT TOÁN PHÍ, LỆ PHÍ (Mẫu số 02/PHLP)"/> 
+	
 	<Map MapID="90" TenTK="Tờ khai thuế bảo vệ môi trường (01/TBVMT)"/> 
 	
 	<Map MapID="07" TenTK="Thông báo phát hành biên lai thu phí, lệ phí"/> 
@@ -63,6 +67,8 @@
 	<Map MapID="92" TenTK="TỜ KHAI THUẾ TÀI NGUYÊN TẠM TÍNH ĐỐI VỚI DẦU KHÍ"/> 
 	<Map MapID="94" TenTK="TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG (01/TĐ-GTGT)"/> 
 	<Map MapID="96" TenTK="Tờ khai thuế tài nguyên dành cho cơ sở sản xuất thuỷ điện"/> 
+	<Map MapID="97" TenTK="TỜ KHAI QUYẾT TOÁN THUẾ TÀI NGUYÊN (Mẫu số 03A/TĐ-TAIN)"/> 
+	
 	<Map MapID="98" TenTK="TỜ KHAI THUẾ THU NHẬP DOANH NGHIỆP TẠM TÍNH ĐỐI VỚI DẦU KHÍ (01A/TNDN-DK)"/> 
 	<Map MapID="99" TenTK="TỜ KHAI THUẾ THU NHẬP DOANH NGHIỆP TẠM TÍNH ĐỐI VỚI KHÍ THIÊN NHIÊN (01B/TNDN-DK)"/> 
 	<Map MapID="24" TenTK="BÁO CÁO DỰ KIẾN SẢN LƯỢNG DẦU KHÍ KHAI THÁC VÀ TỶ LỆ TẠM NỘP THUẾ (01/BCTL-DK)" /> 

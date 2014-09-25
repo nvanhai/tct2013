@@ -1,0 +1,24 @@
+<PL_03_1_TD_TAIN>
+	<P_Dynamic GroupName="BKePBoThueTNChoDPhuong" CellID="G_43">
+		<CTietBKePBoThueTNChoDPhuong id="String">
+			<tenNhaMay>C_42</tenNhaMay>
+			<mstNhaMay TINType="1">H_42</mstNhaMay>
+			<tyLePhanBo>R_42</tyLePhanBo>
+			<soThueTNguyenPNop>U_42</soThueTNguyenPNop>
+			<Dynamic GroupName="CQTDiaPhuong">
+				<ChiTietCQTDiaPhuong ID="String">
+					<tenCoSo>C_43</tenCoSo>
+					<mstCoSo TINType="1">H_43</mstCoSo>
+					<maCQTDPhuong>AH_43</maCQTDPhuong>
+					<tenCQTDPhuong>P_43</tenCQTDPhuong>
+					<tyLePBoCQTDPhuong>R_43</tyLePBoCQTDPhuong>
+					<thuePNopCQTDPhuong>U_43</thuePNopCQTDPhuong>
+				</ChiTietCQTDiaPhuong>
+			</Dynamic>
+			
+		</CTietBKePBoThueTNChoDPhuong>
+	</P_Dynamic>
+	<Static GroupName="PL_03_1_TD_TAIN">
+		<tongCong>U_44</tongCong>
+	</Static>
+</PL_03_1_TD_TAIN>

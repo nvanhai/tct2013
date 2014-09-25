@@ -467,179 +467,179 @@ End Sub
 '- kiem tra ten hang va ky da duoc nhap chua
     'neu da duoc nhap thi dat co blDieuChinhCu = True
 Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
-Dim intIndexCombo As Integer
-Dim temp As Variant, itemp As Variant, iRow As Long, iCol As Long, iColRow As String
-Dim tempTen As Variant, tempKy As Variant, itempTen As Variant, itempKy As Variant, itempId As Variant
-Dim i As Integer, aSection As Integer
-Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
-Dim aCol As Long, aRow As Long, iSection As Integer
-
-Dim intIndexCuc As Integer, intIndexChiCuc As Integer
-Dim varIdCucThue As Variant
-Dim xmlDomData As New MSXML.DOMDocument
-Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
-Dim xmlNode As MSXML.IXMLDOMNode
-Dim arrDanhsach() As String
-Dim tenCucThue As String
-Dim maCucThue As String
-Dim tenChiCucThue As String
-Dim maChiCucThue As String
-
-With fps
-
-    .Sheet = .ActiveSheet
-    mCurrentSheet = .Sheet
-    Select Case .Sheet
-        Case 1
-        'Lay vi tri O ban dau
-        aCol = .ActiveCol
-        aRow = .ActiveRow
-        GetCellSpan fps, aCol, aRow
-            
-        'Xac dinh nhom cua mat hang
-        iSection = 1
-        aSection = 0
-        Set xmlCellNode = TAX_Utilities_v1.Data(1 - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("C"), 45))
-        Set xmlCellsNode = xmlCellNode.parentNode
-        Do
-            Do
-                For i = 1 To xmlCellsNode.childNodes.length
-                    ParserCellID fps, GetAttribute(xmlCellsNode.childNodes(i - 1), "CellID"), iCol, iRow
-                    If iCol = aCol And iRow = aRow And aSection = 0 Then
-                        aSection = iSection
-                        Exit For
-                    End If
-                Next
-                If xmlCellsNode.nextSibling Is Nothing Then Exit Do
-                If aSection > 0 Then Exit Do
-                Set xmlCellsNode = xmlCellsNode.nextSibling
-            Loop Until xmlCellsNode Is Nothing
-            If Not xmlCellsNode.parentNode.nextSibling Is Nothing Then
-                Set xmlCellsNode = xmlCellsNode.parentNode.nextSibling.firstChild
-            End If
-            If GetAttribute(xmlCellsNode.parentNode, "Dynamic") = "1" Then
-                iSection = iSection + 1
-            End If
-        Loop Until xmlCellsNode.parentNode.nextSibling Is Nothing
-        
-        'Kiem tra mat hang da duoc chon chua tren to khai va ban dieu chinh
-        Set xmlCellNode = TAX_Utilities_v1.Data(1 - 1).nodeFromID(GetCellID(fps, Col, Row))
-        Set xmlCellNode = xmlCellNode.parentNode.parentNode.firstChild.firstChild
-        ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
-        blGiaTriCu = False
-        blKiemTraDieuChinhCu = False
-        If Col = fps.ColLetterToNumber("C") Then
-            'kiem tra trung Ten TN trong to khai
-            fps.Col = Col
-            fps.Row = Row
-            temp = fps.Text
-'            Set xmlCellNode = TAX_Utilities_v1.Data(1 - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("G"), 13))
-            Set xmlCellsNode = xmlCellNode.parentNode
+'Dim intIndexCombo As Integer
+'Dim temp As Variant, itemp As Variant, iRow As Long, iCol As Long, iColRow As String
+'Dim tempTen As Variant, tempKy As Variant, itempTen As Variant, itempKy As Variant, itempId As Variant
+'Dim i As Integer, aSection As Integer
+'Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
+'Dim aCol As Long, aRow As Long, iSection As Integer
+'
+'Dim intIndexCuc As Integer, intIndexChiCuc As Integer
+'Dim varIdCucThue As Variant
+'Dim xmlDomData As New MSXML.DOMDocument
+'Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+'Dim xmlNode As MSXML.IXMLDOMNode
+'Dim arrDanhsach() As String
+'Dim tenCucThue As String
+'Dim maCucThue As String
+'Dim tenChiCucThue As String
+'Dim maChiCucThue As String
+'
+'With fps
+'
+'    .Sheet = .ActiveSheet
+'    mCurrentSheet = .Sheet
+'    Select Case .Sheet
+'        Case 1
+'        'Lay vi tri O ban dau
+'        aCol = .ActiveCol
+'        aRow = .ActiveRow
+'        GetCellSpan fps, aCol, aRow
+'
+'        'Xac dinh nhom cua mat hang
+'        iSection = 1
+'        aSection = 0
+'        Set xmlCellNode = TAX_Utilities_v1.Data(1 - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("C"), 45))
+'        Set xmlCellsNode = xmlCellNode.parentNode
+'        Do
 '            Do
+'                For i = 1 To xmlCellsNode.childNodes.length
+'                    ParserCellID fps, GetAttribute(xmlCellsNode.childNodes(i - 1), "CellID"), iCol, iRow
+'                    If iCol = aCol And iRow = aRow And aSection = 0 Then
+'                        aSection = iSection
+'                        Exit For
+'                    End If
+'                Next
+'                If xmlCellsNode.nextSibling Is Nothing Then Exit Do
+'                If aSection > 0 Then Exit Do
+'                Set xmlCellsNode = xmlCellsNode.nextSibling
+'            Loop Until xmlCellsNode Is Nothing
+'            If Not xmlCellsNode.parentNode.nextSibling Is Nothing Then
+'                Set xmlCellsNode = xmlCellsNode.parentNode.nextSibling.firstChild
+'            End If
 '            If GetAttribute(xmlCellsNode.parentNode, "Dynamic") = "1" Then
-            
-            i = 1
-            .Col = .ColLetterToNumber("B")
-            ParserCellID fps, GetAttribute(xmlCellsNode.childNodes(i - 1), "CellID"), iCol, iRow
-            .Row = iRow
-          
-'            Do
-'                 .Col = .ColLetterToNumber("C")
-'                 itemp = .Text
-'                 If .Row <> Row Then
-'                    If itemp = temp Then 'Neu co thi dat co blGiaTriCu = True
-'                        RowGiaTriCu = Row
-'                        ColGiaTriCu = .ColLetterToNumber("C")
-'                        .Row = Row
-'                        .Col = .ColLetterToNumber("C")
-'                        blGiaTriCu = True
-'                        Exit Sub
-'                    End If
-'                 End If
-'                 .Col = .ColLetterToNumber("B")
-'                 .Row = i + iRow
-'                 i = i + 1
-'            Loop Until .Text = "aa"
-            
-            .Sheet = 1
-            mCurrentSheet = 1
-        End If
-'KHBS
-'        Case .SheetCount - 1
-'                   'lay ve dong combobox
-'            Set xmlCellNode = TAX_Utilities_v1.Data(.SheetCount - 2).nodeFromID(GetCellID(fps, .ColLetterToNumber("BI"), 5))
-'            Set xmlCellNode = xmlCellNode.parentNode
-'            Set xmlCellNode = xmlCellNode.parentNode
-'            Set xmlCellNode = xmlCellNode.parentNode.lastChild
-'            Set xmlCellNode = xmlCellNode.firstChild
-'            Set xmlCellNode = xmlCellNode.firstChild
-'            For i = 1 To 6
-'                Set xmlCellNode = xmlCellNode.nextSibling
-'            Next i
-'            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
-'
-'
-'            .Sheet = .SheetCount - 1
-'            mCurrentSheet = .SheetCount - 1
-'
-'            .Col = Col
-'            .Row = Row
-'
-'            If Col = .ColLetterToNumber("BE") And Row = iRow Then 'Khi chon Combo
-'                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
-'                intIndexCuc = .TypeComboBoxCurSel
-'                .Col = .ColLetterToNumber("BI")
-'                .Row = Row
-'                .TypeComboBoxCurSel = intIndexCuc
-'                'Nhap lai Combo cot Q
-'                .Col = .ColLetterToNumber("BI")
-'                UpdateCell fps, .Col, .Row, .Text
-'                ' Lay Id cua cuc thue vua chon o tren
-'                .GetText .Col, .Row, varIdCucThue
-'
-'                If varIdCucThue <> "" Or varIdCucThue <> vbNullString Then
-'                    ' Lay thong tin cho chi cuc thue
-'                    varIdCucThue = Left$(varIdCucThue, 3)
-'
-'                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
-'                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
-'                        For Each xmlNode In xmlNodeListCell
-'                            If GetAttribute(xmlNode, "Value") <> "" Then
-'                                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
-'
-'                                If arrDanhsach(0) = "0" And arrDanhsach(2) = varIdCucThue Then
-'                                    tenChiCucThue = tenChiCucThue + arrDanhsach(3) + Chr$(9)
-'                                    maChiCucThue = maChiCucThue + arrDanhsach(1) + Chr$(9)
-'                                End If
-'                            End If
-'                        Next
-'                        Set xmlDomData = Nothing
-'                        Set xmlNodeListCell = Nothing
-'                        Set xmlNode = Nothing
-'                    End If
-'
-'                    .Row = iRow + 2
-'                    .Col = .ColLetterToNumber("BE")
-'                    .TypeComboBoxList = tenChiCucThue
-'
-'                    .Row = iRow + 2
-'                    .Col = .ColLetterToNumber("BI")
-'                    .TypeComboBoxList = maChiCucThue
-'                End If
+'                iSection = iSection + 1
 '            End If
+'        Loop Until xmlCellsNode.parentNode.nextSibling Is Nothing
 '
-'            If Col = .ColLetterToNumber("BE") And Row = iRow + 2 Then 'Khi chon Combo
-'                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
-'                intIndexChiCuc = .TypeComboBoxCurSel
-'                .Col = .ColLetterToNumber("BI")
-'                .Row = Row
-'                .TypeComboBoxCurSel = intIndexChiCuc
-'                'Nhap lai Combo cot Q
-'                .Col = .ColLetterToNumber("BI")
-'                UpdateCell fps, .Col, .Row, .Text
-'            End If
-        End Select
-End With
+'        'Kiem tra mat hang da duoc chon chua tren to khai va ban dieu chinh
+'        Set xmlCellNode = TAX_Utilities_v1.Data(1 - 1).nodeFromID(GetCellID(fps, Col, Row))
+'        Set xmlCellNode = xmlCellNode.parentNode.parentNode.firstChild.firstChild
+'        ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+'        blGiaTriCu = False
+'        blKiemTraDieuChinhCu = False
+'        If Col = fps.ColLetterToNumber("C") Then
+'            'kiem tra trung Ten TN trong to khai
+'            fps.Col = Col
+'            fps.Row = Row
+'            temp = fps.Text
+''            Set xmlCellNode = TAX_Utilities_v1.Data(1 - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("G"), 13))
+'            Set xmlCellsNode = xmlCellNode.parentNode
+''            Do
+''            If GetAttribute(xmlCellsNode.parentNode, "Dynamic") = "1" Then
+'
+'            i = 1
+'            .Col = .ColLetterToNumber("B")
+'            ParserCellID fps, GetAttribute(xmlCellsNode.childNodes(i - 1), "CellID"), iCol, iRow
+'            .Row = iRow
+'
+''            Do
+''                 .Col = .ColLetterToNumber("C")
+''                 itemp = .Text
+''                 If .Row <> Row Then
+''                    If itemp = temp Then 'Neu co thi dat co blGiaTriCu = True
+''                        RowGiaTriCu = Row
+''                        ColGiaTriCu = .ColLetterToNumber("C")
+''                        .Row = Row
+''                        .Col = .ColLetterToNumber("C")
+''                        blGiaTriCu = True
+''                        Exit Sub
+''                    End If
+''                 End If
+''                 .Col = .ColLetterToNumber("B")
+''                 .Row = i + iRow
+''                 i = i + 1
+''            Loop Until .Text = "aa"
+'
+'            .Sheet = 1
+'            mCurrentSheet = 1
+'        End If
+''KHBS
+''        Case .SheetCount - 1
+''                   'lay ve dong combobox
+''            Set xmlCellNode = TAX_Utilities_v1.Data(.SheetCount - 2).nodeFromID(GetCellID(fps, .ColLetterToNumber("BI"), 5))
+''            Set xmlCellNode = xmlCellNode.parentNode
+''            Set xmlCellNode = xmlCellNode.parentNode
+''            Set xmlCellNode = xmlCellNode.parentNode.lastChild
+''            Set xmlCellNode = xmlCellNode.firstChild
+''            Set xmlCellNode = xmlCellNode.firstChild
+''            For i = 1 To 6
+''                Set xmlCellNode = xmlCellNode.nextSibling
+''            Next i
+''            ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+''
+''
+''            .Sheet = .SheetCount - 1
+''            mCurrentSheet = .SheetCount - 1
+''
+''            .Col = Col
+''            .Row = Row
+''
+''            If Col = .ColLetterToNumber("BE") And Row = iRow Then 'Khi chon Combo
+''                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+''                intIndexCuc = .TypeComboBoxCurSel
+''                .Col = .ColLetterToNumber("BI")
+''                .Row = Row
+''                .TypeComboBoxCurSel = intIndexCuc
+''                'Nhap lai Combo cot Q
+''                .Col = .ColLetterToNumber("BI")
+''                UpdateCell fps, .Col, .Row, .Text
+''                ' Lay Id cua cuc thue vua chon o tren
+''                .GetText .Col, .Row, varIdCucThue
+''
+''                If varIdCucThue <> "" Or varIdCucThue <> vbNullString Then
+''                    ' Lay thong tin cho chi cuc thue
+''                    varIdCucThue = Left$(varIdCucThue, 3)
+''
+''                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+''                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+''                        For Each xmlNode In xmlNodeListCell
+''                            If GetAttribute(xmlNode, "Value") <> "" Then
+''                                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+''
+''                                If arrDanhsach(0) = "0" And arrDanhsach(2) = varIdCucThue Then
+''                                    tenChiCucThue = tenChiCucThue + arrDanhsach(3) + Chr$(9)
+''                                    maChiCucThue = maChiCucThue + arrDanhsach(1) + Chr$(9)
+''                                End If
+''                            End If
+''                        Next
+''                        Set xmlDomData = Nothing
+''                        Set xmlNodeListCell = Nothing
+''                        Set xmlNode = Nothing
+''                    End If
+''
+''                    .Row = iRow + 2
+''                    .Col = .ColLetterToNumber("BE")
+''                    .TypeComboBoxList = tenChiCucThue
+''
+''                    .Row = iRow + 2
+''                    .Col = .ColLetterToNumber("BI")
+''                    .TypeComboBoxList = maChiCucThue
+''                End If
+''            End If
+''
+''            If Col = .ColLetterToNumber("BE") And Row = iRow + 2 Then 'Khi chon Combo
+''                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
+''                intIndexChiCuc = .TypeComboBoxCurSel
+''                .Col = .ColLetterToNumber("BI")
+''                .Row = Row
+''                .TypeComboBoxCurSel = intIndexChiCuc
+''                'Nhap lai Combo cot Q
+''                .Col = .ColLetterToNumber("BI")
+''                UpdateCell fps, .Col, .Row, .Text
+''            End If
+'        End Select
+'End With
 End Sub
         
 Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
