@@ -1,4 +1,4 @@
-Spool C:\Temp\Log_NTK_326_DML.txt
+Spool C:\Temp\Log_NTK_330_DML.txt
 /
 Whenever sqlerror continue
 /

@@ -15,7 +15,7 @@ insert into QLT_NTK.RCV_MAP_TKHAI (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_H
 values ('03A_TD_TAIN', '32', 'Tê khai thuÕ tµi nguyªn (03A/T§-TAIN)', 'QT', null, to_date('01-01-2015', 'dd-mm-yyyy'), null);
 
 insert into QLT_NTK.RCV_MAP_TKHAI (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_HSO, NGAY_HL_TU, NGAY_HL_DEN)
-values ('02_NTNN', '09', 'Tê khai quyÕt to¸n thuÕ NTNN - 02/NTNN', 'QT', null, to_date('01-01-2015', 'dd-mm-yyyy'), null);
+values ('02_NTNN14', '09', 'Tê khai quyÕt to¸n thuÕ NTNN - 02/NTNN', 'QT', null, to_date('01-01-2015', 'dd-mm-yyyy'), null);
 
 insert into QLT_NTK.RCV_MAP_TKHAI (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_HSO, NGAY_HL_TU, NGAY_HL_DEN)
 values ('02_TNDN_DK', '21', 'TK QuyÕt to¸n TNDN ®èi víi dÇu khÝ(02/TNDN-DK)', 'QT', null, to_date('01-01-2015', 'dd-mm-yyyy'), null);
@@ -27,6 +27,6 @@ insert into QLT_NTK.RCV_MAP_TKHAI (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_H
 values ('01_PHLP', '00', 'Tê khai PhÝ, lÖ phÝ (01/PHLP)', 'QT', null, to_date('01-01-2015', 'dd-mm-yyyy'), null);
 
 insert into QLT_NTK.RCV_MAP_TKHAI (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_HSO, NGAY_HL_TU, NGAY_HL_DEN)
-values ('04_NTNN', '20', 'Tê khai quyÕt to¸n thuÕ NTNN - 04/NTNN', 'QT', null, to_date('01-01-2015', 'dd-mm-yyyy'), null);
+values ('04_NTNN14', '20', 'Tê khai quyÕt to¸n thuÕ NTNN - 04/NTNN', 'QT', null, to_date('01-01-2015', 'dd-mm-yyyy'), null);
 
 commit;
