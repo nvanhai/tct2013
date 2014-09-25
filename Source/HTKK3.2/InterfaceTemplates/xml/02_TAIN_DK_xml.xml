@@ -69,39 +69,37 @@
 			</TTinTKhaiThue>
 		</TTinChung>
 		<CTieuTKhaiChinh>
-			<ct07></ct07>
-			<ct08_soGiayPhep></ct08_soGiayPhep>
-			<ct08_ngayGiayPhep></ct08_ngayGiayPhep>
-			<ct08_capGiayPhep></ct08_capGiayPhep>
-			<ct22></ct22>
-			<ct23></ct23>
-			<ct24></ct24>
-			<ct25>14:20:00.0Z</ct25>
-			<ct26>1</ct26>
-			<ct27>1</ct27>
-			<ct28>1</ct28>
-			<ct29>1</ct29>
-			<ct30>1</ct30>
-			<ct31>1</ct31>
-			<ct32>1</ct32>
-			<ct33>1</ct33>
-			<ct34>1</ct34>
-			<ct35>1</ct35>
-			<ct36>1</ct36>
-			<ct37></ct37>
-			<ct38>1</ct38>
-			<ct39>1</ct39>
-			<ct40>1</ct40>
-			<ct41>1</ct41>
-			<ct42>1</ct42>
-			<ct43>1</ct43>
-			<ct44>1</ct44>
-			<ct45>1</ct45>
-			<ct45_1>1</ct45_1>
-			<ct45_2>1</ct45_2>
-			<ct46>1</ct46>
-			<ct46_1>1</ct46_1>
-			<ct46_2>1</ct46_2>
+			<LoaiDauKhi>
+				<dauTho>true</dauTho>
+				<condensate>true</condensate>
+				<khiThienNhien>true</khiThienNhien>
+			</LoaiDauKhi>
+			<ct15></ct15>
+			<LoaiHinhUyQuyen>
+				<donViUyQuyen></donViUyQuyen>
+				<daiLyThue></daiLyThue>
+			</LoaiHinhUyQuyen>
+			<tenDonViUyQuyen>String</tenDonViUyQuyen>
+			<ct25>2147483647</ct25>
+			<ct26>0.0</ct26>
+			<ct27>0.0</ct27>
+			<ct28>0.0</ct28>
+			<ct28a>0.0</ct28a>
+			<ct28b>0.0</ct28b>
+			<ct29>0.0</ct29>
+			<ct30>0.0</ct30>
+			<ct31>0.0</ct31>
+			<ct32>0.0</ct32>
+			<ct33>0.0</ct33>
+			<ct34>0.0</ct34>
+			<ct35>0.0</ct35>
+			<ct36>0.0</ct36>
+			<ct37>0.0</ct37>
+			<ct38>0.0</ct38>
+			<ct39>0.0</ct39>
+			<ct40>0.0</ct40>
+			<ct41>0.0</ct41>
+			<ct42>0.0</ct42>
 		</CTieuTKhaiChinh>
 		<PLuc>
 		</PLuc>

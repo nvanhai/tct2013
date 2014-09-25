@@ -2,7 +2,7 @@
 	<Dynamic GroupName="BKCacNTPhu">
 			<CTietBKCacNTPhu id="ID_2">
 				<ct2>E_24</ct2>
-				<ct3>L_24</ct3>
+				<ct3 TINType="1">L_24</ct3>
 				<ct4>R_24</ct4>
 				<ct5>Y_24</ct5>
 				<ct6>AG_24</ct6>

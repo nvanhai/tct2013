@@ -1,12 +1,18 @@
-<PL_02_2TAIN_DK>
-	<Static GroupName="ChiTiet">
-		<toKhaiThueTaiNguyen>String</toKhaiThueTaiNguyen>
-		<soTienThueDaNop_NgoaiTe>1</soTienThueDaNop_NgoaiTe>
-		<soTienThueDaNop_VietNam>1</soTienThueDaNop_VietNam>
-		<ghiChu>String</ghiChu>
+<PL_02_1TAIN_DK>
+	<Dynamic GroupName="SLuongDThu">		
+		<CTietSLuongDThu ID="ID_2">
+				<ct2>D_29</ct2>
+				<ct3>K_29</ct3>
+				<ct4>P_29</ct4>
+				<ct5>U_29</ct5>
+				<ct6>Y_29</ct6>
+				<ct7>AD_29</ct7>
+				<ct8>AJ_29</ct8>
+				<ct9>AQ_29</ct9>
+			</CTietSLuongDThu>
+	</Dynamic>
+	<Static GroupName="SLuongDThu">
+		<tong_ct6>Y_31</tong_ct6>
+		<tong_ct8>AJ_31</tong_ct8>
 	</Static>
-	<Static GroupName="SoThueTAINTamTinhDaNop">
-		<tongSoTienThueDaNop_NgoaiTe>1</tongSoTienThueDaNop_NgoaiTe>
-		<tongSoTienThueDaNop_VietNam>0.0</tongSoTienThueDaNop_VietNam>
-	</Static>
-</PL_02_2TAIN_DK>
+</PL_02_1TAIN_DK>

@@ -6,42 +6,43 @@
 	</Static>
 
 	<Static GroupName="LoaiDauKhi">
-		<ct01>O_30</ct01>
-		<ct02>P_30</ct02>
-		<ct03>Q_30</ct03>
+		<ct01 MinOccur="1">O_30</ct01>
+		<ct02 MinOccur="1">P_30</ct02>
+		<ct03 MinOccur="1">Q_30</ct03>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
 		<ct15>P_47</ct15>
+		<ct16></ct16>
 	</Static>
 	<Static GroupName="LoaiHinhUyQuyen">
-		<donViUyQuyen>AB_48</donViUyQuyen>
-		<daiLyThue>AB_48</daiLyThue>
+		<donViUyQuyen MinOccur="1">P_49</donViUyQuyen>
+		<daiLyThue MinOccur="1">Z_49</daiLyThue>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<tenDonViUyQuyen>P_36</tenDonViUyQuyen>
-		<ct25>AV_53</ct25>
-		<ct26>AV_54</ct26>
-		<ct27>AV_55</ct27>
-		<ct27a>AV_56</ct27a>
-		<ct27b>AV_57</ct27b>
-		<ct28>AV_58</ct28>
-		<ct29>AV_59</ct29>
-		<ct30>AV_60</ct30>
-		<ct31>AV_61</ct31>
-		<ct32>AV_62</ct32>
-		<ct33>AV_63</ct33>
-		<ct34>AV_64</ct34>
-		<ct35>AV_65</ct35>
-		<ct36>AV_66</ct36>
-		<ct37>AV_67</ct37>
-		<ct38>AV_68</ct38>
+		<tenDonViUyQuyen>AB_49</tenDonViUyQuyen>
+		<ct25>AV_55</ct25>
+		<ct26>AV_56</ct26>
+		<ct27>AV_56</ct27>
+		<ct27a>AV_58</ct27a>
+		<ct27b>AV_59</ct27b>
+		<ct28>AV_60</ct28>
+		<ct29>AV_61</ct29>
+		<ct30>AV_62</ct30>
+		<ct31>AV_63</ct31>
+		<ct32>AV_64</ct32>
+		<ct33>AV_65</ct33>
+		<ct34>AV_66</ct34>
+		<ct35>AV_67</ct35>
+		<ct36>AV_68</ct36>
+		<ct37>AV_69</ct37>
+		<ct38>AV_70</ct38>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>AR_84</nguoiKy>
-		<ngayKy>AR_86</ngayKy>
+		<nguoiKy>AR_86</nguoiKy>
+		<ngayKy>AR_88</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>U_84</tenNVienDLyThue>
-		<cchiHNghe>U_86</cchiHNghe>
+		<tenNVienDLyThue>U_86</tenNVienDLyThue>
+		<cchiHNghe>U_88</cchiHNghe>
 	</Static>
 </HSoThueDTu>

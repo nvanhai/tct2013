@@ -32,11 +32,11 @@
 						<lyDoGiaHan></lyDoGiaHan>
 					</GiaHan>
 					<nguoiKy></nguoiKy>
-					<ngayKy>1967-08-13</ngayKy>
+					<ngayKy></ngayKy>
 					<nganhNgheKD></nganhNgheKD>
 				</TKhaiThue>
 				<NNT>
-					<mst>0000000000</mst>
+					<mst></mst>
 					<tenNNT></tenNNT>
 					<dchiNNT></dchiNNT>
 					<phuongXa></phuongXa>
@@ -49,7 +49,7 @@
 					<emailNNT></emailNNT>
 				</NNT>
 				<DLyThue>
-					<mstDLyThue>0000000000</mstDLyThue>
+					<mstDLyThue></mstDLyThue>
 					<tenDLyThue></tenDLyThue>
 					<dchiDLyThue></dchiDLyThue>
 					<maHuyenDLyThue></maHuyenDLyThue>
@@ -75,6 +75,7 @@
 				<ct03>true</ct03>
 			</LoaiDauKhi>
 			<ct15></ct15>
+			<ct16></ct16>
 			<LoaiHinhUyQuyen>
 				<donViUyQuyen>true</donViUyQuyen>
 				<daiLyThue></daiLyThue>

@@ -26,6 +26,7 @@
 	<Map MapID="70" TenTK="Tờ khai thuế nhà thầu nước ngoài - MẪU SỐ 01/NTNN"/>
 	<Map MapID="80" TenTK="TỜ KHAI QUYẾT TOÁN THUẾ NHÀ THẦU NƯỚC NGOÀI (Mẫu số 02/NTNN)"/>
 	<Map MapID="81" TenTK="Tờ khai thuế nhà thầu nước ngoài - MẪU SỐ 03/NTNN"/>
+	<Map MapID="82" TenTK="TỜ KHAI QUYẾT TOÁN THUẾ NHÀ THẦU NƯỚC NGOÀI (Mẫu số 02/NTNN)"/>
 	
 	<Map MapID="17" TenTK="TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP CÁ NHÂN - MẪU SỐ 05/KK-TNCN"/>
 	<Map MapID="42" TenTK="TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP CÁ NHÂN - MẪU SỐ 02/KK-BH"/>
@@ -71,6 +72,9 @@
 	
 	<Map MapID="98" TenTK="TỜ KHAI THUẾ THU NHẬP DOANH NGHIỆP TẠM TÍNH ĐỐI VỚI DẦU KHÍ (01A/TNDN-DK)"/> 
 	<Map MapID="99" TenTK="TỜ KHAI THUẾ THU NHẬP DOANH NGHIỆP TẠM TÍNH ĐỐI VỚI KHÍ THIÊN NHIÊN (01B/TNDN-DK)"/> 
+	<Map MapID="93" TenTK="TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP DOANH NGHIỆP ĐỐI VỚI DẦU KHÍ (02/TNDN-DK)"/> 
+	<Map MapID="89" TenTK="TỜ KHAI QUYẾT TOÁN THUẾ TÀI NGUYÊN ĐỐI VỚI DẦU KHÍ (02/TAIN-DK)"/> 
+	
 	<Map MapID="24" TenTK="BÁO CÁO DỰ KIẾN SẢN LƯỢNG DẦU KHÍ KHAI THÁC VÀ TỶ LỆ TẠM NỘP THUẾ (01/BCTL-DK)" /> 
 	<Map MapID="14" TenTK="Báo cáo tình hình sử dụng biên lai thu phí, lệ phí"/> 
 </Maps>

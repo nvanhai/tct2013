@@ -3802,7 +3802,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
                         xmlTK.getElementsByTagName("kyKKhaiDenThang")(0).Text = TAX_Utilities_v1.LastDay
                     End If
                 ElseIf strKK = "Y" Then
-                    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "03" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "80" Then
+                    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "03" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "80" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "82" Then
                         If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
                             xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = TAX_Utilities_v1.FirstDay
                         End If

@@ -1,18 +1,17 @@
-<PL_02_1TAIN_DK>
-	<Dynamic GroupName="SLuongDThu">
-		<bangKKhai id="id">
-			<ngayThangKThac>1967-08-13</ngayThangKThac>
-			<soLuongKThac>1</soLuongKThac>
-			<soLuongXBan>1</soLuongXBan>
-			<giaBan>1</giaBan>
-			<doanhThu_NgoaiTe>1</doanhThu_NgoaiTe>
-			<doanhThu_dongVietNam>1</doanhThu_dongVietNam>
-			<ghiChu>String</ghiChu>
-		</bangKKhai>
-	</Dynamic>
-	<Static GroupName="SLuongDThu">
-		<tongSLuongDKhiXBan>1</tongSLuongDKhiXBan>
-		<tongDoanhThuXBan_ngoaiTe>1</tongDoanhThuXBan_ngoaiTe>
-		<tongDoanhThuXBan_dongVietNam>1</tongDoanhThuXBan_dongVietNam>
+<PLuc_01_DK>
+	<Static GroupName="PLuc_01_DK">
+		<ct09>K_19</ct09>
 	</Static>
-</PL_02_1TAIN_DK>
+	<Dynamic GroupName="NghiaVuThue">
+		<ChiTietNghiaVuThue id="ID_1">
+			<mstNThau TINType="1">D_27</mstNThau>
+			<tenNThau>L_27</tenNThau>
+			<tyLePBoNThau>U_27</tyLePBoNThau>
+			<soThuePSinhPNopNThau>AB_27</soThuePSinhPNopNThau>
+			<ghiChuNThau>AL_27</ghiChuNThau>
+		</ChiTietNghiaVuThue>
+	</Dynamic>
+	<Static GroupName="PLuc_01_DK">
+		<tongCong>AB_29</tongCong>
+	</Static>
+</PLuc_01_DK>
