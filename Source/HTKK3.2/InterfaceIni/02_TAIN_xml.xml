@@ -16,8 +16,8 @@
 		<maHuyenDLyThue></maHuyenDLyThue>
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
-	<Dynamic GroupName="TaiNguyenKhaiThac">
-		<NoiDungTAIN id="ID_1">
+	<Dynamic GroupName="TNKhaiThac">
+		<CTietTNKhaiThac id="ID_1">
 			<ct1>E_40</ct1>
 			<ct2>G_40</ct2>
 			<ct3>P_40</ct3>
@@ -26,12 +26,14 @@
 			<ct6>AA_40</ct6>
 			<ct7>AD_40</ct7>
 			<ct8>AH_40</ct8>
-			<ct9>AK_40</ct9>
+			<ct9>AK_40</ct9>			
 			<ct10>AO_40</ct10>
-		</NoiDungTAIN>
+			<ct11>AP_40</ct11>
+			<ct12>AQ_40</ct12>	
+		</CTietTNKhaiThac>
 	</Dynamic>
-	<Dynamic GroupName="TaiNguyenThuMuaGom">
-		<NoiDungTAIN id="ID_2">
+	<Dynamic GroupName="TNThuMuaGom">
+		<CTietTNThuMuaGom id="ID_2">
 			<ct1>E_44</ct1>
 			<ct2>G_44</ct2>
 			<ct3>P_44</ct3>
@@ -40,14 +42,18 @@
 			<ct6>AA_44</ct6>
 			<ct7>AD_44</ct7>
 			<ct8>AH_44</ct8>
-			<ct9>AK_44</ct9>
+			<ct9>AK_44</ct9>			
 			<ct10>AO_44</ct10>
-		</NoiDungTAIN>
+			<ct11>AP_44</ct11>
+			<ct12>AQ_44</ct12>
+		</CTietTNThuMuaGom>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
-		<tongThueTNPSinh>AH_46</tongThueTNPSinh>
-		<tongThueMienGiam>AK_46</tongThueMienGiam>
-		<tongThuePNop>AO_46</tongThuePNop>
+		<tong_ct8>AH_46</tong_ct8>
+		<tong_ct9>AK_46</tong_ct9>
+		<tong_ct10>AO_46</tong_ct10>
+		<tong_ct11>AP_46</tong_ct11>
+		<tong_ct12>AQ_46</tong_ct12>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>AG_49</nguoiKy>

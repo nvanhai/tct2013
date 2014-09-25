@@ -69,54 +69,52 @@
 			</TTinTKhaiThue>
 		</TTinChung>
 		<CTieuTKhaiChinh>
+			<CT21>
+				<soHopDong>String</soHopDong>
+				<ngayHopDong>1967-08-13</ngayHopDong>
+			</CT21>
 			<GiaTriHDong>
-				<chiTietThue>
-					<donViTinh></donViTinh>
-					<keKhai></keKhai>
-					<quyetToan></quyetToan>
-					<ghiChu></ghiChu>
-				</chiTietThue>
+			<keKhai>2147483647</keKhai>
+				<quyetToan>2147483647</quyetToan>
+				<chenhLech>2147483647</chenhLech>
+				<ghiChu>String</ghiChu>
 			</GiaTriHDong>
-			<giaTriPViecNThauPhuVN>
-				<chiTietThue>
-					<donViTinh></donViTinh>
-					<keKhai></keKhai>
-					<quyetToan></quyetToan>
-					<ghiChu></ghiChu>
-				</chiTietThue>
-			</giaTriPViecNThauPhuVN>
+			<DThuChuaGomGTGT>
+				<keKhai>2147483647</keKhai>
+				<quyetToan>2147483647</quyetToan>
+				<chenhLech>2147483647</chenhLech>
+				<ghiChu>String</ghiChu>
+			</DThuChuaGomGTGT>
+			<DThuNTPhu>
+				<keKhai>2147483647</keKhai>
+				<quyetToan>2147483647</quyetToan>
+				<chenhLech>2147483647</chenhLech>
+				<ghiChu>String</ghiChu>
+			</DThuNTPhu>
 			<DThuTinhThue>
-				<chiTietThue>
-					<donViTinh></donViTinh>
-					<keKhai></keKhai>
-					<quyetToan></quyetToan>
-					<ghiChu></ghiChu>
-				</chiTietThue>
+				<keKhai>2147483647</keKhai>
+				<quyetToan>2147483647</quyetToan>
+				<chenhLech>2147483647</chenhLech>
+				<ghiChu>String</ghiChu>
 			</DThuTinhThue>
-			<ThueTNDNPhaiNop>
-				<chiTietThue>
-					<donViTinh></donViTinh>
-					<keKhai></keKhai>
-					<quyetToan></quyetToan>
-					<ghiChu></ghiChu>
-				</chiTietThue>
-			</ThueTNDNPhaiNop>
-			<ThueDaNopNTNN>
-				<chiTietThue>
-					<donViTinh></donViTinh>
-					<keKhai></keKhai>
-					<quyetToan></quyetToan>
-					<ghiChu></ghiChu>
-				</chiTietThue>
-			</ThueDaNopNTNN>
-			<ThueNTNNNopThuaThieu>
-				<chiTietThue>
-					<donViTinh></donViTinh>
-					<keKhai></keKhai>
-					<quyetToan></quyetToan>
-					<ghiChu></ghiChu>
-				</chiTietThue>
-			</ThueNTNNNopThuaThieu>
+			<SoThueTNDNPNop>
+				<keKhai>2147483647</keKhai>
+				<quyetToan>2147483647</quyetToan>
+				<chenhLech>2147483647</chenhLech>
+				<ghiChu>String</ghiChu>
+			</SoThueTNDNPNop>
+			<SoThueDaNop>
+				<keKhai>2147483647</keKhai>
+				<quyetToan>2147483647</quyetToan>
+				<chenhLech>2147483647</chenhLech>
+				<ghiChu>String</ghiChu>
+			</SoThueDaNop>
+			<SoThueConPNop>
+				<keKhai>2147483647</keKhai>
+				<quyetToan>2147483647</quyetToan>
+				<chenhLech>2147483647</chenhLech>
+				<ghiChu>String</ghiChu>
+			</SoThueConPNop>
 		</CTieuTKhaiChinh>
 		<PLuc>
 		</PLuc>

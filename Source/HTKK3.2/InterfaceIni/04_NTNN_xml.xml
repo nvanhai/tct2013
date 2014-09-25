@@ -16,58 +16,51 @@
 		<maHuyenDLyThue></maHuyenDLyThue>
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
-	<Static GroupName="CTieuTKhaiChinh">
-		<soHopNhaThau>N_21</soHopNhaThau>
-		<ngayHopNhaThau>AH_21</ngayHopNhaThau>
+	<Static GroupName="CT21">
+		<soHopDong>N_21</soHopDong>
+		<ngayHopDong>AH_21</ngayHopDong>
 	</Static>
 	<Static GroupName="GiaTriHDong">
-		<donViTinh>O_30</donViTinh>
 		<keKhai>T_30</keKhai>
 		<quyetToan>AB_30</quyetToan>
 		<chenhLech>AJ_30</chenhLech>
 		<ghiChu>AT_30</ghiChu>
 	</Static>
-	<Static GroupName="DoanhThu">
-		<donViTinh>O_31</donViTinh>
+	<Static GroupName="DThuChuaGomGTGT">
 		<keKhai>T_31</keKhai>
 		<quyetToan>AB_31</quyetToan>
 		<chenhLech>AJ_31</chenhLech>
 		<ghiChu>AT_31</ghiChu>
 	</Static>
-	<Static GroupName="DThuNThauVietNam">
-		<donViTinh>O_32</donViTinh>
-		<keKhai>T_32</keKhai>
-		<quyetToan>AB_32</quyetToan>
-		<chenhLech>AJ_32</chenhLech>
-		<ghiChu>AT_32</ghiChu>
+	<Static GroupName="DThuNTPhu">
+		<keKhai>2147483647</keKhai>
+				<quyetToan>2147483647</quyetToan>
+				<chenhLech>2147483647</chenhLech>
+				<ghiChu>String</ghiChu>
 	</Static>
 	<Static GroupName="DThuTinhThue">
-		<donViTinh>O_33</donViTinh>
-		<keKhai>T_33</keKhai>
-		<quyetToan>AB_33</quyetToan>
-		<chenhLech>AJ_33</chenhLech>
-		<ghiChu>AT_33</ghiChu>
+		<keKhai>2147483647</keKhai>
+				<quyetToan>2147483647</quyetToan>
+				<chenhLech>2147483647</chenhLech>
+				<ghiChu>String</ghiChu>
 	</Static>
-	<Static GroupName="ThueTNDNPhaiNop">
-		<donViTinh>O_34</donViTinh>
-		<keKhai>T_34</keKhai>
-		<quyetToan>AB_34</quyetToan>
-		<chenhLech>AJ_34</chenhLech>
-		<ghiChu>AT_34</ghiChu>
+	<Static GroupName="SoThueTNDNPNop">
+		<keKhai>2147483647</keKhai>
+				<quyetToan>2147483647</quyetToan>
+				<chenhLech>2147483647</chenhLech>
+				<ghiChu>String</ghiChu>
 	</Static>
-	<Static GroupName="ThueDaNopNTNN">
-		<donViTinh>O_35</donViTinh>
-		<keKhai>T_35</keKhai>
-		<quyetToan>AB_35</quyetToan>
-		<chenhLech>AJ_35</chenhLech>
-		<ghiChu>AT_35</ghiChu>
+	<Static GroupName="SoThueDaNop">
+		<keKhai>2147483647</keKhai>
+				<quyetToan>2147483647</quyetToan>
+				<chenhLech>2147483647</chenhLech>
+				<ghiChu>String</ghiChu>
 	</Static>
-	<Static GroupName="ThueNTNNNopThuaThieu">
-		<donViTinh>O_36</donViTinh>
-		<keKhai>T_36</keKhai>
-		<quyetToan>AB_36</quyetToan>
-		<chenhLech>AJ_36</chenhLech>
-		<ghiChu>AT_36</ghiChu>
+	<Static GroupName="SoThueConPNop">
+		<keKhai>2147483647</keKhai>
+				<quyetToan>2147483647</quyetToan>
+				<chenhLech>2147483647</chenhLech>
+				<ghiChu>String</ghiChu>
 	</Static>
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>AL_46</nguoiKy>

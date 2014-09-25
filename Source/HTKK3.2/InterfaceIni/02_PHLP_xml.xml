@@ -1,0 +1,47 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>62</maTKhai>
+		<tenTKhai>TỜ KHAI QUYẾT TOÁN PHÍ, LỆ PHÍ (Mẫu số 02/PHLP)</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT/>
+		<maTinhNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
+	</Static>
+	<Dynamic GroupName="TTinPhiLePhi">
+		<PhiLePhi id="ID_1">
+			<ct1>AC_49</ct1>
+			<ct2>C_49</ct2>
+			<ct3>E_49</ct3>
+			<ct4>H_49</ct4>
+			<ct5>L_49</ct5>
+			<ct6>N_49</ct6>
+			<ct7>Q_49</ct7>
+			<ct8>T_49</ct8>
+			<ct9>X_49</ct9>
+		</PhiLePhi>
+	</Dynamic>	
+	<Static GroupName="CTieuTKhaiChinh">
+			<tong_ct4>H_51</tong_ct4>
+			<tong_ct6>N_51</tong_ct6>
+			<tong_ct7>Q_51</tong_ct7>
+			<tong_ct8>T_51</tong_ct8>
+			<tong_ct9>X_51</tong_ct9>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_60</nguoiKy>
+		<ngayKy>R_62</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>H_60</tenNVienDLyThue>
+		<cchiHNghe>H_62</cchiHNghe>
+	</Static>
+</HSoKhaiThue>
