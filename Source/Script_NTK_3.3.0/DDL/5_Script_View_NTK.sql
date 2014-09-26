@@ -868,11 +868,11 @@ FROM QLT_NTK.rcv_gdien_tkhai gd,
        QLT_NTK.rcv_map_ctieu ctieu
   WHERE (ctieu.gdn_id = gdien.id)
   AND (ctieu.ky_hieu = tkd.ky_hieu)
-    AND (tkd.loai_dlieu = '02_NTNN')
-    and gdien.loai_dlieu =  '02_NTNN'
-   and ctieu.loai_dlieu =  '02_NTNN'
+    AND (tkd.loai_dlieu = '02_NTNN14')
+    and gdien.loai_dlieu =  '02_NTNN14'
+   and ctieu.loai_dlieu =  '02_NTNN14'
 ) dtl
-WHERE (gd.loai_dlieu = '02_NTNN')
+WHERE (gd.loai_dlieu = '02_NTNN14')
   AND (dtl.id = gd.id)
 GROUP BY dtl.hdr_id,
          dtl.row_id,
@@ -922,9 +922,9 @@ FROM QLT_NTK.rcv_gdien_tkhai gd,
   WHERE (ctieu.gdn_id = gdien.id)
   AND (ctieu.ky_hieu = tkd.ky_hieu)
     AND (gdien.loai_dlieu = tkd.loai_dlieu)
-    AND (gdien.loai_dlieu = '02_1_NTNN')
+    AND (gdien.loai_dlieu = '02_1_NTNN14')
 ) dtl
-WHERE (gd.loai_dlieu  = '02_1_NTNN')
+WHERE (gd.loai_dlieu  = '02_1_NTNN14')
   AND (dtl.id = gd.id)-- and row_id='1'
 GROUP BY dtl.hdr_id,
          dtl.loai_dlieu,
@@ -971,9 +971,9 @@ FROM QLT_NTK.rcv_gdien_tkhai gd,
   WHERE (ctieu.gdn_id = gdien.id)
   AND (ctieu.ky_hieu = tkd.ky_hieu)
     AND (gdien.loai_dlieu = tkd.loai_dlieu)
-    AND (gdien.loai_dlieu = '02_2_NTNN')
+    AND (gdien.loai_dlieu = '02_2_NTNN14')
 ) dtl
-WHERE (gd.loai_dlieu  = '02_2_NTNN')
+WHERE (gd.loai_dlieu  = '02_2_NTNN14')
   AND (dtl.id = gd.id)-- and row_id='1'
 GROUP BY dtl.hdr_id,
          dtl.loai_dlieu,
@@ -1008,11 +1008,11 @@ FROM QLT_NTK.rcv_gdien_tkhai gd,
        QLT_NTK.rcv_map_ctieu ctieu
   WHERE (ctieu.gdn_id = gdien.id)
   AND (ctieu.ky_hieu = tkd.ky_hieu)
-    AND (tkd.loai_dlieu = '04_NTNN')
-    and gdien.loai_dlieu =  '04_NTNN'
-   and ctieu.loai_dlieu =  '04_NTNN'
+    AND (tkd.loai_dlieu = '04_NTNN14')
+    and gdien.loai_dlieu =  '04_NTNN14'
+   and ctieu.loai_dlieu =  '04_NTNN14'
 ) dtl
-WHERE (gd.loai_dlieu = '04_NTNN')
+WHERE (gd.loai_dlieu = '04_NTNN14')
   AND (dtl.id = gd.id)
 GROUP BY dtl.hdr_id,
          dtl.row_id,
@@ -1058,9 +1058,9 @@ FROM QLT_NTK.rcv_gdien_tkhai gd,
   WHERE (ctieu.gdn_id = gdien.id)
   AND (ctieu.ky_hieu = tkd.ky_hieu)
     AND (gdien.loai_dlieu = tkd.loai_dlieu)
-    AND (gdien.loai_dlieu = '04_1_NTNN')
+    AND (gdien.loai_dlieu = '04_1_NTNN14')
 ) dtl
-WHERE (gd.loai_dlieu  = '04_1_NTNN')
+WHERE (gd.loai_dlieu  = '04_1_NTNN14')
   AND (dtl.id = gd.id)-- and row_id='1'
 GROUP BY dtl.hdr_id,
          dtl.loai_dlieu,
@@ -1343,8 +1343,8 @@ SELECT   dtl.hdr_id, dtl.so_tt so_tt, dtl.row_id row_id,
                      OR tkd.loai_dlieu = 'KHBS_02_PHLP'
                      OR tkd.loai_dlieu = 'KHBS_03A_TD_TAIN'
                      OR tkd.loai_dlieu = 'KHBS_01_PHLP'
-                     OR tkd.loai_dlieu = 'KHBS_02_NTNN'
-                     OR tkd.loai_dlieu = 'KHBS_04_NTNN'
+                     OR tkd.loai_dlieu = 'KHBS_02_NTNN14'
+                     OR tkd.loai_dlieu = 'KHBS_04_NTNN14'
                      OR tkd.loai_dlieu = 'KHBS_02_TNDN_DK'
                      OR tkd.loai_dlieu = 'KHBS_02_TAIN_DK'
                      --End QT
@@ -1376,8 +1376,8 @@ SELECT   dtl.hdr_id, dtl.so_tt so_tt, dtl.row_id row_id,
                      OR gd.loai_dlieu = 'KHBS_02_PHLP'
                      OR gd.loai_dlieu = 'KHBS_03A_TD_TAIN'
                      OR gd.loai_dlieu = 'KHBS_01_PHLP'
-                     OR gd.loai_dlieu = 'KHBS_02_NTNN'
-                     OR gd.loai_dlieu = 'KHBS_04_NTNN'
+                     OR gd.loai_dlieu = 'KHBS_02_NTNN14'
+                     OR gd.loai_dlieu = 'KHBS_04_NTNN14'
                      OR gd.loai_dlieu = 'KHBS_02_TNDN_DK'
                      OR gd.loai_dlieu = 'KHBS_02_TAIN_DK'
                      --End QT             
