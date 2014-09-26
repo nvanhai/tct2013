@@ -52,7 +52,7 @@
 	
 	<Map MapID="17" MaFile="05TL" Version ="2.0.1" VersionKHBS ="2.0.1" MaTK="42"/>
 	<Map MapID="42" MaFile="02BH" Version ="2.0.1" VersionKHBS ="2.0.1" MaTK="43"/>
-	<Map MapID="43" MaFile="02XS" Version ="2.0.1" VersionKHBS ="2.0.1" MaTK="44"/>
+	<Map MapID="43" MaFile="02XS" Version ="2.0.5" VersionKHBS ="2.0.5" MaTK="44"/>
 	<Map MapID="59" MaFile="06KK" Version ="2.0.1" VersionKHBS ="2.0.1" MaTK="103"/>
 	<Map MapID="76" MaFile="08BN" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="15"/>
 	<Map MapID="41" MaFile="09CN" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="16"/>

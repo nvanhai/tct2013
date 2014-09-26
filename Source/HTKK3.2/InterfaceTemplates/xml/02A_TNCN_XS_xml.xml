@@ -1,17 +1,18 @@
-<PL02BK_XS>
+<PLuc_02_BK_XS>
 	<BangThuNhapDLyXoSo>
-		<ChiTietTNhapDLyXSo>
+		<ChiTietTNhapDLyXSo id="ID_1">
+			<coDieuChinhSoLieu></coDieuChinhSoLieu>
+			<ct06></ct06>
 			<ct07></ct07>
 			<ct08></ct08>
-			<ct09></ct09>
-			<ct10>1</ct10>
-			<ct11>1</ct11>
-			<ct12>1</ct12>
-			<ct13>1</ct13>
+			<ct9></ct9>
+			<ct10></ct10>
+			<ct11></ct11>
+			<ct12></ct12>
 		</ChiTietTNhapDLyXSo>
 	</BangThuNhapDLyXoSo>
-	<ct14>1</ct14>
-	<ct15>1</ct15>
-	<ct16>1</ct16>
-	<ct17>1</ct17>
-</PL02BK_XS>
+		<ct13></ct13>
+		<ct14></ct14>
+		<ct15></ct15>
+		<ct16></ct16>
+</PLuc_02_BK_XS>
