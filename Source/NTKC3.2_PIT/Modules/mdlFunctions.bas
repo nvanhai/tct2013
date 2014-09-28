@@ -1132,9 +1132,9 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "73" Then changeMaToKhai = "02_TNDN11"
     
     If strID = "70" Then changeMaToKhai = "01_NTNN"
-    If strID = "80" Then changeMaToKhai = "02_NTNN"
+    If strID = "80" Then changeMaToKhai = "02_NTNN14"
     If strID = "81" Then changeMaToKhai = "03_NTNN11"
-    If strID = "82" Then changeMaToKhai = "04_NTNN11"
+    If strID = "82" Then changeMaToKhai = "04_NTNN14"
     
     If strID = "71" Then changeMaToKhai = "04_GTGT13"
     If strID = "72" Then changeMaToKhai = "05_GTGT11"
