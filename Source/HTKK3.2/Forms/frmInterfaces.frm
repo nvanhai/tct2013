@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":1969
+         SpreadDesigner  =   "frmInterfaces.frx":19A5
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1BF1
+      SpreadDesigner  =   "frmInterfaces.frx":1C69
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -567,7 +567,7 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
                         strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & strLoaiTkDk & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                     ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "97" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "77" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Then
                         strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
-                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "76" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "59" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "41" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "17" Then
+                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "76" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "59" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "41" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "17" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "26" Then
                         strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                     Else
                         'Data file not contain Day from and to.
@@ -830,6 +830,12 @@ ElseIf Trim(varMenuId) = "42" And fpSpread1.ActiveSheet = 2 Then
     colStart = 4
 ElseIf Trim(varMenuId) = "43" And fpSpread1.ActiveSheet = 2 Then
     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\BK_02A_TNCN_XS.xml"))
+    colStart = 4
+ElseIf Trim(varMenuId) = "26" And fpSpread1.ActiveSheet = 2 Then
+    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\BK_02_1_TNCN_BHDC.xml"))
+    colStart = 4
+ElseIf Trim(varMenuId) = "26" And fpSpread1.ActiveSheet = 3 Then
+    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\BK_02_2_TNCN_BHDC.xml"))
     colStart = 4
 ElseIf Trim(varMenuId) = "44" And fpSpread1.ActiveSheet = 2 Then
     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\BK_06D_TNCN.xml"))
@@ -1627,6 +1633,12 @@ ElseIf Trim(varMenuId) = "42" And fpSpread1.ActiveSheet = 2 Then
 ElseIf Trim(varMenuId) = "43" And fpSpread1.ActiveSheet = 2 Then
     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\TK_BK_02A_TNCN_XS.xml"))
     colStart = 4
+ElseIf Trim(varMenuId) = "26" And fpSpread1.ActiveSheet = 2 Then
+    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\TK_BK_02_1_TNCN_BHDC.xml"))
+    colStart = 4
+ElseIf Trim(varMenuId) = "26" And fpSpread1.ActiveSheet = 3 Then
+    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\TK_BK_02_2_TNCN_BHDC.xml"))
+    colStart = 4
 ElseIf Trim(varMenuId) = "44" And fpSpread1.ActiveSheet = 2 Then
     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\TK_BK_06D_TNCN.xml"))
     colStart = 3
@@ -2080,177 +2092,221 @@ Dim Y As Long
             If .sheet = 2 Then
                ' to khai 05KK-TNCN
                If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" Then
-                If Trim(seach) = "" Then
-                       DisplayMessage "0160", msOKOnly, miInformation
-                       'txt_Seach.Text = ""
-                       txt_Seach.SetFocus
-                       Else
-                             'If Col = .ColLetterToNumber("E") And Row = 11 Then
-                                'Tìm kiem các ban ghi giong nhau
-                                 If curenrow <= 21 Or curenrow > 21 + .MaxRows Then
-                                   curenrow = 21
-                                 End If
-                                 
-                                 Option_Seach = Cb_seach.ListIndex
-                                 If Option_Seach = 0 Then
-                                    '.Sort .ColLetterToNumber("D"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
-                                     ret2 = .SearchCol(.ColLetterToNumber("D"), curenrow, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
-                                     curenrow = ret2
-                                     curencol = .ColLetterToNumber("D")
-                                 Else
-                                   If Option_Seach = 1 Then
-                                         '.Sort .ColLetterToNumber("E"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
-                                         ret2 = .SearchCol(.ColLetterToNumber("E"), curenrow, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
-                                         curenrow = ret2
-                                         curencol = .ColLetterToNumber("E")
-                                         Else
-                                             If Option_Seach = 2 Then
-                                                 '.Sort .ColLetterToNumber("F"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
-                                                 ret2 = .SearchCol(.ColLetterToNumber("F"), curenrow, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
-                                                 curenrow = ret2
-                                                 curencol = .ColLetterToNumber("F")
-                                             End If
-                                   End If
-                                  End If
-                                 'Select cell
-                                 If ret2 > -1 Then
-                                     
-                                    .SetSelection .ColLetterToNumber("D"), ret2, .ColLetterToNumber("AG"), ret2
-                                    '.BackColor = vbGreen
-                                    .Refresh
-                                 Else
-                                   
-                                    ret2 = .SearchCol(curencol, 21, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
-                                       If ret2 > -1 Then
-                                         .SetSelection .ColLetterToNumber("D"), ret2, .ColLetterToNumber("AG"), ret2
-                                         curenrow = ret2
-                                         '.BackColor = vbGreen
-                                         .Refresh
-                                       Else
-                                           txt_Seach.SetFocus
-                                             'MsgBox "Khong co ban ghi nay.", vbInformation
-                                           DisplayMessage "0160", msOKOnly, miInformation
-                                       End If
-                                 End If
-                       End If
-            Else
-                If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "42" Then
                     If Trim(seach) = "" Then
                        DisplayMessage "0160", msOKOnly, miInformation
                        'txt_Seach.Text = ""
                        txt_Seach.SetFocus
-                       Else
-                             'If Col = .ColLetterToNumber("E") And Row = 11 Then
-                                'Tìm kiem các ban ghi giong nhau
-                                 If curenrow <= 21 Or curenrow > 21 + .MaxRows Then
-                                   curenrow = 21
-                                 End If
+                    Else
+                        'If Col = .ColLetterToNumber("E") And Row = 11 Then
+                           'Tìm kiem các ban ghi giong nhau
+                            If curenrow <= 21 Or curenrow > 21 + .MaxRows Then
+                              curenrow = 21
+                            End If
                                  
-                                 'seach = Trim(txt_seach.Text)
-                                 Option_Seach = Cb_seach.ListIndex
-                                 If Option_Seach = 0 Then
-                                    '.Sort .ColLetterToNumber("D"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
-                                     ret2 = .SearchCol(.ColLetterToNumber("D"), curenrow, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
-                                     curenrow = ret2
-                                     curencol = .ColLetterToNumber("D")
-                                 Else
+                            Option_Seach = Cb_seach.ListIndex
+                            If Option_Seach = 0 Then
+                               '.Sort .ColLetterToNumber("D"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
+                                ret2 = .SearchCol(.ColLetterToNumber("D"), curenrow, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
+                                curenrow = ret2
+                                curencol = .ColLetterToNumber("D")
+                            Else
                                    If Option_Seach = 1 Then
                                          '.Sort .ColLetterToNumber("E"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
                                          ret2 = .SearchCol(.ColLetterToNumber("E"), curenrow, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
                                          curenrow = ret2
                                          curencol = .ColLetterToNumber("E")
-                                         Else
-                                             If Option_Seach = 2 Then
-                                                 '.Sort .ColLetterToNumber("F"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
-                                                 ret2 = -1
-                                                 curenrow = ret2
-                                                 curencol = .ColLetterToNumber("F")
-                                             End If
-                                   End If
-                                  End If
-                                 'Select cell
-                                 If ret2 > -1 Then
-                                     
-                                    .SetSelection .ColLetterToNumber("D"), ret2, .ColLetterToNumber("J"), ret2
-                                    '.BackColor = vbGreen
-                                    .Refresh
-                                 Else
-                                   
+                                    Else
+                                        If Option_Seach = 2 Then
+                                            '.Sort .ColLetterToNumber("F"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
+                                            ret2 = .SearchCol(.ColLetterToNumber("F"), curenrow, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
+                                            curenrow = ret2
+                                            curencol = .ColLetterToNumber("F")
+                                        End If
+                                    End If
+                             End If
+                            'Select cell
+                            If ret2 > -1 Then
+                                   .SetSelection .ColLetterToNumber("D"), ret2, .ColLetterToNumber("AG"), ret2
+                                   '.BackColor = vbGreen
+                                   .Refresh
+                            Else
+                              
                                     ret2 = .SearchCol(curencol, 21, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
-                                       If ret2 > -1 Then
-                                         .SetSelection .ColLetterToNumber("D"), ret2, .ColLetterToNumber("J"), ret2
-                                         curenrow = ret2
-                                         '.BackColor = vbGreen
-                                         .Refresh
-                                       Else
-                                             'MsgBox "Khong co ban ghi nay.", vbInformation
-                                           DisplayMessage "0160", msOKOnly, miInformation
-                                       End If
-                                 End If
-                       End If
-                       
-                 Else
-                 If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "43" Then
+                                   If ret2 > -1 Then
+                                     .SetSelection .ColLetterToNumber("D"), ret2, .ColLetterToNumber("AG"), ret2
+                                     curenrow = ret2
+                                     '.BackColor = vbGreen
+                                     .Refresh
+                                   Else
+                                       txt_Seach.SetFocus
+                                         'MsgBox "Khong co ban ghi nay.", vbInformation
+                                       DisplayMessage "0160", msOKOnly, miInformation
+                                   End If
+                            End If
+                     End If
+                ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "42" Then
                     If Trim(seach) = "" Then
                        DisplayMessage "0160", msOKOnly, miInformation
-                       
+                       'txt_Seach.Text = ""
                        txt_Seach.SetFocus
-                       Else
-                             'If Col = .ColLetterToNumber("E") And Row = 11 Then
-                                'Tìm kiem các ban ghi giong nhau
-                                 If curenrow <= 21 Or curenrow > 21 + .MaxRows Then
-                                   curenrow = 21
-                                 End If
+                    Else
+                        'If Col = .ColLetterToNumber("E") And Row = 11 Then
+                           'Tìm kiem các ban ghi giong nhau
+                            If curenrow <= 21 Or curenrow > 21 + .MaxRows Then
+                              curenrow = 21
+                            End If
                                  
-                                 'seach = Trim(txt_seach.Text)
-                                 Option_Seach = Cb_seach.ListIndex
-                                 If Option_Seach = 0 Then
-                                    '.Sort .ColLetterToNumber("D"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
-                                     ret2 = .SearchCol(.ColLetterToNumber("D"), curenrow, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
-                                     curenrow = ret2
-                                     curencol = .ColLetterToNumber("D")
-                                 Else
+                            'seach = Trim(txt_seach.Text)
+                            Option_Seach = Cb_seach.ListIndex
+                            If Option_Seach = 0 Then
+                                   '.Sort .ColLetterToNumber("D"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
+                                    ret2 = .SearchCol(.ColLetterToNumber("D"), curenrow, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
+                                    curenrow = ret2
+                                    curencol = .ColLetterToNumber("D")
+                            Else
                                    If Option_Seach = 1 Then
-                                         '.Sort .ColLetterToNumber("E"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
-                                         ret2 = .SearchCol(.ColLetterToNumber("E"), curenrow, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
-                                         curenrow = ret2
-                                         curencol = .ColLetterToNumber("E")
-                                         Else
-                                             If Option_Seach = 2 Then
-                                                 '.Sort .ColLetterToNumber("F"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
-                                                 ret2 = .SearchCol(.ColLetterToNumber("F"), curenrow, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
-                                                 curenrow = ret2
-                                                 curencol = .ColLetterToNumber("F")
-                                             End If
+                                       '.Sort .ColLetterToNumber("E"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
+                                       ret2 = .SearchCol(.ColLetterToNumber("E"), curenrow, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
+                                       curenrow = ret2
+                                       curencol = .ColLetterToNumber("E")
+                                   Else
+                                           If Option_Seach = 2 Then
+                                               '.Sort .ColLetterToNumber("F"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
+                                               ret2 = -1
+                                               curenrow = ret2
+                                               curencol = .ColLetterToNumber("F")
+                                           End If
                                    End If
-                                  End If
-                                 'Select cell
-                                 If ret2 > -1 Then
-                                     
+                             End If
+                            'Select cell
+                            If ret2 > -1 Then
+                                
+                               .SetSelection .ColLetterToNumber("D"), ret2, .ColLetterToNumber("J"), ret2
+                               '.BackColor = vbGreen
+                               .Refresh
+                            Else
+                              
+                                   ret2 = .SearchCol(curencol, 21, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
+                                  If ret2 > -1 Then
                                     .SetSelection .ColLetterToNumber("D"), ret2, .ColLetterToNumber("J"), ret2
+                                    curenrow = ret2
                                     '.BackColor = vbGreen
                                     .Refresh
-                                 Else
-                                   
-                                    ret2 = .SearchCol(curencol, 21, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
-                                       If ret2 > -1 Then
-                                         .SetSelection .ColLetterToNumber("D"), ret2, .ColLetterToNumber("J"), ret2
-                                         curenrow = ret2
-                                         '.BackColor = vbGreen
-                                         .Refresh
-                                       Else
-                                             'MsgBox "Khong co ban ghi nay.", vbInformation
-                                           DisplayMessage "0160", msOKOnly, miInformation
-                                       End If
-                                 End If
+                                  Else
+                                        'MsgBox "Khong co ban ghi nay.", vbInformation
+                                      DisplayMessage "0160", msOKOnly, miInformation
+                                  End If
+                            End If
                        End If
-                       
-                       
+                 ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "43" Then
+                    If Trim(seach) = "" Then
+                        DisplayMessage "0160", msOKOnly, miInformation
+                        
+                        txt_Seach.SetFocus
+                    Else
+                        'If Col = .ColLetterToNumber("E") And Row = 11 Then
+                           'Tìm kiem các ban ghi giong nhau
+                            If curenrow <= 21 Or curenrow > 21 + .MaxRows Then
+                              curenrow = 21
+                            End If
+                                 
+                            'seach = Trim(txt_seach.Text)
+                            Option_Seach = Cb_seach.ListIndex
+                            If Option_Seach = 0 Then
+                                   '.Sort .ColLetterToNumber("D"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
+                                    ret2 = .SearchCol(.ColLetterToNumber("D"), curenrow, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
+                                    curenrow = ret2
+                                    curencol = .ColLetterToNumber("D")
+                            Else
+                                   If Option_Seach = 1 Then
+                                           '.Sort .ColLetterToNumber("E"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
+                                           ret2 = .SearchCol(.ColLetterToNumber("E"), curenrow, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
+                                           curenrow = ret2
+                                           curencol = .ColLetterToNumber("E")
+                                    Else
+                                           If Option_Seach = 2 Then
+                                               '.Sort .ColLetterToNumber("F"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
+                                               ret2 = .SearchCol(.ColLetterToNumber("F"), curenrow, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
+                                               curenrow = ret2
+                                               curencol = .ColLetterToNumber("F")
+                                           End If
+                                   End If
+                             End If
+                            'Select cell
+                            If ret2 > -1 Then
+                                
+                                   .SetSelection .ColLetterToNumber("D"), ret2, .ColLetterToNumber("J"), ret2
+                                   '.BackColor = vbGreen
+                                   .Refresh
+                            Else
+                              
+                                   ret2 = .SearchCol(curencol, 21, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
+                                  If ret2 > -1 Then
+                                       .SetSelection .ColLetterToNumber("D"), ret2, .ColLetterToNumber("J"), ret2
+                                       curenrow = ret2
+                                       '.BackColor = vbGreen
+                                       .Refresh
+                                  Else
+                                         'MsgBox "Khong co ban ghi nay.", vbInformation
+                                       DisplayMessage "0160", msOKOnly, miInformation
+                                  End If
+                            End If
                    End If
-                   
-                 End If
-                       
-                 End If
+               ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "26" Then
+                    If Trim(seach) = "" Then
+                        DisplayMessage "0160", msOKOnly, miInformation
+                        
+                        txt_Seach.SetFocus
+                    Else
+                            'If Col = .ColLetterToNumber("E") And Row = 11 Then
+                               'Tìm kiem các ban ghi giong nhau
+                                If curenrow <= 21 Or curenrow > 21 + .MaxRows Then
+                                  curenrow = 21
+                                End If
+                                
+                                'seach = Trim(txt_seach.Text)
+                                Option_Seach = Cb_seach.ListIndex
+                                If Option_Seach = 0 Then
+                                   '.Sort .ColLetterToNumber("D"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
+                                    ret2 = .SearchCol(.ColLetterToNumber("D"), curenrow, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
+                                    curenrow = ret2
+                                    curencol = .ColLetterToNumber("D")
+                                Else
+                                  If Option_Seach = 1 Then
+                                        '.Sort .ColLetterToNumber("E"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
+                                        ret2 = .SearchCol(.ColLetterToNumber("E"), curenrow, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
+                                        curenrow = ret2
+                                        curencol = .ColLetterToNumber("E")
+                                        Else
+                                            If Option_Seach = 2 Then
+                                                '.Sort .ColLetterToNumber("F"), 22, .ColLetterToNumber("AG"), (21 + totalRow5A), SortByRow, Y, so
+                                                ret2 = .SearchCol(.ColLetterToNumber("F"), curenrow, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
+                                                curenrow = ret2
+                                                curencol = .ColLetterToNumber("F")
+                                            End If
+                                  End If
+                                 End If
+                                'Select cell
+                                If ret2 > -1 Then
+                                    
+                                   .SetSelection .ColLetterToNumber("D"), ret2, .ColLetterToNumber("J"), ret2
+                                   '.BackColor = vbGreen
+                                   .Refresh
+                                Else
+                                  
+                                   ret2 = .SearchCol(curencol, 21, (21 + .MaxRows), seach, SearchFlagsPartialMatch)
+                                      If ret2 > -1 Then
+                                        .SetSelection .ColLetterToNumber("D"), ret2, .ColLetterToNumber("J"), ret2
+                                        curenrow = ret2
+                                        '.BackColor = vbGreen
+                                        .Refresh
+                                      Else
+                                            'MsgBox "Khong co ban ghi nay.", vbInformation
+                                          DisplayMessage "0160", msOKOnly, miInformation
+                                      End If
+                            End If
+                      End If
+              End If
                  
                ' To khai 06KK-TNCN
                If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "59" Then
@@ -2833,7 +2889,7 @@ Private Sub cmdDelete_Click()
     End If
     ' Truong hop doi voi cac to khai quyet toan thi khi chon xoa phai xoa tat ca to khai luon
     'vtt sua them ID 59
-    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "41" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "59" Then
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "41" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "59" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "26" Then
         mCurrentSheet = 1
         lResult = DisplayMessage("0012", msYesNo, miQuestion, , mrNo)
         If lResult = mrYes Then
@@ -5875,8 +5931,8 @@ Private Sub cmdInsert_Click()
                 objTaxBusiness.LockCellBySheet
             End If
         End If
-        ' to khai 02_PHLP,02_TNCN_BHDC
-        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "26" Then
+        ' to khai 02_PHLP
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "88" Then
             If Not objTaxBusiness Is Nothing Then
                 objTaxBusiness.LockCellBySheet
             End If
@@ -8923,6 +8979,57 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
             End If
         End If
         
+        
+        If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "26" Then
+            If .CellType = CellTypeButton Then
+                'Dim strFileName As String
+                options = frmOp_Pr.getOptions
+                'Dim i As Integer
+                If options = 1 Then
+                    For i = 0 To .MaxRows - 27
+                            .Row = i + 22
+                            ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
+                            .Col = .ColLetterToNumber("C")
+                            .Text = "1"
+                    Next
+                ElseIf options = 2 Then
+                            For i = 0 To .MaxRows - 27
+                                    .Row = i + 22
+                                    ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
+                                    .Col = .ColLetterToNumber("C")
+                                    .Text = "0"
+                            Next
+                            
+                            ElseIf options = 3 Then
+                            star = frmOp_Pr.getStar
+                            endd = frmOp_Pr.getEndd
+                            If star = "" Or endd = "" Then
+                              DisplayMessage "0169", msOKOnly, miCriticalError
+                            Else
+                                    If star > 0 And endd < (.MaxRows - 27) Then
+                                    
+                                        For i = 0 To .MaxRows - 27
+                                        .Row = i + 22
+                                        ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
+                                        .Col = .ColLetterToNumber("C")
+                                        .Text = "0"
+                                        Next
+                                        
+                                        For i = star To endd
+                                                .Row = i + 21
+                                                ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
+                                                .Col = .ColLetterToNumber("C")
+                                                .Text = "1"
+                                        Next
+                                     Else
+                                     DisplayMessage "0168", msOKOnly, miCriticalError
+                                     End If
+                              End If
+                Else
+                  'MsgBox "Loi.", vbInformation
+            End If
+            End If
+        End If
     End With
     Exit Sub
     

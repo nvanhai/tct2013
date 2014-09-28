@@ -1,15 +1,16 @@
-<PLuc06_BK-TNCN>
-	<Dynamic GroupName="BANGCHITIETTNCNCHUYENHUONGCK">
-		<CTietThueTNCNTuCNhuongCKhoan id="id">
+<PLuc_06_1_BK>
+	<Dynamic GroupName="BKeThuTNCNTuCNCKhoan">
+		<ChiTietBKe id="ID_1">
+			<coDieuChinhSoLieu>C_22</coDieuChinhSoLieu>
 			<ct07>D_22</ct07>
 			<ct08 TINType="1">E_22</ct08>
 			<ct09>F_22</ct09>
 			<ct10>G_22</ct10>
 			<ct11>H_22</ct11>
-		</CTietThueTNCNTuCNhuongCKhoan>
+		</ChiTietBKe>
 	</Dynamic>
-	<Static GroupName="PLuc06_BK-TNCN">
+	<Static GroupName="PLuc_06_1_BK">
 		<ct12>G_24</ct12>
 		<ct13>H_24</ct13>
 	</Static>
-</PLuc06_BK-TNCN>
+</PLuc_06_1_BK>

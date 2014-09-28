@@ -43,10 +43,10 @@ Public Sub Prepare1()
 '        .Text = Format(Date, "dd/mm/yyyy")
 '        .TypeHAlign = TypeHAlignLeft
         'sua loi lech cot (tam thoi)
-         SetDateFormat fps, 1, 47, .ColLetterToNumber("M"), DDMMYYYY
+         SetDateFormat fps, 1, 63, .ColLetterToNumber("M"), DDMMYYYY
         
         .Sheet = 1 'To khai 02BH/TNCN
-        .Row = 47
+        .Row = 63
         .Col = .ColLetterToNumber("M")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
@@ -63,33 +63,95 @@ Public Sub Prepare2()
         .Sheet = 1
         mCurrentSheet = .Sheet
         
-'        If Strloaitk = "TKCT" And StrSolanBosung = "" Then
-'            .Col = .ColLetterToNumber("C")
-'            .Row = 48
-'            .Text = 1
-'            UpdateCell fps, .Col, .Row, .Text
-'            .Col = .ColLetterToNumber("I")
-'            .Row = 48
-'            .Text = ""
-'            UpdateCell fps, .Col, .Row, .Text
-'        ElseIf Strloaitk = "TKCT" And Val(StrSolanBosung) > 0 Then
-'            .Col = .ColLetterToNumber("C")
-'            .Row = 48
-'            .Text = ""
-'            UpdateCell fps, .Col, .Row, .Text
-'            .Col = .ColLetterToNumber("I")
-'            .Row = 48
-'            .Text = StrSolanBosung
-'            UpdateCell fps, .Col, .Row, .Text
-'
-'            ' Neu la truong hop bo sung thi hien thi cot C trong bang ke 2A (Có dieu chinh so lieu)
-'            .Sheet = 2
-'            .Col = .ColLetterToNumber("C")
-'            .ColHidden = False
-'
-'        End If
+        If Strloaitk = "TKCT" And StrSolanBosung = "" Then
+            .Col = .ColLetterToNumber("C")
+            .Row = 64
+            .Text = 1
+            UpdateCell fps, .Col, .Row, .Text
+            .Col = .ColLetterToNumber("I")
+            .Row = 64
+            .Text = ""
+            UpdateCell fps, .Col, .Row, .Text
+        ElseIf Strloaitk = "TKCT" And Val(StrSolanBosung) > 0 Then
+            .Col = .ColLetterToNumber("C")
+            .Row = 64
+            .Text = ""
+            UpdateCell fps, .Col, .Row, .Text
+            .Col = .ColLetterToNumber("I")
+            .Row = 64
+            .Text = StrSolanBosung
+            UpdateCell fps, .Col, .Row, .Text
+
+            ' Neu la truong hop bo sung thi hien thi cot C trong bang ke 2A (Có dieu chinh so lieu)
+            .Sheet = 2
+            .Col = .ColLetterToNumber("C")
+            .ColHidden = False
+
+        End If
         
         .Sheet = 2
+        .ActiveSheet = .Sheet
+        .Row = 2
+        .Col = .ColLetterToNumber("D")
+        .CellType = CellTypeButton
+        .TypeButtonTextColor = RGB(0, 0, 255)
+        .TypeButtonColor = &H8000000F
+        .TypeButtonAlign = TypeButtonAlignRight
+        .Font = "Arial"
+        .FontSize = 8
+        .TypeButtonText = GetAttribute(GetMessageCellById("0104"), "Msg")
+        
+        ' Nut check chon
+        .Row = 20
+        .Col = .ColLetterToNumber("C")
+        .CellType = CellTypeButton
+        .TypeButtonAlign = TypeButtonAlignLeft
+        .TypeButtonTextColor = vbBlack
+        .TypeButtonColor = &H8000000F
+        .Font = "Arial"
+        .FontSize = 8
+        .TypeButtonPicture = LoadPicture(GetAbsolutePath("..\Pictures\Check.bmp"))
+        .TypeButtonText = ""
+        
+        ' Sap xep theo cot Ho va ten
+        .Row = 19
+        .Col = .ColLetterToNumber("D")
+        .CellType = CellTypeButton
+        .TypeButtonAlign = TypeButtonAlignLeft
+        .TypeButtonTextColor = vbBlack
+        .TypeButtonColor = 8421504
+        .Font = "Arial"
+        .FontSize = 8
+        .TypeButtonPicture = LoadPicture(GetAbsolutePath("..\Pictures\sort2.bmp"))
+        .TypeButtonText = GetAttribute(GetMessageCellById("0244"), "Msg")
+        
+        ' Sap xep theo cot thu nhap chiu thue
+        .Row = 19
+        .Col = .ColLetterToNumber("G")
+        .CellType = CellTypeButton
+        .TypeButtonAlign = TypeButtonAlignLeft
+        .TypeButtonTextColor = vbBlack
+        .TypeButtonColor = 8421504
+        .Font = "Arial"
+        .FontSize = 8
+        .TypeButtonPicture = LoadPicture(GetAbsolutePath("..\Pictures\sort2.bmp"))
+        .TypeButtonText = GetAttribute(GetMessageCellById("0245"), "Msg")
+        
+        ' Sap xep theo cot thue thu nhap ca nhan da khau tru
+        .Row = 19
+        .Col = .ColLetterToNumber("J")
+        .CellType = CellTypeButton
+        .TypeButtonAlign = TypeButtonAlignLeft
+        .TypeButtonTextColor = vbBlack
+        .TypeButtonColor = 8421504
+        .Font = "Arial"
+        .FontSize = 8
+        .TypeButtonPicture = LoadPicture(GetAbsolutePath("..\Pictures\sort2.bmp"))
+        .TypeButtonText = GetAttribute(GetMessageCellById("0246"), "Msg")
+        
+        'Phu luc 02-2/BK-BHDC
+        
+        .Sheet = 3
         .ActiveSheet = .Sheet
         .Row = 2
         .Col = .ColLetterToNumber("D")
@@ -154,47 +216,9 @@ Public Sub Prepare2()
     
     'check thong tin ma so thue dai ly
     'set vi tri theo thu tu MSTDL~TENNVDLT~ChungChiHN
-    viTriMSTDL = "D_22~D_45~D_47"
+    viTriMSTDL = "D_22~D_61~D_63"
     updateMSTDL fps, viTriMSTDL
     
-    
-        ' Kiem tra xem phien ban 3.1.3 hay phien ban 3.1.2 tro xuong
-    Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
-    Dim isDFOld As Boolean
-    ' end
-    
-    Dim i As Integer
-    With fps
-       ' test
-        Set xmlCellNode = TAX_Utilities_v1.Data(1).nodeFromID(GetCellID(fps, .ColLetterToNumber("D"), 22))
-        Set xmlCellNode = xmlCellNode.parentNode
-        Set xmlCellNode = xmlCellNode.lastChild
-        If Left$(GetAttribute(xmlCellNode, "CellID"), 1) = "C" Then
-            isDFOld = False
-        Else
-            isDFOld = True
-        End If
-        ' end test
-    
-        .Sheet = 2
-        .EventEnabled(EventAllEvents) = False
-        i = 1
-        .Col = .ColLetterToNumber("B")
-        .Row = 22
-        Do
-              If isDFOld = True Then
-                 .Col = .ColLetterToNumber("C")
-                 .Text = "0"
-             End If
-             
-             .Col = .ColLetterToNumber("B")
-             .Row = i + 22
-             totalRow2ABH = i
-             i = i + 1
-        Loop Until .Text = "aa"
-        
-        .EventEnabled(EventAllEvents) = True
-    End With
 End Sub
 
 Private Function GetValidatedCellIndex(ByVal lSheet As Long, lAnchorRow As Long, ByVal lAnchorCol As Long) As Integer
@@ -222,6 +246,49 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
     With fps
         .EventEnabled(EventAllEvents) = False
             If .ActiveSheet = 2 Then
+               .Sheet = 2
+                
+                If Col = .ColLetterToNumber("D") And Row = 19 Then
+                    Y = Col
+                            
+                    .Sort .ColLetterToNumber("D"), 22, .ColLetterToNumber("L"), (21 + totalRow2ABH), SortByRow, Y, so
+                    .Refresh
+                    
+                    ' Chieu sap xep
+                    If so = 1 Then
+                        so = 2 ' Sap xep giam dan
+                    Else
+                        so = 1 ' Sap xep tang dan
+                    End If
+                End If
+                
+                If Col = .ColLetterToNumber("G") And Row = 19 Then
+                    Y = Col
+                            
+                    .Sort .ColLetterToNumber("D"), 22, .ColLetterToNumber("L"), (21 + totalRow2ABH), SortByRow, Y, so
+                    .Refresh
+                    
+                    ' Chieu sap xep
+                    If so = 1 Then
+                        so = 2 ' Sap xep giam dan
+                    Else
+                        so = 1 ' Sap xep tang dan
+                    End If
+                End If
+                
+                If Col = .ColLetterToNumber("J") And Row = 19 Then
+                    Y = Col
+                    .Sort .ColLetterToNumber("D"), 22, .ColLetterToNumber("L"), (21 + totalRow2ABH), SortByRow, Y, so
+                    .Refresh
+                    
+                    ' Chieu sap xep
+                    If so = 1 Then
+                        so = 2 ' Sap xep giam dan
+                    Else
+                        so = 1 ' Sap xep tang dan
+                    End If
+                End If
+            ElseIf .ActiveSheet = 3 Then
                .Sheet = 2
                 
                 If Col = .ColLetterToNumber("D") And Row = 19 Then
@@ -356,7 +423,24 @@ Dim tCol As Long, tRow As Long
                     .Col = iCol
                     
                     .SetActiveCell iCol, iRow
-            End If
+            ElseIf .ActiveSheet = 3 Then
+                    i = 1
+                    .Col = .ColLetterToNumber("B")
+                    .Row = 22
+                    Do
+                         .Text = str(i)
+                         .Col = .ColLetterToNumber("B")
+                         .Row = i + 22
+                         totalRow2ABH = i
+                         i = i + 1
+                    Loop Until .Text = "aa"
+                    
+                    .SetActiveCell iCol, iRow
+                    .Row = iRow
+                    .Col = iCol
+                    
+                    .SetActiveCell iCol, iRow
+              End If
         End If
   
        .EventEnabled(EventAllEvents) = True
@@ -373,7 +457,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
         mCurrentSheet = .Sheet
         If .ActiveSheet = 1 Then
             'check date
-            If Col = .ColLetterToNumber("M") And Row = 47 Then
+            If Col = .ColLetterToNumber("M") And Row = 63 Then
                 .GetText Col, Row, varTemp
                 If varTemp <> "" And varTemp <> "../../...." Then
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
@@ -428,7 +512,45 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
 '                    .Text = "0"
 '                End If
             End If
+        ElseIf .ActiveSheet = 3 Then
             
+            If flgLoadToKhai = True Then
+                .EventEnabled(EventAllEvents) = True
+                Exit Sub
+            End If
+            
+            If Col = .ColLetterToNumber("D") Then
+                .GetText .ColLetterToNumber("D"), .Row, varTemp
+                ' Cu them mot lao dong thi tinh la mot nguoi
+                If Trim(varTemp) <> vbNullString Then
+                    .Col = .ColLetterToNumber("K")
+                    .Text = "1"
+                Else ' Neu ko thi ko tinh nguoi do
+                    .Col = .ColLetterToNumber("K")
+                    .Text = "0"
+                End If
+            End If
+            ' Lay so thue da khau tru cua lao dong do
+            If Col = .ColLetterToNumber("J") Then
+                UpdateCell fps, Col, Row, .value
+'                .GetText .ColLetterToNumber("J"), .Row, varTemp
+'                If Val(varTemp) > 0 Then
+'                    ' Va tinh la lao dong co thue khau tru
+'                    .Col = .ColLetterToNumber("L")
+'                    .Text = "1"
+'                    ' Tinh tong thu nhap cua rieng lao dong co thue khau tru nay
+'                    .GetText .ColLetterToNumber("G"), .Row, varTemp
+'                    .Col = .ColLetterToNumber("M")
+'                    .Text = varTemp
+'                Else
+'                    ' Va tinh la lao dong ko co thue khau tru
+'                    .Col = .ColLetterToNumber("L")
+'                    .Text = "0"
+'                    ' Khong tinh tong thu nhap cua lao dong nay
+'                    .Col = .ColLetterToNumber("M")
+'                    .Text = "0"
+'                End If
+            End If
         End If
         .EventEnabled(EventAllEvents) = True
     End With
@@ -477,7 +599,7 @@ Private Sub CheckDynamicError()
         'check thong tin header khong dc trong
         'lay vi tri header tren tk theo thu tu MSTDL, TENDLT, DIACHIDLT,QUAN/HUYEN,TP,SO HDDLT,NGAYDH,Ten NV DLT, CC Hanh Nghe
 
-        viTriHeaderTk = "D_22~D_20~D_24~D_26~M_26~D_32~M_32~D_45~D_47"
+        viTriHeaderTk = "D_22~D_20~D_24~D_26~M_26~D_32~M_32~D_61~D_63"
         viTriSheetHeader = "B_39~B_40~B_41~B_42~B_43~B_44~B_45~B_46~B_47"
         mangMessage = "E_39~E_40~E_41~E_42~E_43~E_44~E_45~E_46~E_47"
         'check header
@@ -487,7 +609,7 @@ Private Sub CheckDynamicError()
 
         CheckErrorMST
         ' Neu ton tai file data bang ke 05A thi kiem tra tren bang ke 5A
-        If IIf(TAX_Utilities_v1.NodeValidity.childNodes(.SheetCount - 3).Attributes.getNamedItem("Active").nodeValue <> "0", True, False) Then
+        If IIf(TAX_Utilities_v1.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False) Then
             checkSheet1
         Else
             clearCheckSheet1
@@ -1180,9 +1302,28 @@ Private Sub UpdateSheets()
              Next
         End If
         If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(1), "Active") <> "0") Then
-        .Sheet = 2
-        mCurrentSheet = .Sheet
+            .Sheet = 2
+            mCurrentSheet = .Sheet
             For Each xmlCellNodeData In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
+               ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+               .GetText lCol, lRow, varTemp
+               If lCol = .ColLetterToNumber("F") Then
+                    varTemp = Trim(varTemp)
+               End If
+               If lCol = .ColLetterToNumber("C") Then
+                    varTemp = Trim(varTemp)
+                    If varTemp = "1" Then
+                        varTemp = "x"
+                    End If
+               End If
+               UpdateCell fps, lCol, lRow, varTemp
+             Next
+        End If
+        
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(2), "Active") <> "0") Then
+            .Sheet = 3
+            mCurrentSheet = .Sheet
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(2).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
                If lCol = .ColLetterToNumber("F") Then
@@ -1211,6 +1352,15 @@ Public Sub FinishImport()
     With fps
         .EventEnabled(EventAllEvents) = False
             If .ActiveSheet = 2 Then
+                .Col = .ColLetterToNumber("B")
+                .Row = 22
+                i = 1
+                Do
+                    .Text = str(i)
+                    .Row = i + 22
+                    i = i + 1
+                Loop Until .Text = "aa"
+            ElseIf .ActiveSheet = 3 Then
                 .Col = .ColLetterToNumber("B")
                 .Row = 22
                 i = 1
@@ -1300,7 +1450,7 @@ Public Sub inThongTinDL()
     tuRowDL = 14
     denRowDL = 19
     'TuRow_DenRow_sheet
-    strTuRowDenRowPL = "12_13_2"
+    strTuRowDenRowPL = "12_13_2~3_13_2"
     ' end
 End Sub
 

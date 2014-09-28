@@ -2,7 +2,7 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai>103</maTKhai>
 		<tenTKhai>Tờ khai 06/KK-TNCN</tenTKhai>
-		<soLan>I_6</soLan>
+		<soLan></soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
@@ -33,17 +33,22 @@
 		<ct27>I_50</ct27>
 		<ct28>I_51</ct28>
 	</Static>
-	<Static GroupName="ThuNhapTuKDoanhCaNhanKhongCTru">
+	<Static GroupName="TNhapTuKDoanhCaNhanKhongCTru">
 		<ct29>I_53</ct29>
 		<ct30>I_54</ct30>
 		<ct31>I_55</ct31>
 	</Static>
+	<Static GroupName="TNhapTuCNhungVonCNhanKhongCuTru">
+		<ct32>I_57</ct32>
+		<ct33>I_58</ct33>
+	</Static>
+	
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>M_57</nguoiKy>
-		<ngayKy>M_59</ngayKy>
+		<nguoiKy>M_60</nguoiKy>
+		<ngayKy>M_62</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>D_57</tenNVienDLyThue>
-		<cchiHNghe>D_59</cchiHNghe>
+		<tenNVienDLyThue>D_60</tenNVienDLyThue>
+		<cchiHNghe>D_62</cchiHNghe>
 	</Static>
 </HSoKhaiThue>
