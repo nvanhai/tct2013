@@ -292,12 +292,12 @@ Dim varTemp As Variant
         .Row = NGAY_NHAN_TO_KHAI_ROW
         strNgayNhanToKhai = .Text
         
-        ' Tu ngay
-        .Col = .ColLetterToNumber(TU_NGAY_COL)
-        .Row = TU_NGAY_ROW
-        varTemp = .Text
-        
-        dNgayDauKy = DateSerial(CInt(Right(varTemp, 4)), CInt(Mid$(CStr(varTemp), 4, 2)), CInt(Left$(CStr(varTemp), 2)))
+'        ' Tu ngay
+'        .Col = .ColLetterToNumber(TU_NGAY_COL)
+'        .Row = TU_NGAY_ROW
+'        varTemp = .Text
+'
+'        dNgayDauKy = DateSerial(CInt(Right(varTemp, 4)), CInt(Mid$(CStr(varTemp), 4, 2)), CInt(Left$(CStr(varTemp), 2)))
         
         'Go to last sheet (header sheet)
         .Sheet = .SheetCount
@@ -524,7 +524,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "04_NTNN"
+    vLOAI_TKHAI = "04_NTNN14"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     

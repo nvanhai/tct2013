@@ -222,6 +222,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
             .Col = .ColLetterToNumber("M")
             .Row = 92
             .Text = getTenLyDoGD(varMaDM)
+            UpdateCell fps, .Col, .Row, .Text
         End If
         
         
