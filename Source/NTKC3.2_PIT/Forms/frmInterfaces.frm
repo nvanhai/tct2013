@@ -5334,17 +5334,31 @@ Private Function getSoTTTK_AC(ByVal strID As String, _
         strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=to_date('" & Left(arrDeltail(UBound(arrDeltail)), 10) & "','dd/mm/rrrr')" '"
     ElseIf strID = "03_TBAC" Then
         arrDeltail = Split(strData, "~")
-        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=to_date('" & Left$(arrDeltail(UBound(arrDeltail)), 10) & "','dd/mm/rrrr')"
+        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
+        "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+        "And tkhai.LOAI_BC = '" & strID & "' " & _
+        " And tkhai.NGAY_BC=to_date('" & Left$(arrDeltail(UBound(arrDeltail)), 10) & "','dd/mm/rrrr')"
     ElseIf strID = "BC21_AC" Then
         arrDeltail = Split(strData, "~")
-        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC=to_date('" & Left$(arrDeltail(UBound(arrDeltail)), 10) & "','dd/mm/rrrr')"
+        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
+        "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+        "And tkhai.LOAI_BC = '" & strID & "' " & _
+        " And tkhai.NGAY_BC=to_date('" & Left$(arrDeltail(UBound(arrDeltail)), 10) & "','dd/mm/rrrr')"
     ElseIf strID = "01_AC" Then
         arrDeltail = Split(strData, "~")
-        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.KYBC_TU_NGAY = to_date('" & arrDeltail(1) & "','dd/mm/rrrr')" & "And tkhai.KYBC_DEN_NGAY = to_date('" & Left$(arrDeltail(2), 10) & "','dd/mm/rrrr')"
+        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
+        "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+        "And tkhai.LOAI_BC = '" & strID & "' " & _
+        "And tkhai.KYBC_TU_NGAY = to_date('" & arrDeltail(1) & "','dd/mm/rrrr')" & _
+        "And tkhai.KYBC_DEN_NGAY = to_date('" & Left$(arrDeltail(2), 10) & "','dd/mm/rrrr')"
         
     ElseIf strID = "04_TBAC" Then
         arrDeltail = Split(strData, "~")
-        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & " And tkhai.NGAY_BC = to_date('" & arrDeltail(UBound(arrDeltail) - 1) & "','dd/mm/rrrr')" & " And tkhai.NGAY_TB_PH = to_date('" & Right$(arrDeltail(UBound(arrDeltail) - 5), 10) & "','dd/mm/rrrr')"
+        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
+        "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+        "And tkhai.LOAI_BC = '" & strID & "' " & _
+        " And tkhai.NGAY_BC = to_date('" & arrDeltail(UBound(arrDeltail) - 1) & "','dd/mm/rrrr')" & _
+        " And tkhai.NGAY_TB_PH = to_date('" & Right$(arrDeltail(UBound(arrDeltail) - 5), 10) & "','dd/mm/rrrr')"
 
     ElseIf strID = "BC26_AC" Then
 
@@ -5384,7 +5398,11 @@ Private Function getSoTTTK_AC(ByVal strID As String, _
 
         End If
     Else
-        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & "And tkhai.LOAI_BC = '" & strID & "' " & "And tkhai.KYBC_TU_NGAY = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & "And tkhai.KYBC_DEN_NGAY = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
+        strSQL = "select max(so_tt_tk) from rcv_bcao_hdr_ac tkhai " & _
+                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                "And tkhai.LOAI_BC = '" & strID & "' " & _
+                "And tkhai.KYBC_TU_NGAY = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+                "And tkhai.KYBC_DEN_NGAY = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
     End If
     
     Set rsResult = clsDAO.Execute(strSQL)

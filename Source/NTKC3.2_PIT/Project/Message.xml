@@ -116,9 +116,9 @@
 	<Infor ID="0119" Msg="Không nhận tờ khai TNCN có kỳ kê khai nhỏ hơn Quý I/2014"/>
 	<Infor ID="0120" Msg="Tờ khai hết hiệu lực."/>
 	<Infor ID="0122" Msg="CQT không nhận các mẫu BC ấn chỉ in bằng HTKK phiên bản nhỏ hơn HTKK3.0.2"/>
-	<Infor ID="0123" Msg="Mất, cháy, hỏng hoá đơn đầu vào"/>
-	<Infor ID="0124" Msg="Mất, cháy, hỏng hoá đơn chưa BC sử dụng"/>
-	<Infor ID="0125" Msg="Mất, cháy, hỏng hoá đơn đã BC sử dụng"/>	
+	<Infor ID="0123" Msg="Mất hoá đơn đầu vào"/>
+	<Infor ID="0124" Msg="Mất hoá đơn chưa BC sử dụng"/>
+	<Infor ID="0125" Msg="Mất hoá đơn đã BC sử dụng"/>	
 	<Infor ID="0126" Msg="Kể từ 15/01/2012 trở đi phải kê khai tờ khai bằng HTKK phiên bản 3.1.0 trở lên"/>
 	<Infor ID="0127" Msg="Không nhận tờ khai TNCN có kỳ kê khai từ tháng nhỏ hơn tháng 1/2011"/>	
 	<Infor ID="0128" Msg="Kỳ kê khai không được gia hạn thuế GTGT theo NQ13/NQ-CP. Đề nghị kiểm tra lại!"/>
