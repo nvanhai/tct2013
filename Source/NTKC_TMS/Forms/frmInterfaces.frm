@@ -322,7 +322,6 @@ Const mParity = "N"
 Const mDataBits = 8
 Const mStopBits = 1
 Const mHandshaking = 1
-Const tt156_tkbs = "01~02~04~71~72~11~12~73~15~16~50~51~36~74~75~70~81~06~05~90~23~25~86"
 
 Private xmlDocumentInit()       As MSXML.DOMDocument
 Private arrStrElements()        As String               ' array of barcode string or file name string
@@ -2508,6 +2507,9 @@ On Error GoTo ErrHandle
     ' ngoai thoi gian nay phai thong bao khong duoc gia han
     ' Do voi to khai 01A, 01B/TNDN thang
     If Val(idToKhai) = 11 Or Val(idToKhai) = 12 Then
+
+        ' Lay thong tin ve gia han nop thue TNDN
+        'dntai 06/03/2012 set lai vi tri cell check gia han
         If Val(idToKhai) = 11 Then
             With fpSpread1
                 .Sheet = 1
@@ -3079,11 +3081,13 @@ Private Sub Barcode_Scaned(strBarcode As String)
     Dim strPrefix       As String, strBarcodeCount As String, strData As String
     Dim idToKhai        As String
     Dim tmp             As Variant
-    Dim strLoaiToKhai   As String
+    'Dim strLoaiToKhai   As String
+    Dim strMST_QCT As String
     On Error GoTo ErrHandle
 
     'get loai to khai
     strLoaiToKhai = Mid(strBarcode, 1, 2)
+    'strLoaiTkhai = Mid(strBarcode, 1, 2)
     
     'Convert from TCVN to UNICODE format
     strBarcode = TrimString(strBarcode)
@@ -3312,15 +3316,15 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 End If
             End If
             
-'            '01A/TNDN-DK, 01/TAIN-DK
-'            If ((Val(Mid$(strBarcode, 4, 2)) = 92 Or Val(Mid$(strBarcode, 4, 2)) = 98) And UCase(strLoaiToKhai) = "BS") Then
-'                tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
-'                tkps_spl = Split(tmp_str, "~")
-'                If Left(tkps_spl(UBound(tkps_spl)), 1) = "2" Then
-'                    DisplayMessage "0150", msOKOnly, miCriticalError
-'                    Exit Sub
-'                End If
-'            End If
+            '01A/TNDN-DK, 01/TAIN-DK
+            If ((Val(Mid$(strBarcode, 4, 2)) = 92 Or Val(Mid$(strBarcode, 4, 2)) = 98) And UCase(strLoaiToKhai) = "BS") Then
+                tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
+                tkps_spl = Split(tmp_str, "~")
+                If Left(tkps_spl(UBound(tkps_spl)), 1) = "2" Then
+                    DisplayMessage "0132", msOKOnly, miCriticalError
+                    Exit Sub
+                End If
+            End If
         ElseIf InStr(1, strBarcode, "</S02>", vbTextCompare) > 0 Then
 
             '02/TNDN
@@ -3425,6 +3429,20 @@ Private Sub Barcode_Scaned(strBarcode As String)
             End If
         End If
 
+        'Chan cac to khai Quyet toan 330 <=3.2.5
+        'todo
+        If (Val(Left$(strPrefix, 3)) < 325) Then
+            If Trim(idToKhai) = "03" Or Trim(idToKhai) = "77" Or Trim(idToKhai) = "43" Or Trim(idToKhai) = "17" Or Trim(idToKhai) = "59" Or Trim(idToKhai) = "76" Or Trim(idToKhai) = "41" Or Trim(idToKhai) = "26" Or Trim(idToKhai) = "87" Or Trim(idToKhai) = "80" Or Trim(idToKhai) = "82" Or Trim(idToKhai) = "85" Or Trim(idToKhai) = "88" Then
+                If InStr(1, strBarcode, "<S01>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S02>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S03>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S05>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S06>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S09>", vbTextCompare) > 0 Then
+                    DisplayMessage "0139", msOKOnly, miInformation
+                    Exit Sub
+                Else
+                    Exit Sub
+                End If
+            End If
+        End If
+        'end QT 330
+        
         ' Ket thuc
         ' Khong nhan cac to khai 02/TAIN, 05/TNDN
         'If Trim(idToKhai) = "08" Or Trim(idToKhai) = "24" Then
@@ -4372,9 +4390,9 @@ On Error GoTo ErrHandle
     
     Dim strIDBCTC As String
     strIDBCTC = Left$(strTaxReportInfo, 2)
-     If (Val(strIDBCTC) = 27 Or Val(strIDBCTC) = 28 Or Val(strIDBCTC) = 29 _
+     If (Val(strIDBCTC) = 28 Or Val(strIDBCTC) = 29 _
             Or Val(strIDBCTC) = 30 Or Val(strIDBCTC) = 31 Or Val(strIDBCTC) = 32 Or Val(strIDBCTC) = 33 Or Val(strIDBCTC) = 34 Or Val(strIDBCTC) = 35 _
-            Or Val(strIDBCTC) = 55 Or Val(strIDBCTC) = 56 Or Val(strIDBCTC) = 57 Or Val(strIDBCTC) = 58 Or Val(strIDBCTC) = 18 Or Val(strIDBCTC) = 19 _
+            Or Val(strIDBCTC) = 55 Or Val(strIDBCTC) = 56 Or Val(strIDBCTC) = 57 Or Val(strIDBCTC) = 58 Or Val(strIDBCTC) = 19 _
             Or Val(strIDBCTC) = 20 Or Val(strIDBCTC) = 21 Or Val(strIDBCTC) = 69) Then
         Set rsTaxInfor = GetTaxInfoBCTC(strTaxID, blnConnected)
     Else
@@ -5156,7 +5174,7 @@ On Error GoTo ErrHandle
         
         ' set thong tin DL thue
         ' danh sach cac to khai se set thong tin dai ly thue TT28
-        dsTK_DLT = "~01~02~03~04~05~06~11~12~46~47~48~49~15~16~50~51~36~70~71~72~73~74~75~80~81~82~77~86~87~89~17~42~43~59~76~41~92~94~98~99~"
+        dsTK_DLT = "~01~02~03~04~05~06~11~12~46~47~48~49~15~16~50~51~36~70~71~72~73~74~75~80~81~82~77~85~86~87~88~89~17~42~43~59~76~41~92~94~98~99~"
 
         '        If Trim(LoaiTk) = "01" Or Trim(LoaiTk) = "02" Or Trim(LoaiTk) = "04" Or Trim(LoaiTk) = "05" Or Trim(LoaiTk) = "06" Or Trim(LoaiTk) = "11" _
         '        Or Trim(LoaiTk) = "12" Or Trim(LoaiTk) = "46" Or Trim(LoaiTk) = "47" Or Trim(LoaiTk) = "48" Or Trim(LoaiTk) = "49" Or Trim(LoaiTk) = "15" _
@@ -5234,7 +5252,7 @@ On Error GoTo ErrHandle
     
     ' set ma CQT
     If Not objTaxBusiness Is Nothing Then
-        If (Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) >= 64 And Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <= 68) Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 91 _
+        If (Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) >= 64 And Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <= 68) Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 18 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 27 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 91 _
         Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 7 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 9 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 10 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 13 Or Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) = 14 Then
             objTaxBusiness.strMaCQT = strTaxOfficeId
             ' lay ma phong quan ly
@@ -5251,7 +5269,7 @@ On Error GoTo ErrHandle
     
     ' Set Phong quan ly
     If Not objTaxBusiness Is Nothing Then
-        If Val(LoaiTk) = 70 Or Val(LoaiTk) = 71 Or Val(LoaiTk) = 72 Or Val(LoaiTk) = 73 Or Val(LoaiTk) = 74 Or Val(LoaiTk) = 77 Or Val(LoaiTk) = 3 Or Val(LoaiTk) = 75 Or Val(LoaiTk) = 80 Or Val(LoaiTk) = 81 Or Val(LoaiTk) = 82 Or Val(LoaiTk) = 86 Or Val(LoaiTk) = 87 Or Val(LoaiTk) = 89 Or Val(LoaiTk) = 17 Or Val(LoaiTk) = 42 Or Val(LoaiTk) = 43 Or Val(LoaiTk) = 59 Or Val(LoaiTk) = 76 Or Val(LoaiTk) = 41 Then
+        If Val(LoaiTk) = 70 Or Val(LoaiTk) = 71 Or Val(LoaiTk) = 72 Or Val(LoaiTk) = 73 Or Val(LoaiTk) = 74 Or Val(LoaiTk) = 77 Or Val(LoaiTk) = 3 Or Val(LoaiTk) = 75 Or Val(LoaiTk) = 80 Or Val(LoaiTk) = 81 Or Val(LoaiTk) = 82 Or Val(LoaiTk) = 86 Or Val(LoaiTk) = 87 Or Val(LoaiTk) = 17 Or Val(LoaiTk) = 42 Or Val(LoaiTk) = 43 Or Val(LoaiTk) = 59 Or Val(LoaiTk) = 76 Or Val(LoaiTk) = 41 Then
             ' lay ma phong quan ly
             'Get Tax id
             strMST = Trim(Mid$(Left$(strData, 21), 6, 13))
