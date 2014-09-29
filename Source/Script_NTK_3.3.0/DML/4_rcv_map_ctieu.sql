@@ -3166,4 +3166,315 @@ values ('KHBS_02_TAIN_DK', '24', 'C', 11732, null);
 insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
 values ('KHBS_02_TAIN_DK', '25', 'D', 11733, null);
 
+--------------------------------
+--06/TNCN
+--------------------------------
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('06_TNCN14', '21', 'N', 12181, '21');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('06_TNCN14', '22', 'N', 12182, '22');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('06_TNCN14', '23', 'N', 12184, '23');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('06_TNCN14', '24', 'N', 12185, '24');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('06_TNCN14', '25', 'N', 12187, '25');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('06_TNCN14', '26', 'N', 12188, '26');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('06_TNCN14', '27', 'N', 12190, '27');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('06_TNCN14', '28', 'N', 12191, '28');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('06_TNCN14', '29', 'N', 12193, '29');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('06_TNCN14', '30', 'N', 12194, '30');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('06_TNCN14', '31', 'N', 12195, '31');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('06_TNCN14', '32', 'N', 12197, '32');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('06_TNCN14', '33', 'N', 12198, '33');
+
+--------------------------------
+--09/TNCN
+--------------------------------
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '22', 'N', 12250, '22');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '23', 'N', 12251, '23');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '24', 'N', 12252, '24');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '25', 'N', 12253, '25');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '26', 'N', 12254, '26');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '27', 'N', 12255, '27');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '28', 'N', 12256, '28');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '29', 'N', 12257, '29');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '30', 'N', 12258, '30');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '31', 'N', 12259, '31');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '32', 'N', 12260, '32');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '33', 'N', 12261, '33');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '34', 'N', 12262, '34');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '35', 'N', 12263, '35');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '36', 'N', 12264, '36');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '37', 'N', 12265, '37');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '38', 'N', 12266, '38');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '39', 'N', 12267, '39');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '40', 'N', 12268, '40');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '41', 'N', 12269, '41');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '42', 'N', 12270, '42');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '43', 'N', 12271, '43');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '44', 'N', 12272, '44');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '45', 'N', 12273, '45');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '46', 'N', 12274, '46');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_TNCN14', '47', 'N', 12275, '47');
+
+	--09-1
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_1_TNCN14', '06', 'N', 12285, '06');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_1_TNCN14', '07', 'N', 12286, '07');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_1_TNCN14', '08', 'N', 12287, '08');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_1_TNCN14', '09', 'N', 12288, '09');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_1_TNCN14', '10', 'N', 12289, '10');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_1_TNCN14', '11', 'N', 12290, '11');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_1_TNCN14', '12', 'N', 12291, '12');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_1_TNCN14', '13', 'N', 12292, '13');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_1_TNCN14', '14', 'N', 12293, '14');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_1_TNCN14', '15', 'N', 12294, '15');
+
+	--09-2
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_2_TNCN14', '06', 'N', 12310, '06');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_2_TNCN14', '07', 'N', 12311, '07');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_2_TNCN14', '08', 'N', 12312, '08');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_2_TNCN14', '09', 'N', 12313, '09');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_2_TNCN14', '10', 'N', 12314, '10');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_2_TNCN14', '11', 'N', 12315, '11');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_2_TNCN14', '12', 'N', 12316, '12');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_2_TNCN14', '13', 'N', 12317, '13');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_2_TNCN14', '14', 'N', 12318, '14');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_2_TNCN14', '15', 'N', 12319, '15');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_2_TNCN14', '16', 'N', 12320, '16');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_2_TNCN14', '17', 'N', 12321, '17');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_2_TNCN14', '18', 'N', 12322, '18');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_2_TNCN14', '19', 'N', 12323, '19');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_2_TNCN14', '20', 'N', 12324, '20');
+	
+	--09-3
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '3', 'C', 12344, '3');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '4', 'C', 12345, '4');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '5', 'C', 12346, '5');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '10', 'C', 12347, '10');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '11', 'D', 12347, '11');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '12', 'C', 12347, '12');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '13', 'C', 12347, '13');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '14', 'C', 12347, '14');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '15', 'C', 12347, '15');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '16', 'C', 12347, '16');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '17', 'C', 12347, '17');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '19', 'C', 12348, '19');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '20', 'D', 12348, '20');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '21', 'C', 12348, '21');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '22', 'C', 12348, '22');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '23', 'C', 12348, '23');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '24', 'C', 12348, '24');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '25', 'C', 12348, '25');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '26', 'C', 12348, '26');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '27', 'C', 12348, '27');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '28', 'C', 12348, '28');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '29', 'C', 12348, '29');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_3_TNCN14', '30', 'C', 12348, '30');
+	
+	--09-4
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_4_TNCN14', '06', 'N', 12368, '6');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_4_TNCN14', '07', 'N', 12369, '07');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_4_TNCN14', '08', 'N', 12370, '08');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_4_TNCN14', '09', 'N', 12371, '09');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_4_TNCN14', '10', 'N', 12372, '10');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_4_TNCN14', '11', 'N', 12373, '11');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_4_TNCN14', '12', 'N', 12374, '12');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_4_TNCN14', '13', 'N', 12375, '13');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_4_TNCN14', '14', 'N', 12376, '14');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09_4_TNCN14', '15', 'N', 12377, '15');
+	
+	--09-MT
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09MT_TNCN14', '06', 'N', 12397, '06');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09MT_TNCN14', '07', 'N', 12398, '07');
+
+insert into QLT_NTK.rcv_map_ctieu (LOAI_DLIEU, KY_HIEU, KIEU_DLIEU, GDN_ID, KY_HIEU_CTIEU)
+values ('09MT_TNCN14', '08', 'N', 12399, '08');
+	
 commit;	
