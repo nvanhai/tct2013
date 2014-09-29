@@ -1188,16 +1188,16 @@ Public Function changeMaToKhai(strID As String) As String
     If strID = "73" Then changeMaToKhai = "02_TNDN11"
     
     If strID = "70" Then changeMaToKhai = "01_NTNN"
-    If strID = "80" Then changeMaToKhai = "02_NTNN"
+    If strID = "80" Then changeMaToKhai = "02_NTNN14"
     If strID = "81" Then changeMaToKhai = "03_NTNN11"
-    If strID = "82" Then changeMaToKhai = "04_NTNN11"
+    If strID = "82" Then changeMaToKhai = "04_NTNN14"
     
     If strID = "71" Then changeMaToKhai = "04_GTGT13"
     If strID = "72" Then changeMaToKhai = "05_GTGT11"
     If strID = "86" Then changeMaToKhai = "01_BVMT11"
     If strID = "90" Then changeMaToKhai = "01_TBVMT13"
-    If strID = "87" Then changeMaToKhai = "02_BVMT11"
-    If strID = "77" Then changeMaToKhai = "02_TAIN11"
+    If strID = "87" Then changeMaToKhai = "02_BVMT14"
+    If strID = "77" Then changeMaToKhai = "02_TAIN14"
        
     If strID = "46" Then changeMaToKhai = "01A_TNCN_BH11"
     If strID = "47" Then changeMaToKhai = "01B_TNCN_BH11"
@@ -1224,7 +1224,7 @@ Public Function changeMaToKhai(strID As String) As String
     
     If strID = "17" Then changeMaToKhai = "05_TNCN11"
     If strID = "59" Then changeMaToKhai = "06_TNCN11"
-    If strID = "41" Then changeMaToKhai = "09_TNCN11"
+    If strID = "41" Then changeMaToKhai = "09_TNCN14"
     If strID = "76" Then changeMaToKhai = "08B_TNCN11"
     If strID = "42" Then changeMaToKhai = "02_TNCN_BH11"
     If strID = "43" Then changeMaToKhai = "02_TNCN_XS11"
