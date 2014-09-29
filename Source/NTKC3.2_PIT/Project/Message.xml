@@ -132,4 +132,5 @@
 	<Infor ID="0136" Msg="Đề nghị cán bộ thuế nhập tay vào hệ thống QLT"/>
 	<Infor ID="0137" Msg="Sử dụng máy quét mã vạch qua cổng USB? Nếu chọn không chương trình mặc định sử dụng cổng COM"/>
 	<Infor ID="0138" Msg="Chương trình đang sử dụng máy quét bằng cổng USB, nếu muốn sự dụng cổng COM, bạn hãy đăng nhập lại"/>
+	<Infor ID="0139" Msg="Kể từ Q4/2014 trở đi phải kê khai tờ khai bằng HTKK phiên bản 3.3.0 trở lên"/>
 </Message>
