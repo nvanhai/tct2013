@@ -1515,7 +1515,7 @@ Private Sub Command1_Click()
 
 
 '02/TAIN
-'str2 = "aa325772100343639   00201300300300100201/0114/06/2006<S01><S>2222222222</S><S>010102~Kg~25000000~0~0~12~2~10000000~289999998~010102~Kg~21000000~2500~10~0~0~"
+'str2 = "aa325772100343639   00201300300300100201/0114/06/2006<S01><S>2222222222</S><S>010102~Kg~25000000~0~0~12~2~10000000~289999998010102~Kg~21000000~2500~10~0~0~"
 'Barcode_Scaned str2
 'str2 = "aa325772100343639   0020130030030020020~5250000000</S><S>010207~Kg~100~3600000~15~0~0~0~54000000</S><S>nguoi ky~10/09/2014~NGUYEN VAN A~ICT001~1~</S></S01>"
 'Barcode_Scaned str2
@@ -1689,14 +1689,14 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '02_TAIN_DK
-'str2 = "aa325892100343639   00201300200200100401/0101/01/1900<S01><S>2222222222</S><S>1~0~0~HD001~~x</S><S>200~1~2~7~3~4~0~0.01~5~6~7~0.12~0.42"
-'Barcode_Scaned str2
-'str2 = "aa325892100343639   002013002002002004~6.7~0.7143~30.71~5~25.71~8~22.71</S><S>NGUYEN VAN A~ICT001~nguoiky~23/09/2014~1~~2000</S></S01>"
-'Barcode_Scaned str2
-'str2 = "aa325892100343639   002013002002003004<S01-1><S>30.71</S><S>0102030405~thau 1~40~12.28~ghi chu 1~2222222222~thau 2~60~18.43~ghi chu 2</S><S>100~30.71</S></S01-1>"
-'Barcode_Scaned str2
-'str2 = "aa325892100343639   002013002002004004<S01-2><S>ThÔng~~0~~0~0~0~</S><S>0</S></S01-2>"
-'Barcode_Scaned str2
+str2 = "aa325892100343639   00201300200200100401/0101/01/1900<S01><S>2222222222</S><S>1~0~0~HD001~~x</S><S>200~1~2~7~3~4~0~0.01~5~6~7~0.12~0.42"
+Barcode_Scaned str2
+str2 = "aa325892100343639   002013002002002004~6.7~0.7143~30.71~5~25.71~8~22.71</S><S>NGUYEN VAN A~ICT001~nguoiky~23/09/2014~1~~2000</S></S01>"
+Barcode_Scaned str2
+str2 = "aa325892100343639   002013002002004004<S01-2><S>ThÔng~~0~~0~0~0~</S><S>0</S></S01-2>"
+Barcode_Scaned str2
+str2 = "aa325892100343639   002013002002003004<S01-1><S>30.71</S><S>0102030405~thau 1~40~12.28~ghi chu 1~2222222222~thau 2~60~18.43~ghi chu 2</S><S>100~30.71</S></S01-1>"
+Barcode_Scaned str2
 
 '===============data 330
 '03/TNDN
@@ -1809,24 +1809,34 @@ Private Sub Command1_Click()
 
 '=====================
 '09/TNCN
-str2 = "aa999412100343639   00201300500500100901/0101/01/2009<S09><S>2222222222</S><S>~ </S><S>1111~1111~1~2~0~230300200~78000000~151200000~1000000~100000~200~0~0~0~0~0~0~30"
-Barcode_Scaned str2
-str2 = "aa999412100343639   00201300500500200900000~0~3000000~0~3000000~1500000~500000~1000000~1500000</S><S>ky~19/09/2014~NGUYEN VAN A~ICT001~01/2013~12/2013~1~</S></S09>"
-Barcode_Scaned str2
-str2 = "aa999412100343639   002013005005003009<S09-1><S>11~11~1~2~0~0~0~0~0~0</S></S09-1>"
-Barcode_Scaned str2
-str2 = "aa999412100343639   002013005005004009<S09-2><S>222~22~0~200~0~0~0~0~0~0~200~0~0~0~0</S></S09-2>"
-Barcode_Scaned str2
-str2 = "aa999412100343639   002013005005005009<S09-3><S>ten vo~2222222222~123456789</S><S>ten 1~01/01/2010~0102030405~Vi÷t Nam~012345678~Con~"
-Barcode_Scaned str2
-str2 = "aa999412100343639   00201300500500600901/2014~05/2014~01~~ten 2~01/01/1990~6868686868~Vi÷t Nam~012345679~Con~01/2014~12/2014~01~</S><"
-Barcode_Scaned str2
-str2 = "aa999412100343639   002013005005007009S>a~01/01/1990~01~Q1~Vi÷t Nam~Hµ NÈi~Ba ß◊nh~Ph≠Íng 1~Vi÷t Nam~Con~01/2014~12/2014~01~01~~b~01/"
-Barcode_Scaned str2
-str2 = "aa999412100343639   00201300500500800901/1900~02~Q2~Vi÷t Nam~Hµ NÈi~T©y HÂ~Ph≠Íng 2~Vi÷t Nam~Con~01/2014~01/2015~01~01~</S></S09-3>"
-Barcode_Scaned str2
-str2 = "aa999412100343639   002013005005009009<S09-4><S>1100~200~900~0~0~0~0~0~0~0</S></S09-4>"
-Barcode_Scaned str2
+'str2 = "aa999412100343639   00201300500500100901/0101/01/2009<S09><S>2222222222</S><S>~ </S><S>1111~1111~1~2~0~230300200~78000000~151200000~1000000~100000~200~0~0~0~0~0~0~30"
+'Barcode_Scaned str2
+'str2 = "aa999412100343639   00201300500500200900000~0~3000000~0~3000000~1500000~500000~1000000~1500000</S><S>ky~19/09/2014~NGUYEN VAN A~ICT001~01/2013~12/2013~1~</S></S09>"
+'Barcode_Scaned str2
+'str2 = "aa999412100343639   002013005005003009<S09-1><S>11~11~1~2~0~0~0~0~0~0</S></S09-1>"
+'Barcode_Scaned str2
+'str2 = "aa999412100343639   002013005005004009<S09-2><S>222~22~0~200~0~0~0~0~0~0~200~0~0~0~0</S></S09-2>"
+'Barcode_Scaned str2
+'str2 = "aa999412100343639   002013005005005009<S09-3><S>ten vo~2222222222~123456789</S><S>ten 1~01/01/2010~0102030405~Vi÷t Nam~012345678~Con~"
+'Barcode_Scaned str2
+'str2 = "aa999412100343639   00201300500500600901/2014~05/2014~01~~ten 2~01/01/1990~6868686868~Vi÷t Nam~012345679~Con~01/2014~12/2014~01~</S><"
+'Barcode_Scaned str2
+'str2 = "aa999412100343639   002013005005007009S>a~01/01/1990~01~Q1~Vi÷t Nam~Hµ NÈi~Ba ß◊nh~Ph≠Íng 1~Vi÷t Nam~Con~01/2014~12/2014~01~01~~b~01/"
+'Barcode_Scaned str2
+'str2 = "aa999412100343639   00201300500500800901/1900~02~Q2~Vi÷t Nam~Hµ NÈi~T©y HÂ~Ph≠Íng 2~Vi÷t Nam~Con~01/2014~01/2015~01~01~</S></S09-3>"
+'Barcode_Scaned str2
+'str2 = "aa999412100343639   002013005005009009<S09-4><S>1100~200~900~0~0~0~0~0~0~0</S></S09-4>"
+'Barcode_Scaned str2
+
+'str2 = "aa999772100343639   00201300600600100201/0114/06/2006<S01><S>2222222222</S><S>010102~Kg~0~0~10~0~0~0~0~0"
+'Barcode_Scaned str2
+'str2 = "aa999772100343639   002013006006002002</S><S>~~0~0~0~0~0~0~0~0</S><S>~29/09/2014~NGUYEN VAN A~ICT001~1~</S></S01>"
+'Barcode_Scaned str2
+
+'str2 = "aa999772100343639   00201300300300100101/0114/06/2006<S01><S></S><S>010103~Kg~100~0~0~1000~100000~2000~1000~97000</S><S>010207~Kg~2000~0~0~1" _
+'& "000~2000000~5000~2000~1993000</S><S>Nguyen Thac Thu~30/09/2014~Nguyen Sy Hung~CCHN123456~1~~~</S></S01>"
+
+'Barcode_Scaned str2
 
 End Sub
 
@@ -2415,14 +2425,16 @@ Private Sub Barcode_Scaned(strBarcode As String)
 
         'Chan cac to khai Quyet toan 330 <=3.2.5
         'todo
-        If (Val(Left$(strPrefix, 3)) < 325) Then
+        If (Val(Left$(strPrefix, 3)) <= 325) Then
             If Trim(idToKhai) = "03" Or Trim(idToKhai) = "77" Or Trim(idToKhai) = "43" Or Trim(idToKhai) = "17" Or Trim(idToKhai) = "59" Or Trim(idToKhai) = "76" Or Trim(idToKhai) = "41" Or Trim(idToKhai) = "26" Or Trim(idToKhai) = "87" Or Trim(idToKhai) = "80" Or Trim(idToKhai) = "82" Or Trim(idToKhai) = "85" Or Trim(idToKhai) = "88" Then
-                If InStr(1, strBarcode, "<S01>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S02>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S03>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S05>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S06>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S09>", vbTextCompare) > 0 Then
-                    DisplayMessage "0139", msOKOnly, miInformation
-                    Exit Sub
-                Else
-                    Exit Sub
-                End If
+'                If InStr(1, strBarcode, "<S01>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S02>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S03>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S05>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S06>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S09>", vbTextCompare) > 0 Then
+'                    DisplayMessage "0139", msOKOnly, miInformation
+'                    Exit Sub
+'                Else
+'                    Exit Sub
+'                End If
+                DisplayMessage "0139", msOKOnly, miInformation
+                Exit Sub
             End If
         End If
         'end QT 330
