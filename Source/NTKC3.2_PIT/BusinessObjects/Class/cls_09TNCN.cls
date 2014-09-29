@@ -143,7 +143,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .Sheet = 1
         .Col = .ColLetterToNumber(PHONG_XU_LY_COL)
         .Row = PHONG_XU_LY_ROW
-        If rsPXL.Fields.Count > 0 Then
+        If rsPXL.Fields.count > 0 Then
             Do While Not rsPXL.EOF
                 .TypeComboBoxIndex = -1
                 .TypeComboBoxString = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
@@ -513,7 +513,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "09_TNCN11"
+    vLOAI_TKHAI = "09_TNCN14"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
@@ -575,8 +575,8 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("F"), 20, vTIN_DL
         .GetText .ColLetterToNumber(SO_HOP_DONG_DL_COL), SO_HOP_DONG_DL_ROW, vSO_HOP_DONG
         .GetText .ColLetterToNumber(NGAY_HOP_DONG_DL_COL), NGAY_HOP_DONG_DL_ROW, vNGAY_HOP_DONG
-        .GetText .ColLetterToNumber("I"), 68, vLAN_BS
-        .GetText .ColLetterToNumber("C"), 68, vCHINH_THUC
+        .GetText .ColLetterToNumber("I"), 74, vLAN_BS
+        .GetText .ColLetterToNumber("C"), 74, vCHINH_THUC
         If Trim(vCHINH_THUC) = "1" Then
             vLAN_BS = "0"
         End If
