@@ -345,8 +345,8 @@
 	<Menu ID="89" PopID="101" ParentID="105" Caption="Tờ khai quyết toán thuế tài nguyên(02/TAIN-DK)" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\Excel\02_TAIN_DK.xls" ReportTemplate="..\ReportTemplates\excel\02_TAIN_DK.xls" CatalogueID="01" Class="Tax_Business_Srv.cls_02TAIN_DK">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_TAIN_DK" Ini="..\Ini\02_TAIN_DK.xml"/>
-			<Sheet ID="01-1" Caption="01/PL-DK" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_1_TAIN_DK" InterfaceIni="..\InterfaceIni\02_1_TAIN_DK.xml" ReportIni="..\ReportIni\02_1_TAIN_DK.xml"/>
-			<Sheet ID="01-2" Caption="02-1/TAIN-DK" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_2_TAIN_DK" InterfaceIni="..\InterfaceIni\02_2_TAIN_DK.xml" ReportIni="..\ReportIni\02_2_TAIN_DK.xml"/>
+			<Sheet ID="01-2" Caption="02-1/TAIN-DK" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_2_TAIN_DK" Ini="..\Ini\02_2_TAIN_DK.xml" ReportIni="..\ReportIni\02_2_TAIN_DK.xml"/>
+			<Sheet ID="01-1" Caption="01/PL-DK" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_1_TAIN_DK" Ini="..\Ini\02_1_TAIN_DK.xml" ReportIni="..\ReportIni\02_1_TAIN_DK.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_02_TAIN_DK" Ini="..\Ini\KHBS.xml"/>
 		</Validity>
 	</Menu>

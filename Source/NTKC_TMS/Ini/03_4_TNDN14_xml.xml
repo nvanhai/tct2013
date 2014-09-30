@@ -1,0 +1,34 @@
+<PL03_4_TNDN>
+	<Dynamic GroupName="BangThongTinThueTNDNDaNopNN">
+		<TTinThueTNDNDaNopNN id="ID_2">
+			<ct2>E_26</ct2>
+			<TNhapNhanDuocONNgoai>
+				<ct3>O_26</ct3>
+				<ct4>R_26</ct4>
+			</TNhapNhanDuocONNgoai>
+			<ThueTNhapDaNop>
+				<ct5>U_26</ct5>
+				<ct6>Z_26</ct6>
+			</ThueTNhapDaNop>
+			<ThuNhapChiuThue>
+				<ct7>AE_26</ct7>
+				<ct8>AH_26</ct8>
+			</ThuNhapChiuThue>
+			<XacDinhThueDuocTru>
+				<ct9>AK_26</ct9>
+				<ct10>AN_26</ct10>
+				<ct11>AR_26</ct11>
+			</XacDinhThueDuocTru>
+		</TTinThueTNDNDaNopNN>
+	</Dynamic>
+	<Static GroupName="PL03_4_TNDN">
+		<tongNgoaiTeTNNN>O_28</tongNgoaiTeTNNN>
+		<tongDongVNTNNN>R_28</tongDongVNTNNN>
+		<tongNgoaiTeDaNopTNNN>U_28</tongNgoaiTeDaNopTNNN>
+		<tongDongVNDaNopTNNN>Z_28</tongDongVNDaNopTNNN>
+		<tongNgoaiTeChiuThueTNDN>AE_28</tongNgoaiTeChiuThueTNDN>
+		<tongDongVNChiuThueTNDN>AH_28</tongDongVNChiuThueTNDN>
+		<tongThuePNopTNDN>AN_28</tongThuePNopTNDN>
+		<tongThueDuocKhauTru>AR_28</tongThueDuocKhauTru>
+	</Static>
+</PL03_4_TNDN>

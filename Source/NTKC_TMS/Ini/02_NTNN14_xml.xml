@@ -1,0 +1,110 @@
+<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30" loi_dinh_danh="E_36">
+	<Static GroupName="TKhaiThue">
+		<maTKhai>74</maTKhai>
+		<tenTKhai>Tờ khai thuế nhà thầu nước ngoài - 02/NTNN</tenTKhai>
+		<soLan>O_37</soLan>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="CT21">
+		<soHopDong>H_29</soHopDong>
+		<ngayHopDong>N_29</ngayHopDong>
+	</Static>
+	<Static GroupName="GiaTriHDong">
+		<keKhai>O_43</keKhai>
+		<quyetToan>S_43</quyetToan>
+		<chenhLech>W_43</chenhLech>
+		<ghiChu>AA_43</ghiChu>
+	</Static>
+	<Static GroupName="DThuChuaGomGTGT">
+		<keKhai>O_44</keKhai>
+		<quyetToan>S_44</quyetToan>
+		<chenhLech>W_44</chenhLech>
+		<ghiChu>AA_44</ghiChu>
+	</Static>
+	<Static GroupName="DThuTinhThueNTPhu">
+		<keKhai>O_45</keKhai>
+		<quyetToan>S_45</quyetToan>
+		<chenhLech>W_45</chenhLech>
+		<ghiChu>AA_45</ghiChu>
+	</Static>
+	<Static GroupName="DThuTinhThueNTNN">
+		<keKhai>O_46</keKhai>
+		<quyetToan>S_46</quyetToan>
+		<chenhLech>W_46</chenhLech>
+		<ghiChu>AA_46</ghiChu>
+	</Static>
+	<Static GroupName="SoThuePhaiNopNTNN">
+		<keKhai>O_47</keKhai>
+		<quyetToan>S_47</quyetToan>
+		<chenhLech>W_47</chenhLech>
+		<ghiChu>AA_47</ghiChu>
+	</Static>
+	<Static GroupName="ThueGTGTPhaiNop">
+		<keKhai>O_48</keKhai>
+		<quyetToan>S_48</quyetToan>
+		<chenhLech>W_48</chenhLech>
+		<ghiChu>AA_48</ghiChu>
+	</Static>
+	<Static GroupName="ThueTNDNPhaiNop">
+		<keKhai>O_49</keKhai>
+		<quyetToan>S_49</quyetToan>
+		<chenhLech>W_49</chenhLech>
+		<ghiChu>AA_49</ghiChu>
+	</Static>
+	<Static GroupName="SoThueDaNop">
+		<keKhai>O_50</keKhai>
+		<quyetToan>S_50</quyetToan>
+		<chenhLech>W_50</chenhLech>
+		<ghiChu>AA_50</ghiChu>
+	</Static>
+	<Static GroupName="ThueGTGTDaNop">
+		<keKhai>O_51</keKhai>
+		<quyetToan>S_51</quyetToan>
+		<chenhLech>W_51</chenhLech>
+		<ghiChu>AA_51</ghiChu>
+	</Static>
+	<Static GroupName="ThueTNDNDaNop">
+		<keKhai>O_52</keKhai>
+		<quyetToan>S_52</quyetToan>
+		<chenhLech>W_52</chenhLech>
+		<ghiChu>AA_52</ghiChu>
+	</Static>
+	<Static GroupName="SoThueConPhaiNop">
+		<keKhai>O_53</keKhai>
+		<quyetToan>S_53</quyetToan>
+		<chenhLech>W_53</chenhLech>
+		<ghiChu>AA_53</ghiChu>
+	</Static>
+	<Static GroupName="ThueGTGTConPNop">
+		<keKhai>O_54</keKhai>
+		<quyetToan>S_54</quyetToan>
+		<chenhLech>W_54</chenhLech>
+		<ghiChu>AA_54</ghiChu>
+	</Static>
+	<Static GroupName="ThueTNDNConPNop">
+		<keKhai>O_55</keKhai>
+		<quyetToan>S_55</quyetToan>
+		<chenhLech>W_55</chenhLech>
+		<ghiChu>AA_55</ghiChu>
+	</Static>	
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>Y_59</nguoiKy>
+		<ngayKy>Y_61</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>H_59</tenNVienDLyThue>
+		<cchiHNghe>H_61</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

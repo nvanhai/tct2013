@@ -1,7 +1,8 @@
-<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22" loi_dinh_danh="">
+<HSoKhaiThue ngay_nop_tk="F_29" ky_lap_bo="F_27" loi_dinh_danh="G_33">
 	<Static GroupName="TKhaiThue">
 		<maTKhai/>
 		<tenTKhai></tenTKhai>
+		<soLan>J_37</soLan>
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
@@ -16,36 +17,43 @@
 		<maHuyenDLyThue/>
 		<maTinhDLyThue/>
 	</Static>
-	<Static GroupName="LoaiDKhi">
-		<ct01>true</ct01>
-		<ct02>true</ct02>
-		<ct03>true</ct03>
+	<Static GroupName="CTieuTKhaiChinh">				
+		<tenDonViUyQuyen>I_9</tenDonViUyQuyen>
+		<ct15>I_16</ct15>				
+	</Static>
+	<Static GroupName="LoaiHinhUyQuyen">				
+		<donViUyQuyen Choice="1">I_17</donViUyQuyen>
+		<daiLyThue Choice="1">I_19</daiLyThue>
+	</Static>
+	<Static GroupName="LoaiDauKhi">
+		<ct01 Choice="1">D_38</ct01>
+		<ct02 Choice="1">G_38</ct02>
+		<ct03 Choice="1">J_38</ct03>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct15/>
-		<ct25>1</ct25>
-		<ct26>1</ct26>
-		<ct27>1</ct27>
-		<ct27a>1</ct27a>
-		<ct27b>1</ct27b>
-		<ct28>1</ct28>
-		<ct29>1</ct29>
-		<ct30>0.0</ct30>
-		<ct31>1</ct31>
-		<ct32>1</ct32>
-		<ct33>1</ct33>
-		<ct34>1</ct34>
-		<ct35>1</ct35>
-		<ct36>1</ct36>
-		<mucLuc/>
-		<tieuMucThu/>
+		<ct25>AJ_53</ct25>
+		<ct26>AJ_54</ct26>
+		<ct27>AJ_55</ct27>
+		<ct27a>AJ_56</ct27a>
+		<ct27b>AJ_57</ct27b>
+		<ct28>AJ_58</ct28>
+		<ct29>AJ_59</ct29>
+		<ct30>AJ_60</ct30>
+		<ct31>AJ_61</ct31>
+		<ct32>AJ_62</ct32>
+		<ct33>AJ_63</ct33>
+		<ct34>AJ_64</ct34>
+		<ct35>AJ_65</ct35>
+		<ct36>AJ_66</ct36>
+		<mucLuc>AJ_67</mucLuc>
+		<tieuMucThu>AJ_68</tieuMucThu>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy/>
-		<ngayKy/>
+		<nguoiKy>AI_77</nguoiKy>
+		<ngayKy>AI_79</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>token</tenNVienDLyThue>
-		<cchiHNghe/>
+		<tenNVienDLyThue>T_77</tenNVienDLyThue>
+		<cchiHNghe>T_79</cchiHNghe>
 	</Static>
 </HSoKhaiThue>
