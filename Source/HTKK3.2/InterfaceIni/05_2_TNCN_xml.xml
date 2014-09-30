@@ -1,0 +1,25 @@
+<PLuc_05_2_BK>
+	<Dynamic GroupName="BKeThueTNCNCNhanKhongCuTru">
+		<chiTietBangKe id="ID_2">
+			<coDieuChinhSoLieu>Z_22</coDieuChinhSoLieu>
+			<ct07>C_22</ct07>
+			<ct08 TINType="1">D_22</ct08>
+			<ct09>E_22</ct09>
+			<ct10>F_22</ct10>
+			<ThuNhapChiuThue>
+				<ct11>G_22</ct11>
+				<ct12>H_22</ct12>
+				<ct13>I_22</ct13>
+			</ThuNhapChiuThue>
+			<ct14>J_22</ct14>
+			<ct15>K_22</ct15>
+		</chiTietBangKe>
+	</Dynamic>
+	<Static GroupName="PLuc_05_2_BK">
+		<ct16>G_24</ct16>
+		<ct17>H_24</ct17>
+		<ct18>I_24</ct18>
+		<ct19>J_24</ct19>
+		<ct20>K_24</ct20>	
+	</Static>
+</PLuc_05_2_BK>

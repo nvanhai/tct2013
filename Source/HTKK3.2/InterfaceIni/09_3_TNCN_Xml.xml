@@ -1,0 +1,43 @@
+<PL09-3_TNCN>
+	<Static GroupName="PL09-3_TNCN">	
+		<ct04>E_9</ct04>
+		<ct05 TINType="1">E_11</ct05>
+		<ct06>E_13</ct06>
+	</Static>	
+	<Dynamic GroupName="NPTCoMST">
+		<CTietNPTCoMST id="ID_1">
+			<ct10>D_24</ct10>
+			<ct11>E_24</ct11>
+			<ct12 TINType="1">F_24</ct12>
+			<ct13>H_24</ct13>
+			<ct14>J_24</ct14>
+			<ct15>L_24</ct15>
+			<ThoiGianGiamTru>
+				<ct16>O_24</ct16>
+				<ct17>P_24</ct17>
+			</ThoiGianGiamTru>
+		</CTietNPTCoMST>
+	</Dynamic>
+	<Dynamic GroupName="NPTChuaCoMST">
+		<CTietNPTChuaCoMST id="ID_2">
+			<ct19>D_33</ct19>
+			<ThongTinGKS>
+				<ct20>E_33</ct20>
+				<ct21>F_33</ct21>
+				<ct22>G_33</ct22>
+				<NoiDangKy>
+					<ct23>H_33</ct23>
+					<ct24>I_33</ct24>
+					<ct25>J_33</ct25>
+					<ct26>K_33</ct26>
+				</NoiDangKy>
+			</ThongTinGKS>
+			<ct27>L_33</ct27>
+			<ct28>N_33</ct28>
+			<ThoiGianGiamTru>
+				<ct29>O_33</ct29>
+				<ct30>P_33</ct30>
+			</ThoiGianGiamTru>
+		</CTietNPTChuaCoMST>
+	</Dynamic>
+</PL09-3_TNCN>

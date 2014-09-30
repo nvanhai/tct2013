@@ -2663,31 +2663,41 @@ Private Sub defaultFormula()
         .Sheet = 1
         mCurrentSheet = .Sheet
         .Col = .ColLetterToNumber("I")
+        .Row = 36
+        .Formula = "Q36"
         .Row = 37
         .Formula = "Q37"
-        .Row = 38
-        .Formula = "Q38"
         
+        .Row = 39
+        .Formula = "Q39"
         .Row = 40
         .Formula = "Q40"
         .Row = 41
         .Formula = "Q41"
-        .Row = 42
-        .Formula = "Q42"
         
+        .Row = 43
+        .Formula = "Q43"
         .Row = 44
         .Formula = "Q44"
         .Row = 45
         .Formula = "Q45"
-        .Row = 46
-        .Formula = "Q46"
         
+        
+        .Row = 47
+        .Formula = "Q47"
         .Row = 48
         .Formula = "Q48"
         .Row = 49
         .Formula = "Q49"
-        .Row = 50
-        .Formula = "Q50"
+        
+        
+        .Row = 51
+        .Formula = "Q51"
+        .Row = 52
+        .Formula = "Q52"
+        .Row = 53
+        .Formula = "Q53"
+        
         
         .Row = 61
         .Formula = "Q61"
@@ -3945,7 +3955,7 @@ Private Sub CheckDynamicSheet3()
                     Else
                         .Col = .ColLetterToNumber("E")
                         .CellNote = ""
-                        .BackColor = mErrorColor
+                        .BackColor = mNonErrorColor
                      End If
                 Else
                         .Col = .ColLetterToNumber("E")
@@ -3997,7 +4007,7 @@ Private Sub CheckDynamicSheet3()
                         Else
                             .Col = .ColLetterToNumber("H")
                             .CellNote = ""
-                            .BackColor = mErrorColor
+                            .BackColor = mNonErrorColor
                          End If
                     Else
                             .Col = .ColLetterToNumber("H")
@@ -4008,7 +4018,7 @@ Private Sub CheckDynamicSheet3()
                 Else
                     .Col = .ColLetterToNumber("H")
                     .CellNote = ""
-                    .BackColor = mErrorColor
+                    .BackColor = mNonErrorColor
                 End If
                 
                 ' check CMND
@@ -4051,7 +4061,7 @@ Private Sub CheckDynamicSheet3()
                  
                 ' Kiem tra tu thang, den thang
                 If Trim(vTuThang) <> "" And Trim(vDenThang) <> "" Then
-                    If DateDiff("M", Format(vTuThang, "mm/yyyy"), Format(vDenThang, "mm/yyyy")) > 0 Then
+                    If DateDiff("M", Format(vTuThang, "mm/yyyy"), Format(vDenThang, "mm/yyyy")) < 0 Then
                             .Col = .ColLetterToNumber("S")
                             .CellNote = vErrTuThang
                             .BackColor = mErrorColor
@@ -4072,7 +4082,7 @@ Private Sub CheckDynamicSheet3()
                  End If
                 ' kiem tra den thang voi den thang ky QT
                 If vDenThang <> "" Then
-                    If DateDiff("M", Format(vDenThang, "mm/yyyy"), Format(TAX_Utilities_v1.LastDay, "mm/yyyy")) > 0 Then
+                    If DateDiff("M", Format(vDenThang, "mm/yyyy"), Format(TAX_Utilities_v1.LastDay, "mm/yyyy")) < 0 Then
                          .Col = .ColLetterToNumber("T")
                         .CellNote = vErrDenThang
                         .BackColor = mErrorColor

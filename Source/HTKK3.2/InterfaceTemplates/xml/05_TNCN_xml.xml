@@ -70,38 +70,42 @@
 		</TTinChung>
 		<CTieuTKhaiChinh>
 			<NghiaVuKhauTruThue>
+				<TongSoNguoiLDong>
+					<ct21></ct21>
+					<ct22></ct22>
+				</TongSoNguoiLDong>
 				<TongCaNhanDaKhauTru>
-					<ct21>1</ct21>
-					<ct22>1</ct22>
-					<ct23>1</ct23>
+					<ct23></ct23>
+					<ct24></ct24>
+					<ct25></ct25>
 				</TongCaNhanDaKhauTru>
+				<TongCNhanMThueTheoHDinh>
+					<ct26></ct26>
+				</TongCNhanMThueTheoHDinh>
 				<TongTNCTTraChoCNhan>
-					<ct24>1</ct24>
-					<ct25>1</ct25>
-					<ct26>1</ct26>
-					<ct27>1</ct27>
+					<ct27>2147483647</ct27>
+					<ct28>2147483647</ct28>
+					<ct29>2147483647</ct29>
+					<ct30>2147483647</ct30>
 				</TongTNCTTraChoCNhan>
 				<TongTNCNTraChoCNKTru>
-					<ct28>1</ct28>
-					<ct29>1</ct29>
-					<ct30>1</ct30>
-					<ct31>1</ct31>
+					<ct31>2147483647</ct31>
+					<ct32>2147483647</ct32>
+					<ct33>2147483647</ct33>
+					<ct34>2147483647</ct34>
 				</TongTNCNTraChoCNKTru>
 				<TongSoThueTNCNDaKTru>
-					<ct32>1</ct32>
-					<ct33>1</ct33>
-					<ct34>1</ct34>
-					<ct35>1</ct35>
+					<ct35>2147483647</ct35>
+					<ct36>2147483647</ct36>
+					<ct37>2147483647</ct37>
+					<ct38>2147483647</ct38>
 				</TongSoThueTNCNDaKTru>
-				<TongSoThueTNCNPhaiKTru>
-					<ct36>1</ct36>
-					<ct37>1</ct37>
-					<ct38>1</ct38>
-					<ct39>1</ct39>
-				</TongSoThueTNCNPhaiKTru>
-				<ct40>1</ct40>
-				<ct41>1</ct41>
-				<ct42>1</ct42>
+				<TongSoThueDuocGiam>
+					<ct39>2147483647</ct39>
+					<ct40>2147483647</ct40>
+					<ct41>2147483647</ct41>
+					<ct42>2147483647</ct42>
+				</TongSoThueDuocGiam>
 			</NghiaVuKhauTruThue>
 			<NghiaVuQuyetToanThay>
 				<ct43>1</ct43>

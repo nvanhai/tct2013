@@ -2,7 +2,7 @@
 	<Static GroupName="TKhaiThue">
 		<maTKhai>15</maTKhai>
 		<tenTKhai>Tờ khai quyết toán thuế TNCN (08B/KK-TNCN)</tenTKhai>
-		<soLan>I_6</soLan>
+		
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="GiaHan">
@@ -17,7 +17,7 @@
 		<maHuyenDLyThue/>
 		<maTinhDLyThue/>
 	</Static>
-	<Static GroupName="ChiTietKDoanhCuaCaNhom">
+	<Static GroupName="BKeNhom">
 		<ct21>I_40</ct21>
 		<ct22>I_41</ct22>
 		<ct23>I_42</ct23>
@@ -31,23 +31,21 @@
 		<ct31>I_50</ct31>
 		<ct32>I_51</ct32>
 	</Static>
-	<Dynamic GroupName="ChiTietSoThueGiamTruGiaCanh" MinOccur="1">
-		<chiTietSoThueTungCNhan id="id">
+	<Dynamic GroupName="BKeTungCNhan">
+		<CTietBKeTungCNhan id="String">
 			<ct34>C_57</ct34>
 			<ct35 TINType="1">G_57</ct35>
 			<ct36>K_57</ct36>
-			<TNCNTuongUng>
-				<ct37>L_57</ct37>
-				<ct38>N_57</ct38>
-			</TNCNTuongUng>
+			<ct37>L_57</ct37>
+			<ct38>N_57</ct38>
 			<ct39>P_57</ct39>
 			<ct40>R_57</ct40>
 			<ct41>T_57</ct41>
 			<ct42>W_57</ct42>
 			<ct43>Z_57</ct43>
-		</chiTietSoThueTungCNhan>
+		</CTietBKeTungCNhan>
 	</Dynamic>
-	<Static GroupName="ThuNhapVaSoThuePNopCuaTungCNhan">
+	<Static GroupName="BKeTungCNhan">
 		<ct44>K_59</ct44>
 		<ct45>L_59</ct45>
 		<ct46>N_59</ct46>
