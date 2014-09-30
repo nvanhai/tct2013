@@ -1,0 +1,85 @@
+<HSoKhaiThue ngay_nop_tk="E_36" ky_lap_bo="E_34" loi_dinh_danh="E_40">
+	<Static GroupName="TKhaiThue">
+		<maTKhai>03</maTKhai>
+		<tenTKhai></tenTKhai>
+		<soLan>I_5</soLan>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>					
+	<Static GroupName="CTieuTKhaiChinh">
+		<tieuMucHachToan>T_5</tieuMucHachToan>
+		<doanhNghiepCoQuyMoVuaVaNho>H_7</doanhNghiepCoQuyMoVuaVaNho>
+		<doanhNghiepCoCSoHToanPThuoc>H_8</doanhNghiepCoCSoHToanPThuoc>
+		<doanhNghiepKeKhaiTTinLienKet>H_9</doanhNghiepKeKhaiTTinLienKet>
+		<ct_04_ma>R_10</ct_04_ma>	
+		<ct_04>R_10</ct_04>
+		<ct_05>L_11</ct_05>
+		<ctA1>U_46</ctA1>
+		<ctB1>U_48</ctB1>
+		<ctB2>U_49</ctB2>
+		<ctB3>U_50</ctB3>
+		<ctB4>U_51</ctB4>
+		<ctB5>U_52</ctB5>
+		<ctB6>U_53</ctB6>
+		<ctB7>U_54</ctB7>
+		<ctB8>U_55</ctB8>
+		<ctB9>U_56</ctB9>
+		<ctB10>U_57</ctB10>
+		<ctB11>U_58</ctB11>
+		<ctB12>U_60</ctB12>
+		<ctB13>U_61</ctB13>
+		<ctB14>U_62</ctB14>
+		<ctC1>U_64</ctC1>
+		<ctC2>U_65</ctC2>
+		<ctC3>U_66</ctC3>
+		<ctC4>U_67</ctC4>
+		<ctC5>U_68</ctC5>
+		<ctC6>U_69</ctC6>
+		<ctC7>U_70</ctC7>
+		<ctC8>U_71</ctC8>
+		<ctC9>U_72</ctC9>
+		<ctC9a>U_73</ctC9a>
+		<ctC10>U_74</ctC10>
+		<ctC11>U_75</ctC11>
+		<ctC12>U_76</ctC12>
+		<ctC13>U_77</ctC13>
+		<ctC14>U_78</ctC14>
+		<ctC15>U_79</ctC15>
+		<ctC16>U_80</ctC16>
+		<ctD>U_81</ctD>
+		<ctE>U_82</ctE>
+		<ctE1>U_83</ctE1>
+		<ctE2>U_84</ctE2>
+		<ctE3>U_85</ctE3>
+		<ctF>U_86</ctF>
+		<ctG>U_87</ctG>		
+	</Static>
+	<Static GroupName="GiaHanNopThue">
+		<ctH1>I_91</ctH1>
+		<ctH2_ma>AB_92</ctH2_ma>
+		<ctH2_ten>M_92</ctH2_ten>
+		<ctH3>M_93</ctH3>
+		<ctH4>M_94</ctH4>
+		<ctH5>M_95</ctH5>	
+	</Static>
+	<Dynamic GroupName="TaiLieu_Guikem">
+		<Tailieuguikem id="ID_1">
+			<tenTaiLieu>C_101</tenTaiLieu>
+		</Tailieuguikem>
+	</Dynamic>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>S_105</nguoiKy>
+		<ngayKy>S_107</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>G_105</tenNVienDLyThue>
+		<cchiHNghe>G_107</cchiHNghe>
+	</Static>	
+</HSoKhaiThue>

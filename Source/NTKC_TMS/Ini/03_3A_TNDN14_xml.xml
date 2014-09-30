@@ -1,0 +1,33 @@
+<PL03_3A_TNDN>
+	<L_DYNAMIC GroupName="PL03_3A_TNDN">
+		<NoiDungPL03_3A id="ID_1">
+			<dieuKienUuDai1>C_22</dieuKienUuDai1>
+			<dieuKienUuDai2>C_23</dieuKienUuDai2>
+			<dieuKienUuDai3>C_24</dieuKienUuDai3>
+			<dieuKienUuDai4>C_25</dieuKienUuDai4>
+			<dieuKienUuDai5>C_26</dieuKienUuDai5>
+			<dieuKienUuDai6>C_27</dieuKienUuDai6>
+			<dieuKienUuDai7>C_28</dieuKienUuDai7>
+			<dieuKienUuDai8>C_29</dieuKienUuDai8>
+			<dieuKienUuDai9>C_30</dieuKienUuDai9>
+			<dieuKienUuDai10>C_31</dieuKienUuDai10>
+			<dieuKienUuDai11>C_32</dieuKienUuDai11>
+			<mucDoUuDai>Q_34</mucDoUuDai>
+			<thoiHanUuDai>N_35</thoiHanUuDai>
+			<namBatDauUuDai>U_35</namBatDauUuDai>
+			<namMienThueBD>J_36</namMienThueBD>
+			<namMienThueKT>Q_36</namMienThueKT>
+			<namPNop50Thue>N_37</namPNop50Thue>
+			<namKTNop50Thue>U_37</namKTNop50Thue>
+			<ct1>U_44</ct1>
+			<ct2>U_45</ct2>
+			<ct3>U_46</ct3>
+			<ct4>U_47</ct4>
+			<ct5>U_49</ct5>
+			<ct6>U_50</ct6>
+			<ct7>U_51</ct7>
+			<ct8>U_52</ct8>
+			<ct9>U_53</ct9>
+		 </NoiDungPL03_3A>	
+	</L_DYNAMIC>
+</PL03_3A_TNDN>

@@ -1,0 +1,21 @@
+<PL02_2_NTNN>
+	<Dynamic GroupName="BKCacNTPhu">
+			<CTietBKCacNTPhu id="ID_2">
+				<ct2>E_24</ct2>
+				<ct3 TINType="1">L_24</ct3>
+				<ct4>R_24</ct4>
+				<ct5>Y_24</ct5>
+				<ct6>AG_24</ct6>
+				<ct7>AM_24</ct7>
+				<ct8>AR_24</ct8>
+				<ct9a>AW_24</ct9a>
+				<ct9b>BD_24</ct9b>
+				<ct10a>BL_24</ct10a>
+				<ct10b>BS_24</ct10b>
+		</CTietBKCacNTPhu>
+	</Dynamic>
+	<Static GroupName="PL02_2_NTNN">
+		<tong_ct9b>BD_26</tong_ct9b>
+		<tong_ct10b>BS_26</tong_ct10b>
+	</Static>
+</PL02_2_NTNN>

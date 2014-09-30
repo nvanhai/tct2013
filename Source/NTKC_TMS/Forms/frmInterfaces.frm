@@ -322,6 +322,7 @@ Const mParity = "N"
 Const mDataBits = 8
 Const mStopBits = 1
 Const mHandshaking = 1
+Const tt156_tkbs = "01~02~04~71~72~11~12~73~15~16~50~51~36~74~75~70~81~06~05~90~23~25~86"
 
 Private xmlDocumentInit()       As MSXML.DOMDocument
 Private arrStrElements()        As String               ' array of barcode string or file name string
@@ -1099,27 +1100,43 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         strLoaiToKhai = GetAttribute(GetMessageCellById("0131"), "Msg")
     End If
     
-    'Map version xml
-    Dim maTK As Variant
-    maTK = xmlTK.getElementsByTagName("maTKhai")(0).Text
+    'Lay version, matk
+    Dim maID As Variant
+    maID = GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")
     
-    If maTK <> "" Then
+    If maID <> "" Then
         Dim xmlVersion As New MSXML.DOMDocument
         xmlVersion.Load GetAbsolutePath("..\InterfaceTemplates\xml\MapMaFile.xml")
         Dim xmlNodeVrs As MSXML.IXMLDOMNode
         
         For Each xmlNodeVrs In xmlVersion.lastChild.childNodes
-            If GetAttribute(xmlNodeVrs, "MaTK") = maTK Then
+            If GetAttribute(xmlNodeVrs, "MapID") = maID Then
                 If strLoaiToKhai = "B" Then
                     xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = GetAttribute(xmlNodeVrs, "VersionKHBS")
                 Else
                     xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = GetAttribute(xmlNodeVrs, "Version")
                 End If
+                
+                xmlTK.getElementsByTagName("maTKhai")(0).Text = GetAttribute(xmlNodeVrs, "MaTK")
+                
                 Exit For
             End If
         Next
     End If
     'End map version
+
+    'Lay ten to khai
+    Dim xmlMapTenTK As New MSXML.DOMDocument
+    xmlMapTenTK.Load GetAbsolutePath("..\InterfaceTemplates\xml\MapTenTK.xml")
+    Dim NodeTenTK As MSXML.IXMLDOMNode
+    
+     For Each NodeTenTK In xmlMapTenTK.lastChild.childNodes
+        If GetAttribute(NodeTenTK, "MapID") = GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") Then
+            xmlTK.getElementsByTagName("tenTKhai")(0).Text = GetAttribute(NodeTenTK, "TenTK")
+            Exit For
+        End If
+    Next
+    'End ten to khai
     
     'To 03/TBAC, BLP bo Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "07"
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "10" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "09" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "67" Or GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID") = "66" Then
@@ -1677,9 +1694,9 @@ Private Function ExecuteSave() As Boolean
 
                     'Ket thuc lay ID to khai
                     
-                    If cellid = "O_55" Then
-                        MsgBox "Err"
-                    End If
+'                    If cellid = "O_55" Then
+'                        MsgBox "Err"
+'                    End If
                     
                     cellArray = Split(cellid, "_")
 
@@ -1911,7 +1928,7 @@ Private Function ExecuteSave() As Boolean
                 Else
                     xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\" & maTK & "_xml.xml")
 
-                    xmlMapPL.Load GetAbsolutePath("..\ini\" & maTK & "_xml.xml")
+                    xmlMapPL.Load GetAbsolutePath("..\Ini\" & maTK & "_xml.xml")
                 End If
 
                 If xmlPL.hasChildNodes = True And xmlMapPL.hasChildNodes = True Then
@@ -2207,7 +2224,9 @@ Private Function ExecuteSave() As Boolean
                                 ID = ID + 1
                                 cellRange = cellRange + 1
                             Loop
+                        ElseIf UCase(xmlSection.nodeName) = "L_DYNAMIC" Then
 
+                        
                         End If
 
                     Next
@@ -2737,33 +2756,70 @@ Private Sub Command1_Click()
         Dim str41 As String, str42 As String, str43 As String, str44 As String, str45 As String, str46 As String, str47 As String, str48 As String, str49 As String, str50 As String
         Dim str51 As String, str52 As String, str53 As String
 
-'str2 = "aa324184200124112   02201400200200100101/0101/01/2009<S01><S>~X~01/04/2014~30/06/2014</S><S>H„a Æ¨n gi∏ trﬁ giat®ng~01GTKT2/001~E~10000~2000~10~20~30~60~120~11880~usercmc~0~H„a Æ¨n b∏n hµng~02GTTT3/002~T~20000~4000~20~40~60~120~240~23" _
-'& "760~cmcuser~0~H„a Æ¨n xu t kh»u~06HDXK4/003~P~30000~8000~40~80~120~240~480~37520~user~0</S><S>CMCer~Hoµng Ng‰c HÔng~18/08/20" _
-'& "14</S></S01>" _
-'& "<S01_2><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/001~QS/11T~0000100~0000200~101~H„a Æ¨n b∏n hµng~02GTTT3/002~QS/11T~0" _
-'& "000150~0000200~51~H„a Æ¨n xu t kh»u~06HDXK4/003~QS/11T~0000060~0000120~61</S></S01_2>"
-'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-
-
-'str2 = "aa324184200124112   02201400200200100101/0101/01/2009<S01><S>~X~01/04/2014~30/06/2014</S><S>H„a Æ¨n gi∏ trﬁ gia" _
-'& "t®ng~01GTKT2/001~E~10000~2000~10~20~30~60~120~11880~usercmc~0~H„a Æ¨n b∏n hµng~02GTTT3/002~T~20000~4000~20~40~60~120~240~23" _
-'& "760~cmcuser~0~H„a Æ¨n xu t kh»u~06HDXK4/003~P~30000~8000~40~80~120~240~480~37520~user~0</S><S>CMCer~Hoµng Ng‰c HÔng~18/08/20" _
-'& "14</S></S01>" _
-'& "<S01_2><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/001~QS/11T~0000100~0000200~101~H„a Æ¨n b∏n hµng~02GTTT3/002~QS/11T~0" _
-'& "000150~0000200~51~H„a Æ¨n xu t kh»u~06HDXK4/003~QS/11T~0000060~0000120~61</S></S01_2>"
-'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-
-
-'bc26ac_sl_phuluc01
-str2 = "aa324184200124112   01201400200200100101/0101/01/2009<S01><S>X~~01/04/2014~30/06/2014</S><S>H„a Æ¨n gi∏ trﬁ gia" _
-& "t®ng~01GTKT0/001~E~10000~2000~10~20~30~60~120~11880~usercmc~0~H„a Æ¨n b∏n hµng~02GTTT3/002~T~20000~4000~20~40~60~120~240~23" _
-& "760~cmcuser~0~H„a Æ¨n xu t kh»u~06HDXK4/003~P~30000~8000~40~80~120~240~480~37520~user~0</S><S>CMCer~Hoµng Ng‰c HÔng~18/08/2014</S></S01>" _
-& "<S01_1><S>H„a Æ¨n gi∏ trﬁ gia t®ng~01GTKT2/001~AT/10T~0000020~0000050~31~0~Phi’u xu t khoki™m vÀn chuy”n hµng" _
-& "h„a nÈi bÈ~03XKNB2/002~QS/12T~0000015~0000050~36~0</S><S>H„a Æ¨n b∏n hµng (dµnh cho tÊ ch¯c, c∏ nh©n trongkhu phi thu’ quan" _
-& ")~07KPTQ3/001~AT/12T~0000025~0000055~31~0~Phi’u xu t kho gˆi b∏n hµng Æπi l˝~04HGDL4/004~QR/10T~0000010~0000030~21~0</S><S>HAN - CÙc Thu’ Thµnh phË Hµ NÈi{10100}</S></S01_1>"
+'Test cac to quyet toan
+'03_TNDN
+str2 = "aa999036868686868   00201302902900103101/0114/06/200601/01/201331/12/2013<S03><S></S><S>~~x~~10.00</S><S>1047000~180000~10000~20000~30000~35000~40000~45000~165000~50000~55000~60000~1062000~10000000~-8938000~10000000~100000~10200~9889800~8000~9881800~2470450~3705670~3705680~5"
 Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
-
-
+str2 = "aa999036868686868   002013029029002031~1469917~402000~94775~0~0~800000~173142~0~203142~173142~10000~20000~100000~73142</S><S>~00~~~</S><S>Phu luc ban hang~Phu luc hang hoa kinh doanh~Phu luc khac</S><S>Nguyen Sy Hung~Nguyen Thac Thu~CCHN12345~29/09/2014~1~1~0~1052</S></S03>"
+Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   002013029029003031<S03-1A><S>10000~2000~2000~1000~500~300~200~100000~8000~1000~2000~5000~10000~2000~90000~20000~10000~10000~100000</S></S03-1A>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   002013029029004031<S03-1B><S>10000~2000~8000~1000000~100000~900000~10000~20000~30000~40000~20000~20000~10000~20000~5000~973000</S></S03-1B>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   002013029029005031<S03-1C><S>315000~15000~20000~25000~30000~35000~40000~45000~50000~55000~340000~10000~15000~20000~"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   00201302902900603125000~30000~35000~40000~45000~50000~55000~10000~5000~-25000~1000~2000~-1000~-26000</S></S03-1C>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   002013029029007031<S03-2A><S>2008~10000~7000~1000~2000~2009~20000~15000~5000~0~2010~5000~2000~1000~2000~2011~8000~3000~2000~3000~2012~7000~5000~1200~800~50000~32000~10200~7800</S></S03-2A>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   002013029029008031<S03-2B><S>2008~10000~5000~0~5000~2009~20000~15000~0~5000~2010~30000~15000~0~15000~2011~20000~15000~5000~0~2012~10000~5000~1000~4000~55000~55000~6000~29000</S></S03-2B>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+str2 = "aa999036868686868   002013029029009031<S03-3A><S>x~~~x~~x~~~x~~x~35.000~2~2013~4~2013~1~2014~1000000~350000~500000~150000~1000000~10~100000~5~5000~x~x~x~x~"
+Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+str2 = "aa999036868686868   002013029029010031x~x~x~x~~~~30.000~5~2013~2~2014~5~2015~1000000~300000~450000~150000~1000000~10.000~100000~10.000~10000</S></S03-3A>"
+Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   002013029029011031<S03-3B><S>x~x~~~x~~x~Hang muc 1~Hang muc 2~Hang muc 3~01/01/2013~10.000~3~2013~3~2013~2~2013~1000000~100000~50000~5000~10000~500~9500~10~500~5~25~~~x~x~~x~~Xay dung co "
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   002013029029012031ban~Cay xanh moi truong~Dien duong truong tram~02/02/2013~5.000~2~2013~1~2014~4~2013~1000000~500000~300000~150000~100000~7500~92500~10.000~15000~5.000~750</S></S03-3B>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   002013029029013031<S03-3C><S>x~10~XNQLLD123~20/06/2013~x~2~XNQLLD132~21/06/2013~x~x~50000~20000~10000~9000~x~"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   00201302902901403120~QDSDLD123~25/05/2013~x~5~QDSDLD132~27/05/2013~x~x~100000~50000~70000~70000</S></S03-3C>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   002013029029015031<S03-4><S>CMC Soft~1000~USD~20000000~100~2000000~1100~22000000~10~2200000~300000~CMC SI~500~USD~10000000~50~1000000~550~11000000~10~1100000~500000</S></S03-4>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   002013029029016031<S03-5><S>100000~18700~10000~5000~2000~1000~500~200~81300~0~81300~1000~80300~10~8030~500~7530~0</S></S03-5>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   002013029029017031<S03-6><S>Muc 1~100000</S><S>2013~10~10000~2000~0~8000~2014~90~90000~0~2000~92000</S></S03-6>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   002013029029018031<S03-7><S>FPT~Viet Nam~2222222222~x~x~~~~~~~~~~~~Seatech~Viet Nam~0102030405~~~x~x~~~~~~~~~</S><S>500000~450000~-50000~150000~100000~50000~0</S><S>723000~816000~93000~260000~221000~39000~132000"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   002013029029019031</S><S>480000~555000~75000~15000~7000~8000~83000</S><S>400000~470000~70000~15000~7000~8000~78000</S><S>May tinh~300000~350000~50000~10000~2000~8000~58000~~~May In~100000~120000~20000~5000~5000~"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   0020130290290200310~20000~~</S><S>80000~85000~5000~7000~6500~500~5500</S><S>Oto~50000~55000~5000~2000~2000~0~5000~~~May xuc~30000~30000~0~5000~4500~500~500~~</S><S>243000~261000~18000~245000~214000~31000~49000</"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   002013029029021031S><S>40000~42000~2000~35000~22000~13000~15000</S><S>Edocman Plus~25000~30000~5000~20000~10000~10000~15000~~~Ilib~15000~12000~-3000~15000~12000~3000~0~~</S><S>60000~67000~7000~60000~58000~2000~9"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   002013029029022031000</S><S>Dau goi dau~50000~55000~5000~45000~44000~1000~6000~~~Sua tam~10000~12000~2000~15000~14000~1000~3000~~</S><S>5000~5000~0~5000~5000~0~0</S><S>QTKD~2000~2000~0~2000~2000~0~0~~~Tu van kin"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   002013029029023031h doanh~3000~3000~0~3000~3000~0~0~~</S><S>125000~130000~5000~133000~125000~8000~13000</S><S>80000~80000~0~78000~73000~5000~5000</S><S>Ban quyen quang cao~30000~35000~5000~30000~28000~2000~7000~"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   002013029029024031~~Ban quyen truyen hinh~50000~45000~-5000~48000~45000~3000~-2000~~</S><S>45000~50000~5000~55000~52000~3000~8000</S><S>Lai dai  han~20000~22000~2000~30000~37000~-7000~-5000~~~Lai ngan han~25000~"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   00201302902902503128000~3000~25000~15000~10000~13000~~</S><S>13000~17000~4000~12000~4000~8000~12000</S><S>Massage~12000~15000~3000~10000~3000~7000~10000~~~Xe om~1000~2000~1000~2000~1000~1000~2000~~</S></S03-7>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   002013029029026031<S03-8><S>173142</S><S>CMC Soft~0101650999~3"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   0020130290290270310~10000~20000~30000~40000~100000~51943~-4805"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   0020130290290280317~10100~10101~Seatech~0102030405~30~5000~100"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   00201302902902903100~15000~20000~50000~51943~1943~10900~10903~"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   002013029029030031FPT~2222222222~40~20000~30000~40000~50000~14"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
+'str2 = "aa999036868686868   0020130290290310310000~69257~-70743~10100~10107</S></S03-8>"
+'Barcode_Scaned TAX_Utilities_Srv_New.Convert(str2, TCVN, UNICODE)
 
 ''01A_TNDN_Q1
 ''str2 = "aa999112300039555   01201400600600100101/0114/06/2006<S01><S></S><S>1000000~200000~800000~1000~20000~781000~500000~0~281000~200000~41000~40000~~0~0~0~4"
@@ -3434,7 +3490,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
         If (Val(Left$(strPrefix, 3)) < 325) Then
             If Trim(idToKhai) = "03" Or Trim(idToKhai) = "77" Or Trim(idToKhai) = "43" Or Trim(idToKhai) = "17" Or Trim(idToKhai) = "59" Or Trim(idToKhai) = "76" Or Trim(idToKhai) = "41" Or Trim(idToKhai) = "26" Or Trim(idToKhai) = "87" Or Trim(idToKhai) = "80" Or Trim(idToKhai) = "82" Or Trim(idToKhai) = "85" Or Trim(idToKhai) = "88" Then
                 If InStr(1, strBarcode, "<S01>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S02>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S03>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S05>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S06>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S09>", vbTextCompare) > 0 Then
-                    DisplayMessage "0139", msOKOnly, miInformation
+                    DisplayMessage "0159", msOKOnly, miInformation
                     Exit Sub
                 Else
                     Exit Sub

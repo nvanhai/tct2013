@@ -1,0 +1,67 @@
+<HSoKhaiThue ngay_nop_tk="E_32" ky_lap_bo="E_30" loi_dinh_danh="F_34">
+	<Static GroupName="TKhaiThue">
+		<maTKhai>08</maTKhai>
+		<tenTKhai>Tờ khai thuế tài nguyên(02/TAIN)</tenTKhai>
+		<soLan>AC_3</soLan>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Dynamic GroupName="TNKhaiThac">
+		<CTietTNKhaiThac id="ID_1">
+			<ct1>AN_57</ct1>
+			<ct2>C_57</ct2>
+			<ct3>L_57</ct3>
+			<ct4>O_57</ct4>
+			<ct5>R_57</ct5>
+			<ct6>W_57</ct6>
+			<ct7>Z_57</ct7>
+			<ct8>AE_57</ct8>
+			<ct9>AH_57</ct9>			
+			<ct10>AL_57</ct10>
+			<ct11>AP_57</ct11>
+			<ct12>AQ_57</ct12>	
+		</CTietTNKhaiThac>
+	</Dynamic>
+	<Dynamic GroupName="TNThuMuaGom">
+		<CTietTNThuMuaGom id="ID_2">
+			<ct1>AN_61</ct1>
+			<ct2>C_61</ct2>
+			<ct3>L_61</ct3>
+			<ct4>O_61</ct4>
+			<ct5>R_61</ct5>
+			<ct6>W_61</ct6>
+			<ct7>Z_61</ct7>
+			<ct8>AE_61</ct8>
+			<ct9>AH_61</ct9>			
+			<ct10>AL_61</ct10>
+			<ct11>AP_61</ct11>
+			<ct12>AQ_61</ct12>
+		</CTietTNThuMuaGom>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tong_ct8>AE_63</tong_ct8>
+		<tong_ct9>AH_63</tong_ct9>
+		<tong_ct10>AL_63</tong_ct10>
+		<tong_ct11>AP_63</tong_ct11>
+		<tong_ct12>AQ_63</tong_ct12>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>AJ_72</nguoiKy>
+		<ngayKy>AJ_74</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>G_72</tenNVienDLyThue>
+		<cchiHNghe>G_74</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

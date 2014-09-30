@@ -1,0 +1,43 @@
+<HSoKhaiThue ngay_nop_tk="E_24" ky_lap_bo="E_22" loi_dinh_danh="E_28">
+	<Static GroupName="TKhaiThue">
+		<maTKhai>61</maTKhai>
+		<tenTKhai>Tờ khai Phí, lệ phí (01/PHLP)</tenTKhai>
+		<soLan>I_33</soLan>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT/>
+		<maTinhNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
+	</Static>
+	<Dynamic GroupName="NoiDung01PHLP">
+		<ChiTietPhiLePhi id="ID_1">
+			<ct2>AB_44</ct2>
+			<ct3>H_44</ct3>
+			<ct4>J_44</ct4>
+			<ct5>O_44</ct5>
+			<ct6>Q_44</ct6>
+			<ct7>U_44</ct7>
+		</ChiTietPhiLePhi>
+	</Dynamic>	
+	<Static GroupName="CTieuTKhaiChinh">
+			<tong_ct4>J_46</tong_ct4>
+			<tong_ct6>Q_46</tong_ct6>
+			<tong_ct7>U_46</tong_ct7>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_53</nguoiKy>
+		<ngayKy>R_55</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>G_53</tenNVienDLyThue>
+		<cchiHNghe>G_55</cchiHNghe>
+	</Static>
+</HSoKhaiThue>
