@@ -1,13 +1,13 @@
 <PL27MGT-TNCN>
 	<Static GroupName="chiTietChiTieuMGiamThueTNCN">
-			<ct07></ct07>
-			<ct08 TINType="1">A_1</ct08>
-			<ct09></ct09>
-			<ct10>0</ct10>
-			<ct11>0</ct11>
-			<ct12>0</ct12>
-			<ct13>0</ct13>
-			<ct14>0</ct14>
+			<ct07>C_22</ct07>
+			<ct08 TINType="1">D_22</ct08>
+			<ct09>E_22</ct09>
+			<ct10>F_22</ct10>
+			<ct11>G_22</ct11>
+			<ct12>H_22</ct12>
+			<ct13>I_22</ct13>
+			<ct14>J_22</ct14>
 	</Static>
 	<Static GroupName="PL27MGT-TNCN">
 		<ct15>F_16</ct15>

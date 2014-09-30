@@ -69,7 +69,7 @@
 			</TTinTKhaiThue>
 		</TTinChung>
 		<CTieuTKhaiChinh>
-			<ChiTietKDoanhCuaCaNhom>
+			<BKeNhom>
 				<ct21>1</ct21>
 				<ct22>1</ct22>
 				<ct23>1</ct23>
@@ -82,24 +82,20 @@
 				<ct30>1</ct30>
 				<ct31>1</ct31>
 				<ct32>1</ct32>
-			</ChiTietKDoanhCuaCaNhom>
-			<ThuNhapVaSoThuePNopCuaTungCNhan>
-				<ChiTietSoThueGiamTruGiaCanh>
-					<chiTietSoThueTungCNhan>
-						<ct34></ct34>
-						<ct35></ct35>
-						<ct36>0.0</ct36>
-						<TNCNTuongUng>
-							<ct37>1</ct37>
-							<ct38>1</ct38>
-						</TNCNTuongUng>
-						<ct39>1</ct39>
-						<ct40>1</ct40>
-						<ct41>1</ct41>
-						<ct42>1</ct42>
-						<ct43>1</ct43>
-					</chiTietSoThueTungCNhan>
-				</ChiTietSoThueGiamTruGiaCanh>
+			</BKeNhom>
+			<BKeTungCNhan>
+				<CTietBKeTungCNhan id="ID_1">
+					<ct34></ct34>
+					<ct35></ct35>
+					<ct36>0.0</ct36>
+					<ct37>0</ct37>
+					<ct38>0</ct38>
+					<ct39>1</ct39>
+					<ct40>0</ct40>
+					<ct41>1</ct41>
+					<ct42>1</ct42>
+					<ct43>1</ct43>
+				</CTietBKeTungCNhan>
 				<ct44>1</ct44>
 				<ct45>1</ct45>
 				<ct46>1</ct46>
@@ -108,7 +104,7 @@
 				<ct49>1</ct49>
 				<ct50>1</ct50>
 				<ct51>1</ct51>
-			</ThuNhapVaSoThuePNopCuaTungCNhan>
+			</BKeTungCNhan>
 		</CTieuTKhaiChinh>
 		<PLuc/>
 	</HSoKhaiThue>
