@@ -1,14 +1,10 @@
-﻿<Sections Version="130">
+﻿<Sections Version="330">
 	<Section Dynamic="0" MaxRows="0">
 		<Items>
-			<Item value="Con"/>
-			<Item value="Vợ"/>
-			<Item value="Chồng"/>
-			<Item value="Cha"/>
-			<Item value="Mẹ"/>
-			<Item value="Cháu ruột"/>
-			<Item value="Họ hàng"/>
-			<Item value="Khác"/>
+			<Item value="01###Con"/>
+			<Item value="02###Vợ/chồng"/>
+			<Item value="03###Cha/mẹ"/>
+			<Item value="04###Khác"/>
 		</Items>
 	</Section>	
 </Sections>

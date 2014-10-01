@@ -1263,31 +1263,49 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("D"), 12, vCheckLienKet
         
         If vCheckCSHachToan = "1" Or UCase$(vCheckCSHachToan) = "X" Then
-            If TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_6_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0" Then
-                .Col = .ColLetterToNumber("D")
-                .Row = 10
-                .CellNote = ""
-                .BackColor = mNonErrorColor
+            If TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_8_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0" Then
+'                .Col = .ColLetterToNumber("D")
+'                .Row = 10
+'                .CellNote = ""
+'                .BackColor = mNonErrorColor
             Else
-                .Col = .ColLetterToNumber("D")
-                .Row = 10
-                .CellNote = errCheckCSHachToan
-                .BackColor = mErrorColor
+'                .Col = .ColLetterToNumber("D")
+'                .Row = 10
+'                .CellNote = errCheckCSHachToan
+'                .BackColor = mErrorColor
+                .Sheet = 1
+                .ActiveSheet = 1
+                If Not .Visible Then
+                    .Visible = True
+                    DisplayMessage "0337", msOKOnly, miWarning
+                    .Visible = False
+                Else
+                    DisplayMessage "0337", msOKOnly, miWarning
+                End If
                 iFlagCheckCSHachToan = 1
             End If
         End If
         
         If vCheckLienKet = "1" Or UCase$(vCheckLienKet) = "X" Then
             If TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_7_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0" Then
-                 .Col = .ColLetterToNumber("D")
-                .Row = 12
-                .CellNote = ""
-                .BackColor = mNonErrorColor
+'                 .Col = .ColLetterToNumber("D")
+'                .Row = 12
+'                .CellNote = ""
+'                .BackColor = mNonErrorColor
             Else
-                 .Col = .ColLetterToNumber("D")
-                .Row = 12
-                .CellNote = errCheckLienKet
-                .BackColor = mErrorColor
+'                 .Col = .ColLetterToNumber("D")
+'                .Row = 12
+'                .CellNote = errCheckLienKet
+'                .BackColor = mErrorColor
+                .Sheet = 1
+                .ActiveSheet = 1
+                If Not .Visible Then
+                    .Visible = True
+                    DisplayMessage "0338", msOKOnly, miWarning
+                    .Visible = False
+                Else
+                    DisplayMessage "0338", msOKOnly, miWarning
+                End If
                 iFlagCheckLienKet = 1
             End If
         End If
@@ -2793,6 +2811,19 @@ Private Sub UpdateSheets()
                             .GetText lCol, lRow, varTemp
                             UpdateCell fps, lCol, lRow, varTemp
                         End If
+                    ElseIf i = sheetPl03_9_TNDN Then
+                         If (lRow >= 42 And lCol = .ColLetterToNumber("G")) Or (lRow >= 42 And lCol = .ColLetterToNumber("AI")) Then
+                        .GetText lCol, lRow, varTemp
+                        If varTemp = "1" Or UCase(CStr(varTemp)) = "X" Then
+                            UpdateCell fps, lCol, lRow, "x"
+                        Else
+                            UpdateCell fps, lCol, lRow, ""
+                        End If
+                  Else
+                        .GetText lCol, lRow, varTemp
+                        UpdateCell fps, lCol, lRow, varTemp
+                  End If
+                        
                     Else
                          .GetText lCol, lRow, varTemp
                          UpdateCell fps, lCol, lRow, varTemp

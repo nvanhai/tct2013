@@ -3059,9 +3059,9 @@ Public Sub cmdOK_Click()
         If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "76" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "59" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "43" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "41" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "17" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "26" Then
             TAX_Utilities_v1.FirstDay = txtNgayDau.Text
             TAX_Utilities_v1.LastDay = txtNgayCuoi.Text
-            ' check khong dc vuot qua 15 thang
-            If DateDiff("M", format(txtNgayDau.Text, "mm/yyyy"), format(txtNgayCuoi.Text, "mm/yyyy")) + 1 > 15 Then
-                    DisplayMessage "0335", msOKOnly, miInformation
+            ' check khong dc vuot qua 12 thang
+            If DateDiff("M", format(txtNgayDau.Text, "mm/yyyy"), format(txtNgayCuoi.Text, "mm/yyyy")) + 1 > 12 Then
+                    DisplayMessage "0339", msOKOnly, miInformation
                     txtNgayCuoi.SetFocus
                     Exit Sub
             End If
@@ -3854,7 +3854,7 @@ Public Sub cmdOK_Click()
     
     If idToKhai = "17" Then
         If TAX_Utilities_v1.Year = "2012" Then
-            SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(3), "Active", "1"
+            SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(4), "Active", "1"
         End If
     End If
     
