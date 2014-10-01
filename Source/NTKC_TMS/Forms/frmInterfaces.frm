@@ -2225,10 +2225,25 @@ Private Function ExecuteSave() As Boolean
                                 cellRange = cellRange + 1
                             Loop
                         ElseIf UCase(xmlSection.nodeName) = "L_DYNAMIC" Then
-
-                        
+                            'Loop all phu luc
+                            Dim xmlSource As New MSXML.DOMDocument
+                            xmlSource.loadXML TAX_Utilities_Srv_New.Data(.Sheet - 1).getElementsByTagName("Sections")(0).xml
+                            If xmlSource.childNodes(0).childNodes.length = 2 Then '2 vi bao gom header va content trong <sessions>
+                                Dim countLoop, i As Integer
+                                countLoop = xmlSource.lastChild.childNodes(1).childNodes.length
+                                currentGroup = GetAttribute(xmlSection, "GroupName")
+                                CloneNode.loadXML xmlSection.firstChild.xml
+                                i = 0
+                                Do
+                                    i = i + 1
+                                    Blank = True
+                                    sRow = 0
+                                    SetCloneNode CloneNode, xmlNodeMapCT, Blank, i, sRow
+                                    
+                                Loop Until i = countLoop
+                                
+                            End If
                         End If
-
                     Next
 
                     xmlTK.getElementsByTagName("PLuc")(0).appendChild xmlPL.lastChild
