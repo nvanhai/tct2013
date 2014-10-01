@@ -82,6 +82,8 @@ Public Sub Prepare1()
         strDataFileName = Replace(GetCatalogueTemplateFile, "Catalogue_052008_01", "CatalogueQTTN_2008_01")
     ElseIf TAX_Utilities_v1.Year = "2010" Then
         strDataFileName = Replace(GetCatalogueTemplateFile, "Catalogue_072010_01", "CatalogueQTTN_2010_01")
+    ElseIf TAX_Utilities_v1.Year = "2014" Then
+        strDataFileName = Replace(GetCatalogueTemplateFile, "Catalogue_022014_01", "CatalogueQTTN_2014_01")
     Else
         strDataFileName = GetCatalogueFileName(blChon)
     End If
@@ -213,6 +215,17 @@ Dim count1 As Long
                 UpdateCell fps, .Col, .Row, .Text
             End If
          'end
+         
+         ' set tu thang den thang
+        .Col = .ColLetterToNumber("Q")
+        .Row = 17
+        .Text = TAX_Utilities_v1.FirstDay
+        UpdateCell fps, .Col, .Row, .Text
+        
+        .Col = .ColLetterToNumber("R")
+        .Row = 17
+        .Text = TAX_Utilities_v1.LastDay
+        UpdateCell fps, .Col, .Row, .Text
         
             iSection = 1
             i = 1
@@ -440,9 +453,9 @@ Dim xmlNodeH15 As MSXML.IXMLDOMNode
         .Col = Col
         .Row = Row
          If Col = .ColLetterToNumber("G") And .Text <> "" Then
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber("F")
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             'Update combo F
             .Col = .ColLetterToNumber("F")
             UpdateCell fps, .Col, .Row, .Text
@@ -714,9 +727,9 @@ With fps
         .Col = Col
         .Row = Row
          If Col = .ColLetterToNumber("BD") And .Text <> "" Then
-            intIndexCombo = .TypeComboBoxCurSel
+            intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber("BC")
-            .TypeComboBoxCurSel = intIndexCombo
+            .typeComboboxCurSel = intIndexCombo
             'Update combo C
             UpdateCell fps, .Col, .Row, .Text
             .Col = .ColLetterToNumber("BE")

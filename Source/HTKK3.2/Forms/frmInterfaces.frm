@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":1969
+         SpreadDesigner  =   "frmInterfaces.frx":19A5
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1BF1
+      SpreadDesigner  =   "frmInterfaces.frx":1C69
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -3400,24 +3400,24 @@ Private Sub cmdExport_Click()
                 ' Khac ky tinh thue nam 2012 se khong ket xuat pl MT 26,27
                 ' To khai 09/KK-TNCN
                 If idToKhaiKHBS = "41" And TAX_Utilities_v1.Year <> "2012" Then
-                    fpSpread1.sheet = 5
+                    fpSpread1.sheet = 6
                     If fpSpread1.SheetName = "26MT-TNCN" Then
-                        fpSpread1.DeleteSheets 5, 1
+                        fpSpread1.DeleteSheets 6, 1
                     End If
                 End If
                 ' To khai 05/KK-TNCN
                 
                  If idToKhaiKHBS = "17" And TAX_Utilities_v1.Year <> "2012" Then
-                    fpSpread1.sheet = 4
+                    fpSpread1.sheet = 5
                     If fpSpread1.SheetName = "27MT-TNCN" Then
-                        fpSpread1.DeleteSheets 4, 1
+                        fpSpread1.DeleteSheets 5, 1
                     End If
                  End If
                  
                  ' chi ket xuat dong tong
                  If idToKhaiKHBS = "17" And TAX_Utilities_v1.Year = "2012" Then
                     fpSpread1.EventEnabled(EventAllEvents) = False
-                    fpSpread1.sheet = 4
+                    fpSpread1.sheet = 5
                     Dim countRowDel As Integer
                     countRowDel = 0
                     fpSpread1.Row = 22
@@ -3438,7 +3438,7 @@ Private Sub cmdExport_Click()
                     fpSpread1.DeleteRows 22, countRowDel
                     fpSpread1.MaxRows = fpSpread1.MaxRows - countRowDel + 1
 
-                    fpSpread1.sheet = 4
+                    fpSpread1.sheet = 5
 '                    fpSpread1.Row = 22
 '                    fpSpread1.SetText fpSpread1.ColLetterToNumber("C"), fpSpread1.Row, ""
 '                    fpSpread1.SetText fpSpread1.ColLetterToNumber("D"), fpSpread1.Row, ""
@@ -3468,7 +3468,7 @@ Private Sub cmdExport_Click()
         
         ' chi ket xuat dong tong
          If idToKhaiKHBS = "17" And TAX_Utilities_v1.Year = "2012" Then
-             fpSpread1.sheet = 4
+             fpSpread1.sheet = 5
              fpSpread1.EventEnabled(EventAllEvents) = False
              fpSpread1.InsertRows 22, 1
              fpSpread1.CopyRowRange 21, 21, 22
@@ -3549,8 +3549,13 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
         With fpSpread1
             .EventEnabled(EventAllEvents) = False
             .sheet = 1
-            .Col = .ColLetterToNumber("D")
-            .Row = 10
+            If UCase(Trim(loaiToKhai)) = "09_TNCN" Then
+                 .Col = .ColLetterToNumber("F")
+                .Row = 10
+            Else
+                .Col = .ColLetterToNumber("D")
+                .Row = 10
+            End If
             ' Lay MST cua NNT
             .GetText .Col, .Row, taxId
             ' Neu la ma 10 so thi them chuoi 000 vao sau
@@ -3575,14 +3580,24 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
                 kyHieuToKhai = "08BN"
             End If
             ' Lay trang thai va so lan cua to khai
-            .Col = .ColLetterToNumber("E")
-            .Row = 6
+            If UCase(Trim(loaiToKhai)) = "09_TNCN" Then
+                .Col = .ColLetterToNumber("G")
+                .Row = 6
+            Else
+                .Col = .ColLetterToNumber("E")
+                .Row = 6
+            End If
             .GetText .Col, .Row, ctBs
             If UCase(Trim(ctBs)) = "[X]" Then
                 ctBs = "L00"
             Else
-                .Col = .ColLetterToNumber("I")
-                .Row = 6
+                If UCase(Trim(loaiToKhai)) = "09_TNCN" Then
+                     .Col = .ColLetterToNumber("K")
+                    .Row = 6
+                Else
+                    .Col = .ColLetterToNumber("I")
+                    .Row = 6
+                End If
                 .GetText .Col, .Row, lanBS
                 If Len(lanBS) = 1 Then
                     ctBs = "L" & "0" & lanBS
@@ -3591,7 +3606,11 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
                 End If
             End If
             ' Lay ma co quan thue cap cuc
-            .Col = .ColLetterToNumber("D")
+            If UCase(Trim(loaiToKhai)) = "09_TNCN" Then
+                .Col = .ColLetterToNumber("F")
+            Else
+                .Col = .ColLetterToNumber("D")
+            End If
             If UCase(Trim(loaiToKhai)) = "05_TNCN" Then
                     .Row = 30
             ElseIf UCase(Trim(loaiToKhai)) = "09_TNCN" Then

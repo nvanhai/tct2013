@@ -64,7 +64,7 @@ Public Sub Prepare1()
     Dim strDDKTTN, strDonvitinh As String
     Dim arrDanhsach() As String, blChon As Boolean
     blChon = False
-    strDataFileName = GetCatalogueFileName(blChon)
+    strDataFileName = GetAbsolutePath("..\InterfaceTemplates\xml\Catalogue_PHLP_012009_01.xml")
     
     
     With fps
@@ -82,81 +82,33 @@ Public Sub Prepare1()
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
     End With
-    arrTaiNguyen.RemoveAll
     If xmlDomData.Load(strDataFileName) Then
         Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
         For Each xmlNode In xmlNodeListCell
             If GetAttribute(xmlNode, "Value") <> "" Then
                 arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
-                If (blChon = True And arrDanhsach(6) = "1") Or blChon = False Then
-                    strCombo = strCombo + CPab(arrDanhsach(2), 200) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(3), 10) + CPab(arrDanhsach(4), 10) + CPab(arrDanhsach(5), 1) + Chr$(9)
-                    arrTaiNguyen.Add arrDanhsach(1), CPab(arrDanhsach(2), 200) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(3), 10) + CPab(arrDanhsach(4), 10) + CPab(arrDanhsach(5), 1) + Chr$(9)
+                    strCombo = strCombo + arrDanhsach(1) + "###" + arrDanhsach(4) + Chr$(9)
                     strComboHien = strComboHien + arrDanhsach(2) + Chr$(9)
-                End If
             End If
         Next
-        Dim xmlDocument As New MSXML.DOMDocument
-        Dim xmlNode1 As MSXML.IXMLDOMNode
-        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_29122007_2.xml"))
-        Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
-        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
-        For Each xmlNode1 In xmlNodeListMap
-            strDonvitinh = strDonvitinh + GetAttribute(xmlNode1, "value") + Chr$(9)
-        Next
+       
     End If
 
-    strDataFileName = GetCatalogueTemplateFile
-    
-    arrTaiNguyenGoc.RemoveAll
-    If xmlDomData.Load(strDataFileName) Then
-        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
-        For Each xmlNode In xmlNodeListCell
-            If GetAttribute(xmlNode, "Value") <> "" Then
-                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
-                If (blChon = True And arrDanhsach(6) = "1") Or blChon = False Then
-                    arrTaiNguyenGoc.Add arrDanhsach(1), CPab(arrDanhsach(2), 200) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(3), 10) + CPab(arrDanhsach(4), 10) + CPab(arrDanhsach(5), 1) + Chr$(9)
-                End If
-            End If
-        Next
-    End If
+   
     
     With fps
         'them danh muc hang vao combobox danh muc 1
         .Sheet = .ActiveSheet
         mCurrentSheet = .Sheet
-        .Col = .ColLetterToNumber("AB")
-        .Row = 45
-        .TypeComboBoxList = strCombo 'CPab("Maple", 100) + Chr$(9) + CPab("Oak", 100) + Chr$(9) + CPab("Ash", 100)
-        'Combo Hien
-        .Col = .ColLetterToNumber("C")
-        .Row = 45
-        .TypeComboBoxList = strComboHien
-        .Col = .ColLetterToNumber("J")
-        .TypeComboBoxList = strDonvitinh
-        'them danh muc hang vao combobox danh muc 2
-        .Sheet = .ActiveSheet
-        mCurrentSheet = .Sheet
-        .Col = .ColLetterToNumber("AB")
-        .Row = 49
-        .TypeComboBoxList = strCombo 'CPab("Maple", 100) + Chr$(9) + CPab("Oak", 100) + Chr$(9) + CPab("Ash", 100)
-        'Combo Hien
-        .Col = .ColLetterToNumber("C")
-        .Row = 49
-        .TypeComboBoxList = strComboHien
-        .Col = .ColLetterToNumber("J")
-        .TypeComboBoxList = strDonvitinh
-        End With
 
-'        Set xmlNodeListCell = Nothing
-'        ' Lay dia diem khai thac tai nguyen
-'        If TAX_Utilities_v1.Month = "01" Then 'Thang 1 ve thang 12 nam truoc
-'            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & "12" & Trim(str(CInt(TAX_Utilities_v1.Year) - 1)) & ".xml"
-'        Else
-'            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & Right("00" & Trim(str(CInt(TAX_Utilities_v1.Month) - 1)), 2) & TAX_Utilities_v1.Year & ".xml"
-'        End If
-        
-   mblKeyF5 = False
-   
+        .Col = .ColLetterToNumber("AB")
+        .Row = 49
+        .TypeComboBoxList = strCombo 'CPab("Maple", 100) + Chr$(9) + CPab("Oak", 100) + Chr$(9) + CPab("Ash", 100)
+        'Combo Hien
+        .Col = .ColLetterToNumber("C")
+        .Row = 49
+        .TypeComboBoxList = strComboHien
+        End With
                ' set CQT ra quyet dinh hoan
     setCQTQuanLyHoanThue fps
 End Sub
@@ -208,18 +160,30 @@ Dim tongNTNN As Variant, tienDoiThanhChu As String
             .Text = StrSolanBosung
             UpdateCell fps, .Col, .Row, .Text
         End If
+        
+        ' set tu thang den thang
+        .Col = .ColLetterToNumber("M")
+        .Row = 35
+        .Text = TAX_Utilities_v1.FirstDay
+        UpdateCell fps, .Col, .Row, .Text
+        
+        .Col = .ColLetterToNumber("N")
+        .Row = 35
+        .Text = TAX_Utilities_v1.LastDay
+        UpdateCell fps, .Col, .Row, .Text
+        
          'tong tien bang chu
-         .GetText .ColLetterToNumber("T"), 37, tongNTNN
-        If str(tongNTNN) <> "" Then
-            tongNTNN = Replace(tongNTNN, ".", "")
-            tongNTNN = Replace(tongNTNN, ",", "")
-            tienDoiThanhChu = doiTien(CStr(tongNTNN))
-            .SetText .ColLetterToNumber("AB"), 37, tienDoiThanhChu
-            UpdateCell fps, .ColLetterToNumber("AB"), 37, tienDoiThanhChu
-        End If
-        'set gia tri cho cot so tien bang chu
-        .SetText .ColLetterToNumber("B"), 55, tienDoiThanhChu
-        UpdateCell fps, .ColLetterToNumber("B"), 55, tienDoiThanhChu
+'         .GetText .ColLetterToNumber("T"), 37, tongNTNN
+'        If str(tongNTNN) <> "" Then
+'            tongNTNN = Replace(tongNTNN, ".", "")
+'            tongNTNN = Replace(tongNTNN, ",", "")
+'            tienDoiThanhChu = doiTien(CStr(tongNTNN))
+'            .SetText .ColLetterToNumber("AB"), 37, tienDoiThanhChu
+'            UpdateCell fps, .ColLetterToNumber("AB"), 37, tienDoiThanhChu
+'        End If
+'        'set gia tri cho cot so tien bang chu
+'        .SetText .ColLetterToNumber("B"), 55, tienDoiThanhChu
+'        UpdateCell fps, .ColLetterToNumber("B"), 55, tienDoiThanhChu
         
 '        .Sheet = 1
 '            mCurrentSheet = 1
@@ -277,14 +241,13 @@ Dim cTagF As String
 Dim cValueF As Variant
 Dim i As Integer
 Dim mblLoi As Boolean
-
+Dim arrTemp() As String
 
 
 Dim xmlNodeH15 As MSXML.IXMLDOMNode
      fps.EventEnabled(EventAllEvents) = False
     With fps
        .Sheet = 1
-       'vttoan
        'khi tron danh muc khoang san mac dinh don vi tinh la kg va cho phep sua sua
        If Col = .ColLetterToNumber("C") And .Text <> "" Then
             intIndexCombo = .typeComboboxCurSel
@@ -296,104 +259,14 @@ Dim xmlNodeH15 As MSXML.IXMLDOMNode
             'Chon lai combo cua colF
             .Col = .ColLetterToNumber("AC")
             .GetText .ColLetterToNumber("AB"), Row, strId
-            .Text = Trim(Mid(strId, 200, 10))
+             arrTemp = Split(strId, "###")
+            .Text = arrTemp(0)
              UpdateCell fps, .Col, .Row, .Text
-             .Col = .ColLetterToNumber("AD")
-             .Text = Trim(Left(strId, 200))
+             
+             .Col = .ColLetterToNumber("E")
+             .Text = arrTemp(1)
              UpdateCell fps, .Col, .Row, .Text
-             .Col = .ColLetterToNumber("J")
-             .Text = Trim(Mid(strId, 210, 10))
-             UpdateCell fps, .Col, .Row, .Text
-             If strId <> "" Then
-                .Col = .ColLetterToNumber("AE")
-                .Text = strId
-                UpdateCell fps, .Col, .Row, .Text
-             End If
        End If
-       mblLoi = False
-            'Huy chon Combo to khai khong hop le va ra thong bao
-        blGiaTriCu = False
-            If blGiaTriCu And Col = .ColLetterToNumber("C") Then 'And Not mblKeyF5 Then
-                If Not .Visible Then
-                    .Visible = True
-                    DisplayMessage "0227", msOKOnly, miWarning
-                    .Visible = False
-                Else
-                    DisplayMessage "0227", msOKOnly, miWarning
-                End If
-                
-                .Sheet = 1
-                mCurrentSheet = .Sheet
-                .Row = RowGiaTriCu
-                .Col = ColGiaTriCu
-                .Text = strGiaTriCu
-                .Sheet = 1
-                mCurrentSheet = .Sheet
-                .Row = RowGiaTriCu
-                .Col = ColGiaTriCu
-                UpdateCell fps, .Col, .Row, .Text
-                blGiaTriCu = False
-                mblLoi = True
-            End If
-'KHBS
-     If .ActiveSheet = .SheetCount - 1 Then
-         Dim cValueOld As Variant
-         Dim cellid As String
-         Dim xmlCellNodeData As MSXML.IXMLDOMNode
-        ' Dim i As Integer
-             fps.EventEnabled(EventAllEvents) = False
-             .Sheet = .SheetCount - 1
-              cCol = .Col
-              cRow = .Row
-             .Col = .ColLetterToNumber("BD")
-             .Row = .Row
-             .GetText .ColLetterToNumber("BC"), .Row, varTemp
-
-       If varTemp <> "" Then
-          Dim arr() As String
-            For i = 0 To UBound(arrDanhSachKHBS)
-               If varTemp = Left(arrDanhSachKHBS(i), InStr(arrDanhSachKHBS(i), "~") - 1) Then
-                   cellid = "AN_" & Right(arrDanhSachKHBS(i), Len(arrDanhSachKHBS(i)) - InStr(arrDanhSachKHBS(i), "~") - 2)
-                  For Each xmlCellNodeData In TAX_Utilities_v1.DataKHBS.getElementsByTagName("Cell")
-                       If GetAttribute(xmlCellNodeData, "CellID") = cellid Then
-                            cValue = CDbl(cValue) + CDbl(GetAttribute(xmlCellNodeData, "Value"))
-                            Exit For
-                        End If
-                   Next
-               End If
-            Next
-
-              .Col = .ColLetterToNumber("BF")
-              .Row = Row
-               .value = cValue
-               UpdateCell fps, .Col, .Row, .value
-               .Col = .ColLetterToNumber("BG")
-               .Row = Row
-               UpdateCell fps, .Col, .Row, .value
-               .Col = .ColLetterToNumber("BH")
-               .Row = Row
-               UpdateCell fps, .Col, .Row, .value
-
-
-            .Sheet = .SheetCount - 1
-            Set xmlNodeH15 = TAX_Utilities_v1.Data(.Sheet - 1).childNodes(2).childNodes(2).lastChild.lastChild
-                 ParserCellID fps, GetAttribute(xmlNodeH15, "CellID"), cCol, cRow
-                .Col = cCol
-                .Row = cRow
-                UpdateCell fps, .Col, .Row, .value
-                If .value < 0 Then
-                    .Col = .ColLetterToNumber("BE")
-                    .Row = cRow + 3
-                    .value = 0
-                    UpdateCell fps, .Col, .Row, 0
-                 Else
-                    .Col = .ColLetterToNumber("BE")
-                    .Row = cRow + 3
-                    UpdateCell fps, .Col, .Row, .value
-                End If
-            fps.EventEnabled(EventAllEvents) = True
-         End If
-    End If
     End With
    fps.EventEnabled(EventAllEvents) = True
 End Sub
