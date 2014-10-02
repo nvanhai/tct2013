@@ -599,9 +599,9 @@
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01_PHLP" Ini="..\Ini\KHBS_01_PHLP.xml"/>
 		</Validity>
 	</Menu>
-	<Menu ID="88" PopID="101" ParentID="113" Caption="Tờ khai Phí, lệ phí (02/PHLP)" FormName="" Year="1" Month="0" ThreeMonth="0" Day="1" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
+	<Menu ID="88" PopID="101" ParentID="113" Caption="Tờ khai Phí, lệ phí (02/PHLP)" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\02_PHLP.xls" ReportTemplate="..\ReportTemplates\excel\02_PHLP.xls" CatalogueID="01" Class="Tax_Business_Srv.cls_02PHLP">
-			<Sheet ID="01" Caption="02/PHLP" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_PHLP" Ini="..\Ini\02_PHLP.xml" ReportIni="..\ReportIni\02_PHLP.xml"/>
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_PHLP" Ini="..\Ini\02_PHLP.xml" ReportIni="..\ReportIni\02_PHLP.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_02_PHLP" Ini="..\Ini\KHBS_02_PHLP.xml"/>
 		</Validity>
 	</Menu>

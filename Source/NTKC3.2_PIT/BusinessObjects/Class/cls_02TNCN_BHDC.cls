@@ -429,10 +429,10 @@ Public Function CheckValidData() As Boolean
     CheckValidData = True
     With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("E"), 36, varCheckValue
-        .GetText .ColLetterToNumber("M"), 36, varNoteValue
+        .GetText .ColLetterToNumber("E"), 40, varCheckValue
+        .GetText .ColLetterToNumber("M"), 40, varNoteValue
         '
-        .GetText .ColLetterToNumber("E"), 32, varNgayNop
+        .GetText .ColLetterToNumber("E"), 36, varNgayNop
         If CStr(varCheckValue) = "1" And Trim(CStr(varNoteValue)) = "" Then
             .Sheet = .SheetCount
             .SetText 2, 14, "0"
@@ -478,7 +478,8 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
     
     On Error GoTo ErrHandle
-    strSQL = Replace$(strSQL_HDR, ")", ",LOAI_KYKK)")
+    'strSQL = Replace$(strSQL_HDR, ")", ",LOAI_KYKK)")
+    strSQL = strSQL_HDR
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
 
     For Each xmlNode In xmlList
@@ -527,8 +528,8 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
                     Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                         vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
 
-                    Case "L_76"
-                        LOAI_KYKK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
+'                    Case "L_76"
+'                        LOAI_KYKK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
 
                 End Select
 
@@ -537,13 +538,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
         End With
 
     Next
-
-    If LOAI_KYKK = "0" Then
-        LOAI_KYKK = "T"
-    Else
-        LOAI_KYKK = "Q"
-    End If
-
+    
     strSQL = strSQL & "'" & vHdrID & "',"
     strSQL = strSQL & vKKBS & ","
     strSQL = strSQL & "'" & vTIN & "',"
@@ -555,6 +550,8 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
     'Ky/Quy LB
+
+    'Ngay dau ky lap bo va ngay cuoi ky lap bo
     'Ngay dau ky lap bo va ngay cuoi ky lap bo
     strDate = Split(vKyLB, "/")
     dDate = DateSerial(Val(strDate(1)), Val(strDate(0)), 1)
@@ -562,28 +559,13 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     dDate = DateAdd("m", 1, dDate)
     dDate = DateAdd("d", -1, dDate)
     strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-    
     'Ky/ Quy KK
-    If LOAI_KYKK = "0" Then
-        If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
-            'Ngay dau ky ke khai va ngay cuoi ky ke khai
-            dDate = dNgayDauKy
-            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-            dDate = DateAdd("m", 1, dDate)
-            dDate = DateAdd("d", -1, dDate)
-            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        End If
-
-    Else
-
-        If Trim(TAX_Utilities_Srv_New.ThreeMonths) <> "" Then
-            dDate = dNgayDauKy
-            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-            dDate = DateAdd("m", 3, dDate)
-            dDate = DateAdd("d", -1, dDate)
-            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        End If
-    End If
+    'Ngay dau ky ke khai va ngay cuoi ky ke khai
+    dDate = dNgayDauKy
+    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    dDate = DateAdd("m", 12, dDate)
+    dDate = DateAdd("d", -1, dDate)
+    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
     strSQL = strSQL & "'" & vNGUOI_CAP_NHAT & "',"
@@ -656,7 +638,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     End If
 
     strSQL = strSQL & "null,"
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ",'" & LOAI_KYKK & "')"
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
     GenerateSQL_Header = strSQL
     
     Exit Function
