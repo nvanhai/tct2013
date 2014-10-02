@@ -19,8 +19,8 @@ Public StrSolanBosung As String
 
 Public FlagThaydoi As String
 
-Const SHEET_PHU_LUC_01 As Integer = 2
-Const SHEET_PHU_LUC_SAN_LUONG As Integer = 3
+Const SHEET_PHU_LUC_01 As Integer = 3
+Const SHEET_PHU_LUC_SAN_LUONG As Integer = 2
 Const sheetPl01_KHBS_GTGT As Integer = 4
 Private Const ROW_START_02_1 = 29
 Private Const Row_MSTDN = 51
@@ -82,7 +82,7 @@ Public Sub Prepare1()
             .Lock = True
         End If
         
-        .Sheet = 3
+        .Sheet = 2
         .Row = 29
         .Col = .ColLetterToNumber("D")
         If strLoaiToKhaiDK = "DT" Then
@@ -733,8 +733,8 @@ Public Sub SetActiveSheet()
             Case "01-1"
                 blnNullValue = True
                 'Check value of last node in Data
-                Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell") _
-                    (TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length - 1)
+                Set xmlCellNode = TAX_Utilities_v1.Data(2).getElementsByTagName("Cell") _
+                    (TAX_Utilities_v1.Data(2).getElementsByTagName("Cell").length - 1)
                     strValue1 = GetAttribute(xmlCellNode, "Value")
                 fps.Sheet = SHEET_PHU_LUC_01
                 fps.GetText fps.ColLetterToNumber("D"), 27, strValue4
@@ -748,8 +748,8 @@ Public Sub SetActiveSheet()
              Case "01-2"
                 blnNullValue = True
                 'Check value of last node in Data
-                Set xmlCellNode = TAX_Utilities_v1.Data(2).getElementsByTagName("Cell") _
-                    (TAX_Utilities_v1.Data(2).getElementsByTagName("Cell").length - 1)
+                Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length - 1)
                     strValue1 = GetAttribute(xmlCellNode, "Value")
                 fps.Sheet = 3
                 If Val(strValue1) <> 0 Then
@@ -871,7 +871,7 @@ Private Sub UpdateSheets()
         mCurrentSheet = .Sheet
         blCheckS2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         If blCheckS2 = True Then
-            For Each xmlCellNodeData In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(2).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                     .GetText lCol, lRow, varTemp
                     UpdateCell fps, lCol, lRow, varTemp
@@ -879,11 +879,11 @@ Private Sub UpdateSheets()
         End If
         'end pl 01
         'updated phu luc 02
-        .Sheet = 3
+        .Sheet = 2
         mCurrentSheet = .Sheet
         blCheckS2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         If blCheckS2 = True Then
-            For Each xmlCellNodeData In TAX_Utilities_v1.Data(2).getElementsByTagName("Cell")
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                     .GetText lCol, lRow, varTemp
                     UpdateCell fps, lCol, lRow, varTemp

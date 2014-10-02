@@ -126,7 +126,7 @@ Begin VB.Form frmReportData
       DisplayText     =   ""
       BarWidthReduction=   -1
       TextAlignment   =   0
-      Quality         =   0
+      Quality         =   68
    End
 End
 Attribute VB_Name = "frmReportData"
@@ -455,23 +455,23 @@ nextPrinter:
 '        End If
 
     ElseIf (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "03") Then
-        If TAX_Utilities_v1.Year = 2009 Then
-        fpsReport.SetText fpsReport.ColLetterToNumber("E"), 25, GetAttribute(GetMessageCellById("0185"), "Msg")
-        ElseIf TAX_Utilities_v1.Year = 2010 Then
-            fpsReport.SetText fpsReport.ColLetterToNumber("E"), 25, GetAttribute(GetMessageCellById("0187"), "Msg")
-        ElseIf TAX_Utilities_v1.Year = 2011 Then
-            fpsReport.SetText fpsReport.ColLetterToNumber("E"), 25, GetAttribute(GetMessageCellById("0243"), "Msg")
-'        ElseIf TAX_Utilities_v1.Year = 2013 Then
+'        If TAX_Utilities_v1.Year = 2009 Then
+'        fpsReport.SetText fpsReport.ColLetterToNumber("E"), 25, GetAttribute(GetMessageCellById("0185"), "Msg")
+'        ElseIf TAX_Utilities_v1.Year = 2010 Then
+'            fpsReport.SetText fpsReport.ColLetterToNumber("E"), 25, GetAttribute(GetMessageCellById("0187"), "Msg")
+'        ElseIf TAX_Utilities_v1.Year = 2011 Then
+'            fpsReport.SetText fpsReport.ColLetterToNumber("E"), 25, GetAttribute(GetMessageCellById("0243"), "Msg")
+''        ElseIf TAX_Utilities_v1.Year = 2013 Then
+''            fpsReport.SetText fpsReport.ColLetterToNumber("E"), 25, GetAttribute(GetMessageCellById("0263"), "Msg")
+''        ElseIf Val(TAX_Utilities_v1.Year) = 2011 Or Val(TAX_Utilities_v1.Year) > 2013 Then
+''            fpsReport.SetText fpsReport.ColLetterToNumber("E"), 25, ""
+''            fpsReport.Row = 25
+''            fpsReport.Col = fpsReport.ColLetterToNumber("C")
+''            fpsReport.Text = ""
+''            fpsReport.Lock = True
+'        Else
 '            fpsReport.SetText fpsReport.ColLetterToNumber("E"), 25, GetAttribute(GetMessageCellById("0263"), "Msg")
-'        ElseIf Val(TAX_Utilities_v1.Year) = 2011 Or Val(TAX_Utilities_v1.Year) > 2013 Then
-'            fpsReport.SetText fpsReport.ColLetterToNumber("E"), 25, ""
-'            fpsReport.Row = 25
-'            fpsReport.Col = fpsReport.ColLetterToNumber("C")
-'            fpsReport.Text = ""
-'            fpsReport.Lock = True
-        Else
-            fpsReport.SetText fpsReport.ColLetterToNumber("E"), 25, GetAttribute(GetMessageCellById("0263"), "Msg")
-        End If
+'        End If
     ElseIf (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "01") Then
         If TAX_Utilities_v1.Year = 2012 And (TAX_Utilities_v1.month = 4 Or TAX_Utilities_v1.month = 5 Or TAX_Utilities_v1.month = 6) Then
             fpsReport.SetText fpsReport.ColLetterToNumber("G"), 33, GetAttribute(GetMessageCellById("0262"), "Msg")

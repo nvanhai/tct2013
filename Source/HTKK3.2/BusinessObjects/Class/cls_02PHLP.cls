@@ -86,7 +86,7 @@ Public Sub Prepare1()
         Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
         For Each xmlNode In xmlNodeListCell
             If GetAttribute(xmlNode, "Value") <> "" Then
-                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                     strCombo = strCombo + arrDanhsach(1) + "###" + arrDanhsach(4) + Chr$(9)
                     strComboHien = strComboHien + arrDanhsach(2) + Chr$(9)
             End If
@@ -248,7 +248,7 @@ Dim xmlNodeH15 As MSXML.IXMLDOMNode
      fps.EventEnabled(EventAllEvents) = False
     With fps
        .Sheet = 1
-       'khi tron danh muc khoang san mac dinh don vi tinh la kg va cho phep sua sua
+       'khi chon danh muc khoang san mac dinh don vi tinh la kg va cho phep sua sua
        If Col = .ColLetterToNumber("C") And .Text <> "" Then
             intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber("AB")

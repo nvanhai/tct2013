@@ -133,7 +133,7 @@ Public Sub Prepare2()
         .CellType = CellTypeButton
         .TypeButtonAlign = TypeButtonAlignLeft
         .TypeButtonTextColor = vbBlack
-        .TypeButtonColor = 8421504
+        .TypeButtonColor = &H8000000F
         .Font = "Arial"
         .FontSize = 8
         .TypeButtonPicture = LoadPicture(GetAbsolutePath("..\Pictures\sort2.bmp"))
@@ -145,7 +145,7 @@ Public Sub Prepare2()
         .CellType = CellTypeButton
         .TypeButtonAlign = TypeButtonAlignLeft
         .TypeButtonTextColor = vbBlack
-        .TypeButtonColor = 8421504
+        .TypeButtonColor = &H8000000F
         .Font = "Arial"
         .FontSize = 8
         .TypeButtonPicture = LoadPicture(GetAbsolutePath("..\Pictures\sort2.bmp"))
@@ -157,7 +157,7 @@ Public Sub Prepare2()
         .CellType = CellTypeButton
         .TypeButtonAlign = TypeButtonAlignLeft
         .TypeButtonTextColor = vbBlack
-        .TypeButtonColor = 8421504
+        .TypeButtonColor = &H8000000F
         .Font = "Arial"
         .FontSize = 8
         .TypeButtonPicture = LoadPicture(GetAbsolutePath("..\Pictures\sort2.bmp"))

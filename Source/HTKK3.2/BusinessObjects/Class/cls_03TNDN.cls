@@ -1172,16 +1172,16 @@ End Sub
 'Cause this interface sheets have dynamic rows, this function will set cellnote of error for rising-error cell
 'no parameter
 Private Sub CheckDynamicError()
-    Dim i As Integer, iCol As Long, iRow As Long
+    Dim i As Integer
     
     Dim col3 As Long, col4 As Long, col5 As Long
     Dim col6 As Long, Col7 As Long, col8 As Long
     Dim col9 As Long, Col10 As Long, Col11 As Long
     
     Dim ColLoi As Long, RowLoi As Long
-    Dim ColLoi7 As Long, RowLoi7 As Long
-    Dim ColLoi8 As Long, RowLoi8 As Long
-    Dim ColLoi10 As Long, RowLoi10 As Long
+'    Dim ColLoi7 As Long, RowLoi7 As Long
+'    Dim ColLoi8 As Long, RowLoi8 As Long
+'    Dim ColLoi10 As Long, RowLoi10 As Long
     
     Dim vErrMsg1 As Variant
     
@@ -1189,26 +1189,26 @@ Private Sub CheckDynamicError()
     Dim ValCol6 As Variant, ValCol7 As Variant, ValCol8 As Variant
     Dim ValCol9 As Variant, ValCol10 As Variant, ValCol11 As Variant
     'PL 14
-    Dim XacDinhLoiCol7 As Boolean, XacDinhLoiCol8 As Boolean, XacDinhLoiCol10 As Boolean
+    'Dim XacDinhLoiCol7 As Boolean, XacDinhLoiCol8 As Boolean, XacDinhLoiCol10 As Boolean
     
-    Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
-    Dim GiaTri As Double, TongSo As Double
-    Dim lCtrl As Long, RowTongSo As Long, ColTongSo As Long
+    'Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
+    'Dim GiaTri As Double, TongSo As Double
+    'Dim lCtrl As Long, RowTongSo As Long, ColTongSo As Long
     
     Dim XacDinhLoi As Boolean
-    Dim blCheck_S03_1A As Boolean, blCheck_S03_1B As Boolean, blCheck_S03_1C  As Boolean
-    Dim blCheck_S03_3 As Boolean, blCheck_S03_3C As Boolean, blCheck_S03_4 As Boolean
-    Dim blCheck_S03_3A As Boolean
-    Dim strTenDN As Variant, strMaST As Variant, strValue As Variant, vMSTDN As Variant
+    Dim blCheck_S03_1A As Boolean
+    Dim blCheck_S03_3C As Boolean, blCheck_S03_4 As Boolean
+    'Dim blCheck_S03_3A As Boolean
+    'Dim strTenDN As Variant, strValue As Variant
     Dim errEmty As Variant, iFlagTongPhanBo As Variant, errTongTLPB As Variant, vMST As Variant
-    Dim errMSTDN As Variant, errMst10 As Variant, iFlagCheckMaSTDN10 As Variant, errMST As Variant
-    Dim blCheck_S11 As Boolean
-    Dim iFlagEmpty As Integer, iFlagCheckMaSTDN As Integer, iFlagCheckMaST As Integer
-    Dim strKyHieu As Variant, strCheckMST As String
+    Dim errMSTDN As Variant, errMst10 As Variant, errMST As Variant
+    'Dim blCheck_S11 As Boolean
+    Dim iFlagEmpty As Integer, iFlagCheckMaST As Integer
+    'Dim strKyHieu As Variant, strCheckMST As String
 
     ' PL 05
-    Dim CountRow As Long, rowDes As Long, iFlagMSTTrung As Integer, mErrMSTTrung As Variant
-    Dim vMSTCheckTrung As Variant
+    Dim mErrMSTTrung As Variant
+    'Dim vMSTCheckTrung As Variant
     
     ' PL03-6
     Dim blCheck_S12 As Boolean
@@ -1219,7 +1219,7 @@ Private Sub CheckDynamicError()
 
     ' end
     ' PL 03-3A
-    Dim vCtieu1, vCTieu5, vCTieuC4TK As Variant
+    'Dim vCtieu1, vCTieu5, vCTieuC4TK As Variant
     Dim vErrCtieuC4 As Variant
     
     ' check gh
@@ -1263,7 +1263,7 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("D"), 12, vCheckLienKet
         
         If vCheckCSHachToan = "1" Or UCase$(vCheckCSHachToan) = "X" Then
-            If TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_8_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0" Then
+            If TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_8_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0" Or Strloaitk = "TKBS" Then
 '                .Col = .ColLetterToNumber("D")
 '                .Row = 10
 '                .CellNote = ""
@@ -1287,7 +1287,7 @@ Private Sub CheckDynamicError()
         End If
         
         If vCheckLienKet = "1" Or UCase$(vCheckLienKet) = "X" Then
-            If TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_7_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0" Then
+            If TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_7_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0" Or Strloaitk = "TKBS" Then
 '                 .Col = .ColLetterToNumber("D")
 '                .Row = 12
 '                .CellNote = ""
@@ -1659,8 +1659,8 @@ Private Sub CheckDynamicError()
                 ArrCol = Split(strCol, "~")
                 Do
                     iWhiteRow = 1
-                    .GetText .ColLetterToNumber("AH"), .Row, vCheckMST
-                    If Trim$(CStr(vCheckMST)) = "GB" Then
+                    '.GetText .ColLetterToNumber("AH"), .Row, vCheckMST
+                    'If Trim$(CStr(vCheckMST)) = "GB" Then
                        .GetText .ColLetterToNumber("D"), .Row, vTenLK
                        .GetText .ColLetterToNumber("I"), .Row, vDiaChi
                        .GetText .ColLetterToNumber("O"), .Row, vMST
@@ -1706,7 +1706,7 @@ Private Sub CheckDynamicError()
                             Next
                         End If
                 
-                    End If
+                    'End If
                     .Row = .Row + 1
                     .Col = .ColLetterToNumber("B")
                 Loop Until .Text = "kk"
@@ -2051,6 +2051,7 @@ Private Sub CheckDynamicError()
             .Sheet = .SheetCount
             .SetText .ColLetterToNumber("B"), 88, IIf(iFlagEmpty = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 89, IIf(iFlagCheckMaST = 1, "0", "1")
+            .SetText .ColLetterToNumber("B"), 90, IIf(flagSoThue = 1, "0", "1")
             
         .EventEnabled(EventAllEvents) = True
     End With

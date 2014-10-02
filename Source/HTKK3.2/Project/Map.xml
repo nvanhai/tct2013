@@ -148,7 +148,7 @@
 	</Map>
 	
 	<Map ID="85" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai Phí, lệ phí (01/PHLP)" LoaiTK="M">
-		<Validity StartDate="01/01/1900" DataFile="01_PHLP,KHBS_01_PHLP" ThueKhauTru="" ThuePhaiNop=""/>
+		<Validity StartDate="01/01/1900" DataFile="01_PHLP,KHBS_01_PHLP" ThueKhauTru="" ThuePhaiNop="V_37"/>
 	</Map>
 	
 	<Map ID="89" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai phí xăng dầu">
