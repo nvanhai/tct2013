@@ -50,11 +50,11 @@ Const NGAY_HOP_DONG_DL_COL = "N"
 
 
 ' Tu ngay
-Const TU_NGAY_ROW = 37
-Const TU_NGAY_COL = "S"
-'Den ngay
-Const DEN_NGAY_ROW = 37
-Const DEN_NGAY_COL = "V"
+'Const TU_NGAY_ROW = 37
+'Const TU_NGAY_COL = "S"
+''Den ngay
+'Const DEN_NGAY_ROW = 37
+'Const DEN_NGAY_COL = "V"
 
 ' Phong quan ly
 Const PHONG_QUAN_LY_ROW = 34
@@ -122,7 +122,6 @@ Public Function Prepared1() As Boolean
         .Col = .ColLetterToNumber("M")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
-        
     End With
     
     Prepared1 = True
@@ -158,6 +157,16 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .TypeComboBoxCurSel = 0
         UpdateCell fps, .Col, .Row, .Text
         lSoPhongXL = i
+        
+        'set ky tinh thue
+        .Sheet = 1
+        .Row = 37
+        .Col = .ColLetterToNumber("Y")
+        .Text = TAX_Utilities_Srv_New.FirstDay
+        UpdateCell fps, .Col, .Row, .Text
+        .Col = .ColLetterToNumber("Z")
+        .Text = TAX_Utilities_Srv_New.LastDay
+        UpdateCell fps, .Col, .Row, .Text
     End With
     
     Prepared2 = True
@@ -536,33 +545,36 @@ On Error GoTo ErrHandle
     dDate = DateAdd("d", -1, dDate)
     strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
 
-    
-    'Ky/ Quy KK
-    'Ngay dau ky ke khai va ngay cuoi ky ke khai
-    With fps
-        .Sheet = 1
-        .Col = .ColLetterToNumber(TU_NGAY_COL)
-        .Row = TU_NGAY_ROW
-        varTemp = .Text
-        If Trim$(varTemp) <> "" Then
-            dDate = DateSerial(CInt(Right$(CStr(varTemp), 4)), CInt(Mid$(CStr(varTemp), 4, 2)), Left$(CStr(varTemp), 2))
-            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        Else
-            strSQL = strSQL & " null,"
-        End If
-        'dDate = dNgayDauKy
-'        dDate = DateAdd("m", 1, dDate)
-'        dDate = DateAdd("d", -1, dDate)
-        .Col = .ColLetterToNumber(DEN_NGAY_COL)
-        .Row = DEN_NGAY_ROW
-        varTemp = .Text
-        If Trim$(varTemp) <> "" Then
-            dDate = DateSerial(CInt(Right$(CStr(varTemp), 4)), CInt(Mid$(CStr(varTemp), 4, 2)), Left$(CStr(varTemp), 2))
-            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        Else
-            strSQL = strSQL & " null,"
-        End If
-    End With
+    'Ky ke khai tu ngay
+    dDate = DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 2)))
+    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    'Ky ke khai den ngay
+    dDate = DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 1, 2)))
+    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+'    With fps
+'        .Sheet = 1
+'        .Col = .ColLetterToNumber(TU_NGAY_COL)
+'        .Row = TU_NGAY_ROW
+'        varTemp = .Text
+'        If Trim$(varTemp) <> "" Then
+'            dDate = DateSerial(CInt(Right$(CStr(varTemp), 4)), CInt(Mid$(CStr(varTemp), 4, 2)), Left$(CStr(varTemp), 2))
+'            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+'        Else
+'            strSQL = strSQL & " null,"
+'        End If
+'        'dDate = dNgayDauKy
+''        dDate = DateAdd("m", 1, dDate)
+''        dDate = DateAdd("d", -1, dDate)
+'        .Col = .ColLetterToNumber(DEN_NGAY_COL)
+'        .Row = DEN_NGAY_ROW
+'        varTemp = .Text
+'        If Trim$(varTemp) <> "" Then
+'            dDate = DateSerial(CInt(Right$(CStr(varTemp), 4)), CInt(Mid$(CStr(varTemp), 4, 2)), Left$(CStr(varTemp), 2))
+'            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+'        Else
+'            strSQL = strSQL & " null,"
+'        End If
+'    End With
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
     strSQL = strSQL & "'" & vNGUOI_CAP_NHAT & "',"

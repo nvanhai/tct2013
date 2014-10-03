@@ -593,7 +593,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim vPHONG_XU_LY
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
-    
+    Dim sDATE_FROM, sDATE_TO As Variant
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
     
 On Error GoTo ErrHandle
@@ -653,11 +653,19 @@ On Error GoTo ErrHandle
     dDate = DateAdd("m", 1, dDate)
     dDate = DateAdd("d", -1, dDate)
     strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    
     'Ky/ Quy KK
     'Ngay dau ky ke khai va ngay cuoi ky ke khai
-    dDate = dNgayDauKy
-    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-    dDate = DateAdd("m", 12, dDate)
+    'dDate = dNgayDauKy
+    With fps
+        .Sheet = 1
+        .GetText .ColLetterToNumber("K"), 33, sDATE_FROM
+        .GetText .ColLetterToNumber("L"), 33, sDATE_TO
+    End With
+    
+    strSQL = strSQL & "To_date('" & "01/" & sDATE_FROM & "','dd/mm/yyyy'),"
+    dDate = Format(CDate("01/" & sDATE_TO), "dd/mm/yyyy")
+    dDate = DateAdd("m", 1, dDate)
     dDate = DateAdd("d", -1, dDate)
     strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     
