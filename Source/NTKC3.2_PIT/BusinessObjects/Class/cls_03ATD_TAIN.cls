@@ -178,11 +178,51 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .Row = 36
         .Text = strIdQLT
         UpdateCell fps, .Col, .Row, .Text
+        
+        'COMBO PL 02-1 TD
+        .Sheet = 2
+        i = 0
+        .Row = 18
+        Do
+            .GetText .ColLetterToNumber("AE"), i + 18, varMaDM
+            DataDM varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
+                .Col = .ColLetterToNumber("Q")
+                .Row = 18 + i
+                .Text = TenDM
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+             i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = i + 18
+            TenDM = ""
+        Loop Until .Text = "aa"
     End With
     
     Prepared2 = True
 End Function
+Private Sub DataDM(ByVal Id As String, Optional ByRef TenTN As String)
+Dim arrDanhsach() As String
+Dim strDataFileName As String
+Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+Dim xmlNode As MSXML.IXMLDOMNode
 
+       strDataFileName = "..\InterfaceTemplates\xml\Catalogue_Tinh_Thanh.xml"
+    
+       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If arrDanhsach(1) = Id Then
+                            TenTN = arrDanhsach(3)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub
 Public Sub GetParams(ByRef strPNgayNhanToKhai As String, ByRef strPPhongXuLy As String)
 '    strPMaSoTep = strMaSoTep
     strPNgayNhanToKhai = strNgayNhanToKhai
