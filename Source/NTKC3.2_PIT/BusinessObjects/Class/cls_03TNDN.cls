@@ -719,13 +719,21 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     dDate = DateAdd("m", 1, dDate)
     dDate = DateAdd("d", -1, dDate)
     strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    
     'Ky/ Quy KK
     'Ngay dau ky ke khai va ngay cuoi ky ke khai
-    dDate = dNgayDauKy
+'    dDate = dNgayDauKy
+'    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+'    dDate = DateAdd("m", 12, dDate)
+'    dDate = DateAdd("d", -1, dDate)
+'    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    'Ky ke khai tu ngay
+    dDate = DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 2)))
     strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-    dDate = DateAdd("m", 12, dDate)
-    dDate = DateAdd("d", -1, dDate)
+    'Ky ke khai den ngay
+    dDate = DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 1, 2)))
     strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
     strSQL = strSQL & "'" & vNGUOI_CAP_NHAT & "',"
     strSQL = strSQL & "'" & vCO_LOI_DDANH & "',"
