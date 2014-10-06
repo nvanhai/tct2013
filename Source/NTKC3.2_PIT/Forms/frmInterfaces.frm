@@ -5186,7 +5186,7 @@ Private Function formatMaToKhai(ByVal strID As String) As String
     ElseIf strCode = "14" Then
         strRetValue = "('" & strItem & "','" & strItem & "11','" & strID & "','" & strItem & "13')"
     Else
-        strRetValue = "('" & strID & "','" & strID & "11','" & strID & "13','" & strItem & "14')"
+        strRetValue = "('" & strID & "','" & strID & "11','" & strID & "13','" & strID & "14')"
     End If
     formatMaToKhai = strRetValue
 End Function
