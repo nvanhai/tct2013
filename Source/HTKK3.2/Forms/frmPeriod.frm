@@ -526,7 +526,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":02C8
       UserResize      =   1
       Appearance      =   1
    End
@@ -7060,6 +7060,18 @@ Private Sub txtYear_LostFocus()
         Call initNgayDauNgayCuoiKy(CInt(txtYear.Text), cmbQuy.ListIndex)
     End If
     ' end
+    ' set lai tu thang den thang
+    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_10") Then
+         If txtYear.Text <> yChange And txtNgayCuoi.Enabled And txtNgayDau.Enabled Then
+            txtNgayDau.Text = "01/" & txtYear.Text
+        End If
+        
+        If txtYear.Text <> yChange And txtNgayCuoi.Enabled And txtNgayDau.Enabled Then
+            txtNgayCuoi.Text = "12/" & txtYear.Text
+        End If
+    End If
+    ' end
+    
     If txtYear.Text <> TAX_Utilities_v1.Year Then
         
         LoadGrid
