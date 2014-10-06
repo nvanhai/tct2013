@@ -733,30 +733,29 @@ Private Sub CheckDynamicError()
 End Sub
 
 Private Sub checkSheet4()
-    Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
     Dim strCheck As String, iCurrentSheet As Integer
-    
-    Dim vMST As Variant, vErrMsgMST As Variant, vErrMsgMSTReq As Variant
+    Dim strFocusSheetName As String, strFocusCol As String, strFocusRow As String
+    Dim vMST As Variant, vErrMsgMST As Variant
     Dim vCMT As Variant, vErrMsgCMT As Variant
     Dim vHoVaTen As Variant, vErrMsgHoVaTen As Variant
     Dim vNgaySinh As Variant, vErrMsgNgaySinh As Variant
     Dim vQuanHeNNT As Variant, vErrMsgQuanHeNNT As Variant
     Dim vLastRow As Variant
     Dim vTuThang, vDenThang As Variant
-    Dim vErrMSGSOCMND As Variant, vCMND As Variant, iFlagCMDN_HC As Integer
+    Dim vCMND As Variant, iFlagCMDN_HC As Integer
     Dim vErrEmpty As Variant, iFlagEmty As Integer
-    Dim vErrMSTSoCMND As Variant, iFlagCheckEmptyMSTCMND As Integer
-    Dim iFlagvHoVaTen As Integer, iFlagvMst As Integer, iFlagvNgaySinh As Integer, iFlagvSoThanhGiamTru As Integer, iFocusFlag As Integer
-    Dim strFocusSheetName As String, strFocusRow As String, strFocusCol As String
+    
+    Dim iFocusFlag As Integer
     Dim mErrNgaySinhPhuThuoc As Variant, iFlagNgaySinhPhuThuoc As Integer
     Dim mErrMSTCT5Trung As Variant, iFlagMSTCT5Trung As Integer, rowMSTTrung As Integer
     Dim iFlagEmpty As Integer, iFlagMSTTrung As Integer
     Dim vErrTuThang As Variant, vErrMsgMST2 As Variant, vErrMsgMSTCMT As Variant
-    Dim iFlagTuThang As Integer, iFlagLoiMST As Integer
+    Dim iFlagTuThang As Integer, iFlagTuThangTK As Integer, iFlagCMTTrung As Integer
     Dim CountRow1 As Long, rowDes As Long
-    
-    Dim i, j As Integer
-    Dim blCheck_S1, blCheck_S2, blCheck_S3, blCheck_S4, blCheck_S5, blCheck_S6, blCheck_S7, blCheck_S8, blCheck_S9, blCheck_S10, blCheck_S11 As Boolean
+    Dim iFlagvMst As Integer, iFlagvHoVaTen As Integer, iFlagvNgaySinh As Integer, iFlagLoiMST As Integer, iFlagDenThang As Integer
+    Dim vErrDenThang As Variant, vErrTuThangTK As Variant, vErrMsgCMT2 As Variant
+    Dim j As Integer
+    Dim blCheck_S1, blCheck_S2, blCheck_S3, blCheck_S4, blCheck_S5
     
     With fps
         iCurrentSheet = .Sheet
@@ -789,7 +788,9 @@ Private Sub checkSheet4()
         .GetText .ColLetterToNumber("E"), 55, vErrTuThang
         .GetText .ColLetterToNumber("E"), 56, vErrMsgMST2
         .GetText .ColLetterToNumber("E"), 57, vErrMsgMSTCMT
-        
+        .GetText .ColLetterToNumber("E"), 59, vErrDenThang
+        .GetText .ColLetterToNumber("E"), 60, vErrTuThangTK
+        .GetText .ColLetterToNumber("E"), 61, vErrMsgCMT2
         
                     
         
@@ -1023,9 +1024,33 @@ Private Sub checkSheet4()
                         .CellNote = vErrMsgCMT
                         iFlagCMDN_HC = 1
                     Else
-                        .Col = .ColLetterToNumber("M")
-                        .BackColor = mNonErrorColor
-                        .CellNote = ""
+'                        .Col = .ColLetterToNumber("M")
+'                        .BackColor = mNonErrorColor
+'                        .CellNote = ""
+                         CountRow1 = .SearchCol(.ColLetterToNumber("M"), -1, -1, vCMT, SearchFlagsNone)
+                         rowDes = .SearchCol(.ColLetterToNumber("M"), CountRow1, -1, vCMT, SearchFlagsNone)
+                        If rowDes > -1 Then
+                            .Col = .ColLetterToNumber("M")
+                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                            .CellNote = vErrMsgCMT2
+                            .BackColor = mErrorColor
+                            iFlagCMTTrung = 1
+                        Else
+                            
+                              .Col = .ColLetterToNumber("M")
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                        End If
+                    End If
+                 Else
+                     ' kiem tra neu tuoi >15 bat buoc nhap CMT
+                    If vNgaySinh <> "" Then
+                        If Year(Date) - Year(Format(vNgaySinh, "dd/mm/yyyy")) > 15 And Trim(vCMT) = "" Then
+                             .Col = .ColLetterToNumber("M")
+                            .CellNote = vErrEmpty
+                            .BackColor = mErrorColor
+                            iFlagEmpty = 1
+                        End If
                     End If
                 End If
                 ' Check quan he voi NNT
@@ -1094,7 +1119,33 @@ Private Sub checkSheet4()
                             .BackColor = mNonErrorColor
                     End If
                  End If
-                
+                ' kiem tra tu thang thuoc ky ke khai
+                 If vTuThang <> "" Then
+                    If DateDiff("M", Format(vTuThang, "mm/yyyy"), Format(TAX_Utilities_v1.FirstDay, "mm/yyyy")) > 0 Or DateDiff("M", Format(vTuThang, "mm/yyyy"), Format(TAX_Utilities_v1.LastDay, "mm/yyyy")) < 0 Then
+                         .Col = .ColLetterToNumber("Q")
+                        .CellNote = vErrTuThangTK
+                        .BackColor = mErrorColor
+                        iFlagTuThangTK = 1
+                    Else
+                        .Col = .ColLetterToNumber("Q")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
+                End If
+                ' kiem tra den thang voi den thang ky QT
+                If vDenThang <> "" Then
+                    If DateDiff("M", Format(vDenThang, "mm/yyyy"), Format(TAX_Utilities_v1.LastDay, "mm/yyyy")) < 0 Then
+                         .Col = .ColLetterToNumber("S")
+                        .CellNote = vErrDenThang
+                        .BackColor = mErrorColor
+                        iFlagDenThang = 1
+                    Else
+                        .Col = .ColLetterToNumber("S")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
+                End If
+               
             End If
         'ket thuc vong lap
         Next
@@ -1252,116 +1303,57 @@ Private Sub checkSheet4()
                             .CellNote = ""
                             .BackColor = mNonErrorColor
                     End If
+                    
+                     ' kiem tra tu thang thuoc ky ke khai
+                 If vTuThang <> "" Then
+                    If DateDiff("M", Format(vTuThang, "mm/yyyy"), Format(TAX_Utilities_v1.FirstDay, "mm/yyyy")) > 0 Or DateDiff("M", Format(vTuThang, "mm/yyyy"), Format(TAX_Utilities_v1.LastDay, "mm/yyyy")) < 0 Then
+                         .Col = .ColLetterToNumber("T")
+                        .CellNote = vErrTuThangTK
+                        .BackColor = mErrorColor
+                        iFlagTuThangTK = 1
+                    Else
+                        .Col = .ColLetterToNumber("T")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
+                End If
+                ' kiem tra den thang voi den thang ky QT
+                If vDenThang <> "" Then
+                    If DateDiff("M", Format(vDenThang, "mm/yyyy"), Format(TAX_Utilities_v1.LastDay, "mm/yyyy")) < 0 Then
+                         .Col = .ColLetterToNumber("U")
+                        .CellNote = vErrDenThang
+                        .BackColor = mErrorColor
+                        iFlagDenThang = 1
+                    Else
+                        .Col = .ColLetterToNumber("U")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
+                End If
                  End If
             End If
         Next
         
-        
-        ' Trong truong hop blCheck_S1 khong co Ho va ten nao bi loi thi set lai gia tri cua Header la 1
-        If blCheck_S1 = True Then
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 17, "1"
-        Else
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 17, "0"
-        End If
-        ' Trong truong hop blCheck_S2 khong co Ngay sinh bi loi thi set lai gia tri cua Header la 1
-        If blCheck_S2 = True Then
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 18, "1"
-        Else
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 18, "0"
-        End If
-        ' Trong truong hop blCheck_S3 khong co MST nao bi loi thi set lai gia tri cua Header la 1
-        If blCheck_S3 = True Then
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 19, "1"
-            .SetText .ColLetterToNumber("B"), 20, "1"
-            .SetText .ColLetterToNumber("B"), 21, "1"
-        Else
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 19, "0"
-            .SetText .ColLetterToNumber("B"), 20, "1"
-            .SetText .ColLetterToNumber("B"), 21, "0"
-            
-        End If
-        ' Trong truong hop NSD k nhap mst
-        If iFlagEmty = 1 Then
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 45, "0"
-        Else
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 45, "1"
-        End If
-        ' Trong truong hop blCheck_S4 so thang duoc giam tru ko sai thi set lai gia tri cua Header la 1
-        If blCheck_S4 = True Then
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 22, "1"
-        Else
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 22, "0"
-        End If
-        
-        ' Trong truong hop blCheck_S5 ma so thue cua vo hoac chong ko sai thi set lai gia tri cua Header la 1
-        If blCheck_S5 = True Then
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 23, "1"
-        Else
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 23, "0"
-        End If
-        
-        ' Trong truong hop nguoi su dung nhap dau cach khi nhap cmnd/ ho chieu thi set lai gia tri tren Header
-        If iFlagCMDN_HC = 1 Then
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 44, "0"
-        Else
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 44, "1"
-        End If
 
-        ' Trong truong hop Ngay sinh nguoi phu thuoc sau ky tinh thue set lai header
-        If iFlagNgaySinhPhuThuoc = 1 Then
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 46, "0"
-        Else
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 46, "1"
-        End If
-       ' Trong truong hop MST cha me trung voi mst nguoi phu thuoc thi set lai header
-        If iFlagMSTCT5Trung = 1 Then
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 47, "0"
-        Else
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 47, "1"
-        End If
+        .Sheet = .SheetCount
+        .SetText .ColLetterToNumber("B"), 17, IIf(blCheck_S1 = True, "1", "0")
+        .SetText .ColLetterToNumber("B"), 18, IIf(blCheck_S2 = True, "1", "0")
+        .SetText .ColLetterToNumber("B"), 19, IIf(blCheck_S3 = True, "1", "0")
+        .SetText .ColLetterToNumber("B"), 20, IIf(blCheck_S3 = True, "1", "0")
+        .SetText .ColLetterToNumber("B"), 21, IIf(blCheck_S3 = True, "1", "0")
+        .SetText .ColLetterToNumber("B"), 45, IIf(iFlagEmty = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 22, IIf(blCheck_S4 = True, "1", "0")
+        .SetText .ColLetterToNumber("B"), 23, IIf(blCheck_S5 = True, "1", "0")
+        .SetText .ColLetterToNumber("B"), 44, IIf(iFlagCMDN_HC = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 46, IIf(iFlagNgaySinhPhuThuoc = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 47, IIf(iFlagMSTCT5Trung = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 51, IIf(iFlagEmpty = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 55, IIf(iFlagTuThang = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 56, IIf(iFlagMSTTrung = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 59, IIf(iFlagDenThang = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 60, IIf(iFlagTuThangTK = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 61, IIf(iFlagCMTTrung = 1, "0", "1")
         
-        If iFlagEmpty = 1 Then
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 51, "0"
-        Else
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 51, "1"
-        End If
-        
-         If iFlagTuThang = 1 Then
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 55, "0"
-        Else
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 55, "1"
-        End If
-        
-        
-         If iFlagMSTTrung = 1 Then
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 56, "0"
-        Else
-            .Sheet = .SheetCount
-            .SetText .ColLetterToNumber("B"), 56, "1"
-        End If
         
         .Sheet = iCurrentSheet
     End With
