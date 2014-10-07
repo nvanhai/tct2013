@@ -1497,9 +1497,9 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 'str2 = "aa999032100343639   00201300600802202580~800000~200000~100000~100000~1200000~93679"
 'Barcode_Scaned str2
-'str2 = "aa999032100343639   00201300600802302520~8167920~~~co so 2~0102030405~20~100000~0~"
+'str2 = "aa999032100343639   00201300600802302520~8167920~~10100~co so 2~0102030405~20~100000~0~"
 'Barcode_Scaned str2
-'str2 = "aa999032100343639   0020130060080240250~0~100000~2341980~2241980~~</S></S03-8>"
+'str2 = "aa999032100343639   0020130060080240250~0~100000~2341980~2241980~~10100</S></S03-8>"
 'Barcode_Scaned str2
 'str2 = "aa999032100343639   002013006008025025<S03-9><S>m·~chi tieu `1~2222222222~10~10000000~10100~~~chi tieu 2~0102030405~80~10000000~10100~x</S><S>2000000</S></S03-9>"
 'Barcode_Scaned str2
@@ -1563,10 +1563,10 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '#08B/KK-TNCN
-str2 = "aa999762100343639   00201300100100100201/0101/01/1900<S01><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0</S"
-Barcode_Scaned str2
-str2 = "aa999762100343639   002013001001002002><S>~~0~0~0~0~0~0~0~0</S><S>µ~06/10/2014~~~1~~01/2013~10/2013</S></S01>"
-Barcode_Scaned str2
+'str2 = "aa999762100343639   00201300100100100201/0101/01/1900<S01><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0</S"
+'Barcode_Scaned str2
+'str2 = "aa999762100343639   002013001001002002><S>~~0~0~0~0~0~0~0~0</S><S>µ~06/10/2014~~~1~~01/2013~10/2013</S></S01>"
+'Barcode_Scaned str2
 
 '#09/TNCN
 'str2 = "aa999412100343639   00201300100100100301/0101/01/2009<S09><S></S><S>~ </S><S>23123~23123~2323~232~0~69000000~69000000~0~0~"
@@ -1575,6 +1575,16 @@ Barcode_Scaned str2
 'Barcode_Scaned str2
 'str2 = "aa999412100343639   002013001001003003<S09-1><S>23123~23123~2323~232~0~0~0~0~0~0</S></S09-1>"
 'Barcode_Scaned str2
+
+'#02-TNDN-DK updated
+'str2 = "aa999932100343639   00201300100200100101/0101/01/1900<S01><S></S><S>1~0~0~~~</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~µ~07/10/2014~1~~~01/2013~09/2013</S></S01>"
+'Barcode_Scaned str2
+
+'#02-TAIN/DK updated
+str2 = "aa999892100343639   00201300100200100201/0101/01/1900<S01><S></S><S>0~0~1~~~</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0"
+Barcode_Scaned str2
+str2 = "aa999892100343639   002013001002002002~0~0~0~0~0~0~0</S><S>~~µ~07/10/2014~1~~2000~01/2013~07/2013</S></S01>"
+Barcode_Scaned str2
 
 End Sub
 
@@ -3577,7 +3587,7 @@ On Error GoTo ErrHandle
         
         'todo
         'get Thong tin Tu thang - toi thang: 02/TAIN,02/BVMT,03A/TD-TAIN 2014 & TNCN QT Ver 3.3.0
-        If Val(strID) = 77 Or Val(strID) = 87 Or Val(strID) = 97 Or Val(strID) = 43 Or Val(strID) = 17 Or Val(strID) = 59 Or Val(strID) = 41 Or Val(strID) = 76 Then
+        If Val(strID) = 77 Or Val(strID) = 87 Or Val(strID) = 97 Or Val(strID) = 43 Or Val(strID) = 17 Or Val(strID) = 59 Or Val(strID) = 41 Or Val(strID) = 76 Or Val(strID) = 89 Or Val(strID) = 93 Then
             str_tmp = ""
             If Val(strID) = 97 Then
                 str_tmp = Mid(strData, 1, InStr(1, strData, "</S03>", vbTextCompare) + 5)
@@ -3589,7 +3599,7 @@ On Error GoTo ErrHandle
                 str_tmp = Mid(strData, 1, InStr(1, strData, "</S05>", vbTextCompare) + 5)
             ElseIf Val(strID) = 59 Then
                 str_tmp = Mid(strData, 1, InStr(1, strData, "</S06>", vbTextCompare) + 5)
-            ElseIf Val(strID) = 77 Or Val(strID) = 87 Or Val(strID) = 76 Then
+            ElseIf Val(strID) = 77 Or Val(strID) = 87 Or Val(strID) = 76 Or Val(strID) = 89 Or Val(strID) = 93 Then
                 str_tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
             Else
                 str_tmp = strData
@@ -5346,8 +5356,8 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
                 "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
                 "And tkhai.kykk_tu_ngay = To_Date('" & format$(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 2))), "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
                 "And tkhai.kykk_den_ngay = To_Date('" & format$(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 1, 2))), "DD/MM/YYYY") & "','DD/MM/RRRR')"
-    ElseIf strID = "02_TAIN14" Or strID = "02_BVMT14" Or strID = "03A_TD_TAIN" Or strID = "02_TNCN_XS11" Or strID = "05_TNCN11" Or strID = "06_TNCN14" Or strID = "09_TNCN14" Or strID = "08B_TNCN11" Then
-    'todo QT TNCN
+    ElseIf strID = "02_TAIN14" Or strID = "02_BVMT14" Or strID = "03A_TD_TAIN" Or strID = "02_TNCN_XS11" Or strID = "05_TNCN11" Or strID = "06_TNCN14" Or strID = "09_TNCN14" Or strID = "08B_TNCN11" Or strID = "02_TAIN_DK" Or strID = "02_TNDN_DK" Then
+    'todo to khai QT
         strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
                 "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
