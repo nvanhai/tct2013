@@ -242,6 +242,27 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         End If
         ' End set gia han
         
+        '#######################################
+        'COMBO PL 03-8
+        .Sheet = 14
+        i = 0
+        .Row = 41
+        Do
+            .GetText .ColLetterToNumber("Z"), i + 41, varMaDM
+            DataDM varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
+                .Col = .ColLetterToNumber("I")
+                .Row = 41 + i
+                .Text = TenDM
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+             i = i + 1
+            .Col = .ColLetterToNumber("C")
+            .Row = i + 41
+            TenDM = ""
+        Loop Until .Text = "aa"
+        
+        '#######################################
         'COMBO PL 02-1 TD
         .Sheet = 15
         i = 0
