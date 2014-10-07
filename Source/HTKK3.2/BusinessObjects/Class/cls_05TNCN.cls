@@ -117,28 +117,40 @@ Public Sub Prepare1()
         .Col = .ColLetterToNumber("L")
         .TypeComboBoxList = strQuanHeNNTID
         
-        ' lay du lieu danh muc dia ban
-        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban.xml"))
+        ' lay du lieu danh muc dia ban tinh
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Tinh.xml"))
         Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
         For Each xmlNode In xmlNodeListMap
             temValue = GetAttribute(xmlNode, "Value")
             arrValue = Split(temValue, "###")
-            ' danh sach tinh
-            If arrValue(0) = "1" Then
-                strTenTinh = strTenTinh + arrValue(4) + Chr$(9)
-                strMaTinh = strMaTinh + arrValue(3) + Chr$(9)
-            End If
-            ' danh sach huyen
-            If arrValue(0) = "0" Then
-                strTenHuyen = strTenHuyen + arrValue(4) + Chr$(9)
-                strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
-            End If
-            ' danh sach xa
-            If arrValue(0) = "2" Then
-                strTenXa = strTenXa + arrValue(4) + Chr$(9)
-                strMaXa = strMaXa + arrValue(1) + Chr$(9)
-            End If
-
+            strTenTinh = strTenTinh + arrValue(2) + Chr$(9)
+            strMaTinh = strMaTinh + arrValue(1) + Chr$(9)
+        Next
+        
+        ' lay danh sach huyen
+        Set xmlDocument = Nothing
+        Set xmlNodeListMap = Nothing
+        ' lay du lieu danh muc dia ban tinh
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Huyen.xml"))
+        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+        For Each xmlNode In xmlNodeListMap
+            temValue = GetAttribute(xmlNode, "Value")
+            arrValue = Split(temValue, "###")
+            strTenHuyen = strTenHuyen + arrValue(3) + Chr$(9)
+            strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
+        Next
+        
+        ' Lay danh muc xa
+        Set xmlDocument = Nothing
+        Set xmlNodeListMap = Nothing
+        ' lay du lieu danh muc dia ban tinh
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Xa.xml"))
+        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+        For Each xmlNode In xmlNodeListMap
+            temValue = GetAttribute(xmlNode, "Value")
+            arrValue = Split(temValue, "###")
+            strTenXa = strTenXa + arrValue(4) + Chr$(9)
+            strMaXa = strMaXa + arrValue(3) + Chr$(9)
         Next
         
         .Row = 22
@@ -184,6 +196,12 @@ Public Sub Prepare1()
         .Col = .ColLetterToNumber("P")
         .TypeComboBoxList = strMaQuocTich
         .typeComboboxCurSel = 0
+        
+        
+        .Sheet = 1
+        .Row = 4
+        .Col = .ColLetterToNumber("Q")
+        .Text = DateDiff("M", Format(TAX_Utilities_v1.FirstDay, "mm/yyyy"), Format(TAX_Utilities_v1.LastDay, "mm/yyyy")) + 1
     End With
 End Sub
 
@@ -246,6 +264,9 @@ Public Sub Prepare2()
         .Col = .ColLetterToNumber("N")
         .Text = TAX_Utilities_v1.LastDay
         UpdateCell fps, .Col, .Row, .Text
+        
+        
+        
         
         If DateDiff("M", Format(TAX_Utilities_v1.FirstDay, "mm/yyyy"), Format(TAX_Utilities_v1.LastDay, "mm/yyyy")) + 1 < 12 Then
             ' chi tieu 36 lock
@@ -348,7 +369,7 @@ Public Sub Prepare2()
         
         ' Sap xep theo cot thue thu nhap ca nhan da khau tru
         .Row = 19
-        .Col = .ColLetterToNumber("N")
+        .Col = .ColLetterToNumber("P")
         .CellType = CellTypeButton
         .TypeButtonAlign = TypeButtonAlignLeft
         .TypeButtonTextColor = vbBlack
@@ -589,7 +610,8 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                         .Col = .ColLetterToNumber("S")
                         '.Formula = "ROUND(IF(OR(G22=""1"",G22=""x""),AN22-AO22,0),0)"
                         '.Formula = "ROUND(IF(OR(G22=""1"",G22=""x""),IF($G$5 = ""2009"", BA22, AN22-AO22),0),0)"
-                        .Formula = "ROUND(IF(OR(G" & Row & "=""1"",G" & Row & "=""x"",G" & Row & "=""X"" ),IF($G$5 = ""2009"", BC" & Row & "-AQ" & Row & ", IF(AND($G$5 = ""2012"",AO" & Row & " <=5000000),(AP" & Row & "-AQ" & Row & ")/2,AP" & Row & "-AQ" & Row & ")),0),0)"
+                        '.Formula = "ROUND(IF(OR(G" & Row & "=""1"",G" & Row & "=""x"",G" & Row & "=""X"" ),IF($G$5 = ""2009"", BC" & Row & "-AQ" & Row & ", IF(AND($G$5 = ""2012"",AO" & Row & " <=5000000),(AP" & Row & "-AQ" & Row & ")/2,AP" & Row & "-AQ" & Row & ")),0),0)"
+                        .Formula = "ROUND(IF(OR(G" & Row & "=""1"",G" & Row & "=""x"",G" & Row & "=""X"" ),IF($G$5 = ""2009"", BC" & Row & "-Q" & Row & ", IF(AND($G$5 = ""2012"",AO" & Row & " <=5000000),(AP" & Row & "-Q" & Row & ")/2,AP" & Row & "-Q" & Row & ")),0),0)"
                         ' End set lai
                     Else
                         .Col = .ColLetterToNumber("S")
@@ -648,14 +670,15 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                 If Col = .ColLetterToNumber("F") And Row >= 22 And Row <= .MaxRows - 8 Then
                     .GetText .ColLetterToNumber("F"), Row, strCheck
                     If Trim(strCheck) = "x" Or Trim(strCheck) = "X" Or Trim(strCheck) = "1" Then
-                        .Col = .ColLetterToNumber("J")
+                        .Col = .ColLetterToNumber("K")
                         .Row = Row
                         '.Formula = "AJ" & Row
-                        .Formula = "ROUND(G" & Row & "*20/100,0)"
+                        '.Formula = "ROUND(G" & Row & "*20/100,0)"
+                        .Formula = "ROUND(H" & Row & "*20/100*50/100,0)"
                         ' lay xong gia tri set lai ct =""
                         .Formula = ""
                     Else
-                        .Col = .ColLetterToNumber("J")
+                        .Col = .ColLetterToNumber("K")
                         .Row = Row
                         .Formula = ""
                         .value = "0"
@@ -681,7 +704,8 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
                         .Col = .ColLetterToNumber("S")
                         '.Formula = "ROUND(IF(OR(G" & Row & "=""1"",G" & Row & "=""x"",G" & Row & "=""X""),IF($G$5 = ""2009"", BA" & Row & "-AO" & Row & ", AN" & Row & "-AO" & Row & "),0),0)"
                         '.Formula = "ROUND(IF(OR(G" & Row & "=""1"",G" & Row & "=""x"",G" & Row & "=""X"" ),IF($G$5 = ""2009"", BA" & Row & "-AO" & Row & ", IF($G$5 = ""2012"",(AN" & Row & "-AO" & Row & ")/2,AN" & Row & "-AO" & Row & "),0),0)"
-                        .Formula = "ROUND(IF(OR(G" & Row & "=""1"",G" & Row & "=""x"",G" & Row & "=""X"" ),IF($G$5 = ""2009"", BC" & Row & "-AQ" & Row & ", IF(AND($G$5 = ""2012"",AO" & Row & " <=5000000),(AP" & Row & "-AQ" & Row & ")/2,AP" & Row & "-AQ" & Row & ")),0),0)"
+                        '.Formula = "ROUND(IF(OR(G" & Row & "=""1"",G" & Row & "=""x"",G" & Row & "=""X"" ),IF($G$5 = ""2009"", BC" & Row & "-AQ" & Row & ", IF(AND($G$5 = ""2012"",AO" & Row & " <=5000000),(AP" & Row & "-AQ" & Row & ")/2,AP" & Row & "-AQ" & Row & ")),0),0)"
+                        .Formula = "ROUND(IF(OR(G" & Row & "=""1"",G" & Row & "=""x"",G" & Row & "=""X"" ),IF($G$5 = ""2009"", BC" & Row & "-Q" & Row & ", IF(AND($G$5 = ""2012"",AO" & Row & " <=5000000),(AP" & Row & "-Q" & Row & ")/2,AP" & Row & "-Q" & Row & ")),0),0)"
                         '.Formula = "ROUND(IF(OR(G" & Row & "=""1"",G" & Row & "=""x"",G" & Row & "=""X"" ),IF($G$5 = ""2009"", BA" & Row & "-AO" & Row & ", IF(AND($G$5 = ""2012"",AM" & Row & " <=5000000),(AN" & Row & "-AO" & Row & ")/2,AN" & Row & "-AO" & Row & ")),0),0)"
                         ' End set lai
                     End If
@@ -695,14 +719,15 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
                     If Row >= 22 And Row <= .MaxRows - 8 Then
                         .GetText .ColLetterToNumber("F"), Row, strCheck
                         If Trim$(strCheck) = "x" Or Trim$(strCheck) = "X" Or Trim$(strCheck) = "1" Then
-                            .Col = .ColLetterToNumber("J")
+                            .Col = .ColLetterToNumber("K")
                             .Row = Row
-                            .Formula = "ROUND(G" & Row & "*20/100,0)"
+                            '.Formula = "ROUND(G" & Row & "*20/100,0)"
+                            .Formula = "ROUND(H" & Row & "*20/100*50/100,0)"
                             'ROUND(G22*20/100,0)
                             ' lay xong gia tri set lai ct =""
                             .Formula = ""
                         Else
-                            .Col = .ColLetterToNumber("J")
+                            .Col = .ColLetterToNumber("K")
                             .Row = Row
                             .Formula = ""
                             .value = "0"
@@ -717,7 +742,22 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
 End Sub
 
 Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
-Dim intIndexCombo As Integer
+    Dim intIndexCombo As Integer
+    
+    Dim varIDTinh As Variant
+    Dim varIDHuyen As Variant
+    Dim xmlDomData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
+    Dim i As Integer
+    
+    Dim tenHuyen As String
+    Dim maHuyen As String
+    Dim tenXa As String
+    Dim maXa As String
+    Dim arrDanhsach() As String
+    
     With fps
         If .ActiveSheet = 4 Then
             ' chon quoc tich
@@ -745,6 +785,32 @@ Dim intIndexCombo As Integer
                  .Col = .ColLetterToNumber("P")
                  .typeComboboxCurSel = intIndexCombo
                 UpdateCell fps, .Col, .Row, .value
+                
+                 If .Text = "01" Then
+                    .Col = .ColLetterToNumber("S")
+                    .Row = Row
+                    .Lock = False
+                    
+                    .Col = .ColLetterToNumber("U")
+                    .Row = Row
+                    .Lock = False
+                    
+                    .Col = .ColLetterToNumber("W")
+                    .Row = Row
+                    .Lock = False
+                Else
+                    .Col = .ColLetterToNumber("S")
+                    .Row = Row
+                    .Lock = True
+                    
+                    .Col = .ColLetterToNumber("U")
+                    .Row = Row
+                    .Lock = True
+                    
+                    .Col = .ColLetterToNumber("W")
+                    .Row = Row
+                    .Lock = True
+                End If
             End If
             
             ' chon tinh thanh
@@ -754,6 +820,50 @@ Dim intIndexCombo As Integer
                  .Col = .ColLetterToNumber("R")
                  .typeComboboxCurSel = intIndexCombo
                 UpdateCell fps, .Col, .Row, .value
+                
+                .GetText .Col, .Row, varIDTinh
+                If varIDTinh <> "" Or varIDTinh <> vbNullString Then
+                    
+                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Huyen.xml")) Then
+                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+                        For Each xmlNode In xmlNodeListCell
+                            If GetAttribute(xmlNode, "Value") <> "" Then
+                                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                                
+                                If arrDanhsach(1) = varIDTinh Then
+                                    tenHuyen = tenHuyen + arrDanhsach(3) + Chr$(9)
+                                    maHuyen = maHuyen + arrDanhsach(2) + Chr$(9)
+                                End If
+                            End If
+                        Next
+                        Set xmlDomData = Nothing
+                        Set xmlNodeListCell = Nothing
+                        Set xmlNode = Nothing
+                    End If
+                    
+                    .Row = Row
+                    .Col = .ColLetterToNumber("U")
+                    .TypeComboBoxList = tenHuyen
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
+                    
+                    .Row = Row
+                    .Col = .ColLetterToNumber("T")
+                    .TypeComboBoxList = maHuyen
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
+                   
+                    .Row = Row
+                    .Col = .ColLetterToNumber("V")
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
+                    
+                    .Row = Row
+                    .Col = .ColLetterToNumber("W")
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
+                                                   
+                End If
             End If
             ' chon quan huyen
             If Col = .ColLetterToNumber("U") And .Text <> "" Then
@@ -762,6 +872,40 @@ Dim intIndexCombo As Integer
                  .Col = .ColLetterToNumber("T")
                  .typeComboboxCurSel = intIndexCombo
                 UpdateCell fps, .Col, .Row, .value
+                
+                .GetText .Col, .Row, varIDHuyen
+                If varIDHuyen <> "" Or varIDHuyen <> vbNullString Then
+                    
+                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Xa.xml")) Then
+                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+                        For Each xmlNode In xmlNodeListCell
+                            If GetAttribute(xmlNode, "Value") <> "" Then
+                                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                                
+                                If arrDanhsach(2) = varIDHuyen Then
+                                    tenXa = tenXa + arrDanhsach(4) + Chr$(9)
+                                    maXa = maXa + arrDanhsach(3) + Chr$(9)
+                                End If
+                            End If
+                        Next
+                        Set xmlDomData = Nothing
+                        Set xmlNodeListCell = Nothing
+                        Set xmlNode = Nothing
+                    End If
+                    
+                    .Row = Row
+                    .Col = .ColLetterToNumber("W")
+                    .TypeComboBoxList = tenXa
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
+                    
+                    .Row = Row
+                    .Col = .ColLetterToNumber("V")
+                    .TypeComboBoxList = maXa
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
+                
+                End If
             End If
             ' chon xa phuong
             If Col = .ColLetterToNumber("W") And .Text <> "" Then
@@ -939,6 +1083,23 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
 '                    .Text = "0"
 '                End If
 '            End If
+         ElseIf .ActiveSheet = 4 Then
+            If Col = .ColLetterToNumber("G") And Row >= 22 Then
+                .GetText Col, Row, varTemp
+                If varTemp <> "" And varTemp <> "../../...." Then
+                    If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+                        .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+                    Else
+                        '.SetFocus
+                        .SetActiveCell Col, Row
+                    End If
+                Else
+                 .SetText Col, Row, ""
+                End If
+                .Col = Col
+                .Row = Row
+                UpdateCell fps, Col, Row, .Text
+            End If
         End If
         .EventEnabled(EventAllEvents) = True
     End With
@@ -960,14 +1121,14 @@ Public Sub finish()
         .EventEnabled(EventAllEvents) = False
         ASheet = .ActiveSheet
         SSheet = .Sheet
-        
+
         SetData
-        
+
         ' Lay cac mang MST trong cac bang ke va phu luc 05A, 05B
 '        prepareMSTCMT
 '
         kiemTraDuLieuImport
-        
+
         .Sheet = 2
         InsertNode 23, .SearchCol(.ColLetterToNumber("B"), 22, -1, "aa", SearchFlagsNone) - 1, 2
         .Sheet = 3
@@ -976,13 +1137,13 @@ Public Sub finish()
 '
         UpdateSheets
         CheckDynamicError 'Set Exception Error on cells of interface
-         
+
 '        If flgErr5A = True And flgErr5B = True Then kiemTraKhac
-        
+
         .ActiveSheet = ASheet
         .Sheet = SSheet
         .EventEnabled(EventAllEvents) = True
-        
+
     End With
     
     'resetFormula
@@ -2975,6 +3136,8 @@ Public Sub CheckDynamicSheet1()
     
     Dim vGiamTruTheoHD, vQuyHuuTri As Variant
     Dim vMSTCQCT As Variant
+    Dim vErrMsg1213 As Variant
+    Dim vErrMsgHuuTriKT As Variant
     
     Dim iFlagTrongHoTen As Integer, iFlagLoiMST As Integer, iFlagLoiMST1 As Integer, iFlagLoiMST2 As Integer, iFlagMSTTrung As Integer
     Dim iFlagLoiCMT As Integer, iFlagLoiCMT1 As Integer, iFlagCheckCT12CT11 As Integer, iFlagCheckCT17CT11 As Integer, iFlagMSTCMT As Integer, iFlagQTCQCT As Integer
@@ -3022,7 +3185,9 @@ Public Sub CheckDynamicSheet1()
         .GetText .ColLetterToNumber("E"), 55, vErrSoThueNNT
         .GetText .ColLetterToNumber("E"), 57, vErrMsgTongGiamTruGiaCanh
         .GetText .ColLetterToNumber("E"), 67, vErrMsgGiamThueTheoHD
+        .GetText .ColLetterToNumber("E"), 68, vErrMsgHuuTriKT
         
+        .GetText .ColLetterToNumber("E"), 80, vErrMsg1213
         
         
         
@@ -3266,6 +3431,49 @@ Public Sub CheckDynamicSheet1()
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = ""
                 .BackColor = mNonErrorColor
+            End If
+            
+            'check CT 12+13 <= CT11
+            .GetText .ColLetterToNumber("BJ"), .Row, varTemp
+            If Val(varTemp) = 1 Then
+                .Col = .ColLetterToNumber("I")
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = vErrMsg1213
+                '.BackColor = mErrorColor
+                .BackColor = mAlertColor
+                
+                
+                .Col = .ColLetterToNumber("J")
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = vErrMsg1213
+                '.BackColor = mErrorColor
+                .BackColor = mAlertColor
+                'iFlagCheckCT17CT11 = 1
+            Else
+                .Col = .ColLetterToNumber("I")
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+                
+                
+                .Col = .ColLetterToNumber("J")
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+            End If
+            
+            ' check CT 17
+            .GetText .ColLetterToNumber("BH"), .Row, varTemp
+            If Trim(varTemp) = "1" Then
+                .Col = .ColLetterToNumber("N")
+                .BackColor = mErrorColor
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = vErrMsgHuuTriKT
+            Else
+                .Col = .ColLetterToNumber("N")
+                .BackColor = mNonErrorColor
+                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                .CellNote = ""
             End If
             
 '            ' check chi tieu 16 phai nho hon chi tieu 11
@@ -3694,6 +3902,7 @@ Private Sub CheckDynamicSheet2()
     Dim vErrMsgThuNhapGiamThue, vErrMsgSoThueDuocGiam, vErrMsgSoThueKhauTru As Variant
     
     Dim vErrMsgGiamThueTheoHD As Variant
+    Dim vErrMsg1213 As Variant, vErrMsgCt1512 As Variant
     
     Dim vLastRow As Variant
     Dim varTemp As Variant
@@ -3729,6 +3938,10 @@ Private Sub CheckDynamicSheet2()
         .GetText .ColLetterToNumber("E"), 47, vErrMsgMSTAB
         
         .GetText .ColLetterToNumber("E"), 69, vErrMsgGiamThueTheoHD
+        .GetText .ColLetterToNumber("E"), 82, vErrMsg1213
+        .GetText .ColLetterToNumber("E"), 70, vErrMsgCt1512
+        
+        
         
         .Sheet = 3 'Check tinh xac thuc cua cac thong tin tren bang ke 05A/TNCN
         isheet = .Sheet
@@ -3921,25 +4134,47 @@ Private Sub CheckDynamicSheet2()
                     .CellNote = vErrMsgSoThueKhauTru
 '                    .BackColor = mErrorColor
 '                    iFlagCT13CT11 = 1
-                     .BackColor = mAlertColor
+                     .BackColor = mErrorColor
                 Else
                     .Col = .ColLetterToNumber("J")
                     .CellNote = ""
                     .BackColor = mNonErrorColor
                 End If
                 
-                ' check chi tieu 15
-'                .GetText .ColLetterToNumber("AO"), .Row, varTemp
-'                If Val(varTemp) = 1 Then
-'                    .Col = .ColLetterToNumber("I")
-'                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-'                    .CellNote = vErrMsgGiamThueTheoHD
-'                    .BackColor = mErrorColor
-'                Else
-'                    .Col = .ColLetterToNumber("I")
-'                    .CellNote = ""
-'                    .BackColor = mNonErrorColor
-'                End If
+                ' kiem tra tong chi tieu 12,13 <=11
+                .GetText .ColLetterToNumber("AQ"), .Row, varTemp
+                If Val(varTemp) = 1 Then
+                    .Col = .ColLetterToNumber("H")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vErrMsg1213
+                     .BackColor = mErrorColor
+                     
+                     .Col = .ColLetterToNumber("I")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vErrMsg1213
+                     .BackColor = mErrorColor
+                Else
+                    .Col = .ColLetterToNumber("H")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                    
+                    .Col = .ColLetterToNumber("I")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
+                
+                 'check chi tieu 15
+                .GetText .ColLetterToNumber("AP"), .Row, varTemp
+                If Val(varTemp) = 1 Then
+                    .Col = .ColLetterToNumber("K")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vErrMsgCt1512
+                    .BackColor = mAlertColor
+                Else
+                    .Col = .ColLetterToNumber("K")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
             End If
             
             CountRow = CountRow + 1
@@ -4016,18 +4251,26 @@ Private Sub CheckDynamicSheet3()
             .GetText .ColLetterToNumber("X"), .Row, vTuThang
             .GetText .ColLetterToNumber("Y"), .Row, vDenThang
             
+            ' reset du lieu loi
+            strColReset = "D~E~F~G~H~J~K~M~N~O~Q~S~U~W~X~Y"
+            arrColReset = Split(strColReset, "~")
+            For i = 0 To UBound(arrColReset)
+                .Col = .ColLetterToNumber(arrColReset(0))
+                .BackColor = mNonErrorColor
+                .CellNote = ""
+            Next
             If Trim(vHoVaTenNNT) = vbNullString And Trim(vMSTNNT) = vbNullString And Trim(vHoVaTenNPT) = vbNullString And Trim(vNgaySinhNPT) = vbNullString _
             And Trim(vMSTNPT) = vbNullString And Trim(vSoCMNDNPT) = vbNullString And Trim(vQuanHeNPT) = vbNullString _
             And Trim(vSo) = vbNullString And Trim(vQuyenSo) = vbNullString And Trim(vTinh) = vbNullString _
             And Trim(vHuyen) = vbNullString And Trim(vXa) = vbNullString And Trim(vTuThang) = vbNullString And Trim(vDenThang) = vbNullString Then
-                'reset color and cellnote on sheet
-                strColReset = "D~E~F~G~H~J~K~M~N~O~Q~S~U~W~X~Y"
-                arrColReset = Split(strColReset, "~")
-                For i = 0 To UBound(arrColReset)
-                    .Col = .ColLetterToNumber(arrColReset(0))
-                    .BackColor = mNonErrorColor
-                    .CellNote = ""
-                Next
+'                'reset color and cellnote on sheet
+'                strColReset = "D~E~F~G~H~J~K~M~N~O~Q~S~U~W~X~Y"
+'                arrColReset = Split(strColReset, "~")
+'                For i = 0 To UBound(arrColReset)
+'                    .Col = .ColLetterToNumber(arrColReset(0))
+'                    .BackColor = mNonErrorColor
+'                    .CellNote = ""
+'                Next
             Else
                 ' check ho ten
                 If Trim(vHoVaTenNNT) = vbNullString Then
@@ -4135,7 +4378,17 @@ Private Sub CheckDynamicSheet3()
                         .CellNote = ""
                         .BackColor = mNonErrorColor
                     End If
-                 End If
+                Else
+                     ' kiem tra neu tuoi >15 bat buoc nhap CMT
+                    If vNgaySinhNPT <> "" Then
+                        If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) > 15 And Trim(vCMT) = "" Then
+                             .Col = .ColLetterToNumber("K")
+                            .CellNote = vErrEmpty
+                            .BackColor = mErrorColor
+                            iFlagEmpty = 1
+                        End If
+                    End If
+                End If
                  
                  ' Kiem tra tu thang bat buoc nhap
                  If Trim(vTuThang) <> "" Then
