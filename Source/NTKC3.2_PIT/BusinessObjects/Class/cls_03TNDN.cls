@@ -190,27 +190,25 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         lSoPhongXL = i
         
         
-        
-'''        'lay ten DM tren PL 07-7
-'''        If TAX_Utilities_Srv_New.NodeValidity.childNodes(13).Attributes.getNamedItem("Active").nodeValue = 1 Then
-'''            .Sheet = 14
-'''            .Col = .ColLetterToNumber("B")
-'''            .Row = 37
-'''            i = 0
-'''            Do
-'''                .GetText .ColLetterToNumber("AH"), .Row, varMaDM
-'''                If Trim(varMaDM) <> vbNullString Then
-'''                    .SetText .ColLetterToNumber("Q"), .Row, getTenDMPPDG(varMaDM)
-'''                End If
-'''                .GetText .ColLetterToNumber("AI"), .Row, varMaDM
-'''                If Trim(varMaDM) <> vbNullString Then
-'''                    .SetText .ColLetterToNumber("AB"), .Row, getTenDMPPDG(varMaDM)
-'''                End If
-'''                i = i + 1
-'''                .Col = .ColLetterToNumber("B")
-'''                .Row = 37 + i
-'''            Loop Until UCase(.Text) = "II"
-'''        End If
+        '#######################################
+        'lay ten DM tren PL 03-7
+        .Sheet = 13
+        .Col = .ColLetterToNumber("B")
+        .Row = 51
+        i = 0
+        Do
+            .GetText .ColLetterToNumber("AJ"), .Row, varMaDM
+            If Trim(varMaDM) <> vbNullString Then
+                .SetText .ColLetterToNumber("N"), .Row, getTenDMPPDG(varMaDM)
+            End If
+            .GetText .ColLetterToNumber("AK"), .Row, varMaDM
+            If Trim(varMaDM) <> vbNullString Then
+                .SetText .ColLetterToNumber("AB"), .Row, getTenDMPPDG(varMaDM)
+            End If
+            i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = 51 + i
+        Loop Until UCase(.Text) = "HH"
         
         
         'get ten chi tieu trong danh muc NNKD
