@@ -183,6 +183,17 @@ Dim strColC As String
              
         End If
         
+        ' set tu thang den thang
+        .Col = .ColLetterToNumber("AD")
+        .Row = 30
+        .Text = TAX_Utilities_v1.FirstDay
+        UpdateCell fps, .Col, .Row, .Text
+        
+        .Col = .ColLetterToNumber("AE")
+        .Row = 30
+        .Text = TAX_Utilities_v1.LastDay
+        UpdateCell fps, .Col, .Row, .Text
+        
         mCurrentSheet = .Sheet
         .EventEnabled(EventAllEvents) = True
     End With
