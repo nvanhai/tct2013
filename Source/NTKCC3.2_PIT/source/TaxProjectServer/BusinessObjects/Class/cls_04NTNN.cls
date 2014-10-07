@@ -449,6 +449,13 @@ Public Function Prepared3() As Boolean
         .GetText .ColLetterToNumber("E"), 30, namKyLapBo
         namKyLapBo = Right$(namKyLapBo, 4)
          
+        'hannop
+        .Col = .ColLetterToNumber("AH")
+        .Row = 37
+        .Text = HANNOP
+        UpdateCell fps, .Col, .Row, .Text
+         
+         
     End With
     
     Prepared3 = True
@@ -1098,8 +1105,11 @@ Public Function InsertHDR() As String
     Dim DANHAN  As Variant
     Dim TENNV As Variant
     Dim CHUNGCHI As Variant
+    Dim SOHD As Variant
+    Dim NGAYHD As Variant
+    
     sSQLCol = "LOAITK,MADTNT,MaDLT,NamQT,TTHTK,NGNOP,KyTTTu,KyTTDen,NgNhap,HanNop,"
-    sSQLCol = sSQLCol & "MaVach,MaMuc,MaTM,Dathay,KyLBo,ThueTKy,ThueCL,LanBS,DANHAN,LAN_QUET, TENNV, CHUNGCHI"
+    sSQLCol = sSQLCol & "MaVach,MaMuc,MaTM,Dathay,KyLBo,ThueTKy,ThueCL,LanBS,DANHAN,LAN_QUET, TENNV, CHUNGCHI,sohd,ngayhd"
 
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
@@ -1162,15 +1172,27 @@ Public Function InsertHDR() As String
             NgNhap = "CTOD('" & Format(NgNhap, "mm/dd/yyyy") & "')"
         End If
         
-        ' han nop
 
-        .GetText .ColLetterToNumber("Z"), 37, HANNOP
-        HANNOP = "CTOD('" & Format$(DateAdd("d", 45, HANNOP), "mm/dd/yyyy") & "')"
+        ' han nop
+        .GetText .ColLetterToNumber("AH"), 37, HANNOP
+        If Trim(HANNOP) = vbNullString Then
+            HANNOP = "CTOD('')"
+        Else
+            HANNOP = "CTOD('" & Format(HANNOP, "mm/dd/yyyy") & "')"
+        End If
         
         
+        'sohd
+        .GetText .ColLetterToNumber("H"), 29, SOHD
+        'ngayhd
+        .GetText .ColLetterToNumber("N"), 29, NGAYHD
+        If Trim(NGAYHD) = vbNullString Then
+            NGAYHD = "CTOD('')"
+        Else
+            NGAYHD = ToDate(Trim(NGAYHD), DDMMYYYY)
+            NGAYHD = "CTOD('" & Format(NGAYHD, "mm/dd/yyyy") & "')"
+        End If
         
-        
-    
         
         MaVach = ".T."
         DATHAY = ".F."
@@ -1218,7 +1240,7 @@ Public Function InsertHDR() As String
         sSQLVal = LoaiTK & "," & madtnt & "," & MADLT & "," & namQT & "," & TTHTK & "," & ngnop & "," & KyTTTu & ", "
         sSQLVal = sSQLVal & KyTTDen & "," & NgNhap & "," & HANNOP & "," & MaVach & "," & MaMuc & ", "
         sSQLVal = sSQLVal & maTM & "," & DATHAY & "," & KYLBO & "," & ThueTKy & ", "
-        sSQLVal = sSQLVal & THUECL & "," & LanBS & "," & DANHAN & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "'"
+        sSQLVal = sSQLVal & THUECL & "," & LanBS & "," & DANHAN & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "','" & SOHD & "'," & NGAYHD
            
         sSQL = "INSERT INTO TMP_QTNT" & namKyLapBo & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
