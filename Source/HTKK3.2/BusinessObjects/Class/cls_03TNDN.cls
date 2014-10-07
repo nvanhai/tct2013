@@ -726,6 +726,35 @@ With fps
             'Update combo C
             UpdateCell fps, .Col, .Row, .Text
         End If
+    ElseIf .ActiveSheet = sheetPl03_7_TNDN Then
+            .Sheet = sheetPl03_7_TNDN
+            mCurrentSheet = sheetPl03_7_TNDN
+            
+            .Col = Col
+            .Row = Row
+            If Col = .ColLetterToNumber("N") Then 'Khi chon Combo
+                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot AJ
+                intIndexCombo = .typeComboboxCurSel
+                .Col = .ColLetterToNumber("AJ")
+                .Row = Row
+                .typeComboboxCurSel = intIndexCombo
+                'Nhap lai Combo cot AJ
+                .Col = .ColLetterToNumber("AJ")
+                UpdateCell fps, .Col, .Row, .Text
+                
+            End If
+            
+            If Col = .ColLetterToNumber("AB") Then 'Khi chon Combo
+                'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot AK
+                intIndexCombo = .typeComboboxCurSel
+                .Col = .ColLetterToNumber("AK")
+                .Row = Row
+                .typeComboboxCurSel = intIndexCombo
+                'Nhap lai Combo cot AK
+                .Col = .ColLetterToNumber("AK")
+                UpdateCell fps, .Col, .Row, .Text
+                
+            End If
     End If
 End With
     

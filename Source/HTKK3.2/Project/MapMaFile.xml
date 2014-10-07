@@ -92,8 +92,8 @@
 	<Map MapID="101_9" MaFile="" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK=""/> 
 	
 	<Map MapID="86" MaFile="01_BVMT" Version ="2.0.0" VersionKHBS ="2.0.2" MaTK="59"/> 
-	<Map MapID="87" MaFile="02_BVMT" Version ="2.0.1" VersionKHBS ="2.0.0" MaTK="60"/> 	
-	<Map MapID="85" MaFile="01_PHLP" Version ="2.0.1" VersionKHBS ="2.0.1" MaTK="61"/> 	
+	<Map MapID="87" MaFile="02_BVMT" Version ="2.0.5" VersionKHBS ="2.0.5" MaTK="60"/> 	
+	<Map MapID="85" MaFile="01_PHLP" Version ="2.0.1" VersionKHBS ="2.0.2" MaTK="61"/> 	
 	<Map MapID="88" MaFile="02_PHLP" Version ="2.0.5" VersionKHBS ="2.0.5" MaTK="62"/> 
 	<Map MapID="90" MaFile="01_TBVMT" Version ="2.0.1" VersionKHBS ="2.0.2" MaTK="128"/> 
 	

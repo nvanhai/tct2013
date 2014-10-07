@@ -1055,8 +1055,10 @@ Public Function getValueTK(strFileLoadData As String) As String
         .validateOnParse = True
         .async = False
         If .Load(strFileLoadData) = True Then
-            Set xmlNode = .nodeFromID("T_37")
-            result = "CT6_" & Val(GetAttribute(xmlNode, "Value"))
+            Set xmlNode = .nodeFromID("H_37")
+            result = "CT4_" & Val(GetAttribute(xmlNode, "Value"))
+            Set xmlNode = .nodeFromID("N_37")
+            result = result & "~" & "CT6_" & Val(GetAttribute(xmlNode, "Value"))
             Set xmlNode = Nothing
         End If
     End With
@@ -1081,8 +1083,10 @@ Public Function getDieuChinhGiam(strOldValue As String) As String
     strMaCT = getMapCT
     With fps
                 .Sheet = 1
-                .GetText .ColLetterToNumber("T"), 37, varTemp
-                strCurrentValue = "CT6_" & Trim(varTemp)
+                .GetText .ColLetterToNumber("H"), 37, varTemp
+                strCurrentValue = "CT4_" & Trim(varTemp)
+                .GetText .ColLetterToNumber("N"), 37, varTemp
+                strCurrentValue = strCurrentValue & "~CT6_" & Trim(varTemp)
                 ' tinh chenh lech giua 2 lan dieu chinh
                 tempArrOld = Split(strOldValue, "~")
                 tempArrCurr = Split(strCurrentValue, "~")
@@ -1102,13 +1106,24 @@ Public Function getDieuChinhGiam(strOldValue As String) As String
                         End If
                     Next j
 
-                    If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) < 0 Then
-                        ' dieu chinh giam
-                        strDieuChinhGiam = strDieuChinhGiam & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
-                    End If
-                    If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) > 0 Then
-                        ' dieu chinh tang
-                        strDieuChinhTang = strDieuChinhTang & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
+                   If Left(strMaCT, 1) = "4" Then
+                        If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) < 0 Then
+                            ' dieu chinh giam
+                            strDieuChinhGiam = strDieuChinhGiam & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
+                        End If
+                        If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) > 0 Then
+                            ' dieu chinh tang
+                            strDieuChinhTang = strDieuChinhTang & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
+                        End If
+                    Else
+                        If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) > 0 Then
+                            ' dieu chinh giam
+                            strDieuChinhGiam = strDieuChinhGiam & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
+                        End If
+                        If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) < 0 Then
+                            ' dieu chinh tang
+                            strDieuChinhTang = strDieuChinhTang & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
+                        End If
                     End If
                 Next i
                 If strDieuChinhGiam <> "" Then
@@ -1159,7 +1174,7 @@ Public Function getChiTieuTongDC(strOldValue As String) As String
     Dim strCurrentValue As String
     With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("T"), 37, varTemp
+        .GetText .ColLetterToNumber("Q"), 37, varTemp
         strCurrentValue = Val(varTemp) - Val(strOldValue)
         getChiTieuTongDC = strCurrentValue
     End With
@@ -1183,7 +1198,7 @@ Public Function getValueCTDC(strFileLoadData As String) As String
         .validateOnParse = True
         .async = False
         If .Load(strFileLoadData) = True Then
-            Set xmlNode = .nodeFromID("T_37")
+            Set xmlNode = .nodeFromID("Q_37")
             result = Val(GetAttribute(xmlNode, "Value"))
         End If
     End With

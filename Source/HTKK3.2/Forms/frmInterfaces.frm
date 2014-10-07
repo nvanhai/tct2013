@@ -4921,26 +4921,29 @@ Private Sub KetXuatXML()
                         xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_01_GTGT_xml.xml")
                     Else
 
-                        If MaTk = "02_GTGT" Or MaTk = "03_GTGT" Or MaTk = "04_GTGT" Or MaTk = "05_GTGT" Or MaTk = "01A_TNDN" Or MaTk = "01B_TNDN" Or MaTk = "02_TNDN" Or MaTk = "01_NTNN" Or MaTk = "03_NTNN" Or MaTk = "01_TAIN" Or MaTk = "01_TTDB" Or MaTk = "01_BVMT" Or MaTk = "01_TBVMT" Or MaTk = "01_TD_GTGT" Or MaTk = "01A_TNDN_DK" Or MaTk = "01B_TNDN_DK" Or MaTk = "01_TAIN_DK" Or MaTk = "02_TNDN_DK" Or MaTk = "03_TD_TAIN" Or MaTk = "01_BCTL_DK" Then
+                        If MaTk = "02_GTGT" Or MaTk = "03_GTGT" Or MaTk = "04_GTGT" Or MaTk = "05_GTGT" Or MaTk = "01A_TNDN" Or MaTk = "01B_TNDN" Or MaTk = "02_TNDN" Or MaTk = "01_NTNN" Or MaTk = "03_NTNN" Or MaTk = "01_TAIN" Or MaTk = "01_TTDB" Or MaTk = "01_BVMT" Or MaTk = "01_TBVMT" Or MaTk = "01_TD_GTGT" Or MaTk = "01A_TNDN_DK" Or MaTk = "01B_TNDN_DK" Or MaTk = "01_TAIN_DK" Or MaTk = "02_TNDN_DK" Or MaTk = "03_TD_TAIN" Or MaTk = "01_BCTL_DK" Or MaTk = "01_PHLP" Then
                             xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_TT156_xml.xml")
 
                             xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT156_xml.xml")
                         Else
-                            xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_TT28_xml.xml")
-
-                            xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT28_xml.xml")
-                            
-                            If xmlPL.getElementsByTagName("tenTKhaiThue").length > 0 Then
-                                xmlPL.getElementsByTagName("tenTKhaiThue")(0).Text = GetAttribute(TAX_Utilities_v1.NodeMenu, "Caption")
-                            End If
-
-                            If xmlPL.getElementsByTagName("mauSo").length > 0 Then
-                                xmlPL.getElementsByTagName("mauSo")(0).Text = MaTk
-                            End If
-
-                            If xmlPL.getElementsByTagName("kyTinhThue").length > 0 And xmlTK.getElementsByTagName("kyKKhai").length > 0 Then
-                                xmlPL.getElementsByTagName("kyTinhThue")(0).Text = xmlTK.getElementsByTagName("kyKKhai")(0).Text
-                            End If
+                            xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_QT_TT156_xml.xml")
+    
+                            xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_QT_TT156_xml.xml")
+'                            xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_TT28_xml.xml")
+'
+'                            xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT28_xml.xml")
+'
+'                            If xmlPL.getElementsByTagName("tenTKhaiThue").length > 0 Then
+'                                xmlPL.getElementsByTagName("tenTKhaiThue")(0).Text = GetAttribute(TAX_Utilities_v1.NodeMenu, "Caption")
+'                            End If
+'
+'                            If xmlPL.getElementsByTagName("mauSo").length > 0 Then
+'                                xmlPL.getElementsByTagName("mauSo")(0).Text = MaTk
+'                            End If
+'
+'                            If xmlPL.getElementsByTagName("kyTinhThue").length > 0 And xmlTK.getElementsByTagName("kyKKhai").length > 0 Then
+'                                xmlPL.getElementsByTagName("kyTinhThue")(0).Text = xmlTK.getElementsByTagName("kyKKhai")(0).Text
+'                            End If
                         End If
                     End If
 
@@ -5488,12 +5491,13 @@ Private Function GetAllMapPhuLuc() As MSXML.DOMDocument
                     MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_01_GTGT_xml.xml")
                 Else
     
-'                    'If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01A_TNDN" Or MaPL = "02_TNDN" Or MaPL = "01_NTNN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Then
-'                    If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01B_TNDN" Or MaPL = "02_TNDN" Or MaPL = "01_NTNN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Or MaPL = "01_TD_GTGT" Or MaPL = "01A_TNDN_DK" Or MaPL = "01B_TNDN_DK" Or MaPL = "01_TAIN_DK" Or MaPL = "02_TNDN_DK" Or MaPL = "03_TD_TAIN" Or MaPL = "01_BCTL_DK" Then
-                     MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT156_xml.xml")
-'                    Else
+                    'If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01A_TNDN" Or MaPL = "02_TNDN" Or MaPL = "01_NTNN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Then
+                    If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01B_TNDN" Or MaPL = "02_TNDN" Or MaPL = "01_NTNN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Or MaPL = "01_TD_GTGT" Or MaPL = "01A_TNDN_DK" Or MaPL = "01B_TNDN_DK" Or MaPL = "01_TAIN_DK" Or MaPL = "02_TNDN_DK" Or MaPL = "03_TD_TAIN" Or MaPL = "01_BCTL_DK" Or MaPL = "01_PHLP" Then
+                        MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT156_xml.xml")
+                    Else
+                        MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_QT_TT156_xml.xml")
 '                        MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT28_xml.xml")
-'                    End If
+                    End If
                 End If
             End If
         Else
@@ -9080,7 +9084,7 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
     
     Dim intIndexCuc As Integer, intIndexChiCuc As Integer
     Dim varIdCucThue As Variant
-    Dim xmlDOMdata As New MSXML.DOMDocument
+    Dim xmlDomData As New MSXML.DOMDocument
     Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim arrDanhsach() As String
@@ -9218,8 +9222,8 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
                          ' Lay thong tin cho chi cuc thue
                          varIdCucThue = Left$(varIdCucThue, 3)
                          
-                         If xmlDOMdata.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
-                             Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+                         If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+                             Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
                              For Each xmlNode In xmlNodeListCell
                                  If GetAttribute(xmlNode, "Value") <> "" Then
                                      arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -9230,7 +9234,7 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
                                      End If
                                  End If
                              Next
-                             Set xmlDOMdata = Nothing
+                             Set xmlDomData = Nothing
                              Set xmlNodeListCell = Nothing
                              Set xmlNode = Nothing
                          End If
@@ -9290,8 +9294,8 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
                             ' Lay thong tin cho chi cuc thue
                             varIdCucThue = Left$(varIdCucThue, 3)
                             
-                            If xmlDOMdata.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
-                                Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+                            If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Tinh_Thanh.xml")) Then
+                                Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
                                 For Each xmlNode In xmlNodeListCell
                                     If GetAttribute(xmlNode, "Value") <> "" Then
                                         arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -9302,7 +9306,7 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
                                         End If
                                     End If
                                 Next
-                                Set xmlDOMdata = Nothing
+                                Set xmlDomData = Nothing
                                 Set xmlNodeListCell = Nothing
                                 Set xmlNode = Nothing
                             End If

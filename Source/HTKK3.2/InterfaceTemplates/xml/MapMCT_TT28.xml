@@ -131,4 +131,9 @@
 		<Item CellID="L_37" MCT="4" Caption="Số tiền phí, lệ phí  thu được "/>
 		<Item CellID="R_37" MCT="6" Caption="Số tiền phí, lệ phí trích sử dụng theo chế độ"/>
 	</Map>
+	
+	<Map ID="02_PHLP">
+		<Item CellID="H_37" MCT="4" Caption="Số tiền phí, lệ phí  thu được "/>
+		<Item CellID="N_37" MCT="6" Caption="Số tiền phí, lệ phí trích sử dụng theo chế độ"/>
+	</Map>
 </Root>
