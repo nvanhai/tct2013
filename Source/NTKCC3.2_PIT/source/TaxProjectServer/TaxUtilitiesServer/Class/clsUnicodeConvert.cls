@@ -31,7 +31,7 @@ Private Function GetLocalDirectory() As String
     Dim TStr
     
     ' Get folder where the Exe of this program resides
-    TStr = App.Path
+    TStr = App.path
     ' Append a backslash if folder does not end with one
     If Right(TStr, 1) <> "\" Then TStr = TStr & "\"
     GetLocalDirectory = TStr ' Return the folder
