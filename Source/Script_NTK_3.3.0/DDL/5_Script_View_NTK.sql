@@ -381,7 +381,7 @@ SELECT dtl.hdr_id
      , MAX(dtl.loi_nhuan_tang) loi_nhuan_tang
      , MAX(dtl.ten_ben_lk) ten_ben_lk
      , MAX(dtl.dia_chi) dia_chi
-     , MAX(dtl.ma_so_thue) ma_so_thue
+	 , Decode(Length(MAX(dtl.ma_so_thue)),13,SUBSTR(MAX(dtl.ma_so_thue),1,10) || '-' || SUBSTR(MAX(dtl.ma_so_thue),11,3),MAX(dtl.ma_so_thue)) ma_so_thue
      , MAX(dtl.hinh_thuc_lien_ket_A) hinh_thuc_lien_ket_A
      , MAX(dtl.hinh_thuc_lien_ket_B) hinh_thuc_lien_ket_B
      , MAX(dtl.hinh_thuc_lien_ket_C) hinh_thuc_lien_ket_C
@@ -457,7 +457,7 @@ SELECT dtl.hdr_id
      , dtl.ma_ctieu
      , dtl.ten_ctieu
      , MAX(dtl.ten_doanh_nghiep) ten_doanh_nghiep
-     , MAX(dtl.mst) mst
+	 , Decode(Length(MAX(dtl.mst)),13,SUBSTR(MAX(dtl.mst),1,10) || '-' || SUBSTR(MAX(dtl.mst),11,3),MAX(dtl.mst)) mst
      , MAX(dtl.ty_le_phan_bo) ty_le_phan_bo
      , MAX(dtl.so_thue_tam_phan_bo_quy_I) so_thue_tam_phan_bo_quy_I
      , MAX(dtl.so_thue_tam_phan_bo_quy_II) so_thue_tam_phan_bo_quy_II
@@ -515,10 +515,11 @@ CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_9_14 AS
             dtl.ten_ctieu,
             MAX (dtl.so_thu_tu) so_thu_tu,
             MAX (dtl.chi_tieu)     chi_tieu,
-            MAX (dtl.mst)       mst,
+			Decode(Length(MAX(dtl.mst)),13,SUBSTR(MAX(dtl.mst),1,10) || '-' || SUBSTR(MAX(dtl.mst),11,3),MAX(dtl.mst)) mst,
             MAX (dtl.ty_le_phan_bo)     ty_le_phan_bo,
             MAX (dtl.so_thue_phai_nop)              so_thue_phai_nop,
-            MAX (dtl.co_quan_thue_quan_ly)              co_quan_thue_quan_ly
+            MAX (dtl.co_quan_thue_quan_ly)              co_quan_thue_quan_ly,
+            MAX (dtl.CQT_PARENT_ID)              CQT_PARENT_ID
         FROM
             (
                 SELECT
@@ -532,7 +533,8 @@ CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_9_14 AS
                     DECODE (gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL ) mst,
                     DECODE (gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL ) ty_le_phan_bo,
                     DECODE (gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL)  so_thue_phai_nop,
-                    DECODE (gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL)  co_quan_thue_quan_ly
+                    DECODE (gdien.cot_06, tkd.ky_hieu, tkd.gia_tri, NULL)  co_quan_thue_quan_ly,
+                    DECODE (gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL ) CQT_PARENT_ID
                 FROM
                     QLT_NTK.rcv_tkhai_dtl tkd,
                     QLT_NTK.rcv_gdien_tkhai gdien,
@@ -565,9 +567,9 @@ SELECT hdr_id
       ,gia_tinh_thue
       ,tsuat_dtnt
       ,muc_thue_an_dinh
-      ,decode(gia_tinh_thue,0,san_luong*muc_thue_an_dinh,san_luong*gia_tinh_thue*(tsuat_dtnt/100)) thue_phai_nop_dtnt     
+      ,thue_phai_nop_dtnt     
       ,thue_du_kien_duoc_mien_giam
-      ,(decode(gia_tinh_thue,0,san_luong*muc_thue_an_dinh,san_luong*gia_tinh_thue*(tsuat_dtnt/100)) - thue_du_kien_duoc_mien_giam)thue_tai_nguyen_phat_sinh
+      ,round((to_number(thue_phai_nop_dtnt) - to_number(thue_du_kien_duoc_mien_giam))) thue_tai_nguyen_phat_sinh
       ,thue_da_ke_khai
       ,chenh_lech
 FROM
@@ -582,7 +584,7 @@ SELECT dtl.hdr_id
      , MAX(dtl.gia_tinh_thue) gia_tinh_thue
      , MAX(dtl.tsuat_dtnt) tsuat_dtnt
      , MAX(dtl.muc_thue_an_dinh) muc_thue_an_dinh
-     --, MAX(dtl.thue_phai_nop_dtnt) thue_phai_nop_dtnt
+     , MAX(dtl.thue_phai_nop_dtnt) thue_phai_nop_dtnt
      , MAX(dtl.thue_du_kien_duoc_mien_giam) thue_du_kien_duoc_mien_giam
      , MAX(dtl.thue_da_ke_khai) thue_da_ke_khai
      , MAX(dtl.chenh_lech) chenh_lech
@@ -599,8 +601,8 @@ FROM QLT_NTK.rcv_gdien_tkhai gd,
          replace(DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL),',','.') gia_tinh_thue,
          DECODE(gdien.cot_06, tkd.ky_hieu, NVL(tkd.gia_tri,0), NULL) tsuat_dtnt,
          DECODE(gdien.cot_07, tkd.ky_hieu, tkd.gia_tri, NULL) muc_thue_an_dinh,
-         --DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL) thue_phai_nop_dtnt,
-         DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL) thue_du_kien_duoc_mien_giam,--
+         DECODE(gdien.cot_08, tkd.ky_hieu, tkd.gia_tri, NULL) thue_phai_nop_dtnt,
+         DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL) thue_du_kien_duoc_mien_giam,
          DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL) thue_da_ke_khai,
          DECODE(gdien.cot_12, tkd.ky_hieu, tkd.gia_tri, NULL) chenh_lech
   FROM QLT_NTK.rcv_tkhai_dtl tkd,
@@ -615,8 +617,8 @@ WHERE (gd.loai_dlieu = '02_TAIN14')
 GROUP BY dtl.hdr_id,
          dtl.row_id
          , dtl.so_tt
-);
-
+)
+order by so_tt;
 --------------------------------
 --02/BVMT
 -------------------------------
@@ -712,7 +714,7 @@ CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_03A_TD_TAIN AS
             dtl.row_id                 row_id,
             dtl.ten_ctieu,
             MAX (dtl.NHA_MAY_TD) NHA_MAY_TD,
-            MAX (dtl.MA_SO_THUE) MA_SO_THUE,
+            Decode(Length(MAX(dtl.MA_SO_THUE)),13,SUBSTR(MAX(dtl.MA_SO_THUE),1,10) || '-' || SUBSTR(MAX(dtl.MA_SO_THUE),11,3),MAX(dtl.MA_SO_THUE)) MA_SO_THUE,
             MAX (dtl.SAN_LUONG)     SAN_LUONG,
             MAX (dtl.GIA_TINH_THUE)       GIA_TINH_THUE,
             MAX (dtl.THUE_PHAT_SINH)     THUE_PHAT_SINH,
@@ -765,7 +767,7 @@ CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_03A_1_TD_TAIN AS
             dtl.row_id                 row_id,
             MAX (dtl.STT) STT,
             MAX (dtl.CHI_TIEU)     CHI_TIEU,
-            MAX (dtl.MA_SO_THUE)       MA_SO_THUE,
+            Decode(Length(MAX(dtl.MA_SO_THUE)),13,SUBSTR(MAX(dtl.MA_SO_THUE),1,10) || '-' || SUBSTR(MAX(dtl.MA_SO_THUE),11,3),MAX(dtl.MA_SO_THUE)) MA_SO_THUE,
             MAX (dtl.CQT_QUAN_LY)     CQT_QUAN_LY,
 			MAX (dtl.CQT_PARENT_ID)     CQT_PARENT_ID,
             MAX (dtl.TY_LE_PHAN_BO)              TY_LE_PHAN_BO,
@@ -800,7 +802,7 @@ CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_03A_1_TD_TAIN AS
             dtl.hdr_id,
             dtl.so_tt,
             dtl.row_id
-    );	
+    );
 --------------------------------
 --01/PHLP
 --------------------------------
@@ -848,9 +850,9 @@ SELECT dtl.hdr_id
      , dtl.row_id
      , dtl.so_tt
      , dtl.ctq_id
-     , MAX(dtl.don_vi_tinh) don_vi_tinh
-     , MAX(dtl.ke_khai) ke_khai
+     , MAX(dtl.ke_khai) ke_khai     
      , MAX(dtl.quyet_toan) quyet_toan
+     , MAX(dtl.chenh_lech) chenh_lech
      , MAX(dtl.ghi_chu) ghi_chu
 FROM QLT_NTK.rcv_gdien_tkhai gd,
 (
@@ -859,9 +861,9 @@ FROM QLT_NTK.rcv_gdien_tkhai gd,
          gdien.id,
          gdien.ma_ctieu ctq_id,
          gdien.so_tt,
-         DECODE(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL) don_vi_tinh,
-         DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL) ke_khai,
-         DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL) quyet_toan,
+         DECODE(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL) ke_khai,
+         DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL) quyet_toan,
+         DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL) chenh_lech,
          DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) ghi_chu
   FROM QLT_NTK.rcv_tkhai_dtl tkd,
        QLT_NTK.rcv_gdien_tkhai gdien,
@@ -884,8 +886,8 @@ SELECT dtl.hdr_id
      , dtl.loai_dlieu
      , MAX(dtl.ten_nha_thau_nuoc_ngoai) ten_nha_thau_nuoc_ngoai
      , MAX(dtl.nuoc_cu_tru) nuoc_cu_tru
-     , MAX(dtl.ma_so_thue_VN) ma_so_thue_VN
-     , MAX(dtl.ma_so_thue_nuoc_ngoai) ma_so_thue_nuoc_ngoai
+     , Decode(Length(MAX(dtl.ma_so_thue_VN)),13,SUBSTR(MAX(dtl.ma_so_thue_VN),1,10) || '-' || SUBSTR(MAX(dtl.ma_so_thue_VN),11,3),MAX(dtl.ma_so_thue_VN)) ma_so_thue_VN
+     , Decode(Length(MAX(dtl.ma_so_thue_nuoc_ngoai)),13,SUBSTR(MAX(dtl.ma_so_thue_nuoc_ngoai),1,10) || '-' || SUBSTR(MAX(dtl.ma_so_thue_nuoc_ngoai),11,3),MAX(dtl.ma_so_thue_nuoc_ngoai)) ma_so_thue_nuoc_ngoai
      , MAX(dtl.so_hop_dong) so_hop_dong
      , MAX(dtl.noi_dung) noi_dung
      , MAX(dtl.dia_diem) dia_diem
@@ -925,18 +927,18 @@ FROM QLT_NTK.rcv_gdien_tkhai gd,
     AND (gdien.loai_dlieu = '02_1_NTNN14')
 ) dtl
 WHERE (gd.loai_dlieu  = '02_1_NTNN14')
-  AND (dtl.id = gd.id)-- and row_id='1'
+  AND (dtl.id = gd.id)
 GROUP BY dtl.hdr_id,
          dtl.loai_dlieu,
          dtl.row_id,
          dtl.so_tt
-;	
+;
 	-- PL 02-2
 CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_02_2_NTNN AS
 SELECT dtl.hdr_id
      , dtl.loai_dlieu
      , MAX(dtl.ten_nha_thau_phu_VN) ten_nha_thau_phu_VN
-     , MAX(dtl.ma_so_thue) ma_so_thue
+     , Decode(Length(MAX(dtl.ma_so_thue)),13,SUBSTR(MAX(dtl.ma_so_thue),1,10) || '-' || SUBSTR(MAX(dtl.ma_so_thue),11,3),MAX(dtl.ma_so_thue)) ma_so_thue
      , MAX(dtl.nha_thau_NN_ky_hd) nha_thau_NN_ky_hd
      , MAX(dtl.hop_dong_so) hop_dong_so
      , MAX(dtl.noi_dung) noi_dung
@@ -974,12 +976,11 @@ FROM QLT_NTK.rcv_gdien_tkhai gd,
     AND (gdien.loai_dlieu = '02_2_NTNN14')
 ) dtl
 WHERE (gd.loai_dlieu  = '02_2_NTNN14')
-  AND (dtl.id = gd.id)-- and row_id='1'
+  AND (dtl.id = gd.id)
 GROUP BY dtl.hdr_id,
          dtl.loai_dlieu,
          dtl.row_id,
-         dtl.so_tt
-;	
+         dtl.so_tt;
 --------------------------------
 --04/NTNN
 --------------------------------
@@ -1023,7 +1024,7 @@ CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_04_1_NTNN AS
 SELECT dtl.hdr_id
      , dtl.loai_dlieu
      , MAX(dtl.ten_nha_thau_phu_VN) ten_nha_thau_phu_VN
-     , MAX(dtl.ma_so_thue) ma_so_thue
+     , Decode(Length(MAX(dtl.ma_so_thue)),13,SUBSTR(MAX(dtl.ma_so_thue),1,10) || '-' || SUBSTR(MAX(dtl.ma_so_thue),11,3),MAX(dtl.ma_so_thue)) ma_so_thue
      , MAX(dtl.nha_thau_nuoc_ngoai_ky_hd) nha_thau_nuoc_ngoai_ky_hd
      , MAX(dtl.so_hd) so_hd
      , MAX(dtl.noi_dung_hop_dong) noi_dung_hop_dong
@@ -1061,12 +1062,11 @@ FROM QLT_NTK.rcv_gdien_tkhai gd,
     AND (gdien.loai_dlieu = '04_1_NTNN14')
 ) dtl
 WHERE (gd.loai_dlieu  = '04_1_NTNN14')
-  AND (dtl.id = gd.id)-- and row_id='1'
+  AND (dtl.id = gd.id)
 GROUP BY dtl.hdr_id,
          dtl.loai_dlieu,
          dtl.row_id,
-         dtl.so_tt
-;	
+         dtl.so_tt;
 --------------------------------
 --02/TNDN-DK
 --------------------------------
@@ -1116,7 +1116,7 @@ CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_02_1_TNDN_DK AS
             dtl.hdr_id,
             dtl.so_tt                so_tt,
             dtl.row_id                 row_id,
-            MAX (dtl.MA_SO_THUE) MA_SO_THUE,
+			Decode(Length(MAX(dtl.MA_SO_THUE)),13,SUBSTR(MAX(dtl.MA_SO_THUE),1,10) || '-' || SUBSTR(MAX(dtl.MA_SO_THUE),11,3),MAX(dtl.MA_SO_THUE)) MA_SO_THUE,
             MAX (dtl.TEN_NHA_THAU)     TEN_NHA_THAU,
             MAX (dtl.TY_LE_PHAN_BO)       TY_LE_PHAN_BO,
             MAX (dtl.SO_THUE_PHAT_SINH_PHAI_NOP)     SO_THUE_PHAT_SINH_PHAI_NOP,
@@ -1199,7 +1199,7 @@ CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_02_1_TAIN_DK AS
             dtl.hdr_id,
             dtl.so_tt                so_tt,
             dtl.row_id                 row_id,
-            MAX (dtl.MA_SO_THUE) MA_SO_THUE,
+			Decode(Length(MAX(dtl.MA_SO_THUE)),13,SUBSTR(MAX(dtl.MA_SO_THUE),1,10) || '-' || SUBSTR(MAX(dtl.MA_SO_THUE),11,3),MAX(dtl.MA_SO_THUE)) MA_SO_THUE,
             MAX (dtl.TEN_NHA_THAU)     TEN_NHA_THAU,
             MAX (dtl.TY_LE_PHAN_BO)       TY_LE_PHAN_BO,
             MAX (dtl.SO_THUE_PHAT_SINH_PHAI_NOP)     SO_THUE_PHAT_SINH_PHAI_NOP,
