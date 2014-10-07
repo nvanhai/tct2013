@@ -159,29 +159,42 @@ Public Sub Prepare1()
         .TypeComboBoxList = strQuanHeNNTID
         
         
-        ' lay du lieu danh muc dia ban
-        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban.xml"))
+        ' lay du lieu danh muc dia ban tinh
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Tinh.xml"))
         Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
         For Each xmlNode In xmlNodeListMap
             temValue = GetAttribute(xmlNode, "Value")
             arrValue = Split(temValue, "###")
-            ' danh sach tinh
-            If arrValue(0) = "1" Then
-                strTenTinh = strTenTinh + arrValue(4) + Chr$(9)
-                strMaTinh = strMaTinh + arrValue(3) + Chr$(9)
-            End If
-            ' danh sach huyen
-            If arrValue(0) = "0" Then
-                strTenHuyen = strTenHuyen + arrValue(4) + Chr$(9)
-                strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
-            End If
-            ' danh sach xa
-            If arrValue(0) = "2" Then
-                strTenXa = strTenXa + arrValue(4) + Chr$(9)
-                strMaXa = strMaXa + arrValue(1) + Chr$(9)
-            End If
-
+            strTenTinh = strTenTinh + arrValue(2) + Chr$(9)
+            strMaTinh = strMaTinh + arrValue(1) + Chr$(9)
         Next
+        
+        ' lay danh sach huyen
+        Set xmlDocument = Nothing
+        Set xmlNodeListMap = Nothing
+        ' lay du lieu danh muc dia ban tinh
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Huyen.xml"))
+        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+        For Each xmlNode In xmlNodeListMap
+            temValue = GetAttribute(xmlNode, "Value")
+            arrValue = Split(temValue, "###")
+            strTenHuyen = strTenHuyen + arrValue(3) + Chr$(9)
+            strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
+        Next
+        
+        ' Lay danh muc xa
+        Set xmlDocument = Nothing
+        Set xmlNodeListMap = Nothing
+        ' lay du lieu danh muc dia ban tinh
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Xa.xml"))
+        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+        For Each xmlNode In xmlNodeListMap
+            temValue = GetAttribute(xmlNode, "Value")
+            arrValue = Split(temValue, "###")
+            strTenXa = strTenXa + arrValue(4) + Chr$(9)
+            strMaXa = strMaXa + arrValue(3) + Chr$(9)
+        Next
+        
         
         .Row = 33
         ' set danh sach tinh
@@ -482,15 +495,76 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
 
 Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
     Dim intIndexCombo As Integer
+    Dim varIDTinh As Variant
+    Dim varIDHuyen As Variant
+    Dim xmlDomData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
+    Dim i As Integer
+    
+    Dim tenHuyen As String
+    Dim maHuyen As String
+    Dim tenXa As String
+    Dim maXa As String
+    Dim arrDanhsach() As String
+    
     With fps
         If .ActiveSheet = 4 Then
-            ' quoc tich
+            ' chon tinh thanh
             If Col = .ColLetterToNumber("K") And .Text <> "" Then
                 intIndexCombo = .typeComboboxCurSel
                  .Row = Row
                  .Col = .ColLetterToNumber("J")
                  .typeComboboxCurSel = intIndexCombo
                 UpdateCell fps, .Col, .Row, .value
+                
+                .GetText .Col, .Row, varIDTinh
+                If varIDTinh <> "" Or varIDTinh <> vbNullString Then
+                    
+                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Huyen.xml")) Then
+                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+                        For Each xmlNode In xmlNodeListCell
+                            If GetAttribute(xmlNode, "Value") <> "" Then
+                                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                                
+                                If arrDanhsach(1) = varIDTinh Then
+                                    tenHuyen = tenHuyen + arrDanhsach(3) + Chr$(9)
+                                    maHuyen = maHuyen + arrDanhsach(2) + Chr$(9)
+                                End If
+                            End If
+                        Next
+                        Set xmlDomData = Nothing
+                        Set xmlNodeListCell = Nothing
+                        Set xmlNode = Nothing
+                    End If
+                    
+                    .Row = Row
+                    .Col = .ColLetterToNumber("M")
+                    .TypeComboBoxList = tenHuyen
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
+                    
+                    .Row = Row
+                    .Col = .ColLetterToNumber("L")
+                    .TypeComboBoxList = maHuyen
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
+                   
+                    .Row = Row
+                    .Col = .ColLetterToNumber("O")
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
+                    
+                    .Row = Row
+                    .Col = .ColLetterToNumber("N")
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
+                                   
+                
+                End If
+                
+                
             End If
             ' chon quan he
             If Col = .ColLetterToNumber("O") And .Text <> "" Then
@@ -508,6 +582,31 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
                  .Col = .ColLetterToNumber("H")
                  .typeComboboxCurSel = intIndexCombo
                 UpdateCell fps, .Col, .Row, .value
+                If .Text = "01" Then
+                    .Col = .ColLetterToNumber("K")
+                    .Row = Row
+                    .Lock = False
+                    
+                    .Col = .ColLetterToNumber("M")
+                    .Row = Row
+                    .Lock = False
+                    
+                    .Col = .ColLetterToNumber("O")
+                    .Row = Row
+                    .Lock = False
+                Else
+                    .Col = .ColLetterToNumber("K")
+                    .Row = Row
+                    .Lock = True
+                    
+                    .Col = .ColLetterToNumber("M")
+                    .Row = Row
+                    .Lock = True
+                    
+                    .Col = .ColLetterToNumber("O")
+                    .Row = Row
+                    .Lock = True
+                End If
             End If
             
             
@@ -519,12 +618,47 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
                 UpdateCell fps, .Col, .Row, .value
             End If
             
+            ' chon huyen
             If Col = .ColLetterToNumber("M") And .Text <> "" Then
                 intIndexCombo = .typeComboboxCurSel
                  .Row = Row
                  .Col = .ColLetterToNumber("L")
                  .typeComboboxCurSel = intIndexCombo
                 UpdateCell fps, .Col, .Row, .value
+                
+                .GetText .Col, .Row, varIDHuyen
+                If varIDHuyen <> "" Or varIDHuyen <> vbNullString Then
+                    
+                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Xa.xml")) Then
+                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+                        For Each xmlNode In xmlNodeListCell
+                            If GetAttribute(xmlNode, "Value") <> "" Then
+                                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                                
+                                If arrDanhsach(2) = varIDHuyen Then
+                                    tenXa = tenXa + arrDanhsach(4) + Chr$(9)
+                                    maXa = maXa + arrDanhsach(3) + Chr$(9)
+                                End If
+                            End If
+                        Next
+                        Set xmlDomData = Nothing
+                        Set xmlNodeListCell = Nothing
+                        Set xmlNode = Nothing
+                    End If
+                    
+                    .Row = Row
+                    .Col = .ColLetterToNumber("O")
+                    .TypeComboBoxList = tenXa
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
+                    
+                    .Row = Row
+                    .Col = .ColLetterToNumber("N")
+                    .TypeComboBoxList = maXa
+                    .Text = ""
+                     UpdateCell fps, .Col, .Row, .Text
+                
+                End If
             End If
             
             If Col = .ColLetterToNumber("O") And .Text <> "" Then
