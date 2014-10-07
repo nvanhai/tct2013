@@ -75,6 +75,18 @@ Public Sub Prepare2()
                 UpdateCell fps, .Col, .Row, .Text
             End If
             
+             ' set ky ke khai tu thang den thang
+            .Row = 38
+            .Col = .ColLetterToNumber("K")
+            .Text = TAX_Utilities_v1.FirstDay
+            UpdateCell fps, .Col, .Row, .Text
+            
+            .Row = 38
+            .Col = .ColLetterToNumber("L")
+            .Text = TAX_Utilities_v1.LastDay
+            UpdateCell fps, .Col, .Row, .Text
+            
+            
             .Row = .MaxRows - 1
             .Col = .ColLetterToNumber("M")
             If .value = "" Then
