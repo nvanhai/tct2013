@@ -2569,14 +2569,14 @@ ErrorHandle:
     SaveErrorLog "mdlFunctions", "InsertRow", Err.Number, Err.Description
 End Sub
 
-Public Sub IncreaseRowInDOM(fpSpread1 As fpSpread, xmlDOMdata As MSXML.DOMDocument, ByVal pRow As Long, ByVal lRows As Long, ByVal lRow2s As Long)
+Public Sub IncreaseRowInDOM(fpSpread1 As fpSpread, xmlDomData As MSXML.DOMDocument, ByVal pRow As Long, ByVal lRows As Long, ByVal lRow2s As Long)
     On Error GoTo ErrorHandle
     
     Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
     Dim lCol As Long, lRow As Long, i As Long
         
-    If xmlDOMdata Is Nothing Then Exit Sub
-    Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Cell")
+    If xmlDomData Is Nothing Then Exit Sub
+    Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
     
     For i = xmlNodeListCell.length - 1 To 0 Step -1
         ParserCellID fpSpread1, GetAttribute(xmlNodeListCell(i), "CellID"), lCol, lRow
@@ -4206,7 +4206,7 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             strResult(0) = "G_11~Dynamic_0"
             strResult(1) = "I_40~I_41~I_42~I_43~I_44~I_45~I_46~I_47~I_48~I_49~I_50~I_51~Dynamic_0"
             strResult(2) = "C_57~G_57~K_57~L_57~N_57~P_57~R_57~T_57~W_57~Z_57~Dynamic_1"
-            strResult(3) = "M_61~M_63~D_61~D_63~C_38~I_38~Dynamic_0"
+            strResult(3) = "M_61~M_63~D_61~D_63~C_38~I_38~K_38~L_38~Dynamic_0"
             
             ' 09_TNCN \TT28
         Case "41"
@@ -4645,14 +4645,14 @@ End Sub
 Public Sub GetCQT(ByVal maCQT As String, Optional ByRef TenCQT As String)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlDomData As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = "..\InterfaceIni\Catalogue_Tinh_Thanh.xml"
     
-       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -4670,14 +4670,14 @@ End Sub
 Public Sub GetCQT_01GTGT(ByVal maCQT As String, Optional ByRef TenCQT As String)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlDomData As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = "..\InterfaceIni\Catalogue_Tinh_Thanh.xml"
     
-       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
