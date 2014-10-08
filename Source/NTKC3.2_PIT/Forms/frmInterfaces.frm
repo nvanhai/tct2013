@@ -1077,11 +1077,14 @@ Private Sub cmdSave_Click()
             End If
 
         ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
-            'todo QT
+            'TODO: Xu ly cho cac to khai QT nam(tu thang - toi thang) ver 330
             If Val(idToKhai) = 80 Or Val(idToKhai) = 82 Then
                 strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 2))), "dd/mm/yyyy") & "','dd/mm/yyyy') "
                 dDate = DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 1, 2)))
                 strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy')"
+            ElseIf Val(idToKhai) = 77 Or Val(idToKhai) = 87 Or Val(idToKhai) = 97 Or Val(idToKhai) = 43 Or Val(idToKhai) = 17 Or Val(idToKhai) = 59 Or Val(idToKhai) = 41 Or Val(idToKhai) = 76 Or Val(idToKhai) = 89 Or Val(idToKhai) = 93 Then
+                strSQL = strSQL & " and KYKK_TU_NGAY=To_Date('" & TuNgay & "','DD/MM/RRRR') "
+                strSQL = strSQL & " and KYKK_DEN_NGAY=To_Date('" & DenNgay & "','DD/MM/RRRR') "
             Else
                 strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
                 dDate = DateAdd("m", 12, dDate)
@@ -1534,8 +1537,8 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '#02/BVMT
-'str2 = "aa999872100343639   00201300100300100101/0101/01/1900<S01><S></S><S>Kg~1000.133~1000000~1000133000~2000000~998133000~010104~Kg~20000.000~400000~8000000000~80000000~7920000000~010203</S><S>Kg~3123.414~4214~13162067~42142~13119925~010104~M3~212144.000~421424~89402573056~4214242144~85188330912~020204</S><S>~µ~~02/10/2014~1~~~01/2013~10/2013</S></S01>"
-'Barcode_Scaned str2
+str2 = "aa999872100343639   00201300100300100101/0101/01/1900<S01><S></S><S>Kg~1000.133~1000000~1000133000~2000000~998133000~010104~Kg~20000.000~400000~8000000000~80000000~7920000000~010203</S><S>Kg~3123.414~4214~13162067~42142~13119925~010104~M3~212144.000~421424~89402573056~4214242144~85188330912~020204</S><S>~µ~~02/10/2014~1~~~01/2013~10/2013</S></S01>"
+Barcode_Scaned str2
 
 '#03A/TD-TAIN
 'str2 = "aa999972100343639   00201300200300100201/0114/06/2006<S03><S></S><S>0902~2</S><S>Nhµ m¸y ~2222222222001~1120.234~1000~22405~10000~12405~10000~2405~Ðia phuong~0102030405002~100~200~400~300~100~0~100</S><S>22805~10300~12505~10000~2505</S><S>~~µ~02/10/2014~1~~~01/2013~10/2013</S></S03>"
@@ -1584,8 +1587,8 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '#02-TNDN-DK updated
-str2 = "aa999932100343639   00201300100200100101/0101/01/1900<S01><S></S><S>1~0~0~~~</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~µ~07/10/2014~1~~~01/2013~09/2013</S></S01>"
-Barcode_Scaned str2
+'str2 = "aa999932100343639   00201300100200100101/0101/01/1900<S01><S></S><S>1~0~0~~~</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~µ~07/10/2014~1~~~01/2013~09/2013</S></S01>"
+'Barcode_Scaned str2
 
 '#02-TAIN/DK updated
 'str2 = "aa999892100343639   00201300100200100201/0101/01/1900<S01><S></S><S>0~0~1~~~</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0"
