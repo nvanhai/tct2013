@@ -43,7 +43,7 @@
 	
 	<Map MapID="101_8" MaFile="" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK=""/>
 	
-	<Map MapID="70" MaFile="01_NTNN" Version ="2.0.1" VersionKHBS ="2.0.2" MaTK="41"/>
+	<Map MapID="70" MaFile="01_NTNN" Version ="2.0.2" VersionKHBS ="2.0.4" MaTK="41"/>
 	<Map MapID="80" MaFile="02_NTNN" Version ="2.0.5" VersionKHBS ="2.0.5" MaTK="74"/>
 	<Map MapID="81" MaFile="03_NTNN" Version ="2.0.1" VersionKHBS ="2.0.2" MaTK="73"/>
 	<Map MapID="82" MaFile="04_NTNN" Version ="2.0.5" VersionKHBS ="2.0.5" MaTK="72"/>
