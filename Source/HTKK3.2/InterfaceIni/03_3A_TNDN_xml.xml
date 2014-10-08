@@ -1,5 +1,5 @@
 <PL03_3A_TNDN>
-	<Dynamic GroupName="PL03_3A_TNDN">
+	<DYNAMIC GroupName="PL03_3A_TNDN">
 		<NoiDungPL03_3A id="ID_1">
 			<dieuKienUuDai1>C_25</dieuKienUuDai1>
 			<dieuKienUuDai2>C_26</dieuKienUuDai2>
@@ -29,5 +29,5 @@
 			<ct8>U_55</ct8>
 			<ct9>U_56</ct9>
 		 </NoiDungPL03_3A>	
-	</Dynamic>
+	</DYNAMIC>
 </PL03_3A_TNDN>
