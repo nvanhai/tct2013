@@ -7061,7 +7061,9 @@ Private Sub txtYear_LostFocus()
     End If
     ' end
     ' set lai tu thang den thang
-    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_10") Then
+    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_10") _
+    Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "77" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "97" _
+    Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "89" Then
          If txtYear.Text <> yChange And txtNgayCuoi.Enabled And txtNgayDau.Enabled Then
             txtNgayDau.Text = "01/" & txtYear.Text
         End If
@@ -7257,8 +7259,8 @@ On Error GoTo ErrHandle
                                         lLoc = lLoc + Len(GetAttribute(xmlNode, "DataFile") & "_" & txtYear.Text & "_")
                                         txtNgayDau.Text = Mid$(fle.Name, lLoc, 2) & "/" & Mid$(fle.Name, lLoc + 2, 2) & "/" & Mid$(fle.Name, lLoc + 4, 4)
                                         txtNgayCuoi.Text = Mid$(fle.Name, lLoc + 9, 2) & "/" & Mid$(fle.Name, lLoc + 11, 2) & "/" & Mid$(fle.Name, lLoc + 13, 4)
-                                        txtNgayCuoi.Enabled = False
-                                        txtNgayDau.Enabled = False
+'                                        txtNgayCuoi.Enabled = False
+'                                        txtNgayDau.Enabled = False
                                         blnExceptData = True
                                         Exit For
                                     End If
@@ -7936,13 +7938,13 @@ Private Sub SetValueToList(strId As String)
     Dim xmlNode As MSXML.IXMLDOMNode
     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_DM_NNKD.xml"))
     Dim xmlNodeListItems As MSXML.IXMLDOMNodeList
-    Dim xmlDOMdata As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
+    Dim xmlDomData As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
     strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_DM_NNKD.xml")
     ' Lay danh muc loai hoa don
     ' 15/11/2010
     i = 0
-    If xmlDOMdata.Load(strDataFileName) Then
-        Set xmlNodeListItems = xmlDOMdata.getElementsByTagName("Item")
+    If xmlDomData.Load(strDataFileName) Then
+        Set xmlNodeListItems = xmlDomData.getElementsByTagName("Item")
         cboNganhKD.Clear
         For Each xmlNode In xmlNodeListItems
             fldList = Split(GetAttribute(xmlNode, "Value"), "###")
@@ -9011,13 +9013,13 @@ Private Sub SetValueToListDK(loaiKyKK As String)
     Dim xmlNode As MSXML.IXMLDOMNode
     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_DM_NNKD.xml"))
     Dim xmlNodeListItems As MSXML.IXMLDOMNodeList
-    Dim xmlDOMdata As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
+    Dim xmlDomData As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
     strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_DM_NNKD.xml")
     ' Lay danh muc loai hoa don
     ' 17/03/2014
     i = 0
-    If xmlDOMdata.Load(strDataFileName) Then
-        Set xmlNodeListItems = xmlDOMdata.getElementsByTagName("Item")
+    If xmlDomData.Load(strDataFileName) Then
+        Set xmlNodeListItems = xmlDomData.getElementsByTagName("Item")
         cboNganhKD.Clear
         For Each xmlNode In xmlNodeListItems
             fldList = Split(GetAttribute(xmlNode, "Value"), "###")
