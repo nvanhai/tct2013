@@ -130,7 +130,7 @@ Public Sub Prepare2()
         .CellType = CellTypeButton
         .TypeButtonAlign = TypeButtonAlignLeft
         .TypeButtonTextColor = vbBlack
-        .TypeButtonColor = 8421504
+        .TypeButtonColor = &H8000000F
         .Font = "Arial"
         .FontSize = 8
         .TypeButtonPicture = LoadPicture(GetAbsolutePath("..\Pictures\sort2.bmp"))
@@ -142,7 +142,7 @@ Public Sub Prepare2()
         .CellType = CellTypeButton
         .TypeButtonAlign = TypeButtonAlignLeft
         .TypeButtonTextColor = vbBlack
-        .TypeButtonColor = 8421504
+        .TypeButtonColor = &H8000000F
         .Font = "Arial"
         .FontSize = 8
         .TypeButtonPicture = LoadPicture(GetAbsolutePath("..\Pictures\sort2.bmp"))
@@ -154,7 +154,7 @@ Public Sub Prepare2()
         .CellType = CellTypeButton
         .TypeButtonAlign = TypeButtonAlignLeft
         .TypeButtonTextColor = vbBlack
-        .TypeButtonColor = 8421504
+        .TypeButtonColor = &H8000000F
         .Font = "Arial"
         .FontSize = 8
         .TypeButtonPicture = LoadPicture(GetAbsolutePath("..\Pictures\sort2.bmp"))
@@ -192,7 +192,7 @@ Public Sub Prepare2()
         .CellType = CellTypeButton
         .TypeButtonAlign = TypeButtonAlignLeft
         .TypeButtonTextColor = vbBlack
-        .TypeButtonColor = 8421504
+        .TypeButtonColor = &H8000000F
         .Font = "Arial"
         .FontSize = 8
         .TypeButtonPicture = LoadPicture(GetAbsolutePath("..\Pictures\sort2.bmp"))
@@ -204,7 +204,7 @@ Public Sub Prepare2()
         .CellType = CellTypeButton
         .TypeButtonAlign = TypeButtonAlignLeft
         .TypeButtonTextColor = vbBlack
-        .TypeButtonColor = 8421504
+        .TypeButtonColor = &H8000000F
         .Font = "Arial"
         .FontSize = 8
         .TypeButtonPicture = LoadPicture(GetAbsolutePath("..\Pictures\sort2.bmp"))
@@ -216,7 +216,7 @@ Public Sub Prepare2()
         .CellType = CellTypeButton
         .TypeButtonAlign = TypeButtonAlignLeft
         .TypeButtonTextColor = vbBlack
-        .TypeButtonColor = 8421504
+        .TypeButtonColor = &H8000000F
         .Font = "Arial"
         .FontSize = 8
         .TypeButtonPicture = LoadPicture(GetAbsolutePath("..\Pictures\sort2.bmp"))
@@ -619,11 +619,17 @@ Private Sub CheckDynamicError()
         .Sheet = tSheet
 
         CheckErrorMST
-        ' Neu ton tai file data bang ke 05A thi kiem tra tren bang ke 5A
+        ' Neu ton tai file data bang ke 02-1/BK-BH thi kiem tra tren bang ke 02-1/BK-BH
         If IIf(TAX_Utilities_v1.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False) Then
             checkSheet1
         Else
             clearCheckSheet1
+        End If
+        
+        If IIf(TAX_Utilities_v1.NodeValidity.childNodes(2).Attributes.getNamedItem("Active").nodeValue <> "0", True, False) Then
+            checkSheet2
+        Else
+            clearCheckSheet2
         End If
         kiemTraDuLieuImport
     End With
@@ -883,7 +889,7 @@ out:
                 'neu trung CMND thi set color va cellnote cho cell
                 If iFlagCheckCMNDTrungTemp = 1 Then
                         .Col = .ColLetterToNumber("F")
-                        .BackColor = mErrorColor
+                        .BackColor = mAlertColor
                         .CellNote = vErrMsgSoCMNDTrung
                 End If
                 'neu trung MST thi set color va cellnote cho cell
@@ -894,7 +900,7 @@ out:
                         .BackColor = mErrorColor
                 End If
                 'Check thu nhap lam can cu tinh giam thue voi thu nhap chiu thue tren banh ke 02A/TNCN
-                If Val(vThuNhapGiamThue) > Val(vTongThuNhap) Then
+                If Val(vThuNhapGiamThue) >= Val(vTongThuNhap) And Val(vThuNhapGiamThue) > 0 Then
                     .Col = .ColLetterToNumber("H")
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                     .CellNote = vErrMsgThuNhapGiamThue    'static
@@ -1040,8 +1046,427 @@ out:
         .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), 34, IIf(iFlagErrCT12CT10 = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 38, IIf(iFlagEmty = 1, "0", "1")
-        .SetText .ColLetterToNumber("B"), 36, IIf(iFlagCMNDTrung = 1, "0", "1")
+        '.SetText .ColLetterToNumber("B"), 36, IIf(iFlagCMNDTrung = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 37, IIf(iFlagCMNDCoCach = 1, "0", "1")
+        .Sheet = iCurrentSheet
+        .EventEnabled(EventAllEvents) = True
+    End With
+End Sub
+
+
+Private Sub checkSheet2()
+Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
+    Dim strCheck As String, iCurrentSheet As Integer
+    
+    Dim vMST As Variant, vErrMsgMST As Variant, vErrMsgMSTReq As Variant
+    Dim vErrMsgMSTTrungCQCT As Variant, vErrMsgMSTTrungNhau As Variant
+    Dim vHoVaTen As Variant, vErrMsgHoVaTen As Variant
+    Dim vTongThuNhap As Variant
+    Dim vThuNhapGiamThue As Variant, vErrMsgThuNhapGiamThue As Variant
+    Dim vSoThueDuocGiam As Variant, vErrMsgSoThueDuocGiam As Variant, vErrMsgThueDuocGiam2 As Variant
+    Dim vSoThueDaKhauTru As Variant, vErrMsgSoThueDaKhauTru As Variant
+    Dim vSoCMND As Variant, vSoCMND1 As Variant, vErrMsgSoCMNDTrung As Variant, vErrMsgCheckDauCachCMND As Variant, iFlagCMNDTrung As Integer, iFlagCMNDCoCach As Integer
+    Dim vErrMsgEmpty As Variant, iFlagEmty As Integer
+    
+    Dim vLastRow As Variant
+    Dim vMSTCQCT As Variant
+    Dim vMST1 As Variant
+    
+    Dim iFlagvHoVaTen As Integer, iFlagvMst As Integer, iFocusFlag As Integer, iFlagErrCT12CT10 As Integer
+    Dim iFlagCheckMSTTrungTemp As Variant, iFlagCheckCMNDTrungTemp As Variant
+    Dim strFocusSheetName As String, strFocusRow As String, strFocusCol As String
+    Dim i, j As Integer
+    Dim blCheck_S1, blCheck_S2, blCheck_S3, blCheck_S4, blCheck_S5, blCheck_S6, blCheck_S7 As Boolean
+
+    iFlagErrCT12CT10 = 0
+
+    With fps
+        .EventEnabled(EventAllEvents) = False
+        iCurrentSheet = .Sheet
+        .Sheet = .SheetCount
+        
+        ' Lay thong bao sai ve ngay thanh toan trong sheet header
+        .GetText .ColLetterToNumber("E"), 18, vErrMsgHoVaTen
+        ' Lay thong bao ve ko nhap ma so thue trong sheet header
+        .GetText .ColLetterToNumber("E"), 50, vErrMsgMSTReq
+        ' Lay thong bao ve sai ma so thue trong sheet header
+        .GetText .ColLetterToNumber("E"), 51, vErrMsgMST
+        ' Lay thong bao ve ma so thue bi trung voi co quan chi tra trong sheet header
+        .GetText .ColLetterToNumber("E"), 53, vErrMsgMSTTrungCQCT
+        ' Lay thong bao ve ma so thue bi trung voi nhau trong sheet header
+        .GetText .ColLetterToNumber("E"), 54, vErrMsgMSTTrungNhau
+        
+        .GetText .ColLetterToNumber("E"), 55, vErrMsgThuNhapGiamThue
+        .GetText .ColLetterToNumber("E"), 56, vErrMsgSoThueDuocGiam
+        .GetText .ColLetterToNumber("E"), 57, vErrMsgSoThueDaKhauTru
+        .GetText .ColLetterToNumber("E"), 58, vErrMsgThueDuocGiam2
+        .GetText .ColLetterToNumber("E"), 61, vErrMsgEmpty
+        .GetText .ColLetterToNumber("E"), 59, vErrMsgSoCMNDTrung
+        .GetText .ColLetterToNumber("E"), 60, vErrMsgCheckDauCachCMND
+        
+        .Sheet = 3 'Check tinh xac thuc cua cac thong tin tren bang ke 02-2/BK-DC
+        
+        ' Lay MST cua co quan chi tra
+        .GetText .ColLetterToNumber("E"), 9, vMSTCQCT
+        
+        blCheck_S1 = True
+        blCheck_S2 = True
+        blCheck_S3 = True
+        blCheck_S4 = True
+        blCheck_S5 = True
+        blCheck_S6 = True
+        blCheck_S7 = True
+        
+        .Row = 22
+        Do
+            'luu lai dong hien tai de set lai sau
+            j = .Row
+            
+            .GetText .ColLetterToNumber("D"), .Row, vHoVaTen
+            .GetText .ColLetterToNumber("E"), .Row, vMST
+            .GetText .ColLetterToNumber("F"), .Row, vSoCMND
+            .GetText .ColLetterToNumber("G"), .Row, vTongThuNhap
+            .GetText .ColLetterToNumber("H"), .Row, vThuNhapGiamThue
+            .GetText .ColLetterToNumber("I"), .Row, vSoThueDuocGiam
+            .GetText .ColLetterToNumber("J"), .Row, vSoThueDaKhauTru
+            
+            If Trim(vHoVaTen) <> vbNullString Or Trim(vMST) <> vbNullString Or vTongThuNhap > 0 Or Trim(vSoCMND) <> vbNullString Or vThuNhapGiamThue <> 0 Or vSoThueDuocGiam <> 0 Or vSoThueDaKhauTru <> 0 Then
+
+                'set mNonErrorColor cho CMDND va MST
+                .Col = .ColLetterToNumber("E")
+                .BackColor = mNonErrorColor
+                .CellNote = ""
+                .Col = .ColLetterToNumber("F")
+                .BackColor = mNonErrorColor
+                .CellNote = ""
+                
+                'Check Ho va ten tren bang ke 02-2/BK-DC
+                If Trim(vHoVaTen) = vbNullString Then
+                    .Col = .ColLetterToNumber("D")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vErrMsgHoVaTen    'static
+                    .BackColor = mErrorColor
+                    iFlagvHoVaTen = 1
+                    blCheck_S1 = False
+                    'capture the first error cell
+                    If iFocusFlag = 0 Then
+                        strFocusSheetName = "'" & .SheetName & "'"
+                        strFocusCol = str(.Col)
+                        strFocusRow = str(.Row)
+                        iFocusFlag = 1
+                    End If
+                Else
+                    .Col = .ColLetterToNumber("D")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
+                
+                'check neu MST trong thi phai nhap so CMND
+                If Trim(vMST) = vbNullString And Trim(vSoCMND) = vbNullString Then
+                    .Col = .ColLetterToNumber("E")
+                    .BackColor = mErrorColor
+                    .CellNote = vErrMsgEmpty
+                    .Col = .ColLetterToNumber("F")
+                    .BackColor = mErrorColor
+                    .CellNote = vErrMsgEmpty
+
+                    iFlagEmty = 1
+                End If
+
+                'check so CMND/Ho chieu khong chua dau cach
+                If Trim(vSoCMND) <> vbNullString Then
+                    If InStr(1, vSoCMND, " ") > 0 Then
+                        .Col = .ColLetterToNumber("F")
+                        .BackColor = mErrorColor
+                        .CellNote = vErrMsgCheckDauCachCMND
+
+                        iFlagCMNDCoCach = 1
+                    End If
+                End If
+                
+                'Check ma so thue tren to khai 02A/TNCN
+                If Trim(vMST) <> vbNullString Then
+                    '               vMST = Replace(vMST, " ", "")
+                    '               vMST = Replace(vMST, "-", "")
+                    '                    vMST = Left(vMST, 10)
+                    strCheck = ""
+
+                    If Len(vMST) = 10 Or Len(vMST) = 13 Then
+                        If InStr(1, vMST, "-") > 0 Then
+                            .Col = .ColLetterToNumber("E")
+                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                            .CellNote = vErrMsgMST   'static
+                            .BackColor = mErrorColor
+
+                            iFlagvMst = 1
+                            blCheck_S2 = False
+                        End If
+                        strCheck = CheckTaxCode(Mid(vMST, 1, 1), Mid(vMST, 2, 1), Mid(vMST, 3, 1), Mid(vMST, 4, 1), Mid(vMST, 5, 1), Mid(vMST, 6, 1), Mid(vMST, 7, 1), Mid(vMST, 8, 1), Mid(vMST, 9, 1), Mid(vMST, 10, 1), Mid(vMST, 11, 1), Mid(vMST, 12, 1), Mid(vMST, 13, 1))
+                    End If
+
+                    ' Kiem tra dinh dang theo cau truc cua co quan thue
+                    If Mid(strCheck, 2, 1) <> "0" Then
+                        .Col = .ColLetterToNumber("E")
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = vErrMsgMST   'static
+                        .BackColor = mErrorColor
+
+                        iFlagvMst = 1
+                        blCheck_S2 = False
+
+                        'capture the first error cell
+                        If iFocusFlag = 0 Then
+                            strFocusSheetName = "'" & .SheetName & "'"
+                            strFocusCol = str(.Col)
+                            strFocusRow = str(.Row)
+
+                            iFocusFlag = 1
+                        End If
+
+                    End If
+
+                    ' Kiem tra trung voi co quan chi tra
+                    vMST = Replace(vMST, " ", "")
+                    vMST = Replace(vMST, "-", "")
+                    vMSTCQCT = Replace(vMSTCQCT, " ", "")
+                    vMSTCQCT = Replace(vMSTCQCT, "-", "")
+                    If Trim(vMST) = Trim(vMSTCQCT) Then
+                        .Col = .ColLetterToNumber("E")
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = vErrMsgMSTTrungCQCT    'static
+                        .BackColor = mErrorColor
+                        iFlagvMst = 1
+                        blCheck_S3 = False
+                    End If
+                Else
+                    
+                    iFlagvMst = 1
+                    blCheck_S2 = True
+
+                End If
+                
+                'check trung
+                'set flag de kiem tra neu trung thi thoat vong lap
+                iFlagCheckCMNDTrungTemp = 0
+                iFlagCheckMSTTrungTemp = 0
+                If Trim(vMST) <> vbNullString Or Trim(vSoCMND) <> vbNullString Then
+
+                    ' Kiem tra trung nhau
+                    i = 22
+
+                    Do
+                        .Row = i
+
+                        If i = j Then
+                            GoTo out
+                        End If
+
+                        ' lay MST
+                        .GetText .ColLetterToNumber("E"), i, vMST1
+                        'lay so CMTND/Ho chieu
+                        .GetText .ColLetterToNumber("F"), i, vSoCMND1
+                        
+                        vMST = Replace(vMST, " ", "")
+                        vMST = Replace(vMST, "-", "")
+                        vMST1 = Replace(vMST1, " ", "")
+                        vMST1 = Replace(vMST1, "-", "")
+                        
+                        'check MST trung
+                        If Trim(vMST) <> vbNullString And Trim(vMST) = Trim(vMST1) Then
+                            iFlagCheckMSTTrungTemp = 1
+                            iFlagvMst = 1
+                            blCheck_S4 = False
+            
+                            'capture the first error cell
+                            If iFocusFlag = 0 Then
+                                strFocusSheetName = "'" & .SheetName & "'"
+                                strFocusCol = str(.Col)
+                                strFocusRow = str(.Row)
+
+                                iFocusFlag = 1
+                            End If
+                        End If
+
+                        If Trim(vSoCMND) <> vbNullString And Trim(UCase(vSoCMND)) = Trim(UCase(vSoCMND1)) Then
+                            iFlagCMNDTrung = 1
+                            iFlagCheckCMNDTrungTemp = 1
+                        End If
+
+                        If Val(iFlagCheckCMNDTrungTemp) = 1 Or Val(iFlagCheckMSTTrungTemp) = 1 Then
+                            Exit Do
+                        End If
+
+out:
+                        i = i + 1
+                        .Col = .ColLetterToNumber("B")
+                        ' Check cho den het cac dong co du lieu thi thoi
+                    Loop Until UCase(.Text) = "AA"
+
+                End If
+                
+                .Row = j
+                'neu trung CMND thi set color va cellnote cho cell
+                If iFlagCheckCMNDTrungTemp = 1 Then
+                        .Col = .ColLetterToNumber("F")
+                        .BackColor = mAlertColor
+                        .CellNote = vErrMsgSoCMNDTrung
+                End If
+                'neu trung MST thi set color va cellnote cho cell
+                If iFlagCheckMSTTrungTemp = 1 Then
+                        .Col = .ColLetterToNumber("E")
+                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                        .CellNote = vErrMsgMSTTrungNhau     'static
+                        .BackColor = mErrorColor
+                End If
+                'Check thu nhap lam can cu tinh giam thue voi thu nhap chiu thue tren banh ke 02A/TNCN
+                If Val(vThuNhapGiamThue) >= Val(vTongThuNhap) And Val(vThuNhapGiamThue) > 0 Then
+                    .Col = .ColLetterToNumber("H")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vErrMsgThuNhapGiamThue    'static
+                    .BackColor = mErrorColor
+                    iFlagvHoVaTen = 1
+                    blCheck_S5 = False
+                    'capture the first error cell
+                    If iFocusFlag = 0 Then
+                        strFocusSheetName = "'" & .SheetName & "'"
+                        strFocusCol = str(.Col)
+                        strFocusRow = str(.Row)
+
+                        iFocusFlag = 1
+                    End If
+
+                Else
+                    .Col = .ColLetterToNumber("H")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
+                
+'                Check so thue duoc giam voi thu nhap lam can cu tinh giam thue tren banh ke 02A/TNCN
+                If Val(vThuNhapGiamThue) <= Val(vSoThueDuocGiam) And Val(vSoThueDuocGiam) > 0 Then
+                    .Col = .ColLetterToNumber("I")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vErrMsgSoThueDuocGiam     'static
+                    .BackColor = mErrorColor
+                    iFlagvHoVaTen = 1
+                    blCheck_S6 = False
+                    'capture the first error cell
+                    If iFocusFlag = 0 Then
+                        strFocusSheetName = "'" & .SheetName & "'"
+                        strFocusCol = str(.Col)
+                        strFocusRow = str(.Row)
+                        iFocusFlag = 1
+                    End If
+                Else
+                    .Col = .ColLetterToNumber("I")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
+                'check CT12 < CT10
+'                If Val(vSoThueDuocGiam) >= Val(vTongThuNhap) Then
+'                    .Col = .ColLetterToNumber("I")
+'                    .BackColor = mErrorColor
+'                    .CellNote = vErrMsgThueDuocGiam2
+'
+'                    iFlagErrCT12CT10 = 1
+'                Else
+'                    .Col = .ColLetterToNumber("I")
+'                    .BackColor = mNonErrorColor
+'                    .CellNote = ""
+'                End If
+
+                'Check so thue da khau tru voi so thu nhap chiu thue tren banh ke 02A/TNCN
+                If (vSoThueDaKhauTru) >= Val(vTongThuNhap) And Val(vSoThueDaKhauTru) > 0 Then
+                    .Col = .ColLetterToNumber("J")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vErrMsgSoThueDaKhauTru    'static
+                    .BackColor = mErrorColor
+                    iFlagvHoVaTen = 1
+                    blCheck_S7 = False
+                    'capture the first error cell
+                    If iFocusFlag = 0 Then
+                        strFocusSheetName = "'" & .SheetName & "'"
+                        strFocusCol = str(.Col)
+                        strFocusRow = str(.Row)
+                        iFocusFlag = 1
+                    End If
+                Else
+                    .Col = .ColLetterToNumber("J")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
+            End If
+'loitieptheo:
+            .Row = .Row + 1
+            .Col = .ColLetterToNumber("B")
+            ' Check cho den het cac dong co du lieu thi thoi
+        Loop Until UCase(.Text) = "AA"
+        ' Trong truong hop blCheck_S1 khong co Ho va ten nao bi loi thi set lai gia tri cua Header la 1
+'loitieptheo1:
+        If blCheck_S1 = True Then
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 50, "1"
+        Else
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 50, "0"
+        End If
+        ' Trong truong hop blCheck_S2 khong co MST nao bi loi thi set lai gia tri cua Header la 1
+        If blCheck_S2 = True Then
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 51, "1"
+            .SetText .ColLetterToNumber("B"), 52, "1"
+        Else
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 51, "0"
+            .SetText .ColLetterToNumber("B"), 52, "0"
+            
+        End If
+        ' Trong truong hop blCheck_S3 khong co MST nao bi trung voi MST cua co quan chi tra thi set lai gia tri cua Header la 1
+        If blCheck_S3 = True Then
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 53, "1"
+        Else
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 53, "0"
+        End If
+        
+        ' Trong truong hop blCheck_S3 khong co MST nao bi trung voi nhau thi set lai gia tri cua Header la 1
+        If blCheck_S4 = True Then
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 54, "1"
+        Else
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 54, "0"
+        End If
+        
+        If blCheck_S5 = True Then
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 55, "1"
+        Else
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 55, "0"
+        End If
+        
+        If blCheck_S6 = True Then
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 56, "1"
+        Else
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 56, "0"
+        End If
+        
+        If blCheck_S7 = True Then
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 57, "1"
+        Else
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 57, "0"
+        End If
+        'update lai header
+        .Sheet = .SheetCount
+        .SetText .ColLetterToNumber("B"), 58, IIf(iFlagErrCT12CT10 = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 59, IIf(iFlagEmty = 1, "0", "1")
+        '.SetText .ColLetterToNumber("B"), 36, IIf(iFlagCMNDTrung = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 60, IIf(iFlagCMNDCoCach = 1, "0", "1")
         .Sheet = iCurrentSheet
         .EventEnabled(EventAllEvents) = True
     End With
@@ -1058,6 +1483,21 @@ Private Sub clearCheckSheet1()
         .SetText .ColLetterToNumber("B"), 27, "1"
         .SetText .ColLetterToNumber("B"), 28, "1"
         .SetText .ColLetterToNumber("B"), 29, "1"
+    End With
+End Sub
+
+
+Private Sub clearCheckSheet2()
+    With fps
+        .Sheet = .SheetCount
+        .SetText .ColLetterToNumber("B"), 50, "1"
+        .SetText .ColLetterToNumber("B"), 51, "1"
+        .SetText .ColLetterToNumber("B"), 52, "1"
+        .SetText .ColLetterToNumber("B"), 53, "1"
+        .SetText .ColLetterToNumber("B"), 54, "1"
+        .SetText .ColLetterToNumber("B"), 55, "1"
+        .SetText .ColLetterToNumber("B"), 56, "1"
+        .SetText .ColLetterToNumber("B"), 57, "1"
     End With
 End Sub
 
@@ -1458,10 +1898,10 @@ End Sub
 Public Sub inThongTinDL()
     ' Set tham so in thong tin dai ly thue
     FlagDLThue = isCheckTTDLT
-    tuRowDL = 14
-    denRowDL = 19
+    tuRowDL = 13
+    denRowDL = 18
     'TuRow_DenRow_sheet
-    strTuRowDenRowPL = "12_13_2~3_13_2"
+    strTuRowDenRowPL = "12_13_2~12_13_3"
     ' end
 End Sub
 

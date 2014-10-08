@@ -85,6 +85,11 @@
 	<Map ID="42" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Tờ khai 02/KK-BH" LoaiTK="Y">
 		<Validity StartDate="01/01/2010" DataFile="02_TNCN_BH,02A_TNCN_BH,KHBS_02_TNCN_BH" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
+	
+	<Map ID="26" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Tờ khai 02/KK-BHĐC" LoaiTK="Y">
+		<Validity StartDate="01/01/1900" DataFile="02_TNCN_BHDC,02_1_TNCN_BHDC,02_2_TNCN_BHDC,KHBS" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
 	<Map ID="43" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Tờ khai 02/KK-XS" LoaiTK="Y">
 		<Validity StartDate="01/01/2010" DataFile="02_TNCN_XS,02A_TNCN_XS,KHBS_02_TNCN_XS" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
@@ -151,9 +156,10 @@
 		<Validity StartDate="01/01/1900" DataFile="01_PHLP,KHBS_01_PHLP" ThueKhauTru="" ThuePhaiNop="V_37"/>
 	</Map>
 	
-	<Map ID="89" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai phí xăng dầu">
-		<Validity StartDate="01/01/1900" DataFile="01_PHXD,KHBS_01_PHXD" ThueKhauTru="" ThuePhaiNop=""/>
+	<Map ID="88" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai QT Phí, lệ phí (02/PHLP)" LoaiTK="Y">
+		<Validity StartDate="01/01/1900" DataFile="02_PHLP,KHBS_02_PHLP" ThueKhauTru="" ThuePhaiNop="Q_37"/>
 	</Map>
+	
 	<Map ID="64" FinanceYear="1" Year="0" Month="0" ThreeMonth="0" Day="1" Caption="Thông báo phát hành hóa đơn(01_TBAC)" LoaiTK="D">
 		<Validity StartDate="23/06/2006" DataFile="01_TBAC,KHBS_01_TBAC" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>

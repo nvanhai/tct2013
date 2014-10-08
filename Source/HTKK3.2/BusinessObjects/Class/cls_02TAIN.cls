@@ -333,10 +333,19 @@ Dim count1 As Long
                 End If
                 'UpdateCell fps, .Col, .Row, .Text
                 .Col = .ColLetterToNumber("C")
+                ' kiem tra neu nam 2014 tro di cho phep sua cot 8
+                If Val(TAX_Utilities_v1.Year) >= 2014 Then
+                     .Col = .ColLetterToNumber("AH")
+                    .Lock = False
+                    
+                    .Col = .ColLetterToNumber("C")
+                End If
+                ' end
       '          .Row = i + 40
                 .Row = CountRow + i
                 tRow = .Row
                 i = i + 1
+                
                 If iSection = 1 And .Text = "aa" Then
                     iSection = iSection + 1
                     .Row = .Row + 3
