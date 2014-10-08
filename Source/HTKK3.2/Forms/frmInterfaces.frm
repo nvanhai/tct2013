@@ -4921,7 +4921,7 @@ Private Sub KetXuatXML()
                         xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_01_GTGT_xml.xml")
                     Else
 
-                        If MaTk = "02_GTGT" Or MaTk = "03_GTGT" Or MaTk = "04_GTGT" Or MaTk = "05_GTGT" Or MaTk = "01A_TNDN" Or MaTk = "01B_TNDN" Or MaTk = "02_TNDN" Or MaTk = "01_NTNN" Or MaTk = "03_NTNN" Or MaTk = "01_TAIN" Or MaTk = "01_TTDB" Or MaTk = "01_BVMT" Or MaTk = "01_TBVMT" Or MaTk = "01_TD_GTGT" Or MaTk = "01A_TNDN_DK" Or MaTk = "01B_TNDN_DK" Or MaTk = "01_TAIN_DK" Or MaTk = "02_TNDN_DK" Or MaTk = "03_TD_TAIN" Or MaTk = "01_BCTL_DK" Or MaTk = "01_PHLP" Then
+                        If MaTk = "02_GTGT" Or MaTk = "03_GTGT" Or MaTk = "04_GTGT" Or MaTk = "05_GTGT" Or MaTk = "01A_TNDN" Or MaTk = "01B_TNDN" Or MaTk = "02_TNDN" Or MaTk = "01_NTNN" Or MaTk = "03_NTNN" Or MaTk = "01_TAIN" Or MaTk = "01_TTDB" Or MaTk = "01_BVMT" Or MaTk = "01_TBVMT" Or MaTk = "01_TD_GTGT" Or MaTk = "01A_TNDN_DK" Or MaTk = "01B_TNDN_DK" Or MaTk = "01_TAIN_DK" Or MaTk = "03_TD_TAIN" Or MaTk = "01_BCTL_DK" Or MaTk = "01_PHLP" Then
                             xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_TT156_xml.xml")
 
                             xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT156_xml.xml")
@@ -5268,6 +5268,26 @@ Private Sub KetXuatXML()
                                 cellRange = cellRange + 1
                             Loop
 
+                        
+                        ElseIf UCase(xmlSection.nodeName) = "L_DYNAMIC" Then
+                            'Loop all phu luc
+                            Dim xmlSource As New MSXML.DOMDocument
+                            xmlSource.loadXML TAX_Utilities_v1.Data(.sheet - 1).getElementsByTagName("Sections")(0).xml
+                            If xmlSource.childNodes(0).childNodes.length = 1 Then
+                                Dim countLoop, i As Integer
+                                countLoop = xmlSource.lastChild.childNodes(0).childNodes.length
+                                currentGroup = GetAttribute(xmlSection, "GroupName")
+                                CloneNode.loadXML xmlSection.firstChild.xml
+                                i = 0
+                                Do
+                                    i = i + 1
+                                    Blank = True
+                                    sRow = 0
+                                    SetCloneNode CloneNode, xmlNodeMapCT, Blank, i, sRow
+                                    
+                                Loop Until i = countLoop
+                                
+                            End If
                         End If
 
                     Next
@@ -5492,7 +5512,7 @@ Private Function GetAllMapPhuLuc() As MSXML.DOMDocument
                 Else
     
                     'If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01A_TNDN" Or MaPL = "02_TNDN" Or MaPL = "01_NTNN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Then
-                    If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01B_TNDN" Or MaPL = "02_TNDN" Or MaPL = "01_NTNN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Or MaPL = "01_TD_GTGT" Or MaPL = "01A_TNDN_DK" Or MaPL = "01B_TNDN_DK" Or MaPL = "01_TAIN_DK" Or MaPL = "02_TNDN_DK" Or MaPL = "03_TD_TAIN" Or MaPL = "01_BCTL_DK" Or MaPL = "01_PHLP" Then
+                    If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01B_TNDN" Or MaPL = "02_TNDN" Or MaPL = "01_NTNN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Or MaPL = "01_TD_GTGT" Or MaPL = "01A_TNDN_DK" Or MaPL = "01B_TNDN_DK" Or MaPL = "01_TAIN_DK" Or MaPL = "03_TD_TAIN" Or MaPL = "01_BCTL_DK" Or MaPL = "01_PHLP" Then
                         MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT156_xml.xml")
                     Else
                         MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_QT_TT156_xml.xml")

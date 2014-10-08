@@ -11,8 +11,7 @@
 		<ct03 MinOccur="1">Q_30</ct03>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct15>P_47</ct15>
-		<ct16></ct16>
+		<ct15>P_47</ct15>		
 	</Static>
 	<Static GroupName="LoaiHinhUyQuyen">
 		<donViUyQuyen MinOccur="1">P_49</donViUyQuyen>
@@ -22,7 +21,7 @@
 		<tenDonViUyQuyen>AB_49</tenDonViUyQuyen>
 		<ct25>AV_55</ct25>
 		<ct26>AV_56</ct26>
-		<ct27>AV_56</ct27>
+		<ct27>AV_57</ct27>
 		<ct27a>AV_58</ct27a>
 		<ct27b>AV_59</ct27b>
 		<ct28>AV_60</ct28>

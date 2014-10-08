@@ -100,8 +100,8 @@
 	</Static>
 	
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>AU_47</nguoiKy>
-		<ngayKy>AU_49</ngayKy>
+		<nguoiKy>AU_49</nguoiKy>
+		<ngayKy>AU_47</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
 		<tenNVienDLyThue>P_47</tenNVienDLyThue>

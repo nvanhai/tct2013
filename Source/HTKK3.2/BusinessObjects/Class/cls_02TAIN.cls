@@ -62,12 +62,8 @@ Public Sub Prepare1()
 
     With fps
         SetDateFormat fps, 1, 51, .ColLetterToNumber("AG"), DDMMYYYY
-        SetDateFormat fps, .SheetCount - 1, 23, .ColLetterToNumber("BG"), DDMMYYYY
-        .Sheet = .SheetCount - 1 'KHBS
-        .Row = 23
-        .Col = .ColLetterToNumber("BG")
-        .Text = Format(Date, "dd/mm/yyyy")
-        .TypeHAlign = TypeHAlignLeft
+        SetDateFormat fps, 2, 31, fps.ColLetterToNumber("BE"), DDMMYYYY
+        SetDateFormat fps, 2, 46, fps.ColLetterToNumber("BG"), DDMMYYYY
         
         .Sheet = 1 '01
         .Row = 51
@@ -171,6 +167,9 @@ Public Sub Prepare1()
         End If
     End With
     mblKeyF5 = False
+    
+      ' set CQT ra quyet dinh hoan
+    setCQTQuanLyHoanThue fps
 End Sub
 
 'This funtion is called after executing function "SetupData"
