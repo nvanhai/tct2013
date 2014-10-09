@@ -229,9 +229,6 @@ Private Function GetMaTieuMuc(Id As Variant) As String
     Dim strDataFileName, strName As String
     Dim arrDanhsach() As String
     
-    Dim xDoc As MSXML.DOMDocument
-    Set xDoc = New MSXML.DOMDocument
-
     strDataFileName = GetAbsolutePath("..\InterfaceTemplates\xml\Catalogue_PHLP_012009_01.xml")
     strName = ""
    If xmlDOMdata.Load(strDataFileName) Then
