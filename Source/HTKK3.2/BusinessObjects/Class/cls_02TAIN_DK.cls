@@ -737,6 +737,7 @@ Public Sub SetActiveSheet()
     Dim strValue5 As Variant
     Dim strValue6 As Variant
     Dim strValue7 As Variant
+    Dim i As Long
     'Check the second sheet
     'Select Case GetAttribute(xmlNodeValid, "ID")
     For Each xmlNodeValid In TAX_Utilities_v1.NodeValidity.childNodes
@@ -759,14 +760,16 @@ Public Sub SetActiveSheet()
              Case "01-2"
                 blnNullValue = True
                 'Check value of last node in Data
-                Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell") _
-                    (TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length - 1)
+                fps.Sheet = SHEET_PHU_LUC_SAN_LUONG
+                For i = 1 To TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length
+                    Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")(i)
                     strValue1 = GetAttribute(xmlCellNode, "Value")
-                fps.Sheet = 3
-                If Val(strValue1) <> 0 Then
-                        blnNullValue = False
-                End If
-
+                    If Val(strValue1) <> 0 Or (Not IsNullValue(strValue1)) Then
+                            blnNullValue = False
+                            Exit For
+                    End If
+                Next
+                
                 If blnNullValue Then
                     SetAttribute xmlNodeValid, "Active", "0"
                 End If
