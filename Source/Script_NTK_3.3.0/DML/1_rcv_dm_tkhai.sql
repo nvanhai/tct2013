@@ -26,7 +26,7 @@ values ('02_PHLP', 'Tê khai PhÝ, lÖ phÝ (02/PHLP)', 'Y', '330', to_date('01-
 --03A_TD_TAIN
 --------------------------------
 insert into QLT_NTK.RCV_DM_TKHAI (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
-values ('03A_TD_TAIN', 'Tê khai thuÕ tµi nguyªn(Dµnh cho c¬ së s¶n xuÊt thñy ®iÖn)', 'M', '330', to_date('01-01-2015', 'dd-mm-yyyy'), null);
+values ('03A_TD_TAIN', 'Tê khai thuÕ tµi nguyªn(Dµnh cho c¬ së s¶n xuÊt thñy ®iÖn)', 'Y', '330', to_date('01-01-2015', 'dd-mm-yyyy'), null);
 
 --------------------------------
 --01/PHLP
