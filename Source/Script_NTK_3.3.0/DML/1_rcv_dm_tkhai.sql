@@ -38,13 +38,13 @@ values ('01_PHLP', 'Tê khai PhÝ, lÖ phÝ (01/PHLP)', 'Y', '330', to_date('01-
 --02/NTNN
 --------------------------------
 insert into QLT_NTK.RCV_DM_TKHAI (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
-values ('02_NTNN14', 'Tê khai QuyÕt to¸n thuÕ nhµ thÇu n­íc ngoµi mÉu 02/NTNN', 'D', '330', to_date('01-01-2015', 'dd-mm-yyyy'), null);
+values ('02_NTNN14', 'Tê khai QuyÕt to¸n thuÕ nhµ thÇu n­íc ngoµi mÉu 02/NTNN', 'Y', '330', to_date('01-01-2015', 'dd-mm-yyyy'), null);
 
 --------------------------------
 --04/NTNN
 --------------------------------
 insert into QLT_NTK.RCV_DM_TKHAI (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
-values ('04_NTNN14', 'Tê khai QuyÕt to¸n thuÕ nhµ thÇu n­íc ngoµi mÉu 04/NTNN', 'D', '330', to_date('01-01-2015', 'dd-mm-yyyy'), null);
+values ('04_NTNN14', 'Tê khai QuyÕt to¸n thuÕ nhµ thÇu n­íc ngoµi mÉu 04/NTNN', 'Y', '330', to_date('01-01-2015', 'dd-mm-yyyy'), null);
 
 --------------------------------
 --02/TNDN-DK

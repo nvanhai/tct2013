@@ -973,7 +973,7 @@ insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_
 values (10482, '02/PHLP', null, '2', '3', '4', '5', '6', '7', '8', '9', null, null, 1, '02_PHLP', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 insert into QLT_NTK.rcv_gdien_tkhai (ID, TEN_CTIEU, COT_01, COT_02, COT_03, COT_04, COT_05, COT_06, COT_07, COT_08, COT_09, COT_10, COT_11, SO_TT, LOAI_DLIEU, MA_CTIEU, COT_12, COT_13, COT_14, COT_15, COT_16, COT_17, COT_18, COT_19, COT_20, COT_21, COT_22, COT_23, COT_24, COT_25, COT_26, COT_27, COT_28, COT_29, COT_30, COT_31, COT_32, COT_33)
-values (10483, 'Tæng céng', null, null, null, null, null, null, 'T7', 'T8', 'T9', null, null, 2, '02_PHLP', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+values (10483, 'Tæng céng', null, null, null, 'T4', null, 'T6', 'T7', 'T8', 'T9', null, null, 2, '02_PHLP', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 	--KHBS_02_PHLP
 	----------------------------
