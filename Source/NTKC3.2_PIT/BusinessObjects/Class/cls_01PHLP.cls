@@ -151,7 +151,7 @@ End Function
 
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
 Dim i As Integer, intIndexCombo As Integer
-Dim strLTN As Variant, Col7 As Variant, strLTNCu As Variant, strId As Variant
+Dim strLTN As Variant, Col7 As Variant, strLTNCu As Variant, strID As Variant
 Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
 Dim varID As Variant, varDVT As Variant, varThueSuat As Variant
 Dim iTenTN As String, strDVT As String, strThueSuat As String
@@ -161,54 +161,22 @@ Dim strMucThueAnDinh As String
 Dim vKHBS
 
     With fps
-        .Sheet = .ActiveSheet
+        .Sheet = 1
         i = 0
-'        Do
-            '//TODO LOAI PHI, LE PHI
-'            strIdQLT = ""
-'            varID = Empty
-'            varDVT = Empty
-'            varThueSuat = Empty
-'            strDVT = vbNullString
-'            strThueSuat = vbNullString
-'
-'            'Lay gia tri Ma
-'            .GetText .ColLetterToNumber("AB"), i + ROW_STATIC, varID
-'
-'            DataDM varID, strIdQLT, iTenTN, strDVT, strThueSuat, blnSuaThueSuat
-'
-'            If strIdQLT <> vbNullString Then
-'                'Kiem tra hieu luc danh muc tai nguyen
-'                If (Not blnSuaThueSuat) And (Val(strMucThueAnDinh) = 0) _
-'                    And CStr(varThueSuat) <> "" And strThueSuat <> "" Then
-'                    If Val(strThueSuat) <> Val(CStr(varThueSuat)) Then
-'                        DisplayMessage "0082", msOKOnly, miCriticalError
-'                        Exit Function
-'                    End If
-'                End If
-'               ' Lay ID update lai vao data file dung vao vi tri cua ma Bieu thue
-'               .Col = .ColLetterToNumber("AB")
-'               .Row = i + ROW_STATIC
-'               .Text = strIdQLT
-'               UpdateCell fps, .Col, .Row, .Text
-'               ' Lay ten va update lai vao data file
-'
-'               .Col = .ColLetterToNumber("C")
-'               .Row = i + ROW_STATIC
-'               .Text = iTenTN
-'               'UpdateCell fps, .Col, .Row, .Text
-'
-'
-'            ElseIf CStr(varID) <> vbNullString Then
-'                DisplayMessage "0082", msOKOnly, miCriticalError
-'                Exit Function
-'            End If
-'
-'             i = i + 1
-'            .Col = .ColLetterToNumber("B")
-'            .Row = i + ROW_STATIC
-'         Loop Until .Text = "aa"
-         
+        .Row = ROW_STATIC
+        Do
+            varID = Empty
+
+            'Lay gia tri Ma
+            .GetText .ColLetterToNumber("AB"), i + ROW_STATIC, strID
+            .Col = .ColLetterToNumber("C")
+            .Text = GetMaTieuMuc(strID)
+            UpdateCell fps, .Col, .Row, .Text
+                        
+             i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = i + ROW_STATIC
+         Loop Until .Text = "aa"
     End With
       i = 0
     ReDim Preserve larrPhongXuLy(0)
@@ -242,7 +210,34 @@ Dim vKHBS
     
     Prepared2 = True
 End Function
+Private Function GetMaTieuMuc(Id As Variant) As String
+    Dim xmlDOMdata As New MSXML.DOMDocument
+    Dim xmlDomCurrentData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim strDataFileName, strName As String
+    Dim arrDanhsach() As String
+    
+    Dim xDoc As MSXML.DOMDocument
+    Set xDoc = New MSXML.DOMDocument
 
+    strDataFileName = GetAbsolutePath("..\InterfaceTemplates\xml\Catalogue_PHLP_012009_01.xml")
+    strName = ""
+   If xmlDOMdata.Load(strDataFileName) Then
+        Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Cell")
+        For Each xmlNode In xmlNodeListCell
+            If GetAttribute(xmlNode, "Value") <> "" Then
+                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                If Id = arrDanhsach(1) Then
+                    strName = arrDanhsach(2)
+                    Exit For
+                End If
+            End If
+        Next
+       
+    End If
+    GetMaTieuMuc = strName
+End Function
 Private Sub DataDM(ByVal Id As String, Optional ByRef strIdQLT As String, Optional ByRef TenTN As String, Optional ByRef DVT As String, Optional ByRef strThueSuat As String, Optional ByRef blnSuaThueSuat As Boolean)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
@@ -470,21 +465,21 @@ Dim blnValid As Boolean
             End If
             
             
-            ' Kiem tra xem ky ke khai trong cung ky hay khac ky
-            If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
-                blnValid = True
-            Else
-                blnValid = False
-            End If
-            
-            .Col = .ColLetterToNumber("B")
-            .Row = 17
-            
-            If Not blnValid Then
-                .Formula = "0"
-            Else
-                .Formula = "1"
-            End If
+'            ' Kiem tra xem ky ke khai trong cung ky hay khac ky
+'            If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
+'                blnValid = True
+'            Else
+'                blnValid = False
+'            End If
+'
+'            .Col = .ColLetterToNumber("B")
+'            .Row = 17
+'
+'            If Not blnValid Then
+'                .Formula = "0"
+'            Else
+'                .Formula = "1"
+'            End If
             ' kiem tra ky lap bo khong duoc lon hon ky hien tai
             If DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1) > Date Then
                 blnValid = False
