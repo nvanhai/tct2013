@@ -1082,7 +1082,7 @@ Private Sub cmdSave_Click()
                 strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 2))), "dd/mm/yyyy") & "','dd/mm/yyyy') "
                 dDate = DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 1, 2)))
                 strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy')"
-            ElseIf Val(idToKhai) = 77 Or Val(idToKhai) = 87 Or Val(idToKhai) = 97 Or Val(idToKhai) = 43 Or Val(idToKhai) = 17 Or Val(idToKhai) = 59 Or Val(idToKhai) = 41 Or Val(idToKhai) = 76 Or Val(idToKhai) = 88 Or Val(idToKhai) = 89 Or Val(idToKhai) = 93 Then
+            ElseIf Val(idToKhai) = 77 Or Val(idToKhai) = 87 Or Val(idToKhai) = 97 Or Val(idToKhai) = 43 Or Val(idToKhai) = 17 Or Val(idToKhai) = 59 Or Val(idToKhai) = 41 Or Val(idToKhai) = 76 Or Val(idToKhai) = 88 Or Val(idToKhai) = 89 Or Val(idToKhai) = 93 Or Val(idToKhai) = 26 Then
                 strSQL = strSQL & " and KYKK_TU_NGAY=To_Date('" & TuNgay & "','DD/MM/RRRR') "
                 strSQL = strSQL & " and KYKK_DEN_NGAY=To_Date('" & DenNgay & "','DD/MM/RRRR') "
             Else
@@ -1487,46 +1487,75 @@ Private Sub Command1_Click()
 'str2 = "bs999852100343639   082014002002003003hÕ ®é~6~66~55~-11</S><S>~~0~0~0</S><S>09/10/2014~17~2~0~~~10300~10303~0~0~~0~0~235</S></SKHBS>"
 'Barcode_Scaned str2
 
-str2 = "aa999032100343639   00201300600900102001/0114/06/200601/01/201330/11/2013<S03><S></S><S>~~~~0.00</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~"
+'str2 = "aa999032100343639   00201300600900102001/0114/06/200601/01/201330/11/2013<S03><S></S><S>~~~~0.00</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   0020130060090020200~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~0~0</S><S></S><S>~µ~~09/10/2014~1~1~0~1052</S></S03>"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   002013006009003020<S03-1A><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S></S03-1A>"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   002013006009004020<S03-1B><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S></S03-1B>"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   002013006009005020<S03-1C><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   002013006009006020~0~0~0~0~0~0~0~0~0~0~0~0~0</S></S03-1C>"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   002013006009007020<S03-2A><S>2008~0~0~0~0~2009~0~0~0~0~2010~0~0~0~0~2011~0~0~0~0~2012~0~0~0~0~0~0~0~0</S></S03-2A>"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   002013006009008020<S03-2B><S>2008~0~0~0~0~2009~0~0~0~0~2010~0~0~0~0~2011~0~0~0~0~2012~0~0~0~0~0~0~0~0</S></S03-2B>"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   002013006009009020<S03-3A><S>~~~~~~~~~~~0.000~~~~~~"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   002013006009010020~0~0~0~0~0~0~0~0~0</S></S03-3A>"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   002013006009011020<S03-3B><S>~~~~~~~~~~~0.000~~~~~~~0"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   002013006009012020~0~0~0~0~0~0~0~0~0~0</S></S03-3B>"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   002013006009013020<S03-3C><S>~~~~~~~~~~0~0~0~0</S></S03-3C>"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   002013006009014020<S03-4><S>~0~~0~0~0~0~0~0~0~0</S></S03-4>"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   002013006009015020<S03-5><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S></S03-5>"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   002013006009016020<S03-6><S>~0</S><S>~0~0~0~0~0</S></S03-6>"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   002013006009017020<S03-7><S>~~~~~~~~~~~~~~~</S><S>0~0~0~0~0~0~0</S><S>0~0~0~0~0~0~0</S><S>0~0~0~0~0~0~0</S><S>0~0~0~0~0~0~0</S><S>~0~0~0~0~0~0~0~~</S><S>0~0~0~0~0~0~0</S><S>~0~0~0~0~0~0~0~~</S><S>0~0~0~0~0~0~0</S><S>0~0~0~0~0~0~0</S><S>~0~0~0~0~0~0~0~~</S><S>"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   0020130060090180200~0~0~0~0~0~0</S><S>~0~0~0~0~0~0~0~~</S><S>0~0~0~0~0~0~0</S><S>~0~0~0~0~0~0~0~~</S><S>0~0~0~0~0~0~0</S><S>0~0~0~0~0~0~0</S><S>~0~0~0~0~0~0~0~~</S><S>0~0~0~0~0~0~0</S><S>~0~0~0~0~0~0~0~~</S><S>0~0~0~0~0~0~0</S><S>~0~0~0~0~0~0~0~~</S></S03-7>"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   002013006009019020<S03-8><S>0</S><S>~~0~0~0~0~0~0~0~0~~</S></S03-8>"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   002013006009020020<S03-9><S>~~~0~0~~</S><S>0</S></S03-9>"
+'Barcode_Scaned str2
+
+'02/BVMT
+'str2 = "aa999872100343639   00201300100300100101/0101/01/1900<S01><S></S><S>Kg~1000.133~1000000~1000133000~2000000~998133000~010104~Kg~20000.000~400000~8000000000~80000000~7920000000~010203</S><S>Kg~3123.414~4214~13162067~42142~13119925~010104~M3~212144.000~421424~89402573056~4214242144~85188330912~020204</S><S>~µ~~02/10/2014~1~~~01/2013~10/2013</S></S01>"
+'Barcode_Scaned str2
+
+
+'02/TAIN
+'str2 = "aa999772100343639   00201300400400100201/0114/06/2006<S01><S></S><S>010102~Kg~100~2000~10~0~20000~1000~8000~11000~010207~Kg~29.124~0~0~1000.312~29133~240.424~424~28469</S><S>010104~K"
+'Barcode_Scaned str2
+'str2 = "aa999772100343639   002013004004002002g~412.424~0~0~412424~170093556~0~4124242~165969314~050106~TÊn~13~331~23~0~990~414~4414~-3838</S><S>µ~02/10/2014~~~1~~01/2013~10/2013</S></S01>"
+'Barcode_Scaned str2
+
+
+'str2 = "bs999772100343639   00201300600600100401/0114/06/2006<S01><S></S><S>010102~Kg~12121~1111~10~0~1346643~1000~8000~1337643~010207~Kg~29.124~0~0~1000.312~29133~240.424~424~28469</S><S>01010"
+'Barcode_Scaned str2
+'str2 = "bs999772100343639   0020130060060020044~Kg~412.424~0~0~412424~170093556~0~4124242~165969314~050106~TÊn~13~331~23~0~990~414~4414~-3838</S><S>µ~02/10/2014~~~~1~01/2013~10/2013</S></S01>"
+'Barcode_Scaned str2
+'str2 = "bs999772100343639   002013006006003004<SKHBS><S>ThuÕ tµi nguyªn ph¸t sinh ph¶i nép trong kú~10~170142025~171468668~1326"
+'Barcode_Scaned str2
+'str2 = "bs999772100343639   002013006006004004643</S><S>~~0~0~0</S><S>09/10/2014~192~154421~0~~~~~0~0~~0~0~1326643</S></SKHBS>"
+'Barcode_Scaned str2
+
+'02/KK-BHDC
+str2 = "aa999262100343639   00201300200200100301/0101/01/1900<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>µ~09/10/2014~~~1~1~~01/2013~11/2013</S></S02>"
 Barcode_Scaned str2
-str2 = "aa999032100343639   0020130060090020200~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~0~0</S><S></S><S>~µ~~09/10/2014~1~1~0~1052</S></S03>"
-Barcode_Scaned str2
-str2 = "aa999032100343639   002013006009003020<S03-1A><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S></S03-1A>"
-Barcode_Scaned str2
-str2 = "aa999032100343639   002013006009004020<S03-1B><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S></S03-1B>"
-Barcode_Scaned str2
-str2 = "aa999032100343639   002013006009005020<S03-1C><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0"
-Barcode_Scaned str2
-str2 = "aa999032100343639   002013006009006020~0~0~0~0~0~0~0~0~0~0~0~0~0</S></S03-1C>"
-Barcode_Scaned str2
-str2 = "aa999032100343639   002013006009007020<S03-2A><S>2008~0~0~0~0~2009~0~0~0~0~2010~0~0~0~0~2011~0~0~0~0~2012~0~0~0~0~0~0~0~0</S></S03-2A>"
-Barcode_Scaned str2
-str2 = "aa999032100343639   002013006009008020<S03-2B><S>2008~0~0~0~0~2009~0~0~0~0~2010~0~0~0~0~2011~0~0~0~0~2012~0~0~0~0~0~0~0~0</S></S03-2B>"
-Barcode_Scaned str2
-str2 = "aa999032100343639   002013006009009020<S03-3A><S>~~~~~~~~~~~0.000~~~~~~"
-Barcode_Scaned str2
-str2 = "aa999032100343639   002013006009010020~0~0~0~0~0~0~0~0~0</S></S03-3A>"
-Barcode_Scaned str2
-str2 = "aa999032100343639   002013006009011020<S03-3B><S>~~~~~~~~~~~0.000~~~~~~~0"
-Barcode_Scaned str2
-str2 = "aa999032100343639   002013006009012020~0~0~0~0~0~0~0~0~0~0</S></S03-3B>"
-Barcode_Scaned str2
-str2 = "aa999032100343639   002013006009013020<S03-3C><S>~~~~~~~~~~0~0~0~0</S></S03-3C>"
-Barcode_Scaned str2
-str2 = "aa999032100343639   002013006009014020<S03-4><S>~0~~0~0~0~0~0~0~0~0</S></S03-4>"
-Barcode_Scaned str2
-str2 = "aa999032100343639   002013006009015020<S03-5><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S></S03-5>"
-Barcode_Scaned str2
-str2 = "aa999032100343639   002013006009016020<S03-6><S>~0</S><S>~0~0~0~0~0</S></S03-6>"
-Barcode_Scaned str2
-str2 = "aa999032100343639   002013006009017020<S03-7><S>~~~~~~~~~~~~~~~</S><S>0~0~0~0~0~0~0</S><S>0~0~0~0~0~0~0</S><S>0~0~0~0~0~0~0</S><S>0~0~0~0~0~0~0</S><S>~0~0~0~0~0~0~0~~</S><S>0~0~0~0~0~0~0</S><S>~0~0~0~0~0~0~0~~</S><S>0~0~0~0~0~0~0</S><S>0~0~0~0~0~0~0</S><S>~0~0~0~0~0~0~0~~</S><S>"
-Barcode_Scaned str2
-str2 = "aa999032100343639   0020130060090180200~0~0~0~0~0~0</S><S>~0~0~0~0~0~0~0~~</S><S>0~0~0~0~0~0~0</S><S>~0~0~0~0~0~0~0~~</S><S>0~0~0~0~0~0~0</S><S>0~0~0~0~0~0~0</S><S>~0~0~0~0~0~0~0~~</S><S>0~0~0~0~0~0~0</S><S>~0~0~0~0~0~0~0~~</S><S>0~0~0~0~0~0~0</S><S>~0~0~0~0~0~0~0~~</S></S03-7>"
-Barcode_Scaned str2
-str2 = "aa999032100343639   002013006009019020<S03-8><S>0</S><S>~~0~0~0~0~0~0~0~0~~</S></S03-8>"
-Barcode_Scaned str2
-str2 = "aa999032100343639   002013006009020020<S03-9><S>~~~0~0~~</S><S>0</S></S03-9>"
-Barcode_Scaned str2
+'str2 = "aa999262100343639   002013002002002003<S02-1><S>~~~0~0~0~0</S></S02-1>"
+'Barcode_Scaned str2
+'str2 = "aa999262100343639   002013002002003003<S02-2><S>~~~0~0~0~0</S></S02-2>"
+'Barcode_Scaned str2
 
 
 End Sub
@@ -3530,13 +3559,13 @@ On Error GoTo ErrHandle
         
         'todo
         'get Thong tin Tu thang - toi thang: 02/TAIN,02/BVMT,03A/TD-TAIN 2014 & TNCN QT Ver 3.3.0
-        If Val(strID) = 77 Or Val(strID) = 87 Or Val(strID) = 97 Or Val(strID) = 43 Or Val(strID) = 17 Or Val(strID) = 59 Or Val(strID) = 41 Or Val(strID) = 76 Or Val(strID) = 88 Or Val(strID) = 89 Or Val(strID) = 93 Then
+        If Val(strID) = 77 Or Val(strID) = 87 Or Val(strID) = 97 Or Val(strID) = 43 Or Val(strID) = 17 Or Val(strID) = 59 Or Val(strID) = 41 Or Val(strID) = 76 Or Val(strID) = 88 Or Val(strID) = 89 Or Val(strID) = 93 Or Val(strID) = 26 Then
             str_tmp = ""
             If Val(strID) = 97 Then
                 str_tmp = Mid(strData, 1, InStr(1, strData, "</S03>", vbTextCompare) + 5)
             ElseIf Val(strID) = 41 Then
                 str_tmp = Mid(strData, 1, InStr(1, strData, "</S09>", vbTextCompare) + 5)
-            ElseIf Val(strID) = 43 Then
+            ElseIf Val(strID) = 43 Or Val(strID) = 26 Then
                 str_tmp = Mid(strData, 1, InStr(1, strData, "</S02>", vbTextCompare) + 5)
             ElseIf Val(strID) = 17 Then
                 str_tmp = Mid(strData, 1, InStr(1, strData, "</S05>", vbTextCompare) + 5)
@@ -5299,7 +5328,7 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
                 "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
                 "And tkhai.kykk_tu_ngay = To_Date('" & format$(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 2))), "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
                 "And tkhai.kykk_den_ngay = To_Date('" & format$(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 1, 2))), "DD/MM/YYYY") & "','DD/MM/RRRR')"
-    ElseIf strID = "02_TAIN14" Or strID = "02_BVMT14" Or strID = "03A_TD_TAIN" Or strID = "02_TNCN_XS11" Or strID = "05_TNCN11" Or strID = "06_TNCN14" Or strID = "09_TNCN14" Or strID = "08B_TNCN11" Or strID = "02_TAIN_DK" Or strID = "02_TNDN_DK" Or strID = "02_PHLP" Then
+    ElseIf strID = "02_TAIN14" Or strID = "02_BVMT14" Or strID = "03A_TD_TAIN" Or strID = "02_TNCN_XS11" Or strID = "05_TNCN11" Or strID = "06_TNCN14" Or strID = "09_TNCN14" Or strID = "08B_TNCN11" Or strID = "02_TAIN_DK" Or strID = "02_TNDN_DK" Or strID = "02_PHLP" Or strID = "02_TNCN_BHDC" Then
     'todo to khai QT
         strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
