@@ -221,6 +221,15 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         UpdateCell fps, .Col, .Row, .Text
         lSoPhongXL = i
         
+        'set ky tinh thue
+        .Row = 37
+        .Col = .ColLetterToNumber("Y")
+        .Text = TAX_Utilities_Svr_New.FirstDay
+        UpdateCell fps, .Col, .Row, .Text
+        .Col = .ColLetterToNumber("Z")
+        .Text = TAX_Utilities_Svr_New.LastDay
+        UpdateCell fps, .Col, .Row, .Text
+        
     End With
     
     Prepared2 = True
@@ -232,11 +241,12 @@ Public Function Prepared3() As Boolean
     
         .Sheet = 1
 
-        'set check loi dinh danh
+        'check canh bao yes/no neu khong ton tai dai ly thue
+        'neu chon yes se cap nhat dai ly thue moi nay, chon no thi bo qua
         If checkDLTTonTai = False Then
-            .Col = .ColLetterToNumber("E")
-            .Row = 36
-            .Value = 1
+'            .Col = .ColLetterToNumber("E")
+'            .Row = 36
+'            .Value = 1
         End If
         
         'Set NgayNhanToKhai
@@ -426,9 +436,11 @@ Public Function Prepared3() As Boolean
         strSoTTTKhai = Trim(TinhSoLanQuet)
         .Text = Trim(TAX_Utilities_Svr_New.Convert(strSoTTTKhai, TCVN, UNICODE))
         
+
+        
         'ky tinh thue tu ngay
-        .GetText .ColLetterToNumber("S"), 37, KyTTTu
-        namQT = Right$(KyTTTu, 4)
+        .GetText .ColLetterToNumber("Y"), 37, KyTTTu
+         namQT = Right$(KyTTTu, 4)
         namQT = Val(namQT)
 
         If Trim(KyTTTu) = vbNullString Then
@@ -571,20 +583,26 @@ Public Function InsertDTL() As String
         i = 0
 
         Do
-            .GetText .ColLetterToNumber("Q"), .Row, KeKhai
-
+            .GetText .ColLetterToNumber("P"), .Row, KeKhai
+            .GetText .ColLetterToNumber("P"), .Row, KeKhai2
             If Trim(KeKhai) = vbNullString Then
                 KeKhai = "0"
             End If
-
-            .GetText .ColLetterToNumber("V"), .Row, QuyetToan
-
-            If Trim(QuyetToan) = vbNullString Then
-                KeKhai = "0"
+            If Trim(KeKhai2) = vbNullString Then
+                KeKhai2 = "0"
             End If
 
-            KeKhai2 = "0"
-            QuyetToan2 = "0"
+            .GetText .ColLetterToNumber("T"), .Row, QuyetToan
+            .GetText .ColLetterToNumber("T"), .Row, QuyetToan2
+
+            If Trim(QuyetToan) = vbNullString Then
+                QuyetToan = "0"
+            End If
+            If Trim(QuyetToan2) = vbNullString Then
+                QuyetToan2 = "0"
+            End If
+'            KeKhai2 = "0"
+'            QuyetToan2 = "0"
             CTTN = "'" & arrMaHieu(i) & "'"
             
             sSQLVal = LoaiTK & "," & madtnt & "," & namQT & "," & TTHTK & "," & ngnop & "," & CTTN & "," & KeKhai & "," & QuyetToan & "," & KeKhai2 & "," & QuyetToan2 & "," & tt & "," & DANHAN & "," & LAN_QUET
@@ -793,7 +811,7 @@ Public Function InsertDTL_PL1() As String
                 GTQTHDVN = "0"
             End If
         
-            sSQLVal = madtnt & "," & namQT & "," & TTHTK & "," & ngnop & "," & LanBS & "," & STT & "," & TENNTVN & "," & MADTNTVN & "," & MADTNTNN & "," & SOHD & "," & NOIDUNGHD & "," & DIADIEM & "," & THOIHAN & "," & GTHDNT & "," & GTHDVN & "," & GTQTHDNT & "," & GTQTHDVN & "," & DANHAN & "," & LAN_QUET
+            sSQLVal = madtnt & "," & namQT & "," & TTHTK & "," & ngnop & "," & LanBS & "," & STT & "," & TENNTVN & "," & MADTNTVN & "," & MADTNTNN & ",'" & SOHD & "'," & NOIDUNGHD & "," & DIADIEM & "," & THOIHAN & "," & GTHDNT & "," & GTHDVN & "," & GTQTHDNT & "," & GTQTHDVN & "," & DANHAN & "," & LAN_QUET
             sSQL = "INSERT INTO TMP_NT02PL2" & namKyLapBo & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
             bln = clsDAO.ExecuteDLL(sSQL)
@@ -1063,12 +1081,18 @@ Public Function InsertDTL_KHBS() As String
         mact = "' '"
         MACT2 = "' '"
         MACT3 = "''"
-        STT = 0
+        STT = 3
         STT2 = 0
-        STTIN = "' '"
+        STTIN = "'III'"
         SOKK = "0"
         SODC = "0"
-        SOCL = "0"
+        
+        .GetText .ColLetterToNumber("BH"), .MaxRows - 31, SOCL
+        If Trim(SOCL) = vbNullString Then
+            SOCL = "0"
+        Else
+            SOCL = SOCL
+        End If
 
         sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                       
@@ -1231,8 +1255,8 @@ Public Function InsertHDR() As String
         Dim cot5 As Variant
                 
         .Sheet = 1
-        .GetText .ColLetterToNumber("Q"), 47, cot4
-        .GetText .ColLetterToNumber("V"), 47, cot5
+        .GetText .ColLetterToNumber("T"), 47, cot4
+        .GetText .ColLetterToNumber("T"), 46, cot5
         
         'Thue trong ky
         ThueTKy = cot5 - cot4

@@ -434,8 +434,8 @@ Dim So_tt As Variant
             .SetText .ColLetterToNumber("C"), .Row, TenTN
             UpdateCell fps, .ColLetterToNumber("C"), .Row, TenTN
             
-            .SetText .ColLetterToNumber("AC"), .Row, maTM1
-            UpdateCell fps, .ColLetterToNumber("AC"), .Row, maTM1
+            .SetText .ColLetterToNumber("AB"), .Row, maTM1
+            UpdateCell fps, .ColLetterToNumber("AB"), .Row, maTM1
 
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
@@ -451,8 +451,8 @@ Dim So_tt As Variant
            DataDM strID, , TenTN, , , , maTM1
             .SetText .ColLetterToNumber("C"), .Row, TenTN
             UpdateCell fps, .ColLetterToNumber("C"), .Row, TenTN
-            .SetText .ColLetterToNumber("AC"), .Row, maTM1
-            UpdateCell fps, .ColLetterToNumber("AC"), .Row, maTM1
+            .SetText .ColLetterToNumber("AB"), .Row, maTM1
+            UpdateCell fps, .ColLetterToNumber("AB"), .Row, maTM1
             
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
@@ -639,7 +639,7 @@ Public Function InsertDTL() As String
             ' ma tieu muc
             mact = "'1000'"
             
-            .GetText .ColLetterToNumber("AC"), .Row, maTM
+            .GetText .ColLetterToNumber("AB"), .Row, maTM
 
             If Trim(maTM) = vbNullString Then
                 maTM = "''"
@@ -736,7 +736,7 @@ Public Function InsertDTL() As String
         Do
             mact = "'2000'"
             ' ma tieu muc
-            .GetText .ColLetterToNumber("AC"), .Row, maTM
+            .GetText .ColLetterToNumber("AB"), .Row, maTM
 
             If Trim(maTM) = vbNullString Then
                 maTM = "''"
@@ -1200,7 +1200,7 @@ Public Function InsertHDR() As String
                
         Do
             ' Lay ma tieu muc tren cel
-            .Col = .ColLetterToNumber("AC")
+            .Col = .ColLetterToNumber("AB")
             'cuoi ma tieu muc
             vTemp = "~" & .Text & "~"
             vTemp2 = vTemp2 & .Text & "~"
@@ -1222,7 +1222,7 @@ Public Function InsertHDR() As String
 
         Do
             ' Lay ma tieu muc tren cel
-            .Col = .ColLetterToNumber("AC")
+            .Col = .ColLetterToNumber("AB")
             'cuoi ma tieu muc
             vTemp = "~" & .Text & "~"
             vTemp2 = vTemp2 & .Text & "~"

@@ -643,7 +643,7 @@ Public Function InsertDTL_KHBS() As String
        ' layt ma tieu muc theo yeu cau chi Em
         'ngay 14/09/2010
         .Col = .ColLetterToNumber("B")
-        .Row = 50
+        .Row = 57
         Do
             ' Lay ma tieu muc tren cel
             .Col = .ColLetterToNumber("AO")
@@ -678,7 +678,7 @@ Public Function InsertDTL_KHBS() As String
             madtnt = "'" & madtnt & "'"
         End If
         
-        kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+        kykkhai = "'" & TAX_Utilities_Svr_New.Year & "'"
         matkhai = "'02/TAIN'"
         MATHUE = "'01'"
         .GetText .ColLetterToNumber("E"), 30, KYLBO
@@ -737,21 +737,21 @@ Public Function InsertDTL_KHBS() As String
         
         .Sheet = .SheetCount - 1
         ' so ngay nop cham
-        .GetText .ColLetterToNumber("E"), 32, SONGAYNC
+        .GetText .ColLetterToNumber("BE"), .MaxRows - 28, SONGAYNC
         If Trim(SONGAYNC) = vbNullString Then
             SONGAYNC = "0"
         Else
             SONGAYNC = SONGAYNC
         End If
         ' so tien nop cham
-        .GetText .ColLetterToNumber("E"), 33, SOTIENNC
+        .GetText .ColLetterToNumber("BE"), .MaxRows - 27, SOTIENNC
         If Trim(SOTIENNC) = vbNullString Then
             SOTIENNC = "0"
         Else
             SOTIENNC = SOTIENNC
         End If
         i = 1
-        .Row = 24
+        .Row = 9
         Do
 '                .GetText .ColLetterToNumber("D"), .Row, MACT
 '                If Trim(MACT) = vbNullString Then
@@ -759,7 +759,7 @@ Public Function InsertDTL_KHBS() As String
 '                Else
 '                    MACT = "'" & MACT & "'"
 '                End If
-                .GetText .ColLetterToNumber("E"), .Row, MACT2
+                .GetText .ColLetterToNumber("BE"), .Row, MACT2
                 If Trim(MACT2) = vbNullString Then
                     MACT2 = "''"
                 Else
@@ -771,21 +771,21 @@ Public Function InsertDTL_KHBS() As String
                 STT2 = i
                 STTIN = "'" & CStr(i) & "'"
 
-                .GetText .ColLetterToNumber("F"), .Row, SOKK
+                .GetText .ColLetterToNumber("BF"), .Row, SOKK
                 If Trim(SOKK) = vbNullString Then
                     SOKK = "0"
                 Else
                     SOKK = SOKK
                 End If
 
-                .GetText .ColLetterToNumber("G"), .Row, SODC
+                .GetText .ColLetterToNumber("BG"), .Row, SODC
                 If Trim(SODC) = vbNullString Then
                     SODC = "0"
                 Else
                     SODC = SODC
                 End If
 
-                .GetText .ColLetterToNumber("H"), .Row, SOCL
+                .GetText .ColLetterToNumber("BH"), .Row, SOCL
                 If Trim(SOCL) = vbNullString Then
                     SOCL = "0"
                 Else
@@ -830,7 +830,7 @@ Public Function InsertDTL_KHBS() As String
          Do
                 mact = "''"
 
-                .GetText .ColLetterToNumber("E"), .Row, MACT2
+                .GetText .ColLetterToNumber("BE"), .Row, MACT2
                 If Trim(MACT2) = vbNullString Then
                     MACT2 = "''"
                 Else
@@ -842,21 +842,21 @@ Public Function InsertDTL_KHBS() As String
                 STT2 = i
                 STTIN = "'" & CStr(i) & "'"
 
-                .GetText .ColLetterToNumber("F"), .Row, SOKK
+                .GetText .ColLetterToNumber("BF"), .Row, SOKK
                 If Trim(SOKK) = vbNullString Then
                     SOKK = "0"
                 Else
                     SOKK = SOKK
                 End If
 
-                .GetText .ColLetterToNumber("G"), .Row, SODC
+                .GetText .ColLetterToNumber("BG"), .Row, SODC
                 If Trim(SODC) = vbNullString Then
                     SODC = "0"
                 Else
                     SODC = SODC
                 End If
 
-                .GetText .ColLetterToNumber("H"), .Row, SOCL
+                .GetText .ColLetterToNumber("BH"), .Row, SOCL
                 If Trim(SOCL) = vbNullString Then
                     SOCL = "0"
                 Else
@@ -886,7 +886,7 @@ Public Function InsertDTL_KHBS() As String
         STTIN = "'III'"
         SOKK = "0"
         SODC = "0"
-        .GetText .ColLetterToNumber("H"), 30, SOCL
+        .GetText .ColLetterToNumber("BH"), .MaxRows - 31, SOCL
         If Trim(SOCL) = vbNullString Then
             SOCL = "0"
         Else
@@ -912,9 +912,9 @@ Public Function InsertHDR() As String
     Dim sSQLCol    As String
     Dim sSQLVal    As String
     
+    Dim TuKy As Variant
+    Dim DenKy As Variant
     Dim namQT      As Variant
-    Dim TuKy       As Variant
-    Dim DenKy      As Variant
     Dim madtnt     As Variant
     Dim MaMuc      As Variant
     Dim maTM       As Variant
@@ -1068,8 +1068,12 @@ Public Function InsertHDR() As String
         End If
                 
         namQT = TAX_Utilities_Svr_New.Year
-        TuKy = "'01/" & TAX_Utilities_Svr_New.Year & "'"
-        DenKy = "'12/" & TAX_Utilities_Svr_New.Year & "'"
+
+
+        'KyTTTu
+        .GetText .ColLetterToNumber("M"), 49, TuKy
+        'KyTTTu
+        .GetText .ColLetterToNumber("N"), 49, DenKy
         
         ' sua MAMUC & MATM tu nam 2009
         If CLng(Right(sKyKeKhai, 4)) < 2009 Then
@@ -1175,7 +1179,7 @@ Public Function InsertHDR() As String
             'sSQLCol = "NAMQT,TUKY,DENKY,MADTNT,MAMUC,MATM,NGNOP,NGNHAP,LOAITIEN,KYDC,THUETKY,DAGHI,LOAITK,TTHTK,MAVACH,DATHAY,HANNOP"
             'sSQLCol = sSQLCol & "KYLBO,DOANHSO,GTTINHTHUE,STT,STT2,STTIN,MACT,MADLT,LANBS,THUECL,DSOCL,GTTTCL,DA_NHAN,LAN_QUET"
         
-            sSQLVal = namQT & "," & TuKy & "," & DenKy & "," & madtnt & "," & MaMuc & "," & maTM & "," & ngnop & "," & NgNhap
+            sSQLVal = namQT & ",'" & TuKy & "','" & DenKy & "'," & madtnt & "," & MaMuc & "," & maTM & "," & ngnop & "," & NgNhap
             sSQLVal = sSQLVal & "," & LoaiTien & "," & KyDC & "," & ThueTKy & "," & DaGhi & "," & LoaiTK & "," & TTHTK & "," & MaVach & "," & DATHAY
             sSQLVal = sSQLVal & "," & HANNOP & "," & KYLBO & "," & DoanhSo & "," & GTTinhThue
             sSQLVal = sSQLVal & "," & MADLT & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & DANHAN & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "'"
