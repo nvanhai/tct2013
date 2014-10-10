@@ -1296,10 +1296,20 @@ Public Function InsertHDR() As String
             MADLT = "'" & MADLT & "'"
         End If
         
-        'tu ky
-        TuKy = "'01/" & namQT & "'"
-        'den ky
-        DenKy = "'12/" & namQT & "'"
+        'ky tinh thue tu ngay
+        .GetText .ColLetterToNumber("K"), 33, TuKy
+
+        If Trim(TuKy) = vbNullString Then
+            TuKy = "CTOD('')"
+        End If
+
+        
+        'ky tinh thue den ngay
+        .GetText .ColLetterToNumber("L"), 33, DenKy
+
+        If Trim(DenKy) = vbNullString Then
+            DenKy = "CTOD('')"
+        End If
         
         'trang thai to khai
         Dim TTHTK1 As Variant
@@ -1366,7 +1376,7 @@ Public Function InsertHDR() As String
             ThueTKy = arrThueTKySave(i)
             
             If Trim(maTM) <> "" Or Trim(maTM) <> "''" Then
-                sSQLVal = namQT & "," & TuKy & "," & DenKy & "," & madtnt & "," & MADLT & "," & MaMuc & "," & maTM & ", " & ngnop & "," & NgNhap & "," & LoaiTien & "," & KyDC & "," & ThueTKy & "," & DaGhi & "," & LoaiTK & "," & TTHTK & "," & MaVach & "," & HANNOP & "," & KYLBO & "," & DoanhSo & "," & GTTinhThue & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & DANHAN & "," & DATHAY & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "'"
+                sSQLVal = namQT & ",'" & TuKy & "','" & DenKy & "'," & madtnt & "," & MADLT & "," & MaMuc & "," & maTM & ", " & ngnop & "," & NgNhap & "," & LoaiTien & "," & KyDC & "," & ThueTKy & "," & DaGhi & "," & LoaiTK & "," & TTHTK & "," & MaVach & "," & HANNOP & "," & KYLBO & "," & DoanhSo & "," & GTTinhThue & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & DANHAN & "," & DATHAY & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "'"
        
                 sSQL = "INSERT INTO TMP_QTMT" & kyLapBo & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
