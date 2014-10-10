@@ -18,8 +18,8 @@ Const NGAY_NHAN_TO_KHAI_Y = 24
 Const NGAY_NHAN_TO_KHAI_X = "E"
 Const NGUOI_SU_DUNG_Y = 24
 Const NGUOI_SU_DUNG_X = "V"
-Const HEADER_KY_LAP_BO_Y = 13
-Const HEADER_KY_LAP_BO_X = "B"
+'Const HEADER_KY_LAP_BO_Y = 13
+'Const HEADER_KY_LAP_BO_X = "B"
 Const PHONG_XU_LY_Y = 22
 Const PHONG_XU_LY_X = "V"
 
@@ -53,7 +53,7 @@ Const MAIL_Y = 12
 'thong tin Dai ly thue
 Const MA_SO_THUE_DL_X = "G"
 Const MA_SO_THUE_DL_Y = 15
-Const TEN_GOI_DL_X = "H"
+Const TEN_GOI_DL_X = "K"
 Const TEN_GOI_DL_Y = 14
 Const DIA_CHI_DL_X = "G"
 Const DIA_CHI_DL_Y = 16
@@ -82,8 +82,8 @@ Public PHONG_XU_LY_X1 As String
 'Public strMaSoTep As String
 Public isExistFile As Boolean
 Public LAN_QUET As Variant
-Const STT_X = "M"
-Const STT_Y = 22
+Const STT_X = "B"
+Const STT_Y = 44
 'Public strMaSoTep As String
 Public strNgayNhanToKhai As String
 Public strNguoiSuDung As String
@@ -433,7 +433,7 @@ Public Function Prepared3() As Boolean
         Dim strID, TenTN   As String
         Dim maTM1 As String
         .Sheet = 1
-        .Row = 45
+        .Row = 44
 
         Do
 
@@ -441,33 +441,12 @@ Public Function Prepared3() As Boolean
             DataDM strID, , TenTN, , , , maTM1
             .SetText .ColLetterToNumber("C"), .Row, TenTN
             UpdateCell fps, .ColLetterToNumber("C"), .Row, TenTN
-            
-            .SetText .ColLetterToNumber("AC"), .Row, maTM1
-            UpdateCell fps, .ColLetterToNumber("AC"), .Row, maTM1
+
             
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
            
             lastRow = .Row
-        Loop Until .Text = "aa"
-
-        .Row = lastRow + 3
-
-        Do
-
-            .GetText .ColLetterToNumber("AB"), .Row, strID
-            DataDM strID, , TenTN, , , , maTM1
-            .SetText .ColLetterToNumber("C"), .Row, TenTN
-            UpdateCell fps, .ColLetterToNumber("C"), .Row, TenTN
-            
-            .SetText .ColLetterToNumber("AC"), .Row, maTM1
-            UpdateCell fps, .ColLetterToNumber("AC"), .Row, maTM1
-            
-    
-            
-            .Col = .ColLetterToNumber("B")
-            .Row = .Row + 1
-
         Loop Until .Text = "aa"
         
     End With
@@ -648,7 +627,7 @@ Public Function InsertDTL() As String
     With fps
         .Sheet = 1
         'ma to khai
-        matkhai = "'01/BVMT'"
+        matkhai = "'01/PHLP'"
         ' ma doi tuong nop thue
           
         .GetText .ColLetterToNumber("G"), 8, madtnt

@@ -217,6 +217,16 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .TypeComboBoxCurSel = 0
         UpdateCell fps, .Col, .Row, .Text
         lSoPhongXL = i
+        
+        'set ky tinh thue
+        .Row = 37
+        .Col = .ColLetterToNumber("Y")
+        .Text = TAX_Utilities_Svr_New.FirstDay
+        UpdateCell fps, .Col, .Row, .Text
+        .Col = .ColLetterToNumber("Z")
+        .Text = TAX_Utilities_Svr_New.LastDay
+        UpdateCell fps, .Col, .Row, .Text
+        
     End With
 
     Prepared2 = True
