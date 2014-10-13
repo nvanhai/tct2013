@@ -224,6 +224,8 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .TypeComboBoxCurSel = 0
         UpdateCell fps, .Col, .Row, .Text
         lSoPhongXL = i
+
+        
     End With
     
     Prepared2 = True
@@ -966,7 +968,7 @@ Public Function InsertDTL_KHBS() As String
 
         .Sheet = .SheetCount - 1
         ' so ngay nop cham
-        .GetText .ColLetterToNumber("BE"), 17, SONGAYNC
+        .GetText .ColLetterToNumber("BE"), .MaxRows - 28, SONGAYNC
 
         If Trim(SONGAYNC) = vbNullString Then
             SONGAYNC = "0"
@@ -975,7 +977,7 @@ Public Function InsertDTL_KHBS() As String
         End If
 
         ' so tien nop cham
-        .GetText .ColLetterToNumber("BE"), 18, SOTIENNC
+        .GetText .ColLetterToNumber("BE"), .MaxRows - 27, SOTIENNC
 
         If Trim(SOTIENNC) = vbNullString Then
             SOTIENNC = "0"
@@ -1060,7 +1062,8 @@ Public Function InsertDTL_KHBS() As String
 
         Do
             mact = "''"
-
+            
+            .GetText .ColLetterToNumber("BE"), .Row, MACT2
             If Trim(MACT2) = vbNullString Then
                 MACT2 = "' '"
                 
@@ -1115,12 +1118,18 @@ Public Function InsertDTL_KHBS() As String
         mact = "' '"
         MACT2 = "' '"
         MACT3 = "''"
-        STT = 0
+        STT = 3
         STT2 = 0
-        STTIN = "' '"
+        STTIN = "'III'"
         SOKK = "0"
         SODC = "0"
-        SOCL = "0"
+        
+        .GetText .ColLetterToNumber("BH"), .MaxRows - 31, SOCL
+        If Trim(SOCL) = vbNullString Then
+            SOCL = "0"
+        Else
+            SOCL = SOCL
+        End If
 
         sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                       
@@ -1189,7 +1198,7 @@ Public Function InsertHDR() As String
        
     With fps
         .Sheet = 1
-                .GetText .ColLetterToNumber("G"), .MaxRows - 4, TENNV
+        .GetText .ColLetterToNumber("G"), .MaxRows - 4, TENNV
         .GetText .ColLetterToNumber("G"), .MaxRows - 2, CHUNGCHI
 
         'Ma tieu muc

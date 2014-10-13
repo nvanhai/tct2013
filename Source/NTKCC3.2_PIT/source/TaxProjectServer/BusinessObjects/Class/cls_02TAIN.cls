@@ -127,6 +127,7 @@ Public isTKTonTai As Boolean
 Public checkDLTTonTai As Boolean
 
 
+
 Public Function InsertDTL() As String
    Dim sSQL As String
    Dim sSQLCol As String
@@ -803,6 +804,7 @@ Public Function InsertDTL_KHBS() As String
         
             .Col = .ColLetterToNumber("B")
             .Row = 1 + .Row
+            i = i + 1
         Loop Until .Text = "aa"
         ROWNUM = .Row
 ' Insert so dieu chinh giam
@@ -825,7 +827,7 @@ Public Function InsertDTL_KHBS() As String
             sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
                
-        .Row = ROWNUM + 3
+        .Row = .Row + 3
          i = 1
          Do
                 mact = "''"
@@ -838,7 +840,7 @@ Public Function InsertDTL_KHBS() As String
                 End If
                 
                 MACT3 = "'2'"
-                STT = 1
+                STT = 2
                 STT2 = i
                 STTIN = "'" & CStr(i) & "'"
 
@@ -874,9 +876,9 @@ Public Function InsertDTL_KHBS() As String
         
             .Col = .ColLetterToNumber("B")
             .Row = 1 + .Row
-          
+            i = i + 1
         Loop Until .Text = "bb"
-' Insert Tong hop dieu chinh
+        ' Insert Tong hop dieu chinh
 
         mact = "'3000'"
         MACT2 = "''"
@@ -902,7 +904,7 @@ Public Function InsertDTL_KHBS() As String
       
    End With
 
-'   clsDAO.Disconnect
+   clsDAO.Disconnect
    InsertDTL_KHBS = vbNullString
    
 End Function
@@ -1386,6 +1388,8 @@ Private Sub DataDM(ByVal Id As String, _
         strDataFileName = Replace(GetCatalogueFileName, "Catalogue_052008_01", "CatalogueQTTN_2008_01")
     ElseIf TAX_Utilities_Svr_New.Year = "2010" Then
         strDataFileName = Replace(GetCatalogueFileName, "Catalogue_072010_01", "CatalogueQTTN_2010_01")
+    ElseIf TAX_Utilities_Svr_New.Year = "2014" Then
+        strDataFileName = Replace(GetCatalogueFileName, "Catalogue_022014_01", "CatalogueQTTN_2014_01")
     Else
         strDataFileName = GetCatalogueFileName
     End If
@@ -1404,7 +1408,7 @@ Private Sub DataDM(ByVal Id As String, _
                     DVT = arrDanhsach(3)
                     strThueSuat = arrDanhsach(4)
                     blnSuaThueSuat = IIf(arrDanhsach(5) = "1", True, False)
-                    maTM = arrDanhsach(7)
+                    'maTM = arrDanhsach(7)
                     Exit Sub
                 End If
             End If
@@ -1598,6 +1602,8 @@ Public Function Prepared3() As Boolean
         .Row = 30
         strSoTTTKhai = Trim(TinhSoLanQuet)
         .Text = Trim(TAX_Utilities_Svr_New.Convert(strSoTTTKhai, TCVN, UNICODE))
+             
+
         
         '.EventEnabled(EventAllEvents) = True
     End With
