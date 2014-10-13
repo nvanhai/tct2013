@@ -448,6 +448,7 @@ Public Function Prepared3() As Boolean
         Else
             KyTTTu = "CTOD('" & Format(KyTTTu, "mm/dd/yyyy") & "')"
         End If
+
         
         'ky tinh thue den ngay
         .GetText .ColLetterToNumber("Z"), 37, KyTTDen
@@ -932,7 +933,7 @@ Public Function InsertDTL_KHBS() As String
 
         .Sheet = .SheetCount - 1
         ' so ngay nop cham
-        .GetText .ColLetterToNumber("BE"), 17, SONGAYNC
+        .GetText .ColLetterToNumber("BE"), .MaxRows - 28, SONGAYNC
 
         If Trim(SONGAYNC) = vbNullString Then
             SONGAYNC = "0"
@@ -941,7 +942,7 @@ Public Function InsertDTL_KHBS() As String
         End If
 
         ' so tien nop cham
-        .GetText .ColLetterToNumber("BE"), 18, SOTIENNC
+        .GetText .ColLetterToNumber("BE"), .MaxRows - 27, SOTIENNC
 
         If Trim(SOTIENNC) = vbNullString Then
             SOTIENNC = "0"
@@ -1027,6 +1028,7 @@ Public Function InsertDTL_KHBS() As String
         Do
             mact = "''"
 
+            .GetText .ColLetterToNumber("BE"), .Row, MACT2
             If Trim(MACT2) = vbNullString Then
                 MACT2 = "' '"
                 
@@ -1251,16 +1253,11 @@ Public Function InsertHDR() As String
 
         MaMuc = "'1050'"
         maTM = "'1052'"
-        Dim cot4 As Variant
-        Dim cot5 As Variant
                 
-        .Sheet = 1
-        .GetText .ColLetterToNumber("T"), 47, cot4
-        .GetText .ColLetterToNumber("T"), 46, cot5
-        
         'Thue trong ky
-        ThueTKy = cot5 - cot4
-                
+        .Sheet = 1
+        .GetText .ColLetterToNumber("T"), 46, ThueTKy
+
         sSQLVal = LoaiTK & "," & madtnt & "," & MADLT & "," & namQT & "," & TTHTK & "," & ngnop & "," & KyTTTu & ", "
         sSQLVal = sSQLVal & KyTTDen & "," & NgNhap & "," & HANNOP & "," & MaVach & "," & MaMuc & ", "
         sSQLVal = sSQLVal & maTM & "," & DATHAY & "," & KYLBO & "," & ThueTKy & ", "
