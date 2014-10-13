@@ -123,8 +123,10 @@ Public Sub Prepare1()
         For Each xmlNode In xmlNodeListMap
             temValue = GetAttribute(xmlNode, "Value")
             arrValue = Split(temValue, "###")
-            strTenTinh = strTenTinh + arrValue(2) + Chr$(9)
-            strMaTinh = strMaTinh + arrValue(1) + Chr$(9)
+            'If arrValue(0) <> "1" Then
+                strTenTinh = strTenTinh + arrValue(2) + Chr$(9)
+                strMaTinh = strMaTinh + arrValue(1) + Chr$(9)
+            'End If
         Next
         
         ' lay danh sach huyen
@@ -136,8 +138,10 @@ Public Sub Prepare1()
         For Each xmlNode In xmlNodeListMap
             temValue = GetAttribute(xmlNode, "Value")
             arrValue = Split(temValue, "###")
-            strTenHuyen = strTenHuyen + arrValue(3) + Chr$(9)
-            strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
+            'If arrValue(0) <> "1" Then
+                strTenHuyen = strTenHuyen + arrValue(3) + Chr$(9)
+                strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
+            'End If
         Next
         
         ' Lay danh muc xa
@@ -149,8 +153,10 @@ Public Sub Prepare1()
         For Each xmlNode In xmlNodeListMap
             temValue = GetAttribute(xmlNode, "Value")
             arrValue = Split(temValue, "###")
-            strTenXa = strTenXa + arrValue(4) + Chr$(9)
-            strMaXa = strMaXa + arrValue(3) + Chr$(9)
+            'If arrValue(0) <> "1" Then
+                strTenXa = strTenXa + arrValue(4) + Chr$(9)
+                strMaXa = strMaXa + arrValue(3) + Chr$(9)
+            'End If
         Next
         
         .Row = 22
@@ -789,27 +795,57 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
                  If .Text = "01" Then
                     .Col = .ColLetterToNumber("S")
                     .Row = Row
+                    .Text = ""
                     .Lock = False
                     
                     .Col = .ColLetterToNumber("U")
                     .Row = Row
+                    .Text = ""
                     .Lock = False
                     
                     .Col = .ColLetterToNumber("W")
                     .Row = Row
+                    .Text = ""
                     .Lock = False
+                    
+                    .Col = .ColLetterToNumber("R")
+                    .Row = Row
+                    .Text = ""
+                    
+                    .Col = .ColLetterToNumber("T")
+                    .Row = Row
+                    .Text = ""
+                    
+                    .Col = .ColLetterToNumber("V")
+                    .Row = Row
+                    .Text = ""
                 Else
                     .Col = .ColLetterToNumber("S")
                     .Row = Row
+                    .typeComboboxCurSel = .TypeComboBoxCount - 1
                     .Lock = True
                     
                     .Col = .ColLetterToNumber("U")
                     .Row = Row
+                    .typeComboboxCurSel = .TypeComboBoxCount - 1
                     .Lock = True
                     
                     .Col = .ColLetterToNumber("W")
                     .Row = Row
+                    .typeComboboxCurSel = .TypeComboBoxCount - 1
                     .Lock = True
+                    
+                    .Col = .ColLetterToNumber("R")
+                    .Row = Row
+                    .typeComboboxCurSel = .TypeComboBoxCount - 1
+                    
+                    .Col = .ColLetterToNumber("T")
+                    .Row = Row
+                    .typeComboboxCurSel = .TypeComboBoxCount - 1
+                    
+                    .Col = .ColLetterToNumber("V")
+                    .Row = Row
+                    .typeComboboxCurSel = .TypeComboBoxCount - 1
                 End If
             End If
             
@@ -2082,12 +2118,13 @@ Dim ASheet As Integer, SSheet As Integer
         InsertNode 23, .SearchCol(.ColLetterToNumber("B"), 22, -1, "aa", SearchFlagsNone) - 1, 3
         ' Tinh so dong DL trong BK (Phuc vu nut sap xep)
         totalRow5B = .SearchCol(.ColLetterToNumber("B"), 22, -1, "aa", SearchFlagsNone)
-        
-        CheckDynamicError 'Set Exception Error on cells of interface
-        UpdateSheets
-        'CheckDynamicError 'Set Exception Error on cells of interface
-         
-'        If flgErr5A = True And flgErr5B = True Then kiemTraKhac
+        ' test tai khong kiem tra de tang toc do
+'        CheckDynamicError 'Set Exception Error on cells of interface
+'        UpdateSheets
+        'end
+'        'CheckDynamicError 'Set Exception Error on cells of interface
+'
+''        If flgErr5A = True And flgErr5B = True Then kiemTraKhac
         
         .ActiveSheet = ASheet
         .Sheet = SSheet
@@ -3439,15 +3476,15 @@ Public Sub CheckDynamicSheet1()
                 .Col = .ColLetterToNumber("I")
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = vErrMsg1213
-                '.BackColor = mErrorColor
-                .BackColor = mAlertColor
+                .BackColor = mErrorColor
+                '.BackColor = mAlertColor
                 
                 
                 .Col = .ColLetterToNumber("J")
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = vErrMsg1213
-                '.BackColor = mErrorColor
-                .BackColor = mAlertColor
+                .BackColor = mErrorColor
+                '.BackColor = mAlertColor
                 'iFlagCheckCT17CT11 = 1
             Else
                 .Col = .ColLetterToNumber("I")
@@ -4203,9 +4240,11 @@ End Sub
 Private Sub CheckDynamicSheet3()
     Dim vHoVaTenNNT, vMSTNNT, vHoVaTenNPT, vNgaySinhNPT, vMSTNPT, vQuocTich, vSoCMNDNPT, vQuanHeNPT, vSo, vQuyenSo, vQuocGia As Variant
     Dim vTinh, vHuyen, vXa, vTuThang, vDenThang As Variant
+    Dim vMaQuocGia As Variant, vMaTinh As Variant, vMaHuyen As Variant, vMaXa As Variant
     
     Dim vErrHoVaTenNNT, vErrMSTNNT, vErrHoVaTenNPT, vErrNgaySinhNPT, vErrMSTNPT, vErrSoCMNDNPT, vErrTuThang, vErrDenThang     As Variant
-    Dim vErrEmpty As Variant
+    Dim vErrEmpty As Variant, vErrEmptyCMNDNPT As Variant
+    Dim vErrDuLieuKhongHL As Variant
     
     Dim iFlagHoVaTenNNT As Integer, iFlagMSTNNT As Integer, iFlagHoVaTenNPT As Integer, iFlagNgaySinhNPT As Integer
     Dim iFlagMSTNPT As Integer, iFlagSoCMNDNPT As Integer, iFlagTuThang As Integer, iFlagDenThang As Integer
@@ -4230,6 +4269,8 @@ Private Sub CheckDynamicSheet3()
         .GetText .ColLetterToNumber("E"), 78, vErrDenThang
         .GetText .ColLetterToNumber("E"), 79, vErrEmpty
         
+        .GetText .ColLetterToNumber("E"), 83, vErrEmptyCMNDNPT
+        .GetText .ColLetterToNumber("E"), 84, vErrDuLieuKhongHL
         
         .Sheet = 4
         .Row = 22
@@ -4251,11 +4292,16 @@ Private Sub CheckDynamicSheet3()
             .GetText .ColLetterToNumber("X"), .Row, vTuThang
             .GetText .ColLetterToNumber("Y"), .Row, vDenThang
             
+            .GetText .ColLetterToNumber("P"), .Row, vMaQuocGia
+            .GetText .ColLetterToNumber("R"), .Row, vMaTinh
+            .GetText .ColLetterToNumber("T"), .Row, vMaHuyen
+            .GetText .ColLetterToNumber("V"), .Row, vMaXa
+            
             ' reset du lieu loi
             strColReset = "D~E~F~G~H~J~K~M~N~O~Q~S~U~W~X~Y"
             arrColReset = Split(strColReset, "~")
             For i = 0 To UBound(arrColReset)
-                .Col = .ColLetterToNumber(arrColReset(0))
+                .Col = .ColLetterToNumber(arrColReset(i))
                 .BackColor = mNonErrorColor
                 .CellNote = ""
             Next
@@ -4383,7 +4429,7 @@ Private Sub CheckDynamicSheet3()
                     If vNgaySinhNPT <> "" Then
                         If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) > 15 And Trim(vSoCMNDNPT) = "" Then
                              .Col = .ColLetterToNumber("K")
-                            .CellNote = vErrEmpty
+                            .CellNote = vErrEmptyCMNDNPT
                             .BackColor = mErrorColor
                             iFlagEmpty = 1
                         End If
@@ -4430,22 +4476,82 @@ Private Sub CheckDynamicSheet3()
                             .CellNote = ""
                             .BackColor = mNonErrorColor
                             
-                            .Col = .ColLetterToNumber("Y")
-                            .CellNote = ""
-                            .BackColor = mNonErrorColor
+'                            .Col = .ColLetterToNumber("Y")
+'                            .CellNote = ""
+'                            .BackColor = mNonErrorColor
+                            ' kiem tra den thang voi den thang ky QT
+                            If vDenThang <> "" Then
+                                If DateDiff("M", Format(vDenThang, "mm/yyyy"), Format(TAX_Utilities_v1.LastDay, "mm/yyyy")) < 0 Then
+                                     .Col = .ColLetterToNumber("Y")
+                                    .CellNote = vErrDenThang
+                                    .BackColor = mErrorColor
+                                    iFlagDenThang = 1
+                                Else
+                                    .Col = .ColLetterToNumber("Y")
+                                    .CellNote = ""
+                                    .BackColor = mNonErrorColor
+                                End If
+                            End If
                     End If
                  End If
-                ' kiem tra den thang voi den thang ky QT
-                If vDenThang <> "" Then
-                    If DateDiff("M", Format(vDenThang, "mm/yyyy"), Format(TAX_Utilities_v1.LastDay, "mm/yyyy")) < 0 Then
-                         .Col = .ColLetterToNumber("Y")
-                        .CellNote = vErrDenThang
+                
+                
+                ' kiem tra bat buoc nhap cot 14
+                If Trim(vQuanHeNPT) = "" Then
+                    .Col = .ColLetterToNumber("M")
+                    .CellNote = vErrEmpty
+                    .BackColor = mErrorColor
+                    iFlagEmpty = 1
+                End If
+                
+                ' kiem tra khong co cot 11 va 13 bat buoc nhap cot 18,19,20
+                If Trim(vMSTNPT) = "" And Trim(vSoCMNDNPT) = "" Then
+                    ' bat buoc nhap thong tin tinh
+                    If Trim(vTinh) = "" Then
+                        .Col = .ColLetterToNumber("S")
+                        .CellNote = vErrEmpty
                         .BackColor = mErrorColor
-                        iFlagDenThang = 1
-                    Else
-                        .Col = .ColLetterToNumber("Y")
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
+                        iFlagEmpty = 1
+                    End If
+                    
+                    ' bat buoc nhap thong tin huyen
+                    If Trim(vHuyen) = "" Then
+                        .Col = .ColLetterToNumber("U")
+                        .CellNote = vErrEmpty
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
+                    End If
+                    
+                    ' bat buoc nhap thong tin xa
+                    If Trim(vXa) = "" Then
+                        .Col = .ColLetterToNumber("W")
+                        .CellNote = vErrEmpty
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
+                    End If
+                End If
+                
+                ' kiem tra neu chon quoc gia Viet Nam
+                If Trim(vMaQuocGia) = "01" Then
+                    If Trim$(vMaTinh) = "000" Then
+                        .Col = .ColLetterToNumber("S")
+                        .CellNote = vErrDuLieuKhongHL
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
+                    End If
+                    
+                    If Trim$(vMaHuyen) = "00000" Then
+                        .Col = .ColLetterToNumber("U")
+                        .CellNote = vErrDuLieuKhongHL
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
+                    End If
+                    
+                    If Trim$(vMaXa) = "0000000" Then
+                        .Col = .ColLetterToNumber("W")
+                        .CellNote = vErrDuLieuKhongHL
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
                     End If
                 End If
             End If
