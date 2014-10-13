@@ -482,34 +482,34 @@ Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
        .GetText .ColLetterToNumber("I"), 54, ChiTieu17
        .GetText .ColLetterToNumber("I"), 55, ChiTieu18
        'check chi tieu (18) <= chi tieu (17)
-       ThueKhauTru = Trim(ChiTieu17) * 0.05 - Trim(ChiTieu18)
-       If ThueKhauTru < 0 Then
-            .Col = .ColLetterToNumber("I")
-            .Row = 55
-            .CellNote = vErrMsgThueKhauTru
-            .BackColor = mAlertColor
-            iFlagvThueKhauTru = 1
-        Else
-            .Col = .ColLetterToNumber("I")
-            .Row = 55
-            .CellNote = ""
-            .BackColor = mNonErrorColor
-        End If
+'       ThueKhauTru = Trim(ChiTieu17) * 0.05 - Trim(ChiTieu18)
+'       If ThueKhauTru < 0 Then
+'            .Col = .ColLetterToNumber("I")
+'            .Row = 55
+'            .CellNote = vErrMsgThueKhauTru
+'            .BackColor = mAlertColor
+'            iFlagvThueKhauTru = 1
+'        Else
+'            .Col = .ColLetterToNumber("I")
+'            .Row = 55
+'            .CellNote = ""
+'            .BackColor = mNonErrorColor
+'        End If
        
        'check chi tieu 09
-       If Val(Trim(ChiTieu09)) <> Round(Trim(ChiTieuCT09), 0) And Val(Trim(ChiTieu09)) <> (Round(Trim(ChiTieuCT09), 0) + 1) Then
-            .Col = .ColLetterToNumber("I")
-            .Row = 42
-            .CellNote = vErrMsg09
-            .BackColor = mAlertColor
-            iFlagvChiTieu09 = 0
-        Else
-            .Col = .ColLetterToNumber("I")
-            .Row = 42
-            .CellNote = ""
-            .BackColor = mNonErrorColor
-        End If
-        
+'       If Val(Trim(ChiTieu09)) <> Round(Trim(ChiTieuCT09), 0) And Val(Trim(ChiTieu09)) <> (Round(Trim(ChiTieuCT09), 0) + 1) Then
+'            .Col = .ColLetterToNumber("I")
+'            .Row = 42
+'            .CellNote = vErrMsg09
+'            .BackColor = mAlertColor
+'            iFlagvChiTieu09 = 0
+'        Else
+'            .Col = .ColLetterToNumber("I")
+'            .Row = 42
+'            .CellNote = ""
+'            .BackColor = mNonErrorColor
+'        End If
+'
         'check chi tieu 13
 '        If Val(Trim(ChiTieu13)) <> Round(Trim(ChiTieuCT13), 0) And Val(Trim(ChiTieu13)) <> (Round(Trim(ChiTieuCT13), 0) + 1) Then
 '            .Col = .ColLetterToNumber("I")

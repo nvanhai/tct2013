@@ -3197,7 +3197,8 @@ Private Sub cmdExport_Click()
             Or GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "09_TNCN" _
                 Or GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "02_TNCN_BH" _
                     Or GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "02_TNCN_XS" _
-                        Or GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "08B_TNCN" Then
+                        Or GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "08B_TNCN" _
+                            Or GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "02_TNCN_BHDC" Then
         ' Doi voi to khai quyet toan thue TNCN thi export ra thu muc C:\TNCN-Temp
         nExcelFile = prepareFileName(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile"))
         If (cFolder.FolderExists("C:\TNCN-Temp")) = False Then
@@ -3549,7 +3550,8 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
                 Or UCase(Trim(loaiToKhai)) = "02_TNCN_BH" _
                    Or UCase(Trim(loaiToKhai)) = "06_TNCN10" _
                       Or UCase(Trim(loaiToKhai)) = "09_TNCN" _
-                        Or UCase(Trim(loaiToKhai)) = "08B_TNCN" Then
+                        Or UCase(Trim(loaiToKhai)) = "08B_TNCN" _
+                            Or UCase(Trim(loaiToKhai)) = "02_TNCN_BHDC" Then
         With fpSpread1
             .EventEnabled(EventAllEvents) = False
             .sheet = 1
@@ -3573,6 +3575,8 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
             If UCase(Trim(loaiToKhai)) = "05_TNCN" Then
                 kyHieuToKhai = "05TL"
             ElseIf UCase(Trim(loaiToKhai)) = "02_TNCN_BH" Then
+                kyHieuToKhai = "02BH"
+            ElseIf UCase(Trim(loaiToKhai)) = "02_TNCN_BHDC" Then
                 kyHieuToKhai = "02BH"
             ElseIf UCase(Trim(loaiToKhai)) = "02_TNCN_XS" Then
                 kyHieuToKhai = "02XS"
@@ -3626,7 +3630,8 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
             taxOfficeName = Left$(taxOfficeName, 3)
             
             ' Ghep cac thong tin tren vao lam cau truc file chuan cho PIT
-            nExcelFile = taxOfficeName & "-" & taxId & "-" & kyHieuToKhai & "-" & "Y" & TAX_Utilities_v1.Year & "-" & ctBs
+            'nExcelFile = taxOfficeName & "-" & taxId & "-" & kyHieuToKhai & "-" & "Y" & TAX_Utilities_v1.Year & "-" & ctBs
+            nExcelFile = taxOfficeName & "-" & taxId & "-" & kyHieuToKhai & "-" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & Replace(TAX_Utilities_v1.LastDay, "/", "") & "-" & ctBs
             .EventEnabled(EventAllEvents) = True
         End With
         prepareFileName = nExcelFile
@@ -5827,7 +5832,7 @@ Private Function validateTkHeader(ByVal xmlDuLieuImport As MSXML.DOMDocument) As
             LoaiTkCtBs = "C"
         End If
         
-        If xmlDuLieuImport.getElementsByTagName("loaiTKhai")(0).Text <> LoaiTkCtBs Then
+        If xmlDuLieuImport.getElementsByTagName("loaiTKhai")(0).Text <> LoaiTkCtBs And GetAttribute(TAX_Utilities_v1.NodeMenu, "ParentID") <> "101_10" Then
             validateTkHeader = False
             Exit Function
         End If
@@ -5857,6 +5862,11 @@ Private Function validateTkHeader(ByVal xmlDuLieuImport As MSXML.DOMDocument) As
             End If
         ElseIf strKK = "K" Then
             If tuThang <> TAX_Utilities_v1.FirstDay Or denThang <> TAX_Utilities_v1.LastDay Then
+                validateTkHeader = False
+                Exit Function
+            End If
+        ElseIf strKK = "Y" Then
+            If Val(strKykk(UBound(strKykk))) <> TAX_Utilities_v1.Year Or tuThang <> TAX_Utilities_v1.FirstDay Or denThang <> TAX_Utilities_v1.LastDay Then
                 validateTkHeader = False
                 Exit Function
             End If
@@ -14047,22 +14057,22 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
 
                 If a = 0 Then
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a, .ColLetterToNumber("A"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("BB"), rowStart, .ColLetterToNumber("BB"), rowStart + a, .ColLetterToNumber("BB"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("BC"), rowStart, .ColLetterToNumber("BC"), rowStart + a, .ColLetterToNumber("BC"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), rowStart + a, .ColLetterToNumber("BD"), (rowStart + a + 1)
+'                    .CopyRange .ColLetterToNumber("BB"), rowStart, .ColLetterToNumber("BB"), rowStart + a, .ColLetterToNumber("BB"), (rowStart + a + 1)
+'                    .CopyRange .ColLetterToNumber("BC"), rowStart, .ColLetterToNumber("BC"), rowStart + a, .ColLetterToNumber("BC"), (rowStart + a + 1)
+'                    .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), rowStart + a, .ColLetterToNumber("BD"), (rowStart + a + 1)
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("M"), rowStart, .ColLetterToNumber("M"), rowStart + a, .ColLetterToNumber("M"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BA"), rowStart + a, .ColLetterToNumber("Q"), (rowStart + a + 1)
-
+                    .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), rowStart + a, .ColLetterToNumber("O"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + a, .ColLetterToNumber("Q"), (rowStart + a + 1)
+                    
                     a = a + 2
                 ElseIf a <> 0 Then
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a - 1, .ColLetterToNumber("A"), rowStart + a
-                    .CopyRange .ColLetterToNumber("BB"), rowStart, .ColLetterToNumber("BB"), rowStart + a - 1, .ColLetterToNumber("BB"), rowStart + a
-                    .CopyRange .ColLetterToNumber("BC"), rowStart, .ColLetterToNumber("BC"), rowStart + a - 1, .ColLetterToNumber("BC"), rowStart + a
-                    .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), rowStart + a - 1, .ColLetterToNumber("BD"), rowStart + a
+'                    .CopyRange .ColLetterToNumber("BB"), rowStart, .ColLetterToNumber("BB"), rowStart + a - 1, .ColLetterToNumber("BB"), rowStart + a
+'                    .CopyRange .ColLetterToNumber("BC"), rowStart, .ColLetterToNumber("BC"), rowStart + a - 1, .ColLetterToNumber("BC"), rowStart + a
+'                    .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), rowStart + a - 1, .ColLetterToNumber("BD"), rowStart + a
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
-                    .CopyRange .ColLetterToNumber("M"), rowStart, .ColLetterToNumber("M"), rowStart + a - 1, .ColLetterToNumber("M"), rowStart + a
-                    .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BA"), rowStart + a - 1, .ColLetterToNumber("Q"), rowStart + a
+                    .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), rowStart + a - 1, .ColLetterToNumber("O"), rowStart + a
+                    .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + a - 1, .ColLetterToNumber("Q"), rowStart + a
 
                     a = a * 2
                 End If
@@ -14079,32 +14089,32 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
 
                 Do While a < dem
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), 1024 + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * a
-                    .CopyRange .ColLetterToNumber("BB"), rowStart, .ColLetterToNumber("BB"), 1024 + rowStart - 1, .ColLetterToNumber("BB"), rowStart + 1024 * a
-                    .CopyRange .ColLetterToNumber("BC"), rowStart, .ColLetterToNumber("BC"), 1024 + rowStart - 1, .ColLetterToNumber("BC"), rowStart + 1024 * a
-                    .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), 1024 + rowStart - 1, .ColLetterToNumber("BD"), rowStart + 1024 * a
+'                    .CopyRange .ColLetterToNumber("BB"), rowStart, .ColLetterToNumber("BB"), 1024 + rowStart - 1, .ColLetterToNumber("BB"), rowStart + 1024 * a
+'                    .CopyRange .ColLetterToNumber("BC"), rowStart, .ColLetterToNumber("BC"), 1024 + rowStart - 1, .ColLetterToNumber("BC"), rowStart + 1024 * a
+'                    .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), 1024 + rowStart - 1, .ColLetterToNumber("BD"), rowStart + 1024 * a
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), 1024 + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
-                    .CopyRange .ColLetterToNumber("M"), rowStart, .ColLetterToNumber("M"), 1024 + rowStart - 1, .ColLetterToNumber("M"), rowStart + 1024 * a
-                    .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BA"), 1024 + rowStart - 1, .ColLetterToNumber("Q"), rowStart + 1024 * a
+                    .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), 1024 + rowStart - 1, .ColLetterToNumber("O"), rowStart + 1024 * a
+                    .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), 1024 + rowStart - 1, .ColLetterToNumber("Q"), rowStart + 1024 * a
                         
                     a = a + 1
                 Loop
 
                 .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), du + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * a
-                .CopyRange .ColLetterToNumber("BB"), rowStart, .ColLetterToNumber("BB"), du + rowStart - 1, .ColLetterToNumber("BB"), rowStart + 1024 * a
-                .CopyRange .ColLetterToNumber("BC"), rowStart, .ColLetterToNumber("BC"), du + rowStart - 1, .ColLetterToNumber("BC"), rowStart + 1024 * a
-                .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), du + rowStart - 1, .ColLetterToNumber("BD"), rowStart + 1024 * a
+'                .CopyRange .ColLetterToNumber("BB"), rowStart, .ColLetterToNumber("BB"), du + rowStart - 1, .ColLetterToNumber("BB"), rowStart + 1024 * a
+'                .CopyRange .ColLetterToNumber("BC"), rowStart, .ColLetterToNumber("BC"), du + rowStart - 1, .ColLetterToNumber("BC"), rowStart + 1024 * a
+'                .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), du + rowStart - 1, .ColLetterToNumber("BD"), rowStart + 1024 * a
                 .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
-                .CopyRange .ColLetterToNumber("M"), rowStart, .ColLetterToNumber("M"), du + rowStart - 1, .ColLetterToNumber("M"), rowStart + 1024 * a
-                .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BA"), du + rowStart - 1, .ColLetterToNumber("Q"), rowStart + 1024 * a
+                .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), du + rowStart - 1, .ColLetterToNumber("O"), rowStart + 1024 * a
+                .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), du + rowStart - 1, .ColLetterToNumber("Q"), rowStart + 1024 * a
                         
             Else
                 .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), du + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * (a - 1)
-                .CopyRange .ColLetterToNumber("BB"), rowStart, .ColLetterToNumber("BB"), du + rowStart - 1, .ColLetterToNumber("BB"), rowStart + 1024 * (a - 1)
-                .CopyRange .ColLetterToNumber("BC"), rowStart, .ColLetterToNumber("BC"), du + rowStart - 1, .ColLetterToNumber("BC"), rowStart + 1024 * (a - 1)
-                .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), du + rowStart - 1, .ColLetterToNumber("BD"), rowStart + 1024 * (a - 1)
+'                .CopyRange .ColLetterToNumber("BB"), rowStart, .ColLetterToNumber("BB"), du + rowStart - 1, .ColLetterToNumber("BB"), rowStart + 1024 * (a - 1)
+'                .CopyRange .ColLetterToNumber("BC"), rowStart, .ColLetterToNumber("BC"), du + rowStart - 1, .ColLetterToNumber("BC"), rowStart + 1024 * (a - 1)
+'                .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), du + rowStart - 1, .ColLetterToNumber("BD"), rowStart + 1024 * (a - 1)
                 .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * (a - 1)
-                .CopyRange .ColLetterToNumber("M"), rowStart, .ColLetterToNumber("M"), du + rowStart - 1, .ColLetterToNumber("M"), rowStart + 1024 * (a - 1)
-                .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BA"), du + rowStart - 1, .ColLetterToNumber("Q"), rowStart + 1024 * (a - 1)
+                .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), du + rowStart - 1, .ColLetterToNumber("O"), rowStart + 1024 * (a - 1)
+                .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), du + rowStart - 1, .ColLetterToNumber("Q"), rowStart + 1024 * (a - 1)
                         
             End If
 
@@ -14116,22 +14126,22 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
 
                 If a = 0 Then
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a, .ColLetterToNumber("A"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("BB"), rowStart, .ColLetterToNumber("BB"), rowStart + a, .ColLetterToNumber("BB"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("BC"), rowStart, .ColLetterToNumber("BC"), rowStart + a, .ColLetterToNumber("BC"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), rowStart + a, .ColLetterToNumber("BD"), (rowStart + a + 1)
+'                    .CopyRange .ColLetterToNumber("BB"), rowStart, .ColLetterToNumber("BB"), rowStart + a, .ColLetterToNumber("BB"), (rowStart + a + 1)
+'                    .CopyRange .ColLetterToNumber("BC"), rowStart, .ColLetterToNumber("BC"), rowStart + a, .ColLetterToNumber("BC"), (rowStart + a + 1)
+'                    .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), rowStart + a, .ColLetterToNumber("BD"), (rowStart + a + 1)
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("M"), rowStart, .ColLetterToNumber("M"), rowStart + a, .ColLetterToNumber("M"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BA"), rowStart + a, .ColLetterToNumber("Q"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), rowStart + a, .ColLetterToNumber("O"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + a, .ColLetterToNumber("Q"), (rowStart + a + 1)
 
                     a = a + 2
                 ElseIf a <> 0 Then
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a - 1, .ColLetterToNumber("A"), rowStart + a
-                    .CopyRange .ColLetterToNumber("BB"), rowStart, .ColLetterToNumber("BB"), rowStart + a - 1, .ColLetterToNumber("BB"), rowStart + a
-                    .CopyRange .ColLetterToNumber("BC"), rowStart, .ColLetterToNumber("BC"), rowStart + a - 1, .ColLetterToNumber("BC"), rowStart + a
-                    .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), rowStart + a - 1, .ColLetterToNumber("BD"), rowStart + a
+'                    .CopyRange .ColLetterToNumber("BB"), rowStart, .ColLetterToNumber("BB"), rowStart + a - 1, .ColLetterToNumber("BB"), rowStart + a
+'                    .CopyRange .ColLetterToNumber("BC"), rowStart, .ColLetterToNumber("BC"), rowStart + a - 1, .ColLetterToNumber("BC"), rowStart + a
+'                    .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), rowStart + a - 1, .ColLetterToNumber("BD"), rowStart + a
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
-                    .CopyRange .ColLetterToNumber("M"), rowStart, .ColLetterToNumber("M"), rowStart + a - 1, .ColLetterToNumber("M"), rowStart + a
-                    .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BA"), rowStart + a - 1, .ColLetterToNumber("Q"), rowStart + a
+                    .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), rowStart + a - 1, .ColLetterToNumber("O"), rowStart + a
+                    .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + a - 1, .ColLetterToNumber("Q"), rowStart + a
 
                     a = a * 2
                 End If
@@ -14139,12 +14149,12 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
             Loop
                 
             .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + (numRow - a - 1), .ColLetterToNumber("A"), rowStart + a
-            .CopyRange .ColLetterToNumber("BB"), rowStart, .ColLetterToNumber("BB"), rowStart + (numRow - a - 1), .ColLetterToNumber("BB"), rowStart + a
-            .CopyRange .ColLetterToNumber("BC"), rowStart, .ColLetterToNumber("BC"), rowStart + (numRow - a - 1), .ColLetterToNumber("BC"), rowStart + a
-            .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), rowStart + (numRow - a - 1), .ColLetterToNumber("BD"), rowStart + a
+'            .CopyRange .ColLetterToNumber("BB"), rowStart, .ColLetterToNumber("BB"), rowStart + (numRow - a - 1), .ColLetterToNumber("BB"), rowStart + a
+'            .CopyRange .ColLetterToNumber("BC"), rowStart, .ColLetterToNumber("BC"), rowStart + (numRow - a - 1), .ColLetterToNumber("BC"), rowStart + a
+'            .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), rowStart + (numRow - a - 1), .ColLetterToNumber("BD"), rowStart + a
             .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + (numRow - a - 1), .ColLetterToNumber("B"), rowStart + a
-            .CopyRange .ColLetterToNumber("M"), rowStart, .ColLetterToNumber("M"), rowStart + (numRow - a - 1), .ColLetterToNumber("M"), rowStart + a
-            .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BA"), rowStart + (numRow - a - 1), .ColLetterToNumber("Q"), rowStart + a
+            .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), rowStart + (numRow - a - 1), .ColLetterToNumber("O"), rowStart + a
+            .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + (numRow - a - 1), .ColLetterToNumber("Q"), rowStart + a
             
         End If
             
@@ -14167,17 +14177,17 @@ Public Sub copyFormulasSheet3(numRow As Long, fps As fpSpread, rowStart As Long)
 
                 If a = 0 Then
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a, .ColLetterToNumber("A"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("AK"), rowStart, .ColLetterToNumber("AK"), rowStart + a, .ColLetterToNumber("AK"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("AR"), rowStart, .ColLetterToNumber("AR"), rowStart + a, .ColLetterToNumber("AR"), (rowStart + a + 1)
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("K"), rowStart, .ColLetterToNumber("AJ"), rowStart + a, .ColLetterToNumber("K"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("L"), rowStart, .ColLetterToNumber("AQ"), rowStart + a, .ColLetterToNumber("L"), (rowStart + a + 1)
 
                     a = a + 2
                 ElseIf a <> 0 Then
                 
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a - 1, .ColLetterToNumber("A"), rowStart + a
-                    .CopyRange .ColLetterToNumber("AK"), rowStart, .ColLetterToNumber("AK"), rowStart + a - 1, .ColLetterToNumber("K"), rowStart + a
+                    .CopyRange .ColLetterToNumber("AR"), rowStart, .ColLetterToNumber("AR"), rowStart + a - 1, .ColLetterToNumber("AR"), rowStart + a
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
-                    .CopyRange .ColLetterToNumber("K"), rowStart, .ColLetterToNumber("AJ"), rowStart + a - 1, .ColLetterToNumber("K"), rowStart + a
+                    .CopyRange .ColLetterToNumber("L"), rowStart, .ColLetterToNumber("AQ"), rowStart + a - 1, .ColLetterToNumber("L"), rowStart + a
 
                     a = a * 2
                 End If
@@ -14195,24 +14205,24 @@ Public Sub copyFormulasSheet3(numRow As Long, fps As fpSpread, rowStart As Long)
                 Do While a < dem
                 
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), 1024 + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * a
-                    .CopyRange .ColLetterToNumber("AK"), rowStart, .ColLetterToNumber("AK"), 1024 + rowStart - 1, .ColLetterToNumber("AK"), rowStart + 1024 * a
+                    .CopyRange .ColLetterToNumber("AR"), rowStart, .ColLetterToNumber("AR"), 1024 + rowStart - 1, .ColLetterToNumber("AR"), rowStart + 1024 * a
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), 1024 + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
-                    .CopyRange .ColLetterToNumber("K"), rowStart, .ColLetterToNumber("AJ"), 1024 + rowStart - 1, .ColLetterToNumber("K"), rowStart + 1024 * a
+                    .CopyRange .ColLetterToNumber("L"), rowStart, .ColLetterToNumber("AQ"), 1024 + rowStart - 1, .ColLetterToNumber("L"), rowStart + 1024 * a
                         
                     a = a + 1
                 Loop
 
                 .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), du + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * a
-                .CopyRange .ColLetterToNumber("AK"), rowStart, .ColLetterToNumber("AK"), du + rowStart - 1, .ColLetterToNumber("AK"), rowStart + 1024 * a
+                .CopyRange .ColLetterToNumber("AR"), rowStart, .ColLetterToNumber("AR"), du + rowStart - 1, .ColLetterToNumber("AR"), rowStart + 1024 * a
                 .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
-                .CopyRange .ColLetterToNumber("K"), rowStart, .ColLetterToNumber("AJ"), du + rowStart - 1, .ColLetterToNumber("K"), rowStart + 1024 * a
+                .CopyRange .ColLetterToNumber("L"), rowStart, .ColLetterToNumber("AQ"), du + rowStart - 1, .ColLetterToNumber("L"), rowStart + 1024 * a
     
             Else
                 
                 .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), du + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * (a - 1)
-                .CopyRange .ColLetterToNumber("AK"), rowStart, .ColLetterToNumber("AK"), du + rowStart - 1, .ColLetterToNumber("AK"), rowStart + 1024 * (a - 1)
+                .CopyRange .ColLetterToNumber("AR"), rowStart, .ColLetterToNumber("AR"), du + rowStart - 1, .ColLetterToNumber("AR"), rowStart + 1024 * (a - 1)
                 .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * (a - 1)
-                .CopyRange .ColLetterToNumber("K"), rowStart, .ColLetterToNumber("AJ"), du + rowStart - 1, .ColLetterToNumber("K"), rowStart + 1024 * (a - 1)
+                .CopyRange .ColLetterToNumber("L"), rowStart, .ColLetterToNumber("AQ"), du + rowStart - 1, .ColLetterToNumber("L"), rowStart + 1024 * (a - 1)
 
             End If
 
@@ -14224,17 +14234,17 @@ Public Sub copyFormulasSheet3(numRow As Long, fps As fpSpread, rowStart As Long)
 
                 If a = 0 Then
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a, .ColLetterToNumber("A"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("AK"), rowStart, .ColLetterToNumber("AK"), rowStart + a, .ColLetterToNumber("AK"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("AR"), rowStart, .ColLetterToNumber("AR"), rowStart + a, .ColLetterToNumber("AR"), (rowStart + a + 1)
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("K"), rowStart, .ColLetterToNumber("AJ"), rowStart + a, .ColLetterToNumber("K"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("L"), rowStart, .ColLetterToNumber("AQ"), rowStart + a, .ColLetterToNumber("L"), (rowStart + a + 1)
                     
                     a = a + 2
                 ElseIf a <> 0 Then
                 
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a - 1, .ColLetterToNumber("A"), rowStart + a
-                    .CopyRange .ColLetterToNumber("AK"), rowStart, .ColLetterToNumber("AK"), rowStart + a - 1, .ColLetterToNumber("AK"), rowStart + a
+                    .CopyRange .ColLetterToNumber("AR"), rowStart, .ColLetterToNumber("AR"), rowStart + a - 1, .ColLetterToNumber("AR"), rowStart + a
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
-                    .CopyRange .ColLetterToNumber("K"), rowStart, .ColLetterToNumber("AJ"), rowStart + a - 1, .ColLetterToNumber("K"), rowStart + a
+                    .CopyRange .ColLetterToNumber("L"), rowStart, .ColLetterToNumber("AQ"), rowStart + a - 1, .ColLetterToNumber("L"), rowStart + a
                 
                     a = a * 2
                 End If
@@ -14242,15 +14252,102 @@ Public Sub copyFormulasSheet3(numRow As Long, fps As fpSpread, rowStart As Long)
             Loop
                 
             .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + (numRow - a - 1), .ColLetterToNumber("A"), rowStart + a
-            .CopyRange .ColLetterToNumber("AK"), rowStart, .ColLetterToNumber("AK"), rowStart + (numRow - a - 1), .ColLetterToNumber("AK"), rowStart + a
+            .CopyRange .ColLetterToNumber("AR"), rowStart, .ColLetterToNumber("AR"), rowStart + (numRow - a - 1), .ColLetterToNumber("AR"), rowStart + a
             .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + (numRow - a - 1), .ColLetterToNumber("B"), rowStart + a
-            .CopyRange .ColLetterToNumber("K"), rowStart, .ColLetterToNumber("AJ"), rowStart + (numRow - a - 1), .ColLetterToNumber("K"), rowStart + a
+            .CopyRange .ColLetterToNumber("L"), rowStart, .ColLetterToNumber("AQ"), rowStart + (numRow - a - 1), .ColLetterToNumber("L"), rowStart + a
             
 
         End If
             
     End With
 
+End Sub
+
+
+Public Sub copyFormulasSheet4(numRow As Long, fps As fpSpread, rowStart As Long)
+    Dim a As Long
+    a = 0
+
+    With fps
+
+        .sheet = 4
+            
+        'truong hop so ban ghe len hon 10000
+        If numRow >= 10000 Then
+
+            Do While a * 2 <= 1024
+
+                If a = 0 Then
+                    .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a, .ColLetterToNumber("A"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("W"), rowStart + a, .ColLetterToNumber("p"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + a, .ColLetterToNumber("AH"), (rowStart + a + 1)
+                    a = a + 2
+                ElseIf a <> 0 Then
+                    .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a - 1, .ColLetterToNumber("A"), rowStart + a
+                    .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
+                    .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("W"), rowStart + a - 1, .ColLetterToNumber("P"), rowStart + a
+                    .CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + a - 1, .ColLetterToNumber("AH"), rowStart + a
+                    a = a * 2
+                End If
+
+            Loop
+                 
+            a = 1
+            Dim dem As Long
+            Dim du  As Long
+            dem = numRow \ 1024
+            du = numRow Mod 1024
+
+            If dem > 0 Then
+
+                Do While a < dem
+                    .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), 1024 + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * a
+                    .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), 1024 + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
+                    .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("W"), 1024 + rowStart - 1, .ColLetterToNumber("P"), rowStart + 1024 * a
+                    .CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), 1024 + rowStart - 1, .ColLetterToNumber("AH"), rowStart + 1024 * a
+                    a = a + 1
+                Loop
+
+                .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), du + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * a
+                .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
+                .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("W"), du + rowStart - 1, .ColLetterToNumber("P"), rowStart + 1024 * a
+                .CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), du + rowStart - 1, .ColLetterToNumber("AH"), rowStart + 1024 * a
+            Else
+                .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), du + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * (a - 1)
+                .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * (a - 1)
+                .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("W"), du + rowStart - 1, .ColLetterToNumber("P"), rowStart + 1024 * (a - 1)
+                .CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), du + rowStart - 1, .ColLetterToNumber("AH"), rowStart + 1024 * (a - 1)
+            End If
+
+            ' truong hop nho hon 10000
+        ElseIf numRow < 10000 Then
+            a = 0
+
+            Do While a * 2 < numRow
+
+                If a = 0 Then
+                    .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a, .ColLetterToNumber("A"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("W"), rowStart + a, .ColLetterToNumber("P"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + a, .ColLetterToNumber("AH"), (rowStart + a + 1)
+                    a = a + 2
+                ElseIf a <> 0 Then
+                    .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a - 1, .ColLetterToNumber("A"), rowStart + a
+                    .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
+                    .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("W"), rowStart + a - 1, .ColLetterToNumber("P"), rowStart + a
+                    .CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + a - 1, .ColLetterToNumber("AH"), rowStart + a
+                    a = a * 2
+                End If
+
+            Loop
+                
+            .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + (numRow - a - 1), .ColLetterToNumber("A"), rowStart + a
+            .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + (numRow - a - 1), .ColLetterToNumber("B"), rowStart + a
+            .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("W"), rowStart + (numRow - a - 1), .ColLetterToNumber("P"), rowStart + a
+            .CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + (numRow - a - 1), .ColLetterToNumber("AH"), rowStart + a
+        End If
+    End With
 End Sub
 
 Public Sub copyFormulas06_TNCN(numRow As Long, fps As fpSpread, rowStart As Long)
@@ -14493,7 +14590,7 @@ Public Sub moveDataNKH()
         xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\BK_05_3_TNCN.xml"))
  
         rowStartSpread1 = 22
-        rowStartSpread2 = 5
+        rowStartSpread2 = 6
     ElseIf Trim(varMenuId) = "59" And fpSpread1.ActiveSheet = 2 Then
         xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\06_TNCN10.xml"))
  
@@ -14533,7 +14630,9 @@ Public Sub moveDataNKH()
                 If mCurrentSheet = 2 Then
                     lrowCount = lrowCount - 4
                 ElseIf mCurrentSheet = 3 Then
-                    lrowCount = lrowCount - 3
+                    lrowCount = lrowCount - 4
+                ElseIf mCurrentSheet = 4 Then
+                    lrowCount = lrowCount - 5
                 End If
                 Exit For
             End If
@@ -14619,13 +14718,11 @@ Public Sub moveDataNKH()
 
     If Trim(varMenuId) = "17" Then
         If fpSpread1.ActiveSheet = 2 Then
-
             gridData05A rowStartSpread1, rowStartSpread2, lrowCount, 2, isFirstRown
-
         ElseIf fpSpread1.ActiveSheet = 3 Then
-
             gridData05B rowStartSpread1, rowStartSpread2, lrowCount, 3, isFirstRown
-
+        ElseIf fpSpread1.ActiveSheet = 4 Then
+            gridData05_3 rowStartSpread1, rowStartSpread2, lrowCount, 4, isFirstRown
         End If
     ElseIf Trim(varMenuId) = "59" Then
         gridData06TNCN rowStartSpread1, rowStartSpread2, lrowCount, 2
@@ -14724,27 +14821,14 @@ ErrHandle:
      Debug.Print "Erros: " & Err.Description
 End Sub
 
-'<CSCM>
-'--------------------------------------------------------------------------------
-' Procedure  :       gridData05B
-' Description:       1. Insert row them cac dong trong
-'                    2. Set border cho grid
-'                    3. copy du lieu Text tu spread2 sang spread1
-'                    4. Set format cho Grid
-'                    5. Copy Fomulas tu dong rowStartSpread1 cho cac dong con lai
-' Created by :       nkhoan
 
-' Parameters :       rowStartSpread1 : dong bat dau Spread1
-'                    rowStartSpread2 : dong bat dau Spread2
-'                    lrowCount : tong so dong can insert
-'--------------------------------------------------------------------------------
-'</CSCM>
-Private Sub gridData05B(rowStartSpread1 As Long, _
+Private Sub gridData05_3(rowStartSpread1 As Long, _
                         rowStartSpread2 As Long, _
                         lrowCount As Long, _
                         numSheet As Integer, isFirstRow As Boolean)
         
-    ReDim fparray(lrowCount - 1, 6) As Variant
+    ReDim fparray(lrowCount - 1, 20) As Variant
+    isFirstRow = True
     fpSpread2.GetArray fpSpread2.ColLetterToNumber("B"), rowStartSpread2, fparray
     Dim a                As Long
     Dim rowStartSpread11 As Long
@@ -14777,9 +14861,8 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
         End If
         
         '2. Set border cho grid
-        .SetCellBorder .ColLetterToNumber("B"), rowStartSpread1, .ColLetterToNumber("J"), (lrowCount + rowStartSpread1), 15, &O0, CellBorderStyleSolid
-        ' set border cot Y
-        .SetCellBorder .ColLetterToNumber("Y"), rowStartSpread1, .ColLetterToNumber("Y"), (lrowCount + rowStartSpread1), 15, &O0, CellBorderStyleSolid
+        .SetCellBorder .ColLetterToNumber("B"), rowStartSpread1, .ColLetterToNumber("Z"), (lrowCount + rowStartSpread1), 15, &O0, CellBorderStyleSolid
+       
 
         '        3. copy du lieu Text tu spread2 sang spread1
         fpSpread2.Row = rowStartSpread2
@@ -14787,7 +14870,503 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
             rowStartSpread1 = rowStartSpread1 + 1
         End If
         
-        Do While fpSpread2.Row < lrowCount + 3
+        Do While fpSpread2.Row < lrowCount + 5
+            DoEvents
+            ProgressBar1.value = a
+            
+            fpSpread2.Row = rowStartSpread2
+            
+            .Row = rowStartSpread1
+            .RowHeight(-2) = 14.5
+            
+
+            .Col = .ColLetterToNumber("D")
+            .Text = fparray(a, 0)
+
+            .Col = .ColLetterToNumber("E")
+            ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
+            If Not IsNull(fparray(a, 1)) Then
+                .Text = Left(fparray(a, 1), IIf(InStr(1, fparray(a, 1), ".") <> 0, InStr(1, fparray(a, 1), ".") - 1, Len(fparray(a, 1))))  'Replace(fparray(a, 1), ".", "")
+            Else
+                .Text = fparray(a, 1)
+            End If
+            
+            .Col = .ColLetterToNumber("F")
+            .Text = fparray(a, 2)
+
+            .Col = .ColLetterToNumber("G")
+            .Text = fparray(a, 3)
+
+            .Col = .ColLetterToNumber("H")
+            ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
+            If Not IsNull(fparray(a, 4)) Then
+                .Text = Left(fparray(a, 4), IIf(InStr(1, fparray(a, 4), ".") <> 0, InStr(1, fparray(a, 4), ".") - 1, Len(fparray(a, 4)))) 'Replace(fparray(a, 4), ".", "")
+            Else
+                .Text = fparray(a, 4)
+            End If
+
+                
+            .Col = .ColLetterToNumber("J")
+            .Text = fparray(a, 5)
+
+            .Col = .ColLetterToNumber("K")
+            .Text = fparray(a, 6)
+            
+            .Col = .ColLetterToNumber("M")
+            .Text = fparray(a, 7)
+            
+            .Col = .ColLetterToNumber("N")
+            .Text = fparray(a, 8)
+           
+           .Col = .ColLetterToNumber("O")
+            .Text = fparray(a, 9)
+            
+            
+            .Col = .ColLetterToNumber("P")
+            .Text = fparray(a, 10)
+
+            .Col = .ColLetterToNumber("Q")
+            .Text = fparray(a, 11)
+            
+            .Col = .ColLetterToNumber("R")
+            .Text = fparray(a, 12)
+            
+            .Col = .ColLetterToNumber("S")
+            .Text = fparray(a, 13)
+            
+            .Col = .ColLetterToNumber("T")
+            .Text = fparray(a, 14)
+            
+            .Col = .ColLetterToNumber("U")
+            .Text = fparray(a, 15)
+            
+            .Col = .ColLetterToNumber("V")
+            .Text = fparray(a, 16)
+            
+            .Col = .ColLetterToNumber("W")
+            .Text = fparray(a, 17)
+            
+            .Col = .ColLetterToNumber("X")
+            .Text = fparray(a, 18)
+            
+            .Col = .ColLetterToNumber("Y")
+            .Text = fparray(a, 19)
+            
+            a = a + 1
+            rowStartSpread1 = rowStartSpread1 + 1
+            rowStartSpread2 = rowStartSpread2 + 1
+
+        Loop
+            
+        ' Truong hop khai 1 dong
+        If lrowCount = 1 Then
+            DoEvents
+            ProgressBar1.value = a
+            
+            fpSpread2.Row = rowStartSpread2
+            
+            .Row = rowStartSpread1
+            .RowHeight(-2) = 14.5
+            
+
+            .Col = .ColLetterToNumber("D")
+            .Text = fparray(a, 0)
+
+            .Col = .ColLetterToNumber("E")
+            ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
+            If Not IsNull(fparray(a, 1)) Then
+                .Text = Left(fparray(a, 1), IIf(InStr(1, fparray(a, 1), ".") <> 0, InStr(1, fparray(a, 1), ".") - 1, Len(fparray(a, 1))))  'Replace(fparray(a, 1), ".", "")
+            Else
+                .Text = fparray(a, 1)
+            End If
+            
+            .Col = .ColLetterToNumber("F")
+            .Text = fparray(a, 2)
+
+            .Col = .ColLetterToNumber("G")
+            .Text = fparray(a, 3)
+
+            .Col = .ColLetterToNumber("H")
+            ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
+            If Not IsNull(fparray(a, 4)) Then
+                .Text = Left(fparray(a, 4), IIf(InStr(1, fparray(a, 4), ".") <> 0, InStr(1, fparray(a, 4), ".") - 1, Len(fparray(a, 4)))) 'Replace(fparray(a, 4), ".", "")
+            Else
+                .Text = fparray(a, 4)
+            End If
+
+                
+            .Col = .ColLetterToNumber("J")
+            .Text = fparray(a, 5)
+
+            .Col = .ColLetterToNumber("K")
+            .Text = fparray(a, 6)
+            
+            .Col = .ColLetterToNumber("M")
+            .Text = fparray(a, 7)
+            
+            .Col = .ColLetterToNumber("N")
+            .Text = fparray(a, 8)
+           
+           .Col = .ColLetterToNumber("O")
+            .Text = fparray(a, 9)
+            
+            
+            .Col = .ColLetterToNumber("P")
+            .Text = fparray(a, 10)
+
+            .Col = .ColLetterToNumber("Q")
+            .Text = fparray(a, 11)
+            
+            .Col = .ColLetterToNumber("R")
+            .Text = fparray(a, 12)
+            
+            .Col = .ColLetterToNumber("S")
+            .Text = fparray(a, 13)
+            
+            .Col = .ColLetterToNumber("T")
+            .Text = fparray(a, 14)
+            
+            .Col = .ColLetterToNumber("U")
+            .Text = fparray(a, 15)
+            
+            .Col = .ColLetterToNumber("V")
+            .Text = fparray(a, 16)
+            
+            .Col = .ColLetterToNumber("W")
+            .Text = fparray(a, 17)
+            
+            .Col = .ColLetterToNumber("X")
+            .Text = fparray(a, 18)
+            
+            .Col = .ColLetterToNumber("Y")
+            .Text = fparray(a, 19)
+
+            a = a + 1
+            rowStartSpread1 = rowStartSpread1 + 1
+            rowStartSpread2 = rowStartSpread2 + 1
+        End If
+        
+     
+        ' 4. Set format cho Grid
+        
+        'format chi tieu [7],[D]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("D")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("D")
+        .BlockMode = True
+        .TypeMaxEditLen = 100
+        .BlockMode = False
+        
+        'format chi tieu [8],[E]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("E")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("E")
+        .BlockMode = True
+        .TypeMaxEditLen = 10
+        .BlockMode = False
+        
+        'format chi tieu [9],[F]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("F")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("F")
+        .BlockMode = True
+        .TypeMaxEditLen = 100
+        .BlockMode = False
+        
+        'format chi tieu [10],[H]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("H")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("H")
+        .BlockMode = True
+        .TypeMaxEditLen = 10
+        .BlockMode = False
+        
+        'format chi tieu [11],[G]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("G")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("G")
+        .BlockMode = True
+        .TypeMaxEditLen = 10
+        .BlockMode = False
+        
+        'format chi tieu [13],[K]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("K")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("K")
+        .BlockMode = True
+        .TypeMaxEditLen = 12
+        .BlockMode = False
+        
+        
+        'format chi tieu [15],[N]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("N")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("N")
+        .BlockMode = True
+        .TypeMaxEditLen = 8
+        .BlockMode = False
+        
+        'format chi tieu [16],[O]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("O")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("O")
+        .BlockMode = True
+        .TypeMaxEditLen = 7
+        .BlockMode = False
+        
+        'format chi tieu [21],[X]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("X")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("X")
+        .BlockMode = True
+        .TypeMaxEditLen = 7
+        .TypeHAlign = TypeHAlignCenter
+        .BlockMode = False
+        
+        
+        'format chi tieu [22],[Y]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("Y")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("Y")
+        .TypeHAlign = TypeHAlignCenter
+        .BlockMode = True
+        .TypeMaxEditLen = 7
+        .BlockMode = False
+        
+        'format chi tieu [12],[J]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("J")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("J")
+        .BlockMode = True
+        .CellType = CellTypeComboBox
+        .BlockMode = False
+
+
+        'format chi tieu ma quoc tich [I]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("I")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("I")
+        .BlockMode = True
+        .CellType = CellTypeComboBox
+        .BlockMode = False
+        
+        'format chi tieu [14],[M]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("M")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("M")
+        .BlockMode = True
+        .CellType = CellTypeComboBox
+        .BlockMode = False
+        
+        
+        'format chi tieu ma quan he [L]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("L")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("L")
+        .BlockMode = True
+        .CellType = CellTypeComboBox
+        .BlockMode = False
+        
+        'format chi tieu [14],[M]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("Q")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("Q")
+        .BlockMode = True
+        .CellType = CellTypeComboBox
+        .BlockMode = False
+        
+        
+        'format chi tieu ma quan he [L]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("P")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("P")
+        .BlockMode = True
+        .CellType = CellTypeComboBox
+        .BlockMode = False
+        
+        
+        'format chi tieu [14],[M]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("R")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("R")
+        .BlockMode = True
+        .CellType = CellTypeComboBox
+        .BlockMode = False
+        
+        
+        'format chi tieu ma quan he [L]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("S")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("S")
+        .BlockMode = True
+        .CellType = CellTypeComboBox
+        .BlockMode = False
+        
+        
+        'format chi tieu [14],[M]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("T")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("T")
+        .BlockMode = True
+        .CellType = CellTypeComboBox
+        .BlockMode = False
+        
+        
+        'format chi tieu ma quan he [L]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("U")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("U")
+        .BlockMode = True
+        .CellType = CellTypeComboBox
+        .BlockMode = False
+        
+        'format chi tieu [14],[M]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("V")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("V")
+        .BlockMode = True
+        .CellType = CellTypeComboBox
+        .BlockMode = False
+        
+        
+        'format chi tieu ma quan he [L]
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("W")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("W")
+        .BlockMode = True
+        .CellType = CellTypeComboBox
+        .BlockMode = False
+
+        .Row = rowStartSpread11
+        .Col = .ColLetterToNumber("C")
+        .Row2 = lrowCount + rowStartSpread11
+        .Col2 = .ColLetterToNumber("Y")
+        .BlockMode = True
+        .FontSize = 8
+        .Lock = False
+        .BlockMode = False
+        
+'        ' set lock cot J
+'        .Row = rowStartSpread11
+'        .Col = .ColLetterToNumber("J")
+'        .Row2 = lrowCount + rowStartSpread11
+'        .Col2 = .ColLetterToNumber("J")
+'        .BlockMode = True
+'        .Lock = True
+'        .BlockMode = False
+        
+        '5. Copy Fomulas tu dong rowStartSpread1 cho cac dong con lai
+
+            If rowStartSpread11 > 22 Then
+                copyFormulasSheet4 lrowCount + 1, fpSpread1, rowStartSpread11
+            Else
+                If isFirstRow = False Then
+                    copyFormulasSheet4 lrowCount + 1, fpSpread1, rowStartSpread11
+                Else
+                    If lrowCount > 1 Then
+                        copyFormulasSheet4 lrowCount, fpSpread1, rowStartSpread11
+                    End If
+                End If
+            End If
+            
+        .EventEnabled(0) = True
+'        .AutoCalc = False
+'        .ReCalc
+'        .AutoCalc = True
+    End With
+
+    Exit Sub
+ErrHandle:
+    SaveErrorLog Me.Name, "gridData05_3", Err.Number, Err.Description
+    Debug.Print "Erros: " & Err.Description
+End Sub
+
+'<CSCM>
+'--------------------------------------------------------------------------------
+' Procedure  :       gridData05B
+' Description:       1. Insert row them cac dong trong
+'                    2. Set border cho grid
+'                    3. copy du lieu Text tu spread2 sang spread1
+'                    4. Set format cho Grid
+'                    5. Copy Fomulas tu dong rowStartSpread1 cho cac dong con lai
+' Created by :       nkhoan
+
+' Parameters :       rowStartSpread1 : dong bat dau Spread1
+'                    rowStartSpread2 : dong bat dau Spread2
+'                    lrowCount : tong so dong can insert
+'--------------------------------------------------------------------------------
+'</CSCM>
+Private Sub gridData05B(rowStartSpread1 As Long, _
+                        rowStartSpread2 As Long, _
+                        lrowCount As Long, _
+                        numSheet As Integer, isFirstRow As Boolean)
+        
+    ReDim fparray(lrowCount - 1, 8) As Variant
+    fpSpread2.GetArray fpSpread2.ColLetterToNumber("B"), rowStartSpread2, fparray
+    Dim a                As Long
+    Dim rowStartSpread11 As Long
+    a = 0
+    rowStartSpread11 = rowStartSpread1
+    On Error GoTo ErrHandle
+
+    With fpSpread1
+        .sheet = numSheet
+        .EventEnabled(0) = False
+
+        ' do hai phu luc A,B co dong bat dau 22, truong hop nay them du lieu vao grid da co du lieu
+        If rowStartSpread1 > 22 Then
+           
+            .MaxRows = lrowCount + .MaxRows
+            ' 1. Insert row them cac dong trong
+            .InsertRows rowStartSpread1 + 1, lrowCount
+           
+            rowStartSpread11 = rowStartSpread1
+        Else
+            .MaxRows = lrowCount + .MaxRows - 1
+            ' 1. Insert row them cac dong trong
+            If isFirstRow = True Then
+                
+                .InsertRows rowStartSpread1 + 1, lrowCount - 1
+            Else
+                
+                .InsertRows rowStartSpread1 + 1, lrowCount
+            End If
+        End If
+        
+        '2. Set border cho grid
+        .SetCellBorder .ColLetterToNumber("B"), rowStartSpread1, .ColLetterToNumber("K"), (lrowCount + rowStartSpread1), 15, &O0, CellBorderStyleSolid
+        ' set border cot Y
+        .SetCellBorder .ColLetterToNumber("Z"), rowStartSpread1, .ColLetterToNumber("Z"), (lrowCount + rowStartSpread1), 15, &O0, CellBorderStyleSolid
+
+        '        3. copy du lieu Text tu spread2 sang spread1
+        fpSpread2.Row = rowStartSpread2
+          If isFirstRow = False Then
+            rowStartSpread1 = rowStartSpread1 + 1
+        End If
+        
+        Do While fpSpread2.Row < lrowCount + 4
             DoEvents
             ProgressBar1.value = a
             
@@ -14856,11 +15435,30 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
             End If
          
             .Col = .ColLetterToNumber("J")
-
+             If IsNumeric(fparray(a, 7)) Then
+                If Val(fparray(a, 7)) > 0 Then
+                    .Text = Round(fparray(a, 7))
+                Else
+                    .Text = 0
+                End If
+            Else
+                .Text = 0
+            End If
+            
+            .Col = .ColLetterToNumber("K")
+             If IsNumeric(fparray(a, 8)) Then
+                If Val(fparray(a, 8)) > 0 Then
+                    .Text = Round(fparray(a, 8))
+                Else
+                    .Text = 0
+                End If
+            Else
+                .Text = 0
+            End If
 '            If IsNumeric(fparray(a, 7)) Then
 '                .Text = Round(fparray(a, 7))
 '            Else
-            .Text = 0
+            '.Text = 0
 '            End If
 
             a = a + 1
@@ -14939,11 +15537,30 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
             End If
          
             .Col = .ColLetterToNumber("J")
+            If IsNumeric(fparray(a, 7)) Then
+                If Val(fparray(a, 7)) > 0 Then
+                    .Text = Round(fparray(a, 7))
+                Else
+                    .Text = 0
+                End If
+            Else
+                .Text = 0
+            End If
 
+            .Col = .ColLetterToNumber("K")
+            If IsNumeric(fparray(a, 8)) Then
+                If Val(fparray(a, 8)) > 0 Then
+                    .Text = Round(fparray(a, 8))
+                Else
+                    .Text = 0
+                End If
+            Else
+                .Text = 0
+            End If
 '            If IsNumeric(fparray(a, 7)) Then
 '                .Text = Round(fparray(a, 7))
 '            Else
-            .Text = 0
+            '.Text = 0
 '            End If
 
             a = a + 1
@@ -14989,11 +15606,11 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
         .TypeHAlign = TypeHAlignCenter
         .BlockMode = False
 
-        'format tu chi tieu [11] den [14],[G]->[J]
+        'format tu chi tieu [11] den [15],[G]->[K]
         .Row = rowStartSpread11
         .Col = .ColLetterToNumber("G")
         .Row2 = lrowCount + rowStartSpread11
-        .Col2 = .ColLetterToNumber("J")
+        .Col2 = .ColLetterToNumber("K")
         .BlockMode = True
         .CellType = CellTypeNumber
         .TypeNumberDecPlaces = 0
@@ -15006,25 +15623,25 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
         .Row = rowStartSpread11
         .Col = .ColLetterToNumber("C")
         .Row2 = lrowCount + rowStartSpread11
-        .Col2 = .ColLetterToNumber("J")
+        .Col2 = .ColLetterToNumber("K")
         .BlockMode = True
         .FontSize = 8
         .Lock = False
         .BlockMode = False
         
-        ' set lock cot J
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("J")
-        .Row2 = lrowCount + rowStartSpread11
-        .Col2 = .ColLetterToNumber("J")
-        .BlockMode = True
-        .Lock = True
-        .BlockMode = False
+'        ' set lock cot J
+'        .Row = rowStartSpread11
+'        .Col = .ColLetterToNumber("J")
+'        .Row2 = lrowCount + rowStartSpread11
+'        .Col2 = .ColLetterToNumber("J")
+'        .BlockMode = True
+'        .Lock = True
+'        .BlockMode = False
         
         .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("Y")
+        .Col = .ColLetterToNumber("Z")
         .Row2 = lrowCount + rowStartSpread11
-        .Col2 = .ColLetterToNumber("Y")
+        .Col2 = .ColLetterToNumber("Z")
         .BlockMode = True
         .CellType = CellTypeCheckBox
         .Lock = False
@@ -15054,7 +15671,7 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
 
     Exit Sub
 ErrHandle:
-    SaveErrorLog Me.Name, "moveDataNKH", Err.Number, Err.Description
+    SaveErrorLog Me.Name, "gridData05B", Err.Number, Err.Description
     Debug.Print "Erros: " & Err.Description
 End Sub
 
@@ -15062,7 +15679,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                         rowStartSpread2 As Long, _
                         lrowCount As Long, _
                         numSheet As Integer, isFirstRow As Boolean)
-    ReDim fparray(lrowCount - 1, 10) As Variant
+    ReDim fparray(lrowCount - 1, 13) As Variant
     fpSpread2.GetArray fpSpread2.ColLetterToNumber("B"), rowStartSpread2, fparray
     Dim a                As Long
     Dim rowStartSpread11 As Long
@@ -15093,7 +15710,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
         End If
 
         '2. Set border cho grid
-        .SetCellBorder .ColLetterToNumber("B"), rowStartSpread1, .ColLetterToNumber("S"), (lrowCount + rowStartSpread1), 15, &O0, CellBorderStyleSolid
+        .SetCellBorder .ColLetterToNumber("B"), rowStartSpread1, .ColLetterToNumber("U"), (lrowCount + rowStartSpread1), 15, &O0, CellBorderStyleSolid
         
         '3. copy du lieu Text tu spread2 sang spread1
         fpSpread2.Row = rowStartSpread2
@@ -15190,6 +15807,18 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
             Else
                 .Text = 0
             End If
+            
+            .Col = .ColLetterToNumber("M")
+            
+            If IsNumeric(fparray(a, 9)) Then
+                If Val(fparray(a, 9)) > 0 Then
+                    .Text = Round(fparray(a, 9))
+                Else
+                    .Text = 0
+                End If
+            Else
+                .Text = 0
+            End If
 
             .Col = .ColLetterToNumber("N")
             
@@ -15203,8 +15832,32 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = 0
             End If
             
-            .Col = .ColLetterToNumber("O")
-            .Text = 0
+            .Col = .ColLetterToNumber("P")
+            
+            If IsNumeric(fparray(a, 12)) Then
+                If Val(fparray(a, 12)) > 0 Then
+                    .Text = Round(fparray(a, 12))
+                Else
+                    .Text = 0
+                End If
+            Else
+                .Text = 0
+            End If
+            
+            
+            .Col = .ColLetterToNumber("Q")
+            
+            If IsNumeric(fparray(a, 13)) Then
+                If Val(fparray(a, 13)) > 0 Then
+                    .Text = Round(fparray(a, 13))
+                Else
+                    .Text = 0
+                End If
+            Else
+                .Text = 0
+            End If
+'            .Col = .ColLetterToNumber("O")
+'            .Text = 0
 
             a = a + 1
             rowStartSpread1 = rowStartSpread1 + 1
@@ -15301,6 +15954,18 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
             Else
                 .Text = 0
             End If
+            
+            .Col = .ColLetterToNumber("M")
+            
+            If IsNumeric(fparray(a, 10)) Then
+                If Val(fparray(a, 10)) > 0 Then
+                    .Text = Round(fparray(a, 10))
+                Else
+                    .Text = 0
+                End If
+            Else
+                .Text = 0
+            End If
 
             .Col = .ColLetterToNumber("N")
             
@@ -15314,8 +15979,33 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = 0
             End If
             
-            .Col = .ColLetterToNumber("O")
-            .Text = 0
+'            .Col = .ColLetterToNumber("O")
+'            .Text = 0
+
+            .Col = .ColLetterToNumber("P")
+            
+            If IsNumeric(fparray(a, 12)) Then
+                If Val(fparray(a, 12)) > 0 Then
+                    .Text = Round(fparray(a, 12))
+                Else
+                    .Text = 0
+                End If
+            Else
+                .Text = 0
+            End If
+            
+            .Col = .ColLetterToNumber("Q")
+            
+            If IsNumeric(fparray(a, 13)) Then
+                If Val(fparray(a, 13)) > 0 Then
+                    .Text = Round(fparray(a, 13))
+                Else
+                    .Text = 0
+                End If
+            Else
+                .Text = 0
+            End If
+            
 
             a = a + 1
             rowStartSpread1 = rowStartSpread1 + 1
@@ -15371,11 +16061,11 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .TypeHAlign = TypeHAlignCenter
                 .BlockMode = False
         
-        'format tu chi tieu [11] den [21],[H]->[S]
+        'format tu chi tieu [11] den [23],[H]->[U]
         .Row = rowStartSpread11
         .Col = .ColLetterToNumber("H")
         .Row2 = lrowCount + rowStartSpread11
-        .Col2 = .ColLetterToNumber("S")
+        .Col2 = .ColLetterToNumber("U")
         .BlockMode = True
         .CellType = CellTypeNumber
         .TypeNumberDecPlaces = 0
@@ -15387,7 +16077,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
         .Row = rowStartSpread11
         .Col = .ColLetterToNumber("C")
         .Row2 = lrowCount + rowStartSpread11
-        .Col2 = .ColLetterToNumber("S")
+        .Col2 = .ColLetterToNumber("U")
         .BlockMode = True
         .TypeVAlign = TypeVAlignCenter
         .FontSize = 8
@@ -15404,11 +16094,11 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
         .Lock = True
         .BlockMode = False
         
-        ' set lock cot R, S
+        ' set lock cot T, U
          .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("R")
+        .Col = .ColLetterToNumber("T")
         .Row2 = lrowCount + rowStartSpread11
-        .Col2 = .ColLetterToNumber("S")
+        .Col2 = .ColLetterToNumber("U")
         .BlockMode = True
         .Lock = True
         .BlockMode = False
