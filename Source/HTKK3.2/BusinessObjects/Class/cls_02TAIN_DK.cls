@@ -1160,7 +1160,7 @@ Public Sub SetActiveKHBS() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
     Dim strValue2 As String
     Dim strValue3 As String
     Dim sheetKhbs As Integer
-    sheetKhbs = 3
+    sheetKhbs = 4
     'Check the second sheet
     'Select Case GetAttribute(xmlNodeValid, "ID")
     For Each xmlNodeValid In TAX_Utilities_v1.NodeValidity.childNodes

@@ -183,7 +183,7 @@ Begin VB.Form frmTraCuu
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          ScrollBars      =   0
-         SpreadDesigner  =   "frmTracuu.frx":044F
+         SpreadDesigner  =   "frmTracuu.frx":04A1
          UserResize      =   1
          Appearance      =   1
       End
@@ -231,7 +231,7 @@ Begin VB.Form frmTraCuu
          ProcessTab      =   -1  'True
          RetainSelBlock  =   0   'False
          RowsFrozen      =   1
-         SpreadDesigner  =   "frmTracuu.frx":0B63
+         SpreadDesigner  =   "frmTracuu.frx":0C07
       End
    End
    Begin VB.Label lblStatus 
@@ -536,6 +536,14 @@ Private Sub btnMo_Click()
         
         Set frmTK = New frmInterfaces
         frmTK.Show
+        
+         If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_10") Then
+            frmTK.cmdLoadToKhai.Visible = True
+            frmTK.cmdInsert.Visible = False
+            'frmTK.cmdDelete.Visible = False
+            frmTK.cmdDelete.Left = frmTK.Frame1.Width - 12100
+            frmTK.cmdKiemTra.Visible = True
+        End If
         
     End With
    
