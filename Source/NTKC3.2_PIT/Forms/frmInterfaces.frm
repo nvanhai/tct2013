@@ -999,6 +999,15 @@ Private Sub cmdSave_Click()
         End If
     End If
     
+    'Chan theo thong tu QN63: Chan 01A/TNDN, 01B/TNDN tu ky ke khai quy 3/2014
+    'todo 330
+    If Val(idToKhai) = 11 Or Val(idToKhai) = 12 Then
+        If (Val(TAX_Utilities_Srv_New.Year) > 2014 Or (TAX_Utilities_Srv_New.Year = "2014" And Val(TAX_Utilities_Srv_New.Month) >= 6)) Then
+            DisplayMessage "0141", msOKOnly, miInformation
+            Exit Sub
+        End If
+    End If
+    
     If clsDAO.Connected = False Then
         Me.MousePointer = vbHourglass
         frmSystem.MousePointer = vbHourglass
@@ -1550,12 +1559,18 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '02/KK-BHDC
-str2 = "aa999262100343639   00201300200200100301/0101/01/1900<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>µ~09/10/2014~~~1~1~~01/2013~11/2013</S></S02>"
-Barcode_Scaned str2
+'str2 = "aa999262100343639   00201300200200100301/0101/01/1900<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>µ~09/10/2014~~~1~1~~01/2013~11/2013</S></S02>"
+'Barcode_Scaned str2
 'str2 = "aa999262100343639   002013002002002003<S02-1><S>~~~0~0~0~0</S></S02-1>"
 'Barcode_Scaned str2
 'str2 = "aa999262100343639   002013002002003003<S02-2><S>~~~0~0~0~0</S></S02-2>"
 'Barcode_Scaned str2
+
+'02/TAIn
+str2 = "aa999772100343639   00201400200200100201/0114/06/2006<S01><S></S><S>010101~Kg~0~0~12~0~0~0~0~0~010102a~Kg~0~0~10~0~0~0~0~0<"
+Barcode_Scaned str2
+str2 = "aa999772100343639   002014002002002002/S><S>010103a~Kg~0~0~11~0~0~0~0~0</S><S>µ~10/10/2014~~~1~~01/2014~12/2014</S></S01>"
+Barcode_Scaned str2
 
 
 End Sub
@@ -2093,6 +2108,16 @@ Private Sub Barcode_Scaned(strBarcode As String)
             '            Or Trim(idToKhai) = "73" Or Trim(idToKhai) = "70" Or Trim(idToKhai) = "81" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "05" Or Trim(idToKhai) = "90" Or Trim(idToKhai) = "86" Then
             If Trim(idToKhai) = "70" Or Trim(idToKhai) = "81" Or Trim(idToKhai) = "72" Then
                 DisplayMessage "0131", msOKOnly, miInformation
+                Exit Sub
+            End If
+        End If
+        
+        'khong nhan cac to khai bo sung khong theo mau HTKK 330
+        'todo
+        idToKhai = Mid(strPrefix, 4, 2)
+        If (Val(Left$(strPrefix, 3)) < 330 And UCase(strLoaiToKhai) = "BS") Then
+            If Trim(idToKhai) = "03" Or Trim(idToKhai) = "77" Or Trim(idToKhai) = "43" Or Trim(idToKhai) = "17" Or Trim(idToKhai) = "59" Or Trim(idToKhai) = "76" Or Trim(idToKhai) = "41" Or Trim(idToKhai) = "26" Or Trim(idToKhai) = "87" Or Trim(idToKhai) = "80" Or Trim(idToKhai) = "82" Or Trim(idToKhai) = "85" Or Trim(idToKhai) = "88" Then
+                DisplayMessage "0140", msOKOnly, miInformation
                 Exit Sub
             End If
         End If
