@@ -3543,7 +3543,7 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
     Dim taxId As Variant
     Dim kyHieuToKhai As Variant
     Dim ctBs As Variant
-    Dim lanBS As Variant
+    Dim lanBs As Variant
     ' Setup ten file theo tung to khai
     If UCase(Trim(loaiToKhai)) = "05_TNCN" _
             Or UCase(Trim(loaiToKhai)) = "02_TNCN_XS" _
@@ -3606,11 +3606,11 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
                     .Col = .ColLetterToNumber("I")
                     .Row = 6
                 End If
-                .GetText .Col, .Row, lanBS
-                If Len(lanBS) = 1 Then
-                    ctBs = "L" & "0" & lanBS
+                .GetText .Col, .Row, lanBs
+                If Len(lanBs) = 1 Then
+                    ctBs = "L" & "0" & lanBs
                 Else
-                    ctBs = "L" & lanBS
+                    ctBs = "L" & lanBs
                 End If
             End If
             ' Lay ma co quan thue cap cuc
@@ -5426,7 +5426,7 @@ Private Sub cmdImportXML_Click()
     Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "64" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "65" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "66" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "67" _
     Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "18" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "27" _
     Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "07" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "13" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "09" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "10" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" _
-    Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "86" Then
+    Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "86" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "97" Then
         If Not objTaxBusiness Is Nothing Then
             objTaxBusiness.finishImportXML
         Else

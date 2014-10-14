@@ -17,7 +17,7 @@
 		<maHuyenDLyThue></maHuyenDLyThue>
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
-	<Static GroupName="TongCaNhanDaKhauTru">
+	<Static GroupName="TongSoNguoiLDong">
 		<ct21>I_36</ct21>
 		<ct22>I_37</ct22>
 	</Static>

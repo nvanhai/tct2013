@@ -7,8 +7,10 @@
 			<ct10></ct10>
 			<ct11></ct11>
 			<ct12></ct12>
+			<ct13_ma>String</ct13_ma>
 			<ct13></ct13>
 			<ct14></ct14>
+			<ct15_ma>String</ct15_ma>
 			<ct15></ct15>
 			<ThoiGianGiamTru>
 				<ct16></ct16>
@@ -24,13 +26,19 @@
 				<ct21></ct21>
 				<ct22></ct22>
 				<NoiDangKy>
+					<ct23_ma></ct23_ma>
 					<ct23></ct23>
+					<ct24_ma></ct24_ma>
 					<ct24></ct24>
+					<ct25_ma></ct25_ma>
 					<ct25></ct25>
+					<ct26_ma></ct26_ma>
 					<ct26></ct26>
 				</NoiDangKy>
 			</ThongTinGKS>
+			<ct27_ma></ct27_ma>
 			<ct27></ct27>
+			<ct28_ma></ct28_ma>
 			<ct28></ct28>
 			<ThoiGianGiamTru>
 				<ct29></ct29>

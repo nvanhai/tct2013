@@ -526,7 +526,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":02C8
+      SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
    End
@@ -784,6 +784,8 @@ Dim objCvt As DateUtils
 Dim strDateKHBS As String
 
 Private strLoaiSacThue As String
+
+Private arrStrXMLFileNames() As String
 
 
 Private Sub cboNganhKD_Click()
@@ -3665,6 +3667,34 @@ Public Sub cmdOK_Click()
             DisplayMessage "0295", msOKOnly, miWarning
             chkTkhaiThang.SetFocus
             Exit Sub
+        End If
+    End If
+    
+    
+    ' kiem tra trung khoang doi voi to khai QT co ky bo sung tu thang den thang
+    If strKHBS = "TKCT" And strKieuKy = KIEU_KY_NAM Then
+        If idToKhai = "93" Or idToKhai = "89" Then
+            If checkKyKKTrung(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk, Trim(txtNgayDau.Text), Trim(txtNgayCuoi.Text)) = True Then
+                DisplayMessage "0340", msOKOnly, miWarning
+                Exit Sub
+            End If
+        Else
+            If checkKyKKTrung(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile"), Trim(txtNgayDau.Text), Trim(txtNgayCuoi.Text)) = True Then
+                DisplayMessage "0340", msOKOnly, miWarning
+                Exit Sub
+            End If
+        End If
+    ElseIf strKHBS = "TKBS" And strKieuKy = KIEU_KY_NAM Then
+        If idToKhai = "93" Or idToKhai = "89" Then
+            If checkKyKKTrung("bs" & Trim$(txtSolan.Text) & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk, Trim(txtNgayDau.Text), Trim(txtNgayCuoi.Text)) = True Then
+                DisplayMessage "0340", msOKOnly, miWarning
+                Exit Sub
+            End If
+        Else
+            If checkKyKKTrung("bs" & Trim$(txtSolan.Text) & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile"), Trim(txtNgayDau.Text), Trim(txtNgayCuoi.Text)) = True Then
+                DisplayMessage "0340", msOKOnly, miWarning
+                Exit Sub
+            End If
         End If
     End If
     
@@ -9049,4 +9079,80 @@ ErrHandle:
     SaveErrorLog Me.Name, "SetValueToListDK", Err.Number, Err.Description
 End Sub
 
+' tenFileTK: truyen datafile cua to khai
+Private Function checkKyKKTrung(ByVal tenFileTK As String, ByVal tuThangKK As String, ByVal denThangKK As String) As Boolean
+    Dim isTrung As Boolean
+    Dim lngIndex As Integer
+    Dim arrTemp() As String
+    Dim tuThang1 As String
+    Dim denThang1 As String
+    Dim chenhLech1 As Integer
+    Dim chenhLech2 As Integer
+    Dim chenhLech3 As Integer
+    Dim chenhLech4 As Integer
+    On Error GoTo ErrHandle
+    ' load danh muc file trong folder
+    LoadXMLFileNames
+    
+    For lngIndex = 0 To UBound(arrStrXMLFileNames)
+        ' to khai chinh thuc
+        If Len(arrStrXMLFileNames(lngIndex)) > 18 Then
+        ' kiem tra 19: YYYY_MMYYYY_MMYYYY
+            If tenFileTK = Mid$(arrStrXMLFileNames(lngIndex), 1, Len(arrStrXMLFileNames(lngIndex)) - 19) Then
+                arrTemp = Split(Right(arrStrXMLFileNames(lngIndex), 13), "_")
+                tuThang1 = arrTemp(0)
+                denThang1 = arrTemp(1)
+                ' kiem tra neu tu thang1 , den thang 1 = tu thang KK , den thang KK thi tra ve false
+                ' truong hop tu thang, den than nam trong khoang
+                chenhLech1 = DateDiff("M", format(tuThangKK, "mm/yyyy"), format(Left(tuThang1, 2) & "/" & Right(tuThang1, 4), "mm/yyyy"))
+                chenhLech2 = DateDiff("M", format(Left(denThang1, 2) & "/" & Right(denThang1, 4), "mm/yyyy"), format(denThangKK, "mm/yyyy"))
+                If chenhLech1 = 0 And chenhLech2 = 0 Then
+                    isTrung = False
+                    Exit For
+                ElseIf chenhLech1 * chenhLech2 > 0 Then
+                    isTrung = True
+                    Exit For
+                End If
+                
+                
+                ' truong hop tu thang 1 nam trong khoang
+                chenhLech1 = DateDiff("M", format(tuThangKK, "mm/yyyy"), format(Left(tuThang1, 2) & "/" & Right(tuThang1, 4), "mm/yyyy"))
+                chenhLech2 = DateDiff("M", format(tuThangKK, "mm/yyyy"), format(Left(denThang1, 2) & "/" & Right(denThang1, 4), "mm/yyyy"))
+                If chenhLech1 * chenhLech2 <= 0 Then
+                    isTrung = True
+                    Exit For
+                End If
+                ' truong hop den thang nam trong khoang
+                chenhLech1 = DateDiff("M", format(denThangKK, "mm/yyyy"), format(Left(tuThang1, 2) & "/" & Right(tuThang1, 4), "mm/yyyy"))
+                chenhLech2 = DateDiff("M", format(denThangKK, "mm/yyyy"), format(Left(denThang1, 2) & "/" & Right(denThang1, 4), "mm/yyyy"))
+                If chenhLech1 * chenhLech2 <= 0 Then
+                    isTrung = True
+                    Exit For
+                End If
+                
+                
+                
+            End If
+        End If
+    Next lngIndex
+    checkKyKKTrung = isTrung
+    Exit Function
+ErrHandle:
+    checkKyKKTrung = False
+    SaveErrorLog "frmPeriod", "checkKyKKTrung", Err.Number, Err.Description
+End Function
 
+
+Private Sub LoadXMLFileNames()
+    Dim lngIndex As Long
+    Dim fso As New FileSystemObject
+    Dim fle As file
+    
+    For Each fle In fso.GetFolder(GetAbsolutePath(TAX_Utilities_v1.DataFolder)).Files
+        If Right$(fle.Name, 4) = ".xml" Then
+            ReDim Preserve arrStrXMLFileNames(lngIndex)
+            arrStrXMLFileNames(lngIndex) = Mid$(fle.Name, 1, Len(fle.Name) - 4)
+            lngIndex = lngIndex + 1
+        End If
+    Next
+End Sub
