@@ -3670,6 +3670,14 @@ Public Sub cmdOK_Click()
         End If
     End If
     
+    ' chan to khai 01A/TNDN, 01B/TNDN ky ke khai quy 3/2014 tro di
+    If idToKhai = "11" Or idToKhai = "12" Then
+        If (Val(TAX_Utilities_v1.ThreeMonths) >= 3 And Val(TAX_Utilities_v1.Year) = 2014) Or Val(TAX_Utilities_v1.Year) > 2014 Then
+            DisplayMessage "0341", msOKOnly, miWarning
+            cmbQuy.SetFocus
+            Exit Sub
+        End If
+    End If
     
     ' kiem tra trung khoang doi voi to khai QT co ky bo sung tu thang den thang
     If strKHBS = "TKCT" And strKieuKy = KIEU_KY_NAM Then
@@ -8337,7 +8345,7 @@ Private Sub SetActiveValueKHBS()
     If varMenuId = "02" Then
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(11), "Active", 1
     ElseIf varMenuId = "01" Then
-        SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(11), "Active", 1
+        SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(7), "Active", 1
     ElseIf varMenuId = "04" Then
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(1), "Active", 1
     ElseIf varMenuId = "95" Then
