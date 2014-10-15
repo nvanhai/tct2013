@@ -224,7 +224,7 @@ Public Sub Prepare2()
         .Sheet = sheetPl01_1_GTGT 'PL1
             .ActiveSheet = .Sheet
                 .Row = 1
-                .Col = .ColLetterToNumber("D")
+                .Col = .ColLetterToNumber("F")
                 .CellType = CellTypeButton
                 .TypeButtonTextColor = RGB(0, 0, 255)
                 .TypeButtonColor = &H8000000F
@@ -788,9 +788,9 @@ Private Sub CheckDynamicError()
             arrCellTag = Split(.CellTag, "~")
             If UBound(arrCellTag) > 0 Then
             strCellTag = arrCellTag(1)
-            .GetText .ColLetterToNumber("C"), .Row, vMaHoaDon
-            .GetText .ColLetterToNumber("D"), .Row, vKyHieuMauHoaDon
-            .GetText .ColLetterToNumber("E"), .Row, vKyHieuHD
+            '.GetText .ColLetterToNumber("C"), .Row, vMaHoaDon
+            '.GetText .ColLetterToNumber("D"), .Row, vKyHieuMauHoaDon
+            '.GetText .ColLetterToNumber("E"), .Row, vKyHieuHD
             .GetText .ColLetterToNumber("F"), .Row, vSoHD
             .GetText .ColLetterToNumber("G"), .Row, vNgayHD
             .GetText .ColLetterToNumber("H"), .Row, vTennguoimua

@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":1969
+         SpreadDesigner  =   "frmInterfaces.frx":19A5
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1BF1
+      SpreadDesigner  =   "frmInterfaces.frx":1C69
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -846,9 +846,9 @@ ElseIf Trim(varMenuId) = "01" And fpSpread1.ActiveSheet = 2 Then
 ElseIf Trim(varMenuId) = "01" And fpSpread1.ActiveSheet = 3 Then
     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_01_2_GTGT.xml"))
     colStart = 3
-ElseIf Trim(varMenuId) = "01" And fpSpread1.ActiveSheet = 4 Then
-    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_01_3_GTGT.xml"))
-    colStart = 3
+'ElseIf Trim(varMenuId) = "01" And fpSpread1.ActiveSheet = 4 Then
+'    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_01_3_GTGT.xml"))
+'    colStart = 3
 ElseIf Trim(varMenuId) = "02" Then
     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_02_1_GTGT.xml"))
     colStart = 3
@@ -5952,16 +5952,16 @@ Private Sub cmdInsert_Click()
             End If
         Next intCtrl
         
-        ' Them phu luc tren to khai 01_GTGT
-        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
-            blCheck_S4A = IIf(TAX_Utilities_v1.NodeValidity.childNodes(4).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-            If blCheck_S4A = True Then
-                If Not objTaxBusiness Is Nothing Then
-                     objTaxBusiness.update_01_4A
-                     objTaxBusiness.reset_01_4A
-                End If
-            End If
-        End If
+'        ' Them phu luc tren to khai 01_GTGT
+'        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
+'            blCheck_S4A = IIf(TAX_Utilities_v1.NodeValidity.childNodes(4).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+'            If blCheck_S4A = True Then
+'                If Not objTaxBusiness Is Nothing Then
+'                     objTaxBusiness.update_01_4A
+'                     objTaxBusiness.reset_01_4A
+'                End If
+'            End If
+'        End If
         
         ' Them phu luc tren to khai 03_TNDN
         If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "03" Then

@@ -126,7 +126,7 @@ Begin VB.Form frmReportData
       DisplayText     =   ""
       BarWidthReduction=   -1
       TextAlignment   =   0
-      Quality         =   68
+      Quality         =   0
    End
 End
 Attribute VB_Name = "frmReportData"
@@ -608,51 +608,51 @@ nextPrinter:
             fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0203"), "Msg")
         End If
         
-        ' PL 01-3
-        ' format lai cac cot so tien ve text
-        Dim idx As Long
-        fpsReport.sheet = 4
-        idx = 20
-        Do
-            fpsReport.Row = idx
-            fpsReport.Col = fpsReport.ColLetterToNumber("M")
-            fpsReport.CellType = 1
-            fpsReport.TypeVAlign = TypeVAlignCenter
-            'fpsReport.TypeTextWordWrap = True
-            
-            fpsReport.Col = fpsReport.ColLetterToNumber("AJ")
-            fpsReport.CellType = 1
-            fpsReport.TypeVAlign = TypeVAlignCenter
-            'fpsReport.TypeTextWordWrap = True
-            
-            fpsReport.Col = fpsReport.ColLetterToNumber("AY")
-            fpsReport.CellType = 1
-            fpsReport.TypeVAlign = TypeVAlignCenter
-            'fpsReport.TypeTextWordWrap = True
-            
-            fpsReport.Col = fpsReport.ColLetterToNumber("BK")
-            fpsReport.CellType = 1
-            fpsReport.TypeVAlign = TypeVAlignCenter
-            'fpsReport.TypeTextWordWrap = True
-            
-            fpsReport.Col = fpsReport.ColLetterToNumber("BU")
-            fpsReport.CellType = 1
-            fpsReport.TypeVAlign = TypeVAlignCenter
-            'fpsReport.TypeTextWordWrap = True
-            
-            fpsReport.Col = fpsReport.ColLetterToNumber("CC")
-            fpsReport.CellType = 1
-            fpsReport.TypeVAlign = TypeVAlignCenter
-            'fpsReport.TypeTextWordWrap = True
-            
-            fpsReport.Col = fpsReport.ColLetterToNumber("CK")
-            fpsReport.CellType = 1
-            fpsReport.TypeVAlign = TypeVAlignCenter
-            'fpsReport.TypeTextWordWrap = True
-            
-            fpsReport.Col = fpsReport.ColLetterToNumber("B")
-            idx = idx + 1
-        Loop Until fpsReport.Text = "aa"
+'        ' PL 01-3
+'        ' format lai cac cot so tien ve text
+'        Dim idx As Long
+'        fpsReport.sheet = 4
+'        idx = 20
+'        Do
+'            fpsReport.Row = idx
+'            fpsReport.Col = fpsReport.ColLetterToNumber("M")
+'            fpsReport.CellType = 1
+'            fpsReport.TypeVAlign = TypeVAlignCenter
+'            'fpsReport.TypeTextWordWrap = True
+'
+'            fpsReport.Col = fpsReport.ColLetterToNumber("AJ")
+'            fpsReport.CellType = 1
+'            fpsReport.TypeVAlign = TypeVAlignCenter
+'            'fpsReport.TypeTextWordWrap = True
+'
+'            fpsReport.Col = fpsReport.ColLetterToNumber("AY")
+'            fpsReport.CellType = 1
+'            fpsReport.TypeVAlign = TypeVAlignCenter
+'            'fpsReport.TypeTextWordWrap = True
+'
+'            fpsReport.Col = fpsReport.ColLetterToNumber("BK")
+'            fpsReport.CellType = 1
+'            fpsReport.TypeVAlign = TypeVAlignCenter
+'            'fpsReport.TypeTextWordWrap = True
+'
+'            fpsReport.Col = fpsReport.ColLetterToNumber("BU")
+'            fpsReport.CellType = 1
+'            fpsReport.TypeVAlign = TypeVAlignCenter
+'            'fpsReport.TypeTextWordWrap = True
+'
+'            fpsReport.Col = fpsReport.ColLetterToNumber("CC")
+'            fpsReport.CellType = 1
+'            fpsReport.TypeVAlign = TypeVAlignCenter
+'            'fpsReport.TypeTextWordWrap = True
+'
+'            fpsReport.Col = fpsReport.ColLetterToNumber("CK")
+'            fpsReport.CellType = 1
+'            fpsReport.TypeVAlign = TypeVAlignCenter
+'            'fpsReport.TypeTextWordWrap = True
+'
+'            fpsReport.Col = fpsReport.ColLetterToNumber("B")
+'            idx = idx + 1
+'        Loop Until fpsReport.Text = "aa"
         
     ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "73" Then
         If strLoaiNNKD = "1054" Then
