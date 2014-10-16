@@ -70,7 +70,7 @@ Begin VB.Form frmTreeviewMenu
          Strikethrough   =   0   'False
       EndProperty
       ScrollBarExtMode=   -1  'True
-      SpreadDesigner  =   "frmTreeviewMenu.frx":021A
+      SpreadDesigner  =   "frmTreeviewMenu.frx":026C
       VirtualScrollBuffer=   -1  'True
       Appearance      =   1
    End
@@ -121,7 +121,7 @@ Dim fillerline As Picture
 Dim endline As Picture
 Dim prevbnum As Long, prevprow As Long
 Dim prevsel(0, 1) As Long
-Dim arrnodemenu(104, 4) As String    'Store the demo info
+Dim arrnodemenu(114, 4) As String    'Store the demo info
 Dim isend As Boolean
 Dim actRow As Long
 
@@ -678,7 +678,7 @@ On Error GoTo ErrorHandle
         .ArrowsExitEditMode = True
         .GrayAreaBackColor = RGB(244, 238, 202) 'vbWhite
         .MaxCols = 10  'Set the maximum number of columns
-        .MaxRows = 104  'Set the maximum number of rows
+        .MaxRows = 114  'Set the maximum number of rows
         .GridSolid = True
         .BackColorStyle = BackColorStyleOverGrid
         .ScrollBars = ScrollBarsNone
