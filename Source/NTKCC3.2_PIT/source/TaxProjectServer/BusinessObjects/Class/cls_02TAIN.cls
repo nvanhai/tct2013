@@ -346,10 +346,11 @@ Public Function InsertDTL() As String
                      .Col = .ColLetterToNumber("B")
                      .Row = .Row + 1
                      countSTT = countSTT + 1
+                     
                      If .Text = "aa" And Section = 1 Then
                         Section = 2
-                        .Row = .Row + 3
                         
+                        .Row = .Row + 3
                         'insert dong II.Tài nguyên thu mua gom
                         countSTT = 1
                         STTIN = "'II'"
