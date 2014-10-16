@@ -105,6 +105,7 @@ Public strHiddenFormName As String                          ' Save name of hidde
 Public strInterfaceUnloadEventName As String                          ' Name of unload event
 Public strKHBS As String                          ' Save name KHBS
 Public strSolanBS As String                          ' Save name KHBS
+Public strSolanKK As String
 
 Public strSoLanXuatBan As String
 
@@ -519,7 +520,7 @@ Public Sub SetupData(pGrid As fpSpread)
                     Else
                         If GetAttribute(TAX_Utilities_v1.NodeMenu, "Month") = "1" And GetAttribute(TAX_Utilities_v1.NodeMenu, "Day") = "0" Then
                             ' to khai GTGT co to khai thang va quy
-                            If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" _
+                            If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" _
                             Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" _
                             Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Then
                                If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Then
@@ -603,6 +604,8 @@ Public Sub SetupData(pGrid As fpSpread)
                                 Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "41" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "17" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "26" Then
                                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" _
                                 & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
+                                ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Then
+                                    strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_L" & strSolanKK & "_" & TAX_Utilities_v1.Year & ".xml"
                                 Else
                                     'Data file not contain Day from and to.
                                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" _
@@ -618,7 +621,7 @@ Public Sub SetupData(pGrid As fpSpread)
                     Else
                         If GetAttribute(TAX_Utilities_v1.NodeMenu, "Month") = "1" And GetAttribute(TAX_Utilities_v1.NodeMenu, "Day") = "0" Then
                             ' to khai thang quy GTGT
-                            If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" _
+                            If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" _
                             Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" _
                             Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Then
                                 If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Then
@@ -655,7 +658,7 @@ Public Sub SetupData(pGrid As fpSpread)
                             ' set ten file de lay du lieu phuc vu to khai BS
                             If lSheet = 0 Then
                                 If Trim(strSolanBS) = "1" And Trim(TAX_Utilities_v1.month) <> "" Then
-                                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" _
+                                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" _
                                     Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" _
                                     Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Then
                                         If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Then
@@ -698,7 +701,7 @@ Public Sub SetupData(pGrid As fpSpread)
                                 ElseIf Trim(strSolanBS) = "1" And Trim(TAX_Utilities_v1.ThreeMonths) <> "" Then
                                     strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                                 Else
-                                     If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" _
+                                     If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" _
                                     Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Then
                                         If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Then
                                             If strQuy = "TK_THANG" Then
@@ -755,7 +758,7 @@ Public Sub SetupData(pGrid As fpSpread)
                                 If Not fso.FileExists(strDataFileName) Then
                                     ' Neu chua ton tai lan bo sung nay va lan bo sung la 1 thi se lay to khai chinh thuc de cap nhat du lieu
                                     If Trim(strSolanBS) = "1" Then
-                                        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" _
+                                        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" _
                                         Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" _
                                         Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Then
                                             If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Then
@@ -791,7 +794,7 @@ Public Sub SetupData(pGrid As fpSpread)
                                         End If
                                     Else
                                         ' Neu bo sung tu lan thu 2 tro di thi se lay lan gan voi lan bo sung nhat
-                                        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" _
+                                        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" _
                                         Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" _
                                         Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Then
                                             If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Then
@@ -1200,7 +1203,7 @@ Public Sub SetupData(pGrid As fpSpread)
                 Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "11" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "12" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "06" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "05" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "77" _
                 Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "72" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "03" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "80" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "81" _
                 Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "82" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "86" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "87" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "89" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "73" _
-                Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "83" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "85" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "90" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" _
+                Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "83" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "85" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "90" _
                 Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "94" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "99" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "92" _
                 Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "97" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "93" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "88") And fso.FileExists(strDataFileNameBS) Then
                      isNewdataBS = False
@@ -2372,7 +2375,7 @@ Public Function CheckPeriod(ByVal strMonth As String, ByVal strYear As String) A
             End If
         End If
     ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "Month") = "1" Then 'strKieuKy = KIEU_KY_THANG
-        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" _
+        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" _
             Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" _
             Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Then
             If strQuy = "TK_THANG" Then
@@ -3274,7 +3277,7 @@ Public Sub SetupDataKHBS(pGrid As fpSpread)
                  Dim dNgayCuoiKy As Date
                 
                 If TAX_Utilities_v1.month <> "" Then
-                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" _
+                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" _
                             Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Then
                         If strQuy = "TK_THANG" Then
                             If TAX_Utilities_v1.month = 12 Then
@@ -3419,7 +3422,7 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                             End If
                             hannop = format(hannop, "dd/mm/yyyy")
                         End If
-                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" _
+                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" _
                             Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "99" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "92" Then
                         If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "99" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "92" Then
                            If strQuy = "TK_THANG" Then
@@ -4025,11 +4028,11 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             strResult(1) = "Q_36~Q_37~Q_38~Q_39~Q_40~Q_41~Q_42~Dynamic_0"
             strResult(2) = "E_59~O_59~E_61~O_61~C_67~F_67~I_67~L_67~Dynamic_0"
 
-        Case "95"
-            ReDim strResult(3)
-            strResult(0) = "F_6~Dynamic_0"
-            strResult(1) = "Q_36~Q_37~Q_38~Q_39~Q_40~Q_41~Q_42~Dynamic_0"
-            strResult(2) = "E_59~O_59~E_61~O_61~C_67~F_67~I_67~L_67~Dynamic_0"
+'        Case "95"
+'            ReDim strResult(3)
+'            strResult(0) = "F_6~Dynamic_0"
+'            strResult(1) = "Q_36~Q_37~Q_38~Q_39~Q_40~Q_41~Q_42~Dynamic_0"
+'            strResult(2) = "E_59~O_59~E_61~O_61~C_67~F_67~I_67~L_67~Dynamic_0"
 
             ' 04_GTGT /TT156
         Case "71"
@@ -4451,7 +4454,7 @@ Public Function GetHanNopTk() As String
                     hannop = "02/" & "05" & "/" & TAX_Utilities_v1.Year
                 End If
             End If
-        ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" _
+        ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" _
                 Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" _
                 Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "98" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "99" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "92" Then
             If strQuy = "TK_THANG" Then

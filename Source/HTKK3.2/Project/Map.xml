@@ -149,7 +149,7 @@
 		<Validity StartDate="01/01/1900" DataFile="01_BVMT,KHBS_01_BVMT" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
 	<Map ID="87" FinanceYear="0" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Tờ khai quyết toán phí bảo vệ môi trường (02/BVMT)" LoaiTK="Y">
-		<Validity StartDate="01/01/1900" DataFile="02_BVMT,KHBS_02_BVMT" ThueKhauTru="" ThuePhaiNop=""/>
+		<Validity StartDate="01/01/1900" DataFile="02_BVMT,KHBS_02_BVMT" ThueKhauTru="" ThuePhaiNop="Q_37"/>
 	</Map>
 	
 	<Map ID="85" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai Phí, lệ phí (01/PHLP)" LoaiTK="M">

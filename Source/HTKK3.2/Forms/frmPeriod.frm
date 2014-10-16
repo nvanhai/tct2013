@@ -2753,6 +2753,11 @@ Public Sub cmdOK_Click()
     strSolanBS = ""
     End If
     
+    ' xy ly cho bang ke NPT
+    If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "95" Then
+        strSolanKK = txtSolan.Text
+    End If
+    
     ' set so lan xuat ban dau tho
     If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98" Then
         If chkTKhaiLanXB.value = 1 Then
@@ -2938,7 +2943,7 @@ Public Sub cmdOK_Click()
     
     '***************************
     If strKieuKy = KIEU_KY_THANG Then
-        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" _
+        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" _
         Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Then
 
             If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Then
@@ -2953,7 +2958,7 @@ Public Sub cmdOK_Click()
                         Exit Sub
                     End If
                     
-                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Then
+                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Then
 
                         If (Val(TAX_Utilities_v1.ThreeMonths) < 3 And Val(TAX_Utilities_v1.Year) = 2013) Or Val(TAX_Utilities_v1.Year) < 2013 Then
                             DisplayMessage "0272", msOKOnly, miCriticalError
@@ -2976,7 +2981,7 @@ Public Sub cmdOK_Click()
                         Exit Sub
                     End If
                     
-                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Then
+                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Then
 
                         If (Val(TAX_Utilities_v1.ThreeMonths) < 3 And Val(TAX_Utilities_v1.Year) = 2013) Or Val(TAX_Utilities_v1.Year) < 2013 Then
                             DisplayMessage "0272", msOKOnly, miCriticalError
@@ -3269,7 +3274,7 @@ Public Sub cmdOK_Click()
     'set data
     TAX_Utilities_v1.Year = txtYear.Text
     If strKieuKy = KIEU_KY_THANG Then
-        If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "01" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "02" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "04" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "95" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "71" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "36" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "25" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "96" _
+        If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "01" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "02" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "04" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "71" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "36" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "25" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "96" _
         Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "94" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "98" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "92" Then
 
             If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "71" Then
@@ -3735,7 +3740,7 @@ Public Sub cmdOK_Click()
                     strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                 End If
 
-            ElseIf idToKhai = "01" Or idToKhai = "02" Or idToKhai = "04" Or idToKhai = "95" Or idToKhai = "71" Or idToKhai = "96" Or idToKhai = "94" Then
+            ElseIf idToKhai = "01" Or idToKhai = "02" Or idToKhai = "04" Or idToKhai = "71" Or idToKhai = "96" Or idToKhai = "94" Then
 
                 If idToKhai = "71" Then
                     If strQuy = "TK_THANG" Then
@@ -4020,7 +4025,7 @@ Private Sub Form_Load()
         SetupLayoutTNCN_QT
     ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "99" Then
         SetupLayoutTNDN_DK (strKieuKy)
-    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "96" _
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "96" _
     Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "94" Then
         SetLayoutToKhaiThangQuy
     ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Then
@@ -4057,6 +4062,8 @@ Private Sub Form_Load()
         SetupLayoutBC26
     ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "65" Then
         SetupLayoutBC01
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" Then
+        SetupLayout16TH
     Else
         If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "13" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "18" Then
             strQuy = "TK_QUY"
@@ -4227,6 +4234,8 @@ Private Sub SetupLayout(strKieuKy As String)
             Set txtYear.Container = frmKy
             txtYear.Top = 420
             txtYear.Left = lblYear.Left + lblYear.Width + 50 '1200
+            
+            
             
             If GetAttribute(TAX_Utilities_v1.NodeMenu, "PopID") = "101" Then
                 SetControlCaption Me, "frmPeriodBCTC"
@@ -5896,12 +5905,12 @@ Private Sub OptBosung_Click()
     
     varMenuId = GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID")
     If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11") Or ((TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_15")) Or varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "06" Or varMenuId = "05" Or varMenuId = "70" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "73" _
-    Or varMenuId = "03" Or varMenuId = "77" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "86" Or varMenuId = "90" Or varMenuId = "87" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "96" Or varMenuId = "97" Or varMenuId = "98" Or varMenuId = "99" Or varMenuId = "24" Then
+    Or varMenuId = "03" Or varMenuId = "77" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "86" Or varMenuId = "90" Or varMenuId = "87" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "88" Or varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "96" Or varMenuId = "97" Or varMenuId = "98" Or varMenuId = "99" Or varMenuId = "24" Then
         For i = 1 To 50
             ' Doi voi to khai thang neu la truong hop bo sung thi quet tat ca cac file xem lan bo sung lon nhat la bao nhieu
             ' Thu tu file bo sung tu 1 den 50
             If (varMenuId = "46" Or varMenuId = "48" Or varMenuId = "15" Or varMenuId = "50" Or varMenuId = "39" Or varMenuId = "36" Or varMenuId = "25" Or varMenuId = "53" Or varMenuId = "54" Or varMenuId = "70" Or varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "06" Or varMenuId = "05" Or varMenuId = "71" _
-            Or varMenuId = "72" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "86" Or varMenuId = "90" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "92" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "98" Or varMenuId = "96") Then
+            Or varMenuId = "72" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "86" Or varMenuId = "90" Or varMenuId = "90" Or varMenuId = "92" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "98" Or varMenuId = "96") Then
                 If varMenuId = "70" Or varMenuId = "06" Or varMenuId = "90" Then
                     If strLoaiTKThang_PS = "TK_THANG" Then
                         strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & i & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
@@ -5960,7 +5969,7 @@ Private Sub OptBosung_Click()
             strSolanBS = txtSolan.Text
             ' kiem tra to khai bs GTGT
             If varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "06" Or varMenuId = "05" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "73" Or varMenuId = "03" _
-            Or varMenuId = "77" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "96" Or varMenuId = "97" Or varMenuId = "98" Or varMenuId = "99" Then
+            Or varMenuId = "77" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "90" Or varMenuId = "88" Or varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "96" Or varMenuId = "97" Or varMenuId = "98" Or varMenuId = "99" Then
                 Frame2.Visible = False
                 lblSelectAll.Visible = False
                 chkSelectAll.Visible = False
@@ -6204,7 +6213,7 @@ Private Sub OptBosung_Click()
             strSolanBS = ""
             ' kiem tra to khai bs GTGT
             If varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "06" Or varMenuId = "05" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "73" _
-            Or varMenuId = "77" Or varMenuId = "86" Or varMenuId = "90" Or varMenuId = "87" Or varMenuId = "03" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "96" Or varMenuId = "97" Or varMenuId = "98" Or varMenuId = "99" Then
+            Or varMenuId = "77" Or varMenuId = "86" Or varMenuId = "90" Or varMenuId = "87" Or varMenuId = "03" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "90" Or varMenuId = "88" Or varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "96" Or varMenuId = "97" Or varMenuId = "98" Or varMenuId = "99" Then
                 ' to khai nao co phu luc thi moi hien thi len
                 If Not fpSpread1.Visible And TAX_Utilities_v1.NodeValidity.childNodes.length > 2 Then
                     Frame2.Visible = True
@@ -6298,6 +6307,9 @@ Private Sub OptBosung_Click()
         ElseIf Trim(varMenuId) = "76" Then
             TIEN_TO_DATA_FILE = "08B_TNCN"
             CELL_SO_LAN_BS = "I_38"
+        ElseIf Trim(varMenuId) = "95" Then
+            TIEN_TO_DATA_FILE = "16_TH_DKNPT"
+            CELL_SO_LAN_BS = "J_6"
         End If
         
         With xmlDomLastData
@@ -6344,7 +6356,7 @@ Private Sub OptChinhthuc_Click()
     varMenuId = GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID")
     ' Doi voi truong hop to khai thang/quy thi van phai giu lai ghi bo sung nhu thong nhat tu phien ban 2.1.0
     If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_11") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_15") Or varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "06" Or varMenuId = "05" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "73" _
-    Or varMenuId = "03" Or varMenuId = "77" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "96" Or varMenuId = "97" Or varMenuId = "98" Or varMenuId = "99" Or varMenuId = "24" Or varMenuId = "93" Or varMenuId = "89" Then
+    Or varMenuId = "03" Or varMenuId = "77" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "90" Or varMenuId = "88" Or varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "96" Or varMenuId = "97" Or varMenuId = "98" Or varMenuId = "99" Or varMenuId = "24" Or varMenuId = "93" Or varMenuId = "89" Then
         If OptBosung.value = True Then
             lblSolan.Visible = False
             txtSolan.Visible = False
@@ -6352,7 +6364,7 @@ Private Sub OptChinhthuc_Click()
             strSolanBS = txtSolan.Text
             ' kiem tra to khai bs GTGT
             If varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "06" Or varMenuId = "05" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "73" _
-            Or varMenuId = "77" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "03" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "96" Or varMenuId = "97" Or varMenuId = "98" Or varMenuId = "99" Then
+            Or varMenuId = "77" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "03" Or varMenuId = "90" Or varMenuId = "88" Or varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "96" Or varMenuId = "97" Or varMenuId = "98" Or varMenuId = "99" Then
                 Frame2.Visible = False
                 lblSelectAll.Visible = False
                 chkSelectAll.Visible = False
@@ -6454,7 +6466,7 @@ Private Sub OptChinhthuc_Click()
             strSolanBS = ""
             ' kiem tra to khai bs GTGT
             If varMenuId = "02" Or varMenuId = "01" Or varMenuId = "04" Or varMenuId = "11" Or varMenuId = "12" Or varMenuId = "06" Or varMenuId = "05" Or varMenuId = "71" Or varMenuId = "72" Or varMenuId = "73" Or varMenuId = "03" _
-            Or varMenuId = "77" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "90" Or varMenuId = "95" Or varMenuId = "88" Or varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "96" Or varMenuId = "97" Or varMenuId = "98" Or varMenuId = "99" Then
+            Or varMenuId = "77" Or varMenuId = "80" Or varMenuId = "81" Or varMenuId = "70" Or varMenuId = "82" Or varMenuId = "83" Or varMenuId = "85" Or varMenuId = "86" Or varMenuId = "87" Or varMenuId = "90" Or varMenuId = "88" Or varMenuId = "92" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "94" Or varMenuId = "96" Or varMenuId = "97" Or varMenuId = "98" Or varMenuId = "99" Then
                 If Not fpSpread1.Visible And TAX_Utilities_v1.NodeValidity.childNodes.length > 2 Then
                     Frame2.Visible = True
                     lblSelectAll.Visible = True
@@ -7318,6 +7330,8 @@ On Error GoTo ErrHandle
                         Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "41" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "17" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "26" Then
                             ' QT TNCN
                             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & txtYear.Text & "_" & Replace$(txtNgayDau.Text, "/", "") & "_" & Replace$(txtNgayCuoi.Text, "/", "") & ".xml"
+                        ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Then
+                            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_L" & strSolanKK & "_" & txtYear.Text & ".xml"
                         Else
                             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(xmlNode, "DataFile") & "_" & txtYear.Text & ".xml"
                         End If
@@ -8348,8 +8362,8 @@ Private Sub SetActiveValueKHBS()
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(7), "Active", 1
     ElseIf varMenuId = "04" Then
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(1), "Active", 1
-    ElseIf varMenuId = "95" Then
-        SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(3), "Active", 1
+'    ElseIf varMenuId = "95" Then
+'        SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(3), "Active", 1
     ElseIf varMenuId = "88" Then
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(1), "Active", 1
     ElseIf varMenuId = "73" Or varMenuId = "71" Then
@@ -8870,6 +8884,54 @@ ErrorHandle:
     
 End Sub
 
+
+Private Sub SetupLayout16TH()
+    On Error GoTo ErrorHandle
+    Me.Height = 3285
+    Me.Width = 4905
+    
+    frmKy.Height = 1200
+    
+    Set lblYear.Container = frmKy
+    lblYear.Top = 380
+    lblYear.Left = (frmKy.Width - txtYear.Width) / 2 - 100
+    
+    Set txtYear.Container = frmKy
+    txtYear.Top = 300
+    txtYear.Left = lblYear.Left + lblYear.Width + 50 '1200
+    
+    Set lblSolan.Container = frmKy
+    lblSolan.Top = 780
+    lblSolan.Left = (frmKy.Width - txtYear.Width) / 2 - 100
+   
+    
+    Set txtSolan.Container = frmKy
+    txtSolan.Top = 780
+    txtSolan.Left = lblYear.Left + lblYear.Width + 50 '1200
+    
+    
+        
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "PopID") = "101" Then
+        SetControlCaption Me, "frmPeriodBCTC"
+    Else
+        SetControlCaption Me, "frmPeriodQuy"
+    End If
+    'SetControlCaption Me, "frmPeriodQuy"
+    
+    txtNgayDau.Visible = False
+    txtNgayCuoi.Visible = False
+    txtMonth.Visible = False
+    cmbQuy.Visible = False
+    
+    strKHBS = "TKCT"
+    Me.Top = (frmSystem.ScaleHeight - Me.ScaleHeight) / 2
+    Me.Left = (frmSystem.Width - Me.Width) / 2
+    Exit Sub
+     
+ErrorHandle:
+    SaveErrorLog Me.Name, "SetupLayout16TH", Err.Number, Err.Description
+    
+End Sub
 
 ' to khai 04/GTGT
 Private Sub SetLayoutToKhaiThangQuyLanPS()

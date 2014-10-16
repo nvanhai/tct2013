@@ -145,7 +145,7 @@
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02A_TNCN10" InterfaceIni="..\InterfaceIni\02A_TNCN10.xml" ReportIni="..\ReportIni\02_TNCN10.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
 		</Validity>
-	</Menu>	
+	</Menu>		
 	<Menu ID="16" PopID="101" ParentID="101_11" Caption="TK-TNCN Mẫu 02/KK-TNCN theo qúy" FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="01/01/2010" InterfaceTemplate="..\InterfaceTemplates\excel\02B_TNCN10.xls" ReportTemplate="..\ReportTemplates\excel\02B_TNCN10.xls"  Class="TAX_Business_v1.cls_02BTNCN10">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02B_TNCN10" InterfaceIni="..\InterfaceIni\02B_TNCN10.xml" ReportIni="..\ReportIni\02_TNCN10.xml"/>
@@ -275,6 +275,13 @@
 	</Menu>
 	
 	<Menu ID="102_8" PopID="1" ParentID="102" Caption="Phụ lục 25/MGT-TNCN" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>
+	
+	<Menu ID="95" PopID="101" ParentID="101_10" Caption="Bảng tổng hợp đăng ký người phụ thuộc giảm trừ gia cảnh" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tndn.bmp">
+			<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\16_TH_DKNPT.xls" ReportTemplate="..\ReportTemplates\excel\16_TH_DKNPT.xls" CatalogueID="01" Class="TAX_Business_v1.cls_16TH_DKNPT">
+				<Sheet ID="01" Caption="16TH" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="16_TH_DKNPT" InterfaceIni="..\InterfaceIni\16_TH_DKNPT.xml"/>
+				<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
+			</Validity>
+	</Menu>
 	
 	<Menu ID="45" PopID="101" ParentID="101_10" Caption="Hỗ trợ in Quyết toán thuế cho cá nhân" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\excel\05_TNCN_09.xls" ReportTemplate="..\ReportTemplates\excel\05_TNCN_09.xls" CatalogueID="01" Class="TAX_Business_v1.cls_0509TNCN">			
@@ -625,7 +632,6 @@
 	<Menu ID="102_2" PopID="1" ParentID="102" Caption="Nội dung hướng dẫn" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>
 	<Menu ID="102_3" PopID="1" ParentID="102" Caption="Bảng kê bán ra 01_1/GTGT" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>		
 	<Menu ID="102_4" PopID="1" ParentID="102" Caption="Bảng kê mua vào 01_2/GTGT" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>
-	<Menu ID="102_18" PopID="1" ParentID="102" Caption="Bảng kê bán ra 01_3/GTGT" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>		
 	<Menu ID="102_17" PopID="1" ParentID="102" Caption="Bảng kê bán ra 04_1/GTGT" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>			
 	<Menu ID="102_5" PopID="1" ParentID="102" Caption="Bảng kê bán ra 01_1/TTĐB" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>
 	<Menu ID="102_6" PopID="1" ParentID="102" Caption="Bảng kê mua vào 01_2/TTĐB" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>	

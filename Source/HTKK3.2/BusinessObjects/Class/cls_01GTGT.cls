@@ -1205,6 +1205,9 @@ Private Sub CheckDynamicError()
     Dim vErrorPhatHanhHD As Variant
     Dim iflagNgayPhatHanhHD As Integer
     
+    Dim vErrThueGTGT As Variant
+    Dim iFlagThueGTGT As Integer
+    
     With fps
     
     '.Visible = False
@@ -1247,7 +1250,7 @@ Private Sub CheckDynamicError()
      .GetText .ColLetterToNumber("E"), 79, errMauSoHD
      .GetText .ColLetterToNumber("E"), 80, errSoLienHD
      .GetText .ColLetterToNumber("E"), 81, errEmty
-     
+     .GetText .ColLetterToNumber("E"), 88, vErrThueGTGT
      
      
      
@@ -2037,40 +2040,37 @@ Private Sub CheckDynamicError()
                             .BackColor = mNonErrorColor
                         End If
                         
-                        If CDbl(vThuesuat) = 0 Or CDbl(vThuesuat) = 5 Or CDbl(vThuesuat) = 10 Then
-                            .Col = .ColLetterToNumber("L")
-                            .CellNote = ""
-                            .BackColor = mNonErrorColor
-                        Else
-                            .Col = .ColLetterToNumber("L")
-                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                            .CellNote = vErrMsgThuesuat   'static
-                            .BackColor = mErrorColor
-                            iFlagvThuesuat = 1
-                            'capture the first error cell
-                            If iFocusFlag = 0 Then
-                                strFocusSheetName = "'" & .SheetName & "'"
-                                strFocusCol = str(.Col)
-                                strFocusRow = str(.Row)
-                                iFocusFlag = 1
-                            End If
-                        End If
+'                        If CDbl(vThuesuat) = 0 Or CDbl(vThuesuat) = 5 Or CDbl(vThuesuat) = 10 Then
+'                            .Col = .ColLetterToNumber("L")
+'                            .CellNote = ""
+'                            .BackColor = mNonErrorColor
+'                        Else
+'                            .Col = .ColLetterToNumber("L")
+'                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                            .CellNote = vErrMsgThuesuat   'static
+'                            .BackColor = mErrorColor
+'                            iFlagvThuesuat = 1
+'                            'capture the first error cell
+'                            If iFocusFlag = 0 Then
+'                                strFocusSheetName = "'" & .SheetName & "'"
+'                                strFocusCol = str(.Col)
+'                                strFocusRow = str(.Row)
+'                                iFocusFlag = 1
+'                            End If
+'                        End If
                         
                         ' kiem tra nguong cua thue GTGT
                         If strCellTag = "1" Or strCellTag = "2" Or strCellTag = "3" Or strCellTag = "4" Or strCellTag = "5" Then
-                            If Trim(vDoanhSo) <> "0" And Trim(vGTGT) <> "0" Then
-                                If (Abs(Round((vDoanhSo * CDbl(vThuesuat) / 100), 0) - Round(vGTGT, 0)) > 100000) Or (Abs(Round((vDoanhSo * CDbl(vThuesuat) / 100), 0) - Round(vGTGT, 0)) > Round(Abs(vDoanhSo) * CDbl(vThuesuat) / 100 * 0.0001, 0)) Then
-                                    .Col = .ColLetterToNumber("M")
-                                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                    .CellNote = GetAttribute(GetMessageCellById("0118"), "Msg") 'static
-                                    .BackColor = mAlertColor
-                                Else
-                                    .Col = .ColLetterToNumber("M")
-                                    .CellNote = ""
-                                    .BackColor = mNonErrorColor
-                                End If
-    
-    
+                            If Val(vGTGT) <> 0 And Val(vGTGT) >= Val(vDoanhSo) Then
+                                .Col = .ColLetterToNumber("M")
+                                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                .CellNote = vErrThueGTGT
+                                .BackColor = mErrorColor
+                                iFlagThueGTGT = 1
+                            Else
+                                .Col = .ColLetterToNumber("M")
+                                .CellNote = ""
+                                .BackColor = mNonErrorColor
                             End If
                         End If
                         
@@ -2090,6 +2090,7 @@ Private Sub CheckDynamicError()
         .SetText .ColLetterToNumber("B"), 79, IIf(iFlagMauSoHD = 1 And blCheck_S3 = True, "0", "1")
         .SetText .ColLetterToNumber("B"), 80, IIf(iFlagSoLienHD = 1 And blCheck_S3 = True, "0", "1")
         .SetText .ColLetterToNumber("B"), 81, IIf(iFlagEmty = 1 And blCheck_S3 = True, "0", "1")
+        .SetText .ColLetterToNumber("B"), 88, IIf(iFlagThueGTGT = 1 And blCheck_S3 = True, "0", "1")
 '        If iFocusFlag = 1 Then
 '            ' setcell for focus
 '

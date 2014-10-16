@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":19A5
+         SpreadDesigner  =   "frmInterfaces.frx":1969
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1C69
+      SpreadDesigner  =   "frmInterfaces.frx":1BF1
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -373,7 +373,7 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
             Else
 
                 If GetAttribute(TAX_Utilities_v1.NodeMenu, "Month") = "1" And GetAttribute(TAX_Utilities_v1.NodeMenu, "Day") <> "1" Then
-                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "36" _
+                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "36" _
                     Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Then
                         If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Then
                             If strQuy = "TK_THANG" Then
@@ -472,7 +472,7 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
             Else
 
                 If GetAttribute(TAX_Utilities_v1.NodeMenu, "Month") = "1" And GetAttribute(TAX_Utilities_v1.NodeMenu, "Day") <> "1" Then
-                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "36" _
+                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "36" _
                     Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Then
                         If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Then
                             If strQuy = "TK_THANG" Then
@@ -569,6 +569,8 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
                         strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
                     ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "76" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "59" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "41" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "17" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "26" Then
                         strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
+                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Then
+                        strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_L" & strSolanKK & "_" & TAX_Utilities_v1.Year & ".xml"
                     Else
                         'Data file not contain Day from and to.
                         strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.Year & ".xml"
@@ -845,6 +847,9 @@ ElseIf Trim(varMenuId) = "01" And fpSpread1.ActiveSheet = 2 Then
     colStart = 3
 ElseIf Trim(varMenuId) = "01" And fpSpread1.ActiveSheet = 3 Then
     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_01_2_GTGT.xml"))
+    colStart = 3
+ ElseIf Trim(varMenuId) = "95" And fpSpread1.ActiveSheet = 1 Then
+    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\BK_16_TH_DKNPT.xml"))
     colStart = 3
 'ElseIf Trim(varMenuId) = "01" And fpSpread1.ActiveSheet = 4 Then
 '    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_01_3_GTGT.xml"))
@@ -2599,7 +2604,7 @@ Private Sub DeleteSheet(pIndex As Integer)
     Else
 
         If GetAttribute(TAX_Utilities_v1.NodeMenu, "Month") = "1" Then
-            If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "36" _
+            If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "36" _
             Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Then
                 If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Then
                     If strQuy = "TK_THANG" Then
@@ -2660,7 +2665,11 @@ Private Sub DeleteSheet(pIndex As Integer)
                 strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
             Else
                 If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ParentID") = "101_10" Then
-                    strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
+                    If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Then
+                        strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_L" & strSolanKK & "_" & TAX_Utilities_v1.Year & ".xml"
+                    Else
+                        strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml"
+                    End If
                 Else
                     strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_v1.Year & ".xml"
                 End If
@@ -2703,7 +2712,7 @@ Private Sub DeleteKHBS()
         Else
 
             If GetAttribute(TAX_Utilities_v1.NodeMenu, "Month") = "1" And GetAttribute(TAX_Utilities_v1.NodeMenu, "Day") = "0" Then
-                If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" _
+                If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" _
                 Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Then
                     If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Then
                         If strQuy = "TK_THANG" Then
@@ -2973,11 +2982,11 @@ Private Sub cmdDelete_Click()
                 End If
             End If
             ' to khai 03B_GTGT
-            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" Then
-                If Not objTaxBusiness Is Nothing Then
-                    objTaxBusiness.LockCellBySheet
-                End If
-            End If
+'            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" Then
+'                If Not objTaxBusiness Is Nothing Then
+'                    objTaxBusiness.LockCellBySheet
+'                End If
+'            End If
             
             ' to khai 03A_GTGT
             If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "88" Then
@@ -3198,7 +3207,8 @@ Private Sub cmdExport_Click()
                 Or GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "02_TNCN_BH" _
                     Or GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "02_TNCN_XS" _
                         Or GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "08B_TNCN" _
-                            Or GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "02_TNCN_BHDC" Then
+                            Or GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "16_TH_DKNPT" _
+                                Or GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "02_TNCN_BHDC" Then
         ' Doi voi to khai quyet toan thue TNCN thi export ra thu muc C:\TNCN-Temp
         nExcelFile = prepareFileName(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile"))
         If (cFolder.FolderExists("C:\TNCN-Temp")) = False Then
@@ -3395,7 +3405,7 @@ Private Sub cmdExport_Click()
         If idToKhaiKHBS <> "01" And idToKhaiKHBS <> "02" And idToKhaiKHBS <> "03" And idToKhaiKHBS <> "04" And idToKhaiKHBS <> "05" _
         And idToKhaiKHBS <> "06" And idToKhaiKHBS <> "08" And idToKhaiKHBS <> "11" And idToKhaiKHBS <> "12" And idToKhaiKHBS <> "86" And idToKhaiKHBS <> "87" _
         And idToKhaiKHBS <> "89" And idToKhaiKHBS <> "71" And idToKhaiKHBS <> "72" And idToKhaiKHBS <> "77" And idToKhaiKHBS <> "03" And idToKhaiKHBS <> "73" _
-        And idToKhaiKHBS <> "80" And idToKhaiKHBS <> "81" And idToKhaiKHBS <> "70" And idToKhaiKHBS <> "82" And idToKhaiKHBS <> "83" And idToKhaiKHBS <> "85" And idToKhaiKHBS <> "90" And idToKhaiKHBS <> "95" And idToKhaiKHBS <> "88" And idToKhaiKHBS <> "98" And idToKhaiKHBS <> "96" _
+        And idToKhaiKHBS <> "80" And idToKhaiKHBS <> "81" And idToKhaiKHBS <> "70" And idToKhaiKHBS <> "82" And idToKhaiKHBS <> "83" And idToKhaiKHBS <> "85" And idToKhaiKHBS <> "90" And idToKhaiKHBS <> "88" And idToKhaiKHBS <> "98" And idToKhaiKHBS <> "96" _
         And idToKhaiKHBS <> "94" And idToKhaiKHBS <> "99" And idToKhaiKHBS <> "92" And idToKhaiKHBS <> "97" And idToKhaiKHBS <> "93" Then
                 fpSpread1.sheet = fpSpread1.SheetCount - 1
                 If fpSpread1.SheetName = "KHBS" Then
@@ -3551,6 +3561,7 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
                    Or UCase(Trim(loaiToKhai)) = "06_TNCN10" _
                       Or UCase(Trim(loaiToKhai)) = "09_TNCN" _
                         Or UCase(Trim(loaiToKhai)) = "08B_TNCN" _
+                            Or UCase(Trim(loaiToKhai)) = "16_TH_DKNPT" _
                             Or UCase(Trim(loaiToKhai)) = "02_TNCN_BHDC" Then
         With fpSpread1
             .EventEnabled(EventAllEvents) = False
@@ -3586,6 +3597,8 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
                 kyHieuToKhai = "09CN"
             ElseIf UCase(Trim(loaiToKhai)) = "08B_TNCN" Then
                 kyHieuToKhai = "08BN"
+            ElseIf UCase(Trim(loaiToKhai)) = "16_TH_DKNPT" Then
+                kyHieuToKhai = "16TH"
             End If
             ' Lay trang thai va so lan cua to khai
             If UCase(Trim(loaiToKhai)) = "09_TNCN" Then
@@ -3601,6 +3614,9 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
             Else
                 If UCase(Trim(loaiToKhai)) = "09_TNCN" Then
                      .Col = .ColLetterToNumber("K")
+                    .Row = 6
+                ElseIf UCase(Trim(loaiToKhai)) = "16_TH_DKNPT" Then
+                     .Col = .ColLetterToNumber("J")
                     .Row = 6
                 Else
                     .Col = .ColLetterToNumber("I")
@@ -3623,6 +3639,8 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
                     .Row = 30
             ElseIf UCase(Trim(loaiToKhai)) = "09_TNCN" Then
                     .Row = 36
+            ElseIf UCase(Trim(loaiToKhai)) = "16_TH_DKNPT" Then
+                    .Row = 30
             Else
                      .Row = 34
             End If
@@ -3631,7 +3649,11 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
             
             ' Ghep cac thong tin tren vao lam cau truc file chuan cho PIT
             'nExcelFile = taxOfficeName & "-" & taxId & "-" & kyHieuToKhai & "-" & "Y" & TAX_Utilities_v1.Year & "-" & ctBs
-            nExcelFile = taxOfficeName & "-" & taxId & "-" & kyHieuToKhai & "-" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & Replace(TAX_Utilities_v1.LastDay, "/", "") & "-" & ctBs
+            If UCase(Trim(loaiToKhai)) = "16_TH_DKNPT" Then
+                nExcelFile = taxOfficeName & "-" & taxId & "-" & kyHieuToKhai & "-" & ctBs
+            Else
+                nExcelFile = taxOfficeName & "-" & taxId & "-" & kyHieuToKhai & "-" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & Replace(TAX_Utilities_v1.LastDay, "/", "") & "-" & ctBs
+            End If
             .EventEnabled(EventAllEvents) = True
         End With
         prepareFileName = nExcelFile
@@ -3720,7 +3742,7 @@ Private Sub SetKieuKy()
         End If
     End If
     
-    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "96" _
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "96" _
     Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "94" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "18" Then
 
         If strQuy = "TK_THANG" Then
@@ -4203,7 +4225,20 @@ Private Function getFileName(MaTk As String) As String
             
     End If
     
-    getFileName = Left$(taxOfficeName, 3) & "-" & MstNnt & "-" & MaFile & "-" & strKK & Replace$(GetKyKeKhai(GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")), "/", "") & "-" & ctBs
+    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ParentID").nodeValue = "101_10") Then
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" Then
+            If strSolanKK < 10 Then
+                ctBs = "L0" & strSolanKK
+            Else
+                ctBs = "L" & strSolanKK
+            End If
+            getFileName = Left$(taxOfficeName, 3) & "-" & MstNnt & "-" & MaFile & "-" & ctBs
+        Else
+            getFileName = Left$(taxOfficeName, 3) & "-" & MstNnt & "-" & MaFile & "-" & Replace$(TAX_Utilities_v1.FirstDay, "/", "") & Replace$(TAX_Utilities_v1.FirstDay, "/", "") & "-" & ctBs
+        End If
+    Else
+        getFileName = Left$(taxOfficeName, 3) & "-" & MstNnt & "-" & MaFile & "-" & strKK & Replace$(GetKyKeKhai(GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")), "/", "") & "-" & ctBs
+    End If
     Exit Function
 ErrHandle:
     SaveErrorLog Me.Name, "GetFileName", Err.Number, Err.Description
@@ -4219,7 +4254,7 @@ Private Function GetKyKeKhai(ByVal ID_TK As String) As String
         KYKKHAI = TAX_Utilities_v1.Day & "/" & TAX_Utilities_v1.month & "/" & TAX_Utilities_v1.Year
     Else
 
-        If ID_TK = "01" Or ID_TK = "95" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "25" Or ID_TK = "68" Or ID_TK = "14" Or ID_TK = "96" Or ID_TK = "94" Or ID_TK = "18" Then
+        If ID_TK = "01" Or ID_TK = "02" Or ID_TK = "04" Or ID_TK = "71" Or ID_TK = "36" Or ID_TK = "25" Or ID_TK = "68" Or ID_TK = "14" Or ID_TK = "96" Or ID_TK = "94" Or ID_TK = "18" Then
             If strQuy = "TK_THANG" Then
                 KYKKHAI = TAX_Utilities_v1.month & "/" & TAX_Utilities_v1.Year
             ElseIf strQuy = "TK_QUY" Then
@@ -4600,7 +4635,7 @@ Private Sub KetXuatXML()
     SetKieuKy
     MaTk = GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile")
     
-    If MaTk = "05_TNCN" Or MaTk = "06_TNCN10" Or MaTk = "09_TNCN" Or MaTk = "02_TNCN_BH" Or MaTk = "02_TNCN_XS" Or MaTk = "08B_TNCN" Then
+    If MaTk = "05_TNCN" Or MaTk = "06_TNCN10" Or MaTk = "09_TNCN" Or MaTk = "02_TNCN_BH" Or MaTk = "02_TNCN_XS" Or MaTk = "08B_TNCN" Or MaTk = "16_TH_DKNPT" Or MaTk = "02_TNCN_BHDC" Then
         ' Doi voi to khai quyet toan thue TNCN thi export ra thu muc C:\TNCN-Temp
 
         If (cFolder.FolderExists("C:\TNCN-Temp")) = False Then
@@ -5983,11 +6018,11 @@ Private Sub cmdInsert_Click()
             End If
         End If
         ' to khai 03B_GTGT
-        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" Then
-            If Not objTaxBusiness Is Nothing Then
-                objTaxBusiness.LockCellBySheet
-            End If
-        End If
+'        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" Then
+'            If Not objTaxBusiness Is Nothing Then
+'                objTaxBusiness.LockCellBySheet
+'            End If
+'        End If
         ' to khai 02_PHLP
         If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "88" Then
             If Not objTaxBusiness Is Nothing Then
@@ -8018,7 +8053,7 @@ Private Sub Form_Load()
         Set objTaxBusiness.fps = fpSpread1
             ' to khai GTGT se co to khai thang / quy
         'todo thang-quy
-        If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "95" Or idMenu = "71" Or idMenu = "36" Or idMenu = "25" Or idMenu = "68" Or idMenu = "14" Or idMenu = "96" _
+        If idMenu = "01" Or idMenu = "02" Or idMenu = "04" Or idMenu = "71" Or idMenu = "36" Or idMenu = "25" Or idMenu = "68" Or idMenu = "14" Or idMenu = "96" _
         Or idMenu = "94" Or idMenu = "65" Or idMenu = "18" Then
              objTaxBusiness.strTkThangQuy = strQuy
              If strQuy = "TK_THANG" Then
@@ -8107,11 +8142,20 @@ Private Sub Form_Load()
             objTaxBusiness.strloaitk = "TKCT"
             ' Set lai gia tri cua so lan bo sung ve null
             strSolanBS = ""
+            If idMenu = "95" Then
+                objTaxBusiness.strloaitk = "TKCT"
+                objTaxBusiness.StrSolanBosung = strSolanKK
+            End If
         ElseIf strKHBS = "TKCT" And Val(strSolanBS) > 0 Then
-            objTaxBusiness.strloaitk = "TKCT"
-            objTaxBusiness.StrSolanBosung = strSolanBS
-            ' Set lai gia tri cua so lan bo sung ve null
-            strSolanBS = ""
+            If idMenu = "95" Then
+                objTaxBusiness.strloaitk = "TKCT"
+                objTaxBusiness.StrSolanBosung = strSolanKK
+            Else
+                objTaxBusiness.strloaitk = "TKCT"
+                objTaxBusiness.StrSolanBosung = strSolanBS
+                ' Set lai gia tri cua so lan bo sung ve null
+                strSolanBS = ""
+            End If
         ElseIf strKHBS = "TKBS" Then
             objTaxBusiness.strloaitk = "TKBS"
             objTaxBusiness.StrSolanBosung = strSolanBS
@@ -8562,7 +8606,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
                 Else
                     If ImportExcel(strFileName) = True Then
                     'Debug.Print Time
-                        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "59" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "70" Then
+                        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "59" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "70" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" Then
                             'moveData5A
                             moveDataNKH
                             'dhdang edit
@@ -11080,7 +11124,7 @@ Private Sub ResetData()
     'vttoan: them ID (86,87,88) cua cac to (01_BVMT,02BVMT,01_PHXD)
     'dntai : them ID 77 to 02_TAIN
     idtkhai = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
-    If (idtkhai = "01" Or idtkhai = "02" Or idtkhai = "04" Or idtkhai = "11" Or idtkhai = "12" Or idtkhai = "06" Or idtkhai = "05" Or idtkhai = "70" Or idtkhai = "90" Or idtkhai = "72" Or idtkhai = "77" Or idtkhai = "75" Or idtkhai = "74" Or idtkhai = "23" Or idtkhai = "95" Or idtkhai = "88" Or idtkhai = "26" Or idtkhai = "96" Or idtkhai = "94" Or idtkhai = "98" Or idtkhai = "99" Or idtkhai = "92") Then
+    If (idtkhai = "01" Or idtkhai = "02" Or idtkhai = "04" Or idtkhai = "11" Or idtkhai = "12" Or idtkhai = "06" Or idtkhai = "05" Or idtkhai = "70" Or idtkhai = "90" Or idtkhai = "72" Or idtkhai = "77" Or idtkhai = "75" Or idtkhai = "74" Or idtkhai = "23" Or idtkhai = "88" Or idtkhai = "26" Or idtkhai = "96" Or idtkhai = "94" Or idtkhai = "98" Or idtkhai = "99" Or idtkhai = "92") Then
         For Each xmlNodeReset In TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
             fpSpread1.sheet = mCurrentSheet
             ParserCellID fpSpread1, GetAttribute(xmlNodeReset, "CellID"), lCol, lRow
@@ -11088,7 +11132,7 @@ Private Sub ResetData()
             fpSpread1.Row = lRow
 
             If ((idtkhai = "01" And (lRow < 22 Or lRow > 48)) Or (idtkhai = "02" And (lRow < 38 Or lRow > 54)) Or (idtkhai = "04" And (lRow < 34 Or lRow > 41)) Or (idtkhai = "11" And (lRow < 20 Or lRow > 35)) Or (idtkhai = "12" And (lRow < 34 Or lRow > 49)) Or (idtkhai = "06" And (lRow < 34 Or lRow > 48 + (TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 11) / 13)) Or (idtkhai = "05" And (lRow < 31 Or lRow > fpSpread1.MaxRows - 15)) Or (idtkhai = "70" And (lRow < 51 Or lRow > 58 + (TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 19) / 14)) Or (idtkhai = "77" And (lRow < 18 Or lRow > fpSpread1.MaxRows - 11)) _
-            Or (idtkhai = "75" And (lRow < 38 Or lRow > fpSpread1.MaxRows - 5)) Or (idtkhai = "74" And (lRow < 19 Or lRow > 61)) Or (idtkhai = "72" And (lRow < 43 Or lRow > 48)) Or (idtkhai = "95" And (lRow < 34 Or lRow > 44)) Or (idtkhai = "88" And (lRow < 39 Or lRow > 59)) Or (idtkhai = "26" And (lRow < 37 Or lRow > 60))) And mCurrentSheet = 1 Then
+            Or (idtkhai = "75" And (lRow < 38 Or lRow > fpSpread1.MaxRows - 5)) Or (idtkhai = "74" And (lRow < 19 Or lRow > 61)) Or (idtkhai = "72" And (lRow < 43 Or lRow > 48)) Or (idtkhai = "88" And (lRow < 39 Or lRow > 59)) Or (idtkhai = "26" And (lRow < 37 Or lRow > 60))) And mCurrentSheet = 1 Then
 
                 GoTo nextClear1
             ElseIf (idtkhai = "11" Or idtkhai = "12") And mCurrentSheet = 2 And lRow < 35 Then
@@ -11670,7 +11714,7 @@ Private Sub saveKHBS()
        'xmlNodeCell1s.Attributes.getNamedItem("DateKHBS").nodeValue = TAX_Utilities_v1.DateKHBS
        
     If GetAttribute(TAX_Utilities_v1.NodeMenu, "Month") = "1" And GetAttribute(TAX_Utilities_v1.NodeMenu, "Day") <> "1" Then
-        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "95" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" _
+        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "96" _
         Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "94" Then
             If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "71" Then
                 If strQuy = "TK_THANG" Then
@@ -13883,10 +13927,10 @@ Public Function delNullRowOn01(sheet As Long)
 '        cellid = GetAttribute(xmlNodeListSec.Item(0).childNodes(0).firstChild, "CellID")
         'set location cell to array
         If fpSpread1.sheet = 2 Then
-            strCol = "C~D~E~F~G~H~I~K~L"
+            strCol = "C~D~E~F~G~H~I~K~L~M~N"
             colArr = Split(strCol, "~")
         ElseIf fpSpread1.sheet = 3 Then
-            strCol = "C~D~E~F~G~H~I~J~K~L"
+            strCol = "C~D~E~F~G~H~I~J~K~L~M~N"
             colArr = Split(strCol, "~")
         End If
         With fpSpread1
