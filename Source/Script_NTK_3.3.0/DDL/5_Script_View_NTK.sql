@@ -27,8 +27,7 @@ WHERE (gd.loai_dlieu = dtl.loai_dlieu)
 --(gd.loai_dlieu = '03_TNDN11' OR gd.loai_dlieu = '01B_TNDN')
 AND (dtl.id = gd.id)
 GROUP BY dtl.hdr_id,
-dtl.ctk_id
-;
+dtl.ctk_id;
 	--PL 03 - 1x/TNDN
 CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_01ABC_14 AS
 SELECT dtl.hdr_id
@@ -61,8 +60,7 @@ GROUP BY dtl.hdr_id,
          dtl.ten_ctieu,
          dtl.ma_ctieu,
        --  dtl.row_id,
-         dtl.so_tt
-;
+         dtl.so_tt;
 	--PL03-2x/TNDN
 CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_2AB_14 AS
 SELECT dtl.hdr_id
@@ -102,8 +100,7 @@ GROUP BY dtl.hdr_id,
          dtl.ten_ctieu,
          dtl.ma_ctieu,
        --  dtl.row_id,
-         dtl.so_tt
-;
+         dtl.so_tt;
 	--PL 03-3A
 CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_3A_14 AS
 SELECT dtl.hdr_id
@@ -114,7 +111,7 @@ SELECT dtl.hdr_id
      , dtl.row_id
      , dtl.so_tt
      , dtl.kieu_dlieu
-FROM rcv_gdien_tkhai gd,
+FROM QLT_NTK.rcv_gdien_tkhai gd,
 (
   SELECT tkd.hdr_id,
          gdien.id,
@@ -125,9 +122,9 @@ FROM rcv_gdien_tkhai gd,
          gdien.ma_ctieu,
          ctieu.kieu_dlieu,
          DECODE(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL) dieu_kien_uu_dai_hoac_so_tien
-  FROM rcv_tkhai_dtl tkd,
-       rcv_gdien_tkhai gdien,
-       rcv_map_ctieu ctieu
+  FROM QLT_NTK.rcv_tkhai_dtl tkd,
+       QLT_NTK.rcv_gdien_tkhai gdien,
+       QLT_NTK.rcv_map_ctieu ctieu
   WHERE (ctieu.gdn_id = gdien.id)
   AND (ctieu.ky_hieu = tkd.ky_hieu)
     AND (gdien.loai_dlieu = tkd.loai_dlieu)
@@ -141,8 +138,7 @@ GROUP BY dtl.hdr_id,
          dtl.ma_ctieu,
          dtl.row_id,
          dtl.so_tt,
-         dtl.kieu_dlieu
-;
+         dtl.kieu_dlieu;
 	--PL 03
 CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_3B_14 AS
 SELECT dtl.hdr_id
@@ -181,8 +177,7 @@ GROUP BY dtl.hdr_id,
          dtl.ma_ctieu,
          dtl.row_id,
          dtl.so_tt,
-         dtl.kieu_dlieu
-;	
+         dtl.kieu_dlieu;	
 	--PL 03
 CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_3C_14 AS
 SELECT dtl.hdr_id
@@ -221,8 +216,7 @@ GROUP BY dtl.hdr_id,
          dtl.ma_ctieu,
          dtl.row_id,
          dtl.so_tt,
-         dtl.kieu_dlieu
-;	
+         dtl.kieu_dlieu;	
 	--PL 03
 CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_4_14 AS
 SELECT dtl.hdr_id
@@ -276,8 +270,7 @@ GROUP BY dtl.hdr_id,
          dtl.ten_ctieu,
          dtl.ma_ctieu,
          dtl.row_id,
-         dtl.so_tt
-;	
+         dtl.so_tt;	
 	--PL 03
 CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_5_14 AS
 SELECT dtl.hdr_id
@@ -313,8 +306,7 @@ GROUP BY dtl.hdr_id,
          dtl.ten_ctieu,
          dtl.ma_ctieu,
          dtl.row_id,
-         dtl.so_tt
-;	
+         dtl.so_tt;	
 	--PL 03
 CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_6_14 AS
 SELECT dtl.hdr_id
@@ -414,7 +406,6 @@ FROM QLT_NTK.rcv_gdien_tkhai gd,
          DECODE(gdien.cot_08, DECODE(tkd.ky_hieu,8,0,tkd.ky_hieu), tkd.gia_tri, NULL) loi_nhuan_tang,
          DECODE(gdien.cot_09, DECODE(tkd.ky_hieu,9,0,tkd.ky_hieu), tkd.gia_tri, NULL) dthu_ppxd_gia_chi_phi,
          DECODE(gdien.cot_10, DECODE(tkd.ky_hieu,10,0,tkd.ky_hieu), tkd.gia_tri, NULL) cphi_ppxd_gia_chi_phi,
-         --
          DECODE(gdien.cot_01, DECODE(tkd.ky_hieu,1,tkd.ky_hieu,0), tkd.gia_tri, NULL) ten_ben_lk,
          DECODE(gdien.cot_02, DECODE(tkd.ky_hieu,2,tkd.ky_hieu,0), tkd.gia_tri, NULL) dia_chi,
          DECODE(gdien.cot_03, DECODE(tkd.ky_hieu,3,tkd.ky_hieu,0), tkd.gia_tri, NULL) ma_so_thue,
@@ -487,7 +478,6 @@ FROM QLT_NTK.rcv_gdien_tkhai gd,
          DECODE(gdien.cot_09, tkd.ky_hieu, tkd.gia_tri, NULL) phan_bo_tong_so_thue_phai_nop,
          DECODE(gdien.cot_10, tkd.ky_hieu, tkd.gia_tri, NULL) phan_bo_so_thue_phai_nop,
          DECODE(gdien.cot_11, tkd.ky_hieu, tkd.gia_tri, NULL) co_quan_thue_quan_ly
-
   FROM QLT_NTK.rcv_tkhai_dtl tkd,
        QLT_NTK.rcv_gdien_tkhai gdien,
        QLT_NTK.rcv_map_ctieu ctieu
@@ -497,14 +487,13 @@ FROM QLT_NTK.rcv_gdien_tkhai gd,
     AND (gdien.loai_dlieu ='03_8_TNDN14')
 ) dtl
 WHERE (gd.loai_dlieu = '03_8_TNDN14')
-  AND (dtl.id = gd.id)-- and row_id='1'
+  AND (dtl.id = gd.id)
 GROUP BY dtl.hdr_id,
          dtl.loai_dlieu,
          dtl.ten_ctieu,
          dtl.ma_ctieu,
          dtl.row_id,
-         dtl.so_tt
-;	
+         dtl.so_tt;	
 	--PL 03-9
 CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_9_14 AS
 (
@@ -707,7 +696,6 @@ GROUP BY dtl.hdr_id,
 --------------------------------
 CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_03A_TD_TAIN AS
 (
-
         SELECT
             dtl.hdr_id,
             dtl.so_tt                so_tt,
@@ -759,8 +747,7 @@ CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_03A_TD_TAIN AS
     );
 	--PL 03A-1
 CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_03A_1_TD_TAIN AS
-(
-        
+(        
         SELECT
             dtl.hdr_id,
             dtl.so_tt                so_tt,
@@ -1111,7 +1098,6 @@ GROUP BY
 	--PL 02-1
 CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_02_1_TNDN_DK AS
 (
-
         SELECT
             dtl.hdr_id,
             dtl.so_tt                so_tt,
@@ -1194,7 +1180,6 @@ GROUP BY
 	--PL 02-1
 CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_02_1_TAIN_DK AS
 (
-
         SELECT
             dtl.hdr_id,
             dtl.so_tt                so_tt,
@@ -1236,7 +1221,6 @@ CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_02_1_TAIN_DK AS
 	--PL 02-2
 CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_02_2_TAIN_DK AS
 (
-
         SELECT
             dtl.hdr_id,
             dtl.so_tt                so_tt,
@@ -1348,8 +1332,7 @@ SELECT   dtl.hdr_id, dtl.so_tt so_tt, dtl.row_id row_id,
                      OR tkd.loai_dlieu = 'KHBS_02_TNDN_DK'
                      OR tkd.loai_dlieu = 'KHBS_02_TAIN_DK'
                      --End QT
-					 OR tkd.loai_dlieu = 'KHBS_01_TAIN_DK'
-                       
+					 OR tkd.loai_dlieu = 'KHBS_01_TAIN_DK'                       
                     )) dtl
       WHERE (   gd.loai_dlieu = 'KHBS_01A_TNDN13'
              OR gd.loai_dlieu = 'KHBS_01B_TNDN13'
@@ -1385,5 +1368,4 @@ SELECT   dtl.hdr_id, dtl.so_tt so_tt, dtl.row_id row_id,
             )
         AND (dtl.ID = gd.ID)
    GROUP BY dtl.hdr_id, dtl.so_tt, dtl.row_id;
-	
 commit;	
