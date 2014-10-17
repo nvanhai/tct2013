@@ -827,12 +827,12 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
                     
                     .Col = .ColLetterToNumber("U")
                     .Row = Row
-                    .typeComboboxCurSel = .TypeComboBoxCount - 1
+                    .Text = "Khác"
                     .Lock = True
                     
                     .Col = .ColLetterToNumber("W")
                     .Row = Row
-                    .typeComboboxCurSel = .TypeComboBoxCount - 1
+                    .Text = "Khác"
                     .Lock = True
                     
                     .Col = .ColLetterToNumber("R")
@@ -841,11 +841,11 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
                     
                     .Col = .ColLetterToNumber("T")
                     .Row = Row
-                    .typeComboboxCurSel = .TypeComboBoxCount - 1
+                    .Text = "00000"
                     
                     .Col = .ColLetterToNumber("V")
                     .Row = Row
-                    .typeComboboxCurSel = .TypeComboBoxCount - 1
+                    .Text = "0000000"
                 End If
             End If
             
@@ -2119,6 +2119,152 @@ Dim ASheet As Integer, SSheet As Integer
         ' Tinh so dong DL trong BK (Phuc vu nut sap xep)
         totalRow5B = .SearchCol(.ColLetterToNumber("B"), 22, -1, "aa", SearchFlagsNone)
         ' test tai khong kiem tra de tang toc do
+        
+        ' Lay danh muc quan he voi NNT
+        Dim xmlDocument As New MSXML.DOMDocument
+        Dim xmlNode As MSXML.IXMLDOMNode
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_QHNNT.xml"))
+        Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
+        Dim strQuanHeNNTID As String
+        Dim strQuanHeNNT As String
+        
+        Dim strQuocTich As String
+        Dim strMaQuocTich As String
+        Dim strTenTinh As String
+        Dim strTenHuyen As String
+        Dim strTenXa As String
+        Dim strMaTinh As String
+        Dim strMaHuyen  As String
+        Dim strMaXa As String
+        Dim temValue As String
+        Dim arrValue() As String
+        
+        Dim index As Integer
+        ' Chuoi gia tri ve quan he NNT bao gom:
+        ' 01-Con, 02-Vo, 03-Chong, 04-Cha, 05-Me, 06-Chau Ruot, 07-Ho Hang, 99-Khac
+        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+        For Each xmlNode In xmlNodeListMap
+            arrValue = Split(GetAttribute(xmlNode, "value"), "###")
+            strQuanHeNNT = strQuanHeNNT + arrValue(1) + Chr$(9)
+            strQuanHeNNTID = strQuanHeNNTID + arrValue(0) + Chr$(9)
+        Next
+        
+        
+        ' lay du lieu danh muc dia ban tinh
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Tinh.xml"))
+        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+        For Each xmlNode In xmlNodeListMap
+            temValue = GetAttribute(xmlNode, "Value")
+            arrValue = Split(temValue, "###")
+            'If arrValue(0) <> "1" Then
+                strTenTinh = strTenTinh + arrValue(2) + Chr$(9)
+                strMaTinh = strMaTinh + arrValue(1) + Chr$(9)
+            'End If
+        Next
+        
+        ' lay danh sach huyen
+        Set xmlDocument = Nothing
+        Set xmlNodeListMap = Nothing
+        ' lay du lieu danh muc dia ban tinh
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Huyen.xml"))
+        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+        For Each xmlNode In xmlNodeListMap
+            temValue = GetAttribute(xmlNode, "Value")
+            arrValue = Split(temValue, "###")
+            'If arrValue(0) <> "1" Then
+                strTenHuyen = strTenHuyen + arrValue(3) + Chr$(9)
+                strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
+            'End If
+        Next
+        
+        ' Lay danh muc xa
+        Set xmlDocument = Nothing
+        Set xmlNodeListMap = Nothing
+        ' lay du lieu danh muc dia ban tinh
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Xa.xml"))
+        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+        For Each xmlNode In xmlNodeListMap
+            temValue = GetAttribute(xmlNode, "Value")
+            arrValue = Split(temValue, "###")
+            'If arrValue(0) <> "1" Then
+                strTenXa = strTenXa + arrValue(4) + Chr$(9)
+                strMaXa = strMaXa + arrValue(3) + Chr$(9)
+            'End If
+        Next
+        
+        ' lay du lieu dia ban
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Quoc_Gia.xml"))
+        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+        For Each xmlNode In xmlNodeListMap
+            temValue = GetAttribute(xmlNode, "Value")
+            arrValue = Split(temValue, "###")
+            strQuocTich = strQuocTich + arrValue(1) + Chr$(9)
+            strMaQuocTich = strMaQuocTich + arrValue(0) + Chr$(9)
+        Next
+        
+        .Sheet = 4
+        .Col = .ColLetterToNumber("B")
+        .Row = 22
+        Do
+            .Col = .ColLetterToNumber("L")
+            .TypeComboBoxList = strQuanHeNNTID
+            index = .typeComboboxCurSel
+            
+            .Col = .ColLetterToNumber("M")
+            .TypeComboBoxList = strQuanHeNNT
+            .typeComboboxCurSel = index
+            
+                ' set danh sach tinh
+            .Col = .ColLetterToNumber("R")
+            .TypeComboBoxList = strMaTinh
+            index = .typeComboboxCurSel
+            
+            .Col = .ColLetterToNumber("S")
+            .TypeComboBoxList = strTenTinh
+            .typeComboboxCurSel = index
+            
+            ' set danh sach huyen
+            .Col = .ColLetterToNumber("T")
+            .TypeComboBoxList = strMaHuyen
+            index = .typeComboboxCurSel
+            
+            .Col = .ColLetterToNumber("U")
+            .TypeComboBoxList = strTenHuyen
+            .typeComboboxCurSel = index
+            
+            ' set danh sach xa
+            .Col = .ColLetterToNumber("V")
+            .TypeComboBoxList = strMaXa
+            index = .typeComboboxCurSel
+            
+            .Col = .ColLetterToNumber("W")
+            .TypeComboBoxList = strTenXa
+            .typeComboboxCurSel = index
+            
+            ' set danh sach quoc tich
+            .Col = .ColLetterToNumber("I")
+            .TypeComboBoxList = strMaQuocTich
+            index = .typeComboboxCurSel
+            
+            .Col = .ColLetterToNumber("J")
+            .TypeComboBoxList = strQuocTich
+            .typeComboboxCurSel = index
+            
+
+            ' set danh sach quoc gia
+            .Col = .ColLetterToNumber("P")
+            .TypeComboBoxList = strMaQuocTich
+            index = .typeComboboxCurSel
+            
+            .Col = .ColLetterToNumber("Q")
+            .TypeComboBoxList = strQuocTich
+            .typeComboboxCurSel = index
+                        
+
+             .Col = .ColLetterToNumber("B")
+             .Row = .Row + 1
+        Loop Until .Text = "aa"
+        
 '        CheckDynamicError 'Set Exception Error on cells of interface
 '        UpdateSheets
         'end
@@ -4480,18 +4626,18 @@ Private Sub CheckDynamicSheet3()
 '                            .CellNote = ""
 '                            .BackColor = mNonErrorColor
                             ' kiem tra den thang voi den thang ky QT
-                            If vDenThang <> "" Then
-                                If DateDiff("M", Format(vDenThang, "mm/yyyy"), Format(TAX_Utilities_v1.LastDay, "mm/yyyy")) < 0 Then
-                                     .Col = .ColLetterToNumber("Y")
-                                    .CellNote = vErrDenThang
-                                    .BackColor = mErrorColor
-                                    iFlagDenThang = 1
-                                Else
-                                    .Col = .ColLetterToNumber("Y")
-                                    .CellNote = ""
-                                    .BackColor = mNonErrorColor
-                                End If
-                            End If
+'                            If vDenThang <> "" Then
+'                                If DateDiff("M", Format(vDenThang, "mm/yyyy"), Format(TAX_Utilities_v1.LastDay, "mm/yyyy")) < 0 Then
+'                                     .Col = .ColLetterToNumber("Y")
+'                                    .CellNote = vErrDenThang
+'                                    .BackColor = mErrorColor
+'                                    iFlagDenThang = 1
+'                                Else
+                            .Col = .ColLetterToNumber("Y")
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+'                                End If
+'                            End If
                     End If
                  End If
                 
@@ -4553,6 +4699,47 @@ Private Sub CheckDynamicSheet3()
                         .BackColor = mErrorColor
                         iFlagEmpty = 1
                     End If
+                    
+                    ' bat buoc nhap thong tin tinh
+                    If Trim(vTinh) = "" Then
+                        .Col = .ColLetterToNumber("S")
+                        .CellNote = vErrEmpty
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
+                    End If
+                    
+                    ' bat buoc nhap thong tin huyen
+                    If Trim(vHuyen) = "" Then
+                        .Col = .ColLetterToNumber("U")
+                        .CellNote = vErrEmpty
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
+                    End If
+                    
+                    ' bat buoc nhap thong tin xa
+                    If Trim(vXa) = "" Then
+                        .Col = .ColLetterToNumber("W")
+                        .CellNote = vErrEmpty
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
+                    End If
+                End If
+                
+                ' bat buoc nhap thong so
+                If Trim(vSo) = "" Then
+                    .Col = .ColLetterToNumber("N")
+                    .CellNote = vErrEmpty
+                    .BackColor = mErrorColor
+                    iFlagEmpty = 1
+                End If
+                
+                
+                ' bat buoc nhap thong quyen so
+                If Trim(vSo) = "" Then
+                    .Col = .ColLetterToNumber("O")
+                    .CellNote = vErrEmpty
+                    .BackColor = mErrorColor
+                    iFlagEmpty = 1
                 End If
             End If
             .Col = .ColLetterToNumber("B")

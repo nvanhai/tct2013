@@ -196,7 +196,7 @@ Public Sub Prepare2()
         .Font = "Arial"
         .FontSize = 8
         .TypeButtonPicture = LoadPicture(GetAbsolutePath("..\Pictures\sort2.bmp"))
-        .TypeButtonText = GetAttribute(GetMessageCellById("0244"), "Msg")
+        .TypeButtonText = GetAttribute(GetMessageCellById("0343"), "Msg")
         
         ' Sap xep theo cot thu nhap chiu thue
         .Row = 19
