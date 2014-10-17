@@ -856,7 +856,7 @@ Public Function InsertDTL() As String
    Dim DANHAN As Variant
    'NTKCC 3.1
    Dim SOTIENCL As Variant
-   
+
    Dim MaMuc As Variant
    Dim maTM As Variant
 
@@ -7009,12 +7009,15 @@ Public Function InsertDTL_PL03_8() As String
         clsDAO.Connect
     End If
    
-    sSQLCol = "MATKHAI,MADTNT, KYLBO, NAMQT, NGNOP, TTHTK, MAMUC, MATM, MAPL,STT,MADTNT2,TENGOI,CQQL,TENCUC," & "MACC,TENCC,TYLE,QUY1,QUY2,QUY3,QUY4,PBNAM,PBQT,PBCL,DANHAN"
+    sSQLCol = "MATKHAI,MADTNT, KYLBO, NAMQT, NGNOP, TTHTK, MAMUC, MATM, MAPL,STT,MADTNT2,TENGOI,CQQL,TENCUC," & _
+                "MACC,TENCC,TYLE,QUY1,QUY2,QUY3,QUY4,PBNAM,PBQT,PBCL,DANHAN,LAN_QUET"
    
     '--------------
     'Set const
     matkhai = "'03/TNDN'"
     MAPL = "'PL03DN'"
+    DANHAN = "''"
+   
    
     With fps
         .Sheet = 1
@@ -7036,8 +7039,9 @@ Public Function InsertDTL_PL03_8() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
         
-        namQT = "'" & TAX_Utilities_Svr_New.Year & "'"
+        namQT = TAX_Utilities_Svr_New.Year
         
+        MaMuc = "'1050'"
         .GetText .ColLetterToNumber("T"), 5, maTM
 
         If Trim(maTM) = vbNullString Then
@@ -7045,11 +7049,9 @@ Public Function InsertDTL_PL03_8() As String
         Else
             maTM = "'" & maTM & "'"
         End If
-        
-        MaMuc = maTM
-        
+
         .Sheet = 14
-        .Col .ColLetterToNumber("C")
+        .Col = .ColLetterToNumber("C")
         .Row = 41
         
         Do
@@ -7139,17 +7141,18 @@ Public Function InsertDTL_PL03_8() As String
             End If
             
             
-            sSQLVal = matkhai & "," & madtnt & "," & KYLBO & "," & namQT & "," & ngnop & "," & TTHTK & "," & _
+            
+            sSQLVal = matkhai & "," & madtnt & ",'" & kyLapBo & "'," & namQT & "," & ngnop & "," & TTHTK & "," & _
                 MaMuc & "," & maTM & "," & MAPL & "," & STT & "," & MADTNT2 & "," & TENGOI & "," & _
                 CQQL & "," & TENCUC & "," & MACC & "," & TENCC & "," & TYLE & "," & QUY1 & "," & _
-                QUY2 & "," & QUY3 & "," & QUY4 & "," & PBNAM & "," & PBQT & "," & PBCL & "," & DANHAN
+                QUY2 & "," & QUY3 & "," & QUY4 & "," & PBNAM & "," & PBQT & "," & PBCL & "," & DANHAN & "," & LAN_QUET
                 
             sSQL = "INSERT INTO TMP_P3DN" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
             
             .Row = .Row + 1
             
-        Loop Until "aa"
+        Loop Until .Text = "aa"
         
     End With
 
