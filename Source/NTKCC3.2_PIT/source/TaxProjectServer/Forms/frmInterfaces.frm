@@ -2,6 +2,7 @@ VERSION 5.00
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
+Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Begin VB.Form frmInterfaces 
    AutoRedraw      =   -1  'True
    BorderStyle     =   3  'Fixed Dialog
@@ -32,6 +33,31 @@ Begin VB.Form frmInterfaces
          _ExtentY        =   1005
          _Version        =   393216
          DTREnable       =   -1  'True
+      End
+      Begin FPUSpreadADO.fpSpread fpSpread1 
+         Height          =   6600
+         Left            =   0
+         TabIndex        =   3
+         Top             =   120
+         Visible         =   0   'False
+         Width           =   11475
+         _Version        =   458752
+         _ExtentX        =   20241
+         _ExtentY        =   11642
+         _StockProps     =   64
+         BorderStyle     =   0
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         NoBeep          =   -1  'True
+         ScrollBars      =   2
+         SpreadDesigner  =   "frmInterfaces.frx":0000
       End
       Begin MSForms.Label lblExit 
          Height          =   945
@@ -830,6 +856,8 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("F"), 23, vKYLBO
         ElseIf menuId = 70 Then
             .GetText .ColLetterToNumber("E"), 23, vKYLBO
+        ElseIf menuId = 85 Or menuId = 88 Then
+            .GetText .ColLetterToNumber("E"), 24, vKYLBO
         ElseIf menuId = 81 Or menuId = 80 Or menuId = 82 Or menuId = 89 Then
             .GetText .ColLetterToNumber("E"), 30, vKYLBO
         ElseIf menuId = 73 Then
@@ -1645,6 +1673,11 @@ End Sub
 Private Sub Command1_Click()
     Dim str1 As String, str2 As String, str3 As String, str4 As String, str5 As String, str6 As String, str7 As String, str8 As String
 
+
+'01_PHLP
+str2 = "aa999854400108848   02201400100100100101/0101/01/1900<S01><S></S><S>2152~100000~30~2000~98000~21502152~2153~200000~40~10000~190000~21502153~2154~300000~30~40000~260000~21502154</S><S>600000~52000~548000</S><S>Nguyen Sy Hung~Nguyen Thac THu~CCHN12345~17/10/2014~1~~</S></S01>"
+Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+
 ''03_TNDN
 'str2 = "aa999034400108848   00201302902900102201/0114/06/200601/01/201331/12/2013<S03><S></S><S>~~x~~10.00</S><S>1047000~180000~10000~20000~30000~35000~40000~45000~165000~50000~55000~60000~1062000~10000000~-8938000~10000000~100000~10200~9889800~8000~9881800~2470450~3705670~3705680~5~"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
@@ -1696,10 +1729,10 @@ Private Sub Command1_Click()
 
 
 
-str2 = "aa999034400108848   00201302902900102201/0114/06/200601/01/201331/12/2013<S03><S></S><S>~~x~~10.00</S><S>1047000~180000~10000~20000~30000~35000~40000~45000~165000~50000~55000~60000~1062000~10000000~-8938000~10000000~100000~10200~9889800~8000~9881800~2470450~3705670~3705680~5~"
-Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-str2 = "aa999034400108848   0020130290290020221469917~402000~94775~0~0~800000~173142~0~203142~173142~10000~20000~100000~73142</S><S>~00~~0~0</S><S>Phu luc ban hang~Phu luc hang hoa kinh doanh~Phu luc khac</S><S>Nguyen Sy Hung~Nguyen Thac Thu~CCHN12345~29/09/2014~1~1~0~1052</S></S03>"
-Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'str2 = "aa999034400108848   00201302902900102201/0114/06/200601/01/201331/12/2013<S03><S></S><S>~~x~~10.00</S><S>1047000~180000~10000~20000~30000~35000~40000~45000~165000~50000~55000~60000~1062000~10000000~-8938000~10000000~100000~10200~9889800~8000~9881800~2470450~3705670~3705680~5~"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'str2 = "aa999034400108848   0020130290290020221469917~402000~94775~0~0~800000~173142~0~203142~173142~10000~20000~100000~73142</S><S>~00~~0~0</S><S>Phu luc ban hang~Phu luc hang hoa kinh doanh~Phu luc khac</S><S>Nguyen Sy Hung~Nguyen Thac Thu~CCHN12345~29/09/2014~1~1~0~1052</S></S03>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 'str2 = "aa999034400108848   002013029029003022<S03-1A><S>10000~2000~2000~1000~500~300~200~100000~8000~1000~2000~5000~10000~2000~90000~20000~10000~10000~100000</S></S03-1A>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 'str2 = "aa999034400108848   002013029029004022<S03-1B><S>10000~2000~8000~1000000~100000~900000~10000~20000~30000~40000~20000~20000~10000~20000~5000~973000</S></S03-1B>"
@@ -1738,8 +1771,8 @@ Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 'str2 = "aa999034400108848   002013029029021022P2~PP4~Ban quyen truyen hinh~50000~45000~-5000~48000~45000~3000~-2000~PP1~PP4</S><S>45000~50000~5000~55000~52000~3000~8000</S><S>Lai dai  han~20000~22000~2000~30000~37000~-7000~-5000~PP2~PP4~Lai ngan han~25000~28000~3000~25000~15000~10000~13000~PP1~PP3</S><S>13000~17000~4000~12000~4000~8000~12000</S><S>Massage~12000~15000~3000~10000~3000~7000~10000~PP2~PP4~Xe om~1000~2000~1000~2000~1000~1000~2000~PP2~PP4</S></S03-7>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-str2 = "aa999034400108848   002013029029022022<S03-8><S>173142</S><S>CMC Soft~0101650999~30~10000~20000~30000~40000~100000~51943~-48057~10100~10101~Seatech~0102030405~30~5000~10000~15000~20000~50000~51943~1943~10900~10903~FPT~2222222222~40~20000~30000~40000~50000~140000~69257~-70743~10100~10107</S></S03-8>"
-Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'str2 = "aa999034400108848   002013029029022022<S03-8><S>173142</S><S>CMC Soft~0101650999~30~10000~20000~30000~40000~100000~51943~-48057~10100~10101~Seatech~0102030405~30~5000~10000~15000~20000~50000~51943~1943~10900~10903~FPT~2222222222~40~20000~30000~40000~50000~140000~69257~-70743~10100~10107</S></S03-8>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 
 
@@ -6170,7 +6203,7 @@ Private Sub Insert_QHS()
         If menuId = 8 Or menuId = 9 Then
             .GetText .ColLetterToNumber("I"), 9, vKYLBO
             ' vttoan: lay KyLapBo
-        ElseIf menuId = 15 Or menuId = 16 Or menuId = 50 Or menuId = 51 Or menuId = 36 Or menuId = 72 Or menuId = 86 Or menuId = 87 Or menuId = 72 Then
+        ElseIf menuId = 15 Or menuId = 16 Or menuId = 50 Or menuId = 51 Or menuId = 36 Or menuId = 72 Or menuId = 86 Or menuId = 87 Or menuId = 72 Or menuId = 85 Or menuId = 88 Then
             .GetText .ColLetterToNumber("E"), 22, vKYLBO
         ElseIf menuId = 5 Or menuId = 70 Then
             .GetText .ColLetterToNumber("E"), 23, vKYLBO
