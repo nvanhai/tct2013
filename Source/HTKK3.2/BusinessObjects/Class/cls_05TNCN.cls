@@ -4804,6 +4804,14 @@ Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer
                 .Formula = "Q43"
             End If
             
+            ' chi tieu 36
+            If Col = .ColLetterToNumber("P") And Row >= 22 Then
+                .Sheet = 1
+                .Col = .ColLetterToNumber("I")
+                .Row = 51
+                .Formula = "Q51"
+            End If
+            
             
             ' chi tieu 32
             If (Col = .ColLetterToNumber("P") Or Col = .ColLetterToNumber("H")) And Row >= 22 Then
@@ -4906,6 +4914,13 @@ Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer
                 .Formula = "Q49"
             End If
             
+            ' chi tieu 37
+            If (Col = .ColLetterToNumber("C") Or Col = .ColLetterToNumber("F") Or Col = .ColLetterToNumber("J")) And Row >= 22 Then
+                .Sheet = 1
+                .Col = .ColLetterToNumber("I")
+                .Row = 52
+                .Formula = "Q52"
+            End If
             ' chi tieu 38
             If (Col = .ColLetterToNumber("C") Or Col = .ColLetterToNumber("F") Or Col = .ColLetterToNumber("J")) And Row >= 22 Then
                 .Sheet = 1
