@@ -3675,9 +3675,9 @@ Public Sub cmdOK_Click()
         End If
     End If
     
-    ' chan to khai 01A/TNDN, 01B/TNDN ky ke khai quy 3/2014 tro di
+    ' chan to khai 01A/TNDN, 01B/TNDN ky ke khai quy 4/2014 tro di
     If idToKhai = "11" Or idToKhai = "12" Then
-        If (Val(TAX_Utilities_v1.ThreeMonths) >= 3 And Val(TAX_Utilities_v1.Year) = 2014) Or Val(TAX_Utilities_v1.Year) > 2014 Then
+        If (Val(TAX_Utilities_v1.ThreeMonths) >= 4 And Val(TAX_Utilities_v1.Year) = 2014) Or Val(TAX_Utilities_v1.Year) > 2014 Then
             DisplayMessage "0341", msOKOnly, miWarning
             cmbQuy.SetFocus
             Exit Sub
@@ -3706,6 +3706,24 @@ Public Sub cmdOK_Click()
         Else
             If checkKyKKTrung("bs" & Trim$(txtSolan.Text) & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile"), Trim(txtNgayDau.Text), Trim(txtNgayCuoi.Text)) = True Then
                 DisplayMessage "0340", msOKOnly, miWarning
+                Exit Sub
+            End If
+        End If
+    End If
+    
+    ' kiem tra tu ngay den ngay cho 2 to khai NTNN
+    
+    If strKHBS = "TKCT" Then
+        If idToKhai = "80" Or idToKhai = "82" Then
+            If checkKyKKTrungNgay(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile"), Trim(txtNgayDau.Text), Trim(txtNgayCuoi.Text)) = True Then
+                DisplayMessage "0344", msOKOnly, miWarning
+                Exit Sub
+            End If
+        End If
+    ElseIf strKHBS = "TKBS" Then
+        If idToKhai = "80" Or idToKhai = "82" Then
+            If checkKyKKTrungNgay("bs" & Trim$(txtSolan.Text) & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile"), Trim(txtNgayDau.Text), Trim(txtNgayCuoi.Text)) = True Then
+                DisplayMessage "0344", msOKOnly, miWarning
                 Exit Sub
             End If
         End If
@@ -9226,3 +9244,68 @@ Private Sub LoadXMLFileNames()
         End If
     Next
 End Sub
+
+
+
+' tenFileTK: truyen datafile cua to khai
+Private Function checkKyKKTrungNgay(ByVal tenFileTK As String, ByVal tuNgayKK As String, ByVal denNgayKK As String) As Boolean
+    Dim isTrung As Boolean
+    Dim lngIndex As Integer
+    Dim arrTemp() As String
+    Dim tuNgay1 As String
+    Dim denNgay1 As String
+    Dim chenhLech1 As Integer
+    Dim chenhLech2 As Integer
+    Dim chenhLech3 As Integer
+    Dim chenhLech4 As Integer
+    On Error GoTo ErrHandle
+    ' load danh muc file trong folder
+    LoadXMLFileNames
+
+    For lngIndex = 0 To UBound(arrStrXMLFileNames)
+        ' to khai chinh thuc
+        If Len(arrStrXMLFileNames(lngIndex)) > 18 Then
+        ' kiem tra 19: YYYY_MMYYYY_MMYYYY
+            If tenFileTK = Mid$(arrStrXMLFileNames(lngIndex), 1, Len(arrStrXMLFileNames(lngIndex)) - 18) Then
+                arrTemp = Split(Right(arrStrXMLFileNames(lngIndex), 17), "_")
+                tuNgay1 = arrTemp(0)
+                denNgay1 = arrTemp(1)
+                ' kiem tra neu tu thang1 , den thang 1 = tu thang KK , den thang KK thi tra ve false
+                ' truong hop tu thang, den than nam trong khoang
+                chenhLech1 = DateDiff("D", format(tuNgayKK, "dd/mm/yyyy"), format(Left(tuNgay1, 2) & "/" & Mid(tuNgay1, 3, 2) & "/" & Right(tuNgay1, 4), "dd/mm/yyyy"))
+                chenhLech2 = DateDiff("D", format(Left(denNgay1, 2) & "/" & Mid$(denNgay1, 3, 2) & "/" & Right(denNgay1, 4), "dd/mm/yyyy"), format(denNgayKK, "dd/mm/yyyy"))
+                If chenhLech1 = 0 And chenhLech2 = 0 Then
+                    isTrung = False
+                    Exit For
+                ElseIf chenhLech1 * chenhLech2 > 0 Then
+                    isTrung = True
+                    Exit For
+                End If
+
+
+                ' truong hop tu thang 1 nam trong khoang
+                chenhLech1 = DateDiff("D", format(tuNgayKK, "dd/mm/yyyy"), format(Left(tuNgay1, 2) & "/" & Mid$(tuNgay1, 3, 2) & "/" & Right(tuNgay1, 4), "dd/mm/yyyy"))
+                chenhLech2 = DateDiff("D", format(tuNgayKK, "dd/mm/yyyy"), format(Left(denNgay1, 2) & "/" & Mid$(denNgay1, 3, 2) & "/" & Right(denNgay1, 4), "dd/mm/yyyy"))
+                If chenhLech1 * chenhLech2 <= 0 Then
+                    isTrung = True
+                    Exit For
+                End If
+                ' truong hop den thang nam trong khoang
+                chenhLech1 = DateDiff("D", format(denNgayKK, "dd/mm/yyyy"), format(Left(tuNgay1, 2) & "/" & Mid$(tuNgay1, 3, 2) & "/" & Right(tuNgay1, 4), "dd/mm/yyyy"))
+                chenhLech2 = DateDiff("D", format(denNgayKK, "dd/mm/yyyy"), format(Left(denNgay1, 2) & "/" & Mid$(denNgay1, 3, 2) & "/" & Right(denNgay1, 4), "dd/mm/yyyy"))
+                If chenhLech1 * chenhLech2 <= 0 Then
+                    isTrung = True
+                    Exit For
+                End If
+
+
+
+            End If
+        End If
+    Next lngIndex
+    checkKyKKTrungNgay = isTrung
+    Exit Function
+ErrHandle:
+    checkKyKKTrungNgay = False
+    SaveErrorLog "frmPeriod", "checkKyKKTrungNgay", Err.Number, Err.Description
+End Function
