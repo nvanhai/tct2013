@@ -1136,6 +1136,40 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 .Row = Row
                 UpdateCell fps, Col, Row, .Text
             End If
+            
+            If Col = .ColLetterToNumber("X") And Row >= 22 Then
+                .GetText Col, Row, varTemp
+                If varTemp <> "" And varTemp <> "../...." Then
+                    If Format_mmyyyy(CStr(varTemp)) <> "" Then
+                        .SetText Col, Row, Format_mmyyyy(CStr(varTemp))
+                    Else
+                        '.SetFocus
+                        .SetActiveCell Col, Row
+                    End If
+                Else
+                 .SetText Col, Row, ""
+                End If
+                .Col = Col
+                .Row = Row
+                UpdateCell fps, Col, Row, .Text
+            End If
+            
+            If Col = .ColLetterToNumber("Y") And Row >= 22 Then
+                .GetText Col, Row, varTemp
+                If varTemp <> "" And varTemp <> "../...." Then
+                    If Format_mmyyyy(CStr(varTemp)) <> "" Then
+                        .SetText Col, Row, Format_mmyyyy(CStr(varTemp))
+                    Else
+                        '.SetFocus
+                        .SetActiveCell Col, Row
+                    End If
+                Else
+                 .SetText Col, Row, ""
+                End If
+                .Col = Col
+                .Row = Row
+                UpdateCell fps, Col, Row, .Text
+            End If
         End If
         .EventEnabled(EventAllEvents) = True
     End With
@@ -1169,6 +1203,9 @@ Public Sub finish()
         InsertNode 23, .SearchCol(.ColLetterToNumber("B"), 22, -1, "aa", SearchFlagsNone) - 1, 2
         .Sheet = 3
         InsertNode 23, .SearchCol(.ColLetterToNumber("B"), 22, -1, "aa", SearchFlagsNone) - 1, 3
+        
+        .Sheet = 4
+        InsertNode 23, .SearchCol(.ColLetterToNumber("B"), 22, -1, "aa", SearchFlagsNone) - 1, 4
 '
 '
         UpdateSheets
@@ -4595,16 +4632,16 @@ Private Sub CheckDynamicSheet3()
                  End If
                  
                  ' kiem tra den thang bat buoc nhap
-                 If Trim(vDenThang) <> "" Then
-                    .Col = .ColLetterToNumber("Y")
-                    .CellNote = ""
-                    .BackColor = mNonErrorColor
-                 Else
-                    .Col = .ColLetterToNumber("Y")
-                    .CellNote = vErrEmpty
-                    .BackColor = mErrorColor
-                    iFlagEmpty = 1
-                 End If
+'                 If Trim(vDenThang) <> "" Then
+'                    .Col = .ColLetterToNumber("Y")
+'                    .CellNote = ""
+'                    .BackColor = mNonErrorColor
+'                 Else
+'                    .Col = .ColLetterToNumber("Y")
+'                    .CellNote = vErrEmpty
+'                    .BackColor = mErrorColor
+'                    iFlagEmpty = 1
+'                 End If
                  
                 ' Kiem tra tu thang, den thang
                 If Trim(vTuThang) <> "" And Trim(vDenThang) <> "" Then
