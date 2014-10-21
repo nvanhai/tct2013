@@ -612,8 +612,8 @@ Public Sub finish()
 '
         'kiemTraDuLieuImport
 
-'        .Sheet = 1
-'        InsertNode 23, .SearchCol(.ColLetterToNumber("B"), 22, -1, "aa", SearchFlagsNone) - 1, 2
+        .Sheet = 1
+        InsertNode 40, .SearchCol(.ColLetterToNumber("B"), 40, -1, "aa", SearchFlagsNone) - 1, 1
 '
         UpdateSheets
         CheckDynamicError 'Set Exception Error on cells of interface
@@ -861,31 +861,16 @@ Public Sub InsertNode(ByVal fRow As Long, ByVal lRow As Long, ByVal mSheet As By
     Dim cTemplate, cReport As String
     
     Dim sumRowDel As Long
-    sumRowDel = TAX_Utilities_v1.Data(mSheet - 1).getElementsByTagName("Cells").length
+    sumRowDel = TAX_Utilities_v1.Data(mSheet - 1).getElementsByTagName("Section").Item(0).childNodes.length
     For ctlRow = 1 To sumRowDel - 1
-        If mSheet = 2 Then
-            Set xmlNodeCells = TAX_Utilities_v1.Data(mSheet - 1).nodeFromID("D" & "_" & 22 + ctlRow & "").parentNode
-            xmlNodeCells.parentNode.removeChild xmlNodeCells
-        ElseIf mSheet = 3 Then
-            Set xmlNodeCells = TAX_Utilities_v1.Data(mSheet - 1).nodeFromID("C" & "_" & 22 + ctlRow & "").parentNode
-            xmlNodeCells.parentNode.removeChild xmlNodeCells
-        ElseIf mSheet = 4 Then
-            Set xmlNodeCells = TAX_Utilities_v1.Data(mSheet - 1).nodeFromID("D" & "_" & 22 + ctlRow & "").parentNode
-            xmlNodeCells.parentNode.removeChild xmlNodeCells
-        ElseIf mSheet = 5 Then
-            Set xmlNodeCells = TAX_Utilities_v1.Data(mSheet - 1).nodeFromID("C" & "_" & 22 + ctlRow & "").parentNode
+        If mSheet = 1 Then
+            Set xmlNodeCells = TAX_Utilities_v1.Data(mSheet - 1).nodeFromID("C" & "_" & 40 + ctlRow & "").parentNode
             xmlNodeCells.parentNode.removeChild xmlNodeCells
         End If
     Next
     
-    If mSheet = 2 Then
-        Set xmlNodeCells = TAX_Utilities_v1.Data(mSheet - 1).nodeFromID("D_22").parentNode
-    ElseIf mSheet = 3 Then
-        Set xmlNodeCells = TAX_Utilities_v1.Data(mSheet - 1).nodeFromID("C_22").parentNode
-    ElseIf mSheet = 4 Then
-        Set xmlNodeCells = TAX_Utilities_v1.Data(mSheet - 1).nodeFromID("D_22").parentNode
-    ElseIf mSheet = 5 Then
-        Set xmlNodeCells = TAX_Utilities_v1.Data(mSheet - 1).nodeFromID("C_22").parentNode
+    If mSheet = 1 Then
+        Set xmlNodeCells = TAX_Utilities_v1.Data(mSheet - 1).nodeFromID("C_40").parentNode
     End If
     
     For ctlRow = fRow To lRow
@@ -902,30 +887,13 @@ Public Sub InsertNode(ByVal fRow As Long, ByVal lRow As Long, ByVal mSheet As By
                     
             ' Set first cell = 1
             SetAttribute xmlNodeNewCell, "FirstCell", "1"
-            If mSheet = 2 Then
+            If mSheet = 1 Then
                 If Trim(cTemplate) = "D_" Or Trim(cTemplate) = "E_" Or Trim(cTemplate) = "F_" Then
                     SetAttribute xmlNodeNewCell, "Value", vbNullString
                 Else
                     SetAttribute xmlNodeNewCell, "Value", "0"
                 End If
-                SetAttribute xmlNodeNewCell, "CellID2", cReport & (ctlRow - 7)
-            ElseIf mSheet = 3 Then
-                If Trim(cTemplate) = "C_" Or Trim(cTemplate) = "D_" Or Trim(cTemplate) = "E_" Then
-                    SetAttribute xmlNodeNewCell, "Value", vbNullString
-                Else
-                    SetAttribute xmlNodeNewCell, "Value", "0"
-                End If
-                SetAttribute xmlNodeNewCell, "CellID2", cReport & (ctlRow - 7)
-            ElseIf mSheet = 4 Then
-                SetAttribute xmlNodeNewCell, "Value", vbNullString
-                SetAttribute xmlNodeNewCell, "CellID2", cReport & (ctlRow - 7)
-            ElseIf mSheet = 5 Then
-                If Trim(cTemplate) = "C_" Or Trim(cTemplate) = "D_" Or Trim(cTemplate) = "E_" Then
-                    SetAttribute xmlNodeNewCell, "Value", vbNullString
-                Else
-                    SetAttribute xmlNodeNewCell, "Value", "0"
-                End If
-                SetAttribute xmlNodeNewCell, "CellID2", cReport & (ctlRow - 4)
+                SetAttribute xmlNodeNewCell, "CellID2", cReport & (ctlRow - 2)
             End If
             
         Next

@@ -3673,6 +3673,15 @@ Public Sub cmdOK_Click()
             chkTkhaiThang.SetFocus
             Exit Sub
         End If
+        
+        ' kiem tra ngay ps khong duoc lon hon ngay hien tai
+        If strQuy = "TK_LANPS" Then
+            If DateDiff("D", Date, DateSerial(Val(txtYear.Text), Val(txtMonth.Text), Val(txtDay.Text))) > 0 Then
+                DisplayMessage "0223", msOKOnly, miWarning
+                txtDay.SetFocus
+                Exit Sub
+            End If
+        End If
     End If
     
     ' chan to khai 01A/TNDN, 01B/TNDN ky ke khai quy 4/2014 tro di
