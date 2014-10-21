@@ -612,8 +612,8 @@ Public Sub finish()
 '
         'kiemTraDuLieuImport
 
-        .Sheet = 1
-        InsertNode 40, .SearchCol(.ColLetterToNumber("B"), 40, -1, "aa", SearchFlagsNone) - 1, 1
+'        .Sheet = 1
+'        InsertNode 41, .SearchCol(.ColLetterToNumber("B"), 40, -1, "aa", SearchFlagsNone) - 1, 1
 '
         UpdateSheets
         CheckDynamicError 'Set Exception Error on cells of interface
@@ -836,6 +836,152 @@ Public Sub FinishImport()
         ASheet = .ActiveSheet
         SSheet = .Sheet
 
+        .Sheet = 1
+        ' Lay danh muc quan he voi NNT
+        Dim xmlDocument As New MSXML.DOMDocument
+        Dim xmlNode As MSXML.IXMLDOMNode
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_QHNNT.xml"))
+        Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
+        Dim strQuanHeNNTID As String
+        Dim strQuanHeNNT As String
+        
+        Dim strQuocTich As String
+        Dim strMaQuocTich As String
+        Dim strTenTinh As String
+        Dim strTenHuyen As String
+        Dim strTenXa As String
+        Dim strMaTinh As String
+        Dim strMaHuyen  As String
+        Dim strMaXa As String
+        Dim temValue As String
+        Dim arrValue() As String
+        
+        Dim index As Integer
+        ' Chuoi gia tri ve quan he NNT bao gom:
+        ' 01-Con, 02-Vo, 03-Chong, 04-Cha, 05-Me, 06-Chau Ruot, 07-Ho Hang, 99-Khac
+        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+        For Each xmlNode In xmlNodeListMap
+            arrValue = Split(GetAttribute(xmlNode, "value"), "###")
+            strQuanHeNNT = strQuanHeNNT + arrValue(1) + Chr$(9)
+            strQuanHeNNTID = strQuanHeNNTID + arrValue(0) + Chr$(9)
+        Next
+        
+        
+        ' lay du lieu danh muc dia ban tinh
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Tinh.xml"))
+        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+        For Each xmlNode In xmlNodeListMap
+            temValue = GetAttribute(xmlNode, "Value")
+            arrValue = Split(temValue, "###")
+            'If arrValue(0) <> "1" Then
+                strTenTinh = strTenTinh + arrValue(2) + Chr$(9)
+                strMaTinh = strMaTinh + arrValue(1) + Chr$(9)
+            'End If
+        Next
+        
+        ' lay danh sach huyen
+        Set xmlDocument = Nothing
+        Set xmlNodeListMap = Nothing
+        ' lay du lieu danh muc dia ban tinh
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Huyen.xml"))
+        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+        For Each xmlNode In xmlNodeListMap
+            temValue = GetAttribute(xmlNode, "Value")
+            arrValue = Split(temValue, "###")
+            'If arrValue(0) <> "1" Then
+                strTenHuyen = strTenHuyen + arrValue(3) + Chr$(9)
+                strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
+            'End If
+        Next
+        
+        ' Lay danh muc xa
+        Set xmlDocument = Nothing
+        Set xmlNodeListMap = Nothing
+        ' lay du lieu danh muc dia ban tinh
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Xa.xml"))
+        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+        For Each xmlNode In xmlNodeListMap
+            temValue = GetAttribute(xmlNode, "Value")
+            arrValue = Split(temValue, "###")
+            'If arrValue(0) <> "1" Then
+                strTenXa = strTenXa + arrValue(4) + Chr$(9)
+                strMaXa = strMaXa + arrValue(3) + Chr$(9)
+            'End If
+        Next
+        
+        ' lay du lieu dia ban
+        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Quoc_Gia.xml"))
+        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+        For Each xmlNode In xmlNodeListMap
+            temValue = GetAttribute(xmlNode, "Value")
+            arrValue = Split(temValue, "###")
+            strQuocTich = strQuocTich + arrValue(1) + Chr$(9)
+            strMaQuocTich = strMaQuocTich + arrValue(0) + Chr$(9)
+        Next
+        
+        .Sheet = 1
+        .Col = .ColLetterToNumber("B")
+        .Row = 40
+        Do
+'            .Col = .ColLetterToNumber("K")
+'            .TypeComboBoxList = strQuanHeNNTID
+'            index = .typeComboboxCurSel
+'
+'            .Col = .ColLetterToNumber("L")
+'            .TypeComboBoxList = strQuanHeNNT
+'            .typeComboboxCurSel = index
+            
+                ' set danh sach tinh
+            .Col = .ColLetterToNumber("Q")
+            .TypeComboBoxList = strMaTinh
+            index = .typeComboboxCurSel
+            
+            .Col = .ColLetterToNumber("R")
+            .TypeComboBoxList = strTenTinh
+            .typeComboboxCurSel = index
+            
+            ' set danh sach huyen
+            .Col = .ColLetterToNumber("S")
+            .TypeComboBoxList = strMaHuyen
+            index = .typeComboboxCurSel
+            
+            .Col = .ColLetterToNumber("T")
+            .TypeComboBoxList = strTenHuyen
+            .typeComboboxCurSel = index
+            
+            ' set danh sach xa
+            .Col = .ColLetterToNumber("U")
+            .TypeComboBoxList = strMaXa
+            index = .typeComboboxCurSel
+            
+            .Col = .ColLetterToNumber("V")
+            .TypeComboBoxList = strTenXa
+            .typeComboboxCurSel = index
+            
+'            ' set danh sach quoc tich
+'            .Col = .ColLetterToNumber("I")
+'            .TypeComboBoxList = strMaQuocTich
+'            index = .typeComboboxCurSel
+'
+'            .Col = .ColLetterToNumber("J")
+'            .TypeComboBoxList = strQuocTich
+'            .typeComboboxCurSel = index
+            
+
+            ' set danh sach quoc gia
+            .Col = .ColLetterToNumber("O")
+            .TypeComboBoxList = strMaQuocTich
+            index = .typeComboboxCurSel
+            
+            .Col = .ColLetterToNumber("P")
+            .TypeComboBoxList = strQuocTich
+            .typeComboboxCurSel = index
+                        
+
+             .Col = .ColLetterToNumber("B")
+             .Row = .Row + 1
+        Loop Until .Text = "aa"
+
         
         .ActiveSheet = ASheet
         .Sheet = SSheet
@@ -888,11 +1034,7 @@ Public Sub InsertNode(ByVal fRow As Long, ByVal lRow As Long, ByVal mSheet As By
             ' Set first cell = 1
             SetAttribute xmlNodeNewCell, "FirstCell", "1"
             If mSheet = 1 Then
-                If Trim(cTemplate) = "D_" Or Trim(cTemplate) = "E_" Or Trim(cTemplate) = "F_" Then
-                    SetAttribute xmlNodeNewCell, "Value", vbNullString
-                Else
-                    SetAttribute xmlNodeNewCell, "Value", "0"
-                End If
+                SetAttribute xmlNodeNewCell, "Value", vbNullString
                 SetAttribute xmlNodeNewCell, "CellID2", cReport & (ctlRow - 2)
             End If
             
