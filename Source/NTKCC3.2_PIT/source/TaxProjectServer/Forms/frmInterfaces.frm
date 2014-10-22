@@ -321,7 +321,7 @@ Const mParity = "N"
 Const mDataBits = 8
 Const mStopBits = 1
 Const mHandshaking = 1
-Const tt156 = "01~02~04~71~11~12~15~16~50~51~36~74~75~06~90~23~25~73~77~80~82~87"
+Const tt156 = "01~02~04~71~11~12~15~16~50~51~36~74~75~06~90~23~25~73~77~80~82~87~85~88"
 Const tt156_tkbs = "01~02~04~71~72~11~12~73~15~16~50~51~36~74~75~70~81~06~05~90~23~25~86"
 
 Private xmlDocumentInit()       As MSXML.DOMDocument
@@ -857,7 +857,7 @@ Private Sub cmdSave_Click()
         ElseIf menuId = 70 Then
             .GetText .ColLetterToNumber("E"), 23, vKYLBO
         ElseIf menuId = 85 Or menuId = 88 Then
-            .GetText .ColLetterToNumber("E"), 24, vKYLBO
+            .GetText .ColLetterToNumber("E"), 22, vKYLBO
         ElseIf menuId = 81 Or menuId = 80 Or menuId = 82 Or menuId = 89 Then
             .GetText .ColLetterToNumber("E"), 30, vKYLBO
         ElseIf menuId = 73 Then
@@ -900,9 +900,8 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("E"), 24, vNgayNop
         ElseIf menuId = 36 Then
             .GetText .ColLetterToNumber("E"), 24, vNgayNop
-        ElseIf menuId = 72 Or menuId = 86 Or menuId = 87 Then
+        ElseIf menuId = 72 Or menuId = 86 Or menuId = 87 Or menuId = 85 Or menuId = 88 Then
             .GetText .ColLetterToNumber("E"), 24, vNgayNop
-        
         ElseIf menuId = 5 Then
             .GetText .ColLetterToNumber("E"), 25, vNgayNop
         ElseIf menuId = 6 Then
@@ -1283,7 +1282,7 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("O"), 29, vNGAYQUET
         ElseIf menuId = 25 Then
             .GetText .ColLetterToNumber("M"), 32, vNGAYQUET
-        ElseIf menuId = 90 Then
+        ElseIf menuId = 90 Or menuId = 85 Or menuId = 88 Then
             .GetText .ColLetterToNumber("M"), 24, vNGAYQUET
         Else
             .GetText .ColLetterToNumber("M"), 12, vNGAYQUET
@@ -1674,8 +1673,15 @@ Private Sub Command1_Click()
     Dim str1 As String, str2 As String, str3 As String, str4 As String, str5 As String, str6 As String, str7 As String, str8 As String
 
 
-'01_PHLP
-str2 = "aa999854400108848   02201400100100100101/0101/01/1900<S01><S></S><S>2152~100000~30~2000~98000~21502152~2153~200000~40~10000~190000~21502153~2154~300000~30~40000~260000~21502154</S><S>600000~52000~548000</S><S>Nguyen Sy Hung~Nguyen Thac THu~CCHN12345~17/10/2014~1~~</S></S01>"
+''01_PHLP
+'str2 = "aa999854400108848   02201400200400100101/0101/01/1900<S01><S></S><S>2152~200000~30~150000~50000~21502152~2153~500000~70~350000~150000~21502153</S><S>700000~500000~200000</S><S>Nguyen Sy Hung~Nguyen Thac Thu~CCHN1324~07/10/2014~1~~</S></S01>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+
+str2 = "bs999854400108848   02201400300400100301/0101/01/1900<S01><S></S><S>2152~300000~25.5~150000~150000~21502152~2153~450000~74.5~350000~100000~21502153</S><S>750000~500000~250000</S><S>Nguyen Sy Hung~Nguyen Thac Thu~CCHN1324~07/10/2014~~1~1</S></S01>"
+Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+str2 = "bs999854400108848   022014003004002003<SKHBS><S>SË ti“n ph›, l÷ ph›  thu Æ≠Óc ~4~700000~750000~50000</S><S>~~0~0~0</S><S>23/10/2"
+Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+str2 = "bs999854400108848   022014003004003003014~217~6695~12000~LHT12345~15/10/2014~10100~10103~10~1300~abcvdfdf~0~0~50000</S></SKHBS>"
 Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 ''03_TNDN
@@ -6203,7 +6209,7 @@ Private Sub Insert_QHS()
         If menuId = 8 Or menuId = 9 Then
             .GetText .ColLetterToNumber("I"), 9, vKYLBO
             ' vttoan: lay KyLapBo
-        ElseIf menuId = 15 Or menuId = 16 Or menuId = 50 Or menuId = 51 Or menuId = 36 Or menuId = 72 Or menuId = 86 Or menuId = 87 Or menuId = 72 Or menuId = 85 Or menuId = 88 Then
+        ElseIf menuId = 15 Or menuId = 16 Or menuId = 50 Or menuId = 51 Or menuId = 36 Or menuId = 72 Or menuId = 86 Or menuId = 87 Or menuId = 72 Then
             .GetText .ColLetterToNumber("E"), 22, vKYLBO
         ElseIf menuId = 5 Or menuId = 70 Then
             .GetText .ColLetterToNumber("E"), 23, vKYLBO
