@@ -506,9 +506,11 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim strMaPhongXuLy As String
     Dim sDATE_FROM, sDATE_TO As Variant
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
+    Dim vDAU_THO, vCONDENSATE, vKHI_THIEN_NHIEN, vLOAI_TK_DK As Variant
     
 On Error GoTo ErrHandle
     strSQL = strSQL_HDR
+    strSQL = Replace(strSQL, ")", ",LOAI_TK_DK)")
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
@@ -571,7 +573,20 @@ On Error GoTo ErrHandle
         .Sheet = 1
         .GetText .ColLetterToNumber("R"), 37, sDATE_FROM
         .GetText .ColLetterToNumber("S"), 37, sDATE_TO
+        
+        .GetText .ColLetterToNumber("D"), 38, vDAU_THO
+        .GetText .ColLetterToNumber("G"), 38, vCONDENSATE
+        .GetText .ColLetterToNumber("J"), 38, vKHI_THIEN_NHIEN
     End With
+    'Giá tr?  =”0’ t? khai tháng, =”1’ t? khai l?n phát sinh, =”2” t? khai theo l?n xu?t bán
+    If (vDAU_THO = "1") Then
+        vLOAI_TK_DK = "DT"
+    ElseIf (vCONDENSATE = "1") Then
+        vLOAI_TK_DK = "CD"
+    ElseIf (vKHI_THIEN_NHIEN = "1") Then
+        vLOAI_TK_DK = "KTN"
+    End If
+    
     strSQL = strSQL & "To_date('" & "01/" & sDATE_FROM & "','dd/mm/yyyy'),"
     dDate = Format(CDate("01/" & sDATE_TO), "dd/mm/yyyy")
     dDate = DateAdd("m", 1, dDate)
@@ -634,7 +649,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
     'strSQL = strSQL & "null)"
     strSQL = strSQL & "null,"
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ",'" & vLOAI_TK_DK & "')"
     GenerateSQL_Header = strSQL
     'Debug.Print GenerateSQL_Header
     
