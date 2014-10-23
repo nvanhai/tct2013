@@ -126,7 +126,7 @@ Begin VB.Form frmReportData
       DisplayText     =   ""
       BarWidthReduction=   -1
       TextAlignment   =   0
-      Quality         =   1702057308
+      Quality         =   68
    End
 End
 Attribute VB_Name = "frmReportData"
@@ -1725,11 +1725,9 @@ Private Sub SetupPrinter()
                                 Else
                                     If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "92" And isDLT = True And lCtrl = 1 Then
                                         .Row = 78
-                                    Else
-                                        .Row = GetLastDataRow(lCtrl)
-                                    End If
-                                    
-                                    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "93" And lCtrl = 1 Then
+                                    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "97" And isDLT = True And lCtrl = 1 Then
+                                        .Row = GetLastDataRowTD(lCtrl)
+                                    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "93" And lCtrl = 1 Then
                                         .Row = GetLastDataRow3(lCtrl)
                                     Else
                                         .Row = GetLastDataRow(lCtrl)
@@ -1881,6 +1879,19 @@ Private Function GetLastDataRow3(ByVal lngSheet As Long) As Long
     ParserCellID fpsReport, GetAttribute(xmlNode, "CellID2"), lCol, lRow
     
     GetLastDataRow3 = lRow
+End Function
+
+Private Function GetLastDataRowTD(ByVal lngSheet As Long) As Long
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim xmlNodeList As MSXML.IXMLDOMNodeList
+    Dim lCol As Long, lRow As Long
+    
+    Set xmlNodeList = TAX_Utilities_v1.Data(lngSheet - 1).getElementsByTagName("Cell")
+    Set xmlNode = xmlNodeList(xmlNodeList.length - 15)
+    
+    ParserCellID fpsReport, GetAttribute(xmlNode, "CellID2"), lCol, lRow
+    
+    GetLastDataRowTD = lRow
 End Function
 
 Private Function GetLastDataRowKHBS(ByVal lngSheet As Long) As Long
