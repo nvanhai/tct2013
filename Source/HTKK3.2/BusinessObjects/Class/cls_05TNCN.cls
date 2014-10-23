@@ -2156,6 +2156,8 @@ Dim ASheet As Integer, SSheet As Integer
         ' Tinh so dong DL trong BK (Phuc vu nut sap xep)
         totalRow5B = .SearchCol(.ColLetterToNumber("B"), 22, -1, "aa", SearchFlagsNone)
         ' test tai khong kiem tra de tang toc do
+        ' set lai cong thuc
+        setFormulaImport
         
         ' Lay danh muc quan he voi NNT
         Dim xmlDocument As New MSXML.DOMDocument
@@ -2242,6 +2244,7 @@ Dim ASheet As Integer, SSheet As Integer
         .Sheet = 4
         .Col = .ColLetterToNumber("B")
         .Row = 22
+        .EventEnabled(EventAllEvents) = False
         Do
             .Col = .ColLetterToNumber("L")
             .TypeComboBoxList = strQuanHeNNTID
@@ -4973,6 +4976,128 @@ Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer
                 .Row = 57
                 .Formula = "Q57"
             End If
+        End If
+        .EventEnabled(EventAllEvents) = True
+    End With
+End Sub
+
+
+
+
+Sub setFormulaImport()
+            
+    With fps
+        'Because of unclearly-rised events, this function is here for turning it off
+        'at the end of this sub, this event will be turned on
+        .EventEnabled(EventAllEvents) = False
+        .Sheet = .ActiveSheet
+        mCurrentSheet = .ActiveSheet
+        If .ActiveSheet = 2 Then
+                mCurrentSheet = .Sheet
+            ' chi tieu 21
+            .Sheet = 1
+            .Col = .ColLetterToNumber("I")
+            .Row = 36
+            .Formula = "Q36"
+            
+            ' chi tieu 24
+            .Col = .ColLetterToNumber("I")
+            .Row = 39
+            .Formula = "Q39"
+            
+            ' chi tieu 26
+            .Col = .ColLetterToNumber("I")
+            .Row = 41
+            .Formula = "Q41"
+            
+            ' chi tieu 28
+            .Col = .ColLetterToNumber("I")
+            .Row = 43
+            .Formula = "Q43"
+            
+            ' chi tieu 36
+            .Col = .ColLetterToNumber("I")
+            .Row = 51
+            .Formula = "Q51"
+            
+            ' chi tieu 32
+            .Col = .ColLetterToNumber("I")
+            .Row = 47
+            .Formula = "Q47"
+            
+            ' chi tieu 40
+            .Col = .ColLetterToNumber("I")
+            .Row = 55
+            .Formula = "Q55"
+            
+            
+            ' chi tieu 44
+            .Col = .ColLetterToNumber("I")
+            .Row = 62
+            .Formula = "Q62"
+        End If
+        
+        
+        If .ActiveSheet = 3 Then
+                mCurrentSheet = .Sheet
+            ' chi tieu 21
+            .Sheet = 1
+            .Col = .ColLetterToNumber("I")
+            .Row = 36
+            .Formula = "Q36"
+            
+            ' chi tieu 24
+            .Col = .ColLetterToNumber("I")
+            .Row = 39
+            .Formula = "Q39"
+            
+            
+            ' chi tieu 25
+            .Col = .ColLetterToNumber("I")
+            .Row = 40
+            .Formula = "Q40"
+            
+            ' chi tieu 26
+            .Col = .ColLetterToNumber("I")
+            .Row = 41
+            .Formula = "Q41"
+            
+            ' chi tieu 29
+            .Col = .ColLetterToNumber("I")
+            .Row = 44
+            .Formula = "Q44"
+            
+            ' chi tieu 30
+            .Col = .ColLetterToNumber("I")
+            .Row = 45
+            .Formula = "Q45"
+            
+            ' chi tieu 33
+            .Col = .ColLetterToNumber("I")
+            .Row = 48
+            .Formula = "Q48"
+
+            
+            ' chi tieu 34
+            .Col = .ColLetterToNumber("I")
+            .Row = 49
+            .Formula = "Q49"
+                
+            ' chi tieu 37
+            .Col = .ColLetterToNumber("I")
+            .Row = 52
+            .Formula = "Q52"
+
+            ' chi tieu 38
+            .Col = .ColLetterToNumber("I")
+            .Row = 53
+            .Formula = "Q53"
+
+            
+            ' chi tieu 42
+            .Col = .ColLetterToNumber("I")
+            .Row = 57
+            .Formula = "Q57"
         End If
         .EventEnabled(EventAllEvents) = True
     End With

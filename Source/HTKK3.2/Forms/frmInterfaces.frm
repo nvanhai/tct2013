@@ -15311,7 +15311,8 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
 '                    .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), rowStart + a, .ColLetterToNumber("BD"), (rowStart + a + 1)
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
                     .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), rowStart + a, .ColLetterToNumber("O"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + a, .ColLetterToNumber("Q"), (rowStart + a + 1)
+                    '.CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + a, .ColLetterToNumber("Q"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), rowStart + a, .ColLetterToNumber("S"), (rowStart + a + 1)
                     
                     a = a + 2
                 ElseIf a <> 0 Then
@@ -15321,7 +15322,8 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
 '                    .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), rowStart + a - 1, .ColLetterToNumber("BD"), rowStart + a
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
                     .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), rowStart + a - 1, .ColLetterToNumber("O"), rowStart + a
-                    .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + a - 1, .ColLetterToNumber("Q"), rowStart + a
+                    '.CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + a - 1, .ColLetterToNumber("Q"), rowStart + a
+                    .CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), rowStart + a - 1, .ColLetterToNumber("S"), rowStart + a
 
                     a = a * 2
                 End If
@@ -15343,7 +15345,8 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
 '                    .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), 1024 + rowStart - 1, .ColLetterToNumber("BD"), rowStart + 1024 * a
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), 1024 + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
                     .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), 1024 + rowStart - 1, .ColLetterToNumber("O"), rowStart + 1024 * a
-                    .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), 1024 + rowStart - 1, .ColLetterToNumber("Q"), rowStart + 1024 * a
+                    '.CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), 1024 + rowStart - 1, .ColLetterToNumber("Q"), rowStart + 1024 * a
+                    .CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), 1024 + rowStart - 1, .ColLetterToNumber("S"), rowStart + 1024 * a
                         
                     a = a + 1
                 Loop
@@ -15354,7 +15357,8 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
 '                .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), du + rowStart - 1, .ColLetterToNumber("BD"), rowStart + 1024 * a
                 .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
                 .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), du + rowStart - 1, .ColLetterToNumber("O"), rowStart + 1024 * a
-                .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), du + rowStart - 1, .ColLetterToNumber("Q"), rowStart + 1024 * a
+                '.CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), du + rowStart - 1, .ColLetterToNumber("Q"), rowStart + 1024 * a
+                .CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), du + rowStart - 1, .ColLetterToNumber("S"), rowStart + 1024 * a
                         
             Else
                 .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), du + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * (a - 1)
@@ -15363,7 +15367,8 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
 '                .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), du + rowStart - 1, .ColLetterToNumber("BD"), rowStart + 1024 * (a - 1)
                 .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * (a - 1)
                 .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), du + rowStart - 1, .ColLetterToNumber("O"), rowStart + 1024 * (a - 1)
-                .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), du + rowStart - 1, .ColLetterToNumber("Q"), rowStart + 1024 * (a - 1)
+                '.CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), du + rowStart - 1, .ColLetterToNumber("Q"), rowStart + 1024 * (a - 1)
+                .CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), du + rowStart - 1, .ColLetterToNumber("S"), rowStart + 1024 * (a - 1)
                         
             End If
 
@@ -15380,7 +15385,8 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
 '                    .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), rowStart + a, .ColLetterToNumber("BD"), (rowStart + a + 1)
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
                     .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), rowStart + a, .ColLetterToNumber("O"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + a, .ColLetterToNumber("Q"), (rowStart + a + 1)
+                '    .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + a, .ColLetterToNumber("Q"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), rowStart + a, .ColLetterToNumber("S"), (rowStart + a + 1)
 
                     a = a + 2
                 ElseIf a <> 0 Then
@@ -15390,7 +15396,8 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
 '                    .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), rowStart + a - 1, .ColLetterToNumber("BD"), rowStart + a
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
                     .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), rowStart + a - 1, .ColLetterToNumber("O"), rowStart + a
-                    .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + a - 1, .ColLetterToNumber("Q"), rowStart + a
+                    '.CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + a - 1, .ColLetterToNumber("Q"), rowStart + a
+                    .CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), rowStart + a - 1, .ColLetterToNumber("S"), rowStart + a
 
                     a = a * 2
                 End If
@@ -15403,7 +15410,8 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
 '            .CopyRange .ColLetterToNumber("BD"), rowStart, .ColLetterToNumber("BD"), rowStart + (numRow - a - 1), .ColLetterToNumber("BD"), rowStart + a
             .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + (numRow - a - 1), .ColLetterToNumber("B"), rowStart + a
             .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), rowStart + (numRow - a - 1), .ColLetterToNumber("O"), rowStart + a
-            .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + (numRow - a - 1), .ColLetterToNumber("Q"), rowStart + a
+            '.CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + (numRow - a - 1), .ColLetterToNumber("Q"), rowStart + a
+            .CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), rowStart + (numRow - a - 1), .ColLetterToNumber("S"), rowStart + a
             
         End If
             
