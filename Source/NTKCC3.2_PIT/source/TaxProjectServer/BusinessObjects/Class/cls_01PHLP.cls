@@ -260,18 +260,20 @@ Private Function GetMaMuc(ByVal MaTieuMuc As Variant) As String
     Dim rcord           As ADODB.Recordset
     Dim fso             As New FileSystemObject
     
+    Dim clsDAOs As New TAX_Utilities_Svr_New.clsADO
+    
     strDataFileName = spathVat & "\DB_HT\DMMT2.DBF"
 
     If fso.FileExists(strDataFileName) Then
-        If clsDAO.Connected = False Then
+        If clsDAOs.Connected = False Then
             ' Lay mamuc theo matm
-            clsDAO.CreateConnectionString spathVat & "\DB_HT\"
-            clsDAO.Connect
+            clsDAOs.CreateConnectionString spathVat & "\DB_HT\"
+            clsDAOs.Connect
         End If
     
         pSQL = "SELECT MAMUC FROM DMMT2 WHERE MATM = '" & MaTieuMuc & "'"
        
-        Set rcord = clsDAO.Execute(pSQL)
+        Set rcord = clsDAOs.Execute(pSQL)
 
         If Not rcord Is Nothing Then
             strName = rcord.Fields("MAMUC")
@@ -280,7 +282,39 @@ Private Function GetMaMuc(ByVal MaTieuMuc As Variant) As String
     
     GetMaMuc = strName
     
-    clsDAO.Disconnect
+    clsDAOs.Disconnect
+End Function
+' Tra ve gia tri "Nganh--macap--machuong"
+Private Function GetMaNganhTheoDTNT(ByVal MaDTNopThue As Variant) As String
+    Dim strDataFileName As String
+    Dim pSQL            As String
+    Dim strName         As String
+    
+    Dim rcord           As ADODB.Recordset
+    Dim fso             As New FileSystemObject
+    Dim clsDAOs As New TAX_Utilities_Svr_New.clsADO
+    
+    strDataFileName = spathVat & "\DTNT\DTNT2.DBF"
+
+    If fso.FileExists(strDataFileName) Then
+        If clsDAOs.Connected = False Then
+            ' Lay mamuc theo matm
+            clsDAOs.CreateConnectionString spathVat & "\DTNT\"
+            clsDAOs.Connect
+        End If
+    
+        pSQL = "SELECT Nganh,Macap,Machuong FROM DTNT2 WHERE MADTNT = " & MaDTNopThue
+       
+        Set rcord = clsDAOs.Execute(pSQL)
+
+        If Not rcord Is Nothing Then
+            strName = rcord.Fields("Nganh") & "--" & rcord.Fields("Macap") & "--" & rcord.Fields("Machuong")
+        End If
+    End If
+    
+    GetMaNganhTheoDTNT = strName
+    
+    clsDAOs.Disconnect
 End Function
 
 Public Sub GetParams(ByRef strPNgayNhanToKhai As String, ByRef strPPhongXuLy As String)
@@ -543,7 +577,7 @@ Private Sub DataDM(ByVal Id As String, _
                    Optional ByRef strDVT As String, _
                    Optional ByRef strThueSuat As String, _
                    Optional ByRef blnSuaThueSuat As Boolean, _
-                   Optional ByRef MaTM As String)
+                   Optional ByRef maTM As String)
     Dim arrDanhsach()   As String
     Dim strDataFileName As String
     Dim xmlDOMdata      As New MSXML.DOMDocument
@@ -568,9 +602,9 @@ Private Sub DataDM(ByVal Id As String, _
                     blnSuaThueSuat = IIf(arrDanhsach(5) = "1", True, False)
 
                     If Val(TAX_Utilities_Svr_New.Year) > 2014 Or (Val(TAX_Utilities_Svr_New.Year) = 2014 And Val(TAX_Utilities_Svr_New.Month) > 1) Then
-                        MaTM = arrDanhsach(8)
+                        maTM = arrDanhsach(8)
                     Else
-                        MaTM = "2625"
+                        maTM = "2625"
                     End If
                             
                     Exit Sub
@@ -651,10 +685,10 @@ Public Function InsertDTL() As String
 
     Dim madtnt    As Variant
     Dim MaMuc As Variant
-    Dim MaTM   As Variant
+    Dim maTM   As Variant
     Dim matkhai As Variant
     Dim KYLBO     As Variant
-    Dim KYKKHAI As Variant
+    Dim kykkhai As Variant
     Dim ngnop     As Variant
     'Dim TTHTK     As Variant
     Dim LOAILP   As Variant
@@ -684,23 +718,10 @@ Public Function InsertDTL() As String
         End If
 
         
-        'MaMuc = "''"
         
-        .GetText .ColLetterToNumber("H"), 44, MaTM
-        If Trim(MaTM) = vbNullString Then
-            MaTM = "''"
-        Else
-            MaMuc = GetMaMuc(MaTM)
-            If Trim(MaMuc) = vbNullString Then
-                MaMuc = "''"
-            Else
-                MaMuc = "'" & MaMuc & "'"
-            End If
-            MaTM = "'" & MaTM & "'"
-        End If
         
 
-        matkhai = "'01/BVMT'"
+        matkhai = "'01/PHLP'"
         
         .GetText .ColLetterToNumber("E"), 22, KYLBO
         
@@ -719,12 +740,25 @@ Public Function InsertDTL() As String
         End If
         
         
-        MACAP = "''"
-        MACHUONG = "''"
-        MAPHLP = "'01/PHLP'"
+        MACAP = GetMaNganhTheoDTNT(madtnt)
+        If Trim(MACAP) = vbNullString Then
+            MACAP = "''"
+        Else
+            MACAP = Split(MACAP, "--")(1)
+            MACAP = "'" & MACAP & "'"
+        End If
+        
+        MACHUONG = GetMaNganhTheoDTNT(madtnt)
+        If Trim(MACHUONG) = vbNullString Then
+            MACHUONG = "''"
+        Else
+            MACHUONG = Split(MACHUONG, "--")(2)
+            MACHUONG = "'" & MACHUONG & "'"
+        End If
+        
         'To khai da chuyen sang VAT = Y
-        DANHAN = "'Y'"
-        KYKKHAI = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+        DANHAN = "''"
+        kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         .Col = .ColLetterToNumber("B")
         .Row = 44
         
@@ -734,11 +768,33 @@ Public Function InsertDTL() As String
         End If
         
         Do
-            .GetText .ColLetterToNumber("AB"), .Row, LOAILP
+            .GetText .ColLetterToNumber("C"), .Row, LOAILP
             If Trim(LOAILP) = vbNullString Then
                 LOAILP = "''"
             Else
                 LOAILP = "'" & LOAILP & "'"
+            End If
+        
+            .GetText .ColLetterToNumber("AB"), .Row, MAPHLP
+            If Trim(MAPHLP) = vbNullString Then
+                MAPHLP = "''"
+            Else
+                MAPHLP = "'" & MAPHLP & "'"
+            End If
+            
+            'MaMuc = "''"
+            
+            .GetText .ColLetterToNumber("H"), .Row, maTM
+            If Trim(maTM) = vbNullString Then
+                maTM = "''"
+            Else
+                MaMuc = GetMaMuc(maTM)
+                If Trim(MaMuc) = vbNullString Then
+                    MaMuc = "''"
+                Else
+                    MaMuc = "'" & MaMuc & "'"
+                End If
+                maTM = "'" & maTM & "'"
             End If
         
             .GetText .ColLetterToNumber("J"), .Row, LEPHI
@@ -761,10 +817,12 @@ Public Function InsertDTL() As String
                 SOTIENPN = "0"
             End If
             
+            
+            
     
             
-            sSQLVal = madtnt & "," & MaMuc & "," & MaTM & "," & matkhai & "," & KYLBO & "," & _
-                        KYKKHAI & "," & ngnop & "," & TTHTK & "," & LOAILP & "," & LEPHI & "," & _
+            sSQLVal = madtnt & "," & MaMuc & "," & maTM & "," & matkhai & "," & KYLBO & "," & _
+                        kykkhai & "," & ngnop & "," & TTHTK & "," & LOAILP & "," & LEPHI & "," & _
                         TYLE & "," & SOTIENLP & "," & SOTIENPN & "," & MACAP & "," & _
                         MACHUONG & "," & MAPHLP & "," & DANHAN & "," & LAN_QUET
             
@@ -814,11 +872,11 @@ Public Function InsertDTL_KHBS() As String
     Dim madtnt      As Variant
     Dim ngnop       As Variant
     Dim KYLBO       As Variant
-    Dim KYKKHAI     As Variant
+    Dim kykkhai     As Variant
     Dim matkhai     As Variant
     Dim MATHUE      As Variant
     Dim MaMuc       As Variant
-    Dim MaTM        As Variant
+    Dim maTM        As Variant
     Dim MAPP        As Variant
     Dim mact        As Variant
     Dim MACT2       As Variant
@@ -865,14 +923,14 @@ Public Function InsertDTL_KHBS() As String
             madtnt = "'" & madtnt & "'"
         End If
 
-        KYKKHAI = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+        kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
 
         MATHUE = "'21'"
         MAPP = "'2'"
         matkhai = "'01/PHLP'"
         DANHAN = "''"
         MaMuc = "'1550'"
-        MaTM = "' '"
+        maTM = "' '"
         
         .GetText .ColLetterToNumber("E"), 24, ngnop
 
@@ -905,7 +963,7 @@ Public Function InsertDTL_KHBS() As String
         SOTIENNC = "0"
         SONGAYNC = "0"
         
-        sSQLVal = madtnt & "," & KYKKHAI & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & MaTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                        
         sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -987,7 +1045,7 @@ Public Function InsertDTL_KHBS() As String
                 SOCL = SOCL
             End If
             
-            sSQLVal = madtnt & "," & KYKKHAI & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & MaTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                            
             sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
                 
@@ -1012,7 +1070,7 @@ Public Function InsertDTL_KHBS() As String
         SODC = "0"
         SOCL = "0"
         
-        sSQLVal = madtnt & "," & KYKKHAI & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & MaTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                        
         sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -1071,7 +1129,7 @@ Public Function InsertDTL_KHBS() As String
                 SOCL = SOCL
             End If
             
-            sSQLVal = madtnt & "," & KYKKHAI & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & MaTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                            
             sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
@@ -1096,7 +1154,7 @@ Public Function InsertDTL_KHBS() As String
         SODC = "0"
         SOCL = "0"
         
-        sSQLVal = madtnt & "," & KYKKHAI & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & MaTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                        
         sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -1151,7 +1209,7 @@ Public Function InsertDTL_KHBS() As String
             SOCL = SOCL
         End If
             
-        sSQLVal = madtnt & "," & KYKKHAI & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & MaTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                            
         sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
@@ -1173,7 +1231,7 @@ Public Function InsertHDR() As String
     
     Dim madtnt       As Variant
     Dim MATHUE       As Variant
-    Dim MaTM         As Variant
+    Dim maTM         As Variant
     Dim MAPP         As Variant
     Dim KYLBO        As Variant
     Dim ngnop        As Variant
@@ -1181,7 +1239,7 @@ Public Function InsertHDR() As String
     Dim MABPQL       As Variant
     Dim SHTEP        As Variant
     'TTHTK public
-    Dim KYKKHAI      As Variant
+    Dim kykkhai      As Variant
     Dim NgNhap       As Variant
     Dim ThueTKy      As Variant
     Dim GTTinhThue   As Variant
@@ -1215,11 +1273,7 @@ Public Function InsertHDR() As String
     Dim MaTmArr()    As String
     Dim ThueTkyArr() As Double
     Dim i, iCount      As Integer
-    
-    If clsDAO.Connected = False Then
-        clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
-        clsDAO.Connect
-    End If
+
     
     sSQLCol = "madtnt,mathue,matm,mapp,kylbo,ngnop,loaitien,mabpql,shtep,tthtk,kykkhai,ngnhap,thuetky,gttinhthue," & _
               "daghi,kttruoc,doanhso,mapp2,mamuc,mavach,matkhai,hannop,thuetky2,hannop2,tenda,daghi1,daghi2,auto_cal," & _
@@ -1244,10 +1298,10 @@ Public Function InsertHDR() As String
         Else
             
             If CInt(Right$(KYLBO, 4)) < 2009 Then
-                MaTM = "'01'"
+                maTM = "'01'"
                 MaMuc = "'014'"
             Else
-                MaTM = "'1701'"
+                maTM = "'1701'"
                 MaMuc = "'1700'"
             End If
             KYLBO = "'" & KYLBO & "'"
@@ -1277,7 +1331,7 @@ Public Function InsertHDR() As String
         
         SHTEP = "''"
     
-        KYKKHAI = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+        kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         
         .GetText .ColLetterToNumber("M"), 24, NgNhap
         'NGNOP = Date
@@ -1301,7 +1355,7 @@ Public Function InsertHDR() As String
     MAPP2 = "'1'"
 
     MaVach = ".T."
-    matkhai = "'01/BVMT'"
+    matkhai = "'01/PHLP'"
     HANNOP = "CTOD('')"
     ThueTKy2 = "0"
     HANNOP2 = "CTOD('')"
@@ -1309,7 +1363,6 @@ Public Function InsertHDR() As String
     DAGHI1 = ".F."
     
     .GetText .ColLetterToNumber("E"), 28, DAGHI2
-    'NGNOP = Date
     If DAGHI2 = vbNullString Or DAGHI2 = "" Or DAGHI2 = "0" Then
         DAGHI2 = ".F."
     Else
@@ -1319,10 +1372,19 @@ Public Function InsertHDR() As String
     
     AUTO_CAL = ".F."
   
-    NGANH = "''"
+  'Lay truong Nganh trong DTNT2 thuoc folder DTNT
+    NGANH = GetMaNganhTheoDTNT(madtnt)
+    
+    If Trim(NGANH) = vbNullString Then
+        NGANH = "''"
+    Else
+        NGANH = Split(NGANH, "--")(0)
+        NGANH = "'" & NGANH & "'"
+    End If
+    
     
     'To khai da chuyen sang VAT = Y
-    DANHAN = "'Y'"
+    DANHAN = "''"
    
    ' LAN_QUET -- public
    
@@ -1332,14 +1394,14 @@ Public Function InsertHDR() As String
         LanBS = "0"
     End If
 
-    THUECL = "0"
-    DSoCL = "0"
-    GTTTCL = "0"
+    THUECL = ThueTKy
+    DSoCL = DoanhSo
+    GTTTCL = GTTinhThue
    
    'NgayPS
    NgayPs = "CTOD('')"
    
-    MANNKD = "''" ' Khong co ma nganh nghe tren to khai nay
+    MANNKD = "''"
     
     'TENNV
     .GetText .ColLetterToNumber("G"), .MaxRows - 4, TENNV
@@ -1358,8 +1420,13 @@ Public Function InsertHDR() As String
         
     End With
      
-    sSQLVal = madtnt & "," & MATHUE & "," & MaTM & "," & MAPP & "," & KYLBO & "," & ngnop & _
-            "," & LoaiTien & "," & MABPQL & "," & SHTEP & "," & TTHTK & "," & KYKKHAI & _
+    If clsDAO.Connected = False Then
+        clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
+        clsDAO.Connect
+    End If
+     
+    sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & KYLBO & "," & ngnop & _
+            "," & LoaiTien & "," & MABPQL & "," & SHTEP & "," & TTHTK & "," & kykkhai & _
             "," & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & "," & KTTRUOC & _
             "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & "," & matkhai & _
             "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & _
@@ -1444,7 +1511,7 @@ Public Function TKTT() As Boolean
     End If
 
 
-        sSQL = "SELECT MADTNT, NGNOP FROM TMP_TK" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "'" & " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='01/BVMT' "
+        sSQL = "SELECT MADTNT, NGNOP FROM TMP_TK" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "'" & " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='01/PHLP' "
         Set rs = clsDAO.Execute(sSQL)
 
         If Not rs Is Nothing Then
@@ -1516,7 +1583,7 @@ Public Function isToKhaiChinhThuc() As Boolean
 
         'kiem tra neu co db thi moi thuc hien truy van
         If fso.FileExists(strTestFileName) Then
-                   sSQL = "SELECT MADTNT, NGNOP FROM TMP_TK" & vKeKhai_temp & " WHERE MADTNT = " & "'" & strMST & "'" & " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='01/BVMT' "
+                   sSQL = "SELECT MADTNT, NGNOP FROM TMP_TK" & vKeKhai_temp & " WHERE MADTNT = " & "'" & strMST & "'" & " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='01/PHLP' "
             Set rs = clsDAO.Execute(sSQL)
         End If
         
@@ -1804,7 +1871,7 @@ Public Function TinhSoLanQuet() As Integer
             End If
              sSQL = "SELECT max(LAN_QUET) as LAN_QUET FROM TMP_TK" & sKyKeKhai & _
                     " WHERE MADTNT = " & "'" & strMST & "'" & _
-                    " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='01/BVMT'" & " AND (TTHTK = '1' or TTHTK = '3' )"
+                    " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='01/PHLP'" & " AND (TTHTK = '1' or TTHTK = '3' )"
     
                 Set rs = clsDAO.Execute(sSQL)
                 If Not rs Is Nothing Then

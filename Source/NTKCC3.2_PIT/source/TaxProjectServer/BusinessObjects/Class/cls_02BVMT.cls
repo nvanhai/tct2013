@@ -238,10 +238,9 @@ Public Sub GetParams(ByRef strPNgayNhanToKhai As String, ByRef strPPhongXuLy As 
 End Sub
 
 Public Function Prepared3() As Boolean
-Dim So_tt As Variant
+    Dim So_tt As Variant
+
     With fps
-        
-        
     
         'nam quyet toan
         .Sheet = 3
@@ -250,17 +249,19 @@ Dim So_tt As Variant
         .Sheet = 1
         'set bien ky lap bo
         
-        
         'Set NgayNhanToKhai
         .Col = .ColLetterToNumber(NGAY_NHAN_TO_KHAI_X)
         .Row = NGAY_NHAN_TO_KHAI_Y
+
         If strNgayNhanToKhai <> "" Then
             .Text = strNgayNhanToKhai
             UpdateCell fps, .Col, .Row, .Text
         End If
-         'set Phong xu ly
+
+        'set Phong xu ly
         .Col = .ColLetterToNumber(PHONG_XU_LY_X)
         .Row = PHONG_XU_LY_Y
+
         If strPhongXuLy <> "" Then
             .Text = strPhongXuLy
             UpdateCell fps, .Col, .Row, .Text
@@ -268,6 +269,7 @@ Dim So_tt As Variant
         
         .Col = .ColLetterToNumber(MA_SO_THUE_X)
         .Row = MA_SO_THUE_Y
+
         If strMST <> "" Then
             .Text = strMST
             UpdateCell fps, .Col, .Row, .Text
@@ -276,6 +278,7 @@ Dim So_tt As Variant
         'ky lap bo
         .Col = .ColLetterToNumber(KY_LAP_BO_X)
         .Row = KY_LAP_BO_Y
+
         If Len(Month(Now())) = 1 Then
             .Text = "0" & Month(Now()) & "/" & Year(Now())
             sKyKeKhai = "0" & Month(Now()) & Year(Now())
@@ -283,13 +286,13 @@ Dim So_tt As Variant
             .Text = Month(Now()) & "/" & Year(Now())
             sKyKeKhai = Month(Now()) & Year(Now())
         End If
+
         UpdateCell fps, .Col, .Row, .Text
-        
         
         .Col = .ColLetterToNumber(NGAY_NOP_X)
         .Row = NGAY_NOP_Y
         .Text = IIf(Len(Day(Now())) = 1, "0" & Day(Now()), Day(Now())) & "/" & IIf(Len(Month(Now())) = 1, "0" & Month(Now()), Month(Now())) & "/" & Year(Now())
-         UpdateCell fps, .Col, .Row, .Text
+        UpdateCell fps, .Col, .Row, .Text
         .Lock = False
         
         .Col = .ColLetterToNumber(NGAY_QUET_X)
@@ -299,6 +302,7 @@ Dim So_tt As Variant
        
         .Col = .ColLetterToNumber(TEN_GOI_X)
         .Row = TEN_GOI_Y
+
         If strTenGoi <> "" Then
             .Text = Trim(TAX_Utilities_Svr_New.Convert(strTenGoi, TCVN, UNICODE))
             UpdateCell fps, .Col, .Row, .Text
@@ -306,74 +310,92 @@ Dim So_tt As Variant
         
         .Col = .ColLetterToNumber(DIA_CHI_X)
         .Row = DIA_CHI_Y
+
         If strDchi <> "" Then
             .Text = Trim(TAX_Utilities_Svr_New.Convert(strDchi, TCVN, UNICODE))
             UpdateCell fps, .Col, .Row, .Text
         End If
+
         ' thong tin dai ly thue
         'ten
         .Col = .ColLetterToNumber(TEN_GOI_DL_X)
         .Row = TEN_GOI_DL_Y
+
         If strTen_DLT <> "" Then
             .Text = Trim(TAX_Utilities_Svr_New.Convert(strTen_DLT, TCVN, UNICODE))
             UpdateCell fps, .Col, .Row, .Text
         End If
+
         'mst
         .Col = .ColLetterToNumber(MA_SO_THUE_DL_X)
         .Row = MA_SO_THUE_DL_Y
+
         If strMST_DLT <> "" Then
             .Text = Trim(TAX_Utilities_Svr_New.Convert(strMST_DLT, TCVN, UNICODE))
             UpdateCell fps, .Col, .Row, .Text
         End If
+
         'dia chi
         .Col = .ColLetterToNumber(DIA_CHI_DL_X)
         .Row = DIA_CHI_DL_Y
+
         If strDchi_DLT <> "" Then
             .Text = Trim(TAX_Utilities_Svr_New.Convert(strDchi_DLT, TCVN, UNICODE))
             UpdateCell fps, .Col, .Row, .Text
         End If
-'        ' quan huyen
-'        .Col = .ColLetterToNumber(QUAN_HUYEN_DL_X)
-'        .Row = QUAN_HUYEN_DL_Y
-'        If strQHuyen_DLT <> "" Then
-'            .Text = strQHuyen_DLT
-'        End If
-'        ' thanh pho
-'        .Col = .ColLetterToNumber(TINH_TPHO_DL_X)
-'        .Row = TINH_TPHO_DL_Y
-'        If strTTPho_DLT <> "" Then
-'            .Text = strTTPho_DLT
-'        End If
+
+        '        ' quan huyen
+        '        .Col = .ColLetterToNumber(QUAN_HUYEN_DL_X)
+        '        .Row = QUAN_HUYEN_DL_Y
+        '        If strQHuyen_DLT <> "" Then
+        '            .Text = strQHuyen_DLT
+        '        End If
+        '        ' thanh pho
+        '        .Col = .ColLetterToNumber(TINH_TPHO_DL_X)
+        '        .Row = TINH_TPHO_DL_Y
+        '        If strTTPho_DLT <> "" Then
+        '            .Text = strTTPho_DLT
+        '        End If
         'dien thoai
         .Col = .ColLetterToNumber(DIEN_THOAI_DL_X)
         .Row = DIEN_THOAI_DL_Y
+
         If strDthoai_DLT <> vbNullString Then
             .Text = strDthoai_DLT
         End If
+
         'fax
         .Col = .ColLetterToNumber(FAX_DL_X)
         .Row = FAX_DL_Y
+
         If strFax_DLT <> "" Then
             .Text = strFax_DLT
         End If
+
         ' mail
         .Col = .ColLetterToNumber(MAIL_DL_X)
         .Row = MAIL_DL_Y
+
         If strMail_DLT <> "" Then
             .Text = strMail_DLT
         End If
+
         ' so hop dong
         .Col = .ColLetterToNumber(SO_HDDL_DL_X)
         .Row = SO_HDDL_DL_Y
+
         If strSoHD_DLT <> "" Then
             .Text = strSoHD_DLT
         End If
+
         ' ngay hop dong
         .Col = .ColLetterToNumber(NGAY_HDDL_DL_X)
         .Row = NGAY_HDDL_DL_Y
+
         If strNgayHD_DLT <> "" Then
             .Text = strNgayHD_DLT
         End If
+
         'so thu tu to khai
         .Col = .ColLetterToNumber(STT_X)
         .Row = STT_Y
@@ -382,6 +404,7 @@ Dim So_tt As Variant
         
         .Col = .ColLetterToNumber(DIEN_THOAI_X)
         .Row = DIEN_THOAI_Y
+
         If strDThoai <> "" Then
             .Text = strDThoai
             UpdateCell fps, .Col, .Row, .Text
@@ -389,27 +412,25 @@ Dim So_tt As Variant
         
         .Col = .ColLetterToNumber(FAX_X)
         .Row = FAX_Y
+
         If strFax <> "" Then
             .Text = strFax
             UpdateCell fps, .Col, .Row, .Text
         End If
         
-        
         If strMaBPQL <> "" Then
-        .Col = .ColLetterToNumber(MA_BPQL_X)
-        .Row = MA_BPQL_Y
+            .Col = .ColLetterToNumber(MA_BPQL_X)
+            .Row = MA_BPQL_Y
             .Text = strMaBPQL
             UpdateCell fps, .Col, .Row, .Text
         End If
 
-'        .Col = .ColLetterToNumber(TEN_BPQL_X)
-'        .Row = TEN_BPQL_Y
-'        .Text = Trim(TAX_Utilities_Svr_New.Convert(strTenBpql, TCVN, UNICODE))
+        '        .Col = .ColLetterToNumber(TEN_BPQL_X)
+        '        .Row = TEN_BPQL_Y
+        '        .Text = Trim(TAX_Utilities_Svr_New.Convert(strTenBpql, TCVN, UNICODE))
         '.EventEnabled(EventAllEvents) = True
         
-        
-        
-          'set check loi dinh danh
+        'set check loi dinh danh
         If checkDLTTonTai = False Then
             .Col = .ColLetterToNumber("E")
             .Row = 28
@@ -418,13 +439,15 @@ Dim So_tt As Variant
         
         .GetText .ColLetterToNumber("E"), 22, kyLapBo
         kyLapBo = Right$(kyLapBo, 4)
+        
+        
+        
         ' hien thi du lieu loai khoang san
         Dim j       As Integer
         Dim lastRow As Variant
         Dim strID, maTM1  As String
         Dim TenTN As String
-        
-        
+
         .Sheet = 1
         .Row = 45
 
@@ -432,16 +455,16 @@ Dim So_tt As Variant
 
             .GetText .ColLetterToNumber("AB"), .Row, strID
             DataDM strID, , TenTN, , , , maTM1
-           
+
             .SetText .ColLetterToNumber("C"), .Row, TenTN
             UpdateCell fps, .ColLetterToNumber("C"), .Row, TenTN
-            
-            .SetText .ColLetterToNumber("AB"), .Row, maTM1
-            UpdateCell fps, .ColLetterToNumber("AB"), .Row, maTM1
+
+            .SetText .ColLetterToNumber("AD"), .Row, maTM1
+            UpdateCell fps, .ColLetterToNumber("AD"), .Row, maTM1
 
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
-           
+
             lastRow = .Row
         Loop Until .Text = "aa"
 
@@ -450,16 +473,17 @@ Dim So_tt As Variant
         Do
 
             .GetText .ColLetterToNumber("AB"), .Row, strID
-           DataDM strID, , TenTN, , , , maTM1
+            DataDM strID, , TenTN, , , , maTM1
             .SetText .ColLetterToNumber("C"), .Row, TenTN
             UpdateCell fps, .ColLetterToNumber("C"), .Row, TenTN
-            .SetText .ColLetterToNumber("AB"), .Row, maTM1
-            UpdateCell fps, .ColLetterToNumber("AB"), .Row, maTM1
-            
+            .SetText .ColLetterToNumber("AD"), .Row, maTM1
+            UpdateCell fps, .ColLetterToNumber("AD"), .Row, maTM1
+
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
 
         Loop Until .Text = "aa"
+
     End With
     
     Prepared3 = True
@@ -1154,7 +1178,7 @@ Public Function InsertHDR() As String
     Dim madtnt     As Variant
     Dim MADLT      As Variant
     Dim MaMuc      As Variant
-    Dim maTM       As Variant
+    Dim maTM       As String
     Dim ngnop      As Variant
     Dim NgNhap     As Variant
     Dim LoaiTien   As Variant
@@ -1173,8 +1197,9 @@ Public Function InsertHDR() As String
     Dim DSoCL      As Variant
     Dim GTTTCL     As Variant
     Dim DANHAN     As Variant
-    Dim DATHAY     As Variant
-        Dim TENNV      As Variant
+    'Dim DATHAY     As Variant '-- bo truong nay thay bang truong auto_cal
+    Dim AUTO_CAL As Variant
+    Dim TENNV      As Variant
     Dim CHUNGCHI   As Variant
     'bien dung xu ly Ma Tieu Muc
     Dim arrMTM()     As String, arrMTMSave() As String
@@ -1194,30 +1219,35 @@ Public Function InsertHDR() As String
     
     sSQLCol = "NamQT, TuKy, DenKy, MaDTNT, MaDLT, MaMuc, MaTM, NgNop, NgNhap, LoaiTien, KyDC,"
     sSQLCol = sSQLCol + "ThueTKy, DaGhi, LoaiTK, TTHTK, MaVach, HanNop, KyLBo, DoanhSo, GTTinhThue,"
-    sSQLCol = sSQLCol + "LanBS, ThueCL, DSoCL, GTTTCL, DANHAN, DA_THAY,LAN_QUET, TENNV, CHUNGCHI"
+    sSQLCol = sSQLCol + "LanBS, ThueCL, DSoCL, GTTTCL, DANHAN, AUTO_CAL,LAN_QUET, TENNV, CHUNGCHI"
        
     With fps
         .Sheet = 1
         .GetText .ColLetterToNumber("G"), .MaxRows - 4, TENNV
         .GetText .ColLetterToNumber("G"), .MaxRows - 2, CHUNGCHI
 
-        'Ma tieu muc
+        'Doan nay tinh ThueTKy theo maTM
         .Col = .ColLetterToNumber("B")
         .Row = 45
 
         strMTM = "~"
-               
+        'I: Khoang san do co so tu khai thac
+        Dim maKhoangSan As Variant
+        
         Do
-            ' Lay ma tieu muc tren cel
-            .Col = .ColLetterToNumber("AB")
-            'cuoi ma tieu muc
-            vTemp = "~" & .Text & "~"
-            vTemp2 = vTemp2 & .Text & "~"
+            ' Lay ma khoang san
+            .GetText .ColLetterToNumber("AB"), .Row, maKhoangSan
+            ' Tu maKhoangSan lay ra maTM
+            DataDM maKhoangSan, , , , , , maTM
             
+            vTemp = "~" & maTM & "~"
+            vTemp2 = vTemp2 & maTM & "~"
+            ' Kiem tra neu co maTM moi thi bo sung vao --> strMTM se luu cac maTM duy nhat
             If InStr(1, strMTM, vTemp, vbTextCompare) = 0 Then
-                strMTM = strMTM & .Text & "~"
+                strMTM = strMTM & maTM & "~"
             End If
-
+            
+            'Ghep cac gia tri phi phai nop
             .Col = .ColLetterToNumber("Q")
             strThueTKy = strThueTKy & .Text & "~"
             
@@ -1229,30 +1259,38 @@ Public Function InsertHDR() As String
         .Col = .ColLetterToNumber("B")
         .Row = ROWNUM + 3
 
+        'II Khoang san do co so thu mua nop thay  nguoi khac
         Do
-            ' Lay ma tieu muc tren cel
-            .Col = .ColLetterToNumber("AB")
-            'cuoi ma tieu muc
-            vTemp = "~" & .Text & "~"
-            vTemp2 = vTemp2 & .Text & "~"
+            ' Lay ma khoang san
+            .GetText .ColLetterToNumber("AB"), .Row, maKhoangSan
+            ' Tu maKhoangSan lay ra maTM
+            DataDM maKhoangSan, , , , , , maTM
             
+            vTemp = "~" & maTM & "~"
+            vTemp2 = vTemp2 & maTM & "~"
+            ' Kiem tra neu co maTM moi thi bo sung vao --> strMTM se luu cac maTM duy nhat
             If InStr(1, strMTM, vTemp, vbTextCompare) = 0 Then
-                strMTM = strMTM & .Text & "~"
+                strMTM = strMTM & maTM & "~"
             End If
-
+            
+            'Ghep cac gia tri phi phai nop
             .Col = .ColLetterToNumber("Q")
             strThueTKy = strThueTKy & .Text & "~"
-                     
+            
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
         Loop Until .Text = "aa"
-
+        
+        'Mang nay luu gia tri cac maTM duy nhat
         arrMTMSave = Split(strMTM, "~")
+        'Mang nay luu gia tri tuong ung
         arrThueTKy = Split(strThueTKy, "~")
         arrMTM = Split(vTemp2, "~")
         
+        'Mang nay luu cac tong ThueTKy theo tung maTM
         ReDim arrThueTKySave(UBound(arrMTMSave))
         
+        'Tinh tong ThueTKy theo tung maTM
         For i = 1 To UBound(arrMTMSave) - 1
             countThueTKy = 0
             For j = 0 To UBound(arrMTM) - 1
@@ -1263,7 +1301,7 @@ Public Function InsertHDR() As String
             arrThueTKySave(i) = countThueTKy
         Next
 
-        ' end lay ma tieu muc
+
         
         .GetText .ColLetterToNumber("E"), 22, KYLBO
 
@@ -1279,13 +1317,18 @@ Public Function InsertHDR() As String
         End If
         
         ' sua MAMUC & MATM tu nam 2009
-        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
-            maTM = "'03'"
-            MaMuc = "'012'"
-        Else
-            MaMuc = "'1550'"
-                maTM = "''"
-        End If
+'        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
+'            maTM = "'03'"
+'            MaMuc = "'012'"
+'        Else
+'            MaMuc = "'1550'"
+'            maTM = "''"
+'        End If
+        
+        
+        
+        
+        
         
         'ma doi tuong nop thue
         .GetText .ColLetterToNumber("G"), 8, madtnt
@@ -1359,33 +1402,41 @@ Public Function InsertHDR() As String
             NgNhap = "CTOD('" & Format(NgNhap, "mm/dd/yyyy") & "')"
         End If
 
-        HANNOP = "31/03/" & (Val(namQT) + 1)
-        HANNOP = ToDate(Trim(HANNOP), DDMMYYYY)
-        HANNOP = "CTOD('" & Format(HANNOP, "mm/dd/yyyy") & "')"
-      
+'        HANNOP = "31/03/" & (Val(namQT) + 1)
+'        HANNOP = ToDate(Trim(HANNOP), DDMMYYYY)
+'        HANNOP = "CTOD('" & Format(HANNOP, "mm/dd/yyyy") & "')"
+        HANNOP = "CTOD('')"
         'loai to khai
         LoaiTK = "'02/BVMT'"
-        KyDC = "' '"
-        DaGhi = ".T."
+        KyDC = "''"
+        DaGhi = ".F."
         LoaiTien = "''"
         DANHAN = "''"
         MaVach = ".T."
-        DATHAY = ".F."
-        THUECL = "0"
+        AUTO_CAL = ".F."
+
+        THUECL = ThueTKy
         DSoCL = "0"
         GTTinhThue = "0"
         GTTTCL = "0"
 
         DoanhSo = "0"
-         
+        AUTO_CAL = ".F."
 
+    'Tinh thuetky group by theo matm
         For i = 1 To UBound(arrMTMSave) - 1
             vTemp = arrMTMSave(i)
             maTM = "'" & vTemp & "'"
             ThueTKy = arrThueTKySave(i)
             
-            If Trim(maTM) <> "" Or Trim(maTM) <> "''" Then
-                sSQLVal = namQT & ",'" & TuKy & "','" & DenKy & "'," & madtnt & "," & MADLT & "," & MaMuc & "," & maTM & ", " & ngnop & "," & NgNhap & "," & LoaiTien & "," & KyDC & "," & ThueTKy & "," & DaGhi & "," & LoaiTK & "," & TTHTK & "," & MaVach & "," & HANNOP & "," & KYLBO & "," & DoanhSo & "," & GTTinhThue & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & DANHAN & "," & DATHAY & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "'"
+            If Trim(ThueTKy) <> vbNullString Then
+                THUECL = ThueTKy
+            Else
+                THUECL = "0"
+            End If
+            
+            If Trim(vTemp) <> "" Or Trim(vTemp) <> "''" Then
+                sSQLVal = namQT & ",'" & TuKy & "','" & DenKy & "'," & madtnt & "," & MADLT & "," & MaMuc & "," & maTM & ", " & ngnop & "," & NgNhap & "," & LoaiTien & "," & KyDC & "," & ThueTKy & "," & DaGhi & "," & LoaiTK & "," & TTHTK & "," & MaVach & "," & HANNOP & "," & KYLBO & "," & DoanhSo & "," & GTTinhThue & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & DANHAN & "," & AUTO_CAL & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "'"
        
                 sSQL = "INSERT INTO TMP_QTMT" & kyLapBo & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
