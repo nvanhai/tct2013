@@ -1224,8 +1224,18 @@ Public Function InsertHDR() As String
     With fps
         .Sheet = 1
         .GetText .ColLetterToNumber("G"), .MaxRows - 4, TENNV
+         If Trim(TENNV) = vbNullString Then
+            TENNV = "''"
+        Else
+            TENNV = "'" & TENNV & "'"
+        End If
+        
         .GetText .ColLetterToNumber("G"), .MaxRows - 2, CHUNGCHI
-
+        If Trim(CHUNGCHI) = vbNullString Then
+            CHUNGCHI = "''"
+        Else
+            CHUNGCHI = "'" & CHUNGCHI & "'"
+        End If
         'Doan nay tinh ThueTKy theo maTM
         .Col = .ColLetterToNumber("B")
         .Row = 45
@@ -1368,9 +1378,9 @@ Public Function InsertHDR() As String
         .GetText .ColLetterToNumber("C"), 33, TTHTK1
 
         If Trim(TTHTK1) = vbNullString Then
-            TTHTK = "'" & 3 & "'"
+            TTHTK1 = "'" & 3 & "'"
         Else
-            TTHTK = "'" & 1 & "'"
+            TTHTK1 = "'" & 1 & "'"
         End If
 
         'lan bo sung
@@ -1429,6 +1439,13 @@ Public Function InsertHDR() As String
             maTM = "'" & vTemp & "'"
             ThueTKy = arrThueTKySave(i)
             
+            MaMuc = GetMaMuc(vTemp)
+            If Trim(MaMuc) = vbNullString Then
+                MaMuc = "''"
+            Else
+                MaMuc = "'" & MaMuc & "'"
+            End If
+            
             If Trim(ThueTKy) <> vbNullString Then
                 THUECL = ThueTKy
             Else
@@ -1436,7 +1453,7 @@ Public Function InsertHDR() As String
             End If
             
             If Trim(vTemp) <> "" Or Trim(vTemp) <> "''" Then
-                sSQLVal = namQT & ",'" & TuKy & "','" & DenKy & "'," & madtnt & "," & MADLT & "," & MaMuc & "," & maTM & ", " & ngnop & "," & NgNhap & "," & LoaiTien & "," & KyDC & "," & ThueTKy & "," & DaGhi & "," & LoaiTK & "," & TTHTK & "," & MaVach & "," & HANNOP & "," & KYLBO & "," & DoanhSo & "," & GTTinhThue & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & DANHAN & "," & AUTO_CAL & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "'"
+                sSQLVal = namQT & ",'" & TuKy & "','" & DenKy & "'," & madtnt & "," & MADLT & "," & MaMuc & "," & maTM & ", " & ngnop & "," & NgNhap & "," & LoaiTien & "," & KyDC & "," & ThueTKy & "," & DaGhi & "," & LoaiTK & "," & TTHTK1 & "," & MaVach & "," & HANNOP & "," & KYLBO & "," & DoanhSo & "," & GTTinhThue & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & DANHAN & "," & AUTO_CAL & "," & LAN_QUET & "," & TENNV & "," & CHUNGCHI
        
                 sSQL = "INSERT INTO TMP_QTMT" & kyLapBo & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -1450,7 +1467,38 @@ Public Function InsertHDR() As String
     InsertHDR = vbNullString
     clsDAO.Disconnect
 End Function
+Private Function GetMaMuc(ByVal MaTieuMuc As Variant) As String
+    Dim strDataFileName As String
+    Dim pSQL            As String
+    Dim strName         As String
+    
+    Dim rcord           As ADODB.Recordset
+    Dim fso             As New FileSystemObject
+    
+    Dim clsDAOs As New TAX_Utilities_Svr_New.clsADO
+    
+    strDataFileName = spathVat & "\DB_HT\DMMT2.DBF"
 
+    If fso.FileExists(strDataFileName) Then
+        If clsDAOs.Connected = False Then
+            ' Lay mamuc theo matm
+            clsDAOs.CreateConnectionString spathVat & "\DB_HT\"
+            clsDAOs.Connect
+        End If
+    
+        pSQL = "SELECT MAMUC FROM DMMT2 WHERE MATM = '" & MaTieuMuc & "'"
+       
+        Set rcord = clsDAOs.Execute(pSQL)
+
+        If Not rcord Is Nothing Then
+            strName = rcord.Fields("MAMUC")
+        End If
+    End If
+    
+    GetMaMuc = strName
+    
+    clsDAOs.Disconnect
+End Function
 Public Function TKTT() As Boolean
     Dim sSQL            As String
     Dim rs              As ADODB.Recordset
