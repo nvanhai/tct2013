@@ -999,10 +999,10 @@ Private Sub cmdSave_Click()
         End If
     End If
     
-    'Chan theo thong tu QN63: Chan 01A/TNDN, 01B/TNDN tu ky ke khai quy 3/2014
+    'Chan theo thong tu QN63: Chan 01A/TNDN, 01B/TNDN tu ky ke khai quy 4/2014
     'todo 330
     If Val(idToKhai) = 11 Or Val(idToKhai) = 12 Then
-        If (Val(TAX_Utilities_Srv_New.Year) > 2014 Or (TAX_Utilities_Srv_New.Year = "2014" And Val(TAX_Utilities_Srv_New.ThreeMonths) >= 3)) Then
+        If (Val(TAX_Utilities_Srv_New.Year) > 2014 Or (TAX_Utilities_Srv_New.Year = "2014" And Val(TAX_Utilities_Srv_New.ThreeMonths) >= 4)) Then
             DisplayMessage "0141", msOKOnly, miInformation
             Exit Sub
         End If
@@ -1578,10 +1578,10 @@ Private Sub Command1_Click()
 'str2 = "aa999114200536821   032014000000002002~0~0~0~~~~0~0</S><S>~</S><S>~~µ~16/10/2014~1~0~~1052</S></S01>"
 'Barcode_Scaned str2
 
-str2 = "aa999124200536821   03201400000000100201/0114/06/2006<S01><S></S><S>~~0~0~0~0~0~0~0~~20~22~0~~0~0"
-Barcode_Scaned str2
-str2 = "aa999124200536821   032014000000002002~0~0~0~0~0~0~~~~0~0</S><S>µ~23/10/2014~~~1~~1052</S></S01>"
-Barcode_Scaned str2
+'str2 = "aa999124200536821   03201400000000100201/0114/06/2006<S01><S></S><S>~~0~0~0~0~0~0~0~~20~22~0~~0~0"
+'Barcode_Scaned str2
+'str2 = "aa999124200536821   032014000000002002~0~0~0~0~0~0~~~~0~0</S><S>µ~23/10/2014~~~1~~1052</S></S01>"
+'Barcode_Scaned str2
 
 'str2 = "aa999934200536821   00201400200200100101/0101/01/1900<S01><S></S><S>0~0~1~~~</S><S>50000~40000~40000~25000~1500"
 'str2 = str2 & "0~10000~30000~10000~5000~15000~20~3000~0~3000~1200~ 1800</S><S>~~~21/05/2015~1~~~01/2014~12/2014</S></S01>"
@@ -1603,7 +1603,13 @@ Barcode_Scaned str2
 'str2 = "bs999974200536821   002012003005003003 gi¶m trong kú tÝnh thuÕ~28~0~1000~1000</S><S>23/10/2014~657~25010~0~~~10100~10101~0~0~~0~0~59000</S></SKHBS>"
 'Barcode_Scaned str2
 
+'############ Thong tu 151
+'01/MBAI
+'str2 = "aa999842100343639   00201300500500100101/0101/01/1900<S01><S></S><S>x</S><S>100~200~300~20~20~40</S><S>200~100~300~100~100~200</S><S>840</S><S>ten~ky~cc01~27/10/2014~1~1~1</S></S01>"
+'Barcode_Scaned str2
 
+str2 = "aa999702100343639   09201400200200100101/0101/01/1900<S01><S></S><S>d©~2222222222~hop dong~1000000~01/09/2014~2000000~10~10~200000~3000000~10~40000~260000~460000~dadsfa~0102030405~hop2~20000~01/09/2014~200000~10~0~20000~20000000~10~20~1999980~2019980</S><S>2000000~20000~3000000~40000~260000~280000</S><S>X~</S><S>~~µ~27/10/2014~1~~~</S></S01>"
+Barcode_Scaned str2
 End Sub
 
 
