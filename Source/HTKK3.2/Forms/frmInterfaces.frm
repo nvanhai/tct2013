@@ -4400,7 +4400,7 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
     Dim taxId As Variant
     Dim kyHieuToKhai As Variant
     Dim ctBs As Variant
-    Dim lanBs As Variant
+    Dim lanBS As Variant
     ' Setup ten file theo tung to khai
     If UCase(Trim(loaiToKhai)) = "05_TNCN" _
             Or UCase(Trim(loaiToKhai)) = "02_TNCN_XS" _
@@ -4469,21 +4469,21 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
                     .Col = .ColLetterToNumber("I")
                     .Row = 6
                 End If
-                .GetText .Col, .Row, lanBs
+                .GetText .Col, .Row, lanBS
                 
                 If UCase(Trim(loaiToKhai)) = "16_TH_DKNPT" Then
-                    If Len(lanBs) = 1 Then
-                        ctBs = "L" & "00" & lanBs
-                    ElseIf Len(lanBs) = 2 Then
-                        ctBs = "L" & "0" & lanBs
+                    If Len(lanBS) = 1 Then
+                        ctBs = "L" & "00" & lanBS
+                    ElseIf Len(lanBS) = 2 Then
+                        ctBs = "L" & "0" & lanBS
                     Else
-                        ctBs = "L" & lanBs
+                        ctBs = "L" & lanBS
                     End If
                 Else
-                    If Len(lanBs) = 1 Then
-                        ctBs = "L" & "0" & lanBs
+                    If Len(lanBS) = 1 Then
+                        ctBs = "L" & "0" & lanBS
                     Else
-                        ctBs = "L" & lanBs
+                        ctBs = "L" & lanBS
                     End If
                 End If
             End If
@@ -15538,6 +15538,7 @@ Public Sub copyFormulasSheet4(numRow As Long, fps As fpSpread, rowStart As Long)
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a, .ColLetterToNumber("A"), (rowStart + a + 1)
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
                     .CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), rowStart + a, .ColLetterToNumber("G"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("I"), rowStart, .ColLetterToNumber("M"), rowStart + a, .ColLetterToNumber("I"), (rowStart + a + 1)
                     .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), rowStart + a, .ColLetterToNumber("P"), (rowStart + a + 1)
                     '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + a, .ColLetterToNumber("AH"), (rowStart + a + 1)
                     .CopyRange .ColLetterToNumber("AI"), rowStart, .ColLetterToNumber("AI"), rowStart + a, .ColLetterToNumber("AI"), (rowStart + a + 1)
@@ -15546,6 +15547,7 @@ Public Sub copyFormulasSheet4(numRow As Long, fps As fpSpread, rowStart As Long)
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a - 1, .ColLetterToNumber("A"), rowStart + a
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
                     .CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), rowStart + a - 1, .ColLetterToNumber("G"), rowStart + a
+                    .CopyRange .ColLetterToNumber("I"), rowStart, .ColLetterToNumber("M"), rowStart + a - 1, .ColLetterToNumber("I"), rowStart + a
                     .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), rowStart + a - 1, .ColLetterToNumber("P"), rowStart + a
                     '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + a - 1, .ColLetterToNumber("AH"), rowStart + a
                     .CopyRange .ColLetterToNumber("AI"), rowStart, .ColLetterToNumber("AI"), rowStart + a - 1, .ColLetterToNumber("AI"), rowStart + a
@@ -15566,6 +15568,7 @@ Public Sub copyFormulasSheet4(numRow As Long, fps As fpSpread, rowStart As Long)
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), 1024 + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * a
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), 1024 + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
                     .CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), 1024 + rowStart - 1, .ColLetterToNumber("G"), rowStart + 1024 * a
+                    .CopyRange .ColLetterToNumber("I"), rowStart, .ColLetterToNumber("M"), 1024 + rowStart - 1, .ColLetterToNumber("I"), rowStart + 1024 * a
                     .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), 1024 + rowStart - 1, .ColLetterToNumber("P"), rowStart + 1024 * a
                     '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), 1024 + rowStart - 1, .ColLetterToNumber("AH"), rowStart + 1024 * a
                     .CopyRange .ColLetterToNumber("AI"), rowStart, .ColLetterToNumber("AI"), 1024 + rowStart - 1, .ColLetterToNumber("AI"), rowStart + 1024 * a
@@ -15575,6 +15578,7 @@ Public Sub copyFormulasSheet4(numRow As Long, fps As fpSpread, rowStart As Long)
                 .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), du + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * a
                 .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
                 .CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), du + rowStart - 1, .ColLetterToNumber("G"), rowStart + 1024 * a
+                .CopyRange .ColLetterToNumber("I"), rowStart, .ColLetterToNumber("M"), du + rowStart - 1, .ColLetterToNumber("I"), rowStart + 1024 * a
                 .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), du + rowStart - 1, .ColLetterToNumber("P"), rowStart + 1024 * a
                 '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), du + rowStart - 1, .ColLetterToNumber("AH"), rowStart + 1024 * a
                 .CopyRange .ColLetterToNumber("AI"), rowStart, .ColLetterToNumber("AI"), du + rowStart - 1, .ColLetterToNumber("AI"), rowStart + 1024 * a
@@ -15582,6 +15586,7 @@ Public Sub copyFormulasSheet4(numRow As Long, fps As fpSpread, rowStart As Long)
                 .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), du + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * (a - 1)
                 .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * (a - 1)
                 .CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), du + rowStart - 1, .ColLetterToNumber("G"), rowStart + 1024 * (a - 1)
+                .CopyRange .ColLetterToNumber("I"), rowStart, .ColLetterToNumber("M"), du + rowStart - 1, .ColLetterToNumber("I"), rowStart + 1024 * (a - 1)
                 .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), du + rowStart - 1, .ColLetterToNumber("P"), rowStart + 1024 * (a - 1)
                 '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), du + rowStart - 1, .ColLetterToNumber("AH"), rowStart + 1024 * (a - 1)
                 .CopyRange .ColLetterToNumber("AI"), rowStart, .ColLetterToNumber("AI"), du + rowStart - 1, .ColLetterToNumber("AI"), rowStart + 1024 * (a - 1)
@@ -15597,6 +15602,7 @@ Public Sub copyFormulasSheet4(numRow As Long, fps As fpSpread, rowStart As Long)
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a, .ColLetterToNumber("A"), (rowStart + a + 1)
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
                     .CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), rowStart + a, .ColLetterToNumber("G"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("I"), rowStart, .ColLetterToNumber("M"), rowStart + a, .ColLetterToNumber("I"), (rowStart + a + 1)
                     .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), rowStart + a, .ColLetterToNumber("P"), (rowStart + a + 1)
                     '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + a, .ColLetterToNumber("AH"), (rowStart + a + 1)
                     .CopyRange .ColLetterToNumber("AI"), rowStart, .ColLetterToNumber("AI"), rowStart + a, .ColLetterToNumber("AI"), (rowStart + a + 1)
@@ -15605,6 +15611,7 @@ Public Sub copyFormulasSheet4(numRow As Long, fps As fpSpread, rowStart As Long)
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a - 1, .ColLetterToNumber("A"), rowStart + a
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
                     .CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), rowStart + a - 1, .ColLetterToNumber("G"), rowStart + a
+                    .CopyRange .ColLetterToNumber("I"), rowStart, .ColLetterToNumber("M"), rowStart + a - 1, .ColLetterToNumber("I"), rowStart + a
                     .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), rowStart + a - 1, .ColLetterToNumber("P"), rowStart + a
                     '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + a - 1, .ColLetterToNumber("AH"), rowStart + a
                     .CopyRange .ColLetterToNumber("AI"), rowStart, .ColLetterToNumber("AI"), rowStart + a - 1, .ColLetterToNumber("AI"), rowStart + a
@@ -15616,6 +15623,7 @@ Public Sub copyFormulasSheet4(numRow As Long, fps As fpSpread, rowStart As Long)
             .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + (numRow - a - 1), .ColLetterToNumber("A"), rowStart + a
             .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + (numRow - a - 1), .ColLetterToNumber("B"), rowStart + a
             .CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), rowStart + (numRow - a - 1), .ColLetterToNumber("G"), rowStart + a
+            .CopyRange .ColLetterToNumber("I"), rowStart, .ColLetterToNumber("M"), rowStart + (numRow - a - 1), .ColLetterToNumber("I"), rowStart + a
             .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), rowStart + (numRow - a - 1), .ColLetterToNumber("P"), rowStart + a
             '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + (numRow - a - 1), .ColLetterToNumber("AH"), rowStart + a
             .CopyRange .ColLetterToNumber("AI"), rowStart, .ColLetterToNumber("AI"), rowStart + (numRow - a - 1), .ColLetterToNumber("AI"), rowStart + a
@@ -16045,16 +16053,30 @@ Public Sub moveDataNKH()
             
             ' To khai 05/TNCN
             If Trim(varMenuId) = "17" Then
-                If (Trim(varTemp) <> vbNullString Or Trim(varTemp) <> "") And (Trim(varTemp1) <> vbNullString Or Trim(varTemp1) <> "") Then
-                    ' Tru tiep 4 dong header dau tien thi se duoc tong so dong can import vao
-                    If mCurrentSheet = 2 Then
-                        lrowCount = lrowCount - 4
-                    ElseIf mCurrentSheet = 3 Then
-                        lrowCount = lrowCount - 4
-                    ElseIf mCurrentSheet = 4 Then
-                        lrowCount = lrowCount - 5
+                If fpSpread1.ActiveSheet = 4 Then
+                    If (Trim(varTemp) <> vbNullString Or Trim(varTemp) <> "") Then
+                        ' Tru tiep 4 dong header dau tien thi se duoc tong so dong can import vao
+                        If mCurrentSheet = 2 Then
+                            lrowCount = lrowCount - 4
+                        ElseIf mCurrentSheet = 3 Then
+                            lrowCount = lrowCount - 4
+                        ElseIf mCurrentSheet = 4 Then
+                            lrowCount = lrowCount - 5
+                        End If
+                        Exit For
                     End If
-                    Exit For
+                Else
+                    If (Trim(varTemp) <> vbNullString Or Trim(varTemp) <> "") And (Trim(varTemp1) <> vbNullString Or Trim(varTemp1) <> "") Then
+                        ' Tru tiep 4 dong header dau tien thi se duoc tong so dong can import vao
+                        If mCurrentSheet = 2 Then
+                            lrowCount = lrowCount - 4
+                        ElseIf mCurrentSheet = 3 Then
+                            lrowCount = lrowCount - 4
+                        ElseIf mCurrentSheet = 4 Then
+                            lrowCount = lrowCount - 5
+                        End If
+                        Exit For
+                    End If
                 End If
             End If
             
@@ -16139,8 +16161,9 @@ Public Sub moveDataNKH()
     Debug.Print "COPY DATA IN : " & Time
 
     ' copy data vao Spread1
-
-    ProgressBar1.max = lrowCount
+    If lrowCount > 0 Then
+        ProgressBar1.max = lrowCount
+    End If
     On Error GoTo ErrHandle
 
     If Trim(varMenuId) = "17" Then

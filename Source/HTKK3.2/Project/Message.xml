@@ -239,9 +239,9 @@
 	<Infor ID="0246" Msg="Số thuế đã khấu trừ"/>
 	<Infor ID="0247" Msg="§Õn th¸ng ph¶i nhá h¬n hoÆc b»ng th¸ng hiÖn t¹i"/>
 	<Infor ID="0248" Msg="NhËp gi¸ trÞ theo ®óng ®Þnh d¹ng mm/yyyy "/>
-	<Infor ID="0249" Msg="Hạch toán chỉ tiêu [E] vào mục 1050, tiểu mục 1052"/>
-	<Infor ID="0250" Msg="Hạch toán chỉ tiêu [E] vào mục 1050, tiểu mục 1056"/>
-	<Infor ID="0251" Msg="Hạch toán chỉ tiêu [E] vào mục 1050, tiểu mục 1057"/>
+	<Infor ID="0249" Msg="Hạch toán chỉ tiêu [G] vào mục 1050, tiểu mục 1052"/>
+	<Infor ID="0250" Msg="Hạch toán chỉ tiêu [G] vào mục 1050, tiểu mục 1056"/>
+	<Infor ID="0251" Msg="Hạch toán chỉ tiêu [G] vào mục 1050, tiểu mục 1057"/>
 	<Infor ID="0252" Msg="Tõ th¸ng ph¶i thuéc kú tÝnh thuÕ"/>
 	<Infor ID="0253" Msg="Tõ th¸ng, ®Õn th¸ng cho phÐp kª v¾t n¨m nh­ng kh«ng ®­îc qu¸ 12 th¸ng"/>
 	<Infor ID="0254" Msg="Kú b¸o c¸o tõ ngµy kh«ng ®­îc lín h¬n kú b¸o c¸o ®Õn ngµy"/>	

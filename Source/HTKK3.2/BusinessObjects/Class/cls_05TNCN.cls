@@ -2234,6 +2234,7 @@ Dim ASheet As Integer, SSheet As Integer
         ' lay du lieu dia ban
         xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Quoc_Gia.xml"))
         Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+        strMaQuocTich = ""
         For Each xmlNode In xmlNodeListMap
             temValue = GetAttribute(xmlNode, "Value")
             arrValue = Split(temValue, "###")

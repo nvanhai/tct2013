@@ -4077,10 +4077,10 @@ Public Function getTemplateTk(ByVal strId As String) As String()
             ReDim strResult(6)
             strResult(0) = "F_17~Dynamic_0"
             strResult(1) = "D_8~D_10~D_12~K_14~P_14~G_16~Dynamic_0"
-            strResult(2) = "O_31~O_33~O_34~O_35~O_36~O_37~O_38~O_39~O_40~O_41~O_42~O_43~O_44~O_45~O_46~O_48~O_49~O_50~O_51~O_52~O_53~O_54~O_55~O_56~O_57~O_58~O_59~O_60~O_61~O_62~O_63~O_64~O_65~O_66~O_67~O_68~O_69~O_70~O_71~Dynamic_0"
-            strResult(3) = "F_74~I_76~P_76~I_78~I_80~I_82~Dynamic_0"
-            strResult(4) = "C_88~Dynamic_1"
-            strResult(5) = "F_93~N_93~F_95~N_95~E_22~F_22~I_22~J_22~Dynamic_0"
+            strResult(2) = "O_31~O_33~O_34~O_35~O_36~O_37~O_38~O_39~O_40~O_41~O_42~O_43~O_44~O_45~O_46~O_48~O_49~O_50~O_51~O_52~O_53~O_54~O_55~O_56~O_57~O_58~O_59~O_60~O_61~O_62~O_63~O_64~O_65~O_66~O_67~O_68~O_69~O_70~O_71~O_72~O_73~O_74~O_75~O_76~O_77~O_78~O_79~O_80~Dynamic_0"
+            strResult(3) = "F_83~I_85~P_85~I_87~I_89~I_91~E_95~J_95~N_95~E_97~Dynamic_0"
+            strResult(4) = "C_103~Dynamic_1"
+            strResult(5) = "F_108~N_108~F_110~N_110~E_22~F_22~I_22~J_22~Dynamic_0"
 
             ' 05_TNDN
             '        Case "14"
