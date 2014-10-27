@@ -811,7 +811,7 @@ Public Function InsertDTL_By_CTTN(hdr As TNCN_DTL, pit As Boolean) As Boolean
 End Function
 
 Public Function InsertDTL_KHBS() As String
-        Dim madtnt As Variant
+    Dim madtnt As Variant
     Dim ngnop  As Variant
     Dim KYLBO  As Variant
 

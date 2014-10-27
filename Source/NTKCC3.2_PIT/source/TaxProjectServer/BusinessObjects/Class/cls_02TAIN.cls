@@ -585,138 +585,92 @@ Public Function XoaTKTT() As Boolean
 End Function
 
 Public Function InsertDTL_KHBS() As String
-    Dim sSQL As String
-    Dim sSQLCol As String
-    Dim sSQLVal As String
-    Dim bln  As Boolean
-    Dim madtnt As Variant
-    Dim ngnop As Variant
-    Dim KYLBO As Variant
-    Dim kykkhai As Variant
-    Dim matkhai As Variant
-    Dim MATHUE As Variant
-    Dim MaMuc As Variant
-    Dim maTM As Variant
-    Dim MAPP As Variant
-    Dim mact As Variant
-    Dim MACT2 As Variant
-    Dim MACT3 As Variant
-    Dim STT As Variant
-    Dim STT2 As Variant
-    Dim STTIN As Variant
-    Dim SOKK As Variant
-    Dim SODC As Variant
-    Dim SOCL As Variant
-    Dim SONGAYNC As Variant
-    Dim SOTIENNC As Variant
-    Dim DANHAN As Variant
+    Dim sSQL        As String
+    Dim sSQLCol     As String
+    Dim sSQLVal     As String
+    Dim bln         As Boolean
+    Dim madtnt      As Variant
+    Dim ngnop       As Variant
+    Dim KYLBO       As Variant
+    Dim kykkhai     As Variant
+    Dim matkhai     As Variant
+    Dim MATHUE      As Variant
+    Dim MaMuc       As Variant
+    Dim maTM        As Variant
+    Dim MAPP        As Variant
+    Dim mact        As Variant
+    Dim MACT2       As Variant
+    Dim MACT3       As Variant
+    Dim STT         As Variant
+    Dim STT2        As Variant
+    Dim STTIN       As Variant
+    Dim SOKK        As Variant
+    Dim SODC        As Variant
+    Dim SOCL        As Variant
+    Dim SONGAYNC    As Variant
+    Dim SOTIENNC    As Variant
+    Dim DANHAN      As Variant
     
-    Dim i As Integer, iCol As Long, iRow As Long
-    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim i           As Integer, iCol As Long, iRow As Long
+    Dim xmlNode     As MSXML.IXMLDOMNode
+
     Dim strFileName As String
-    Dim fso As New FileSystemObject
-    
-    Dim arrMTM() As String, arrMTMSave() As String
-    Dim arrVitri() As Integer
-    Dim idx, idx1, countMTM As Integer
-    Dim vTemp As String, vVitriTrung As String
-    Dim ROWNUM As Variant
-   'kiem tra ton tai tep *.dbf chua
+    Dim fso         As New FileSystemObject
+
+    'kiem tra ton tai tep *.dbf chua
     strFileName = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_BS" & sKyKeKhai & ".DBF"
+
     If fso.FileExists(strFileName) = False Then
-    Dim strTepmau As String
+        Dim strTepmau As String
         strTepmau = spathVat & "\tepmau\TMP_BS.DBF"
         fso.CopyFile strTepmau, strFileName, False
     End If
 
-   sSQLCol = "MADTNT, KYKKHAI, MATKHAI, MATHUE, MAMUC, MATM, MAPP, NGNOP, TTHTK, KYLBO , MACT, MACT2, MACT3, STT, STT2, STTIN," & _
-             " SOKK, SODC, SOCL, SONGAYNC, SOTIENNC, LAN_QUET, DANHAN"
+    sSQLCol = "MADTNT, KYKKHAI, MATKHAI, MATHUE, MAMUC, MATM, MAPP, NGNOP, TTHTK, KYLBO , MACT, MACT2, MACT3, STT, STT2, STTIN," & " SOKK, SODC, SOCL,SOTIENNC,  SONGAYNC, LAN_QUET, DANHAN"
 
-   If clsDAO.Connected = False Then
+    If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
         clsDAO.Connect
-   End If
-   
-   
-   With fps
-        
+    End If
+
+    With fps
         .Sheet = 1
-        'Lay ds ma tieu muc
-       ' layt ma tieu muc theo yeu cau chi Em
-        'ngay 14/09/2010
-        .Col = .ColLetterToNumber("B")
-        .Row = 57
-        Do
-            ' Lay ma tieu muc tren cel
-            .Col = .ColLetterToNumber("AO")
-            vTemp = vTemp & .Text & "~"
-                     
-            .Col = .ColLetterToNumber("B")
-            .Row = .Row + 1
-         Loop Until .Text = "aa"
-         arrMTM = Split(vTemp, "~")
-         vTemp = ""
-         ReDim arrMTMSave(1)
-         arrMTMSave(0) = arrMTM(0)
-         For idx = 1 To UBound(arrMTM) - 1
-            countMTM = 0
-            vTemp = arrMTM(idx)
-            For i = 0 To UBound(arrMTMSave)
-                If vTemp = arrMTMSave(i) Then
-                    countMTM = countMTM + 1
-                End If
-            Next
-            If countMTM = 0 Then
-                ReDim Preserve arrMTMSave(UBound(arrMTMSave) + 1)
-                arrMTMSave(UBound(arrMTMSave) - 1) = vTemp
-            End If
-         Next
-         'the end
-         
-        .GetText .ColLetterToNumber("H"), 10, madtnt
+        .GetText .ColLetterToNumber("G"), 8, madtnt
+
         If Trim(madtnt) = vbNullString Then
             madtnt = "''"
         Else
             madtnt = "'" & madtnt & "'"
         End If
-        
-        kykkhai = "'" & TAX_Utilities_Svr_New.Year & "'"
-        matkhai = "'02/TAIN'"
-        MATHUE = "'01'"
-        .GetText .ColLetterToNumber("E"), 30, KYLBO
-        If Trim(KYLBO) = vbNullString Then
-            KYLBO = "''"
-        Else
-            If Len(Trim(KYLBO)) = 6 Then
-                KYLBO = "'0" & KYLBO & "'"
-            Else
-                KYLBO = "'" & KYLBO & "'"
-            End If
 
-        End If
-        
-        If CLng(Mid(Right(KYLBO, 5), 1, 4)) < 2009 Then
-            maTM = "'03'"
-            MaMuc = "'012'"
-        Else
-            MaMuc = "'1550'"
-        '    matm = "''"
-        End If
-        vTemp = arrMTMSave(i)
-        maTM = "'" & vTemp & "'"
+        kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+
+        MATHUE = "'21'"
         MAPP = "'2'"
+        matkhai = "'01/PHLP'"
+        DANHAN = "''"
+        MaMuc = "'1550'"
+        maTM = "' '"
         
-        .GetText .ColLetterToNumber("E"), 32, ngnop
-        'NGNOP = Date
+        .GetText .ColLetterToNumber("E"), 24, ngnop
+
         If Trim(ngnop) = vbNullString Then
             ngnop = "CTOD('')"
         Else
             ngnop = ToDate(Trim(ngnop), DDMMYYYY)
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
-        
-' Insert so dieu chinh tang
 
+        .GetText .ColLetterToNumber("E"), 22, KYLBO
+
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "CTOD('')"
+        Else
+            KYLBO = "'" & KYLBO & "'"
+        End If
+
+        ' Insert so dieu chinh tang
+        
         mact = "'1000'"
         MACT2 = "''"
         MACT3 = "''"
@@ -726,89 +680,105 @@ Public Function InsertDTL_KHBS() As String
         SOKK = "0"
         SODC = "0"
         SOCL = "0"
-        SONGAYNC = "0"
         SOTIENNC = "0"
-        DANHAN = "''"
-            sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & _
-                      ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & _
-                      SOKK & "," & SODC & "," & SOCL & "," & SONGAYNC & "," & SOTIENNC & "," & LAN_QUET & "," & DANHAN
-
-
-            sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-            bln = clsDAO.ExecuteDLL(sSQL)
+        SONGAYNC = "0"
+        
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+                       
+        sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        bln = clsDAO.ExecuteDLL(sSQL)
         
         .Sheet = .SheetCount - 1
-        ' so ngay nop cham
-        .GetText .ColLetterToNumber("BE"), .MaxRows - 28, SONGAYNC
-        If Trim(SONGAYNC) = vbNullString Then
-            SONGAYNC = "0"
-        Else
-            SONGAYNC = SONGAYNC
-        End If
-        ' so tien nop cham
+        
+        'get so tien nop cham va so ngay nop cham
         .GetText .ColLetterToNumber("BE"), .MaxRows - 27, SOTIENNC
-        If Trim(SOTIENNC) = vbNullString Then
+
+        If SOTIENNC = vbNullString Then
             SOTIENNC = "0"
         Else
-            SOTIENNC = SOTIENNC
+            SOTIENNC = Replace(SOTIENNC, ".", "")
         End If
+
+        .GetText .ColLetterToNumber("BE"), .MaxRows - 28, SONGAYNC
+
+        If SONGAYNC = vbNullString Then
+            SONGAYNC = "0"
+        Else
+            SONGAYNC = Replace(SONGAYNC, ".", "")
+        End If
+
+        'end
+        
         i = 1
         .Row = 9
+
         Do
-'                .GetText .ColLetterToNumber("D"), .Row, MACT
-'                If Trim(MACT) = vbNullString Then
-                mact = "''"
-'                Else
-'                    MACT = "'" & MACT & "'"
-'                End If
-                .GetText .ColLetterToNumber("BE"), .Row, MACT2
-                If Trim(MACT2) = vbNullString Then
-                    MACT2 = "''"
-                Else
-                    MACT2 = "'" & MACT2 & "'"
-                End If
+            mact = "''"
+            .GetText .ColLetterToNumber("BE"), .Row, MACT2
 
-                MACT3 = "'2'"
-                STT = 1
-                STT2 = i
-                STTIN = "'" & CStr(i) & "'"
+            If Trim(MACT2) = vbNullString Then
+                MACT2 = "''"
+            ElseIf MACT2 = "14" Then
+                MACT2 = "'041'"
+            ElseIf MACT2 = "16" Then
+                MACT2 = "'041'"
+            ElseIf MACT2 = "23" Then
+                MACT2 = "'041'"
+            ElseIf MACT2 = "24" Then
+                MACT2 = "'050'"
+            ElseIf MACT2 = "21" Then
+                MACT2 = "'039'"
+            ElseIf MACT2 = "31" Then
+                MACT2 = "'050'"
+            ElseIf MACT2 = "30" Then
+                MACT2 = "'031'"
+            Else
+                MACT2 = "'000'"
+            End If
+                
+            MACT3 = "'2'"
+            STT = 1
+            STT2 = i
+            STTIN = "'" & CStr(i) & "'"
+                
+            .GetText .ColLetterToNumber("BF"), .Row, SOKK
 
-                .GetText .ColLetterToNumber("BF"), .Row, SOKK
-                If Trim(SOKK) = vbNullString Then
-                    SOKK = "0"
-                Else
-                    SOKK = SOKK
-                End If
+            If Trim(SOKK) = vbNullString Then
+                SOKK = "0"
+            Else
+                SOKK = SOKK
+            End If
+                
+            .GetText .ColLetterToNumber("BG"), .Row, SODC
 
-                .GetText .ColLetterToNumber("BG"), .Row, SODC
-                If Trim(SODC) = vbNullString Then
-                    SODC = "0"
-                Else
-                    SODC = SODC
-                End If
+            If Trim(SODC) = vbNullString Then
+                SODC = "0"
+            Else
+                SODC = SODC
+            End If
+                
+            .GetText .ColLetterToNumber("BH"), .Row, SOCL
 
-                .GetText .ColLetterToNumber("BH"), .Row, SOCL
-                If Trim(SOCL) = vbNullString Then
-                    SOCL = "0"
-                Else
-                    SOCL = SOCL
-                End If
+            If Trim(SOCL) = vbNullString Then
+                SOCL = "0"
+            Else
+                SOCL = SOCL
+            End If
             
-                sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & _
-                          ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & _
-                          SOKK & "," & SODC & "," & SOCL & "," & SONGAYNC & "," & SOTIENNC & "," & LAN_QUET & "," & DANHAN
-
-                sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-                If MACT2 <> "''" Then
-                    bln = clsDAO.ExecuteDLL(sSQL)
-                End If
+            sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+                           
+            sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+                
+            If MACT2 <> "''" Then
+                bln = clsDAO.ExecuteDLL(sSQL)
+            End If
         
             .Col = .ColLetterToNumber("B")
             .Row = 1 + .Row
             i = i + 1
         Loop Until .Text = "aa"
-        ROWNUM = .Row
-' Insert so dieu chinh giam
+
+        ' Insert so dieu chinh giam
 
         mact = "'2000'"
         MACT2 = "''"
@@ -820,65 +790,78 @@ Public Function InsertDTL_KHBS() As String
         SODC = "0"
         SOCL = "0"
         
-            sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & _
-                      ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & _
-                      SOKK & "," & SODC & "," & SOCL & "," & SONGAYNC & "," & SOTIENNC & "," & LAN_QUET & "," & DANHAN
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+                       
+        sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        bln = clsDAO.ExecuteDLL(sSQL)
 
-
-            sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-            bln = clsDAO.ExecuteDLL(sSQL)
-               
+        i = 1
         .Row = .Row + 3
-         i = 1
-         Do
-                mact = "''"
 
-                .GetText .ColLetterToNumber("BE"), .Row, MACT2
-                If Trim(MACT2) = vbNullString Then
-                    MACT2 = "''"
-                Else
-                    MACT2 = "'" & MACT2 & "'"
-                End If
+        Do
+            mact = "''"
+            .GetText .ColLetterToNumber("BE"), .Row, MACT2
+
+            If Trim(MACT2) = vbNullString Then
+                MACT2 = "''"
+            ElseIf MACT2 = "14" Then
+                MACT2 = "'041'"
+            ElseIf MACT2 = "16" Then
+                MACT2 = "'041'"
+                '                ElseIf MACT2 = "23" Then
+                '                    MACT2 = "'041'"
+            ElseIf MACT2 = "24" Then
+                MACT2 = "'050'"
+            ElseIf MACT2 = "21" Then
+                MACT2 = "'039'"
+            ElseIf MACT2 = "31" Then
+                MACT2 = "'050'"
+            Else
+                MACT2 = "'000'"
+            End If
                 
-                MACT3 = "'2'"
-                STT = 2
-                STT2 = i
-                STTIN = "'" & CStr(i) & "'"
+            MACT3 = "'2'"
+            STT = 2
+            STT2 = i
+            STTIN = "'" & CStr(i) & "'"
+                
+            .GetText .ColLetterToNumber("BF"), .Row, SOKK
 
-                .GetText .ColLetterToNumber("BF"), .Row, SOKK
-                If Trim(SOKK) = vbNullString Then
-                    SOKK = "0"
-                Else
-                    SOKK = SOKK
-                End If
+            If Trim(SOKK) = vbNullString Then
+                SOKK = "0"
+            Else
+                SOKK = SOKK
+            End If
+                
+            .GetText .ColLetterToNumber("BG"), .Row, SODC
 
-                .GetText .ColLetterToNumber("BG"), .Row, SODC
-                If Trim(SODC) = vbNullString Then
-                    SODC = "0"
-                Else
-                    SODC = SODC
-                End If
+            If Trim(SODC) = vbNullString Then
+                SODC = "0"
+            Else
+                SODC = SODC
+            End If
+                
+            .GetText .ColLetterToNumber("BH"), .Row, SOCL
 
-                .GetText .ColLetterToNumber("BH"), .Row, SOCL
-                If Trim(SOCL) = vbNullString Then
-                    SOCL = "0"
-                Else
-                    SOCL = SOCL
-                End If
+            If Trim(SOCL) = vbNullString Then
+                SOCL = "0"
+            Else
+                SOCL = SOCL
+            End If
             
-                sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & _
-                          ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & _
-                          SOKK & "," & SODC & "," & SOCL & "," & SONGAYNC & "," & SOTIENNC & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+                           
+            sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
-                sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-                If MACT2 <> "''" Then
-                    bln = clsDAO.ExecuteDLL(sSQL)
-                End If
+            If MACT2 <> "''" Then
+                bln = clsDAO.ExecuteDLL(sSQL)
+            End If
         
             .Col = .ColLetterToNumber("B")
             .Row = 1 + .Row
             i = i + 1
         Loop Until .Text = "bb"
+        
         ' Insert Tong hop dieu chinh
 
         mact = "'3000'"
@@ -889,24 +872,75 @@ Public Function InsertDTL_KHBS() As String
         STTIN = "'III'"
         SOKK = "0"
         SODC = "0"
-        .GetText .ColLetterToNumber("BH"), .MaxRows - 31, SOCL
+        SOCL = "0"
+        
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+                       
+        sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        bln = clsDAO.ExecuteDLL(sSQL)
+        .Row = .Row + 3
+        mact = "''"
+        .GetText .ColLetterToNumber("BE"), .Row, MACT2
+
+        If Trim(MACT2) = vbNullString Then
+            MACT2 = "''"
+        ElseIf MACT2 = "14" Then
+            MACT2 = "'041'"
+        ElseIf MACT2 = "16" Then
+            MACT2 = "'041'"
+            '                ElseIf MACT2 = "23" Then
+            '                    MACT2 = "'041'"
+        ElseIf MACT2 = "24" Then
+            MACT2 = "'050'"
+        ElseIf MACT2 = "21" Then
+            MACT2 = "'039'"
+        ElseIf MACT2 = "31" Then
+            MACT2 = "'050'"
+        Else
+            MACT2 = "'000'"
+        End If
+                
+        MACT3 = "'2'"
+        STT = 3
+        STT2 = 1
+        STTIN = "'1'"
+                
+        .GetText .ColLetterToNumber("BF"), .Row, SOKK
+
+        If Trim(SOKK) = vbNullString Then
+            SOKK = "0"
+        Else
+            SOKK = SOKK
+        End If
+                
+        .GetText .ColLetterToNumber("BG"), .Row, SODC
+
+        If Trim(SODC) = vbNullString Then
+            SODC = "0"
+        Else
+            SODC = SODC
+        End If
+                
+        .GetText .ColLetterToNumber("BH"), .Row, SOCL
+
         If Trim(SOCL) = vbNullString Then
             SOCL = "0"
         Else
             SOCL = SOCL
         End If
-        
-            sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & _
-                      ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & _
-                      SOKK & "," & SODC & "," & SOCL & "," & SONGAYNC & "," & SOTIENNC & "," & LAN_QUET & "," & DANHAN
+            
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+                           
+        sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
-            sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        If MACT2 <> "''" Then
             bln = clsDAO.ExecuteDLL(sSQL)
-      
-   End With
+        End If
 
-   clsDAO.Disconnect
-   InsertDTL_KHBS = vbNullString
+    End With
+   
+    clsDAO.Disconnect
+    InsertDTL_KHBS = vbNullString
    
 End Function
 
