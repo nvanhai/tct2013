@@ -1196,7 +1196,7 @@ Private Sub cmdSave_Click()
     
     Set rs = Nothing
 
-    If idToKhai = 2 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 87 Or idToKhai = 77 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 95 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 99 Or idToKhai = 24 Or idToKhai = 25 Or idToKhai = 23 Or idToKhai = 85 Or idToKhai = 88 Or idToKhai = 89 Or idToKhai = 26 Then
+    If idToKhai = 2 Or idToKhai = 46 Or idToKhai = 47 Or idToKhai = 48 Or idToKhai = 49 Or idToKhai = 15 Or idToKhai = 16 Or idToKhai = 50 Or idToKhai = 51 Or idToKhai = 36 Or idToKhai = 87 Or idToKhai = 77 Or idToKhai = 74 Or idToKhai = 89 Or idToKhai = 42 Or idToKhai = 43 Or idToKhai = 17 Or idToKhai = 59 Or idToKhai = 41 Or idToKhai = 76 Or idToKhai = 95 Or idToKhai = 93 Or idToKhai = 94 Or idToKhai = 96 Or idToKhai = 97 Or idToKhai = 99 Or idToKhai = 24 Or idToKhai = 25 Or idToKhai = 23 Or idToKhai = 85 Or idToKhai = 88 Or idToKhai = 89 Or idToKhai = 26 Or idToKhai = 84 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28").nodeValue)
         '--QCT
     ElseIf idToKhai = 4 Or idToKhai = 86 Then
@@ -1605,10 +1605,19 @@ Private Sub Command1_Click()
 
 '############ Thong tu 151
 '01/MBAI
-'str2 = "aa999842100343639   00201300500500100101/0101/01/1900<S01><S></S><S>x</S><S>100~200~300~20~20~40</S><S>200~100~300~100~100~200</S><S>840</S><S>ten~ky~cc01~27/10/2014~1~1~1</S></S01>"
+'str2 = "aa999842100343639   00201300600600100101/0101/01/1900<S01><S></S><S>x</S><S>n1~100~200~300~n12~200~200~400</S><S>n2~1~2~3~n21~2~2~4</S><S>707</S><S>ten~ky~cc001~27/10/2014~1~~</S></S01>"
 'Barcode_Scaned str2
 
-str2 = "aa999702100343639   09201400200200100101/0101/01/1900<S01><S></S><S>d©~2222222222~hop dong~1000000~01/09/2014~2000000~10~10~200000~3000000~10~40000~260000~460000~dadsfa~0102030405~hop2~20000~01/09/2014~200000~10~0~20000~20000000~10~20~1999980~2019980</S><S>2000000~20000~3000000~40000~260000~280000</S><S>X~</S><S>~~µ~27/10/2014~1~~~</S></S01>"
+'str2 = "aa999702100343639   09201400200200100101/0101/01/1900<S01><S></S><S>d©~2222222222~hop dong~1000000~01/09/2014~2000000~10~10~200000~3000000~10~40000~260000~460000~dadsfa~0102030405~hop2~20000~01/09/2014~200000~10~0~20000~20000000~10~20~1999980~2019980</S><S>2000000~20000~3000000~40000~260000~280000</S><S>X~</S><S>~~µ~27/10/2014~1~~~</S></S01>"
+'Barcode_Scaned str2
+
+
+'str2 = "aa999012100343639   09201400200200100201/0114/06/2006<S01><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~µ~27/10/2014~1~~~1701~~~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999012100343639   092014002002002002<S01_2><S>~~HD001~01/01/2014~ban1~0102030405~~100~0~10~ghi chu~~~HD02~01/01/2014~ban 2~2222222222~~200~0~100~ghi chu2</S><S>~~~~~~~0~0~0~</S><S>~~H1~01/01/2014~ban h1~6868686868~~100~0~2~ghi chu~~~H2~01/01/2014~ban h2~2222222222~~2~0~1~ghi chu 3</S><S>~~~~~~~0~0~0~</S><S>~~~~~~~0~0~0~</S><S>402~113</S></S01_2>"
+'Barcode_Scaned str2
+
+str2 = "aa999882100343639   00201200000000100101/0101/01/1900<S01><S></S><S>~0~0~0~0~0~0~</S><S>0~0~0~0~0</S><S>~µ~~27/10/2014~1~~~01/2012~12/2012</S></S01>"
 Barcode_Scaned str2
 End Sub
 
