@@ -775,6 +775,14 @@ Private Sub cmdSave_Click()
 
     ' end if
     
+     'Chan theo thong tu QN63: Chan 01A/TNDN, 01B/TNDN tu ky ke khai quy 4/2014
+    If Val(menuId) = 11 Or Val(menuId) = 12 Then
+        If (Val(TAX_Utilities_Svr_New.Year) > 2014 Or (TAX_Utilities_Svr_New.Year = "2014" And Val(TAX_Utilities_Svr_New.ThreeMonths) >= 4)) Then
+            DisplayMessage "0183", msOKOnly, miInformation
+            Exit Sub
+        End If
+    End If
+    
     ' Kiem tra xem da khoa so trong ky lap bo nay chua
     ' hlnam edit
     If clsDAO.Connected = False Then
