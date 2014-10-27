@@ -135,10 +135,13 @@ Public Sub Prepare1()
     
 With fps
     ' TK 03
-    SetDateFormat fps, sheetTK03_TNDN, 78, .ColLetterToNumber("I"), DDMMYYYY
+    SetDateFormat fps, sheetTK03_TNDN, 87, .ColLetterToNumber("I"), DDMMYYYY
+    SetDateFormat fps, sheetTK03_TNDN, 95, .ColLetterToNumber("J"), DDMMYYYY
     SetDateFormat fps, sheetTK03_TNDN, 95, .ColLetterToNumber("N"), DDMMYYYY
+    SetDateFormat fps, sheetTK03_TNDN, 110, .ColLetterToNumber("N"), DDMMYYYY
+    
     .Sheet = sheetTK03_TNDN ' Mac dinh ngay ky la ngay he thong (To khai quyet toan TNDN 03/TNDN)
-    .Row = 95
+    .Row = 110
     .Col = .ColLetterToNumber("N")
     .Text = Format(Date, "dd/mm/yyyy")
     .TypeHAlign = TypeHAlignLeft
@@ -175,7 +178,7 @@ With fps
          Next
      End If
      'set ly do gia han
-    .Row = 76
+    .Row = 85
     .Col = .ColLetterToNumber("I")
     .TypeComboBoxList = strCboLyDo
     ' set Ma ly do gia han
@@ -421,69 +424,69 @@ Public Sub Prepare2()
 
         ' Kiem tra neu C4 <0 thi lock C5, C7, C8 va set =0
         .Sheet = sheetTK03_TNDN
-        .GetText .ColLetterToNumber("O"), 51, chiTieuC4
+        .GetText .ColLetterToNumber("O"), 53, chiTieuC4
         ' chi tieu C5, C7, C8
         If Val(chiTieuC4) < 0 Then
             .Col = .ColLetterToNumber("O")
             ' chi tieu C5
-            .Row = 52
-            .Lock = True
-            .Text = 0
-            ' chi tieu C7
             .Row = 54
             .Lock = True
             .Text = 0
+            ' chi tieu C7
+            .Row = 56
+            .Lock = True
+            .Text = 0
             ' chi tieu C8
-            .Row = 55
+            .Row = 57
             .Lock = True
             .Text = 0
         Else
             .Col = .ColLetterToNumber("O")
             ' chi tieu C5
-            .Row = 52
-            .Lock = False
-            ' chi tieu C7
             .Row = 54
             .Lock = False
+            ' chi tieu C7
+            .Row = 56
+            .Lock = False
             ' chi tieu C8
-            .Row = 55
+            .Row = 57
             .Lock = False
         End If
         ' End check
         ' Neu check gia han moi cho phep chon GT
         .Col = .ColLetterToNumber("F")
-        .Row = 74
+        .Row = 83
         If .Text = "1" Or UCase$(.Text) = "X" Then
             .Col = .ColLetterToNumber("I")
-            .Row = 76
+            .Row = 85
             .Lock = False
             
             .Col = .ColLetterToNumber("I")
-            .Row = 78
+            .Row = 87
             .Lock = False
             
             .Col = .ColLetterToNumber("I")
-            .Row = 80
+            .Row = 89
             .Lock = False
             
             .Col = .ColLetterToNumber("I")
-            .Row = 82
+            .Row = 91
             .Lock = False
         Else
             .Col = .ColLetterToNumber("I")
-            .Row = 76
+            .Row = 85
             .Lock = True
             
             .Col = .ColLetterToNumber("I")
-            .Row = 78
+            .Row = 87
             .Lock = True
             
             .Col = .ColLetterToNumber("I")
-            .Row = 80
+            .Row = 89
             .Lock = True
             
             .Col = .ColLetterToNumber("I")
-            .Row = 82
+            .Row = 91
             .Lock = True
         End If
         ' End set gia han
@@ -524,7 +527,7 @@ Dim cValueF As Variant
 Dim i As Integer
 Dim xmlNodeH15 As MSXML.IXMLDOMNode
 
-Dim chiTieuC1, chiTieuC2, chiTieuC3, chiTieuC4 As Variant
+Dim chiTieuC1, chiTieuC2, chiTieuC3a, chiTieuC3b, chiTieuC4 As Variant
 
 Dim intIndexCombo As Integer
 Dim strMa As Variant
@@ -566,34 +569,35 @@ With fps
     ' Kiem tra neu C4 <0 thi lock C5 , C7, C8
     If .ActiveSheet = sheetTK03_TNDN Then
         .Sheet = sheetTK03_TNDN
-        If Col = .ColLetterToNumber("O") And (Row = 45 Or Row = 49 Or Row = 50) Then
+        If Col = .ColLetterToNumber("O") And (Row = 45 Or Row = 49 Or Row = 51 Or Row = 52) Then
             .GetText .ColLetterToNumber("O"), 48, chiTieuC1
             .GetText .ColLetterToNumber("O"), 49, chiTieuC2
-            .GetText .ColLetterToNumber("O"), 50, chiTieuC3
-            If Val(chiTieuC1) - Val(chiTieuC2) - Val(chiTieuC3) < 0 Then
+            .GetText .ColLetterToNumber("O"), 51, chiTieuC3a
+            .GetText .ColLetterToNumber("O"), 52, chiTieuC3b
+            If Val(chiTieuC1) - Val(chiTieuC2) - Val(chiTieuC3a) - Val(chiTieuC3b) < 0 Then
                 .Col = .ColLetterToNumber("O")
                 ' chi tieu C5
-                .Row = 52
-                .Lock = True
-                .Text = 0
-                ' chi tieu C7
                 .Row = 54
                 .Lock = True
                 .Text = 0
+                ' chi tieu C7
+                .Row = 56
+                .Lock = True
+                .Text = 0
                 ' Chi tieu C8
-                .Row = 55
+                .Row = 57
                 .Lock = True
                 .Text = 0
             Else
                 .Col = .ColLetterToNumber("O")
                 ' chi tieu C5
-                .Row = 52
-                .Lock = False
-                ' chi tieu C7
                 .Row = 54
                 .Lock = False
+                ' chi tieu C7
+                .Row = 56
+                .Lock = False
                 ' Chi tieu C8
-                .Row = 55
+                .Row = 57
                 .Lock = False
             End If
         End If
@@ -624,55 +628,55 @@ Public Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonD
         fps.EventEnabled(EventAllEvents) = False
         If fps.ActiveSheet = 1 Then
         ' Neu check gia han moi cho phep chon GT
-            If Col = fps.ColLetterToNumber("F") And Row = 74 Then
+            If Col = fps.ColLetterToNumber("F") And Row = 83 Then
                 fps.Col = fps.ColLetterToNumber("F")
-                fps.Row = 74
+                fps.Row = 83
                 If fps.Text = "1" Or UCase$(fps.Text) = "X" Then
                     fps.Col = fps.ColLetterToNumber("I")
-                    fps.Row = 76
+                    fps.Row = 85
                     fps.Lock = False
                     
                     fps.Col = fps.ColLetterToNumber("I")
-                    fps.Row = 78
+                    fps.Row = 87
                     fps.Lock = False
                     
                     fps.Col = fps.ColLetterToNumber("I")
-                    fps.Row = 80
+                    fps.Row = 89
                     fps.Lock = False
                     
                     fps.Col = fps.ColLetterToNumber("I")
-                    fps.Row = 82
+                    fps.Row = 91
                     fps.Lock = False
-                    fps.Formula = "O66-I80"
+                    fps.Formula = "O67-I89"
                 Else
                     fps.Col = fps.ColLetterToNumber("I")
-                    fps.Row = 76
+                    fps.Row = 85
                     fps.Lock = True
                     
                     fps.Col = fps.ColLetterToNumber("I")
-                    fps.Row = 78
+                    fps.Row = 87
                     fps.Lock = True
                     
                     fps.Col = fps.ColLetterToNumber("I")
-                    fps.Row = 80
+                    fps.Row = 89
                     fps.Lock = True
                     
                     fps.Col = fps.ColLetterToNumber("I")
-                    fps.Row = 82
+                    fps.Row = 91
                     fps.Lock = True
                     fps.Formula = ""
                     
-                    fps.SetText fps.ColLetterToNumber("I"), 76, ""
-                    fps.SetText fps.ColLetterToNumber("P"), 76, "00"
-                    UpdateCell fps, fps.ColLetterToNumber("P"), 76, "00"
-                    UpdateCell fps, fps.ColLetterToNumber("I"), 76, ""
+                    fps.SetText fps.ColLetterToNumber("I"), 85, ""
+                    fps.SetText fps.ColLetterToNumber("P"), 85, "00"
+                    UpdateCell fps, fps.ColLetterToNumber("P"), 85, "00"
+                    UpdateCell fps, fps.ColLetterToNumber("I"), 85, ""
                     
-                    fps.SetText fps.ColLetterToNumber("I"), 78, ""
-                    fps.SetText fps.ColLetterToNumber("I"), 80, ""
-                    fps.SetText fps.ColLetterToNumber("I"), 82, ""
-                    UpdateCell fps, fps.ColLetterToNumber("I"), 78, ""
-                    UpdateCell fps, fps.ColLetterToNumber("I"), 80, ""
-                    UpdateCell fps, fps.ColLetterToNumber("I"), 82, ""
+                    fps.SetText fps.ColLetterToNumber("I"), 87, ""
+                    fps.SetText fps.ColLetterToNumber("I"), 89, ""
+                    fps.SetText fps.ColLetterToNumber("I"), 91, ""
+                    UpdateCell fps, fps.ColLetterToNumber("I"), 87, ""
+                    UpdateCell fps, fps.ColLetterToNumber("I"), 89, ""
+                    UpdateCell fps, fps.ColLetterToNumber("I"), 91, ""
                 End If
             End If
         End If
@@ -719,7 +723,7 @@ With fps
     If .ActiveSheet = 1 Then
         .Col = Col
         .Row = Row
-         If Col = .ColLetterToNumber("I") And Row = 76 Then
+         If Col = .ColLetterToNumber("I") And Row = 85 Then
             intIndexCombo = .typeComboboxCurSel
             .Col = .ColLetterToNumber("P")
             .typeComboboxCurSel = intIndexCombo
@@ -768,24 +772,24 @@ Private Sub fps_EditChange(ByVal Col As Long, ByVal Row As Long)
 End Sub
 
 Private Sub fps_KeyDown(KeyCode As Integer, Shift As Integer)
-    Dim i As Integer, iCol As Long, iRow As Long
-    If KeyCode = vbKeyClear Or KeyCode = vbKeyDelete Or KeyCode = vbKeyBack Then
-        With fps
-            If .ActiveCol = .ColLetterToNumber(S1TxtC8Col) And .ActiveRow = S1TxtC8Row Then
-                XoaDauAm .ActiveCol, .ActiveRow
-            End If
-        End With
-    End If
- ' for KHBS only
-    If KeyCode = vbKeyF6 Then
-     With fps
-            iCol = .ActiveCol
-            iRow = .ActiveRow
-            mblKeyF6 = True
-            fps_Change iCol, iRow
-            mblKeyF6 = False
-     End With
-    End If
+'    Dim i As Integer, iCol As Long, iRow As Long
+'    If KeyCode = vbKeyClear Or KeyCode = vbKeyDelete Or KeyCode = vbKeyBack Then
+'        With fps
+'            If .ActiveCol = .ColLetterToNumber(S1TxtC8Col) And .ActiveRow = S1TxtC8Row Then
+'                XoaDauAm .ActiveCol, .ActiveRow
+'            End If
+'        End With
+'    End If
+' ' for KHBS only
+'    If KeyCode = vbKeyF6 Then
+'     With fps
+'            iCol = .ActiveCol
+'            iRow = .ActiveRow
+'            mblKeyF6 = True
+'            fps_Change iCol, iRow
+'            mblKeyF6 = False
+'     End With
+'    End If
     
     
 End Sub
@@ -798,7 +802,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
         .EventEnabled(EventAllEvents) = False
         mCurrentSheet = .Sheet
         If .ActiveSheet = 1 Then
-            If Col = .ColLetterToNumber("I") And Row = 78 Then
+            If Col = .ColLetterToNumber("I") And Row = 87 Then
                 .GetText Col, Row, varTemp
                 If varTemp <> "" And varTemp <> "../../...." Then
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
@@ -814,10 +818,47 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 .Row = Row
                 UpdateCell fps, Col, Row, .Text
             End If
+            
+            
+            If Col = .ColLetterToNumber("J") And Row = 95 Then
+                .GetText Col, Row, varTemp
+                If varTemp <> "" And varTemp <> "../../...." Then
+                    If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+                        .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+                    Else
+                        .SetFocus
+                        .SetActiveCell Col, Row
+                    End If
+                Else
+                    .SetText Col, Row, ""
+                End If
+                .Col = Col
+                .Row = Row
+                UpdateCell fps, Col, Row, .Text
+            End If
+            
+            
+            If Col = .ColLetterToNumber("N") And Row = 95 Then
+                .GetText Col, Row, varTemp
+                If varTemp <> "" And varTemp <> "../../...." Then
+                    If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
+                        .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+                    Else
+                        .SetFocus
+                        .SetActiveCell Col, Row
+                    End If
+                Else
+                    .SetText Col, Row, ""
+                End If
+                .Col = Col
+                .Row = Row
+                UpdateCell fps, Col, Row, .Text
+            End If
+            
             'kiem tra truong ngay ky tren TK
             
             .Sheet = 1
-            .Row = 88
+            .Row = 103
             .Col = .ColLetterToNumber("B")
             countRowDyn = 0
             Do
@@ -825,7 +866,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 .Row = .Row + 1
             Loop Until .Text = "aa"
             
-            If Col = .ColLetterToNumber("N") And Row = 94 + countRowDyn Then
+            If Col = .ColLetterToNumber("N") And Row = 110 + countRowDyn Then
                 .GetText Col, Row, varTemp
                 If varTemp <> "" And varTemp <> "../../...." Then
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
@@ -913,32 +954,38 @@ With fps
                 .Row = 50
                 .Formula = "P50"
                 
+                ' tong hop lo cot (5) len chi tieu C3a
+                .Col = .ColLetterToNumber("O")
+                .Row = 51
+                .Formula = "P51"
                 
-                .GetText .ColLetterToNumber("O"), 51, chiTieuC4
+                
+                
+                .GetText .ColLetterToNumber("O"), 53, chiTieuC4
                 If Val(chiTieuC4) < 0 Then
                     .Col = .ColLetterToNumber("O")
                     ' chi tieu C5
-                    .Row = 52
-                    .Lock = True
-                    .Text = 0
-                    ' chi tieu C7
                     .Row = 54
                     .Lock = True
                     .Text = 0
+                    ' chi tieu C7
+                    .Row = 56
+                    .Lock = True
+                    .Text = 0
                     ' Chi tieu C8
-                    .Row = 55
+                    .Row = 57
                     .Lock = True
                     .Text = 0
                 Else
                     .Col = .ColLetterToNumber("O")
                     ' chi tieu C5
-                    .Row = 52
-                    .Lock = False
-                    ' chi tieu C7
                     .Row = 54
                     .Lock = False
+                    ' chi tieu C7
+                    .Row = 56
+                    .Lock = False
                     ' Chi tieu C8
-                    .Row = 55
+                    .Row = 57
                     .Lock = False
                 End If
             End If
@@ -973,11 +1020,12 @@ With fps
                     For idx = 0 To UBound(arrRowCols)
                         arrRowCol = Split(arrRowCols(idx), "_")
                         If Row = arrRowCol(1) And Col = arrRowCol(0) Then
+                            ' chi tieu C11
                             .Sheet = 1
-                            .SetText .ColLetterToNumber("P"), 59, pL_3A_U50 + pL_3B_U60
+                            .SetText .ColLetterToNumber("P"), 61, pL_3A_U50 + pL_3B_U60
                             .Col = .ColLetterToNumber("O")
-                            .Row = 59
-                            .Formula = "P59"
+                            .Row = 61
+                            .Formula = "P61"
                             Exit For
                         End If
                     Next idx
@@ -985,11 +1033,12 @@ With fps
             Else
                 arrRowCol = Split(strValue, "_")
                 If Row = arrRowCol(1) And Col = arrRowCol(0) Then
+                    ' chi tieu C11
                     .Sheet = 1
-                    .SetText .ColLetterToNumber("P"), 59, pL_3A_U50 + pL_3B_U60
+                    .SetText .ColLetterToNumber("P"), 61, pL_3A_U50 + pL_3B_U60
                     .Col = .ColLetterToNumber("O")
-                    .Row = 59
-                    .Formula = "P59"
+                    .Row = 61
+                    .Formula = "P61"
                 End If
             End If
             
@@ -1005,11 +1054,12 @@ With fps
                     For idx = 0 To UBound(arrRowCols)
                         arrRowCol = Split(arrRowCols(idx), "_")
                         If Row = arrRowCol(1) And Col = arrRowCol(0) Then
+                            ' chi tieu C12
                             .Sheet = 1
-                            .SetText .ColLetterToNumber("P"), 60, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
+                            .SetText .ColLetterToNumber("P"), 62, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
                             .Col = .ColLetterToNumber("O")
-                            .Row = 60
-                            .Formula = "P60"
+                            .Row = 62
+                            .Formula = "P62"
                             Exit For
                         End If
                     Next idx
@@ -1017,11 +1067,12 @@ With fps
              Else
                 arrRowCol = Split(strValue, "_")
                 If Row = arrRowCol(1) And Col = arrRowCol(0) Then
+                    ' chi tieu C12
                     .Sheet = 1
-                    .SetText .ColLetterToNumber("P"), 60, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
+                    .SetText .ColLetterToNumber("P"), 62, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
                     .Col = .ColLetterToNumber("O")
-                    .Row = 60
-                    .Formula = "P60"
+                    .Row = 62
+                    .Formula = "P62"
                 End If
             End If
             
@@ -1061,11 +1112,12 @@ With fps
                     For idx = 0 To UBound(arrRowCols)
                         arrRowCol = Split(arrRowCols(idx), "_")
                         If Row = arrRowCol(1) And Col = arrRowCol(0) Then
+                            ' chi tieu C11
                             .Sheet = 1
-                            .SetText .ColLetterToNumber("P"), 59, pL_3A_U50 + pL_3B_U60
+                            .SetText .ColLetterToNumber("P"), 61, pL_3A_U50 + pL_3B_U60
                             .Col = .ColLetterToNumber("O")
-                            .Row = 59
-                            .Formula = "P59"
+                            .Row = 61
+                            .Formula = "P61"
                             Exit For
                         End If
                     Next idx
@@ -1073,11 +1125,12 @@ With fps
             Else
                 arrRowCol = Split(strValue, "_")
                 If Row = arrRowCol(1) And Col = arrRowCol(0) Then
+                    ' chi tieu C11
                     .Sheet = 1
-                    .SetText .ColLetterToNumber("P"), 59, pL_3A_U50 + pL_3B_U60
+                    .SetText .ColLetterToNumber("P"), 61, pL_3A_U50 + pL_3B_U60
                     .Col = .ColLetterToNumber("O")
-                    .Row = 59
-                    .Formula = "P59"
+                    .Row = 61
+                    .Formula = "P61"
                 End If
             End If
             
@@ -1093,11 +1146,12 @@ With fps
                     For idx = 0 To UBound(arrRowCols)
                         arrRowCol = Split(arrRowCols(idx), "_")
                         If Row = arrRowCol(1) And Col = arrRowCol(0) Then
+                            ' chi tieu C12
                             .Sheet = 1
-                            .SetText .ColLetterToNumber("P"), 60, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
+                            .SetText .ColLetterToNumber("P"), 62, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
                             .Col = .ColLetterToNumber("O")
-                            .Row = 60
-                            .Formula = "P60"
+                            .Row = 62
+                            .Formula = "P62"
                             Exit For
                         End If
                     Next idx
@@ -1105,11 +1159,12 @@ With fps
              Else
                 arrRowCol = Split(strValue, "_")
                 If Row = arrRowCol(1) And Col = arrRowCol(0) Then
+                    ' chi tieu C12
                     .Sheet = 1
-                    .SetText .ColLetterToNumber("P"), 60, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
+                    .SetText .ColLetterToNumber("P"), 62, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
                     .Col = .ColLetterToNumber("O")
-                    .Row = 60
-                    .Formula = "P60"
+                    .Row = 62
+                    .Formula = "P62"
                 End If
             End If
         
@@ -1134,11 +1189,12 @@ With fps
                     For idx = 0 To UBound(arrRowCols)
                         arrRowCol = Split(arrRowCols(idx), "_")
                         If Row = arrRowCol(1) And Col = arrRowCol(0) Then
+                            ' chi tieu C12
                             .Sheet = 1
-                            .SetText .ColLetterToNumber("P"), 60, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
+                            .SetText .ColLetterToNumber("P"), 62, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
                             .Col = .ColLetterToNumber("O")
-                            .Row = 60
-                            .Formula = "P60"
+                            .Row = 62
+                            .Formula = "P62"
                             Exit For
                         End If
                     Next idx
@@ -1146,11 +1202,12 @@ With fps
             Else
                 arrRowCol = Split(strValue, "_")
                 If Row = arrRowCol(1) And Col = arrRowCol(0) Then
+                    ' chi tieu C12
                     .Sheet = 1
-                    .SetText .ColLetterToNumber("P"), 60, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
+                    .SetText .ColLetterToNumber("P"), 62, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
                     .Col = .ColLetterToNumber("O")
-                    .Row = 60
-                    .Formula = "P60"
+                    .Row = 62
+                    .Formula = "P62"
                 End If
             End If
         Case sheetPl03_4_TNDN ' Phu luc 03-6
@@ -1164,10 +1221,11 @@ With fps
             ' Lay ve col vaf row cua dong tong cong
             ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), cCol, cRow
             If Row = cRow And Col = cCol Then
+                ' chi tieu C15
                 .Sheet = 1
                 .Col = .ColLetterToNumber("O")
-                .Row = 63
-                .Formula = "P63"
+                .Row = 65
+                .Formula = "P65"
             End If
         Case sheetPl03_6_TNDN ' Phu luc 03-6
             mCurrentSheet = .Sheet
@@ -1180,18 +1238,20 @@ With fps
             ' Lay ve col vaf row cua dong tong cong
             ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), cCol, cRow
             If Row = cRow And Col = cCol Then
+                ' chi tieu C5
                 .Sheet = 1
                 .Col = .ColLetterToNumber("O")
-                .Row = 52
-                .Formula = "P52"
+                .Row = 54
+                .Formula = "P54"
             End If
         Case sheetPl03_5_TNDN ' Phu luc 03-5
             mCurrentSheet = .Sheet
-             If Row = 38 And Col = .ColLetterToNumber("E") Then
+             If Row = 36 And Col = .ColLetterToNumber("E") Then
+                ' chi tieu D2
                 .Sheet = 1
                 .Col = .ColLetterToNumber("O")
-                .Row = 65
-                .Formula = "P65"
+                .Row = 69
+                .Formula = "P69"
             End If
     End Select
     .EventEnabled(EventAllEvents) = True
@@ -1357,9 +1417,10 @@ Private Sub CheckDynamicError()
                 .SetText .ColLetterToNumber("B"), 23, "1"
                 ' Chuyen chi tieu C11 ve trang thai dung
                 mCurrentSheet = 1
+                ' chi tieu C11
                 .Sheet = 1
                 .Col = .ColLetterToNumber("O")
-                .Row = 59
+                .Row = 61
                 .CellNote = ""
                 .BackColor = mNonErrorColor
             Else
@@ -1371,8 +1432,9 @@ Private Sub CheckDynamicError()
                 ' Chuyen chi tieu ve trang thai loi
                 mCurrentSheet = 1
                 .Sheet = 1
+                ' chi tieu C11
                 .Col = .ColLetterToNumber("O")
-                .Row = 59
+                .Row = 61
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = vErrMsg1 'static
                 .BackColor = mErrorColor
@@ -1392,11 +1454,12 @@ Private Sub CheckDynamicError()
                 ' Update gia tri dung trong sheet header
                 .Sheet = .SheetCount
                 .SetText .ColLetterToNumber("B"), 24, "1"
-                ' Chuyen trang thai dung cho C9
+                ' Chuyen trang thai dung cho C12
                 mCurrentSheet = 1
+                ' chi tieu C12
                 .Sheet = 1
                 .Col = .ColLetterToNumber("O")
-                .Row = 60
+                .Row = 62
                 .CellNote = ""
                 .BackColor = mNonErrorColor
             Else
@@ -1406,11 +1469,12 @@ Private Sub CheckDynamicError()
                 ' Lay thong bao loi
                 Dim vErrMsg2 As Variant
                 .GetText .ColLetterToNumber("E"), 24, vErrMsg2
-                ' Chuyen C9 ve trang thai bao loi
+                ' Chuyen C12 ve trang thai bao loi
                 mCurrentSheet = 1
                 .Sheet = 1
+                ' chi tieu C12
                 .Col = .ColLetterToNumber("O")
-                .Row = 60
+                .Row = 62
                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                 .CellNote = vErrMsg2 'static
                 .BackColor = mErrorColor
@@ -1419,22 +1483,22 @@ Private Sub CheckDynamicError()
         
         ' check gia han
         .Sheet = 1
-        .GetText .ColLetterToNumber("F"), 74, vCheckGH
-        .GetText .ColLetterToNumber("I"), 76, vLyDoGH
-        .GetText .ColLetterToNumber("I"), 78, vThoiHanGH
-        .GetText .ColLetterToNumber("I"), 80, vSoThueGH
+        .GetText .ColLetterToNumber("F"), 83, vCheckGH
+        .GetText .ColLetterToNumber("I"), 85, vLyDoGH
+        .GetText .ColLetterToNumber("I"), 87, vThoiHanGH
+        .GetText .ColLetterToNumber("I"), 89, vSoThueGH
         
          If (Trim$(vCheckGH) = "1" Or Trim$(UCase$(vCheckGH)) = "X") Then
              ' Kiem tra ly do gia han
              If Trim$(vLyDoGH) = "" Then
                  .Col = .ColLetterToNumber("I")
-                 .Row = 76
+                 .Row = 85
                  .CellNote = vErrorCheckGH  'static
                  .BackColor = mErrorColor
                  iflagCheckGH = 1
              Else
                  .Col = .ColLetterToNumber("I")
-                 .Row = 76
+                 .Row = 85
                  .CellNote = ""  'static
                  .BackColor = mNonErrorColor
                  iflagCheckGH = 0
@@ -1442,7 +1506,7 @@ Private Sub CheckDynamicError()
              ' Kiem tra thoi han gia han
              If Trim$(vThoiHanGH) = "" Or Trim$(vThoiHanGH) = "../../...." Then
                  .Col = .ColLetterToNumber("I")
-                 .Row = 78
+                 .Row = 87
                  .CellNote = vErrorCheckThoiHanGH  'static
                  .BackColor = mErrorColor
                  iflagCheckThoiHanGH = 1
@@ -1458,12 +1522,12 @@ Private Sub CheckDynamicError()
                 If DateDiff("D", dThoiHanGH, dHanNop) > 0 Then
                     
                     .Col = .ColLetterToNumber("I")
-                    .Row = 78
+                    .Row = 87
                     .CellNote = vErrorCheckHN  'static
                     .BackColor = mAlertColor
                 Else
                     .Col = .ColLetterToNumber("I")
-                    .Row = 78
+                    .Row = 87
                     .CellNote = ""  'static
                     .BackColor = mNonErrorColor
                  End If
@@ -1471,13 +1535,13 @@ Private Sub CheckDynamicError()
              ' Kiem tra so thue
              If Val(vSoThueGH) <= 0 Then
                  .Col = .ColLetterToNumber("I")
-                 .Row = 80
+                 .Row = 89
                  .CellNote = vErrorCheckSoThueGH
                  .BackColor = mErrorColor
                  iflagCheckSoThueGH = 1
              Else
                  .Col = .ColLetterToNumber("I")
-                 .Row = 80
+                 .Row = 89
                  .CellNote = ""  'static
                  .BackColor = mNonErrorColor
                  iflagCheckSoThueGH = 0
@@ -1486,19 +1550,19 @@ Private Sub CheckDynamicError()
          Else
                 ' Ly do gia han
                  .Col = .ColLetterToNumber("I")
-                 .Row = 76
+                 .Row = 85
                  .CellNote = ""  'static
                  .BackColor = mNonErrorColor
                  iflagCheckGH = 0
                  ' Thoi han gia han
                  .Col = .ColLetterToNumber("I")
-                 .Row = 78
+                 .Row = 87
                  .CellNote = ""  'static
                  .BackColor = mNonErrorColor
                  iflagCheckThoiHanGH = 0
                  ' So thue gia han
                  .Col = .ColLetterToNumber("I")
-                 .Row = 80
+                 .Row = 89
                  .CellNote = ""  'static
                  .BackColor = mNonErrorColor
                  iflagCheckSoThueGH = 0
@@ -1530,55 +1594,6 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 36, vErrCtieuC4
         
         .GetText .ColLetterToNumber("E"), 46, vErrorCheckGH
-        
-        ' check ly do gia han
-'        If TAX_Utilities_v1.Year = 2009 Then
-'            isCheckGh = False
-'        ElseIf TAX_Utilities_v1.Year = 2010 Then
-'            isCheckGh = False
-'        ElseIf TAX_Utilities_v1.Year = 2011 Then
-'            isCheckGh = False
-'        Else
-'             isCheckGh = True
-'        End If
-'
-'
-'
-'        .Sheet = 1
-'         count = 0
-'        .Row = 60
-'        .Col = .ColLetterToNumber("B")
-'        Do
-'            count = count + 1
-'            .Row = .Row + 1
-'        Loop Until .Text = "aa"
-'
-'        .GetText .ColLetterToNumber("B"), 61 + count, vCheckGH
-'
-'        .GetText .ColLetterToNumber("D"), 62 + count, vLyDoGH
-'         If (Trim(vCheckGH) = "1" Or Trim$(UCase(vCheckGH)) = "X") And isCheckGh Then
-'             If Trim$(vLyDoGH) = "" Then
-'                 .Col = .ColLetterToNumber("D")
-'                 .Row = 62 + count
-'                 .CellNote = vErrorCheckGH  'static
-'                 .BackColor = mErrorColor
-'                 iflagCheckGH = 1
-'             Else
-'                 .Col = .ColLetterToNumber("D")
-'                 .Row = 62 + count
-'                 .CellNote = ""  'static
-'                 .BackColor = mNonErrorColor
-'                 iflagCheckGH = 0
-'             End If
-'         Else
-'                 .Col = .ColLetterToNumber("D")
-'                 .Row = 62 + count
-'                 .CellNote = ""  'static
-'                 .BackColor = mNonErrorColor
-'                 iflagCheckGH = 0
-'         End If
-'        .Sheet = .SheetCount
-'        .SetText .ColLetterToNumber("B"), 46, IIf(iflagCheckGH = 1, "0", "1")
         
         
         ' Kiem tra validate cua PL 03-3C
@@ -2276,14 +2291,18 @@ Public Sub SetData()
                 .Sheet = mCurrentSheet
                 ' set lai trang thai dung cho C11, C12 to khai
                 .Col = .ColLetterToNumber("O")
-                .Row = 59
+                .Row = 61
                 .CellNote = ""
                 .BackColor = mNonErrorColor
 
                 .Col = .ColLetterToNumber("O")
-                .Row = 60
+                .Row = 62
                 .CellNote = ""
                 .BackColor = mNonErrorColor
+                
+                .Col = .ColLetterToNumber("B")
+                .Row = 103
+                .Formula = "B102+1"
             End If
              'set du lieu cho 03-2A
             If fps.ActiveSheet = sheetPl03_2A_TNDN Then
@@ -2509,22 +2528,15 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
             If mCurrentSheet = 1 Then
                 i = 1
                 .Col = .ColLetterToNumber("B")
-                .Row = 88
+                .Row = 103
                 Do
                      .Text = str(i)
                      .Col = .ColLetterToNumber("B")
-                     .Row = i + 88
+                     .Row = i + 103
                      i = i + 1
                  Loop Until .Text = "aa"
             End If
             
-'            ' PL 03-4
-'            If KeyCode = vbKeyF5 Then
-'                If mCurrentSheet = sheetPl03_4_TNDN Then
-'                    .SetText .ColLetterToNumber("AK"), .ActiveRow + 1, "25"
-'                    UpdateCell fps, .ColLetterToNumber("AK"), .ActiveRow + 1, "25"
-'                End If
-'            End If
             
             If mCurrentSheet = sheetPl03_4_TNDN Then
                 fps.EventEnabled(EventAllEvents) = False
@@ -2807,7 +2819,7 @@ Private Sub UpdateSheets()
         mCurrentSheet = .Sheet
             For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-               If (lRow <= 71) And (lRow >= 31) Then
+               If (lRow <= 80) And (lRow >= 31) Then
                     .GetText lCol, lRow, varTemp
                     UpdateCell fps, lCol, lRow, varTemp
                 End If
@@ -2925,18 +2937,18 @@ Public Function getValueTK(strFileLoadData As String) As String
         .validateOnParse = True
         .async = False
         If .Load(strFileLoadData) = True Then
-            Set xmlNode = .nodeFromID("O_58")
-            result = "CTC10_" & Val(GetAttribute(xmlNode, "Value"))
-            Set xmlNode = .nodeFromID("O_59")
-            result = result & "~" & "CTC11_" & Val(GetAttribute(xmlNode, "Value"))
             Set xmlNode = .nodeFromID("O_60")
+            result = "CTC10_" & Val(GetAttribute(xmlNode, "Value"))
+            Set xmlNode = .nodeFromID("O_61")
+            result = result & "~" & "CTC11_" & Val(GetAttribute(xmlNode, "Value"))
+            Set xmlNode = .nodeFromID("O_62")
             result = result & "~" & "CTC12_" & Val(GetAttribute(xmlNode, "Value"))
-            Set xmlNode = .nodeFromID("O_63")
-            result = result & "~" & "CTC15_" & Val(GetAttribute(xmlNode, "Value"))
-            Set xmlNode = .nodeFromID("O_64")
-            result = result & "~" & "CTC16_" & Val(GetAttribute(xmlNode, "Value"))
             Set xmlNode = .nodeFromID("O_65")
-            result = result & "~" & "CTD_" & Val(GetAttribute(xmlNode, "Value"))
+            result = result & "~" & "CTC15_" & Val(GetAttribute(xmlNode, "Value"))
+            Set xmlNode = .nodeFromID("O_66")
+            result = result & "~" & "CTC16_" & Val(GetAttribute(xmlNode, "Value"))
+'            Set xmlNode = .nodeFromID("O_65")
+'            result = result & "~" & "CTD_" & Val(GetAttribute(xmlNode, "Value"))
             Set xmlNode = Nothing
         End If
     End With
@@ -2961,18 +2973,18 @@ Public Function getDieuChinhGiam(strOldValue As String) As String
     strMaCT = getMapCT
     With fps
                 .Sheet = 1
-                .GetText .ColLetterToNumber("O"), 58, varTemp
-                strCurrentValue = "CTC10_" & Trim(varTemp)
-                .GetText .ColLetterToNumber("O"), 59, varTemp
-                strCurrentValue = strCurrentValue & "~CTC11_" & Trim(varTemp)
                 .GetText .ColLetterToNumber("O"), 60, varTemp
+                strCurrentValue = "CTC10_" & Trim(varTemp)
+                .GetText .ColLetterToNumber("O"), 61, varTemp
+                strCurrentValue = strCurrentValue & "~CTC11_" & Trim(varTemp)
+                .GetText .ColLetterToNumber("O"), 62, varTemp
                 strCurrentValue = strCurrentValue & "~CTC12_" & Trim(varTemp)
-                .GetText .ColLetterToNumber("O"), 63, varTemp
-                strCurrentValue = strCurrentValue & "~CTC15_" & Trim(varTemp)
-                .GetText .ColLetterToNumber("O"), 64, varTemp
-                strCurrentValue = strCurrentValue & "~CTC16_" & Trim(varTemp)
                 .GetText .ColLetterToNumber("O"), 65, varTemp
-                strCurrentValue = strCurrentValue & "~CTD_" & Trim(varTemp)
+                strCurrentValue = strCurrentValue & "~CTC15_" & Trim(varTemp)
+                .GetText .ColLetterToNumber("O"), 66, varTemp
+                strCurrentValue = strCurrentValue & "~CTC16_" & Trim(varTemp)
+'                .GetText .ColLetterToNumber("O"), 65, varTemp
+'                strCurrentValue = strCurrentValue & "~CTD_" & Trim(varTemp)
                 ' tinh chenh lech giua 2 lan dieu chinh
                 tempArrOld = Split(strOldValue, "~")
                 tempArrCurr = Split(strCurrentValue, "~")
@@ -2992,7 +3004,7 @@ Public Function getDieuChinhGiam(strOldValue As String) As String
                         End If
                     Next j
                     
-                    If Left(strMaCT, 4) = "C10_" Or Left(strMaCT, 4) = "C16_" Or Left(strMaCT, 2) = "D_" Then
+                    If Left(strMaCT, 4) = "C10_" Or Left(strMaCT, 4) = "C16_" Then
                         If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) < 0 Then
                             ' dieu chinh giam
                             strDieuChinhGiam = strDieuChinhGiam & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
@@ -3041,7 +3053,7 @@ Public Function getValueCTDC(strFileLoadData As String) As String
         .validateOnParse = True
         .async = False
         If .Load(strFileLoadData) = True Then
-            Set xmlNode = .nodeFromID("O_66")
+            Set xmlNode = .nodeFromID("O_68")
             result = Val(GetAttribute(xmlNode, "Value"))
         End If
     End With
@@ -3059,7 +3071,7 @@ Public Function getChiTieuTongDC(strOldValue As String) As String
     Dim strCurrentValue As String
     With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("O"), 66, varTemp
+        .GetText .ColLetterToNumber("O"), 68, varTemp
         strCurrentValue = Val(varTemp) - Val(strOldValue)
         getChiTieuTongDC = strCurrentValue
     End With
@@ -3137,6 +3149,10 @@ Private Sub unLockCell(status As Boolean)
         ' chi tieu C3
         .Row = 50
         .Lock = status
+        
+        ' chi tieu C3a
+        .Row = 51
+        .Lock = status
 '        'chi tieu C8
 '        .Row = 47
 '        .Lock = status
@@ -3164,48 +3180,56 @@ Public Sub unLockCellPL(strLoaiToKhai As String)
     If strLoaiToKhai = "TKCT" Then
          With fps
             .Sheet = 1
-            ' lock chi tieu C3
+            ' lock chi tieu C3, C3a
             .Col = .ColLetterToNumber("O")
             'If blCheck_S2A Or blCheck_S2B Then
             If blCheck_S2A Then
+                ' chi tieu C3
                 .Row = 50
                 .Lock = True
+                ' chi tieu C3a
+                .Row = 51
+                .Lock = True
             Else
+                ' chi tieu C3
                 .Row = 50
+                .Lock = False
+                ' chi tieu C3a
+                .Row = 51
                 .Lock = False
             End If
             ' Lock chi tieu C11
             If blCheck_S3A Or blCheck_S3B Then
-                .Row = 59
+                .Row = 61
                 .Lock = True
             Else
-                .Row = 59
+                .Row = 61
                 .Lock = False
             End If
             ' Lock chi tieu c12
             If blCheck_S3A Or blCheck_S3B Or blCheck_S3C Then
-                .Row = 60
+                .Row = 62
                 .Lock = True
             Else
-                .Row = 60
+                .Row = 62
                 .Lock = False
             End If
             ' Chi tieu C15
             If blCheck_S4 Then
-                .Row = 63
-                .Lock = True
-            Else
-                .Row = 63
-                .Lock = False
-            End If
-            ' Chi tieu D
-            If blCheck_S5 Then
                 .Row = 65
                 .Lock = True
             Else
                 .Row = 65
                 .Lock = False
             End If
+'            ' Chi tieu D
+'            If blCheck_S5 Then
+'                .Row = 66
+'                .Lock = True
+'            Else
+'                .Row = 66
+'                .Lock = False
+'            End If
             
         End With
    End If
@@ -3321,7 +3345,7 @@ Public Sub SetActiveKHBS() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
                  Set xmlCellNode = TAX_Utilities_v1.Data(sheetPl03_KHBS_TNDN - 1).getElementsByTagName("Cell")(7)
                     strValue3 = GetAttribute(xmlCellNode, "Value")
           
-                    If (Not IsNullValue(strValue1)) Or TAX_Utilities_v1.Data(sheetPl03_KHBS_TNDN - 1).getElementsByTagName("Cell").length > sheetPl03_KHBS_TNDN - 11 Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Then
+                    If (Not IsNullValue(strValue1)) Or TAX_Utilities_v1.Data(sheetPl03_KHBS_TNDN - 1).getElementsByTagName("Cell").length > 31 Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Then
                             blnNullValue = False
                     End If
 
