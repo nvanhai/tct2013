@@ -801,22 +801,22 @@ Public Function InsertDTL_TGTC08(ByRef dtl As TNCN_DTL, rowID As Integer) As Str
 End Function
 
 'lay ten CQT tu ma CQT
-Public Sub GetTenCQT(ByVal Id As String, Optional ByRef tenTN As String)
+Public Sub GetTenCQT(ByVal Id As String, Optional ByRef TenTN As String)
 Dim arrDanhsach() As String
 Dim strDataFileName As String
-Dim xmlDomData As New MSXML.DOMDocument
+Dim xmlDOMdata As New MSXML.DOMDocument
 Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = "..\InterfaceTemplates\Catalogue_Tinh_Thanh.xml"
     
-       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
-            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
             For Each xmlNode In xmlNodeListCell
                 If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                         If Id = arrDanhsach(1) Then
-                            tenTN = arrDanhsach(3)
+                            TenTN = arrDanhsach(3)
                             Exit Sub
                         End If
                 End If
@@ -864,17 +864,14 @@ End Sub
 
 Public Function InsertDTL_KHBS156( _
 ByVal fps As fpSpread, _
-ByVal MaDTNT As Variant, _
-ByVal MaTKhai As Variant, _
-ByVal Ngnop As Variant, _
+ByVal madtnt As Variant, _
+ByVal matkhai As Variant, _
+ByVal ngnop As Variant, _
 ByVal KYLBO As Variant, _
-ByVal MACTT As Variant, _
-ByVal MACTG As Variant, _
-ByVal MACTDC As Variant, _
 ByVal spathVat As Variant, _
 ByVal sKyKeKhai As Variant, _
 ByVal TTHTK As Variant, _
-ByVal Lan_Quet As Variant, _
+ByVal LAN_QUET As Variant, _
 ByVal IsTKMonth As Boolean _
 ) As String
     Dim sSQL        As String
@@ -888,7 +885,7 @@ ByVal IsTKMonth As Boolean _
     Dim MaMuc       As Variant
     Dim maTM        As Variant
     Dim MAPP        As Variant
-    Dim MACT        As Variant
+    Dim mact        As Variant
     Dim MACT2       As Variant
     Dim MACT3       As Variant
     Dim STT         As Variant
@@ -925,6 +922,30 @@ ByVal IsTKMonth As Boolean _
         clsDAO.Connect
     End If
 
+    MATHUE = "''"
+    MAPP = "''"
+
+    ' Dat mathue,mapp
+    Select Case matkhai
+    
+        Case "01/PHLP"
+            MATHUE = "'20'"
+            MAPP = "'2'"
+        Case "02/PHLP"
+            MATHUE = "'20'"
+            MAPP = "'2'"
+        Case "02/BVMT"
+            MATHUE = "'21'"
+            MAPP = "'2'"
+        Case "02/NTNN"
+            MATHUE = "'23'"
+            MAPP = "'1'"
+        Case "04/NTNN"
+            MATHUE = "'23'"
+            MAPP = "'2'"
+        
+    End Select
+
     With fps
         
         If IsTKMonth Then
@@ -933,19 +954,15 @@ ByVal IsTKMonth As Boolean _
             kykkhai = "'" & TAX_Utilities_Svr_New.Year & "'"
         End If
         
-        MaTKhai = "'" & MaTKhai & "'"
+        matkhai = "'" & matkhai & "'"
         
         MATHUE = "''"
-        MaMuc = "''"
-        maTM = "''"
+        MaMuc = "''"  ' bang tren to khai chinh khong the lay duoc
+        maTM = "''"   ' khong the lay duoc
         MAPP = "''"
         DANHAN = "''"
         ' Insert so dieu chinh tang
-        If Trim(MACTT) = vbNullString Then
-            MACTT = "''"
-        Else
-            MACTT = "'" & MACTT & "'"
-        End If
+        mact = "'1000'"
         
         MACT2 = "''"
         MACT3 = "''"
@@ -959,7 +976,7 @@ ByVal IsTKMonth As Boolean _
         SOTIENNC = "0"
         SONGAYNC = "0"
         
-        sSQLVal = MaDTNT & "," & kykkhai & "," & MaTKhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & Ngnop & "," & TTHTK & "," & KYLBO & "," & MACTT & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & Lan_Quet & "," & DANHAN
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & MACTT & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                        
         sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -990,24 +1007,16 @@ ByVal IsTKMonth As Boolean _
         .Row = 9
 
         Do
-            MACT = "''"
+            mact = "''"
             .GetText .ColLetterToNumber("BE"), .Row, MACT2
-
             If Trim(MACT2) = vbNullString Then
                 MACT2 = "''"
-            ElseIf MACT2 = "14" Or MACT2 = "16" Or MACT2 = "23" Then
-                MACT2 = "'041'"
-            ElseIf MACT2 = "24" Or MACT2 = "31" Then
-                MACT2 = "'050'"
-            ElseIf MACT2 = "21" Then
-                MACT2 = "'039'"
-            ElseIf MACT2 = "30" Then
-                MACT2 = "'031'"
+                Math3 = "''"
             Else
-                MACT2 = "'000'"
+                MACT2 = "'" & MACT2 & "'"
+                MACT3 = "'1'"
             End If
-                
-            MACT3 = "'2'"
+
             STT = 1
             STT2 = i
             
@@ -1038,7 +1047,7 @@ ByVal IsTKMonth As Boolean _
                 SOCL = SOCL
             End If
             
-            sSQLVal = MaDTNT & "," & kykkhai & "," & MaTKhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & Ngnop & "," & TTHTK & "," & KYLBO & "," & MACT & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & Lan_Quet & "," & DANHAN
+            sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                            
             sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
                 
@@ -1069,7 +1078,7 @@ ByVal IsTKMonth As Boolean _
         SODC = "0"
         SOCL = "0"
         
-        sSQLVal = MaDTNT & "," & kykkhai & "," & MaTKhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & Ngnop & "," & TTHTK & "," & KYLBO & "," & MACTG & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & Lan_Quet & "," & DANHAN
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & MACTG & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                        
         sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -1078,7 +1087,7 @@ ByVal IsTKMonth As Boolean _
         .Row = .Row + 3
 
         Do
-            MACT = "''"
+            mact = "''"
             .GetText .ColLetterToNumber("BE"), .Row, MACT2
 
             If Trim(MACT2) = vbNullString Then
@@ -1126,7 +1135,7 @@ ByVal IsTKMonth As Boolean _
                 SOCL = SOCL
             End If
             
-            sSQLVal = MaDTNT & "," & kykkhai & "," & MaTKhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & Ngnop & "," & TTHTK & "," & KYLBO & "," & MACT & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & Lan_Quet & "," & DANHAN
+            sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                            
             sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
@@ -1157,14 +1166,14 @@ ByVal IsTKMonth As Boolean _
         SODC = "0"
         SOCL = "0"
         
-        sSQLVal = MaDTNT & "," & kykkhai & "," & MaTKhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & Ngnop & "," & TTHTK & "," & KYLBO & "," & MACTDC & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & Lan_Quet & "," & DANHAN
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & MACTDC & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                        
         sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
         
         
         .Row = .Row + 3
-        MACT = "''"
+        mact = "''"
         .GetText .ColLetterToNumber("BE"), .Row, MACT2
 
         If Trim(MACT2) = vbNullString Then
@@ -1214,7 +1223,7 @@ ByVal IsTKMonth As Boolean _
             SOCL = SOCL
         End If
             
-        sSQLVal = MaDTNT & "," & kykkhai & "," & MaTKhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & Ngnop & "," & TTHTK & "," & KYLBO & "," & MACT & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & Lan_Quet & "," & DANHAN
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                            
         sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
